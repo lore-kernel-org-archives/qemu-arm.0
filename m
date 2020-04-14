@@ -1,151 +1,82 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4343107lfm;
-        Mon, 13 Apr 2020 16:43:03 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJ3NiQvX+s8n6znxINqkUp9l39uncsVI3SvVnvyo9JSQkZFvgx2IjMhip6KztX/02uxAxoz
-X-Received: by 2002:aed:2377:: with SMTP id i52mr11294395qtc.90.1586821382871;
-        Mon, 13 Apr 2020 16:43:02 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1586821382; cv=pass;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4465365lfm;
+        Mon, 13 Apr 2020 19:29:57 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIuDmkvgLwtwfvyCbnjf37tZPiZa33gI7N45JwVqwoh2X4jeBbtKVk+jf5714zsGPMuFFl9
+X-Received: by 2002:a0c:e204:: with SMTP id q4mr7655960qvl.16.1586831397618;
+        Mon, 13 Apr 2020 19:29:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586831397; cv=none;
         d=google.com; s=arc-20160816;
-        b=bFRq02fuHMOQ7BDX005YLG+aYz6+65cWlzhRWTcuQHXf+enkHobBOLElF6DeJbik3a
-         FEkGhmmy5S7G0s5niqyn9xuND6QxhM9r/vmm4ovd5jr+34g1zVGNRG0MXGg0NNi0CVQ+
-         r4ePBTUS/KYeuCMFH/XpcyVlwIZOoQadUb8BTvNnTUacT69s5+YWyu+1a6ZJPJ9hQZpX
-         sY/N70oNjUScRitevfpYIiKT3X3wN9j8FNbLIFc1sfVKNL97XCym7hTNM1wCfGushCgV
-         +VxYAnRgLrG5tOz4If2rCiz9A6vbLWzX73um0B9UIfKhT5PPziqYo43Zl8vkxhSAAH9t
-         KO5A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=ktg8DtFGDgTlTtpg1brB1hzPa6vmm9Bh6ezOFMkagR1mHIv/D42BUW/9ODDRYnXOgk
+         unYdrezXHwy+FiG97QGhy8EPOzx1W6YINHB0K+yPJavt76ZtZmju+Fnmkv06VbKWytuP
+         MQV002P8kSd5GelEa8EPAPnkF7WV7X6Xqt3Z0jkKZ4XcoDpGCLUb88763HZ/teikEoSX
+         0Cbyu6zzqCD0ANa41kVFSM6XoilzopnL0onwe7epJr355tWja45CVsAKMQTdUD2opVmg
+         N1ueu/mWK8NeRSyBgzpQy0+oR03u9qa4SkTFDzpPHiy5TOwKApZ/YPdrL42PlxFCWLlR
+         s+yw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from:dkim-signature:dkim-signature;
-        bh=AujULiLCuy1Y4FFraRpaCnyofTOmUPXKml1UznKfbhU=;
-        b=E8baRLZkxMS7SHDvFXMnUgHKKBM+2OPqGdGVZ0CYylgY2J9HFhUWt9VIUh1DGF5nH/
-         +snvCUgIfm33WWzkmelz3JwceGIs+Lzoi6VC7/6yDfE637dER5ddWHrF15iYc9AuzcPw
-         sBSnoWZUTHRzccELTuG55wLHSrn3WJb/Wc81mT1jsPq7dKRJ5yVGvvRTwzyy2jspPrP7
-         yMaSnrMjp9qFWjdMq53So9Tw1Ng0Zv3yi/tesJSY492Ti1XVI3YpjSdmKfWKX7DoEu/v
-         lh5PzELlVCyU0r/OaljQVOGDp05AlwVJmrsEfpfH+cpBse1yTeUasibv2pITaWnRRUMd
-         6F/A==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=jkFUZz9c;
-       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=DlJRNJIt;
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=7ehUvSOWkXjIb61SNBVRGWb/JdGo6DccBWKP26jXlvg=;
+        b=KDgVCy7unEp8JSf/cXpNX45dIBcqeXEQAIXJWY27zyzo6+44NVf4BzmBoApSI8kdwQ
+         W/YqazDBbFzgm4cxPNuQUR7pkD+C+mQIZKMCaRTSDpmFd1GyFpUz/CXMSMmhPH0Qg+t0
+         QriAEp8GjRf9ZVmAt7GQIxxbzEPqLHLrO+Mnkm0FoHbRa/7J1l3KfY2ML2a9zoit6Whi
+         OhE1y0WSBiLjLY62pfd4V9cTcCV1WTXVWyn4LizjQsSiwLYK17xRAbNLEoSelkDrpjoO
+         3bCN0XlcMu0XCilpqKrStQwVT/UqWOzd60TkF+b+aZ6f4kZpFh6GK8gWE4FvliEdk1rv
+         iqUQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Yo0hHh8Z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cs2si4588142qvb.96.2020.04.13.16.43.02
+        by mx.google.com with ESMTPS id c15si5742927qkl.146.2020.04.13.19.29.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Apr 2020 16:43:02 -0700 (PDT)
+        Mon, 13 Apr 2020 19:29:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=jkFUZz9c;
-       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=DlJRNJIt;
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:50554 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Yo0hHh8Z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51650 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jO8jG-0004SB-AI
-	for alex.bennee@linaro.org; Mon, 13 Apr 2020 19:43:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56115)
+	id 1jOBKn-0008O4-0L
+	for alex.bennee@linaro.org; Mon, 13 Apr 2020 22:29:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46227)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <steplong@quicinc.com>) id 1jO8j8-0004RL-Fu
- for qemu-arm@nongnu.org; Mon, 13 Apr 2020 19:42:55 -0400
+ (envelope-from <dgibson@ozlabs.org>) id 1jOBKa-0008N2-AQ
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2020 22:29:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <steplong@quicinc.com>) id 1jO8j5-0002JY-NZ
- for qemu-arm@nongnu.org; Mon, 13 Apr 2020 19:42:54 -0400
-Received: from alexa-out-sd-02.qualcomm.com ([199.106.114.39]:5754)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <steplong@quicinc.com>)
- id 1jO8j1-0002HE-0i; Mon, 13 Apr 2020 19:42:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1586821367; x=1618357367;
- h=from:to:cc:subject:date:message-id:mime-version;
- bh=zoAQle0OQNxd8a9btzyc7t7iEJafwg/QH5hhL10ocQg=;
- b=jkFUZz9cgtIO9VmS7UP6V0JkKGnyGJ6GrDL+Au4VgNsJIBZQoeXEOQlz
- ECmno49GhVxB2WUIYsFLrqHRROTOjTiVaRNul736soja/Ae0QUmQ9Ki93
- vzPPmcdfO6/XUBUIC+iygaib5FU/Y4bZfRPk46O0W2t4WAuB9m39wIamB s=;
-Received: from unknown (HELO ironmsg03-sd.qualcomm.com) ([10.53.140.143])
- by alexa-out-sd-02.qualcomm.com with ESMTP; 13 Apr 2020 16:42:44 -0700
-Received: from nasanexm03d.na.qualcomm.com ([10.85.0.91])
- by ironmsg03-sd.qualcomm.com with ESMTP/TLS/AES256-SHA;
- 13 Apr 2020 16:42:44 -0700
-Received: from APSANEXR01F.ap.qualcomm.com (10.85.0.39) by
- nasanexm03d.na.qualcomm.com (10.85.0.91) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 13 Apr 2020 16:42:43 -0700
-Received: from nasanexm03b.na.qualcomm.com (10.85.0.98) by
- APSANEXR01F.ap.qualcomm.com (10.85.0.39) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 13 Apr 2020 16:42:40 -0700
-Received: from NAM04-BN3-obe.outbound.protection.outlook.com (199.106.107.6)
- by nasanexm03b.na.qualcomm.com (10.85.0.98) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2 via Frontend Transport; Mon, 13 Apr 2020 16:42:40 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BfhbbTEjbh6oUbWR5kqebra3WhPWQ677VOz1V8+b9poN5Uzs+YG7mZ7regLuiu5m/TKmxaPYV4k9p+9ZXBchCrcLhf9m//2n9BnUub8kwZSgTvuT32LkMBd089lmwx+q/uyOezvwiGMC5drPJOn21BDsiC2o1C1w9fbIstBT2yB2VH8KDTS6aalQ6ykr39kirqRTiefshSJXi/vPhrINCYITkZ5C9EudAnRAgoekuxa07yGAE7fGBLjJQy0jei/0nz3d9l/F5NMHA95wJDpmG3pOxAvJ5BAOsNHPUgUih5M+GHtSW1H9REzRfV4XXNUuInMBqsJ1D2PeyEJOpOc62w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=AujULiLCuy1Y4FFraRpaCnyofTOmUPXKml1UznKfbhU=;
- b=LYkQHhKCFCS0Tr9C8Qpz/0NyEHzJ6JzWdpIDB2rgrrzyeF/385ofJM04lPHvJKsXJzC8tGhaOGx2AZxxU0jSIPuIuOw8quTmpsYbJZiy6QvOS1bzo4l6QsbcxHWG7jlRnI+vN3bdM+o8y9o/wLjdJORd+Ba4GsgjpOzQJOsLWkOtyB6PelwLaB47WN2mg00T6MH2PnT727MdyvhF6vQWYq8WdTW2BjsYxgYS6os2cXAniPXBoBqGLhaWhUrsDhaEZGFOtgLj8LfmMtZFGIX76D/SRmiLzR3YbZ/HvHJw5UVAxk7ugpGcaY0yovQSKRNVV0coaCKMunKmXuT6067cvA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
- dkim=pass header.d=quicinc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=qualcomm.onmicrosoft.com; s=selector1-qualcomm-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=AujULiLCuy1Y4FFraRpaCnyofTOmUPXKml1UznKfbhU=;
- b=DlJRNJIteNKUZjgpXhZFMlCbGur00b3hncaaO8hbDp4pP6Wac04faVKhnnNSFcoQ2g/xlGRxM3TTPmEecIZA5vF/aRRDVxljIZZgGBujWfy96Dtdd66bWCkBqdFLsdhIcude7ojgiqlG+Piwd4Vg8Nrq1SxyhcJOpnS/2Vt4IRQ=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=steplong@quicinc.com; 
-Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
- (2603:10b6:301:7b::24) by MWHPR0201MB3401.namprd02.prod.outlook.com
- (2603:10b6:301:76::10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2900.28; Mon, 13 Apr
- 2020 23:42:37 +0000
-Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
- ([fe80::10ad:5df5:d575:1f37]) by MWHPR0201MB3547.namprd02.prod.outlook.com
- ([fe80::10ad:5df5:d575:1f37%3]) with mapi id 15.20.2900.028; Mon, 13 Apr 2020
- 23:42:37 +0000
-From: Stephen Long <steplong@quicinc.com>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH RFC] target/arm: Implement SVE2 MATCH, NMATCH
-Date: Mon, 13 Apr 2020 19:42:24 -0400
-Message-ID: <20200413234224.12005-1-steplong@quicinc.com>
-Content-Type: text/plain
-X-ClientProxiedBy: BL0PR0102CA0059.prod.exchangelabs.com
- (2603:10b6:208:25::36) To MWHPR0201MB3547.namprd02.prod.outlook.com
- (2603:10b6:301:7b::24)
+ (envelope-from <dgibson@ozlabs.org>) id 1jOBKX-0002qx-S1
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2020 22:29:43 -0400
+Received: from bilbo.ozlabs.org ([203.11.71.1]:57775 helo=ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+ id 1jOBKW-0002im-IV; Mon, 13 Apr 2020 22:29:41 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 491Ttx1vDCz9sSy; Tue, 14 Apr 2020 12:26:45 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1586831321;
+ bh=pVo+VSY8y+Oi5K/T4k7QU7qPngrFzz8AMn/gwoxVnq8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Yo0hHh8ZUkr3lsDsOsgjVf6/zrt900Q9UVaIpDkNdMm4VQvPwq4Djw3WlgI73FKe8
+ fKFIHbXkq9l0quaMZBEBnauTI96m8z4oYoeftiR6Chrxc+dkJ7u1nq/VmVLNmTOOeq
+ iv70dEvkjrvmdYtS9mlu/0fvZ5flcP3GjpcpRb7o=
+Date: Tue, 14 Apr 2020 12:08:30 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH-for-5.1 v3 01/24] various: Remove suspicious '\'
+ character outside of #define in C code
+Message-ID: <20200414020830.GG48061@umbus.fritz.box>
+References: <20200412223619.11284-1-f4bug@amsat.org>
+ <20200412223619.11284-2-f4bug@amsat.org>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from DESKTOP-L2LA14H.localdomain (108.176.222.2) by
- BL0PR0102CA0059.prod.exchangelabs.com (2603:10b6:208:25::36) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2900.15 via Frontend Transport; Mon, 13 Apr 2020 23:42:37 +0000
-X-Originating-IP: [108.176.222.2]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: ecd90d01-9b4d-4aab-fab0-08d7e004592e
-X-MS-TrafficTypeDiagnostic: MWHPR0201MB3401:
-X-Microsoft-Antispam-PRVS: <MWHPR0201MB34013B081055C318FA4FE4E0C7DD0@MWHPR0201MB3401.namprd02.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:486;
-X-Forefront-PRVS: 037291602B
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR0201MB3547.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10019020)(366004)(396003)(346002)(376002)(136003)(39860400002)(66476007)(478600001)(2616005)(66556008)(8676002)(966005)(66946007)(8936002)(81156014)(956004)(5660300002)(6666004)(1076003)(6506007)(4326008)(6512007)(316002)(2906002)(26005)(186003)(86362001)(6916009)(16526019)(52116002)(36756003)(6486002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 3il58ynNJEM01poONz1KQrd8513WnJwSZr3C9IuhDyVrOXl345bJA2jUYQNqqTJshvDXcAj7Qe5n8jrAxB1GZh5yzUqrQz3dHqYbPi3Y6AmZmiqZ2aPWsVLPyXtAa1p9ZYXbwjT0L6qop0phtYtyvXUZzRpzWjjlUxcHx7Kzmm8GuKYhjBhbl0f2ETh0c+4oaekpkYpSdhjUiavO3odUjs2fAihyhRVDbTJq9EsaCOyBKmBaE5tICAjVj9VUhm/9pAOB4fz2UT4dtzLWxKbLM0g6sTPxmTu9pk4/RtQ3AEculnrZE3bKMPXjbI9P8jwV5tvSHvvdm2uc6swy7hwnsRgR7KhFWs5xUVoRFh7k2vlf85ZsSceAu2cpcYeZd6Td3uJFIVgWNZV+TJPbPvi+J2CmYETfRFlIqqi15rwf9svnWs3gTfaDLc1YPZLBjHAnV8NR6Tniwe08rln3Q7U8iA9MtoC/VJCys1yXBOA5H4tMUyZZpFoxliZGN0nTzU2TXve/VgRLar+n7+hZyPPUEQ==
-X-MS-Exchange-AntiSpam-MessageData: F1YULWYBO4ANlKul/kLtlqyAk++GJeZ9y4J9hmVue28ut0rrPvtvENFnMshXzBU3lAY/MXBiVUzoE00fGxyrrTtEA7q981yik4njVaDWqW0WdipchVBph4lziK5gxxPhHDSsvxbpQ6cexfbhRJJFoQ==
-X-MS-Exchange-CrossTenant-Network-Message-Id: ecd90d01-9b4d-4aab-fab0-08d7e004592e
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Apr 2020 23:42:37.8835 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 1UmOOoB2j/oCnE5dpWRKVfcH3o8KgwoOluyJBrPRamrsc+1RecSBfEt9jElUozr79bnJKlo3Jv2hW7J6cDGt+w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR0201MB3401
-X-OriginatorOrg: quicinc.com
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 199.106.114.39
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="8/pVXlBMPtxfSuJG"
+Content-Disposition: inline
+In-Reply-To: <20200412223619.11284-2-f4bug@amsat.org>
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 203.11.71.1
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -157,153 +88,384 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: apazos@quicinc.org, qemu-arm@nongnu.org, richard.henderson@linaro.org
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org,
+ Alistair Francis <Alistair.Francis@wdc.com>, Max Reitz <mreitz@redhat.com>,
+ qemu-block@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, qemu-ppc@nongnu.org,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Xie Changlong <xiechanglong.d@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ qemu-riscv@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ Wen Congyang <wencongyang2@huawei.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7VV768V4pKgc
+X-TUID: PJqzINJIFgQW
 
-Signed-off-by: Stephen Long <steplong@quicinc.com>
----
-Submitting this for early review. I'm working with Richard on SVE2 support for
-qemu. I'll be attempting to tackle the insns in the 'SVE2 integer add/subtract
-narrow high part' category next [1].
 
-[1] ISA manual: https://static.docs.arm.com/ddi0602/d/ISA_A64_xml_futureA-2019-12_OPT.pdf (page 2950)
+--8/pVXlBMPtxfSuJG
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
- target/arm/helper-sve.h    | 10 +++++++++
- target/arm/sve.decode      |  5 +++++
- target/arm/sve_helper.c    | 29 +++++++++++++++++++++++++
- target/arm/translate-sve.c | 43 ++++++++++++++++++++++++++++++++++++++
- 4 files changed, 87 insertions(+)
+On Mon, Apr 13, 2020 at 12:35:56AM +0200, Philippe Mathieu-Daud=E9 wrote:
+> Fixes the following coccinelle warnings:
+>=20
+>   $ spatch --sp-file --verbose-parsing  ... \
+>       scripts/coccinelle/remove_local_err.cocci
+>   ...
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/ppc/=
+translate_init.inc.c:5213
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/ppc/=
+translate_init.inc.c:5261
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:166
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:167
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:169
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:170
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:171
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:172
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/micr=
+oblaze/cpu.c:173
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5787
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5789
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5800
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5801
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5802
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5804
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5805
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:5806
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/i386=
+/cpu.c:6329
+>   SUSPICIOUS: a \ character appears outside of a #define at ./hw/sd/sdhci=
+=2Ec:1133
+>   SUSPICIOUS: a \ character appears outside of a #define at ./hw/scsi/scs=
+i-disk.c:3081
+>   SUSPICIOUS: a \ character appears outside of a #define at ./hw/net/virt=
+io-net.c:1529
+>   SUSPICIOUS: a \ character appears outside of a #define at ./hw/riscv/si=
+five_u.c:468
+>   SUSPICIOUS: a \ character appears outside of a #define at ./dump/dump.c=
+:1895
+>   SUSPICIOUS: a \ character appears outside of a #define at ./block/vhdx.=
+c:2209
+>   SUSPICIOUS: a \ character appears outside of a #define at ./block/vhdx.=
+c:2215
+>   SUSPICIOUS: a \ character appears outside of a #define at ./block/vhdx.=
+c:2221
+>   SUSPICIOUS: a \ character appears outside of a #define at ./block/vhdx.=
+c:2222
+>   SUSPICIOUS: a \ character appears outside of a #define at ./block/repli=
+cation.c:172
+>   SUSPICIOUS: a \ character appears outside of a #define at ./block/repli=
+cation.c:173
+>=20
+> Reviewed-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 5dd880cf6d..2077df9a95 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -2516,6 +2516,16 @@ DEF_HELPER_FLAGS_3(sve2_uqrshrnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
- DEF_HELPER_FLAGS_3(sve2_uqrshrnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
- DEF_HELPER_FLAGS_3(sve2_uqrshrnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
- 
-+DEF_HELPER_FLAGS_5(sve2_match_zpzz_b, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_match_zpzz_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_5(sve2_nmatch_zpzz_b, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_nmatch_zpzz_h, TCG_CALL_NO_RWG,
-+                   void, ptr, ptr, ptr, ptr, i32)
-+
- DEF_HELPER_FLAGS_6(sve2_faddp_zpzz_h, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_6(sve2_faddp_zpzz_s, TCG_CALL_NO_RWG,
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 374e47fb05..652668df02 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -1305,6 +1305,11 @@ UQSHRNT         01000101 .. 1 ..... 00 1101 ..... .....  @rd_rn_tszimm_shr
- UQRSHRNB        01000101 .. 1 ..... 00 1110 ..... .....  @rd_rn_tszimm_shr
- UQRSHRNT        01000101 .. 1 ..... 00 1111 ..... .....  @rd_rn_tszimm_shr
- 
-+### SVE2 Character Match
-+
-+MATCH           01000101 .. 1 ..... 100 ... ..... 0 .... @pd_pg_rn_rm
-+NMATCH          01000101 .. 1 ..... 100 ... ..... 1 .... @pd_pg_rn_rm
-+
- ## SVE2 floating-point pairwise operations
- 
- FADDP           01100100 .. 010 00 0 100 ... ..... ..... @rdn_pg_rm
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index b68f62cd7f..c75258b56d 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -6890,3 +6890,32 @@ DO_ST1_ZPZ_D(dd_be, zd, MO_64)
- 
- #undef DO_ST1_ZPZ_S
- #undef DO_ST1_ZPZ_D
-+
-+#define DO_ZPZZ_CHAR_MATCH(NAME, TYPE, H, EQUALS)                            \
-+void HELPER(NAME)(void *vd, void *vn, void *vm, void *vg, uint32_t desc)     \
-+{                                                                            \
-+    intptr_t i, opr_sz = simd_oprsz(desc);                                   \
-+    for (i = 0; i < opr_sz; i += sizeof(TYPE)) {                             \
-+        uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));                      \
-+        uint16_t *pd = (uint16_t *)(vd + H1_2(i >> 3));                      \
-+        *pd = (*pd & ~1) | ((0 & EQUALS) | (1 & !EQUALS));                   \
-+        if (pg & 1) {                                                        \
-+            TYPE nn = *(TYPE *)(vn + H(i));                                  \
-+            for (intptr_t j = 0; j < 16; j += sizeof(TYPE)) {                \
-+                TYPE mm = *(TYPE *)(vm + H(i * 16 + j));                     \
-+                bool eq = nn == mm;                                          \
-+                if ((eq && EQUALS) || (!eq && !EQUALS)) {                    \
-+                    *pd = (*pd & ~1) | ((1 & EQUALS) | (0 & !EQUALS));       \
-+                }                                                            \
-+            }                                                                \
-+        }                                                                    \
-+    }                                                                        \
-+}
-+
-+DO_ZPZZ_CHAR_MATCH(sve2_match_zpzz_b, uint8_t, H1, true)
-+DO_ZPZZ_CHAR_MATCH(sve2_match_zpzz_h, uint16_t, H1_2, true)
-+
-+DO_ZPZZ_CHAR_MATCH(sve2_nmatch_zpzz_b, uint8_t, H1, false)
-+DO_ZPZZ_CHAR_MATCH(sve2_nmatch_zpzz_h, uint16_t, H1_2, false)
-+
-+#undef DO_ZPZZ_CHAR_MATCH
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 07a2040208..7175148bfd 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -7246,6 +7246,49 @@ static bool trans_UQRSHRNT(DisasContext *s, arg_rri_esz *a)
-     return do_sve2_shr_narrow(s, a, ops);
- }
- 
-+static bool do_sve2_zpzz_char_match(DisasContext *s, arg_rprr_esz *a,
-+                                    gen_helper_gvec_4 *fn)
-+{
-+    if (!dc_isar_feature(aa64_sve2, s)) {
-+        return false;
-+    }
-+    if (fn == NULL) {
-+        return false;
-+    }
-+    if (sve_access_check(s)) {
-+        unsigned vsz = vec_full_reg_size(s);
-+        unsigned psz = pred_full_reg_size(s);
-+        int dofs = pred_full_reg_offset(s, a->rd);
-+        int nofs = vec_full_reg_offset(s, a->rn);
-+        int mofs = vec_full_reg_offset(s, a->rm);
-+        int gofs = pred_full_reg_offset(s, a->pg);
-+
-+        /* Save a copy if the destination overwrites the guarding predicate */
-+        int tofs = gofs;
-+        if (a->rd == a->pg) {
-+            tofs = offsetof(CPUARMState, vfp.preg_tmp);
-+            tcg_gen_gvec_mov(0, tofs, gofs, psz, psz);
-+        }
-+
-+        tcg_gen_gvec_4_ool(dofs, nofs, mofs, gofs, vsz, vsz, 0, fn);
-+        do_predtest(s, dofs, tofs, psz / 8);
-+    }
-+    return true;
-+}
-+
-+#define DO_SVE2_ZPZZ_CHAR_MATCH(NAME, name)                                 \
-+static bool trans_##NAME(DisasContext *s, arg_rprr_esz *a)                  \
-+{                                                                           \
-+    static gen_helper_gvec_4 * const fns[4] = {                             \
-+        gen_helper_sve2_##name##_zpzz_b, gen_helper_sve2_##name##_zpzz_h,   \
-+        NULL,                           NULL                                \
-+    };                                                                      \
-+    return do_sve2_zpzz_char_match(s, a, fns[a->esz]);                      \
-+}
-+
-+DO_SVE2_ZPZZ_CHAR_MATCH(MATCH, match)
-+DO_SVE2_ZPZZ_CHAR_MATCH(NMATCH, nmatch)
-+
- static bool do_sve2_zpzz_fp(DisasContext *s, arg_rprr_esz *a,
-                             gen_helper_gvec_4_ptr *fn)
- {
--- 
-2.17.1
+ppc parts
 
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
+> ---
+>  block/replication.c             |  4 ++--
+>  block/vhdx.c                    |  8 ++++----
+>  dump/dump.c                     |  2 +-
+>  hw/net/virtio-net.c             |  2 +-
+>  hw/riscv/sifive_u.c             |  2 +-
+>  hw/scsi/scsi-disk.c             |  2 +-
+>  hw/sd/sdhci.c                   |  2 +-
+>  target/i386/cpu.c               | 18 +++++++++---------
+>  target/microblaze/cpu.c         | 14 +++++++-------
+>  target/ppc/translate_init.inc.c |  4 ++--
+>  10 files changed, 29 insertions(+), 29 deletions(-)
+>=20
+> diff --git a/block/replication.c b/block/replication.c
+> index da013c2041..971f0fe266 100644
+> --- a/block/replication.c
+> +++ b/block/replication.c
+> @@ -172,8 +172,8 @@ static void replication_child_perm(BlockDriverState *=
+bs, BdrvChild *c,
+>      if ((bs->open_flags & (BDRV_O_INACTIVE | BDRV_O_RDWR)) =3D=3D BDRV_O=
+_RDWR) {
+>          *nperm |=3D BLK_PERM_WRITE;
+>      }
+> -    *nshared =3D BLK_PERM_CONSISTENT_READ \
+> -               | BLK_PERM_WRITE \
+> +    *nshared =3D BLK_PERM_CONSISTENT_READ
+> +               | BLK_PERM_WRITE
+>                 | BLK_PERM_WRITE_UNCHANGED;
+>      return;
+>  }
+> diff --git a/block/vhdx.c b/block/vhdx.c
+> index 33e57cd656..e16fdc2f2d 100644
+> --- a/block/vhdx.c
+> +++ b/block/vhdx.c
+> @@ -2206,20 +2206,20 @@ static QemuOptsList vhdx_create_opts =3D {
+>             .name =3D VHDX_BLOCK_OPT_BLOCK_SIZE,
+>             .type =3D QEMU_OPT_SIZE,
+>             .def_value_str =3D stringify(0),
+> -           .help =3D "Block Size; min 1MB, max 256MB. " \
+> +           .help =3D "Block Size; min 1MB, max 256MB. "
+>                     "0 means auto-calculate based on image size."
+>         },
+>         {
+>             .name =3D BLOCK_OPT_SUBFMT,
+>             .type =3D QEMU_OPT_STRING,
+> -           .help =3D "VHDX format type, can be either 'dynamic' or 'fixe=
+d'. "\
+> +           .help =3D "VHDX format type, can be either 'dynamic' or 'fixe=
+d'. "
+>                     "Default is 'dynamic'."
+>         },
+>         {
+>             .name =3D VHDX_BLOCK_OPT_ZERO,
+>             .type =3D QEMU_OPT_BOOL,
+> -           .help =3D "Force use of payload blocks of type 'ZERO'. "\
+> -                   "Non-standard, but default.  Do not set to 'off' when=
+ "\
+> +           .help =3D "Force use of payload blocks of type 'ZERO'. "
+> +                   "Non-standard, but default.  Do not set to 'off' when=
+ "
+>                     "using 'qemu-img convert' with subformat=3Ddynamic."
+>         },
+>         { NULL }
+> diff --git a/dump/dump.c b/dump/dump.c
+> index 22ed1d3b0d..248ea06370 100644
+> --- a/dump/dump.c
+> +++ b/dump/dump.c
+> @@ -1892,7 +1892,7 @@ static void dump_process(DumpState *s, Error **errp)
+>      result =3D qmp_query_dump(NULL);
+>      /* should never fail */
+>      assert(result);
+> -    qapi_event_send_dump_completed(result, !!local_err, (local_err ? \
+> +    qapi_event_send_dump_completed(result, !!local_err, (local_err ?
+>                                     error_get_pretty(local_err) : NULL));
+>      qapi_free_DumpQueryResult(result);
+> =20
+> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+> index a46e3b37a7..eddfa7f923 100644
+> --- a/hw/net/virtio-net.c
+> +++ b/hw/net/virtio-net.c
+> @@ -1526,7 +1526,7 @@ static void virtio_net_rsc_extract_unit6(VirtioNetR=
+scChain *chain,
+>                                   + sizeof(struct eth_header));
+>      unit->ip =3D ip6;
+>      unit->ip_plen =3D &(ip6->ip6_ctlun.ip6_un1.ip6_un1_plen);
+> -    unit->tcp =3D (struct tcp_header *)(((uint8_t *)unit->ip)\
+> +    unit->tcp =3D (struct tcp_header *)(((uint8_t *)unit->ip)
+>                                          + sizeof(struct ip6_header));
+>      unit->tcp_hdrlen =3D (htons(unit->tcp->th_offset_flags) & 0xF000) >>=
+ 10;
+> =20
+> diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
+> index 56351c4faa..998666c91f 100644
+> --- a/hw/riscv/sifive_u.c
+> +++ b/hw/riscv/sifive_u.c
+> @@ -465,7 +465,7 @@ static void riscv_sifive_u_machine_instance_init(Obje=
+ct *obj)
+>      object_property_add_bool(obj, "start-in-flash", sifive_u_get_start_i=
+n_flash,
+>                               sifive_u_set_start_in_flash, NULL);
+>      object_property_set_description(obj, "start-in-flash",
+> -                                    "Set on to tell QEMU's ROM to jump t=
+o " \
+> +                                    "Set on to tell QEMU's ROM to jump t=
+o "
+>                                      "flash. Otherwise QEMU will jump to =
+DRAM",
+>                                      NULL);
+>  }
+> diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
+> index 1c0cb63a6f..e5bcd0baf8 100644
+> --- a/hw/scsi/scsi-disk.c
+> +++ b/hw/scsi/scsi-disk.c
+> @@ -3078,7 +3078,7 @@ static const TypeInfo scsi_cd_info =3D {
+> =20
+>  #ifdef __linux__
+>  static Property scsi_block_properties[] =3D {
+> -    DEFINE_BLOCK_ERROR_PROPERTIES(SCSIDiskState, qdev.conf),         \
+> +    DEFINE_BLOCK_ERROR_PROPERTIES(SCSIDiskState, qdev.conf),
+>      DEFINE_PROP_DRIVE("drive", SCSIDiskState, qdev.conf.blk),
+>      DEFINE_PROP_BOOL("share-rw", SCSIDiskState, qdev.conf.share_rw, fals=
+e),
+>      DEFINE_PROP_UINT16("rotation_rate", SCSIDiskState, rotation_rate, 0),
+> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+> index de63ffb037..70531ad360 100644
+> --- a/hw/sd/sdhci.c
+> +++ b/hw/sd/sdhci.c
+> @@ -1130,7 +1130,7 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t v=
+al, unsigned size)
+> =20
+>          /* Limit block size to the maximum buffer size */
+>          if (extract32(s->blksize, 0, 12) > s->buf_maxsz) {
+> -            qemu_log_mask(LOG_GUEST_ERROR, "%s: Size 0x%x is larger than=
+ " \
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: Size 0x%x is larger than=
+ "
+>                            "the maximum buffer 0x%x", __func__, s->blksiz=
+e,
+>                            s->buf_maxsz);
+> =20
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index 90ffc5f3b1..9c256ab159 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -5784,9 +5784,9 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t index=
+, uint32_t count,
+>              host_cpuid(index, 0, eax, ebx, ecx, edx);
+>              break;
+>          }
+> -        *eax =3D (L1_DTLB_2M_ASSOC << 24) | (L1_DTLB_2M_ENTRIES << 16) |=
+ \
+> +        *eax =3D (L1_DTLB_2M_ASSOC << 24) | (L1_DTLB_2M_ENTRIES << 16) |
+>                 (L1_ITLB_2M_ASSOC <<  8) | (L1_ITLB_2M_ENTRIES);
+> -        *ebx =3D (L1_DTLB_4K_ASSOC << 24) | (L1_DTLB_4K_ENTRIES << 16) |=
+ \
+> +        *ebx =3D (L1_DTLB_4K_ASSOC << 24) | (L1_DTLB_4K_ENTRIES << 16) |
+>                 (L1_ITLB_4K_ASSOC <<  8) | (L1_ITLB_4K_ENTRIES);
+>          *ecx =3D encode_cache_cpuid80000005(env->cache_info_amd.l1d_cach=
+e);
+>          *edx =3D encode_cache_cpuid80000005(env->cache_info_amd.l1i_cach=
+e);
+> @@ -5797,13 +5797,13 @@ void cpu_x86_cpuid(CPUX86State *env, uint32_t ind=
+ex, uint32_t count,
+>              host_cpuid(index, 0, eax, ebx, ecx, edx);
+>              break;
+>          }
+> -        *eax =3D (AMD_ENC_ASSOC(L2_DTLB_2M_ASSOC) << 28) | \
+> -               (L2_DTLB_2M_ENTRIES << 16) | \
+> -               (AMD_ENC_ASSOC(L2_ITLB_2M_ASSOC) << 12) | \
+> +        *eax =3D (AMD_ENC_ASSOC(L2_DTLB_2M_ASSOC) << 28) |
+> +               (L2_DTLB_2M_ENTRIES << 16) |
+> +               (AMD_ENC_ASSOC(L2_ITLB_2M_ASSOC) << 12) |
+>                 (L2_ITLB_2M_ENTRIES);
+> -        *ebx =3D (AMD_ENC_ASSOC(L2_DTLB_4K_ASSOC) << 28) | \
+> -               (L2_DTLB_4K_ENTRIES << 16) | \
+> -               (AMD_ENC_ASSOC(L2_ITLB_4K_ASSOC) << 12) | \
+> +        *ebx =3D (AMD_ENC_ASSOC(L2_DTLB_4K_ASSOC) << 28) |
+> +               (L2_DTLB_4K_ENTRIES << 16) |
+> +               (AMD_ENC_ASSOC(L2_ITLB_4K_ASSOC) << 12) |
+>                 (L2_ITLB_4K_ENTRIES);
+>          encode_cache_cpuid80000006(env->cache_info_amd.l2_cache,
+>                                     cpu->enable_l3_cache ?
+> @@ -6326,7 +6326,7 @@ static void x86_cpu_expand_features(X86CPU *cpu, Er=
+ror **errp)
+>               */
+>              env->features[w] |=3D
+>                  x86_cpu_get_supported_feature_word(w, cpu->migratable) &
+> -                ~env->user_features[w] & \
+> +                ~env->user_features[w] &
+>                  ~feature_word_info[w].no_autoenable_flags;
+>          }
+>      }
+> diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+> index a2c2f271df..c9cf2364ca 100644
+> --- a/target/microblaze/cpu.c
+> +++ b/target/microblaze/cpu.c
+> @@ -163,14 +163,14 @@ static void mb_cpu_realizefn(DeviceState *dev, Erro=
+r **errp)
+> =20
+>      qemu_init_vcpu(cs);
+> =20
+> -    env->pvr.regs[0] =3D PVR0_USE_EXC_MASK \
+> -                       | PVR0_USE_ICACHE_MASK \
+> +    env->pvr.regs[0] =3D PVR0_USE_EXC_MASK
+> +                       | PVR0_USE_ICACHE_MASK
+>                         | PVR0_USE_DCACHE_MASK;
+> -    env->pvr.regs[2] =3D PVR2_D_OPB_MASK \
+> -                        | PVR2_D_LMB_MASK \
+> -                        | PVR2_I_OPB_MASK \
+> -                        | PVR2_I_LMB_MASK \
+> -                        | PVR2_FPU_EXC_MASK \
+> +    env->pvr.regs[2] =3D PVR2_D_OPB_MASK
+> +                        | PVR2_D_LMB_MASK
+> +                        | PVR2_I_OPB_MASK
+> +                        | PVR2_I_LMB_MASK
+> +                        | PVR2_FPU_EXC_MASK
+>                          | 0;
+> =20
+>      version =3D cpu->cfg.version ? cpu->cfg.version : DEFAULT_CPU_VERSIO=
+N;
+> diff --git a/target/ppc/translate_init.inc.c b/target/ppc/translate_init.=
+inc.c
+> index e853164a86..fd763e588e 100644
+> --- a/target/ppc/translate_init.inc.c
+> +++ b/target/ppc/translate_init.inc.c
+> @@ -5210,7 +5210,7 @@ POWERPC_FAMILY(e5500)(ObjectClass *oc, void *data)
+>                         PPC_FLOAT_STFIWX | PPC_WAIT |
+>                         PPC_MEM_TLBSYNC | PPC_TLBIVAX | PPC_MEM_SYNC |
+>                         PPC_64B | PPC_POPCNTB | PPC_POPCNTWD;
+> -    pcc->insns_flags2 =3D PPC2_BOOKE206 | PPC2_PRCNTL | PPC2_PERM_ISA206=
+ | \
+> +    pcc->insns_flags2 =3D PPC2_BOOKE206 | PPC2_PRCNTL | PPC2_PERM_ISA206=
+ |
+>                          PPC2_FP_CVT_S64;
+>      pcc->msr_mask =3D (1ull << MSR_CM) |
+>                      (1ull << MSR_GS) |
+> @@ -5258,7 +5258,7 @@ POWERPC_FAMILY(e6500)(ObjectClass *oc, void *data)
+>                         PPC_FLOAT_STFIWX | PPC_WAIT |
+>                         PPC_MEM_TLBSYNC | PPC_TLBIVAX | PPC_MEM_SYNC |
+>                         PPC_64B | PPC_POPCNTB | PPC_POPCNTWD | PPC_ALTIVE=
+C;
+> -    pcc->insns_flags2 =3D PPC2_BOOKE206 | PPC2_PRCNTL | PPC2_PERM_ISA206=
+ | \
+> +    pcc->insns_flags2 =3D PPC2_BOOKE206 | PPC2_PRCNTL | PPC2_PERM_ISA206=
+ |
+>                          PPC2_FP_CVT_S64 | PPC2_ATOMIC_ISA206;
+>      pcc->msr_mask =3D (1ull << MSR_CM) |
+>                      (1ull << MSR_GS) |
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--8/pVXlBMPtxfSuJG
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl6VGx4ACgkQbDjKyiDZ
+s5L2ghAAnyJgldhUi/2NP/7N9REMq/gw8OjrPLHhPGhQzihy9bNwi8gscg8Owqd4
+3NR0oPhBfFWik2AWMDUxi+Wc250kfY4CxOhqjTqi/etVoNp3y2d4oyX3V6GCH2PQ
+32q7l0Twp14zVv1sr9LVa9ahffJ07y8kLiOfYDJX8AJ1JlwOUZX6Wcuyuhm/M+qg
+0ZG/LPdITRInXHFJHKQoNaGgKcVuuh74bue/WBtRccsM7WyCmEvG34wv6p1Dnoqq
+PIaAFKlkStYFQ92yYI85uuJFGbM6QbIdLSpbpZ5ukOZL5AKnrr+it24Jlpl3KxoK
+GqWxdzVU3+/ii8TcjFleRG5MnGRaVKDLkxYZcUoCQJL0ZofwqxyPuOKnVkN86JLw
+VwTANI9WHIPGZeDSoFICHuEuIuV1lfSYJ3uAuRfMMyjA/39Xh08WJPOOtHjMOODh
+yJ7H/8jt9abJWe+kA/eCcxASVRFAM5uJU0J1tVCzHPRLj2Eu45dcS/w+VABNkskJ
+6jBL5MVYT0s0UR2fd50ERzE6SV/H97GI1wX8XuRsuxoHLE63UQ5Cg74Iqx5wB66c
+7lNN7+fTxoGWD2OLQWkCl3+FBgHkksYtyxvPEHARuLfh9FQ2he67ZFwisIqatco1
+hAxWsHbXqbci7U6PJ1AItp+bAAVBLgZYSkhmJtYN7r0kRafKjY8=
+=1Q0S
+-----END PGP SIGNATURE-----
+
+--8/pVXlBMPtxfSuJG--

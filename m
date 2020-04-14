@@ -1,103 +1,100 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4041905lfm;
-        Mon, 13 Apr 2020 10:55:56 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJX0qbl07wF/F3VZdXTqHu6PwgCReChxlQzB1Cg379ESCUlSLGAjytvm3JLhS2na4XlBK3l
-X-Received: by 2002:ac8:514d:: with SMTP id h13mr12628001qtn.226.1586800556356;
-        Mon, 13 Apr 2020 10:55:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586800556; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4786229lfm;
+        Tue, 14 Apr 2020 02:45:39 -0700 (PDT)
+X-Google-Smtp-Source: APiQypK7kL025ArPItGUdkEGB8EMirRf6Dm11AmZ+XzvHritp0Bvd3hTzSo1nR/LhwkaEPkDOjCa
+X-Received: by 2002:a0c:a899:: with SMTP id x25mr21461846qva.232.1586857539450;
+        Tue, 14 Apr 2020 02:45:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586857539; cv=none;
         d=google.com; s=arc-20160816;
-        b=BZ0qCMF5+1N3E4y5JCsmOniO9goi+LH43ZDkI9mOeLR62RAg+jugbBvbvB67ht9FSH
-         f8viZDHlHUL8b7N/ROKV4veblbzmxeSM/La0tLMKm/xgx6LDlRzVb26VfZ9QO4UPj3bH
-         Fdg9HOq100vTPWDXiwOVmD6i9VJv27q1mZ9gtGZbxai2Bgq8tyqf0EUYqm8xMBTgTmzI
-         uKJxbHRwQJn5VBff86k7zI+62cbbBGpzmqh52MyntDulIk96ba4kAXsi8wfiQaEM7M+b
-         232ul0euP2mvFZvfe092zCgOACBHneKOzGEtE+v7KFeBPxIQdX+Ucj/LilartKW6Lfn8
-         8tRQ==
+        b=WLXFEp0H/BPVEbT05yu1bHGwlP4hyNMuOoBkI4lJ5JLMuvgJSu7Mw0XjVcL4g7RyVk
+         6uhPNG/ggQHJLpned44+9clWN4/8XX2JLu0zoCL3FdXCxpYU2cKkCcflH9wJ8uW5kCKH
+         aN6pDr7KWWHhkg0d10m6lEG0OWbY56vjwnTw0JOT8jEl/T/T0yuiSfAuptQqWTeAI9L2
+         OuZlcFZeDZTZmfOzmqFondoRVJd93Ks8/DBflsPT10JUPtrfOAq3Hnv7qQO21TXrRS3N
+         fwHycfpb5fAVdvO2sqMLYBeE8BPMCgmqb24XCMVvN+GHj8VHAW6X8JxUKPW32iLR/IgX
+         Ejdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=xO3UzWfTGH5oRZBrcP5KEcJ/+eQcg1votYrluf9FII0=;
-        b=FOmaKXnH404neRWoEYnjC26CVkgXli/rPdbfZp5sfMf1/oWdPZp7vSm5vOrdIRQM77
-         79VxbfBThrpiwBSsFeUEYL2mp4u1JPkRD+RzZkaYGLmnkQusJ+hYzj/6aviVmy1a7MVT
-         nTnnQIzJgEU34AJhmydUjK40rNIau0WNeYT5qSB1ovHO0L4SKIDCqJLvoKHqyZKRme3z
-         0IscCgEnW1aJaWp3OntLd51MTbBRDkDQIB6mJpaJw3xZ2nY5Jy7YoNLe2MVQtYPfjFv9
-         qtLT/+/17OtwfFGABJ/lwWclWqOmHG4X640DtUHPlijCsV3wl0xTexceK5kmmC3xEX0+
-         lsiQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date:dkim-signature;
+        bh=XqQcjBaUA4/pWS6QQM0cWlmT+P/BcxGgavR3JzzWkIM=;
+        b=U3K9uj0J8tTAh5AutKXBTPTJW8WwL7CrsbUXvggw1tmvhWEkeke+gnty8hJ9U1d7Mm
+         mCPFQl/R4RvZjKk72d2g9Fo0etMG7CLo4q6tKk4gubM5Bi7xD9HoEHcgJKx8lJ27PDiE
+         0Qv6tMYfdhIErgKF4Z3Xqt2R9N1U58UITrGA3BTnjanqq/6wLDj0TtUCgwXQAxhf9cCN
+         gfDvpZdqRSV4Unbm6uQzfHjqda2u6yMEeh8CF0Prz7XcNawUzdLnHfilGxT20//UoYeP
+         /0BscJ8YxbcEswo3rX79jslShKbq6IxEuCHnZcZ0D3HWMcqmKiS5qYoNNHxgKrn6uu6T
+         p5EQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=taQg3IC5;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cnpHjZh2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v20si5769451qvh.29.2020.04.13.10.55.56
+        by mx.google.com with ESMTPS id c23si7419196qkb.380.2020.04.14.02.45.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Apr 2020 10:55:56 -0700 (PDT)
+        Tue, 14 Apr 2020 02:45:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=taQg3IC5;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cnpHjZh2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47206 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55064 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jO3JL-0004Os-PY
-	for alex.bennee@linaro.org; Mon, 13 Apr 2020 13:55:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46204)
+	id 1jOI8Q-0003QE-S2
+	for alex.bennee@linaro.org; Tue, 14 Apr 2020 05:45:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60770)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <rfried.dev@gmail.com>) id 1jO3JB-0004MW-Qw
- for qemu-arm@nongnu.org; Mon, 13 Apr 2020 13:55:46 -0400
+ (envelope-from <cohuck@redhat.com>) id 1jOI8G-0003O2-2e
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 05:45:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rfried.dev@gmail.com>) id 1jO3JA-0002JT-NX
- for qemu-arm@nongnu.org; Mon, 13 Apr 2020 13:55:45 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:35998)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
- id 1jO3J6-0002FT-1L; Mon, 13 Apr 2020 13:55:40 -0400
-Received: by mail-ot1-x341.google.com with SMTP id b13so5710973oti.3;
- Mon, 13 Apr 2020 10:55:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=xO3UzWfTGH5oRZBrcP5KEcJ/+eQcg1votYrluf9FII0=;
- b=taQg3IC5hZ/YPiP+3xBRt7zv/wcDMcmUOchJLje8qUSj2ZQJW3/FHBPFZ/C9ZK74NJ
- roQRXC1OMYyNrgT5irxPj+mqQTxuGdZd7zZEP7JrmFLEWhR8eQsHBE1fUzsmGVstygXA
- yg2n49d6AkEQ/GsS/vzjRCWgb16LHt9drLR/gv+qJ40qIca5+ikV393nViNPxBooFeDn
- 9US/7px/Q4rK+YutjHJM0USWCRfzS9lHA1PkSftqBz5q0v2CB4d5l900Xbia2xY52Upq
- AnamXypzzT/NP3J5sbkBpNPGFltQYXnVq52AjY/HdI6finrFW9ZlpMPyLeJpYUVTDmNL
- glIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=xO3UzWfTGH5oRZBrcP5KEcJ/+eQcg1votYrluf9FII0=;
- b=QGUB4hHvQF7DqhlQmyTsso7GjlEeBAo6N08WSdWRtK8M6DN5YsXPpj8wQcmWs7zgSA
- Gt/P/Ye3N3IhqTEZ5TE5yqDnnG1cpcvP2ZiroyRoeTKScZu/6+eBmc+aVR4Gp9cmGxX+
- a993bDe6hNb/uD/M0OH9n8bu5cBbQvdBPj36f4a+ou+5IQEuIXqQTpVyAJXE/V85+IT8
- cD2aWh7MWUUq24srkB6p8+UuCUm4tsdvK1io6rTxBIYOOyFXbYLNZmoyq2MOBdtzYOw0
- jTjC601hQVWgymuHErEcb9dU3AIBbIbDlr3u17V+74yXLTqWHN/1/yMCkegKX5G4BrDM
- WIng==
-X-Gm-Message-State: AGi0PuaUsTNSuSev9St45Lv4VYlVXoRnxVjI0fc7BqN1ojbMdJ6iqSxH
- udmsea/KolcCFwofCuPUa+Hokfwb70QQFZsnlOQ=
-X-Received: by 2002:a9d:3f2:: with SMTP id f105mr16110555otf.187.1586800538869; 
- Mon, 13 Apr 2020 10:55:38 -0700 (PDT)
+ (envelope-from <cohuck@redhat.com>) id 1jOI8E-0001fC-J6
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 05:45:27 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:41204
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1jOI8E-0001ey-Fz
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 05:45:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1586857526;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=XqQcjBaUA4/pWS6QQM0cWlmT+P/BcxGgavR3JzzWkIM=;
+ b=cnpHjZh27dM/73VANj+eH8Z8NhKkzeaaFerTwBFEkqTQYTTxW5R1fmH7amMI5StjAxI3eQ
+ 3EvJJpiafT5SRPYBPHeAzM00+DaGIgDK3jZF8fUiko+Y59PHfd4ERFBpzUBmcEOJHxESM3
+ 3H8CeMKmR/GrJvt7NgMpTU6rU93A7/4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-403-ZJN9VRskMtK3FqqwWJ6GCA-1; Tue, 14 Apr 2020 05:45:22 -0400
+X-MC-Unique: ZJN9VRskMtK3FqqwWJ6GCA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EE6C2107ACC4;
+ Tue, 14 Apr 2020 09:45:18 +0000 (UTC)
+Received: from gondolin (ovpn-113-32.ams2.redhat.com [10.36.113.32])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 52EA59F9A1;
+ Tue, 14 Apr 2020 09:45:00 +0000 (UTC)
+Date: Tue, 14 Apr 2020 11:44:57 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Subject: Re: [PATCH-for-5.1 2/3] various: Remove unnecessary OBJECT() cast
+Message-ID: <20200414114457.06e15bcb.cohuck@redhat.com>
+In-Reply-To: <20200412210954.32313-3-f4bug@amsat.org>
+References: <20200412210954.32313-1-f4bug@amsat.org>
+ <20200412210954.32313-3-f4bug@amsat.org>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-References: <20190615051559.13767-1-rfried.dev@gmail.com>
- <d87ea542-7ecc-4fb1-ac1d-929825d23a8a@redhat.com>
- <E1523CDB-895A-4EC7-908F-8A3A3717353C@gmail.com>
-In-Reply-To: <E1523CDB-895A-4EC7-908F-8A3A3717353C@gmail.com>
-From: Ramon Fried <rfried.dev@gmail.com>
-Date: Mon, 13 Apr 2020 20:55:29 +0300
-Message-ID: <CAGi-RUJ_0LBfAe6eVXRrhqpW0EQH97TtdvjaQnXNY0Ts73zJCg@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v3] net: cadence_gem: fix compilation error
- when debug is on
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,96 +106,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ BALATON Zoltan <balaton@eik.bme.hu>, Gerd Hoffmann <kraxel@redhat.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
+ Paul Durrant <paul@xen.org>, Markus Armbruster <armbru@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Joel Stanley <joel@jms.id.au>, Anthony Perard <anthony.perard@citrix.com>,
+ xen-devel@lists.xenproject.org, David Gibson <david@gibson.dropbear.id.au>,
+ Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <minyard@acm.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
+ =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@kaod.org>,
+ John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9anMrGb8sF0x
+X-TUID: WdiySCAadsF4
 
-Hi.
-Just noticed that this patch didn't hit master.
-Got lost ?
+On Sun, 12 Apr 2020 23:09:53 +0200
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
 
-Thanks,
-Ramon.
+> The OBJECT() macro is defined as:
+>=20
+>   #define OBJECT(obj) ((Object *)(obj))
+>=20
+> Remove unnecessary OBJECT() casts.
+>=20
+> Patch created mechanically using spatch with this script:
+>=20
+>   @@
+>   typedef Object;
+>   Object *o;
+>   @@
+>   -   OBJECT(o)
+>   +   o
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/core/bus.c                       | 2 +-
+>  hw/ide/ahci-allwinner.c             | 2 +-
+>  hw/ipmi/smbus_ipmi.c                | 2 +-
+>  hw/microblaze/petalogix_ml605_mmu.c | 8 ++++----
+>  hw/s390x/sclp.c                     | 2 +-
+>  monitor/misc.c                      | 3 +--
+>  qom/object.c                        | 4 ++--
+>  7 files changed, 11 insertions(+), 12 deletions(-)
+>=20
 
-On Sat, Jun 15, 2019 at 9:16 AM Ramon Fried <rfried.dev@gmail.com> wrote:
->
->
->
-> On June 15, 2019 8:38:35 AM GMT+03:00, "Philippe Mathieu-Daud=C3=A9" <phi=
-lmd@redhat.com> wrote:
-> >Hi Ramon,
-> >
-> >On 6/15/19 7:15 AM, Ramon Fried wrote:
-> >> defining CADENCE_GEM_ERR_DEBUG causes compilation
-> >> errors, fix that.
-> >>
-> >> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
-> >> ---
-> >> v2: change %lx to HWADDR_PRIx and %lx to %zdx
-> >> v3: change %zdx to %zx
-> >>
-> >>  hw/net/cadence_gem.c | 6 +++---
-> >>  1 file changed, 3 insertions(+), 3 deletions(-)
-> >>
-> >> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> >> index 7f63411430..ecee22525c 100644
-> >> --- a/hw/net/cadence_gem.c
-> >> +++ b/hw/net/cadence_gem.c
-> >> @@ -982,8 +982,8 @@ static ssize_t gem_receive(NetClientState *nc,
-> >const uint8_t *buf, size_t size)
-> >>              return -1;
-> >>          }
-> >>
-> >> -        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy,
-> >rxbufsize),
-> >> -                rx_desc_get_buffer(s->rx_desc[q]));
-> >> +        DB_PRINT("copy %d bytes to 0x%" HWADDR_PRIx "\n",
-> >MIN(bytes_to_copy, rxbufsize),
-> >> +                rx_desc_get_buffer(s, s->rx_desc[q]));
-> >>
-> >>          /* Copy packet data to emulated DMA buffer */
-> >>          address_space_write(&s->dma_as, rx_desc_get_buffer(s,
-> >s->rx_desc[q]) +
-> >> @@ -1156,7 +1156,7 @@ static void gem_transmit(CadenceGEMState *s)
-> >>              if (tx_desc_get_length(desc) > sizeof(tx_packet) -
-> >>                                                 (p - tx_packet)) {
-> >>                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x
-> >space " \
-> >> -                         "0x%x\n", (unsigned)packet_desc_addr,
-> >> +                         "0x%zx\n", (unsigned)packet_desc_addr,
-> >>                           (unsigned)tx_desc_get_length(desc),
-> >>                           sizeof(tx_packet) - (p - tx_packet));
-> >>                  break;
-> >>
-> >
-> >I still get an error when trying to build on 32bit host with
-> >CADENCE_GEM_ERR_DEBUG enabled (pre-existing to your patch):
-> >
-> >  CC      hw/net/cadence_gem.o
-> >./hw/net/cadence_gem.c: In function 'gem_receive':
-> >./hw/net/cadence_gem.c:973:14: error: format '%ld' expects argument of
-> >type 'long int', but argument 4 has type 'size_t {aka unsigned int}'
-> >[-Werror=3Dformat=3D]
-> >    DB_PRINT("config bufsize: %d packet size: %ld\n", rxbufsize, size);
-> >              ^
-> >./hw/net/cadence_gem.c:38:24: note: in definition of macro 'DB_PRINT'
-> >     fprintf(stderr, ## __VA_ARGS__); \
-> >                        ^
-> >cc1: all warnings being treated as errors
-> >./rules.mak:69: recipe for target 'hw/net/cadence_gem.o' failed
-> >make: *** [hw/net/cadence_gem.o] Error 1
-> >
-> >However the 64bit host is indeed fixed, so I'm fine with your patch:
-> >Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> >Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> >
-> >Regards,
-> >
-> >Phil.
-> Thanks!
->
-> --
-> Sent from my Android device with K-9 Mail. Please excuse my brevity.
+s390x part:
+
+Acked-by: Cornelia Huck <cohuck@redhat.com>
+

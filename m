@@ -1,98 +1,173 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4897208lfm;
-        Tue, 14 Apr 2020 04:49:50 -0700 (PDT)
-X-Received: by 2002:aca:3ec6:: with SMTP id l189mr5421511oia.85.1586864989854;
-        Tue, 14 Apr 2020 04:49:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586864989; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4884865lfm;
+        Tue, 14 Apr 2020 04:35:26 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKMRKsLFT7Cx1tdis6NljAv96Vqooax7NVxEM8zXFEswomuuxgOIqBInh36ngTg+N38Qk9f
+X-Received: by 2002:aa7:cb4e:: with SMTP id w14mr5483953edt.168.1586864126206;
+        Tue, 14 Apr 2020 04:35:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586864126; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pshe8cBapxqGL1lcmPUsq2L96aq8H0mkJGta01lAMdvilcN68+2Wi3OCzFpCQpWxhB
-         pfK7C4o7kwHehUcLv3UVGOKfc6TaVpR3+/wlQIRr6pyTEWYcvlSDof7AAoiOQyk5FB86
-         T/2c6wOkUEzB2V5uifeFATiib5SNQSbYP2JOWOH5Jb/wR6ojyMIzXkyn2zILcCIYAsai
-         lTJwCyVOSW1hDrPcwMfVc8/WboiBMPmbTbC2JigSTdFR1cSufsGUGfILKsKOjFiZzPnq
-         vjtpHU/dJoTAaB8Ycai8OoZ93FhicF8uemJoo2qvp4FQK3ZgPMIEvSViB3GUdZ5nw93c
-         Uw9w==
+        b=AQBZvbCvq4aZwRMyfiVATya/x6D5n8lFAHrrkT/2wbe0fLyi3oI+mNiFIqm/obrBdJ
+         lJp+s4swIRrlhPoGxtgI5WHv4zIrkRVQAMLkZ3ar+F2HQo84b6FOd1OXmxB4TylSaeP6
+         DBBnu1lQN02eDv0cZWKSeJMceZPdwrNlbn42I87gDxYGTAohlsQrfmoFwkwR15EkyYeB
+         O3JtTk3CPFGhx7w61AXRgASANKXdgdzUUocYlyMxeMismHioA+Opxr6tB0sqxgVhmfdV
+         XyEwuBO3PTopu5vjA0t3Y+ZPL4ndJDtAWOOtDwyxiPBJW6JxiavBRr/yLA6GVYvHRjAR
+         Bmdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=d3zVjl9tywF+ASgkOfEjaLlahSalUXP0Ec+nQFXkbJ8=;
-        b=NKFTqtYTcd6muzZI2k8M11XObUy5E+cl07klc2mii6WSJoF3TGEsNdC+JuedCHPUKx
-         6q0MGaSbRC5WnXanSJeI2yEZ8lDQ0MZqTEQyEg4vaH5sGzDIt2J6TaXfl0oh84JS3v1w
-         MUAxN+cQOGvcfwdHSLb1FnB6cY9F8qqSP2ou15toQEwdQKencqx0jCdRzo9K9+0pDz5F
-         qHU/bNk1SyJ0RUD3l8z/ZrqvLhHU8FsLGAk0B5bG4GGPa20Nxzll8gKXQuHDRYP7TdlT
-         CyaO9HPO8W15q1uDvkVMFjqhzPgQwwXtzegBDpM0Lj7RjeeD4MH1j7EHUznWdOWmF+/8
-         nAoQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=TkWkv1sSQkb10ESnJ81NX+eXLN9yPeO5ArhBlLlo7kM=;
+        b=0z83q+UWdE3y09fkdqnf4mdzYDw4ws8vJ9LCbInqtqxTknB5Xgw9xXjaltLTCljXQg
+         fUTpDv/y4PWLptnH4LebCJJjn9gDKXAxtrU3razBYKruluXUVwVDrLMdVTk5IvWlyIpl
+         jooikYBzFRLse1XisDGvXqNGip0mP7zwuaoCmNfUG8f3m5NPT6BH/xDPHXZIAzIS+43j
+         hHO/iuOwX9jhewAyOWf+Q5uDVnFZZjgMn2rMfcalV++MRqF8K30bLhJMrGzkquw4TWUG
+         XR1iXWRjxlNSiVgddGtQX0u7SyFW9ELMKkl3A6+OKHE5+bOdo5pQEqpk9orHyaxcFR6v
+         S0Ow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QtflTrt0;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e14sor9031931oti.91.2020.04.14.04.49.49
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g3qI1N+W;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id b1si8707868edh.318.2020.04.14.04.35.25
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 14 Apr 2020 04:49:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 14 Apr 2020 04:35:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QtflTrt0;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=d3zVjl9tywF+ASgkOfEjaLlahSalUXP0Ec+nQFXkbJ8=;
-        b=QtflTrt0/0xZLRr1Rh5ldQ6kvZ8BQRRoRWQKQmjZ5N/mTUA0RyzGAWx8wLkh9dcR2s
-         901RnyLrpzEq2jKrBNaz/M77SjggY88TVjb/lzUFQIUDnoQl9GYBzT2L5WCmmSL6sp/U
-         fz6ksIwNB12grw3c3t+IJxgHWAUwTg4Og/xyutwJ/tSTR2WHaqhIyP7qdb4I3iyfJHHe
-         oelZCwsjqfNAE19t5jgR+YVL0UxAWOoxVZA2YSgs32zuTZDwldjg/FmqrhlnD3d2rCy9
-         gk4iWI8LXgZ1rMMR5M8F5qyDi5YMuprLYicCo1NAw+UjDQrVsXrcy9+bHUVAE2XHv4ZW
-         keHQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g3qI1N+W;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1586864125;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TkWkv1sSQkb10ESnJ81NX+eXLN9yPeO5ArhBlLlo7kM=;
+	b=g3qI1N+WndwWYqYJQt38oWJEWlUKHYiNwTLiHOVj/UNJM5AMndteBpSKBqTZv0AeTjtjz3
+	QT94hQXFr4755O4AqZAzixyKEv3m5OdTPgSNiGhF1DXLWi5DbKE/+kBg0JIVEpxFtAhKqq
+	OP0QmQgQbkQnTBgEWmiwA/4KpnvQgX8=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-171-28zlHIRVOrWwrSRzeWwZhg-1; Tue, 14 Apr 2020 07:35:21 -0400
+X-MC-Unique: 28zlHIRVOrWwrSRzeWwZhg-1
+Received: by mail-wr1-f69.google.com with SMTP id v14so8527118wrq.13
+        for <alex.bennee@linaro.org>; Tue, 14 Apr 2020 04:35:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=d3zVjl9tywF+ASgkOfEjaLlahSalUXP0Ec+nQFXkbJ8=;
-        b=ISrvQp6BJzjz109gMgSIv5UJo4FZB2WmQETCN+8WlgquNqx1pQ8/n5ygniA4gVYOB+
-         Gfsnjlm5Dw8SmqlOdXwjBw4C+52jQjCT/mXxtmEq7yunG8/fIZHVPVSU5kW0bD4o3Hq3
-         v6ez7npROFxs2/Frc4zIByCQPOrPhlCfcE988ta/YEESunP3d+VsKMORz2QS9E+O8XW0
-         jj5KD2qQ4wyQcMLOS05FaK2jS1qCZgsvqnGkrsS6zkwvSo7t+3RECnlOao3T5bgVpDZD
-         TGXac2pgJ5q+XxAcC7ghXwqoq8pUH58MzHlorCK5pVDI2SAkzYJJGYnyviK6Ks3m4kqU
-         Amvg==
-X-Gm-Message-State: AGi0PuYUUHZCXt1U1kP+qGuv7IWZdeM02kCRlPdkuI4hrvBO+N9X7kLx
-	HovP7dH72oayuqp/e8eyKPjNVoka2IB0J459sTkOLbau
-X-Google-Smtp-Source: APiQypKKqPaCN7tn9v84cU2s9U4g/rVcJfhSg148YBIgzaC4FMe7TyeJcn54YMnxoEFToHzoW340sQz9+R7LdiNfkeg=
-X-Received: by 2002:a9d:7349:: with SMTP id l9mr17393031otk.221.1586864989455;
- Tue, 14 Apr 2020 04:49:49 -0700 (PDT)
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=45deY+ympfnEFZqUmSQTtjgToLUZLlw6E2wOzJRdDj4=;
+        b=od/hn2Ykc6D/eCncqbaYjDtJizt6BIAlcWHy8MANhJQZ16a7DcTyYnnHSfja8G8afk
+         BxKdgupYq8tYM8WAyCl8GD9IoXiHz1cm5Ce8jqajY07uM5RfsuRHc30Fqx5bQX5O+Pfr
+         hmDm5eKXXF5jY6KwdMlbdXWn2Tmn+U3ibKkVBToF3nkD4E2qM8wap3ST73OZiAuKUk65
+         iwY5rt/OpyvwDIqKmWrZ5uq85yiYrPntlLSY8UKExjcSptZjU+s2acIAsV7jWqAmxfRb
+         zwbnjNK+g5d4sapc2NH99IllBQ7az+BdD25pgLiEck3dJMxtPB3OGXv84jNqkKKPIwKi
+         e4gA==
+X-Gm-Message-State: AGi0PuaH3RfyCyiUPm/vZKteRIHAyoDmG4c3TQHeaB0sLrMgmJi+b4lF
+	1QxKEHoB8qe/UudnErQE7Kgo5Yd5TiSuGx/8bDUYvOnyN2E3xN7P/L00++dx2yg93nLnewnakwq
+	VysiUHPsUr4rVOcvK
+X-Received: by 2002:a1c:bd8b:: with SMTP id n133mr24582562wmf.175.1586864120306;
+        Tue, 14 Apr 2020 04:35:20 -0700 (PDT)
+X-Received: by 2002:a1c:bd8b:: with SMTP id n133mr24582536wmf.175.1586864120106;
+        Tue, 14 Apr 2020 04:35:20 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net. [83.42.57.116])
+        by smtp.gmail.com with ESMTPSA id h26sm18105559wmb.19.2020.04.14.04.35.18
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 14 Apr 2020 04:35:19 -0700 (PDT)
+Subject: Re: [PATCH-for-5.1] gdbstub: Rename GByteArray variable 'mem_buf' as
+ 'array'
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Stafford Horne <shorne@gmail.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>, qemu-arm@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ David Hildenbrand <david@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Laurent Vivier <laurent@vivier.eu>, Cornelia Huck <cohuck@redhat.com>,
+ qemu-s390x@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
+ Marek Vasut <marex@denx.de>, Aurelien Jarno <aurelien@aurel32.net>,
+ Chris Wulff <crwulff@gmail.com>, Richard Henderson <rth@twiddle.net>,
+ qemu-ppc@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Paolo Bonzini <pbonzini@redhat.com>, Michael Walle <michael@walle.cc>,
+ Max Filippov <jcmvbkbc@gmail.com>
+References: <20200414112849.21787-1-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <09f9ae36-f8e9-8412-cd97-f3f386907b6f@redhat.com>
+Date: Tue, 14 Apr 2020 13:35:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <20200414102427.7459-1-philmd@redhat.com> <CAFEAcA-PyMisjC25CSGyU5-ASjaAd7gQMabzMCR=uvudSBk-Fw@mail.gmail.com>
- <357e2335-b00f-cd28-4ade-d6286ace144f@redhat.com>
-In-Reply-To: <357e2335-b00f-cd28-4ade-d6286ace144f@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 14 Apr 2020 12:49:38 +0100
-Message-ID: <CAFEAcA8BgkqNQToJZy0=SOSxF2QWgxrP79Gj1qaVUm5xdvm65A@mail.gmail.com>
-Subject: Re: [PATCH-for-5.0] gdbstub: Do not use memset() on GByteArray
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Max Filippov <jcmvbkbc@gmail.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20200414112849.21787-1-philmd@redhat.com>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-TUID: M+9AD+AyBTWu
+X-TUID: eOcyrOQeMOq4
 
-On Tue, 14 Apr 2020 at 12:05, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
-> > The other implementation option here would be
-> >
-> >       guint oldlen =3D array->len;
-> >       g_byte_array_set_size(array, oldlen + len);
-> >       memset(array->data + oldlen, 0, len);
->
-> I thought about it but I'd rather not access GByteArray internals.
+On 4/14/20 1:28 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> GByteArray type has should not be treated as a u8[] buffer.
+> The GLib Byte Arrays API should be used instead.
+> Rename the 'mem_buf' variable as 'array' to make it more
+> obvious in the code.
 
-AIUI ->len and ->data are not internals -- they're
-in the documentation as "public fields" and the code
-example for GByteArray directly accesses ->data.
-(Contrast GBytes, where there are no defined public
-fields and instead there are functions g_bytes_get_data
-and g_bytes_get_size.)
+I forgot to mention this variable was used as u8[] buffer prior to=20
+commit a010bdbe719 ("extend GByteArray to read register helpers").
 
-thanks
--- PMM
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> Based-on: <20200414111846.27495-1-philmd@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>   include/exec/gdbstub.h      | 34 +++++++-------
+>   include/hw/core/cpu.h       |  2 +-
+>   target/alpha/cpu.h          |  2 +-
+>   target/arm/cpu.h            |  4 +-
+>   target/cris/cpu.h           |  4 +-
+>   target/hppa/cpu.h           |  2 +-
+>   target/i386/cpu.h           |  2 +-
+>   target/lm32/cpu.h           |  2 +-
+>   target/m68k/cpu.h           |  2 +-
+>   target/microblaze/cpu.h     |  2 +-
+>   target/mips/internal.h      |  2 +-
+>   target/openrisc/cpu.h       |  2 +-
+>   target/ppc/cpu.h            |  4 +-
+>   target/riscv/cpu.h          |  2 +-
+>   target/rx/cpu.h             |  2 +-
+>   target/s390x/internal.h     |  2 +-
+>   target/sh4/cpu.h            |  2 +-
+>   target/sparc/cpu.h          |  2 +-
+>   target/xtensa/cpu.h         |  2 +-
+>   gdbstub.c                   |  6 +--
+>   hw/core/cpu.c               |  3 +-
+>   target/alpha/gdbstub.c      |  4 +-
+>   target/arm/gdbstub.c        | 10 ++--
+>   target/arm/gdbstub64.c      | 10 ++--
+>   target/cris/gdbstub.c       | 34 +++++++-------
+>   target/hppa/gdbstub.c       |  6 +--
+>   target/i386/gdbstub.c       | 92 ++++++++++++++++++-------------------
+>   target/lm32/gdbstub.c       | 18 ++++----
+>   target/m68k/gdbstub.c       | 10 ++--
+>   target/m68k/helper.c        | 24 +++++-----
+>   target/microblaze/gdbstub.c |  6 +--
+>   target/mips/gdbstub.c       | 30 ++++++------
+>   target/nios2/cpu.c          |  8 ++--
+>   target/openrisc/gdbstub.c   | 10 ++--
+>   target/riscv/gdbstub.c      |  6 +--
+>   target/rx/gdbstub.c         | 22 ++++-----
+>   target/s390x/gdbstub.c      | 28 +++++------
+>   target/sh4/gdbstub.c        | 38 +++++++--------
+>   target/sparc/gdbstub.c      | 46 +++++++++----------
+>   target/xtensa/gdbstub.c     | 20 ++++----
+>   40 files changed, 254 insertions(+), 253 deletions(-)

@@ -1,116 +1,106 @@
-Received: by 2002:a0c:f485:0:0:0:0:0 with SMTP id i5csp1064549qvm;
-        Tue, 14 Apr 2020 09:35:31 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIJUeDwcNREluFe7OfBk/8dFFWzJwYeClzWj88kheJDQfFcrVZfdV/Cos2zy6ep53rRtTq3
-X-Received: by 2002:ac8:5290:: with SMTP id s16mr17207353qtn.120.1586882130986;
-        Tue, 14 Apr 2020 09:35:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586882130; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5225076lfm;
+        Tue, 14 Apr 2020 10:17:05 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLtaRGZa9+n9Zdg/w3wNq+vQkXV1AV2hoW2rrI7yl1at4CMxPPk83XehoLbynmH4dxhqyxl
+X-Received: by 2002:ac8:5513:: with SMTP id j19mr14138209qtq.319.1586884625740;
+        Tue, 14 Apr 2020 10:17:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586884625; cv=none;
         d=google.com; s=arc-20160816;
-        b=l9QVNnquH1fIrxNE6qoSA+hKLcuNzTbVI/27YjB5Sn0qD1EOT61UsTxxa35YbxJUqp
-         2wRuYOoNf4C0wSxaxRlhAjZsaPFaBwNzNJKQ0ljZ6PO2HsFjExs1gstM9k01HmryEOzl
-         I6mbb2OLgTLLAwNxK1JnDMDE32Ug8lL01z2mPiEV0bl5W2PbgRnImzfe8MHwABUTMPFU
-         qCvE127Q0TNzQt3NIn7unjGLltGjTuZEWNHKFb+Gbo2Yc+6dKulfD+rRZITiRwemmcPK
-         zGNCPt6DreV2jXFMnlEDxbbconwTWzwiTcbNoDPaURsVyziUCNbbsP1Gw+oEP4YWqwQO
-         8Jyw==
+        b=M1t+qQFxIcSNUP3zI0ecJdbegGZPkZBsvmZZJ1watKZdjqMwz+WG90Em4npccpL0A4
+         2FVvXdLb6sI/RVwcmc9af4rT5zn1tneAuve/LTwji1r/oHwgYe/yQIL1hF+GB4wksphh
+         sEIZMHvjHEPMhXC1EoPx1x7t63YKN+n5NQtOg41toD/dxp+VXutV+BS5I9K99jyMkViH
+         IV2EeZFTck91xjxqJcPDKhOWKaaA0Msz2P72iQ+fgstmaz9AzuvbCw3ozXAU/bPB8UpO
+         b423R34fOHnWpkJKdR5E8CuIrBgZ7niXJotGIIhiy01DXgncbzFt2GUINoOXZAQpQyqx
+         /thw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=YAfEGA4pShKXRTklWkYx1xXMbd4XoGQUU9RSc9eismw=;
-        b=PmcWUagQA+UUzQgw6pKIqFgEZMKpcX50qegMk4LkZvfleVNAPeMYAwVdRCGg7/Q4ck
-         lAhHPWC0XGRPxKHQypnIkAbwjLj9Z+BNVLAXRqBsEVcqGEfb+nAUNaMzg9duN7gWdvf3
-         6JTYx8i35L1kE4JukKA93H7g4pE9N8fmHazq7lxLftT2E7UG+kKEgLLmbN+IrEcENHce
-         qxHVtTzlnScntlGNX7mVsEvOS6Mcwrg5JfJ7W27APzUUPLVV3d7ZKnU3lTq+juh6oKHS
-         qmtmDeDmUpN0gGxodPzm3F6eLk+Jxrc/II2fZE9U4ZTSBnuByd+6BUxFu29uHV358Pav
-         bH7w==
+        bh=gXNblUO4SiKtKIE29/5D+Fmm4HZBRwhfz9A4bbnSMB4=;
+        b=OrThQ/t97+Ko8VyrH4HC1SmfeUXjfors5HQakyr/Ofo1/t6vCNh1kdXkpt6J7gbFKd
+         Y87JvSDFCwAT0zeiWhpRMnSvVr7tzaLk8ZdcLVwWc/du2vGyKWEcFUbK23/W6uDyK/Ln
+         irGI97OomXo8ZHDHzvrHMHTBrqPc0/LWZrI3HFMtLuJbXedXR5f6RmU62aeZdHP7d9da
+         gcsqI4JbW8+HN+yW03SSiBhy5KjBBjsuZHHDpHPGFhD4Vrz4xwJHA0YUyLAlwJcAe/jW
+         AFaxfj9dZyZ/5ob3UG8Vtnf6XsPBcMNBHCBSVhFIWoCYycabObMkv8ObfAy4xKO39Vyv
+         7+NQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T4MethA7;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ihnlJiCa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u28si3977390qkm.241.2020.04.14.09.35.30
+        by mx.google.com with ESMTPS id x2si7999126qvd.5.2020.04.14.10.17.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Apr 2020 09:35:30 -0700 (PDT)
+        Tue, 14 Apr 2020 10:17:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T4MethA7;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ihnlJiCa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34266 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35924 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jOOX4-0003iE-FL
-	for alex.bennee@linaro.org; Tue, 14 Apr 2020 12:35:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52726)
+	id 1jOPBJ-0002bb-6Q
+	for alex.bennee@linaro.org; Tue, 14 Apr 2020 13:17:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42074)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jOOS6-0005Gu-Mk
- for qemu-devel@nongnu.org; Tue, 14 Apr 2020 12:30:23 -0400
+ (envelope-from <sundeep.lkml@gmail.com>) id 1jOP0e-0006lE-NN
+ for qemu-devel@nongnu.org; Tue, 14 Apr 2020 13:06:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jOOS4-0000dX-Ex
- for qemu-devel@nongnu.org; Tue, 14 Apr 2020 12:30:21 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:37296
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jOLf4-0008JT-In
- for qemu-devel@nongnu.org; Tue, 14 Apr 2020 09:31:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586871094;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YAfEGA4pShKXRTklWkYx1xXMbd4XoGQUU9RSc9eismw=;
- b=T4MethA7voJWKGjKKYvNPmXRgHLi+tJZ8tSDIvQ4IRKhp6qwvmoBL8dQ/XUL7TGzIivUOS
- aoie3BKTXd9A31DezrNxGYKBmiMyr32nA+pq9dLat11N7PGahgWvMGDV+j5cH2JQUto0wP
- Ns2X408AXii0E/QyMt0/iOGLcrg6KcY=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-328-EgdhwhkWOzyD8oAqmnu0OA-1; Tue, 14 Apr 2020 09:31:32 -0400
-X-MC-Unique: EgdhwhkWOzyD8oAqmnu0OA-1
-Received: by mail-wr1-f69.google.com with SMTP id m5so5561897wru.15
- for <qemu-devel@nongnu.org>; Tue, 14 Apr 2020 06:31:32 -0700 (PDT)
+ (envelope-from <sundeep.lkml@gmail.com>) id 1jOP0d-0006JC-DP
+ for qemu-devel@nongnu.org; Tue, 14 Apr 2020 13:06:04 -0400
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:43869)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <sundeep.lkml@gmail.com>)
+ id 1jON5R-0003e7-7n; Tue, 14 Apr 2020 11:02:53 -0400
+Received: by mail-pf1-x443.google.com with SMTP id l1so23846pff.10;
+ Tue, 14 Apr 2020 08:02:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=gXNblUO4SiKtKIE29/5D+Fmm4HZBRwhfz9A4bbnSMB4=;
+ b=ihnlJiCaqcTHchqB2ttsaySfBAA08IHsJ0NEpXxDg2fgeFuRtyoZxzguGPjIxTD9gK
+ 5unU4FoyTUTNcHcN63ZNFOI0444P4nig/vEjcy+4XHd1Z+/xfkyRGpxzoSCQCjPYYZuW
+ fPlW7Mh5ThMIYYVgKmiBHgyloK1q6duvPRraVQNzgkfoJ24WCrL6kuwq6/OncYxgTqPC
+ TkUokb43PsZD70pP9QpU/aMm26qsfnkPWO8YT2cqyiWoqfSCieptDBfBRorD0F9W1OgX
+ zbJeKHbcFxoBXuOpxPE8AbeN1PTaqfja0rp0PCzhI0aam8PNGC0PwGAIY4Goho/DJiSK
+ YVUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=R16ilq50Jn1I1kGv3Dmicd9P1j+Zk5asckFlP1ZiX90=;
- b=BBX2+9wwK7a+doBbpBbwWeT+jZaqV/XZlobUYEqV9wWcqBj87wvM/MpqXxfK4QFdAy
- sy2gnmGYMp22XBNWnkN3tC7m2eMzynAMwFMn4c/HqGmc+tqjdez1BWRB7fawcBiw46EA
- cWB3lN9pEFXG1wL5lpldbjkD9fCpG6FJvczFyz5SANMFIECi8ib5MU8YjEqBFi+qnv+J
- JbGNgbSYSo6WkavhNG4262p5GlPvaAZIwFDokeP7TzxYD96hOOTNzee8er0Okm+PFoba
- 5jaSHwMfxh1wsQbBfqPfI4JQHI3QvMzDNTlTW9Odj+jRPsgAnshwpNxGvx3am13zU26L
- 3h5Q==
-X-Gm-Message-State: AGi0PuYxCQfcoq/DnNRQw8Vzgdxr5EL3wzlCAkdyYGUc+kbIQCXRZHLd
- b/w540cSIpmCZDtxMgqNBwB0kOk4Xj6L6GldkjPQbBIegwUuiIewAEBUBzQV2g2xcgYl2lC24uG
- RLgjAam3YrOpPf90=
-X-Received: by 2002:a1c:2b06:: with SMTP id r6mr25127865wmr.25.1586871091259; 
- Tue, 14 Apr 2020 06:31:31 -0700 (PDT)
-X-Received: by 2002:a1c:2b06:: with SMTP id r6mr25127835wmr.25.1586871091004; 
- Tue, 14 Apr 2020 06:31:31 -0700 (PDT)
-Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
- [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id b11sm19174133wrq.26.2020.04.14.06.31.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Apr 2020 06:31:30 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.0 07/12] hw/misc/grlib_ahb_apb_pnp: Avoid crash when
- writing to AHB PnP registers
-Date: Tue, 14 Apr 2020 15:30:47 +0200
-Message-Id: <20200414133052.13712-8-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200414133052.13712-1-philmd@redhat.com>
-References: <20200414133052.13712-1-philmd@redhat.com>
+ bh=gXNblUO4SiKtKIE29/5D+Fmm4HZBRwhfz9A4bbnSMB4=;
+ b=k6dy4LOIrV22s6Uqa9tYufnS2zHAAs4AYt8Vx2HKz/VYDR06K/0AQdxpnY6Oss6w70
+ QOBZiIeEKK6+9McuY35C+LKk3Uj3DEv31h5/a29kM6nzCLxpquKMmeEvD4xaYfziQZ5/
+ SmIlG+s9wCyTtorRVxhPag9bOQBjQTcWYG212vhOR+S4UBOYlYO1mHc0KRRv+80ZmGCf
+ 7mtMa5TybNbFOqF8wcPdo+h7vmHYBWkF5EGY0DK/4E8e8HJ8VntFeBiSqQLGFm0uOzTQ
+ u7sHyCfRX1d1cLz/zXYU3Et1ksMe9vM3xMetDX5FJk0qdN1mOknHfRl2zS2reEePZx5I
+ 47OQ==
+X-Gm-Message-State: AGi0PuZbtaNxBEpjTRLikFrM4p984OS6Cj+2wX90NuK2Xh7LEjQzMg/N
+ xnefXVd6Bti0/Amhdj+ghSqChJ7o1/I=
+X-Received: by 2002:a65:6805:: with SMTP id l5mr21834666pgt.256.1586876572332; 
+ Tue, 14 Apr 2020 08:02:52 -0700 (PDT)
+Received: from hyd1358.marvell.com ([115.113.156.2])
+ by smtp.googlemail.com with ESMTPSA id f9sm12175240pjt.45.2020.04.14.08.02.49
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 14 Apr 2020 08:02:51 -0700 (PDT)
+From: sundeep.lkml@gmail.com
+To: jasowang@redhat.com, peter.maydell@linaro.org, philmd@redhat.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: [Qemu devel PATCH v5 3/3] tests/boot_linux_console: Add ethernet test
+ to SmartFusion2
+Date: Tue, 14 Apr 2020 20:32:31 +0530
+Message-Id: <1586876551-3695-4-git-send-email-sundeep.lkml@gmail.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1586876551-3695-1-git-send-email-sundeep.lkml@gmail.com>
+References: <1586876551-3695-1-git-send-email-sundeep.lkml@gmail.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::443
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -122,91 +112,59 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Michael Roth <mdroth@linux.vnet.ibm.com>,
- Fabien Chouteau <chouteau@adacore.com>, Max Filippov <jcmvbkbc@gmail.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Stafford Horne <shorne@gmail.com>, Max Reitz <mreitz@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iU7QrP7LPlIV
+X-TUID: 9t2jhIOOTWP2
 
-From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 
-Similarly to commit 158b659451 with the APB PnP registers, guests
-can crash QEMU when writting to the AHB PnP registers:
+In addition to simple serial test this patch uses ping
+to test the ethernet block modelled in SmartFusion2 SoC.
 
-  $ echo 'writeb 0xfffff042 69' | qemu-system-sparc -M leon3_generic -S -bi=
-os /etc/magic -qtest stdio
-  [I 1571938309.932255] OPENED
-  [R +0.063474] writeb 0xfffff042 69
-  Segmentation fault (core dumped)
-
-  (gdb) bt
-  #0  0x0000000000000000 in  ()
-  #1  0x0000562999110df4 in memory_region_write_with_attrs_accessor
-      (mr=3Dmr@entry=3D0x56299aa28ea0, addr=3D66, value=3Dvalue@entry=3D0x7=
-fff6abe13b8, size=3Dsize@entry=3D1, shift=3D<optimized out>, mask=3Dmask@en=
-try=3D255, attrs=3D...) at memory.c:503
-  #2  0x000056299911095e in access_with_adjusted_size
-      (addr=3Daddr@entry=3D66, value=3Dvalue@entry=3D0x7fff6abe13b8, size=
-=3Dsize@entry=3D1, access_size_min=3D<optimized out>, access_size_max=3D<op=
-timized out>, access_fn=3Daccess_fn@entry=3D
-      0x562999110d70 <memory_region_write_with_attrs_accessor>, mr=3D0x5629=
-9aa28ea0, attrs=3D...) at memory.c:539
-  #3  0x0000562999114fba in memory_region_dispatch_write (mr=3Dmr@entry=3D0=
-x56299aa28ea0, addr=3D66, data=3D<optimized out>, op=3D<optimized out>, att=
-rs=3Dattrs@entry=3D...) at memory.c:1482
-  #4  0x00005629990c0860 in flatview_write_continue
-      (fv=3Dfv@entry=3D0x56299aa7d8a0, addr=3Daddr@entry=3D4294963266, attr=
-s=3D..., ptr=3Dptr@entry=3D0x7fff6abe1540, len=3Dlen@entry=3D1, addr1=3D<op=
-timized out>, l=3D<optimized out>, mr=3D0x56299aa28ea0)
-      at include/qemu/host-utils.h:164
-  #5  0x00005629990c0a76 in flatview_write (fv=3D0x56299aa7d8a0, addr=3D429=
-4963266, attrs=3D..., buf=3D0x7fff6abe1540, len=3D1) at exec.c:3165
-  #6  0x00005629990c4c1b in address_space_write (as=3D<optimized out>, addr=
-=3D<optimized out>, attrs=3D..., attrs@entry=3D..., buf=3Dbuf@entry=3D0x7ff=
-f6abe1540, len=3Dlen@entry=3D1) at exec.c:3256
-  #7  0x000056299910f807 in qtest_process_command (chr=3Dchr@entry=3D0x5629=
-995ee920 <qtest_chr>, words=3Dwords@entry=3D0x56299acfcfa0) at qtest.c:437
-
-Instead of crashing, log the access as unimplemented.
-
-Reviewed-by: KONRAD Frederic <frederic.konrad@adacore.com>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-Message-Id: <20200331105048.27989-3-f4bug@amsat.org>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/misc/grlib_ahb_apb_pnp.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ tests/acceptance/boot_linux_console.py | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-diff --git a/hw/misc/grlib_ahb_apb_pnp.c b/hw/misc/grlib_ahb_apb_pnp.c
-index e230e25363..72a8764776 100644
---- a/hw/misc/grlib_ahb_apb_pnp.c
-+++ b/hw/misc/grlib_ahb_apb_pnp.c
-@@ -136,8 +136,15 @@ static uint64_t grlib_ahb_pnp_read(void *opaque, hwadd=
-r offset, unsigned size)
-     return ahb_pnp->regs[offset >> 2];
- }
-=20
-+static void grlib_ahb_pnp_write(void *opaque, hwaddr addr,
-+                                uint64_t val, unsigned size)
-+{
-+    qemu_log_mask(LOG_UNIMP, "%s not implemented\n", __func__);
-+}
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
+index f825cd9..c6b06a1 100644
+--- a/tests/acceptance/boot_linux_console.py
++++ b/tests/acceptance/boot_linux_console.py
+@@ -336,13 +336,13 @@ class BootLinuxConsole(Test):
+         """
+         uboot_url = ('https://raw.githubusercontent.com/'
+                      'Subbaraya-Sundeep/qemu-test-binaries/'
+-                     'fa030bd77a014a0b8e360d3b7011df89283a2f0b/u-boot')
+-        uboot_hash = 'abba5d9c24cdd2d49cdc2a8aa92976cf20737eff'
++                     'fe371d32e50ca682391e1e70ab98c2942aeffb01/u-boot')
++        uboot_hash = 'cbb8cbab970f594bf6523b9855be209c08374ae2'
+         uboot_path = self.fetch_asset(uboot_url, asset_hash=uboot_hash)
+         spi_url = ('https://raw.githubusercontent.com/'
+                    'Subbaraya-Sundeep/qemu-test-binaries/'
+-                   'fa030bd77a014a0b8e360d3b7011df89283a2f0b/spi.bin')
+-        spi_hash = '85f698329d38de63aea6e884a86fbde70890a78a'
++                   'fe371d32e50ca682391e1e70ab98c2942aeffb01/spi.bin')
++        spi_hash = '65523a1835949b6f4553be96dec1b6a38fb05501'
+         spi_path = self.fetch_asset(spi_url, asset_hash=spi_hash)
+ 
+         self.vm.set_console()
+@@ -352,7 +352,12 @@ class BootLinuxConsole(Test):
+                          '-drive', 'file=' + spi_path + ',if=mtd,format=raw',
+                          '-no-reboot')
+         self.vm.launch()
+-        self.wait_for_console_pattern('init started: BusyBox')
++        self.wait_for_console_pattern('Enter \'help\' for a list')
 +
- static const MemoryRegionOps grlib_ahb_pnp_ops =3D {
-     .read       =3D grlib_ahb_pnp_read,
-+    .write      =3D grlib_ahb_pnp_write,
-     .endianness =3D DEVICE_BIG_ENDIAN,
- };
-=20
---=20
-2.21.1
++        exec_command_and_wait_for_pattern(self, 'ifconfig eth0 10.0.2.15',
++                                                 'eth0: link becomes ready')
++        exec_command_and_wait_for_pattern(self, 'ping -c 3 10.0.2.2',
++            '3 packets transmitted, 3 packets received, 0% packet loss')
+ 
+     def do_test_arm_raspi2(self, uart_id):
+         """
+-- 
+2.7.4
 

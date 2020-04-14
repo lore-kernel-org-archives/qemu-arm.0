@@ -1,106 +1,106 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4665694lfm;
-        Tue, 14 Apr 2020 00:16:40 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK4fICDHe9PwMsINQEMhv/E64ceZzTEPGrS6YxzUfVj2sa0CdHObRCVcPgJwfppxtBoEhgd
-X-Received: by 2002:a05:620a:1512:: with SMTP id i18mr18957791qkk.137.1586848600400;
-        Tue, 14 Apr 2020 00:16:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586848600; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4882317lfm;
+        Tue, 14 Apr 2020 04:32:44 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKbnvZF/WZDUl/h9i9EI61sVMmn4/oVFqEJWfMGN9lkvneuqyUTejzNU8z2WEDW2Y7EdnT3
+X-Received: by 2002:a05:6214:3ad:: with SMTP id m13mr13719682qvy.57.1586863964677;
+        Tue, 14 Apr 2020 04:32:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586863964; cv=none;
         d=google.com; s=arc-20160816;
-        b=b6JlBtWn7TlAxqhb5h4WkR064Ol0NjC/mmQx9lIulrep3t+8ahTBiRv+THHXz6DWCz
-         zElqIJPO/IOI4wknNPjHaFaO5wZ/pSn0yEIvJFT7SrbIBjShYmF6zGmcRF396wLMB8jV
-         UKADBCG6EesA+2oLrJeLRvfj33FdGrxh9xx5K2xJBfGnXlWIpZhKNo4jwDRQkpToJI+M
-         G1KfHKa3BDbP25XU/0ag8Sz6RLbbM0pIQjAGwUR8RoreOVXn6DJJqQaXCPwEy0tjYxYi
-         EgyCxXX12IaZe5gJJTqPlbLfIYXwNbMsKq0Sz5SNzWxmQbTunsZ7d77DuoDFDfWHv7kJ
-         PuGA==
+        b=j5fo1hEz6a0TjFPhDZEvPkTnfl4KpyDDAXOHMH4xznt9B0AcsouEKG1rxWl6SjHzqL
+         JukcVWqK9XkLbGTdTZ3LRuNKo7hc5OvS3c89QrEG02zUBgbBUIPwMFgxI0lZH4GzcEJK
+         Euf2b6uhv0wZ3/vykOTys6yfiyqu2NDmm/T3Zarwa7JCzvgJqCv02aOdLu7Hx9ZTgAWq
+         1bdaIxznIhn7xV0Gtccr4faEPuuc2yNzbKJt3ma0tW0pDrdjzXMMXeNb6O2jbC5U2JvY
+         FuUMWode7+p2ax+13uMQAjdC2JrfQym9Luw5KDqND/l8lSoZTmCUp3e/FCcRBgaXDEa/
+         vfuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:user-agent:message-id:in-reply-to:date:references
          :subject:to:from:dkim-signature;
-        bh=gIxxP2P7bDv0LyJOEFsSl+b26dNwRkjroj5o9XBzADA=;
-        b=OqnHco3HJ3oi/ojRPqDOEuZHBhCnsd9synWNSsLYoi0lABIYX5TKDxCLYZT5ywIhZu
-         ixloAlcW8TFx+o8h2bjT51UKMwGtWj14Vb8zC9wurZL1AZRJ39UbnQvK2I7Xw3pgsKex
-         J9x5Yzll3dnqPZnfAxjkXbqbxmGsXO1qjEjLVSLBTjgqG6Hb6B8F8H6HLj0Zx/IvfSMj
-         yX/I/W1TSjQ0QSjDGJBkFQQDj8/LLG4bBcZ1kG2veKo/Vx+zPp2HGOvsalM+lTY+847o
-         liBObUCr2c+5V+CTzHVvg6KMLMVcoGtl3DP4ln1k8EsQyeIXYjJu5LsHUD6gLJw2uxaD
-         M7Pw==
+        bh=DYr/KkW0QKxRMJqYT/HOwSxpZUuq1t2YsKc/mTSrfYk=;
+        b=EU4I6gcf1tL4PJeXIl2cCNtGmCbJX6FEJfIKXVtOrB7uap31/1643o5iMjOJFhJ+EF
+         zyFXt8JWWpZ7hJuJYeplVWY7vPLyLM5r1IxLJzflddjWBmxkMeOlBo+43L7LqEKkYb4Z
+         cMaJlCz0NneTKYaJivYfhLK1aZwMkBuhCPVMw/OLlZ47yRqA5KSpTKMPBT7c8Sl9xsIn
+         ksmE8irrlu6velxzDJFTlsOhclb+er2uJS+Pio5E8ruisWXTjTye+tyj2dEDHsucdJF9
+         g9pTNNT/uPLWAuwfQPDro+DmcHcgdZHaCZp1bMd/83E+2WU+5vG87nkg0+DNeS736ay/
+         sCeQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YOVXGakY;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XAWn5qMp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m184si4351171qke.250.2020.04.14.00.16.40
+        by mx.google.com with ESMTPS id 67si7679979qkm.91.2020.04.14.04.32.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Apr 2020 00:16:40 -0700 (PDT)
+        Tue, 14 Apr 2020 04:32:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YOVXGakY;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XAWn5qMp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53564 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58654 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jOFoF-0003YJ-QN
-	for alex.bennee@linaro.org; Tue, 14 Apr 2020 03:16:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42791)
+	id 1jOJo4-0001AI-3C
+	for alex.bennee@linaro.org; Tue, 14 Apr 2020 07:32:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55292)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <armbru@redhat.com>) id 1jOFnn-0003Y1-T1
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 03:16:12 -0400
+ (envelope-from <armbru@redhat.com>) id 1jOJnb-00019r-47
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 07:32:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1jOFnl-0001iB-5h
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 03:16:10 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:56655
- helo=us-smtp-delivery-1.mimecast.com)
+ (envelope-from <armbru@redhat.com>) id 1jOJna-0003o1-4D
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 07:32:15 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:22163
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1jOFnl-0001hx-1m
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 03:16:09 -0400
+ (Exim 4.71) (envelope-from <armbru@redhat.com>) id 1jOJna-0003nd-1F
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 07:32:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586848568;
+ s=mimecast20190719; t=1586863933;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gIxxP2P7bDv0LyJOEFsSl+b26dNwRkjroj5o9XBzADA=;
- b=YOVXGakYD9mcV0Ttd8589I0jllkvEtp1HrOx+AMQNsfc9XGNqm0/PWsfr7HLmbytc5IOY/
- X6EqRt86x6sKBHdcHAmSMh+sjd4BEYJpLRim6gq9czEhNbvl1wirdIFuXNon2VkVv1ZdID
- lWD9j7HgC9X4hxXKHI7w9kiPwq4z/yI=
+ bh=DYr/KkW0QKxRMJqYT/HOwSxpZUuq1t2YsKc/mTSrfYk=;
+ b=XAWn5qMpSMcXQnMjSRSqUL6fuB47VcoPM6wdz3wJAPwY2+Tu7DbueIcrxSWX4CdL+VrTek
+ EaKYRxrPBMWqnipsjb0v7hmpEBZZL7zywdrEnJkLSwy2+06Vg41SrvQ88XBy2qmEfRX6Q0
+ Olw5y4AVhVN91JP44tj+IUlD4c+YRpw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-263-VXY0blHTPYSvQf01L1nR-A-1; Tue, 14 Apr 2020 03:16:06 -0400
-X-MC-Unique: VXY0blHTPYSvQf01L1nR-A-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-415-9sDNE59FPAeERBjNn-43JQ-1; Tue, 14 Apr 2020 07:32:11 -0400
+X-MC-Unique: 9sDNE59FPAeERBjNn-43JQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F046E108838D;
- Tue, 14 Apr 2020 07:16:04 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 08406107BA97;
+ Tue, 14 Apr 2020 11:32:08 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-113-20.ams2.redhat.com
  [10.36.113.20])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 352DC1000325;
- Tue, 14 Apr 2020 07:16:01 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3BCC15D9E2;
+ Tue, 14 Apr 2020 11:32:01 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id A9B7E11385C8; Tue, 14 Apr 2020 09:15:59 +0200 (CEST)
+ id B5AB011385C8; Tue, 14 Apr 2020 13:31:59 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
-To: Damien Hedde <damien.hedde@greensocs.com>
-Subject: Re: [PATCH v9 5/9] docs/clocks: add device's clock documentation
-References: <20200406135251.157596-1-damien.hedde@greensocs.com>
- <20200406135251.157596-6-damien.hedde@greensocs.com>
- <87pncjzxwc.fsf@dusky.pond.sub.org>
- <f5556e5f-ee75-10cb-53f3-b249de8a5147@greensocs.com>
-Date: Tue, 14 Apr 2020 09:15:59 +0200
-In-Reply-To: <f5556e5f-ee75-10cb-53f3-b249de8a5147@greensocs.com> (Damien
- Hedde's message of "Wed, 8 Apr 2020 12:06:10 +0200")
-Message-ID: <87sgh6zgeo.fsf@dusky.pond.sub.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH-for-5.1 3/3] hw: Remove unnecessary DEVICE() cast
+References: <20200412210954.32313-1-f4bug@amsat.org>
+ <20200412210954.32313-4-f4bug@amsat.org>
+Date: Tue, 14 Apr 2020 13:31:59 +0200
+In-Reply-To: <20200412210954.32313-4-f4bug@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Sun, 12 Apr 2020 23:09:54
+ +0200")
+Message-ID: <87lfmytia8.fsf@dusky.pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 207.211.31.81
+ [fuzzy]
+X-Received-From: 207.211.31.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,100 +112,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>, peter.maydell@linaro.org,
- berrange@redhat.com, ehabkost@redhat.com, alistair@alistair23.me,
- mark.burton@greensocs.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Alistair Francis <alistair.francis@wdc.com>, pbonzini@redhat.com,
- marcandre.lureau@redhat.com, philmd@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ qemu-block@nongnu.org, Paul Durrant <paul@xen.org>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Joel Stanley <joel@jms.id.au>, Anthony Perard <anthony.perard@citrix.com>,
+ xen-devel@lists.xenproject.org, Richard Henderson <rth@twiddle.net>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <minyard@acm.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, John Snow <jsnow@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ "Daniel P. =?utf-8?Q?Berrang=C3=A9?=" <berrange@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Cornelia Huck <cohuck@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qCaAJPqADESO
+X-TUID: FLFNKfKsGKEZ
 
-Damien Hedde <damien.hedde@greensocs.com> writes:
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-> On 4/7/20 7:07 AM, Markus Armbruster wrote:
->> Damien Hedde <damien.hedde@greensocs.com> writes:
->>=20
->>> Add the documentation about the clock inputs and outputs in devices.
->>>
->>> This is based on the original work of Frederic Konrad.
->>>
->>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
->>> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
->>> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
->>> ---
->>> v9:
->>>  + fix a few typos (Alistair)
->>>
->>> v8:
->>>  + fix list indentation
->>>  + reduce title size
->>>
->>> v7:
->>>  + update ClockIn/Out types
->>>  + switch to rst format
->>> ---
->>>  docs/devel/clocks.rst | 360 ++++++++++++++++++++++++++++++++++++++++++
->>>  docs/devel/index.rst  |   1 +
->>>  2 files changed, 361 insertions(+)
->>>  create mode 100644 docs/devel/clocks.rst
->>>
->>> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
->>> new file mode 100644
->>> index 0000000000..ead9f55561
->>> --- /dev/null
->>> +++ b/docs/devel/clocks.rst
->>> @@ -0,0 +1,360 @@
->>> +Modeling a clock tree in QEMU
->>> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D
->>> +
->>> +What are clocks
->>> +---------------
->>> +
->>> +Clocks are QOM objects developed for the purpose of modeling the
->>> +distribution of clocks in QEMU.
->>> +
->>> +They allow us to model the clock distribution of a platform and detect
->>> +configuration errors in the clock tree such as badly configured PLL, c=
-lock
->>> +source selection or disabled clock.
->>> +
->>> +The object is *Clock* and its QOM name is ``CLOCK``.
->>=20
->> PATCH 1 has
->>=20
->>     #define TYPE_CLOCK "clock"
->>=20
->> Ignorant question: how is this related to *Clock* and ``CLOCK``?
->>=20
->> [...]
->>=20
+> The DEVICE() macro is defined as:
 >
-> Hi Markus,
+>   #define DEVICE(obj) OBJECT_CHECK(DeviceState, (obj), TYPE_DEVICE)
 >
+> Remove unnecessary DEVICE() casts.
 >
-> *Clock* refer to the C type
->> typedef struct Clock Clock;
-
-Okay.
-
-> I think I've put ``CLOCK`` in uppercase because, in practical, we only
-> use the upper case macro.
-
-True for internal code, not true at external interfaces.
-
->> #define TYPE_CLOCK "clock"
->> #define CLOCK(obj) OBJECT_CHECK(Clock, (obj), TYPE_CLOCK)
+> Patch created mechanically using spatch with this script:
 >
-> I'm not sure what is the right terminology here. Maybe I can replace by
-> the following:
+>   @@
+>   typedef DeviceState;
+>   DeviceState *s;
+>   @@
+>   -   DEVICE(s)
+>   +   s
 >
->> The QOM name of a clock is ``"clock"`` (or the macro ``TYPE_CLOCK``).
-> The C type object is *Clock*.
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Better.
+DEVICE(obj) expands to
 
-Maybe (in C, the macro ``TYPE_CLOCK'') or (C macro ``TYPE_CLOCK'').
-Your choice :)
+    OBJECT_CHECK(DeviceState, (obj), TYPE_DEVICE)
+
+and then to
+
+    ((DeviceState *)object_dynamic_cast_assert((Object *)(obj), (name),
+                                               __FILE__, __LINE__, __func__=
+))
+
+object_dynamic_cast_assert() asserts @obj can be safely converted to the
+type named by @name, and returns @obj.
+
+Your patch drops the assertion.
+
+The assertion can only fail when @obj points to something other than its
+stated type, i.e. when we're in undefined behavior country.
+
+Preferably with this argument worked into your commit message:
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+
+There are many similar macros.  Should they get the same treatment?
 

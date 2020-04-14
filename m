@@ -1,110 +1,149 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5469198lfm;
-        Tue, 14 Apr 2020 14:40:26 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJY6+3SyCz9jFa7BjEhMGRg6OQGez6WK2ud9uwG00OdfqseRUs0Z9xhb9DSItzY56O0rqGz
-X-Received: by 2002:a37:7002:: with SMTP id l2mr23695752qkc.372.1586900426060;
-        Tue, 14 Apr 2020 14:40:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586900426; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5546880lfm;
+        Tue, 14 Apr 2020 16:16:58 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLwUJzsVWUpILZNQyqAShzfbsjFlvnFIsc4amMqpJLJMoq9fYOzUHowXwJiU/FfE16dSn3q
+X-Received: by 2002:ac8:2a76:: with SMTP id l51mr17962514qtl.81.1586906218275;
+        Tue, 14 Apr 2020 16:16:58 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1586906218; cv=pass;
         d=google.com; s=arc-20160816;
-        b=kWxG/hYtQ6aXdlBDJWgiAyWUdFCAZOICvDTES28ytpuoMycbqdbOt2bivPC3n2RIzc
-         htvGLZZXmkQ6ZjXW+YavuOb/Ulj767P4m0IX6hIZwff1dLb0YjZgDz2/cDyygblel0sL
-         g3l6FkFpy2ksrB/eyCsj4a/+2pezbr1iVVd4Oc9S/UJ2y7e6dtCrDmWFjlLfmESb8Dp2
-         c/AjRpP0Q6+jIfV2YSQwORlL4f6CFfY178yBnmFReIuk+yk+zSfSLokV/D8pmO4znBSE
-         CFdOvRGjWM7+52Ub3gcVZXUSKy6A2dB6zkJVUyMGoWk8s4M1rYT3OBLWnuzBfk3DVsRD
-         eabA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=SBNES1WWNcnWnD2Xs+KuuuMPJeEd0Wbv/S1H59lDwusT/oNnz0bbzcgFP/q41LPlb3
+         +STPNu+SaA7TcoWIqeO6hu7JLZplq1qv3QNewIxCX96wLUu7EcBOnnIueZAXBkLMHJm1
+         9HcCTveaBClzixtNCK0FyTKdu+HWeMXzuVFl9EXFf7oVQMoOEjLhpKPuS7lbUR1q/3HH
+         ysyH4FtBbgWd+fqkpCpXwpfWT4g/EY7lf7AhMUNiNQSIMxceJNtSWpvvdrB1d20GxUjW
+         d+wl23Nyh4BX1RnvtPVcGo42gX5nUFMHmAtPxkvBYIAJ5ejc3Zw0txacltio2BUmQ7RR
+         oOVQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=+YdJ1eItjRB7ItTRPS1yzNOPMwATBGKtFqeGB8AgldY=;
-        b=qsGp3vbNMtAMjaBPVZc0aHbOskvarSeSe2BeHTsQq3SnD8g/CkU983z1fQrB0fn0Go
-         2LkVksUPY8rC5soW2Is+0kC6O9kOCGHay+/pbdrlozSLdBGXnXr1EoJrLbqTd3Hg233G
-         uxZeb2WEkrVWfCl1MuWcSr85QWrDGfG13POemNIA+v2RKePLazf/HTHQg8bRvaZtmLPz
-         AblzFdLS4JSL2XMpOtsRuEnpNHqKqOWM5894tKoOVtZ/pYSCN9GZdskI7EzVF/epNiqf
-         o/6NLviy5Bmap10gNQiSPr5zYM8GI+KxvYRFz/CHVQOqCt7XCN5inFL61BFgbogy5rLR
-         GU7g==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=h+Eo7Snv;
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from:dkim-signature:dkim-signature;
+        bh=CpxH6l9JQaJE/mMsulXPKm1uHKkx91IXbEQ7HC/2jDc=;
+        b=1Kc9FU9+YC7dvjNAv+paWczXj3G9P6YlJl3MQv6ynW2ckhbOLIM/n1h1bjwaC1BJND
+         6U2k/NvuTtd2CM+nRu3dOo95PI3/xmqYz68TANmMJ2ElTgkrMqQPq4a8LvzV6sXmiRwX
+         vrKP+23DBGt3QlLmal73i73DUYmfdWP1Q6BL9tRPruKSXtrD8AGpBaXk/CS7jou0Uz+c
+         nCx6I2C3SS7+G/id7S+s8x2iKIeIADtO1Hn7dqSWrHcxvlMCd1fU2q+fPhmnlvNdI21Q
+         gMO78yupVk5TgxcjPoTesrZacrw1RIYogDC3CvEcEjuZaUQXF9SXTalfqj9uTGCFPnPs
+         FETQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=YeKjtJiD;
+       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=lb3BpkA8;
+       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j11si8158822qkm.183.2020.04.14.14.40.25
+        by mx.google.com with ESMTPS id 93si4538029qtg.220.2020.04.14.16.16.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Apr 2020 14:40:26 -0700 (PDT)
+        Tue, 14 Apr 2020 16:16:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=h+Eo7Snv;
+       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=YeKjtJiD;
+       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=lb3BpkA8;
+       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39480 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from localhost ([::1]:40202 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jOTI8-0006xY-Fb
-	for alex.bennee@linaro.org; Tue, 14 Apr 2020 17:40:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34542)
+	id 1jOUnX-0005EE-UV
+	for alex.bennee@linaro.org; Tue, 14 Apr 2020 19:16:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45383)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jOTHz-0006wo-VB
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 17:40:16 -0400
+ (envelope-from <steplong@quicinc.com>) id 1jOUnB-0005CT-Ua
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 19:16:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1jOTHy-00082C-Rv
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 17:40:15 -0400
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035]:51186)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1jOTHy-00081V-Kw
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 17:40:14 -0400
-Received: by mail-pj1-x1035.google.com with SMTP id b7so5885565pju.0
- for <qemu-arm@nongnu.org>; Tue, 14 Apr 2020 14:40:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=+YdJ1eItjRB7ItTRPS1yzNOPMwATBGKtFqeGB8AgldY=;
- b=h+Eo7SnvIra0gg12SjTsJNQK7hUY+z1MG5p0nKh/xlrWsdcbkSQRExUNzO/QuF5LBq
- nK+gerPPGcDw1dky7bWHAqeQp8QM3oxsP2k5TFzYVWzZkjJvZT9B0G623T5XtGX6sISR
- AsOK2k9fq0tA6tc8Xrq91NmtabQMcdJr3WLFXjdE/qGCKZCOnri3+Ys0GnKZt3ZYg1g5
- KvE9GdB3QSSzSziY7/SdTZZfBh1MYelqsMXUNXL7f1BUMIfWIGiSP46OQMHEcZENFaZt
- OK716l6AJ5iNivPu5/aXilPD2ztEdkBYE4E+00VClFsmzjbpDFgWdZnftHI0I4QwhcQt
- l1MQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=+YdJ1eItjRB7ItTRPS1yzNOPMwATBGKtFqeGB8AgldY=;
- b=bdAjW+3cJMndBVcUlyTSaRgn/jyfKKVB/TnqHklE7xIKjXQvnxT5e3HtbaHoJgm37t
- lqN57bfVGFezrayxnKPRuOKbkewc/rNvgXYQskfodmzZ+Y4YELh8wpmX/AUF3sp1Jec6
- KnCMdjNVLGtz5cpURqEH0QDa1UlPpmkpjxL5EB1ki8HgPTj/2Ke98rDo0JL3WEoo5E+V
- Em7OdKVXxDumZAveD3VQa2CWfj4g79w9WBQKpMolCggaJK3IpHigBUt8GANPECgfmYnJ
- SpBf8hvuBwfn5Y/3df1m9vy5pZkGcM86jeTiz0Z8PihrM03/10+ECMEZfe6RG2yZqPKE
- lwiQ==
-X-Gm-Message-State: AGi0PuYZ4pHKJEWfagL92as7Wjlg4SEp+GSAOFwbINYIKtqP7VwTnwSH
- NwrdAZ8ny4XefKwKnlPf0OYrDA==
-X-Received: by 2002:a17:902:8d8d:: with SMTP id
- v13mr1951273plo.260.1586900413217; 
- Tue, 14 Apr 2020 14:40:13 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id a136sm9012385pfa.99.2020.04.14.14.40.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Apr 2020 14:40:12 -0700 (PDT)
-Subject: Re: [PATCH-for-5.1 0/3] various: Remove unnecessary casts
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200412210954.32313-1-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <a1478503-cab3-df6a-1aae-50b262e9121e@linaro.org>
-Date: Tue, 14 Apr 2020 14:40:10 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (envelope-from <steplong@quicinc.com>) id 1jOUn9-0008AV-8H
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2020 19:16:32 -0400
+Received: from alexa-out-sd-02.qualcomm.com ([199.106.114.39]:15207)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <steplong@quicinc.com>)
+ id 1jOUn8-00089o-Ry; Tue, 14 Apr 2020 19:16:31 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
+ t=1586906190; x=1618442190;
+ h=from:to:cc:subject:date:message-id:mime-version;
+ bh=c+cvB6KQoxXwY55s9UvgZq0i+DQyMQVJNjY6CAAWGUE=;
+ b=YeKjtJiD0puWPRJLk5vfRCJZZPJ50Zt0Gzzx2NFJIOEnedprxy3uyEFX
+ RzBomvoAodQqASIuwS4JYTZwcxQPqAiPf+viJfBb0NHnJ5CX31z8VVe8g
+ a0vG85dmFy7itt3YPm6/r3Zvo25ghx1lURj2+8oqSQCLW9O0bWLZ1SVv+ w=;
+Received: from unknown (HELO ironmsg-SD-alpha.qualcomm.com) ([10.53.140.30])
+ by alexa-out-sd-02.qualcomm.com with ESMTP; 14 Apr 2020 16:16:29 -0700
+Received: from nasanexm03b.na.qualcomm.com ([10.85.0.98])
+ by ironmsg-SD-alpha.qualcomm.com with ESMTP/TLS/AES256-SHA;
+ 14 Apr 2020 16:16:29 -0700
+Received: from NASANEXM01H.na.qualcomm.com (10.85.0.34) by
+ nasanexm03b.na.qualcomm.com (10.85.0.98) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 14 Apr 2020 16:16:28 -0700
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (199.106.107.6)
+ by NASANEXM01H.na.qualcomm.com (10.85.0.34) with Microsoft SMTP Server (TLS)
+ id 15.0.1497.2 via Frontend Transport; Tue, 14 Apr 2020 16:16:28 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=eFgPWT3jICUe9is5NM9/VuULoEBipxnSe2WzRGdmXpNTteYdJT6RdDrK9g3IJPKRBW6lDtK3lrk6wtfXxpOKgZR0SSO09aoatxnsNc64uvrT53hINHN2gqk8GGRlYIAWI2tHcVI54lVdlBCaTtLvlmJHOYZ9RY3eJ1sqMUyxIJ1FRE3ynQHv++AoDV46jBYr0SvRh/Gdo36AE+gaBaM1ebYFcWrVTp/aitVsHIihZImNteuQe7KtQEB9Lkn8sIy8FXmlJPNE5W57N2MhkBDlbJZMjalUjx6QmpCyQMzGneB86xzGqPng+tVcpIpW4bMZlolVlXSGGWe4VrdWfQEAhw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CpxH6l9JQaJE/mMsulXPKm1uHKkx91IXbEQ7HC/2jDc=;
+ b=mhMtKRptdH9BifTqQCXw0b2Y55GbOgIs4sGB1XNXgnU0JkOzCWmFYakyR66p2w8FODAoDmuAprdaYhuk+FfLktmhq/nFsxVfU7g4OYMvY+l4FbemTJoH1bzdOV5/fkcHDWEelnL5fvo6gkdj8/Xwmle2WKiKvJEgSkr764fLItkT9xdmZeY8XEDmKpkGpH9N8ZAjunhfWcf69gYuWWVQSllIgQYnHunILTieo3GBmZ1s8DdvFZHm5oCKYr9QU+QCVhRxeGvOdC9SDPGNguRsf4MPwTKWih/fGgev9tmstJztjNRPlOJ+ND5rWUfbAn41u6A7Ac+VNMFryU9P0k+iUw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
+ dkim=pass header.d=quicinc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=qualcomm.onmicrosoft.com; s=selector1-qualcomm-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CpxH6l9JQaJE/mMsulXPKm1uHKkx91IXbEQ7HC/2jDc=;
+ b=lb3BpkA8JTFt4asH83lCjMsLRUBtKYvyOvCp+M2XuSNWOhQpPBV1O3j4a5vbQrT2Y4vNbB52+75SzQG00FgzARirmc2cd0B7K9RGRQ82QDIl3Of/OVxZRsPcFO4/xunwH0WoGnEeEb+lEnNRElrIugyM7InkQNyIGJjRsaOh/l8=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=steplong@quicinc.com; 
+Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
+ (2603:10b6:301:7b::24) by MWHPR0201MB3465.namprd02.prod.outlook.com
+ (2603:10b6:301:76::26) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2900.28; Tue, 14 Apr
+ 2020 23:16:26 +0000
+Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
+ ([fe80::10ad:5df5:d575:1f37]) by MWHPR0201MB3547.namprd02.prod.outlook.com
+ ([fe80::10ad:5df5:d575:1f37%3]) with mapi id 15.20.2900.028; Tue, 14 Apr 2020
+ 23:16:26 +0000
+From: Stephen Long <steplong@quicinc.com>
+To: <qemu-devel@nongnu.org>
+Subject: [PATCH RFC v2] target/arm: Implement SVE2 MATCH, NMATCH
+Date: Tue, 14 Apr 2020 19:16:10 -0400
+Message-ID: <20200414231610.8387-1-steplong@quicinc.com>
+Content-Type: text/plain
+X-ClientProxiedBy: CH2PR17CA0010.namprd17.prod.outlook.com
+ (2603:10b6:610:53::20) To MWHPR0201MB3547.namprd02.prod.outlook.com
+ (2603:10b6:301:7b::24)
 MIME-Version: 1.0
-In-Reply-To: <20200412210954.32313-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::1035
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from DESKTOP-L2LA14H.localdomain (108.176.222.2) by
+ CH2PR17CA0010.namprd17.prod.outlook.com (2603:10b6:610:53::20) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2900.15 via Frontend Transport; Tue, 14 Apr 2020 23:16:25 +0000
+X-Originating-IP: [108.176.222.2]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 9e0b1ca4-04b5-4111-ae1e-08d7e0c9daa4
+X-MS-TrafficTypeDiagnostic: MWHPR0201MB3465:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <MWHPR0201MB346566C489975217E6B8333AC7DA0@MWHPR0201MB3465.namprd02.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:13;
+X-Forefront-PRVS: 0373D94D15
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR0201MB3547.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(10019020)(366004)(376002)(346002)(396003)(136003)(39860400002)(2616005)(2906002)(6916009)(8936002)(5660300002)(6506007)(316002)(86362001)(6512007)(478600001)(107886003)(81156014)(4326008)(8676002)(6486002)(186003)(66946007)(6666004)(956004)(1076003)(16526019)(66476007)(66556008)(26005)(36756003)(52116002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 4qUVclR6GoxHtkOTyPHxaCOYVRcp3eTMlTla/Q0l7PEN+5pHqIP2C7D3AeF/gPosX4WfEgx5dXAFf6WLwwdKJB7yaSCMRZmXLPgzbJmBTF6BusU+SdcSsSauJZvM2Q5U/78rR+Q8Km3h2F6OKyV4T9BnbIdmTAI8Wpk5uKK71V0VqGNuTau2sY32j4XMITWmQc1kPsQYD5s3EUOpzmqeBNs+5jl8OFneicvJRKlSz40YnWK0pzOADNgGmj3qW8yIBHgBcqXxbkvHZ9QYisSe9vBolYo7rvteXAqPdpYwK8N/WlKsasf+wAj7yMh0ZDUq+8xYQfVQI7iUIvLgOi4RN8C4woJxXoMI4svivsRIS6B8riHGhJeVUJimS2eW0YGNgUza3Geo99Z7t7+ijV4jG1+azdOroPoty69GzNbDiEAs6TX1CoWjOkEk6y21W2HL
+X-MS-Exchange-AntiSpam-MessageData: un6RG8eiKLGBvbsApI/2MZ9iaXmN/1P45adkGi4k/g4CJSv/16Jj+YeXWlYXLH2CI3UrnhSW6/Dv8ziGsYaIL2AVA5841ARvMezV7g3pITQH7vL1nLvVhFfGLJG1ZVwUOks0h1/ENfcCuX0emS3VvQ==
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9e0b1ca4-04b5-4111-ae1e-08d7e0c9daa4
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Apr 2020 23:16:26.0066 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: aNtSLSbPAH8lu5z/zl5fk3dB/DFaOSD6y5k7d32Es9Qmqf3EIihJU421dXP1J47wfNsPO0Mkt1jQtIu3mQO7nQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR0201MB3465
+X-OriginatorOrg: quicinc.com
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 199.106.114.39
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,43 +155,148 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Gerd Hoffmann <kraxel@redhat.com>, Stefano Stabellini <sstabellini@kernel.org>,
- qemu-block@nongnu.org, Paul Durrant <paul@xen.org>,
- Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Joel Stanley <joel@jms.id.au>, Anthony Perard <anthony.perard@citrix.com>,
- xen-devel@lists.xenproject.org, Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <minyard@acm.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Cornelia Huck <cohuck@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: qemu-arm@nongnu.org, richard.henderson@linaro.org, apazos@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YeCzQeM+G+8v
+X-TUID: tBPLuOUmba2G
 
-On 4/12/20 2:09 PM, Philippe Mathieu-Daudé wrote:
-> Remove unnecessary casts using coccinelle scripts.
-> 
-> The CPU()/OBJECT() patches don't introduce logical change,
-> The DEVICE() one removes various OBJECT_CHECK() calls.
-> 
-> Philippe Mathieu-Daudé (3):
->   target: Remove unnecessary CPU() cast
->   various: Remove unnecessary OBJECT() cast
->   hw: Remove unnecessary DEVICE() cast
+Signed-off-by: Stephen Long <steplong@quicinc.com>
+---
+ target/arm/helper-sve.h    | 10 ++++++++
+ target/arm/sve.decode      |  5 ++++
+ target/arm/sve_helper.c    | 51 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-sve.c | 22 ++++++++++++++++
+ 4 files changed, 88 insertions(+)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~
+diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+index 5dd880cf6d..bc4a463bc7 100644
+--- a/target/arm/helper-sve.h
++++ b/target/arm/helper-sve.h
+@@ -2516,6 +2516,16 @@ DEF_HELPER_FLAGS_3(sve2_uqrshrnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(sve2_uqrshrnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_3(sve2_uqrshrnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
+ 
++DEF_HELPER_FLAGS_5(sve2_match_ppzz_b, TCG_CALL_NO_RWG,
++                   i32, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_match_ppzz_h, TCG_CALL_NO_RWG,
++                   i32, ptr, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_5(sve2_nmatch_ppzz_b, TCG_CALL_NO_RWG,
++                   i32, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(sve2_nmatch_ppzz_h, TCG_CALL_NO_RWG,
++                   i32, ptr, ptr, ptr, ptr, i32)
++
+ DEF_HELPER_FLAGS_6(sve2_faddp_zpzz_h, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_6(sve2_faddp_zpzz_s, TCG_CALL_NO_RWG,
+diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+index 374e47fb05..652668df02 100644
+--- a/target/arm/sve.decode
++++ b/target/arm/sve.decode
+@@ -1305,6 +1305,11 @@ UQSHRNT         01000101 .. 1 ..... 00 1101 ..... .....  @rd_rn_tszimm_shr
+ UQRSHRNB        01000101 .. 1 ..... 00 1110 ..... .....  @rd_rn_tszimm_shr
+ UQRSHRNT        01000101 .. 1 ..... 00 1111 ..... .....  @rd_rn_tszimm_shr
+ 
++### SVE2 Character Match
++
++MATCH           01000101 .. 1 ..... 100 ... ..... 0 .... @pd_pg_rn_rm
++NMATCH          01000101 .. 1 ..... 100 ... ..... 1 .... @pd_pg_rn_rm
++
+ ## SVE2 floating-point pairwise operations
+ 
+ FADDP           01100100 .. 010 00 0 100 ... ..... ..... @rdn_pg_rm
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index b68f62cd7f..78abd8b62a 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -6890,3 +6890,54 @@ DO_ST1_ZPZ_D(dd_be, zd, MO_64)
+ 
+ #undef DO_ST1_ZPZ_S
+ #undef DO_ST1_ZPZ_D
++
++#define DO_PPZZ_CHAR_MATCH(NAME, TYPE, OP, H, MASK, DEFAULT_VAL)              \
++static inline bool NAME##_inner_loop(TYPE nn, void *segmentbase)              \
++{                                                                             \
++    intptr_t i = 128;                                                         \
++    do {                                                                      \
++        do {                                                                  \
++            i -= sizeof(TYPE) * 8;                                            \
++            TYPE mm = *(TYPE *)(segmentbase + H1(i));                         \
++            if (nn OP mm) {                                                   \
++                return !DEFAULT_VAL;                                          \
++            }                                                                 \
++        } while (i & 63);                                                     \
++    } while (i > 0);                                                          \
++    return DEFAULT_VAL;                                                       \
++}                                                                             \
++                                                                              \
++uint32_t HELPER(NAME)(void *vd, void *vn, void *vm, void *vg, uint32_t desc)  \
++{                                                                             \
++    intptr_t opr_sz = simd_oprsz(desc);                                       \
++    uint32_t flags = PREDTEST_INIT;                                           \
++    intptr_t i = opr_sz;                                                      \
++    do {                                                                      \
++        uint64_t out = 0;                                                     \
++        uint64_t pg;                                                          \
++        do {                                                                  \
++            i -= sizeof(TYPE), out <<= sizeof(TYPE);                          \
++            TYPE nn = *(TYPE *)(vn + H(i));                                   \
++            out = (out & ~1ull) | DEFAULT_VAL;                                \
++            out |= NAME##_inner_loop(nn, vm + (i & -16));                     \
++        } while (i & 63);                                                     \
++        pg = *(uint64_t *)(vg + (i >> 3)) & MASK;                             \
++        out &= pg;                                                            \
++        *(uint64_t *)(vd + (i >> 3)) = out;                                   \
++        flags = iter_predtest_bwd(out, pg, flags);                            \
++    } while (i > 0);                                                          \
++    return 0;                                                                 \
++}
++
++#define DO_PPZZ_CHAR_MATCH_B(NAME, TYPE, OP, DEFAULT_VAL) \
++    DO_PPZZ_CHAR_MATCH(NAME, TYPE, OP, H1, 0xffffffffffffffffull, DEFAULT_VAL)
++#define DO_PPZZ_CHAR_MATCH_H(NAME, TYPE, OP, DEFAULT_VAL) \
++    DO_PPZZ_CHAR_MATCH(NAME, TYPE, OP, H1_2, 0x5555555555555555ull, DEFAULT_VAL)
++
++DO_PPZZ_CHAR_MATCH_B(sve2_match_ppzz_b, uint8_t, ==, 0)
++DO_PPZZ_CHAR_MATCH_H(sve2_match_ppzz_h, uint16_t, ==, 0)
++
++DO_PPZZ_CHAR_MATCH_B(sve2_nmatch_ppzz_b, uint8_t, !=, 1)
++DO_PPZZ_CHAR_MATCH_H(sve2_nmatch_ppzz_h, uint16_t, !=, 1)
++
++#undef DO_PPZZ_CHAR_MATCH
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 07a2040208..29c799501d 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -7246,6 +7246,28 @@ static bool trans_UQRSHRNT(DisasContext *s, arg_rri_esz *a)
+     return do_sve2_shr_narrow(s, a, ops);
+ }
+ 
++static bool do_sve2_ppzz_flags(DisasContext *s, arg_rprr_esz *a,
++                               gen_helper_gvec_flags_4 *fn)
++{
++    if (!dc_isar_feature(aa64_sve2, s)) {
++        return false;
++    }
++    return do_ppzz_flags(s, a, fn);
++}
++
++#define DO_SVE2_PPZZ_CHAR_MATCH(NAME, name)                                 \
++static bool trans_##NAME(DisasContext *s, arg_rprr_esz *a)                  \
++{                                                                           \
++    static gen_helper_gvec_flags_4 * const fns[4] = {                       \
++        gen_helper_sve2_##name##_ppzz_b, gen_helper_sve2_##name##_ppzz_h,   \
++        NULL,                            NULL                               \
++    };                                                                      \
++    return do_sve2_ppzz_flags(s, a, fns[a->esz]);                           \
++}
++
++DO_SVE2_PPZZ_CHAR_MATCH(MATCH, match)
++DO_SVE2_PPZZ_CHAR_MATCH(NMATCH, nmatch)
++
+ static bool do_sve2_zpzz_fp(DisasContext *s, arg_rprr_esz *a,
+                             gen_helper_gvec_4_ptr *fn)
+ {
+-- 
+2.17.1
 

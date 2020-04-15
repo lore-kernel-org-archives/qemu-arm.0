@@ -1,84 +1,84 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp266122lfm;
-        Wed, 15 Apr 2020 00:53:04 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKYlj7b/UC7BiC1kA7yQj2Pwbh2gQTOs4AkK8+u6mxoC4iVFGOua41z/CFKesrchZR5jYSu
-X-Received: by 2002:ac8:60d9:: with SMTP id i25mr7712666qtm.40.1586937183906;
-        Wed, 15 Apr 2020 00:53:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586937183; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp267978lfm;
+        Wed, 15 Apr 2020 00:55:48 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIEt/qx0tP9ctc7tJuT3bu1ItFStvdhYKm5bSFwDIq7Kfj7qsZkL3/jbp+osT+k/VZ7pyb6
+X-Received: by 2002:a37:7a42:: with SMTP id v63mr10330364qkc.340.1586937348121;
+        Wed, 15 Apr 2020 00:55:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586937348; cv=none;
         d=google.com; s=arc-20160816;
-        b=MwgVWa7J50uOKIs7+Y1xcJTIWJyBfK3P5gIqzRVVXJzwwWvYPhR/2+7hpK5qhapR8q
-         JNiJABq/uPQX5IFJ3NT5DBkPRqG2Lj2NnGZZ4LRrFwhd+rKiPwgP/nH81kJ5WXJwm7j3
-         D4AE6iFUWCexgFjw25kE3m/4c1CwQdM1CNutbCOyrJ2eimvjxMm2ZDoxoL0cnHEmZCrt
-         Fbkxzp36/FKyMAvfoksk+cLejnDufoerxF0azfnsgdYFNEmEm1y/HOzUdhp/RjhJxcRO
-         GQB8zzkWncfgbFixoZe6hc2GTSAm2pjMDpWX5mf/umpDIImNafe8OR83gABkyrgAZsD9
-         7ZrQ==
+        b=CmnCteuck1K2BQaDzPJ5VPZlq2PRrkp8tRHEVKLuKPzytB//Jbuen9k2PHFGWJA/Dk
+         84EBKgihDmwsRc0yKO6qZMzQ1SXkpvfqbnS8m1136RUb4x1KpbjYMlbvAU/IC32EEBoq
+         s3PSQ+/yKAjHowmUUgH0PEWfIhAFWyCWDOjVQlBNMpA8571uENz38U05Bq28HdlcyQwR
+         oWDbPFh2lbVcYfblq3DYyntPMXiB+vtDAuLPrCTJyNqa+GK8ffDrZ8lHTa3W2omk7sXe
+         4bF8Zkjk/eDKJc1SjN909RNATfhPp7c5FemectlzaQD22CK33oe+IWClgjtIDrBGF12S
+         mxPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=3j4XYHw2LR5fA1HpxzeAVMyUytpSSaiY2ZcpRzlEhiA=;
-        b=fMoXe3mRK4caCAz6ZlteST6PvBZtdEUs8QzaNNjtCOnSbs1pSNIB1GhOINNs74t/jp
-         bAsqHCTXLH9eW0GJ3ky9rjEZfW/klLTjdpMP3HjVZHxD8A/Xu575EfK6JvZAKg3ogzLE
-         oCJyFrC46+NwAQ+DHWtkgJADluoM398WamGpiaN6f5snffwlAj4zQiQCLLZ81F/SQ+a1
-         sdBHndREVSDss+LvVG//XYPcn+jaeqxbikfTSn11Gdy12vtDwP8bmhUf1FCrTFlR4eid
-         wPNsaOQyk9iR6Ga7icNMeFcjTd2bwQXBlPYPywIicoYyHgD6Rr0Zlql7yCVkwv5AbOER
-         e4cg==
+        bh=mUr19bRoL+TtPZKCa3rUjDzna79yhI5qGCrkYbNkvs4=;
+        b=VlrfgXeLuEcLZk6TrDNs0ChbD+3HoL0WKHu+2DL9Soht7T8dvP3nIoDf0xn1GHiswL
+         Cef+VLDm6Tk5ALCqUbaIkOJT/sdnZkYo6aaaIwIlft5nXN/NXLZTPuPr8dngMGQIvt/g
+         eBGVA7/p93tomva6xRvMqo+ThftWZi9y6LoLP/TUGW/KzJP/4iXxu3I+j81R8qT5JH0M
+         3GEpDUgQ8ToNYtvXUqIH+e35d9tj7xZIIbVlC/TXxVBpNM7R/XxoJec7go1s9HFCV1zi
+         L/rhg1a78k55bH5uRnR6H0jygjaJZXGzMkmqGGIR2grhRVSJYM2PlD1TJ5eINbtEJ0Hq
+         pvUg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n8si7711950qvt.135.2020.04.15.00.53.03
+        by mx.google.com with ESMTPS id v11si8488534qvs.190.2020.04.15.00.55.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Apr 2020 00:53:03 -0700 (PDT)
+        Wed, 15 Apr 2020 00:55:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45482 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45524 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jOcr1-0004bw-9X
-	for alex.bennee@linaro.org; Wed, 15 Apr 2020 03:53:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51752)
+	id 1jOctf-0007ov-Fn
+	for alex.bennee@linaro.org; Wed, 15 Apr 2020 03:55:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51664)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1jOcqS-0004GA-Eo
- for qemu-devel@nongnu.org; Wed, 15 Apr 2020 03:52:29 -0400
+ (envelope-from <clg@kaod.org>) id 1jOcpv-0003Bv-P5
+ for qemu-devel@nongnu.org; Wed, 15 Apr 2020 03:51:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1jOcqR-0008Vt-A5
- for qemu-devel@nongnu.org; Wed, 15 Apr 2020 03:52:28 -0400
-Received: from 3.mo6.mail-out.ovh.net ([178.33.253.26]:51892)
+ (envelope-from <clg@kaod.org>) id 1jOcpu-0008Fb-6B
+ for qemu-devel@nongnu.org; Wed, 15 Apr 2020 03:51:55 -0400
+Received: from 4.mo3.mail-out.ovh.net ([178.33.46.10]:39323)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1jOcqR-0008V5-3P
- for qemu-devel@nongnu.org; Wed, 15 Apr 2020 03:52:27 -0400
-Received: from player695.ha.ovh.net (unknown [10.110.103.118])
- by mo6.mail-out.ovh.net (Postfix) with ESMTP id C31E920AAED
- for <qemu-devel@nongnu.org>; Wed, 15 Apr 2020 09:52:24 +0200 (CEST)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1jOcpt-0008Dx-TU
+ for qemu-devel@nongnu.org; Wed, 15 Apr 2020 03:51:54 -0400
+Received: from player718.ha.ovh.net (unknown [10.110.103.76])
+ by mo3.mail-out.ovh.net (Postfix) with ESMTP id 85BF7248FE2
+ for <qemu-devel@nongnu.org>; Wed, 15 Apr 2020 09:51:52 +0200 (CEST)
 Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
  (Authenticated sender: clg@kaod.org)
- by player695.ha.ovh.net (Postfix) with ESMTPSA id BE71F114BA640;
- Wed, 15 Apr 2020 07:51:47 +0000 (UTC)
-Subject: Re: [PATCH-for-5.1 v3 18/24] hw/pci-host/pnv_phb3: Move some code
+ by player718.ha.ovh.net (Postfix) with ESMTPSA id D0D5411513851;
+ Wed, 15 Apr 2020 07:51:00 +0000 (UTC)
+Subject: Re: [PATCH-for-5.1 v3 05/24] hw/arm/aspeed_ast2600: Move some code
  from realize() to init()
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200412223619.11284-1-f4bug@amsat.org>
- <20200412223619.11284-19-f4bug@amsat.org>
+ <20200412223619.11284-6-f4bug@amsat.org>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <2e60d4fa-36b0-bc4d-a61b-540cd2e03756@kaod.org>
-Date: Wed, 15 Apr 2020 09:51:47 +0200
+Message-ID: <7407eb89-2f66-aa01-e1d2-dba410926aca@kaod.org>
+Date: Wed, 15 Apr 2020 09:50:54 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20200412223619.11284-19-f4bug@amsat.org>
+In-Reply-To: <20200412223619.11284-6-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Ovh-Tracer-Id: 13634647873948847024
+X-Ovh-Tracer-Id: 13625640676116368304
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrfedvgdduvdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrheileehrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrgh
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrfedvgdduvdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucffohhmrghinheprghrmhdrtghomhenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejudekrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrgh
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 178.33.253.26
+X-Received-From: 178.33.46.10
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,18 +114,18 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jPUaBJQNkawG
+X-TUID: Vmu9B3XoBhqa
 
 On 4/13/20 12:36 AM, Philippe Mathieu-Daud=C3=A9 wrote:
 > Coccinelle reported:
 >=20
 >   $ spatch ... --timeout 60 --sp-file \
 >     scripts/coccinelle/simplify-init-realize-error_propagate.cocci
->   HANDLING: ./hw/pci-host/pnv_phb3.c
->   >>> possible moves from pnv_phb3_instance_init() to pnv_phb3_realize(=
-) in ./hw/pci-host/pnv_phb3.c:992
+>   HANDLING: ./hw/arm/aspeed_ast2600.c
+>   >>> possible moves from aspeed_soc_ast2600_init() to aspeed_soc_ast26=
+00_realize() in ./hw/arm/aspeed_ast2600.c:243
 >=20
-> Move the calls using &error_abort which don't depend on input
+> Move the calls using &error_fatal which don't depend on input
 > updated before realize() to init().
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
@@ -137,57 +137,112 @@ Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 > ---
 > v3: Typo 'depend of' -> 'depend on' (eblake)
 > ---
->  hw/pci-host/pnv_phb3.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  hw/arm/aspeed_ast2600.c | 41 ++++++++++++++++++++---------------------
+>  1 file changed, 20 insertions(+), 21 deletions(-)
 >=20
-> diff --git a/hw/pci-host/pnv_phb3.c b/hw/pci-host/pnv_phb3.c
-> index 74618fadf0..57d717ed23 100644
-> --- a/hw/pci-host/pnv_phb3.c
-> +++ b/hw/pci-host/pnv_phb3.c
-> @@ -970,6 +970,8 @@ static void pnv_phb3_instance_init(Object *obj)
->      /* LSI sources */
->      object_initialize_child(obj, "lsi", &phb->lsis, sizeof(phb->lsis),
->                               TYPE_ICS, &error_abort, NULL);
-> +    object_property_set_int(OBJECT(&phb->lsis), PNV_PHB3_NUM_LSI, "nr-=
-irqs",
-> +                            &error_abort);
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index a860ab6a35..64512f95c9 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -114,6 +114,16 @@ static qemu_irq aspeed_soc_get_irq(AspeedSoCState =
+*s, int ctrl)
+>      return qdev_get_gpio_in(DEVICE(&s->a7mpcore), sc->irqmap[ctrl]);
+>  }
 > =20
->      /* Default init ... will be fixed by HW inits */
->      phb->lsis.offset =3D 0;
-> @@ -977,6 +979,8 @@ static void pnv_phb3_instance_init(Object *obj)
->      /* MSI sources */
->      object_initialize_child(obj, "msi", &phb->msis, sizeof(phb->msis),
->                              TYPE_PHB3_MSI, &error_abort, NULL);
-> +    object_property_set_int(OBJECT(&phb->msis), PHB3_MAX_MSI, "nr-irqs=
-",
-> +                            &error_abort);
+> +/*
+> + * ASPEED ast2600 has 0xf as cluster ID
+> + *
+> + * http://infocenter.arm.com/help/index.jsp?topic=3D/com.arm.doc.ddi03=
+88e/CIHEBGFG.html
+> + */
+> +static uint64_t aspeed_calc_affinity(int cpu)
+> +{
+> +    return (0xf << ARM_AFF1_SHIFT) | cpu;
+> +}
+> +
+>  static void aspeed_soc_ast2600_init(Object *obj)
+>  {
+>      AspeedSoCState *s =3D ASPEED_SOC(obj);
+> @@ -130,6 +140,13 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>          object_initialize_child(obj, "cpu[*]", OBJECT(&s->cpu[i]),
+>                                  sizeof(s->cpu[i]), sc->cpu_type,
+>                                  &error_abort, NULL);
+> +        object_property_set_int(OBJECT(&s->cpu[i]), QEMU_PSCI_CONDUIT_=
+SMC,
+> +                                "psci-conduit", &error_abort);
+> +        object_property_set_int(OBJECT(&s->cpu[i]), aspeed_calc_affini=
+ty(i),
+> +                                "mp-affinity", &error_abort);
+> +
+> +        object_property_set_int(OBJECT(&s->cpu[i]), 1125000000, "cntfr=
+q",
+> +                                &error_abort);
+>      }
 > =20
->      /* Power Bus Common Queue */
->      object_initialize_child(obj, "pbcq", &phb->pbcq, sizeof(phb->pbcq)=
-,
-> @@ -1005,8 +1009,6 @@ static void pnv_phb3_realize(DeviceState *dev, Er=
-ror **errp)
->      /* LSI sources */
->      object_property_set_link(OBJECT(&phb->lsis), OBJECT(pnv), "xics",
->                                     &error_abort);
-> -    object_property_set_int(OBJECT(&phb->lsis), PNV_PHB3_NUM_LSI, "nr-=
-irqs",
-> -                            &error_abort);
->      object_property_set_bool(OBJECT(&phb->lsis), true, "realized", &lo=
-cal_err);
->      if (local_err) {
->          error_propagate(errp, local_err);
-> @@ -1024,8 +1026,6 @@ static void pnv_phb3_realize(DeviceState *dev, Er=
-ror **errp)
->                                     &error_abort);
->      object_property_set_link(OBJECT(&phb->msis), OBJECT(pnv), "xics",
->                                     &error_abort);
-> -    object_property_set_int(OBJECT(&phb->msis), PHB3_MAX_MSI, "nr-irqs=
-",
-> -                            &error_abort);
->      object_property_set_bool(OBJECT(&phb->msis), true, "realized", &lo=
-cal_err);
->      if (local_err) {
->          error_propagate(errp, local_err);
+>      snprintf(typename, sizeof(typename), "aspeed.scu-%s", socname);
+> @@ -146,6 +163,9 @@ static void aspeed_soc_ast2600_init(Object *obj)
+> =20
+>      sysbus_init_child_obj(obj, "a7mpcore", &s->a7mpcore,
+>                            sizeof(s->a7mpcore), TYPE_A15MPCORE_PRIV);
+> +    object_property_set_int(OBJECT(&s->a7mpcore),
+> +                            ASPEED_SOC_AST2600_MAX_IRQ + GIC_INTERNAL,
+> +                            "num-irq", &error_abort);
+> =20
+>      sysbus_init_child_obj(obj, "rtc", OBJECT(&s->rtc), sizeof(s->rtc),
+>                            TYPE_ASPEED_RTC);
+> @@ -230,16 +250,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>                            TYPE_SYSBUS_SDHCI);
+>  }
+> =20
+> -/*
+> - * ASPEED ast2600 has 0xf as cluster ID
+> - *
+> - * http://infocenter.arm.com/help/index.jsp?topic=3D/com.arm.doc.ddi03=
+88e/CIHEBGFG.html
+> - */
+> -static uint64_t aspeed_calc_affinity(int cpu)
+> -{
+> -    return (0xf << ARM_AFF1_SHIFT) | cpu;
+> -}
+> -
+>  static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>  {
+>      int i;
+> @@ -264,19 +274,11 @@ static void aspeed_soc_ast2600_realize(DeviceStat=
+e *dev, Error **errp)
+> =20
+>      /* CPU */
+>      for (i =3D 0; i < s->num_cpus; i++) {
+> -        object_property_set_int(OBJECT(&s->cpu[i]), QEMU_PSCI_CONDUIT_=
+SMC,
+> -                                "psci-conduit", &error_abort);
+>          if (s->num_cpus > 1) {
+>              object_property_set_int(OBJECT(&s->cpu[i]),
+>                                      ASPEED_A7MPCORE_ADDR,
+>                                      "reset-cbar", &error_abort);
+>          }
+> -        object_property_set_int(OBJECT(&s->cpu[i]), aspeed_calc_affini=
+ty(i),
+> -                                "mp-affinity", &error_abort);
+> -
+> -        object_property_set_int(OBJECT(&s->cpu[i]), 1125000000, "cntfr=
+q",
+> -                                &error_abort);
+> -
+>          /*
+>           * TODO: the secondary CPUs are started and a boot helper
+>           * is needed when using -kernel
+> @@ -292,9 +294,6 @@ static void aspeed_soc_ast2600_realize(DeviceState =
+*dev, Error **errp)
+>      /* A7MPCORE */
+>      object_property_set_int(OBJECT(&s->a7mpcore), s->num_cpus, "num-cp=
+u",
+>                              &error_abort);
+> -    object_property_set_int(OBJECT(&s->a7mpcore),
+> -                            ASPEED_SOC_AST2600_MAX_IRQ + GIC_INTERNAL,
+> -                            "num-irq", &error_abort);
+> =20
+>      object_property_set_bool(OBJECT(&s->a7mpcore), true, "realized",
+>                               &error_abort);
 >=20
 

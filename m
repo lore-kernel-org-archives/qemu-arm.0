@@ -1,103 +1,100 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp197963lfm;
-        Tue, 14 Apr 2020 23:19:27 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKXpkuE0OQpB6aNhEofjcrKZIzg2Xg/tUCVEBXQgDVLLlHxIC/b4hbc0cHzdpLfQ/3UnbUJ
-X-Received: by 2002:a37:4949:: with SMTP id w70mr25384650qka.38.1586931567421;
-        Tue, 14 Apr 2020 23:19:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586931567; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp205083lfm;
+        Tue, 14 Apr 2020 23:30:11 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJGFlFrKDVU4gdEjuPqECQ3rpYkeVJPfPSyvHqhQ8WuVVYe5jpZPMn0ijxSSWPKA2waFSOy
+X-Received: by 2002:ac8:39c2:: with SMTP id v60mr19464430qte.384.1586932211661;
+        Tue, 14 Apr 2020 23:30:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586932211; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hbl2KcUncUgP3LFCAA9HCeXZcuA9+5YR6Cfa68fFcA/WTxEVN29ix7WXLIhvTeT3a7
-         qNDG+2RNPAlpuAdQoqa4hYpbHdsf8mL2pU8q2UdqC0PWoPA7xYnXk0ZiFCoSr7hZY9jw
-         ib9Sfyf/1gOUyM6hgFHEu5CnWEZL8mQVggrBLoM2FlJ05FtnDEzVZvqVZG9RJyV1M4yM
-         OSAMVx/rThtAkjPv8YeFPxxwIykkKeYlDcIDXkB4aYSd14LB3WW3wjb+PLNmfrrvsD7O
-         7wn6pxPjc/vlaf/C3p2zVtsHe9XA9ycsdYRmaEFkqV7d/FETOhKVWB183yOcNl73Mba2
-         ivgQ==
+        b=AW55odfi607NAhBiFtdX+jYPysnLcxs1FWrHpCIIXjxwehwocG8+xdvS+igVyyAIy6
+         sQgqSmeXdi+cJJAi659/NEHwcyrdKdS3uVHe4YYb2Ico7TH6nNld7JmkqGrrLb1yzRHx
+         bsAu9EsuL9SS4y1gtFMJfzlEDaUWtv2j8sO3sePoKSWjTyxchBzLfmmS8MALHIr9nLlO
+         Hi3olwSbhCOXFsf89Szx3BvMm8ugk++yFHiuvybyLNv6Zxo05rAipkUcBmk20U97kisT
+         vIbtRQCDGOxJL/GtbwodMf2qVul2QomLjNNCwH2c5cAgdM7qpJXhhA64+q1E+aZ5PBVL
+         5QgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=0HpAA/yPCHUHpxQzs3SbNfMD74dBQ85M+x8zVY5gA9E=;
-        b=RrkzheZ/5CiSL/7DupTvuOiNSL1G7NnWrEdqgTMNwzY5bScJI1keIyjXLHeQn24j2+
-         6DaIsVe730wsO+HoBIf/q53jXWpUqS0mSbbH/g1F++yIMgxlSLseg2dH+81Cuj7NPOpq
-         H5sQmup9hLsqAPfQKY/LDJCx/0EPeiMFGqOltgwYt9/r+Ih4cgmRdo+Cl1jWKMddsCvi
-         Zt8Ou/kbB73F62IkqwssWtWr0wxcotvEUMCNzZZvKP24pVw5R0CHQm1B9V9KTmcRk/E5
-         CvtlL8+qWsxKF8rAM620tiWwnpIO0fwD+pBtdl8iAXK+BPO7Mrg16IJT5JViorDkGzSc
-         bjcQ==
+        bh=/aTNHwPiSwoFClmECBf4RnThFHRtVj0YMDP3RBAG+uA=;
+        b=uawjXkfAIE20NV/KTM4GbImQiwc9qQlHN08ymQyVJCRCtADP2guKFPEU5xVzBW+xV1
+         vfVSUfh7nQgED1h1XA+oc0RNTxzOKYy239O4giCab2HsEx62WaawM45maCPd2c67RfPD
+         SnyDten0kFI7UDd+jbm+tmJwZ9NJzRP/lys/nOGqevao58xHJpOOOekJEIQQboobvA0G
+         mFrklY/m91CN/uyoUPUS8fJfcPlZj5WuggKrxqASI+bHNUWAsXxmxfO7G8Am+jNZ0roA
+         JsZmFKBnhMJlbHaUSadv89WSUbm+gBFLhRcIP27NrmMTINuTrtoflbMa1R6UsOyxr16/
+         cttw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZSf8sKd3;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A1wd9PaI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s20si8844894qtb.249.2020.04.14.23.19.27
+        by mx.google.com with ESMTPS id i9si8466942qvz.140.2020.04.14.23.30.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Apr 2020 23:19:27 -0700 (PDT)
+        Tue, 14 Apr 2020 23:30:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZSf8sKd3;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A1wd9PaI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:44006 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44170 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jObOQ-00077n-Rv
-	for alex.bennee@linaro.org; Wed, 15 Apr 2020 02:19:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38926)
+	id 1jObYo-0008Ot-W9
+	for alex.bennee@linaro.org; Wed, 15 Apr 2020 02:30:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38383)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jObMA-0004qb-5s
- for qemu-arm@nongnu.org; Wed, 15 Apr 2020 02:17:07 -0400
+ id 1jObIj-0006i2-0P
+ for qemu-arm@nongnu.org; Wed, 15 Apr 2020 02:13:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jObM8-00085v-PU
- for qemu-arm@nongnu.org; Wed, 15 Apr 2020 02:17:06 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:53866)
+ id 1jObIf-0005Lw-O5
+ for qemu-arm@nongnu.org; Wed, 15 Apr 2020 02:13:32 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a]:45818)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jObM2-000838-6u; Wed, 15 Apr 2020 02:16:58 -0400
-Received: by mail-wm1-x343.google.com with SMTP id d77so15935487wmd.3;
- Tue, 14 Apr 2020 23:16:58 -0700 (PDT)
+ id 1jObIf-0005LK-CD; Wed, 15 Apr 2020 02:13:29 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id m12so3106571edl.12;
+ Tue, 14 Apr 2020 23:13:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
+ h=sender:subject:to:references:from:autocrypt:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=0HpAA/yPCHUHpxQzs3SbNfMD74dBQ85M+x8zVY5gA9E=;
- b=ZSf8sKd38Za5DbhnV4BmuKAAh2/1FiT7njp8u+N9mUwTXP0/B2MjDgP6/FEG8jPAJF
- gPo2Fj7F3b1eUtDvqhYr4q4Lu3nGrYQkiTLpG3xCD4DwE2vGL1c1cG99PsWd2/6uf8RS
- s8X8eVGajzn18KgEomlDYxAoDGm7Ft0XNBZ0qkclZRS4Y/gr1d4PLXctDA/g5msakG0C
- PzOh6ME1e2oH7AfbOTTNc3k7gimpDwkRZvWy0wAajyz6znR5nTp/zcClVA7qQFU7rpDl
- eMklJQsYIBzba9uYbeMZ2Ll023qcdwtcQeq9nEJNrWemHlSbcTUPROnQpd/QH4luoQI7
- LdfQ==
+ bh=/aTNHwPiSwoFClmECBf4RnThFHRtVj0YMDP3RBAG+uA=;
+ b=A1wd9PaIwNLH1OPhpy9cABKyuapkNhIzdFvsXdW9VNpqX4+lwAqvj0IENHVyeopCfB
+ kw2f3r3Nsvf4XTEZpPihqqwB04uPx+QAmDFSXimbVhXXSQnqz5JihprD59deXKnc6GJR
+ 2MIB+LhQZrgJAh1yGlD/KvsdDPjjAWQn8at1R9fYlit7UHWuhZCLfZtMVkXYj/u+82I2
+ K2ted5JqdhlIRIqScNAaqkGSt1NX07+YunJy562wAhyPXCm7bX+Fln1Bd5MLkWm1v3pY
+ lzbKFwjhwIoQnN2dnhA6poSAWFq9rOekbUxUgd8l0VB+BKWVKJbmNlaDGeOFSJMhw88M
+ bvMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
+ h=x-gm-message-state:sender:subject:to:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=0HpAA/yPCHUHpxQzs3SbNfMD74dBQ85M+x8zVY5gA9E=;
- b=ofSHYOoc9FaCxLbOYG2TC8XzNcPOFVQ7aYD29zl5SqdNCD+LIz6d0ToRwM0E0LqNWy
- 7LiTIJ77LQ6qLRuAyEtuGvLZNm0Ehx0j9c9J0OyyQDJ2NHvkrd6hvsNrgQQfMxuFrkm/
- 9/hWJFNntSbjhFBq0TFVaKUo8wkUbZ+dYFP3PyiTFhqs0t5yXGPb/EsOqLlmV4Iqc4T/
- 9DFHU+iHNr3Heab5EarspZ+D0ud2wBN23Lt6EBL4zFp6qDoAvVJx/Hjog5NlNR/0h6Dh
- f3tkPZWqCJo1vqj1R0oPWITyVNyRsJEiRvmIUPlUFx+tziFfr6/GhYEcBb0TrEG3z3y4
- 3Fkw==
-X-Gm-Message-State: AGi0PuaqBuJ0kA3MNx38WpmFiPZpKGAOcgZf5AFBS3alX6W8JiThVwbF
- S0x/meX9DBpJgHXqvIoosmg=
-X-Received: by 2002:a1c:4409:: with SMTP id r9mr3558645wma.165.1586931416766; 
- Tue, 14 Apr 2020 23:16:56 -0700 (PDT)
+ bh=/aTNHwPiSwoFClmECBf4RnThFHRtVj0YMDP3RBAG+uA=;
+ b=oFmACvS8lEY/BSeI3fbbajJm1+y9v41UxCzwjrweCr4Jr3eEUH8CHpMS6LwPWtR4wl
+ pE/nQdJiB25oniPAMsE/VAo0RZ0Mrey+S5M23BB9s7occ81AZg8XbLri9WvLjc026uWL
+ M9T6rGSxxIt4OYk4QVqjsTGeJtxfI3NiNWH9/FtkXTp5HT8QVWKvsbi6XDBN/mDDRDnL
+ Qa9GzjburYsAlyDsvKbjttBjUneIZvT4c4HpuUHVRMkwWbJFzH6fXszQTsKcUqjOXYNx
+ 77B37QUbHM/SZTlACLrAXZ3LD61v/wYQpxtcvh12SbJH22F6Jy7VZpi23LwY00274iqG
+ 1aYw==
+X-Gm-Message-State: AGi0PuZdq9dcCsLjfWJ8bn3EUcqON1cFUDAEI34CBa6yzjrdfltNYXma
+ QezC2Do3h8WJdSSishg+meUhe3E6Fvg=
+X-Received: by 2002:a50:ed19:: with SMTP id j25mr22739473eds.264.1586931206972; 
+ Tue, 14 Apr 2020 23:13:26 -0700 (PDT)
 Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id q4sm22814647wmj.1.2020.04.14.23.16.53
+ by smtp.gmail.com with ESMTPSA id n17sm1266054eja.9.2020.04.14.23.13.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Apr 2020 23:16:55 -0700 (PDT)
-Subject: Re: [PATCH-for-5.1 v3 02/24] scripts/coccinelle: Script to simplify
- DeviceClass error propagation
-To: Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-References: <20200412223619.11284-1-f4bug@amsat.org>
- <20200412223619.11284-3-f4bug@amsat.org> <875ze2tfvc.fsf@dusky.pond.sub.org>
- <23ad6d04-1f42-29b8-caa6-6506cf1b7422@redhat.com>
- <87k12iqk9x.fsf@dusky.pond.sub.org>
+ Tue, 14 Apr 2020 23:13:25 -0700 (PDT)
+Subject: Re: [Qemu devel PATCH v5 1/3] hw/net: Add Smartfusion2 emac block
+To: sundeep.lkml@gmail.com, jasowang@redhat.com, peter.maydell@linaro.org,
+ philmd@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <1586876551-3695-1-git-send-email-sundeep.lkml@gmail.com>
+ <1586876551-3695-2-git-send-email-sundeep.lkml@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Autocrypt: addr=f4bug@amsat.org; keydata=
  mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
@@ -122,18 +119,18 @@ Autocrypt: addr=f4bug@amsat.org; keydata=
  K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
  n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
  CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <a7d6f3be-3e27-82e6-2828-7afc44aa3b52@amsat.org>
-Date: Wed, 15 Apr 2020 08:16:52 +0200
+Message-ID: <f3ab27fe-e270-39a2-10eb-0c16be5ad3cd@amsat.org>
+Date: Wed, 15 Apr 2020 08:13:22 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <87k12iqk9x.fsf@dusky.pond.sub.org>
+In-Reply-To: <1586876551-3695-2-git-send-email-sundeep.lkml@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::343
+X-Received-From: 2a00:1450:4864:20::52a
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -145,147 +142,688 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
- Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-block@nongnu.org,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Eduardo Habkost <ehabkost@redhat.com>,
- Xie Changlong <xiechanglong.d@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
- qemu-riscv@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
- Wen Congyang <wencongyang2@huawei.com>, Max Reitz <mreitz@redhat.com>,
- qemu-ppc@nongnu.org, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1kKlYo1WIEUt
+X-TUID: Unp2pvc91pKs
 
-On 4/14/20 3:17 PM, Markus Armbruster wrote:
-> Philippe Mathieu-Daudé <philmd@redhat.com> writes:
+On 4/14/20 5:02 PM, sundeep.lkml@gmail.com wrote:
+> From: Subbaraya Sundeep <sundeep.lkml@gmail.com>
 > 
->> On 4/14/20 2:24 PM, Markus Armbruster wrote:
->>> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
->>>
->>>> When a device uses an Error* with data not modified before realize(),
->>>> this call can be moved to init(). Add a Coccinelle patch to find such
->>>> uses.
->>>>
->>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>>> ---
->>>>   ...implify-init-realize-error_propagate.cocci | 69 +++++++++++++++++++
->>>>   MAINTAINERS                                   |  1 +
->>>>   2 files changed, 70 insertions(+)
->>>>   create mode 100644 scripts/coccinelle/simplify-init-realize-error_propagate.cocci
->>>>
->>>> diff --git a/scripts/coccinelle/simplify-init-realize-error_propagate.cocci b/scripts/coccinelle/simplify-init-realize-error_propagate.cocci
->>>> new file mode 100644
->>>> index 0000000000..2e3ec4d98a
->>>> --- /dev/null
->>>> +++ b/scripts/coccinelle/simplify-init-realize-error_propagate.cocci
->>>> @@ -0,0 +1,69 @@
->>>> +// Find error-propagation calls that don't need to be in DeviceClass::realize()
->>>> +// because they don't use information user can change before calling realize(),
->>>> +// so they can be moved to DeviceClass:initfn() where error propagation is not
->>>> +// needed.
->>>> +//
->>>> +// Copyright: (C) 2020 Philippe Mathieu-Daudé
->>>> +// This work is licensed under the terms of the GNU GPLv2 or later.
->>>> +//
->>>> +// spatch \
->>>> +//  --macro-file scripts/cocci-macro-file.h \
->>>> +//  --sp-file \
->>>> +//    scripts/coccinelle/simplify-init-realize-error_propagate.cocci \
->>>> +//  --timeout 60
->>>> +//
->>>> +// Inspired by https://www.mail-archive.com/qemu-devel@nongnu.org/msg692500.html
->>>> +
->>>> +
->>>> +@ match_class_init @
->>>> +TypeInfo info;
->>>> +identifier class_initfn;
->>>> +@@
->>>> +    info.class_init = class_initfn;
->>>> +
->>>> +
->>>> +@ match_instance_init @
->>>> +TypeInfo info;
->>>> +identifier instance_initfn;
->>>> +@@
->>>> +    info.instance_init = instance_initfn;
->>>> +
->>>> +
->>>> +@ match_realize @
->>>> +identifier match_class_init.class_initfn;
->>>> +DeviceClass *dc;
->>>> +identifier realizefn;
->>>> +@@
->>>> +void class_initfn(...)
->>>> +{
->>>> +    ...
->>>> +    dc->realize = realizefn;
->>>> +    ...
->>>> +}
->>>
->>> I'm afraid this misses realize() methods of DeviceClass subclasses.
->>> Consider PCI device "i6300esb" (picked just because it's simple).
->>>
->>> pci_device_class_init() sets DeviceClass method realize() to
->>> pci_qdev_realize().  pci_qdev_realize() does the work common to all PCI
->>> devices, and calls PCIDeviceClass method realize() for the work specific
->>> to the PCI device at hand.
->>>
->>> i6300esb_class_init() sets PCIDeviceClass method realize() to
->>> i6300esb_realize().
->>>
->>> Your first rule should match i6300esb_info alright, and thus identify
->>> i6300esb_class_init() as a class_init() method.
->>>
->>> But your third rule can't match i6300esb_class_init()'s
->>>
->>>      k->realize = i6300esb_realize;
->>>
->>> because @k is a PCIDeviceClass, not a DeviceClass.
->>>
->>> I think it also misses cases that have a realize(), but no
->>> instance_init().
->>>
->>> Finding only some instances of an anti-pattern can still be useful.  But
->>> you should explain the script's limitations then, both in the script and
->>> the commit message.
->>
->> OK.
->>
->>>
->>>> +
->>>> +
->>>> +@ propagate_in_realize @
->>>> +identifier match_realize.realizefn;
->>>> +identifier err;
->>>> +identifier errp;
->>>> +identifier func_with_errp =~ "(?!object_property_set_link)";
->>>
->>> What are you trying to accomplish with this lookahead assertion?
->>
->> "match all func_with_errp() except object_property_set_link()"?
+> Modelled Ethernet MAC of Smartfusion2 SoC.
+> Micrel KSZ8051 PHY is present on Emcraft's
+> SOM kit hence same PHY is emulated.
 > 
-> What's wrong with
+> Signed-off-by: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  MAINTAINERS                |   2 +
+>  hw/net/Makefile.objs       |   1 +
+>  hw/net/msf2-emac.c         | 566 +++++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/net/msf2-emac.h |  53 +++++
+>  4 files changed, 622 insertions(+)
+>  create mode 100644 hw/net/msf2-emac.c
+>  create mode 100644 include/hw/net/msf2-emac.h
 > 
->     identifier func_with_errp != object_property_set_link
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 642c8e0..9d0ff20 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -919,6 +919,8 @@ F: include/hw/arm/msf2-soc.h
+>  F: include/hw/misc/msf2-sysreg.h
+>  F: include/hw/timer/mss-timer.h
+>  F: include/hw/ssi/mss-spi.h
+> +F: hw/net/msf2-emac.c
+> +F: include/hw/net/msf2-emac.h
+>  
+>  Emcraft M2S-FG484
+>  M: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+> diff --git a/hw/net/Makefile.objs b/hw/net/Makefile.objs
+> index af4d194..f2b7398 100644
+> --- a/hw/net/Makefile.objs
+> +++ b/hw/net/Makefile.objs
+> @@ -55,3 +55,4 @@ common-obj-$(CONFIG_ROCKER) += rocker/rocker.o rocker/rocker_fp.o \
+>  obj-$(call lnot,$(CONFIG_ROCKER)) += rocker/qmp-norocker.o
+>  
+>  common-obj-$(CONFIG_CAN_BUS) += can/
+> +common-obj-$(CONFIG_MSF2) += msf2-emac.o
+> diff --git a/hw/net/msf2-emac.c b/hw/net/msf2-emac.c
+> new file mode 100644
+> index 0000000..cae40fd
+> --- /dev/null
+> +++ b/hw/net/msf2-emac.c
+> @@ -0,0 +1,566 @@
+> +/*
+> + * QEMU model of the Smartfusion2 Ethernet MAC.
+> + *
+> + * Copyright (c) 2020 Subbaraya Sundeep <sundeep.lkml@gmail.com>.
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
+> + *
+> + * Refer to section Ethernet MAC in the document:
+> + * UG0331: SmartFusion2 Microcontroller Subsystem User Guide
+> + * Datasheet URL:
+> + * https://www.microsemi.com/document-portal/cat_view/56661-internal-documents/
+> + * 56758-soc?lang=en&limit=20&limitstart=220
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu-common.h"
+> +#include "qemu/log.h"
+> +#include "qapi/error.h"
+> +#include "exec/address-spaces.h"
+> +#include "hw/registerfields.h"
+> +#include "hw/net/msf2-emac.h"
+> +#include "hw/net/mii.h"
+> +#include "hw/irq.h"
+> +#include "hw/qdev-properties.h"
+> +#include "migration/vmstate.h"
+> +
+> +REG32(CFG1, 0x0)
+> +    FIELD(CFG1, RESET, 31, 1)
+> +    FIELD(CFG1, RX_EN, 2, 1)
+> +    FIELD(CFG1, TX_EN, 0, 1)
+> +    FIELD(CFG1, LB_EN, 8, 1)
+> +REG32(CFG2, 0x4)
+> +REG32(IFG, 0x8)
+> +REG32(HALF_DUPLEX, 0xc)
+> +REG32(MAX_FRAME_LENGTH, 0x10)
+> +REG32(MII_CMD, 0x24)
+> +    FIELD(MII_CMD, READ, 0, 1)
+> +REG32(MII_ADDR, 0x28)
+> +    FIELD(MII_ADDR, REGADDR, 0, 5)
+> +    FIELD(MII_ADDR, PHYADDR, 8, 5)
+> +REG32(MII_CTL, 0x2c)
+> +REG32(MII_STS, 0x30)
+> +REG32(STA1, 0x40)
+> +REG32(STA2, 0x44)
+> +REG32(FIFO_CFG0, 0x48)
+> +REG32(DMA_TX_CTL, 0x180)
+> +    FIELD(DMA_TX_CTL, EN, 0, 1)
+> +REG32(DMA_TX_DESC, 0x184)
+> +REG32(DMA_TX_STATUS, 0x188)
+> +    FIELD(DMA_TX_STATUS, PKTCNT, 16, 8)
+> +    FIELD(DMA_TX_STATUS, UNDERRUN, 1, 1)
+> +    FIELD(DMA_TX_STATUS, PKT_SENT, 0, 1)
+> +REG32(DMA_RX_CTL, 0x18c)
+> +    FIELD(DMA_RX_CTL, EN, 0, 1)
+> +REG32(DMA_RX_DESC, 0x190)
+> +REG32(DMA_RX_STATUS, 0x194)
+> +    FIELD(DMA_RX_STATUS, PKTCNT, 16, 8)
+> +    FIELD(DMA_RX_STATUS, OVERFLOW, 2, 1)
+> +    FIELD(DMA_RX_STATUS, PKT_RCVD, 0, 1)
+> +REG32(DMA_IRQ_MASK, 0x198)
+> +REG32(DMA_IRQ, 0x19c)
+> +
+> +#define EMPTY_MASK              (1 << 31)
+> +#define PKT_SIZE                0x7FF
+> +#define PHYADDR                 0x1
+> +#define MAX_PKT_SIZE            2048
+> +
+> +typedef struct {
+> +    uint32_t pktaddr;
+> +    uint32_t pktsize;
+> +    uint32_t next;
+> +} EmacDesc;
+> +
+> +static uint32_t emac_get_isr(MSF2EmacState *s)
+> +{
+> +    uint32_t ier = s->regs[R_DMA_IRQ_MASK];
+> +    uint32_t tx = s->regs[R_DMA_TX_STATUS] & 0xF;
+> +    uint32_t rx = s->regs[R_DMA_RX_STATUS] & 0xF;
+> +    uint32_t isr = (rx << 4) | tx;
+> +
+> +    s->regs[R_DMA_IRQ] = ier & isr;
+> +    return s->regs[R_DMA_IRQ];
+> +}
+> +
+> +static void emac_update_irq(MSF2EmacState *s)
+> +{
+> +    bool intr = emac_get_isr(s);
+> +
+> +    qemu_set_irq(s->irq, intr);
+> +}
+> +
+> +static void emac_load_desc(MSF2EmacState *s, EmacDesc *d, hwaddr desc)
+> +{
+> +    address_space_read(&s->dma_as, desc, MEMTXATTRS_UNSPECIFIED, d, sizeof *d);
+> +    /* Convert from LE into host endianness. */
+> +    d->pktaddr = le32_to_cpu(d->pktaddr);
+> +    d->pktsize = le32_to_cpu(d->pktsize);
+> +    d->next = le32_to_cpu(d->next);
+> +}
+> +
+> +static void emac_store_desc(MSF2EmacState *s, EmacDesc *d, hwaddr desc)
+> +{
+> +    /* Convert from host endianness into LE. */
+> +    d->pktaddr = cpu_to_le32(d->pktaddr);
+> +    d->pktsize = cpu_to_le32(d->pktsize);
+> +    d->next = cpu_to_le32(d->next);
+> +
+> +    address_space_write(&s->dma_as, desc, MEMTXATTRS_UNSPECIFIED, d, sizeof *d);
+> +}
+> +
+> +static void msf2_dma_tx(MSF2EmacState *s)
+> +{
+> +    NetClientState *nc = qemu_get_queue(s->nic);
+> +    hwaddr desc = s->regs[R_DMA_TX_DESC];
+> +    uint8_t buf[MAX_PKT_SIZE];
+> +    EmacDesc d;
+> +    int size;
+> +    uint8_t pktcnt;
+> +    uint32_t status;
+> +
+> +    if (!(s->regs[R_CFG1] & R_CFG1_TX_EN_MASK)) {
+> +        return;
+> +    }
+> +
+> +    while (1) {
+> +        emac_load_desc(s, &d, desc);
+> +        if (d.pktsize & EMPTY_MASK) {
+> +            break;
+> +        }
+> +        size = d.pktsize & PKT_SIZE;
+> +        address_space_read(&s->dma_as, d.pktaddr, MEMTXATTRS_UNSPECIFIED,
+> +                           buf, size);
+> +        /*
+> +         * This is very basic way to send packets. Ideally there should be
+> +         * a FIFO and packets should be sent out from FIFO only when
+> +         * R_CFG1 bit 0 is set.
+> +         */
+> +        if (s->regs[R_CFG1] & R_CFG1_LB_EN_MASK) {
+> +            nc->info->receive(nc, buf, size);
+> +        } else {
+> +            qemu_send_packet(nc, buf, size);
+> +        }
+> +        d.pktsize |= EMPTY_MASK;
+> +        emac_store_desc(s, &d, desc);
+> +        /* update sent packets count */
+> +        status = s->regs[R_DMA_TX_STATUS];
+> +        pktcnt = FIELD_EX32(status, DMA_TX_STATUS, PKTCNT);
+> +        pktcnt++;
+> +        s->regs[R_DMA_TX_STATUS] = FIELD_DP32(status, DMA_TX_STATUS,
+> +                                              PKTCNT, pktcnt);
+> +        s->regs[R_DMA_TX_STATUS] |= R_DMA_TX_STATUS_PKT_SENT_MASK;
+> +        desc = d.next;
+> +    }
+> +    s->regs[R_DMA_TX_STATUS] |= R_DMA_TX_STATUS_UNDERRUN_MASK;
+> +    s->regs[R_DMA_TX_CTL] &= ~R_DMA_TX_CTL_EN_MASK;
+> +}
+> +
+> +static void msf2_phy_update_link(MSF2EmacState *s)
+> +{
+> +    /* Autonegotiation status mirrors link status. */
+> +    if (qemu_get_queue(s->nic)->link_down) {
+> +        s->phy_regs[MII_BMSR] &= ~(MII_BMSR_AN_COMP |
+> +                                   MII_BMSR_LINK_ST);
+> +    } else {
+> +        s->phy_regs[MII_BMSR] |= (MII_BMSR_AN_COMP |
+> +                                  MII_BMSR_LINK_ST);
+> +    }
+> +}
+> +
+> +static void msf2_phy_reset(MSF2EmacState *s)
+> +{
+> +    memset(&s->phy_regs[0], 0, sizeof(s->phy_regs));
+> +    s->phy_regs[MII_BMCR] = 0x1140;
+> +    s->phy_regs[MII_BMSR] = 0x7968;
+> +    s->phy_regs[MII_PHYID1] = 0x0022;
+> +    s->phy_regs[MII_PHYID2] = 0x1550;
+> +    s->phy_regs[MII_ANAR] = 0x01E1;
+> +    s->phy_regs[MII_ANLPAR] = 0xCDE1;
+> +
+> +    msf2_phy_update_link(s);
+> +}
+> +
+> +static void write_to_phy(MSF2EmacState *s)
+> +{
+> +    uint8_t reg_addr = s->regs[R_MII_ADDR] & R_MII_ADDR_REGADDR_MASK;
+> +    uint8_t phy_addr = (s->regs[R_MII_ADDR] >> R_MII_ADDR_PHYADDR_SHIFT) &
+> +                       R_MII_ADDR_REGADDR_MASK;
+> +    uint16_t data = s->regs[R_MII_CTL] & 0xFFFF;
+> +
+> +    if (phy_addr != PHYADDR) {
+> +        return;
+> +    }
+> +
+> +    switch (reg_addr) {
+> +    case MII_BMCR:
+> +        if (data & MII_BMCR_RESET) {
+> +            /* Phy reset */
+> +            msf2_phy_reset(s);
+> +            data &= ~MII_BMCR_RESET;
+> +        }
+> +        if (data & MII_BMCR_AUTOEN) {
+> +            /* Complete autonegotiation immediately */
+> +            data &= ~MII_BMCR_AUTOEN;
+> +            s->phy_regs[MII_BMSR] |= MII_BMSR_AN_COMP;
+> +        }
+> +        break;
+> +    }
+> +
+> +    s->phy_regs[reg_addr] = data;
+> +}
+> +
+> +static uint16_t read_from_phy(MSF2EmacState *s)
+> +{
+> +    uint8_t reg_addr = s->regs[R_MII_ADDR] & R_MII_ADDR_REGADDR_MASK;
+> +    uint8_t phy_addr = (s->regs[R_MII_ADDR] >> R_MII_ADDR_PHYADDR_SHIFT) &
+> +                       R_MII_ADDR_REGADDR_MASK;
+> +
+> +    if (phy_addr == PHYADDR) {
+> +        return s->phy_regs[reg_addr];
+> +    } else {
+> +        return 0xFFFF;
+> +    }
+> +}
+> +
+> +static void msf2_emac_do_reset(MSF2EmacState *s)
+> +{
+> +    memset(&s->regs[0], 0, sizeof(s->regs));
+> +    s->regs[R_CFG1] = 0x80000000;
+> +    s->regs[R_CFG2] = 0x00007000;
+> +    s->regs[R_IFG] = 0x40605060;
+> +    s->regs[R_HALF_DUPLEX] = 0x00A1F037;
+> +    s->regs[R_MAX_FRAME_LENGTH] = 0x00000600;
+> +
+> +    msf2_phy_reset(s);
+> +}
+> +
+> +static uint64_t emac_read(void *opaque, hwaddr addr, unsigned int size)
+> +{
+> +    MSF2EmacState *s = opaque;
+> +    uint32_t r = 0;
+> +
+> +    addr >>= 2;
+> +
+> +    switch (addr) {
+> +    case R_DMA_IRQ:
+> +        r = emac_get_isr(s);
+> +        break;
+> +    default:
+> +        if (addr >= ARRAY_SIZE(s->regs)) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__,
+> +                          addr * 4);
+> +            return r;
+> +        }
+> +        r = s->regs[addr];
+> +        break;
+> +    }
+> +    return r;
+> +}
+> +
+> +static void emac_write(void *opaque, hwaddr addr, uint64_t val64,
+> +        unsigned int size)
+> +{
+> +    MSF2EmacState *s = opaque;
+> +    uint32_t value = val64;
+> +    uint32_t enreqbits;
+> +    uint8_t pktcnt;
+> +
+> +    addr >>= 2;
+> +    switch (addr) {
+> +    case R_DMA_TX_CTL:
+> +        s->regs[addr] = value;
+> +        if (value & R_DMA_TX_CTL_EN_MASK) {
+> +            msf2_dma_tx(s);
+> +        }
+> +        break;
+> +    case R_DMA_RX_CTL:
+> +        s->regs[addr] = value;
+> +        if (value & R_DMA_RX_CTL_EN_MASK) {
+> +            s->rx_desc = s->regs[R_DMA_RX_DESC];
+> +            qemu_flush_queued_packets(qemu_get_queue(s->nic));
+> +        }
+> +        break;
+> +    case R_CFG1:
+> +        if (value & R_CFG1_RESET_MASK) {
+> +            msf2_emac_do_reset(s);
+> +        }
 
-Nothing wrong, I didn't know this form by the time I wrote this script.
+Missing break?
 
-> 
-> ?
-> 
-> [...]
+> +    case R_FIFO_CFG0:
+> +       /*
+> +        * For our implementation, turning on modules is instantaneous,
+> +        * so the states requested via the *ENREQ bits appear in the
+> +        * *ENRPLY bits immediately. Also the reset bits to reset PE-MCXMAC
+> +        * module are not emulated here since it deals with start of frames,
+> +        * inter-packet gap and control frames.
+> +        */
+> +        enreqbits = extract32(value, 8, 5);
+> +        s->regs[addr] = deposit32(value, 16, 5, enreqbits);
+> +        break;
+> +    case R_DMA_TX_DESC:
+> +        if (value & 0x3) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "Tx Descriptor address should be"
+> +                          " 32 bit aligned\n");
+> +        }
+> +        /* Ignore [1:0] bits */
+> +        s->regs[addr] = value & ~3;
+> +        break;
+> +    case R_DMA_RX_DESC:
+> +        if (value & 0x3) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "Rx Descriptor address should be"
+> +                          " 32 bit aligned\n");
+> +        }
+> +        /* Ignore [1:0] bits */
+> +        s->regs[addr] = value & ~3;
+> +        break;
+> +    case R_DMA_TX_STATUS:
+> +        if (value & R_DMA_TX_STATUS_UNDERRUN_MASK) {
+> +            s->regs[addr] &= ~R_DMA_TX_STATUS_UNDERRUN_MASK;
+> +        }
+> +        if (value & R_DMA_TX_STATUS_PKT_SENT_MASK) {
+> +            pktcnt = FIELD_EX32(s->regs[addr], DMA_TX_STATUS, PKTCNT);
+> +            pktcnt--;
+> +            s->regs[addr] = FIELD_DP32(s->regs[addr], DMA_TX_STATUS,
+> +                                       PKTCNT, pktcnt);
+> +            if (pktcnt == 0) {
+> +                s->regs[addr] &= ~R_DMA_TX_STATUS_PKT_SENT_MASK;
+> +            }
+> +        }
+> +        break;
+> +    case R_DMA_RX_STATUS:
+> +        if (value & R_DMA_RX_STATUS_OVERFLOW_MASK) {
+> +            s->regs[addr] &= ~R_DMA_RX_STATUS_OVERFLOW_MASK;
+> +        }
+> +        if (value & R_DMA_RX_STATUS_PKT_RCVD_MASK) {
+> +            pktcnt = FIELD_EX32(s->regs[addr], DMA_RX_STATUS, PKTCNT);
+> +            pktcnt--;
+> +            s->regs[addr] = FIELD_DP32(s->regs[addr], DMA_RX_STATUS,
+> +                                       PKTCNT, pktcnt);
+> +            if (pktcnt == 0) {
+> +                s->regs[addr] &= ~R_DMA_RX_STATUS_PKT_RCVD_MASK;
+> +            }
+> +        }
+> +        break;
+> +    case R_DMA_IRQ:
+> +        break;
+> +    case R_MII_CMD:
+> +        if (value & R_MII_CMD_READ_MASK) {
+> +            s->regs[R_MII_STS] = read_from_phy(s);
+> +        }
+> +        break;
+> +    case R_MII_CTL:
+> +        s->regs[addr] = value;
+> +        write_to_phy(s);
+> +        break;
+> +    case R_STA1:
+> +        s->regs[addr] = value;
+> +       /*
+> +        * R_STA1 [31:24] : octet 1 of mac address
+> +        * R_STA1 [23:16] : octet 2 of mac address
+> +        * R_STA1 [15:8] : octet 3 of mac address
+> +        * R_STA1 [7:0] : octet 4 of mac address
+> +        */
+> +        stl_le_p(s->mac_addr, value);
+> +        break;
+> +    case R_STA2:
+> +        s->regs[addr] = value;
+> +       /*
+> +        * R_STA2 [31:24] : octet 5 of mac address
+> +        * R_STA2 [23:16] : octet 6 of mac address
+> +        */
+> +        stw_le_p(s->mac_addr + 4, value >> 16);
+> +        break;
+> +    default:
+> +        if (addr >= ARRAY_SIZE(s->regs)) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__,
+> +                          addr * 4);
+> +            return;
+> +        }
+> +        s->regs[addr] = value;
+> +        break;
+> +    }
+> +    emac_update_irq(s);
+> +}
+> +
+> +static const MemoryRegionOps emac_ops = {
+> +    .read = emac_read,
+> +    .write = emac_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +    .impl = {
+> +        .min_access_size = 4,
+> +        .max_access_size = 4
+> +    }
+> +};
+> +
+> +static bool emac_can_rx(NetClientState *nc)
+> +{
+> +    MSF2EmacState *s = qemu_get_nic_opaque(nc);
+> +
+> +    return (s->regs[R_CFG1] & R_CFG1_RX_EN_MASK) &&
+> +           (s->regs[R_DMA_RX_CTL] & R_DMA_RX_CTL_EN_MASK);
+> +}
+> +
+> +static bool match_addr(MSF2EmacState *s, const uint8_t *buf)
+> +{
+> +    /* The broadcast MAC address: FF:FF:FF:FF:FF:FF */
+> +    static const uint8_t broadcast_addr[] = { 0xFF, 0xFF, 0xFF, 0xFF,
+> +                                              0xFF, 0xFF };
+> +
+> +    if (!memcmp(buf, broadcast_addr, sizeof(broadcast_addr))) {
+> +        return true;
+> +    }
+> +
+> +    if (!memcmp(buf, s->mac_addr, sizeof(s->mac_addr))) {
+> +        return false;
+> +    }
+> +
+> +    return true;
+
+Yes, or:
+
+       return !!memcmp(buf, s->mac_addr, sizeof(s->mac_addr));
+
+> +}
+> +
+> +static ssize_t emac_rx(NetClientState *nc, const uint8_t *buf, size_t size)
+> +{
+> +    MSF2EmacState *s = qemu_get_nic_opaque(nc);
+> +    EmacDesc d;
+> +    uint8_t pktcnt;
+> +    uint32_t status;
+> +
+> +    if (size > (s->regs[R_MAX_FRAME_LENGTH] & 0xFFFF)) {
+> +        return size;
+> +    }
+> +    if (!match_addr(s, buf)) {
+> +        return size;
+> +    }
+> +
+> +    emac_load_desc(s, &d, s->rx_desc);
+> +
+> +    if (d.pktsize & EMPTY_MASK) {
+> +        address_space_write(&s->dma_as, d.pktaddr, MEMTXATTRS_UNSPECIFIED,
+> +                            buf, size & PKT_SIZE);
+> +        d.pktsize = size & PKT_SIZE;
+> +        emac_store_desc(s, &d, s->rx_desc);
+> +        /* update received packets count */
+> +        status = s->regs[R_DMA_RX_STATUS];
+> +        pktcnt = FIELD_EX32(status, DMA_RX_STATUS, PKTCNT);
+> +        pktcnt++;
+> +        s->regs[R_DMA_RX_STATUS] = FIELD_DP32(status, DMA_RX_STATUS,
+> +                                              PKTCNT, pktcnt);
+> +        s->regs[R_DMA_RX_STATUS] |= R_DMA_RX_STATUS_PKT_RCVD_MASK;
+> +        s->rx_desc = d.next;
+> +    } else {
+> +        s->regs[R_DMA_RX_CTL] &= ~R_DMA_RX_CTL_EN_MASK;
+> +        s->regs[R_DMA_RX_STATUS] |= R_DMA_RX_STATUS_OVERFLOW_MASK;
+> +    }
+> +    emac_update_irq(s);
+> +    return size;
+> +}
+> +
+> +static void msf2_emac_reset(DeviceState *dev)
+> +{
+> +    MSF2EmacState *s = MSS_EMAC(dev);
+> +
+> +    msf2_emac_do_reset(s);
+> +}
+> +
+> +static void emac_set_link(NetClientState *nc)
+> +{
+> +    MSF2EmacState *s = qemu_get_nic_opaque(nc);
+> +
+> +    msf2_phy_update_link(s);
+> +}
+> +
+> +static NetClientInfo net_msf2_emac_info = {
+> +    .type = NET_CLIENT_DRIVER_NIC,
+> +    .size = sizeof(NICState),
+> +    .can_receive = emac_can_rx,
+> +    .receive = emac_rx,
+> +    .link_status_changed = emac_set_link,
+> +};
+> +
+> +static void msf2_emac_realize(DeviceState *dev, Error **errp)
+> +{
+> +    MSF2EmacState *s = MSS_EMAC(dev);
+> +
+> +    if (!s->dma_mr) {
+> +        error_setg(errp, "MSS_EMAC 'ahb-bus' link not set");
+> +        return;
+> +    }
+> +
+> +    address_space_init(&s->dma_as, s->dma_mr, "emac-ahb");
+> +
+> +    qemu_macaddr_default_if_unset(&s->conf.macaddr);
+> +    s->nic = qemu_new_nic(&net_msf2_emac_info, &s->conf,
+> +                          object_get_typename(OBJECT(dev)), dev->id, s);
+> +    qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
+> +}
+> +
+> +static void msf2_emac_init(Object *obj)
+> +{
+> +    MSF2EmacState *s = MSS_EMAC(obj);
+> +
+> +    sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
+> +
+> +    memory_region_init_io(&s->mmio, obj, &emac_ops, s,
+> +                          "msf2-emac", R_MAX * 4);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+> +}
+> +
+> +static Property msf2_emac_properties[] = {
+> +    DEFINE_PROP_LINK("ahb-bus", MSF2EmacState, dma_mr,
+> +                     TYPE_MEMORY_REGION, MemoryRegion *),
+> +    DEFINE_NIC_PROPERTIES(MSF2EmacState, conf),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static const VMStateDescription vmstate_msf2_emac = {
+> +    .name = TYPE_MSS_EMAC,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT8_ARRAY(mac_addr, MSF2EmacState, ETH_ALEN),
+> +        VMSTATE_UINT32(rx_desc, MSF2EmacState),
+> +        VMSTATE_UINT16_ARRAY(phy_regs, MSF2EmacState, PHY_MAX_REGS),
+> +        VMSTATE_UINT32_ARRAY(regs, MSF2EmacState, R_MAX),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void msf2_emac_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->realize = msf2_emac_realize;
+> +    dc->reset = msf2_emac_reset;
+> +    dc->vmsd = &vmstate_msf2_emac;
+> +    device_class_set_props(dc, msf2_emac_properties);
+> +}
+> +
+> +static const TypeInfo msf2_emac_info = {
+> +    .name          = TYPE_MSS_EMAC,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(MSF2EmacState),
+> +    .instance_init = msf2_emac_init,
+> +    .class_init    = msf2_emac_class_init,
+> +};
+> +
+> +static void msf2_emac_register_types(void)
+> +{
+> +    type_register_static(&msf2_emac_info);
+> +}
+> +
+> +type_init(msf2_emac_register_types)
+> diff --git a/include/hw/net/msf2-emac.h b/include/hw/net/msf2-emac.h
+> new file mode 100644
+> index 0000000..37966d3
+> --- /dev/null
+> +++ b/include/hw/net/msf2-emac.h
+> @@ -0,0 +1,53 @@
+> +/*
+> + * QEMU model of the Smartfusion2 Ethernet MAC.
+> + *
+> + * Copyright (c) 2020 Subbaraya Sundeep <sundeep.lkml@gmail.com>.
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
+> + */
+> +
+> +#include "hw/sysbus.h"
+> +#include "exec/memory.h"
+> +#include "net/net.h"
+> +#include "net/eth.h"
+> +
+> +#define TYPE_MSS_EMAC "msf2-emac"
+> +#define MSS_EMAC(obj) \
+> +    OBJECT_CHECK(MSF2EmacState, (obj), TYPE_MSS_EMAC)
+> +
+> +#define R_MAX         (0x1a0 / 4)
+> +#define PHY_MAX_REGS  32
+> +
+> +typedef struct MSF2EmacState {
+> +    SysBusDevice parent;
+> +
+> +    MemoryRegion mmio;
+> +    MemoryRegion *dma_mr;
+> +    AddressSpace dma_as;
+> +
+> +    qemu_irq irq;
+> +    NICState *nic;
+> +    NICConf conf;
+> +
+> +    uint8_t mac_addr[ETH_ALEN];
+> +    uint32_t rx_desc;
+> +    uint16_t phy_regs[PHY_MAX_REGS];
+> +
+> +    uint32_t regs[R_MAX];
+> +} MSF2EmacState;
 > 

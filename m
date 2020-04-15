@@ -1,97 +1,94 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id k8sm20848913wrm.52.2020.04.15.03.42.15
+        by smtp.gmail.com with ESMTPSA id k9sm23726186wrd.17.2020.04.15.03.22.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Apr 2020 03:42:17 -0700 (PDT)
+        Wed, 15 Apr 2020 03:22:15 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 9B38D1FF93;
-	Wed, 15 Apr 2020 11:42:12 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 2B1BD1FF7E;
+	Wed, 15 Apr 2020 11:22:14 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Max Filippov <jcmvbkbc@gmail.com>,
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PULL 7/8] gdbstub: Do not use memset() on GByteArray
-Date: Wed, 15 Apr 2020 11:42:10 +0100
-Message-Id: <20200415104211.9388-8-alex.bennee@linaro.org>
+Subject: [RFC PATCH] tests/tcg: better trap gdb failures
+Date: Wed, 15 Apr 2020 11:22:08 +0100
+Message-Id: <20200415102208.2885-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200415104211.9388-1-alex.bennee@linaro.org>
-References: <20200415104211.9388-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 1Gsvkz0zxYZv
+X-TUID: cdqThLrkBQ+7
 
-From: Philippe Mathieu-Daudé <philmd@redhat.com>
+It seems older and non-multiarach aware GDBs might not fail gracefully
+when faced with something they don't know. For example when faced with
+a target XML for s390x the Ubuntu 18.04 gdb will generate an internal
+fault and prompt for a core dump.
 
-Introduce gdb_get_zeroes() to fill a GByteArray with zeroes.
+Work around this by invoking GDB in a more batch orientated way and
+then trying to filter out between test failures and gdb failures.
 
-Fixes: a010bdbe719 ("extend GByteArray to read register helpers")
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Message-Id: <20200414102427.7459-1-philmd@redhat.com>
-[AJB: used slightly more gliby set_size approach]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20200414200631.12799-13-alex.bennee@linaro.org>
+---
+ tests/guest-debug/run-test.py               | 19 ++++++++++++++++++-
+ tests/tcg/aarch64/gdbstub/test-sve-ioctl.py |  1 -
+ tests/tcg/aarch64/gdbstub/test-sve.py       |  1 -
+ 3 files changed, 18 insertions(+), 3 deletions(-)
 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 30b909ebd27..3c452fc50c0 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -125,6 +125,15 @@ static inline int gdb_get_reg128(GByteArray *buf, uint64_t val_hi,
-     return 16;
- }
+diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
+index 8c49ee2f225..2bbb8fbaa38 100755
+--- a/tests/guest-debug/run-test.py
++++ b/tests/guest-debug/run-test.py
+@@ -50,8 +50,25 @@ if __name__ == '__main__':
+     inferior = subprocess.Popen(shlex.split(cmd))
  
-+static inline int gdb_get_zeroes(GByteArray *array, size_t len)
-+{
-+    guint oldlen = array->len;
-+    g_byte_array_set_size(array, oldlen + len);
-+    memset(array->data + oldlen, 0, len);
+     # Now launch gdb with our test and collect the result
+-    gdb_cmd = "%s %s -ex 'target remote localhost:1234' -x %s" % (args.gdb, args.binary, args.test)
++    gdb_cmd = "%s %s" % (args.gdb, args.binary)
++    # run quietly and ignore .gdbinit
++    gdb_cmd += " -q -n -batch"
++    # disable prompts in case of crash
++    gdb_cmd += " -ex 'set confirm off'"
++    # connect to remote
++    gdb_cmd += " -ex 'target remote localhost:1234'"
++    # finally the test script itself
++    gdb_cmd += " -x %s" % (args.test)
 +
-+    return len;
-+}
++    print("GDB CMD: %s" % (gdb_cmd))
+ 
+     result = subprocess.call(gdb_cmd, shell=True);
+ 
++    # A negative result is the result of an internal gdb failure like
++    # a crash. We force a return of 0 so we don't fail the test on
++    # account of broken external tools.
++    if result < 0:
++        print("GDB crashed? SKIPPING")
++        exit(0)
 +
- /**
-  * gdb_get_reg_ptr: get pointer to start of last element
-  * @len: length of element
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 8efc535f2a0..063551df234 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -47,8 +47,7 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-         if (gdb_has_xml) {
-             return 0;
-         }
--        memset(mem_buf, 0, 12);
--        return 12;
-+        return gdb_get_zeroes(mem_buf, 12);
-     }
-     switch (n) {
-     case 24:
-diff --git a/target/xtensa/gdbstub.c b/target/xtensa/gdbstub.c
-index 0ee3feabe54..4d43f1340ae 100644
---- a/target/xtensa/gdbstub.c
-+++ b/target/xtensa/gdbstub.c
-@@ -105,8 +105,7 @@ int xtensa_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-         default:
-             qemu_log_mask(LOG_UNIMP, "%s from reg %d of unsupported size %d\n",
-                           __func__, n, reg->size);
--            memset(mem_buf, 0, reg->size);
--            return reg->size;
-+            return gdb_get_zeroes(mem_buf, reg->size);
-         }
+     exit(result)
+diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+index 5824abe09ac..972cf73c315 100644
+--- a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
++++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+@@ -67,7 +67,6 @@ except (gdb.error, AttributeError):
+ try:
+     # These are not very useful in scripts
+     gdb.execute("set pagination off")
+-    gdb.execute("set confirm off")
  
-     case xtRegisterTypeWindow: /*a*/
-@@ -115,8 +114,7 @@ int xtensa_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-     default:
-         qemu_log_mask(LOG_UNIMP, "%s from reg %d of unsupported type %d\n",
-                       __func__, n, reg->type);
--        memset(mem_buf, 0, reg->size);
--        return reg->size;
-+        return gdb_get_zeroes(mem_buf, reg->size);
-     }
- }
+     # Run the actual tests
+     run_test()
+diff --git a/tests/tcg/aarch64/gdbstub/test-sve.py b/tests/tcg/aarch64/gdbstub/test-sve.py
+index 90201d80094..b96bdbb99af 100644
+--- a/tests/tcg/aarch64/gdbstub/test-sve.py
++++ b/tests/tcg/aarch64/gdbstub/test-sve.py
+@@ -68,7 +68,6 @@ except (gdb.error, AttributeError):
+ try:
+     # These are not very useful in scripts
+     gdb.execute("set pagination off")
+-    gdb.execute("set confirm off")
  
+     # Run the actual tests
+     run_test()
 -- 
 2.20.1

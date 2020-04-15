@@ -1,248 +1,97 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp267978lfm;
-        Wed, 15 Apr 2020 00:55:48 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIEt/qx0tP9ctc7tJuT3bu1ItFStvdhYKm5bSFwDIq7Kfj7qsZkL3/jbp+osT+k/VZ7pyb6
-X-Received: by 2002:a37:7a42:: with SMTP id v63mr10330364qkc.340.1586937348121;
-        Wed, 15 Apr 2020 00:55:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586937348; cv=none;
-        d=google.com; s=arc-20160816;
-        b=CmnCteuck1K2BQaDzPJ5VPZlq2PRrkp8tRHEVKLuKPzytB//Jbuen9k2PHFGWJA/Dk
-         84EBKgihDmwsRc0yKO6qZMzQ1SXkpvfqbnS8m1136RUb4x1KpbjYMlbvAU/IC32EEBoq
-         s3PSQ+/yKAjHowmUUgH0PEWfIhAFWyCWDOjVQlBNMpA8571uENz38U05Bq28HdlcyQwR
-         oWDbPFh2lbVcYfblq3DYyntPMXiB+vtDAuLPrCTJyNqa+GK8ffDrZ8lHTa3W2omk7sXe
-         4bF8Zkjk/eDKJc1SjN909RNATfhPp7c5FemectlzaQD22CK33oe+IWClgjtIDrBGF12S
-         mxPw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=mUr19bRoL+TtPZKCa3rUjDzna79yhI5qGCrkYbNkvs4=;
-        b=VlrfgXeLuEcLZk6TrDNs0ChbD+3HoL0WKHu+2DL9Soht7T8dvP3nIoDf0xn1GHiswL
-         Cef+VLDm6Tk5ALCqUbaIkOJT/sdnZkYo6aaaIwIlft5nXN/NXLZTPuPr8dngMGQIvt/g
-         eBGVA7/p93tomva6xRvMqo+ThftWZi9y6LoLP/TUGW/KzJP/4iXxu3I+j81R8qT5JH0M
-         3GEpDUgQ8ToNYtvXUqIH+e35d9tj7xZIIbVlC/TXxVBpNM7R/XxoJec7go1s9HFCV1zi
-         L/rhg1a78k55bH5uRnR6H0jygjaJZXGzMkmqGGIR2grhRVSJYM2PlD1TJ5eINbtEJ0Hq
-         pvUg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v11si8488534qvs.190.2020.04.15.00.55.47
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Apr 2020 00:55:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45524 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jOctf-0007ov-Fn
-	for alex.bennee@linaro.org; Wed, 15 Apr 2020 03:55:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51664)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1jOcpv-0003Bv-P5
- for qemu-devel@nongnu.org; Wed, 15 Apr 2020 03:51:57 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1jOcpu-0008Fb-6B
- for qemu-devel@nongnu.org; Wed, 15 Apr 2020 03:51:55 -0400
-Received: from 4.mo3.mail-out.ovh.net ([178.33.46.10]:39323)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1jOcpt-0008Dx-TU
- for qemu-devel@nongnu.org; Wed, 15 Apr 2020 03:51:54 -0400
-Received: from player718.ha.ovh.net (unknown [10.110.103.76])
- by mo3.mail-out.ovh.net (Postfix) with ESMTP id 85BF7248FE2
- for <qemu-devel@nongnu.org>; Wed, 15 Apr 2020 09:51:52 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player718.ha.ovh.net (Postfix) with ESMTPSA id D0D5411513851;
- Wed, 15 Apr 2020 07:51:00 +0000 (UTC)
-Subject: Re: [PATCH-for-5.1 v3 05/24] hw/arm/aspeed_ast2600: Move some code
- from realize() to init()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200412223619.11284-1-f4bug@amsat.org>
- <20200412223619.11284-6-f4bug@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <7407eb89-2f66-aa01-e1d2-dba410926aca@kaod.org>
-Date: Wed, 15 Apr 2020 09:50:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id k8sm20848913wrm.52.2020.04.15.03.42.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 15 Apr 2020 03:42:17 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 9B38D1FF93;
+	Wed, 15 Apr 2020 11:42:12 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PULL 7/8] gdbstub: Do not use memset() on GByteArray
+Date: Wed, 15 Apr 2020 11:42:10 +0100
+Message-Id: <20200415104211.9388-8-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200415104211.9388-1-alex.bennee@linaro.org>
+References: <20200415104211.9388-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20200412223619.11284-6-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 13625640676116368304
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrfedvgdduvdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucffohhmrghinheprghrmhdrtghomhenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejudekrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrgh
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 178.33.46.10
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
- Jason Wang <jasowang@redhat.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Xie Changlong <xiechanglong.d@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>, Palmer Dabbelt <palmer@dabbelt.com>,
- David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
- qemu-riscv@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
- Wen Congyang <wencongyang2@huawei.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-ppc@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vmu9B3XoBhqa
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 1Gsvkz0zxYZv
 
-On 4/13/20 12:36 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> Coccinelle reported:
->=20
->   $ spatch ... --timeout 60 --sp-file \
->     scripts/coccinelle/simplify-init-realize-error_propagate.cocci
->   HANDLING: ./hw/arm/aspeed_ast2600.c
->   >>> possible moves from aspeed_soc_ast2600_init() to aspeed_soc_ast26=
-00_realize() in ./hw/arm/aspeed_ast2600.c:243
->=20
-> Move the calls using &error_fatal which don't depend on input
-> updated before realize() to init().
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
+Introduce gdb_get_zeroes() to fill a GByteArray with zeroes.
 
+Fixes: a010bdbe719 ("extend GByteArray to read register helpers")
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20200414102427.7459-1-philmd@redhat.com>
+[AJB: used slightly more gliby set_size approach]
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20200414200631.12799-13-alex.bennee@linaro.org>
 
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-
-> ---
-> v3: Typo 'depend of' -> 'depend on' (eblake)
-> ---
->  hw/arm/aspeed_ast2600.c | 41 ++++++++++++++++++++---------------------
->  1 file changed, 20 insertions(+), 21 deletions(-)
->=20
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index a860ab6a35..64512f95c9 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -114,6 +114,16 @@ static qemu_irq aspeed_soc_get_irq(AspeedSoCState =
-*s, int ctrl)
->      return qdev_get_gpio_in(DEVICE(&s->a7mpcore), sc->irqmap[ctrl]);
->  }
-> =20
-> +/*
-> + * ASPEED ast2600 has 0xf as cluster ID
-> + *
-> + * http://infocenter.arm.com/help/index.jsp?topic=3D/com.arm.doc.ddi03=
-88e/CIHEBGFG.html
-> + */
-> +static uint64_t aspeed_calc_affinity(int cpu)
-> +{
-> +    return (0xf << ARM_AFF1_SHIFT) | cpu;
-> +}
-> +
->  static void aspeed_soc_ast2600_init(Object *obj)
->  {
->      AspeedSoCState *s =3D ASPEED_SOC(obj);
-> @@ -130,6 +140,13 @@ static void aspeed_soc_ast2600_init(Object *obj)
->          object_initialize_child(obj, "cpu[*]", OBJECT(&s->cpu[i]),
->                                  sizeof(s->cpu[i]), sc->cpu_type,
->                                  &error_abort, NULL);
-> +        object_property_set_int(OBJECT(&s->cpu[i]), QEMU_PSCI_CONDUIT_=
-SMC,
-> +                                "psci-conduit", &error_abort);
-> +        object_property_set_int(OBJECT(&s->cpu[i]), aspeed_calc_affini=
-ty(i),
-> +                                "mp-affinity", &error_abort);
-> +
-> +        object_property_set_int(OBJECT(&s->cpu[i]), 1125000000, "cntfr=
-q",
-> +                                &error_abort);
->      }
-> =20
->      snprintf(typename, sizeof(typename), "aspeed.scu-%s", socname);
-> @@ -146,6 +163,9 @@ static void aspeed_soc_ast2600_init(Object *obj)
-> =20
->      sysbus_init_child_obj(obj, "a7mpcore", &s->a7mpcore,
->                            sizeof(s->a7mpcore), TYPE_A15MPCORE_PRIV);
-> +    object_property_set_int(OBJECT(&s->a7mpcore),
-> +                            ASPEED_SOC_AST2600_MAX_IRQ + GIC_INTERNAL,
-> +                            "num-irq", &error_abort);
-> =20
->      sysbus_init_child_obj(obj, "rtc", OBJECT(&s->rtc), sizeof(s->rtc),
->                            TYPE_ASPEED_RTC);
-> @@ -230,16 +250,6 @@ static void aspeed_soc_ast2600_init(Object *obj)
->                            TYPE_SYSBUS_SDHCI);
->  }
-> =20
-> -/*
-> - * ASPEED ast2600 has 0xf as cluster ID
-> - *
-> - * http://infocenter.arm.com/help/index.jsp?topic=3D/com.arm.doc.ddi03=
-88e/CIHEBGFG.html
-> - */
-> -static uint64_t aspeed_calc_affinity(int cpu)
-> -{
-> -    return (0xf << ARM_AFF1_SHIFT) | cpu;
-> -}
-> -
->  static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->  {
->      int i;
-> @@ -264,19 +274,11 @@ static void aspeed_soc_ast2600_realize(DeviceStat=
-e *dev, Error **errp)
-> =20
->      /* CPU */
->      for (i =3D 0; i < s->num_cpus; i++) {
-> -        object_property_set_int(OBJECT(&s->cpu[i]), QEMU_PSCI_CONDUIT_=
-SMC,
-> -                                "psci-conduit", &error_abort);
->          if (s->num_cpus > 1) {
->              object_property_set_int(OBJECT(&s->cpu[i]),
->                                      ASPEED_A7MPCORE_ADDR,
->                                      "reset-cbar", &error_abort);
->          }
-> -        object_property_set_int(OBJECT(&s->cpu[i]), aspeed_calc_affini=
-ty(i),
-> -                                "mp-affinity", &error_abort);
-> -
-> -        object_property_set_int(OBJECT(&s->cpu[i]), 1125000000, "cntfr=
-q",
-> -                                &error_abort);
-> -
->          /*
->           * TODO: the secondary CPUs are started and a boot helper
->           * is needed when using -kernel
-> @@ -292,9 +294,6 @@ static void aspeed_soc_ast2600_realize(DeviceState =
-*dev, Error **errp)
->      /* A7MPCORE */
->      object_property_set_int(OBJECT(&s->a7mpcore), s->num_cpus, "num-cp=
-u",
->                              &error_abort);
-> -    object_property_set_int(OBJECT(&s->a7mpcore),
-> -                            ASPEED_SOC_AST2600_MAX_IRQ + GIC_INTERNAL,
-> -                            "num-irq", &error_abort);
-> =20
->      object_property_set_bool(OBJECT(&s->a7mpcore), true, "realized",
->                               &error_abort);
->=20
-
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index 30b909ebd27..3c452fc50c0 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -125,6 +125,15 @@ static inline int gdb_get_reg128(GByteArray *buf, uint64_t val_hi,
+     return 16;
+ }
+ 
++static inline int gdb_get_zeroes(GByteArray *array, size_t len)
++{
++    guint oldlen = array->len;
++    g_byte_array_set_size(array, oldlen + len);
++    memset(array->data + oldlen, 0, len);
++
++    return len;
++}
++
+ /**
+  * gdb_get_reg_ptr: get pointer to start of last element
+  * @len: length of element
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index 8efc535f2a0..063551df234 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -47,8 +47,7 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+         if (gdb_has_xml) {
+             return 0;
+         }
+-        memset(mem_buf, 0, 12);
+-        return 12;
++        return gdb_get_zeroes(mem_buf, 12);
+     }
+     switch (n) {
+     case 24:
+diff --git a/target/xtensa/gdbstub.c b/target/xtensa/gdbstub.c
+index 0ee3feabe54..4d43f1340ae 100644
+--- a/target/xtensa/gdbstub.c
++++ b/target/xtensa/gdbstub.c
+@@ -105,8 +105,7 @@ int xtensa_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+         default:
+             qemu_log_mask(LOG_UNIMP, "%s from reg %d of unsupported size %d\n",
+                           __func__, n, reg->size);
+-            memset(mem_buf, 0, reg->size);
+-            return reg->size;
++            return gdb_get_zeroes(mem_buf, reg->size);
+         }
+ 
+     case xtRegisterTypeWindow: /*a*/
+@@ -115,8 +114,7 @@ int xtensa_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+     default:
+         qemu_log_mask(LOG_UNIMP, "%s from reg %d of unsupported type %d\n",
+                       __func__, n, reg->type);
+-        memset(mem_buf, 0, reg->size);
+-        return reg->size;
++        return gdb_get_zeroes(mem_buf, reg->size);
+     }
+ }
+ 
+-- 
+2.20.1

@@ -1,109 +1,101 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1369911lfm;
-        Wed, 15 Apr 2020 21:43:08 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJwIRjfBZXNBADLSKeyMt2V1gdn1340XU/5UzzcN6T0cSFWQBpIb9sLtd30nxebYwJXHe4h
-X-Received: by 2002:ac8:1cf:: with SMTP id b15mr19327453qtg.389.1587012188257;
-        Wed, 15 Apr 2020 21:43:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587012188; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1564739lfm;
+        Thu, 16 Apr 2020 02:03:19 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKgs6IQBNZwjfs/DNqS50jl3FECugX52OXFZqHLaLDVrlnl+5Mf4XaSoPgBlB9It/1jquRh
+X-Received: by 2002:ae9:ec12:: with SMTP id h18mr28452744qkg.387.1587027799434;
+        Thu, 16 Apr 2020 02:03:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587027799; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sr+l0Ju8j468dYRHKHOo1um2IAn38zZjO3RjafO/dp4/wtCIds/FyCD99Ze01pAgYg
-         L2LTK41bOK2PEjSwCs8yyhnjx+fX7cXKG7Wa7IU/KQBpNRZGhateBXYP0wVBQVuEcLJB
-         KuPtsgbh771YPfDYUVdcvi7+6NRQeloAw2Uc8iWouT0zSlCHKPws3OcwQSgDMOY02mz1
-         gTMdBRiEV5Wvb9kuLXaXMFvZIscKO98vCEzs3reSaGQjGc+bP4NXSRDnoM9a4qKh8h/D
-         JDl/cx8GbMJ/zF1juRtz0jpp0N+cbdUSklp3xbdZCz0/PsDNa+Jx1RY2IKLnVmnedkB3
-         8uhQ==
+        b=muf/ESlEytv9/Uo83GP7rlyGhtM61C6Uznv3evITRnLEe2SiskGV/sMGDYh0yO/twt
+         /axPTfDEvmlhUbUwm/Tmro5TR1VPqv5WlDOgsXgaUzYX0sScazz/X+LAalTjWqiCpy6s
+         cBH/g6e4/5P8MSoQdMJsrwlWz+tphW4mt/XK4WAe0TMoU1hWwwslqavUyQ6KXoIkDZjY
+         0F96HaYoSKInZr1jQDsvYr+GvtMrYYAoFpWzWRxypdPFF/dYlGeIoQjvH1jW7R1QgkqS
+         iwHwZEcswvecUfGrwujtDx+NzbcLHv4pqtbEn629Z6jxDl6CKSyjRCAXrOedRymMM4IE
+         DT9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=jFVN1Wp427ZYbguIcMyVTf/NpzQB6iKlqCd1bbX5ME4=;
-        b=PncX+cKn5B+ZsqzcfuirYLIw7UIZqo8QFcvQfVQ52ScuFMxjXB5whP91GHEDXAbfAw
-         xRwTcHoH3Hw6i8FicVb4T6FQwE6a8VRlCii0P0xB+89T6mDYHGMie4z1uckeQG76xs7I
-         ypqxu6JCJUPBacVf0kpZguR0rZQ6RujmH9lzavZMjvx1Mq2pT3psZsCiNj6VfWV3rwhm
-         PDACtNP3qPf+fpubRmHrupZk/bG1Z1zHnzxRsnRv80Lig2axW3HYyaa7uu30tRcx//2y
-         2tIomLCqHt0h671pFifT75Y4/imvVV2bpidXvY4mbCmonmjuCnb3FFt7nrXQ9NKH/iEV
-         HFiQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=t0g7U8E3KHE61ic0C65DwUhjti+TQvBSks1i7vapsT0=;
+        b=znLFD8V0LKjFFj1EJew4q1gt8Qd9jSTlyRNHb7U1SSlt6BLXaXLON+kRAfw/jQwzqy
+         AKs9DIahdShUiNpe4t2ceBAkelt+jvd3fzBnDdHXLfavhlK7/urw1nkUWvquJyv6hz2s
+         teHAePBRtN2mGnc3RqBKMSA5CA90Veuu+muvDWPnFRed6Qw4ejys+fLl+2bT4rmlo/aw
+         9R+WSvoMqMOB+bOQ99ohWJGNGMbXWIcmVEdV9W/NX6dZpX3tH9Wa6F2noNxUPmgjrnHV
+         tvwdlw4L5NzwsuQRPwAQ9CcadubzK3WRs/RCKkeWXhwacHYikJhb74wEK0vb9KBnUnm7
+         hQpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BNasLt21;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Sfy6LfIh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p5si3921897qti.245.2020.04.15.21.43.08
+        by mx.google.com with ESMTPS id v2si11119120qvb.95.2020.04.16.02.03.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Apr 2020 21:43:08 -0700 (PDT)
+        Thu, 16 Apr 2020 02:03:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BNasLt21;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Sfy6LfIh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57760 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59576 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jOwMl-00065k-Nm
-	for alex.bennee@linaro.org; Thu, 16 Apr 2020 00:43:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51632)
+	id 1jP0QY-0000td-OH
+	for alex.bennee@linaro.org; Thu, 16 Apr 2020 05:03:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49373)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jOwMe-00065C-3L
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 00:43:01 -0400
+ (envelope-from <rfried.dev@gmail.com>) id 1jP0QI-0000oY-S0
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2020 05:03:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1jOwMc-00053o-ME
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 00:42:59 -0400
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:53036)
+ (envelope-from <rfried.dev@gmail.com>) id 1jP0QH-0001Gz-0b
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2020 05:03:02 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:36573)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1jOwMc-00051y-Ey
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 00:42:58 -0400
-Received: by mail-pj1-x1043.google.com with SMTP id ng8so834051pjb.2
- for <qemu-arm@nongnu.org>; Wed, 15 Apr 2020 21:42:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=jFVN1Wp427ZYbguIcMyVTf/NpzQB6iKlqCd1bbX5ME4=;
- b=BNasLt21KAenDohSuccIEC3baLcROeUsFB8N+K5aguK4GIR/wmqnfNTdWHFAHmkXd9
- s4Sn5zkDQ9JwSpGuU37fvdUslnqELX08WQHX+ynw1c0XjC/IwiccEwa/FcCmsGR7Bb1F
- 4fAhaQjsU3+mATMdB4cvSCH02h4YhgfDbnvlKLZPLzichiiKv87l7pzFXA1itC5FAcpT
- zv758EfPCHS5h5lY+jUCtdYSAnhXx+xHfY/ipJtGyNH0D04f1Az01WoM4JhKmDtVnS5y
- gZ/nLPl/DjeL5tAMV1Q9qMCIISeVI6GC6nLXIgVV4KLrITcQQ6f9/0cweJ9fX68s+CwC
- e+hg==
+ (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
+ id 1jP0QF-0001Ee-P5; Thu, 16 Apr 2020 05:03:00 -0400
+Received: by mail-wr1-x443.google.com with SMTP id u13so3916134wrp.3;
+ Thu, 16 Apr 2020 02:02:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=t0g7U8E3KHE61ic0C65DwUhjti+TQvBSks1i7vapsT0=;
+ b=Sfy6LfIhguA9albT4FxwJotLGBSRus3mDuimprkTAgvAhbq8I8BsSHjVgZzI7lQHbH
+ yZm97u6gr3JYOgLRodBAgB49uDs/M9XqEGDH6+eMfKY7fsOzgZvmK2y50UikYE0sGUmc
+ WXHi6ygtHrZd12nXYmA1/Cycm7vUIgglu8o5fCworqZrcpYuAN1hzXw5PXj+kWMC5fhm
+ 5lYuwQNKNOEiHh+CL2X9caCN1D+3K6hpjUFpcbhuFJbSHtBdAdaNGf1B1O3HZPd5F9PI
+ mF6O/OgMzrxSZVixA5+We/Yu/iqZ9XfOMCRFE7J9iXgZyGQYOOnoHDQs8y7M9/BnzR0K
+ sXcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=jFVN1Wp427ZYbguIcMyVTf/NpzQB6iKlqCd1bbX5ME4=;
- b=VTm9JgqSOBF6+k33nfWcKRClq2b2hNy+zAp1eUhhh4DtNp84mNMFvTUFuxxzgBHxGz
- lB7tD3A+EkRZE0kDuX/Y45gut4tv9mJB2GO295rtCZSwpgI8JBatRuP0HCxIrlAMV52S
- ix89BW0WzueYeuK2+F2da5J/9FUgzdIAo0Wf2dZOKlJjKiFLylhF84l48yr2yeUNsCBI
- hB+wBFWRUvL8Q5fIx2WJ1XSXhe1/URicTyPqzcr7ciKa/3VsJyabZ0MoMqN5oK6YNvAh
- orVOlh+zqffU82UcDbaghzRwvdOsXRF6cG49cuO/qTuqUNfTZ7ez6v0R0x2dt4YGOjmA
- omvw==
-X-Gm-Message-State: AGi0Pua8042ST8WpNQMymCYdNd096zok2I8AxkRF8ahDFIw2iuiUTAqo
- anDc3/HkO9ik2rtiqgyD7n3Y9w==
-X-Received: by 2002:a17:902:820f:: with SMTP id
- x15mr8209449pln.180.1587012176584; 
- Wed, 15 Apr 2020 21:42:56 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id a138sm1865417pfd.32.2020.04.15.21.42.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Apr 2020 21:42:55 -0700 (PDT)
-Subject: Re: [PATCH RFC v2] target/arm: Implement SVE2 HISTCNT, HISTSEG
-To: Stephen Long <steplong@quicinc.com>, qemu-devel@nongnu.org
-References: <20200415190708.16914-1-steplong@quicinc.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <9390d7ed-b4ff-e284-0114-ba70ed16ff2c@linaro.org>
-Date: Wed, 15 Apr 2020 21:42:53 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ bh=t0g7U8E3KHE61ic0C65DwUhjti+TQvBSks1i7vapsT0=;
+ b=WjrZE8wDovFH1uf/UDUUmcapd5V4AYH6kEPWWAHD6xGVeNiYjTkjQc8vymEyQzxCwo
+ Po/UqFm2Dmy+a6sLFkWDvLtOQib1cDBUNyLTVrBEuRg69K53hhSd3fuGTSzcZ2UzCPzp
+ mqfBMwYGeI707NWm1OVzb7BLv7qgvLiM9a3eAAx3EZMAOxLFa2qtr9Ivh+gL5rzbiqFx
+ sbMV9E3irsZ5mfKtIRHCv/KwW4f4RzyK9DNchiDi5/WrrRLoi9vxL7f+Q8/GFXypz84v
+ +QIlJo5yuCSEOhB6CTA3/G+tPhGWHbh7HMCGJlKYztVIH5gNovYaoZ9qBKDr7LtED1hg
+ nwCQ==
+X-Gm-Message-State: AGi0Pubz3Ag5s2IiRJ2PP+MEOwUTgcR6+YpPY+a2gug2fKqlgE/DkCAe
+ KKYZ5WyrZ08VlIIZKrLib0A=
+X-Received: by 2002:adf:8441:: with SMTP id 59mr30522047wrf.237.1587027778157; 
+ Thu, 16 Apr 2020 02:02:58 -0700 (PDT)
+Received: from localhost.localdomain ([37.142.6.51])
+ by smtp.gmail.com with ESMTPSA id h137sm3489092wme.0.2020.04.16.02.02.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Apr 2020 02:02:57 -0700 (PDT)
+From: Ramon Fried <rfried.dev@gmail.com>
+To: edgar.iglesias@gmail.com, alistair@alistair23.me, peter.maydell@linaro.org,
+ jasowang@redhat.com, qemu-arm@nongnu.org
+Subject: [PATCH] Cadence: gem: fix wraparound in 64bit descriptors
+Date: Thu, 16 Apr 2020 12:02:47 +0300
+Message-Id: <20200416090247.353414-1-rfried.dev@gmail.com>
+X-Mailer: git-send-email 2.26.0
 MIME-Version: 1.0
-In-Reply-To: <20200415190708.16914-1-steplong@quicinc.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::1043
+X-Received-From: 2a00:1450:4864:20::443
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,143 +107,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, apazos@quicinc.com
+Cc: Ramon Fried <rfried.dev@gmail.com>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 27FHzdUA/T+6
+X-TUID: hv+hCDAc30f0
 
-On 4/15/20 12:07 PM, Stephen Long wrote:
-> +++ b/target/arm/sve.decode
-> @@ -147,6 +147,7 @@
->                  &rprrr_esz rn=%reg_movprfx
->  @rdn_pg_rm_ra   ........ esz:2 . ra:5  ... pg:3 rm:5 rd:5 \
->                  &rprrr_esz rn=%reg_movprfx
-> +@rd5_pg_rn_rm   ........ esz:2 . rm:5 ... pg:3 rn:5 rd:5       &rprr_esz
+Wraparound of TX descriptor cyclic buffer only updated
+the low 32 bits of the descriptor.
+Fix that by checking if we're working with 64bit descriptors.
 
-To retain the pattern this should drop the 5; there's no existing rd_pg_rn_rm
-with which to conflict.
+Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
+---
+ hw/net/cadence_gem.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index 51ec5a072d..b8ae21cc0d 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -1238,7 +1238,14 @@ static void gem_transmit(CadenceGEMState *s)
+             /* read next descriptor */
+             if (tx_desc_get_wrap(desc)) {
+                 tx_desc_set_last(desc);
+-                packet_desc_addr = s->regs[GEM_TXQBASE];
++
++            if (s->regs[GEM_DMACFG] & GEM_DMACFG_ADDR_64B) {
++                packet_desc_addr = s->regs[GEM_TBQPH];
++                packet_desc_addr <<= 32;
++            } else {
++                packet_desc_addr = 0;
++            }
++                packet_desc_addr |= s->regs[GEM_TXQBASE];
+             } else {
+                 packet_desc_addr += 4 * gem_get_desc_len(s, false);
+             }
+-- 
+2.26.0
 
-> +++ b/target/arm/sve_helper.c
-> @@ -7016,3 +7016,68 @@ DO_PPZZ_MATCH(sve2_nmatch_ppzz_b, MO_8, true)
->  DO_PPZZ_MATCH(sve2_nmatch_ppzz_h, MO_16, true)
->  
->  #undef DO_PPZZ_MATCH
-> +
-> +#define DO_HISTCNT(NAME, TYPE, H)                                            \
-> +void HELPER(NAME)(void *vd, void *vn, void *vm, void *vg, uint32_t desc)     \
-> +{                                                                            \
-> +    intptr_t i, j;                                                           \
-> +    intptr_t opr_sz = simd_oprsz(desc) / 8;                                  \
-
-Divide by sizeof(TYPE).
-
-> +    TYPE *d = vd, *n = vn, *m = vm;                                          \
-> +    uint8_t *pg = vg;                                                        \
-> +    for (i = 0; i < opr_sz; ++i) {                                           \
-> +        TYPE count = 0;                                                      \
-> +        uint8_t pred = pg[H1(i)] >> ((i & 1) * 4);                           \
-
-The indexing isn't correct.
-
-You've got a mix of uint32_t and uint64_t here.
-Indeed, it's probably simpler to not try to do both functions with a macro, but
-just split them.
-
-For uint64_t,
-
-    uint8_t pred = pg[H1(i)];
-
-for uint32_t,
-
-    uint8_t pred = pg[H1(i >> 1)] >> ((i & 1) * 4);
-
-or when i is in units of bytes instead of elements,
-
-    uint8_t pred = pg[H1(i >> 3)] >> (i & 7);
-
-> +        if (pred & 1) {                                                      \
-> +            TYPE nn = n[H(i)];                                               \
-> +            for (j = 0; j <= i; ++j) {                                       \
-> +                uint8_t pred = pg[H1(j)] >> ((j & 1) * 4);                   \
-> +                if (pred & 1 && nn == m[H(j)]) {                             \
-> +                    ++count;                                                 \
-> +                }                                                            \
-> +            }                                                                \
-> +        }                                                                    \
-> +        d[H(i)] = count;                                                     \
-> +    }                                                                        \
-> +}
-> +
-> +DO_HISTCNT(sve2_histcnt_s, uint32_t, H1_2)
-
-H4 for uint32_t when indexing by elements or H1_4 when indexing by bytes.
-
-> +DO_HISTCNT(sve2_histcnt_d, uint64_t,     )
-> +
-> +#undef DO_HISTCNT
-> +
-> +static inline uint8_t get_count(uint8_t n, uint64_t m)
-> +{
-> +    int i;
-> +    uint8_t count = 0;
-> +
-> +    for (i = 0; i < 64; i += 8) {
-> +        if (n == extract64(m, i, 8)) {
-> +            ++count;
-> +        }
-> +    }
-> +    return count;
-> +}
-
-This can use the same logic as do_match2, except that you use ctpop64 at the
-end to count the bits instead of turning into a boolean.
-
-> +
-> +void HELPER(sve2_histseg)(void *vd, void *vn, void *vm, uint32_t desc)
-> +{
-> +    intptr_t i, j;
-> +    intptr_t opr_sz = simd_oprsz(desc);
-> +    uint64_t *m = vm;
-> +
-> +    for (i = 0; i < opr_sz; i += 8) {
-> +        uint64_t n = *(uint64_t *)(vn + i);
-> +        uint64_t out = 0;
-> +
-> +        for (j = 0; j < 64; j += 8) {
-> +            uint64_t m0 = *m;
-> +            uint64_t m1 = *(m + 1);
-
-The m values need to be loaded from the segment, just like MATCH.
-
-> +
-> +            uint8_t count = get_count(n >> j, m0) + get_count(n >> j, m1);
-> +            out |= count << j;
-> +
-> +            m += 2;
-You're adding 2 uint64_t per input byte, which is going to run well past the
-end of the input vector.
-
-> +static bool trans_HISTCNT(DisasContext *s, arg_rprr_esz *a)
-> +{
-> +    if (a->esz > 1) {
-> +        return false;
-> +    }
-
-ESZ must be 2 or 3, not 0 or 1.  Note near the top:
-
-    if size == '0x' then UNDEFINED;
-
-thus only size == '1x' is valid, and thus size<0> does in fact select 2 vs 3
-for S and D.
-
-Missing the sve2 check.
-
-> +    static gen_helper_gvec_4 * const fns[2] = {
-> +        gen_helper_sve2_histcnt_s, gen_helper_sve2_histcnt_d
-> +    };
-> +    return do_zpzz_ool(s, a, fns[a->esz]);
-> +}
-
-
-r~

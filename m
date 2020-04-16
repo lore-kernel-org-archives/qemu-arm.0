@@ -1,181 +1,160 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1994521lfm;
-        Thu, 16 Apr 2020 09:15:03 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLTU1T5s5SuA9jd6zRfOymN3ACVC08gW3F9bQdcHffHJHfTh4lrqgLyRArP+Rh01F2GolYb
-X-Received: by 2002:a37:48a:: with SMTP id 132mr33032314qke.390.1587053703295;
-        Thu, 16 Apr 2020 09:15:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587053703; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2030986lfm;
+        Thu, 16 Apr 2020 09:49:19 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIa9cuzkbyeIDX8q8yLupx0JIDTiglrUKDaXLCHDuC4qianRNPfmnwnysCmq9LERvs2Xsmq
+X-Received: by 2002:ac8:2db9:: with SMTP id p54mr14120135qta.125.1587055758972;
+        Thu, 16 Apr 2020 09:49:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587055758; cv=none;
         d=google.com; s=arc-20160816;
-        b=TEmagRxf7FyB1qtw/UTunf/I5VRXVMMgytgQKX79E6g2vO9z841/KqDWwcFOAycyuu
-         /+7o0Ax78DJXP1Ufu3rwAYjvwDsW3YGJTzLTrBoww3o4b2XaQo1r91ijIw9LHPP0oGRF
-         S9c/pdX2FkC1xZqIKdAIHGQgP/MhkavOQY+TUJ7KlYOQwaXXqEp5YJUm2xqPXAN0OqyM
-         NpqHawgTnPZ48DrGa/Kb9Dnnl6x0SG0GlmpmleNmuqQZoFa9rZWi8bS3gTnEUuT34XBb
-         kwc+nGIhTIVd6oAR4DcrW/9KY3w5dLGhUvlF7ninrUcYrC3ShbXkq0Fqrmw9AjJ5rvOf
-         umyg==
+        b=vAOP9pvrjUsb5wC10qSVwauB+kJgQXoypNwh1W7U3cjeSBkQvFVAkmFqSchWlmPBTQ
+         F+0BHU1WgczES0dUGGDA5enrBS2lGAVAOIAbtRgqia12wy9KoTEyTX32dQ0Ti3Dk+bu8
+         Q4giFeEkl2AuCYAqFAWZGEXRILTBE8WB53l8GQ8htysehWPN2tVg0FlaFg5oTPw4RiAN
+         TrsCzr121laM9iyYe+LGidOLA0LQecAEZ3pZQm7X+SXQWb4/b9caaLgHvNwS4hQVlBZi
+         h39uXbo/IGz5dJGDaBQUsqR4jAmIRpjubtFAZJUy41O3433CgCS9UibaBOKga6KURCZn
+         K5OQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=LHCr2VVYRgfUJp+jaFj5bq6dPDH1Ejyrha/BnN4ckXc=;
-        b=TreWStxfxS31hXD6wygRFnnIURgtvRo0ogHdm5urYFjd3cYZBSnSVu/E1vWB8NA62p
-         U8zJzqUQ6hX1D4vzW+84jZ4DB4TkFrCnKD9TtgXrnCkCn007i7Ux7O1dHIiev7XDBzKy
-         Krpo05zSrNo8BGzZnDP8pF6zE6HGtH/CMBLzTwgr5BVqM25nVcSSC8lmA5pMozbYYTYU
-         kXY82RHrD3jXN/8mmf0f9OSo4tPU7f1sONwx8YFpEeZZ4F4TNn6/uK2HQbNb7YMpaDQs
-         HJmdEr3uKHqT7jcbwzsFs6kZht3/wt+G9Uv5RJV5Y9LEkhkHGoThuuyQTG+9bX1m2iPO
-         VK5Q==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=tEPpHaqGebl4PoPoOZBdDNfTSHtBshHXb+6AVOraALA=;
+        b=JYTsocRxpuLyq2PFmFzGdQvvRdTlpCM9aHk4DdS4rIkr9utbHRrljMoP0l5hmaE6O+
+         2QWqbSOg2fFyy7c6e/tkQk6t5fKJvF3Y0ambL9UvhZPGStzWDx3ZXId943PDvp1STafU
+         z+IwCtq93ueGsDfUC2hCb01oSwNmwZjZFdJsjqPqsssAQdKQmL7jYcFM4p/UclH+5d70
+         AUf3YipPbnMpSZHc/HDV8RL4AM3Mk2uGsVtz+TNgtA9F7TUdZ0nt6IeEG3j0XYGi7kcC
+         dgMZLrGAeZ5OtyMXIckk/6zTKgda6W3saRx1hmblKEo53owfv1xmylSX/j5O42AgpLdS
+         WDLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Mmh/lUQg";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="yyWOQs/W";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h83si11005587qke.367.2020.04.16.09.15.03
+        by mx.google.com with ESMTPS id q14si7034004qkc.256.2020.04.16.09.49.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Apr 2020 09:15:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Apr 2020 09:49:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Mmh/lUQg";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36614 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="yyWOQs/W";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37082 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jP7AM-0000CU-L5
-	for alex.bennee@linaro.org; Thu, 16 Apr 2020 12:15:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55815)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jP7hW-0006C3-DW
+	for alex.bennee@linaro.org; Thu, 16 Apr 2020 12:49:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32796)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jP79K-0007hk-Mm
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 12:13:59 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jP7hB-0006Bl-PM
+ for qemu-devel@nongnu.org; Thu, 16 Apr 2020 12:48:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1jP79J-0002Dm-Bu
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 12:13:58 -0400
-Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:53691)
+ (envelope-from <peter.maydell@linaro.org>) id 1jP7hA-00089b-HI
+ for qemu-devel@nongnu.org; Thu, 16 Apr 2020 12:48:57 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:38635)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1jP79J-0002D0-5W
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 12:13:57 -0400
-Received: by mail-pj1-x1044.google.com with SMTP id cl8so1593427pjb.3
- for <qemu-arm@nongnu.org>; Thu, 16 Apr 2020 09:13:56 -0700 (PDT)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jP7hA-00089C-CK
+ for qemu-devel@nongnu.org; Thu, 16 Apr 2020 12:48:56 -0400
+Received: by mail-ot1-x344.google.com with SMTP id k21so3629930otl.5
+ for <qemu-devel@nongnu.org>; Thu, 16 Apr 2020 09:48:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=LHCr2VVYRgfUJp+jaFj5bq6dPDH1Ejyrha/BnN4ckXc=;
- b=Mmh/lUQgH0XYjZ1Z+Ao3kIimgsfVGXoGASomwZU7iShdmYrE/+ukW72CWOTEKqRZhC
- qERkdWQr2bCzHcAPJA8C/CYRcsHDGYiAUuT6Hc3NvXQIHUXC7yUErI7NoFhFvtRBmaZo
- 1U0QSoUBm8QECXaVbv2rbclnZ9V1wnOZazoiywHOZruF+5sA3uWswEicJEbCZXQ2qnx+
- S62UIVzMalAmVzg0vwdX+lRgAJllGp9KdQshdb7bKJJH1lhGfNYcDIgyNE/bCW6sy81j
- Fm3zb0iA6Mjki4W49/ebUG2T9++6DRAX4oVQaloZSg6YTh55AElQ6pm0VR5cVLYoeQ28
- jbWw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=tEPpHaqGebl4PoPoOZBdDNfTSHtBshHXb+6AVOraALA=;
+ b=yyWOQs/WZrhjTTMl+LL+AOsiq4v/ZTSDIg9pnze8LlNQ12UO6cDe2BbdyenAQQr+2V
+ TPhpDPnm5gD5B1vkVFTGyb0Hz92TCBtZlMsqzmveG2OqfsGtZ0Bq8NUj/pHSls/B615x
+ e91dOt2mPlt5pJeEAL7KR9RbqTi7cLsomCqlLE3ypjl2zBwpHKJ6jzfkH1ZX3RUsVkE9
+ BKUMLUkfKIgj/HdzYGQ5DyKZEO+RSqhWk5AEatpAaD/HGFlXX98pbUD1YRHQJ7TzwTAd
+ NGIjMVgaCSiJyMDQtAKzO2QcGne+Ydo6ffNNeUnc5CheaULEjkVsZyIN4V50NSuMO/kq
+ TWbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=LHCr2VVYRgfUJp+jaFj5bq6dPDH1Ejyrha/BnN4ckXc=;
- b=PLGxHmgXgAgKTRanm+YOnA9sMVGwn/jthd18ksGnV+zrOC3NSVq8pKpERPE37M7W8y
- shJm4g5YZ6NV9QfPqXeYROcupyHsb8BtIjuQ9YN+m6ZGRxzBoiT5/Z4g07LB6RESrMo6
- UwJHIA7F2cG2+bj8u3zxFRHW0eLhHcSDKuJJ915PyoVHwd49sFWZYz5bKPxxrta1EU6E
- yA3doCsMYRdZ12thh2KFm19xMNeni+bIECprHr4TL6Y2AxMrSsiqnj739hAK++Qb4UrE
- A6TD+bzoAiuEIZXPdgkexeC+pw4FEntu8zs5wr7Bn2lq/SAws58WDKVFfT3mi2eBEObS
- 6L7A==
-X-Gm-Message-State: AGi0PuYf+TAaMKeQA5w7SttKTDCz9MRVeXZpTDMsko2IkUA7f1USLed6
- jWVs5AHt1BbGapz31A30y28zog==
-X-Received: by 2002:a17:90a:d3ca:: with SMTP id
- d10mr6294345pjw.24.1587053635867; 
- Thu, 16 Apr 2020 09:13:55 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id x12sm9670464pfq.209.2020.04.16.09.13.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Apr 2020 09:13:55 -0700 (PDT)
-Subject: Re: [PATCH RFC v4] target/arm: Implement SVE2 HISTCNT, HISTSEG
-To: Stephen Long <steplong@quicinc.com>, qemu-devel@nongnu.org
-References: <20200416144212.4898-1-steplong@quicinc.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <8dfe7862-5842-c356-0b59-7531dbc25fe9@linaro.org>
-Date: Thu, 16 Apr 2020 09:13:52 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=tEPpHaqGebl4PoPoOZBdDNfTSHtBshHXb+6AVOraALA=;
+ b=kK5xQW4i6Odot6Y+PhUlaX/s8xpB5hiX+txwJq7WFKtHXp2RijW1/1/mZ1j3tMZR/S
+ K9teaiGek39bjNxXuYj9TgaLvDTLgwN2Qn7x1hquy7m9gPgd8rnUkBYrknac0eJXXcWX
+ Rt0kT29JhC6SyyLcSHeJNjQ8OqTvFQjHk8/2Hg7/RFO0T9LL8OjPetdfxrNUCf4xV0oH
+ q9uwyrlnEvzLejK45N6gUiH+M/CZBZiHSzi+DGVjm1bb3wr876rRnTt8o+oS7LSqO+C6
+ eeYo+QH+YNJTUJUNRQjpDFinlOR242yVjwPm5fLY9Gmrmds8nvL1pBSfuxmiUplNYfbj
+ qpMg==
+X-Gm-Message-State: AGi0PuZbvoWwhvH1qXd+Rh40sAlpTzG0iq9L5z/eEWPyz3vFkTPn2dX1
+ Kf5b7j6iR0H6QXY/WW84s+Y5zWAt/aQDnJM3EtvfAA==
+X-Received: by 2002:a05:6830:1e4e:: with SMTP id
+ e14mr8866546otj.91.1587055735433; 
+ Thu, 16 Apr 2020 09:48:55 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200416144212.4898-1-steplong@quicinc.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+References: <20200409063137.803522-1-joel@jms.id.au>
+In-Reply-To: <20200409063137.803522-1-joel@jms.id.au>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Apr 2020 17:48:41 +0100
+Message-ID: <CAFEAcA8M06TFD4d8jLe-w24PMUGDH_sRXhf8TV25JuTV1ig2jQ@mail.gmail.com>
+Subject: Re: [PATCH v2] aspeed: Add boot stub for smp booting
+To: Joel Stanley <joel@jms.id.au>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::1044
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::344
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, apazos@quicinc.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ju69LLe/r0O/
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RwuxFBkMt2wb
 
-On 4/16/20 7:42 AM, Stephen Long wrote:
-> +static inline uint8_t do_histseg_cnt(uint8_t n, uint64_t m0, uint64_t m1)
+On Thu, 9 Apr 2020 at 07:31, Joel Stanley <joel@jms.id.au> wrote:
+>
+> This is a boot stub that is similar to the code u-boot runs, allowing
+> the kernel to boot the secondary CPU.
+
+> +static void aspeed_write_smpboot(ARMCPU *cpu,
+> +                                 const struct arm_boot_info *info)
 > +{
-> +    int esz = 0;
-
-Clearer to use MO_8.
-
-> +    int bits = 8 << esz;
-> +    uint64_t ones = dup_const(esz, 1);
-> +    uint64_t signs = ones << (bits - 1);
-> +    uint64_t cmp0, cmp1;
+> +    static const uint32_t poll_mailbox_ready[] = {
+> +        /*
+> +         * r2 = per-cpu go sign value
+> +         * r1 = AST_SMP_MBOX_FIELD_ENTRY
+> +         * r0 = AST_SMP_MBOX_FIELD_GOSIGN
+> +         */
+> +        0xee100fb0,  /* mrc     p15, 0, r0, c0, c0, 5 */
+> +        0xe21000ff,  /* ands    r0, r0, #255          */
+> +        0xe59f201c,  /* ldr     r2, [pc, #28]         */
+> +        0xe1822000,  /* orr     r2, r2, r0            */
 > +
-> +    cmp1 = dup_const(1, n);
-
-Error in the esz argument here.
-
-> +    cmp0 = cmp1 ^ m0;
-> +    cmp1 = cmp1 ^ m1;
-> +    cmp0 = (cmp0 - ones) & ~cmp0;
-> +    cmp1 = (cmp1 - ones) & ~cmp1;
-> +    return ctpop64((cmp0 | cmp1) & signs);
-> +}
-
-Ah, well, I may have been too brief in my suggestion before.  I encourage you
-to have a look at the bithacks patch and understand the algorithm here -- it's
-quite clever.
-
-We cannot simply OR the two halves together, since 8 | 8 == 8 loses one from
-the count of bits.  So:
-
-  cmp0 = (cmp0 - ones) & ~cmp0 & signs;
-  cmp1 = (cmp1 - ones) & ~cmp1 & signs;
-
-  /*
-   * Combine the two compares in a way that the bits do
-   * not overlap, and so preserves the count of set bits.
-   * If the host has a efficient instruction for ctpop,
-   * then ctpop(x) + ctpop(y) has the same number of
-   * operations as ctpop(x | (y >> 1)).  If the host does
-   * not have an efficient ctpop, then we only want to
-   * use it once.
-   */
-  return ctpop64(cmp0 | (cmp1 >> 1));
-
-> +        for (j = 0; j < 64; j += 8) {
-> +            uint8_t count0 = do_histseg_cnt(n0 >> j, m0, m1);
-> +            out0 |= count0 << j;
+> +        0xe59f1018,  /* ldr     r1, [pc, #24]         */
+> +        0xe59f0018,  /* ldr     r0, [pc, #24]         */
 > +
-> +            uint8_t count1 = do_histseg_cnt(n1 >> j, m0, m1);
-> +            out1 |= count1 << j;
-> +        }
+> +        0xe320f002,  /* wfe                           */
+> +        0xe5904000,  /* ldr     r4, [r0]              */
+> +        0xe1520004,  /* cmp     r2, r4                */
+> +        0x1afffffb,  /* bne     <wfe>                 */
 
-Wrong type for count0/count1 for shifting by e.g. 56.
+Note that unlike "wfi", QEMU's "wfe" implementation is merely
+a 'yield', so a secondary-CPU boot loop that has wfe in it
+will basically be a busy-loop of those vcpu threads.
+(This is why the smpboot code in hw/arm/boot.c uses wfi.)
 
-You might as well just use uint64_t as the return value from do_histseg_cnt()
-so that we don't get unnecessary zero-extensions from the compiler.
+I don't suppose the secondary boot protocol on these boards
+is such that a wfi loop will work ? (Depends on what the
+primary code in the kernel does to prod the secondary after
+writing the magic value.)
 
 
-r~
+> +        0xe591f000,  /* ldr     pc, [r1]              */
+> +        AST_SMP_MBOX_GOSIGN,
+> +        AST_SMP_MBOX_FIELD_ENTRY,
+> +        AST_SMP_MBOX_FIELD_GOSIGN,
+> +    };
+
+thanks
+-- PMM

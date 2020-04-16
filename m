@@ -1,120 +1,99 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1676337lfm;
-        Thu, 16 Apr 2020 04:10:15 -0700 (PDT)
-X-Google-Smtp-Source: APiQypI9D+Tskw9cL+EjQe+LeV2sjGe8VYJPFgHFo3ARm8h0dHKvFkzmkWrHaFVxZoyxtYh+ibT9
-X-Received: by 2002:ae9:ed04:: with SMTP id c4mr29276877qkg.367.1587035415314;
-        Thu, 16 Apr 2020 04:10:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587035415; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1713887lfm;
+        Thu, 16 Apr 2020 04:50:58 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJ/4gVELAC9fNQNnozKfaXcSim2JhJfXHyHW79JcjUfNwCU8NoezUf6zdw30/GHu9LyQ6ys
+X-Received: by 2002:aed:3ec2:: with SMTP id o2mr21285610qtf.334.1587037857869;
+        Thu, 16 Apr 2020 04:50:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587037857; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mt8am9N04jpiVmEYFaTEncg9mSvjNK+HbAfvQ++zcKEqHIpg7nO0mOC7csDnB9BpTE
-         vqR7b7lxZoe5/A13RLIVrt+qFcZT+lb+JNPwQ4nd5cbOLX1S+WBI96e7OURxNqIpwmag
-         Vdc5i9NQ9ZfUgcPX/CVMfF+yHZCg4hkDGzbbCrDjQMJ/8+SJ37sS/ollHaT/MIRrI/Mq
-         cUGkziVcE5PDcdb2OdVd8WEAu3JF8KQQJbGhfbgM7q/6U6GFmvGgcTaS64poB3fcYtMN
-         g8ajnzNAPn1SrtS1VGFYIMbDF0H8wNehQqv4IESD/bI+Mck423WA7M3pcAoY7wqE8oCz
-         5v7g==
+        b=VBLkRBUS8cRiDUExBGQ8HZQvsaDAENPmzYXxy82FN251qTYnVxWz72a9rsMVdQivPv
+         ZErlu42jg0kco9VLnKwE2es79ywRw/EGOoXT/aZbmP+eUXGWAMlJL3euad+5xKxuGN02
+         WhXXU+7ir9IS7ubH0tYzURDMalrURMoSeYBpC+yDYmXKU514Gn7QVLCtnx5lxHby37iE
+         9S1PL7Y4TwDtLZMTiya5CC7G6IFSJxbMbeSbrTBjWdGOPKwKz67eTJ3E2SY2CJ+hc/7p
+         Qdu456uHX/sUVdi/xUuAD/7gFPOjAm1u9Brs3ImnGVQT4ipOWpMUUsdASWASje1pHJdb
+         Ps+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=wIPDI7c8wyLmq4vVtx2jYxwBWb4ssXaSn4gTWG+NqQQ=;
-        b=LJ8rye41KmEvrBq+Zs7sMGCQEBUdasLW8CZLxqxM6KSLB1GGvB3l2eOTHBy093O47G
-         JiJFK2md/eFjAkTmlzBuh/DunTb7xOZJR73CGieIGRUpeaiou+nL+5ykwhbc1apon8gt
-         dlBPKQh+hOE7EBQv9CcaIu9DAFzgkMbOOtjc9Sb4iAxzLd/2iG57QAxdXzjdcuks95Ay
-         ygFd54WcA0EHlv4YVEJCeNWvRh4yDIk9b/1Xg8BkX4hu3Jm9qRTsLvRjG+sGVMNGaWoe
-         kD6CnOcXPzfe/jyEgvPhMkQ7FzUC5Ejx4h7rSolUI0zXpyCGYD0fRY3ZLjgUh32OkBW0
-         HWug==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=LKuKZtmCFBBOmi/nYr8sqZGUnzBbIaXVXTkItTpLj8A=;
+        b=06ZVbijuimemC5TJ2jmMcUQ8yxuA9o2ITLC1uFBo5m1jzLkAHNXXMFeL0ji1DbU6A/
+         qBblYYPODH2z4oM9PX9TOt2gnOFL8QRLSYxTA3MuS9mKdDgS9/7440y1OKHs/1Hf27QC
+         7og1D3UoS6rJ0XH1YHRbRCT8yDjILpV88JGO4NxsP9XcP2JhGL0huXVw5tUnD4z1kLYw
+         qeD5qVe0ErtVqHI6v0c9k+8+171PAZq1qqKolWyMLOkg0qBzs3C5UthMFhScnMYmCIg2
+         jDO+sd0NFMB5PG09vpWyByWAgvMhy39ntDpsyXil9Zpc52q7snMp0x6YNFOPU6B38XJ9
+         OD+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jDmDLn7f;
+       dkim=fail header.i=@linaro.org header.s=google header.b=oigkThx6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bb18si1104934qvb.144.2020.04.16.04.10.15
+        by mx.google.com with ESMTPS id v27si4563346qth.270.2020.04.16.04.50.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Apr 2020 04:10:15 -0700 (PDT)
+        Thu, 16 Apr 2020 04:50:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jDmDLn7f;
+       dkim=fail header.i=@linaro.org header.s=google header.b=oigkThx6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60902 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:32946 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jP2PO-0002s7-L5
-	for alex.bennee@linaro.org; Thu, 16 Apr 2020 07:10:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42648)
+	id 1jP32n-0006bi-Aq
+	for alex.bennee@linaro.org; Thu, 16 Apr 2020 07:50:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47045)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jP2PG-0002rq-8w
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 07:10:07 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jP32c-0006au-F6
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2020 07:50:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1jP2PF-0006DF-1y
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 07:10:06 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:37039
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1jP2PE-0006Cz-VN
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 07:10:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587035404;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wIPDI7c8wyLmq4vVtx2jYxwBWb4ssXaSn4gTWG+NqQQ=;
- b=jDmDLn7fc9w9IHVIZBsDb60O+bEyzvifeWf4DOcrNwVs1I4gMuhsALOqs60an/6HUPimDz
- yb/QTqStQFnroj2RSeok+QhbisqYBT2Pijj9bvLojP/ICjYt/GYnlzJAf7zcvTjU1gzEmh
- rJzM2QObbTAnIsl8I0aGSAymQ9eRLLk=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-481-zC4H07e2N7m3-w1CJuj5dw-1; Thu, 16 Apr 2020 07:09:58 -0400
-X-MC-Unique: zC4H07e2N7m3-w1CJuj5dw-1
-Received: by mail-wr1-f70.google.com with SMTP id d17so1505001wrr.17
- for <qemu-arm@nongnu.org>; Thu, 16 Apr 2020 04:09:58 -0700 (PDT)
+ (envelope-from <peter.maydell@linaro.org>) id 1jP32a-0004kE-E7
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2020 07:50:46 -0400
+Received: from mail-yw1-xc41.google.com ([2607:f8b0:4864:20::c41]:41426
+ helo=mail-oo1-xc41.google.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jP32Y-0004jG-Pv
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2020 07:50:43 -0400
+Received: by mail-oo1-xc41.google.com with SMTP id t3so583058oou.8
+ for <qemu-arm@nongnu.org>; Thu, 16 Apr 2020 04:50:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=LKuKZtmCFBBOmi/nYr8sqZGUnzBbIaXVXTkItTpLj8A=;
+ b=oigkThx6KdQRyopIMQrInSKMs4GtZogaiLtjPtYL2f8MqEsn54NxZdO+f6NYn6wkCl
+ lP8OwypkRNAynRyQjKF8MqbQEiZwcY0rN4F5Kr1KSDZ/pMikaeFdQOMnbyNlxtWCPgTv
+ yPpsy9e1N4irqpEepX6TksKDQa7taGJA6W5RQiDoVuggglywclnrQ9BrcAfqmPFs3GpN
+ rjzvGWycnQOmv5ytRGaFAE5tRw1CX/Jw/uATfm/mp0TSZDHQn1Lq3wdUPLdiuPLg5yLd
+ gU2DMDnHucQ1irM2bFKeHHo13RY3J2tDzB3Gc/0bd4/asPv/eZ69EQDwsMNo51zQHh5U
+ zUZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=wIPDI7c8wyLmq4vVtx2jYxwBWb4ssXaSn4gTWG+NqQQ=;
- b=mAgtZbzv9e5HwcLOl+u8ZaZH3EB34ah4Y85R0T9ZUWQNH1o0dxBCntAaE4ePBs7zpO
- DRX38XhRavScXJWqIjF5RtXAdtdRkD4aDZjvJIfYCzVYSdrPvEl4PZYu+j6vJ/0ZrxBh
- WCKOf2b5qLk2Th68afN5My1gV0QNoGCT62NwhKEM4ftnWnEKVR0W2vbxc8K6scI7yton
- 8YxW6WVFBGdWv8cnjPvO2E0sqv5GV6rMXNEJ87pqoaqxV94zjXyKOJyeK+FvCoUWfwXr
- LR4D08YhiLU955Pn+nF5BMIkvEaXTuXNVrRZBnSNdC5F786sOf+X4t1ovEV1u7f/9Y0U
- IiLg==
-X-Gm-Message-State: AGi0PubPvfHiL3MY1Oq6rZ3BSOPI02USsnrwaSSuFYunxvRGAsD0iss/
- raR/Orx2CQQQ3Jwjmd46uEpJXCsnFMYUkEADTjxgoqYkRHusWufbjFVBUynFDFAzf5V+zjEmUIl
- W9HowjO4LDaIA
-X-Received: by 2002:a05:600c:2c47:: with SMTP id
- r7mr4289271wmg.50.1587035397329; 
- Thu, 16 Apr 2020 04:09:57 -0700 (PDT)
-X-Received: by 2002:a05:600c:2c47:: with SMTP id
- r7mr4289234wmg.50.1587035397039; 
- Thu, 16 Apr 2020 04:09:57 -0700 (PDT)
-Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
- [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id p3sm9144941wrx.82.2020.04.16.04.09.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Apr 2020 04:09:56 -0700 (PDT)
-Subject: Re: [PATCH] Cadence: gem: fix wraparound in 64bit descriptors
-To: qemu-devel@nongnu.org, rfried.dev@gmail.com
-References: <158702996540.15335.16514068999380777664@39012742ff91>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <71dd512d-485c-d395-df90-f6208f91c655@redhat.com>
-Date: Thu, 16 Apr 2020 13:09:55 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=LKuKZtmCFBBOmi/nYr8sqZGUnzBbIaXVXTkItTpLj8A=;
+ b=tBBp4oEusPT6bheMtKt0ue/+NjKnGrhzdWQHjidh+94EXoMchSIQn7dZvs9NNkcKIY
+ PC3ompo6otNOguKQASCZhAoEedxpIrrCj5fX0V31sXxEw1d0JQriHiSexf2HvXAIBiBC
+ GJY37DmTN3z9amehxHQvB94V7IPChx4g22BfZYFNDS10swQ7E5twffGEpH4cKeazif3i
+ rgg0O/ue6ChXUAK9CzkaKNyqik4W/FE9dbaNFbJU/N+Elzfw2Sd7GicsyDa33qyQIeVa
+ PH3BlqF1wgKS5td+Z3W2+MaJ2aYfgVt9bN1wLW9tVR+wTR0OXBU7DpiCwnX227G57Pk1
+ z0QA==
+X-Gm-Message-State: AGi0PubLT79BENYZWEsPC/50N3Y9b43TdNUZddRJyrVefQ5obvtGgcGM
+ qKu+iJvTTlq+d7v1f5oKt6WFRka+cLiMIlyaaGxn2g==
+X-Received: by 2002:a4a:be89:: with SMTP id o9mr19951207oop.20.1587037841852; 
+ Thu, 16 Apr 2020 04:50:41 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <158702996540.15335.16514068999380777664@39012742ff91>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+References: <20200311064420.30606-1-richard.henderson@linaro.org>
+ <20200311064420.30606-2-richard.henderson@linaro.org>
+In-Reply-To: <20200311064420.30606-2-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Apr 2020 12:50:30 +0100
+Message-ID: <CAFEAcA_Y_9Pp2fRq-AScsZmbdDmAQgw4fJMLERmp9PJqD5UMHg@mail.gmail.com>
+Subject: Re: [PATCH 01/16] accel/tcg: Add block comment for probe_access
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::c41
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -126,20 +105,18 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Juan Quintela <quintela@redhat.com>,
- jasowang@redhat.com, alistair@alistair23.me,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9QWL8Oj+QgnA
+X-TUID: cEBVu4YbO6XV
 
-On 4/16/20 11:39 AM, no-reply@patchew.org wrote:
-> Patchew URL: https://patchew.org/QEMU/20200416090247.353414-1-rfried.dev@gmail.com/
-> 
-[...]
-> ERROR:/tmp/qemu-test/src/tests/qtest/migration-test.c:1229:test_migrate_auto_converge: 'got_stop' should be FALSE
-> ERROR - Bail out! ERROR:/tmp/qemu-test/src/tests/qtest/migration-test.c:1229:test_migrate_auto_converge: 'got_stop' should be FALSE
-> make: *** [/tmp/qemu-test/src/tests/Makefile.include:636: check-qtest-x86_64] Error 1
+On Wed, 11 Mar 2020 at 06:44, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-Doesn't seem related to the patch content...
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

@@ -1,100 +1,99 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4786229lfm;
-        Tue, 14 Apr 2020 02:45:39 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK7kL025ArPItGUdkEGB8EMirRf6Dm11AmZ+XzvHritp0Bvd3hTzSo1nR/LhwkaEPkDOjCa
-X-Received: by 2002:a0c:a899:: with SMTP id x25mr21461846qva.232.1586857539450;
-        Tue, 14 Apr 2020 02:45:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586857539; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1785505lfm;
+        Thu, 16 Apr 2020 06:03:47 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJpR1ggcJxa5D41wtYP8B7+MsbHQZwqVTs/Lz9xyNC8svITOb20UTacuihN6d2n7ZTF3s1w
+X-Received: by 2002:ac8:27f9:: with SMTP id x54mr25568112qtx.45.1587042227642;
+        Thu, 16 Apr 2020 06:03:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587042227; cv=none;
         d=google.com; s=arc-20160816;
-        b=WLXFEp0H/BPVEbT05yu1bHGwlP4hyNMuOoBkI4lJ5JLMuvgJSu7Mw0XjVcL4g7RyVk
-         6uhPNG/ggQHJLpned44+9clWN4/8XX2JLu0zoCL3FdXCxpYU2cKkCcflH9wJ8uW5kCKH
-         aN6pDr7KWWHhkg0d10m6lEG0OWbY56vjwnTw0JOT8jEl/T/T0yuiSfAuptQqWTeAI9L2
-         OuZlcFZeDZTZmfOzmqFondoRVJd93Ks8/DBflsPT10JUPtrfOAq3Hnv7qQO21TXrRS3N
-         fwHycfpb5fAVdvO2sqMLYBeE8BPMCgmqb24XCMVvN+GHj8VHAW6X8JxUKPW32iLR/IgX
-         Ejdg==
+        b=efqVIp8BdlJoOPvTT/mxuQzJWvyI3byrQADVErbNGJq4zdxjmbFLyewW/Pmr4cHwGA
+         4mXjfDkQBwJ487LRBifpcJ1l24bY0MLIkEIkd7ZANSsiVnXx1xF9pXJ0hryjOmHkWECV
+         QXn18f0xrmGAhtwr8l5xGid3+vYEDoVjB1Tz+K5C+/kkg4H8Pzsa0e5919y3dLY3wMzF
+         Agwvdtj4AjLOoKbPG0X/cGHMADwDkKPgSF1eoR42qMjhbsP5BtMOIPkOKH3fqct+xAKz
+         Ve08I7co3MCmPeW77nryl7wIZnPA/G3eijQUJ7sDvu5R86Ju23gLFSIkVXtdKohSEgoS
+         OEDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=XqQcjBaUA4/pWS6QQM0cWlmT+P/BcxGgavR3JzzWkIM=;
-        b=U3K9uj0J8tTAh5AutKXBTPTJW8WwL7CrsbUXvggw1tmvhWEkeke+gnty8hJ9U1d7Mm
-         mCPFQl/R4RvZjKk72d2g9Fo0etMG7CLo4q6tKk4gubM5Bi7xD9HoEHcgJKx8lJ27PDiE
-         0Qv6tMYfdhIErgKF4Z3Xqt2R9N1U58UITrGA3BTnjanqq/6wLDj0TtUCgwXQAxhf9cCN
-         gfDvpZdqRSV4Unbm6uQzfHjqda2u6yMEeh8CF0Prz7XcNawUzdLnHfilGxT20//UoYeP
-         /0BscJ8YxbcEswo3rX79jslShKbq6IxEuCHnZcZ0D3HWMcqmKiS5qYoNNHxgKrn6uu6T
-         p5EQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ymdPh0UvFhhDw29CTxGDGdgLqYba+DJ1MWHMztUn+iA=;
+        b=E4PfJB6HbgWF5BqVr9j6m9Sor82CNvcFSGDzN6+Fn9l3M1he2PBGzP4+KUnWMO8vQa
+         shwTk4Xb9p/K7/31qcFmHSMePwNR+quAgabBYNTUGUlbxJNHgnb7lzPcsKzj3tgyVqNv
+         vc1LTRAhP/yompKVuBXyz5RLfiL3Gx75p6jrMedPTLPG4j5x3YJik1AwH+5RFWQ0K4w9
+         FZQgZ+NsqLgle6AdgFzTG1BYBQTO6snIZZnNdyAw1c8QYxKXanjpalcEla+e+a6y8Qho
+         n+PrrgDp+lEalMFKUGKhDYWI8DnRtCU/UiK0wOXCBKQgBLASfb8IC+rqJK/Vi20NnGEM
+         IJ0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cnpHjZh2;
+       dkim=fail header.i=@linaro.org header.s=google header.b=SX5EpVc8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c23si7419196qkb.380.2020.04.14.02.45.39
+        by mx.google.com with ESMTPS id t5si10772907qtr.392.2020.04.16.06.03.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Apr 2020 02:45:39 -0700 (PDT)
+        Thu, 16 Apr 2020 06:03:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cnpHjZh2;
+       dkim=fail header.i=@linaro.org header.s=google header.b=SX5EpVc8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55064 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33990 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jOI8Q-0003QE-S2
-	for alex.bennee@linaro.org; Tue, 14 Apr 2020 05:45:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60770)
+	id 1jP4BH-000866-2t
+	for alex.bennee@linaro.org; Thu, 16 Apr 2020 09:03:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58767)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1jOI8G-0003O2-2e
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 05:45:28 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jP4B7-00085S-7Y
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2020 09:03:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1jOI8E-0001fC-J6
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 05:45:27 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:41204
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <cohuck@redhat.com>) id 1jOI8E-0001ey-Fz
- for qemu-arm@nongnu.org; Tue, 14 Apr 2020 05:45:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586857526;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XqQcjBaUA4/pWS6QQM0cWlmT+P/BcxGgavR3JzzWkIM=;
- b=cnpHjZh27dM/73VANj+eH8Z8NhKkzeaaFerTwBFEkqTQYTTxW5R1fmH7amMI5StjAxI3eQ
- 3EvJJpiafT5SRPYBPHeAzM00+DaGIgDK3jZF8fUiko+Y59PHfd4ERFBpzUBmcEOJHxESM3
- 3H8CeMKmR/GrJvt7NgMpTU6rU93A7/4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-403-ZJN9VRskMtK3FqqwWJ6GCA-1; Tue, 14 Apr 2020 05:45:22 -0400
-X-MC-Unique: ZJN9VRskMtK3FqqwWJ6GCA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EE6C2107ACC4;
- Tue, 14 Apr 2020 09:45:18 +0000 (UTC)
-Received: from gondolin (ovpn-113-32.ams2.redhat.com [10.36.113.32])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 52EA59F9A1;
- Tue, 14 Apr 2020 09:45:00 +0000 (UTC)
-Date: Tue, 14 Apr 2020 11:44:57 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Subject: Re: [PATCH-for-5.1 2/3] various: Remove unnecessary OBJECT() cast
-Message-ID: <20200414114457.06e15bcb.cohuck@redhat.com>
-In-Reply-To: <20200412210954.32313-3-f4bug@amsat.org>
-References: <20200412210954.32313-1-f4bug@amsat.org>
- <20200412210954.32313-3-f4bug@amsat.org>
-Organization: Red Hat GmbH
+ (envelope-from <peter.maydell@linaro.org>) id 1jP4B5-0004EE-9c
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2020 09:03:36 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:43487)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1jP4B5-0004Db-14
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2020 09:03:35 -0400
+Received: by mail-ot1-x343.google.com with SMTP id g14so2936173otg.10
+ for <qemu-arm@nongnu.org>; Thu, 16 Apr 2020 06:03:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ymdPh0UvFhhDw29CTxGDGdgLqYba+DJ1MWHMztUn+iA=;
+ b=SX5EpVc8rYBqpME43Xm7vpmaT/21RhCK4CQ1V7bX8Koi6oKRGm+ayZsxd0L6yfdNaR
+ 2ZEakBJcqkre6AgUEcKp09ZlpNOc8OoPzEqvqO0p/IPymw4j4MwTZ0XKsPwQDugz8oWW
+ LFJogSTkLQ6/yyQZx0fMXjCRZH/g873Q1Mplg4+oZhV74QZZJ2o/GkzImaiW/vRs937Z
+ HuRLzHgjbZS4tIV6x/MAvIaTrDpfAIdY56LBnr92JQqZBV/wsL2tT/mMXGbtqBavoaaC
+ pmI0khuhEGcEk3p32lLxyFeYSqHzjpINGCth0KAoDNXkks1GjUzMsdmMa/RSioG5GOI+
+ 4psQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ymdPh0UvFhhDw29CTxGDGdgLqYba+DJ1MWHMztUn+iA=;
+ b=YKWMJLTmadt25z3+sg9qFS110zpZvgtWzXMnax8y9cby5U6EXMyagXe7m3u6B7fnJm
+ 5yWzmiiNfFswh+PO6Vesiuq5rqZ3c8wy7lAdMkQ3Xhpbi98Knvvyi6U25x3peHe+YdSr
+ iPpdrY6I8ZvxvK3YXRib0XdflW+7I06noo7t27CIPBBt2m1fuQypTaHiCJjwaXn7MZL7
+ 7ZGkgb1T/6AVS0CRpDMdkE2rfsFzGhDIprt93wINthtQG0Frc/AXa6R2PgkMJcgt+Q3P
+ uCZ5YBBdvAPsqG/axXn5smYxylP7vAREjw9HUcFnMQzFDNsEBxhUebFx8fDHN7xUFlMm
+ jeMA==
+X-Gm-Message-State: AGi0Pubk0pOO74P/SIQZkg7xL8a64Ko9xJ2ZFY4OK8GNiEXN0fTRw2JL
+ XmGCNs0YDgjW3FwEDPQB8K9/P7r5GL41rtj/gzJWAQ==
+X-Received: by 2002:a05:6830:1e4e:: with SMTP id
+ e14mr8050522otj.91.1587042213709; 
+ Thu, 16 Apr 2020 06:03:33 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 207.211.31.81
+References: <20200311064420.30606-1-richard.henderson@linaro.org>
+ <20200311064420.30606-7-richard.henderson@linaro.org>
+In-Reply-To: <20200311064420.30606-7-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Apr 2020 14:03:22 +0100
+Message-ID: <CAFEAcA8F2Qmdh=9RXFhN9_WPjhjhai9iO2Cn0dL5UAGV_r4AGw@mail.gmail.com>
+Subject: Re: [PATCH 06/16] target/arm: Add sve infrastructure for page lookup
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,62 +105,243 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- BALATON Zoltan <balaton@eik.bme.hu>, Gerd Hoffmann <kraxel@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
- Paul Durrant <paul@xen.org>, Markus Armbruster <armbru@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Joel Stanley <joel@jms.id.au>, Anthony Perard <anthony.perard@citrix.com>,
- xen-devel@lists.xenproject.org, David Gibson <david@gibson.dropbear.id.au>,
- Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <minyard@acm.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
- =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@kaod.org>,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Laurent Vivier <laurent@vivier.eu>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WdiySCAadsF4
+X-TUID: 18ymVt/MmwHD
 
-On Sun, 12 Apr 2020 23:09:53 +0200
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
-
-> The OBJECT() macro is defined as:
->=20
->   #define OBJECT(obj) ((Object *)(obj))
->=20
-> Remove unnecessary OBJECT() casts.
->=20
-> Patch created mechanically using spatch with this script:
->=20
->   @@
->   typedef Object;
->   Object *o;
->   @@
->   -   OBJECT(o)
->   +   o
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On Wed, 11 Mar 2020 at 06:44, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> For contiguous predicated memory operations, we want to
+> minimize the number of tlb lookups performed.  We have
+> open-coded this for sve_ld1_r, but for correctness with
+> MTE we will need this for all of the memory operations.
+>
+> Create a structure that holds the bounds of active elements,
+> and metadata for two pages.  Add routines to find those
+> active elements, lookup the pages, and run watchpoints
+> for those pages.
+>
+> Temporarily mark the functions unused to avoid Werror.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  hw/core/bus.c                       | 2 +-
->  hw/ide/ahci-allwinner.c             | 2 +-
->  hw/ipmi/smbus_ipmi.c                | 2 +-
->  hw/microblaze/petalogix_ml605_mmu.c | 8 ++++----
->  hw/s390x/sclp.c                     | 2 +-
->  monitor/misc.c                      | 3 +--
->  qom/object.c                        | 4 ++--
->  7 files changed, 11 insertions(+), 12 deletions(-)
->=20
+>  target/arm/sve_helper.c | 240 ++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 240 insertions(+)
+>
+> diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+> index 8b470991db..3f653e46a0 100644
+> --- a/target/arm/sve_helper.c
+> +++ b/target/arm/sve_helper.c
+> @@ -4155,6 +4155,246 @@ static intptr_t max_for_page(target_ulong base, intptr_t mem_off,
+>      return MIN(split, mem_max - mem_off) + mem_off;
+>  }
+>
+> +/*
+> + * Resolve the guest virtual address to info->host and info->flags.
+> + * If @nofault, return false if the page is invalid, otherwise
+> + * exit via page fault exception.
+> + */
+> +
+> +typedef struct {
+> +    void *host;
+> +    int flags;
+> +    MemTxAttrs attrs;
+> +} SVEHostPage;
+> +
+> +static bool sve_probe_page(SVEHostPage *info, bool nofault,
+> +                           CPUARMState *env, target_ulong addr,
+> +                           int mem_off, MMUAccessType access_type,
+> +                           int mmu_idx, uintptr_t retaddr)
+> +{
+> +    int flags;
+> +
+> +    addr += mem_off;
+> +    flags = probe_access_flags(env, addr, access_type, mmu_idx, nofault,
+> +                               &info->host, retaddr);
+> +    info->flags = flags;
+> +
+> +    if (flags & TLB_INVALID_MASK) {
+> +        g_assert(nofault);
+> +        return false;
+> +    }
+> +
+> +    /* Ensure that info->host[] is relative to addr, not addr + mem_off. */
+> +    info->host -= mem_off;
+> +
+> +#ifdef CONFIG_USER_ONLY
+> +    memset(&info->attrs, 0, sizeof(info->attrs));
 
-s390x part:
+Could just write "info->attrs = {};" ?
 
-Acked-by: Cornelia Huck <cohuck@redhat.com>
+> +#else
+> +    /*
+> +     * Find the iotlbentry for addr and return the transaction attributes.
+> +     * This *must* be present in the TLB because we just found the mapping.
+> +     */
+> +    {
+> +        uintptr_t index = tlb_index(env, mmu_idx, addr);
+> +
+> +# ifdef CONFIG_DEBUG_TCG
+> +        CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
+> +        target_ulong comparator = (access_type == MMU_DATA_LOAD
+> +                                   ? entry->addr_read
+> +                                   : tlb_addr_write(entry));
+> +        g_assert(tlb_hit(comparator, addr));
+> +# endif
+> +
+> +        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
+> +        info->attrs = iotlbentry->attrs;
+> +    }
+> +#endif
+> +
+> +    return true;
+> +}
+> +
+> +
+> +/*
+> + * Analyse contiguous data, protected by a governing predicate.
+> + */
+> +
+> +typedef enum {
+> +    FAULT_NO,
+> +    FAULT_FIRST,
+> +    FAULT_ALL,
+> +} SVEContFault;
+> +
+> +typedef struct {
+> +    /* First and last element wholy contained within the two pages. */
 
+"wholly"
+
+
+> +    int16_t mem_off_first[2];
+> +    int16_t reg_off_first[2];
+> +    int16_t reg_off_last[2];
+
+It would be helpful to document what these actually are,
+and in particular what the behaviour is if the whole thing
+fits in a single page. (Judging by the code, the elements
+at index 1 for the 2nd page are set to -1 ?)
+
+> +
+> +    /* One element that is misaligned and spans both pages. */
+> +    int16_t mem_off_split;
+> +    int16_t reg_off_split;
+> +    int16_t page_split;
+> +
+> +    /* TLB data for the two pages. */
+> +    SVEHostPage page[2];
+> +} SVEContLdSt;
+> +
+> +/*
+> + * Find first active element on each page, and a loose bound for the
+> + * final element on each page.  Identify any single element that spans
+> + * the page boundary.  Return true if there are any active elements.
+> + */
+> +static bool __attribute__((unused))
+> +sve_cont_ldst_elements(SVEContLdSt *info, target_ulong addr, uint64_t *vg,
+> +                       intptr_t reg_max, int esz, int msize)
+> +{
+> +    const int esize = 1 << esz;
+> +    const uint64_t pg_mask = pred_esz_masks[esz];
+> +    intptr_t reg_off_first = -1, reg_off_last = -1, reg_off_split;
+> +    intptr_t mem_off_last, mem_off_split;
+> +    intptr_t page_split, elt_split;
+> +    intptr_t i;
+
+intptr_t seems like a funny type to be using here, since these
+aren't actually related to pointers as far as I can tell.
+It's also odd that the type is not the same one used in the SVEContLdSt
+struct for the corresponding fields.
+
+> +
+> +    /* Set all of the element indicies to -1, and the TLB data to 0. */
+
+"indices"
+
+> +    memset(info, -1, offsetof(SVEContLdSt, page));
+
+I guess this isn't conceptually much different from zeroing
+out integer struct fields, but it feels a bit less safe somehow.
+
+> +    memset(info->page, 0, sizeof(info->page));
+> +
+> +    /* Gross scan over the entire predicate to find bounds. */
+> +    i = 0;
+> +    do {
+> +        uint64_t pg = vg[i] & pg_mask;
+> +        if (pg) {
+> +            reg_off_last = i * 64 + 63 - clz64(pg);
+> +            if (reg_off_first < 0) {
+> +                reg_off_first = i * 64 + ctz64(pg);
+> +            }
+> +        }
+> +    } while (++i * 64 < reg_max);
+> +
+> +    if (unlikely(reg_off_first < 0)) {
+> +        /* No active elements, no pages touched. */
+> +        return false;
+> +    }
+> +    tcg_debug_assert(reg_off_last >= 0 && reg_off_last < reg_max);
+> +
+> +    info->reg_off_first[0] = reg_off_first;
+> +    info->mem_off_first[0] = (reg_off_first >> esz) * msize;
+> +    mem_off_last = (reg_off_last >> esz) * msize;
+> +
+> +    page_split = -(addr | TARGET_PAGE_MASK);
+
+What is the negation for ?
+
+> +    if (likely(mem_off_last + msize <= page_split)) {
+> +        /* The entire operation fits within a single page. */
+> +        info->reg_off_last[0] = reg_off_last;
+> +        return true;
+> +    }
+> +
+> +    info->page_split = page_split;
+> +    elt_split = page_split / msize;
+> +    reg_off_split = elt_split << esz;
+> +    mem_off_split = elt_split * msize;
+> +
+> +    /*
+> +     * This is the last full element on the first page, but it is not
+> +     * necessarily active.  If there is no full element, i.e. the first
+> +     * active element is the one that's split, this value remains -1.
+> +     * It is useful as iteration bounds.
+> +     */
+> +    if (elt_split != 0) {
+> +        info->reg_off_last[0] = reg_off_split - esize;
+> +    }
+> +
+> +    /* Determine if an unaligned element spans the pages.  */
+> +    if (page_split % msize != 0) {
+> +        /* It is helpful to know if the split element is active. */
+> +        if ((vg[reg_off_split >> 6] >> (reg_off_split & 63)) & 1) {
+> +            info->reg_off_split = reg_off_split;
+> +            info->mem_off_split = mem_off_split;
+> +
+> +            if (reg_off_split == reg_off_last) {
+> +                /* The page crossing element is last. */
+> +                return true;
+> +            }
+> +        }
+> +        reg_off_split += esize;
+> +        mem_off_split += msize;
+> +    }
+> +
+> +    /*
+> +     * We do want the first active element on the second page, because
+> +     * this may affect the address reported in an exception.
+> +     */
+> +    reg_off_split = find_next_active(vg, reg_off_split, reg_max, esz);
+> +    tcg_debug_assert(reg_off_split <= reg_off_last);
+> +    info->reg_off_first[1] = reg_off_split;
+> +    info->mem_off_first[1] = (reg_off_split >> esz) * msize;
+> +    info->reg_off_last[1] = reg_off_last;
+> +    return true;
+> +}
+
+thanks
+-- PMM

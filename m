@@ -1,153 +1,117 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2291277lfm;
-        Thu, 16 Apr 2020 14:05:25 -0700 (PDT)
-X-Google-Smtp-Source: APiQypI1KoG0EXzBxbTq6GK+DETUUHeG44s4EP5JAsLMnhNPsEN++8ra1D45cgZ4RjJGVWjUMtow
-X-Received: by 2002:ad4:49c6:: with SMTP id j6mr12350045qvy.68.1587071125663;
-        Thu, 16 Apr 2020 14:05:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587071125; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp86047lfm;
+        Thu, 16 Apr 2020 23:40:04 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJwJndysCj7VS45QgIHmmLYAUDWuSHzVbqSI07OPYfJLvYeiHCC+xxzz3NEJBzpMIuTYxt/
+X-Received: by 2002:a0c:9e68:: with SMTP id z40mr1274983qve.242.1587105603905;
+        Thu, 16 Apr 2020 23:40:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587105603; cv=none;
         d=google.com; s=arc-20160816;
-        b=wQ/AXvdtORySzJy0SYEPpXKxZZInsl0I8NGENqMqk/1KL1RnjQOVBadP60bncV3buh
-         a5LEkAWFC5ZSml0A63AhsM0uHR5pwG5BnAKN3WGoeouwBFxmzXQUC5OYRDvW4Ipe3Jkz
-         xeX7n9cxpQTxHVvLMyGDJ7lz9XcoWYn8z361gGSLT2gLui6B8lqIljoqtwVsTRHkubyy
-         oQCRGPAliBKx1r0LmCtn9bsV1mJeqXzRYTghoTxpfx/VAd2ns0cNMojvAPY1PXkzUZ0N
-         mXtBWiuphChogX1NuWxHP3yOsoEw8nqfhUz2qK/tnnzDQdwisMuVvHr/lVQUrwGOQCJE
-         iV4w==
+        b=n0Gg2HNP4/+MHGn3rBrpzcNCK5ITDafPj8uGgd+hqWFdlvJ60UG1zNa0xrjPdGlFMO
+         Lcn08vYnpIENREdaAMc0yuMG3K+qmr9pSYgAuZVHZf3qJRUvGlhRvN2rVm/CoeRA+EFL
+         nxDNFWM/RcHLFuPj8p2nRYNn1mZsog676M0jZat3NPlDPT21Dt2K6rnpnhyFsfqpvwTp
+         OdDQ7QogqQL6RcpUVrDg6lSoOLnwkRo23/d65HCzn8nt1/XnpnpFVZa04q5E24oPK8ZC
+         WghSAoAiW3hhtAWIaEjNZhXR4BkJFZ2QHiNMj2z5vgZGXmmVYPG5/tC4Tv1NzNlWNvp4
+         h8yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=PwyPJFrJEaJK0d51Wl22d7Xw2dD/MAk+ZGhZww+aErk=;
-        b=iTUKDdxPdHTc5frjPSRarNX0SwCAip2jGC+Wg/2Nebj+i63swn5ZCumHX8uXqjDYm+
-         HBtAVXQ+VhdDm3eNr8DWjqO8qk0ZC5chswDSNxl4NvZ5RBGt+MQMPdK9VIPbI347fahg
-         h8/ar1yJUzqB5Ds/ehdam6l4FsUTZnVSfetHUxyd5WqX9ub/gjoMjYjS+nWYUkjR0pzW
-         IL3hLMLygL8KnuKwT6Wdbq+AKGKI9z4vB7J5SymrCQx1CUUiKYKXhX2XKUKVzcsUMgo+
-         ccAXa7eXYLWRD4PrhOUgnUeN0azoKnbVb5fKgWbG+Yja+hnvjg0I26KGNWt7dpPvwQbS
-         Cn9g==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=MUBVQPBPFdM7O8Ue/0lkR4HtTtJFO9rT0lI5kG1dp6A=;
+        b=K9Us56f6+ch+7Bjt4PePPPs0d2TTLvVsLUF9rDXqNYw0wi75ySwFvNqP4UpqiSocv6
+         +GeThwRoLJbAfENGGxu5RiLXOiGzOgY8Ol2rGWhapWw7zGIcFy/e8JwEDrYOQmtH2rCg
+         dLfjwliEL8tZH2fypBraTfcfx4AbHTuXjPFlPM9NuqnSN//UkiPnF6ZMEJUUk6sKWWIj
+         qjYWjviAMIh+BMW3jwZQ6gI3R3jHZWeFgsbPr560G3Ct5y1LTw/56bayPczSjTU0xQpA
+         OmtWWUV466EphedRKAhILB5RzPtBwMhMLoMLLOvuZ4CObHoNtpmffTsJ4v0cPxMlL38c
+         L6DA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WiYrYq7b;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VKGJpOFG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q125si11901810qkf.348.2020.04.16.14.05.25
+        by mx.google.com with ESMTPS id s2si5024980qkd.247.2020.04.16.23.40.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Apr 2020 14:05:25 -0700 (PDT)
+        Thu, 16 Apr 2020 23:40:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WiYrYq7b;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39292 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VKGJpOFG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42942 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jPBhN-0005J0-1b
-	for alex.bennee@linaro.org; Thu, 16 Apr 2020 17:05:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36452)
+	id 1jPKfT-0006ES-Bf
+	for alex.bennee@linaro.org; Fri, 17 Apr 2020 02:40:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33507)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groeck7@gmail.com>) id 1jPBh9-0005EG-IM
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 17:05:12 -0400
+ (envelope-from <mst@redhat.com>) id 1jPKfL-0006Dw-0i
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 02:39:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groeck7@gmail.com>) id 1jPBh7-0003o6-3E
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 17:05:11 -0400
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:38117)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <groeck7@gmail.com>)
- id 1jPBh5-0003nE-Lo; Thu, 16 Apr 2020 17:05:08 -0400
-Received: by mail-pj1-x1043.google.com with SMTP id t40so82199pjb.3;
- Thu, 16 Apr 2020 14:05:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=PwyPJFrJEaJK0d51Wl22d7Xw2dD/MAk+ZGhZww+aErk=;
- b=WiYrYq7bLfQGBKB/hDACxgkxkn8k8ggrt/Pn52QkPutygThc63Kt4stRwDqDOKCKca
- x+mtYpgQJnvE9b49pS7PFcHP/igYonkCxwxDgCAiYdQ1OoBwc9BfvUuyZI0HP2UeR1u+
- K/wqnJgSu/4TwOqzmRzEbJE0X0EQLoCC5jJCy9ZeG0jF7wopQ22UO0P51MqjUpZzgIZu
- AYrmcERzhvURXCSpOYWZBTRwrgRvWa2YQ0ouai2whPYO1qVfQYF6AeA6BGNsUS2pnW/0
- yy6CRFFTQDWalaS3hH7onC/M5uc6aLEiAGjWi+pcFG8vlrntm+Yau4ZuZvXVxAzeN99Z
- sfaQ==
+ (envelope-from <mst@redhat.com>) id 1jPKfJ-00078I-F7
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 02:39:54 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:46879
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1jPKfJ-00077j-9Z
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 02:39:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1587105592;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=MUBVQPBPFdM7O8Ue/0lkR4HtTtJFO9rT0lI5kG1dp6A=;
+ b=VKGJpOFGvnINIjspD3OjhoYmXR/V6zAPR1oRxQ8KSHfZfzRNEIoAbLDyYsygXPzGvfGggs
+ K1mdUJ8d/6QtYycUdIqH8ReXhqOSDYDcVxYBD6JrchPJVl33fNbAg80asdEUYPcHXDiP6s
+ S7edGn9+zGNAig86A8PRXo8/5XPz5uA=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-155-zQ5miB0WNrynbJUMeYuoEw-1; Fri, 17 Apr 2020 02:39:50 -0400
+X-MC-Unique: zQ5miB0WNrynbJUMeYuoEw-1
+Received: by mail-wr1-f71.google.com with SMTP id j16so508488wrw.20
+ for <qemu-arm@nongnu.org>; Thu, 16 Apr 2020 23:39:50 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=PwyPJFrJEaJK0d51Wl22d7Xw2dD/MAk+ZGhZww+aErk=;
- b=kJu99lHJmU5EJ2Cr6lDLpLcoms4yAGmNQomCTl1+tmN8SqlpwZTMzG4KkJdoOvUTgE
- OlBziEaECLW9Bk7iyoy81YpzYT90lqkofvaaQg31vQ4Tx9xIbNZ0URIodt6TFXc0ipUx
- 6Efznv3XENjBtEnANuRxiSx4+bNXKkNQIucK7OON29trEreA9F8XYBsxU6YNG/DLnTFi
- cGiI9tyNjN8TrfydY6lBRqVU2Q3p2MRIMT6KL77SwcZa/RFyvN3qfBGIObgLojCiDz6S
- Go+TULgjj35/HUi6wt/rDdmXra48k/ZPN6LEX+eEoRCtSdqO1yphtBL6/GWrb+WjnuPA
- hvnQ==
-X-Gm-Message-State: AGi0PuaplB8YbyBrq4g2aLOJ2v/eCf9Ko6R9cIoSRmVgkvbPVWk3PkQi
- YcpC0JQbMaxkANgNY3i4gbhQmXP0
-X-Received: by 2002:a17:90a:5217:: with SMTP id
- v23mr233686pjh.127.1587071106044; 
- Thu, 16 Apr 2020 14:05:06 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- e4sm14816443pfn.199.2020.04.16.14.05.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Apr 2020 14:05:05 -0700 (PDT)
-Subject: Re: [PATCH v2 8/8] hw/arm/fsl-imx7: Connect watchdog interrupts
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200322211919.11335-1-linux@roeck-us.net>
- <20200322211919.11335-9-linux@roeck-us.net>
- <CAFEAcA9drmvK5aiCtugLFABKf9t+XMkt6AhS75VhzABzXVMhGQ@mail.gmail.com>
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-Message-ID: <5ed81c7f-01ec-4e1a-9886-89879c3eedfd@roeck-us.net>
-Date: Thu, 16 Apr 2020 14:05:03 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=s8pQoSM8B9SNpU47Rf2Vn7xWVBYdXT3UvqvSWwIi4Bk=;
+ b=rmsETTHxkt8Sd30N11hUBj6HU6iqOuB9EyGQin7J2RiNvPGO+39yQppa5K9+7drnM3
+ nqJ0AJNh8XkYZtCf3/4mKr76IiWQzOsGlYOj/r9e6lsETAmmAkMTkM7lRdCXl9P2Avq0
+ yO2lG9YDC929xAveoZgYQnfjsjX1vgU2dN9Jc9LZAL/uKCWDRTcKaBjVTd2SZeTsG9fT
+ IFnHZkhiOB8FKtyWVBzLPuHmpmIxzFLX22wtOOMXAdBQIMSdxLIdJA64WJY2qcOpiFMl
+ AC+nJarZYRlArSbDzhBbTbc6odIimfEnVbyjyh7DAsY/cnF6Qv2VFo4JzIGnYid2VqFZ
+ tu5w==
+X-Gm-Message-State: AGi0PuaUYfXyPKAiKROj5ai1qaLuilGrEd2dUQQCbBwBWl+Pig2flVFx
+ Eqi1e3DHH0LwnTF6j7mqpDzM7+wttMJWGtXIJiocOe2PuSkeR+vRg8JJSJA3Dyg6ZGQfwH4WzNq
+ n+o7ng1GegDoT
+X-Received: by 2002:a5d:4388:: with SMTP id i8mr2093444wrq.186.1587105589750; 
+ Thu, 16 Apr 2020 23:39:49 -0700 (PDT)
+X-Received: by 2002:a5d:4388:: with SMTP id i8mr2093409wrq.186.1587105589461; 
+ Thu, 16 Apr 2020 23:39:49 -0700 (PDT)
+Received: from redhat.com (bzq-79-183-51-3.red.bezeqint.net. [79.183.51.3])
+ by smtp.gmail.com with ESMTPSA id m14sm28673674wrs.76.2020.04.16.23.39.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Apr 2020 23:39:48 -0700 (PDT)
+Date: Fri, 17 Apr 2020 02:39:45 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Subject: Re: [PATCH-for-5.0 05/12] vhost-user-gpu: Release memory returned by
+ vu_queue_pop() with free()
+Message-ID: <20200417023937-mutt-send-email-mst@kernel.org>
+References: <20200414133052.13712-1-philmd@redhat.com>
+ <20200414133052.13712-6-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9drmvK5aiCtugLFABKf9t+XMkt6AhS75VhzABzXVMhGQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::1043
+In-Reply-To: <20200414133052.13712-6-philmd@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -159,53 +123,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>, qemu-block@nongnu.org,
+ qemu-stable@nongnu.org, qemu-devel@nongnu.org,
+ Fabien Chouteau <chouteau@adacore.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Stafford Horne <shorne@gmail.com>, Max Reitz <mreitz@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3142ProZmhwO
+X-TUID: /HJ5qGk8u+gF
 
-Hi Peter,
+On Tue, Apr 14, 2020 at 03:30:45PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> vu_queue_pop() returns memory that must be freed with free().
+>=20
+> Cc: qemu-stable@nongnu.org
+> Reported-by: Coverity (CID 1421887 ALLOC_FREE_MISMATCH)
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Marc-Andr=E9 Lureau <marcandre.lureau@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 
-On 4/16/20 8:29 AM, Peter Maydell wrote:
-> On Sun, 22 Mar 2020 at 21:19, Guenter Roeck <linux@roeck-us.net> wrote:
->>
->> i.MX7 supports watchdog pretimeout interupts. With this commit,
->> the watchdog in mcimx7d-sabre is fully operational, including
->> pretimeout support.
->>
->> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> 
->> diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
->> index 47826da2b7..da977f9ffb 100644
->> --- a/include/hw/arm/fsl-imx7.h
->> +++ b/include/hw/arm/fsl-imx7.h
->> @@ -228,6 +228,11 @@ enum FslIMX7IRQs {
->>      FSL_IMX7_USB2_IRQ     = 42,
->>      FSL_IMX7_USB3_IRQ     = 40,
->>
->> +    FSL_IMX7_WDOG1_IRQ    = 78,
->> +    FSL_IMX7_WDOG2_IRQ    = 79,
->> +    FSL_IMX7_WDOG3_IRQ    = 10,
->> +    FSL_IMX7_WDOG4_IRQ    = 109,
-> 
-> irq 10 for wdog3 seems to match the kernel's dts, but it's
-> a bit weird that it's way out of the range of the others.
-> Did you sanity check it against the imx7 data sheet and/or
-> real h/w behaviour that it's not a typo for
-> one-hundred-and-something? (108 would be the obvious guess...)
-> 
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
-I actually did check, for that very same reason. To be sure I looked
-again. 10 is correct per datasheet. 108 is TZASC1 (TZASC (PL380)
-interrupt).
-
-> Otherwise
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> 
-
-Thanks,
-Guenter
+> ---
+>  contrib/vhost-user-gpu/vhost-user-gpu.c | 4 ++--
+>  contrib/vhost-user-gpu/virgl.c          | 2 +-
+>  2 files changed, 3 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/contrib/vhost-user-gpu/vhost-user-gpu.c b/contrib/vhost-user=
+-gpu/vhost-user-gpu.c
+> index b45d2019b4..a019d0a9ac 100644
+> --- a/contrib/vhost-user-gpu/vhost-user-gpu.c
+> +++ b/contrib/vhost-user-gpu/vhost-user-gpu.c
+> @@ -848,7 +848,7 @@ vg_handle_ctrl(VuDev *dev, int qidx)
+>              QTAILQ_INSERT_TAIL(&vg->fenceq, cmd, next);
+>              vg->inflight++;
+>          } else {
+> -            g_free(cmd);
+> +            free(cmd);
+>          }
+>      }
+>  }
+> @@ -939,7 +939,7 @@ vg_handle_cursor(VuDev *dev, int qidx)
+>          }
+>          vu_queue_push(dev, vq, elem, 0);
+>          vu_queue_notify(dev, vq);
+> -        g_free(elem);
+> +        free(elem);
+>      }
+>  }
+> =20
+> diff --git a/contrib/vhost-user-gpu/virgl.c b/contrib/vhost-user-gpu/virg=
+l.c
+> index 43413e29df..b0bc22c3c1 100644
+> --- a/contrib/vhost-user-gpu/virgl.c
+> +++ b/contrib/vhost-user-gpu/virgl.c
+> @@ -519,7 +519,7 @@ virgl_write_fence(void *opaque, uint32_t fence)
+>          g_debug("FENCE %" PRIu64, cmd->cmd_hdr.fence_id);
+>          vg_ctrl_response_nodata(g, cmd, VIRTIO_GPU_RESP_OK_NODATA);
+>          QTAILQ_REMOVE(&g->fenceq, cmd, next);
+> -        g_free(cmd);
+> +        free(cmd);
+>          g->inflight--;
+>      }
+>  }
+> --=20
+> 2.21.1
 

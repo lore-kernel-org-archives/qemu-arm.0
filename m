@@ -1,98 +1,158 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp640578lfm;
-        Fri, 17 Apr 2020 08:52:39 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKlaTspB/LVNoPk7d6EHbumSqqhiaQAQcSGo8SULv2Qw2N6+hLFu/UikWCKrOnbZmE1sqlE
-X-Received: by 2002:a37:b002:: with SMTP id z2mr3871135qke.289.1587138758913;
-        Fri, 17 Apr 2020 08:52:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587138758; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp675448lfm;
+        Fri, 17 Apr 2020 09:23:25 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKlp12WwZ1F+FnugJi/Rt3vrX7OhTJY3+D9w1zeGc3Wkuesl5/lHrm0HBvnmvlelu4aTdez
+X-Received: by 2002:ac8:46d0:: with SMTP id h16mr3928827qto.242.1587140605072;
+        Fri, 17 Apr 2020 09:23:25 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1587140605; cv=pass;
         d=google.com; s=arc-20160816;
-        b=AiH6mydQw20018ub2dkp6voEtB84EC37sEidLYmSBrD8eSA9pObKSevCa9DslbmVFF
-         RwosnCbdOZe8dn2qsEVQbw/hgKvep+fXLFbCZUr2v27URK69B9iAI2HUyHzTEEMdKihD
-         y7e7hbVF/YvobikdjjiLEuRv8H7zp4tBYvMOuEdlHxxO6Dq6jwY2P34DmvOC699/RTxa
-         uC/Bv5j5Z+I71lvKFVj5vKTWk1L1anRRKqyZlwlHvgPN6/SpleEtJUR6VQYVN4swOa7r
-         fh5N0P3dW1hq5YIJckFSLdhp6CcfG0lcYEaAzWNz4rRUV2JNgOqwy7HyxJd8SETNSNFW
-         gclw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=rZcG3/y96nSN8NY8o4xqDlWcO3ul+3kjPI2SM04+Ns4v6FYgsNR5RdUU/6U8g36Qi0
+         1wrPx+b6JIOlWR2dL6sMkli31onZXWISSNPmEdHnynXiWX54rN429I9QHVarQAjN5gwH
+         HM0rAmSDCd256HvzQFlW1mV0BS2i2f7nsz7iEq4sdN9wwOggmGxH2rdYouB1AbTFJw9c
+         +ecfLy4v4JtsPwF2VSTvrDad+rrghFGF2UEy7KsvLH1nuARkvSu4Sq7wlSluGFMsjSd0
+         i/Dj8o1dHG3BXtLZ1fl5bnDhZSBtK0t8qdzySnFKvzooQ9RC4df/wUJHq4pScHG8nH1E
+         y1vA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Ke5CrWpmx7T7ACjOHpwUtx7SqOrvA4Sg0rRieSMQTwY=;
-        b=wQWdnjhVXSRaakFN5GbGEDyRi5PPGUkFeQUHRL/Y+0C6r6VDxEd5Jcn1VLvIRwaMyV
-         29mLLHKFdq1aSwXyD6gUQSDYrZosb/pPQ5fUinxnUsf0OQDLyXi02rbaBqHgXz5GeV9M
-         aEdl84Z7ELPiqZ5GC9ygQMUVz/Kg6euNOPi8Uh4q3or10UPhQ7OCfPPxMlTQ02DhBkDy
-         8n0qRsPY+JBrEPZsQssdQ3w9WLGmUNDYKarKYCbc5YtWPr8jK5eOCHoIVfafv7av7UQO
-         R5S+jR8OWWsGN7m1pxLMCru/AySPlZdLIC/dQvaFfrRCuGKag3ObcO4RTR9E0tww8w9l
-         LAyg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="q/Y2B4Zo";
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from:dkim-signature
+         :dkim-signature;
+        bh=Ao3bZOml2Kn2adA3FKMzT3BjUtNa7t17LDEtBuCGiZU=;
+        b=W1rXF5x21uyqJ2CbTlaWrzKC+wyYwESsxBrmRizlqy0lPoMkrpX5QpGMt2uGqMOc/L
+         /bSISyF7doYkJVHwO3//D1TJE3IOX0Hv5bESAwcymTj78C+dqcPkJiDYrW4GYTp2lVmw
+         IBKL7QmUluHkSmcKrDAmJgS63rdPvPqgL3a9BcsQgTnNoD805z0SzuZEAmh55Eclnh6l
+         04G9RtQyX3wgHoHKF2z69F9H1cxa7HDjAQJYuJgEL2cuidHT+B1c7g/R4VcfpClrrZ6+
+         KAZcHzUdV2VU5bs8fzrVNOwwgv5muSEKXjS2e4HMAcjBUE4chhN+ITv/T+Y3rZ1MgK5a
+         3D6w==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=qZyJqGri;
+       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b="EVoD/kpS";
+       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s19si3363038qvv.46.2020.04.17.08.52.38
+        by mx.google.com with ESMTPS id o16si6502242qtk.370.2020.04.17.09.23.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Apr 2020 08:52:38 -0700 (PDT)
+        Fri, 17 Apr 2020 09:23:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="q/Y2B4Zo";
+       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=qZyJqGri;
+       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b="EVoD/kpS";
+       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48836 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from localhost ([::1]:49450 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jPTIE-0002H0-AJ
-	for alex.bennee@linaro.org; Fri, 17 Apr 2020 11:52:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55923)
+	id 1jPTm0-0002JS-EB
+	for alex.bennee@linaro.org; Fri, 17 Apr 2020 12:23:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37266)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jPTI3-0002G6-Vn
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 11:52:30 -0400
+ (envelope-from <steplong@quicinc.com>) id 1jPTlk-0002Ck-0h
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 12:23:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jPTI0-0002YD-Rc
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 11:52:27 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:33091)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jPTI0-0002Xh-JD
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 11:52:24 -0400
-Received: by mail-oi1-x244.google.com with SMTP id m14so2480229oic.0
- for <qemu-arm@nongnu.org>; Fri, 17 Apr 2020 08:52:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Ke5CrWpmx7T7ACjOHpwUtx7SqOrvA4Sg0rRieSMQTwY=;
- b=q/Y2B4Zorip5j6i9FpLcZ1bA7SCB39/t+RWEXAwn13ERMRQZl9bWNNFBfhYuaf4R/N
- avt3zCTDoowPpdUM5cgO9kGM7GPcshcCkGiPXzniWHLWEtha/2X2FOrRvKSyTVFfY+2+
- HvFGfsOgEF8a9ev1hSNu6KZQdxlLIWjBOfM/XoT82qK0clh0agwNjHKdcrKdNPOUjQPz
- Pp2utLV9sraPoX9L5coa2z0qxxBADZivJN9NX6yno5RaL7VzQZ2LhQs2pybum/4sjyia
- 5xD7lQnSkjXD8DFYTTlpMtMRoEDIFVjf0hvJ3bMpU0XIpg4JdNrq48xy3N5OoacLSw+j
- fsWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Ke5CrWpmx7T7ACjOHpwUtx7SqOrvA4Sg0rRieSMQTwY=;
- b=J5upyhSuSY4SUpbo/TDEBwV/Tk/Qw1dgZsEy2bc534Fyqg5W9i/QC+UDpiRzs1xJji
- qfptm6DzyhZwEV654SFNCeCTeAycJO6mGaYtFe9Ow0fMN/NLBNsOasUR2ZHWLvYoLzRm
- BHzg1GMvlOILlzK5dhyndxco0FCiHsLRcHr4yGPRwjN+PIWAhKBY29Y+xbn0EB0w6vOL
- tkvWPeppNxrP9A8TKh14jQz3Itm0GrMtr4Q28SF+IaWaq0nQiN/dgAJD8uhO09kr5lkY
- rCKdF+p6puFPhhirT29lHlIB5OBqIwhyfdvtmEH95kcxVQxyVp+ZKiltIIoPIdBOIeII
- qx7A==
-X-Gm-Message-State: AGi0Pubq2G0mmbCqV6OG8LyxKYoXRfGODe0SafCWg/bRHChWJs2XdxRR
- iZjI8z1/SubQJtJOLoymYJqO88XkIdw6RSdnhF/ZTg==
-X-Received: by 2002:aca:c751:: with SMTP id x78mr1559284oif.163.1587138743434; 
- Fri, 17 Apr 2020 08:52:23 -0700 (PDT)
+ (envelope-from <steplong@quicinc.com>) id 1jPTlh-0007lv-WA
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 12:23:07 -0400
+Received: from alexa-out-sd-02.qualcomm.com ([199.106.114.39]:45089)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <steplong@quicinc.com>)
+ id 1jPTlc-0007fW-4z; Fri, 17 Apr 2020 12:23:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
+ t=1587140580; x=1618676580;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version;
+ bh=m2F1YUEwmiM9nglFoxq7V0qWrAJl8rrHZRPXroYH7tw=;
+ b=qZyJqGriUY3CvPaVQzprVgwpXUfPpazJsCuetfp6ssfF2vzvh5skNp2W
+ Rkx/poT17DrRe5APyz3Kt09KHlow792XjGR6Hq7Lr2lwqU6tcqSffxuFZ
+ fw5Hfe3NYhSfdjAlAkDdgOefcER+SN23qAFbxyCnt7O/+ebKiMYvRJu7G 0=;
+Received: from unknown (HELO ironmsg-SD-alpha.qualcomm.com) ([10.53.140.30])
+ by alexa-out-sd-02.qualcomm.com with ESMTP; 17 Apr 2020 09:22:59 -0700
+Received: from nasanexm01b.na.qualcomm.com ([10.85.0.82])
+ by ironmsg-SD-alpha.qualcomm.com with ESMTP/TLS/AES256-SHA;
+ 17 Apr 2020 09:22:59 -0700
+Received: from eusanexr01f.eu.qualcomm.com (10.85.0.101) by
+ NASANEXM01B.na.qualcomm.com (10.85.0.82) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 17 Apr 2020 09:22:59 -0700
+Received: from nasanexm03b.na.qualcomm.com (10.85.0.98) by
+ eusanexr01f.eu.qualcomm.com (10.85.0.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 17 Apr 2020 09:22:57 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (199.106.107.6)
+ by nasanexm03b.na.qualcomm.com (10.85.0.98) with Microsoft SMTP Server (TLS)
+ id 15.0.1497.2 via Frontend Transport; Fri, 17 Apr 2020 09:22:57 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=iNLvivrI4FGdWJBa1BPU7Yh05yLf56jmE3J1kBBkSBQke5AU5Nxyz+5RwGugGXvoUNVYuYjpm5H0s2kZYhlbBN+QXuSWyOKcV2+j4kze1B4M+Ft7YOpnA4HJT9alsmAs7gAr0MXUClaQZuWECoqVt+MSWE1+4NgJCuSMo20vyJwIqZuOi/tLcLxmaeLRi8Hj5YdVXhgho899PAA4osQECHrtXkf7LVI+U1UxFj8m0GGxvqFI6SLVSUT8oV5HGotqI5IkmZ2/7LLt/USpgSFEOghHxszPSlYvxoGzef5DnNiKf6ygkLxIJnFpaAq6EnARRnuP0WlCGL7nqeyISq+gEA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ao3bZOml2Kn2adA3FKMzT3BjUtNa7t17LDEtBuCGiZU=;
+ b=h/uAN60GvV40LkjleEEvox7GQYZDYtvMS017akku8IlRzqaI5se1LDI5kNijm5AcXiY8iFR0El4k+eHF9XGR59YR2uaGCLB1LEIhzjRkwrU8O/wso1MwCY8uEF2NZTFyOMVcTrRLxJEiZuEJtKoU0hXp29dRMmxDXBU/88FPDOox+D9xKNLMYUWKLv+BhB8cTfkusQl5+I6MV/HaE2B2LYpbszXTZRW+iMEPQgHQ4XaEQtB3SB+1bVheJjE6lAOamEt8I2/sbUO7KXVZJkO6HPDl4wsVEKKIIK5cjrUUs767WjrA2ghFQPAdP9x6HDBx/n4Jc+4Wa0hDftfulm1LIw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
+ dkim=pass header.d=quicinc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=qualcomm.onmicrosoft.com; s=selector1-qualcomm-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ao3bZOml2Kn2adA3FKMzT3BjUtNa7t17LDEtBuCGiZU=;
+ b=EVoD/kpSU5dVp76shO175N2S61xB9Kh1KBqfxyXnSwJuc/dxQX2q1MlNl7bugc+cVDnG/sNA/Qgfq90X2c4orRTJYHGal320+NRxOUgsuYoPFKDfG7tu12W6UQroOBS3gqyLgIO9QmerojEE/Gh7prk79Tit769beZiz6cp+KtI=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=steplong@quicinc.com; 
+Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
+ (2603:10b6:301:7b::24) by MWHPR0201MB3484.namprd02.prod.outlook.com
+ (2603:10b6:301:77::36) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.29; Fri, 17 Apr
+ 2020 16:22:50 +0000
+Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
+ ([fe80::10ad:5df5:d575:1f37]) by MWHPR0201MB3547.namprd02.prod.outlook.com
+ ([fe80::10ad:5df5:d575:1f37%3]) with mapi id 15.20.2900.030; Fri, 17 Apr 2020
+ 16:22:50 +0000
+From: Stephen Long <steplong@quicinc.com>
+To: <qemu-devel@nongnu.org>
+Subject: [PATCH 3/4] target/arm: Implement SVE2 SUBHNB, SUBHNT
+Date: Fri, 17 Apr 2020 12:22:30 -0400
+Message-ID: <20200417162231.10374-4-steplong@quicinc.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200417162231.10374-1-steplong@quicinc.com>
+References: <20200417162231.10374-1-steplong@quicinc.com>
+Content-Type: text/plain
+X-ClientProxiedBy: CH2PR12CA0017.namprd12.prod.outlook.com
+ (2603:10b6:610:57::27) To MWHPR0201MB3547.namprd02.prod.outlook.com
+ (2603:10b6:301:7b::24)
 MIME-Version: 1.0
-References: <20200406135251.157596-1-damien.hedde@greensocs.com>
- <20200406135251.157596-6-damien.hedde@greensocs.com>
-In-Reply-To: <20200406135251.157596-6-damien.hedde@greensocs.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Apr 2020 16:52:11 +0100
-Message-ID: <CAFEAcA_NVJg9KS-yrYDKe0GbAC7xah6mH1SmkjLmyr-BNPF8WQ@mail.gmail.com>
-Subject: Re: [PATCH v9 5/9] docs/clocks: add device's clock documentation
-To: Damien Hedde <damien.hedde@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::244
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from DESKTOP-L2LA14H.localdomain (108.176.222.2) by
+ CH2PR12CA0017.namprd12.prod.outlook.com (2603:10b6:610:57::27) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2921.25 via Frontend Transport; Fri, 17 Apr 2020 16:22:49 +0000
+X-Mailer: git-send-email 2.17.1
+X-Originating-IP: [108.176.222.2]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 45a62260-17bb-4cb0-dad4-08d7e2eb9278
+X-MS-TrafficTypeDiagnostic: MWHPR0201MB3484:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <MWHPR0201MB3484C247E1EBEAD247E4A24FC7D90@MWHPR0201MB3484.namprd02.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:65;
+X-Forefront-PRVS: 0376ECF4DD
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR0201MB3547.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(10019020)(396003)(376002)(136003)(39860400002)(366004)(346002)(5660300002)(107886003)(4326008)(66946007)(66476007)(66556008)(6916009)(6486002)(478600001)(6512007)(6666004)(2906002)(36756003)(186003)(16526019)(86362001)(956004)(1076003)(2616005)(316002)(8676002)(26005)(6506007)(52116002)(81156014)(8936002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: mkT2McmLQuAW7VB6Pw1OHSEQD8Zi3I6s8Wn+aobCBz00qWaBeK6sBt+5nnoN15Crf6CqdKXjz9o9xFqQW3i3GGuLzLc9wobUD7iBjOl0rVURThLBtkrJMAMOB8iQN138XFNJifwwshDYqJcnaWT2jWjtRX2xwbxhmKVnL/cL+7fK0Mqh9zUHAEoTRicJex/6AHxBG+iljAKK7Hf7CDNWysj/lXB6KLIigC6NELATqgihu1Tlv0cSRt35Uu5eSxnAT2VKQzAqqk+wJlmFgTbe9KX4PUKPRb8WmXSsDYOPxk8glvFp7HjOUdMOs9Akj2/DRUVXkF62iUSXyf4q/AFEtIesxFjpSjxQnbcuXTFf4+w9Lzm8mB9xAGVIYX76QZ10k4mUB8q/mKwycSsfmknuuNjF5u4I4s+K1BIEZpcAvW+0F26bMKRWJ/PoD686ZXNy
+X-MS-Exchange-AntiSpam-MessageData: 0Fd4o+jQxlzCV9jFryimE8afpZk0mszAuJIVtQixbdxVE6fFt0uC4AHmzmvtnyWOP15r0G5kAWeYEGixhc24FDDHTjyYXF8rdH8CB0dShvPAg4NtQSKx4Vg+UanE5GA7tWicgYEDJiWR+oz1Dcio3g==
+X-MS-Exchange-CrossTenant-Network-Message-Id: 45a62260-17bb-4cb0-dad4-08d7e2eb9278
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Apr 2020 16:22:50.1448 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: aL2j8q1/hACzJN3bWqhT1EYRnpFab3UsudBoZgIZEt2YlO4PXJyx7Rfycno+0SHE1/Qkd/QRQfgbAby0q4QbXw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR0201MB3484
+X-OriginatorOrg: quicinc.com
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 199.106.114.39
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,473 +164,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Mark Burton <mark.burton@greensocs.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-arm@nongnu.org, richard.henderson@linaro.org, apazos@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GIKZMG64eimn
+X-TUID: 6pbw/wrYW12O
 
-On Mon, 6 Apr 2020 at 14:53, Damien Hedde <damien.hedde@greensocs.com> wrote:
->
-> Add the documentation about the clock inputs and outputs in devices.
->
-> This is based on the original work of Frederic Konrad.
->
-> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-I did an edit pass on this to address minor grammar/style
-issues and some Sphinx syntax stuff (notably, using
-"code-block:: c" renders nicer than a plain literal block).
-Diff against this patch is below; it looks bigger than
-you might expect because one of the changes was that I
-rewrapped some of the paragraphs that were close to or
-over 80 chars per line. Changes include the tweak Markus
-asked for.
-
-
-From 995ea4cf6b815e3efe2dff93723d69b08418ff9b Mon Sep 17 00:00:00 2001
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Apr 2020 15:26:59 +0100
-Subject: [PATCH] !fixup docs edit
-
+Signed-off-by: Stephen Long <steplong@quicinc.com>
 ---
- docs/devel/clocks.rst | 241 ++++++++++++++++++++++++------------------
- 1 file changed, 136 insertions(+), 105 deletions(-)
+ target/arm/helper-sve.h    |  8 ++++++++
+ target/arm/sve.decode      |  2 ++
+ target/arm/sve_helper.c    | 10 ++++++++++
+ target/arm/translate-sve.c |  3 +++
+ 4 files changed, 23 insertions(+)
 
-diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
-index ead9f55561c..e5da28e2111 100644
---- a/docs/devel/clocks.rst
-+++ b/docs/devel/clocks.rst
-@@ -1,26 +1,27 @@
--Modeling a clock tree in QEMU
--=============================
-+Modelling a clock tree in QEMU
-+==============================
-
--What are clocks
-----------------
-+What are clocks?
-+----------------
-
--Clocks are QOM objects developed for the purpose of modeling the
-+Clocks are QOM objects developed for the purpose of modelling the
- distribution of clocks in QEMU.
-
- They allow us to model the clock distribution of a platform and detect
- configuration errors in the clock tree such as badly configured PLL, clock
- source selection or disabled clock.
-
--The object is *Clock* and its QOM name is ``CLOCK``.
-+The object is *Clock* and its QOM name is ``clock`` (in C code, the macro
-+``TYPE_CLOCK``).
-
- Clocks are typically used with devices where they are used to model inputs
--and outputs. They are created in a similar way as gpios. Inputs and outputs
--of different devices can be connect together.
-+and outputs. They are created in a similar way to GPIOs. Inputs and outputs
-+of different devices can be connected together.
-
--In these cases a Clock object is a child of a Device object but this is not
--a requirement. Clocks can be independent of devices. For example it is possible
--to create a clock outside of any device to model the main clock source of a
--machine.
-+In these cases a Clock object is a child of a Device object, but this
-+is not a requirement. Clocks can be independent of devices. For
-+example it is possible to create a clock outside of any device to
-+model the main clock source of a machine.
-
- Here is an example of clocks::
-
-@@ -45,40 +46,43 @@ Here is an example of clocks::
-                                                 | +-------+    |
-                                                 +--------------+
-
--Clocks are defined in include/hw/clock.h header and device related functions
--are defined in include/hw/qdev-clock.h header.
-+Clocks are defined in the ``include/hw/clock.h`` header and device
-+related functions are defined in the ``include/hw/qdev-clock.h``
-+header.
-
- The clock state
- ---------------
-
--The state of a clock is its period; it is stored as an integer representing
--it in 2^-32ns unit. The special value of 0 is used to represent the clock being
--inactive or gated. The clocks do not model the signal itself (pin toggling)
--or other properties such as the duty cycle.
-+The state of a clock is its period; it is stored as an integer
-+representing it in units of 2 :sup:`-32` ns. The special value of 0 is used to
-+represent the clock being inactive or gated. The clocks do not model
-+the signal itself (pin toggling) or other properties such as the duty
-+cycle.
-
--All clocks contain this state: outputs as well as inputs. It allows to fetch
--the current period of a clock at any time. When a clock is updated, the
--value is immediately propagated to all connected clocks in the tree.
-+All clocks contain this state: outputs as well as inputs. This allows
-+the current period of a clock to be fetched at any time. When a clock
-+is updated, the value is immediately propagated to all connected
-+clocks in the tree.
-
--To ease interaction with clocks. Helpers with a unit suffix are defined for
--every clock state setter or getter. They are:
-+To ease interaction with clocks, helpers with a unit suffix are defined for
-+every clock state setter or getter. The suffixes are:
-
--- ``_ns`` for handling periods in nanosecond,
--- ``_hz`` for handling frequencies in hertz.
-+- ``_ns`` for handling periods in nanoseconds
-+- ``_hz`` for handling frequencies in hertz
-
- The 0 period value is converted to 0 in hertz and vice versa. 0 always means
- that the clock is disabled.
-
--Adding a new a clock
----------------------
-+Adding a new clock
-+------------------
-
- Adding clocks to a device must be done during the init method of the Device
- instance.
-
--To add an input clock to a device, the function qdev_init_clock_in
-must be used.
--It takes the name, a callback and an opaque parameter for the
-callback (this will
--be explained in a following section below).
--Output is more simple, only the name is required. Typically::
-+To add an input clock to a device, the function ``qdev_init_clock_in()``
-+must be used.  It takes the name, a callback and an opaque parameter
-+for the callback (this will be explained in a following section).
-+Output is simpler; only the name is required. Typically::
-
-     qdev_init_clock_in(DEVICE(dev), "clk_in", clk_in_callback, dev);
-     qdev_init_clock_out(DEVICE(dev), "clk_out");
-@@ -92,13 +96,13 @@ Note that it is possible to create a static array
-describing clock inputs and
- outputs. The function ``qdev_init_clocks()`` must be called with the array as
- parameter to initialize the clocks: it has the same behaviour as calling the
- ``qdev_init_clock_in/out()`` for each clock in the array. To ease the array
--construction, some macros are defined in include/hw/qdev-clock.h.
-+construction, some macros are defined in ``include/hw/qdev-clock.h``.
- As an example, the following creates 2 clocks to a device: one input and one
- output.
-
--::
-+.. code-block:: c
-
--    /* device structure containing pointer to the clock objects */
-+    /* device structure containing pointers to the clock objects */
-     typedef struct MyDeviceState {
-         DeviceState parent_obj;
-         Clock *clk_in;
-@@ -114,10 +118,10 @@ output.
-     /*
-      * static array describing clocks:
-      * + a clock input named "clk_in", whose pointer is stored in
--     *   clk_in field of a MyDeviceState structure with callback
-+     *   the clk_in field of a MyDeviceState structure with callback
-      *   clk_in_callback.
-      * + a clock output named "clk_out" whose pointer is stored in
--     *   clk_out field of a MyDeviceState structure.
-+     *   the clk_out field of a MyDeviceState structure.
-      */
-     static const ClockPortInitArray mydev_clocks = {
-         QDEV_CLOCK_IN(MyDeviceState, clk_in, clk_in_callback),
-@@ -136,12 +140,12 @@ output.
-     }
-
- An alternative way to create a clock is to simply call
--``object_new(TYPE_CLOCK)``. In that case the clock will neither be an input nor
--an output of a device. After the whole QOM hieracrhy of the clock has been set
--``clock_setup_canonical_path()`` should be called.
-+``object_new(TYPE_CLOCK)``. In that case the clock will neither be an
-+input nor an output of a device. After the whole QOM hierarchy of the
-+clock has been set ``clock_setup_canonical_path()`` should be called.
-
- At creation, the period of the clock is 0: the clock is disabled. You can
--change it using ``clock_set[_ns|_hz]()``.
-+change it using ``clock_set_ns()`` or ``clock_set_hz()``.
-
- Note that if you are creating a clock with a fixed period which will never
- change (for example the main clock source of a board), then you'll have
-@@ -152,32 +156,40 @@ the first reset.
- Retrieving clocks from a device
- -------------------------------
-
--``qdev_get_clock_in()`` and ``dev_get_clock_out()`` are available to
-get the clock inputs or outputs of a device. For example::
-+``qdev_get_clock_in()`` and ``dev_get_clock_out()`` are available to
-+get the clock inputs or outputs of a device. For example:
-
--    Clock *clk = qdev_get_clock_in(DEVICE(mydev), "clk_in");
-+.. code-block:: c
-
--or::
-+   Clock *clk = qdev_get_clock_in(DEVICE(mydev), "clk_in");
-
--    Clock *clk = qdev_get_clock_out(DEVICE(mydev), "clk_out");
-+or:
+diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
+index 5d5542a82a..00e3706da0 100644
+--- a/target/arm/helper-sve.h
++++ b/target/arm/helper-sve.h
+@@ -2532,6 +2532,14 @@ DEF_HELPER_FLAGS_4(sve2_raddhnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve2_raddhnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve2_raddhnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+ 
++DEF_HELPER_FLAGS_4(sve2_subhnb_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_subhnb_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_subhnb_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
-+.. code-block:: c
++DEF_HELPER_FLAGS_4(sve2_subhnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_subhnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve2_subhnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
 +
-+   Clock *clk = qdev_get_clock_out(DEVICE(mydev), "clk_out");
-
- Connecting two clocks together
- ------------------------------
-
- To connect two clocks together, use the ``clock_set_source()`` function.
- Given two clocks ``clk1``, and ``clk2``, ``clock_set_source(clk2, clk1);``
--configure ``clk2`` to follow the ``clk1`` period changes. Every time ``clk1``
-+configures ``clk2`` to follow the ``clk1`` period changes. Every time ``clk1``
- is updated, ``clk2`` will be updated too.
-
- When connecting clock between devices, prefer using the
--``qdev_connect_clock_in()`` function set the source of an input device clock.
--For example, to connect the input clock ``clk2`` of ``devB`` to the output
--clock ``clk1`` of ``devA``, do::
-+``qdev_connect_clock_in()`` function to set the source of an input
-+device clock.  For example, to connect the input clock ``clk2`` of
-+``devB`` to the output clock ``clk1`` of ``devA``, do:
+ DEF_HELPER_FLAGS_5(sve2_match_ppzz_b, TCG_CALL_NO_RWG,
+                    i32, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(sve2_match_ppzz_h, TCG_CALL_NO_RWG,
+diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+index 9d82677808..75996897a1 100644
+--- a/target/arm/sve.decode
++++ b/target/arm/sve.decode
+@@ -1327,6 +1327,8 @@ ADDHNB          01000101 .. 1 ..... 011 000 ..... .....  @rd_rn_rm
+ ADDHNT          01000101 .. 1 ..... 011 001 ..... .....  @rd_rn_rm
+ RADDHNB         01000101 .. 1 ..... 011 010 ..... .....  @rd_rn_rm
+ RADDHNT         01000101 .. 1 ..... 011 011 ..... .....  @rd_rn_rm
++SUBHNB          01000101 .. 1 ..... 011 100 ..... .....  @rd_rn_rm
++SUBHNT          01000101 .. 1 ..... 011 101 ..... .....  @rd_rn_rm
+ 
+ ### SVE2 Character Match
+ 
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index f92b8dd312..f6e7694b9f 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -2049,6 +2049,7 @@ void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)              \
+ 
+ #define DO_ADDHN(N, M, SH)  ((N + M) >> SH)
+ #define DO_RADDHN(N, M, SH) ((N + M + (1 << (SH - 1))) >> SH)
++#define DO_SUBHN(N, M, SH)  ((N - M) >> SH)
+ 
+ DO_BINOPNB(sve2_addhnb_h, uint16_t, uint8_t, 8, DO_ADDHN)
+ DO_BINOPNB(sve2_addhnb_s, uint32_t, uint16_t, 16, DO_ADDHN)
+@@ -2066,6 +2067,15 @@ DO_BINOPNT(sve2_raddhnt_h, uint16_t, uint8_t, 8, H1_2, H1, DO_RADDHN)
+ DO_BINOPNT(sve2_raddhnt_s, uint32_t, uint16_t, 16, H1_4, H1_2, DO_RADDHN)
+ DO_BINOPNT(sve2_raddhnt_d, uint64_t, uint32_t, 32,     , H1_4, DO_RADDHN)
+ 
++DO_BINOPNB(sve2_subhnb_h, uint16_t, uint8_t, 8, DO_SUBHN)
++DO_BINOPNB(sve2_subhnb_s, uint32_t, uint16_t, 16, DO_SUBHN)
++DO_BINOPNB(sve2_subhnb_d, uint64_t, uint32_t, 32, DO_SUBHN)
 +
-+.. code-block:: c
-
-     qdev_connect_clock_in(devB, "clk2", qdev_get_clock_out(devA, "clk1"))
-
--We used ``qdev_get_clock_out()`` above, but any clock can drive an input clock,
--even another input clock. The following diagram shows some
--examples of connections. Note also that a clock can drive several other clocks.
-+We used ``qdev_get_clock_out()`` above, but any clock can drive an
-+input clock, even another input clock. The following diagram shows
-+some examples of connections. Note also that a clock can drive several
-+other clocks.
-
- ::
-
-@@ -200,19 +212,23 @@ examples of connections. Note also that a clock
-can drive several other clocks.
-                   |               +--------------+                   |
-                   +--------------------------------------------------+
-
--In the above example, when *Clock 1* is updated by *Device A*, three
-clocks gets the new clock period value: *Clock 2*, Clock 3* and *Clock
-4*.
-+In the above example, when *Clock 1* is updated by *Device A*, three
-+clocks get the new clock period value: *Clock 2*, *Clock 3* and *Clock 4*.
-
- It is not possible to disconnect a clock or to change the clock connection
--after it is done.
-+after it is connected.
-
- Unconnected input clocks
- ------------------------
-
--A newly created input clock is disabled (period of 0). It means the clock will
--be considered as disabled until the period is updated. If the clock remains
--unconnected it will always keep its initial value of 0. If this is not the
--wanted behaviour, ``clock_set()``, ``clock_set_ns()`` or ``clock_set_hz()``
--should be called on the Clock object during device instance init. For example::
-+A newly created input clock is disabled (period of 0). This means the
-+clock will be considered as disabled until the period is updated. If
-+the clock remains unconnected it will always keep its initial value
-+of 0. If this is not the desired behaviour, ``clock_set()``,
-+``clock_set_ns()`` or ``clock_set_hz()`` should be called on the Clock
-+object during device instance init. For example:
++DO_BINOPNT(sve2_subhnt_h, uint16_t, uint8_t, 8, H1_2, H1, DO_SUBHN)
++DO_BINOPNT(sve2_subhnt_s, uint32_t, uint16_t, 16, H1_4, H1_2, DO_SUBHN)
++DO_BINOPNT(sve2_subhnt_d, uint64_t, uint32_t, 32,     , H1_4, DO_SUBHN)
 +
-+.. code-block:: c
-
-     clk = qdev_init_clock_in(DEVICE(dev), "clk-in", clk_in_callback,
-                              dev);
-@@ -222,18 +238,19 @@ should be called on the Clock object during
-device instance init. For example::
- Fetching clock frequency/period
- -------------------------------
-
--To get the current state of a clock, the function ``clock_get()``,
--``clock_get_ns()`` or ``clock_get_hz()`` must be used.
-+To get the current state of a clock, use the functions ``clock_get()``,
-+``clock_get_ns()`` or ``clock_get_hz()``.
-
- It is also possible to register a callback on clock frequency changes.
--Here is an example::
-+Here is an example:
++#undef DO_SUBHN
+ #undef DO_RADDHN
+ #undef DO_ADDHN
+ 
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index a36eb9cf98..4081fcb873 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -7519,6 +7519,9 @@ DO_SVE2_ZZZ_NARROW(ADDHNT, addhnt)
+ DO_SVE2_ZZZ_NARROW(RADDHNB, raddhnb)
+ DO_SVE2_ZZZ_NARROW(RADDHNT, raddhnt)
+ 
++DO_SVE2_ZZZ_NARROW(SUBHNB, subhnb)
++DO_SVE2_ZZZ_NARROW(SUBHNT, subhnt)
 +
-+.. code-block:: c
-
-     void clock_callback(void *opaque) {
-         MyDeviceState *s = (MyDeviceState *) opaque;
-         /*
--         * opaque may not be the device state pointer, but most
--         * probably it is. (It depends on what is given to the
--         * qdev_init_clock_in function)
-+         * 'opaque' is the argument passed to qdev_init_clock_in();
-+         * usually this will be the device state pointer.
-          */
-
-         /* do something with the new period */
-@@ -248,48 +265,57 @@ A device can change its outputs using the
-``clock_update()``,
- ``clock_update_ns()`` or ``clock_update_hz()`` function. It will trigger
- updates on every connected input.
-
--For example, let's say that we have an output clock *clkout* and we have a
--pointer to it in the device state because we did the following in init phase::
-+For example, let's say that we have an output clock *clkout* and we
-+have a pointer to it in the device state because we did the following
-+in init phase:
-
--    dev->clkout = qdev_init_clock_out(DEVICE(dev), "clkout");
-+.. code-block:: c
-+
-+   dev->clkout = qdev_init_clock_out(DEVICE(dev), "clkout");
-
- Then at any time (apart from the cases listed below), it is possible to
--change the clock value by doing::
-+change the clock value by doing:
-
--    clock_update_hz(dev->clkout, 1000 * 1000 * 1000); /* 1Ghz */
-+.. code-block:: c
-
--Because updating a clock may trigger any side effects through connected clocks
--and their callbacks, this operation must be done while holding the
-qemu io lock.
-+   clock_update_hz(dev->clkout, 1000 * 1000 * 1000); /* 1GHz */
-+
-+Because updating a clock may trigger any side effects through
-+connected clocks and their callbacks, this operation must be done
-+while holding the qemu io lock.
-
- For the same reason, one can update clocks only when it is allowed to have
- side effects on other objects. In consequence, it is forbidden:
--+ during migration,
--+ and in the enter phase of reset.
-+
-+* during migration,
-+* and in the enter phase of reset.
-
- Note that calling ``clock_update[_ns|_hz]()`` is equivalent to calling
--``clock_set[_ns|_hz]()`` (with the same arguments) then
-``clock_propagate()`` on
--the clock. Thus, setting the clock value can be separated from triggering the
--side-effects. This is often required to factorize code to handle reset and
--migration in devices.
-+``clock_set[_ns|_hz]()`` (with the same arguments) then
-+``clock_propagate()`` on the clock. Thus, setting the clock value can
-+be separated from triggering the side-effects. This is often required
-+to factorize code to handle reset and migration in devices.
-
- Aliasing clocks
- ---------------
-
--Sometimes, one needs to forward, or inherit, a clock from another device.
--Typically, when doing device composition, a device might expose a sub-device's
--clock without interfering with it.
--The function ``qdev_alias_clock()`` can be used to achieve this behaviour. Note
--that it is possible to expose the clock under a different name. This works for
--both inputs and outputs.
-+Sometimes, one needs to forward, or inherit, a clock from another
-+device.  Typically, when doing device composition, a device might
-+expose a sub-device's clock without interfering with it.  The function
-+``qdev_alias_clock()`` can be used to achieve this behaviour. Note
-+that it is possible to expose the clock under a different name.
-+``qdev_alias_clock()`` works for both input and output clocks.
-
--For example, if device B is a child of device A, ``device_a_instance_init()``
--may do something like this::
-+For example, if device B is a child of device A,
-+``device_a_instance_init()`` may do something like this:
-+
-+.. code-block:: c
-
-     void device_a_instance_init(Object *obj)
-     {
-         AState *A = DEVICE_A(obj);
-         BState *B;
--        /* create B object as child of A */
-+        /* create object B as child of A */
-         [...]
-         qdev_alias_clock(B, "clk", A, "b_clk");
-         /*
-@@ -298,12 +324,12 @@ may do something like this::
-          */
-     }
-
--This function does not return any clock object. The new clock has the same
--direction (input or output) as the original one. This function only adds a link
--to the existing clock. In the above example, B object remains the only object
--allowed to use the clock and device A must not try to change the clock period
--or set a callback to the clock. Here follows a diagram describing the example
--with an input clock::
-+This function does not return any clock object. The new clock has the
-+same direction (input or output) as the original one. This function
-+only adds a link to the existing clock. In the above example, object B
-+remains the only object allowed to use the clock and device A must not
-+try to change the clock period or set a callback to the clock. This
-+diagram describes the example with an input clock::
-
-     +--------------------------+
-     |        Device A          |
-@@ -322,13 +348,14 @@ Migration
- Clock state is not migrated automatically. Every device must handle its
- clock migration. Alias clocks must not be migrated.
-
--To ensure clock states are restored correctly during migration, there is two
--solutions.
-+To ensure clock states are restored correctly during migration, there
-+are two solutions.
-
--Clocks states can be migrated by adding an entry into the device
--vmstate description. To this purpose, the ``VMSTATE_CLOCK`` macro defines
--such an entry and should be used. This is typically used to migrate an input
--clock state. The following example describes it::
-+Clock states can be migrated by adding an entry into the device
-+vmstate description. You should use the ``VMSTATE_CLOCK`` macro for this.
-+This is typically used to migrate an input clock state. For example:
-+
-+.. code-block:: c
-
-     MyDeviceState {
-         DeviceState parent_obj;
-@@ -346,15 +373,19 @@ clock state. The following example describes it::
-     };
-
- The second solution is to restore the clock state using information already
--at our disposal. This can be used to restore output clocks states using the
-+at our disposal. This can be used to restore output clock states using the
- device state. The functions ``clock_set[_ns|_hz]()`` can be used during the
- ``post_load()`` migration callback.
-
--When adding a clock support to an existing device, if you care about migration
--compatibility. To this end, you can use ``clock_set()`` in a ``pre_load()``
--function to setup a default value in case the source virtual machine does not
--send the clock state. You may also need to use a vmstate subsection.
-+When adding clock support to an existing device, if you care about
-+migration compatibility you will need to be careful, as simply adding
-+a ``VMSTATE_CLOCK()`` line will break compatibility. Instead, you can
-+put the ``VMSTATE_CLOCK()`` line into a vmstate subsection with a
-+suitable ``needed`` function, and use ``clock_set()`` in a
-+``pre_load()`` function to set the default value that will be used if
-+the source virtual machine in the migration does not send the clock
-+state.
-
- Care should be taken not to use ``clock_update[_ns|_hz]()`` or
--``clock_propagate()`` during the whole migration procedure because it will
--trigger side effects to other devices in an unknown state.
-+``clock_propagate()`` during the whole migration procedure because it
-+will trigger side effects to other devices in an unknown state.
+ static bool do_sve2_ppzz_flags(DisasContext *s, arg_rprr_esz *a,
+                                gen_helper_gvec_flags_4 *fn)
+ {
 -- 
-2.20.1
+2.17.1
 
-
-
-thanks
--- PMM

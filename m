@@ -1,158 +1,97 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp677751lfm;
-        Fri, 17 Apr 2020 09:25:31 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKBQf5asXVtjCQ4zXDdWOlh1L6D9/2JrHi+M3gfbGSQi3bxpHKlXWOdwP6GrB5o2+jvNuk6
-X-Received: by 2002:ae9:e805:: with SMTP id a5mr3975267qkg.493.1587140731472;
-        Fri, 17 Apr 2020 09:25:31 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1587140731; cv=pass;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp733028lfm;
+        Fri, 17 Apr 2020 10:17:10 -0700 (PDT)
+X-Google-Smtp-Source: APiQypI8YVHNQmr2lyTb1Jui9P5b3doeJQpvMbYzuPjyDAT+qtqRPjIsG0CMFIlm8PML1MgeG3Uo
+X-Received: by 2002:aed:3445:: with SMTP id w63mr3963825qtd.183.1587143830635;
+        Fri, 17 Apr 2020 10:17:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587143830; cv=none;
         d=google.com; s=arc-20160816;
-        b=qb3GGHj9SfyLrIKYckEAqoIEM48UDEncdHP0rEVNNnLm5LmtMgG2Sp5tn9OpjfXw0P
-         MjHfp4Sowr5iTBnAmhD2XHUtARoiA5iFfYihxylVGwEsUcyJYcr/VqMmxe4rebJQUbHL
-         HqYvSZMWZuwNMFSdG0nj7SdMD4Z136TdqEwHB4c4xedHCpLqRVLXxqZkA6NCEOuFbvKt
-         d16CgFDqDEPxGOCgesirHda9Bs6upkFx9p0QHnc1+yD78dAEmC/9k/axT8vTzAUGJONz
-         X5360dokuRqJ30T2lCZ/qAuFYMQsD7Ef2jEDRsDw6loe30idjLbYlD9Y77H9XV0UgoZp
-         HmVw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=pFVBa7Ygidhzb2vTsCm/Kl9CyRVquzBrwDo3n9mo6BdeQTe/QaiIUepLnUPvHAolSZ
+         oeLu+ceuMtgEg4G/lCwVBWcdTUdsnjO3lfZi/2vx3hOPL3XIO61LyhYxf4QpDdzoxf/k
+         QxiOcQzKA9y5HWbYCBk3FVh6WS9AYUMA1xbJeQuV86DjKfyJ1ZOPQFSnWnDCycZQutjY
+         SmS99elj6fZP5xGVuQMQId7iQJIFUNYyRYKSxleZJ7C7uOJ/H8qoJGSe3abjZeJvc2Gm
+         pc3ssCT46H9foWzjsjDNfHv+lSZ9kbK/WIYwmZeefZBBR0olpWWSlrT6IuxuRj7gvNmp
+         gI8g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from:dkim-signature
-         :dkim-signature;
-        bh=v/MVM6Rylf9oEFKkDPh393K6rZ4AVl+s217nPgJu7Ds=;
-        b=Q2mTPLdQku7woiw84JHgMM+1c0k4XYy7tHq1HBQcUFg/iKYZq3SdnkxLWdU7P0t4Nq
-         KGmjfWGWSGpzD/QdOMqyMSjZJB6q5kDsArHoKZQyjNw1n2tA4F7x/ADT+++fSj9BZdUT
-         6g2vNQClUImxWIVId3ouz5GNp4lU5+1YhAIVaLI7E/PPbB4DB1nnNfDlMJGsCAMiqaMm
-         0ZlHO/QBIDQIG/L9xPZWqMQf6Y8ypJkzXNAkDuWOiQOwkK1gKWNWwPUkNs1RtqD9mnf1
-         IHVaQg81zETTPeUNxRCXDjFf7MRAwAzYdVOehU0X56NMTxjUgUiKMy0bPSoL6Lg5MxTq
-         Ul0A==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=fs9yXHlx;
-       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=rjvvRqh9;
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=UXOT4fIQLTNKO3KnjOAhEgisjvvpsRFqoC0kHskjYTU=;
+        b=f0iN6NkEoST4uUefq9I5YUrUNNYXURQF+J1SOPTwwt6tI2Jr77ATQl/Rzafd7ZvkjQ
+         h0xJeTSuUjU+Og4g7YcoEAAdKdz8sFEWE20XmjDZVSXNlHeWfqRaiflU5AI231Nybkdi
+         Nq86ufG985UhEO9xSgIN/Ylqq0pfmxlLklS6VcRxnNZmjw8/oFS9elxs+UjiVp15T58N
+         tiS0Kv5u+rlcMNYObtj+RJr73BZT+Go6fCHyNgPmTp6TG2jW6bFs6DggPPma+uqE+5pR
+         EAny+dbahv+pUdO69MmVnYlzBd60lokqZvTu+IBj41LhozzIlijmc4nEzXQcjBH8dhDS
+         SO+g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cc8m90lQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x18si8269427qki.322.2020.04.17.09.25.31
+        by mx.google.com with ESMTPS id 192si12472857qkm.150.2020.04.17.10.17.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Apr 2020 09:25:31 -0700 (PDT)
+        Fri, 17 Apr 2020 10:17:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=fs9yXHlx;
-       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=rjvvRqh9;
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cc8m90lQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:49466 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49924 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jPTo2-0005Pu-Lc
-	for alex.bennee@linaro.org; Fri, 17 Apr 2020 12:25:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37277)
+	id 1jPUbz-0001sA-0m
+	for alex.bennee@linaro.org; Fri, 17 Apr 2020 13:17:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52711)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <steplong@quicinc.com>) id 1jPTlk-0002FE-U4
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 12:23:10 -0400
+ (envelope-from <rfried.dev@gmail.com>) id 1jPUbg-0001rS-8t
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 13:16:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <steplong@quicinc.com>) id 1jPTlj-0007mi-Mv
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 12:23:08 -0400
-Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38]:65349)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <steplong@quicinc.com>)
- id 1jPTlf-0007jv-RQ; Fri, 17 Apr 2020 12:23:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1587140583; x=1618676583;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version;
- bh=ei0R4waqVRE/JAQwz+ETEou8n70kUYcmScagegOMUS0=;
- b=fs9yXHlxSRZcp6DCpu7KVOWbuG5DPrd8Op+iWntmP3mftCOVxQD9cuqj
- LMGp2S4jGerbrn6ynUqXUech/ZJwSepzw7YC5284Vt4G5SYa11pmCWM38
- 86ITnQ1E/AU9Y175Ri7uw1q9IWJeeOhtu+tgw6IrELHJC1QcumzfIuY9e A=;
-Received: from unknown (HELO ironmsg02-sd.qualcomm.com) ([10.53.140.142])
- by alexa-out-sd-01.qualcomm.com with ESMTP; 17 Apr 2020 09:23:02 -0700
-Received: from nasanexm01d.na.qualcomm.com ([10.85.0.84])
- by ironmsg02-sd.qualcomm.com with ESMTP/TLS/AES256-SHA;
- 17 Apr 2020 09:23:02 -0700
-Received: from eusanexr01e.eu.qualcomm.com (10.85.0.100) by
- NASANEXM01D.na.qualcomm.com (10.85.0.84) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 17 Apr 2020 09:23:01 -0700
-Received: from NASANEXM01H.na.qualcomm.com (10.85.0.34) by
- eusanexr01e.eu.qualcomm.com (10.85.0.100) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 17 Apr 2020 09:22:59 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (199.106.107.6)
- by NASANEXM01H.na.qualcomm.com (10.85.0.34) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2 via Frontend Transport; Fri, 17 Apr 2020 09:22:59 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IG2ttctbbdF8Uaccwvvt49NTyivERMwqcDkvB0M0A8DvuIL5mMj4cnP9TAN2yoigWR+JfhOi6CnNb2O+qJuCea78GM64H0ishtYYk3Ktzz7tAT9EoG02ctVzIm23444y/S8gtcWWKhEM0eSLMIttwwomlk+cjZsAOal2bxE1ViV2sFBHZb4mLz7JJhVX+NZe0ZYwGdFQ73y6l6zkQ3xAFGxf75D1B9+yjs/vqn30V6IRoVetNBIvcaqlmYVedTacIRHFrEP+0LrfSVNq7bNOJokVtK/aoh3SjMHWwRBZHTIyNfMIYnr5A7mclEKzBKafMryxvfCugaFRE97ibwQ+AQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=v/MVM6Rylf9oEFKkDPh393K6rZ4AVl+s217nPgJu7Ds=;
- b=LwcuDa10zZXdvCm3erEJI7rM38X74ftRms9Ppzk5Z2SrTien7Q/lN5n8VDnEhPWgfmf3K0GZbZcdPaUm5bJ/1qIL4GZmOK//oI1Ax223Okt6rcT1Dzdzw0iWtw1ClvbD4O8Jj3Bl2yMXotFXR/ssZPWw8nY6NJCPNC7gT3Z/h0QobMviYEu/7bciPGnHlh3/u4DJ5+tn0b6ut7Zg8HbH1h593loJCYEriDssaA8WDYutLa0Prb3Q4eiUrBcx9oe+BPExHdzTZvilKftcCdxj14XRlwEv+FczgTqN8I3+vAIaMT5GY0mkKAof38Y+7rQA+FtsnEJV1tr8KaEJfpv4nA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
- dkim=pass header.d=quicinc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=qualcomm.onmicrosoft.com; s=selector1-qualcomm-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=v/MVM6Rylf9oEFKkDPh393K6rZ4AVl+s217nPgJu7Ds=;
- b=rjvvRqh9GMW7Furd2ive72SioAW+4HLKGGv9mMnM6QMEk/O+mDWxuX7WJXvSFtNBwHCsrng4eu/rPxccw1ka6/H39Nb/l1haf5FwwWp+W5JBQIU1OOgpFvjvqeus6FClTjc4DblShqqTNzCYmlDuAOSe0U8f3y51zw7fOD5w7YY=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=steplong@quicinc.com; 
-Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
- (2603:10b6:301:7b::24) by MWHPR0201MB3484.namprd02.prod.outlook.com
- (2603:10b6:301:77::36) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.29; Fri, 17 Apr
- 2020 16:22:51 +0000
-Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
- ([fe80::10ad:5df5:d575:1f37]) by MWHPR0201MB3547.namprd02.prod.outlook.com
- ([fe80::10ad:5df5:d575:1f37%3]) with mapi id 15.20.2900.030; Fri, 17 Apr 2020
- 16:22:51 +0000
-From: Stephen Long <steplong@quicinc.com>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH 4/4] target/arm: Implement SVE2 RSUBHNB, RSUBHNT
-Date: Fri, 17 Apr 2020 12:22:31 -0400
-Message-ID: <20200417162231.10374-5-steplong@quicinc.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200417162231.10374-1-steplong@quicinc.com>
-References: <20200417162231.10374-1-steplong@quicinc.com>
-Content-Type: text/plain
-X-ClientProxiedBy: CH2PR12CA0017.namprd12.prod.outlook.com
- (2603:10b6:610:57::27) To MWHPR0201MB3547.namprd02.prod.outlook.com
- (2603:10b6:301:7b::24)
+ (envelope-from <rfried.dev@gmail.com>) id 1jPUbf-0007fp-06
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 13:16:48 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:39038)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
+ id 1jPUbe-0007e7-PL; Fri, 17 Apr 2020 13:16:46 -0400
+Received: by mail-ot1-x342.google.com with SMTP id m13so2032587otf.6;
+ Fri, 17 Apr 2020 10:16:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=UXOT4fIQLTNKO3KnjOAhEgisjvvpsRFqoC0kHskjYTU=;
+ b=cc8m90lQENCbov7TSAi//xM2vnkZkMq9ha7IfByi87QxUuLvP10LtGU7prGJ+8+hch
+ +X+og4XUvMqmZ+BGDGjZMGQw5IBelAQ7VPGRVZl2BmKL0+4+WGuq5p/n4ugSRQIxE3gF
+ gJnRqOC3il9gsRqYuuCAt4hw+rTRlOy0cFqYzvb6etJH0NyetZ5zyeSS9AQTJqvGR+qJ
+ slA6bIYIZL5EBkWdcHC3RyvbOl1X2MvB/vRhfkRIj45PR/eIYApmJcPBGbhWv0Xqq3O/
+ 6aXVfdPCYtRwOLBt8nCrQE2G3tATp40OSs5F9rRjouUBvN74KtYi5pWY4Z4SAWRVF5nb
+ K2Hg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=UXOT4fIQLTNKO3KnjOAhEgisjvvpsRFqoC0kHskjYTU=;
+ b=pgfNh2KJ4SMaYqD0bOCSsV03MUOQMvUFfmMCf7yYeCvNq402PdxBQy/+3mmBwKh6Sv
+ 2AieEymwnr0z83GsmUBZEnFXH6zZAzRELW2yaBlziTid7Ug+RIZW5CuXwLlIuWhSVNH4
+ gJRY/X4hKAXjdUR2crxQAzTOA8VPYdjSP6ol/pszBSCoL0f8u4WnaO7KXC1gwDfYq5gn
+ yJRKAgtVYrzo45NABHw6qFMRD4EVJ+vOBnDn85ap40MUjoXx2cCBMa8NMj4geiQN/7IL
+ z0e3pz7s8toqyKQfEesJG5xcboBusseHKLaKbjBcCeOGVH1N28XIlFDWDjBqD+NEi/b5
+ c98Q==
+X-Gm-Message-State: AGi0PuY4BpA8tsuWuK8UlqRdJG2cSl4sXGHPDgFGi7n2vpbEPY+MnM/w
+ C1tpISRW7VJAAPc4bXf6RfGIOlwuailJS6e2JCs=
+X-Received: by 2002:a9d:6c94:: with SMTP id c20mr3483811otr.49.1587143805624; 
+ Fri, 17 Apr 2020 10:16:45 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from DESKTOP-L2LA14H.localdomain (108.176.222.2) by
- CH2PR12CA0017.namprd12.prod.outlook.com (2603:10b6:610:57::27) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2921.25 via Frontend Transport; Fri, 17 Apr 2020 16:22:50 +0000
-X-Mailer: git-send-email 2.17.1
-X-Originating-IP: [108.176.222.2]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 7fda0aaf-17d5-4ea5-7d7c-08d7e2eb9313
-X-MS-TrafficTypeDiagnostic: MWHPR0201MB3484:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MWHPR0201MB34843D4FF489043CF46B6029C7D90@MWHPR0201MB3484.namprd02.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:121;
-X-Forefront-PRVS: 0376ECF4DD
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR0201MB3547.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10019020)(396003)(376002)(136003)(39860400002)(366004)(346002)(5660300002)(107886003)(4326008)(66946007)(66476007)(66556008)(6916009)(6486002)(478600001)(6512007)(6666004)(2906002)(36756003)(186003)(16526019)(86362001)(956004)(1076003)(2616005)(316002)(8676002)(26005)(6506007)(52116002)(81156014)(8936002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: z/MVggk6bUChj94Iz3Z+E7D9Msa9ETdu2KLDV7Lblxq2tWjLtV5LcVIA1cyMArKA3BMcUVHc4VuGlVcHwv54AnAwds+2fHrYVMVoRX0eIEmRN99xOMItAO8U35KQNL4DiJyWwivRUje3JSSWt+O21A0dR03kB4efD93kC7HxvHzylfaomWnAeu4puRplEPdsNM0qhdro9EeWkPnVwujCNJW6RljAsvzEMb1BoQD7S9LvP+ytykKN7O5sBfE8VlqjMszqLmTF43Pv03cTv3t0lYkRyThmaKJF5E0ZwD2PNa3utdJXmqvaQztiYS3DNsRLrxmJx1WAyZKHry/HYVuVEqfl1+7jcEnjKqx7TGCgGW9wUFto3n+o+xElPwezrZ4iBKFz8n/AI3Pi6OWx7mkyrifar8Nsh2dKtQKagRWKY+7TNEBCWw/SjCqjZ5fBzkzU
-X-MS-Exchange-AntiSpam-MessageData: ipfWZFCOmZVF76ADm9DtHuhX9HckJ3ShbIE6BG4xh+W6A9E8C1x5CxjmjIc5ZapItaR0jT2eRgAI3z6ijotOf9pwjJESo4iWEPRJUACFW8RAq5LbGfFBge53VnWLcw4Awzu5vBAY28pVFIe0mf9S7g==
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7fda0aaf-17d5-4ea5-7d7c-08d7e2eb9313
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Apr 2020 16:22:51.1672 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: PrZLJKtttnC3WCx/m3Z1MDyWeAXiG04lb3XehRKQwn0+CkdZkDZ0CRBUnms3M3yOw8ehF4Y0R345Ok17V52fAg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR0201MB3484
-X-OriginatorOrg: quicinc.com
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 199.106.114.38
+References: <20200416090247.353414-1-rfried.dev@gmail.com>
+ <CAFEAcA8kZw_xd-Snogxavyxpo5nyjoExV6DPfyTa3=4RqpTJVA@mail.gmail.com>
+In-Reply-To: <CAFEAcA8kZw_xd-Snogxavyxpo5nyjoExV6DPfyTa3=4RqpTJVA@mail.gmail.com>
+From: Ramon Fried <rfried.dev@gmail.com>
+Date: Fri, 17 Apr 2020 20:16:34 +0300
+Message-ID: <CAGi-RU+GWKX0PugLYMH1mYLMFDFdyN1jv30-VRTBm1EvRFBhng@mail.gmail.com>
+Subject: Re: [PATCH] Cadence: gem: fix wraparound in 64bit descriptors
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::342
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -164,94 +103,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, richard.henderson@linaro.org, apazos@quicinc.com
+Cc: Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1X62bFXTAicx
+X-TUID: SdzCVfQe7ZcJ
 
-This completes the section 'SVE2 integer add/subtract narrow high part'
+On Fri, Apr 17, 2020 at 4:37 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Thu, 16 Apr 2020 at 10:02, Ramon Fried <rfried.dev@gmail.com> wrote:
+> >
+> > Wraparound of TX descriptor cyclic buffer only updated
+> > the low 32 bits of the descriptor.
+> > Fix that by checking if we're working with 64bit descriptors.
+> >
+> > Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
+> > ---
+> >  hw/net/cadence_gem.c | 9 ++++++++-
+> >  1 file changed, 8 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> > index 51ec5a072d..b8ae21cc0d 100644
+> > --- a/hw/net/cadence_gem.c
+> > +++ b/hw/net/cadence_gem.c
+> > @@ -1238,7 +1238,14 @@ static void gem_transmit(CadenceGEMState *s)
+> >              /* read next descriptor */
+> >              if (tx_desc_get_wrap(desc)) {
+> >                  tx_desc_set_last(desc);
+> > -                packet_desc_addr = s->regs[GEM_TXQBASE];
+> > +
+> > +            if (s->regs[GEM_DMACFG] & GEM_DMACFG_ADDR_64B) {
+> > +                packet_desc_addr = s->regs[GEM_TBQPH];
+> > +                packet_desc_addr <<= 32;
+> > +            } else {
+> > +                packet_desc_addr = 0;
+> > +            }
+> > +                packet_desc_addr |= s->regs[GEM_TXQBASE];
+>
+> The indentation seems to be off here.
+Right, fixing.
+>
+> You could write this as:
+>
+>     packet_desc_addr = s->regs[GEM_TXQBASE];
+>     if (s->regs[GEM_DMACFG] & GEM_DMACFG_ADDR_64B) {
+>         packet_desc_addr |= (uint64_t)s->regs[GEM_TBQPH] << 32;
+>     }
+>
+Actually, I used the same method used somewhere else in the file:
+static hwaddr gem_get_desc_addr(CadenceGEMState *s, bool tx, int q) {
+hwaddr desc_addr = 0;
 
-Signed-off-by: Stephen Long <steplong@quicinc.com>
----
- target/arm/helper-sve.h    |  8 ++++++++
- target/arm/sve.decode      |  2 ++
- target/arm/sve_helper.c    | 10 ++++++++++
- target/arm/translate-sve.c |  2 ++
- 4 files changed, 22 insertions(+)
+if (s->regs[GEM_DMACFG] & GEM_DMACFG_ADDR_64B) {
+         desc_addr = s->regs[tx ? GEM_TBQPH : GEM_RBQPH];
+     }
+     desc_addr <<= 32;
+     desc_addr |= tx ? s->tx_desc_addr[q] : s->rx_desc_addr[q];
+}
+> which ends up as the same thing but matches the code used
+> in tx_desc_get_buffer() to assemble an address that's
+> 32 or 64 bits depending on the ADDR_64B flag.
+>
+> >              } else {
+> >                  packet_desc_addr += 4 * gem_get_desc_len(s, false);
+> >              }
+> > --
+> > 2.26.0
+>
+> thanks
+> -- PMM
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 00e3706da0..011aa03010 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -2540,6 +2540,14 @@ DEF_HELPER_FLAGS_4(sve2_subhnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve2_subhnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve2_subhnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- 
-+DEF_HELPER_FLAGS_4(sve2_rsubhnb_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_rsubhnb_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_rsubhnb_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_4(sve2_rsubhnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_rsubhnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_rsubhnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
- DEF_HELPER_FLAGS_5(sve2_match_ppzz_b, TCG_CALL_NO_RWG,
-                    i32, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(sve2_match_ppzz_h, TCG_CALL_NO_RWG,
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 75996897a1..f0e6143e00 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -1329,6 +1329,8 @@ RADDHNB         01000101 .. 1 ..... 011 010 ..... .....  @rd_rn_rm
- RADDHNT         01000101 .. 1 ..... 011 011 ..... .....  @rd_rn_rm
- SUBHNB          01000101 .. 1 ..... 011 100 ..... .....  @rd_rn_rm
- SUBHNT          01000101 .. 1 ..... 011 101 ..... .....  @rd_rn_rm
-+RSUBHNB         01000101 .. 1 ..... 011 110 ..... .....  @rd_rn_rm
-+RSUBHNT         01000101 .. 1 ..... 011 111 ..... .....  @rd_rn_rm
- 
- ### SVE2 Character Match
- 
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index f6e7694b9f..d616010390 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -2050,6 +2050,7 @@ void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)              \
- #define DO_ADDHN(N, M, SH)  ((N + M) >> SH)
- #define DO_RADDHN(N, M, SH) ((N + M + (1 << (SH - 1))) >> SH)
- #define DO_SUBHN(N, M, SH)  ((N - M) >> SH)
-+#define DO_RSUBHN(N, M, SH) ((N - M + (1 << (SH - 1))) >> SH)
- 
- DO_BINOPNB(sve2_addhnb_h, uint16_t, uint8_t, 8, DO_ADDHN)
- DO_BINOPNB(sve2_addhnb_s, uint32_t, uint16_t, 16, DO_ADDHN)
-@@ -2075,6 +2076,15 @@ DO_BINOPNT(sve2_subhnt_h, uint16_t, uint8_t, 8, H1_2, H1, DO_SUBHN)
- DO_BINOPNT(sve2_subhnt_s, uint32_t, uint16_t, 16, H1_4, H1_2, DO_SUBHN)
- DO_BINOPNT(sve2_subhnt_d, uint64_t, uint32_t, 32,     , H1_4, DO_SUBHN)
- 
-+DO_BINOPNB(sve2_rsubhnb_h, uint16_t, uint8_t, 8, DO_RSUBHN)
-+DO_BINOPNB(sve2_rsubhnb_s, uint32_t, uint16_t, 16, DO_RSUBHN)
-+DO_BINOPNB(sve2_rsubhnb_d, uint64_t, uint32_t, 32, DO_RSUBHN)
-+
-+DO_BINOPNT(sve2_rsubhnt_h, uint16_t, uint8_t, 8, H1_2, H1, DO_RSUBHN)
-+DO_BINOPNT(sve2_rsubhnt_s, uint32_t, uint16_t, 16, H1_4, H1_2, DO_RSUBHN)
-+DO_BINOPNT(sve2_rsubhnt_d, uint64_t, uint32_t, 32,     , H1_4, DO_RSUBHN)
-+
-+#undef DO_RSUBHN
- #undef DO_SUBHN
- #undef DO_RADDHN
- #undef DO_ADDHN
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 4081fcb873..d75dd938ef 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -7521,6 +7521,8 @@ DO_SVE2_ZZZ_NARROW(RADDHNT, raddhnt)
- 
- DO_SVE2_ZZZ_NARROW(SUBHNB, subhnb)
- DO_SVE2_ZZZ_NARROW(SUBHNT, subhnt)
-+DO_SVE2_ZZZ_NARROW(RSUBHNB, rsubhnb)
-+DO_SVE2_ZZZ_NARROW(RSUBHNT, rsubhnt)
- 
- static bool do_sve2_ppzz_flags(DisasContext *s, arg_rprr_esz *a,
-                                gen_helper_gvec_flags_4 *fn)
--- 
-2.17.1
-
+Thanks,
+Ramon.

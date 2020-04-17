@@ -1,136 +1,185 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp707399lfm;
-        Fri, 17 Apr 2020 09:53:18 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKi4+kHG938/r5I/DHoJJ/w3q+Rg2tN/GDcgz51bQPdpopvWk7wOieNqf0ApVOHI+VEfDKj
-X-Received: by 2002:a05:620a:102a:: with SMTP id a10mr4205088qkk.214.1587142398658;
-        Fri, 17 Apr 2020 09:53:18 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp676868lfm;
+        Fri, 17 Apr 2020 09:24:46 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJ4RawCpX3fVWR3fNUHccBxAqfG3wj6v23+ddTiHnIIR3sX/nUCsZbf81zGmwMtRfDlPMI3
+X-Received: by 2002:aed:3ea5:: with SMTP id n34mr3734436qtf.60.1587140685851;
+        Fri, 17 Apr 2020 09:24:45 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1587140685; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=kL0XuKBfzbYPmTpleIl4YxbRrlq5+4e3MNm6JIzRx8lZoAlnJ/bPZueeajOlLap2pk
+         zgFeeNaPzSkOZu2mEvijepT+wSKB5rdiGLdEv1NNJEBT+FFd/+U6rG3Zhsc6IhN2AjzD
+         Y8Vw3YuCzFqYcbRXDz4o0lhdQoPCZNRvR9jmMV+5+4NvXZENwkBljbp4m/tna49Rl6uf
+         LpS80iGHlVEhT9MiA3wKYC78aETTQzLZXO6wUjADnFYPQw0Y4W2ZjNi3bht1isJ2ucex
+         it8f/MwxqKX+2KSoqEXts3dRg8Vn/zmAyqjF9Rr13GM5dK9kqdXvR1lbWHi/JXtasHU4
+         kOpg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from:dkim-signature:dkim-signature;
+        bh=0KnQRcrhrdSGXoTUZjFxucRT7Nr9L/n6sGUaL8SnRa0=;
+        b=YUI2ThCXx/mQ4300Yqe9+q5oRFVFQF7eJPZlwLbd3EfVsC+Y0muoaE81/6LeABlz5B
+         Lv7M2+gjGtFI2XizM/Htp3x3KU+ALxmFpJVN5NbEgncoh2SUTMq6EbU/NzXkE+Ggthl8
+         41oOxqXQx+YbuL7Q74zGkJdRZ0tsBwL7BHMMjkJdjBA3wrDm0/GwnC1i1tnHGE4jRWJg
+         Cem/wf6h+ZYmzf/BAHtPsmLlNuuide0utQZsYb52Rzel23UKJFU2miD1vN23qbRImW59
+         9X+iH5YfkFLqMOjv+szX2B1AknkyH3YPFJ15vf8ql0mSkY0j6fVAkZwv3mB/CTOmSYcV
+         JYcA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b="QM/kEcao";
+       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=EqpN7q7r;
+       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a125si13870258qkf.12.2020.04.17.09.53.18
+        by mx.google.com with ESMTPS id d15si491709qvp.103.2020.04.17.09.24.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Apr 2020 09:53:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 17 Apr 2020 09:24:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=NIlwj92P;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49756 helo=lists1p.gnu.org)
+       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b="QM/kEcao";
+       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=EqpN7q7r;
+       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from localhost ([::1]:49454 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jPUEv-00010q-Vr
-	for alex.bennee@linaro.org; Fri, 17 Apr 2020 12:53:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60853)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jPTnJ-0003bA-7s
+	for alex.bennee@linaro.org; Fri, 17 Apr 2020 12:24:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37148)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1jPUEI-00010K-1k
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 12:52:42 -0400
+ (envelope-from <steplong@quicinc.com>) id 1jPTlb-00023p-F9
+ for qemu-devel@nongnu.org; Fri, 17 Apr 2020 12:23:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1jPUEG-0003D2-HW
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 12:52:37 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:57856)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1jPUEF-00039F-V9; Fri, 17 Apr 2020 12:52:36 -0400
-Received: from [192.168.1.12] (lfbn-gre-1-344-171.w90-112.abo.wanadoo.fr
- [90.112.62.171])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 59A3896F50;
- Fri, 17 Apr 2020 16:52:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1587142353;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=gSvfu6qH9m18s7xOnXwbs4IuO5TxdBMihz7/KC5BP10=;
- b=NIlwj92PW55ZcKyc6dVIhxwBJWdVpEg82grvDRxcqKW86GGkX1/LA0Mu5LFkQvwk6sf5pD
- v1BsWE9FTfwEW2Ymv2iEzvzSfX7SEC9sBb0yrsDI5ZN77EIqd2bI7hXnC6SLhEU70ah8lx
- EFyttZPrzbH8txk2qFcWNLo1ZOcYmM0=
-Subject: Re: [PATCH v9 5/9] docs/clocks: add device's clock documentation
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200406135251.157596-1-damien.hedde@greensocs.com>
- <20200406135251.157596-6-damien.hedde@greensocs.com>
- <CAFEAcA_NVJg9KS-yrYDKe0GbAC7xah6mH1SmkjLmyr-BNPF8WQ@mail.gmail.com>
-From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <eee8cb35-c7bc-f60c-fd10-073320a41ed7@greensocs.com>
-Date: Fri, 17 Apr 2020 18:52:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (envelope-from <steplong@quicinc.com>) id 1jPTlX-0007gX-7m
+ for qemu-devel@nongnu.org; Fri, 17 Apr 2020 12:22:56 -0400
+Received: from alexa-out-sd-02.qualcomm.com ([199.106.114.39]:45089)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <steplong@quicinc.com>)
+ id 1jPTlW-0007fW-DM; Fri, 17 Apr 2020 12:22:54 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
+ t=1587140574; x=1618676574;
+ h=from:to:cc:subject:date:message-id:mime-version;
+ bh=W6t2EmTFpCfVcBriQ8uR6j5TYOVWPNCFRcm0s9wHxO4=;
+ b=QM/kEcaoHDOAVBj8VOd9mXsv5lJTgNxdvWj4M3QtP80azpPZdSHCKrDC
+ LqSRgcc00lR2I+ToBGl08cSHljcMu/pVxAKjYtdc/hYQVHp4TuT7zP3nG
+ giQRnzaYCVSFBmUpcTgGS0kacXt1/w3FkAnw5DNf1qihRC2py4wsEIP98 0=;
+Received: from unknown (HELO ironmsg02-sd.qualcomm.com) ([10.53.140.142])
+ by alexa-out-sd-02.qualcomm.com with ESMTP; 17 Apr 2020 09:22:51 -0700
+Received: from nasanexm03g.na.qualcomm.com ([10.85.0.49])
+ by ironmsg02-sd.qualcomm.com with ESMTP/TLS/AES256-SHA;
+ 17 Apr 2020 09:22:51 -0700
+Received: from APSANEXR01E.ap.qualcomm.com (10.85.0.38) by
+ nasanexm03g.na.qualcomm.com (10.85.0.49) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 17 Apr 2020 09:22:51 -0700
+Received: from nasanexm03b.na.qualcomm.com (10.85.0.98) by
+ APSANEXR01E.ap.qualcomm.com (10.85.0.38) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 17 Apr 2020 09:22:48 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (199.106.107.6)
+ by nasanexm03b.na.qualcomm.com (10.85.0.98) with Microsoft SMTP Server (TLS)
+ id 15.0.1497.2 via Frontend Transport; Fri, 17 Apr 2020 09:22:48 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=bu0HFkCpDK8lNgcMU6qqLm2xJ5yG2FlvuftsmunnL9MxYS2+lMrYEr05YDTY48LAN/VaN0KF+vtKoyz26Bic6ADvi5Svb/Et1MT6I4s9GWo1Pt44h8kRSKkr4t+B2B9e2ZXhJIPzvSUF+NDHatEaDuQMKtE4vOYXFPsnkaUDJdQfV/rzzqClezGXLlqPVmnzPjXSUQ79mzlcy4TgaNv0TBfLWiD19WqzpalA5X2svdK7vu6VstmvLBiT7U/iyjGh0LDSP18jXjXPXuxRt2/7OAbFseWI0LaUwyf7q5Vtm6wczFvr1SmSwPQFxI2aGVBmR07usTe90E9H0PhhYWOtDw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0KnQRcrhrdSGXoTUZjFxucRT7Nr9L/n6sGUaL8SnRa0=;
+ b=KrnvsicDRq/l4lgyfUSWGb6HlyPm/F3KQHOUG7y9Qd6zGsGxHXeo8cuGU32bip76+eC5fv/nHwHkHI6tj/wxtNKr9vFNZJW1amTcPdUZGuUbNCKyYM1RKUd3CEao9RWa4OJzDdhHgfzxKobEYpnu5iYdOIF9e9a82zru4LPupIwrFCOCJWas7xXUsVGsIdX8z3jOImL99uO/m8XfHOuMOkbmvhlU2OYLRiRlEEWApx3S90sOFF1iD4YQWMsLET2hZfD1XSCh2cc2HnvYwUjkahsRcYR3aw8t7UhDNXd9/Nu9405e2HO7a2DJZVh+oEvWA86WusQsauWNsnitekbZkg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
+ dkim=pass header.d=quicinc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=qualcomm.onmicrosoft.com; s=selector1-qualcomm-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0KnQRcrhrdSGXoTUZjFxucRT7Nr9L/n6sGUaL8SnRa0=;
+ b=EqpN7q7rO1Av2CVD2nWcJyThOOiG76wsIC7y1RRy6tSuurzJUGd16spNdpFPZ1UWMZFVyJDnQATKLOUawjlpzPEQejHuBSXCbeea9LNW6jmog1pk/fIQthWVvUHL2E+zLMH4PT3RVxGGW3JsY9aMZWacLLhuBSf7hyHIELveURc=
+Authentication-Results: spf=none (sender IP is )
+ smtp.mailfrom=steplong@quicinc.com; 
+Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
+ (2603:10b6:301:7b::24) by MWHPR0201MB3484.namprd02.prod.outlook.com
+ (2603:10b6:301:77::36) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.29; Fri, 17 Apr
+ 2020 16:22:47 +0000
+Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
+ ([fe80::10ad:5df5:d575:1f37]) by MWHPR0201MB3547.namprd02.prod.outlook.com
+ ([fe80::10ad:5df5:d575:1f37%3]) with mapi id 15.20.2900.030; Fri, 17 Apr 2020
+ 16:22:47 +0000
+From: Stephen Long <steplong@quicinc.com>
+To: <qemu-devel@nongnu.org>
+Subject: [PATCH 0/4] target/arm: Implement last SVE2 narrowing section
+Date: Fri, 17 Apr 2020 12:22:27 -0400
+Message-ID: <20200417162231.10374-1-steplong@quicinc.com>
+X-Mailer: git-send-email 2.17.1
+Content-Type: text/plain
+X-ClientProxiedBy: CH2PR12CA0017.namprd12.prod.outlook.com
+ (2603:10b6:610:57::27) To MWHPR0201MB3547.namprd02.prod.outlook.com
+ (2603:10b6:301:7b::24)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_NVJg9KS-yrYDKe0GbAC7xah6mH1SmkjLmyr-BNPF8WQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
-Content-Transfer-Encoding: 7bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1587142353;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=gSvfu6qH9m18s7xOnXwbs4IuO5TxdBMihz7/KC5BP10=;
- b=L9mrTTKkSOw76QoqXXL4S1yfFR4uCO8eQEvxqjqnRpsh4eux0YFC0vwzOTM1yB5ObTTq32
- 1VRW53xgJuUNpetUc5FP4XOQQnYeZB0UgG6GvfL23kvplqPrEje7AEDEwdnmr/OsT9LXNd
- hr8ryNt87bKe9LWX0J1yAsSk4XQ+3QE=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1587142353; a=rsa-sha256; cv=none;
- b=F0aQDkHH0oIDy3+VeM8IsE49qZ8FrGXrxpo/SfnQ09Y5Gqy8Wf+fyetDOn8RIpeykvKynZ
- /SY9Qa2wl7WLuJht9rQBaJROMPpI2svOIdF+tKrdNWnMYBYsg8bTsC26UTt76eZ6TCPP9A
- kT7logk78+r2hi8nXbtJoiBs1KuOPDM=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
-X-BeenThere: qemu-arm@nongnu.org
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from DESKTOP-L2LA14H.localdomain (108.176.222.2) by
+ CH2PR12CA0017.namprd12.prod.outlook.com (2603:10b6:610:57::27) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2921.25 via Frontend Transport; Fri, 17 Apr 2020 16:22:46 +0000
+X-Mailer: git-send-email 2.17.1
+X-Originating-IP: [108.176.222.2]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: ef5113fb-fac5-4ce9-122a-08d7e2eb909b
+X-MS-TrafficTypeDiagnostic: MWHPR0201MB3484:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <MWHPR0201MB348465933E6085C9D59851EAC7D90@MWHPR0201MB3484.namprd02.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:3631;
+X-Forefront-PRVS: 0376ECF4DD
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR0201MB3547.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(10019020)(396003)(376002)(136003)(39860400002)(366004)(346002)(5660300002)(107886003)(4326008)(66946007)(66476007)(66556008)(6916009)(6486002)(478600001)(6512007)(6666004)(2906002)(36756003)(4744005)(186003)(16526019)(86362001)(956004)(1076003)(2616005)(316002)(8676002)(26005)(6506007)(52116002)(81156014)(8936002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ZARQjLIbnmPP7e0PJoJaI6xfVApWFGkpJDK8kvrR+IU5/6aLhkv0SSFOZ4W5xC381aCVog0mWrCJcQQg/QBV5Fadw34BEAY0Gpuc01mZtXR/5x1HkifwbqDw0MsR6+oYnkIgASCWlWUM7H2BVWyJsRzglyKVAt76IMBXAr31yppwcyNltwzZzQzhV77p7kRdYw6vPtPAPGJRFOqytOw9UWiul6RR9pnlmJ9+eSmxcuUM74aoVyOOJyXUe97Y8srrLU6mkBM0Lh/Rsbc4zwyTFhb09wb/Ih5byjF9XILEsQjUbrlf2oXNYtkfeJv3/smIfoynWRV6jBxhNjt/OYrKvTxVeDqlBizzCvcpnuorElQlJ8FotfAWAUDDz5DrnG1+lt8KOMjezHOhQ9G80d4OKAlcTlx7y8Y8Pdcv575GYOxdZWlLaQKxo44skTuPZpW9
+X-MS-Exchange-AntiSpam-MessageData: VRBviKGSvZjTBbO3+D7bleRt2SVNpJH1pN6bAuceKEJJXo7KmWqTuA4MK6AVuQbUXBZuSm2AhBIyQG3Qq+cGn6DSZxz7hwYJh39igjicxAtz74xunM524PEooH5oGQjihGfc7JBmQtiu7c0as1NFKQ==
+X-MS-Exchange-CrossTenant-Network-Message-Id: ef5113fb-fac5-4ce9-122a-08d7e2eb909b
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Apr 2020 16:22:47.0426 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: AyH48sYGXlX0DMpncdv8WBHRgq/qS4AwfdK/BpqiDf2QqbdeMgtEIeGR2vlAwi7cLM1PNLwv000Ee2f25ZNwgA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR0201MB3484
+X-OriginatorOrg: quicinc.com
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 199.106.114.39
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Mark Burton <mark.burton@greensocs.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ccAIpN1YpNBP
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, richard.henderson@linaro.org, apazos@quicinc.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: scBiUHxkzeti
 
+Submitting patches for the section 'SVE2 integer add/subtract narrow
+high part' for early review.
 
+Stephen Long (4):
+  target/arm: Implement SVE2 ADDHNB, ADDHNT
+  target/arm: Implement SVE2 RADDHNB, RADDHNT
+  target/arm: Implement SVE2 SUBHNB, SUBHNT
+  target/arm: Implement SVE2 RSUBHNB, RSUBHNT
 
-On 4/17/20 5:52 PM, Peter Maydell wrote:
-> On Mon, 6 Apr 2020 at 14:53, Damien Hedde <damien.hedde@greensocs.com> wrote:
->>
->> Add the documentation about the clock inputs and outputs in devices.
->>
->> This is based on the original work of Frederic Konrad.
->>
->> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
->> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
->> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> 
-> I did an edit pass on this to address minor grammar/style
-> issues and some Sphinx syntax stuff (notably, using
-> "code-block:: c" renders nicer than a plain literal block).
-> Diff against this patch is below; it looks bigger than
-> you might expect because one of the changes was that I
-> rewrapped some of the paragraphs that were close to or
-> over 80 chars per line. Changes include the tweak Markus
-> asked for.
-> 
+ target/arm/helper-sve.h    | 32 ++++++++++++++++++
+ target/arm/sve.decode      | 11 +++++++
+ target/arm/sve_helper.c    | 66 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-sve.c | 20 ++++++++++++
+ 4 files changed, 129 insertions(+)
 
-Thanks a lot,
-
-I thought that the maximum column size was 80, should we use a
-bit less in practice ?
-
-I'll apply this and do a respin along with your other patch 1 catcha
-bout the integer type in traces.
-
-Damien
+-- 
+2.17.1
 

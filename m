@@ -1,136 +1,184 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp877764lfm;
-        Wed, 15 Apr 2020 11:27:14 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKlQogWjLqH6WlNjrV/XljLzm6m1Zcz1BN7Mc302qLFAhpDiqDNJxdJGzCCZb2jafESVPvD
-X-Received: by 2002:a37:7043:: with SMTP id l64mr25188676qkc.78.1586975234161;
-        Wed, 15 Apr 2020 11:27:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586975234; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp459226lfm;
+        Fri, 17 Apr 2020 06:15:53 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIn7wK78nj9wASwPs29UX2T08w+PDRHQxKnP2yhfonjwuW3kYZQQQ/Xr5hR+u6qCJa5uHrg
+X-Received: by 2002:a50:a68a:: with SMTP id e10mr2998291edc.317.1587129351595;
+        Fri, 17 Apr 2020 06:15:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587129350; cv=none;
         d=google.com; s=arc-20160816;
-        b=s45MziTCKRfWpm+pSB9FEYSTC67QeiK49JAk0b6dRe9dqp+gM6d61fbGQ7DiUuEe/s
-         GlIjhgJ82F0yyimHWv9r8ZZ++Lo0C1XgCts/IbidUozSVLbgLZ0zsIEXaEt/dct4jD0i
-         e8AJaKEczdyP5ZjqyQSkTav8p/zYU1vq3YHdbtmVN/YUAtVoE9W4usCO5RnE17GUtRYx
-         p52eruJPAxKSY7NajU5lJktrN9m1Dq81guvL5WeM6CmW4CJqzP0kNWP/6TxfNmo/RAPm
-         r4rICy2pilr2UqvmWgOehyG7FqX9/YYFdNXxwwiOn8+xf0ShlvqHC7IwQUheHn7bjA3I
-         70vg==
+        b=QKlaE/fdYVAfuG8Bgx3SXR4Aa6E0v8rAEWRfHfxYGglsnFAffnJR558Vp2Ol/XHooE
+         eo6hCYl/pAnqqpqb0KtieImmkrmgObguzz5TFEmETUm7hMkc0hr8IUEjXG+UsJjsIbl0
+         FvNxtYL+pVfGZxK3004pzeRTuDETYke8d5n3vFAHEKGubwT/wiLyZ5w6vCzWY56APZHT
+         hyuhpw6VuspgBx12ZDhoGEZuX40Q87stBAkprKikUeQlg7DSpvUlkwLproWnG+82d1py
+         AscwGxcgg2IYhjzIXldGhxmXV+5mQN+jwBQnKKdf90Ud7uf3Sz68wxayCPPT24VO9efe
+         J32g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=CbAen7WReLndSfTteGisi+hakBd2OC9MJQKW6ybIuAg=;
-        b=Yw86XhfMcncEzQl//GvzJOihdGWa2H6J5PSXEMxPhphcYTxSNkFagZcTZk7pgDr9Jf
-         uD4HBGr1vWusPxQaAZ6t6I4DY2U8LPJZ8QoYhATe/szAfO+0zZA2asLTD1TOJb/n6Y84
-         SGt+/ZnBeNKDZ70AiUXyZWve93t4FMYthbCIyXlXDE3RNZTpMLaIFeoiViJCOPo4YCwP
-         QqDlk12MHTZDucy/zyuCCwf6WqNssf4yLfDf3uaRI9nlGBV913PzL0pMMrRD/7kUyZiB
-         uXmITllbaNRkEywTB7hzWnWSqf2OPOC/Xz2+ad1xO7beE2Cg8/0kV2aN5DsWv6g0BBAf
-         BCFQ==
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=TboapKpbscmz855YSAFg2nIeGN97zkquFhVh21atq0U=;
+        b=VYXngK+BUpzmpOdnEc8v+1r0fHcR1D4xTG8OrFTDPwids48CzXYI7xL7ROztohbyit
+         ws9gNv05Y8Ss+XmwcZcdsplyLb9C5v5KyD3XRS/wmh1lKXCoBuAZd9IkxXr6/9xlt9jc
+         UiZ5ZwMh/fAfI4b1WHoWsZ55awVQiL+WG2y56qJ98bQ9BPnKa9xL+D6y67AJiMqNwSck
+         GyvgkE8cwecRRYV4JfYDSE1AgMc8rbY7n7mJmuu4Az+KfNh4M7iLD/aX6PeYrSG852Bn
+         ZuXpou3aqLhhtyGt7jjGZecN8HOOHytEdocCCfppG1I9QzxZAL8ivBpktTcRKBVTGsCS
+         Me8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mnj7nTQg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=aNmEuET4;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w135si10165866qkb.330.2020.04.15.11.27.13
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Apr 2020 11:27:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id oq20si11813726ejb.419.2020.04.17.06.15.50;
+        Fri, 17 Apr 2020 06:15:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mnj7nTQg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=aNmEuET4;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53754 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jOmkj-0008K2-J7
-	for alex.bennee@linaro.org; Wed, 15 Apr 2020 14:27:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50871)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jOmjA-0007iv-KR
- for qemu-devel@nongnu.org; Wed, 15 Apr 2020 14:25:37 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1jOmj9-0005oV-CT
- for qemu-devel@nongnu.org; Wed, 15 Apr 2020 14:25:36 -0400
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:36570)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1jOmj9-0005nj-52
- for qemu-devel@nongnu.org; Wed, 15 Apr 2020 14:25:35 -0400
-Received: by mail-pg1-x541.google.com with SMTP id c23so329019pgj.3
- for <qemu-devel@nongnu.org>; Wed, 15 Apr 2020 11:25:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=CbAen7WReLndSfTteGisi+hakBd2OC9MJQKW6ybIuAg=;
- b=mnj7nTQg4mnrJHUZeDP+fz7g1YLUPhGL1Ix3BLtEst9VP70hBKB1NHKC16bgF2UnvK
- oxBNrphPVo66S1LVJtEAwLnfu1wb0B8YA4BXUeNv+rZuAqcik/PJXlhozr7EwtfDYbnq
- RwXixuXVlFfLREtuQPcHbrkeEORnUkQMO/9GXLAFUfx0Jf9M4f5wxIhIkGmxH9DI8jIg
- ofMAyo0TikoeRuz66VoJL+u1aE0wrjzy6gNE8MCV1Sl8gOvKISgiXpBZXRZ5+SWuTG+F
- nfYzoKnHY+lQCZBgTTkWue7Y+tRMueX/gUPmGYeH79AdY8T5UuwvpIHuUM5zMTPNA9po
- EQAQ==
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1730322AbgDQNPq (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 17 Apr 2020 09:15:46 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:51934 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-FAIL-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1729760AbgDQNPp (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Fri, 17 Apr 2020 09:15:45 -0400
+Received: from mail-ot1-x341.google.com (mail-ot1-x341.google.com [IPv6:2607:f8b0:4864:20::341])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id D3924C061A0C
+        for <kvm@vger.kernel.org>; Fri, 17 Apr 2020 06:15:45 -0700 (PDT)
+Received: by mail-ot1-x341.google.com with SMTP id i22so1342627otp.12
+        for <kvm@vger.kernel.org>; Fri, 17 Apr 2020 06:15:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=TboapKpbscmz855YSAFg2nIeGN97zkquFhVh21atq0U=;
+        b=aNmEuET4pqkT1KkeKmgk6Cq9vBqgNu/ROxL2C7ezmo+e7TvlW/pt7eEDU2mGbKJOYa
+         pd2IUEcQqcu4qx19uoBru9MI0rbUtrwjwrkXUi0Ao+bT9k5etlzBouSiftkQ6eyDLiCI
+         kfDwLc5+qmzQPd+i133nQVievrA8CLz5BR0nFhlw01DpsQ3cus95k3U8AP+INw0F7ats
+         tpVmUE1/T6IyhGtSyuHv5532KsG61E7Qyxpy4pOswNmwijgv3AE0FsuSUsoUL7C0gaet
+         qpwFeJgOjQ532CXC3K6ADBOAEqxmh0qPU9rKOp7PwwVEFLHUzPx1/4TIDAXx3R/9a3pW
+         GHjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=CbAen7WReLndSfTteGisi+hakBd2OC9MJQKW6ybIuAg=;
- b=RxsZPIQULfWu7O4a/Mjf214Oi/h7hv+AemH/TSKL7UBZN2AtRNZyo2FSdafOBzM8GF
- vXYq6NOySV2S+vtaXJy7/IGQBCksO861lfCXjlExvMqzhnPsdfXgvv1azPYK6Olb4qJX
- oQ990d9MR1+dzg0KHfjzVFraesIfajF+43ga1hnRdIJpMwEIMJYEfHn3kfJpUKPbqxA6
- y5tFumexgxJmAffc98YWUi4ZdklUzvh6SCTAWlrC/HPgF8l5WKj3ax263G01P4APIEPm
- VGNzdPRRyAd9HQnFmf6cIlHb5W0VofcyOtYI2Vn/MN6lmqPgXkiuudd1EuNye6OBZKPV
- 6frw==
-X-Gm-Message-State: AGi0PubTj0Cu0SArNhb0yzuWE+vsR/PgQ3/8boTwi2G241j4Iom/gyxe
- RLJQkct9RY1CJoiixX0SymJTUg==
-X-Received: by 2002:a63:1562:: with SMTP id 34mr3183849pgv.150.1586975134020; 
- Wed, 15 Apr 2020 11:25:34 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id 203sm14655806pfw.25.2020.04.15.11.25.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Apr 2020 11:25:33 -0700 (PDT)
-Subject: Re: [PATCH v4] target/arm: Implement SVE2 MATCH, NMATCH
-To: Stephen Long <steplong@quicinc.com>, qemu-devel@nongnu.org
-References: <20200415145915.2859-1-steplong@quicinc.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <ec4c6c82-203b-ea09-8cf7-fa2148716555@linaro.org>
-Date: Wed, 15 Apr 2020 11:25:31 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=TboapKpbscmz855YSAFg2nIeGN97zkquFhVh21atq0U=;
+        b=Wdokz2IvGYwg94oZoMcBHhqzHoXlkLswd1khTWT12McOzgMwSDY15xo6oT87M9+dfj
+         nqHJVHLwjr34n5wysV5yofI6SrigL6enWWtuuHZiJ4l+KtHwd4rNfXVUZesJ9wodr69K
+         WW/HyHh5rWPeMo/xPO62XiYffUwyOj4Mu3wB89B74RmvaAP4QZvqzpLsfyu3YQTKRycc
+         BEzhfhTrOl8cAX2VYPhwzqbZE9KbygOMLl8Ai+9oW7Micx/8tG57RobJqSy0wJqxSFHl
+         HuxkxYTfLAZku9XhReajTOmKHMU/HGejV9HGh4600l+jTSb82BvMK6JFv1adgwIYKp6z
+         l79w==
+X-Gm-Message-State: AGi0PuZjCUqKoVl7hIOjvfUV3ZpJGDW849qfVGMnZcsYYCfWH2rBKOV/
+        Y/r81H79oJyJf8pUhwyn3RNfOb615xwiJ5r9gc/wgA==
+X-Received: by 2002:a05:6830:1e4e:: with SMTP id e14mr2432927otj.91.1587129345185;
+ Fri, 17 Apr 2020 06:15:45 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200415145915.2859-1-steplong@quicinc.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::541
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, apazos@quicinc.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: krGvAT3AXRy2
+References: <20200410114639.32844-1-gengdongjiu@huawei.com> <20200410114639.32844-2-gengdongjiu@huawei.com>
+In-Reply-To: <20200410114639.32844-2-gengdongjiu@huawei.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Fri, 17 Apr 2020 14:15:33 +0100
+Message-ID: <CAFEAcA_vqtFuoaLhczs-5ZXyjBWH4j4rF+5SUHMxVt_qTLyR5Q@mail.gmail.com>
+Subject: Re: [PATCH v25 01/10] acpi: nvdimm: change NVDIMM_UUID_LE to a common macro
+To:     Dongjiu Geng <gengdongjiu@huawei.com>
+Cc:     Igor Mammedov <imammedo@redhat.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        Fam Zheng <fam@euphon.net>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        kvm-devel <kvm@vger.kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Zheng Xiang <zhengxiang9@huawei.com>,
+        Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+        Linuxarm <linuxarm@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: vXulUwtkzaGK
 
-On 4/15/20 7:59 AM, Stephen Long wrote:
-> Signed-off-by: Stephen Long <steplong@quicinc.com>
+On Fri, 10 Apr 2020 at 12:45, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+>
+> The little end UUID is used in many places, so make
+> NVDIMM_UUID_LE to a common macro to convert the UUID
+> to a little end array.
+>
+> Reviewed-by: Xiang Zheng <zhengxiang9@huawei.com>
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 > ---
-> Whoops, forgot to complete the comment for do_match2()
-> 
->  target/arm/helper-sve.h    | 10 +++++++
->  target/arm/sve.decode      |  5 ++++
->  target/arm/sve_helper.c    | 59 ++++++++++++++++++++++++++++++++++++++
->  target/arm/translate-sve.c | 22 ++++++++++++++
->  4 files changed, 96 insertions(+)
+>  hw/acpi/nvdimm.c    | 10 +++-------
+>  include/qemu/uuid.h |  9 +++++++++
+>  2 files changed, 12 insertions(+), 7 deletions(-)
+>
+> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+> index eb6a37b..a747c63 100644
+> --- a/hw/acpi/nvdimm.c
+> +++ b/hw/acpi/nvdimm.c
+> @@ -27,6 +27,7 @@
+>   */
+>
+>  #include "qemu/osdep.h"
+> +#include "qemu/uuid.h"
+>  #include "hw/acpi/acpi.h"
+>  #include "hw/acpi/aml-build.h"
+>  #include "hw/acpi/bios-linker-loader.h"
+> @@ -34,18 +35,13 @@
+>  #include "hw/mem/nvdimm.h"
+>  #include "qemu/nvdimm-utils.h"
+>
+> -#define NVDIMM_UUID_LE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)             \
+> -   { (a) & 0xff, ((a) >> 8) & 0xff, ((a) >> 16) & 0xff, ((a) >> 24) & 0xff, \
+> -     (b) & 0xff, ((b) >> 8) & 0xff, (c) & 0xff, ((c) >> 8) & 0xff,          \
+> -     (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) }
+> -
+>  /*
+>   * define Byte Addressable Persistent Memory (PM) Region according to
+>   * ACPI 6.0: 5.2.25.1 System Physical Address Range Structure.
+>   */
+>  static const uint8_t nvdimm_nfit_spa_uuid[] =
+> -      NVDIMM_UUID_LE(0x66f0d379, 0xb4f3, 0x4074, 0xac, 0x43, 0x0d, 0x33,
+> -                     0x18, 0xb7, 0x8c, 0xdb);
+> +      UUID_LE(0x66f0d379, 0xb4f3, 0x4074, 0xac, 0x43, 0x0d, 0x33,
+> +              0x18, 0xb7, 0x8c, 0xdb);
+>
+>  /*
+>   * NVDIMM Firmware Interface Table
+> diff --git a/include/qemu/uuid.h b/include/qemu/uuid.h
+> index 129c45f..c55541b 100644
+> --- a/include/qemu/uuid.h
+> +++ b/include/qemu/uuid.h
+> @@ -34,6 +34,15 @@ typedef struct {
+>      };
+>  } QemuUUID;
+>
+> +/**
+> + * convert UUID to little-endian array
+> + * The input parameter is the member of  UUID
+> + */
 
-Thanks.  Added to my sve2 branch.
+This isn't in the right form to be a proper doc-comment comment,
+and it's too brief to really help somebody who doesn't already
+know what the macro does.
 
+The parameter names to the macro are still terrible, and
+"member of UUID" doesn't help -- assuming you mean "members
+of the QemuUUID struct, those are named 'time_low' , 'time_mid',
+and so on, not this random selection of alphabetic and d0..d7.
 
-r~
+> +#define UUID_LE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)             \
+> +  { (a) & 0xff, ((a) >> 8) & 0xff, ((a) >> 16) & 0xff, ((a) >> 24) & 0xff, \
+> +     (b) & 0xff, ((b) >> 8) & 0xff, (c) & 0xff, ((c) >> 8) & 0xff,          \
+> +     (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) }
+> +
+>  #define UUID_FMT "%02hhx%02hhx%02hhx%02hhx-" \
+>                   "%02hhx%02hhx-%02hhx%02hhx-" \
+>                   "%02hhx%02hhx-" \
+> --
+> 1.8.3.1
+
+thanks
+-- PMM

@@ -1,88 +1,88 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp887187lfm;
-        Fri, 17 Apr 2020 12:45:49 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLG1mlGPK0/b6Kiu3ZuURrjIlUzJGd9MMR6x8NyVRMrrSMgMERsKdkIKCzWza4J8UxcDTGM
-X-Received: by 2002:a37:b1c6:: with SMTP id a189mr5056802qkf.26.1587152749445;
-        Fri, 17 Apr 2020 12:45:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587152749; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp887898lfm;
+        Fri, 17 Apr 2020 12:46:34 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIbaSS9txc8AZf8bReGYUXljTYXy/QGzDxN8JT1G+HShUfyogW7hH28CHSv4HYuOeDEzeNL
+X-Received: by 2002:a37:8506:: with SMTP id h6mr4872206qkd.71.1587152793944;
+        Fri, 17 Apr 2020 12:46:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587152793; cv=none;
         d=google.com; s=arc-20160816;
-        b=OsTL7RJrUkIWNmcM4QivsNhovwkAuscL4cirlKTfjt4g/QCFXmtvZdsN/zff11p5Of
-         8nNVwKCWYsDPT47pdiZ0qTmdhwkMTqskhNI9mhsmlwjcAjxB7wQTPXqg1wKIkiaGgLdB
-         4jmmSWj0R3UOQnGxD1kemWK5VyMqsW/XbnhCq1Cwf9nOmaDC5BRtnS2ilrRMttWwcrTc
-         2yE8L+0+mjNEeiZFEXkpChRJ9n1/j56myrYSEaZp+WfRIplcv3/piBrLO1Xk6AYVGyjx
-         Eu7JfUSAkSX+/xsvI99Q1IOHeGEMlOtWtHc6v7BB/uLV753ac9TcqgNGM11QIS9wf6WD
-         VIyA==
+        b=B9Ag5wmVzR4LlRRctnEeBdvd8TRjoFVUZTwqwb7COgZlc01WoudAuuYnHcNIrHewRS
+         BBt1vdt1d8phXcOtSz+bylTmi2oojWMQuinmPLBATpLum4UDpbKyZbLsSLjVDMfEQmzH
+         IXf7qSLprnBDXrNEp1X5E4BtPSY7mgdpctlZ0AvK8cH1Wfkl+04F/ugQ4OV+xZ75Zhc+
+         iDtdU/hCdZzGSibsEKjaP79qDfxM0hjxib+xTk5aErCg3QFCSNnQfp8nPYyL92vyqruP
+         8AqSr9eBPPMv3a6SFJnC5+ENl8BykhEyN7+WaqVX0yMfbKyVWT9kqUhSyLlPV/iHwoW8
+         18CA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=7SGmO4CMWTruMjIwOTsUxxI3ib9EdM5DOMAXSKcbj5A=;
-        b=OYQciBVNGZOSW122VZVkBGK+CUFCvYE6s71DI3qEI3B3oxVmBjwLItP3GC9u1xPFw/
-         u9UP4OVHCiUmEEKAow/D9TnYUkc2O9qwlTkjx53MrjWdc+U1kP1TqmhNIbbpeQIT+SKR
-         apCurDjpPyh5nmymxy9PhMdlXjj83QW/7bRfzRMqczd24vE6AOw+/jtzDiPT5AwfuZis
-         9nVPbssPzgo2sK0OQ1tI+oyo5Q0pJs+QvPV0E/2a6NhPZxZEqfDZu7P+TOTeRzxwAeKS
-         f7WJv/havlEDlNJ0SgKrmW8YaZpGVqI2WrTd7+XzoplSwOc3DlnDr0C3VtoeXjXcrtlm
-         0F4g==
+        bh=PLcbl+bmeMrJ87QQsOvOjSaI65Nvn1hnJ1HGq+00ox4=;
+        b=SYDiWv521lmLwbC3tH67bgOBJzZOwrs3dbGWQDmERvnvxgsYP8BHFrxQTPuQsKDEzS
+         2ykBLn5wQ1DnNa7SemaQM4n2C5Zr78ZKKM5zKSj/V8Qy/fMQOYJSs6RU8vlotwUyyKtR
+         qvUoowKQ9O46ezYNdpmSPbxr9j1fPfZLrphYd6fbAKIjI2fWsdfM87Obj5hLL7S4byza
+         eDzFdzL4JtGva9UKKf9qE1Sa3XKQdTDdYTy5UJJAA3EaQGT73B+LSrFqlQqXrp9J8HRD
+         ilHUGc8efJn7Fe+dWiUc4CWG94d00L+P/LEpLJHHJcTeo3F4gbIGibM7RR3m+oijuutn
+         U/cg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Tagonb9b;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WX5kzFEI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k63si13327351qtd.139.2020.04.17.12.45.49
+        by mx.google.com with ESMTPS id d10si11615833qke.227.2020.04.17.12.46.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Apr 2020 12:45:49 -0700 (PDT)
+        Fri, 17 Apr 2020 12:46:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Tagonb9b;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WX5kzFEI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51264 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51286 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jPWvs-0005CZ-RN
-	for alex.bennee@linaro.org; Fri, 17 Apr 2020 15:45:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38723)
+	id 1jPWwb-00062p-C1
+	for alex.bennee@linaro.org; Fri, 17 Apr 2020 15:46:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39767)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jsnow@redhat.com>) id 1jPWve-0004zg-EH
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 15:45:35 -0400
+ (envelope-from <jsnow@redhat.com>) id 1jPWwJ-0005mm-8i
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 15:46:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jsnow@redhat.com>) id 1jPWvd-0005uc-Aa
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 15:45:34 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:48915
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <jsnow@redhat.com>) id 1jPWwI-00076s-Ai
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 15:46:15 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:59423
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jsnow@redhat.com>) id 1jPWvd-0005t5-5k
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 15:45:33 -0400
+ (Exim 4.71) (envelope-from <jsnow@redhat.com>) id 1jPWwI-00076Q-72
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 15:46:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587152732;
+ s=mimecast20190719; t=1587152773;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=7SGmO4CMWTruMjIwOTsUxxI3ib9EdM5DOMAXSKcbj5A=;
- b=Tagonb9bIC9zYJEgCLhmdYjStuMpPpJds5DB6VexS3hCGYg1ntawEB6ZwetCtnJuTqlhY1
- S8DAax9LoML2B7iRU0TAjd1feiojdU+YIYrY06o0eQnINfgXCSMI1fBM2OBjDeUsmsafqU
- NqcN2whQZfrnWGDEID/GpQt3f7mZzb0=
+ bh=PLcbl+bmeMrJ87QQsOvOjSaI65Nvn1hnJ1HGq+00ox4=;
+ b=WX5kzFEIWgzGy0PpYcJ3WjO95FCaeqVA7g2rCJGUvCCxIiPRN1je8JUY915htAHTjTBa2f
+ VIsnwqqXtKcpUYHVtdhW4xQmg+CLqavqs257QoSl/E9Pmy6j6GPW5VyhySSuLSuKxlPNJ/
+ rJXYkH5SOERbQK2++ch361Wi7LL8cWA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-179-HBjqHuMQPKyk9jQwPny2NA-1; Fri, 17 Apr 2020 15:45:30 -0400
-X-MC-Unique: HBjqHuMQPKyk9jQwPny2NA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-510-pcV3h1kAOY-R5aFO7L_9Nw-1; Fri, 17 Apr 2020 15:46:10 -0400
+X-MC-Unique: pcV3h1kAOY-R5aFO7L_9Nw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8D06D192D785;
- Fri, 17 Apr 2020 19:45:26 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D1CAB107ACC9;
+ Fri, 17 Apr 2020 19:46:05 +0000 (UTC)
 Received: from [10.10.119.33] (ovpn-119-33.rdu2.redhat.com [10.10.119.33])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5F9AA5C28E;
- Fri, 17 Apr 2020 19:45:09 +0000 (UTC)
-Subject: Re: [PATCH-for-5.1 2/3] various: Remove unnecessary OBJECT() cast
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6CF1F8D57F;
+ Fri, 17 Apr 2020 19:45:53 +0000 (UTC)
+Subject: Re: [PATCH-for-5.1 3/3] hw: Remove unnecessary DEVICE() cast
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200412210954.32313-1-f4bug@amsat.org>
- <20200412210954.32313-3-f4bug@amsat.org>
+ <20200412210954.32313-4-f4bug@amsat.org>
 From: John Snow <jsnow@redhat.com>
 Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
  mQINBFTKefwBEAChvwqYC6saTzawbih87LqBYq0d5A8jXYXaiFMV/EvMSDqqY4EY6whXliNO
@@ -158,21 +158,20 @@ Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
  i0HjnLoJP5jDcoMTabZTIazXmJz3pKM11HYJ5/ZsTIf3ZRJJKIvXJpbmcAPVwTZII6XxiJdh
  RSSX4Mvd5pL/+5WI6NTdW6DMfigTtdd85fe6PwBNVJL2ZvBfsBJZ5rxg1TOH3KLsYBqBTgW2
  glQofxhkJhDEcvjLhe3Y2BlbCWKOmvM8XS9TRt0OwUs=
-Message-ID: <f3b9362e-b55e-c9e1-81b0-fa770f96bd13@redhat.com>
-Date: Fri, 17 Apr 2020 15:45:08 -0400
+Message-ID: <a4eda645-9e09-b384-0b17-c38a4025ef3c@redhat.com>
+Date: Fri, 17 Apr 2020 15:45:52 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200412210954.32313-3-f4bug@amsat.org>
+In-Reply-To: <20200412210954.32313-4-f4bug@amsat.org>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.120
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -207,14 +206,25 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PDqoACJpuGrT
+X-TUID: EJwJvwuysXqj
 
 
 
 On 4/12/20 5:09 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> -    memory_region_init_io(&a->mmio, OBJECT(obj), &allwinner_ahci_mem_ops=
-, a,
-> +    memory_region_init_io(&a->mmio, obj, &allwinner_ahci_mem_ops, a,
+> diff --git a/hw/ide/piix.c b/hw/ide/piix.c
+> index 3b2de4c312..b402a93636 100644
+> --- a/hw/ide/piix.c
+> +++ b/hw/ide/piix.c
+> @@ -193,7 +193,7 @@ int pci_piix3_xen_ide_unplug(DeviceState *dev, bool a=
+ux)
+>              blk_unref(blk);
+>          }
+>      }
+> -    qdev_reset_all(DEVICE(dev));
+> +    qdev_reset_all(dev);
+>      return 0;
+>  }
+> =20
 
 Acked-by: John Snow <jsnow@redhat.com>
 

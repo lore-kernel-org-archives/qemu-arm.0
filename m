@@ -1,255 +1,136 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp675852lfm;
-        Fri, 17 Apr 2020 09:23:47 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJDaWpyUpAELdnM+2TNDxYUORPL+1z6zTKXLVRu/JUYwbnD0Th5mSD0r/+rg8HVgwR1KOvB
-X-Received: by 2002:ae9:e606:: with SMTP id z6mr4051445qkf.320.1587140627142;
-        Fri, 17 Apr 2020 09:23:47 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1587140627; cv=pass;
-        d=google.com; s=arc-20160816;
-        b=NZudD1FNww3/LCfcp60yel+W+i8/otPeemW/4eaFVO0hWLil9nWl/BgULwx8i0twW4
-         2hkcIDbBf6cLi/On5IctuRRYYvRHM+/dPwN9SosGnfObx39flDeLslOZmx287CbWJo+b
-         1TLEwP/wfy2/zaSxEnHM7QhibcBZq8lsZIZi18DqFQHiMrDiZN4ByBSNVVdpNz5RzNIW
-         6Vmofmlb3f8p8wpVsr8uddJyk+fIQnmnvAlSl8GN83/A4AjAdTovWKlTDKah/X1grte4
-         qwO3oSR7jkYPsqaUrs8iBlspZgFIp+6ZFYOOjSljNZg3aaRVCLbJhqpeOzIVrkc68hUx
-         w7/w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from:dkim-signature
-         :dkim-signature;
-        bh=P20yB/cy6Iy4pVkHiEfdQFWDkNpzjYa5Rcd0mNGaP4Q=;
-        b=aKhndDQOlLda9PGmYfEsMfZ7ztNweFquJE++Bq0oukmkcrljk70osSuLi4bRysrx05
-         O+UMAwsSkTdEP2ZrmrtBcTyFpJTrQ8mOyQDQX30/Q932xFYCL2S317UdjGb96gVhl17u
-         95wIcG1B8HEQCrLECy+i1QxWwqCTo+Z9y8cma3K0ExeUM7rCYK3KRdLXVNeu5aLvled3
-         hiiagyp490HrcVvlcLE07VW0kFwddQVqMucWKUmPodapJWNlpbWEeFkJH4dflf6FiPVF
-         OQteAAMZaqKs21y6TEzaFBVcrclmmzk05vI8iCtL0HmfF3N2b4+0L1kx5lzrvABnLBIJ
-         S9gw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=vMMPLqJP;
-       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=NGfTCtW6;
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp707399lfm;
+        Fri, 17 Apr 2020 09:53:18 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKi4+kHG938/r5I/DHoJJ/w3q+Rg2tN/GDcgz51bQPdpopvWk7wOieNqf0ApVOHI+VEfDKj
+X-Received: by 2002:a05:620a:102a:: with SMTP id a10mr4205088qkk.214.1587142398658;
+        Fri, 17 Apr 2020 09:53:18 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j57si10783845qta.259.2020.04.17.09.23.46
+        by mx.google.com with ESMTPS id a125si13870258qkf.12.2020.04.17.09.53.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Apr 2020 09:23:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 17 Apr 2020 09:53:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=vMMPLqJP;
-       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=NGfTCtW6;
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:49408 helo=lists1p.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=NIlwj92P;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49756 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jPTmM-00026j-Jn
-	for alex.bennee@linaro.org; Fri, 17 Apr 2020 12:23:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37179)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jPUEv-00010q-Vr
+	for alex.bennee@linaro.org; Fri, 17 Apr 2020 12:53:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60853)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <steplong@quicinc.com>) id 1jPTld-00024H-RZ
- for qemu-devel@nongnu.org; Fri, 17 Apr 2020 12:23:03 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1jPUEI-00010K-1k
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 12:52:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <steplong@quicinc.com>) id 1jPTlb-0007iO-WD
- for qemu-devel@nongnu.org; Fri, 17 Apr 2020 12:23:01 -0400
-Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38]:65335)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <steplong@quicinc.com>)
- id 1jPTla-0007gr-Fp; Fri, 17 Apr 2020 12:22:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1587140578; x=1618676578;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version;
- bh=G6IZrIG+GaV2o21HswiIwVBpmtJCeR/c3OMbR/NiLp0=;
- b=vMMPLqJPSxK+hK/nGCia/6+Sbrq67OSWVlXXdGWSeIP/hy9Qr+ziiXYJ
- TplpZKi0Ahkiy4W3qBYDBeEYaG5g+MJwLccGdyeFXwCoLJ1TP2IXFRUD/
- uWbA9e6z2DQEI6D5EPses+OHa6KP6n5zPhcvHlhej1N/jS4qmC2sOERFC 8=;
-Received: from unknown (HELO ironmsg01-sd.qualcomm.com) ([10.53.140.141])
- by alexa-out-sd-01.qualcomm.com with ESMTP; 17 Apr 2020 09:22:57 -0700
-Received: from nasanexm01h.na.qualcomm.com ([10.85.0.34])
- by ironmsg01-sd.qualcomm.com with ESMTP/TLS/AES256-SHA;
- 17 Apr 2020 09:22:57 -0700
-Received: from apsanexr02f.ap.qualcomm.com (10.85.0.29) by
- NASANEXM01H.na.qualcomm.com (10.85.0.34) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 17 Apr 2020 09:22:56 -0700
-Received: from nasanexm03b.na.qualcomm.com (10.85.0.98) by
- apsanexr02f.ap.qualcomm.com (10.85.0.29) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 17 Apr 2020 09:22:55 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (199.106.107.6)
- by nasanexm03b.na.qualcomm.com (10.85.0.98) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2 via Frontend Transport; Fri, 17 Apr 2020 09:22:54 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FFUxdlqZF09UdM+fHEl4bB3PzsssPj4r2/PyaNbTF37ULpUk/+EFRadBgbxiAJnq6CGY9i0jBRkn+3xzsOvgH1fRgCzQBH2sSwjw/+1xxTV1hHjsYs/VVluLKmF/0xQgnQE+AmdES2ezEOLl2OXvBJff88ri0l6lckc3af3RR3TnMpNgErRcJ19KPeN8ecMsL9dvQy7s5bVWVEpJpDkp0oAOQrbusucxLGz+S3TCPBISEEwoJQ3MRk9TZnQP0JYJNpoG+hpI/DvKg9Kzk0dp3M7h4uyOzvrJTBMjPWtgUhpQczPPgxvzejRD0PsaDbMfkkD10/9DATZJfM34ChhMDg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=P20yB/cy6Iy4pVkHiEfdQFWDkNpzjYa5Rcd0mNGaP4Q=;
- b=F7BXbaAtntQnvk8ddB1MDTTHEmWsxrou/ZOTIuL7StLaKjLO+9mfOVsPezXAzmk/gykozYFb8emcCnPr1+3W8uGH5Kv80toHhhg051/fNaUiXemtB2TpwzKdjTjw5XfH1kBFWvfi9tLd6vnfJGvBNecz/51VINpM/xeSSfroPwMtZx0iNPWfPPAsenCWD8ngdFUbaV9OVh6pHyPLLhji+D/TlZAl+c7AhZbf/e5NvIZxeM3R2l8Ce58vjv5bu6v6RzTia0F6moK5jxSfQPM7iR8ARD2+BCzcOmLmXwDUC2XOGShJ8WBqZKmO8lw0RppJbjFvy18Y7J9l2Su/3/yxqA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
- dkim=pass header.d=quicinc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=qualcomm.onmicrosoft.com; s=selector1-qualcomm-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=P20yB/cy6Iy4pVkHiEfdQFWDkNpzjYa5Rcd0mNGaP4Q=;
- b=NGfTCtW6kpp/c0SHcNe0zEy3yy0Ous2CP45hyiwG2NRKtHYFmAxH+BZPNhFAoYkAADnz2lLE7nEKVdPiKPdqMBumEkMLaLZycFC8GxvFzfxXrXbHnGVYDWLOMMg8pn9Gnrbs4/lMVW/LkkJ2J329N6J8amrcbs5QBSliVaUnTjs=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=steplong@quicinc.com; 
-Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
- (2603:10b6:301:7b::24) by MWHPR0201MB3484.namprd02.prod.outlook.com
- (2603:10b6:301:77::36) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.29; Fri, 17 Apr
- 2020 16:22:49 +0000
-Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
- ([fe80::10ad:5df5:d575:1f37]) by MWHPR0201MB3547.namprd02.prod.outlook.com
- ([fe80::10ad:5df5:d575:1f37%3]) with mapi id 15.20.2900.030; Fri, 17 Apr 2020
- 16:22:49 +0000
-From: Stephen Long <steplong@quicinc.com>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH 2/4] target/arm: Implement SVE2 RADDHNB, RADDHNT
-Date: Fri, 17 Apr 2020 12:22:29 -0400
-Message-ID: <20200417162231.10374-3-steplong@quicinc.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200417162231.10374-1-steplong@quicinc.com>
-References: <20200417162231.10374-1-steplong@quicinc.com>
-Content-Type: text/plain
-X-ClientProxiedBy: CH2PR12CA0017.namprd12.prod.outlook.com
- (2603:10b6:610:57::27) To MWHPR0201MB3547.namprd02.prod.outlook.com
- (2603:10b6:301:7b::24)
+ (envelope-from <damien.hedde@greensocs.com>) id 1jPUEG-0003D2-HW
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 12:52:37 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:57856)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1jPUEF-00039F-V9; Fri, 17 Apr 2020 12:52:36 -0400
+Received: from [192.168.1.12] (lfbn-gre-1-344-171.w90-112.abo.wanadoo.fr
+ [90.112.62.171])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 59A3896F50;
+ Fri, 17 Apr 2020 16:52:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1587142353;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gSvfu6qH9m18s7xOnXwbs4IuO5TxdBMihz7/KC5BP10=;
+ b=NIlwj92PW55ZcKyc6dVIhxwBJWdVpEg82grvDRxcqKW86GGkX1/LA0Mu5LFkQvwk6sf5pD
+ v1BsWE9FTfwEW2Ymv2iEzvzSfX7SEC9sBb0yrsDI5ZN77EIqd2bI7hXnC6SLhEU70ah8lx
+ EFyttZPrzbH8txk2qFcWNLo1ZOcYmM0=
+Subject: Re: [PATCH v9 5/9] docs/clocks: add device's clock documentation
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200406135251.157596-1-damien.hedde@greensocs.com>
+ <20200406135251.157596-6-damien.hedde@greensocs.com>
+ <CAFEAcA_NVJg9KS-yrYDKe0GbAC7xah6mH1SmkjLmyr-BNPF8WQ@mail.gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <eee8cb35-c7bc-f60c-fd10-073320a41ed7@greensocs.com>
+Date: Fri, 17 Apr 2020 18:52:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from DESKTOP-L2LA14H.localdomain (108.176.222.2) by
- CH2PR12CA0017.namprd12.prod.outlook.com (2603:10b6:610:57::27) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2921.25 via Frontend Transport; Fri, 17 Apr 2020 16:22:48 +0000
-X-Mailer: git-send-email 2.17.1
-X-Originating-IP: [108.176.222.2]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: d821d4c6-03d3-424d-3ca4-08d7e2eb91dc
-X-MS-TrafficTypeDiagnostic: MWHPR0201MB3484:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MWHPR0201MB3484F7A8ED9ADB5634B3B34FC7D90@MWHPR0201MB3484.namprd02.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:65;
-X-Forefront-PRVS: 0376ECF4DD
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR0201MB3547.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10019020)(396003)(376002)(136003)(39860400002)(366004)(346002)(5660300002)(107886003)(4326008)(66946007)(66476007)(66556008)(6916009)(6486002)(478600001)(6512007)(6666004)(2906002)(36756003)(186003)(16526019)(86362001)(956004)(1076003)(2616005)(316002)(8676002)(26005)(6506007)(52116002)(81156014)(8936002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: zm61WIMyu5b84gL6qUkxREqU/st7YxFIMWi6l/BOZ4k7zI1nh1thuGu1RWuPPhSpJgIwXcNx9+SQtHy5zenX0s7FxczCM3miFE91NLeTD2ya88qpK+mePCpP48UQwkd37PeQDxA/Mzp56FfwXuTH5xr0+jeERtuUkoTLhLZXOG9+fKm16drUrfRiseHKLKySS0gfrXhAHCqYLkkHnrrKfwWqCqS2yvWQlHsg6wKAR85xegcCMvEeNq+SWJ/NRAyPejAGYksEa7LSYhQgNkuN80g51E+uEGpyMJOmuKZJFi+ifKfq39NVUgipPMaqhB0okHA/Z70Mpw8PM8kVKxqnYSO3Ij07sSsa9KNVuhAnmcDqtO8To7Wi4gpoWYeC2Wq30OGVE7pVHYkIPp0mTis13cTeZTV2ZjEeSdINSU62msTikflxbTEZ9RXvJymBT2LU
-X-MS-Exchange-AntiSpam-MessageData: bKNqtFphTnEb0ttBZCoJOzx2Ts+FT8fFLgsG1I7ViX5BvUt5QkloFz0d225lgBdJ6DzBjR6xfcHmUnWYi4e3Avlv92DZimSud6MiNHhPTDH0PnM2CN63+gfW6OuhRTSeuOEZKb61Ln/SDGJoTAC26w==
-X-MS-Exchange-CrossTenant-Network-Message-Id: d821d4c6-03d3-424d-3ca4-08d7e2eb91dc
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Apr 2020 16:22:49.1284 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: O9Fn2eqtt01w7w+DjKFaTWkbXiducufm2r331BN/ed44Wlleju8h9z4Sk02wZGn8ZD6WpSJ8nAaGU5rqlIrYjw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR0201MB3484
-X-OriginatorOrg: quicinc.com
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 199.106.114.38
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <CAFEAcA_NVJg9KS-yrYDKe0GbAC7xah6mH1SmkjLmyr-BNPF8WQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1587142353;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gSvfu6qH9m18s7xOnXwbs4IuO5TxdBMihz7/KC5BP10=;
+ b=L9mrTTKkSOw76QoqXXL4S1yfFR4uCO8eQEvxqjqnRpsh4eux0YFC0vwzOTM1yB5ObTTq32
+ 1VRW53xgJuUNpetUc5FP4XOQQnYeZB0UgG6GvfL23kvplqPrEje7AEDEwdnmr/OsT9LXNd
+ hr8ryNt87bKe9LWX0J1yAsSk4XQ+3QE=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1587142353; a=rsa-sha256; cv=none;
+ b=F0aQDkHH0oIDy3+VeM8IsE49qZ8FrGXrxpo/SfnQ09Y5Gqy8Wf+fyetDOn8RIpeykvKynZ
+ /SY9Qa2wl7WLuJht9rQBaJROMPpI2svOIdF+tKrdNWnMYBYsg8bTsC26UTt76eZ6TCPP9A
+ kT7logk78+r2hi8nXbtJoiBs1KuOPDM=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 5.135.226.135
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, richard.henderson@linaro.org, apazos@quicinc.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dvOAuk6ARVgd
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Mark Burton <mark.burton@greensocs.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ccAIpN1YpNBP
 
-Signed-off-by: Stephen Long <steplong@quicinc.com>
----
- target/arm/helper-sve.h    |  8 ++++++++
- target/arm/sve.decode      |  2 ++
- target/arm/sve_helper.c    | 10 ++++++++++
- target/arm/translate-sve.c |  2 ++
- 4 files changed, 22 insertions(+)
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 5b8a8b0656..5d5542a82a 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -2524,6 +2524,14 @@ DEF_HELPER_FLAGS_4(sve2_addhnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve2_addhnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(sve2_addhnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- 
-+DEF_HELPER_FLAGS_4(sve2_raddhnb_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_raddhnb_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_raddhnb_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_4(sve2_raddhnt_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_raddhnt_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(sve2_raddhnt_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
- DEF_HELPER_FLAGS_5(sve2_match_ppzz_b, TCG_CALL_NO_RWG,
-                    i32, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(sve2_match_ppzz_h, TCG_CALL_NO_RWG,
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index e6a12f4e66..9d82677808 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -1325,6 +1325,8 @@ UQRSHRNT        01000101 .. 1 ..... 00 1111 ..... .....  @rd_rn_tszimm_shr
- 
- ADDHNB          01000101 .. 1 ..... 011 000 ..... .....  @rd_rn_rm
- ADDHNT          01000101 .. 1 ..... 011 001 ..... .....  @rd_rn_rm
-+RADDHNB         01000101 .. 1 ..... 011 010 ..... .....  @rd_rn_rm
-+RADDHNT         01000101 .. 1 ..... 011 011 ..... .....  @rd_rn_rm
- 
- ### SVE2 Character Match
- 
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 743240aa80..f92b8dd312 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -2048,6 +2048,7 @@ void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)              \
- }
- 
- #define DO_ADDHN(N, M, SH)  ((N + M) >> SH)
-+#define DO_RADDHN(N, M, SH) ((N + M + (1 << (SH - 1))) >> SH)
- 
- DO_BINOPNB(sve2_addhnb_h, uint16_t, uint8_t, 8, DO_ADDHN)
- DO_BINOPNB(sve2_addhnb_s, uint32_t, uint16_t, 16, DO_ADDHN)
-@@ -2057,6 +2058,15 @@ DO_BINOPNT(sve2_addhnt_h, uint16_t, uint8_t, 8, H1_2, H1, DO_ADDHN)
- DO_BINOPNT(sve2_addhnt_s, uint32_t, uint16_t, 16, H1_4, H1_2, DO_ADDHN)
- DO_BINOPNT(sve2_addhnt_d, uint64_t, uint32_t, 32,     , H1_4, DO_ADDHN)
- 
-+DO_BINOPNB(sve2_raddhnb_h, uint16_t, uint8_t, 8, DO_RADDHN)
-+DO_BINOPNB(sve2_raddhnb_s, uint32_t, uint16_t, 16, DO_RADDHN)
-+DO_BINOPNB(sve2_raddhnb_d, uint64_t, uint32_t, 32, DO_RADDHN)
-+
-+DO_BINOPNT(sve2_raddhnt_h, uint16_t, uint8_t, 8, H1_2, H1, DO_RADDHN)
-+DO_BINOPNT(sve2_raddhnt_s, uint32_t, uint16_t, 16, H1_4, H1_2, DO_RADDHN)
-+DO_BINOPNT(sve2_raddhnt_d, uint64_t, uint32_t, 32,     , H1_4, DO_RADDHN)
-+
-+#undef DO_RADDHN
- #undef DO_ADDHN
- 
- #undef DO_BINOPNB
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 0d1a9cd8a5..a36eb9cf98 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -7516,6 +7516,8 @@ static bool trans_##NAME(DisasContext *s, arg_rrr_esz *a)                 \
- 
- DO_SVE2_ZZZ_NARROW(ADDHNB, addhnb)
- DO_SVE2_ZZZ_NARROW(ADDHNT, addhnt)
-+DO_SVE2_ZZZ_NARROW(RADDHNB, raddhnb)
-+DO_SVE2_ZZZ_NARROW(RADDHNT, raddhnt)
- 
- static bool do_sve2_ppzz_flags(DisasContext *s, arg_rprr_esz *a,
-                                gen_helper_gvec_flags_4 *fn)
--- 
-2.17.1
+
+On 4/17/20 5:52 PM, Peter Maydell wrote:
+> On Mon, 6 Apr 2020 at 14:53, Damien Hedde <damien.hedde@greensocs.com> wrote:
+>>
+>> Add the documentation about the clock inputs and outputs in devices.
+>>
+>> This is based on the original work of Frederic Konrad.
+>>
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+>> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+>> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> 
+> I did an edit pass on this to address minor grammar/style
+> issues and some Sphinx syntax stuff (notably, using
+> "code-block:: c" renders nicer than a plain literal block).
+> Diff against this patch is below; it looks bigger than
+> you might expect because one of the changes was that I
+> rewrapped some of the paragraphs that were close to or
+> over 80 chars per line. Changes include the tweak Markus
+> asked for.
+> 
+
+Thanks a lot,
+
+I thought that the maximum column size was 80, should we use a
+bit less in practice ?
+
+I'll apply this and do a respin along with your other patch 1 catcha
+bout the integer type in traces.
+
+Damien
 

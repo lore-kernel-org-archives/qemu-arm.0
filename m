@@ -1,81 +1,112 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1261203lfm;
-        Fri, 17 Apr 2020 20:22:57 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLBxv6xwAr6P/9vz4h9CvScqkvSQT5LetC1tt54RU47vg1zLsGZAsrzwcPCyptnA/nopuVy
-X-Received: by 2002:a37:c0d:: with SMTP id 13mr6437934qkm.25.1587180176960;
-        Fri, 17 Apr 2020 20:22:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587180176; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1264302lfm;
+        Fri, 17 Apr 2020 20:27:33 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJ2JntrpDpzT1M5a1PAGE4WVwMj7eIkumH+JjeWyAETeK03ibkU39HIJLSYHQqSwF8jShJO
+X-Received: by 2002:a37:4c4d:: with SMTP id z74mr6403459qka.53.1587180453675;
+        Fri, 17 Apr 2020 20:27:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587180453; cv=none;
         d=google.com; s=arc-20160816;
-        b=QkDR9x2VfPhSHOYOqFtmOGdmHKKLlSzH+PVHVoO+eXiSLwD9XPcO1GTsrIVKTICIHF
-         FRz0nXFOlc34Ek+2q9CpmQb52z0ybZCNZUmjem6NmMv1ExE+W0j6gbWjRMR1KPbOWdfw
-         M70UHmQd7rJyA7p6YeI5zcGPuE3KM+E+Je7pndeNrFvvWGEsi/pN/7m/qJLyIxpvQHV1
-         WFqC/1RLU43mtOPqRruaRsMiRRZ34Tv/a3wr4Y+fNefQYCFp8pL+Y8DIy10B1wM67sx7
-         NtO03fh0lUsieHSy7o7NEggRFKiBuUdRFJrc208tMWkNBjo84ASScwhXu/GYbjEgY+Dv
-         Uuiw==
+        b=LrnVwc+UtiN4QJQ6dvqn5c8kWYJ+payuQIwPVW96C2gCEZWqshsImvbhBT6Eud3lef
+         5nEVNaU5RCq21AKXUtbd6Dg5NWUmc0lgitUSrGx/YYiwav1IDmo/jI4sA0ZaTqUegYeP
+         80W6sLFaNPcqcztPh4Ofpp3Xuc967jaTuvz+VznV3wR3I/sBPVXkygPIrxt7m7xUWIiQ
+         LVZBjyKPXTBVEI7/+FyQP9tS8nzQFZ9B0UHqfAYg+2e3xlH1DQA0aH/nwll4uZckqbfQ
+         BrYU4yqvtZb9w8YujyejR0PlhIOci53bGpiVLmlOwSO3xfx86NeqAgX001hthXQXuaCc
+         pcmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=NN7wPVv3DLXfKZD9h+MwdMPfsXwbVPgx6BUrULyy7uo=;
-        b=Hh7jEyoYB1y9wDQqShWYDKTSJaAYVfz0V//peV1/nnTiEeNbnqpRE1n7tHuB4sUDnJ
-         g7UuSIN+1kBX5TKGCY5W3Ak0xWKUTWhHThMAQ/bZM+g8vwjSDocEDz2X9lVU446S2Yfb
-         x1ATwRZQReKbP9WL0A9KAiZuimOJ8r43UeDie3I6qRKD+NOTm1TfZJIQlcfboT3z4wz6
-         g10de3bjYn4E9f3yUx5ky358yInf2JX2i5VFZAhwchW2Xo5jEINZQBnxdP2JvlCJDU4H
-         2PEZkdWjb+LDYIeVqxu5V0J/H0BbiwWdIzYrmsE3eXo2cAgrp6dqwVuK+Fy0J1jrguEL
-         U70g==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=4S5+MAzGOSfi/hcjNLQ8N1bIo2gE5EagUU9lnTXma3U=;
+        b=PH6OtlMfRr/4XWHF9V7QLb0aaxw8v1YcuN6lxJe7eXMBC+4FXLVGKWcVivvms41Rek
+         EIUy169GYTH6RUlxOi7vBD0ET+Vt2LKQhIuWf37hVyvznjsh7y/4D2X3ttqhMCpuQIeZ
+         phnFN6E6EG4GF94/Xev8eAP+I5CQ0zJERNIpVpHS5NkCIfcbUJakdcJWxNGSP6NlVyzt
+         dFTM/fPMKU8vY957B0YUf1PczY1a5kKV9n0Q8KQ7C+5S7fHZ4zVOkELk2OAwyVHbWEOZ
+         5nxfvbLo0SR2werlQHB1Aulum18HmDh8BHiD6LuFqLuLg8Jlzkh2mu4sQYMIPGLxPI89
+         gRxA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=KTMPEP8U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14si11394256qtp.272.2020.04.17.20.22.56
+        by mx.google.com with ESMTPS id y9si1946661qkl.358.2020.04.17.20.27.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Apr 2020 20:22:56 -0700 (PDT)
+        Fri, 17 Apr 2020 20:27:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54352 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=KTMPEP8U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54400 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jPe4G-00052V-6o
-	for alex.bennee@linaro.org; Fri, 17 Apr 2020 23:22:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44783)
+	id 1jPe8j-0006Q7-3O
+	for alex.bennee@linaro.org; Fri, 17 Apr 2020 23:27:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49605)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <zhukeqian1@huawei.com>) id 1jPe44-00052C-CI
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 23:22:45 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jPe7q-0006O5-28
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 23:26:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <zhukeqian1@huawei.com>) id 1jPe40-0002YF-NM
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 23:22:42 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3672 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <zhukeqian1@huawei.com>)
- id 1jPe3y-0002O2-G3; Fri, 17 Apr 2020 23:22:39 -0400
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id B2ABCFFFF7C2FECB6CBD;
- Sat, 18 Apr 2020 11:22:28 +0800 (CST)
-Received: from [127.0.0.1] (10.173.221.230) by DGGEMS405-HUB.china.huawei.com
- (10.3.19.205) with Microsoft SMTP Server id 14.3.487.0;
- Sat, 18 Apr 2020 11:22:21 +0800
-Subject: Re: [PATCH 2/3] intc/gicv3_kvm: use kvm_gicc_access to get
- ICC_CTLR_EL1
+ (envelope-from <richard.henderson@linaro.org>) id 1jPe7o-0004bO-3C
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 23:26:37 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:37267)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1jPe7m-0004VJ-2I
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2020 23:26:35 -0400
+Received: by mail-pl1-x641.google.com with SMTP id y22so1697850pll.4
+ for <qemu-arm@nongnu.org>; Fri, 17 Apr 2020 20:26:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=4S5+MAzGOSfi/hcjNLQ8N1bIo2gE5EagUU9lnTXma3U=;
+ b=KTMPEP8UruJWUkWgHeehierjPMZYwZs7QKLStALLUGGhV1VmGJOZyiAyDRYVTkfFWE
+ ObfaKvK99rUX0t+pDYUms5vclJhuL7tfOEc5WwhQ41Lh1Svm1Ui0XINQ2JiVeYJRwXLi
+ qo6M17lkHM7xRqXEPZp7D9NBbT8UzNpQv7jyZvDqI8jIYPmfmWEB4Bpxjv0xleN030s9
+ Fd5IMEhz68TkoEmyTZUx1TUigPKA4W8MXdfBfJPPDG4ngkOzyMZnbcI0o5itRNU1R/RK
+ /o7PPmE5sSSkrgZbcL46mT5vz6Wb3nhLHuK1oWM9oI4K9fPsqdfq0+n8LZYiI9pBv3+8
+ PRhQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=4S5+MAzGOSfi/hcjNLQ8N1bIo2gE5EagUU9lnTXma3U=;
+ b=DscDxX2kfQs0AITH2AsGPb/2qA+b2+TAONQsXGT3UWEOiHyw9kB3cDCkH2ldJ1DtsI
+ jo8+x5Hgvr6ope0kCbsQN6+xYE+VKbLtH61YcBS5pjjlpwXcoFpSoqPabMwUVj1yttaa
+ PN9FEAr1ovl5Q+0I6KP639dLb8yDMw/igozRiGSYDZKluu6XHMgL7CTNMaJBcmL0ceti
+ EDo3Xamq9msvWVRG+9p/xh/gnU2PdGNLsEaoDVt7kiekD3bd3LGbbARrSGSGCT/Tk7mb
+ 3xAt1qtQzm5y9hJ+BwG9XgRc7JZSxuNiQLFEu7y0OaiMph77BUCByaq5NcxTGgWDNuAc
+ gClQ==
+X-Gm-Message-State: AGi0PuY+CRc513fvdqt8NrrCzY1tyH7Vua7oALsVBdrYrAvFaeHRF8Do
+ sfFWwlDn5tmPmzrdvhIHDfyu7RwSKWg=
+X-Received: by 2002:a17:90a:1503:: with SMTP id
+ l3mr7798799pja.87.1587180387229; 
+ Fri, 17 Apr 2020 20:26:27 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
+ by smtp.gmail.com with ESMTPSA id x25sm18788027pfm.203.2020.04.17.20.26.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 17 Apr 2020 20:26:26 -0700 (PDT)
+Subject: Re: [PATCH 10/16] target/arm: Use SVEContLdSt for multi-register
+ contiguous loads
 To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200413091552.62748-1-zhukeqian1@huawei.com>
- <20200413091552.62748-3-zhukeqian1@huawei.com>
- <CAFEAcA9iUAtVvuv_8AOm0TkYzDD54QHZEL_DKRv_b_YpaVTJ_g@mail.gmail.com>
-From: zhukeqian <zhukeqian1@huawei.com>
-Message-ID: <4d163384-ea47-17fb-9575-bcfdfa05b05e@huawei.com>
-Date: Sat, 18 Apr 2020 11:22:19 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
+References: <20200311064420.30606-1-richard.henderson@linaro.org>
+ <20200311064420.30606-11-richard.henderson@linaro.org>
+ <CAFEAcA91-jPRjasTfPiGaNPwiF0Mye-vUU1p8YG8tWyU4yC8fQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <c9be891e-b5b3-c075-5c07-01fd913d3438@linaro.org>
+Date: Fri, 17 Apr 2020 20:26:24 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9iUAtVvuv_8AOm0TkYzDD54QHZEL_DKRv_b_YpaVTJ_g@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <CAFEAcA91-jPRjasTfPiGaNPwiF0Mye-vUU1p8YG8tWyU4yC8fQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.173.221.230]
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 45.249.212.190
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::641
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,63 +118,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin.wang@huawei.com, Igor Mammedov <imammedo@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- "Michael S . Tsirkin" <mst@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K2VaFQgIPD8W
+X-TUID: aojtV4kvNtSD
 
-Hi Peter,
-
-On 2020/4/17 19:09, Peter Maydell wrote:
-> On Mon, 13 Apr 2020 at 10:18, Keqian Zhu <zhukeqian1@huawei.com> wrote:
+On 4/16/20 6:35 AM, Peter Maydell wrote:
+> On Wed, 11 Mar 2020 at 06:44, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
 >>
->> Replace kvm_device_access with kvm_gicc_access to simplify
->> code.
->>
->> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 >> ---
->>  hw/intc/arm_gicv3_kvm.c | 5 ++---
->>  1 file changed, 2 insertions(+), 3 deletions(-)
->>
->> diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
->> index ca43bf87ca..85f6420498 100644
->> --- a/hw/intc/arm_gicv3_kvm.c
->> +++ b/hw/intc/arm_gicv3_kvm.c
->> @@ -678,9 +678,8 @@ static void arm_gicv3_icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
->>      }
->>
->>      /* Initialize to actual HW supported configuration */
->> -    kvm_device_access(s->dev_fd, KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS,
->> -                      KVM_VGIC_ATTR(ICC_CTLR_EL1, c->gicr_typer),
->> -                      &c->icc_ctlr_el1[GICV3_NS], false, &error_abort);
->> +    kvm_gicc_access(s, ICC_CTLR_EL1, c->cpu->cpu_index,
->> +                    &c->icc_ctlr_el1[GICV3_NS], false);
+>>  target/arm/sve_helper.c | 223 ++++++++++++++--------------------------
+>>  1 file changed, 79 insertions(+), 144 deletions(-)
 > 
-> This works at the moment, but I'd rather we avoided looking into
-> cpu->cpu_index inside the GIC code. The cpu_index is the overall
-> index of the CPU of all CPUs in the system, which is not in
-> theory the same as "index of this CPU for this GIC". The two
-> currently match up because arm_gicv3_common_realize() populates
-> its s->cpu[i].cpu by calling qemu_get_cpu(i), but in future
-> we might change that code (eg so that the board code has to
-> explicitly wire up the CPUs to the GIC object by passing
-> pointers to the CPUs to the GIC via link properties). So I'd
-> rather not have the internals of the GIC code bake in the
-> assumption that 'global CPU index is the same as the index
-> of the CPU for this GIC object'.
-OK, I get it. This patch can be ignored.
 > 
-> (All the other places that call kvm_gicc_access() are doing it
-> as part of a loop from 0 to n->num_cpus, so they don't have this
-> issue.)
+>>  #define DO_LDN_1(N) \
+>> -void QEMU_FLATTEN HELPER(sve_ld##N##bb_r) \
+>> -    (CPUARMState *env, void *vg, target_ulong addr, uint32_t desc)  \
+>> -{                                                                   \
+>> -    sve_ld##N##_r(env, vg, addr, desc, 1, GETPC(), sve_ld1bb_tlb);  \
+>> +void HELPER(sve_ld##N##bb_r)(CPUARMState *env, void *vg,        \
+>> +                             target_ulong addr, uint32_t desc)  \
+>> +{                                                               \
+>> +    sve_ldN_r(env, vg, addr, desc, GETPC(), MO_8, MO_8, N,      \
+>> +              sve_ld1bb_host, sve_ld1bb_tlb);                   \
+>>  }
 > 
-> thanks
-> -- PMM
-> 
-> .
-> 
-Thanks,
-Keqian
+> Deliberately losing the QEMU_FLATTEN here?
 
+Yes, the main helper is now marked QEMU_ALWAYS_INLINE, and there are further
+subroutines -- like sve_check_watchpoints -- that we do not necessarily want to
+inline.
+
+
+r~

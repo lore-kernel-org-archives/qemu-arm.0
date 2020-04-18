@@ -1,172 +1,118 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1217692lfm;
-        Fri, 17 Apr 2020 19:19:04 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJ6BBRtXPSB0QTIGUEpVC5CpMgOlwmfLMr5pRDAKoHw6JWADYTeuaYgHe8Yd6ex26UzGVSo
-X-Received: by 2002:ac8:1bb8:: with SMTP id z53mr6288424qtj.132.1587176344288;
-        Fri, 17 Apr 2020 19:19:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587176344; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1232515lfm;
+        Fri, 17 Apr 2020 19:40:49 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIq0FFEvWaITstIfXu8oGZgoRKe/pa66xXSknkhRXlFveHOGrXHPvUk4l01ZtBcSQvwdA7m
+X-Received: by 2002:a05:6402:1437:: with SMTP id c23mr5774083edx.327.1587177649774;
+        Fri, 17 Apr 2020 19:40:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587177649; cv=none;
         d=google.com; s=arc-20160816;
-        b=0k7bDuAT0oo8u80fGgydyZGHnJyJMjQkJuJgVzbOmQpNVfbheXJCKYLdzyL/YLsPN/
-         yO6f+USIc3Rutj14DBs9JtHQMppQJN/5Dc5G+iE69Rx+EXXhplvcfZo57LGHXIpbEnD/
-         EW06pIevYHIqlmc3uRbUSMlFjat1SyxZxa8Y/WUAB+mrdR+8cs1T1+LSalaJPKuXx/Fd
-         y4FraItVc4cJVIq2cmyqXEEcFUTwRjDjPLuYzkUWeSla2AIy51UfzyZCeTqZBbll4AFl
-         YdHFKfcCqS9SMTz7KpVvxDDBK3L8DTDXojlyFZdugPZYmi13z+lZHU6Ows02kJqvMRtS
-         /OoQ==
+        b=jkrTK8hoeoaC5Kruwozmm6LVnBjFkzAAt3PmQOzaFv8tZX+gjAYTD1EyIs/4MP/jPv
+         qb08RK2vK2qCZE61bfZZuZQkk06G86dJpd0YYg+bIeXk0BopBPo5koIHac/QL08Lf6dx
+         cKnNEqICnCcw6/0UiSUoYqRh2BU+yVvfiR+dl2WbcSX+i6Z+HZWff3X1ahDYHlLSCxzo
+         PclhgIB4v7bj/VPYJABVhsleFuPz/TwM8CpTJbL/PAXe+WwhfwNXIY/3smwboZwkkyHH
+         5lIuesu8AKS0LwZreoFy9ADy/DOFMRmx53H3wJArGQosazHpRiUmrg6mgGXEvtCZTo9c
+         nNQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+        h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=DjHYcRx/8/y1DUrBE3XsgoGoKuDrCdYcMnFElMjZXdI=;
-        b=z0vNA40g/O07il0M/3STPTHIPbsjm1/radpSPsHPEsq5y4yo+EgU3zyN0SwV8WznRd
-         Bj9/kTUYYMSoygLFl0pWx3s0QIRqRjXF4GQiPYfWxHO9rU8FVN0C8oZPuL0JMKEnsv0u
-         J4UWdztCL4hdp1ygHVHxFKH9fzqUS7sQehK3PjcEi8bCvqlct3JHinx1+Jg2QasmttQI
-         ELEKPBn4M+9h3ba+QBP3BI5px62y9ZyT1trdfgvHuTFxLY+9pY8x3J/lq4ockha3jI4n
-         80y8CaQWXjgliYs9Y1Qe0qL0hi3x0+d71jCG5c6DMOeADml+c8E7yJjjvIu/n9eHuU+W
-         XQyA==
+         :message-id:from:references:cc:to:subject;
+        bh=zp7LTpgKxe4h1PFOLlr6oHjlC/parR8sLP6AZwzpjt4=;
+        b=KjCKnQhVrmGiVRug6rqko2dFnExBy+QQo5TtzMPLq6NLTg75h1GA5fwcrgrSr8trev
+         DcTjbBojWg+4q0fX3Qc5uPZOduzUAW/pKqU8ZHlvCyOWWTZUP8ZmPJtbC/Gpu40d0M7p
+         SnpEeq5b1mknxtub4QB+8y2auqNVJsc4y1JKehT69i420frhLfEfr8BO7a841nX0jUp5
+         hUKleYPRZ6yU4DD7O4M6XpQvM1/i+v9sAPD2fOhvAh36i16VKaI0QCyPBKokhNFzg7hJ
+         7rEJXDOtZMdx/eKGMgy0FOomM/nV1TBg67IZl6tD8Wi/Xb4H2ZU8yWwsUEU7O03PGM8L
+         A6yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hD41htx+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c206si8693457qkb.32.2020.04.17.19.19.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Apr 2020 19:19:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id a23si171190ejv.375.2020.04.17.19.40.49;
+        Fri, 17 Apr 2020 19:40:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=hD41htx+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54016 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jPd4O-0005fl-Q1
-	for alex.bennee@linaro.org; Fri, 17 Apr 2020 22:19:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55055)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jPd1w-0004hO-Nx
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 22:16:29 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1jPd1u-0005SX-HV
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 22:16:27 -0400
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:45056)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1jPd1u-0005DR-Bc
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 22:16:26 -0400
-Received: by mail-pl1-x644.google.com with SMTP id t4so1631649plq.12
- for <qemu-arm@nongnu.org>; Fri, 17 Apr 2020 19:16:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=DjHYcRx/8/y1DUrBE3XsgoGoKuDrCdYcMnFElMjZXdI=;
- b=hD41htx+CMcgnX0W/Z6lDY27cWBJXRVowPxPNx/BLicmYQ+poPxwuw2TmO+PKyzknZ
- 6Cm8S9rv5VnWtP0iD7wc5YZkHkPqOx9/B9rZZpi6VZnI5A/eCu1kbKkeiMCQnZzBw7G2
- LlQBTk6RrncM0tX1V0sK/9WOae/Ki6pRr3kNMLtbmZEaXcMZ/t48MUrZ3TVVa6cTFphN
- xr5Jc0MjpvPO45NKVF7SmSo86/DzZVCZiKx/okDbzMgaBvsvECNCudR8tqxK+r+nwce6
- qbTs/6RMfyWJoIlCKdwrxZkQAzwIAUg6mPvMEjfHM0DDuG1GWHMjGA+yvayVCrY/B8wm
- vq1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=DjHYcRx/8/y1DUrBE3XsgoGoKuDrCdYcMnFElMjZXdI=;
- b=W97sYTFYiXIuCYuXk+/5RpyTOxGmNi/Pg1CIaIh85vz7q6GMY284ETaSkYKDr0UVnh
- el0SltVFcicQudphqVOWY892m4ruCKuFWBC1NiTeUDxs5PYrWnE8ZS4X/HQeR3vJl5SR
- OLGTiLslRco1Qp3tgcBoHjkuTiS2AsnG1i8HBem3juHGwKdiUqWaAxXmX5W8V1oO+Do6
- 3mJSw6DWyTf51SuBSJFHI1MjcygMELGyHa9h5i7Mz6V9VMtTBdEzACDQuadarYrL1TtK
- gMQ5aAKGWbRbBd0dyt+iRcyxFLUuKFwJU/LK/R2bd7O57F79oElEqg/6mpWRwgAq2P1h
- mz5w==
-X-Gm-Message-State: AGi0PuaRkHy1AGRYmCn3YjznfEJZbFF3T4b9M4UzWBs2z4m7oY9p1BYg
- kvf1MrF85j3Y5a02TiLOH7BO4QFITSM=
-X-Received: by 2002:a17:90a:5584:: with SMTP id
- c4mr8046632pji.51.1587176183078; 
- Fri, 17 Apr 2020 19:16:23 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id ml24sm6475441pjb.48.2020.04.17.19.16.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Apr 2020 19:16:22 -0700 (PDT)
-Subject: Re: [PATCH 04/16] target/arm: Use cpu_*_data_ra for sve_ldst_tlb_fn
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200311064420.30606-1-richard.henderson@linaro.org>
- <20200311064420.30606-5-richard.henderson@linaro.org>
- <CAFEAcA9D9cpx5vxtuaeVonFJ0NNKjMOB6viPuE0+ppGiqZSMFw@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <f2082f56-8c4b-a075-09c6-06dcd6dced15@linaro.org>
-Date: Fri, 17 Apr 2020 19:16:20 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1725796AbgDRCkn (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 17 Apr 2020 22:40:43 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2355 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1725320AbgDRCkn (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 17 Apr 2020 22:40:43 -0400
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
+        by Forcepoint Email with ESMTP id C3B6C5F4BE3AE59A650B;
+        Sat, 18 Apr 2020 10:40:39 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS407-HUB.china.huawei.com
+ (10.3.19.207) with Microsoft SMTP Server id 14.3.487.0; Sat, 18 Apr 2020
+ 10:40:33 +0800
+Subject: Re: [PATCH v25 00/10] Add ARMv8 RAS virtualization support in QEMU
+To:     Peter Maydell <peter.maydell@linaro.org>
+CC:     Fam Zheng <fam@euphon.net>,
+        Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+        kvm-devel <kvm@vger.kernel.org>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Linuxarm <linuxarm@huawei.com>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        Zheng Xiang <zhengxiang9@huawei.com>,
+        qemu-arm <qemu-arm@nongnu.org>,
+        Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        "Igor Mammedov" <imammedo@redhat.com>,
+        Richard Henderson <rth@twiddle.net>
+References: <20200410114639.32844-1-gengdongjiu@huawei.com>
+ <CAFEAcA9oNuDf=bdSSE8mZWrB23+FegD5NeSAmu8dGWhB=adBQg@mail.gmail.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <e7812ab1-cfaa-de3e-3062-4576665dab54@huawei.com>
+Date:   Sat, 18 Apr 2020 10:40:31 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9D9cpx5vxtuaeVonFJ0NNKjMOB6viPuE0+ppGiqZSMFw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <CAFEAcA9oNuDf=bdSSE8mZWrB23+FegD5NeSAmu8dGWhB=adBQg@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::644
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3sQRoyX/VisL
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: QWnM4X0jJQZq
 
-On 4/16/20 5:19 AM, Peter Maydell wrote:
-> On Wed, 11 Mar 2020 at 06:44, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
+
+
+On 2020/4/17 21:32, Peter Maydell wrote:
+> On Fri, 10 Apr 2020 at 12:46, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
 >>
->> Use the "normal" memory access functions, rather than the
->> softmmu internal helper functions directly.
+>> In the ARMv8 platform, the CPU error types includes synchronous external abort(SEA)
+>> and SError Interrupt (SEI). If exception happens in guest, host does not know the detailed
+>> information of guest, so it is expected that guest can do the recovery. For example, if an
+>> exception happens in a guest user-space application, host does not know which application
+>> encounters errors, only guest knows it.
 >>
->> Since fb901c905dc3, cpu_mem_index is now a simple extract
->> from env->hflags and not a large computation.  Which means
->> that it's now more work to pass around this value than it
->> is to recompute it.
+>> For the ARMv8 SEA/SEI, KVM or host kernel delivers SIGBUS to notify userspace.
+>> After user space gets the notification, it will record the CPER into guest GHES
+>> buffer and inject an exception or IRQ to guest.
 >>
->> This only adjusts the primitives, and does not clean up
->> all of the uses within sve_helper.c.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>  target/arm/sve_helper.c | 241 ++++++++++++++++++----------------------
->>  1 file changed, 107 insertions(+), 134 deletions(-)
+>> In the current implementation, if the type of SIGBUS is BUS_MCEERR_AR, we will
+>> treat it as a synchronous exception, and notify guest with ARMv8 SEA
+>> notification type after recording CPER into guest.
 > 
->> +#ifdef TARGET_WORDS_BIGENDIAN
->> +# define be_bswap16(x)  ((uint16_t)(x))
->> +# define be_bswap32(x)  ((uint32_t)(x))
->> +# define be_bswap64(x)  ((uint64_t)(x))
->> +# define le_bswap16(x)  bswap16(x)
->> +# define le_bswap32(x)  bswap32(x)
->> +# define le_bswap64(x)  bswap64(x)
->> +#else
->> +# define be_bswap16(x)  bswap16(x)
->> +# define be_bswap32(x)  bswap32(x)
->> +# define be_bswap64(x)  bswap64(x)
->> +# define le_bswap16(x)  ((uint16_t)(x))
->> +# define le_bswap32(x)  ((uint32_t)(x))
->> +# define le_bswap64(x)  ((uint64_t)(x))
->> +#endif
+> Hi. I left a comment on patch 1. The other 3 patches unreviewed
+> are 5, 6 and 8, which are all ACPI core code, so that's for
+> MST, Igor or Shannon to review.
+
+Hi MST, Igor or Shannon
+    when you have time, could you review 5, 6 and 8? thanks very much in advance.
+It seems this series of patches lasted a long time, hope they can be applied soon.
+
 > 
-> Am I confused, or are these just reimplementing
-> cpu_to_be16()/cpu_to_le16()/le16_to_cpu()/be16_to_cpu() etc from bswap.h ?
-
-Those depend on HOST_WORDS_BIGENDIAN, this is TARGET_WORDS_BIGENDIAN.
-
-> (It seems a pity to have to lose the memory subsystem handling
-> endianness for us.)
-
-It is.  I have added a patch to improve the memory subsystem.
-
-
-r~
+> Once those have been reviewed, please ping me if you want this
+> to go via target-arm.next>
+> thanks
+> -- PMM
+> 
+> .
+> 

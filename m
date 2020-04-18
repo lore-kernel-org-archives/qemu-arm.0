@@ -1,111 +1,103 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1274189lfm;
-        Fri, 17 Apr 2020 20:42:01 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLiwLHuFY4mfDx14xOcjlTtHhhucunquCq26PXo5/aVuwExI4XA98aF6tvo9FqFKQRiDVfL
-X-Received: by 2002:ac8:f23:: with SMTP id e32mr6413206qtk.368.1587181321133;
-        Fri, 17 Apr 2020 20:42:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587181321; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1488585lfm;
+        Sat, 18 Apr 2020 01:52:34 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIz3dsiMBEhIPGk6PLdg8a3h4b+ZgsxLdjO5JzMncdbfolub8Vh1NJr9nK8K9gD5ALbBnas
+X-Received: by 2002:a0c:a8e9:: with SMTP id h41mr6578028qvc.235.1587199954173;
+        Sat, 18 Apr 2020 01:52:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587199954; cv=none;
         d=google.com; s=arc-20160816;
-        b=SaVvBfMWdaTusut1JyKYFbYoIxs8rWGVA8gwf1ltx5d1P+yin04y6GIE5dFVGCV+2d
-         ZZsyRejXKgUW9NFC/YdTwlGMiv7pbk4/Xl8MZ8mMyrXqvIv5aL0SIojD09Ykos+d8bCt
-         3O/pThKyBkFZvzXdTKNUlysTM6K3FvpKS/IEi9COHMGRNICjkAMAaTRFzfMf4P1nDJlE
-         2WNLgDg7+63vlwvozdYdlEBhONeABsMIBphTz2RlLrcd6/Va+t7ANPZZoF3adDkL+Pus
-         FdsUowRtgGaLFpcyh0gSYqNQgPjN3cdrvd5b/nsLsmPdeQDTqeGdFlUQ1wiQYGAHMPdY
-         Nt4A==
+        b=WfvnHwF2fyK8XS6SrVkypUpbCHXnbLFY+DlOSPA5dl0uEbSFj0h2INlY7GmmfEN1ry
+         HEfhi5jlqzDUOpnKVHpKxvAsii0hMqcQ3GjcnoTzFREDwuj7P2asiZxWojovb9cb0TNv
+         lqi4cNPa6pGItETFYkAeZ9cYY1jCLIgr4PbDAlD6ydaF33Qb4CRQ61Ildhe4s/5Wfk8R
+         ufKqsjTEpH/1ME1scU0Es8lVHOSOhU/jRknKad+Dp4P4kKGnLVJFl+s8WAHyQ66b9Uof
+         USFUoC4TCqS9EalFe+b4Z9hEmJFI98NMEiFCYYblRaNPX8LXCkQp22bYVBK9JtpC4RCb
+         Sgmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=kyXs52D+W8xKx80sHVX3U7UyTi/vLCOHtkNQK+UXwVs=;
-        b=fvJaH3ZPtY59tc5t/73GxY6KemswS922laCiIk2I25L8/8XCmTjo8teAI7lcwZ7XFk
-         A/a33nmxP0fUJEtm8ecBMCGzh5CACmQXh/D+VUqsvAgrqCi+vNL/lC5dYEZEeD6loUEV
-         qS/37M90u5HEyqDeIBHZAvHtJvFOSE5WFs5AQWJmmRwqHWpG4eGGvYZwS33/0fYg5tjc
-         ZmARaPzOhxd7tlqki92djKlPsWxQUmNL0T7H8G2qtP5xV9tAqKF2PUjpuMFr2+X1cH0p
-         qDoypin8N20AdJEfsYNTgtK8mT6cIZeczqCg+wdldNyyKcrH9U0WFoYjdUJ2jS9eBR+i
-         /APQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=DVmUkRypS4yJb7fuz5VWblU8qv2S4JA+/u3qEKCQZHM=;
+        b=M3lexA2NXG5Q3EINrA04y5p0j9T8P90+R64wWRxuzIuhKxlpcnA6ka76LZsEPp63gF
+         Xvm14bfGv5TjvHX7e+/6yuCVM8H2GwMlP+FjRJl9203V2qxuJxiHgTPNctrYHGeagGSZ
+         l6Bewo5IxeR4W9MdrUKDEUPjFsk9Y6Z4WzCfWg8rDRJsl/1B1FuCE8QEBb9ktd95s1AF
+         abSEzd8wYDlCXdsuGV9SNyx2u2TAbtWCdjAt09/tWc1285iijV7AZPy61OppdxnLLE77
+         Yq1Qpoq7aXu9LRzhPOm9HvZcTqX4Sy/JAwcLSNfSdWBGgLROyQefymCn1YheEbZhmCO1
+         wOvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=q3B+2PQ8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WpbE5lcp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k19si10823756qtu.372.2020.04.17.20.42.00
+        by mx.google.com with ESMTPS id e18si14335459qtg.314.2020.04.18.01.52.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Apr 2020 20:42:01 -0700 (PDT)
+        Sat, 18 Apr 2020 01:52:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=q3B+2PQ8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WpbE5lcp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54508 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:56030 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jPeMi-0002qs-K3
-	for alex.bennee@linaro.org; Fri, 17 Apr 2020 23:42:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34702)
+	id 1jPjDF-0007S2-JF
+	for alex.bennee@linaro.org; Sat, 18 Apr 2020 04:52:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50126)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jPeM5-0002qB-Ey
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 23:41:25 -0400
+ (envelope-from <rfried.dev@gmail.com>) id 1jPjD1-0007Re-A8
+ for qemu-arm@nongnu.org; Sat, 18 Apr 2020 04:52:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1jPeM0-0000NA-Fj
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 23:41:18 -0400
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:51822)
+ (envelope-from <rfried.dev@gmail.com>) id 1jPjCz-0002zi-57
+ for qemu-arm@nongnu.org; Sat, 18 Apr 2020 04:52:19 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:43774)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1jPeLy-0000Ey-5g
- for qemu-arm@nongnu.org; Fri, 17 Apr 2020 23:41:14 -0400
-Received: by mail-pj1-x1042.google.com with SMTP id kb16so1930413pjb.1
- for <qemu-arm@nongnu.org>; Fri, 17 Apr 2020 20:41:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=kyXs52D+W8xKx80sHVX3U7UyTi/vLCOHtkNQK+UXwVs=;
- b=q3B+2PQ8O4FNhku0/3V7OzCkEKHLlEYLQizS6tHtToz8GYgfCV/pR9ey5iscjJqs1V
- YJmBg5aUQPfRIgmxC4l+7Ni3pC8hEJvyE5YDx1ssis0PpVzrkrKpu3jv2BVo7v8F6KdA
- i+yHp1NiuauEJDlil60atk6qgL5ZkpjHgbGNMyHQkRq3Pg0hHVVG/6upDOmvD6KXbAJn
- cWPlNaoNspkXdafPiyjc/hkbLBTIYrC7hxu6D9fY6ly68rMv+S16xVFlpVG4ISi+bSdh
- LerFjBoyj6cB7AXCheq3zc69pRPHQ8Ul0GjpQuDjUJC7O+XvsHZGj6kVXVHLYn9CXdEV
- 0jvg==
+ (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
+ id 1jPjCy-0002ni-VS; Sat, 18 Apr 2020 04:52:17 -0400
+Received: by mail-wr1-x444.google.com with SMTP id i10so5639368wrv.10;
+ Sat, 18 Apr 2020 01:52:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DVmUkRypS4yJb7fuz5VWblU8qv2S4JA+/u3qEKCQZHM=;
+ b=WpbE5lcp2LmiFfZUub8cHiARORuIc1AmK5OwVi6DQbT+dgfKaVYeivVOSn00TqyHwa
+ eXLrdE8FCxU+0bGHTjg7ew7xy1Q3BRTbf3dPBd3BmPw85EoeOU2fnB/UgP8R5vJ/FWuR
+ o3kv7GDIx77lpaj9cw9oa5MgrLPJUH4KTmVuF6/g2issZ1o0dt2aL7f3UUVHHnT1AYk5
+ wGTCif/9tC7inlWAIXyp4x+nivyRz4g7fnqtF1DF4W81CyzVaNamz/EXsuR0YuFX8HLJ
+ L2q5wg5E3ufJz9Ha40McPICSbEI2e6bVP38S1et+LK8QAxQdsp69kBC4MauYbqBnN9mm
+ g8Eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=kyXs52D+W8xKx80sHVX3U7UyTi/vLCOHtkNQK+UXwVs=;
- b=RzgjXZUX8oBTX0i3zhqdnmUK2yNnU3M3GQY8WBJfp6DMBS20Wwryqgvq89s32CKyJL
- RtlzO/QRLWFZSK41mH4pskShlTD6BBw+7uHzy2oTEqfmAyeLvx23WxA9fEGYfDMTgUjX
- XTtFiNG7aNwC6VIKKXgVJmEvKK0FojyaNKzQMlJm8wT6pUGaGfntUnqeXWtaEYWCdqzC
- 2sFei9AQ8VS2qFJjn61JVmJDwC1m6JguWDy0VlVPEs6a5gsU26G5HjSvqtS5IIvNWjv+
- Dx3vY2aFzsO0b5zMk5FPND3s6uKXtsUKzeN/quxZ+O7M4nhiidrfgnE4mmiUzXZHIntr
- CJyg==
-X-Gm-Message-State: AGi0PuaA0aSL4Zc7eDSczmyow3bTXneazNoYOyQV48fCIS4c9LULpEXz
- qNRPbDiWbksnz3d1wkH8XwuWh63D16A=
-X-Received: by 2002:a17:90a:f689:: with SMTP id
- cl9mr8422457pjb.43.1587181270468; 
- Fri, 17 Apr 2020 20:41:10 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id k24sm20548440pfk.164.2020.04.17.20.41.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Apr 2020 20:41:09 -0700 (PDT)
-Subject: Re: [PATCH 08/16] target/arm: Use SVEContLdSt in sve_ld1_r
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200311064420.30606-1-richard.henderson@linaro.org>
- <20200311064420.30606-9-richard.henderson@linaro.org>
- <CAFEAcA-v9O6+iZu9_grS6iW=QhmJeLGVfnJ8BOe59KzaPMczzg@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <ba2b5050-4d21-dfad-ae81-667438dbd89b@linaro.org>
-Date: Fri, 17 Apr 2020 20:41:07 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ bh=DVmUkRypS4yJb7fuz5VWblU8qv2S4JA+/u3qEKCQZHM=;
+ b=nEC0AvmHUtlWSzgL4qxE/a/HupkOAQS6gBxjR3pobWuCmPyKXy77nT+JBw2bAW3Axz
+ uCz1o4gRhZHwmqVRCqozvlCvtY3AxLrfHEFQ3m6RWgX0TdQcF5shN/omRDRzu9eLz4fR
+ HVC2+2jkJIErADSg0YEafzF6wZTJwWf+EZiA1PSGUPLeXjFqRHzDPt/His4AxXVXCEaa
+ G89Pqz7ZZnWevC0o9Q1IS3AvzdcdAHtS7gOZC6feG1dLaHzF5qDXYUz6gWx1wFMyaSGa
+ 5QvI7rf72lZHGEwW/HXVP5ojFQVYAfam+0YTRz2r3cPjIPh5hZzrVPwlY/KuPYKB+wmK
+ RWcw==
+X-Gm-Message-State: AGi0Pua+5SKNqVIYiIaAxZ4oTguD4dAhF49HwaG6dCO8GW0gIgvZdbH9
+ yatT43/zqYkr6rStXIwL8sQ=
+X-Received: by 2002:a05:6000:12c7:: with SMTP id
+ l7mr8368414wrx.239.1587199933676; 
+ Sat, 18 Apr 2020 01:52:13 -0700 (PDT)
+Received: from localhost.localdomain ([37.142.6.51])
+ by smtp.gmail.com with ESMTPSA id q8sm10790461wmg.22.2020.04.18.01.52.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 18 Apr 2020 01:52:13 -0700 (PDT)
+From: Ramon Fried <rfried.dev@gmail.com>
+To: edgar.iglesias@gmail.com, alistair@alistair23.me, peter.maydell@linaro.org,
+ jasowang@redhat.com, qemu-arm@nongnu.org
+Subject: [PATCH resend v2] net: cadence_gem: clear RX control descriptor
+Date: Sat, 18 Apr 2020 11:51:45 +0300
+Message-Id: <20200418085145.489726-1-rfried.dev@gmail.com>
+X-Mailer: git-send-email 2.26.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-v9O6+iZu9_grS6iW=QhmJeLGVfnJ8BOe59KzaPMczzg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::1042
+X-Received-From: 2a00:1450:4864:20::444
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,75 +109,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Ramon Fried <rfried.dev@gmail.com>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5NJyBQMzNTel
+X-TUID: 4xhborndDqFH
 
-On 4/16/20 6:26 AM, Peter Maydell wrote:
-> On Wed, 11 Mar 2020 at 06:44, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> First use of the new helper functions, so we can remove the
->> unused markup.  No longer need a scratch for user-only, as
->> we completely probe the page set before reading; system mode
->> still requires a scratch for MMIO.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> 
->> +    /* The entire operation is in RAM, on valid pages. */
->> +
->> +    memset(vd, 0, reg_max);
->> +    mem_off = info.mem_off_first[0];
->> +    reg_off = info.reg_off_first[0];
->> +    reg_last = info.reg_off_last[0];
->> +    host = info.page[0].host;
->> +
->> +    while (reg_off <= reg_last) {
->> +        uint64_t pg = vg[reg_off >> 6];
->> +        do {
->> +            if ((pg >> (reg_off & 63)) & 1) {
->> +                host_fn(vd, reg_off, host + mem_off);
->> +            }
->> +            reg_off += 1 << esz;
->> +            mem_off += 1 << msz;
->> +        } while (reg_off <= reg_last && (reg_off & 63));
->> +    }
->> +
->> +    /*
->> +     * Use the slow path to manage the cross-page misalignment.
->> +     * But we know this is RAM and cannot trap.
->> +     */
->> +    mem_off = info.mem_off_split;
->> +    if (unlikely(mem_off >= 0)) {
->> +        tlb_fn(env, vd, info.reg_off_split, addr + mem_off, retaddr);
->> +    }
->> +
->> +    mem_off = info.mem_off_first[1];
->> +    if (unlikely(mem_off >= 0)) {
->> +        reg_off = info.reg_off_first[1];
->> +        reg_last = info.reg_off_last[1];
->> +        host = info.page[1].host;
->> +
->> +        do {
->> +            uint64_t pg = vg[reg_off >> 6];
->> +            do {
->> +                if ((pg >> (reg_off & 63)) & 1) {
->> +                    host_fn(vd, reg_off, host + mem_off);
->> +                }
->> +                reg_off += 1 << esz;
->> +                mem_off += 1 << msz;
->> +            } while (reg_off & 63);
->> +        } while (reg_off <= reg_last);
-> 
-> Does this loop for the second page need to be phrased
-> differently than the loop for the first page was? I was
-> expecting the two chunks of code to be identical, and they
-> almost are, but not quite...
+The RX ring descriptors control field is used for setting
+SOF and EOF (start of frame and end of frame).
+The SOF and EOF weren't cleared from the previous descriptors,
+causing inconsistencies in ring buffer.
+Fix that by clearing the control field of every descriptors we're
+processing.
 
-Yes, they do need to be different.  In particular, the first page may only have
-the one element that crosses the page boundary, so we may have reg_first >
-reg_last.  The second page is never has that problem.
+Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
+---
+v2:
+  * change function name to rx_desc_clear_control as proposed by
+      Jason Wang
+  * Move the function call above the comment, as proposed by
+    Philippe Mathieu-Daudé
 
-r~
+ hw/net/cadence_gem.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index b7b7985bf2..22a0b1b1f9 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -411,6 +411,11 @@ static inline void rx_desc_set_sof(uint32_t *desc)
+     desc[1] |= DESC_1_RX_SOF;
+ }
+ 
++static inline void rx_desc_clear_control(uint32_t *desc)
++{
++    desc[1]  = 0;
++}
++
+ static inline void rx_desc_set_eof(uint32_t *desc)
+ {
+     desc[1] |= DESC_1_RX_EOF;
+@@ -999,6 +1004,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+         rxbuf_ptr += MIN(bytes_to_copy, rxbufsize);
+         bytes_to_copy -= MIN(bytes_to_copy, rxbufsize);
+ 
++        rx_desc_clear_control(s->rx_desc[q]);
++
+         /* Update the descriptor.  */
+         if (first_desc) {
+             rx_desc_set_sof(s->rx_desc[q]);
+-- 
+2.26.0
+

@@ -1,99 +1,106 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1785505lfm;
-        Thu, 16 Apr 2020 06:03:47 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJpR1ggcJxa5D41wtYP8B7+MsbHQZwqVTs/Lz9xyNC8svITOb20UTacuihN6d2n7ZTF3s1w
-X-Received: by 2002:ac8:27f9:: with SMTP id x54mr25568112qtx.45.1587042227642;
-        Thu, 16 Apr 2020 06:03:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587042227; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2896119lfm;
+        Sun, 19 Apr 2020 09:27:41 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJwh6yEEgv0EQNtjN/dBORM+F1/O9HhQxGUuo4gUy1ZX7BkK/lXASq+s6j/Xbtdr76fRl4D
+X-Received: by 2002:a37:5e47:: with SMTP id s68mr11643170qkb.411.1587313661672;
+        Sun, 19 Apr 2020 09:27:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587313661; cv=none;
         d=google.com; s=arc-20160816;
-        b=efqVIp8BdlJoOPvTT/mxuQzJWvyI3byrQADVErbNGJq4zdxjmbFLyewW/Pmr4cHwGA
-         4mXjfDkQBwJ487LRBifpcJ1l24bY0MLIkEIkd7ZANSsiVnXx1xF9pXJ0hryjOmHkWECV
-         QXn18f0xrmGAhtwr8l5xGid3+vYEDoVjB1Tz+K5C+/kkg4H8Pzsa0e5919y3dLY3wMzF
-         Agwvdtj4AjLOoKbPG0X/cGHMADwDkKPgSF1eoR42qMjhbsP5BtMOIPkOKH3fqct+xAKz
-         Ve08I7co3MCmPeW77nryl7wIZnPA/G3eijQUJ7sDvu5R86Ju23gLFSIkVXtdKohSEgoS
-         OEDg==
+        b=bzEEr1V1YzY2Dz4pzG+++K3l7QMuPEMVZWOnJUJLxTbF4ccCiH3hcBdPqrwArkgHQK
+         c1wKnfTA3jjSgs1XD3ufe0rg6vo/c36LeOqdgFwxtp5/K0i84pFCviQlcVu+828TSxGO
+         OWfIdC1NkhGo4COsvpS99T5gDeL2hS6XckUn3CH0d9eR5Ph8GZ7uj38xBVIYpfPWgsf0
+         LDlCpW84lXvMbi3OKC9SGoHOHe4jgTwDw9Vh5fZwJHXCLnGWRXl2Zqu0OwRS5/5Lxd2S
+         mFEjPGTYLzqq9RYBJN7fWzfjFojWJmQ6QvSUEXVPgHAyOaoqqRJEzZYRFtI+Hra+31SZ
+         AkjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ymdPh0UvFhhDw29CTxGDGdgLqYba+DJ1MWHMztUn+iA=;
-        b=E4PfJB6HbgWF5BqVr9j6m9Sor82CNvcFSGDzN6+Fn9l3M1he2PBGzP4+KUnWMO8vQa
-         shwTk4Xb9p/K7/31qcFmHSMePwNR+quAgabBYNTUGUlbxJNHgnb7lzPcsKzj3tgyVqNv
-         vc1LTRAhP/yompKVuBXyz5RLfiL3Gx75p6jrMedPTLPG4j5x3YJik1AwH+5RFWQ0K4w9
-         FZQgZ+NsqLgle6AdgFzTG1BYBQTO6snIZZnNdyAw1c8QYxKXanjpalcEla+e+a6y8Qho
-         n+PrrgDp+lEalMFKUGKhDYWI8DnRtCU/UiK0wOXCBKQgBLASfb8IC+rqJK/Vi20NnGEM
-         IJ0Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=3HaUgFQJn75EXnF4xu27e05BkwttmkjB/KLaOVhe5Zc=;
+        b=u5o+eoA+xmMGKVgsJhHdLDl4fkW3BhXQEEyJZ1q4o5AIs6zdpB631dJhXzXUf9bCY3
+         apET9AYb8OFj0qlYrlfEIb7l7P9gZ43SPqj35oUMUu1FQZe0APXGFtZg8SKFjV75lmoZ
+         3s5zzQJKUM2ATCssFX4HrkuKww1qbZqYA617K4yxIxhXoAXQjMhLF1zYga99zBHovDV8
+         qN8KuRaKwwNokOCTO5lBSqzn9yy0rQT8A0DG4EDBe574vlgBRbPANn3D8Rinb8uC8qyw
+         Nhe8PY7l+P0rK4oF2u5+lqgQljFIYeNm9khGZVZcHFhTKjoXVG+MbYDp9LioTvEenDCQ
+         p/rA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SX5EpVc8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kML072Bv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t5si10772907qtr.392.2020.04.16.06.03.47
+        by mx.google.com with ESMTPS id o63si9140022qkb.257.2020.04.19.09.27.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Apr 2020 06:03:47 -0700 (PDT)
+        Sun, 19 Apr 2020 09:27:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SX5EpVc8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kML072Bv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33990 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:44014 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jP4BH-000866-2t
-	for alex.bennee@linaro.org; Thu, 16 Apr 2020 09:03:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58767)
+	id 1jQCnF-0006uO-3V
+	for alex.bennee@linaro.org; Sun, 19 Apr 2020 12:27:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42260 helo=eggs1p.gnu.org)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jP4B7-00085S-7Y
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 09:03:38 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1jP4B5-0004EE-9c
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 09:03:36 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:43487)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1jP4B5-0004Db-14
- for qemu-arm@nongnu.org; Thu, 16 Apr 2020 09:03:35 -0400
-Received: by mail-ot1-x343.google.com with SMTP id g14so2936173otg.10
- for <qemu-arm@nongnu.org>; Thu, 16 Apr 2020 06:03:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ymdPh0UvFhhDw29CTxGDGdgLqYba+DJ1MWHMztUn+iA=;
- b=SX5EpVc8rYBqpME43Xm7vpmaT/21RhCK4CQ1V7bX8Koi6oKRGm+ayZsxd0L6yfdNaR
- 2ZEakBJcqkre6AgUEcKp09ZlpNOc8OoPzEqvqO0p/IPymw4j4MwTZ0XKsPwQDugz8oWW
- LFJogSTkLQ6/yyQZx0fMXjCRZH/g873Q1Mplg4+oZhV74QZZJ2o/GkzImaiW/vRs937Z
- HuRLzHgjbZS4tIV6x/MAvIaTrDpfAIdY56LBnr92JQqZBV/wsL2tT/mMXGbtqBavoaaC
- pmI0khuhEGcEk3p32lLxyFeYSqHzjpINGCth0KAoDNXkks1GjUzMsdmMa/RSioG5GOI+
- 4psQ==
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jQCn7-0006sq-Tc
+ for qemu-arm@nongnu.org; Sun, 19 Apr 2020 12:27:34 -0400
+Received: from Debian-exim by eggs1p.gnu.org with spam-scanned (Exim 4.90_1)
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jQCn7-0006jh-Hx
+ for qemu-arm@nongnu.org; Sun, 19 Apr 2020 12:27:33 -0400
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:45104)
+ by eggs1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1jQCn6-0006es-8k; Sun, 19 Apr 2020 12:27:32 -0400
+Received: by mail-lj1-x242.google.com with SMTP id n6so3890449ljg.12;
+ Sun, 19 Apr 2020 09:27:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=3HaUgFQJn75EXnF4xu27e05BkwttmkjB/KLaOVhe5Zc=;
+ b=kML072BvLIF/DC/wAPBh3bMx7Vg+4cwbVq3/M9/Emmqc9+lKzLijTccIZO8f21f5mX
+ /MpVlUhDyhLGad5Whetnd/jJ6g/Cl8miESQgcGDG3Y8APVj9izcGOLWsj/kXOS2+CSXt
+ sRNEtoaan+wwCHDwxsGcOHhsMoyL/cEJqwqWecRybcdXmfppkshlcsUT8E/ZxEbjiie5
+ 1rhs4ZEupEw1A5CfxbsMm3G12X7A+34piSTxmCF8Z65AAVDIofBPoe68LaektMZSEHLs
+ YCKBDovf6oERR+Le1eYBGLLoRA3kfgob4bBU9teC4hbLhHjxmP0svPOsE/Lsj72UPrrk
+ 4YVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ymdPh0UvFhhDw29CTxGDGdgLqYba+DJ1MWHMztUn+iA=;
- b=YKWMJLTmadt25z3+sg9qFS110zpZvgtWzXMnax8y9cby5U6EXMyagXe7m3u6B7fnJm
- 5yWzmiiNfFswh+PO6Vesiuq5rqZ3c8wy7lAdMkQ3Xhpbi98Knvvyi6U25x3peHe+YdSr
- iPpdrY6I8ZvxvK3YXRib0XdflW+7I06noo7t27CIPBBt2m1fuQypTaHiCJjwaXn7MZL7
- 7ZGkgb1T/6AVS0CRpDMdkE2rfsFzGhDIprt93wINthtQG0Frc/AXa6R2PgkMJcgt+Q3P
- uCZ5YBBdvAPsqG/axXn5smYxylP7vAREjw9HUcFnMQzFDNsEBxhUebFx8fDHN7xUFlMm
- jeMA==
-X-Gm-Message-State: AGi0Pubk0pOO74P/SIQZkg7xL8a64Ko9xJ2ZFY4OK8GNiEXN0fTRw2JL
- XmGCNs0YDgjW3FwEDPQB8K9/P7r5GL41rtj/gzJWAQ==
-X-Received: by 2002:a05:6830:1e4e:: with SMTP id
- e14mr8050522otj.91.1587042213709; 
- Thu, 16 Apr 2020 06:03:33 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=3HaUgFQJn75EXnF4xu27e05BkwttmkjB/KLaOVhe5Zc=;
+ b=dMjBZkvV1/0MW95H6PB03rypNZJUmFxpGwG3SU7wSsiWe2qlRYIfDdJRmVHXC0Rqh7
+ 0rT0tZ4ml7BUh9eyF2W+zSY4u4pRm7ke5VJdo0adrc+BRWdSCgGI3eVX3BPX0oxORufC
+ KJZH28oEqnTUNeOCZmihaKnh428atcxAFjEXdWblWkSN4etMAequKBLDa52PWAdtiGXq
+ D7U8OtC3Yi9DL/bFjFrUsUyPdFFPUGzug1279R6dsWIHP6DqWSxHmKF3SM+FepNDatAr
+ h1mqRWv5kxvy6NkJYr9KhuR7cqlzUtjZkHqeVvh8+T9qbdTZhQI0bLArwHcLQpcsPCT+
+ 1ndw==
+X-Gm-Message-State: AGi0PuaQy+3H8ifxoSApIe5u9Gyb1eWyStZWDz2PhQm7Trv5Rctb2N/h
+ mmAWn2kefjtGc1SlWNEgbida8vwSRgI=
+X-Received: by 2002:a2e:9455:: with SMTP id o21mr7735340ljh.245.1587313650037; 
+ Sun, 19 Apr 2020 09:27:30 -0700 (PDT)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id m13sm23341469lfk.12.2020.04.19.09.27.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 19 Apr 2020 09:27:29 -0700 (PDT)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v1 1/3] device_tree: Allow name wildcards in
+ qemu_fdt_node_path()
+Date: Sun, 19 Apr 2020 18:27:25 +0200
+Message-Id: <20200419162727.19148-2-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200419162727.19148-1-edgar.iglesias@gmail.com>
+References: <20200419162727.19148-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
-References: <20200311064420.30606-1-richard.henderson@linaro.org>
- <20200311064420.30606-7-richard.henderson@linaro.org>
-In-Reply-To: <20200311064420.30606-7-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Apr 2020 14:03:22 +0100
-Message-ID: <CAFEAcA8F2Qmdh=9RXFhN9_WPjhjhai9iO2Cn0dL5UAGV_r4AGw@mail.gmail.com>
-Subject: Re: [PATCH 06/16] target/arm: Add sve infrastructure for page lookup
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::242;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x242.google.com
+X-detected-operating-system: by eggs1p.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::343
+X-Received-From: 2a00:1450:4864:20::242
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,243 +112,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+ edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+ frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
+ philmd@redhat.com, luc.michel@greensocs.com, david@gibson.dropbear.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 18ymVt/MmwHD
+X-TUID: s4H/DK+nuNpQ
 
-On Wed, 11 Mar 2020 at 06:44, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> For contiguous predicated memory operations, we want to
-> minimize the number of tlb lookups performed.  We have
-> open-coded this for sve_ld1_r, but for correctness with
-> MTE we will need this for all of the memory operations.
->
-> Create a structure that holds the bounds of active elements,
-> and metadata for two pages.  Add routines to find those
-> active elements, lookup the pages, and run watchpoints
-> for those pages.
->
-> Temporarily mark the functions unused to avoid Werror.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/sve_helper.c | 240 ++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 240 insertions(+)
->
-> diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-> index 8b470991db..3f653e46a0 100644
-> --- a/target/arm/sve_helper.c
-> +++ b/target/arm/sve_helper.c
-> @@ -4155,6 +4155,246 @@ static intptr_t max_for_page(target_ulong base, intptr_t mem_off,
->      return MIN(split, mem_max - mem_off) + mem_off;
->  }
->
-> +/*
-> + * Resolve the guest virtual address to info->host and info->flags.
-> + * If @nofault, return false if the page is invalid, otherwise
-> + * exit via page fault exception.
-> + */
-> +
-> +typedef struct {
-> +    void *host;
-> +    int flags;
-> +    MemTxAttrs attrs;
-> +} SVEHostPage;
-> +
-> +static bool sve_probe_page(SVEHostPage *info, bool nofault,
-> +                           CPUARMState *env, target_ulong addr,
-> +                           int mem_off, MMUAccessType access_type,
-> +                           int mmu_idx, uintptr_t retaddr)
-> +{
-> +    int flags;
-> +
-> +    addr += mem_off;
-> +    flags = probe_access_flags(env, addr, access_type, mmu_idx, nofault,
-> +                               &info->host, retaddr);
-> +    info->flags = flags;
-> +
-> +    if (flags & TLB_INVALID_MASK) {
-> +        g_assert(nofault);
-> +        return false;
-> +    }
-> +
-> +    /* Ensure that info->host[] is relative to addr, not addr + mem_off. */
-> +    info->host -= mem_off;
-> +
-> +#ifdef CONFIG_USER_ONLY
-> +    memset(&info->attrs, 0, sizeof(info->attrs));
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Could just write "info->attrs = {};" ?
+Allow name wildcards in qemu_fdt_node_path(). This is useful
+to find all nodes with a given compatibility string.
 
-> +#else
-> +    /*
-> +     * Find the iotlbentry for addr and return the transaction attributes.
-> +     * This *must* be present in the TLB because we just found the mapping.
-> +     */
-> +    {
-> +        uintptr_t index = tlb_index(env, mmu_idx, addr);
-> +
-> +# ifdef CONFIG_DEBUG_TCG
-> +        CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
-> +        target_ulong comparator = (access_type == MMU_DATA_LOAD
-> +                                   ? entry->addr_read
-> +                                   : tlb_addr_write(entry));
-> +        g_assert(tlb_hit(comparator, addr));
-> +# endif
-> +
-> +        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
-> +        info->attrs = iotlbentry->attrs;
-> +    }
-> +#endif
-> +
-> +    return true;
-> +}
-> +
-> +
-> +/*
-> + * Analyse contiguous data, protected by a governing predicate.
-> + */
-> +
-> +typedef enum {
-> +    FAULT_NO,
-> +    FAULT_FIRST,
-> +    FAULT_ALL,
-> +} SVEContFault;
-> +
-> +typedef struct {
-> +    /* First and last element wholy contained within the two pages. */
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+---
+ device_tree.c                | 2 +-
+ include/sysemu/device_tree.h | 3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
 
-"wholly"
+diff --git a/device_tree.c b/device_tree.c
+index bba6cc2164..f5b4699aed 100644
+--- a/device_tree.c
++++ b/device_tree.c
+@@ -308,7 +308,7 @@ char **qemu_fdt_node_path(void *fdt, const char *name, char *compat,
+             offset = len;
+             break;
+         }
+-        if (!strcmp(iter_name, name)) {
++        if (!name || !strcmp(iter_name, name)) {
+             char *path;
+ 
+             path = g_malloc(path_len);
+diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+index c16fd69bc0..7c53ef7634 100644
+--- a/include/sysemu/device_tree.h
++++ b/include/sysemu/device_tree.h
+@@ -39,6 +39,9 @@ void *load_device_tree_from_sysfs(void);
+  * NULL. If there is no error but no matching node was found, the
+  * returned array contains a single element equal to NULL. If an error
+  * was encountered when parsing the blob, the function returns NULL
++ *
++ * @name may be NULL to wildcard names and only match compatibility
++ * strings.
+  */
+ char **qemu_fdt_node_path(void *fdt, const char *name, char *compat,
+                           Error **errp);
+-- 
+2.20.1
 
-
-> +    int16_t mem_off_first[2];
-> +    int16_t reg_off_first[2];
-> +    int16_t reg_off_last[2];
-
-It would be helpful to document what these actually are,
-and in particular what the behaviour is if the whole thing
-fits in a single page. (Judging by the code, the elements
-at index 1 for the 2nd page are set to -1 ?)
-
-> +
-> +    /* One element that is misaligned and spans both pages. */
-> +    int16_t mem_off_split;
-> +    int16_t reg_off_split;
-> +    int16_t page_split;
-> +
-> +    /* TLB data for the two pages. */
-> +    SVEHostPage page[2];
-> +} SVEContLdSt;
-> +
-> +/*
-> + * Find first active element on each page, and a loose bound for the
-> + * final element on each page.  Identify any single element that spans
-> + * the page boundary.  Return true if there are any active elements.
-> + */
-> +static bool __attribute__((unused))
-> +sve_cont_ldst_elements(SVEContLdSt *info, target_ulong addr, uint64_t *vg,
-> +                       intptr_t reg_max, int esz, int msize)
-> +{
-> +    const int esize = 1 << esz;
-> +    const uint64_t pg_mask = pred_esz_masks[esz];
-> +    intptr_t reg_off_first = -1, reg_off_last = -1, reg_off_split;
-> +    intptr_t mem_off_last, mem_off_split;
-> +    intptr_t page_split, elt_split;
-> +    intptr_t i;
-
-intptr_t seems like a funny type to be using here, since these
-aren't actually related to pointers as far as I can tell.
-It's also odd that the type is not the same one used in the SVEContLdSt
-struct for the corresponding fields.
-
-> +
-> +    /* Set all of the element indicies to -1, and the TLB data to 0. */
-
-"indices"
-
-> +    memset(info, -1, offsetof(SVEContLdSt, page));
-
-I guess this isn't conceptually much different from zeroing
-out integer struct fields, but it feels a bit less safe somehow.
-
-> +    memset(info->page, 0, sizeof(info->page));
-> +
-> +    /* Gross scan over the entire predicate to find bounds. */
-> +    i = 0;
-> +    do {
-> +        uint64_t pg = vg[i] & pg_mask;
-> +        if (pg) {
-> +            reg_off_last = i * 64 + 63 - clz64(pg);
-> +            if (reg_off_first < 0) {
-> +                reg_off_first = i * 64 + ctz64(pg);
-> +            }
-> +        }
-> +    } while (++i * 64 < reg_max);
-> +
-> +    if (unlikely(reg_off_first < 0)) {
-> +        /* No active elements, no pages touched. */
-> +        return false;
-> +    }
-> +    tcg_debug_assert(reg_off_last >= 0 && reg_off_last < reg_max);
-> +
-> +    info->reg_off_first[0] = reg_off_first;
-> +    info->mem_off_first[0] = (reg_off_first >> esz) * msize;
-> +    mem_off_last = (reg_off_last >> esz) * msize;
-> +
-> +    page_split = -(addr | TARGET_PAGE_MASK);
-
-What is the negation for ?
-
-> +    if (likely(mem_off_last + msize <= page_split)) {
-> +        /* The entire operation fits within a single page. */
-> +        info->reg_off_last[0] = reg_off_last;
-> +        return true;
-> +    }
-> +
-> +    info->page_split = page_split;
-> +    elt_split = page_split / msize;
-> +    reg_off_split = elt_split << esz;
-> +    mem_off_split = elt_split * msize;
-> +
-> +    /*
-> +     * This is the last full element on the first page, but it is not
-> +     * necessarily active.  If there is no full element, i.e. the first
-> +     * active element is the one that's split, this value remains -1.
-> +     * It is useful as iteration bounds.
-> +     */
-> +    if (elt_split != 0) {
-> +        info->reg_off_last[0] = reg_off_split - esize;
-> +    }
-> +
-> +    /* Determine if an unaligned element spans the pages.  */
-> +    if (page_split % msize != 0) {
-> +        /* It is helpful to know if the split element is active. */
-> +        if ((vg[reg_off_split >> 6] >> (reg_off_split & 63)) & 1) {
-> +            info->reg_off_split = reg_off_split;
-> +            info->mem_off_split = mem_off_split;
-> +
-> +            if (reg_off_split == reg_off_last) {
-> +                /* The page crossing element is last. */
-> +                return true;
-> +            }
-> +        }
-> +        reg_off_split += esize;
-> +        mem_off_split += msize;
-> +    }
-> +
-> +    /*
-> +     * We do want the first active element on the second page, because
-> +     * this may affect the address reported in an exception.
-> +     */
-> +    reg_off_split = find_next_active(vg, reg_off_split, reg_max, esz);
-> +    tcg_debug_assert(reg_off_split <= reg_off_last);
-> +    info->reg_off_first[1] = reg_off_split;
-> +    info->mem_off_first[1] = (reg_off_split >> esz) * msize;
-> +    info->reg_off_last[1] = reg_off_last;
-> +    return true;
-> +}
-
-thanks
--- PMM

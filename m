@@ -1,151 +1,167 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2897186lfm;
-        Sun, 19 Apr 2020 09:29:04 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLXwrJ53jd2FH4fBUBXu3aBalu2kFFNFKZs2X8V8DrZ8psw1OpClpyZxdUqJXtERRzfnGMd
-X-Received: by 2002:a37:7f03:: with SMTP id a3mr12184026qkd.480.1587313744416;
-        Sun, 19 Apr 2020 09:29:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587313744; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2897730lfm;
+        Sun, 19 Apr 2020 09:29:44 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIL0WriOLXMMLv70aB2cY4PAWjBdWUtnY2HEfzJGoz5ERAh4jwH7ig409d/Nu0oLyLHhZug
+X-Received: by 2002:ac8:19f5:: with SMTP id s50mr12486595qtk.186.1587313784641;
+        Sun, 19 Apr 2020 09:29:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587313784; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZUlCXhRvmica3QiQo1af70KT3DkTytofMb60gyR5wY13HG1Enw7D2nkWzVZfWpS4X3
-         4sI/wZyTexrG16gMkNRGUEoZ3FXToMEF2Ox6mS+EikvzPKoeCbYtLE2sYaMV9O4uigWE
-         d+BGJJVyGvCWtkORQ37GWiBmJT8IHqrj5Nj2sc0A0ZdTsuA4ITd/zs6Zr4LK/FBHfR1R
-         jXbkkUYbw7X43jvAtvX1B2jH/sZlLO8/7KeSWcvvKsfowQSVRSYa60M+4nAryKZsklLh
-         uZm18cu0ixkQWJL+EipLj+5ULmxilCN4utZ6Axgr+Kc5UbZbR/kNe0z5v49+lKZE2yFQ
-         mteQ==
+        b=GX7bf+l1LlCk72A6o36PHKKjK6Ti+YfcxzgtBQudpbsJJH+IO7gvY+loXEmczqoH+5
+         neLENx3rjzUHo2e/QPrsaE48ueW4/i5+0bUrTm6E6QGdqPGKcVktuNJNldDdnxU0KfMf
+         lr63HVO5eo4jeNmS7Q9S5fiCQs3/3rScSOzAXcLQM1J+imQg2EahKniqYb1jphqURnIf
+         nUW37+twzH/BKYvkU9A6BMsnYREc9/ityQCKp5+3wnZnAN5Q+JeCQQhctdPL2SP/PihW
+         aysSZpfjUcNNePTEvs0etzVZPSKOxswYZDrEUXnMhGtLP6mqvfhiG8wvL87AzXSvC0Gr
+         Zskw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=Zea47P0jsAgl833i1uDDqFXtv2d7bbCrHYTlMItLIlg=;
-        b=ybqsnoyy7fpnMRamNYMWfTbePDRe4RISgHmZtv/kTYIxYPntUZd+j/UIQyCATdc2kL
-         SUpNBlKPdRkDAr03CsFwpBTOgmIfYjtOqR3t3VhHR5KRtZcGGYjxcJKTdrssy7wyQhSP
-         I8tAUmhuJLKSSKfdfy1FNmXpVMNFqCdS7Dlu5aCleMncIgI8K1GTelf1orkEb2p75aJ+
-         gpZZHK5IwTlyZjSB+PEnxpPC/arR6KCC0i61nxcZIyBjU9maczjN3j6Mmg4MmDkNjmHI
-         zRYg0Rx1Laa+lrYKTMCqp/a7JBs4Pu90duvzwnHSoq+SiB402cYGB0Fq2ColSdcKdMBN
-         C4Dg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=grTZvoXi/O+6VUNDWXexr0Pz9O2SUdhYMt8q6LVR+M0=;
+        b=uw7oX5xDkXN4GJ+MdHKkoL6MrC3y8b88gy4vD4B9SR69GtYiHXxNM4iO0v/vwZLqlI
+         XJ2R05f7O4JQQqKOXzvKIZBoYysd0M3QeJbxKQvelcp39hHiY0TERIbbQIq5i+qX5fsS
+         Px5FB9yMUSlP7axmR0pRJuTpAm2l8dZsATPQsFgfmMdVwfIN07MxjwFK7TZdQohkd2fq
+         0yjBHq3K0+GY52WVvvuCsaeRWbsWl7BIkHFfr2EFYxswtdbBWFxvqXuVCKHwDsc+hgAY
+         G8SHM+zKK7by4RmwpIL6rM7IKs2NXDiFqUylUchshHzC/vrFeqxW7WiTBd+zdnstXpPB
+         oveQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WwY83jKI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EG6EdRwr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f1si3391744qkk.284.2020.04.19.09.29.04
+        by mx.google.com with ESMTPS id a68si17134529qkb.5.2020.04.19.09.29.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 19 Apr 2020 09:29:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 19 Apr 2020 09:29:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WwY83jKI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EG6EdRwr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44032 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44048 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jQCoZ-00005Y-Sw
-	for alex.bennee@linaro.org; Sun, 19 Apr 2020 12:29:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42264 helo=eggs1p.gnu.org)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jQCpE-0001b0-4c
+	for alex.bennee@linaro.org; Sun, 19 Apr 2020 12:29:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42286 helo=eggs1p.gnu.org)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jQCn8-0006t4-2w
- for qemu-devel@nongnu.org; Sun, 19 Apr 2020 12:27:34 -0400
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jQCn9-0006ua-4A
+ for qemu-arm@nongnu.org; Sun, 19 Apr 2020 12:27:35 -0400
 Received: from Debian-exim by eggs1p.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jQCn6-0006h6-82
- for qemu-devel@nongnu.org; Sun, 19 Apr 2020 12:27:33 -0400
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:40812)
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jQCn8-0006mM-My
+ for qemu-arm@nongnu.org; Sun, 19 Apr 2020 12:27:34 -0400
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:42193)
  by eggs1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jQCn5-0006dt-Rq; Sun, 19 Apr 2020 12:27:31 -0400
-Received: by mail-lj1-x241.google.com with SMTP id y4so7233516ljn.7;
- Sun, 19 Apr 2020 09:27:30 -0700 (PDT)
+ id 1jQCn7-0006gj-C1; Sun, 19 Apr 2020 12:27:33 -0400
+Received: by mail-lf1-x142.google.com with SMTP id j14so5844123lfg.9;
+ Sun, 19 Apr 2020 09:27:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Zea47P0jsAgl833i1uDDqFXtv2d7bbCrHYTlMItLIlg=;
- b=WwY83jKISA77naTEOAD0l2kyfpjxMpF4wWxWAyxlz0reRCT45GFXA5hLKpUI6hcZsX
- Ja7hW8YaR6UmNFkRZpur9zPnXfp3WdMyNkET2kvjjsGmHDKuITmlN+4hHDY4QGLxTtLs
- bnDhKUB+OoU4hW5hy2vD2NS2kcXm+4BJBA2uzLXmNyIMzyqbi6Y/1GPfTuhLzFJB2mWb
- qY87wlPwkgvYemkR4GGUdpRLczTljb+T/ayZUmxYnwACJ9L6+ZdIM9qumqE12xnYoSKW
- f4RvZHKyYwMz9u+3PWOGWniQ4NQ/15CFkgDB38Nh/T4e7V6xsYkIaRAgVXHnSmmfs14d
- 2f4Q==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=grTZvoXi/O+6VUNDWXexr0Pz9O2SUdhYMt8q6LVR+M0=;
+ b=EG6EdRwrIJTBkCWR+9HGy+WXJnoTk8i8dC96Gm8zEM94ROVQoKE/5EzvMuBUq9rofs
+ NAa+2SD4L2ZPsZPGqXzqY2Kp14iJNk3YoXi6A13aKwOUqzOCM14mZB/2m6fYbOicyhmy
+ D/lK5zxO1ar8N7ptdY0Oar4pHSRQVtwMaGOS97Njg1SuHH/PW5RW2jc/uULlJT3ITQ6O
+ S3+lGrlLN2LOC8GAVgYh3sLT6FBxX8zSYxPKs+i3PgG7vwqYMD0qpJNY8pE1zQUvHzCb
+ q+5C/L4A6W8KWsxEFHhWfLEnjMR/2h9vDnrXzxk3kp2cD6n+opjHFo/oovGLlAWl61mN
+ 4e5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Zea47P0jsAgl833i1uDDqFXtv2d7bbCrHYTlMItLIlg=;
- b=AJeS5BO3bwQ9yDCb8aiAwmXZYjTvW0yG+wyGuRXfp3SGFLDltaa4bO2gEszn2+95Hx
- 62fDfX51t0147uYt34/lLGT0w10X+N72+3cxwCBXdy0cOZcTO+37TWgRC6HV8fa+TKjH
- E8eVWrcYiKkyTWIw2/uMuw589myK6nhP1NrW6bmeYjXlMt33y9PPGzHJCdfr+VbJRyPv
- 0uBZpUGtsaC1ig6EpnbEYHPSjUqKgi8cEhCGvIebKvtyHrtHrtMk1KUg8LiD7Sb0EJuu
- /Ij1ciTnKUL+xIkT5Uv+Z9PkwE+ZKdmuKlsqk6HNWW4PknyOg8njxTazW9C24KWOCwMz
- eIsw==
-X-Gm-Message-State: AGi0PubtEqjkjqzaPDi+FGhofRjsPrRF/Gu/fEnJT5YNYCftWnriQroC
- hrGMFe5RESkHYj4NKGuMxGYk4/xoJYw=
-X-Received: by 2002:a2e:7e0b:: with SMTP id z11mr1436323ljc.284.1587313648503; 
- Sun, 19 Apr 2020 09:27:28 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=grTZvoXi/O+6VUNDWXexr0Pz9O2SUdhYMt8q6LVR+M0=;
+ b=RMGgq1d4XA6n39Qrq3bqA85uX2R2c9Vvdh9HDJsE2alFMHKZphjT+TMWQhGB/gCxUj
+ BGp8y5Sq5BWuUfrU4Oigl5AOfGpj/iGr9yQQ+G00Jcu9413ZL4bOHk1GoxDXKND2KHXM
+ tjy+RSv8IPazfDfIJyk1cqWQHobRKRR7dB4iuokFQT+zLDrvQJPky+1+iH7eCAEu6Blp
+ TERsSGm1Wowd6zUkHztPGqrVnRyFfYXNA7M1vPjFjAc5Ni9ZLVRuR6LTQ2dR7lTRmMMT
+ fWW88VXzHr6KenEftv4gTWfW85oRaggHGrw09jhZEPg3oDRhhYQGBsyq22IINcY50COz
+ ++LA==
+X-Gm-Message-State: AGi0PuaEw+SGv0gC6CyGU17XmHLaD9R53he6LZv178cEDl31xChkrKp9
+ MdUGM3JxCU2VRbnhWCtxvrnaR79K/r8=
+X-Received: by 2002:ac2:46c4:: with SMTP id p4mr7848355lfo.37.1587313651207;
+ Sun, 19 Apr 2020 09:27:31 -0700 (PDT)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id j19sm24471954lfe.17.2020.04.19.09.27.27
+ by smtp.gmail.com with ESMTPSA id j13sm23441337lfb.19.2020.04.19.09.27.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 19 Apr 2020 09:27:27 -0700 (PDT)
+ Sun, 19 Apr 2020 09:27:30 -0700 (PDT)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v1 0/3] hw/arm: xlnx-zcu102: Disable unsupported FDT firmware
- nodes
-Date: Sun, 19 Apr 2020 18:27:24 +0200
-Message-Id: <20200419162727.19148-1-edgar.iglesias@gmail.com>
+Subject: [PATCH v1 2/3] hw/arm: xlnx-zcu102: Move arm_boot_info into XlnxZCU102
+Date: Sun, 19 Apr 2020 18:27:26 +0200
+Message-Id: <20200419162727.19148-3-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200419162727.19148-1-edgar.iglesias@gmail.com>
+References: <20200419162727.19148-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::241;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x241.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::142;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x142.google.com
 X-detected-operating-system: by eggs1p.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::241
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::142
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
  edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
  frasse.iglesias@gmail.com, alistair@alistair23.me,
  richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
  philmd@redhat.com, luc.michel@greensocs.com, david@gibson.dropbear.id.au
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HGjai6WxZdSS
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ampfXPvO2tb9
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-When users try direct Linux runs on the ZynqMP models without enabling
-EL3 (and using appropriate FW) they run into trouble because the
-upstream kernel device-tree has EL3 based non-PSCI firmware nodes by default.
-PSCI firmware nodes work because we emulate the firmware in QEMU.
+Move arm_boot_info into XlnxZCU102.
 
-This series avoids that problem by disabling zynqmp-firmware nodes that the
-machine cannot support due to lack of EL3 or EL2 support.
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+---
+ hw/arm/xlnx-zcu102.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-This means we can now (without manually editing DTBs) run the following
-in a current Linux tree:
-
-qemu-system-aarch64 -M xlnx-zcu102 -m 2G -dtb arch/arm64/boot/dts/xilinx/zynqmp-zcu102-rev1.0.dtb -serial mon:stdio -kernel arch/arm64/boot/Image -initrd zu-rootfs.cpio.gz -append rdinit=/bin/sh
-
-Cheers,
-Edgar
-
-Edgar E. Iglesias (3):
-  device_tree: Allow name wildcards in qemu_fdt_node_path()
-  hw/arm: xlnx-zcu102: Move arm_boot_info into XlnxZCU102
-  hw/arm: xlnx-zcu102: Disable unsupported FDT firmware nodes
-
- device_tree.c                |  2 +-
- hw/arm/xlnx-zcu102.c         | 40 ++++++++++++++++++++++++++++++++----
- include/sysemu/device_tree.h |  3 +++
- 3 files changed, 40 insertions(+), 5 deletions(-)
-
+diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+index bd645ad818..4eb117c755 100644
+--- a/hw/arm/xlnx-zcu102.c
++++ b/hw/arm/xlnx-zcu102.c
+@@ -31,13 +31,14 @@ typedef struct XlnxZCU102 {
+ 
+     bool secure;
+     bool virt;
++
++    struct arm_boot_info binfo;
+ } XlnxZCU102;
+ 
+ #define TYPE_ZCU102_MACHINE   MACHINE_TYPE_NAME("xlnx-zcu102")
+ #define ZCU102_MACHINE(obj) \
+     OBJECT_CHECK(XlnxZCU102, (obj), TYPE_ZCU102_MACHINE)
+ 
+-static struct arm_boot_info xlnx_zcu102_binfo;
+ 
+ static bool zcu102_get_secure(Object *obj, Error **errp)
+ {
+@@ -166,9 +167,9 @@ static void xlnx_zcu102_init(MachineState *machine)
+ 
+     /* TODO create and connect IDE devices for ide_drive_get() */
+ 
+-    xlnx_zcu102_binfo.ram_size = ram_size;
+-    xlnx_zcu102_binfo.loader_start = 0;
+-    arm_load_kernel(s->soc.boot_cpu_ptr, machine, &xlnx_zcu102_binfo);
++    s->binfo.ram_size = ram_size;
++    s->binfo.loader_start = 0;
++    arm_load_kernel(s->soc.boot_cpu_ptr, machine, &s->binfo);
+ }
+ 
+ static void xlnx_zcu102_machine_instance_init(Object *obj)
 -- 
 2.20.1
 

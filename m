@@ -1,103 +1,104 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3599083lfm;
-        Mon, 20 Apr 2020 02:05:38 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJpZDPTDnXflKl9B49LaSfVYD/cBgpJgthcGaWmXHs6i7THX2hyiNE9IZAFmcvHT6jSCTLx
-X-Received: by 2002:ac8:17c5:: with SMTP id r5mr15128744qtk.118.1587373537949;
-        Mon, 20 Apr 2020 02:05:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587373537; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3769578lfm;
+        Mon, 20 Apr 2020 05:20:37 -0700 (PDT)
+X-Google-Smtp-Source: APiQypI9NyJMPE4NQV9ZfpoRrOjxMRX12ISjBNYyWHmoN9TSxfpFIr30Ua8AXxXyIrxmk4ygJCRI
+X-Received: by 2002:a37:62d3:: with SMTP id w202mr12638645qkb.381.1587385236973;
+        Mon, 20 Apr 2020 05:20:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587385236; cv=none;
         d=google.com; s=arc-20160816;
-        b=jiENr7xBbdMQCwrzacFWMr0+56gDk69WwiHcXjlIuKBFLcXJSt6S7tozLao6mhl45z
-         iD+nzqFfzv98B7bYzsmFlk0rTvG97wGoADTbYepCngdzNSgC6E/+V4jIZqYsm8bsExSd
-         R/6H3GtmY6ZapNg9zUS2PN277N8iWSvUgUQ7d3rXUbEz8IRbfNwHSmImxNruOS8DvzxE
-         zhc/uWW+N49URGbCjxanBpY6t1MX6H+9YdnFog5/OwdyWg30ziEjiQa9PgskKLwvGLC+
-         GQ0d2aSEwZPO9NOJCEVt5+gG2wo5DZbFkNFSQEbbBgsWOs/Ie3/I0Wxa80SfHHms+IAE
-         JzAQ==
+        b=IjSMkzo0Mg/g9yJVMdqEQK+8ZFfgEOUMBaKBIaaZpxtJangyFyC9zX8Po+cr0z0ITQ
+         ZWLtyRu6y9PnEyZZKspRRYxS+h6dmnlutKO5Db06YZWnPW0i570Ais/ayrcilJZJhbtT
+         CA7z4CWFLeLw3gZMOtCZ6tKclVYdX3zuImEJUoPtCRdkTkYlPdSgBb2bPOpsQYWvCNq9
+         6it1B0HJUP1lv6bVUHGVHw6lLY5ffdz28kYGqRZ51pBp7g1/g5pnaMEeKr3txUvFyJ0B
+         xUIYY+SAaftZ/GRbW6PgnAqaQjk8H1jnZVYHsXGsC3p+gNYXLRzV0PGWdYs2iYRkwugD
+         ETeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=+aRwRBujFFd4qByOEjYnIjVKWb5J3NYVKXHhT+5ioFE=;
-        b=WnSTa+yby43kX0MvZ407l3o4ZphXM93+Q5Od8GQfHSGIqmTTB0I3ShygqGwxPD0xJ+
-         CQvMBYXbnen8847j7sGt4JR3G1LecNFmkxCL8qIH8Yrt3FkFaXumDYTspNhy/UCnQnYM
-         MVJJJjNYuM1LbNRCoCl2uD4yfe/eNzsbjy4Ta0E0irQ80/ITRnJvZs2dXEVueRpvahns
-         6Xv80NXM7vzEACTq1emqCUsN/RDDKwLsSfPR+0dRSnWsyaGYAbM6+TklFdE+uHbiDZ4o
-         AafONA9xR2SkV/Q/+v0x9x8Zayhny+RW+a4I3maFGYc9ADPR9eg3ANXYQCyGoaaw8RbL
-         ZnlQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=JiGmGsPkvQNSd6NC+nKiNxF/ISFZKcmrsOBoVkLlC7Y=;
+        b=RgR9bFI2GDuxB3lQNsZb9+heWFhSKaX9zt00hVWfHC71hdXZdPi49/E6vEJ2wt/tvO
+         lnL58t+P/g6Q9jL2mNoFvimeREmEe+GVCvG3e9dTfa7hhVD+/0WxzLrgpPBD2BhGv3qG
+         IGc8kiNg+nl3VGoQOJ28MFeOTYEe5BBAuga26oJzCLsh+rONNWQgDPV3nXZdS5PbRlBu
+         xWzELiYN+10xv4t+Veq+tSb9qHRl7YKLas0wXZpx0jYMxU3Yv++oBt1fpQwxM9IV9y9C
+         A6AAwGxMaZfKQjhoAeICO6dkyygeyLDAEaGkLBsactclUZ5Qh20mSn0LqXyZERsde+vd
+         oLug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pZerwcfb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@forissier-org.20150623.gappssmtp.com header.s=20150623 header.b="BAHxp4/L";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g6si187061qtp.275.2020.04.20.02.05.37
+        by mx.google.com with ESMTPS id bu8si312998qvb.53.2020.04.20.05.20.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Apr 2020 02:05:37 -0700 (PDT)
+        Mon, 20 Apr 2020 05:20:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pZerwcfb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60014 helo=lists1p.gnu.org)
+       dkim=fail header.i=@forissier-org.20150623.gappssmtp.com header.s=20150623 header.b="BAHxp4/L";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34528 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jQSMz-0002vp-CA
-	for alex.bennee@linaro.org; Mon, 20 Apr 2020 05:05:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34214 helo=eggs1p.gnu.org)
+	id 1jQVPg-0001lz-BY
+	for alex.bennee@linaro.org; Mon, 20 Apr 2020 08:20:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46284 helo=eggs1p.gnu.org)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jQSMp-0002us-3M
- for qemu-arm@nongnu.org; Mon, 20 Apr 2020 05:05:27 -0400
+ (envelope-from <jerome@forissier.org>) id 1jQVPW-0001ko-Mn
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2020 08:20:26 -0400
 Received: from Debian-exim by eggs1p.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jQSMo-0000nF-EF
- for qemu-arm@nongnu.org; Mon, 20 Apr 2020 05:05:26 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:46135)
+ (envelope-from <jerome@forissier.org>) id 1jQVPV-0000zj-4X
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2020 08:20:25 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:33604)
  by eggs1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jQSMo-0000m0-1f
- for qemu-arm@nongnu.org; Mon, 20 Apr 2020 05:05:26 -0400
-Received: by mail-ot1-x344.google.com with SMTP id z25so3977537otq.13
- for <qemu-arm@nongnu.org>; Mon, 20 Apr 2020 02:05:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=+aRwRBujFFd4qByOEjYnIjVKWb5J3NYVKXHhT+5ioFE=;
- b=pZerwcfb+c9gWQUCKLHgMGLstHQAduAUkLOLPKT05mCM9H8Q8qpDUZDJLHX5EhbTOv
- c4joO651dkDlxoJdCTrzHCaGQV6qnDPqz84omQQfggnbzZx+t9YykQP1w/8yJUmzOdBl
- rHa1RDmZQQMd6KePuvE2yq0ZZmDas+NgdODu+gyI2GCp/k1r5dQYoNi/RuuxfRJcQtKG
- 4ksEuJC6QkB06bnphOUpUJV9VnBG2XsZ4IQH/PayHYady+/NCXpTfdgBz2Bi+PazN3aw
- qTf71AQ1vYfb69fcS0WCYVrSjRMyIlj+eAeiSu/1O41wSoLv8RbISvKhd2dhEv9Mj6Ry
- WMVA==
+ (Exim 4.90_1) (envelope-from <jerome@forissier.org>)
+ id 1jQVPU-0000wo-HP
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2020 08:20:24 -0400
+Received: by mail-wr1-x444.google.com with SMTP id s10so2726202wrr.0
+ for <qemu-arm@nongnu.org>; Mon, 20 Apr 2020 05:20:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=forissier-org.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=JiGmGsPkvQNSd6NC+nKiNxF/ISFZKcmrsOBoVkLlC7Y=;
+ b=BAHxp4/LBr74hRz9+uwNPUHildoOuEJ9OK1Vsd1m/ZVIL4ybzBvorPxWKShksm7lnM
+ rreTmsFpXjOL12U/6WLIiDqBBGS/PisqUq3gUKaUY9U+veKTf6V8kFMBOEE3ozHC4Y0N
+ NVyxpHShqnVpSRFGF6SK5d/aX15sSOghndDRnrLapOVom6C3PilMhgsxk+I2gMjteFwq
+ TsmIoFMXSEjOWa+1ry2+mMBpoctCQsWx+7mArc1Ys//uxaREPz2txbB0GAHZGQ6dYh0F
+ acysbX0G7ylxsPk0973K5jbbm4CNFrxndPtMSR+3DLWoWMuDQry6+SzuG6JT0t3JIZ9y
+ bbvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=+aRwRBujFFd4qByOEjYnIjVKWb5J3NYVKXHhT+5ioFE=;
- b=g9PAbaMKyCcAWJae5YjIoenA3qitS/71AZ1gLCsOu9725SO2zm0NVAwfu04Tdl9HwJ
- GbxcQ2GiMcULeGTI6stwi3zVVscT4NYa+CynhwRNzsJWE3kPb5UeWULizN80Ybd7MPvv
- NU+5Bd0oVF5NTSOA/mSwmgfwUcGhfdO/OdvEckVp2CGQAm87RdRqweAqzrS/S5vDO+dn
- MbactCi4hB9HjjC6agu9wS3bwpjcpYCSm2HvXETH812Y11ahfYUvpiTx0jane2WpH61p
- lRu3uIpVX8rsLtj4eahoYhHCZSG9pfWAQvtOE2CFN3sM706fq5GrGiwBH533cjWY4lNp
- +Stg==
-X-Gm-Message-State: AGi0PuYkAXdm8EqDInKBJOjAuroDKiOiSPvE50fhvbtwwCxP7i3MOG2W
- X5gxhEN20BI0gv711hAHTD9VLmCnBfG5iHJYdf1ZPA==
-X-Received: by 2002:a9d:2c08:: with SMTP id f8mr8926514otb.135.1587373524829; 
- Mon, 20 Apr 2020 02:05:24 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=JiGmGsPkvQNSd6NC+nKiNxF/ISFZKcmrsOBoVkLlC7Y=;
+ b=mfHxprNx6LjMxMRHd6dCLeDOY7CcVPDT9p25EPJQE0tuagH6hXDfr7+Bi7T3MSi5GX
+ rtB5dZh8vaiUHh2xawXbJpZcfT8vKxCZAEA2SdM9GET33iv00gYPkokvJuapdnfNtKRb
+ WWE1/WyJg2DcHAVSGXhQMg2Y2LT5UQmeAxFn3dPY52YWJCdxxXOLERa/VEfYLMqLyvFF
+ 8SqaVNTlalu1u/vtPw0jkEpk0JYNQr8e3WCTRF2SyfGnD/UNCjMMYmMI7+POBmNkUIxo
+ psGpYqcQu8BTGQP25s2YkwAa4qeA42SnUXC5c0S8jLIe3DijmEtUeiZhgLPF9Geww1MT
+ 3FHg==
+X-Gm-Message-State: AGi0PubxMSrkIm0+IUy31n5k52RsC1njr8kOTPfQeXSODh4IiMOjvaJ1
+ 0Ahz0+8g09srlFi7Di7+w4iHYQ==
+X-Received: by 2002:a5d:6841:: with SMTP id o1mr18431335wrw.412.1587385222733; 
+ Mon, 20 Apr 2020 05:20:22 -0700 (PDT)
+Received: from matebook.home ([2a01:e0a:3cb:7bb0:4826:2464:6688:71f6])
+ by smtp.gmail.com with ESMTPSA id v16sm1127132wml.30.2020.04.20.05.20.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Apr 2020 05:20:21 -0700 (PDT)
+From: Jerome Forissier <jerome@forissier.org>
+To: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
+Subject: [PATCH v2 0/2] hw/arm/virt: dt: add kaslr-seed property
+Date: Mon, 20 Apr 2020 14:18:05 +0200
+Message-Id: <20200420121807.8204-1-jerome@forissier.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20200418085145.489726-1-rfried.dev@gmail.com>
-In-Reply-To: <20200418085145.489726-1-rfried.dev@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Apr 2020 10:05:13 +0100
-Message-ID: <CAFEAcA9ODtKo9K84wkArjvPWNKqD6NhuN8r6gt+ycLLXc_Bq4A@mail.gmail.com>
-Subject: Re: [PATCH resend v2] net: cadence_gem: clear RX control descriptor
-To: Ramon Fried <rfried.dev@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=2a00:1450:4864:20::444;
+ envelope-from=jerome@forissier.org; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs1p.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::344
+X-Received-From: 2a00:1450:4864:20::444
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,27 +110,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: tee-dev@lists.linaro.org, op-tee@lists.trustedfirmware.org,
+ Jerome Forissier <jerome@forissier.org>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 50plR2NUTfL3
+X-TUID: PlRGFfqzoOxI
 
-On Sat, 18 Apr 2020 at 09:52, Ramon Fried <rfried.dev@gmail.com> wrote:
->
-> The RX ring descriptors control field is used for setting
-> SOF and EOF (start of frame and end of frame).
-> The SOF and EOF weren't cleared from the previous descriptors,
-> causing inconsistencies in ring buffer.
-> Fix that by clearing the control field of every descriptors we're
-> processing.
->
-> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+This patchset creates the DT property /chosen/kaslr-seed which is used
+by the OS for Address Space Layout Randomization. If the machine is
+secure, a similar property is created under /secure-chosen.
 
+Changes since v1:
+ - Move creation of /secure-chosen to create_fdt()
+ - Use qemu_guest_getrandom() instead of qcrypto_random_bytes()
+ - Create kaslr-seed for the non-secure OS too
 
+Jerome Forissier (2):
+  hw/arm/virt: dt: move creation of /secure-chosen to create_fdt()
+  hw/arm/virt: dt: add kaslr-seed property
 
-Applied to target-arm.next for 5.1, thanks.
+ hw/arm/virt.c | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
 
--- PMM
+-- 
+2.20.1
+

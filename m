@@ -1,157 +1,96 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3770639lfm;
-        Mon, 20 Apr 2020 05:21:43 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLBuLpAfoqyHBUunEHVn98c75Z+2PXS++NHlCehf1Rybam9IsgA9iej8FkeYG7Pwc1QjLT0
-X-Received: by 2002:ac8:5513:: with SMTP id j19mr16130239qtq.319.1587385302951;
-        Mon, 20 Apr 2020 05:21:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587385302; cv=none;
-        d=google.com; s=arc-20160816;
-        b=AoB3P9PaftlwnNSUHvO9KO2q9EShfircsQPPvwk3pBs5MosCtljV8F+9E6EZmCGNQ5
-         eyC9ddx5zsvgV1v/g7Np2rmQ8lyIQLchyOG4P1ILQakI1y/Ko9iRY6EMlOahkf0+mJZt
-         fQyZSiVe8B5MeHx7sYAiBCED9MDUFNXpwkOoZd/AzrGcPVfwGaHuQZCu3vSt+/WV3Da/
-         BQUPHZn91zd6rWkqcy6UDAXd3/zDns6OKbU0qV/YNmZYvxLm5wfQ1EOSpvKd0HbGftb7
-         twTHKzZZK/R5/ACtFbazbFXPzjQA/PyX/cmqdV3/3obf3Oa3qZTsYV6j0XYz38YbjNDo
-         tojg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=y4UmDdI61L8uOPFBQLI+IE+1VpgKE5K/n1C5kplmea8=;
-        b=zj7txknvyRzamvAxVw9C7CiKK1DDnaUJnTYtmAlyrHTW0yGZq3VCfBYetD5CFXJKZm
-         5fuwP+2wNFph6XFI4ptA/Fp6whaNqUBlTyXoxmvfZ13TxiUeOsxp7bhfoIglZNPfpyf1
-         F1hs4Te9+ArYIqZ3GTStSkBoelN3/THhyejU55w0uGWmLZ+62Q9iyTZWBKjWQpPeNYnn
-         1WB54NHxmUkeUuxYdDBchEKHeAriPWXMzi4kA5EKLF0cXkg1Rve/MpmWW1mUY6TlYjvL
-         A1aBB43oUZtsWrUhRuKgDVK1LBG+xKLrrPlu5v3zxlf8vVWiUmVjXdbvJ6i1snayBPbE
-         g2fA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@forissier-org.20150623.gappssmtp.com header.s=20150623 header.b=BxnsgXhr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z125si444103qkc.299.2020.04.20.05.21.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Apr 2020 05:21:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@forissier-org.20150623.gappssmtp.com header.s=20150623 header.b=BxnsgXhr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34546 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jQVQk-0003TS-9K
-	for alex.bennee@linaro.org; Mon, 20 Apr 2020 08:21:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46300 helo=eggs1p.gnu.org)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jerome@forissier.org>) id 1jQVPY-0001m2-En
- for qemu-devel@nongnu.org; Mon, 20 Apr 2020 08:20:28 -0400
-Received: from Debian-exim by eggs1p.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <jerome@forissier.org>) id 1jQVPX-000137-CC
- for qemu-devel@nongnu.org; Mon, 20 Apr 2020 08:20:28 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:41127)
- by eggs1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jerome@forissier.org>)
- id 1jQVPW-0000yf-Q2
- for qemu-devel@nongnu.org; Mon, 20 Apr 2020 08:20:27 -0400
-Received: by mail-wr1-x444.google.com with SMTP id g13so9839737wrb.8
- for <qemu-devel@nongnu.org>; Mon, 20 Apr 2020 05:20:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=forissier-org.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=y4UmDdI61L8uOPFBQLI+IE+1VpgKE5K/n1C5kplmea8=;
- b=BxnsgXhry1QYBAHpnkj133orLLZc9q0FtASFreF6xv0j5mAvks4FCVlzmc5Zi94ptf
- N6+mHIGf6ZRT3eH+t5deFhPygStbMmym0itosTGnxEm8w63lnjLUVup+tIYB5GJHixSY
- N8Rojg2NHobMHZLyPswWkMWzV+heFQ0v1AIOWC7sLDZmsYZJ269BlWVkrbngvhM4ENHz
- 8cdgRTgQL/nop9dmUf5DmQ5Bau9QYCG/f8VSH9SmGokhOqbIQcpO+MCo0febpFKm8JFB
- xQ3G8PIJzQetT+8YFdwhlCy38B8hTmvwV9eAy7U0F4Nz3p2nZJhZojyigyZDTxhKSZc0
- mapg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=y4UmDdI61L8uOPFBQLI+IE+1VpgKE5K/n1C5kplmea8=;
- b=VmCPn1E464kaiPw3kf0D3D9fwBflgw8lXEOWw086sYad1JggH1HAFN5Gnnv/JnnjRM
- HbXBtjW/HGfCCE81eIaIq5DuAspKxpwt2CZxgQ4w4b725HrzMdBbz3FMaO7SstgaKUrm
- CUp3l55WSYf3iNqkhgdzL6+PCJQG7wlxmPjOetVCU+2ZlrdTqQhES5CmwBsFwf08CMlE
- R4jH3eV7HCwkRZQtwpZNP7jvK1JS7M6QnBiHKf8vGeMbDIimN6/z+xNjjvSQLAC2Z5Qu
- BYrtWhQhKBsaG7t3W61y0l0Es90dm3XdCu9HGHyhr77Rrv00K2NH0sO9VdqMHc9TRcPp
- higA==
-X-Gm-Message-State: AGi0PuZtzoLRC7PK9QNPEEZaWTLFJygXUFqqYpe77MTzJseJgYhJNsDB
- fms0g3Mry4U+dQpxcbjOgjDwHg==
-X-Received: by 2002:adf:e681:: with SMTP id r1mr20205694wrm.213.1587385224102; 
- Mon, 20 Apr 2020 05:20:24 -0700 (PDT)
-Received: from matebook.home ([2a01:e0a:3cb:7bb0:4826:2464:6688:71f6])
- by smtp.gmail.com with ESMTPSA id v16sm1127132wml.30.2020.04.20.05.20.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Apr 2020 05:20:23 -0700 (PDT)
-From: Jerome Forissier <jerome@forissier.org>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-Subject: [PATCH v2 1/2] hw/arm/virt: dt: move creation of /secure-chosen to
- create_fdt()
-Date: Mon, 20 Apr 2020 14:18:06 +0200
-Message-Id: <20200420121807.8204-2-jerome@forissier.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id j4sm1161155wrm.85.2020.04.20.06.35.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Apr 2020 06:35:00 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id F14481FF7E;
+	Mon, 20 Apr 2020 14:34:59 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: richard.henderson@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH] tests/tcg: use EXTRA_RUNS to run gdbtests
+Date: Mon, 20 Apr 2020 14:34:55 +0100
+Message-Id: <20200420133455.25401-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200420121807.8204-1-jerome@forissier.org>
-References: <20200420121807.8204-1-jerome@forissier.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2a00:1450:4864:20::444;
- envelope-from=jerome@forissier.org; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs1p.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::444
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: tee-dev@lists.linaro.org, op-tee@lists.trustedfirmware.org,
- Jerome Forissier <jerome@forissier.org>, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b20OB/uvMKDB
+X-TUID: kdws+eR31QP/
 
-The /secure-chosen node is currently used only by create_uart(), but
-this will change. Therefore move the creation of this node to
-create_fdt().
+With --enable-plugins the gdb tests confuse things somewhat as the
+plugin code attempts to enumerate tests with non-existent binaries.
+Fortunately we already have a mechanism for these extra tests that
+don't automatically include their own binaries. Use that mechanism and
+drop the unneeded .PHONY declarations.
 
-Signed-off-by: Jerome Forissier <jerome@forissier.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/arm/virt.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ tests/tcg/aarch64/Makefile.target   | 5 ++---
+ tests/tcg/cris/Makefile.target      | 1 +
+ tests/tcg/multiarch/Makefile.target | 5 ++---
+ 3 files changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 7dc96abf72c..c3073b7cf19 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -234,6 +234,10 @@ static void create_fdt(VirtMachineState *vms)
-     /* /chosen must exist for load_dtb to fill in necessary properties later */
-     qemu_fdt_add_subnode(fdt, "/chosen");
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index d99b2a9eced..312f36cde5f 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -54,9 +54,6 @@ sve-ioctls: CFLAGS+=-march=armv8.1-a+sve
+ ifneq ($(HAVE_GDB_BIN),)
+ GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
  
-+    if (vms->secure) {
-+        qemu_fdt_add_subnode(fdt, "/secure-chosen");
-+    }
+-AARCH64_TESTS += gdbstub-sysregs gdbstub-sve-ioctls
+-
+-.PHONY: gdbstub-sysregs gdbstub-sve-ioctls
+ run-gdbstub-sysregs: sysregs
+ 	$(call run-test, $@, $(GDB_SCRIPT) \
+ 		--gdb $(HAVE_GDB_BIN) \
+@@ -70,6 +67,8 @@ run-gdbstub-sve-ioctls: sve-ioctls
+ 		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
+ 		--bin $< --test $(AARCH64_SRC)/gdbstub/test-sve-ioctl.py, \
+ 	"basic gdbstub SVE ZLEN support")
 +
-     /* Clock node, for the benefit of the UART. The kernel device tree
-      * binding documentation claims the PL011 node clock properties are
-      * optional but in practice if you omit them the kernel refuses to
-@@ -761,7 +765,6 @@ static void create_uart(const VirtMachineState *vms, int uart,
-         qemu_fdt_setprop_string(vms->fdt, nodename, "status", "disabled");
-         qemu_fdt_setprop_string(vms->fdt, nodename, "secure-status", "okay");
++EXTRA_RUNS += run-gdbstub-sysregs run-gdbstub-sve-ioctls
+ endif
  
--        qemu_fdt_add_subnode(vms->fdt, "/secure-chosen");
-         qemu_fdt_setprop_string(vms->fdt, "/secure-chosen", "stdout-path",
-                                 nodename);
-     }
+ endif
+diff --git a/tests/tcg/cris/Makefile.target b/tests/tcg/cris/Makefile.target
+index 24c7f2e7616..e72d3cbdb23 100644
+--- a/tests/tcg/cris/Makefile.target
++++ b/tests/tcg/cris/Makefile.target
+@@ -23,6 +23,7 @@ CRIS_RUNS = $(patsubst %, run-%, $(CRIS_USABLE_TESTS))
+ 
+ # override the list of tests, as we can't build the multiarch tests
+ TESTS = $(CRIS_USABLE_TESTS)
++EXTRA_RUNS =
+ VPATH = $(CRIS_SRC)
+ 
+ AS	= $(CC) -x assembler-with-cpp
+diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
+index 47fd675aba5..51fb75ecfdd 100644
+--- a/tests/tcg/multiarch/Makefile.target
++++ b/tests/tcg/multiarch/Makefile.target
+@@ -45,15 +45,14 @@ run-test-mmap-%: test-mmap
+ ifneq ($(HAVE_GDB_BIN),)
+ GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
+ 
+-MULTIARCH_TESTS += gdbstub-sha1
+-
+-.PHONY: gdbstub-sha1
+ run-gdbstub-sha1: sha1
+ 	$(call run-test, $@, $(GDB_SCRIPT) \
+ 		--gdb $(HAVE_GDB_BIN) \
+ 		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
+ 		--bin $< --test $(MULTIARCH_SRC)/gdbstub/sha1.py, \
+ 	"basic gdbstub support")
++
++EXTRA_RUNS += run-gdbstub-sha1
+ endif
+ 
+ 
 -- 
 2.20.1
-

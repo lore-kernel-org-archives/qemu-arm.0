@@ -1,101 +1,125 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3597832lfm;
-        Mon, 20 Apr 2020 02:04:25 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJEU/CN7kGXbI5IhZdlstTLulGYgQyMp4Z5FLkwi9MRQpO85a+xP5PCqfp9a+Ev59MNvgqO
-X-Received: by 2002:a37:ac10:: with SMTP id e16mr14022358qkm.97.1587373465691;
-        Mon, 20 Apr 2020 02:04:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587373465; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3589082lfm;
+        Mon, 20 Apr 2020 01:53:17 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKv7VGbqxJmytGSOtbWgJbTfwuMDk+qo1r8PInmUNDIQnaPYNkSBjw6ViAnJVuzmkXWArSC
+X-Received: by 2002:a37:9b0f:: with SMTP id d15mr14951743qke.62.1587372796857;
+        Mon, 20 Apr 2020 01:53:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587372796; cv=none;
         d=google.com; s=arc-20160816;
-        b=JVhmuTHgWKvFp2wf4ZbfjaE2OTRpJ+tne8FE+cd9ObGMQ3UNe6DkO4ibyYKsELO7gL
-         iw2QvbOGKgcBrpZ4w7em6WJoGHAJShiXUsDATRsYjBRoPVUSqcj166KuUFCHRfl+Rm9m
-         pxcOjJ45G2BPdaq/i3abXbDzAMLQlkGZoKfK18m5F5kyIcGUoNr3ikPUoPxOeYNJ+tvM
-         KTN+MtbJae7WV6xtur5AQk0Wr2KYTW5WmjcIfmaoHQdIMIckdPoB3qNhabTyWEK1q5+g
-         byf2jjVmXGpZg6B1C4int4o/v7nHxU0Izb68hKb77M+4VTRST1GxTT/uRSsuPJAlNsT2
-         dAOw==
+        b=eLKUp1RVa69ROr//M08dG1BoHqQqGUrE8jDMVPtfNGvvUJwls4zJPblUuSHl9wSWZN
+         jlwN9WzU9Eti4bTMYbnMic3sPJyyMbgGddIy77GukCj3qMEkjPxKxZoKU8JEc1+wj29Y
+         RXiOB9cP7bnn7kMTvex/t4P2tlyLL10my0nC2pNUJJdVwn0jw8FQhc/CsaMX8cNsEOl1
+         SLbjhFySr9DJae5QgisumhEQhKoi3Q9lsSqfnMQQdc9U9viRvvC/bME8blZKAi9fp0xx
+         0VbtS4e0DfR74yy0Oxmj53A3WvLiGGS4M3noNhh9OOjI+enRS6VMQW+z6uiwugtOjXr/
+         69Eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=YEWtSFhrdXnNaDGlrw6fFEIcRZRyA0vza2uKJTdSmOk=;
-        b=BwrJCU2uPrWmM185uzTsU5Xku5w36SvCIthkQh5plBFYy4ArT223Iey7XAEnZ/w+A4
-         kuuvrmjiYmCWV1GrTh37ZRHZYDpOZxxXN3xHu3NkdJErPUlG88NdOSViY/dOJnUoKyyJ
-         DrB3NaiimzSVL390Zn+sWFss4CkNrvqhgjPMHeNdf8vgfVll6MMwx2FLYDEtYQ4jqlr8
-         O6fLjt/vjMr1CFbk5jOBhXxolYL2CwWj3daqqP1J/fAYKpK/IDaMTZjhMTAVRJ6tI3x0
-         KTuIzXQOPf3Q48gUNOpzYvg2lgHXWkIAHGUvpGaadQT8Ji54B884zdww1LCm5NBpjQch
-         FMfg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=WRYMxskgrGy9xF46PIL9RmnEf6OdNe/ln27iyBtZtmM=;
+        b=uYp+mBxECRxyE8thRn3tw00LVKdYaSEOFj5jvooRTU+1olNL1Xg18wpmPgxuWFgRz2
+         whPThUZpmjtCcucP3LSt0qFqn7EoV5x6nPAMD1l07QubJ9u3Uw3/Yz4PMS9CAEgmLA3/
+         Ll92pIzQMhKRKTT1yYMbqJV8VOG1Weg3WeomkWB16/e1hOS5TG+/l/GPRuSz4SyMaTD8
+         GR6vgu290Su0hrP6RIfTpC+MNd9flKYRShLS7KJgejHf55gdZzYX+lTE6dR5iTEDdi9J
+         jdwkHpOmK9fXLSO0cyLuc42DYOcr+3YJPbFjyOyGwvGkI5wp3nTFYF75OuBKOhy9g+yK
+         RSIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qvDW9uja;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KyJlmeDB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l27si59016qve.86.2020.04.20.02.04.25
+        by mx.google.com with ESMTPS id w4si44524qvt.104.2020.04.20.01.53.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Apr 2020 02:04:25 -0700 (PDT)
+        Mon, 20 Apr 2020 01:53:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qvDW9uja;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KyJlmeDB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59976 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59826 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jQSLp-000124-06
-	for alex.bennee@linaro.org; Mon, 20 Apr 2020 05:04:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33928 helo=eggs1p.gnu.org)
+	id 1jQSB2-0002o3-8t
+	for alex.bennee@linaro.org; Mon, 20 Apr 2020 04:53:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60182 helo=eggs1p.gnu.org)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jQSLc-0000yU-Pj
- for qemu-arm@nongnu.org; Mon, 20 Apr 2020 05:04:13 -0400
+ (envelope-from <philmd@redhat.com>) id 1jQSAs-0002lY-Gb
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2020 04:53:08 -0400
 Received: from Debian-exim by eggs1p.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jQSLb-0007ou-KJ
- for qemu-arm@nongnu.org; Mon, 20 Apr 2020 05:04:12 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:36803)
- by eggs1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jQSLb-0007nj-7w
- for qemu-arm@nongnu.org; Mon, 20 Apr 2020 05:04:11 -0400
-Received: by mail-ot1-x343.google.com with SMTP id b13so7434676oti.3
- for <qemu-arm@nongnu.org>; Mon, 20 Apr 2020 02:04:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=YEWtSFhrdXnNaDGlrw6fFEIcRZRyA0vza2uKJTdSmOk=;
- b=qvDW9ujadIXOneCKqaMl9awocChxQkx0htfBA3v8NR6BX8ZZb4pWrMsjXyDKEcIATr
- eLWzc+753p7Dhh86HJlZncYeNmXtst8jXBaK6K7M2v6N9QyifdVlmZIj8D77u6xnT7dz
- 7pryKXY1/MhDJQOc9ws8Sjv4QNvZG/dkUygHezFupBuX3v3N84QrljrBbJYi12Ma26jA
- tFXgi5sZ3a1vMXq4STa1F5a+8veR9v5md/l01sNQUCfoymVPLO3g/sbAcd7bg3+myAIo
- MAySzHceWrvpNw65Mo5lra5AhgZscE1nw1u1bQjUawKUZSk0UleEXSZ7sP4jXJ+oXrMQ
- +zjg==
+ (envelope-from <philmd@redhat.com>) id 1jQSAr-0002k2-Rs
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2020 04:53:06 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:51342
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jQSAr-0002iH-AJ
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2020 04:53:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1587372784;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=WRYMxskgrGy9xF46PIL9RmnEf6OdNe/ln27iyBtZtmM=;
+ b=KyJlmeDBMwaaDg1UAiGzNynOlABby2Lu2AhKDxAIjY1HIJV99TqZ0YPBw06Jgy5Y6CcsSN
+ +BFwkel8oqOdfhtkNUF1gjVgpIOPeZh+fm7OujGZbn6m4/fzmSLvMAMbFaKbMXMLRooLAH
+ nbGkaC8uWh6EZuY2I+4gtE1WIbHEvgI=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-332-A29Ovk8iNuGFDaJpyNBJmA-1; Mon, 20 Apr 2020 04:53:02 -0400
+X-MC-Unique: A29Ovk8iNuGFDaJpyNBJmA-1
+Received: by mail-ed1-f72.google.com with SMTP id l14so1822966edw.6
+ for <qemu-arm@nongnu.org>; Mon, 20 Apr 2020 01:53:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=YEWtSFhrdXnNaDGlrw6fFEIcRZRyA0vza2uKJTdSmOk=;
- b=YQF2RLa6uA4SJ6COb6dFU5+Dxi07HMWJP3X5CrCF1FKu+GQHUHdcTTR2U16Zbk8dQW
- Nj0XD07ZFLqSV/TAGABqFLEVYW4dFlin+iPi+9miPJsGiFqlV1lRuI3ABIYgnoIiUwAc
- ck2FEKPKiHuL6GN4PDEkL4fTNR8w7M9m1ZNpfdKGmnQiCFfwpG5ZrWhL52bJymYiEY0E
- iALIsY7cXGj9zFsQFx8kKaqVsXKd7AitMVJYfYt5OtLL83qPiUBU4MUJQITTaeGqY1Hd
- k8XgoVT0sr93DxSw5SVp1S/rjdeh+j1ALeVxfBySaVw2ft6CL/UJDYVtbJP6+k+Rk3B9
- jh0g==
-X-Gm-Message-State: AGi0PuaWegsD+aBy7g9qaVuOLTgqcf3hvWxdoh3DKr9f8hzD6788Owc8
- Uw4LC64RamA7+9zn6SniFhUaF+y6jKF9q15qqHNlrw==
-X-Received: by 2002:a05:6830:1e4e:: with SMTP id
- e14mr8693289otj.91.1587373449624; 
- Mon, 20 Apr 2020 02:04:09 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=i0WKln2lNc8dlLBktTLskhKb+KYHB2XbrOEzH1I2Fus=;
+ b=ccjMOCwC6GKHdtuEQW0KFey58GM4XHvhMMWRsnzez0xhkkx9GO4SeTtAdmH+W1F+O1
+ lScQ3CbMPt7fWNQHo0a4hloHQgBFDV8DQXlr+Wf0P/RjrMz7xgxJ8YZFEgAJitg+/67U
+ vinrDaIUieEIarzV4aL+wg+CgytL6ehdTK6y5L6cKUIMnKwMXdQrlTb9rX6w021gAnKt
+ Shcmw1o9/T3eMQe2WrhFSfSyXZhRg9R1WgU8/GHtltsq5zy4ndEZgnPOUxt5E7glb+QZ
+ UEbU/F3tt5iAghdwN4H7wJ7wtxHEk0l4AQ1zExIBweRxav8tMXmO7gzabvzm/P3FvqTy
+ Zhig==
+X-Gm-Message-State: AGi0PuYFFV/Cm6rWHV4IKFE0VNW8HDRNdOacFW5LgpdNWJZwDbFVeQRh
+ lNJjJHPKYFZuaJIRWzH1SyWjhjrbfJ1axMOkPdmee8LG/vCi5fWbSVs1e5ThUAdQQdxmrI1qW6f
+ tvOUOmNOgbiTn
+X-Received: by 2002:a17:906:4ecb:: with SMTP id
+ i11mr14426340ejv.79.1587372780737; 
+ Mon, 20 Apr 2020 01:53:00 -0700 (PDT)
+X-Received: by 2002:a17:906:4ecb:: with SMTP id
+ i11mr14426325ejv.79.1587372780411; 
+ Mon, 20 Apr 2020 01:53:00 -0700 (PDT)
+Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
+ [83.42.57.116])
+ by smtp.gmail.com with ESMTPSA id r10sm20791edm.55.2020.04.20.01.52.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 20 Apr 2020 01:52:59 -0700 (PDT)
+Subject: Re: [PATCH 05/11] arm/virt: Fix virt_machine_device_plug_cb() error
+ API violation
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+References: <20200420083236.19309-1-armbru@redhat.com>
+ <20200420083236.19309-6-armbru@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <094f72aa-c811-3840-cfd0-bef7eeaeffda@redhat.com>
+Date: Mon, 20 Apr 2020 10:52:58 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <20200417171736.441607-1-rfried.dev@gmail.com>
-In-Reply-To: <20200417171736.441607-1-rfried.dev@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 Apr 2020 10:03:58 +0100
-Message-ID: <CAFEAcA8brVNH4i_psLN3fdqSrw9Nuza9OU-f6cv5b-XDdwQaaQ@mail.gmail.com>
-Subject: Re: [PATCH v2] Cadence: gem: fix wraparound in 64bit descriptors
-To: Ramon Fried <rfried.dev@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
-X-detected-operating-system: by eggs1p.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::343
+In-Reply-To: <20200420083236.19309-6-armbru@redhat.com>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs1p.gnu.org: First seen = 2020/04/20
+ 03:29:18
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,29 +131,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /YESSjrIUoH1
+X-TUID: pP3KQy726jwV
 
-On Fri, 17 Apr 2020 at 18:17, Ramon Fried <rfried.dev@gmail.com> wrote:
->
-> Wraparound of TX descriptor cyclic buffer only updated
-> the low 32 bits of the descriptor.
-> Fix that by checking if we're working with 64bit descriptors.
->
-> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
-> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+On 4/20/20 10:32 AM, Markus Armbruster wrote:
+> The Error ** argument must be NULL, &error_abort, &error_fatal, or a
+> pointer to a variable containing NULL.  Passing an argument of the
+> latter kind twice without clearing it in between is wrong: if the
+> first call sets an error, it no longer points to NULL for the second
+> call.
+>=20
+> virt_machine_device_plug_cb() passes @errp to
+> cryptodev_builtin_sym_close_session() in a loop.  Harmless, because
+> cryptodev_builtin_sym_close_session() can't actually fail.  Fix by
+> dropping its Error ** parameter.
+>=20
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
 > ---
-> v2: Fix indention problem.
->
->  hw/net/cadence_gem.c | 9 ++++++++-
->  1 file changed, 8 insertions(+), 1 deletion(-)
+>   hw/arm/virt.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 7dc96abf72..cca5316256 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1186,7 +1186,7 @@ static void create_smmu(const VirtMachineState *vms=
+,
+>       g_free(node);
+>   }
+>  =20
+> -static void create_virtio_iommu_dt_bindings(VirtMachineState *vms, Error=
+ **errp)
+> +static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
+>   {
+>       const char compat[] =3D "virtio,pci-iommu";
+>       uint16_t bdf =3D vms->virtio_iommu_bdf;
+> @@ -2118,7 +2118,7 @@ static void virt_machine_device_plug_cb(HotplugHand=
+ler *hotplug_dev,
+>  =20
+>           vms->iommu =3D VIRT_IOMMU_VIRTIO;
+>           vms->virtio_iommu_bdf =3D pci_get_bdf(pdev);
+> -        create_virtio_iommu_dt_bindings(vms, errp);
+> +        create_virtio_iommu_dt_bindings(vms);
+>       }
+>   }
+>  =20
+>=20
 
-
-
-Applied to target-arm.next for 5.1, thanks.
-
--- PMM

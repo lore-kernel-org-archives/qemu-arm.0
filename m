@@ -1,225 +1,283 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5066436lfm;
-        Tue, 21 Apr 2020 06:02:42 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIjqTZAas4m13cAldyXXn3G25J17v8C16s+ySjyBcBgb0BRcjfjTY/m1sFJ7RoaZH8MpS6b
-X-Received: by 2002:aed:3edd:: with SMTP id o29mr21161382qtf.149.1587474162556;
-        Tue, 21 Apr 2020 06:02:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587474162; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5026513lfm;
+        Tue, 21 Apr 2020 05:18:12 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLiXM8urAjmkYz1n1BFo+dbHtSACyxNXTEz7tCN2l7faUuwkCU+VFjnvnqIF5YZF8xdgxew
+X-Received: by 2002:ac8:7183:: with SMTP id w3mr20429142qto.307.1587471492087;
+        Tue, 21 Apr 2020 05:18:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587471492; cv=none;
         d=google.com; s=arc-20160816;
-        b=cUsoMNbmx6ENsyBsKL2VtXqBhnh+8VE1NSZoGJUhnHJyB4saRKgIPjpkBsbT9MFxKC
-         294VSEBMvVoRVbzJrb2VfoHPOiEpQnT8QkNKEGN0HgK4hHSxrEyBSqRGpSskjpq3kMe/
-         8lp063HDMgSlccdWYX2qRJY3us6wPOhJQ18OiIKFaEq5YOOHitV69p/jCYCdz1N9/Kd1
-         1WJLOgEfeQ2WRwXCxq6KpeiU+tbRuur9fD5D6WmiKgjM4l63u+I3BFjviPxJtX1CcDO+
-         qB9bD+WJwhhimQV1i3Ppmp595nWZEowPqSLrrrvweIB0057ObkBP1/ylwMFwCfJZx238
-         1goQ==
+        b=PpSZr9L6xdLLK3WdC8cVPb3QE/DXwVK3Afi7NISqMh4/A/fm2vwar5m6PUxMd/ecep
+         ZWywE2VABXJ5qBdHUoE94dXu++Y/RlMdfJ453xuiHDX/Ezg8AhxS/gXJqxXZNRL1j/xZ
+         dhdsptzpUy6oiJVjiaiV3ZhoP4/sXHU35YEibcWGSXYPPFlfB58WEMb1/2nbccqsw1en
+         PfN6gNQ/yBeH7hI2RhECat3ryskW2cPZ2cGBFuO/ZV1YQ2B0Mt0szyCzunqVYLG82DGv
+         RVB4gI6PUgCjPnDJrKbcdMiKnzjdQ6EdPMV6qoDb7WzkMw6gQZiVb4yJppRWou9N/bx4
+         y88g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=zWw+HBooFOwKRK+tg6O9i+zFkM/+rcboLIwYduoYAtU=;
-        b=zVF0l5qja86ECPRIgUTPPSK+6PR8xRf8VNHOMuRucgSvjrev98WS8nTzYXp2X8bVYd
-         77LHL/YDDe2fd4vDc1b527COsMjEUCq3WwylY2m0tsctrgzbtxF+0UWgP1ZfVonzoYkZ
-         etIeZWeiUXbaZI5TZ3M0PF6rvGHlud2fs0ZLtiqZ/Mtka0lKiYu+y2PlfdBmyDMZMFqi
-         KyuPnaAqgRUZ8IyIbd2AsspOMOZRuGrAaRJ5oD1Y2bp6vwrrlSKqXYmb0wW54fAx5o69
-         GjXpkmlzFmgnyrX64aHGuM+Lotn5hHhCiockFRnzGGP+Wt5XyAN7g9i64/gNk/UgFuud
-         yvdg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=AJMOOz4bJ3+OgFhuoPiLJoOi2hKQD09s1vZajzHfQC8=;
+        b=X5AdGlsW8ZUhk2qTCsloqv1vA1CQnBuv6fUqbBzAW5f+B0AW+FQcFvjpbpuvZzKPTn
+         OaFM4+7tth6s3vTgNvTfike2Bx8z1Pv4fsUa7QKvmWRDoT1PzlOwsxRrfjnRbNjjXyms
+         B6LPUt671lLqtQAMWENP77oSwH82M2Swfzj26fTd9SqhpXeM8fBQ5j+3Wv0e4cb/RbzE
+         Zr4sG5sO+J/WfcRrY/0yCV3pb+xZcZIig5qcku5uoxeQHDejPVhFqOGwv0bNfsZGseyF
+         9f69M+VbLzSOBmNpavozIRhEs/UkRoXjdLJ9qccWcQ9+ELCV6jS9ChR3LD4G+tPQvjQ/
+         82AA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=giN1sWjo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n23si1401423qtp.346.2020.04.21.06.02.42
+        by mx.google.com with ESMTPS id u11si1508072qkm.2.2020.04.21.05.18.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Apr 2020 06:02:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Apr 2020 05:18:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57912 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=giN1sWjo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:56826 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jQsXw-00087s-IQ
-	for alex.bennee@linaro.org; Tue, 21 Apr 2020 09:02:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44656)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jQrqs-0006kh-Cd
+	for alex.bennee@linaro.org; Tue, 21 Apr 2020 08:18:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58978)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jQsXa-00082I-Hc
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 09:02:19 -0400
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jQrpM-0004um-M1
+ for qemu-devel@nongnu.org; Tue, 21 Apr 2020 08:16:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jQsXZ-0002Cb-R6
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 09:02:18 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:45086 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jQsXZ-0001xB-3H; Tue, 21 Apr 2020 09:02:17 -0400
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 3D6DE9B5E5B65EE706C6;
- Tue, 21 Apr 2020 21:02:09 +0800 (CST)
-Received: from S00345302A-PC.china.huawei.com (10.47.91.160) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.487.0; Tue, 21 Apr 2020 21:02:02 +0800
-From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
- <imammedo@redhat.com>
-Subject: [PATCH v4 3/7] hw/arm/virt: Add nvdimm hot-plug infrastructure
-Date: Tue, 21 Apr 2020 13:59:30 +0100
-Message-ID: <20200421125934.14952-4-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
-In-Reply-To: <20200421125934.14952-1-shameerali.kolothum.thodi@huawei.com>
-References: <20200421125934.14952-1-shameerali.kolothum.thodi@huawei.com>
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jQrpK-00060R-VK
+ for qemu-devel@nongnu.org; Tue, 21 Apr 2020 08:16:36 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:46454)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jQrpK-0005uh-J9; Tue, 21 Apr 2020 08:16:34 -0400
+Received: by mail-wr1-x444.google.com with SMTP id f13so16186135wrm.13;
+ Tue, 21 Apr 2020 05:16:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=AJMOOz4bJ3+OgFhuoPiLJoOi2hKQD09s1vZajzHfQC8=;
+ b=giN1sWjor02EMrv2H9rfe7w9wa98wrXgTTv80o7asNr554AiJSZRMu0vUMM6Envwwo
+ yPwPNgZqesaJAJFTx0TkyvLJE/GCowes3Ylz5MPxvuTt5/jmjdMoJ0cvgb5Nj26FrZRj
+ omRkiGlVsnbs/LLNorsvFJuF1L3jlqz/2my5RfIu1O49FydcMdhI+ULU26vCur9wsy0i
+ xcQA3fHSgcby9rbXRyufWsZq8uDPLNHCTrR+64nTDqSbcT3FcstB4RxMZdwYxFM5LzLD
+ mExK5NENeHWjTiyggyqfJ6iHyfYY1XUwltRC5aBY2s/KUKBcIq1zAjjdCvY80S0LS54r
+ skvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=AJMOOz4bJ3+OgFhuoPiLJoOi2hKQD09s1vZajzHfQC8=;
+ b=kOqv0Oqqgm4rfR4okjkzdKfAxDsZOXC9Oqd47w9tt1wPpSBQBhvhfrOo2WoBAi4kO1
+ 3PEsKxCVlSEpG9Hh7eD12XYBARD+9RtyT+BPqRA8oV6/AA5Y/MgmpaGyzzYSKqlESFDW
+ /OMlQYcyqp2WVgs3sXpC8SFS5VEP7G4zrnKkInDOyZ5MiDoZC+Z/k+VNtMIrOvml7cZ3
+ 9fU0mFFX9QBw+/baJxgpgawEKN//sRUHu3fUtWLJtfKg2gYT/9KOYP7f+3bC1aqMz/Td
+ YMzmL8BTHheifGNg5HEtjcK4SuauBG2g9FVH5LD3IHP9GfYQPur8ZLNuoWjLBNOjfaYv
+ CADA==
+X-Gm-Message-State: AGi0Pubj9EFt3txuXIfHX/digCb9SQ6oijmZKGSkMCWNWdwcY6qDvGB2
+ k0xrTh0ydP4iBSsVEroHfRlL98py+tw=
+X-Received: by 2002:a5d:4404:: with SMTP id z4mr23451072wrq.316.1587471390955; 
+ Tue, 21 Apr 2020 05:16:30 -0700 (PDT)
+Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
+ [83.42.57.116])
+ by smtp.gmail.com with ESMTPSA id z76sm3761140wmc.9.2020.04.21.05.16.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 21 Apr 2020 05:16:30 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [RFC PATCH 01/17] hw/misc: Introduce the temperature sensor interface
+Date: Tue, 21 Apr 2020 14:16:10 +0200
+Message-Id: <20200421121626.23791-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.1
+In-Reply-To: <20200421121626.23791-1-f4bug@amsat.org>
+References: <20200421121626.23791-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.47.91.160]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32;
- envelope-from=shameerali.kolothum.thodi@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/21 09:02:09
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Received-From: 45.249.212.32
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
+ Malformed IPv6 address (bad octet value).
+ Location : parse_addr6(), p0f-client.c:67
+X-Received-From: 2a00:1450:4864:20::444
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
- linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
- prime.zeng@hisilicon.com, lersek@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0UzxWVkv+5ba
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, Markus Armbruster <armbru@redhat.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, John Snow <jsnow@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IHNKCGD3BCAe
 
-From: Kwangwoo Lee <kwangwoo.lee@sk.com>
+Introduce an interface to set and get temperature from devices.
 
-This adds support to init nvdimm acpi state and build nvdimm acpi tables.
-Please note nvdimm_support is not yet enabled.
+A device can have multiple temperature sensors.
+Each sensor might have a custom name.
 
-Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/Kconfig           |  1 +
- hw/arm/virt-acpi-build.c |  6 ++++++
- hw/arm/virt.c            | 19 +++++++++++++++++++
- hw/mem/Kconfig           |  2 +-
- include/hw/arm/virt.h    |  1 +
- 5 files changed, 28 insertions(+), 1 deletion(-)
+ include/hw/misc/temp-sensor.h | 69 +++++++++++++++++++++++++++++++++++
+ hw/misc/temp-sensor.c         | 25 +++++++++++++
+ MAINTAINERS                   |  6 +++
+ hw/misc/Makefile.objs         |  1 +
+ 4 files changed, 101 insertions(+)
+ create mode 100644 include/hw/misc/temp-sensor.h
+ create mode 100644 hw/misc/temp-sensor.c
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 188419dc1e..5364172537 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -25,6 +25,7 @@ config ARM_VIRT
-     select DIMM
-     select ACPI_MEMORY_HOTPLUG
-     select ACPI_HW_REDUCED
-+    select ACPI_NVDIMM
- 
- config CHEETAH
-     bool
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 81d41a3990..f22b1e6097 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -44,6 +44,7 @@
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci.h"
- #include "hw/arm/virt.h"
-+#include "hw/mem/nvdimm.h"
- #include "sysemu/numa.h"
- #include "sysemu/reset.h"
- #include "kvm_arm.h"
-@@ -826,6 +827,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-         }
-     }
- 
-+    if (ms->nvdimms_state->is_enabled) {
-+        nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
-+                          ms->nvdimms_state, ms->ram_slots);
-+    }
+diff --git a/include/hw/misc/temp-sensor.h b/include/hw/misc/temp-sensor.h
+new file mode 100644
+index 0000000000..3067b1dd2e
+--- /dev/null
++++ b/include/hw/misc/temp-sensor.h
+@@ -0,0 +1,69 @@
++/*
++ * Generic interface for temperature sensors
++ *
++ * Copyright (c) 2020 Philippe Mathieu-Daudé
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef HW_MISC_TEMP_SENSOR_H
++#define HW_MISC_TEMP_SENSOR_H
 +
-     if (its_class_name() && !vmc->no_its) {
-         acpi_add_table(table_offsets, tables_blob);
-         build_iort(tables_blob, tables->linker, vms);
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 7dc96abf72..8a2beaf650 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -149,6 +149,7 @@ static const MemMapEntry base_memmap[] = {
-     [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
-     [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
-     [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
-+    [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
-     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
-     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-@@ -1866,6 +1867,18 @@ static void machvirt_init(MachineState *machine)
- 
-     create_platform_bus(vms);
- 
-+    if (machine->nvdimms_state->is_enabled) {
-+        const struct AcpiGenericAddress arm_virt_nvdimm_acpi_dsmio = {
-+            .space_id = AML_AS_SYSTEM_MEMORY,
-+            .address = vms->memmap[VIRT_NVDIMM_ACPI].base,
-+            .bit_width = NVDIMM_ACPI_IO_LEN << 3
-+        };
++#include "qom/object.h"
 +
-+        nvdimm_init_acpi_state(machine->nvdimms_state, sysmem,
-+                               arm_virt_nvdimm_acpi_dsmio,
-+                               vms->fw_cfg, OBJECT(vms));
-+    }
++#define TYPE_TEMPSENSOR_INTERFACE "temp-sensor-interface"
++#define TEMPSENSOR_INTERFACE(obj) \
++    INTERFACE_CHECK(TempSensor, (obj), TYPE_TEMPSENSOR_INTERFACE)
++#define TEMPSENSOR_INTERFACE_CLASS(class) \
++    OBJECT_CLASS_CHECK(TempSensorClass, (class), TYPE_TEMPSENSOR_INTERFACE)
++#define TEMPSENSOR_INTERFACE_GET_CLASS(class) \
++    OBJECT_GET_CLASS(TempSensorClass, (class), TYPE_TEMPSENSOR_INTERFACE)
 +
-     vms->bootinfo.ram_size = machine->ram_size;
-     vms->bootinfo.nb_cpus = smp_cpus;
-     vms->bootinfo.board_id = -1;
-@@ -2077,6 +2090,8 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
-                              DeviceState *dev, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-+    MachineState *ms = MACHINE(hotplug_dev);
-+    bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
-     Error *local_err = NULL;
- 
-     pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), &local_err);
-@@ -2084,6 +2099,10 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
-         goto out;
-     }
- 
-+    if (is_nvdimm) {
-+        nvdimm_plug(ms->nvdimms_state);
-+    }
++typedef struct TempSensor TempSensor;
 +
-     hotplug_handler_plug(HOTPLUG_HANDLER(vms->acpi_dev),
-                          dev, &error_abort);
++typedef struct TempSensorClass {
++    /* <private> */
++    InterfaceClass parent;
++    /* <public> */
++
++    /** Number of temperature sensors */
++    size_t sensor_count;
++
++    /**
++     * get_name:
++     * @obj: opaque pointer to Object
++     * @sensor_id: sensor index
++     *
++     * Returns: name of a temperature sensor.
++     */
++    const char *(*get_name)(TempSensor *obj, unsigned sensor_id);
++
++    /**
++     * set_temperature:
++     * @obj: opaque pointer to Object
++     * @sensor_id: sensor index
++     * @temp_C: sensor temperature, in degree Celsius
++     * @errp: pointer to a NULL-initialized error object
++     *
++     * Set a sensor temperature.
++     *
++     * If an error occurs @errp will contain the details
++     * (likely temperature out of range).
++     */
++    void (*set_temperature)(TempSensor *obj,
++                            unsigned sensor_id, float temp_C, Error **errp);
++
++    /**
++     * get_temperature:
++     * @obj: opaque pointer to Object
++     * @sensor_id: sensor index
++     *
++     * Get a sensor temperature.
++     *
++     * Returns: sensor temperature in °C.
++     */
++    float (*get_temperature)(TempSensor *obj, unsigned sensor_id);
++} TempSensorClass;
++
++#endif /* HW_MISC_TEMP_SENSOR_H */
+diff --git a/hw/misc/temp-sensor.c b/hw/misc/temp-sensor.c
+new file mode 100644
+index 0000000000..b7c1eb2d87
+--- /dev/null
++++ b/hw/misc/temp-sensor.c
+@@ -0,0 +1,25 @@
++/*
++ * Generic interface for temperature sensors
++ *
++ * Copyright (c) 2020 Philippe Mathieu-Daudé
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "hw/misc/temp-sensor.h"
++
++static TypeInfo tempsensor_interface_type_info = {
++    .name = TYPE_TEMPSENSOR_INTERFACE,
++    .parent = TYPE_INTERFACE,
++    .class_size = sizeof(TempSensorClass),
++};
++
++static void tempsensor_register_types(void)
++{
++    type_register_static(&tempsensor_interface_type_info);
++}
++
++type_init(tempsensor_register_types)
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 8cbc1fac2b..5559110c56 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1575,6 +1575,12 @@ F: hw/sd/sd*
+ F: hw/sd/ssi-sd.c
+ F: tests/qtest/sd*
  
-diff --git a/hw/mem/Kconfig b/hw/mem/Kconfig
-index 2ad052a536..c27844900d 100644
---- a/hw/mem/Kconfig
-+++ b/hw/mem/Kconfig
-@@ -8,4 +8,4 @@ config MEM_DEVICE
- config NVDIMM
-     bool
-     default y
--    depends on (PC || PSERIES)
-+    depends on (PC || PSERIES || ARM_VIRT)
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 60b2f521eb..6d67ace76e 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -79,6 +79,7 @@ enum {
-     VIRT_SECURE_MEM,
-     VIRT_PCDIMM_ACPI,
-     VIRT_ACPI_GED,
-+    VIRT_NVDIMM_ACPI,
-     VIRT_LOWMEMMAP_LAST,
- };
++Temperature Sensors
++M: Philippe Mathieu-Daudé <f4bug@amsat.org>
++S: Odd Fixes
++F: hw/misc/temp-sensor.c
++F: include/hw/misc/temp-sensor.h
++
+ USB
+ M: Gerd Hoffmann <kraxel@redhat.com>
+ S: Maintained
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 68aae2eabb..4f90efb06d 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -90,3 +90,4 @@ common-obj-$(CONFIG_NRF51_SOC) += nrf51_rng.o
+ obj-$(CONFIG_MAC_VIA) += mac_via.o
  
+ common-obj-$(CONFIG_GRLIB) += grlib_ahb_apb_pnp.o
++common-obj-y += temp-sensor.o
 -- 
-2.17.1
-
+2.21.1
 

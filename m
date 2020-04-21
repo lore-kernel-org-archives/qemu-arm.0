@@ -1,68 +1,69 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5068944lfm;
-        Tue, 21 Apr 2020 06:04:39 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK0Ht8ioWxtgTRUOzSa6n4+orGRK4QKqKfii2DntICkSqqq2H7xOoefX+F7fCmFeN6wyoID
-X-Received: by 2002:a37:7744:: with SMTP id s65mr19960279qkc.54.1587474278808;
-        Tue, 21 Apr 2020 06:04:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587474278; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5070718lfm;
+        Tue, 21 Apr 2020 06:06:08 -0700 (PDT)
+X-Google-Smtp-Source: APiQypK4BHmkui1FZEKpZFQ7hGplzgjkvBImECtsDGcqmeipl0rTfonil+cft94SVLmQI0uJ60IL
+X-Received: by 2002:a37:87c1:: with SMTP id j184mr20382784qkd.425.1587474368405;
+        Tue, 21 Apr 2020 06:06:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587474368; cv=none;
         d=google.com; s=arc-20160816;
-        b=VC/1Abp2Xa+cjOJjHArDfNzSQQveQsCu0f+zYBSqY+0fyRfh/3RuvCSSE0fmXcS2oS
-         gE+wKXWb3m2NXgnQVezj0/RuTO9ySRWPJvzV/XtRvc7NSnhpfENtB30QTjeXmFbb3gMC
-         pXXrcmOQ6u7wX/g6g0vmCJPhkcudoeDMbMY9nfrIiUzLn+UAYkmwNgvLaKBypCtaDr5d
-         wW62e9NJJgD7jlHVFTGiw3CZKQJ8FWTpQ78Uncfd/P3HYimi1nraIvcR6YCqGu2m8SwU
-         oNZngT8h18knyuEO7JbZ0uDnw6npNIB0AVx9Cik4ROgt7ZSWLeunsuudqaCoqbJAO1S9
-         GiNg==
+        b=k1R/h5Lmu6DKlo4rU7TMQvRRtkW1PF20fwnh1HPbBfqu5D9lXO9QSP8s/Ev1vdgstZ
+         /tngtd9IjLEUL1gVm1fYMllVdaEGj6za8UOFpBLVnF5Apj/M7UVz5pawa1y1fzDLDp57
+         xL+NWbc2Y681bAVm/MxvKQpR1ehF7xbsoGfaRzB0hLjmQaFeoNZqXm6AhGGhGoXa9mr5
+         jwb2SjFJcqVrArYhzRUBlvDodGB54p/auO++Gw9ewU9QpCCpcMl12jH5LLvevWQA7U1c
+         FtHy3MwKcgyLmUsUFZGt5L9nGzroQ7unCzWEvvwY8Jx0+iUe04CUTgyoSWlvkb/tV9S7
+         WUDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=7o9WDiqX1dbX7UGgU2+TtJdpdZKq9RQxF6zC0tzRatE=;
-        b=MaodUmz4X3HBWjtaldw1U55Eh7H1VD7H7wP02UlMc/q04o2k6vG0SeCpyv9ZP5BeRg
-         GCRl2jlUJGUXFEkc0U4+DvybtgLqtNT1JK86J0elyG4weSWy2/bW3ShOP7XKdicTG9BL
-         kAa9z+DkWS8P46VxglEIwnhOAPE51vFTkX9w1Tf1DX12lRX0lBwITbp1M2C1vQKgZbRn
-         DDZP2Q3u2BcRW+ed84aZZ6E5NIvOZeG9fY7yc4Mx2RhAi0s4UsMKgRztlS8adsfmsLHo
-         8XRd5rAmbo5YXMebQeKJloJwIlzjJAbiwc3uBklL3Agl+RKWMtyv246v3U9HZZWePJQW
-         zbGg==
+        bh=pFiqul+UkrQQ3DByAbZpAxkwiDQLtuNRRR2ifAdFrtg=;
+        b=zXE/dprtxPCizrLjpSFQYbptYbsdWLWP9WjJrbej35HPmg0/JhITN3p/cTvrwbTsTZ
+         Ozc2wI0ynavS6jCjS7gs/zu14TYbDqcc5prLcfFNqXKs0fEYnyTff4MQIXX3Oq+TPVvC
+         zOtS2FMHD5jfQHCGycBwDERK3EB910laAPwqa84P60Zt7qff+GJPie6a8erh0Pm0JOFn
+         f+ShE+bhATT2+Sb2IKC923iF5IysR4JoVxH5sC7YJPxlRD/jouVV9zQzUWwA1/y94kY4
+         pJsD5DD7bZpN9OYpMvwqqBzQlNE5aSLndXRZRjU6F29+nuzz+sSnkJFML2GfwV0KFUuW
+         8NEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k49si1454014qtb.97.2020.04.21.06.04.38
+        by mx.google.com with ESMTPS id u19si1271456qvf.127.2020.04.21.06.06.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Apr 2020 06:04:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Apr 2020 06:06:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57984 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58010 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jQsZq-00036i-4b
-	for alex.bennee@linaro.org; Tue, 21 Apr 2020 09:04:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44782)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jQsbH-00052D-RQ
+	for alex.bennee@linaro.org; Tue, 21 Apr 2020 09:06:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44794)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jQsXn-0008FJ-DZ
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 09:02:32 -0400
+ id 1jQsXn-0008FR-RV
+ for qemu-devel@nongnu.org; Tue, 21 Apr 2020 09:02:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jQsXl-0002Xa-EJ
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 09:02:31 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3747 helo=huawei.com)
+ id 1jQsXl-0002Yi-UG
+ for qemu-devel@nongnu.org; Tue, 21 Apr 2020 09:02:31 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3676 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jQsXk-0002Rh-PR; Tue, 21 Apr 2020 09:02:29 -0400
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 7140EC00DC3629278D59;
- Tue, 21 Apr 2020 21:02:24 +0800 (CST)
+ id 1jQsXe-0002HT-M7; Tue, 21 Apr 2020 09:02:23 -0400
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 7AF0B68FC3DBDB0C3C18;
+ Tue, 21 Apr 2020 21:02:19 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.47.91.160) by
  DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.487.0; Tue, 21 Apr 2020 21:02:17 +0800
+ 14.3.487.0; Tue, 21 Apr 2020 21:02:09 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <imammedo@redhat.com>
-Subject: [PATCH v4 7/7] tests/acpi: add expected tables for bios-tables-test
-Date: Tue, 21 Apr 2020 13:59:34 +0100
-Message-ID: <20200421125934.14952-8-shameerali.kolothum.thodi@huawei.com>
+Subject: [PATCH v4 5/7] tests: Update ACPI tables list for upcoming arm/virt
+ test changes
+Date: Tue, 21 Apr 2020 13:59:32 +0100
+Message-ID: <20200421125934.14952-6-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20200421125934.14952-1-shameerali.kolothum.thodi@huawei.com>
 References: <20200421125934.14952-1-shameerali.kolothum.thodi@huawei.com>
@@ -70,120 +71,61 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.47.91.160]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
+Received-SPF: pass client-ip=45.249.212.190;
  envelope-from=shameerali.kolothum.thodi@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/21 09:02:04
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/21 09:01:59
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Received-From: 45.249.212.191
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 45.249.212.190
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
  linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
  prime.zeng@hisilicon.com, lersek@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KKhE0fnZNK3u
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GafZ5LMBwcfL
 
-Because of the following changes, the expeacted tables for bios-tables-test
-needs to be updated.
+This is in preparation to update test_acpi_virt_tcg_memhp()
+with pc-dimm and nvdimm. Update the bios-tables-test-allowed-diff.h
+with the affected ACPI tables so that "make check" doesn't fail.
 
-1. Changed NVDIM DSM output buffer AML code.
-2. Updated arm/virt test_acpi_virt_tcg_memhp() to add pc-dimm/nvdimm
+Also add empty files for new tables required for new test.
 
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 ---
- tests/data/acpi/pc/SSDT.dimmpxm             | Bin 685 -> 734 bytes
- tests/data/acpi/q35/SSDT.dimmpxm            | Bin 685 -> 734 bytes
- tests/data/acpi/virt/DSDT.memhp             | Bin 6644 -> 6668 bytes
- tests/data/acpi/virt/NFIT.memhp             | Bin 0 -> 224 bytes
- tests/data/acpi/virt/SSDT.memhp             | Bin 0 -> 736 bytes
- tests/qtest/bios-tables-test-allowed-diff.h |   5 -----
- 6 files changed, 5 deletions(-)
-
-diff --git a/tests/data/acpi/pc/SSDT.dimmpxm b/tests/data/acpi/pc/SSDT.dimmpxm
-index 8ba0e67cb72daa81a65da4906d37a5e0f4af1fd4..ac55387d57e48adb99eb738a102308688a262fb8 100644
-GIT binary patch
-delta 125
-zcmZ3>dXJSWIM^lR9uortW7tG4X>Nb5nD}6)_~<4#t%(LAOunKU-FO)N7nn^=<l-n`
-zNa6@_3Uw1?W@IQ3WMW8PBs(=Jv7oub-^DQ`iJ=1|$G}jW4x-abla{0xR3>sUGbBa}
-TgA_0%`UAz6fQZcnjJAvbW$GgJ
-
-delta 76
-zcmcb|x|WqIIM^j*EfWI+W57f%X>LFDnD}6)_~<5A^@#=|Og=&z-FO(~3Mv!1m>CkI
-dh5cO|Ll_eMokHD;1(_H?bo!F?%?lZA83Fei6ZHT9
-
-diff --git a/tests/data/acpi/q35/SSDT.dimmpxm b/tests/data/acpi/q35/SSDT.dimmpxm
-index 2d5b721bcf9c398feb6d005761f898015042e8a4..98e6f0e3f3bb02dd419e36bdd1db9b94c728c406 100644
-GIT binary patch
-delta 125
-zcmZ3>dXJSWIM^lR9uortquWF-X>Nb5nD}6)_~<4#t%(LAOunKU-FO)N7nn^=<l-n`
-zNa6@_3Uw1?W@IQ3WMW8PBs(=Jv7oub-^DQ`iJ=1|$G}jW4x-abla{0xR3>sUGbBa}
-TgA_0%`UAz6fQZcnjJAvbUiu>C
-
-delta 76
-zcmcb|x|WqIIM^j*EfWI+qr*flX>LFDnD}6)_~<5A^@#=|Og=&z-FO(~3Mv!1m>CkI
-dh5cO|Ll_eMokHD;1(_H?bo!F?%?lZA83FS;6XgH^
-
-diff --git a/tests/data/acpi/virt/DSDT.memhp b/tests/data/acpi/virt/DSDT.memhp
-index c527ac4739af3df3c3e042bf91c412033a2b73c3..730e95a46d2cce0af011ffc051d7342beb8f1328 100644
-GIT binary patch
-delta 66
-zcmexj++)J!66_MfBgMeL^l>7WG*kP$jq2<oOpaWW4Mc*Od{`#8h!~455Sv_`z{SGA
-W#nKj|7a!~t?-%A0w0WzDJu3iIl@a3r
-
-delta 43
-zcmeA%`C`oF66_N4MUsJmsc|BgG*kbajq2<oOr9K*4Mc(&O(wUB7;io=V#^8u9B2%1
+ tests/data/acpi/virt/NFIT.memhp             | 0
+ tests/data/acpi/virt/SSDT.memhp             | 0
+ tests/qtest/bios-tables-test-allowed-diff.h | 3 +++
+ 3 files changed, 3 insertions(+)
+ create mode 100644 tests/data/acpi/virt/NFIT.memhp
+ create mode 100644 tests/data/acpi/virt/SSDT.memhp
 
 diff --git a/tests/data/acpi/virt/NFIT.memhp b/tests/data/acpi/virt/NFIT.memhp
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..738c6f74c0ce7dc329cc72cc7b930460ceb9b6a0 100644
-GIT binary patch
-literal 224
-zcmeZs^9*^wz`($G(aGQ0BUr&HBEZ=XD8>jB1F=Cg1XwVzFffCeAhF8JAJRT=DREfi
-z%xf&Mz2`Pir~{&ofdfQyG(dQa3<eBL5GGJRD~JV_hYBH45Sv&S0)VR88W<T6HiHy}
-Pn+P#5Laay9LzoEwN>da8
-
-literal 0
-HcmV?d00001
-
+new file mode 100644
+index 0000000000..e69de29bb2
 diff --git a/tests/data/acpi/virt/SSDT.memhp b/tests/data/acpi/virt/SSDT.memhp
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..db61d6733284c90153e0e2c1d6c2ac25c22b1d84 100644
-GIT binary patch
-literal 736
-zcmZWnJ&4m_7=F{1Ynryuv=ve6ky!_O6-025G-+(0NlTIzAqUNmw7s^&hj$JlLfadz
-zo*?wXEh3U083lL2&DF`tL2x*5cM%-K?@e*=T;7-Od*1JPpXcE-P1*XE0AOy_+fvgM
-z^q#D08a)F*{Xs{<UJ!5W_RV_VUNo;$++h1nRnCi2N3B+OYEW)p(j~E#Ct5=j2lh<w
-zsBOprWHMZeo(xfgK^6-3Jc~$Dw-i;d=M@B!O}W(&j7HBCl&&rbifG)Q{Yu;OVvHKC
-zhAy;a(VG2EhgX9s5Wd6}qVI*9t2gKT^UuY*!Oz|I&iYQc9Zcy)W;5{P^^1q=PetkY
-zi~8|h?Stp6FUJq7Z!;2~Kj&8~7KGfZffHVN77XAd7&#DTf-yvVl8FmLrl^eUp)@i^
-zZDHkU@N&YXf};stvz!2U<k0hpkDAE<T^*oaF6D-|PhE~B;IUS{s~{)g6EHlxcIvt0
-zaEXRISRw|nKg2$K>_tQJ#O0FU+9ezSw@vROEagI9HnmiQA&>UP6JQO~5}~Z64Mnvw
-zY+ErcAR}x9XE39S5im?~i@}LFCFj@yO3@`)kSxrd1o2Hog_0x3J#f(n8@M!%1lT2q
-z6Jm8#juK%h-|N%mEE@9&_-9pypc>!7*C8JuYZjQl__`2oA({8ccl~|O@$5xK?^Ua8
-nUz82zqC>`BY*Tb6M!7_p|2F_GvB7H_Joz7<WbrFft6!x*uUOFm
-
-literal 0
-HcmV?d00001
-
+new file mode 100644
+index 0000000000..e69de29bb2
 diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index 862c49e675..dfb8523c8b 100644
+index eb8bae1407..862c49e675 100644
 --- a/tests/qtest/bios-tables-test-allowed-diff.h
 +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,6 +1 @@
+@@ -1,3 +1,6 @@
  /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/pc/SSDT.dimmpxm",
--"tests/data/acpi/q35/SSDT.dimmpxm",
--"tests/data/acpi/virt/DSDT.memhp",
--"tests/data/acpi/virt/SSDT.memhp",
--"tests/data/acpi/virt/NFIT.memhp",
+ "tests/data/acpi/pc/SSDT.dimmpxm",
+ "tests/data/acpi/q35/SSDT.dimmpxm",
++"tests/data/acpi/virt/DSDT.memhp",
++"tests/data/acpi/virt/SSDT.memhp",
++"tests/data/acpi/virt/NFIT.memhp",
 -- 
 2.17.1
 

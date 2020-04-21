@@ -1,118 +1,78 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5085470lfm;
-        Tue, 21 Apr 2020 06:19:59 -0700 (PDT)
-X-Google-Smtp-Source: APiQypITIu130hE9O8sYx3UgDKccoL7RIqmk8kR+p9fgRwt/qIyoYvbdPekq3FHQtS5uaDyWSWkF
-X-Received: by 2002:ad4:4812:: with SMTP id g18mr20875237qvy.120.1587475199754;
-        Tue, 21 Apr 2020 06:19:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587475199; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5066979lfm;
+        Tue, 21 Apr 2020 06:03:08 -0700 (PDT)
+X-Google-Smtp-Source: APiQypI99040XifjNiKjRUYMOd5S0WJG+WhmzuRgl6TNyONW/jXFwc28Ee/8y0nhlgCGEKeAY4O+
+X-Received: by 2002:a05:6102:104b:: with SMTP id h11mr15542966vsq.182.1587474187791;
+        Tue, 21 Apr 2020 06:03:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587474187; cv=none;
         d=google.com; s=arc-20160816;
-        b=IUEPt8/Ci13/NOpEikkfwBWKS02+1l1RBDEafLEoRD8Lr2NN1PomGiKpaFA4dhFChk
-         bSoZEVdvxBEgI3vHnGfKG2ZmvrJCEgXYvBBSHBVDtZoGu5cLJpBrux5A2katgA78i+yD
-         u1f7AYVh80anN4Ah4X3ZTV2RTqSkm4nOSImKHs0TOYF6WIT2dZ2EemtRFGIBWPv8lHkM
-         9xZYofWgHTKkpzzO0SLA5IV4WjEEPFufqmZDkg8gROHDl0NLZ7NHsa3OKhOHoa2qQGfR
-         JQ9a2EtKaJQHjPDDQbyVzoTOL4axCRpBu1dEp39703gHBB9i6n+3RCRuR3tF797d6ras
-         kEsw==
+        b=VsaRpYjS92EprpcfURL3iJrOb9aAbD3RpCAF6pW7EnKkpX6uFnRtD4BXpjwr0r2waW
+         Ljr5FT2J75n/LbRH8bRF1SvLkEDAzXvEzVcRYP5hnXUqEMyebeka8UKtE0uBVEDXPOPp
+         QRLuZn9MtWqwjQI/XQuPI0C0Jlh/gMMkAVE4BfwUwIHTlnOwqp0X3U3p8PdCAJ6lGHao
+         0DRKh3PapXcL7VrDYMiTnUV5EBICzc8aBXwW+pm2e1u5AvMY8jtIsq7fJqrsgb/ElOjd
+         8p8FxaqNeVVuWdejDZGoRAJUsix47rQaTmtvUm8ZywS8J+kOpvt+Qjmr7QI1wTfujXHo
+         DkJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=MB+KcpzEineBQraMabNomRZxm0WGxSq/4mX06L66IW8=;
-        b=WG1zwrshaTyHzn0WP/EdhFhf8ZKWENRqNllp9dppE3t1HtgVZ3bbso/FdZg86Wgjkr
-         Ju3I9M8me5fSGtNRnRKlpjPZPng03zG21+ja/enyRB0DbwICBxgYuXuOp1Yjv9DTrMIi
-         TEke3c/kUO9LxyWs6P+JAOrj6Ijrl03KVGWMqh0kNeG3Dth7Dwxv7jVVMaH802rCUS09
-         4rSfGgwAO7t13mYolrynRwWMioZ+7mwRqQly/rPxzqSmexqj2rFw+ODwPeEB+qlLY5Mw
-         /08gMw3g2fOvECVxfeEhQsMQlHSjIvqQPr9K6EkYyHOInlPC92MQMU6Wh1d+o8UQYiDd
-         JVbQ==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=74wObllBUssRRQtp2ljoE0UoMA7kSUgiGRnJRZfkF5o=;
+        b=eXZqZ99USoUKkaLH1AXMdeoNWfSy76slSF44Lx/QsYN9WGnttCM7ebB6d55juMowIw
+         D9NRCind6Z06QTf0RNam7B4Crv54Y//J7csbxyBApo1ekaDd6/YF18QQypVuUE1AhY0S
+         8PN/XaO3JLzWW7bfWBfgB51hN6nwdkm1svCuEeYBPxAzZgqnHFY+nkogw/5r31R2r9aX
+         jZ4e3p7cmZ9Jg8wrIPnrD6LRBUlGzDHyrA1e8vlZLmzf3wmiez7dx529QKkup7o5vQs9
+         EXX2wPr60KJ6mse97JWVdbFvNpx78hWqVthpgaAFrngsoaAjoCBznvuZPhbUkZ01DBTo
+         DYZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GYkYuLD4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k11si1432374qtb.276.2020.04.21.06.19.59
+        by mx.google.com with ESMTPS id m44si1451117qtf.142.2020.04.21.06.03.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Apr 2020 06:19:59 -0700 (PDT)
+        Tue, 21 Apr 2020 06:03:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GYkYuLD4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58234 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57948 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jQsog-000173-Vd
-	for alex.bennee@linaro.org; Tue, 21 Apr 2020 09:19:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48418)
+	id 1jQsYN-0000gh-4U
+	for alex.bennee@linaro.org; Tue, 21 Apr 2020 09:03:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44602)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jQsoU-00013A-0j
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 09:19:46 -0400
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jQsXV-0007yG-7a
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2020 09:02:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jQsoT-0007Vf-JC
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 09:19:45 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:32404
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jQsoT-0007Uf-26
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 09:19:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587475184;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MB+KcpzEineBQraMabNomRZxm0WGxSq/4mX06L66IW8=;
- b=GYkYuLD4NOIsGla/i+Es1EcfIUHR9MLsoa++6eWnWiQ7lNrnyOtKGlrRI1u/FGr0YS4jhK
- /+LCjZHIADLTFmH/LfXP0EzrWDFhebfsptUefok7asflngEqIQVCEVpHRCTOSZoqaZgvQA
- ewgMG6w4dhoBHWz29NELnYGvpmn/FNY=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-167-QuVdM4nZP7uf18wQ76Am1A-1; Tue, 21 Apr 2020 09:19:40 -0400
-X-MC-Unique: QuVdM4nZP7uf18wQ76Am1A-1
-Received: by mail-wr1-f71.google.com with SMTP id v9so4787131wrt.7
- for <qemu-arm@nongnu.org>; Tue, 21 Apr 2020 06:19:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=tByUF6YONCD4gqGP4f3pAvFwLd8JVDzJFormU5gNpuE=;
- b=GeSB8Xhluv64du5ZkoakDz9Tg2A2nAk/tF67yOX9UFgD+v9TNkQWfkKMZnNYAUbvMb
- 9xr2RwB2YogMs5jsWpufXmIkuQhiqMqFVXuqjXNI8UyqhRhNQo22jICRxHyne7D0I8Nr
- FDUZx1YGBnDUIPDtpTRhlb3BsKtC+YL4m5Iw0ZxPLAxq04Hqwx7bgk6kxGp3KYIewu3A
- 0FMYK/xNAH2r7iUwJ42wfiB+xVsa6TAM5aBJfIv+LLIsBya4TG85kZLSYKQ34ruYyE1F
- Mfy91KtRVtLvSF3fcj5AhARZkosFL0IQf2t9znS9QOIv+SEA6hhp7eZgeLXQrLwcU5/7
- 1U3Q==
-X-Gm-Message-State: AGi0PuZZ5zdwnVM/NTk2MSIc3YHct145D10v5KtReEPTtNM+zh/UgD/S
- 9y+70oPBtV+AJqdeW4iBR1GbSb6RSuPzzw4K/WKzjsUofpBROAhwNNBMl0nTWyXvMo8cAKYnb8a
- X2vYRGs0OVsa5
-X-Received: by 2002:adf:ee0c:: with SMTP id y12mr26222154wrn.0.1587475178632; 
- Tue, 21 Apr 2020 06:19:38 -0700 (PDT)
-X-Received: by 2002:adf:ee0c:: with SMTP id y12mr26222141wrn.0.1587475178468; 
- Tue, 21 Apr 2020 06:19:38 -0700 (PDT)
-Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
- [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id j11sm3780321wrr.62.2020.04.21.06.19.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Apr 2020 06:19:37 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 2/6] target/arm: Make set_feature() available for other files
-Date: Tue, 21 Apr 2020 15:19:22 +0200
-Message-Id: <20200421131926.12116-3-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200421131926.12116-1-philmd@redhat.com>
-References: <20200421131926.12116-1-philmd@redhat.com>
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jQsXU-00020N-7X
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2020 09:02:12 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3674 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jQsXT-0001i7-9k; Tue, 21 Apr 2020 09:02:11 -0400
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 26B1A5D3203E16C96B98;
+ Tue, 21 Apr 2020 21:01:59 +0800 (CST)
+Received: from S00345302A-PC.china.huawei.com (10.47.91.160) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.487.0; Tue, 21 Apr 2020 21:01:51 +0800
+From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+ <imammedo@redhat.com>
+Subject: [PATCH v4 0/7] ARM virt: Add NVDIMM support
+Date: Tue, 21 Apr 2020 13:59:27 +0100
+Message-ID: <20200421125934.14952-1-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/21 01:28:51
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Received-From: 207.211.31.81
+Content-Type: text/plain
+X-Originating-IP: [10.47.91.160]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=shameerali.kolothum.thodi@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/21 09:01:59
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Received-From: 45.249.212.190
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,105 +84,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
+ linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
+ prime.zeng@hisilicon.com, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DwqgZQ3IetDu
+X-TUID: 5tAAS21VYZyZ
 
-From: Thomas Huth <thuth@redhat.com>
+This series adds NVDIMM support to arm/virt platform.
+The series reuses some of the patches posted by Eric
+in his earlier attempt here[1].
 
-Move the common set_feature() and unset_feature() functions
-from cpu.c and cpu64.c to cpu.h.
+This series previously had few fixes to qemu in general
+which were discovered while adding nvdimm support to arm/virt.
+Those were sent out seperately[2] and are now part of Qemu.
 
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190921150420.30743-2-thuth@redhat.com>
-[PMD: Split Thomas's patch in two: set_feature, cpu_register (later)]
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- target/arm/cpu.h   | 10 ++++++++++
- target/arm/cpu.c   | 10 ----------
- target/arm/cpu64.c | 11 +----------
- 3 files changed, 11 insertions(+), 20 deletions(-)
+Patch #1 is another fix to the nvdimm aml issue discussed
+here[3].
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 8b9f2961ba..5e32fe7518 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -696,6 +696,16 @@ typedef struct CPUARMState {
-     void *gicv3state;
- } CPUARMState;
-=20
-+static inline void set_feature(CPUARMState *env, int feature)
-+{
-+    env->features |=3D 1ULL << feature;
-+}
-+
-+static inline void unset_feature(CPUARMState *env, int feature)
-+{
-+    env->features &=3D ~(1ULL << feature);
-+}
-+
- /**
-  * ARMELChangeHookFn:
-  * type of a function which can be registered via arm_register_el_change_h=
-ook()
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index a79f233b17..37f18d1648 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -724,16 +724,6 @@ static bool arm_cpu_virtio_is_big_endian(CPUState *cs)
-=20
- #endif
-=20
--static inline void set_feature(CPUARMState *env, int feature)
--{
--    env->features |=3D 1ULL << feature;
--}
--
--static inline void unset_feature(CPUARMState *env, int feature)
--{
--    env->features &=3D ~(1ULL << feature);
--}
--
- static int
- print_insn_thumb1(bfd_vma pc, disassemble_info *info)
- {
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 62d36f9e8d..622082eae2 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -21,6 +21,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "cpu.h"
-+#include "internals.h"
- #include "qemu/module.h"
- #if !defined(CONFIG_USER_ONLY)
- #include "hw/loader.h"
-@@ -29,16 +30,6 @@
- #include "kvm_arm.h"
- #include "qapi/visitor.h"
-=20
--static inline void set_feature(CPUARMState *env, int feature)
--{
--    env->features |=3D 1ULL << feature;
--}
--
--static inline void unset_feature(CPUARMState *env, int feature)
--{
--    env->features &=3D ~(1ULL << feature);
--}
--
- #ifndef CONFIG_USER_ONLY
- static uint64_t a57_a53_l2ctlr_read(CPUARMState *env, const ARMCPRegInfo *=
-ri)
- {
---=20
-2.21.1
+I have done a basic sanity testing of NVDIMM devices
+with Guest booting with ACPI. Further testing is always
+welcome.
+
+Please let me know your feedback.
+
+Thanks,
+Shameer
+
+[1] https://patchwork.kernel.org/cover/10830777/
+[2] https://patchwork.kernel.org/cover/11472501/
+[3] https://patchwork.kernel.org/cover/11174959/#23020961
+
+v3 --> v4
+ -Removed patches #1 to #3 from v3 as they are now part of Qemu.
+ -Addressed comments from Igor(#6) and Shannon(#4).
+ -Added R-by from Igor(#1,#2,#3).
+
+v2 --> v3
+ - Added patch #1 and # 2 to fix the inconsistency in acpi
+   table memory region sizes during migration. Thanks to
+   David H.
+ - The fix for qemu_ram_resize() callback was modified to
+   the one in patch #3. Again thanks to David H.
+ - Addressed comments from MST and Eric on tests added.
+ - Addressed comments from Igor/MST on Integer size in patch #4
+ - Added Eric's R-by to patch #7.
+
+v1 --> v2
+ -Reworked patch #1 and now fix is inside qemu_ram_resize().
+ -Added patch #2 to fix the nvdim aml issue.
+ -Dropped support to DT cold plug.
+ -Updated test_acpi_virt_tcg_memhp() with pc-dimm and nvdimms(patch #7)
+
+Kwangwoo Lee (2):
+  nvdimm: Use configurable ACPI IO base and size
+  hw/arm/virt: Add nvdimm hot-plug infrastructure
+
+Shameer Kolothum (5):
+  hw/acpi/nvdimm: Fix for NVDIMM incorrect DSM output buffer length
+  hw/arm/virt: Add nvdimm hotplug support
+  tests: Update ACPI tables list for upcoming arm/virt test changes
+  bios-tables-test: test pc-dimm and nvdimm coldplug for arm/virt
+  tests/acpi: add expected tables for bios-tables-test
+
+ docs/specs/acpi_hw_reduced_hotplug.rst |   3 +-
+ hw/acpi/generic_event_device.c         |  15 +++++-
+ hw/acpi/nvdimm.c                       |  72 ++++++++++++++++++++-----
+ hw/arm/Kconfig                         |   1 +
+ hw/arm/virt-acpi-build.c               |   6 +++
+ hw/arm/virt.c                          |  35 ++++++++++--
+ hw/i386/acpi-build.c                   |   6 +++
+ hw/i386/acpi-build.h                   |   3 ++
+ hw/i386/pc_piix.c                      |   2 +
+ hw/i386/pc_q35.c                       |   2 +
+ hw/mem/Kconfig                         |   2 +-
+ include/hw/acpi/generic_event_device.h |   1 +
+ include/hw/arm/virt.h                  |   1 +
+ include/hw/mem/nvdimm.h                |   3 ++
+ tests/data/acpi/pc/SSDT.dimmpxm        | Bin 685 -> 734 bytes
+ tests/data/acpi/q35/SSDT.dimmpxm       | Bin 685 -> 734 bytes
+ tests/data/acpi/virt/DSDT.memhp        | Bin 6644 -> 6668 bytes
+ tests/data/acpi/virt/NFIT.memhp        | Bin 0 -> 224 bytes
+ tests/data/acpi/virt/SSDT.memhp        | Bin 0 -> 736 bytes
+ tests/qtest/bios-tables-test.c         |   9 +++-
+ 20 files changed, 138 insertions(+), 23 deletions(-)
+ create mode 100644 tests/data/acpi/virt/NFIT.memhp
+ create mode 100644 tests/data/acpi/virt/SSDT.memhp
+
+-- 
+2.17.1
+
 

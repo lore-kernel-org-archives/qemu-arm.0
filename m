@@ -1,99 +1,98 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5029941lfm;
-        Tue, 21 Apr 2020 05:21:57 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKv4OqmQh3pFL6kCmY3RyUbpGJgtTC3dp2FjRdwEJ3mjgPGOZkPUwZKIo8DhYqNn3UvS7wK
-X-Received: by 2002:a37:5347:: with SMTP id h68mr21306127qkb.451.1587471717038;
-        Tue, 21 Apr 2020 05:21:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587471717; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5030539lfm;
+        Tue, 21 Apr 2020 05:22:33 -0700 (PDT)
+X-Google-Smtp-Source: APiQypI2m2QK4/0daxKOTRFA5hSWIeySp8wy4LR6zN/hP2kudqmwl5SkY5Tmbww1VyL69OizsCWL
+X-Received: by 2002:a37:98c7:: with SMTP id a190mr20946280qke.91.1587471753010;
+        Tue, 21 Apr 2020 05:22:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587471753; cv=none;
         d=google.com; s=arc-20160816;
-        b=srPiEOhu4UlqV+H8s/NL/NYAZk8SdbqBmEo4iZI/1m10m18wLtXkzWPgawwGRLza1V
-         e2bANab+pZMMMS3RgZXn9+hC4L4PNFjyYhi226NyLOJ4yovGY8JhKKJaA9aZbyeDuyr3
-         5mWjRGWhduQGVPxHOtxYztJsSFxEOEyezHFc0X15rvPXZL9ctIpK4kE3DJuuGB3RREBa
-         sX7dVmQt1rTFS9tQaOXgGqZ1V3qqEqgA98RXlMegFX/hhstnvZV8PwQFNQCZg7B3Dd7Q
-         Ikcj+IHqOP02VlZl4u7slMe025RG91/1jWp6TfDWE4vZwATNA2zjWVwdRUXd+vWOL/RB
-         4TWQ==
+        b=aaLY/Hack4BVxd3Pt5KhNyu18CfUO37AWmQqcm9UHSNL5/S4zGsmNOanQ+6f09YqD1
+         U58OH4y+EFDhcAYeCCpO/d95NoWk1Dw3kPVlc8bak/OrmSu0ha6Qe6GvrQtpjM9qz8n5
+         AmMWAFnMn1gcOkIESt33TLI/EUvH2kseL4D6HqbcIEwmkhJtEuQEl2+bJAy+6thsbrBX
+         gkSVxxk6cOs7h3IU6mtjK77Xk4eRU1eXJptjUMRIpZYKHYJpvV6p3zvX6KwdhjIdi6O/
+         PaeYnYS1+kB7URZsGYQWZE+VHDIJWOtqa2dhGkPfdNaq83Hc7aM9v/XLgINLByuPO/He
+         5Ngg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=qB64pMQz077pdvYBO2lwMlbmaOOXxOAZW+fx+kae1v0=;
-        b=qnvmcmNNPhYGu1r+xATjPNQYXURJBEfoJKMj8jpmCF/JcVL7kK1YRZwedAHMqpDCEr
-         Ru3bJVAUG5+rEb/naeEzwLB+IhAFwJTaXcPY5/95IODelcXcbDKWf9EKvTWJJ/Uv40qT
-         NEd5wphR4szTMuNYOg1uCqbXWoNg1rqkqFXIrPwXwci/PQ0AmxSliDCKgevl3Jweo72e
-         bFENsQLiW/uBp1A/CMOnmCpwmfJH02Hewo+hxZrqM/CyJ8Thhal1J8lxUTIzNiVXWM8E
-         5L0Q7fWIatyrcxYSmUgwaAizm8aMGR68gGHzn3fRAUcN9vNEa3G3DrmBcc1/92bKhIhL
-         8V/w==
+        bh=vcBPhZxwd+4vvuNFMjpVIGG8AsZi9zdExeOhoYV7tu4=;
+        b=bb7p3qFWHVRYwPYyiRw1pkc/tbHF4PTPkRkxtTwno8/lg8mhqkh8dsxgTc4yHZ0yhV
+         KH96DVaWpxaIb5S3U7kvQGfdav/yYbIyP97HhP6NJUd2d5UhP7z1sqJvLuOoUM7Jw58l
+         PXroiRGEJohk8bQSqBrxlTmKwVvVzrFtBU3PlhwT0Bo1oW6054o+GEyThGp+q/jlxEov
+         LBCmo/eWTM/gt1hBBrCla2KW/auUjBSs0KIqCQtZZABRY2Gd+lppl2MNn3mTaKDp68eH
+         QMrShMlvuhDR4Enyf6EFV88rtIx5AB6YPqftfhZUaSsZf7dacoCDCqqWcuDXTHdiD03M
+         Y9jQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=chidQ7+4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MRKiQrMR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l4si1400955qki.10.2020.04.21.05.21.56
+        by mx.google.com with ESMTPS id eb4si1273704qvb.175.2020.04.21.05.22.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Apr 2020 05:21:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Apr 2020 05:22:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=chidQ7+4;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MRKiQrMR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:56904 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56944 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jQruW-00047a-Dq
-	for alex.bennee@linaro.org; Tue, 21 Apr 2020 08:21:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59176)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jQrv6-0005fJ-Cs
+	for alex.bennee@linaro.org; Tue, 21 Apr 2020 08:22:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59194)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpb-0005OZ-6A
- for qemu-devel@nongnu.org; Tue, 21 Apr 2020 08:16:51 -0400
+ id 1jQrpb-0005Pl-R5
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2020 08:16:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpa-0006OU-ID
- for qemu-devel@nongnu.org; Tue, 21 Apr 2020 08:16:50 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:38069)
+ id 1jQrpb-0006PJ-0H
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2020 08:16:51 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:54841)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQrpa-0006Ha-2K; Tue, 21 Apr 2020 08:16:50 -0400
-Received: by mail-wm1-x344.google.com with SMTP id g12so3417706wmh.3;
- Tue, 21 Apr 2020 05:16:47 -0700 (PDT)
+ id 1jQrpW-0006DY-MC; Tue, 21 Apr 2020 08:16:46 -0400
+Received: by mail-wm1-x343.google.com with SMTP id h2so3289007wmb.4;
+ Tue, 21 Apr 2020 05:16:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qB64pMQz077pdvYBO2lwMlbmaOOXxOAZW+fx+kae1v0=;
- b=chidQ7+4Ch8UfiagLu9jPE6HSdWivmHZ2BE3S7Y5ntFGWwtBcq/3OuGPPEBLP0cj/Q
- U3NDfqwr6qpKZ3P1dAfTYLadrilu3N6h9Avmw5vzHAHLhSCj38sNiFprc9UaXul2WWlv
- i57u2MxpDm5QGIxe1gLknsZeHqqKEnlGVSBQ5or5FBW7Bz0TZh4yFSGV+O6/xI+lDOnT
- LSE8INPlTnH+DMNvGilhIHcooeX6/FHtDjx8Eq+XXY4RdV5xJ9BwA5qKD4Qh2ciR1tsI
- Mj9YBPr4IK82qT9GScFkpNxkO2qTBcny7rYzaySSRkhUzXMPGiJeAFhyOLk1FUCAx0+x
- Qylw==
+ bh=vcBPhZxwd+4vvuNFMjpVIGG8AsZi9zdExeOhoYV7tu4=;
+ b=MRKiQrMRjgF15Z5ST3R4ycE1fKYuE1z0PoxMQYHXYmcNIi9JtZ3GdS/Ztw94805CeU
+ gOyiifBLeLMskzOcbqAOBjaJmeP0T5fnkaO6NwvZN2vM5We2ZpW6FdaqQ5erHdViSSqt
+ i8awh+/TkBDHEY/HQLwsmSGOmI3PJa3PXDlsiSNfQ9jMQFA9SIX1iMz6EznWXTM0uWlY
+ Csou5J2ClG5qH7eRZlKgvHTbqForst7yHH4/A4ilURBdsJW7mnFZ+YWkQgLFNeq/nbqe
+ GfqNt9S2dLBkyvBF24L9RDsnz0sdX0w5LffLdYaZ0F8jgQhtFH/gbgMCjO2CsHaNB7n9
+ DMcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=qB64pMQz077pdvYBO2lwMlbmaOOXxOAZW+fx+kae1v0=;
- b=hyz2ud4EBsIvxs/72nX2J0ptqvnPvINGGjVwIY9laTq7nxMLMSeJCPdKaeq4Mzry9d
- zIiroeIzhWR8RQqQnGb9AUU+0ZdF/NYaMoSTFEEbYY5wVrkUaNUbqkbbVXKmfYUlphR5
- Of7PnD5w51UQ5weqmwXvI3EAWy85deNUXdd8rIIhU1ly7rvT1o9R0jqfLysdQjV8K5DV
- rKL1ZfzUATI7LX2ZbpPKeM3QMjD1EB4lscEr0ksSPs9vbm726P4nLpsc/aG5DdnZRqPH
- ZMrwobi6Iivs+yU70Y5aZtBtz4qgTN2YFRxTqhlWQtv2FtRMyDJGq19IMNXLdX+69olE
- KJaQ==
-X-Gm-Message-State: AGi0PuZqh/qeq/OI7F+BvFZnOsJppi3uAqSYgLsEEzGfiqDOoI3cdPN2
- TZGX6iKBieRui5skWTc74ubHGM2ZJo0=
-X-Received: by 2002:a1c:2002:: with SMTP id g2mr4431625wmg.109.1587471406418; 
- Tue, 21 Apr 2020 05:16:46 -0700 (PDT)
+ bh=vcBPhZxwd+4vvuNFMjpVIGG8AsZi9zdExeOhoYV7tu4=;
+ b=YoGTOq2/mTgBVhHwQEucRGhL5kp8Zzvwa0GI91qpKdjJ7finfpQHSyr/4a3sBkFxOM
+ L36RIIP6CeHGg/yEMDipDr5Q3qwexVTUSB6quOf2G71S48l0IRQTH1m3AmhPy/T8LrW0
+ oYKu2XjxR8FKcOsV1q78Sn8qR0f4VKRZmAWsbOAJtWAIbWcDIXejKV5wqH9Ioz5nw//r
+ moVByoSh9k8QGZiORduM+p3y/XRHUBXKNOsqZ1v/fJiRF4ElabNlWe88qgtph3so2QJA
+ 4de9Le3NwoiSCXnGEq9oLsSQa1GzzH9XCT1TMo9Y5uao55HJYbgFV2cklXg39/bwoV4x
+ zS0w==
+X-Gm-Message-State: AGi0PuYmaOYwhrYgdqPzRVTem8PBP0SCgy/fFvrLOjYibzQl8dxorG1B
+ e0XtUM+7tex/e6Wum454a5cXJavhsrQ=
+X-Received: by 2002:a1c:9cc6:: with SMTP id f189mr4486493wme.75.1587471404227; 
+ Tue, 21 Apr 2020 05:16:44 -0700 (PDT)
 Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id z76sm3761140wmc.9.2020.04.21.05.16.44
+ by smtp.gmail.com with ESMTPSA id z76sm3761140wmc.9.2020.04.21.05.16.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Apr 2020 05:16:45 -0700 (PDT)
+ Tue, 21 Apr 2020 05:16:43 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH 09/17] hw/misc/tmp421: Implement the 'temperature-sensor'
- qdev interface
-Date: Tue, 21 Apr 2020 14:16:18 +0200
-Message-Id: <20200421121626.23791-10-f4bug@amsat.org>
+Subject: [RFC PATCH 08/17] hw/misc/tmp421: Extract set_temp_mC() helper
+Date: Tue, 21 Apr 2020 14:16:17 +0200
+Message-Id: <20200421121626.23791-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.1
 In-Reply-To: <20200421121626.23791-1-f4bug@amsat.org>
 References: <20200421121626.23791-1-f4bug@amsat.org>
@@ -101,26 +100,26 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::344
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::343
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ qemu-block@nongnu.org, qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
  Michael Tokarev <mjt@tls.msk.ru>, Markus Armbruster <armbru@redhat.com>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
@@ -128,81 +127,78 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>, John Snow <jsnow@redhat.com>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A6K5Qa3Pb6ST
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: snbaIVYrDcuD
 
-The TMP421 is an I2C device with multiple temperature sensors.
-Let it implement the 'temperature-sensor' interface.
+Since we are going to reuse this code, extract it first.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/misc/tmp421.c | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ hw/misc/tmp421.c | 27 +++++++++++++++++----------
+ 1 file changed, 17 insertions(+), 10 deletions(-)
 
 diff --git a/hw/misc/tmp421.c b/hw/misc/tmp421.c
-index 270e7d5510..31bfbecb1d 100644
+index 8003356307..270e7d5510 100644
 --- a/hw/misc/tmp421.c
 +++ b/hw/misc/tmp421.c
-@@ -30,6 +30,7 @@
- #include "qapi/error.h"
- #include "qapi/visitor.h"
- #include "qemu/module.h"
-+#include "hw/misc/temp-sensor.h"
- 
- /* Manufacturer / Device ID's */
- #define TMP421_MANUFACTURER_ID          0x55
-@@ -138,6 +139,21 @@ static void set_temp_mC(TMP421State *s, unsigned int id,
-     s->temperature[id] = (int16_t) ((temp * 256 - 128) / 1000) + offset;
+@@ -122,6 +122,22 @@ static int64_t get_temp_mC(TMP421State *s, unsigned int id)
+     return ((s->temperature[id] - offset) * 1000 + 128) / 256;
  }
  
-+static float tmp421_get_temp(TempSensor *obj, unsigned sensor_id)
++static void set_temp_mC(TMP421State *s, unsigned int id,
++                        int64_t temp, Error **errp)
 +{
-+    TMP421State *s = TMP421(obj);
++    bool ext_range = (s->config[0] & TMP421_CONFIG_RANGE);
++    int offset = ext_range * 64 * 256;
 +
-+    return get_temp_mC(s, sensor_id) / 1000.f;
-+}
++    assert(id < SENSORS_COUNT);
++    if (temp >= maxs[ext_range] || temp < mins[ext_range]) {
++        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " C is out of range",
++                   temp / 1000, temp % 1000);
++        return;
++    }
 +
-+static void tmp421_set_temp(TempSensor *obj, unsigned sensor_id,
-+                            float temp_C, Error **errp)
-+{
-+    TMP421State *s = TMP421(obj);
-+
-+    set_temp_mC(s, sensor_id, temp_C * 1000.f, errp);
++    s->temperature[id] = (int16_t) ((temp * 256 - 128) / 1000) + offset;
 +}
 +
  static void tmp421_get_temperature(Object *obj, Visitor *v, const char *name,
                                     void *opaque, Error **errp)
  {
-@@ -380,6 +396,7 @@ static void tmp421_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-     TMP421Class *sc = TMP421_CLASS(klass);
-+    TempSensorClass *tc = TEMPSENSOR_INTERFACE_CLASS(klass);
+@@ -149,11 +165,8 @@ static void tmp421_get_temperature(Object *obj, Visitor *v, const char *name,
+ static void tmp421_set_temperature(Object *obj, Visitor *v, const char *name,
+                                    void *opaque, Error **errp)
+ {
+-    TMP421State *s = TMP421(obj);
+     Error *local_err = NULL;
+     int64_t temp;
+-    bool ext_range = (s->config[0] & TMP421_CONFIG_RANGE);
+-    int offset = ext_range * 64 * 256;
+     int tempid;
  
-     dc->realize = tmp421_realize;
-     k->event = tmp421_event;
-@@ -387,6 +404,9 @@ static void tmp421_class_init(ObjectClass *klass, void *data)
-     k->send = tmp421_tx;
-     dc->vmsd = &vmstate_tmp421;
-     sc->dev = (DeviceInfo *) data;
-+    tc->sensor_count = SENSORS_COUNT;
-+    tc->set_temperature = tmp421_set_temp;
-+    tc->get_temperature = tmp421_get_temp;
+     visit_type_int(v, name, &temp, &local_err);
+@@ -162,12 +175,6 @@ static void tmp421_set_temperature(Object *obj, Visitor *v, const char *name,
+         return;
+     }
+ 
+-    if (temp >= maxs[ext_range] || temp < mins[ext_range]) {
+-        error_setg(errp, "value %" PRId64 ".%03" PRIu64 " C is out of range",
+-                   temp / 1000, temp % 1000);
+-        return;
+-    }
+-
+     if (sscanf(name, "temperature%d", &tempid) != 1) {
+         error_setg(errp, "error reading %s: %s", name, g_strerror(errno));
+         return;
+@@ -178,7 +185,7 @@ static void tmp421_set_temperature(Object *obj, Visitor *v, const char *name,
+         return;
+     }
+ 
+-    s->temperature[tempid] = (int16_t) ((temp * 256 - 128) / 1000) + offset;
++    set_temp_mC(TMP421(obj), tempid, temp, errp);
  }
  
- static const TypeInfo tmp421_info = {
-@@ -396,6 +416,10 @@ static const TypeInfo tmp421_info = {
-     .class_size    = sizeof(TMP421Class),
-     .instance_init = tmp421_initfn,
-     .abstract      = true,
-+    .interfaces = (InterfaceInfo[]) {
-+        { TYPE_TEMPSENSOR_INTERFACE },
-+        { }
-+    },
- };
- 
- static void tmp421_register_types(void)
+ static void tmp421_read(TMP421State *s)
 -- 
 2.21.1
 

@@ -1,158 +1,127 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4786724lfm;
-        Tue, 21 Apr 2020 00:49:28 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIc3MTZzdsjB3VPqqxqpWzj90+20TcWzmkLnDR5t+6znNqzs25u2uXl8qJb6u9iQJqv7onD
-X-Received: by 2002:ac8:2fda:: with SMTP id m26mr19787865qta.80.1587455367896;
-        Tue, 21 Apr 2020 00:49:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587455367; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4787208lfm;
+        Tue, 21 Apr 2020 00:50:12 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIHyCKRzblToWS18y+Irbn5g/ohEULMmfCp4eELho5N4YuLyeMe/BaSdO8PnAxeczQOPszP
+X-Received: by 2002:a05:6214:15d1:: with SMTP id p17mr19385026qvz.45.1587455412638;
+        Tue, 21 Apr 2020 00:50:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587455412; cv=none;
         d=google.com; s=arc-20160816;
-        b=fqrMISn1dgkmWSjHu/lxvATz222IYW19xRrbxOAlv5yv6tygTFN7cO6cZUJDWpABbH
-         DL+1INxBWfGpxbO3SQC1eU4cq6tGOQM0f/8UTlLNwIAF+NDEhmr2wigsUE6i6makgcIC
-         uK7d4kQ/urRvVWrq7XJ14m63LTJLKxX5B00+YiifFYK5Ovk6XmRnkyb0QU63VhOpRn8l
-         iQP5jVZgTBtG3+Wnn/MsJLeYtSt4RjxearBN8SmJybBSL2pSfculpdq0W+031qUNuycx
-         8mVhzt76McJ58xftO7kTQEiu5WMHx0Yf2bNVdY0Ue1QYMTmNYzcFO4lLWSJVOJPvsI8w
-         dLAg==
+        b=QqvXrsFh1gYJ+0sNr1KHloqFlfiNmAr4Mbn+OE1xlCDVydfaaxnkCrmMaIjZ8ZegGG
+         pWjNZeaRc+VqY5RIXPUblEtU7wDvxH6ak0haVYiHdxt5UdXM8AS3KSIRxCq4e/8s5LLV
+         0cpi+KXztq2SpuDmCUYj6Evuv5ECw4la6+ZjTLpcuRsc6TyzKyswyIzfnmWNn+cu4zqX
+         TW2v2C9ONFl4wwioad2RymKN260TA3tVy1y758PaLeIy6bUxfC+hioWd0GIPKAC1ro4O
+         6IvGOc30q0xVQrftfneqiDxW32OYTO9FA0W8ILrJ11Wbif+wI2GZw164jDcsNe8Xk3Cz
+         tLJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=ARY8md8kDV/6pR/vUEHOaG+riA8bBkDmxyOF7Yvl8EE=;
-        b=lvf0BQ1dqCQbZMn8yty0HzXOmpZw3YPq5SUQuNuggxmqv1FXHZxnTxZONiI2JrQ3QC
-         rcKDDN03dHc24p1BOl40TtF8X6/PHsZSdgcJZvof4K8kCg5Y5sRRcP6iXjEh6sbpuWub
-         3FRpxMFmpyBTHYo5Xykxy0+wGrLM7R9Ka3HZFQ0FoIryZqbxgOjUhDrnfeLd0p+oBs11
-         F3adzK0nFFVe2kw92t38KZ4Fkvx7R7Ze87rW8l5L0dtjretL9ds0qV8OgFSMFhOWcJWB
-         sIGGhSruuJqs6GF5cVZuZWAvCTTGN51rPB9VagAKD5BLxStty9VPqf1cxCaUA5/ezSja
-         Mclw==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=xfhIKdHs7m1jDBOFfnAgfme0YalFSd3WwpqXIfEBcCI=;
+        b=PokRrPptq3tcYYVoFcrqLHDSNPdoK0b0RSLKTxx8PGDLwWOhfBZRDDxhqkcxHM5xt6
+         X5i9ksWddRRd1ff5McKX5D+eN7Das9sVOD20W+/M5+W0V9rgKsdxOGfh5uWQzPEzYMed
+         o/uGOhJKvBMWVvwlYyby5vS5p38rIcP7LMpet4sCtYN0R+Y9OruFZLjiozGiJ+OvEIjA
+         sJrQoAFX+aa+U+8EyePa0v56zRLi//fwC+FEBYfDWrwf39//xYU2/hhGPgusqnEogXXj
+         zq8prvj0+giaVtFrS2RprwWgT9nKP0mOa8UyrS4QNCgBRZrXM2tQIaRebofcxZGeZ2/l
+         wvxA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FN9C3JFC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TmtFLLSo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w126si1066469qka.274.2020.04.21.00.49.27
+        by mx.google.com with ESMTPS id r38si994305qte.152.2020.04.21.00.50.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Apr 2020 00:49:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Apr 2020 00:50:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FN9C3JFC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:52738 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TmtFLLSo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52758 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jQnep-0006Dh-6X
-	for alex.bennee@linaro.org; Tue, 21 Apr 2020 03:49:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41966)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jQnfY-0007ys-1Y
+	for alex.bennee@linaro.org; Tue, 21 Apr 2020 03:50:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41796)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQneA-0006C1-7H
- for qemu-devel@nongnu.org; Tue, 21 Apr 2020 03:48:46 -0400
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jQnck-0004aQ-Pj
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2020 03:47:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQne9-0004O6-D1
- for qemu-devel@nongnu.org; Tue, 21 Apr 2020 03:48:46 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:38408)
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jQncj-0003DC-18
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2020 03:47:18 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:36791)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQne9-0004Nq-0Q; Tue, 21 Apr 2020 03:48:45 -0400
-Received: by mail-wr1-x441.google.com with SMTP id k11so15311842wrp.5;
- Tue, 21 Apr 2020 00:48:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1jQnci-00039Q-Jt; Tue, 21 Apr 2020 03:47:16 -0400
+Received: by mail-lf1-x143.google.com with SMTP id w145so10320166lff.3;
+ Tue, 21 Apr 2020 00:47:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ARY8md8kDV/6pR/vUEHOaG+riA8bBkDmxyOF7Yvl8EE=;
- b=FN9C3JFCNiLxY6TMWHEYWYrk+S533RX3QSiyUNzFHCOvx+X48MxGIQZRStvhoRpVro
- D9gHHtIH5uinggY+GC3aAybDLwRPDhRHRmzI0VuKA0FXOwn3RMwDdfiYpZEQnjSaRFf0
- i9faVt9ff4Vi4ntIUfBgAB7FrsgjFGqTc5N3ipSJBGsQqUQkZ376mtkp3HK95S8L2CCb
- CZ4NmfmzOY+x8iv5nYenOWlEXVk+U5wMd6MIIBryvb6ZyKcL04PjLmgxxIpOvpxj3TAZ
- XCRt/C4W/hEBSJPYPeQ1dREQo25mrxXexOjbGU6ySnIpma4vKXv2a2hOBSyML31Mv+YG
- 4CWA==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=xfhIKdHs7m1jDBOFfnAgfme0YalFSd3WwpqXIfEBcCI=;
+ b=TmtFLLSo5SWPYL7dDh2qYQSqtq4Z8KVaLrIAA1uewvBIDFBHW+RUJ3uIL8S7dgF5K/
+ kU82DWFGXGy+AhNSMW5TIteeHxGvEJSX/3ov7bnI1O3TPlckFUeKJ/7RnfeXqa/wBG0t
+ hjFnNwLR8Gd5dlQwOhLZBYYDBphCGO+ihiiczhKvMWxpLXlZAeSV2rgAV30wd9Sqg37T
+ 5AtOr6B0QGV+NIfoi9gPkkiu6k7P3iEUF+6NWpGlWxH6NqYyFYgbSAcBeSAhXf/kFK+F
+ TnvsyGTdkXeaLKmdWmy84qhYkSkSFU9wN63C2CDlZiZtWjPhtAEwwCC9EpIgcLzRSFRb
+ 1bUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=ARY8md8kDV/6pR/vUEHOaG+riA8bBkDmxyOF7Yvl8EE=;
- b=q+c79iLNy9J5O7Fl/EFq689qxB+YDn72RR82PIbfPzMOSMJytMDVKC0z4j/wxNDwd9
- //NX4EDMB7teX0g3OrPSolWs010XppA0DNcfcBABFZV27M5uPJUkBhr+Z7hUbfka+6DM
- 6ue/7IpHpKa984nS6uv5XIu0ZGlnE6QZexlnI9pj8coGty1LZm6ZD8297ufhQQHXSxkC
- aYzwZ9CTYyUCr1yKTppwbw2EVT6FB9e0VlLchhq+Yv8Umw+Ky4KJALnyLJxfgJLNwFFN
- u2VwC827+CGMx2frqH/xSs0/huputEnFOfz1L63bfGra5PxXrugR9+M5mVIJbOAw3ZSb
- lgSg==
-X-Gm-Message-State: AGi0PuYR+AnaZeUxGGytE6E3apSlv/fybxEN4h1gRZhbGul7kGAh5bYi
- E6hJPY6fcFaLpIQKEmfUlEI=
-X-Received: by 2002:adf:fa41:: with SMTP id y1mr22091237wrr.131.1587455323233; 
- Tue, 21 Apr 2020 00:48:43 -0700 (PDT)
-Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
- [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id p7sm2692753wrf.31.2020.04.21.00.48.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Apr 2020 00:48:42 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=xfhIKdHs7m1jDBOFfnAgfme0YalFSd3WwpqXIfEBcCI=;
+ b=HPcN8MLpg/JfqFPTSRJVkgkPvkQgOhoXaxLiV0+r2xeSVoWqRjAv8psD5+TwklZcCC
+ /L/3zotTH6e+Bl93F3bSoj+sX5AE4JGJoYfLDVEcYUliXhCVB20vsQzxntM5cfAEdaeC
+ sYtY9mUe+xOq2r5RDE3K3+g9I/OmA1cbpphfXAwg3bbtmIA/C/8ImElZ52zNKnqvUu/2
+ A+xiowBzlNkAJUZjFFlz7z7Y50dwn1xiaoLIdo8a1PLRsoB6hxL2oJfN0bdw4v4BOHRf
+ 3LfeZrfwT5JGgksptMHQhmbgBgvumPvFycfc5d8N4ElF02nNLeCOBvF8KqTH/Ln5ujAM
+ A30w==
+X-Gm-Message-State: AGi0PuaJTuG60H6oawtRMsTy0zPm1sra5EnrfPfgiGylUp2yNWMAXw9w
+ txweGXLzOlAzCGvN6DqtoC4=
+X-Received: by 2002:ac2:4187:: with SMTP id z7mr12941684lfh.113.1587455234510; 
+ Tue, 21 Apr 2020 00:47:14 -0700 (PDT)
+Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id t8sm1475806lfe.31.2020.04.21.00.47.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 21 Apr 2020 00:47:13 -0700 (PDT)
+Date: Tue, 21 Apr 2020 09:48:24 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Subject: Re: [PATCH 1/4] linux-user/arm: BKPT should cause SIGTRAP, not be a
  syscall
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Message-ID: <20200421074824.GF2669@toto>
 References: <20200420212206.12776-1-peter.maydell@linaro.org>
  <20200420212206.12776-2-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Autocrypt: addr=f4bug@amsat.org; keydata=
- mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
- u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
- HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
- YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
- ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
- dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
- ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
- Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
- HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
- Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
- klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
- jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
- 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
- loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
- sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
- JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
- 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
- K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
- n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
- CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <66f1e3c3-13f3-cf66-68e8-281260e420e7@amsat.org>
-Date: Tue, 21 Apr 2020 09:48:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 In-Reply-To: <20200420212206.12776-2-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::143;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x143.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::441
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::143
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: omerg681@gmail.com, Riku Voipio <riku.voipio@iki.fi>,
- Laurent Vivier <laurent@vivier.eu>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wuNqfuAs0qjm
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: omerg681@gmail.com, qemu-arm@nongnu.org, Riku Voipio <riku.voipio@iki.fi>,
+ qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: agiPK9/jAUR1
 
-On 4/20/20 11:22 PM, Peter Maydell wrote:
+On Mon, Apr 20, 2020 at 10:22:03PM +0100, Peter Maydell wrote:
 > In linux-user/arm/cpu-loop.c we incorrectly treat EXCP_BKPT similarly
 > to EXCP_SWI, which means that if the guest executes a BKPT insn then
 > QEMU will perform a syscall for it (which syscall depends on what
@@ -172,6 +141,11 @@ On 4/20/20 11:22 PM, Peter Maydell wrote:
 > Reported-by: <omerg681@gmail.com>
 > Fixes: https://bugs.launchpad.net/qemu/+bug/1873898
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+
+
 > ---
 >  linux-user/arm/cpu_loop.c | 30 ++++++++----------------------
 >  1 file changed, 8 insertions(+), 22 deletions(-)
@@ -218,11 +192,6 @@ On 4/20/20 11:22 PM, Peter Maydell wrote:
 > +                    get_user_code_u32(insn, env->regs[15] - 4, env);
 > +                    n = insn & 0xffffff;
 >                  }
-
-I couldn't find a git-diff option to display this change in an obvious way.
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
 >  
 >                  if (n == ARM_NR_cacheflush) {
 > @@ -396,6 +381,7 @@ void cpu_loop(CPUARMState *env)
@@ -233,4 +202,7 @@ Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >          excp_debug:
 >              info.si_signo = TARGET_SIGTRAP;
 >              info.si_errno = 0;
+> -- 
+> 2.20.1
+> 
 > 

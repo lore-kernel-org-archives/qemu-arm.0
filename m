@@ -1,69 +1,68 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5067236lfm;
-        Tue, 21 Apr 2020 06:03:19 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKvusMkeuXnecCt2HRQylZ8A8jjsWC7Dy6nf+VAPvQc6je6j3ounylXLZXNDP39Cqt1p+b+
-X-Received: by 2002:a37:6285:: with SMTP id w127mr21879879qkb.189.1587474198885;
-        Tue, 21 Apr 2020 06:03:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587474198; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5068944lfm;
+        Tue, 21 Apr 2020 06:04:39 -0700 (PDT)
+X-Google-Smtp-Source: APiQypK0Ht8ioWxtgTRUOzSa6n4+orGRK4QKqKfii2DntICkSqqq2H7xOoefX+F7fCmFeN6wyoID
+X-Received: by 2002:a37:7744:: with SMTP id s65mr19960279qkc.54.1587474278808;
+        Tue, 21 Apr 2020 06:04:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587474278; cv=none;
         d=google.com; s=arc-20160816;
-        b=lAjZwQ1/R9CCjQT2yy22Z3ogcLXSjcDgtqSyh/wmGEabuxipihkuqdkQuVrSXct47n
-         MWv4I9rXihjIFlReLZHciNZ4U7KrOnlRxtch1tAWCXg59Qk8eDU+7ptdxIhN5sO93K+1
-         MXl7vcMnJxx+EQhfcgSRGiWDggg0TMe/v9n47001/jFvtHyvuTp8SJzZWEMeenx8nT06
-         CYSabsKfILoU/+IhWx7rJIo8sunyzuDQM22OXu0JaK7L0e3GONX8p+1Ni8IGwgmDMHdN
-         aNCIjg5ADc2XGSrp54WYCOV77QS9VMin5L34EqCaqus657HvgTWWitJDPqvI32ddGKXm
-         n/dA==
+        b=VC/1Abp2Xa+cjOJjHArDfNzSQQveQsCu0f+zYBSqY+0fyRfh/3RuvCSSE0fmXcS2oS
+         gE+wKXWb3m2NXgnQVezj0/RuTO9ySRWPJvzV/XtRvc7NSnhpfENtB30QTjeXmFbb3gMC
+         pXXrcmOQ6u7wX/g6g0vmCJPhkcudoeDMbMY9nfrIiUzLn+UAYkmwNgvLaKBypCtaDr5d
+         wW62e9NJJgD7jlHVFTGiw3CZKQJ8FWTpQ78Uncfd/P3HYimi1nraIvcR6YCqGu2m8SwU
+         oNZngT8h18knyuEO7JbZ0uDnw6npNIB0AVx9Cik4ROgt7ZSWLeunsuudqaCoqbJAO1S9
+         GiNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=x/ZPl1AEhknvcUYppslTMoERofU2HD6S60TwK+UYOmM=;
-        b=wcUufqxvNvpNKymlI5iHBZHpVyH3HwvIw/BcOHv9kafsQKS/KHSlgLnuMuqBn/A4q+
-         IQL5Oudkd/bX5sINGh2fXFg72rmmfV5PaSWLm+eSO2JfFb4bGQ8pGDBYi38zP549bbYJ
-         itolwctPOMJtmhpaFOjcVthdzAZ/FnT04ofiuEiLFWRk4ZiySHfoD8rzq0tcR+hNym9R
-         sUYuARN5bcPT6ma9mLiuvfihwv5Vxdo6micgtTeAw6MTpqKJ6CMXqcXM4e+qJyPuA1V/
-         4THfXI/sPxmYNZJUKiwMiUBUVvRJMkUOoiKzdFsgVegWSWawzIhqIRGbhwXIc5vUK6oq
-         VwlA==
+        bh=7o9WDiqX1dbX7UGgU2+TtJdpdZKq9RQxF6zC0tzRatE=;
+        b=MaodUmz4X3HBWjtaldw1U55Eh7H1VD7H7wP02UlMc/q04o2k6vG0SeCpyv9ZP5BeRg
+         GCRl2jlUJGUXFEkc0U4+DvybtgLqtNT1JK86J0elyG4weSWy2/bW3ShOP7XKdicTG9BL
+         kAa9z+DkWS8P46VxglEIwnhOAPE51vFTkX9w1Tf1DX12lRX0lBwITbp1M2C1vQKgZbRn
+         DDZP2Q3u2BcRW+ed84aZZ6E5NIvOZeG9fY7yc4Mx2RhAi0s4UsMKgRztlS8adsfmsLHo
+         8XRd5rAmbo5YXMebQeKJloJwIlzjJAbiwc3uBklL3Agl+RKWMtyv246v3U9HZZWePJQW
+         zbGg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r18si1451262qtk.161.2020.04.21.06.03.18
+        by mx.google.com with ESMTPS id k49si1454014qtb.97.2020.04.21.06.04.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Apr 2020 06:03:18 -0700 (PDT)
+        Tue, 21 Apr 2020 06:04:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57952 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57984 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jQsYY-0000yY-9a
-	for alex.bennee@linaro.org; Tue, 21 Apr 2020 09:03:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44646)
+	id 1jQsZq-00036i-4b
+	for alex.bennee@linaro.org; Tue, 21 Apr 2020 09:04:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44782)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jQsXZ-00081J-Qo
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 09:02:18 -0400
+ id 1jQsXn-0008FJ-DZ
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2020 09:02:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jQsXZ-00029l-4C
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 09:02:17 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3745 helo=huawei.com)
+ id 1jQsXl-0002Xa-EJ
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2020 09:02:31 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3747 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jQsXW-0001py-Vr; Tue, 21 Apr 2020 09:02:16 -0400
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 282EDB33DE35D86207BE;
- Tue, 21 Apr 2020 21:02:04 +0800 (CST)
+ id 1jQsXk-0002Rh-PR; Tue, 21 Apr 2020 09:02:29 -0400
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 7140EC00DC3629278D59;
+ Tue, 21 Apr 2020 21:02:24 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.47.91.160) by
  DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.487.0; Tue, 21 Apr 2020 21:01:55 +0800
+ 14.3.487.0; Tue, 21 Apr 2020 21:02:17 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <imammedo@redhat.com>
-Subject: [PATCH v4 1/7] hw/acpi/nvdimm: Fix for NVDIMM incorrect DSM output
- buffer length
-Date: Tue, 21 Apr 2020 13:59:28 +0100
-Message-ID: <20200421125934.14952-2-shameerali.kolothum.thodi@huawei.com>
+Subject: [PATCH v4 7/7] tests/acpi: add expected tables for bios-tables-test
+Date: Tue, 21 Apr 2020 13:59:34 +0100
+Message-ID: <20200421125934.14952-8-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20200421125934.14952-1-shameerali.kolothum.thodi@huawei.com>
 References: <20200421125934.14952-1-shameerali.kolothum.thodi@huawei.com>
@@ -92,103 +91,99 @@ Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com, mst@redhat.com,
  prime.zeng@hisilicon.com, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DWDbG7hub+hv
+X-TUID: KKhE0fnZNK3u
 
-As per ACPI spec 6.3, Table 19-419 Object Conversion Rules, if
-the Buffer Field <= to the size of an Integer (in bits), it will
-be treated as an integer. Moreover, the integer size depends on
-DSDT tables revision number. If revision number is < 2, integer
-size is 32 bits, otherwise it is 64 bits. Current NVDIMM common
-DSM aml code (NCAL) uses CreateField() for creating DSM output
-buffer. This creates an issue in arm/virt platform where DSDT
-revision number is 2 and results in DSM buffer with a wrong
-size(8 bytes) gets returned when actual length is < 8 bytes.
-This causes guest kernel to report,
+Because of the following changes, the expeacted tables for bios-tables-test
+needs to be updated.
 
-"nfit ACPI0012:00: found a zero length table '0' parsing nfit"
+1. Changed NVDIM DSM output buffer AML code.
+2. Updated arm/virt test_acpi_virt_tcg_memhp() to add pc-dimm/nvdimm
 
-In order to fix this, aml code is now modified such that it builds
-the DSM output buffer in a byte by byte fashion when length is
-smaller than Integer size.
-
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- hw/acpi/nvdimm.c                            | 40 +++++++++++++++++++--
- tests/qtest/bios-tables-test-allowed-diff.h |  2 ++
- 2 files changed, 39 insertions(+), 3 deletions(-)
+ tests/data/acpi/pc/SSDT.dimmpxm             | Bin 685 -> 734 bytes
+ tests/data/acpi/q35/SSDT.dimmpxm            | Bin 685 -> 734 bytes
+ tests/data/acpi/virt/DSDT.memhp             | Bin 6644 -> 6668 bytes
+ tests/data/acpi/virt/NFIT.memhp             | Bin 0 -> 224 bytes
+ tests/data/acpi/virt/SSDT.memhp             | Bin 0 -> 736 bytes
+ tests/qtest/bios-tables-test-allowed-diff.h |   5 -----
+ 6 files changed, 5 deletions(-)
 
-diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-index eb6a37b14e..df0790719a 100644
---- a/hw/acpi/nvdimm.c
-+++ b/hw/acpi/nvdimm.c
-@@ -938,6 +938,7 @@ static void nvdimm_build_common_dsm(Aml *dev)
-     Aml *method, *ifctx, *function, *handle, *uuid, *dsm_mem, *elsectx2;
-     Aml *elsectx, *unsupport, *unpatched, *expected_uuid, *uuid_invalid;
-     Aml *pckg, *pckg_index, *pckg_buf, *field, *dsm_out_buf, *dsm_out_buf_size;
-+    Aml *whilectx, *offset;
-     uint8_t byte_list[1];
- 
-     method = aml_method(NVDIMM_COMMON_DSM, 5, AML_SERIALIZED);
-@@ -1091,13 +1092,46 @@ static void nvdimm_build_common_dsm(Aml *dev)
-     /* RLEN is not included in the payload returned to guest. */
-     aml_append(method, aml_subtract(aml_name(NVDIMM_DSM_OUT_BUF_SIZE),
-                aml_int(4), dsm_out_buf_size));
-+
-+    /*
-+     * As per ACPI spec 6.3, Table 19-419 Object Conversion Rules, if
-+     * the Buffer Field <= to the size of an Integer (in bits), it will
-+     * be treated as an integer. Moreover, the integer size depends on
-+     * DSDT tables revision number. If revision number is < 2, integer
-+     * size is 32 bits, otherwise it is 64 bits.
-+     * Because of this CreateField() canot be used if RLEN < Integer Size.
-+     *
-+     * Also please note that APCI ASL operator SizeOf() doesn't support
-+     * Integer and there isn't any other way to figure out the Integer
-+     * size. Hence we assume 8 byte as Integer size and if RLEN < 8 bytes,
-+     * build dsm_out_buf byte by byte.
-+     */
-+    ifctx = aml_if(aml_lless(dsm_out_buf_size, aml_int(8)));
-+    offset = aml_local(2);
-+    aml_append(ifctx, aml_store(aml_int(0), offset));
-+    aml_append(ifctx, aml_name_decl("TBUF", aml_buffer(1, NULL)));
-+    aml_append(ifctx, aml_store(aml_buffer(0, NULL), dsm_out_buf));
-+
-+    whilectx = aml_while(aml_lless(offset, dsm_out_buf_size));
-+    /* Copy 1 byte at offset from ODAT to temporary buffer(TBUF). */
-+    aml_append(whilectx, aml_store(aml_derefof(aml_index(
-+                                   aml_name(NVDIMM_DSM_OUT_BUF), offset)),
-+                                   aml_index(aml_name("TBUF"), aml_int(0))));
-+    aml_append(whilectx, aml_concatenate(dsm_out_buf, aml_name("TBUF"),
-+                                         dsm_out_buf));
-+    aml_append(whilectx, aml_increment(offset));
-+    aml_append(ifctx, whilectx);
-+
-+    aml_append(ifctx, aml_return(dsm_out_buf));
-+    aml_append(method, ifctx);
-+
-+    /* If RLEN >= Integer size, just use CreateField() operator */
-     aml_append(method, aml_store(aml_shiftleft(dsm_out_buf_size, aml_int(3)),
-                                  dsm_out_buf_size));
-     aml_append(method, aml_create_field(aml_name(NVDIMM_DSM_OUT_BUF),
-                aml_int(0), dsm_out_buf_size, "OBUF"));
--    aml_append(method, aml_concatenate(aml_buffer(0, NULL), aml_name("OBUF"),
--                                       dsm_out_buf));
--    aml_append(method, aml_return(dsm_out_buf));
-+    aml_append(method, aml_return(aml_name("OBUF")));
-+
-     aml_append(dev, method);
- }
- 
+diff --git a/tests/data/acpi/pc/SSDT.dimmpxm b/tests/data/acpi/pc/SSDT.dimmpxm
+index 8ba0e67cb72daa81a65da4906d37a5e0f4af1fd4..ac55387d57e48adb99eb738a102308688a262fb8 100644
+GIT binary patch
+delta 125
+zcmZ3>dXJSWIM^lR9uortW7tG4X>Nb5nD}6)_~<4#t%(LAOunKU-FO)N7nn^=<l-n`
+zNa6@_3Uw1?W@IQ3WMW8PBs(=Jv7oub-^DQ`iJ=1|$G}jW4x-abla{0xR3>sUGbBa}
+TgA_0%`UAz6fQZcnjJAvbW$GgJ
+
+delta 76
+zcmcb|x|WqIIM^j*EfWI+W57f%X>LFDnD}6)_~<5A^@#=|Og=&z-FO(~3Mv!1m>CkI
+dh5cO|Ll_eMokHD;1(_H?bo!F?%?lZA83Fei6ZHT9
+
+diff --git a/tests/data/acpi/q35/SSDT.dimmpxm b/tests/data/acpi/q35/SSDT.dimmpxm
+index 2d5b721bcf9c398feb6d005761f898015042e8a4..98e6f0e3f3bb02dd419e36bdd1db9b94c728c406 100644
+GIT binary patch
+delta 125
+zcmZ3>dXJSWIM^lR9uortquWF-X>Nb5nD}6)_~<4#t%(LAOunKU-FO)N7nn^=<l-n`
+zNa6@_3Uw1?W@IQ3WMW8PBs(=Jv7oub-^DQ`iJ=1|$G}jW4x-abla{0xR3>sUGbBa}
+TgA_0%`UAz6fQZcnjJAvbUiu>C
+
+delta 76
+zcmcb|x|WqIIM^j*EfWI+qr*flX>LFDnD}6)_~<5A^@#=|Og=&z-FO(~3Mv!1m>CkI
+dh5cO|Ll_eMokHD;1(_H?bo!F?%?lZA83FS;6XgH^
+
+diff --git a/tests/data/acpi/virt/DSDT.memhp b/tests/data/acpi/virt/DSDT.memhp
+index c527ac4739af3df3c3e042bf91c412033a2b73c3..730e95a46d2cce0af011ffc051d7342beb8f1328 100644
+GIT binary patch
+delta 66
+zcmexj++)J!66_MfBgMeL^l>7WG*kP$jq2<oOpaWW4Mc*Od{`#8h!~455Sv_`z{SGA
+W#nKj|7a!~t?-%A0w0WzDJu3iIl@a3r
+
+delta 43
+zcmeA%`C`oF66_N4MUsJmsc|BgG*kbajq2<oOr9K*4Mc(&O(wUB7;io=V#^8u9B2%1
+
+diff --git a/tests/data/acpi/virt/NFIT.memhp b/tests/data/acpi/virt/NFIT.memhp
+index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..738c6f74c0ce7dc329cc72cc7b930460ceb9b6a0 100644
+GIT binary patch
+literal 224
+zcmeZs^9*^wz`($G(aGQ0BUr&HBEZ=XD8>jB1F=Cg1XwVzFffCeAhF8JAJRT=DREfi
+z%xf&Mz2`Pir~{&ofdfQyG(dQa3<eBL5GGJRD~JV_hYBH45Sv&S0)VR88W<T6HiHy}
+Pn+P#5Laay9LzoEwN>da8
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/data/acpi/virt/SSDT.memhp b/tests/data/acpi/virt/SSDT.memhp
+index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..db61d6733284c90153e0e2c1d6c2ac25c22b1d84 100644
+GIT binary patch
+literal 736
+zcmZWnJ&4m_7=F{1Ynryuv=ve6ky!_O6-025G-+(0NlTIzAqUNmw7s^&hj$JlLfadz
+zo*?wXEh3U083lL2&DF`tL2x*5cM%-K?@e*=T;7-Od*1JPpXcE-P1*XE0AOy_+fvgM
+z^q#D08a)F*{Xs{<UJ!5W_RV_VUNo;$++h1nRnCi2N3B+OYEW)p(j~E#Ct5=j2lh<w
+zsBOprWHMZeo(xfgK^6-3Jc~$Dw-i;d=M@B!O}W(&j7HBCl&&rbifG)Q{Yu;OVvHKC
+zhAy;a(VG2EhgX9s5Wd6}qVI*9t2gKT^UuY*!Oz|I&iYQc9Zcy)W;5{P^^1q=PetkY
+zi~8|h?Stp6FUJq7Z!;2~Kj&8~7KGfZffHVN77XAd7&#DTf-yvVl8FmLrl^eUp)@i^
+zZDHkU@N&YXf};stvz!2U<k0hpkDAE<T^*oaF6D-|PhE~B;IUS{s~{)g6EHlxcIvt0
+zaEXRISRw|nKg2$K>_tQJ#O0FU+9ezSw@vROEagI9HnmiQA&>UP6JQO~5}~Z64Mnvw
+zY+ErcAR}x9XE39S5im?~i@}LFCFj@yO3@`)kSxrd1o2Hog_0x3J#f(n8@M!%1lT2q
+z6Jm8#juK%h-|N%mEE@9&_-9pypc>!7*C8JuYZjQl__`2oA({8ccl~|O@$5xK?^Ua8
+nUz82zqC>`BY*Tb6M!7_p|2F_GvB7H_Joz7<WbrFft6!x*uUOFm
+
+literal 0
+HcmV?d00001
+
 diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..eb8bae1407 100644
+index 862c49e675..dfb8523c8b 100644
 --- a/tests/qtest/bios-tables-test-allowed-diff.h
 +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,3 @@
+@@ -1,6 +1 @@
  /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/pc/SSDT.dimmpxm",
-+"tests/data/acpi/q35/SSDT.dimmpxm",
+-"tests/data/acpi/pc/SSDT.dimmpxm",
+-"tests/data/acpi/q35/SSDT.dimmpxm",
+-"tests/data/acpi/virt/DSDT.memhp",
+-"tests/data/acpi/virt/SSDT.memhp",
+-"tests/data/acpi/virt/NFIT.memhp",
 -- 
 2.17.1
 

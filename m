@@ -1,101 +1,100 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4778997lfm;
-        Tue, 21 Apr 2020 00:38:19 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKfjwF/H9KM28c6Q258B6rHv8hIfl0GSx8tFrA+VMXcgd/5VpE5JdwMclBVw+KFuo+gQr3d
-X-Received: by 2002:aed:2e24:: with SMTP id j33mr20031041qtd.117.1587454699449;
-        Tue, 21 Apr 2020 00:38:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587454699; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4783510lfm;
+        Tue, 21 Apr 2020 00:44:46 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKS+gq4wH+siudb6sJqV69fDCXd4rb+o1k42TRCszjkTZ8LvUXhpqSkw42oH6+CFsgeqoaA
+X-Received: by 2002:ae9:ed92:: with SMTP id c140mr12951647qkg.29.1587455086288;
+        Tue, 21 Apr 2020 00:44:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587455086; cv=none;
         d=google.com; s=arc-20160816;
-        b=c0Bourex2hoIFZd04tgUCgwmY3NnqJXJ9AgtgzwTtD1BwUaNIlbx3r4o4sLFS6T8ca
-         Jx0KZ7uLfFIaPKWOHUlLgOIzvAntvVmLvMmyDU19oQlIJP3fOiCKiDASHdJSsfo15oNW
-         e2ugb2521HKe+JhSedjvccEs+4gB6R2RTGmeMJv/WG184wjHY9AgfAEAKDBzfsrJxWaZ
-         JsiLxjf7n5fcoBl+dOoZXFo6MEOiv5KujqreCPeIXwwLOiDubHXlzcEm1DsfM01Gkb5G
-         XOknA1NDrP3elT5r7MFt4dnH5Krx8qONNE+Yb+XOkwhjgA564ZrHfYXlTfxbb3oJ4ZjM
-         avug==
+        b=afw7Y3FAv1/HFEl7lERKErx38FoU51vyTLFwg4Aq/ADBPG2+IOOIURnwZ4zQy8vMzL
+         59+Z+B6PXA2/GEgqy58HagrZ/gAEIPIW3WYMQdi2KelHJc7F3Ougc6CrTaOI53i4Yl7T
+         INKWMXqGIWpZ/fL/D2UOgd5KYgwWyBLwR5oaqGy6zEFmlCu9j9HEA1l2zogBbNg8a7rI
+         5IDivcYBOzqd+7u/qtgl1xTlizfvegaHGLiZbBm4h/iA0OrSRxCQjX5CgPVeO6S/SqjD
+         2ExpdyybBT5RbS/BP/5KA3vAHbwgK5tneJh2RdlU9xj4Y+t7CzjnGqJJM6kGETIVjtRF
+         cl2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=0I+i2uN+aZaaCg8jwY2o/kz42Z3W+x/KPcw1jFZ7pQ0=;
-        b=Z2N9jU/mMoVF8xqUVuuD3972VCsSo/HonNt7OKXMHsEwvA9VKIje8FYzNL8VVn9l6O
-         5fFYAvvGA7QpXG64wjZ0SM2twgWtBbKlZblu/qEO2DQJhTsz6X8Ll4H0Mf3OrZmwf5K+
-         Wvlb+zsSUvQ5SbXBNNV1WFbvtzPc7zO+9A4pJD5YLX0AJL1lwB8Y2BdNXuaIT+kVmiyC
-         KM68Dj1QkOerHdEj4izewGOQ2gkDthYX1V3JLbRsq9i9wcvxgCN20y4XjuY//4CPUTtE
-         jsPlPayIAqpzNB0VCXDZCFZdpxLDjZnua4ja1bQf4SI5xjX637ouaCm9rOqg4zASPTg+
-         ZxPw==
+        bh=/MQG4xsj6uyqf1WR9HI/UGL2KbiMtfmovPkUPXitTwc=;
+        b=gAVms1tM9VvgFL75g2NAqOP+/Jw/U6UDQjGC6+WnQ7kFUG5bLnd4BvVxdpbq7If/sj
+         k51RpBQZVtqOReDvMIV0SEnZaIPX4OxfoPGlXjPd8OEkxNkrm6fEVfgoMnXHsgXV6EUe
+         XNmhVW9I9Ecmldo66ONRZhi1rdz6B5a6n9yEMJ3y7//D3XvtsG3Evh8EozJ5Xn5KyMUk
+         2dMbHUMfSEIEUkEOCnGMi/AiFAkahV71/+9ZwzC7DAJgBOvamWpiATxaFDVy4BzNpVUF
+         RiB0ooJb1jRjUp4/ypBe51TIOV9MsIi4WiyK/7suPlFUeytvbNJJgXD/8Hqux58Gv5KG
+         32Ow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JnwcV5Xq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=s1zo8Fek;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p10si977303qtf.319.2020.04.21.00.38.19
+        by mx.google.com with ESMTPS id f18si1076815qkl.44.2020.04.21.00.44.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Apr 2020 00:38:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Apr 2020 00:44:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JnwcV5Xq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=s1zo8Fek;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:52560 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52672 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jQnU2-000853-QJ
-	for alex.bennee@linaro.org; Tue, 21 Apr 2020 03:38:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39892)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jQnaH-00019L-Mb
+	for alex.bennee@linaro.org; Tue, 21 Apr 2020 03:44:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40412)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQnSc-0006OS-GN
- for qemu-devel@nongnu.org; Tue, 21 Apr 2020 03:36:51 -0400
+ id 1jQnVB-0002KO-8m
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2020 03:39:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQnSb-0007Tg-MT
- for qemu-devel@nongnu.org; Tue, 21 Apr 2020 03:36:50 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:43993)
+ id 1jQnV9-00035z-Ms
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2020 03:39:28 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40001)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jQnSb-0007PJ-7U; Tue, 21 Apr 2020 03:36:49 -0400
-Received: by mail-wr1-x444.google.com with SMTP id i10so15223549wrv.10;
- Tue, 21 Apr 2020 00:36:47 -0700 (PDT)
+ id 1jQnUw-0002Xt-9u; Tue, 21 Apr 2020 03:39:14 -0400
+Received: by mail-wm1-x342.google.com with SMTP id u16so2461480wmc.5;
+ Tue, 21 Apr 2020 00:39:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:autocrypt:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=0I+i2uN+aZaaCg8jwY2o/kz42Z3W+x/KPcw1jFZ7pQ0=;
- b=JnwcV5XqoI79khPmZ23aHfEB2E0B4KhSwEp40ZBr3OE1xRHYDZ9ildvvtQyi5ZPMkv
- RY/1tsKnL54A5CpIgc2mCrgIddzc/ExqhzjFE+/QhjGL2DjzvBJ1+5xG+XX4ZCdMg0tY
- z87oLRF4DUmaUFtUHveMvWfBrTKh1Oke0EVq4B2ScbQevgh5mvxNDwRmo3hXdndCwYNX
- NG3CjXigVFZXj4P+LhtVko+edJpdu0NrMejanLhxX0RCSSaqsKH3lLX9p7fR1ndOBI9D
- cm1N7hipJiLQx2WXIhJ+6jfxaJqd2kxCbdrIJ4LU5Yp2FgXdhUZepD8MFqU7hkeztHrN
- GkSQ==
+ bh=/MQG4xsj6uyqf1WR9HI/UGL2KbiMtfmovPkUPXitTwc=;
+ b=s1zo8FekJ1efuOSUoEqcRkQU2n5oubFA1FnFJb6LLP3g3tPp8vweBO9iKRUfzcohsa
+ 7aqgbMzKBiZEjhjKrSWk0nnb6MbYexCxYnHU5IojT8jCZ3UYjuwKlSfKjX6UpDkrUlWE
+ Mry1bzF2rOF4+RS1ZNewNDbTOgHXBmcgAl+0xgWjGqvPZCGtsJYbZJvDUslNGSVqfV6M
+ GDQEGmXuLo/ZOQ+l5CQT7B27FgFCargE85sRj19h5GISu7Ju4Q8gGJwC1MwEdzm9y3Q1
+ oT3/Lq6L0qaKGNX0iNpbSvETlDROn17LPvTMi0DZY0T9RpNBVvubEJJ9Yg8ZCGoC/0Lh
+ qWEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=0I+i2uN+aZaaCg8jwY2o/kz42Z3W+x/KPcw1jFZ7pQ0=;
- b=UpOVQZxo5mxLon+RFnUmUR2SBjmihIO4oIxoNsR0S1YliXx3SRFYm+qmhkbFM7HpQF
- lzZKoXAgd4XYkz8ASyWrhQOU92AUZKkvF20FvujC9ApMI1lwgeXeGgmBNDJhQ4aNG0/i
- l/OA8bFbkQhA3bp6aeVSve4mReOBEunfflyeGdU+QbF1s1HwntdEVKqzQE/xtoKh7q1R
- 4V5KYgckl754/+9NqPn3UeOQxv+jX5sqD7Krk4aobwIQ4dx/orMRGB19/xKDhq2KJGWY
- yxKcmGBG/c4gEF5hfK87ZX+AjRWxgOQvp+0/cw71oZF1Aq0hK2MSRSA14zvCS91ULk2Z
- 7sew==
-X-Gm-Message-State: AGi0PuarhJ0bh88RkoXQbQ7I888U8YjGM4y7MqvOnTe5PkbR8CTiKPw3
- qEjhyBCJYMLRN7mZSldfRx4=
-X-Received: by 2002:adf:f30c:: with SMTP id i12mr23885882wro.426.1587454606849; 
- Tue, 21 Apr 2020 00:36:46 -0700 (PDT)
+ bh=/MQG4xsj6uyqf1WR9HI/UGL2KbiMtfmovPkUPXitTwc=;
+ b=Ry6c1vY7/kPxnAjgqQLjnPGFEJtIwhzJBlhPf3yj+Fud9wKs1EejNIZ5iBdrDYP13X
+ q29BBs3X4kZc0OzJth8Z9pHYl0DFCwaF8gBQOZAdzDhHutuM+dQHCi2LqypmKnkCJts3
+ 9buU+oHPIkyVMjTGE8WKm5PtX2w0+D5e4WzJ60pid8ifqN+FhLITaEK2jW2xHqeg1Hh6
+ KrJQY5+bQqNH5NSEIOgwadYk2TFGtO+nn6N7VDQOJZj/7KUKv3rr7TGQh+VRCAJbBuz9
+ Sqb6NPDNXKFEh+XGMw0fQqoSGKTmtO5VJcye6DurA6p8kRuZMYh5A/iYj2n+9ei5ik9T
+ 7NnQ==
+X-Gm-Message-State: AGi0PuagNazJj3TuWvH2pagcxGq6Sf6d/LuFlvGuE83rwFoaKw2EjNG0
+ ewTFD1s9HSxmcNoXjWsZlAU=
+X-Received: by 2002:a1c:9a16:: with SMTP id c22mr3340186wme.38.1587454752358; 
+ Tue, 21 Apr 2020 00:39:12 -0700 (PDT)
 Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id t17sm2559941wro.2.2020.04.21.00.36.45
+ by smtp.gmail.com with ESMTPSA id k23sm2339779wmi.46.2020.04.21.00.39.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Apr 2020 00:36:46 -0700 (PDT)
-Subject: Re: [PATCH 3/4] linux-user/arm: Handle invalid arm-specific syscalls
- correctly
+ Tue, 21 Apr 2020 00:39:11 -0700 (PDT)
+Subject: Re: [PATCH 2/4] linux-user/arm: Remove bogus SVC 0xf0002 handling
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20200420212206.12776-1-peter.maydell@linaro.org>
- <20200420212206.12776-4-peter.maydell@linaro.org>
+ <20200420212206.12776-3-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Autocrypt: addr=f4bug@amsat.org; keydata=
  mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
@@ -120,96 +119,80 @@ Autocrypt: addr=f4bug@amsat.org; keydata=
  K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
  n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
  CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <9b08f652-ddfd-c8ca-af0d-042824230253@amsat.org>
-Date: Tue, 21 Apr 2020 09:36:45 +0200
+Message-ID: <ac5152f5-be5e-0c07-aa36-0ce326981bb7@amsat.org>
+Date: Tue, 21 Apr 2020 09:39:10 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200420212206.12776-4-peter.maydell@linaro.org>
+In-Reply-To: <20200420212206.12776-3-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::444
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::342
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: omerg681@gmail.com, Riku Voipio <riku.voipio@iki.fi>,
  Laurent Vivier <laurent@vivier.eu>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +oHL1ulDVCUW
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: b34OH6MvlevY
 
 On 4/20/20 11:22 PM, Peter Maydell wrote:
-> The kernel has different handling for syscalls with invalid
-> numbers that are in the "arm-specific" range 0x9f0000 and up:
->  * 0x9f0000..0x9f07ff return -ENOSYS if not implemented
->  * other out of range syscalls cause a SIGILL
-> (see the kernel's arch/arm/kernel/traps.c:arm_syscall())
+> We incorrectly treat SVC 0xf0002 as a cacheflush request (which is a
+> NOP for QEMU).  This is the wrong syscall number, because in the
+> svc-immediate OABI syscall numbers are all offset by the
+> ARM_SYSCALL_BASE value and so the correct insn is SVC 0x9f0002.
+> (This is handled further down in the code with the other Arm-specific
+> syscalls like NR_breakpoint.)
 > 
-> Implement this distinction. (Note that our code doesn't look
-> quite like the kernel's, because we have removed the
-> 0x900000 prefix by this point, whereas the kernel retains
-> it in arm_syscall().)
+> When this code was initially added in commit 6f1f31c069b20611 in
+> 2004, ARM_NR_cacheflush was defined as (ARM_SYSCALL_BASE + 0xf0000 + 2)
+> so the value in the comparison took account of the extra 0x900000
+> offset. In commit fbb4a2e371f2fa7 in 2008, the ARM_SYSCALL_BASE
+> was removed from the definition of ARM_NR_cacheflush and handling
+> for this group of syscalls was added below the point where we subtract
+> ARM_SYSCALL_BASE from the SVC immediate value. However that commit
+> forgot to remove the now-obsolete earlier handling code.
+
+I imagine you wrote this patch wearing an archeologist hat =)
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+> 
+> Remove the spurious ARM_NR_cacheflush condition.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  linux-user/arm/cpu_loop.c | 30 ++++++++++++++++++++++++++----
->  1 file changed, 26 insertions(+), 4 deletions(-)
+>  linux-user/arm/cpu_loop.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
 > 
 > diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
-> index 025887d6b86..f042108b0be 100644
+> index 82d0dd3c312..025887d6b86 100644
 > --- a/linux-user/arm/cpu_loop.c
 > +++ b/linux-user/arm/cpu_loop.c
-> @@ -332,10 +332,32 @@ void cpu_loop(CPUARMState *env)
->                              env->regs[0] = cpu_get_tls(env);
->                              break;
->                          default:
-> -                            qemu_log_mask(LOG_UNIMP,
-> -                                          "qemu: Unsupported ARM syscall: 0x%x\n",
-> -                                          n);
-> -                            env->regs[0] = -TARGET_ENOSYS;
-> +                            if (n < 0xf0800) {
-> +                                /*
-> +                                 * Syscalls 0xf0000..0xf07ff (or 0x9f0000..
-> +                                 * 0x9f07ff in OABI numbering) are defined
-> +                                 * to return -ENOSYS rather than raising
-> +                                 * SIGILL. Note that we have already
-> +                                 * removed the 0x900000 prefix.
-> +                                 */
-> +                                qemu_log_mask(LOG_UNIMP,
-> +                                    "qemu: Unsupported ARM syscall: 0x%x\n",
-> +                                              n);
-> +                                env->regs[0] = -TARGET_ENOSYS;
-> +                            } else {
-> +                                /* Otherwise SIGILL */
-> +                                info.si_signo = TARGET_SIGILL;
-> +                                info.si_errno = 0;
-> +                                info.si_code = TARGET_ILL_ILLTRP;
-> +                                info._sifields._sigfault._addr = env->regs[15];
-> +                                if (env->thumb) {
-> +                                    info._sifields._sigfault._addr -= 2;
-> +                                } else {
-> +                                    info._sifields._sigfault._addr -= 2;
-> +                                }
-> +                                queue_signal(env, info.si_signo,
-> +                                             QEMU_SI_FAULT, &info);
-> +                            }
->                              break;
->                          }
->                      } else {
+> @@ -308,9 +308,7 @@ void cpu_loop(CPUARMState *env)
+>                      n = insn & 0xffffff;
+>                  }
+>  
+> -                if (n == ARM_NR_cacheflush) {
+> -                    /* nop */
+> -                } else if (n == 0 || n >= ARM_SYSCALL_BASE || env->thumb) {
+> +                if (n == 0 || n >= ARM_SYSCALL_BASE || env->thumb) {
+>                      /* linux syscall */
+>                      if (env->thumb || n == 0) {
+>                          n = env->regs[7];
 > 
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

@@ -1,108 +1,109 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp198043lfm;
-        Tue, 21 Apr 2020 21:42:04 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK8R8qN57kKoOY8y7n/ZyUffcAtrLUXGDossnJx1WPT+rocpRRIVXL6vWsfTyoqyBEUIXS2
-X-Received: by 2002:a0c:eb0e:: with SMTP id j14mr22078031qvp.230.1587530524091;
-        Tue, 21 Apr 2020 21:42:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587530524; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp198330lfm;
+        Tue, 21 Apr 2020 21:42:30 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIsw9ckDQ7UOPZu5PNoW8XXPD0oHrC8wZ+HqtRKBCdtZvSxPMEqQrA0xCADt7kFEIjR3ufE
+X-Received: by 2002:ac8:550c:: with SMTP id j12mr24951314qtq.22.1587530550116;
+        Tue, 21 Apr 2020 21:42:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587530550; cv=none;
         d=google.com; s=arc-20160816;
-        b=oHJUnhjR7cycRL+NT0i+1i4Wl77Y1aCiqhpPgw5tQTnMS5VseDmsio2oe3aQmDbzn9
-         I3+TQ+KXnTTKPmDHaRk3M+PURVam9ZzLPleNDAouk2KCDPfJiAte+99Q3ckYtCrMkFqp
-         sKu2UaU62yp4DeO1ALaJl1jlQSYgwIOhS0ndttKFiCivRg7lIxkfWALPFG3nUVruEZMs
-         VbmiKdF4vPWLdtz9ZBqIeo4WiLJebh9758xjSR6Qr2zCZqnXh/EPO4ZG5d5p1F9ly/HX
-         80S+kTbOnPhLAaRngsbWe/x3GerFOgeXPMY4yW8GchRjlcGUzv+S2S65o08Y7orDRhVP
-         B9OQ==
+        b=xkdNK28LvlJOiWjOrUXyNMnGBi8GVNBC45P223UywM5ue1+qDpCfsreddQetkwAekS
+         Tyhh5AT5O92tJ88s3wjgadWbl8qWYt7MLSbG/oMHkP/fJVy5uFsDptaSTSfkEy50WL8L
+         aT1mtFEzZi/KAulM1jI2jf97xg7gFtwwAEM/T+Yil1uTh1f54aKFLxroNBB7Qm0uYLfB
+         ByyloiIwMh/jz4XZspUmSWZ/jTWAhq9WcyypxnRWZoJzR8E6LnEtGH+He8lPyOLTykNH
+         rotbPrVuirA9NwQ2zrSq5pF8O8KhfhlYDvahBXulnwcGV2E8cr/h8QehQZzLMlEAWK/7
+         CvVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=4tSyrjuk3Om51Zcagt3t6yh4FkYKfOOT3yWLv6tJ2Vs=;
-        b=dJPEXK/tVYHXsBaV8gagQ2AQ0Lb7v5fStUSxDF0kjtxI8VB/8+oWcPrsDK3UiedOcr
-         GHIOfuQi7xqtLhrhh9BM32iQ3XUCkbLB5t+0xEYIIoUDJlyXVCRhfQWb6FShDNe3GPtK
-         +fXk4HbdmNoX6D/1AVJB/3MJWzR41fKwtdYltph5jhZ46ai2gsBR6lDlCyzyDGnfcpWK
-         LkR5hkOFOnJIXwR41qXpv8ltJg1Z97zE259aAqZae+guyrkCNI3BC8Y3w01IKIJEt40P
-         SBz6FXu513UyZYaZM579Bx4FvgJ0WSRCiWObNjk5Zq+jYehthP0hyhyHMAPJVq2hdvNM
-         k1tw==
+        bh=7ZJAf0ODZypJUEx/2hOu0Olpz0sJ7Rm6b/UcyBKBG+Y=;
+        b=QqrJqcwrddFoVM+ZqCGLb3nZecrTKwq5Ut4/bZDQDDfn+WGm2629zxMhRCFAxHfnjW
+         MZ/K1QoHZF4Ro1GW88FNLudh5lGO0E6JECA4AwrgWdfzcTeQB/s/VnDpWgP6m2xN9EHs
+         bX2M6d1OFlhUJnsuPgtkzoyFbymH45rmhNuE4hLs+n1DpdYNsYssPvgheGtLVOAzWoKs
+         iqc4lSLnOJL/QwPJnRlDVdd2TfVtnfkSGU8Q9i+/jC1iQLhNS7sbGQ9RDJXWmhSprKmt
+         my8uWohKog+LcOxxvAeAmTOROj3VYSMqiyQkrAnekwL8etbzzt33HluL7X7zjYtfat41
+         0ThQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tdEcW4t6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lK+6xDsS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 10si2619197qko.188.2020.04.21.21.42.03
+        by mx.google.com with ESMTPS id t9si2607585qvp.14.2020.04.21.21.42.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Apr 2020 21:42:04 -0700 (PDT)
+        Tue, 21 Apr 2020 21:42:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tdEcW4t6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lK+6xDsS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41528 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41546 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jR7D1-0006qn-Aa
-	for alex.bennee@linaro.org; Wed, 22 Apr 2020 00:42:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50946)
+	id 1jR7DR-0007eN-CO
+	for alex.bennee@linaro.org; Wed, 22 Apr 2020 00:42:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50510)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jR74u-0001AN-Mh
- for qemu-arm@nongnu.org; Wed, 22 Apr 2020 00:33:54 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jR74j-0000lv-5r
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2020 00:33:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jR74i-0005YE-Dj
- for qemu-arm@nongnu.org; Wed, 22 Apr 2020 00:33:40 -0400
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:42039)
+ (envelope-from <richard.henderson@linaro.org>) id 1jR74h-0005TL-HC
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2020 00:33:28 -0400
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:44021)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jR74h-0005Rl-Ux
- for qemu-arm@nongnu.org; Wed, 22 Apr 2020 00:33:28 -0400
-Received: by mail-pf1-x444.google.com with SMTP id f7so436151pfa.9
- for <qemu-arm@nongnu.org>; Tue, 21 Apr 2020 21:33:27 -0700 (PDT)
+ id 1jR74g-0005Ow-Se
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2020 00:33:26 -0400
+Received: by mail-pl1-x643.google.com with SMTP id z6so427086plk.10
+ for <qemu-arm@nongnu.org>; Tue, 21 Apr 2020 21:33:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=4tSyrjuk3Om51Zcagt3t6yh4FkYKfOOT3yWLv6tJ2Vs=;
- b=tdEcW4t6iHlzfHZT7MTd+nowW120rfdwA2OWXW5lqAGzmrZSFDwmt+9n3UmPfoAos4
- eqUEb+ZQd+XyrEp7acgd9JM1ZfU10GoY8T9KRHdujmvKCfxVwVHyBKljXimnCsJRCUM+
- xCWBT9TDkC47pnwCghsS8QNiqmwZnNzev7VjiPJJ3dHwVw82nOq9FpLDIWkHQpOdIWWu
- T9upG/pVuPXfen905x9u1FgVNC0eLnPpms3RNdCoRhZApYoaDM0yPI8gkh9BgWNxDf3J
- rm6iksS38MZLlCGNFKp0trbfMT2g/SYSqIxl9QGoKQxZli1skpOMGuD0jSz/wDOqTp9i
- TWpA==
+ bh=7ZJAf0ODZypJUEx/2hOu0Olpz0sJ7Rm6b/UcyBKBG+Y=;
+ b=lK+6xDsS9QNiMchdBTw4XEb1+4hXtUPwBgPukHKrkE4+Re3FHUvt9jxCHn+HmpWmmp
+ EIMqiQXHo8sFVCQcYB2iuub6D8Nb4Htb0OHIWXqF5jdIgpHixHBI1Z992x/a8myz475g
+ qDcJIBQDHsYVBXjkBo6Tkt+VMkw5N3kvqXtgovYAkNIVIOcXU+6x6eUyHKFG5YbO3S+b
+ kT36zYM5ph3/nUOjE227/O3zXCMGZNOWImXOEvcGQWHkLu3wLyNDwjkHiCUj4nhHTj0y
+ /mfucr7MthuexsWjRXmthSecmVrjbHRxVtY6epUgaFXlCXQX9aJOx4rrCoxy9H16Y2ff
+ V/2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=4tSyrjuk3Om51Zcagt3t6yh4FkYKfOOT3yWLv6tJ2Vs=;
- b=G46D4FNEFqLzltbsXoIN3VHYfHG/y/Ebet2k8cJExYI+6gvC1TXbzVq7WLijkOOOMJ
- TmCNxq9Bzc1BCavFs35gHkR7p37rrvZzrgNA6OUsB4vJOTPzGKlSzlR7xqHaGGatQ5OZ
- 1Ua5Xw9xNiwwHH8zdcXpn4S47+JLlnPbnoskZQmMOuDC+DzeoBfSV37i3bGoglhegIDe
- Ri5FltRly0DAOpQ9zKSDabkiryPchujFTYmOAidClfu7/wcdECk4QiTKhQie9d8z7I71
- YZP5RkyCsCQpIgiwaACJ7PoGlL4P9n/Pc6xjBBTkmgcV+TckPn2PRWJlvrXOcAlL7HBV
- 6laQ==
-X-Gm-Message-State: AGi0PuZukiudRVGDrG3sloqXVB/mq/Lq6FxfaEj5UMxNlWqkWRvki0Td
- cY7p7X1sH5boaD7XLnbFZ8bZkKEdyXA=
-X-Received: by 2002:aa7:9724:: with SMTP id k4mr10964808pfg.309.1587530006550; 
- Tue, 21 Apr 2020 21:33:26 -0700 (PDT)
+ bh=7ZJAf0ODZypJUEx/2hOu0Olpz0sJ7Rm6b/UcyBKBG+Y=;
+ b=P5j7xlB7nUQswsbxqCt25VAgX+9TmYTTiZKzaKCR/YwXvuwlAuJWJMlo3sSqWjPL8A
+ GmsSwblX4wxE/WZTWn+e5YizwTJrxB67QbmkkpVHXI+Wk7PYgalNCxu9bmk9sGdfhNId
+ bMXcIQxp/a3zansUi4tUSzpqMmoh4Uyc7/D1e+g9O2j9g3uhcnI+dYQ1yym8DFJkFGnf
+ XPbTzFuQLY6X7DKM0s9PGa9DPfX8WgwhaUKWYPOgg3FoXNwffmFvnVC13/Ayf0pCK4Ma
+ Dyl2jmL0Ae2X+bq7OW173ZlKKNRbGto/9+lofhBO/XSppyqDTlNXJMR1ABi/mF3FPDib
+ RDDQ==
+X-Gm-Message-State: AGi0PubChTS9CczlFvKYF6a27Rn940evLPJVTVwv4LO6BF94o/9UArtx
+ +0jE2l/Y/R8eoeVZuXR7ZgQzUObHIiY=
+X-Received: by 2002:a17:902:7795:: with SMTP id
+ o21mr3505790pll.202.1587530005129; 
+ Tue, 21 Apr 2020 21:33:25 -0700 (PDT)
 Received: from localhost.localdomain (174-21-149-226.tukw.qwest.net.
  [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id l137sm4129613pfd.107.2020.04.21.21.33.25
+ by smtp.gmail.com with ESMTPSA id l137sm4129613pfd.107.2020.04.21.21.33.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Apr 2020 21:33:25 -0700 (PDT)
+ Tue, 21 Apr 2020 21:33:24 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 11/18] target/arm: Handle watchpoints in sve_ld1_r
-Date: Tue, 21 Apr 2020 21:33:02 -0700
-Message-Id: <20200422043309.18430-12-richard.henderson@linaro.org>
+Subject: [PATCH v3 10/18] target/arm: Use SVEContLdSt in sve_ld1_r
+Date: Tue, 21 Apr 2020 21:33:01 -0700
+Message-Id: <20200422043309.18430-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200422043309.18430-1-richard.henderson@linaro.org>
 References: <20200422043309.18430-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x444.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::444
+X-Received-From: 2607:f8b0:4864:20::643
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,115 +118,251 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Zeyvu9zdfen8
+X-TUID: 2+xzoN419fbX
 
-Handle all of the watchpoints for active elements all at once,
-before we've modified the vector register.  This removes the
-TLB_WATCHPOINT bit from page[].flags, which means that we can
-use the normal fast path via RAM.
+First use of the new helper functions, so we can remove the
+unused markup.  No longer need a scratch for user-only, as
+we completely probe the page set before reading; system mode
+still requires a scratch for MMIO.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/sve_helper.c | 72 ++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 71 insertions(+), 1 deletion(-)
+ target/arm/sve_helper.c | 188 +++++++++++++++++++++-------------------
+ 1 file changed, 97 insertions(+), 91 deletions(-)
 
 diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 6bae342a17..7992a569b0 100644
+index d007137735..6bae342a17 100644
 --- a/target/arm/sve_helper.c
 +++ b/target/arm/sve_helper.c
-@@ -4371,6 +4371,70 @@ static bool sve_cont_ldst_pages(SVEContLdSt *info, SVEContFault fault,
-     return have_work;
- }
+@@ -4221,9 +4221,9 @@ typedef struct {
+  * final element on each page.  Identify any single element that spans
+  * the page boundary.  Return true if there are any active elements.
+  */
+-static bool __attribute__((unused))
+-sve_cont_ldst_elements(SVEContLdSt *info, target_ulong addr, uint64_t *vg,
+-                       intptr_t reg_max, int esz, int msize)
++static bool sve_cont_ldst_elements(SVEContLdSt *info, target_ulong addr,
++                                   uint64_t *vg, intptr_t reg_max,
++                                   int esz, int msize)
+ {
+     const int esize = 1 << esz;
+     const uint64_t pg_mask = pred_esz_masks[esz];
+@@ -4313,10 +4313,9 @@ sve_cont_ldst_elements(SVEContLdSt *info, target_ulong addr, uint64_t *vg,
+  * Control the generation of page faults with @fault.  Return false if
+  * there is no work to do, which can only happen with @fault == FAULT_NO.
+  */
+-static bool __attribute__((unused))
+-sve_cont_ldst_pages(SVEContLdSt *info, SVEContFault fault, CPUARMState *env,
+-                    target_ulong addr, MMUAccessType access_type,
+-                    uintptr_t retaddr)
++static bool sve_cont_ldst_pages(SVEContLdSt *info, SVEContFault fault,
++                                CPUARMState *env, target_ulong addr,
++                                MMUAccessType access_type, uintptr_t retaddr)
+ {
+     int mmu_idx = cpu_mmu_index(env, false);
+     int mem_off = info->mem_off_first[0];
+@@ -4388,109 +4387,116 @@ static inline bool test_host_page(void *host)
+ /*
+  * Common helper for all contiguous one-register predicated loads.
+  */
+-static void sve_ld1_r(CPUARMState *env, void *vg, const target_ulong addr,
+-                      uint32_t desc, const uintptr_t retaddr,
+-                      const int esz, const int msz,
+-                      sve_ldst1_host_fn *host_fn,
+-                      sve_ldst1_tlb_fn *tlb_fn)
++static inline QEMU_ALWAYS_INLINE
++void sve_ld1_r(CPUARMState *env, uint64_t *vg, const target_ulong addr,
++               uint32_t desc, const uintptr_t retaddr,
++               const int esz, const int msz,
++               sve_ldst1_host_fn *host_fn,
++               sve_ldst1_tlb_fn *tlb_fn)
+ {
+-    const TCGMemOpIdx oi = extract32(desc, SIMD_DATA_SHIFT, MEMOPIDX_SHIFT);
+-    const int mmu_idx = get_mmuidx(oi);
+     const unsigned rd = extract32(desc, SIMD_DATA_SHIFT + MEMOPIDX_SHIFT, 5);
+     void *vd = &env->vfp.zregs[rd];
+-    const int diffsz = esz - msz;
+     const intptr_t reg_max = simd_oprsz(desc);
+-    const intptr_t mem_max = reg_max >> diffsz;
+-    ARMVectorReg scratch;
++    intptr_t reg_off, reg_last, mem_off;
++    SVEContLdSt info;
+     void *host;
+-    intptr_t split, reg_off, mem_off;
++    int flags;
  
-+static void sve_cont_ldst_watchpoints(SVEContLdSt *info, CPUARMState *env,
-+                                      uint64_t *vg, target_ulong addr,
-+                                      int esize, int msize, int wp_access,
-+                                      uintptr_t retaddr)
-+{
-+#ifndef CONFIG_USER_ONLY
-+    intptr_t mem_off, reg_off, reg_last;
-+    int flags0 = info->page[0].flags;
-+    int flags1 = info->page[1].flags;
-+
-+    if (likely(!((flags0 | flags1) & TLB_WATCHPOINT))) {
-+        return;
-+    }
-+
-+    /* Indicate that watchpoints are handled. */
-+    info->page[0].flags = flags0 & ~TLB_WATCHPOINT;
-+    info->page[1].flags = flags1 & ~TLB_WATCHPOINT;
-+
-+    if (flags0 & TLB_WATCHPOINT) {
-+        mem_off = info->mem_off_first[0];
-+        reg_off = info->reg_off_first[0];
-+        reg_last = info->reg_off_last[0];
-+
-+        while (reg_off <= reg_last) {
+-    /* Find the first active element.  */
+-    reg_off = find_next_active(vg, 0, reg_max, esz);
+-    if (unlikely(reg_off == reg_max)) {
++    /* Find the active elements.  */
++    if (!sve_cont_ldst_elements(&info, addr, vg, reg_max, esz, 1 << msz)) {
+         /* The entire predicate was false; no load occurs.  */
+         memset(vd, 0, reg_max);
+         return;
+     }
+-    mem_off = reg_off >> diffsz;
+ 
+-    /*
+-     * If the (remaining) load is entirely within a single page, then:
+-     * For softmmu, and the tlb hits, then no faults will occur;
+-     * For user-only, either the first load will fault or none will.
+-     * We can thus perform the load directly to the destination and
+-     * Vd will be unmodified on any exception path.
+-     */
+-    split = max_for_page(addr, mem_off, mem_max);
+-    if (likely(split == mem_max)) {
+-        host = tlb_vaddr_to_host(env, addr + mem_off, MMU_DATA_LOAD, mmu_idx);
+-        if (test_host_page(host)) {
+-            intptr_t i = reg_off;
+-            host -= mem_off;
+-            do {
+-                host_fn(vd, i, host + (i >> diffsz));
+-                i = find_next_active(vg, i + (1 << esz), reg_max, esz);
+-            } while (i < reg_max);
+-            /* After having taken any fault, zero leading inactive elements. */
+-            swap_memzero(vd, reg_off);
+-            return;
+-        }
+-    }
++    /* Probe the page(s).  Exit with exception for any invalid page. */
++    sve_cont_ldst_pages(&info, FAULT_ALL, env, addr, MMU_DATA_LOAD, retaddr);
+ 
+-    /*
+-     * Perform the predicated read into a temporary, thus ensuring
+-     * if the load of the last element faults, Vd is not modified.
+-     */
++    flags = info.page[0].flags | info.page[1].flags;
++    if (unlikely(flags != 0)) {
+ #ifdef CONFIG_USER_ONLY
+-    swap_memzero(&scratch, reg_off);
+-    host = g2h(addr);
+-    do {
+-        host_fn(&scratch, reg_off, host + (reg_off >> diffsz));
+-        reg_off += 1 << esz;
+-        reg_off = find_next_active(vg, reg_off, reg_max, esz);
+-    } while (reg_off < reg_max);
++        g_assert_not_reached();
+ #else
+-    memset(&scratch, 0, reg_max);
+-    goto start;
+-    while (1) {
+-        reg_off = find_next_active(vg, reg_off, reg_max, esz);
+-        if (reg_off >= reg_max) {
+-            break;
+-        }
+-        mem_off = reg_off >> diffsz;
+-        split = max_for_page(addr, mem_off, mem_max);
++        /*
++         * At least one page includes MMIO (or watchpoints).
++         * Any bus operation can fail with cpu_transaction_failed,
++         * which for ARM will raise SyncExternal.  Perform the load
++         * into scratch memory to preserve register state until the end.
++         */
++        ARMVectorReg scratch;
+ 
+-    start:
+-        if (split - mem_off >= (1 << msz)) {
+-            /* At least one whole element on this page.  */
+-            host = tlb_vaddr_to_host(env, addr + mem_off,
+-                                     MMU_DATA_LOAD, mmu_idx);
+-            if (host) {
+-                host -= mem_off;
+-                do {
+-                    host_fn(&scratch, reg_off, host + mem_off);
+-                    reg_off += 1 << esz;
+-                    reg_off = find_next_active(vg, reg_off, reg_max, esz);
+-                    mem_off = reg_off >> diffsz;
+-                } while (split - mem_off >= (1 << msz));
+-                continue;
++        memset(&scratch, 0, reg_max);
++        mem_off = info.mem_off_first[0];
++        reg_off = info.reg_off_first[0];
++        reg_last = info.reg_off_last[1];
++        if (reg_last < 0) {
++            reg_last = info.reg_off_split;
++            if (reg_last < 0) {
++                reg_last = info.reg_off_last[0];
+             }
+         }
+ 
+-        /*
+-         * Perform one normal read.  This may fault, longjmping out to the
+-         * main loop in order to raise an exception.  It may succeed, and
+-         * as a side-effect load the TLB entry for the next round.  Finally,
+-         * in the extremely unlikely case we're performing this operation
+-         * on I/O memory, it may succeed but not bring in the TLB entry.
+-         * But even then we have still made forward progress.
+-         */
+-        tlb_fn(env, &scratch, reg_off, addr + mem_off, retaddr);
+-        reg_off += 1 << esz;
+-    }
+-#endif
++        do {
 +            uint64_t pg = vg[reg_off >> 6];
 +            do {
 +                if ((pg >> (reg_off & 63)) & 1) {
-+                    cpu_check_watchpoint(env_cpu(env), addr + mem_off,
-+                                         msize, info->page[0].attrs,
-+                                         wp_access, retaddr);
++                    tlb_fn(env, &scratch, reg_off, addr + mem_off, retaddr);
 +                }
-+                reg_off += esize;
-+                mem_off += msize;
-+            } while (reg_off <= reg_last && (reg_off & 63));
-+        }
++                reg_off += 1 << esz;
++                mem_off += 1 << msz;
++            } while (reg_off & 63);
++        } while (reg_off <= reg_last);
+ 
+-    memcpy(vd, &scratch, reg_max);
++        memcpy(vd, &scratch, reg_max);
++        return;
++#endif
 +    }
 +
-+    mem_off = info->mem_off_split;
-+    if (mem_off >= 0) {
-+        cpu_check_watchpoint(env_cpu(env), addr + mem_off, msize,
-+                             info->page[0].attrs, wp_access, retaddr);
++    /* The entire operation is in RAM, on valid pages. */
++
++    memset(vd, 0, reg_max);
++    mem_off = info.mem_off_first[0];
++    reg_off = info.reg_off_first[0];
++    reg_last = info.reg_off_last[0];
++    host = info.page[0].host;
++
++    while (reg_off <= reg_last) {
++        uint64_t pg = vg[reg_off >> 6];
++        do {
++            if ((pg >> (reg_off & 63)) & 1) {
++                host_fn(vd, reg_off, host + mem_off);
++            }
++            reg_off += 1 << esz;
++            mem_off += 1 << msz;
++        } while (reg_off <= reg_last && (reg_off & 63));
 +    }
 +
-+    mem_off = info->mem_off_first[1];
-+    if ((flags1 & TLB_WATCHPOINT) && mem_off >= 0) {
-+        reg_off = info->reg_off_first[1];
-+        reg_last = info->reg_off_last[1];
++    /*
++     * Use the slow path to manage the cross-page misalignment.
++     * But we know this is RAM and cannot trap.
++     */
++    mem_off = info.mem_off_split;
++    if (unlikely(mem_off >= 0)) {
++        tlb_fn(env, vd, info.reg_off_split, addr + mem_off, retaddr);
++    }
++
++    mem_off = info.mem_off_first[1];
++    if (unlikely(mem_off >= 0)) {
++        reg_off = info.reg_off_first[1];
++        reg_last = info.reg_off_last[1];
++        host = info.page[1].host;
 +
 +        do {
 +            uint64_t pg = vg[reg_off >> 6];
 +            do {
 +                if ((pg >> (reg_off & 63)) & 1) {
-+                    cpu_check_watchpoint(env_cpu(env), addr + mem_off,
-+                                         msize, info->page[1].attrs,
-+                                         wp_access, retaddr);
++                    host_fn(vd, reg_off, host + mem_off);
 +                }
-+                reg_off += esize;
-+                mem_off += msize;
++                reg_off += 1 << esz;
++                mem_off += 1 << msz;
 +            } while (reg_off & 63);
 +        } while (reg_off <= reg_last);
 +    }
-+#endif
-+}
-+
- /*
-  * The result of tlb_vaddr_to_host for user-only is just g2h(x),
-  * which is always non-null.  Elide the useless test.
-@@ -4412,13 +4476,19 @@ void sve_ld1_r(CPUARMState *env, uint64_t *vg, const target_ulong addr,
-     /* Probe the page(s).  Exit with exception for any invalid page. */
-     sve_cont_ldst_pages(&info, FAULT_ALL, env, addr, MMU_DATA_LOAD, retaddr);
+ }
  
-+    /* Handle watchpoints for all active elements. */
-+    sve_cont_ldst_watchpoints(&info, env, vg, addr, 1 << esz, 1 << msz,
-+                              BP_MEM_READ, retaddr);
-+
-+    /* TODO: MTE check. */
-+
-     flags = info.page[0].flags | info.page[1].flags;
-     if (unlikely(flags != 0)) {
- #ifdef CONFIG_USER_ONLY
-         g_assert_not_reached();
- #else
-         /*
--         * At least one page includes MMIO (or watchpoints).
-+         * At least one page includes MMIO.
-          * Any bus operation can fail with cpu_transaction_failed,
-          * which for ARM will raise SyncExternal.  Perform the load
-          * into scratch memory to preserve register state until the end.
+ #define DO_LD1_1(NAME, ESZ) \
 -- 
 2.20.1
 

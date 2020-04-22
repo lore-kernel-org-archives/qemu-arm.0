@@ -1,105 +1,111 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5367483lfm;
-        Tue, 21 Apr 2020 11:00:58 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIRcuA4Rbs695yAP7f/i1f8P21rxXrliJ0xPHsa/ZiYV3uN8BVRvAS4jHM+USo549R986vx
-X-Received: by 2002:a37:6e87:: with SMTP id j129mr23172880qkc.358.1587492058199;
-        Tue, 21 Apr 2020 11:00:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587492058; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp145891lfm;
+        Tue, 21 Apr 2020 20:22:18 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLa1oKZzbduySZTOpRnaf5753dsztvBREILSYgDr/idFO+1R30J+jCXgmsZ5n3em1xbm1OH
+X-Received: by 2002:ac8:45cf:: with SMTP id e15mr24602996qto.21.1587525738083;
+        Tue, 21 Apr 2020 20:22:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587525738; cv=none;
         d=google.com; s=arc-20160816;
-        b=LXeenfLWbHhAQP5YgDPFwxEkuWtb4hTSwDLXcwTIwqS/pyawE1XKFx1QkzkZqGXVdO
-         RvJc0GDz8JK3ZpX6M4QgXByiJ0IRaCXqsehkjVPJbqSgzxfBQRG895uO+WnLMg6f4cAj
-         iUnsAOL62PqfXdsbx3GcASauRiv3AF+pXAUbK7EFlHwWLwbLf6wlcEKZJuda744y94zl
-         BQOqyhSUUqVk37B14JGm9+CWKZPI9NffZuFmTS9nRubSud7KfbTmMH794aBqp7EFCjqI
-         0cSf76iRGrvLBs3cQSZvwrgJIy/sitSPLVL4wtLNo9mVa9KZ8AEKutSE+f+CC4WKCUe4
-         QiMQ==
+        b=J30d+q333H7gsnBsurEdogGnYUr7tyoL/+RV9+8o3tT0dyUOjVgKNCUt+GzN5MzVKz
+         3hlAu900C6mLTzCW0tu/fVmCNh8iYbZP7FZhym9KiMi8CFQdJ0TP4XjbCmk81CCvdeLR
+         dm1kGJe1CtPJDawHckJfI59aF2ZwbRtOcOlZQb4be+rUdP+3NiNu5ADqAMFaGSRqmcTy
+         OExs9OfBgU8gAGY2PRiXqYY3d2Gh5pUZEaB1OFIRqdO9q0iFRxS5KSTi8uvzsqSFbGxs
+         gVU/DQSOdcYdQjeJ89c9wPiHfUvh2gtU6wDx8tLoKOgpYicwF43+korqG0Ace0JtO2em
+         N6Pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=xwpNrYKj/zzgQ1bzbyDvID/w73eI2bj4wJvZ0HwZmO0=;
-        b=FBMZDTBHhLCKiPNGGkpuAiAgygHj4MIGXmlwrJAWi1h8rfQllcfWdGzXvEMnR85G+y
-         kCaGsMznGyasR9yM2QzUN9G2M9Awj9M4YZRtzCYzywTesqt1qLNE4UEsk0RcFS+G7fNE
-         vNvC9L7YM/iuhB4ja63bctgP4S9VN3v9o/prCJtw14H3UbSpfQF8LHdzTVQKYXHpiaqq
-         Gl9zo3/945Xk74TLpLt4Q+fx63GkDj7LkrJks+T9ZcKEKDbW6U/XuA/heup2/P/VVGfw
-         5OpBB+H5XMJ6fWF2Pg9GSW6HxJ79yJQ+d0PzhTT1RS1wb1yhPeCmMuk3Ijts55R9OdXd
-         XeEg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=LSac1QTTZ7wQ13jD7Q3AfAMsMClaAbzuB0bS+btyUWU=;
+        b=Aouuc2urx/xRD70t7/sXwzAiz0HzcrpUSM7xDaw+TcHuAAuecQ1OIYyhtCAh8bitfx
+         4l8fpKZH6C+4eAmtQJ8a7oLC5A1NmjSwZ5RPg6MwgFTMLO+1B7Z1nrYa084PEy5+58J4
+         Pmom4IaRh3Q/9YQjzDx3ocRnhp45MFKePWRVym7EO+2ZAMNITidtqRiIwpZFf9vABxvF
+         xVjF9E6rTkurDcvzZZZKpPcbvSGfIQwsWvNLxOX+NqTddpx9k501xEMPLoQRldN2g98B
+         KNWLjoa0LDdpqjpB00ypArSpxkt0radNcKCXBt3A0tqwThqiYJOJQkmayhWIQdpFJuXe
+         JmOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=R4LPYUUr;
+       dkim=pass header.i=@linaro.org header.s=google header.b="DW8/eRZE";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f7si1831892qte.51.2020.04.21.11.00.57
+        by mx.google.com with ESMTPS id r17si2426274qtk.333.2020.04.21.20.22.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Apr 2020 11:00:58 -0700 (PDT)
+        Tue, 21 Apr 2020 20:22:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=R4LPYUUr;
+       dkim=pass header.i=@linaro.org header.s=google header.b="DW8/eRZE";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34028 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40364 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jQxCb-00070m-Fk
-	for alex.bennee@linaro.org; Tue, 21 Apr 2020 14:00:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39978)
+	id 1jR5xp-0000ML-DN
+	for alex.bennee@linaro.org; Tue, 21 Apr 2020 23:22:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60198)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1jQxCL-0006zS-SH
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 14:00:42 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jR5xM-0008KJ-Sn
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2020 23:21:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <dgilbert@redhat.com>) id 1jQxCK-0004D0-6P
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 14:00:41 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:45163
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1jQxCJ-0004B5-PC
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 14:00:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587492037;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xwpNrYKj/zzgQ1bzbyDvID/w73eI2bj4wJvZ0HwZmO0=;
- b=R4LPYUUrz78vwFbbcZm3Bvj+1nPkcWDyqzrVdNGRkmmp/LncO97cIKCEEgJb/biweuHO+I
- J4V1O2wnTo1TcqWMN8ieZuZlTINK4MBzL+3IFx3Cu8S7rpVuVx4qxOlnW1EqGTVz2zZtA2
- DuN9X4WJ9zyhWIc2HQ8XxLVfQdhLn5k=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-483-aB9XF869Mta-plaDVrrYDw-1; Tue, 21 Apr 2020 14:00:35 -0400
-X-MC-Unique: aB9XF869Mta-plaDVrrYDw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AE8F2107ACC7;
- Tue, 21 Apr 2020 18:00:30 +0000 (UTC)
-Received: from work-vm (ovpn-115-8.ams2.redhat.com [10.36.115.8])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 307161001B09;
- Tue, 21 Apr 2020 18:00:26 +0000 (UTC)
-Date: Tue, 21 Apr 2020 19:00:24 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [RFC PATCH 03/17] hw/misc/temp-sensor: Add 'info temp' HMP command
-Message-ID: <20200421180024.GL3029@work-vm>
-References: <20200421121626.23791-1-f4bug@amsat.org>
- <20200421121626.23791-4-f4bug@amsat.org>
+ (envelope-from <richard.henderson@linaro.org>) id 1jR5xK-0007bh-Kn
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2020 23:21:48 -0400
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:37023)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jR5xK-0007YL-3C
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2020 23:21:46 -0400
+Received: by mail-pf1-x441.google.com with SMTP id d184so364983pfd.4
+ for <qemu-arm@nongnu.org>; Tue, 21 Apr 2020 20:21:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=LSac1QTTZ7wQ13jD7Q3AfAMsMClaAbzuB0bS+btyUWU=;
+ b=DW8/eRZEZ4nt32RLrKX7qPNcMCRqyCj6btPdFGUqVNSz+/XdjPd/B/EWKP4gdBzgli
+ kZajsfCFmLWh65jCxbC90zzlUqJ6apW7Vj61XhjS7YnXfoQ1h/LfAKwvQZgAfHhoI2bA
+ sGkZnQRp8EhtPsyU26j65pum+nx7rCl1vEZKsyjK4Uv4yfU3BumNLnRasNZ0lmuNlwhN
+ kj0iyK+XrQxjmtfia5LEzD271wSg1SrQdOl6BIYJOb96YsAqjANE9yOowEDiZr2bPm0f
+ iQ7SELmN+Crq1817qC7R5grm+Tw+geEIOzai0mUFd95EJpktBx/Tn3jb8AIL7rx0z24y
+ BBHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=LSac1QTTZ7wQ13jD7Q3AfAMsMClaAbzuB0bS+btyUWU=;
+ b=n0OxPjif7AacIdOdNx6rhq/8TapP9zi3RsfP6CBnQsmFPjZJliXV5DGDybZaUgmiY7
+ oXnExfZy0S+YYEqNF5Fh/VfVO9qDUdATY+GssNzOEgCqTlU4G5oYYHtdM6x0tQFq6NSA
+ eEH6LXRXEd2E00sOsAxHnrC90ygfAU9u09S5RdxB69vch5LREyOLDOP0w2mhNaIVDoKJ
+ XevhiisJl6VCK/hKuZ5nJd4uNkAk7DrTpp9v8ULi4o75lULWiuisyUTOvDRxBs7VQi+M
+ ZO440BnqKrT5odQBwVeK2oNFPyUo6teEdIDxOt2tsRGS9coa3S1vNm84sJHrckoIqq7u
+ nQuA==
+X-Gm-Message-State: AGi0PuaM5BmwI0h+d0ZTsKizY/p866O/aRliJODp/eEw37wClJ3acm7d
+ rSE7IV/p57eu3zdyW/aGhCkHfA==
+X-Received: by 2002:a62:2506:: with SMTP id l6mr23854953pfl.184.1587525704080; 
+ Tue, 21 Apr 2020 20:21:44 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
+ by smtp.gmail.com with ESMTPSA id 1sm3828470pjc.32.2020.04.21.20.21.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 21 Apr 2020 20:21:43 -0700 (PDT)
+Subject: Re: [PATCH] target/arm: Implement SVE2 FMMLA
+To: Stephen Long <steplong@quicinc.com>, qemu-devel@nongnu.org
+References: <20200420151044.12186-1-steplong@quicinc.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <d6e4b681-751f-cc36-0453-38db6635c227@linaro.org>
+Date: Tue, 21 Apr 2020 20:21:41 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200421121626.23791-4-f4bug@amsat.org>
-User-Agent: Mutt/1.13.4 (2020-02-15)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/21 01:28:51
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Received-From: 207.211.31.81
+In-Reply-To: <20200420151044.12186-1-steplong@quicinc.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
+ Malformed IPv6 address (bad octet value).
+ Location : parse_addr6(), p0f-client.c:67
+X-Received-From: 2607:f8b0:4864:20::441
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,129 +117,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-block@nongnu.org, qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, John Snow <jsnow@redhat.com>,
- Markus Armbruster <armbru@redhat.com>
+Cc: qemu-arm@nongnu.org, apazos@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4vjLBlvitlB+
+X-TUID: Wt4wp410Pjcv
 
-* Philippe Mathieu-Daud=E9 (f4bug@amsat.org) wrote:
-> Add a command to display current devices temperature in the monitor:
->=20
->   (qemu) info temp
->   Temperatures (in C):
->   videocore                          25.00
->   bcm2835-thermal-0                  25.00
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+On 4/20/20 8:10 AM, Stephen Long wrote:
+> +#define DO_FP_MATRIX_MUL(NAME, TYPE, H)                                     \
+> +void HELPER(NAME)(void *vd, void *va, void *vn, void *vm,                   \
+> +                     void *status, uint32_t desc)                           \
+> +{                                                                           \
+> +    intptr_t s, i, j;                                                       \
+> +    intptr_t opr_sz = simd_oprsz(desc) / (sizeof(TYPE) >> 2);               \
+> +                                                                            \
+> +    for (s = 0; s < opr_sz; ++s) {                                          \
+> +        TYPE *n = vn + s * (sizeof(TYPE) >> 2);                             \
+> +        TYPE *m = vm + s * (sizeof(TYPE) >> 2);                             \
+> +        TYPE *a = va + s * (sizeof(TYPE) >> 2);                             \
+> +        TYPE *d = vd + s * (sizeof(TYPE) >> 2);                             \
+> +                                                                            \
+> +        for (i = 0; i < 1; ++i) {                                           \
+> +            for (j = 0; j < 1; ++j) {                                       \
+> +                TYPE addend = a[H(2*i + j)];                                \
+> +                                                                            \
+> +                TYPE nn0 = n[H(2*i)];                                       \
+> +                TYPE mm0 = m[H(2*j)];                                       \
+> +                TYPE prod0 = TYPE##_mul(nn0, mm0, status);                  \
+> +                                                                            \
+> +                TYPE nn1 = n[H4(2*i + 1)];                                  \
+> +                TYPE mm1 = m[H4(2*j + 1)];                                  \
+> +                TYPE prod1 = TYPE##_mul(nn1, mm1, status);                  \
+> +                                                                            \
+> +                TYPE sum = TYPE##_add(prod0, prod1, status);                \
+> +                d[H(2*i + j)] = TYPE##_add(sum, addend, status);            \
+> +            }                                                               \
+> +        }                                                                   \
 
-How do I set the temperature?
+This has a read-after-write problem, when D overlaps any of the inputs.  You
+need to read all of the inputs before writing anything.
 
-> ---
->  include/monitor/hmp.h |  1 +
->  hw/misc/temp-sensor.c | 29 +++++++++++++++++++++++++++++
->  hmp-commands-info.hx  | 11 +++++++++++
->  3 files changed, 41 insertions(+)
->=20
-> diff --git a/include/monitor/hmp.h b/include/monitor/hmp.h
-> index e33ca5a911..f023230bd1 100644
-> --- a/include/monitor/hmp.h
-> +++ b/include/monitor/hmp.h
-> @@ -129,5 +129,6 @@ void hmp_hotpluggable_cpus(Monitor *mon, const QDict =
-*qdict);
->  void hmp_info_vm_generation_id(Monitor *mon, const QDict *qdict);
->  void hmp_info_memory_size_summary(Monitor *mon, const QDict *qdict);
->  void hmp_info_sev(Monitor *mon, const QDict *qdict);
-> +void hmp_info_temp(Monitor *mon, const QDict *qdict);
-> =20
->  #endif
-> diff --git a/hw/misc/temp-sensor.c b/hw/misc/temp-sensor.c
-> index 27750c533d..5f591bd9c3 100644
-> --- a/hw/misc/temp-sensor.c
-> +++ b/hw/misc/temp-sensor.c
-> @@ -12,6 +12,8 @@
->  #include "hw/misc/temp-sensor.h"
->  #include "qapi/qapi-commands-misc.h"
->  #include "qapi/error.h"
-> +#include "monitor/monitor.h"
-> +#include "monitor/hmp.h"
-> =20
->  static int query_temperature_sensors_foreach(Object *obj, void *opaque)
->  {
-> @@ -59,6 +61,33 @@ TemperatureSensorList *qmp_query_temperature_sensors(E=
-rror **errp)
->      return list;
->  }
-> =20
-> +void hmp_info_temp(Monitor *mon, const QDict *qdict)
-> +{
-> +    TemperatureSensorList *list, *sensor;
-> +    Error *err =3D NULL;
-> +
-> +    list =3D qmp_query_temperature_sensors(&err);
-> +    if (!list) {
-> +        monitor_printf(mon, "No temperature sensors\n");
-> +        return;
-> +    }
-> +    if (err) {
-> +        monitor_printf(mon, "Error while getting temperatures: %s\n",
-> +                       error_get_pretty(err));
-> +        error_free(err);
+It might be easiest to just unroll these two inner loops:
 
-Maybe use hmp_handle_error
+    TYPE n00 = n[0], n01 = n[1], n10 = n[2], n11 = n[3];
+    TYPE m00 = m[0], m01 = m[1], m10 = m[2], m11 = m[3];
+    TYPE p0, p1;
 
-> +        goto out;
-> +    }
-> +
-> +    monitor_printf(mon, "Temperatures (in C):\n");
-> +    for (sensor =3D list; sensor; sensor =3D sensor->next) {
-> +        monitor_printf(mon, "%-33s %6.2f\n", sensor->value->name,
-> +                       sensor->value->temperature);
+    // i = 0, j = 0
+    p0 = mul(n00, m00, status);
+    p1 = mul(n01, m01, status);
+    a[0] = add(a[0], add(p0, p1, status), status);
 
-See my question on the earlier patch; I'm curious here whether we want
-device name, and then subname within that device.
+    // i = 0, j = 1
+    p0 = mul(n00, m10, status);
+    p1 = mul(n01, m11, status);
+    a[1] = add(a[1], add(p0, p1, status), status);
+    ...
 
-Dave
 
-> +    }
-> +
-> +out:
-> +    qapi_free_TemperatureSensorList(list);
-> +}
-> +
->  static TypeInfo tempsensor_interface_type_info =3D {
->      .name =3D TYPE_TEMPSENSOR_INTERFACE,
->      .parent =3D TYPE_INTERFACE,
-> diff --git a/hmp-commands-info.hx b/hmp-commands-info.hx
-> index ca5198438d..77f1c43ce3 100644
-> --- a/hmp-commands-info.hx
-> +++ b/hmp-commands-info.hx
-> @@ -880,4 +880,15 @@ SRST
->      Show SEV information.
->  ERST
-> =20
-> +    {
-> +        .name       =3D "temp",
-> +        .args_type  =3D "",
-> +        .params     =3D "",
-> +        .help       =3D "show device temperatures",
-> +        .cmd        =3D hmp_info_temp,
-> +    },
-> =20
-> +SRST
-> +  ``info temp``
-> +    Show device temperatures.
-> +ERST
-> --=20
-> 2.21.1
->=20
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
+r~

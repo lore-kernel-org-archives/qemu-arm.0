@@ -1,138 +1,205 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp127541lfm;
-        Tue, 21 Apr 2020 19:56:26 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKZeJ/m1rztY3DemsWzRyDQXUYpURe8sK7mntwp1qqjRO2zsCImTRrYhcwcVgfjxUnUiOfA
-X-Received: by 2002:aed:2142:: with SMTP id 60mr24806876qtc.177.1587524186126;
-        Tue, 21 Apr 2020 19:56:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587524186; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp136541lfm;
+        Tue, 21 Apr 2020 20:07:56 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJCCGrNEjM6xJxfGa27lh2IqFKapByekhh/SGAUBW2Jz/wrmMACCEIkk6yZ0fe3o9HMm0V3
+X-Received: by 2002:a37:49c6:: with SMTP id w189mr23087352qka.444.1587524876363;
+        Tue, 21 Apr 2020 20:07:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587524876; cv=none;
         d=google.com; s=arc-20160816;
-        b=BepnIrMlP1D4ibPW0tuB7YcY7wcRbv2L8y3uElfvDTQtJdPNh2lk/4LU1z+O8HodvB
-         aoWFR/7SFZ2w3n//fVRHM3NxnxJs6piYwd3ETzOQCoioRQgBaNs5lsMuulfILSWPNzvs
-         vtQQvZj9PRahDXKQUrxTkzhAXw2wIXptxpH5jStpxYy7aLDD6m7qkhvBscTcXwizOQHe
-         JfChtINUDVtsI5hF9qpVKEE5RYWN2SoZ5vr5EDjZLF5+PUaNtWlNQTz1MOh1Du7YpgcS
-         qWspASltGV/M0ICyaf77+N4iloPqs6YKHfZDvPayjJ5BChdnGzRCVEnnzkBcaGr/L548
-         oLvA==
+        b=Vcvch0pfM6BpOBAJCIGQg6LaW3UBBmABBxSV/dAaqcN8xuHU7tIruZxwhGoqonG6zY
+         nzapAporZT0Dis+7HlQifDXqCO35xg1nxnyG0RN+ZhIzj/eHckcuo+TZprg/l9fxIQcY
+         dBSvdV3B4u52WJqtB3Ia3ruo7X61EjhL61AhFuR/RO2DW6dKFKgxcXKryQe0uQe1uLud
+         T4PFYz39OmDrT0uXHGFbU9CYnZqt2BDIRxedB3gDKj56Fo+5fTVvZKI73EGSDCqfPtEg
+         JofaKQydCGUAcIJveI+651vkidgm9wZu8yTlUu41z7VElXeNF2rJbfi0ow5esogW2VLp
+         i9BQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=czzqj7vu5BMsF7L+JiAZg+a4gqFb+cpUNZ+P9HRtzjU=;
-        b=mJa1IKYwjavJiOZi8CZqiGaYfnJlsuMiqvAqul1Sx99rtSJeVYe+vzgOR8+irWuq5S
-         BetH75VzOA53bM/3XBrZbG5ScVBUEEFYi91L2Ujxce/qfz3R4i6IR+YodVhH5+5FO6/6
-         9n15d5LDq0mINpzE856j8otwI292r5fo/D4JemMpzX6pdY3P9KXQQM1DA5OYp0e4487Y
-         HwUki/h9agE1EGmvFY1cWVydO4K3XATH8RQkaPO/UdcQwfi9GVwAiKDJFodBV9spUiI4
-         kkeKAUOXItAQBhzHiaOdXfH/8S9YT5IkcjRP/sa4CHKg2vryJkL7H4qc9y6l/yD9JLVG
-         0CxA==
+        bh=2oxoHtq9PZYqYLwQaOi1NQyPrMBVH6kT96nkKq5jzvE=;
+        b=KpvfAPCzJ2YJSzUO8puEMq2EyH0Rn1HmX03O1vSVdhyn2RoJKxakIq2s+JWqSVJFuf
+         mC0DyYPvE5KTCVV15RhzZV+7nlhTHQHKRmYdQ6VPkjvLHVspVHTROKabYR2shB2y14iH
+         BNYXnPUP5dCq1ypOfH7yKmhOI50yWk4FdfeQa8T3+whfMHtnFbhbuauf2hH6gYwXtqKY
+         FBww/JLsDipUmcA1W4Eia0SOnkWB3HsS/mVpeC+g7/04kk1iM3ZZy1pvTpciyqVzp6lV
+         Lpw//yL/RgzzWTJl5WNN4z83UlRTMsXDQ+lB0KxdwMrTORq4Xwc+7S9ya8M/QuzrjKP+
+         VTtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ETbNO1iP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@163.com header.s=s110527 header.b=TQU2jwV7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s11si2386430qte.159.2020.04.21.19.56.25
+        by mx.google.com with ESMTPS id u4si2511180qve.63.2020.04.21.20.07.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Apr 2020 19:56:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Apr 2020 20:07:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ETbNO1iP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40092 helo=lists1p.gnu.org)
+       dkim=pass header.i=@163.com header.s=s110527 header.b=TQU2jwV7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=163.com
+Received: from localhost ([::1]:40166 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jR5Yn-0001pS-J8
-	for alex.bennee@linaro.org; Tue, 21 Apr 2020 22:56:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54872)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jR5jv-0005UV-RP
+	for alex.bennee@linaro.org; Tue, 21 Apr 2020 23:07:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43340)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jR5Yd-0001oD-Cs
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 22:56:15 -0400
+ (envelope-from <liuzwnan@163.com>) id 1jR5jA-00054X-5e
+ for qemu-devel@nongnu.org; Tue, 21 Apr 2020 23:07:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jR5YR-0007fX-F1
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 22:56:15 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636]:43943)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jR5YR-0007WK-31
- for qemu-arm@nongnu.org; Tue, 21 Apr 2020 22:56:03 -0400
-Received: by mail-pl1-x636.google.com with SMTP id z6so332097plk.10
- for <qemu-arm@nongnu.org>; Tue, 21 Apr 2020 19:56:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=czzqj7vu5BMsF7L+JiAZg+a4gqFb+cpUNZ+P9HRtzjU=;
- b=ETbNO1iPLwlbb7wgP1fsDn9PJID6/CR3RHfZvjPFCgP2bC9T1rF0Se2MksIZcCJt1/
- OKN81CxC5cjKWVECMYIrmJ4Nb40VzWP0Ctui7PHHKWdiJAgEscCOloKrBdvidZQuncq1
- D5F3xSVbufg9lGJLSBJc7I1jcZy7T1RUQwETltR3uXMpuRr1oCTXqkozU8s3PHUKYJ0e
- d1XdLZBsLsr1TQJbrxG9ArbDdcO40dGtCiAaNYBvu3nAYIae+RTBUdIP1PT0tWKkp2ru
- nsGXUQd8Swxe4MQKRQcqAIIZSbnMtdn3zRYU1Lez3m98uPkEFXIvz87X+YE6xcDYSRbK
- nptQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=czzqj7vu5BMsF7L+JiAZg+a4gqFb+cpUNZ+P9HRtzjU=;
- b=UyK+wr4Uekf3ODKeSsUxGscg3Kkm17iz1FPulXPtFeV4GMYWj4hUby3oAApS+jLdnM
- SbLAcNMMb48EzE2TPJtywa9cbhG+4NnpVp4kJeKeRIxB5V2b6gYb3/NOLOf7jzA8AUOq
- 7PQgHqWt8L+iWCk93JM4ni4i2LTkuTRaSfktIJbJ9OuC9vIBoPE0yxhovoCP06Jvm61Z
- pju7AZ7UIiCwpbcfyLcrkY5zRHkmOXbETfAziBYv2mklFbwD97FT3YiqwmZZpjlfdkNn
- RRpkvQAnBKAw41mdz6MoAiTpqk1yX9cdJKNDRSkkA9sI+YQ/1SQv/5IMv9G51eshHYvx
- 3khg==
-X-Gm-Message-State: AGi0PuYrMilMEJXxGh2/yBa+cPGFg6rm0hfifIu2lpkOOMKs37WiqXdY
- Tj9Bi+r8cdluvWC7icRLib1+Ag==
-X-Received: by 2002:a17:902:7c97:: with SMTP id
- y23mr216555pll.231.1587524160911; 
- Tue, 21 Apr 2020 19:56:00 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id l22sm3533250pjq.15.2020.04.21.19.55.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Apr 2020 19:56:00 -0700 (PDT)
+ (envelope-from <liuzwnan@163.com>) id 1jR5iw-000499-Tt
+ for qemu-devel@nongnu.org; Tue, 21 Apr 2020 23:07:07 -0400
+Received: from m12-15.163.com ([220.181.12.15]:43157)
+ by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <liuzwnan@163.com>)
+ id 1jR5ir-0002Ph-6O; Tue, 21 Apr 2020 23:06:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=Subject:From:Message-ID:Date:MIME-Version; bh=2oxoH
+ tq9PZYqYLwQaOi1NQyPrMBVH6kT96nkKq5jzvE=; b=TQU2jwV784bJ7CsJZgmUT
+ u/k/4NdBa5BrHXZLTY7dLgtTXgKe+kDoLVm/YGpZnvnwdpk5wpvfM81ZJHlcx8rU
+ eMowyD2eGDNLlnE7jo1PBltMwhhX7ltPlFWeUH5KP6d9YCnA9jILaOlDlOzIGs4F
+ Rt97TQNiQsSe9I6NEPWdKs=
+Received: from [30.225.208.25] (unknown [42.120.72.89])
+ by smtp11 (Coremail) with SMTP id D8CowABXXBgZsZ9eYGIhEQ--.22S2;
+ Wed, 22 Apr 2020 10:51:13 +0800 (CST)
 Subject: Re: [PATCH for-5.1 00/31] target/arm: SVE2, part 1
-To: LIU Zhiwei <liuzwnan@163.com>, qemu-devel@nongnu.org
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 References: <20200326230838.31112-1-richard.henderson@linaro.org>
- <eb7eea48-ecb8-f64d-83cd-66463a61d5a6@163.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <13d106bc-19ef-2be4-eb44-dc49fb5f1271@linaro.org>
-Date: Tue, 21 Apr 2020 19:55:57 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+From: LIU Zhiwei <liuzwnan@163.com>
+Message-ID: <eb7eea48-ecb8-f64d-83cd-66463a61d5a6@163.com>
+Date: Wed, 22 Apr 2020 10:51:05 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <eb7eea48-ecb8-f64d-83cd-66463a61d5a6@163.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+In-Reply-To: <20200326230838.31112-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
-X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::636
-X-BeenThere: qemu-arm@nongnu.org
+Content-Language: en-US
+X-CM-TRANSID: D8CowABXXBgZsZ9eYGIhEQ--.22S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxGF1ftw43uF1xWrW5Gr1Dtrb_yoWrZFW8pF
+ W5KFZxKr4Utay3WasayF1UXwn8Xw18KryUCw1xtw1fXw13tryDXr1Dta4SgFyUKFy7uF47
+ JF1IyF15uw45XrDanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jR38nUUUUU=
+X-Originating-IP: [42.120.72.89]
+X-CM-SenderInfo: xolx64xqdqqiywtou0bp/1tbiRAIOElSIfSuM5AAAs4
+Received-SPF: pass client-ip=220.181.12.15; envelope-from=liuzwnan@163.com;
+ helo=m12-15.163.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/21 22:51:17
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Received-From: 220.181.12.15
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: rajav@quicinc.com, qemu-arm@nongnu.org, apazos@quicinc.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4RILJfeTGZ69
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iuAQqgFfTTws
 
-On 4/21/20 7:51 PM, LIU Zhiwei wrote:
-> I find BF16 is included in the ISA.  Will you extend  the softfpu in this patch
-> set?
+Hi Richard,
 
-I will do that eventually, but probably not part of the first full SVE2 patch set.
+I find BF16 is included in the ISA.  Will you extend  the softfpu in 
+this patch set?
 
-There are several optional extensions to SVE2, of which BF16 is one.  But BF16
-also requires changes to the normal FPU as well, and Arm requires SVE and FPU
-be in sync.
+Zhiwei
+
+On 2020/3/27 7:08, Richard Henderson wrote:
+> Posting this for early review.  It's based on some other patch
+> sets that I have posted recently that also touch SVE, listed
+> below.  But it might just be easier to clone the devel tree [2].
+> While the branch itself will rebase frequently for development,
+> I've also created a tag, post-sve2-20200326, for this posting.
+>
+> This is mostly untested, as the most recently released Foundation
+> Model does not support SVE2.  Some of the new instructions overlap
+> with old fashioned NEON, and I can verify that those have not
+> broken, and show that SVE2 will use the same code path.  But the
+> predicated insns and bottom/top interleaved insns are not yet
+> RISU testable, as I have nothing to compare against.
+>
+> The patches are in general arranged so that one complete group
+> of insns are added at once.  The groups within the manual [1]
+> have so far been small-ish.
+>
+>
+> r~
+>
+> ---
+>
+> [1] ISA manual: https://static.docs.arm.com/ddi0602/d/ISA_A64_xml_futureA-2019-12_OPT.pdf
+>
+> [2] Devel tree: https://github.com/rth7680/qemu/tree/tgt-arm-sve-2
+>
+> Based-on: http://patchwork.ozlabs.org/project/qemu-devel/list/?series=163610
+> ("target/arm: sve load/store improvements")
+>
+> Based-on: http://patchwork.ozlabs.org/project/qemu-devel/list/?series=164500
+> ("target/arm: Use tcg_gen_gvec_5_ptr for sve FMLA/FCMLA")
+>
+> Based-on: http://patchwork.ozlabs.org/project/qemu-devel/list/?series=164048
+> ("target/arm: Implement ARMv8.5-MemTag, system mode")
+>
+> Richard Henderson (31):
+>    target/arm: Add ID_AA64ZFR0 fields and isar_feature_aa64_sve2
+>    target/arm: Implement SVE2 Integer Multiply - Unpredicated
+>    target/arm: Implement SVE2 integer pairwise add and accumulate long
+>    target/arm: Remove fp_status from helper_{recpe,rsqrte}_u32
+>    target/arm: Implement SVE2 integer unary operations (predicated)
+>    target/arm: Split out saturating/rounding shifts from neon
+>    target/arm: Implement SVE2 saturating/rounding bitwise shift left
+>      (predicated)
+>    target/arm: Implement SVE2 integer halving add/subtract (predicated)
+>    target/arm: Implement SVE2 integer pairwise arithmetic
+>    target/arm: Implement SVE2 saturating add/subtract (predicated)
+>    target/arm: Implement SVE2 integer add/subtract long
+>    target/arm: Implement SVE2 integer add/subtract interleaved long
+>    target/arm: Implement SVE2 integer add/subtract wide
+>    target/arm: Implement SVE2 integer multiply long
+>    target/arm: Implement PMULLB and PMULLT
+>    target/arm: Tidy SVE tszimm shift formats
+>    target/arm: Implement SVE2 bitwise shift left long
+>    target/arm: Implement SVE2 bitwise exclusive-or interleaved
+>    target/arm: Implement SVE2 bitwise permute
+>    target/arm: Implement SVE2 complex integer add
+>    target/arm: Implement SVE2 integer absolute difference and accumulate
+>      long
+>    target/arm: Implement SVE2 integer add/subtract long with carry
+>    target/arm: Create arm_gen_gvec_[us]sra
+>    target/arm: Create arm_gen_gvec_{u,s}{rshr,rsra}
+>    target/arm: Implement SVE2 bitwise shift right and accumulate
+>    target/arm: Create arm_gen_gvec_{sri,sli}
+>    target/arm: Tidy handle_vec_simd_shri
+>    target/arm: Implement SVE2 bitwise shift and insert
+>    target/arm: Vectorize SABD/UABD
+>    target/arm: Vectorize SABA/UABA
+>    target/arm: Implement SVE2 integer absolute difference and accumulate
+>
+>   target/arm/cpu.h           |  31 ++
+>   target/arm/helper-sve.h    | 345 +++++++++++++++++
+>   target/arm/helper.h        |  81 +++-
+>   target/arm/translate-a64.h |   9 +
+>   target/arm/translate.h     |  24 +-
+>   target/arm/vec_internal.h  | 161 ++++++++
+>   target/arm/sve.decode      | 217 ++++++++++-
+>   target/arm/helper.c        |   3 +-
+>   target/arm/kvm64.c         |   2 +
+>   target/arm/neon_helper.c   | 515 ++++---------------------
+>   target/arm/sve_helper.c    | 757 ++++++++++++++++++++++++++++++++++---
+>   target/arm/translate-a64.c | 557 +++++++++++++++++++++++----
+>   target/arm/translate-sve.c | 557 +++++++++++++++++++++++++++
+>   target/arm/translate.c     | 626 ++++++++++++++++++++++--------
+>   target/arm/vec_helper.c    | 411 ++++++++++++++++++++
+>   target/arm/vfp_helper.c    |   4 +-
+>   16 files changed, 3532 insertions(+), 768 deletions(-)
+>   create mode 100644 target/arm/vec_internal.h
+>
 
 
-r~

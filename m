@@ -1,150 +1,107 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp592876lfm;
-        Wed, 22 Apr 2020 05:48:21 -0700 (PDT)
-X-Google-Smtp-Source: APiQypL3KUcWiX6vuWdaFDNn7oORIywyXOvcqZaRWsp4thR5sJ0UFWmjvE/4sTD/naV5ryxxOhg0
-X-Received: by 2002:a05:620a:1232:: with SMTP id v18mr27053982qkj.429.1587559701136;
-        Wed, 22 Apr 2020 05:48:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587559701; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp610338lfm;
+        Wed, 22 Apr 2020 06:05:56 -0700 (PDT)
+X-Received: by 2002:a9d:6295:: with SMTP id x21mr15245382otk.291.1587560756071;
+        Wed, 22 Apr 2020 06:05:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587560756; cv=none;
         d=google.com; s=arc-20160816;
-        b=g5Z8199+G6iYbhA+Wi7B1lXV0NZw0HC2hW2AwfjCYlfsoTCxWOJ+TwpXJA3Pvh6gse
-         VjiWpkGeiUEWgrytqEWqNOtda4A4vyNQvXEMN8bempHBd9I819KizS9CD3lr8J74QzrH
-         NT245OdYdYR3AbWdFxG7Uxf8c9OvMB49ZobJdTqlhurLeRjQB2r1LiX2Ta/bSU+JFcMZ
-         dZnbePXuBlSDLuYlNbGzvhkTEjAJj/NNRwgSUkDEEdYaCymXGhoSoRue+ECBwdUmFZrd
-         wkaOXFIOcl9OX8sBuEh/UI4PaBazYnLxVnB+XcabH5OUaGsPSOnh4prtdRMXjIR6AJrA
-         lTTg==
+        b=LJjmGCvTqSXsbLPY0w0JZOLsGXUFrlYenaHNTTGckFudzo/FNq+1V9stWOwo6YysK1
+         VtQGTB0YuLQvP/XXWj87qFTJgH9aMQI7EDzZeR4HtQCM3fRyrJkbbzoBKiw17VNq2p+p
+         JjfUxasRyjJP3E93HeyDPUcF9HEirh27H2qOEQI5BQixSA5lDHzhV3ly4bpAx4C9QbXO
+         myXI4dnEHE9zr4xTUAF+/5dtRtVqH53E+vBMDRQunp/o+FdpaApS12s60/Q3Jmxt5Yjp
+         BuqmQGJ+gA+s4Rs1dH3o5Y+sEdOuTZ4aQCwI3FL8OIvvfWZvKUQkLsuTmHdhqmr15SIy
+         gGZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=+kmyptpxbUuU4GRghYpX15dLM0lMSpZ2ih8UKXX09Dk=;
-        b=AgkfsFOjicX/YmreEDS3WuEKJz/727TTcaFWftWiJ8yU5Fc7hqSJsXTwGGcJp9hhn/
-         Hp7k/nsZUjBxspa5l3gbJaj5n6+HCBCeVAHfjC+17gBiAwe5XkPNp9lKpxQGw8ETywxI
-         c4kWQo66kN5yH7087F/qs+v8v7QmurlQ8Y9gjrZMS78qYV2S9Lv3oAW7Ce9yO4ESmraz
-         KQPefqxVKF1COPZJFKMtKyw7d71Cv9tc0E+tmhc4DKXp6bHAHM9JLWkQAKfGJMRU89s+
-         MCcvqYkEqmlWepGMjmsLlR2f+qLpYJllp3DnAN5vUT5nf65Pc/spOwuF47iN+6qYJDfV
-         e/XQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=i1R+UL3czKmE85NT+9SniKL1KoeLdWjkivQZRFm6sOo=;
+        b=KFjrVB8URDUIHuNCHhelYMEj7QAjWoo0bQsYp+XXfcF29CgaeY+YqIMAnB0sv62KsF
+         ZA6+ATlpVACZ7yOCFDrOUlWNx9x6wVtH4qMH9TDr2t+jJLRwpwa4kSsVCGIfx5oFLSgI
+         2nQU8Ln9dujjVlXBhDJCJMgV5WkMLlxz0fGahENiLwb9U3wr+jvJXFN1l1NkmLNT5KjD
+         p1+A+XmIPoZbYyGpctdCSworY3tkpQrdQomCpsbOocx8DJ9/ypLoRi/PAez7634Xpr+k
+         ZTCklMM1T5jeOhuFcpcm/Tb8oZDNZT9IGM5JalgN7NTKR21+snd3fHZXImtDaoD2S9ud
+         b2UQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ULXrX9ug;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 125si3151884qkj.295.2020.04.22.05.48.20
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Apr 2020 05:48:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GUPY9SCb;
+       spf=pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=laurent.desnogues@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <laurent.desnogues@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id f9sor4347140otq.142.2020.04.22.06.05.55
+        (Google Transport Security);
+        Wed, 22 Apr 2020 06:05:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ULXrX9ug;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49756 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jREnc-0001GO-Fc
-	for alex.bennee@linaro.org; Wed, 22 Apr 2020 08:48:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40228)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jREnR-0001FL-AC
- for qemu-arm@nongnu.org; Wed, 22 Apr 2020 08:48:10 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jREnP-0006kn-Es
- for qemu-arm@nongnu.org; Wed, 22 Apr 2020 08:48:08 -0400
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:35763)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jREnO-0006dG-4p; Wed, 22 Apr 2020 08:48:06 -0400
-Received: by mail-lf1-x141.google.com with SMTP id r17so1556988lff.2;
- Wed, 22 Apr 2020 05:48:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=+kmyptpxbUuU4GRghYpX15dLM0lMSpZ2ih8UKXX09Dk=;
- b=ULXrX9ugJjUVXu6tUZeclDGc3HkcqciiWXEzYBfNs2Ygb6P8Z+WGOcwcpSOIQLp7D3
- jsD5cunRUs0NF5JgmE0YIB+tS13blrwK8C+IJM9mBkExXUZl2mRQs5c7q106tsp85SUW
- PIhdw9ezD5O6TFuiG3PHMD10iNyWwANHjNMRfEilvgEkLf16DITwVoKNr+zFntwzXtlb
- dGu/LgOD+7Glgke7KPIxwDSubVQrHRDqwHIkRNo994y44v16TT5LisH9nOx+XBocbsuI
- i+BrEcRj2bnXwCSced14rsJbz/+WDVeCnJcQCkyYfSZ/MPsCpZ5TRanc9OoGRj6Y/4z0
- u8pg==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GUPY9SCb;
+       spf=pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=laurent.desnogues@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=i1R+UL3czKmE85NT+9SniKL1KoeLdWjkivQZRFm6sOo=;
+        b=GUPY9SCbsSCctyV/ntggVRN98jUIWxhEZIpNharXv7yWn0qmyxHzTZNQQhUfBr/fql
+         Z5yCNLZ+nTX6ZD73x55KRykyDYhG334SOdMuQnSJZ4BcxN3IHaY0ywd2y+3kDaEIUSVk
+         lDlMKg5adqGce9j+K2M1ab8baoH9hAfshQeHcTnDHsYpAYH1E5NxINx7Y4eNYQb1J8He
+         4lpTQqwfsXWGVWvwRQrGpR8bc5xO3p5QevT63YpSmVr/LIP2RFFW/OodHojwzKgNJLCo
+         EdSTnWGbXgWKT2HJkxlBWPKE6tZTZfvGsncbLtz1HLWfIxO6KtwlRCZi3FDn/atAQedx
+         BbZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=+kmyptpxbUuU4GRghYpX15dLM0lMSpZ2ih8UKXX09Dk=;
- b=jbxROuEPOk1XWkSQD9yMlt0DAnlKsgG9kdD3VCsHh9FlLeCi1YQVQnUJ5aT9LAMUlB
- 0PbdckMp+F9awZ594UeRo8duklXwz+rZqKrBtNYInsVPC5noihD04Q2WRDdPfV89VAjS
- lTfIVGSwkM/JEJTaHMX4EeU8nf4bXvfR4qXO0Wzhql0qg9ig02zZF2Q6kiIMaGZ5qPrw
- xlGpNBs5gE6HbZkkCqrVqmn0KZpIVhdZJZjl60z4VvM5x21AxxCb1TQmlZ0HSgO1+L1T
- Afqdb+SZ/716+Bouzejq8VE8r60EXqr3YUg+mos0Fq3ZsG306EUUaFzppaBImNU1GhAF
- 0lww==
-X-Gm-Message-State: AGi0PuZ4qildRYFJURPqgKCbOcAzjuhOfXelL3BWrGOldI3up2K2MNu9
- sSCsIyNPQa8uBxs43Mg0GSU=
-X-Received: by 2002:ac2:420c:: with SMTP id y12mr17186443lfh.26.1587559683117; 
- Wed, 22 Apr 2020 05:48:03 -0700 (PDT)
-Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id l4sm3491696ljc.107.2020.04.22.05.48.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Apr 2020 05:48:02 -0700 (PDT)
-Date: Wed, 22 Apr 2020 14:49:13 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH for-5.0?] target/arm: Fix ID_MMFR4 value on AArch64 'max'
- CPU
-Message-ID: <20200422124913.GJ2669@toto>
-References: <20200422124501.28015-1-peter.maydell@linaro.org>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=i1R+UL3czKmE85NT+9SniKL1KoeLdWjkivQZRFm6sOo=;
+        b=lPEOkc9GCXn+cpmpX3y6nKltM2KAwZCRBODQ0ZYdiuE5+YT2GC6/ZAgDceQeR6qf8s
+         wY9skIku7Ba3GL0VPQpDTgWry7xIddzp9xM9rx0ODbez+fbyDCfe5MMRj56hs2NCHdPu
+         K1gmEFHZZdlZwmMihBo92iK4Tk3tX4UFblzvC3SY3hvl8kPOxnviVZMbj0WClDyLB6Xi
+         v/typX036AceJJH0sJpUBvTasu5VSkv8YIpqx862ri2YDMQsBc0APzYep8TX1dKtr9Ny
+         e98LW2O0mJcdz6YUmahud1D3/2Zqn7LQcU0PMgPxk1y8zeRPkOwmoaG2C34fxk7AgS9o
+         vgtQ==
+X-Gm-Message-State: AGi0PubeT2o5lzM3paZPKhnOmGfI7h0lMyoqvrd1Bv6bTBaQVLjy7zUI
+	yCjch/OMwNtcTl0t4aASmKWFMtYliVV/KTceIn5LAiSSIJo=
+X-Google-Smtp-Source: APiQypKHYnk1YsfBHdZRn8fb9sh/TsUdVI7nLEkOgT3xVGSqp43WP92Y3pUrP+MUhgEHszDOy6j//ogMCkXNCnFGupM=
+X-Received: by 2002:a02:9a0d:: with SMTP id b13mr25009973jal.60.1587560755286;
+ Wed, 22 Apr 2020 06:05:55 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <20200422124501.28015-1-peter.maydell@linaro.org>
 In-Reply-To: <20200422124501.28015-1-peter.maydell@linaro.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::141;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x141.google.com
-X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::141
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Desnogues <laurent.desnogues@gmail.com>, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u3w2BNsQRRfD
+From: Laurent Desnogues <laurent.desnogues@gmail.com>
+Date: Wed, 22 Apr 2020 15:05:55 +0200
+Message-ID: <CABoDooNn+RdZ0FuSu5NfD5=rbPuftgxFA-CHS973EHB1z33FnQ@mail.gmail.com>
+Subject: Re: [PATCH for-5.0?] target/arm: Fix ID_MMFR4 value on AArch64 'max' CPU
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: Q1fPo7/o7zt6
 
-On Wed, Apr 22, 2020 at 01:45:01PM +0100, Peter Maydell wrote:
+On Wed, Apr 22, 2020 at 2:45 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
 > In commit 41a4bf1feab098da4cd the added code to set the CNP
 > field in ID_MMFR4 for the AArch64 'max' CPU had a typo
 > where it used the wrong variable name, resulting in ID_MMFR4
 > fields AC2, XNX and LSM being wrong. Fix the typo.
-> 
+>
 > Fixes: 41a4bf1feab098da4cd
 > Reported-by: Laurent Desnogues <laurent.desnogues@gmail.com>
-
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-
-
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+
+Thanks,
+
+Laurent
+
 > ---
 > maybe 5.0 just because it's so trivial. I dunno...
-> 
+>
 > There's also an error where we use the uint32_t u variable
 > to update the 64-bit ID_AA64DFR0 register, but that's harmless
 > because as it happens the top 32 bits of that register are
 > all zeroes anyway, so we can just fix that in 5.1.
-> 
+>
 >  target/arm/cpu64.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+>
 > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
 > index 62d36f9e8d3..95d0c8c101a 100644
 > --- a/target/arm/cpu64.c
@@ -156,9 +113,8 @@ Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 > -        u = FIELD_DP32(t, ID_MMFR4, CNP, 1); /* TTCNP */
 > +        u = FIELD_DP32(u, ID_MMFR4, CNP, 1); /* TTCNP */
 >          cpu->isar.id_mmfr4 = u;
->  
+>
 >          u = cpu->isar.id_aa64dfr0;
-> -- 
+> --
 > 2.20.1
-> 
-> 
+>

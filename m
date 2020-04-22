@@ -1,404 +1,475 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp193383lfm;
-        Tue, 21 Apr 2020 21:34:15 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJcUtfNqkQI19iyFWluC7Zl18bU/KAo4sMOR/YJiYR3SpuivTiQQvilOuvgV34CkuyZLxex
-X-Received: by 2002:a05:6214:1402:: with SMTP id n2mr23518358qvx.104.1587530055541;
-        Tue, 21 Apr 2020 21:34:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587530055; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp195333lfm;
+        Tue, 21 Apr 2020 21:37:23 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIyRRgsH+jApAya6x9YWvmAmS83cYUh1JCyKo3lqXzMwnEoMHMMZANxBriht9olEx/nEOs6
+X-Received: by 2002:a37:6c07:: with SMTP id h7mr13982466qkc.328.1587530243467;
+        Tue, 21 Apr 2020 21:37:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587530243; cv=none;
         d=google.com; s=arc-20160816;
-        b=gs/rN66/5JZTlnhj4j5ze4Qq5zwdoVaf1WyfNOjXlM8UR6rcVxn2Id23oO5TW7KOHR
-         QzWFlIHyO/e/bFL4uzcn8Y0AIjkkCLjFkL85gp3fD0IyAAG6UBCW6psQ0I/JNVf6yb0J
-         bolmhsZsF8BMI+vLqnB1/JgXVduJEaa6s3wydn1Ur7jWVdwoGgZt/+0I3hxWUHLRCaD9
-         BhHSrPFrVPM5aIXBDDV1Qvp566Cqmchb/vPI12GjGD80ZntTU7EhjfPx0GB35SZCkWwm
-         BfCKgqExDPs/f1al3cOoDUv0KhwX1GUpgcVHZBAVVS4UWj9XzciY1BGJ6eCuHCLHbXeS
-         +GlQ==
+        b=sNfYJrDSXPCu1fboh8IPeWbUQ9v0xDxnvfaJ4R0qNTKPo36zv1reJ9Et+oDVjVq0sV
+         /U2AA7SFyHWlB9TyZXuKUzWkF++1UKHF5eRVl4hBm/RdXFFLQTst8+kvcuLblKzAJAWK
+         uhu1jM6CyL/g3h93vOwW7VU3tcfL86lwuivGKvRvXiZaylL/sDIQSLe66oas2SqcOaP6
+         AZCg2SZdzuUqJT91kKFzTCZ8OJ2sa1NmL6tdjmGBqSg5nbaKUg0eii2iJ3ElwVyVkFtZ
+         KqkVwAaV4zKVcZzaD+IBaod3sCivZi1qWfFxLn7fZfQliuA20NJymaCeDTDVRvRQvHJd
+         RK3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=fF+5wwLOen+npTtt/gQ1qVYGPHz8onoyiX2hDw1RdH0=;
-        b=ZuE9tGNkmMCTk5Fg+CX6D2zhgK+Pz0IC/S9yfahz70xiEY10pkeDyKHnN7/vHLw8D6
-         TxROdq4yTVqek792FOPwUl13JL+/DjkzyvHeeatqmEC5YSdDja47+9bwzPLLKFUKVk7X
-         tdqiuRaGIBIKbrWA7TEnZIgLtagYJGEQ4DRqc4QyVZkYEiVc1IgGUJsvH/HZ0s7hP6E0
-         sExWNpmNPIC3AHDYgV6I7PQmxs9vfWITKLmWWaa4QqIx2v5l3gX4qWcZWBZkbRjgYrNK
-         Hg8FBgpbFVw8oBWTOL6FyYQGjSj9Wf9nLBukf3whbqdObo1vrs0dEZxy3GTMTFprEIVV
-         RHJw==
+        bh=eMvCKk7QhyRjEslWtBZnVbQxlAek5NbJgVMiopqtZ1M=;
+        b=yHHbbCrXGSX20lCrpSix6oSNQpJAHavgNGe1Lj1B4OxWQ/KujOeGYbH9ZK/pmTP0sP
+         oTYy3BAEALh2j1UqR33wLddIWZEQYHb/QwypbkWSrwRnRC7ZJmxCt65DO0l87A7f7igc
+         RhYiwFQMdaMKX3jeXVMyadK/gIzDaO4cHwrFs4wrfcmHj8uxJO9yPbAIAE/K42bSPOQh
+         6hHKRl7VU5KF0T+a6SzvKDfu7jXZS8xJxY0a8Sn1kynZKHGJYAqE7qreY4AzWlj31upx
+         U/31+otODN9zxQKopo7AclIFg1uowe1C4cbRzLe6uBPQJeutlBeAhFAXsquGvtdBOJDH
+         9NGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G0gPa6Da;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=IfvFN+lJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r18si2647757qvh.44.2020.04.21.21.34.15
+        by mx.google.com with ESMTPS id o2si2298686qkm.81.2020.04.21.21.37.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Apr 2020 21:34:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Apr 2020 21:37:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G0gPa6Da;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=IfvFN+lJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41186 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41372 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jR75S-0000ms-Px
-	for alex.bennee@linaro.org; Wed, 22 Apr 2020 00:34:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50388)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jR78U-0006y5-GD
+	for alex.bennee@linaro.org; Wed, 22 Apr 2020 00:37:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50190)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jR74g-0000gG-Mh
- for qemu-devel@nongnu.org; Wed, 22 Apr 2020 00:33:27 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jR74a-0000Vh-M3
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2020 00:33:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jR74e-0005Gf-3E
- for qemu-devel@nongnu.org; Wed, 22 Apr 2020 00:33:25 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:45311)
+ (envelope-from <richard.henderson@linaro.org>) id 1jR74Z-0004vG-LO
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2020 00:33:20 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:33594)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jR74d-0005AK-Gf
- for qemu-devel@nongnu.org; Wed, 22 Apr 2020 00:33:23 -0400
-Received: by mail-pl1-x643.google.com with SMTP id t4so423775plq.12
- for <qemu-devel@nongnu.org>; Tue, 21 Apr 2020 21:33:22 -0700 (PDT)
+ id 1jR74Z-0004oX-6V
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2020 00:33:19 -0400
+Received: by mail-pl1-x641.google.com with SMTP id ay1so449760plb.0
+ for <qemu-arm@nongnu.org>; Tue, 21 Apr 2020 21:33:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=fF+5wwLOen+npTtt/gQ1qVYGPHz8onoyiX2hDw1RdH0=;
- b=G0gPa6DatS4Qs7B0xQ6cnq+NzGzS0+WBV33MPPCI7JiY/q6XWwYjBSdPvtqayA1pyk
- 52Ut1Ro4moyOICFIkKnM94O5oFpCxZq4iAB9jli/QZ0tPzx2Fq/oxJYxzhJ7cwmQBIzK
- RzZdLOIwpaeazlF0JcJL/GK5AsA+c4ZJj/5S/K3POHXh89M/RsXmUQWph4RFQ9gfoCsu
- 4CBcPJgkstDyb/2IY1qm2pamLMoA/jkCXTJx3BwmX6dKlOCVBaVJUZhHrWb0j35K61+b
- ns8EXK3tHxTtQyz9eoA0f04QGfz+Ov5oVfjEtVThW8GR3B0gRAkD5eCsMW/Q7+6q+1GN
- 5luw==
+ bh=eMvCKk7QhyRjEslWtBZnVbQxlAek5NbJgVMiopqtZ1M=;
+ b=IfvFN+lJrvtTDotJPyBa6VErBwxxm+0SZdAJ14GqzrL+sBWq5Uat62ylrAAlC5NQBF
+ ngqIVbNsMWZbADqVoPb0BO29k0EYQ0VLD1QQ/7sgDmfa/X90uID+3EN7aAdMmdGjKGXN
+ s5PUiw1Kw/LKKLj7XHhfUy+r0jJepuRN86FOGFYFKmd7726PZZ0EDoQY5DOI6CqfQ+Hp
+ +hxDgKpmlM+rYsYYA/leHzYZfxZWS3PbrdM934B2+vK51G92I0CxEhTMhj9o97H2BMOZ
+ 63mS46VNmlH3oygUO50QL8PYcmtuOVHG8YTaB7MXPE6Q3mRYLKwUFruvAiN1GCbEGfTf
+ YMyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=fF+5wwLOen+npTtt/gQ1qVYGPHz8onoyiX2hDw1RdH0=;
- b=AO6Rmi7Pd4SoP3yQLNeDZk8Durw9Fo+2M7CQI3R2bU6IKG3ZbQQhRPUVBcRLouGJEP
- KgsKjX6L8yexxXmvawDfksBI4djVHtiVN0xTDpYZm7WHnqYPQnNsgG7SlBnrsBMPGRwo
- OHkW9Jo5NnjcKtOXcVwD7vM4mZ5UDPOcYiIEN8u3yzEQ9Sj/03XxtncskKrUrue13NXG
- 73jHJATJ52MUWqYlx7AO+sfzsf7wZ05JhjGZBiILAPp2En20pmCo9PFNG+n4RhFLP1Bq
- X5hmOvkv25HM0JWDpNk1X4BAL4FqjmWGKt1gOh1+gV7HqhfUNSfnSzJ1RJ3wH78uK/eZ
- QUiA==
-X-Gm-Message-State: AGi0PubMmeGsnQcDIwBktsA7N/eSUEv9CQ298xaDP7WMt1ipW1+OM8ib
- wPjz9ze3HpDjvlbLqMOls0smCzhyl8Q=
-X-Received: by 2002:a17:90a:6581:: with SMTP id
- k1mr9513665pjj.50.1587530001301; 
- Tue, 21 Apr 2020 21:33:21 -0700 (PDT)
+ bh=eMvCKk7QhyRjEslWtBZnVbQxlAek5NbJgVMiopqtZ1M=;
+ b=Ls/zLB9jTCE7/GhTD+tJ69Q2+pOJ/UWmwI8f+4k7Nj4fxZPNt6aEhU5/rnoSt7otW3
+ 3p0PVHOlGgLcjOoEEZOqB3qbsRuD5wHiM1/5lN9BKGzrqkegEre/J68pA/qimJ6H18RR
+ JZr4IiQeaWerK4H3LgncmvRRPiz2X4mu79oN2ilD0cOe4tDxG7Y2p4hN7Q/KbG+JENF9
+ Xiz0Af3dLJwYVcYAU190QcGiZQKa47/DMpYDSwSVT40D+OhnYWfTkMQM1lBXe08U9TFr
+ StAtZz8XfeWFBTDUp9Xjhp4zZ0xTHqXRLNQ4SppY6VQ5ajIACRd/JzKW/wTpfBbNo43a
+ QVSg==
+X-Gm-Message-State: AGi0PuZbAEI4eWQujJfkmO3NJw6eg+vNrQHbmSRpgz4OaO9SrhaMnXZv
+ y/Thq+uKwzYGheuoTa36JJNZCnqHKiI=
+X-Received: by 2002:a17:90a:bc4a:: with SMTP id
+ t10mr9710263pjv.104.1587529996162; 
+ Tue, 21 Apr 2020 21:33:16 -0700 (PDT)
 Received: from localhost.localdomain (174-21-149-226.tukw.qwest.net.
  [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id l137sm4129613pfd.107.2020.04.21.21.33.20
+ by smtp.gmail.com with ESMTPSA id l137sm4129613pfd.107.2020.04.21.21.33.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Apr 2020 21:33:20 -0700 (PDT)
+ Tue, 21 Apr 2020 21:33:15 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 07/18] target/arm: Drop manual handling of
- set/clear_helper_retaddr
-Date: Tue, 21 Apr 2020 21:32:58 -0700
-Message-Id: <20200422043309.18430-8-richard.henderson@linaro.org>
+Subject: [PATCH v3 04/18] accel/tcg: Add probe_access_flags
+Date: Tue, 21 Apr 2020 21:32:55 -0700
+Message-Id: <20200422043309.18430-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200422043309.18430-1-richard.henderson@linaro.org>
 References: <20200422043309.18430-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x641.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::643
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::641
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B21SqAEkoPDF
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1w01AxaVf526
 
-Since we converted back to cpu_*_data_ra, we do not need to
-do this ourselves.
+This new interface will allow targets to probe for a page
+and then handle watchpoints themselves.  This will be most
+useful for vector predicated memory operations, where one
+page lookup can be used for many operations, and one test
+can avoid many watchpoint checks.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/sve_helper.c | 38 --------------------------------------
- 1 file changed, 38 deletions(-)
+v2: Fix return of host pointer in softmmu probe_access_flags.
+---
+ include/exec/cpu-all.h  |  13 ++-
+ include/exec/exec-all.h |  22 +++++
+ accel/tcg/cputlb.c      | 177 ++++++++++++++++++++--------------------
+ accel/tcg/user-exec.c   |  36 +++++---
+ 4 files changed, 149 insertions(+), 99 deletions(-)
 
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 655bc9476f..aad2c8c237 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -4133,12 +4133,6 @@ static intptr_t max_for_page(target_ulong base, intptr_t mem_off,
-     return MIN(split, mem_max - mem_off) + mem_off;
- }
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index 49384bb66a..43ddcf024c 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -328,7 +328,18 @@ CPUArchState *cpu_copy(CPUArchState *env);
+      | CPU_INTERRUPT_TGT_EXT_3   \
+      | CPU_INTERRUPT_TGT_EXT_4)
  
--#ifndef CONFIG_USER_ONLY
--/* These are normally defined only for CONFIG_USER_ONLY in <exec/cpu_ldst.h> */
--static inline void set_helper_retaddr(uintptr_t ra) { }
--static inline void clear_helper_retaddr(void) { }
--#endif
--
+-#if !defined(CONFIG_USER_ONLY)
++#ifdef CONFIG_USER_ONLY
++
++/*
++ * Allow some level of source compatibility with softmmu.  We do not
++ * support any of the more exotic features, so only invalid pages may
++ * be signaled by probe_access_flags().
++ */
++#define TLB_INVALID_MASK    (1 << (TARGET_PAGE_BITS_MIN - 1))
++#define TLB_MMIO            0
++#define TLB_WATCHPOINT      0
++
++#else
+ 
  /*
-  * The result of tlb_vaddr_to_host for user-only is just g2h(x),
-  * which is always non-null.  Elide the useless test.
-@@ -4180,7 +4174,6 @@ static void sve_ld1_r(CPUARMState *env, void *vg, const target_ulong addr,
-         return;
-     }
-     mem_off = reg_off >> diffsz;
--    set_helper_retaddr(retaddr);
- 
-     /*
-      * If the (remaining) load is entirely within a single page, then:
-@@ -4195,7 +4188,6 @@ static void sve_ld1_r(CPUARMState *env, void *vg, const target_ulong addr,
-         if (test_host_page(host)) {
-             mem_off = host_fn(vd, vg, host - mem_off, mem_off, mem_max);
-             tcg_debug_assert(mem_off == mem_max);
--            clear_helper_retaddr();
-             /* After having taken any fault, zero leading inactive elements. */
-             swap_memzero(vd, reg_off);
-             return;
-@@ -4246,7 +4238,6 @@ static void sve_ld1_r(CPUARMState *env, void *vg, const target_ulong addr,
-     }
- #endif
- 
--    clear_helper_retaddr();
-     memcpy(vd, &scratch, reg_max);
+  * Flags stored in the low bits of the TLB virtual address.
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index d656a1f05c..8792bea07a 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -362,6 +362,28 @@ static inline void *probe_read(CPUArchState *env, target_ulong addr, int size,
+     return probe_access(env, addr, size, MMU_DATA_LOAD, mmu_idx, retaddr);
  }
  
-@@ -4306,7 +4297,6 @@ static void sve_ld2_r(CPUARMState *env, void *vg, target_ulong addr,
-     intptr_t i, oprsz = simd_oprsz(desc);
-     ARMVectorReg scratch[2] = { };
++/**
++ * probe_access_flags:
++ * @env: CPUArchState
++ * @addr: guest virtual address to look up
++ * @access_type: read, write or execute permission
++ * @mmu_idx: MMU index to use for lookup
++ * @nonfault: suppress the fault
++ * @phost: return value for host address
++ * @retaddr: return address for unwinding
++ *
++ * Similar to probe_access, loosely returning the TLB_FLAGS_MASK for
++ * the page, and storing the host address for RAM in @phost.
++ *
++ * If @nonfault is set, do not raise an exception but return TLB_INVALID_MASK.
++ * Do not handle watchpoints, but include TLB_WATCHPOINT in the returned flags.
++ * Do handle clean pages, so exclude TLB_NOTDIRY from the returned flags.
++ * For simplicity, all "mmio-like" flags are folded to TLB_MMIO.
++ */
++int probe_access_flags(CPUArchState *env, target_ulong addr,
++                       MMUAccessType access_type, int mmu_idx,
++                       bool nonfault, void **phost, uintptr_t retaddr);
++
+ #define CODE_GEN_ALIGN           16 /* must be >= of the size of a icache line */
  
--    set_helper_retaddr(ra);
-     for (i = 0; i < oprsz; ) {
-         uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));
-         do {
-@@ -4318,7 +4308,6 @@ static void sve_ld2_r(CPUARMState *env, void *vg, target_ulong addr,
-             addr += 2 * size;
-         } while (i & 15);
+ /* Estimated block size for TB allocation.  */
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index e3b5750c3b..bbe265ce28 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -1231,86 +1231,16 @@ static void notdirty_write(CPUState *cpu, vaddr mem_vaddr, unsigned size,
      }
--    clear_helper_retaddr();
- 
-     /* Wait until all exceptions have been raised to write back.  */
-     memcpy(&env->vfp.zregs[rd], &scratch[0], oprsz);
-@@ -4333,7 +4322,6 @@ static void sve_ld3_r(CPUARMState *env, void *vg, target_ulong addr,
-     intptr_t i, oprsz = simd_oprsz(desc);
-     ARMVectorReg scratch[3] = { };
- 
--    set_helper_retaddr(ra);
-     for (i = 0; i < oprsz; ) {
-         uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));
-         do {
-@@ -4346,7 +4334,6 @@ static void sve_ld3_r(CPUARMState *env, void *vg, target_ulong addr,
-             addr += 3 * size;
-         } while (i & 15);
-     }
--    clear_helper_retaddr();
- 
-     /* Wait until all exceptions have been raised to write back.  */
-     memcpy(&env->vfp.zregs[rd], &scratch[0], oprsz);
-@@ -4362,7 +4349,6 @@ static void sve_ld4_r(CPUARMState *env, void *vg, target_ulong addr,
-     intptr_t i, oprsz = simd_oprsz(desc);
-     ARMVectorReg scratch[4] = { };
- 
--    set_helper_retaddr(ra);
-     for (i = 0; i < oprsz; ) {
-         uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));
-         do {
-@@ -4376,7 +4362,6 @@ static void sve_ld4_r(CPUARMState *env, void *vg, target_ulong addr,
-             addr += 4 * size;
-         } while (i & 15);
-     }
--    clear_helper_retaddr();
- 
-     /* Wait until all exceptions have been raised to write back.  */
-     memcpy(&env->vfp.zregs[rd], &scratch[0], oprsz);
-@@ -4483,7 +4468,6 @@ static void sve_ldff1_r(CPUARMState *env, void *vg, const target_ulong addr,
-         return;
-     }
-     mem_off = reg_off >> diffsz;
--    set_helper_retaddr(retaddr);
- 
-     /*
-      * If the (remaining) load is entirely within a single page, then:
-@@ -4498,7 +4482,6 @@ static void sve_ldff1_r(CPUARMState *env, void *vg, const target_ulong addr,
-         if (test_host_page(host)) {
-             mem_off = host_fn(vd, vg, host - mem_off, mem_off, mem_max);
-             tcg_debug_assert(mem_off == mem_max);
--            clear_helper_retaddr();
-             /* After any fault, zero any leading inactive elements.  */
-             swap_memzero(vd, reg_off);
-             return;
-@@ -4541,7 +4524,6 @@ static void sve_ldff1_r(CPUARMState *env, void *vg, const target_ulong addr,
-     }
- #endif
- 
--    clear_helper_retaddr();
-     record_fault(env, reg_off, reg_max);
  }
  
-@@ -4687,7 +4669,6 @@ static void sve_st1_r(CPUARMState *env, void *vg, target_ulong addr,
-     intptr_t i, oprsz = simd_oprsz(desc);
-     void *vd = &env->vfp.zregs[rd];
+-/*
+- * Probe for whether the specified guest access is permitted. If it is not
+- * permitted then an exception will be taken in the same way as if this
+- * were a real access (and we will not return).
+- * If the size is 0 or the page requires I/O access, returns NULL; otherwise,
+- * returns the address of the host page similar to tlb_vaddr_to_host().
+- */
+-void *probe_access(CPUArchState *env, target_ulong addr, int size,
+-                   MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
++static int probe_access_internal(CPUArchState *env, target_ulong addr,
++                                 int fault_size, MMUAccessType access_type,
++                                 int mmu_idx, bool nonfault,
++                                 void **phost, uintptr_t retaddr)
+ {
+     uintptr_t index = tlb_index(env, mmu_idx, addr);
+     CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
+-    target_ulong tlb_addr;
+-    size_t elt_ofs;
+-    int wp_access;
+-
+-    g_assert(-(addr | TARGET_PAGE_MASK) >= size);
+-
+-    switch (access_type) {
+-    case MMU_DATA_LOAD:
+-        elt_ofs = offsetof(CPUTLBEntry, addr_read);
+-        wp_access = BP_MEM_READ;
+-        break;
+-    case MMU_DATA_STORE:
+-        elt_ofs = offsetof(CPUTLBEntry, addr_write);
+-        wp_access = BP_MEM_WRITE;
+-        break;
+-    case MMU_INST_FETCH:
+-        elt_ofs = offsetof(CPUTLBEntry, addr_code);
+-        wp_access = BP_MEM_READ;
+-        break;
+-    default:
+-        g_assert_not_reached();
+-    }
+-    tlb_addr = tlb_read_ofs(entry, elt_ofs);
+-
+-    if (unlikely(!tlb_hit(tlb_addr, addr))) {
+-        if (!victim_tlb_hit(env, mmu_idx, index, elt_ofs,
+-                            addr & TARGET_PAGE_MASK)) {
+-            tlb_fill(env_cpu(env), addr, size, access_type, mmu_idx, retaddr);
+-            /* TLB resize via tlb_fill may have moved the entry. */
+-            index = tlb_index(env, mmu_idx, addr);
+-            entry = tlb_entry(env, mmu_idx, addr);
+-        }
+-        tlb_addr = tlb_read_ofs(entry, elt_ofs);
+-    }
+-
+-    if (!size) {
+-        return NULL;
+-    }
+-
+-    if (unlikely(tlb_addr & TLB_FLAGS_MASK)) {
+-        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
+-
+-        /* Reject I/O access, or other required slow-path.  */
+-        if (tlb_addr & (TLB_MMIO | TLB_BSWAP | TLB_DISCARD_WRITE)) {
+-            return NULL;
+-        }
+-
+-        /* Handle watchpoints.  */
+-        if (tlb_addr & TLB_WATCHPOINT) {
+-            cpu_check_watchpoint(env_cpu(env), addr, size,
+-                                 iotlbentry->attrs, wp_access, retaddr);
+-        }
+-
+-        /* Handle clean RAM pages.  */
+-        if (tlb_addr & TLB_NOTDIRTY) {
+-            notdirty_write(env_cpu(env), addr, size, iotlbentry, retaddr);
+-        }
+-    }
+-
+-    return (void *)((uintptr_t)addr + entry->addend);
+-}
+-
+-void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
+-                        MMUAccessType access_type, int mmu_idx)
+-{
+-    CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
+-    target_ulong tlb_addr, page;
++    target_ulong tlb_addr, page_addr;
+     size_t elt_ofs;
++    int flags;
  
--    set_helper_retaddr(ra);
-     for (i = 0; i < oprsz; ) {
-         uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));
-         do {
-@@ -4698,7 +4679,6 @@ static void sve_st1_r(CPUARMState *env, void *vg, target_ulong addr,
-             addr += msize;
-         } while (i & 15);
+     switch (access_type) {
+     case MMU_DATA_LOAD:
+@@ -1325,20 +1255,19 @@ void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
+     default:
+         g_assert_not_reached();
      }
--    clear_helper_retaddr();
- }
+-
+-    page = addr & TARGET_PAGE_MASK;
+     tlb_addr = tlb_read_ofs(entry, elt_ofs);
  
- static void sve_st2_r(CPUARMState *env, void *vg, target_ulong addr,
-@@ -4711,7 +4691,6 @@ static void sve_st2_r(CPUARMState *env, void *vg, target_ulong addr,
-     void *d1 = &env->vfp.zregs[rd];
-     void *d2 = &env->vfp.zregs[(rd + 1) & 31];
+-    if (!tlb_hit_page(tlb_addr, page)) {
+-        uintptr_t index = tlb_index(env, mmu_idx, addr);
+-
+-        if (!victim_tlb_hit(env, mmu_idx, index, elt_ofs, page)) {
++    page_addr = addr & TARGET_PAGE_MASK;
++    if (!tlb_hit_page(tlb_addr, page_addr)) {
++        if (!victim_tlb_hit(env, mmu_idx, index, elt_ofs, page_addr)) {
+             CPUState *cs = env_cpu(env);
+             CPUClass *cc = CPU_GET_CLASS(cs);
  
--    set_helper_retaddr(ra);
-     for (i = 0; i < oprsz; ) {
-         uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));
-         do {
-@@ -4723,7 +4702,6 @@ static void sve_st2_r(CPUARMState *env, void *vg, target_ulong addr,
-             addr += 2 * msize;
-         } while (i & 15);
-     }
--    clear_helper_retaddr();
- }
+-            if (!cc->tlb_fill(cs, addr, 0, access_type, mmu_idx, true, 0)) {
++            if (!cc->tlb_fill(cs, addr, fault_size, access_type,
++                              mmu_idx, nonfault, retaddr)) {
+                 /* Non-faulting page table read failed.  */
+-                return NULL;
++                *phost = NULL;
++                return TLB_INVALID_MASK;
+             }
  
- static void sve_st3_r(CPUARMState *env, void *vg, target_ulong addr,
-@@ -4737,7 +4715,6 @@ static void sve_st3_r(CPUARMState *env, void *vg, target_ulong addr,
-     void *d2 = &env->vfp.zregs[(rd + 1) & 31];
-     void *d3 = &env->vfp.zregs[(rd + 2) & 31];
- 
--    set_helper_retaddr(ra);
-     for (i = 0; i < oprsz; ) {
-         uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));
-         do {
-@@ -4750,7 +4727,6 @@ static void sve_st3_r(CPUARMState *env, void *vg, target_ulong addr,
-             addr += 3 * msize;
-         } while (i & 15);
-     }
--    clear_helper_retaddr();
- }
- 
- static void sve_st4_r(CPUARMState *env, void *vg, target_ulong addr,
-@@ -4765,7 +4741,6 @@ static void sve_st4_r(CPUARMState *env, void *vg, target_ulong addr,
-     void *d3 = &env->vfp.zregs[(rd + 2) & 31];
-     void *d4 = &env->vfp.zregs[(rd + 3) & 31];
- 
--    set_helper_retaddr(ra);
-     for (i = 0; i < oprsz; ) {
-         uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));
-         do {
-@@ -4779,7 +4754,6 @@ static void sve_st4_r(CPUARMState *env, void *vg, target_ulong addr,
-             addr += 4 * msize;
-         } while (i & 15);
-     }
--    clear_helper_retaddr();
- }
- 
- #define DO_STN_1(N, NAME, ESIZE) \
-@@ -4875,7 +4849,6 @@ static void sve_ld1_zs(CPUARMState *env, void *vd, void *vg, void *vm,
-     intptr_t i, oprsz = simd_oprsz(desc);
-     ARMVectorReg scratch = { };
- 
--    set_helper_retaddr(ra);
-     for (i = 0; i < oprsz; ) {
-         uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));
-         do {
-@@ -4886,7 +4859,6 @@ static void sve_ld1_zs(CPUARMState *env, void *vd, void *vg, void *vm,
-             i += 4, pg >>= 4;
-         } while (i & 15);
-     }
--    clear_helper_retaddr();
- 
-     /* Wait until all exceptions have been raised to write back.  */
-     memcpy(vd, &scratch, oprsz);
-@@ -4900,7 +4872,6 @@ static void sve_ld1_zd(CPUARMState *env, void *vd, void *vg, void *vm,
-     intptr_t i, oprsz = simd_oprsz(desc) / 8;
-     ARMVectorReg scratch = { };
- 
--    set_helper_retaddr(ra);
-     for (i = 0; i < oprsz; i++) {
-         uint8_t pg = *(uint8_t *)(vg + H1(i));
-         if (likely(pg & 1)) {
-@@ -4908,7 +4879,6 @@ static void sve_ld1_zd(CPUARMState *env, void *vd, void *vg, void *vm,
-             tlb_fn(env, &scratch, i * 8, base + (off << scale), ra);
+             /* TLB resize via tlb_fill may have moved the entry.  */
+@@ -1346,15 +1275,89 @@ void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
          }
+         tlb_addr = tlb_read_ofs(entry, elt_ofs);
      }
--    clear_helper_retaddr();
++    flags = tlb_addr & TLB_FLAGS_MASK;
  
-     /* Wait until all exceptions have been raised to write back.  */
-     memcpy(vd, &scratch, oprsz * 8);
-@@ -5080,13 +5050,11 @@ static inline void sve_ldff1_zs(CPUARMState *env, void *vd, void *vg, void *vm,
-     reg_off = find_next_active(vg, 0, reg_max, MO_32);
-     if (likely(reg_off < reg_max)) {
-         /* Perform one normal read, which will fault or not.  */
--        set_helper_retaddr(ra);
-         addr = off_fn(vm, reg_off);
-         addr = base + (addr << scale);
-         tlb_fn(env, vd, reg_off, addr, ra);
- 
-         /* The rest of the reads will be non-faulting.  */
--        clear_helper_retaddr();
+-    if (tlb_addr & ~TARGET_PAGE_MASK) {
+-        /* IO access */
++    /* Fold all "mmio-like" bits into TLB_MMIO.  This is not RAM.  */
++    if (unlikely(flags & ~(TLB_WATCHPOINT | TLB_NOTDIRTY))) {
++        *phost = NULL;
++        return TLB_MMIO;
++    }
++
++    /* Everything else is RAM. */
++    *phost = (void *)((uintptr_t)addr + entry->addend);
++    return flags;
++}
++
++int probe_access_flags(CPUArchState *env, target_ulong addr,
++                       MMUAccessType access_type, int mmu_idx,
++                       bool nonfault, void **phost, uintptr_t retaddr)
++{
++    int flags;
++
++    flags = probe_access_internal(env, addr, 0, access_type, mmu_idx,
++                                  nonfault, phost, retaddr);
++
++    /* Handle clean RAM pages.  */
++    if (unlikely(flags & TLB_NOTDIRTY)) {
++        uintptr_t index = tlb_index(env, mmu_idx, addr);
++        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
++
++        notdirty_write(env_cpu(env), addr, 1, iotlbentry, retaddr);
++        flags &= ~TLB_NOTDIRTY;
++    }
++
++    return flags;
++}
++
++void *probe_access(CPUArchState *env, target_ulong addr, int size,
++                   MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
++{
++    void *host;
++    int flags;
++
++    g_assert(-(addr | TARGET_PAGE_MASK) >= size);
++
++    flags = probe_access_internal(env, addr, size, access_type, mmu_idx,
++                                  false, &host, retaddr);
++
++    /* Per the interface, size == 0 merely faults the access. */
++    if (size == 0) {
+         return NULL;
      }
  
-     /* After any fault, zero the leading predicated false elements.  */
-@@ -5122,13 +5090,11 @@ static inline void sve_ldff1_zd(CPUARMState *env, void *vd, void *vg, void *vm,
-     reg_off = find_next_active(vg, 0, reg_max, MO_64);
-     if (likely(reg_off < reg_max)) {
-         /* Perform one normal read, which will fault or not.  */
--        set_helper_retaddr(ra);
-         addr = off_fn(vm, reg_off);
-         addr = base + (addr << scale);
-         tlb_fn(env, vd, reg_off, addr, ra);
- 
-         /* The rest of the reads will be non-faulting.  */
--        clear_helper_retaddr();
-     }
- 
-     /* After any fault, zero the leading predicated false elements.  */
-@@ -5240,7 +5206,6 @@ static void sve_st1_zs(CPUARMState *env, void *vd, void *vg, void *vm,
-     const int scale = extract32(desc, SIMD_DATA_SHIFT + MEMOPIDX_SHIFT, 2);
-     intptr_t i, oprsz = simd_oprsz(desc);
- 
--    set_helper_retaddr(ra);
-     for (i = 0; i < oprsz; ) {
-         uint16_t pg = *(uint16_t *)(vg + H1_2(i >> 3));
-         do {
-@@ -5251,7 +5216,6 @@ static void sve_st1_zs(CPUARMState *env, void *vd, void *vg, void *vm,
-             i += 4, pg >>= 4;
-         } while (i & 15);
-     }
--    clear_helper_retaddr();
+-    return (void *)((uintptr_t)addr + entry->addend);
++    if (unlikely(flags & (TLB_NOTDIRTY | TLB_WATCHPOINT))) {
++        uintptr_t index = tlb_index(env, mmu_idx, addr);
++        CPUIOTLBEntry *iotlbentry = &env_tlb(env)->d[mmu_idx].iotlb[index];
++
++        /* Handle clean RAM pages.  */
++        if (flags & TLB_NOTDIRTY) {
++            notdirty_write(env_cpu(env), addr, 1, iotlbentry, retaddr);
++        }
++
++        /* Handle watchpoints.  */
++        if (flags & TLB_WATCHPOINT) {
++            int wp_access = (access_type == MMU_DATA_STORE
++                             ? BP_MEM_WRITE : BP_MEM_READ);
++            cpu_check_watchpoint(env_cpu(env), addr, size,
++                                 iotlbentry->attrs, wp_access, retaddr);
++        }
++    }
++
++    return host;
  }
  
- static void sve_st1_zd(CPUARMState *env, void *vd, void *vg, void *vm,
-@@ -5261,7 +5225,6 @@ static void sve_st1_zd(CPUARMState *env, void *vd, void *vg, void *vm,
-     const int scale = extract32(desc, SIMD_DATA_SHIFT + MEMOPIDX_SHIFT, 2);
-     intptr_t i, oprsz = simd_oprsz(desc) / 8;
++void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
++                        MMUAccessType access_type, int mmu_idx)
++{
++    void *host;
++    int flags;
++
++    flags = probe_access_internal(env, addr, 0, access_type,
++                                  mmu_idx, true, &host, 0);
++
++    /* No combination of flags are expected by the caller. */
++    return flags ? NULL : host;
++}
  
--    set_helper_retaddr(ra);
-     for (i = 0; i < oprsz; i++) {
-         uint8_t pg = *(uint8_t *)(vg + H1(i));
-         if (likely(pg & 1)) {
-@@ -5269,7 +5232,6 @@ static void sve_st1_zd(CPUARMState *env, void *vd, void *vg, void *vm,
-             tlb_fn(env, vd, i * 8, base + (off << scale), ra);
-         }
-     }
--    clear_helper_retaddr();
+ #ifdef CONFIG_PLUGIN
+ /*
+diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+index 4be78eb9b3..91c2dc46dd 100644
+--- a/accel/tcg/user-exec.c
++++ b/accel/tcg/user-exec.c
+@@ -190,13 +190,12 @@ static inline int handle_cpu_signal(uintptr_t pc, siginfo_t *info,
+     g_assert_not_reached();
  }
  
- #define DO_ST1_ZPZ_S(MEM, OFS) \
+-void *probe_access(CPUArchState *env, target_ulong addr, int size,
+-                   MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
++int probe_access_flags(CPUArchState *env, target_ulong addr,
++                       MMUAccessType access_type, int mmu_idx,
++                       bool nonfault, void **phost, uintptr_t ra)
+ {
+     int flags;
+ 
+-    g_assert(-(addr | TARGET_PAGE_MASK) >= size);
+-
+     switch (access_type) {
+     case MMU_DATA_STORE:
+         flags = PAGE_WRITE;
+@@ -211,15 +210,30 @@ void *probe_access(CPUArchState *env, target_ulong addr, int size,
+         g_assert_not_reached();
+     }
+ 
+-    if (!guest_addr_valid(addr) || page_check_range(addr, size, flags) < 0) {
+-        CPUState *cpu = env_cpu(env);
+-        CPUClass *cc = CPU_GET_CLASS(cpu);
+-        cc->tlb_fill(cpu, addr, size, access_type, MMU_USER_IDX, false,
+-                     retaddr);
+-        g_assert_not_reached();
++    if (!guest_addr_valid(addr) || page_check_range(addr, 1, flags) < 0) {
++        if (nonfault) {
++            *phost = NULL;
++            return TLB_INVALID_MASK;
++        } else {
++            CPUState *cpu = env_cpu(env);
++            CPUClass *cc = CPU_GET_CLASS(cpu);
++            cc->tlb_fill(cpu, addr, 0, access_type, MMU_USER_IDX, false, ra);
++            g_assert_not_reached();
++        }
+     }
+ 
+-    return size ? g2h(addr) : NULL;
++    *phost = g2h(addr);
++    return 0;
++}
++
++void *probe_access(CPUArchState *env, target_ulong addr, int size,
++                   MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
++{
++    void *host;
++
++    g_assert(-(addr | TARGET_PAGE_MASK) >= size);
++    probe_access_flags(env, addr, access_type, mmu_idx, false, &host, retaddr);
++    return host;
+ }
+ 
+ #if defined(__i386__)
 -- 
 2.20.1
 

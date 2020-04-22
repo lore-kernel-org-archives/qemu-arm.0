@@ -1,120 +1,164 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp610338lfm;
-        Wed, 22 Apr 2020 06:05:56 -0700 (PDT)
-X-Received: by 2002:a9d:6295:: with SMTP id x21mr15245382otk.291.1587560756071;
-        Wed, 22 Apr 2020 06:05:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587560756; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp612470lfm;
+        Wed, 22 Apr 2020 06:07:48 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJFL4uA2d8Pqvoo7V6JC43E6OBql3g5q0QlP2VWJ0NEjeIm50SVFR2Yv28toekg5BjdZR7A
+X-Received: by 2002:ac8:6b51:: with SMTP id x17mr26522030qts.157.1587560868424;
+        Wed, 22 Apr 2020 06:07:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587560868; cv=none;
         d=google.com; s=arc-20160816;
-        b=LJjmGCvTqSXsbLPY0w0JZOLsGXUFrlYenaHNTTGckFudzo/FNq+1V9stWOwo6YysK1
-         VtQGTB0YuLQvP/XXWj87qFTJgH9aMQI7EDzZeR4HtQCM3fRyrJkbbzoBKiw17VNq2p+p
-         JjfUxasRyjJP3E93HeyDPUcF9HEirh27H2qOEQI5BQixSA5lDHzhV3ly4bpAx4C9QbXO
-         myXI4dnEHE9zr4xTUAF+/5dtRtVqH53E+vBMDRQunp/o+FdpaApS12s60/Q3Jmxt5Yjp
-         BuqmQGJ+gA+s4Rs1dH3o5Y+sEdOuTZ4aQCwI3FL8OIvvfWZvKUQkLsuTmHdhqmr15SIy
-         gGZw==
+        b=Kep6qDAGXcOSmf1b8/idzE1iLRPpetlIhf/optPaZrTaU1pqHrFxgTrDLN9t0pas5t
+         uVuUmQkh0sjndBsnrECnVk+iUNjQt5pfc7ngzihHFHEDb45dgFGuBHGbbcK7zoDUCOYK
+         8lN+O7bZ5IodoW+lEQPGuKwIIeTCWu/SksEBkqCq0s37ELxEr2bVxhnhzJAG6i56+B4E
+         1mSN+u+rj+0/9JAVZR+SRLG8CpHgUbzr6Z0TLPiBzGbYIVWNGJLD2XQefxtvCPhESx3w
+         xnFuWK73AooMMXTuINN42lpCbWZsL//FineGtrrUaL3DcCeoNS2FtuMgVNXXCmhDuhZW
+         6YyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=i1R+UL3czKmE85NT+9SniKL1KoeLdWjkivQZRFm6sOo=;
-        b=KFjrVB8URDUIHuNCHhelYMEj7QAjWoo0bQsYp+XXfcF29CgaeY+YqIMAnB0sv62KsF
-         ZA6+ATlpVACZ7yOCFDrOUlWNx9x6wVtH4qMH9TDr2t+jJLRwpwa4kSsVCGIfx5oFLSgI
-         2nQU8Ln9dujjVlXBhDJCJMgV5WkMLlxz0fGahENiLwb9U3wr+jvJXFN1l1NkmLNT5KjD
-         p1+A+XmIPoZbYyGpctdCSworY3tkpQrdQomCpsbOocx8DJ9/ypLoRi/PAez7634Xpr+k
-         ZTCklMM1T5jeOhuFcpcm/Tb8oZDNZT9IGM5JalgN7NTKR21+snd3fHZXImtDaoD2S9ud
-         b2UQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=oGgKscofsQygorrpqjNCPgIrftyN69zP62MTnCqjIBo=;
+        b=Ep3n1Xq1SC4t+0yErdLzXGVEptpRd8I1hKDy1Oztcsh2r9IXUpdbt3bVhuuOV3eKz1
+         4qAJgZRlNqJQlsOyxoTVC3x/zNVxorw5pT44DSfxLVhk82Wp1WS2ns+QRqLpsdKcPKhn
+         8J5ejLu6As4UC7mnbqcV7u46F3PXOe9T0Dbw8ARHhRsbEVs/nf2ZP/JYTHCmENsUzRDl
+         hnWusZZkQMtukv72UYChhQySbOukiBka7uEhvmbResLoA7Ba7nmd7czyVAuvcWhO1an+
+         Ag3fml28ppsaMq31ab/HlzTyMXtG0wSOalsSSEZ/OjxOMQkUVP7lvefP1CMJi82oplwW
+         xPVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GUPY9SCb;
-       spf=pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=laurent.desnogues@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <laurent.desnogues@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f9sor4347140otq.142.2020.04.22.06.05.55
-        (Google Transport Security);
-        Wed, 22 Apr 2020 06:05:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FTqbFq7J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u15si3383059qkm.210.2020.04.22.06.07.48
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 22 Apr 2020 06:07:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=GUPY9SCb;
-       spf=pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=laurent.desnogues@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=i1R+UL3czKmE85NT+9SniKL1KoeLdWjkivQZRFm6sOo=;
-        b=GUPY9SCbsSCctyV/ntggVRN98jUIWxhEZIpNharXv7yWn0qmyxHzTZNQQhUfBr/fql
-         Z5yCNLZ+nTX6ZD73x55KRykyDYhG334SOdMuQnSJZ4BcxN3IHaY0ywd2y+3kDaEIUSVk
-         lDlMKg5adqGce9j+K2M1ab8baoH9hAfshQeHcTnDHsYpAYH1E5NxINx7Y4eNYQb1J8He
-         4lpTQqwfsXWGVWvwRQrGpR8bc5xO3p5QevT63YpSmVr/LIP2RFFW/OodHojwzKgNJLCo
-         EdSTnWGbXgWKT2HJkxlBWPKE6tZTZfvGsncbLtz1HLWfIxO6KtwlRCZi3FDn/atAQedx
-         BbZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=i1R+UL3czKmE85NT+9SniKL1KoeLdWjkivQZRFm6sOo=;
-        b=lPEOkc9GCXn+cpmpX3y6nKltM2KAwZCRBODQ0ZYdiuE5+YT2GC6/ZAgDceQeR6qf8s
-         wY9skIku7Ba3GL0VPQpDTgWry7xIddzp9xM9rx0ODbez+fbyDCfe5MMRj56hs2NCHdPu
-         K1gmEFHZZdlZwmMihBo92iK4Tk3tX4UFblzvC3SY3hvl8kPOxnviVZMbj0WClDyLB6Xi
-         v/typX036AceJJH0sJpUBvTasu5VSkv8YIpqx862ri2YDMQsBc0APzYep8TX1dKtr9Ny
-         e98LW2O0mJcdz6YUmahud1D3/2Zqn7LQcU0PMgPxk1y8zeRPkOwmoaG2C34fxk7AgS9o
-         vgtQ==
-X-Gm-Message-State: AGi0PubeT2o5lzM3paZPKhnOmGfI7h0lMyoqvrd1Bv6bTBaQVLjy7zUI
-	yCjch/OMwNtcTl0t4aASmKWFMtYliVV/KTceIn5LAiSSIJo=
-X-Google-Smtp-Source: APiQypKHYnk1YsfBHdZRn8fb9sh/TsUdVI7nLEkOgT3xVGSqp43WP92Y3pUrP+MUhgEHszDOy6j//ogMCkXNCnFGupM=
-X-Received: by 2002:a02:9a0d:: with SMTP id b13mr25009973jal.60.1587560755286;
- Wed, 22 Apr 2020 06:05:55 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FTqbFq7J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50226 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jRF6R-0003r1-Mj
+	for alex.bennee@linaro.org; Wed, 22 Apr 2020 09:07:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46854)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <armbru@redhat.com>) id 1jRF68-0003m1-VO
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2020 09:07:30 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
+ (envelope-from <armbru@redhat.com>) id 1jRF67-0003o5-IH
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2020 09:07:28 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:46258
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jRF67-0003kL-1y
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2020 09:07:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1587560846;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=oGgKscofsQygorrpqjNCPgIrftyN69zP62MTnCqjIBo=;
+ b=FTqbFq7JU+nh6cDX9YmwFaSW/jAq2jx4F0kQYOjvWMl2D3at2ptVUFOLglM/wY8+d2XYhh
+ oqCS7C4btBresV4f1wMzMzvV3Cj6qDJNjH5++pFLQ/Wub8BWo6QYVdjTcs6aJ32lzd5IFp
+ 8NznVJ5tuUcER6AewToa3IbVEiVONoU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-349-wnw-nJ2PPd-N1onAB1v74A-1; Wed, 22 Apr 2020 09:07:24 -0400
+X-MC-Unique: wnw-nJ2PPd-N1onAB1v74A-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3E19C1030980;
+ Wed, 22 Apr 2020 13:07:23 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-113-6.ams2.redhat.com [10.36.113.6])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0BAE710027BA;
+ Wed, 22 Apr 2020 13:07:23 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 0E09811358C1; Wed, 22 Apr 2020 15:07:20 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 05/14] arm/virt: Fix virt_machine_device_plug_cb() error
+ API violation
+Date: Wed, 22 Apr 2020 15:07:10 +0200
+Message-Id: <20200422130719.28225-6-armbru@redhat.com>
+In-Reply-To: <20200422130719.28225-1-armbru@redhat.com>
+References: <20200422130719.28225-1-armbru@redhat.com>
 MIME-Version: 1.0
-References: <20200422124501.28015-1-peter.maydell@linaro.org>
-In-Reply-To: <20200422124501.28015-1-peter.maydell@linaro.org>
-From: Laurent Desnogues <laurent.desnogues@gmail.com>
-Date: Wed, 22 Apr 2020 15:05:55 +0200
-Message-ID: <CABoDooNn+RdZ0FuSu5NfD5=rbPuftgxFA-CHS973EHB1z33FnQ@mail.gmail.com>
-Subject: Re: [PATCH for-5.0?] target/arm: Fix ID_MMFR4 value on AArch64 'max' CPU
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: Q1fPo7/o7zt6
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/22 09:07:24
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cPMXv5bm3cSK
 
-On Wed, Apr 22, 2020 at 2:45 PM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> In commit 41a4bf1feab098da4cd the added code to set the CNP
-> field in ID_MMFR4 for the AArch64 'max' CPU had a typo
-> where it used the wrong variable name, resulting in ID_MMFR4
-> fields AC2, XNX and LSM being wrong. Fix the typo.
->
-> Fixes: 41a4bf1feab098da4cd
-> Reported-by: Laurent Desnogues <laurent.desnogues@gmail.com>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+The Error ** argument must be NULL, &error_abort, &error_fatal, or a
+pointer to a variable containing NULL.  Passing an argument of the
+latter kind twice without clearing it in between is wrong: if the
+first call sets an error, it no longer points to NULL for the second
+call.
 
-Reviewed-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+virt_machine_device_plug_cb() passes @errp to
+cryptodev_builtin_sym_close_session() in a loop.  Harmless, because
+cryptodev_builtin_sym_close_session() can't actually fail.  Fix by
+dropping its Error ** parameter.
 
-Thanks,
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/arm/virt.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Laurent
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 7dc96abf72..cca5316256 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1186,7 +1186,7 @@ static void create_smmu(const VirtMachineState *vms,
+     g_free(node);
+ }
+=20
+-static void create_virtio_iommu_dt_bindings(VirtMachineState *vms, Error *=
+*errp)
++static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
+ {
+     const char compat[] =3D "virtio,pci-iommu";
+     uint16_t bdf =3D vms->virtio_iommu_bdf;
+@@ -2118,7 +2118,7 @@ static void virt_machine_device_plug_cb(HotplugHandle=
+r *hotplug_dev,
+=20
+         vms->iommu =3D VIRT_IOMMU_VIRTIO;
+         vms->virtio_iommu_bdf =3D pci_get_bdf(pdev);
+-        create_virtio_iommu_dt_bindings(vms, errp);
++        create_virtio_iommu_dt_bindings(vms);
+     }
+ }
+=20
+--=20
+2.21.1
 
-> ---
-> maybe 5.0 just because it's so trivial. I dunno...
->
-> There's also an error where we use the uint32_t u variable
-> to update the 64-bit ID_AA64DFR0 register, but that's harmless
-> because as it happens the top 32 bits of that register are
-> all zeroes anyway, so we can just fix that in 5.1.
->
->  target/arm/cpu64.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index 62d36f9e8d3..95d0c8c101a 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -705,7 +705,7 @@ static void aarch64_max_initfn(Object *obj)
->          u = cpu->isar.id_mmfr4;
->          u = FIELD_DP32(u, ID_MMFR4, HPDS, 1); /* AA32HPD */
->          u = FIELD_DP32(u, ID_MMFR4, AC2, 1); /* ACTLR2, HACTLR2 */
-> -        u = FIELD_DP32(t, ID_MMFR4, CNP, 1); /* TTCNP */
-> +        u = FIELD_DP32(u, ID_MMFR4, CNP, 1); /* TTCNP */
->          cpu->isar.id_mmfr4 = u;
->
->          u = cpu->isar.id_aa64dfr0;
-> --
-> 2.20.1
->

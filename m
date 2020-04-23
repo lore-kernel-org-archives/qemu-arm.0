@@ -1,441 +1,96 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2060082lfm;
-        Thu, 23 Apr 2020 09:10:19 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIRp4vep1Nz+203NkwumF3TWMfbemjq8SL/I+xc6/0df5OdK0gjtl1yrBkj9QuD21I0ZYBX
-X-Received: by 2002:ae9:ed04:: with SMTP id c4mr4485992qkg.367.1587658219075;
-        Thu, 23 Apr 2020 09:10:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587658219; cv=none;
-        d=google.com; s=arc-20160816;
-        b=qfXEFA+wbE7heLCbKsQEmJdASru1qyDrtDVXKbRKDQPweGMFSXCey/25GCLio5clXg
-         wJ6pKlvP1szsUlpOAvYBG51Pc73wx14RRnfPyNd2Gl0zQpj+MomUIstCmhXXQ1ZKmPHW
-         oGupOFhME0Wt6QYFv/AwaeLBCE8CshFV9tWJH5o/PiMrwjCwG9LbTiHFegM6jtEXSZC1
-         Z+1NikGFIYSM3Ddlz6kUMKPhJAAqha5/DDnwwIiG4xB+07F8VmsvR/nMY9tvdND3gv+Q
-         VY7HC3rQhEPPUO9PE/0pA72ain8cO3O/DfYN8Hr8Lkd2ZYC5btSPH7ygU+6pLo4qTnlG
-         78Sg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=nWdrkLY2zpQLK8W8mhoILd295IuGxGR8r2Xr8cPPU94=;
-        b=hs0WsUnpRA4FKkUfXobrWEqjBO1Ha7yfQmLPjQFEUYa9hx9OrLs3JPTOGDUshwVNt0
-         /Mb++jvkanP61CS5+9NW6P1c7BHFgK+Lf6eadNlYZ7R4a3cgtDAln6jGxKQIcf1oCjzj
-         +j7tqRGpX4bGhI7fiDa6U2yrlo47aZNQqu1PqWNxeIeFRLVc2fxMbuOJbr2h26OceEQR
-         eYJI8AxEifIdY9yajHTx4ul5Q5ltsCXTR661cADCz81f/d1TsWEifpeWHQ7OLkB356lK
-         uT3B122EJiOX1lvBl2Z3GYH9vkPZmaXquAeA3gUwpeDG2+hQZ8ENitD0kphlOsxkFRYa
-         881A==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=e5s1hPav;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h23si1637198qkk.68.2020.04.23.09.10.18
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Apr 2020 09:10:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=e5s1hPav;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58334 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jReQc-0005Y5-DT
-	for alex.bennee@linaro.org; Thu, 23 Apr 2020 12:10:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34122)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jean-philippe@linaro.org>) id 1jReQR-0005TL-1A
- for qemu-arm@nongnu.org; Thu, 23 Apr 2020 12:10:07 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <jean-philippe@linaro.org>) id 1jReQP-0006EN-Lm
- for qemu-arm@nongnu.org; Thu, 23 Apr 2020 12:10:06 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:37825)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1jReQP-0006Di-3V
- for qemu-arm@nongnu.org; Thu, 23 Apr 2020 12:10:05 -0400
-Received: by mail-wm1-x344.google.com with SMTP id z6so7165028wml.2
- for <qemu-arm@nongnu.org>; Thu, 23 Apr 2020 09:10:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=nWdrkLY2zpQLK8W8mhoILd295IuGxGR8r2Xr8cPPU94=;
- b=e5s1hPavrfSiCmJgMHv0mbKBd/Bwu4d819eQJh2hCEvQDPJxjxf2rZIPLmCKBM6NBL
- UYBCVLagLkSzJg49Zp3la5FWmj4PmwoHzLiTY4Ge7Mk4RtZ8wYVsRSQezf5ce1h6BYoi
- u9h7KWxmfIPdNG3NOjmq6ZBuoskGDLXXcgRV5Wuw1I2T992wIiRnMPOw26zF0laek5+6
- L9XxY7I159lEdFopP8rSX90u0iQNviJqgSAjf9j+eHSfzR3ULugrEM1FaKIq7V7XIV2N
- Hx3NkMPuJhxMfBo3sG4cZur71E+Hu0efWbdJ0BoZaPSCLcKvu4Jj5CT+riyrOBgpgAvA
- GSJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=nWdrkLY2zpQLK8W8mhoILd295IuGxGR8r2Xr8cPPU94=;
- b=ZeTDIino3G/YchTovhoPIJu1KBN6C9NSG0cLJ3es1Np3UOjQ+SC26OD5lvjtwu3zN7
- CUrmGrRyuLtt5UsA2Gz64CCBlzBwgcfa7CX06ukTGHkvUk18FrvawlCTtdZAnbCpDCFI
- 2fvPSIcN4nJbZWLZupE3lyBW+10qsq8vxeySUbHW6oXdLW9m4QRT0Qh9EAC+FlV46QLr
- ISVPQp5ZeAlqeDtorQ0TQtQkRydJ6RossvoegNv9GX7X2/qIe/fz68zA3HBu7hEdC9/t
- dO+hizvOw4FuI+7O88K4RxNczMZ10lOkEmuZTkghhJAHN8Ww3it6qrKWB4gXhz4e+Wqq
- eKoA==
-X-Gm-Message-State: AGi0PuZUMm89SPDSiUvRtPVl5tvOmR6cTD7sFbxTuizip/OqYLPgZejN
- jqMixj/guo1FJHd4j15geP6JJg==
-X-Received: by 2002:a1c:7d90:: with SMTP id y138mr5195666wmc.121.1587658202498; 
- Thu, 23 Apr 2020 09:10:02 -0700 (PDT)
-Received: from myrica ([2001:171b:226b:54a0:116c:c27a:3e7f:5eaf])
- by smtp.gmail.com with ESMTPSA id t20sm11032225wmi.2.2020.04.23.09.10.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Apr 2020 09:10:01 -0700 (PDT)
-Date: Thu, 23 Apr 2020 18:09:52 +0200
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Bharat Bhushan <bbhushan2@marvell.com>
-Subject: Re: [PATCH v9 8/9] virtio-iommu: Implement probe request
-Message-ID: <20200423160952.GB645865@myrica>
-References: <20200323084617.1782-1-bbhushan2@marvell.com>
- <20200323084617.1782-9-bbhushan2@marvell.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id 17sm4396657wmo.2.2020.04.23.10.06.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 23 Apr 2020 10:06:04 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id E34F61FF93;
+	Thu, 23 Apr 2020 18:05:57 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH  v1 07/14] tests/tcg: better trap gdb failures
+Date: Thu, 23 Apr 2020 18:05:50 +0100
+Message-Id: <20200423170557.31106-8-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200423170557.31106-1-alex.bennee@linaro.org>
+References: <20200423170557.31106-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200323084617.1782-9-bbhushan2@marvell.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::344
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
- tnowicki@marvell.com, mst@redhat.com, drjones@redhat.com, peterx@redhat.com,
- qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>,
- alex.williamson@redhat.com, qemu-arm@nongnu.org, bharatb.linux@gmail.com,
- linuc.decode@gmail.com, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aiFXv2UO1/Ok
+X-TUID: OJe69qtu0cFi
 
-Hi Bharat,
+It seems older and non-multiarach aware GDBs might not fail gracefully
+when faced with something they don't know. For example when faced with
+a target XML for s390x the Ubuntu 18.04 gdb will generate an internal
+fault and prompt for a core dump.
 
-A few more things found while rebasing
+Work around this by invoking GDB in a more batch orientated way and
+then trying to filter out between test failures and gdb failures.
 
-On Mon, Mar 23, 2020 at 02:16:16PM +0530, Bharat Bhushan wrote:
-> This patch implements the PROBE request. Currently supported
-> page size mask per endpoint is returned. Also append a NONE
-> property in the end.
-> 
-> Signed-off-by: Bharat Bhushan <bbhushan2@marvell.com>
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  include/standard-headers/linux/virtio_iommu.h |   6 +
->  hw/virtio/virtio-iommu.c                      | 161 +++++++++++++++++-
->  hw/virtio/trace-events                        |   2 +
->  3 files changed, 166 insertions(+), 3 deletions(-)
-> 
-> diff --git a/include/standard-headers/linux/virtio_iommu.h b/include/standard-headers/linux/virtio_iommu.h
-> index b9443b83a1..8a0d47b907 100644
-> --- a/include/standard-headers/linux/virtio_iommu.h
-> +++ b/include/standard-headers/linux/virtio_iommu.h
-> @@ -111,6 +111,7 @@ struct virtio_iommu_req_unmap {
->  
->  #define VIRTIO_IOMMU_PROBE_T_NONE		0
->  #define VIRTIO_IOMMU_PROBE_T_RESV_MEM		1
-> +#define VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK	2
->  
->  #define VIRTIO_IOMMU_PROBE_T_MASK		0xfff
->  
-> @@ -130,6 +131,11 @@ struct virtio_iommu_probe_resv_mem {
->  	uint64_t					end;
->  };
->  
-> +struct virtio_iommu_probe_pgsize_mask {
-> +	struct virtio_iommu_probe_property      head;
-> +	uint64_t				pgsize_bitmap;
-> +};
-> +
->  struct virtio_iommu_req_probe {
->  	struct virtio_iommu_req_head		head;
->  	uint32_t					endpoint;
-> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-> index 747e3cf1da..63fbacdcdc 100644
-> --- a/hw/virtio/virtio-iommu.c
-> +++ b/hw/virtio/virtio-iommu.c
-> @@ -38,6 +38,10 @@
->  
->  /* Max size */
->  #define VIOMMU_DEFAULT_QUEUE_SIZE 256
-> +#define VIOMMU_PROBE_SIZE 512
-> +
-> +#define SUPPORTED_PROBE_PROPERTIES (\
-> +    1 << VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK)
->  
->  typedef struct VirtIOIOMMUDomain {
->      uint32_t id;
-> @@ -62,6 +66,13 @@ typedef struct VirtIOIOMMUMapping {
->      uint32_t flags;
->  } VirtIOIOMMUMapping;
->  
-> +typedef struct VirtIOIOMMUPropBuffer {
-> +    VirtIOIOMMUEndpoint *endpoint;
-> +    size_t filled;
-> +    uint8_t *start;
-> +    bool error;
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/guest-debug/run-test.py               | 19 ++++++++++++++++++-
+ tests/tcg/aarch64/gdbstub/test-sve-ioctl.py |  1 -
+ tests/tcg/aarch64/gdbstub/test-sve.py       |  1 -
+ 3 files changed, 18 insertions(+), 3 deletions(-)
 
-It doesn't seem like bufstate->error gets used anywhere
-
-> +} VirtIOIOMMUPropBuffer;
-> +
->  static inline uint16_t virtio_iommu_get_bdf(IOMMUDevice *dev)
->  {
->      return PCI_BUILD_BDF(pci_bus_num(dev->bus), dev->devfn);
-> @@ -490,6 +501,114 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
->      return ret;
->  }
->  
-> +static int virtio_iommu_fill_none_prop(VirtIOIOMMUPropBuffer *bufstate)
-> +{
-> +    struct virtio_iommu_probe_property *prop;
-> +
-> +    prop = (struct virtio_iommu_probe_property *)
-> +                (bufstate->start + bufstate->filled);
-> +    prop->type = 0;
-> +    prop->length = 0;
-> +    bufstate->filled += sizeof(*prop);
-> +    trace_virtio_iommu_fill_none_property(bufstate->endpoint->id);
-> +    return 0;
-> +}
-> +
-> +static int virtio_iommu_fill_page_size_mask(VirtIOIOMMUPropBuffer *bufstate)
-> +{
-> +    struct virtio_iommu_probe_pgsize_mask *page_size_mask;
-> +    size_t prop_size = sizeof(*page_size_mask);
-> +    VirtIOIOMMUEndpoint *ep = bufstate->endpoint;
-> +    VirtIOIOMMU *s = ep->viommu;
-> +    IOMMUDevice *sdev;
-> +
-> +    if (bufstate->filled + prop_size >= VIOMMU_PROBE_SIZE) {
-> +        bufstate->error = true;
-> +        /* get the traversal stopped by returning true */
-> +        return true;
-> +    }
-> +
-> +    page_size_mask = (struct virtio_iommu_probe_pgsize_mask *)
-> +                     (bufstate->start + bufstate->filled);
-> +
-> +    page_size_mask->head.type = VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK;
-> +    page_size_mask->head.length = prop_size;
-> +    QLIST_FOREACH(sdev, &s->notifiers_list, next) {
-> +        if (ep->id == sdev->devfn) {
-> +            page_size_mask->pgsize_bitmap = sdev->page_size_mask;
-
-Do we need a cpu_to_le64 here?
-
-> +	}
-> +    }
-> +    bufstate->filled += sizeof(*page_size_mask);
-> +    trace_virtio_iommu_fill_pgsize_mask_property(bufstate->endpoint->id,
-> +                                                 page_size_mask->pgsize_bitmap,
-> +                                                 bufstate->filled);
-> +    return false;
-> +}
-> +
-> +/* Fill the properties[] buffer with properties of type @type */
-> +static int virtio_iommu_fill_property(int type,
-> +                                      VirtIOIOMMUPropBuffer *bufstate)
-> +{
-> +    int ret = -ENOSPC;
-> +
-> +    if (bufstate->filled + sizeof(struct virtio_iommu_probe_property)
-> +            >= VIOMMU_PROBE_SIZE) {
-> +        /* no space left for the header */
-> +        bufstate->error = true;
-> +        goto out;
-> +    }
-> +
-> +    switch (type) {
-> +    case VIRTIO_IOMMU_PROBE_T_NONE:
-> +        ret = virtio_iommu_fill_none_prop(bufstate);
-> +        break;
-> +    case VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK:
-> +    {
-> +        ret = virtio_iommu_fill_page_size_mask(bufstate);
-> +	break;
-> +    }
-> +    default:
-> +        ret = -ENOENT;
-> +        break;
-> +    }
-> +out:
-> +    if (ret) {
-> +        error_report("%s property of type=%d could not be filled (%d),"
-> +                     " remaining size = 0x%lx",
-> +                     __func__, type, ret, bufstate->filled);
-> +    }
-> +    return ret;
-> +}
-> +
-> +/**
-> + * virtio_iommu_probe - Fill the probe request buffer with all
-> + * the properties the device is able to return and add a NONE
-> + * property at the end. @buf points to properties[].
-> + */
-> +static int virtio_iommu_probe(VirtIOIOMMU *s,
-> +                              struct virtio_iommu_req_probe *req,
-> +                              uint8_t *buf)
-> +{
-> +    uint32_t ep_id = le32_to_cpu(req->endpoint);
-> +    VirtIOIOMMUEndpoint *ep = virtio_iommu_get_endpoint(s, ep_id);
-> +    int16_t prop_types = SUPPORTED_PROBE_PROPERTIES, type;
-> +    VirtIOIOMMUPropBuffer bufstate = {.start = buf, .filled = 0,
-> +                                       .error = false, .endpoint = ep};
-
-Probably need to check if ep is valid before going further
-
-> +
-> +    while ((type = ctz32(prop_types)) != 32) {
-> +        if (virtio_iommu_fill_property(type, &bufstate)) {
-> +            goto failure;
-> +        }
-> +        prop_types &= ~(1 << type);
-> +    }
-> +    if (virtio_iommu_fill_property(VIRTIO_IOMMU_PROBE_T_NONE, &bufstate)) {
-> +        goto failure;
-> +    }
-
-We got rid of the NONE property in the spec, now there is: 
-
- "If the device doesn’t fill all probe_size bytes with properties, it
-  SHOULD fill the remaining bytes of properties with zeroes."
-
-So I think you can get rid of virtio_iommu_fill_none_prop() and fill the
-rest of the buffer with zeroes here instead.
-
-Thanks,
-Jean
-
-> +    return VIRTIO_IOMMU_S_OK;
-> +failure:
-> +    return VIRTIO_IOMMU_S_INVAL;
-> +}
-> +
->  static int virtio_iommu_iov_to_req(struct iovec *iov,
->                                     unsigned int iov_cnt,
->                                     void *req, size_t req_sz)
-> @@ -519,6 +638,17 @@ virtio_iommu_handle_req(detach)
->  virtio_iommu_handle_req(map)
->  virtio_iommu_handle_req(unmap)
->  
-> +static int virtio_iommu_handle_probe(VirtIOIOMMU *s,
-> +                                     struct iovec *iov,
-> +                                     unsigned int iov_cnt,
-> +                                     uint8_t *buf)
-> +{
-> +    struct virtio_iommu_req_probe req;
-> +    int ret = virtio_iommu_iov_to_req(iov, iov_cnt, &req, sizeof(req));
-> +
-> +    return ret ? ret : virtio_iommu_probe(s, &req, buf);
-> +}
-> +
->  static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
->  {
->      VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
-> @@ -564,17 +694,33 @@ static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
->          case VIRTIO_IOMMU_T_UNMAP:
->              tail.status = virtio_iommu_handle_unmap(s, iov, iov_cnt);
->              break;
-> +        case VIRTIO_IOMMU_T_PROBE:
-> +        {
-> +            struct virtio_iommu_req_tail *ptail;
-> +            uint8_t *buf = g_malloc0(s->config.probe_size + sizeof(tail));
-> +
-> +            ptail = (struct virtio_iommu_req_tail *)
-> +                        (buf + s->config.probe_size);
-> +            ptail->status = virtio_iommu_handle_probe(s, iov, iov_cnt, buf);
-> +
-> +            sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
-> +                              buf, s->config.probe_size + sizeof(tail));
-> +            g_free(buf);
-> +            assert(sz == s->config.probe_size + sizeof(tail));
-> +            goto push;
-> +        }
->          default:
->              tail.status = VIRTIO_IOMMU_S_UNSUPP;
->          }
-> -        qemu_mutex_unlock(&s->mutex);
->  
->  out:
->          sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
->                            &tail, sizeof(tail));
->          assert(sz == sizeof(tail));
->  
-> -        virtqueue_push(vq, elem, sizeof(tail));
-> +push:
-> +        qemu_mutex_unlock(&s->mutex);
-> +        virtqueue_push(vq, elem, sz);
->          virtio_notify(vdev, vq);
->          g_free(elem);
->      }
-> @@ -634,16 +780,23 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->      VirtIOIOMMUEndpoint *ep;
->      uint32_t sid, flags;
->      bool bypass_allowed;
-> +    hwaddr addr_mask;
->      bool found;
->  
->      interval.low = addr;
->      interval.high = addr + 1;
->  
-> +    if (sdev->page_size_mask) {
-> +        addr_mask = (1 << ctz32(sdev->page_size_mask)) - 1;
-> +    } else {
-> +        addr_mask = (1 << ctz32(s->config.page_size_mask)) - 1;
-> +    }
-> +
->      IOMMUTLBEntry entry = {
->          .target_as = &address_space_memory,
->          .iova = addr,
->          .translated_addr = addr,
-> -        .addr_mask = (1 << ctz32(s->config.page_size_mask)) - 1,
-> +        .addr_mask = addr_mask,
->          .perm = IOMMU_NONE,
->      };
->  
-> @@ -831,6 +984,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
->      s->config.page_size_mask = TARGET_PAGE_MASK;
->      s->config.input_range.end = -1UL;
->      s->config.domain_range.end = 32;
-> +    s->config.probe_size = VIOMMU_PROBE_SIZE;
->  
->      virtio_add_feature(&s->features, VIRTIO_RING_F_EVENT_IDX);
->      virtio_add_feature(&s->features, VIRTIO_RING_F_INDIRECT_DESC);
-> @@ -840,6 +994,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
->      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MAP_UNMAP);
->      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_BYPASS);
->      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MMIO);
-> +    virtio_add_feature(&s->features, VIRTIO_IOMMU_F_PROBE);
->  
->      qemu_mutex_init(&s->mutex);
->  
-> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-> index 8bae651191..b0a6e4bda3 100644
-> --- a/hw/virtio/trace-events
-> +++ b/hw/virtio/trace-events
-> @@ -76,3 +76,5 @@ virtio_iommu_report_fault(uint8_t reason, uint32_t flags, uint32_t endpoint, uin
->  virtio_iommu_notify_map(const char *name, uint64_t iova, uint64_t paddr, uint64_t map_size) "mr=%s iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64
->  virtio_iommu_notify_unmap(const char *name, uint64_t iova, uint64_t map_size) "mr=%s iova=0x%"PRIx64" size=0x%"PRIx64
->  virtio_iommu_remap(uint64_t iova, uint64_t pa, uint64_t size) "iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64""
-> +virtio_iommu_fill_none_property(uint32_t devid) "devid=%d"
-> +virtio_iommu_fill_pgsize_mask_property(uint32_t devid, uint64_t pgsize_mask, size_t filled) "dev= %d, pgsize_mask=0x%"PRIx64" filled=0x%lx"
-> -- 
-> 2.17.1
-> 
+diff --git a/tests/guest-debug/run-test.py b/tests/guest-debug/run-test.py
+index 8c49ee2f22..2bbb8fbaa3 100755
+--- a/tests/guest-debug/run-test.py
++++ b/tests/guest-debug/run-test.py
+@@ -50,8 +50,25 @@ if __name__ == '__main__':
+     inferior = subprocess.Popen(shlex.split(cmd))
+ 
+     # Now launch gdb with our test and collect the result
+-    gdb_cmd = "%s %s -ex 'target remote localhost:1234' -x %s" % (args.gdb, args.binary, args.test)
++    gdb_cmd = "%s %s" % (args.gdb, args.binary)
++    # run quietly and ignore .gdbinit
++    gdb_cmd += " -q -n -batch"
++    # disable prompts in case of crash
++    gdb_cmd += " -ex 'set confirm off'"
++    # connect to remote
++    gdb_cmd += " -ex 'target remote localhost:1234'"
++    # finally the test script itself
++    gdb_cmd += " -x %s" % (args.test)
++
++    print("GDB CMD: %s" % (gdb_cmd))
+ 
+     result = subprocess.call(gdb_cmd, shell=True);
+ 
++    # A negative result is the result of an internal gdb failure like
++    # a crash. We force a return of 0 so we don't fail the test on
++    # account of broken external tools.
++    if result < 0:
++        print("GDB crashed? SKIPPING")
++        exit(0)
++
+     exit(result)
+diff --git a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+index 984fbeb277..387b2fc20a 100644
+--- a/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
++++ b/tests/tcg/aarch64/gdbstub/test-sve-ioctl.py
+@@ -70,7 +70,6 @@ except (gdb.error, AttributeError):
+ try:
+     # These are not very useful in scripts
+     gdb.execute("set pagination off")
+-    gdb.execute("set confirm off")
+ 
+     # Run the actual tests
+     run_test()
+diff --git a/tests/tcg/aarch64/gdbstub/test-sve.py b/tests/tcg/aarch64/gdbstub/test-sve.py
+index dbe7f2aa93..5995689625 100644
+--- a/tests/tcg/aarch64/gdbstub/test-sve.py
++++ b/tests/tcg/aarch64/gdbstub/test-sve.py
+@@ -71,7 +71,6 @@ except (gdb.error, AttributeError):
+ try:
+     # These are not very useful in scripts
+     gdb.execute("set pagination off")
+-    gdb.execute("set confirm off")
+ 
+     # Run the actual tests
+     run_test()
+-- 
+2.20.1

@@ -1,73 +1,73 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1657010lfm;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1657017lfm;
         Thu, 23 Apr 2020 02:04:57 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJpRJQsSxsDQNKvddC6SVouZjVD779Wv9z+lXZd94KrDokPMHh8GvDxJiSF8dTWnsZM5PJw
-X-Received: by 2002:a37:64d2:: with SMTP id y201mr2575498qkb.370.1587632697196;
+X-Google-Smtp-Source: APiQypK+5vREbpv3Xu4IVwfWwZFp/khwUnGLRzavkUfcpISXp16BYGF072m5J3AsDiCqCCfeUPba
+X-Received: by 2002:a0c:9b89:: with SMTP id o9mr3000711qve.131.1587632697516;
         Thu, 23 Apr 2020 02:04:57 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1587632697; cv=none;
         d=google.com; s=arc-20160816;
-        b=O9/I03DQeGP3VQqB0JhHZ/dk6Y5HXP6OfzpsEVTUdI/0fOb4ZzA40IKJ1oZ7czaHhu
-         2NkRd3i0CFcy2as7k9+rrLbqt/dtJRsj9kgphPE5c2FuRHxc9Gy/eXnSwt/QDDA6PGAu
-         M02rQIwygrMOq2FmcQeickB5NHX4zyC5O59CcZMZk0sh+bl+9poetIIz8M4/E+KaPmrJ
-         szpuGvpim/dHBdI1Rs7elB2KiuidJPVo04JehbDIQTM8d1bvIXTpUBYJACbQp7l03yEp
-         df5rMJ3wS4T12imB38KSn7CBRW3oVKuY5vMAgPjmuNBJrje3KjCAh04R9yQPLGGCUHf+
-         A8XA==
+        b=ZoEfL+pKSZYR/5kELcZANx3YnJTYxqHFpCtpk0/0ZohbiH/CsI3qbUop3H0AhJkoXW
+         qeREf3pnDlQRaikhNh0fHnurN3uTntldYVMlvRCLiIRs5dk8yNecrOq6lOZoMGH3SnFD
+         N5X3UVDtgQndFFX2I+o5b4QAPf6NmMpkpkk5VUuS4Uzq3ztMpUi1tVCLeD+r7UttLzc9
+         uA2L+4w5G3sy0sQaK23EeHSEe0OqFgPvtVeAf9tNW4kLP+vQ24MqMHpI6LPKfw5UOMz5
+         ZtLZt59vY2s1+mSDjnmBPfhwU6/AC2tqSYMAdiysHfgme6okXQCMCUL4NlnCe+zJO2AV
+         dvlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from;
-        bh=mSN8CqaWGulUWPy7sCHIK3mbryqXLzsI81tPn3icqkQ=;
-        b=ShL1n2oWsSjToH8p4pJ1RGq2weJvKmmabswffirf/S+9TepytpEQTLpqVXl6rUwUSt
-         COoMNab6Ep6eJsVB9nIPtX+/aF9SP/Z/9pSg26ytCWD0xcLy8XN2s1rhWHdWoUgQ8Z4u
-         nXg2lksmmNX611zw0x+WP1oLZvqVt25I7Ku/oAL+ophNjNna6cZCnpAQ8U76OO/uCwtq
-         o3foOENa7z0L19C51QoRJHyY01QRBpHyj5Z8Rz3s2LEox0A/QMrmRIf1gK0HA93WMcXR
-         LLK9zjklfaWnTax3nyqjmcf9FhG61WA9EDf7gVc3mX9flpdNuAoN9c7bGAjAo5DRzHdF
-         UD0A==
+        bh=r/fhSjRqs+Ys5sprbZ/8oJ7RI28IVckcHXOWtxh8yWA=;
+        b=VVQ2MHhYHysC4mWGEaA08cbMQF1/xRYpHAEwpe1OnpsFt5XU0p5+nuUexWbHDVvNK7
+         OtbDgxMPZh4ypqv2u2YRCWm47I/0qGUFlAp5Uo7h6FiXNV1+8mRAOUCcD7t5EbBET9c/
+         gJ8PkOia8Q/2VJm6HEnrYnp3FBRuu0DS9VT4jD+gYlo2cEocAoMZ9XKGLbfJJxvlletT
+         gkco9UpN5wZpQIPb9iGS4ZAAqfXuBCBVMnHsoYcUdOfI4ckJwWuRaaZWk/FqT6K1J5hs
+         l0/Pa0QXFd2aiWgfwcV+6CV9juJyxPJaLTZClgnxXWrD9T5HuoSh2eFycxGua97JjUDk
+         C0xg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y2si963796qky.1.2020.04.23.02.04.57
+        by mx.google.com with ESMTPS id r38si905497qte.152.2020.04.23.02.04.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 23 Apr 2020 02:04:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39274 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39276 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jRXmy-0004nI-H2
+	id 1jRXmy-0004o9-Rq
 	for alex.bennee@linaro.org; Thu, 23 Apr 2020 05:04:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36098)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36084)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <geert@linux-m68k.org>) id 1jRXjg-0000pk-Od
+ (envelope-from <geert@linux-m68k.org>) id 1jRXje-0000mR-NY
  for qemu-arm@nongnu.org; Thu, 23 Apr 2020 05:01:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <geert@linux-m68k.org>) id 1jRXjb-0001E8-GY
- for qemu-arm@nongnu.org; Thu, 23 Apr 2020 05:01:32 -0400
-Received: from andre.telenet-ops.be ([2a02:1800:120:4::f00:15]:34530)
+ (envelope-from <geert@linux-m68k.org>) id 1jRXjb-0001Ds-DP
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2020 05:01:30 -0400
+Received: from andre.telenet-ops.be ([2a02:1800:120:4::f00:15]:34534)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <geert@linux-m68k.org>)
- id 1jRXja-0001Be-6J
+ id 1jRXja-0001Bf-5n
  for qemu-arm@nongnu.org; Thu, 23 Apr 2020 05:01:26 -0400
 Received: from ramsan ([IPv6:2a02:1810:ac12:ed60:89cc:efc7:85ce:4669])
  by andre.telenet-ops.be with bizsmtp
- id W91L2200k1RvcFS0191LLq; Thu, 23 Apr 2020 11:01:21 +0200
+ id W91L2200i1RvcFS0191LLp; Thu, 23 Apr 2020 11:01:21 +0200
 Received: from rox.of.borg ([192.168.97.57]) by ramsan with esmtp (Exim 4.90_1)
  (envelope-from <geert@linux-m68k.org>)
- id 1jRXjU-0006kJ-Cn; Thu, 23 Apr 2020 11:01:20 +0200
+ id 1jRXjU-0006kB-Al; Thu, 23 Apr 2020 11:01:20 +0200
 Received: from geert by rox.of.borg with local (Exim 4.90_1)
  (envelope-from <geert@linux-m68k.org>)
- id 1jRXjU-0002vg-BT; Thu, 23 Apr 2020 11:01:20 +0200
+ id 1jRXjU-0002vU-8q; Thu, 23 Apr 2020 11:01:20 +0200
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <graf@amazon.com>,
  Linus Walleij <linus.walleij@linaro.org>,
  Bartosz Golaszewski <bartekgola@gmail.com>,
  Magnus Damm <magnus.damm@gmail.com>
-Subject: [PATCH QEMU v2 5/5] hw/arm/virt: Add dynamic PL061 GPIO support
-Date: Thu, 23 Apr 2020 11:01:18 +0200
-Message-Id: <20200423090118.11199-6-geert+renesas@glider.be>
+Subject: [PATCH QEMU v2 1/5] ARM: PL061: Move TYPE_PL061 to hw/gpio/pl061.h
+Date: Thu, 23 Apr 2020 11:01:14 +0200
+Message-Id: <20200423090118.11199-2-geert+renesas@glider.be>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200423090118.11199-1-geert+renesas@glider.be>
 References: <20200423090118.11199-1-geert+renesas@glider.be>
@@ -93,75 +93,76 @@ Cc: linux-renesas-soc@vger.kernel.org, linux-gpio@vger.kernel.org,
  Geert Uytterhoeven <geert+renesas@glider.be>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bKESC32y0FV9
+X-TUID: VToQiMjeUXmS
 
-Add support for dynamically instantiating PL061 GPIO controller
-instances in ARM virt.  Device tree nodes are created dynamically.
+Move the definition of TYPE_PL061 to a new header file, so it can be
+used outside the driver.
 
 Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 v2:
   - New.
 ---
- hw/arm/sysbus-fdt.c | 18 ++++++++++++++++++
- hw/arm/virt.c       |  1 +
- 2 files changed, 19 insertions(+)
+ MAINTAINERS             |  1 +
+ hw/gpio/pl061.c         |  2 +-
+ include/hw/gpio/pl061.h | 16 ++++++++++++++++
+ 3 files changed, 18 insertions(+), 1 deletion(-)
+ create mode 100644 include/hw/gpio/pl061.h
 
-diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
-index 6b6906f4cfc36198..493583218d176d0a 100644
---- a/hw/arm/sysbus-fdt.c
-+++ b/hw/arm/sysbus-fdt.c
-@@ -32,6 +32,7 @@
- #include "sysemu/device_tree.h"
- #include "sysemu/tpm.h"
- #include "hw/platform-bus.h"
-+#include "hw/gpio/pl061.h"
- #include "hw/vfio/vfio-platform.h"
- #include "hw/vfio/vfio-calxeda-xgmac.h"
- #include "hw/vfio/vfio-amd-xgbe.h"
-@@ -468,6 +469,22 @@ static int add_tpm_tis_fdt_node(SysBusDevice *sbdev, void *opaque)
-     return 0;
- }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 8cbc1fac2bfcec86..e760f65270d29d5d 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -538,6 +538,7 @@ F: hw/dma/pl080.c
+ F: include/hw/dma/pl080.h
+ F: hw/dma/pl330.c
+ F: hw/gpio/pl061.c
++F: include/hw/gpio/pl061.h
+ F: hw/input/pl050.c
+ F: hw/intc/pl190.c
+ F: hw/sd/pl181.c
+diff --git a/hw/gpio/pl061.c b/hw/gpio/pl061.c
+index 2a828260bdb0b946..e776c09e474216ef 100644
+--- a/hw/gpio/pl061.c
++++ b/hw/gpio/pl061.c
+@@ -9,6 +9,7 @@
+  */
  
+ #include "qemu/osdep.h"
++#include "hw/gpio/pl061.h"
+ #include "hw/irq.h"
+ #include "hw/sysbus.h"
+ #include "migration/vmstate.h"
+@@ -33,7 +34,6 @@ static const uint8_t pl061_id[12] =
+ static const uint8_t pl061_id_luminary[12] =
+   { 0x00, 0x00, 0x00, 0x00, 0x61, 0x00, 0x18, 0x01, 0x0d, 0xf0, 0x05, 0xb1 };
+ 
+-#define TYPE_PL061 "pl061"
+ #define PL061(obj) OBJECT_CHECK(PL061State, (obj), TYPE_PL061)
+ 
+ typedef struct PL061State {
+diff --git a/include/hw/gpio/pl061.h b/include/hw/gpio/pl061.h
+new file mode 100644
+index 0000000000000000..78cc40c52679dc4e
+--- /dev/null
++++ b/include/hw/gpio/pl061.h
+@@ -0,0 +1,16 @@
 +/*
-+ * add_pl061_node: Create a DT node for a PL061 GPIO controller
++ * Arm PrimeCell PL061 General Purpose IO with additional Luminary Micro
++ * Stellaris bits.
++ *
++ * Copyright (c) 2007 CodeSourcery.
++ * Written by Paul Brook
++ *
++ * This code is licensed under the GPL.
 + */
-+static int add_pl061_node(SysBusDevice *sbdev, void *opaque)
-+{
-+    PlatformBusFDTData *data = opaque;
-+    PlatformBusDevice *pbus = data->pbus;
-+    void *fdt = data->fdt;
 +
-+    pl061_create_fdt(fdt, data->pbus_node_name, 1,
-+                     platform_bus_get_mmio_addr(pbus, sbdev, 0), 0x1000,
-+                     platform_bus_get_irqn(pbus, sbdev, 0) + data->irq_start,
-+                     qemu_fdt_get_phandle(fdt, "/apb-pclk"));
-+    return 0;
-+}
++#ifndef PL061_GPIO_H
++#define PL061_GPIO_H
 +
- static int no_fdt_node(SysBusDevice *sbdev, void *opaque)
- {
-     return 0;
-@@ -489,6 +506,7 @@ static const BindingEntry bindings[] = {
-     VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
- #endif
-     TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node),
-+    TYPE_BINDING(TYPE_PL061, add_pl061_node),
-     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
-     TYPE_BINDING("", NULL), /* last element */
- };
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index c88c8850fbe00bdb..191594db09422d54 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2178,6 +2178,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
-     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
-+    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_PL061);
-     mc->block_default_type = IF_VIRTIO;
-     mc->no_cdrom = 1;
-     mc->pci_allow_0_address = true;
++#define TYPE_PL061 "pl061"
++
++#endif /* PL061_GPIO_H */
 -- 
 2.17.1
 

@@ -1,163 +1,171 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1842442lfm;
-        Thu, 23 Apr 2020 05:44:43 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJYnUKafTNhPJKgRJXIu7KEty0aHrCsjravG2H6/HyhjGfGUdpgBQ/pg88PUYnre/gcXGO8
-X-Received: by 2002:a37:a94b:: with SMTP id s72mr3425899qke.415.1587645883542;
-        Thu, 23 Apr 2020 05:44:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587645883; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1834388lfm;
+        Thu, 23 Apr 2020 05:35:28 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIMU//J6uf6H+Imng2e8ZRyIwEXMpTAlbWkpjIqjyI9aBj6lJxNbJwFfHYocbwCOk/Y9K0y
+X-Received: by 2002:ac8:12c2:: with SMTP id b2mr3716032qtj.7.1587645327873;
+        Thu, 23 Apr 2020 05:35:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587645327; cv=none;
         d=google.com; s=arc-20160816;
-        b=YPEykLjI2Sfrxyx5I81FitnpljRenOJFwQf7FTU9rwFQTlIjPwODLLc7h6AfV2R7A8
-         37/7ODJBrJbbdPR64wQVQCSg3N6DzY3qH+tYSgC8+eN4VutIc+q+DNBZSVQZ2uHVSS39
-         QdToI5Ee5LWnOSI7RSzh6Q0CSGvDUsMJ9cptgWM6jXHz8oEIgQ8q0lJuAVStIYLa4kMr
-         NVnWMVeW3pl2rxof2vXJaazv0Ba10Cnwqb39993jQ2wmlz819NSs65Yj5V1wCImnL2Kw
-         0yWsFSpzdhzF+E4p2PDBDV+xU7H2Tf4DMUgEtkaFPb/lHz08YEsS2/ojnmxhNs4olkxJ
-         gCgg==
+        b=CaJoQvcKHCFA/lPpq2Qli2d1Si+fySw7qGofV16VSC8YdePUqfUSiB88X8yPfZ9oCx
+         6GUJX74EDwLhh5Ws+WY+e+jiVjNzzluMDhkFhCD5hto1l/Po40senzICoVLn90DpP2c8
+         4cj990MTtF0PZ8XvpVWVPWSK8O5whGHDIpLAaqR7ujO8heNePT3LJS/Euui5sPnVhqMZ
+         nrt/Geg8DctUXMDqJvszHn2ccVuvKrTAwyyCZku1aa5O7rUhyYOQuiJPF5WfawYmc2du
+         sVpcUSjOFvzLUW2Z8m/fWvxLp5bX+XBuyCswMh3kxemcuA+kL/XhRay/B1RWPIw2r/SX
+         iXEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=KK+Nru4yuP4c3n7CVPB6G+i75WbREygftS8BvjsDaZA=;
-        b=A7x4IrSeNqaQ+IyTGgcA7Zm6TwkRDimDaJsDRBPS1KVpNR+tjyV7jr4RfKvkY0F8pk
-         GxMzC6XJeRn1TiX8cqTcdLIfPYOnPb3/A0wi8DcNJOjMtqSNgO1yOYvqaRqBSwcW9rpI
-         boPGkJfhpEJ7uil1m1T98QaFOsmBtHBdmmlZzj5/uwhUB06u97EbZSi4E3Mpp161pn0p
-         Wyv2TDPG/U371iJjLWtX+kbglP1fkJwly54Nqr4CFfxv6pxEJu1GH449R5JD194VegED
-         poG51eLO6Rh93r/CseozgnHcVFDDyjBIIBjxtZI2jod5puKr5H4j2nBIMmuA/59Bk46Z
-         NHtg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version;
+        bh=nEDf5mxj4Ya/1xWAyK0uMzyWdgw+j9J1oE1Euva5YQE=;
+        b=PLwZiM5KoVH/7N7hLKgFcX8izW/wJ0HhauEhrI8pSIoeH1ENcHy6vGYHhkQYUigUbg
+         K5Je4zi1g6OrRdQBr4sS4aHIuIezT0LNuzAXuhDlrjWhTt1lPFaVnPhRcK3gTONIHPus
+         GMXxgK8eNMbt1yHHz/Bu5Nq/ZxPF4dc7a8oVlA+PjHTYm1H135LQQEXLdmN2qlmtkksh
+         VDFqS4NaP4hFYmlX6pRrbmX47jfx7JRs4MngePeIhIoQRV/IdkexwQ0zSwQMIeyNRoep
+         qcYlVnBDf31VYftXcQcIRRfTJydlCupXXH+Hqc4dg3cN0snzs5zWbOr4kzS+SJ5CRXaW
+         aHEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="mFa2/kcy";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i21si965590qkk.53.2020.04.23.05.44.43
+        by mx.google.com with ESMTPS id n197si1297689qke.152.2020.04.23.05.35.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Apr 2020 05:44:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Apr 2020 05:35:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="mFa2/kcy";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:42556 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42434 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jRbDf-0004o7-0n
-	for alex.bennee@linaro.org; Thu, 23 Apr 2020 08:44:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60592)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jRb4h-0007ZX-BF
+	for alex.bennee@linaro.org; Thu, 23 Apr 2020 08:35:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56834)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jRbCE-000408-N1
- for qemu-devel@nongnu.org; Thu, 23 Apr 2020 08:43:15 -0400
+ id 1jRb3N-0006MK-Md
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2020 08:34:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jRbCA-0002Zn-BE
- for qemu-devel@nongnu.org; Thu, 23 Apr 2020 08:43:14 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:43973)
+ id 1jRb3K-00048H-75
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2020 08:34:04 -0400
+Received: from mail-yb1-f196.google.com ([209.85.219.196]:41830)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jRbC9-0002Vb-Vi; Thu, 23 Apr 2020 08:43:10 -0400
-Received: by mail-wr1-x444.google.com with SMTP id i10so6662130wrv.10;
- Thu, 23 Apr 2020 05:43:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=KK+Nru4yuP4c3n7CVPB6G+i75WbREygftS8BvjsDaZA=;
- b=mFa2/kcytoQTyA9h5UsMfwVNyGqcIdNtWKhXXkoSUktly7/Q8/mjdWvesfEtG8XczB
- 3G0C4o9MCCG5rpGRRK04Wf3aNUkxWQ1C3g+P108Q3t8nI+TTnpwafqg0Zhw82scLJxjd
- q2Rvbp9wTyE8nFustspGUMpbLs8JgHDBGwbHSXb0bQtWy5YUI6ojfDmBBP1fOKfbqFGA
- TBugD8LXTvO5Q0DzEn95C9KWFP/jfkEDsJeNQvECK0tVBnf0GWSkgRk+OnKfrAYOI5PO
- AZsKoUYLY6ve/jBcd8UgQ7BvwTN4aLqi/i+EgGzsQrNbBdB0brXmvrwtudFAH7EofHy5
- ZUOw==
+ id 1jRb3I-000413-0Q; Thu, 23 Apr 2020 08:34:01 -0400
+Received: by mail-yb1-f196.google.com with SMTP id a9so3038840ybc.8;
+ Thu, 23 Apr 2020 05:33:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=KK+Nru4yuP4c3n7CVPB6G+i75WbREygftS8BvjsDaZA=;
- b=mFnMOVxwNGsJFlLn3p4yO8b2eUzYJ+Qc9wV064BwhvZxzOv+aWhZPCNJLz+KJnPFjX
- p/j/G/OedPWHgMa8lBT/FdbLJgHvoJQA8EdXImb/p9kaT3nP11b6BYQxhk20oZSgFhAJ
- exOw+GTlQL3kVGzeb/5XJLohxpFt34ayOH/XkO8SxyNEhX0SXrPXbbA5YoTXtzld7HLj
- vfGNIr9TtQi2oPrwI5OvzGJbSpV2Qn/sC5HKfZym4J3C7frg4R3Sr+QfNEL5vhg+wU41
- y5/qkfofy7zvDTEX3QF8Ou1SY1U3caK1gg/zSLUwX9okfXIP48KFb/5QxkeM+wHjjKry
- XBSA==
-X-Gm-Message-State: AGi0Pua/yPzIbAi56oiqlrgUHU7s9LZyQBCh31jsYRqFue2JObR+Vgm4
- b1h6Sl2GS0GWoqR4j6yzHOFUtbEV
-X-Received: by 2002:a5d:4ac6:: with SMTP id y6mr4725903wrs.212.1587645788041; 
- Thu, 23 Apr 2020 05:43:08 -0700 (PDT)
-Received: from x1w.redhat.com (116.red-83-42-57.dynamicip.rima-tde.net.
- [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id j11sm3580921wrr.62.2020.04.23.05.43.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Apr 2020 05:43:07 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Use correct variable for setting 'max' cpu's
- MIDR_EL1
-Date: Thu, 23 Apr 2020 14:43:05 +0200
-Message-Id: <20200423124305.14718-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=nEDf5mxj4Ya/1xWAyK0uMzyWdgw+j9J1oE1Euva5YQE=;
+ b=EIfWtAtCQB/JXi7ds3T9d5DyCCEnnoXlYyzLWi17ZSJ4Hamf7EiIGiZ5YZg+O2f4CS
+ cckcmxF41mleQmvb8ihnZxhZWkNJCLJRZrx3fp/kKhHdoCSN51rQo+jeYaEmc8A5IBc0
+ +uwefPI0n6FtkOCtqsQPMo1IwqOjXZZJQxetVs660F9ecB3OV8ooJYbmLk4YfDsDhml6
+ 5vTQ6+/izYM4NOCBLKitEisfNaldaU2rcfavkJ4WlZz2R2tZ5MQwY/U4vie7mTM3dn8p
+ 2uPcC6zS8HgLojA9uLSjYRA6QAnlal+1/W78b211PqPdzIHI76vqgZInZBcZTwQCYAoL
+ SO7Q==
+X-Gm-Message-State: AGi0PuY0fx0/RDTbcZe8wtS/rDqhIKwBV37cIcQNWExzJDhAWDiNM+0J
+ N4SFXm6u7i8PlrR2VNZhyK75Ldq11+f7dFjD1dcnz6dr6W4=
+X-Received: by 2002:a25:6a09:: with SMTP id f9mr4502446ybc.316.1587645238123; 
+ Thu, 23 Apr 2020 05:33:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::444
-X-BeenThere: qemu-devel@nongnu.org
+References: <20200423110915.10527-1-peter.maydell@linaro.org>
+In-Reply-To: <20200423110915.10527-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Thu, 23 Apr 2020 14:33:46 +0200
+Message-ID: <CAAdtpL4nHgtrVNvAEOOba75vj6JcsfMPyicUmMSH9SOs3ovAZQ@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Use correct variable for setting 'max' cpu's
+ ID_AA64DFR0
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=209.85.219.196;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-yb1-f196.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/23 08:33:58
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Received-From: 209.85.219.196
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C3UvYVeG5c6e
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hiJSYLXJ+6sj
 
-MIDR_EL1 is a 32-bit register.
+On Thu, Apr 23, 2020 at 1:09 PM Peter Maydell <peter.maydell@linaro.org> wr=
+ote:
+>
+> In aarch64_max_initfn() we update both 32-bit and 64-bit ID
+> registers.  The intended pattern is that for 64-bit ID registers we
+> use FIELD_DP64 and the uint64_t 't' register, while 32-bit ID
+> registers use FIELD_DP32 and the uint32_t 'u' register.
 
-This fixes when compiling with -Werror=conversion:
+Variable names could be improved...
 
-  target/arm/cpu64.c: In function ‘aarch64_max_initfn’:
-  target/arm/cpu64.c:628:21: error: conversion from ‘uint64_t’ {aka ‘long unsigned int’} to ‘uint32_t’ {aka ‘unsigned int’} may change value [-Werror=conversion]
-    628 |         cpu->midr = t;
-        |                     ^
+>  For
+> ID_AA64DFR0 we accidentally used 'u', meaning that the top 32 bits of
+> this 64-bit ID register would end up always zero.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- target/arm/cpu64.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+-Wconversion CPPFLAG helps but there are so many places to fix that we
+are not using it:
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 95d0c8c101..4eb0a9030e 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -620,12 +620,12 @@ static void aarch64_max_initfn(Object *obj)
-          * code needs to distinguish this QEMU CPU from other software
-          * implementations, though this shouldn't be needed.
-          */
--        t = FIELD_DP64(0, MIDR_EL1, IMPLEMENTER, 0);
--        t = FIELD_DP64(t, MIDR_EL1, ARCHITECTURE, 0xf);
--        t = FIELD_DP64(t, MIDR_EL1, PARTNUM, 'Q');
--        t = FIELD_DP64(t, MIDR_EL1, VARIANT, 0);
--        t = FIELD_DP64(t, MIDR_EL1, REVISION, 0);
--        cpu->midr = t;
-+        u = FIELD_DP32(0, MIDR_EL1, IMPLEMENTER, 0);
-+        u = FIELD_DP32(u, MIDR_EL1, ARCHITECTURE, 0xf);
-+        u = FIELD_DP32(u, MIDR_EL1, PARTNUM, 'Q');
-+        u = FIELD_DP32(u, MIDR_EL1, VARIANT, 0);
-+        u = FIELD_DP32(u, MIDR_EL1, REVISION, 0);
-+        cpu->midr = u;
- 
-         t = cpu->isar.id_aa64isar0;
-         t = FIELD_DP64(t, ID_AA64ISAR0, AES, 2); /* AES + PMULL */
--- 
-2.21.1
+target/arm/cpu64.c:711:13: error: conversion from =E2=80=98uint64_t=E2=80=
+=99 {aka
+=E2=80=98long unsigned int=E2=80=99} to =E2=80=98uint32_t=E2=80=99 {aka =E2=
+=80=98unsigned int=E2=80=99} may change
+value [-Werror=3Dconversion]
+  711 |         u =3D cpu->isar.id_aa64dfr0;
+      |             ^~~
+target/arm/cpu64.c:712:13: note: in expansion of macro =E2=80=98FIELD_DP64=
+=E2=80=99
+  712 |         u =3D FIELD_DP64(u, ID_AA64DFR0, PMUVER, 5); /* v8.4-PMU */
+      |             ^~~~~~~~~~
 
+>  Luckily at the
+> moment that's what they should be anyway, so this bug has no visible
+> effects.
+>
+> Use the right-sized variable.
+>
+> Fixes: 3bec78447a958d481991
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+> ---
+>  target/arm/cpu64.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 95d0c8c101a..4c7105ea1a1 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -708,9 +708,9 @@ static void aarch64_max_initfn(Object *obj)
+>          u =3D FIELD_DP32(u, ID_MMFR4, CNP, 1); /* TTCNP */
+>          cpu->isar.id_mmfr4 =3D u;
+>
+> -        u =3D cpu->isar.id_aa64dfr0;
+> -        u =3D FIELD_DP64(u, ID_AA64DFR0, PMUVER, 5); /* v8.4-PMU */
+> -        cpu->isar.id_aa64dfr0 =3D u;
+> +        t =3D cpu->isar.id_aa64dfr0;
+> +        t =3D FIELD_DP64(t, ID_AA64DFR0, PMUVER, 5); /* v8.4-PMU */
+> +        cpu->isar.id_aa64dfr0 =3D t;
+>
+>          u =3D cpu->isar.id_dfr0;
+>          u =3D FIELD_DP32(u, ID_DFR0, PERFMON, 5); /* v8.4-PMU */
+> --
+> 2.20.1
+>
+>

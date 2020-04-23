@@ -1,96 +1,441 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1890428lfm;
-        Thu, 23 Apr 2020 06:31:24 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKrXB1Gti6M3doWb06jYR7wEnfP7rLqHr1DhTafSwLPsVv9+zpQAJnJASzjv8ETh1NNHHnj
-X-Received: by 2002:ad4:540b:: with SMTP id f11mr4186173qvt.140.1587648684184;
-        Thu, 23 Apr 2020 06:31:24 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2060082lfm;
+        Thu, 23 Apr 2020 09:10:19 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIRp4vep1Nz+203NkwumF3TWMfbemjq8SL/I+xc6/0df5OdK0gjtl1yrBkj9QuD21I0ZYBX
+X-Received: by 2002:ae9:ed04:: with SMTP id c4mr4485992qkg.367.1587658219075;
+        Thu, 23 Apr 2020 09:10:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587658219; cv=none;
+        d=google.com; s=arc-20160816;
+        b=qfXEFA+wbE7heLCbKsQEmJdASru1qyDrtDVXKbRKDQPweGMFSXCey/25GCLio5clXg
+         wJ6pKlvP1szsUlpOAvYBG51Pc73wx14RRnfPyNd2Gl0zQpj+MomUIstCmhXXQ1ZKmPHW
+         oGupOFhME0Wt6QYFv/AwaeLBCE8CshFV9tWJH5o/PiMrwjCwG9LbTiHFegM6jtEXSZC1
+         Z+1NikGFIYSM3Ddlz6kUMKPhJAAqha5/DDnwwIiG4xB+07F8VmsvR/nMY9tvdND3gv+Q
+         VY7HC3rQhEPPUO9PE/0pA72ain8cO3O/DfYN8Hr8Lkd2ZYC5btSPH7ygU+6pLo4qTnlG
+         78Sg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=nWdrkLY2zpQLK8W8mhoILd295IuGxGR8r2Xr8cPPU94=;
+        b=hs0WsUnpRA4FKkUfXobrWEqjBO1Ha7yfQmLPjQFEUYa9hx9OrLs3JPTOGDUshwVNt0
+         /Mb++jvkanP61CS5+9NW6P1c7BHFgK+Lf6eadNlYZ7R4a3cgtDAln6jGxKQIcf1oCjzj
+         +j7tqRGpX4bGhI7fiDa6U2yrlo47aZNQqu1PqWNxeIeFRLVc2fxMbuOJbr2h26OceEQR
+         eYJI8AxEifIdY9yajHTx4ul5Q5ltsCXTR661cADCz81f/d1TsWEifpeWHQ7OLkB356lK
+         uT3B122EJiOX1lvBl2Z3GYH9vkPZmaXquAeA3gUwpeDG2+hQZ8ENitD0kphlOsxkFRYa
+         881A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=e5s1hPav;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 123si1379730qkh.327.2020.04.23.06.31.24
+        by mx.google.com with ESMTPS id h23si1637198qkk.68.2020.04.23.09.10.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Apr 2020 06:31:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Apr 2020 09:10:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43398 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=e5s1hPav;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58334 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jRbwp-0008VL-Gb
-	for alex.bennee@linaro.org; Thu, 23 Apr 2020 09:31:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43576)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jReQc-0005Y5-DT
+	for alex.bennee@linaro.org; Thu, 23 Apr 2020 12:10:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34122)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1jRbuf-0005Nu-Ne
- for qemu-devel@nongnu.org; Thu, 23 Apr 2020 09:29:10 -0400
+ (envelope-from <jean-philippe@linaro.org>) id 1jReQR-0005TL-1A
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2020 12:10:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1jRbue-0005yW-3H
- for qemu-devel@nongnu.org; Thu, 23 Apr 2020 09:29:09 -0400
-Resent-Date: Thu, 23 Apr 2020 09:29:09 -0400
-Resent-Message-Id: <E1jRbue-0005yW-3H@eggs.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21315)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jRbud-0005xU-Hw; Thu, 23 Apr 2020 09:29:07 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1587648540; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=Pyv/V28rcxr6vuPzbSqapA7Qq37Sut+E36G7hxYcm8mxOLk90oilRj7YlFOwd/k4Y30bx3T2Wx2S3EL7ZwYxuaQfnFahjnjGgukba+sv8gcNjcYLXRRzg0cNtbZHGMymovtuK2XUdrRRY0zEfAmG+4dziZLTh4iN2O4yLM5MC6s=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1587648540;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=bfQZ63n2hJiXL6vbCatGc1owzmOAUTqBAaDqIWRrh3Q=; 
- b=l+2/n28fUWXEEIpA/7KAs0dz5zk/WFG1bSf4zEN6hci2Yl7+OJdLFVqsSVjQqO3uDVdw2DxL+tKeua5JTCCKVjQonKGlAGA6dQzdJxkgAqyLs8/dtlR113LvN1kUzZQEka99nje2ZLv872nWoykSCkye/KkHIRnd3NFRR/KnsDY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1587648536812852.1670983204986;
- Thu, 23 Apr 2020 06:28:56 -0700 (PDT)
-In-Reply-To: <20200423124305.14718-1-f4bug@amsat.org>
-Subject: Re: [PATCH] target/arm: Use correct variable for setting 'max' cpu's
- MIDR_EL1
-Message-ID: <158764853571.10590.9785099361134761598@39012742ff91>
+ (envelope-from <jean-philippe@linaro.org>) id 1jReQP-0006EN-Lm
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2020 12:10:06 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:37825)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1jReQP-0006Di-3V
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2020 12:10:05 -0400
+Received: by mail-wm1-x344.google.com with SMTP id z6so7165028wml.2
+ for <qemu-arm@nongnu.org>; Thu, 23 Apr 2020 09:10:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=nWdrkLY2zpQLK8W8mhoILd295IuGxGR8r2Xr8cPPU94=;
+ b=e5s1hPavrfSiCmJgMHv0mbKBd/Bwu4d819eQJh2hCEvQDPJxjxf2rZIPLmCKBM6NBL
+ UYBCVLagLkSzJg49Zp3la5FWmj4PmwoHzLiTY4Ge7Mk4RtZ8wYVsRSQezf5ce1h6BYoi
+ u9h7KWxmfIPdNG3NOjmq6ZBuoskGDLXXcgRV5Wuw1I2T992wIiRnMPOw26zF0laek5+6
+ L9XxY7I159lEdFopP8rSX90u0iQNviJqgSAjf9j+eHSfzR3ULugrEM1FaKIq7V7XIV2N
+ Hx3NkMPuJhxMfBo3sG4cZur71E+Hu0efWbdJ0BoZaPSCLcKvu4Jj5CT+riyrOBgpgAvA
+ GSJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=nWdrkLY2zpQLK8W8mhoILd295IuGxGR8r2Xr8cPPU94=;
+ b=ZeTDIino3G/YchTovhoPIJu1KBN6C9NSG0cLJ3es1Np3UOjQ+SC26OD5lvjtwu3zN7
+ CUrmGrRyuLtt5UsA2Gz64CCBlzBwgcfa7CX06ukTGHkvUk18FrvawlCTtdZAnbCpDCFI
+ 2fvPSIcN4nJbZWLZupE3lyBW+10qsq8vxeySUbHW6oXdLW9m4QRT0Qh9EAC+FlV46QLr
+ ISVPQp5ZeAlqeDtorQ0TQtQkRydJ6RossvoegNv9GX7X2/qIe/fz68zA3HBu7hEdC9/t
+ dO+hizvOw4FuI+7O88K4RxNczMZ10lOkEmuZTkghhJAHN8Ww3it6qrKWB4gXhz4e+Wqq
+ eKoA==
+X-Gm-Message-State: AGi0PuZUMm89SPDSiUvRtPVl5tvOmR6cTD7sFbxTuizip/OqYLPgZejN
+ jqMixj/guo1FJHd4j15geP6JJg==
+X-Received: by 2002:a1c:7d90:: with SMTP id y138mr5195666wmc.121.1587658202498; 
+ Thu, 23 Apr 2020 09:10:02 -0700 (PDT)
+Received: from myrica ([2001:171b:226b:54a0:116c:c27a:3e7f:5eaf])
+ by smtp.gmail.com with ESMTPSA id t20sm11032225wmi.2.2020.04.23.09.10.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 23 Apr 2020 09:10:01 -0700 (PDT)
+Date: Thu, 23 Apr 2020 18:09:52 +0200
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Bharat Bhushan <bbhushan2@marvell.com>
+Subject: Re: [PATCH v9 8/9] virtio-iommu: Implement probe request
+Message-ID: <20200423160952.GB645865@myrica>
+References: <20200323084617.1782-1-bbhushan2@marvell.com>
+ <20200323084617.1782-9-bbhushan2@marvell.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: f4bug@amsat.org
-Date: Thu, 23 Apr 2020 06:28:56 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/23 09:27:50
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Received-From: 136.143.188.53
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20200323084617.1782-9-bbhushan2@marvell.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
+ Malformed IPv6 address (bad octet value).
+ Location : parse_addr6(), p0f-client.c:67
+X-Received-From: 2a00:1450:4864:20::344
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- f4bug@amsat.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qnRH8fLB6OOY
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: yang.zhong@intel.com, peter.maydell@linaro.org, kevin.tian@intel.com,
+ tnowicki@marvell.com, mst@redhat.com, drjones@redhat.com, peterx@redhat.com,
+ qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, bharatb.linux@gmail.com,
+ linuc.decode@gmail.com, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aiFXv2UO1/Ok
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDQyMzEyNDMwNS4xNDcx
-OC0xLWY0YnVnQGFtc2F0Lm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgdGhlIGRvY2tl
-ci1xdWlja0BjZW50b3M3IGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5nIGNvbW1h
-bmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0YWxsZWQs
-IHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBTQ1JJUFQg
-QkVHSU4gPT09CiMhL2Jpbi9iYXNoCm1ha2UgZG9ja2VyLWltYWdlLWNlbnRvczcgVj0xIE5FVFdP
-Uks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNyBTSE9XX0VOVj0xIEo9MTQg
-TkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgoKCgpUaGUgZnVsbCBsb2cgaXMgYXZh
-aWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwNDIzMTI0MzA1LjE0NzE4LTEt
-ZjRidWdAYW1zYXQub3JnL3Rlc3RpbmcuZG9ja2VyLXF1aWNrQGNlbnRvczcvP3R5cGU9bWVzc2Fn
-ZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8v
-cGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVs
-QHJlZGhhdC5jb20=
+Hi Bharat,
+
+A few more things found while rebasing
+
+On Mon, Mar 23, 2020 at 02:16:16PM +0530, Bharat Bhushan wrote:
+> This patch implements the PROBE request. Currently supported
+> page size mask per endpoint is returned. Also append a NONE
+> property in the end.
+> 
+> Signed-off-by: Bharat Bhushan <bbhushan2@marvell.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  include/standard-headers/linux/virtio_iommu.h |   6 +
+>  hw/virtio/virtio-iommu.c                      | 161 +++++++++++++++++-
+>  hw/virtio/trace-events                        |   2 +
+>  3 files changed, 166 insertions(+), 3 deletions(-)
+> 
+> diff --git a/include/standard-headers/linux/virtio_iommu.h b/include/standard-headers/linux/virtio_iommu.h
+> index b9443b83a1..8a0d47b907 100644
+> --- a/include/standard-headers/linux/virtio_iommu.h
+> +++ b/include/standard-headers/linux/virtio_iommu.h
+> @@ -111,6 +111,7 @@ struct virtio_iommu_req_unmap {
+>  
+>  #define VIRTIO_IOMMU_PROBE_T_NONE		0
+>  #define VIRTIO_IOMMU_PROBE_T_RESV_MEM		1
+> +#define VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK	2
+>  
+>  #define VIRTIO_IOMMU_PROBE_T_MASK		0xfff
+>  
+> @@ -130,6 +131,11 @@ struct virtio_iommu_probe_resv_mem {
+>  	uint64_t					end;
+>  };
+>  
+> +struct virtio_iommu_probe_pgsize_mask {
+> +	struct virtio_iommu_probe_property      head;
+> +	uint64_t				pgsize_bitmap;
+> +};
+> +
+>  struct virtio_iommu_req_probe {
+>  	struct virtio_iommu_req_head		head;
+>  	uint32_t					endpoint;
+> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> index 747e3cf1da..63fbacdcdc 100644
+> --- a/hw/virtio/virtio-iommu.c
+> +++ b/hw/virtio/virtio-iommu.c
+> @@ -38,6 +38,10 @@
+>  
+>  /* Max size */
+>  #define VIOMMU_DEFAULT_QUEUE_SIZE 256
+> +#define VIOMMU_PROBE_SIZE 512
+> +
+> +#define SUPPORTED_PROBE_PROPERTIES (\
+> +    1 << VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK)
+>  
+>  typedef struct VirtIOIOMMUDomain {
+>      uint32_t id;
+> @@ -62,6 +66,13 @@ typedef struct VirtIOIOMMUMapping {
+>      uint32_t flags;
+>  } VirtIOIOMMUMapping;
+>  
+> +typedef struct VirtIOIOMMUPropBuffer {
+> +    VirtIOIOMMUEndpoint *endpoint;
+> +    size_t filled;
+> +    uint8_t *start;
+> +    bool error;
+
+It doesn't seem like bufstate->error gets used anywhere
+
+> +} VirtIOIOMMUPropBuffer;
+> +
+>  static inline uint16_t virtio_iommu_get_bdf(IOMMUDevice *dev)
+>  {
+>      return PCI_BUILD_BDF(pci_bus_num(dev->bus), dev->devfn);
+> @@ -490,6 +501,114 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+>      return ret;
+>  }
+>  
+> +static int virtio_iommu_fill_none_prop(VirtIOIOMMUPropBuffer *bufstate)
+> +{
+> +    struct virtio_iommu_probe_property *prop;
+> +
+> +    prop = (struct virtio_iommu_probe_property *)
+> +                (bufstate->start + bufstate->filled);
+> +    prop->type = 0;
+> +    prop->length = 0;
+> +    bufstate->filled += sizeof(*prop);
+> +    trace_virtio_iommu_fill_none_property(bufstate->endpoint->id);
+> +    return 0;
+> +}
+> +
+> +static int virtio_iommu_fill_page_size_mask(VirtIOIOMMUPropBuffer *bufstate)
+> +{
+> +    struct virtio_iommu_probe_pgsize_mask *page_size_mask;
+> +    size_t prop_size = sizeof(*page_size_mask);
+> +    VirtIOIOMMUEndpoint *ep = bufstate->endpoint;
+> +    VirtIOIOMMU *s = ep->viommu;
+> +    IOMMUDevice *sdev;
+> +
+> +    if (bufstate->filled + prop_size >= VIOMMU_PROBE_SIZE) {
+> +        bufstate->error = true;
+> +        /* get the traversal stopped by returning true */
+> +        return true;
+> +    }
+> +
+> +    page_size_mask = (struct virtio_iommu_probe_pgsize_mask *)
+> +                     (bufstate->start + bufstate->filled);
+> +
+> +    page_size_mask->head.type = VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK;
+> +    page_size_mask->head.length = prop_size;
+> +    QLIST_FOREACH(sdev, &s->notifiers_list, next) {
+> +        if (ep->id == sdev->devfn) {
+> +            page_size_mask->pgsize_bitmap = sdev->page_size_mask;
+
+Do we need a cpu_to_le64 here?
+
+> +	}
+> +    }
+> +    bufstate->filled += sizeof(*page_size_mask);
+> +    trace_virtio_iommu_fill_pgsize_mask_property(bufstate->endpoint->id,
+> +                                                 page_size_mask->pgsize_bitmap,
+> +                                                 bufstate->filled);
+> +    return false;
+> +}
+> +
+> +/* Fill the properties[] buffer with properties of type @type */
+> +static int virtio_iommu_fill_property(int type,
+> +                                      VirtIOIOMMUPropBuffer *bufstate)
+> +{
+> +    int ret = -ENOSPC;
+> +
+> +    if (bufstate->filled + sizeof(struct virtio_iommu_probe_property)
+> +            >= VIOMMU_PROBE_SIZE) {
+> +        /* no space left for the header */
+> +        bufstate->error = true;
+> +        goto out;
+> +    }
+> +
+> +    switch (type) {
+> +    case VIRTIO_IOMMU_PROBE_T_NONE:
+> +        ret = virtio_iommu_fill_none_prop(bufstate);
+> +        break;
+> +    case VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK:
+> +    {
+> +        ret = virtio_iommu_fill_page_size_mask(bufstate);
+> +	break;
+> +    }
+> +    default:
+> +        ret = -ENOENT;
+> +        break;
+> +    }
+> +out:
+> +    if (ret) {
+> +        error_report("%s property of type=%d could not be filled (%d),"
+> +                     " remaining size = 0x%lx",
+> +                     __func__, type, ret, bufstate->filled);
+> +    }
+> +    return ret;
+> +}
+> +
+> +/**
+> + * virtio_iommu_probe - Fill the probe request buffer with all
+> + * the properties the device is able to return and add a NONE
+> + * property at the end. @buf points to properties[].
+> + */
+> +static int virtio_iommu_probe(VirtIOIOMMU *s,
+> +                              struct virtio_iommu_req_probe *req,
+> +                              uint8_t *buf)
+> +{
+> +    uint32_t ep_id = le32_to_cpu(req->endpoint);
+> +    VirtIOIOMMUEndpoint *ep = virtio_iommu_get_endpoint(s, ep_id);
+> +    int16_t prop_types = SUPPORTED_PROBE_PROPERTIES, type;
+> +    VirtIOIOMMUPropBuffer bufstate = {.start = buf, .filled = 0,
+> +                                       .error = false, .endpoint = ep};
+
+Probably need to check if ep is valid before going further
+
+> +
+> +    while ((type = ctz32(prop_types)) != 32) {
+> +        if (virtio_iommu_fill_property(type, &bufstate)) {
+> +            goto failure;
+> +        }
+> +        prop_types &= ~(1 << type);
+> +    }
+> +    if (virtio_iommu_fill_property(VIRTIO_IOMMU_PROBE_T_NONE, &bufstate)) {
+> +        goto failure;
+> +    }
+
+We got rid of the NONE property in the spec, now there is: 
+
+ "If the device doesn’t fill all probe_size bytes with properties, it
+  SHOULD fill the remaining bytes of properties with zeroes."
+
+So I think you can get rid of virtio_iommu_fill_none_prop() and fill the
+rest of the buffer with zeroes here instead.
+
+Thanks,
+Jean
+
+> +    return VIRTIO_IOMMU_S_OK;
+> +failure:
+> +    return VIRTIO_IOMMU_S_INVAL;
+> +}
+> +
+>  static int virtio_iommu_iov_to_req(struct iovec *iov,
+>                                     unsigned int iov_cnt,
+>                                     void *req, size_t req_sz)
+> @@ -519,6 +638,17 @@ virtio_iommu_handle_req(detach)
+>  virtio_iommu_handle_req(map)
+>  virtio_iommu_handle_req(unmap)
+>  
+> +static int virtio_iommu_handle_probe(VirtIOIOMMU *s,
+> +                                     struct iovec *iov,
+> +                                     unsigned int iov_cnt,
+> +                                     uint8_t *buf)
+> +{
+> +    struct virtio_iommu_req_probe req;
+> +    int ret = virtio_iommu_iov_to_req(iov, iov_cnt, &req, sizeof(req));
+> +
+> +    return ret ? ret : virtio_iommu_probe(s, &req, buf);
+> +}
+> +
+>  static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
+>  {
+>      VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
+> @@ -564,17 +694,33 @@ static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
+>          case VIRTIO_IOMMU_T_UNMAP:
+>              tail.status = virtio_iommu_handle_unmap(s, iov, iov_cnt);
+>              break;
+> +        case VIRTIO_IOMMU_T_PROBE:
+> +        {
+> +            struct virtio_iommu_req_tail *ptail;
+> +            uint8_t *buf = g_malloc0(s->config.probe_size + sizeof(tail));
+> +
+> +            ptail = (struct virtio_iommu_req_tail *)
+> +                        (buf + s->config.probe_size);
+> +            ptail->status = virtio_iommu_handle_probe(s, iov, iov_cnt, buf);
+> +
+> +            sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
+> +                              buf, s->config.probe_size + sizeof(tail));
+> +            g_free(buf);
+> +            assert(sz == s->config.probe_size + sizeof(tail));
+> +            goto push;
+> +        }
+>          default:
+>              tail.status = VIRTIO_IOMMU_S_UNSUPP;
+>          }
+> -        qemu_mutex_unlock(&s->mutex);
+>  
+>  out:
+>          sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
+>                            &tail, sizeof(tail));
+>          assert(sz == sizeof(tail));
+>  
+> -        virtqueue_push(vq, elem, sizeof(tail));
+> +push:
+> +        qemu_mutex_unlock(&s->mutex);
+> +        virtqueue_push(vq, elem, sz);
+>          virtio_notify(vdev, vq);
+>          g_free(elem);
+>      }
+> @@ -634,16 +780,23 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>      VirtIOIOMMUEndpoint *ep;
+>      uint32_t sid, flags;
+>      bool bypass_allowed;
+> +    hwaddr addr_mask;
+>      bool found;
+>  
+>      interval.low = addr;
+>      interval.high = addr + 1;
+>  
+> +    if (sdev->page_size_mask) {
+> +        addr_mask = (1 << ctz32(sdev->page_size_mask)) - 1;
+> +    } else {
+> +        addr_mask = (1 << ctz32(s->config.page_size_mask)) - 1;
+> +    }
+> +
+>      IOMMUTLBEntry entry = {
+>          .target_as = &address_space_memory,
+>          .iova = addr,
+>          .translated_addr = addr,
+> -        .addr_mask = (1 << ctz32(s->config.page_size_mask)) - 1,
+> +        .addr_mask = addr_mask,
+>          .perm = IOMMU_NONE,
+>      };
+>  
+> @@ -831,6 +984,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>      s->config.page_size_mask = TARGET_PAGE_MASK;
+>      s->config.input_range.end = -1UL;
+>      s->config.domain_range.end = 32;
+> +    s->config.probe_size = VIOMMU_PROBE_SIZE;
+>  
+>      virtio_add_feature(&s->features, VIRTIO_RING_F_EVENT_IDX);
+>      virtio_add_feature(&s->features, VIRTIO_RING_F_INDIRECT_DESC);
+> @@ -840,6 +994,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MAP_UNMAP);
+>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_BYPASS);
+>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MMIO);
+> +    virtio_add_feature(&s->features, VIRTIO_IOMMU_F_PROBE);
+>  
+>      qemu_mutex_init(&s->mutex);
+>  
+> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+> index 8bae651191..b0a6e4bda3 100644
+> --- a/hw/virtio/trace-events
+> +++ b/hw/virtio/trace-events
+> @@ -76,3 +76,5 @@ virtio_iommu_report_fault(uint8_t reason, uint32_t flags, uint32_t endpoint, uin
+>  virtio_iommu_notify_map(const char *name, uint64_t iova, uint64_t paddr, uint64_t map_size) "mr=%s iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64
+>  virtio_iommu_notify_unmap(const char *name, uint64_t iova, uint64_t map_size) "mr=%s iova=0x%"PRIx64" size=0x%"PRIx64
+>  virtio_iommu_remap(uint64_t iova, uint64_t pa, uint64_t size) "iova=0x%"PRIx64" pa=0x%" PRIx64" size=0x%"PRIx64""
+> +virtio_iommu_fill_none_property(uint32_t devid) "devid=%d"
+> +virtio_iommu_fill_pgsize_mask_property(uint32_t devid, uint64_t pgsize_mask, size_t filled) "dev= %d, pgsize_mask=0x%"PRIx64" filled=0x%lx"
+> -- 
+> 2.17.1
+> 

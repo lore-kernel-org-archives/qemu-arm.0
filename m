@@ -1,164 +1,351 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1637017lfm;
-        Thu, 23 Apr 2020 01:36:35 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK1BfgFbexJAWRXHU8VKkrq8WG0wCyKZE94Cj+yAo2TxGypVJP2lSzXnTbZoWd4Jf70HwR6
-X-Received: by 2002:a25:2904:: with SMTP id p4mr5285395ybp.475.1587630995590;
-        Thu, 23 Apr 2020 01:36:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587630995; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1656075lfm;
+        Thu, 23 Apr 2020 02:03:53 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKXz8NrDr+9nNh+3BT0EYTKCMnWhCaiAU+OvvCVXSgNQkNKhcFz9eqBqGkt+x6Mws3iC0Jl
+X-Received: by 2002:ac8:1e91:: with SMTP id c17mr2905815qtm.237.1587632633036;
+        Thu, 23 Apr 2020 02:03:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587632633; cv=none;
         d=google.com; s=arc-20160816;
-        b=n3zE95NqoeH7/372rxH9KoUcTeunqVIhqxAy3AMFYs9eKEnLyyACtduBIbYewxdSn4
-         ycPzYC2nGRWauqHcZbChl6IWLzDF6f09ucxhb2xMgwJnw9xKibMycwcyTFS2D4ix3suU
-         WHCbrDKGwaVM/5MGl9ePqtGBj1dfv9/vBXf72HOBxb7oQodmBwpZs2aRwMxKFHD6TljO
-         O6IBJiCULUc1g7YxLXVhKk4RZBpLi05Rk1J1Yjc4V5wwsiKFwZRlj3h8sSj2T2hB61LS
-         oCx+uWWICyAFn/G4SvPY/5Jpbzp5xaHvpz9EwPDA3xlvCL22BRlTPKh6n66a0cv/0svN
-         YAFQ==
+        b=LGS8lBWxUG6gkNcKukK61oquTcaR0Oes+JmW9iqh6BDnJsRSNFTavchLUl97YQqqG4
+         MQREUhg45OqFUa2eHpMfFUuZfQje7IyBxZUuU4+5r8UyTi9KPnEeEHf1csIRqLmXOeUS
+         WIDJ480uILD2FkEF7KRtULG1LdBELh9HytziSvCIlhuKa6X+ZufYYzImZWkM83T9w4aN
+         w6dRIbg+L7tD5Nr8/xbIg6Pq7sIMi31+NI1YPReamvbrWWew8UGSMdM6CMo5iAvfGOdZ
+         Pu7F9ZooJwSiSZY+rPTOfG0D+k4anTLezIckr+Myfyok7hILKcWvPye9xtEArJFtEdEb
+         Hq8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=jt2SI3Ec4+DBoM95/mhaSkMRQB7x7rtS4p5XoJdtD18=;
-        b=rOgkKhQl3SP1QE+nGSIKRxgzrC0cSc1nOszOI9t9eG9ys5IxTO01MivXwIPdj7jwv5
-         w56lx0bceKfAVDLtYNk8/HNy8Lx8tBCTP2J5kZGabFdo47ib4N5kD4xBT+q+W7M/Rjbg
-         ubHhv5a/CnKUQ5HqV4oEG1mDduyxC3tOQ6NwxiFNlXCTsbzd0fYzus0SIloSnwBjErzr
-         SuZkqophJswAPBXFsBw7FOxTe9K8CR2a8YAIbN3mwMROcAbBea+F+8Xh193wnSCurRVv
-         R640pmlRVvsYGeTSCEEnjD1Pwrq3ONGoYGJXrGfaZ1Mnh2JAyQbYMGrySff6Vpex8/2r
-         Wlyg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from;
+        bh=N75Xm6uSO9WPL2LR9nnGf4nT74j78kOne0Ev0KPa4xo=;
+        b=KezU9dgDiEp2OIeIRIYsjEb4MIdqkCfVBeuI5bqtNVZ+IFChNCKW0OX5w7yCWHJkY1
+         Vq3kQzhYPUcFxEUL4tvqajjYPF0/Hsi837Y9AukmGYFDVJMg3tOkjKqRH5RK0JLtbosw
+         Gej0s6OsQBmis+Zz2a64T5QoArtyblojunqDN1+ShQdg5dxn/qDs6R4YrHnwpxW8SnzH
+         zpo3TVgUCazx75pkHIWJ1hYaSc8tdvUpUMZ36v5gZxNSEV19Z8/Wn/K4stu0/5a5a4j5
+         J/dGn07UlIrHwRS9U4URZ4fOZzmaI0staNViMliV1t1WQFOoz7zBbHQZ5+ohCaj6Bawa
+         flqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="hfnvJ/WG";
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by mx.google.com with ESMTPS id k7si1731181ybp.354.2020.04.23.01.36.35
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k4si974030qtq.6.2020.04.23.02.03.52
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 Apr 2020 01:36:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 23 Apr 2020 02:03:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="hfnvJ/WG";
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1587630995;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=jt2SI3Ec4+DBoM95/mhaSkMRQB7x7rtS4p5XoJdtD18=;
-	b=hfnvJ/WG3/97SLKhQaIQPdG9hgMH+HARDGZ4ennj15p/BtIHZzZpmW4Yh3EjXpGt+pdZEq
-	p9acxjjP7SINXbAzwYgd3gCHXMJmCqsrpuFfp3/BsAus6iJZFNgkWJpoZf6bJoA7DXB7vy
-	ZZHmKSfFkz+BfVtQkh30sl7kzRQKPiE=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-194-hC1J-J0ZNSuyqNY0PPwS3w-1; Thu, 23 Apr 2020 04:36:33 -0400
-X-MC-Unique: hC1J-J0ZNSuyqNY0PPwS3w-1
-Received: by mail-wr1-f71.google.com with SMTP id q10so2509451wrv.10
-        for <alex.bennee@linaro.org>; Thu, 23 Apr 2020 01:36:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=bRD8O5iG7EfvWKOKXBFAGi4rL5dnL8/PwE9Z+SSrmik=;
-        b=mB5dKMMyGgBu2v0U72VAYnNTXfBD1OzLelABfdqq0qdx+UQ5Pa6dpjAFUl+HJ5xXHY
-         P/u5SOskwrC0eF5kQKeDTDk04F/mjBzierKshS8NqZOGaszI4AefrWvvJ8S/tdnhBm2n
-         nkZu/4fUdhEJgr48b74zEjbKXztXO0IairW+CLD6mfaSzoa+cLncMDb6hKdRChG7OHU3
-         m6wskJseBHixp40mzcHITRc7kuYmo/UgMhwcsp8NGzzejlmbq+TX2CyC2yeXZRerCwbw
-         7jw7UBsa2xrnBTOJB2461lnakzd3cA3d3l/XIZYH8UlvKa5MIw+RYHp4wDC2lfYx+h11
-         lQzw==
-X-Gm-Message-State: AGi0PuYRQMhD9fkaV94Fqzp7Z7bs+Qx7lVwrddANVLG/6kdW0tr2GnUd
-	MlMofIaZVYdPVKMn1Zo+yXk8dPIiGoFq1Xa/akMJQKHiEs/vJuBowiJYJOtVAT0ffm+kIxdHJbf
-	fwdNP8qS17sho62Mv
-X-Received: by 2002:a7b:c84f:: with SMTP id c15mr2725575wml.166.1587630991696;
-        Thu, 23 Apr 2020 01:36:31 -0700 (PDT)
-X-Received: by 2002:a7b:c84f:: with SMTP id c15mr2725541wml.166.1587630991255;
-        Thu, 23 Apr 2020 01:36:31 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.39] (116.red-83-42-57.dynamicip.rima-tde.net. [83.42.57.116])
-        by smtp.gmail.com with ESMTPSA id h188sm2861902wme.8.2020.04.23.01.36.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 23 Apr 2020 01:36:30 -0700 (PDT)
-Subject: Re: [PATCH v3 10/19] target/arm: Restrict ARMv4 cpus to TCG accel
-To: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, kvm@vger.kernel.org, Thomas Huth
- <thuth@redhat.com>, qemu-arm@nongnu.org, Fam Zheng <fam@euphon.net>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20200316160634.3386-1-philmd@redhat.com>
- <20200316160634.3386-11-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <6849be34-8e45-98f8-7424-0fdb9466e9bd@redhat.com>
-Date: Thu, 23 Apr 2020 10:36:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
-MIME-Version: 1.0
-In-Reply-To: <20200316160634.3386-11-philmd@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-TUID: YFnQExUYwD6g
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39254 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jRXlw-00032K-8L
+	for alex.bennee@linaro.org; Thu, 23 Apr 2020 05:03:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36066)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <geert@linux-m68k.org>) id 1jRXjd-0000kL-CY
+ for qemu-devel@nongnu.org; Thu, 23 Apr 2020 05:01:33 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
+ (envelope-from <geert@linux-m68k.org>) id 1jRXjb-0001DC-9r
+ for qemu-devel@nongnu.org; Thu, 23 Apr 2020 05:01:28 -0400
+Received: from andre.telenet-ops.be ([2a02:1800:120:4::f00:15]:34546)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <geert@linux-m68k.org>)
+ id 1jRXja-0001Bi-2O
+ for qemu-devel@nongnu.org; Thu, 23 Apr 2020 05:01:26 -0400
+Received: from ramsan ([IPv6:2a02:1810:ac12:ed60:89cc:efc7:85ce:4669])
+ by andre.telenet-ops.be with bizsmtp
+ id W91L2200g1RvcFS0191LLo; Thu, 23 Apr 2020 11:01:21 +0200
+Received: from rox.of.borg ([192.168.97.57]) by ramsan with esmtp (Exim 4.90_1)
+ (envelope-from <geert@linux-m68k.org>)
+ id 1jRXjU-0006kC-BF; Thu, 23 Apr 2020 11:01:20 +0200
+Received: from geert by rox.of.borg with local (Exim 4.90_1)
+ (envelope-from <geert@linux-m68k.org>)
+ id 1jRXjU-0002vY-AD; Thu, 23 Apr 2020 11:01:20 +0200
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <graf@amazon.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <bartekgola@gmail.com>,
+ Magnus Damm <magnus.damm@gmail.com>
+Subject: [PATCH QEMU v2 3/5] Add a GPIO backend using libgpiod
+Date: Thu, 23 Apr 2020 11:01:16 +0200
+Message-Id: <20200423090118.11199-4-geert+renesas@glider.be>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200423090118.11199-1-geert+renesas@glider.be>
+References: <20200423090118.11199-1-geert+renesas@glider.be>
+Received-SPF: none client-ip=2a02:1800:120:4::f00:15;
+ envelope-from=geert@linux-m68k.org; helo=andre.telenet-ops.be
+X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
+ Malformed IPv6 address (bad octet value).
+ Location : parse_addr6(), p0f-client.c:67
+X-Received-From: 2a02:1800:120:4::f00:15
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: linux-renesas-soc@vger.kernel.org, linux-gpio@vger.kernel.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Geert Uytterhoeven <geert+renesas@glider.be>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0atxX65VBkdC
 
-On 3/16/20 5:06 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> KVM requires a cpu based on (at least) the ARMv7 architecture.
->=20
-> Only enable the following ARMv4 CPUs when TCG is available:
->=20
->    - StrongARM (SA1100/1110)
->    - OMAP1510 (TI925T)
->=20
+Add a GPIO controller backend, to connect virtual GPIOs on the guest to
+physical GPIOs on the host.  This allows the guest to control any
+external device connected to the physical GPIOs.
 
-I missed to explain, the point of this Kconfig granularity is on a KVM=20
-only build, the TCG-only CPUs can't be default-selected, so most of=20
-their devices are not pulled in.
+Features and limitations:
+  - The backend uses libgpiod on Linux,
+  - For now only GPIO outputs are supported,
+  - The number of GPIO lines mapped is limited to the number of GPIO
+    lines available on the virtual GPIO controller.
 
-Instead at the end the KVM-only binary only contains the devices=20
-required to run the Cortex-A machines.
+Future work:
+  - GPIO inputs,
+  - GPIO line configuration,
+  - Optimizations for controlling multiple GPIO lines at once,
+  - ...
 
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
-u.mak
-> index 8b89d8c4c0..0652396296 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -17,8 +17,6 @@ CONFIG_INTEGRATOR=3Dy
->   CONFIG_FSL_IMX31=3Dy
->   CONFIG_MUSICPAL=3Dy
->   CONFIG_MUSCA=3Dy
-> -CONFIG_CHEETAH=3Dy
-> -CONFIG_SX1=3Dy
->   CONFIG_NSERIES=3Dy
->   CONFIG_STELLARIS=3Dy
->   CONFIG_REALVIEW=3Dy
-[...]
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index e3d7e7694a..7fc0cff776 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -28,6 +28,7 @@ config ARM_VIRT
->  =20
->   config CHEETAH
->       bool
-> +    select ARM_V4
->       select OMAP
->       select TSC210X
->  =20
-> @@ -242,6 +243,7 @@ config COLLIE
->  =20
->   config SX1
->       bool
-> +    select ARM_V4
->       select OMAP
->  =20
->   config VERSATILE
-> diff --git a/target/arm/Kconfig b/target/arm/Kconfig
-> index e68c71a6ff..0d496d318a 100644
-> --- a/target/arm/Kconfig
-> +++ b/target/arm/Kconfig
-> @@ -1,2 +1,6 @@
-> +config ARM_V4
-> +    depends on TCG
-> +    bool
-> +
->   config ARM_V7M
->       bool
+Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+---
+v2:
+  - Drop vgpios and gpios parameters, and map the full gpiochip instead,
+  - Replace hardcoded PL061 instance by multiple dynamic instances,
+    registered through qemu_gpiodev_add().
+---
+ MAINTAINERS              |  6 +++
+ backends/Makefile.objs   |  2 +
+ backends/gpiodev.c       | 94 ++++++++++++++++++++++++++++++++++++++++
+ configure                | 28 ++++++++++++
+ include/sysemu/gpiodev.h | 12 +++++
+ 5 files changed, 142 insertions(+)
+ create mode 100644 backends/gpiodev.c
+ create mode 100644 include/sysemu/gpiodev.h
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index e760f65270d29d5d..a70af47430083d14 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -607,6 +607,12 @@ F: include/hw/arm/digic.h
+ F: hw/*/digic*
+ F: include/hw/*/digic*
+ 
++GPIO device backend
++M: Geert Uytterhoeven <geert+renesas@glider.be>
++S: Supported
++F: backends/gpiodev.c
++F: include/sysemu/gpiodev.h
++
+ Goldfish RTC
+ M: Anup Patel <anup.patel@wdc.com>
+ M: Alistair Francis <Alistair.Francis@wdc.com>
+diff --git a/backends/Makefile.objs b/backends/Makefile.objs
+index 28a847cd571d96ed..ee658e797454119a 100644
+--- a/backends/Makefile.objs
++++ b/backends/Makefile.objs
+@@ -21,3 +21,5 @@ common-obj-$(CONFIG_LINUX) += hostmem-memfd.o
+ common-obj-$(CONFIG_GIO) += dbus-vmstate.o
+ dbus-vmstate.o-cflags = $(GIO_CFLAGS)
+ dbus-vmstate.o-libs = $(GIO_LIBS)
++
++common-obj-$(CONFIG_GPIODEV) += gpiodev.o
+diff --git a/backends/gpiodev.c b/backends/gpiodev.c
+new file mode 100644
+index 0000000000000000..df1bd0113c7b2985
+--- /dev/null
++++ b/backends/gpiodev.c
+@@ -0,0 +1,94 @@
++/*
++ * QEMU GPIO Backend
++ *
++ * Copyright (C) 2018-2020 Glider bv
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include <errno.h>
++#include <gpiod.h>
++
++#include "qemu/osdep.h"
++#include "qemu/config-file.h"
++#include "qemu/cutils.h"
++#include "qemu/error-report.h"
++#include "qemu/module.h"
++#include "qemu/option.h"
++#include "qapi/error.h"
++
++#include "sysemu/gpiodev.h"
++
++#include "hw/irq.h"
++#include "hw/qdev-core.h"
++
++static void gpiodev_irq_handler(void *opaque, int n, int level)
++{
++    struct gpiod_line *line = opaque;
++    int status;
++
++    status = gpiod_line_set_value(line, level);
++    if (status < 0) {
++        struct gpiod_chip *chip = gpiod_line_get_chip(line);
++
++        error_report("%s/%s: Cannot set GPIO line %u: %s",
++                     gpiod_chip_name(chip), gpiod_chip_label(chip),
++                     gpiod_line_offset(line), strerror(errno));
++    }
++}
++
++static int gpiodev_map_line(DeviceState *dev, struct gpiod_chip *chip,
++                            unsigned int gpio, Error **errp)
++{
++    struct gpiod_line *line;
++    qemu_irq irq;
++    int status;
++
++    line = gpiod_chip_get_line(chip, gpio);
++    if (!line) {
++        error_setg(errp, "Cannot obtain GPIO line %u: %s", gpio,
++                   strerror(errno));
++        return -1;
++    }
++
++    status = gpiod_line_request_output(line, "qemu", 0);
++    if (status < 0) {
++        error_setg(errp, "Cannot request GPIO line %u for output: %s", gpio,
++                   strerror(errno));
++        return status;
++    }
++
++    irq = qemu_allocate_irq(gpiodev_irq_handler, line, 0);
++    qdev_connect_gpio_out(dev, gpio, irq);
++    return 0;
++}
++
++void qemu_gpiodev_add(DeviceState *dev, const char *name, unsigned int maxgpio,
++                      Error **errp)
++{
++    struct gpiod_chip *chip;
++    unsigned int i, n;
++    int status;
++
++    chip = gpiod_chip_open_lookup(name);
++    if (!chip) {
++        error_setg(errp, "Cannot open GPIO chip %s: %s", name,
++                   strerror(errno));
++        return;
++    }
++
++    n = gpiod_chip_num_lines(chip);
++    if (n > maxgpio) {
++        warn_report("Last %u GPIO line(s) will not be mapped", n - maxgpio);
++        n = maxgpio;
++    }
++
++    for (i = 0; i < n; i++) {
++        status = gpiodev_map_line(dev, chip, i, errp);
++        if (status < 0) {
++            return;
++        }
++    }
++
++    info_report("Mapped %u GPIO lines", n);
++}
+diff --git a/configure b/configure
+index 23b5e93752b6a259..8b133402ef727c8e 100755
+--- a/configure
++++ b/configure
+@@ -509,6 +509,7 @@ libpmem=""
+ default_devices="yes"
+ plugins="no"
+ fuzzing="no"
++gpio=""
+ 
+ supported_cpu="no"
+ supported_os="no"
+@@ -1601,6 +1602,10 @@ for opt do
+   ;;
+   --gdb=*) gdb_bin="$optarg"
+   ;;
++  --disable-gpio) gpio="no"
++  ;;
++  --enable-gpio) gpio="yes"
++  ;;
+   *)
+       echo "ERROR: unknown option $opt"
+       echo "Try '$0 --help' for more information"
+@@ -1894,6 +1899,7 @@ disabled with --disable-FEATURE, default is enabled if available:
+   debug-mutex     mutex debugging support
+   libpmem         libpmem support
+   xkbcommon       xkbcommon support
++  gpio            gpio support
+ 
+ NOTE: The object files are built at the place where configure is launched
+ EOF
+@@ -6250,6 +6256,23 @@ case "$slirp" in
+     ;;
+ esac
+ 
++##########################################
++# check for libgpiod
++
++if test "$gpio" != "no"; then
++    if $pkg_config --exists "libgpiod"; then
++        gpio="yes"
++        libgpiod_libs=$($pkg_config --libs libgpiod)
++        libgpiod_cflags=$($pkg_config --cflags libgpiod)
++        libs_softmmu="$libs_softmmu $libgpiod_libs"
++        QEMU_CFLAGS="$QEMU_CFLAGS $libgpiod_cflags"
++    else
++        if test "$gpio" = "yes" ; then
++            feature_not_found "gpio" "Install libgpiod"
++        fi
++        gpio="no"
++    fi
++fi
+ 
+ ##########################################
+ # End of CC checks
+@@ -6733,6 +6756,7 @@ echo "default devices   $default_devices"
+ echo "plugin support    $plugins"
+ echo "fuzzing support   $fuzzing"
+ echo "gdb               $gdb_bin"
++echo "gpio support      $gpio"
+ 
+ if test "$supported_cpu" = "no"; then
+     echo
+@@ -7614,6 +7638,10 @@ if test -n "$gdb_bin" ; then
+     echo "HAVE_GDB_BIN=$gdb_bin" >> $config_host_mak
+ fi
+ 
++if test "$gpio" = "yes" ; then
++  echo "CONFIG_GPIODEV=y" >> $config_host_mak
++fi
++
+ if test "$tcg_interpreter" = "yes"; then
+   QEMU_INCLUDES="-iquote \$(SRC_PATH)/tcg/tci $QEMU_INCLUDES"
+ elif test "$ARCH" = "sparc64" ; then
+diff --git a/include/sysemu/gpiodev.h b/include/sysemu/gpiodev.h
+new file mode 100644
+index 0000000000000000..bedd141001245207
+--- /dev/null
++++ b/include/sysemu/gpiodev.h
+@@ -0,0 +1,12 @@
++/*
++ * QEMU GPIO Backend
++ *
++ * Copyright (C) 2018-2020 Glider bv
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/typedefs.h"
++
++void qemu_gpiodev_add(DeviceState *dev, const char *name, unsigned int maxgpio,
++                      Error **errp);
+-- 
+2.17.1
+

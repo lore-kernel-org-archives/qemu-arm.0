@@ -1,181 +1,169 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1590663lfm;
-        Thu, 23 Apr 2020 00:34:41 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJd49jGqGS86OrWcY0zW4J3eUlWlPOhlkpvapIdVSl1sQYxWSWhlw5NHJqdPcoLSA/KOHuj
-X-Received: by 2002:ac8:7301:: with SMTP id x1mr2700191qto.53.1587627280765;
-        Thu, 23 Apr 2020 00:34:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587627280; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1591956lfm;
+        Thu, 23 Apr 2020 00:36:17 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLJYtkb31hmutqUK396YB7IhcRld1/fpEbeZYvUu+EtHSYsB0lL0nEd00wRj5cJJz9mB32m
+X-Received: by 2002:a37:6317:: with SMTP id x23mr2234426qkb.218.1587627376881;
+        Thu, 23 Apr 2020 00:36:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587627376; cv=none;
         d=google.com; s=arc-20160816;
-        b=x5YfLJ2jA/xu8ovQ+JFfL8oonBwMh5001T2ZSfz1FmyIZ9qm3Zhi28lFJqx/u6O/NK
-         rfk8hXWRS5KlBaPYu7GQamneufcMgp3B1laaOTa9/w40PshrYe9mX1Ep0M3ClatkpdOU
-         OgXFzDTqUDiQyJK0HoRdR9VI9mRdIf2Y5HeKw3YOO/JKlTJ9Tp5MGT1GqCe/69Ym9nnJ
-         5aZJqyAlAvzEyBLZioBzRudAcAafn7R74K4oKLaQtJOJvfDB8kdDgT0/9FlfVL4wqoGS
-         jtJWotnP71fcbiMUC4bGAmjF+CTrwPiiviTY5I3DZq+1qnXN3jG1TR1aN9xhDOWdRewy
-         nVgw==
+        b=WzwfsXzRrKl7syJJ3uBSN73UtPO+7auTsa6kXfLT4i1LRVdU+7xb1spdAFwKJGKl+m
+         Qc0AtbL6WSNfHV87k6i5dnuL4N8aZFRUalaF3hZvA7LEL6yeQFROg80CyFSYvLyabH+L
+         SGCV7kXg4Fttgn5E6UIEu75zgB6x8sYkY4GOCWQtSDMsvv6lVffaQMv2NvgVnGwa5K9j
+         YFLplUwWsbSOtwrVkF/5S65ZSkSty5bbK8KPU4KUhtBdwWh9IL6awcMNPcj6NZbkHie9
+         XZIqRYo//0mumZhk22BfObmLP0im2KYB7vEqsKzDbA9/H9Lu9PA4fTMTO+gF8RW7S8X+
+         TtEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=aaBo3MCsTgkEJPnSWwDmRxTt35ljRTn5VOHhxb4safQ=;
-        b=XGc2TJYT2Da5eLXgTzxQyY9qbXZ0Ce1Yd6kXu7TFsWKX7RZsQzRYy+2q3Ffg3+u3qZ
-         KOud3nDt6Wd2aReN6c3oPwaPxv6jA+58dglG2Sb5XM9/Y62rg0/X4BPrxyz/d3H9p7C9
-         WjZ2F1GPZKQ/otYl88XbA076rYa3GwcAY0kE+wlrFe+4gvTb7MuoJMnqGNeSzcXEpiOY
-         lIlfYATctI2iEl0ehy4fpL1druTmmmST1Ij+txqWMTEf0JUaaZCQaTOjxBQbfegvs2vS
-         FfqzULmspyZZnpsaArbifiePpOEAmd5R1XSQzrmO3Anlg+a761cpeHr2pirG9YoItIrg
-         7x7Q==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=Ct7jMKth8vWbm+2CUvy6qe7DTi6gbSwkWjtezFIRh9c=;
+        b=rm5tdHVbeJTwqB2f55+Qn3r/DqWMNEVNoyd/wZeSItAweKRLbZCYQ46qGgu+CSySEd
+         eQ/bbvuYIRAIeMnWqlr9xYK76XWZUnTgHhH+DK8qtKnsnd4JW7TeEe7EE1cR0SiXAqxF
+         39X5rjJeS97xrw2ANIp/j8wfsOXUN3DJGTPBXD4p7JUcATr6CTPBLGv+JPd6wBHB03/U
+         vI42RCdZEcMVUkdo9JXTjsCosBpGH7YIxAiF5dbIc7mqYbxWXprlAK6mIbxr8HlqPMOA
+         1ZsYqcKwaD4/8oA5oD8kTKBtfFY0Xy+RrW5ohEsxjnqu/1eQVzTcIgCU7qpgG8GHP2eb
+         2HLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YRr5sTNc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YnjnrTWj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l14si832781qtu.233.2020.04.23.00.34.40
+        by mx.google.com with ESMTPS id g13si823844qtr.367.2020.04.23.00.36.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Apr 2020 00:34:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 Apr 2020 00:36:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YRr5sTNc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YnjnrTWj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38270 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38296 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jRWNb-0005FJ-U7
-	for alex.bennee@linaro.org; Thu, 23 Apr 2020 03:34:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46852)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jRWPA-0006lz-4u
+	for alex.bennee@linaro.org; Thu, 23 Apr 2020 03:36:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46780)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jRWNS-00059P-0t
- for qemu-arm@nongnu.org; Thu, 23 Apr 2020 03:34:30 -0400
+ (envelope-from <philmd@redhat.com>) id 1jRWNG-0004yf-Tj
+ for qemu-devel@nongnu.org; Thu, 23 Apr 2020 03:34:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1jRWNR-000767-B1
- for qemu-arm@nongnu.org; Thu, 23 Apr 2020 03:34:29 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:45334
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1jRWN9-0006cW-Cq
+ for qemu-devel@nongnu.org; Thu, 23 Apr 2020 03:34:18 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:51473)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jRWNQ-00074m-SV
- for qemu-arm@nongnu.org; Thu, 23 Apr 2020 03:34:28 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jRWN8-0006ZS-Qj
+ for qemu-devel@nongnu.org; Thu, 23 Apr 2020 03:34:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587627268;
+ s=mimecast20190719; t=1587627249;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=aaBo3MCsTgkEJPnSWwDmRxTt35ljRTn5VOHhxb4safQ=;
- b=YRr5sTNcemaAVl5+hpP4CJMCDADJTydAeb7Tk84GVswziPMYy5Jlb5bGAiMTTVwxPNBPD2
- YCN8IZanC7s8IBLMRfLAks/upHG6/vDfdunOoagAqQLlgRmLdSWEIjYfcer9AVYg3QGgGG
- mlb0gokf4TSol/735PbDB252ttze33Q=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Ct7jMKth8vWbm+2CUvy6qe7DTi6gbSwkWjtezFIRh9c=;
+ b=YnjnrTWj3iBDW993nN0fi585Yj8N4pAxeojbz3V/gBak7IasEjluNjtWUEGG5s65scLHL8
+ HF2acvx6AT+l3ThyexkUoMwOjPEBc6Ed2n1MYoKw0mgfOunTMp1R7JdK425XjOgeAUJKyn
+ Em4Cgk5wpadhl9AQRQjIyEmQvahkMuA=
 Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
  [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-185-fPUBoDCGPrabc4fCbEvM7g-1; Thu, 23 Apr 2020 03:34:26 -0400
-X-MC-Unique: fPUBoDCGPrabc4fCbEvM7g-1
-Received: by mail-wr1-f70.google.com with SMTP id o8so1974973wrm.11
- for <qemu-arm@nongnu.org>; Thu, 23 Apr 2020 00:34:25 -0700 (PDT)
+ us-mta-22-yWgtRDPEOkmyOFvsMqtT1A-1; Thu, 23 Apr 2020 03:34:04 -0400
+X-MC-Unique: yWgtRDPEOkmyOFvsMqtT1A-1
+Received: by mail-wr1-f70.google.com with SMTP id d17so2405878wrr.17
+ for <qemu-devel@nongnu.org>; Thu, 23 Apr 2020 00:34:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=HRr+Ptr5gqXJ2YHP+feMmdWvwBjwrFcYgrx6heAyn8E=;
- b=lCq+b58Emqpa5cJ6XOsizHtiYDjqHBgJmmWtqzp26VKLbHNNdLe+H4X27FrxdmDbit
- EEnzWYFt1HuOzSdwxSSlM8R8zEYTTQbzCATzefFvaVE23HCbfGQL15gy1fwU7HkcU0VX
- 0mvHf9cFlFeNVVPDhtq4KqJvnXu7r1udlFhL+PM5PWZRsL2pW3sxb8+H+9lb9jmMx61G
- Fkr2NjJXt0tGMLTAUIpk0DeErK9jklYKVDMXm1H4rath4YLxnpV+52yaVsIRIfrU9He6
- 8znmlYr+eWioq+Z90zNO4iqK+6UWwq7vidnvhxCQ9KlHM0L05jKHyQvHWPMS2el1uR2o
- Olsg==
-X-Gm-Message-State: AGi0PuYLObM9E7tBZWBXUXN4GnQxoh5QSg0cMTy4sNGr6qaMOk1J8u6c
- P29mW6HmNbSXJl7pogh2qbAlTM+h4LCy1TmmeEMy+LA/Bpviin/4qUZ01w1/Mcn2C5h7kjcMv3p
- QlrjiA5ptqxPk
-X-Received: by 2002:adf:97d0:: with SMTP id t16mr3135740wrb.138.1587627264983; 
- Thu, 23 Apr 2020 00:34:24 -0700 (PDT)
-X-Received: by 2002:adf:97d0:: with SMTP id t16mr3135726wrb.138.1587627264792; 
- Thu, 23 Apr 2020 00:34:24 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=oLonGkIJTHbG03JF1+Ssy7OAaXsd0W1f3V8ZSYCW5BI=;
+ b=ancDYvdGi2EvSxITqRp8UAB+2DmBNKgQW0YG/KS662R8BzgRS7723eoY999uM4BVk4
+ jlFfSXb605qLkgh2tGK7/1+QlAXZfMt5jFgc54MT5lmYZ+aQi3Cx6+81Nq/o9d4p6CQ7
+ 4XroM/jRvNjh24O8bi8t8JV1Xh36Q3wf7uXFrkut5RC6Z4PwbV/NNAahIL3EYAW/ZKag
+ W+YkJqQwJJJztyij7RMzcW8PREes6IyoE4rzhCnLpskcTIkf+7ovZcqIPHFG4oc6Hdjd
+ MQTm/I9bMi2gzXj2jvF+D6Hblc3MFlVV95AJjGEnpTEvhTuSHAVR46Xb+IsmxEb3sYmj
+ 7UcQ==
+X-Gm-Message-State: AGi0PubgbK8k01Oaqfg2hCHMw3CUBzXdXmAhYAww+O/SgHcb1S99abwu
+ sIEuWSSD4uhTfiTh9OodcpKiHkJgHvJ3pa3ONScu7k3oUfAohMVCyb3ziTagGbDIZ/niZCbYw9U
+ FmRDkSiiBEaz440M=
+X-Received: by 2002:adf:bbca:: with SMTP id z10mr3483609wrg.288.1587627243517; 
+ Thu, 23 Apr 2020 00:34:03 -0700 (PDT)
+X-Received: by 2002:adf:bbca:: with SMTP id z10mr3483586wrg.288.1587627243281; 
+ Thu, 23 Apr 2020 00:34:03 -0700 (PDT)
 Received: from localhost.localdomain (116.red-83-42-57.dynamicip.rima-tde.net.
  [83.42.57.116])
- by smtp.gmail.com with ESMTPSA id f8sm2442784wrm.14.2020.04.23.00.34.23
+ by smtp.gmail.com with ESMTPSA id o18sm2366000wrp.23.2020.04.23.00.34.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Apr 2020 00:34:24 -0700 (PDT)
+ Thu, 23 Apr 2020 00:34:02 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 4/5] target/arm/cpu: Update coding style to make
- checkpatch.pl happy
-Date: Thu, 23 Apr 2020 09:33:57 +0200
-Message-Id: <20200423073358.27155-5-philmd@redhat.com>
+Subject: [PATCH v2 0/5] target/arm: Restrict TCG cpus to TCG accel
+Date: Thu, 23 Apr 2020 09:33:53 +0200
+Message-Id: <20200423073358.27155-1-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.1
-In-Reply-To: <20200423073358.27155-1-philmd@redhat.com>
-References: <20200423073358.27155-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/23 01:42:41
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Received-From: 207.211.31.120
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/23 03:23:21
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WJ5at5mT3T9t
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: t9MTuVstxz1B
 
-We will move this code in the next commit. Clean it up
-first to avoid checkpatch.pl errors.
+These are the uncontroversial patches from "Support disabling
+TCG on ARM (part 2)"
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg689168.html
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- target/arm/cpu.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+The other patches are blocked by the "accel: Allow targets to
+use Kconfig" series:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg689024.html
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 30e961f775..a1e38b38ba 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -582,7 +582,8 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, in=
-t interrupt_request)
-     CPUARMState *env =3D &cpu->env;
-     bool ret =3D false;
-=20
--    /* ARMv7-M interrupt masking works differently than -A or -R.
-+    /*
-+     * ARMv7-M interrupt masking works differently than -A or -R.
-      * There is no FIQ/IRQ distinction. Instead of I and F bits
-      * masking FIQ and IRQ interrupts, an exception is taken only
-      * if it is higher priority than the current execution priority
-@@ -1912,7 +1913,8 @@ static void arm1026_initfn(Object *obj)
- static void arm1136_r2_initfn(Object *obj)
- {
-     ARMCPU *cpu =3D ARM_CPU(obj);
--    /* What qemu calls "arm1136_r2" is actually the 1136 r0p2, ie an
-+    /*
-+     * What qemu calls "arm1136_r2" is actually the 1136 r0p2, ie an
-      * older core than plain "arm1136". In particular this does not
-      * have the v6K features.
-      * These ID register values are correct for 1136 but may be wrong
-@@ -2698,7 +2700,8 @@ static const ARMCPUInfo arm_cpus[] =3D {
-     { .name =3D "arm926",      .initfn =3D arm926_initfn },
-     { .name =3D "arm946",      .initfn =3D arm946_initfn },
-     { .name =3D "arm1026",     .initfn =3D arm1026_initfn },
--    /* What QEMU calls "arm1136-r2" is actually the 1136 r0p2, i.e. an
-+    /*
-+     * What QEMU calls "arm1136-r2" is actually the 1136 r0p2, i.e. an
-      * older core than plain "arm1136". In particular this does not
-      * have the v6K features.
-      */
+All patches reviewed.
+
+Since v1:
+- Dropped 'Make set_feature() available for other files' patch
+  which fails to build with KVM only, see:
+https://lists.gnu.org/archive/html/qemu-devel/2020-04/msg03843.html
+
+Many thanks to Richard Henderson for his patience!
+
+Regards,
+
+Phil.
+
+Philippe Mathieu-Daud=C3=A9 (4):
+  target/arm: Restric the Address Translate write operation to TCG accel
+  target/arm/cpu: Use ARRAY_SIZE() to iterate over ARMCPUInfo[]
+  target/arm/cpu: Update coding style to make checkpatch.pl happy
+  target/arm: Restrict TCG cpus to TCG accel
+
+Thomas Huth (1):
+  target/arm: Make cpu_register() available for other files
+
+ target/arm/cpu-qom.h     |   9 +-
+ target/arm/cpu.c         | 647 +-------------------------------------
+ target/arm/cpu64.c       |  16 +-
+ target/arm/cpu_tcg.c     | 664 +++++++++++++++++++++++++++++++++++++++
+ target/arm/helper.c      |  17 +
+ target/arm/Makefile.objs |   1 +
+ 6 files changed, 698 insertions(+), 656 deletions(-)
+ create mode 100644 target/arm/cpu_tcg.c
+
 --=20
 2.21.1
 

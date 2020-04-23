@@ -1,134 +1,1396 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp910376lfm;
-        Wed, 22 Apr 2020 10:43:36 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIrWtgVyG3/j8OxVqVKPFxiw/lzc0wctwN41gwkt2iz/vzKfmd7zSA/Mvw/O9C8qysox5iS
-X-Received: by 2002:aa7:d311:: with SMTP id p17mr24578888edq.73.1587577416580;
-        Wed, 22 Apr 2020 10:43:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587577416; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1304662lfm;
+        Wed, 22 Apr 2020 17:56:58 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIJXkAx/sIeYLCtKV4rGSNUfevOiT8jIV8w04sHar2jo71cX8AJAzGz8iDJACPUKu8pAc8C
+X-Received: by 2002:ac8:4447:: with SMTP id m7mr1548418qtn.372.1587603417829;
+        Wed, 22 Apr 2020 17:56:57 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1587603417; cv=pass;
         d=google.com; s=arc-20160816;
-        b=OIdzS+inEcJssjf+osYgQf3fvXJj3W6Vn6R0HemkoppWGouk5Mu2HHfkKbIDvsr0u7
-         q7EfiZhsKfJlGse69l9CoTITKHzHtF8TdSpBE+PMjS3g7cunWh1pAvB2y2UK7JifaR1j
-         lHqwTEjSD+PIbSV52tm4u1ya6cfYWdqU9XSIgg5+mc/L3PkwM0AnnTEilJu+NLF9EdA5
-         C9TTYiq5G5fJFWNoizjIVp5egLgCKLda/T2rAoOE6N9frOd8kA0rKR4Kgp4zWs3pQxlo
-         87yjgriLC30GLw/6ZSPGx1M4AvdLKkOBz7GCXKoRBZOuiyjvMxcq0BbrdKmmWXgpODNO
-         X+Nw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=hHXTQbHTk/GqfkhzXqY9YnXuAZpapaywKPSFwdmxyTg=;
-        b=xSISN5xMgaLh1oyQy302NZilI3/Hay2Q9QSqnrcf8FQYjANblxFRbZkGqXdqjM4N4Y
-         XKGdRvQJ1Wl+PjCPcfLyd7D9E+b32qXOlSPWMKF2tajDzsnf7hzlRt0b830E+AFjDdeA
-         IlaEHhg0/EewWTPpMM3hdp0dBTiRAP9N0n8CYlocv6IV1znClXqEjS08hxAko0NYG3Aq
-         lv0FrTVYBMaiN+ijucs4VOHqKEbOF3Os4OQ2VtqyIsC0TgJzSuP/qBlfD75p2tST0l9v
-         HDsF16+uwwCcNXObKaaIxcjSVw1Ah19Ab2oEjLErDXES+qEo5/XRB/+GslNlNl9EDHhk
-         nVmA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="OZ07+/Df";
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id cq7si3613549edb.319.2020.04.22.10.43.36
+        b=GuCDRaT/Xh+35inT/y13pwm128q+SbyUa/nGEEcr1ZG+ig4MZH3YG44krz2LlewEhm
+         2/09LJRAQsMvlb8GIFeaL+ubeSE0mgM68vh2G6b1dRC5hIFjNP57p8J94xAOQDDJ6hvT
+         uj+4+5VrrSUi8Ey3IHnmV0MZQNxfSnZTYsmRvyNHJKvHQb0ON1YnPu9nh2fCbREInDGW
+         D+8MFAIl6PMGiTZw3c2jOcv1FAMGZ31OnzHEG78Wf22jic2qHYt1e03WL+YgZAo6x5KP
+         ZbQDDGlff6yqgq6IRA/Zvg5Mw/+Hbz5EPLLnzqqhAZ9imp/kSrcWn2lRF/kzu0DxuvrI
+         2X+w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from:dkim-signature;
+        bh=kmyK5s/8IPcy1wKK4nvMJDUT8raPWdKXUEsRx+4gtxA=;
+        b=NFR7HeZiMy7SH5EfmMF9kVvLw+IrVPVkOEs5+FZeWt93Oq1z9VA8FPTGous46r9BpC
+         MuYKc3cFow/62bXY7iz1sPz08zUMKe8S+I+OKCmPP6gYmOpXgZERpOXKhUw2qoFXPGve
+         sk6mqBKdW5vbMWHXYz7JIbs0MDIVrBFaNcra/FOm8GsfrNBlVnGRRZbLS8Kq5XttSyV1
+         Xd4CQ9JGixX0vMJskBs2T4hgkZk6RtwP1lQW7FyyG7OESIVRr2uHuKfg0lgDBPbceE9R
+         cWW2iCNu4uo9K+qyPFFfhYBTLJPtLp+u4kFKKWRlOiphDEluISHjXxN0YQ3gibXfv/JK
+         IStA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b="I2lys9/t";
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z69si480653qka.22.2020.04.22.17.56.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 22 Apr 2020 10:43:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 22 Apr 2020 17:56:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="OZ07+/Df";
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1587577415;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=hHXTQbHTk/GqfkhzXqY9YnXuAZpapaywKPSFwdmxyTg=;
-	b=OZ07+/Df50JHj/9pX0ftFA34OU1QNzYHG7pe4AriHV9pcjpzlwkL2dN5Bunx+mf3AD3eEK
-	S8b6iXxEeiaXkvyX2crpXnTtAgLCYzz/meo8WGCTbjWQtF/VgUw7AMhNwYiOdcMQrnbN5o
-	/IvZHReVr3voxb+ht2PF1s1GwOZT604=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-303-dp4wzN1zOhG0usva1MzfQA-1; Wed, 22 Apr 2020 13:43:34 -0400
-X-MC-Unique: dp4wzN1zOhG0usva1MzfQA-1
-Received: by mail-wr1-f72.google.com with SMTP id e5so1403454wrs.23
-        for <alex.bennee@linaro.org>; Wed, 22 Apr 2020 10:43:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=hHXTQbHTk/GqfkhzXqY9YnXuAZpapaywKPSFwdmxyTg=;
-        b=PWYbGBbDb5N7CDeuR8BjGT0g9Nq/9BPsrMndJ8E8R7woLwhqeVAK1BD29/y7aSSmvs
-         zrEGa47WzhTC3/dNUo2HLk1EI/RwGblozs59gV4B8Fep9TodtWJMbBh3J+jmWZIUJRoe
-         DkxdB1dwhIA4lY6MehwxT3HekbvCWD0Vt9VEOFKVbAwiQAeXtQq9R+/DVpkVxLtYh2L0
-         +8xm4pENgjB9FsBAzovYKtPGsqJ12qIWyqTDbNG1UzEi3p0HxI8LOkljXmyJS0KZpnIW
-         n0MsmXZS7WmmIhW+khm5r7rcttG8wrxVSMxijGPVQuq0dALms5ExS0WtTUGOe76CccAo
-         T66A==
-X-Gm-Message-State: AGi0PuZnnREerdpU+59FQFOlg4hWXehI7dfKO5TrStjXtj1d1gf+AyPt
-	PjRLfzFXjV+15mT6TGQ1xqNC+1u/kFKWU4QEXKKqe9EITjwue9wT0Bm3lj85kEYl4cz8v5qMRi5
-	Tjk2GqYKl+SeSTc6h9CJz/TqG/GeZHgJa
-X-Received: by 2002:adf:9d8d:: with SMTP id p13mr169770wre.17.1587577412865;
-        Wed, 22 Apr 2020 10:43:32 -0700 (PDT)
-X-Received: by 2002:adf:9d8d:: with SMTP id p13mr169751wre.17.1587577412671;
- Wed, 22 Apr 2020 10:43:32 -0700 (PDT)
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b="I2lys9/t";
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60118 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jRQAj-0006Yk-3h
+	for alex.bennee@linaro.org; Wed, 22 Apr 2020 20:56:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52246)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <fnuv@xilinx.com>) id 1jRQAY-0006YX-4O
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2020 20:56:48 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
+ (envelope-from <fnuv@xilinx.com>) id 1jRQAU-0008S2-CF
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2020 20:56:45 -0400
+Received: from mail-dm6nam12on2054.outbound.protection.outlook.com
+ ([40.107.243.54]:35680 helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fnuv@xilinx.com>)
+ id 1jRQAT-0008IO-Kf; Wed, 22 Apr 2020 20:56:41 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GwAUnebaGHohLvnrp2L79558qfXTNOA4eNgohPUlGR8Y2rWhMQ8f4z/bhBCEWrHOFwrOU09q1TfRuwdKi2CtpQ/xlQQhonseWFO1Po4wEL3twvVdZFJi/BGmTdW1jitNSASgVt5UwZPy8yuhude2MaRdqSqPySGK61YmYiyZRI7adfoUI1BJHvgemJsp+nCycKEql1FGcsZ3EF03DIebfLMmFJtpqEPvEj5eBk6nwW7Zfu2DLhI6AiFWmPKvx2e2J88B/FAQzIFYQjtaTPCgyLfFqwgTIVgSW+zK+s6hgaYUzaqgsw2iCFrOYMqJKSLTXLFP6x+3DNwaLBn5Az6ZVQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kmyK5s/8IPcy1wKK4nvMJDUT8raPWdKXUEsRx+4gtxA=;
+ b=WHtoMJ1XNXQHD/1eq/Cm11syrESDZzS/x5tua0wUTdCne1qj6J21ZM/32j/M91+jb6YA/5CchxB9Ii309NbrkruHdPRkMP+We2hlzp/cylVRhYIU2s8mNAdKzKpZ33fs/VPPG6Epz3BEWuLVpdd+rRiUoVFXRz0I2nIWbswbvesAkZYw44PWRF0K3VwdkQgixBwnEaTbmCoHE+tNcU5h94g1kG13L2VLaL+hAiwLKwElnpz2d6Rl0NMp3NDbO1Zh7ndF/Mmt5AL7EbddTfPH+3kOYkymkPJeNcQ6rzMqsts8BKyaaul6nY7+mxYvw6YIb/a5KtcSb+UCrZ3DuHanow==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.60.83) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
+ dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
+ not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kmyK5s/8IPcy1wKK4nvMJDUT8raPWdKXUEsRx+4gtxA=;
+ b=I2lys9/tucENdRNUZxUxmtR4K3VcxAVumh9MKtiHtRemj9y+eM2NtvnUhFYESp+aDnwkXMhGNq6AtWsaxFYj0xMr4DIHyT97TXYsPGf2Y6pHZLJbzggff1JjsII0AvAsH/7GOwFIyqHihBUtNZgpbnaJpeQTSyxEYBtZIMIT5+Y=
+Received: from MN2PR13CA0036.namprd13.prod.outlook.com (2603:10b6:208:160::49)
+ by SN6PR02MB4864.namprd02.prod.outlook.com (2603:10b6:805:98::26)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.27; Thu, 23 Apr
+ 2020 00:56:37 +0000
+Received: from BL2NAM02FT030.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:208:160:cafe::6e) by MN2PR13CA0036.outlook.office365.com
+ (2603:10b6:208:160::49) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2937.6 via Frontend
+ Transport; Thu, 23 Apr 2020 00:56:37 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
+ smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
+ header.d=none;nongnu.org; dmarc=bestguesspass action=none
+ header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+ BL2NAM02FT030.mail.protection.outlook.com (10.152.77.172) with Microsoft SMTP
+ Server id 15.20.2921.25 via Frontend Transport; Thu, 23 Apr 2020 00:56:37
+ +0000
+Received: from [149.199.38.66] (port=51747 helo=xsj-pvapsmtp01)
+ by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
+ (envelope-from <fnu.vikram@xilinx.com>)
+ id 1jRQ9L-0004JI-Da; Wed, 22 Apr 2020 17:55:31 -0700
+Received: from [127.0.0.1] (helo=localhost)
+ by xsj-pvapsmtp01 with smtp (Exim 4.63)
+ (envelope-from <fnu.vikram@xilinx.com>)
+ id 1jRQAO-0007rS-TO; Wed, 22 Apr 2020 17:56:36 -0700
+Received: from xsj-pvapsmtp01 (mailhub.xilinx.com [149.199.38.66])
+ by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id 03N0uVNu013645; 
+ Wed, 22 Apr 2020 17:56:31 -0700
+Received: from [172.19.2.115] (helo=xsjfnuv50.xilinx.com)
+ by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+ (envelope-from <fnu.vikram@xilinx.com>)
+ id 1jRQAJ-0007oW-2W; Wed, 22 Apr 2020 17:56:31 -0700
+From: Vikram Garhwal <fnu.vikram@xilinx.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 1/4] hw/net/can: Introduce Xilinx ZynqMP CAN controller
+Date: Wed, 22 Apr 2020 17:56:06 -0700
+Message-Id: <1587603369-14644-2-git-send-email-fnu.vikram@xilinx.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1587603369-14644-1-git-send-email-fnu.vikram@xilinx.com>
+References: <1587603369-14644-1-git-send-email-fnu.vikram@xilinx.com>
+X-RCIS-Action: ALLOW
+X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
+X-TM-AS-User-Approved-Sender: Yes;Yes
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:149.199.60.83; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:xsj-pvapsmtpgw01; PTR:unknown-60-83.xilinx.com; CAT:NONE;
+ SFTY:;
+ SFS:(10009020)(4636009)(396003)(136003)(39860400002)(376002)(346002)(46966005)(7696005)(4326008)(26005)(30864003)(478600001)(70586007)(336012)(9786002)(82310400002)(186003)(356005)(426003)(8936002)(2616005)(70206006)(6916009)(81156014)(36756003)(82740400003)(8676002)(6666004)(47076004)(5660300002)(2906002)(81166007)(316002)(54906003)(579004)(6606295002);
+ DIR:OUT; SFP:1101; 
 MIME-Version: 1.0
-References: <20200422124501.28015-1-peter.maydell@linaro.org> <b6dd8d4a-ec38-84c5-eb94-cf25bfa4cf4a@redhat.com>
-In-Reply-To: <b6dd8d4a-ec38-84c5-eb94-cf25bfa4cf4a@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Date: Wed, 22 Apr 2020 19:43:21 +0200
-Message-ID: <CAP+75-XS1Xo0HCEADP6ppKNbKNz6Se9n_8vWQ9OaoNDtGw0D0A@mail.gmail.com>
-Subject: Re: [PATCH for-5.0?] target/arm: Fix ID_MMFR4 value on AArch64 'max' CPU
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>
-Cc: Laurent Desnogues <laurent.desnogues@gmail.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: kvwOlKiDyr8b
+Content-Type: text/plain
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 177aaad5-2ce2-4f7b-ac09-08d7e7212d21
+X-MS-TrafficTypeDiagnostic: SN6PR02MB4864:
+X-Microsoft-Antispam-PRVS: <SN6PR02MB48647BC5013FF1763AA9D379BCD30@SN6PR02MB4864.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:2449;
+X-Forefront-PRVS: 03827AF76E
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 5TymlBBoPjB2/Ov6vDVeiwpCeOYgOCQh14Zqk2JsnfVM27CLk9bFsDMQcmX0bupHdj8qpQO18S/6Wbh+DrRTHAcfVx4K2vPwRp+6kY3MAVzrJZKwjYNsAw8Mnjmv8K9fiBxOCFc5uTDHt9ar+XS37uy0+yuxXPfL786onbn1gE/dOADGJCS7t2E/RCm6tqF/xzr6iH+CcbesvFmC6utRGiw1oFdufzISi9I+Na21C9lcimB/gMeDFpC/0IHfzbQWq2e/c/UhYITx4JkO35Y8twDx+CAp15wqRGPJ11cJ5CGF+VOblTyCe/CkMZ36RHwNGdjV5s0jRPoN4WWOt2FsDaPIZodkCyBveGPtvVqPXW5BMiZPbnDHzVcL9YE/99rNrgemoYEgNN36om2kah/dEOUdWVwG44Ztrr5u+nVQZqDEFyB0cUA0NotzgqSL2wzRiBq0eIg4Po86T5A2BpCZ0ekJ4FB1hMJBg+rZCPkcE6t5I0Gp8Az3o3LZYklEgbeH6l9YCpcgGfIEG9MFr8ptnNBOsUh5jvgmybkEjRqJOIU=
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Apr 2020 00:56:37.3243 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 177aaad5-2ce2-4f7b-ac09-08d7e7212d21
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
+ Helo=[xsj-pvapsmtpgw01]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR02MB4864
+Received-SPF: pass client-ip=40.107.243.54; envelope-from=fnuv@xilinx.com;
+ helo=NAM12-DM6-obe.outbound.protection.outlook.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/22 20:56:39
+X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
+X-Received-From: 40.107.243.54
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Vikram Garhwal <fnu.vikram@xilinx.com>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "open list:Xilinx ZynqMP" <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YaVqDa4Rwn5+
 
-On Wed, Apr 22, 2020 at 7:41 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> On 4/22/20 2:45 PM, Peter Maydell wrote:
-> > In commit 41a4bf1feab098da4cd the added code to set the CNP
-> > field in ID_MMFR4 for the AArch64 'max' CPU had a typo
-> > where it used the wrong variable name, resulting in ID_MMFR4
-> > fields AC2, XNX and LSM being wrong. Fix the typo.
-> >
-> > Fixes: 41a4bf1feab098da4cd
-> > Reported-by: Laurent Desnogues <laurent.desnogues@gmail.com>
->
-> Nice testing/catch Laurent!
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> > maybe 5.0 just because it's so trivial. I dunno...
+XlnxCAN is developed based on SocketCAN, QEMU CAN bus implementation.
+Bus connection and socketCAN connection for each CAN module can be set
+through command lines.
 
-BTW FWIW LGTM...
+Signed-off-by: Vikram Garhwal <fnu.vikram@xilinx.com>
+---
+ hw/net/can/Makefile.objs         |    1 +
+ hw/net/can/xlnx-zynqmp-can.c     | 1113 ++++++++++++++++++++++++++++++++++++++
+ include/hw/net/xlnx-zynqmp-can.h |   76 +++
+ 3 files changed, 1190 insertions(+)
+ create mode 100644 hw/net/can/xlnx-zynqmp-can.c
+ create mode 100644 include/hw/net/xlnx-zynqmp-can.h
 
-> >
-> > There's also an error where we use the uint32_t u variable
-> > to update the 64-bit ID_AA64DFR0 register, but that's harmless
-> > because as it happens the top 32 bits of that register are
-> > all zeroes anyway, so we can just fix that in 5.1.
-> >
-> >   target/arm/cpu64.c | 2 +-
-> >   1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> > index 62d36f9e8d3..95d0c8c101a 100644
-> > --- a/target/arm/cpu64.c
-> > +++ b/target/arm/cpu64.c
-> > @@ -705,7 +705,7 @@ static void aarch64_max_initfn(Object *obj)
-> >           u =3D cpu->isar.id_mmfr4;
-> >           u =3D FIELD_DP32(u, ID_MMFR4, HPDS, 1); /* AA32HPD */
-> >           u =3D FIELD_DP32(u, ID_MMFR4, AC2, 1); /* ACTLR2, HACTLR2 */
-> > -        u =3D FIELD_DP32(t, ID_MMFR4, CNP, 1); /* TTCNP */
-> > +        u =3D FIELD_DP32(u, ID_MMFR4, CNP, 1); /* TTCNP */
-> >           cpu->isar.id_mmfr4 =3D u;
-> >
-> >           u =3D cpu->isar.id_aa64dfr0;
-> >
+diff --git a/hw/net/can/Makefile.objs b/hw/net/can/Makefile.objs
+index 9f0c4ee..0fe87dd 100644
+--- a/hw/net/can/Makefile.objs
++++ b/hw/net/can/Makefile.objs
+@@ -2,3 +2,4 @@ common-obj-$(CONFIG_CAN_SJA1000) += can_sja1000.o
+ common-obj-$(CONFIG_CAN_PCI) += can_kvaser_pci.o
+ common-obj-$(CONFIG_CAN_PCI) += can_pcm3680_pci.o
+ common-obj-$(CONFIG_CAN_PCI) += can_mioe3680_pci.o
++common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-can.o
+diff --git a/hw/net/can/xlnx-zynqmp-can.c b/hw/net/can/xlnx-zynqmp-can.c
+new file mode 100644
+index 0000000..31799c0
+--- /dev/null
++++ b/hw/net/can/xlnx-zynqmp-can.c
+@@ -0,0 +1,1113 @@
++/*
++ * QEMU model of the Xilinx CAN device.
++ *
++ * Copyright (c) 2020 Xilinx Inc.
++ *
++ * Written-by: Vikram Garhwal<fnu.vikram@xilinx.com>
++ *
++ * Based on QEMU CAN Device emulation implemented by Jin Yang, Deniz Eren and
++ * Pavel Pisa
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/sysbus.h"
++#include "hw/register.h"
++#include "hw/irq.h"
++#include "qapi/error.h"
++#include "qemu/bitops.h"
++#include "qemu/log.h"
++#include "qemu/cutils.h"
++#include "sysemu/sysemu.h"
++#include "migration/vmstate.h"
++#include "hw/qdev-properties.h"
++#include "net/can_emu.h"
++#include "net/can_host.h"
++#include "qemu/event_notifier.h"
++#include "qom/object_interfaces.h"
++#include "hw/net/xlnx-zynqmp-can.h"
++
++#ifndef XLNX_ZYNQMP_CAN_ERR_DEBUG
++#define XLNX_ZYNQMP_CAN_ERR_DEBUG 0
++#endif
++
++#define DB_PRINT(...) do { \
++    if (XLNX_ZYNQMP_CAN_ERR_DEBUG) { \
++        qemu_log(__VA_ARGS__); \
++    } \
++} while (0)
++
++#define MAX_DLC            8
++#undef ERROR
++
++REG32(SOFTWARE_RESET_REGISTER, 0x0)
++    FIELD(SOFTWARE_RESET_REGISTER, CEN, 1, 1)
++    FIELD(SOFTWARE_RESET_REGISTER, SRST, 0, 1)
++REG32(MODE_SELECT_REGISTER, 0x4)
++    FIELD(MODE_SELECT_REGISTER, SNOOP, 2, 1)
++    FIELD(MODE_SELECT_REGISTER, LBACK, 1, 1)
++    FIELD(MODE_SELECT_REGISTER, SLEEP, 0, 1)
++REG32(ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER, 0x8)
++    FIELD(ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER, BRP, 0, 8)
++REG32(ARBITRATION_PHASE_BIT_TIMING_REGISTER, 0xc)
++    FIELD(ARBITRATION_PHASE_BIT_TIMING_REGISTER, SJW, 7, 2)
++    FIELD(ARBITRATION_PHASE_BIT_TIMING_REGISTER, TS2, 4, 3)
++    FIELD(ARBITRATION_PHASE_BIT_TIMING_REGISTER, TS1, 0, 4)
++REG32(ERROR_COUNTER_REGISTER, 0x10)
++    FIELD(ERROR_COUNTER_REGISTER, REC, 8, 8)
++    FIELD(ERROR_COUNTER_REGISTER, TEC, 0, 8)
++REG32(ERROR_STATUS_REGISTER, 0x14)
++    FIELD(ERROR_STATUS_REGISTER, ACKER, 4, 1)
++    FIELD(ERROR_STATUS_REGISTER, BERR, 3, 1)
++    FIELD(ERROR_STATUS_REGISTER, STER, 2, 1)
++    FIELD(ERROR_STATUS_REGISTER, FMER, 1, 1)
++    FIELD(ERROR_STATUS_REGISTER, CRCER, 0, 1)
++REG32(STATUS_REGISTER, 0x18)
++    FIELD(STATUS_REGISTER, SNOOP, 12, 1)
++    FIELD(STATUS_REGISTER, ACFBSY, 11, 1)
++    FIELD(STATUS_REGISTER, TXFLL, 10, 1)
++    FIELD(STATUS_REGISTER, TXBFLL, 9, 1)
++    FIELD(STATUS_REGISTER, ESTAT, 7, 2)
++    FIELD(STATUS_REGISTER, ERRWRN, 6, 1)
++    FIELD(STATUS_REGISTER, BBSY, 5, 1)
++    FIELD(STATUS_REGISTER, BIDLE, 4, 1)
++    FIELD(STATUS_REGISTER, NORMAL, 3, 1)
++    FIELD(STATUS_REGISTER, SLEEP, 2, 1)
++    FIELD(STATUS_REGISTER, LBACK, 1, 1)
++    FIELD(STATUS_REGISTER, CONFIG, 0, 1)
++REG32(INTERRUPT_STATUS_REGISTER, 0x1c)
++    FIELD(INTERRUPT_STATUS_REGISTER, TXFEMP, 14, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, TXFWMEMP, 13, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, RXFWMFLL, 12, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, WKUP, 11, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, SLP, 10, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, BSOFF, 9, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, ERROR, 8, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, RXNEMP, 7, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, RXOFLW, 6, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, RXUFLW, 5, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, RXOK, 4, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, TXBFLL, 3, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, TXFLL, 2, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, TXOK, 1, 1)
++    FIELD(INTERRUPT_STATUS_REGISTER, ARBLST, 0, 1)
++REG32(INTERRUPT_ENABLE_REGISTER, 0x20)
++    FIELD(INTERRUPT_ENABLE_REGISTER, ETXFEMP, 14, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, ETXFWMEMP, 13, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, ERXFWMFLL, 12, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, EWKUP, 11, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, ESLP, 10, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, EBSOFF, 9, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, EERROR, 8, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, ERXNEMP, 7, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, ERXOFLW, 6, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, ERXUFLW, 5, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, ERXOK, 4, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, ETXBFLL, 3, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, ETXFLL, 2, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, ETXOK, 1, 1)
++    FIELD(INTERRUPT_ENABLE_REGISTER, EARBLST, 0, 1)
++REG32(INTERRUPT_CLEAR_REGISTER, 0x24)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CTXFEMP, 14, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CTXFWMEMP, 13, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CRXFWMFLL, 12, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CWKUP, 11, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CSLP, 10, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CBSOFF, 9, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CERROR, 8, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CRXNEMP, 7, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CRXOFLW, 6, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CRXUFLW, 5, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CRXOK, 4, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CTXBFLL, 3, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CTXFLL, 2, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CTXOK, 1, 1)
++    FIELD(INTERRUPT_CLEAR_REGISTER, CARBLST, 0, 1)
++REG32(TIMESTAMP_REGISTER, 0x28)
++    FIELD(TIMESTAMP_REGISTER, CTS, 0, 1)
++REG32(WIR, 0x2c)
++    FIELD(WIR, EW, 8, 8)
++    FIELD(WIR, FW, 0, 8)
++REG32(TXFIFO_ID, 0x30)
++    FIELD(TXFIFO_ID, IDH, 21, 11)
++    FIELD(TXFIFO_ID, SRRRTR, 20, 1)
++    FIELD(TXFIFO_ID, IDE, 19, 1)
++    FIELD(TXFIFO_ID, IDL, 1, 18)
++    FIELD(TXFIFO_ID, RTR, 0, 1)
++REG32(TXFIFO_DLC, 0x34)
++    FIELD(TXFIFO_DLC, DLC, 28, 4)
++REG32(TXFIFO_DATA1, 0x38)
++    FIELD(TXFIFO_DATA1, DB0, 24, 8)
++    FIELD(TXFIFO_DATA1, DB1, 16, 8)
++    FIELD(TXFIFO_DATA1, DB2, 8, 8)
++    FIELD(TXFIFO_DATA1, DB3, 0, 8)
++REG32(TXFIFO_DATA2, 0x3c)
++    FIELD(TXFIFO_DATA2, DB4, 24, 8)
++    FIELD(TXFIFO_DATA2, DB5, 16, 8)
++    FIELD(TXFIFO_DATA2, DB6, 8, 8)
++    FIELD(TXFIFO_DATA2, DB7, 0, 8)
++REG32(TXHPB_ID, 0x40)
++    FIELD(TXHPB_ID, IDH, 21, 11)
++    FIELD(TXHPB_ID, SRRRTR, 20, 1)
++    FIELD(TXHPB_ID, IDE, 19, 1)
++    FIELD(TXHPB_ID, IDL, 1, 18)
++    FIELD(TXHPB_ID, RTR, 0, 1)
++REG32(TXHPB_DLC, 0x44)
++    FIELD(TXHPB_DLC, DLC, 28, 4)
++REG32(TXHPB_DATA1, 0x48)
++    FIELD(TXHPB_DATA1, DB0, 24, 8)
++    FIELD(TXHPB_DATA1, DB1, 16, 8)
++    FIELD(TXHPB_DATA1, DB2, 8, 8)
++    FIELD(TXHPB_DATA1, DB3, 0, 8)
++REG32(TXHPB_DATA2, 0x4c)
++    FIELD(TXHPB_DATA2, DB4, 24, 8)
++    FIELD(TXHPB_DATA2, DB5, 16, 8)
++    FIELD(TXHPB_DATA2, DB6, 8, 8)
++    FIELD(TXHPB_DATA2, DB7, 0, 8)
++REG32(RXFIFO_ID, 0x50)
++    FIELD(RXFIFO_ID, IDH, 21, 11)
++    FIELD(RXFIFO_ID, SRRRTR, 20, 1)
++    FIELD(RXFIFO_ID, IDE, 19, 1)
++    FIELD(RXFIFO_ID, IDL, 1, 18)
++    FIELD(RXFIFO_ID, RTR, 0, 1)
++REG32(RXFIFO_DLC, 0x54)
++    FIELD(RXFIFO_DLC, DLC, 28, 4)
++    FIELD(RXFIFO_DLC, RXT, 0, 16)
++REG32(RXFIFO_DATA1, 0x58)
++    FIELD(RXFIFO_DATA1, DB0, 24, 8)
++    FIELD(RXFIFO_DATA1, DB1, 16, 8)
++    FIELD(RXFIFO_DATA1, DB2, 8, 8)
++    FIELD(RXFIFO_DATA1, DB3, 0, 8)
++REG32(RXFIFO_DATA2, 0x5c)
++    FIELD(RXFIFO_DATA2, DB4, 24, 8)
++    FIELD(RXFIFO_DATA2, DB5, 16, 8)
++    FIELD(RXFIFO_DATA2, DB6, 8, 8)
++    FIELD(RXFIFO_DATA2, DB7, 0, 8)
++REG32(AFR, 0x60)
++    FIELD(AFR, UAF4, 3, 1)
++    FIELD(AFR, UAF3, 2, 1)
++    FIELD(AFR, UAF2, 1, 1)
++    FIELD(AFR, UAF1, 0, 1)
++REG32(AFMR1, 0x64)
++    FIELD(AFMR1, AMIDH, 21, 11)
++    FIELD(AFMR1, AMSRR, 20, 1)
++    FIELD(AFMR1, AMIDE, 19, 1)
++    FIELD(AFMR1, AMIDL, 1, 18)
++    FIELD(AFMR1, AMRTR, 0, 1)
++REG32(AFIR1, 0x68)
++    FIELD(AFIR1, AIIDH, 21, 11)
++    FIELD(AFIR1, AISRR, 20, 1)
++    FIELD(AFIR1, AIIDE, 19, 1)
++    FIELD(AFIR1, AIIDL, 1, 18)
++    FIELD(AFIR1, AIRTR, 0, 1)
++REG32(AFMR2, 0x6c)
++    FIELD(AFMR2, AMIDH, 21, 11)
++    FIELD(AFMR2, AMSRR, 20, 1)
++    FIELD(AFMR2, AMIDE, 19, 1)
++    FIELD(AFMR2, AMIDL, 1, 18)
++    FIELD(AFMR2, AMRTR, 0, 1)
++REG32(AFIR2, 0x70)
++    FIELD(AFIR2, AIIDH, 21, 11)
++    FIELD(AFIR2, AISRR, 20, 1)
++    FIELD(AFIR2, AIIDE, 19, 1)
++    FIELD(AFIR2, AIIDL, 1, 18)
++    FIELD(AFIR2, AIRTR, 0, 1)
++REG32(AFMR3, 0x74)
++    FIELD(AFMR3, AMIDH, 21, 11)
++    FIELD(AFMR3, AMSRR, 20, 1)
++    FIELD(AFMR3, AMIDE, 19, 1)
++    FIELD(AFMR3, AMIDL, 1, 18)
++    FIELD(AFMR3, AMRTR, 0, 1)
++REG32(AFIR3, 0x78)
++    FIELD(AFIR3, AIIDH, 21, 11)
++    FIELD(AFIR3, AISRR, 20, 1)
++    FIELD(AFIR3, AIIDE, 19, 1)
++    FIELD(AFIR3, AIIDL, 1, 18)
++    FIELD(AFIR3, AIRTR, 0, 1)
++REG32(AFMR4, 0x7c)
++    FIELD(AFMR4, AMIDH, 21, 11)
++    FIELD(AFMR4, AMSRR, 20, 1)
++    FIELD(AFMR4, AMIDE, 19, 1)
++    FIELD(AFMR4, AMIDL, 1, 18)
++    FIELD(AFMR4, AMRTR, 0, 1)
++REG32(AFIR4, 0x80)
++    FIELD(AFIR4, AIIDH, 21, 11)
++    FIELD(AFIR4, AISRR, 20, 1)
++    FIELD(AFIR4, AIIDE, 19, 1)
++    FIELD(AFIR4, AIIDL, 1, 18)
++    FIELD(AFIR4, AIRTR, 0, 1)
++
++static void can_update_irq(XlnxZynqMPCANState *s)
++{
++    unsigned int irq;
++
++    /* Watermark register interrupts. */
++    if ((fifo32_num_free(&s->tx_fifo) / CAN_FRAME_SIZE) >
++            ARRAY_FIELD_EX32(s->regs, WIR, EW)) {
++        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXFWMEMP, 1);
++    }
++
++    if ((fifo32_num_used(&s->rx_fifo) / CAN_FRAME_SIZE) >
++            ARRAY_FIELD_EX32(s->regs, WIR, FW)) {
++        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXFWMFLL, 1);
++    }
++
++    /* RX Interrupts. */
++    if (fifo32_num_used(&s->rx_fifo) >= CAN_FRAME_SIZE) {
++        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXNEMP, 1);
++    }
++
++    /* TX interrupts. */
++    if (fifo32_is_empty(&s->tx_fifo)) {
++        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXFEMP, 1);
++    }
++
++    if (fifo32_is_full(&s->tx_fifo)) {
++        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXFLL, 1);
++    }
++
++    if (fifo32_is_full(&s->txhpb_fifo)) {
++        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXBFLL, 1);
++    }
++
++    irq = s->regs[R_INTERRUPT_STATUS_REGISTER];
++    irq &= s->regs[R_INTERRUPT_ENABLE_REGISTER];
++
++    qemu_set_irq(s->irq, irq);
++}
++
++static void can_ier_post_write(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
++
++    can_update_irq(s);
++}
++
++static uint64_t can_icr_pre_write(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
++    uint32_t val = val64;
++
++    s->regs[R_INTERRUPT_STATUS_REGISTER] &= ~val;
++    can_update_irq(s);
++
++    return 0;
++}
++
++static void can_config_reset(XlnxZynqMPCANState *s)
++{
++    /* Reset all the configuration registers. */
++    register_reset(&s->reg_info[R_SOFTWARE_RESET_REGISTER]);
++    register_reset(&s->reg_info[R_MODE_SELECT_REGISTER]);
++    register_reset(
++              &s->reg_info[R_ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER]);
++    register_reset(&s->reg_info[R_ARBITRATION_PHASE_BIT_TIMING_REGISTER]);
++    register_reset(&s->reg_info[R_STATUS_REGISTER]);
++    register_reset(&s->reg_info[R_INTERRUPT_STATUS_REGISTER]);
++    register_reset(&s->reg_info[R_INTERRUPT_ENABLE_REGISTER]);
++    register_reset(&s->reg_info[R_INTERRUPT_CLEAR_REGISTER]);
++    register_reset(&s->reg_info[R_WIR]);
++}
++
++static void can_config_mode(XlnxZynqMPCANState *s)
++{
++    register_reset(&s->reg_info[R_ERROR_COUNTER_REGISTER]);
++    register_reset(&s->reg_info[R_ERROR_STATUS_REGISTER]);
++
++    /* Put XlnxZynqMPCANState in configuration mode. */
++    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, CONFIG, 1);
++    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, WKUP, 0);
++    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, SLP, 0);
++    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, BSOFF, 0);
++    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, ERROR, 0);
++    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXOFLW, 0);
++    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXOK, 0);
++    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXOK, 0);
++    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, ARBLST, 0);
++
++    can_update_irq(s);
++}
++
++static void update_status_register_mode_bits(XlnxZynqMPCANState *s)
++{
++    /* Wake up interrupt bit. */
++    bool wakeup_irq_val = (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER,
++                            SLEEP) == 0) && ARRAY_FIELD_EX32(s->regs,
++                            STATUS_REGISTER, SLEEP);
++
++    /* Sleep interrupt bit. */
++    bool sleep_irq_val = (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER,
++                            SLEEP) && (ARRAY_FIELD_EX32(s->regs,
++                            STATUS_REGISTER, SLEEP) == 0));
++
++    /* Clear previous core mode status bits. */
++    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, LBACK, 0);
++    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SLEEP, 0);
++    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SNOOP, 0);
++    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, NORMAL, 0);
++
++    /* set current mode bit and generate irqs accordingly. */
++    if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, LBACK)) {
++        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, LBACK, 1);
++    } else if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, SLEEP)) {
++        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SLEEP, 1);
++        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, SLP,
++                            sleep_irq_val);
++    } else if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, SNOOP)) {
++        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SNOOP, 1);
++    } else {
++        /*
++         * If all bits are zero then XlnxZynqMPCANState is set in normal mode.
++         */
++        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, NORMAL, 1);
++        /* Set wakeup interrupt bit. */
++        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, WKUP,
++                            wakeup_irq_val);
++    }
++
++    can_update_irq(s);
++}
++
++static void can_exit_sleep_mode(XlnxZynqMPCANState *s)
++{
++    ARRAY_FIELD_DP32(s->regs, MODE_SELECT_REGISTER, SLEEP, 0);
++    update_status_register_mode_bits(s);
++}
++
++static void generate_frame(qemu_can_frame *frame, uint32_t *data)
++{
++    frame->can_id = data[0];
++    frame->can_dlc = FIELD_EX32(data[1], TXFIFO_DLC, DLC);
++
++    frame->data[0] = FIELD_EX32(data[2], TXFIFO_DATA1, DB3);
++    frame->data[1] = FIELD_EX32(data[2], TXFIFO_DATA1, DB2);
++    frame->data[2] = FIELD_EX32(data[2], TXFIFO_DATA1, DB1);
++    frame->data[3] = FIELD_EX32(data[2], TXFIFO_DATA1, DB0);
++
++    frame->data[4] = FIELD_EX32(data[3], TXFIFO_DATA2, DB7);
++    frame->data[5] = FIELD_EX32(data[3], TXFIFO_DATA2, DB6);
++    frame->data[6] = FIELD_EX32(data[3], TXFIFO_DATA2, DB5);
++    frame->data[7] = FIELD_EX32(data[3], TXFIFO_DATA2, DB4);
++}
++
++static bool tx_ready_check(XlnxZynqMPCANState *s)
++{
++    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, SRST)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "Attempting to transfer data while"
++                      " XlnxZynqMPCANState%d is in reset mode\n",
++                      s->cfg.ctrl_idx);
++        return false;
++    }
++
++    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN) == 0) {
++        qemu_log_mask(LOG_GUEST_ERROR, "Attempting to transfer data while"
++                      " XlnxZynqMPCANState%d is in configuration mode.Reset the"
++                      " core so operations can start fresh\n",
++                      s->cfg.ctrl_idx);
++        return false;
++    }
++
++    if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SNOOP)) {
++        qemu_log_mask(LOG_GUEST_ERROR, "Attempting to transfer data while"
++                        " XlnxZynqMPCANState%d is in SNOOP MODE\n",
++                         s->cfg.ctrl_idx);
++        return false;
++    }
++
++    return true;
++}
++
++static void transfer_fifo(XlnxZynqMPCANState *s, Fifo32 *fifo)
++{
++    qemu_can_frame frame;
++    uint32_t data[CAN_FRAME_SIZE];
++    int i;
++    bool can_tx = tx_ready_check(s);
++
++    if (can_tx) {
++        while (!fifo32_is_empty(fifo)) {
++            for (i = 0; i < CAN_FRAME_SIZE; i++) {
++                data[i] = fifo32_pop(fifo);
++            }
++
++            if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, LBACK)) {
++                /*
++                 * Controller is in loopback. In Loopback mode, the CAN core
++                 * transmits a recessive bitstream on to the XlnxZynqMPCANState
++                 * Bus. Any message transmitted is looped back to the RX line
++                 * and acknowledged. The XlnxZynqMPCANState core receives any
++                 * message that it transmits.
++                 */
++                if (fifo32_is_full(&s->rx_fifo)) {
++                    DB_PRINT("Loopback: RX FIFO is full."
++                             "TX FIFO will be flushed.\n");
++
++                    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER,
++                                      RXOFLW, 1);
++                } else {
++                    for (i = 0; i < CAN_FRAME_SIZE; i++) {
++                        fifo32_push(&s->rx_fifo, data[i]);
++                    }
++
++                    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER,
++                                      RXOK, 1);
++                }
++            } else {
++                /* Normal mode Tx. */
++                generate_frame(&frame, data);
++
++                can_bus_client_send(&s->bus_client, &frame, 1);
++            }
++        }
++
++        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXOK, 1);
++        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, TXBFLL, 0);
++
++        if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SLEEP)) {
++            can_exit_sleep_mode(s);
++        }
++    } else {
++        DB_PRINT("CAN is not enabled for data transfer.\n");
++    }
++
++    can_update_irq(s);
++}
++
++static uint64_t can_srr_pre_write(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
++    uint32_t val = val64;
++
++    ARRAY_FIELD_DP32(s->regs, SOFTWARE_RESET_REGISTER, CEN,
++                        FIELD_EX32(val, SOFTWARE_RESET_REGISTER, CEN));
++
++    if (FIELD_EX32(val, SOFTWARE_RESET_REGISTER, SRST)) {
++        DB_PRINT("Resetting XlnxZynqMPCANState%d\n", s->cfg.ctrl_idx);
++
++        /* First, core will do software reset then will enter in config mode. */
++        can_config_reset(s);
++    }
++
++    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN) == 0) {
++        can_config_mode(s);
++
++    } else {
++        /*
++         * Leave config mode. Now XlnxZynqMPCANState core will enter Normal,
++         * Sleep, snoop or Loopback mode depending upon LBACK, SLEEP, SNOOP
++         * register states.
++         */
++        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, CONFIG, 0);
++
++        /* XlnxZynqMP CAN is out of config mode. it will send pending data. */
++        transfer_fifo(s, &s->txhpb_fifo);
++        transfer_fifo(s, &s->tx_fifo);
++    }
++
++    update_status_register_mode_bits(s);
++
++    return s->regs[R_SOFTWARE_RESET_REGISTER];
++}
++
++static uint64_t can_msr_pre_write(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
++    uint32_t val = val64;
++    uint8_t multi_mode = 0;
++
++    /*
++     * Multiple mode set check. This is done to make sure user doesn't set
++     * multiple modes.
++     */
++    multi_mode = FIELD_EX32(val, MODE_SELECT_REGISTER, LBACK) +
++                 FIELD_EX32(val, MODE_SELECT_REGISTER, SLEEP) +
++                 FIELD_EX32(val, MODE_SELECT_REGISTER, SNOOP);
++
++    if (multi_mode > 1) {
++        qemu_log_mask(LOG_GUEST_ERROR, "Attempting to configure several modes "
++                     "simultaneously. One mode will be selected according to "
++                     "their priority: LBACK > SLEEP > SNOOP.\n ");
++    }
++
++    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN) == 0) {
++        /* We are in configuration mode, any mode can be selected. */
++        s->regs[R_MODE_SELECT_REGISTER] = val;
++    } else {
++        bool sleep_mode_bit = FIELD_EX32(val, MODE_SELECT_REGISTER, SLEEP);
++
++        ARRAY_FIELD_DP32(s->regs, MODE_SELECT_REGISTER, SLEEP, sleep_mode_bit);
++
++        if (FIELD_EX32(val, MODE_SELECT_REGISTER, LBACK)) {
++            qemu_log_mask(LOG_GUEST_ERROR, "Attempting to set LBACK mode "
++                          "without setting CEN bit as 0\n");
++        } else if (FIELD_EX32(val, MODE_SELECT_REGISTER, SNOOP)) {
++            qemu_log_mask(LOG_GUEST_ERROR, "Attempting to set SNOOP mode "
++                              "without setting CEN bit as 0\n");
++        }
++
++        update_status_register_mode_bits(s);
++    }
++    return s->regs[R_MODE_SELECT_REGISTER];
++}
++
++static uint64_t can_brpr_pre_write(RegisterInfo  *reg, uint64_t val64)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
++    uint32_t val = val64;
++
++    /* Only allow writes when in config mode. */
++    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN)) {
++        val = s->regs[R_ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER];
++    }
++
++    return val;
++}
++
++static uint64_t can_btr_pre_write(RegisterInfo  *reg, uint64_t val64)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
++    uint32_t val = val64;
++
++    /* Only allow writes when in config mode. */
++    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN)) {
++        val = s->regs[R_ARBITRATION_PHASE_BIT_TIMING_REGISTER];
++    }
++
++    return val;
++}
++
++static uint64_t can_tcr_pre_write(RegisterInfo  *reg, uint64_t val64)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
++    uint32_t val = val64;
++
++    if (FIELD_EX32(val, TIMESTAMP_REGISTER, CTS)) {
++        s->rx_time_stamp = 0;
++    }
++
++    return 0;
++}
++
++static void update_rx_fifo(XlnxZynqMPCANState *s, const qemu_can_frame *frame)
++{
++    uint32_t filter_pass = 0;
++
++    /* If no filter is enabled. Message will be stored in FIFO. */
++    if (!((ARRAY_FIELD_EX32(s->regs, AFR, UAF1)) |
++       (ARRAY_FIELD_EX32(s->regs, AFR, UAF2)) |
++       (ARRAY_FIELD_EX32(s->regs, AFR, UAF3)) |
++       (ARRAY_FIELD_EX32(s->regs, AFR, UAF4)))) {
++        filter_pass = 1;
++    }
++
++    /*
++     * Messages that pass any of the acceptance filters will be stored in
++     * the RX FIFO.
++     */
++    if (ARRAY_FIELD_EX32(s->regs, AFR, UAF1)) {
++        uint32_t id_masked = s->regs[R_AFMR1] & frame->can_id;
++        uint32_t filter_id_masked = s->regs[R_AFMR1] & s->regs[R_AFIR1];
++
++        if (filter_id_masked == id_masked) {
++            filter_pass = 1;
++        }
++    }
++
++    if (ARRAY_FIELD_EX32(s->regs, AFR, UAF2)) {
++        uint32_t id_masked = s->regs[R_AFMR2] & frame->can_id;
++        uint32_t filter_id_masked = s->regs[R_AFMR2] & s->regs[R_AFIR2];
++
++        if (filter_id_masked == id_masked) {
++            filter_pass = 1;
++        }
++    }
++
++    if (ARRAY_FIELD_EX32(s->regs, AFR, UAF3)) {
++        uint32_t id_masked = s->regs[R_AFMR3] & frame->can_id;
++        uint32_t filter_id_masked = s->regs[R_AFMR3] & s->regs[R_AFIR3];
++
++        if (filter_id_masked == id_masked) {
++            filter_pass = 1;
++        }
++    }
++
++    if (ARRAY_FIELD_EX32(s->regs, AFR, UAF4)) {
++        uint32_t id_masked = s->regs[R_AFMR4] & frame->can_id;
++        uint32_t filter_id_masked = s->regs[R_AFMR4] & s->regs[R_AFIR4];
++
++        if (filter_id_masked == id_masked) {
++            filter_pass = 1;
++        }
++    }
++
++    /* Store the message in fifo if it passed through any of the filters. */
++    if (filter_pass && frame->can_dlc <= MAX_DLC) {
++
++        if (fifo32_is_full(&s->rx_fifo)) {
++            DB_PRINT("RX FIFO is full.\n");
++
++            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXOFLW, 1);
++        } else {
++            s->rx_time_stamp += 1;
++
++            fifo32_push(&s->rx_fifo, frame->can_id);
++
++            fifo32_push(&s->rx_fifo, (deposit32(0, R_RXFIFO_DLC_DLC_SHIFT,
++                                                R_RXFIFO_DLC_DLC_LENGTH,
++                                                frame->can_dlc) |
++                                      deposit32(0, R_RXFIFO_DLC_RXT_SHIFT,
++                                                R_RXFIFO_DLC_RXT_LENGTH,
++                                                s->rx_time_stamp)));
++
++            /* First 32 bit of the data. */
++            fifo32_push(&s->rx_fifo, (deposit32(0, R_TXFIFO_DATA1_DB3_SHIFT,
++                                        R_TXFIFO_DATA1_DB3_LENGTH,
++                                        frame->data[0]) |
++                                      deposit32(0, R_TXFIFO_DATA1_DB2_SHIFT,
++                                        R_TXFIFO_DATA1_DB2_LENGTH,
++                                        frame->data[1]) |
++                                      deposit32(0, R_TXFIFO_DATA1_DB1_SHIFT,
++                                        R_TXFIFO_DATA1_DB1_LENGTH,
++                                        frame->data[2]) |
++                                      deposit32(0, R_TXFIFO_DATA1_DB0_SHIFT,
++                                        R_TXFIFO_DATA1_DB0_LENGTH,
++                                        frame->data[3])));
++            /* Last 32 bit of the data. */
++            fifo32_push(&s->rx_fifo, (deposit32(0, R_TXFIFO_DATA2_DB7_SHIFT,
++                                         R_TXFIFO_DATA2_DB7_LENGTH,
++                                         frame->data[4]) |
++                                      deposit32(0, R_TXFIFO_DATA2_DB6_SHIFT,
++                                         R_TXFIFO_DATA2_DB6_LENGTH,
++                                         frame->data[5]) |
++                                      deposit32(0, R_TXFIFO_DATA2_DB5_SHIFT,
++                                         R_TXFIFO_DATA2_DB5_LENGTH,
++                                         frame->data[6]) |
++                                      deposit32(0, R_TXFIFO_DATA2_DB4_SHIFT,
++                                          R_TXFIFO_DATA2_DB4_LENGTH,
++                                          frame->data[7])));
++
++            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXOK, 1);
++        }
++
++        can_update_irq(s);
++
++    } else {
++        DB_PRINT("Message didn't pass through any filter"
++                  "or dlc is not in range\n");
++    }
++}
++
++static uint64_t can_rxfifo_pre_read(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
++    uint32_t r = 0;
++
++    if (!fifo32_is_empty(&s->rx_fifo)) {
++        r = fifo32_pop(&s->rx_fifo);
++    } else {
++        DB_PRINT("No message in RXFIFO\n");
++
++        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXUFLW, 1);
++    }
++
++    can_update_irq(s);
++    return r;
++}
++
++static void can_filter_enable_post_write(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
++
++    if (ARRAY_FIELD_EX32(s->regs, AFR, UAF1) &&
++        ARRAY_FIELD_EX32(s->regs, AFR, UAF2) &&
++        ARRAY_FIELD_EX32(s->regs, AFR, UAF3) &&
++        ARRAY_FIELD_EX32(s->regs, AFR, UAF4)) {
++
++        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, ACFBSY, 1);
++
++    } else {
++        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, ACFBSY, 0);
++    }
++}
++
++static uint64_t can_filter_mask_pre_write(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
++    uint32_t reg_idx = (reg->access->addr) / 4;
++    uint32_t val = val64;
++    uint32_t filter_number = (reg_idx - R_AFMR1) / 2;
++
++    /* modify an acceptance filter, the corresponding UAF bit should be '0.' */
++    if (!(s->regs[R_AFR] & (1 << filter_number))) {
++        s->regs[reg_idx] = val;
++    } else {
++        DB_PRINT("Acceptance filter %d mask is not set as it's corresponding "
++                 "UAF bit is not set to 0\n", filter_number + 1);
++    }
++
++    return s->regs[reg_idx];
++}
++
++static uint64_t can_filter_id_pre_write(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
++    uint32_t reg_idx = (reg->access->addr) / 4;
++    uint32_t val = val64;
++    uint32_t filter_number = (reg_idx - R_AFIR1) / 2;
++
++    if (!(s->regs[R_AFR] & (1 << filter_number))) {
++        s->regs[reg_idx] = val;
++    } else {
++        DB_PRINT("Acceptance filter %d id is not set as it's corresponding "
++                 "UAF bit is not set to 0\n", filter_number + 1);
++    }
++
++    return s->regs[reg_idx];
++}
++
++static void can_tx_post_write(RegisterInfo *reg, uint64_t val64)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
++    uint32_t val = val64;
++
++    bool is_txhpb = reg->access->addr > A_TXFIFO_DATA2;
++
++    bool initiate_transfer = (reg->access->addr == A_TXFIFO_DATA2) ||
++                             (reg->access->addr == A_TXHPB_DATA2);
++
++    Fifo32 *f = is_txhpb ? &s->txhpb_fifo : &s->tx_fifo;
++
++    DB_PRINT("TX FIFO write for CAN%d\n", s->cfg.ctrl_idx);
++
++    if (!fifo32_is_full(f)) {
++        fifo32_push(f, val);
++    } else {
++        DB_PRINT("TX FIFO is full.\n");
++    }
++
++    /* Initiate the message send if TX register is written. */
++    if (initiate_transfer &&
++            ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN)) {
++        transfer_fifo(s, f);
++    }
++
++    can_update_irq(s);
++}
++
++static const RegisterAccessInfo can_regs_info[] = {
++    {   .name = "SOFTWARE_RESET_REGISTER",
++        .addr = A_SOFTWARE_RESET_REGISTER,
++        .rsvd = 0xfffffffc,
++        .pre_write = can_srr_pre_write,
++    },{ .name = "MODE_SELECT_REGISTER",
++        .addr = A_MODE_SELECT_REGISTER,
++        .rsvd = 0xfffffff8,
++        .pre_write = can_msr_pre_write,
++    },{ .name = "ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER",
++        .addr = A_ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER,
++        .rsvd = 0xffffff00,
++        .pre_write = can_brpr_pre_write,
++    },{ .name = "ARBITRATION_PHASE_BIT_TIMING_REGISTER",
++        .addr = A_ARBITRATION_PHASE_BIT_TIMING_REGISTER,
++        .rsvd = 0xfffffe00,
++        .pre_write = can_btr_pre_write,
++    },{ .name = "ERROR_COUNTER_REGISTER",
++        .addr = A_ERROR_COUNTER_REGISTER,
++        .rsvd = 0xffff0000,
++        .ro = 0xffffffff,
++    },{ .name = "ERROR_STATUS_REGISTER",
++        .addr = A_ERROR_STATUS_REGISTER,
++        .rsvd = 0xffffffe0,
++        .w1c = 0x1f,
++    },{ .name = "STATUS_REGISTER",  .addr = A_STATUS_REGISTER,
++        .reset = 0x1,
++        .rsvd = 0xffffe000,
++        .ro = 0x1fff,
++    },{ .name = "INTERRUPT_STATUS_REGISTER",
++        .addr = A_INTERRUPT_STATUS_REGISTER,
++        .reset = 0x6000,
++        .rsvd = 0xffff8000,
++        .ro = 0x7fff,
++    },{ .name = "INTERRUPT_ENABLE_REGISTER",
++        .addr = A_INTERRUPT_ENABLE_REGISTER,
++        .rsvd = 0xffff8000,
++        .post_write = can_ier_post_write,
++    },{ .name = "INTERRUPT_CLEAR_REGISTER",
++        .addr = A_INTERRUPT_CLEAR_REGISTER,
++        .rsvd = 0xffff8000,
++        .pre_write = can_icr_pre_write,
++    },{ .name = "TIMESTAMP_REGISTER",
++        .addr = A_TIMESTAMP_REGISTER,
++        .rsvd = 0xfffffffe,
++        .pre_write = can_tcr_pre_write,
++    },{ .name = "WIR",  .addr = A_WIR,
++        .reset = 0x3f3f,
++        .rsvd = 0xffff0000,
++    },{ .name = "TXFIFO_ID",  .addr = A_TXFIFO_ID,
++        .post_write = can_tx_post_write,
++    },{ .name = "TXFIFO_DLC",  .addr = A_TXFIFO_DLC,
++        .rsvd = 0xfffffff,
++        .post_write = can_tx_post_write,
++    },{ .name = "TXFIFO_DATA1",  .addr = A_TXFIFO_DATA1,
++        .post_write = can_tx_post_write,
++    },{ .name = "TXFIFO_DATA2",  .addr = A_TXFIFO_DATA2,
++        .post_write = can_tx_post_write,
++    },{ .name = "TXHPB_ID",  .addr = A_TXHPB_ID,
++        .post_write = can_tx_post_write,
++    },{ .name = "TXHPB_DLC",  .addr = A_TXHPB_DLC,
++        .rsvd = 0xfffffff,
++        .post_write = can_tx_post_write,
++    },{ .name = "TXHPB_DATA1",  .addr = A_TXHPB_DATA1,
++        .post_write = can_tx_post_write,
++    },{ .name = "TXHPB_DATA2",  .addr = A_TXHPB_DATA2,
++        .post_write = can_tx_post_write,
++    },{ .name = "RXFIFO_ID",  .addr = A_RXFIFO_ID,
++        .ro = 0xffffffff,
++        .post_read = can_rxfifo_pre_read,
++    },{ .name = "RXFIFO_DLC",  .addr = A_RXFIFO_DLC,
++        .rsvd = 0xfff0000,
++        .post_read = can_rxfifo_pre_read,
++    },{ .name = "RXFIFO_DATA1",  .addr = A_RXFIFO_DATA1,
++        .post_read = can_rxfifo_pre_read,
++    },{ .name = "RXFIFO_DATA2",  .addr = A_RXFIFO_DATA2,
++        .post_read = can_rxfifo_pre_read,
++    },{ .name = "AFR",  .addr = A_AFR,
++        .rsvd = 0xfffffff0,
++        .post_write = can_filter_enable_post_write,
++    },{ .name = "AFMR1",  .addr = A_AFMR1,
++        .pre_write = can_filter_mask_pre_write,
++    },{ .name = "AFIR1",  .addr = A_AFIR1,
++        .pre_write = can_filter_id_pre_write,
++    },{ .name = "AFMR2",  .addr = A_AFMR2,
++        .pre_write = can_filter_mask_pre_write,
++    },{ .name = "AFIR2",  .addr = A_AFIR2,
++        .pre_write = can_filter_id_pre_write,
++    },{ .name = "AFMR3",  .addr = A_AFMR3,
++        .pre_write = can_filter_mask_pre_write,
++    },{ .name = "AFIR3",  .addr = A_AFIR3,
++        .pre_write = can_filter_id_pre_write,
++    },{ .name = "AFMR4",  .addr = A_AFMR4,
++        .pre_write = can_filter_mask_pre_write,
++    },{ .name = "AFIR4",  .addr = A_AFIR4,
++        .pre_write = can_filter_id_pre_write,
++    }
++};
++
++static const MemoryRegionOps can_ops = {
++    .read = register_read_memory,
++    .write = register_write_memory,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++};
++
++static void xlnx_zynqmp_can_reset(DeviceState *dev)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(dev);
++    unsigned int i;
++
++    for (i = 0; i < ARRAY_SIZE(s->reg_info); ++i) {
++        register_reset(&s->reg_info[i]);
++    }
++
++    /*
++     * Reset FIFOs when CAN model is reset. This will clear the fifo writes
++     * done by post_write which gets called from register_reset function,
++     * post_write handle will not be able to trigger tx because CAN will be
++     * disabled when software_reset_register is cleared first.
++     */
++    fifo32_reset(&s->rx_fifo);
++    fifo32_reset(&s->tx_fifo);
++    fifo32_reset(&s->txhpb_fifo);
++}
++
++static bool xlnx_zynqmp_can_can_receive(CanBusClientState *client)
++{
++    XlnxZynqMPCANState *s = container_of(client, XlnxZynqMPCANState,
++                                         bus_client);
++
++    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, SRST)) {
++        DB_PRINT("XlnxZynqMPCANState%d Controller is reset\n", s->cfg.ctrl_idx);
++        return false;
++    } else if ((ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN)) == 0) {
++        DB_PRINT("XlnxZynqMPCANState%d is disabled. Incoming messages will be"
++                 "discarded\n", s->cfg.ctrl_idx);
++        return false;
++    } else {
++        return true;
++    }
++}
++
++static ssize_t xlnx_zynqmp_can_receive(CanBusClientState *client,
++                               const qemu_can_frame *buf, size_t buf_size) {
++    XlnxZynqMPCANState *s = container_of(client, XlnxZynqMPCANState,
++                                        bus_client);
++    const qemu_can_frame *frame = buf;
++
++    DB_PRINT("Incoming data for CAN%d\n", s->cfg.ctrl_idx);
++
++    if (buf_size <= 0) {
++        DB_PRINT("junk data received on XlnxZynqMPCANState bus\n");
++        return 0;
++    }
++    if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, LBACK)) {
++        /*
++         * XlnxZynqMPCANState will not participate in normal bus communication
++         *  and does not receive any messages transmitted by other CAN nodes.
++         */
++        DB_PRINT("XlnxZynqMPCANState is in loopback mode."
++                 " It will not receive data.\n");
++
++    } else if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SNOOP)) {
++        /* Snoop Mode: Just keep the data. no response back. */
++        update_rx_fifo(s, frame);
++    } else if ((ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SLEEP))) {
++        /*
++         * XlnxZynqMPCANState is in sleep mode. Any data on bus will bring it
++         * to wake up state.
++         */
++        can_exit_sleep_mode(s);
++        update_rx_fifo(s, frame);
++    } else if ((ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SLEEP)) == 0) {
++        update_rx_fifo(s, frame);
++    } else {
++        DB_PRINT("Can't receive data as XlnxZynqMPCANState is not configured"
++                  " correctly.\n");
++    }
++
++    return 1;
++}
++
++static CanBusClientInfo can_xilinx_bus_client_info = {
++    .can_receive = xlnx_zynqmp_can_can_receive,
++    .receive = xlnx_zynqmp_can_receive,
++};
++
++static int xlnx_zynqmp_can_connect_to_bus(XlnxZynqMPCANState *s,
++                                          CanBusState *bus)
++{
++    s->bus_client.info = &can_xilinx_bus_client_info;
++
++    if (can_bus_insert_client(bus, &s->bus_client) < 0) {
++        return -1;
++    }
++    return 0;
++}
++
++static void xlnx_zynqmp_can_realize(DeviceState *dev, Error **errp)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(dev);
++
++    if (s->cfg.ctrl_idx > MAX_CAN_CTRLS) {
++        error_setg(errp, "ctrl-idx: %d exceeds max XlnxZynqMPCANState"
++                   " controller index", s->cfg.ctrl_idx);
++        return;
++    }
++
++    if (s->canbus[s->cfg.ctrl_idx]) {
++        if (xlnx_zynqmp_can_connect_to_bus(s, s->canbus[s->cfg.ctrl_idx]) < 0) {
++            error_setg(errp, "xlnx_zynqmp_can_connect_to_bus failed");
++        }
++
++    } else {
++        /* If no bus is set. */
++        DB_PRINT("Canbus%d property is not set for xlnxCAN%d\n",
++                 s->cfg.ctrl_idx, s->cfg.ctrl_idx);
++    }
++
++    /* Create RX FIFO, TXFIFO, TXHPB storage. */
++    fifo32_create(&s->rx_fifo, RXFIFO_SIZE);
++    fifo32_create(&s->tx_fifo, RXFIFO_SIZE);
++    fifo32_create(&s->txhpb_fifo, CAN_FRAME_SIZE);
++}
++
++static void xlnx_zynqmp_can_init(Object *obj)
++{
++    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++
++    RegisterInfoArray *reg_array;
++
++    memory_region_init(&s->iomem, obj, TYPE_XLNX_ZYNQMP_CAN,
++                        XLNX_ZYNQMP_CAN_R_MAX * 4);
++    reg_array = register_init_block32(DEVICE(obj), can_regs_info,
++                               ARRAY_SIZE(can_regs_info),
++                               s->reg_info, s->regs,
++                               &can_ops,
++                               XLNX_ZYNQMP_CAN_ERR_DEBUG,
++                               XLNX_ZYNQMP_CAN_R_MAX * 4);
++
++    memory_region_add_subregion(&s->iomem, 0x00, &reg_array->mem);
++    sysbus_init_mmio(sbd, &s->iomem);
++    sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
++
++    object_property_add_link(obj, "canbus0", TYPE_CAN_BUS,
++                             (Object **)&s->canbus[0],
++                             qdev_prop_allow_set_link_before_realize,
++                             0, &error_abort);
++
++    object_property_add_link(obj, "canbus1", TYPE_CAN_BUS,
++                             (Object **)&s->canbus[1],
++                             qdev_prop_allow_set_link_before_realize,
++                             0, &error_abort);
++}
++
++static const VMStateDescription vmstate_can = {
++    .name = TYPE_XLNX_ZYNQMP_CAN,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_FIFO32(rx_fifo, XlnxZynqMPCANState),
++        VMSTATE_UINT32_ARRAY(regs, XlnxZynqMPCANState, XLNX_ZYNQMP_CAN_R_MAX),
++        VMSTATE_UINT8(cfg.ctrl_idx, XlnxZynqMPCANState),
++        VMSTATE_END_OF_LIST(),
++    }
++};
++
++static Property xlnx_zynqmp_can_properties[] = {
++    DEFINE_PROP_UINT8("ctrl-idx", XlnxZynqMPCANState, cfg.ctrl_idx, 0),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void xlnx_zynqmp_can_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    dc->reset = xlnx_zynqmp_can_reset;
++    dc->realize = xlnx_zynqmp_can_realize;
++    device_class_set_props(dc, xlnx_zynqmp_can_properties);
++    dc->vmsd = &vmstate_can;
++}
++
++static const TypeInfo can_info = {
++    .name          = TYPE_XLNX_ZYNQMP_CAN,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(XlnxZynqMPCANState),
++    .class_init    = xlnx_zynqmp_can_class_init,
++    .instance_init = xlnx_zynqmp_can_init,
++};
++
++static void can_register_types(void)
++{
++    type_register_static(&can_info);
++}
++
++type_init(can_register_types)
+diff --git a/include/hw/net/xlnx-zynqmp-can.h b/include/hw/net/xlnx-zynqmp-can.h
+new file mode 100644
+index 0000000..3038542
+--- /dev/null
++++ b/include/hw/net/xlnx-zynqmp-can.h
+@@ -0,0 +1,76 @@
++/*
++ * QEMU model of the Xilinx CAN device.
++ *
++ * Copyright (c) 2020 Xilinx Inc.
++ *
++ * Written-by: Vikram Garhwal<fnu.vikram@xilinx.com>
++ *
++ * Based on QEMU CAN Device emulation implemented by Jin Yang, Deniz Eren and
++ * Pavel Pisa.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#ifndef HW_CAN_XILINX_H
++#define HW_CAN_XILINX_H
++
++#include "hw/register.h"
++#include "net/can_emu.h"
++#include "net/can_host.h"
++#include "qemu/fifo32.h"
++
++#define TYPE_XLNX_ZYNQMP_CAN "xlnx.zynqmp-can"
++
++#define XLNX_ZYNQMP_CAN(obj) \
++     OBJECT_CHECK(XlnxZynqMPCANState, (obj), TYPE_XLNX_ZYNQMP_CAN)
++
++#define MAX_CAN_CTRLS      2
++#define XLNX_ZYNQMP_CAN_R_MAX     (0x84 / 4)
++#define MAILBOX_CAPACITY   64
++
++/* Each CAN_FRAME will have 4 * 32bit size. */
++#define CAN_FRAME_SIZE     4
++#define RXFIFO_SIZE        (MAILBOX_CAPACITY * CAN_FRAME_SIZE)
++
++
++typedef struct XlnxZynqMPCANState {
++    SysBusDevice        parent_obj;
++    MemoryRegion        iomem;
++
++    qemu_irq            irq;
++
++    CanBusClientState   bus_client;
++    CanBusState         *canbus[MAX_CAN_CTRLS];
++
++    struct {
++        uint8_t         ctrl_idx;
++   } cfg;
++
++    RegisterInfo        reg_info[XLNX_ZYNQMP_CAN_R_MAX];
++    uint32_t            regs[XLNX_ZYNQMP_CAN_R_MAX];
++
++    uint16_t            rx_time_stamp;
++
++    Fifo32                rx_fifo;
++    Fifo32                tx_fifo;
++    Fifo32                txhpb_fifo;
++
++} XlnxZynqMPCANState;
++
++#endif
+-- 
+2.7.4
+

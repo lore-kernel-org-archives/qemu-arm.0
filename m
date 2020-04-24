@@ -1,67 +1,107 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp474852lfm;
-        Fri, 24 Apr 2020 04:04:35 -0700 (PDT)
-X-Google-Smtp-Source: APiQypL+zM5QspBj8OMow48JjCmbxEXq6h1XfqAXo7S98sY0VzYDnS8OY7752Czddc3/Cc71HsII
-X-Received: by 2002:ac8:6c23:: with SMTP id k3mr8941550qtu.107.1587726275415;
-        Fri, 24 Apr 2020 04:04:35 -0700 (PDT)
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp545808lfm;
+        Fri, 24 Apr 2020 05:17:01 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJoXxeJTggPupGHAChJXg3/J0Azm+ipkTJHNqK5fqxGJ9xMtLJ2N3QNqkN5CouuNJ+Zt0Ax
+X-Received: by 2002:aed:370a:: with SMTP id i10mr4337984qtb.64.1587730621785;
+        Fri, 24 Apr 2020 05:17:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587730621; cv=none;
+        d=google.com; s=arc-20160816;
+        b=OpXz6YgPmSsBzS7ggJPd2CQotgqV4ipFW7C+B5YdQQXbhcCIszmqzjUMrsbhqYPdOI
+         ZT34OO/9zWmEaUTMboICyc7Fz65hxzbhwzu+r9EH1AXfKgCR6ucXf08AmhjKkxOicibD
+         RnOLAcCib0197huJr5BXX18FuVtj3QFb+iGv3kCanc3+yb/dqmjX/SBAyx+QL74yGHVm
+         dS384vHMRZiXo+J3Eq58RyDzO2XfMtMb4BLoalrnkDaogBH83HyIc+dnwIJOWDODZFMR
+         QhZdzQ31wWxWId8mT62pvLuZI4k4fhifECDp4W2WkQpX/UWePg49Yw0RSrHoNffT8rva
+         IZ9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:user-agent:in-reply-to:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=1TzLomO8h14pAm92bgy1stZ7GqrTVnoP0QkP4QTyPCA=;
+        b=n/4ttEx7J4Ni59TUeJGu+Lzhiu4ZXZ4OuFk79OJFrJ5heZS0ZFCICnipRCktSwgcuI
+         802+6GNCdloEPOtf9St/gtCCiDdsDS4QiS2pVtWZopzKKP/rHKjHuQE4R7Xb4OC3mFSf
+         +gfu6WSR6+kbAdng94lONUZQoYIDKmYUmZ7Wo4y1ziRgjrKlsnsNqOeMN0afBDY1QJo7
+         MXwXSLKwtg2MQ3IUpe3jI5i6c7L8vZYR5pQns1LYnOqH3/guek1tfrVZsstKWZZfwfGH
+         c6J996bVq4+cZGWehvwb70jAE8emzHW8FAlsv/ZNy4Sh4V/VkK+HSsEIDLmeCfkEjEQ+
+         d1tw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OVx4GP0i;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17si3024011qtq.205.2020.04.24.04.04.35
+        by mx.google.com with ESMTPS id r63si3222362qkd.340.2020.04.24.05.17.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Apr 2020 04:04:35 -0700 (PDT)
+        Fri, 24 Apr 2020 05:17:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60270 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OVx4GP0i;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33930 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jRw8H-0004r8-N2
-	for alex.bennee@linaro.org; Fri, 24 Apr 2020 07:04:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51826)
+	id 1jRxGP-0000mf-50
+	for alex.bennee@linaro.org; Fri, 24 Apr 2020 08:17:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41832)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1jRw82-0004pN-ES
- for qemu-arm@nongnu.org; Fri, 24 Apr 2020 07:04:18 -0400
+ (envelope-from <dgilbert@redhat.com>) id 1jRxGB-0000mH-O1
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2020 08:16:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1jRw81-0007Ky-FI
- for qemu-arm@nongnu.org; Fri, 24 Apr 2020 07:04:18 -0400
-Resent-Date: Fri, 24 Apr 2020 07:04:17 -0400
-Resent-Message-Id: <E1jRw81-0007Ky-FI@eggs.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21309)
+ (envelope-from <dgilbert@redhat.com>) id 1jRxG9-0001D9-MF
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2020 08:16:47 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:28268
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jRw7y-000719-2h; Fri, 24 Apr 2020 07:04:14 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1587726227; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=ABar21ZhEyUzScyGht45sHqImaiNUfLozdQrzHPuNheH9onUk6GSoQSDhWao16xYqOqzC3TFLLph84Fu8wi58iDztODRJYLRinTXJCHUPbjaUl4JnLoKdwS0uNU4dpdxdcntoXifsXQl9PP1sLv4uhkOmQZyAdzVUa9E3cJXp6M=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1587726227;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=S8hvJXnUjF5YOqFwPXRYTnkmILQFLbBbu4DrxEydMcc=; 
- b=ZPf9rc2MSoNqPJ6m+B7LhBu+7AyAiagBzq23FkvMVlvLJS+Tueat+7gr60X8eQGwIFpWBInV95+sCS0xWaT+YzuTSzxwTA5T+lOtx19QAEqckUYvcRg773gGPUfrElzzgNnWclQX3Euu43r8WVVYs7pY7IkhBBP/QChGj4Hx8sk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1587726225084241.87362625934554;
- Fri, 24 Apr 2020 04:03:45 -0700 (PDT)
-In-Reply-To: <20200424090314.544-1-cohuck@redhat.com>
-Subject: Re: [PATCH] hw: add compat machines for 5.1
-Message-ID: <158772622327.22435.2298205273838273595@39012742ff91>
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1jRxG7-0000wp-KM
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2020 08:16:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1587730601;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=1TzLomO8h14pAm92bgy1stZ7GqrTVnoP0QkP4QTyPCA=;
+ b=OVx4GP0i+tcCJLVPQbRGvubNK3G9YsH8CDbEFrhUmBCWWzpY6HKv6+rcYrKWYE2Xu5p0N5
+ h5+t9Em/UsOzk73UQaS0iSFgOY3orgDYgX9/JDqAG13HwBIaDxT18zSMMXbvwpVuZZX9ti
+ 2gBhvfEENNUifBJfI8S74mC7poivMUM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-144-H48BV9i2PQOLzJYN1FfsYw-1; Fri, 24 Apr 2020 08:16:39 -0400
+X-MC-Unique: H48BV9i2PQOLzJYN1FfsYw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4F9BE1800D6B;
+ Fri, 24 Apr 2020 12:16:38 +0000 (UTC)
+Received: from work-vm (ovpn-113-179.ams2.redhat.com [10.36.113.179])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0537B1001281;
+ Fri, 24 Apr 2020 12:16:35 +0000 (UTC)
+Date: Fri, 24 Apr 2020 13:16:33 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Subject: Re: [PATCH v4 1/2] target/arm: kvm: Handle DABT with no valid ISS
+Message-ID: <20200424121633.GF3106@work-vm>
+References: <20200323113227.3169-1-beata.michalska@linaro.org>
+ <20200323113227.3169-2-beata.michalska@linaro.org>
+ <CAFEAcA_uWS+cVRk=BKra8AhsD+B1syVzhXeCMttSKwQDdo=j3w@mail.gmail.com>
+ <20200417131032.lcyunbjwofsn2nzz@kamzik.brq.redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: cohuck@redhat.com
-Date: Fri, 24 Apr 2020 04:03:45 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/24 06:07:02
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Received-From: 136.143.188.53
+In-Reply-To: <20200417131032.lcyunbjwofsn2nzz@kamzik.brq.redhat.com>
+User-Agent: Mutt/1.13.4 (2020-02-15)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/24 02:57:59
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -73,48 +113,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
- cohuck@redhat.com, qemu-devel@nongnu.org, pasic@linux.ibm.com,
- borntraeger@de.ibm.com, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, marcel.apfelbaum@gmail.com, david@gibson.dropbear.id.au
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Beata Michalska <beata.michalska@linaro.org>, quintela@redhat.com,
+ Christoffer Dall <Christoffer.Dall@arm.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, kvmarm@lists.cs.columbia.edu
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K/zG0l9WYw+m
+X-TUID: Ze0/W+Hb+jGf
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDQyNDA5MDMxNC41NDQt
-MS1jb2h1Y2tAcmVkaGF0LmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgdGhlIGRvY2tl
-ci1xdWlja0BjZW50b3M3IGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5nIGNvbW1h
-bmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0YWxsZWQs
-IHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBTQ1JJUFQg
-QkVHSU4gPT09CiMhL2Jpbi9iYXNoCm1ha2UgZG9ja2VyLWltYWdlLWNlbnRvczcgVj0xIE5FVFdP
-Uks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNyBTSE9XX0VOVj0xIEo9MTQg
-TkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgogIFRFU1QgICAgY2hlY2stcXRlc3Qt
-YWFyY2g2NDogdGVzdHMvcXRlc3QvdHBtLXRpcy1kZXZpY2UtdGVzdApCcm9rZW4gcGlwZQovdG1w
-L3FlbXUtdGVzdC9zcmMvdGVzdHMvcXRlc3QvbGlicXRlc3QuYzoxNzU6IGtpbGxfcWVtdSgpIGRl
-dGVjdGVkIFFFTVUgZGVhdGggZnJvbSBzaWduYWwgMTEgKFNlZ21lbnRhdGlvbiBmYXVsdCkgKGNv
-cmUgZHVtcGVkKQpFUlJPUiAtIG1pc3NpbmcgdGVzdCBwbGFuCm1ha2U6ICoqKiBbY2hlY2stcXRl
-c3QtYWFyY2g2NF0gRXJyb3IgMQptYWtlOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2Jz
-Li4uLgogIFRFU1QgICAgY2hlY2stdW5pdDogdGVzdHMvY2hlY2stcW51bQogIFRFU1QgICAgY2hl
-Y2stdW5pdDogdGVzdHMvY2hlY2stcXN0cmluZwotLS0KICAgIHJhaXNlIENhbGxlZFByb2Nlc3NF
-cnJvcihyZXRjb2RlLCBjbWQpCnN1YnByb2Nlc3MuQ2FsbGVkUHJvY2Vzc0Vycm9yOiBDb21tYW5k
-ICdbJ3N1ZG8nLCAnLW4nLCAnZG9ja2VyJywgJ3J1bicsICctLWxhYmVsJywgJ2NvbS5xZW11Lmlu
-c3RhbmNlLnV1aWQ9NzdkNWY0N2RkNjM3NDkyNTgwNTM2MjczMjllMTI1ODgnLCAnLXUnLCAnMTAw
-MycsICctLXNlY3VyaXR5LW9wdCcsICdzZWNjb21wPXVuY29uZmluZWQnLCAnLS1ybScsICctZScs
-ICdUQVJHRVRfTElTVD0nLCAnLWUnLCAnRVhUUkFfQ09ORklHVVJFX09QVFM9JywgJy1lJywgJ1Y9
-JywgJy1lJywgJ0o9MTQnLCAnLWUnLCAnREVCVUc9JywgJy1lJywgJ1NIT1dfRU5WPTEnLCAnLWUn
-LCAnQ0NBQ0hFX0RJUj0vdmFyL3RtcC9jY2FjaGUnLCAnLXYnLCAnL2hvbWUvcGF0Y2hldzIvLmNh
-Y2hlL3FlbXUtZG9ja2VyLWNjYWNoZTovdmFyL3RtcC9jY2FjaGU6eicsICctdicsICcvdmFyL3Rt
-cC9wYXRjaGV3LXRlc3Rlci10bXAtcTNxdWhjYzUvc3JjL2RvY2tlci1zcmMuMjAyMC0wNC0yNC0w
-Ni40OS4xOS45NDkxOi92YXIvdG1wL3FlbXU6eixybycsICdxZW11OmNlbnRvczcnLCAnL3Zhci90
-bXAvcWVtdS9ydW4nLCAndGVzdC1xdWljayddJyByZXR1cm5lZCBub24temVybyBleGl0IHN0YXR1
-cyAyLgpmaWx0ZXI9LS1maWx0ZXI9bGFiZWw9Y29tLnFlbXUuaW5zdGFuY2UudXVpZD03N2Q1ZjQ3
-ZGQ2Mzc0OTI1ODA1MzYyNzMyOWUxMjU4OAptYWtlWzFdOiAqKiogW2RvY2tlci1ydW5dIEVycm9y
-IDEKbWFrZVsxXTogTGVhdmluZyBkaXJlY3RvcnkgYC92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRt
-cC1xM3F1aGNjNS9zcmMnCm1ha2U6ICoqKiBbZG9ja2VyLXJ1bi10ZXN0LXF1aWNrQGNlbnRvczdd
-IEVycm9yIDIKCnJlYWwgICAgMTRtMjUuMzc3cwp1c2VyICAgIDBtOC41OTdzCgoKVGhlIGZ1bGwg
-bG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDIwMDQyNDA5MDMx
-NC41NDQtMS1jb2h1Y2tAcmVkaGF0LmNvbS90ZXN0aW5nLmRvY2tlci1xdWlja0BjZW50b3M3Lz90
-eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3
-IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0
-Y2hldy1kZXZlbEByZWRoYXQuY29t
+* Andrew Jones (drjones@redhat.com) wrote:
+> On Fri, Apr 17, 2020 at 11:39:25AM +0100, Peter Maydell wrote:
+> > On Mon, 23 Mar 2020 at 11:32, Beata Michalska
+> > <beata.michalska@linaro.org> wrote:
+> > >
+> > > On ARMv7 & ARMv8 some load/store instructions might trigger a data ab=
+ort
+> > > exception with no valid ISS info to be decoded. The lack of decode in=
+fo
+> > > makes it at least tricky to emulate those instruction which is one of=
+ the
+> > > (many) reasons why KVM will not even try to do so.
+> > >
+> > > Add support for handling those by requesting KVM to inject external
+> > > dabt into the quest.
+> > >
+> > > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+> > > ---
+> > >  target/arm/cpu.h     |  2 ++
+> > >  target/arm/kvm.c     | 54 ++++++++++++++++++++++++++++++++++++++++++=
+++++++++++
+> > >  target/arm/kvm_arm.h | 11 +++++++++++
+> > >  3 files changed, 67 insertions(+)
+> > >
+> > > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > > index 4ffd991..4f834c1 100644
+> > > --- a/target/arm/cpu.h
+> > > +++ b/target/arm/cpu.h
+> > > @@ -560,6 +560,8 @@ typedef struct CPUARMState {
+> > >          uint64_t esr;
+> > >      } serror;
+> > >
+> > > +    uint8_t ext_dabt_pending; /* Request for injecting ext DABT */
+> >=20
+> > I was trying to work out whether we need to migrate this state,
+> > and I'm not sure. Andrew, do you know? I think this comes down
+> > to "at what points in QEMU's kvm run loop can migration kick in",
+> > and specifically if we get a KVM_EXIT_ARM_NISV do we definitely
+> > go round the loop and KVM_RUN again without ever checking
+> > to see if we should do a migration ?
+> >
+>=20
+> I'd prefer a migration expert confirm this, so I've CC'ed David and Juan,
+> but afaict there's no way to break out of the KVM_RUN loop after a
+> successful (ret=3D0) call to kvm_arch_handle_exit() until after the next
+> KVM_RUN ioctl. This is because even if migration kicks the vcpus between
+> kvm_arch_handle_exit() and the next run, the signal won't do anything
+> other than prepare the vcpu for an immediate exit.
+
+This is a level I've not looked at I'm afraid.
+However, the point at which we're saving the vCPU state is when the
+vCPUs are stopped; so as long as your state that you save is everything
+you need to restart and you migrate that then you should be OK; but in
+the end fromt he migration point of view we just stop the VM and ask for
+each devices state.
+
+Dave
+
+> Thanks,
+> drew=20
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+

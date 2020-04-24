@@ -1,111 +1,111 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1136488lfm;
-        Fri, 24 Apr 2020 14:37:34 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIWGdge92fLKzbGvGJa1zz5jZfJ/ClxGam70PhaUq/jGOTiG+IuRWsinzPO7izEsrO7NFNt
-X-Received: by 2002:ac8:764e:: with SMTP id i14mr11549570qtr.191.1587764254210;
-        Fri, 24 Apr 2020 14:37:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587764254; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1185905lfm;
+        Fri, 24 Apr 2020 15:31:15 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIV0Bfu/Dh5kEMcPGJuVnKn7sddeEiehZFLQGGY+hAecukXan/Cyrbzehn4Pa4uYKEsFuqV
+X-Received: by 2002:a05:620a:14b2:: with SMTP id x18mr10795789qkj.153.1587767474941;
+        Fri, 24 Apr 2020 15:31:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587767474; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lhna3NYIKOUWZlMcgDq3j+hEsi1ndHsKguz7pGbTi6Q8g3h0KPzN9McJLPMD1//vqr
-         C2kJmTmAGpHvp1uAb5v7EGxAUZHZ3UH1vhZ5GW9wUSWBOl0P7V8YFf1pufbWMOHekLaj
-         unQRiDT/1oU64KQMkLojBONfoiqZ2rk9bj77imVEUP+DAIGZLsBEbf+Vum1nj+BNlub6
-         rbl86x/Mq+HGuZaUfWoJsaqmkNF2wNtuYiikK7WdWz5HGuz3HDQ8uNAtWgmZsroJAhNB
-         Se0jvEg1U2PGDoue+s0aymrnmEvhYyhGrQSbFyjVZqyoPOwxfYz+j3697Z3U8txvqW2U
-         zaGw==
+        b=ptGeYJDasCsAntjteE42GP69mmRDS5HUBZrfHfIAXSm23dSjvB4s+GONaOz64604Wc
+         qWo4nJjoT3Alkqej+vN7LAmoJnH0FBSzqwDMg4OU/a7AwPRezutXJfVpciw1UaUOcND8
+         zvUEKtwOmyLOXuo6KGcypRNdwzpvuvBuUtx7sJEDggKbcr8TUKDOFpj8BfE/tsNe9LCl
+         v71I2frcC7Qx9+vPQHmjPzA4s8fPNvXT15mQKohrLN2yq7rdt0kOjoftdZ5HyG9KG98K
+         tIajoQejq34hLe+8GHZ0Zd947ebK2F1Zzt/E7b+x6hq742YTE6zduuUHXGvQ/Q5bY5jg
+         3sTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=dNRfTmh38M6Q+PAlnPzkurZUncglzk1nCME5XDIOZ6E=;
-        b=QAOWWtA8TUI871OGfSS35BMB/B+pYhGHq8od3X/Cw/bbxK66kQ4ZSBIf3glEEE8rop
-         IWaWJin7x2yM0qLpd2pUroecL7SvyOurND3VmHE0yR0qz6SMCdMcBSJNvZAiW4aVMEjY
-         EwpbcY2Q5p0BPrCUgGGlTSrsr43SoZL99ZwiHcv7apcw7zU8dstmn4NCk5s44IJjlBET
-         X0ur4ax9EbaV5Cz46Ajqew2vRrOPUq5jBwzOlHeY5yBY2u36kgj0zy7XRMACkXoJwBr0
-         3EwYYDxfuWSsDqFvLbyDb8P//+RrlxDXbzoGkTsRNaevreER1N46SvXkrYIKMF6sjKDc
-         WRig==
+        bh=tjydUoN4WhqQPtmCstVePVCAY3LtiQFkXjHbGTN70FI=;
+        b=P4Zw2kz5arME4eH5nMFn1ON/WMNcYRimAKTeq+MkdOQzZmzY/hM8CRsjEtmGyQXA4P
+         y99ei4Ge9Tl3gRG91HAtd4TxgKHOzLKKXW8837dVmMWSSGgTs+PK5PYyE1qWAnynTypg
+         zS+hUcXRWhGJhcPnEDZ4DWr2HH6ZhzRaSFqyLGSzx/ZkhNf8Is/VvYNvYZoPMGOmLuTE
+         1CPdU0jjjjtSJ2DfagsxyhUD318DIWChfgPEtLnh3DAJo6KMxhnuK5dqsBle7+seRbkR
+         umiemhM48QON+TVAq7DKUkblBHlPjhWJqYunuQHu0roE538MEPH7BqT9G1qZ84Y0cH3D
+         BBmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=burJebL0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VPS+mabz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z27si4024371qtj.324.2020.04.24.14.37.33
+        by mx.google.com with ESMTPS id g8si4833215qvl.100.2020.04.24.15.31.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Apr 2020 14:37:34 -0700 (PDT)
+        Fri, 24 Apr 2020 15:31:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=burJebL0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VPS+mabz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53378 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54488 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jS60r-0003do-GX
-	for alex.bennee@linaro.org; Fri, 24 Apr 2020 17:37:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48768)
+	id 1jS6qo-00088P-9Y
+	for alex.bennee@linaro.org; Fri, 24 Apr 2020 18:31:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56744)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jS60i-0003cM-5B
- for qemu-arm@nongnu.org; Fri, 24 Apr 2020 17:37:24 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jS6qW-00088B-17
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2020 18:30:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jS60g-00081D-8F
- for qemu-arm@nongnu.org; Fri, 24 Apr 2020 17:37:23 -0400
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:33989)
+ (envelope-from <richard.henderson@linaro.org>) id 1jS6qU-0000c1-Kq
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2020 18:30:55 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:46195)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jS60f-0007xE-NS
- for qemu-arm@nongnu.org; Fri, 24 Apr 2020 17:37:21 -0400
-Received: by mail-pg1-x543.google.com with SMTP id o15so5264333pgi.1
- for <qemu-arm@nongnu.org>; Fri, 24 Apr 2020 14:37:20 -0700 (PDT)
+ id 1jS6qU-0000aq-7t
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2020 18:30:54 -0400
+Received: by mail-pl1-x642.google.com with SMTP id n24so4264827plp.13
+ for <qemu-arm@nongnu.org>; Fri, 24 Apr 2020 15:30:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=dNRfTmh38M6Q+PAlnPzkurZUncglzk1nCME5XDIOZ6E=;
- b=burJebL03g9+2VYn4TnZDidvEbMQHnRVH7c60dV8zTSN6Hwm6l7J4uDyDcAY/96W16
- zUn8eUQFo+i9aP0th4cCQOfd29dNNnz2V5BIM8N4EN2ayq8KlN0uoO1HIRHB/rsvM9VL
- CqD30IyPDbArh9MjzHbCYHps0ydg1Sk9Ba5S1YDe0806Fdlt1VzQZGcEEhMvdg/JsdoR
- t6ShxW0h3ZDNcnksX2ClC0DkvcKYGAicoJcKYO2yGdtFJE8wYlFtqMsD+bRCDe7z4UeE
- PE5QhzSEkXIxyUpC/2WN7Tsw0vNyMJawrsdnwglSRexuzc+qVaqf8NLVP2q5+eUTGY6x
- LSNg==
+ bh=tjydUoN4WhqQPtmCstVePVCAY3LtiQFkXjHbGTN70FI=;
+ b=VPS+mabzEV3IJZsyvSnnoY7YtBhV01MvTPPIjDe+UIiJuT212wDg1eIqc3H+BZe+0T
+ bdcZiK1o19GZ5jz8m9fEBBUBkfJGJDnKSFUxqd3eMZVYj7m7PDq9ikEnwM0SVKX+R0X1
+ SRa0nyMmNE3hir2yK6zQoRhCakLF6I3V11iX5b/ObhE/2arfTqLJGV80qntlUV6DCUhN
+ 47aeBSIKcLTc6sG/TakUCkriSiIq4LrabG137MP/CBacEMqMBUAokBVEbtMBYCULE7/f
+ EZxrOS6W+lc0qxIWKnagYMpcTBY0NLGJKGMWW8fG1eANZfxRF8WMgnEJWXE+a/gGN46g
+ 1sww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=dNRfTmh38M6Q+PAlnPzkurZUncglzk1nCME5XDIOZ6E=;
- b=YvwrHo+cmanrvSsi8FZCi6ZeCIwvVJ7QGZzjZJIulNK5Dy4wJa51hv/raspYr8CbkN
- SmQ5775pcI/J5/PH1phERr7UBlUC/uyRLMUHWQfiNmHxvHjEVfVMv/9P4jg5931Yutxc
- knJ+wzmNMVfvICzzFBk9fxKxGevswBNvFGCZ3RrhpS2F2Z9C1HqetwtsoIXK0T580953
- BiZUFH1GntEe6EWuJfy8woww6y8yYsKKaDju9LsFqj3DJeXBHu0ATTQfe8pPYFZ61c7x
- yeKe7LAOrQpHSDm5paqFosODXvl/4QZyxXauiX0FwYdq+/HHdJbCpL6XY9T1LIlQytfW
- KiZQ==
-X-Gm-Message-State: AGi0PuZ2P+qZUBYSJT8U2ka+cNyR0rg/sZYF+j5WNbtZa+2uF+ZxMsHF
- A8PY3b0IdoQNNWLuoqMTg5Z+bA==
-X-Received: by 2002:a63:f707:: with SMTP id x7mr11747027pgh.374.1587764239313; 
- Fri, 24 Apr 2020 14:37:19 -0700 (PDT)
+ bh=tjydUoN4WhqQPtmCstVePVCAY3LtiQFkXjHbGTN70FI=;
+ b=ZrY+cbBZR6gDqPaiZAzdxZClcW6r9AapeY9ry9+RH59lRUT3Pr+ssB+lFu/CQMgSWb
+ BNrPx3A5WZM8Yn03u++YRny2Lab5J1n2iKpKkEEutb6RiWDbB8obMKop51MpPLzHt0p9
+ qCztXaZBEERai8SlDTkLIh4PpP0Teb2L7rqWwV7urtyo0o2SlgYc4PpQs1iPE8uksi6j
+ MtuORJy1z9SXN9MBKTLbNk5TVf5adeTq+SYGomrFEkU8eu5OaugBHJvmiwe21EkAA+14
+ /d29l2n/pCIaV3GRsW0RkCLcLRXHED9/uxaW00aq++HX9pVfVx0Uy6QPoOD2l2nZmGHM
+ 0Wtg==
+X-Gm-Message-State: AGi0PuaeS63iKybaYukzY0ssOrnsl/WEQn+NKlhAaF/YNh/u35JSg1U5
+ 7EiCKHIIc4xd2P5Rz6LtHbaYsA==
+X-Received: by 2002:a17:90a:315:: with SMTP id 21mr8180056pje.96.1587767452567; 
+ Fri, 24 Apr 2020 15:30:52 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id y186sm5695099pgb.69.2020.04.24.14.37.17
+ by smtp.gmail.com with ESMTPSA id w75sm6675139pfc.156.2020.04.24.15.30.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 24 Apr 2020 14:37:18 -0700 (PDT)
-Subject: Re: [PATCH RFC] target/arm: Implement SVE2 TBL, TBX
+ Fri, 24 Apr 2020 15:30:51 -0700 (PDT)
+Subject: Re: [PATCH RFC] target/arm: Implement SVE2 SPLICE, EXT
 To: Stephen Long <steplong@quicinc.com>, qemu-devel@nongnu.org
-References: <20200423164236.5181-1-steplong@quicinc.com>
+References: <20200423180347.9403-1-steplong@quicinc.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <c1dc0aa8-783b-c91e-058f-52e3183f9202@linaro.org>
-Date: Fri, 24 Apr 2020 14:37:16 -0700
+Message-ID: <cd583722-3d7d-fb2e-4320-5507eea18b54@linaro.org>
+Date: Fri, 24 Apr 2020 15:30:49 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200423164236.5181-1-steplong@quicinc.com>
+In-Reply-To: <20200423180347.9403-1-steplong@quicinc.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::543;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x543.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::543
+X-Received-From: 2607:f8b0:4864:20::642
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -120,114 +120,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, apazos@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IOEj32LuEAHe
+X-TUID: 1FhMf7MVQfTj
 
-On 4/23/20 9:42 AM, Stephen Long wrote:
+On 4/23/20 11:03 AM, Stephen Long wrote:
 > Signed-off-by: Stephen Long <steplong@quicinc.com>
 > 
-> These insns don't show up under any SVE2 categories in the manual. But
-> if you lookup each insn, you'll find they have SVE2 variants.
-> ---
->  target/arm/helper-sve.h    | 10 +++++++
->  target/arm/sve.decode      |  5 ++++
->  target/arm/sve_helper.c    | 53 ++++++++++++++++++++++++++++++++++++++
->  target/arm/translate-sve.c | 20 ++++++++++++++
->  4 files changed, 88 insertions(+)
-> 
-> diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-> index f6ae814021..54d20575e8 100644
-> --- a/target/arm/helper-sve.h
-> +++ b/target/arm/helper-sve.h
-> @@ -2687,3 +2687,13 @@ DEF_HELPER_FLAGS_5(sve2_sqrdcmlah_zzzz_s, TCG_CALL_NO_RWG,
->                     void, ptr, ptr, ptr, ptr, i32)
->  DEF_HELPER_FLAGS_5(sve2_sqrdcmlah_zzzz_d, TCG_CALL_NO_RWG,
->                     void, ptr, ptr, ptr, ptr, i32)
-> +
-> +DEF_HELPER_FLAGS_5(sve2_tbl_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_5(sve2_tbl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_5(sve2_tbl_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_5(sve2_tbl_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-> +
-> +DEF_HELPER_FLAGS_4(sve2_tbx_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_4(sve2_tbx_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_4(sve2_tbx_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> +DEF_HELPER_FLAGS_4(sve2_tbx_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-> diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-> index 3a2a4a7f1c..483fbf0dcc 100644
-> --- a/target/arm/sve.decode
-> +++ b/target/arm/sve.decode
-> @@ -1387,3 +1387,8 @@ UMLSLT_zzzw     01000100 .. 0 ..... 010 111 ..... .....  @rda_rn_rm
->  
->  CMLA_zzzz       01000100 esz:2 0 rm:5 0010 rot:2 rn:5 rd:5  ra=%reg_movprfx
->  SQRDCMLAH_zzzz  01000100 esz:2 0 rm:5 0011 rot:2 rn:5 rd:5  ra=%reg_movprfx
-> +
-> +### SVE2 Table Lookup (three sources)
-> +
-> +TBL_zzz         00000101 .. 1 ..... 00101 0 ..... .....  @rd_rn_rm
-> +TBX_zzz         00000101 .. 1 ..... 00101 1 ..... .....  @rd_rn_rm
-> diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-> index 55e2c32f03..d1e91da02a 100644
-> --- a/target/arm/sve_helper.c
-> +++ b/target/arm/sve_helper.c
-> @@ -2968,6 +2968,59 @@ DO_TBL(sve_tbl_d, uint64_t, )
->  
->  #undef TBL
->  
-> +#define DO_SVE2_TBL(NAME, TYPE, H) \
-> +void HELPER(NAME)(void *vd, void *vn1, void *vm, void *vn2, uint32_t desc)  \
-> +{                                                                           \
-> +    intptr_t i, opr_sz = simd_oprsz(desc);                                  \
-> +    uintptr_t elem = opr_sz / sizeof(TYPE);                                 \
-> +    TYPE *d = vd, *n1 = vn1, *n2 = vn2, *m = vm;                            \
-> +    ARMVectorReg tmp1, tmp2;                                                \
+> I'm not sure I can just use the SVE helper functions for the SVE2
+> variants of EXT and SPLICE.
 
-Only one temp needed.
+Absolutely.   The new insns are functionally identical to movprfx + the old
+insn.  I presume the new insns were added for code density reasons, but I don't
+know for sure.
 
-> +    if (unlikely(vd == vn1)) {                                              \
-> +        n1 = memcpy(&tmp1, vn1, opr_sz);                                    \
-> +    }                                                                       \
-> +    if (unlikely(vd == vn2)) {                                              \
-> +        n2 = memcpy(&tmp2, vn2, opr_sz);                                    \
-> +    }                          
+> +SPLICE_zpz      00000101 .. 101 101 100 ... ..... .....     @rd_pg_rn
+> +EXT_zzi         00000101 011 ..... 000 ... rn:5 rd:5 \
 
-Better with else if here.
-Because vd cannot overlap both vn1 or vn2, only one of them.
-                                             \
-> +    for (i = 0; i < elem; i++) {                                            \
-> +        TYPE j = m[H(i)];                                                   \
-> +        d[H(i)] = j < (elem * 2) ? n1[H(j)] : 0;                            \
-> +                                                                            \
-> +        TYPE k = m[H(elem + i)];                                            \
-> +        d[H(elem + i)] = k < (elem * 2) ? n2[H(k)] : 0;                     \
-> +    }
+I have renamed these to SPLICE_sve2 and EXT_sve2, since the same suffix applies
+to the original too.
 
-First, the indexing is wrong.
-
-Note that you're range checking vs elem * 2, but only indexing a single vector.
- Thus you must be indexing into the next vector.
-
-This should look more like
-
-    TYPE j = m[H(i)];
-    TYPE r = 0;
-
-    if (j < elem) {
-        r = n1[H(j)];
-    } else if (j < 2 * elem) {
-        r = n2[H(j - elem)];
-    }
-    d[H(i)] = r;
-
-Second, this is one case where I'd prefer to share code with AArch64.  It would
-be worthwhile to rearrange both sve1 and advsimd to use a common set of helpers.
-
-> +static bool trans_TBL_zzz(DisasContext *s, arg_rrr_esz *a)
-
-_zzz is not helpful here.  The SVE1 insn also operates on 3 registers, and thus
-could logically be _zzz too.
-
-Better might be _double, after double_table = TRUE, or maybe just _2 just in
-case SVE3 adds a variant with more table registers.
+Applied to my SVE2 branch.  Thanks!
 
 
 r~

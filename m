@@ -1,268 +1,245 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2432189lfm;
-        Thu, 23 Apr 2020 15:39:40 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLZu2/ygpd66tu+IVIBU+DCGtK3FvvW57cTSy/zP3XaTOukuIsX/VSYMud297BUiZqonXOB
-X-Received: by 2002:ac8:6d2c:: with SMTP id r12mr6552122qtu.355.1587681580386;
-        Thu, 23 Apr 2020 15:39:40 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1587681580; cv=pass;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp677421lfm;
+        Fri, 24 Apr 2020 07:18:44 -0700 (PDT)
+X-Google-Smtp-Source: APiQypK/cY8xCOvjZO1HlCdS2YXcFcwU5DiZ6x9pZDD9jGysX4cI53HFXWSeTsUqSLGq4B+rMJLR
+X-Received: by 2002:a37:67c4:: with SMTP id b187mr9485880qkc.296.1587737924279;
+        Fri, 24 Apr 2020 07:18:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587737924; cv=none;
         d=google.com; s=arc-20160816;
-        b=OdGKqNv2OVQlR1TyC5Re5Vj/MPWZst7r3g029n4DXRbxYn7ultCWcEQkVlqM7oA98q
-         rnpMNOr1366DZust7ssgiUF61DHnsKcs+sZpisLmmhMrRkcWDCaAN0vjLWC3c1HHaXO3
-         m5ViE9OApCxotgEEqpYKwAtxCP4XiYOD4Y8bldysY0BUcDTYnJ5DI67OsQEG/KePXDlo
-         /ZLyHK/Dxe7vaDCFReVSswSI1D9agvQBEtkM0gPAdhlsa6RaAogr6zvlULmjtTyut8aY
-         QUwBDQYVFa5OENnZpo/HB3rjnUb5lUaprXwY+lDCd/4nukACSkT2aFgDM9tzKmrkg6Ap
-         mDzg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=OXV/6XKWgdVqUa9A1VbMEauP+C9m8rmjszjyVJLYq5eOPT/+xEuEOv4qK0pVaVluHr
+         xYYzbEfcxw/FEHicYxVEYzO1EULYsKnyyZ4kdkd2ChXPQQQbgwZi9t4dkvVYxKfNhjIl
+         qIc5Y44w3pH1f5hMUEtvfCymxWGIb8xlyrY9jWAo2e/qMvI3iJFZuTm0LnWJHFvtVz5w
+         elhCFRJ1gKBgC/NRzs+lNTsjk8V7Ryks9hfAcXOvPn9VRU1EdA3X5Z9tIZEwZIiSMrxo
+         fruoiEYGIxM5odQi4sDPNKOdZ4WcMKI8XK2b9TDas8jsUTkGHQB/fZ2ahY1j/QDQq6bd
+         1GKg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from:dkim-signature
-         :dkim-signature;
-        bh=ppBdfUYDPyhVn56AkZerf9EclI3XJoAuRm/GMv2yAXA=;
-        b=Orns4owhRWsuy12IYBSFhpOfARLqsAwSL+HEJrodGKVSLc3DThyy5ZVfqZJaA4JEuJ
-         zb2Pu5fx3Et/RQq3SEmI/gCkoJ3QEpd5D/Abi3w3j51Yss+vMvG+BV0SDgqORlA+npv7
-         x2mvt0RDjM7C2saUqWRXikQaeLldA1mmnd3LogdhK19ux/jrqFG8JTJuPH6P8e5h/OrD
-         wrXUGoOndAtFC0m7I2YIu5NPcj6bi3fdh5d/bptTyiV8oc5LqcDyY/81KGppHPd1iG+2
-         3JehEGN9VvthWZWd5c3IpuAddQfI58CykuaoT64M7ApWuKt+Z9n/dVzx9zmtI8CQ9FiZ
-         XStw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=izIgI+1k;
-       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=s6bbmWCH;
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=wCgRDumVMic88GUva32qwC+IS1jV6+CCLCJSi1nfKl4=;
+        b=iGl0kpAYFmk6jnjvfQvy7/UfPPgK6JJ04v7bPQUqCWmCfWcPMNsMy8sctK8ROfLDDa
+         HrUFzthPQAmpztWpGGdqB1X5iFKAncohXE2Q3a+fVuGzSa1Sw3uncNGfyTTTrC9Nxgiv
+         18XJL5sbpIXk0fpAKy0Vhhpn/3+pk2dsdA2QmHlArgAjRK1B80ZzGLLQSZrRHcm3mPdY
+         uPeIhlqQ+RGlVq8LMAZPhb+pnGBBcSdCkIsxOt7rM4pEpe4/If5q1zHWNlfmgGqmkPbq
+         nXmNu2NEne66MZTrKJEoQJNSDnuO0PfOisxgLj4//+6W9EZzmEkVFdmnEMBAJuovG8cQ
+         N85Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=huqZyQfd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o4si2208077qtt.59.2020.04.23.15.39.40
+        by mx.google.com with ESMTPS id c14si3355482qvb.148.2020.04.24.07.18.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 Apr 2020 15:39:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 24 Apr 2020 07:18:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=izIgI+1k;
-       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=s6bbmWCH;
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:43854 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=huqZyQfd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39162 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jRkVP-00060m-KN
-	for alex.bennee@linaro.org; Thu, 23 Apr 2020 18:39:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48054)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jRzAB-0005An-Ia
+	for alex.bennee@linaro.org; Fri, 24 Apr 2020 10:18:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55356)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <steplong@quicinc.com>) id 1jRkTs-00040S-1U
- for qemu-devel@nongnu.org; Thu, 23 Apr 2020 18:38:08 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jRz9H-0003uY-RY
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2020 10:17:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <steplong@quicinc.com>) id 1jRkTr-0007ba-1E
- for qemu-devel@nongnu.org; Thu, 23 Apr 2020 18:38:03 -0400
-Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38]:5794)
- by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <steplong@quicinc.com>)
- id 1jRkTp-0007T5-Tk; Thu, 23 Apr 2020 18:38:02 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1587681481; x=1619217481;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version;
- bh=tgkpRRbB+S3xPDt93GrydFC6o0rRMYx60jdwqQqL77o=;
- b=izIgI+1kfvwpVsliFQ+SJlDAlDUiqFH93k8RMtiFQRK1+gGqQNb61OR5
- RxF4E9ue6YG5+/B5qDQv5OcgFL9eUTCKDADvYvVpBNFFkPL+zvemyk1oj
- C7Kr6EcwVDF4T28bYE5b4oeVZdn3KwQkVYP1WqPpVzTP6LQ/si6sDk/SI c=;
-Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
- by alexa-out-sd-01.qualcomm.com with ESMTP; 23 Apr 2020 15:37:59 -0700
-Received: from nasanexm03g.na.qualcomm.com ([10.85.0.49])
- by ironmsg04-sd.qualcomm.com with ESMTP/TLS/AES256-SHA;
- 23 Apr 2020 15:37:59 -0700
-Received: from apsanexr02b.ap.qualcomm.com (10.85.0.27) by
- nasanexm03g.na.qualcomm.com (10.85.0.49) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Apr 2020 15:37:59 -0700
-Received: from nasanexm03f.na.qualcomm.com (10.85.0.47) by
- apsanexr02b.ap.qualcomm.com (10.85.0.27) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Apr 2020 15:37:57 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (199.106.107.6)
- by nasanexm03f.na.qualcomm.com (10.85.0.47) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2 via Frontend Transport; Thu, 23 Apr 2020 15:37:56 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=khnStY96ymYe3ArjfPqhNu7k3cxZhTKj2liIp8wWIwQJZu9N3IGPuQQEW+4DPqO+9SXy+ddNOStN3NhX7aKb0EoCL4WHfX6oj8ZxXOL19/DV5m3UTbqeFRHV6KVNZOL9vUUqTf/veMmAUWCT0kETjuXjy7ptbVQL/vAzYbA7xMA2pXtjJITYYb/yDDXdwm7fzOjkZfO8JeXNShx2SPMYK/NGq5H7xNcvIMlfeTBgO60voKj1yTISM1qAidkU6rOySx6bas9kFjnopAps7zXfvpOFd0/51u2voBPb6a885RGuAKvgSwDCuyQq93+2HDbSSE0EhuM28kEANukkq3BpoA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ppBdfUYDPyhVn56AkZerf9EclI3XJoAuRm/GMv2yAXA=;
- b=Eu8+cZu2Tqe/k/g3TRNmWSXPYS12A55v9qJIqmNmFdSfGZN+QFt38sYGKM6Wt8jlwXiPG2SsYLyU3qr4W1OlozXx/ofwaIt7erELD89Dc/jM4LjJrlpe4iDv9HQqy8SFX1xhs0GXxPC1Q89U+iBkiuorL4uLAYQhf79OMbZCBJgT0v5ZnzY23Syb+ucvorEn6m/HuwJDAFJu4CfX5wk6/sIKr7k5ANijimHVg9Czhwe0gLcVTlDi23xk/I01TxRpEv0eeHsliuBD7BS1KNcmpYlOOxznNDMTGrgrwuK051HjrvwIboEJOmWVX+pUInOm96eyjnWu2SkjlEiNHtaRLQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
- dkim=pass header.d=quicinc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=qualcomm.onmicrosoft.com; s=selector1-qualcomm-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ppBdfUYDPyhVn56AkZerf9EclI3XJoAuRm/GMv2yAXA=;
- b=s6bbmWCHbr60aYHFa7CDGjrcHxr6c4XrHzrPQLE6zNaxiG0mcA7h1s2EfJAY6UjzpVc/yuFXEmbEyHmPMIB/s2MRjvtjoAv8/pWBEyAungW24HmAPzOqcwRNJApby5C1errRhiO4bvyIk5o2kjK/fBJ6h8q1WykVYVf6YmdVI+s=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=steplong@quicinc.com; 
-Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
- (2603:10b6:301:7b::24) by MWHPR0201MB3532.namprd02.prod.outlook.com
- (2603:10b6:301:77::17) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2921.29; Thu, 23 Apr
- 2020 22:37:55 +0000
-Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
- ([fe80::10ad:5df5:d575:1f37]) by MWHPR0201MB3547.namprd02.prod.outlook.com
- ([fe80::10ad:5df5:d575:1f37%3]) with mapi id 15.20.2921.033; Thu, 23 Apr 2020
- 22:37:55 +0000
-From: Stephen Long <steplong@quicinc.com>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH RFC 1/3] target/arm: Implement SVE2 AESMC, AESIMC
-Date: Thu, 23 Apr 2020 18:37:37 -0400
-Message-ID: <20200423223739.31715-2-steplong@quicinc.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200423223739.31715-1-steplong@quicinc.com>
-References: <20200423223739.31715-1-steplong@quicinc.com>
-Content-Type: text/plain
-X-ClientProxiedBy: CH2PR17CA0025.namprd17.prod.outlook.com
- (2603:10b6:610:53::35) To MWHPR0201MB3547.namprd02.prod.outlook.com
- (2603:10b6:301:7b::24)
+ (envelope-from <eric.auger@redhat.com>) id 1jRz92-0008CB-Nb
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2020 10:17:47 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:37576
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jRz92-0008C2-8k
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2020 10:17:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1587737850;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wCgRDumVMic88GUva32qwC+IS1jV6+CCLCJSi1nfKl4=;
+ b=huqZyQfdP4/TWa6+VEpuJDhWE0Re+vFAZfbmJucvG6Exx3cszA/geM/cAFnQMq9gha5BV2
+ 2BqtOFxjsYpIuUm/AKNewsp7fP1Ld4L8uEGJoPTlmq52ZqttIK+arBYM7tqZ1SIPhCm6qf
+ xQ2PZPoVuMEwRI8nU14oSAC+D5umVcU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-172-Din7HjdhNNO3CEIEB3GyaA-1; Fri, 24 Apr 2020 10:17:27 -0400
+X-MC-Unique: Din7HjdhNNO3CEIEB3GyaA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 264EE460;
+ Fri, 24 Apr 2020 14:17:25 +0000 (UTC)
+Received: from [10.36.114.19] (ovpn-114-19.ams2.redhat.com [10.36.114.19])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6301560605;
+ Fri, 24 Apr 2020 14:17:07 +0000 (UTC)
+Subject: Re: [EXT] Re: [PATCH v9 1/9] hw/vfio/common: Remove error print on
+ mmio region translation by viommu
+To: Bharat Bhushan <bbhushan2@marvell.com>,
+ Alex Williamson <alex.williamson@redhat.com>
+References: <20200323084617.1782-1-bbhushan2@marvell.com>
+ <20200323084617.1782-2-bbhushan2@marvell.com>
+ <20200323170835.5021f845@w520.home>
+ <8ec6af3c-6bd7-a3dc-c531-16db6b2089c5@redhat.com>
+ <20200326115318.094ab79a@x1.home>
+ <MWHPR1801MB196612966851882A99A6D3F3E3C60@MWHPR1801MB1966.namprd18.prod.outlook.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <72e3ea5c-c98c-3e02-26d1-b956ee81e30f@redhat.com>
+Date: Fri, 24 Apr 2020 16:17:04 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from DESKTOP-L2LA14H.localdomain (108.176.222.2) by
- CH2PR17CA0025.namprd17.prod.outlook.com (2603:10b6:610:53::35) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2937.13 via Frontend Transport; Thu, 23 Apr 2020 22:37:54 +0000
-X-Mailer: git-send-email 2.17.1
-X-Originating-IP: [108.176.222.2]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 5211e638-40fe-4a64-b28f-08d7e7d6f6e3
-X-MS-TrafficTypeDiagnostic: MWHPR0201MB3532:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MWHPR0201MB353200DC3943D9893C20D04EC7D30@MWHPR0201MB3532.namprd02.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:221;
-X-Forefront-PRVS: 03827AF76E
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR0201MB3547.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10019020)(346002)(366004)(376002)(39860400002)(396003)(136003)(6512007)(6666004)(8676002)(2616005)(478600001)(956004)(4326008)(6486002)(66556008)(107886003)(66946007)(86362001)(16526019)(186003)(66476007)(6916009)(8936002)(2906002)(26005)(52116002)(316002)(81156014)(6506007)(36756003)(5660300002)(1076003);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: GJHHE53m7ZIIQeIOBMHLvD0cPTXOhmA1rKuHCGdcowEmZaCs9WAjTNuoCDZoOTs1JoETF2a2eafZ2A6Il2UBvCUi6SaUe+Hu0jxUlS7xm9xpN0apsi+zBs9xzg9D0p3SB48HL5Xp9fhOtkw7OwUbTXfqcCNhn4aiX4ayT+VkU8VJh3qR0uGLFjdgwU4r99iFPOuotv11To/NuTzIvBSra9MkLjm4mWYmWuAkFEDNTRrhRQ5/scs7BmN/L/fw9O9RQjTDGcJMyUg9YPsJOAX2SL534DGGvQQnPv5LRPWZiYWNDSILknaa3ErLr4TODNuiY1M0iONA0k1YVCxXGVe/4S+eChhqq1QehN+HKvOxO13S8usYhkIVlA9BUg4xQzAT1rznbIRf+zv7WNFRvVr5BcKMl5SUHDNBO/QnRFaHDk//3rdWyouQdwgbOTbTdM8/
-X-MS-Exchange-AntiSpam-MessageData: HdU9exC4ikmHWON1o960Wnqwe3XtrgVXpy6IQnLKUto77fQX338QysN+sunG9xbOoZJXFoD/JIZDtTTNXQB1QpXhK0pUoy13JrgXzsYizmfY/0cKd3E3ktfh1HEVJQpJrhAGMNhNkGFAK4VfgIF7bw==
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5211e638-40fe-4a64-b28f-08d7e7d6f6e3
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Apr 2020 22:37:54.9528 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: gzA65EufnfQ5uWzKre8clbHlih8wGyhN1v1svZ5n6T5yHA36LGraP/jG2dgwpgcR/lnBLkm/l2B4yuUs9Y9LJg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR0201MB3532
-X-OriginatorOrg: quicinc.com
-Received-SPF: pass client-ip=199.106.114.38; envelope-from=steplong@quicinc.com;
- helo=alexa-out-sd-01.qualcomm.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/23 18:38:00
-X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
-X-Received-From: 199.106.114.38
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <MWHPR1801MB196612966851882A99A6D3F3E3C60@MWHPR1801MB1966.namprd18.prod.outlook.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/24 03:54:07
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, richard.henderson@linaro.org, apazos@quicinc.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9/a1jr5XTH/O
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "yang.zhong@intel.com" <yang.zhong@intel.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "kevin.tian@intel.com" <kevin.tian@intel.com>,
+ "Tomasz Nowicki \[C\]" <tnowicki@marvell.com>,
+ "mst@redhat.com" <mst@redhat.com>, "drjones@redhat.com" <drjones@redhat.com>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "bharatb.linux@gmail.com" <bharatb.linux@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "linuc.decode@gmail.com" <linuc.decode@gmail.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +rA2YIPu1sbB
 
-Signed-off-by: Stephen Long <steplong@quicinc.com>
----
- target/arm/helper-sve.h    |  3 +++
- target/arm/sve.decode      | 10 ++++++++++
- target/arm/sve_helper.c    | 13 +++++++++++++
- target/arm/translate-sve.c | 18 ++++++++++++++++++
- 4 files changed, 44 insertions(+)
+Hi Bharat,
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index f6ae814021..6e8421991c 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -2687,3 +2687,6 @@ DEF_HELPER_FLAGS_5(sve2_sqrdcmlah_zzzz_s, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(sve2_sqrdcmlah_zzzz_d, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, i32)
-+
-+DEF_HELPER_FLAGS_3(sve2_aesmc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_3(sve2_aesimc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 3a2a4a7f1c..a83420e690 100644
---- a/target/arm/sve.decode
-+++ b/target/arm/sve.decode
-@@ -92,6 +92,10 @@
- # Named instruction formats.  These are generally used to
- # reduce the amount of duplication between instruction patterns.
- 
-+# One operand with unused vector element size
-+@rdn_e0         ........ .. ........... . ..... rd:5 \
-+                &rr_esz rn=%reg_movprfx esz=0
-+
- # Two operand with unused vector element size
- @pd_pn_e0       ........ ........ ....... rn:4 . rd:4           &rr_esz esz=0
- 
-@@ -1387,3 +1391,9 @@ UMLSLT_zzzw     01000100 .. 0 ..... 010 111 ..... .....  @rda_rn_rm
- 
- CMLA_zzzz       01000100 esz:2 0 rm:5 0010 rot:2 rn:5 rd:5  ra=%reg_movprfx
- SQRDCMLAH_zzzz  01000100 esz:2 0 rm:5 0011 rot:2 rn:5 rd:5  ra=%reg_movprfx
-+
-+#### SVE2 Crypto Extensions
-+
-+## SVE2 crypto unary operations
-+AESMC           01000101 00 10000011100 0 00000 .....   @rdn_e0
-+AESIMC          01000101 00 10000011100 1 00000 .....   @rdn_e0
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 55e2c32f03..f25bb5338d 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -7428,3 +7428,16 @@ void HELPER(sve2_xar_s)(void *vd, void *vn, void *vm, uint32_t desc)
-         d[i] = ror32(n[i] ^ m[i], shr);
-     }
- }
-+
-+#define DO_CRYPTO_AESMC(NAME, DECRYPT)                          \
-+void HELPER(NAME)(void *vd, void *vn, uint32_t desc)            \
-+{                                                               \
-+    intptr_t i, opr_sz = simd_oprsz(desc);                      \
-+    void *d = vd, *n = vn;                                      \
-+    for (i = 0; i < opr_sz; i += 16) {                          \
-+        HELPER(crypto_aesmc)(vd + i, vn + i, DECRYPT);          \
-+    }
-+}
-+
-+DO_CRYPTO_AESMC(sve2_aesmc, 0);
-+DO_CRYPTO_AESMC(sve2_aesimc, 1);
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 20eb588cb3..03463308ca 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -7882,3 +7882,21 @@ static bool trans_SQRDCMLAH_zzzz(DisasContext *s, arg_CMLA_zzzz *a)
-     };
-     return do_sve2_zzzz_fn(s, a->rd, a->rn, a->rm, a->ra, fns[a->esz], a->rot);
- }
-+
-+#define DO_SVE2_AES_CRYPTO(NAME, name)                                  \
-+static bool trans_##NAME(DisasContext *s, arg_rr_esz *a)                \
-+{                                                                       \
-+    if (!dc_isar_feature(aa64_sve2_aes, s)) {                           \
-+        return false;                                                   \
-+    }                                                                   \
-+    if (sve_access_check(s)) {                                          \
-+        unsigned vsz = vec_full_reg_size(s);                            \
-+        tcg_gen_gvec_2_ool(vec_full_reg_offset(s, a->rd),               \
-+                           vec_full_reg_offset(s, a->rn),               \
-+                           vsz, vsz, 0, gen_helper_sve2_##name);        \
-+    }                                                                   \
-+    return true;                                                        \
-+}
-+
-+DO_SVE2_AES_CRYPTO(AESMC, aesmc)
-+DO_SVE2_AES_CRYPTO(AESIMC, aesimc)
--- 
-2.17.1
+On 4/2/20 11:01 AM, Bharat Bhushan wrote:
+> Hi Eric/Alex,
+> 
+>> -----Original Message-----
+>> From: Alex Williamson <alex.williamson@redhat.com>
+>> Sent: Thursday, March 26, 2020 11:23 PM
+>> To: Auger Eric <eric.auger@redhat.com>
+>> Cc: Bharat Bhushan <bbhushan2@marvell.com>; peter.maydell@linaro.org;
+>> peterx@redhat.com; eric.auger.pro@gmail.com; kevin.tian@intel.com;
+>> mst@redhat.com; Tomasz Nowicki [C] <tnowicki@marvell.com>;
+>> drjones@redhat.com; linuc.decode@gmail.com; qemu-devel@nongnu.org; qemu-
+>> arm@nongnu.org; bharatb.linux@gmail.com; jean-philippe@linaro.org;
+>> yang.zhong@intel.com; David Gibson <david@gibson.dropbear.id.au>
+>> Subject: [EXT] Re: [PATCH v9 1/9] hw/vfio/common: Remove error print on mmio
+>> region translation by viommu
+>>
+>> External Email
+>>
+>> ----------------------------------------------------------------------
+>> On Thu, 26 Mar 2020 18:35:48 +0100
+>> Auger Eric <eric.auger@redhat.com> wrote:
+>>
+>>> Hi Alex,
+>>>
+>>> On 3/24/20 12:08 AM, Alex Williamson wrote:
+>>>> [Cc +dwg who originated this warning]
+>>>>
+>>>> On Mon, 23 Mar 2020 14:16:09 +0530
+>>>> Bharat Bhushan <bbhushan2@marvell.com> wrote:
+>>>>
+>>>>> On ARM, the MSI doorbell is translated by the virtual IOMMU.
+>>>>> As such address_space_translate() returns the MSI controller MMIO
+>>>>> region and we get an "iommu map to non memory area"
+>>>>> message. Let's remove this latter.
+>>>>>
+>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>>> Signed-off-by: Bharat Bhushan <bbhushan2@marvell.com>
+>>>>> ---
+>>>>>  hw/vfio/common.c | 2 --
+>>>>>  1 file changed, 2 deletions(-)
+>>>>>
+>>>>> diff --git a/hw/vfio/common.c b/hw/vfio/common.c index
+>>>>> 5ca11488d6..c586edf47a 100644
+>>>>> --- a/hw/vfio/common.c
+>>>>> +++ b/hw/vfio/common.c
+>>>>> @@ -426,8 +426,6 @@ static bool vfio_get_vaddr(IOMMUTLBEntry *iotlb,
+>> void **vaddr,
+>>>>>                                   &xlat, &len, writable,
+>>>>>                                   MEMTXATTRS_UNSPECIFIED);
+>>>>>      if (!memory_region_is_ram(mr)) {
+>>>>> -        error_report("iommu map to non memory area %"HWADDR_PRIx"",
+>>>>> -                     xlat);
+>>>>>          return false;
+>>>>>      }
+>>>>>
+>>>>
+>>>> I'm a bit confused here, I think we need more justification beyond
+>>>> "we hit this warning and we don't want to because it's ok in this
+>>>> one special case, therefore remove it".  I assume the special case
+>>>> is that the device MSI address is managed via the SET_IRQS ioctl and
+>>>> therefore we won't actually get DMAs to this range.
+>>> Yes exactly. The guest creates a mapping between one giova and this
+>>> gpa (corresponding to the MSI controller doorbell) because MSIs are
+>>> mapped on ARM. But practically the physical device is programmed with
+>>> an host chosen iova that maps onto the physical MSI controller's
+>>> doorbell. so the device never performs DMA accesses to this range.
+>>>
+>>>   But I imagine the case that
+>>>> was in mind when adding this warning was general peer-to-peer
+>>>> between and assigned and emulated device.
+>>> yes makes sense.
+>>>
+>>>   Maybe there's an argument to be made
+>>>> that such a p2p mapping might also be used in a non-vIOMMU case.  We
+>>>> skip creating those mappings and drivers continue to work, maybe
+>>>> because nobody attempts to do p2p DMA with the types of devices we
+>>>> emulate, maybe because p2p DMA is not absolutely reliable on bare
+>>>> metal and drivers test it before using it.
+>>> MSI doorbells are mapped using the IOMMU_MMIO flag (dma-iommu.c
+>>> iommu_dma_get_msi_page).
+>>> One idea could be to pass that flag through the IOMMU Notifier
+>>> mechanism into the iotlb->perm. Eventually when we get this in
+>>> vfio_get_vaddr() we would not print the warning. Could that make sense?
+>>
+>> Yeah, if we can identify a valid case that doesn't need a warning, that's fine by me.
+>> Thanks,
+> 
+> Let me know if I understood the proposal correctly:
+> 
+> virtio-iommu driver in guest will make map (VIRTIO_IOMMU_T_MAP) with VIRTIO_IOMMU_MAP_F_MMIO flag for MSI mapping.
+> In qemu, virtio-iommu device will set a new defined flag (say IOMMU_MMIO) in iotlb->perm in memory_region_notify_iommu(). vfio_get_vaddr() will check same flag and will not print the warning.>
+> Is above correct?
+Yes that's what I had in mind.
+
+Thanks
+
+Eric
+> 
+> Thanks
+> -Bharat
+> 
+>>
+>> Alex
+> 
+> 
 

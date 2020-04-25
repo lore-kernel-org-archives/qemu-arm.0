@@ -1,107 +1,112 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4460801lfm;
-        Mon, 27 Apr 2020 11:39:27 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIrgu4Yz9iswcwYSFy9cG00jV9JtrvypOfRsij3ZIsdXCobn6kuNVGB1U7i9++Gcze3mTkQ
-X-Received: by 2002:ac8:4897:: with SMTP id i23mr24483875qtq.184.1588012767328;
-        Mon, 27 Apr 2020 11:39:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588012767; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2118035lfm;
+        Sat, 25 Apr 2020 10:59:26 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJ69fsr7loj5aylERfFhN6kdzZMMuZaG+jN2XKVvDLUQvceDc9xOkUWVhtbSfTvIHf9Cn//
+X-Received: by 2002:aed:2542:: with SMTP id w2mr15681782qtc.43.1587837566537;
+        Sat, 25 Apr 2020 10:59:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587837566; cv=none;
         d=google.com; s=arc-20160816;
-        b=wx512TE31cAUIfJsrs9LB29gqKFEoktnfcAYNzYDlfuVa0wNXjC32gqkwvfURxdok9
-         MALecMuunG7iHSC2UED9EyNBOx5Bj69qc/YGPbrdjl4h7H3IB2pDDs++Tdjhy06M7X44
-         fyn5wmluWPmFRd/e0M2KgdvHmYYvGKK1uhJnAthfIXtyMzjXFRFi2bAk75uoGHcovW/D
-         cHA4F/3OlzIkeD6tkRKUzzLB3gQRL4/t+1wV6lODikKUJDAxwfBV3zcsBJ/jJj2AIOWr
-         i8fErxgPFNT5aWoCoIBgNrRS6IyWuCG0ZHTsOZHfp5iPsKQkEJmIgQuXFBeqRiViOYez
-         C8FA==
+        b=KVD+x+n/HxsxNj3H5zA93gaYKSdOvIe6QA3/9Ou8f8BgDqC0gqCJi5UzoKrRLIERTz
+         q9r6Ivkp7YrM6p8xHS0ZxqEYJk8BWpgP8V2WeygmNCdN0tPiURvp0s5NmEMWjp10Gbjs
+         R13+obGUGLWua0EMcp/Uw8EYOCz3o3aeL9/UbzjVw3cPPVcqLSh+JLRl7iHPWQ3QMzG1
+         6yAaGl4fhhjFMwmOWjglDIt/ljiLIUfIAhIg5axpZS6bk85QzjEgKBV/fejwiJRCRG81
+         o+7H5P1P3mokDzgmoBSDsn8SyCfsm4xOPyR492wN9B/gZ6PO5UI4ygmGmwnRoolI8Fx8
+         n7GQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=qXO1MV9LQSvXikG2gTD/XNrX1eAS53joYZpOVUCpneg=;
-        b=pSLa3rx9SUJ9HlEAlY4soZUDyYo8+zUp+8DtRJfk+TQEYHwYf0jxK1a6I4Ot30JTGT
-         4bbGBPIpbThMbosWo6HyuVwJOjK90tGA089ushVf8OQAgpCqw5doCd3fU6r1NBSmk/y/
-         g10CDQRfdUNi+M0xOCYe9kfCiJEVIfY0OtU19BfhD890dWHhokjTcSCjK0TASUEm2C0T
-         Izmk3koqWHQblJ1LIsOsBqjY5ZBcCi/dAO9ch+DnDx+YsTaP4t1hqcEkEG0WJag9qYJE
-         MHDGFSdd346TOmdkjfF2ae/3JV0osMPp4z032xUp0zc5L9HgCPdyBqKvlW+vyzfaMCYu
-         pvfA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=GXpTuuJGywooN0AyHTizpDh3mj3YqcrOCeVlzyrzfLk=;
+        b=oo1ltdzzI/a5qW2jp5EHXRrcEuTZ7FpzVXGsJJrjP4Mh68Mslc/kOZgKaCRWflZDCy
+         3N2rUZmtZt10RmhRxD15YvyTbvuNYvKL4UJXagI+nV24kSjZKbBptcwy+nwF/9ott8Uj
+         s5oKwLB46DdtGuYzlIAxzXO4Xkl/Vhl1mrtCl7j/ArxFdzBNOv3PIgNb6TKYU+4/VeWS
+         frQiMkYo6nFzgfEnx6BBGx0giIALXnkfB8Yuru7+MfS4UJWLTm5cEb7zQgUpH0XPZOrz
+         C1AB0HZaXOg+ue05FhgBZZQ6uhzee96lXIm10kqHlBA+1xvnxqaK4rBrmEH7B0beBvLy
+         W7Qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cN3vQqQt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vslY4KrX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a19si8815099qkn.364.2020.04.27.11.39.27
+        by mx.google.com with ESMTPS id z201si6020573qkb.70.2020.04.25.10.59.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Apr 2020 11:39:27 -0700 (PDT)
+        Sat, 25 Apr 2020 10:59:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cN3vQqQt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vslY4KrX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58548 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42294 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jT8f8-000293-MN
-	for alex.bennee@linaro.org; Mon, 27 Apr 2020 14:39:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37926)
+	id 1jSP5J-0004y2-Ur
+	for alex.bennee@linaro.org; Sat, 25 Apr 2020 13:59:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54924)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jT8eu-00028d-Qt
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 14:39:13 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jSP5D-0004xw-SM
+ for qemu-arm@nongnu.org; Sat, 25 Apr 2020 13:59:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jT8eu-0002UD-5G
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 14:39:12 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:47101)
+ (envelope-from <richard.henderson@linaro.org>) id 1jSP5C-0005la-NZ
+ for qemu-arm@nongnu.org; Sat, 25 Apr 2020 13:59:19 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636]:36194)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jT8et-0002Tt-HS
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 14:39:11 -0400
-Received: by mail-ot1-x342.google.com with SMTP id z25so27964215otq.13
- for <qemu-arm@nongnu.org>; Mon, 27 Apr 2020 11:39:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jSP5C-0005gf-2Q
+ for qemu-arm@nongnu.org; Sat, 25 Apr 2020 13:59:18 -0400
+Received: by mail-pl1-x636.google.com with SMTP id g2so5034516plo.3
+ for <qemu-arm@nongnu.org>; Sat, 25 Apr 2020 10:59:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=qXO1MV9LQSvXikG2gTD/XNrX1eAS53joYZpOVUCpneg=;
- b=cN3vQqQtEJWKc90RpWVXCMalS3OeBW8EX+lDY+AvtqGM/PpwHzOw+kdsQL+u8ftTR8
- abwNRjaZHno2vFEz0kHR8HxuaqTUryFFDLTRoZyGlWhoeihQuEgp+7O3bE5zK1s9CAm3
- V2lZEztrQt4nlukbwDiWWujP9IgAU0CIzUNARB+24HI2eJlaoQm/g+vnDTtGZ2/hqatr
- pUqJirj0kT0XKfS4xQtE0O6aqL365NEbd1IEkEhlEwSlLwed1V0Scmm5v6wyo84t2HK8
- C6M0rxyyfhCYeNhNfhPC/u3ARASFXFc7KT7mJgX+8YYpasZQtAwNhB0aSJVjRw8h/hhw
- BTlQ==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=GXpTuuJGywooN0AyHTizpDh3mj3YqcrOCeVlzyrzfLk=;
+ b=vslY4KrXy/PxiGrVQAQapX0Fm/1M3rAaLA+qp8U3QTq6cql63tPLBqBXfd9dZm15bL
+ ZD7yYL+Lms1dqVkTCBD8lvonwW+dp93DGJL8iO0RYuIACc7TBP0ShDDwwNLcoh4yaQAX
+ 76C2DeUQcYnUqmGqZRzhLAlVdoWiarfVlziDL0n2iCZK1VNXGsXqDqXTbWBedxZ/Qdev
+ 8ArqedM813FVf9nQSgriY8eEApsfsNRE2K0JnmregDNrWGMK/jcRWdRcEsHU9TyKUWfE
+ PDSDixNSB3wXEJE+iWqXdJlpkgPipCYKA5KqeAPrKl+mHX9OhDO616Y0ssLU45Yg3HkA
+ a+2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=qXO1MV9LQSvXikG2gTD/XNrX1eAS53joYZpOVUCpneg=;
- b=npjdEypd7ld2VnOLyAPPsqQfdVuws8TCpBEbywxlwomqXuHotFrK0K5rKVF3+Ppz4U
- /pJCvkXxh99ZyzKwuqFEQ3m/BVUUMwEWaedL8LA1/z0q9DzoNYzMQ9I3iMQsp+OIL6w8
- DVpD13WYTnryYMO5Kzw1MZTswUFvrNpy92P8ZzekyVLpOpH0tfHGtexMfyp29Tyt1WCS
- LSHTKymtEG2zFJDzGJcAwuYcJg1jlfXuIyFbHLc+KbyrnXlgAWR2m9ycVIX6/eFb0cVb
- Sc0c9rEuqjazF8rXu66YhA40+s1CoBrMmtlEkK+ZAud3ANDiK/9W1h4O8bXrB1wTjxBg
- pzzg==
-X-Gm-Message-State: AGi0Puahm9lOEn6SwHZzmcHYkIWXVY2orZg/Izr4tyhNIHYLwseMre/r
- eihr8UYiG6RCw9AKFcI+QGbIhha6+yFRSXDtzZrnzA==
-X-Received: by 2002:a05:6830:1e4e:: with SMTP id
- e14mr19045953otj.91.1588012750156; 
- Mon, 27 Apr 2020 11:39:10 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=GXpTuuJGywooN0AyHTizpDh3mj3YqcrOCeVlzyrzfLk=;
+ b=mMffKwJOSqlaSa5aF63xCZCEArkAMUZicmp+Pwik9UJ0OfHH7LFcDDQGtSlrd7KfdB
+ LMlp7BAASalurQa/7/IHoqoCG2Kw/DtFcCow2sSUPl5gum1GvfabQOCGV0QFw7Qs/p7a
+ 0s3BzRrpw4h4j887XJCJ4+3Tz47y3Q/c51iNfU8qAn6kOzt3YN7I4/uPDRa3drlRCREh
+ d9yH9GjwvedRE0+PCx53aS/P9Y5tllpKRHg1fc4PNkUEwznQXXkq5COau8cyIFIaHVm/
+ +S84ikIhfJc8Gne0sGVrE37eUy4yKSIvM+AFUFEazLMOA867qdy9R/Gp3qE0GJSruaBF
+ MtRA==
+X-Gm-Message-State: AGi0PuZ0i66ng29Yw/ZPQBrD+tmmbIW58ucLNq8lwL9aG/ASH7mbg3Uc
+ u3bvyqQBRr67GARDhR145fxUQbNikbI=
+X-Received: by 2002:a17:90a:e608:: with SMTP id
+ j8mr14131137pjy.44.1587837555788; 
+ Sat, 25 Apr 2020 10:59:15 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
+ by smtp.gmail.com with ESMTPSA id u13sm7594650pjb.45.2020.04.25.10.59.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 25 Apr 2020 10:59:15 -0700 (PDT)
+Subject: Re: ARM SVE issues with non "standard" vector lengths
+To: Laurent Desnogues <laurent.desnogues@gmail.com>
+References: <CABoDooMSCvi4sxWS-a3cQksD3V5tnHCUbGPsxW69Ou4d1rpQZQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <643d0330-5915-641c-af98-99366fc5eec9@linaro.org>
+Date: Sat, 25 Apr 2020 10:59:12 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-References: <20200422043309.18430-1-richard.henderson@linaro.org>
- <20200422043309.18430-14-richard.henderson@linaro.org>
- <CAFEAcA8oWP9XGzD+pb_VhDth8zx8j1Gz4vwiK+dArpw8x1BmqA@mail.gmail.com>
- <22c1fd55-7cd3-6320-1f90-40d1bd2cc883@linaro.org>
- <CAFEAcA-iqrEi_wQ+mBN1NtrEKq3uDYPoDunqW5e9KV6ivz3-SQ@mail.gmail.com>
- <d148806b-c7f1-fefc-bfb4-fcefb81ab509@linaro.org>
-In-Reply-To: <d148806b-c7f1-fefc-bfb4-fcefb81ab509@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Apr 2020 19:38:58 +0100
-Message-ID: <CAFEAcA-iJWqPQ-SwukaBcxgNFppAmeZNUR2doz6sgV6RduC32A@mail.gmail.com>
-Subject: Re: [PATCH v3 13/18] target/arm: Update contiguous first-fault and
- no-fault loads
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
+In-Reply-To: <CABoDooMSCvi4sxWS-a3cQksD3V5tnHCUbGPsxW69Ou4d1rpQZQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::342
+X-Received-From: 2607:f8b0:4864:20::636
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -113,64 +118,67 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OtIf+c9TLiP+
+X-TUID: 5ogQpfojI0X2
 
-On Mon, 27 Apr 2020 at 17:45, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> We *can* indicate fault from MemSingleNF for any reason whatsoever, or no
-> reason whatsoever.
->
-> > // Implementation may suppress NF load for any reason
-> > if ConstrainUnpredictableBool(Unpredictable_NONFAULT) then
-> >   return (bits(8*size) UNKNOWN, TRUE);
->
-> What I'm trying to talk about above, is the third statement in MemSingleNF,
->
-> > // Non-fault load from Device memory must not be performed externally
-> > if memaddrdesc.memattrs.memtype == MemType_Device then
-> >   return (bits(8*size) UNKNOWN, TRUE);
->
-> and the reason we can't actually test MemType_Device here.
->
-> If you have better wording for that, I'm all ears.  But I don't think there's
-> an actual bug here.
+On 4/23/20 6:59 AM, Laurent Desnogues wrote:
+> Hello,
+> 
+> I found the following issues in SVE while playing with a vector length
+> of 640-bit.
+> 
+> 1. sve_uzp_p
+> 
+> I think the comment about VL not being a power of 2 should be that VL
+> is not a multiple of 512-bit elements with VL > 512 (not sure how to
+> phrase that properly).
+> 
+>         if (oprsz & 15) {
+>             d[i] = compress_bits(n[2 * i] >> odd, esz);
+> Here n[2 * i + 1] should be taken into account.
+> 
+>             for (i = 0; i < oprsz_16; i++) {
+>                 l = m[2 * i + 0];
+>                 h = m[2 * i + 1];
+>                 l = compress_bits(l >> odd, esz);
+>                 h = compress_bits(h >> odd, esz);
+>                 tmp_m.p[i] = l + (h << 32);
+>             }
+>             tmp_m.p[i] = compress_bits(m[2 * i] >> odd, esz);
+> Here m[2 * i + 1] should be taken into account.
 
-Oh, the comment didn't say you were relying on the operation being
-allowed to return 'fail' for any reason; in particular the line about
-"Normal memory [...] should access the bus" implies the opposite.
-(I also missed the distinction here between "indicate fault" and "fault".)
+Fixed.  This was obvious once you pointed it out.
 
-But in that case you have the opposite problem, I think -- just because
-something's backed by host memory doesn't mean the guest didn't
-map it as Device: that case the architecture says must be indicated
-as 'fault' but this code won't do it.
+> This generates extraneous data in the higher part of the result.
+> 
+> I hit this when I got a wrong result on an instruction that ends up
+> using sve_cntp which counts all bits set in each 64-bit chunk. There
+> might be some other instructions beyond ZIP that generate extra data
+> that would break sve_cntp.  So perhaps it'd be easier to fix sve_cmtp
+> (and hope that it's the only function that uses bits beyond vector
+> length...).
+> 
+> I hope I got all of this correctly I'm not familiar with that
+> implementation of SVE :)
 
-I would suggest something like:
+This is not so obvious.  I'll write a test case to try and find out, but
+perhaps fixed by:
 
-+     * From this point on, all memory operations are MemSingleNF.
-+     *
-+     * Per the MemSingleNF pseudocode, a no-fault load from Device memory
-+     * must not actually hit the bus -- it returns (UNKNOWN, FAULT) instead.
-+     *
-+     * Unfortuately we do not have access to the memory attributes from the PTE
-+     * to tell Device memory from Normal memory. So we make a mostly
-+     * correct check, and indicate (UNKNOWN, FAULT) for any MMIO.
-+     * This gives the right answer for the common cases of "Normal memory,
-+     * backed by host RAM" and "Device memory, backed by MMIO".
-+     * The architecture allows us to suppress an NF load and return
-+     * (UNKNOWN, FAULT) for any reason), so our behaviour (indicate
-+     * fault) for the corner case of "Normal memory, backed by MMIO" is
-+     * permitted. The case we get wrong is "Device memory, backed by
-+     * host RAM", which we should return (UNKNOWN, FAULT) for but do not.
-+     *
-+     * Similarly, CPU_BP breakpoints would raise exceptions, and so
-+     * return (UNKNOWN, FAULT).  For simplicity, we consider gdb and
-+     * architectural breakpoints the same.
+diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+index f0c9f81db9..a7ffd9a655 100644
+--- a/target/arm/sve_helper.c
++++ b/target/arm/sve_helper.c
+@@ -3071,7 +3071,7 @@ void HELPER(sve_zip_p)
+             high = oprsz >> 1;
+         }
 
-assuming my understanding is correct...
+-        if ((high & 3) == 0) {
++        if ((high & 7) == 0) {
+             uint32_t *n = vn, *m = vm;
+             high >>= 2;
 
-thanks
--- PMM
+
+
+r~

@@ -1,82 +1,117 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2465806lfm;
-        Sat, 25 Apr 2020 18:51:11 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLtSoXz78jL0MS5gzkx6x3/41Q+408L4fmfijyjfkkDatif6InB4p055chRLttrrzCBffoc
-X-Received: by 2002:a05:6214:18c9:: with SMTP id cy9mr16177200qvb.35.1587865871253;
-        Sat, 25 Apr 2020 18:51:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587865871; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3222332lfm;
+        Sun, 26 Apr 2020 11:12:09 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIRae2Ok5+aLT/viUu/R/HSihxZ7jN0FTNza6/kM54nqXfMZAWecPNyoAf5fpqzv14NyKMR
+X-Received: by 2002:ac8:6e8c:: with SMTP id c12mr19860784qtv.374.1587924728883;
+        Sun, 26 Apr 2020 11:12:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587924728; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rr8YqYXZXpadB9U8FxAPFftQSA8urpZQcr/H9uaq2BdOMMGnJyFAEuHbYFum6jfX6B
-         AehUijbvRlrntgCs/D1jptKILKYIncqWzh3G8WyvTNOAqI41lsPyfLG7AxLEZmUaswMZ
-         EWiVqmrq7d+B42+3Ds95FIoxd4Qt7iWbV0KcH9jzHSoLxDVYBgI0n4kTkdjVvv1epeHN
-         pa3SP75MucO0rDpF2nE5JaqBi7y0n7bPd4WrkV7hfh6PHiTJDlwk/QUmD7cEbfzFCplL
-         Ux/w0lNT06xOUKn1G8Cw62MPJLvJMhpiqrUwb1lO3cZYUpjYjl8XbD3a5NlNVaTO2U4K
-         DfdQ==
+        b=O3RRuyqmpxBvfu+yqkuLUG3t5ddRxc0Gv4ydfAdHI4uGv75VQyZ9de+kUoFyeRj+zo
+         dvN3wFXyKsK4YNtLJAQKthXO6YzHtvXtHWxvdg6dVGoD80O/Wdp2a2AvK5a771e7abq9
+         tF4Jii3nj3X1mi4w+TzRRHe6OQbAE8FhURE4cfL519bGxeYgxcpNkIR9IxpSPxwng03S
+         Fv8UTrwUC1HTHn6I9OS8aUN4Q/ICgDkLYTrmD+IRuFS0vgxpbSxCHjIH2wyiL9QNQIVK
+         4blT0Kexygo6Zhoxl9taEgwx1Fk+0bR0yAhX+9BUoLnLdeaOA0fFbclY40A6wPskYCWK
+         uvkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=yi0F+y7jJIcEnhp51XoaUJh/bggFtIrrIORMmwUnU9c=;
-        b=yBX/i/8Lr4mR1ku35LeVNhp76aQ5yIbZK3ijrXXSBDAl+xOh8qq45c+OiwncmfUDMm
-         JEGqbOrynduKK4VRad05TLcvwAexG/TUvEub4yJ/as73fag65jGqOaBcFOxBn+WW+/X9
-         JmFIEctlW28fVPuYIUU8WaWg55+Cb+pJjxnsw5SRX5+DlpJSsLLi3VWJVpsFXdJS5486
-         qJ+WXBNVyYRc473KZ+wRK3iPJE8Gc9QHhHppq2v81pmMzd2DamnOHqlBde2awWzkPr1G
-         YVPlF3ZM/PXWSY5IVl4bQ0UmZAdySHT4GqAVd6//Jpd0rM7UVUwidwSBT73UY747QySP
-         ypag==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=SIlpn6vfoI2PTDFzrEx2LdpaXKs6agX8yJQnljguihI=;
+        b=R34GO5tsWIFxV6yxAQ5pcINTJL8RSWKGHO/RawfJs1ra+d1l2uq/qmmWUHIXiUrgGN
+         jSjpJi1B6k3k7s4wnWXbtwZGfELn1fKfl8ikKTFT5MgPdkIJx8l9aHetldlp04h4G21i
+         XVRAR44XkIrfqgaKf18hpeBuMZFbmhLmNCMvonKfEjbw8gqWxqxT7SG/ZMU9chUg66YP
+         g1U68gExFAUOczYSLh2TfyKIxxffc/ZA+MFiMXlQYgphsTFZ0yGf247Tv3xHPOI5kZea
+         3fwubDPpLWws+e8EnK/i/q/xX1Lp3OdHMCfwqyf7iOT9FPY+5kKZ3Gs1q4ToXaCakJpl
+         ChWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=CQ+i8pE3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dLIhsBaO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s89si6547822qtd.387.2020.04.25.18.51.11
+        by mx.google.com with ESMTPS id t5si7367801qtq.72.2020.04.26.11.12.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 25 Apr 2020 18:51:11 -0700 (PDT)
+        Sun, 26 Apr 2020 11:12:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=CQ+i8pE3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50306 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dLIhsBaO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41178 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jSWRq-00068t-LS
-	for alex.bennee@linaro.org; Sat, 25 Apr 2020 21:51:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55308)
+	id 1jSllA-0002dA-6D
+	for alex.bennee@linaro.org; Sun, 26 Apr 2020 14:12:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34018)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1jSWRd-00068a-5d
- for qemu-arm@nongnu.org; Sat, 25 Apr 2020 21:51:00 -0400
+ (envelope-from <mst@redhat.com>) id 1jSleW-0001cR-KB
+ for qemu-arm@nongnu.org; Sun, 26 Apr 2020 14:05:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1jSWRc-000552-EH
- for qemu-arm@nongnu.org; Sat, 25 Apr 2020 21:50:56 -0400
-Received: from bilbo.ozlabs.org ([203.11.71.1]:45635 helo=ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1jSWRb-0003cf-7b; Sat, 25 Apr 2020 21:50:56 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 498rTZ39NNz9sSd; Sun, 26 Apr 2020 11:50:42 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1587865842;
- bh=jcrtSqWfwSyI1uHbyiBdio1ngK0mM82wIqUWoHCmh+g=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=CQ+i8pE38/klh/MW2DVdjeg3lCihYOI3KIhBpRzFtVsj0K29DWUJzIPURDQeOE1Dz
- XQ9S45VehOzCVcY+e1/N9rvg3QezjQiQLM3xUhmXJNty76eccM+aqQWuTfi/2k9DPZ
- aAH9piDh/ExIvUJdXTATNaFLAw4TThKhN34YJIfI=
-Date: Sun, 26 Apr 2020 10:59:15 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
+ (envelope-from <mst@redhat.com>) id 1jSleU-0001uN-VD
+ for qemu-arm@nongnu.org; Sun, 26 Apr 2020 14:05:16 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:40607
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jSleU-0001qS-93
+ for qemu-arm@nongnu.org; Sun, 26 Apr 2020 14:05:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1587924312;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SIlpn6vfoI2PTDFzrEx2LdpaXKs6agX8yJQnljguihI=;
+ b=dLIhsBaOku4HHDJGpnZvgg8V/wrfY5F1zBzUlHxOhWlLPyBfe5e3M9J0Jlyj8cV93/pRtw
+ Sw4AGHxyyurR3GP5hOLmXTAbf181ElIk3u8dmMzoBXvixz0C5a1oMP7D/HzYBAgpbrZrD4
+ CkY4ap4/uGviimfKdAV9ZR61Ed+17K0=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-452-KJ5VmLPTPXan6eIdXwPLVA-1; Sun, 26 Apr 2020 14:05:10 -0400
+X-MC-Unique: KJ5VmLPTPXan6eIdXwPLVA-1
+Received: by mail-wr1-f71.google.com with SMTP id f2so8823771wrm.9
+ for <qemu-arm@nongnu.org>; Sun, 26 Apr 2020 11:05:10 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=YDqYcORQBwJDnonJ5MHzdzhmgiJ4VlwhJK9Ck0nVzf4=;
+ b=k1pa4GHsZDSL6PT8W/k51S7Gu2idd0GtKb6S29S+/o8cm6kAQgLlsHmom/umi2jbYS
+ hjdH2CevwbNbQVMR7Rpl16OgySUeADQBLsbwzoB73Suuxy0oQtcoR5oTha6/mCg5Ej/5
+ VHl6/RP9GgZpcTq4uJiF7ONE8LSjSxFnFX/k/R4qKmNlyfun8LV2b+IBkKzd9h/3Hk4y
+ bQ30AQHabOnlHFbW8FoawYjwlm6Vq53x+cUBL43Fs+ixPsQjPBuMP9lgWYgSQ654fl1V
+ digYdC9uR8/5uitBs9RfRi4Pp0jje4Pcd+Ngx0PfmWB+WN4fkY5jFAKa4eHzPWOISe70
+ cMcg==
+X-Gm-Message-State: AGi0PubD/vSsfQnsCOts6j4QGbnhB3hRrZ6iLAONOjfndWmCKTGp9jLk
+ SzGIQ8zSgYey1Z16UkeecdU5IwpZIusEdXjT3bEFLpl94w8z01AHL5jWNOVg4OrJNxXbBWQNZpl
+ yLLptkEoZJt1R
+X-Received: by 2002:a1c:c345:: with SMTP id t66mr23309041wmf.189.1587924309574; 
+ Sun, 26 Apr 2020 11:05:09 -0700 (PDT)
+X-Received: by 2002:a1c:c345:: with SMTP id t66mr23309004wmf.189.1587924309195; 
+ Sun, 26 Apr 2020 11:05:09 -0700 (PDT)
+Received: from redhat.com (bzq-109-66-7-121.red.bezeqint.net. [109.66.7.121])
+ by smtp.gmail.com with ESMTPSA id
+ b12sm18822991wro.18.2020.04.26.11.05.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 26 Apr 2020 11:05:08 -0700 (PDT)
+Date: Sun, 26 Apr 2020 14:05:05 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Cornelia Huck <cohuck@redhat.com>
 Subject: Re: [PATCH] hw: add compat machines for 5.1
-Message-ID: <20200426005915.GA13332@umbus.fritz.box>
+Message-ID: <20200426140452-mutt-send-email-mst@kernel.org>
 References: <20200424090314.544-1-cohuck@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="0F1p//8PRICkK4MW"
-Content-Disposition: inline
 In-Reply-To: <20200424090314.544-1-cohuck@redhat.com>
-Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/25 21:50:42
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Received-From: 203.11.71.1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/26 14:05:12
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -89,27 +124,22 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- qemu-devel@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org,
+ Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Os7cLnj7sov4
-
-
---0F1p//8PRICkK4MW
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+X-TUID: 282JgztGO+xK
 
 On Fri, Apr 24, 2020 at 11:03:14AM +0200, Cornelia Huck wrote:
 > Add 5.1 machine types for arm/i440fx/q35/s390x/spapr.
 >=20
 > Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
 > ---
 >=20
@@ -118,7 +148,9 @@ Acked-by: David Gibson <david@gibson.dropbear.id.au>
 > I'll queue this to my s390-next branch, as I'm planning to send a pull
 > req as soon as 5.0 is out; if someone else wants to queue this, we'll
 > figure it out :)
->=20
+
+Feel free to do so.
+
 > ---
 >  hw/arm/virt.c              |  9 ++++++++-
 >  hw/core/machine.c          |  3 +++
@@ -151,7 +183,8 @@ Acked-by: David Gibson <david@gibson.dropbear.id.au>
 >      };
 > =20
 > +    virt_machine_5_1_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+> +    compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len)=
+;
 >      compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
 >  }
 > -DEFINE_VIRT_MACHINE_AS_LATEST(5, 0)
@@ -191,7 +224,8 @@ Acked-by: David Gibson <david@gibson.dropbear.id.au>
 > index 22dee0e76c62..921caa502b85 100644
 > --- a/hw/i386/pc_piix.c
 > +++ b/hw/i386/pc_piix.c
-> @@ -419,7 +419,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+> @@ -419,7 +419,7 @@ static void pc_i440fx_machine_options(MachineClass *m=
+)
 >      machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
 >  }
 > =20
@@ -266,7 +300,8 @@ chineClass *mc)
 > + */
 > +static void spapr_machine_5_1_class_options(MachineClass *mc)
 > +{
-> +    /* Defaults for the latest behaviour inherited from the base class */
+> +    /* Defaults for the latest behaviour inherited from the base class *=
+/
 > +}
 > +
 > +DEFINE_SPAPR_MACHINE(5_1, "5.1", true);
@@ -276,9 +311,11 @@ chineClass *mc)
 >   */
 >  static void spapr_machine_5_0_class_options(MachineClass *mc)
 >  {
-> -    /* Defaults for the latest behaviour inherited from the base class */
+> -    /* Defaults for the latest behaviour inherited from the base class *=
+/
 > +    spapr_machine_5_1_class_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+> +    compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len)=
+;
 >  }
 > =20
 > -DEFINE_SPAPR_MACHINE(5_0, "5.0", true);
@@ -312,7 +349,8 @@ chineClass *mc)
 >  static void ccw_machine_5_0_class_options(MachineClass *mc)
 >  {
 > +    ccw_machine_5_1_class_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+> +    compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len)=
+;
 >  }
 > -DEFINE_CCW_MACHINE(5_0, "5.0", true);
 > +DEFINE_CCW_MACHINE(5_0, "5.0", false);
@@ -348,31 +386,6 @@ moryRegion *rom_memory);
 >  extern GlobalProperty pc_compat_4_2[];
 >  extern const size_t pc_compat_4_2_len;
 > =20
+> --=20
+> 2.21.1
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---0F1p//8PRICkK4MW
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl6k3OAACgkQbDjKyiDZ
-s5JkzBAAiqN2qujfRs00xUvk3cL2MzF5MpDJF448Dfn16FK29dhT5jU7g+OdAWZu
-6Y1ZJdA59q/RTkSkTLRR5AiMZgvIziJsJlqBz6d3lwWE069BEO6GdsJ5shJfzUQ5
-ajcukCLtKFuVRoXc6uy/6Mn+ZcgDs4AJkk+3xdBrhjBXoU74PdG9R/QHWb1IcFDa
-k0/MU2cCSn7hlelctW3ce0pchtjD6j7y77d2oaN1xSwex1faTpBmhExAMiiCt7la
-P0S6NmG20YSI8WA0qk83Y8JqVvHfTn/jZuQQWHKrKldXT6ifP7d66L7tVOtJgkHT
-+ZPWSZ85FnhVrbEKqcY7qgVjNvS2d/OyP72GPSISMDXtmRu8i1MPu66GUVN2Z50O
-1suxsxCePtUbXYtOWwgnArCDC7HBmJ9YwwhwaSOgRhJblro8OlWKUgOy/20Um26/
-P9gcB3ziJuptBJBEFOZuORPDNzgMeqFrSlRNwvVg952gv916coYfuLy0gcNiCqW0
-hsGjrMr78/Cp2NolJp2/jmnhoAkWGsk47aBvUh8Djb0OAQBG1lN97aaBf489QtvX
-L6CFomeHbV8VToUrbZlmGBOwGIU67T5l7KEmVUhJkweW8kVlO54KjIcuhR1lBqM5
-NZcYmmwYiFjQBNRLFIJRU6qbHJ6LJEDj8SNu/DHvJcIVDbpm2xI=
-=YBI4
------END PGP SIGNATURE-----
-
---0F1p//8PRICkK4MW--

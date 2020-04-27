@@ -1,164 +1,151 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4564801lfm;
-        Mon, 27 Apr 2020 13:19:15 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLLAPZJelyO3rSodnZnYGzHrpC2ZHioJoKl1RaHyb09U9snd/OrIvlDPPBd8OATkYRrvQvd
-X-Received: by 2002:ad4:55e7:: with SMTP id bu7mr24522870qvb.88.1588018754091;
-        Mon, 27 Apr 2020 13:19:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588018754; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4567190lfm;
+        Mon, 27 Apr 2020 13:21:17 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLAi7STi2/sYvwKgNce6c40Ovg1YX2M8gxgRLIhy0eufIiTNI05pSgRRLFHDuq1Wg4QT3ZK
+X-Received: by 2002:a05:620a:307:: with SMTP id s7mr21038672qkm.407.1588018877245;
+        Mon, 27 Apr 2020 13:21:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588018877; cv=none;
         d=google.com; s=arc-20160816;
-        b=a07rLgqXp0T8q8dXh16/ySMrcLW2OwCgI9WEbyt+VQHYq1X8VKyX8RIavcoU7MpEiN
-         EBTabZ2PbpBVMVMpk4jGNwszfhwRdkG+k8R1VU9I9IsbzqooOGdQVQycXd5DIW2e4zMG
-         LXT21vH/ESAI+5rT6RYb0wwaIUfTqLQ/wWme/B04V1xVxbanpH2b8tjAc6C/tPgrU8BX
-         TAUbE7QLSKpk5BYWXzI4R2I3hj92z30vw5YnNeojDAxWch2m7l38QMwYEtDtJh265LJ7
-         HPHMXbyr/p2orraE2uZOorsDMVS5FSwWlAXEBwlR7JrNJCCocyU10Y1JjUaYd2nWydLI
-         lKpg==
+        b=CdxKztGA8o09ktvGd6d0MGb6lffD1xWE0TTO+WaNLCWmy9ECikHA8VRGl3C5t5UT3y
+         lwn8E6D9TwBITt1cuOXhscYsupc5gFfNDbYV4Yyg3+RcoWB3pXZOhfvXxAooaxtStVyH
+         9YMILnyNuSxIM3mHibTIz2aruRP+5wgKt/vZiws9eK8e+JOMyADBorOz5fYQIaJHE8pc
+         ATRH4t5w70jG+Qy3ELk7C7Baay9F+lJGUuNLrkgRTDX36A8BdARRifyqkDwJSIOJ8hh5
+         AdoAupq2ZvhvLEzGSsb3JWYlQyWZvoMlKiRr8I9yeQNiGUstUJVli3msJGFaIjvCaJaq
+         4kmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=oAvZ5gj6xLua6e/c7b1iZR0wzMC/YFb04cZhMcsMCvw=;
-        b=UHWPYQEH8NXszj+LZDAL7mx9tt8JYORkK6bIkNbN9CDsvn3He+aaNb9ST8mncT0jh5
-         rkooDwsIQ9TCZLnqLA/meQ2m5lNP/Ghn2OZkOIrD9SoyJtjtnns1/nb0xUqek8AMMbcU
-         +ytKBqlqrixSrm7YVhbAn8+iN+N5Jbn39UgxV37zMXriWraHVrKt2usflG0CvRZv466h
-         +7gX4wBGEhhHOxUMkUoqN2DilFrZGkj6aWPPybhtJkjmPzf0RQYjzXB1choEjzBaFc04
-         SXHSsLgYQyMAvbYs9A85Sm46uapFv730fisN+IDy2ckBT6DbEXezkWDU6EjA0XmKZtyj
-         znYQ==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=ZKMA4DUrK7c5Bm2UntKIlVe26pwp9cmtSO1VkC8/B38=;
+        b=CHD7NIuVLKVnqTOXAXm1Srg7zvuGioxPAzSNOjCpHQDnI/3xwcqIm3QozTZdUoiomg
+         uL6jbr5MBHJpZc7IT74ufag5yv6eJlTcsOQedlAoVdma85A0JasvfL4RTtkjVfKkar1z
+         bctVDKe+78Geuh9CEEOtlNh1i16tUKGVxOiA6m7c8yfc9molUIi44lx7kt347zgmj0HB
+         Ab7dqNCg/OViQx+OVGif8J93JJDUmBxLAoIWCbRAWxbttWDriuRSR7Hp93qoAzk5Y5xR
+         3K0MNsf5cXD0rGEcbw6mPrRy9bZ2uWWrAwHlNXa/4siMR3RZAt4+au3BJ62/vC7b3SmN
+         2Psg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pNT6xcCI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 84si9142161qko.191.2020.04.27.13.19.13
+        by mx.google.com with ESMTPS id i3si6810015qka.366.2020.04.27.13.21.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Apr 2020 13:19:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Apr 2020 13:21:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pNT6xcCI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60632 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:60778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jTADh-00023h-7H
-	for alex.bennee@linaro.org; Mon, 27 Apr 2020 16:19:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50348)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jTAFg-0005Ap-Hy
+	for alex.bennee@linaro.org; Mon, 27 Apr 2020 16:21:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50750)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1jTAC7-0000WL-Rl
- for qemu-devel@nongnu.org; Mon, 27 Apr 2020 16:17:36 -0400
+ (envelope-from <stefanb@linux.ibm.com>) id 1jTAFZ-0005AS-Jn
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 16:21:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1jTAC7-0000xR-1L
- for qemu-devel@nongnu.org; Mon, 27 Apr 2020 16:17:35 -0400
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:46346)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jTAC6-0000vG-JM; Mon, 27 Apr 2020 16:17:34 -0400
-Received: by mail-il1-x144.google.com with SMTP id x2so18057115ilp.13;
- Mon, 27 Apr 2020 13:17:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=oAvZ5gj6xLua6e/c7b1iZR0wzMC/YFb04cZhMcsMCvw=;
- b=pNT6xcCIi0yMLDCxlMKz9gf0akTApPAEYc0uaD7mNOlanJULQs30iODtwdWnNz8sL4
- RdOiaI5tGxyZYpPBpF8r81WcCJjd3BQyR+CFqFlb3MH3NyhLzj7IlwECgSyV8n2okvoz
- NRs/yEPzYkoyS1NJMDNamiNuHHhxVHi3GNicikfLCPt2NVCX2IFlSkR3fiFLx6sLVrsv
- LSc1fuTAg+OzxEYAKbieKgEB2A7X+vMles7KYtzBRxJlB43idz0kTHSWsrb321NV644o
- wJfP283F9BfTFVKKGtPnFzrKPaZpzIYsz1Uc94wDOKYNGYp9jCkU9MiqKZTm4oQXyP9q
- 5A8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=oAvZ5gj6xLua6e/c7b1iZR0wzMC/YFb04cZhMcsMCvw=;
- b=g3oE1K3QNhJ+lSFjnzdJca0E5+l+1TB+hXZgNonx7dlHB6O0jUJ9E2kaRWEbGqavFK
- C/6GYHUrsbZwD3TcZrkFcPGgdLodaxMs2gv54swNv82O2yszWDx7JwGogMCtjtOmI6Oy
- g1vNor+aShj29/SiKDALW6uZi4Ksqhc446V+fJvEr6V2zzW5DIgNwS0ZCKIuhEpbaokN
- AI/aEl++G3JIw23pi2kxmnK0Tlkqrz+d+LC3oMf8agq/Vjy7tHsf+gTCG+jlVZkQnPda
- j9tfbmjmqHZP8O9TNFB10NewqNHJH+pnBOOOHzOMuWmEmAkzvTkY2JRepuT+T+vu0DSr
- y7kA==
-X-Gm-Message-State: AGi0PuY8SdeK7wtJWRRwcHzMSX2jJvCPH74FfcKneF9Bc1T6wxC/bAaS
- NSNuyC4Hn4kBs5DV5/sfYLXjyE6IMKwG321sd8A=
-X-Received: by 2002:a92:d5cf:: with SMTP id d15mr23485349ilq.131.1588018653308; 
- Mon, 27 Apr 2020 13:17:33 -0700 (PDT)
+ (envelope-from <stefanb@linux.ibm.com>) id 1jTAFZ-0004D4-2u
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 16:21:09 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:20684)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1jTAFY-0004Ar-Ik; Mon, 27 Apr 2020 16:21:08 -0400
+Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 03RK3asR052845; Mon, 27 Apr 2020 16:21:05 -0400
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 30mfhdbs9h-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 27 Apr 2020 16:21:05 -0400
+Received: from m0098396.ppops.net (m0098396.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 03RKI7o4092526;
+ Mon, 27 Apr 2020 16:21:04 -0400
+Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com
+ [169.53.41.122])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 30mfhdbs96-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 27 Apr 2020 16:21:04 -0400
+Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
+ by ppma04dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id 03RKKBlC006270;
+ Mon, 27 Apr 2020 20:21:03 GMT
+Received: from b01cxnp22035.gho.pok.ibm.com (b01cxnp22035.gho.pok.ibm.com
+ [9.57.198.25]) by ppma04dal.us.ibm.com with ESMTP id 30mcu6bhcb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 27 Apr 2020 20:21:03 +0000
+Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
+ [9.57.199.110])
+ by b01cxnp22035.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 03RKL34354329676
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 27 Apr 2020 20:21:03 GMT
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 082AAAE063;
+ Mon, 27 Apr 2020 20:21:03 +0000 (GMT)
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id E949DAE05F;
+ Mon, 27 Apr 2020 20:21:02 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+ by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
+ Mon, 27 Apr 2020 20:21:02 +0000 (GMT)
+Subject: Re: [PATCH 0/2] virt: Set tpm-tis-device ppi property to off by
+ default
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ cohuck@redhat.com
+References: <20200427143145.16251-1-eric.auger@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Message-ID: <a5bb0ccb-2dc4-67e2-f0df-98c349e6e94f@linux.ibm.com>
+Date: Mon, 27 Apr 2020 16:21:02 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-References: <20200427181649.26851-1-edgar.iglesias@gmail.com>
- <20200427181649.26851-3-edgar.iglesias@gmail.com>
-In-Reply-To: <20200427181649.26851-3-edgar.iglesias@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 27 Apr 2020 13:08:55 -0700
-Message-ID: <CAKmqyKNFUL31QNh6vpOg65YuOd-=bPa334BJzdH_UO4+kHOZrw@mail.gmail.com>
-Subject: Re: [PATCH v1 02/11] hw/arm: versal: Move misplaced comment
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x144.google.com
-X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::144
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20200427143145.16251-1-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
+ definitions=2020-04-27_14:2020-04-27,
+ 2020-04-27 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 suspectscore=0
+ phishscore=0 lowpriorityscore=0 bulkscore=0 adultscore=0 mlxlogscore=999
+ malwarescore=0 impostorscore=0 clxscore=1011 priorityscore=1501
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004270163
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/27 16:21:06
+X-ACL-Warn: Detected OS   = Linux 3.x [generic]
+X-Received-From: 148.163.156.1
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, Peter Maydell <peter.maydell@linaro.org>,
- Edgar Iglesias <edgar.iglesias@xilinx.com>,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Stefano Stabellini <sstabellini@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DP8p3I36psBl
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: drjones@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bToid10a+8zL
 
-On Mon, Apr 27, 2020 at 11:25 AM Edgar E. Iglesias
-<edgar.iglesias@gmail.com> wrote:
->
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
->
-> Move misplaced comment.
->
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+On 4/27/20 10:31 AM, Eric Auger wrote:
+> Instead of using a compat in the mach-virt machine to force
+> PPI off for all virt machines (PPI not supported by the
+> tpm-tis-device device), let's simply change the default value
+> in the sysbus device.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+There is no change in behavior on any arm machine due to this patch, 
+right? So backporting would not be necessary?
 
-Alistair
 
-> ---
->  hw/arm/xlnx-versal.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index c73b2fe755..cc696e44c0 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -36,7 +36,6 @@ static void versal_create_apu_cpus(Versal *s)
->
->          obj = object_new(XLNX_VERSAL_ACPU_TYPE);
->          if (!obj) {
-> -            /* Secondary CPUs start in PSCI powered-down state */
->              error_report("Unable to create apu.cpu[%d] of type %s",
->                           i, XLNX_VERSAL_ACPU_TYPE);
->              exit(EXIT_FAILURE);
-> @@ -49,6 +48,7 @@ static void versal_create_apu_cpus(Versal *s)
->          object_property_set_int(obj, s->cfg.psci_conduit,
->                                  "psci-conduit", &error_abort);
->          if (i) {
-> +            /* Secondary CPUs start in PSCI powered-down state */
->              object_property_set_bool(obj, true,
->                                       "start-powered-off", &error_abort);
->          }
-> --
-> 2.20.1
->
->
+    Stefan
+
+

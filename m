@@ -1,189 +1,125 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3858138lfm;
-        Mon, 27 Apr 2020 02:07:26 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJE4J4QeZEu5UEkwZeaG+Ls8t+D3QQk0Nvvt9P72ah9flMGK1+vADRFwio7ROI4GJzTX+gk
-X-Received: by 2002:aed:34a5:: with SMTP id x34mr20496437qtd.216.1587978446214;
-        Mon, 27 Apr 2020 02:07:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587978446; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3874151lfm;
+        Mon, 27 Apr 2020 02:27:42 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIzb4qPAP92p7iY9WV8xKMPHn+CiM0ZkRCenVcpB5N7XYRN8HZEaUuA0Wdc/tC7tGVM3LgK
+X-Received: by 2002:a37:67c4:: with SMTP id b187mr21866037qkc.296.1587979662374;
+        Mon, 27 Apr 2020 02:27:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587979662; cv=none;
         d=google.com; s=arc-20160816;
-        b=q7dhWGfrgi9FEua73QCY2gUqBIjjiHPn7YPDmDHPSZ8nAZbT7zi05dF8+f8d7BI+qL
-         fr+jvnpvoVNCG/Qm8+A9W8Bn540DFiGvQvDwz8ewShnAgPv/7pbCn+bg5ZZ6t89dIYRB
-         DbQK5XyffsSWFgviXoOiYxjxrIW9qqXoxyxMjz+nmp6LD/elB0691tmEx+zz8L4cZ472
-         PUthxifYd1iXiV9COXd5Fm5lLF7aTvGo0TyiXIdenRkfBIihCGta7BBqSBwjeiahcw2n
-         gBKupmdhpw3pmAVofC34qThQEYDhKGUUkuDllRT1bdBpy2Y7OkAWuDM1bcKU4FSOVaMu
-         L8Iw==
+        b=KQ2TTZfaYWJ9temB4NY4hao4JBKEqlaYe/pXMFTpfphthD3CmGakvhXW2Pxq6PIcQe
+         6agWXW9p0ab7mrcDlYR+2RwIJcdsZRdQrC8s0Kdlsx5FQOOFMd/NBHgKNsoXHwD7Ur8e
+         4oQIwoKXUJcpkI9N097QzfL3Es8KatHTuFVVamVI/o8d13qzW58pqGO+WHGGIr8RveA7
+         htfaFVVrUUKx0elIDeSw3DDMSOYADIQXWkqgcb0voLvVKlMI78has0HvG9k8WIku3TEv
+         63IOFwf6S1ZybC8AXUdzKcBXYBpCJ6y0dtqCWX/DBKQozPd6V3XY9YgN6fHnww6S/YZP
+         fl5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=GXsvdutah6t9CH5x8BGSgdvoKtSOCPu4HQcKovAZ6iI=;
-        b=aMBHVdoV2vB/hDT17ibR5ltXhWXyAa4Wt7mi4AkjR+r8If80ZvKT2hrAV6N08ysiTF
-         qua0DwP92Yn3AZVIi8eB0xpAuWwMi743IYCPOApW/ewU26g6f/QjnlyuptAEkzw3BVgk
-         DHwcX420RRkwju7yVEAvEDKjwcdPtT0urVBTtai46dAffj1HihT6VIdl3MPYgqfoxCv0
-         AbDQ7aREho3wWYWClRactUmx1zOmVDIdfEKvtmWPN0CeLHtl4ycYfyYtXwZzpNmsj2ZO
-         2qw0n+IEDRAGRn+MN0aOMKo+SZJSFmgUdQ0t24qdrvLHxXAbhU2qKpxnX/nZjUXKzoVt
-         vEag==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=jUW7ujg8+1frTiwl+Vw+rEehy9pjVQUkbwS6EcBELuA=;
+        b=fvTevaMP+b/W/VFd+hpzg1hPjz96kUpAy4PIdnHWUM0FUPa/r1+qVjD5d4vHYrtSB9
+         iUjnCMp3PkXdW9X7ZrZzTELc+bp5i3RNWEY23uUKBn9ArDAz3y3TuOG+CsiWLCOVqN1A
+         ZbgDJ02G647tsdPJW5sDKPQVXoNp5CXYHQcQxtVyMsN+4ATJqsSpvwpMF+i2PKBNxMp5
+         8aoDB+AOjGA/5X8ARI7H6oANr6Wi8xypnt2KTfgE+WOuEoc3HZrLpcer8KVv9QYqp7nY
+         o5CKn5a+tZemXVtzI/y6EniLI9572thAOurOSvbcEqJ2XHfimHtQNn82XRnfpNZwRRD+
+         ERRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eacKIg4C;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=P3PrNN8J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c1si8019927qtq.356.2020.04.27.02.07.26
+        by mx.google.com with ESMTPS id f6si7530009qkl.90.2020.04.27.02.27.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Apr 2020 02:07:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Apr 2020 02:27:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eacKIg4C;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60930 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=P3PrNN8J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33750 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jSzjZ-000745-Lq
-	for alex.bennee@linaro.org; Mon, 27 Apr 2020 05:07:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57134)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jT03B-000623-PG
+	for alex.bennee@linaro.org; Mon, 27 Apr 2020 05:27:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60800)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1jSzie-0006ez-7d
- for qemu-devel@nongnu.org; Mon, 27 Apr 2020 05:06:28 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jT032-000605-P0
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:27:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1jSzid-0000IE-Oi
- for qemu-devel@nongnu.org; Mon, 27 Apr 2020 05:06:27 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:26444
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1jSzid-0000Hl-BG
- for qemu-devel@nongnu.org; Mon, 27 Apr 2020 05:06:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587978386;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=GXsvdutah6t9CH5x8BGSgdvoKtSOCPu4HQcKovAZ6iI=;
- b=eacKIg4CPo+s+8o0E9G2KbrQfeoDBR1R7h1+8P+p5xFn28QGlB1kcP5jPEQmHNJDjPa8VS
- D5cN+9CDmzapRtXzKuBI6l3+rLxXnhdKbzORTYd4KpPlkMideQuYctP7ZPtIZQVxfcYYjd
- vdV2NmySuneOSrGRogWtul0XH71xfaU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-100-A53jBI3fM6-2e5paFePLOA-1; Mon, 27 Apr 2020 05:06:22 -0400
-X-MC-Unique: A53jBI3fM6-2e5paFePLOA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E67E8800688;
- Mon, 27 Apr 2020 09:06:20 +0000 (UTC)
-Received: from gondolin (ovpn-112-184.ams2.redhat.com [10.36.112.184])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3FABC5C1D6;
- Mon, 27 Apr 2020 09:06:12 +0000 (UTC)
-Date: Mon, 27 Apr 2020 11:06:09 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Subject: Re: [PATCH] hw: add compat machines for 5.1
-Message-ID: <20200427110609.36ecaac6.cohuck@redhat.com>
-In-Reply-To: <548cd0de-17d3-204d-7df1-4c8fdccad83c@redhat.com>
-References: <20200424090314.544-1-cohuck@redhat.com>
- <548cd0de-17d3-204d-7df1-4c8fdccad83c@redhat.com>
-Organization: Red Hat GmbH
+ (envelope-from <peter.maydell@linaro.org>) id 1jT032-00012k-DH
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:27:32 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:45914)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jT031-00010z-OE
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:27:32 -0400
+Received: by mail-ot1-x342.google.com with SMTP id e20so25010716otk.12
+ for <qemu-arm@nongnu.org>; Mon, 27 Apr 2020 02:27:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=jUW7ujg8+1frTiwl+Vw+rEehy9pjVQUkbwS6EcBELuA=;
+ b=P3PrNN8JuxA/zfmxELudhpK6rfjeMiYhEnbIJEG/WVsu9zUvFHcEaHvcw0cAbiCDml
+ WSBF8AOU2MdZIJf6AC9Fcx8MA5TmhH96ooHsa+er/MyNJOgxcMUue1AVLRB7ZjP3kEHh
+ NKPBl1VEE7HRL8BXEBCBRMmFkGfWwNdHNHt3CDxtrV8sT0imZQAEf5ZwuYCsUwgcSFJh
+ fVLtIYpvCvS1b7dQ+rDpIkAehz1Spvit22p1vIkbM4yT6Xl6xwT9XaAtpwGRfEte4Pi8
+ heXm8oQimewBWU2PX1/efIdaznISR1ceYQDsrT7SIZHEJlhOLeRon/qiIY1Lqe1BkhtB
+ zj3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=jUW7ujg8+1frTiwl+Vw+rEehy9pjVQUkbwS6EcBELuA=;
+ b=XLGKi++r6n/ogYPgIdk/dDLTxjEpH7h3xcOza4+wwv7C3lD7z73utn+Vmsiei8cMzr
+ hsfQntbVkme/9ttBgSD/tx1GXAMfkwiJhbUwHk5MlXi0u+gB46SdS85vY2O+G87Go1j9
+ SZv8vY7kED4GulkH6zhy7z+TYXgNDcDiXTEEVtYoGHembLWPVVx+m9oKkTB21sYO82O3
+ hw+RtkyG/rPGQxcdWADtQiS7sgMkEGTRDl0Zg00A+QA2caKAin8F4ujlsXTepC8iwhiX
+ sUbPSQuMw41A9bK4hP4/jHTUfOIQAByaXA1NYRAkovGZgDTBc9PQ4YJynQwK8ZziRfvW
+ pWDw==
+X-Gm-Message-State: AGi0PuY+Zkga7jGkYaThv32Hzy+Qg0kfLO3EtCYPCJ9UwXnna132xLQg
+ YdEpITZNEhzbVSNW7nHBJRXRu9bObi6Et0saw2LJXw==
+X-Received: by 2002:aca:c751:: with SMTP id x78mr15234690oif.163.1587979649842; 
+ Mon, 27 Apr 2020 02:27:29 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/26 23:32:35
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-devel@nongnu.org
+References: <20200422043309.18430-1-richard.henderson@linaro.org>
+ <20200422043309.18430-2-richard.henderson@linaro.org>
+In-Reply-To: <20200422043309.18430-2-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 27 Apr 2020 10:27:18 +0100
+Message-ID: <CAFEAcA-hLN349aQYList5f7oBzoKp9CrCOu1+zMXmfKVU_G_cQ@mail.gmail.com>
+Subject: Re: [PATCH v3 01/18] exec: Add block comments for watchpoint routines
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
+X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
+ Malformed IPv6 address (bad octet value).
+ Location : parse_addr6(), p0f-client.c:67
+X-Received-From: 2607:f8b0:4864:20::342
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- qemu-devel@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KzDABtK8lm1h
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 56/2Ubec0epO
 
-On Mon, 27 Apr 2020 09:43:33 +0200
-Auger Eric <eric.auger@redhat.com> wrote:
+On Wed, 22 Apr 2020 at 05:33, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  include/hw/core/cpu.h | 23 +++++++++++++++++++++++
 
-> Hi Connie,
-> 
-> On 4/24/20 11:03 AM, Cornelia Huck wrote:
-> > Add 5.1 machine types for arm/i440fx/q35/s390x/spapr.
-> > 
-> > Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> > ---
-> > 
-> > Still keeping the default cpu model version on x86 at v1.
-> > 
-> > I'll queue this to my s390-next branch, as I'm planning to send a pull
-> > req as soon as 5.0 is out; if someone else wants to queue this, we'll
-> > figure it out :)
-> > 
-> > ---
-> >  hw/arm/virt.c              |  9 ++++++++-
-> >  hw/core/machine.c          |  3 +++
-> >  hw/i386/pc.c               |  3 +++
-> >  hw/i386/pc_piix.c          | 14 +++++++++++++-
-> >  hw/i386/pc_q35.c           | 13 ++++++++++++-
-> >  hw/ppc/spapr.c             | 15 +++++++++++++--
-> >  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
-> >  include/hw/boards.h        |  3 +++
-> >  include/hw/i386/pc.h       |  3 +++
-> >  9 files changed, 71 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 7dc96abf72cf..5e84c09402dd 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -2309,15 +2309,22 @@ static void machvirt_machine_init(void)
-> >  }
-> >  type_init(machvirt_machine_init);
-> >  
-> > +static void virt_machine_5_1_options(MachineClass *mc)
-> > +{
-> > +}
-> > +DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
-> > +
-> >  static void virt_machine_5_0_options(MachineClass *mc)
-> >  {
-> >      static GlobalProperty compat[] = {
-> >          { TYPE_TPM_TIS_SYSBUS, "ppi", "false" },
-> >      };
-> >  
-> > +    virt_machine_5_1_options(mc);
-> > +    compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
-> >      compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));  
-> As spotted by patchew we need { TYPE_TPM_TIS_SYSBUS, "ppi", "false" } to
-> be applied for all machine types 5_0 onwards as our tpm-tis-device does
-> not support PPI. So I guess we need to move compat[] declaration outside
-> of virt_machine_5_0_options and call
-> "compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));"
-> for each  virt_machine_5_*_options? Or is a misuse of compats?
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Ah, that was the error (I could not really make sense of it).
-
-So, if I understand it correctly, ppi needs to be disabled for all virt
-machines. I think the correct way to do this would be to add the
-"compat" prop in virt_machine_class_init() (even if it is not strictly
-compat, as it always needs to be disabled). It can be removed there and
-added to a compat machine should support be added in the future.
-
-Or does anyone have a better idea?
-
+thanks
+-- PMM

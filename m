@@ -1,237 +1,158 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4445353lfm;
-        Mon, 27 Apr 2020 11:24:23 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJwKLF+YTfUC45qjxv4VyCNmcYDfdEygjDuBbq0rEQEpCKgCeGBWiIch1/0DEMgWOpKgqKM
-X-Received: by 2002:ac8:2a76:: with SMTP id l51mr23526850qtl.81.1588011862517;
-        Mon, 27 Apr 2020 11:24:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588011862; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4562816lfm;
+        Mon, 27 Apr 2020 13:17:27 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJXwpFClloQr/V6uQGkN+Qq/PmZKzeFWloGVTznt6/2DV6KKdy27lX+v7iePaqHEOwrZ0b/
+X-Received: by 2002:ac8:2d94:: with SMTP id p20mr24016820qta.121.1588018647274;
+        Mon, 27 Apr 2020 13:17:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588018647; cv=none;
         d=google.com; s=arc-20160816;
-        b=VsfrxPtruwO7VEwRGeawKkjvh54xrwq9KicAj0kUmhsKvfNjKa0zY6AEHSyoL4PYGv
-         pq0mVzvzPjao0P59a73Zq2IKBY5GUOsVjmoRetWtDNmeckWk66lJlo/SD+sIkstAipdM
-         BTzXWBJyJqTx4ENCwHgnxwI+A7sy9DnHsWnf5YbXELGnn5vm+IZDyKlDA8yD97ED4Kmy
-         u+k0ZGBNWq5ZSTaQnKGF7941hLPmPZTt/sKHR0rDnTzXv8veLIZktKXkTi6r+D1EQMk9
-         TTOURKQcTqns9Xb7SU2ujvn7FVMYdsETlbFET/xSOl2rh0mnsLoqEGm1eYPBVAStDzVU
-         3Y7w==
+        b=Aj1OM1qoHbkBurrtKFavMXv5ihZBAtTd3jA/TIZki2+7ZeQHSob5nFqCf49Lq99vpH
+         6gDD1yf/j1QtSM8DCUj2v+/Z2WsCyetFQz1bOu81XaMmtiT0Srwh63C5Y8IQaQEX+ii+
+         H2W6ZH7WwDarfYvbKJW1ohTTTW1MQBXzppFz8n3+w28SymsxOkx+Q5wfkT4CkR7dgTfm
+         LJtFzfNwfgnjyDXy673lpDVu+Y+WIQk4ckUcPswQrpBHXLbpFrRUbo9apC+1obI8Am58
+         TUkMkW/d1B5jFNrgwyKoSJCy/MJ76FLLtS7Ju34wa54plnH784mehSiORSMQocDHR+gj
+         01ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=NRARNgi6yltPpesl7Da869Def6pOC6MvRH+ZwCzHtA0=;
-        b=JDg/TOUItzqz6rD7nQdoeXkBQohBl18hDAUgeZkzl5udDFDFviaoS+wvgpM9MGip2H
-         /S9L+nezvMY7xYkmGxefS10QNcXpbBx+m8NScj0A4YCGW6SZ3/rF+hjTijihOk3rl/1y
-         ipiJELd+6UdORaFMmLg9+etdBMsfyrCT2MY0APBfrSsSE52raI7Xyx/Ncito+nVX2O1n
-         ljfUU5PI1ZDhpbfEAbJS55XzWRekmjbu5JuXGcawRpkognLTMkYUQY+lRVPqoS5I7xZl
-         gLGZVtifVjQunuGL38sIZm21a8Kp1z9TLFBu/3PdD7zu/Yzy9f1wJUpYl9QkaIMzvxQP
-         drzQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Coyf2FtT8xJGe7dQak7YvdPIn882vu160FqkJpe4Gjk=;
+        b=o4Is1J8DjsvPv4Rtnqi8h0Sq6zNQ3kDYH7e+lV3uwnmO1MxusBRTvTMhsyn0vTE3nQ
+         WaiFlr/V9SISMSz+8lVadKatpDFKhJnDc2p8JyODfzzhEfxTBc0pAOd6/9C7XLTzqjAY
+         3wj5Ik2bnKUQOCz/VdtujM9hs0pzfOzVDmakrMrTgQ9k4VXoDi6ONu/UC3Hi4+jyQylp
+         2iGniGxOSP4ymOEAl6KPND+ONvh/JoJWhevrk06KyQy+MjK3hiEUS5m0h8YJUsxGa98t
+         +XUVOJE5eJFfepKk3NIpWfUMo+WJpUgQVU2p+QmRL/+Lz0zPJ3QCmPm3RucMfrcrTJCt
+         paFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QJbxbtxf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nP6sCS4I;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u4si9076061qvq.128.2020.04.27.11.24.22
+        by mx.google.com with ESMTPS id g20si1016492qvx.171.2020.04.27.13.17.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Apr 2020 11:24:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Apr 2020 13:17:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QJbxbtxf;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nP6sCS4I;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57726 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60552 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jT8QW-00030S-Pl
-	for alex.bennee@linaro.org; Mon, 27 Apr 2020 14:24:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34942)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jTABy-00008K-LG
+	for alex.bennee@linaro.org; Mon, 27 Apr 2020 16:17:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50328)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jT8JU-0000Li-GE
- for qemu-devel@nongnu.org; Mon, 27 Apr 2020 14:17:04 -0400
+ (envelope-from <alistair23@gmail.com>) id 1jTABk-00007d-Jg
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 16:17:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jT8JU-0005VM-2E
- for qemu-devel@nongnu.org; Mon, 27 Apr 2020 14:17:04 -0400
-Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:46788)
+ (envelope-from <alistair23@gmail.com>) id 1jTABk-0000Be-8r
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 16:17:12 -0400
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:38851)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jT8JT-0005Lt-Ix; Mon, 27 Apr 2020 14:17:03 -0400
-Received: by mail-lf1-x143.google.com with SMTP id g10so14591731lfj.13;
- Mon, 27 Apr 2020 11:17:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jTABi-0008QF-NK; Mon, 27 Apr 2020 16:17:10 -0400
+Received: by mail-il1-x143.google.com with SMTP id c18so2782894ile.5;
+ Mon, 27 Apr 2020 13:17:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=NRARNgi6yltPpesl7Da869Def6pOC6MvRH+ZwCzHtA0=;
- b=QJbxbtxfPR7HAOc7TG/Wuck/2QsWCq5dUBoLKfEwM3NmBvBms30LYe++33dqM81sTm
- RcwZ53c4cqqPJsETYbzAkG+QzjWV7vLqlRR7dEDvU0o19auqpD99g2AZp9+euLybcORD
- 2hT1sf2wCtsWMlXaBLT8NiT8HyNAZPm2PwQ65Way88pkHdlLhnZvbF80Nc33P31smi+I
- ws1iiQyx7tZG76XCCU43Bd6t+RxPfM6PPH6XTfqdiGr6QOp/Ot5Hzxu/nohEVbJXZfAP
- k6Tq20wVu0eqD/y8iJ35t8IqRr9Xfy/p3f6UxCDiJ7N7sdZTBpJBPdLLCrPGqzR5wsPA
- RW6w==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Coyf2FtT8xJGe7dQak7YvdPIn882vu160FqkJpe4Gjk=;
+ b=nP6sCS4I3BtkZAwk0sA8b5sxf+o8opG0I3qIST120ewhCNoYkZdwS7M8XGBGdvNhYd
+ GOlJKtJm4J2uYrIaYRa4im2zrSnksVWeZJGd8t2pzzhWRF2AaQvxCRm+nQl9ruFIlVxI
+ pfSiiUlh25+LdSmGAYDuvpfZeacJM/MrdKfNBsZvHcMh2UvxBvwVHxurcldE7z1cpvGm
+ PpOUOiC9z2afW+piwl6W032L1yVhvI2SBqnmIBllR8ByzCV6K2/89P9vhZbYBy4r/Ntj
+ d/SaSVm2HxMiyOTNPOeaXnzBmel6f72Ub/XofWQJqXXzj6vcF8yCYCrhYcERImXj8TNZ
+ K3yw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=NRARNgi6yltPpesl7Da869Def6pOC6MvRH+ZwCzHtA0=;
- b=aLp0j6xcJI3yJnzrx+iTTAEYkLnv78+cYxfU/39IUObWpPZcDEM/3FvdimfHh7ddf3
- z55tsdseyDlkqbwo3/+51QcGJlSguDezq13akKFtJ6/mqhsPT55IiBk8aMDLbPLVqrXp
- fE69ke4bLBVCGPR4wpr5eODO1ax10CWhZM1ft+OJ0bm5BaBSu+tK/0eEU6y+HG6HGmlV
- LvBawphxb3LiDKnbX98ieoCXNHy5qSDJUmss+LOZ6AtLzaTT7GEImdWhkPXEsdke3vmz
- BMbOjEAEsbnBtg4yrlpb0jzONoMdBt2coEJVYBj4o5F7wUHU0M/Gv2WuMLEQaBiUsJA6
- GzWA==
-X-Gm-Message-State: AGi0PuY1X7qP+LoMHi88r06kT4vJhue1AfEYMacDvmL0NRnKIFaXKsRe
- ziGZHPG6Wpna1HbcEvBUP7hTFBAZ3BY=
-X-Received: by 2002:a19:c78d:: with SMTP id
- x135mr15866950lff.151.1588011421336; 
- Mon, 27 Apr 2020 11:17:01 -0700 (PDT)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id y25sm11861495lfy.59.2020.04.27.11.17.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Apr 2020 11:17:00 -0700 (PDT)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v1 08/11] hw/arm: versal: Add support for SD
-Date: Mon, 27 Apr 2020 20:16:46 +0200
-Message-Id: <20200427181649.26851-9-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200427181649.26851-1-edgar.iglesias@gmail.com>
-References: <20200427181649.26851-1-edgar.iglesias@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Coyf2FtT8xJGe7dQak7YvdPIn882vu160FqkJpe4Gjk=;
+ b=mLbnevHd4aE3OEYBvczBUHbLRd9Z+9IgWKVjVYXwGyr9wk8dpWgN5UmI1QQaYiEIJp
+ Ioz0IYMPu5gU9BM5EaUUrSfsQTKLYLXAoVYc7SMGaKhQfaKmfeVuowHfeELJOw/DhHn+
+ 7y13hNYge7atmIgJxmicAiUy+THlBWxKTJlAWAJLbZBOQ3h7xnMyIrvGmoRex/yUJOJP
+ ARyIplony6ZBxFPl0f0kLUF0LLKjeakbWvNJJt2XVrAzMiGQA+8W1CKtylE4DSNPGQXH
+ /LAhiJo6dtj/Cu3xwIHNe2FhrJLUWU7WLcPrCDVp+5o9xVeh3lVQHLt+Azo0hYKqZWm3
+ xikA==
+X-Gm-Message-State: AGi0PuaWBr+zRwxWj+zxTMTHfP0G3MIcVXuMwc2MHaPgQbdXpr5QXKpZ
+ m67tqnMED4xKexAEE5KI8qxITLVQB1+qU1LJpwY=
+X-Received: by 2002:a92:aa07:: with SMTP id j7mr3750609ili.40.1588018628827;
+ Mon, 27 Apr 2020 13:17:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::143;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x143.google.com
+References: <20200427181649.26851-1-edgar.iglesias@gmail.com>
+ <20200427181649.26851-2-edgar.iglesias@gmail.com>
+In-Reply-To: <20200427181649.26851-2-edgar.iglesias@gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 27 Apr 2020 13:08:30 -0700
+Message-ID: <CAKmqyKNEH6vYoRxaM1SGEYjK9Lv6hxm09zHSgGPt1da8+sRYkg@mail.gmail.com>
+Subject: Re: [PATCH v1 01/11] hw/arm: versal: Remove inclusion of
+ arm_gicv3_common.h
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x143.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::143
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::143
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
- edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
- philmd@redhat.com, luc.michel@greensocs.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c2Q0dLLJzyDR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: figlesia@xilinx.com, Peter Maydell <peter.maydell@linaro.org>,
+ Edgar Iglesias <edgar.iglesias@xilinx.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kUcDnvAeohY5
 
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+On Mon, Apr 27, 2020 at 11:17 AM Edgar E. Iglesias
+<edgar.iglesias@gmail.com> wrote:
+>
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+>
+> Remove inclusion of arm_gicv3_common.h, this already gets
+> included via xlnx-versal.h.
+>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-Add support for SD.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
----
- hw/arm/xlnx-versal.c         | 31 +++++++++++++++++++++++++++++++
- include/hw/arm/xlnx-versal.h | 12 ++++++++++++
- 2 files changed, 43 insertions(+)
+Alistair
 
-diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-index c8a296e2e0..e263bdf77a 100644
---- a/hw/arm/xlnx-versal.c
-+++ b/hw/arm/xlnx-versal.c
-@@ -210,6 +210,36 @@ static void versal_create_admas(Versal *s, qemu_irq *pic)
-     }
- }
- 
-+#define SDHCI_CAPABILITIES  0x280737ec6481 /* Same as on ZynqMP.  */
-+static void versal_create_sds(Versal *s, qemu_irq *pic)
-+{
-+    int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(s->pmc.iou.sd); i++) {
-+        DeviceState *dev;
-+        MemoryRegion *mr;
-+
-+        sysbus_init_child_obj(OBJECT(s), "sd[*]",
-+                              &s->pmc.iou.sd[i], sizeof(s->pmc.iou.sd[i]),
-+                              TYPE_SYSBUS_SDHCI);
-+        dev = DEVICE(&s->pmc.iou.sd[i]);
-+
-+        object_property_set_uint(OBJECT(dev),
-+                                 3, "sd-spec-version", &error_fatal);
-+        object_property_set_uint(OBJECT(dev), SDHCI_CAPABILITIES, "capareg",
-+                                 &error_fatal);
-+        object_property_set_uint(OBJECT(dev), UHS_I, "uhs", &error_fatal);
-+        qdev_init_nofail(dev);
-+
-+        mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
-+        memory_region_add_subregion(&s->mr_ps,
-+                                    MM_PMC_SD0 + i * MM_PMC_SD0_SIZE, mr);
-+
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0,
-+                           pic[VERSAL_SD0_IRQ_0 + i * 2]);
-+    }
-+}
-+
- /* This takes the board allocated linear DDR memory and creates aliases
-  * for each split DDR range/aperture on the Versal address map.
-  */
-@@ -292,6 +322,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
-     versal_create_uarts(s, pic);
-     versal_create_gems(s, pic);
-     versal_create_admas(s, pic);
-+    versal_create_sds(s, pic);
-     versal_map_ddr(s);
-     versal_unimp(s);
- 
-diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-index 426b66449d..e11693e29d 100644
---- a/include/hw/arm/xlnx-versal.h
-+++ b/include/hw/arm/xlnx-versal.h
-@@ -14,6 +14,7 @@
- 
- #include "hw/sysbus.h"
- #include "hw/arm/boot.h"
-+#include "hw/sd/sdhci.h"
- #include "hw/intc/arm_gicv3.h"
- #include "hw/char/pl011.h"
- #include "hw/dma/xlnx-zdma.h"
-@@ -26,6 +27,7 @@
- #define XLNX_VERSAL_NR_UARTS   2
- #define XLNX_VERSAL_NR_GEMS    2
- #define XLNX_VERSAL_NR_ADMAS   8
-+#define XLNX_VERSAL_NR_SDS     2
- #define XLNX_VERSAL_NR_IRQS    192
- 
- typedef struct Versal {
-@@ -58,6 +60,13 @@ typedef struct Versal {
-         } iou;
-     } lpd;
- 
-+    /* The Platform Management Controller subsystem.  */
-+    struct {
-+        struct {
-+            SDHCIState sd[XLNX_VERSAL_NR_SDS];
-+        } iou;
-+    } pmc;
-+
-     struct {
-         MemoryRegion *mr_ddr;
-         uint32_t psci_conduit;
-@@ -80,6 +89,7 @@ typedef struct Versal {
- #define VERSAL_GEM1_IRQ_0          58
- #define VERSAL_GEM1_WAKE_IRQ_0     59
- #define VERSAL_ADMA_IRQ_0          60
-+#define VERSAL_SD0_IRQ_0           126
- 
- /* Architecturally reserved IRQs suitable for virtualization.  */
- #define VERSAL_RSVD_IRQ_FIRST 111
-@@ -129,6 +139,8 @@ typedef struct Versal {
- #define MM_FPD_CRF                  0xfd1a0000U
- #define MM_FPD_CRF_SIZE             0x140000
- 
-+#define MM_PMC_SD0                  0xf1040000U
-+#define MM_PMC_SD0_SIZE             0x10000
- #define MM_PMC_CRP                  0xf1260000U
- #define MM_PMC_CRP_SIZE             0x10000
- #endif
--- 
-2.20.1
-
+> ---
+>  hw/arm/xlnx-versal.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+> index 94460f2343..c73b2fe755 100644
+> --- a/hw/arm/xlnx-versal.c
+> +++ b/hw/arm/xlnx-versal.c
+> @@ -20,7 +20,6 @@
+>  #include "hw/arm/boot.h"
+>  #include "kvm_arm.h"
+>  #include "hw/misc/unimp.h"
+> -#include "hw/intc/arm_gicv3_common.h"
+>  #include "hw/arm/xlnx-versal.h"
+>  #include "hw/char/pl011.h"
+>
+> --
+> 2.20.1
+>
+>

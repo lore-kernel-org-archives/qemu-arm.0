@@ -1,103 +1,102 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3875541lfm;
-        Mon, 27 Apr 2020 02:29:32 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIcaPIClxzkz0oJ5QvQ7ZfQovJd4SrfmDPULfx7Rz0fNJ8gz7o4AwWbPh3lpW5J7NWwu7gI
-X-Received: by 2002:ac8:3928:: with SMTP id s37mr22118959qtb.115.1587979772658;
-        Mon, 27 Apr 2020 02:29:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587979772; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3891420lfm;
+        Mon, 27 Apr 2020 02:48:13 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJyEWGvt8MJPm1P5H/r2DQIsBn5czcxmXLOjg2zC1iiia0bQ3ogMTOGuvNEcqP5DSQtmk07
+X-Received: by 2002:ac8:2db9:: with SMTP id p54mr21549364qta.125.1587980893047;
+        Mon, 27 Apr 2020 02:48:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587980893; cv=none;
         d=google.com; s=arc-20160816;
-        b=AssiD8eWcn6lprpcCU98pIVe2gGYomYYU+CAD0hmH3xHdl20KK4HbHqJ3jbfC5TPhH
-         Fcn1UxuTK9QQ11eO3wzUdxW2l2iqsyzT6T0qU5LHyK7rvLJtjjI1lYeizdYcAIryhs/a
-         wZ3uU8iCMWX0vzPQ35S0ymC/4SmE6PQooG+I/QiBAPdcD1hy/IIPMJB9/pNi+JHv85gF
-         lzlDE8uiwGRrpXuMo7neAIwyg6s6woh3AmudULBTSfTeKw6e6ODb9OvDJqUzX+df8rl0
-         H2BfqCyERBoizobY2Ma3seMd11FBCBNTimVMJCQFvWvz1OEA6HBFSGcWy5z1RUxrm95u
-         Izfg==
+        b=CMM7mb6uU1rzSrA2TeDUt4VaNrAhsaqiI0zhK2oCDOLZFQnnRn/r/89na25iJMRefC
+         OuA6nPWcjYwEik97QBJnoCtPFjuC7BdnIiZy8VQbxi+zvd3ag+azmnoHYDmTTwZ6vOCG
+         rv/knS8gQ1utlmBQCpUtOiy40HfYaWgrFQusJJ4wq6lbgOXbNJlmxoQIih4eCHiqYP26
+         XY1RpM2dlGHSzX+XOnKXb/64cbUifVw+cNd63ILWC2ujbcf1mO+4EUIEeBFHX3W9OqdA
+         FDKYNZRiU/VHEbuWDJikfZGJ1vg75ofmfvqMqNTlDBFfSFX+KlqkijHoEkj3YiYDtWsN
+         QJVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=9/Pvvd9YuVSkjU51nhuEjAcNwQ3wEACDyG45mPpqrv0=;
-        b=e3fRuLfhmtePyG8blRV6+z1Wh8YX8bbjO2AaVbPY/Uvb1asZBVqfR/aQiU8mLvgQGr
-         1kX+ufT9vHIoFlDMWwVrVmT/0xkPDHFZZgeUvNMK+hHpalN7BF8m7KPmNEbhOWpKUidw
-         1iRVtF9CCdZC78nNRxNqwYld3MsM6IKMqaEm3DQ5+dadCmfjJ99cVzVoyR10XHuoGkUt
-         sLchH8rijc24YaBnMwilUzmFTK8rxY0uxV3GzSycOaH3Y8AZD0Y4FUYKbvzeFI/bFQg1
-         /Er3BrsHcH4lOo+n/xIwZfbBjoebJkRhDu4/oBCfaNdl2vUnmkl0LaGvvZsnjQ/DriEg
-         OZJw==
+        bh=qLLozm+WjNC4qFdEhxcPREzCwkfElD1ZJ3jbX1lYfPE=;
+        b=XTHUk8Xaoc6ICw9U+CBKYVcDtTkWmpglAf9RTlMxEXM4VhNrfiAEpmMO9K/D1/HD0h
+         pQBeQWeEgT7KYQt4S+Mqzu8NMM8/AWgRyN3qNQvz5FsltbGjC7n72lQXkChY0qlzW2l+
+         Y+1OyyLVud2FKvfVmJU7FZX5cvGv2S5kVPakOj2EyKsto8Cmw9xGj1N6N6XOtu0OjVft
+         s9TeHgP/Yz5rqn0laotiLd0A+nMVxYjam9rf8eI5vlM0Jv+IZcp/eszhxUFiSVGP5y5M
+         YoK60Gj6XoobV5+vvp8DIIYdVjPd33KzWlRy/95UdQo9whKz7F3znrTvmol+X2hLWkFe
+         phNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=D5gCg8QI;
+       dkim=fail header.i=@linaro.org header.s=google header.b=uwbvparh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v16si7962611qkv.100.2020.04.27.02.29.32
+        by mx.google.com with ESMTPS id s5si8421507qvq.2.2020.04.27.02.48.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Apr 2020 02:29:32 -0700 (PDT)
+        Mon, 27 Apr 2020 02:48:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=D5gCg8QI;
+       dkim=fail header.i=@linaro.org header.s=google header.b=uwbvparh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33896 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35264 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jT04x-0007p0-Tk
-	for alex.bennee@linaro.org; Mon, 27 Apr 2020 05:29:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32868)
+	id 1jT0N2-00075B-DU
+	for alex.bennee@linaro.org; Mon, 27 Apr 2020 05:48:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36140)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jT04o-0007oj-Hl
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:29:23 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jT0LP-0005R1-Hm
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:46:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jT04Z-0001U4-TK
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:29:22 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:44404)
+ (envelope-from <peter.maydell@linaro.org>) id 1jT0LE-0000YG-Dd
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:46:31 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:37347)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jT04Z-0001Td-HB
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:29:07 -0400
-Received: by mail-ot1-x344.google.com with SMTP id j4so25052088otr.11
- for <qemu-arm@nongnu.org>; Mon, 27 Apr 2020 02:29:07 -0700 (PDT)
+ id 1jT0LD-0000Xr-PU
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:46:19 -0400
+Received: by mail-ot1-x343.google.com with SMTP id z17so25147807oto.4
+ for <qemu-arm@nongnu.org>; Mon, 27 Apr 2020 02:46:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9/Pvvd9YuVSkjU51nhuEjAcNwQ3wEACDyG45mPpqrv0=;
- b=D5gCg8QIGFiGkQEquebuEjKyaF5PZSBF3XjnS3x3CdKEzB5EbqrFXBckysCBDkvW6g
- iEZTim8IAftsUU1ShYQZgeQK+LUwKZ0+OFNz79vYMiUlIy7Z1dVXPIBE0R8pkgxRoYhV
- G8jUphgfJBSZK4iDOAntJQrdDwel/1rudWqV2SZ0NohwUJAPRL82N4odno1F3ImV5aA8
- ZC/xfHQvCz/MBF3fxM71Fu+MGbMFTXx8BA5kIoCMLQsWWE3q/JxDzyIerd/oM0p4Jy5V
- vYUyMA49FY3CipRS6wCV3iyIQ41jLsCzMLYWXq/uVMN6xqGKAQWr7XIuM98mwx6iHOfp
- 9c6w==
+ :cc; bh=qLLozm+WjNC4qFdEhxcPREzCwkfElD1ZJ3jbX1lYfPE=;
+ b=uwbvparharVA5hoFzvO40fNXV5cTWJnRqNBopiR0Aw2l2Bk4mk4AoyZkq8AbMvXLEL
+ mE4/BBkGO4tSWyHePkOSQ9zKRvYXwO/dSk2KQF2nFsgu5DTgYT7qf/bJWcXo7ztFTn6p
+ TU+8LC8Ifo9q/AwmngWW5DLVRZvZgdRqLCC9WOnkYje2gJA2xuOK69hxPOyQ4k6fXYJV
+ 35Y5wZnPtgdVDu2jaqTg3lcIcK8RIXN3UugC6lX5u2KG8wVw42BKk3zrdERkGxcxXmvt
+ Wh2Q474+M5mb9IoIOOkrBYJG2S7yuEWcnz2RHw9dWNBIuV8uF1u/BGb7buYKEuNTL119
+ zB2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=9/Pvvd9YuVSkjU51nhuEjAcNwQ3wEACDyG45mPpqrv0=;
- b=aMy5dG67oalJ/+xS76st8njK/F9LndOtk3sUA3xyaDNXJsZcbR/JVSPq0MokiYeJry
- 685wP7lybEFiTZbKLAEiW7XxjsVD7ByDCHq4jgR8ynBkIOm2MHXlpGm5EIf3jAIpYgBM
- LhWgZTQK8uqJnHFFDvU9uhM2or0Tt2b4jHG9pPmBr9erohABkjrylQNpPsHwvdqUdmou
- lYtEoP0L6HVvm0RvxN75caGLeUFgBJcCNF8JOZRmp36JaEyObq2Ehxm9764eqGJpXauE
- HD2zTZS8+vrRopRQ1GC6bkLxT2pUaC4MGXMujKDTKe8f+HmiVens22muXs4UiwyJ5d4j
- X2aQ==
-X-Gm-Message-State: AGi0Pub8Pg8nFJBZW8dpWCjdjw3wz9O696y1DwTaPQQKZt5BOfvDp/wF
- eM30r3pFDcVbauKfY8+x2TE80QsZ6Y59r7V4L/xEfA==
-X-Received: by 2002:a05:6830:1e4e:: with SMTP id
- e14mr17254586otj.91.1587979746399; 
- Mon, 27 Apr 2020 02:29:06 -0700 (PDT)
+ bh=qLLozm+WjNC4qFdEhxcPREzCwkfElD1ZJ3jbX1lYfPE=;
+ b=YVqYd+CeYOWkoMYge37YzzPnrxJ4QRFCVljXoolhDLjIIevGJSwjzJo/bNw9ppdKtx
+ hMJAGa9ZsP7R6AgzmSwUULjuB0o+aVbd5Dj3Xqlwg3q8yVbj+Nc4EZqL/zxWIpxwwhTk
+ 6FarjFDih9ZPSyA1b1fEEECw39NVBRVtxsW7qMBU2gtExVqfDoJ5TWTNF66AMuBhIvmz
+ Wb+xgwGcvjnhYnIVfgFNOm1vy5oO68I+AEfy8F2QwkXiJcUUtCMmaBL92PdH1mGkbwz+
+ 9FY+1CVASYVF0X0LJMXi7ZNgsHN261xUXYQQpElCsmd3Lqo5vvmZnqhwZbOH/omLp8P1
+ n9bg==
+X-Gm-Message-State: AGi0PubDvgeb8udeGkeeEWOthtonNYcIK5ix5UjDyyGVsQXU5IFrDbqo
+ ZxNN6+YURQhZVqJ1D7/4SahSm307LG9OLzp8VubAHA==
+X-Received: by 2002:a9d:2c08:: with SMTP id f8mr18044018otb.135.1587980777230; 
+ Mon, 27 Apr 2020 02:46:17 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200422043309.18430-1-richard.henderson@linaro.org>
- <20200422043309.18430-3-richard.henderson@linaro.org>
-In-Reply-To: <20200422043309.18430-3-richard.henderson@linaro.org>
+ <20200422043309.18430-6-richard.henderson@linaro.org>
+In-Reply-To: <20200422043309.18430-6-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Apr 2020 10:28:55 +0100
-Message-ID: <CAFEAcA-aG-vRG14pTbpGnRqzJjGFiuTgKQ0qm-OdLOFPmVBYEA@mail.gmail.com>
-Subject: Re: [PATCH v3 02/18] exec: Fix cpu_watchpoint_address_matches address
- length
+Date: Mon, 27 Apr 2020 10:46:06 +0100
+Message-ID: <CAFEAcA_nX69ppW-w3Fs99b4yqfQ-mfjBQHU2PrAHsU6Wam1Zqg@mail.gmail.com>
+Subject: Re: [PATCH v3 05/18] accel/tcg: Add endian-specific cpu_{ld,
+ st}* operations
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::344
+X-Received-From: 2607:f8b0:4864:20::343
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,18 +111,157 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z1C40esZ+BDI
+X-TUID: brjL+NSwDYsc
 
 On Wed, 22 Apr 2020 at 05:33, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> The only caller of cpu_watchpoint_address_matches passes
-> TARGET_PAGE_SIZE, so the bug is not currently visible.
+> We currently have target-endian versions of these operations,
+> but no easy way to force a specific endianness.  This can be
+> helpful if the target has endian-specific operations, or a mode
+> that swaps endianness.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  exec.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  docs/devel/loads-stores.rst |  39 +++--
+>  include/exec/cpu_ldst.h     | 277 +++++++++++++++++++++++++++---------
+>  accel/tcg/cputlb.c          | 236 ++++++++++++++++++++++--------
+>  accel/tcg/user-exec.c       | 211 ++++++++++++++++++++++-----
+>  4 files changed, 587 insertions(+), 176 deletions(-)
+>
+> diff --git a/docs/devel/loads-stores.rst b/docs/devel/loads-stores.rst
+> index 0d99eb24c1..9a944ef1af 100644
+> --- a/docs/devel/loads-stores.rst
+> +++ b/docs/devel/loads-stores.rst
+> @@ -97,9 +97,9 @@ function, which is a return address into the generated code.
+>
+>  Function names follow the pattern:
+>
+> -load: ``cpu_ld{sign}{size}_mmuidx_ra(env, ptr, mmuidx, retaddr)``
+> +load: ``cpu_ld{sign}{size}{end}_mmuidx_ra(env, ptr, mmuidx, retaddr)``
+>
+> -store: ``cpu_st{size}_mmuidx_ra(env, ptr, val, mmuidx, retaddr)``
+> +store: ``cpu_st{size}{end}_mmuidx_ra(env, ptr, val, mmuidx, retaddr)``
+>
+>  ``sign``
+>   - (empty) : for 32 or 64 bit sizes
+> @@ -112,9 +112,14 @@ store: ``cpu_st{size}_mmuidx_ra(env, ptr, val, mmuidx, retaddr)``
+>   - ``l`` : 32 bits
+>   - ``q`` : 64 bits
+>
+> +``end``
+> + - (empty) : for target endian, or 8 bit sizes
+> + - ``_be`` : big endian
+> + - ``_le`` : little endian
+> +
+>  Regexes for git grep:
+> - - ``\<cpu_ld[us]\?[bwlq]_mmuidx_ra\>``
+> - - ``\<cpu_st[bwlq]_mmuidx_ra\>``
+> + - ``\<cpu_ld[us]\?[bwlq](_[bl]e)\?_mmuidx_ra\>``
+> + - ``\<cpu_st[bwlq](_[bl]e)\?_mmuidx_ra\>``
+>
+>  ``cpu_{ld,st}*_data_ra``
+>  ~~~~~~~~~~~~~~~~~~~~~~~~
+> @@ -129,9 +134,9 @@ be performed with a context other than the default.
+>
+>  Function names follow the pattern:
+>
+> -load: ``cpu_ld{sign}{size}_data_ra(env, ptr, ra)``
+> +load: ``cpu_ld{sign}{size}{end}_data_ra(env, ptr, ra)``
+>
+> -store: ``cpu_st{size}_data_ra(env, ptr, val, ra)``
+> +store: ``cpu_st{size}{end}_data_ra(env, ptr, val, ra)``
+>
+>  ``sign``
+>   - (empty) : for 32 or 64 bit sizes
+> @@ -144,9 +149,14 @@ store: ``cpu_st{size}_data_ra(env, ptr, val, ra)``
+>   - ``l`` : 32 bits
+>   - ``q`` : 64 bits
+>
+> +``end``
+> + - (empty) : for target endian, or 8 bit sizes
+> + - ``_be`` : big endian
+> + - ``_le`` : little endian
+> +
+>  Regexes for git grep:
+> - - ``\<cpu_ld[us]\?[bwlq]_data_ra\>``
+> - - ``\<cpu_st[bwlq]_data_ra\>``
+> + - ``\<cpu_ld[us]\?[bwlq](_[bl]e)\?_data_ra\>``
+> + - ``\<cpu_st[bwlq](_[bl]e)\?_data_ra\>``
+>
+>  ``cpu_{ld,st}*_data``
+>  ~~~~~~~~~~~~~~~~~~~~~
+> @@ -163,9 +173,9 @@ the CPU state anyway.
+>
+>  Function names follow the pattern:
+>
+> -load: ``cpu_ld{sign}{size}_data(env, ptr)``
+> +load: ``cpu_ld{sign}{size}{end}_data(env, ptr)``
+>
+> -store: ``cpu_st{size}_data(env, ptr, val)``
+> +store: ``cpu_st{size}{end}_data(env, ptr, val)``
+>
+>  ``sign``
+>   - (empty) : for 32 or 64 bit sizes
+> @@ -178,9 +188,14 @@ store: ``cpu_st{size}_data(env, ptr, val)``
+>   - ``l`` : 32 bits
+>   - ``q`` : 64 bits
+>
+> +``end``
+> + - (empty) : for target endian, or 8 bit sizes
+> + - ``_be`` : big endian
+> + - ``_le`` : little endian
+> +
+>  Regexes for git grep
+> - - ``\<cpu_ld[us]\?[bwlq]_data\>``
+> - - ``\<cpu_st[bwlq]_data\+\>``
+> + - ``\<cpu_ld[us]\?[bwlq](_[bl]e)\?_data\>``
+> + - ``\<cpu_st[bwlq](_[bl]e)\?_data\+\>``
+>
+>  ``cpu_ld*_code``
+>  ~~~~~~~~~~~~~~~~
+> diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
+> index 53de19753a..1ba515bfcc 100644
+> --- a/include/exec/cpu_ldst.h
+> +++ b/include/exec/cpu_ldst.h
+> @@ -26,12 +26,18 @@
+>   * The syntax for the accessors is:
+>   *
+>   * load:  cpu_ld{sign}{size}_{mmusuffix}(env, ptr)
+> + *        cpu_ld{sign}{size}{end}_{mmusuffix}(env, ptr)
+>   *        cpu_ld{sign}{size}_{mmusuffix}_ra(env, ptr, retaddr)
+> + *        cpu_ld{sign}{size}{end}_{mmusuffix}_ra(env, ptr, retaddr)
+>   *        cpu_ld{sign}{size}_mmuidx_ra(env, ptr, mmu_idx, retaddr)
+> + *        cpu_ld{sign}{size}{end}_mmuidx_ra(env, ptr, mmu_idx, retaddr)
+>   *
+>   * store: cpu_st{size}_{mmusuffix}(env, ptr, val)
+> + *        cpu_st{size}{end}_{mmusuffix}(env, ptr, val)
+>   *        cpu_st{size}_{mmusuffix}_ra(env, ptr, val, retaddr)
+> + *        cpu_st{size}{end}_{mmusuffix}_ra(env, ptr, val, retaddr)
+>   *        cpu_st{size}_mmuidx_ra(env, ptr, val, mmu_idx, retaddr)
+> + *        cpu_st{size}{end}_mmuidx_ra(env, ptr, val, mmu_idx, retaddr)
+
+Since '{end}' can be the empty string, these new lines should
+replace the old ones, not just be added. (The other changes
+in this doc do the right thing.)
+
+>   *
+>   * sign is:
+>   * (empty): for 32 and 64 bit sizes
+> @@ -44,6 +50,11 @@
+>   *   l: 32 bits
+>   *   q: 64 bits
+>   *
+> + * end is:
+> + * (empty): for target native endian, or for 8 bit access
+> + *     _be: for forced big endian
+> + *     _le: for forced little endian
+> + *
+>   * mmusuffix is one of the generic suffixes "data" or "code", or "mmuidx".
+>   * The "mmuidx" suffix carries an extra mmu_idx argument that specifies
+>   * the index to use; the "data" and "code" suffixes take the index from
+
+Otherwise
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

@@ -1,106 +1,103 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4438021lfm;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4438033lfm;
         Mon, 27 Apr 2020 11:17:20 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIiB+DuSSM7WqrZU7+Mo3eRbq/zyVuA4Xs+++LpVSYhS+k7PZ1bt1/WPgT24LAa1u//H6TP
-X-Received: by 2002:ac8:6f66:: with SMTP id u6mr24016807qtv.201.1588011439945;
+X-Google-Smtp-Source: APiQypIO7FLuu66Q7h1esvgfsKUmHoSWoRymmp1kJaA4PjVa/Mb60/SU0E5ul2ifg8nJQjtd/IBB
+X-Received: by 2002:a37:b887:: with SMTP id i129mr23056236qkf.462.1588011439995;
         Mon, 27 Apr 2020 11:17:19 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1588011439; cv=none;
         d=google.com; s=arc-20160816;
-        b=F3uTakuxcLbiw7S9Ow76kcu/aGqrROfOBveiWybqOvMCmOPNf5vZgjgv+JLSKDSDig
-         zaDSsv10rHWuXLQ49mZiU4glZZ7CSGatYZ8/zfx5oaAoY80EpQJJPp672EyTx5d6Y16i
-         JRAgf40JNmtlVT1E3/crme158opTg/nwIEcZYxTbnJnyMSLtcUGiE1OWeuW41W+u0cXg
-         2PwwP9NZrCLB8GJmMUm72zGgIMK+ZW5i7O7guS0cTaONXL5Yse++1bRlF7GC5f6XVcid
-         EZl4obCR+/pJCs7Jn2M6c/X3ojrylfI5VSLxHp/MYvqltpenvZLHTYqjR5wS5VduZ5EO
-         5HhA==
+        b=jsFUacw3P/jmkpZ1WUOevwOM+sps6F53OIlVFQmF5Co6omwuGZulmi7INm27YaPowb
+         Qk7LMbdSqF67Jyvw6TnJdb2abPytbKS/BTQGOvjC0194XyInWOId2ivqwLHSM2RXetCp
+         t22Tu2u38hI0tjIM2Th5LS07UMaS7xHO/SZsI9MN64EdxYvWwOQxWAEKc7N5BxWDjeFG
+         H6n/dy+nkykOfNthfJqWgP0pNb3/28B1MPGVaRsKoCZkghYRPMJaHP3SQzC+S4mbDozE
+         APS2p0sRMMIbg1dB6BfHm3Ujrq7Qlqw9ZwrNACmoFTuy2jzpmf9jLsBOUiC+ZFmVgS49
+         9/rQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=Yhbn5ObUlRXLSdZsWox5a/Dx90Rzfq3EfLk5bL4LODc=;
-        b=TqVTuR+fEQM4brjZ/xuOAlkDq8RNVEHPkhfSFgrpqbM7SVTFGo0gzrhCgDXiWrHZPD
-         P1AM7RNxZO5i4buMLSZ+lgtaH+nePeFYAWeOOYCLpS0hG4WEA0LSmeGdrOPwF5sxqic2
-         AjGoAASIkMjMl8BUr1PK/bod6cNzE+sTghX9yDfWJVVmwluLcnVUkWGH0E/3zx07Efz8
-         w5o5hEFVUh7sroF6vKZj+cNDELdt1gZyHoDDXrDUx3mYDXln8Ozpla+kJxMtCMkGdJJM
-         KGWWX8rUzP8FNdfcKFNVCBN9ZIAHGQXAt9SfEe+CFbDTOfAa2tqB+2azn4qbv4doc/rw
-         /0eg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=jjhg4QYAOWYZwZu11uVJpfLsdLA4NrQAXKFJHCI6aYg=;
+        b=bDdDC0hXRPuKXuDY+qcqibGNdxa/mup+WOOW2sHQIJ23VfwxZrh8x08BzlblBQ8a4v
+         SiI+SZqJbBn+7D45BKyk3DdkWZZZAmck6DBelE3ljy2JjxYqnwnJb8uau8JSnzpxwwVZ
+         W9BCEv5yv6SakFCtmFRu0LiAdndrjist2CEYgcTzb9CS/oSz1LphxJdH0zUEf4RawuG+
+         8U3CoEJpqd0FK6S5GE0kwLc7pZqzk0jcPwoGkQqoms/BbgCwgA3m+WEW02V6RGhl/nSJ
+         JDXG+ueHfbe6qobhnxLZsksBLjRzBDUE/iJ6uWrQ3pf0Vi1tInnRNuVpwSa8aw8cnH+B
+         w1DA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ixkFq8Vg;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JU8gbfCS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6si8606722qtt.175.2020.04.27.11.17.19
+        by mx.google.com with ESMTPS id 15si8602314qkk.174.2020.04.27.11.17.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 27 Apr 2020 11:17:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ixkFq8Vg;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JU8gbfCS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57266 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57264 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jT8Jj-0000GI-91
+	id 1jT8Jj-0000DQ-8N
 	for alex.bennee@linaro.org; Mon, 27 Apr 2020 14:17:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34898)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34864)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jT8JQ-0000CU-Es
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 14:17:00 -0400
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jT8JP-0000C7-2M
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 14:16:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jT8JQ-0005ID-5L
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 14:17:00 -0400
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:39827)
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jT8JO-0005Gu-Ln
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 14:16:58 -0400
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b]:36724)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jT8JO-0005Gf-Rq; Mon, 27 Apr 2020 14:16:58 -0400
-Received: by mail-lj1-x243.google.com with SMTP id u6so18612808ljl.6;
- Mon, 27 Apr 2020 11:16:55 -0700 (PDT)
+ id 1jT8JJ-0005Do-83; Mon, 27 Apr 2020 14:16:53 -0400
+Received: by mail-lj1-x22b.google.com with SMTP id u15so18650890ljd.3;
+ Mon, 27 Apr 2020 11:16:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Yhbn5ObUlRXLSdZsWox5a/Dx90Rzfq3EfLk5bL4LODc=;
- b=ixkFq8VgmDMV3Is1MkLVmjPbXi9rK+RdNdnT1YQRZenBi4QE+5E3SzFZoMUBi7ZS1M
- bQ+LcEyu6B06ZTSmZMI07Y+BlmrC0Frwa23CdGzYVwLABSh9DHx+H5QFVAL3NAe6bx0g
- D+9+Bhh5QML+PijWjZPCn1AMgvnZdza1rW4mM7mqmVcwDITqWr6peBvvVOqdSWlQNkiO
- WhrxI281bKtfYVkTty3f0klw03JQtO+VLwLYCbV37mEChP7H6HyMg5r6ggVUF2rEzrcF
- 22XL52iBM1uCtDzPCea3VV+Rc6sTN3hb/y8qA7sfBKxcjlHZueWci2NP3By3FVULTC/6
- 2PIA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=jjhg4QYAOWYZwZu11uVJpfLsdLA4NrQAXKFJHCI6aYg=;
+ b=JU8gbfCSPVgJGF8xDacinxmrzn7CPt4jZeYg5uKL2icxVPasSj009lm6t03+3mwMou
+ IXBLmmESdRxP9h10cSR5eVCVmcqXLkfORxNhfymsTuNe91o02XFNEJcxNO82ghtWUEmd
+ yMSF31FzWXyWOggMFxXpzuFYZ0IQIn+VuJxbhQb25xjAMDTPUfWduw2yEMjnmRy6RfeD
+ /M/DInxRk822ogTCmkOIICvBysotu9Gf85jCmtB2V/Hb73QoX77VDaUsigBWioxvFYTa
+ aaI2OoL7aZIivXkIsQN2dQEsIjDWlyviVpRU6WoxOsREWm8vF54zI7N7CzJ+Y3BPanqY
+ ptCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Yhbn5ObUlRXLSdZsWox5a/Dx90Rzfq3EfLk5bL4LODc=;
- b=WN0FWuiwsEGdR88D9fYiUBko7bmCsn7GFrgv1gasD4Oq2IxwKfDiA14SC34q6z/o+t
- Jqdoh117vAQuU4qxV1b1GUGHjrIJDPT/9JBPKbluRxr99btfdkviV2XJiijEYU690axK
- 5bOQr1aA39YxNHml1YrwQkEJHhj7+DEOyRdF38ArICN8d7BRvCYVlRjQ3oCg89WOYKxb
- fqnKDBQTKMMm2GjmZ2zJn3iwPYUIhaCCeq6udJKTwBfgjxhbaHFmd7ujmElMgtmiWWb3
- 0pzm5rWWR80zLSJVtH5E3yEVwVv9ERTBya5YMvdrXYeh4hyaYTNuipcbhrpFKHRaxLE5
- 4YhA==
-X-Gm-Message-State: AGi0PubQgKXxjDP+r+HvWRX2Rm0DCUaQTpLK/GLj3deHsyRd1k2Sofqp
- SWFA+tvg+JINu6fxCjdisnFgQEaPhiU=
-X-Received: by 2002:a2e:b4a5:: with SMTP id q5mr15395300ljm.58.1588011414315; 
- Mon, 27 Apr 2020 11:16:54 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=jjhg4QYAOWYZwZu11uVJpfLsdLA4NrQAXKFJHCI6aYg=;
+ b=nIRTZS6Px4z3ECza62hBsSVIGMPC+dKmjeD5TpHY7cjsNR7ppX7jZR26V7mAxHQpYw
+ 9oITsCby5YTvIWteX4FnNsNSr6iw7nWF9j0SjWI/Hiq+in0vdMa+sM8TZXOSqQ1rneGB
+ FEANzoB1TXot5YoHpEFy0RtK7v5EuJ/12lShTnbGUxGyfxruz/svKBr6E/UdtM6L7f8s
+ xQA6OJglXpml62kKdLr9H7A0id/6r6tMSDVoLTgkRfzQAeCBVs6qsI+2+JNUnBM4YbiG
+ fuhrE4isgFdu3ClUN9hwxdq0pMijt+PhmNjbWC5D7TG+a3ENA6AWUI+iuUXkqVnzi0KO
+ V7wA==
+X-Gm-Message-State: AGi0PubQ08yQYFIYD1TTJ6dj2fRnt/CkKnQhl9h8D6drg70GP2FTk85E
+ GHxm/QqxxdoG1mAYEWTulvMAJUmJnhE=
+X-Received: by 2002:a2e:8083:: with SMTP id i3mr14893506ljg.175.1588011410829; 
+ Mon, 27 Apr 2020 11:16:50 -0700 (PDT)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id w29sm77771lfq.35.2020.04.27.11.16.53
+ by smtp.gmail.com with ESMTPSA id 130sm11857486lfo.42.2020.04.27.11.16.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Apr 2020 11:16:53 -0700 (PDT)
+ Mon, 27 Apr 2020 11:16:50 -0700 (PDT)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v1 03/11] hw/arm: versal-virt: Fix typo xlnx-ve -> xlnx-versal
-Date: Mon, 27 Apr 2020 20:16:41 +0200
-Message-Id: <20200427181649.26851-4-edgar.iglesias@gmail.com>
+Subject: [PATCH v1 00/11] hw/arm: versal: Add SD and the RTC
+Date: Mon, 27 Apr 2020 20:16:38 +0200
+Message-Id: <20200427181649.26851-1-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200427181649.26851-1-edgar.iglesias@gmail.com>
-References: <20200427181649.26851-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::243;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x243.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x22b.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::243
+X-Received-From: 2a00:1450:4864:20::22b
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -119,30 +116,36 @@ Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
  philmd@redhat.com, luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rb8E0KROMR1+
+X-TUID: c9YJ4Kbe+06B
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Fix typo xlnx-ve -> xlnx-versal.
+This series starts with some basic cleaning, continues with embedding
+devices into the Versal SoC (as suggested by Peter in another review).
+We then connect SD and the RTC to the Versal SoC and hook it all up
+into the Versal Virt board.
 
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
----
- hw/arm/xlnx-versal-virt.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Cheers,
+Edgar
 
-diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-index 878a275140..8a608074d1 100644
---- a/hw/arm/xlnx-versal-virt.c
-+++ b/hw/arm/xlnx-versal-virt.c
-@@ -440,7 +440,7 @@ static void versal_virt_init(MachineState *machine)
-         psci_conduit = QEMU_PSCI_CONDUIT_SMC;
-     }
- 
--    sysbus_init_child_obj(OBJECT(machine), "xlnx-ve", &s->soc,
-+    sysbus_init_child_obj(OBJECT(machine), "xlnx-versal", &s->soc,
-                           sizeof(s->soc), TYPE_XLNX_VERSAL);
-     object_property_set_link(OBJECT(&s->soc), OBJECT(machine->ram),
-                              "ddr", &error_abort);
+Edgar E. Iglesias (11):
+  hw/arm: versal: Remove inclusion of arm_gicv3_common.h
+  hw/arm: versal: Move misplaced comment
+  hw/arm: versal-virt: Fix typo xlnx-ve -> xlnx-versal
+  hw/arm: versal: Embedd the UARTs into the SoC type
+  hw/arm: versal: Embedd the GEMs into the SoC type
+  hw/arm: versal: Embedd the ADMAs into the SoC type
+  hw/arm: versal: Embedd the APUs into the SoC type
+  hw/arm: versal: Add support for SD
+  hw/arm: versal: Add support for the RTC
+  hw/arm: versal-virt: Add support for SD
+  hw/arm: versal-virt: Add support for the RTC
+
+ hw/arm/xlnx-versal-virt.c    |  74 +++++++++++++++++++++-
+ hw/arm/xlnx-versal.c         | 115 ++++++++++++++++++++++++-----------
+ include/hw/arm/xlnx-versal.h |  31 ++++++++--
+ 3 files changed, 177 insertions(+), 43 deletions(-)
+
 -- 
 2.20.1
 

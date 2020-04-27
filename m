@@ -1,191 +1,171 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4256380lfm;
-        Mon, 27 Apr 2020 08:31:59 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLU7DRueM/kbUwbvo5A2AqAPOBCP945LlRpMUN17HQ176UkPuQ4HkDNt0tsO8XEE29R09KO
-X-Received: by 2002:a05:620a:1289:: with SMTP id w9mr20482268qki.263.1588001518898;
-        Mon, 27 Apr 2020 08:31:58 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1588001518; cv=pass;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4296260lfm;
+        Mon, 27 Apr 2020 09:06:56 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIlsdHN8clpoxUUtFjwvWSBQVCUFUJaWg2/tnGTuwervsq0F7cJ4/3YiH0HNBI6k31DyhmF
+X-Received: by 2002:aed:2dc1:: with SMTP id i59mr24305807qtd.182.1588003616176;
+        Mon, 27 Apr 2020 09:06:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588003616; cv=none;
         d=google.com; s=arc-20160816;
-        b=o0fUABjd8QhhSt6GX4YIiSU1E495AC6dw2UTY2pUKU9rkp9DT4t5Ue17b+OVsJqcZf
-         6ndmLE56HSxyG+EqswaFmXBmCzJyxcXmd4eIW+T73H9T3sqNfZjf+QZyh/Y6nmlSDHw1
-         NEf+s0SpHl6/r3ssh+aqu0l/iLSTl5Lf+WKUgNjqAT6IyoZYGxwlFXJxUHnF0Mkoh/Ob
-         XMtfNK9LBUupnM0PrZe8Kq5TvVZjNZn5Bm2TLka1clpd/Mcr3rTn3Vmv37dFFi0f+3u+
-         0ezL62KBt6X22BCMtTSsDjLz37VrFD7YzaBncVsw9Vj01bHJufJJPzvW9DKypAHytGrd
-         DP8w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=VRQNzSBr8HBY65vrI2NgHLWIPfsQRezKEq4iFMSd+vzQtrd3lI4WavWNO5gktlf1By
+         41ZF9VPg8rfYTS9+tI7YrwX+ST7AxjN7gHPLf+PNnVRQKNI++nO+JTGH9CLjB8kycR3q
+         tPqJNAfCfLdHPXalJWzkLkupX1eKpyJq450FgkQZ6+rT6v9n8yV5nIgqjsIx7UK5jpWR
+         jX8gyufR+9ew5l4PjplZXgE/JfZwgSq46PrK3ZNAvGou/wXoGb0ozMajATNawGvi4FAF
+         9qCUKvTV4y62lH//oUz4RLKoEIunk9xrcZSgx3DDmmpGo4Q6KvfyGG5c1Rf6AAThJUZ6
+         Vh+Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from:dkim-signature:dkim-signature;
-        bh=03LS1Ff55y/QZyCSr8zNOLrdlDMgX6lLrnr35BoL6+g=;
-        b=0a/sckXlk5JcSV3lhQe7I2r/NJ5EEe8qbso+cFUF7hTRJSP/eJybwIX5cUqHjvKgp1
-         n/BeIbRgTtX+cgiE0V+5pjhuJW6rlC1HLetaXLg2/ctX25wkSeYJ8mRBuFJZ1P4aK+KL
-         JSAbU9QflWsiLAFLDp9Pv4aBfM2DUwgJgmGyKDRFKK/P0xBOBwfMaoliQBSKwFf2KdvT
-         jhdS86v45KY/3br9bm96kAaqZ3R2N/zYZXU/k0EWfITYmip6PfnARh27boTzXEkkKba0
-         kk1byrwdVhN+wzmA+Xga4mVffn5/1PjqdeHYo8sibPUjgoZ/YmAGzDAtI7H1WatrmP35
-         fGBA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=PgBWZPre;
-       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b="AbSv/OZu";
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=SFy9ImzktZE2Epy0PJlBnUaywlV+F5c+rKkog0oIig4=;
+        b=tZhS+H+ZICPPYh/QzJ2qnfk2kNe3WJGjRJ2ywR2e14ZlwLUnPF/V8MgAVRMz6OwWNA
+         4gpNWqpCGfz13Zcy2NWWdv+ZWpT/+YB78JrYT/fZqPuRTbKKdKQfMr5Zv3nhEeWwAcDy
+         wDpsMM2ewb372uipkfbQfA5yR412QZUBGyHjXhD+Kr9G0uJo72pwdV+HNwpUPyzkowgV
+         3OMQVMsMnEG2ZGmeO7LxfZyYRfUD1IQYANUS/tZbpcvmtq3cfDmgll52krJGNkBvNvtf
+         clc7Dxm3sSv+DJMbzsUmfPimoJ84/RNQ4owhb+Z5PzUyRewfyWbI/xOYkRWOCOymcJkY
+         dnAg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="BPQ/dz4Z";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i2si8352952qtg.305.2020.04.27.08.31.58
+        by mx.google.com with ESMTPS id z1si8777531qtd.41.2020.04.27.09.06.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Apr 2020 08:31:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Apr 2020 09:06:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=PgBWZPre;
-       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b="AbSv/OZu";
-       arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:51466 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="BPQ/dz4Z";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53894 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jT5ji-00023k-57
-	for alex.bennee@linaro.org; Mon, 27 Apr 2020 11:31:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38034)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jT6HX-00013a-GY
+	for alex.bennee@linaro.org; Mon, 27 Apr 2020 12:06:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44264)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <steplong@quicinc.com>) id 1jT5hO-0007gu-MQ
- for qemu-devel@nongnu.org; Mon, 27 Apr 2020 11:29:35 -0400
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jT6Ft-0007Fz-8A
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 12:05:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <steplong@quicinc.com>) id 1jT5hI-0004Rp-NT
- for qemu-devel@nongnu.org; Mon, 27 Apr 2020 11:29:33 -0400
-Received: from alexa-out-sd-02.qualcomm.com ([199.106.114.39]:49183)
- by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <steplong@quicinc.com>)
- id 1jT5hH-0004QT-HR; Mon, 27 Apr 2020 11:29:28 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
- t=1588001367; x=1619537367;
- h=from:to:cc:subject:date:message-id:mime-version;
- bh=ukVOBhRuoyuJdxJJZaT28IUT9HZ+mtnFzCtlL4lL88w=;
- b=PgBWZPreroc9o/f0qqWQEzAeFAsRoJJvDK1A1rbDTTot4wLdGS0ppON2
- VdlPMIuNrSS//PCLsy/Ub4niR+X+Xrwd68fel6/8JtseHcPwDywezh7ff
- 8ZQUVrDJvLanc98Jw9NaqqVcLmSQqVuCQDViyfeWXCayOj4eFaUfPBZ+g 0=;
-Received: from unknown (HELO ironmsg04-sd.qualcomm.com) ([10.53.140.144])
- by alexa-out-sd-02.qualcomm.com with ESMTP; 27 Apr 2020 08:29:21 -0700
-Received: from nasanexm01a.na.qualcomm.com ([10.85.0.81])
- by ironmsg04-sd.qualcomm.com with ESMTP/TLS/AES256-SHA;
- 27 Apr 2020 08:29:21 -0700
-Received: from apsanexr02a.ap.qualcomm.com (10.85.0.26) by
- nasanexm01a.na.qualcomm.com (10.85.0.81) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Apr 2020 08:29:21 -0700
-Received: from nasanexm01a.na.qualcomm.com (10.85.0.81) by
- apsanexr02a.ap.qualcomm.com (10.85.0.26) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Apr 2020 08:29:19 -0700
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (199.106.107.6)
- by nasanexm01a.na.qualcomm.com (10.85.0.81) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2 via Frontend Transport; Mon, 27 Apr 2020 08:29:19 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=I9EboTcsqKM7RwI0jTpHNgBzwo6sW/QfPEzPD0ZndjOCifY/41f0LttxwIY83TMbQzGBlfrh7QYc8mqA2v5rNtMqr+fIXxl4lCyID2z2DuicX6fpwKhd8+mHKl6rxXkEdekFAuBCiME7wNhzXnTXIvGst8Ks+2fqnXfFhUz6UG6JThE1b3D4SQSWyG8QBq7qnN5X3Kwbtv8BdsDtDp3+WyNg8Zs+JuhKN7OmfI2BPvH3/jiSgFgY5+xa4uIbhNXsrOMXOOtiR/3ZeyapuH8hLoBkVBpK4jC5UWtducCTxqYy561J7jOeSIINIsHIUs633f1h46THg2cEnEr+GnNNOQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=03LS1Ff55y/QZyCSr8zNOLrdlDMgX6lLrnr35BoL6+g=;
- b=j2fiK03sYYWSIOXbnBZT76GQOVxBGwkMgCv5gBhuJ3/1yncNp7Fq0g8SkrcUDZ82wCSmslM3C7WpiwJvH5tBeCfEcUqTssp2MdOJygrDIHoCSkEsVHlOUjdtHjH5qFP1neaNWC2h/Ep9jDquSS38EayzCPDrFmCrxTAFt5be2Ju958av/zbmMmFujxQTHZEYcC0rVmc5ds31qRtAXz5liuurT2aZyq/DEFyGN3kZpm25nVtq0lbiulToBjRck4fiJD3bqy7LnVdZhkHLoEVlO8u5hlEz3nkH+b7gnmedF8UGm/9Qc+Ck2tBV0LBkjs8hZ3XkFEoZmsRAbXynwfnWLw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
- dkim=pass header.d=quicinc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=qualcomm.onmicrosoft.com; s=selector1-qualcomm-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=03LS1Ff55y/QZyCSr8zNOLrdlDMgX6lLrnr35BoL6+g=;
- b=AbSv/OZuRiC8JibhzzRbMqMxMtfDvmKpbDlpeYlWpC/UnJjnjIo+LZM0hfV4L5guSeKRUVLrwLt6p1n4/UjgYKQoLhWSq5erEGZ5XY1zYBfqTyJjHAwYSKEd8FU1DfTFTAaNaXYfh19Fz50mea6l1PW6xljaJqJz8hpU8jC7Rns=
-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=steplong@quicinc.com; 
-Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
- (2603:10b6:301:7b::24) by MWHPR0201MB3465.namprd02.prod.outlook.com
- (2603:10b6:301:76::26) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2937.13; Mon, 27 Apr
- 2020 15:29:18 +0000
-Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
- ([fe80::10ad:5df5:d575:1f37]) by MWHPR0201MB3547.namprd02.prod.outlook.com
- ([fe80::10ad:5df5:d575:1f37%3]) with mapi id 15.20.2937.023; Mon, 27 Apr 2020
- 15:29:18 +0000
-From: Stephen Long <steplong@quicinc.com>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH RFC v2 0/3] target/arm: Implement SVE2 Crypto Extensions
-Date: Mon, 27 Apr 2020 08:29:01 -0700
-Message-ID: <20200427152904.14768-1-steplong@quicinc.com>
-X-Mailer: git-send-email 2.17.1
-Content-Type: text/plain
-X-ClientProxiedBy: MN2PR02CA0025.namprd02.prod.outlook.com
- (2603:10b6:208:fc::38) To MWHPR0201MB3547.namprd02.prod.outlook.com
- (2603:10b6:301:7b::24)
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jT6Fh-0000o2-Gh
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 12:05:12 -0400
+Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:35521)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1jT6Fh-0000nN-2I; Mon, 27 Apr 2020 12:05:01 -0400
+Received: by mail-lj1-x241.google.com with SMTP id g4so18197352ljl.2;
+ Mon, 27 Apr 2020 09:04:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=SFy9ImzktZE2Epy0PJlBnUaywlV+F5c+rKkog0oIig4=;
+ b=BPQ/dz4ZA7HaXSgtCd2XZ4R5nI9maR1g0q61DqeN3wmnaUVFsO4MT6Ww2Uqdosx44t
+ vqOxI3wbPYyWemwITNYpQ8IsXnpYt04flTPAPmHSq9rM2X95QRMz5wSIRXgiKcy/GDfC
+ Z57CKLaMF48V0adlcSi6tMCbCZO25fMlXSa0W3rxWYpHuX6ZnZ9uyFETjXZpVyCDdmNE
+ IrStvGDq7DX12PtdbCNEGTcJojZg7ry8h9S0vaIfxhQXypLZTF4lIrxQFXiJg6TTERfq
+ SleKOrSkHbj/nnngNIfITF5uEEwkcE58ilfXilm3OHdxXA47Zht4r7Oz/6iJ/oGYAeNl
+ X9hg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=SFy9ImzktZE2Epy0PJlBnUaywlV+F5c+rKkog0oIig4=;
+ b=Fre+R4FHM9eH3UFeBlCMLF+9trnuEsqrN1jehEgoEezhsseZ95yjp7XPsmvCAAiNpl
+ vTiVGBg2JgR1C2SQMwBcJa6AV1/GU7Dhm61u7yj12PygM85DkS2wnrRb1D4xs9dZMkTo
+ 9Ni6ECX8gC7br1eGl6nQXTUuXTp0Y3QSSEE/H2BDvbO+xK3YOO/kiSwY4sYHGeIkVJqh
+ Em1Szp/W00sCicM5C/Q3uzef3TFVRxuXKDeEAlXdlfRlIhIOY5ot+5tszhlk7YsZ4h/T
+ 0K/ZFD7YVrpTodvjtP900VUtM6F0MHozp4l1rOUTqSLpT6EfkYp/f+BaNDvexkzu8jGB
+ u0sg==
+X-Gm-Message-State: AGi0Pua71l2kw42L7Me+zepz2QgaYxjB2tp6DrV85ufJ00qqRiG6W62g
+ Jj+utrCxTjAffkGYYCNQnek=
+X-Received: by 2002:a2e:9e43:: with SMTP id g3mr7424743ljk.4.1588003498247;
+ Mon, 27 Apr 2020 09:04:58 -0700 (PDT)
+Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id b25sm9819691ljp.105.2020.04.27.09.04.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Apr 2020 09:04:57 -0700 (PDT)
+Date: Mon, 27 Apr 2020 18:04:25 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 0/4] arm: Implement ARMv8.2-TTS2UXN
+Message-ID: <20200427160425.GK2669@toto>
+References: <20200330210400.11724-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from STEPLONG.qualcomm.com (108.176.222.2) by
- MN2PR02CA0025.namprd02.prod.outlook.com (2603:10b6:208:fc::38) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2937.13 via Frontend Transport; Mon, 27 Apr 2020 15:29:17 +0000
-X-Mailer: git-send-email 2.17.1
-X-Originating-IP: [108.176.222.2]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 2dc623b4-fd00-4610-3e6a-08d7eabfc029
-X-MS-TrafficTypeDiagnostic: MWHPR0201MB3465:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MWHPR0201MB3465A1FF511AEE5F0CD9FFC8C7AF0@MWHPR0201MB3465.namprd02.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6108;
-X-Forefront-PRVS: 0386B406AA
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR0201MB3547.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(39860400002)(346002)(376002)(396003)(366004)(136003)(2906002)(6916009)(107886003)(6666004)(6506007)(66476007)(316002)(66946007)(26005)(8676002)(2616005)(52116002)(81156014)(4326008)(4744005)(8936002)(6486002)(478600001)(956004)(5660300002)(186003)(1076003)(36756003)(16526019)(66556008)(86362001)(6512007);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: oMUqDOtrpw9kje8a7Od4mpBRG2i8erT3ikM3r/ivdw6fpxxJiyTfZJb5MerUkCs7PdAxsKyDysvsMX4mT+JMlilFoRUjD/TXSO7m93yCjWl9MSmY8FelA/sxLwxPU7RdF3hK5r7vbrFCo8QFJlPHmqZHEgzngFOYRZQeWYwMxHfAOuMhT0/CFTLodi3blEW4fA/kN1C4EQBhSnpzRtuuto9v03IcVWR9NNqSTQey98JvtBtE/ICy9V8I3FFWKFUHeyw6KDc6ZUY/M78uMitqdtUZ4T0PO3J5Y9+xK+RW27HHy2oJhN4xtJCjTR7OOmOO9gTiYNyL35VLO4QA0nQ2xt0u8QolVdfHapWIprn27dR9Ui8Qsyn7IrZBUd/N1GHTrB10iiN8O9xIlLbMOnZVeWDV2TCZqZlhA1iH7u+j7LIh6qj+nJwwL9AZCil0ZOQS
-X-MS-Exchange-AntiSpam-MessageData: GJAhHFslPlHpU7OmbJXJXGKcHzms/HBpfUlkWqD2e7mJCZyCiw29JRLmJn7xL4s5vcirQuGkcV22vfEsQhbgZ1cbM4232n3o/XmYmbflFrU+LkJbJ371nq+jXrqpjmE7b6XfzExSklRDvjOxGa9MGxMhHazf3LwtrvFeyUB13Z9Mn2S2Cw3UcajBcwbNzN57ijYCOyI++vHtw1JvV7XLcpgZef5+D9nLdYedOICU4A/BRWL4jSYQ6onKUEXQcTh20jOrPLr1StdQB3ycQQ7Jsm3AcVLfbb49me4nsYXbR1rf+b3uUW1KizgMzpATiWP/JoZlBR5FDb/PUPajiZzaYxRdHRqtyX3YuKhaWWLUQfHA0Q5zrESjtHUB5ijmjtiLXQDW+i2ptJwl9OqYqqpn4XxTjE+gyteTjzAM/MT7rtcvoWEwFkZ2PmwPeUzwBRAapAKTRcGXu9tOCMo7l2rNEPX3kZJOBWf5KEwiPC5BHTekGlNYk3MKok/C+KjKwjtHtne3kTXBfGTrXm6SqiPZm7ENwbituUdwSf29yRTNdQbHmSAXgEJMrZpmnygn8rQniHCo+os5lzo91vYftDPS6Lsi9vNV3pkAh6EjKpJLmieufrapkq8cB9MohxTA/PJqooCZuY7MV/VEifWPdm2uSeOpiOCn26Ns9aWB7TBsF8sqXFnTdyRL7qFogBt6BJhX8ATYpdC3EtpUC1KjSTI2mZaGSwBPB/v//UtudhuyP6xiPPx+IAUIiUFAq5DzNpgYjgjt3dGTW9PIG6vletVOAlJwnR1phkvXkgf3rILbgtQ=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2dc623b4-fd00-4610-3e6a-08d7eabfc029
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Apr 2020 15:29:18.2204 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: sQQxUT5XQrx5CqN+HtQd98YEb6e2WCI/u7Hod70w0Oqmog5brFnTWMueKrnYLOhamJJq+AeVgkkcinlm+NoRyg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR0201MB3465
-X-OriginatorOrg: quicinc.com
-Received-SPF: pass client-ip=199.106.114.39; envelope-from=steplong@quicinc.com;
- helo=alexa-out-sd-02.qualcomm.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/27 11:29:22
-X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
-X-Received-From: 199.106.114.39
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200330210400.11724-1-peter.maydell@linaro.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::241;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x241.google.com
+X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
+ Malformed IPv6 address (bad octet value).
+ Location : parse_addr6(), p0f-client.c:67
+X-Received-From: 2a00:1450:4864:20::241
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, richard.henderson@linaro.org, apazos@quicinc.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +FpNFe14dgpW
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Gi4TekUGA0Eo
 
-Used one macro to cover the helper functions for
-SVE2 AESC, AESIMC, AESE, AESD.
+On Mon, Mar 30, 2020 at 10:03:56PM +0100, Peter Maydell wrote:
+> This is obviously not 5.0 material, but I figured it would be better
+> to push it out for review now rather than hang on to it and forget...
+> 
+> TTS2UXN is an ARMv8.2 extension which changes the 'XN' field in stage
+> 2 translation table descriptors from just bit [54] to bits [54:53],
+> allowing stage 2 to control execution permissions separately for EL0
+> and EL1.
+> 
+> For QEMU this had the potential to be awkward, because it means that
+> the stage 2 translation now depends on whether it's being used
+> for an EL0 or an EL1 stage 1 access (the address doesn't change
+> but the access permissions do). Fortunately, although we allocated
+> a QEMU TLB/MMU index for Stage 2, we never actually look anything
+> up in the TLB. So patch 1 turns ARMMMUIdx_Stage2 into a 'NOTLB'
+> index (ie one without a QEMU TLB), thus avoiding the complication
+> of splitting it into separate Stage2-for-EL0 and Stage2-for-EL1
+> indexes. Once we've done that the actual implementation is pretty
+> trivial -- we just need to plumb an extra 's1_is_el0' argument
+> into get_phys_addr_lpae(), and then use it to decide what to do.
 
-No macro was used to implement the helper functions for
-SM4E, SM4EKEY, RAX1.
+Hi Peter,
 
-Stephen Long (3):
-  target/arm: Implement SVE2 AESMC, AESIMC
-  target/arm: Implement SVE2 AESE, AESD, SM4E
-  target/arm: Implement SVE2 SM4EKEY, RAX1
+The whole series looks good to me:
 
- target/arm/cpu.h           |  5 +++
- target/arm/helper-sve.h    | 10 ++++++
- target/arm/sve.decode      | 20 ++++++++++++
- target/arm/sve_helper.c    | 46 +++++++++++++++++++++++++++
- target/arm/translate-sve.c | 64 ++++++++++++++++++++++++++++++++++++++
- 5 files changed, 145 insertions(+)
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
--- 
-2.17.1
+Cheers,
+Edgar
 
+
+
+> 
+> Peter Maydell (4):
+>   target/arm: Don't use a TLB for ARMMMUIdx_Stage2
+>   target/arm: Use enum constant in get_phys_addr_lpae() call
+>   target/arm: Add new 's1_is_el0' argument to get_phys_addr_lpae()
+>   target/arm: Implement ARMv8.2-TTS2UXN
+> 
+>  target/arm/cpu-param.h |   2 +-
+>  target/arm/cpu.h       |  36 ++++++--
+>  target/arm/cpu.c       |   1 +
+>  target/arm/cpu64.c     |   2 +
+>  target/arm/helper.c    | 183 ++++++++++++++++-------------------------
+>  5 files changed, 107 insertions(+), 117 deletions(-)
+> 
+> -- 
+> 2.20.1
+> 
+> 

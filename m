@@ -1,102 +1,107 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3891420lfm;
-        Mon, 27 Apr 2020 02:48:13 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJyEWGvt8MJPm1P5H/r2DQIsBn5czcxmXLOjg2zC1iiia0bQ3ogMTOGuvNEcqP5DSQtmk07
-X-Received: by 2002:ac8:2db9:: with SMTP id p54mr21549364qta.125.1587980893047;
-        Mon, 27 Apr 2020 02:48:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587980893; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3899713lfm;
+        Mon, 27 Apr 2020 02:59:06 -0700 (PDT)
+X-Google-Smtp-Source: APiQypI+JPS3pXeWwalM3WPo/Jv/GNG0GZuSuQ4kzSGmIwRLhxMSCdb3r2mLJtiLlQJAjkoYSe74
+X-Received: by 2002:a37:c4b:: with SMTP id 72mr21290118qkm.2.1587981546669;
+        Mon, 27 Apr 2020 02:59:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587981546; cv=none;
         d=google.com; s=arc-20160816;
-        b=CMM7mb6uU1rzSrA2TeDUt4VaNrAhsaqiI0zhK2oCDOLZFQnnRn/r/89na25iJMRefC
-         OuA6nPWcjYwEik97QBJnoCtPFjuC7BdnIiZy8VQbxi+zvd3ag+azmnoHYDmTTwZ6vOCG
-         rv/knS8gQ1utlmBQCpUtOiy40HfYaWgrFQusJJ4wq6lbgOXbNJlmxoQIih4eCHiqYP26
-         XY1RpM2dlGHSzX+XOnKXb/64cbUifVw+cNd63ILWC2ujbcf1mO+4EUIEeBFHX3W9OqdA
-         FDKYNZRiU/VHEbuWDJikfZGJ1vg75ofmfvqMqNTlDBFfSFX+KlqkijHoEkj3YiYDtWsN
-         QJVA==
+        b=cPYbpPpt0TXtTNlLVZiBEsCMoG14YiKHa+zl787e6Hn8x0Y4AUit6jwEAiKlasy4it
+         Ykdot9IVoB10hEvdiVnSeYNIq/g6uWVWU2rZUpd9kZ19+NF45x/Jysp3BrTD+1vI4vxn
+         sglFP8JXfYI5ngUVr1lSUx9z9QXUFqkZmk3HOkxGER+L6L6AbMpOn5czgRJJMmSqNZ4p
+         zOCBfP1qn+mgyA6cYN+RkWaQDR2D9p5YPme+ulKUtfzk9vIUa2W9pBJtjVDlRuAZYe/Q
+         zT5bYbH+WOf7JS0BVfZIIQIqvuRS2TCTkAcOC2DxZByDu6jPSDO+Lu3i7uzVi/n4+suS
+         1IpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=qLLozm+WjNC4qFdEhxcPREzCwkfElD1ZJ3jbX1lYfPE=;
-        b=XTHUk8Xaoc6ICw9U+CBKYVcDtTkWmpglAf9RTlMxEXM4VhNrfiAEpmMO9K/D1/HD0h
-         pQBeQWeEgT7KYQt4S+Mqzu8NMM8/AWgRyN3qNQvz5FsltbGjC7n72lQXkChY0qlzW2l+
-         Y+1OyyLVud2FKvfVmJU7FZX5cvGv2S5kVPakOj2EyKsto8Cmw9xGj1N6N6XOtu0OjVft
-         s9TeHgP/Yz5rqn0laotiLd0A+nMVxYjam9rf8eI5vlM0Jv+IZcp/eszhxUFiSVGP5y5M
-         YoK60Gj6XoobV5+vvp8DIIYdVjPd33KzWlRy/95UdQo9whKz7F3znrTvmol+X2hLWkFe
-         phNA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=kcWBuPaHBGxHMOrZqvqL266FxHOcDDC/OPS2Jo9wjKw=;
+        b=nbyi8Jt7FbzPmxa5hahAgHnBhnms6dgeian8ULoSkJGSaO/f7ioaqWC8tXgnhNbihO
+         S9KSvc0ZCK2Y6GDrjkW0fqCUz/PwmOm8e7WAxTb7ik8YNH4O9G20jdj1EEmNWvurvzIT
+         wsNUIr7G3QCQZNSolxqVuSmPYZSk4vnPL7HvwDlVMFl93ZxLffGeqlwO2P66zcIQwzuE
+         VUW3VpTxAw4I2EXbQKbNEQaosenusdpbeQiaYGvZOSyzprXUHnlm5XEX3n2UwlPxzCaz
+         CdieZlr1XbjbM2MjM+QweKYpfky5CHpAVfIyIelWXojdJ1SRjupM9EUyFC7pvbu6eJtI
+         ZwkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uwbvparh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LMaNoThp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s5si8421507qvq.2.2020.04.27.02.48.12
+        by mx.google.com with ESMTPS id h1si8476260qvr.170.2020.04.27.02.59.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Apr 2020 02:48:13 -0700 (PDT)
+        Mon, 27 Apr 2020 02:59:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uwbvparh;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LMaNoThp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35264 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35692 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jT0N2-00075B-DU
-	for alex.bennee@linaro.org; Mon, 27 Apr 2020 05:48:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36140)
+	id 1jT0XZ-0007sB-U0
+	for alex.bennee@linaro.org; Mon, 27 Apr 2020 05:59:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37632)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jT0LP-0005R1-Hm
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:46:36 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1jT0XN-0007pr-Mq
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:58:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jT0LE-0000YG-Dd
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:46:31 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:37347)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jT0LD-0000Xr-PU
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:46:19 -0400
-Received: by mail-ot1-x343.google.com with SMTP id z17so25147807oto.4
- for <qemu-arm@nongnu.org>; Mon, 27 Apr 2020 02:46:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=qLLozm+WjNC4qFdEhxcPREzCwkfElD1ZJ3jbX1lYfPE=;
- b=uwbvparharVA5hoFzvO40fNXV5cTWJnRqNBopiR0Aw2l2Bk4mk4AoyZkq8AbMvXLEL
- mE4/BBkGO4tSWyHePkOSQ9zKRvYXwO/dSk2KQF2nFsgu5DTgYT7qf/bJWcXo7ztFTn6p
- TU+8LC8Ifo9q/AwmngWW5DLVRZvZgdRqLCC9WOnkYje2gJA2xuOK69hxPOyQ4k6fXYJV
- 35Y5wZnPtgdVDu2jaqTg3lcIcK8RIXN3UugC6lX5u2KG8wVw42BKk3zrdERkGxcxXmvt
- Wh2Q474+M5mb9IoIOOkrBYJG2S7yuEWcnz2RHw9dWNBIuV8uF1u/BGb7buYKEuNTL119
- zB2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=qLLozm+WjNC4qFdEhxcPREzCwkfElD1ZJ3jbX1lYfPE=;
- b=YVqYd+CeYOWkoMYge37YzzPnrxJ4QRFCVljXoolhDLjIIevGJSwjzJo/bNw9ppdKtx
- hMJAGa9ZsP7R6AgzmSwUULjuB0o+aVbd5Dj3Xqlwg3q8yVbj+Nc4EZqL/zxWIpxwwhTk
- 6FarjFDih9ZPSyA1b1fEEECw39NVBRVtxsW7qMBU2gtExVqfDoJ5TWTNF66AMuBhIvmz
- Wb+xgwGcvjnhYnIVfgFNOm1vy5oO68I+AEfy8F2QwkXiJcUUtCMmaBL92PdH1mGkbwz+
- 9FY+1CVASYVF0X0LJMXi7ZNgsHN261xUXYQQpElCsmd3Lqo5vvmZnqhwZbOH/omLp8P1
- n9bg==
-X-Gm-Message-State: AGi0PubDvgeb8udeGkeeEWOthtonNYcIK5ix5UjDyyGVsQXU5IFrDbqo
- ZxNN6+YURQhZVqJ1D7/4SahSm307LG9OLzp8VubAHA==
-X-Received: by 2002:a9d:2c08:: with SMTP id f8mr18044018otb.135.1587980777230; 
- Mon, 27 Apr 2020 02:46:17 -0700 (PDT)
+ (envelope-from <eric.auger@redhat.com>) id 1jT0XM-0006LD-LS
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:58:53 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:31665
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jT0XM-00063u-7T
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 05:58:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1587981529;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=kcWBuPaHBGxHMOrZqvqL266FxHOcDDC/OPS2Jo9wjKw=;
+ b=LMaNoThpcw5AdLOBfgK8a9mCCXvjZ7B0tlnEXZXFfKSy3TnLp6gjgoaYkS2+NDgNoKXHrF
+ A7Jt7ZpTwqWn9vyZTuLHPq2s+reaYVmrpUcSXMHscc457OaC/Y+dXjragPxz2LtwY6iXs7
+ 4Ng2GNXiZuqDaigckeYn1eLmjbE5q/I=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-318-CQajEjsKN6GYOEPPYp85LA-1; Mon, 27 Apr 2020 05:58:46 -0400
+X-MC-Unique: CQajEjsKN6GYOEPPYp85LA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D9D4787134E;
+ Mon, 27 Apr 2020 09:58:43 +0000 (UTC)
+Received: from [10.36.115.95] (ovpn-115-95.ams2.redhat.com [10.36.115.95])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 050FE5C7CF;
+ Mon, 27 Apr 2020 09:58:31 +0000 (UTC)
+Subject: Re: [PATCH] hw: add compat machines for 5.1
+To: Cornelia Huck <cohuck@redhat.com>
+References: <20200424090314.544-1-cohuck@redhat.com>
+ <548cd0de-17d3-204d-7df1-4c8fdccad83c@redhat.com>
+ <20200427110609.36ecaac6.cohuck@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <4166d3fc-58e9-405d-71a1-2270ced75e7d@redhat.com>
+Date: Mon, 27 Apr 2020 11:58:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-References: <20200422043309.18430-1-richard.henderson@linaro.org>
- <20200422043309.18430-6-richard.henderson@linaro.org>
-In-Reply-To: <20200422043309.18430-6-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Apr 2020 10:46:06 +0100
-Message-ID: <CAFEAcA_nX69ppW-w3Fs99b4yqfQ-mfjBQHU2PrAHsU6Wam1Zqg@mail.gmail.com>
-Subject: Re: [PATCH v3 05/18] accel/tcg: Add endian-specific cpu_{ld,
- st}* operations
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::343
+In-Reply-To: <20200427110609.36ecaac6.cohuck@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.61;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/26 23:32:35
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.61
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,162 +113,100 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ qemu-devel@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: brjL+NSwDYsc
+X-TUID: hLCCTASqcaq+
 
-On Wed, 22 Apr 2020 at 05:33, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> We currently have target-endian versions of these operations,
-> but no easy way to force a specific endianness.  This can be
-> helpful if the target has endian-specific operations, or a mode
-> that swaps endianness.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  docs/devel/loads-stores.rst |  39 +++--
->  include/exec/cpu_ldst.h     | 277 +++++++++++++++++++++++++++---------
->  accel/tcg/cputlb.c          | 236 ++++++++++++++++++++++--------
->  accel/tcg/user-exec.c       | 211 ++++++++++++++++++++++-----
->  4 files changed, 587 insertions(+), 176 deletions(-)
->
-> diff --git a/docs/devel/loads-stores.rst b/docs/devel/loads-stores.rst
-> index 0d99eb24c1..9a944ef1af 100644
-> --- a/docs/devel/loads-stores.rst
-> +++ b/docs/devel/loads-stores.rst
-> @@ -97,9 +97,9 @@ function, which is a return address into the generated code.
->
->  Function names follow the pattern:
->
-> -load: ``cpu_ld{sign}{size}_mmuidx_ra(env, ptr, mmuidx, retaddr)``
-> +load: ``cpu_ld{sign}{size}{end}_mmuidx_ra(env, ptr, mmuidx, retaddr)``
->
-> -store: ``cpu_st{size}_mmuidx_ra(env, ptr, val, mmuidx, retaddr)``
-> +store: ``cpu_st{size}{end}_mmuidx_ra(env, ptr, val, mmuidx, retaddr)``
->
->  ``sign``
->   - (empty) : for 32 or 64 bit sizes
-> @@ -112,9 +112,14 @@ store: ``cpu_st{size}_mmuidx_ra(env, ptr, val, mmuidx, retaddr)``
->   - ``l`` : 32 bits
->   - ``q`` : 64 bits
->
-> +``end``
-> + - (empty) : for target endian, or 8 bit sizes
-> + - ``_be`` : big endian
-> + - ``_le`` : little endian
-> +
->  Regexes for git grep:
-> - - ``\<cpu_ld[us]\?[bwlq]_mmuidx_ra\>``
-> - - ``\<cpu_st[bwlq]_mmuidx_ra\>``
-> + - ``\<cpu_ld[us]\?[bwlq](_[bl]e)\?_mmuidx_ra\>``
-> + - ``\<cpu_st[bwlq](_[bl]e)\?_mmuidx_ra\>``
->
->  ``cpu_{ld,st}*_data_ra``
->  ~~~~~~~~~~~~~~~~~~~~~~~~
-> @@ -129,9 +134,9 @@ be performed with a context other than the default.
->
->  Function names follow the pattern:
->
-> -load: ``cpu_ld{sign}{size}_data_ra(env, ptr, ra)``
-> +load: ``cpu_ld{sign}{size}{end}_data_ra(env, ptr, ra)``
->
-> -store: ``cpu_st{size}_data_ra(env, ptr, val, ra)``
-> +store: ``cpu_st{size}{end}_data_ra(env, ptr, val, ra)``
->
->  ``sign``
->   - (empty) : for 32 or 64 bit sizes
-> @@ -144,9 +149,14 @@ store: ``cpu_st{size}_data_ra(env, ptr, val, ra)``
->   - ``l`` : 32 bits
->   - ``q`` : 64 bits
->
-> +``end``
-> + - (empty) : for target endian, or 8 bit sizes
-> + - ``_be`` : big endian
-> + - ``_le`` : little endian
-> +
->  Regexes for git grep:
-> - - ``\<cpu_ld[us]\?[bwlq]_data_ra\>``
-> - - ``\<cpu_st[bwlq]_data_ra\>``
-> + - ``\<cpu_ld[us]\?[bwlq](_[bl]e)\?_data_ra\>``
-> + - ``\<cpu_st[bwlq](_[bl]e)\?_data_ra\>``
->
->  ``cpu_{ld,st}*_data``
->  ~~~~~~~~~~~~~~~~~~~~~
-> @@ -163,9 +173,9 @@ the CPU state anyway.
->
->  Function names follow the pattern:
->
-> -load: ``cpu_ld{sign}{size}_data(env, ptr)``
-> +load: ``cpu_ld{sign}{size}{end}_data(env, ptr)``
->
-> -store: ``cpu_st{size}_data(env, ptr, val)``
-> +store: ``cpu_st{size}{end}_data(env, ptr, val)``
->
->  ``sign``
->   - (empty) : for 32 or 64 bit sizes
-> @@ -178,9 +188,14 @@ store: ``cpu_st{size}_data(env, ptr, val)``
->   - ``l`` : 32 bits
->   - ``q`` : 64 bits
->
-> +``end``
-> + - (empty) : for target endian, or 8 bit sizes
-> + - ``_be`` : big endian
-> + - ``_le`` : little endian
-> +
->  Regexes for git grep
-> - - ``\<cpu_ld[us]\?[bwlq]_data\>``
-> - - ``\<cpu_st[bwlq]_data\+\>``
-> + - ``\<cpu_ld[us]\?[bwlq](_[bl]e)\?_data\>``
-> + - ``\<cpu_st[bwlq](_[bl]e)\?_data\+\>``
->
->  ``cpu_ld*_code``
->  ~~~~~~~~~~~~~~~~
-> diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
-> index 53de19753a..1ba515bfcc 100644
-> --- a/include/exec/cpu_ldst.h
-> +++ b/include/exec/cpu_ldst.h
-> @@ -26,12 +26,18 @@
->   * The syntax for the accessors is:
->   *
->   * load:  cpu_ld{sign}{size}_{mmusuffix}(env, ptr)
-> + *        cpu_ld{sign}{size}{end}_{mmusuffix}(env, ptr)
->   *        cpu_ld{sign}{size}_{mmusuffix}_ra(env, ptr, retaddr)
-> + *        cpu_ld{sign}{size}{end}_{mmusuffix}_ra(env, ptr, retaddr)
->   *        cpu_ld{sign}{size}_mmuidx_ra(env, ptr, mmu_idx, retaddr)
-> + *        cpu_ld{sign}{size}{end}_mmuidx_ra(env, ptr, mmu_idx, retaddr)
->   *
->   * store: cpu_st{size}_{mmusuffix}(env, ptr, val)
-> + *        cpu_st{size}{end}_{mmusuffix}(env, ptr, val)
->   *        cpu_st{size}_{mmusuffix}_ra(env, ptr, val, retaddr)
-> + *        cpu_st{size}{end}_{mmusuffix}_ra(env, ptr, val, retaddr)
->   *        cpu_st{size}_mmuidx_ra(env, ptr, val, mmu_idx, retaddr)
-> + *        cpu_st{size}{end}_mmuidx_ra(env, ptr, val, mmu_idx, retaddr)
+Hi Connie,
 
-Since '{end}' can be the empty string, these new lines should
-replace the old ones, not just be added. (The other changes
-in this doc do the right thing.)
+On 4/27/20 11:06 AM, Cornelia Huck wrote:
+> On Mon, 27 Apr 2020 09:43:33 +0200
+> Auger Eric <eric.auger@redhat.com> wrote:
+> 
+>> Hi Connie,
+>>
+>> On 4/24/20 11:03 AM, Cornelia Huck wrote:
+>>> Add 5.1 machine types for arm/i440fx/q35/s390x/spapr.
+>>>
+>>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>>> ---
+>>>
+>>> Still keeping the default cpu model version on x86 at v1.
+>>>
+>>> I'll queue this to my s390-next branch, as I'm planning to send a pull
+>>> req as soon as 5.0 is out; if someone else wants to queue this, we'll
+>>> figure it out :)
+>>>
+>>> ---
+>>>  hw/arm/virt.c              |  9 ++++++++-
+>>>  hw/core/machine.c          |  3 +++
+>>>  hw/i386/pc.c               |  3 +++
+>>>  hw/i386/pc_piix.c          | 14 +++++++++++++-
+>>>  hw/i386/pc_q35.c           | 13 ++++++++++++-
+>>>  hw/ppc/spapr.c             | 15 +++++++++++++--
+>>>  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>>>  include/hw/boards.h        |  3 +++
+>>>  include/hw/i386/pc.h       |  3 +++
+>>>  9 files changed, 71 insertions(+), 6 deletions(-)
+>>>
+>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>> index 7dc96abf72cf..5e84c09402dd 100644
+>>> --- a/hw/arm/virt.c
+>>> +++ b/hw/arm/virt.c
+>>> @@ -2309,15 +2309,22 @@ static void machvirt_machine_init(void)
+>>>  }
+>>>  type_init(machvirt_machine_init);
+>>>  
+>>> +static void virt_machine_5_1_options(MachineClass *mc)
+>>> +{
+>>> +}
+>>> +DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
+>>> +
+>>>  static void virt_machine_5_0_options(MachineClass *mc)
+>>>  {
+>>>      static GlobalProperty compat[] = {
+>>>          { TYPE_TPM_TIS_SYSBUS, "ppi", "false" },
+>>>      };
+>>>  
+>>> +    virt_machine_5_1_options(mc);
+>>> +    compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+>>>      compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));  
+>> As spotted by patchew we need { TYPE_TPM_TIS_SYSBUS, "ppi", "false" } to
+>> be applied for all machine types 5_0 onwards as our tpm-tis-device does
+>> not support PPI. So I guess we need to move compat[] declaration outside
+>> of virt_machine_5_0_options and call
+>> "compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));"
+>> for each  virt_machine_5_*_options? Or is a misuse of compats?
+> 
+> Ah, that was the error (I could not really make sense of it).
+> 
+> So, if I understand it correctly, ppi needs to be disabled for all virt
+> machines.
+ppi property of tpm-tis-sysbus device needs to be disabled for all virt
+machines whose version >= 5.0. tpm-tis-sysbus device is supported from
+5.0 onwards.
 
->   *
->   * sign is:
->   * (empty): for 32 and 64 bit sizes
-> @@ -44,6 +50,11 @@
->   *   l: 32 bits
->   *   q: 64 bits
->   *
-> + * end is:
-> + * (empty): for target native endian, or for 8 bit access
-> + *     _be: for forced big endian
-> + *     _le: for forced little endian
-> + *
->   * mmusuffix is one of the generic suffixes "data" or "code", or "mmuidx".
->   * The "mmuidx" suffix carries an extra mmu_idx argument that specifies
->   * the index to use; the "data" and "code" suffixes take the index from
+Looking again at the code, I should rather set the default value of the
+ppi property to false in tpm_tis_sysbus_properties. Before we shared the
+same device with x86, hence the compat but now we have a separate one. I
+guess that should work directly without the pain of that compat :-( Let
+me check ...
 
-Otherwise
+Thanks
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Eric
+ I think the correct way to do this would be to add the
+> "compat" prop in virt_machine_class_init() (even if it is not strictly
+> compat, as it always needs to be disabled). It can be removed there and
+> added to a compat machine should support be added in the future.
+> 
+> Or does anyone have a better idea?
+> 
+> 
 
-thanks
--- PMM

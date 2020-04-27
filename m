@@ -1,192 +1,220 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3741236lfm;
-        Sun, 26 Apr 2020 23:18:40 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK+3LOTAvx0af8zk84/g6StpiAzN6AE87atuutcdcWsabxWoiySeervn87f8uewR8/BCOrd
-X-Received: by 2002:a37:9c9:: with SMTP id 192mr20795224qkj.149.1587968320310;
-        Sun, 26 Apr 2020 23:18:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1587968320; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp3912726lfm;
+        Mon, 27 Apr 2020 03:12:12 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLGjAxmwQHFf0ow5PSb66bYqWt/asVgw6sbhVdz0ywmQ9lt0o06ubQHK0tMcvbKeUOu8EXI
+X-Received: by 2002:a05:620a:81b:: with SMTP id s27mr21406196qks.351.1587982332426;
+        Mon, 27 Apr 2020 03:12:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1587982332; cv=none;
         d=google.com; s=arc-20160816;
-        b=HcnCpU3oMP6uQdaydDIpVfQNtzNArPU+oTxzjkupO4Yuwrd4isY0Glg2wsYaMJcuw3
-         DnYPTNoBTOM81jB+TFpIUnQAqIePft5qVWrqgS+0Zh1SOUoGIpk8jDL0AMi0wSBUu6Qk
-         ZifNVFUXEEsO4OyHQTOfCQVUisFo9A2c7PXW1K76czf2W5KNJ11A68WSWtjXD9B0V71x
-         x3ivUVpsNRIpKm6/ik2jqbzYlE0i1ugyDQYh+or/30wU3nLpCrYbdD4nmlp0KXNfrIDq
-         LEyByczAxv0ccnDWbxV+L7zTtk7oZXtLm/1mLvnPOhfgISg8ECxPr6Uxt9lZSGafeFoq
-         +cFw==
+        b=0yXu7Fh2/pvht6jrX5dNdlZRnQOf2lkcsm8Tq1Aq0wAWhLBRgQdoqJYzWe2emiZ8a9
+         pdk92psS5u8uXCQJvb4q5OOBiMW/vK1sZ07UtMU74hB9OlvGVVhDRRqWg6cqvYwo584q
+         2DKL6koGeZoAjASl0D6UUDMKBMreNaFgEp/q0o42PGJ3qF9UisQ27DqaOzf7JMdKItdA
+         VMe0SCU4Ln8Frm3S6QgaqBf9t/yTdIRAZ3oImVP3EJXwMP3xcrEQh/Ph/7FnK4B2TE+A
+         9E2UcRRTauw4GwvsH8mtrqE7xSxNT+EVK6bBpQFJFBNVM7tj8UZ73dPwA6ZMW3mP3Ene
+         Tbhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=j91YErI5Q52hgxy0U1pEqh20968RVHLPTRn/w86YQ5w=;
-        b=Mz/Uegeyq9DhC4um0RUzbxU/5uw7Ur5a53uVHIB1tbmkNAbQg1FmxGwUHSTBIkNxQm
-         RMwFXKyki8rK+kFeUlPOjp8l3JNZHsKx8Euvgv/q9R8u/5h8NbTzccqVGu1+lnZIUG5Y
-         BrYyau+/WfQAnFg/nBnKJMbFDVGw+gcP6vn8zasyvWxX3xdglRYnicVOj7LWcf/+OCs3
-         fQQ2GlhRIETkXrzrfpIoLJDFvensXC8E5H3y6f4FOSHEb7b/VcnNlsc62Gcifx75oM9F
-         XyuQVQ0tT4IJ/xoKSDAx0Z6K4woLSConGGSGnzI6TNLBO+ZJk92D50HOmYvmw1YKQ4n7
-         yntA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date:dkim-signature;
+        bh=7jx3RoBb4hDH7vaECqM7PiML351QlBPjDB7CPVmiLY0=;
+        b=S6XmCv6DD3HHtkX5z2ahjDi9G3NrLybYYS5bfU3FV4A8fuewh/aO7ze17xnvXdBPKy
+         vX4tmyvSzQTq8GSv180rYJJU3oNLj0U5/p53CBtyFZtPF0ADJwfa6lzJymIIGpbQaBpl
+         PCIK9CM01l83K8iXuGsXISyyxMKyIW6MoRyCzbHafGGmo+v58l8fjJe0Kg3uaNBpMmPf
+         CKOBSPoiw77scBVaXnSOOK9o/tLxtIwcARGhKUWP2hf29gtEu/dbDhaXDbt5ROm3wfSs
+         iMxIU2V7+O0JlD2jJK65vAf6yifpqtqcvgfUqlP64AALar2ZgmFx79+e56pKTN7Nm7rQ
+         uR3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=ZNF4P+U8;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id q11si7664374qtb.62.2020.04.26.23.18.40;
-        Sun, 26 Apr 2020 23:18:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XG4s+rh8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b18si304228qvo.27.2020.04.27.03.12.12
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 27 Apr 2020 03:12:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=ZNF4P+U8;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id E8F6B4B18A;
-	Mon, 27 Apr 2020 02:18:39 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qMKopKw3GmBK; Mon, 27 Apr 2020 02:18:38 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id E28E14B138;
-	Mon, 27 Apr 2020 02:18:38 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id BE3F64B134
- for <kvmarm@lists.cs.columbia.edu>; Mon, 27 Apr 2020 02:18:37 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5KnxB-wwPkF9 for <kvmarm@lists.cs.columbia.edu>;
- Mon, 27 Apr 2020 02:18:36 -0400 (EDT)
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
- [205.139.110.61])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id A63DC4B132
- for <kvmarm@lists.cs.columbia.edu>; Mon, 27 Apr 2020 02:18:36 -0400 (EDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XG4s+rh8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36622 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jT0kF-0005g5-KI
+	for alex.bennee@linaro.org; Mon, 27 Apr 2020 06:12:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40022)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <cohuck@redhat.com>) id 1jT0iP-0003n3-4Z
+ for qemu-devel@nongnu.org; Mon, 27 Apr 2020 06:10:24 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
+ (envelope-from <cohuck@redhat.com>) id 1jT0iO-0003it-AU
+ for qemu-devel@nongnu.org; Mon, 27 Apr 2020 06:10:16 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:23096
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1jT0iN-0003gJ-Ts
+ for qemu-devel@nongnu.org; Mon, 27 Apr 2020 06:10:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1587968316;
+ s=mimecast20190719; t=1587982214;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=z9GxT9ibmzxXP3rSVkXz4GcBHwjbM4n+aVHQx3+API8=;
- b=ZNF4P+U8jVK5XhD6K7yBCy8ZjtLa0sjUKloKIRBjc7P9DNjN4Kd5TH4r3rd1RpihuTk742
- MoJxn5Okj9FALJ66kl/5bpJT45rLj6RHuFMzOF/g/s1xH/peZ5udSYwMh3lUAlBF71i1zb
- zTYBemCYEFLPGNShEAH7jwbWp8AjSqk=
+ bh=7jx3RoBb4hDH7vaECqM7PiML351QlBPjDB7CPVmiLY0=;
+ b=XG4s+rh83RAIRceVv8EUGem3DYOVhQM1V7TQUVkhQ9HINnH1Jnu8YT0MpJhXYpiKPVEAmh
+ eqJwVLTXPxYpHwyQrVoN2GHmxAROusIJnoZkEnPkMjQqTG0/bjvmFHRpcfGpilD5QRx/Y/
+ YA099VHAQ/TG5ruBM0Iw6HMTsiKItpo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-344-48T284WyPxiX5ZkcYYpzVw-1; Mon, 27 Apr 2020 02:18:34 -0400
-X-MC-Unique: 48T284WyPxiX5ZkcYYpzVw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-201-sNs4_JE4PQKPP7-061XNnQ-1; Mon, 27 Apr 2020 06:10:09 -0400
+X-MC-Unique: sNs4_JE4PQKPP7-061XNnQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EB157464;
- Mon, 27 Apr 2020 06:18:32 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.184])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7FB5A60C80;
- Mon, 27 Apr 2020 06:18:30 +0000 (UTC)
-Date: Mon, 27 Apr 2020 08:18:27 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v4 1/2] target/arm: kvm: Handle DABT with no valid ISS
-Message-ID: <20200427061827.s3fcyvdu3r3bfijj@kamzik.brq.redhat.com>
-References: <20200323113227.3169-1-beata.michalska@linaro.org>
- <20200323113227.3169-2-beata.michalska@linaro.org>
- <CAFEAcA_uWS+cVRk=BKra8AhsD+B1syVzhXeCMttSKwQDdo=j3w@mail.gmail.com>
- <20200417131032.lcyunbjwofsn2nzz@kamzik.brq.redhat.com>
- <20200424121633.GF3106@work-vm>
- <d6f4b17c-1202-3aef-320a-247dc0295277@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 917B71005510;
+ Mon, 27 Apr 2020 10:10:07 +0000 (UTC)
+Received: from gondolin (ovpn-112-184.ams2.redhat.com [10.36.112.184])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 58DEE5D9DC;
+ Mon, 27 Apr 2020 10:09:58 +0000 (UTC)
+Date: Mon, 27 Apr 2020 12:09:56 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Subject: Re: [PATCH] hw: add compat machines for 5.1
+Message-ID: <20200427120956.6c2f775c.cohuck@redhat.com>
+In-Reply-To: <4166d3fc-58e9-405d-71a1-2270ced75e7d@redhat.com>
+References: <20200424090314.544-1-cohuck@redhat.com>
+ <548cd0de-17d3-204d-7df1-4c8fdccad83c@redhat.com>
+ <20200427110609.36ecaac6.cohuck@redhat.com>
+ <4166d3fc-58e9-405d-71a1-2270ced75e7d@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-In-Reply-To: <d6f4b17c-1202-3aef-320a-247dc0295277@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-Cc: quintela@redhat.com, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, kvmarm@lists.cs.columbia.edu,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 3DCDpfAeInkp
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/27 02:05:28
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ qemu-devel@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: X9LYwXmxq+/U
 
-On Sat, Apr 25, 2020 at 11:24:14AM +0200, Paolo Bonzini wrote:
-> On 24/04/20 14:16, Dr. David Alan Gilbert wrote:
-> >>> I was trying to work out whether we need to migrate this state,
-> >>> and I'm not sure. Andrew, do you know? I think this comes down
-> >>> to "at what points in QEMU's kvm run loop can migration kick in",
-> >>> and specifically if we get a KVM_EXIT_ARM_NISV do we definitely
-> >>> go round the loop and KVM_RUN again without ever checking
-> >>> to see if we should do a migration ?
+On Mon, 27 Apr 2020 11:58:28 +0200
+Auger Eric <eric.auger@redhat.com> wrote:
+
+> Hi Connie,
+> 
+> On 4/27/20 11:06 AM, Cornelia Huck wrote:
+> > On Mon, 27 Apr 2020 09:43:33 +0200
+> > Auger Eric <eric.auger@redhat.com> wrote:
+> >   
+> >> Hi Connie,
+> >>
+> >> On 4/24/20 11:03 AM, Cornelia Huck wrote:  
+> >>> Add 5.1 machine types for arm/i440fx/q35/s390x/spapr.
 > >>>
-> >> I'd prefer a migration expert confirm this, so I've CC'ed David and Juan,
-> >> but afaict there's no way to break out of the KVM_RUN loop after a
-> >> successful (ret=0) call to kvm_arch_handle_exit() until after the next
-> >> KVM_RUN ioctl. This is because even if migration kicks the vcpus between
-> >> kvm_arch_handle_exit() and the next run, the signal won't do anything
-> >> other than prepare the vcpu for an immediate exit.
-> 
-> As far as QEMU is concerned, this should be enough for Beata's patch to
-> be safe.  If the signal causes KVM to exit before KVM_EXIT_ARM_NISV,
-> it's of course okay.  If you get a KVM_EXIT_ARM_NISV, however, KVM_RUN
-> will exit with return code 0 and kvm_cpu_exec will:
-> 
-> - set env->ext_dabt_pending
-> 
-> - go round the loop again
-> 
-> - notice cpu->exit_request and schedule an immediate exit
-> 
-> - call kvm_arch_put_registers
-> 
-> - call KVM_RUN again, which will exit with -EINTR
-> 
-> - exit the loop and allow migration to proceed
+> >>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> >>> ---
+> >>>
+> >>> Still keeping the default cpu model version on x86 at v1.
+> >>>
+> >>> I'll queue this to my s390-next branch, as I'm planning to send a pull
+> >>> req as soon as 5.0 is out; if someone else wants to queue this, we'll
+> >>> figure it out :)
+> >>>
+> >>> ---
+> >>>  hw/arm/virt.c              |  9 ++++++++-
+> >>>  hw/core/machine.c          |  3 +++
+> >>>  hw/i386/pc.c               |  3 +++
+> >>>  hw/i386/pc_piix.c          | 14 +++++++++++++-
+> >>>  hw/i386/pc_q35.c           | 13 ++++++++++++-
+> >>>  hw/ppc/spapr.c             | 15 +++++++++++++--
+> >>>  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+> >>>  include/hw/boards.h        |  3 +++
+> >>>  include/hw/i386/pc.h       |  3 +++
+> >>>  9 files changed, 71 insertions(+), 6 deletions(-)
+> >>>
+> >>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> >>> index 7dc96abf72cf..5e84c09402dd 100644
+> >>> --- a/hw/arm/virt.c
+> >>> +++ b/hw/arm/virt.c
+> >>> @@ -2309,15 +2309,22 @@ static void machvirt_machine_init(void)
+> >>>  }
+> >>>  type_init(machvirt_machine_init);
+> >>>  
+> >>> +static void virt_machine_5_1_options(MachineClass *mc)
+> >>> +{
+> >>> +}
+> >>> +DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
+> >>> +
+> >>>  static void virt_machine_5_0_options(MachineClass *mc)
+> >>>  {
+> >>>      static GlobalProperty compat[] = {
+> >>>          { TYPE_TPM_TIS_SYSBUS, "ppi", "false" },
+> >>>      };
+> >>>  
+> >>> +    virt_machine_5_1_options(mc);
+> >>> +    compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+> >>>      compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));    
+> >> As spotted by patchew we need { TYPE_TPM_TIS_SYSBUS, "ppi", "false" } to
+> >> be applied for all machine types 5_0 onwards as our tpm-tis-device does
+> >> not support PPI. So I guess we need to move compat[] declaration outside
+> >> of virt_machine_5_0_options and call
+> >> "compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));"
+> >> for each  virt_machine_5_*_options? Or is a misuse of compats?  
+> > 
+> > Ah, that was the error (I could not really make sense of it).
+> > 
+> > So, if I understand it correctly, ppi needs to be disabled for all virt
+> > machines.  
+> ppi property of tpm-tis-sysbus device needs to be disabled for all virt
+> machines whose version >= 5.0. tpm-tis-sysbus device is supported from
+> 5.0 onwards.
 
-This was my understanding as well. Thanks for the confirmation.
+It would probably be ok to set for all versions; if the device is not
+available, a compat entry should not hurt.
 
 > 
-> However, I'm not sure that it's a good idea to
+> Looking again at the code, I should rather set the default value of the
+> ppi property to false in tpm_tis_sysbus_properties. Before we shared the
+> same device with x86, hence the compat but now we have a separate one. I
+> guess that should work directly without the pain of that compat :-( Let
+> me check ...
+
+Yes, that seems like a better solution.
+
 > 
-> +        /* Clear instantly if the call was successful */
-> +        env->ext_dabt_pending = 0;
+> Thanks
 > 
-> Rather, this should be done by the next kvm_arch_get_registers when it
-> calls KVM_GET_VCPU_EVENTS.  It's also possible to add an assertion in
-> kvm_get_vcpu_events that it you always get zero, to justify that the
-> field is not migrated.
+> Eric
+>  I think the correct way to do this would be to add the
+> > "compat" prop in virt_machine_class_init() (even if it is not strictly
+> > compat, as it always needs to be disabled). It can be removed there and
+> > added to a compat machine should support be added in the future.
+> > 
+> > Or does anyone have a better idea?
+> > 
+> >   
 
-I like the idea of a balanced API; keeping the 'set' abort pending
-until the next 'get', but this event doesn't work that way.
-Documentation/virt/kvm/api.rst states:
-
-  It is not possible to read back a pending external abort (injected via
-  KVM_SET_VCPU_EVENTS or otherwise) because such an exception is always
-  delivered directly to the virtual CPU).
-
-I think clearing the userspace copy instantly after a successful
-KVM_SET_VCPU_EVENTS implements that correctly.
-
-Thanks,
-drew
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

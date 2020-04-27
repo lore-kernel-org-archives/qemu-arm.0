@@ -1,116 +1,107 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4346901lfm;
-        Mon, 27 Apr 2020 09:52:19 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLcquvqH1EWujKCdFFEa8Rsm/AmH4+xTvjDojPknl+ji+bMvxVF8thqBR5oX4UfO+/IViRG
-X-Received: by 2002:ac8:d83:: with SMTP id s3mr23606915qti.238.1588006339303;
-        Mon, 27 Apr 2020 09:52:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588006339; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4460801lfm;
+        Mon, 27 Apr 2020 11:39:27 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIrgu4Yz9iswcwYSFy9cG00jV9JtrvypOfRsij3ZIsdXCobn6kuNVGB1U7i9++Gcze3mTkQ
+X-Received: by 2002:ac8:4897:: with SMTP id i23mr24483875qtq.184.1588012767328;
+        Mon, 27 Apr 2020 11:39:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588012767; cv=none;
         d=google.com; s=arc-20160816;
-        b=KNFeu7ImQAGYjKSQJ4pE5SiP8czZLTYwrO5unaTj5bduzTf+4TrFlk23yAmpw2kWlX
-         61ZaivNncPusv48is6jMVJrL/+HGnrxC9/TfXeloyAvB/wy0pkuKz+VPFfxHieDj9nik
-         d7kkOx/B04+IzDTCukLjlk4wgIr/b3NQnECVUE2q5xao8ugmu0kDRyXbBvwxzH+R+H10
-         /0U8SW14kzUy/klsKafHvEO/2/tQ11vV3JBXynhUD9n+9KxEvi4VZd1L7zY9UrIM0aFu
-         ZfU2ifT9pKsMwig8s3Ck4ANWCeuFyO3/kUi6OTtWxNFAs78alwWAVkzYf54fjueLUf42
-         JnrA==
+        b=wx512TE31cAUIfJsrs9LB29gqKFEoktnfcAYNzYDlfuVa0wNXjC32gqkwvfURxdok9
+         MALecMuunG7iHSC2UED9EyNBOx5Bj69qc/YGPbrdjl4h7H3IB2pDDs++Tdjhy06M7X44
+         fyn5wmluWPmFRd/e0M2KgdvHmYYvGKK1uhJnAthfIXtyMzjXFRFi2bAk75uoGHcovW/D
+         cHA4F/3OlzIkeD6tkRKUzzLB3gQRL4/t+1wV6lODikKUJDAxwfBV3zcsBJ/jJj2AIOWr
+         i8fErxgPFNT5aWoCoIBgNrRS6IyWuCG0ZHTsOZHfp5iPsKQkEJmIgQuXFBeqRiViOYez
+         C8FA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=nY4WAPPvJj0E1d2OBpT0hEobW4iCmcMkCcfKzd/kz+4=;
-        b=CLDYvGNaErvzYUo8PBU5NGo/rEqhzWz49kXOsEG81hwg9fjjCBuSmDl9Zvf7ffVRwO
-         CNglvjJad7slO8dq58cs34vb7NF6dnTNi0Sx2uXY13t7IQ+vYuczIpQm12W219pTt3BF
-         1T8PU3oTzxZpIrYtVs37GwjQxRoVdd8C60JCFjytug0wkc1mE3gDLrHNuF3iBsREH6Jp
-         HqXqd3u6BErHnUey1XBXOH2H1HAHOT32kQnbjjRzhrHBXTLwT/SZis7QyypykPB9Kb50
-         bVr1Fg7uwocCoNlNY7AkUpeiys2vNA3/dNO4K2zDKuz9aKOGm/u+Y89znB0/IPlapDy3
-         bCGw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=qXO1MV9LQSvXikG2gTD/XNrX1eAS53joYZpOVUCpneg=;
+        b=pSLa3rx9SUJ9HlEAlY4soZUDyYo8+zUp+8DtRJfk+TQEYHwYf0jxK1a6I4Ot30JTGT
+         4bbGBPIpbThMbosWo6HyuVwJOjK90tGA089ushVf8OQAgpCqw5doCd3fU6r1NBSmk/y/
+         g10CDQRfdUNi+M0xOCYe9kfCiJEVIfY0OtU19BfhD890dWHhokjTcSCjK0TASUEm2C0T
+         Izmk3koqWHQblJ1LIsOsBqjY5ZBcCi/dAO9ch+DnDx+YsTaP4t1hqcEkEG0WJag9qYJE
+         MHDGFSdd346TOmdkjfF2ae/3JV0osMPp4z032xUp0zc5L9HgCPdyBqKvlW+vyzfaMCYu
+         pvfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=soVdPXk0;
+       dkim=fail header.i=@linaro.org header.s=google header.b=cN3vQqQt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x13si8844003qvs.74.2020.04.27.09.52.19
+        by mx.google.com with ESMTPS id a19si8815099qkn.364.2020.04.27.11.39.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Apr 2020 09:52:19 -0700 (PDT)
+        Mon, 27 Apr 2020 11:39:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=soVdPXk0;
+       dkim=fail header.i=@linaro.org header.s=google header.b=cN3vQqQt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55412 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58548 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jT6zS-0007WK-Nz
-	for alex.bennee@linaro.org; Mon, 27 Apr 2020 12:52:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50974)
+	id 1jT8f8-000293-MN
+	for alex.bennee@linaro.org; Mon, 27 Apr 2020 14:39:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37926)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jT6t2-0003uj-MO
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 12:45:41 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jT8eu-00028d-Qt
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 14:39:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jT6t1-0000C1-Fk
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 12:45:40 -0400
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:42077)
+ (envelope-from <peter.maydell@linaro.org>) id 1jT8eu-0002UD-5G
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 14:39:12 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:47101)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jT6t1-00009S-29
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 12:45:39 -0400
-Received: by mail-pg1-x544.google.com with SMTP id n11so814511pgl.9
- for <qemu-arm@nongnu.org>; Mon, 27 Apr 2020 09:45:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jT8et-0002Tt-HS
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2020 14:39:11 -0400
+Received: by mail-ot1-x342.google.com with SMTP id z25so27964215otq.13
+ for <qemu-arm@nongnu.org>; Mon, 27 Apr 2020 11:39:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=nY4WAPPvJj0E1d2OBpT0hEobW4iCmcMkCcfKzd/kz+4=;
- b=soVdPXk03IZ01AvyeNo+4syJLwjbZqBG5nsQZafH9yDKdiQxZcrUY8S1Vrh9OTRk90
- /O92eVgvHy1SdFPGdMtFeL4/h0MIV/N3MGnEup8sYvAznXv1oKuAnY16g3hdnRIKZBGy
- Gbbpof0KM2V7D7snx+xj5/j0e8S+IUgmow+TU/cBDOeqn22YdTZG90nHAPmPxjzP0hZr
- O3AmJiOVkYsaLIZSM+4I6K5h1QvYM1BgMaJ2cn6KYJYJ2bf5MHliEA1Ljg7YQkIJhhw+
- cDZ2yHHAZEt0UlRPK+55Li2LCEb1S40E6F+bhjgT+8D9EB7DCVR7vSKtxEx2WQSGFDg9
- t7RA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=qXO1MV9LQSvXikG2gTD/XNrX1eAS53joYZpOVUCpneg=;
+ b=cN3vQqQtEJWKc90RpWVXCMalS3OeBW8EX+lDY+AvtqGM/PpwHzOw+kdsQL+u8ftTR8
+ abwNRjaZHno2vFEz0kHR8HxuaqTUryFFDLTRoZyGlWhoeihQuEgp+7O3bE5zK1s9CAm3
+ V2lZEztrQt4nlukbwDiWWujP9IgAU0CIzUNARB+24HI2eJlaoQm/g+vnDTtGZ2/hqatr
+ pUqJirj0kT0XKfS4xQtE0O6aqL365NEbd1IEkEhlEwSlLwed1V0Scmm5v6wyo84t2HK8
+ C6M0rxyyfhCYeNhNfhPC/u3ARASFXFc7KT7mJgX+8YYpasZQtAwNhB0aSJVjRw8h/hhw
+ BTlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=nY4WAPPvJj0E1d2OBpT0hEobW4iCmcMkCcfKzd/kz+4=;
- b=JKibED0YjHuuHh0WmAbkobWxorZBxtaZSY/EeJ/TQlisDcFPNBMC9P3zQpkvhPZniQ
- JRYx8rP8AmcejYuWCgmfaV+oM3BdNx8YKoVidtQYi+/CxAf+0oteO1wrv6MmvqxpCPBO
- PASftT3cz7VYa6Eobz8shD4C/DtBDVYGIBca2ohAfR5Dw5nHkr39sJgKDA/87hXq/JSp
- QGw/dOCqlCCX1p9MEVTvlWv5gs8Y8AlzVs4rgdXUplNP6jomT5Q//n6iI0z8qU7KMifp
- psKjQXTSy6fUtdleFw0Y5Ry8zJMRLVDv6HRDVe6mOjmb5qDPOHOKY75fyv2I1gdpoclX
- BJDw==
-X-Gm-Message-State: AGi0PubxqLjyajka29F2MQDm+8vR/qEkTz2DsFhXqrMwLAbxeisdAiZb
- xU+FfzJZavYr848GdddDdywfde7aOns=
-X-Received: by 2002:aa7:962c:: with SMTP id r12mr25644732pfg.232.1588005937049; 
- Mon, 27 Apr 2020 09:45:37 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id w9sm13177437pff.101.2020.04.27.09.45.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Apr 2020 09:45:36 -0700 (PDT)
-Subject: Re: [PATCH v3 13/18] target/arm: Update contiguous first-fault and
- no-fault loads
-To: Peter Maydell <peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=qXO1MV9LQSvXikG2gTD/XNrX1eAS53joYZpOVUCpneg=;
+ b=npjdEypd7ld2VnOLyAPPsqQfdVuws8TCpBEbywxlwomqXuHotFrK0K5rKVF3+Ppz4U
+ /pJCvkXxh99ZyzKwuqFEQ3m/BVUUMwEWaedL8LA1/z0q9DzoNYzMQ9I3iMQsp+OIL6w8
+ DVpD13WYTnryYMO5Kzw1MZTswUFvrNpy92P8ZzekyVLpOpH0tfHGtexMfyp29Tyt1WCS
+ LSHTKymtEG2zFJDzGJcAwuYcJg1jlfXuIyFbHLc+KbyrnXlgAWR2m9ycVIX6/eFb0cVb
+ Sc0c9rEuqjazF8rXu66YhA40+s1CoBrMmtlEkK+ZAud3ANDiK/9W1h4O8bXrB1wTjxBg
+ pzzg==
+X-Gm-Message-State: AGi0Puahm9lOEn6SwHZzmcHYkIWXVY2orZg/Izr4tyhNIHYLwseMre/r
+ eihr8UYiG6RCw9AKFcI+QGbIhha6+yFRSXDtzZrnzA==
+X-Received: by 2002:a05:6830:1e4e:: with SMTP id
+ e14mr19045953otj.91.1588012750156; 
+ Mon, 27 Apr 2020 11:39:10 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200422043309.18430-1-richard.henderson@linaro.org>
  <20200422043309.18430-14-richard.henderson@linaro.org>
  <CAFEAcA8oWP9XGzD+pb_VhDth8zx8j1Gz4vwiK+dArpw8x1BmqA@mail.gmail.com>
  <22c1fd55-7cd3-6320-1f90-40d1bd2cc883@linaro.org>
  <CAFEAcA-iqrEi_wQ+mBN1NtrEKq3uDYPoDunqW5e9KV6ivz3-SQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <d148806b-c7f1-fefc-bfb4-fcefb81ab509@linaro.org>
-Date: Mon, 27 Apr 2020 09:45:34 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-iqrEi_wQ+mBN1NtrEKq3uDYPoDunqW5e9KV6ivz3-SQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::544;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x544.google.com
+ <d148806b-c7f1-fefc-bfb4-fcefb81ab509@linaro.org>
+In-Reply-To: <d148806b-c7f1-fefc-bfb4-fcefb81ab509@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 27 Apr 2020 19:38:58 +0100
+Message-ID: <CAFEAcA-iJWqPQ-SwukaBcxgNFppAmeZNUR2doz6sgV6RduC32A@mail.gmail.com>
+Subject: Re: [PATCH v3 13/18] target/arm: Update contiguous first-fault and
+ no-fault loads
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::544
+X-Received-From: 2607:f8b0:4864:20::342
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -125,50 +116,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lTLjXVi1Wir1
+X-TUID: OtIf+c9TLiP+
 
-On 4/27/20 9:32 AM, Peter Maydell wrote:
->>>> +     * From this point on, all memory operations are MemSingleNF.
->>>> +     *
->>>> +     * Per the MemSingleNF pseudocode, a no-fault load from Device memory
->>>> +     * must not actually hit the bus -- it returns (UNKNOWN, FAULT) instead.
->>>> +     * If you map non-RAM with Normal memory attributes and do a NF
->>>> +     * load then it should access the bus -- but doing so is illegal.
->>>> +     *
->>>> +     * While we do not have access to the memory attributes from the PTE
->>>> +     * to tell Device memory from Normal memory, we can validly assume that
->>>> +     * non-RAM has been mapped as Device memory.  Thus we indicate fault
->>>> +     * on all MMIO.
->>>
->>> I still don't understand why this is right. All non-RAM is MMIO
->>> but not all MMIO is non-RAM; so you might have something that's
->>> MMIO (at least for the moment) and has been mapped Normal. That
->>> shouldn't fault.
->>
->> Everything that must go through the slow path has TLB_MMIO set.
-> 
-> Yes. But not everything that goes through the slow path is Device memory.
-> We can (should) fault on all accesses to Device memory, but we can't
-> fault on all accesses that are slow-pathed, because some of them could
-> be entirely valid Normal memory.
+On Mon, 27 Apr 2020 at 17:45, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+> We *can* indicate fault from MemSingleNF for any reason whatsoever, or no
+> reason whatsoever.
+>
+> > // Implementation may suppress NF load for any reason
+> > if ConstrainUnpredictableBool(Unpredictable_NONFAULT) then
+> >   return (bits(8*size) UNKNOWN, TRUE);
+>
+> What I'm trying to talk about above, is the third statement in MemSingleNF,
+>
+> > // Non-fault load from Device memory must not be performed externally
+> > if memaddrdesc.memattrs.memtype == MemType_Device then
+> >   return (bits(8*size) UNKNOWN, TRUE);
+>
+> and the reason we can't actually test MemType_Device here.
+>
+> If you have better wording for that, I'm all ears.  But I don't think there's
+> an actual bug here.
 
-We *can* indicate fault from MemSingleNF for any reason whatsoever, or no
-reason whatsoever.
+Oh, the comment didn't say you were relying on the operation being
+allowed to return 'fail' for any reason; in particular the line about
+"Normal memory [...] should access the bus" implies the opposite.
+(I also missed the distinction here between "indicate fault" and "fault".)
 
-> // Implementation may suppress NF load for any reason
-> if ConstrainUnpredictableBool(Unpredictable_NONFAULT) then
->   return (bits(8*size) UNKNOWN, TRUE);
+But in that case you have the opposite problem, I think -- just because
+something's backed by host memory doesn't mean the guest didn't
+map it as Device: that case the architecture says must be indicated
+as 'fault' but this code won't do it.
 
-What I'm trying to talk about above, is the third statement in MemSingleNF,
+I would suggest something like:
 
-> // Non-fault load from Device memory must not be performed externally
-> if memaddrdesc.memattrs.memtype == MemType_Device then
->   return (bits(8*size) UNKNOWN, TRUE);
++     * From this point on, all memory operations are MemSingleNF.
++     *
++     * Per the MemSingleNF pseudocode, a no-fault load from Device memory
++     * must not actually hit the bus -- it returns (UNKNOWN, FAULT) instead.
++     *
++     * Unfortuately we do not have access to the memory attributes from the PTE
++     * to tell Device memory from Normal memory. So we make a mostly
++     * correct check, and indicate (UNKNOWN, FAULT) for any MMIO.
++     * This gives the right answer for the common cases of "Normal memory,
++     * backed by host RAM" and "Device memory, backed by MMIO".
++     * The architecture allows us to suppress an NF load and return
++     * (UNKNOWN, FAULT) for any reason), so our behaviour (indicate
++     * fault) for the corner case of "Normal memory, backed by MMIO" is
++     * permitted. The case we get wrong is "Device memory, backed by
++     * host RAM", which we should return (UNKNOWN, FAULT) for but do not.
++     *
++     * Similarly, CPU_BP breakpoints would raise exceptions, and so
++     * return (UNKNOWN, FAULT).  For simplicity, we consider gdb and
++     * architectural breakpoints the same.
 
-and the reason we can't actually test MemType_Device here.
+assuming my understanding is correct...
 
-If you have better wording for that, I'm all ears.  But I don't think there's
-an actual bug here.
-
-
-r~
+thanks
+-- PMM

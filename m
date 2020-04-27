@@ -1,95 +1,96 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4438912lfm;
-        Mon, 27 Apr 2020 11:18:05 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLJ/A9RcH46A5MQyfe+YgL/EK8ognatmkTShWd6rfhffCV6vPZz4WJ3lgo9OBLodP2gIaMT
-X-Received: by 2002:a05:620a:125c:: with SMTP id a28mr23137472qkl.122.1588011484883;
-        Mon, 27 Apr 2020 11:18:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588011484; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp4439766lfm;
+        Mon, 27 Apr 2020 11:18:50 -0700 (PDT)
+X-Google-Smtp-Source: APiQypINOGJx4meYmVJ3UYvNjddhBpWHkncuctv3OsEFHEs1ArPSrF2l71/pIc3KwhCK73a9je4y
+X-Received: by 2002:a05:620a:1202:: with SMTP id u2mr24203481qkj.285.1588011530094;
+        Mon, 27 Apr 2020 11:18:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588011530; cv=none;
         d=google.com; s=arc-20160816;
-        b=cF0wtC368EGqGCpwamC4G7eAF72Q1FIrh3bMX/NE4fSNg6tQHvjzp9SDcj0i/8KGMr
-         djd435vS4ggzMLKquisNT7z6TK+q2GyEERTb/NktAIiEDzSIW9aaSkiBiYYztf92vTZG
-         WTN9roIaU4yrQjDQ9luM0slt7JeJXER92yBA09cJ8F/+2yjbTAZZZImuIwqXW6Hu5kDQ
-         fBIjx1qO9jzOItoAOC6ImMCpvwhHg4582OQ0iKJ0jakq2HONPWKeTHEi6qEK7kQHJb5N
-         KhRNADM0L8lMy69yAgJFnrYAkfV1M8DLFp8N1X6FoBfg0oXJnjMzOe6W5tK7lXtt3mPy
-         mimQ==
+        b=Uuk08Umsekpj9hnCCxJp3iy0maaMlxdLVlz5BSbl2OuaU7Y+LIlhBIjizIEg1ojgS+
+         quW8lfcCalrv7SXua0Wk+5nht8Dlz0JZN9D0f7v94KHp0/+4RUjveGa2s4yjOdtZyHd+
+         I8wx7u6WT4ftVCKFKCquDXg2WoDe6ZEACBQoHwhbfYvhx29F0YMwwcAlZIPXGfYvEhG+
+         Qf7w4iMAdN/lr7JqHvOr+ohFgGqWHVGHaU6Id1pLjO2AMUlM7Bm5m8Vk5BvoTnFrj6cs
+         aK+XrFB66J6yQSEmhchAwmfzYbaJ6I9SJR65U7VXzgl1QhpIWHVYKbY5R84XwtZ1hrae
+         kiWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=IO/HE1kipWi5FHLRIjyeawlGTVZf+4xugUQIEPlWh94=;
-        b=Y+DY/mwu1gfw0JouaiQ6DPP/gqDnBanDJ4XTN5Zp5bAQhs2U59d/o1iino90ZgUPtX
-         KIA23UiSo9CgaUPHg1r04MKjLYjAk3eRAP/7q/3PoDHatHavYDI7M+rsz2NdZhg+Pl9D
-         B51bY7tggnPpqaIiKdZ3n18eAE1uqRLW3JRCgK50OX7JnxdXZMUPfWFHNBdjYPuHwapl
-         Xw7ebjytsFYgnJme2Df4LwdR2B1ebbIi4l1DIfJBck+Qoq74tnbnLlot46kTSsfv3/6O
-         q93oqqDLoOjuizVIOzayGvDP4QBbHq/6p3I9nwNhgSEKLY96hXDnTrSdEmVM1y7CCIaC
-         fkBw==
+        bh=imA9fwmW65enK4C7DtcxVyFgyC1JiD9jIZy37bLdKzA=;
+        b=jwSQ+kYHXaERZ1iCaqL/lTkLghUx7sLlUMa28dg9OAOlDU8U4nA/rWGl20eKZ2Uu1w
+         +1YE/Q8c3y1FLYWx4fBffYM0EaI1nMBphY8sCXPsjZ3mHfRtJMiI2dxRXo8jxxiwBdOZ
+         1USlqGUudiLHsv+BBj+CuLh5sgjrr73pi5mDECx4dhAe0CT4aFgRO6FnwSK23XbF9yg+
+         ic/aAgmeySADk6yeBa3w6ZZeQrDNp9dalDZ7FeelSR75llUoGd8+NzWiM9Tz2Bb2XnO2
+         uSk2NVFsvNdzkwgUsKNixt/r7EYpQonJDtwWoFHv8I3Xu8XrrKzKZYo7JFmCh6Hd5D/J
+         BRUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=toXSP+F+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LutW+6cj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s11si8741396qte.159.2020.04.27.11.18.04
+        by mx.google.com with ESMTPS id r14si9075725qvw.130.2020.04.27.11.18.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Apr 2020 11:18:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Apr 2020 11:18:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=toXSP+F+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LutW+6cj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57306 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57334 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jT8KS-0001Sb-55
-	for alex.bennee@linaro.org; Mon, 27 Apr 2020 14:18:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35018)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jT8LB-0002hq-BI
+	for alex.bennee@linaro.org; Mon, 27 Apr 2020 14:18:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34874)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jT8JZ-0000Xp-5r
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 14:17:09 -0400
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jT8JP-0000C9-7z
+ for qemu-devel@nongnu.org; Mon, 27 Apr 2020 14:17:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jT8JY-0005pM-Pu
- for qemu-arm@nongnu.org; Mon, 27 Apr 2020 14:17:08 -0400
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:34733)
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jT8JO-0005H5-RU
+ for qemu-devel@nongnu.org; Mon, 27 Apr 2020 14:16:59 -0400
+Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:34730)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jT8JX-0005e5-AQ; Mon, 27 Apr 2020 14:17:07 -0400
-Received: by mail-lf1-x141.google.com with SMTP id x23so14677237lfq.1;
- Mon, 27 Apr 2020 11:17:06 -0700 (PDT)
+ id 1jT8JK-0005Fh-Dv; Mon, 27 Apr 2020 14:16:58 -0400
+Received: by mail-lf1-x141.google.com with SMTP id x23so14676725lfq.1;
+ Mon, 27 Apr 2020 11:16:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=IO/HE1kipWi5FHLRIjyeawlGTVZf+4xugUQIEPlWh94=;
- b=toXSP+F+waDi3RQf5149MZr7JFTlgP62W3Wzfo1bk49VL4dLwh/2mwfZGRW7aPt/oT
- 3Km7cWIWRXPO0AfFuvqdr+8Gbs9U33idImnCOJ8g8ssfASOpsSuHdmVsWo8QOn0u3eUC
- dOI4F3zG2nj2LpixJ7L/yUyxHt7tp/ABSWd7Fz3gGmb2w4nZJRcZIiqPw4SmP41ILfBw
- pkohmeI5rCK3FlmzscMZFEfIm64mP/TO4Jka1XyCL+VNyrBMo80DHM2Bp1wV6RSj9Xji
- FQFAXTs13vkHMjUa3Lp2B43mzoGuwVCTTM1A+CQb+He8mW8G20IgOTdfvG/cWx8Eu7IZ
- RW4g==
+ bh=imA9fwmW65enK4C7DtcxVyFgyC1JiD9jIZy37bLdKzA=;
+ b=LutW+6cjsy6R/z4S3MClvUV8bdb2VRamskbo6Hes6LNk/KIyForn6+rjV2pRtxcApS
+ pd3g9OwqyZNCQ5FXEXSsiaTSZEUQqUon3uFhMpbI9TEZHrM9egG2HG949b8dmXBXElfH
+ 1a8NJVg47hIIkosXelXNJDh9EhVAlaMu5ZWdacM1V1ZDMYSuRzjh15Q/Y38U0ebn/XRm
+ WXGjHFgD9kzxFMeL+B3XNP9uq9XOXi4V5hr93Y6trVaiLAZNDo/qSaCNBsTiORZDpXlo
+ z6D0qn5VV46dn/rL99S3g1sqmv/uC1Db/f6RAl37dmv74hDnxmb8TEdPQhH0P6H44Q58
+ h1fQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=IO/HE1kipWi5FHLRIjyeawlGTVZf+4xugUQIEPlWh94=;
- b=CtptbjDBLXxWbBCvXsZvn/R3NxSMKO5bzJE/QHgLs/sG22rnDyKgnDCg34BrcJocJO
- R9zCJ7BcXfGUQH5DxjTRoQqAz1z3nMf9dusdvjxGlPMvDtAZ10bnDR5AYwAamMpq19PB
- oR5gD6963CufbjZBQjv05mJcc51sg6aSkTkqkDL/LvzL1gJeLwsB3uG8EFd/gFoDU7Jr
- QLbbwsKSrW7FYsOHdrpCG4ZXOGCdaUwp7QXMhgCo7/qQ/DXlQhSXNR9TducfGKSr1Ny4
- cJuNbEIPGYgflmOSUPXAqapNJixYlhXHPL3pBBLfAEM9KebAo3OjtuM/rkRtV+vBrgG3
- c2Jw==
-X-Gm-Message-State: AGi0PuYsKVFVYq5+9cx9KRQlje3uQTOLqbkzGQ3u2Rcs8bYDRowj4/nf
- cT0aOTqPJd0tQ/htx4Dhzw8sEJ3U2/Y=
-X-Received: by 2002:ac2:420c:: with SMTP id y12mr16234487lfh.26.1588011425204; 
- Mon, 27 Apr 2020 11:17:05 -0700 (PDT)
+ bh=imA9fwmW65enK4C7DtcxVyFgyC1JiD9jIZy37bLdKzA=;
+ b=OXpj1l+QkyVgf2rmu0G9UwyutaeF37ZYDTYV1apOYDshfAcc1oujbSiBgllbUBFEfI
+ Lz56AWRbKSDv2m5+SekUdwhcGspawgcVzNI9doBGbWlFSGQuCtUlTwWEsYC2KwcR7OMp
+ nJ0M3ZU5PFjZXlb8I5mZAMCkv1m4dYwGfoggFjHjckXAwbybSVyQrCjsTaeekjTJPXkj
+ ijeh12Opt5rfHKpJnxuH8zhaIGXbFiitEKnBEsUhLp2Nj8UPwB/Xk3ErKb3CrT0lMWCG
+ RfcOyyatmtFzl3i3plSEc1J6KoauQS02zMvTIgrSw2nY0KI7AGcEMd9x2bkapRS2Sf83
+ 1/DQ==
+X-Gm-Message-State: AGi0PuYBcLLVlxh/hzf43ItJ+Aqfd+9w8j5iBFiACE4H9cU8barpjp7d
+ IxO70DhkDJh5ftGo444IRDkDQ6unoxg=
+X-Received: by 2002:ac2:4463:: with SMTP id y3mr99292lfl.62.1588011412001;
+ Mon, 27 Apr 2020 11:16:52 -0700 (PDT)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id v26sm10394371lji.43.2020.04.27.11.17.04
+ by smtp.gmail.com with ESMTPSA id s7sm12072296lfb.40.2020.04.27.11.16.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Apr 2020 11:17:04 -0700 (PDT)
+ Mon, 27 Apr 2020 11:16:51 -0700 (PDT)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v1 11/11] hw/arm: versal-virt: Add support for the RTC
-Date: Mon, 27 Apr 2020 20:16:49 +0200
-Message-Id: <20200427181649.26851-12-edgar.iglesias@gmail.com>
+Subject: [PATCH v1 01/11] hw/arm: versal: Remove inclusion of
+ arm_gicv3_common.h
+Date: Mon, 27 Apr 2020 20:16:39 +0200
+Message-Id: <20200427181649.26851-2-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200427181649.26851-1-edgar.iglesias@gmail.com>
 References: <20200427181649.26851-1-edgar.iglesias@gmail.com>
@@ -101,75 +102,48 @@ X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
 X-Received-From: 2a00:1450:4864:20::141
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
  edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
  frasse.iglesias@gmail.com, alistair@alistair23.me,
  richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
  philmd@redhat.com, luc.michel@greensocs.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m6wyt4YojKrm
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: B8+UPnUzGCEo
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Add support for the RTC.
+Remove inclusion of arm_gicv3_common.h, this already gets
+included via xlnx-versal.h.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- hw/arm/xlnx-versal-virt.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ hw/arm/xlnx-versal.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-index 0afee48672..7e749e1926 100644
---- a/hw/arm/xlnx-versal-virt.c
-+++ b/hw/arm/xlnx-versal-virt.c
-@@ -283,6 +283,27 @@ static void fdt_add_sd_nodes(VersalVirt *s)
-     }
- }
+diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
+index 94460f2343..c73b2fe755 100644
+--- a/hw/arm/xlnx-versal.c
++++ b/hw/arm/xlnx-versal.c
+@@ -20,7 +20,6 @@
+ #include "hw/arm/boot.h"
+ #include "kvm_arm.h"
+ #include "hw/misc/unimp.h"
+-#include "hw/intc/arm_gicv3_common.h"
+ #include "hw/arm/xlnx-versal.h"
+ #include "hw/char/pl011.h"
  
-+static void fdt_add_rtc_node(VersalVirt *s)
-+{
-+    const char compat[] = "xlnx,zynqmp-rtc";
-+    const char interrupt_names[] = "alarm\0sec";
-+    char *name = g_strdup_printf("/rtc@%x", MM_PMC_RTC);
-+
-+    qemu_fdt_add_subnode(s->fdt, name);
-+
-+    qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
-+                           GIC_FDT_IRQ_TYPE_SPI, VERSAL_RTC_ALARM_IRQ,
-+                           GIC_FDT_IRQ_FLAGS_LEVEL_HI,
-+                           GIC_FDT_IRQ_TYPE_SPI, VERSAL_RTC_SECONDS_IRQ,
-+                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-+    qemu_fdt_setprop(s->fdt, name, "interrupt-names",
-+                     interrupt_names, sizeof(interrupt_names));
-+    qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-+                                 2, MM_PMC_RTC, 2, MM_PMC_RTC_SIZE);
-+    qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
-+    g_free(name);
-+}
-+
- static void fdt_nop_memory_nodes(void *fdt, Error **errp)
- {
-     Error *err = NULL;
-@@ -496,6 +517,7 @@ static void versal_virt_init(MachineState *machine)
-     fdt_add_timer_nodes(s);
-     fdt_add_zdma_nodes(s);
-     fdt_add_sd_nodes(s);
-+    fdt_add_rtc_node(s);
-     fdt_add_cpu_nodes(s, psci_conduit);
-     fdt_add_clk_node(s, "/clk125", 125000000, s->phandle.clk_125Mhz);
-     fdt_add_clk_node(s, "/clk25", 25000000, s->phandle.clk_25Mhz);
 -- 
 2.20.1
 

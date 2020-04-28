@@ -1,188 +1,201 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5158607lfm;
-        Tue, 28 Apr 2020 00:51:36 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKeESvrUvWmklIoXaK5YvaD33AOlzdySOSPQDb98npw5Cu0fg/SJosnvtGx994k0pSJR7rz
-X-Received: by 2002:a0c:df03:: with SMTP id g3mr24222146qvl.240.1588060295900;
-        Tue, 28 Apr 2020 00:51:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588060295; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5700746lfm;
+        Tue, 28 Apr 2020 09:11:53 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIFVFggQmzPE+rXR6TBWWwGV1a64Iyhbib+UOadPYNr7sQsKadh4ZhwN/JwafeO42YiT7l3
+X-Received: by 2002:a37:5c46:: with SMTP id q67mr27964711qkb.210.1588090312722;
+        Tue, 28 Apr 2020 09:11:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588090312; cv=none;
         d=google.com; s=arc-20160816;
-        b=M4VTkPCA2561c9QmV5GG4YNbpRRJ0pikC/JaHpX8YUCCwC7klw2SLKLgWqEnuzDxaD
-         CDeMdLzawduXSlyRPa39n8EHTnlwO6VK3XkYFWScsAgJZKgtsWefpjnREKn7OGWeK2Z2
-         Nm6Hn4/J3slXOv3I7i24ozqG3v+t1mNKGc3wKNWc2qAvDXxIFYeJK85ksFYKI5B77Tdk
-         40UT8ywG43jj2HhjnBFIqz0LbQiJBHjApFgQI41Hf6JgRx415RAafkUv7Zo0D32Izb/Y
-         0p6iJlkDwnAmlGtuzn6GXpNQlbkdGhkDTfCjkGVVtKg1A5w1m0KEkRt1JkqsCUOfZpQq
-         MirA==
+        b=GgTd5L3Cb3xV3CjVHSrzJuexgkkvI7ItkpQhbOqDaVbdc9r6Rhsodd+95fvDGbQzDU
+         Fqe5Uh4O+CcVQY5Hvf7rf0TEvDu1um53q2yVsCzifNSeSpFFWzQW8MXOuNUnhxk/VE/T
+         fuI00fTNJz0JmTPuCEIOdxaCOan4CR1yYetnezqHHbdm9HCDz8xBS9/GQ7NTo/BLqFDq
+         dWalRS5zNxy+pALWdNSVoJ+S2xhTSXerllmglCVraG+vQrTSj7MwG0JrEV2a4ItYzeOc
+         teJaU7kRYoctrFkyT0GaClMlFeuy+IVq4ZP9k2CTVbsp36IxDKE+eCh1f1zDKKAMe6Gc
+         dlbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=IiCmi3gnLXnh9qqh5SktG6taFgc0wMvCmCpUJaLx16Q=;
-        b=Ipjh7v0nrwN84kTeQFRBZnQM73rkIu5XDZ/3DRK8xqlxKdJJcfBmbq6V+fVBjj2sPq
-         DHwroGRJiqzPmUmmS7oOVMjtj02x2TsHqIKsSk6au5qjm6rkTh9VYzYP9IY9ESYkz5Ox
-         08lel4fzcAHi5sLvhPUxQRafDbIPnfH7aVF+9apT9Ma/2mmyV7RInVnQo2xCqPBlzTgz
-         2hbCL3wkZhQ2qhuMW8f/U0KcHENs3HKmTvkR+ZqU6CNht6qfhxjenx9nXC/ExP017xLo
-         Ao3VgB9A7knvMDGluq30BYLlUURwGCMrAGbq2I5s3QfBzkcwchH6WPx9GBfkJE3xNf7L
-         uwiA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=o7CLS2y7/WQHEF/89+BpyFTtr4utuBXWVE2QAB0qk4A=;
+        b=U1IHHwkv+cDgsyu0RzdaTamkG8/vfKTSbQ20YrVfT3lth0t+Bb7gad6hLS6YtmM6bF
+         rm6duM2SCYs+rzZMlkynieDrWbK+6qvVVE/Eh7AD42+HZyvtvEBKv9ifqxGIacaqs0kq
+         AlmQre6aLzx8YKwuJuWBDTZYspnrL5WSl/uZKAkWgoozkJiogr0wMaOWMUvhzVmCnd3z
+         5RQWZ+irzT8o8681kVHDpt+823qdxRGERjTw/L1rlMdOarde0inEc1yt9Y1RYLaE6Kcj
+         p7oE6OVviE7oUnj3/17PZDWOAZtG0RZwPJRdQ8gf+WCxDTmjyeL2fzeu/GknffgFxPNg
+         bXjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ij1xZWAo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Kt/P5Ove";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 12si10510278qkv.265.2020.04.28.00.51.35
+        by mx.google.com with ESMTPS id b8si10785017qkj.24.2020.04.28.09.11.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Apr 2020 00:51:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Apr 2020 09:11:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ij1xZWAo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:45234 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Kt/P5Ove";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36868 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jTL1j-0001Wd-3G
-	for alex.bennee@linaro.org; Tue, 28 Apr 2020 03:51:35 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:44868)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jTSpr-00068M-UU
+	for alex.bennee@linaro.org; Tue, 28 Apr 2020 12:11:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57942)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jTL04-0006iJ-EB
- for qemu-arm@nongnu.org; Tue, 28 Apr 2020 03:51:26 -0400
+ (envelope-from <laurent.desnogues@gmail.com>) id 1jTSjs-0000Av-9o
+ for qemu-devel@nongnu.org; Tue, 28 Apr 2020 12:09:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jTKwc-0007eR-1B
- for qemu-arm@nongnu.org; Tue, 28 Apr 2020 03:49:52 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:36147)
+ (envelope-from <laurent.desnogues@gmail.com>) id 1jTSgM-0001w7-Dk
+ for qemu-devel@nongnu.org; Tue, 28 Apr 2020 12:05:39 -0400
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:37717)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jTKwb-0007e7-I2; Tue, 28 Apr 2020 03:46:17 -0400
-Received: by mail-wr1-x443.google.com with SMTP id d15so21803105wrx.3;
- Tue, 28 Apr 2020 00:46:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <laurent.desnogues@gmail.com>)
+ id 1jTSgL-0001qy-SV; Tue, 28 Apr 2020 12:02:01 -0400
+Received: by mail-io1-xd44.google.com with SMTP id u11so23551836iow.4;
+ Tue, 28 Apr 2020 09:02:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=IiCmi3gnLXnh9qqh5SktG6taFgc0wMvCmCpUJaLx16Q=;
- b=ij1xZWAoThDbPF82cYrzoVl2fWa1BCrpruAPyHehHVau+19zxuC7890n77NUx2OAfV
- c9ZVY7wVT5MHljQIAQ6ymi1jjRiklJ2WBKqTc0K467AQLmHl40+B1z07p01dwcqfMUbt
- nVgIhbbbrDldObkGX5wfVCqpoEIfht7ATF4zPtin3X3g7cuOz2eB2L3IvZCxLy93hdrP
- s20abzu3OCAFx+ZtwuXPVpneX7HTBSugORfxk6DHcKIaHfOMd53Zi7WuApjlAbVzIJ0a
- fPYX32paKHq0TNoDMS+LUdFxU5mdm4QKjPBBoFIbVvp+QNUwAXAKDcbe/2tqy5tQBfig
- /y0g==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=o7CLS2y7/WQHEF/89+BpyFTtr4utuBXWVE2QAB0qk4A=;
+ b=Kt/P5Ovem2Wk69TEcISMIDQl6aNnYFeKfiARdndnDAjhWefI4Z2hkV4Oev89Sm8JN1
+ modHQXTfyI8F349GfFYlNtAC9dZ+WbqnyLljHUTJMt+qrteD4bn22//JgUNWYiwa6gTv
+ z+wCiFeI3BV/GUbUzgReguNFBWwNmqWILy99SiYY2BilgY0SclTNWrjTNkJ3CT/oHBe+
+ VQBYLfCw3FwOnKcF+rI10jI2f/aBg6Zb2B16kRVjFz+ac12rAMbkdvMPO/B99pmJz5RC
+ G6BKslfCS39Jcuu9Xq5Af7lwNAjyNHy2vqfZmsAm7PVYgpepdabArCA0hoCGyQF/QnHJ
+ mA0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=IiCmi3gnLXnh9qqh5SktG6taFgc0wMvCmCpUJaLx16Q=;
- b=am61547DW4OywH+NuFS5mN79MlJu/olhS9344Ihd1kpSWKOz7DlqE2CCNPKhjhfnpu
- APIwtFiKON63vRArwPfggg/RuBnxu2BTcMfYmd+H6wEewhfdWtN7U08b7mv0cFxSVsWw
- gGjgPkkTODgPc26L0LiZ9rqmjWBsQw7/k6JkLF8zaLC09fg+VE/OftWFMxp3yRJqdSev
- fmBDfpJMcEX7cJ0v68np7MFCPrQIhyp1eK7sxP8nH+rseXtI29nj64qLNRHS+rxGLdiP
- cX6lI3XZG13orjsuJi5aZ2uNvCADezCatKz4sFk1uVXh+ibNXeYXCctDjQV/aKv2Mqsi
- 4IMw==
-X-Gm-Message-State: AGi0Pua7WWqIE9nqdNZoNUXwABDtQv5MgqKlTVNRm7Bi2AmdV1kU9yJE
- yMIr/shFH1GXtIRmjY0Kvxg=
-X-Received: by 2002:adf:f884:: with SMTP id u4mr31105349wrp.171.1588059975401; 
- Tue, 28 Apr 2020 00:46:15 -0700 (PDT)
-Received: from [192.168.1.39] (137.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.137])
- by smtp.gmail.com with ESMTPSA id f8sm24315068wrm.14.2020.04.28.00.46.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Apr 2020 00:46:14 -0700 (PDT)
-Subject: Re: [PATCH v1 02/11] hw/arm: versal: Move misplaced comment
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
-References: <20200427181649.26851-1-edgar.iglesias@gmail.com>
- <20200427181649.26851-3-edgar.iglesias@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Autocrypt: addr=f4bug@amsat.org; keydata=
- mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
- u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
- HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
- YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
- ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
- dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
- ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
- Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
- HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
- Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
- klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
- jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
- 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
- loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
- sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
- JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
- 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
- K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
- n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
- CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <96c06a2f-bda9-b74b-5f2b-818f32e2a790@amsat.org>
-Date: Tue, 28 Apr 2020 09:46:12 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=o7CLS2y7/WQHEF/89+BpyFTtr4utuBXWVE2QAB0qk4A=;
+ b=eRVKTZCvL0WbtIqG9y2NrylYIehiCrgtrDAYF5grDeW0+kgRhkcyT4raBF9lYCJN0v
+ xbwFra733XvwHz3uhfoJ84rLG7SyiUG+3RJd8JwevAwr2k764nE5VgbkZUD0vxF5taln
+ h9EmUjB3ITUqljkrl+bbWSDImpgQypMkbO/0S8o3Ba61t34xQX2ARs8y+J5yRYSdeI2y
+ PaFD8JUUu+II5M+urQCF9WHEvpZALArU5szNuitVky8rFYwvIDmvrNf1GKWUdhxuWDFF
+ amo0KJBuFlgkrblSFvp/17EeZoE4Qis+6RhxV/qulJegbewZVRkrYN35bxoIb0P7Hp3b
+ OJLQ==
+X-Gm-Message-State: AGi0PuY7DT0QeQepBIA06U/tzVxRq5iIkScHN8tlvJ5EEPgnJMSkgB5J
+ kusJ91HDWqPAY4moPgovdS3Dyn1xv1doLdebeVg=
+X-Received: by 2002:a5d:950d:: with SMTP id d13mr26148288iom.136.1588089719960; 
+ Tue, 28 Apr 2020 09:01:59 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200427181649.26851-3-edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+References: <20200428155005.25537-1-f4bug@amsat.org>
+In-Reply-To: <20200428155005.25537-1-f4bug@amsat.org>
+From: Laurent Desnogues <laurent.desnogues@gmail.com>
+Date: Tue, 28 Apr 2020 18:01:48 +0200
+Message-ID: <CABoDooMPjE7si-RR8wqOZ_EDkb_Sid-PjXP2wEP716di1tcezg@mail.gmail.com>
+Subject: Re: [PATCH v2] target/arm: Use correct variable for setting 'max'
+ cpu's MIDR_EL1
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
+ envelope-from=laurent.desnogues@gmail.com; helo=mail-io1-xd44.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::443
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::d44
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
- edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
- philmd@redhat.com, luc.michel@greensocs.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E/XchmcPIbUv
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zZJCrAkyCw48
 
-On 4/27/20 8:16 PM, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-> 
-> Move misplaced comment.
-> 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+On Tue, Apr 28, 2020 at 5:50 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> MIDR_EL1 a 64-bit system register with the top 32-bit being RES0.
+>
+> This fixes when compiling with -Werror=3Dconversion:
+>
+>   target/arm/cpu64.c: In function =E2=80=98aarch64_max_initfn=E2=80=99:
+>   target/arm/cpu64.c:628:21: error: conversion from =E2=80=98uint64_t=E2=
+=80=99 {aka =E2=80=98long unsigned int=E2=80=99} to =E2=80=98uint32_t=E2=80=
+=99 {aka =E2=80=98unsigned int=E2=80=99} may change value [-Werror=3Dconver=
+sion]
+>     628 |         cpu->midr =3D t;
+>         |                     ^
+>
+> Suggested-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/arm/xlnx-versal.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index c73b2fe755..cc696e44c0 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -36,7 +36,6 @@ static void versal_create_apu_cpus(Versal *s)
->  
->          obj = object_new(XLNX_VERSAL_ACPU_TYPE);
->          if (!obj) {
-> -            /* Secondary CPUs start in PSCI powered-down state */
->              error_report("Unable to create apu.cpu[%d] of type %s",
->                           i, XLNX_VERSAL_ACPU_TYPE);
->              exit(EXIT_FAILURE);
-> @@ -49,6 +48,7 @@ static void versal_create_apu_cpus(Versal *s)
->          object_property_set_int(obj, s->cfg.psci_conduit,
->                                  "psci-conduit", &error_abort);
->          if (i) {
-> +            /* Secondary CPUs start in PSCI powered-down state */
->              object_property_set_bool(obj, true,
->                                       "start-powered-off", &error_abort);
->          }
-> 
+> I suppose cp15.c0_cpuid register in target/arm/cpu.h as uint32_t is OK.
+>
+> Since v1: Follow Laurent and Peter suggestion.
+> ---
+>  target/arm/cpu.h | 3 ++-
+>  target/arm/cpu.c | 4 +++-
+>  2 files changed, 5 insertions(+), 2 deletions(-)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 8b9f2961ba..4d1be56df9 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -894,7 +894,7 @@ struct ARMCPU {
+>          uint64_t id_aa64dfr0;
+>          uint64_t id_aa64dfr1;
+>      } isar;
+> -    uint32_t midr;
+> +    uint64_t midr;
+>      uint32_t revidr;
+>      uint32_t reset_fpsid;
+>      uint32_t ctr;
+> @@ -1685,6 +1685,7 @@ FIELD(MIDR_EL1, PARTNUM, 4, 12)
+>  FIELD(MIDR_EL1, ARCHITECTURE, 16, 4)
+>  FIELD(MIDR_EL1, VARIANT, 20, 4)
+>  FIELD(MIDR_EL1, IMPLEMENTER, 24, 8)
+> +FIELD(MIDR_EL1, RESERVED, 32, 32)
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+If you follow Peter advice to not check these 32-bits, you could
+remove that field definition and if you keep it please rename it RES0
+:-).
+
+Thanks,
+
+Laurent
+
+>
+>  FIELD(ID_ISAR0, SWAP, 0, 4)
+>  FIELD(ID_ISAR0, BITCOUNT, 4, 4)
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index a79f233b17..aaa48e06ac 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1182,6 +1182,8 @@ void arm_cpu_post_init(Object *obj)
+>  {
+>      ARMCPU *cpu =3D ARM_CPU(obj);
+>
+> +    assert(FIELD_EX64(cpu->midr, MIDR_EL1, RESERVED) =3D=3D 0);
+> +
+>      /* M profile implies PMSA. We have to do this here rather than
+>       * in realize with the other feature-implication checks because
+>       * we look at the PMSA bit to see if we should add some properties.
+> @@ -2757,7 +2759,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
+>  static Property arm_cpu_properties[] =3D {
+>      DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, fal=
+se),
+>      DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
+> -    DEFINE_PROP_UINT32("midr", ARMCPU, midr, 0),
+> +    DEFINE_PROP_UINT64("midr", ARMCPU, midr, 0),
+>      DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
+>                          mp_affinity, ARM64_AFFINITY_INVALID),
+>      DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID=
+),
+> --
+> 2.21.1
+>

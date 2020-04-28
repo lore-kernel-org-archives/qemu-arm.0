@@ -1,252 +1,149 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5178343lfm;
-        Tue, 28 Apr 2020 01:11:48 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLuAh8ppukcGiOz/6itcZfjDlmeTnJctLlaBjBRTuKd5FmjgPUlIjPu1UStbYyCgTVx1b36
-X-Received: by 2002:a0c:ba20:: with SMTP id w32mr25987888qvf.3.1588061508851;
-        Tue, 28 Apr 2020 01:11:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588061508; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5325678lfm;
+        Tue, 28 Apr 2020 03:37:24 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJAU8XZJAhfT1gPH+eaCu4j2vnGP0FQBBKT6s3SuJEfgUuobGK/PNfRtb9bcLrzDyPd+RnH
+X-Received: by 2002:ae9:e214:: with SMTP id c20mr27315169qkc.107.1588070243864;
+        Tue, 28 Apr 2020 03:37:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588070243; cv=none;
         d=google.com; s=arc-20160816;
-        b=r7VhCud5eSK4utwK6oALdIFSd1R/Z8Uw7pJLKg8NgmI75sH5HD8+U4peS7lIR2Mbgy
-         sraOmk5aF1gOP+cA/TPmtTsJOLoaW+TTn3fukND6iN3vknWX/d0Tl60naLTwPWDc04wq
-         mTtzgEz/5UXOZULz1RyHHdxEmSCmIdnn+nFay81d0B0jpX9dKC/RWACisW937aqVHetL
-         e1Mx/JPFHLpg5sk4HSoH6D4qqhyq9bfEI/OGY95/g/HmI5C6xVaWbCYYsRElay+12/gd
-         JpNIADR9k2IMu7bPpIu4ZfRLWvHbsn4BNy7G0UxiIr8bsMjrVBQfpU6RmnAjEuojdmjp
-         YZrw==
+        b=owEwDUW2huVoKVPsLWcrDY4ofiO25wUXeFYY3sXWhezaHGGANKdH4XKgSQpPFV5tcX
+         BzvztCohU+G5JqsVHoy63IxAJlaKFpVk+HzINRbs56dAUHdyN3/6ugnID0F/W5QKqkbt
+         p9fh0vY6sFJOBbRBw77TaQEJogc7eix7m9NP39PA4kygxB4nLJDoc/H2zWY78bWla/lj
+         HTWToOwnMnT+JgCS8iGsQpY33GzuSOqNcGahF7cDtXSwJOSDbzJ9EPU9ksHZNak3oNVI
+         BRwWd08439TPdvearN/5BuEaEq+/r1mKXOp77uY0e5jqxEFEevzb6GrnGdSD8HkxhDPz
+         jYEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=jvR36v9I7G3ZbcmWE9zAsMRC1Ap8koZGFq/RrkcmjFw=;
-        b=bzHXykniTm9qeZKFqS5hnpMsBVsArAdhNx+l8n5gM7DbV/3pUzqHfR0M/5zfNBQ+zE
-         ioFG7874sLMQIfQ/PfExoUJVvi/O6WMgAdqkawwAkC8zYEX/1DVE05LxKBMLLqLFl6XG
-         nxsqBCv/MVXGJ0LsXlrHbF36euxzM6y1bLGm4yp4he5fWcYGPIrc3CKltMLZrikmEAoa
-         c8MlLB1MkVh2Q/X23f6fGbNHF5pdpkuEDcPhljT87q/KFRIwQbSh1hfJ2ijLTsVLM8qD
-         9Wc5PrVYS5+Chk2A/sizVcMDHh3eYIb6I47WLizfbLf353zDj1Vbo9o91DiQA5TY4zfG
-         FbgQ==
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date:dkim-signature;
+        bh=AcXSHJlO6VB+UzxHJHspmsvLtz82Ki+Jm/9V2p6dgto=;
+        b=eqbOa49HZ4bsdVaCtTtPiFg0wd1BhwAMERPrcH4orsxCecpkHbRNojBCBeh5ZqLd7f
+         KuZRq6SqbzHMlalqemjAU7mhNEx9ICj01RShXLVzCQuxWFiqSSFYx/kV7QUuimRd2zPc
+         FcwDVgUVu1pmPL18aH9uCFAW8Hdu4vbc8Oe+szzW+WYcBH2aFCD8kYnEedw+AMVOOPqI
+         UL8jvzAysfWn927CjGnni9GotNgF9Z7hH1C6dINyPIcJxK7qlGmssvacBVCa6ceTThht
+         fUu/iwrMZJ4eywtJuGu24KTlfvIK2EG6A7ReuovT8F0SlXXEAjcorjG7F2CraXRqGUVH
+         zRxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rsHZOLPY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DeBX8LiI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k9si2464748qvp.44.2020.04.28.01.11.48
+        by mx.google.com with ESMTPS id z5si10250781qtd.93.2020.04.28.03.37.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Apr 2020 01:11:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Apr 2020 03:37:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rsHZOLPY;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:45963 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DeBX8LiI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52274 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jTLLI-0001ce-8Y
-	for alex.bennee@linaro.org; Tue, 28 Apr 2020 04:11:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46488)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jTNcB-0003QC-9Y
+	for alex.bennee@linaro.org; Tue, 28 Apr 2020 06:37:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44666)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jTLFs-0001wy-VH
- for qemu-arm@nongnu.org; Tue, 28 Apr 2020 04:08:39 -0400
+ (envelope-from <cohuck@redhat.com>) id 1jTNZh-0001e0-VY
+ for qemu-devel@nongnu.org; Tue, 28 Apr 2020 06:34:53 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jTLB6-0007AM-Lm
- for qemu-arm@nongnu.org; Tue, 28 Apr 2020 04:06:12 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:40457)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jTLB6-0007AC-6y; Tue, 28 Apr 2020 04:01:16 -0400
-Received: by mail-wm1-x344.google.com with SMTP id u16so1722455wmc.5;
- Tue, 28 Apr 2020 01:01:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=jvR36v9I7G3ZbcmWE9zAsMRC1Ap8koZGFq/RrkcmjFw=;
- b=rsHZOLPYOTuNO8g8d140VVUhjipWd/LB7hkPfINAa+5uECyZD34hwawTk0wAxbJ/RT
- Gjx+NEySWvOlwOIJC/kMD0caUForFG4A/1cpoWh9OsBzHmGhBJUVikHckjUII+/fKHLP
- TTukiCQwRjO/3GGTPWxQD4kGE/HGp9Vk+te+IrOvSmLeoVQAL6x3KAgJ/aUuXWpCiZ6v
- UgyGOYA5VWLLw4qkQPVcwSKMRcv8yrp2XHwBLSDdi9B3jHQjZs8MR+6y0ocMERgoihsg
- hb/2OnZR7gTTxF3ujn5SG/rWJwNmXGVqtJngx94VpYdHmROzKj2r4yUZzWkhmCYFlmGp
- bSDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=jvR36v9I7G3ZbcmWE9zAsMRC1Ap8koZGFq/RrkcmjFw=;
- b=h//UJdD25btzqyz84V5mdpACxlpr43tBtkj5HMcGqQ47eEouUYQtORrgYd0315kUor
- w7al4FtMqyWJDA6s639PsmapZTMu83ojGvLRFvo8RS95f5sjkWLLQEDi8LJ7R/Ija5eD
- k0+X3YEjdYanhfQxz6zcgIp+rBbHif1kexWzMZg3Uo8ZkWbtIAlhypJ1cbo+WzAg3k3e
- nopT42gMULgVY5/dqxdeQ3UOPY56CjOUjKAm9YjuNM7S2FnC83VhaIDZHo2t+IzgHUIR
- KBusuP+P5XS/byWqViykxuqIlDaUOY+A65sqn2Vv0AovKSs418iw8svFEUjB8sa1Kgv2
- 0eEA==
-X-Gm-Message-State: AGi0PubW9LHKYSMJI6eEOEygC/B4T8J4FOJNKwsAYnjIiQxMCYKYwiQl
- 6C/2Y1SBa9UcCqxiQzYTIJE=
-X-Received: by 2002:a1c:bc05:: with SMTP id m5mr2883021wmf.143.1588060874185; 
- Tue, 28 Apr 2020 01:01:14 -0700 (PDT)
-Received: from [192.168.1.39] (137.red-88-21-205.staticip.rima-tde.net.
- [88.21.205.137])
- by smtp.gmail.com with ESMTPSA id z1sm2241999wmf.15.2020.04.28.01.01.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Apr 2020 01:01:13 -0700 (PDT)
-Subject: Re: [PATCH v1 09/11] hw/arm: versal: Add support for the RTC
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
-References: <20200427181649.26851-1-edgar.iglesias@gmail.com>
- <20200427181649.26851-10-edgar.iglesias@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Autocrypt: addr=f4bug@amsat.org; keydata=
- mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
- u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
- HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
- YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
- ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
- dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
- ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
- Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
- HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
- Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
- klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
- jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
- 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
- loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
- sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
- JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
- 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
- K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
- n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
- CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <c48cc173-39c4-4681-45ee-526d3ed34522@amsat.org>
-Date: Tue, 28 Apr 2020 10:01:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (envelope-from <cohuck@redhat.com>) id 1jTNZg-0002d2-M1
+ for qemu-devel@nongnu.org; Tue, 28 Apr 2020 06:34:49 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:50913
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1jTNZg-0002T9-46
+ for qemu-devel@nongnu.org; Tue, 28 Apr 2020 06:34:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1588070086;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=AcXSHJlO6VB+UzxHJHspmsvLtz82Ki+Jm/9V2p6dgto=;
+ b=DeBX8LiIKxjC+Y3JNrQ3cOYiUYwBe99Q8uOpIHo9xrbNVlHboPgxjkcYEOXDVvd8miqtM6
+ /xpCH5+KYll9zsGC+orkCWPhzL7QFKURaerZ3vw41xVYUKQHizoFgDffD45/vPa2XdnlYR
+ qPUf8Qvxqj+nQBY/tULrTvALFEeFZK0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-467-Ch0k9yhxO_qBiGsUqf7KUA-1; Tue, 28 Apr 2020 06:34:44 -0400
+X-MC-Unique: Ch0k9yhxO_qBiGsUqf7KUA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 63DBD80058A;
+ Tue, 28 Apr 2020 10:34:43 +0000 (UTC)
+Received: from gondolin (ovpn-112-178.ams2.redhat.com [10.36.112.178])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C535E614CC;
+ Tue, 28 Apr 2020 10:34:39 +0000 (UTC)
+Date: Tue, 28 Apr 2020 12:34:36 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH 1/2] tpm: tpm-tis-device: set PPI to false by default
+Message-ID: <20200428123436.75432a8e.cohuck@redhat.com>
+In-Reply-To: <20200427143145.16251-2-eric.auger@redhat.com>
+References: <20200427143145.16251-1-eric.auger@redhat.com>
+ <20200427143145.16251-2-eric.auger@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-In-Reply-To: <20200427181649.26851-10-edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::344
-X-BeenThere: qemu-arm@nongnu.org
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/28 04:11:46
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
- edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
- philmd@redhat.com, luc.michel@greensocs.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BOujGcS9z2q2
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, eric.auger.pro@gmail.com, stefanb@linux.ibm.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9eQ276Z7lFWy
 
-On 4/27/20 8:16 PM, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+On Mon, 27 Apr 2020 16:31:44 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
+
+> The tpm-tis-device device does not support PPI. Let's
+> change the default value for the corresponding property
+> instead of tricking this latter in the mach-virt machine.
 > 
-> hw/arm: versal: Add support for the RTC.
-> 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
->  hw/arm/xlnx-versal.c         | 21 +++++++++++++++++++++
->  include/hw/arm/xlnx-versal.h |  8 ++++++++
->  2 files changed, 29 insertions(+)
+>  hw/tpm/tpm_tis_sysbus.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index e263bdf77a..321171bcce 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -240,6 +240,26 @@ static void versal_create_sds(Versal *s, qemu_irq *pic)
->      }
->  }
+> diff --git a/hw/tpm/tpm_tis_sysbus.c b/hw/tpm/tpm_tis_sysbus.c
+> index 18c02aed67..eced1fc843 100644
+> --- a/hw/tpm/tpm_tis_sysbus.c
+> +++ b/hw/tpm/tpm_tis_sysbus.c
+> @@ -91,7 +91,7 @@ static void tpm_tis_sysbus_reset(DeviceState *dev)
+>  static Property tpm_tis_sysbus_properties[] = {
+>      DEFINE_PROP_UINT32("irq", TPMStateSysBus, state.irq_num, TPM_TIS_IRQ),
+>      DEFINE_PROP_TPMBE("tpmdev", TPMStateSysBus, state.be_driver),
+> -    DEFINE_PROP_BOOL("ppi", TPMStateSysBus, state.ppi_enabled, true),
+> +    DEFINE_PROP_BOOL("ppi", TPMStateSysBus, state.ppi_enabled, false),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
 >  
-> +static void versal_create_rtc(Versal *s, qemu_irq *pic)
-> +{
-> +    SysBusDevice *sbd;
-> +    MemoryRegion *mr;
-> +
-> +    sysbus_init_child_obj(OBJECT(s), "rtc", &s->pmc.rtc, sizeof(s->pmc.rtc),
-> +                          TYPE_XLNX_ZYNQMP_RTC);
-> +    sbd = SYS_BUS_DEVICE(&s->pmc.rtc);
-> +    qdev_init_nofail(DEVICE(sbd));
-> +
-> +    mr = sysbus_mmio_get_region(sbd, 0);
-> +    memory_region_add_subregion(&s->mr_ps, MM_PMC_RTC, mr);
-> +
-> +    /*
-> +     * TODO: Connect the ALARM and SECONDS interrupts once our RTC model
-> +     * supports them.
-> +     */
-> +    sysbus_connect_irq(sbd, 1, pic[VERSAL_RTC_APB_ERR_IRQ]);
 
-RTC IRQ#1 is 'irq_addr_error_int', OK. Maybe worth later switching to
-the qdev gpio API using qdev_init_gpio_out_named() in
-hw/rtc/xlnx-zynqmp-rtc.c and then qdev_get_gpio_in_named() here.
+This looks like a better place to do this than in the virt compat
+machines, and should get us the same result, leaving compatibility
+intact.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
-> +}
-> +
->  /* This takes the board allocated linear DDR memory and creates aliases
->   * for each split DDR range/aperture on the Versal address map.
->   */
-> @@ -323,6 +343,7 @@ static void versal_realize(DeviceState *dev, Error **errp)
->      versal_create_gems(s, pic);
->      versal_create_admas(s, pic);
->      versal_create_sds(s, pic);
-> +    versal_create_rtc(s, pic);
->      versal_map_ddr(s);
->      versal_unimp(s);
->  
-> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-> index e11693e29d..9c9f47ba9d 100644
-> --- a/include/hw/arm/xlnx-versal.h
-> +++ b/include/hw/arm/xlnx-versal.h
-> @@ -19,6 +19,7 @@
->  #include "hw/char/pl011.h"
->  #include "hw/dma/xlnx-zdma.h"
->  #include "hw/net/cadence_gem.h"
-> +#include "hw/rtc/xlnx-zynqmp-rtc.h"
->  
->  #define TYPE_XLNX_VERSAL "xlnx-versal"
->  #define XLNX_VERSAL(obj) OBJECT_CHECK(Versal, (obj), TYPE_XLNX_VERSAL)
-> @@ -65,6 +66,8 @@ typedef struct Versal {
->          struct {
->              SDHCIState sd[XLNX_VERSAL_NR_SDS];
->          } iou;
-> +
-> +        XlnxZynqMPRTC rtc;
->      } pmc;
->  
->      struct {
-> @@ -89,7 +92,10 @@ typedef struct Versal {
->  #define VERSAL_GEM1_IRQ_0          58
->  #define VERSAL_GEM1_WAKE_IRQ_0     59
->  #define VERSAL_ADMA_IRQ_0          60
-> +#define VERSAL_RTC_APB_ERR_IRQ     121
->  #define VERSAL_SD0_IRQ_0           126
-> +#define VERSAL_RTC_ALARM_IRQ       142
-> +#define VERSAL_RTC_SECONDS_IRQ     143
->  
->  /* Architecturally reserved IRQs suitable for virtualization.  */
->  #define VERSAL_RSVD_IRQ_FIRST 111
-> @@ -143,4 +149,6 @@ typedef struct Versal {
->  #define MM_PMC_SD0_SIZE             0x10000
->  #define MM_PMC_CRP                  0xf1260000U
->  #define MM_PMC_CRP_SIZE             0x10000
-> +#define MM_PMC_RTC                  0xf12a0000
-> +#define MM_PMC_RTC_SIZE             0x10000
->  #endif
-> 

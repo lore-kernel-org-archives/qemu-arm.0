@@ -1,114 +1,117 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5811496lfm;
-        Tue, 28 Apr 2020 10:46:52 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKzE8eHk7uM9ADMigLPrniXB3UrQ78w94UwSG1wTg/7NCNdP26bbd+FjMB4e2Wx0URreTZ8
-X-Received: by 2002:a37:a555:: with SMTP id o82mr28027017qke.397.1588096012577;
-        Tue, 28 Apr 2020 10:46:52 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1588096012; cv=pass;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5811729lfm;
+        Tue, 28 Apr 2020 10:47:05 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIa87hPy/354Hgc2j6YUVINfeOAO3p24P/1gNUjDNb3xC0/Q52fCvOrGpEqZQelAPuDMV4O
+X-Received: by 2002:a37:4f45:: with SMTP id d66mr28661950qkb.318.1588096025289;
+        Tue, 28 Apr 2020 10:47:05 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1588096025; cv=pass;
         d=google.com; s=arc-20160816;
-        b=hqtFFF5T3XyLhN7+k9GTeIVgOHTDS0Q9viyPhCZ0ONLY8WZLl3MkQUEOjiBT4Mi1C3
-         XCT01n7bitHQ19Tw1BFmJfvVZKWd167n9mw/b0HNWk1Q43GujgYdC/rWP6iidtdm5mjM
-         d8OPBJY+GHAv3Ts1RNqV1CH3wgN7Git8p5IjisFkqZRMO4TQCmIqu9bKJbvJorCKxTSQ
-         pFLV4S4v7P21vp0Evn2bp33EgeSHPbvHTqnQ9GUrqpOEQh7K5RxfV0Nz69+HTk2Y0CkQ
-         9pyT36JXU21a0VAvEesCpU5xgdlvB31stvXJ/8RoX0OXkRNHOw77zWg745sZIgrV0QAD
-         zQ1w==
+        b=CIHv2hxzb86LxG+jFLL+S9qLIRjyj1952mTTVJg6WKAvPLFWJRzpsiJ0eHjBCoK/kx
+         up20GW46jo7MvWdvANzFnKEB0Kb6F+W7s/Jl7wzsbgKRKnPgsve4dR8x1Rzl8+Nh/2v5
+         87CVe6NM7m9gnQFlWpvHOgan41fh6Q/6MPCEW0ykkCSdvJFOAF7W/wdDHst+0SYEAWKk
+         oXl8JCf1oo/ehafrZBdjxlWXfgwbQvfdCozjqDTEWmb9TsF8ga4FodKAfWscZOo86lKW
+         esAeHXT89hqdaurJInKNmKYSGyvQhxcaQZZHcSOyqv83Ao/5ghQTctUuZ7fM5bZB0rYY
+         LjNA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from:dkim-signature
          :dkim-signature;
-        bh=076eq/q30umxZyrFe7vpjThmxoLX7Wu9t3nEAi40/94=;
-        b=vIA61WUWWxYax+D/2+HsTHvbuufpuZjFUSe8KpgukMnlz8elimsSnpB/iTA9WrLHr9
-         p2H195ib2iePpVGn+vBQBlYbDrYoQN3TyN++dDJNdS7dE3qQr7boRgHTCO5VoGjFHScC
-         4plu2EgMz9/oPmBlHBXcJ1kLFoNYGEXTIOOinqN2lVJROZIyYgjP82G/EqJcsvtJRGG1
-         By1VYLC2yKyPPv/FLaNT3XYLb713nsapo/sgWaqwkidykm15fGTvxFAcfe4AdrVFFW1d
-         Le18o0hRIArLFOVQhq6sM5TWgjjrCacl/uZ3aXrhnClS22VB4veg/FLadc41FFtsP1CP
-         ZFXQ==
+        bh=vvQhlAvvorUbWW9cIAs41+Hzbu1RLwJ/ZUWrXBX5iAo=;
+        b=OZxcBGTtU6QUi9NvalGzs05+Hxqt6g3FV2gFCqK0F6lMzgaYz3YyaE2IAkrbBVQUNS
+         0SXJNTL9xTcv27knh9kK6w/2jLY3x0jufJGZpQRmtx83GzPwSMhmBrg7ipwlUnY2a2MF
+         nAP205tlVhWyGk8kuZqElPKVO2TImh3Zi1UYnx6Rnzy7sLBdNOW+FIxF0ZBJckdArCmF
+         6NLfHVf19LQhbW9q9czbk5Ac2yGvhvcSe8IqE/sqNHT1FtxtlgOtL4BvlZlymZ43PDmr
+         VvsYi+fV4m/gi5l+aoBZv4R7x4vLYv5vzVaANthPJmNgXnWnuzdjP5uHBP84miHwStsT
+         kmHg==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=LNnW7tTZ;
-       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=A9+P3d+g;
+       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=ThBF5wOR;
+       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b="V/5/Oq93";
        arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o3si10890887qke.167.2020.04.28.10.46.52
+        by mx.google.com with ESMTPS id o22si10953246qtk.160.2020.04.28.10.47.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Apr 2020 10:46:52 -0700 (PDT)
+        Tue, 28 Apr 2020 10:47:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=LNnW7tTZ;
-       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b=A9+P3d+g;
+       dkim=fail header.i=@quicinc.com header.s=qcdkim header.b=ThBF5wOR;
+       dkim=pass header.i=@qualcomm.onmicrosoft.com header.s=selector1-qualcomm-onmicrosoft-com header.b="V/5/Oq93";
        arc=pass (i=1 spf=pass spfdomain=quicinc.com dkim=pass dkdomain=quicinc.com dmarc=pass fromdomain=quicinc.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1]:42338 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42376 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jTUJn-0006jg-KR
-	for alex.bennee@linaro.org; Tue, 28 Apr 2020 13:46:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44604)
+	id 1jTUJz-0007RO-S1
+	for alex.bennee@linaro.org; Tue, 28 Apr 2020 13:47:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44796)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <steplong@quicinc.com>) id 1jTUJB-0006DA-U5
- for qemu-arm@nongnu.org; Tue, 28 Apr 2020 13:46:30 -0400
+ (envelope-from <steplong@quicinc.com>) id 1jTUJV-0006hi-E7
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2020 13:46:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <steplong@quicinc.com>) id 1jTUGw-00027L-Id
- for qemu-arm@nongnu.org; Tue, 28 Apr 2020 13:46:13 -0400
-Received: from alexa-out-sd-02.qualcomm.com ([199.106.114.39]:19618)
+ (envelope-from <steplong@quicinc.com>) id 1jTUJS-0007yB-BJ
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2020 13:46:33 -0400
+Received: from alexa-out-sd-01.qualcomm.com ([199.106.114.38]:56545)
  by eggs.gnu.org with esmtps (TLS1.2:RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <steplong@quicinc.com>)
- id 1jTUGv-0001ro-RP; Tue, 28 Apr 2020 13:43:54 -0400
+ id 1jTUGv-00026p-To; Tue, 28 Apr 2020 13:43:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=quicinc.com; i=@quicinc.com; q=dns/txt; s=qcdkim;
  t=1588095833; x=1619631833;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version;
- bh=yjNoooJNGb2FYkMmatFKkZhDKEFuIsrVvEX1QA1XlHE=;
- b=LNnW7tTZJ63zGSyavOD6GtmA8LAOM5lEorW+7ni+ag1iT3kb9tRfs/I0
- zgpbTAzbBmsw5041fAP4KOPZVJjhjSd/V9Joc84w+afs5hVB6XaoXg1iU
- 3Fxx5LZA5wQobzNg/fJ4PNsHO2znsERd02eYHEQzmCOUsEQYs2BwyS5Yj s=;
-Received: from unknown (HELO ironmsg03-sd.qualcomm.com) ([10.53.140.143])
- by alexa-out-sd-02.qualcomm.com with ESMTP; 28 Apr 2020 10:43:48 -0700
-Received: from nasanexm01f.na.qualcomm.com ([10.85.0.32])
- by ironmsg03-sd.qualcomm.com with ESMTP/TLS/AES256-SHA;
- 28 Apr 2020 10:43:48 -0700
-Received: from NASANEXM01F.na.qualcomm.com (10.85.0.32) by
- NASANEXM01F.na.qualcomm.com (10.85.0.32) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 28 Apr 2020 10:43:48 -0700
+ bh=kz4lvfAmpHjMkX1TMlKAOwT+dMWopuvbpQ7GAK4T7aM=;
+ b=ThBF5wORVsbYMRUo0lvjL0nkTrVjkVR2VpRNzlzWa+gqC+xBJVQBxCsL
+ Hu9R2Wt42exppaZtDsLww/mRuHZnDBiLU+c2ac9ggQI/ZGCfk4P/xDg89
+ ly/sWGdTvo0SRveDqAWIsE7CV35BExiEYMbvd7hGPHKbNiSV/Pzxy9Vla k=;
+Received: from unknown (HELO ironmsg01-sd.qualcomm.com) ([10.53.140.141])
+ by alexa-out-sd-01.qualcomm.com with ESMTP; 28 Apr 2020 10:43:51 -0700
+Received: from nasanexm01b.na.qualcomm.com ([10.85.0.82])
+ by ironmsg01-sd.qualcomm.com with ESMTP/TLS/AES256-SHA;
+ 28 Apr 2020 10:43:51 -0700
+Received: from eusanexr01b.eu.qualcomm.com (10.85.0.99) by
+ NASANEXM01B.na.qualcomm.com (10.85.0.82) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 28 Apr 2020 10:43:51 -0700
+Received: from NASANEXM01E.na.qualcomm.com (10.85.0.31) by
+ eusanexr01b.eu.qualcomm.com (10.85.0.99) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 28 Apr 2020 10:43:49 -0700
 Received: from NAM11-DM6-obe.outbound.protection.outlook.com (199.106.107.6)
- by NASANEXM01F.na.qualcomm.com (10.85.0.32) with Microsoft SMTP Server (TLS)
- id 15.0.1497.2 via Frontend Transport; Tue, 28 Apr 2020 10:43:48 -0700
+ by NASANEXM01E.na.qualcomm.com (10.85.0.31) with Microsoft SMTP Server (TLS)
+ id 15.0.1497.2 via Frontend Transport; Tue, 28 Apr 2020 10:43:49 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=V9e8xPWSFy+MG6lw4ZAk2AEC0bNF9Wj0b1I99059GPRjzKRmNtWNf82Tyvzuk4/I2WpM+r02iv1eDBle31MKCd1KrtbAiqTavI6U3yYN0ONB0t93iEqDSX+sOIfXNK2650X5sFCXsC1RhhVU3iuxvdHxsLhz/jUrlQBpmjc1kq7U9e/clRRDuHKruP9MiXNqZqQQeTGHM82ATBIW41Pg2d4sNY3TtYAy0TyiNt9GFMTsWcZ5DUS8W90xKm+6Nvb70L7dZwHpEXv9SkrlHm0b3XsewVIzz0Ef7vHD1i8wFMeijW65PuJESZ9f/7qqPC/zXz4Fk6zAgoizyxTOVM8uZw==
+ b=nA7bLMq+fQqMGFRkR/uZzAy9LzEuaPWj6Al+VVI2HMjU3mA1GaWtb7d/q360BLvHfOp1GazTyTJZ72fU9jEFVIn4gVRN6zUBqec8/+DAXcWmWwRUlbHVT5JckNoKiNecZx7+zarA+rr+hvyfnkW5Ev2sAN5q11i5PY3HjXmTVAGWr5j2RVlWRi57nVy5fstspzUX36CPrztUOWx9MUlLsRnJ+IVtCu13z6wRAsqMTwXcPll0sRu/ET4/Ykq1tRlIt7cy5Xs94fRLjSl2PF0eAk25eUGzvaq/p2Yt8FkNHiigbcCWghPfHhGRoFLa1dMj8CWl0eMgVlAxCF37yWpI7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=076eq/q30umxZyrFe7vpjThmxoLX7Wu9t3nEAi40/94=;
- b=aj01Br/aTwScndMWfFvsjZRfDfsCfL+eWomKvlVA+ZhS46We3vUzSAx5IFq/wVpshSBY/sykipxpn/Q/LsjKeqxu4yp3GDcVIXKr78bCy8ynPpUW7UbLbMXmKemtUA3aM9xjynW/D61/RH8REgL7Rq1YdbLb+KrcFF6/lBC8r3o3AOhsHiSh5tP+QJNBHUGgst7oulgYmYYCwfIYh3ps5fulUB8K08K5DGr7TXkGcmPqIsUILhC59L7Iw7R2DW8Z7yjRy1jjmVCNZam4o0YQEyWrYHDVzBfhyjMN7VQ3ZVNXQBUTeq2iLW68fYU4NeQgcpeTK3bXBby9eqZa8TN3+g==
+ bh=vvQhlAvvorUbWW9cIAs41+Hzbu1RLwJ/ZUWrXBX5iAo=;
+ b=KHjj/G7myJ2drPLpwVKWwynZK/SwJjZej3fDMP+CeQ7p7QrWF0xTXFMpevM61nshHrUWnWQOtDkaKsCr3eui0KKsXg9Nn5BOp1A9J2t7D8wbflBk3rtvsHliYm0KLYmM97hBK7CWWuei+xGcT7+6whn5wFXh2X8esZAdgMaB0l+USAO8xgwKRMkdT01Un2sKf8Q9RKq4+mtB8yosLYUaIIeTxP/03IEerggRT4zrwsBXhmdf9f17hgU+i0XZ26IcMTn6SCcDGSGfsAUAO3pZSKShe74TI/0V2pz4m1H6j1Z/i+fkiGwQyBBNdJaLAEnpfOUH+cDpKJDv2HKoKEArZA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=quicinc.com; dmarc=pass action=none header.from=quicinc.com;
  dkim=pass header.d=quicinc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=qualcomm.onmicrosoft.com; s=selector1-qualcomm-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=076eq/q30umxZyrFe7vpjThmxoLX7Wu9t3nEAi40/94=;
- b=A9+P3d+gKLy6TuocWEIQU7BesYY1lIux/LwpcblJP7EXvbo3LIWzcRDE9WkGz7/dqERc9keJpeByFDOsfuLezk028llFWBxBgz9PWJOJdfEznjwlU5B1fOBmMFI7JU/I+yJACuPmy40PiQ+SbjnTIwhUJbta8S/m7+oVJ3RZLpQ=
+ bh=vvQhlAvvorUbWW9cIAs41+Hzbu1RLwJ/ZUWrXBX5iAo=;
+ b=V/5/Oq93o8yinpuCyhYwf6IVXvG8D5FZNctA1/pzzsBD6L9HgczGj9WxtefF97l6CV0I46a4dFIIzri2wF0QymbgfkL3xOGkjuO/WguzR7oc2rVbAxJrhHhB4WdLiCLU6jJRVYJYqS4zwDsW4b8RD53Q8BxvTZEjLkec26Rsj1k=
 Authentication-Results: nongnu.org; dkim=none (message not signed)
  header.d=none;nongnu.org; dmarc=none action=none header.from=quicinc.com;
 Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
  (2603:10b6:301:7b::24) by MWHPR0201MB3531.namprd02.prod.outlook.com
  (2603:10b6:301:7c::32) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2937.22; Tue, 28 Apr
- 2020 17:43:47 +0000
+ 2020 17:43:48 +0000
 Received: from MWHPR0201MB3547.namprd02.prod.outlook.com
  ([fe80::10ad:5df5:d575:1f37]) by MWHPR0201MB3547.namprd02.prod.outlook.com
  ([fe80::10ad:5df5:d575:1f37%3]) with mapi id 15.20.2937.026; Tue, 28 Apr 2020
- 17:43:47 +0000
+ 17:43:48 +0000
 From: Stephen Long <steplong@quicinc.com>
 To: <qemu-devel@nongnu.org>
-Subject: [PATCH RFC 1/3] target/arm: Implement SVE2 FCVTNT
-Date: Tue, 28 Apr 2020 10:43:30 -0700
-Message-ID: <20200428174332.17162-2-steplong@quicinc.com>
+Subject: [PATCH RFC 2/3] target/arm: Implement SVE2 FCVTLT
+Date: Tue, 28 Apr 2020 10:43:31 -0700
+Message-ID: <20200428174332.17162-3-steplong@quicinc.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200428174332.17162-1-steplong@quicinc.com>
 References: <20200428174332.17162-1-steplong@quicinc.com>
@@ -122,14 +125,14 @@ Received: from STEPLONG.qualcomm.com (108.176.222.2) by
  MN2PR15CA0043.namprd15.prod.outlook.com (2603:10b6:208:237::12) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2937.13 via Frontend
- Transport; Tue, 28 Apr 2020 17:43:46 +0000
+ Transport; Tue, 28 Apr 2020 17:43:47 +0000
 X-Mailer: git-send-email 2.17.1
 X-Originating-IP: [108.176.222.2]
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 3b6b9816-c621-4e33-b717-08d7eb9bb3f9
+X-MS-Office365-Filtering-Correlation-Id: a887b8fe-379d-49f4-c1de-08d7eb9bb491
 X-MS-TrafficTypeDiagnostic: MWHPR0201MB3531:
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MWHPR0201MB3531FDF57F5F5985BD4046DBC7AC0@MWHPR0201MB3531.namprd02.prod.outlook.com>
+X-Microsoft-Antispam-PRVS: <MWHPR0201MB3531486BD9932563CAB251BFC7AC0@MWHPR0201MB3531.namprd02.prod.outlook.com>
 X-MS-Oob-TLC-OOBClassifiers: OLM:13;
 X-Forefront-PRVS: 0387D64A71
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
@@ -139,21 +142,21 @@ X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: TpMHrPQbpO2X7VAjaL480ilCgrJ6V5Kv+56ganQYK7zL8jRZSNtF968AEreh8cH/xw2r9uGA3X10ApHIGaS++FXrtE9Iq+67Id9tMlTB5pPqDEvKWlS/SfMJ/ftmrSwjqUFA8s9NuhrjcYV7UZTNp543g2Cdl/uTYddKEMw28UjwfYUUslWE9J/26gHwcDQAEJYBxI3/jA9qvIot1ZaA+NCNo0B3wCcTqVJbdPxMdSUgP42vrsUu/ktDTq3t6+wwVNp5F77KpEH9j09i6t7LPyZROyvXZnfuM7IvD0MeR5cjy1Fnu3iokSHQSxf7AHNwJGkQAeVobDUGxaAvSb0FVEylgl/yX/anBCgvBdmbHRT1NiWvgQF6kKg8LqPVGK/7xUkc096bwylfNbvdQQNwCuX24nHNlEJMvaS0l5u8DAwxGLbLaeO+pdlXWsAMAjeY
-X-MS-Exchange-AntiSpam-MessageData: DvTK2DCvhILWyQiFeNgt4kqAV5u6bFzJEsusB3mTG8kgSe1HtUTW7YYOSSMxppdkE06r+Q9NQxspFhD/ITGBK84NF4Ou7ihDfOgDcxfHxUf3V/p1gWplvFAv7lccmBIBrbWpUWtqKNvpHdFQulZYWkyh6Ny53ZSOFhK6JqvNK2TidSbsToMrlO6dBgvbPT4GemjxdB0Vn66XOpzYJLlslUFp96W1KSPKA+kAf9Vi+xcVzek7cdhEvILk7VLofJTqnHYuaDM3fU/M++ntuj6ttBL8sDm7VWFbl5i9Eug8+QhUb1QeRl+ygSjBr7p12VnTSlLQrf3H2qoTuBRuEcZxRLfvgo52bQEyQQjJXdV40QDzI+rqs/8qr26RmwHAwFnnzjym7dqroIDr/TR6fBX+d4RNNOy+hUtKyZDX7z/7iIE7+uQVn9dmtlcEOMwm+jvbE/HmF3eVv67JRHY6Nm5sLnhoQCSazUFgOr2fRXPNGJ6A2G9kdTUQmUNF+/ohMoc8t07ayPGVeJAmjSCpgBlvqDpxVgJVmZiU5apNfpZKGQBGVt7jgne6+C7AV9z7Sq6JMvACT0n2KNWEmcKDkWyV+zaZCO5dnWAUV1VHS9MIr7g04F3YfnUW104Vm5OZk562wVc4AxsxX3uBTRgneF5ghk4YwhQ/XAUjY9tm9X8c5yB7iu7UPdVSgeLBfe+WlKOVDDa2F7DBLtHDrYU8uPtJqll7P9DSeXRdpHflxrfZLD9Y78lI942aVd8anso2qhxDgpkmUb5ANMROtJVFu+736M3K5QzbKVJrwHKd5SV1iG4=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3b6b9816-c621-4e33-b717-08d7eb9bb3f9
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Apr 2020 17:43:47.0678 (UTC)
+X-Microsoft-Antispam-Message-Info: o4HAM3QPt7xuP1jifpKJJEDq2ONcp860jtC91CzPk8PAzhzPrfNh+X6UZGBbYSVAUp4Uh+jgL0qOrpZ0ngY4RzuYUzvPV0fV9wvOHKqckiMeoEkKJDQIJSSebKgAKflcoCHDWs6oqd/1F8R5Aa0jzpLCrjzFa5AMPJkL34xesvyJv1qqMt9pKD1HxNDB9Jld6agjIz4+YYs/a/rW39rIgMxqRB1p2y6W83BJPJmIRqtfpXLxzFEVhnNRpPPx9B/VmF9k5+vD2sqEoSxiKzn9hHTERTwpQGbH6Be9BQem9qXiD/0YvITS7FKzCO3eHRclDMaeWKMLF+wQcitbjtvw+KhRnubRGV/hZsPz1Uyo/FIMxooWz7qDdJeFYmyT4VYsY9wLuYna1witJYsPgHGQncNtq+7gS5VY/aLFiBr8x95s3NHD2L6M2XSv0kAqA7ul
+X-MS-Exchange-AntiSpam-MessageData: HWxi1vc/DF7m0Y0Uuje0tbVZzWe7rgMfKWR99yEcj3WLnclNPwWnlOPCKJc46Ek6ajsIga8TTWBJvCDuxi5BVVrV9w5Mw0VQf/fkUzcenfaq4Lip6p0W/zqvA5bOGoaCT1raGO2GH9ojsCrbu2/u1dfMDzcqyuhhZlZ+ijybsQq8A5FZQ2nTJy25zklS2Seu2vz7KU9HBx8w45vZLmYzzBkmIx8RP7SSJguWEc2hj42Znk4GX9774bW52HrQzYUerKjd2AS/xhsGm18cb/A9R9BhayUvFKmC/rFTDI7Z6ARskixYcnKx6N8zes3qZStrzQaztvjWUArYrSpndcgbDZ+oVSGcrXkEwntO2+sWfl6wIUd8V7R+j/IF4TEI1m5Wq8bI7zBPqq52dRNgDOjHf2qo7vd34HOjH+19upKoDfXCzfNa3c2BEKUUhdByhxX1OK0KJLnUcOaNAbPDYMTQQPU/dc2Vdg6GM0r/z88024QnKLJd3SWSDjnAhJAFPjuX6A+4y+VZF5SO6XrCD7fQmBKmR5AWZ6e184S8rugt0GeacDBDURZRqAuaB3dVrarsz+ONT6e1xGBx7eQNfEAj58+cccfJCptNnqbCAb/t55g6oGcUk2oUE7LkfenAc/IgvezzHgXPZGS34fTAGfwoi3wVBKOHybvj5S1d62P48MD1CKWXjhpGDn57/XQ3y1hnVNHzReWyhsl0ir5t8Nx7OS/jFBs84SFQRT1NKJyGohw+suF9poPM/4b3clczNz27q6AVUOUIalneOGSbCXV07TwQWc+33jPyd0w4v25/CMQ=
+X-MS-Exchange-CrossTenant-Network-Message-Id: a887b8fe-379d-49f4-c1de-08d7eb9bb491
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Apr 2020 17:43:48.0502 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Fp1r96wFEqiCAi7WoP8cjnjfjZKpjT4JNILKlmJ/y9of2D5lnE/yt5iMJFbzGINmzXBvXdCtorSXuUCmlxABXQ==
+X-MS-Exchange-CrossTenant-UserPrincipalName: FgWLWhr0ycCB6P4IVpu4R4uclPt0ih3dqokISbLKzRTsr9Go5/7ncKHrzFPtwd0R6+Ac9LkPaaqa/1xNltlJVg==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR0201MB3531
 X-OriginatorOrg: quicinc.com
-Received-SPF: pass client-ip=199.106.114.39; envelope-from=steplong@quicinc.com;
- helo=alexa-out-sd-02.qualcomm.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/28 13:43:48
+Received-SPF: pass client-ip=199.106.114.38; envelope-from=steplong@quicinc.com;
+ helo=alexa-out-sd-01.qualcomm.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/28 13:43:52
 X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
-X-Received-From: 199.106.114.39
+X-Received-From: 199.106.114.38
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -168,51 +171,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, richard.henderson@linaro.org, apazos@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: npiAHfAaK4SD
+X-TUID: dCPduUoNSjvj
 
 Signed-off-by: Stephen Long <steplong@quicinc.com>
 ---
  target/arm/helper-sve.h    |  5 +++++
- target/arm/sve.decode      |  4 ++++
- target/arm/sve_helper.c    | 20 ++++++++++++++++++++
+ target/arm/sve.decode      |  2 ++
+ target/arm/sve_helper.c    | 23 +++++++++++++++++++++++
  target/arm/translate-sve.c | 16 ++++++++++++++++
- 4 files changed, 45 insertions(+)
+ 4 files changed, 46 insertions(+)
 
 diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 6b64c844bf..154593f110 100644
+index 154593f110..27a8cc2cbe 100644
 --- a/target/arm/helper-sve.h
 +++ b/target/arm/helper-sve.h
-@@ -2713,3 +2713,8 @@ DEF_HELPER_FLAGS_5(sve2_sqdmlsl_idx_s, TCG_CALL_NO_RWG,
+@@ -2718,3 +2718,8 @@ DEF_HELPER_FLAGS_5(sve2_fcvtnt_sh, TCG_CALL_NO_RWG,
                     void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(sve2_sqdmlsl_idx_d, TCG_CALL_NO_RWG,
+ DEF_HELPER_FLAGS_5(sve2_fcvtnt_ds, TCG_CALL_NO_RWG,
                     void, ptr, ptr, ptr, ptr, i32)
 +
-+DEF_HELPER_FLAGS_5(sve2_fcvtnt_sh, TCG_CALL_NO_RWG,
++DEF_HELPER_FLAGS_5(sve2_fcvtlt_hs, TCG_CALL_NO_RWG,
 +                   void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(sve2_fcvtnt_ds, TCG_CALL_NO_RWG,
++DEF_HELPER_FLAGS_5(sve2_fcvtlt_sd, TCG_CALL_NO_RWG,
 +                   void, ptr, ptr, ptr, ptr, i32)
 diff --git a/target/arm/sve.decode b/target/arm/sve.decode
-index 22ed626784..355b8eec75 100644
+index 355b8eec75..95fc7ee32c 100644
 --- a/target/arm/sve.decode
 +++ b/target/arm/sve.decode
-@@ -1478,3 +1478,7 @@ STNT1_zprz      1110010 .. 00 ..... 001 ... ..... ..... \
- # SVE2 32-bit scatter non-temporal store (vector plus scalar)
- STNT1_zprz      1110010 .. 10 ..... 001 ... ..... ..... \
-                 @rprr_scatter_store xs=0 esz=2 scale=0
-+
-+### SVE2 floating-point convert precision odd elements
-+FCVTNT_sh       01100100 10 0010 00 101 ... ..... .....         @rd_pg_rn_e0
-+FCVTNT_ds       01100100 11 0010 10 101 ... ..... .....         @rd_pg_rn_e0
+@@ -1481,4 +1481,6 @@ STNT1_zprz      1110010 .. 10 ..... 001 ... ..... ..... \
+ 
+ ### SVE2 floating-point convert precision odd elements
+ FCVTNT_sh       01100100 10 0010 00 101 ... ..... .....         @rd_pg_rn_e0
++FCVTLT_hs       01100100 10 0010 01 101 ... ..... .....         @rd_pg_rn_e0
+ FCVTNT_ds       01100100 11 0010 10 101 ... ..... .....         @rd_pg_rn_e0
++FCVTLT_sd       01100100 11 0010 11 101 ... ..... .....         @rd_pg_rn_e0
 diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index b8c8d10c99..a35983b7cd 100644
+index a35983b7cd..8461d84445 100644
 --- a/target/arm/sve_helper.c
 +++ b/target/arm/sve_helper.c
-@@ -7570,3 +7570,23 @@ void HELPER(fmmla_d)(void *vd, void *va, void *vn, void *vm,
-         d[3] = float64_add(a[3], float64_add(p0, p1, status), status);
-     }
- }
+@@ -7590,3 +7590,26 @@ void HELPER(NAME)(void *vd, void *vn, void *vg, void *status, uint32_t desc)  \
+ 
+ DO_FCVTNT(sve2_fcvtnt_sh, uint32_t, uint16_t, H1_4, H1_2, sve_f32_to_f16)
+ DO_FCVTNT(sve2_fcvtnt_ds, uint64_t, uint32_t, H1_4, H1_2, float64_to_float32)
 +
-+#define DO_FCVTNT(NAME, TYPEW, TYPEN, HW, HN, OP)                             \
++#define DO_FCVTLT(NAME, TYPEW, TYPEN, HW, HN, OP)                             \
 +void HELPER(NAME)(void *vd, void *vn, void *vg, void *status, uint32_t desc)  \
 +{                                                                             \
 +    intptr_t i = simd_oprsz(desc);                                            \
@@ -222,38 +224,41 @@ index b8c8d10c99..a35983b7cd 100644
 +        do {                                                                  \
 +            i -= sizeof(TYPEW);                                               \
 +            if (likely((pg >> (i & 63)) & 1)) {                               \
-+                TYPEW nn = *(TYPEW *)(vn + HW(i));                            \
-+                *(TYPEN *)(vd + HN(i + sizeof(TYPEN))) = OP(nn, status);      \
++                TYPEN nn = *(TYPEN *)(vn + HN(i + sizeof(TYPEN)));            \
++                *(TYPEW *)(vd + HW(i)) = OP(nn, status);                      \
 +            }                                                                 \
 +        } while (i & 63);                                                     \
 +    } while (i != 0);                                                         \
 +}
 +
-+DO_FCVTNT(sve2_fcvtnt_sh, uint32_t, uint16_t, H1_4, H1_2, sve_f32_to_f16)
-+DO_FCVTNT(sve2_fcvtnt_ds, uint64_t, uint32_t, H1_4, H1_2, float64_to_float32)
++DO_FCVTLT(sve2_fcvtlt_hs, uint32_t, uint16_t, H1_4, H1_2, sve_f16_to_f32)
++DO_FCVTLT(sve2_fcvtlt_sd, uint64_t, uint32_t, H1_4, H1_2, float32_to_float64)
++
++#undef DO_FCVTLT
++#undef DO_FCVTNT
 diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 5303d2e236..d410d0024e 100644
+index d410d0024e..220ff19348 100644
 --- a/target/arm/translate-sve.c
 +++ b/target/arm/translate-sve.c
-@@ -8105,3 +8105,19 @@ static bool trans_SQRDCMLAH_zzzz(DisasContext *s, arg_CMLA_zzzz *a)
-     };
-     return do_sve2_zzzz_fn(s, a->rd, a->rn, a->rm, a->ra, fns[a->esz], a->rot);
+@@ -8121,3 +8121,19 @@ static bool trans_FCVTNT_ds(DisasContext *s, arg_rpr_esz *a)
+     }
+     return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve2_fcvtnt_ds);
  }
 +
-+static bool trans_FCVTNT_sh(DisasContext *s, arg_rpr_esz *a)
++static bool trans_FCVTLT_hs(DisasContext *s, arg_rpr_esz *a)
 +{
 +    if (!dc_isar_feature(aa64_sve2, s)) {
 +        return false;
 +    }
-+    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve2_fcvtnt_sh);
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve2_fcvtlt_hs);
 +}
 +
-+static bool trans_FCVTNT_ds(DisasContext *s, arg_rpr_esz *a)
++static bool trans_FCVTLT_sd(DisasContext *s, arg_rpr_esz *a)
 +{
 +    if (!dc_isar_feature(aa64_sve2, s)) {
 +        return false;
 +    }
-+    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve2_fcvtnt_ds);
++    return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve2_fcvtlt_sd);
 +}
 -- 
 2.17.1

@@ -1,103 +1,103 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5700746lfm;
-        Tue, 28 Apr 2020 09:11:53 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIFVFggQmzPE+rXR6TBWWwGV1a64Iyhbib+UOadPYNr7sQsKadh4ZhwN/JwafeO42YiT7l3
-X-Received: by 2002:a37:5c46:: with SMTP id q67mr27964711qkb.210.1588090312722;
-        Tue, 28 Apr 2020 09:11:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588090312; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5701264lfm;
+        Tue, 28 Apr 2020 09:12:17 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKlF7Z+RxPZdBXdHYcbhpbgrzUd2E1RTA7ozxoXC29qcciXv3Nm5a1OpsbR5Lml2YeQJG1W
+X-Received: by 2002:aed:2d27:: with SMTP id h36mr29508488qtd.228.1588090337414;
+        Tue, 28 Apr 2020 09:12:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588090337; cv=none;
         d=google.com; s=arc-20160816;
-        b=GgTd5L3Cb3xV3CjVHSrzJuexgkkvI7ItkpQhbOqDaVbdc9r6Rhsodd+95fvDGbQzDU
-         Fqe5Uh4O+CcVQY5Hvf7rf0TEvDu1um53q2yVsCzifNSeSpFFWzQW8MXOuNUnhxk/VE/T
-         fuI00fTNJz0JmTPuCEIOdxaCOan4CR1yYetnezqHHbdm9HCDz8xBS9/GQ7NTo/BLqFDq
-         dWalRS5zNxy+pALWdNSVoJ+S2xhTSXerllmglCVraG+vQrTSj7MwG0JrEV2a4ItYzeOc
-         teJaU7kRYoctrFkyT0GaClMlFeuy+IVq4ZP9k2CTVbsp36IxDKE+eCh1f1zDKKAMe6Gc
-         dlbw==
+        b=F6MIY+9BPr1z5Q9FfoJMw2Epa5eiTR4s8EyhZu8aHvhFmjpyJ9nGPjxh69XT0TEIJt
+         62pwCGYXiujjB+E8mLpW2wAyRfHIGqedan6Oygc4So/azI0W1PsI7jrNkDXigQztQDhC
+         LmLyJexnqVAylnXaNT+BPZyVmgBW+GJP5GjcxQ6qUFfUwdH2YCIV2ps2A9feh16Agp4+
+         J/hXNcOiHCpQEn2ZeeJgCpN2RjhTxu15+7J0hnllBDXK1335dlocN+I7r2T8Dcv7Ih1j
+         o7CeLLAhWdFqZKt2z32AELT52LY7+GYQ6/f/Ji2PjdtLQhU+vPtwVnDA2u+8Eg7ke7jJ
+         ueLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=o7CLS2y7/WQHEF/89+BpyFTtr4utuBXWVE2QAB0qk4A=;
-        b=U1IHHwkv+cDgsyu0RzdaTamkG8/vfKTSbQ20YrVfT3lth0t+Bb7gad6hLS6YtmM6bF
-         rm6duM2SCYs+rzZMlkynieDrWbK+6qvVVE/Eh7AD42+HZyvtvEBKv9ifqxGIacaqs0kq
-         AlmQre6aLzx8YKwuJuWBDTZYspnrL5WSl/uZKAkWgoozkJiogr0wMaOWMUvhzVmCnd3z
-         5RQWZ+irzT8o8681kVHDpt+823qdxRGERjTw/L1rlMdOarde0inEc1yt9Y1RYLaE6Kcj
-         p7oE6OVviE7oUnj3/17PZDWOAZtG0RZwPJRdQ8gf+WCxDTmjyeL2fzeu/GknffgFxPNg
-         bXjQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=yArlMeJLEqclMBk/jDgf3oGNxTygsUNwmienflwMm3k=;
+        b=v/5iHWquLs3Mpige+B5R0xVyEIdGp/euBJctumGT2Anco3avZLO+clWlE/QTLV82zB
+         IYEa2nN5tTsbjgDcgN9JiZ6toHor3etlsaxxKV3GDra1KiBoBEkBVFfzs86l0Fr9KiAa
+         dQQo7cDsFBB/t5ns3dIQJqp1d73ePZdH4fyoXb8pSZBx1B/9w3s7E4OF84XTYiG47C1T
+         JxN1RZOCD5U6O5QGl4Tgg2ZsV6vUZKmosOA9VM50NJqkbihNyhZSviGyjGGPSU+AJdmU
+         mNUjJRcbjJfWvWnLexZOoQpkPpgo8mIVlvDwBwO2RBKY7zqyE0INUf2C9+wO1VT66jC1
+         nfgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Kt/P5Ove";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=j0mWZZYF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b8si10785017qkj.24.2020.04.28.09.11.52
+        by mx.google.com with ESMTPS id j27si11230798qtl.57.2020.04.28.09.12.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Apr 2020 09:11:52 -0700 (PDT)
+        Tue, 28 Apr 2020 09:12:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Kt/P5Ove";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=j0mWZZYF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36868 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36898 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jTSpr-00068M-UU
-	for alex.bennee@linaro.org; Tue, 28 Apr 2020 12:11:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57942)
+	id 1jTSqG-0006vv-KK
+	for alex.bennee@linaro.org; Tue, 28 Apr 2020 12:12:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58110)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent.desnogues@gmail.com>) id 1jTSjs-0000Av-9o
- for qemu-devel@nongnu.org; Tue, 28 Apr 2020 12:09:51 -0400
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jTSkV-0001Ld-3t
+ for qemu-devel@nongnu.org; Tue, 28 Apr 2020 12:10:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <laurent.desnogues@gmail.com>) id 1jTSgM-0001w7-Dk
- for qemu-devel@nongnu.org; Tue, 28 Apr 2020 12:05:39 -0400
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:37717)
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jTSiB-0004gB-4B
+ for qemu-devel@nongnu.org; Tue, 28 Apr 2020 12:06:18 -0400
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:36470)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <laurent.desnogues@gmail.com>)
- id 1jTSgL-0001qy-SV; Tue, 28 Apr 2020 12:02:01 -0400
-Received: by mail-io1-xd44.google.com with SMTP id u11so23551836iow.4;
- Tue, 28 Apr 2020 09:02:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1jTSiA-0004aX-HS; Tue, 28 Apr 2020 12:03:54 -0400
+Received: by mail-lf1-x144.google.com with SMTP id w145so17363542lff.3;
+ Tue, 28 Apr 2020 09:03:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=o7CLS2y7/WQHEF/89+BpyFTtr4utuBXWVE2QAB0qk4A=;
- b=Kt/P5Ovem2Wk69TEcISMIDQl6aNnYFeKfiARdndnDAjhWefI4Z2hkV4Oev89Sm8JN1
- modHQXTfyI8F349GfFYlNtAC9dZ+WbqnyLljHUTJMt+qrteD4bn22//JgUNWYiwa6gTv
- z+wCiFeI3BV/GUbUzgReguNFBWwNmqWILy99SiYY2BilgY0SclTNWrjTNkJ3CT/oHBe+
- VQBYLfCw3FwOnKcF+rI10jI2f/aBg6Zb2B16kRVjFz+ac12rAMbkdvMPO/B99pmJz5RC
- G6BKslfCS39Jcuu9Xq5Af7lwNAjyNHy2vqfZmsAm7PVYgpepdabArCA0hoCGyQF/QnHJ
- mA0Q==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=yArlMeJLEqclMBk/jDgf3oGNxTygsUNwmienflwMm3k=;
+ b=j0mWZZYFnSxj3FZOvyV8jT/ElcHRTsSkFi9e9vfxEedeYPKf3WmKh1wLrg2WXr7Gsz
+ pxJNO0LzXHE0H038NF88DlJdrJ9vVONRPsShOgBd3kazspxf8AGr0HqlXmNEKz9MPXAT
+ lExW3MMLqxGmfugQkmRtwX7auUGlz+5RZUoXd7FEAEdGUP/GXb7Y0ZXDQG8Qy8IzNtyr
+ F0UKCHlJXerP1am8gi8nDmV/DzEWOchrYpD4JvGC4pZ6336MvcAJmmKPsPtHK0mgiHQ+
+ Rz3ww2dWWJOPl3iEWgjmgy4Q2o2nKmqSNWmiMfVKrEnrUi2FeK4mVgnewx2xkVXtciCJ
+ MsYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=o7CLS2y7/WQHEF/89+BpyFTtr4utuBXWVE2QAB0qk4A=;
- b=eRVKTZCvL0WbtIqG9y2NrylYIehiCrgtrDAYF5grDeW0+kgRhkcyT4raBF9lYCJN0v
- xbwFra733XvwHz3uhfoJ84rLG7SyiUG+3RJd8JwevAwr2k764nE5VgbkZUD0vxF5taln
- h9EmUjB3ITUqljkrl+bbWSDImpgQypMkbO/0S8o3Ba61t34xQX2ARs8y+J5yRYSdeI2y
- PaFD8JUUu+II5M+urQCF9WHEvpZALArU5szNuitVky8rFYwvIDmvrNf1GKWUdhxuWDFF
- amo0KJBuFlgkrblSFvp/17EeZoE4Qis+6RhxV/qulJegbewZVRkrYN35bxoIb0P7Hp3b
- OJLQ==
-X-Gm-Message-State: AGi0PuY7DT0QeQepBIA06U/tzVxRq5iIkScHN8tlvJ5EEPgnJMSkgB5J
- kusJ91HDWqPAY4moPgovdS3Dyn1xv1doLdebeVg=
-X-Received: by 2002:a5d:950d:: with SMTP id d13mr26148288iom.136.1588089719960; 
- Tue, 28 Apr 2020 09:01:59 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=yArlMeJLEqclMBk/jDgf3oGNxTygsUNwmienflwMm3k=;
+ b=A/OOpr+4irl6YBVbutvz8sWwTRd2NKbL7rDRllZoLON8nClr0/TkSoTbBNssJTmz5Q
+ rBbGfHQ6MC2e0dqhASlbnHdd05dOHFh3MmpwU0qEenN+EmN5Cc4pZg3TsgFgmgUXkrXw
+ baSOegRmgTRsIkR+vbPMFvMv6ZTylfsDPzEppRndltFcqbTeTf7fhpvHbKWucgm5ZpYt
+ Ld8yvTeLU3hcXvtTRV+jNTKOQlw8teR15yqwayN5EJKftm3jieJT96mwSOMAH8momys7
+ 6YufsZmXyPLXrfffSkZg+uPzXE0Thk3/bWAaATBfB5kAxWJT3E/86KG/2p9oTVmBHXNf
+ LfMQ==
+X-Gm-Message-State: AGi0PuYb2UkE84TeoxjqnnKaxSnDfhN8mkqO43v8tS/prCzfZz6P307a
+ xtWGt7IQQenfVIYKv5alIIkYWdXb7lg=
+X-Received: by 2002:a19:42c3:: with SMTP id p186mr1473618lfa.194.1588089831760; 
+ Tue, 28 Apr 2020 09:03:51 -0700 (PDT)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id q125sm13024013ljb.34.2020.04.28.09.03.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 28 Apr 2020 09:03:50 -0700 (PDT)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v1 0/1] target/arm: Remove access_el3_aa32ns()
+Date: Tue, 28 Apr 2020 18:03:49 +0200
+Message-Id: <20200428160350.10030-1-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20200428155005.25537-1-f4bug@amsat.org>
-In-Reply-To: <20200428155005.25537-1-f4bug@amsat.org>
-From: Laurent Desnogues <laurent.desnogues@gmail.com>
-Date: Tue, 28 Apr 2020 18:01:48 +0200
-Message-ID: <CABoDooMPjE7si-RR8wqOZ_EDkb_Sid-PjXP2wEP716di1tcezg@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm: Use correct variable for setting 'max'
- cpu's MIDR_EL1
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
- envelope-from=laurent.desnogues@gmail.com; helo=mail-io1-xd44.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::144;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x144.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::d44
+X-Received-From: 2a00:1450:4864:20::144
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,93 +109,34 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: laurent.desnogues@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ richard.henderson@linaro.org, edgar.iglesias@xilinx.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zZJCrAkyCw48
+X-TUID: LXdnKcYRK69x
 
-On Tue, Apr 28, 2020 at 5:50 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> MIDR_EL1 a 64-bit system register with the top 32-bit being RES0.
->
-> This fixes when compiling with -Werror=3Dconversion:
->
->   target/arm/cpu64.c: In function =E2=80=98aarch64_max_initfn=E2=80=99:
->   target/arm/cpu64.c:628:21: error: conversion from =E2=80=98uint64_t=E2=
-=80=99 {aka =E2=80=98long unsigned int=E2=80=99} to =E2=80=98uint32_t=E2=80=
-=99 {aka =E2=80=98unsigned int=E2=80=99} may change value [-Werror=3Dconver=
-sion]
->     628 |         cpu->midr =3D t;
->         |                     ^
->
-> Suggested-by: Laurent Desnogues <laurent.desnogues@gmail.com>
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> I suppose cp15.c0_cpuid register in target/arm/cpu.h as uint32_t is OK.
->
-> Since v1: Follow Laurent and Peter suggestion.
-> ---
->  target/arm/cpu.h | 3 ++-
->  target/arm/cpu.c | 4 +++-
->  2 files changed, 5 insertions(+), 2 deletions(-)
->
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 8b9f2961ba..4d1be56df9 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -894,7 +894,7 @@ struct ARMCPU {
->          uint64_t id_aa64dfr0;
->          uint64_t id_aa64dfr1;
->      } isar;
-> -    uint32_t midr;
-> +    uint64_t midr;
->      uint32_t revidr;
->      uint32_t reset_fpsid;
->      uint32_t ctr;
-> @@ -1685,6 +1685,7 @@ FIELD(MIDR_EL1, PARTNUM, 4, 12)
->  FIELD(MIDR_EL1, ARCHITECTURE, 16, 4)
->  FIELD(MIDR_EL1, VARIANT, 20, 4)
->  FIELD(MIDR_EL1, IMPLEMENTER, 24, 8)
-> +FIELD(MIDR_EL1, RESERVED, 32, 32)
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-If you follow Peter advice to not check these 32-bits, you could
-remove that field definition and if you keep it please rename it RES0
-:-).
+Hi,
 
-Thanks,
+Laurent reported hitting the assert in access_el3_aa32ns()
+when accessing 32-bit versions of some of the virtualization
+regs when EL3 is 64-bit.
 
-Laurent
+I think we got this wrong back then and it seems to me like
+we should remove direct usage of access_el3_aa32ns() and
+always call access_el3_aa32ns_aa64_any() to handle both
+the aa32-only cases and the mixed aa32/aa64.
 
->
->  FIELD(ID_ISAR0, SWAP, 0, 4)
->  FIELD(ID_ISAR0, BITCOUNT, 4, 4)
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index a79f233b17..aaa48e06ac 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1182,6 +1182,8 @@ void arm_cpu_post_init(Object *obj)
->  {
->      ARMCPU *cpu =3D ARM_CPU(obj);
->
-> +    assert(FIELD_EX64(cpu->midr, MIDR_EL1, RESERVED) =3D=3D 0);
-> +
->      /* M profile implies PMSA. We have to do this here rather than
->       * in realize with the other feature-implication checks because
->       * we look at the PMSA bit to see if we should add some properties.
-> @@ -2757,7 +2759,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
->  static Property arm_cpu_properties[] =3D {
->      DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, fal=
-se),
->      DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
-> -    DEFINE_PROP_UINT32("midr", ARMCPU, midr, 0),
-> +    DEFINE_PROP_UINT64("midr", ARMCPU, midr, 0),
->      DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
->                          mp_affinity, ARM64_AFFINITY_INVALID),
->      DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID=
-),
-> --
-> 2.21.1
->
+Cheers,
+Edgar
+
+Edgar E. Iglesias (1):
+  target/arm: Drop access_el3_aa32ns()
+
+ target/arm/helper.c | 34 ++++++++++------------------------
+ 1 file changed, 10 insertions(+), 24 deletions(-)
+
+-- 
+2.20.1
+

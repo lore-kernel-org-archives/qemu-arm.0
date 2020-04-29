@@ -1,159 +1,142 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp902828lfm;
-        Wed, 29 Apr 2020 11:46:56 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLsLjDC6KDgdZz26cdGrG/IFQLoPI+m7sKL8r290yDli+IlIjhjik4MLFhkp5xfnb1Ln76Q
-X-Received: by 2002:ac8:46d1:: with SMTP id h17mr35909279qto.72.1588186015844;
-        Wed, 29 Apr 2020 11:46:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588186015; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp902930lfm;
+        Wed, 29 Apr 2020 11:47:04 -0700 (PDT)
+X-Google-Smtp-Source: APiQypL5UeOOezxjoAVE1+Gc8cpxOj+URsu8x7mFPWW3vgylFK85zxCYUKidc+04UlTBHt7sQq/T
+X-Received: by 2002:a0c:e204:: with SMTP id q4mr34310173qvl.16.1588186024496;
+        Wed, 29 Apr 2020 11:47:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588186024; cv=none;
         d=google.com; s=arc-20160816;
-        b=blzAhivloaFPUe+8qL8Ofr4FOXoBdXPopwP0W6RTbKahjOXNPJRr5mA/ZyioWc8Xmo
-         4B6OoJWW1NVZdflfni7FiEd9TZTQelO++q7396GG3067SVrktzHBGC7lukJhh6014By1
-         584H12hJaMxwB01nceR9WU1Uc3P1twJrzGH0TUilKilqZ8th33BtT9gVktqsN/k0F1D/
-         a44liV1twEuDComev/6rKJ/ZITHZDXpfzjN20J+0OZtvCRWnFFjQzkQeqexzz68nI5de
-         JO8M0TKhXvK4bt6moQtbNZULBx0oJ3LdcuhlUOVOoDu7BnAMXKKco4J1gTtr6QoItqxk
-         1sJg==
+        b=dykSISECpqN75ai/B2lCnhC/bnDW0oSEodwW5jA1Blzz8uMT9wikRJeBUScRB/wHpA
+         XqAJS5d/mqSV1PQ7hi6BvKVyKyPaY8ZIcDSVhP4sjWjRuXI2SQ18LbRSXFsNkK29eZmp
+         YO9KwQoWttqsr8R2fulE6ENdAERhXYww5juq5bDqTuoNzGxu0kqt+N6YDi2W8weqKSFK
+         uokAHFfdP5uyEQmnThC6YSv9gdFXSBvZl2/b4zTbn0BKLgxoSK0gFqwyf6MAmElrgSvk
+         K+h+OSjzMfC+Hl3IVkPnRdRNuYWkUbFK30v9Sq5tveQ1JxLogoPJdUio+rj7F5FqTApm
+         VUlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=sT7xYNB/pNhcIuB1QH4lh70g3ycEbYWObZyq67d7YwU=;
-        b=qis8cmK2INKtu7wxnaQUOw8xfbanEsESNNicF1+5sEng6S2uNc/n2VxOAHd8Xt5r0y
-         oHDFJ9eBSVxkdEEYt6kdIyH/NseHav2cbsf5OKMHVHASqicdhW0t7C81dIAFkyPGWjRV
-         ZeGiV2HdZ7NDKWXmQBO6FFJmlc0CmbqEBmjSqIkYum2aRTwipWcXv8Rsh8Jw4H/QC8wv
-         nVD3oc1ppkUmAOBCbx+MP/w4iTL8zzXAeWsdgajyRUrVDpPj0lna1mbxK2vEi+jlCDuH
-         /ZapzEdITXduXxCnaaqStKLw7v+pL8jYbUhrMIdmAkMFDiYNQ0DlICuq9XjTWjmyeY+a
-         Mygw==
+        bh=kp0zvv03JXhADP/c8bAM6urg6EvCkhydXj2S8B/j2zQ=;
+        b=Np69NWuW1QTC1QZgEMTn8CKenKAt4uXn6abD6p1N29JYd/IuNTqb0+Evi6okiERzMK
+         4/FglnTG6coiCDzLSC27F53R5yiJVaqP0oLKh6IZ4PIcog98rdNDtmHt1ki+4xEJ+yvE
+         VkVii6C/youjTl6RgEIglEb+XZuBTbxkTcg5a4WFFvQRMtS4PzTaM7QZN+bDZzGkdQim
+         Jb7cpDatO91IqJkH9Qtt/KCByjSMiCeehe/H+vfvET3dtkbWGoMjP+R69ZqwpEI3yR+O
+         1pcBqOSPebf7sIGr8tb43SEiQr2fx+8+HXQurid0MZmkvvZ1FcPWJTRIKaBZbTOO1kfw
+         sJgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c4wek8El;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=y+QfwR4J;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id u13si12659242qvq.84.2020.04.29.11.46.55
+        by mx.google.com with ESMTPS id c3si10382614qvq.73.2020.04.29.11.47.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Apr 2020 11:46:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Wed, 29 Apr 2020 11:47:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c4wek8El;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=y+QfwR4J;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57066 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56058 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jTrjT-0006W8-93
-	for alex.bennee@linaro.org; Wed, 29 Apr 2020 14:46:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37960)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jTrjb-0005xh-Qw
+	for alex.bennee@linaro.org; Wed, 29 Apr 2020 14:47:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38582)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jTrcZ-0004tq-Aa
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 14:39:48 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jTrh4-00040w-OB
+ for qemu-devel@nongnu.org; Wed, 29 Apr 2020 14:44:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jTrcY-0005nh-Ce
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 14:39:46 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:36033)
+ (envelope-from <richard.henderson@linaro.org>) id 1jTrg3-0006qs-6e
+ for qemu-devel@nongnu.org; Wed, 29 Apr 2020 14:44:26 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:40781)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jTrcX-0005nQ-TZ
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 14:39:46 -0400
-Received: by mail-pl1-x643.google.com with SMTP id f15so1162722plr.3
- for <qemu-arm@nongnu.org>; Wed, 29 Apr 2020 11:39:44 -0700 (PDT)
+ id 1jTrg2-0006mR-N4
+ for qemu-devel@nongnu.org; Wed, 29 Apr 2020 14:43:22 -0400
+Received: by mail-pl1-x642.google.com with SMTP id t16so1156705plo.7
+ for <qemu-devel@nongnu.org>; Wed, 29 Apr 2020 11:43:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:references:from:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=sT7xYNB/pNhcIuB1QH4lh70g3ycEbYWObZyq67d7YwU=;
- b=c4wek8El4w1AEgivaAGRfz3u6ScZoySujT/D5mkOnCJREBVg3sYDw8B2mZvjF3kdPO
- m55gWDBGu0bfrSi/vdC0GvrM1xDEi+Bi0pwDkkrbRsHehSjNIxIEePYTe8xnzNJ+1Us7
- nbzIWAzk4ytQX6p+DheI+wKmoPOTwnfHuJ4r2Hm33gV0zuVXlcu+wJYx/4D9jD8+C69A
- 9g680g9CSDc4ENybsRatUe0fcuyZnGi/xKYkl3jgUf/JhNFl05nhTvLIGsABmvqu4TNY
- fTgvWGyE8UPs1C9E5kccaYdUlNRocUU64bDJe3DzTQSMKkImJpZpUeUGRgXUU3DkNS8e
- iN/Q==
+ bh=kp0zvv03JXhADP/c8bAM6urg6EvCkhydXj2S8B/j2zQ=;
+ b=y+QfwR4JmWzYZM+dhE3iBO7ZUquBE/X5ujlH6U0MytpBhhKyPf/W1r3ZcFlp5Yy5DJ
+ JTm3/MlmRMbN3aINedEHhqCett2HPh95III6zbI/FwYHwhEQFZL2E8uSZU+S6r2IuxBA
+ eQR0c7VkB40QPqjiNdEzvgpbf7aF5eG4sNDxpz/MPu3L+B3wDxdyJcHw25/OW/ivcajW
+ QO8ANItSLLDX1Z7TJuWEDhlo1FaCR7xy0/H6zR3oQaZVynSv2rv/1wZxjD3QEjUVLsny
+ +y1C65qWxfjXplmVNINX1tFwqEvgZe4wrL17pXlgPusSMG3ssSsiXpWp0m8CoN+oJ8w6
+ gRzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=sT7xYNB/pNhcIuB1QH4lh70g3ycEbYWObZyq67d7YwU=;
- b=TqRuDMZeSz4aWu3oliV7DTuC3eU2keTmEA+Wr+blC8PyKLKcN974GVg0/Hahmr03Ss
- RphnSnXsD7pybEBk1hk1qyE4aQAfYZPGBRRLrBwIuM8XLATYHqoFS1mkYz3+bPbwFw1f
- e3gOoTrh5NrPhUjRZsSHzDBjrtjSWU67asuPC2QldYqqUUflM5WAg/jclOmo8d1uA9pP
- h3PGpbeMb37YjyZqxuSmoLtqO01m9oiBav1HrEPxqpsH+98V6c6h5E73oFMTGmBs27km
- ChXUf76XGx8LwSBBvvdgBOGgjMLEsMY8uMnR3zTGr1Avsnk9hJFpmXdbvGdq3JdCHBz0
- lxRw==
-X-Gm-Message-State: AGi0PuZpyZ2ypG4EeY7kP+89seYUwhAJwY8ETmXxkdsoFituXvfTbM9V
- ojGJgT1L1XpVNtn9TUSWKPRDyA==
-X-Received: by 2002:a17:902:207:: with SMTP id
- 7mr34159461plc.331.1588185583675; 
- Wed, 29 Apr 2020 11:39:43 -0700 (PDT)
+ bh=kp0zvv03JXhADP/c8bAM6urg6EvCkhydXj2S8B/j2zQ=;
+ b=FdjKCOZPgPpCSTBW8SQtNieJ9zyBiGYyIt2DoQSHmvUflPlc5PueXaG/K+qXpWlxnh
+ dKkiEFv1PmzfXMWdtWzLcmswxEyZN4RHOpPJWb5Neds4LPbErnaApZ+yP+frzNHQnBxS
+ S3WTWm4arFJE208QzTYLcP3trjufZrtgKLbVSIPSrV73Ox5oP9HTPJ7ac2f4VVo8URWc
+ d3GeFaIC5rS1W2Y9/t4FTblkzXwphmsj4sDG0ejKn7MtGuOFHBOlssAKI/A0v745SCEt
+ mQk6gp5PvBaNtwfHo4lE90HbEeUuaSIpdnedYLfs/D59URZZQRsymjXsiioAVyTpQQM1
+ h7Pg==
+X-Gm-Message-State: AGi0PuYx4lQERN81DF9aSM3zAR+9IGtBcMeL9GM1JFMEAE5ZM5/LDKIR
+ YKZuepJOrNsOJrL7BMjup8QTTPN4Tcs=
+X-Received: by 2002:a17:90a:5a:: with SMTP id 26mr4904684pjb.74.1588185801035; 
+ Wed, 29 Apr 2020 11:43:21 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id b1sm1560094pfa.202.2020.04.29.11.39.42
+ by smtp.gmail.com with ESMTPSA id b1sm1588632pfi.140.2020.04.29.11.43.20
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Apr 2020 11:39:42 -0700 (PDT)
-Subject: Re: [PATCH 1/4] target/arm: Don't use a TLB for ARMMMUIdx_Stage2
+ Wed, 29 Apr 2020 11:43:20 -0700 (PDT)
+Subject: Re: [PATCH 4/4] target/arm: Implement ARMv8.2-TTS2UXN
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20200330210400.11724-1-peter.maydell@linaro.org>
- <20200330210400.11724-2-peter.maydell@linaro.org>
+ <20200330210400.11724-5-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <771268c8-6971-e6ff-3970-ee911d1413af@linaro.org>
-Date: Wed, 29 Apr 2020 11:39:40 -0700
+Message-ID: <98a9cb27-0a9c-b9c7-f683-968e01202343@linaro.org>
+Date: Wed, 29 Apr 2020 11:43:18 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200330210400.11724-2-peter.maydell@linaro.org>
+In-Reply-To: <20200330210400.11724-5-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::643
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::642
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PKN0d7JuKwI/
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UyvwmMnb6MZf
 
-On 3/30/20 2:03 PM, Peter Maydell wrote:
-> We define ARMMMUIdx_Stage2 as being an MMU index which uses a QEMU
-> TLB.  However we never actually use the TLB -- all stage 2 lookups
-> are done by direct calls to get_phys_addr_lpae() followed by a
-> physical address load via address_space_ld*().
-> 
-> Remove Stage2 from the list of ARM MMU indexes which correspond to
-> real core MMU indexes, and instead put it in the set of "NOTLB" ARM
-> MMU indexes.
-> 
-> This allows us to drop NB_MMU_MODES to 11.  It also means we can
-> safely add support for the ARMv8.3-TTS2UXN extension, which adds
-> permission bits to the stage 2 descriptors which define execute
-> permission separatel for EL0 and EL1; supporting that while keeping
-> Stage2 in a QEMU TLB would require us to use separate TLBs for
-> "Stage2 for an EL0 access" and "Stage2 for an EL1 access", which is a
-> lot of extra complication given we aren't even using the QEMU TLB.
-> 
-> In the process of updating the comment on our MMU index use,
-> fix a couple of other minor errors:
->  * NS EL2 EL2&0 was missing from the list in the comment
->  * some text hadn't been updated from when we bumped NB_MMU_MODES
->    above 8
+On 3/30/20 2:04 PM, Peter Maydell wrote:
+> The ARMv8.2-TTS2UXN feature extends the XN field in stage 2
+> translation table descriptors from just bit [54] to bits [54:53],
+> allowing stage 2 to control execution permissions separately for EL0
+> and EL1. Implement the new semantics of the XN field and enable
+> the feature for our 'max' CPU.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target/arm/cpu-param.h |   2 +-
->  target/arm/cpu.h       |  21 +++++---
->  target/arm/helper.c    | 112 ++++-------------------------------------
->  3 files changed, 27 insertions(+), 108 deletions(-)
+>  target/arm/cpu.h    | 15 +++++++++++++++
+>  target/arm/cpu.c    |  1 +
+>  target/arm/cpu64.c  |  2 ++
+>  target/arm/helper.c | 37 +++++++++++++++++++++++++++++++------
+>  4 files changed, 49 insertions(+), 6 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

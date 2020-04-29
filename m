@@ -1,103 +1,114 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp655677lfm;
-        Wed, 29 Apr 2020 07:46:33 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKM5/sWAhnj0z+YlUfPqL9D1hpL0QuyFoY8H9H/0TBtHlYN7dnExhZ9aSHOLG5D0HkK0/a6
-X-Received: by 2002:a37:66d8:: with SMTP id a207mr31980375qkc.127.1588171593078;
-        Wed, 29 Apr 2020 07:46:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588171593; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp898386lfm;
+        Wed, 29 Apr 2020 11:42:05 -0700 (PDT)
+X-Google-Smtp-Source: APiQypK7M56lqVL5OzNvnzK1+/RmG3w96t1nrAmM43UlwGw8NQBMggEyUwPFgrVm4wIZ4wThorqx
+X-Received: by 2002:a37:9e4a:: with SMTP id h71mr34014710qke.341.1588185725148;
+        Wed, 29 Apr 2020 11:42:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588185725; cv=none;
         d=google.com; s=arc-20160816;
-        b=KaYDzlpcXSm+fHPPqjWeMlqjJNz0KzFIUOQf0RA41+XJmqApyUzxxe8KO8dnyngcwk
-         mqVduv/IQWHV0EfOT8BX8ZI6oIQDfGsTofn88AWPAhuiPXhnMoENrVJchQRjzzhjOiA1
-         rtvBfN0wnCRw1NoTq8PBJuwy4nerYjD8UaWa+KHvFe6cavpXuTw6d8lPcsl3C7pTkZht
-         Jw1EiaiqiwQyBHIeXIdHmsYx636vrnLxnAeqNK7g9oBJ8gb/K0MoaHIQnUcVrpHmiLhT
-         YSnJfbjsGa1GYNs+4tgNCrcP0DxswQFznjI0yR1glp2r7bheEhTHbMqFhLWeTyODBbAx
-         2ZDw==
+        b=Rm02RDXZk/rtBbc/kGuJNsqFbo4+cfAW+E2GJwg5ncOhkoxGMpqlU/LLm/T6Pi9hHQ
+         wCRggggvxx73o3uS/dKixDYjfxZiH+roTZfwN5g3O4/PlXoCfiNQOWepTvzlA0K3tfOs
+         yXmgtWKhj+rw6s1ocIzSHvCUZWDgKlo2Ht+2IMMISJ3o/XM+/kx70a8gaRJQ/HwFvRCN
+         73qidpvsX1Ie3FBXZKSCKjgTMD9chyxI3OxbOkXTbKhmIosIqpL2Tp7uEFDz7CJ1p7Nf
+         eh8PnLSwPIz1oV2k59WkLXPS9fDnIreAeQE5pi6rIUXqYfKxvHAJWwRWlsFTwjKEMcxK
+         0jiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=qVSo6x4cunSwGHdHlkXDjz6vkUY6++79QBf4sR/dMQs=;
-        b=kUf8eZnSxumlquzqeJcXnLWJwfzdzoYOOousyGQSy6YTx71pXHfmTvMi68tG2XXWGO
-         QhlAdnhWKSflOOyOGJuO0/cbBD/U02wA6hZ9l6kll1TKpvvl8TwNMZJCHT93qBwQ27bM
-         Jy1hFJ7cUvSDD/FbAZA++Olg99nYipiz9U2moaj5pqe3Tmp6toMvcfP0jh2KVvBDARUM
-         w2esr9WCRqVPJCsURPunLeLdYAnCcmhE3LMtG431Y45H+yr6wO93V220Fe2FK50uCUP6
-         i3Y1IwvFPmWuZcATaVb1zvISymIba0YeYtkuQOwinPUNmMlj+vIkQaDCDXt17KBqihVr
-         ZjDg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=xy56eoJUJWZN+BstVmu/0c9syXwVAf+2TuYgeFfXSx4=;
+        b=qchoFlmkzPpdcVFU0lpVwcfs/8b3kzvadqYxzW5V914ROed+BDTTx4DTSWFTRcCW3b
+         4z5fyWVu4qyAJuAY4HuzFV4QIbLsnmm4HyNbe6dqSkxFrSj/3bttyR5m6g6Y8QzGPOr/
+         wCe7MjgCUeI+a5yyDqXmF3PcqlPzualRRpORIY3Q1mKJSvW4NLyqa21mRirAngQq4WwX
+         cg1rD2Yodu/fnXVyw7Ao+6i/Wk/CU9qvlusZlMNiPq6ZkbELXACMlbu0tVchTnSzXSQW
+         5eG8hee3WmJwnJcdGJZ3ugkeOSb9yohlAhAUdd3Zzb5Lz11nngbV9OG5JSE3YJfJzM0h
+         xV+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sj2nSJhZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yZh+mZ+P;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id 19si15734900qtp.207.2020.04.29.07.46.32
+        by mx.google.com with ESMTPS id r17si58708qtk.333.2020.04.29.11.42.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Apr 2020 07:46:33 -0700 (PDT)
+        Wed, 29 Apr 2020 11:42:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sj2nSJhZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yZh+mZ+P;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44264 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42896 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jTnyq-0001wQ-6d
-	for alex.bennee@linaro.org; Wed, 29 Apr 2020 10:46:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50842)
+	id 1jTrem-0008CK-GC
+	for alex.bennee@linaro.org; Wed, 29 Apr 2020 14:42:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38150)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1jTnyh-0001uS-4v
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 10:46:23 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jTreC-0007cV-5i
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 14:41:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1jTnyg-0002mY-4W
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 10:46:22 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:47744
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1jTnyf-0002m0-Nt
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 10:46:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588171580;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=qVSo6x4cunSwGHdHlkXDjz6vkUY6++79QBf4sR/dMQs=;
- b=Sj2nSJhZhKGUFdgigGyHrTwROdrcLV6GJf1q7HY93yProdGu9S8xg/z123L1vzCOhzblD2
- 0J+NkbfLSa3qWy1NMb9nCVVjHwTqtFEslFNHz4y9Lz7G7jLo+b4NsfpBLs/tJ2RDw5jL31
- 2mJQivgHIFpwJL62Ern4Pm1rxqRq5+A=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-422-Z_a6oIA8PSKI1FWxJ6PVzg-1; Wed, 29 Apr 2020 10:46:17 -0400
-X-MC-Unique: Z_a6oIA8PSKI1FWxJ6PVzg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 36BA48015D1;
- Wed, 29 Apr 2020 14:46:15 +0000 (UTC)
-Received: from localhost (ovpn-112-87.ams2.redhat.com [10.36.112.87])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E5B6D100EBA9;
- Wed, 29 Apr 2020 14:46:08 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>
-Subject: [PATCH v2] hw: add compat machines for 5.1
-Date: Wed, 29 Apr 2020 16:46:05 +0200
-Message-Id: <20200429144605.7262-1-cohuck@redhat.com>
+ (envelope-from <richard.henderson@linaro.org>) id 1jTre0-0007y6-8y
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 14:41:27 -0400
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:41349)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jTrdz-0007xl-MF
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 14:41:15 -0400
+Received: by mail-pg1-x541.google.com with SMTP id h69so1421726pgc.8
+ for <qemu-arm@nongnu.org>; Wed, 29 Apr 2020 11:41:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=xy56eoJUJWZN+BstVmu/0c9syXwVAf+2TuYgeFfXSx4=;
+ b=yZh+mZ+P7Z6Gg7XAdJH1WpYreRP/Y8/UyGYuHA03soLYtXzH9h/hMrFmnuFeiYFBrj
+ 3sbDk5SPWnsjg81ikpZBLGeh7Pc9JRfBtoJX66U7bpfpy2D9Piw6T56FCuJ1jA3jocm9
+ UQMW/QWyzCbqbTn/dQ2MF9epPf7Kct6GhFklmVKzl3av5ZPDbkPXDh8thdmi6kK0Fw7f
+ kJO7BIDFRI5p5eggf3k47WNLNh8oIUa33V4ePSoMNVmoqwqciVKU4YYTMd2FM3Vzrf4s
+ lTnJCPNNx8Mo+uhlhZ1tTGibNEO7lOg4WViJUwPQPuhiKrKmy7ERmijSjOWuA2Ecicze
+ 8TrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=xy56eoJUJWZN+BstVmu/0c9syXwVAf+2TuYgeFfXSx4=;
+ b=oBOBHeUbfo5XEPpG37A5p2QwZRqaZWZ2WYhnLINSPJMoJLoKuAo1gZMDQy1QOC3tzo
+ mRF+P3E+dpqCw9c6yGMk51QsUuw6fgmGwhpY0zQUNB05n4/xbVz0ZJtD72WhF8O7J80Y
+ /wH+jmx2q+rSeQKNttTUKWYrp5FTPJmnFRS+P4msYJ7opLiA5ehkDa/ggZXBNoNqDkjT
+ o38+urpEWWcXpVSE2JusEroGtcENcqT+O+tqgd6yLeQ1slVeixMe1vm6+aeCV2+CfloJ
+ Geu6WgJ+mzLuEqRT5K/DzZMRTZNg4mJvRwJb8O3p5F2lxxWhZtrKZ60DmF65+52WAK8x
+ nlkg==
+X-Gm-Message-State: AGi0PuYZhPkvmdMFUfGDzLkGLz9lwVgB+v7DEUld8YBX4x3bOLOCZ+7B
+ lzcZDDFEYxd8KlnCBvXwUGdh8Q==
+X-Received: by 2002:a63:ce4e:: with SMTP id r14mr14236395pgi.219.1588185674059; 
+ Wed, 29 Apr 2020 11:41:14 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
+ by smtp.gmail.com with ESMTPSA id i15sm1550955pgj.30.2020.04.29.11.41.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 29 Apr 2020 11:41:13 -0700 (PDT)
+Subject: Re: [PATCH 3/4] target/arm: Add new 's1_is_el0' argument to
+ get_phys_addr_lpae()
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200330210400.11724-1-peter.maydell@linaro.org>
+ <20200330210400.11724-4-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <fd6a7e77-5eb7-2a22-ff9c-09d3d8196d80@linaro.org>
+Date: Wed, 29 Apr 2020 11:41:11 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=cohuck@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/29 01:42:37
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+In-Reply-To: <20200330210400.11724-4-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::541;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x541.google.com
+X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
+ Malformed IPv6 address (bad octet value).
+ Location : parse_addr6(), p0f-client.c:67
+X-Received-From: 2607:f8b0:4864:20::541
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,246 +120,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
- Eric Auger <eric.auger@redhat.com>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Stefan Berger <stefanb@linux.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i5TQqEANzX0M
+X-TUID: pXJQb/2CUslg
 
-Add 5.1 machine types for arm/i440fx/q35/s390x/spapr.
+On 3/30/20 2:03 PM, Peter Maydell wrote:
+> For ARMv8.2-TTS2UXN, the stage 2 page table walk wants to know
+> whether the stage 1 access is for EL0 or not, because whether
+> exec permission is given can depend on whether this is an EL0
+> or EL1 access. Add a new argument to get_phys_addr_lpae() so
+> the call sites can pass this information in.
+> 
+> Since get_phys_addr_lpae() doesn't already have a doc comment,
+> add one so we have a place to put the documentation of the
+> semantics of the new s1_is_el0 argument.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/helper.c | 29 ++++++++++++++++++++++++++++-
+>  1 file changed, 28 insertions(+), 1 deletion(-)
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
----
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-v1->v2: rebased on top of "virt: Set tpm-tis-device ppi property to off by
-        default" to avoid breakage on arm
-
----
- hw/arm/virt.c              |  8 +++++++-
- hw/core/machine.c          |  3 +++
- hw/i386/pc.c               |  3 +++
- hw/i386/pc_piix.c          | 14 +++++++++++++-
- hw/i386/pc_q35.c           | 13 ++++++++++++-
- hw/ppc/spapr.c             | 15 +++++++++++++--
- hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
- include/hw/boards.h        |  3 +++
- include/hw/i386/pc.h       |  3 +++
- 9 files changed, 70 insertions(+), 6 deletions(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 2a68306f2832..bb3e808b381c 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2309,10 +2309,16 @@ static void machvirt_machine_init(void)
- }
- type_init(machvirt_machine_init);
-=20
-+static void virt_machine_5_1_options(MachineClass *mc)
-+{
-+}
-+DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
-+
- static void virt_machine_5_0_options(MachineClass *mc)
- {
-+    virt_machine_5_1_options(mc);
- }
--DEFINE_VIRT_MACHINE_AS_LATEST(5, 0)
-+DEFINE_VIRT_MACHINE(5, 0)
-=20
- static void virt_machine_4_2_options(MachineClass *mc)
- {
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index c1a444cb7558..7a50dd518f4c 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -28,6 +28,9 @@
- #include "hw/mem/nvdimm.h"
- #include "migration/vmstate.h"
-=20
-+GlobalProperty hw_compat_5_0[] =3D {};
-+const size_t hw_compat_5_0_len =3D G_N_ELEMENTS(hw_compat_5_0);
-+
- GlobalProperty hw_compat_4_2[] =3D {
-     { "virtio-blk-device", "queue-size", "128"},
-     { "virtio-scsi-device", "virtqueue_size", "128"},
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 5143c516531e..13e1d18cd758 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -94,6 +94,9 @@
- #include "fw_cfg.h"
- #include "trace.h"
-=20
-+GlobalProperty pc_compat_5_0[] =3D {};
-+const size_t pc_compat_5_0_len =3D G_N_ELEMENTS(pc_compat_5_0);
-+
- GlobalProperty pc_compat_4_2[] =3D {
-     { "mch", "smbase-smram", "off" },
- };
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 22dee0e76c62..921caa502b85 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -419,7 +419,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
- }
-=20
--static void pc_i440fx_5_0_machine_options(MachineClass *m)
-+static void pc_i440fx_5_1_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
-     pc_i440fx_machine_options(m);
-@@ -428,6 +428,18 @@ static void pc_i440fx_5_0_machine_options(MachineClass=
- *m)
-     pcmc->default_cpu_version =3D 1;
- }
-=20
-+DEFINE_I440FX_MACHINE(v5_1, "pc-i440fx-5.1", NULL,
-+                      pc_i440fx_5_1_machine_options);
-+
-+static void pc_i440fx_5_0_machine_options(MachineClass *m)
-+{
-+    pc_i440fx_5_1_machine_options(m);
-+    m->alias =3D NULL;
-+    m->is_default =3D false;
-+    compat_props_add(m->compat_props, hw_compat_5_0, hw_compat_5_0_len);
-+    compat_props_add(m->compat_props, pc_compat_5_0, pc_compat_5_0_len);
-+}
-+
- DEFINE_I440FX_MACHINE(v5_0, "pc-i440fx-5.0", NULL,
-                       pc_i440fx_5_0_machine_options);
-=20
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index d37c425e2236..253688a9b8f3 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -349,7 +349,7 @@ static void pc_q35_machine_options(MachineClass *m)
-     m->max_cpus =3D 288;
- }
-=20
--static void pc_q35_5_0_machine_options(MachineClass *m)
-+static void pc_q35_5_1_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
-     pc_q35_machine_options(m);
-@@ -357,6 +357,17 @@ static void pc_q35_5_0_machine_options(MachineClass *m=
-)
-     pcmc->default_cpu_version =3D 1;
- }
-=20
-+DEFINE_Q35_MACHINE(v5_1, "pc-q35-5.1", NULL,
-+                   pc_q35_5_1_machine_options);
-+
-+static void pc_q35_5_0_machine_options(MachineClass *m)
-+{
-+    pc_q35_5_1_machine_options(m);
-+    m->alias =3D NULL;
-+    compat_props_add(m->compat_props, hw_compat_5_0, hw_compat_5_0_len);
-+    compat_props_add(m->compat_props, pc_compat_5_0, pc_compat_5_0_len);
-+}
-+
- DEFINE_Q35_MACHINE(v5_0, "pc-q35-5.0", NULL,
-                    pc_q35_5_0_machine_options);
-=20
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 9a2bd501aa6e..fd5bfd11a84c 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -4599,15 +4599,26 @@ static void spapr_machine_latest_class_options(Mach=
-ineClass *mc)
-     }                                                                \
-     type_init(spapr_machine_register_##suffix)
-=20
-+/*
-+ * pseries-5.1
-+ */
-+static void spapr_machine_5_1_class_options(MachineClass *mc)
-+{
-+    /* Defaults for the latest behaviour inherited from the base class */
-+}
-+
-+DEFINE_SPAPR_MACHINE(5_1, "5.1", true);
-+
- /*
-  * pseries-5.0
-  */
- static void spapr_machine_5_0_class_options(MachineClass *mc)
- {
--    /* Defaults for the latest behaviour inherited from the base class */
-+    spapr_machine_5_1_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
- }
-=20
--DEFINE_SPAPR_MACHINE(5_0, "5.0", true);
-+DEFINE_SPAPR_MACHINE(5_0, "5.0", false);
-=20
- /*
-  * pseries-4.2
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index 0fa00a9fff3d..967a6de9683b 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -672,14 +672,26 @@ bool css_migration_enabled(void)
-     }                                                                     =
-    \
-     type_init(ccw_machine_register_##suffix)
-=20
-+static void ccw_machine_5_1_instance_options(MachineState *machine)
-+{
-+}
-+
-+static void ccw_machine_5_1_class_options(MachineClass *mc)
-+{
-+}
-+DEFINE_CCW_MACHINE(5_1, "5.1", true);
-+
- static void ccw_machine_5_0_instance_options(MachineState *machine)
- {
-+    ccw_machine_5_1_instance_options(machine);
- }
-=20
- static void ccw_machine_5_0_class_options(MachineClass *mc)
- {
-+    ccw_machine_5_1_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
- }
--DEFINE_CCW_MACHINE(5_0, "5.0", true);
-+DEFINE_CCW_MACHINE(5_0, "5.0", false);
-=20
- static void ccw_machine_4_2_instance_options(MachineState *machine)
- {
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index fd4d62b5010f..18815d9be24f 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -318,6 +318,9 @@ struct MachineState {
-     } \
-     type_init(machine_initfn##_register_types)
-=20
-+extern GlobalProperty hw_compat_5_0[];
-+extern const size_t hw_compat_5_0_len;
-+
- extern GlobalProperty hw_compat_4_2[];
- extern const size_t hw_compat_4_2_len;
-=20
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 6ab6eda046fd..15b9294dac38 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -204,6 +204,9 @@ void pc_system_firmware_init(PCMachineState *pcms, Memo=
-ryRegion *rom_memory);
- void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
-                        const CPUArchIdList *apic_ids, GArray *entry);
-=20
-+extern GlobalProperty pc_compat_5_0[];
-+extern const size_t pc_compat_5_0_len;
-+
- extern GlobalProperty pc_compat_4_2[];
- extern const size_t pc_compat_4_2_len;
-=20
---=20
-2.21.1
-
+r~

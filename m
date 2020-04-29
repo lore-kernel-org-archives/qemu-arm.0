@@ -1,77 +1,76 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp261763lfm;
-        Wed, 29 Apr 2020 00:49:18 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLMaAvsVscwgBiMsM7JIlQDUcdT9dWrsBDITNnrMHjmb7fsAb7R4xwIP4y67OeHOg4sNCJs
-X-Received: by 2002:ae9:e805:: with SMTP id a5mr31638606qkg.493.1588146558147;
-        Wed, 29 Apr 2020 00:49:18 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp281139lfm;
+        Wed, 29 Apr 2020 01:13:33 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLGPeaQakLJdjUiPShwSeRq4m4qchL3PQeAGx91q/VytL7f+y7W7qCx/8/T+a1gdiNlP5bR
+X-Received: by 2002:a0c:910c:: with SMTP id q12mr20514228qvq.239.1588148013449;
+        Wed, 29 Apr 2020 01:13:33 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id g2si12005485qkl.201.2020.04.29.00.49.17
+        by mx.google.com with ESMTPS id bm11si12729539qvb.119.2020.04.29.01.13.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Apr 2020 00:49:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Wed, 29 Apr 2020 01:13:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=4aylJ0jo;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=GEmdCS2T;
        arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57654 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37294 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jThT3-0007do-CH
-	for alex.bennee@linaro.org; Wed, 29 Apr 2020 03:49:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46988)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jThqW-0002rA-Pg
+	for alex.bennee@linaro.org; Wed, 29 Apr 2020 04:13:32 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51842)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1jTh8c-0003hV-HD
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 03:28:12 -0400
+ (envelope-from <luc.michel@greensocs.com>) id 1jThlM-00054F-C5
+ for qemu-devel@nongnu.org; Wed, 29 Apr 2020 04:09:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1jTh8a-00019q-TU
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 03:28:10 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:57552)
+ (envelope-from <luc.michel@greensocs.com>) id 1jThiJ-0003XK-DT
+ for qemu-devel@nongnu.org; Wed, 29 Apr 2020 04:08:12 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:59162)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1jTh8a-00019Z-Ak; Wed, 29 Apr 2020 03:28:08 -0400
+ id 1jThbX-0001H1-56; Wed, 29 Apr 2020 03:58:03 -0400
 Received: from [172.17.10.6] (unknown [172.17.10.6])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 4E64B96EF0;
- Wed, 29 Apr 2020 07:28:05 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 3220196EF0;
+ Wed, 29 Apr 2020 07:57:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1588145286;
+ s=mail; t=1588147080;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/+oPHhde0F8msTSP4zd+yT+EMw9Adx79AS57Lu+uy4E=;
- b=4aylJ0joeYAkvJ3lkmurPFxvnODU3kSEkXN3AYwMlG/0PpEF5SJRPZ2a6f/ckpYaUPxS2B
- Ocw9GpBn71KoIhs6Hl3ukv+FTyh6MG6dxi8VEvB/EI5PsrhQ3WouNPQI1k87MiJCSb2Q64
- qAR7O8u1ab5aIceodI62FavXMjuuU6o=
-Subject: Re: [PATCH v1 06/11] hw/arm: versal: Embedd the ADMAs into the SoC
- type
+ bh=eSrXzddqDgKI0K/JpB3wIhCVtkikOq/WAV+67S0rIWI=;
+ b=GEmdCS2TNOsnkIO2JC8jaPgdarqalux+mibdJ/j3qk9NKI/jo5nGpdiOeNV+45a5L7bzT9
+ X4ElwCf0QOUFqX8EonH5tNC9akMGZpEN0KLlQN1k7MRg/KT7EcHIRZsswyfi1cdfB5jBPC
+ fvBN3q+DjKkxV7h5y4jGDLJpuewB0iA=
+Subject: Re: [PATCH v1 11/11] hw/arm: versal-virt: Add support for the RTC
 To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
 References: <20200427181649.26851-1-edgar.iglesias@gmail.com>
- <20200427181649.26851-7-edgar.iglesias@gmail.com>
+ <20200427181649.26851-12-edgar.iglesias@gmail.com>
 From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <9b03a2aa-7a14-c3d9-f0bc-d1e00ee6832b@greensocs.com>
-Date: Wed, 29 Apr 2020 09:28:05 +0200
+Message-ID: <83a60c58-c549-0a88-0ad8-66dbaea69d33@greensocs.com>
+Date: Wed, 29 Apr 2020 09:57:58 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200427181649.26851-7-edgar.iglesias@gmail.com>
+In-Reply-To: <20200427181649.26851-12-edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US-large
 Content-Transfer-Encoding: 7bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1588145286;
+ s=mail; t=1588147080;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/+oPHhde0F8msTSP4zd+yT+EMw9Adx79AS57Lu+uy4E=;
- b=QJiVqxXfBD9YlXI5duYEudwcncF9vV9Tij1GJQYwmConbvMlL7I4fdwrBaHb2VFH3p66ik
- Z01hsccDl7YB8PBDqFU9Yrf9j9+hhQrhcxhWsxc3sn9zlpMElwuQpnZp4cZPELChdodYOR
- fLyAbcyEkn3B0BN3EL0o+Jo/7xVbK9s=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1588145286; a=rsa-sha256; cv=none;
- b=hZwdasvj+aDYtLBTHS+IPQ6IcT1PNGLmgwghZ85xejG5ul9SkufEecC/hoLQ7xddvd131/
- VVoQmmpaNO3W1gwaPc7hDXu0HSTAKRoU2PNiLzjqmkBlWGToGC2bRdyLziarBM4oCN0lGF
- fCCZWPbTFRPlS/WCWYBOVF4XwlZ7U6k=
+ bh=eSrXzddqDgKI0K/JpB3wIhCVtkikOq/WAV+67S0rIWI=;
+ b=6uSXSEI7UC8RcGJRSi1DRJ1uNdg8XUdAlCeSdd/3GGP3KxF3NDOjatRQ8FFTFqGjtQHWEN
+ DOKg29ExOeie6ilsCRonR66LxGSKtFFIkeedBc5C+guYYQ08cOdh+m67KeGuyvRFldDoME
+ ISrXElW/U9AR+9srKxIjOH4ejdi5OkA=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1588147080; a=rsa-sha256; cv=none;
+ b=5rT5HNTUhO6VQ2WmyYOjDm+w5njrsLPgz8f5AuuiIwLHgtBMqbBUI8CV/O5rgQN0ndbwGS
+ 3tIi4N/oQILkfWkWvY306mNpP5Gb9UAANXkTiBUia6vZOSK0lw+djCcsy8l1Y8YhBhZScP
+ zuSSaxUqHWLjNd22lYPrKMSg7Vbx7nk=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
 Received-SPF: pass client-ip=5.135.226.135;
@@ -79,90 +78,77 @@ Received-SPF: pass client-ip=5.135.226.135;
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/29 03:23:35
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Received-From: 5.135.226.135
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
  edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
  frasse.iglesias@gmail.com, alistair@alistair23.me,
  richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
  philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IyfljGzP9dtR
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mV97UnL3Gt8Y
 
 On 4/27/20 8:16 PM, Edgar E. Iglesias wrote:
 > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 > 
-> Embedd the ADMAs into the SoC type.
+> Add support for the RTC.
 > 
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
 > ---
->  hw/arm/xlnx-versal.c         | 14 +++++++-------
->  include/hw/arm/xlnx-versal.h |  3 ++-
->  2 files changed, 9 insertions(+), 8 deletions(-)
+>  hw/arm/xlnx-versal-virt.c | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
 > 
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index e424aa789e..ebd2dc51be 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -203,18 +203,18 @@ static void versal_create_admas(Versal *s, qemu_irq *pic)
->          DeviceState *dev;
->          MemoryRegion *mr;
->  
-> -        dev = qdev_create(NULL, "xlnx.zdma");
-> -        s->lpd.iou.adma[i] = SYS_BUS_DEVICE(dev);
-> -        object_property_set_int(OBJECT(s->lpd.iou.adma[i]), 128, "bus-width",
-> -                                &error_abort);
-> -        object_property_add_child(OBJECT(s), name, OBJECT(dev), &error_fatal);
-> +        sysbus_init_child_obj(OBJECT(s), name,
-> +                              &s->lpd.iou.adma[i], sizeof(s->lpd.iou.adma[i]),
-> +                              TYPE_XLNX_ZDMA);
-> +        dev = DEVICE(&s->lpd.iou.adma[i]);
-> +        object_property_set_int(OBJECT(dev), 128, "bus-width", &error_abort);
->          qdev_init_nofail(dev);
->  
-> -        mr = sysbus_mmio_get_region(s->lpd.iou.adma[i], 0);
-> +        mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
->          memory_region_add_subregion(&s->mr_ps,
->                                      MM_ADMA_CH0 + i * MM_ADMA_CH0_SIZE, mr);
->  
-> -        sysbus_connect_irq(s->lpd.iou.adma[i], 0, pic[VERSAL_ADMA_IRQ_0 + i]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[VERSAL_ADMA_IRQ_0 + i]);
->          g_free(name);
+> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
+> index 0afee48672..7e749e1926 100644
+> --- a/hw/arm/xlnx-versal-virt.c
+> +++ b/hw/arm/xlnx-versal-virt.c
+> @@ -283,6 +283,27 @@ static void fdt_add_sd_nodes(VersalVirt *s)
 >      }
 >  }
-> diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-> index 01da736a5b..94b7826fd4 100644
-> --- a/include/hw/arm/xlnx-versal.h
-> +++ b/include/hw/arm/xlnx-versal.h
-> @@ -16,6 +16,7 @@
->  #include "hw/arm/boot.h"
->  #include "hw/intc/arm_gicv3.h"
->  #include "hw/char/pl011.h"
-> +#include "hw/dma/xlnx-zdma.h"
->  #include "hw/net/cadence_gem.h"
 >  
->  #define TYPE_XLNX_VERSAL "xlnx-versal"
-> @@ -53,7 +54,7 @@ typedef struct Versal {
->          struct {
->              PL011State uart[XLNX_VERSAL_NR_UARTS];
->              CadenceGEMState gem[XLNX_VERSAL_NR_GEMS];
-> -            SysBusDevice *adma[XLNX_VERSAL_NR_ADMAS];
-> +            XlnxZDMA adma[XLNX_VERSAL_NR_ADMAS];
->          } iou;
->      } lpd;
->  
+> +static void fdt_add_rtc_node(VersalVirt *s)
+> +{
+> +    const char compat[] = "xlnx,zynqmp-rtc";
+> +    const char interrupt_names[] = "alarm\0sec";
+> +    char *name = g_strdup_printf("/rtc@%x", MM_PMC_RTC);
+> +
+> +    qemu_fdt_add_subnode(s->fdt, name);
+> +
+> +    qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
+> +                           GIC_FDT_IRQ_TYPE_SPI, VERSAL_RTC_ALARM_IRQ,
+> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI,
+> +                           GIC_FDT_IRQ_TYPE_SPI, VERSAL_RTC_SECONDS_IRQ,
+> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> +    qemu_fdt_setprop(s->fdt, name, "interrupt-names",
+> +                     interrupt_names, sizeof(interrupt_names));
+> +    qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
+> +                                 2, MM_PMC_RTC, 2, MM_PMC_RTC_SIZE);
+> +    qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
+> +    g_free(name);
+> +}
+> +
+>  static void fdt_nop_memory_nodes(void *fdt, Error **errp)
+>  {
+>      Error *err = NULL;
+> @@ -496,6 +517,7 @@ static void versal_virt_init(MachineState *machine)
+>      fdt_add_timer_nodes(s);
+>      fdt_add_zdma_nodes(s);
+>      fdt_add_sd_nodes(s);
+> +    fdt_add_rtc_node(s);
+>      fdt_add_cpu_nodes(s, psci_conduit);
+>      fdt_add_clk_node(s, "/clk125", 125000000, s->phandle.clk_125Mhz);
+>      fdt_add_clk_node(s, "/clk25", 25000000, s->phandle.clk_25Mhz);
 > 

@@ -1,77 +1,77 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp259161lfm;
-        Wed, 29 Apr 2020 00:45:34 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJTPdgiJNJqL8u2MrY2CZvRXZhk6ixqklHWuXvpXKvHZKEE+wDrFMZ3JCQOqHWFYv2scztF
-X-Received: by 2002:a05:620a:b10:: with SMTP id t16mr31590585qkg.59.1588146334034;
-        Wed, 29 Apr 2020 00:45:34 -0700 (PDT)
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp261763lfm;
+        Wed, 29 Apr 2020 00:49:18 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLMaAvsVscwgBiMsM7JIlQDUcdT9dWrsBDITNnrMHjmb7fsAb7R4xwIP4y67OeHOg4sNCJs
+X-Received: by 2002:ae9:e805:: with SMTP id a5mr31638606qkg.493.1588146558147;
+        Wed, 29 Apr 2020 00:49:18 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id z5si11904925qtd.93.2020.04.29.00.45.33
+        by mx.google.com with ESMTPS id g2si12005485qkl.201.2020.04.29.00.49.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Apr 2020 00:45:34 -0700 (PDT)
+        Wed, 29 Apr 2020 00:49:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=ykEn1vR+;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=4aylJ0jo;
        arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50392 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57654 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jThPR-0004Q9-Aq
-	for alex.bennee@linaro.org; Wed, 29 Apr 2020 03:45:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46944)
+	id 1jThT3-0007do-CH
+	for alex.bennee@linaro.org; Wed, 29 Apr 2020 03:49:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46988)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1jTh8D-0002ub-V6
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 03:27:46 -0400
+ (envelope-from <luc.michel@greensocs.com>) id 1jTh8c-0003hV-HD
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 03:28:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1jTh8C-0000uf-BR
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 03:27:45 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:57488)
+ (envelope-from <luc.michel@greensocs.com>) id 1jTh8a-00019q-TU
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 03:28:10 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:57552)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1jTh8B-0000rI-0s; Wed, 29 Apr 2020 03:27:43 -0400
+ id 1jTh8a-00019Z-Ak; Wed, 29 Apr 2020 03:28:08 -0400
 Received: from [172.17.10.6] (unknown [172.17.10.6])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 824BB96EF0;
- Wed, 29 Apr 2020 07:27:40 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 4E64B96EF0;
+ Wed, 29 Apr 2020 07:28:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1588145261;
+ s=mail; t=1588145286;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=tRPxFcTt97/CgfBx4Hwtkr2YGSp9F9XZKDpY5xF9yco=;
- b=ykEn1vR+m2e5To4Yyd4MeoPUbQILA5/5X4ALLUOtbqu6tNdT420Ak/OEIyyGgnWOTGRvYV
- G/UZAz2yfUZJ+Bxvn5vTMXDVAi/bMXYVTTTFz1SvmXmHRfCZqE2/s7NZ48U8DR0BRwEjg2
- A6RsrnyQ78RgeE+Y28oewoiUrSpdkVg=
-Subject: Re: [PATCH v1 04/11] hw/arm: versal: Embedd the UARTs into the SoC
+ bh=/+oPHhde0F8msTSP4zd+yT+EMw9Adx79AS57Lu+uy4E=;
+ b=4aylJ0joeYAkvJ3lkmurPFxvnODU3kSEkXN3AYwMlG/0PpEF5SJRPZ2a6f/ckpYaUPxS2B
+ Ocw9GpBn71KoIhs6Hl3ukv+FTyh6MG6dxi8VEvB/EI5PsrhQ3WouNPQI1k87MiJCSb2Q64
+ qAR7O8u1ab5aIceodI62FavXMjuuU6o=
+Subject: Re: [PATCH v1 06/11] hw/arm: versal: Embedd the ADMAs into the SoC
  type
 To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
 References: <20200427181649.26851-1-edgar.iglesias@gmail.com>
- <20200427181649.26851-5-edgar.iglesias@gmail.com>
+ <20200427181649.26851-7-edgar.iglesias@gmail.com>
 From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <47568156-f9f1-ac9d-3d8f-8ccf98ba934f@greensocs.com>
-Date: Wed, 29 Apr 2020 09:27:40 +0200
+Message-ID: <9b03a2aa-7a14-c3d9-f0bc-d1e00ee6832b@greensocs.com>
+Date: Wed, 29 Apr 2020 09:28:05 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200427181649.26851-5-edgar.iglesias@gmail.com>
+In-Reply-To: <20200427181649.26851-7-edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US-large
 Content-Transfer-Encoding: 7bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1588145261;
+ s=mail; t=1588145286;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=tRPxFcTt97/CgfBx4Hwtkr2YGSp9F9XZKDpY5xF9yco=;
- b=mFB8aVRllB/diCe0uZJdliT5HOQNA6AqQG+o49n7BUoiihcKOLlN8FSvRKyjT46wQNz9re
- ldghKGA3iF0o5n52E6CyzFX8AAHOvgpQoUGm7pfzIgLwK95PscVOcABFcEcpcm8adi3hb8
- m/Qk/5YxNyIvRj89M8RxBUj/rulGx7M=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1588145261; a=rsa-sha256; cv=none;
- b=OFQLJ3f7cGTBBPEvbHLypRr0jz6xzRYQc4Z0nsuJtLVTWX94xhSrfi6YG8B7YBZrPLV37Y
- aRT6KkCXjWiESgbqMkhwMQlUgJbrBwAvg9k8ix/HPKms/fd1tXg+6sURPXsMk8mmcYSEra
- AjaQ+lK063vhNP2TKqa4QCxlVtgRDgM=
+ bh=/+oPHhde0F8msTSP4zd+yT+EMw9Adx79AS57Lu+uy4E=;
+ b=QJiVqxXfBD9YlXI5duYEudwcncF9vV9Tij1GJQYwmConbvMlL7I4fdwrBaHb2VFH3p66ik
+ Z01hsccDl7YB8PBDqFU9Yrf9j9+hhQrhcxhWsxc3sn9zlpMElwuQpnZp4cZPELChdodYOR
+ fLyAbcyEkn3B0BN3EL0o+Jo/7xVbK9s=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1588145286; a=rsa-sha256; cv=none;
+ b=hZwdasvj+aDYtLBTHS+IPQ6IcT1PNGLmgwghZ85xejG5ul9SkufEecC/hoLQ7xddvd131/
+ VVoQmmpaNO3W1gwaPc7hDXu0HSTAKRoU2PNiLzjqmkBlWGToGC2bRdyLziarBM4oCN0lGF
+ fCCZWPbTFRPlS/WCWYBOVF4XwlZ7U6k=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
 Received-SPF: pass client-ip=5.135.226.135;
@@ -97,86 +97,72 @@ Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
  philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vnjQnrgPaqJL
+X-TUID: IyfljGzP9dtR
 
 On 4/27/20 8:16 PM, Edgar E. Iglesias wrote:
 > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 > 
-> Embedd the UARTs into the SoC type.
+> Embedd the ADMAs into the SoC type.
 > 
 > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-Hi Edgar,
-
-Just a small thing, I find it easier to review when you have
-
-[diff]
-    orderFile = scripts/git.orderfile
-
-in your QEMU's .git/config. This way header files come first in the patches.
-
 Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
 > ---
->  hw/arm/xlnx-versal.c         | 12 ++++++------
+>  hw/arm/xlnx-versal.c         | 14 +++++++-------
 >  include/hw/arm/xlnx-versal.h |  3 ++-
->  2 files changed, 8 insertions(+), 7 deletions(-)
+>  2 files changed, 9 insertions(+), 8 deletions(-)
 > 
 > diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index cc696e44c0..dbde03b7e6 100644
+> index e424aa789e..ebd2dc51be 100644
 > --- a/hw/arm/xlnx-versal.c
 > +++ b/hw/arm/xlnx-versal.c
-> @@ -21,7 +21,6 @@
->  #include "kvm_arm.h"
->  #include "hw/misc/unimp.h"
->  #include "hw/arm/xlnx-versal.h"
-> -#include "hw/char/pl011.h"
->  
->  #define XLNX_VERSAL_ACPU_TYPE ARM_CPU_TYPE_NAME("cortex-a72")
->  #define GEM_REVISION        0x40070106
-> @@ -144,16 +143,17 @@ static void versal_create_uarts(Versal *s, qemu_irq *pic)
+> @@ -203,18 +203,18 @@ static void versal_create_admas(Versal *s, qemu_irq *pic)
 >          DeviceState *dev;
 >          MemoryRegion *mr;
 >  
-> -        dev = qdev_create(NULL, TYPE_PL011);
-> -        s->lpd.iou.uart[i] = SYS_BUS_DEVICE(dev);
-> +        sysbus_init_child_obj(OBJECT(s), name,
-> +                              &s->lpd.iou.uart[i], sizeof(s->lpd.iou.uart[i]),
-> +                              TYPE_PL011);
-> +        dev = DEVICE(&s->lpd.iou.uart[i]);
->          qdev_prop_set_chr(dev, "chardev", serial_hd(i));
+> -        dev = qdev_create(NULL, "xlnx.zdma");
+> -        s->lpd.iou.adma[i] = SYS_BUS_DEVICE(dev);
+> -        object_property_set_int(OBJECT(s->lpd.iou.adma[i]), 128, "bus-width",
+> -                                &error_abort);
 > -        object_property_add_child(OBJECT(s), name, OBJECT(dev), &error_fatal);
+> +        sysbus_init_child_obj(OBJECT(s), name,
+> +                              &s->lpd.iou.adma[i], sizeof(s->lpd.iou.adma[i]),
+> +                              TYPE_XLNX_ZDMA);
+> +        dev = DEVICE(&s->lpd.iou.adma[i]);
+> +        object_property_set_int(OBJECT(dev), 128, "bus-width", &error_abort);
 >          qdev_init_nofail(dev);
 >  
-> -        mr = sysbus_mmio_get_region(s->lpd.iou.uart[i], 0);
+> -        mr = sysbus_mmio_get_region(s->lpd.iou.adma[i], 0);
 > +        mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
->          memory_region_add_subregion(&s->mr_ps, addrs[i], mr);
+>          memory_region_add_subregion(&s->mr_ps,
+>                                      MM_ADMA_CH0 + i * MM_ADMA_CH0_SIZE, mr);
 >  
-> -        sysbus_connect_irq(s->lpd.iou.uart[i], 0, pic[irqs[i]]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[irqs[i]]);
+> -        sysbus_connect_irq(s->lpd.iou.adma[i], 0, pic[VERSAL_ADMA_IRQ_0 + i]);
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[VERSAL_ADMA_IRQ_0 + i]);
 >          g_free(name);
 >      }
 >  }
 > diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-> index 6c0a692b2f..a3dfd064b3 100644
+> index 01da736a5b..94b7826fd4 100644
 > --- a/include/hw/arm/xlnx-versal.h
 > +++ b/include/hw/arm/xlnx-versal.h
-> @@ -15,6 +15,7 @@
->  #include "hw/sysbus.h"
+> @@ -16,6 +16,7 @@
 >  #include "hw/arm/boot.h"
 >  #include "hw/intc/arm_gicv3.h"
-> +#include "hw/char/pl011.h"
+>  #include "hw/char/pl011.h"
+> +#include "hw/dma/xlnx-zdma.h"
+>  #include "hw/net/cadence_gem.h"
 >  
 >  #define TYPE_XLNX_VERSAL "xlnx-versal"
->  #define XLNX_VERSAL(obj) OBJECT_CHECK(Versal, (obj), TYPE_XLNX_VERSAL)
-> @@ -49,7 +50,7 @@ typedef struct Versal {
->          MemoryRegion mr_ocm;
->  
+> @@ -53,7 +54,7 @@ typedef struct Versal {
 >          struct {
-> -            SysBusDevice *uart[XLNX_VERSAL_NR_UARTS];
-> +            PL011State uart[XLNX_VERSAL_NR_UARTS];
->              SysBusDevice *gem[XLNX_VERSAL_NR_GEMS];
->              SysBusDevice *adma[XLNX_VERSAL_NR_ADMAS];
+>              PL011State uart[XLNX_VERSAL_NR_UARTS];
+>              CadenceGEMState gem[XLNX_VERSAL_NR_GEMS];
+> -            SysBusDevice *adma[XLNX_VERSAL_NR_ADMAS];
+> +            XlnxZDMA adma[XLNX_VERSAL_NR_ADMAS];
 >          } iou;
+>      } lpd;
+>  
 > 

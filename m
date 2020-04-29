@@ -1,76 +1,76 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp253403lfm;
-        Wed, 29 Apr 2020 00:37:35 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJDR/hzyJGMZhn2WUfXfn9mAR2aqP04lHRL4wGbtGDjsQ19WZk8ZoLq6dvbkvTZdfU/Mxl1
-X-Received: by 2002:a37:a7cd:: with SMTP id q196mr27935618qke.160.1588145855416;
-        Wed, 29 Apr 2020 00:37:35 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp258283lfm;
+        Wed, 29 Apr 2020 00:44:21 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJt9REM5CEdp+e6Auva5JLeDronnBoSbg407b+I+I6vhSie5+bSyikjWGb6+NdZZehcn/la
+X-Received: by 2002:a05:620a:1306:: with SMTP id o6mr30426760qkj.443.1588146260881;
+        Wed, 29 Apr 2020 00:44:20 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id m1si2312791qvk.20.2020.04.29.00.37.35
+        by mx.google.com with ESMTPS id e6si15325900qtw.208.2020.04.29.00.44.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Apr 2020 00:37:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Wed, 29 Apr 2020 00:44:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=fTFgwSqe;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=ylsOsKkB;
        arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52086 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44320 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jThHi-0000Ki-MB
-	for alex.bennee@linaro.org; Wed, 29 Apr 2020 03:37:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46664)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jThOG-0001ad-3s
+	for alex.bennee@linaro.org; Wed, 29 Apr 2020 03:44:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48066)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1jTh64-0007B9-ML
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 03:25:45 -0400
+ (envelope-from <luc.michel@greensocs.com>) id 1jThJK-0003VS-KK
+ for qemu-devel@nongnu.org; Wed, 29 Apr 2020 03:39:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1jTh4R-0005bs-9F
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 03:25:32 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:57170)
+ (envelope-from <luc.michel@greensocs.com>) id 1jThJ5-0004Ki-TG
+ for qemu-devel@nongnu.org; Wed, 29 Apr 2020 03:39:14 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:58120)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1jTh4Q-0005bj-O7; Wed, 29 Apr 2020 03:23:50 -0400
+ id 1jThGN-0001yq-7h; Wed, 29 Apr 2020 03:36:11 -0400
 Received: from [172.17.10.6] (unknown [172.17.10.6])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 9AE0C96EF2;
- Wed, 29 Apr 2020 07:23:48 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id A1C2096EF2;
+ Wed, 29 Apr 2020 07:36:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1588145029;
+ s=mail; t=1588145769;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RgZxt7m47Azwf4GwDjyuYY/Lnebn+TdybSEDtuCUIfg=;
- b=fTFgwSqe+rKtbFJbLmR/pNdiQxlB8PRXQCbNH30DPrdIaqL7j21l4eMAa1qfcK8R6hsqVz
- qhRuQTBwYJtXCJnvcuNYJ+pxYJtPtNF8HfskZfwqKoW6Ll/x8XMnv0mq+EJG68WKPflj2/
- 711ZDaFZueSCkCVeDnsTsNh0ea2CuPs=
-Subject: Re: [PATCH v1 02/11] hw/arm: versal: Move misplaced comment
+ bh=TzhevfxjE6BknwcVZueUscmT1UamdlbbHVzaCvbbbdE=;
+ b=ylsOsKkBDpNYTInJ2+G6Tvmb3o+YYvM/ZCJ0jjr143R209MbMAYzxc3uzxnizAprDFUJsK
+ 3DLMUa+4AaZH/r7hHUhuRxPj+p/doU1ARFft23rqN03q6g2QBF6zkoxqFBzpqj4/P0SMfw
+ 3OMb9P/qAzow4NOatDmhZbtVXugZ3d8=
+Subject: Re: [PATCH v1 10/11] hw/arm: versal-virt: Add support for SD
 To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
 References: <20200427181649.26851-1-edgar.iglesias@gmail.com>
- <20200427181649.26851-3-edgar.iglesias@gmail.com>
+ <20200427181649.26851-11-edgar.iglesias@gmail.com>
 From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <43668463-c08d-533c-d296-5e5c1c877483@greensocs.com>
-Date: Wed, 29 Apr 2020 09:23:48 +0200
+Message-ID: <8a3fa218-f92c-5e99-701e-b6f37b532ef0@greensocs.com>
+Date: Wed, 29 Apr 2020 09:36:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200427181649.26851-3-edgar.iglesias@gmail.com>
+In-Reply-To: <20200427181649.26851-11-edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US-large
 Content-Transfer-Encoding: 7bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1588145029;
+ s=mail; t=1588145769;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RgZxt7m47Azwf4GwDjyuYY/Lnebn+TdybSEDtuCUIfg=;
- b=YHbqWQlJBnDfX8Fs6ygxa1hNozDh5+/pMYI52KB0QZU8wuA9L5F/k6fjIpMWF4f1VfJL73
- luQtvbfiXR3t5kWl9Le6JcBMWfSa602HEVqq/OdE6j8BpBHQ8DUc/2gMx1R/GKzCVoHMpo
- ioxOw4bv/u84sGcRwkDmn7Sl3KejLjs=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1588145029; a=rsa-sha256; cv=none;
- b=tQvGiAIrn3B9B9rHfjskBY7s0ZELb+VSNPwyJeaqlpz9aiOyfZhBMxI7XuVeiNsEz9MRFp
- e4juZ8T3sZ9vsm2sp05SaDMoLo6pI5AoZgoGpUHgSfD6eZ/PCv3oZBdNhEKYxUHopQ2ccr
- riO0dcGPS04yJmT6L3V0B7wUfBIQUJI=
+ bh=TzhevfxjE6BknwcVZueUscmT1UamdlbbHVzaCvbbbdE=;
+ b=Blqi+/IK6zKXrIye3xUPhdpruzMl8sel+Jr/0UgxfjhcC9e1OvxaeWsu415Q2DjOlQkUJE
+ 7uWNW7GGEwzaU6he1EyVxihS5b3/pK/LC9lzn6+m/8BCg1rRvoQP6J8hozRMlZjk30Bo72
+ aT8RXRrZs/Uf2wI0iySTeQ7YkZi0SkA=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1588145769; a=rsa-sha256; cv=none;
+ b=4HfhGo9z02s3pkWxM+kzDKbCC2xfplRv90wn6KFFyw/JoVsXJi4D8qoL5ey5HMU3yKCBcD
+ og2QizvmnTCZy+nbjcMRC3uk7Q0FCFX8/LtQ4OtMo/I0S4UpRgr79NpFliFfFhhxG5ejHe
+ 2BOnQ7bhAjZVm2WMMkEM13Q4xyp1x3M=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
 Received-SPF: pass client-ip=5.135.226.135;
@@ -78,57 +78,126 @@ Received-SPF: pass client-ip=5.135.226.135;
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/29 03:23:35
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Received-From: 5.135.226.135
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
  edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
  frasse.iglesias@gmail.com, alistair@alistair23.me,
  richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
  philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LPZ/YoFTGh7o
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: k3Iju8Z/neqa
 
 On 4/27/20 8:16 PM, Edgar E. Iglesias wrote:
 > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 > 
-> Move misplaced comment.
+> Add support for SD.
 > 
 > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
 > ---
->  hw/arm/xlnx-versal.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/arm/xlnx-versal-virt.c | 46 +++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 46 insertions(+)
 > 
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index c73b2fe755..cc696e44c0 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -36,7 +36,6 @@ static void versal_create_apu_cpus(Versal *s)
+> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
+> index d7be1ad494..0afee48672 100644
+> --- a/hw/arm/xlnx-versal-virt.c
+> +++ b/hw/arm/xlnx-versal-virt.c
+> @@ -20,6 +20,7 @@
+>  #include "hw/arm/sysbus-fdt.h"
+>  #include "hw/arm/fdt.h"
+>  #include "cpu.h"
+> +#include "hw/qdev-properties.h"
+>  #include "hw/arm/xlnx-versal.h"
 >  
->          obj = object_new(XLNX_VERSAL_ACPU_TYPE);
->          if (!obj) {
-> -            /* Secondary CPUs start in PSCI powered-down state */
->              error_report("Unable to create apu.cpu[%d] of type %s",
->                           i, XLNX_VERSAL_ACPU_TYPE);
->              exit(EXIT_FAILURE);
-> @@ -49,6 +48,7 @@ static void versal_create_apu_cpus(Versal *s)
->          object_property_set_int(obj, s->cfg.psci_conduit,
->                                  "psci-conduit", &error_abort);
->          if (i) {
-> +            /* Secondary CPUs start in PSCI powered-down state */
->              object_property_set_bool(obj, true,
->                                       "start-powered-off", &error_abort);
->          }
+>  #define TYPE_XLNX_VERSAL_VIRT_MACHINE MACHINE_TYPE_NAME("xlnx-versal-virt")
+> @@ -256,6 +257,32 @@ static void fdt_add_zdma_nodes(VersalVirt *s)
+>      }
+>  }
+>  
+> +static void fdt_add_sd_nodes(VersalVirt *s)
+> +{
+> +    const char clocknames[] = "clk_xin\0clk_ahb";
+> +    const char compat[] = "arasan,sdhci-8.9a";
+> +    int i;
+> +
+> +    for (i = ARRAY_SIZE(s->soc.pmc.iou.sd) - 1; i >= 0; i--) {
+> +        uint64_t addr = MM_PMC_SD0 + MM_PMC_SD0_SIZE * i;
+> +        char *name = g_strdup_printf("/sdhci@%" PRIx64, addr);
+> +
+> +        qemu_fdt_add_subnode(s->fdt, name);
+> +
+> +        qemu_fdt_setprop_cells(s->fdt, name, "clocks",
+> +                               s->phandle.clk_25Mhz, s->phandle.clk_25Mhz);
+> +        qemu_fdt_setprop(s->fdt, name, "clock-names",
+> +                         clocknames, sizeof(clocknames));
+> +        qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
+> +                               GIC_FDT_IRQ_TYPE_SPI, VERSAL_SD0_IRQ_0 + i * 2,
+> +                               GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> +        qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
+> +                                     2, addr, 2, MM_PMC_SD0_SIZE);
+> +        qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
+> +        g_free(name);
+> +    }
+> +}
+> +
+>  static void fdt_nop_memory_nodes(void *fdt, Error **errp)
+>  {
+>      Error *err = NULL;
+> @@ -411,10 +438,23 @@ static void create_virtio_regions(VersalVirt *s)
+>      }
+>  }
+>  
+> +static void sd_plugin_card(SDHCIState *sd, DriveInfo *di)
+> +{
+> +    BlockBackend *blk = di ? blk_by_legacy_dinfo(di) : NULL;
+> +    DeviceState *card;
+> +
+> +    card = qdev_create(qdev_get_child_bus(DEVICE(sd), "sd-bus"), TYPE_SD_CARD);
+> +    object_property_add_child(OBJECT(sd), "card[*]", OBJECT(card),
+> +                              &error_fatal);
+> +    qdev_prop_set_drive(card, "drive", blk, &error_fatal);
+> +    object_property_set_bool(OBJECT(card), true, "realized", &error_fatal);
+> +}
+> +
+>  static void versal_virt_init(MachineState *machine)
+>  {
+>      VersalVirt *s = XLNX_VERSAL_VIRT_MACHINE(machine);
+>      int psci_conduit = QEMU_PSCI_CONDUIT_DISABLED;
+> +    int i;
+>  
+>      /*
+>       * If the user provides an Operating System to be loaded, we expect them
+> @@ -455,6 +495,7 @@ static void versal_virt_init(MachineState *machine)
+>      fdt_add_gic_nodes(s);
+>      fdt_add_timer_nodes(s);
+>      fdt_add_zdma_nodes(s);
+> +    fdt_add_sd_nodes(s);
+>      fdt_add_cpu_nodes(s, psci_conduit);
+>      fdt_add_clk_node(s, "/clk125", 125000000, s->phandle.clk_125Mhz);
+>      fdt_add_clk_node(s, "/clk25", 25000000, s->phandle.clk_25Mhz);
+> @@ -464,6 +505,11 @@ static void versal_virt_init(MachineState *machine)
+>      memory_region_add_subregion_overlap(get_system_memory(),
+>                                          0, &s->soc.fpd.apu.mr, 0);
+>  
+> +    /* Plugin SD cards.  */
+> +    for (i = 0; i < ARRAY_SIZE(s->soc.pmc.iou.sd); i++) {
+> +        sd_plugin_card(&s->soc.pmc.iou.sd[i], drive_get_next(IF_SD));
+> +    }
+> +
+>      s->binfo.ram_size = machine->ram_size;
+>      s->binfo.loader_start = 0x0;
+>      s->binfo.get_dtb = versal_virt_get_dtb;
 > 

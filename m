@@ -1,173 +1,163 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp5966554lfm;
-        Tue, 28 Apr 2020 13:21:26 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK4xqELX4iRbgH7PttvFusFXLJZKbceo83exFNt3OyuY3EGMCns/4GL4Y/jVkT2YHjROl38
-X-Received: by 2002:a05:6214:16c8:: with SMTP id d8mr29228088qvz.93.1588105285897;
-        Tue, 28 Apr 2020 13:21:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588105285; cv=none;
+Received: by 2002:a05:6214:190c:0:0:0:0 with SMTP id er12csp1700684qvb;
+        Tue, 28 Apr 2020 23:04:46 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLqn2BH3pguM4AJwURlPN7U8+A4qXdhb9ndcjSvoZUufXH0ybExjN1hZZva3JOTjcuuY/ic
+X-Received: by 2002:a37:387:: with SMTP id 129mr31300434qkd.147.1588140286699;
+        Tue, 28 Apr 2020 23:04:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588140286; cv=none;
         d=google.com; s=arc-20160816;
-        b=V9PBZFwvd1078rYtPS56MwNzUoVd9lITtSRWfWn6G1QeQT1M3rPE2vyDNgp+8+VnCl
-         aWJkekvFCHAjvGIzQG3BBRLkSf+nIWe+5SUGINQRle/Ru7jA83uSoDt5Jwu3omjJJxbj
-         iRpCCsV+uUZ4yDFIFUmKOt/oQHAlMtjXf3vp4RnyBe6cZ6sWElvwzaAI5ZEVacN68RkB
-         kkIhsk0EJ/f5Ub+VH4flxHCwg097mAByQf9JAe2o5aA9Vi+a61ebzoJRGDzIaUjMNrOz
-         u0+o4HBGxlQEhDKWNTx7CbTZ7jbk0J1Sy2CA5oDAYMCHo9TlIprNKyUipts7ECaJRM3d
-         P6ow==
+        b=ijHONnh8uBI0RRKjowcHF/aCcPcq30/nD/2NHktgLzbSidSqa2rKKLS2Fo30X5gUYM
+         50mHSKXrETyKvCn7ehDeORYGXTr1Y+1A8oSDuFjAsNPNLBxou+rENxweYfsBMJVjdUyH
+         W8B+IJFNvBS9vJg8Wj7nkR7oGAhogACdXkgcNoc1ENAa6PRXuUCDti1dr6BlxtQDtE6J
+         WlyJYVAuj35xRUkNbiqvZohughkNQz9DynE37HknrpfOWM+H+qZDhlsteSJUo/9gUhTT
+         YLchWqTEPbBnVNrQD2mMGFeGLO5Y6BT3KbkU5JeJXLz+EtG9cBryQZY+SapTYarom8Jx
+         1Dvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=musTWB0fBfDpFwJiGy72KzWJpGdTvV6OMTfO7kH5qVs=;
-        b=G107E4wBfb62CDM8cubLPfyOvS4f7LKXEWaTdcQ4j6MzfjlF7xh6j2DXH3rY4mHLH+
-         5vjgpb/sePc5aS35qi84r+mysOQ86Lxp9y4A8wyegS8w5Y+oYh/7abTunVsc6YRz5cEQ
-         b3fPO9fK5GzX8HbzMYqtE6bNYOSuieRuJ1MgWF3iRwnrG8LEWIufTaGlF/B2fTNkxbAt
-         nvTVp2ciTE0j1TFhKgOupOkDjaLQcJ4esSv27/Jpe80NCAw3UCWH364+KMu0zJqYU7eW
-         2UPhnteEkGsbEjX7QSACVz4Fzjs7GuitBONek1HzonQmDPSp9A2NDRRJQJH4OcEas0yp
-         PUhg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=P8LYLa4KmQKZn2Q6Gc2pl5AKUX38QDno+ks/+CM7uAs=;
+        b=me9+s+3hUVwhUjiLJht8yduyYAyyJxO+P3xMwmmeJFlGiwQ3Yv9tKhZl2YQKWaqRLe
+         0MEbR30EmAmHCmPTdnKCuRx5iw2+z7oPUsveGAyJocSxp4khptVgYpjwRmpCBaqY3M2q
+         bdMpqsc+gjVic3HQDAc6NgKSXh8ItRT3lZ/tTUzGm3+BwgI0qPUzoPc9rGR+4rzLSsM0
+         CO1MoOTVDB4kF/M0PyK9sYJF0db/zao+vj3IkmTYc5ufTltzsUHZO8TKbXuRCFK3qKhL
+         hOHcuZ1sD7Qe3nmRlfdy3r84gor8hEXVJWfg5RQXTVGZHryi/iJd3PTEr3KNtF2v88mx
+         pZ7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p8si11327296qvq.35.2020.04.28.13.21.25
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LvkT04j3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
+        by mx.google.com with ESMTPS id a20si4070183qvb.206.2020.04.28.23.04.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Apr 2020 13:21:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Apr 2020 23:04:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:49452 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LvkT04j3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39106 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jTWjN-0004uY-A0
-	for alex.bennee@linaro.org; Tue, 28 Apr 2020 16:21:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37804)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jTfpu-0001vv-7u
+	for alex.bennee@linaro.org; Wed, 29 Apr 2020 02:04:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38808)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <stefanb@linux.ibm.com>) id 1jTWem-0007eI-JJ
- for qemu-arm@nongnu.org; Tue, 28 Apr 2020 16:21:16 -0400
+ (envelope-from <armbru@redhat.com>) id 1jTfp3-0001vW-HR
+ for qemu-devel@nongnu.org; Wed, 29 Apr 2020 02:03:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <stefanb@linux.ibm.com>) id 1jTWcU-0005tz-03
- for qemu-arm@nongnu.org; Tue, 28 Apr 2020 16:16:40 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:63718
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jTWcT-0005tV-H0; Tue, 28 Apr 2020 16:14:17 -0400
-Received: from pps.filterd (m0098416.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 03SK1hIh019512; Tue, 28 Apr 2020 16:14:16 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 30pjxvagnf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 28 Apr 2020 16:14:16 -0400
-Received: from m0098416.ppops.net (m0098416.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 03SK1qvt020549;
- Tue, 28 Apr 2020 16:14:15 -0400
-Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
- [169.62.189.10])
- by mx0b-001b2d01.pphosted.com with ESMTP id 30pjxvagn2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 28 Apr 2020 16:14:15 -0400
-Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
- by ppma02dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id 03SJxmYx009755;
- Tue, 28 Apr 2020 20:14:14 GMT
-Received: from b01cxnp22034.gho.pok.ibm.com (b01cxnp22034.gho.pok.ibm.com
- [9.57.198.24]) by ppma02dal.us.ibm.com with ESMTP id 30mcu6png7-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 28 Apr 2020 20:14:14 +0000
-Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
- [9.57.199.109])
- by b01cxnp22034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 03SKEEGU40239392
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 28 Apr 2020 20:14:14 GMT
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 051E1112065;
- Tue, 28 Apr 2020 20:14:14 +0000 (GMT)
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D4E2E112061;
- Tue, 28 Apr 2020 20:14:13 +0000 (GMT)
-Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
- by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTP;
- Tue, 28 Apr 2020 20:14:13 +0000 (GMT)
-Subject: Re: [PATCH 2/2] hw/arm/virt: Remove the compat forcing tpm-tis-device
- PPI to off
-To: Cornelia Huck <cohuck@redhat.com>, Eric Auger <eric.auger@redhat.com>
-References: <20200427143145.16251-1-eric.auger@redhat.com>
- <20200427143145.16251-3-eric.auger@redhat.com>
- <20200428123639.5cd403c6.cohuck@redhat.com>
-From: Stefan Berger <stefanb@linux.ibm.com>
-Message-ID: <d859295c-4cbe-ed65-25db-69a3ae92ede6@linux.ibm.com>
-Date: Tue, 28 Apr 2020 16:14:13 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (envelope-from <armbru@redhat.com>) id 1jTfp1-0005UJ-R4
+ for qemu-devel@nongnu.org; Wed, 29 Apr 2020 02:03:53 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:43765
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jTfp1-0005Ts-EN
+ for qemu-devel@nongnu.org; Wed, 29 Apr 2020 02:03:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1588140230;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=P8LYLa4KmQKZn2Q6Gc2pl5AKUX38QDno+ks/+CM7uAs=;
+ b=LvkT04j3zjrGn5ffC3EqYdGdsRAHglwFh8GVZv8XXtbL29o5jO2GXHnRN4NIGl3dUKK7Kg
+ EG4voujyT1iWz+h4dQd5gOUZ/pnOudpXNU4tAI1V7cjMrt83Ngvt3q6Tmg3pZyOebqH4zZ
+ 0AMSjIlz0+AjHAMdZXCtMYlnhyr8bMw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-403-fmpifmRiOLy0DDikxt1m1Q-1; Wed, 29 Apr 2020 02:03:48 -0400
+X-MC-Unique: fmpifmRiOLy0DDikxt1m1Q-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D755D1005510;
+ Wed, 29 Apr 2020 06:03:44 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-113-6.ams2.redhat.com [10.36.113.6])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 127335D9E5;
+ Wed, 29 Apr 2020 06:03:36 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 74C2011358BC; Wed, 29 Apr 2020 08:03:35 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH-for-5.1 v3 01/24] various: Remove suspicious '\' character
+ outside of #define in C code
+References: <20200412223619.11284-1-f4bug@amsat.org>
+ <20200412223619.11284-2-f4bug@amsat.org>
+Date: Wed, 29 Apr 2020 08:03:35 +0200
+In-Reply-To: <20200412223619.11284-2-f4bug@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 13 Apr 2020 00:35:56
+ +0200")
+Message-ID: <87v9livnew.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20200428123639.5cd403c6.cohuck@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
- definitions=2020-04-28_12:2020-04-28,
- 2020-04-28 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0
- priorityscore=1501 phishscore=0 adultscore=0 malwarescore=0
- impostorscore=0 mlxlogscore=999 bulkscore=0 lowpriorityscore=0 mlxscore=0
- suspectscore=0 clxscore=1015 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2003020000 definitions=main-2004280153
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/28 16:13:07
-X-ACL-Warn: Detected OS   = Linux 3.x [generic]
-X-Received-From: 148.163.158.5
-X-BeenThere: qemu-arm@nongnu.org
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/29 01:28:11
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r9lYb9BpMb09
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Max Reitz <mreitz@redhat.com>,
+ qemu-block@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Joel Stanley <joel@jms.id.au>,
+ =?utf-8?Q?Marc-Andr?= =?utf-8?Q?=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Xie Changlong <xiechanglong.d@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, qemu-ppc@nongnu.org,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ qemu-riscv@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ Wen Congyang <wencongyang2@huawei.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tLqx526YCC4c
 
-On 4/28/20 6:36 AM, Cornelia Huck wrote:
-> On Mon, 27 Apr 2020 16:31:45 +0200
-> Eric Auger <eric.auger@redhat.com> wrote:
->
->> Now that the tpm-tis-device device PPI property is off by default,
->> we can remove the compat used for the same goal.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>   hw/arm/virt.c | 5 -----
->>   1 file changed, 5 deletions(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 7dc96abf72..2a68306f28 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -2311,11 +2311,6 @@ type_init(machvirt_machine_init);
->>   
->>   static void virt_machine_5_0_options(MachineClass *mc)
->>   {
->> -    static GlobalProperty compat[] = {
->> -        { TYPE_TPM_TIS_SYSBUS, "ppi", "false" },
->> -    };
->> -
->> -    compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
->>   }
->>   DEFINE_VIRT_MACHINE_AS_LATEST(5, 0)
->>   
-> Reviewed-by: Cornelia Huck <cohuck@redhat.com>
->
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
+> Fixes the following coccinelle warnings:
+>
+>   $ spatch --sp-file --verbose-parsing  ... \
+>       scripts/coccinelle/remove_local_err.cocci
+>   ...
+>   SUSPICIOUS: a \ character appears outside of a #define at ./target/ppc/=
+translate_init.inc.c:5213
+[...]
+>   SUSPICIOUS: a \ character appears outside of a #define at ./block/repli=
+cation.c:173
+>
+> Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+I'm queuing this patch just to get it out of the way.  Thanks!
 

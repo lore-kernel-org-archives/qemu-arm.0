@@ -1,154 +1,197 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp281139lfm;
-        Wed, 29 Apr 2020 01:13:33 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLGPeaQakLJdjUiPShwSeRq4m4qchL3PQeAGx91q/VytL7f+y7W7qCx/8/T+a1gdiNlP5bR
-X-Received: by 2002:a0c:910c:: with SMTP id q12mr20514228qvq.239.1588148013449;
-        Wed, 29 Apr 2020 01:13:33 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp476952lfm;
+        Wed, 29 Apr 2020 04:54:41 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKKHFgOJThU0EhzVu/6QXZrsIcJeKo7KPyuBfJZPkiSPbLIqe52fMhYe5PV3B5WEr1bvaoz
+X-Received: by 2002:ac8:1ad1:: with SMTP id h17mr34322381qtk.9.1588161281152;
+        Wed, 29 Apr 2020 04:54:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588161281; cv=none;
+        d=google.com; s=arc-20160816;
+        b=zHrDQcR+HRBi50L9uVlcLpWhaz/U0qN2BkG7tujmw0kC5nnd/Snh/wrm5cb1WNtNzg
+         8vEoE4NMOpOP707EVbsOYxhOZlqNUv1Eyyw2Ig1/lh4X5ApuYeWLDfg+xtmmaz/ILLsx
+         imf//BcJbSV176oG2vGFuBkITkLlzHJqhOEplOZ26pDNrZeR+/zjY5HDD5GKbnxR6c0u
+         twkgxxCXmsO/akUIUNhnL2k3fruTy53JdLYlVKq2ndGoUnlAEDCVZbW0/zUduQ+harXU
+         GuGrwq325OOPXDmugEwBBGgJuNG/3fUtEERp6JZc08cNxn0gW/z2tww3Cuh3nDPlVflo
+         eQSQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=wgGdw87WsEetk5OcDdcjSZYjmWLEGzVXMGhGpTkWO4s=;
+        b=SCI67KnLRYPseXdiPQUjy65oc9i+l0H7N81thXDymXH38BK7UcqNS2ZVQijw9WlTuF
+         xLdBZHkqi/mCnUnDqYxv59SAwH/I8KKvxSwXuzmEdm28/j5eKw4Sa52BDtWF/EAUmw+t
+         fpEG2GZxAV/IYhI53dPXbtxD8Jzh0aF39QVzxosHJBMh7ype3xEUtClccpHVLNnSitfS
+         FquXWz/ArUBD4TL0ElLDnyVqmctVZDE58GfxoFBWjRupu2PPGplqLnOaXTRQP8EZzsjo
+         Jw2FLiMHBoD33x7aACyA8vOrhpA0K9LPV/VrIP6LCi1ra2lp+dPKhrtFqP4HkBGm4tGN
+         Ke5w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id bm11si12729539qvb.119.2020.04.29.01.13.33
+        by mx.google.com with ESMTPS id 126si12313003qkn.3.2020.04.29.04.54.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Apr 2020 01:13:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Wed, 29 Apr 2020 04:54:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=GEmdCS2T;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37294 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:50438 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jThqW-0002rA-Pg
-	for alex.bennee@linaro.org; Wed, 29 Apr 2020 04:13:32 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:51842)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jTlIW-0000xO-Iq
+	for alex.bennee@linaro.org; Wed, 29 Apr 2020 07:54:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51002)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1jThlM-00054F-C5
- for qemu-devel@nongnu.org; Wed, 29 Apr 2020 04:09:39 -0400
+ (envelope-from <stefanb@linux.ibm.com>) id 1jTlHQ-0007SH-4q
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 07:53:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1jThiJ-0003XK-DT
- for qemu-devel@nongnu.org; Wed, 29 Apr 2020 04:08:12 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:59162)
+ (envelope-from <stefanb@linux.ibm.com>) id 1jTlHO-00025z-Ue
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 07:53:31 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:16816
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1jThbX-0001H1-56; Wed, 29 Apr 2020 03:58:03 -0400
-Received: from [172.17.10.6] (unknown [172.17.10.6])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 3220196EF0;
- Wed, 29 Apr 2020 07:57:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1588147080;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eSrXzddqDgKI0K/JpB3wIhCVtkikOq/WAV+67S0rIWI=;
- b=GEmdCS2TNOsnkIO2JC8jaPgdarqalux+mibdJ/j3qk9NKI/jo5nGpdiOeNV+45a5L7bzT9
- X4ElwCf0QOUFqX8EonH5tNC9akMGZpEN0KLlQN1k7MRg/KT7EcHIRZsswyfi1cdfB5jBPC
- fvBN3q+DjKkxV7h5y4jGDLJpuewB0iA=
-Subject: Re: [PATCH v1 11/11] hw/arm: versal-virt: Add support for the RTC
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
-References: <20200427181649.26851-1-edgar.iglesias@gmail.com>
- <20200427181649.26851-12-edgar.iglesias@gmail.com>
-From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <83a60c58-c549-0a88-0ad8-66dbaea69d33@greensocs.com>
-Date: Wed, 29 Apr 2020 09:57:58 +0200
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1jTlHO-00024e-FP; Wed, 29 Apr 2020 07:53:30 -0400
+Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 03TBVGKg168157; Wed, 29 Apr 2020 07:53:26 -0400
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 30q80pj2g7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 29 Apr 2020 07:53:26 -0400
+Received: from m0098421.ppops.net (m0098421.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 03TBdMDu189276;
+ Wed, 29 Apr 2020 07:53:26 -0400
+Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.10])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 30q80pj2fy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 29 Apr 2020 07:53:25 -0400
+Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
+ by ppma02dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id 03TBj2qW011051;
+ Wed, 29 Apr 2020 11:53:25 GMT
+Received: from b01cxnp22033.gho.pok.ibm.com (b01cxnp22033.gho.pok.ibm.com
+ [9.57.198.23]) by ppma02dal.us.ibm.com with ESMTP id 30mcu6wjh6-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 29 Apr 2020 11:53:25 +0000
+Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
+ [9.57.199.110])
+ by b01cxnp22033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 03TBrOKj19071432
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 29 Apr 2020 11:53:24 GMT
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 842FEAE05F;
+ Wed, 29 Apr 2020 11:53:24 +0000 (GMT)
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6AA08AE05C;
+ Wed, 29 Apr 2020 11:53:24 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+ by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
+ Wed, 29 Apr 2020 11:53:24 +0000 (GMT)
+Subject: Re: [PATCH 0/2] virt: Set tpm-tis-device ppi property to off by
+ default
+To: Cornelia Huck <cohuck@redhat.com>
+References: <20200427143145.16251-1-eric.auger@redhat.com>
+ <20200428123826.1ec68e6c.cohuck@redhat.com>
+ <0257ca1e-2323-e437-4e19-d8a4dfa6d792@linux.ibm.com>
+ <20200429081129.18e9760a.cohuck@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Message-ID: <b109541b-36cf-03b3-eac7-910f1caafa55@linux.ibm.com>
+Date: Wed, 29 Apr 2020 07:53:24 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200427181649.26851-12-edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
-Content-Transfer-Encoding: 7bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1588147080;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eSrXzddqDgKI0K/JpB3wIhCVtkikOq/WAV+67S0rIWI=;
- b=6uSXSEI7UC8RcGJRSi1DRJ1uNdg8XUdAlCeSdd/3GGP3KxF3NDOjatRQ8FFTFqGjtQHWEN
- DOKg29ExOeie6ilsCRonR66LxGSKtFFIkeedBc5C+guYYQ08cOdh+m67KeGuyvRFldDoME
- ISrXElW/U9AR+9srKxIjOH4ejdi5OkA=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1588147080; a=rsa-sha256; cv=none;
- b=5rT5HNTUhO6VQ2WmyYOjDm+w5njrsLPgz8f5AuuiIwLHgtBMqbBUI8CV/O5rgQN0ndbwGS
- 3tIi4N/oQILkfWkWvY306mNpP5Gb9UAANXkTiBUia6vZOSK0lw+djCcsy8l1Y8YhBhZScP
- zuSSaxUqHWLjNd22lYPrKMSg7Vbx7nk=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
-Received-SPF: pass client-ip=5.135.226.135;
- envelope-from=luc.michel@greensocs.com; helo=beetle.greensocs.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/29 03:23:35
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Received-From: 5.135.226.135
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20200429081129.18e9760a.cohuck@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
+ definitions=2020-04-29_04:2020-04-29,
+ 2020-04-29 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0
+ priorityscore=1501 mlxscore=0 clxscore=1015 impostorscore=0 phishscore=0
+ bulkscore=0 spamscore=0 lowpriorityscore=0 adultscore=0 mlxlogscore=999
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004290093
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/29 07:53:27
+X-ACL-Warn: Detected OS   = Linux 3.x [generic]
+X-Received-From: 148.163.158.5
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
- edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me,
- richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
- philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mV97UnL3Gt8Y
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-devel@nongnu.org,
+ Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ipkmadXtgJE4
 
-On 4/27/20 8:16 PM, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-> 
-> Add support for the RTC.
-> 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+On 4/29/20 2:11 AM, Cornelia Huck wrote:
+> On Tue, 28 Apr 2020 16:13:05 -0400
+> Stefan Berger <stefanb@linux.ibm.com> wrote:
+>
+>> On 4/28/20 6:38 AM, Cornelia Huck wrote:
+>>> On Mon, 27 Apr 2020 16:31:43 +0200
+>>> Eric Auger <eric.auger@redhat.com> wrote:
+>>>   
+>>>> Instead of using a compat in the mach-virt machine to force
+>>>> PPI off for all virt machines (PPI not supported by the
+>>>> tpm-tis-device device), let's simply change the default value
+>>>> in the sysbus device.
+>>>>
+>>>> Best Regards
+>>>>
+>>>> Eric
+>>>>
+>>>> Eric Auger (2):
+>>>>     tpm: tpm-tis-device: set PPI to false by default
+>>>>     hw/arm/virt: Remove the compat forcing tpm-tis-device PPI to off
+>>>>
+>>>>    hw/arm/virt.c           | 5 -----
+>>>>    hw/tpm/tpm_tis_sysbus.c | 2 +-
+>>>>    2 files changed, 1 insertion(+), 6 deletions(-)
+>>>>   
+>>> I think we can apply the compat machines patch on top of these two
+>>> patches.
+>>>
+>>> Q: Who will queue this and the machine types patch? It feels a bit
+>>> weird taking arm patches through the s390 tree :)
+>>>   
+>> I can queue them and would send the PR soon. I am also fine with someone
+>> else doing it.
+> Would be great if you could queue these together with
+> https://patchew.org/QEMU/20200424090314.544-1-cohuck@redhat.com/
+> (hopefully should still apply cleanly, let me know if a respin is
+> needed).
+>
+It's probably better to respin:
 
-Reviewed-by: Luc Michel <luc.michel@greensocs.com>
+ > patches apply id:20200424090314.544-1-cohuck@redhat.com
+Applying: hw: add compat machines for 5.1
+Using index info to reconstruct a base tree...
+M    hw/arm/virt.c
+Falling back to patching base and 3-way merge...
+Auto-merging hw/arm/virt.c
+CONFLICT (content): Merge conflict in hw/arm/virt.c
+error: Failed to merge in the changes.
+hint: Use 'git am --show-current-patch' to see the failed patch
+Patch failed at 0001 hw: add compat machines for 5.1
+When you have resolved this problem, run "git am --continue".
+If you prefer to skip this patch, run "git am --skip" instead.
+To restore the original branch and stop patching, run "git am --abort".
 
-> ---
->  hw/arm/xlnx-versal-virt.c | 22 ++++++++++++++++++++++
->  1 file changed, 22 insertions(+)
-> 
-> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
-> index 0afee48672..7e749e1926 100644
-> --- a/hw/arm/xlnx-versal-virt.c
-> +++ b/hw/arm/xlnx-versal-virt.c
-> @@ -283,6 +283,27 @@ static void fdt_add_sd_nodes(VersalVirt *s)
->      }
->  }
->  
-> +static void fdt_add_rtc_node(VersalVirt *s)
-> +{
-> +    const char compat[] = "xlnx,zynqmp-rtc";
-> +    const char interrupt_names[] = "alarm\0sec";
-> +    char *name = g_strdup_printf("/rtc@%x", MM_PMC_RTC);
-> +
-> +    qemu_fdt_add_subnode(s->fdt, name);
-> +
-> +    qemu_fdt_setprop_cells(s->fdt, name, "interrupts",
-> +                           GIC_FDT_IRQ_TYPE_SPI, VERSAL_RTC_ALARM_IRQ,
-> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI,
-> +                           GIC_FDT_IRQ_TYPE_SPI, VERSAL_RTC_SECONDS_IRQ,
-> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-> +    qemu_fdt_setprop(s->fdt, name, "interrupt-names",
-> +                     interrupt_names, sizeof(interrupt_names));
-> +    qemu_fdt_setprop_sized_cells(s->fdt, name, "reg",
-> +                                 2, MM_PMC_RTC, 2, MM_PMC_RTC_SIZE);
-> +    qemu_fdt_setprop(s->fdt, name, "compatible", compat, sizeof(compat));
-> +    g_free(name);
-> +}
-> +
->  static void fdt_nop_memory_nodes(void *fdt, Error **errp)
->  {
->      Error *err = NULL;
-> @@ -496,6 +517,7 @@ static void versal_virt_init(MachineState *machine)
->      fdt_add_timer_nodes(s);
->      fdt_add_zdma_nodes(s);
->      fdt_add_sd_nodes(s);
-> +    fdt_add_rtc_node(s);
->      fdt_add_cpu_nodes(s, psci_conduit);
->      fdt_add_clk_node(s, "/clk125", 125000000, s->phandle.clk_125Mhz);
->      fdt_add_clk_node(s, "/clk25", 25000000, s->phandle.clk_25Mhz);
-> 
+

@@ -1,76 +1,76 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp248486lfm;
-        Wed, 29 Apr 2020 00:31:23 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKPSWWOetMAhVXrWi/VYN9Zf4fJW6mF/lb8dge9ABHBYUSXspr6eVjK4Z6g2xnIYxtXtvKI
-X-Received: by 2002:ac8:22ad:: with SMTP id f42mr32178677qta.292.1588145483747;
-        Wed, 29 Apr 2020 00:31:23 -0700 (PDT)
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp249245lfm;
+        Wed, 29 Apr 2020 00:32:13 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJfImf6Kw2QU3BT/av3xf8H7mrdYlbD3M20OxJMDBOwHSdUmAECy9JpZQfM+oS05jo1P39l
+X-Received: by 2002:a37:4e0a:: with SMTP id c10mr4916634qkb.242.1588145533435;
+        Wed, 29 Apr 2020 00:32:13 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id 185si12084429qke.355.2020.04.29.00.31.23
+        by mx.google.com with ESMTPS id 72si12444682qke.55.2020.04.29.00.32.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Apr 2020 00:31:23 -0700 (PDT)
+        Wed, 29 Apr 2020 00:32:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=hGNVY5Wf;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=tYTlxTHi;
        arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58422 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60706 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jThBi-0007tq-U3
-	for alex.bennee@linaro.org; Wed, 29 Apr 2020 03:31:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46966)
+	id 1jThCW-0000TP-Ln
+	for alex.bennee@linaro.org; Wed, 29 Apr 2020 03:32:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47020)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1jTh8R-0003NM-D0
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 03:27:59 -0400
+ (envelope-from <luc.michel@greensocs.com>) id 1jTh8l-0003q0-I9
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 03:28:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1jTh8Q-00018z-Ni
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 03:27:59 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:57522)
+ (envelope-from <luc.michel@greensocs.com>) id 1jTh8k-0001aH-Dv
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 03:28:19 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:57580)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1jTh8Q-00018p-4s; Wed, 29 Apr 2020 03:27:58 -0400
+ id 1jTh8j-0001TZ-S2; Wed, 29 Apr 2020 03:28:18 -0400
 Received: from [172.17.10.6] (unknown [172.17.10.6])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 00D7796EF0;
- Wed, 29 Apr 2020 07:27:55 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id CC6A996EF0;
+ Wed, 29 Apr 2020 07:28:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1588145276;
+ s=mail; t=1588145296;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=tcaL1irC3UlzPATCOvhdRskAtxHglkpqk3lFPisDTEQ=;
- b=hGNVY5WfAWkPlPOqDDlwUptmhqu3CYxNuCEZF2asm80Qn+yciZLGNlM9olu+92poTEVx7c
- EPNW30kWCFe5z+p8FfBxMepXFkSh0vQ7f+0suT9zFM3S9l1GF+JfEFfkE2TV/rqzTICIvz
- G0acS9QQSmgAX0qWfMD07n+FJXQC4ns=
-Subject: Re: [PATCH v1 05/11] hw/arm: versal: Embedd the GEMs into the SoC type
+ bh=cmGDo8BRETGZBlkt2JiIXD8QKpYsSIx2sNRNaCHh0Vg=;
+ b=tYTlxTHiDsgfPhsKhhSta3a5l/HW5ZQuM5y35yVbzLYXrCrrY8zUfHQoV2qEuyEC6ykkXH
+ pRGCHTXXrdGU4389sLSEGGyfd+FAT1ULUFcNqRhtp00y1dO1DOi2pJLpxvMVdi7MDJ8NsR
+ w5eJazblQsw0nT9R2ODQshqicR0+jso=
+Subject: Re: [PATCH v1 07/11] hw/arm: versal: Embedd the APUs into the SoC type
 To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
 References: <20200427181649.26851-1-edgar.iglesias@gmail.com>
- <20200427181649.26851-6-edgar.iglesias@gmail.com>
+ <20200427181649.26851-8-edgar.iglesias@gmail.com>
 From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <965721ca-a327-0a5d-b962-2729e245e1a2@greensocs.com>
-Date: Wed, 29 Apr 2020 09:27:55 +0200
+Message-ID: <bf2493aa-853d-6b2b-efaa-6b8084a71270@greensocs.com>
+Date: Wed, 29 Apr 2020 09:28:15 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200427181649.26851-6-edgar.iglesias@gmail.com>
+In-Reply-To: <20200427181649.26851-8-edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US-large
 Content-Transfer-Encoding: 7bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1588145276;
+ s=mail; t=1588145296;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=tcaL1irC3UlzPATCOvhdRskAtxHglkpqk3lFPisDTEQ=;
- b=4Vcr4QbCzRLsvJATcLiiKTljjt6rasrcvG7PLBrIR+v8Hku+GB0LoEiM2cDyIEBqAO5kYB
- qnQaJiEdydQ7smWDvcfb2RmGWc3DHfinUi47UzEGMJ4+xnkqamQzinqrcgeUB8t0rqHyz8
- YXuVHBrFUlkv4FOFkLzDHElm1eIzx5c=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1588145276; a=rsa-sha256; cv=none;
- b=mAr2Ddlwn83BGA88cWP/QhzSlDSzWe0+3RFntJQXhNga7Nq+ORiwbmfWrxSVNd5dJy9WfY
- MAwmckcq1OKBSPFnT42i/8zJPQuDYxG7yuI1qAAzlvPizt++LxtDs+xMjpguLBIgdW/GOs
- ZswPFOTiqba1Yt33aIx+ZCN0JmzkLnw=
+ bh=cmGDo8BRETGZBlkt2JiIXD8QKpYsSIx2sNRNaCHh0Vg=;
+ b=y6eLxXDl4A/HHELAZV2BKWw7tq6W55yGgmBuJxOCRwe+xz59wiT85laEnbqe3CbXj4mLR+
+ CvynaQZXEN6WCbEc8sOwZj6BFk4k6mqObQLScGiFmuq9t0sxQfbUUkJcXO4xPCVPB564hv
+ FMHR5UJpEO4uSO2XDwNGaqaVAIQUTFU=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1588145296; a=rsa-sha256; cv=none;
+ b=G5VVo4St3h4Tp+JhALwpozYaWovt8bc/Ge0SI1x0tRHLKPoYepG5Fu2v6IUhKqsG0j4XGg
+ pIQz0wCfI2bHJnRoDKvol1aOmB5t5qWmbT+ReZIuGFEJWrThzCWudVwoJ7fgL+Q1dEkb+F
+ p3UKkzBHQys0//VLrruEkSvIUMOyGKU=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
 Received-SPF: pass client-ip=5.135.226.135;
@@ -96,12 +96,12 @@ Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
  philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Qe+fWa52CACr
+X-TUID: lHHl34nF2THE
 
 On 4/27/20 8:16 PM, Edgar E. Iglesias wrote:
 > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 > 
-> Embedd the GEMs into the SoC type.
+> Embedd the APUs into the SoC type.
 > 
 > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
@@ -109,67 +109,83 @@ On 4/27/20 8:16 PM, Edgar E. Iglesias wrote:
 Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
 > ---
->  hw/arm/xlnx-versal.c         | 15 ++++++++-------
->  include/hw/arm/xlnx-versal.h |  3 ++-
->  2 files changed, 10 insertions(+), 8 deletions(-)
+>  hw/arm/xlnx-versal-virt.c    |  4 ++--
+>  hw/arm/xlnx-versal.c         | 19 +++++--------------
+>  include/hw/arm/xlnx-versal.h |  2 +-
+>  3 files changed, 8 insertions(+), 17 deletions(-)
 > 
+> diff --git a/hw/arm/xlnx-versal-virt.c b/hw/arm/xlnx-versal-virt.c
+> index 8a608074d1..d7be1ad494 100644
+> --- a/hw/arm/xlnx-versal-virt.c
+> +++ b/hw/arm/xlnx-versal-virt.c
+> @@ -469,9 +469,9 @@ static void versal_virt_init(MachineState *machine)
+>      s->binfo.get_dtb = versal_virt_get_dtb;
+>      s->binfo.modify_dtb = versal_virt_modify_dtb;
+>      if (machine->kernel_filename) {
+> -        arm_load_kernel(s->soc.fpd.apu.cpu[0], machine, &s->binfo);
+> +        arm_load_kernel(&s->soc.fpd.apu.cpu[0], machine, &s->binfo);
+>      } else {
+> -        AddressSpace *as = arm_boot_address_space(s->soc.fpd.apu.cpu[0],
+> +        AddressSpace *as = arm_boot_address_space(&s->soc.fpd.apu.cpu[0],
+>                                                    &s->binfo);
+>          /* Some boot-loaders (e.g u-boot) don't like blobs at address 0 (NULL).
+>           * Offset things by 4K.  */
 > diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index dbde03b7e6..e424aa789e 100644
+> index ebd2dc51be..c8a296e2e0 100644
 > --- a/hw/arm/xlnx-versal.c
 > +++ b/hw/arm/xlnx-versal.c
-> @@ -170,25 +170,26 @@ static void versal_create_gems(Versal *s, qemu_irq *pic)
->          DeviceState *dev;
->          MemoryRegion *mr;
+> @@ -31,19 +31,11 @@ static void versal_create_apu_cpus(Versal *s)
 >  
-> -        dev = qdev_create(NULL, "cadence_gem");
-> -        s->lpd.iou.gem[i] = SYS_BUS_DEVICE(dev);
-> -        object_property_add_child(OBJECT(s), name, OBJECT(dev), &error_fatal);
-> +        sysbus_init_child_obj(OBJECT(s), name,
-> +                              &s->lpd.iou.gem[i], sizeof(s->lpd.iou.gem[i]),
-> +                              TYPE_CADENCE_GEM);
-> +        dev = DEVICE(&s->lpd.iou.gem[i]);
->          if (nd->used) {
->              qemu_check_nic_model(nd, "cadence_gem");
->              qdev_set_nic_properties(dev, nd);
->          }
-> -        object_property_set_int(OBJECT(s->lpd.iou.gem[i]),
-> +        object_property_set_int(OBJECT(dev),
->                                  2, "num-priority-queues",
->                                  &error_abort);
-> -        object_property_set_link(OBJECT(s->lpd.iou.gem[i]),
-> +        object_property_set_link(OBJECT(dev),
->                                   OBJECT(&s->mr_ps), "dma",
+>      for (i = 0; i < ARRAY_SIZE(s->fpd.apu.cpu); i++) {
+>          Object *obj;
+> -        char *name;
+> -
+> -        obj = object_new(XLNX_VERSAL_ACPU_TYPE);
+> -        if (!obj) {
+> -            error_report("Unable to create apu.cpu[%d] of type %s",
+> -                         i, XLNX_VERSAL_ACPU_TYPE);
+> -            exit(EXIT_FAILURE);
+> -        }
+> -
+> -        name = g_strdup_printf("apu-cpu[%d]", i);
+> -        object_property_add_child(OBJECT(s), name, obj, &error_fatal);
+> -        g_free(name);
+>  
+> +        object_initialize_child(OBJECT(s), "apu-cpu[*]",
+> +                                &s->fpd.apu.cpu[i], sizeof(s->fpd.apu.cpu[i]),
+> +                                XLNX_VERSAL_ACPU_TYPE, &error_abort, NULL);
+> +        obj = OBJECT(&s->fpd.apu.cpu[i]);
+>          object_property_set_int(obj, s->cfg.psci_conduit,
+>                                  "psci-conduit", &error_abort);
+>          if (i) {
+> @@ -57,7 +49,6 @@ static void versal_create_apu_cpus(Versal *s)
+>          object_property_set_link(obj, OBJECT(&s->fpd.apu.mr), "memory",
 >                                   &error_abort);
->          qdev_init_nofail(dev);
->  
-> -        mr = sysbus_mmio_get_region(s->lpd.iou.gem[i], 0);
-> +        mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
->          memory_region_add_subregion(&s->mr_ps, addrs[i], mr);
->  
-> -        sysbus_connect_irq(s->lpd.iou.gem[i], 0, pic[irqs[i]]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[irqs[i]]);
->          g_free(name);
+>          object_property_set_bool(obj, true, "realized", &error_fatal);
+> -        s->fpd.apu.cpu[i] = ARM_CPU(obj);
 >      }
 >  }
+>  
+> @@ -95,7 +86,7 @@ static void versal_create_apu_gic(Versal *s, qemu_irq *pic)
+>      }
+>  
+>      for (i = 0; i < nr_apu_cpus; i++) {
+> -        DeviceState *cpudev = DEVICE(s->fpd.apu.cpu[i]);
+> +        DeviceState *cpudev = DEVICE(&s->fpd.apu.cpu[i]);
+>          int ppibase = XLNX_VERSAL_NR_IRQS + i * GIC_INTERNAL + GIC_NR_SGIS;
+>          qemu_irq maint_irq;
+>          int ti;
 > diff --git a/include/hw/arm/xlnx-versal.h b/include/hw/arm/xlnx-versal.h
-> index a3dfd064b3..01da736a5b 100644
+> index 94b7826fd4..426b66449d 100644
 > --- a/include/hw/arm/xlnx-versal.h
 > +++ b/include/hw/arm/xlnx-versal.h
-> @@ -16,6 +16,7 @@
->  #include "hw/arm/boot.h"
->  #include "hw/intc/arm_gicv3.h"
->  #include "hw/char/pl011.h"
-> +#include "hw/net/cadence_gem.h"
->  
->  #define TYPE_XLNX_VERSAL "xlnx-versal"
->  #define XLNX_VERSAL(obj) OBJECT_CHECK(Versal, (obj), TYPE_XLNX_VERSAL)
-> @@ -51,7 +52,7 @@ typedef struct Versal {
->  
+> @@ -36,7 +36,7 @@ typedef struct Versal {
+>      struct {
 >          struct {
->              PL011State uart[XLNX_VERSAL_NR_UARTS];
-> -            SysBusDevice *gem[XLNX_VERSAL_NR_GEMS];
-> +            CadenceGEMState gem[XLNX_VERSAL_NR_GEMS];
->              SysBusDevice *adma[XLNX_VERSAL_NR_ADMAS];
->          } iou;
->      } lpd;
+>              MemoryRegion mr;
+> -            ARMCPU *cpu[XLNX_VERSAL_NR_ACPUS];
+> +            ARMCPU cpu[XLNX_VERSAL_NR_ACPUS];
+>              GICv3State gic;
+>          } apu;
+>      } fpd;
 > 

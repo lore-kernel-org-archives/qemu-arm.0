@@ -1,98 +1,103 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp323607lfm;
-        Wed, 29 Apr 2020 02:04:16 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKECHIjxkJRUIOK32ITVrovhywMIHf88Vz327zuar0zRznzINVD+i0DsaZFnmUSwifLwQ1X
-X-Received: by 2002:a05:6214:3e2:: with SMTP id cf2mr30317802qvb.193.1588151056172;
-        Wed, 29 Apr 2020 02:04:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588151056; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp627145lfm;
+        Wed, 29 Apr 2020 07:19:50 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLdRqbB7UvFj24m6LXmqm3d27VcpMDU32VHGDyr6Cmr2y8pQl9pJTH2ZLYjt8PmU+Ok2Snl
+X-Received: by 2002:a37:e214:: with SMTP id g20mr33455246qki.317.1588169990168;
+        Wed, 29 Apr 2020 07:19:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588169990; cv=none;
         d=google.com; s=arc-20160816;
-        b=jFxx8tVw4/K78Fur/NdT2pfq25cnyxAiKP57dql5hFVrb6i4t2XfnhqqBjRiZIBOzS
-         7gc6g6aKSK4mz6cbUYfUqhzFZpOn5W78c8OTWCuM9j861vBgSAgbcIiXBQcF4HW/4/Sc
-         Y9PwnZSf48VDe3kPwCQsJJkSbvRShhPKka8qst17P096JOPgs7keHF/Hv3bSIfYvRg5p
-         3/HNBidjsl9ODc45o95gwUxnQmdGnDO3e2BhiAeqE8b/NAMGNg6WhoF/yTkF1+l0rpXK
-         AGyk0KpsDUVj5wYLGBS015F80IxtBKcYMmgp3dO5xClj4vqFN35a/PChdEpVt4Y8TH4Q
-         sI3Q==
+        b=QSS4Umn+xnpIdbgJRhWpVuE7gEdnNif0yvm9o2gx+HZjkkULDhplfM+FBNLzpxZBUG
+         LUCV68rWhL9DsGpK7bJwXV2tcZk4fLwTJVOfU4Pzy2ST88qG9/IBdiIoTy218EP6UDVN
+         yoQXzVBlb0Il8G5+7k7j5vGRLqAI3a8MAO8tM5a2pMrB5BXNUPwrJzfUXE5G9ZBoXstD
+         LSq7f7U3MnjPC457WTz8WGTGhnOyQoM6JXpSxKuGKzT3TScmR5Y1f82dK6UZPnZTiPme
+         7RzEgepFbA/gTR0U3NKyQrPpPDSeABCo63t5fYeCH+GYjsuZ/0FKzr1H3JryuDt6NreR
+         F5rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=JDbxljKw+ISuTYIBuU3R/VKuoxcCUtNGydKlXJG412w=;
-        b=XoZU/Wg3k3/OvJiLh4/MXx2kgrQ0p+05x8SPuDZtaH69OrT1uvmGg8t3XQghCV7jng
-         /+sIutsqu02pTb+NOcV5pXmcK8l8uEUv/r9i4Xieeb67RtBAr0kwMPLTD3kGxnw2MPtC
-         nACrfreFj/YqYAb3cXFqqRZBbb2F3Fp6gUXPcRBoUOWtdwJ69fMTp7RLEw3cIsrDsXRJ
-         1XPfMc3v6xsaexscdqhn9i1Wbm3pmWypd2KjFCFvkVVBFzfZy8r5JEgP74uiPULvEVno
-         A2BsA3ssTbESjFnT/S608kKSq/pL/2GaDaukKsb24wqyjp4OA3thZzyzj+3JU51TJKhG
-         40kQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=wl2HW2d2NHrNYnWWykZcNKyi/UUsvgu+A6lE9OuphoQ=;
+        b=R/SlGaf4FW8VsHIFBOJRLSONihO+NFRUZ7o3vwUw+XMxFUtRzUt4nYTNZbC3tzPRpS
+         TjMyZn653lTyaxPe0O/rHy8WoLC7jRysXZkKSc/6j5Di8JZ8qTacH45ri4JhiPuaS1mc
+         8hSrEUTHQ9QGa60YSx2KH8whdVJxaf2F5b9tAoJamqFRVaElPD0Hs8yodfdDgvAmBU8Y
+         QmEeOAEvhOHN81MLBvVegLXv09wxB/wonOpiqBLPAtjUsytAxmZa7Ia6Fzub8bdpg1Lr
+         2fkHHZ7DPjSeJquHIQgZJhc5SSDDgfoZ2XpTSneRFu+zh8nRdnh8AEipx4Pja98FrhBx
+         tzcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gsvOxdlJ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=mM8KbQ70;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id n7si11695151qtv.38.2020.04.29.02.04.15
+        by mx.google.com with ESMTPS id d6si12580662qvp.167.2020.04.29.07.19.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Apr 2020 02:04:16 -0700 (PDT)
+        Wed, 29 Apr 2020 07:19:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gsvOxdlJ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=mM8KbQ70;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42732 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41136 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jTidb-0004dm-HB
-	for alex.bennee@linaro.org; Wed, 29 Apr 2020 05:04:15 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:53280)
+	id 1jTnYz-0000KG-E2
+	for alex.bennee@linaro.org; Wed, 29 Apr 2020 10:19:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46388)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <technochicken2038@gmail.com>) id 1jThsg-0008Cs-QH
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 04:15:47 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jTnYd-00007r-Pg
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 10:19:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <technochicken2038@gmail.com>) id 1jThse-0008RC-HA
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 04:15:46 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:41095)
+ (envelope-from <peter.maydell@linaro.org>) id 1jTnYO-0002aH-9Y
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 10:19:27 -0400
+Received: from mail-oo1-xc2c.google.com ([2607:f8b0:4864:20::c2c]:37045)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <technochicken2038@gmail.com>)
- id 1jThse-0008If-1B
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 04:15:44 -0400
-Received: by mail-wr1-x429.google.com with SMTP id g13so1349597wrb.8
- for <qemu-arm@nongnu.org>; Wed, 29 Apr 2020 01:15:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=JDbxljKw+ISuTYIBuU3R/VKuoxcCUtNGydKlXJG412w=;
- b=gsvOxdlJ+yCWkKTNJOjLM/HC98k+3DPVn+0wnGrs7Zz/lUxGkeaXTQ/iU5+afg6p1A
- mqUuYOmtFBaG4n0gbDmjKxixMPZfAovSxUg7X7GEi4FrzOcc32D81YJZh/p8OuqN2DhW
- emADdqAxoVX/v3HpThtZs/B9ksZzc0Q59cBEB+C9zJ5EK6jRPx/I0PBok13FGe0x7Lff
- btzzyZ4cGS5VQ05Oca6WQ1DQZeArP0zIPdrUQG6AoTC+RB+M0cnADaMkQ10gH3xuM4l/
- nXvogqBvTJJ8AaAxD6nxECkxP/Y9EGsMN3RTOZ+CWVf2huJknNyyJ6+FAQ50bCEILmUL
- UaAA==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jTnYN-0002Yg-Ri
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 10:19:11 -0400
+Received: by mail-oo1-xc2c.google.com with SMTP id g14so455160ooa.4
+ for <qemu-arm@nongnu.org>; Wed, 29 Apr 2020 07:19:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=wl2HW2d2NHrNYnWWykZcNKyi/UUsvgu+A6lE9OuphoQ=;
+ b=mM8KbQ70OwfH77GOKP0WW1bkmko5xWQJlajEI07+R4QFAVuqF2v+GK6dffIDyZ+AHs
+ FGgxCQx1GsbvYmleE2QLAbtpSnC9src4QdMXI92IloZcRFfUyu614ZgvuQz2Yz4GqvU0
+ /zLkapifMrYrJLDjQem5Pa1S8eX1Cx5FN8edZ6ViyiWtxSyp3RyOWsvvPf6JqGDnFIoi
+ oQ2LVmygbvjsuRwCKRtilbnft908ApcMyXNfkJl6si/70PbTRO52HNwVeXRnKroRNoQo
+ ddb+6McVFdlH1nX81vJTDfY0uxOECKoj9g0Zgne5+auggCs97e2JaKpdWW7pP5Hn/YaC
+ ymWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=JDbxljKw+ISuTYIBuU3R/VKuoxcCUtNGydKlXJG412w=;
- b=nXKoXfk/n2lNXhfbcE3dyNwiPwEnGUpKHZFis+iKfaVXZaYK7LWC7MRPbxyn2ngAOW
- rodKZAa9erzXeMZ4+cTQX2+5bLIXuRbGmMmGokYtQP/dxqDVJyB0thS4mmUCEh0kXHCA
- nyTvl10tUKFLmLrnF4QdFvp1AI9gWWFnBkVeJv0ZQFv/nE8COm/D1sucYVSJwZtdQnVk
- vvWMYodMDmuBMPenAiyt6cvY+w4ua1rgsZc9ClELWD9h2Xkap1+VNyKaGGSdQw46lf5E
- nMQ9cu9egPHZnvJcIderSVbXhhb+Z2wFjD9EECADlmWWCIYUfeKAQ3eB97wKY5mT3IJ9
- apbQ==
-X-Gm-Message-State: AGi0PuaZMNIkp5cuqKIYLTekGhr6dWdJpGkohylOTR/cpTBZ8UWelJGI
- wdmDF5b1zA/1KMnk9VXSMSFAS+WDEGn5uap4LKd0HMV8
-X-Received: by 2002:adf:ea05:: with SMTP id q5mr40634054wrm.180.1588148141345; 
- Wed, 29 Apr 2020 01:15:41 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=wl2HW2d2NHrNYnWWykZcNKyi/UUsvgu+A6lE9OuphoQ=;
+ b=DOH8wJhB9rdoS2DophyiKrcQyJKtMR8eB9j0BUViS21jwNcc7Jt75lOvPolWkL7itx
+ 1UFAE4v6eZfxVlvg5mIRz7A7Nnb6XHxZviDNLyHEGC3wEeWPVMme6sxpdc5jfA+8xfnT
+ enTb6YZRptzqUmOS5jUI4Ob3+7/LS3DU2r1ZogYgQyj8TSPikph1dX6KAy9VhSKXnXpN
+ FIsb3g0Pi+5Tr5G5XOeCwwyIyT7D9lAxMa9PZ63k6FbgACaUzymHdnqBKzT1ySFAdbCh
+ McdPRX9oPNVgjKra/Fog3TccVG1vJbYfcDXnM4MvcgLWc07CIsXBY57tWdZcXX0eHZsl
+ e0Dw==
+X-Gm-Message-State: AGi0PuYt7qzKqhHGY0TYaEtB6WEjKkDx8eXon482rFlTgVpHazWEbQHM
+ c0w8YawcTiFB88ErwlutzAzGHBHKxDc3+P+NF0FkFA==
+X-Received: by 2002:a4a:8253:: with SMTP id t19mr27354181oog.69.1588169950346; 
+ Wed, 29 Apr 2020 07:19:10 -0700 (PDT)
 MIME-Version: 1.0
-From: Prabhnoor Ghuman <technochicken2038@gmail.com>
-Date: Wed, 29 Apr 2020 18:15:30 +1000
-Message-ID: <CAJ5bNgcK9S-1RH=CdqB_wfPu+qPMYZFWWgso06QHfD-NOiRFuQ@mail.gmail.com>
-Subject: Guest has not initialized the display (yet).
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000d0d5c805a4698d92"
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=technochicken2038@gmail.com; helo=mail-wr1-x429.google.com
+References: <CAJ5bNgcK9S-1RH=CdqB_wfPu+qPMYZFWWgso06QHfD-NOiRFuQ@mail.gmail.com>
+In-Reply-To: <CAJ5bNgcK9S-1RH=CdqB_wfPu+qPMYZFWWgso06QHfD-NOiRFuQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 29 Apr 2020 15:18:58 +0100
+Message-ID: <CAFEAcA8nBcwuPJC=Zc_H0ojzphNX4+STU7p9vreXZv55yrcxyA@mail.gmail.com>
+Subject: Re: Guest has not initialized the display (yet).
+To: Prabhnoor Ghuman <technochicken2038@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c2c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oo1-xc2c.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::429
-X-Mailman-Approved-At: Wed, 29 Apr 2020 05:03:00 -0400
+X-Received-From: 2607:f8b0:4864:20::c2c
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,146 +109,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: leif@nuviainc.com, qemu-arm <qemu-arm@nongnu.org>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MqE3JTijtJZr
+X-TUID: vuVVPhn4xOg/
 
---000000000000d0d5c805a4698d92
-Content-Type: text/plain; charset="UTF-8"
+On Wed, 29 Apr 2020 at 10:04, Prabhnoor Ghuman
+<technochicken2038@gmail.com> wrote:
+>
+> Over the last couple of days, I have been trying to run a QEMU system due=
+ to a server that I was setting up. I wanted to protect my actual computer =
+from anything malicious that could get onto it due to a person being able t=
+o upload. The speed wasn't great and I realised the problem was likely the =
+fact that the x86_64 emulator doesn't allow for multithreading TCG (well I =
+can't find anything saying it does anyway), and I had the option enabled. I=
+ therefore decided I could go use a different architecture because the oper=
+ating system I would like to use is openSUSE, and it supports aarch64 as we=
+ll. I have an installer ISO and a QCOW2 disk image. I tried booting the sys=
+tem and then the error came up: "Guest has not initialized the display (yet=
+)".
 
-Over the last couple of days, I have been trying to run a QEMU system due
-to a server that I was setting up. I wanted to protect my actual computer
-from anything malicious that could get onto it due to a person being able
-to upload. The speed wasn't great and I realised the problem was likely the
-fact that the x86_64 emulator doesn't allow for multithreading TCG (well I
-can't find anything saying it does anyway), and I had the option enabled. I
-therefore decided I could go use a different architecture because the
-operating system I would like to use is openSUSE, and it supports aarch64
-as well. I have an installer ISO and a QCOW2 disk image. I tried booting
-the system and then the error came up: "Guest has not initialized the
-display (yet)".
+This isn't an error. It's just telling you that the guest has
+not yet done anything to cause graphics to be displayed yet.
+Usually that's because the guest doesn't have support for
+the graphics device or it's not been configured to put out
+graphical output at all, or because the guest has just crashed
+without doing anything.
 
-Here are the command line parameters I am using at the moment:
+> Here are the command line parameters I am using at the moment:
+>
+> qemu-system-aarch64 -cdrom "C:\Users\GHU0002\Downloads\openSUSE-Tumblewee=
+d-NET-aarch64-Snapshot20200421-Media.iso" -drive file=3DDrive.qcow2 -m 2G -=
+smp 4 -machine sbsa-ref -usbdevice tablet -net nic -net user -accel tcg,thr=
+ead=3Dmulti -vga xenfb -display gtk
 
-qemu-system-aarch64 -cdrom
-"C:\Users\GHU0002\Downloads\openSUSE-Tumbleweed-NET-aarch64-Snapshot20200421-Media.iso"
--drive file=Drive.qcow2 -m 2G -smp 4 -machine sbsa-ref -usbdevice
-tablet -net nic -net user -accel tcg,thread=multi -vga xenfb -display
-gtk
+The major thing you're missing here is that you haven't
+specified a firmware/bios (UEFI) image. This machine won't
+boot without one.
 
-*Sidenote: I am using the 'sbsa-ref' machine because it is the only
-one that seemed to support everything I needed: 4 Cores, 2GB RAM, USB,
-and a CD drive. If it is just a problem with the machine, please
-suggest another that I can use.*
+Why are you using 'xenfb' ? I wouldn't really expect that to
+work except in a Xen specific setup; you're more likely to
+have success with either virtio graphics or with a normal
+pci vga device.
 
-My system specs:
+The other option would be to not use graphics at all and
+just get the guest to use a serial console.
 
-   - 1.10GHz Celeron N4100 (up to 2.3GHz) (*not great, I know*)
-   - 4GB RAM
-   - 128GB SanDisk SSD (not sure which type, but pretty sure that
-isn't relevant)
-   - iGPU UHD 600 (*Again, I know*)
+I've cc'd the sbsa-ref maintainers to see if they have a
+good tutorial/basic command line to start with.
 
-Any help is appreciated!
+> Sidenote: I am using the 'sbsa-ref' machine because it is the only one th=
+at seemed to support everything I needed: 4 Cores, 2GB RAM, USB, and a CD d=
+rive. If it is just a problem with the machine, please suggest another that=
+ I can use.
 
---000000000000d0d5c805a4698d92
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Since your list doesn't include "graphics" the 'virt'
+board is another one that you could try, if you're happy
+with only serial. (You'll still need to provide it with
+either a UEFI bios image file or a kernel to boot, though:
+it won't boot if provided with only a cdrom iso file.)
 
-<div dir=3D"ltr"><p style=3D"margin:0px 0px 1em;padding:0px;border:0px;font=
--variant-numeric:inherit;font-variant-east-asian:inherit;font-stretch:inher=
-it;line-height:inherit;font-family:Arial,&quot;Helvetica Neue&quot;,Helveti=
-ca,sans-serif;font-size:15px;vertical-align:baseline;box-sizing:inherit;cle=
-ar:both;color:rgb(36,39,41)">Over the last couple of days, I have been tryi=
-ng to run a QEMU system due to a server that I was setting up. I wanted to =
-protect my actual computer from anything malicious that could get onto it d=
-ue to a person being able to upload. The speed wasn&#39;t great and I reali=
-sed the problem was likely the fact that the x86_64 emulator doesn&#39;t al=
-low for multithreading TCG (well I can&#39;t find anything saying it does a=
-nyway), and I had the option enabled. I therefore decided I could go use a =
-different architecture because the operating system I would like to use is =
-openSUSE, and it supports aarch64 as well. I have an installer ISO and a QC=
-OW2 disk image. I tried booting the system and then the error came up: &quo=
-t;Guest has not initialized the display (yet)&quot;.</p><p style=3D"margin:=
-0px 0px 1em;padding:0px;border:0px;font-variant-numeric:inherit;font-varian=
-t-east-asian:inherit;font-stretch:inherit;line-height:inherit;font-family:A=
-rial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif;font-size:15px;vertica=
-l-align:baseline;box-sizing:inherit;clear:both;color:rgb(36,39,41)">Here ar=
-e the command line parameters I am using at the moment:<br></p><pre style=
-=3D"margin-top:0px;margin-bottom:1em;padding:12px 8px;border:0px;font-varia=
-nt-numeric:inherit;font-variant-east-asian:inherit;font-stretch:inherit;lin=
-e-height:inherit;font-family:Consolas,Menlo,Monaco,&quot;Lucida Console&quo=
-t;,&quot;Liberation Mono&quot;,&quot;DejaVu Sans Mono&quot;,&quot;Bitstream=
- Vera Sans Mono&quot;,&quot;Courier New&quot;,monospace,sans-serif;font-siz=
-e:13px;vertical-align:baseline;box-sizing:inherit;width:auto;max-height:600=
-px;overflow:auto;border-radius:3px;color:rgb(36,39,41)"><code style=3D"marg=
-in:0px;padding:0px;border:0px;font-style:inherit;font-variant:inherit;font-=
-weight:inherit;font-stretch:inherit;line-height:inherit;font-family:Consola=
-s,Menlo,Monaco,&quot;Lucida Console&quot;,&quot;Liberation Mono&quot;,&quot=
-;DejaVu Sans Mono&quot;,&quot;Bitstream Vera Sans Mono&quot;,&quot;Courier =
-New&quot;,monospace,sans-serif;vertical-align:baseline;box-sizing:inherit;b=
-ackground-color:transparent;white-space:inherit">qemu-system-aarch64 -cdrom=
- &quot;C:\Users\GHU0002\Downloads\openSUSE-Tumbleweed-NET-aarch64-Snapshot2=
-0200421-Media.iso&quot; -drive file=3DDrive.qcow2 -m 2G -smp 4 -machine sbs=
-a-ref -usbdevice tablet -net nic -net user -accel tcg,thread=3Dmulti -vga x=
-enfb -display gtk</code></pre><pre style=3D"margin-top:0px;margin-bottom:1e=
-m;padding:12px 8px;border:0px;font-variant-numeric:inherit;font-variant-eas=
-t-asian:inherit;font-stretch:inherit;line-height:inherit;font-family:Consol=
-as,Menlo,Monaco,&quot;Lucida Console&quot;,&quot;Liberation Mono&quot;,&quo=
-t;DejaVu Sans Mono&quot;,&quot;Bitstream Vera Sans Mono&quot;,&quot;Courier=
- New&quot;,monospace,sans-serif;font-size:13px;vertical-align:baseline;box-=
-sizing:inherit;width:auto;max-height:600px;overflow:auto;border-radius:3px;=
-color:rgb(36,39,41)"><code style=3D"margin:0px;padding:0px;border:0px;font-=
-style:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit=
-;line-height:inherit;font-family:Consolas,Menlo,Monaco,&quot;Lucida Console=
-&quot;,&quot;Liberation Mono&quot;,&quot;DejaVu Sans Mono&quot;,&quot;Bitst=
-ream Vera Sans Mono&quot;,&quot;Courier New&quot;,monospace,sans-serif;vert=
-ical-align:baseline;box-sizing:inherit;background-color:transparent;white-s=
-pace:inherit"><p style=3D"margin:0px 0px 1em;padding:0px;border:0px;font-va=
-riant-numeric:inherit;font-variant-east-asian:inherit;font-stretch:inherit;=
-line-height:inherit;font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,=
-sans-serif;font-size:15px;vertical-align:baseline;box-sizing:inherit;clear:=
-both;white-space:normal"><em style=3D"margin:0px;padding:0px;border:0px;fon=
-t-variant:inherit;font-weight:inherit;font-stretch:inherit;line-height:inhe=
-rit;font-family:inherit;vertical-align:baseline;box-sizing:inherit">Sidenot=
-e: I am using the &#39;sbsa-ref&#39; machine because it is the only one tha=
-t seemed to support everything I needed: 4 Cores, 2GB RAM, USB, and a CD dr=
-ive. If it is just a problem with the machine, please suggest another that =
-I can use.</em></p><p style=3D"margin:0px 0px 1em;padding:0px;border:0px;fo=
-nt-variant-numeric:inherit;font-variant-east-asian:inherit;font-stretch:inh=
-erit;line-height:inherit;font-family:Arial,&quot;Helvetica Neue&quot;,Helve=
-tica,sans-serif;font-size:15px;vertical-align:baseline;box-sizing:inherit;c=
-lear:both;white-space:normal">My system specs:</p><ul style=3D"margin:0px 0=
-px 1em 30px;padding:0px;border:0px;font-variant-numeric:inherit;font-varian=
-t-east-asian:inherit;font-stretch:inherit;line-height:inherit;font-family:A=
-rial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif;font-size:15px;vertica=
-l-align:baseline;list-style-position:initial;box-sizing:inherit;white-space=
-:normal"><li style=3D"margin:0px 0px 0.5em;padding:0px;border:0px;font-styl=
-e:inherit;font-variant:inherit;font-weight:inherit;font-stretch:inherit;lin=
-e-height:inherit;font-family:inherit;vertical-align:baseline;box-sizing:inh=
-erit">1.10GHz Celeron N4100 (up to 2.3GHz) (<em style=3D"margin:0px;padding=
-:0px;border:0px;font-variant:inherit;font-weight:inherit;font-stretch:inher=
-it;line-height:inherit;font-family:inherit;vertical-align:baseline;box-sizi=
-ng:inherit">not great, I know</em>)</li><li style=3D"margin:0px 0px 0.5em;p=
-adding:0px;border:0px;font-style:inherit;font-variant:inherit;font-weight:i=
-nherit;font-stretch:inherit;line-height:inherit;font-family:inherit;vertica=
-l-align:baseline;box-sizing:inherit">4GB RAM</li><li style=3D"margin:0px 0p=
-x 0.5em;padding:0px;border:0px;font-style:inherit;font-variant:inherit;font=
--weight:inherit;font-stretch:inherit;line-height:inherit;font-family:inheri=
-t;vertical-align:baseline;box-sizing:inherit">128GB SanDisk SSD (not sure w=
-hich type, but pretty sure that isn&#39;t relevant)</li><li style=3D"margin=
-:0px;padding:0px;border:0px;font-style:inherit;font-variant:inherit;font-we=
-ight:inherit;font-stretch:inherit;line-height:inherit;font-family:inherit;v=
-ertical-align:baseline;box-sizing:inherit">iGPU UHD 600 (<em style=3D"margi=
-n:0px;padding:0px;border:0px;font-variant:inherit;font-weight:inherit;font-=
-stretch:inherit;line-height:inherit;font-family:inherit;vertical-align:base=
-line;box-sizing:inherit">Again, I know</em>)</li></ul><p style=3D"margin:0p=
-x 0px 1em;padding:0px;border:0px;font-variant-numeric:inherit;font-variant-=
-east-asian:inherit;font-stretch:inherit;line-height:inherit;font-family:Ari=
-al,&quot;Helvetica Neue&quot;,Helvetica,sans-serif;font-size:15px;vertical-=
-align:baseline;box-sizing:inherit;clear:both;white-space:normal">Any help i=
-s appreciated!</p>
+You might also find that using libvirt/virt-manager
+rather than running QEMU directly is an easier approach
+since it will generally know what devices it needs to put
+on the command line to get a working setup.
 
-</code></pre></div>
-
---000000000000d0d5c805a4698d92--
+thanks
+-- PMM

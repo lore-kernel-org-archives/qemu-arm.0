@@ -1,127 +1,103 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp476952lfm;
-        Wed, 29 Apr 2020 04:54:41 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKKHFgOJThU0EhzVu/6QXZrsIcJeKo7KPyuBfJZPkiSPbLIqe52fMhYe5PV3B5WEr1bvaoz
-X-Received: by 2002:ac8:1ad1:: with SMTP id h17mr34322381qtk.9.1588161281152;
-        Wed, 29 Apr 2020 04:54:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588161281; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp655677lfm;
+        Wed, 29 Apr 2020 07:46:33 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKM5/sWAhnj0z+YlUfPqL9D1hpL0QuyFoY8H9H/0TBtHlYN7dnExhZ9aSHOLG5D0HkK0/a6
+X-Received: by 2002:a37:66d8:: with SMTP id a207mr31980375qkc.127.1588171593078;
+        Wed, 29 Apr 2020 07:46:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588171593; cv=none;
         d=google.com; s=arc-20160816;
-        b=zHrDQcR+HRBi50L9uVlcLpWhaz/U0qN2BkG7tujmw0kC5nnd/Snh/wrm5cb1WNtNzg
-         8vEoE4NMOpOP707EVbsOYxhOZlqNUv1Eyyw2Ig1/lh4X5ApuYeWLDfg+xtmmaz/ILLsx
-         imf//BcJbSV176oG2vGFuBkITkLlzHJqhOEplOZ26pDNrZeR+/zjY5HDD5GKbnxR6c0u
-         twkgxxCXmsO/akUIUNhnL2k3fruTy53JdLYlVKq2ndGoUnlAEDCVZbW0/zUduQ+harXU
-         GuGrwq325OOPXDmugEwBBGgJuNG/3fUtEERp6JZc08cNxn0gW/z2tww3Cuh3nDPlVflo
-         eQSQ==
+        b=KaYDzlpcXSm+fHPPqjWeMlqjJNz0KzFIUOQf0RA41+XJmqApyUzxxe8KO8dnyngcwk
+         mqVduv/IQWHV0EfOT8BX8ZI6oIQDfGsTofn88AWPAhuiPXhnMoENrVJchQRjzzhjOiA1
+         rtvBfN0wnCRw1NoTq8PBJuwy4nerYjD8UaWa+KHvFe6cavpXuTw6d8lPcsl3C7pTkZht
+         Jw1EiaiqiwQyBHIeXIdHmsYx636vrnLxnAeqNK7g9oBJ8gb/K0MoaHIQnUcVrpHmiLhT
+         YSnJfbjsGa1GYNs+4tgNCrcP0DxswQFznjI0yR1glp2r7bheEhTHbMqFhLWeTyODBbAx
+         2ZDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=wgGdw87WsEetk5OcDdcjSZYjmWLEGzVXMGhGpTkWO4s=;
-        b=SCI67KnLRYPseXdiPQUjy65oc9i+l0H7N81thXDymXH38BK7UcqNS2ZVQijw9WlTuF
-         xLdBZHkqi/mCnUnDqYxv59SAwH/I8KKvxSwXuzmEdm28/j5eKw4Sa52BDtWF/EAUmw+t
-         fpEG2GZxAV/IYhI53dPXbtxD8Jzh0aF39QVzxosHJBMh7ype3xEUtClccpHVLNnSitfS
-         FquXWz/ArUBD4TL0ElLDnyVqmctVZDE58GfxoFBWjRupu2PPGplqLnOaXTRQP8EZzsjo
-         Jw2FLiMHBoD33x7aACyA8vOrhpA0K9LPV/VrIP6LCi1ra2lp+dPKhrtFqP4HkBGm4tGN
-         Ke5w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=qVSo6x4cunSwGHdHlkXDjz6vkUY6++79QBf4sR/dMQs=;
+        b=kUf8eZnSxumlquzqeJcXnLWJwfzdzoYOOousyGQSy6YTx71pXHfmTvMi68tG2XXWGO
+         QhlAdnhWKSflOOyOGJuO0/cbBD/U02wA6hZ9l6kll1TKpvvl8TwNMZJCHT93qBwQ27bM
+         Jy1hFJ7cUvSDD/FbAZA++Olg99nYipiz9U2moaj5pqe3Tmp6toMvcfP0jh2KVvBDARUM
+         w2esr9WCRqVPJCsURPunLeLdYAnCcmhE3LMtG431Y45H+yr6wO93V220Fe2FK50uCUP6
+         i3Y1IwvFPmWuZcATaVb1zvISymIba0YeYtkuQOwinPUNmMlj+vIkQaDCDXt17KBqihVr
+         ZjDg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sj2nSJhZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id 126si12313003qkn.3.2020.04.29.04.54.40
+        by mx.google.com with ESMTPS id 19si15734900qtp.207.2020.04.29.07.46.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Apr 2020 04:54:41 -0700 (PDT)
+        Wed, 29 Apr 2020 07:46:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sj2nSJhZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:50438 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44264 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jTlIW-0000xO-Iq
-	for alex.bennee@linaro.org; Wed, 29 Apr 2020 07:54:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51002)
+	id 1jTnyq-0001wQ-6d
+	for alex.bennee@linaro.org; Wed, 29 Apr 2020 10:46:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50842)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <stefanb@linux.ibm.com>) id 1jTlHQ-0007SH-4q
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 07:53:32 -0400
+ (envelope-from <cohuck@redhat.com>) id 1jTnyh-0001uS-4v
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 10:46:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <stefanb@linux.ibm.com>) id 1jTlHO-00025z-Ue
- for qemu-arm@nongnu.org; Wed, 29 Apr 2020 07:53:31 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:16816
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jTlHO-00024e-FP; Wed, 29 Apr 2020 07:53:30 -0400
-Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 03TBVGKg168157; Wed, 29 Apr 2020 07:53:26 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 30q80pj2g7-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 29 Apr 2020 07:53:26 -0400
-Received: from m0098421.ppops.net (m0098421.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 03TBdMDu189276;
- Wed, 29 Apr 2020 07:53:26 -0400
-Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
- [169.62.189.10])
- by mx0a-001b2d01.pphosted.com with ESMTP id 30q80pj2fy-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 29 Apr 2020 07:53:25 -0400
-Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
- by ppma02dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id 03TBj2qW011051;
- Wed, 29 Apr 2020 11:53:25 GMT
-Received: from b01cxnp22033.gho.pok.ibm.com (b01cxnp22033.gho.pok.ibm.com
- [9.57.198.23]) by ppma02dal.us.ibm.com with ESMTP id 30mcu6wjh6-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 29 Apr 2020 11:53:25 +0000
-Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
- [9.57.199.110])
- by b01cxnp22033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 03TBrOKj19071432
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 29 Apr 2020 11:53:24 GMT
-Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 842FEAE05F;
- Wed, 29 Apr 2020 11:53:24 +0000 (GMT)
-Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6AA08AE05C;
- Wed, 29 Apr 2020 11:53:24 +0000 (GMT)
-Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
- by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
- Wed, 29 Apr 2020 11:53:24 +0000 (GMT)
-Subject: Re: [PATCH 0/2] virt: Set tpm-tis-device ppi property to off by
- default
-To: Cornelia Huck <cohuck@redhat.com>
-References: <20200427143145.16251-1-eric.auger@redhat.com>
- <20200428123826.1ec68e6c.cohuck@redhat.com>
- <0257ca1e-2323-e437-4e19-d8a4dfa6d792@linux.ibm.com>
- <20200429081129.18e9760a.cohuck@redhat.com>
-From: Stefan Berger <stefanb@linux.ibm.com>
-Message-ID: <b109541b-36cf-03b3-eac7-910f1caafa55@linux.ibm.com>
-Date: Wed, 29 Apr 2020 07:53:24 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (envelope-from <cohuck@redhat.com>) id 1jTnyg-0002mY-4W
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 10:46:22 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:47744
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1jTnyf-0002m0-Nt
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2020 10:46:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1588171580;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=qVSo6x4cunSwGHdHlkXDjz6vkUY6++79QBf4sR/dMQs=;
+ b=Sj2nSJhZhKGUFdgigGyHrTwROdrcLV6GJf1q7HY93yProdGu9S8xg/z123L1vzCOhzblD2
+ 0J+NkbfLSa3qWy1NMb9nCVVjHwTqtFEslFNHz4y9Lz7G7jLo+b4NsfpBLs/tJ2RDw5jL31
+ 2mJQivgHIFpwJL62Ern4Pm1rxqRq5+A=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-422-Z_a6oIA8PSKI1FWxJ6PVzg-1; Wed, 29 Apr 2020 10:46:17 -0400
+X-MC-Unique: Z_a6oIA8PSKI1FWxJ6PVzg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 36BA48015D1;
+ Wed, 29 Apr 2020 14:46:15 +0000 (UTC)
+Received: from localhost (ovpn-112-87.ams2.redhat.com [10.36.112.87])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E5B6D100EBA9;
+ Wed, 29 Apr 2020 14:46:08 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>
+Subject: [PATCH v2] hw: add compat machines for 5.1
+Date: Wed, 29 Apr 2020 16:46:05 +0200
+Message-Id: <20200429144605.7262-1-cohuck@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200429081129.18e9760a.cohuck@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
- definitions=2020-04-29_04:2020-04-29,
- 2020-04-29 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0
- priorityscore=1501 mlxscore=0 clxscore=1015 impostorscore=0 phishscore=0
- bulkscore=0 spamscore=0 lowpriorityscore=0 adultscore=0 mlxlogscore=999
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2004290093
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/29 07:53:27
-X-ACL-Warn: Detected OS   = Linux 3.x [generic]
-X-Received-From: 148.163.158.5
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/29 01:42:37
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -133,65 +109,246 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, qemu-devel@nongnu.org,
- Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
- eric.auger.pro@gmail.com
+Cc: Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
+ Eric Auger <eric.auger@redhat.com>, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Stefan Berger <stefanb@linux.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ipkmadXtgJE4
+X-TUID: i5TQqEANzX0M
 
-On 4/29/20 2:11 AM, Cornelia Huck wrote:
-> On Tue, 28 Apr 2020 16:13:05 -0400
-> Stefan Berger <stefanb@linux.ibm.com> wrote:
->
->> On 4/28/20 6:38 AM, Cornelia Huck wrote:
->>> On Mon, 27 Apr 2020 16:31:43 +0200
->>> Eric Auger <eric.auger@redhat.com> wrote:
->>>   
->>>> Instead of using a compat in the mach-virt machine to force
->>>> PPI off for all virt machines (PPI not supported by the
->>>> tpm-tis-device device), let's simply change the default value
->>>> in the sysbus device.
->>>>
->>>> Best Regards
->>>>
->>>> Eric
->>>>
->>>> Eric Auger (2):
->>>>     tpm: tpm-tis-device: set PPI to false by default
->>>>     hw/arm/virt: Remove the compat forcing tpm-tis-device PPI to off
->>>>
->>>>    hw/arm/virt.c           | 5 -----
->>>>    hw/tpm/tpm_tis_sysbus.c | 2 +-
->>>>    2 files changed, 1 insertion(+), 6 deletions(-)
->>>>   
->>> I think we can apply the compat machines patch on top of these two
->>> patches.
->>>
->>> Q: Who will queue this and the machine types patch? It feels a bit
->>> weird taking arm patches through the s390 tree :)
->>>   
->> I can queue them and would send the PR soon. I am also fine with someone
->> else doing it.
-> Would be great if you could queue these together with
-> https://patchew.org/QEMU/20200424090314.544-1-cohuck@redhat.com/
-> (hopefully should still apply cleanly, let me know if a respin is
-> needed).
->
-It's probably better to respin:
+Add 5.1 machine types for arm/i440fx/q35/s390x/spapr.
 
- > patches apply id:20200424090314.544-1-cohuck@redhat.com
-Applying: hw: add compat machines for 5.1
-Using index info to reconstruct a base tree...
-M    hw/arm/virt.c
-Falling back to patching base and 3-way merge...
-Auto-merging hw/arm/virt.c
-CONFLICT (content): Merge conflict in hw/arm/virt.c
-error: Failed to merge in the changes.
-hint: Use 'git am --show-current-patch' to see the failed patch
-Patch failed at 0001 hw: add compat machines for 5.1
-When you have resolved this problem, run "git am --continue".
-If you prefer to skip this patch, run "git am --skip" instead.
-To restore the original branch and stop patching, run "git am --abort".
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+---
 
+v1->v2: rebased on top of "virt: Set tpm-tis-device ppi property to off by
+        default" to avoid breakage on arm
+
+---
+ hw/arm/virt.c              |  8 +++++++-
+ hw/core/machine.c          |  3 +++
+ hw/i386/pc.c               |  3 +++
+ hw/i386/pc_piix.c          | 14 +++++++++++++-
+ hw/i386/pc_q35.c           | 13 ++++++++++++-
+ hw/ppc/spapr.c             | 15 +++++++++++++--
+ hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+ include/hw/boards.h        |  3 +++
+ include/hw/i386/pc.h       |  3 +++
+ 9 files changed, 70 insertions(+), 6 deletions(-)
+
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 2a68306f2832..bb3e808b381c 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2309,10 +2309,16 @@ static void machvirt_machine_init(void)
+ }
+ type_init(machvirt_machine_init);
+=20
++static void virt_machine_5_1_options(MachineClass *mc)
++{
++}
++DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
++
+ static void virt_machine_5_0_options(MachineClass *mc)
+ {
++    virt_machine_5_1_options(mc);
+ }
+-DEFINE_VIRT_MACHINE_AS_LATEST(5, 0)
++DEFINE_VIRT_MACHINE(5, 0)
+=20
+ static void virt_machine_4_2_options(MachineClass *mc)
+ {
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index c1a444cb7558..7a50dd518f4c 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -28,6 +28,9 @@
+ #include "hw/mem/nvdimm.h"
+ #include "migration/vmstate.h"
+=20
++GlobalProperty hw_compat_5_0[] =3D {};
++const size_t hw_compat_5_0_len =3D G_N_ELEMENTS(hw_compat_5_0);
++
+ GlobalProperty hw_compat_4_2[] =3D {
+     { "virtio-blk-device", "queue-size", "128"},
+     { "virtio-scsi-device", "virtqueue_size", "128"},
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 5143c516531e..13e1d18cd758 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -94,6 +94,9 @@
+ #include "fw_cfg.h"
+ #include "trace.h"
+=20
++GlobalProperty pc_compat_5_0[] =3D {};
++const size_t pc_compat_5_0_len =3D G_N_ELEMENTS(pc_compat_5_0);
++
+ GlobalProperty pc_compat_4_2[] =3D {
+     { "mch", "smbase-smram", "off" },
+ };
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 22dee0e76c62..921caa502b85 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -419,7 +419,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+ }
+=20
+-static void pc_i440fx_5_0_machine_options(MachineClass *m)
++static void pc_i440fx_5_1_machine_options(MachineClass *m)
+ {
+     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+     pc_i440fx_machine_options(m);
+@@ -428,6 +428,18 @@ static void pc_i440fx_5_0_machine_options(MachineClass=
+ *m)
+     pcmc->default_cpu_version =3D 1;
+ }
+=20
++DEFINE_I440FX_MACHINE(v5_1, "pc-i440fx-5.1", NULL,
++                      pc_i440fx_5_1_machine_options);
++
++static void pc_i440fx_5_0_machine_options(MachineClass *m)
++{
++    pc_i440fx_5_1_machine_options(m);
++    m->alias =3D NULL;
++    m->is_default =3D false;
++    compat_props_add(m->compat_props, hw_compat_5_0, hw_compat_5_0_len);
++    compat_props_add(m->compat_props, pc_compat_5_0, pc_compat_5_0_len);
++}
++
+ DEFINE_I440FX_MACHINE(v5_0, "pc-i440fx-5.0", NULL,
+                       pc_i440fx_5_0_machine_options);
+=20
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index d37c425e2236..253688a9b8f3 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -349,7 +349,7 @@ static void pc_q35_machine_options(MachineClass *m)
+     m->max_cpus =3D 288;
+ }
+=20
+-static void pc_q35_5_0_machine_options(MachineClass *m)
++static void pc_q35_5_1_machine_options(MachineClass *m)
+ {
+     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+     pc_q35_machine_options(m);
+@@ -357,6 +357,17 @@ static void pc_q35_5_0_machine_options(MachineClass *m=
+)
+     pcmc->default_cpu_version =3D 1;
+ }
+=20
++DEFINE_Q35_MACHINE(v5_1, "pc-q35-5.1", NULL,
++                   pc_q35_5_1_machine_options);
++
++static void pc_q35_5_0_machine_options(MachineClass *m)
++{
++    pc_q35_5_1_machine_options(m);
++    m->alias =3D NULL;
++    compat_props_add(m->compat_props, hw_compat_5_0, hw_compat_5_0_len);
++    compat_props_add(m->compat_props, pc_compat_5_0, pc_compat_5_0_len);
++}
++
+ DEFINE_Q35_MACHINE(v5_0, "pc-q35-5.0", NULL,
+                    pc_q35_5_0_machine_options);
+=20
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 9a2bd501aa6e..fd5bfd11a84c 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -4599,15 +4599,26 @@ static void spapr_machine_latest_class_options(Mach=
+ineClass *mc)
+     }                                                                \
+     type_init(spapr_machine_register_##suffix)
+=20
++/*
++ * pseries-5.1
++ */
++static void spapr_machine_5_1_class_options(MachineClass *mc)
++{
++    /* Defaults for the latest behaviour inherited from the base class */
++}
++
++DEFINE_SPAPR_MACHINE(5_1, "5.1", true);
++
+ /*
+  * pseries-5.0
+  */
+ static void spapr_machine_5_0_class_options(MachineClass *mc)
+ {
+-    /* Defaults for the latest behaviour inherited from the base class */
++    spapr_machine_5_1_class_options(mc);
++    compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+ }
+=20
+-DEFINE_SPAPR_MACHINE(5_0, "5.0", true);
++DEFINE_SPAPR_MACHINE(5_0, "5.0", false);
+=20
+ /*
+  * pseries-4.2
+diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+index 0fa00a9fff3d..967a6de9683b 100644
+--- a/hw/s390x/s390-virtio-ccw.c
++++ b/hw/s390x/s390-virtio-ccw.c
+@@ -672,14 +672,26 @@ bool css_migration_enabled(void)
+     }                                                                     =
+    \
+     type_init(ccw_machine_register_##suffix)
+=20
++static void ccw_machine_5_1_instance_options(MachineState *machine)
++{
++}
++
++static void ccw_machine_5_1_class_options(MachineClass *mc)
++{
++}
++DEFINE_CCW_MACHINE(5_1, "5.1", true);
++
+ static void ccw_machine_5_0_instance_options(MachineState *machine)
+ {
++    ccw_machine_5_1_instance_options(machine);
+ }
+=20
+ static void ccw_machine_5_0_class_options(MachineClass *mc)
+ {
++    ccw_machine_5_1_class_options(mc);
++    compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+ }
+-DEFINE_CCW_MACHINE(5_0, "5.0", true);
++DEFINE_CCW_MACHINE(5_0, "5.0", false);
+=20
+ static void ccw_machine_4_2_instance_options(MachineState *machine)
+ {
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index fd4d62b5010f..18815d9be24f 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -318,6 +318,9 @@ struct MachineState {
+     } \
+     type_init(machine_initfn##_register_types)
+=20
++extern GlobalProperty hw_compat_5_0[];
++extern const size_t hw_compat_5_0_len;
++
+ extern GlobalProperty hw_compat_4_2[];
+ extern const size_t hw_compat_4_2_len;
+=20
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 6ab6eda046fd..15b9294dac38 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -204,6 +204,9 @@ void pc_system_firmware_init(PCMachineState *pcms, Memo=
+ryRegion *rom_memory);
+ void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+                        const CPUArchIdList *apic_ids, GArray *entry);
+=20
++extern GlobalProperty pc_compat_5_0[];
++extern const size_t pc_compat_5_0_len;
++
+ extern GlobalProperty pc_compat_4_2[];
+ extern const size_t pc_compat_4_2_len;
+=20
+--=20
+2.21.1
 

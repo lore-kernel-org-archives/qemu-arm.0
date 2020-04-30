@@ -1,162 +1,139 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2228244lfm;
-        Thu, 30 Apr 2020 11:44:21 -0700 (PDT)
-X-Google-Smtp-Source: APiQypL52JS8FRR2G0jKbthuYMmN7plC314Bu6aB4Fsa1iFbOmDyC7r6TWh3EyGmSanbRija0Dgw
-X-Received: by 2002:ad4:45ac:: with SMTP id y12mr233356qvu.227.1588272261362;
-        Thu, 30 Apr 2020 11:44:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588272261; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2233175lfm;
+        Thu, 30 Apr 2020 11:49:03 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLHvDX+AkdXSCjkBk8lRzkhPt3HXhSh+qyqLrnRcNnizAbqMPSMCq9vuV2Ngf0ROnk6VGPw
+X-Received: by 2002:a37:b0e:: with SMTP id 14mr4987510qkl.170.1588272543035;
+        Thu, 30 Apr 2020 11:49:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588272543; cv=none;
         d=google.com; s=arc-20160816;
-        b=idwQ088tOsdEOBAUuVeDHAiaWGbmNeeeGLg281/m767o/Z+BxG9DzFSap7yQBlAtqt
-         nyAr4++eF2eI7qAtrjo4XpvdUJgmIWHfdzNjI91BHfslE2Hu2kBzFDyb/OHIbbLpTbkq
-         aPzKMg59auJhBXTqxazfXUZVvTvY8QJ16hT2m5c8OQqyNJG1QZmeiGcwRDouirJ/AO/P
-         xVQ9zSBHAq6/8fVNT1kRuon4hKmDpWELjmqIhjvqJMKiiKOOZe6I9jwAR/tyZ1Xml/MB
-         vjr4EUv6b/RSW//2PWQLP2EIQ+/dN+RZn02WcE/svUPDnZ8a00EFjUaapCAHBWVJUsAQ
-         Jjug==
+        b=II5FG08Q8IseckYr3ziiS7O6Dnn6sT4BhHAyiBevvSLsQi+HCfGPC9z+hwPEyoeGAG
+         yWqzq/VDvg/FmvLHXwsKqKO8JSuY+mIKcE2NPr1RMaViaFq1+fC61IUz656asup5NW2w
+         Um9EbgM14gBL4SNqtO+fPbC9LI7QwVfBmgSvWWpeAll3McL+CLBV8WgERzGHVBrlXFja
+         gHPQaVs3bzppy6pt3PIMfAHwTVmQxB4QnuMcH8mQ+7Xxbvmzfko2486WTu4+GNyOCQpW
+         vXueGyaPJfbiy+NL5twQHagYzZSJO0TbWYx3ATqZ0VA6CqTFqYzIFaZSrUwMJ8zbPy/g
+         XpEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=L5jdqP3nOkRKrOSceDd/G4FGfjto9mJjy8zkhK2QHSU=;
-        b=de/60/SFnODSRvmTngRzHXjvrNDi8fokKyOhve84dPLJvbWXjw2da1bRmrmaus8r0o
-         JjsRAQqPbN52r6bopf9FCtrjhlGpjtAG/+FjGSmcLkw/NVEexDuWKhOooseUwzeV+bqi
-         d8OAoRkiC4UCPyj+lDLyeKrUAeu0suBdRprQlQGa8f/15L1EMbgYqFkxE+scGBpxbdaf
-         HM4S+PE2S7eh5G0bp+rbNdi+vcTiaYy7HugKDHK6PHEYoCmpSfMf3yKaRac+DTwiOsG0
-         D6hoW0+bwq9Asx2zYa9fpnemR/X6vX/84HchTE15UrTgNNvsvBXPs97Pr96oLAqPgM+U
-         4hyw==
+        bh=VcbUvPE2ZRGVxOI9OKFnd+iEsBgZpafMiZ3wjH3hb2M=;
+        b=WnUfVrafzMdGFF4F/XnFcWPWxRdbBbrKscaz31BqsDSLEX0YVOc3aV7GP03CRH7IzV
+         b5WD/0wGNfT9VohW/QpInPbrXXiG9y5IPPWmCGXHsSLqC4bQvrrzpjg0OvmoTRGXrx2A
+         BjowObJVfgL2tdmyw0k/ucN4rU5gKGiGKju2h/ytwVyPOnp6Hb1TUXpNlu3LPKh00C2R
+         uwATTZCkRZd9xjXGO03RWBhZPQhXDr+9gZXBsLAs4eM0cQmCAJOCwonUAcWm+AaNm1Oz
+         lLV1ijyiojT4luEp2A2dtz3INcRmw3/lV9frYw6/bHQayEXWCqmUJrwkk1SF6EwGFk5q
+         WfdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W1rnXekc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bEPYYDwo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id w92si300648qtd.274.2020.04.30.11.44.21
+        by mx.google.com with ESMTPS id z12si229106qkz.166.2020.04.30.11.49.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Apr 2020 11:44:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Thu, 30 Apr 2020 11:49:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W1rnXekc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bEPYYDwo;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59480 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45224 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jUEAW-00057L-Mi
-	for alex.bennee@linaro.org; Thu, 30 Apr 2020 14:44:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38778)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jUEF3-0003Zn-0k
+	for alex.bennee@linaro.org; Thu, 30 Apr 2020 14:49:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39172)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jUDwo-00070j-HO
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 14:30:11 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jUE0h-0006Zf-NQ
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:34:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jUDwm-00050l-HV
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 14:30:10 -0400
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:38366)
+ (envelope-from <richard.henderson@linaro.org>) id 1jUE0h-0003yh-C0
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:34:11 -0400
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:53898)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jUDwm-0004wd-1b
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 14:30:08 -0400
-Received: by mail-pl1-x641.google.com with SMTP id w3so2574649plz.5
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2020 11:30:07 -0700 (PDT)
+ id 1jUE0g-0003y3-NK
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:34:10 -0400
+Received: by mail-pj1-x1044.google.com with SMTP id hi11so1100013pjb.3
+ for <qemu-devel@nongnu.org>; Thu, 30 Apr 2020 11:34:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:references:from:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=L5jdqP3nOkRKrOSceDd/G4FGfjto9mJjy8zkhK2QHSU=;
- b=W1rnXekcKUNYSDzepkfU4jYUx9+6kzFG7m4B6WVYq6FHCCMx9MI/yTao9GcBpMFYoV
- 2yxNetacs9RZsa8dI0Tb9KA7O2EYzeJLauLqA/N8QPILHz271BIicatvtopdO8W4cDYf
- Kn+gndwXjdmjQijlCQiLW81qzJyW0npz4PqIB1ZbZUjKJehrt9ASYkL8W/KzKzvhk8OK
- t1r3KqGVvhcsgU3putfj4ZrFO3n/ZPcJpq8M2GgtVqtUXTsn1y9U9+5V1L+pozyeXfkF
- n+mgt6u1Aw1iA+pcbAtJvSxCzRO6ENf1+cUyjeB0rBw8CoiBEGCMGoAhWFWB5jeEMmXy
- 86aA==
+ bh=VcbUvPE2ZRGVxOI9OKFnd+iEsBgZpafMiZ3wjH3hb2M=;
+ b=bEPYYDwoiVye06OX1TGQatE2OMvpVGSRCJscL7kfn06WEv3cVeJHoq4syk2bn8MLGd
+ ioOnCv3ERqh+2BxCJ2GBVk3N1eWvtbHm9nm86aDQVBPNiqchzjKzBIWe03V8Dd7Tepbc
+ 1Qmc2QuNd6QPM4Qrid4dOFkq5ozrGaNn3Orgt9xTSqF9fiCzabm6Q/z7Wd4NbTVZWQRI
+ YPtpgCotmLkpwc+sLJ/+B1JZP4/jWdzLlIUGZxPc8J41MAE4KZrZLecMR0OO07s4vhli
+ lSZW0qe6vXVlguLQ2S+TniOnjoN1UXd9Cc+HNMP3ZlI+M4ZhFeJOMDQjLEOjuyNoaebY
+ lRcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=L5jdqP3nOkRKrOSceDd/G4FGfjto9mJjy8zkhK2QHSU=;
- b=ZCWgJ1ZCt2qToRLX1SJFEgYuflYLzRWs8f7traMvsFRO8jjc2aY3dlQsqOIM1vUiq8
- 2eNNgizn1grrUe/ZPjYfuFGTlgjhUGuaiZIiWJpalmL+wcdu4nZ9kpwyfLrE8ENygz8G
- rXaxhTbIWox04KYoWdS7uwZ0G7GnaLYYuRMR9KItEAk0xpm0eApBKoIh6c5N7cts32VQ
- CsBWShWTlxuI2B0vDcdiDZnvWoATph9YuJ0kTyncTHgNngXSpcOzCn6ehfA+ZlEzBOdw
- j0n1Pqdqd3RLHcuOP5N7IsA6RA83dbgJGRMevy2i5SRL4hh9qyivY5uyUEnvHeWlmUnh
- W/ZQ==
-X-Gm-Message-State: AGi0PuYafgt1cCQ+e+R0ZlwF75gTWYDZe8SamJUc5lfRRACfDrJUtO1H
- V74rBQxnjgghF6y13G9HQ2JSeQ==
-X-Received: by 2002:a17:90a:1b4c:: with SMTP id q70mr90801pjq.55.1588271406456; 
- Thu, 30 Apr 2020 11:30:06 -0700 (PDT)
+ bh=VcbUvPE2ZRGVxOI9OKFnd+iEsBgZpafMiZ3wjH3hb2M=;
+ b=orbY+FFHk1fRn0zqoUoCHyigrXTjvyRc7MmCPBXK06SZkx0+DtFdhwu/w+Hf9iX0Et
+ YTQkKilp4PIYUd9/GWAONEAeSD7nnBnXaSTR+ezA9430d2hZKzMjbdSvqfBvKhTNGMJf
+ 5pnZYPhXFmUhUyQ8AkL1RZlrHDehsUJoQNPR2U+IQ9pIIRRVeozLUEmEMrkkBd9riLyW
+ 8PUInUxZlLoaFUsYbzbCsKC3nLGxntdJylQ/cIl6sarkmNmwq/x8pSMJS2irQtx+wDSW
+ +aevAaiWK+FOyBaCKhwdGsNG8erXPh6oSLvWpybE5O9v+G3Etd91SbnGq6VqeoUIgnUs
+ 1Srg==
+X-Gm-Message-State: AGi0PuZXVvev5j2s/fsfqrmtOAwertHfkZ0jz6KNKcRegRW1HNPSne7i
+ WMwTyXLIMTGLgfhpwHMUlIZq5SewIhA=
+X-Received: by 2002:a17:902:a511:: with SMTP id
+ s17mr326117plq.33.1588271648833; 
+ Thu, 30 Apr 2020 11:34:08 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id d203sm419462pfd.79.2020.04.30.11.30.04
+ by smtp.gmail.com with ESMTPSA id c15sm405544pfo.188.2020.04.30.11.34.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Apr 2020 11:30:05 -0700 (PDT)
-Subject: Re: [PATCH 03/36] target/arm: Add stubs for AArch32 Neon decodetree
+ Thu, 30 Apr 2020 11:34:07 -0700 (PDT)
+Subject: Re: [PATCH 04/36] target/arm: Convert VCMLA (vector) to decodetree
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20200430181003.21682-1-peter.maydell@linaro.org>
- <20200430181003.21682-4-peter.maydell@linaro.org>
+ <20200430181003.21682-5-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <9fc66f0b-d818-c4e3-db06-5776f97184e6@linaro.org>
-Date: Thu, 30 Apr 2020 11:30:03 -0700
+Message-ID: <074d5df9-8373-95a8-10a6-138327dd0ae1@linaro.org>
+Date: Thu, 30 Apr 2020 11:34:05 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200430181003.21682-4-peter.maydell@linaro.org>
+In-Reply-To: <20200430181003.21682-5-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x641.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1044;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1044.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::641
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::1044
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7sj7Pd3qZUji
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +LgculWH55iI
 
 On 4/30/20 11:09 AM, Peter Maydell wrote:
-> Add the infrastructure for building and invoking a decodetree decoder
-> for the AArch32 Neon encodings.  At the moment the new decoder covers
-> nothing, so we always fall back to the existing hand-written decode.
-> 
-> We follow the same pattern we did for the VFP decodetree conversion
-> (commit 78e138bc1f672c145ef6ace74617d and following): code that deals
-> with Neon will be moving gradually out to translate-neon.vfp.inc,
-> which we #include into translate.c.
-> 
-> In order to share the decode files between A32 and T32, we
-> split Neon into 3 parts:
->  * data-processing
->  * load-store
->  * 'shared' encodings
-> 
-> The first two groups of instructions have similar but not identical
-> A32 and T32 encodings, so we need to manually transform the T32
-> encoding into the A32 one before calling the decoder; the third group
-> covers the Neon instructions which are identical in A32 and T32.
+> Convert the VCMLA (vector) insns in the 3same extension group to
+> decodetree.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target/arm/Makefile.objs        | 18 +++++++++++++++++
->  target/arm/translate-neon.inc.c | 32 +++++++++++++++++++++++++++++
->  target/arm/translate.c          | 36 +++++++++++++++++++++++++++++++--
->  target/arm/neon-dp.decode       | 29 ++++++++++++++++++++++++++
->  target/arm/neon-ls.decode       | 29 ++++++++++++++++++++++++++
->  target/arm/neon-shared.decode   | 27 +++++++++++++++++++++++++
->  6 files changed, 169 insertions(+), 2 deletions(-)
->  create mode 100644 target/arm/translate-neon.inc.c
->  create mode 100644 target/arm/neon-dp.decode
->  create mode 100644 target/arm/neon-ls.decode
->  create mode 100644 target/arm/neon-shared.decode
+>  target/arm/translate-neon.inc.c | 37 +++++++++++++++++++++++++++++++++
+>  target/arm/translate.c          | 11 +---------
+>  target/arm/neon-shared.decode   | 11 ++++++++++
+>  3 files changed, 49 insertions(+), 10 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

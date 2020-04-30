@@ -1,285 +1,244 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2217120lfm;
-        Thu, 30 Apr 2020 11:33:25 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKAB4j9s3f7r69mA0Tj4ZI2FnshG4fEaDSPx/gJBhY+V2BS+7M+tbCBe16bd2uS24NEuPm1
-X-Received: by 2002:aed:3ff4:: with SMTP id w49mr5204780qth.61.1588271604948;
-        Thu, 30 Apr 2020 11:33:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588271604; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2219757lfm;
+        Thu, 30 Apr 2020 11:35:56 -0700 (PDT)
+X-Google-Smtp-Source: APiQypK6U9+KJOGPt9FawugGZIE35nDv3yfwf1MfaaTPjHV/dSc30P0QguKoFwgHBwKaMDCR3siC
+X-Received: by 2002:aed:312a:: with SMTP id 39mr5232892qtg.6.1588271756251;
+        Thu, 30 Apr 2020 11:35:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588271756; cv=none;
         d=google.com; s=arc-20160816;
-        b=efOuY3dQ76hIe1xlyLFUVuXv2eJbfSuyeZ1r6fHtOddxNx+pXGc5PjssV1VsqKVVPy
-         YxMTnMaAMl7aLpYxzGb1wIHfRa1Rx0WD2/aH5qnAIiZtLu5yIe7E36+xftRkYivsYGXN
-         KisQIie7+YDlnw/0vkux0JKP0j5kXaOd6nV2Ryra0nCqTeQhgjr4k2gyA/gC+4Tzbv9J
-         gxgS1CLJGMLz8xu36elf16gFmAtYaDzmLbxVGCl15wjLeIb0nlw78/kEYgKO5b1WKXlh
-         thWkCOqEKKJKLh86AbEcgByOXLotlAMc+HGUALGbIOOL0+Rienp94qQrIk9cY7w9jBfW
-         c83w==
+        b=hfHQebtggrkj1cA/1amHVWOyzOYevZ529cL64OaS7O2564CQad8PlWON/rVbZ/gO6M
+         V+UfiNL6EFv1jog67WtFP0n0YAqHFGw785W16pBIqc/XilgMiqpUA6jdAu/ztyWCwaLd
+         i4PgxcZOMbs62DjbA5PNTstW7/4fqA6xjtWK+6ebiOrGiOPmwlOH+EvZVgMkfo2u+SdO
+         ipUwfSAkQassl/kMx8CQES8B1u555/n0oFoA2FIh7iLhGpWeZQnQrxZcNia4fe4SQwPr
+         97OLzOXW/yKCLPCeojPJ5nqFkxUUM83Ggd25TnygSyW1kIYxSon0FPzNN08a8JxDQtNq
+         xwcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=+Fs4PAxS9dtCpCFLIxob1CFFrrH7DolbHDsxKsK9olg=;
-        b=sfYZqXJlc/qQycKxsTKkqJzAcLLJtRhmyuiqf2XpbNcONUhO9FEtTsKKJaUxNT5iwH
-         Gi/97YofCIup+WqiXU8/KGKyzapZSkqr+9rrmqq0F0YuQo8E2z3KuwhP6odisVZ56zwC
-         BmeHVa0Hw4sNAY3ZR0azdpIxzvd27J3RyWJMhZS0vxeRptlhtOlvQxc+oB9n9gX9+EJ+
-         fCJ/eyhlNgwi6wgs1wgM28/20jtYxEKaO+nWTvn1XqP1XY2I+dbT/3QXhKgNFo4DjHoX
-         j6L7nfUryDSwcUZase7u2qRIBq16gh3H/k/tXMtcWZBgKf53levyj3eG8cGLJZ+DeX5G
-         Q33w==
+        bh=AJuDhNMKtFHxolGAXK2BQLCZ7xRlxZx8fU3lkQGYeGk=;
+        b=JQn96VmDUMAUDKlEPKKdy4YjV4INWOGvRdAtXBe0g/YkkgYFrNjcXOxPrGOov9cxyZ
+         ap4tOcKmGD0zTr6yiH5NP9wxMh/ex32TxwWghGB5E5T3bEqopZkqHuhndbSJLy7BKVIE
+         BapaaFd8PNihHv/wiqBKZXECreoaz5AFxDR5OGk/pL43YQqHiA/ib0nU6/KtIb7Mt47P
+         odN3B/ZgfKvOkTKnZd2IZ7hrzKFko/EorO/xFRY0krbr2Uzyo6PtLu3F51goQBYhhLaP
+         B9WO77eluJg1tkyCZwzgdxz/IFvTfzjiYqTQim8vpRSMJ8bNzq+2pIWyN9ku1nT/ex0c
+         fgaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vSmHwkAW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EPUvXuIJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id p25si177103qkk.319.2020.04.30.11.33.24
+        by mx.google.com with ESMTPS id 19si349968qtp.207.2020.04.30.11.35.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Apr 2020 11:33:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Thu, 30 Apr 2020 11:35:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vSmHwkAW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EPUvXuIJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47124 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56446 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jUDzw-0004YX-97
-	for alex.bennee@linaro.org; Thu, 30 Apr 2020 14:33:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36494)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jUE2N-0008O8-JO
+	for alex.bennee@linaro.org; Thu, 30 Apr 2020 14:35:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36464)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jUDeg-0002sP-53
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 14:11:56 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jUDeb-0002fm-HJ
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:11:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jUDe9-0001X3-0k
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 14:11:25 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:45708)
+ (envelope-from <peter.maydell@linaro.org>) id 1jUDe4-0001M5-VA
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:11:21 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:33252)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jUDe6-0001Me-JE
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 14:10:52 -0400
-Received: by mail-wr1-x443.google.com with SMTP id o27so2858718wra.12
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2020 11:10:49 -0700 (PDT)
+ id 1jUDe2-0001Ke-Hp
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:10:47 -0400
+Received: by mail-wr1-x444.google.com with SMTP id c12so3038496wrp.0
+ for <qemu-devel@nongnu.org>; Thu, 30 Apr 2020 11:10:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=+Fs4PAxS9dtCpCFLIxob1CFFrrH7DolbHDsxKsK9olg=;
- b=vSmHwkAWmXhR/Z4EKoX+jfwJ8EfXjGQxAlrWZyCCTW+pkjVuwgfU+Uwc3OH+rTnJeY
- 7JFvf9YwH7q5pbvY5fmc0H6OcnSGu3e2Z4HLspRfqvTkv21h0aQfGb27rHaaFqmwuSBT
- CrPsvHhBywEwW6QBOI3xJLP9yqNhKmhiWmZAjXOZTGWlWWcr3WZvhNYkoH11oky7muXl
- 5IbDcbV7j1lpbNphUuBQyYBVkjAWvjq7VTtvAFfreyS4MYAqMUDLNyzosMAfIoxxk8AM
- BCXSBgvUfH1wwYZ5uMbxeJjd6DRq8z+GCPpAWglD0Vjkt9xxyceLahTMbm2pdNbZvOGG
- /rTw==
+ bh=AJuDhNMKtFHxolGAXK2BQLCZ7xRlxZx8fU3lkQGYeGk=;
+ b=EPUvXuIJ8oyRZcQqPwItEzbYaRWnPB2oFTqu+9nHKI2BoEXu4zPbv4uaVjfbmm/kIB
+ uaeYbxYFxUGNMHiHZ4lifD3MK6LnWNjtxs5rqh3/ElW9Y/IHNyyOA6sTOONw+AzWZg0K
+ GECtv553SGXGWSwp7eE9cl0hpqh1XlJ34yFrk/nPF+G+QVtZicZjiQXpFiULD54eERi8
+ v1H7nFqNyKvSolj4IC0BnIpr29mvgvkVM8kC/emUzLlUT8FAg8hNlDt4yOaqjeqbZcsP
+ mBFoLysDfU4chRmWqUjzGOT2beupkuecP4LrWnCiW/EvLWXzOBRltqztv7CNW1ljFmOd
+ Ujww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=+Fs4PAxS9dtCpCFLIxob1CFFrrH7DolbHDsxKsK9olg=;
- b=eiMLQel9ENV6kVytO+LrpRX6deuG75Vl6Y9KNM3TgoMrs9or0olkh/gt67cNsjNtFH
- Trw4QjOXr70Z3pXbBC+w4bLjTJB0do/qAa+GP4ZihsCjoH0hjeUZ4rxB13HwpYraAnCG
- iCOhT36nSuQ6aAjW49P8b4dLZVynbkK5uncQjeJEo0Hwg2RBTP1xLOzo6MufrwmTl3Hs
- 4teHJEkqIvHiDG7IakTzrze7pDnI02Jo9QX4yaLU7+o/zTmTOqV33OR7tTAuA4dh8BSP
- aRjPkGGVc4FuUXAHkgNUbGvP3vDV72OnpFfVLXo6tpMLP299McsU/0PdmQYgVK4ya/9V
- Djew==
-X-Gm-Message-State: AGi0PuaGYl1eI5kFDLdThyYMiZqZ1Ht2dCEBaYdJiiEJLyFjHYrG6hpD
- UBzDDB/jVbOmDsL3ju/W0xdFs3a/1wbMuA==
-X-Received: by 2002:a5d:6946:: with SMTP id r6mr4938260wrw.291.1588270247892; 
- Thu, 30 Apr 2020 11:10:47 -0700 (PDT)
+ bh=AJuDhNMKtFHxolGAXK2BQLCZ7xRlxZx8fU3lkQGYeGk=;
+ b=B34boaMWomdEkxutuY+1LXmcYzSFK306ZkrLtEZTlbdbeBKcovC0ZwPcbhKggLl6sy
+ g2ITg7Jt/SyQH7j3nS4GVHMp0ghiQYO3mqeL3oKNY9z6YjIu8rScw0pJNsIoD3GNoQxG
+ 18wNHC1j715i7+47sgyucZoQChprgVo49P0svLCMzlUDlu88dtLdqycNV1uAplMp1O2Z
+ fP6q1MfkjCNL9bfTDBhkY/XaDdWiEWXc6wY8DEOT6dRKgL5MpV5CK0jRvz9CVL/973yV
+ 2logoesyJXin3uILUxfozgErrjjWaNtkZEylCJSfXhHwTln2qDzj7VJ9JM5iyqrlXTY4
+ mG2A==
+X-Gm-Message-State: AGi0Puaw7YIOAlkM1+U5x8dDPTi/Ye1Dft/ppJ4hz38vrdya+DL+xwmX
+ +VXct0RCgMu1Wih9hx4M8wXQRw==
+X-Received: by 2002:adf:eec8:: with SMTP id a8mr5237716wrp.28.1588270243823;
+ Thu, 30 Apr 2020 11:10:43 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id t8sm652421wrq.88.2020.04.30.11.10.46
+ by smtp.gmail.com with ESMTPSA id t8sm652421wrq.88.2020.04.30.11.10.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Apr 2020 11:10:46 -0700 (PDT)
+ Thu, 30 Apr 2020 11:10:43 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 33/36] target/arm: Convert Neon fp VMUL, VMLA,
- VMLS 3-reg-same insns to decodetree
-Date: Thu, 30 Apr 2020 19:10:00 +0100
-Message-Id: <20200430181003.21682-34-peter.maydell@linaro.org>
+Subject: [PATCH 30/36] target/arm: Convert Neon VQDMULH/VQRDMULH 3-reg-same to
+ decodetree
+Date: Thu, 30 Apr 2020 19:09:57 +0100
+Message-Id: <20200430181003.21682-31-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200430181003.21682-1-peter.maydell@linaro.org>
 References: <20200430181003.21682-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x443.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::443
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::444
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NZI1b66HjIdt
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jzQqTH4nu3Fi
 
-Convert the Neon integer VMUL, VMLA, and VMLS 3-reg-same inssn to
-decodetree.
-
-Since VMLA and VMLS accumulate into the destination register, we add
-a reads_vd parameter to do_3same_fp() which tells it to load the
-old value into vd before calling the callback function, in the same
-way that the translate-vfp.inc.c do_vfp_3op_sp() and do_vfp_3op_dp()
-functions work.
-
-This conversion fixes in passing an underdecoding for VMUL
-(originally reported by Fredrik Strupe <fredrik@strupe.net>): bit 1
-of the 'size' field must be 0.  The old decoder didn't enforce this,
-but the decodetree pattern does.
-
-The gen_VMLA_fp_reg() function performs the addition operation
-with the operands in the opposite order to the old decoder:
-since Neon sets 'default NaN mode' float32_add operations are
-commutative so there is no behaviour difference, but putting
-them this way around matches the Arm ARM pseudocode and the
-required operation order for the subtraction in gen_VMLS_fp_reg().
+Convert the Neon VQDMULH and VQRDMULH 3-reg-same insns to
+decodetree. These are the last integer operations in the
+3-reg-same group.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/translate-neon.inc.c | 49 +++++++++++++++++++++++++++------
- target/arm/translate.c          | 17 +-----------
- target/arm/neon-dp.decode       |  3 ++
- 3 files changed, 44 insertions(+), 25 deletions(-)
+ target/arm/translate-neon.inc.c | 44 +++++++++++++++++++++++++++++++++
+ target/arm/translate.c          | 24 +-----------------
+ target/arm/neon-dp.decode       |  3 +++
+ 3 files changed, 48 insertions(+), 23 deletions(-)
 
 diff --git a/target/arm/translate-neon.inc.c b/target/arm/translate-neon.inc.c
-index 30832309924..47879bbb6c9 100644
+index 31a8e4ef486..2fab547840d 100644
 --- a/target/arm/translate-neon.inc.c
 +++ b/target/arm/translate-neon.inc.c
-@@ -1322,9 +1322,15 @@ static bool trans_VQRDMULH_3s(DisasContext *s, arg_3same *a)
-     return do_3same_32(s, a, fns[a->size - 1]);
- }
- 
--static bool do_3same_fp(DisasContext *s, arg_3same *a, VFPGen3OpSPFn *fn)
-+static bool do_3same_fp(DisasContext *s, arg_3same *a, VFPGen3OpSPFn *fn,
-+                        bool reads_vd)
- {
--    /* FP operations handled elementwise 32 bits at a time */
-+    /*
-+     * FP operations handled elementwise 32 bits at a time.
-+     * If reads_vd is true then the old value of Vd will be
-+     * loaded before calling the callback function. This is
-+     * used for multiply-accumulate type operations.
-+     */
-     TCGv_i32 tmp, tmp2;
-     int pass;
- 
-@@ -1350,9 +1356,16 @@ static bool do_3same_fp(DisasContext *s, arg_3same *a, VFPGen3OpSPFn *fn)
-     for (pass = 0; pass < (a->q ? 4 : 2); pass++) {
-         tmp = neon_load_reg(a->vn, pass);
-         tmp2 = neon_load_reg(a->vm, pass);
--        fn(tmp, tmp, tmp2, fpstatus);
-+        if (reads_vd) {
-+            TCGv_i32 tmp_rd = neon_load_reg(a->vd, pass);
-+            fn(tmp_rd, tmp, tmp2, fpstatus);
-+            neon_store_reg(a->vd, pass, tmp_rd);
-+            tcg_temp_free_i32(tmp);
-+        } else {
-+            fn(tmp, tmp, tmp2, fpstatus);
-+            neon_store_reg(a->vd, pass, tmp);
-+        }
-         tcg_temp_free_i32(tmp2);
--        neon_store_reg(a->vd, pass, tmp);
-     }
-     tcg_temp_free_ptr(fpstatus);
-     return true;
-@@ -1362,19 +1375,37 @@ static bool do_3same_fp(DisasContext *s, arg_3same *a, VFPGen3OpSPFn *fn)
-  * For all the functions using this macro, size == 1 means fp16,
-  * which is an architecture extension we don't implement yet.
-  */
--#define DO_3S_FP(INSN,FUNC)                                         \
-+#define DO_3S_FP(INSN,FUNC,READS_VD)                                \
-     static bool trans_##INSN##_fp_3s(DisasContext *s, arg_3same *a) \
-     {                                                               \
-         if (a->size != 0) {                                         \
-             /* TODO fp16 support */                                 \
-             return false;                                           \
-         }                                                           \
--        return do_3same_fp(s, a, FUNC);                             \
-+        return do_3same_fp(s, a, FUNC, READS_VD);                   \
-     }
- 
--DO_3S_FP(VADD, gen_helper_vfp_adds)
--DO_3S_FP(VSUB, gen_helper_vfp_subs)
--DO_3S_FP(VABD, gen_helper_neon_abd_f32)
-+DO_3S_FP(VADD, gen_helper_vfp_adds, false)
-+DO_3S_FP(VSUB, gen_helper_vfp_subs, false)
-+DO_3S_FP(VABD, gen_helper_neon_abd_f32, false)
-+DO_3S_FP(VMUL, gen_helper_vfp_muls, false)
+@@ -1277,3 +1277,47 @@ DO_3SAME_PAIR(VPMIN_S, pmin_s)
+ DO_3SAME_PAIR(VPMAX_U, pmax_u)
+ DO_3SAME_PAIR(VPMIN_U, pmin_u)
+ DO_3SAME_PAIR(VPADD, padd_u)
 +
-+static void gen_VMLA_fp_3s(TCGv_i32 vd, TCGv_i32 vn, TCGv_i32 vm,
-+                            TCGv_ptr fpstatus)
++static void gen_VQDMULH_s16(TCGv_i32 rd, TCGv_i32 rn, TCGv_i32 rm)
 +{
-+    gen_helper_vfp_muls(vn, vn, vm, fpstatus);
-+    gen_helper_vfp_adds(vd, vd, vn, fpstatus);
++    gen_helper_neon_qdmulh_s16(rd, cpu_env, rn, rm);
 +}
 +
-+static void gen_VMLS_fp_3s(TCGv_i32 vd, TCGv_i32 vn, TCGv_i32 vm,
-+                            TCGv_ptr fpstatus)
++static void gen_VQDMULH_s32(TCGv_i32 rd, TCGv_i32 rn, TCGv_i32 rm)
 +{
-+    gen_helper_vfp_muls(vn, vn, vm, fpstatus);
-+    gen_helper_vfp_subs(vd, vd, vn, fpstatus);
++    gen_helper_neon_qdmulh_s32(rd, cpu_env, rn, rm);
 +}
 +
-+DO_3S_FP(VMLA, gen_VMLA_fp_3s, true)
-+DO_3S_FP(VMLS, gen_VMLS_fp_3s, true)
- 
- static bool do_3same_fp_pair(DisasContext *s, arg_3same *a, VFPGen3OpSPFn *fn)
- {
++static bool trans_VQDMULH_3s(DisasContext *s, arg_3same *a)
++{
++    static NeonGenTwoOpFn * const fns[] = {
++        gen_VQDMULH_s16, gen_VQDMULH_s32,
++    };
++
++    if (a->size != 1 && a->size != 2) {
++        return false;
++    }
++    return do_3same_32(s, a, fns[a->size - 1]);
++}
++
++static void gen_VQRDMULH_s16(TCGv_i32 rd, TCGv_i32 rn, TCGv_i32 rm)
++{
++    gen_helper_neon_qrdmulh_s16(rd, cpu_env, rn, rm);
++}
++
++static void gen_VQRDMULH_s32(TCGv_i32 rd, TCGv_i32 rn, TCGv_i32 rm)
++{
++    gen_helper_neon_qrdmulh_s32(rd, cpu_env, rn, rm);
++}
++
++static bool trans_VQRDMULH_3s(DisasContext *s, arg_3same *a)
++{
++    static NeonGenTwoOpFn * const fns[] = {
++        gen_VQRDMULH_s16, gen_VQRDMULH_s32,
++    };
++
++    if (a->size != 1 && a->size != 2) {
++        return false;
++    }
++    return do_3same_32(s, a, fns[a->size - 1]);
++}
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 5ae982ee253..57343daa10a 100644
+index f583cc900e1..9fec1889613 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -4785,6 +4785,7 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+@@ -4784,6 +4784,7 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+         case NEON_3R_VPMAX:
+         case NEON_3R_VPMIN:
          case NEON_3R_VPADD_VQRDMLAH:
-         case NEON_3R_VQDMULH_VQRDMULH:
-         case NEON_3R_FLOAT_ARITH:
-+        case NEON_3R_FLOAT_MULTIPLY:
++        case NEON_3R_VQDMULH_VQRDMULH:
              /* Already handled by decodetree */
              return 1;
          }
-@@ -4831,22 +4832,6 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
-         tmp = neon_load_reg(rn, pass);
-         tmp2 = neon_load_reg(rm, pass);
+@@ -4848,29 +4849,6 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+             tmp2 = neon_load_reg(rm, pass);
+         }
          switch (op) {
--        case NEON_3R_FLOAT_MULTIPLY:
--        {
--            TCGv_ptr fpstatus = get_fpstatus_ptr(1);
--            gen_helper_vfp_muls(tmp, tmp, tmp2, fpstatus);
--            if (!u) {
--                tcg_temp_free_i32(tmp2);
--                tmp2 = neon_load_reg(rd, pass);
--                if (size == 0) {
--                    gen_helper_vfp_adds(tmp, tmp, tmp2, fpstatus);
--                } else {
--                    gen_helper_vfp_subs(tmp, tmp2, tmp, fpstatus);
+-        case NEON_3R_VQDMULH_VQRDMULH: /* Multiply high.  */
+-            if (!u) { /* VQDMULH */
+-                switch (size) {
+-                case 1:
+-                    gen_helper_neon_qdmulh_s16(tmp, cpu_env, tmp, tmp2);
+-                    break;
+-                case 2:
+-                    gen_helper_neon_qdmulh_s32(tmp, cpu_env, tmp, tmp2);
+-                    break;
+-                default: abort();
+-                }
+-            } else { /* VQRDMULH */
+-                switch (size) {
+-                case 1:
+-                    gen_helper_neon_qrdmulh_s16(tmp, cpu_env, tmp, tmp2);
+-                    break;
+-                case 2:
+-                    gen_helper_neon_qrdmulh_s32(tmp, cpu_env, tmp, tmp2);
+-                    break;
+-                default: abort();
 -                }
 -            }
--            tcg_temp_free_ptr(fpstatus);
 -            break;
--        }
-         case NEON_3R_FLOAT_CMP:
+         case NEON_3R_FLOAT_ARITH: /* Floating point arithmetic. */
          {
              TCGv_ptr fpstatus = get_fpstatus_ptr(1);
 diff --git a/target/arm/neon-dp.decode b/target/arm/neon-dp.decode
-index 378c2dd5105..96866c03db4 100644
+index acaf278cc8d..8ceedd8b8d8 100644
 --- a/target/arm/neon-dp.decode
 +++ b/target/arm/neon-dp.decode
-@@ -165,5 +165,8 @@ VADD_fp_3s       1111 001 0 0 . 0 . .... .... 1101 ... 0 .... @3same_fp
- VSUB_fp_3s       1111 001 0 0 . 1 . .... .... 1101 ... 0 .... @3same_fp
- VPADD_fp_3s      1111 001 1 0 . 0 . .... .... 1101 ... 0 .... @3same_fp_q0
- VABD_fp_3s       1111 001 1 0 . 1 . .... .... 1101 ... 0 .... @3same_fp
-+VMLA_fp_3s       1111 001 0 0 . 0 . .... .... 1101 ... 1 .... @3same_fp
-+VMLS_fp_3s       1111 001 0 0 . 1 . .... .... 1101 ... 1 .... @3same_fp
-+VMUL_fp_3s       1111 001 1 0 . 0 . .... .... 1101 ... 1 .... @3same_fp
- VPMAX_fp_3s      1111 001 1 0 . 0 . .... .... 1111 ... 0 .... @3same_fp_q0
- VPMIN_fp_3s      1111 001 1 0 . 1 . .... .... 1111 ... 0 .... @3same_fp_q0
+@@ -137,6 +137,9 @@ VPMAX_U_3s       1111 001 1 0 . .. .... .... 1010 . . . 0 .... @3same_q0
+ VPMIN_S_3s       1111 001 0 0 . .. .... .... 1010 . . . 1 .... @3same_q0
+ VPMIN_U_3s       1111 001 1 0 . .. .... .... 1010 . . . 1 .... @3same_q0
+ 
++VQDMULH_3s       1111 001 0 0 . .. .... .... 1011 . . . 0 .... @3same
++VQRDMULH_3s      1111 001 1 0 . .. .... .... 1011 . . . 0 .... @3same
++
+ VPADD_3s         1111 001 0 0 . .. .... .... 1011 . . . 1 .... @3same_q0
+ 
+ VQRDMLAH_3s      1111 001 1 0 . .. .... .... 1011 ... 1 .... @3same
 -- 
 2.20.1
 

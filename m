@@ -1,103 +1,106 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2082662lfm;
-        Thu, 30 Apr 2020 09:27:30 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIMfstWb1cBO4QZcPrNi5MNTLJUMBsl9YX4XXrlPJQ2pqfumR2tSHtXLUBxq6LrP9Io9pUS
-X-Received: by 2002:a05:6214:7a7:: with SMTP id v7mr3908137qvz.27.1588264050445;
-        Thu, 30 Apr 2020 09:27:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588264050; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2082851lfm;
+        Thu, 30 Apr 2020 09:27:42 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKBRMsRDdl85QJpVnnPP0UpcVaa94qdJQC8NrGBT3m11thr1fzBlJQEUDEj6iv3hBoOi4QG
+X-Received: by 2002:ac8:728b:: with SMTP id v11mr4560579qto.108.1588264061912;
+        Thu, 30 Apr 2020 09:27:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588264061; cv=none;
         d=google.com; s=arc-20160816;
-        b=jIPfTXJC7qm/NCnz5H6JVMnxhSxnR8b3Z3eWnzDji0fhxcXQmIsGfdjl/LUi+f5HpF
-         Til4P5MnXF1vypAsHUB6i/YoIBbHW7L9cZF6q/TpJ1hbBy/rekVvsX8s/RbOPx/ZiiUU
-         VcZh77yrUnE4cevhrIGdLrufFPgPGctBNe9LZVNhMI4KUkQu7MHbN/tyeumhGMzh1tx5
-         M2UNEY2hO64Cu5MTMfJXo+tKWjrJ5luhjn0qYO7PHG4k+tWwOn67ua/L38UClOI9uvbz
-         rEgTV6frq7pCQIQ7TAGm/hgKnhikEhQfjSzXLlbGja82ZR+1tDs5HBgfuPMivMHlXxER
-         hiog==
+        b=pNXS9u87wL/gKL3JvU/8EbRW/xUfkqjA7HDEBNFqKD0Cp9opqtIzxecwOCdwBwDX1Z
+         WyKF2Qd/h3BusJPz7S5wz1n+/SJcjUjC7e5f8okVHGH9bPBw9LgVvbsTe+TONLM1UIba
+         TZCKDW0f1j+IyAcSt5NLVlXFUAwV4m1C1lpN8Q5Iki6AHucqiH3DQ1imjSfoE8PdmOP8
+         RsWdkoZhngbJK+xbIXjBYRuEjOCRCf85iYCEyVdKHKwUghl8sHpEf8Il1iEOj7MSM3aR
+         mgI/yQHwhqkTYkR1QTJk9X/ungR8kvIX/Ht4JcOj5afWra/VWrTE+IG2RSYIqrNI33e1
+         kg9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=AjpYghyNqmUax0+ufzqkeCRlXZXVmlpA7XromECBQGI=;
-        b=PRr7zOrX+DFNL4dDW1wENtsxAPqbMfL8FOn5vLR5uD3W7BIU2KrtPO7v+8m2Ns1tHl
-         x2gzKsfHkc1k2I//pLkJjPx5XwWhFic4ZyzTVbuCLOLGL3qvxwUGh49r7jkweHleEYgZ
-         SVbiWw+zVxeoE1TP0/OT/Ppo+i+lXumEIOq/6YjauRRXtsPQUNr7Hk7eIqUSUEXR/IGG
-         iNGVneBaE/O6cElnyMZIG1E4s53GwZXUiQEJcUyf3fAmDoQlmozTotFU+8xGiwsiILrz
-         JlYYxAalEXOV+jPYAQdDZN4Y6oLlu5i+8kIUlWhuR1/iHQW4P0ug+toSu1Wj5vhvXuj4
-         eD8A==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=bTw+r1KAM6tk84YCEJAq2mxv/RvU4bjcOMBHb9/aNAY=;
+        b=bndACxBxgzD+VH3YUe4rSIAiPkacHkuGLBfb55XATrDN5S8PikPshAPpqxn/WdWw8K
+         TMbdUF/zqZqA1U/MfM4vFa4jbFSGXRSKzuLHo3FaRe7jwFjG14BC0KA2T78ImJUjenIB
+         LBOee52CbXCA+qtUwF1qCQoZTL9Jg8vqHjOwz/FZpLe9HhHe6sdx8maiGC/GW/Yl55b9
+         7LyFCzAo69hp9deHsW+ZySAJpWJSSgrAlpuHzju4S2m68l/ZqxagRwq+FS5y0tlrkItT
+         RfWoBh95WhXgpZgGmQpUw9B/XAok4AnQC5ZSCPiTAO36LR6yLjv+xoFtVkHi1OrR4zOr
+         NCsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mGbak7jq;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=o6m73nrX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id h13si79670qtn.355.2020.04.30.09.27.30
+        by mx.google.com with ESMTPS id 8si34876qky.64.2020.04.30.09.27.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Apr 2020 09:27:30 -0700 (PDT)
+        Thu, 30 Apr 2020 09:27:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mGbak7jq;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=o6m73nrX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46238 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46662 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jUC25-0007LR-Sd
-	for alex.bennee@linaro.org; Thu, 30 Apr 2020 12:27:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48570)
+	id 1jUC2H-0007Yg-92
+	for alex.bennee@linaro.org; Thu, 30 Apr 2020 12:27:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48608)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jUC00-0004tb-2i
- for qemu-devel@nongnu.org; Thu, 30 Apr 2020 12:25:56 -0400
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jUC05-0004y3-58
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 12:26:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jUBzP-0002Gb-RQ
- for qemu-devel@nongnu.org; Thu, 30 Apr 2020 12:25:19 -0400
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:43002)
+ (envelope-from <edgar.iglesias@gmail.com>) id 1jUBzW-0002NP-3t
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 12:25:24 -0400
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:43045)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jUBzP-0002Bh-EL; Thu, 30 Apr 2020 12:24:43 -0400
-Received: by mail-lj1-x242.google.com with SMTP id a21so7127547ljb.9;
- Thu, 30 Apr 2020 09:24:42 -0700 (PDT)
+ id 1jUBzV-0002Ml-MX; Thu, 30 Apr 2020 12:24:49 -0400
+Received: by mail-lf1-x144.google.com with SMTP id 188so1729674lfa.10;
+ Thu, 30 Apr 2020 09:24:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=AjpYghyNqmUax0+ufzqkeCRlXZXVmlpA7XromECBQGI=;
- b=mGbak7jqnfbHDXFv5lgjGr85HKqA2Vr4yi4NIMvsin3yyprfFiY90YNbCP85gtxdv5
- klkXw9jOlJGa0okJ7FZdOSdFDt6XjxO0Z8u5j6korc6B/tZ+1EHskjUyotcKHMtjfFi3
- t3oBewqEvLFSVUcr26RR8vE6RM+m/aamB7HcQBclGzTiYTwgxFQCbLdcwdep4bkzBbN0
- TDOvhtavHJjccHGke0PTR/990nXUN7Xzn5UdHRKFyJyUobDdVAQwK3lI5znLJ/+CJ5Q9
- ruw4NMcNajwkjR5ggP7TqnWKsQrH4O7EtkjkGqYqffqcYpUG0pF5WmWUBUvwy7xx5UF1
- KDIA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=bTw+r1KAM6tk84YCEJAq2mxv/RvU4bjcOMBHb9/aNAY=;
+ b=o6m73nrX2brIizR12/UF04s1YID7nUjrhwY4h7hbsAx5+8BPgmXj3f8h17rLNeWhMg
+ fItL/iVNSR1Vz9GYdvA6mHsEi7fTYMib9LMFoLJgfwHFrxjB0296KS3piloKu/F2ml0z
+ lhAQcb9Dm14m27UCHGY51YCQ9+w7k0b6h3FUDh1GKyQEp/AMcwzABkXK132sZRtlCPt3
+ pQty+aOVYkC4RCru5C2S2ZINnacHmznnZcrhifSPUZc/nvcUYIolN1oa6o7+y1ZSwsHu
+ wZOo52BraTloNGEss0SXTjXNahQu/4SdS8jnFh/DNWYT6AYRpisIm8d5R78J4Tq0OoKO
+ h+Rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=AjpYghyNqmUax0+ufzqkeCRlXZXVmlpA7XromECBQGI=;
- b=IWtVEB0ipxiQzSrFvSlBnY/rWlbZ4829L+MQZoY+lIvnIJUvwKcpi/PQJmAc13ZdFX
- MY+Jrqr2T5/+GFV7coFlEHAGK/0iIZjuuEOrPvEj+Blqlt52Eho4XlHmeorL5uFSKLWs
- 3NcAcEJXLLnfdwptkTPDO4UICIcSm7hQeGqCUI8J9coSmMOAG9sCrgaJLEAhH8er2QpY
- XRR0MCkz04nUSGEEYHuIp579jBNmglPe/0E53PhS5ySAQJaoRgdjwzwD2Ji5MwayB9HB
- OszwWp3z63oTuYuiCmy04sMiB0gX3GqIZPJx2FiFBsfbSJglgSeYklLXeBRHgsztlytC
- 3n+Q==
-X-Gm-Message-State: AGi0PuYCbzPI+y4/676bkxKl2Ov8gpgRnPfXYMeg3d+V55/QLp0P3ivt
- o+V41zO6QKFP6U8kMoUwIkkC5Wq1XYw=
-X-Received: by 2002:a2e:6c08:: with SMTP id h8mr83830ljc.48.1588263880943;
- Thu, 30 Apr 2020 09:24:40 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=bTw+r1KAM6tk84YCEJAq2mxv/RvU4bjcOMBHb9/aNAY=;
+ b=W6eQtAJbzVA9/zvcEpFriy9z/pFQogJ120YF6W5CxfGP6AlPf61xohGyGlWKim1M1z
+ hNrRfVVE/E5njRrSEiXxvWpd99mTn8s2htkw/yjc7eHjT/C0mpofhQD0XHgOJmhaNI76
+ WSkJWGn9NULGSCR3YrLpp2eV79pIAKPMUju5FW/A1elJsiSE+mh3D/TdCBzwYhp81QDi
+ NbxkItjZYV+t9hinZh7GvhELyhMYZ/c40FGxFvcvafWq2oGWfHzzVeu486KhFM38K3Oo
+ Y6PJnN1El2marXvkmES5H/Uz6sWysYqy0j54xbXNq/0WFbqKV+fiil1J0xD92PukP3Nf
+ bZIg==
+X-Gm-Message-State: AGi0Pua1qZGWuxWtlAtHwNnrN1+rhmfXY09FY6E5CFiFwTky/rxyIDkN
+ JZBnzi2LQIyDxS527q3+2VpujYYZ2Jw=
+X-Received: by 2002:a19:c216:: with SMTP id l22mr2529856lfc.172.1588263887435; 
+ Thu, 30 Apr 2020 09:24:47 -0700 (PDT)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id g3sm160825ljj.13.2020.04.30.09.24.40
+ by smtp.gmail.com with ESMTPSA id j29sm94670lfp.90.2020.04.30.09.24.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Apr 2020 09:24:40 -0700 (PDT)
+ Thu, 30 Apr 2020 09:24:46 -0700 (PDT)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v1 0/9] hw/core: stream: Add end-of-packet flag
-Date: Thu, 30 Apr 2020 18:24:30 +0200
-Message-Id: <20200430162439.2659-1-edgar.iglesias@gmail.com>
+Subject: [PATCH v1 5/9] hw/core: stream: Add an end-of-packet flag
+Date: Thu, 30 Apr 2020 18:24:35 +0200
+Message-Id: <20200430162439.2659-6-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200430162439.2659-1-edgar.iglesias@gmail.com>
+References: <20200430162439.2659-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::242;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x242.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::144;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x144.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::242
+X-Received-From: 2a00:1450:4864:20::144
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,45 +119,178 @@ Cc: damien.hedde@greensocs.com, peter.maydell@linaro.org,
  luc.michel@greensocs.com, figlesia@xilinx.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jL94fi/HQRJz
+X-TUID: ap3vh6tczaEF
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Hi,
+Some stream clients stream an endless stream of data while
+other clients stream data in packets. Stream interfaces
+usually have a way to signal the end of a packet or the
+last beat of a transfer.
 
-When modeling pipelines of processing nodes that communicate
-through streaming interfaces (e.g AXI-Stream), some of these
-nodes send packets while others may just stream unpacketized data.
+This adds an end-of-packet flag to the push interface.
 
-The purpose of this series is to add an end-of-packet flag, e.g
-what AXI-Stream calls tlast. This is in preparation for modeling
-future nodes that may use huge packets that we wouldn't be able
-to buffer and also to handle nodes that don't use packets.
-
-Along the way I fixed a few things in the petalinux-ml605 eth setup.
-
-Cheers,
-Edgar
-
-Edgar E. Iglesias (9):
-  hw/net/xilinx_axienet: Auto-clear PHY Autoneg
-  hw/net/xilinx_axienet: Cleanup stream->push assignment
-  hw/net/xilinx_axienet: Remove unncessary cast
-  hw/dma/xilinx_axidma: Add DMA memory-region property
-  hw/core: stream: Add an end-of-packet flag
-  hw/net/xilinx_axienet: Handle fragmented packets from DMA
-  hw/dma/xilinx_axidma: mm2s: Stream descriptor by descriptor
-  hw/dma/xilinx_axidma: s2mm: Support stream fragments
-  MAINTAINERS: Add myself as streams maintainer
-
- include/hw/stream.h     |  5 +--
- hw/core/stream.c        |  4 +--
- hw/dma/xilinx_axidma.c  | 75 ++++++++++++++++++++++++++---------------
- hw/net/xilinx_axienet.c | 63 ++++++++++++++++++++++++----------
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+---
+ include/hw/stream.h     |  5 +++--
+ hw/core/stream.c        |  4 ++--
+ hw/dma/xilinx_axidma.c  | 10 ++++++----
+ hw/net/xilinx_axienet.c | 14 ++++++++++----
  hw/ssi/xilinx_spips.c   |  2 +-
- MAINTAINERS             |  6 ++++
- 6 files changed, 106 insertions(+), 49 deletions(-)
+ 5 files changed, 22 insertions(+), 13 deletions(-)
 
+diff --git a/include/hw/stream.h b/include/hw/stream.h
+index d02f62ca89..ed09e83683 100644
+--- a/include/hw/stream.h
++++ b/include/hw/stream.h
+@@ -39,12 +39,13 @@ typedef struct StreamSlaveClass {
+      * @obj: Stream slave to push to
+      * @buf: Data to write
+      * @len: Maximum number of bytes to write
++     * @eop: End of packet flag
+      */
+-    size_t (*push)(StreamSlave *obj, unsigned char *buf, size_t len);
++    size_t (*push)(StreamSlave *obj, unsigned char *buf, size_t len, bool eop);
+ } StreamSlaveClass;
+ 
+ size_t
+-stream_push(StreamSlave *sink, uint8_t *buf, size_t len);
++stream_push(StreamSlave *sink, uint8_t *buf, size_t len, bool eop);
+ 
+ bool
+ stream_can_push(StreamSlave *sink, StreamCanPushNotifyFn notify,
+diff --git a/hw/core/stream.c b/hw/core/stream.c
+index 39b1e595cd..a65ad1208d 100644
+--- a/hw/core/stream.c
++++ b/hw/core/stream.c
+@@ -3,11 +3,11 @@
+ #include "qemu/module.h"
+ 
+ size_t
+-stream_push(StreamSlave *sink, uint8_t *buf, size_t len)
++stream_push(StreamSlave *sink, uint8_t *buf, size_t len, bool eop)
+ {
+     StreamSlaveClass *k =  STREAM_SLAVE_GET_CLASS(sink);
+ 
+-    return k->push(sink, buf, len);
++    return k->push(sink, buf, len, eop);
+ }
+ 
+ bool
+diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+index 4540051448..a770e12c96 100644
+--- a/hw/dma/xilinx_axidma.c
++++ b/hw/dma/xilinx_axidma.c
+@@ -283,7 +283,7 @@ static void stream_process_mem2s(struct Stream *s, StreamSlave *tx_data_dev,
+ 
+         if (stream_desc_sof(&s->desc)) {
+             s->pos = 0;
+-            stream_push(tx_control_dev, s->desc.app, sizeof(s->desc.app));
++            stream_push(tx_control_dev, s->desc.app, sizeof(s->desc.app), true);
+         }
+ 
+         txlen = s->desc.control & SDESC_CTRL_LEN_MASK;
+@@ -298,7 +298,7 @@ static void stream_process_mem2s(struct Stream *s, StreamSlave *tx_data_dev,
+         s->pos += txlen;
+ 
+         if (stream_desc_eof(&s->desc)) {
+-            stream_push(tx_data_dev, s->txbuf, s->pos);
++            stream_push(tx_data_dev, s->txbuf, s->pos, true);
+             s->pos = 0;
+             stream_complete(s);
+         }
+@@ -384,7 +384,7 @@ static void xilinx_axidma_reset(DeviceState *dev)
+ 
+ static size_t
+ xilinx_axidma_control_stream_push(StreamSlave *obj, unsigned char *buf,
+-                                  size_t len)
++                                  size_t len, bool eop)
+ {
+     XilinxAXIDMAStreamSlave *cs = XILINX_AXI_DMA_CONTROL_STREAM(obj);
+     struct Stream *s = &cs->dma->streams[1];
+@@ -416,12 +416,14 @@ xilinx_axidma_data_stream_can_push(StreamSlave *obj,
+ }
+ 
+ static size_t
+-xilinx_axidma_data_stream_push(StreamSlave *obj, unsigned char *buf, size_t len)
++xilinx_axidma_data_stream_push(StreamSlave *obj, unsigned char *buf, size_t len,
++                               bool eop)
+ {
+     XilinxAXIDMAStreamSlave *ds = XILINX_AXI_DMA_DATA_STREAM(obj);
+     struct Stream *s = &ds->dma->streams[1];
+     size_t ret;
+ 
++    assert(eop);
+     ret = stream_process_s2mem(s, buf, len);
+     stream_update_irq(s);
+     return ret;
+diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+index c8dfcda3ee..bd48305577 100644
+--- a/hw/net/xilinx_axienet.c
++++ b/hw/net/xilinx_axienet.c
+@@ -697,14 +697,14 @@ static void axienet_eth_rx_notify(void *opaque)
+                                            axienet_eth_rx_notify, s)) {
+         size_t ret = stream_push(s->tx_control_dev,
+                                  (void *)s->rxapp + CONTROL_PAYLOAD_SIZE
+-                                 - s->rxappsize, s->rxappsize);
++                                 - s->rxappsize, s->rxappsize, true);
+         s->rxappsize -= ret;
+     }
+ 
+     while (s->rxsize && stream_can_push(s->tx_data_dev,
+                                         axienet_eth_rx_notify, s)) {
+         size_t ret = stream_push(s->tx_data_dev, (void *)s->rxmem + s->rxpos,
+-                                 s->rxsize);
++                                 s->rxsize, true);
+         s->rxsize -= ret;
+         s->rxpos += ret;
+         if (!s->rxsize) {
+@@ -874,12 +874,14 @@ static ssize_t eth_rx(NetClientState *nc, const uint8_t *buf, size_t size)
+ }
+ 
+ static size_t
+-xilinx_axienet_control_stream_push(StreamSlave *obj, uint8_t *buf, size_t len)
++xilinx_axienet_control_stream_push(StreamSlave *obj, uint8_t *buf, size_t len,
++                                   bool eop)
+ {
+     int i;
+     XilinxAXIEnetStreamSlave *cs = XILINX_AXI_ENET_CONTROL_STREAM(obj);
+     XilinxAXIEnet *s = cs->enet;
+ 
++    assert(eop);
+     if (len != CONTROL_PAYLOAD_SIZE) {
+         hw_error("AXI Enet requires %d byte control stream payload\n",
+                  (int)CONTROL_PAYLOAD_SIZE);
+@@ -894,11 +896,15 @@ xilinx_axienet_control_stream_push(StreamSlave *obj, uint8_t *buf, size_t len)
+ }
+ 
+ static size_t
+-xilinx_axienet_data_stream_push(StreamSlave *obj, uint8_t *buf, size_t size)
++xilinx_axienet_data_stream_push(StreamSlave *obj, uint8_t *buf, size_t size,
++                                bool eop)
+ {
+     XilinxAXIEnetStreamSlave *ds = XILINX_AXI_ENET_DATA_STREAM(obj);
+     XilinxAXIEnet *s = ds->enet;
+ 
++    /* We don't support fragmented packets yet.  */
++    assert(eop);
++
+     /* TX enable ?  */
+     if (!(s->tc & TC_TX)) {
+         return size;
+diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
+index c57850a505..4cfce882ab 100644
+--- a/hw/ssi/xilinx_spips.c
++++ b/hw/ssi/xilinx_spips.c
+@@ -868,7 +868,7 @@ static void xlnx_zynqmp_qspips_notify(void *opaque)
+ 
+         memcpy(rq->dma_buf, rxd, num);
+ 
+-        ret = stream_push(rq->dma, rq->dma_buf, num);
++        ret = stream_push(rq->dma, rq->dma_buf, num, false);
+         assert(ret == num);
+         xlnx_zynqmp_qspips_check_flush(rq);
+     }
 -- 
 2.20.1
 

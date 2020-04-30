@@ -1,142 +1,230 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2221197lfm;
-        Thu, 30 Apr 2020 11:37:25 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKwyfozTkjxmgnu6GKfl78hg4C/IMgGnUEFLJ2uvR/QalF7ePvC25YqU3K6AaAvUULXjwUR
-X-Received: by 2002:a37:a806:: with SMTP id r6mr4957906qke.171.1588271845570;
-        Thu, 30 Apr 2020 11:37:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588271845; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2222379lfm;
+        Thu, 30 Apr 2020 11:38:39 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLtUz8zVhm83HxPrSmXzSPWKtp5VlSEhrGFrszj4R+j1tifW74+B84p7ZWv0dZbStKis/f+
+X-Received: by 2002:a0c:eb0e:: with SMTP id j14mr242232qvp.230.1588271919003;
+        Thu, 30 Apr 2020 11:38:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588271918; cv=none;
         d=google.com; s=arc-20160816;
-        b=zzad+cbSwqRg1FjxLwdVWFKQMM5ErqAJLUNBzerqrWKiTxo57+7RZd/ezszA0LJhZv
-         adw+IUE21Fa9NoAP0sBghr4FCnKL4C1e+trCkidHOdaBihwdzRt6QXgajKLlQIQK7fMK
-         yr3BgUw47lkghxXd8TN7LGL8AgRusVC70dUxip04ggkqrGmWozRLzTFx9CW8BiKcT5t9
-         nva0+LssqTOmh2Zc4a5xxp4+LUCjbNM++wcojCVuONTlJF8QoLLX4l+DeYTP0EYQ2Yg2
-         Vq/5OAOpH1gdl2BJG2Pp0Xs9esYZMLbn0QmLCAhIC3hV9w6zovjig+66mqZdy18OKXMF
-         mcww==
+        b=NXHz2ZpPLsir1UPV4aZMrzGvPPH1v0XfL46yQz4lQZZpTrYVXuBICGhyeBlg6VOz5C
+         IO0u/IJ6LThuBYCQaph9Ria/uZzn0oNhUHIpnmRuzwEKFE2Cf2wdDIGyAcJHtiIbr1MK
+         LobKk6VrVzZyFV8qTKSVwGaWtzIfGxyy8dkAIIr5xwRaP4E9UT27je2J8yJRtlD0quyz
+         3XsNFpuMc8JPQ2+q2dgFLs/u8xj3UMzaPG9mF57D64NOR5utMNjGigRgCYOCphiH640q
+         GlWkD7vJyf4NfquFn7hkXoSJ2DpCBZ+dPofTFnfIidtUkRDBoIihCv83sYiFhALD4/bU
+         LyUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=F6g6mEtmbQ9LmExkmTM1p9gOg2bAjlBZQ54zFDHidOA=;
-        b=WeYpg5G1kIZ4whe22zk0B8dq18eLPPenx156PcwDNIqIuhPqzrSBvV4VFoW76BBQAH
-         y1kF0aDgpk68xeyWhL2eQYKhhBzlg0REPu5M0ikMttFjuGrDek9Lebr4W36cW0/hkZy1
-         lO2dEee4+Vx6O9JmC4WBOq7a7KX/wYs+5WQxlaLtA5WDCwDX/wjvGmFn67CgGHJn+w3V
-         yK++4oSrjpSOOLI5WxRJoInLVO/0CP6nz/ILg1H6bdfFPfR/Lpe/i3BSbTBjicn8sGB5
-         W2L/VWRSY4qDwzS3JGBEO3Xv+XEJLVt3TijqraEXQJftKG4CJJAm025mpF+Yc8YyaENy
-         gceA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=br31+94xk2iuX4LX0dtLuZ7yS2HpgC0VmUDIcN1CJ/Y=;
+        b=Wb8gZKVKCLI2yHHA5zKg03ayAQFZP2+6R3+eCjB8Tzai904ZxIk3d4tDhkftMTXYQc
+         9fRtLVF6h9EHy1f0GoIzpERWV7bE1CjVDr9YIKgpdtdGh6M4s9oG8y5tfbqWWWkMLfpR
+         JfDwz6Lsp3Uea9pgV0eLaO2m2Snq5vY1fMenkC2Qe4xGbDtBwLImbvQL3tBkOjJ4owfu
+         6e/Ct26wihN42JdxYVmTThD92YGvd/mTmjrHCFzASExNAP54+toOgos1Y8206+aT/hcE
+         DAblsJ5ATQOydo5zMeHFbZuvAk4SU3XVXM7EClYr1aq6UIb68MXcAeZCNbCXeLnqufAS
+         FQ/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Hjl+krql;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ji4g1vmC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id q12si200151qki.268.2020.04.30.11.37.25
+        by mx.google.com with ESMTPS id w20si298922qtn.67.2020.04.30.11.38.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Apr 2020 11:37:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Thu, 30 Apr 2020 11:38:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Hjl+krql;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ji4g1vmC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35006 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37908 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jUE3o-0002mV-VG
-	for alex.bennee@linaro.org; Thu, 30 Apr 2020 14:37:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37562)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jUE50-0003yQ-6Z
+	for alex.bennee@linaro.org; Thu, 30 Apr 2020 14:38:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36498)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jUDmr-00075c-Uo
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 14:19:54 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jUDeg-0002th-QE
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:11:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jUDmj-0001PC-Jb
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 14:19:53 -0400
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:41263)
+ (envelope-from <peter.maydell@linaro.org>) id 1jUDe9-0001XS-4y
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:11:26 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:46980)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jUDmj-0001Is-4w
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 14:19:45 -0400
-Received: by mail-pl1-x644.google.com with SMTP id d24so2553855pll.8
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2020 11:19:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jUDe8-0001N0-DI
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:10:52 -0400
+Received: by mail-wr1-x441.google.com with SMTP id f13so8126669wrm.13
+ for <qemu-devel@nongnu.org>; Thu, 30 Apr 2020 11:10:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=F6g6mEtmbQ9LmExkmTM1p9gOg2bAjlBZQ54zFDHidOA=;
- b=Hjl+krqllC5v3LPYj5sCC4Ub+vGteAp049Xlj3CEJG8NDIlrvu1PSEM7R1cKeF75gP
- dQywNoOvdch8YlgmQQThPdL0PBZdLsTJKwh1w7+g4nlCxQKyrB354gBGTuqh37I/yQml
- yMYL1OMAuiah5F7S6aj2V8B4cPaXq1zvRNHgYE6PPMX/JaTGjUrbl92oB3+AFyS+j7/o
- FZ40dF5nVBccyTaWV5bM1urUoWxi1P/ZvUjxuHtfLQf4SGkmCxbbrG8FpV8aS2ZXHS+N
- +sSVgZxeyvfuLF28cdpfI4CxDdczGEdRfKLeGFo4+gpxbHo8yVGrIpBEfHYMtwizJH5I
- 2cDw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=br31+94xk2iuX4LX0dtLuZ7yS2HpgC0VmUDIcN1CJ/Y=;
+ b=ji4g1vmCR8QuaWebesXMZpqQ871NJ5xgAmdcGzknTpelxOI0T+f0VfnSto87l2OsFk
+ Sa+txs9AYmhaV+BLK/jRpfBcK/J49jGpkxr21/fAK27DPkXK4PHPUJvwvqV/f7hDQ5mg
+ Xg601r4kdhvibKsg0rFt08GcEpZwwL4b0QMydMrEx7tClxzq+zepKSaU98ilxA3jjF4u
+ BmgPvItDLHauhmtMaqCzpYgT9YOL2AASrB9Q58wFqA3D4sHmKLWezZ34HDMDAk29iWbe
+ 4qm1mP9tXmeudEU6txjRB9l4IeTLPbsXWvU5sG5g2QQoOzKU0PMbDP0/iFnDmeV1DgD7
+ akSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=F6g6mEtmbQ9LmExkmTM1p9gOg2bAjlBZQ54zFDHidOA=;
- b=s1DS7oCVxm7o+lBxwaUrMywI/92UhMqeWfVWY+z2GU79XnYgO/B/CSgUEvs5gPSbOF
- Q9Q1ZGtMltYrt9r0jRYtxNMk+C8lRKyHaiop/FR3Eo+Bc770sISmbUlcufuGaFmxaL/A
- Vl1MhVR4Lrn/W5sG5e4uJ40DqEQKylSjuFkV1V2dIr45dA3Uz0snNqQfhIl6MOso9g5l
- Jt+slE+S3CRrcgow0s6mG1cP+NzOyDy2tNRT6PUs2PvTE8AUnYoav56mSyM1AU7K9vol
- 21s1wXOR5Za88JIEwVr6rYW0P9bR3Q7pZqvTqTzdwtqY44Tx/iHgq7WukfGFiRP/xQs8
- O1og==
-X-Gm-Message-State: AGi0PuaG/Nl9mQIz5NdATvbZGVRUE/IfB5FD6E3MppDP4kFDcHa0tZpO
- AVUVluDZUuMG9HZ9Szo5Ad9G9g==
-X-Received: by 2002:a17:902:32b:: with SMTP id 40mr249114pld.73.1588270782833; 
- Thu, 30 Apr 2020 11:19:42 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id j6sm384256pfe.134.2020.04.30.11.19.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Apr 2020 11:19:41 -0700 (PDT)
-Subject: Re: [PATCH RFC] target/arm: Implement SVE2 bitwise shift immediate
-To: Stephen Long <steplong@quicinc.com>, qemu-devel@nongnu.org
-References: <20200430162828.13993-1-steplong@quicinc.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <84356e80-96fb-e0e8-9fd1-a380c375680a@linaro.org>
-Date: Thu, 30 Apr 2020 11:19:39 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=br31+94xk2iuX4LX0dtLuZ7yS2HpgC0VmUDIcN1CJ/Y=;
+ b=KFVMerFEzJUsiiC27CW5gg4+yc25YOWY0CBvxgBLpk/5RU5HWcWhtwdrpFBCwVCSQ+
+ Gk60PQK1kgR7Zs+XofcVscU2nIpTLJABNVh9PpiI1k4njp7RD06OHSKpMNnACT6wOLs7
+ IGkeYWKl3YHOeyPcJ7RNLgkIqL6G+sPyLDV60u13jaDvnA+1ixQB0Myw4w87qZ1uHWGn
+ KDW6h/8V0WmCNsvFRQG+lQqEecIBlbFP0rnNmyoNhXz9x9S7V+ksI/yBVqLALdpKz/gq
+ 58wZlneU1ueJOkfj5Kq2viZgB9NF+zJmCOEgGbB4w33R14H3rsxgZHirz4yLdcDk/sqg
+ 5s9w==
+X-Gm-Message-State: AGi0PuZ2fgfrDtbpzo6aDY1crz66I0EsCLcEHuk6x/VI3dRFD3LOVeTO
+ HrWFGG+ZrbDo8SOwXfI3Xh+LSw==
+X-Received: by 2002:a5d:61c5:: with SMTP id q5mr5388182wrv.260.1588270249194; 
+ Thu, 30 Apr 2020 11:10:49 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id t8sm652421wrq.88.2020.04.30.11.10.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 Apr 2020 11:10:48 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 34/36] target/arm: Convert Neon 3-reg-same compare insns to
+ decodetree
+Date: Thu, 30 Apr 2020 19:10:01 +0100
+Message-Id: <20200430181003.21682-35-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200430181003.21682-1-peter.maydell@linaro.org>
+References: <20200430181003.21682-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20200430162828.13993-1-steplong@quicinc.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::644;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x644.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::644
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::441
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, apazos@quicinc.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G/wsp5cUwt48
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xHSfY3H88h8/
 
-On 4/30/20 9:28 AM, Stephen Long wrote:
-> Implements SQSHL/UQSHL, SRSHR/URSHR, and SQSHLU
-> 
-> Signed-off-by: Stephen Long <steplong@quicinc.com>
-> ---
-> 
-> I'm not too sure about the casting I'm doing willy nilly in the helper
-> functions, but I think they should be ok. Also, there might be some avenues
-> for optimization when translating similar to asr_zpzi and lsl_zpzi.
+Convert the Neon integer 3-reg-same compare insns VCGE, VCGT,
+VCEQ, VACGE and VACGT to decodetree.
 
-No, the optimization would interfere with the saturation.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/translate-neon.inc.c |  5 +++++
+ target/arm/translate.c          | 39 ++-------------------------------
+ target/arm/neon-dp.decode       |  5 +++++
+ 3 files changed, 12 insertions(+), 37 deletions(-)
 
-The casting is ok except for sqshlu.  Negative values should saturate to 0, but
-by passing them to the uqshl helper, the inputs get treated as large unsigned
-values and saturate to UINT_MAX.  You need to use do_suqrshl_bhs for that.
+diff --git a/target/arm/translate-neon.inc.c b/target/arm/translate-neon.inc.c
+index 47879bbb6c9..29a3f7677c7 100644
+--- a/target/arm/translate-neon.inc.c
++++ b/target/arm/translate-neon.inc.c
+@@ -1389,6 +1389,11 @@ DO_3S_FP(VADD, gen_helper_vfp_adds, false)
+ DO_3S_FP(VSUB, gen_helper_vfp_subs, false)
+ DO_3S_FP(VABD, gen_helper_neon_abd_f32, false)
+ DO_3S_FP(VMUL, gen_helper_vfp_muls, false)
++DO_3S_FP(VCEQ, gen_helper_neon_ceq_f32, false)
++DO_3S_FP(VCGE, gen_helper_neon_cge_f32, false)
++DO_3S_FP(VCGT, gen_helper_neon_cgt_f32, false)
++DO_3S_FP(VACGE, gen_helper_neon_acge_f32, false)
++DO_3S_FP(VACGT, gen_helper_neon_acgt_f32, false)
+ 
+ static void gen_VMLA_fp_3s(TCGv_i32 vd, TCGv_i32 vn, TCGv_i32 vm,
+                             TCGv_ptr fpstatus)
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 57343daa10a..c68dbe126eb 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -4786,6 +4786,8 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+         case NEON_3R_VQDMULH_VQRDMULH:
+         case NEON_3R_FLOAT_ARITH:
+         case NEON_3R_FLOAT_MULTIPLY:
++        case NEON_3R_FLOAT_CMP:
++        case NEON_3R_FLOAT_ACMP:
+             /* Already handled by decodetree */
+             return 1;
+         }
+@@ -4800,17 +4802,6 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+                 return 1; /* VPMIN/VPMAX handled by decodetree */
+             }
+             break;
+-        case NEON_3R_FLOAT_CMP:
+-            if (!u && size) {
+-                /* no encoding for U=0 C=1x */
+-                return 1;
+-            }
+-            break;
+-        case NEON_3R_FLOAT_ACMP:
+-            if (!u) {
+-                return 1;
+-            }
+-            break;
+         case NEON_3R_FLOAT_MISC:
+             /* VMAXNM/VMINNM in ARMv8 */
+             if (u && !arm_dc_feature(s, ARM_FEATURE_V8)) {
+@@ -4832,32 +4823,6 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+         tmp = neon_load_reg(rn, pass);
+         tmp2 = neon_load_reg(rm, pass);
+         switch (op) {
+-        case NEON_3R_FLOAT_CMP:
+-        {
+-            TCGv_ptr fpstatus = get_fpstatus_ptr(1);
+-            if (!u) {
+-                gen_helper_neon_ceq_f32(tmp, tmp, tmp2, fpstatus);
+-            } else {
+-                if (size == 0) {
+-                    gen_helper_neon_cge_f32(tmp, tmp, tmp2, fpstatus);
+-                } else {
+-                    gen_helper_neon_cgt_f32(tmp, tmp, tmp2, fpstatus);
+-                }
+-            }
+-            tcg_temp_free_ptr(fpstatus);
+-            break;
+-        }
+-        case NEON_3R_FLOAT_ACMP:
+-        {
+-            TCGv_ptr fpstatus = get_fpstatus_ptr(1);
+-            if (size == 0) {
+-                gen_helper_neon_acge_f32(tmp, tmp, tmp2, fpstatus);
+-            } else {
+-                gen_helper_neon_acgt_f32(tmp, tmp, tmp2, fpstatus);
+-            }
+-            tcg_temp_free_ptr(fpstatus);
+-            break;
+-        }
+         case NEON_3R_FLOAT_MINMAX:
+         {
+             TCGv_ptr fpstatus = get_fpstatus_ptr(1);
+diff --git a/target/arm/neon-dp.decode b/target/arm/neon-dp.decode
+index 96866c03db4..e90c7a9afe9 100644
+--- a/target/arm/neon-dp.decode
++++ b/target/arm/neon-dp.decode
+@@ -168,5 +168,10 @@ VABD_fp_3s       1111 001 1 0 . 1 . .... .... 1101 ... 0 .... @3same_fp
+ VMLA_fp_3s       1111 001 0 0 . 0 . .... .... 1101 ... 1 .... @3same_fp
+ VMLS_fp_3s       1111 001 0 0 . 1 . .... .... 1101 ... 1 .... @3same_fp
+ VMUL_fp_3s       1111 001 1 0 . 0 . .... .... 1101 ... 1 .... @3same_fp
++VCEQ_fp_3s       1111 001 0 0 . 0 . .... .... 1110 ... 0 .... @3same_fp
++VCGE_fp_3s       1111 001 1 0 . 0 . .... .... 1110 ... 0 .... @3same_fp
++VACGE_fp_3s      1111 001 1 0 . 0 . .... .... 1110 ... 1 .... @3same_fp
++VCGT_fp_3s       1111 001 1 0 . 1 . .... .... 1110 ... 0 .... @3same_fp
++VACGT_fp_3s      1111 001 1 0 . 1 . .... .... 1110 ... 1 .... @3same_fp
+ VPMAX_fp_3s      1111 001 1 0 . 0 . .... .... 1111 ... 0 .... @3same_fp_q0
+ VPMIN_fp_3s      1111 001 1 0 . 1 . .... .... 1111 ... 0 .... @3same_fp_q0
+-- 
+2.20.1
 
-
-r~

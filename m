@@ -1,109 +1,109 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2195605lfm;
-        Thu, 30 Apr 2020 11:13:07 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIrrFjKJ4MZdJ7a5t1pRA2CZ0DH9sNUSCAn4NpqAXCWYKENg/isQk8s1KllBrBeqS6pUHEQ
-X-Received: by 2002:a0c:b659:: with SMTP id q25mr167505qvf.48.1588270387304;
-        Thu, 30 Apr 2020 11:13:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588270387; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2195998lfm;
+        Thu, 30 Apr 2020 11:13:28 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJ+HuhwofEURUZyLykSVnM147QCeFmjQYtH3DcplZhNl0XVf58+9CE71rY7I9FSlq5kVs7y
+X-Received: by 2002:ac8:582:: with SMTP id a2mr5207143qth.62.1588270408250;
+        Thu, 30 Apr 2020 11:13:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588270408; cv=none;
         d=google.com; s=arc-20160816;
-        b=gopfK+AWPqG0j2PKjaMbeVIK2KG84Ys3C8rAqfAe9iPv0UP9GOYJ4tWnhzeTRdXdOD
-         9bAao7ogKewIxTftJuEZz8sqa49bm1icq/yBsaBtFX/V3Vs1Kzz1DFEI2OqPikfene+7
-         b7H+aTJ5DLZ9DJuo3VQ7Uy/Ngn2sA0VPnBSMfrkRzD9XgQ+aHrE4KbVU5UEDVpXXm9cN
-         EEkIW+F6cRlIUDCqtHajLHXFCatckFrL1EldIyJDdYFWO+MnV51V4RgRl12xVtYzcK79
-         UtVYQSo0hqqUeQLf3uJ1ExgAYqKIurifJj1yE7bDblqChGkAd7SCzJOd0dxCRGzJI1cl
-         z7FA==
+        b=b9N0AOZz8QggK/7joSUaSuS0LLzSQaXHD31u3cLjLRkqwoW2p60HfoLBSb09OO5kLv
+         sploQlG5jOZMLpfyOJxqkCwH6o1LRnENaLzm9c0Oi9nlt96T8O7jPcvyIH9Iqrf733oq
+         Tm2LGloGN5CfyDdgv0Kz/0JPpWn09ui3zXJipd98CRtW/VMA9Z01OfLjsxmR2Yc4TBSD
+         1jqzwN5QOsdVmPitpygHyjOPkUqr94Vl26JylRjtMF/gerMWGkdA6rycmyunQo8Txn6Z
+         Jd6nUN5AUwDiBqsFe8qoNIw1JrVMuzHn6Tj8Rk8L4b4W4pWoOqPy7te512eOeGoJ8zpM
+         eemA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=tdNQQWE9wGAC0mH1muH1gEnZ20h4fqSH0abkP54OzAE=;
-        b=lO71PlRMoR0dCggTZ2DzTSlq9xSCN29kHHSk7bzZWGXRsY+03jPmkIRGRcJrDOhcav
-         N0Is/9/ehyaDV1qeNnZ/AsTQB7p1P0ah8UaG7qtL9V8GmIBdG/dUnCE7TSGf51/wDRY2
-         QV++zttiGGVExQdQIvB8/7XSf5cURQRtMTwxaQoW1iiR7dmGZVarbgBmFLympMhuTQll
-         fyQ7EPOm62/p7CRSMeFZZez8JRjO9gWu5XBzhDdhUoql/qc3emUTFWb1Ib/Z47xHAL+b
-         yWUfiOweLWU0LqaxB+L5lwSZtDenIuLBSUybghG1RyEXxezx3ojumcB1Hfah4wmOPxpF
-         XJLQ==
+        bh=tUEcahS4A8n7HVNrT331LibayVMgWGTo+zYLEgvzurM=;
+        b=wii+p3VyzLu4rh8IvafiHq4iHStGMarvnqFKtXQFeoJnB6T3aABJ7N8Lzm1hUd1kss
+         kTuyq47RqVGJ/ik58zxjvnV5rQQDQseXxSpZ+/HfirIRexKU8iX9B5AUsoFIMyBuRdx8
+         bnPCalP44n/7h5/URJ6E6kpvXS6TMK74TsgP9qLF8zWETGqH9rd6PqMGBQjCgm0C3EuI
+         Tgj4kmdRsPH7F7wZu/FMhLJ4WLm7eDPkuTVnKVlnLLJzuLMEpHlsZ7GScWY3m7NV8ioW
+         Ms5RU8eRfYSEHVzoAvYIPXU0cQVxwTv0UsoPph+khQj2cDlrALMP0vS2yrpj/cNDMLcR
+         kspg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mNXtO41R;
+       dkim=pass header.i=@linaro.org header.s=google header.b="F5FX/gXY";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id y10si228799qtn.382.2020.04.30.11.13.07
+        by mx.google.com with ESMTPS id k28si262351qtf.185.2020.04.30.11.13.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Apr 2020 11:13:07 -0700 (PDT)
+        Thu, 30 Apr 2020 11:13:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mNXtO41R;
+       dkim=pass header.i=@linaro.org header.s=google header.b="F5FX/gXY";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38528 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39944 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jUDgI-0004Gq-Lb
-	for alex.bennee@linaro.org; Thu, 30 Apr 2020 14:13:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36000)
+	id 1jUDgd-0004qy-Lo
+	for alex.bennee@linaro.org; Thu, 30 Apr 2020 14:13:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36052)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jUDdp-0001Nk-VN
- for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:11:05 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1jUDdt-0001OG-GX
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:11:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jUDdU-0000LE-E4
- for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:10:33 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:40428)
+ (envelope-from <peter.maydell@linaro.org>) id 1jUDdX-0000VQ-BX
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:10:37 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:54353)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jUDdR-00009C-Bc
- for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:10:11 -0400
-Received: by mail-wr1-x436.google.com with SMTP id e16so3042370wra.7
- for <qemu-devel@nongnu.org>; Thu, 30 Apr 2020 11:10:08 -0700 (PDT)
+ id 1jUDdW-0000MC-My
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 14:10:14 -0400
+Received: by mail-wm1-x341.google.com with SMTP id h4so2975614wmb.4
+ for <qemu-devel@nongnu.org>; Thu, 30 Apr 2020 11:10:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=tdNQQWE9wGAC0mH1muH1gEnZ20h4fqSH0abkP54OzAE=;
- b=mNXtO41RG3npsxp3IJbsRB3TEnEDn5hIoYivrOSJKxiG6x9r9djsgrWUKy/tPz1Txo
- 7EZ+1yPfzFZ1neebWiSs90YVUlKSa8kSd7Dlrb6iqJggy3MhDpfY0fQxsyzxFP9o14fo
- YWtLiZN9uXURGJRh8yrD5Z1uBTp5vCJ1Ul3xbh/bbueyao4Ni2Xf97FRn9dANJYHAKSP
- Lt8QvJuEFVGQTwiUwPI905fPwPlBaXCbMQCPAe28PlMqY+RtCxEXAAyBSxLmD/W/GNRc
- j9bqrFQwN7Aq2nVM7Ffc03qfhER7dbSfRqXOolkYPvzRFAYkq/5fJ5KrycxylJC7hhKI
- chhw==
+ bh=tUEcahS4A8n7HVNrT331LibayVMgWGTo+zYLEgvzurM=;
+ b=F5FX/gXY8ZO/bpRl3UCxFjzk+KYebVfENnudP7qMLN+eMPM2CMkmK4+vW2z/11xEYH
+ kUSYmSsrglNvXYJFLbL9yr9r/Y0d8n90llEMb1EcPaJRm3A2FYgZk90s+J67+Yqv59vu
+ rX557aBJGtbpHSgxY9gOXXtV9qdyD6AyngdMMnr9OTE1HuRNajYAYVBpYSFJfjrIk7MO
+ hvD95jijjZRXTI5fxAhnW54AIBp55W69tzJBdx3igLFmw6/GA6X8I578NwAhlK2m64Zv
+ yloBuBJUFJFX6wBuxH2aw62MUZxx4AE658Vy9UujhTnnH8RObOF7r1ykUZ4h/AFl2jPZ
+ +nxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=tdNQQWE9wGAC0mH1muH1gEnZ20h4fqSH0abkP54OzAE=;
- b=DVFzF1WFrOMGUBtXJ8il/COrdkrcu4HMUmH/snCkqA5MDqeuOSDCkb4XhVoeZMC+me
- C2cGCXqrDIy5DBYIQji+3CwTnVb+LYWqocImydRkRO/CzmGtSzreaILKcVqAYdvsXwa2
- dOoNPEgyeUjIFJG1ww0VPPWrrSziQZQMDSoNfOWya65LrargxM8P4u/WNFK7IPvqOOXt
- u3Ce/P6zu4lgcc6EPVvZ/I6HmoyPyMLltsFQvOkYBF4oaZ3GkLkBwY0EF8g5bE0GAJF+
- 4MohJLfbUKuvC1ive2Hst4bSKpyhTnPntD/faLXWmYzcWX++PmjfQUthxBKSjUy/THb4
- FEmg==
-X-Gm-Message-State: AGi0Pua2WWz0xGdrrEJ97oKU+HIOSo4Tiay8E9fd6+/uaeT0twzLxzgm
- J7JfEL88KbOBkLR0qW6UlzeCrQ==
-X-Received: by 2002:a5d:5386:: with SMTP id d6mr5289201wrv.222.1588270207658; 
- Thu, 30 Apr 2020 11:10:07 -0700 (PDT)
+ bh=tUEcahS4A8n7HVNrT331LibayVMgWGTo+zYLEgvzurM=;
+ b=Z5dHi7/AjCtN+1MrhWsAP98jeqkHjsyFN89LVI6KXyElFhiMxWh9IXdXXwAgJo4IJP
+ SFq9Y//a4F2O7zFjcE0Fr3Ktelyyx9u6Z4y+HoIzquqDaAlgeXtaGyZiWk/rO9xcZBQm
+ 3TQWyDgeK1TPh/IVrdqmrc88mIbGWP6bQIw8yFCYhA5nBtqmH0y/60Dwzzsc3bAhm6s5
+ oLtUNsd8P8Gv547rW74hI8MnsJdpTMPqykufISSa+qY8C2qvtfrDyiOl16MaLj5pzvnX
+ 3NKZS2tSSJihh/OjAoZFNRI9o5JA2VE5DoYrTDHP9Z/ojCe0UM6Xb+XpeAr3c/DfrTak
+ qy5w==
+X-Gm-Message-State: AGi0PubW5pyCvA937w8zlepTPIifG3U2cr6ISSGrDdp1olM7Jtus/B91
+ sk4xdt6BVuIwTORnN9S076TDAmh+JgckAQ==
+X-Received: by 2002:a05:600c:210:: with SMTP id
+ 16mr4146097wmi.57.1588270211970; 
+ Thu, 30 Apr 2020 11:10:11 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id t8sm652421wrq.88.2020.04.30.11.10.06
+ by smtp.gmail.com with ESMTPSA id t8sm652421wrq.88.2020.04.30.11.10.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Apr 2020 11:10:07 -0700 (PDT)
+ Thu, 30 Apr 2020 11:10:10 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 01/36] target/arm/translate-vfp.inc.c: Remove duplicate
- simd_r32 check
-Date: Thu, 30 Apr 2020 19:09:28 +0100
-Message-Id: <20200430181003.21682-2-peter.maydell@linaro.org>
+Subject: [PATCH 04/36] target/arm: Convert VCMLA (vector) to decodetree
+Date: Thu, 30 Apr 2020 19:09:31 +0100
+Message-Id: <20200430181003.21682-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200430181003.21682-1-peter.maydell@linaro.org>
 References: <20200430181003.21682-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::436
+X-Received-From: 2a00:1450:4864:20::341
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -118,34 +118,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4YigeKIRC4iI
+X-TUID: HfUGIPH0wFGC
 
-Somewhere along theline we accidentally added a duplicate
-"using D16-D31 when they don't exist" check to do_vfm_dp()
-(probably an artifact of a patchseries rebase). Remove it.
+Convert the VCMLA (vector) insns in the 3same extension group to
+decodetree.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/translate-vfp.inc.c | 6 ------
- 1 file changed, 6 deletions(-)
+ target/arm/translate-neon.inc.c | 37 +++++++++++++++++++++++++++++++++
+ target/arm/translate.c          | 11 +---------
+ target/arm/neon-shared.decode   | 11 ++++++++++
+ 3 files changed, 49 insertions(+), 10 deletions(-)
 
-diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-index b087bbd812e..e1a90175983 100644
---- a/target/arm/translate-vfp.inc.c
-+++ b/target/arm/translate-vfp.inc.c
-@@ -1872,12 +1872,6 @@ static bool do_vfm_dp(DisasContext *s, arg_VFMA_dp *a, bool neg_n, bool neg_d)
-         return false;
-     }
+diff --git a/target/arm/translate-neon.inc.c b/target/arm/translate-neon.inc.c
+index a33e81ba3ab..0baae1338a3 100644
+--- a/target/arm/translate-neon.inc.c
++++ b/target/arm/translate-neon.inc.c
+@@ -30,3 +30,40 @@
+ #include "decode-neon-dp.inc.c"
+ #include "decode-neon-ls.inc.c"
+ #include "decode-neon-shared.inc.c"
++
++static bool trans_VCMLA(DisasContext *s, arg_VCMLA *a)
++{
++    int opr_sz;
++    TCGv_ptr fpst;
++    gen_helper_gvec_3_ptr *fn_gvec_ptr;
++
++    if (!dc_isar_feature(aa32_vcma, s)
++        || (!a->size && !dc_isar_feature(aa32_fp16_arith, s))) {
++        return false;
++    }
++
++    /* UNDEF accesses to D16-D31 if they don't exist. */
++    if (!dc_isar_feature(aa32_simd_r32, s) &&
++        ((a->vd | a->vn | a->vm) & 0x10)) {
++        return false;
++    }
++
++    if ((a->vn | a->vm | a->vd) & a->q) {
++        return false;
++    }
++
++    if (!vfp_access_check(s)) {
++        return true;
++    }
++
++    opr_sz = (1 + a->q) * 8;
++    fpst = get_fpstatus_ptr(1);
++    fn_gvec_ptr = a->size ? gen_helper_gvec_fcmlas : gen_helper_gvec_fcmlah;
++    tcg_gen_gvec_3_ptr(vfp_reg_offset(1, a->vd),
++                       vfp_reg_offset(1, a->vn),
++                       vfp_reg_offset(1, a->vm),
++                       fpst, opr_sz, opr_sz, a->rot,
++                       fn_gvec_ptr);
++    tcg_temp_free_ptr(fpst);
++    return true;
++}
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index bd766391e9e..17167634e29 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -7048,16 +7048,7 @@ static int disas_neon_insn_3same_ext(DisasContext *s, uint32_t insn)
+     bool is_long = false, q = extract32(insn, 6, 1);
+     bool ptr_is_env = false;
  
--    /* UNDEF accesses to D16-D31 if they don't exist. */
--    if (!dc_isar_feature(aa32_simd_r32, s) &&
--        ((a->vd | a->vn | a->vm) & 0x10)) {
--        return false;
--    }
--
-     if (!vfp_access_check(s)) {
-         return true;
-     }
+-    if ((insn & 0xfe200f10) == 0xfc200800) {
+-        /* VCMLA -- 1111 110R R.1S .... .... 1000 ...0 .... */
+-        int size = extract32(insn, 20, 1);
+-        data = extract32(insn, 23, 2); /* rot */
+-        if (!dc_isar_feature(aa32_vcma, s)
+-            || (!size && !dc_isar_feature(aa32_fp16_arith, s))) {
+-            return 1;
+-        }
+-        fn_gvec_ptr = size ? gen_helper_gvec_fcmlas : gen_helper_gvec_fcmlah;
+-    } else if ((insn & 0xfea00f10) == 0xfc800800) {
++    if ((insn & 0xfea00f10) == 0xfc800800) {
+         /* VCADD -- 1111 110R 1.0S .... .... 1000 ...0 .... */
+         int size = extract32(insn, 20, 1);
+         data = extract32(insn, 24, 1); /* rot */
+diff --git a/target/arm/neon-shared.decode b/target/arm/neon-shared.decode
+index 3aea7c5e188..d1d707a56d5 100644
+--- a/target/arm/neon-shared.decode
++++ b/target/arm/neon-shared.decode
+@@ -25,3 +25,14 @@
+ # More specifically, this covers:
+ # 2reg scalar ext: 0b1111_1110_xxxx_xxxx_xxxx_1x0x_xxxx_xxxx
+ # 3same ext:       0b1111_110x_xxxx_xxxx_xxxx_1x0x_xxxx_xxxx
++
++# VFP/Neon register fields; same as vfp.decode
++%vm_dp  5:1 0:4
++%vm_sp  0:4 5:1
++%vn_dp  7:1 16:4
++%vn_sp  16:4 7:1
++%vd_dp  22:1 12:4
++%vd_sp  12:4 22:1
++
++VCMLA          1111 110 rot:2 . 1 size:1 .... .... 1000 . q:1 . 0 .... \
++               vm=%vm_dp vn=%vn_dp vd=%vd_dp
 -- 
 2.20.1
 

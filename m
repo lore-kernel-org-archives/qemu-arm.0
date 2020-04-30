@@ -1,1103 +1,439 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1868039lfm;
-        Thu, 30 Apr 2020 06:21:36 -0700 (PDT)
-X-Google-Smtp-Source: APiQypILg+ri3wDot/teOH05xRBEr+KnCN0oQbHUYJvZXr5MLVfR4rEYWUEg4Wd4nMy+YbDkaVqu
-X-Received: by 2002:aed:3f1d:: with SMTP id p29mr3691205qtf.14.1588252896455;
-        Thu, 30 Apr 2020 06:21:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588252896; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp1934895lfm;
+        Thu, 30 Apr 2020 07:20:17 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLYgHmTnfaZVZz3489H3wnvP+JEX/Oi9NOcShfxiPhtKYaskAZWUII/7ba1CcP8oSgsmDu3
+X-Received: by 2002:aed:3889:: with SMTP id k9mr3909848qte.347.1588256417208;
+        Thu, 30 Apr 2020 07:20:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588256417; cv=none;
         d=google.com; s=arc-20160816;
-        b=ejjgdl0ePln8ng+SvbTSf5nCAcBe38lkh+PLo1aSQos/kls8SwCXcGXN+5ya2Bxtjp
-         bOENbrLXJrhkxY+2KD/Zbnik7E48HIV8FnmSk9i7o7AuBvIXTTLTB/IIlmnaFeV8C19J
-         9F6FAw6aH0ia/qN/+WwVX4iiCeiyIm8mVzNcNtyO2qzgfXVNIll5ec2kBRq/2wospnwK
-         xKX6n/4MUOHKDvRLSS0Cu5SA/Ncc5twJztmlXA6XpyddI+VBwJPLY8ggrcKinARR+Z/L
-         0Fk6h3BNG5wrtyE3Pprrq3NjXAlf0Zgd0RcIRg0iMHP0Zv2e3cvcG8FPy2pVmVEpClak
-         zEMQ==
+        b=cv/8BSYTdMWn9Yqy4kbGGxRtXAoUx4h449O3RgWagc6RLzqiaNAWpMnkzVh8S1DpxO
+         JxduyA42978FTi5vzpVxwSt3MuJjWsie5AIYfLso+nUJ+y4ainO2d9T2kf0eNAfndyYq
+         YLwqP2lGIKi+hWdE8ga/9miB1r2ZEmMN6vHFjRw5qFg60BvnLc7kGsm6DwGcoebWcHBa
+         RPlxjeIaRsYJqnATSBRDxYI7BeeD3myAfmn1F9uK2YKclfb3WHPIoQ6qzevpKFaS9tRT
+         /BKFIDx7R1vPLQD8OVySBKbvygTmjEzqGmJbyTrreKYDfNc4H0dR+fr6qn0WUM8F9nFx
+         oTig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=hN5h8duPqefLRLaviyorxl7OltUZ9z09gEElZDrzR0w=;
-        b=bJseB6o4CZXuYk6P5Is0zHOeLtoacUXdptwCSEkAllkMqH3fxw0pMft5ZNP9/uJ5uo
-         1CvFFZCKPvHzDiu5FjgbB1/HkMhOcb5IS2qZzw0ji4cl/v4+rUbmxo88e0PHfCAAxHWl
-         tr4jN26Zjrrq4u/sgQL1oxaKd2BB3axEbsG8DgTXOMTjeMpCr0cdphbB7T1hzGJB5ufu
-         e/ApttdEyx8VbrqZltY3sjDVuFWzmJMHJSeatl+sQtMz7z82sBzKwsV2Xk2X0p/MH2TT
-         YceNsnE7Po9+USAdAJ2f6a7wLIgZG1txtFTshZxYD3kNJv/fP2Ukz8tGoTa2flBQ5ldE
-         1QwQ==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:user-agent:in-reply-to:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=EW7SV7tyHMTh5KF/4X/eMJTljtUBK5Lj7FvkxV0jDH8=;
+        b=KY846syf71I2ywpCoiAl72kY/0KoDPKuv1Pikfv/fadBWk+2ByXThaHW8dt+KVyQy8
+         /dkhQOX2WOEOCZdJvYWR0/cHK4D5j6ytpFg0OL9rcP5CQcInC0Li8aOegSt8Da03RLgD
+         rO1+j0SSCJht04CEI+lykZqNKkjRYeUoMthVrrYNn9cemUEgKyQgjnTe+Qss+lo0ZIJc
+         /MZs2CbzJJ2IODWmGOtTf5LaUK4FhZ1oBwWZo6nP5sBZ2RQktDaMZjFB5Zjyw5K6LnFl
+         3ao61oLonSRthnydWxJ90wGciakZy9lSZ4RIutYRBoNstR069gs8WuHCzRV3oEcTJpTy
+         FM+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZWIApO5e;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CTUENHc2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id f1si1393617qkk.284.2020.04.30.06.21.36
+        by mx.google.com with ESMTPS id l19si1423832qvk.94.2020.04.30.07.20.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Apr 2020 06:21:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Thu, 30 Apr 2020 07:20:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZWIApO5e;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54248 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CTUENHc2;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57142 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jU98B-0000Fq-Rd
-	for alex.bennee@linaro.org; Thu, 30 Apr 2020 09:21:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45452)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jUA2y-00014B-FL
+	for alex.bennee@linaro.org; Thu, 30 Apr 2020 10:20:16 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:57710)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jU97F-0007od-99
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 09:20:49 -0400
+ (envelope-from <dgilbert@redhat.com>) id 1jU9xK-0000LL-Ev
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 10:14:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1jU96u-0004lK-Ap
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 09:20:37 -0400
-Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:35571)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jU93y-0003zI-8w; Thu, 30 Apr 2020 09:17:14 -0400
-Received: by mail-lf1-x142.google.com with SMTP id b20so903784lff.2;
- Thu, 30 Apr 2020 06:17:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=hN5h8duPqefLRLaviyorxl7OltUZ9z09gEElZDrzR0w=;
- b=ZWIApO5ejiEC5i0hhHZw5BQYfgqAm1GsviUj+qycg3c4QOXVTmSgqx9qi/BAalYfqB
- 7K5LAnJif8FOYYAGnRoocxRKUHSnVVxIP+ti/XdMQIM2HhxUuCPoZvCIL0vLPaKVrWiQ
- 1NfGkrTUPJO22BVWPHm69cf5l10QAygz9GJ2XpdBU0l+h0KjBtGXhuuslxJLgk42QB4Z
- qHxKi+5k+YhHTN5mhFY7u9kTpyEbES0z7scCATvbsdbgvLXCYNq/swvh1TL8soau7d2B
- tBOSvzGPc8l4VdYBgrmNEJvHEcfc+LINN9363F3zacmXO7BXwroNXZYBt+wmEOfU16mx
- OSHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=hN5h8duPqefLRLaviyorxl7OltUZ9z09gEElZDrzR0w=;
- b=cx8XuL79KFgznNPyWf0lvbchDWTasMCcL3b4MV7I288ppxECEooYwFyTzFeS6GMjNw
- +2QTD6Wtk4sXIgBzi/naaQL4EE/Sv9A4yENXywXUo1wAKsDyIAm1sq3+jRx3wEnxfJVy
- ippE3Gd20uhD8DgfteACPyvwg81UbOyLwsjoUkWtl5eHP5h0N9i7iShGxFi/gKPyHEsr
- zqmsR++f4becQ4zyWi3c8eGUebxGXGL9TpjG1WgMDxI6B0dM3OD4j4zu8L7Y6t8707nB
- bC+m9AFEeeS/AzIsn+ZI2/UKPa6sE5UEy48sDnyVg66+dzhRCwbcj82Mgq5fQTBAB4Oc
- doGQ==
-X-Gm-Message-State: AGi0PuZ5yjSoYQV7+qzSGmzp3Q9jjHgTdS1SyGd4Z4d7uNG3LJ2qDAG1
- HlC1ekSufi0lgaDmmKUJAlc=
-X-Received: by 2002:a19:e86:: with SMTP id 128mr2135346lfo.169.1588252631789; 
- Thu, 30 Apr 2020 06:17:11 -0700 (PDT)
-Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id t13sm4281572ljd.38.2020.04.30.06.17.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Apr 2020 06:17:10 -0700 (PDT)
-Date: Thu, 30 Apr 2020 15:16:38 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Vikram Garhwal <fnuv@xilinx.com>
-Subject: Re: [PATCH v3 1/4] hw/net/can: Introduce Xilinx ZynqMP CAN controller
-Message-ID: <20200430131638.GO2669@toto>
-References: <1587603369-14644-1-git-send-email-fnu.vikram@xilinx.com>
- <1587603369-14644-2-git-send-email-fnu.vikram@xilinx.com>
- <20200428162823.GL2669@toto>
- <BYAPR02MB4823827AA2BA91908BDECDF6BCAC0@BYAPR02MB4823.namprd02.prod.outlook.com>
+ (envelope-from <dgilbert@redhat.com>) id 1jU9vl-0001qG-Lb
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 10:14:26 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:38564
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1jU9vl-0001lN-1U
+ for qemu-devel@nongnu.org; Thu, 30 Apr 2020 10:12:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1588255967;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=EW7SV7tyHMTh5KF/4X/eMJTljtUBK5Lj7FvkxV0jDH8=;
+ b=CTUENHc2mbpMv8M1XJoCyPyG0dIJh1ZX0/NJ/Zs/t1Kdaw7cKOdLQOqGeEBf1h50i4ktKm
+ VzI3Taz0zyxLdRHK8YFt5QUffarv8HV/gPSKPnUNH1FsEiwPmsEFanwDy85rS8JtCtU7f+
+ Ql5H+K/uX07E91b/tg2uRRzUB8U0GFA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-339-fJUrMs0_NHSwW8R-KlDW2w-1; Thu, 30 Apr 2020 10:12:45 -0400
+X-MC-Unique: fJUrMs0_NHSwW8R-KlDW2w-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9934DEC1A2;
+ Thu, 30 Apr 2020 14:12:44 +0000 (UTC)
+Received: from work-vm (ovpn-114-228.ams2.redhat.com [10.36.114.228])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6018951151;
+ Thu, 30 Apr 2020 14:12:42 +0000 (UTC)
+Date: Thu, 30 Apr 2020 15:12:39 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Keqian Zhu <zhukeqian1@huawei.com>
+Subject: Re: [PATCH v3] migration/throttle: Add cpu-throttle-tailslow
+ migration parameter
+Message-ID: <20200430141239.GH2874@work-vm>
+References: <20200413101508.54793-1-zhukeqian1@huawei.com>
 MIME-Version: 1.0
+In-Reply-To: <20200413101508.54793-1-zhukeqian1@huawei.com>
+User-Agent: Mutt/1.13.4 (2020-02-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
-In-Reply-To: <BYAPR02MB4823827AA2BA91908BDECDF6BCAC0@BYAPR02MB4823.namprd02.prod.outlook.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::142;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x142.google.com
-X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2a00:1450:4864:20::142
-X-BeenThere: qemu-arm@nongnu.org
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/04/29 23:34:52
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "damien.hedde@greensocs.com" <damien.hedde@greensocs.com>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "open list:Xilinx ZynqMP" <qemu-arm@nongnu.org>,
- Francisco Eduardo Iglesias <figlesia@xilinx.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S0Ic3Nv6jac3
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ wanghaibin.wang@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ynio2nFYHaZo
 
-On Tue, Apr 28, 2020 at 05:35:46PM +0000, Vikram Garhwal wrote:
-> Hi Edgar,
-> Thanks for review.
-> 
-> > -----Original Message-----
-> > From: Edgar E. Iglesias <edgar.iglesias@gmail.com>
-> > Sent: Tuesday, April 28, 2020 9:28 AM
-> > To: Vikram Garhwal <fnuv@xilinx.com>
-> > Cc: qemu-devel@nongnu.org; Jason Wang <jasowang@redhat.com>;
-> > Alistair Francis <alistair@alistair23.me>; Peter Maydell
-> > <peter.maydell@linaro.org>; open list:Xilinx ZynqMP <qemu-
-> > arm@nongnu.org>; damien.hedde@greensocs.com; Francisco Eduardo
-> > Iglesias <figlesia@xilinx.com>
-> > Subject: Re: [PATCH v3 1/4] hw/net/can: Introduce Xilinx ZynqMP CAN
-> > controller
-> > 
-> > On Wed, Apr 22, 2020 at 05:56:06PM -0700, Vikram Garhwal wrote:
-> > > XlnxCAN is developed based on SocketCAN, QEMU CAN bus
-> > implementation.
-> > > Bus connection and socketCAN connection for each CAN module can be
-> > set
-> > > through command lines.
-> > 
-> > + Damien (there's a reset question for you inline) Francisco
-> > 
-> > Nice Vikram!
-> > 
-> > I've copied Francisco since he was quite invovled with this too.
-> > 
-> > Some comments inline.
-> > 
-> > Cheers,
-> > Edgar
-> > 
-> > >
-> > > Signed-off-by: Vikram Garhwal <fnu.vikram@xilinx.com>
-> > > ---
-> > >  hw/net/can/Makefile.objs         |    1 +
-> > >  hw/net/can/xlnx-zynqmp-can.c     | 1113
-> > ++++++++++++++++++++++++++++++++++++++
-> > >  include/hw/net/xlnx-zynqmp-can.h |   76 +++
-> > >  3 files changed, 1190 insertions(+)
-> > >  create mode 100644 hw/net/can/xlnx-zynqmp-can.c  create mode
-> > 100644
-> > > include/hw/net/xlnx-zynqmp-can.h
-> > >
-> > > diff --git a/hw/net/can/Makefile.objs b/hw/net/can/Makefile.objs index
-> > > 9f0c4ee..0fe87dd 100644
-> > > --- a/hw/net/can/Makefile.objs
-> > > +++ b/hw/net/can/Makefile.objs
-> > > @@ -2,3 +2,4 @@ common-obj-$(CONFIG_CAN_SJA1000) +=
-> > can_sja1000.o
-> > >  common-obj-$(CONFIG_CAN_PCI) += can_kvaser_pci.o
-> > >  common-obj-$(CONFIG_CAN_PCI) += can_pcm3680_pci.o
-> > >  common-obj-$(CONFIG_CAN_PCI) += can_mioe3680_pci.o
-> > > +common-obj-$(CONFIG_XLNX_ZYNQMP) += xlnx-zynqmp-can.o
-> > > diff --git a/hw/net/can/xlnx-zynqmp-can.c
-> > > b/hw/net/can/xlnx-zynqmp-can.c new file mode 100644 index
-> > > 0000000..31799c0
-> > > --- /dev/null
-> > > +++ b/hw/net/can/xlnx-zynqmp-can.c
-> > > @@ -0,0 +1,1113 @@
-> > > +/*
-> > > + * QEMU model of the Xilinx CAN device.
-> > > + *
-> > > + * Copyright (c) 2020 Xilinx Inc.
-> > > + *
-> > > + * Written-by: Vikram Garhwal<fnu.vikram@xilinx.com>
-> > > + *
-> > > + * Based on QEMU CAN Device emulation implemented by Jin Yang,
-> > Deniz
-> > > +Eren and
-> > > + * Pavel Pisa
-> > > + *
-> > > + * Permission is hereby granted, free of charge, to any person
-> > > +obtaining a copy
-> > > + * of this software and associated documentation files (the
-> > > +"Software"), to deal
-> > > + * in the Software without restriction, including without limitation
-> > > +the rights
-> > > + * to use, copy, modify, merge, publish, distribute, sublicense,
-> > > +and/or sell
-> > > + * copies of the Software, and to permit persons to whom the Software
-> > > +is
-> > > + * furnished to do so, subject to the following conditions:
-> > > + *
-> > > + * The above copyright notice and this permission notice shall be
-> > > +included in
-> > > + * all copies or substantial portions of the Software.
-> > > + *
-> > > + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
-> > KIND,
-> > > +EXPRESS OR
-> > > + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-> > > +MERCHANTABILITY,
-> > > + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
-> > EVENT
-> > > +SHALL
-> > > + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-> > DAMAGES
-> > > +OR OTHER
-> > > + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-> > OTHERWISE,
-> > > +ARISING FROM,
-> > > + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-> > OTHER
-> > > +DEALINGS IN
-> > > + * THE SOFTWARE.
-> > > + */
-> > > +
-> > > +#include "qemu/osdep.h"
-> > > +#include "hw/sysbus.h"
-> > > +#include "hw/register.h"
-> > > +#include "hw/irq.h"
-> > > +#include "qapi/error.h"
-> > > +#include "qemu/bitops.h"
-> > > +#include "qemu/log.h"
-> > > +#include "qemu/cutils.h"
-> > > +#include "sysemu/sysemu.h"
-> > > +#include "migration/vmstate.h"
-> > > +#include "hw/qdev-properties.h"
-> > > +#include "net/can_emu.h"
-> > > +#include "net/can_host.h"
-> > > +#include "qemu/event_notifier.h"
-> > > +#include "qom/object_interfaces.h"
-> > > +#include "hw/net/xlnx-zynqmp-can.h"
-> > > +
-> > > +#ifndef XLNX_ZYNQMP_CAN_ERR_DEBUG
-> > > +#define XLNX_ZYNQMP_CAN_ERR_DEBUG 0
-> > > +#endif
-> > > +
-> > > +#define DB_PRINT(...) do { \
-> > > +    if (XLNX_ZYNQMP_CAN_ERR_DEBUG) { \
-> > > +        qemu_log(__VA_ARGS__); \
-> > > +    } \
-> > > +} while (0)
-> > > +
-> > > +#define MAX_DLC            8
-> > > +#undef ERROR
-> > > +
-> > > +REG32(SOFTWARE_RESET_REGISTER, 0x0)
-> > > +    FIELD(SOFTWARE_RESET_REGISTER, CEN, 1, 1)
-> > > +    FIELD(SOFTWARE_RESET_REGISTER, SRST, 0, 1)
-> > > +REG32(MODE_SELECT_REGISTER, 0x4)
-> > > +    FIELD(MODE_SELECT_REGISTER, SNOOP, 2, 1)
-> > > +    FIELD(MODE_SELECT_REGISTER, LBACK, 1, 1)
-> > > +    FIELD(MODE_SELECT_REGISTER, SLEEP, 0, 1)
-> > > +REG32(ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER, 0x8)
-> > > +    FIELD(ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER, BRP,
-> > 0, 8)
-> > > +REG32(ARBITRATION_PHASE_BIT_TIMING_REGISTER, 0xc)
-> > > +    FIELD(ARBITRATION_PHASE_BIT_TIMING_REGISTER, SJW, 7, 2)
-> > > +    FIELD(ARBITRATION_PHASE_BIT_TIMING_REGISTER, TS2, 4, 3)
-> > > +    FIELD(ARBITRATION_PHASE_BIT_TIMING_REGISTER, TS1, 0, 4)
-> > > +REG32(ERROR_COUNTER_REGISTER, 0x10)
-> > > +    FIELD(ERROR_COUNTER_REGISTER, REC, 8, 8)
-> > > +    FIELD(ERROR_COUNTER_REGISTER, TEC, 0, 8)
-> > > +REG32(ERROR_STATUS_REGISTER, 0x14)
-> > > +    FIELD(ERROR_STATUS_REGISTER, ACKER, 4, 1)
-> > > +    FIELD(ERROR_STATUS_REGISTER, BERR, 3, 1)
-> > > +    FIELD(ERROR_STATUS_REGISTER, STER, 2, 1)
-> > > +    FIELD(ERROR_STATUS_REGISTER, FMER, 1, 1)
-> > > +    FIELD(ERROR_STATUS_REGISTER, CRCER, 0, 1)
-> > REG32(STATUS_REGISTER,
-> > > +0x18)
-> > > +    FIELD(STATUS_REGISTER, SNOOP, 12, 1)
-> > > +    FIELD(STATUS_REGISTER, ACFBSY, 11, 1)
-> > > +    FIELD(STATUS_REGISTER, TXFLL, 10, 1)
-> > > +    FIELD(STATUS_REGISTER, TXBFLL, 9, 1)
-> > > +    FIELD(STATUS_REGISTER, ESTAT, 7, 2)
-> > > +    FIELD(STATUS_REGISTER, ERRWRN, 6, 1)
-> > > +    FIELD(STATUS_REGISTER, BBSY, 5, 1)
-> > > +    FIELD(STATUS_REGISTER, BIDLE, 4, 1)
-> > > +    FIELD(STATUS_REGISTER, NORMAL, 3, 1)
-> > > +    FIELD(STATUS_REGISTER, SLEEP, 2, 1)
-> > > +    FIELD(STATUS_REGISTER, LBACK, 1, 1)
-> > > +    FIELD(STATUS_REGISTER, CONFIG, 0, 1)
-> > > +REG32(INTERRUPT_STATUS_REGISTER, 0x1c)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, TXFEMP, 14, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, TXFWMEMP, 13, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, RXFWMFLL, 12, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, WKUP, 11, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, SLP, 10, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, BSOFF, 9, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, ERROR, 8, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, RXNEMP, 7, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, RXOFLW, 6, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, RXUFLW, 5, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, RXOK, 4, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, TXBFLL, 3, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, TXFLL, 2, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, TXOK, 1, 1)
-> > > +    FIELD(INTERRUPT_STATUS_REGISTER, ARBLST, 0, 1)
-> > > +REG32(INTERRUPT_ENABLE_REGISTER, 0x20)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, ETXFEMP, 14, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, ETXFWMEMP, 13, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, ERXFWMFLL, 12, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, EWKUP, 11, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, ESLP, 10, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, EBSOFF, 9, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, EERROR, 8, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, ERXNEMP, 7, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, ERXOFLW, 6, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, ERXUFLW, 5, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, ERXOK, 4, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, ETXBFLL, 3, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, ETXFLL, 2, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, ETXOK, 1, 1)
-> > > +    FIELD(INTERRUPT_ENABLE_REGISTER, EARBLST, 0, 1)
-> > > +REG32(INTERRUPT_CLEAR_REGISTER, 0x24)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CTXFEMP, 14, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CTXFWMEMP, 13, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CRXFWMFLL, 12, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CWKUP, 11, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CSLP, 10, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CBSOFF, 9, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CERROR, 8, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CRXNEMP, 7, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CRXOFLW, 6, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CRXUFLW, 5, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CRXOK, 4, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CTXBFLL, 3, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CTXFLL, 2, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CTXOK, 1, 1)
-> > > +    FIELD(INTERRUPT_CLEAR_REGISTER, CARBLST, 0, 1)
-> > > +REG32(TIMESTAMP_REGISTER, 0x28)
-> > > +    FIELD(TIMESTAMP_REGISTER, CTS, 0, 1) REG32(WIR, 0x2c)
-> > > +    FIELD(WIR, EW, 8, 8)
-> > > +    FIELD(WIR, FW, 0, 8)
-> > > +REG32(TXFIFO_ID, 0x30)
-> > > +    FIELD(TXFIFO_ID, IDH, 21, 11)
-> > > +    FIELD(TXFIFO_ID, SRRRTR, 20, 1)
-> > > +    FIELD(TXFIFO_ID, IDE, 19, 1)
-> > > +    FIELD(TXFIFO_ID, IDL, 1, 18)
-> > > +    FIELD(TXFIFO_ID, RTR, 0, 1)
-> > > +REG32(TXFIFO_DLC, 0x34)
-> > > +    FIELD(TXFIFO_DLC, DLC, 28, 4)
-> > > +REG32(TXFIFO_DATA1, 0x38)
-> > > +    FIELD(TXFIFO_DATA1, DB0, 24, 8)
-> > > +    FIELD(TXFIFO_DATA1, DB1, 16, 8)
-> > > +    FIELD(TXFIFO_DATA1, DB2, 8, 8)
-> > > +    FIELD(TXFIFO_DATA1, DB3, 0, 8)
-> > > +REG32(TXFIFO_DATA2, 0x3c)
-> > > +    FIELD(TXFIFO_DATA2, DB4, 24, 8)
-> > > +    FIELD(TXFIFO_DATA2, DB5, 16, 8)
-> > > +    FIELD(TXFIFO_DATA2, DB6, 8, 8)
-> > > +    FIELD(TXFIFO_DATA2, DB7, 0, 8)
-> > > +REG32(TXHPB_ID, 0x40)
-> > > +    FIELD(TXHPB_ID, IDH, 21, 11)
-> > > +    FIELD(TXHPB_ID, SRRRTR, 20, 1)
-> > > +    FIELD(TXHPB_ID, IDE, 19, 1)
-> > > +    FIELD(TXHPB_ID, IDL, 1, 18)
-> > > +    FIELD(TXHPB_ID, RTR, 0, 1)
-> > > +REG32(TXHPB_DLC, 0x44)
-> > > +    FIELD(TXHPB_DLC, DLC, 28, 4)
-> > > +REG32(TXHPB_DATA1, 0x48)
-> > > +    FIELD(TXHPB_DATA1, DB0, 24, 8)
-> > > +    FIELD(TXHPB_DATA1, DB1, 16, 8)
-> > > +    FIELD(TXHPB_DATA1, DB2, 8, 8)
-> > > +    FIELD(TXHPB_DATA1, DB3, 0, 8)
-> > > +REG32(TXHPB_DATA2, 0x4c)
-> > > +    FIELD(TXHPB_DATA2, DB4, 24, 8)
-> > > +    FIELD(TXHPB_DATA2, DB5, 16, 8)
-> > > +    FIELD(TXHPB_DATA2, DB6, 8, 8)
-> > > +    FIELD(TXHPB_DATA2, DB7, 0, 8)
-> > > +REG32(RXFIFO_ID, 0x50)
-> > > +    FIELD(RXFIFO_ID, IDH, 21, 11)
-> > > +    FIELD(RXFIFO_ID, SRRRTR, 20, 1)
-> > > +    FIELD(RXFIFO_ID, IDE, 19, 1)
-> > > +    FIELD(RXFIFO_ID, IDL, 1, 18)
-> > > +    FIELD(RXFIFO_ID, RTR, 0, 1)
-> > > +REG32(RXFIFO_DLC, 0x54)
-> > > +    FIELD(RXFIFO_DLC, DLC, 28, 4)
-> > > +    FIELD(RXFIFO_DLC, RXT, 0, 16)
-> > > +REG32(RXFIFO_DATA1, 0x58)
-> > > +    FIELD(RXFIFO_DATA1, DB0, 24, 8)
-> > > +    FIELD(RXFIFO_DATA1, DB1, 16, 8)
-> > > +    FIELD(RXFIFO_DATA1, DB2, 8, 8)
-> > > +    FIELD(RXFIFO_DATA1, DB3, 0, 8)
-> > > +REG32(RXFIFO_DATA2, 0x5c)
-> > > +    FIELD(RXFIFO_DATA2, DB4, 24, 8)
-> > > +    FIELD(RXFIFO_DATA2, DB5, 16, 8)
-> > > +    FIELD(RXFIFO_DATA2, DB6, 8, 8)
-> > > +    FIELD(RXFIFO_DATA2, DB7, 0, 8)
-> > > +REG32(AFR, 0x60)
-> > > +    FIELD(AFR, UAF4, 3, 1)
-> > > +    FIELD(AFR, UAF3, 2, 1)
-> > > +    FIELD(AFR, UAF2, 1, 1)
-> > > +    FIELD(AFR, UAF1, 0, 1)
-> > > +REG32(AFMR1, 0x64)
-> > > +    FIELD(AFMR1, AMIDH, 21, 11)
-> > > +    FIELD(AFMR1, AMSRR, 20, 1)
-> > > +    FIELD(AFMR1, AMIDE, 19, 1)
-> > > +    FIELD(AFMR1, AMIDL, 1, 18)
-> > > +    FIELD(AFMR1, AMRTR, 0, 1)
-> > > +REG32(AFIR1, 0x68)
-> > > +    FIELD(AFIR1, AIIDH, 21, 11)
-> > > +    FIELD(AFIR1, AISRR, 20, 1)
-> > > +    FIELD(AFIR1, AIIDE, 19, 1)
-> > > +    FIELD(AFIR1, AIIDL, 1, 18)
-> > > +    FIELD(AFIR1, AIRTR, 0, 1)
-> > > +REG32(AFMR2, 0x6c)
-> > > +    FIELD(AFMR2, AMIDH, 21, 11)
-> > > +    FIELD(AFMR2, AMSRR, 20, 1)
-> > > +    FIELD(AFMR2, AMIDE, 19, 1)
-> > > +    FIELD(AFMR2, AMIDL, 1, 18)
-> > > +    FIELD(AFMR2, AMRTR, 0, 1)
-> > > +REG32(AFIR2, 0x70)
-> > > +    FIELD(AFIR2, AIIDH, 21, 11)
-> > > +    FIELD(AFIR2, AISRR, 20, 1)
-> > > +    FIELD(AFIR2, AIIDE, 19, 1)
-> > > +    FIELD(AFIR2, AIIDL, 1, 18)
-> > > +    FIELD(AFIR2, AIRTR, 0, 1)
-> > > +REG32(AFMR3, 0x74)
-> > > +    FIELD(AFMR3, AMIDH, 21, 11)
-> > > +    FIELD(AFMR3, AMSRR, 20, 1)
-> > > +    FIELD(AFMR3, AMIDE, 19, 1)
-> > > +    FIELD(AFMR3, AMIDL, 1, 18)
-> > > +    FIELD(AFMR3, AMRTR, 0, 1)
-> > > +REG32(AFIR3, 0x78)
-> > > +    FIELD(AFIR3, AIIDH, 21, 11)
-> > > +    FIELD(AFIR3, AISRR, 20, 1)
-> > > +    FIELD(AFIR3, AIIDE, 19, 1)
-> > > +    FIELD(AFIR3, AIIDL, 1, 18)
-> > > +    FIELD(AFIR3, AIRTR, 0, 1)
-> > > +REG32(AFMR4, 0x7c)
-> > > +    FIELD(AFMR4, AMIDH, 21, 11)
-> > > +    FIELD(AFMR4, AMSRR, 20, 1)
-> > > +    FIELD(AFMR4, AMIDE, 19, 1)
-> > > +    FIELD(AFMR4, AMIDL, 1, 18)
-> > > +    FIELD(AFMR4, AMRTR, 0, 1)
-> > > +REG32(AFIR4, 0x80)
-> > > +    FIELD(AFIR4, AIIDH, 21, 11)
-> > > +    FIELD(AFIR4, AISRR, 20, 1)
-> > > +    FIELD(AFIR4, AIIDE, 19, 1)
-> > > +    FIELD(AFIR4, AIIDL, 1, 18)
-> > > +    FIELD(AFIR4, AIRTR, 0, 1)
-> > > +
-> > > +static void can_update_irq(XlnxZynqMPCANState *s) {
-> > > +    unsigned int irq;
-> > > +
-> > > +    /* Watermark register interrupts. */
-> > > +    if ((fifo32_num_free(&s->tx_fifo) / CAN_FRAME_SIZE) >
-> > > +            ARRAY_FIELD_EX32(s->regs, WIR, EW)) {
-> > > +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER,
-> > TXFWMEMP, 1);
-> > > +    }
-> > > +
-> > > +    if ((fifo32_num_used(&s->rx_fifo) / CAN_FRAME_SIZE) >
-> > > +            ARRAY_FIELD_EX32(s->regs, WIR, FW)) {
-> > > +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER,
-> > RXFWMFLL, 1);
-> > > +    }
-> > > +
-> > > +    /* RX Interrupts. */
-> > > +    if (fifo32_num_used(&s->rx_fifo) >= CAN_FRAME_SIZE) {
-> > > +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER,
-> > RXNEMP, 1);
-> > > +    }
-> > > +
-> > > +    /* TX interrupts. */
-> > > +    if (fifo32_is_empty(&s->tx_fifo)) {
-> > > +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER,
-> > TXFEMP, 1);
-> > > +    }
-> > > +
-> > > +    if (fifo32_is_full(&s->tx_fifo)) {
-> > > +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXFLL,
-> > 1);
-> > > +    }
-> > > +
-> > > +    if (fifo32_is_full(&s->txhpb_fifo)) {
-> > > +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXBFLL,
-> > 1);
-> > > +    }
-> > > +
-> > > +    irq = s->regs[R_INTERRUPT_STATUS_REGISTER];
-> > > +    irq &= s->regs[R_INTERRUPT_ENABLE_REGISTER];
-> > 
-> > Since you're working with s->regs[], it would be cleaner to make irq the
-> > same type as the regs (i.e uint32_t).
-> [Vikram Garhwal] I will change the irq data type.
-> > 
-> > > +
-> > > +    qemu_set_irq(s->irq, irq);
-> > > +}
-> > > +
-> > > +static void can_ier_post_write(RegisterInfo *reg, uint64_t val64) {
-> > > +    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
-> > > +
-> > > +    can_update_irq(s);
-> > > +}
-> > > +
-> > > +static uint64_t can_icr_pre_write(RegisterInfo *reg, uint64_t val64)
-> > > +{
-> > > +    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
-> > > +    uint32_t val = val64;
-> > > +
-> > > +    s->regs[R_INTERRUPT_STATUS_REGISTER] &= ~val;
-> > > +    can_update_irq(s);
-> > > +
-> > > +    return 0;
-> > > +}
-> > > +
-> > > +static void can_config_reset(XlnxZynqMPCANState *s) {
-> > > +    /* Reset all the configuration registers. */
-> > > +    register_reset(&s->reg_info[R_SOFTWARE_RESET_REGISTER]);
-> > > +    register_reset(&s->reg_info[R_MODE_SELECT_REGISTER]);
-> > > +    register_reset(
-> > > +              &s-
-> > >reg_info[R_ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER]);
-> > > +    register_reset(&s-
-> > >reg_info[R_ARBITRATION_PHASE_BIT_TIMING_REGISTER]);
-> > > +    register_reset(&s->reg_info[R_STATUS_REGISTER]);
-> > > +    register_reset(&s->reg_info[R_INTERRUPT_STATUS_REGISTER]);
-> > > +    register_reset(&s->reg_info[R_INTERRUPT_ENABLE_REGISTER]);
-> > > +    register_reset(&s->reg_info[R_INTERRUPT_CLEAR_REGISTER]);
-> > > +    register_reset(&s->reg_info[R_WIR]);
-> > > +}
-> > > +
-> > > +static void can_config_mode(XlnxZynqMPCANState *s) {
-> > > +    register_reset(&s->reg_info[R_ERROR_COUNTER_REGISTER]);
-> > > +    register_reset(&s->reg_info[R_ERROR_STATUS_REGISTER]);
-> > > +
-> > > +    /* Put XlnxZynqMPCANState in configuration mode. */
-> > > +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, CONFIG, 1);
-> > > +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, WKUP,
-> > 0);
-> > > +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, SLP, 0);
-> > > +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, BSOFF,
-> > 0);
-> > > +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, ERROR,
-> > 0);
-> > > +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXOFLW,
-> > 0);
-> > > +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, RXOK, 0);
-> > > +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXOK, 0);
-> > > +    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, ARBLST,
-> > 0);
-> > > +
-> > > +    can_update_irq(s);
-> > > +}
-> > > +
-> > > +static void update_status_register_mode_bits(XlnxZynqMPCANState *s)
-> > {
-> > > +    /* Wake up interrupt bit. */
-> > > +    bool wakeup_irq_val = (ARRAY_FIELD_EX32(s->regs,
-> > MODE_SELECT_REGISTER,
-> > > +                            SLEEP) == 0) && ARRAY_FIELD_EX32(s->regs,
-> > > +                            STATUS_REGISTER, SLEEP);
-> > 
-> > Looks like you have too many layers of parentheses here?
-> > 
-> [Vikram Garhwal] I will make this look more cleaner.
-> > > +
-> > > +    /* Sleep interrupt bit. */
-> > > +    bool sleep_irq_val = (ARRAY_FIELD_EX32(s->regs,
-> > MODE_SELECT_REGISTER,
-> > > +                            SLEEP) && (ARRAY_FIELD_EX32(s->regs,
-> > > +                            STATUS_REGISTER, SLEEP) == 0));
-> > 
-> > Here too.
-> > 
-> > 
-> > > +
-> > > +    /* Clear previous core mode status bits. */
-> > > +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, LBACK, 0);
-> > > +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SLEEP, 0);
-> > > +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SNOOP, 0);
-> > > +    ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, NORMAL, 0);
-> > > +
-> > > +    /* set current mode bit and generate irqs accordingly. */
-> > > +    if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, LBACK)) {
-> > > +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, LBACK, 1);
-> > > +    } else if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER, SLEEP))
-> > {
-> > > +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SLEEP, 1);
-> > > +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, SLP,
-> > > +                            sleep_irq_val);
-> > > +    } else if (ARRAY_FIELD_EX32(s->regs, MODE_SELECT_REGISTER,
-> > SNOOP)) {
-> > > +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, SNOOP, 1);
-> > > +    } else {
-> > > +        /*
-> > > +         * If all bits are zero then XlnxZynqMPCANState is set in normal
-> > mode.
-> > > +         */
-> > > +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, NORMAL, 1);
-> > > +        /* Set wakeup interrupt bit. */
-> > > +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, WKUP,
-> > > +                            wakeup_irq_val);
-> > > +    }
-> > > +
-> > > +    can_update_irq(s);
-> > > +}
-> > > +
-> > > +static void can_exit_sleep_mode(XlnxZynqMPCANState *s) {
-> > > +    ARRAY_FIELD_DP32(s->regs, MODE_SELECT_REGISTER, SLEEP, 0);
-> > > +    update_status_register_mode_bits(s);
-> > > +}
-> > > +
-> > > +static void generate_frame(qemu_can_frame *frame, uint32_t *data) {
-> > > +    frame->can_id = data[0];
-> > > +    frame->can_dlc = FIELD_EX32(data[1], TXFIFO_DLC, DLC);
-> > > +
-> > > +    frame->data[0] = FIELD_EX32(data[2], TXFIFO_DATA1, DB3);
-> > > +    frame->data[1] = FIELD_EX32(data[2], TXFIFO_DATA1, DB2);
-> > > +    frame->data[2] = FIELD_EX32(data[2], TXFIFO_DATA1, DB1);
-> > > +    frame->data[3] = FIELD_EX32(data[2], TXFIFO_DATA1, DB0);
-> > > +
-> > > +    frame->data[4] = FIELD_EX32(data[3], TXFIFO_DATA2, DB7);
-> > > +    frame->data[5] = FIELD_EX32(data[3], TXFIFO_DATA2, DB6);
-> > > +    frame->data[6] = FIELD_EX32(data[3], TXFIFO_DATA2, DB5);
-> > > +    frame->data[7] = FIELD_EX32(data[3], TXFIFO_DATA2, DB4); }
-> > > +
-> > > +static bool tx_ready_check(XlnxZynqMPCANState *s) {
-> > > +    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, SRST)) {
-> > > +        qemu_log_mask(LOG_GUEST_ERROR, "Attempting to transfer data
-> > while"
-> > > +                      " XlnxZynqMPCANState%d is in reset mode\n",
-> > > +                      s->cfg.ctrl_idx);
-> > > +        return false;
-> > > +    }
-> > > +
-> > > +    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN) ==
-> > 0) {
-> > > +        qemu_log_mask(LOG_GUEST_ERROR, "Attempting to transfer data
-> > while"
-> > > +                      " XlnxZynqMPCANState%d is in configuration mode.Reset
-> > the"
-> > 
-> > Missing space after dot "mode.Reset".                                  ^^^
-> [Vikram Garhwal] I will add the missing space in v4.
-> > 
-> > > +                      " core so operations can start fresh\n",
-> > > +                      s->cfg.ctrl_idx);
-> > > +        return false;
-> > > +    }
-> > > +
-> > > +    if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SNOOP)) {
-> > > +        qemu_log_mask(LOG_GUEST_ERROR, "Attempting to transfer data
-> > while"
-> > > +                        " XlnxZynqMPCANState%d is in SNOOP MODE\n",
-> > > +                         s->cfg.ctrl_idx);
-> > > +        return false;
-> > > +    }
-> > > +
-> > > +    return true;
-> > > +}
-> > > +
-> > > +static void transfer_fifo(XlnxZynqMPCANState *s, Fifo32 *fifo) {
-> > > +    qemu_can_frame frame;
-> > > +    uint32_t data[CAN_FRAME_SIZE];
-> > > +    int i;
-> > > +    bool can_tx = tx_ready_check(s);
-> > > +
-> > > +    if (can_tx) {
-> > > +        while (!fifo32_is_empty(fifo)) {
-> > > +            for (i = 0; i < CAN_FRAME_SIZE; i++) {
-> > > +                data[i] = fifo32_pop(fifo);
-> > > +            }
-> > > +
-> > > +            if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, LBACK)) {
-> > > +                /*
-> > > +                 * Controller is in loopback. In Loopback mode, the CAN core
-> > > +                 * transmits a recessive bitstream on to the
-> > XlnxZynqMPCANState
-> > > +                 * Bus. Any message transmitted is looped back to the RX line
-> > > +                 * and acknowledged. The XlnxZynqMPCANState core receives
-> > any
-> > > +                 * message that it transmits.
-> > > +                 */
-> > > +                if (fifo32_is_full(&s->rx_fifo)) {
-> > > +                    DB_PRINT("Loopback: RX FIFO is full."
-> > > +                             "TX FIFO will be flushed.\n");
-> > > +
-> > > +                    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER,
-> > > +                                      RXOFLW, 1);
-> > > +                } else {
-> > > +                    for (i = 0; i < CAN_FRAME_SIZE; i++) {
-> > > +                        fifo32_push(&s->rx_fifo, data[i]);
-> > > +                    }
-> > > +
-> > > +                    ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER,
-> > > +                                      RXOK, 1);
-> > > +                }
-> > > +            } else {
-> > > +                /* Normal mode Tx. */
-> > > +                generate_frame(&frame, data);
-> > > +
-> > > +                can_bus_client_send(&s->bus_client, &frame, 1);
-> > > +            }
-> > > +        }
-> > > +
-> > > +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER, TXOK,
-> > 1);
-> > > +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, TXBFLL, 0);
-> > > +
-> > > +        if (ARRAY_FIELD_EX32(s->regs, STATUS_REGISTER, SLEEP)) {
-> > > +            can_exit_sleep_mode(s);
-> > > +        }
-> > > +    } else {
-> > > +        DB_PRINT("CAN is not enabled for data transfer.\n");
-> > > +    }
-> > > +
-> > > +    can_update_irq(s);
-> > > +}
-> > > +
-> > > +static uint64_t can_srr_pre_write(RegisterInfo *reg, uint64_t val64)
-> > > +{
-> > > +    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
-> > > +    uint32_t val = val64;
-> > > +
-> > > +    ARRAY_FIELD_DP32(s->regs, SOFTWARE_RESET_REGISTER, CEN,
-> > > +                        FIELD_EX32(val, SOFTWARE_RESET_REGISTER,
-> > > + CEN));
-> > > +
-> > > +    if (FIELD_EX32(val, SOFTWARE_RESET_REGISTER, SRST)) {
-> > > +        DB_PRINT("Resetting XlnxZynqMPCANState%d\n",
-> > > + s->cfg.ctrl_idx);
-> > > +
-> > > +        /* First, core will do software reset then will enter in config mode.
-> > */
-> > > +        can_config_reset(s);
-> > > +    }
-> > > +
-> > > +    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN) ==
-> > 0) {
-> > > +        can_config_mode(s);
-> > > +
-> > 
-> > I would drop this blank line.
-> [Vikram Garhwal] I will remove it in next patch.
-> > 
-> > 
-> > > +    } else {
-> > > +        /*
-> > > +         * Leave config mode. Now XlnxZynqMPCANState core will enter
-> > Normal,
-> > > +         * Sleep, snoop or Loopback mode depending upon LBACK, SLEEP,
-> > SNOOP
-> > > +         * register states.
-> > > +         */
-> > > +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, CONFIG, 0);
-> > > +
-> > > +        /* XlnxZynqMP CAN is out of config mode. it will send pending data.
-> > */
-> > > +        transfer_fifo(s, &s->txhpb_fifo);
-> > > +        transfer_fifo(s, &s->tx_fifo);
-> > > +    }
-> > > +
-> > > +    update_status_register_mode_bits(s);
-> > > +
-> > > +    return s->regs[R_SOFTWARE_RESET_REGISTER];
-> > > +}
-> > > +
-> > > +static uint64_t can_msr_pre_write(RegisterInfo *reg, uint64_t val64)
-> > > +{
-> > > +    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
-> > > +    uint32_t val = val64;
-> > > +    uint8_t multi_mode = 0;
-> > > +
-> > > +    /*
-> > > +     * Multiple mode set check. This is done to make sure user doesn't set
-> > > +     * multiple modes.
-> > > +     */
-> > > +    multi_mode = FIELD_EX32(val, MODE_SELECT_REGISTER, LBACK) +
-> > > +                 FIELD_EX32(val, MODE_SELECT_REGISTER, SLEEP) +
-> > > +                 FIELD_EX32(val, MODE_SELECT_REGISTER, SNOOP);
-> > > +
-> > > +    if (multi_mode > 1) {
-> > > +        qemu_log_mask(LOG_GUEST_ERROR, "Attempting to configure
-> > several modes "
-> > > +                     "simultaneously. One mode will be selected according to "
-> > > +                     "their priority: LBACK > SLEEP > SNOOP.\n ");
-> > > +    }
-> > > +
-> > > +    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN) ==
-> > 0) {
-> > > +        /* We are in configuration mode, any mode can be selected. */
-> > > +        s->regs[R_MODE_SELECT_REGISTER] = val;
-> > > +    } else {
-> > > +        bool sleep_mode_bit = FIELD_EX32(val, MODE_SELECT_REGISTER,
-> > > + SLEEP);
-> > > +
-> > > +        ARRAY_FIELD_DP32(s->regs, MODE_SELECT_REGISTER, SLEEP,
-> > > + sleep_mode_bit);
-> > > +
-> > > +        if (FIELD_EX32(val, MODE_SELECT_REGISTER, LBACK)) {
-> > > +            qemu_log_mask(LOG_GUEST_ERROR, "Attempting to set LBACK
-> > mode "
-> > > +                          "without setting CEN bit as 0\n");
-> > > +        } else if (FIELD_EX32(val, MODE_SELECT_REGISTER, SNOOP)) {
-> > > +            qemu_log_mask(LOG_GUEST_ERROR, "Attempting to set SNOOP
-> > mode "
-> > > +                              "without setting CEN bit as 0\n");
-> > > +        }
-> > > +
-> > > +        update_status_register_mode_bits(s);
-> > > +    }
-> > > +    return s->regs[R_MODE_SELECT_REGISTER]; }
-> > > +
-> > > +static uint64_t can_brpr_pre_write(RegisterInfo  *reg, uint64_t
-> > > +val64) {
-> > > +    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
-> > > +    uint32_t val = val64;
-> > > +
-> > > +    /* Only allow writes when in config mode. */
-> > > +    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN)) {
-> > > +        val = s-
-> > >regs[R_ARBITRATION_PHASE_BAUD_RATE_PRESCALER_REGISTER];
-> > > +    }
-> > > +
-> > > +    return val;
-> > > +}
-> > > +
-> > > +static uint64_t can_btr_pre_write(RegisterInfo  *reg, uint64_t val64)
-> > > +{
-> > > +    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
-> > > +    uint32_t val = val64;
-> > > +
-> > > +    /* Only allow writes when in config mode. */
-> > > +    if (ARRAY_FIELD_EX32(s->regs, SOFTWARE_RESET_REGISTER, CEN)) {
-> > > +        val = s->regs[R_ARBITRATION_PHASE_BIT_TIMING_REGISTER];
-> > > +    }
-> > > +
-> > > +    return val;
-> > > +}
-> > > +
-> > > +static uint64_t can_tcr_pre_write(RegisterInfo  *reg, uint64_t val64)
-> > > +{
-> > > +    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
-> > > +    uint32_t val = val64;
-> > > +
-> > > +    if (FIELD_EX32(val, TIMESTAMP_REGISTER, CTS)) {
-> > > +        s->rx_time_stamp = 0;
-> > > +    }
-> > > +
-> > > +    return 0;
-> > > +}
-> > > +
-> > > +static void update_rx_fifo(XlnxZynqMPCANState *s, const
-> > > +qemu_can_frame *frame) {
-> > > +    uint32_t filter_pass = 0;
-> > > +
-> > > +    /* If no filter is enabled. Message will be stored in FIFO. */
-> > > +    if (!((ARRAY_FIELD_EX32(s->regs, AFR, UAF1)) |
-> > > +       (ARRAY_FIELD_EX32(s->regs, AFR, UAF2)) |
-> > > +       (ARRAY_FIELD_EX32(s->regs, AFR, UAF3)) |
-> > > +       (ARRAY_FIELD_EX32(s->regs, AFR, UAF4)))) {
-> > > +        filter_pass = 1;
-> > > +    }
-> > > +
-> > > +    /*
-> > > +     * Messages that pass any of the acceptance filters will be stored in
-> > > +     * the RX FIFO.
-> > > +     */
-> > > +    if (ARRAY_FIELD_EX32(s->regs, AFR, UAF1)) {
-> > > +        uint32_t id_masked = s->regs[R_AFMR1] & frame->can_id;
-> > > +        uint32_t filter_id_masked = s->regs[R_AFMR1] &
-> > > + s->regs[R_AFIR1];
-> > > +
-> > > +        if (filter_id_masked == id_masked) {
-> > > +            filter_pass = 1;
-> > > +        }
-> > > +    }
-> > > +
-> > > +    if (ARRAY_FIELD_EX32(s->regs, AFR, UAF2)) {
-> > > +        uint32_t id_masked = s->regs[R_AFMR2] & frame->can_id;
-> > > +        uint32_t filter_id_masked = s->regs[R_AFMR2] &
-> > > + s->regs[R_AFIR2];
-> > > +
-> > > +        if (filter_id_masked == id_masked) {
-> > > +            filter_pass = 1;
-> > > +        }
-> > > +    }
-> > > +
-> > > +    if (ARRAY_FIELD_EX32(s->regs, AFR, UAF3)) {
-> > > +        uint32_t id_masked = s->regs[R_AFMR3] & frame->can_id;
-> > > +        uint32_t filter_id_masked = s->regs[R_AFMR3] &
-> > > + s->regs[R_AFIR3];
-> > > +
-> > > +        if (filter_id_masked == id_masked) {
-> > > +            filter_pass = 1;
-> > > +        }
-> > > +    }
-> > > +
-> > > +    if (ARRAY_FIELD_EX32(s->regs, AFR, UAF4)) {
-> > > +        uint32_t id_masked = s->regs[R_AFMR4] & frame->can_id;
-> > > +        uint32_t filter_id_masked = s->regs[R_AFMR4] &
-> > > + s->regs[R_AFIR4];
-> > > +
-> > > +        if (filter_id_masked == id_masked) {
-> > > +            filter_pass = 1;
-> > > +        }
-> > > +    }
-> > > +
-> > > +    /* Store the message in fifo if it passed through any of the filters. */
-> > > +    if (filter_pass && frame->can_dlc <= MAX_DLC) {
-> > > +
-> > > +        if (fifo32_is_full(&s->rx_fifo)) {
-> > > +            DB_PRINT("RX FIFO is full.\n");
-> > > +
-> > > +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER,
-> > RXOFLW, 1);
-> > > +        } else {
-> > > +            s->rx_time_stamp += 1;
-> > > +
-> > > +            fifo32_push(&s->rx_fifo, frame->can_id);
-> > > +
-> > > +            fifo32_push(&s->rx_fifo, (deposit32(0,
-> > R_RXFIFO_DLC_DLC_SHIFT,
-> > > +                                                R_RXFIFO_DLC_DLC_LENGTH,
-> > > +                                                frame->can_dlc) |
-> > > +                                      deposit32(0, R_RXFIFO_DLC_RXT_SHIFT,
-> > > +                                                R_RXFIFO_DLC_RXT_LENGTH,
-> > > +                                                s->rx_time_stamp)));
-> > > +
-> > > +            /* First 32 bit of the data. */
-> > > +            fifo32_push(&s->rx_fifo, (deposit32(0,
-> > R_TXFIFO_DATA1_DB3_SHIFT,
-> > > +                                        R_TXFIFO_DATA1_DB3_LENGTH,
-> > > +                                        frame->data[0]) |
-> > > +                                      deposit32(0, R_TXFIFO_DATA1_DB2_SHIFT,
-> > > +                                        R_TXFIFO_DATA1_DB2_LENGTH,
-> > > +                                        frame->data[1]) |
-> > > +                                      deposit32(0, R_TXFIFO_DATA1_DB1_SHIFT,
-> > > +                                        R_TXFIFO_DATA1_DB1_LENGTH,
-> > > +                                        frame->data[2]) |
-> > > +                                      deposit32(0, R_TXFIFO_DATA1_DB0_SHIFT,
-> > > +                                        R_TXFIFO_DATA1_DB0_LENGTH,
-> > > +                                        frame->data[3])));
-> > > +            /* Last 32 bit of the data. */
-> > > +            fifo32_push(&s->rx_fifo, (deposit32(0,
-> > R_TXFIFO_DATA2_DB7_SHIFT,
-> > > +                                         R_TXFIFO_DATA2_DB7_LENGTH,
-> > > +                                         frame->data[4]) |
-> > > +                                      deposit32(0, R_TXFIFO_DATA2_DB6_SHIFT,
-> > > +                                         R_TXFIFO_DATA2_DB6_LENGTH,
-> > > +                                         frame->data[5]) |
-> > > +                                      deposit32(0, R_TXFIFO_DATA2_DB5_SHIFT,
-> > > +                                         R_TXFIFO_DATA2_DB5_LENGTH,
-> > > +                                         frame->data[6]) |
-> > > +                                      deposit32(0, R_TXFIFO_DATA2_DB4_SHIFT,
-> > > +                                          R_TXFIFO_DATA2_DB4_LENGTH,
-> > > +                                          frame->data[7])));
-> > > +
-> > > +            ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER,
-> > RXOK, 1);
-> > > +        }
-> > > +
-> > > +        can_update_irq(s);
-> > > +
-> > 
-> > I would drop this blank line...
-> [Vikram Garhwal] Will remove this in v4.
-> > 
-> > > +    } else {
-> > > +        DB_PRINT("Message didn't pass through any filter"
-> > > +                  "or dlc is not in range\n");
-> > > +    }
-> > > +}
-> > > +
-> > > +static uint64_t can_rxfifo_pre_read(RegisterInfo *reg, uint64_t
-> > > +val64) {
-> > > +    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
-> > > +    uint32_t r = 0;
-> > > +
-> > > +    if (!fifo32_is_empty(&s->rx_fifo)) {
-> > > +        r = fifo32_pop(&s->rx_fifo);
-> > > +    } else {
-> > > +        DB_PRINT("No message in RXFIFO\n");
-> > > +
-> > > +        ARRAY_FIELD_DP32(s->regs, INTERRUPT_STATUS_REGISTER,
-> > RXUFLW, 1);
-> > > +    }
-> > > +
-> > > +    can_update_irq(s);
-> > > +    return r;
-> > > +}
-> > > +
-> > > +static void can_filter_enable_post_write(RegisterInfo *reg, uint64_t
-> > > +val64) {
-> > > +    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
-> > > +
-> > > +    if (ARRAY_FIELD_EX32(s->regs, AFR, UAF1) &&
-> > > +        ARRAY_FIELD_EX32(s->regs, AFR, UAF2) &&
-> > > +        ARRAY_FIELD_EX32(s->regs, AFR, UAF3) &&
-> > > +        ARRAY_FIELD_EX32(s->regs, AFR, UAF4)) {
-> > > +
-> > > +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, ACFBSY, 1);
-> > > +
-> > 
-> > Another odd blank line.
-> [Vikram Garhwal] Will remove this in v4.
-> > 
-> > > +    } else {
-> > > +        ARRAY_FIELD_DP32(s->regs, STATUS_REGISTER, ACFBSY, 0);
-> > > +    }
-> > > +}
-> > > +
-> > > +static uint64_t can_filter_mask_pre_write(RegisterInfo *reg, uint64_t
-> > > +val64) {
-> > > +    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
-> > > +    uint32_t reg_idx = (reg->access->addr) / 4;
-> > > +    uint32_t val = val64;
-> > > +    uint32_t filter_number = (reg_idx - R_AFMR1) / 2;
-> > > +
-> > > +    /* modify an acceptance filter, the corresponding UAF bit should be
-> > '0.' */
-> > > +    if (!(s->regs[R_AFR] & (1 << filter_number))) {
-> > > +        s->regs[reg_idx] = val;
-> > > +    } else {
-> > > +        DB_PRINT("Acceptance filter %d mask is not set as it's
-> > corresponding "
-> > > +                 "UAF bit is not set to 0\n", filter_number + 1);
-> > > +    }
-> > > +
-> > > +    return s->regs[reg_idx];
-> > > +}
-> > > +
-> > > +static uint64_t can_filter_id_pre_write(RegisterInfo *reg, uint64_t
-> > > +val64) {
-> > > +    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
-> > > +    uint32_t reg_idx = (reg->access->addr) / 4;
-> > > +    uint32_t val = val64;
-> > > +    uint32_t filter_number = (reg_idx - R_AFIR1) / 2;
-> > > +
-> > > +    if (!(s->regs[R_AFR] & (1 << filter_number))) {
-> > > +        s->regs[reg_idx] = val;
-> > > +    } else {
-> > > +        DB_PRINT("Acceptance filter %d id is not set as it's corresponding "
-> > > +                 "UAF bit is not set to 0\n", filter_number + 1);
-> > 
-> > Should this be a LOG_GUEST_ERROR?
-> [Vikram Garhwal] Thanks for catching this. This one affects functionality of CAN so LOG_GUEST_ERROR will do better here.
-> > 
-> > 
-> > > +    }
-> > > +
-> > > +    return s->regs[reg_idx];
-> > > +}
-> > > +
-> > > +static void can_tx_post_write(RegisterInfo *reg, uint64_t val64) {
-> > > +    XlnxZynqMPCANState *s = XLNX_ZYNQMP_CAN(reg->opaque);
-> > > +    uint32_t val = val64;
-> > > +
-> > > +    bool is_txhpb = reg->access->addr > A_TXFIFO_DATA2;
-> > > +
-> > > +    bool initiate_transfer = (reg->access->addr == A_TXFIFO_DATA2) ||
-> > > +                             (reg->access->addr == A_TXHPB_DATA2);
-> > > +
-> > > +    Fifo32 *f = is_txhpb ? &s->txhpb_fifo : &s->tx_fifo;
-> > > +
-> > > +    DB_PRINT("TX FIFO write for CAN%d\n", s->cfg.ctrl_idx);
-> > > +
-> > > +    if (!fifo32_is_full(f)) {
-> > > +        fifo32_push(f, val);
-> > > +    } else {
-> > > +        DB_PRINT("TX FIFO is full.\n");
-> > 
-> > Doesn't this trigger any SW visible event like an interrupt, set some status
-> > bit?
-> [Vikram Garhwal] Yeah, at the end of this function it calls can_update_irq this will set the interrupt. 
-> > We should probably LOG_GUEST_ERROR here too...
+* Keqian Zhu (zhukeqian1@huawei.com) wrote:
+> At the tail stage of throttling, the Guest is very sensitive to
+> CPU percentage while the @cpu-throttle-increment is excessive
+> usually at tail stage.
+>=20
+> If this parameter is true, we will compute the ideal CPU percentage
+> used by the Guest, which may exactly make the dirty rate match the
+> dirty rate threshold. Then we will choose a smaller throttle increment
+> between the one specified by @cpu-throttle-increment and the one
+> generated by ideal CPU percentage.
+>=20
+> Therefore, it is compatible to traditional throttling, meanwhile
+> the throttle increment won't be excessive at tail stage. This may
+> make migration time longer, and is disabled by default.
+>=20
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 
-Not really, can_update_irq flags if the FIFO is full but it does not flag
-anything if we lost data because SW tried to send something while the FIFO
-was full. I couldn't see anything in the specs for that case but
-you may want to LOG_GUEST_ERROR the else branch of the if-statement
-rather than DB_PRINT.
+So I think this is OK; see comment below.
 
-Cheers,
-Edgar
+Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+
+> ---
+> Cc: Juan Quintela <quintela@redhat.com>
+> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+> Cc: Eric Blake <eblake@redhat.com>
+> Cc: Markus Armbruster <armbru@redhat.com>
+> ---
+>  migration/migration.c | 13 ++++++++++++
+>  migration/ram.c       | 25 +++++++++++++++++-----
+>  monitor/hmp-cmds.c    |  8 ++++++++
+>  qapi/migration.json   | 48 +++++++++++++++++++++++++++++++++++++++++++
+>  4 files changed, 89 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/migration/migration.c b/migration/migration.c
+> index 187ac0410c..d478a87290 100644
+> --- a/migration/migration.c
+> +++ b/migration/migration.c
+> @@ -785,6 +785,8 @@ MigrationParameters *qmp_query_migrate_parameters(Err=
+or **errp)
+>      params->cpu_throttle_initial =3D s->parameters.cpu_throttle_initial;
+>      params->has_cpu_throttle_increment =3D true;
+>      params->cpu_throttle_increment =3D s->parameters.cpu_throttle_increm=
+ent;
+> +    params->has_cpu_throttle_tailslow =3D true;
+> +    params->cpu_throttle_tailslow =3D s->parameters.cpu_throttle_tailslo=
+w;
+>      params->has_tls_creds =3D true;
+>      params->tls_creds =3D g_strdup(s->parameters.tls_creds);
+>      params->has_tls_hostname =3D true;
+> @@ -1324,6 +1326,10 @@ static void migrate_params_test_apply(MigrateSetPa=
+rameters *params,
+>          dest->cpu_throttle_increment =3D params->cpu_throttle_increment;
+>      }
+> =20
+> +    if (params->has_cpu_throttle_tailslow) {
+> +        dest->cpu_throttle_tailslow =3D params->cpu_throttle_tailslow;
+> +    }
+> +
+>      if (params->has_tls_creds) {
+>          assert(params->tls_creds->type =3D=3D QTYPE_QSTRING);
+>          dest->tls_creds =3D g_strdup(params->tls_creds->u.s);
+> @@ -1412,6 +1418,10 @@ static void migrate_params_apply(MigrateSetParamet=
+ers *params, Error **errp)
+>          s->parameters.cpu_throttle_increment =3D params->cpu_throttle_in=
+crement;
+>      }
+> =20
+> +    if (params->has_cpu_throttle_tailslow) {
+> +        s->parameters.cpu_throttle_tailslow =3D params->cpu_throttle_tai=
+lslow;
+> +    }
+> +
+>      if (params->has_tls_creds) {
+>          g_free(s->parameters.tls_creds);
+>          assert(params->tls_creds->type =3D=3D QTYPE_QSTRING);
+> @@ -3594,6 +3604,8 @@ static Property migration_properties[] =3D {
+>      DEFINE_PROP_UINT8("x-cpu-throttle-increment", MigrationState,
+>                        parameters.cpu_throttle_increment,
+>                        DEFAULT_MIGRATE_CPU_THROTTLE_INCREMENT),
+> +    DEFINE_PROP_BOOL("x-cpu-throttle-tailslow", MigrationState,
+> +                      parameters.cpu_throttle_tailslow, false),
+>      DEFINE_PROP_SIZE("x-max-bandwidth", MigrationState,
+>                        parameters.max_bandwidth, MAX_THROTTLE),
+>      DEFINE_PROP_UINT64("x-downtime-limit", MigrationState,
+> @@ -3700,6 +3712,7 @@ static void migration_instance_init(Object *obj)
+>      params->has_throttle_trigger_threshold =3D true;
+>      params->has_cpu_throttle_initial =3D true;
+>      params->has_cpu_throttle_increment =3D true;
+> +    params->has_cpu_throttle_tailslow =3D true;
+>      params->has_max_bandwidth =3D true;
+>      params->has_downtime_limit =3D true;
+>      params->has_x_checkpoint_delay =3D true;
+> diff --git a/migration/ram.c b/migration/ram.c
+> index 04f13feb2e..3317c99786 100644
+> --- a/migration/ram.c
+> +++ b/migration/ram.c
+> @@ -616,20 +616,34 @@ static size_t save_page_header(RAMState *rs, QEMUFi=
+le *f,  RAMBlock *block,
+>   * able to complete migration. Some workloads dirty memory way too
+>   * fast and will not effectively converge, even with auto-converge.
+>   */
+> -static void mig_throttle_guest_down(void)
+> +static void mig_throttle_guest_down(uint64_t bytes_dirty_period,
+> +                                    uint64_t bytes_dirty_threshold)
+>  {
+>      MigrationState *s =3D migrate_get_current();
+>      uint64_t pct_initial =3D s->parameters.cpu_throttle_initial;
+> -    uint64_t pct_icrement =3D s->parameters.cpu_throttle_increment;
+> +    uint64_t pct_increment =3D s->parameters.cpu_throttle_increment;
+> +    bool pct_tailslow =3D s->parameters.cpu_throttle_tailslow;
+>      int pct_max =3D s->parameters.max_cpu_throttle;
+> =20
+> +    uint64_t throttle_now =3D cpu_throttle_get_percentage();
+> +    uint64_t cpu_now, cpu_ideal, throttle_inc;
+> +
+>      /* We have not started throttling yet. Let's start it. */
+>      if (!cpu_throttle_active()) {
+>          cpu_throttle_set(pct_initial);
+>      } else {
+>          /* Throttling already on, just increase the rate */
+> -        cpu_throttle_set(MIN(cpu_throttle_get_percentage() + pct_icremen=
+t,
+> -                         pct_max));
+> +        if (!pct_tailslow) {
+> +            throttle_inc =3D pct_increment;
+> +        } else {
+> +            /* Compute the ideal CPU percentage used by Guest, which may
+> +             * make the dirty rate match the dirty rate threshold. */
+> +            cpu_now =3D 100 - throttle_now;
+> +            cpu_ideal =3D cpu_now * (bytes_dirty_threshold * 1.0 /
+> +                        bytes_dirty_period);
+
+I worry if we need a divide-by-0 check; but that seems unlikely.
+Now if that worked out as huge, then I think the MIN's guard it even
+with overflow below, so I think we're OK.
+
+> +            throttle_inc =3D MIN(cpu_now - cpu_ideal, pct_increment);
+> +        }
+> +        cpu_throttle_set(MIN(throttle_now + throttle_inc, pct_max));
+>      }
+>  }
+> =20
+> @@ -919,7 +933,8 @@ static void migration_trigger_throttle(RAMState *rs)
+>              (++rs->dirty_rate_high_cnt >=3D 2)) {
+>              trace_migration_throttle();
+>              rs->dirty_rate_high_cnt =3D 0;
+> -            mig_throttle_guest_down();
+> +            mig_throttle_guest_down(bytes_dirty_period,
+> +                                    bytes_dirty_threshold);
+>          }
+>      }
+>  }
+> diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+> index 9b94e67879..acd7539273 100644
+> --- a/monitor/hmp-cmds.c
+> +++ b/monitor/hmp-cmds.c
+> @@ -419,6 +419,10 @@ void hmp_info_migrate_parameters(Monitor *mon, const=
+ QDict *qdict)
+>          monitor_printf(mon, "%s: %u\n",
+>              MigrationParameter_str(MIGRATION_PARAMETER_CPU_THROTTLE_INCR=
+EMENT),
+>              params->cpu_throttle_increment);
+> +        assert(params->has_cpu_throttle_tailslow);
+> +        monitor_printf(mon, "%s: %s\n",
+> +            MigrationParameter_str(MIGRATION_PARAMETER_CPU_THROTTLE_TAIL=
+SLOW),
+> +            params->cpu_throttle_tailslow ? "on" : "off");
+>          assert(params->has_max_cpu_throttle);
+>          monitor_printf(mon, "%s: %u\n",
+>              MigrationParameter_str(MIGRATION_PARAMETER_MAX_CPU_THROTTLE)=
+,
+> @@ -1271,6 +1275,10 @@ void hmp_migrate_set_parameter(Monitor *mon, const=
+ QDict *qdict)
+>          p->has_cpu_throttle_increment =3D true;
+>          visit_type_int(v, param, &p->cpu_throttle_increment, &err);
+>          break;
+> +    case MIGRATION_PARAMETER_CPU_THROTTLE_TAILSLOW:
+> +        p->has_cpu_throttle_tailslow =3D true;
+> +        visit_type_bool(v, param, &p->cpu_throttle_tailslow, &err);
+> +        break;
+>      case MIGRATION_PARAMETER_MAX_CPU_THROTTLE:
+>          p->has_max_cpu_throttle =3D true;
+>          visit_type_int(v, param, &p->max_cpu_throttle, &err);
+> diff --git a/qapi/migration.json b/qapi/migration.json
+> index eca2981d0a..ee6c5a0cae 100644
+> --- a/qapi/migration.json
+> +++ b/qapi/migration.json
+> @@ -552,6 +552,21 @@
+>  #                          auto-converge detects that migration is not m=
+aking
+>  #                          progress. The default value is 10. (Since 2.7=
+)
+>  #
+> +# @cpu-throttle-tailslow: Make CPU throttling slower at tail stage
+> +#                         At the tail stage of throttling, the Guest is =
+very
+> +#                         sensitive to CPU percentage while the @cpu-thr=
+ottle
+> +#                         -increment is excessive usually at tail stage.
+> +#                         If this parameter is true, we will compute the=
+ ideal
+> +#                         CPU percentage used by the Guest, which may ex=
+actly make
+> +#                         the dirty rate match the dirty rate threshold.=
+ Then we
+> +#                         will choose a smaller throttle increment betwe=
+en the
+> +#                         one specified by @cpu-throttle-increment and t=
+he one
+> +#                         generated by ideal CPU percentage.
+> +#                         Therefore, it is compatible to traditional thr=
+ottling,
+> +#                         meanwhile the throttle increment won't be exce=
+ssive
+> +#                         at tail stage.
+> +#                         The default value is false. (Since 5.1)
+> +#
+>  # @tls-creds: ID of the 'tls-creds' object that provides credentials for
+>  #             establishing a TLS connection over the migration data chan=
+nel.
+>  #             On the outgoing side of the migration, the credentials mus=
+t
+> @@ -631,6 +646,7 @@
+>             'compress-level', 'compress-threads', 'decompress-threads',
+>             'compress-wait-thread', 'throttle-trigger-threshold',
+>             'cpu-throttle-initial', 'cpu-throttle-increment',
+> +           'cpu-throttle-tailslow',
+>             'tls-creds', 'tls-hostname', 'tls-authz', 'max-bandwidth',
+>             'downtime-limit', 'x-checkpoint-delay', 'block-incremental',
+>             'multifd-channels',
+> @@ -676,6 +692,21 @@
+>  #                          auto-converge detects that migration is not m=
+aking
+>  #                          progress. The default value is 10. (Since 2.7=
+)
+>  #
+> +# @cpu-throttle-tailslow: Make CPU throttling slower at tail stage
+> +#                         At the tail stage of throttling, the Guest is =
+very
+> +#                         sensitive to CPU percentage while the @cpu-thr=
+ottle
+> +#                         -increment is excessive usually at tail stage.
+> +#                         If this parameter is true, we will compute the=
+ ideal
+> +#                         CPU percentage used by the Guest, which may ex=
+actly make
+> +#                         the dirty rate match the dirty rate threshold.=
+ Then we
+> +#                         will choose a smaller throttle increment betwe=
+en the
+> +#                         one specified by @cpu-throttle-increment and t=
+he one
+> +#                         generated by ideal CPU percentage.
+> +#                         Therefore, it is compatible to traditional thr=
+ottling,
+> +#                         meanwhile the throttle increment won't be exce=
+ssive
+> +#                         at tail stage.
+> +#                         The default value is false. (Since 5.1)
+> +#
+>  # @tls-creds: ID of the 'tls-creds' object that provides credentials
+>  #             for establishing a TLS connection over the migration data
+>  #             channel. On the outgoing side of the migration, the creden=
+tials
+> @@ -763,6 +794,7 @@
+>              '*throttle-trigger-threshold': 'int',
+>              '*cpu-throttle-initial': 'int',
+>              '*cpu-throttle-increment': 'int',
+> +            '*cpu-throttle-tailslow': 'bool',
+>              '*tls-creds': 'StrOrNull',
+>              '*tls-hostname': 'StrOrNull',
+>              '*tls-authz': 'StrOrNull',
+> @@ -834,6 +866,21 @@
+>  #                          auto-converge detects that migration is not m=
+aking
+>  #                          progress. (Since 2.7)
+>  #
+> +# @cpu-throttle-tailslow: Make CPU throttling slower at tail stage
+> +#                         At the tail stage of throttling, the Guest is =
+very
+> +#                         sensitive to CPU percentage while the @cpu-thr=
+ottle
+> +#                         -increment is excessive usually at tail stage.
+> +#                         If this parameter is true, we will compute the=
+ ideal
+> +#                         CPU percentage used by the Guest, which may ex=
+actly make
+> +#                         the dirty rate match the dirty rate threshold.=
+ Then we
+> +#                         will choose a smaller throttle increment betwe=
+en the
+> +#                         one specified by @cpu-throttle-increment and t=
+he one
+> +#                         generated by ideal CPU percentage.
+> +#                         Therefore, it is compatible to traditional thr=
+ottling,
+> +#                         meanwhile the throttle increment won't be exce=
+ssive
+> +#                         at tail stage.
+> +#                         The default value is false. (Since 5.1)
+> +#
+>  # @tls-creds: ID of the 'tls-creds' object that provides credentials
+>  #             for establishing a TLS connection over the migration data
+>  #             channel. On the outgoing side of the migration, the creden=
+tials
+> @@ -921,6 +968,7 @@
+>              '*throttle-trigger-threshold': 'uint8',
+>              '*cpu-throttle-initial': 'uint8',
+>              '*cpu-throttle-increment': 'uint8',
+> +            '*cpu-throttle-tailslow': 'bool',
+>              '*tls-creds': 'str',
+>              '*tls-hostname': 'str',
+>              '*tls-authz': 'str',
+> --=20
+> 2.19.1
+>=20
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 

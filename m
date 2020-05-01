@@ -1,145 +1,131 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp801139lfm;
-        Fri, 1 May 2020 08:38:14 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLKMBtrqP6sQcvt8Ic+l6p8se0rQB7LhQwYpwDMeQ5nwY9OJzTCoSrcwsk25gRve+b79bz9
-X-Received: by 2002:ac8:1901:: with SMTP id t1mr4374131qtj.269.1588347494263;
-        Fri, 01 May 2020 08:38:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588347494; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp827404lfm;
+        Fri, 1 May 2020 09:03:24 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJpSBX0qTAyEs/gEvJy4cimFk4d3iUwb11Z8etdguteioJS18l3n8Hs8YaWdTe1vKwYGeAc
+X-Received: by 2002:aed:34c3:: with SMTP id x61mr4193218qtd.333.1588349004610;
+        Fri, 01 May 2020 09:03:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588349004; cv=none;
         d=google.com; s=arc-20160816;
-        b=dMZ3M9zqnm1suSWg/o8UEnH0b5N+K6lc0cAB9EmnoJkw1Sb2hbZQw5RnJMOKBiIEbK
-         WHdmiusWCWuDHmYx9Q5enVCoB8wiuw0aZZkANxiU+F3bLR1Pp5Z4siJwS56lFVpAZsXe
-         Dw7Z2UWUS7kuQ5pji4+lHBMUmR5IFAzmj9FwhgmJuVWy8F4kxgiidu/nOLowiwbo5eqO
-         ftwTEkwMe4ggmJkY6CM12mg2CjyxAVvid4WzHMB5WJb7w6x+NxNbRwdEAaYVPTnR9Yq8
-         M6rsrQ59O35yynOJsA6yFRIcF3BxIyS9RAIOmds5Fj8roTV9cmRy6QEQt5UFnU9kt0ej
-         0NAw==
+        b=yuVxIim0RMVZceAc7Ey2c3gA0RId0euA0HRwipZK5e7ma5ISEak2LOSgmvBYU52wqf
+         NweHjZ0ZL2KOVMTMTtPLIcov0HK/mmqSdOw+QF2dXb/UEioqDoXs7whFrkwasOJA05KQ
+         12B2MSR6JLziNIV6CW3XM935UT3p0O/WLCOq+fP2UIqqv3jW93T4m3C1xSIEZrCWRF8M
+         bPGabt2+U+byFbVlwl5Ya2V79IlnjI+IbXV0Z/mxcgt0lEVe7+tXmfFPfKORV/L5XYWV
+         TFPTvpyDH7Wn09WBQ8dJxBggBD1IErDOkuFjNvYos9gDjEcr+aGtnuhWsHIIy6n/HDZU
+         V6SQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=GiL+dDCIp/1mzzj/zAPpfK6g1INM+vYrw7+8AAaJ5+A=;
-        b=olZCUkigDwgbVjilPoqNfncNXQXewyUnhLXp/2x+FRqevF+8WiHhHdgUoUm+LDv7B4
-         FcJlmQMpdVD99y8rd3lu288RipHL5G8WxflbGksuvGNclx5AI6b7WJ+wQC+k/4IGKPnC
-         wmHa4UWvikpKBcFIiltDVjuOFGRm9ajW4mtk+yR7hnehpR15zv634/d0+jvwpFzIE+VS
-         Ovvyd4opX7sR04JAUf7MdWi0i3nco7PSGQSO3SRwZpqgr7HcmgQuYYqjFb3e/MPOH6P6
-         kkAgR+kCGBG/K0TCKOCYJOSk/m5s61TUhMvuDAILA7xyi+CxBmvGOfJO0wdhgVYj+oD9
-         pqRQ==
+        bh=0II5KOiKx3aLfM51C/N4C/613U0yDAvzHZjXkCsSyDI=;
+        b=eM6yW9QSUWLBHw8mZWOC2ziN0ah/5kvh+l+a5leL+9gutpqQhKfEryzVF8AkL18mxS
+         ++KfbhzoNyAvPvtxS5nfYazG9R54ObGIlXdE35+FF6Vt8xfjZIvHQL4gsjFAFPb6p3gy
+         vime1gNBoGXoy9ox1q4D5Fs/V49csM1OPyJAQcNYYxiNtvWThFTtwmMedc6k6WYt0ofI
+         R5alz8Ce1vumoPc9zM5JbWRuqCw6w6BTEFkuMk5v2ZNtd7wAkeG2lvlmVjzkSlJJhj05
+         P3sbQlza0YQDKviMrAliQCAaSEZEAT7Lo5WPHutv2mkq371Gvzz2ElTi3RFPZbBu+/ap
+         thFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pRaswsDU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=cnMjRken;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id d10si1873914qke.227.2020.05.01.08.38.14
+        by mx.google.com with ESMTPS id w20si2133101qvl.205.2020.05.01.09.03.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 May 2020 08:38:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Fri, 01 May 2020 09:03:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pRaswsDU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=cnMjRken;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58140 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41730 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jUXjx-00053P-Mf
-	for alex.bennee@linaro.org; Fri, 01 May 2020 11:38:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54446)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jUY8K-0005Bt-1P
+	for alex.bennee@linaro.org; Fri, 01 May 2020 12:03:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34720)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jUXiy-0004Q5-0X
- for qemu-devel@nongnu.org; Fri, 01 May 2020 11:37:12 -0400
+ id 1jUY4i-00012s-H2
+ for qemu-arm@nongnu.org; Fri, 01 May 2020 12:03:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1jUXix-0007jy-1y
- for qemu-devel@nongnu.org; Fri, 01 May 2020 11:37:11 -0400
-Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b]:43383)
+ (envelope-from <peter.maydell@linaro.org>) id 1jUY3I-0005lb-6w
+ for qemu-arm@nongnu.org; Fri, 01 May 2020 11:59:40 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:40210)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jUXiw-0007eT-L5
- for qemu-devel@nongnu.org; Fri, 01 May 2020 11:37:10 -0400
-Received: by mail-oi1-x22b.google.com with SMTP id j16so57611oih.10
- for <qemu-devel@nongnu.org>; Fri, 01 May 2020 08:37:10 -0700 (PDT)
+ id 1jUY3H-0005hr-NZ
+ for qemu-arm@nongnu.org; Fri, 01 May 2020 11:58:11 -0400
+Received: by mail-oi1-x243.google.com with SMTP id t199so124881oif.7
+ for <qemu-arm@nongnu.org>; Fri, 01 May 2020 08:58:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GiL+dDCIp/1mzzj/zAPpfK6g1INM+vYrw7+8AAaJ5+A=;
- b=pRaswsDU3+LiGsWKUeqpT2t0+mBtv5coS5WE1lHwyU9sCPLWIMDLhNfh2FmsWIWoej
- IoKikOgF8ehaDBby3CeRNBIijMCuSeA+TRp8Z+sWDRLbmm340kPPz66HD+2djkI9sqaz
- RnQHwIn+gaK9ReJQOoLHdVFvNBLJNg/FtdmGOZ48sycSRiW5JqEtlPjhzj5e8jmqYDc4
- ukd25baNuJZywZa/AOMjT2IwLE+awDAfFXmCcNji8mPRF7rGyvbp5cPiqwbM8yvX3o2d
- cXIIRFIlmewMeoobWAl96gINv2jo201yX1cokR010EuJ7sMnm72lvBvlb7tidWZIbeft
- 2m6w==
+ :cc; bh=0II5KOiKx3aLfM51C/N4C/613U0yDAvzHZjXkCsSyDI=;
+ b=cnMjRken/U1cDu9x0E04fWyMUf8piztv7hzx25Atyz9DFyiz7c1oZZBFhxdE5mkl+A
+ bo62Wk8PGYSs2Lb+nkg0wdrfcGQ83IHuquRQ3/9p7icI1JEJSNxShiZ5NKVwlf15HPEX
+ fe6n8LkBCHf8+DhsiUKtU1UMpYqQOY8HfGjUnklT8D69/YagiE5L3YXjtd83kNljhdIK
+ XlvB7dN4wvkw+fM9dNdpNaVsafBebTWQEx8/qeliRuXQoLPJjG3D+JWj1qFuRXEGmlrb
+ RZJFh/GeLiVk3o+CooRy5WM2soUmDl2yeC4F7+86N4sWwYN0dUWbGlYETf9xYGP9X4xG
+ uqFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=GiL+dDCIp/1mzzj/zAPpfK6g1INM+vYrw7+8AAaJ5+A=;
- b=irFzGD3v/W0HjEdtOBQWjP6VeIpL1N0Ukd2nQ9C6TdxPswMWMPKNPTbi+vVtwgPlf1
- U/V61VQ4wlj2td538VvSmQVChyIJqRu7pboSmMVabfR2z3AP9xRZk/knt+B1LdR2OiFv
- vfpDKxM3LqLoAPf9A/aAaZ15tcz+WLwZG3F6Z4ljK1KJyMf47mkqCLQamWyCj1HGQfGB
- frc6/nmfQ7Z0L8Q0FfXzmixGTXhHyemdziG0WYQD0cP2IdHV4BVTp/WVgijB0nS7/NPS
- RORbHVRzP7DX7U4Xf2Nhch2yKvs4WgL8/jFrtmsN0j/0e57WcNdLU587fxRTCT/y9RUZ
- ijyw==
-X-Gm-Message-State: AGi0Puasvx2OmZpeZbuL2I9+t0H2DxTsKUvdgYdOY3bZhRypHdJXz/bc
- uq5bIvtLQRvmoJn9A5+19XyY6RUyx8eCOrTNx3pKOA==
-X-Received: by 2002:aca:3441:: with SMTP id b62mr123957oia.146.1588347429116; 
- Fri, 01 May 2020 08:37:09 -0700 (PDT)
+ bh=0II5KOiKx3aLfM51C/N4C/613U0yDAvzHZjXkCsSyDI=;
+ b=Pnou67qvl6xZKDrkEg65h39drssuya3DnDZrBeg6IZ8Va5XhFc7DkPX9NaaDSCMNXX
+ O+pmJiL6F8b1Oxwf6egwYQpTpGdFEbxbGupuu/ug5rx+LnSezTugeUFxeEu9zuIsoWkw
+ vQHctnpthrC7HvRnoC1ZGCTFodbXA/Bf3GetxQSK6RWvJKPkhxaNzgHRNBV4m5wG/scN
+ AZ4i8p+I7V3GFw+Iq+DcmMhF7uZK7ZWaslvKPpSdlZksgkerf3yx/7RzOuFNdJiFg3LK
+ CBL9bxiyFA4GJV/tGfgoGX3CARv7hhpZFWbVTonjjLWwfqnMoQgyXWxyV30L7I19odOS
+ HPow==
+X-Gm-Message-State: AGi0PubHOHL10crzAwoQU7ZJNdnDH1i0Rm0aIKDzXYWmQiYUBF3PHuz1
+ Hxc5x+fYhw065mbjNMTFBqcg5Hvru5gpp/FebsMh9g==
+X-Received: by 2002:aca:3441:: with SMTP id b62mr186843oia.146.1588348690170; 
+ Fri, 01 May 2020 08:58:10 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200430181003.21682-1-peter.maydell@linaro.org>
  <20200430181003.21682-24-peter.maydell@linaro.org>
  <366a2e79-d963-bfdc-fcc6-2a63026fa1db@linaro.org>
-In-Reply-To: <366a2e79-d963-bfdc-fcc6-2a63026fa1db@linaro.org>
+ <CAFEAcA8M6M7CYg0AsTVbmfX88jzW9MZvRFihQ9cGDJNHhXV+Pw@mail.gmail.com>
+ <2050ff9f-1338-2b6e-230f-e07c72ece3e5@linaro.org>
+In-Reply-To: <2050ff9f-1338-2b6e-230f-e07c72ece3e5@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 1 May 2020 16:36:57 +0100
-Message-ID: <CAFEAcA8M6M7CYg0AsTVbmfX88jzW9MZvRFihQ9cGDJNHhXV+Pw@mail.gmail.com>
+Date: Fri, 1 May 2020 16:57:59 +0100
+Message-ID: <CAFEAcA8u=0LED6BQdkDCa-i3ySk986oSnMQzZj4KaBaBQ5tDuw@mail.gmail.com>
 Subject: Re: [PATCH 23/36] target/arm: Convert Neon 64-bit element 3-reg-same
  insns
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22b;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x22b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x243.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::22b
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::243
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pQ9R///HEo7o
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JN2Z5+6ZnzyF
 
-On Thu, 30 Apr 2020 at 21:54, Richard Henderson
+On Fri, 1 May 2020 at 16:50, Richard Henderson
 <richard.henderson@linaro.org> wrote:
-> You can morph this into the gvec interface like so:
->
-> #define DO_3SAME_64(INSN, FUNC) \
->     static void gen_##INSN##_3s(unsigned vece, uint32_t rd_ofs,
->                                 uint32_t rn_ofs, uint32_t rm_ofs,
->                                 uint32_t oprsz, uint32_t maxsz)
->     {
->         static const GVecGen3 op = { .fni8 = FUNC };
->         tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs,
->                        oprsz, maxsz, &op);
->     }
->     DO_3SAME(INSN, gen_##INSN##_3s)
->
-> The .fni8 function tells gvec that we have a helper that processes the
-> operation in 8 byte chunks.  It will handle the pass loop for you.
->
-> There's also a .fni4 member, for those neon helpers that operate on 4-byte
-> quantities, fwiw.
+> The original intention of the hook is to expand some inline tcg ops.  That it
+> can be used to call a helper is a happy accident.  For a helper that needs env,
+> ideally we would use tcg_gen_gvec_ptr and handle the vector with one call.
 
-Is there a version of this that works on functions that need
-to be passed the cpu_env, or do I have to create a trampoline
-function that just calls the real helper function passing it
-the extra argument ?
+The inconsistency where half the helpers nede to be passed cpu_env
+and the other half don't is really irritating for writing code
+that calls them. Lots of ought-to-be-common code ends up needing
+two versions :-(
 
-thanks
 -- PMM

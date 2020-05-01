@@ -1,114 +1,114 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp187800lfm;
-        Thu, 30 Apr 2020 20:36:54 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJ40Uqop4oAc2ydlmvwq7NUevcbYeae0dyUJU52W72lQVITbCzFz1hQNdlCpwRlffS7ud18
-X-Received: by 2002:a0c:f34b:: with SMTP id e11mr2163412qvm.76.1588304214394;
-        Thu, 30 Apr 2020 20:36:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588304214; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp189907lfm;
+        Thu, 30 Apr 2020 20:40:00 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLzvxbFTp5d3V9UsMarOIwOzyCHYH8Ww3lgsRU9pBhaf2KCuoadPNuipOdcGvY6JgbVqwx/
+X-Received: by 2002:a0c:8262:: with SMTP id h89mr2049032qva.173.1588304400053;
+        Thu, 30 Apr 2020 20:40:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588304400; cv=none;
         d=google.com; s=arc-20160816;
-        b=wLWx8hJKqJERhq1HDfj4V3Czid1selKaODDRKDJXo7ynYNNiqe5WtuvGnA8QTHaLdz
-         qPcwWpW66rCq7GirOlLRR13QuvEdaqgDoH7dlEoJezs0HTqnqUjb+wobio5GVKfm36KW
-         mu2K6u2C91GawufnFK3emXgYh35hkPHYtc074KOa3+3jMdclVE5DrSVs7ZlMxBPXLAWL
-         OGyVYthsIdLaJs8lT5adcwNRtCggYkttOy7Y7cVTSYNZUW9eMD35UW5tayoOKD/obOEf
-         XhSNjs1aFH5k2BfEOgoHsaSjG43EmyQgWNIwtNpCsP6lD7d1AbtSYATXvZtZ+B2IrFXv
-         MGqg==
+        b=JIFkZkyw/Kp1IzSwk2+NxcRdYBYdzFsL8uvxOJQekrF3jcryWB7bbYchJ1sLaI3uzR
+         ++GfEcqUR+Gc/DlPLR0Ej3SeNwhwV/iqRP3Uy4vVYWtJOY2ozHMcvqqg+cA71GC/PkX0
+         wq9hV6hli8xc1rHG5FEiMrpGTVCUjMUPKdWm5janYIQWYP3Wn4wFOrUImXrNbxkWhATB
+         kPu158++E2HoqzJ7qJLM96f7wkvvQSNSqH6YFFWsTWInNT5GO8JmwMK+KQUl0XnCPP9V
+         dk4wLGUzOBqCnn/0JtEuuY+A8kTw7NtUDS2bO5VUIrYep/h5Ib7CJIufK1Q+cuszqous
+         HCHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=0Uj6Xt+Ysy6EzXWRPhCgjEcA7gSi9B8i5OasAu06NjI=;
-        b=Z8MHBdxc5lgf+BUQSRRYfH0yv5SsAy87WLxu3Y3PgOTRUxiWr6sY3WTrW0ulqSQJgn
-         Fdeor0NI9Dhy44kLB5xbPEkouh5+6xXMM+apfH3GEgK1h7jJPrWDPjYx0GufFJVuTsBq
-         I4lBjoguM4whQqEDDf6y81GFfc8iBJa0bcqfxxqJisiF3X0mI1IGrf6Bcd4woQv3dqVl
-         2xO4xMaWk9t2cpxBnj4JaK/ZxZWxYAhkuO8960q52h8vVf808BzPHwAO7Ih3B9vmitT7
-         hYZwKarC1nWwgjvIdnj1Br+TP38m9/fCagPAS1cnMGszlTz5wM8bXGh6SLisE8H16DZI
-         GyvA==
+        bh=9Lfb6fl65+m9OpZgd0SnqULuyiqYMXw+U6I2a5N+7EU=;
+        b=yKWOj6eiptreAxeeJO7MMwGNhM0ZIhAqw6C1nwhbP1ACx01IgT3DYm37Nj0nrDdYxr
+         U5aOoME2Y4n46XKPx+wH3L3nUUIEkW+GK+jRLgdtRmTg1OnzdFE3t+48wZv/fzp7ddV+
+         hUeySnm4vz70OrfkMO3ttvXRASdKMkVmmrhMqm/GPdbQf2nlK7eRUkvBkZMjY13AoQTS
+         /WANhB8ntdlXAxpaWFL1BQQqCu2QanLZBGqIqExRasmYQ4YYSbOi5VU/ap7IUF12u1a4
+         WBy1z8ELXKEQ3oGO/V9Xg4W9gPj1MWY5CVgDjYIRRaPLCrfp9eJJJKCwkMPWr1uKH8IY
+         xZDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fzbub2Yj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TNnoMf+E;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id c68si990769qke.281.2020.04.30.20.36.54
+        by mx.google.com with ESMTPS id i1si943579qka.197.2020.04.30.20.39.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Apr 2020 20:36:54 -0700 (PDT)
+        Thu, 30 Apr 2020 20:40:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fzbub2Yj;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TNnoMf+E;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46872 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50846 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jUMTt-000456-R4
-	for alex.bennee@linaro.org; Thu, 30 Apr 2020 23:36:53 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:43792)
+	id 1jUMWt-0006S2-G6
+	for alex.bennee@linaro.org; Thu, 30 Apr 2020 23:39:59 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:53288)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jUMTm-00044u-G1
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 23:36:46 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1jUMWf-0006No-9o
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2020 23:39:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jUMTk-00082K-Mq
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 23:36:46 -0400
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:46146)
+ (envelope-from <richard.henderson@linaro.org>) id 1jUMWe-0007Uw-Fm
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2020 23:39:44 -0400
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:34723)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jUMTk-0007ur-50
- for qemu-arm@nongnu.org; Thu, 30 Apr 2020 23:36:44 -0400
-Received: by mail-pg1-x544.google.com with SMTP id q124so4012493pgq.13
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2020 20:36:43 -0700 (PDT)
+ id 1jUMWe-0007PI-0g
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2020 23:39:44 -0400
+Received: by mail-pg1-x542.google.com with SMTP id s8so4035455pgq.1
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2020 20:39:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:references:from:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=0Uj6Xt+Ysy6EzXWRPhCgjEcA7gSi9B8i5OasAu06NjI=;
- b=fzbub2YjtcR2XYpgKoLQhC9ITlL6z0WYsl8KN5cMCtPyQUgE39amg/aXqWRwXA/WDo
- Z78UnrbKkc+ajawhI4/9Jed4X4eq2zAhjT88owcBH1MT/TM2meApANUVSPkLPLv2Vlup
- 2dzCN+z0Gc1C34XXwB+nBDMX4x8PVRJY+A3GOLGeil+tlN2tYXM28eT+APYkd0N0FIMk
- qENGFfM+MIJOydGg2jdnp9KatdCrKlUj0faaGdKkCReny5bVHNOd/SY6sxqo2rRxrtay
- U1naRKuLGJiANWSoEunSG7MnzakJCL/AxPE/9i7978gM3ueCVtSOxRp3pemv+FbUqXu7
- BURQ==
+ bh=9Lfb6fl65+m9OpZgd0SnqULuyiqYMXw+U6I2a5N+7EU=;
+ b=TNnoMf+Eo0W2Wr9DzH9GR5eyz/OSeJeZ+w68bNqAbkeIXx/VOK1AH6r4W2m8afgwtw
+ 9dgm5jqDDM+woimFpZBSo7AO1bCSdgQMSBtqHZiK2VjB2kiB1czIde6DjP1ov/QQAGho
+ zHFmVtoy12rBaUCPRsRMUhdGrAma2F82IdYO+V+XwvsahTFpWupdDIIKxxV7aQ67/BiT
+ Pt5vdlsyAl4YLVc/QJ3vD55hA4lQFUaZL2QYJQeV0sgzLreDBn7G74YcTC/U0OwRAvRO
+ OA2cG1P9HT+H77ehZ3SapVbw17FURBSwn6i9HxxZGofee+JqUpv9l3JiMrJQhtvQ2qxx
+ KWzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=0Uj6Xt+Ysy6EzXWRPhCgjEcA7gSi9B8i5OasAu06NjI=;
- b=GfFH4p2JEUv/Fx9u7cIGXjbT81jzoi4LMEEkZq5MPoXMyFPRX1z3dmp5xlT8XG6NW+
- bl8zMSMJfN3UeydhtyGbDekuJtT0VRUwl39k5X9B49eWNtq508YnqI88SsMJrOWU69fF
- eEoIdk4/YSM5+6J9jxUJL/mSMoHzVJzAFNFh1H1ceWittF7bSDX21WxSgZO9eg7ELxIR
- 9gK6iYfiLOAHvG2bBW540UYCfCcZRSR0vOGcGtG4xXSMZD2yjR/FZE3FCM17DX6G+pQT
- PgVNX8XlvdhrYz3hpF5k6Ti4OCdlJEW/nLBQMb7LByWA0Y9iG3ppytCfCuOLQ5bNqSp+
- aIHw==
-X-Gm-Message-State: AGi0PuZt7pKvKuTNwFt9hn04xhE1vqTyF4BPGlhWM+djDDNuphAOyini
- ITEyEVFBqXPdvhcNcAHbJb8NyQ==
-X-Received: by 2002:aa7:8f26:: with SMTP id y6mr2243436pfr.36.1588304202190;
- Thu, 30 Apr 2020 20:36:42 -0700 (PDT)
+ bh=9Lfb6fl65+m9OpZgd0SnqULuyiqYMXw+U6I2a5N+7EU=;
+ b=JX9M1kP2LcmrYvtEJcF/kEcAEk+rHbTY+ocNT8oEVjWNWtU+gk0rGPSkadEM9jO0pu
+ feZxhqRU/2MISBpbf9/6JOhf3DvbHA8CSxAErA/rgfN9OmGUhbW0f6GPvtEi1SiDNUBV
+ C4yl8jkugYvY71g2XxgyV7ViLOosNz+oxJhZGqcr3257H4+euwO8PNtMSumtPJg6L05B
+ 8fn99QmPlqlB1rX48tfwuBiT8B5SgryTWx4dkCohGVNj8JrVd0SjUXdau3FTg8/+U3Rx
+ cE1UDShwUI2e5ZqX049YwJx0NMMqFGR/UFniOX/S+qZUzeSx9SbSTRZZqsjpubLvhXZp
+ SXqw==
+X-Gm-Message-State: AGi0PuaSd7Id0qp+AWPo4QwsOMFJR7xm5wRH8nLJXphatd+T/eruTPkd
+ 7oaFTSnl4LZCJrh2g4+vlYELDQ==
+X-Received: by 2002:a63:1d46:: with SMTP id d6mr2361300pgm.236.1588304382464; 
+ Thu, 30 Apr 2020 20:39:42 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id w12sm999739pfq.133.2020.04.30.20.36.40
+ by smtp.gmail.com with ESMTPSA id g10sm1013012pfk.103.2020.04.30.20.39.41
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Apr 2020 20:36:41 -0700 (PDT)
-Subject: Re: [PATCH 28/36] target/arm: Convert Neon VPMAX/VPMIN 3-reg-same
- insns to decodetree
+ Thu, 30 Apr 2020 20:39:41 -0700 (PDT)
+Subject: Re: [PATCH 29/36] target/arm: Convert Neon VPADD 3-reg-same insns to
+ decodetree
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20200430181003.21682-1-peter.maydell@linaro.org>
- <20200430181003.21682-29-peter.maydell@linaro.org>
+ <20200430181003.21682-30-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <c915d8e2-34db-ca42-45a0-03c20f8f88aa@linaro.org>
-Date: Thu, 30 Apr 2020 20:36:39 -0700
+Message-ID: <d278d90c-7f2f-d886-7c0c-2d46e10ce1ef@linaro.org>
+Date: Thu, 30 Apr 2020 20:39:39 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200430181003.21682-29-peter.maydell@linaro.org>
+In-Reply-To: <20200430181003.21682-30-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::544;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x544.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x542.google.com
 X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
  Malformed IPv6 address (bad octet value).
  Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::544
+X-Received-From: 2607:f8b0:4864:20::542
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -122,19 +122,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Xm10PoYO2Xpp
+X-TUID: hnW+1e+WYAwi
 
 On 4/30/20 11:09 AM, Peter Maydell wrote:
-> Convert the Neon integer VPMAX and VPMIN 3-reg-same insns to
-> decodetree. These are 'pairwise' operations.
+> Convert the Neon integer VPADD 3-reg-same insns to decodetree.  These
+> are 'pairwise' operations.  (Note that VQRDMLAH, which shares the
+> same primary opcode but has U=1, has already been converted.)
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target/arm/translate-neon.inc.c | 71 +++++++++++++++++++++++++++++++++
->  target/arm/translate.c          | 16 +-------
->  target/arm/neon-dp.decode       |  9 +++++
->  3 files changed, 82 insertions(+), 14 deletions(-)
-
+>  target/arm/translate-neon.inc.c |  2 ++
+>  target/arm/translate.c          | 19 +------------------
+>  target/arm/neon-dp.decode       |  2 ++
+>  3 files changed, 5 insertions(+), 18 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

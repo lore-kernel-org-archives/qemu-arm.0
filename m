@@ -1,116 +1,68 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp815928lfm;
-        Fri, 1 May 2020 08:52:49 -0700 (PDT)
-X-Google-Smtp-Source: APiQypINUp2YChvpgvkCNWJhFls8PzQhf4SnuuIWl1sYXT6FYLrtJe39Y5ABWsq/evcMLLwJdLbd
-X-Received: by 2002:ac8:728b:: with SMTP id v11mr4447919qto.108.1588348368960;
-        Fri, 01 May 2020 08:52:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588348368; cv=none;
-        d=google.com; s=arc-20160816;
-        b=GIlFkWf1DItu3TJKkTeh9klUIM8uRfW+RaRmkDmgX/MWWMxtnp/23/iv1foSY016wl
-         yf5OuaYcLFpzzQxSEJbzuBoJiwlD+p5ajKKPEeVH3v7CXOobb/5kXEPm7jC3CBVpRM4K
-         RpbbyYeXnhsJ9QU/X5xwjpi3lOtxilqwK9ZYBk3kt/gucD/nrw3osbGuHBmeSWyjDFdm
-         JqStRtTvdSwNeCi2LMNtTGxnAqsA0RtKH6jHbvimWcIGrHwO5GdQOsgMqQ9sdd9ezXdk
-         Vfs3+raMoAQwmD+7mIinVBpgJ1y6RcW10oME6jruGAmijsxj3uP/kCQCEeugUftPMZ82
-         VHOA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=AThqTKuVg6PLJY6jc0hWagWCxDuONRhIR0VFAaLXWfo=;
-        b=pLUHO9qo5cSBIHtudNEDVyw/h8galsZNC6b0zNoOUqfcgHcgowFxQZ5gErecBYA4eo
-         wCLjPosk+1tKOap1JJdFJ8XoaoZj1J3+caNSa0QaWDaWPO96gayFeFxyvdvPlAFicCWJ
-         DPugs6LngmpNbZqzW0ygv9FTk0ZDcrg1wuWZU2pS5+LYwitQ3nUiddKaLerHn+MjDW9S
-         dp/QfX5TAFQQ1fOzXQa3oUIyc5bT35aIRRAbOou2cNw5h4Oio7511cAU9UzFq5HC4cpV
-         JxKdBTozW1QJ/Hvd+wAOJH85fzQ47XWo2tc6iVHpZi3FGt1n1edGWKJmBqTd+cXW9C9y
-         5z1Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XOQOPH0Z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp791800lfm;
+        Fri, 1 May 2020 08:29:29 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLf6mg0JmNHKQWv+YYQHKrfj+BxlZysrP1K6yUWxMUtYyxs7mqRU+RTQWi71Qqwl+cs4OzE
+X-Received: by 2002:a0c:99e9:: with SMTP id y41mr4668096qve.164.1588346969020;
+        Fri, 01 May 2020 08:29:29 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id p21si1827845qkp.33.2020.05.01.08.52.48
+        by mx.google.com with ESMTPS id 4si1806324qkb.324.2020.05.01.08.29.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 May 2020 08:52:48 -0700 (PDT)
+        Fri, 01 May 2020 08:29:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XOQOPH0Z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41510 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48836 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jUXy4-0007g0-BA
-	for alex.bennee@linaro.org; Fri, 01 May 2020 11:52:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59808)
+	id 1jUXbU-0003f2-Dt
+	for alex.bennee@linaro.org; Fri, 01 May 2020 11:29:28 -0400
+Received: from eggs.gnu.org ([209.51.188.92]:51010)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jUXwb-0005iZ-82
- for qemu-arm@nongnu.org; Fri, 01 May 2020 11:51:22 -0400
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jUXb2-00036m-BV
+ for qemu-arm@nongnu.org; Fri, 01 May 2020 11:29:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1jUXvq-00065Z-VF
- for qemu-arm@nongnu.org; Fri, 01 May 2020 11:51:16 -0400
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:41168)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jUXvq-00064N-G9
- for qemu-arm@nongnu.org; Fri, 01 May 2020 11:50:30 -0400
-Received: by mail-pl1-x644.google.com with SMTP id d24so3770494pll.8
- for <qemu-arm@nongnu.org>; Fri, 01 May 2020 08:50:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=AThqTKuVg6PLJY6jc0hWagWCxDuONRhIR0VFAaLXWfo=;
- b=XOQOPH0ZqoldYyydnCix2XzzkN/7uaH0hotSak471Kji+ub7A05dcgb9sRymAt1EPI
- PqTR7YbfoUlZBqz1F4qCsEBNm3tPr1UXFri+kCOlKrc3RhxeEDtXPORGvVvt7wDzt8IK
- /oc1kNcSdx/+3GU5Fb3GpuOC9WMmhEl1hadlZgNXv/swpiU+c+0FdenuWwMrmJh2uG+o
- /oYu2/H5DB1SihID0G0v+OxTRm2kUwrJ99KWNXNsEKSn25m7CCLzvm6AIJkbM/AAC22o
- +IDdSOFmSIzD1KT6CmZVUldNDfTLi+rxgKfkg2jNWJvi1Zg9LxRXH7bLYcIg+zwCtz6E
- 1aZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=AThqTKuVg6PLJY6jc0hWagWCxDuONRhIR0VFAaLXWfo=;
- b=TyN82xIxig+kLNYA727pAwDMuEtMtfFGkBmpOkGZsmGVaM1FQSQqziquC09LC7dK+b
- X814XTowqPfDmPwPUYAauEBNtTIOLGMTDKRxu6DG0tJHdGIue64GxXjYnXk6u8faDSyJ
- CG5DUAdXUjYFrGcZ/O9t+EqMiy/0WhieYIJbi/d0VK9DzIpBTWKaeU37anigh6FWh6/E
- UdsSIalDA5OTztr0f8ym/yQJgI+e5vzhT9mas/qB7ioARtIv3w/bB9qqmEuw+MTgdCPx
- pJTeFHm2lbhuBTicbOOo30HPn7D7eZNQrG2GbiV+x4M4aM9qIEqgsqEC92PXWsFl0Sbe
- yUaQ==
-X-Gm-Message-State: AGi0PuYcpHmReYaJdvXAr59ViSPh5UX6qpoBcVRgUqYnjY0Cdr0Znk+2
- tRrb3OrfZI6VJgYlsjukFS6zMQ==
-X-Received: by 2002:a17:90a:cc9:: with SMTP id 9mr283126pjt.16.1588348228499; 
- Fri, 01 May 2020 08:50:28 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id 13sm2577420pfv.95.2020.05.01.08.50.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 01 May 2020 08:50:27 -0700 (PDT)
-Subject: Re: [PATCH 23/36] target/arm: Convert Neon 64-bit element 3-reg-same
- insns
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200430181003.21682-1-peter.maydell@linaro.org>
- <20200430181003.21682-24-peter.maydell@linaro.org>
- <366a2e79-d963-bfdc-fcc6-2a63026fa1db@linaro.org>
- <CAFEAcA8M6M7CYg0AsTVbmfX88jzW9MZvRFihQ9cGDJNHhXV+Pw@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <2050ff9f-1338-2b6e-230f-e07c72ece3e5@linaro.org>
-Date: Fri, 1 May 2020 08:50:25 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ (envelope-from <no-reply@patchew.org>) id 1jUXau-00009c-TU
+ for qemu-arm@nongnu.org; Fri, 01 May 2020 11:29:00 -0400
+Resent-Date: Fri, 01 May 2020 11:29:00 -0400
+Resent-Message-Id: <E1jUXau-00009c-TU@eggs.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21322)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jUXYn-0004hG-3Q; Fri, 01 May 2020 11:26:41 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1588346772; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=DHVaeJdBkJtX9IazBRARY9/r4T3aOlqNReYw5hGSOg7Ak3P5u+vRLT6T/Uj98xeD7mn1fPOfDJYaNB+IVcfxT+wuINgjq+sGsIY2/S6+9ZU+eGv2FLdOPIl5n9lo7EpZnyC0WMcX1AetJhRkmIjAG45ouTfhay0qC6W+op3sup0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1588346772;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=RdAznY4HlhUIea9kZFkNWEQfRHZCuq4eZ2TuDXCiefE=; 
+ b=a8FVSsFr7GZCzY8Qm3g921fqvB4GDD58NVHtvHQ7EoMoZMMP1/8Cz/cqaJLDq5QotcRxhBk/f7ndcx7gVuApXymbYUnl6hnxCUvn9kh80gNPMvfxiyNo/7oL3w0r3G4ffeiqFu81jEKQuJEVmVJvMB8AgRy7GC9FRKri9HhSRg0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1588346769928627.7136470441474;
+ Fri, 1 May 2020 08:26:09 -0700 (PDT)
+Message-ID: <158834676829.4471.4515101300306376465@45ef0f9c86ae>
+In-Reply-To: <20200501113704.2240698-1-patrick@stwcx.xyz>
+Subject: Re: [PATCH] aspeed: Add support for the sonorapass-bmc board
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8M6M7CYg0AsTVbmfX88jzW9MZvRFihQ9cGDJNHhXV+Pw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::644;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x644.google.com
-X-detected-operating-system: by eggs.gnu.org: Error: [-] PROGRAM ABORT :
- Malformed IPv6 address (bad octet value).
- Location : parse_addr6(), p0f-client.c:67
-X-Received-From: 2607:f8b0:4864:20::644
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: patrick@stwcx.xyz
+Date: Fri, 1 May 2020 08:26:09 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/01 11:26:38
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Received-From: 136.143.188.53
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -122,43 +74,70 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, andrew@aj.id.au, amithash@fb.com,
+ qemu-devel@nongnu.org, patrick@stwcx.xyz, qemu-arm@nongnu.org, clg@kaod.org,
+ vijaykhemka@fb.com, joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fWuOwbd+gFRH
+X-TUID: Jp1EIfxnqRvE
 
-On 5/1/20 8:36 AM, Peter Maydell wrote:
-> On Thu, 30 Apr 2020 at 21:54, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->> You can morph this into the gvec interface like so:
->>
->> #define DO_3SAME_64(INSN, FUNC) \
->>     static void gen_##INSN##_3s(unsigned vece, uint32_t rd_ofs,
->>                                 uint32_t rn_ofs, uint32_t rm_ofs,
->>                                 uint32_t oprsz, uint32_t maxsz)
->>     {
->>         static const GVecGen3 op = { .fni8 = FUNC };
->>         tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs,
->>                        oprsz, maxsz, &op);
->>     }
->>     DO_3SAME(INSN, gen_##INSN##_3s)
->>
->> The .fni8 function tells gvec that we have a helper that processes the
->> operation in 8 byte chunks.  It will handle the pass loop for you.
->>
->> There's also a .fni4 member, for those neon helpers that operate on 4-byte
->> quantities, fwiw.
-> 
-> Is there a version of this that works on functions that need
-> to be passed the cpu_env, or do I have to create a trampoline
-> function that just calls the real helper function passing it
-> the extra argument ?
-
-A trampoline is required.
-
-The original intention of the hook is to expand some inline tcg ops.  That it
-can be used to call a helper is a happy accident.  For a helper that needs env,
-ideally we would use tcg_gen_gvec_ptr and handle the vector with one call.
-
-
-r~
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDUwMTExMzcwNC4yMjQw
+Njk4LTEtcGF0cmlja0BzdHdjeC54eXovCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8gaGF2
+ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9yZSBp
+bmZvcm1hdGlvbjoKCk1lc3NhZ2UtaWQ6IDIwMjAwNTAxMTEzNzA0LjIyNDA2OTgtMS1wYXRyaWNr
+QHN0d2N4Lnh5egpTdWJqZWN0OiBbUEFUQ0hdIGFzcGVlZDogQWRkIHN1cHBvcnQgZm9yIHRoZSBz
+b25vcmFwYXNzLWJtYyBib2FyZApUeXBlOiBzZXJpZXMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9
+PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApn
+aXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBk
+aWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9n
+cmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFND
+UklQVCBFTkQgPT09CgpGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVt
+dQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzIwMjAwNTAxMTEzNzA0LjIyNDA2OTgtMS1w
+YXRyaWNrQHN0d2N4Lnh5eiAtPiBwYXRjaGV3LzIwMjAwNTAxMTEzNzA0LjIyNDA2OTgtMS1wYXRy
+aWNrQHN0d2N4Lnh5egpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCmFhYjU0MGQgYXNw
+ZWVkOiBBZGQgc3VwcG9ydCBmb3IgdGhlIHNvbm9yYXBhc3MtYm1jIGJvYXJkCgo9PT0gT1VUUFVU
+IEJFR0lOID09PQpFUlJPUjogZG8gbm90IHVzZSBDOTkgLy8gY29tbWVudHMKIzUzOiBGSUxFOiBo
+dy9hcm0vYXNwZWVkLmM6Mzk0OgorICAgIC8vIGJ1cyAyIDoKCkVSUk9SOiBkbyBub3QgdXNlIEM5
+OSAvLyBjb21tZW50cwojNTY6IEZJTEU6IGh3L2FybS9hc3BlZWQuYzozOTc6CisgICAgLy8gYnVz
+IDIgOiBwY2E5NTQ2IEAgMHg3MwoKRVJST1I6IGRvIG5vdCB1c2UgQzk5IC8vIGNvbW1lbnRzCiM1
+ODogRklMRTogaHcvYXJtL2FzcGVlZC5jOjM5OToKKyAgICAvLyBidXMgMyA6IHBjYTk1NDggQCAw
+eDcwCgpFUlJPUjogZG8gbm90IHVzZSBDOTkgLy8gY29tbWVudHMKIzYwOiBGSUxFOiBody9hcm0v
+YXNwZWVkLmM6NDAxOgorICAgIC8vIGJ1cyA0IDoKCkVSUk9SOiBzcGFjZSBwcm9oaWJpdGVkIGFm
+dGVyIHRoYXQgb3BlbiBwYXJlbnRoZXNpcyAnKCcKIzYxOiBGSUxFOiBody9hcm0vYXNwZWVkLmM6
+NDAyOgorICAgIHVpbnQ4X3QgKmVlcHJvbTRfNTQgPSBnX21hbGxvYzAoIDggKiAxMDI0ICk7CgpF
+UlJPUjogc3BhY2UgcHJvaGliaXRlZCBiZWZvcmUgdGhhdCBjbG9zZSBwYXJlbnRoZXNpcyAnKScK
+IzYxOiBGSUxFOiBody9hcm0vYXNwZWVkLmM6NDAyOgorICAgIHVpbnQ4X3QgKmVlcHJvbTRfNTQg
+PSBnX21hbGxvYzAoIDggKiAxMDI0ICk7CgpFUlJPUjogZG8gbm90IHVzZSBDOTkgLy8gY29tbWVu
+dHMKIzY5OiBGSUxFOiBody9hcm0vYXNwZWVkLmM6NDEwOgorICAgIC8vIGJ1cyA2IDoKCkVSUk9S
+OiBkbyBub3QgdXNlIEM5OSAvLyBjb21tZW50cwojNzI6IEZJTEU6IGh3L2FybS9hc3BlZWQuYzo0
+MTM6CisgICAgLy8gYnVzIDYgOiBwY2E5NTQ2IEAgMHg3MwoKRVJST1I6IGRvIG5vdCB1c2UgQzk5
+IC8vIGNvbW1lbnRzCiM3NDogRklMRTogaHcvYXJtL2FzcGVlZC5jOjQxNToKKyAgICAvLyBidXMg
+OCA6CgpFUlJPUjogc3BhY2UgcHJvaGliaXRlZCBhZnRlciB0aGF0IG9wZW4gcGFyZW50aGVzaXMg
+JygnCiM3NTogRklMRTogaHcvYXJtL2FzcGVlZC5jOjQxNjoKKyAgICB1aW50OF90ICplZXByb204
+XzU2ID0gZ19tYWxsb2MwKCA4ICogMTAyNCApOwoKRVJST1I6IHNwYWNlIHByb2hpYml0ZWQgYmVm
+b3JlIHRoYXQgY2xvc2UgcGFyZW50aGVzaXMgJyknCiM3NTogRklMRTogaHcvYXJtL2FzcGVlZC5j
+OjQxNjoKKyAgICB1aW50OF90ICplZXByb204XzU2ID0gZ19tYWxsb2MwKCA4ICogMTAyNCApOwoK
+RVJST1I6IGRvIG5vdCB1c2UgQzk5IC8vIGNvbW1lbnRzCiM4MDogRklMRTogaHcvYXJtL2FzcGVl
+ZC5jOjQyMToKKyAgICAvLyBidXMgOCA6IGFkYzEyOGQ4MTggQCAweDFkCgpFUlJPUjogZG8gbm90
+IHVzZSBDOTkgLy8gY29tbWVudHMKIzgxOiBGSUxFOiBody9hcm0vYXNwZWVkLmM6NDIyOgorICAg
+IC8vIGJ1cyA4IDogYWRjMTI4ZDgxOCBAIDB4MWYKCkVSUk9SOiBkbyBub3QgdXNlIEM5OSAvLyBj
+b21tZW50cwojODM6IEZJTEU6IGh3L2FybS9hc3BlZWQuYzo0MjQ6CisgICAgLy8gYnVzIDEzIDog
+cGNhOTU0OCBAIDB4NzEKCkVSUk9SOiBkbyBub3QgdXNlIEM5OSAvLyBjb21tZW50cwojODQ6IEZJ
+TEU6IGh3L2FybS9hc3BlZWQuYzo0MjU6CisgICAgLy8gICAgICAtIGNoYW5uZWwgMzoKCkVSUk9S
+OiBkbyBub3QgdXNlIEM5OSAvLyBjb21tZW50cwojODU6IEZJTEU6IGh3L2FybS9hc3BlZWQuYzo0
+MjY6CisgICAgLy8gICAgICAgICAgLSB0bW00MjEgQCAweDRjCgpFUlJPUjogZG8gbm90IHVzZSBD
+OTkgLy8gY29tbWVudHMKIzg2OiBGSUxFOiBody9hcm0vYXNwZWVkLmM6NDI3OgorICAgIC8vICAg
+ICAgICAgIC0gdG1wNDIxIEAgMHg0ZQoKRVJST1I6IGRvIG5vdCB1c2UgQzk5IC8vIGNvbW1lbnRz
+CiM4NzogRklMRTogaHcvYXJtL2FzcGVlZC5jOjQyODoKKyAgICAvLyAgICAgICAgICAtIHRtcDQy
+MSBAIDB4NGYKCnRvdGFsOiAxOCBlcnJvcnMsIDAgd2FybmluZ3MsIDEwMCBsaW5lcyBjaGVja2Vk
+CgpDb21taXQgYWFiNTQwZDk2MWNkIChhc3BlZWQ6IEFkZCBzdXBwb3J0IGZvciB0aGUgc29ub3Jh
+cGFzcy1ibWMgYm9hcmQpIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFu
+eSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUg
+bWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCj09PSBPVVRQVVQgRU5E
+ID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMg
+YXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwNTAxMTEzNzA0LjIyNDA2
+OTgtMS1wYXRyaWNrQHN0d2N4Lnh5ei90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4K
+LS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0
+Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJl
+ZGhhdC5jb20=

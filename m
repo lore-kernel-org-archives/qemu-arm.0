@@ -1,68 +1,101 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2094470lfm;
-        Sat, 2 May 2020 12:08:56 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJ6wWcmvX7o/l3MpEkC1WJTg98yyK3vQQoMheXcsfnw3+YeA6iXVwFyCTgOBlvHg1l0YVQr
-X-Received: by 2002:a37:ac10:: with SMTP id e16mr8569035qkm.97.1588446536061;
-        Sat, 02 May 2020 12:08:56 -0700 (PDT)
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2156965lfm;
+        Sat, 2 May 2020 13:36:15 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKjTABrXaDM334mz1ves1uw1oL8KzP+PUo1CJU331SQValCmv/FRu4WPaSb/f6PpeVhj5hT
+X-Received: by 2002:a05:620a:c89:: with SMTP id q9mr9234475qki.375.1588451775084;
+        Sat, 02 May 2020 13:36:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588451775; cv=none;
+        d=google.com; s=arc-20160816;
+        b=FIUenMfKUibDNRXr+Um9meJ0F8lpnetI+MDOOR6i4dicENs6tBhOhnHGB0p8VS3Xcp
+         jyUZ7zLFwEnUJQ9u8TB/YO3f4S9GeVZr76RAGUzyIuCAKmJTva81KcYXvrd/9b6A1rlx
+         VfWXioGmVtrRV5FWcVNbqNhz5QZ9guw1QwrCfmzXsOQMSXJAMk1B9bFQTV0JeiX5ozV1
+         rPdeSVaBVPDHlzUYAVI+jsfCraiyLR+aFwbTg0DvamqiekniIzoialFuFmM4kGmNAps5
+         MWG+gz+TVoY/ySGNREGL0sHkqJskyI/BWWiqqIPYRugeZoagdsErIBJ9VgyIySZeQ7yg
+         Bqbw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=/ZkwrtF/bP/f6NIy006ewNhyBujezKdvG5zAeAtfZTk=;
+        b=GSDN90rN1EbHrGNeG0+0hDPxqKMlhms/j+lU9+U41lvRT9DRxWRz1h5tY95rarWaZN
+         je3suIhW2lS7JebN/ARdIJOi2PpxD++u+iafD9xI7sJqG+stPKveIIafBkQol4IcQF+P
+         TaOJhpoyWOUh2scr9efRAZBkRCEQasJFmXmVjC2gt0m5HO8KTHoM1GL5b0NxE/v57Hny
+         JkcbJxsx4EskrKTZkIu6hKcQEabYBS5glDu9S0XSnlEn4DKr1uUCfG6kNpooxAnaJorJ
+         HDxJEs8gs4Z5kkZ35xVeLsNSpVTKtMjMShgTJT0tU51GIx8wTyhQis+jxgFWOQgFmHzw
+         NcEQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MEpXcpvA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id k28si3845149qtf.185.2020.05.02.12.08.55
+        by mx.google.com with ESMTPS id j13si3941949qtk.73.2020.05.02.13.36.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 02 May 2020 12:08:56 -0700 (PDT)
+        Sat, 02 May 2020 13:36:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47966 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MEpXcpvA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53264 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jUxVP-00041s-H1
-	for alex.bennee@linaro.org; Sat, 02 May 2020 15:08:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37402)
+	id 1jUyru-0002B2-Gp
+	for alex.bennee@linaro.org; Sat, 02 May 2020 16:36:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jUxVH-0003xq-JS
- for qemu-arm@nongnu.org; Sat, 02 May 2020 15:08:47 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jUyrl-0002Am-FK
+ for qemu-arm@nongnu.org; Sat, 02 May 2020 16:36:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1jUxVG-0006Ca-9Y
- for qemu-arm@nongnu.org; Sat, 02 May 2020 15:08:47 -0400
-Resent-Date: Sat, 02 May 2020 15:08:47 -0400
-Resent-Message-Id: <E1jUxVG-0006Ca-9Y@eggs.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21324)
+ (envelope-from <eric.auger@redhat.com>) id 1jUyrj-0003OZ-AX
+ for qemu-arm@nongnu.org; Sat, 02 May 2020 16:36:04 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:29037
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jUxVF-00069h-O3; Sat, 02 May 2020 15:08:45 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1588446507; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=UcJxxp5UUHuAt5RYGwlMKmZ3VN2kzDmMc+JotxOFQT/0avpghG9bWzwOIFQAnSuK2vcKQDBR1MVRjM/bkizvUMZevyC/1dd1pksokNATSx/t9zmV/iM+w2mBeUm8bLpkpN+Rm8APSQIw0SqKmzcBZTqYVxMBVs6v1Ee/e9V3PnM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1588446507;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=KFjoiPKfD87k8xMyIgAD8t6t9iqRl3U5714tlw+mXX8=; 
- b=ZqBuq8j6tbrmbs1rceeFq8+L3sY0LaQdgI5QXYZI3pZlSvtu0B/pVigzwUxpOEBLZ48tC9XAI+tA8nU/5aQcMF3/xGtLCsOaJjlUFd8Q0jbGfygfdxWwoLFh0K2mkXGtl9PJaQMrjskxbsSY0IEbjkbhIFaG4iWPSkkeyk1vn0k=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1588446504368949.7949285442028;
- Sat, 2 May 2020 12:08:24 -0700 (PDT)
-Message-ID: <158844650239.31413.10730868025544781165@45ef0f9c86ae>
-In-Reply-To: <1588441994-21447-1-git-send-email-sai.pavan.boddu@xilinx.com>
-Subject: Re: [PATCH 00/10] Cadence GEM Fixes
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jUyri-0003M6-MM
+ for qemu-arm@nongnu.org; Sat, 02 May 2020 16:36:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1588451761;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=/ZkwrtF/bP/f6NIy006ewNhyBujezKdvG5zAeAtfZTk=;
+ b=MEpXcpvAVQQaIkyRHGo+U8k/gPvAcKXCBmnTVWz7uH7XKHKwCnwmBMU26/ZAg0N0IFXuUJ
+ jBIuETaClYXzbuMKldxyvFsd1RzHKJ74sRkZBWboZqV/GSVdO9klQXwtq2jGvNc6IyjPty
+ jX8CyUHmxQrth4qKUOQMpqdA+5RnEdA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-326-PP02HeioPu-F5zFUpQgXBw-1; Sat, 02 May 2020 16:35:56 -0400
+X-MC-Unique: PP02HeioPu-F5zFUpQgXBw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4180D80183C;
+ Sat,  2 May 2020 20:35:55 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-112-58.ams2.redhat.com [10.36.112.58])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1E2EF1001B2C;
+ Sat,  2 May 2020 20:35:41 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
+ peter.maydell@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ imammedo@redhat.com, shannon.zhaosl@gmail.com, mst@redhat.com
+Subject: [PATCH 0/2] vTPM/aarch64 ACPI support
+Date: Sat,  2 May 2020 22:35:34 +0200
+Message-Id: <20200502203536.15011-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: sai.pavan.boddu@xilinx.com
-Date: Sat, 2 May 2020 12:08:24 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/02 15:08:41
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Received-From: 136.143.188.53
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/02 16:36:01
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Received-From: 205.139.110.120
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -74,56 +107,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jasowang@redhat.com, armbru@redhat.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, Alistair.Francis@wdc.com,
- tong.ho@xilinx.com, philmd@redhat.com, rfried.dev@gmail.com
+Cc: marcandre.lureau@redhat.com, drjones@redhat.com, gshan@redhat.com,
+ lersek@redhat.com, ardb@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YzYM8ZpJ+Cbs
+X-TUID: 6sq7zJbf+bW8
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8xNTg4NDQxOTk0LTIxNDQ3LTEt
-Z2l0LXNlbmQtZW1haWwtc2FpLnBhdmFuLmJvZGR1QHhpbGlueC5jb20vCgoKCkhpLAoKVGhpcyBz
-ZXJpZXMgZmFpbGVkIHRoZSBkb2NrZXItbWluZ3dAZmVkb3JhIGJ1aWxkIHRlc3QuIFBsZWFzZSBm
-aW5kIHRoZSB0ZXN0aW5nIGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBo
-YXZlIERvY2tlciBpbnN0YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2Fs
-bHkuCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhIC9iaW4vYmFzaApleHBvcnQgQVJDSD14
-ODZfNjQKbWFrZSBkb2NrZXItaW1hZ2UtZmVkb3JhIFY9MSBORVRXT1JLPTEKdGltZSBtYWtlIGRv
-Y2tlci10ZXN0LW1pbmd3QGZlZG9yYSBKPTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5E
-ID09PQoKICBDQyAgICAgIGh3L3VzYi9kZXYtd2Fjb20ubwogIENDICAgICAgaHcvdXNiL2Rldi1z
-dG9yYWdlLm8KL3RtcC9xZW11LXRlc3Qvc3JjL2h3L25ldC9jYWRlbmNlX2dlbS5jOiBJbiBmdW5j
-dGlvbiAnZ2VtX3JlY2VpdmUnOgovdG1wL3FlbXUtdGVzdC9zcmMvaHcvbmV0L2NhZGVuY2VfZ2Vt
-LmM6OTkzOjE0OiBlcnJvcjogZm9ybWF0ICclbGQnIGV4cGVjdHMgYXJndW1lbnQgb2YgdHlwZSAn
-bG9uZyBpbnQnLCBidXQgYXJndW1lbnQgMyBoYXMgdHlwZSAnc2l6ZV90JyB7YWthICdsb25nIGxv
-bmcgdW5zaWduZWQgaW50J30gWy1XZXJyb3I9Zm9ybWF0PV0KICAgICBEQl9QUklOVCgiY29uZmln
-IGJ1ZnNpemU6ICVkIHBhY2tldCBzaXplOiAlbGRcbiIsIHJ4YnVmc2l6ZSwgc2l6ZSk7CiAgICAg
-ICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+ICAgICAgICAg
-ICAgIH5+fn4KL3RtcC9xZW11LXRlc3Qvc3JjL2h3L25ldC9jYWRlbmNlX2dlbS5jOjQzOjE4OiBu
-b3RlOiBpbiBkZWZpbml0aW9uIG9mIG1hY3JvICdEQl9QUklOVCcKICAgICAgICAgcWVtdV9sb2co
-X19WQV9BUkdTX18pOyBcCiAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+CmNjMTogYWxsIHdh
-cm5pbmdzIGJlaW5nIHRyZWF0ZWQgYXMgZXJyb3JzCm1ha2U6ICoqKiBbL3RtcC9xZW11LXRlc3Qv
-c3JjL3J1bGVzLm1hazo2OTogaHcvbmV0L2NhZGVuY2VfZ2VtLm9dIEVycm9yIDEKbWFrZTogKioq
-IFdhaXRpbmcgZm9yIHVuZmluaXNoZWQgam9icy4uLi4KVHJhY2ViYWNrIChtb3N0IHJlY2VudCBj
-YWxsIGxhc3QpOgogIEZpbGUgIi4vdGVzdHMvZG9ja2VyL2RvY2tlci5weSIsIGxpbmUgNjY0LCBp
-biA8bW9kdWxlPgotLS0KICAgIHJhaXNlIENhbGxlZFByb2Nlc3NFcnJvcihyZXRjb2RlLCBjbWQp
-CnN1YnByb2Nlc3MuQ2FsbGVkUHJvY2Vzc0Vycm9yOiBDb21tYW5kICdbJ3N1ZG8nLCAnLW4nLCAn
-ZG9ja2VyJywgJ3J1bicsICctLWxhYmVsJywgJ2NvbS5xZW11Lmluc3RhbmNlLnV1aWQ9Njk0OGU2
-NThmMGIwNDY3NWEzZTYwMWNmMDMxMWQzY2UnLCAnLXUnLCAnMTAwMScsICctLXNlY3VyaXR5LW9w
-dCcsICdzZWNjb21wPXVuY29uZmluZWQnLCAnLS1ybScsICctZScsICdUQVJHRVRfTElTVD0nLCAn
-LWUnLCAnRVhUUkFfQ09ORklHVVJFX09QVFM9JywgJy1lJywgJ1Y9JywgJy1lJywgJ0o9MTQnLCAn
-LWUnLCAnREVCVUc9JywgJy1lJywgJ1NIT1dfRU5WPScsICctZScsICdDQ0FDSEVfRElSPS92YXIv
-dG1wL2NjYWNoZScsICctdicsICcvaG9tZS9wYXRjaGV3Ly5jYWNoZS9xZW11LWRvY2tlci1jY2Fj
-aGU6L3Zhci90bXAvY2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1w
-LTkyZzVocl83L3NyYy9kb2NrZXItc3JjLjIwMjAtMDUtMDItMTUuMDUuMzIuMjExMjU6L3Zhci90
-bXAvcWVtdTp6LHJvJywgJ3FlbXU6ZmVkb3JhJywgJy92YXIvdG1wL3FlbXUvcnVuJywgJ3Rlc3Qt
-bWluZ3cnXScgcmV0dXJuZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4KZmlsdGVyPS0tZmlsdGVy
-PWxhYmVsPWNvbS5xZW11Lmluc3RhbmNlLnV1aWQ9Njk0OGU2NThmMGIwNDY3NWEzZTYwMWNmMDMx
-MWQzY2UKbWFrZVsxXTogKioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcg
-ZGlyZWN0b3J5IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtOTJnNWhyXzcvc3JjJwptYWtl
-OiAqKiogW2RvY2tlci1ydW4tdGVzdC1taW5nd0BmZWRvcmFdIEVycm9yIDIKCnJlYWwgICAgMm01
-MC44MTlzCnVzZXIgICAgMG04LjY4N3MKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0
-dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzE1ODg0NDE5OTQtMjE0NDctMS1naXQtc2VuZC1lbWFpbC1z
-YWkucGF2YW4uYm9kZHVAeGlsaW54LmNvbS90ZXN0aW5nLmRvY2tlci1taW5nd0BmZWRvcmEvP3R5
-cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcg
-W2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRj
-aGV3LWRldmVsQHJlZGhhdC5jb20=
+Those 2 patches bring MMIO TPM TIS ACPI support in machvirt.  =20
+The TPM2.0 table is added and the TPM2 device object is described
+in the DSDT.
+
+Many thanks to Ard for his support.
+
+Tested with LUKS partition automatic decryption.
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v5.0-tpm-acpi-v1
+
+Eric Auger (2):
+  arm/acpi: TPM2 ACPI table support
+  arm/acpi: Add the TPM2.0 device under the DSDT
+
+ include/sysemu/tpm.h     |  2 ++
+ hw/arm/virt-acpi-build.c | 70 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 72 insertions(+)
+
+--=20
+2.20.1
+

@@ -1,261 +1,256 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp677785lfm;
-        Fri, 1 May 2020 06:45:24 -0700 (PDT)
-X-Google-Smtp-Source: APiQypI/Lq17GTSsBdjLLapCyzskc5ffI+xG9xnKBNRvca76zk2PJbabQMVowaIOtt/C7jS0GMOy
-X-Received: by 2002:a05:620a:41a:: with SMTP id 26mr3489791qkp.421.1588340723441;
-        Fri, 01 May 2020 06:45:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588340723; cv=none;
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2042334lfm;
+        Sat, 2 May 2020 11:03:27 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJIHj5IuFziEKJ0EVxQhClA6YeOrCoO4FkqxJYhAfEGlvZevzMErkOwDBwU0W7sterRPLiK
+X-Received: by 2002:a37:e112:: with SMTP id c18mr8596818qkm.467.1588442607225;
+        Sat, 02 May 2020 11:03:27 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1588442607; cv=pass;
         d=google.com; s=arc-20160816;
-        b=vcCMIbI557l+08dNgWGprI1owbzSyLQLTW6cThY/dQlMMI0SihZa2V/2thSV5mN3Gd
-         ZEPkUO2TY8io5T/avNrBEFuaoc01Jl/GX8ycxIbEDbESC9X0aCQRiK7YCtG3Ybv9zXq7
-         DCQbxOancIXSgj9FzoAU/REcJ8tmCgNskcf638qoKXRpNWGctfHvKyQ5NxprUagCWVRH
-         CGKloSA/mVbgjwlaEqqh6Hrd2KhiC4opkcTHQIOgPEoeao1E+mMrEmd668rXjqtymeUR
-         LTRW5OpcLCUxHZlWaKZhoeokaQmFOa/xAK2iIrJr0AXH1LjkvLNtPypCPrYhTP5hTTo9
-         XEMg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=u2hoYyxrN49lftj1EjGjKlrnR6bx81EbxEA/AyvrkyAKE08uKinZanyqPWD9byRJd5
+         onvuyaKAhDT0cK5tZq8LUhP3jgtPgALITppHXyHUdxVjD4CGD4SQdMma6tjzLPgigHT9
+         I+vG0nxUKE7vOe6TVJVDzJilQHl7QO9kuK3E8+LVViMJ+BrfvWDy3tdqecXgP133KrIj
+         SGEMX3JR6aqxuW7I72vfsXizwR3ZB/3vPMOt+t6lCN8AcsxSn7jvkxVS70+kPdtkIYaD
+         ai/wbkz2g34nkXxI+ML+doCgWDSZdxKSWdRtm76u5FhNO0Cbv2gUEA15l0L5RgA1s07w
+         G+RQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature
-         :dkim-signature;
-        bh=RlHubz0soz6mBe1C41cTHUPwnqsH7XDvs32vgUJG6/E=;
-        b=qrpfgUMifK4JR/Y7GcgPCJETyUW5+98pWRRJwAloQ29HhFhn+Y0eF1huiGIKQc4+zI
-         QcqW1NBEc1abjdIPLcmjKFcpSGVP0G2h8e5di2zvTUfZiaZfNMLQq9QwexReDT9achES
-         8uBEMrVQ8rsg0jHe+6wMuqCG4T88259FCG8+ewz2iBVaOqazqJsuIbxfor0vBKMBStdy
-         Quzk+PwY+YuGPscauusAPd28sYmYMDKQzV3Otw11P/ZRAFA2Gfo0DMY1CRFhbEzslO82
-         emt4qutqw3/25ob38jDdEtwokbUYp2HuY2+nTWiF22n5uhtrjf3qQHjkofMFKMkQJ+Ri
-         /jkw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@stwcx.xyz header.s=fm1 header.b="jE/9KC7a";
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=abLfsEQp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from:dkim-signature;
+        bh=Ocw6bLZQ7aVvGQelf4qtGWXMh0VHHX4SMx9RuqgN7J0=;
+        b=WmIKouS/rMOnXA8a19AvKcCXKqY7EvXMNP1FD2shLt3Vtpc3J6vqD41R6stEbT/czd
+         +4jbMRcvorN4AhZLITcl8BdoNxu1oQSArLdMceNPaM2JDytsmdneHqbyRZP7lTZSRITg
+         dDqLNhC0wCBOQP8yK3M2zN8PLp4JgM16IaGeg4TqB9VoUJFCBn1/QxnCNHT80iQmVq6r
+         KzNMDSyASKSKB0uFIHjN3Kne6iH2mI3fhLqDC9ppBLZi+PxgxP6Ck76RCL7R6iLjFZwb
+         OefGXa4tT5pVP7kr0Y6CZQ41pcvFpyVgPonBnro1vQZUJONVUYEQR1mvtvbqr/kDNN5+
+         bFeQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=FT7tBF4u;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id p81si1754570qke.221.2020.05.01.06.45.23
+        by mx.google.com with ESMTPS id 13si509593qka.296.2020.05.02.11.03.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 May 2020 06:45:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Sat, 02 May 2020 11:03:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@stwcx.xyz header.s=fm1 header.b="jE/9KC7a";
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=abLfsEQp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51606 helo=lists1p.gnu.org)
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=FT7tBF4u;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jUVyk-00073w-QM
-	for alex.bennee@linaro.org; Fri, 01 May 2020 09:45:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53384)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <patrick@stwcx.xyz>) id 1jUTz4-0001Sz-PW
- for qemu-arm@nongnu.org; Fri, 01 May 2020 07:38:15 -0400
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jUwU2-0002oZ-Dm
+	for alex.bennee@linaro.org; Sat, 02 May 2020 14:03:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49098)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
+ id 1jUwSY-0000nn-Vj
+ for qemu-devel@nongnu.org; Sat, 02 May 2020 14:01:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <patrick@stwcx.xyz>) id 1jUTyl-0001bD-CA
- for qemu-arm@nongnu.org; Fri, 01 May 2020 07:37:34 -0400
-Received: from wnew4-smtp.messagingengine.com ([64.147.123.18]:35277)
+ (envelope-from <saipava@xilinx.com>) id 1jUwS3-0000SL-Py
+ for qemu-devel@nongnu.org; Sat, 02 May 2020 14:01:54 -0400
+Received: from mail-eopbgr760042.outbound.protection.outlook.com
+ ([40.107.76.42]:35967 helo=NAM02-CY1-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
- id 1jUTyk-0001UQ-IE; Fri, 01 May 2020 07:37:15 -0400
-Received: from compute7.internal (compute7.nyi.internal [10.202.2.47])
- by mailnew.west.internal (Postfix) with ESMTP id 76C2D6D6;
- Fri,  1 May 2020 07:37:10 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute7.internal (MEProxy); Fri, 01 May 2020 07:37:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stwcx.xyz; h=
- from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding; s=fm1; bh=RlHubz0soz6mBe1C41cTHUPwnq
- sH7XDvs32vgUJG6/E=; b=jE/9KC7amNuAVDe0zk95Si4Ew9ZPQ2aLpGTrAOm32C
- USMk2+KIczYYQya7HXqViv7FypdTmHZbC3yX8mFYNIGe546+Wu1Yxm1syVtfpgj4
- 6KUCN5x5oevmL/kD9Q/TzxbjsFbZXL5jvIXrI+ZRSzsFFWbhQYPHQDqBVNVziTx5
- ziL56LXngGPKmEk6UYENeyOxDzXQqiDo9eujzsSyytZbUc335bMwGKGSqqKBU0bd
- 8dvKEGHXLVOV4wjVLMKbCIzuzEBk6aK1s/1LPzWKnWgy6vK3U411EeaHGoXA+YiY
- cpvKMjMUCkrcgS8JF1CJXw81UR+kh5HStGGqDLxTPfvg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:date:from
- :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=RlHubz0soz6mBe1C4
- 1cTHUPwnqsH7XDvs32vgUJG6/E=; b=abLfsEQpabKPtSz4B54+Mx1zIu1G2wtY8
- SE2VZYirB7dScFuquErVXY9OTC2lxbzYJ+e6BXoMGmF4e0NJohd3UyGwq4gl4zAg
- 67+t22BRLa+Bdl98/L9zwr4Wlfd4Qo4E976fmgb9YrRo01aOND28XPsFKGjKV6gN
- +Wnye5oS87Al1oT4z4bRx4tt1kcEOgjjbuPyV01OSh8/2OzkgUVGFskp/oEJY+/E
- i6KEUyEyXg9ohX0PslefiaDcYu+yOzKCop6U7oC/Hur+TYMeyFEzTpmItmvGhEoF
- 5X9U9aqUQBR4/dLPsAa+f0JKWMr1Lf4LGmX9BonSawZN1kjTCqcJg==
-X-ME-Sender: <xms:5QmsXsqDGL0dVn48sXAl_JAVmpG5uwb-rNFxo_IvIfBDWRrnDiz9Uw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduhedrieejgdegtdcutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenmh
- hishhsihhnghcuvffquchfihgvlhguucdlfedtmdenfghrlhcuvffnffculdefhedmnego
- vehorghsthgrlhdqhfeguddvqddtvdculdduhedtmdenucfjughrpefhvffufffkofgggf
- estdekredtredttdenucfhrhhomheprfgrthhrihgtkhcuhghilhhlihgrmhhsuceophgr
- thhrihgtkhesshhtfigtgidrgiihiieqnecuggftrfgrthhtvghrnheptdeggeefteejje
- eltdefvedttdfhieffvedvteefvdeljedvheeufeeggfetleffnecuffhomhgrihhnpehg
- ihhthhhusgdrtghomhenucfkphepjeeirddvhedtrdekgedrvdefieenucevlhhushhtvg
- hrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehprghtrhhitghksehsthif
- tgigrdighiii
-X-ME-Proxy: <xmx:5QmsXvyuhD5g_nJ8oi7mYk1jtgySUqgpfd0bKxu96-LxcAM5-nJoBg>
- <xmx:5QmsXhrRdUopnJnCZWETtgZpgOQvWpm1zkRcAdn0JtBu6bPDUCpe9g>
- <xmx:5QmsXk7l2Hn9XTXOr2FwWCmbgPASVLTGXBEQnBt9YxuXSCPPYtSDjg>
- <xmx:5gmsXoKKdDmOssFKeTaBTWJn42KMb8Nj-mXf0m-k4vyFsrQc5oAAeO1AO7o>
-Received: from localhost (76-250-84-236.lightspeed.austtx.sbcglobal.net
- [76.250.84.236])
- by mail.messagingengine.com (Postfix) with ESMTPA id CA9003280060;
- Fri,  1 May 2020 07:37:08 -0400 (EDT)
-From: Patrick Williams <patrick@stwcx.xyz>
-To: 
-Subject: [PATCH] aspeed: Add support for the sonorapass-bmc board
-Date: Fri,  1 May 2020 06:37:04 -0500
-Message-Id: <20200501113704.2240698-1-patrick@stwcx.xyz>
-X-Mailer: git-send-email 2.26.2
+ (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
+ id 1jUwS3-0000OQ-7R; Sat, 02 May 2020 14:01:23 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=HmBLVzAPHYGrx7flxRSAGUpBWbqgZvWbcurKQjU6BvrP8yqhZunK8bOE8qGiVPJGsfLrI9oiBsL5m+nKWBFIVp2u65BN7sDmJTq3NkIxkPaj+paxr3S9WVzCOp8S35l6nsacoA5yzeik3prvSihPsphHbNFHEDgTQbcUpdc/KoJvIUh49qPbNiI15jOTz0KTo4il9mnKK9Q/PeWsBMrsqz6SahOvQOnj5d4NRvJUuHMLtKHop+0S1bSLznD26qsZ4oMgQWFNOKCD2I63P4AfmitAiWQbxJrDTHaLVxOV0l3dcHia3zI5CoXHEawm1lgPKSLw4fhpCTrC1IEmXG/cVg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ocw6bLZQ7aVvGQelf4qtGWXMh0VHHX4SMx9RuqgN7J0=;
+ b=QWeNZpjaZGZUsx6ZXZaN/es8Rla1QnnqSPLy857PrjXcGfsTWKozzQAKCukbW+/9t2SAG7b8vpvGSbfSfqwyj8E4iL+GXn0kjoQ9l6NTuXgpDFzmEJyFs9qBJk65ZBRcBTZW2vuth5knQbCH3APieQz891p5RWgiWaLsNhruC2Zkkcy6KEYdjyPZr/b/SbrY16XSo0lH3udsWEdtjrqIZfcIfh1YpnRdnfZvzM59oiW6R2W3ZPTKUKfQ740180BDfnG4d/Yb3yFQ+bfkddi+B4Fc8SOoFy/iQdhkcM35FdlM5AeztMSK9boVV1VHk6GbV7PdD7IBIj946rC3zCoO/g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.60.83) smtp.rcpttodomain=wdc.com smtp.mailfrom=xilinx.com;
+ dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
+ not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ocw6bLZQ7aVvGQelf4qtGWXMh0VHHX4SMx9RuqgN7J0=;
+ b=FT7tBF4u32a/XP4p1kLHEx5051ixmIWdJgDJHNCQWukCCisoy7vZEeah63pPLFJ9NQ0DXFxuQ6DcXkzXF4pcDK8Nr5R1tg8XGpspuYSmU6x0FDet0aJgGwxOY4g8uOaUNfv+WDS/YTmAGYGTVWTxjam+JiaVNKWgVsWvNcNiHJE=
+Received: from SN4PR0501CA0044.namprd05.prod.outlook.com
+ (2603:10b6:803:41::21) by SN1PR02MB3728.namprd02.prod.outlook.com
+ (2603:10b6:802:31::10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.27; Sat, 2 May
+ 2020 18:01:17 +0000
+Received: from SN1NAM02FT059.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:803:41:cafe::48) by SN4PR0501CA0044.outlook.office365.com
+ (2603:10b6:803:41::21) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.18 via Frontend
+ Transport; Sat, 2 May 2020 18:01:17 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
+ smtp.mailfrom=xilinx.com; wdc.com; dkim=none (message not signed)
+ header.d=none;wdc.com; dmarc=bestguesspass action=none
+ header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+ SN1NAM02FT059.mail.protection.outlook.com (10.152.72.177) with Microsoft SMTP
+ Server id 15.20.2958.27 via Frontend Transport; Sat, 2 May 2020 18:01:17
+ +0000
+Received: from [149.199.38.66] (port=60209 helo=xsj-pvapsmtp01)
+ by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
+ (envelope-from <sai.pavan.boddu@xilinx.com>)
+ id 1jUwRt-0004nH-Pr; Sat, 02 May 2020 11:01:13 -0700
+Received: from [127.0.0.1] (helo=xsj-smtp-dlp1.xlnx.xilinx.com)
+ by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+ (envelope-from <sai.pavan.boddu@xilinx.com>)
+ id 1jUwRx-0006w6-1G; Sat, 02 May 2020 11:01:17 -0700
+Received: from xsj-pvapsmtp01 (xsj-smtp.xilinx.com [149.199.38.66])
+ by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id 042I1GBS010794; 
+ Sat, 2 May 2020 11:01:16 -0700
+Received: from [10.140.6.35] (helo=xhdsaipava40.xilinx.com)
+ by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+ (envelope-from <saipava@xhdsaipava40.xilinx.com>)
+ id 1jUwRv-0006uw-S5; Sat, 02 May 2020 11:01:16 -0700
+Received: by xhdsaipava40.xilinx.com (Postfix, from userid 14131)
+ id A625A13C0491; Sat,  2 May 2020 23:23:39 +0530 (IST)
+From: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Tong Ho <tong.ho@xilinx.com>, Ramon Fried <rfried.dev@gmail.com>
+Subject: [PATCH 02/10] net: cadence_gem: Fix the queue address update during
+ wrap around
+Date: Sat,  2 May 2020 23:23:06 +0530
+Message-Id: <1588441994-21447-3-git-send-email-sai.pavan.boddu@xilinx.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1588441994-21447-1-git-send-email-sai.pavan.boddu@xilinx.com>
+References: <1588441994-21447-1-git-send-email-sai.pavan.boddu@xilinx.com>
+X-RCIS-Action: ALLOW
+X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
+X-TM-AS-User-Approved-Sender: Yes;Yes
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:149.199.60.83; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:xsj-pvapsmtpgw01; PTR:unknown-60-83.xilinx.com; CAT:NONE;
+ SFTY:;
+ SFS:(396003)(346002)(376002)(136003)(39860400002)(46966005)(6266002)(478600001)(82740400003)(186003)(2906002)(81166007)(356005)(26005)(5660300002)(4326008)(47076004)(70586007)(70206006)(36756003)(8936002)(8676002)(336012)(82310400002)(2616005)(6666004)(316002)(42186006)(110136005)(426003);
+ DIR:OUT; SFP:1101; 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=64.147.123.18; envelope-from=patrick@stwcx.xyz;
- helo=wnew4-smtp.messagingengine.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/01 07:37:11
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Received-From: 64.147.123.18
-X-Mailman-Approved-At: Fri, 01 May 2020 09:45:07 -0400
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: ef57e1f1-8ad5-42bc-dd29-08d7eec2cfd0
+X-MS-TrafficTypeDiagnostic: SN1PR02MB3728:
+X-Microsoft-Antispam-PRVS: <SN1PR02MB3728362EAD3A1B92E16C447FCAA80@SN1PR02MB3728.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:483;
+X-Forefront-PRVS: 039178EF4A
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: FffO6O4syjfNdepCY6qR6NdAZU1H4rslN1GMxZNyLBHgLFVgPbCN5sCJr3Gd/i/MQ9ByATnmIp2qPh8uM3oaXv+yMEqTHW/ufyHVEuhbL0NmvwB2cqDRD60qTMQT3gRNXMVBUf/yviECfp/m3DDKCPGLtG+jOedN9hLXa+9b63tOEBy2R9kYMfR2N/oIpNW01NMu7airrCOf9h4jWFs7NyqRmlBtZ57k35vb3SOPh1QiLAh5j8EyvOxMUjHLdG7RCWewk61zJxT49+zN1i56tUSoiMzL2YbDK5MqsCc+1LL/nMb+SHjdW0Ms+J7dbJyXDRbdebhZxvDNWBCREuWVHlyEATxXQXVvX3CUFAMrjkVgWzQ+szUa7R1o/ipmrnI8C5UA/00F3872uSOnPJ0CsN5N1BKuuEPeYbcJcixJc5LfxXDN0Vt2vGRzigPebWh/+qseVocs/Ga6V4XCDWcWhBW5eM2VfsW+xkll5ldiIqcKsxXLSFtyuXE07TfL4RxSs+KoakzLDtVvxcEsTW4wJQ==
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 May 2020 18:01:17.3702 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ef57e1f1-8ad5-42bc-dd29-08d7eec2cfd0
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
+ Helo=[xsj-pvapsmtpgw01]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN1PR02MB3728
+Received-SPF: pass client-ip=40.107.76.42; envelope-from=saipava@xilinx.com;
+ helo=NAM02-CY1-obe.outbound.protection.outlook.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/02 14:01:19
+X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
+X-Received-From: 40.107.76.42
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Amithash Prasad <amithash@fb.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Patrick Williams <patrick@stwcx.xyz>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Vijay Khemka <vijaykhemka@fb.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5h2AQjvmZoHn
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XA9Pd/oYPzQ4
 
-Sonora Pass is a 2 socket x86 motherboard designed by Facebook
-and supported by OpenBMC.  Strapping configuration was obtained
-from hardware and i2c configuration is based on dts found at:
+During wrap around and reset, queues are pointing to initial base
+address of queue 0, irrespective of what queue we are dealing with.
+Fix it by assigning proper base address every time.
 
-https://github.com/facebook/openbmc-linux/blob/1633c87b8ba7c162095787c988979b748ba65dc8/arch/arm/boot/dts/aspeed-bmc-facebook-sonorapass.dts
-
-Booted a test image of http://github.com/facebook/openbmc to login
-prompt.
-
-Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
+Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
 ---
- hw/arm/aspeed.c | 76 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 76 insertions(+)
+ hw/net/cadence_gem.c | 29 +++++++++++++++++++++++++----
+ 1 file changed, 25 insertions(+), 4 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index a6a2102a93..09b3277d56 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -84,6 +84,21 @@ struct AspeedBoardState {
-         SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
-         SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
- 
-+/* Sonorapass hardware value: 0xF100D216 */
-+#define SONORAPASS_BMC_HW_STRAP1 (                                      \
-+        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
-+        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
-+        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
-+        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
-+        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
-+        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
-+        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
-+        SCU_HW_STRAP_VGA_BIOS_ROM |                                     \
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-+        SCU_AST2500_HW_STRAP_RESERVED1)
-+
- /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
- #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
- 
-@@ -372,6 +387,48 @@ static void swift_bmc_i2c_init(AspeedBoardState *bmc)
-     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 12), "tmp105", 0x4a);
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index 92fcbe5..074aaa8 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -845,6 +845,25 @@ static int get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
+     return 0;
  }
  
-+static void sonorapass_bmc_i2c_init(AspeedBoardState *bmc)
++static uint32_t gem_get_queue_base_addr(CadenceGEMState *s, bool tx, int q)
 +{
-+    AspeedSoCState *soc = &bmc->soc;
++    uint32_t base_addr = 0;
 +
-+    // bus 2 :
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 2), "tmp105", 0x48);
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 2), "tmp105", 0x49);
-+    // bus 2 : pca9546 @ 0x73
++    switch (q) {
++    case 0:
++        base_addr = s->regs[tx ? GEM_TXQBASE : GEM_RXQBASE];
++        break;
++    case 1 ... (MAX_PRIORITY_QUEUES - 1):
++        base_addr = s->regs[(tx ? GEM_TRANSMIT_Q1_PTR :
++                                 GEM_RECEIVE_Q1_PTR) + q - 1];
++        break;
++    default:
++        g_assert_not_reached();
++    };
 +
-+    // bus 3 : pca9548 @ 0x70
-+
-+    // bus 4 :
-+    uint8_t *eeprom4_54 = g_malloc0( 8 * 1024 );
-+    smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), 0x54,
-+                          eeprom4_54);
-+    /* PCA9539 @ 0x76, but PCA9552 is compatible */
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "pca9552", 0x76);
-+    /* PCA9539 @ 0x77, but PCA9552 is compatible */
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "pca9552", 0x77);
-+
-+    // bus 6 :
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 6), "tmp105", 0x48);
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 6), "tmp105", 0x49);
-+    // bus 6 : pca9546 @ 0x73
-+
-+    // bus 8 :
-+    uint8_t *eeprom8_56 = g_malloc0( 8 * 1024 );
-+    smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), 0x56,
-+                          eeprom8_56);
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), "pca9552", 0x60);
-+    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), "pca9552", 0x61);
-+    // bus 8 : adc128d818 @ 0x1d
-+    // bus 8 : adc128d818 @ 0x1f
-+
-+    // bus 13 : pca9548 @ 0x71
-+    //      - channel 3:
-+    //          - tmm421 @ 0x4c
-+    //          - tmp421 @ 0x4e
-+    //          - tmp421 @ 0x4f
-+
++    return base_addr;
 +}
 +
- static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
+ static hwaddr gem_get_desc_addr(CadenceGEMState *s, bool tx, int q)
  {
-     AspeedSoCState *soc = &bmc->soc;
-@@ -499,6 +556,21 @@ static void aspeed_machine_swift_class_init(ObjectClass *oc, void *data)
-     mc->default_ram_size       = 512 * MiB;
- };
- 
-+static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       = "OpenPOWER SonoraPass BMC (ARM1176)";
-+    amc->soc_name  = "ast2500-a1";
-+    amc->hw_strap1 = SONORAPASS_BMC_HW_STRAP1;
-+    amc->fmc_model = "mx66l1g45g";
-+    amc->spi_model = "mx66l1g45g";
-+    amc->num_cs    = 2;
-+    amc->i2c_init  = sonorapass_bmc_i2c_init;
-+    mc->default_ram_size       = 512 * MiB;
-+};
-+
- static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -563,6 +635,10 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("swift-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_swift_class_init,
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("sonorapass-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_sonorapass_class_init,
-     }, {
-         .name          = MACHINE_TYPE_NAME("witherspoon-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
+     hwaddr desc_addr = 0;
+@@ -1043,7 +1062,7 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+         /* Next descriptor */
+         if (rx_desc_get_wrap(s->rx_desc[q])) {
+             DB_PRINT("wrapping RX descriptor list\n");
+-            s->rx_desc_addr[q] = s->regs[GEM_RXQBASE];
++            s->rx_desc_addr[q] = gem_get_queue_base_addr(s, false, q);
+         } else {
+             DB_PRINT("incrementing RX descriptor list\n");
+             s->rx_desc_addr[q] += 4 * gem_get_desc_len(s, true);
+@@ -1199,7 +1218,8 @@ static void gem_transmit(CadenceGEMState *s)
+                                     sizeof(desc_first));
+                 /* Advance the hardware current descriptor past this packet */
+                 if (tx_desc_get_wrap(desc)) {
+-                    s->tx_desc_addr[q] = s->regs[GEM_TXQBASE];
++                    s->tx_desc_addr[q] = gem_get_queue_base_addr(s,
++                                         true, q);
+                 } else {
+                     s->tx_desc_addr[q] = packet_desc_addr +
+                                          4 * gem_get_desc_len(s, false);
+@@ -1251,7 +1271,8 @@ static void gem_transmit(CadenceGEMState *s)
+                 } else {
+                     packet_desc_addr = 0;
+                 }
+-                packet_desc_addr |= s->regs[GEM_TXQBASE];
++                packet_desc_addr |= gem_get_queue_base_addr(s,
++                                    true, q);
+             } else {
+                 packet_desc_addr += 4 * gem_get_desc_len(s, false);
+             }
+@@ -1457,7 +1478,7 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
+         if (!(val & GEM_NWCTRL_TXENA)) {
+             /* Reset to start of Q when transmit disabled. */
+             for (i = 0; i < s->num_priority_queues; i++) {
+-                s->tx_desc_addr[i] = s->regs[GEM_TXQBASE];
++                s->tx_desc_addr[i] = gem_get_queue_base_addr(s, true, i);
+             }
+         }
+         if (gem_can_receive(qemu_get_queue(s->nic))) {
 -- 
-2.26.2
+2.7.4
 

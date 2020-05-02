@@ -1,105 +1,68 @@
-Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2157304lfm;
-        Sat, 2 May 2020 13:36:49 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLKx5Us2CsWb9npxn+ILMdUvLaBgWKkYRPyfxQu646t3Jy+rjtcfR6jeKmlmhPXU+aoYO11
-X-Received: by 2002:ac8:164e:: with SMTP id x14mr10118381qtk.196.1588451809752;
-        Sat, 02 May 2020 13:36:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588451809; cv=none;
-        d=google.com; s=arc-20160816;
-        b=nS3p9StOFGGpnjB0m+PzW4Pz7Kn/whOD+naerkl8MeIrr5hwhupBBbSg3f7j1L9FN1
-         LRt3QTVWxZt3+lYg/Xi0P1L+Xy6QwzCXyi2gTl03/9OurLFtQOBs8DKgQPVBpED0/0N7
-         2mPERIYQZeSqCt2V6Ql4cI8t7PXKU+Imx8vLPYCUl2zKvwuuqkUvftBaYW+Bo7mms82J
-         4/VsIBpxCgRYzwmB1TotrJZTX5ZEV1uJZJsQjJkFyFTUKAPpRdbWXfMKtGkvq8pzXuT8
-         j+cQ/vHENQxXz2kB4djzx44TBgt6tQW12WhBEjm52+rjfTk3RhKFtayVzmVRxMtoJjy0
-         TNyg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=nX4JQPiEzAFhnB9ENyMrEpHgnft3fb952sqvA++yGTk=;
-        b=s0sGgcX8SKEmvM/8ekvF7Ja+46DWKr2OuawMl4zLlFNwBwnB7Zv/+FIK4330Sm7JoX
-         4ESUKHbXeVzd9lTR+VWMEeVXqTDoL1BdKerTnPnkiBmEiGW7pneYeaO4y/5w5+WQGQlu
-         sh9qj1DNgm3KEU3f71F1UEu1BoVPdohlArQatcxZkiQJpoDFOVpGjs9tJIig86mMMY7a
-         O4XWj5a3WQjvgA/8rSRc8Hxroae9wq7ZXSuYqmKkv+AlTXpAGmavO3xbF/eDKJLMce1c
-         OoRu4/NDVEw/63sNb0lNTy8WZ1RGYxKvd4dAd/cTkgqnQP+syL2DxwAyaviZtSOd2uBn
-         u+yQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ktqu20VI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:ac2:52b1:0:0:0:0:0 with SMTP id r17csp2213582lfm;
+        Sat, 2 May 2020 15:04:33 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIbSkDWfApaXUG/N0UDjvL6ib8fOw121E3aIZiASUUVtvO2HGkO/91Bn+9O3tA9AyWzNnXm
+X-Received: by 2002:a0c:8324:: with SMTP id j33mr10109118qva.23.1588457073764;
+        Sat, 02 May 2020 15:04:33 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id c1si3788210qtq.356.2020.05.02.13.36.49
+        by mx.google.com with ESMTPS id 23si3882918qky.30.2020.05.02.15.04.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 02 May 2020 13:36:49 -0700 (PDT)
+        Sat, 02 May 2020 15:04:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ktqu20VI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54966 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54094 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jUysT-0002t2-6o
-	for alex.bennee@linaro.org; Sat, 02 May 2020 16:36:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60266)
+	id 1jV0FM-0005sR-Jh
+	for alex.bennee@linaro.org; Sat, 02 May 2020 18:04:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39286)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jUysF-0002rL-GW
- for qemu-arm@nongnu.org; Sat, 02 May 2020 16:36:36 -0400
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jV0Ew-0005of-7M
+ for qemu-arm@nongnu.org; Sat, 02 May 2020 18:04:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1jUysD-000465-No
- for qemu-arm@nongnu.org; Sat, 02 May 2020 16:36:35 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:58829
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <no-reply@patchew.org>) id 1jV0Eu-0002kg-UO
+ for qemu-arm@nongnu.org; Sat, 02 May 2020 18:04:05 -0400
+Resent-Date: Sat, 02 May 2020 18:04:05 -0400
+Resent-Message-Id: <E1jV0Eu-0002kg-UO@eggs.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21360)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jUysC-00043S-6O
- for qemu-arm@nongnu.org; Sat, 02 May 2020 16:36:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588451789;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nX4JQPiEzAFhnB9ENyMrEpHgnft3fb952sqvA++yGTk=;
- b=Ktqu20VIz6tDxkf7/5NmtMSM97uGmZ607XBdog/TjDId8pbpBPX+r5F7M68NyTEdLpqypg
- HKAsxnZAqnKq4z/jLgs3qSeG06kTi8yeWGT8cqPsnEgI9OHdt8QgQwKN/172w9Fgy5GUBO
- e3dgk2aOAy3cvJ//5Do6QJw6G9PDacM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-500-xqgOJiRgNNW3gn9MIvlwlg-1; Sat, 02 May 2020 16:36:18 -0400
-X-MC-Unique: xqgOJiRgNNW3gn9MIvlwlg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E585D1009600;
- Sat,  2 May 2020 20:36:16 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-112-58.ams2.redhat.com [10.36.112.58])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C3E691002388;
- Sat,  2 May 2020 20:36:02 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
- peter.maydell@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- imammedo@redhat.com, shannon.zhaosl@gmail.com, mst@redhat.com
-Subject: [PATCH 2/2] arm/acpi: Add the TPM2.0 device under the DSDT
-Date: Sat,  2 May 2020 22:35:36 +0200
-Message-Id: <20200502203536.15011-3-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jV0Bs-0006VK-8F; Sat, 02 May 2020 18:00:56 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1588456838; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=iegmkhCCw6ptUmeVY7v21kz0cTaZ771WL0c2rvZBpgBAKbrZJE5hY2K+1xzgVk4h3j+d2gBSBQZ/uIQ5RVCJ7t8vThTk7fp14Z6YrdVLgW9baxJKMr5GJYpoIQuIWatSd6rrXQOP2fXMaLleKiicGQNnFiniUmfJoi7NxDcecgw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1588456838;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=/d6+kfWZo+t3c7NJP7Ou3bCkCZ0HN6PpDx59KSQSgQg=; 
+ b=I8TOPk9VF4hhblCJxkSu9YFjyehL8xHyLca0vA0HRuOHelII224It53FI06H6ZOulmCxmIKSvSGYlyp7UDziUIryU5P0mWBAmrM/slRnAExFFkMpmktDidS07HhLL8JudFXaut0YS30Ozt4esvgoKFA5Xh23F908cOQAeXDW9jM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1588456837687310.71423266450927;
+ Sat, 2 May 2020 15:00:37 -0700 (PDT)
+Message-ID: <158845683562.31413.4485572935626539977@45ef0f9c86ae>
 In-Reply-To: <20200502203536.15011-1-eric.auger@redhat.com>
-References: <20200502203536.15011-1-eric.auger@redhat.com>
+Subject: Re: [PATCH 0/2] vTPM/aarch64 ACPI support
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.120;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/02 16:36:01
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Received-From: 205.139.110.120
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: eric.auger@redhat.com
+Date: Sat, 2 May 2020 15:00:37 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/02 18:00:53
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Received-From: 136.143.188.53
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,84 +74,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: marcandre.lureau@redhat.com, drjones@redhat.com, gshan@redhat.com,
- lersek@redhat.com, ardb@kernel.org
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, drjones@redhat.com, gshan@redhat.com,
+ shannon.zhaosl@gmail.com, mst@redhat.com, qemu-devel@nongnu.org,
+ eric.auger@redhat.com, qemu-arm@nongnu.org, marcandre.lureau@redhat.com,
+ imammedo@redhat.com, eric.auger.pro@gmail.com, lersek@redhat.com,
+ ardb@kernel.org, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nLTbeYIw8AV8
+X-TUID: +Xh6XZLMl7c5
 
-In case it is dynamically instantiated, add the TPM 2.0 device object
-under the DSDT table in the ACPI namespace. Its HID is MSFT0101
-while its current resource settings (CRS) property is initialized
-with the guest physical address and MMIO size of the device.
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/virt-acpi-build.c | 34 ++++++++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
-
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index cc5863eaf2..0cb9cdb2ce 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -45,6 +45,7 @@
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci.h"
- #include "hw/arm/virt.h"
-+#include "hw/platform-bus.h"
- #include "sysemu/numa.h"
- #include "sysemu/reset.h"
- #include "sysemu/tpm.h"
-@@ -362,6 +363,38 @@ static void acpi_dsdt_add_power_button(Aml *scope)
-     aml_append(scope, dev);
- }
-=20
-+static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
-+{
-+    hwaddr pbus_base =3D vms->memmap[VIRT_PLATFORM_BUS].base;
-+    PlatformBusDevice *pbus =3D PLATFORM_BUS_DEVICE(vms->platform_bus_dev)=
-;
-+    MemoryRegion *sbdev_mr;
-+    SysBusDevice *sbdev;
-+    hwaddr tpm_base;
-+
-+    sbdev =3D (SysBusDevice *)object_dynamic_cast(OBJECT(tpm_find()),
-+                                                TYPE_SYS_BUS_DEVICE);
-+    if (!sbdev) {
-+        return;
-+    }
-+
-+    tpm_base =3D platform_bus_get_mmio_addr(pbus, sbdev, 0);
-+    assert(tpm_base !=3D -1);
-+
-+    tpm_base +=3D pbus_base;
-+
-+    sbdev_mr =3D sysbus_mmio_get_region(sbdev, 0);
-+
-+    Aml *dev =3D aml_device("TPM0");
-+    aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
-+    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-+
-+    Aml *crs =3D aml_resource_template();
-+    aml_append(crs,
-+               aml_memory32_fixed(tpm_base, sbdev_mr->size, AML_READ_WRITE=
-));
-+    aml_append(dev, aml_name_decl("_CRS", crs));
-+    aml_append(scope, dev);
-+}
-+
- static void
- build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- {
-@@ -785,6 +818,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, Virt=
-MachineState *vms)
-     }
-=20
-     acpi_dsdt_add_power_button(scope);
-+    acpi_dsdt_add_tpm(scope, vms);
-=20
-     aml_append(dsdt, scope);
-=20
---=20
-2.20.1
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDUwMjIwMzUzNi4xNTAx
+MS0xLWVyaWMuYXVnZXJAcmVkaGF0LmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgdGhl
+IGRvY2tlci1taW5nd0BmZWRvcmEgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3Rpbmcg
+Y29tbWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGluc3Rh
+bGxlZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNUIFND
+UklQVCBCRUdJTiA9PT0KIyEgL2Jpbi9iYXNoCmV4cG9ydCBBUkNIPXg4Nl82NAptYWtlIGRvY2tl
+ci1pbWFnZS1mZWRvcmEgVj0xIE5FVFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtbWluZ3dA
+ZmVkb3JhIEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgogIENDICAgICAg
+eDg2XzY0LXNvZnRtbXUvdGFyZ2V0L2kzODYvc21tX2hlbHBlci5vCiAgQ0MgICAgICBhYXJjaDY0
+LXNvZnRtbXUvaHcvYXJtL29yYW5nZXBpLm8KL3RtcC9xZW11LXRlc3Qvc3JjL2h3L2FybS92aXJ0
+LWFjcGktYnVpbGQuYzogSW4gZnVuY3Rpb24gJ2FjcGlfZHNkdF9hZGRfdHBtJzoKL3RtcC9xZW11
+LXRlc3Qvc3JjL2h3L2FybS92aXJ0LWFjcGktYnVpbGQuYzozOTM6NTM6IGVycm9yOiBpbmNvbXBh
+dGlibGUgdHlwZSBmb3IgYXJndW1lbnQgMiBvZiAnYW1sX21lbW9yeTMyX2ZpeGVkJwogICAgICAg
+ICAgICAgICAgYW1sX21lbW9yeTMyX2ZpeGVkKHRwbV9iYXNlLCBzYmRldl9tci0+c2l6ZSwgQU1M
+X1JFQURfV1JJVEUpKTsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgfn5+fn5+fn5efn5+fn4KSW4gZmlsZSBpbmNsdWRlZCBmcm9tIC90bXAvcWVtdS10ZXN0L3Ny
+Yy9ody9hcm0vdmlydC1hY3BpLWJ1aWxkLmM6Mzk6Ci90bXAvcWVtdS10ZXN0L3NyYy9pbmNsdWRl
+L2h3L2FjcGkvYW1sLWJ1aWxkLmg6MzE3OjY6IG5vdGU6IGV4cGVjdGVkICd1aW50MzJfdCcge2Fr
+YSAndW5zaWduZWQgaW50J30gYnV0IGFyZ3VtZW50IGlzIG9mIHR5cGUgJ0ludDEyOCcge2FrYSAn
+c3RydWN0IEludDEyOCd9CiBBbWwgKmFtbF9tZW1vcnkzMl9maXhlZCh1aW50MzJfdCBhZGRyLCB1
+aW50MzJfdCBzaXplLAogICAgICBefn5+fn5+fn5+fn5+fn5+fn4KbWFrZVsxXTogKioqIFsvdG1w
+L3FlbXUtdGVzdC9zcmMvcnVsZXMubWFrOjY5OiBody9hcm0vdmlydC1hY3BpLWJ1aWxkLm9dIEVy
+cm9yIDEKbWFrZVsxXTogKioqIFdhaXRpbmcgZm9yIHVuZmluaXNoZWQgam9icy4uLi4KICBDQyAg
+ICAgIHg4Nl82NC1zb2Z0bW11L3RhcmdldC9pMzg2L3N2bV9oZWxwZXIubwogIENDICAgICAgeDg2
+XzY0LXNvZnRtbXUvdGFyZ2V0L2kzODYva3ZtLXN0dWIubwotLS0KICBDQyAgICAgIHg4Nl82NC1z
+b2Z0bW11L3NvZnRtbXUvbWFpbi5vCiAgQ0MgICAgICB4ODZfNjQtc29mdG1tdS9nZGJzdHViLXht
+bC5vCiAgQ0MgICAgICB4ODZfNjQtc29mdG1tdS90cmFjZS9nZW5lcmF0ZWQtaGVscGVycy5vCm1h
+a2U6ICoqKiBbTWFrZWZpbGU6NTI3OiBhYXJjaDY0LXNvZnRtbXUvYWxsXSBFcnJvciAyCm1ha2U6
+ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpvYnMuLi4uCiAgTElOSyAgICB4ODZfNjQtc29m
+dG1tdS9xZW11LXN5c3RlbS14ODZfNjR3LmV4ZQogIEdFTiAgICAgeDg2XzY0LXNvZnRtbXUvcWVt
+dS1zeXN0ZW0teDg2XzY0LmV4ZQotLS0KICAgIHJhaXNlIENhbGxlZFByb2Nlc3NFcnJvcihyZXRj
+b2RlLCBjbWQpCnN1YnByb2Nlc3MuQ2FsbGVkUHJvY2Vzc0Vycm9yOiBDb21tYW5kICdbJ3N1ZG8n
+LCAnLW4nLCAnZG9ja2VyJywgJ3J1bicsICctLWxhYmVsJywgJ2NvbS5xZW11Lmluc3RhbmNlLnV1
+aWQ9MGE2ZjM5N2ZkZTU1NDMzMjg2NWJmNGViZTE1NTgzZDInLCAnLXUnLCAnMTAwMScsICctLXNl
+Y3VyaXR5LW9wdCcsICdzZWNjb21wPXVuY29uZmluZWQnLCAnLS1ybScsICctZScsICdUQVJHRVRf
+TElTVD0nLCAnLWUnLCAnRVhUUkFfQ09ORklHVVJFX09QVFM9JywgJy1lJywgJ1Y9JywgJy1lJywg
+J0o9MTQnLCAnLWUnLCAnREVCVUc9JywgJy1lJywgJ1NIT1dfRU5WPScsICctZScsICdDQ0FDSEVf
+RElSPS92YXIvdG1wL2NjYWNoZScsICctdicsICcvaG9tZS9wYXRjaGV3Ly5jYWNoZS9xZW11LWRv
+Y2tlci1jY2FjaGU6L3Zhci90bXAvY2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10
+ZXN0ZXItdG1wLTRiazFsZmc0L3NyYy9kb2NrZXItc3JjLjIwMjAtMDUtMDItMTcuNTQuMzUuMjQy
+NDI6L3Zhci90bXAvcWVtdTp6LHJvJywgJ3FlbXU6ZmVkb3JhJywgJy92YXIvdG1wL3FlbXUvcnVu
+JywgJ3Rlc3QtbWluZ3cnXScgcmV0dXJuZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4KZmlsdGVy
+PS0tZmlsdGVyPWxhYmVsPWNvbS5xZW11Lmluc3RhbmNlLnV1aWQ9MGE2ZjM5N2ZkZTU1NDMzMjg2
+NWJmNGViZTE1NTgzZDIKbWFrZVsxXTogKioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06
+IExlYXZpbmcgZGlyZWN0b3J5IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtNGJrMWxmZzQv
+c3JjJwptYWtlOiAqKiogW2RvY2tlci1ydW4tdGVzdC1taW5nd0BmZWRvcmFdIEVycm9yIDIKCnJl
+YWwgICAgNm0wLjQ2MHMKdXNlciAgICAwbTguNzMzcwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFi
+bGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDA1MDIyMDM1MzYuMTUwMTEtMS1lcmlj
+LmF1Z2VyQHJlZGhhdC5jb20vdGVzdGluZy5kb2NrZXItbWluZ3dAZmVkb3JhLz90eXBlPW1lc3Nh
+Z2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczov
+L3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZl
+bEByZWRoYXQuY29t

@@ -1,111 +1,111 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp557782lfb;
-        Mon, 4 May 2020 08:31:30 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJWJsGpZYRmnO1UpBcmkFb4uLdzWrC0G/86DHq/wgoLI1QzEpFO+fejt20I2Wb7mh+P2lDV
-X-Received: by 2002:a05:620a:1282:: with SMTP id w2mr7491084qki.40.1588606289919;
-        Mon, 04 May 2020 08:31:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588606289; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp561138lfb;
+        Mon, 4 May 2020 08:35:06 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIxMCVuOFuvB20ps8uUwm/swnZRV+UHudWgqe/mIW06kuCmTYz440QYpHmZ77WdYFypv6PI
+X-Received: by 2002:aed:3bf2:: with SMTP id s47mr17431838qte.126.1588606506779;
+        Mon, 04 May 2020 08:35:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588606506; cv=none;
         d=google.com; s=arc-20160816;
-        b=CB/Oh0KInn9l8pxlSwZBK63+l+H6Xj8rzPhELgo6VAHr+aUQ84vssQUvP3gpUSamEB
-         p5kZ8TE7xIlNFqEfVADCfppoEhQO8RprgH93SKxK74ZP5rbBs5pfH7Vflbf/SZwWWZ6S
-         EUbhv5gB9suHbv++paIaYLPnkxjh+sgjc6ec7H2dnClKv0ahnWEZYgttIM7elGPe4aBa
-         /aOB5FgFUu2tKODRhYPVFOzas6IJx7YqUKU0AividTpUCwr3rrr6syrQT9XltbSHizhs
-         vvVA/R0/qDnThAtqrzSKi3G69iJ2OLrGYf0zA0ogwYuR0zVDnb38mE6p0TcT/0kzMvWw
-         Y+pw==
+        b=I8kwuMM3ZvBHpCSyzwX1yCi2H6wCNP3CacNR86TXP+GNm2UBaaxn9ASxVjQzVyULsp
+         C+fODqxxd+SsjURg3aoyDzW0R4rsR96969xco12f6b/mnrWYnvB2L42lRM/sU4hoC/sD
+         jNnA1PP9f9+7JgwJekJVBXS/SK2aA9I3M2VWg3JpSMYTmj6eqvrJYeCURdP+wzBpsYp8
+         cp3Q5HJnub4Nt24AzgmAMx331j1iVEDsYEGSZw2tmMDqeihSHcnr6V0QuzO8qHnYqctG
+         57VAuKG4mKHH5Oye9MSEC3X+BCtJpb5R0H9oKHBD4m7s9wiyPz+/MXIFMF6BOys633Uu
+         VWaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:subject:to
          :from:date:dkim-signature;
-        bh=OCxln7r9CtY3KwMZIPpbOtordTxgRoQdjtUPMOchYF8=;
-        b=rBL7Y5B34IW0KvQH+C2eTUpeGo8d/337MRvxwzXWgCZF4gDqGpeSEek1D2del0q7O8
-         S5KUyZYjoQK602z7gLsP1oL+68o9VXk7pbQkupZQ1V/lx3I4jhh5bz4swHuPPulf0cNT
-         fioCklVLcgxRAguxi6Sm98jUsqnNUQkBCtb7bcZQgrDNSXl3Ufj6t+hDSpAqVgayLoKI
-         ynquapyF7ug9E9gMYh4lnfbkPtdM5bPq/DCx1OYWOKGeVYm3/AukQv6JuGYH99SmtQ0J
-         2NjOiMG+fYkcd7zoJaBuNJRkY4gqirHQiF8n4AA26cMrV5zEdkovqNH4HZhXV+mFKvaM
-         CsLQ==
+        bh=DAkGWiYCEBGONE/7ZtcTXQF56VZHlgRuV4N1X0KUVb0=;
+        b=IT/xBJA7+1xa9QR/2sD7+w4OS/3M0pvflGXvD3Y1QUhGRQ8IC/1M2u6pEYTOxSQGwY
+         eUc8zJJjMoT0TzHGXt4chbUmbttFonSJntf+g0byhTGX+ue3kIAwrOI4jV6aFTYpTeHW
+         hPCb5Rtsay496RpFIkgOAZv8NI8tR+nd4mwwEI0RLwsL1QMkZaDPLq+upmdGhFb1OpeA
+         +uMLXdNYSgxeGbDc5u2s3JIfmRLXEoHrxPe03s0rvOBMdURAI8pJA+xb54aec19he1Ew
+         k0XD8Ryf7iXkH/ezfqRIpasNBSqbpAsUZoIu1OwGfaYvFXgPGiz92BLkl122HWtNMm6N
+         q0Ig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bdXWyvbl;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JxpyphBC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id w5si7146194qvl.220.2020.05.04.08.31.29
+        by mx.google.com with ESMTPS id o21si6655295qtt.331.2020.05.04.08.35.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 May 2020 08:31:29 -0700 (PDT)
+        Mon, 04 May 2020 08:35:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bdXWyvbl;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JxpyphBC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33596 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47616 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVd44-0006If-N6
-	for alex.bennee@linaro.org; Mon, 04 May 2020 11:31:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60116)
+	id 1jVd7a-0004Bq-2E
+	for alex.bennee@linaro.org; Mon, 04 May 2020 11:35:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1jVd2F-0003vd-TF; Mon, 04 May 2020 11:29:35 -0400
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:45098)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1jVd4Y-0007qx-5X; Mon, 04 May 2020 11:31:59 -0400
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:41096)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1jVd2F-0003sU-2j; Mon, 04 May 2020 11:29:35 -0400
-Received: by mail-lj1-x243.google.com with SMTP id h4so10077707ljg.12;
- Mon, 04 May 2020 08:29:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1jVd4X-0007J1-9z; Mon, 04 May 2020 11:31:57 -0400
+Received: by mail-lj1-x243.google.com with SMTP id j3so10081911ljg.8;
+ Mon, 04 May 2020 08:31:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=OCxln7r9CtY3KwMZIPpbOtordTxgRoQdjtUPMOchYF8=;
- b=bdXWyvblRI2zWFXu09VP0vIXcF9pUtprKN9kxGW+KuPPuMNRUOVFdfHgqhAPT+9jYu
- iiJ504v6ajs8uYMdiqlDShu+3oiYfWnTiVj4ie+5O/+F48BDgPFjUA65WcG5PVWy+WNo
- HCGaohD4POSt3ofE+H/MVA9GTw7AXNn9ZSOEtCMhPfOtQUifD9tyYhbAaITW2gw6r/Mw
- AGnrmpLEv4jFFy1m1l73h4230aaD5gFNLUtYYoakHmt5h9mY8+9L/7MPS2g3MoUFxsVa
- wmWj2E/P4Gt0Aaxj98WpvZqz2jP1qegPmA/WA+QMFlQTwhCxLk4J3JMrac/xjHV532SD
- JZyQ==
+ bh=DAkGWiYCEBGONE/7ZtcTXQF56VZHlgRuV4N1X0KUVb0=;
+ b=JxpyphBCvJkAZk4q20zhdvizJXoguO08FUgg52CgGNN82R9H97CW2ZQ8mBe9hp909N
+ EIbtFCNFq2DWdW3ljcZpa20heXsw7Q31tV/nVA27wWo+8xY2roSz+No4mrG1mXIq9SDx
+ GjpEwZpGODQ0Ufk7asu3W/k76kvwfnfzuNqyYplZZNykYdOrxwxtQ94DG6T6uG4XaiMv
+ 8en/0lCN2P5zKhpxz2U0A2TNP9X0N1z29BPIcn9IWn1oEt4wbwlgoTrOi1BGfsGEyXoD
+ WBYsh5doUIp0PN7A7PsS6Z3jwb0VaL5KO8YtqhCfIMldurtDuFjwy2IXADPrlhoYUhrE
+ C3BQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=OCxln7r9CtY3KwMZIPpbOtordTxgRoQdjtUPMOchYF8=;
- b=Tls1+Kp0q9izJ6+T7VJkUUGjBSpsbZ1+UfogFoYxREWVd1aY/I4LdfhXePbybg58S4
- +3JatKg3oBbcQnFtqWQ4kvfp2LZhM03zLQiemZmlLw9QZh3qxnH8Kn1kJMWYtzzGodqV
- PSHz4KO+6gFfz+Et0mGSLtHu2c5+lGVhSvU0yAFKzcmc3f8cspGVOB6XsbictkiTh7WU
- HUkuj3+r2V2y8QmLrbGxCFXTPdc186uRRF6ckiUjrmwwnYo6nAjhdG1zOpUCjUYLH3El
- l4yVQjvdPlzia98YWVAdb1tVy+Cg3bJLPphDCFvQV/xo80nI4gACEqqkRqW8GQL7+vZR
- okUg==
-X-Gm-Message-State: AGi0PuY1aMkqEBySCFx8O5btkZpypkAW00374aY3FYwVeVl2hZFADxpR
- 1RHUcK1FprWBx+gpc5lD3mM=
-X-Received: by 2002:a2e:a58d:: with SMTP id m13mr10847069ljp.164.1588606172617; 
- Mon, 04 May 2020 08:29:32 -0700 (PDT)
-Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
- by smtp.gmail.com with ESMTPSA id
- j22sm8482690ljh.107.2020.05.04.08.29.31
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 04 May 2020 08:29:32 -0700 (PDT)
-Date: Mon, 4 May 2020 17:29:30 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH v1 1/9] hw/net/xilinx_axienet: Auto-clear PHY Autoneg
-Message-ID: <20200504152929.la2w7qapvf2b752t@fralle-msi>
-References: <20200430162439.2659-1-edgar.iglesias@gmail.com>
- <20200430162439.2659-2-edgar.iglesias@gmail.com>
+ bh=DAkGWiYCEBGONE/7ZtcTXQF56VZHlgRuV4N1X0KUVb0=;
+ b=gu9i2NpZwG9cciKmXHVH7Xra3XCnu/etitYY6mKJCPchCDXAvkPeU8rV7zjJ/u8vJ1
+ hGyS4h84c+Lq6jDTjTyCuCNgvjcW/R6Ekx3EKYykHrK4aWUy2wMVHCAqGlHAJN8uvPLQ
+ 8asCEw4KCN/f1EfCZu/R6twX7g8IhDzZ1j3lC43i+0GnEHcAYDEskNPmXgRIppIFWVa5
+ IbYSsHTyQ7Lc6szieAERQRiFmCNMCpLUkzFEi6nW0Th8RGlNY1c/JfzDpTjL+MH3Aunn
+ Br59gy9atv98/uR1tXznvUF8pv9KP24igsgHvhl974rQh7LU8w7SEdiQqiMB30FRpPTG
+ Rcww==
+X-Gm-Message-State: AGi0PuZbHutSkwS/XoNMXH8VMHAdKQ4M8PVu8aNzK4DohSU8hlMjHJcX
+ K9c6kqptpOfLxxgNltYOC60=
+X-Received: by 2002:a2e:9455:: with SMTP id o21mr10825454ljh.245.1588606315161; 
+ Mon, 04 May 2020 08:31:55 -0700 (PDT)
+Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id w29sm10045758lfq.35.2020.05.04.08.31.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 May 2020 08:31:52 -0700 (PDT)
+Date: Mon, 4 May 2020 17:31:51 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+Subject: Re: [PATCH v2 09/10] net: cadence_gem: TX_LAST bit should be set by
+ guest
+Message-ID: <20200504153151.GI5519@toto>
+References: <1588601168-27576-1-git-send-email-sai.pavan.boddu@xilinx.com>
+ <1588601168-27576-10-git-send-email-sai.pavan.boddu@xilinx.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200430162439.2659-2-edgar.iglesias@gmail.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
+In-Reply-To: <1588601168-27576-10-git-send-email-sai.pavan.boddu@xilinx.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 Received-SPF: pass client-ip=2a00:1450:4864:20::243;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x243.google.com
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x243.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001,
- USER_IN_WHITELIST=-100 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,44 +118,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: damien.hedde@greensocs.com, peter.maydell@linaro.org,
- sstabellini@kernel.org, edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
- jasowang@redhat.com, alistair@alistair23.me, qemu-devel@nongnu.org,
- frederic.konrad@adacore.com, qemu-arm@nongnu.org, philmd@redhat.com,
- luc.michel@greensocs.com, figlesia@xilinx.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Tong Ho <tong.ho@xilinx.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ Ramon Fried <rfried.dev@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2iju/QcdG66y
+X-TUID: HTe238A94ejZ
 
-On [2020 Apr 30] Thu 18:24:31, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+On Mon, May 04, 2020 at 07:36:07PM +0530, Sai Pavan Boddu wrote:
+> TX_LAST bit should not be set by hardware, its set by guest to inform
+> the last bd of the frame.
+
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+
+
 > 
-> Auto-clear PHY CR Autoneg bits. This makes this model
-> work with recent Linux kernels.
-> 
+> Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
 > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-
 > ---
->  hw/net/xilinx_axienet.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  hw/net/cadence_gem.c | 6 ------
+>  1 file changed, 6 deletions(-)
 > 
-> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-> index 704788811a..0f97510d8a 100644
-> --- a/hw/net/xilinx_axienet.c
-> +++ b/hw/net/xilinx_axienet.c
-> @@ -149,8 +149,8 @@ tdk_write(struct PHY *phy, unsigned int req, unsigned int data)
->              break;
->      }
->  
-> -    /* Unconditionally clear regs[BMCR][BMCR_RESET] */
-> -    phy->regs[0] &= ~0x8000;
-> +    /* Unconditionally clear regs[BMCR][BMCR_RESET] and auto-neg */
-> +    phy->regs[0] &= ~0x8200;
+> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> index ac3a553..f0bf2e7 100644
+> --- a/hw/net/cadence_gem.c
+> +++ b/hw/net/cadence_gem.c
+> @@ -345,11 +345,6 @@ static inline unsigned tx_desc_get_last(uint32_t *desc)
+>      return (desc[1] & DESC_1_TX_LAST) ? 1 : 0;
 >  }
 >  
->  static void
+> -static inline void tx_desc_set_last(uint32_t *desc)
+> -{
+> -    desc[1] |= DESC_1_TX_LAST;
+> -}
+> -
+>  static inline unsigned tx_desc_get_length(uint32_t *desc)
+>  {
+>      return desc[1] & DESC_1_LENGTH;
+> @@ -1270,7 +1265,6 @@ static void gem_transmit(CadenceGEMState *s)
+>  
+>              /* read next descriptor */
+>              if (tx_desc_get_wrap(desc)) {
+> -                tx_desc_set_last(desc);
+>  
+>                  if (s->regs[GEM_DMACFG] & GEM_DMACFG_ADDR_64B) {
+>                      packet_desc_addr = s->regs[GEM_TBQPH];
 > -- 
-> 2.20.1
+> 2.7.4
 > 

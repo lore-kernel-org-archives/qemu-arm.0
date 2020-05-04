@@ -1,102 +1,103 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp519744lfb;
-        Mon, 4 May 2020 07:50:38 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIBlJ5g1gvVQwkdkg3msE+/FJkFkvmzdCJUYZonU8l8uAYvGIJu787fDu6+1NLORhm2WSMM
-X-Received: by 2002:a37:65c3:: with SMTP id z186mr15968483qkb.484.1588603826993;
-        Mon, 04 May 2020 07:50:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588603826; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp526296lfb;
+        Mon, 4 May 2020 07:58:53 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIYJWCAB9V6UUVQq2w/DFN5xtetqWohBTgQaWACLeNwsOB/vypZE4nVemM3UU+aucq+5GBc
+X-Received: by 2002:ac8:893:: with SMTP id v19mr17608932qth.40.1588604332901;
+        Mon, 04 May 2020 07:58:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588604332; cv=none;
         d=google.com; s=arc-20160816;
-        b=cFykHIpsNJGOXru0oEqb4EdZ0IOzIZ8XTSIksV3GXqhqwrTyRHhU93/MJkCR47ka+A
-         geVYTSblhJh7XuVed/TXaekL5DoeaY9Ttl5kW9D3rF6elj2dUBETZbh1LE9JZOvUkp1H
-         CUtwHlxxTnFbDeQEDzAPo9Z/ghNrlIJL0JPxGyQjXkqazWIHfOwmTkknxeF/1ac2khiR
-         XIK8nP+Gk2Fol4haeznj7dYizXPG0zcHEBIoLr1p1+hmF67Vnl/jBZfp92Y+3ymflT6E
-         hhnixow7aRZgL/V4C97osdYfceaghpGBaCuKtAZODEMAONCk98/kgqZemFX38X/9iYG5
-         eA/Q==
+        b=GSGid96seBmCSJHAr9d5NBJ7RhAg7O/VJqBoQQoLbwen48biYkV0lG/g+PAlrCYeCL
+         NBkp5HgULBtpqZj8V1eW90kOn2PUmFtppysUb4PkJRT/Vduxy35tboZznWGiU00/Cake
+         zDSgo8XkA47+Jj5F1k1Qf4Q343TbNNnoDlZ3D/qPZUcTJwsfqhAX5CuVAvMmu6bli6Nx
+         hBO94qZ3MHJvmv0m1pcHTa1AHlD+4KdVugs3bwToXug6WQjJzAEVHV4fCKxaGD1Ys8lo
+         l3WyLfmg3A/zVc1DV5Kn0kECC+lEf5iFgl3BbtcxpSWo7PsVI1YXcbejlY08XKBXpB6+
+         DAnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:subject:to
          :from:date:dkim-signature;
-        bh=rKeNqQ2d2ObLs/zCVsCYYGZ7H33qapCedtGJaSloaCA=;
-        b=SSSi2ogLZzB2zXBWhFkZTX0wunBGd1qv+ci2oOM9s8wYMCyxObabDVqlCuPkHS6IDV
-         GxdMiS8VqtpMfMV4WUiiENkMaLoBi98izopgXV/WcJ/9HRkL53ms4k8oZR6jtpkcHl3S
-         9FBJ92rX7Dst/Edt8APLvAVv32hHYN1auXmgbrswe1k3b8MMyahxNA+8lNZeOJdQCeqc
-         t8DlE8b26uuFQYvWLPZg1CTr4mYrCqTPbpKC4ZC4DY1Qw0LDuW3o3XZZ9mIJueicS3OT
-         FA4fpKVbrCmfv2HUwgF33cT3OIgTJ0MkJEg+ug/FHagzvCeATmFDIei9jW6aHtV6v4O2
-         5mlA==
+        bh=ahp4fnyRnrL8Druo+hPCRIyKLsfKFpDywTu0QTqLkyw=;
+        b=p/3bE+zAo0KvaVaCoz+Li3a2+fe66OJbCwuv8QogYLKJTEmv7PdfW9/5ymd5ehCnoT
+         4H7xe+jPhoqD6l7d5OwPGIojOBq6Tl6lak2TAZiSSMUJWgbKZY3MUn8mh4H+m1bVm07e
+         YR7AKk59VY5z3VAvZSk2uQnlLUV2qBWVJXcOEsKSUL/hZ4AByTiLDr3TWqOwm7g5+Zcf
+         L9U0PkS5gU0HjbtepXUqnDuRK593MJrgysJKrDM95fQuB8jsAuLfrpd7kQkThh7PLO2/
+         gYrm6hQCokJHub7rqHeyaWTB5Gy6I+HGOrzDiT8rUT/6ojEFTqAWJRoS6g++76TIGtha
+         fQTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Q15pqy9N;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OX0s+Kmy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id d46si6626955qte.260.2020.05.04.07.50.26
+        by mx.google.com with ESMTPS id x8si1149514qki.32.2020.05.04.07.58.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 May 2020 07:50:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Mon, 04 May 2020 07:58:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Q15pqy9N;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OX0s+Kmy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50718 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60540 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVcQM-0008EW-8r
-	for alex.bennee@linaro.org; Mon, 04 May 2020 10:50:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49030)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jVcYW-00080Z-73
+	for alex.bennee@linaro.org; Mon, 04 May 2020 10:58:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52828)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jVcFi-00071F-Qc; Mon, 04 May 2020 10:39:26 -0400
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:40957)
+ id 1jVcWx-0005l1-Sy; Mon, 04 May 2020 10:57:16 -0400
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:35506)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jVcFh-0003ab-Qu; Mon, 04 May 2020 10:39:26 -0400
-Received: by mail-lj1-x242.google.com with SMTP id y4so9888488ljn.7;
- Mon, 04 May 2020 07:39:25 -0700 (PDT)
+ id 1jVcWv-0002vp-Mj; Mon, 04 May 2020 10:57:14 -0400
+Received: by mail-lj1-x244.google.com with SMTP id g4so9989927ljl.2;
+ Mon, 04 May 2020 07:57:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=rKeNqQ2d2ObLs/zCVsCYYGZ7H33qapCedtGJaSloaCA=;
- b=Q15pqy9NQFvF7fKPq5pgCvmbyxV8h7Af+MCej8OaNJuKmbGx9rEhRu62o1bygHcaBP
- tgOjLFznphtB/QkbHadwW+6ecYqfRs5d/j4E9ruiini8zTh8sy3XeluID7PmoXvyLno/
- YJHWsLeWJRknIovy0m5PyBWNgw2bOvu9zs4AUA1b7GYqKDv1YBG1AXZEzLnJZlOrr6Ap
- iev7Yp3o7u0gDDhaTxnwdJB553RW2841jb8e7NqHonWhytRmWcZXoAmLKpKlkWp9hcdU
- lfdwcsN0wWBb9zqiGR2ulR6tapjbJ7TH/OvKO+PQm9zL6KuAJhC/Bmp9xUL7FHITWFDN
- asEQ==
+ bh=ahp4fnyRnrL8Druo+hPCRIyKLsfKFpDywTu0QTqLkyw=;
+ b=OX0s+Kmyf6gdeAuS0aGjr83oD8yNj6a5SKX7JmVq0Yx3VsL7lbQTuJm3CoLT/vd0GZ
+ XodHmSeRP2qpjsXP0eyNnvFMZJgNnImtrr8zQ5kcWXoux9rG0uIZJrw3K7XkfykqT9EF
+ zfAtZXfhw2cEqOMyIM3Wn+KD3NM6CXg72eVzjGVVjZ9iPa25EjnMkNvSxNNCj7R/khum
+ WG6qQsnu2D3vorZxq1Y7FOLzG0yIF7M08N86FivZVJsEqHy9UceWSlyLbN4YoR93hIiK
+ Yx5lnTqlCIoGC+oxH69jeecXpqQ59LC5xMEG2ojA3vOzXhNXNi6NqLeG6e5IRY/DqNhW
+ wLyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=rKeNqQ2d2ObLs/zCVsCYYGZ7H33qapCedtGJaSloaCA=;
- b=W/RtWW/qk5yBuxyLSe31+gqnNhDJVclGXztNJ/0Ii1ePCFdPRop55DwomFyiUK45Kr
- oI8xED8+1fQojn6hQv+JkXVe2eR5BzorjfbJSDsqPRhhsobSNEZuCZQFw6VwUGjMg8v+
- wDSufWKP3wiMoJhnSvMe+hSBQOPVOuXv/Ted1hZI78gQ1FA5b4YGHRo3zg4+C+QhgHp5
- HbwhMiqEk8xQ1u2KJAxLMJ84V9zmRHE9rGN5/J+vTMu5o36jlEvCGanlOkfDyBJcYejj
- 2lhaiX/eHepP0EVFWEBC1xF/xZ7acw4wMF1TaR1ZfhCkLoPSoQsHn4SyoqvgghOMAc3G
- Px2Q==
-X-Gm-Message-State: AGi0PuZ/OcgBVpDhUXwBF8MuvVoY7fCj4+EvDSRdOuA5Vc4mqwqtfM3D
- jdeHXgoBxlLj21OCmpF+vdQ=
-X-Received: by 2002:a05:651c:549:: with SMTP id
- q9mr10768660ljp.236.1588603163597; 
- Mon, 04 May 2020 07:39:23 -0700 (PDT)
+ bh=ahp4fnyRnrL8Druo+hPCRIyKLsfKFpDywTu0QTqLkyw=;
+ b=oO9I0JqUyPvOWuaLYqQuwuR4vxWYc/f62Y4XwTfKKeW9a+7rHbGDG84/zO1tpNw/em
+ febf50CfJgoyoh41Is14IFo0AdRDgkJ2yNrIO9sEwKBK/eH+nd2DVyhhwR8jO8vFskIu
+ AY0FI1X3iUp3rCnT8Z1PUIEq8N3YPaphXrei5+nFr6S7m2g7Yk2X2vOyQeW0Ei3fn4fE
+ CWsKzLcta/CZBS5/7736P+XZ8AMGRmD+xKDDxtZAc9B7Z96cj0uXVeg2K7TmzAeyViFx
+ HNdJfNxqg5lX5JE7aP3EGSgAu54vPZAkjOou8wY81kke0FR9cd03gn0fMXT3B6qhxySQ
+ 2JHQ==
+X-Gm-Message-State: AGi0PubMOylDEvuSp67iMYB1BaMvlsQQQ0FYBl4oIs1l5l1Kjs2HS7TT
+ 1w/bUwpFYPBAMrbe9x5VQv0=
+X-Received: by 2002:a05:651c:403:: with SMTP id
+ 3mr10214393lja.231.1588604231538; 
+ Mon, 04 May 2020 07:57:11 -0700 (PDT)
 Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id j22sm8389941ljh.107.2020.05.04.07.39.22
+ by smtp.gmail.com with ESMTPSA id y21sm8416959ljg.66.2020.05.04.07.57.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 May 2020 07:39:22 -0700 (PDT)
-Date: Mon, 4 May 2020 16:39:22 +0200
+ Mon, 04 May 2020 07:57:10 -0700 (PDT)
+Date: Mon, 4 May 2020 16:57:10 +0200
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-Subject: Re: [PATCH v2 01/10] net: cadence_gem: Fix debug statements
-Message-ID: <20200504143922.GB5519@toto>
+Subject: Re: [PATCH v2 04/10] net: cadence_gem: Define access permission for
+ interrupt registers
+Message-ID: <20200504145710.GD5519@toto>
 References: <1588601168-27576-1-git-send-email-sai.pavan.boddu@xilinx.com>
- <1588601168-27576-2-git-send-email-sai.pavan.boddu@xilinx.com>
+ <1588601168-27576-5-git-send-email-sai.pavan.boddu@xilinx.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1588601168-27576-2-git-send-email-sai.pavan.boddu@xilinx.com>
+In-Reply-To: <1588601168-27576-5-git-send-email-sai.pavan.boddu@xilinx.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::242;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x242.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::244;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x244.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -107,105 +108,93 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
  Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, Tong Ho <tong.ho@xilinx.com>,
  Alistair Francis <Alistair.Francis@wdc.com>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
  Ramon Fried <rfried.dev@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4Q0zOyTJm54p
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hmDyPFyGX6Ym
 
-On Mon, May 04, 2020 at 07:35:59PM +0530, Sai Pavan Boddu wrote:
-> Enabling debug breaks the build, Fix them and make debug statements
-> always compilable. Fix few statements to use sized integer casting.
+On Mon, May 04, 2020 at 07:36:02PM +0530, Sai Pavan Boddu wrote:
+> Q1 to Q7 ISR's are clear-on-read, IER/IDR registers
+> are write-only, mask reg are read-only.
 > 
 > Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
 > ---
->  hw/net/cadence_gem.c | 28 ++++++++++++++--------------
->  1 file changed, 14 insertions(+), 14 deletions(-)
+>  hw/net/cadence_gem.c | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
 > 
 > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index 22a0b1b..2f244eb 100644
+> index a930bf1..c532a14 100644
 > --- a/hw/net/cadence_gem.c
 > +++ b/hw/net/cadence_gem.c
-> @@ -35,14 +35,13 @@
->  #include "sysemu/dma.h"
->  #include "net/checksum.h"
->  
-> -#ifdef CADENCE_GEM_ERR_DEBUG
-> -#define DB_PRINT(...) do { \
-> -    fprintf(stderr,  ": %s: ", __func__); \
-> -    fprintf(stderr, ## __VA_ARGS__); \
-> -    } while (0)
-> -#else
-> -    #define DB_PRINT(...)
-> -#endif
-> +#define CADENCE_GEM_ERR_DEBUG 0
-> +#define DB_PRINT(...) do {\
-> +    if (CADENCE_GEM_ERR_DEBUG) {   \
-> +        qemu_log(": %s: ", __func__); \
-> +        qemu_log(__VA_ARGS__); \
-> +    } \
-> +} while (0)
->  
->  #define GEM_NWCTRL        (0x00000000/4) /* Network Control reg */
->  #define GEM_NWCFG         (0x00000004/4) /* Network Config reg */
-> @@ -979,7 +978,8 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
->          size += 4;
->      }
->  
-> -    DB_PRINT("config bufsize: %d packet size: %ld\n", rxbufsize, size);
-> +    DB_PRINT("config bufsize: %" PRIu64 " packet size: %" PRIu64 "\n",
-> +             (uint64_t) rxbufsize, (uint64_t) size);
+> @@ -458,6 +458,7 @@ static const uint8_t broadcast_addr[] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+>   */
+>  static void gem_init_register_masks(CadenceGEMState *s)
+>  {
+> +    unsigned int i;
+>      /* Mask of register bits which are read only */
+>      memset(&s->regs_ro[0], 0, sizeof(s->regs_ro));
+>      s->regs_ro[GEM_NWCTRL]   = 0xFFF80000;
+> @@ -470,10 +471,19 @@ static void gem_init_register_masks(CadenceGEMState *s)
+>      s->regs_ro[GEM_ISR]      = 0xFFFFFFFF;
+>      s->regs_ro[GEM_IMR]      = 0xFFFFFFFF;
+>      s->regs_ro[GEM_MODID]    = 0xFFFFFFFF;
+> +    for (i = 0; i < s->num_priority_queues; i++) {
+> +        s->regs_ro[GEM_INT_Q1_STATUS + i] = 0xFFFFFFFF;
+> +        s->regs_ro[GEM_INT_Q1_ENABLE + i] = 0xFFFFE319;
+> +        s->regs_ro[GEM_INT_Q1_DISABLE + i] = 0xFFFFE319;
 
-Shouldn't these be %u and %zd rather than casting to uint64_t?
+Shouldn't these be 0xfffff319?
+Perhaps I'm looking at old specs but mine says bits upper bits [31:12]
+are reserved and read-only.
 
 
->  
->      /* Find which queue we are targeting */
->      q = get_queue_from_screen(s, rxbuf_ptr, rxbufsize);
-> @@ -992,9 +992,9 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
->              return -1;
->          }
->  
-> -        DB_PRINT("copy %u bytes to 0x%" PRIx64 "\n",
-> -                 MIN(bytes_to_copy, rxbufsize),
-> -                 rx_desc_get_buffer(s, s->rx_desc[q]));
-> +        DB_PRINT("copy %" PRIu32 " bytes to 0x%" PRIx64 "\n",
-> +                MIN(bytes_to_copy, rxbufsize),
-> +                rx_desc_get_buffer(s, s->rx_desc[q] + rxbuf_offset));
-
-Looks like this is changing what we print (+ rxbuf_offset), was
-that intentional? (it was not mentioned in the commit message)
+With that fixed:
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
 
+
+
+
+> +        s->regs_ro[GEM_INT_Q1_MASK + i] = 0xFFFFFFFF;
+
+> +    }
 >  
->          /* Copy packet data to emulated DMA buffer */
->          address_space_write(&s->dma_as, rx_desc_get_buffer(s, s->rx_desc[q]) +
-> @@ -1160,8 +1160,8 @@ static void gem_transmit(CadenceGEMState *s)
->               */
->              if ((tx_desc_get_buffer(s, desc) == 0) ||
->                  (tx_desc_get_length(desc) == 0)) {
-> -                DB_PRINT("Invalid TX descriptor @ 0x%x\n",
-> -                         (unsigned)packet_desc_addr);
-> +                DB_PRINT("Invalid TX descriptor @ 0x%" HWADDR_PRIx "\n",
-> +                         packet_desc_addr);
->                  break;
->              }
+>      /* Mask of register bits which are clear on read */
+>      memset(&s->regs_rtc[0], 0, sizeof(s->regs_rtc));
+>      s->regs_rtc[GEM_ISR]      = 0xFFFFFFFF;
+> +    for (i = 0; i < s->num_priority_queues; i++) {
+> +        s->regs_rtc[GEM_INT_Q1_STATUS + i] = 0x00000CE6;
+> +    }
 >  
+>      /* Mask of register bits which are write 1 to clear */
+>      memset(&s->regs_w1c[0], 0, sizeof(s->regs_w1c));
+> @@ -485,6 +495,10 @@ static void gem_init_register_masks(CadenceGEMState *s)
+>      s->regs_wo[GEM_NWCTRL]   = 0x00073E60;
+>      s->regs_wo[GEM_IER]      = 0x07FFFFFF;
+>      s->regs_wo[GEM_IDR]      = 0x07FFFFFF;
+> +    for (i = 0; i < s->num_priority_queues; i++) {
+> +        s->regs_wo[GEM_INT_Q1_ENABLE + i] = 0x00000CE6;
+> +        s->regs_wo[GEM_INT_Q1_DISABLE + i] = 0x00000CE6;
+> +    }
+>  }
+>  
+>  /*
 > -- 
 > 2.7.4
 > 

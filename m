@@ -1,103 +1,104 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp245936lfb;
-        Mon, 4 May 2020 02:29:38 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK7mwcD+PRKG6e2KDkwHalSp/6rctVmRoBzaEIl3SCra2IS0RSLoByFO2OVvCj6VIVfQwML
-X-Received: by 2002:a37:8a87:: with SMTP id m129mr15723526qkd.250.1588584578842;
-        Mon, 04 May 2020 02:29:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588584578; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp252443lfb;
+        Mon, 4 May 2020 02:37:45 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJCLBjwyRaIH7t/PfuWpjnZLTn/bin2Rpp+x5su1dWdPHd5N+tURbQzuI19lv+/uacrR0fV
+X-Received: by 2002:ac8:7c81:: with SMTP id y1mr15413423qtv.97.1588585065325;
+        Mon, 04 May 2020 02:37:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588585065; cv=none;
         d=google.com; s=arc-20160816;
-        b=HsQBGGycF3vAj61s5FhPCiId42irpZwzbmdmTE+LBF9mk56o0fhuj6A915c4RszUYL
-         aPotVRH9t7ndHr7oQ6zb3lxHodRpj4KJqgm6InAYDghcFiX4svxuNpdqHkxF+PGzsAfm
-         j7e2MsKcneByv300cfTnYQwnMRAYbqxtJ9qD8F5LdH2ly+dWPFPxyUEv+i3hp2t6wT8l
-         d4vIhcH9GkvgW0QU1RzubXmDbGurtob5NkD6+6ffbtvIODqErWRm/ZZFclA/+6VUVm5p
-         iQrSNJ9Kbldzh8sz+ffoPDwgQO4ygDK5R7HRzihEw8ivVcnUIHkDwGnUFGUVElZEtT0g
-         Azcw==
+        b=G+kFgZ2rqu8+2Kf7GlT9IgjaBvfCYSjoEkMcAH9nORFTg4VW4Gg/TduAuF9nzWEwwE
+         fjJcFlL4RQre33l5f+LTnNtFWJsYI3Vxpm60mgnIQbAbrOeA8ulLSqoa9QJcn5HQs2zC
+         jd6tbmjfCncjzH0aPoiU3kBhEQg1UMqWf1tNcQWuLNGgCk3i0lVDNj1gO9DdsD0iYQyY
+         NIJL10ASUQlzE2cRh2go4jsBrAJVRu1vFhCKSiFGN062oMNMiVnEkAFDkB9jVrFeWp43
+         oC1A6rJve3Tzx0Sh4atUWOevqyFSyI5cfGLDMlvR5QEEZPPfwu/Z1hBwke2AV3n/CL3f
+         uUhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=VE4WTDSHDNzlvovKwmVzZYoV0fgIme54I3r+hO9nD9c=;
-        b=o8UlYUewh3Faui+lryfZNSi3+vc73i82BNlKZA5JcZE5jAvSAiFjL46lVXzKoa9b3V
-         NkmUf5Reac5So3kVd/2/1pQhzzyFVuJWxr/G72gsofpNaUxKFQRA9caOP218njGFqPat
-         bBu8hnOglqG46ipo7yyNwOiev/fKg7K5toraPZ76+LpJQ9QxaEDfr0wJi5KS1cbEjU3L
-         kNhECWENRZtTiREqD40s80hs0a7nWyxiWzERYPtHln99AhKxrfFEBfm0fEYqjQhp3peC
-         ubDIRNwocOSEY2uLtFcOpKBQIQAm3bPPR+zcAljeLmd9X9at9FLdJVWyrVLVczKjPi2B
-         N9qQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=06iusrkV5TpGH4DaJ9RUlK/fP47vySq6Tpk1tAQL5IE=;
+        b=UdKhU1GLz5gUNSb0LlNRpnYsToeb3XyFSOzvJndI6xgGOf9EITK9GDf4utzK0G6nOB
+         HKDXmRLKCDlevtVjTwm+ib73+K8JYRpHFDdpLb0DJT/B2PEX6YtL6Q2wlz5WiAJb8MYa
+         /coKEjQZMStCvGF07UtJlDTzgnl/ZxXFP8VsdMGw5wQpCZzAy53dBnRg7RVL44G39fM3
+         EfICtB8WVBsBmR/IgiPZtk/lpfl9VJPvGnvAJUDrU+mAxp1FL86rwmOLz3Q6hy99ZKrk
+         ECfxisTZRB6hY7SoaY/sB3Z3vsAQA6cSoK6UOAT+JkQYiNDnYIGqbWIMOg4VvkQU2Efo
+         4Vbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=afBj0NyR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Bqn5MD4T;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id c16si6131721qtd.254.2020.05.04.02.29.38
+        by mx.google.com with ESMTPS id n6si6073186qvb.59.2020.05.04.02.37.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 May 2020 02:29:38 -0700 (PDT)
+        Mon, 04 May 2020 02:37:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=afBj0NyR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59810 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Bqn5MD4T;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40654 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVXPu-00086A-B9
-	for alex.bennee@linaro.org; Mon, 04 May 2020 05:29:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51200)
+	id 1jVXXk-0003uS-MF
+	for alex.bennee@linaro.org; Mon, 04 May 2020 05:37:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53362)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jVXPo-00085g-BH
- for qemu-arm@nongnu.org; Mon, 04 May 2020 05:29:32 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:44959)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1jVXXI-0003lI-Lh; Mon, 04 May 2020 05:37:16 -0400
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:37896)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jVXPm-0008V1-If
- for qemu-arm@nongnu.org; Mon, 04 May 2020 05:29:31 -0400
-Received: by mail-ot1-x342.google.com with SMTP id j4so8296974otr.11
- for <qemu-arm@nongnu.org>; Mon, 04 May 2020 02:29:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=VE4WTDSHDNzlvovKwmVzZYoV0fgIme54I3r+hO9nD9c=;
- b=afBj0NyRXc2P9RQfVYQPCW089keZP0jqPLJ4lDGhCCDteMGdKHmxKz5NqCQ8BVkfH0
- 7dmDEAH+EvRSQK40aQv97yKZ7Zsg2+wHjZOcyJAn95cHMQP+zGmOQ52AiE5U6sguFs1V
- 66QEv2YrcSZn7ekZz9+5mYl1wTG7uHHmIgM85xT/05zKd+B/mPcb2vSxr3zkXmlwZRsX
- u6632sgRYil0t1R6czBhTABsy6rAIAtB/pZl687t7Vg8AqndGYFVCsqw6F8k8//qXJXV
- FnNI1SHR8PeiN9ka2RMjBADD8tNzQk4XaDT9YUtnkt2km8UqeaW64Kz72p/j4mMzbWUG
- ddkw==
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1jVXXH-0005ra-53; Mon, 04 May 2020 05:37:16 -0400
+Received: by mail-pl1-x643.google.com with SMTP id w3so6572551plz.5;
+ Mon, 04 May 2020 02:37:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=06iusrkV5TpGH4DaJ9RUlK/fP47vySq6Tpk1tAQL5IE=;
+ b=Bqn5MD4ThwgU3h3nSVM2+jHYDzpJ2lW8xr9LMn/KHnJIrcUYGlejkR5uOuXyjvc6tE
+ 8Ko0MdY5SfkOvm5TDf7sEnkxU9ZLb8rQyTXo9rC/Nxs3Iy3VJI94lP4MutacETQ4PgMz
+ /wHiDhTf1C/FzHIBDblg4Ql59Ts5f6WqWxEpuPz1uMfN1yXEXzpcYplZuwUhN8tFZ8n9
+ qGNKw188aA4wA4qjsqU418/66bgz4xRPbMj5E2cDKPiifDjHHcChQ2zntJQFu0RxGHqI
+ J/Pl9aSs8wa0UzmWcCXOttzr9pCKMX7rCewEmcldVgYX0huC7OOH/bH6HropytYFU3L9
+ 9PLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=VE4WTDSHDNzlvovKwmVzZYoV0fgIme54I3r+hO9nD9c=;
- b=WGYPGhT43uqX6SF9hW594GIUHuI0ztHVnpafRpUm+mgfO0i3jFA/gtywdzCunhOg6+
- 8qohWdmOhnMSe4maw4MjtLwRTw5d544GD+vu9wn6a7HVs+YUKQBaSAwsYliAqau3eMX2
- f732MYUSrAr/NMdebGNttwY3xkgmjvonPJnnGak6VCMu55YxjHuPV9t3nyeQGhWgabcn
- ahnNhSatVG0zCAYGDd7BMzgPEY8wa2FqJvCYHqqwtiaKHEXvlarbAQlr4jTojtJAdLLW
- v7mLLus81gaw+LWBxRipi1oAkwEEg7wcX/gDYgdymcbwa0rMtT/19Bd6xvfOhSLdWIX6
- WCWg==
-X-Gm-Message-State: AGi0PuazxkhaMy/y0/ekRhdfwHw+OYDnnlIbcIDZSvS6kiPZuDD/5skG
- wWojvO8sgzv+GDE5dr15wmFx2LoYZx1VB13FshpHvA==
-X-Received: by 2002:a05:6830:1e4e:: with SMTP id
- e14mr13304921otj.91.1588584569082; 
- Mon, 04 May 2020 02:29:29 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=06iusrkV5TpGH4DaJ9RUlK/fP47vySq6Tpk1tAQL5IE=;
+ b=JCmsPIKWBmSPSdOUF89cn84h9BNuj3VYdWbZbGcxa9Ik9e0UJfgi+6tA5sjCs6y1QO
+ smP/zZ0JiLJD67fHKAa4yoiDTvVCK7yZtLOIRYzgwFLvUdvVW8XYXoq8mmmQkmr10XSH
+ ffEjDzgoswxoM7m6YxH8dQc0sUXzuR5ycP5at3LGPdtYj39J8lD/H1adgcHMZ1oC3jHo
+ A10ZFHrYFwQw/V/zCmzOvzVWRLLqlob6I5RxteLv3hsH/QzRvAhIFxwP0bJkFlYYajaO
+ jxty2dOekW8wMMk88+GgBmXGsKnRz7Fnlh8Jx3OUfwmWbRa96oBrQ1KQwMxd97Abnsv8
+ AZ7Q==
+X-Gm-Message-State: AGi0PuZkzo9njDdpFt//zw0xQcI4UVazCgPNd1sM/nmT6adzqut5ZsTA
+ gTHZ6Dy721Tfo4OfOuXbyfI=
+X-Received: by 2002:a17:902:b18d:: with SMTP id
+ s13mr16967427plr.240.1588585033017; 
+ Mon, 04 May 2020 02:37:13 -0700 (PDT)
+Received: from localhost.localdomain ([45.124.203.15])
+ by smtp.gmail.com with ESMTPSA id h13sm5767210pgm.69.2020.05.04.02.37.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 May 2020 02:37:12 -0700 (PDT)
+From: Joel Stanley <joel@jms.id.au>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] aspeed: Support AST2600A1 silicon revision
+Date: Mon,  4 May 2020 19:07:03 +0930
+Message-Id: <20200504093703.261135-1-joel@jms.id.au>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-References: <20200421125934.14952-1-shameerali.kolothum.thodi@huawei.com>
- <20200504011252-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20200504011252-mutt-send-email-mst@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 May 2020 10:29:18 +0100
-Message-ID: <CAFEAcA-nkbCZNj0dbVgcN4ajRVx-N0Yvy5OEFuRewJyRGWfjxg@mail.gmail.com>
-Subject: Re: [PATCH v4 0/7] ARM virt: Add NVDIMM support
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
+ envelope-from=joel.stan@gmail.com; helo=mail-pl1-x643.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -112,45 +113,133 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Linuxarm <linuxarm@huawei.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Xu Wei <xuwei5@hisilicon.com>,
- prime.zeng@hisilicon.com, Igor Mammedov <imammedo@redhat.com>,
- Laszlo Ersek <lersek@redhat.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +8bJwzFPa1Z/
+X-TUID: K14LZU+7FTy0
 
-On Mon, 4 May 2020 at 06:13, Michael S. Tsirkin <mst@redhat.com> wrote:
->
-> On Tue, Apr 21, 2020 at 01:59:27PM +0100, Shameer Kolothum wrote:
-> > This series adds NVDIMM support to arm/virt platform.
-> > The series reuses some of the patches posted by Eric
-> > in his earlier attempt here[1].
-> >
-> > This series previously had few fixes to qemu in general
-> > which were discovered while adding nvdimm support to arm/virt.
-> > Those were sent out seperately[2] and are now part of Qemu.
->
->
-> Mostly ACPI stuff so I can merge it if I get an ack for ARM side.
+There are minimal differences from Qemu's point of view between the A0
+and A1 silicon revisions.
 
-Happy for you to take it; all the arm-specific bits have
-been reviewed by various people (thanks!) so here's my
+As the A1 exercises different code paths in u-boot it is desirable to
+emulate that instead.
 
-Acked-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+ hw/arm/aspeed.c              |  8 ++++----
+ hw/arm/aspeed_ast2600.c      |  6 +++---
+ hw/misc/aspeed_scu.c         | 11 +++++------
+ include/hw/misc/aspeed_scu.h |  1 +
+ 4 files changed, 13 insertions(+), 13 deletions(-)
 
-I notice that checkpatch complains a lot about
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 99a0f3fcf36e..91301efab32d 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -93,7 +93,7 @@ struct AspeedBoardState {
+ 
+ /* Tacoma hardware value */
+ #define TACOMA_BMC_HW_STRAP1  0x00000000
+-#define TACOMA_BMC_HW_STRAP2  0x00000000
++#define TACOMA_BMC_HW_STRAP2  0x00000040
+ 
+ /*
+  * The max ram region is for firmwares that scan the address space
+@@ -585,7 +585,7 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
+     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+ 
+     mc->desc       = "Aspeed AST2600 EVB (Cortex A7)";
+-    amc->soc_name  = "ast2600-a0";
++    amc->soc_name  = "ast2600-a1";
+     amc->hw_strap1 = AST2600_EVB_HW_STRAP1;
+     amc->hw_strap2 = AST2600_EVB_HW_STRAP2;
+     amc->fmc_model = "w25q512jv";
+@@ -600,8 +600,8 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
+     MachineClass *mc = MACHINE_CLASS(oc);
+     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+ 
+-    mc->desc       = "Aspeed AST2600 EVB (Cortex A7)";
+-    amc->soc_name  = "ast2600-a0";
++    mc->desc       = "OpenPOWER Tacoma BMC (Cortex A7)";
++    amc->soc_name  = "ast2600-a1";
+     amc->hw_strap1 = TACOMA_BMC_HW_STRAP1;
+     amc->hw_strap2 = TACOMA_BMC_HW_STRAP2;
+     amc->fmc_model = "mx66l1g45g";
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 1a869e09b96a..c6e0ab84ac86 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -557,9 +557,9 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+ 
+     dc->realize      = aspeed_soc_ast2600_realize;
+ 
+-    sc->name         = "ast2600-a0";
++    sc->name         = "ast2600-a1";
+     sc->cpu_type     = ARM_CPU_TYPE_NAME("cortex-a7");
+-    sc->silicon_rev  = AST2600_A0_SILICON_REV;
++    sc->silicon_rev  = AST2600_A1_SILICON_REV;
+     sc->sram_size    = 0x10000;
+     sc->spis_num     = 2;
+     sc->ehcis_num    = 2;
+@@ -571,7 +571,7 @@ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+ }
+ 
+ static const TypeInfo aspeed_soc_ast2600_type_info = {
+-    .name           = "ast2600-a0",
++    .name           = "ast2600-a1",
+     .parent         = TYPE_ASPEED_SOC,
+     .instance_size  = sizeof(AspeedSoCState),
+     .instance_init  = aspeed_soc_ast2600_init,
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 9d7482a9df19..ec4fef900e27 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -431,6 +431,7 @@ static uint32_t aspeed_silicon_revs[] = {
+     AST2500_A0_SILICON_REV,
+     AST2500_A1_SILICON_REV,
+     AST2600_A0_SILICON_REV,
++    AST2600_A1_SILICON_REV,
+ };
+ 
+ bool is_supported_silicon_rev(uint32_t silicon_rev)
+@@ -649,12 +650,10 @@ static const MemoryRegionOps aspeed_ast2600_scu_ops = {
+     .valid.unaligned = false,
+ };
+ 
+-static const uint32_t ast2600_a0_resets[ASPEED_AST2600_SCU_NR_REGS] = {
+-    [AST2600_SILICON_REV]       = AST2600_SILICON_REV,
+-    [AST2600_SILICON_REV2]      = AST2600_SILICON_REV,
+-    [AST2600_SYS_RST_CTRL]      = 0xF7CFFEDC | 0x100,
++static const uint32_t ast2600_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
++    [AST2600_SYS_RST_CTRL]      = 0xF7C3FED8,
+     [AST2600_SYS_RST_CTRL2]     = 0xFFFFFFFC,
+-    [AST2600_CLK_STOP_CTRL]     = 0xEFF43E8B,
++    [AST2600_CLK_STOP_CTRL]     = 0xFFFF7F8A,
+     [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
+     [AST2600_SDRAM_HANDSHAKE]   = 0x00000040,  /* SoC completed DRAM init */
+     [AST2600_HPLL_PARAM]        = 0x1000405F,
+@@ -684,7 +683,7 @@ static void aspeed_2600_scu_class_init(ObjectClass *klass, void *data)
+ 
+     dc->desc = "ASPEED 2600 System Control Unit";
+     dc->reset = aspeed_ast2600_scu_reset;
+-    asc->resets = ast2600_a0_resets;
++    asc->resets = ast2600_a1_resets;
+     asc->calc_hpll = aspeed_2500_scu_calc_hpll; /* No change since AST2500 */
+     asc->apb_divider = 4;
+     asc->nr_regs = ASPEED_AST2600_SCU_NR_REGS;
+diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+index 1d7f7ffc1598..a6739bb846b6 100644
+--- a/include/hw/misc/aspeed_scu.h
++++ b/include/hw/misc/aspeed_scu.h
+@@ -41,6 +41,7 @@ typedef struct AspeedSCUState {
+ #define AST2500_A0_SILICON_REV   0x04000303U
+ #define AST2500_A1_SILICON_REV   0x04010303U
+ #define AST2600_A0_SILICON_REV   0x05000303U
++#define AST2600_A1_SILICON_REV   0x05010303U
+ 
+ #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) == 0x04)
+ 
+-- 
+2.26.2
 
-ERROR: Do not add expected files together with tests, follow
-instructions in tests/qtest/bios-tables-test.c: both
-tests/qtest/bios-tables-test-allowed-diff.h and
-tests/qtest/bios-tables-test.c found
-
-Does that need fixing, or is the checkpatch test wrong?
-
-thanks
--- PMM

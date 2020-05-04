@@ -1,105 +1,110 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp254315lfb;
-        Mon, 4 May 2020 02:40:19 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIaLbksK7kWHij/V9eTOgqeCrWzO/3yS7txdH5ssDyKgRZPZ5UKq69v2SxNxSg8jxOBFR45
-X-Received: by 2002:a05:620a:13e1:: with SMTP id h1mr15199309qkl.10.1588585218980;
-        Mon, 04 May 2020 02:40:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588585218; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp257468lfb;
+        Mon, 4 May 2020 02:44:34 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIyz+cwxTes3JP1JQyMM7/xdQJ+QxTMY5eI57hDIQziyY6xSKLuaFGRRpIFZoJdJuobD09s
+X-Received: by 2002:ac8:3459:: with SMTP id v25mr15954310qtb.229.1588585474365;
+        Mon, 04 May 2020 02:44:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588585474; cv=none;
         d=google.com; s=arc-20160816;
-        b=fGABpsN95gsIkoItsBVprWKBHemu+azO1HhB7vwpg0M9XVynGE62WIEKs9NHkRBDOI
-         E+QGphHnjFV2qezYbptiTdD6sAmhDe1rD2occduOeurwWVu5xuYylJMtVjS/astG2mL/
-         E2Vq33XNNkLmQrqupf9iAGQagLfeVDvq50wq2/643kJnFfODxka1Jqx8C5G9l6pG7HAY
-         TOvGv1J+TJ/3djpYckbZgoWw9azZmNQuNs07qs5asyQZsUHcv/Wb0QZySy/MToaJ8i4V
-         idtPwasqSJ43vyusaShBSWJDjPx6IDsnynoqKBqb3AMlJR60n/WRPd4rvT39knYGbe+X
-         qAxQ==
+        b=jtBxwwBytlU1/zQWJ4waAu3wCQQaet+OaE2Uvg7YjW01BJKOydC7UCo3eZgG8LZhOC
+         WLChXSOLlyceDzsfxdNaGwO0ER2ug/5JcRqlEaXZH2mojT2vtWSbs5+R3a6wRrSr+rjD
+         9ynD7qSgU85TSxefA+uhx16DpApDfCeCvdhUwlfBgXdVy/FGYgAzDBfuWl/Ih4RRxWBV
+         4crwn8hQOFRhHSaxZKyjVTEHrKNr9TZEREee9Te5r1O+Y0ZvkliIlPN600wSaztuc1B7
+         nETaA/PCNLwZ4ktgjhDLUG8ptIHi2d6okTcs3qOJonDNCA2VzNU51pA9uxKcgiG+PX4z
+         3tQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=nlMeQyCuToriEPua2lTUEAFV+wuloF2MhCmzZ8nrNJI=;
-        b=QysAxzqRC6le5vNWg8SrN2UAi7Wyz/2KSppfUHb7Q44td7aYGxqKhmjNsiltTfL+5m
-         vMZgZdSdyT2uFpu32nipW5sEII3LR3omNYR45Y1iSLX7vLPsCCeGFbwEvwzYDk/FwJuG
-         u9JLWeexZ0u7zNRbg+8haFDruAS9uvd0TCHe8t925VjrWxO2KikWw872VhPgAs0WT7Ub
-         zIdSE3pnt5LIXoVOf3v+U1DCj1HqzgbfQ+zC08DWa7lwiGoHzzIlUA+e5yqi9eSfyU26
-         I1KddRp7CnOeeBYvQXgKaUQilkgteNRAUI0DLg4UKhFzM9PHRDaOkrIbPQtKqQQsWcBs
-         /nMg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=+vJKrys71nHVm5Pac1wgC46hBpR+k+G6dkpJPpiL+E4=;
+        b=Z1/gYTp6yMgw1VfDGeNo5diASha5c9O24Vq/0HfSrR80xDD9nj0sEF0vV8OPUdKcKl
+         bQrhBlej8Si+Z39tnHIMlMOxCBTaUaqZWX6M6PEbVK81A2J+amqi9FXPkObWOBN9UZ8W
+         zC2CkxFSU5+Js9por9JUBctMgZbn1KG+o7tMborGwOX6KuZ2XDUS8q/2X9wRHv3MoTFr
+         JPRVbzUkqzEuET0VpiV8PCW3ZvebZjq4GFvShnXK1BXNwSGtXK8wFZCla2kU72Y6MMsL
+         syUpcA1AB3iuDEJGvYT4hdn8RU/+5Up/VtWLEw0DpWoinltBs0Ag2gJr1WbHylSFe3Bi
+         E8aw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Mp65KvBL;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NCr8fXZd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id y4si6090625qtb.117.2020.05.04.02.40.18
+        by mx.google.com with ESMTPS id 75si5581176qtg.304.2020.05.04.02.44.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 May 2020 02:40:18 -0700 (PDT)
+        Mon, 04 May 2020 02:44:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Mp65KvBL;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NCr8fXZd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43226 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53872 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVXaE-00058s-DI
-	for alex.bennee@linaro.org; Mon, 04 May 2020 05:40:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53850)
+	id 1jVXeL-0001SX-Os
+	for alex.bennee@linaro.org; Mon, 04 May 2020 05:44:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55694)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jVXa6-00058L-3B
- for qemu-arm@nongnu.org; Mon, 04 May 2020 05:40:10 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:38251)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jVXa4-0006bD-VY
- for qemu-arm@nongnu.org; Mon, 04 May 2020 05:40:09 -0400
-Received: by mail-ot1-x341.google.com with SMTP id g19so8348037otk.5
- for <qemu-arm@nongnu.org>; Mon, 04 May 2020 02:40:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nlMeQyCuToriEPua2lTUEAFV+wuloF2MhCmzZ8nrNJI=;
- b=Mp65KvBLhn+0vEEjlM3pfpf7HiTbLMZYNuYRiNv2BedPiiYnjuuAWD0nkk/p7TQY7D
- +Y+HZAK4kab+z2KaOKa2I1gZxRZZEo0MYr1CllDHQ9tDMJrKZh90sNwVKhtelQr2Pt/p
- de2/fM4z2dOg7MQq1KUuGKbMP8KLA8zsIMXrYHFo67y8rqq/2inwjtUIuCMvvCQYo8Yj
- VRNM3Ec1zei19JNNYy4k3BUEuJeQtYJIbVOMUbBV9jmyu1rq+MXySfvfG+KN5nGtfQiK
- 7EDbK1XzRWeAVtqPe9bMvJ1huCn+KpxODriBbAbI4tIf1t3H9IVha+kkPrTo13gjSTh0
- 0W+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=nlMeQyCuToriEPua2lTUEAFV+wuloF2MhCmzZ8nrNJI=;
- b=VTSfehoya+DT6Toa0wCSl5WOH76kW/HHt4tphEh2Ov47vrETxe/GUMGxdzwgmV+TFs
- rx2/IswmzoDnphzuwSkcFxe9nFsgZJMdKtwS53iV6fGKfsArANJz12CG8cheGwfXK2Im
- PLq/F5oemP92G3peIhGFeEmp0uipH2ssvWaDvnrxGgHAZW+jFSQV2SHILumTgeeeY/Cn
- zpkGBi69yh9hHr94brTMWpebfLCLNU17N7PnlQ6xbZMok+yxD2BeKBrOhWHKpoTh+cCR
- F6EY+GtzjJ3zYHyDvxVEwPtiRuvvFuWYX9ksrFpwHDiwQwJ+wH6292VgmY/T36YFMSKt
- BlOw==
-X-Gm-Message-State: AGi0PuZg/M+U45Ad68a6RljdnHJrc1almFpzyy96Z/0YWy3RSAZR30yy
- q02I8/rRzkKn/6hBS50LS0jdYC2Xsr68JZHMWLvklQ==
-X-Received: by 2002:a05:6830:1e4e:: with SMTP id
- e14mr13330956otj.91.1588585207566; 
- Mon, 04 May 2020 02:40:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jVXeC-0001Qd-NJ
+ for qemu-arm@nongnu.org; Mon, 04 May 2020 05:44:25 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43940
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jVXeB-00018b-SL
+ for qemu-arm@nongnu.org; Mon, 04 May 2020 05:44:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1588585462;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+vJKrys71nHVm5Pac1wgC46hBpR+k+G6dkpJPpiL+E4=;
+ b=NCr8fXZdPxZSzHV/IRFTeEqiMtCGpzQJow5F7QvkItAZycsDDdUd8gnMeoKjdPFmy3/qFF
+ e5R7xSNgszgqQnRFa68hPRec9b94NKVyQD3EpIas2+MeK51cvBUg+OH4VcEB9PzdgJC2eu
+ n3Qi56ldy7OxUHCtmeUGFXryGn1W5O0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-327-EbT8znIOMfa6nyUhw1HpOA-1; Mon, 04 May 2020 05:44:21 -0400
+X-MC-Unique: EbT8znIOMfa6nyUhw1HpOA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5173C8014D9;
+ Mon,  4 May 2020 09:44:19 +0000 (UTC)
+Received: from [10.36.112.58] (ovpn-112-58.ams2.redhat.com [10.36.112.58])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1B22510002AA;
+ Mon,  4 May 2020 09:44:12 +0000 (UTC)
+Subject: Re: [PATCH v4 0/7] ARM virt: Add NVDIMM support
+To: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+References: <20200421125934.14952-1-shameerali.kolothum.thodi@huawei.com>
+ <20200504011252-mutt-send-email-mst@kernel.org>
+ <CAFEAcA-nkbCZNj0dbVgcN4ajRVx-N0Yvy5OEFuRewJyRGWfjxg@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <ba8879f2-8eee-0830-c2d2-80f9d266c89d@redhat.com>
+Date: Mon, 4 May 2020 11:44:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-References: <20200422043309.18430-1-richard.henderson@linaro.org>
- <20200422043309.18430-5-richard.henderson@linaro.org>
- <CAFEAcA_ugvJWmN8fNbvZYJvOtyv6uPAumQ8UPtK-k9nqN=uerQ@mail.gmail.com>
- <69d6cc05-2610-d81b-df8f-0f8d723530af@linaro.org>
-In-Reply-To: <69d6cc05-2610-d81b-df8f-0f8d723530af@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 May 2020 10:39:56 +0100
-Message-ID: <CAFEAcA-4VxCuCV4tYvgKFtOA5nnnhNH+2BWribpPPR86=KL32A@mail.gmail.com>
-Subject: Re: [PATCH v3 04/18] accel/tcg: Add probe_access_flags
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+In-Reply-To: <CAFEAcA-nkbCZNj0dbVgcN4ajRVx-N0Yvy5OEFuRewJyRGWfjxg@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 05:09:11
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -114,32 +119,55 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Linuxarm <linuxarm@huawei.com>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Xu Wei <xuwei5@hisilicon.com>, prime.zeng@hisilicon.com,
+ Igor Mammedov <imammedo@redhat.com>, Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9086P5VfRBUl
+X-TUID: o76XY2VRVQXT
 
-On Mon, 27 Apr 2020 at 17:00, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 4/27/20 3:48 AM, Peter Maydell wrote:
-> > The old code passed size into cc->tlb_fill; the new version does not.
-> > The old code passed size into page_check_range(); the new version does not.
->
-> This is the user-only version, and size is not used for tlb_fill.  It is only
-> trivially used in page_change_range; we have just verified that addr+size does
-> not cross a page boundary.
+Hi,
 
-Yes, but:
- * they're APIs which take sizes
- * we have the size in hand so it's not difficult to pass it
- * in future maybe those functions will change to make more use
-   of the size value, since they're being passed it
- * this change ought to be a refactoring that does the same thing
-   the old code does
+On 5/4/20 11:29 AM, Peter Maydell wrote:
+> On Mon, 4 May 2020 at 06:13, Michael S. Tsirkin <mst@redhat.com> wrote:
+>>
+>> On Tue, Apr 21, 2020 at 01:59:27PM +0100, Shameer Kolothum wrote:
+>>> This series adds NVDIMM support to arm/virt platform.
+>>> The series reuses some of the patches posted by Eric
+>>> in his earlier attempt here[1].
+>>>
+>>> This series previously had few fixes to qemu in general
+>>> which were discovered while adding nvdimm support to arm/virt.
+>>> Those were sent out seperately[2] and are now part of Qemu.
+>>
+>>
+>> Mostly ACPI stuff so I can merge it if I get an ack for ARM side.
+> 
+> Happy for you to take it; all the arm-specific bits have
+> been reviewed by various people (thanks!) so here's my
+> 
+> Acked-by: Peter Maydell <peter.maydell@linaro.org>
 
-What's the reason for deliberately *not* passing the size and instead
-using a constant 1 ?
+Tested-by: Eric Auger <eric.auger@redhat.com>
 
-thanks
--- PMM
+Thanks
+
+Eric
+> 
+> I notice that checkpatch complains a lot about
+> 
+> ERROR: Do not add expected files together with tests, follow
+> instructions in tests/qtest/bios-tables-test.c: both
+> tests/qtest/bios-tables-test-allowed-diff.h and
+> tests/qtest/bios-tables-test.c found
+> 
+> Does that need fixing, or is the checkpatch test wrong?
+> 
+> thanks
+> -- PMM
+> 
+

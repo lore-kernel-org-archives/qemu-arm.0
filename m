@@ -1,294 +1,184 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp496924lfb;
-        Mon, 4 May 2020 07:24:33 -0700 (PDT)
-X-Google-Smtp-Source: APiQypItKWHm5a4TvKVJQHm+XvVFbbmgkvypDUgChmh6UEYE4PuMF+Kon77KJ369k7PZTOyzGi5K
-X-Received: by 2002:a37:414a:: with SMTP id o71mr16639853qka.141.1588602273012;
-        Mon, 04 May 2020 07:24:33 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1588602273; cv=pass;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp505941lfb;
+        Mon, 4 May 2020 07:34:31 -0700 (PDT)
+X-Google-Smtp-Source: APiQypL38evifVB8jNuX2NMa+cSFDuJsyMoWm6/Gu4kBmOehnWwRcJVR6m+d9g7VeqzBUbemg7gf
+X-Received: by 2002:ac8:6d2c:: with SMTP id r12mr17905400qtu.355.1588602871067;
+        Mon, 04 May 2020 07:34:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588602871; cv=none;
         d=google.com; s=arc-20160816;
-        b=S04H3eZVIybN0TxXwYfcz7wGSVToth3qgIftw20+XcOqwkGdiNbO0n6nrsCPJcukb+
-         MmXGL3BmUHD9B5OxOyfmAHCZy7fbYn+jjsymV3lRtcdpvPp2AoKQeThpVYIiB6MnP9eA
-         8SJqlDIEB5gSz3yvyzJe1F4inhIbmxhvi/ROwTSxxG1TFv2CilCmiitDElAO6vjugppw
-         Yv+9BMSe2NewfaHqM5jUSYIu2lXkBvYUhDu6l/pUviN7AAOyiYDACiqx2tGz6WaZNp5o
-         DZOO3svBsbWh80IeiJHPLwb+fMlDPfUGpuv9Gh2Tux5pAQkM/LCIShrfcc3y/jn2WmXV
-         X6/Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=NQa7Dk3JS5zucGip/SdNpiBuPeYupcLAEFHrL3OyAXPtcGVA+tufD/Th1caY1visXp
+         Q/CkME8y6XQw9CWn2XSPpxvflefBztpfav+BcAKf/W9wctZClZFehV+vkN2/BxbD+OjO
+         SVsalYA3fXUNk41M2oO7IFku0yhlP0OxhRs6m751rRnUGDiqWqsmX3hxHSf2hlLxvxKs
+         JumqXIQ+FYZoHZ+m5gO9NiFUKPVUrDQ/r+DY7QfhPwN1WLSv0pBLs9+nJd1V5T4qOaL9
+         8lihcf2DG96f8vp7vfvVNxeBli+W81+KCCp4vYKNPB9VaPU6Id+S737nL+X1hQX7cBu5
+         rnNw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:subject:to
          :from:date:dkim-signature;
-        bh=nlk6aGmk5mEYQckV/ZY2n4LZlRdEdTzo0S5tgH7LNiY=;
-        b=h6yTgtL1cvd1k3Wl6b3GcKN79ltC+JAUQWRdATasW/8Dc712eADcM2nXIP1UOqqvzS
-         gzdq4xxOGnidGORz9LB9Ou4qKM4A5psszuArdrfgJ0F+DI/LWYuIJk2SFa+SWkBQDMs3
-         OldO2RXamogtr4uS2cm71NsCd2f+Wf91xrKjEUWAif8FJEzQmk18xITwzcKAGMHArwBv
-         hndbNXG2Iek+Q82shuuSOPSn3fzghhuC2SmSVUVotB9TAlfJLDbjMSEKl2KKRey202Wg
-         9RgytJ5M3C7vEyTnzyKkfkaiaUCLGBO29wId8CQw5cpKIke0sWnU/Bcren1o0CA8ZBRg
-         OikQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=GawTDZ8r;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+        bh=lgE9Ulxxtdf3kth7r5oCrNYZHgo7jqyXNAQuogxxTJ8=;
+        b=U8yyx8STH13FVAzCW7Tsg2kFjxBE+XIVXJoBiBrrSu+XPnaY26v7I34zYNfAoaOJSv
+         egL1DzAcUJCK7aa7SGL+YzjfvOqh0CU7O5eKBLJGXSlwPxKR+mYkwwh1X9H1IJrds3kO
+         ePj9uQfEzaeSHqTYK8LwW6pyHu5X4gHDDVZ6e/AWcP5bAg7l1+I11QQxZC8oxudRdPZn
+         tPOCPMTsllDvBZcoRM981MqhQR0WiG1mQxBBkiU4FKmE0MNGrOjtXR2Odnqg+jfqVMz7
+         JJybZ9RkCSYilnKpRtWVXHj50RG8kLuTjgO90pbIA+LCBs9xcUUkgEGn17Q0RMfu5m4Q
+         MkSg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oEug5XuW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id j6si5518442qka.352.2020.05.04.07.24.32
+        by mx.google.com with ESMTPS id s6si6528123qvr.40.2020.05.04.07.34.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 May 2020 07:24:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Mon, 04 May 2020 07:34:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=GawTDZ8r;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34586 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oEug5XuW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:41950 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVc1I-0006rQ-CZ
-	for alex.bennee@linaro.org; Mon, 04 May 2020 10:24:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45654)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jVcAw-0005Cm-CX
+	for alex.bennee@linaro.org; Mon, 04 May 2020 10:34:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48020)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
- id 1jVbvI-0005DV-DJ; Mon, 04 May 2020 10:18:20 -0400
-Received: from mail-mw2nam12on2043.outbound.protection.outlook.com
- ([40.107.244.43]:6247 helo=NAM12-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
- id 1jVbvH-0001NE-Co; Mon, 04 May 2020 10:18:20 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=X1LTFQu5sTFGp/6NpnPIJGsmEN2zPdLIzR0yJDiSYfVUVo26hts8j+44z5JnWEeb/B4thhWBfJ61dKoGVNtiouUeeNGu8aepNQ1/uZrzN+MMnmHRyQjafelJsSyNIZxCHAUiNRX0G9s+UMjDNV8ki5toOrtGUoJE4gvrMq7xevjgRPU/5IkXAUtEvJEkUNP0vJ5FqF8EJVB2CXSBNC8Sk69a7fuQpaDNnfi/vjALAY3+1W0ljJLlYMJ2Wu/uyvh789TVboN0BF5/U6jOG+Sn1dLJjX5t7SPYGGM03ZHQ9+4DhQj6o5m/nVoUMb3hvjF6DpmekwlKpstO05wYJLYg+g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nlk6aGmk5mEYQckV/ZY2n4LZlRdEdTzo0S5tgH7LNiY=;
- b=FsmI8dx8v2riO4WB/yyPUPg0IwU9asL9lpIUQW51gIApgAXJdo6stwVL9hsdxm7RFeS5EsvQPhDvq2WpQgEAuXGGOX8Q+28vA9u0yGfu4x4u3u3K/GT8onQlaamufsQSyib7DE3GxrvrAXeG9h5eFoLkyznV7aLikO1v8Bk8iHHQSiES00kyQa8azDkbATj1eQkklq8Ugu2jTm2z1SBJi7O6OiZbJTQy8a5JB5r0F/C2Xg01RQ7R7XoKbMDZc1NNSMSa27bar5ZxQq5TyoKXEZ8o1Khloccm64MRBzQqiLmLvDEWZjVkaHKunpbhho4wyCVf9x5VKQecwbk4QuYnRA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.80.198) smtp.rcpttodomain=linaro.org smtp.mailfrom=xilinx.com;
- dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nlk6aGmk5mEYQckV/ZY2n4LZlRdEdTzo0S5tgH7LNiY=;
- b=GawTDZ8rTTpbS6o+Uz9ZYH0mGeSYDqUPPES045MI4mnJLfHmRVKGT0GvVazoXeeLJZYCM+gvXamgRAzvIlu7skZtGSHfnrBT/yYT7e3F2I/XBlOGXY95NnsjNDfUM8k6LZsSEErg31hg1VyAkmk4TZr4NBjgtHV4BTUX05Ea+mU=
-Received: from SN6PR16CA0047.namprd16.prod.outlook.com (2603:10b6:805:ca::24)
- by SN6PR02MB5038.namprd02.prod.outlook.com (2603:10b6:805:67::23)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.19; Mon, 4 May
- 2020 14:18:15 +0000
-Received: from SN1NAM02FT040.eop-nam02.prod.protection.outlook.com
- (2603:10b6:805:ca:cafe::ef) by SN6PR16CA0047.outlook.office365.com
- (2603:10b6:805:ca::24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.19 via Frontend
- Transport; Mon, 4 May 2020 14:18:15 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.80.198)
- smtp.mailfrom=xilinx.com; linaro.org; dkim=none (message not signed)
- header.d=none;linaro.org; dmarc=bestguesspass action=none
- header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.80.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.80.198; helo=xir-pvapexch01.xlnx.xilinx.com;
-Received: from xir-pvapexch01.xlnx.xilinx.com (149.199.80.198) by
- SN1NAM02FT040.mail.protection.outlook.com (10.152.72.195) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.2958.27 via Frontend Transport; Mon, 4 May 2020 14:18:14 +0000
-Received: from xir-pvapexch01.xlnx.xilinx.com (172.21.17.15) by
- xir-pvapexch01.xlnx.xilinx.com (172.21.17.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1913.5; Mon, 4 May 2020 15:18:13 +0100
-Received: from smtp.xilinx.com (172.21.105.198) by
- xir-pvapexch01.xlnx.xilinx.com (172.21.17.15) with Microsoft SMTP Server id
- 15.1.1913.5 via Frontend Transport; Mon, 4 May 2020 15:18:13 +0100
-Received: from [10.71.116.176] (port=56606 helo=localhost)
- by smtp.xilinx.com with esmtp (Exim 4.90)
- (envelope-from <edgar@xilinx.com>)
- id 1jVbvB-00029H-2I; Mon, 04 May 2020 15:18:13 +0100
-Date: Mon, 4 May 2020 16:18:12 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v1 1/1] target/arm: Drop access_el3_aa32ns()
-Message-ID: <20200504141812.GA2945@toto>
-References: <20200428160350.10030-1-edgar.iglesias@gmail.com>
- <20200428160350.10030-2-edgar.iglesias@gmail.com>
- <CAFEAcA97vRE9yEPHFEBA8tw_K6Zzv0O9K=reHHP41T2GtKj44A@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1jVc98-0002hf-IF; Mon, 04 May 2020 10:32:39 -0400
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:42856)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1jVc96-0008K3-9H; Mon, 04 May 2020 10:32:38 -0400
+Received: by mail-lj1-x243.google.com with SMTP id a21so9845294ljb.9;
+ Mon, 04 May 2020 07:32:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=lgE9Ulxxtdf3kth7r5oCrNYZHgo7jqyXNAQuogxxTJ8=;
+ b=oEug5XuW0C7yWbAyBqvFgEJFWiaPg8jLgEQHdolBnR1p3RvKd7JeTdjB4+acF+Viwu
+ pghzziz5U9lY6b7rmJpvGSuKqWrWJS7jim5tFpDqvj84Af0WTDpF1LRtfQq+QUP8A7H7
+ Jk5gztflFnV7C7i6bHg6rkaf12qZV7AsbgxEnVYA3lq2Uvfgtco1R9Vm89qrsPgHHL0K
+ gg4ZLRIe3LcE121u+lYzAwBzpy07Inuvzqmg4oMzyTd9ne+2Kj3wUP1CQxff8cyy7SIS
+ Zt3DlRH/pxIm/Lxw7d/yGW9II0AVV80mJITXf2ARlfj3ES7Ti3qBgkD9Yh9i30j3oq+I
+ WIYA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=lgE9Ulxxtdf3kth7r5oCrNYZHgo7jqyXNAQuogxxTJ8=;
+ b=RH/pxGo4Bauiw3X/pJqbTowVmqgZ3Dqa4CQtF1IBUOlPgrle2ZSH7SY2tLT3AR15qi
+ 93aBvXs4MARQ5/Ljx1R8D0jKz+GZ1EpYID8JMyr1NAgxu0aRCWx9TMco+ZTTm2Ynh4xH
+ M4NvPUB7R1pdQ0xfa9JBlVvFfzTyBMdYGv/MLbSAHvMgRhdKBzipjLvFDhix0olK+TrI
+ sNW8y7gThCyE5UK5GwsMqPcBNjd5bqNaKvma68J+/8SELT4qv2yYFrrvnJvUAvYM7Re2
+ 8ETphlp9AD5v0Y0Rjoj5Ywk06X/nG8fbsiSNn5sbqt14EQ6YSurQhH7gTe0lShA7NvV0
+ jNuw==
+X-Gm-Message-State: AGi0PuYMR6gJEmqWlgw0jK/ec5PJgbWGmDyIRuu+MENgQUWfOfGo1pS4
+ jBJzd+4isaNpX1bg17QBQ5k=
+X-Received: by 2002:a2e:9055:: with SMTP id n21mr10678833ljg.46.1588602753918; 
+ Mon, 04 May 2020 07:32:33 -0700 (PDT)
+Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id h28sm9950916lfe.80.2020.05.04.07.32.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 May 2020 07:32:33 -0700 (PDT)
+Date: Mon, 4 May 2020 16:32:32 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+Subject: Re: [PATCH v2 03/10] net: cadence_gem: Fix irq update w.r.t queue
+Message-ID: <20200504143232.GA5519@toto>
+References: <1588601168-27576-1-git-send-email-sai.pavan.boddu@xilinx.com>
+ <1588601168-27576-4-git-send-email-sai.pavan.boddu@xilinx.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFEAcA97vRE9yEPHFEBA8tw_K6Zzv0O9K=reHHP41T2GtKj44A@mail.gmail.com>
+In-Reply-To: <1588601168-27576-4-git-send-email-sai.pavan.boddu@xilinx.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.80.198; CTRY:IE; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xir-pvapexch01.xlnx.xilinx.com;
- PTR:unknown-80-198.xilinx.com; CAT:NONE; SFTY:;
- SFS:(7916004)(39860400002)(396003)(346002)(376002)(136003)(46966005)(70206006)(26005)(356005)(70586007)(316002)(9786002)(36906005)(8936002)(54906003)(8676002)(33656002)(1076003)(478600001)(7636003)(426003)(6916009)(336012)(33716001)(5660300002)(4326008)(82310400002)(186003)(47076004)(2906002)(82740400003)(9686003);
- DIR:OUT; SFP:1101; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: d2dadae4-ff56-4ae4-2092-08d7f035fc3a
-X-MS-TrafficTypeDiagnostic: SN6PR02MB5038:
-X-Microsoft-Antispam-PRVS: <SN6PR02MB50388169EB6E2000A4E15184C2A60@SN6PR02MB5038.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
-X-Forefront-PRVS: 03932714EB
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: PiMCGdEayvnLYHklwXuyiu/H82DtRETawlfbEkBotELyaZweLX7X0o2xV03GMesHrqBxdMhou6TFmy+v8HGeekBPR3wNMUJkWoj6g9auCX9SPZmFAflRt6awam/ACb7IBxY4BNQky5BnGDNezI6rJ1vzQcWtDoN6JARjv30W5mxJID6Iy80pIiHfq/5XIDTI65HFXqZBNRTRmkK4SrsMEPTPj8jCPX8vzqvc5fUf/OmRXWWx/97k4Ur5xC7xk8AwhU7ImpipghsmKo5Y+L6c+5cPskEnOFvsPxs0eZLbaiBZZUN4ZxsIL/G5m29kfyV3h42fROjzBEZbqXOpHSIlG2oSm45BxT4B3tbhnu42f5lmhZ7MqSRNWvfQh3kINSjN7dMy19oTGsEf71JRgow34kwdOKZg3du7ycnkdrwWZUsXo/CcHpS11gvz0O8iRx/Wsq7cwMMOZ/KZEB2XNrnQtBh0gBUBZHqlxmx4BTf+moXjxS7wPoBfj9N8iOjfKXXn66IKVn9QDh+W9n2tJ/mmFA==
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 May 2020 14:18:14.9106 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: d2dadae4-ff56-4ae4-2092-08d7f035fc3a
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.80.198];
- Helo=[xir-pvapexch01.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR02MB5038
-Received-SPF: pass client-ip=40.107.244.43; envelope-from=edgar@xilinx.com;
- helo=NAM12-MW2-obe.outbound.protection.outlook.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 10:18:17
-X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::243;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x243.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Laurent Desnogues <laurent.desnogues@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KZqn4CzcgyWg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Tong Ho <tong.ho@xilinx.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ Ramon Fried <rfried.dev@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ojl7USYt9zdQ
 
-On Mon, May 04, 2020 at 12:01:07PM +0100, Peter Maydell wrote:
-> On Tue, 28 Apr 2020 at 17:03, Edgar E. Iglesias
-> <edgar.iglesias@gmail.com> wrote:
-> >
-> > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-> >
-> > Calling access_el3_aa32ns() works for AArch32 only cores
-> > but it does not handle 32-bit EL2 on top of 64-bit EL3
-> > for mixed 32/64-bit cores.
-> >
-> > Fold access_el3_aa32ns() into access_el3_aa32ns_aa64any()
-> > and replace all direct uses of the aa32 only version with
-> > access_el3_aa32ns_aa64any().
-> >
-> > Fixes: 68e9c2fe65 ("target-arm: Add VTCR_EL2")
-> > Reported-by: Laurent Desnogues <laurent.desnogues@gmail.com>
-> > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> 
-> So, this is definitely a bug, but I think we could be
-> clearer about what we're fixing.
-> 
-> For all these registers, the way the Arm ARM pseudocode phrases
-> this access check is:
->  * for the AArch64 view of the register, no check
->  * for the AArch32 view of the register:
->       ...
->    elsif PSTATE.EL == EL2 then
->       return VTTBR;
->    elsif PSTATE.EL == EL3 then
->       if SCR.NS == '0' then
->           UNDEFINED;
->       else
->           return VTTBR;
-> (similarly for the write path). We don't implement the HSTR.T2
-> traps, so for us these registers are all .access = PL2_RW and
-> we just UNDEF for all EL0/EL1 accesses.
-> 
-> So what we're really trying to check for is "current EL is EL3
-> and we are AArch32 and SCR.NS == '0'". Because it's not possible
-> to be in AArch32 Hyp with SCR.NS == 0, the check we make in
-> your function is an equivalent test, but we could improve
-> the comments:
-> > ---
-> >  target/arm/helper.c | 34 ++++++++++------------------------
-> >  1 file changed, 10 insertions(+), 24 deletions(-)
-> >
-> > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> > index 7e9ea5d20f..888f5f2314 100644
-> > --- a/target/arm/helper.c
-> > +++ b/target/arm/helper.c
-> > @@ -504,29 +504,15 @@ void init_cpreg_list(ARMCPU *cpu)
-> >  /*
-> >   * Some registers are not accessible if EL3.NS=0 and EL3 is using AArch32 but
-> >   * they are accessible when EL3 is using AArch64 regardless of EL3.NS.
-> 
-> This could be rewritten as:
->    Some registers are not accessible from AArch32 EL3 if SCR.NS == 0.
+On Mon, May 04, 2020 at 07:36:01PM +0530, Sai Pavan Boddu wrote:
+> Set irq's specific to a queue, present implementation is setting q1 irq
+> based on q0 status.
 
 
-Done in v2.
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+
 
 
 > 
-> > - *
-> > - * access_el3_aa32ns: Used to check AArch32 register views.
-> > - * access_el3_aa32ns_aa64any: Used to check both AArch32/64 register views.
-> >   */
-> > -static CPAccessResult access_el3_aa32ns(CPUARMState *env,
-> > -                                        const ARMCPRegInfo *ri,
-> > -                                        bool isread)
-> > -{
-> > -    bool secure = arm_is_secure_below_el3(env);
-> > -
-> > -    assert(!arm_el_is_aa64(env, 3));
-> > -    if (secure) {
-> > -        return CP_ACCESS_TRAP_UNCATEGORIZED;
-> > -    }
-> > -    return CP_ACCESS_OK;
-> > -}
-> > -
-> >  static CPAccessResult access_el3_aa32ns_aa64any(CPUARMState *env,
-> >                                                  const ARMCPRegInfo *ri,
-> >                                                  bool isread)
-> >  {
-> > -    if (!arm_el_is_aa64(env, 3)) {
-> > -        return access_el3_aa32ns(env, ri, isread);
-> > +    bool secure = arm_is_secure_below_el3(env);
-> > +
-> > +    if (!arm_el_is_aa64(env, 3) && secure) {
+> Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+> ---
+>  hw/net/cadence_gem.c | 25 +++----------------------
+>  1 file changed, 3 insertions(+), 22 deletions(-)
 > 
-> We could either rephrase this as
->        if (!is_a64(env) && arm_current_el(env) == 3 &&
->            arm_is_secure_below_el3(env)) {
-
-Went for this logic in v2.
-
-
+> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> index 6cb2f64..a930bf1 100644
+> --- a/hw/net/cadence_gem.c
+> +++ b/hw/net/cadence_gem.c
+> @@ -554,29 +554,10 @@ static void gem_update_int_status(CadenceGEMState *s)
+>  {
+>      int i;
+>  
+> -    if (!s->regs[GEM_ISR]) {
+> -        /* ISR isn't set, clear all the interrupts */
+> -        for (i = 0; i < s->num_priority_queues; ++i) {
+> -            qemu_set_irq(s->irq[i], 0);
+> -        }
+> -        return;
+> -    }
+> +    qemu_set_irq(s->irq[0], !!s->regs[GEM_ISR]);
+>  
+> -    /* If we get here we know s->regs[GEM_ISR] is set, so we don't need to
+> -     * check it again.
+> -     */
+> -    if (s->num_priority_queues == 1) {
+> -        /* No priority queues, just trigger the interrupt */
+> -        DB_PRINT("asserting int.\n");
+> -        qemu_set_irq(s->irq[0], 1);
+> -        return;
+> -    }
+> -
+> -    for (i = 0; i < s->num_priority_queues; ++i) {
+> -        if (s->regs[GEM_INT_Q1_STATUS + i]) {
+> -            DB_PRINT("asserting int. (q=%d)\n", i);
+> -            qemu_set_irq(s->irq[i], 1);
+> -        }
+> +    for (i = 1; i < s->num_priority_queues; ++i) {
+> +        qemu_set_irq(s->irq[i], !!s->regs[GEM_INT_Q1_STATUS + i - 1]);
+>      }
+>  }
+>  
+> -- 
+> 2.7.4
 > 
-> or just have a comment
->        /*
->         * This access function is only used with .access = PL2_RW
->         * registers, so we are in AArch32 EL3 with SCR.NS == 0
->         * if and only if EL3 is AArch32 and SCR.NS == 0, because
->         * if SCR.NS == 0 we cannot be in EL2.
->         */
-> 
-> depending on how much you proritize a more efficient test
-> over a more clearly correct test :-)
-> 
-> > +        return CP_ACCESS_TRAP_UNCATEGORIZED;
-> >      }
-> >      return CP_ACCESS_OK;
-> >  }
-> 
-> Also, once we don't have a distinction between two different
-> flavours of this access function we should use the simpler
-> "access_el2_aa32ns", rather than ending up using the longer
-> name for the one version of the function we're keeping.
-
-Done in v2.
-
-Thanks,
-Edgar

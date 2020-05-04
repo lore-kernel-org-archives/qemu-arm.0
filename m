@@ -1,153 +1,125 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp191815lfb;
-        Mon, 4 May 2020 01:23:45 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJmN8hZzO94vvfkfry9N4+GDtlvkWcCXfCFjWcbfKls0ZToGw5u2s4A2O9BfhAzBVtzyNAz
-X-Received: by 2002:a37:9344:: with SMTP id v65mr11711446qkd.366.1588580625579;
-        Mon, 04 May 2020 01:23:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588580625; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp211793lfb;
+        Mon, 4 May 2020 01:48:58 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJXgpwEV1Z9LTirb8m2LueJarCyRx33i06Xzyec80vV3S3ECA5PaYCCSLKPJ0mDldT0f/V6
+X-Received: by 2002:a05:620a:1509:: with SMTP id i9mr3634517qkk.445.1588582138812;
+        Mon, 04 May 2020 01:48:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588582138; cv=none;
         d=google.com; s=arc-20160816;
-        b=El/nNgVB2/h/UhMPy5PrPwYvR7cxsFq8cO8JERSDc/4DsXhzACRI0oaKJ1/VTaEY7j
-         3BtD1afh0b7KJfSI9YsounKRfxeYAAKkuepew0YUIut99UfKP+WAQrOil0QxlojmBJE0
-         qWRdqPUJQvlZwuGM/t0x61swPD7pWAdlYnrTvMcDULr34m64CtS57haYzGUR5+Wlbrp/
-         7aeh7hJakx8AS2Eun+UpbvOqqBEVMBd3khcanpdx25+gBwM0nc5OyrLORDeIo6cyosm6
-         DWfzqHbVJGKG6iv95xWe/8kU+/ySNiZ6YtYmd11D/EADjynUvUflPb8VcFxrY+EQhjHt
-         90vg==
+        b=RBUYryYU+KxZ4A/HdYzQ+1rVIZolErkBqE3f/GMiWjJz7C9H002TsLEUZhVtx/PgAE
+         X41r2jSt1PnG6Z2jRADie/O+8DBRp6QjMEzZw3Gf2x5rUK5eH2WeJsJ2PZOas45gp7Gn
+         2IjnyMMH7d21lBPpGtp032MQWZ1w0mvSiMG/yGOF1gQHEZf03OLubNGCq0iEGewWYuhz
+         IaYHwpK/2IsDjW0Mp5qi/mAzMq9hgFfbjkBscvLFUbHpGJbNvH+1T8xVMTvJ4eaJpv75
+         pVoCZcJJF6NeVz/i4L+Sywz23YsDiVqEKCNPdVzbgsEKwwFVwsC4gG/y7EHDTXCTzCiK
+         an1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=gVwDMqU7IDBJFvdNOuVVuB4LeRx8gjOeYN0o0mGV2Qw=;
-        b=RoekSVQaCwNJBWuFdd65hOPNcL8PnVsZPvrQuCYU9g2d0KEPEuDVPgg/AkaW2LPqAe
-         tUiqxPLmnLLLWGjMzGD+ISczjj0jofhyGFfwb+3pp9jR34uo/6EO6PBkQZwOw9gBMawG
-         /Ba05dZ1Y+vxSF8q0z9dTuiMEe0leG6us3VL1u2GNXpwNuf0QDbH/ich/Nwk3PockCK9
-         bf/0Fz5rjVtdFJ7C3Wn9BKU3eDpUR+pV6wMzWdjhb87hhGifByyTFpGcXMMlDFBdYtGv
-         iSJ1TxIjiiPclgclWcZ4wfp7zK5VoXaAslzFYwLqrHqXjHr0RkbJP8YUzb1UA5yw8LP5
-         f3Pw==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:message-id:in-reply-to:subject:to:from:date;
+        bh=DzNrzwUzjGmjF61w8xQBPGSoWrkUZ2PO/qbcbIxVYsQ=;
+        b=OBSggKdaio1udih4od/YLbrP0/kZQ/yXq6Aj04wYzKuHQekR9CiXh07agq5vJ2rqtF
+         bYQF9jxW7rRvQSxH1bFjARQ2EPlWUOve03zj/nSb8oD1yJeHpKk1kIQi6j0XHc8CRnas
+         sko78T+odAm05h1Q6HLut75BQRFny7+L/+1AjBtAOJDxs1tbFr53yKrdcAsHRhaZeJZQ
+         OKcv0aem1c3Pv1ZKUoJ/myXIsujx+sr2sVRXIUK9L3YZbFhQSmGHlksPRUysn4lvCEax
+         09UGBPBVLmdDzm9xcRYNHorWbbZLrBo5SOBr8aYVTKr6JzBbzetljWlPm4tdLd5RVjK1
+         Fi1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Bo1dZolL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id y9si5878821qkl.358.2020.05.04.01.23.45
+        by mx.google.com with ESMTPS id z2si5902950qtu.34.2020.05.04.01.48.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 May 2020 01:23:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Mon, 04 May 2020 01:48:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Bo1dZolL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:51656 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58346 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVWO8-0006HM-WE
-	for alex.bennee@linaro.org; Mon, 04 May 2020 04:23:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38806)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jVWmY-0006Zn-8T
+	for alex.bennee@linaro.org; Mon, 04 May 2020 04:48:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42994)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVWN9-000599-8d; Mon, 04 May 2020 04:22:43 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:42350)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVWN8-0006wX-IL; Mon, 04 May 2020 04:22:42 -0400
-Received: by mail-wr1-x443.google.com with SMTP id s8so9502020wrt.9;
- Mon, 04 May 2020 01:22:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=gVwDMqU7IDBJFvdNOuVVuB4LeRx8gjOeYN0o0mGV2Qw=;
- b=Bo1dZolLpAJb7IszJBw0u2h4zHCqI7s79sB6g6e+8ImLO7sS5vQ1M1SeFuj/raxw48
- nq83UtV3qqFMkvBbP8sezzfxuvNGWvzqGN4UsY3jpfkooNON4q2n2FfIV7f+gBn/A/Q0
- OPaiewQM8UC/kCpH6fCMWQafSzhgW5T/4Z6NOb/gMuQ/xJj5jkDGYk1R8uBC6qT1EE/6
- VckYA0ZLtPrxdaoq/DOO+UFvv0RTcbxAHd/clTSw+hOkpX3kDRGCun52vRfJxZ/LGMh2
- HvyBFRp0hYhswBMbUBP0IJEUXbbBHJzb25NxzHpwVi8ah0fblnpIxkV7RcYjzt1UaRTQ
- LXzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=gVwDMqU7IDBJFvdNOuVVuB4LeRx8gjOeYN0o0mGV2Qw=;
- b=mweS/D82ZS2m7C61gzdiFevld6HPdiKxwDjzjTzBQKpwbit+wPJqlMg/zHQBBFBmz8
- KwE+VBwfQ/tSJc0mcTpjMt61NipEDvlPTSagH3mfWVWQlCyUA1H1XmRcaIrOqa9g9G34
- YQyFyeslK9ZEKk7rKpSnp7lcw+Fh0G6J7/+6X32uDABB7usfeF4EJv2q7NhKbKy7lVL3
- Hq4Wcyy3OX1C0yMBIP9vwg0oAOt1wK47cWEHvndwYs6NJkXxL5a/6q/FtB7Lf1YNxrqd
- k5lLgVu3lr5c98eXPRqmiE+iZIuyRUo+gj8Cex38OEBhfa9+Ih7H21L+T33d0ZCiB1ob
- HTXA==
-X-Gm-Message-State: AGi0Pua7eMtvskBIxyH7o25UDx9WTRQqC82T1nh1ri3FE+VF2pJCN7pJ
- 8AmggE4uI9o0ZewIOkJsNS9+SGrg
-X-Received: by 2002:adf:d841:: with SMTP id k1mr10114465wrl.129.1588580560042; 
- Mon, 04 May 2020 01:22:40 -0700 (PDT)
-Received: from x1w.redhat.com (26.red-88-21-207.staticip.rima-tde.net.
- [88.21.207.26])
- by smtp.gmail.com with ESMTPSA id b66sm13045738wmh.12.2020.05.04.01.22.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 May 2020 01:22:39 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] hw/usb: Make "hcd-ehci.h" header public
-Date: Mon,  4 May 2020 10:22:37 +0200
-Message-Id: <20200504082238.16655-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1jVWmA-0006Gp-EC; Mon, 04 May 2020 04:48:34 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2]:12737)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1jVWm7-0000UO-F2; Mon, 04 May 2020 04:48:32 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 163E5746354;
+ Mon,  4 May 2020 10:48:24 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id EC17C746353; Mon,  4 May 2020 10:48:23 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id EA421746351;
+ Mon,  4 May 2020 10:48:23 +0200 (CEST)
+Date: Mon, 4 May 2020 10:48:23 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH] hw/usb: Make "hcd-ehci.h" header public
+In-Reply-To: <20200504082238.16655-1-f4bug@amsat.org>
+Message-ID: <alpine.BSF.2.22.395.2005041044550.59496@zero.eik.bme.hu>
+References: <20200504082238.16655-1-f4bug@amsat.org>
+User-Agent: Alpine 2.22 (BSF 395 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Type: multipart/mixed;
+ boundary="3866299591-1386598525-1588582103=:59496"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 04:48:24
+X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Jeffery <andrew@aj.id.au>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-trivial@nongnu.org,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Joel Stanley <joel@jms.id.au>,
- David Gibson <david@gibson.dropbear.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n0/R4ce6YeY1
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
+ qemu-trivial@nongnu.org, Niek Linnenbank <nieklinnenbank@gmail.com>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1Gw/drRvMbnw
 
-As target-specific code use this header, move it to the publicly
-accessible include/ folder.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-  $ git grep hw/usb/hcd-ehci.h
-  hw/arm/allwinner-h3.c:31:#include "hw/usb/hcd-ehci.h"
-  hw/arm/exynos4210.c:38:#include "hw/usb/hcd-ehci.h"
-  hw/ppc/sam460ex.c:38:#include "hw/usb/hcd-ehci.h"
-  include/hw/arm/allwinner-a10.h:13:#include "hw/usb/hcd-ehci.h"
-  include/hw/arm/aspeed_soc.h:29:#include "hw/usb/hcd-ehci.h"
+--3866299591-1386598525-1588582103=:59496
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- {hw => include/hw}/usb/hcd-ehci.h | 0
- 1 file changed, 0 insertions(+), 0 deletions(-)
- rename {hw => include/hw}/usb/hcd-ehci.h (100%)
+On Mon, 4 May 2020, Philippe Mathieu-Daudé wrote:
+> As target-specific code use this header, move it to the publicly
+> accessible include/ folder.
+>
+>  $ git grep hw/usb/hcd-ehci.h
+>  hw/arm/allwinner-h3.c:31:#include "hw/usb/hcd-ehci.h"
+>  hw/arm/exynos4210.c:38:#include "hw/usb/hcd-ehci.h"
+>  hw/ppc/sam460ex.c:38:#include "hw/usb/hcd-ehci.h"
+>  include/hw/arm/allwinner-a10.h:13:#include "hw/usb/hcd-ehci.h"
+>  include/hw/arm/aspeed_soc.h:29:#include "hw/usb/hcd-ehci.h"
 
-diff --git a/hw/usb/hcd-ehci.h b/include/hw/usb/hcd-ehci.h
-similarity index 100%
-rename from hw/usb/hcd-ehci.h
-rename to include/hw/usb/hcd-ehci.h
--- 
-2.21.3
+All of these only need either the type #define or EHCISysBusState so 
+splitting only those off to a public header should be enough and better 
+than making public all of ehci's internal header.
 
+Regards,
+BALATON Zoltan
+--3866299591-1386598525-1588582103=:59496--

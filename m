@@ -1,123 +1,102 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp324732lfb;
-        Mon, 4 May 2020 04:11:14 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIVy2xfpE4n+V0x6QMWOgb8GNKqZ4Q2Wpb2eWremffhPACYQgr4vwmjWa2dS7MYquw/AGNx
-X-Received: by 2002:a37:b587:: with SMTP id e129mr15481681qkf.226.1588590674029;
-        Mon, 04 May 2020 04:11:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588590674; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp371517lfb;
+        Mon, 4 May 2020 05:07:14 -0700 (PDT)
+X-Google-Smtp-Source: APiQypImiZJ1JN04LnPOWVpYEmHUAespB2M7PS/eiaqLL4TK/go2Uo10ETlUgy+PnS2gNXZPCxZV
+X-Received: by 2002:ac8:2fda:: with SMTP id m26mr16529707qta.80.1588594033975;
+        Mon, 04 May 2020 05:07:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588594033; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uf6UspmMwxN0mbxzigR9WDyEJ6O8z609h28Vj0ZRU6YMJvQf+lp/u2sz5rXNB0g1iX
-         bLFByBJSawk90xfXwxYn7vQl1yIo/SeA38ZhMI4vv8cNohbh57vWpYA6/rwo/IGear21
-         20En5aw9QaHB2IGco02A0zLl1jNAW3RReHTswAwIDBZyOfWykd7Ji2tZ8O3P/IHf/WLC
-         ACcIy09gEiiFTcBuVZXXv3PQhkz2NHui6O/UuM61RF2hIGQSWt5QkL7/UUCQSPbsanRf
-         Hb25bmeZUynwz/6DEbFE1p8ObF2OBYH1hEFMXsIQLQ6gC6FJpynCwJ6qH3baLY3ElOY/
-         sG6Q==
+        b=Q8EwZ19mP6SbuR/Wg1BE4D58r0YzxqtCLQEE5MrlXPFRTG6Zw1SCloPjyIcjy2ijgV
+         FuIG9CN6PohsnjJPxKNjr/BtN64/12uv8n+6++ZUxPvTlP8K3JclSbGH9NLf48u0+GVK
+         jCOzMn44BWfTMnPujaLt7eZsF6g/9Fi25rm2VJTT4ms12zptMDEoBpq0WiXnhU+5Fmgv
+         DUbThcfkyYcbLuSwpxxuAM5i9eLmJHPpbEGB0VJRwS0aSLKLRTvpVFYXhOvPGlfmPXHt
+         f2Ikq2gMDM3EuRq+hazlffUKyFlnXv1Ro5hPCkkvuMlX0Us40W8gc1c9TChzTsP/uD4l
+         y7WA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=YZjGnMCiHmJYbjiJ/fe3Il00znteutgPvYBgPWceCqQ=;
-        b=DEaIeLj+ymSD1jRMV6foPwAfSay0VtNUhXGs8XhuXl1CEuAqhrKq5lkBSUnG+9YeS1
-         +Yek4ye+51AKey8C1i89nfW6o7TzVbDzfc93xud2cffPcT79nyGQYSaxoY30neMqNRk/
-         cHZWJtc+5pO8USfvcZF8CFgSvlXu5BSVbwI/3i3wX5EspFhc7oPDWj9s5MF1w6cOSzQ0
-         xgU/8zoG5VOBT1piL2H2V4aaNLFRJvfvN5EjyGZBN+2gQ/n8VFhDbRSIzNOC0CUWyT8M
-         SfCfXYJZqBYwA7hfZmIfOgG977bS/p8fVrJcJrsTTper4doriNHjooIKw71sRrzNk7Dc
-         cu3A==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Mc2OiBAeuadvg7stvx74vegh5mSzJafd3UHWJqIoSzs=;
+        b=grT1kZO5BC6NV0coT8Pm3ChI0U0VdoyYlTeE2B7P/IUurlsP3pN4W8iS1dYb4QdoIb
+         YgyRdZYzKT8OBdVyWEs1hsa0I0QTsr1DcMrMtMzrtPP+zgD17M6Hyg8Dm6rMjrTrIYlA
+         6YkR0SSkpqsZ7epzqRWXGO31tRr81U+vgRaGzjc87QNUQa87dE9XxgNRz4mlATdwUjI7
+         HZDhsVYkNu/CkoDv7BRI0mjo9LUjZ4MZGM77pT36enVIt4IRr531uaAAQ6A9u09BWXrY
+         A4c5yqgXW7YAhPZssVMMOzwNO4bs8LKHiM0I/CreAxOlXwiMCO6oLlbKC2khqFEMkzcF
+         U6XA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GXxsBVou;
+       dkim=pass header.i=@linaro.org header.s=google header.b=e187l9xj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id w18si3550832qkj.244.2020.05.04.04.11.13
+        by mx.google.com with ESMTPS id m7si6049497qvy.110.2020.05.04.05.07.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 May 2020 04:11:13 -0700 (PDT)
+        Mon, 04 May 2020 05:07:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GXxsBVou;
+       dkim=pass header.i=@linaro.org header.s=google header.b=e187l9xj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42172 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57022 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVZ0D-0005Wr-BV
-	for alex.bennee@linaro.org; Mon, 04 May 2020 07:11:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46488)
+	id 1jVZsP-0006a5-Cc
+	for alex.bennee@linaro.org; Mon, 04 May 2020 08:07:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52816)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jVZ04-0005UW-QY
- for qemu-arm@nongnu.org; Mon, 04 May 2020 07:11:04 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:38435
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jVZ03-0007qt-G8
- for qemu-arm@nongnu.org; Mon, 04 May 2020 07:11:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588590662;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YZjGnMCiHmJYbjiJ/fe3Il00znteutgPvYBgPWceCqQ=;
- b=GXxsBVouxCs+WTTXW2pKO7p6rsVnLgrbHEjw5VVPOueGtx2eg6lWhNf/3sskhBc8XMVI3X
- mHsSybJNroRfHZQ5CDzyZhY4gXnfLsZTmKzJKou8RdxWGI46RxFHRkCp0ib2DImxIuY9TQ
- ephzrQVSSp8Q4PDTEEkN1m9b/JmmfVg=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-258-VYVduVcpMrSralesY_R0iA-1; Mon, 04 May 2020 07:11:01 -0400
-X-MC-Unique: VYVduVcpMrSralesY_R0iA-1
-Received: by mail-wr1-f72.google.com with SMTP id y10so10568400wrn.5
- for <qemu-arm@nongnu.org>; Mon, 04 May 2020 04:11:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jVZpx-0003PN-Cm
+ for qemu-arm@nongnu.org; Mon, 04 May 2020 08:04:44 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:38321)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jVZpq-0006lU-IJ
+ for qemu-arm@nongnu.org; Mon, 04 May 2020 08:04:40 -0400
+Received: by mail-ot1-x341.google.com with SMTP id g19so8613915otk.5
+ for <qemu-arm@nongnu.org>; Mon, 04 May 2020 05:04:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Mc2OiBAeuadvg7stvx74vegh5mSzJafd3UHWJqIoSzs=;
+ b=e187l9xjj6PQbjOyV6L1iupjQMquEJaN5Kx5SevW4lkyTNsjVub/ZWNAmvC+cN+Bps
+ RmsZiHnIFQPfzBz3at3f83ULzvZrorfcmccX3m5v0HQW1a7KLVs1miUwMP9VUKY2TjM9
+ YunpEK6alP4ptRlFVT+XooAV4HfiAnths7FzhHvfi6GAEVl0+pve6UvXJjLSvbae/6E3
+ lAa31YJK4LfPGxSWcJAfzpZN7l/GBJmFTeYly/nBr9H6bc3fcFIQ93/bJrbDLh370kTs
+ 8Umm/tBaMpRphiEBVkx4vgU+k430TI5+v19s3pZ1lf7e9Fn3hnW7PESlMnKw2mXrXhck
+ RQvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=qQR7JIyV7xdFWnZQx7qSyec0iQUn4M2fJvZ9LIIPelc=;
- b=LVeiy7cnPQh+BGD0ckTDMqgHrR/J0GkQhwoW3iHqITbyLX2eSE7x41ZwMzAuwC3o8H
- YDvkod4wKGIMVStpZ+EXT9CTb0wBKKjWIVQx3svAmP/KFoNEOsfbYP16Mqwqb01xhJ/P
- cR7DeTSz4rlvtF5JustKK8KVtMy0HFlCBkgUVOzYslSjbQd+qHI630fCbzKEYf04iPhe
- gFw/q6aSIP9JvD2bJ3cdbJltiVfwnsTBFXlrmJvQE+KUHZVns+gtftbI704lwULUUaJW
- xmVSooyS8KiJuNxy2C46dNX2WEtCKcNReHIhzfkz76s9K8eCiWqWb9HvDsOd0m0y+llp
- EtsQ==
-X-Gm-Message-State: AGi0PubqX9OS3fXQnliOLShw0O0yqQFC9zXwq1uHvcdBe6/o5JfPPP8p
- 2ljAsfpRKZFZNC2scxGGlb9MKz6avThUleYKhUFxM3sX4JIXg0fU+Emv+siAyoxFcp8boYQ52/5
- wi8czFIBoYK6P
-X-Received: by 2002:a05:600c:2314:: with SMTP id
- 20mr13774338wmo.35.1588590660038; 
- Mon, 04 May 2020 04:11:00 -0700 (PDT)
-X-Received: by 2002:a05:600c:2314:: with SMTP id
- 20mr13774305wmo.35.1588590659738; 
- Mon, 04 May 2020 04:10:59 -0700 (PDT)
-Received: from redhat.com (bzq-109-66-7-121.red.bezeqint.net. [109.66.7.121])
- by smtp.gmail.com with ESMTPSA id
- b85sm12922636wmb.21.2020.05.04.04.10.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 May 2020 04:10:58 -0700 (PDT)
-Date: Mon, 4 May 2020 07:10:55 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v4 0/7] ARM virt: Add NVDIMM support
-Message-ID: <20200504071046-mutt-send-email-mst@kernel.org>
-References: <20200421125934.14952-1-shameerali.kolothum.thodi@huawei.com>
- <158748197516.25490.13137194821077838492@39012742ff91>
- <20200504055608-mutt-send-email-mst@kernel.org>
- <CAFEAcA_VGtbjpVTb1VE1XCT43JODjkW8o1zSsVmzO3fg1+fr+w@mail.gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Mc2OiBAeuadvg7stvx74vegh5mSzJafd3UHWJqIoSzs=;
+ b=aCyoA757Fcb0caSm1wTmykzBf1FXjFbpHijyhSp0SUwGkLJ84sTMVJbS1JaTMs4aNs
+ ouSXgdmY4xa3guGizHCOGuYHWuJ3JXlUho5uzsR8nY+HlYUxIWJ7+7nGErd6oqH//vz4
+ nxK0fbhtiMGBNGfRD9+9n3ZaJWmcz80x1pFRrM6wpRPkAwPCLLW4fHcFWxe9dZcAK3fn
+ hetxgIvSUHDptBC3mNzT4xISP5M9IeZOhHhUt0eawWkb2qG4xvMFiomF514ONQCLf6F+
+ g85+ztT2g/r0XW1j7s890K0/DkPPzZl/uWuobt9X4nUby9LUnD9KP9iUARa0zhEVrOZo
+ vMiw==
+X-Gm-Message-State: AGi0PuY48nc6Y1BjA+QkkxFkWbUazaJk3zkSEITkDFL0TKF5WMU5A18D
+ f05oAu/GBIFoFQL4z4BthlEbuIQkFJKuceyyKdaDB3uM7ZRn3Q==
+X-Received: by 2002:a05:6830:1e4e:: with SMTP id
+ e14mr13706916otj.91.1588593873068; 
+ Mon, 04 May 2020 05:04:33 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_VGtbjpVTb1VE1XCT43JODjkW8o1zSsVmzO3fg1+fr+w@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=mst@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 04:24:57
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+References: <20200430181003.21682-1-peter.maydell@linaro.org>
+In-Reply-To: <20200430181003.21682-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 May 2020 13:04:21 +0100
+Message-ID: <CAFEAcA_-yGrEqF5PEa+Lx0Cc1QuqSKkKHjZk4P-jJOxCWR1qsg@mail.gmail.com>
+Subject: Re: [PATCH 00/36] target/arm: Convert Neon to decodetree (part 1)
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -132,46 +111,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Linuxarm <linuxarm@huawei.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Xu Wei <xuwei5@hisilicon.com>,
- prime.zeng@hisilicon.com, Igor Mammedov <imammedo@redhat.com>,
- Laszlo Ersek <lersek@redhat.com>
+Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ko18SvWKkOnV
+X-TUID: Wwketiz0RNmy
 
-On Mon, May 04, 2020 at 11:06:48AM +0100, Peter Maydell wrote:
-> On Mon, 4 May 2020 at 10:57, Michael S. Tsirkin <mst@redhat.com> wrote:
->=20
-> > > ./scripts/checkpatch.pl --mailback base..
->=20
-> > > 2/7 Checking commit 5554e78b18ea (nvdimm: Use configurable ACPI IO ba=
-se and size)
-> > > ERROR: Do not add expected files together with tests, follow instruct=
-ions in tests/qtest/bios-tables-test.c: both tests/qtest/bios-tables-test-a=
-llowed-diff.h and hw/acpi/nvdimm.c found
-> >
-> > This beats me. Where did we get
-> > tests/qtest/bios-tables-test-allowed-diff.h from?
-> > It's a different patch, isn't it?
->=20
-> Ah, this is a bug in the checkfilename() function -- it uses
-> some globals $acpi_testexpected and $acpi_nontestexpected, but
-> there is no code to reset these when checkpatch starts checking
-> a new patch. So if you only check one patch in a checkpatch run
-> (eg by just passing it a single patch file) then it will work, but if
-> a single checkpatch execution is checking several commits
-> (eg in the way patchew runs it to check the whole series of
-> git commits at once, or if you pass it several patch files) then
-> it will give wrong results for the second and later patches.
-> I think the variables need to be reset at the top of 'sub process()'.
->=20
-> thanks
-> -- PMM
+On Thu, 30 Apr 2020 at 19:10, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This patchseries starts in on the job of converting the Arm
+> Neon decoder to decodetree.
+>
+> Neon insns come in three major parts:
+>  * the 'v8.0-and-later' extensions
+>  * the 'loads and stores' group
+>  * the 'data processing' group
+>
+> This patchset converts all of the v8.0-and-later extensions
+> and the loads-and-stores, plus the "3-registers-same" subgroup
+> of the data-processing insns.
+>
+> I'm working on the rest of the dp insns, but this seems like
+> a pretty large chunk of conversion patches to start with.
 
-Good point. Will fix.
+I'm going to apply patches 1-19 and 22 (that's up to
+"3-reg-same VMUL, VMLA, VMLS, VSHL", plus the "move gen function
+typedefs" patch) to target-arm.next as they've been reviewed.
+That will leave the 3-reg-same in a partially converted state
+but it is not too confusingly so (or at least not much more
+so than having the rest of the neon-dp group unconverted) and
+I think that it will be easier to deal with this series and
+the rest of the conversion if we get the completed parts into
+the tree sooner rather than later.
 
+thanks
+-- PMM

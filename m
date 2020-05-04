@@ -1,119 +1,86 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp68047lfb;
-        Sun, 3 May 2020 22:14:08 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJHQ5L4GtH/cfRNyx9xwMj8GxWOkCOLTGOJSCZ8ynHzMQe8149Sg42TisNP2UoSo2YZi5mY
-X-Received: by 2002:a05:620a:1316:: with SMTP id o22mr4699813qkj.422.1588569248120;
-        Sun, 03 May 2020 22:14:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588569248; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp121825lfb;
+        Sun, 3 May 2020 23:44:35 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIEo5c/WvYz9jId2Z/W9ME2r3nflU2LVxxVHLcSjKdf6Hl/a9O0veFRiUbbGXnZapuI1Af6
+X-Received: by 2002:a0c:b659:: with SMTP id q25mr15167929qvf.48.1588574674875;
+        Sun, 03 May 2020 23:44:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588574674; cv=none;
         d=google.com; s=arc-20160816;
-        b=gMzRwDrwRRtWQKFlQuACGXp3D0aOyS3BXax60Vpq5DEq+3spW1g4X+BEEDFxqJ7tJr
-         paNyGAKbMEuH/i5CXmCHGX87pK9tcA8qQsh4ZBZpPF30JLMnpE7uBIAnp2UqBz7tRpm+
-         nFm+OIAP6wRWnn7ewYKV9XqQHvzX4BtjRiBrzryMhBcmAOBKg+caabwZMuXqVVejnndd
-         UgZq6O6Rm68yC80ptgYSvKpQUyQQe9229znX4IsvTNECgDc3D7q8tPt3MgWCr/+3GK8S
-         oMQINYbw8vjOh5FIZ6ckgspXppZdQUturppdQ4TQFGFbiOnR2Lub6XrHqULFT0Wfwcve
-         KGMg==
+        b=nQXTIELnvwuUmyN0RhmnwzphEE3X1skQd3pQTQqLQnd87hJHWe/vGWmfr1D50NfHz2
+         lF299Vvb5iDOgka9qwjTRn63MrXpSQmikC5+mfrpz6UFP4jw05hwFcKSPf6uKsV6dtsK
+         m2unf+7eRJo/S+qhjUt/TyG6MKEEMrPpWhUg5R8OLBuAcg3KDv7GK0Cz5S42oLVJEGtY
+         USawKsN3V3C00wPSQImpx15E6FYNPG82cEJkLTCV5F3+8GuvSDxFHeGobZiw1xFWyAq/
+         Scyx2GztFZV2+NJ366bV//ftDCXRq/sv+gxAotdgGgLT6iqnKUbe2sDL7KdUeH4LSlAW
+         qQGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=K7WTJ5RKuUhGf6Q3b2DcGRPpfKLM81fW7ZqFfBymxmo=;
-        b=Ej2uTQZQTJenvJzK4BSoqWAs/RS1VWDf8C6hNm23MbQe/dICenYfRQTU8bW+dcAtN4
-         b5AWfbNsEWVAAblWGwFbbpHSiKKymxIi4oc2jKPaNxvIidv1K/FR8rKYzKYiYBV0L1iH
-         G3OEujBeD1UUmjPYkgnsjhG9+/GhCa2CQ5aJ8KeHpFyhebOGMSivMEznAPBMSobgeAw6
-         UIWd6/jWyFEBikoKAeaEsIkpbGkYYZs4AT2H2rEOuEV8FAsbbJchIcv3mYXPM8Tk5/En
-         mCDoQoUszK/+cD73e2SsOOPjbXZTr0ka47Rykvu/dKzo9qxJuRkUTEiUYObMc5dM2KyB
-         /nZw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=/cwpfd8zyHZcMPvs4Ynw/7h6Sq5SE5QspQK9uGdVS4o=;
+        b=ItajIgxji3YKOgP7HjCpCxVcBoPjYNAvqUoT9YSgaB+WcTGwpSwqRjAiH+jFV77r7n
+         SrcsmQqbo0GxP8gqlS438pRhmYffKMXr+yvajnkeH2b5vV5r21Fqp3KPYLUVddBMql+m
+         nVZQrNRnTsq63BX3wsZuFEX+9Az+xcW6oO0l746V4ZS+iQv0qW3azN2iTaA742LKPtRf
+         bkaQ7G3uk+UYwN7W4gbBinPH04JmNlsNJRL7iB1EyyxLtkwxCQCQu4roXNtO23+EOHLq
+         tOTUSE0fNegUu1M+gNqzADcGwHwTeIO0zAg7q879PFuYYKCffpQ1xyuoyDgU2QRq2Tic
+         X3/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cPokWSTl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id s24si5804149qtj.228.2020.05.03.22.14.07
+        by mx.google.com with ESMTPS id p52si5889246qtj.345.2020.05.03.23.44.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 May 2020 22:14:08 -0700 (PDT)
+        Sun, 03 May 2020 23:44:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cPokWSTl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45802 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46250 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVTQd-00070p-Fm
-	for alex.bennee@linaro.org; Mon, 04 May 2020 01:14:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48348)
+	id 1jVUqA-0001bq-Ao
+	for alex.bennee@linaro.org; Mon, 04 May 2020 02:44:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56222)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jVTQV-00070O-61
- for qemu-arm@nongnu.org; Mon, 04 May 2020 01:13:59 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:45983
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jVTQT-0008Ni-2z
- for qemu-arm@nongnu.org; Mon, 04 May 2020 01:13:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588569235;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=K7WTJ5RKuUhGf6Q3b2DcGRPpfKLM81fW7ZqFfBymxmo=;
- b=cPokWSTlcKYLLtqSQQTLUsM/PzZl5ORv6InFewhVZojfkEyraaUwq9T7SzDMtlr31aTE7Y
- EJe73Mtj0ES4i91K9X/JM0SdtdMMWNZHvGakFnIre6L/Wsmiy0a4WQq+Kvzw4gcjsLo6k4
- PvSXHlihiZFiDDRVn0W269OjWvuEx10=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-437-dxDBML15MbS6Dxx3AR3fXQ-1; Mon, 04 May 2020 01:13:50 -0400
-X-MC-Unique: dxDBML15MbS6Dxx3AR3fXQ-1
-Received: by mail-wr1-f69.google.com with SMTP id s11so10161797wru.6
- for <qemu-arm@nongnu.org>; Sun, 03 May 2020 22:13:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=GgWpv3lJzZ6vzSp1N9aF4A77CBI5ISRWAJFVtv0cZms=;
- b=fIbVaQiB2AEJ3OmEDy7frDYiX9NloRlnlMTRxh5pz+1aQUXVK7WC+uw/218eWMTnvh
- Q4BUxtBfH+d2iQIhz7VZ0UmOMVm5BWregxU/84e9xUiCFhrOjEgZ778nAAuHI+v36HRG
- Thj1VJ8vjVHgHe3eDBoWs8syk3NKh2Pme0aW9rMhaEBLauyjwwvK4w/MBEr8YuitYMEq
- eTjt4E6LO3NVwUB6x54a5A+Jml3bdmYIFobpk+c92PiQcr3zN2jp2Q+gBzSgH6kZwEja
- 3plu+IaODa8sxxdRD4aNMXp9flVRIYY7VpB2hlFk1+i8QfQxiA20i5q8q9nJnsKNAPQL
- zkjA==
-X-Gm-Message-State: AGi0PuYehH3vm6u7VSDDoYWgH442CftnlcCkWLAmIVHes9+uBXFhqqyo
- uvkXB9fLoy7MpLP5jBft5Cg5MhGFUvuZ/sxICeSn8poN5ZA3tC+BOT8Kx/CSRXu/7PxFad44yu8
- z7LhaU2uKK2PW
-X-Received: by 2002:a1c:9852:: with SMTP id a79mr12328525wme.27.1588569229607; 
- Sun, 03 May 2020 22:13:49 -0700 (PDT)
-X-Received: by 2002:a1c:9852:: with SMTP id a79mr12328491wme.27.1588569229259; 
- Sun, 03 May 2020 22:13:49 -0700 (PDT)
-Received: from redhat.com (bzq-109-66-7-121.red.bezeqint.net. [109.66.7.121])
- by smtp.gmail.com with ESMTPSA id
- w10sm18236963wrg.52.2020.05.03.22.13.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 May 2020 22:13:48 -0700 (PDT)
-Date: Mon, 4 May 2020 01:13:45 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Subject: Re: [PATCH v4 0/7] ARM virt: Add NVDIMM support
-Message-ID: <20200504011252-mutt-send-email-mst@kernel.org>
-References: <20200421125934.14952-1-shameerali.kolothum.thodi@huawei.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jVUq3-0001bS-5l
+ for qemu-arm@nongnu.org; Mon, 04 May 2020 02:44:27 -0400
+Received: from 5.mo3.mail-out.ovh.net ([87.98.178.36]:47044)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jVUpy-0007RF-JV
+ for qemu-arm@nongnu.org; Mon, 04 May 2020 02:44:26 -0400
+Received: from player690.ha.ovh.net (unknown [10.110.115.173])
+ by mo3.mail-out.ovh.net (Postfix) with ESMTP id 5563B24D128
+ for <qemu-arm@nongnu.org>; Mon,  4 May 2020 08:44:11 +0200 (CEST)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player690.ha.ovh.net (Postfix) with ESMTPSA id A629011DC9F5C;
+ Mon,  4 May 2020 06:44:02 +0000 (UTC)
+Subject: Re: [PATCH] aspeed: Add support for the sonorapass-bmc board
+To: Patrick Williams <patrick@stwcx.xyz>
+References: <20200501113704.2240698-1-patrick@stwcx.xyz>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <84b9c069-ecf2-eb36-0ca4-7f5ccbf9619d@kaod.org>
+Date: Mon, 4 May 2020 08:43:58 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200421125934.14952-1-shameerali.kolothum.thodi@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=mst@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 01:13:55
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200501113704.2240698-1-patrick@stwcx.xyz>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Ovh-Tracer-Id: 13383009243117882176
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -83
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrjeefgddutdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegfrhhlucfvnfffucdludejmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkefhtedufeffvedvleejgeeghedvgeeuieeufeejueeltddugeduhedvveelgfehnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrheiledtrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+Received-SPF: pass client-ip=87.98.178.36; envelope-from=clg@kaod.org;
+ helo=5.mo3.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 02:44:11
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -126,105 +93,146 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, xiaoguangrong.eric@gmail.com,
- shannon.zhaosl@gmail.com, qemu-devel@nongnu.org, xuwei5@hisilicon.com,
- linuxarm@huawei.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
- prime.zeng@hisilicon.com, imammedo@redhat.com, lersek@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Amithash Prasad <amithash@fb.com>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ Vijay Khemka <vijaykhemka@fb.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nuuGkVW4JVrt
+X-TUID: KFylFx7ck3tl
 
-On Tue, Apr 21, 2020 at 01:59:27PM +0100, Shameer Kolothum wrote:
-> This series adds NVDIMM support to arm/virt platform.
-> The series reuses some of the patches posted by Eric
-> in his earlier attempt here[1].
->=20
-> This series previously had few fixes to qemu in general
-> which were discovered while adding nvdimm support to arm/virt.
-> Those were sent out seperately[2] and are now part of Qemu.
+On 5/1/20 1:37 PM, Patrick Williams wrote:
+> Sonora Pass is a 2 socket x86 motherboard designed by Facebook
+> and supported by OpenBMC.  Strapping configuration was obtained
+> from hardware and i2c configuration is based on dts found at:
+> 
+> https://github.com/facebook/openbmc-linux/blob/1633c87b8ba7c162095787c988979b748ba65dc8/arch/arm/boot/dts/aspeed-bmc-facebook-sonorapass.dts
+> 
+> Booted a test image of http://github.com/facebook/openbmc to login
+> prompt.
+> 
+> Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
 
+With the fixed // comments,
 
-Mostly ACPI stuff so I can merge it if I get an ack for ARM side.
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-Alternatively, for ACPI things:
+Thanks,
 
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+C.
 
-
-
-> Patch #1 is another fix to the nvdimm aml issue discussed
-> here[3].
->=20
-> I have done a basic sanity testing of NVDIMM devices
-> with Guest booting with ACPI. Further testing is always
-> welcome.
->=20
-> Please let me know your feedback.
->=20
-> Thanks,
-> Shameer
->=20
-> [1] https://patchwork.kernel.org/cover/10830777/
-> [2] https://patchwork.kernel.org/cover/11472501/
-> [3] https://patchwork.kernel.org/cover/11174959/#23020961
->=20
-> v3 --> v4
->  -Removed patches #1 to #3 from v3 as they are now part of Qemu.
->  -Addressed comments from Igor(#6) and Shannon(#4).
->  -Added R-by from Igor(#1,#2,#3).
->=20
-> v2 --> v3
->  - Added patch #1 and # 2 to fix the inconsistency in acpi
->    table memory region sizes during migration. Thanks to
->    David H.
->  - The fix for qemu_ram_resize() callback was modified to
->    the one in patch #3. Again thanks to David H.
->  - Addressed comments from MST and Eric on tests added.
->  - Addressed comments from Igor/MST on Integer size in patch #4
->  - Added Eric's R-by to patch #7.
->=20
-> v1 --> v2
->  -Reworked patch #1 and now fix is inside qemu_ram_resize().
->  -Added patch #2 to fix the nvdim aml issue.
->  -Dropped support to DT cold plug.
->  -Updated test_acpi_virt_tcg_memhp() with pc-dimm and nvdimms(patch #7)
->=20
-> Kwangwoo Lee (2):
->   nvdimm: Use configurable ACPI IO base and size
->   hw/arm/virt: Add nvdimm hot-plug infrastructure
->=20
-> Shameer Kolothum (5):
->   hw/acpi/nvdimm: Fix for NVDIMM incorrect DSM output buffer length
->   hw/arm/virt: Add nvdimm hotplug support
->   tests: Update ACPI tables list for upcoming arm/virt test changes
->   bios-tables-test: test pc-dimm and nvdimm coldplug for arm/virt
->   tests/acpi: add expected tables for bios-tables-test
->=20
->  docs/specs/acpi_hw_reduced_hotplug.rst |   3 +-
->  hw/acpi/generic_event_device.c         |  15 +++++-
->  hw/acpi/nvdimm.c                       |  72 ++++++++++++++++++++-----
->  hw/arm/Kconfig                         |   1 +
->  hw/arm/virt-acpi-build.c               |   6 +++
->  hw/arm/virt.c                          |  35 ++++++++++--
->  hw/i386/acpi-build.c                   |   6 +++
->  hw/i386/acpi-build.h                   |   3 ++
->  hw/i386/pc_piix.c                      |   2 +
->  hw/i386/pc_q35.c                       |   2 +
->  hw/mem/Kconfig                         |   2 +-
->  include/hw/acpi/generic_event_device.h |   1 +
->  include/hw/arm/virt.h                  |   1 +
->  include/hw/mem/nvdimm.h                |   3 ++
->  tests/data/acpi/pc/SSDT.dimmpxm        | Bin 685 -> 734 bytes
->  tests/data/acpi/q35/SSDT.dimmpxm       | Bin 685 -> 734 bytes
->  tests/data/acpi/virt/DSDT.memhp        | Bin 6644 -> 6668 bytes
->  tests/data/acpi/virt/NFIT.memhp        | Bin 0 -> 224 bytes
->  tests/data/acpi/virt/SSDT.memhp        | Bin 0 -> 736 bytes
->  tests/qtest/bios-tables-test.c         |   9 +++-
->  20 files changed, 138 insertions(+), 23 deletions(-)
->  create mode 100644 tests/data/acpi/virt/NFIT.memhp
->  create mode 100644 tests/data/acpi/virt/SSDT.memhp
->=20
-> --=20
-> 2.17.1
->=20
+> ---
+>  hw/arm/aspeed.c | 76 +++++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 76 insertions(+)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index a6a2102a93..09b3277d56 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -84,6 +84,21 @@ struct AspeedBoardState {
+>          SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
+>          SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
+>  
+> +/* Sonorapass hardware value: 0xF100D216 */
+> +#define SONORAPASS_BMC_HW_STRAP1 (                                      \
+> +        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
+> +        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
+> +        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
+> +        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
+> +        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
+> +        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
+> +        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
+> +        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
+> +        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
+> +        SCU_HW_STRAP_VGA_BIOS_ROM |                                     \
+> +        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
+> +        SCU_AST2500_HW_STRAP_RESERVED1)
+> +
+>  /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
+>  #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
+>  
+> @@ -372,6 +387,48 @@ static void swift_bmc_i2c_init(AspeedBoardState *bmc)
+>      i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 12), "tmp105", 0x4a);
+>  }
+>  
+> +static void sonorapass_bmc_i2c_init(AspeedBoardState *bmc)
+> +{
+> +    AspeedSoCState *soc = &bmc->soc;
+> +
+> +    // bus 2 :
+> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 2), "tmp105", 0x48);
+> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 2), "tmp105", 0x49);
+> +    // bus 2 : pca9546 @ 0x73
+> +
+> +    // bus 3 : pca9548 @ 0x70
+> +
+> +    // bus 4 :
+> +    uint8_t *eeprom4_54 = g_malloc0( 8 * 1024 );
+> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), 0x54,
+> +                          eeprom4_54);
+> +    /* PCA9539 @ 0x76, but PCA9552 is compatible */
+> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "pca9552", 0x76);
+> +    /* PCA9539 @ 0x77, but PCA9552 is compatible */
+> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "pca9552", 0x77);
+> +
+> +    // bus 6 :
+> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 6), "tmp105", 0x48);
+> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 6), "tmp105", 0x49);
+> +    // bus 6 : pca9546 @ 0x73
+> +
+> +    // bus 8 :
+> +    uint8_t *eeprom8_56 = g_malloc0( 8 * 1024 );
+> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), 0x56,
+> +                          eeprom8_56);
+> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), "pca9552", 0x60);
+> +    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), "pca9552", 0x61);
+> +    // bus 8 : adc128d818 @ 0x1d
+> +    // bus 8 : adc128d818 @ 0x1f
+> +
+> +    // bus 13 : pca9548 @ 0x71
+> +    //      - channel 3:
+> +    //          - tmm421 @ 0x4c
+> +    //          - tmp421 @ 0x4e
+> +    //          - tmp421 @ 0x4f
+> +
+> +}
+> +
+>  static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
+>  {
+>      AspeedSoCState *soc = &bmc->soc;
+> @@ -499,6 +556,21 @@ static void aspeed_machine_swift_class_init(ObjectClass *oc, void *data)
+>      mc->default_ram_size       = 512 * MiB;
+>  };
+>  
+> +static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+> +
+> +    mc->desc       = "OpenPOWER SonoraPass BMC (ARM1176)";
+> +    amc->soc_name  = "ast2500-a1";
+> +    amc->hw_strap1 = SONORAPASS_BMC_HW_STRAP1;
+> +    amc->fmc_model = "mx66l1g45g";
+> +    amc->spi_model = "mx66l1g45g";
+> +    amc->num_cs    = 2;
+> +    amc->i2c_init  = sonorapass_bmc_i2c_init;
+> +    mc->default_ram_size       = 512 * MiB;
+> +};
+> +
+>  static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
+>  {
+>      MachineClass *mc = MACHINE_CLASS(oc);
+> @@ -563,6 +635,10 @@ static const TypeInfo aspeed_machine_types[] = {
+>          .name          = MACHINE_TYPE_NAME("swift-bmc"),
+>          .parent        = TYPE_ASPEED_MACHINE,
+>          .class_init    = aspeed_machine_swift_class_init,
+> +    }, {
+> +        .name          = MACHINE_TYPE_NAME("sonorapass-bmc"),
+> +        .parent        = TYPE_ASPEED_MACHINE,
+> +        .class_init    = aspeed_machine_sonorapass_class_init,
+>      }, {
+>          .name          = MACHINE_TYPE_NAME("witherspoon-bmc"),
+>          .parent        = TYPE_ASPEED_MACHINE,
+> 
 

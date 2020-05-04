@@ -1,102 +1,104 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp663067lfb;
-        Mon, 4 May 2020 10:25:56 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKk86Jc+VQ/wRQ8B/f7hhPBNLaWb2YFoV91fKlW1kEh5IRlKt0wTCStrR/3+bVC/8xORgED
-X-Received: by 2002:a37:7b01:: with SMTP id w1mr259879qkc.167.1588613155808;
-        Mon, 04 May 2020 10:25:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588613155; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp663307lfb;
+        Mon, 4 May 2020 10:26:13 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKi5M5kn6zWNDGGhSaIKzMlQJ0PJ0XQmf+DLKe72+o3aTH6ZQT9QD4EqlWvcrO+IXCEL3QQ
+X-Received: by 2002:ac8:4e2c:: with SMTP id d12mr180578qtw.204.1588613173126;
+        Mon, 04 May 2020 10:26:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588613173; cv=none;
         d=google.com; s=arc-20160816;
-        b=GnY70w/5sa3HLtYZ/pA1VPalPK9p9vVXmlkPzYBEplLhAFLkWbYwnU/IWfe/83H/Ct
-         ceCskc22hGQHgwtcmrN91syyuoIJNIu7q3WAFPhavMkSwkmnpxqeJAEmOpstUI9LuKmW
-         j1H9m2Mml6cWLPtdWKZ0tjLKQrBpzIZi1+18aMpJypOvxElHP6iBl6jH0Z6Sf8MLuYtC
-         cUS7co5FwkH7G+1DGb497lgfdW5Stv/kwQ/WS0ryLvwDvrVI7XCaeC1km7zuKuvofX52
-         cgUAoLfapP+qcTiE7y3z1mIWZe3BLfwb0RJgwnibbsoQlCYDnwnF6V7U5Hr2jFpZJ/nx
-         LgFg==
+        b=MNKhY5ImnYbqiFIioGYACVfegu5p+ZEaq88F2WwUwDxl6/KH4XqA8UZzsC4fAsIxbz
+         nyxlyM2IIPtlzjuvOPuCvgxVzu4Ys4vVm2Woig/vESHS5wHoB8VG6cBu3Fs33nl/hj4i
+         UzYhe6YoQDBfoG5u2I3zpd4GFRXifciJQLdaJNz5g+ZjCrFjx7Gbusdk3FJJcWsT5CJv
+         iNBZNLrKaMLD7rxT32gbKG/UHfPJgy1DXN2LVOPcHv6MJ0H34liyTq1TheYExT3uZqSg
+         h/KcdXSjwDH4F97P5R/JNaBTxe7C0Hy7X0x0cgk7xmPWm0BUJwW08kJLNspfaawJVMrO
+         T9ZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=iA8FqqMjH3exPTKpefZtcF5t6yrp6h6MGztNneH3c1g=;
-        b=szB9QePt1mdM559dSr4byBnUHN6JZEOg4EUg/eIrukA06sH74JjWYNvyhu8hvSsMiL
-         +7f5kffk1ZJe1tff9BMdRYA8L++HDLV0QM1wWdDQtu4mcT891IkGAi8/WulRaEvstRtX
-         gYxewzdQrA2nv8+liZ/zcfBCvD24MHVaBs2bVdPBiyWqJaj2GSfcv40tgX//WXT6k6Hw
-         Var1eXnGt3JfNSl8mF7sIVmVhoNPBqLL9HIsEsGI/o+cSGAakjdn6KR0xlVQhT0BSsz/
-         fPm4V+C4oHfKPCkclJxsRVBx9gVfAHMFf6f2+nvwQnIylFQup9bMMqVInTFVs1hj/cSU
-         8mNQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=J2j0wqUPebHWLfyYz6iL8kkjnw7WfmxM1B0D7mnsKjQ=;
+        b=vLZykCqLKMgvMqcrnX7VRHo9sKdZ135OXQ3A9XHx+VZOwhMuhlPH5vf6M7xl/vvJJH
+         h1muq9pBkjvlApADmNdJfoyAF/fW9tjPBDg2DxvDfDJ+qlbvzKVQlZtybv/Pm9z9Z14/
+         RLdQ/4FXRJUqpJN5h8NPBwqDxXAY1/jUsOCp0CxZLYzTHtYxKenjl3tNKARiwBIq7k79
+         OWp1FxLIGkXN/z2RR2KIUkUT9RLnYQTl+y6GbvNnkupGaB7wFJPCPggcauBfE3uKnjF6
+         N+FJW+ylBsCiNCNFgkgOwW10GU7JN2Cv3102Rmj5rSEIGIjeBCE6OsWHyTK/saS0VScl
+         5Fjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KvoCXzGN;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CdWAZfq1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id c15si6903969qtp.307.2020.05.04.10.25.55
+        by mx.google.com with ESMTPS id o97si6799447qvo.34.2020.05.04.10.26.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 May 2020 10:25:55 -0700 (PDT)
+        Mon, 04 May 2020 10:26:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KvoCXzGN;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CdWAZfq1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45592 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47054 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVeqp-0003BQ-8N
-	for alex.bennee@linaro.org; Mon, 04 May 2020 13:25:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55518)
+	id 1jVer6-0003qc-Hg
+	for alex.bennee@linaro.org; Mon, 04 May 2020 13:26:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55524)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jVepx-0001uX-2u
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jVepx-0001wz-EM
  for qemu-arm@nongnu.org; Mon, 04 May 2020 13:25:01 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:36400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:33231
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jVepv-0005Ge-D6
- for qemu-arm@nongnu.org; Mon, 04 May 2020 13:25:00 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jVepv-0005GZ-Es
+ for qemu-arm@nongnu.org; Mon, 04 May 2020 13:25:01 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588613098;
+ s=mimecast20190719; t=1588613097;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=iA8FqqMjH3exPTKpefZtcF5t6yrp6h6MGztNneH3c1g=;
- b=KvoCXzGN929cGi2yVuCZoVvRWBs4noMn8Zog/PzgeNRIDg6bZ7qZ9VVF4JCWMS48yPeqxb
- YckVRny11e2ELm6+TqkWyLw9EQkDJq5t/2oqoaSnKrVFU6wiaJRr2VG9fErJmJOSx3CQ/x
- Bel5CGrSemuVFNKcuIDjD8kYKfvRSN4=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-243-tmcO1zg8N7i9Erj_Z5KYUA-1; Mon, 04 May 2020 13:24:51 -0400
-X-MC-Unique: tmcO1zg8N7i9Erj_Z5KYUA-1
-Received: by mail-wr1-f72.google.com with SMTP id 30so191811wrp.22
- for <qemu-arm@nongnu.org>; Mon, 04 May 2020 10:24:50 -0700 (PDT)
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=J2j0wqUPebHWLfyYz6iL8kkjnw7WfmxM1B0D7mnsKjQ=;
+ b=CdWAZfq1pBFUS4ixho/mIB7JZhhtoHofmuLY0llf/ZfOAICbP2SoKBaRDy9fupIbTFl+KL
+ +AI2XMddpujl1LWPxEhKspco0Z0lzVHSCE6QQdUioEFVgzGc3KdmD+gcElXqzn9MbGOdBS
+ OZL2T7ISWmhLjQh5A7qIvD7821NlM2k=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-95-AyVsHg58M9qIok4kHbj1kA-1; Mon, 04 May 2020 13:24:55 -0400
+X-MC-Unique: AyVsHg58M9qIok4kHbj1kA-1
+Received: by mail-wm1-f69.google.com with SMTP id 71so291561wmb.8
+ for <qemu-arm@nongnu.org>; Mon, 04 May 2020 10:24:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=D57NXlFkbN/fOUMJdqhRrNFq2S4cg5DUCwfIfYPqP+M=;
- b=t8nzmFYsnFDGPCD8Sd+QTV288ssVgstATx23O7ISeOrJaBgqKLSatu6nlZOef6ZUWS
- 9Jrtw7ZPp+b/1NAM8O7mDVPLKtXfG3bjEBzUq7nMCl/sZ9MZzOCc/HqQ7Z/p0wTqqA6O
- NpiWB+FGTNteizzwLCE3BXBZuMaUHqqG/GOlh7WZOlpNok8Ch3p01T+I/+KigAjj+NUl
- W0HZAGAOZ7WKzOlGL6/Cj3bphC+rvR91IcSagc/FA+pXl7G/1FMsPf1ntGUWMNiEK+cz
- 7WyK74D2M5AP4dtKk7/cddmJiOuqb++GcD/mlovR+icLzpMHeVD7anxSBLin0AEDBcNu
- 1xmQ==
-X-Gm-Message-State: AGi0PuaUyfH0cy7LYOjldVQGe7px2GmgYWWFr2fJfav99WajYyncecMn
- 2e7gzN7Z3/mO+7mUaO8lAc4BvAtdJNghPNix106Z81UnBOKlyvkd9Yk90bNmOBoCyycryDVyRmQ
- Na2CjRJ4FlSIo
-X-Received: by 2002:a05:6000:11cb:: with SMTP id
- i11mr97441wrx.339.1588613089892; 
- Mon, 04 May 2020 10:24:49 -0700 (PDT)
-X-Received: by 2002:a05:6000:11cb:: with SMTP id
- i11mr97414wrx.339.1588613089638; 
- Mon, 04 May 2020 10:24:49 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=AbBkM/gfj45zJYp9htQMJfg8nUymcXwOX7nX9TXzWm8=;
+ b=YyRdxPyOvwKFrBlT2ZBTsRDuwSkGZx5UB5udts/eP+VJ4Vdx9RhOCuXLk3h28ARBOn
+ L+72+9Y/inNRX24UNznf4l00ufIdWm9Aq1kzA8pTaOTr4+F+/fncqrAU59rWrGOCLVYb
+ FYIqH36jSuFDaWFFTRaWVVyvJYqqSRAzstvW3cyBei5cEbkHM8J8nIw+YRCeyBT/dWDK
+ jZ6+pdag5pkPOEZt2uHQYIo/ss+Mb3i08Vs3+cxmqJDS+HfYheMV6nTFJTPAqsT5qfRa
+ TIAMS3THVS84ikf1tbLjbMDnBxDo0Ox5OS7xQYAgow/WaeqJezJVUMvdP6f/5MISH54U
+ Fw0Q==
+X-Gm-Message-State: AGi0Pua6M7xruZiQZ3HBqQIIib2imi5fuv6iKueol9StJtYvH3DwEqwZ
+ Xwefr/jLQ1zh9Wha+eEAbPhi8YmvuWT6Klt6FHo6y14o5Nds4lV1wAbGZ0nIxkwBQi8lzJAkFnW
+ qKr19DLn6IS+R
+X-Received: by 2002:adf:ee86:: with SMTP id b6mr98939wro.419.1588613094636;
+ Mon, 04 May 2020 10:24:54 -0700 (PDT)
+X-Received: by 2002:adf:ee86:: with SMTP id b6mr98924wro.419.1588613094449;
+ Mon, 04 May 2020 10:24:54 -0700 (PDT)
 Received: from x1w.redhat.com (26.red-88-21-207.staticip.rima-tde.net.
  [88.21.207.26])
- by smtp.gmail.com with ESMTPSA id a8sm7329475wrg.85.2020.05.04.10.24.48
+ by smtp.gmail.com with ESMTPSA id k5sm3556196wrx.16.2020.05.04.10.24.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 May 2020 10:24:49 -0700 (PDT)
+ Mon, 04 May 2020 10:24:53 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 0/5] target/arm: Restrict TCG cpus to TCG accel
-Date: Mon,  4 May 2020 19:24:43 +0200
-Message-Id: <20200504172448.9402-1-philmd@redhat.com>
+Subject: [PATCH v3 1/5] target/arm/kvm: Inline set_feature() calls
+Date: Mon,  4 May 2020 19:24:44 +0200
+Message-Id: <20200504172448.9402-2-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200504172448.9402-1-philmd@redhat.com>
+References: <20200504172448.9402-1-philmd@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
@@ -126,58 +128,109 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: he9on/vZjd85
+X-TUID: pmbEUYqfFJAM
 
-These are the uncontroversial patches from "Support disabling
-TCG on ARM (part 2)"
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg689168.html
+We want to move the inlined declarations of set_feature()
+from cpu*.c to cpu.h. To avoid clashing with the KVM
+declarations, inline the few KVM calls.
 
-The other patches are blocked by the "accel: Allow targets to
-use Kconfig" series:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg689024.html
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ target/arm/kvm32.c | 13 ++++---------
+ target/arm/kvm64.c | 22 ++++++----------------
+ 2 files changed, 10 insertions(+), 25 deletions(-)
 
-Patch #4 is new "Restrict v8M IDAU interface to Aarch32 CPUs".
-
-Since v2:
-- Fixed set_feature() clash trying to KISS
-  https://www.mail-archive.com/qemu-devel@nongnu.org/msg697523.html
-- Fixed aarch64-linux-user build failure reported by Peter:
-  https://www.mail-archive.com/qemu-devel@nongnu.org/msg699319.html
-
-Since v1:
-- Dropped 'Make set_feature() available for other files' patch
-  which fails to build with KVM only, see:
-https://lists.gnu.org/archive/html/qemu-devel/2020-04/msg03843.html
-
-Many thanks to Richard Henderson for his patience (again...)!
-
-Regards,
-
-Phil.
-
-Philippe Mathieu-Daud=C3=A9 (4):
-  target/arm/kvm: Inline set_feature() calls
-  target/arm/cpu: Use ARRAY_SIZE() to iterate over ARMCPUInfo[]
-  target/arm/cpu: Restrict v8M IDAU interface to Aarch32 CPUs
-  target/arm: Restrict TCG cpus to TCG accel
-
-Thomas Huth (1):
-  target/arm: Make set_feature() available for other files
-
- target/arm/cpu.h         |  10 +
- target/arm/cpu.c         | 662 +-------------------------------------
- target/arm/cpu64.c       |  18 +-
- target/arm/cpu_tcg.c     | 664 +++++++++++++++++++++++++++++++++++++++
- target/arm/kvm32.c       |  13 +-
- target/arm/kvm64.c       |  22 +-
- target/arm/Makefile.objs |   1 +
- 7 files changed, 698 insertions(+), 692 deletions(-)
- create mode 100644 target/arm/cpu_tcg.c
-
+diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+index f271181ab8..7b3a19e9ae 100644
+--- a/target/arm/kvm32.c
++++ b/target/arm/kvm32.c
+@@ -22,11 +22,6 @@
+ #include "internals.h"
+ #include "qemu/log.h"
+=20
+-static inline void set_feature(uint64_t *features, int feature)
+-{
+-    *features |=3D 1ULL << feature;
+-}
+-
+ static int read_sys_reg32(int fd, uint32_t *pret, uint64_t id)
+ {
+     struct kvm_one_reg idreg =3D { .id =3D id, .addr =3D (uintptr_t)pret }=
+;
+@@ -146,14 +141,14 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures=
+ *ahcf)
+      * timers; this in turn implies most of the other feature
+      * bits, but a few must be tested.
+      */
+-    set_feature(&features, ARM_FEATURE_V7VE);
+-    set_feature(&features, ARM_FEATURE_GENERIC_TIMER);
++    features |=3D 1ULL << ARM_FEATURE_V7VE;
++    features |=3D 1ULL << ARM_FEATURE_GENERIC_TIMER;
+=20
+     if (extract32(id_pfr0, 12, 4) =3D=3D 1) {
+-        set_feature(&features, ARM_FEATURE_THUMB2EE);
++        features |=3D 1ULL << ARM_FEATURE_THUMB2EE;
+     }
+     if (extract32(ahcf->isar.mvfr1, 12, 4) =3D=3D 1) {
+-        set_feature(&features, ARM_FEATURE_NEON);
++        features |=3D 1ULL << ARM_FEATURE_NEON;
+     }
+=20
+     ahcf->features =3D features;
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index be5b31c2b0..cd8ab6b8ae 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -447,16 +447,6 @@ void kvm_arm_pmu_set_irq(CPUState *cs, int irq)
+     }
+ }
+=20
+-static inline void set_feature(uint64_t *features, int feature)
+-{
+-    *features |=3D 1ULL << feature;
+-}
+-
+-static inline void unset_feature(uint64_t *features, int feature)
+-{
+-    *features &=3D ~(1ULL << feature);
+-}
+-
+ static int read_sys_reg32(int fd, uint32_t *pret, uint64_t id)
+ {
+     uint64_t ret;
+@@ -648,11 +638,11 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures=
+ *ahcf)
+      * with VFPv4+Neon; this in turn implies most of the other
+      * feature bits.
+      */
+-    set_feature(&features, ARM_FEATURE_V8);
+-    set_feature(&features, ARM_FEATURE_NEON);
+-    set_feature(&features, ARM_FEATURE_AARCH64);
+-    set_feature(&features, ARM_FEATURE_PMU);
+-    set_feature(&features, ARM_FEATURE_GENERIC_TIMER);
++    features |=3D 1ULL << ARM_FEATURE_V8;
++    features |=3D 1ULL << ARM_FEATURE_NEON;
++    features |=3D 1ULL << ARM_FEATURE_AARCH64;
++    features |=3D 1ULL << ARM_FEATURE_PMU;
++    features |=3D 1ULL << ARM_FEATURE_GENERIC_TIMER;
+=20
+     ahcf->features =3D features;
+=20
+@@ -802,7 +792,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+     if (cpu->has_pmu) {
+         cpu->kvm_init_features[0] |=3D 1 << KVM_ARM_VCPU_PMU_V3;
+     } else {
+-        unset_feature(&env->features, ARM_FEATURE_PMU);
++        env->features &=3D ~(1ULL << ARM_FEATURE_PMU);
+     }
+     if (cpu_isar_feature(aa64_sve, cpu)) {
+         assert(kvm_arm_sve_supported(cs));
 --=20
 2.21.3
 

@@ -1,252 +1,218 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp493993lfb;
-        Mon, 4 May 2020 07:21:07 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIyUSKVvhjL7Wby0xat/Ho+ebPcRKBz81KzpEe1+3j95Ewc8yL2QP37KwhXwO9DWuHkPuES
-X-Received: by 2002:aed:3e87:: with SMTP id n7mr17500315qtf.301.1588602067525;
-        Mon, 04 May 2020 07:21:07 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1588602067; cv=pass;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp494516lfb;
+        Mon, 4 May 2020 07:21:44 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLs44nMrUg605ak8rkVXM0bVifOF0qprxafeay1qjz+C3XEJxdwoWPFm6zECSxq7GWenJgO
+X-Received: by 2002:ae9:ea0a:: with SMTP id f10mr10902387qkg.272.1588602103881;
+        Mon, 04 May 2020 07:21:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588602103; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zg9Mthz/aSxhN/H71HRySW57Tjb/GPxEBdB8+ezHSG4xLnFMpDRfMHUG7gEZw8MBgH
-         3mN1nrdjPuepf7a5TOvCrDWydkoH4lWDo6fjbTcu3HWQt6NKVRSVKWraCZK3mVOOQAYX
-         XE9Ii8djwiPOlq6pUlDFrFBFBwDLqmbTf8VR9Df3V+6nXOoiATKsehQEJWsJUT83k31k
-         6IKmBztmQ7V+bJH9LLqTylrXVhbrQCnBqOIsbqvtwxoNVOG1un/Hq9Y07rYrJOQMWyM9
-         CGLl6FHJbzWwVybEgemgGYqOw1nbFcG94+qQ10HjMI89/HzhWbnfrmxbT7kmFAe9FutV
-         jXpw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=nbY+KlorHQ2cR9HY2wUsmM29ttP2vSSGgOE75YxWZZT2iGIngabgfGYmyO5z1azpMz
+         Kx2S3tBcX59oj+69TYSBHOo/ZiYEZudhdH7wWWk0llxHAoONgCm+oSlSLEJDIfpcLD8v
+         i8rgp44voBFT2pjfneUARbQGSrrvCF8JIENh5dGqlfwRUAlaK3Bhw0GshiXrLHLwqgBf
+         SsQIbo0hVpeLywmjoJVLQd8gCrHTWvUXXjRlgzrnNa/OHsCUtMYK7r02c/vVfFR+wCwT
+         ZwF/P9cISmVKtno5E51/7iFVGmqknPEndVxG8k7wl0xPKJsZVq5GDeVajeWOqzyF0C6e
+         bY/A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from:dkim-signature;
-        bh=hinxdvB+SmjEyX1WmnJdXgfcuwaXO0a8Auar+RLVvl4=;
-        b=GifZskJbIRdhG4LJ3QwEjAR36nPcprYJCiZfRuVCxwMNLyAeU6c91DGcB/8EvHBdfX
-         s2CY8agt1G6PQ02lLsHqnuTBp3Oz1lddd3YbsilbVqrdEHKBBxVsks0ZtXqGRK9oJ5dU
-         sVLxz35CiEh+qgknG5aW+/cN1pGJmX8x8Rvdr5NI4Z1tDPxzZFdGmsDmzCXB33qQOwR5
-         l7Bdf8tX2/WMp5LhMb2nFECtMyL7XeYdZvgaK30IApmLyVI555CV9yIRKWdZSAAfnJFF
-         tDY8oQa7OscR7qWKJ5c0+NG+kQrYNSY1W6BqSGtKGL6xwABjGueAMKYIaTsOd/4IfXCX
-         2kVw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b="enIe/pMW";
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=D+s9RocNcIFxp3NrHvqCZUbCbQZq5W1Nleeta/NdFEs=;
+        b=U6WLWorHIuxOj/HWyVZhEuGqkEV9Edg/JiIrxeptnNqbNkA6ptvQLWvRsBq8tCHDbz
+         9Gr4LsvlmLKubG65FwkFcTu9z1turwGabZiGvSesR1ytmxIB1TuxVifRIIR9kpFsY0Xz
+         ffz2gZLrMwjcA6/bFOE4cFPBIsBYMqciBbW4GD0KC1Av6Pr1s5gQ5+QZR+TKbyOq1e0v
+         qpbW5Co434Ea3xCAM/HT76r+kNJbWjEU1Ilq6eGFXiVt77ltpK5Uq7fZ5mlcGdViaCaS
+         2mdXdQefOq0+gKi4MLmJ9ZsH4ZUWRMs8SkkAaw5SbA3lSHIObtqg5cY4OsjOcpmPiHR1
+         qdZA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O7R5+EzH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id az7si6701689qvb.195.2020.05.04.07.21.07
+        by mx.google.com with ESMTPS id d3si6345676qtk.109.2020.05.04.07.21.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 May 2020 07:21:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Mon, 04 May 2020 07:21:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b="enIe/pMW";
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48130 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O7R5+EzH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:50858 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVbxy-0000BT-Sj
-	for alex.bennee@linaro.org; Mon, 04 May 2020 10:21:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45138)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jVbyZ-0001jX-37
+	for alex.bennee@linaro.org; Mon, 04 May 2020 10:21:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46144)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
- id 1jVbrU-0007Hb-Cg; Mon, 04 May 2020 10:14:24 -0400
-Received: from mail-mw2nam12on2074.outbound.protection.outlook.com
- ([40.107.244.74]:6150 helo=NAM12-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
- id 1jVbrT-0005gh-9t; Mon, 04 May 2020 10:14:24 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=DDgYO9DNY9fa0GUkHJh9FYoG6ZZBgU7RCXsjaN+I2uggvMNXMaVYD0ipQlcGMfzm1bMgLlvwbFhnfdTAZC6QfB7Z8x6lnRct0zeIxQFk5GXc20Utw7x6tLowsXtOrmdEtI+QwVtU32TVSpXWProHBhDgbcIsh2opBYeLLLthi4TTsyH5Ra4YxysqZN6U/EO7hQ1IYPZ0nmHs14T836SO0GdiZ1WDEupW0gpsLgelOPT9aHeRth+PppEWim7p20rlvrEGpCjF7J69HPfVwE92xglZQ0vz1/K1RNAiFzPlnmlu+sm5HhGhJ3dNV6tFUM8al3GuUbbWzzTreV+ZGUMFhA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hinxdvB+SmjEyX1WmnJdXgfcuwaXO0a8Auar+RLVvl4=;
- b=O/uyLpHU5K6rPdJnXN0KU8zQbngSt0ChGKfN7d+kMrj0woh3cwDR/gVWhr9MuWmbKbuarkLiRzJ2ErMH3EejYuFCB3S6py2Op2scXUwmQYd5xw7skvec2Ne/LPO4UASAfrbl0PaUoH+F8jt8MCZ3zW08yVZyYoaQHWjVC2wmaGeSb8uU+Xm0BaShM35ruPYiYvb9Zr5NDo1UapbA3qkNHwV+e4mPp1/mSTeVA5v2t4ahk3LXSqj18Fhs7rGRvhujXgDu9eMgAgXo4AISahz709uzFCxx9AZuOH22SU/+DzXO+cmA+65+h7ISOvayBPDJdAWmNdYOWoRpRXLvsR9N2w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.60.83) smtp.rcpttodomain=gmail.com smtp.mailfrom=xilinx.com;
- dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hinxdvB+SmjEyX1WmnJdXgfcuwaXO0a8Auar+RLVvl4=;
- b=enIe/pMWRVF9Ko81Y2zd9xgKo76vMRLHTUOJYKHpNOwKEyGHxF4um78KZBmoZI9vkCPKz8CYLobXuYGNgGnwupfDQ4r5uFYLnMkSwn7F0nfCEfx4DPEnd7+fPWImQMeQyNfyyVPsCWXDzF7jb/CBWyJs/VJNFwCsnLIZviCm3mU=
-Received: from DM6PR12CA0021.namprd12.prod.outlook.com (2603:10b6:5:1c0::34)
- by DM5PR02MB3653.namprd02.prod.outlook.com (2603:10b6:4:bb::39) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.29; Mon, 4 May
- 2020 14:14:20 +0000
-Received: from CY1NAM02FT039.eop-nam02.prod.protection.outlook.com
- (2603:10b6:5:1c0:cafe::7c) by DM6PR12CA0021.outlook.office365.com
- (2603:10b6:5:1c0::34) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.20 via Frontend
- Transport; Mon, 4 May 2020 14:14:19 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
- smtp.mailfrom=xilinx.com; gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=bestguesspass action=none
- header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
-Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
- CY1NAM02FT039.mail.protection.outlook.com (10.152.75.140) with Microsoft SMTP
- Server id 15.20.2958.27 via Frontend Transport; Mon, 4 May 2020 14:14:19
- +0000
-Received: from [149.199.38.66] (port=43115 helo=xsj-pvapsmtp01)
- by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
- (envelope-from <sai.pavan.boddu@xilinx.com>)
- id 1jVbrJ-0000H6-Fe; Mon, 04 May 2020 07:14:13 -0700
-Received: from localhost ([127.0.0.1] helo=xsj-pvapsmtp01)
- by xsj-pvapsmtp01 with esmtp (Exim 4.63)
- (envelope-from <sai.pavan.boddu@xilinx.com>)
- id 1jVbrP-0000xJ-3p; Mon, 04 May 2020 07:14:19 -0700
-Received: from [10.140.6.35] (helo=xhdsaipava40.xilinx.com)
- by xsj-pvapsmtp01 with esmtp (Exim 4.63)
- (envelope-from <saipava@xhdsaipava40.xilinx.com>)
- id 1jVbrO-0000x5-EA; Mon, 04 May 2020 07:14:18 -0700
-Received: by xhdsaipava40.xilinx.com (Postfix, from userid 14131)
- id 2A53B13C2E73; Mon,  4 May 2020 19:36:37 +0530 (IST)
-From: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Tong Ho <tong.ho@xilinx.com>, Ramon Fried <rfried.dev@gmail.com>
-Subject: [PATCH v2 10/10] net: cadence_gem: Fix RX address filtering
-Date: Mon,  4 May 2020 19:36:08 +0530
-Message-Id: <1588601168-27576-11-git-send-email-sai.pavan.boddu@xilinx.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1588601168-27576-1-git-send-email-sai.pavan.boddu@xilinx.com>
-References: <1588601168-27576-1-git-send-email-sai.pavan.boddu@xilinx.com>
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.83; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapsmtpgw01; PTR:unknown-60-83.xilinx.com; CAT:NONE;
- SFTY:;
- SFS:(46966005)(110136005)(6666004)(70206006)(26005)(42186006)(186003)(70586007)(5660300002)(336012)(8936002)(356005)(82310400002)(47076004)(8676002)(81166007)(36756003)(498600001)(6266002)(2906002)(426003)(2616005)(4326008);
- DIR:OUT; SFP:1101; 
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1jVbyO-0001hv-DA; Mon, 04 May 2020 10:21:32 -0400
+Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:41972)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1jVbyN-00039e-KO; Mon, 04 May 2020 10:21:32 -0400
+Received: by mail-lf1-x141.google.com with SMTP id a9so4499080lfb.8;
+ Mon, 04 May 2020 07:21:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=D+s9RocNcIFxp3NrHvqCZUbCbQZq5W1Nleeta/NdFEs=;
+ b=O7R5+EzHI7/ZxweVNZcHBLLER6nbyukao6ZKvVm4yYCWJAjXMQsA8npcogXPSF7JXs
+ IqzdOSAFeNSlcb1oa2D40v17WahUapRWS0qnI1ZvrjfNZHZ3Ob3EFvwgrhy8PcWIu1s7
+ AkE8Ubw5ZTbSkAzsFq+SlPEccyoiltYM1SrdjdoNP35ExkxUkAai/uvzk9IwfbBR9uVP
+ qa/7/aX+sb0S30t5LRMmoF0RvopdvJMBFxOESZWi5tc6mMuL4hWX6DoGiez4nUYby4Kd
+ WGpHWZQoRanVypZbe+dWinI+u4jAy6lsKeMGZ7bWd/1+ZJ5WmMAtTEQl/xdpmpIywrhd
+ dWDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=D+s9RocNcIFxp3NrHvqCZUbCbQZq5W1Nleeta/NdFEs=;
+ b=fR2IirK8VkDbj6htOkD0qdom0/WApUYW3sYYoSNGRyC333Ha4f6nUeIIOojyyiNtgI
+ ZmCuuvRBMt2+wsWDY88qNKo7CFVvcTLTV1TkTLyZajsGLf5UJ9nBWjVg0vdmBNnSmeGo
+ gTym1Yro+paYCuUJPwozqWLf9j4Xrd6fbl9nKwxMJ0xUIoY1CQ7+jJeythiNfdh2YBzF
+ MDLzSKBwTkWTKM4nW7OO/j89mlaOZVcTK1EOPi84nKZQ3CrQDFw0K9mIFXUJhqK3cFsQ
+ jovXFzuPfZ0+ctsj2VD8PeAEUYR/sKWndN+Lhw+l5PFJfQLC1l4b5Okojhz3/1dVURAF
+ OQZQ==
+X-Gm-Message-State: AGi0PuYoWnn2XYtTcmKe+3QVOYqjGMdGXgGCtxkB66NyGeay3P+5iWcE
+ BAM7rR6rf7ON4POpkCZ4p0LfV/ifXB4=
+X-Received: by 2002:a19:ee19:: with SMTP id g25mr8072963lfb.124.1588602089242; 
+ Mon, 04 May 2020 07:21:29 -0700 (PDT)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id c10sm9726871lfc.7.2020.05.04.07.21.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 May 2020 07:21:28 -0700 (PDT)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 1/1] target/arm: Drop access_el3_aa32ns()
+Date: Mon,  4 May 2020 16:21:25 +0200
+Message-Id: <20200504142125.31180-2-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200504142125.31180-1-edgar.iglesias@gmail.com>
+References: <20200504142125.31180-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 80d4ec12-cf09-49ae-ec37-08d7f0356fb4
-X-MS-TrafficTypeDiagnostic: DM5PR02MB3653:
-X-Microsoft-Antispam-PRVS: <DM5PR02MB3653D5E729045D9DCE80649BCAA60@DM5PR02MB3653.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:236;
-X-Forefront-PRVS: 03932714EB
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Vh5E7o9mW2CfkRad6hNbqTfAzyJhgmUtwdnnKYzenzlhkf2lgTvvALGnY13hsjpP4bRV1/WE5CzurIyJEUzaiHHq6p/EVMHxqBEHjHZLnGniP+YdOkG9ZwHwCODzElLDT5m2IwHa3Z7i9DGf0S2ysqsThRNx7lMBq5M4vhyqgdR8Ydb/yVjk1yO7VC1LdU2tPKW6NHcgJrANhBpquKfWdKoX4DU437fcw+Yh1LgxqamJf5M0Sp6IYc3tWR/URdBtBRoEkGYssUAxe0Ma0fNYkJAuFGbotQwojqOzUycAoZyHA0p1rqXoc7Kyje9dLWs7TF26pWB4hjKGYNXcPWP5gF1oqFM7IfvEBkIQMggoxj3rSCPDxLaeJZVKJ+Iola5Ha4J0W+LRcxW5Lkn2kyZhN9XTD+PDG0izwgV27dEjX+CbICuKYsQ0RRZl8nertEFHDmkL8B/9Ukdv9jRlEyBq7bK4dMjftbu3STXTrAyXEjYNh/DjtQ4VcXQox8+zOgcuO8ZRmrvCg2n8yYiVpc08YQ==
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 May 2020 14:14:19.4145 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 80d4ec12-cf09-49ae-ec37-08d7f0356fb4
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
- Helo=[xsj-pvapsmtpgw01]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR02MB3653
-Received-SPF: pass client-ip=40.107.244.74; envelope-from=saipava@xilinx.com;
- helo=NAM12-MW2-obe.outbound.protection.outlook.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/04 10:14:21
-X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::141;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x141.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 13
+X-Spam_score: 1.3
+X-Spam_bar: +
+X-Spam_report: (1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FSL_HELO_FAKE=3.399, RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EtCvJgoPFI7U
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: laurent.desnogues@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ richard.henderson@linaro.org, edgar.iglesias@xilinx.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AiRxFQBB2atI
 
-From: Tong Ho <tong.ho@xilinx.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Two defects are fixed:
+Calling access_el3_aa32ns() works for AArch32 only cores
+but it does not handle 32-bit EL2 on top of 64-bit EL3
+for mixed 32/64-bit cores.
 
-1/ Detection of multicast frames
-2/ Treating drop of mis-addressed frames as non-error
+Merge access_el3_aa32ns_aa64any() into access_el3_aa32ns()
+and only use the latter.
 
-Signed-off-by: Tong Ho <tong.ho@xilinx.com>
+Fixes: 68e9c2fe65 ("target-arm: Add VTCR_EL2")
+Reported-by: Laurent Desnogues <laurent.desnogues@gmail.com>
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
 ---
- hw/net/cadence_gem.c | 26 +++++++++++---------------
- 1 file changed, 11 insertions(+), 15 deletions(-)
+ target/arm/helper.c | 30 +++++++-----------------------
+ 1 file changed, 7 insertions(+), 23 deletions(-)
 
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index f0bf2e7..112794a 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -34,6 +34,7 @@
- #include "qemu/module.h"
- #include "sysemu/dma.h"
- #include "net/checksum.h"
-+#include "net/eth.h"
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index dfefb9b3d9..7d21bf1cc7 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -502,35 +502,19 @@ void init_cpreg_list(ARMCPU *cpu)
+ }
  
- #define CADENCE_GEM_ERR_DEBUG 0
- #define DB_PRINT(...) do {\
-@@ -669,7 +670,7 @@ static unsigned calc_mac_hash(const uint8_t *mac)
- static int gem_mac_address_filter(CadenceGEMState *s, const uint8_t *packet)
+ /*
+- * Some registers are not accessible if EL3.NS=0 and EL3 is using AArch32 but
+- * they are accessible when EL3 is using AArch64 regardless of EL3.NS.
+- *
+- * access_el3_aa32ns: Used to check AArch32 register views.
+- * access_el3_aa32ns_aa64any: Used to check both AArch32/64 register views.
++ * Some registers are not accessible from AArch32 EL3 if SCR.NS == 0.
+  */
+ static CPAccessResult access_el3_aa32ns(CPUARMState *env,
+                                         const ARMCPRegInfo *ri,
+                                         bool isread)
  {
-     uint8_t *gem_spaddr;
--    int i;
-+    int i, is_mc;
- 
-     /* Promiscuous mode? */
-     if (s->regs[GEM_NWCFG] & GEM_NWCFG_PROMISC) {
-@@ -685,22 +686,17 @@ static int gem_mac_address_filter(CadenceGEMState *s, const uint8_t *packet)
+-    bool secure = arm_is_secure_below_el3(env);
+-
+-    assert(!arm_el_is_aa64(env, 3));
+-    if (secure) {
++    if (!is_a64(env) && arm_current_el(env) == 3 &&
++        arm_is_secure_below_el3(env)) {
+         return CP_ACCESS_TRAP_UNCATEGORIZED;
      }
+     return CP_ACCESS_OK;
+ }
  
-     /* Accept packets -w- hash match? */
--    if ((packet[0] == 0x01 && (s->regs[GEM_NWCFG] & GEM_NWCFG_MCAST_HASH)) ||
--        (packet[0] != 0x01 && (s->regs[GEM_NWCFG] & GEM_NWCFG_UCAST_HASH))) {
-+    is_mc = is_multicast_ether_addr(packet);
-+    if ((is_mc && (s->regs[GEM_NWCFG] & GEM_NWCFG_MCAST_HASH)) ||
-+        (!is_mc && (s->regs[GEM_NWCFG] & GEM_NWCFG_UCAST_HASH))) {
-+        uint64_t buckets;
-         unsigned hash_index;
- 
-         hash_index = calc_mac_hash(packet);
--        if (hash_index < 32) {
--            if (s->regs[GEM_HASHLO] & (1<<hash_index)) {
--                return packet[0] == 0x01 ? GEM_RX_MULTICAST_HASH_ACCEPT :
--                                           GEM_RX_UNICAST_HASH_ACCEPT;
--            }
--        } else {
--            hash_index -= 32;
--            if (s->regs[GEM_HASHHI] & (1<<hash_index)) {
--                return packet[0] == 0x01 ? GEM_RX_MULTICAST_HASH_ACCEPT :
--                                           GEM_RX_UNICAST_HASH_ACCEPT;
--            }
-+        buckets = ((uint64_t)s->regs[GEM_HASHHI] << 32) | s->regs[GEM_HASHLO];
-+        if ((buckets >> hash_index) & 1) {
-+            return is_mc ? GEM_RX_MULTICAST_HASH_ACCEPT
-+                         : GEM_RX_UNICAST_HASH_ACCEPT;
-         }
-     }
- 
-@@ -924,7 +920,7 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
-     /* Is this destination MAC address "for us" ? */
-     maf = gem_mac_address_filter(s, buf);
-     if (maf == GEM_RX_REJECT) {
--        return -1;
-+        return size;  /* no, drop siliently b/c it's not an error */
-     }
- 
-     /* Discard packets with receive length error enabled ? */
+-static CPAccessResult access_el3_aa32ns_aa64any(CPUARMState *env,
+-                                                const ARMCPRegInfo *ri,
+-                                                bool isread)
+-{
+-    if (!arm_el_is_aa64(env, 3)) {
+-        return access_el3_aa32ns(env, ri, isread);
+-    }
+-    return CP_ACCESS_OK;
+-}
+-
+ /* Some secure-only AArch32 registers trap to EL3 if used from
+  * Secure EL1 (but are just ordinary UNDEF in other non-EL3 contexts).
+  * Note that an access from Secure EL1 can only happen if EL3 is AArch64.
+@@ -5236,7 +5220,7 @@ static const ARMCPRegInfo el3_no_el2_cp_reginfo[] = {
+       .access = PL2_RW, .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "VTCR_EL2", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 1, .opc2 = 2,
+-      .access = PL2_RW, .accessfn = access_el3_aa32ns_aa64any,
++      .access = PL2_RW, .accessfn = access_el3_aa32ns,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "VTTBR", .state = ARM_CP_STATE_AA32,
+       .cp = 15, .opc1 = 6, .crm = 2,
+@@ -5284,7 +5268,7 @@ static const ARMCPRegInfo el3_no_el2_cp_reginfo[] = {
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "HPFAR_EL2", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 4, .crn = 6, .crm = 0, .opc2 = 4,
+-      .access = PL2_RW, .accessfn = access_el3_aa32ns_aa64any,
++      .access = PL2_RW, .accessfn = access_el3_aa32ns,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+     { .name = "HSTR_EL2", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 3,
+@@ -7626,12 +7610,12 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             ARMCPRegInfo vpidr_regs[] = {
+                 { .name = "VPIDR_EL2", .state = ARM_CP_STATE_BOTH,
+                   .opc0 = 3, .opc1 = 4, .crn = 0, .crm = 0, .opc2 = 0,
+-                  .access = PL2_RW, .accessfn = access_el3_aa32ns_aa64any,
++                  .access = PL2_RW, .accessfn = access_el3_aa32ns,
+                   .type = ARM_CP_CONST, .resetvalue = cpu->midr,
+                   .fieldoffset = offsetof(CPUARMState, cp15.vpidr_el2) },
+                 { .name = "VMPIDR_EL2", .state = ARM_CP_STATE_BOTH,
+                   .opc0 = 3, .opc1 = 4, .crn = 0, .crm = 0, .opc2 = 5,
+-                  .access = PL2_RW, .accessfn = access_el3_aa32ns_aa64any,
++                  .access = PL2_RW, .accessfn = access_el3_aa32ns,
+                   .type = ARM_CP_NO_RAW,
+                   .writefn = arm_cp_write_ignore, .readfn = mpidr_read },
+                 REGINFO_SENTINEL
 -- 
-2.7.4
+2.20.1
 

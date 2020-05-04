@@ -1,165 +1,167 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp153138lfb;
-        Mon, 4 May 2020 00:33:02 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLPwtbg+dK3UNo2tk6Q7I2ZytZnquWFKe55ao4BJwSLbuyJCFUrWJg/OCUl45hrwZ+nsYDs
-X-Received: by 2002:a37:6c81:: with SMTP id h123mr14671471qkc.290.1588577582248;
-        Mon, 04 May 2020 00:33:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588577582; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp188088lfb;
+        Mon, 4 May 2020 01:19:24 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLaCxt6tyHf3mdJLCD9AGTRmwFnCAeqyak+CYGSli0OtascgipBCe2rjTt3XO/Fz1mmz7aY
+X-Received: by 2002:ac8:3713:: with SMTP id o19mr15312860qtb.371.1588580364059;
+        Mon, 04 May 2020 01:19:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588580364; cv=none;
         d=google.com; s=arc-20160816;
-        b=sRxCce/2NLsKZ0DM8Pm7kDEBttFI1TfM6xzbPFYkYZsyVy6NiPg84emXkebKvi/UGj
-         Qa05Yln786v9pIwBJEVOG/l52OmedEBdRmvXS1kBBxP8qleOLKiy/ZN/ORNeS15z/SDc
-         rJSTzy2yh6ojbLe6JSGhdlugXSrAQnDu7BAeYTkjcET5C+Pe6EckwNYH9uuz8jYr4s5G
-         nlyy+nVYnZ6x6tr7MtM4n5sr2O/Em4YMErnqeuyHY0b3+HXIi1mWaXX/aRIFhZcq7yIo
-         FG6mxnBqfZhcQwlpQWjZ7y5thThh7azesLlNHZDfKhc0o6hc1nfgLxylAkr6/bzA/w1D
-         hSCg==
+        b=C8I5Ok2xgTWbaGjsQqCtWbu8ZHCNl1q7UbZyei9s7tt0LFRXIQjhiifMdua+UFUT8x
+         PSy9ULxF9PS3dcRqJm4SxWHSQvxGXmUKvFm8o2tK4L7GMwtYSewYZNAq2XFazwrXbgut
+         uAdutOe0BqOXipGAKx+9ZRHWcYLxWxpkztWeSbwWKfshEVCsuk41zfU4vR8CH7G6cDFi
+         FpSe+3lHBYRQmbTeoUhnZfaxg+f9ctGnA8UpwEJWtYDy5X39T5WUbZdj5K99KNH75l/R
+         elQ7HaOBOaxN4eW2mYi4q9KSrM+gDIx9sBElZ3o+3l3krbFbhaC8cdD8/iTkvfhGFhKP
+         AWow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=lNnVPTok0KuGhI7WlF3rtisA4RGSH6dUX5yCMf1ZDmM=;
-        b=n4geNS8QkKeq50IHAumGBqhcLwZIvVOVujBfdXOQLjLlMmwvPQlI68XKG84+Kbb1OL
-         FQOWgMykklUOwiIfRLnlcVC7cJX02UKbVS0vYWSp3jtuK0Sm/rtK+0aWzqPcaAy4Qd1G
-         fuqamWls520DOrTPaWvMfkZeRlAeuoqOGN845UjhQCoqtlCWxUa4pjebt527dDifWTln
-         INNpk0Peh83oKJiAl1akAfyK42kVHq9DScLhn0fJfog5NXesaWitLVaRZoQJkvqEmYWu
-         iOsJX9ypPIcfDnQ2DheLcbVGbqC6uRFlTV9ZEpnem57ODimhEXi2vWRjRO/od5uOF/Ui
-         rmvg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=bLCUp/I0QrPUhwA9bNV0OC52nLmF//cN0+lWiY3eQsc=;
+        b=Cpp5aMMalTdv3lDfqlK9Rg2x87GFHsWhPMTQqTUEEJzfWW1jwWQSphedejO1u/wMbk
+         99fsDWJXqDHtIfBHKApRrTXox8FptBBNJ9p34DUqV3leHRbF+5PQgXguGonQkqFZgUzC
+         XtiTwim7+V3LykmwKaKlblf+cuBAoGBupuKn6kbTDiymvg9zmDOfv4+9GxDvTICDE3Z2
+         mgENJKiBsFcUt86KQ9IUzROQt6jd2o32ki7sVpzyUWEaGT7xVBn/QbF+jcKKIoTsnR0Z
+         419MxxWpOBxYzOFdAbMcMX5NeC+SsLhhiYkgfDlJOqsxSwgfLrgPLRhLR0VLPw+K2EO4
+         TvGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cTflwZCz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@jms.id.au header.s=google header.b=PQtXIKZ3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id a22si6215031qtn.144.2020.05.04.00.33.02
+        by mx.google.com with ESMTPS id j60si5906686qtd.320.2020.05.04.01.19.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 May 2020 00:33:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Mon, 04 May 2020 01:19:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cTflwZCz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:47448 helo=lists1p.gnu.org)
+       dkim=fail header.i=@jms.id.au header.s=google header.b=PQtXIKZ3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39114 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVVb3-0001iD-Jy
-	for alex.bennee@linaro.org; Mon, 04 May 2020 03:33:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60260)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jVWJv-0000pl-BR
+	for alex.bennee@linaro.org; Mon, 04 May 2020 04:19:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38148)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVVWi-00065O-G7; Mon, 04 May 2020 03:28:32 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:40709)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1jVWJO-0000lC-GN; Mon, 04 May 2020 04:18:50 -0400
+Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:34394)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jVVWh-00064H-RQ; Mon, 04 May 2020 03:28:32 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id u16so7760211wmc.5;
- Mon, 04 May 2020 00:28:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=lNnVPTok0KuGhI7WlF3rtisA4RGSH6dUX5yCMf1ZDmM=;
- b=cTflwZCzKRKiU4Lmyl6EZYrYM9DmjJJAK6cQfuTgXJHqKXTl8dhMrKemOtI2vvGpF0
- e6/8JvmmK7sD0+1y57LP12cNRtw6Cgg1jYv/eog6377XJuSwaiRicCs/RzjP6LZOkTda
- dvYYpHPEQhwdEBRrBg2w/7JeQsRWBL7d4+hcDHxVtVQNOgeppX12mKesAXiTa0qTnGup
- /VnyNOERebsAc5uKpmYXBs0wJ9cOElhc+BHZIwALplCy/WdVNWc7XlaNm5OdoidlgVQI
- jOIDW+dW2EiUzrrko66cwhTjK2XHUFilAEIGtP8jeOzjrkeDhyD9nKeEM64t9uA2lmTI
- qr8w==
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1jVWJN-0003IQ-Go; Mon, 04 May 2020 04:18:50 -0400
+Received: by mail-ed1-x541.google.com with SMTP id g16so12774886eds.1;
+ Mon, 04 May 2020 01:18:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=bLCUp/I0QrPUhwA9bNV0OC52nLmF//cN0+lWiY3eQsc=;
+ b=PQtXIKZ3fYBX+63MjabmtjR9XJaz8Q+RR78xFsplDTC9Bkpq3d3QokoE2sQudCMivN
+ 2T52ejGF48S/Bg6R/3t+qDm6b/hbobVePW7GvToCuEdiswDxSuxvZ/PX6lfBKbOMV+jy
+ d2vuUBmMsFh7qgGp3Fan7niRHSbViq7/YJGdA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=lNnVPTok0KuGhI7WlF3rtisA4RGSH6dUX5yCMf1ZDmM=;
- b=PCf22RDpYDi2WvjLHngUatfUrYrbSzbMl/5SsTNcJjBw4ug/Z1sdUCZnAzvOSdY+jS
- 2VJogfldP5Z6ebekA6DCQcm8Oj9UyJPLWfONrR/0cIwVOow+6iGhR0qkoQn3JX1aw3Ba
- ZBaLwgk/9TuNc0V7uGHwXbbxHKQRc7kOXrzaf3dnurFzI7sAgYOuj8GoAhseVcG3U2Pz
- rxtWL2hulK5tSSNuwgK0sNuN7ST3AljSOnLAZDDgu6wcOt1rzd9GSdLJR4g4AYwHn5gY
- cQCzgdPOYqhYWJgAKE/sgyR9CThtkkMkMXodTrvByjg9vg9V18JzfQCUytcEuCx8ygYF
- lsWQ==
-X-Gm-Message-State: AGi0PubRCzBT2AA0CFkmLJe330gxRuplOptjPGrBclONwT1EZDtJrvSN
- MoBQKJd6JCW1K/cQfCx7Xc5INoXM
-X-Received: by 2002:a7b:c459:: with SMTP id l25mr12760238wmi.52.1588577310044; 
- Mon, 04 May 2020 00:28:30 -0700 (PDT)
-Received: from x1w.redhat.com (26.red-88-21-207.staticip.rima-tde.net.
- [88.21.207.26])
- by smtp.gmail.com with ESMTPSA id w83sm12590159wmb.37.2020.05.04.00.28.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 May 2020 00:28:29 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 4/4] hw/timer/nrf51_timer: Add trace event of counter value
- update
-Date: Mon,  4 May 2020 09:28:22 +0200
-Message-Id: <20200504072822.18799-5-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200504072822.18799-1-f4bug@amsat.org>
-References: <20200504072822.18799-1-f4bug@amsat.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=bLCUp/I0QrPUhwA9bNV0OC52nLmF//cN0+lWiY3eQsc=;
+ b=Qu/HeHNr3vzOlKoMiroQ6ev+WJKqunpeBsUc0paM35QEQjLW8HN1vALC+CTC9BHSdC
+ x4S2pdIbEWGgDh5aDgQ5UiZEBG7IXg0+eop/gaCp66ya5YD1/sMhpNGsXpuDAYa5n5Dd
+ WdX8T+h+sdwDxjq6VtF3PZxcI3sO68QiVF0GaymWKcrUuhSlvMu263A2TYC4GhBpOTO5
+ +3dEMz6306q/+6TFD0CzlCZe66ZXRD+BFkastXRPZNmgNTYin/YyxdAis/+RIvSWOjWa
+ TdDHdyy+V6ftfJHJdV5zawmWRGXBQfwSk6aOaIDbCcguBgj03BaIpvvkBs+ehakoetnz
+ RRTg==
+X-Gm-Message-State: AGi0PuZT/MmfTUQy/2NlVNkrdo47cpnlbOYozdhYdOfkTYjUGxbLOMNJ
+ JC9bp/KW3Zweis1SYuqVQ9ZkizPSF5DDRc92DcVBjA==
+X-Received: by 2002:a05:6402:688:: with SMTP id
+ f8mr13477687edy.233.1588580327345; 
+ Mon, 04 May 2020 01:18:47 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
+References: <20200409063137.803522-1-joel@jms.id.au>
+ <CAFEAcA8M06TFD4d8jLe-w24PMUGDH_sRXhf8TV25JuTV1ig2jQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA8M06TFD4d8jLe-w24PMUGDH_sRXhf8TV25JuTV1ig2jQ@mail.gmail.com>
+From: Joel Stanley <joel@jms.id.au>
+Date: Mon, 4 May 2020 08:18:35 +0000
+Message-ID: <CACPK8XceOO9G=4eDjGz4n0VR3T25Kv15rAKdV+__okciCA-CNQ@mail.gmail.com>
+Subject: Re: [PATCH v2] aspeed: Add boot stub for smp booting
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::541;
+ envelope-from=joel.stan@gmail.com; helo=mail-ed1-x541.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
 X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
  FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Steffen=20G=C3=B6rtz?= <contrib@steffen-goertz.de>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /CRSEdt1XTrL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: reFvTNVByTbB
 
-Add trace event to display timer's counter value updates.
+On Thu, 16 Apr 2020 at 16:48, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Thu, 9 Apr 2020 at 07:31, Joel Stanley <joel@jms.id.au> wrote:
+> >
+> > This is a boot stub that is similar to the code u-boot runs, allowing
+> > the kernel to boot the secondary CPU.
+>
+> > +static void aspeed_write_smpboot(ARMCPU *cpu,
+> > +                                 const struct arm_boot_info *info)
+> > +{
+> > +    static const uint32_t poll_mailbox_ready[] = {
+> > +        /*
+> > +         * r2 = per-cpu go sign value
+> > +         * r1 = AST_SMP_MBOX_FIELD_ENTRY
+> > +         * r0 = AST_SMP_MBOX_FIELD_GOSIGN
+> > +         */
+> > +        0xee100fb0,  /* mrc     p15, 0, r0, c0, c0, 5 */
+> > +        0xe21000ff,  /* ands    r0, r0, #255          */
+> > +        0xe59f201c,  /* ldr     r2, [pc, #28]         */
+> > +        0xe1822000,  /* orr     r2, r2, r0            */
+> > +
+> > +        0xe59f1018,  /* ldr     r1, [pc, #24]         */
+> > +        0xe59f0018,  /* ldr     r0, [pc, #24]         */
+> > +
+> > +        0xe320f002,  /* wfe                           */
+> > +        0xe5904000,  /* ldr     r4, [r0]              */
+> > +        0xe1520004,  /* cmp     r2, r4                */
+> > +        0x1afffffb,  /* bne     <wfe>                 */
+>
+> Note that unlike "wfi", QEMU's "wfe" implementation is merely
+> a 'yield', so a secondary-CPU boot loop that has wfe in it
+> will basically be a busy-loop of those vcpu threads.
+> (This is why the smpboot code in hw/arm/boot.c uses wfi.)
+>
+> I don't suppose the secondary boot protocol on these boards
+> is such that a wfi loop will work ? (Depends on what the
+> primary code in the kernel does to prod the secondary after
+> writing the magic value.)
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/timer/nrf51_timer.c | 1 +
- hw/timer/trace-events  | 1 +
- 2 files changed, 2 insertions(+)
+Thanks for the review.
 
-diff --git a/hw/timer/nrf51_timer.c b/hw/timer/nrf51_timer.c
-index 38cea0542e..42be79c736 100644
---- a/hw/timer/nrf51_timer.c
-+++ b/hw/timer/nrf51_timer.c
-@@ -240,6 +240,7 @@ static void nrf51_timer_write(void *opaque, hwaddr offset,
- 
-             idx = (offset - NRF51_TIMER_TASK_CAPTURE_0) / 4;
-             s->cc[idx] = s->counter;
-+            trace_nrf51_timer_set_count(s->id, idx, s->counter);
-         }
-         break;
-     case NRF51_TIMER_EVENT_COMPARE_0 ... NRF51_TIMER_EVENT_COMPARE_3:
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index 43b605cc75..80ea197594 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -69,6 +69,7 @@ cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
- # nrf51_timer.c
- nrf51_timer_read(uint8_t timer_id, uint64_t addr, uint32_t value, unsigned size) "timer %u read addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
- nrf51_timer_write(uint8_t timer_id, uint64_t addr, uint32_t value, unsigned size) "timer %u write addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
-+nrf51_timer_set_count(uint8_t timer_id, uint8_t counter_id, uint32_t value) "timer %u counter %u count 0x%" PRIx32
- 
- # bcm2835_systmr.c
- bcm2835_systmr_irq(bool enable) "timer irq state %u"
--- 
-2.21.3
+I chose wfe as it's what aspeed's u-boot has. I don't have a strong
+understand of this area of ARM processors, nor do I have any insight
+into why that choice was made.
 
+I did some testing and wfi in the qemu stub works fine with Linux so I
+will respin with that instead.
+
+Cheers,
+
+Joel

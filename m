@@ -1,281 +1,167 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp145044lfb;
-        Tue, 5 May 2020 07:52:55 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJP51D4KKOKLKR6dMv+yafevxirgvJ1OTj6TQmST/7QEUsnFWbZiykja66MHGOw9FAQL9hv
-X-Received: by 2002:a37:64c9:: with SMTP id y192mr3672754qkb.406.1588690374832;
-        Tue, 05 May 2020 07:52:54 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1588690374; cv=pass;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp178155lfb;
+        Tue, 5 May 2020 08:33:12 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJs+keXArsttGX5vNu/thEVi6EcwaMeEr76wGzkP/Syel4sgEpC1eRktyad+0QSv0vb4uX5
+X-Received: by 2002:aed:3bf2:: with SMTP id s47mr3208722qte.126.1588692792026;
+        Tue, 05 May 2020 08:33:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588692792; cv=none;
         d=google.com; s=arc-20160816;
-        b=ERaK2sOi7t+kZczAAyOMe3Uk3eYpRw/k/f1A3pwWpK0u6bkOf1UWCKewpfqx2V+abO
-         H2D8y2FrK4A9ctfzxk1vFOldelnYcfNyEG1oLeu7iGXI3PrVeCykCTqpGCwVxWDbCXqr
-         E/54yjK4Qg0eB3pON8SgPAUuXoePDOgA4kRE2rdpCRLWUioGkPuV9SWCrPEo0jwswcRr
-         fK2zbyRkYOZ6po8SlYLYZRaPHkFGURj82SHwtYTB5s5VjL+ZDf3WmB+QvuBBF1GiW6Gt
-         CgI9LbnJE+KBeaKLk3HUOeUXMoSUHIrKsGfDs6DenNGcEVzZzr356E/Ryz9d3SKbvT+x
-         EXNg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=a93Gq/x2WGQdYxStAe/TH/3NmmNdac9iZ9e2iEFtVhB/H7Qd3rIIsRLrNYp94aR9qZ
+         pG0V3qEiEnRcYogRcjHF4st8q5UYvG3EzHKLoFwV/nn+bAvDkpoTF7hD/Z9caXzW4vew
+         FLXuiZwdBqukMdjPjiwHxLCiaMwgkorqWw8DLX2wJson37XgXJ1MHbYwYSBwo/4yzsfY
+         0faULb63Dyue6bo8UZfFIi3RRYaTcmD0mnQJ9q956JYoGK/pFdIf8msJiASWS6BlBB+U
+         7iwNwjFy0hCjje4OZLKK9xp3EQyzQsoBWRn/1SbXzKiI2zqJUqbIavv8n1DGBRM4ll6n
+         1xPA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=pu1J7mmjH5xr9mlOQhTqyM/P+1F86EcUFbYGFXBUgV0=;
-        b=kklfE06CTfhDc90WzkMzZqyoyz6QJ3ryieH8YmbxM40+1MRTQOKBLNlOOieVIyQiSn
-         bf7hTj90m0yZEEwsgSzHyC7d7KOfe0HEL2fEAki23Cth6JYHtt/m5VoFST5xnaiC7clh
-         lswEqDjchVYNPaQC163tIpCdPk7sNkX6eV63i3cqn8XCVswO/oqMH1/y8a8mzsj41Vj6
-         gTopqAojZ4tLfKqP3TIbjWvVxsFoLI50C95V5qP9WNTOJrlq3bo0TWA4TEUDJeOh4YOF
-         pk95a1CAVmDNOyskmZiN6vn4D2De3p9gAm1nxcxLErCbr5Ilno7/lntH3nV0CHTyYVkp
-         MtIA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=tNtgSPcG;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=sZXFtlUJilR+Fg2pc8i1e5FuQYdjyR/PnHfZpdXP6U8=;
+        b=tfDQJzreDQfLK/BBNgxGd51l59yDGpYM7KZiAAYAqB31IOYseUsvVKPi60sEY8FuTe
+         dYM+4JmVuBRg6Ct/1nqiT+oM8KlXRJH5sW1VlQPvusX7UDUIi7CnxAYH43FrwuqL9B3U
+         nRtXI3u8AZcTIUXBypF36WMen2pNAb/OlMOZJXxgr1wC87dF5xzs3nrPilK9apsy0K0a
+         fQUSwOAnWC2GWQUwREz5g0hsrLbsZIzRh/I6zy9JgqUgFIgWlbbNorjcg2j0/RRjmPJf
+         +jAN9P6c3g6xIuiI3hiIe+dzO2/m8JuF5zmGQqGGjQRNtAg6DKRyqKqi6+SBfkGmSiHr
+         6MuQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CpThvJfu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id w54si1118788qtk.380.2020.05.05.07.52.54
+        by mx.google.com with ESMTPS id 140si1497015qkd.12.2020.05.05.08.33.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 May 2020 07:52:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Tue, 05 May 2020 08:33:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=tNtgSPcG;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58640 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CpThvJfu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52678 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVywI-00070y-9a
-	for alex.bennee@linaro.org; Tue, 05 May 2020 10:52:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37702)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jVzZH-0007WK-6z
+	for alex.bennee@linaro.org; Tue, 05 May 2020 11:33:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
- id 1jVyvp-00070S-P3; Tue, 05 May 2020 10:52:25 -0400
-Received: from mail-bn7nam10on2085.outbound.protection.outlook.com
- ([40.107.92.85]:6194 helo=NAM10-BN7-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
- id 1jVyvo-00038g-4v; Tue, 05 May 2020 10:52:25 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iIIqPcW8ldIrmDVFb6+KHn7yRfQI8FbMYCnRhoze9QQIbxg75Mfib2rcJRvs3ZqVJ56LqMJxeR7y6148DK9CRdGteJJhwyA2Z/gGxMrpZhilV+TdMB6mg6Z4BMXYYEy7EL3I1VuzsDNiITRC+lREniltUp/9pX9dp1yf/h0zV3BAf0BUB0xFAyQHBAXubyUqIEOW27hiw7eU/ervoJfB5e0lMwYoJVMwGoV0IEoverAaf2a/OzGBggPsS5QFknhSxQBkmcSP6qb9P7vMeve7krKzI2poUJFda3divfj3lIiuEGK05uuIw1JGKdi/QYNtGSMbJbmTpSUcacOG955Ehw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=pu1J7mmjH5xr9mlOQhTqyM/P+1F86EcUFbYGFXBUgV0=;
- b=hAo6FaujGnwx1t70s9gdsP8HwwC+vs9V0nnRitelPZONTnHRX2g4g3k3n+AZAeflgKeqofk4qGGAp2MvdbV8ot005fxSyB5Huap0WroyiLadUMrKqq3xJ+4WocJH4N9oYUtoPeJo+TUgRmfMJfbORQCNRSVy4uaVrhMcbi2RHjy49fCLduzE5BAeeKbHt7nCin2fxaRkEHVWlFDa71n8mru8IoNAFW6kTlmUtnG/ISXHgebOa01LITbPErh39TNeyZYwdO0xuG66dq0WOH6ox/hi+A6ADkbKi/N6irPCQXxQtPCf3GANJVgCD8XwAByxhujb9kbd4IlcK9/nCBc9Ww==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.80.198) smtp.rcpttodomain=gmail.com smtp.mailfrom=xilinx.com;
- dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=pu1J7mmjH5xr9mlOQhTqyM/P+1F86EcUFbYGFXBUgV0=;
- b=tNtgSPcGEoxmsXfCuZCsdSDleIad6dTbHzUXic5wunueevvuRWLfZHd1L1pCOvYo+mO/tM4NC+mIiamfoCDOhdGOOJ2/PdR7mcXPKj8DBVFeWy3rKYg0SC4RH0DP26Gw1CqKzi9UNBI1Jf5F8/mGmf3qD8JQexSr7xoTCgAhGPs=
-Received: from CY4PR22CA0045.namprd22.prod.outlook.com (2603:10b6:903:ed::31)
- by DM6PR02MB4121.namprd02.prod.outlook.com (2603:10b6:5:a6::28) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.29; Tue, 5 May
- 2020 14:52:19 +0000
-Received: from CY1NAM02FT004.eop-nam02.prod.protection.outlook.com
- (2603:10b6:903:ed:cafe::5f) by CY4PR22CA0045.outlook.office365.com
- (2603:10b6:903:ed::31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.26 via Frontend
- Transport; Tue, 5 May 2020 14:52:19 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.80.198)
- smtp.mailfrom=xilinx.com; gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=bestguesspass action=none
- header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.80.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.80.198; helo=xir-pvapexch01.xlnx.xilinx.com;
-Received: from xir-pvapexch01.xlnx.xilinx.com (149.199.80.198) by
- CY1NAM02FT004.mail.protection.outlook.com (10.152.74.112) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.2958.27 via Frontend Transport; Tue, 5 May 2020 14:52:18 +0000
-Received: from xir-pvapexch01.xlnx.xilinx.com (172.21.17.15) by
- xir-pvapexch01.xlnx.xilinx.com (172.21.17.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1913.5; Tue, 5 May 2020 15:52:17 +0100
-Received: from smtp.xilinx.com (172.21.105.198) by
- xir-pvapexch01.xlnx.xilinx.com (172.21.17.15) with Microsoft SMTP Server id
- 15.1.1913.5 via Frontend Transport; Tue, 5 May 2020 15:52:17 +0100
-Received: from [10.71.116.176] (port=51511 helo=localhost)
- by smtp.xilinx.com with esmtp (Exim 4.90)
- (envelope-from <edgar@xilinx.com>)
- id 1jVyvg-0005pF-SL; Tue, 05 May 2020 15:52:17 +0100
-Date: Tue, 5 May 2020 16:52:18 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH v1 6/9] hw/net/xilinx_axienet: Handle fragmented packets
- from DMA
-Message-ID: <20200505145218.GE2945@toto>
-References: <20200430162439.2659-1-edgar.iglesias@gmail.com>
- <20200430162439.2659-7-edgar.iglesias@gmail.com>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jVzVp-0003Lc-Fe
+ for qemu-arm@nongnu.org; Tue, 05 May 2020 11:29:37 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:54837
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jVzVn-0007Qq-7n
+ for qemu-arm@nongnu.org; Tue, 05 May 2020 11:29:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1588692572;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sZXFtlUJilR+Fg2pc8i1e5FuQYdjyR/PnHfZpdXP6U8=;
+ b=CpThvJfuhVJZWeX7wOJxFie+DNng7B3Y8zmJGQvnqahVrwqTBNKbNTSji9BqMhHdLNCc0b
+ Ph7iuK/Dhdm6IjZ4FG6JLNOxjc19EE0s4m3mwEgeFXuG6bXZxWwcz/8vxxumbvuPgIzXCw
+ +FjtrMcOzD66Bjs1ZCzkWfjpXNDoN/E=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-23-BGqJFzFWOOOTBOJmzw8KZA-1; Tue, 05 May 2020 11:29:30 -0400
+X-MC-Unique: BGqJFzFWOOOTBOJmzw8KZA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8983F800687;
+ Tue,  5 May 2020 15:29:29 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-113-6.ams2.redhat.com [10.36.113.6])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5158562482;
+ Tue,  5 May 2020 15:29:29 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 5576611358C8; Tue,  5 May 2020 17:29:26 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 12/18] hw/arm/bcm2835: Drop futile attempts at QOM-adopting
+ memory
+Date: Tue,  5 May 2020 17:29:20 +0200
+Message-Id: <20200505152926.18877-13-armbru@redhat.com>
+In-Reply-To: <20200505152926.18877-1-armbru@redhat.com>
+References: <20200505152926.18877-1-armbru@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20200430162439.2659-7-edgar.iglesias@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.80.198; CTRY:IE; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xir-pvapexch01.xlnx.xilinx.com;
- PTR:unknown-80-198.xilinx.com; CAT:NONE; SFTY:;
- SFS:(7916004)(39860400002)(396003)(376002)(136003)(346002)(46966005)(33430700001)(478600001)(1076003)(9786002)(8936002)(186003)(8676002)(47076004)(26005)(82740400003)(70586007)(36906005)(33656002)(82310400002)(9686003)(70206006)(7636003)(316002)(356005)(6916009)(2906002)(107886003)(4326008)(54906003)(33440700001)(7416002)(5660300002)(426003)(336012)(33716001);
- DIR:OUT; SFP:1101; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: cd6f1319-b99a-4669-a729-08d7f103e8c8
-X-MS-TrafficTypeDiagnostic: DM6PR02MB4121:
-X-Microsoft-Antispam-PRVS: <DM6PR02MB4121AFFD7516839222EBA00CC2A70@DM6PR02MB4121.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:212;
-X-Forefront-PRVS: 0394259C80
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: +urTF7orGLH0Jr6i8mFT1gs2A6rntE4Y4P82KwBhfVp7TCrYCKj9YoqIOa5AUWq2wWG/Ojw0OtwT1bgGIewOjFXm9fS1xxei31PaeiRBXIzk0rWxByA1q/Cu2cpNORYC5FswDPX3RP/dyBPyXMoQF6UeFP4Z3cF087FzFaZnKyBMvaH/V49pp/90pUF74cLkXwz5eDgO/LU0QVIWx99cd3TRooqDuIGJCYBoS24K0jSmT3CgONz5n2Z0R9rTHxvEZULicJN0fQNP07b4HtW9tHhMIvPDpcqNq+SWtonmu7B1bp5TRX8W+eRO94zN16N1NOO63Eq5HgFnBOHpm7i/0nA2k3U2m0hmlDdchAarl0BkS6CUyU9scw+QlTLviPLrxWvwPaYdxJQ2vRfXPQ4CRRjvLjiFetzsb9HmPnhn3sy9+pA0uzPlJk/0FCuOVPdZau8U7O4Mssu5+JVcdl9DMHD8IlfsejIAgUqovEC/wKLpeR3KKk7K9Gd3G/oPFBfR++CLVrRsouEFLi8XtTYqp2QwsXY/rM0hw43SdKTcrkKuoq2Yk/1z+AzN17L8jpU1liunVJP7ZW+pT1yF8HgDpA==
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 May 2020 14:52:18.5985 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: cd6f1319-b99a-4669-a729-08d7f103e8c8
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.80.198];
- Helo=[xir-pvapexch01.xlnx.xilinx.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR02MB4121
-Received-SPF: pass client-ip=40.107.92.85; envelope-from=edgar@xilinx.com;
- helo=NAM10-BN7-obe.outbound.protection.outlook.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/05 10:52:21
-X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/05 00:37:38
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: damien.hedde@greensocs.com, peter.maydell@linaro.org,
- sstabellini@kernel.org, sai.pavan.boddu@xilinx.com, frasse.iglesias@gmail.com,
- jasowang@redhat.com, alistair@alistair23.me, qemu-devel@nongnu.org,
- frederic.konrad@adacore.com, qemu-arm@nongnu.org, philmd@redhat.com,
- luc.michel@greensocs.com, figlesia@xilinx.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2/U5Au0Ypct2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
+ ehabkost@redhat.com, philmd@redhat.com,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
+ pbonzini@redhat.com, eblake@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oij5y3sSLGm9
 
-On Thu, Apr 30, 2020 at 06:24:36PM +0200, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-> 
-> Add support for fragmented packets from the DMA.
+The "bcm2835-peripherals" device's .instance_init() method
+bcm2835_peripherals_init() attempts to make two memory regions QOM
+children of the device.  This is futile, because memory_region_init()
+already did.  The errors are ignored (a later commit will change
+that).  Drop the useless calls.
 
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: "Philippe Mathieu-Daud=C3=A9" <philmd@redhat.com>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+---
+ hw/arm/bcm2835_peripherals.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-In v2 I'll add a check in the tx-path for packets larger than c_txmem...
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index edcaa4916d..8b399d67ff 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -43,12 +43,10 @@ static void bcm2835_peripherals_init(Object *obj)
+=20
+     /* Memory region for peripheral devices, which we export to our parent=
+ */
+     memory_region_init(&s->peri_mr, obj,"bcm2835-peripherals", 0x1000000);
+-    object_property_add_child(obj, "peripheral-io", OBJECT(&s->peri_mr), N=
+ULL);
+     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->peri_mr);
+=20
+     /* Internal memory region for peripheral bus addresses (not exported) =
+*/
+     memory_region_init(&s->gpu_bus_mr, obj, "bcm2835-gpu", (uint64_t)1 << =
+32);
+-    object_property_add_child(obj, "gpu-bus", OBJECT(&s->gpu_bus_mr), NULL=
+);
+=20
+     /* Internal memory region for request/response communication with
+      * mailbox-addressable peripherals (not exported)
+--=20
+2.21.1
 
-Cheers,
-Edgar
-
-
-> 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> ---
->  hw/net/xilinx_axienet.c | 31 ++++++++++++++++++++++++-------
->  1 file changed, 24 insertions(+), 7 deletions(-)
-> 
-> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-> index bd48305577..e3826cf3fc 100644
-> --- a/hw/net/xilinx_axienet.c
-> +++ b/hw/net/xilinx_axienet.c
-> @@ -402,6 +402,9 @@ struct XilinxAXIEnet {
->  
->      uint32_t hdr[CONTROL_PAYLOAD_WORDS];
->  
-> +    uint8_t *txmem;
-> +    uint32_t txpos;
-> +
->      uint8_t *rxmem;
->      uint32_t rxsize;
->      uint32_t rxpos;
-> @@ -421,6 +424,7 @@ static void axienet_rx_reset(XilinxAXIEnet *s)
->  static void axienet_tx_reset(XilinxAXIEnet *s)
->  {
->      s->tc = TC_JUM | TC_TX | TC_VLAN;
-> +    s->txpos = 0;
->  }
->  
->  static inline int axienet_rx_resetting(XilinxAXIEnet *s)
-> @@ -902,17 +906,28 @@ xilinx_axienet_data_stream_push(StreamSlave *obj, uint8_t *buf, size_t size,
->      XilinxAXIEnetStreamSlave *ds = XILINX_AXI_ENET_DATA_STREAM(obj);
->      XilinxAXIEnet *s = ds->enet;
->  
-> -    /* We don't support fragmented packets yet.  */
-> -    assert(eop);
-> -
->      /* TX enable ?  */
->      if (!(s->tc & TC_TX)) {
->          return size;
->      }
->  
-> +    if (s->txpos == 0 && eop) {
-> +        /* Fast path single fragment.  */
-> +        s->txpos = size;
-> +    } else {
-> +        memcpy(s->txmem + s->txpos, buf, size);
-> +        buf = s->txmem;
-> +        s->txpos += size;
-> +
-> +        if (!eop) {
-> +            return size;
-> +        }
-> +    }
-> +
->      /* Jumbo or vlan sizes ?  */
->      if (!(s->tc & TC_JUM)) {
-> -        if (size > 1518 && size <= 1522 && !(s->tc & TC_VLAN)) {
-> +        if (s->txpos > 1518 && s->txpos <= 1522 && !(s->tc & TC_VLAN)) {
-> +            s->txpos = 0;
->              return size;
->          }
->      }
-> @@ -923,7 +938,7 @@ xilinx_axienet_data_stream_push(StreamSlave *obj, uint8_t *buf, size_t size,
->          uint32_t tmp_csum;
->          uint16_t csum;
->  
-> -        tmp_csum = net_checksum_add(size - start_off,
-> +        tmp_csum = net_checksum_add(s->txpos - start_off,
->                                      buf + start_off);
->          /* Accumulate the seed.  */
->          tmp_csum += s->hdr[2] & 0xffff;
-> @@ -936,12 +951,13 @@ xilinx_axienet_data_stream_push(StreamSlave *obj, uint8_t *buf, size_t size,
->          buf[write_off + 1] = csum & 0xff;
->      }
->  
-> -    qemu_send_packet(qemu_get_queue(s->nic), buf, size);
-> +    qemu_send_packet(qemu_get_queue(s->nic), buf, s->txpos);
->  
-> -    s->stats.tx_bytes += size;
-> +    s->stats.tx_bytes += s->txpos;
->      s->regs[R_IS] |= IS_TX_COMPLETE;
->      enet_update_irq(s);
->  
-> +    s->txpos = 0;
->      return size;
->  }
->  
-> @@ -989,6 +1005,7 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
->      s->TEMAC.parent = s;
->  
->      s->rxmem = g_malloc(s->c_rxmem);
-> +    s->txmem = g_malloc(s->c_txmem);
->      return;
->  
->  xilinx_enet_realize_fail:
-> -- 
-> 2.20.1
-> 

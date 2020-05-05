@@ -1,94 +1,93 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp230333lfb;
-        Tue, 5 May 2020 09:39:18 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJhYAp0tJxICYem71hGAorF3c+iSO4O0MFJV0ZYzWB0g8qKSEtID6SVNbR9vIHPJV1FUdXy
-X-Received: by 2002:aed:3a86:: with SMTP id o6mr3616831qte.262.1588696758251;
-        Tue, 05 May 2020 09:39:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588696758; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp230629lfb;
+        Tue, 5 May 2020 09:39:44 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJRelkFFqmgdRDkMvGqrUu0Q/WKfz5UZf6UUHMjc1uxgEr6eTDHs84Dk+YHU69lAB6SNlvs
+X-Received: by 2002:a37:78c1:: with SMTP id t184mr4409065qkc.213.1588696783904;
+        Tue, 05 May 2020 09:39:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588696783; cv=none;
         d=google.com; s=arc-20160816;
-        b=jr1zRgK5L8Z9BMSmBNAgBUQ2H/7mTI2P8hc7k7RjsK3ZrJuHsLvwLoZWbxBE+vHQ5Q
-         X57Ox4vX4b87uX0a4Yfaj2daqIcqwfzLw4/q46CJZVL4xfhR71AUCWWLjAuo+m+X45Ue
-         wuxWG306qh992G6ZoK2oFaVYwBIeX8ap+ZlYhnUjM9Ie0c1qTlVcP3BDl/qJ+3Di5kKx
-         Hb+O+5ud3CHJjovIlaDVm87xWESQQ7H/UoOkGOwRiWb+x6W8IpnlIXPF0O4XamBMbuHe
-         6c7goF2CjbxZ6lTQl9mQYmzdEAaYZBTJmgvqtq/tqzRnjkaSHDIFvBN4ZbXwwRgNyX0I
-         fYhg==
+        b=q2YCm+0XZCYhVSmXNRrlVCjWUiLmUl8MYYCtS4I7akIuuO5iK/OHQbqJmhuZRi1Vas
+         2ARdL9TH+KIi4NznskTRNsDxMbeCiEuim2LsFiWW+VZ/g1xHC7LJYCjlViDT130YsUJ/
+         58qzYoc/ZESjBMGb3gWk22GNrP2ELaNBh7o2zH6MHH08UIFDNDmdp4lSR4FMDqmsRd4D
+         YGU/rIT3wkouhE3U8mSNZKvHIkvRSIa9lbCHGav1gcZ3Wo3K0wiyu3MOF/GlQheztbuB
+         V+aZrl9A26wCRbHp4rhRCS3PGd6SqyqsN3KUD7qUCI02i6Fn/CKTweH+FQd378jeUaLI
+         vrBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=Lv4S3CuiIrBolDrocQDs3BbWijeM1TY9spl4Z9e+pPI=;
-        b=SI3rNW1nF4G7vaQzvYae+mZkfZfZdUcxhF20ZE4AEpa0cT8IDwf9d28liELuDDFlPX
-         E6xW2MxVdpxcreiQJNcvUryNIlvU1+48U8DrLfOvaaJQoikD3YRyydWdO201vkA3+cEJ
-         x0zVFRo7leQpb/Esw4Imqou/H2MpedT/CDQXNijEg1DiNYF77gJb1ygcqC2v5y2WmKZF
-         88lJNkaxW928QaSFhmrxm4gnXVDFRfDTyrIK2imV6KobSFXfa83f5tmKe0q9dF5P/vbU
-         TEAM7rs7hyDCZnOMrdxPTJmGn+pcB1bLTqLviQ40bCNqz2SpQlj72KbJ3+Yv/ebfzvIw
-         VfDQ==
+        bh=WIRaXa5uWOFOqTJW7emtu3GQdvnFhLb8E2Xsvd+NElk=;
+        b=dwl3+PXzQspddsigAhMIypDwDXJzr6LYQXNsgdqc7ZYuP3HIkWELTlncDDKsoZBexz
+         Dui89CAlrEdEkOEW2G0IQ5FXHbWBLY7lf8STyiQd5LSB3gAc7zsfX+QVQUCYgKRPVelm
+         rjvD8OzL0Lccn7/iHi6vY3paLQwkHrdV/W1UueA/BjCVQerfhsX2b/X9BL/bsQDPDiee
+         e1xbze01clV4ApusP6d/L3izkMKNHJ7Le049GQaSU87MV3AaLEYkZUmIumVai8E92BS1
+         0wPkFHwn1EceT2OiHV40Krp2OCrPgx2wSltIK6Khvgpv6w0Sz/EQOvdWdu0/1vqGaUQw
+         +tDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=h3kHak5a;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IUR0R4HG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id h9si1603052qka.331.2020.05.05.09.39.18
+        by mx.google.com with ESMTPS id u15si1587140qvf.115.2020.05.05.09.39.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 May 2020 09:39:18 -0700 (PDT)
+        Tue, 05 May 2020 09:39:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=h3kHak5a;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IUR0R4HG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46140 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47420 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jW0bF-0005pm-MT
-	for alex.bennee@linaro.org; Tue, 05 May 2020 12:39:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59906)
+	id 1jW0bf-0006OA-Ap
+	for alex.bennee@linaro.org; Tue, 05 May 2020 12:39:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jW0b8-0005oz-Kg; Tue, 05 May 2020 12:39:10 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:39012)
+ id 1jW0bW-0006LD-QT; Tue, 05 May 2020 12:39:34 -0400
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:44621)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jW0b5-00033B-V0; Tue, 05 May 2020 12:39:10 -0400
-Received: by mail-io1-xd42.google.com with SMTP id w4so2633270ioc.6;
- Tue, 05 May 2020 09:39:06 -0700 (PDT)
+ id 1jW0bV-00034z-DO; Tue, 05 May 2020 12:39:34 -0400
+Received: by mail-io1-xd43.google.com with SMTP id z2so2605128iol.11;
+ Tue, 05 May 2020 09:39:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Lv4S3CuiIrBolDrocQDs3BbWijeM1TY9spl4Z9e+pPI=;
- b=h3kHak5aY4ZhpjFhbgMv2yG01lKZE7LA1GdQjCjsZTaUkyAxR9ciZHVwgDby0vYk1b
- 5Xx7sWDbGN+3/BazChDnx29psSFahWeFXiZXO+CQM13vLvxlWIYi0aDNKuXj3vj0qSfD
- nr6eH0SKJ2ge25xvrzoscIgKnc6qCIOP8OCcLY+XyJHOP1G9/4Wsfu4mymHB5ySFrVlL
- 9nAJrJMi2xphL2dxmdH53T5wFHwSxclVQ/EH78pJdEJG9FXFZ1ULM6jHvjaz58n/sfQ3
- i0O2itUYfryqKGIWYeGpdxctEPUdWktdtahMkNBv9ilJLAkFy8yEA5umyd7KEN5E9IFV
- Anog==
+ :cc; bh=WIRaXa5uWOFOqTJW7emtu3GQdvnFhLb8E2Xsvd+NElk=;
+ b=IUR0R4HG4AqMmEagj5njddYP3Wdx8hlZEHWI12mbGHjXO3ryP18h+y5CxKpca7z21Q
+ Qi9jONRsmR3M+j5El4o9i47YuygRmIylTCt0PggKUgN3RHXpnu/wM8WGD/J3ZzgVKjH2
+ knUgRiduFB068AkBc158Huew9rAWgxZi7qfHyQ+6t38R6H2COZ/7XJHiqEv8piIdVQHq
+ JCgxioLh/rWGdS0vGYcaJb75I7FyhNfExWMasoOKa5fRAXYpF23kT9pEjQqFoBdDVRBV
+ xhVTBX5X6DWxK7qH01B8Y67mYZGvfUJzUJXJeUWD3I0N3QwFTKJykccBX3SlTrZjN0Uf
+ 91HA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Lv4S3CuiIrBolDrocQDs3BbWijeM1TY9spl4Z9e+pPI=;
- b=TGrlI3GqoL+hxH9tpLUuAkXMoIz1SGv/uR0JTZ/AEwQM+IPN9n5bP9hqeyuvvLSUig
- +Ta+ZoT11uEQ7LPtJ1szPyZSn0ooDqrIkvGAe6UyKn6aIWT1VF3u8fthTUV+x74lXACE
- GeYSZgg2E8oYcTx/kI8NnoOlg11eawfCeWW7Y4pTJWK75ZFUosLx7i//JO9vRtmWl5hM
- bKBW2Kg54DXX7XuvMcZKHZWTdo72df4K5eNuU3LNdf23ln5TM5iGLIeVbett5JqWCQqs
- Ut9yYFoBIUvdGZXQ45Xfv2o8MuS9MsVIzq2AnTscRzW/XmBelzRGq8BVI2eaL/kUmRQ6
- ufLw==
-X-Gm-Message-State: AGi0PubAvzSLGBldfdL/O5UQVTTT97sHmCmV92kxBbLDkggyvkWCWGG6
- Mba/0AVeT8gtGZh62AGKxwDH8OpTA2a8oNvSbuk=
-X-Received: by 2002:a02:1a01:: with SMTP id 1mr4507932jai.26.1588696745906;
- Tue, 05 May 2020 09:39:05 -0700 (PDT)
+ bh=WIRaXa5uWOFOqTJW7emtu3GQdvnFhLb8E2Xsvd+NElk=;
+ b=HD/iDAY8Bdy8zWMq21OwAzeL6hUB4THsh7lNB9KePXwIOoiG7BEBx5Cgdp3vkKHXKT
+ yPz78Ek6isuvQ854qvmo8o7YGrAFqvB4GexGkbu+I0b2Vhtt18AKABarlsUxW2WVqnui
+ xiNuLi3x1MrpCmXFGjPl33vTslJJwoYhNapKPHXnL9WUN4shPVPCEAIcoEY80aKNmIhr
+ ILhkOSKdFMCarnMBVLVZS+8UGXKAWKmVCm4PYMtf1DcWsaI+88JF+1EEwmJraIB7HBIp
+ RS+r321ojOQ8ZKqX1Ri8CrofWN3T72DFgT42zxPHNI5zeUD+KXJ3ODi91i0GU3xAqZr1
+ 2fiQ==
+X-Gm-Message-State: AGi0PuYa3l+OhQUJz04RFE8N0YPzBoM1d3uYC6+tApDf6Zv8lPJSpj10
+ f5cwq7W10cInRET8vS6XZuq+AVlu5KQ3in40poY=
+X-Received: by 2002:a02:b60e:: with SMTP id h14mr4362061jam.91.1588696772028; 
+ Tue, 05 May 2020 09:39:32 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200430162439.2659-1-edgar.iglesias@gmail.com>
- <20200430162439.2659-3-edgar.iglesias@gmail.com>
-In-Reply-To: <20200430162439.2659-3-edgar.iglesias@gmail.com>
+ <20200430162439.2659-4-edgar.iglesias@gmail.com>
+In-Reply-To: <20200430162439.2659-4-edgar.iglesias@gmail.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 5 May 2020 09:30:24 -0700
-Message-ID: <CAKmqyKMN4gKvwkOz-RYO9dD6hqeN4G0-083j6ZM5nG=ee-yTfQ@mail.gmail.com>
-Subject: Re: [PATCH v1 2/9] hw/net/xilinx_axienet: Cleanup stream->push
- assignment
+Date: Tue, 5 May 2020 09:30:50 -0700
+Message-ID: <CAKmqyKMyAT9+z7MscVi870O5ssDGsn5qvZc4QbFgounk60WL6A@mail.gmail.com>
+Subject: Re: [PATCH v1 3/9] hw/net/xilinx_axienet: Remove unncessary cast
 To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d43;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd43.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -124,15 +123,15 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>,
  Luc Michel <luc.michel@greensocs.com>, figlesia@xilinx.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Wu/57nimWCKB
+X-TUID: jr5+D9eQxU/O
 
-On Thu, Apr 30, 2020 at 9:26 AM Edgar E. Iglesias
+On Thu, Apr 30, 2020 at 9:28 AM Edgar E. Iglesias
 <edgar.iglesias@gmail.com> wrote:
 >
 > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 >
-> Split the shared stream_class_init function to assign
-> stream->push with better type-safety.
+> Remove unncessary cast, buf is already uint8_t *.
+> No functional change.
 >
 > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
@@ -141,55 +140,22 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/net/xilinx_axienet.c | 18 ++++++++++++------
->  1 file changed, 12 insertions(+), 6 deletions(-)
+>  hw/net/xilinx_axienet.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
 > diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-> index 0f97510d8a..84073753d7 100644
+> index 84073753d7..c8dfcda3ee 100644
 > --- a/hw/net/xilinx_axienet.c
 > +++ b/hw/net/xilinx_axienet.c
-> @@ -1029,11 +1029,19 @@ static void xilinx_enet_class_init(ObjectClass *klass, void *data)
->      dc->reset = xilinx_axienet_reset;
->  }
+> @@ -918,7 +918,7 @@ xilinx_axienet_data_stream_push(StreamSlave *obj, uint8_t *buf, size_t size)
+>          uint16_t csum;
 >
-> -static void xilinx_enet_stream_class_init(ObjectClass *klass, void *data)
-> +static void xilinx_enet_control_stream_class_init(ObjectClass *klass,
-> +                                                  void *data)
->  {
->      StreamSlaveClass *ssc = STREAM_SLAVE_CLASS(klass);
+>          tmp_csum = net_checksum_add(size - start_off,
+> -                                    (uint8_t *)buf + start_off);
+> +                                    buf + start_off);
+>          /* Accumulate the seed.  */
+>          tmp_csum += s->hdr[2] & 0xffff;
 >
-> -    ssc->push = data;
-> +    ssc->push = xilinx_axienet_control_stream_push;
-> +}
-> +
-> +static void xilinx_enet_data_stream_class_init(ObjectClass *klass, void *data)
-> +{
-> +    StreamSlaveClass *ssc = STREAM_SLAVE_CLASS(klass);
-> +
-> +    ssc->push = xilinx_axienet_data_stream_push;
->  }
->
->  static const TypeInfo xilinx_enet_info = {
-> @@ -1048,8 +1056,7 @@ static const TypeInfo xilinx_enet_data_stream_info = {
->      .name          = TYPE_XILINX_AXI_ENET_DATA_STREAM,
->      .parent        = TYPE_OBJECT,
->      .instance_size = sizeof(struct XilinxAXIEnetStreamSlave),
-> -    .class_init    = xilinx_enet_stream_class_init,
-> -    .class_data    = xilinx_axienet_data_stream_push,
-> +    .class_init    = xilinx_enet_data_stream_class_init,
->      .interfaces = (InterfaceInfo[]) {
->              { TYPE_STREAM_SLAVE },
->              { }
-> @@ -1060,8 +1067,7 @@ static const TypeInfo xilinx_enet_control_stream_info = {
->      .name          = TYPE_XILINX_AXI_ENET_CONTROL_STREAM,
->      .parent        = TYPE_OBJECT,
->      .instance_size = sizeof(struct XilinxAXIEnetStreamSlave),
-> -    .class_init    = xilinx_enet_stream_class_init,
-> -    .class_data    = xilinx_axienet_control_stream_push,
-> +    .class_init    = xilinx_enet_control_stream_class_init,
->      .interfaces = (InterfaceInfo[]) {
->              { TYPE_STREAM_SLAVE },
->              { }
 > --
 > 2.20.1
 >

@@ -1,113 +1,107 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3513lfb;
-        Tue, 5 May 2020 03:10:06 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJSIW713b9AFnAueBw2Ht//gwAs4LfgykWSYuyYC728urmAOEBfUPqdCuk+nqPvf64xAAFi
-X-Received: by 2002:a37:6490:: with SMTP id y138mr2705770qkb.32.1588673406093;
-        Tue, 05 May 2020 03:10:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588673406; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp9678lfb;
+        Tue, 5 May 2020 03:16:54 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJCVSq9Qugb6DVGnwSkAR4kkVo4NLgoi7hK9lXNc7zBY0ztlTOp9aGlrT8sYv65esdZ9fLo
+X-Received: by 2002:ae9:e30d:: with SMTP id v13mr2679062qkf.309.1588673814621;
+        Tue, 05 May 2020 03:16:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588673814; cv=none;
         d=google.com; s=arc-20160816;
-        b=qb7Nz3bzpOYtyIABFi5PjpkT6dzSfdlvmUcMsttp3v3wi9hfnchPFKVjtif0szLHzZ
-         34LtszzFYVlA9ty56QM6w5enLgEFdWmEqRwXiNsp6xpuHomZgd2tufg/77n+m3xcAj/g
-         A6ZOA3YcY3laaDYnMJl87UX2ucyzQk9Sujn0AQkaXjcpoJyP24JReIqBflrLOCy0Yfw1
-         KiHsS5Mdn6s4ZU2uVtexqmuPrc9X1nDryu3xg7B3iIXM0R5G90f7mrMofwpD4uI4Pykp
-         jITtio7fxNW6n0ImyWIt9L99s+1xEL+W95/fCLQTCd5xbqCBlrDn1AfJSRysNVtMVpJ7
-         3T/Q==
+        b=jzBKy99YjVZyRBKgDGKhFHLZ3ixEp/hZSyLbD621cpODf0n6JVPZerAz2EGaSlrq2y
+         ki3jScr44iN7vD2ZpnWFnU4r5HHWds+16DN8lOLsRIvbPXc1ZKBHiGOhbVOIEBVOmIPc
+         cfbZHNeIjLVE55mLiwRHizWB1FkYMqoABcs6p9KJfrY9xyr1EA0y4nkFdP5/c8i3PAiT
+         KoqL74mgg5Vrwq0dngRA+bjbtTni8BTRk6tqKF4peovThGsrXMDCmGYFf/HD9CI0KmPd
+         iC/r5ZdacMBQ2hPVPXQYAYh7DzAqE07kJB86F9Vb8SMFqOlMj4bd9Y7zp8GpztHKBQTv
+         ih9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=GpnfLUAQs4f4LSpnUqSOm+6Nf7NXp/AaKi3QaWd8los=;
-        b=hXyvM5WG7x01fCVmvcZXPwoeJOqMF50VkXOqVa8x1w9gFbvjVsL+QEspp2QBH6Qvta
-         127e2WRuIqDiUxUeCJWFwMQyOI2jNLbPcdiuKKaEv9gZvo0gtzOQ+OBAIpgrbg5Nvxve
-         DFPwyeAmvF21/faKWr1AEsVD/RNAdTSNt75cDx4qeVTMNzP7bnzl1xozayuAbMZ8+gKO
-         KlUITpxweSSW7rg+CzioSSgUo+tD47rd5JuKBfrt1HUdMU/awkgAd024zPkFmBq1RduN
-         Ug41o4v2+J80R/Doei1bCk15NF0jyP7soqamHI97v15jEbluliaSjNm2p/E8heOr7PFm
-         2PHA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=k2E1BANozowIuRLwzQhWAkc5j3kkcoUCFJeH+kJb5Uc=;
+        b=nadxbHGLBADJTErDHbuqYdAVzFc5aee/oLJLUoeHwnIxyc6dk6XH/Ae3RMDRlZ3OrI
+         odlSfcVh+23JmpMpQwVJ0onEe+SQ0F+IMuwEOMd70VCtWM2InesXblwQSFBEY+r7XBNF
+         9MbwFBDQXKoel1fkLDLRFXXFnPgZiPRgabcGWgENeP5q1vNF8SqNJbxXu8WuSPVJB+pS
+         2f5nupQfzFDTNTK8u+tw6OjdYSQbwPzp04258be8nU0l8vsvYvnOWsqV4Yh1WPiyFOxx
+         gl3snuZmIyqa/H5OeQzlDQTQjNgWB09wCFISHpb7hZkwKzYhe6gjIrChOSbBwkfuaBjG
+         vq5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@web.de header.s=dbaedf251592 header.b=EwZ2top9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b="uh0mg/F5";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id l4si705680qtl.196.2020.05.05.03.10.05
+        by mx.google.com with ESMTPS id j12si968990qvo.21.2020.05.05.03.16.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 May 2020 03:10:06 -0700 (PDT)
+        Tue, 05 May 2020 03:16:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@web.de header.s=dbaedf251592 header.b=EwZ2top9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43278 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="uh0mg/F5";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52952 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVuWb-00058k-7u
-	for alex.bennee@linaro.org; Tue, 05 May 2020 06:10:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57170)
+	id 1jVudC-0001S6-20
+	for alex.bennee@linaro.org; Tue, 05 May 2020 06:16:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57294)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jan.kiszka@web.de>)
- id 1jVuW7-00057R-EN; Tue, 05 May 2020 06:09:35 -0400
-Received: from mout.web.de ([212.227.15.3]:42415)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jan.kiszka@web.de>)
- id 1jVuW5-0001f6-A5; Tue, 05 May 2020 06:09:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=dbaedf251592; t=1588673368;
- bh=7tm2uiWWOBJDWwfvQsO5SvZX/DgVGHJc0wj85CCMSuo=;
- h=X-UI-Sender-Class:Subject:To:Cc:References:From:Date:In-Reply-To;
- b=EwZ2top9cGJJweP7LIfomRMMsIs0r+qLJiLGzye8pAL1jhZPVeDBOppH7xTk3aIvW
- F2bO6+ugWXykf2K9IrrGcVd0+HOoHMDZ2MbLOB6Tdcxj1Fl9ZIFof+cAnsw7mpEJSG
- 5quYIUAA4w6zBeFl37Lbst65T/156P0jNKKQgsbo=
-X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
-Received: from [167.87.245.84] ([95.157.53.180]) by smtp.web.de (mrweb003
- [213.165.67.108]) with ESMTPSA (Nemesis) id 0MSJH1-1jhCuR0li7-00TTIG; Tue, 05
- May 2020 12:09:28 +0200
-Subject: Re: [RFC PATCH] hw/arm/musicpal: Map the UART devices unconditionally
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200505095945.23146-1-f4bug@amsat.org>
-From: Jan Kiszka <jan.kiszka@web.de>
-Message-ID: <bc8d1213-5578-52f2-7a86-f45dfa8b33be@web.de>
-Date: Tue, 5 May 2020 12:09:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jVuXF-0005ue-MF
+ for qemu-arm@nongnu.org; Tue, 05 May 2020 06:10:45 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:43688)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jVuXE-0001wZ-O8
+ for qemu-arm@nongnu.org; Tue, 05 May 2020 06:10:45 -0400
+Received: by mail-ot1-x343.google.com with SMTP id g14so1141639otg.10
+ for <qemu-arm@nongnu.org>; Tue, 05 May 2020 03:10:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=k2E1BANozowIuRLwzQhWAkc5j3kkcoUCFJeH+kJb5Uc=;
+ b=uh0mg/F57LfyLKGl4gKQ3i0zq5ozIDmsn8qKb11GOhDcpbjfHr6hB/rEzY3yh2CGKb
+ +Md45jf9/FnbjvrtBj7/rM+nf2v0VpJlYDBqpaSJ9qo8tNTfiwQuLKmxTQ4XRzb7G/ZK
+ 9iqO0kHqLIMJLVs1WW2HrWEqlkwYay64rQ7uxgN2q/Y0a98WvVmA99YdQc8EYYoHymic
+ srIq5b5/XodbyjHh/f92tScv2wjQiO3QG+YKAx8REtKosdjTNoNcTAVJlxl1a+1mgfDF
+ yfQx6aZvM+q4lWvHt8VrBOsGFHL8fLVh0CIVSTcBnbaTdpwvk7I81fbPbe1UMNWRRArK
+ 1XHA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=k2E1BANozowIuRLwzQhWAkc5j3kkcoUCFJeH+kJb5Uc=;
+ b=eIMNaDXZZLg722qltQxFJvOMONxynD0h69SjI/ZnUfCiDNKV/bv1krYtqTRIfda/PM
+ FfCvySCBQcTDkRhgKskbq78e6N+2IzJCSHs2CzTAr+9glF8EEMEVTaoRhQ0p5epnSkO7
+ 3KnWEnKPi82BAkyH6rw0q9Af8K/7Ojv+t2YOQMBIDoGYCr5YI5l1aWpVj4O7Yl3nSnKg
+ 6y5r3VrxrGpXk3Y7wPtn6SPsGJBUf1sDEGMpC+elSN0iDPecPSUcD4eKv34Cm7HWXnp9
+ jQMZREV9eZ+bdVOUWkp7ZtwfA7mYI6iovIkXKK7yxDALl4Gfaf5fpdx7KPYHa9Rz+o/g
+ 3RcQ==
+X-Gm-Message-State: AGi0PuYF1TBkAiQ5e2S3rlp/BMF3hZluPDdpgrOJqIsJOmmNyfF5REmo
+ BzLjxgkFEnbB2KB88AzH3vosNmCMYFVAR/I/PtzBCw==
+X-Received: by 2002:a9d:2c08:: with SMTP id f8mr1591546otb.135.1588673443251; 
+ Tue, 05 May 2020 03:10:43 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200505095945.23146-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+References: <20200505095945.23146-1-f4bug@amsat.org>
+ <bc8d1213-5578-52f2-7a86-f45dfa8b33be@web.de>
+In-Reply-To: <bc8d1213-5578-52f2-7a86-f45dfa8b33be@web.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 5 May 2020 11:10:32 +0100
+Message-ID: <CAFEAcA_Ci7ymqWV2tvnJX-Me5D0QQhaKaBkJVaL7KxeixCZJ_Q@mail.gmail.com>
+Subject: Re: [RFC PATCH] hw/arm/musicpal: Map the UART devices unconditionally
+To: Jan Kiszka <jan.kiszka@web.de>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:/0PbicFLYknB61oxXHaRRxsD+broSIQwq0iltFjDSI3QVq/orn5
- 3vMgVJqwoIFMnNRk2ngSRFTufb9i6vtgTLvCHcuIglrbO1O0WScSgPf74eyOuOI3Z2xtud5
- 7JhovJXN4fzfCxDyyoJvJYO5FTSEP6VujL1X81jtEXBMuFFQEu1UcwneLhUcGctRS9nofDz
- ctimd01nny+FRM6k1b3BA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ookMrKmGhbU=:aEOY7hfQAy/3l4277ovEi9
- WxATQWVWi3DZvt44OscOxTPU7DVLx/4UlZFicBiUANoMcENA3Fz/AyrohQEOfQfmaIuCsGPEs
- QhMIYlTZ2a3MxAUeKzNritfwCwOtu+0WLTrjtwJV9DEzN932EOAYXntAj3MomYjcOiiofdmsB
- oDCKV8QrKfytW9NTFkhIpjFA/H9vS1lvX8k0iEaH6wSx2i6Bp9AdxC0B4unq4cCxlrKXzWev4
- lbYTop7v84/w9Yl5R+vlkudhA2FLdpdJ6u7cvbCd9D/4lnPx3eqxBtON6EGyam3tyS+9yTFuR
- MB1UcqG4bvf/A0T3mV4k4i4Yohv0ELylnVrOZLlxu0KbmOLlTKCKilMgzdQ5eA1GceZA6bqhg
- xt7YBG83L6MUXa9tbEhg0Fe5NtXYckP0VySpVWEPmf41UWe4GFoMN83KtvuVIGoVF2wRsRGhF
- JBNgeGWB7D5fm+aMzD3Y7Rc9f+ydG8PyF1YE422KZyP0BdKP4xYaDec4yQV51j0w/C/WoFMkS
- CEdYtUqAmdcWDJfZS8q7xMwSZ92TBsJbK+B65cPwrP/z2WYFEnH6R+khDXm1t/T03WCalA7q1
- vQ2XGgp/4Jq2m0oCSctCoY5YcRmdn3TE90GZ+W4Tb4/xSOueHeCcYR9DPAKhZyx9zi8+ofHGU
- rNwROkno+rBtSIOtB1XMprIy53exL9l2P5kz27wLU9cAuBe/qZ9uvvFjmX1NK8lyKCilMcbEt
- nFdrym3fDF/Ac4mgpcpWLLm8VQIcmnFT93JMr+7khSn+TY8Jr+NFeBgW1wRn4RCUvsMS0DzIG
- JZzI3iZZd0vDraRUaKAAtF/PXRlhkPASRfHoN/LcxOf7fhE8Mn5v9VRSnivw36yXK1gdBjoNw
- zvpKSEzY3jgFrnDz2HvhhMQXipW+AnbcZYjnLPrtvd03Pz/cgLSbbRsMdXPSTQ0v60Q9fYDtP
- B0lZ5OTEDHJo2bcZFv4KiRn7DGSabHk3YqkgWPaWh6LhxQnaDbQPPyL/sk1Vr91S8iXF9+FEw
- zoJy11sTXy4WBIFMVab36gtPVuxs7nUVlXuQtqzD1Q0akYUX9JsfjW1lgiiXeggHdxMKPeD7v
- xeg6BEVEP/uE9+BWYGs5Ip6jNZkmFqm9D4qPbmRvOknAvKM9iHHzaMP6VSKM3/jf/vzSIuh5V
- HxABVdLyvaX4w795WkMG9OzN5e7MBZPu5pxhFAIFwl2bKCvdmQ/DsLC/cBJ4Db++Mz3F4coJT
- vauRit2Oh/dZ8p2EM
-Received-SPF: pass client-ip=212.227.15.3; envelope-from=jan.kiszka@web.de;
- helo=mout.web.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/05 06:09:29
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,57 +114,22 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zu2cLob/9ZRt
+X-TUID: L56pG5douxME
 
-On 05.05.20 11:59, Philippe Mathieu-Daud=C3=A9 wrote:
-> I can't find proper documentation or datasheet, but it is likely
-> a MMIO mapped serial device mapped in the 0x80000000..0x8000ffff
-> range belongs to the SoC address space, thus is always mapped in
-> the memory bus.
-> Map the devices on the bus regardless a chardev is attached to it.
+On Tue, 5 May 2020 at 11:09, Jan Kiszka <jan.kiszka@web.de> wrote:
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> from 2019... found while doing housekeeping
-> ---
->   hw/arm/musicpal.c | 12 ++++--------
->   1 file changed, 4 insertions(+), 8 deletions(-)
->
-> diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-> index b2d0cfdac8..92f33ed87e 100644
-> --- a/hw/arm/musicpal.c
-> +++ b/hw/arm/musicpal.c
-> @@ -1619,14 +1619,10 @@ static void musicpal_init(MachineState *machine)
->                             pic[MP_TIMER2_IRQ], pic[MP_TIMER3_IRQ],
->                             pic[MP_TIMER4_IRQ], NULL);
->
-> -    if (serial_hd(0)) {
-> -        serial_mm_init(address_space_mem, MP_UART1_BASE, 2, pic[MP_UART=
-1_IRQ],
-> -                       1825000, serial_hd(0), DEVICE_NATIVE_ENDIAN);
-> -    }
-> -    if (serial_hd(1)) {
-> -        serial_mm_init(address_space_mem, MP_UART2_BASE, 2, pic[MP_UART=
-2_IRQ],
-> -                       1825000, serial_hd(1), DEVICE_NATIVE_ENDIAN);
-> -    }
-> +    serial_mm_init(address_space_mem, MP_UART1_BASE, 2, pic[MP_UART1_IR=
-Q],
-> +                   1825000, serial_hd(0), DEVICE_NATIVE_ENDIAN);
-> +    serial_mm_init(address_space_mem, MP_UART2_BASE, 2, pic[MP_UART2_IR=
-Q],
-> +                   1825000, serial_hd(1), DEVICE_NATIVE_ENDIAN);
->
->       /* Register flash */
->       dinfo =3D drive_get(IF_PFLASH, 0, 0);
->
+> On 05.05.20 11:59, Philippe Mathieu-Daud=C3=A9 wrote:
+> I don't recall details anymore either (more than 10 year ago now...),
+> but this looks reasonable.
 
-I don't recall details anymore either (more than 10 year ago now...),
-but this looks reasonable.
+My guess is that it dates back to when the serial code would
+crash if passed a NULL pointer for the backend rather than
+treating it as "same as if connected to a /dev/null backend".
 
-Reviewed-by: Jan Kiszka <jan.kiszka@web.de>
-
-Jan
+thanks
+-- PMM

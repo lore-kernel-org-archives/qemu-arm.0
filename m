@@ -1,94 +1,104 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp216009lfb;
-        Tue, 5 May 2020 09:20:22 -0700 (PDT)
-X-Google-Smtp-Source: APiQypL1M7aF/bHk9Es4YMYf2ahc78yHagZJyYDtxETgqkqBSxm8khaMTxHOQUdtnkFNhH7sbjch
-X-Received: by 2002:a37:98d:: with SMTP id 135mr4073125qkj.377.1588695622297;
-        Tue, 05 May 2020 09:20:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588695622; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp230333lfb;
+        Tue, 5 May 2020 09:39:18 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJhYAp0tJxICYem71hGAorF3c+iSO4O0MFJV0ZYzWB0g8qKSEtID6SVNbR9vIHPJV1FUdXy
+X-Received: by 2002:aed:3a86:: with SMTP id o6mr3616831qte.262.1588696758251;
+        Tue, 05 May 2020 09:39:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588696758; cv=none;
         d=google.com; s=arc-20160816;
-        b=P9rxZFLEataSx2N7zjP9SjJ1QF6jb2RktQ1A43Vx7aNw4jlwFky6X96cmzTf/1/Ly6
-         X+aGF6hvZzOLvh/zxqhLbCtl8mLG7MFgbb5VPDDPBd8AgRBgvWDJDFZeHrP3YXyLmGdA
-         9oUcRUr2ji9engCtAGiQUeEnsCur5fpoJIeWtRPoTIJO0ksMkJGnqGhPWEtUGR7Kgfc2
-         fH1rFSbWhL1e+U7150doTM6A/+mxEvXVcVSwjwg4obmBcxptU3gY/VxMmHECaYW+8J3B
-         GE/+adGyczAOIQ6nKYfJ6bHbhgHyVEV/NlRZwrde7fT5cdCrqH64rK2iTF+mn0r/sYL+
-         qqog==
+        b=jr1zRgK5L8Z9BMSmBNAgBUQ2H/7mTI2P8hc7k7RjsK3ZrJuHsLvwLoZWbxBE+vHQ5Q
+         X57Ox4vX4b87uX0a4Yfaj2daqIcqwfzLw4/q46CJZVL4xfhR71AUCWWLjAuo+m+X45Ue
+         wuxWG306qh992G6ZoK2oFaVYwBIeX8ap+ZlYhnUjM9Ie0c1qTlVcP3BDl/qJ+3Di5kKx
+         Hb+O+5ud3CHJjovIlaDVm87xWESQQ7H/UoOkGOwRiWb+x6W8IpnlIXPF0O4XamBMbuHe
+         6c7goF2CjbxZ6lTQl9mQYmzdEAaYZBTJmgvqtq/tqzRnjkaSHDIFvBN4ZbXwwRgNyX0I
+         fYhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=r6Bjjvzb6Ki8isabF5JpTLoDnvLql3rNKrGvEOuF64c=;
-        b=Db3JkVZXXeqPD8rpbRn61nsP++TD+W8mdL8KFpJqLIQQeoQSImpVq0V0HMckV/CZPm
-         RJKl8JuXTLFDg8mPiWn73DV0ZX6HPubyHfIHSo+W6ptYnN0ZPh7ouxg6p6JLg8zG7fN9
-         J17i04Ue7buzH2iN1zB8R+scMtQvUoiLxQ7rDn/NzdN+N8v5V0Q3u1AGCbUdn+OZ5edh
-         wwdEm/fZMEJ2ObvIjXKfYobXXB6rhb9ZWn36PPHbI4wXP35SQByeT/0Zwmj0Z6qApoOk
-         29OWblFJNDsY4c5TwzXKOpCnMW6VNP+kFIWTW+j35Ct5uuqLNRHh9KetH8M0DtTIJfgV
-         YkMQ==
+        bh=Lv4S3CuiIrBolDrocQDs3BbWijeM1TY9spl4Z9e+pPI=;
+        b=SI3rNW1nF4G7vaQzvYae+mZkfZfZdUcxhF20ZE4AEpa0cT8IDwf9d28liELuDDFlPX
+         E6xW2MxVdpxcreiQJNcvUryNIlvU1+48U8DrLfOvaaJQoikD3YRyydWdO201vkA3+cEJ
+         x0zVFRo7leQpb/Esw4Imqou/H2MpedT/CDQXNijEg1DiNYF77gJb1ygcqC2v5y2WmKZF
+         88lJNkaxW928QaSFhmrxm4gnXVDFRfDTyrIK2imV6KobSFXfa83f5tmKe0q9dF5P/vbU
+         TEAM7rs7hyDCZnOMrdxPTJmGn+pcB1bLTqLviQ40bCNqz2SpQlj72KbJ3+Yv/ebfzvIw
+         VfDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@kernel.org header.s=default header.b=2tTYkSuR;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=h3kHak5a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id x7si1441305qkn.142.2020.05.05.09.20.22
+        by mx.google.com with ESMTPS id h9si1603052qka.331.2020.05.05.09.39.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 May 2020 09:20:22 -0700 (PDT)
+        Tue, 05 May 2020 09:39:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@kernel.org header.s=default header.b=2tTYkSuR;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=h3kHak5a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1]:33278 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:46140 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jW0Iv-0006pH-MG
-	for alex.bennee@linaro.org; Tue, 05 May 2020 12:20:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56900)
+	id 1jW0bF-0005pm-MT
+	for alex.bennee@linaro.org; Tue, 05 May 2020 12:39:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59906)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
- id 1jW0Io-0006n7-2D; Tue, 05 May 2020 12:20:14 -0400
-Received: from mail.kernel.org ([198.145.29.99]:56082)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
- id 1jW0Im-0004en-7n; Tue, 05 May 2020 12:20:12 -0400
-Received: from mail-il1-f171.google.com (mail-il1-f171.google.com
- [209.85.166.171])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 117D320746;
- Tue,  5 May 2020 16:20:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588695608;
- bh=r6Bjjvzb6Ki8isabF5JpTLoDnvLql3rNKrGvEOuF64c=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=2tTYkSuRwZlGqBbU/w1inP0ExvS1mR7PTs06XVXMO0KXecK9pCnjT0kUqFkwNh+CK
- 3pgmmg8XQQN/huH0lt6+cSmywJ7tMdF45vWT/No1n0Kfqy/oYA4WVUrsAQr+5IsKgu
- ucMYPcFG1Lsm+eW/BnBTzTpR+EXCojzLB7i3HzjI=
-Received: by mail-il1-f171.google.com with SMTP id m5so2792846ilj.10;
- Tue, 05 May 2020 09:20:08 -0700 (PDT)
-X-Gm-Message-State: AGi0PuZTFYsro0NbRxKJjoyTzdFZbUKV5vg4WdSIpOB6h73a+BJqohd4
- OKLOLrd+Espphl/4cpwx4Re/L5l3h2tGzyR36UM=
-X-Received: by 2002:a92:aa0f:: with SMTP id j15mr4522559ili.211.1588695607461; 
- Tue, 05 May 2020 09:20:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jW0b8-0005oz-Kg; Tue, 05 May 2020 12:39:10 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:39012)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jW0b5-00033B-V0; Tue, 05 May 2020 12:39:10 -0400
+Received: by mail-io1-xd42.google.com with SMTP id w4so2633270ioc.6;
+ Tue, 05 May 2020 09:39:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Lv4S3CuiIrBolDrocQDs3BbWijeM1TY9spl4Z9e+pPI=;
+ b=h3kHak5aY4ZhpjFhbgMv2yG01lKZE7LA1GdQjCjsZTaUkyAxR9ciZHVwgDby0vYk1b
+ 5Xx7sWDbGN+3/BazChDnx29psSFahWeFXiZXO+CQM13vLvxlWIYi0aDNKuXj3vj0qSfD
+ nr6eH0SKJ2ge25xvrzoscIgKnc6qCIOP8OCcLY+XyJHOP1G9/4Wsfu4mymHB5ySFrVlL
+ 9nAJrJMi2xphL2dxmdH53T5wFHwSxclVQ/EH78pJdEJG9FXFZ1ULM6jHvjaz58n/sfQ3
+ i0O2itUYfryqKGIWYeGpdxctEPUdWktdtahMkNBv9ilJLAkFy8yEA5umyd7KEN5E9IFV
+ Anog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Lv4S3CuiIrBolDrocQDs3BbWijeM1TY9spl4Z9e+pPI=;
+ b=TGrlI3GqoL+hxH9tpLUuAkXMoIz1SGv/uR0JTZ/AEwQM+IPN9n5bP9hqeyuvvLSUig
+ +Ta+ZoT11uEQ7LPtJ1szPyZSn0ooDqrIkvGAe6UyKn6aIWT1VF3u8fthTUV+x74lXACE
+ GeYSZgg2E8oYcTx/kI8NnoOlg11eawfCeWW7Y4pTJWK75ZFUosLx7i//JO9vRtmWl5hM
+ bKBW2Kg54DXX7XuvMcZKHZWTdo72df4K5eNuU3LNdf23ln5TM5iGLIeVbett5JqWCQqs
+ Ut9yYFoBIUvdGZXQ45Xfv2o8MuS9MsVIzq2AnTscRzW/XmBelzRGq8BVI2eaL/kUmRQ6
+ ufLw==
+X-Gm-Message-State: AGi0PubAvzSLGBldfdL/O5UQVTTT97sHmCmV92kxBbLDkggyvkWCWGG6
+ Mba/0AVeT8gtGZh62AGKxwDH8OpTA2a8oNvSbuk=
+X-Received: by 2002:a02:1a01:: with SMTP id 1mr4507932jai.26.1588696745906;
+ Tue, 05 May 2020 09:39:05 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200505144419.29174-1-eric.auger@redhat.com>
-In-Reply-To: <20200505144419.29174-1-eric.auger@redhat.com>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Tue, 5 May 2020 18:19:56 +0200
-X-Gmail-Original-Message-ID: <CAMj1kXHKLg8ySP5guG+ZnDCrmzqKuJW_rs7n9vZqtTwEZmWMgw@mail.gmail.com>
-Message-ID: <CAMj1kXHKLg8ySP5guG+ZnDCrmzqKuJW_rs7n9vZqtTwEZmWMgw@mail.gmail.com>
-Subject: Re: [PATCH v2 0/3] vTPM/aarch64 ACPI support
-To: Eric Auger <eric.auger@redhat.com>
+References: <20200430162439.2659-1-edgar.iglesias@gmail.com>
+ <20200430162439.2659-3-edgar.iglesias@gmail.com>
+In-Reply-To: <20200430162439.2659-3-edgar.iglesias@gmail.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 5 May 2020 09:30:24 -0700
+Message-ID: <CAKmqyKMN4gKvwkOz-RYO9dD6hqeN4G0-083j6ZM5nG=ee-yTfQ@mail.gmail.com>
+Subject: Re: [PATCH v1 2/9] hw/net/xilinx_axienet: Cleanup stream->push
+ assignment
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=198.145.29.99; envelope-from=ardb@kernel.org;
- helo=mail.kernel.org
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/05 12:20:08
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -70
-X-Spam_score: -7.1
-X-Spam_bar: -------
-X-Spam_report: (-7.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_HI=-5, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -101,28 +111,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Andrew Jones <drjones@redhat.com>,
- gshan@redhat.com, "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
- shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, marcandre.lureau@redhat.com,
- imammedo@redhat.com, eric.auger.pro@gmail.com,
- Laszlo Ersek <lersek@redhat.com>, stefanb@linux.ibm.com
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Edgar Iglesias <edgar.iglesias@xilinx.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>, figlesia@xilinx.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JoNR8bzL1Wwf
+X-TUID: Wu/57nimWCKB
 
-On Tue, 5 May 2020 at 16:44, Eric Auger <eric.auger@redhat.com> wrote:
+On Thu, Apr 30, 2020 at 9:26 AM Edgar E. Iglesias
+<edgar.iglesias@gmail.com> wrote:
 >
-> Those patches bring MMIO TPM TIS ACPI support in machvirt.
-> The first patch moves the TPM2 ACPI table generation code
-> in the generic code. Then the table is added if the TPM2
-> sysbus device is dynamically instantiated in machvirt.
-> Also the TPM2 device object is described in the DSDT.
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 >
-> Many thanks to Ard for his support.
+> Split the shared stream_class_init function to assign
+> stream->push with better type-safety.
 >
-> Tested with LUKS partition automatic decryption.
->
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-Thanks Eric
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Tested-by: Ard Biesheuvel <ardb@kernel.org>
+Alistair
+
+> ---
+>  hw/net/xilinx_axienet.c | 18 ++++++++++++------
+>  1 file changed, 12 insertions(+), 6 deletions(-)
+>
+> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+> index 0f97510d8a..84073753d7 100644
+> --- a/hw/net/xilinx_axienet.c
+> +++ b/hw/net/xilinx_axienet.c
+> @@ -1029,11 +1029,19 @@ static void xilinx_enet_class_init(ObjectClass *klass, void *data)
+>      dc->reset = xilinx_axienet_reset;
+>  }
+>
+> -static void xilinx_enet_stream_class_init(ObjectClass *klass, void *data)
+> +static void xilinx_enet_control_stream_class_init(ObjectClass *klass,
+> +                                                  void *data)
+>  {
+>      StreamSlaveClass *ssc = STREAM_SLAVE_CLASS(klass);
+>
+> -    ssc->push = data;
+> +    ssc->push = xilinx_axienet_control_stream_push;
+> +}
+> +
+> +static void xilinx_enet_data_stream_class_init(ObjectClass *klass, void *data)
+> +{
+> +    StreamSlaveClass *ssc = STREAM_SLAVE_CLASS(klass);
+> +
+> +    ssc->push = xilinx_axienet_data_stream_push;
+>  }
+>
+>  static const TypeInfo xilinx_enet_info = {
+> @@ -1048,8 +1056,7 @@ static const TypeInfo xilinx_enet_data_stream_info = {
+>      .name          = TYPE_XILINX_AXI_ENET_DATA_STREAM,
+>      .parent        = TYPE_OBJECT,
+>      .instance_size = sizeof(struct XilinxAXIEnetStreamSlave),
+> -    .class_init    = xilinx_enet_stream_class_init,
+> -    .class_data    = xilinx_axienet_data_stream_push,
+> +    .class_init    = xilinx_enet_data_stream_class_init,
+>      .interfaces = (InterfaceInfo[]) {
+>              { TYPE_STREAM_SLAVE },
+>              { }
+> @@ -1060,8 +1067,7 @@ static const TypeInfo xilinx_enet_control_stream_info = {
+>      .name          = TYPE_XILINX_AXI_ENET_CONTROL_STREAM,
+>      .parent        = TYPE_OBJECT,
+>      .instance_size = sizeof(struct XilinxAXIEnetStreamSlave),
+> -    .class_init    = xilinx_enet_stream_class_init,
+> -    .class_data    = xilinx_axienet_control_stream_push,
+> +    .class_init    = xilinx_enet_control_stream_class_init,
+>      .interfaces = (InterfaceInfo[]) {
+>              { TYPE_STREAM_SLAVE },
+>              { }
+> --
+> 2.20.1
+>
+>

@@ -1,121 +1,122 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp213138lfb;
-        Tue, 5 May 2020 09:16:41 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKfFQjYGw29IfvDLAX9pXlY8MhVy+N8mSARaQKb1P3slG0yPvQOgncHf23Tp+RhiGBILTXM
-X-Received: by 2002:a37:a04b:: with SMTP id j72mr4064446qke.139.1588695400991;
-        Tue, 05 May 2020 09:16:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588695400; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp214464lfb;
+        Tue, 5 May 2020 09:18:22 -0700 (PDT)
+X-Google-Smtp-Source: APiQypItHjn1oltKkg6cVw62GI+RM5BjzoP505i9XHG7dKT1evuy1ZFfzBIhtSzCdx7izwVp/TZd
+X-Received: by 2002:ac8:33f9:: with SMTP id d54mr3484861qtb.239.1588695502507;
+        Tue, 05 May 2020 09:18:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588695502; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hu37CJs92poSsoTwpbeQdDWVsKYv5f3P3JheALgLl44TIpQGtjOSy/uEQrBc3gr36X
-         MD/QNUvnkt9IMxqyhnA4VCKM4F6lYVOQo7WQGSEjWwcxX2C0EA2l2QKt1iVrxLMoRr42
-         35ie/aQKi0OwRKlHDzBlKVAd8OGxsRBlcpz4e7l7fwj7kcyOb/zHu/eRYf/2bjz2VXVO
-         YymBSViSA8IOY5F9mPKr2XnuSZt/BN2K3/0k7tyqxseGhtlSkKThlP5t/4RFzPY8J47s
-         NCX9BVl/JHZqOn1Xru3B4bCiQ2GA90V1ZaEoh80LDF1UScNIRTF6hdq3yYz2vFQ7+VKt
-         NmEA==
+        b=yY1f5KoUW8YvH56WRg62fIqjIRM/T/hUbjKibxVSniGCjXlUymNq3gpdkG42795LXS
+         dy2eZ0seXxMbmHvJOCQPpqh8spcbvtWT6FZD+GGDicEJMCxg4XIFSd07+zvyuznkP0Nj
+         /pmfq2kG/VJNIulfJ/YWv8PKmLuncG/q2D7AAjieZk/1Rsk2gLPW1GQ4LAmTpnySFKEw
+         3GABeW1jZr5OfupBHVk+tL0kdaUaUBJognOp6VnVD3CJPJjEpYrfiBe6PxM2xQ/GvF6u
+         PCWMuiR+BhlCuonxeUApcT6FFACyhGugksp8gFnJlmW8x9/8xqeJApIwOmJI57sIleo8
+         gC5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=ThpD3rTsrE2hjnfAUfBWHNl/zGHuuONiHpLbfrfbCWE=;
-        b=sEMN4F3TCXMZwTpG7bh6O70AG3OHGpc3siJgJywstxosj9ZwQhApYXz2Rr2PJNVLFE
-         1Ml3KJGrO5Cku3D1uXJ6kWzyx/h/DEYFcKsEXF0Giv166C/8Ir60jMYWCQLUNnhoE10W
-         QNxBxtcKnrnmyXUWyM+3M8VakuPpoDcoCgH+zbMeYLxQbNpiIys/9BGo2fKPi/XI9muH
-         tsBbsNrLUVJTISAw8jRqIoTRTWrxAwCatCwL6SySholpXWS4hnBXqMogcOl38w63m2/t
-         OHIGoQFNzUJTAdeMWPDBU2+qAcDZwmnOz0mmKMTHvdWf42xNoHclkzJOPRC0+dZ8zA3m
-         8fvg==
+        bh=s7ohJG+YEzSsRI9YHh2D+JXrXa6S0cP+SBuDGOhR3Mo=;
+        b=Uoi4TbGgsij6sCwWtSVIdq0OW91lUoyo/vvr7vEcBF0c/DbP0OITS81tePXzA9Yc5S
+         WWjxJH2z9pDQxef+kEoamKUBi9QBSlwxsrQAEpx/008LzDGsFxE60+ubQdIMLFQ5CAT6
+         IcBJUduFZqpW+eklMJ+qdgPFYUZkMTrAEz0iZj6Svv8YTxS2kcFRlfuG1WmjyQYjzcsA
+         4k0bWQDmSYu01kmNXwMzWpX4AYWYYGY+JsjdF+RHSOECdrphOd94N3E+xUiieqheRwaj
+         /H55P7IKUme8cEnfL6d5mljEYvBIbYU5GVXWno8FM2h+L1CbvtlaEu6QZPi4qajMVwJd
+         egxg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id e16si1293554qto.166.2020.05.05.09.16.40
+        by mx.google.com with ESMTPS id t7si1660696qkj.195.2020.05.05.09.18.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 May 2020 09:16:40 -0700 (PDT)
+        Tue, 05 May 2020 09:18:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:54352 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57490 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jW0FM-0003b0-7M
-	for alex.bennee@linaro.org; Tue, 05 May 2020 12:16:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56240)
+	id 1jW0Gz-00055M-RC
+	for alex.bennee@linaro.org; Tue, 05 May 2020 12:18:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56466)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jW0F6-0003Yo-1X; Tue, 05 May 2020 12:16:24 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:59602)
+ id 1jW0Gl-00051P-Mi; Tue, 05 May 2020 12:18:07 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:59598
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jW0F4-0004Dl-Rj; Tue, 05 May 2020 12:16:23 -0400
-Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 045G7Vuh153284; Tue, 5 May 2020 12:16:18 -0400
+ id 1jW0Gi-0007LW-Ev; Tue, 05 May 2020 12:18:06 -0400
+Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 045Facig168306; Tue, 5 May 2020 12:18:01 -0400
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 30sp8jyg0e-1
+ by mx0b-001b2d01.pphosted.com with ESMTP id 30s50gsvgq-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 05 May 2020 12:16:17 -0400
-Received: from m0127361.ppops.net (m0127361.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 045G7XJq153319;
- Tue, 5 May 2020 12:16:16 -0400
+ Tue, 05 May 2020 12:18:01 -0400
+Received: from m0098414.ppops.net (m0098414.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 045FvkuG028334;
+ Tue, 5 May 2020 12:18:00 -0400
 Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
  [169.62.189.11])
- by mx0a-001b2d01.pphosted.com with ESMTP id 30sp8jyfyq-1
+ by mx0b-001b2d01.pphosted.com with ESMTP id 30s50gsvga-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 05 May 2020 12:16:15 -0400
+ Tue, 05 May 2020 12:18:00 -0400
 Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
- by ppma03dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id 045GFXk1002998;
- Tue, 5 May 2020 16:16:13 GMT
-Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com
- [9.57.198.29]) by ppma03dal.us.ibm.com with ESMTP id 30s0g78m15-1
+ by ppma03dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id 045GG38H020500;
+ Tue, 5 May 2020 16:17:59 GMT
+Received: from b01cxnp22034.gho.pok.ibm.com (b01cxnp22034.gho.pok.ibm.com
+ [9.57.198.24]) by ppma03dal.us.ibm.com with ESMTP id 30s0g78mj1-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 05 May 2020 16:16:13 +0000
+ Tue, 05 May 2020 16:17:59 +0000
 Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
  [9.57.199.110])
- by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 045GGDA351380494
+ by b01cxnp22034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 045GHxPj52953446
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 5 May 2020 16:16:13 GMT
+ Tue, 5 May 2020 16:17:59 GMT
 Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E5579AE067;
- Tue,  5 May 2020 16:16:12 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id ED26EAE05C;
+ Tue,  5 May 2020 16:17:58 +0000 (GMT)
 Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7DE62AE05C;
- Tue,  5 May 2020 16:16:12 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id C0E1FAE063;
+ Tue,  5 May 2020 16:17:58 +0000 (GMT)
 Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
  by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
- Tue,  5 May 2020 16:16:12 +0000 (GMT)
-Subject: Re: [PATCH v2 2/3] arm/acpi: TPM2 ACPI table support
+ Tue,  5 May 2020 16:17:58 +0000 (GMT)
+Subject: Re: [PATCH v2 1/3] acpi: Move build_tpm2() in the generic part
 To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
  peter.maydell@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  imammedo@redhat.com, shannon.zhaosl@gmail.com, mst@redhat.com
 References: <20200505144419.29174-1-eric.auger@redhat.com>
- <20200505144419.29174-3-eric.auger@redhat.com>
+ <20200505144419.29174-2-eric.auger@redhat.com>
 From: Stefan Berger <stefanb@linux.ibm.com>
-Message-ID: <51386527-f887-603b-048d-5ad1dff0cb35@linux.ibm.com>
-Date: Tue, 5 May 2020 12:16:12 -0400
+Message-ID: <8ba036ba-950f-55c2-450b-4106cab3e683@linux.ibm.com>
+Date: Tue, 5 May 2020 12:17:58 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200505144419.29174-3-eric.auger@redhat.com>
+In-Reply-To: <20200505144419.29174-2-eric.auger@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Content-Language: en-US
 X-TM-AS-GCONF: 00
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
- definitions=2020-05-05_09:2020-05-04,
+ definitions=2020-05-05_08:2020-05-04,
  2020-05-05 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 phishscore=0
- malwarescore=0 suspectscore=0 priorityscore=1501 spamscore=0 clxscore=1015
- mlxscore=0 lowpriorityscore=0 mlxlogscore=999 impostorscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2005050124
+ lowpriorityscore=0
+ clxscore=1015 impostorscore=0 adultscore=0 priorityscore=1501
+ malwarescore=0 phishscore=0 mlxscore=0 spamscore=0 mlxlogscore=999
+ bulkscore=0 suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2005050124
 Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
+ helo=mx0a-001b2d01.pphosted.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/05 12:16:19
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10
+X-ACL-Warn: Detected OS   = Linux 3.x [generic]
 X-Spam_score_int: -25
 X-Spam_score: -2.6
 X-Spam_bar: --
@@ -138,95 +139,124 @@ Cc: marcandre.lureau@redhat.com, drjones@redhat.com, gshan@redhat.com,
  lersek@redhat.com, ardb@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OqdQkPYfcIxV
+X-TUID: ICUnkLfl2uqj
 
 On 5/5/20 10:44 AM, Eric Auger wrote:
-> Add a TPM2 ACPI table if a TPM2.0 sysbus device has been
-> dynamically instantiated.
+> We plan to build the tpm2 table on ARM too. In order to reuse the
+> generation code, let's move build_tpm2() to aml-build.c.
+>
+> No change in the implementation.
 >
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 
 
->
 > ---
+>   include/hw/acpi/aml-build.h |  2 ++
+>   hw/acpi/aml-build.c         | 30 ++++++++++++++++++++++++++++++
+>   hw/i386/acpi-build.c        | 30 ------------------------------
+>   3 files changed, 32 insertions(+), 30 deletions(-)
 >
-> v1 -> v2:
-> - reuse generic build_tpm2() and alloc log area externally
-> - call tpm_find() once in build_tpm2()
-> ---
->   include/sysemu/tpm.h     |  2 ++
->   hw/acpi/aml-build.c      |  5 +++--
->   hw/arm/virt-acpi-build.c | 11 +++++++++++
->   3 files changed, 16 insertions(+), 2 deletions(-)
->
-> diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
-> index f37851b1aa..03fb25941c 100644
-> --- a/include/sysemu/tpm.h
-> +++ b/include/sysemu/tpm.h
-> @@ -50,6 +50,8 @@ typedef struct TPMIfClass {
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index 0f4ed53d7f..a67ab4618a 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -437,4 +437,6 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms);
 >   
->   #define TPM_IS_TIS_ISA(chr)                         \
->       object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_ISA)
-> +#define TPM_IS_TIS_SYSBUS(chr)                      \
-> +    object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SYSBUS)
->   #define TPM_IS_CRB(chr)                             \
->       object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
->   #define TPM_IS_SPAPR(chr)                           \
+>   void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+>                   const char *oem_id, const char *oem_table_id);
+> +
+> +void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog);
+>   #endif
 > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index 1f7fd09112..4224675cb2 100644
+> index 2c3702b882..1f7fd09112 100644
 > --- a/hw/acpi/aml-build.c
 > +++ b/hw/acpi/aml-build.c
-> @@ -1882,12 +1882,13 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
->       unsigned log_addr_size = sizeof(tpm2_ptr->log_area_start_address);
->       unsigned log_addr_offset =
->           (char *)&tpm2_ptr->log_area_start_address - table_data->data;
-> +    TPMIf *tpmif = tpm_find();
->   
->       tpm2_ptr->platform_class = cpu_to_le16(TPM2_ACPI_CLASS_CLIENT);
-> -    if (TPM_IS_TIS_ISA(tpm_find())) {
-> +    if (TPM_IS_TIS_ISA(tpmif) || TPM_IS_TIS_SYSBUS(tpmif)) {
->           tpm2_ptr->control_area_address = cpu_to_le64(0);
->           tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_MMIO);
-> -    } else if (TPM_IS_CRB(tpm_find())) {
-> +    } else if (TPM_IS_CRB(tpmif)) {
->           tpm2_ptr->control_area_address = cpu_to_le64(TPM_CRB_ADDR_CTRL);
->           tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_CRB);
->       } else {
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 81d41a3990..1a2ec10c8f 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -41,11 +41,13 @@
->   #include "hw/acpi/pci.h"
->   #include "hw/acpi/memory_hotplug.h"
->   #include "hw/acpi/generic_event_device.h"
-> +#include "hw/acpi/tpm.h"
->   #include "hw/pci/pcie_host.h"
->   #include "hw/pci/pci.h"
->   #include "hw/arm/virt.h"
+> @@ -26,6 +26,7 @@
+>   #include "qemu/bitops.h"
 >   #include "sysemu/numa.h"
->   #include "sysemu/reset.h"
-> +#include "sysemu/tpm.h"
->   #include "kvm_arm.h"
->   #include "migration/vmstate.h"
+>   #include "hw/boards.h"
+> +#include "hw/acpi/tpm.h"
 >   
-> @@ -831,6 +833,15 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->           build_iort(tables_blob, tables->linker, vms);
->       }
+>   static GArray *build_alloc_array(void)
+>   {
+> @@ -1875,6 +1876,35 @@ build_hdr:
+>                    "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
+>   }
 >   
-> +    if (tpm_get_version(tpm_find()) == TPM_VERSION_2_0) {
-> +        acpi_data_push(tables->tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
-> +        bios_linker_loader_alloc(tables->linker, ACPI_BUILD_TPMLOG_FILE,
-> +                                 tables->tcpalog, 1, false);
+> +void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+> +{
+> +    Acpi20TPM2 *tpm2_ptr = acpi_data_push(table_data, sizeof *tpm2_ptr);
+> +    unsigned log_addr_size = sizeof(tpm2_ptr->log_area_start_address);
+> +    unsigned log_addr_offset =
+> +        (char *)&tpm2_ptr->log_area_start_address - table_data->data;
 > +
-> +        acpi_add_table(table_offsets, tables_blob);
-> +        build_tpm2(tables_blob, tables->linker, tables->tcpalog);
+> +    tpm2_ptr->platform_class = cpu_to_le16(TPM2_ACPI_CLASS_CLIENT);
+> +    if (TPM_IS_TIS_ISA(tpm_find())) {
+> +        tpm2_ptr->control_area_address = cpu_to_le64(0);
+> +        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_MMIO);
+> +    } else if (TPM_IS_CRB(tpm_find())) {
+> +        tpm2_ptr->control_area_address = cpu_to_le64(TPM_CRB_ADDR_CTRL);
+> +        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_CRB);
+> +    } else {
+> +        g_warn_if_reached();
 > +    }
 > +
->       /* XSDT is pointed to by RSDP */
->       xsdt = tables_blob->len;
->       build_xsdt(tables_blob, tables->linker, table_offsets, NULL, NULL);
+> +    tpm2_ptr->log_area_minimum_length =
+> +        cpu_to_le32(TPM_LOG_AREA_MINIMUM_SIZE);
+> +
+> +    /* log area start address to be filled by Guest linker */
+> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> +                                   log_addr_offset, log_addr_size,
+> +                                   ACPI_BUILD_TPMLOG_FILE, 0);
+> +    build_header(linker, table_data,
+> +                 (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL, NULL);
+> +}
+> +
+>   /* ACPI 5.0: 6.4.3.8.2 Serial Bus Connection Descriptors */
+>   static Aml *aml_serial_bus_device(uint8_t serial_bus_type, uint8_t flags,
+>                                     uint16_t type_flags,
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 23c77eeb95..c7c560e269 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -2296,36 +2296,6 @@ build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+>                    (void *)tcpa, "TCPA", sizeof(*tcpa), 2, NULL, NULL);
+>   }
+>   
+> -static void
+> -build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+> -{
+> -    Acpi20TPM2 *tpm2_ptr = acpi_data_push(table_data, sizeof *tpm2_ptr);
+> -    unsigned log_addr_size = sizeof(tpm2_ptr->log_area_start_address);
+> -    unsigned log_addr_offset =
+> -        (char *)&tpm2_ptr->log_area_start_address - table_data->data;
+> -
+> -    tpm2_ptr->platform_class = cpu_to_le16(TPM2_ACPI_CLASS_CLIENT);
+> -    if (TPM_IS_TIS_ISA(tpm_find())) {
+> -        tpm2_ptr->control_area_address = cpu_to_le64(0);
+> -        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_MMIO);
+> -    } else if (TPM_IS_CRB(tpm_find())) {
+> -        tpm2_ptr->control_area_address = cpu_to_le64(TPM_CRB_ADDR_CTRL);
+> -        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_CRB);
+> -    } else {
+> -        g_warn_if_reached();
+> -    }
+> -
+> -    tpm2_ptr->log_area_minimum_length =
+> -        cpu_to_le32(TPM_LOG_AREA_MINIMUM_SIZE);
+> -
+> -    /* log area start address to be filled by Guest linker */
+> -    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> -                                   log_addr_offset, log_addr_size,
+> -                                   ACPI_BUILD_TPMLOG_FILE, 0);
+> -    build_header(linker, table_data,
+> -                 (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL, NULL);
+> -}
+> -
+>   #define HOLE_640K_START  (640 * KiB)
+>   #define HOLE_640K_END   (1 * MiB)
+>   
 
 

@@ -1,109 +1,108 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1385179lfb;
-        Tue, 5 May 2020 02:47:10 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIgt2OxYMILdQeumDismtAhOano+dypCYtyMOtubYMEUVGIBZnDOlu5mEhYuowJC11Xquev
-X-Received: by 2002:a37:617:: with SMTP id 23mr2689132qkg.11.1588672030776;
-        Tue, 05 May 2020 02:47:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588672030; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1395708lfb;
+        Tue, 5 May 2020 02:59:59 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKXAUlVHzlDC6IOdRx1Bl9/VRNoqdAFGhTIMU7fQDKferiogNEpkzPY6tmS3d3Y4goe+HJx
+X-Received: by 2002:a0c:da87:: with SMTP id z7mr1799743qvj.141.1588672799076;
+        Tue, 05 May 2020 02:59:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588672799; cv=none;
         d=google.com; s=arc-20160816;
-        b=AcPzAQcX1TBOk8PDkZPbm57idcWMr5srUeAvymm1I5+FyGvZlIf/bh6RdZna+P1yCP
-         +YGCZcFVkyVBMVqa/h8p1QC3yxzfOiZpe2tJXCXO5ebA3XXJPfwWSof4iTsKoN5L+HgK
-         Aebf4DipzTuIwb1oHJhy2aBuo4/I9Kk8IeUXQw9Du7v5oYRE43w420VyaI9fL+OWNwPc
-         cohG+3FTB6M3uUdWoWpxk8hhmGXvtTUw4CfVnPMSE9Fxom7RfWp+zSkwJMLysBf6UVDl
-         eobKLJn1l1dnY+P54F6g9CbYXo7yaOLwNG/5WVE70BR8Z2chZEwyXFYN+cNaaX3gRqYn
-         jjGQ==
+        b=LJW4udPCldJXqNJEutKh9N0ktdFnkRI7oFiF/4Znb9zDfkTvGgztFR9N0gIDpl/xAk
+         9JKfC+s0RkHuGfXjLu3b1uirw/9KgLjn1BW3dHfv9+zUXJhC9drruOoku/1DbuJ+0QRp
+         N60Bwyp0tpnPo+F6dHHi80gryJ7jJhmCUJLTJvH8edXHEn2pKdy20l1Nf57u+XZ/bL4o
+         JjUfti93ACdfNosHkRYUfUllcD1cCaLRzkbsktsx+A72h4RTmP400h+n1q9xtk+aCcSP
+         jSD+9C45IxK2qUEEQ8pVkC6mQh7IO/IQAdLBYDXXUbDsqTS7Am2HlDGebT5wu/OfI8+A
+         UdvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=4kvZHaZS5hLNJwdorsy1zm/c4irnYS40G/Gsr1cqd9o=;
-        b=MVVMUnqYKkgvO+XpEGD2yjQ9KqclN7d46jKkUwsUVXkx85w4RNXEh6PxGlTNzlzo0D
-         rxZ4h/QtJKs7MaRMI1V6Rkfo0SIAOziEJ9pSnkbhVDAXC0qkD6pFjlZw1vwiDEFgVUMg
-         NIo9vLMsRS723uAoR/HeTGk6DRLMdglsvVqQZZQNM+n+yIbLBh6K18CbpSl7x4vsuje+
-         zX3DweOpdldWB/ETpujwmFX1+0fKkg1KR8/GxiBxDghN8I6m4PRN3XiJFGrXC+ySVD4p
-         B8UghU+gq4GWHAIFYzJ0jO8g4rG9tRdq8h/tfxJjsxqEuyFGoQWNcq8DC3RmS4Wrv3tO
-         jj2Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=EkplecsBlPPnRuZXHE6e7jrbnG0gHvt4a5C9/IO/Jn4=;
+        b=k/q7U85Lgrl0xE548oKC7TeIx9k+6wXMENVmuwJuMbipNXlkrF6W4HurNV3w991OJk
+         Y9OA9ssElYPsKR7ZeNLa9QqIjFUwwEOxTAgEYHDD5YKKsCGLKb1m0k6p02hfG1PnHR2k
+         lKtI5lS1Za7f6wB7EyXEIY2OirKm+KT8z3MFbJmKvbvYZNp5vmk0it5da79i5Js4y/0e
+         2iD1w4zDVR9h6BHhn2Oq8gGHbMaccMJtELMColebGtU8Zl1j+YhPQvwXffBUizwGM1CV
+         gfM0siZ8ygyKmgepjhUxgaV93wJtK8f2+OSJ8OzHDQFS+AOOXVhl5QQRwDM6NlOFbam3
+         gXkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="WmUzMRD/";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qxeUGu7z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id x14si689677qtp.111.2020.05.05.02.47.10
+        by mx.google.com with ESMTPS id d22si302460qkg.42.2020.05.05.02.59.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 May 2020 02:47:10 -0700 (PDT)
+        Tue, 05 May 2020 02:59:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="WmUzMRD/";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qxeUGu7z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45404 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:58302 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVuAQ-0000Xj-84
-	for alex.bennee@linaro.org; Tue, 05 May 2020 05:47:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52008)
+	id 1jVuMo-00078y-FY
+	for alex.bennee@linaro.org; Tue, 05 May 2020 05:59:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54534)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bharatb.linux@gmail.com>)
- id 1jVuAD-0000XY-E9; Tue, 05 May 2020 05:46:57 -0400
-Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742]:43340)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jVuMh-00078N-0n; Tue, 05 May 2020 05:59:51 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:33422)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bharatb.linux@gmail.com>)
- id 1jVuAC-0002hI-2H; Tue, 05 May 2020 05:46:57 -0400
-Received: by mail-qk1-x742.google.com with SMTP id i14so1594590qka.10;
- Tue, 05 May 2020 02:46:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jVuMg-0004OJ-0s; Tue, 05 May 2020 05:59:50 -0400
+Received: by mail-wm1-x343.google.com with SMTP id v8so2083411wma.0;
+ Tue, 05 May 2020 02:59:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4kvZHaZS5hLNJwdorsy1zm/c4irnYS40G/Gsr1cqd9o=;
- b=WmUzMRD/Mp47jW+0srR/gHEqmKXS4nykIf4p7q+z/Cldpvd48QHf4q2cEGJIHn3/2+
- DqdHozdBSy/gSLR5VGYTPANNHd7wz2ZP7fa9dp3O/d0BUO1rMvJvsIq4ecrPLzLEnto2
- IVLeuaRcs+dvFK1Rh/skNquNgy/w3U3Gmxi4iAtz5TOfmY5ab6e13PSIpCe7jq2klHn0
- hr+mxgwU4euob8EtGorfq1L7P+7tfgGg5rpF1VBYJzM14tm7b46RH/jgHTYmeU+ARNtr
- ly2AhcQ7ggDFbITQgeHstnpNuQohxTRAU2SWRs9pKCgXwV60PRhf3Yxl9ooq/bE7KCwV
- DyJA==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=EkplecsBlPPnRuZXHE6e7jrbnG0gHvt4a5C9/IO/Jn4=;
+ b=qxeUGu7zd/oq5+AkjIqIIv4AbwIjrr2CS1GlsoHs/2IwErU9jL5p8nTg/rnrOi0+Hs
+ era/vVIFq2Fn0c+N/zEgg8RtcjI3rErFOkAiEBhcbRViM9pY9PQoKrr8JtFXnBrPxB8U
+ dYAAM/9nOBmwrEvFbBQyFoM4nLYG7/1VTx9juSHRWqUMdHdZ/gMA6KgZiDTjjg1tvx2t
+ XzKHmX9ffT/usEqxPNpKfM4MAWSch2o6dp0PgoTGgPQELt66edWS0/Qfzf2nxNiebBy1
+ Yjp7ogELJL5Z/wVnCRA6LGvBJPmzzqLHzEk65i4hoi/ziakFo1nSYTjN1ShlVhYApYUp
+ Ln9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4kvZHaZS5hLNJwdorsy1zm/c4irnYS40G/Gsr1cqd9o=;
- b=HzmjdgZZlOloUqWqtiiyvXt4Rf/8A/mzRbxZDb8sGG5rdihfDJd+vLx4yBwI1U9Ga4
- 2z3Iv7NKm9WKvBTZDsrRszm8DFAXp8k2KUNLH7Iu8dUGcWiAH8QX6hqBY+5WWuhz7d1e
- /fFZtaHC0vsczcYzYWAg7KnKsZ3XqDRSKzzu62fcCopPw75816PNNrSUVtwW+f0dxS+k
- P4uAdFKlX8kPkXVUzbcpa0XoRW1BXRVRLyzdHtSPXQEb0Wv+mqq8Khw09Xuevyf8jBeo
- vH/B8dBO2jiY62gL6Wc6j/Of0rjmnRorlw+LPzfY44rFoyFqBDYgoOG3fo9MXnRkgPm4
- Q/+w==
-X-Gm-Message-State: AGi0PuYGc/a+jc8kG+bOd6PjoSFZwe+La+7Y+zA910iQFJvp3aUm4T6W
- F6Ry7MS4nzVAJAhYlt8T6cKTkHfxwPLwQvsP1l4=
-X-Received: by 2002:a05:620a:219a:: with SMTP id
- g26mr2561042qka.228.1588672014221; 
- Tue, 05 May 2020 02:46:54 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=EkplecsBlPPnRuZXHE6e7jrbnG0gHvt4a5C9/IO/Jn4=;
+ b=MILe16i+DptK7/+FLWuEuzAURVc35F6mFWjonFBt9qoWDZywJx5erJt8HrsiPXdahF
+ b5FDpj23jNw4BYkjShFQA9/DPCUXqZbKMV51r+Ck6N2UCiaSLlA1UNUoP5iRHjAZ7Q2N
+ DjxmW4zid7nw6648fsAlatkiMc4tax7mEGTDQq4P5Q6wAkGFd7WJcIZRuOOKCsjmF/kF
+ UN/lw98uA43UK5vc6vqhNEYFc0ayPwn/k6TJ0YQxYTWmwIGt/cKBQIorkNK3sjDJk4JZ
+ 3tI3QgwR/mPBVhMDp4aoNWoFpBXuMaXKY27oSog3xBq38jNA0OONbZAb0zGlc4kciuRb
+ VK3A==
+X-Gm-Message-State: AGi0PubMkZcoPFcJUY2Pj3e5aB8jYlnCijV3gxBvXU+GyqY3I99c3WSE
+ CTWFKtc8Ch3aAZJSL9V/FzONryv9
+X-Received: by 2002:a05:600c:1008:: with SMTP id
+ c8mr2340956wmc.14.1588672787793; 
+ Tue, 05 May 2020 02:59:47 -0700 (PDT)
+Received: from localhost.localdomain (26.red-88-21-207.staticip.rima-tde.net.
+ [88.21.207.26])
+ by smtp.gmail.com with ESMTPSA id s17sm2894725wmc.48.2020.05.05.02.59.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 05 May 2020 02:59:46 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [RFC PATCH] hw/arm/musicpal: Map the UART devices unconditionally
+Date: Tue,  5 May 2020 11:59:45 +0200
+Message-Id: <20200505095945.23146-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-References: <20200323084617.1782-1-bbhushan2@marvell.com>
- <20200323084617.1782-2-bbhushan2@marvell.com>
- <20200323170835.5021f845@w520.home>
- <8ec6af3c-6bd7-a3dc-c531-16db6b2089c5@redhat.com>
- <20200326115318.094ab79a@x1.home>
- <MWHPR1801MB196612966851882A99A6D3F3E3C60@MWHPR1801MB1966.namprd18.prod.outlook.com>
- <72e3ea5c-c98c-3e02-26d1-b956ee81e30f@redhat.com>
- <CAAeCc_nnE2FBo2wW+NkJX-vOP3FF_wSvLg0KngND4HhFUAGf9Q@mail.gmail.com>
- <987c2781-ce4d-9c6a-eae6-ac53fdc581c0@redhat.com>
-In-Reply-To: <987c2781-ce4d-9c6a-eae6-ac53fdc581c0@redhat.com>
-From: Bharat Bhushan <bharatb.linux@gmail.com>
-Date: Tue, 5 May 2020 15:16:42 +0530
-Message-ID: <CAAeCc_m_+13YxByDQPU1VNFCNp2hhUWjMRc5LTC6CdvOm0q6Zw@mail.gmail.com>
-Subject: Re: [EXT] Re: [PATCH v9 1/9] hw/vfio/common: Remove error print on
- mmio region translation by viommu
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::742;
- envelope-from=bharatb.linux@gmail.com; helo=mail-qk1-x742.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -118,177 +117,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "yang.zhong@intel.com" <yang.zhong@intel.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "kevin.tian@intel.com" <kevin.tian@intel.com>,
- "Tomasz Nowicki \[C\]" <tnowicki@marvell.com>,
- "mst@redhat.com" <mst@redhat.com>, "drjones@redhat.com" <drjones@redhat.com>,
- "peterx@redhat.com" <peterx@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Alex Williamson <alex.williamson@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- Bharat Bhushan <bbhushan2@marvell.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "linuc.decode@gmail.com" <linuc.decode@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HqlCujgwQF2f
+X-TUID: 86MDWwNrnC9h
 
-hi Eric,
+I can't find proper documentation or datasheet, but it is likely
+a MMIO mapped serial device mapped in the 0x80000000..0x8000ffff
+range belongs to the SoC address space, thus is always mapped in
+the memory bus.
+Map the devices on the bus regardless a chardev is attached to it.
 
-On Tue, May 5, 2020 at 3:00 PM Auger Eric <eric.auger@redhat.com> wrote:
->
-> Hi Bharat,
->
-> On 5/5/20 11:25 AM, Bharat Bhushan wrote:
-> > Hi Eric,
-> >
-> > On Fri, Apr 24, 2020 at 7:47 PM Auger Eric <eric.auger@redhat.com> wrote:
-> >>
-> >> Hi Bharat,
-> >>
-> >> On 4/2/20 11:01 AM, Bharat Bhushan wrote:
-> >>> Hi Eric/Alex,
-> >>>
-> >>>> -----Original Message-----
-> >>>> From: Alex Williamson <alex.williamson@redhat.com>
-> >>>> Sent: Thursday, March 26, 2020 11:23 PM
-> >>>> To: Auger Eric <eric.auger@redhat.com>
-> >>>> Cc: Bharat Bhushan <bbhushan2@marvell.com>; peter.maydell@linaro.org;
-> >>>> peterx@redhat.com; eric.auger.pro@gmail.com; kevin.tian@intel.com;
-> >>>> mst@redhat.com; Tomasz Nowicki [C] <tnowicki@marvell.com>;
-> >>>> drjones@redhat.com; linuc.decode@gmail.com; qemu-devel@nongnu.org; qemu-
-> >>>> arm@nongnu.org; bharatb.linux@gmail.com; jean-philippe@linaro.org;
-> >>>> yang.zhong@intel.com; David Gibson <david@gibson.dropbear.id.au>
-> >>>> Subject: [EXT] Re: [PATCH v9 1/9] hw/vfio/common: Remove error print on mmio
-> >>>> region translation by viommu
-> >>>>
-> >>>> External Email
-> >>>>
-> >>>> ----------------------------------------------------------------------
-> >>>> On Thu, 26 Mar 2020 18:35:48 +0100
-> >>>> Auger Eric <eric.auger@redhat.com> wrote:
-> >>>>
-> >>>>> Hi Alex,
-> >>>>>
-> >>>>> On 3/24/20 12:08 AM, Alex Williamson wrote:
-> >>>>>> [Cc +dwg who originated this warning]
-> >>>>>>
-> >>>>>> On Mon, 23 Mar 2020 14:16:09 +0530
-> >>>>>> Bharat Bhushan <bbhushan2@marvell.com> wrote:
-> >>>>>>
-> >>>>>>> On ARM, the MSI doorbell is translated by the virtual IOMMU.
-> >>>>>>> As such address_space_translate() returns the MSI controller MMIO
-> >>>>>>> region and we get an "iommu map to non memory area"
-> >>>>>>> message. Let's remove this latter.
-> >>>>>>>
-> >>>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> >>>>>>> Signed-off-by: Bharat Bhushan <bbhushan2@marvell.com>
-> >>>>>>> ---
-> >>>>>>>  hw/vfio/common.c | 2 --
-> >>>>>>>  1 file changed, 2 deletions(-)
-> >>>>>>>
-> >>>>>>> diff --git a/hw/vfio/common.c b/hw/vfio/common.c index
-> >>>>>>> 5ca11488d6..c586edf47a 100644
-> >>>>>>> --- a/hw/vfio/common.c
-> >>>>>>> +++ b/hw/vfio/common.c
-> >>>>>>> @@ -426,8 +426,6 @@ static bool vfio_get_vaddr(IOMMUTLBEntry *iotlb,
-> >>>> void **vaddr,
-> >>>>>>>                                   &xlat, &len, writable,
-> >>>>>>>                                   MEMTXATTRS_UNSPECIFIED);
-> >>>>>>>      if (!memory_region_is_ram(mr)) {
-> >>>>>>> -        error_report("iommu map to non memory area %"HWADDR_PRIx"",
-> >>>>>>> -                     xlat);
-> >>>>>>>          return false;
-> >>>>>>>      }
-> >>>>>>>
-> >>>>>>
-> >>>>>> I'm a bit confused here, I think we need more justification beyond
-> >>>>>> "we hit this warning and we don't want to because it's ok in this
-> >>>>>> one special case, therefore remove it".  I assume the special case
-> >>>>>> is that the device MSI address is managed via the SET_IRQS ioctl and
-> >>>>>> therefore we won't actually get DMAs to this range.
-> >>>>> Yes exactly. The guest creates a mapping between one giova and this
-> >>>>> gpa (corresponding to the MSI controller doorbell) because MSIs are
-> >>>>> mapped on ARM. But practically the physical device is programmed with
-> >>>>> an host chosen iova that maps onto the physical MSI controller's
-> >>>>> doorbell. so the device never performs DMA accesses to this range.
-> >>>>>
-> >>>>>   But I imagine the case that
-> >>>>>> was in mind when adding this warning was general peer-to-peer
-> >>>>>> between and assigned and emulated device.
-> >>>>> yes makes sense.
-> >>>>>
-> >>>>>   Maybe there's an argument to be made
-> >>>>>> that such a p2p mapping might also be used in a non-vIOMMU case.  We
-> >>>>>> skip creating those mappings and drivers continue to work, maybe
-> >>>>>> because nobody attempts to do p2p DMA with the types of devices we
-> >>>>>> emulate, maybe because p2p DMA is not absolutely reliable on bare
-> >>>>>> metal and drivers test it before using it.
-> >>>>> MSI doorbells are mapped using the IOMMU_MMIO flag (dma-iommu.c
-> >>>>> iommu_dma_get_msi_page).
-> >>>>> One idea could be to pass that flag through the IOMMU Notifier
-> >>>>> mechanism into the iotlb->perm. Eventually when we get this in
-> >>>>> vfio_get_vaddr() we would not print the warning. Could that make sense?
-> >>>>
-> >>>> Yeah, if we can identify a valid case that doesn't need a warning, that's fine by me.
-> >>>> Thanks,
-> >>>
-> >>> Let me know if I understood the proposal correctly:
-> >>>
-> >>> virtio-iommu driver in guest will make map (VIRTIO_IOMMU_T_MAP) with VIRTIO_IOMMU_MAP_F_MMIO flag for MSI mapping.
-> >>> In qemu, virtio-iommu device will set a new defined flag (say IOMMU_MMIO) in iotlb->perm in memory_region_notify_iommu(). vfio_get_vaddr() will check same flag and will not print the warning.>
-> >>> Is above correct?
-> >> Yes that's what I had in mind.
-> >
-> > In that case virtio-iommu driver in guest should not make map
-> > (VIRTIO_IOMMU_T_MAP) call as it known nothing to be mapped.
-> sorry I don't catch what you meant. Please can you elaborate?
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+from 2019... found while doing housekeeping
+---
+ hw/arm/musicpal.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
-What I understood of the proposal is:
-Linux:
- 1) MSI doorbells are mapped using the IOMMU_MMIO flag (dma-iommu.c
-iommu_dma_get_msi_page)
- 2) virtio-iommu driver in guest will make map (VIRTIO_IOMMU_T_MAP)
-with VIRTIO_IOMMU_MAP_F_MMIO flag for MSI mapping.
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index b2d0cfdac8..92f33ed87e 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -1619,14 +1619,10 @@ static void musicpal_init(MachineState *machine)
+                           pic[MP_TIMER2_IRQ], pic[MP_TIMER3_IRQ],
+                           pic[MP_TIMER4_IRQ], NULL);
+ 
+-    if (serial_hd(0)) {
+-        serial_mm_init(address_space_mem, MP_UART1_BASE, 2, pic[MP_UART1_IRQ],
+-                       1825000, serial_hd(0), DEVICE_NATIVE_ENDIAN);
+-    }
+-    if (serial_hd(1)) {
+-        serial_mm_init(address_space_mem, MP_UART2_BASE, 2, pic[MP_UART2_IRQ],
+-                       1825000, serial_hd(1), DEVICE_NATIVE_ENDIAN);
+-    }
++    serial_mm_init(address_space_mem, MP_UART1_BASE, 2, pic[MP_UART1_IRQ],
++                   1825000, serial_hd(0), DEVICE_NATIVE_ENDIAN);
++    serial_mm_init(address_space_mem, MP_UART2_BASE, 2, pic[MP_UART2_IRQ],
++                   1825000, serial_hd(1), DEVICE_NATIVE_ENDIAN);
+ 
+     /* Register flash */
+     dinfo = drive_get(IF_PFLASH, 0, 0);
+-- 
+2.21.3
 
-GEMU:
-3) virtio-iommu device - If VIRTIO_IOMMU_MAP_F_MMIO flag set then will
-set a new defined flag (say IOMMU_MMIO) in iotlb->perm in
-memory_region_notify_iommu()
-4. vfio_get_vaddr() will check same flag and will not print the
-warning. Also vfio_iommu_map_notify() will not do anything.
-
-So, rather than going down to step 3 and 4, can we avoid maling map()
-calling in step-2 itself?
-
-Thanks
--Bharat
-
->
-> Thanks
->
-> Eric
-> >
-> > Stay Safe
-> >
-> > Thanks
-> > -Bharat
-> >
-> >>
-> >> Thanks
-> >>
-> >> Eric
-> >>>
-> >>> Thanks
-> >>> -Bharat
-> >>>
-> >>>>
-> >>>> Alex
-> >>>
-> >>>
-> >>
-> >
->

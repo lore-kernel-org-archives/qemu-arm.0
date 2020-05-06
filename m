@@ -1,147 +1,122 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1223772lfb;
-        Wed, 6 May 2020 11:07:03 -0700 (PDT)
-X-Google-Smtp-Source: APiQypI9IWOwjwdl+uc5tgig0H6BlDltOC99vL28dQ15JAKTPNuI4K99Hvo9QXOr6Sl7TKeNYD/W
-X-Received: by 2002:a05:620a:62c:: with SMTP id 12mr10701266qkv.234.1588788423099;
-        Wed, 06 May 2020 11:07:03 -0700 (PDT)
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1240180lfb;
+        Wed, 6 May 2020 11:28:25 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIiAscM3Z4Y0cE9r8AsgSsymMNQsMRU3k3L6epeTkgi293DXR6iHJoMHJta+tJhMA9fMH8c
+X-Received: by 2002:a0c:bec4:: with SMTP id f4mr9528840qvj.26.1588789705812;
+        Wed, 06 May 2020 11:28:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588789705; cv=none;
+        d=google.com; s=arc-20160816;
+        b=p3D3EnDD0nZjzrbq4bRGZACrUlmJ7PvzmUjl5SI8Ckm59IxvZ4mZz1WwGmTiOR5PFf
+         dvevrmDT84wrTHv8EHKFMSH79EWPD5gzKba6yc2Zh2+tg2kinV6KsnLWrwbQ5AsDcktR
+         Xq3Mm4BbvbAPP0tC627bFIqmyVljKLum004gWGuhK/6L9AcCRmPHOlyW2cn9JxXVbGwj
+         gtGgjCYvjWXc5aC5dSUFhryvj5SUNQz1vQPqwLXtf3p29g6in2p5RtnmWmj/zgiNMZYR
+         9NaFpHgrRtdb8R3Gbs8TJFmGtDzYkWUHwZFHxIJYnLpNa/ohdG2RhLnuTJal0Gze8lKU
+         kksQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature:dkim-signature;
+        bh=AX7UfPLCTkOWi7qZeHN4nqghVrbz9XIDaJmmCTU8fsg=;
+        b=wFyMNrQH9bVB1GkS+/dXlhxP1aYwVU0UTtdTwBuEtH0I8ELJwKz0IvI/8DOmjnb0bx
+         Hm/Ckueb9H/Zhb4PG7KpUo+XX8lCwVDtpAD1NM+2euazro7nIouBL1XgGghJy4NuYGIF
+         yNXbM7nfY/A8W+c6v2Y8PVQ0pCBts/BvzZMxnbQgQCfHROqauuBqa7Xpb7bVra84HvOs
+         ZkCKAL2m0Uzg7rlKBvk57cYKeFR+VC3RJAePFECkXeOQT01uDWsY+HzFKZ7Ahc8ltwfB
+         qIxDQa8kXs2yPfqPiQSEKBelbw9LnBdJXzyCoo/qleVhpxMiDP31rkLU5Yd38SCnX3yi
+         ulVw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@stwcx.xyz header.s=fm1 header.b=B9IPoh76;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=phCOjsOA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id a26si1363305qto.322.2020.05.06.11.07.02
+        by mx.google.com with ESMTPS id j47si945762qta.346.2020.05.06.11.28.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 May 2020 11:07:03 -0700 (PDT)
+        Wed, 06 May 2020 11:28:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@fb.com header.s=facebook header.b=a2UAsIzz;
-       dkim=fail header.i=@fb.onmicrosoft.com header.s=selector2-fb-onmicrosoft-com header.b=bQsyeoTt;
-       arc=fail (signature failed);
+       dkim=fail header.i=@stwcx.xyz header.s=fm1 header.b=B9IPoh76;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=phCOjsOA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51494 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45288 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jWORi-0000fr-G0
-	for alex.bennee@linaro.org; Wed, 06 May 2020 14:07:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54794)
+	id 1jWOmP-0002jW-7m
+	for alex.bennee@linaro.org; Wed, 06 May 2020 14:28:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60278)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=2395c42e42=amithash@fb.com>)
- id 1jWORa-0000fh-Bh; Wed, 06 May 2020 14:06:54 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:45234)
+ (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
+ id 1jWOmH-0002i1-AK; Wed, 06 May 2020 14:28:17 -0400
+Received: from wout3-smtp.messagingengine.com ([64.147.123.19]:52769)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=2395c42e42=amithash@fb.com>)
- id 1jWORY-0008Mi-Vz; Wed, 06 May 2020 14:06:53 -0400
-Received: from pps.filterd (m0044010.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 046I1Wh0013357; Wed, 6 May 2020 11:06:37 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : cc : subject
- : date : message-id : references : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=facebook;
- bh=BZpcr1OmRPGGLUQxtaBASSLJZJ7uo6xxzrYDD4zk1r4=;
- b=a2UAsIzz+sobPM/led+dU5wJm9NPDsKHW+T8aCdqE0ERgngnl0rEwjRMWP+oQsieS5EJ
- 5kxHIzhFXfOMnTCEmiQllpi6ewRS+jC6URJGpQicDNGmyNR2h/hjrdMAj6R9Ersk+RI7
- ns1taTMYNYEPnXjdzTkmB49Rg3/fHpgivaw= 
-Received: from maileast.thefacebook.com ([163.114.130.16])
- by mx0a-00082601.pphosted.com with ESMTP id 30srvqamaa-7
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Wed, 06 May 2020 11:06:37 -0700
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com (100.104.31.183)
- by o365-in.thefacebook.com (100.104.35.175) with Microsoft SMTP
- Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1847.3; Wed, 6 May 2020 11:06:35 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mGvxWH3ZCFRMDc+/ZD6+bCVKkQKuf8IAacHQa3VIgkP91KlGSjkbFI6zbIoHPCfIUDxl4JuzFK8oJEMY13eYvJ7VXu2fpVVjGs3DByOzEmaYTXIDMF1jEfrWnFm1Fi2GDbDVglnU/e9b0v5TQBN9h3++inPPCb2eOnrR1mXkltEa8mq37iBWpE9IY0ZfDP4S090QRkThKMSYOImDbmtwpv4B2OZocMVONfcx2VsBffHJPe9MyiM4U4OHotC0wXNkz9kXTWxbEqaIVocOLb4Eus/a0lxz9AvC95A6MJVuzNJhSRjg9xFWkZMzavTu/E7J+D7TrUTlPkIyQ22UANunhg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BZpcr1OmRPGGLUQxtaBASSLJZJ7uo6xxzrYDD4zk1r4=;
- b=gfZ/7IXaAvOFHqb6PkN6BGGFRm4Bo3QoF6KllSJq/F0QaMCaozywV7O/oyMJAYYSvdhh/kfC0zuWN6r2IT5p1yXrmkncDyWUo6gj5jzp2vOnjVopIxAjAwDXvQsEBPS7vPpoTA8+Y9/Uy8/Ep7vnL2KQ35jDNVbqVvCBlvJotAJcp0tDIdKx0HdjeIWOsoRiet/leq1z0P2bFo8kg+uRz1AAdMNmY7oaDWB2hL7eEde+uuGxCFexKA6hkfUu/AxLv8ZH/j2UshiQgDlYrL1xz7zDmkjJmpIoXO9YohWVcVmI8qDs917ooCE7C4MsdUVCmyzJp2vvd1qJq7jAB6lIlg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=fb.com; dmarc=pass action=none header.from=fb.com; dkim=pass
- header.d=fb.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.onmicrosoft.com;
- s=selector2-fb-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BZpcr1OmRPGGLUQxtaBASSLJZJ7uo6xxzrYDD4zk1r4=;
- b=bQsyeoTt7yIIL4Z7/vp8Bl4XxdzsCT279mmDgLJoEBvAR5ckNg3iJKD1nDvV1cJSS1c8i4vc2w2kle68atiO5wrGXKuh59PaIX7MzuTp9EJzDtXIWfUvPi/XTmKH56J8aTM52etFz/wsDH8qjYn4KmEsDjYJAfO2/3PvPdanKPg=
-Received: from BYAPR15MB2823.namprd15.prod.outlook.com (2603:10b6:a03:15a::30)
- by BYAPR15MB3013.namprd15.prod.outlook.com (2603:10b6:a03:f8::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.27; Wed, 6 May
- 2020 18:06:34 +0000
-Received: from BYAPR15MB2823.namprd15.prod.outlook.com
- ([fe80::11c8:398b:561a:3474]) by BYAPR15MB2823.namprd15.prod.outlook.com
- ([fe80::11c8:398b:561a:3474%4]) with mapi id 15.20.2958.030; Wed, 6 May 2020
- 18:06:34 +0000
-To: Patrick Williams <patrick@stwcx.xyz>
-CC: Vijay Khemka <vijaykhemka@fb.com>, =?iso-8859-1?Q?C=E9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
- <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
+ (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
+ id 1jWOmF-0000mb-UU; Wed, 06 May 2020 14:28:16 -0400
+Received: from compute7.internal (compute7.nyi.internal [10.202.2.47])
+ by mailout.west.internal (Postfix) with ESMTP id 54BA85C4;
+ Wed,  6 May 2020 14:28:13 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute7.internal (MEProxy); Wed, 06 May 2020 14:28:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stwcx.xyz; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm1; bh=AX7UfPLCTkOWi7qZeHN4nqghVrb
+ z9XIDaJmmCTU8fsg=; b=B9IPoh76L88RP+G1BwXWwXjaM8oFIGYQQdkn458hx0i
+ SNguNpSZNCSpql4GxDoPRMMKecnS/yRP+b1Kd0BF4rFIbaxCY9oHjZOhUVKLkdET
+ G4NfAAF5I5Jo2Un68ue6TE+uJ0vbYbOT/fStHVHwJVMDfnRfnEXQU5nKUABjHd6b
+ gXUHTvbGnMsDDi9hEpf+lGVS5sdSLwZ1zRGbiagqJB7ziwIOtPuNJazO0JRiWRL2
+ x02knD/L3TzaVzE3r2YpycYiYPzGOggxcCJluU5vCaXapZ+4bHMYf+zg7I8wP6YY
+ rucadQ7Yw/FOFwLlh8oY4c+Khq597JMa+lDXk9mpnag==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=AX7UfP
+ LCTkOWi7qZeHN4nqghVrbz9XIDaJmmCTU8fsg=; b=phCOjsOAbmsCX6VSdymIIq
+ vfy2fJalfcV6XL7dMmiFa1rV+DnUluCvk5u54Ur/ltSBerYMEgA+JE74qVct+4RJ
+ qwxkDc1egCpoAdw8dROmWhCMmOufutuDiAsm6CvFbcYyAcXhVVFYmvTmXIbl7blW
+ nbdjhXoP2il0L7YkX4m6tN6L45lwMG6b2waB0ubYbgaFEk66iENWiZ0v6QWtn6yB
+ 2seugFQkYzDFcUl+nutmYpO5v+h6ebGas34FSZOaVPHhWYfKCk+UpTU0G2RLWv8t
+ J5gCuJwB0fT4TtyqRgBOLCZAbXo79Lr+zzrKFVI5kITj6aYYPMzl1vFFTKVUc8Iw
+ ==
+X-ME-Sender: <xms:uwGzXprbHDNToNM1CODxM_w2JKeBuJ8iV5wYZAi7DWOSTpDpDm-QGQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduhedrjeekgdduvddvucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ gfrhhlucfvnfffucdljedtmdenucfjughrpeffhffvuffkfhggtggujgesghdtreertddt
+ udenucfhrhhomheprfgrthhrihgtkhcuhghilhhlihgrmhhsuceophgrthhrihgtkhessh
+ htfigtgidrgiihiieqnecuggftrfgrthhtvghrnheptdefjeetuedtfeelfeeiieevveek
+ geeuvedtveefiedvhfeiueeugffhkeelvdfhnecukfhppeduieeirddujeeirdduvdefrd
+ dvvddtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhep
+ phgrthhrihgtkhesshhtfigtgidrgiihii
+X-ME-Proxy: <xmx:uwGzXhJzGPV3j8rs5iKOyfL-kvWhKkb9lJLgKeKWnvRmnMvfEVrNfg>
+ <xmx:uwGzXlT8YS4q92TWyOTb8gxD64bHSX2LkUtKAeJltv-5c1h5LkWxoQ>
+ <xmx:uwGzXpP1dAcUvvM85oEyuXYg5Xi1Dt-M30ue1WTlmlKroN0n6YDsAw>
+ <xmx:vAGzXsOnqROJNpYXdT69l3NHhjXBGQWiUUCTEzUPQGDfdHz80b78Iw>
+Received: from localhost (mobile-166-176-123-220.mycingular.net
+ [166.176.123.220])
+ by mail.messagingengine.com (Postfix) with ESMTPA id 68CDE3066118;
+ Wed,  6 May 2020 14:28:11 -0400 (EDT)
+Date: Wed, 6 May 2020 13:28:10 -0500
+From: Patrick Williams <patrick@stwcx.xyz>
+To: Amithash Prasad <amithash@fb.com>
 Subject: Re: [PATCH v2] aspeed: Add support for the sonorapass-bmc board
-Thread-Topic: [PATCH v2] aspeed: Add support for the sonorapass-bmc board
-Thread-Index: AQHWI8wWAhkDgtx2AEqQaTNeQgpFP6ibWecz
-Date: Wed, 6 May 2020 18:06:34 +0000
-Message-ID: <BYAPR15MB2823122DCA19E2E831257DD6B2A40@BYAPR15MB2823.namprd15.prod.outlook.com>
-References: <20200501113704.2240698-1-patrick@stwcx.xyz>,
+Message-ID: <20200506182810.GB4865@heinlein>
+References: <20200501113704.2240698-1-patrick@stwcx.xyz>
  <20200506173035.2154053-1-patrick@stwcx.xyz>
-In-Reply-To: <20200506173035.2154053-1-patrick@stwcx.xyz>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: stwcx.xyz; dkim=none (message not signed)
- header.d=none;stwcx.xyz; dmarc=none action=none header.from=fb.com;
-x-originating-ip: [2620:10d:c090:400::5:bf67]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 4f46b3be-9bcf-46b5-519e-08d7f1e83652
-x-ms-traffictypediagnostic: BYAPR15MB3013:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BYAPR15MB301357C3418DE0328D7B0E67B2A40@BYAPR15MB3013.namprd15.prod.outlook.com>
-x-fb-source: Internal
-x-ms-oob-tlc-oobclassifiers: OLM:1728;
-x-forefront-prvs: 03950F25EC
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: iqqc9XM6Ar6exrvthnPX//esv/Yhyz4+0izlOgJe/c/nt68hTGJZjKQFmQ0ejQ7smGqeD/syjhmxSKZvl9+dop2luxiy4w2hG2Dl+JzNUNg9dL9wYZrnCFNkSTKtMAuBQ75+Hy1Hvy3kObvsuW0dBGkGRKviweA0qAKGvY/0DYS5GN2O2SqYFEvrg6YU36W0VCHuBcf6yMtII6900kiZVRlID7sM7UUcsKE9Gy/ETm6Ok0lc1F3VUv68d99xz1K+vV2S8S6ackBvLH1ySO5wEyCroRjIfpRubwg3LH588y2nhN55VR6ewFGrMWvGenMfaMECZWskJF28bfiTyBcvnR4SHku0snIvXkHEyiwTSyleFQORxzudidAf+/wCAKjz1/nXQP74dxf9y1ToAxJv2gKt5xfXTN9Mxchsl1639sZZXYK9r4blbjXhL7SfgBkBDMeZuIow61LGBXt8JOjvQMeVLZ21uVeeRk24VadGFzla3ZYD9/drb2kfkgpy4f4KigZq8W6ZSGrVz/ohzY/EMA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR15MB2823.namprd15.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(376002)(366004)(39860400002)(136003)(346002)(396003)(33430700001)(33440700001)(558084003)(66946007)(52536014)(55016002)(9686003)(76116006)(8936002)(316002)(7696005)(5660300002)(2906002)(478600001)(4326008)(186003)(86362001)(71200400001)(6916009)(66476007)(66556008)(8676002)(33656002)(6506007)(54906003)(66446008)(64756008);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: FqLjOSU593KxZPTP7Yl2kWy0FsEIkl4LzLwpP2s+s4U+roINmVi65ukfbeRBEhcdMx6/aRZK0uTX9+V4YtxkdwfEVNCNy/ZVmALiklvXGpFabtQl8MJnxBzW+OC1bCPeq81uW5GQvlPcO0SYr14cvsxSlTQF/CBotfdzQaZve74GOFX+PusmM/tkntlzveqj08nukybG40sh7spv3R3t5IpzQJEe4t6nLziPSL2S12+T8Zt2rFtVP7DD2oaSj/Bfxe+Lj0FrpPDcQmefQN58GLq4UVtfQ8jy1n3fW1B3HGrAoUAsugVeVvN0p8fO0b0Sg6qhCB39y4tWKdJNp25fpVryfYsrl3BWmUwLgB4KbgfTdGzrYNNaCBNyKg9bHs4SJdt/e6Z3F+MFAASy8iwffvXmTXVNP2pLe6hbx9pDCFJLgH+L0hyCCrqmlgumm7/Svfyf+22lK3pRPVbT8vXTRF7WwCPhI9dCLOp0eJsKYcxr/6JZ45zRp7hhtM4fcaQJur4dz9cpE9aXUe3bYiwq3Fm0bQ6b/TcQtEYXn0oc2xzp5FejmlW68rqFfl5gGXBoGIKPL2yST50gOQAgh+jRnSc9XdY3MCW01GhVC0NcmFEotb4YZbPBg8h2h/0J+vGafmqzBzSCGh6jzVlQYUJzUux/CjZyWvqvlgziqRTvQ2Mxq6rQ+v3QarbHwFap+x+p4BmFmE/gPUby9A/EiDTYzeMswBIuLdVhJSVtDweke9t/AaggicCm3UPWgWhtjdSrrIU/Y0qxnHLLhZt/jMKdf2xcHJyMEyEpTingcMTPls+543/PyEh3qapauPjDKYtfD9rOxSdaKReicD7mcerygA==
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ <BYAPR15MB2823122DCA19E2E831257DD6B2A40@BYAPR15MB2823.namprd15.prod.outlook.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4f46b3be-9bcf-46b5-519e-08d7f1e83652
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 May 2020 18:06:34.0706 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 8ae927fe-1255-47a7-a2af-5f3a069daaa2
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: z9NMx+NbR6h3l6txyMtA8bgk79/V7vNCTw3V7A8tZBYG8m/Ezs31H1LU/CRBxUhu
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR15MB3013
-X-OriginatorOrg: fb.com
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.676
- definitions=2020-05-06_09:2020-05-05,
- 2020-05-06 signatures=0
-X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
- mlxscore=0 adultscore=0
- spamscore=0 phishscore=0 mlxlogscore=641 bulkscore=0 clxscore=1011
- malwarescore=0 lowpriorityscore=0 priorityscore=1501 suspectscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2005060147
-X-FB-Internal: deliver
-Received-SPF: pass client-ip=67.231.145.42;
- envelope-from=prvs=2395c42e42=amithash@fb.com; helo=mx0a-00082601.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/06 14:06:49
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="OwLcNYc0lM97+oe1"
+Content-Disposition: inline
+In-Reply-To: <BYAPR15MB2823122DCA19E2E831257DD6B2A40@BYAPR15MB2823.namprd15.prod.outlook.com>
+Received-SPF: pass client-ip=64.147.123.19; envelope-from=patrick@stwcx.xyz;
+ helo=wout3-smtp.messagingengine.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/06 13:30:44
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIMWL_WL_MED=0.001, DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
- DKIM_VALID_EF=-0.1, KHOP_DYNAMIC=0.001, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -155,12 +130,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ Vijay Khemka <vijaykhemka@fb.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to: Amithash Prasad <amithash@fb.com>
-From: Amithash Prasad via <qemu-arm@nongnu.org>
-X-TUID: 2d1EXMpM4v1x
+X-TUID: v0dG7XRMyaCs
 
->> +=A0=A0=A0 mc->desc=A0=A0=A0=A0=A0=A0 =3D "OpenPOWER SonoraPass BMC (ARM=
-1176)";=0A=
-Open Compute Project?=0A=
+
+--OwLcNYc0lM97+oe1
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, May 06, 2020 at 06:06:34PM +0000, Amithash Prasad wrote:
+> >> +=A0=A0=A0 mc->desc=A0=A0=A0=A0=A0=A0 =3D "OpenPOWER SonoraPass BMC (A=
+RM1176)";
+> Open Compute Project?
+
+Oops.  Yeah, this is not an OpenPOWER machine.  Will send a v3.
+
+--=20
+Patrick Williams
+
+--OwLcNYc0lM97+oe1
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEBGD9ii4LE9cNbqJBqwNHzC0AwRkFAl6zAbgACgkQqwNHzC0A
+wRlzqA/9HhZ8aBxQ4OhRfbLpZK84Ug0Sedqy3WMpjItQFkpNBW9dXriq8XUy9Lkw
+12CkF0B+UA9yiwliSBakzzvE2NB7aONsrJEyjoLCfUErVQnb0Kpv2T1EU0QyUVvD
+5yKujT0ofSP+WTH3cmF5IX3/LlW7Hk0DLbUZtMMzWk5uCGp8nYHw4HFW2Kd0U6sW
+F2w4H9lmFK7u2SIdSCwvOs8IsRKyAhvZUKyX+YmDHKT22kJRe4TrGIre/QtSCTvx
+7MfBuxoic0sxv1902e5xaVv4ilvLs6Bk7MxCfcZe6EkQfXz/mZE9U9vO4sCjxUdQ
++qvM7oZje7OJ8ymzzvTvSVKQ/5KauwMxz+GKOmicMrZ0RCfu+iD28w13eoRWXAii
+iABRZr1iWHrcHAvt9sZIEwyBVPYsf76D226WaCOjU0xOPsm9Gae+oXyqSBS+rBOQ
+g2vZZWlR3SweHzCUg/0woF+TsIfgWYZ/nSLIApd1PJ05zMgE3GfGlbLTEC1BcsMI
+pvJFKXW3/dCIc2kKyUA963DsagE5rKjig7QuXDI0PXL8ws6ry+bmRn1raU6/zjLj
+ERn76h/peVH1uTAF/FHollZ3v8tASDn5YkgsdkftRMp2kNEACFJX21pbSFryWlOi
+BqoWBAIIy25eycBqR06XcYz7+14LSa1XzkAUc3JnK5EaCI6W4R0=
+=13rE
+-----END PGP SIGNATURE-----
+
+--OwLcNYc0lM97+oe1--

@@ -1,111 +1,140 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp838073lfb;
-        Wed, 6 May 2020 02:50:59 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJ8qfdnuOR5h2xd8uqNN6sSXYuLuCtS9uMI+tMu+d7wuIZOU8Flj45eUuPxTiPqtpRWfjyx
-X-Received: by 2002:a37:9ac6:: with SMTP id c189mr7771372qke.398.1588758659576;
-        Wed, 06 May 2020 02:50:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588758659; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp841081lfb;
+        Wed, 6 May 2020 02:56:16 -0700 (PDT)
+X-Google-Smtp-Source: APiQypK/U920WooHBhdYOPAVHqbwFund8cemoKtxsi01LBbJ87whiOxiwTxwwZOXzs2N52AGZ+pL
+X-Received: by 2002:a37:95c5:: with SMTP id x188mr7077769qkd.119.1588758976577;
+        Wed, 06 May 2020 02:56:16 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1588758976; cv=pass;
         d=google.com; s=arc-20160816;
-        b=i/Fm6oGfzIBDwNfTzC96I8w3JL/fSuJaJ/5y91RDXKw2OlsxKapspUHP51Nuf/Zfjc
-         O51oS5x/06wFu9ePiUM27+p+oVRTIRzixuQedSwVfxLOa8jsllULYC6MrNq0hp5bKXpr
-         utIgg5IbzEzHXzcjjzMjLxqG1uGOUCBgW0OBr+PXafXoWT2GdVlgmX9YNHfTsFM4BbaS
-         gcPHavGP+3RKmDr4383qc2ivkq6y8X+FDhyQqJhmk11M8m1FK3SX3fMG7VbaZujzbOBG
-         MCrrWDzmrJJ48poElAafOAkZjc7YhyyKpWTUbHmkQmFYmYGKGTY9DD7JYuNKsCBD3Gma
-         i+vw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=vT58TMMKyhMNDaEpjUigIAmOkkCe7Hh+bQC+TraPegUSVQXOsMm5wyLyKKxvg9/dP2
+         wx34b2RSHRnqZ/EWnwzdZofLtFBzJfl/4p801KuX9XFdNP5q/FJ2/AOuIbW4k2I0U6rh
+         lfhTziDFvlUrTvSeuolqLbClQhrpJbELu8IBU5KXVvGVFvHFZvj1itkkUCwsG9Dugum5
+         nte8nAFYEjC0EpmM7xM95jZjK6sPgrLYkZS2Jo9bNS+UoaUJk9BygtFMrCwdcnCWdp1U
+         OoVO5otgKyaNkmjJeKrfeyNrJv48PewGUGnyEK9rls9q/Bes7XDBhNosEm5E7v9f/wGp
+         NOyw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=fntlZxOrQXIy/pcq6sRK0Boh9YWLv+kEEtgN1sPemoY=;
-        b=v1VvMTLlBgjNqtmiYkCbKUUZfqwZUYAjpKJkkfeTiZ5vVMU0IPAroYx9sXVV46AiBS
-         7J8OGu457FNhTCK3vsM0OFld94+mKRCC0Clfo5X4p/PvdffS+mC1X/pHkcXkh4IY5osx
-         y1IHFgQq5RRFdYNL0CaD6enaQD6lVlAUGtsN7axDqJInLULCOyLZNf8mh3zZ7hp4vv3M
-         ZKNnco6kHp3FU2X6VYTzZd1CKgQVQwAb4iHnQ6FD8YKyeaayBKOcbhQcNY2KRkxiWhNZ
-         QksUmCqorrhUsZFFv2r1Db7Fe/MCMaUZBGCsoz2nwXf5P8+ZP1Q/P8w5nKezTyUlkIbI
-         /Hrw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YOBvWUJ9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from:dkim-signature;
+        bh=BbfVs4kuxmnwygnH71wKIccBArEm0K2R2Qpun73jLnQ=;
+        b=WzjFhH0l+QYrxKlW2+luAlb/qQ/ejRpyagvRPv/Tmj9wWZRzljZMUBY+lpj/8mN7pB
+         LoqQvDFmD0uk9TQbXXXpKSjX39iv8+j1/OReDKozGSA6KL9sjQ4ylbReMp+I1q4fxyCw
+         YEKqU/+fG9XjCWTE4QY8SxyuHMdvr7KwYZuaV4Rn77j+uT0fD3PaxVgUh4pSY4nP32G5
+         287TzFvCr96n8J5VoHoPw6nEeJR/4flf15OYa5SymRw+h1krYR98dvWX12Mh9DnkVF/K
+         ALy548RFyvSzXnBIRbd6W0F56mwQMl9DBgBb31J7BsTBRKufGiechRHm60fRScrTFv1R
+         Zylg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=NvcZ8T77;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dkim=pass dkdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id o45si575071qtc.121.2020.05.06.02.50.59
+        by mx.google.com with ESMTPS id m7si843991qvy.110.2020.05.06.02.56.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 May 2020 02:50:59 -0700 (PDT)
+        Wed, 06 May 2020 02:56:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YOBvWUJ9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47588 helo=lists1p.gnu.org)
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=NvcZ8T77;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com dkim=pass dkdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45870 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jWGhe-00054U-U8
-	for alex.bennee@linaro.org; Wed, 06 May 2020 05:50:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54214)
+	id 1jWGml-0007as-VL
+	for alex.bennee@linaro.org; Wed, 06 May 2020 05:56:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55172)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jWGhH-0004zG-Kw
- for qemu-arm@nongnu.org; Wed, 06 May 2020 05:50:37 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:36933
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jWGh9-0004AP-Ce
- for qemu-arm@nongnu.org; Wed, 06 May 2020 05:50:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588758626;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fntlZxOrQXIy/pcq6sRK0Boh9YWLv+kEEtgN1sPemoY=;
- b=YOBvWUJ9vlO/TJCeNaxVorzaC9/eN5sguQLA5yVeqP1QHq8C95QHHWb/ux4m875sQ+7PjL
- i3xkKlpvHwwH9H9cXW0Wpq8w96uN4HIDvmjt7Erd9OnPrKYDk69jnA75/kW9ILlONCu7rQ
- PtBsP/0qKvOW3Z1PHb0Wbz4A3YojKv8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-235--dY5D_JfPF-YpiqQbat7ig-1; Wed, 06 May 2020 05:50:25 -0400
-X-MC-Unique: -dY5D_JfPF-YpiqQbat7ig-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AD1078014C0;
- Wed,  6 May 2020 09:50:23 +0000 (UTC)
-Received: from [10.36.114.214] (ovpn-114-214.ams2.redhat.com [10.36.114.214])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5D5BF5D9C5;
- Wed,  6 May 2020 09:50:12 +0000 (UTC)
-Subject: Re: [PATCH v2 1/3] acpi: Move build_tpm2() in the generic part
-To: Andrew Jones <drjones@redhat.com>
-References: <20200505144419.29174-1-eric.auger@redhat.com>
- <20200505144419.29174-2-eric.auger@redhat.com>
- <20200506063314.4qvnyfonjixcknuj@kamzik.brq.redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <b8b64cf5-d730-20f0-c9e5-d290b8639e5a@redhat.com>
-Date: Wed, 6 May 2020 11:50:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
-MIME-Version: 1.0
-In-Reply-To: <20200506063314.4qvnyfonjixcknuj@kamzik.brq.redhat.com>
+ (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
+ id 1jWGmc-0007Xs-9N; Wed, 06 May 2020 05:56:06 -0400
+Received: from mail-eopbgr680044.outbound.protection.outlook.com
+ ([40.107.68.44]:25333 helo=NAM04-BN3-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
+ id 1jWGma-0006J0-7l; Wed, 06 May 2020 05:56:05 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=aCZpA7+FxXlBBxDQIZQpFwDFI99vlXp364naCLKTsbVXEomZ9ABsDZshv1apNB7MziiqxikOlH9/sFX6hv6A9Xt5fYke0T1yZrqpaVyR5+b46EGnnaAbQ4e0hX6gDCQPshEwZPHbaZ4F4bhGezmZJRujmMoK6WtKDd5ii1CrPWmUUgdNKqIEZ/G3XOiwTuhsgBcK/mXWg7ZmIN1KJwthHo/slnOkTjvDHDl8lUCESDrOQrwI7yhtVdG5rUJlS+5r/aFB+U3Bh6Ui4R7yImAfjXxgcTlBUH3Bqy4lTFhJoxoKhTDP7XKJINS1XoYi53+im3Rsi0dMpOY1Ksp3zUZ9/A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=BbfVs4kuxmnwygnH71wKIccBArEm0K2R2Qpun73jLnQ=;
+ b=g4vK5Zrw/AwNhtIMiIDTBsnxD2ymBC8QA3+sFN23o6SAdUirNMuhlpu0dZmvfhjQR2dJ/utIsI8OMhzCaRuY6X+bQ5f6sXp/0pPYQZA+CYucJfuo4UocXbH3crikF66IBmvyg/in9TQa1Az3lFEGC/10K3dYpr9xV4V0mbtskg64jj4jMZK1NJm3VeTTEhaKRvj6Ac39/vGnYBA/tma2T2LQkIp0r5MW3srqQ3SOZGX7Nn1IkH9zW0G+W6H7wPUJI06mkRl5ZwhCaln6CPosHf8Knok8PybRx58zwN623pZtsb8c86X0tMvqsct8ycAC+83tqvp5RnisMBUGnygP7A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=xilinx.com; dmarc=pass action=none header.from=xilinx.com;
+ dkim=pass header.d=xilinx.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=BbfVs4kuxmnwygnH71wKIccBArEm0K2R2Qpun73jLnQ=;
+ b=NvcZ8T77Q598Pp2Uu6sOJiPzrK0pr8EjQOHEXYjoN6SXVKA1E+NbzSL4vXQWjjlGkud7zhj8asfAlSKWouemnpWHCILV80TXy1cYPZZdlIw0EqI+8JTjsVqcjwVvWBOUVJaYvejGFnWrxqaj9QURLy9ukSip7vZFIsZYrK51oMY=
+Received: from BY5PR02MB6772.namprd02.prod.outlook.com (2603:10b6:a03:206::11)
+ by BY5PR02MB7012.namprd02.prod.outlook.com (2603:10b6:a03:233::23)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.19; Wed, 6 May
+ 2020 09:56:00 +0000
+Received: from BY5PR02MB6772.namprd02.prod.outlook.com
+ ([fe80::9165:a37e:f249:48f6]) by BY5PR02MB6772.namprd02.prod.outlook.com
+ ([fe80::9165:a37e:f249:48f6%9]) with mapi id 15.20.2979.028; Wed, 6 May 2020
+ 09:56:00 +0000
+From: Sai Pavan Boddu <saipava@xilinx.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: RE: [PATCH v2 01/10] net: cadence_gem: Fix debug statements
+Thread-Topic: [PATCH v2 01/10] net: cadence_gem: Fix debug statements
+Thread-Index: AQHWIiHPl6U+Xp63S0WC+U+KRE83B6ia1LhA
+Date: Wed, 6 May 2020 09:55:59 +0000
+Message-ID: <BY5PR02MB67727CCA1C24483DE5CBBF45CAA40@BY5PR02MB6772.namprd02.prod.outlook.com>
+References: <1588601168-27576-1-git-send-email-sai.pavan.boddu@xilinx.com>
+ <1588601168-27576-2-git-send-email-sai.pavan.boddu@xilinx.com>
+ <20200504143922.GB5519@toto>
+In-Reply-To: <20200504143922.GB5519@toto>
+Accept-Language: en-US
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.120;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/05 23:48:07
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-MS-Has-Attach: 
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-TNEF-Correlator: 
+authentication-results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=xilinx.com;
+x-originating-ip: [149.199.50.128]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: 28b6cac6-ea3e-4d6f-0e39-08d7f1a3ae35
+x-ms-traffictypediagnostic: BY5PR02MB7012:|BY5PR02MB7012:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <BY5PR02MB7012FB6DEC4BA5C1FDDA8124CAA40@BY5PR02MB7012.namprd02.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:230;
+x-forefront-prvs: 03950F25EC
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: IwVxcBP8EkFGZLNTfgaOFxYKXexbkTYhIYzcqo5GNTbPdvI9jFeYnjnknB7XuD5cLC7S+IU9Uw1vHSRt8EUeBFtS2jS7/5K0wiUPE2+aN7LueoVqd4EBArvKpcX73EnQoG2XFhYG9caKMbc0m3dakaapiFKj68kIOHrjSgHBuL5GEY17qfEB+LHqzwDG4QevRHPxGSjAlYIC74CaSeqSXLs3/cXGJJBCF/txrmpzbXr2xwtWXjKVE/l89DPTRLQZdDgJ7h5WjDf8VxiEyDy5e7rrs6/5Jxf7S4QfeicrU08eta6F9n2NV6zwSCGQPhcb+VLEDOTwLDTgbER3gbdPjEpVsfW8Ji+GWf5dgFp8WkgXMz8V8gLhm4V55dUZ/mF3GfXMl1fdFpLABv9Ayy7H2M1xH8pyHvhNrcF/n9fzH2wfeJHFhLtypKI+6qE/jq9vc/TzFtdC+DTcU8ZMcO6bAHhekU6Mk6flbMJf0vOzKh84owbjY2GtC+De9mz+JlW3DxOPWJg4pk5GSHEWpNOefg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR02MB6772.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(346002)(396003)(39860400002)(366004)(136003)(376002)(33430700001)(316002)(33440700001)(52536014)(5660300002)(8676002)(53546011)(186003)(55016002)(54906003)(2906002)(86362001)(26005)(9686003)(64756008)(6916009)(71200400001)(66446008)(66946007)(7696005)(66556008)(66476007)(6506007)(33656002)(4326008)(76116006)(8936002)(478600001);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: bMPwRZwM17SbkIPwL5liAUd8giwWg3AQfSBKhUpoRubS5qYaTp/z13S5YQyMWHrk0TY6ryVhjXMy97S0IRklX+ZwE38AKOzPVuMbek7xRV+FIfxItGxCtQAw7edcaWOB7wmgzNHLc9CNaebm0tzMumy02p1osb2hQ2kL8BwgeI+654Y2GCdvcmHk11+hcPi3HC6a26Y/IyS8myO8h9dV3GE4ogwoDjENeXsQrtyzSOv9+CXYDgRa6/xVFvZwbWkRnIFd4fqK3+Sxt1ONFW5PurvVvyTooqDiK7aoGCoHim9t9j/yrKd9whDYLRl1mvBN6nvJXk5SNAhwe8o4lqZvGhA3eJfcPORFFXn2OvP+Ki3K0Dr9BgUvrt06HRUai1Yt2AU3mT4DzJpxvhc++Rcm0edW7JEgpTmdqR2hI9nrd4EkuvTLpcoQJ7x1oqL5dbIVYgUGe9P5hIL0H0YY6meIUYOwd1rhiK6kkyx7UPRqbUplLsBKuDMqNz4l0CkZh8kUsmwDuSjyULHu63WE57QOQki7tkr9WppxtpYf/TaAUPc/jM5qlBU/cC/5uzI/7tn/noG08myM/urM4v9O/eA+9ZiKUWX9xH05+M6/ZsLc2HBRyK43KUUQ9DxCoL7vKzPpi6T7+Fd/dDScY82fDQz7inSK4u3etyfwPqdOqmr39UzIvGJcgANotd1CDDlconCLbacER0el74vQm798W57ZpE22wOMQOow17BSSs41Uzz4VbtIrgjVoKlmwqK94MfPa3BJetDyhdHpIHJcWO/WiaboMqtRoQ8yKsgtSrQ+3UnU=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 28b6cac6-ea3e-4d6f-0e39-08d7f1a3ae35
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 May 2020 09:55:59.9267 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: S2OGq0STtu7cZdk0Lz0MNvObn/QmrR5ydzQcmyPUvPESwGDPlkhqQMzNOcLdb5W7Iahqpejygtn/hpRy4zNLiw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR02MB7012
+Received-SPF: pass client-ip=40.107.68.44; envelope-from=saipava@xilinx.com;
+ helo=NAM04-BN3-obe.outbound.protection.outlook.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/06 05:56:01
+X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,121 +147,120 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, gshan@redhat.com, mst@redhat.com,
- qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- imammedo@redhat.com, marcandre.lureau@redhat.com, stefanb@linux.ibm.com,
- lersek@redhat.com, ardb@kernel.org, eric.auger.pro@gmail.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Ramon Fried <rfried.dev@gmail.com>,
+ =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>,
+ Tong Ho <tongh@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I8gfhGqC0H9U
+X-TUID: XaXWF2Qu4s7D
 
-Hi,
+Hi Edgar,
 
-On 5/6/20 8:33 AM, Andrew Jones wrote:
-> On Tue, May 05, 2020 at 04:44:17PM +0200, Eric Auger wrote:
->> We plan to build the tpm2 table on ARM too. In order to reuse the
->> generation code, let's move build_tpm2() to aml-build.c.
->>
->> No change in the implementation.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>  include/hw/acpi/aml-build.h |  2 ++
->>  hw/acpi/aml-build.c         | 30 ++++++++++++++++++++++++++++++
->>  hw/i386/acpi-build.c        | 30 ------------------------------
->>  3 files changed, 32 insertions(+), 30 deletions(-)
->>
->> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
->> index 0f4ed53d7f..a67ab4618a 100644
->> --- a/include/hw/acpi/aml-build.h
->> +++ b/include/hw/acpi/aml-build.h
->> @@ -437,4 +437,6 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms);
->>  
->>  void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
->>                  const char *oem_id, const char *oem_table_id);
->> +
->> +void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog);
->>  #endif
->> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
->> index 2c3702b882..1f7fd09112 100644
->> --- a/hw/acpi/aml-build.c
->> +++ b/hw/acpi/aml-build.c
->> @@ -26,6 +26,7 @@
->>  #include "qemu/bitops.h"
->>  #include "sysemu/numa.h"
->>  #include "hw/boards.h"
->> +#include "hw/acpi/tpm.h"
->>  
->>  static GArray *build_alloc_array(void)
->>  {
->> @@ -1875,6 +1876,35 @@ build_hdr:
->>                   "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
->>  }
->>  
->> +void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
->> +{
->> +    Acpi20TPM2 *tpm2_ptr = acpi_data_push(table_data, sizeof *tpm2_ptr);
->> +    unsigned log_addr_size = sizeof(tpm2_ptr->log_area_start_address);
->> +    unsigned log_addr_offset =
->> +        (char *)&tpm2_ptr->log_area_start_address - table_data->data;
->> +
->> +    tpm2_ptr->platform_class = cpu_to_le16(TPM2_ACPI_CLASS_CLIENT);
->> +    if (TPM_IS_TIS_ISA(tpm_find())) {
->> +        tpm2_ptr->control_area_address = cpu_to_le64(0);
->> +        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_MMIO);
->> +    } else if (TPM_IS_CRB(tpm_find())) {
->> +        tpm2_ptr->control_area_address = cpu_to_le64(TPM_CRB_ADDR_CTRL);
->> +        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_CRB);
->> +    } else {
->> +        g_warn_if_reached();
->> +    }
->> +
->> +    tpm2_ptr->log_area_minimum_length =
->> +        cpu_to_le32(TPM_LOG_AREA_MINIMUM_SIZE);
->> +
->> +    /* log area start address to be filled by Guest linker */
->> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
->> +                                   log_addr_offset, log_addr_size,
->> +                                   ACPI_BUILD_TPMLOG_FILE, 0);
->> +    build_header(linker, table_data,
->> +                 (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL, NULL);
->> +}
->> +
-> 
-> I'll let Igor and mst confirm/deny this, but my understanding was that the
-> build_append* API was the preferred way to create the table. Indeed, I
-> don't see too many table.field = cpu_to_le(...) lines in aml-build.c
-> 
-> I realize this function is just getting moved, but maybe it should get
-> converted to the build_append* API while being moved?
+Below comments will be taken care in V3.
 
-The reason I did not convert is that the struct is as follows
+Thanks,
+Sai Pavan
 
-struct Acpi20TPM2 {
-    ACPI_TABLE_HEADER_DEF
-    uint16_t platform_class;
-    uint16_t reserved;
-    uint64_t control_area_address;
-    uint32_t start_method;
-    uint8_t start_method_params[12];
-    uint32_t log_area_minimum_length;
-    uint64_t log_area_start_address;
-} QEMU_PACKED;
-
-
-If I understand correctly the build_append* adds the fields
-contiguously. It was not straightforward to me how to skip the
-start_method_params array.
-
-While we are at it the tcpalog arg is not used. Shall I remove it?
-
-Thanks
-
-Eric
-
-> 
-> Thanks,
-> drew
-> 
-> 
-
+> -----Original Message-----
+> From: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+> Sent: Monday, May 4, 2020 8:09 PM
+> To: Sai Pavan Boddu <saipava@xilinx.com>
+> Cc: Alistair Francis <Alistair.Francis@wdc.com>; Peter Maydell
+> <peter.maydell@linaro.org>; Jason Wang <jasowang@redhat.com>; Markus
+> Armbruster <armbru@redhat.com>; Philippe Mathieu-Daud=E9
+> <philmd@redhat.com>; Tong Ho <tongh@xilinx.com>; Ramon Fried
+> <rfried.dev@gmail.com>; qemu-arm@nongnu.org; qemu-
+> devel@nongnu.org
+> Subject: Re: [PATCH v2 01/10] net: cadence_gem: Fix debug statements
+>=20
+> On Mon, May 04, 2020 at 07:35:59PM +0530, Sai Pavan Boddu wrote:
+> > Enabling debug breaks the build, Fix them and make debug statements
+> > always compilable. Fix few statements to use sized integer casting.
+> >
+> > Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+> > ---
+> >  hw/net/cadence_gem.c | 28 ++++++++++++++--------------
+> >  1 file changed, 14 insertions(+), 14 deletions(-)
+> >
+> > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c index
+> > 22a0b1b..2f244eb 100644
+> > --- a/hw/net/cadence_gem.c
+> > +++ b/hw/net/cadence_gem.c
+> > @@ -35,14 +35,13 @@
+> >  #include "sysemu/dma.h"
+> >  #include "net/checksum.h"
+> >
+> > -#ifdef CADENCE_GEM_ERR_DEBUG
+> > -#define DB_PRINT(...) do { \
+> > -    fprintf(stderr,  ": %s: ", __func__); \
+> > -    fprintf(stderr, ## __VA_ARGS__); \
+> > -    } while (0)
+> > -#else
+> > -    #define DB_PRINT(...)
+> > -#endif
+> > +#define CADENCE_GEM_ERR_DEBUG 0
+> > +#define DB_PRINT(...) do {\
+> > +    if (CADENCE_GEM_ERR_DEBUG) {   \
+> > +        qemu_log(": %s: ", __func__); \
+> > +        qemu_log(__VA_ARGS__); \
+> > +    } \
+> > +} while (0)
+> >
+> >  #define GEM_NWCTRL        (0x00000000/4) /* Network Control reg */
+> >  #define GEM_NWCFG         (0x00000004/4) /* Network Config reg */
+> > @@ -979,7 +978,8 @@ static ssize_t gem_receive(NetClientState *nc,
+> const uint8_t *buf, size_t size)
+> >          size +=3D 4;
+> >      }
+> >
+> > -    DB_PRINT("config bufsize: %d packet size: %ld\n", rxbufsize, size)=
+;
+> > +    DB_PRINT("config bufsize: %" PRIu64 " packet size: %" PRIu64 "\n",
+> > +             (uint64_t) rxbufsize, (uint64_t) size);
+>=20
+> Shouldn't these be %u and %zd rather than casting to uint64_t?
+>=20
+>=20
+> >
+> >      /* Find which queue we are targeting */
+> >      q =3D get_queue_from_screen(s, rxbuf_ptr, rxbufsize); @@ -992,9
+> > +992,9 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t
+> *buf, size_t size)
+> >              return -1;
+> >          }
+> >
+> > -        DB_PRINT("copy %u bytes to 0x%" PRIx64 "\n",
+> > -                 MIN(bytes_to_copy, rxbufsize),
+> > -                 rx_desc_get_buffer(s, s->rx_desc[q]));
+> > +        DB_PRINT("copy %" PRIu32 " bytes to 0x%" PRIx64 "\n",
+> > +                MIN(bytes_to_copy, rxbufsize),
+> > +                rx_desc_get_buffer(s, s->rx_desc[q] + rxbuf_offset));
+>=20
+> Looks like this is changing what we print (+ rxbuf_offset), was that
+> intentional? (it was not mentioned in the commit message)
+>=20
+>=20
+> >
+> >          /* Copy packet data to emulated DMA buffer */
+> >          address_space_write(&s->dma_as, rx_desc_get_buffer(s,
+> > s->rx_desc[q]) + @@ -1160,8 +1160,8 @@ static void
+> gem_transmit(CadenceGEMState *s)
+> >               */
+> >              if ((tx_desc_get_buffer(s, desc) =3D=3D 0) ||
+> >                  (tx_desc_get_length(desc) =3D=3D 0)) {
+> > -                DB_PRINT("Invalid TX descriptor @ 0x%x\n",
+> > -                         (unsigned)packet_desc_addr);
+> > +                DB_PRINT("Invalid TX descriptor @ 0x%" HWADDR_PRIx "\n=
+",
+> > +                         packet_desc_addr);
+> >                  break;
+> >              }
+> >
+> > --
+> > 2.7.4
+> >

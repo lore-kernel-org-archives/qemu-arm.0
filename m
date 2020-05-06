@@ -1,99 +1,99 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp787362lfb;
-        Wed, 6 May 2020 01:28:40 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJ8KlZXagGsRHfmGzpAmJ27S5upn6X/abyUf99Mthy0L/HY3H83F5Gbvm8bF9NDK07/wAxK
-X-Received: by 2002:a05:620a:914:: with SMTP id v20mr383967qkv.107.1588753720428;
-        Wed, 06 May 2020 01:28:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588753720; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp788241lfb;
+        Wed, 6 May 2020 01:30:09 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJs9E+o6mhQo+gSITRqQ2bRMtIO7xlz1aICttc5T5k5RtZbjrLeXvbsO48LSUp4vGs0sH8q
+X-Received: by 2002:ac8:1bbd:: with SMTP id z58mr6862022qtj.94.1588753809699;
+        Wed, 06 May 2020 01:30:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588753809; cv=none;
         d=google.com; s=arc-20160816;
-        b=RqkKuC9henKpS7GUAeZfDIG2pCibfXpU1Aj9zTdbPwl8hnBICOP94i/d1ZP81hGBoU
-         1GrHF8/O8pGx/5cmp4HgmfJj/vMj8ss9xsupjxkx9CpXYyLGVeyT1/7wSdIhMx9rsxUN
-         Kb6YXrZnCX0d3MmlhOB0IDtSuDMqtIta/MSohAteKgU5/4DvyawZeMomuRjRyBI4PP3w
-         BzDyMOrC2+GLHxP2ZajKjq7mhmmZa9Tvp7ewbt9inBy2eCqAm3zhw3dAauZ/rlubbBZr
-         5kG8O5lVaa4glQIhLnq6G7dklcMFrvUvpiAfpVBNrQRiMhMvhMOogFZhw7ExSKls4La/
-         LOVw==
+        b=MetFPdr3gXGTIOH5u9vAV8mHH07jQBa9swL2I91Xat8xsMFmt5wvOd07BmLuUtR37R
+         5x88FtRKwh2RNHLAoHZSM5wPBXEpeGFdcjrmDeo/cF8Nxcbkg1ozqO1603CzclqPpxO/
+         tREVWEPIGl9OC07XiR/aW26WGJQ7xHqEFrmXNVy9MlezakyezKDGhKWwFdQAh8pI282L
+         FhUHFv8wcHYgUiIY4Bimv9dwQQe8gA6MrjLLn0EN1I7JumWIn+lQMrRSc3vB0h8MShr4
+         Au3xtFkaUmDThiC2jqlz5dk8R3c8whs/nHRG+m+XW1rsLN59ZIL0r+4KWRUj92hF52zL
+         xK2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Y6buqfMJYMI/cf1Ukwfi7suddb3Zc6wj8gq1bw/kljE=;
-        b=a8LGAMsgWTnGth+8LcuidSIWY/+v0IMWQw02B0zoOQQkcAovjYQDN4aLipmBqlB8lz
-         lSyH2AyWymmzui2gUG489Q88yJU6at5h4SnZ0eteI73HTRh37t0wWHn2jm6o2GJFXUNw
-         wLM/JbQH2SPsXqnRZ60G20kkLCK2RmQ/m981ZUBzrlDcs2olGVmzo1JkiwvsWSE1HnZQ
-         EYjz4gwZwXwfVr8rizQBFKwQvKkfNqBol44ecJCwJw2yENT+CQnENlNajVKA3BxN5pSB
-         HEANGGrAAJX/2FSGNZfkp4u//dPXeChe40nK+Fhw0Us4DSwHQZZg9hHQ9ewm/+MTehoM
-         ScBQ==
+        bh=nByvvZG8cHN8R6JUp+jtcQ1PIb+Y7F7It62qQDF6m9g=;
+        b=PxOBrLvTfkiQs/MibBB8Ikv2ie6qtP6rZeUp0nvd7YgOVPg5r/nbZS6gPzptpP8h/J
+         gbE7x1Jy6uAB7W5OqsKpBGooWrfzWBRB6hnIyp3C+K7rM5yZrZNGawC8aOlBI4kxsL/Q
+         wVdY1lfDOQNCsCthFbmTzMg31cmc8vmeXFerrvj2gnVijsmW573RtcTlK/QkTx1jiGWL
+         Wst+Aj9QuozYNfaptlEqDieCZB7pbh5nTIimSCeTG7s2QFxRZZRaie3/asveBdMbqbEi
+         mhiJcMiDFU0GfWq+W/ItxGpwHQy9DQuxo669w9NuY915MyygxelTwBiSxkc3K0onFCmn
+         v+jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AjwssfgG;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BpAmciK8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id 4si370030qkl.144.2020.05.06.01.28.40
+        by mx.google.com with ESMTPS id g57si538810qtk.241.2020.05.06.01.30.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 May 2020 01:28:40 -0700 (PDT)
+        Wed, 06 May 2020 01:30:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AjwssfgG;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BpAmciK8;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54448 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jWFPz-0001XT-Sv
-	for alex.bennee@linaro.org; Wed, 06 May 2020 04:28:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38220)
+	id 1jWFRR-0004CP-4T
+	for alex.bennee@linaro.org; Wed, 06 May 2020 04:30:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38224)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jWFMo-0004ij-PF; Wed, 06 May 2020 04:25:22 -0400
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:34778)
+ id 1jWFMp-0004mN-Rk; Wed, 06 May 2020 04:25:23 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:38443)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jWFMn-0006vQ-Fo; Wed, 06 May 2020 04:25:22 -0400
-Received: by mail-lj1-x244.google.com with SMTP id f11so1422109ljp.1;
- Wed, 06 May 2020 01:25:20 -0700 (PDT)
+ id 1jWFMo-0006vq-Sj; Wed, 06 May 2020 04:25:23 -0400
+Received: by mail-lf1-x143.google.com with SMTP id b26so590533lfa.5;
+ Wed, 06 May 2020 01:25:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Y6buqfMJYMI/cf1Ukwfi7suddb3Zc6wj8gq1bw/kljE=;
- b=AjwssfgGM8Ei3yM1JXyLMdaVaRphB4ilRARiPbQFXAet8IIDIFtLmp+9+YsBSNo2XR
- d6fIkgjZ9wqVi4L6Bxcz50HPixGzhQHayKFE0QR7LC8A5Weiw5NdDFKJ6j7Nftqi1JGr
- kqCT9KyZrJ4jWISc+jFtzRx+yNkP2j02UL5ToVMvjkB0JKadBmBtHIkPVXc7IFIZyeuc
- RZIkmQ/RSxy2ErSbDhUe797vhbwjm3F86CHEPxHRNEiwH0Yq6r6PMzpZAMSBPTKnjeME
- Ikme3rMrr3ZwxFo+NQjrN19o/+wu/PwBY7fCLHWUjxm3k+JZiokFtQLamVsry43YdXV/
- Qa/g==
+ bh=nByvvZG8cHN8R6JUp+jtcQ1PIb+Y7F7It62qQDF6m9g=;
+ b=BpAmciK8RrDxPclA8sLCV78c7Y69nswSwBuWGSB298CxyTeI9W1F6siv4G3jn+nyx7
+ EiivHyqxrRtLDQmz43DiAN3OOCOSXynMKswQFr5qzVww9h0l73Y9DzD0E/pYGwwhePDW
+ OKLF6EayuXKd+lwvTcBxIYmTYRiphsCS6wg2wxE2k1OQPupJaZ/4r5septyu45ZCJxLm
+ hWYRROi78iLwZDCCpERdHBvXeJFsRKCOQL2EB6X346K8b9v1Wn4XVc4R8gy2fs+ZIwvW
+ XxlW66GVg1pWKQ4r4EsoxDhZ0SfxWqFF15E7NnSZIClFwNvHayRpnpmWs34BRXM2ab7Z
+ kOyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Y6buqfMJYMI/cf1Ukwfi7suddb3Zc6wj8gq1bw/kljE=;
- b=RZSPY13TgiOm0/FtmxbWLMJ+p3WNpn6lFxuIjlUvYPAh5pOCeXEoWJCKS/YpNAo/Ot
- +Dyq7eqZoqEsuMFsshXAOTSBwRiUJfv6Hd+jlBx0ZCwmaTmuv/LQ6C4ZLeYKcUN51LPo
- k65RM/eT7EDg5+CgKPYJdqHpU9lGy+QRBB66ti+juHZ4RQRncm3DhUN1+rpqy6pCKBxg
- KzLvpNWr0h/6HyPCV0bs2MhCcl8il2CcVQrW837XrQC5M1zH6Et8Mj+Trt//uOWbHGb0
- QsCfwAAKLfdsmzAUJPn/HLtfWr4ZZpVYVSK5tjrjUz370zTtZasw5kjwhgsebdKHG/Ld
- 4nIQ==
-X-Gm-Message-State: AGi0PuZzE1pvYXbU8ddGL1Do9ezmXeAr1O55JadvDYD+UwYjwrK5h9LP
- 1471f7f/eX1yP7aevqZKeFngrLLoDnA=
-X-Received: by 2002:a2e:9a4a:: with SMTP id k10mr4194488ljj.115.1588753519270; 
- Wed, 06 May 2020 01:25:19 -0700 (PDT)
+ bh=nByvvZG8cHN8R6JUp+jtcQ1PIb+Y7F7It62qQDF6m9g=;
+ b=A6mEmJHVtlpRnaKbMq/wNjLCZTUt/ghSGwvIhPA+oJAv78wv2w4M7ZM4xMX9JC0R+H
+ bA2DrkdhXF7K7ZCJle43IR8h9HUVAV/Rew3TWJ7quIbWqvwAEKoReG3diK0iOCrB0zVE
+ wlUbfRsfaOlRDrCkYLnzxUDHiHCtKaGPHfjHb41bBDVhvHyU0dYDoklT5nX5a+u9eyDG
+ sE9VhtarfR73XttGiToBs/8OWVqC5WdiHpPqrf5rapev4BtnS9tVe1NgySdr4fkp3/vz
+ oITBgaA23VHvtXubYseGpDtUXHUufYj0GKfzKTCdMKR3fgOlcemOZCQhwSWGditFe8hV
+ xWaw==
+X-Gm-Message-State: AGi0PuZlHk6wEkT1x2Ly9mb0JGYgamu8XqZXXm5jlb16s4VqU6fDMbwg
+ 4uoS5UdsByvnr4DquRp7GSKi4aQDsd4=
+X-Received: by 2002:ac2:442f:: with SMTP id w15mr4183731lfl.73.1588753520670; 
+ Wed, 06 May 2020 01:25:20 -0700 (PDT)
 Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id r1sm806828ljg.50.2020.05.06.01.25.18
+ by smtp.gmail.com with ESMTPSA id o6sm798829lja.70.2020.05.06.01.25.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 06 May 2020 01:25:18 -0700 (PDT)
+ Wed, 06 May 2020 01:25:19 -0700 (PDT)
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 3/9] hw/net/xilinx_axienet: Remove unncessary cast
-Date: Wed,  6 May 2020 10:25:07 +0200
-Message-Id: <20200506082513.18751-4-edgar.iglesias@gmail.com>
+Subject: [PATCH v2 4/9] hw/dma/xilinx_axidma: Add DMA memory-region property
+Date: Wed,  6 May 2020 10:25:08 +0200
+Message-Id: <20200506082513.18751-5-edgar.iglesias@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200506082513.18751-1-edgar.iglesias@gmail.com>
 References: <20200506082513.18751-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::244;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x244.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::143;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x143.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 13
@@ -122,33 +122,133 @@ Cc: damien.hedde@greensocs.com, peter.maydell@linaro.org,
  luc.michel@greensocs.com, figlesia@xilinx.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ENWEYTaoK/CO
+X-TUID: sySUOuGNd2e4
 
 From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-Remove unncessary cast, buf is already uint8_t *.
-No functional change.
+Add DMA memory-region property to externally control what
+address-space this DMA operates on.
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- hw/net/xilinx_axienet.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/dma/xilinx_axidma.c | 30 +++++++++++++++++++++++-------
+ 1 file changed, 23 insertions(+), 7 deletions(-)
 
-diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-index 84073753d7..c8dfcda3ee 100644
---- a/hw/net/xilinx_axienet.c
-+++ b/hw/net/xilinx_axienet.c
-@@ -918,7 +918,7 @@ xilinx_axienet_data_stream_push(StreamSlave *obj, uint8_t *buf, size_t size)
-         uint16_t csum;
+diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+index 018f36991b..4540051448 100644
+--- a/hw/dma/xilinx_axidma.c
++++ b/hw/dma/xilinx_axidma.c
+@@ -33,6 +33,7 @@
+ #include "qemu/log.h"
+ #include "qemu/module.h"
  
-         tmp_csum = net_checksum_add(size - start_off,
--                                    (uint8_t *)buf + start_off);
-+                                    buf + start_off);
-         /* Accumulate the seed.  */
-         tmp_csum += s->hdr[2] & 0xffff;
++#include "sysemu/dma.h"
+ #include "hw/stream.h"
  
+ #define D(x)
+@@ -103,6 +104,7 @@ enum {
+ };
+ 
+ struct Stream {
++    struct XilinxAXIDMA *dma;
+     ptimer_state *ptimer;
+     qemu_irq irq;
+ 
+@@ -125,6 +127,9 @@ struct XilinxAXIDMAStreamSlave {
+ struct XilinxAXIDMA {
+     SysBusDevice busdev;
+     MemoryRegion iomem;
++    MemoryRegion *dma_mr;
++    AddressSpace as;
++
+     uint32_t freqhz;
+     StreamSlave *tx_data_dev;
+     StreamSlave *tx_control_dev;
+@@ -186,7 +191,7 @@ static void stream_desc_load(struct Stream *s, hwaddr addr)
+ {
+     struct SDesc *d = &s->desc;
+ 
+-    cpu_physical_memory_read(addr, d, sizeof *d);
++    address_space_read(&s->dma->as, addr, MEMTXATTRS_UNSPECIFIED, d, sizeof *d);
+ 
+     /* Convert from LE into host endianness.  */
+     d->buffer_address = le64_to_cpu(d->buffer_address);
+@@ -204,7 +209,8 @@ static void stream_desc_store(struct Stream *s, hwaddr addr)
+     d->nxtdesc = cpu_to_le64(d->nxtdesc);
+     d->control = cpu_to_le32(d->control);
+     d->status = cpu_to_le32(d->status);
+-    cpu_physical_memory_write(addr, d, sizeof *d);
++    address_space_write(&s->dma->as, addr, MEMTXATTRS_UNSPECIFIED,
++                        d, sizeof *d);
+ }
+ 
+ static void stream_update_irq(struct Stream *s)
+@@ -286,8 +292,9 @@ static void stream_process_mem2s(struct Stream *s, StreamSlave *tx_data_dev,
+                      txlen + s->pos);
+         }
+ 
+-        cpu_physical_memory_read(s->desc.buffer_address,
+-                                 s->txbuf + s->pos, txlen);
++        address_space_read(&s->dma->as, s->desc.buffer_address,
++                           MEMTXATTRS_UNSPECIFIED,
++                           s->txbuf + s->pos, txlen);
+         s->pos += txlen;
+ 
+         if (stream_desc_eof(&s->desc)) {
+@@ -336,7 +343,8 @@ static size_t stream_process_s2mem(struct Stream *s, unsigned char *buf,
+             rxlen = len;
+         }
+ 
+-        cpu_physical_memory_write(s->desc.buffer_address, buf + pos, rxlen);
++        address_space_write(&s->dma->as, s->desc.buffer_address,
++                            MEMTXATTRS_UNSPECIFIED, buf + pos, rxlen);
+         len -= rxlen;
+         pos += rxlen;
+ 
+@@ -525,6 +533,7 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
+     XilinxAXIDMAStreamSlave *cs = XILINX_AXI_DMA_CONTROL_STREAM(
+                                                             &s->rx_control_dev);
+     Error *local_err = NULL;
++    int i;
+ 
+     object_property_add_link(OBJECT(ds), "dma", TYPE_XILINX_AXI_DMA,
+                              (Object **)&ds->dma,
+@@ -545,17 +554,19 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
+         goto xilinx_axidma_realize_fail;
+     }
+ 
+-    int i;
+-
+     for (i = 0; i < 2; i++) {
+         struct Stream *st = &s->streams[i];
+ 
++        st->dma = s;
+         st->nr = i;
+         st->ptimer = ptimer_init(timer_hit, st, PTIMER_POLICY_DEFAULT);
+         ptimer_transaction_begin(st->ptimer);
+         ptimer_set_freq(st->ptimer, s->freqhz);
+         ptimer_transaction_commit(st->ptimer);
+     }
++
++    address_space_init(&s->as,
++                       s->dma_mr ? s->dma_mr : get_system_memory(), "dma");
+     return;
+ 
+ xilinx_axidma_realize_fail:
+@@ -575,6 +586,11 @@ static void xilinx_axidma_init(Object *obj)
+                             &s->rx_control_dev, sizeof(s->rx_control_dev),
+                             TYPE_XILINX_AXI_DMA_CONTROL_STREAM, &error_abort,
+                             NULL);
++    object_property_add_link(obj, "dma", TYPE_MEMORY_REGION,
++                             (Object **)&s->dma_mr,
++                             qdev_prop_allow_set_link_before_realize,
++                             OBJ_PROP_LINK_STRONG,
++                             &error_abort);
+ 
+     sysbus_init_irq(sbd, &s->streams[0].irq);
+     sysbus_init_irq(sbd, &s->streams[1].irq);
 -- 
 2.20.1
 

@@ -1,106 +1,107 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1349497lfb;
-        Tue, 5 May 2020 02:02:22 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJL+mfxko3B1mTRvgCaxQhROHu0hxnz5ujfxv7/HgP9W/t+zirR4Qs3sopkZaVWsNqvqxTk
-X-Received: by 2002:a37:417:: with SMTP id 23mr2250596qke.97.1588669342002;
-        Tue, 05 May 2020 02:02:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588669341; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp722326lfb;
+        Tue, 5 May 2020 23:33:51 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJZ2TyGzMqfYs6WJFB/pLq/4KKaahc+2fW3/C7D61Z6K/Fo5Lc/haTQid478BmflLSqdwqH
+X-Received: by 2002:ad4:45ae:: with SMTP id y14mr6557225qvu.145.1588746831029;
+        Tue, 05 May 2020 23:33:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588746831; cv=none;
         d=google.com; s=arc-20160816;
-        b=N5Gy8ht6VHY13e8O8jVZiGZSG620x5wuBp2xAA4mTQOaWsnkAae+WHb0T5jwHmVVRC
-         pDrRXXC3DEkpH3/ECIVLohC4M7rms0/ZXqxRsoCVukAODHLhls6NADqQN7v81wPdioEC
-         I/+we37BLKf7o/aciUqHV50vThCASg+l33C3xq6ZSlmTBWYOQ1llCHJ5UOwkCEDDlh9N
-         uiMnYGbznfhwythG0jWL3gSZICecBqcqrqPP0usHXhFYULpK4vJmBaCFqDocmnxo5p0e
-         rZljOkwBfsetZMdcS+lC+zQWbYTUpJZEwjGzkZRU7qNzITGAHJZw+deq/Kv4ZpG6IQ0y
-         XtOg==
+        b=fcgB0wYcsa75P5DopmNEF6t/zGPs8/SvDdA/gHnB7M00mnmXsrmGF6fDiBLKk/cGTe
+         5L5Lzk2zLnm+3JY+zX9jgYxuRFFm5cNkTBuwVuCllEaNhErkWEdeWT0MfYFfewwxmbrm
+         TdBF69cILCeIVWijhbJ7lcCOprSfZPJm7H86vHIq33ucezvwo3sSb+tkqf9B/fsXzLvW
+         96K+5dQShjJOh1VpTg8HuAb7ismtwhUb0duy/uaI5+WYOO1LS7fLXzB4BCuRLEfD3gvq
+         TFs8JHT8ZyV/pp3PomnSvbGKzLBcp3yqRlUm4zV12+pdiTE3uLZKkttwnEr+qUAMWGzY
+         hDgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=ZZcaownYOVGMUS4sax5IIN6n1Gg5Mtz3RfOCiSHv/xE=;
-        b=e5HtA2PmSrRLrmkykQH3kLK65fiQIFR5yLjcca6NiSzi+WuOpTluZnEy8yjQ7rCLiE
-         /HuizT3mhtr+owqfD7cajluU2oUP4AsxIuWApNNvn/is35qjUmQXEyhvSJRqdR+YoF51
-         CimGftFIMm7FkC8JfO4VqilocXPYYZhHrOa4AkPG2mMxIfbQdb2x6FM+/0/6g9pHgK01
-         7H8o59iDI7axByDt0RLfQvjOgm5r0llG5Xr+eELofSX2AvNc6EQ9U9OpX2CbuYF0i0Do
-         d6XJ7WP5MVCL9xCVIS64DZjvc76IiAV+1TKI6Mb+U03qUWTV2wJQCX/iHUHo9cHqrRWq
-         svug==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=LVFyJmPNLdzQ6g2F9LClgPJEmDnYLNSS3tnhqWIM5R8=;
+        b=aXlQrt6xODpxiwHwJyrruleY8Nxc7872dPpUBK5vaRQnfkmJKlNu4txZ465zjioS/i
+         mgCTrBECSKdkdbvS91M3YrOJQfyPZ61fUJbc13n+A9rQ/BLPhatJgCtcDvcTeYd/C8n9
+         h0mFOo+9rO22wPq+ygNSZG9Ji9PLH5lCmSaYp5/3Dw8NeZvaoJPiBXNt8n6FKZr5oD6r
+         TMEXbPuvPAVq3xd0YgD0czEquCHrR5bCFdb5R5py3XC7eyZ1BnFzqQ/jpjqYY1vitZ4D
+         UktmtsqEilARHyOGNRf0WUBu6IVstUdTtiO1pZWG45lbfIDWSTvnqFnjPAzy77Ub0WDp
+         V7EA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=h+15IpkF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JQ4fFclk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id e19si639772qtr.11.2020.05.05.02.02.21
+        by mx.google.com with ESMTPS id a1si407944qtp.195.2020.05.05.23.33.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 May 2020 02:02:21 -0700 (PDT)
+        Tue, 05 May 2020 23:33:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=h+15IpkF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54532 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JQ4fFclk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51974 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jVtT2-0001Uw-6J
-	for alex.bennee@linaro.org; Tue, 05 May 2020 05:02:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42478)
+	id 1jWDcs-000084-G9
+	for alex.bennee@linaro.org; Wed, 06 May 2020 02:33:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42516)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1jVtSh-0001Uj-FE; Tue, 05 May 2020 05:01:59 -0400
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:34771)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1jVtSg-00031H-6G; Tue, 05 May 2020 05:01:59 -0400
-Received: by mail-pj1-x1042.google.com with SMTP id h12so940300pjz.1;
- Tue, 05 May 2020 02:01:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZZcaownYOVGMUS4sax5IIN6n1Gg5Mtz3RfOCiSHv/xE=;
- b=h+15IpkFSmzGR/AuM7P4npo7008FXGgrozpw+FYbyC5CF0aSLACkG/CSBuYhTsh1Jz
- CJ0GE2rh9zTm4EXI6rt9c3n0CvZNfwAQGB8haW1o6g0+9AGXTyuSPjb3puMmrabyqgHi
- 9cb0/573rA8NQRKPK1rvarlzCw/Bhd1gISk9DgEKq5aAPWi+bRqdqpOtcdOQ/LxCIbyJ
- cWq5yIvyz5zxGlQPMK3MjOKYAdyoOkf6rUguzHzR2xkA1712MUj6YjjWkuu/CkimC07A
- pk+mwuj1kby71l3iHUDLyE0LzwQlOj9shkVwlMUzhEQjuaLoCKEq6tDJoKTWB2y33Vcr
- ZxeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=ZZcaownYOVGMUS4sax5IIN6n1Gg5Mtz3RfOCiSHv/xE=;
- b=D1zvrlUf+dqBV5IFX0CIvGMviNhbcEWgBE1UXCg2B/e1E0B736tGeVSg+qKlr8BVlQ
- T+rYcXmF5Fu6Ofepv3CwUWkBiTNUhMnxuNbruodsnhRT6mAj1Mb5c3fVa5/zKo1uEDiG
- SysGYtKvwCc6GRQiiywSf1DYuzngJHCrktaXqnC+AjHErYsiiCEHF5dxaNP6uwKYT1v4
- M+B/kDAqhPuNzU9R9XlMrP4fZeV8+lHemOr3IKNKMgeTlOEBVf8xpCPrj+p2hn5tUCPe
- r46//m6GOUsnIKNXadhNPLMRkAz7qszIZxM4fsvHaqBslhr8pKXxjGi4sdORGD17Zx4Z
- Dtcg==
-X-Gm-Message-State: AGi0PuaokbX8t3me1syPWMyFQMVIaa6JNhSL9DCEodHAqZdTskDvPmhk
- npGQFtU7nPmLMkhPqH7dzq0=
-X-Received: by 2002:a17:902:7203:: with SMTP id
- ba3mr1084480plb.202.1588669315473; 
- Tue, 05 May 2020 02:01:55 -0700 (PDT)
-Received: from localhost.localdomain ([45.124.203.15])
- by smtp.gmail.com with ESMTPSA id w125sm1142401pgw.22.2020.05.05.02.01.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 May 2020 02:01:54 -0700 (PDT)
-From: Joel Stanley <joel@jms.id.au>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH] aspeed: sdmc: Implement AST2600 locking behaviour
-Date: Tue,  5 May 2020 18:31:36 +0930
-Message-Id: <20200505090136.341426-1-joel@jms.id.au>
-X-Mailer: git-send-email 2.26.2
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1jWDcd-00007N-G9
+ for qemu-arm@nongnu.org; Wed, 06 May 2020 02:33:35 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:59994
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1jWDcc-0002Rq-Qk
+ for qemu-arm@nongnu.org; Wed, 06 May 2020 02:33:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1588746813;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=LVFyJmPNLdzQ6g2F9LClgPJEmDnYLNSS3tnhqWIM5R8=;
+ b=JQ4fFclk3dBb81J5mGTLrri5iqiIRg6IGdbkZhBHp+/JoOUn9eKuaL2upVrzx5sZ2p8bSn
+ XtLG/yDSr4sg6uL3fwYl6tCVc5KdzQoXcUAauFJVgzY1jV0uxqJiiufZGZiLolpqka679U
+ MZGqMM0qfdYWXXCVfeF6uAhpJbtzZY0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-46-rDaaDdonM1C8u-GMxwyUbQ-1; Wed, 06 May 2020 02:33:30 -0400
+X-MC-Unique: rDaaDdonM1C8u-GMxwyUbQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7FB25100CCC0;
+ Wed,  6 May 2020 06:33:28 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.192.91])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B96BA9CB9;
+ Wed,  6 May 2020 06:33:16 +0000 (UTC)
+Date: Wed, 6 May 2020 08:33:14 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v2 1/3] acpi: Move build_tpm2() in the generic part
+Message-ID: <20200506063314.4qvnyfonjixcknuj@kamzik.brq.redhat.com>
+References: <20200505144419.29174-1-eric.auger@redhat.com>
+ <20200505144419.29174-2-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1042;
- envelope-from=joel.stan@gmail.com; helo=mail-pj1-x1042.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200505144419.29174-2-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/06 02:33:31
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,116 +114,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, gshan@redhat.com, mst@redhat.com,
+ qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
+ marcandre.lureau@redhat.com, imammedo@redhat.com, eric.auger.pro@gmail.com,
+ lersek@redhat.com, ardb@kernel.org, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6DDTOB071KSo
+X-TUID: /wOt3RZvUjl5
 
-The AST2600 handles this differently with the extra 'hardlock' state, so
-move the testing to the soc specific class' write callback.
+On Tue, May 05, 2020 at 04:44:17PM +0200, Eric Auger wrote:
+> We plan to build the tpm2 table on ARM too. In order to reuse the
+> generation code, let's move build_tpm2() to aml-build.c.
+>=20
+> No change in the implementation.
+>=20
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  include/hw/acpi/aml-build.h |  2 ++
+>  hw/acpi/aml-build.c         | 30 ++++++++++++++++++++++++++++++
+>  hw/i386/acpi-build.c        | 30 ------------------------------
+>  3 files changed, 32 insertions(+), 30 deletions(-)
+>=20
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index 0f4ed53d7f..a67ab4618a 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -437,4 +437,6 @@ void build_slit(GArray *table_data, BIOSLinker *linke=
+r, MachineState *ms);
+> =20
+>  void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+>                  const char *oem_id, const char *oem_table_id);
+> +
+> +void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)=
+;
+>  #endif
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index 2c3702b882..1f7fd09112 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -26,6 +26,7 @@
+>  #include "qemu/bitops.h"
+>  #include "sysemu/numa.h"
+>  #include "hw/boards.h"
+> +#include "hw/acpi/tpm.h"
+> =20
+>  static GArray *build_alloc_array(void)
+>  {
+> @@ -1875,6 +1876,35 @@ build_hdr:
+>                   "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_tabl=
+e_id);
+>  }
+> =20
+> +void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+> +{
+> +    Acpi20TPM2 *tpm2_ptr =3D acpi_data_push(table_data, sizeof *tpm2_ptr=
+);
+> +    unsigned log_addr_size =3D sizeof(tpm2_ptr->log_area_start_address);
+> +    unsigned log_addr_offset =3D
+> +        (char *)&tpm2_ptr->log_area_start_address - table_data->data;
+> +
+> +    tpm2_ptr->platform_class =3D cpu_to_le16(TPM2_ACPI_CLASS_CLIENT);
+> +    if (TPM_IS_TIS_ISA(tpm_find())) {
+> +        tpm2_ptr->control_area_address =3D cpu_to_le64(0);
+> +        tpm2_ptr->start_method =3D cpu_to_le32(TPM2_START_METHOD_MMIO);
+> +    } else if (TPM_IS_CRB(tpm_find())) {
+> +        tpm2_ptr->control_area_address =3D cpu_to_le64(TPM_CRB_ADDR_CTRL=
+);
+> +        tpm2_ptr->start_method =3D cpu_to_le32(TPM2_START_METHOD_CRB);
+> +    } else {
+> +        g_warn_if_reached();
+> +    }
+> +
+> +    tpm2_ptr->log_area_minimum_length =3D
+> +        cpu_to_le32(TPM_LOG_AREA_MINIMUM_SIZE);
+> +
+> +    /* log area start address to be filled by Guest linker */
+> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> +                                   log_addr_offset, log_addr_size,
+> +                                   ACPI_BUILD_TPMLOG_FILE, 0);
+> +    build_header(linker, table_data,
+> +                 (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL, N=
+ULL);
+> +}
+> +
 
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
- hw/misc/aspeed_sdmc.c | 55 +++++++++++++++++++++++++++++++++++--------
- 1 file changed, 45 insertions(+), 10 deletions(-)
+I'll let Igor and mst confirm/deny this, but my understanding was that the
+build_append* API was the preferred way to create the table. Indeed, I
+don't see too many table.field =3D cpu_to_le(...) lines in aml-build.c
 
-diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-index 02940e7c2a76..7c688becf8c7 100644
---- a/hw/misc/aspeed_sdmc.c
-+++ b/hw/misc/aspeed_sdmc.c
-@@ -23,7 +23,12 @@
- 
- /* Protection Key Register */
- #define R_PROT            (0x00 / 4)
-+#define   PROT_UNLOCKED      0x01
-+#define   PROT_HARDLOCKED    0x10  /* AST2600 */
-+#define   PROT_SOFTLOCKED    0x00
-+
- #define   PROT_KEY_UNLOCK     0xFC600309
-+#define   PROT_KEY_HARDLOCK   0xDEADDEAD /* AST2600 */
- 
- /* Configuration Register */
- #define R_CONF            (0x04 / 4)
-@@ -130,16 +135,6 @@ static void aspeed_sdmc_write(void *opaque, hwaddr addr, uint64_t data,
-         return;
-     }
- 
--    if (addr == R_PROT) {
--        s->regs[addr] = (data == PROT_KEY_UNLOCK) ? 1 : 0;
--        return;
--    }
--
--    if (!s->regs[R_PROT]) {
--        qemu_log_mask(LOG_GUEST_ERROR, "%s: SDMC is locked!\n", __func__);
--        return;
--    }
--
-     asc->write(s, addr, data);
- }
- 
-@@ -291,6 +286,16 @@ static uint32_t aspeed_2400_sdmc_compute_conf(AspeedSDMCState *s, uint32_t data)
- static void aspeed_2400_sdmc_write(AspeedSDMCState *s, uint32_t reg,
-                                    uint32_t data)
- {
-+    if (reg == R_PROT) {
-+        s->regs[reg] = (data == PROT_KEY_UNLOCK) ? PROT_UNLOCKED : PROT_SOFTLOCKED;
-+        return;
-+    }
-+
-+    if (!s->regs[R_PROT]) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: SDMC is locked!\n", __func__);
-+        return;
-+    }
-+
-     switch (reg) {
-     case R_CONF:
-         data = aspeed_2400_sdmc_compute_conf(s, data);
-@@ -339,6 +344,16 @@ static uint32_t aspeed_2500_sdmc_compute_conf(AspeedSDMCState *s, uint32_t data)
- static void aspeed_2500_sdmc_write(AspeedSDMCState *s, uint32_t reg,
-                                    uint32_t data)
- {
-+    if (reg == R_PROT) {
-+        s->regs[reg] = (data == PROT_KEY_UNLOCK) ? PROT_UNLOCKED : PROT_SOFTLOCKED;
-+        return;
-+    }
-+
-+    if (!s->regs[R_PROT]) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: SDMC is locked!\n", __func__);
-+        return;
-+    }
-+
-     switch (reg) {
-     case R_CONF:
-         data = aspeed_2500_sdmc_compute_conf(s, data);
-@@ -395,7 +410,27 @@ static uint32_t aspeed_2600_sdmc_compute_conf(AspeedSDMCState *s, uint32_t data)
- static void aspeed_2600_sdmc_write(AspeedSDMCState *s, uint32_t reg,
-                                    uint32_t data)
- {
-+    if (s->regs[R_PROT] == PROT_HARDLOCKED) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: SDMC is locked until system reset!\n",
-+                __func__);
-+        return;
-+    }
-+
-+    if (reg != R_PROT && s->regs[R_PROT] == PROT_SOFTLOCKED) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: SDMC is locked!\n", __func__);
-+        return;
-+    }
-+
-     switch (reg) {
-+    case R_PROT:
-+        if (data == PROT_KEY_UNLOCK)  {
-+            data = PROT_UNLOCKED;
-+        } else if (data == PROT_KEY_HARDLOCK) {
-+            data = PROT_HARDLOCKED;
-+        } else {
-+            data = PROT_SOFTLOCKED;
-+        }
-+        break;
-     case R_CONF:
-         data = aspeed_2600_sdmc_compute_conf(s, data);
-         break;
--- 
-2.26.2
+I realize this function is just getting moved, but maybe it should get
+converted to the build_append* API while being moved?
+
+Thanks,
+drew
 

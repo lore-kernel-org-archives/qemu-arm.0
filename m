@@ -1,93 +1,197 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp896858lfb;
-        Wed, 6 May 2020 04:21:19 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKueZNUZe6sRfEivtzOgBjEzNxrigXSpbTQgeg3cTnqspQrBkVXlhgzZWwv+Dgpmb5vAFRn
-X-Received: by 2002:a05:6402:b47:: with SMTP id bx7mr6189537edb.374.1588764079709;
-        Wed, 06 May 2020 04:21:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588764079; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp908844lfb;
+        Wed, 6 May 2020 04:39:06 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLfsVUQza0t7PcANv0y3jSZAY0l/zrqPyWuJPNUfZydgnUP4pAq8Wh8L+bZtDd+LIrPT4Na
+X-Received: by 2002:a37:e50b:: with SMTP id e11mr8574060qkg.224.1588765146655;
+        Wed, 06 May 2020 04:39:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588765146; cv=none;
         d=google.com; s=arc-20160816;
-        b=rNRu/u50P3oahwrVZ3sMi66NMx8VvzNy6fx2+k3wy6aihxzHLJUnXkEk3Hn7GimRZ1
-         EEt7kkB4qpcdGNKkIBgL9UDF2zx4WowBWRx2nKIq/OlnJOleaNaOm8ebs3Kwb1FQW3AM
-         2CO9D9j6POSciQ9RQqdeQz1FxNcShPdaH8QAV1JzYVGcAy4smNL2+EXPjtRzadTq0ZjF
-         V8XuIlhHAQQu7Wry1oxD/ey2UZssIVNwJfjW61OZSIlKrzynAdvY0o7VweX4AdDyj4+G
-         +M/DcncWb0HS/tSHxSYMy4VEIz8onTKZxydMeNJECkccXBBowAL4IcfBMrO2gpWH2JXC
-         cyzA==
+        b=CQtIM0tw8bZI1bUo7JSgUcF26XYc3yszIr+UqRyM3Cgn2jYC1xA1z+ejSxs0OeXmqT
+         wm6A/4OsPJ9kb4WKLjkvkvvDv1hSsfCYDhYPNNroQ3JE35PRb4vQSEmscxCwnjH/GdqP
+         XAvOmxaLlMSu1m8iIn8wRXMb7SYwfNvVnhGBh0sDR/rs+xBZCaPeP0pfIqaxrlmCtC3C
+         zP4GA/v6BMdzdXeJwI9rjP3iQefcR3ktqqMEdnCk0t2GTpnZWLpfwOb4tjlXfCFk3XX8
+         7QrvrD6Mk3TI/H7UXIimjENM0tmBEn3Z+4zL0Q8kCkiKpsBWioBZDBm+Tp7Mz47vdnSD
+         QByQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=glwgW5OhDI9AKp1xuZuhyJSovcLa1yJGEmI9ThaO19w=;
-        b=pDRd1HwSfiDY517+9fjzWZA9CALIDVyoegNsjbx6hKr9oQ/CvQMVL+ntRZVJ+JgQvc
-         6cl0dZuaX92VwyzTC/iiqFCcqGPHJ8isdTxKHvJq9iLstPmEXpBHaLcbWLIDcISEXUmZ
-         bpTk6egJS/QcLBen7rQd5gsmkP9i3G+PzKDHJ3BwlnGCl/PuVHTVQ8IqPQCfqISF5cqS
-         UCZWRrnP+m/H/h3xVl2IaB/m9FcYiQ4r2D+o+oEJqNFtsOYiayXvEZx8YM14gK3LPC9t
-         1MMygefEnzd4L4vi9u7k6FZ/iZvbPYKiaw31aeA0YZ3V7y7eNKI9FOxz1EZiLqeZqwOb
-         kj6Q==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=yrJD0nf/1yh/ai4LTsZD9jBphmSNiHQQnt08pdWzbfM=;
+        b=pJK5REIx9paoLXs2L/SitQ5GoxFNQuQZTYin55bd3Wzg6WShEi9zQUUGld2q6FbCQe
+         e/iYcUkrEGxESMUwddkwyDFdVq4tl0HIBOEVLSBH6E6yBfAdfg6towVPSWFffZ/ssgCp
+         KQZCD3Kaj9962wRasNJyR9cM0fxf9TQUVYIsmL9a062f9AyNVZKWQyFWRPf0aL1crH9Y
+         LB3/R99CddR9ckQLebZbIEegX6NVxyJSJWD+I6svMOP+gqwRUG8Bi2zMrCut5evY8V8j
+         oQSBSWYca6Y5Yc85tnmUmQTFVJJOjz2bV39Ii12TLQlraDCnSHLuT6ccJuPRPylYy+NB
+         CElw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id c8si858450edn.240.2020.05.06.04.21.19;
-        Wed, 06 May 2020 04:21:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MuxYx4VM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
+        by mx.google.com with ESMTPS id r22si744620qtn.289.2020.05.06.04.39.06
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 06 May 2020 04:39:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726974AbgEFLVN (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Wed, 6 May 2020 07:21:13 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:38172 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1725824AbgEFLVN (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 6 May 2020 07:21:13 -0400
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id E25B51C982E0AB317622;
-        Wed,  6 May 2020 19:21:10 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS412-HUB.china.huawei.com
- (10.3.19.212) with Microsoft SMTP Server id 14.3.487.0; Wed, 6 May 2020
- 19:21:01 +0800
-Subject: Re: [PATCH v25 08/10] ACPI: Record Generic Error Status Block(GESB)
- table
-To:     Igor Mammedov <imammedo@redhat.com>
-CC:     <mst@redhat.com>, <xiaoguangrong.eric@gmail.com>,
-        <peter.maydell@linaro.org>, <shannon.zhaosl@gmail.com>,
-        <fam@euphon.net>, <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <mtosatti@redhat.com>, <qemu-devel@nongnu.org>,
-        <kvm@vger.kernel.org>, <qemu-arm@nongnu.org>,
-        <pbonzini@redhat.com>, <zhengxiang9@huawei.com>,
-        <Jonathan.Cameron@huawei.com>, <linuxarm@huawei.com>
-References: <20200410114639.32844-1-gengdongjiu@huawei.com>
- <20200410114639.32844-9-gengdongjiu@huawei.com>
- <20200505124446.2972f407@redhat.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <85337ce3-4a26-31f1-752c-115fe0f4e558@huawei.com>
-Date:   Wed, 6 May 2020 19:20:58 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MuxYx4VM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:51288 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jWIOI-0000yN-3W
+	for alex.bennee@linaro.org; Wed, 06 May 2020 07:39:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50624)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jWIO8-0000xv-4F; Wed, 06 May 2020 07:38:56 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:43455)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jWIO7-0005qC-5r; Wed, 06 May 2020 07:38:55 -0400
+Received: by mail-wr1-x444.google.com with SMTP id i15so1362957wrx.10;
+ Wed, 06 May 2020 04:38:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=yrJD0nf/1yh/ai4LTsZD9jBphmSNiHQQnt08pdWzbfM=;
+ b=MuxYx4VMIwNmEBDBea7dUfKGGlH5AN4mc6pT2GI068FAbjQtn3wsO9LjDE/5/Oz4Cp
+ 2tZr2H8Vl/WzA4BqB/hIgBNqZSrpIq2m4wOycZN2kWL2jBB2NCaE2UTRI31s8UqCC0m8
+ XwADi1k9qYoXu6Buyi1W4Ld4kDvQ2rF3UnsRPn4cbONk8C/20usxdrhDjVVGmVMncD3E
+ W+HH0caGCwfz7mvfAyC1b7cZEV49NjbFRlHcTmf9/IRadFEaff4ajq8dQfrNzgfOAdt1
+ JmvEt8ODvsbZqX2ejH2fV9u9lKomtxkE85DoB3HZg+NUUGr6AbBPssuZNGv/c/WTXSiF
+ oIkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=yrJD0nf/1yh/ai4LTsZD9jBphmSNiHQQnt08pdWzbfM=;
+ b=X8UykLDwKpN8XfHKOaD6bwHJ2U316P0MQsD66yfAvDMiQAAPBLA97GTrZISGsvrbQl
+ NoStPAqDOBR1zcioa+iv159gOxGrsveBkp4ucax925haa7UR6zBQhV/XWrCO/8zyp6V8
+ L1eVEhcVC8ksT2IvuRh43trAOJgsCjDRLbGRMqh9WKZudoO0TWMvEuqVTxRhp2h6RgIn
+ L+oofcYSNLiKwB1lePjBaKeFXNOn6tYktYpj+s6boXYtv0LnP3uHJQVOodO0VPl0b1BW
+ WY65mcsIUGikFcB4CmaXzpsakzExl4/FSrIH0FEtjUOQEjkf1BcxcVb+2MdKTNYGAcAu
+ rdPQ==
+X-Gm-Message-State: AGi0PuYQmC6loVPcydwtsGxO6CXHJq6TSaThmX6XQFxPJvHvp50+S5a7
+ npje3MTvhjXTu0K9obIeCU4=
+X-Received: by 2002:adf:dd8b:: with SMTP id x11mr8548161wrl.238.1588765132923; 
+ Wed, 06 May 2020 04:38:52 -0700 (PDT)
+Received: from [192.168.1.37] (26.red-88-21-207.staticip.rima-tde.net.
+ [88.21.207.26])
+ by smtp.gmail.com with ESMTPSA id t4sm2714342wri.54.2020.05.06.04.38.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 06 May 2020 04:38:52 -0700 (PDT)
+Subject: Re: [PATCH v2 2/9] hw/net/xilinx_axienet: Cleanup stream->push
+ assignment
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
+References: <20200506082513.18751-1-edgar.iglesias@gmail.com>
+ <20200506082513.18751-3-edgar.iglesias@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <9e75e512-c09f-8c48-1971-fecc4850ffc1@amsat.org>
+Date: Wed, 6 May 2020 13:38:50 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200505124446.2972f407@redhat.com>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20200506082513.18751-3-edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: EJGqUg2rwGB3
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: damien.hedde@greensocs.com, peter.maydell@linaro.org,
+ sstabellini@kernel.org, edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+ frasse.iglesias@gmail.com, jasowang@redhat.com, alistair@alistair23.me,
+ frederic.konrad@adacore.com, qemu-arm@nongnu.org, figlesia@xilinx.com,
+ luc.michel@greensocs.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ygL95sQQni8F
 
-
-
-On 2020/5/5 18:44, Igor Mammedov wrote:
->> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+On 5/6/20 10:25 AM, Edgar E. Iglesias wrote:
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 > 
-> Also we should ratelimit error messages that could be triggered at runtime
-> from acpi_ghes_record_errors() and functions it's calling.
-> It could be a patch on top.
-
-Ok, thanks Igor.
-I can make another patch for that after this series is applied.
-
+> Split the shared stream_class_init function to assign
+> stream->push with better type-safety.
 > 
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+> ---
+>   hw/net/xilinx_axienet.c | 18 ++++++++++++------
+>   1 file changed, 12 insertions(+), 6 deletions(-)
+> 
+> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+> index 0f97510d8a..84073753d7 100644
+> --- a/hw/net/xilinx_axienet.c
+> +++ b/hw/net/xilinx_axienet.c
+> @@ -1029,11 +1029,19 @@ static void xilinx_enet_class_init(ObjectClass *klass, void *data)
+>       dc->reset = xilinx_axienet_reset;
+>   }
+>   
+> -static void xilinx_enet_stream_class_init(ObjectClass *klass, void *data)
+> +static void xilinx_enet_control_stream_class_init(ObjectClass *klass,
+> +                                                  void *data)
+>   {
+>       StreamSlaveClass *ssc = STREAM_SLAVE_CLASS(klass);
+>   
+> -    ssc->push = data;
+> +    ssc->push = xilinx_axienet_control_stream_push;
+> +}
+> +
+> +static void xilinx_enet_data_stream_class_init(ObjectClass *klass, void *data)
+> +{
+> +    StreamSlaveClass *ssc = STREAM_SLAVE_CLASS(klass);
+> +
+> +    ssc->push = xilinx_axienet_data_stream_push;
+>   }
+>   
+>   static const TypeInfo xilinx_enet_info = {
+> @@ -1048,8 +1056,7 @@ static const TypeInfo xilinx_enet_data_stream_info = {
+>       .name          = TYPE_XILINX_AXI_ENET_DATA_STREAM,
+>       .parent        = TYPE_OBJECT,
+>       .instance_size = sizeof(struct XilinxAXIEnetStreamSlave),
+> -    .class_init    = xilinx_enet_stream_class_init,
+> -    .class_data    = xilinx_axienet_data_stream_push,
+> +    .class_init    = xilinx_enet_data_stream_class_init,
+>       .interfaces = (InterfaceInfo[]) {
+>               { TYPE_STREAM_SLAVE },
+>               { }
+> @@ -1060,8 +1067,7 @@ static const TypeInfo xilinx_enet_control_stream_info = {
+>       .name          = TYPE_XILINX_AXI_ENET_CONTROL_STREAM,
+>       .parent        = TYPE_OBJECT,
+>       .instance_size = sizeof(struct XilinxAXIEnetStreamSlave),
+> -    .class_init    = xilinx_enet_stream_class_init,
+> -    .class_data    = xilinx_axienet_control_stream_push,
+> +    .class_init    = xilinx_enet_control_stream_class_init,
+>       .interfaces = (InterfaceInfo[]) {
+>               { TYPE_STREAM_SLAVE },
+>               { }
 > 

@@ -1,140 +1,121 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp841081lfb;
-        Wed, 6 May 2020 02:56:16 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK/U920WooHBhdYOPAVHqbwFund8cemoKtxsi01LBbJ87whiOxiwTxwwZOXzs2N52AGZ+pL
-X-Received: by 2002:a37:95c5:: with SMTP id x188mr7077769qkd.119.1588758976577;
-        Wed, 06 May 2020 02:56:16 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1588758976; cv=pass;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp842412lfb;
+        Wed, 6 May 2020 02:58:43 -0700 (PDT)
+X-Google-Smtp-Source: APiQypI4l0f3kkCPlRq28rXFU5mzFUl4Jx30qkOnOH2Vh4YQA49TX5yGbRO7JMHSnHaz6r7dKHVB
+X-Received: by 2002:ae9:ef07:: with SMTP id d7mr7930057qkg.229.1588759123574;
+        Wed, 06 May 2020 02:58:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588759123; cv=none;
         d=google.com; s=arc-20160816;
-        b=vT58TMMKyhMNDaEpjUigIAmOkkCe7Hh+bQC+TraPegUSVQXOsMm5wyLyKKxvg9/dP2
-         wx34b2RSHRnqZ/EWnwzdZofLtFBzJfl/4p801KuX9XFdNP5q/FJ2/AOuIbW4k2I0U6rh
-         lfhTziDFvlUrTvSeuolqLbClQhrpJbELu8IBU5KXVvGVFvHFZvj1itkkUCwsG9Dugum5
-         nte8nAFYEjC0EpmM7xM95jZjK6sPgrLYkZS2Jo9bNS+UoaUJk9BygtFMrCwdcnCWdp1U
-         OoVO5otgKyaNkmjJeKrfeyNrJv48PewGUGnyEK9rls9q/Bes7XDBhNosEm5E7v9f/wGp
-         NOyw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=iRAHZ6caNFqcbjjeEqcjkSJke//QnxqRxyl/vdZT24LmKTl4sG78whRvlgh/d8CHvZ
+         MnLoWXAJ81VbKvr87ZX2flxwr3PM3opxb9fYcF8mLbtB1szbB2fUup6MZ83/FqKWQynH
+         4XJ39sYKdGcOFkRqJGdwMpzpCiNVaJYGSSX2ssCnD039IYLxeINQ532CgeqOWR6SfcF4
+         hZNEYxF3SKlUOQCjiwffwZHLXIBhlno7hc9KPMyUdX1MrROsFUhW+qFoJU4HV41WSk3j
+         sRFxqHvBBGLcYpHDQmH2xFS67DhM1jyGGh0mer3+r+6Lspl1LOGuofMwrKQv1OOnYfhO
+         7WnQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from:dkim-signature;
-        bh=BbfVs4kuxmnwygnH71wKIccBArEm0K2R2Qpun73jLnQ=;
-        b=WzjFhH0l+QYrxKlW2+luAlb/qQ/ejRpyagvRPv/Tmj9wWZRzljZMUBY+lpj/8mN7pB
-         LoqQvDFmD0uk9TQbXXXpKSjX39iv8+j1/OReDKozGSA6KL9sjQ4ylbReMp+I1q4fxyCw
-         YEKqU/+fG9XjCWTE4QY8SxyuHMdvr7KwYZuaV4Rn77j+uT0fD3PaxVgUh4pSY4nP32G5
-         287TzFvCr96n8J5VoHoPw6nEeJR/4flf15OYa5SymRw+h1krYR98dvWX12Mh9DnkVF/K
-         ALy548RFyvSzXnBIRbd6W0F56mwQMl9DBgBb31J7BsTBRKufGiechRHm60fRScrTFv1R
-         Zylg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=NvcZ8T77;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dkim=pass dkdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=VTQ2zZbAUkCiQOtJoMzyx7tooV4XfYYcQpIyI7xQuwY=;
+        b=PvKDHXlbzqkGOFTrmUnaKIEXEmGA0EHKV6R1E2YHAXcS4ZX3f2p2eB/iqXNDR2JjsW
+         9sNQK0KlXMBPJU382fy+tNQM295HV/LZEKqSTZsHFqvJn3ma9WgEjVwaVlNUwWouY3u2
+         tctUdpbLBrDm/9J2mt3yb1dbI/23QEyR/+iZMY1HM2p2nH5lt04HTvdeEhYqNygA5LQI
+         tSTO5cbT9YgLQT69tsPrgfYefzxngZprwg6FvMXUXUqi06JuopKDuF+57xGNAfGG1vPd
+         CkoAKLMPH9oe9yvZmC9BfejRn182BGn4h6iWGKWcSEhvpzl2ueu29B4EKVasGOXQIH75
+         QTwg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TN6QI5b8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id m7si843991qvy.110.2020.05.06.02.56.16
+        by mx.google.com with ESMTPS id z21si652986qtz.3.2020.05.06.02.58.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 06 May 2020 02:56:16 -0700 (PDT)
+        Wed, 06 May 2020 02:58:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=NvcZ8T77;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com dkim=pass dkdomain=xilinx.com dmarc=pass fromdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45870 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TN6QI5b8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53448 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jWGml-0007as-VL
-	for alex.bennee@linaro.org; Wed, 06 May 2020 05:56:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55172)
+	id 1jWGp9-0002Ju-0p
+	for alex.bennee@linaro.org; Wed, 06 May 2020 05:58:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
- id 1jWGmc-0007Xs-9N; Wed, 06 May 2020 05:56:06 -0400
-Received: from mail-eopbgr680044.outbound.protection.outlook.com
- ([40.107.68.44]:25333 helo=NAM04-BN3-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
- id 1jWGma-0006J0-7l; Wed, 06 May 2020 05:56:05 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=aCZpA7+FxXlBBxDQIZQpFwDFI99vlXp364naCLKTsbVXEomZ9ABsDZshv1apNB7MziiqxikOlH9/sFX6hv6A9Xt5fYke0T1yZrqpaVyR5+b46EGnnaAbQ4e0hX6gDCQPshEwZPHbaZ4F4bhGezmZJRujmMoK6WtKDd5ii1CrPWmUUgdNKqIEZ/G3XOiwTuhsgBcK/mXWg7ZmIN1KJwthHo/slnOkTjvDHDl8lUCESDrOQrwI7yhtVdG5rUJlS+5r/aFB+U3Bh6Ui4R7yImAfjXxgcTlBUH3Bqy4lTFhJoxoKhTDP7XKJINS1XoYi53+im3Rsi0dMpOY1Ksp3zUZ9/A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BbfVs4kuxmnwygnH71wKIccBArEm0K2R2Qpun73jLnQ=;
- b=g4vK5Zrw/AwNhtIMiIDTBsnxD2ymBC8QA3+sFN23o6SAdUirNMuhlpu0dZmvfhjQR2dJ/utIsI8OMhzCaRuY6X+bQ5f6sXp/0pPYQZA+CYucJfuo4UocXbH3crikF66IBmvyg/in9TQa1Az3lFEGC/10K3dYpr9xV4V0mbtskg64jj4jMZK1NJm3VeTTEhaKRvj6Ac39/vGnYBA/tma2T2LQkIp0r5MW3srqQ3SOZGX7Nn1IkH9zW0G+W6H7wPUJI06mkRl5ZwhCaln6CPosHf8Knok8PybRx58zwN623pZtsb8c86X0tMvqsct8ycAC+83tqvp5RnisMBUGnygP7A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=xilinx.com; dmarc=pass action=none header.from=xilinx.com;
- dkim=pass header.d=xilinx.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BbfVs4kuxmnwygnH71wKIccBArEm0K2R2Qpun73jLnQ=;
- b=NvcZ8T77Q598Pp2Uu6sOJiPzrK0pr8EjQOHEXYjoN6SXVKA1E+NbzSL4vXQWjjlGkud7zhj8asfAlSKWouemnpWHCILV80TXy1cYPZZdlIw0EqI+8JTjsVqcjwVvWBOUVJaYvejGFnWrxqaj9QURLy9ukSip7vZFIsZYrK51oMY=
-Received: from BY5PR02MB6772.namprd02.prod.outlook.com (2603:10b6:a03:206::11)
- by BY5PR02MB7012.namprd02.prod.outlook.com (2603:10b6:a03:233::23)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.19; Wed, 6 May
- 2020 09:56:00 +0000
-Received: from BY5PR02MB6772.namprd02.prod.outlook.com
- ([fe80::9165:a37e:f249:48f6]) by BY5PR02MB6772.namprd02.prod.outlook.com
- ([fe80::9165:a37e:f249:48f6%9]) with mapi id 15.20.2979.028; Wed, 6 May 2020
- 09:56:00 +0000
-From: Sai Pavan Boddu <saipava@xilinx.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: RE: [PATCH v2 01/10] net: cadence_gem: Fix debug statements
-Thread-Topic: [PATCH v2 01/10] net: cadence_gem: Fix debug statements
-Thread-Index: AQHWIiHPl6U+Xp63S0WC+U+KRE83B6ia1LhA
-Date: Wed, 6 May 2020 09:55:59 +0000
-Message-ID: <BY5PR02MB67727CCA1C24483DE5CBBF45CAA40@BY5PR02MB6772.namprd02.prod.outlook.com>
-References: <1588601168-27576-1-git-send-email-sai.pavan.boddu@xilinx.com>
- <1588601168-27576-2-git-send-email-sai.pavan.boddu@xilinx.com>
- <20200504143922.GB5519@toto>
-In-Reply-To: <20200504143922.GB5519@toto>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-TNEF-Correlator: 
-authentication-results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=xilinx.com;
-x-originating-ip: [149.199.50.128]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 28b6cac6-ea3e-4d6f-0e39-08d7f1a3ae35
-x-ms-traffictypediagnostic: BY5PR02MB7012:|BY5PR02MB7012:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BY5PR02MB7012FB6DEC4BA5C1FDDA8124CAA40@BY5PR02MB7012.namprd02.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:230;
-x-forefront-prvs: 03950F25EC
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: IwVxcBP8EkFGZLNTfgaOFxYKXexbkTYhIYzcqo5GNTbPdvI9jFeYnjnknB7XuD5cLC7S+IU9Uw1vHSRt8EUeBFtS2jS7/5K0wiUPE2+aN7LueoVqd4EBArvKpcX73EnQoG2XFhYG9caKMbc0m3dakaapiFKj68kIOHrjSgHBuL5GEY17qfEB+LHqzwDG4QevRHPxGSjAlYIC74CaSeqSXLs3/cXGJJBCF/txrmpzbXr2xwtWXjKVE/l89DPTRLQZdDgJ7h5WjDf8VxiEyDy5e7rrs6/5Jxf7S4QfeicrU08eta6F9n2NV6zwSCGQPhcb+VLEDOTwLDTgbER3gbdPjEpVsfW8Ji+GWf5dgFp8WkgXMz8V8gLhm4V55dUZ/mF3GfXMl1fdFpLABv9Ayy7H2M1xH8pyHvhNrcF/n9fzH2wfeJHFhLtypKI+6qE/jq9vc/TzFtdC+DTcU8ZMcO6bAHhekU6Mk6flbMJf0vOzKh84owbjY2GtC+De9mz+JlW3DxOPWJg4pk5GSHEWpNOefg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR02MB6772.namprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(346002)(396003)(39860400002)(366004)(136003)(376002)(33430700001)(316002)(33440700001)(52536014)(5660300002)(8676002)(53546011)(186003)(55016002)(54906003)(2906002)(86362001)(26005)(9686003)(64756008)(6916009)(71200400001)(66446008)(66946007)(7696005)(66556008)(66476007)(6506007)(33656002)(4326008)(76116006)(8936002)(478600001);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: bMPwRZwM17SbkIPwL5liAUd8giwWg3AQfSBKhUpoRubS5qYaTp/z13S5YQyMWHrk0TY6ryVhjXMy97S0IRklX+ZwE38AKOzPVuMbek7xRV+FIfxItGxCtQAw7edcaWOB7wmgzNHLc9CNaebm0tzMumy02p1osb2hQ2kL8BwgeI+654Y2GCdvcmHk11+hcPi3HC6a26Y/IyS8myO8h9dV3GE4ogwoDjENeXsQrtyzSOv9+CXYDgRa6/xVFvZwbWkRnIFd4fqK3+Sxt1ONFW5PurvVvyTooqDiK7aoGCoHim9t9j/yrKd9whDYLRl1mvBN6nvJXk5SNAhwe8o4lqZvGhA3eJfcPORFFXn2OvP+Ki3K0Dr9BgUvrt06HRUai1Yt2AU3mT4DzJpxvhc++Rcm0edW7JEgpTmdqR2hI9nrd4EkuvTLpcoQJ7x1oqL5dbIVYgUGe9P5hIL0H0YY6meIUYOwd1rhiK6kkyx7UPRqbUplLsBKuDMqNz4l0CkZh8kUsmwDuSjyULHu63WE57QOQki7tkr9WppxtpYf/TaAUPc/jM5qlBU/cC/5uzI/7tn/noG08myM/urM4v9O/eA+9ZiKUWX9xH05+M6/ZsLc2HBRyK43KUUQ9DxCoL7vKzPpi6T7+Fd/dDScY82fDQz7inSK4u3etyfwPqdOqmr39UzIvGJcgANotd1CDDlconCLbacER0el74vQm798W57ZpE22wOMQOow17BSSs41Uzz4VbtIrgjVoKlmwqK94MfPa3BJetDyhdHpIHJcWO/WiaboMqtRoQ8yKsgtSrQ+3UnU=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jWGp1-0002Gq-1n
+ for qemu-arm@nongnu.org; Wed, 06 May 2020 05:58:35 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:46553
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jWGoz-0007mC-Bd
+ for qemu-arm@nongnu.org; Wed, 06 May 2020 05:58:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1588759111;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VTQ2zZbAUkCiQOtJoMzyx7tooV4XfYYcQpIyI7xQuwY=;
+ b=TN6QI5b8dXRyPv1FbqH2NVJ42PJyOVwP8OgJjas/8cpHdgwMbgISK27FAOpz19BYiO9G3W
+ wdu4onrc8fNgmEwbKBxDkfAjenSCvAy1yH7XoodqQWfteJr7pN5YhnIl7bXmIWi0J/wk6B
+ 1SwjEJPVjsIJqrH0RW4yO88bMs60o3o=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-239-5Z5U30ExM3SyomWnbzO0wA-1; Wed, 06 May 2020 05:58:30 -0400
+X-MC-Unique: 5Z5U30ExM3SyomWnbzO0wA-1
+Received: by mail-wm1-f72.google.com with SMTP id f81so524630wmf.2
+ for <qemu-arm@nongnu.org>; Wed, 06 May 2020 02:58:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=NRlhaJxOsTWvjcE0SIFi7KX4jHXlWQZ1YFHZy35Rr+8=;
+ b=AKyGdi0OjpZmwPgj8sT3qU0XiRyrgd9JtXKyhVLheaNur9AC3YpU6Kk/NsdLQOnhjC
+ zgORyZ+wyDXE+7+zrCVY2FqbmoWXu+9bzGdhfpy1DtHEOSplsSWc0ugpcmPgpDBVuj0v
+ IGsS5o6v7Y6E5KxTrHIDbGOE/0YE2MpwIPuZZqp2q0k3b7fvO6gFNRydlLXQPqZ7MQlv
+ VV4eLWjjKAw6C4CilaUlMtFGhiIboPmwcX+pZr9wwXYonRJZ/oGZE4vKCyZNaWC9CBOk
+ r8PCSCro6L65bSR+AMWCU8PxpQY7TbYHSUknQqY2rYBPWvi2zRm2O3NTR4hW4+R8Tnka
+ oEUQ==
+X-Gm-Message-State: AGi0PubdseOJs1MYpVjbz7mB+2t/kjG6+09ic6qfAhKn57W16bZLoMwa
+ BcrvdsRNm7xGuk36wN+JdDoSwNDEiBfA8AkryoQEaOfk5nugS6eAdUsmXMtYne4Edgro8O/WYPZ
+ lJg8x2MYjkojo
+X-Received: by 2002:a5d:6503:: with SMTP id x3mr9535762wru.153.1588759109228; 
+ Wed, 06 May 2020 02:58:29 -0700 (PDT)
+X-Received: by 2002:a5d:6503:: with SMTP id x3mr9535716wru.153.1588759108917; 
+ Wed, 06 May 2020 02:58:28 -0700 (PDT)
+Received: from redhat.com (bzq-109-66-7-121.red.bezeqint.net. [109.66.7.121])
+ by smtp.gmail.com with ESMTPSA id 1sm2298804wmi.0.2020.05.06.02.58.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 06 May 2020 02:58:28 -0700 (PDT)
+Date: Wed, 6 May 2020 05:58:25 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Subject: Re: [PATCH v2 1/3] acpi: Move build_tpm2() in the generic part
+Message-ID: <20200506055747-mutt-send-email-mst@kernel.org>
+References: <20200505144419.29174-1-eric.auger@redhat.com>
+ <20200505144419.29174-2-eric.auger@redhat.com>
+ <20200506063314.4qvnyfonjixcknuj@kamzik.brq.redhat.com>
 MIME-Version: 1.0
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 28b6cac6-ea3e-4d6f-0e39-08d7f1a3ae35
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 May 2020 09:55:59.9267 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: S2OGq0STtu7cZdk0Lz0MNvObn/QmrR5ydzQcmyPUvPESwGDPlkhqQMzNOcLdb5W7Iahqpejygtn/hpRy4zNLiw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR02MB7012
-Received-SPF: pass client-ip=40.107.68.44; envelope-from=saipava@xilinx.com;
- helo=NAM04-BN3-obe.outbound.protection.outlook.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/06 05:56:01
-X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+In-Reply-To: <20200506063314.4qvnyfonjixcknuj@kamzik.brq.redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/06 02:39:40
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -147,120 +128,21 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Ramon Fried <rfried.dev@gmail.com>,
- =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>,
- Tong Ho <tongh@xilinx.com>
+Cc: peter.maydell@linaro.org, gshan@redhat.com, shannon.zhaosl@gmail.com,
+ qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+ marcandre.lureau@redhat.com, imammedo@redhat.com, eric.auger.pro@gmail.com,
+ lersek@redhat.com, ardb@kernel.org, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XaXWF2Qu4s7D
+X-TUID: XLiEKzlOb9FT
 
-Hi Edgar,
+On Wed, May 06, 2020 at 08:33:14AM +0200, Andrew Jones wrote:
+> I realize this function is just getting moved, but maybe it should get
+> converted to the build_append* API while being moved?
 
-Below comments will be taken care in V3.
+I'd rather refactoring was done in a separate patch -
+easier to review.
 
-Thanks,
-Sai Pavan
+--=20
+MST
 
-> -----Original Message-----
-> From: Edgar E. Iglesias <edgar.iglesias@gmail.com>
-> Sent: Monday, May 4, 2020 8:09 PM
-> To: Sai Pavan Boddu <saipava@xilinx.com>
-> Cc: Alistair Francis <Alistair.Francis@wdc.com>; Peter Maydell
-> <peter.maydell@linaro.org>; Jason Wang <jasowang@redhat.com>; Markus
-> Armbruster <armbru@redhat.com>; Philippe Mathieu-Daud=E9
-> <philmd@redhat.com>; Tong Ho <tongh@xilinx.com>; Ramon Fried
-> <rfried.dev@gmail.com>; qemu-arm@nongnu.org; qemu-
-> devel@nongnu.org
-> Subject: Re: [PATCH v2 01/10] net: cadence_gem: Fix debug statements
->=20
-> On Mon, May 04, 2020 at 07:35:59PM +0530, Sai Pavan Boddu wrote:
-> > Enabling debug breaks the build, Fix them and make debug statements
-> > always compilable. Fix few statements to use sized integer casting.
-> >
-> > Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-> > ---
-> >  hw/net/cadence_gem.c | 28 ++++++++++++++--------------
-> >  1 file changed, 14 insertions(+), 14 deletions(-)
-> >
-> > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c index
-> > 22a0b1b..2f244eb 100644
-> > --- a/hw/net/cadence_gem.c
-> > +++ b/hw/net/cadence_gem.c
-> > @@ -35,14 +35,13 @@
-> >  #include "sysemu/dma.h"
-> >  #include "net/checksum.h"
-> >
-> > -#ifdef CADENCE_GEM_ERR_DEBUG
-> > -#define DB_PRINT(...) do { \
-> > -    fprintf(stderr,  ": %s: ", __func__); \
-> > -    fprintf(stderr, ## __VA_ARGS__); \
-> > -    } while (0)
-> > -#else
-> > -    #define DB_PRINT(...)
-> > -#endif
-> > +#define CADENCE_GEM_ERR_DEBUG 0
-> > +#define DB_PRINT(...) do {\
-> > +    if (CADENCE_GEM_ERR_DEBUG) {   \
-> > +        qemu_log(": %s: ", __func__); \
-> > +        qemu_log(__VA_ARGS__); \
-> > +    } \
-> > +} while (0)
-> >
-> >  #define GEM_NWCTRL        (0x00000000/4) /* Network Control reg */
-> >  #define GEM_NWCFG         (0x00000004/4) /* Network Config reg */
-> > @@ -979,7 +978,8 @@ static ssize_t gem_receive(NetClientState *nc,
-> const uint8_t *buf, size_t size)
-> >          size +=3D 4;
-> >      }
-> >
-> > -    DB_PRINT("config bufsize: %d packet size: %ld\n", rxbufsize, size)=
-;
-> > +    DB_PRINT("config bufsize: %" PRIu64 " packet size: %" PRIu64 "\n",
-> > +             (uint64_t) rxbufsize, (uint64_t) size);
->=20
-> Shouldn't these be %u and %zd rather than casting to uint64_t?
->=20
->=20
-> >
-> >      /* Find which queue we are targeting */
-> >      q =3D get_queue_from_screen(s, rxbuf_ptr, rxbufsize); @@ -992,9
-> > +992,9 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t
-> *buf, size_t size)
-> >              return -1;
-> >          }
-> >
-> > -        DB_PRINT("copy %u bytes to 0x%" PRIx64 "\n",
-> > -                 MIN(bytes_to_copy, rxbufsize),
-> > -                 rx_desc_get_buffer(s, s->rx_desc[q]));
-> > +        DB_PRINT("copy %" PRIu32 " bytes to 0x%" PRIx64 "\n",
-> > +                MIN(bytes_to_copy, rxbufsize),
-> > +                rx_desc_get_buffer(s, s->rx_desc[q] + rxbuf_offset));
->=20
-> Looks like this is changing what we print (+ rxbuf_offset), was that
-> intentional? (it was not mentioned in the commit message)
->=20
->=20
-> >
-> >          /* Copy packet data to emulated DMA buffer */
-> >          address_space_write(&s->dma_as, rx_desc_get_buffer(s,
-> > s->rx_desc[q]) + @@ -1160,8 +1160,8 @@ static void
-> gem_transmit(CadenceGEMState *s)
-> >               */
-> >              if ((tx_desc_get_buffer(s, desc) =3D=3D 0) ||
-> >                  (tx_desc_get_length(desc) =3D=3D 0)) {
-> > -                DB_PRINT("Invalid TX descriptor @ 0x%x\n",
-> > -                         (unsigned)packet_desc_addr);
-> > +                DB_PRINT("Invalid TX descriptor @ 0x%" HWADDR_PRIx "\n=
-",
-> > +                         packet_desc_addr);
-> >                  break;
-> >              }
-> >
-> > --
-> > 2.7.4
-> >

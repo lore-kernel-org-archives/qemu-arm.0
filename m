@@ -1,108 +1,111 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1282678lfm;
-        Thu, 2 Jul 2020 02:02:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxvX6Mo68oGWMtIvOG+3wGlq9zTnz+WsPoPOA5H8s/Y7E2HTyLneLapKva3qK52kC4X0nRZ
-X-Received: by 2002:adf:eec8:: with SMTP id a8mr30958571wrp.421.1593680537867;
-        Thu, 02 Jul 2020 02:02:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593680537; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2026098lfb;
+        Thu, 7 May 2020 07:39:14 -0700 (PDT)
+X-Received: by 2002:a6b:d10c:: with SMTP id l12mr3091358iob.44.1588862354514;
+        Thu, 07 May 2020 07:39:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588862354; cv=none;
         d=google.com; s=arc-20160816;
-        b=GP/mxYoYE/4ljV5uBOQe8RbpqNfvQ08gRwrjEHLA05/z0pSsBrZDJPTadAMqPdBKT8
-         g2wIgHubCKYlhichsoXLlehBJiUXXmh8H7jxAArvIUurt6lF3iJ7Wjwvm/UupuvngqsX
-         qslLGpaGlI60oCRn0zVqr2st94zWJTVYqmfSNwMmHims/E2WSVw35jGs27jPo6Cq76yM
-         UJC7VN5u6JvTQUqzUxhloRJzoGIBZhudZPzD6E/87gby9aZ5tLoBZj++UNMv1E6PiBww
-         WM0IDaMtmqjghvaH8E79Isqdbb9uuDgxPaqbRAqNjTS7ZpjHb0J/rAeGivJIb1oO2dTy
-         pZ0Q==
+        b=KJxQPJmEP9DzeOb9vhFmoJMp+jgJdYhtDXQkiJy2Fk4vIISk/d6eTyXxzV8WJEzGuF
+         xOeu5yN5zX6ywFAmekUe4PDviWGM70ECO1zqI1SA7MVq0ITXeEBIexhluY+NMSnnj/Tb
+         D6yLe4tVd7YMMYJrssCC5dkW27G5zBnvXgVDwawFA8Dhs4N1xD1MGccIxXCBNltnjWXp
+         ogOJ00nQ5Vp1Pc80sEMGcMm6bqsq/4SAY7xrr27vfpIs01uoXZfF4L+vM32hiJNEchh8
+         zZs1sB/diQShmP00oy+cIBLAwdsxXXrRnRQ3q2M5ar6+agw/Lqrd+Iq0SxgUttpJgMf9
+         qlQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-language:content-transfer-encoding:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=nn8IbQ3J36+ArvhFcW01bSI26Cd+kcqppdXoDP8YCCM=;
-        b=pQPXWAo7sH7f9rkq/PSgt7t3h5iPKlw54VPgEvdnxVFLR/Cm4VUJ7vO3cBPrVeSrFZ
-         dw/QoTLR5nWyj6nAajsRriTiA+48EimZRk12jhfDOOkafYZYbYrAd0vXXuY+Dd4dE/1G
-         MeAQMyEqB/auLANUR+RB7qbS/RSFd/8F/siIOFeupEevP0aLOFalPa1GQ3RKfPlGPngV
-         GctZw8/HDBM7eULf6ZxyxWotl/KBvD7X2Idr3ArxkEjEjQrqpYPRFbxTr9lbier4pCIV
-         AN+drqPoBie5Xlz3gpl5+mBKFv0dg7KqvIkBNFIx1YjCF+T66NGn2PMtuInN7xeP1q2C
-         6bdw==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=hCOO5I/BSp4UILMcui5em2mtGw/peN7kCZALbU8+zZU=;
+        b=q/AI+3zpXoXxFL7odtqlc31tMRSn8fq4E/1FWcGOHuiLSf07Ux2byqdwUWI8Bhe8fU
+         MpyIv7oYDVPmyOLsiOc6hYM8p5q+1R+1Uz0hV1VTgx9E8//oSU1WUINg+JeuOUdczCVw
+         bEXnyKxRRO0/oZ5Sgruoz2hsfXp4viTmjS81WcGsvIbHUMrRqteW1MBVatIvkjwCOCcs
+         oJN2JVBjkV95mGyHcSbLGkwlzrJEZSbxoUjdWXRSF3zjJx6uNg24pcjSsFqJdLx8NapP
+         gy7EdsxUkbnIxY/cGs0sWImKmu89U4K+MbtG28RCDMD+Q6OepkCAPy9O1A8GX8oxUoWl
+         eZHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of agraf@csgraf.de designates 188.138.100.120 as permitted sender) smtp.mailfrom=agraf@csgraf.de
-Return-Path: <agraf@csgraf.de>
-Received: from zulu616.server4you.de (mail.csgraf.de. [188.138.100.120])
-        by mx.google.com with ESMTP id 135si8442298wme.180.2020.07.02.02.02.17;
-        Thu, 02 Jul 2020 02:02:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of agraf@csgraf.de designates 188.138.100.120 as permitted sender) client-ip=188.138.100.120;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kGYFd8MO;
+       spf=pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=laurent.desnogues@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <laurent.desnogues@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id x8sor5351234ill.33.2020.05.07.07.39.14
+        (Google Transport Security);
+        Thu, 07 May 2020 07:39:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of agraf@csgraf.de designates 188.138.100.120 as permitted sender) smtp.mailfrom=agraf@csgraf.de
-Received: from 38f9d3867b82.ant.amazon.com (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com [3.122.114.9])
-	by csgraf.de (Postfix) with ESMTPSA id 2FB6139002EF;
-	Thu,  2 Jul 2020 11:02:16 +0200 (CEST)
-Subject: Re: [PATCH] target/arm: Treat unknown SMC calls as NOP
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-References: <20200701200848.26746-1-agraf@csgraf.de>
- <CAFEAcA9S5v0LHMNc4fu9JGUzecbg8DsogZuCEv_aGNqVxRAcDQ@mail.gmail.com>
- <60440cb5-bd18-2928-afcf-974766222dd7@csgraf.de> <878sg2qrli.fsf@linaro.org>
-From: Alexander Graf <agraf@csgraf.de>
-Message-ID: <83381dc5-a259-e6d6-11b0-a6b96e850003@csgraf.de>
-Date: Thu, 2 Jul 2020 11:02:10 +0200
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:68.0)
- Gecko/20100101 Thunderbird/68.9.0
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kGYFd8MO;
+       spf=pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=laurent.desnogues@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=hCOO5I/BSp4UILMcui5em2mtGw/peN7kCZALbU8+zZU=;
+        b=kGYFd8MODA1NRnNssYU9oFKKNdh/i2NJdD+Wjp9TYo0vs4baiBeLZRrbU0tqQbKVXG
+         k9xAUs8rX0wQLr5fqGHCVkQfUracAQwip1CXCoTWn1xgieGvd9jROIFoI6t3uCCA3aFh
+         3G72W8VvfGO12vSboqB/4CRQRICGj6KBEyHWeJVy6a4ly1b4m+K9dkiqqcZm9nMibHKl
+         eNp95kq3V/RQAOdULaRvmMF40ZHMDlMWU3kfyjbRoJ0RL4H+7G5XmR7W9552irhaV477
+         es/cbCb3Os1sdGIYxDRpYp5ZfJrKAH4k8QGg0lDAdKBhe3ohaj5PAeDteTKZWF/hF5l6
+         H6zw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=hCOO5I/BSp4UILMcui5em2mtGw/peN7kCZALbU8+zZU=;
+        b=BQlUd8vZr+RL1lyEL3bZbpCuJ0ZrlQRMVz+pKhKiyHUL6pCGUQEvrE3Jk0eLtypkm3
+         9L3CUrdY5ptff0ie6jtt+wPnKUdzVAYU1TuT5kjUa6hnNQvxsKopp60zZGzC8adu47+D
+         lWFQ3+J5HYzOui03fq0z+D5HYaTKHRtf9F2Pp0VClfSv7fMMMR6Z1aZTj+iBbjhcwOiq
+         mWqAf3z0WMfd7xLdXvn0b2t9uRK8d9OJCCyf4yvWLNH9WuSvuMHkM6fwY8Xz79XaFR0l
+         cqToBabVo1GP9devfIVcS93UTCoq7fda1DCzrAzt55Pcpy+EGOPrSvY51mb9DkhHhMg5
+         5bTg==
+X-Gm-Message-State: AGi0PuY16PkfbodcVSFNoS8EylPALIiDuCHUEbE9cI/aMTUnzmnqSC2D
+	nFNpsIBDrWnZ0007bC+fKqGVO9P5UDwgjA+RMOwWm2T/
+X-Google-Smtp-Source: APiQypK/aEf6jyDD5LHBc8xRwSBi4zBxyl1FY0EHqV26HmXNBWpN/Y0Tb2a+m+o0rbPM/Vtzlxpq4Grrp2WDbOHP6BM=
+X-Received: by 2002:a05:6e02:68b:: with SMTP id o11mr14351664ils.245.1588862353869;
+ Thu, 07 May 2020 07:39:13 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <878sg2qrli.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-TUID: CMMh0GRl0lRk
+References: <20200506183002.3192-1-richard.henderson@linaro.org> <20200506183002.3192-5-richard.henderson@linaro.org>
+In-Reply-To: <20200506183002.3192-5-richard.henderson@linaro.org>
+From: Laurent Desnogues <laurent.desnogues@gmail.com>
+Date: Thu, 7 May 2020 16:39:02 +0200
+Message-ID: <CABoDooPCvC4Y+G4CGBUhPT_ce3rY6_ZZvTnvv8M+sXPkpN4raQ@mail.gmail.com>
+Subject: Re: [PULL 04/10] target/arm: Use tcg_gen_gvec_dup_imm
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-arm <qemu-arm@nongnu.org>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: aIGn4Tqq2zt2
 
+Hello,
 
-On 02.07.20 09:54, Alex Bennée wrote:
-> Alexander Graf <agraf@csgraf.de> writes:
+On Wed, May 6, 2020 at 8:30 PM Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
->> On 01.07.20 22:47, Peter Maydell wrote:
->>> On Wed, 1 Jul 2020 at 21:08, Alexander Graf <agraf@csgraf.de> wrote:
->>>> We currently treat unknown SMC calls as UNDEF. This behavior is different
->>>> from KVM, which treats them as NOP.
->>>>
->>>> Unfortunately, the UNDEF exception breaks running Windows for ARM in QEMU,
->>>> as that probes an OEM SMCCC call on boot, but does not expect to receive
->>>> an UNDEF exception as response.
->>>>
->>>> So instead, let's follow the KVM path and ignore SMC calls that we don't
->>>> handle. This fixes booting the Windows 10 for ARM preview in TCG for me.
->>>>
->>>> Signed-off-by: Alexander Graf <agraf@csgraf.de>
->>>> +    if (cs->exception_index == EXCP_SMC &&
->>>> +        !arm_feature(env, ARM_FEATURE_EL3) &&
->>>> +        cpu->psci_conduit != QEMU_PSCI_CONDUIT_SMC) {
->>> This condition says: "we got an SMC, and this CPU doesn't
->>> have EL3, and we're not imitating real EL3 firmware".
->>
->> I like to think of it as "This CPU exposes an environment that looks
->> like KVM, so it implements HVC calls (EL2) and is responsible for
->> handling SMC calls as well.
-> That is a very KVM centric view of the world ;-)
+> In a few cases, we're able to remove some manual replication.
 >
-> I thought the aim was always to behave as the real processor would.
-
-
-If we aim to behave like a "real processor", then why do we implement 
-PSCI using HVC? A much more likely "real processor" would implement EL3, 
-but no EL2 and then have PSCI as SMC calls, no?
-
-My understanding for the rationale on why we do PSCI over HVC by default 
-was to make the VM as similar between KVM and TCG as possible.
-
-
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/translate-a64.c | 10 +++++-----
+>  target/arm/translate-sve.c | 12 +++++-------
+>  target/arm/translate.c     |  9 ++++++---
+>  3 files changed, 16 insertions(+), 15 deletions(-)
 >
->> The main difference between the two semantics is that in yours, you
->> don't have EL3. In mine, there is an EL3, but it's virtualized by the
->> same layer that implements EL2.
-> If you boot up with secure firmware + EL2 aware KVM kernel I assume
-> everything behaves as expected?
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index a896f9c4b8..62e5729904 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+[...]
+> @@ -2044,7 +2044,7 @@ static bool trans_DUP_x(DisasContext *s, arg_DUP_x =
+*a)
+>              unsigned nofs =3D vec_reg_offset(s, a->rn, index, esz);
+>              tcg_gen_gvec_dup_mem(esz, dofs, nofs, vsz, vsz);
+>          } else {
+> -            tcg_gen_gvec_dup64i(dofs, vsz, vsz, 0);
+> +            tcg_gen_gvec_dup_imm(esz, dofs, vsz, vsz, 0);
 
+For an indexed DUP, size can be 128-bit so that will fail the first
+assert in tcg-op-gvec.c:do_dup.
 
-I would assume so as well, but I don't have a working ATF setup handy. 
-I'm also not worried about making it work for me - I have my local debug 
-setup now :). I'm worried about a good out of the box experience for 
-users who want to run Windows on ARM in TCG.
+Thanks,
 
-
-Alex
+Laurent

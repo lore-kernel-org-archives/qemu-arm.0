@@ -1,48 +1,48 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1976630lfb;
-        Thu, 7 May 2020 06:40:38 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIoy2bG3PBJVFhp4wCmfXzw3WNFxhN/SQUkT6atvVotoHG4PneemZltoocAHdw0VAXZsoXx
-X-Received: by 2002:a05:6402:1297:: with SMTP id w23mr11684805edv.151.1588858838110;
-        Thu, 07 May 2020 06:40:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588858838; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1976649lfb;
+        Thu, 7 May 2020 06:40:39 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLiinsKz1BzpemGHUUVHwT4OrwUbUNN05fqp8H9jGWzGlP7PcrmJ/qMs5Wu+gHxxuJzmC7p
+X-Received: by 2002:a17:907:11c5:: with SMTP id va5mr5669904ejb.200.1588858839636;
+        Thu, 07 May 2020 06:40:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588858839; cv=none;
         d=google.com; s=arc-20160816;
-        b=k8GM526zcIA0l1MCqigJlIhW84A8iSQWj/yG2BeWe07hk7Cqp26e7MdHiSneBPYKfV
-         PUpVw+zNQ03mUBk7DABWXTEhl/okL4HDcnbXGYj4Izq1bv6dxu9dA+brkAz454ILBhan
-         UEsr2NHAhis/xrLsMMKb5LTjzTfwEv0KR0kNeZtjE0Go+M6UFtCI9wGnA+cu5yySvV8s
-         /siqFzixNfCcJM+xb9y5mYMbKjLUqLU070Rk2MWGS2qu0y14THH5+amazSec6+M9FQY4
-         DIIjXeDDUKbtTWsYUoQvMeCU2qIP3TA5Rb1KAuiiOlPfZ/mDuGIaFADXP0MZaM07r8EC
-         DVGw==
+        b=vO5BcCJmbZThkGGGhl8GNlUoseXTayNPw3fsyLWrplqqFlIX92TKFDzFOzOHZ4LdLd
+         1tcOW5cX+EXU7dd61THeEjCOA/Gukr9NoGSse0MplvRjGPK8MVE65NnavMoA5s+y75lK
+         gcWT6CJzl1aXp+o0j3gDYjKXMMnQQvIpVJh8BHakh/Ox/Pkr3ALSU3nMkCEHKRXhfo3d
+         0OgaRZ5pwfiIz5shy88sQDfEgQI3SFmEot2wusFj0SirtjEYUMATrjlVE0sjlG0KxJZW
+         qXo5U66qULojS+j4FdT3tqi5+kjcLO6F7LPmEnHRiNn9fqscqF+T6HZbv1infYi8OdlZ
+         FBlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=GB05fazCB/9re57lDYE7Px9yYzZk+yj2wHmrPhX/0Yw=;
-        b=xipJYms3nQ6CT59bAyCVPsL5zJnVwh40rNlgglLJNmVd8WWB/Ea/ndG8sgXI/K9fN4
-         31GCjECLPIAg8fKs+6ahWhdZo0ENjZO/lZh6QSjyuozUMzMBH1kCzCD5ZMN39G/tvMoQ
-         uLIe/AEGFdvaYdgKrbvL1MJAQ29tZN1FTia12lziEE6by7lIGAi7Ua3+YhjjKFoF/8RT
-         fPJmiVFTgZxwxJyfFj5U5qWYgn8ZBIX2351i4dCP3+v9fb9X71u8AEYGLcDypzfeVOH4
-         PV1YvMhyUMjidkDgBagXcX3+t3mjRIHk3MuGgGq623W0xAVtnoKOakuZE57BgJ6NC2wU
-         xZOA==
+        bh=qOOmKh4FpP20yjf24uRtm0IkBYxUzSJbt8cL2R8R0Z0=;
+        b=cOmziTpwgLK3X3NMGObtwiHSnSzl7CYpP/QaXlcczQstJVVRyn1eMxpGoorLGdUIu9
+         73qlZ3+cfoNCIbCifuvLqsLsh6H58Bbqn6oCT+CHI2/svf37/EfxdXKl94LLZqPXFGN5
+         MEGzt0KMUwiMyCGsyKRXpnEc7if0OUvu7p7t3kX3/dQO1IUzlTW5HlSEDSpulUy/gbgg
+         F1NdzLcExFfhpiALjbeSWhj3Eg2spyKab/WYT0HIaPcnEYpXvTDsM6Zpj1jPWo3SZslJ
+         nprpvCeF6J3Op79oB53sOcL12Vx1v8SNfDbrhSjCfOhF6vXdf5tOeUXuZI8BH9xz5z9l
+         ArbA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id dg6si768577edb.15.2020.05.07.06.40.37;
-        Thu, 07 May 2020 06:40:38 -0700 (PDT)
+        by mx.google.com with ESMTP id dg6si768577edb.15.2020.05.07.06.40.39;
+        Thu, 07 May 2020 06:40:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727779AbgEGNk2 (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 7 May 2020 09:40:28 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:39046 "EHLO huawei.com"
+        id S1726797AbgEGNki (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 7 May 2020 09:40:38 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3899 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726268AbgEGNk0 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 7 May 2020 09:40:26 -0400
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
-        by Forcepoint Email with ESMTP id C8144298E5D23D3D8D96;
-        Thu,  7 May 2020 21:40:22 +0800 (CST)
+        id S1726542AbgEGNkg (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 7 May 2020 09:40:36 -0400
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 00EA431C2E6A42A263DF;
+        Thu,  7 May 2020 21:40:18 +0800 (CST)
 Received: from huawei.com (10.151.151.243) by DGGEMS412-HUB.china.huawei.com
  (10.3.19.212) with Microsoft SMTP Server id 14.3.487.0; Thu, 7 May 2020
- 21:40:13 +0800
+ 21:40:11 +0800
 From:   Dongjiu Geng <gengdongjiu@huawei.com>
 To:     <imammedo@redhat.com>, <mst@redhat.com>,
         <xiaoguangrong.eric@gmail.com>, <peter.maydell@linaro.org>,
@@ -52,9 +52,9 @@ To:     <imammedo@redhat.com>, <mst@redhat.com>,
         <kvm@vger.kernel.org>, <qemu-arm@nongnu.org>
 CC:     <gengdongjiu@huawei.com>, <zhengxiang9@huawei.com>,
         <Jonathan.Cameron@huawei.com>, <linuxarm@huawei.com>
-Subject: [PATCH v26 07/10] KVM: Move hwpoison page related functions into kvm-all.c
-Date:   Thu, 7 May 2020 21:42:02 +0800
-Message-ID: <20200507134205.7559-8-gengdongjiu@huawei.com>
+Subject: [PATCH v26 04/10] ACPI: Build related register address fields via hardware error fw_cfg blob
+Date:   Thu, 7 May 2020 21:41:59 +0800
+Message-ID: <20200507134205.7559-5-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200507134205.7559-1-gengdongjiu@huawei.com>
 References: <20200507134205.7559-1-gengdongjiu@huawei.com>
@@ -66,168 +66,255 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ykTvQm3ascSe
+X-TUID: sbBcnDcA8TAM
 
-kvm_hwpoison_page_add() and kvm_unpoison_all() will both
-be used by X86 and ARM platforms, so moving them into
-"accel/kvm/kvm-all.c" to avoid duplicate code.
+This patch builds error_block_address and read_ack_register fields
+in hardware errors table , the error_block_address points to Generic
+Error Status Block(GESB) via bios_linker. The max size for one GESB
+is 1kb, For more detailed information, please refer to
+document: docs/specs/acpi_hest_ghes.rst
 
-For architectures that don't use the poison-list functionality
-the reset handler will harmlessly do nothing, so let's register
-the kvm_unpoison_all() function in the generic kvm_init() function.
+Now we only support one Error source, if necessary, we can extend to
+support more.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+Suggested-by: Laszlo Ersek <lersek@redhat.com>
 Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- accel/kvm/kvm-all.c      | 36 ++++++++++++++++++++++++++++++++++++
- include/sysemu/kvm_int.h | 12 ++++++++++++
- target/i386/kvm.c        | 36 ------------------------------------
- 3 files changed, 48 insertions(+), 36 deletions(-)
+ default-configs/arm-softmmu.mak |  1 +
+ hw/acpi/Kconfig                 |  4 ++
+ hw/acpi/Makefile.objs           |  1 +
+ hw/acpi/aml-build.c             |  2 +
+ hw/acpi/ghes.c                  | 89 +++++++++++++++++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c        |  5 +++
+ include/hw/acpi/aml-build.h     |  1 +
+ include/hw/acpi/ghes.h          | 28 +++++++++++++
+ 8 files changed, 131 insertions(+)
+ create mode 100644 hw/acpi/ghes.c
+ create mode 100644 include/hw/acpi/ghes.h
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 439a4ef..36be117 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -44,6 +44,7 @@
- #include "qapi/visitor.h"
- #include "qapi/qapi-types-common.h"
- #include "qapi/qapi-visit-common.h"
-+#include "sysemu/reset.h"
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 36a0e89..8fc09a4 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -42,3 +42,4 @@ CONFIG_FSL_IMX7=y
+ CONFIG_FSL_IMX6UL=y
+ CONFIG_SEMIHOSTING=y
+ CONFIG_ALLWINNER_H3=y
++CONFIG_ACPI_APEI=y
+diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+index 54209c6..1932f66 100644
+--- a/hw/acpi/Kconfig
++++ b/hw/acpi/Kconfig
+@@ -28,6 +28,10 @@ config ACPI_HMAT
+     bool
+     depends on ACPI
  
- #include "hw/boards.h"
++config ACPI_APEI
++    bool
++    depends on ACPI
++
+ config ACPI_PCI
+     bool
+     depends on ACPI && PCI
+diff --git a/hw/acpi/Makefile.objs b/hw/acpi/Makefile.objs
+index cab9bcd..72886c7 100644
+--- a/hw/acpi/Makefile.objs
++++ b/hw/acpi/Makefile.objs
+@@ -8,6 +8,7 @@ common-obj-$(CONFIG_ACPI_NVDIMM) += nvdimm.o
+ common-obj-$(CONFIG_ACPI_VMGENID) += vmgenid.o
+ common-obj-$(CONFIG_ACPI_HW_REDUCED) += generic_event_device.o
+ common-obj-$(CONFIG_ACPI_HMAT) += hmat.o
++common-obj-$(CONFIG_ACPI_APEI) += ghes.o
+ common-obj-$(call lnot,$(CONFIG_ACPI_X86)) += acpi-stub.o
+ common-obj-$(call lnot,$(CONFIG_PC)) += acpi-x86-stub.o
  
-@@ -883,6 +884,39 @@ int kvm_vm_check_extension(KVMState *s, unsigned int extension)
-     return ret;
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 2c3702b..3681ec6 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1578,6 +1578,7 @@ void acpi_build_tables_init(AcpiBuildTables *tables)
+     tables->table_data = g_array_new(false, true /* clear */, 1);
+     tables->tcpalog = g_array_new(false, true /* clear */, 1);
+     tables->vmgenid = g_array_new(false, true /* clear */, 1);
++    tables->hardware_errors = g_array_new(false, true /* clear */, 1);
+     tables->linker = bios_linker_loader_init();
  }
  
-+typedef struct HWPoisonPage {
-+    ram_addr_t ram_addr;
-+    QLIST_ENTRY(HWPoisonPage) list;
-+} HWPoisonPage;
-+
-+static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
-+    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
-+
-+static void kvm_unpoison_all(void *param)
-+{
-+    HWPoisonPage *page, *next_page;
-+
-+    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
-+        QLIST_REMOVE(page, list);
-+        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
-+        g_free(page);
-+    }
-+}
-+
-+void kvm_hwpoison_page_add(ram_addr_t ram_addr)
-+{
-+    HWPoisonPage *page;
-+
-+    QLIST_FOREACH(page, &hwpoison_page_list, list) {
-+        if (page->ram_addr == ram_addr) {
-+            return;
-+        }
-+    }
-+    page = g_new(HWPoisonPage, 1);
-+    page->ram_addr = ram_addr;
-+    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
-+}
-+
- static uint32_t adjust_ioeventfd_endianness(uint32_t val, uint32_t size)
- {
- #if defined(HOST_WORDS_BIGENDIAN) != defined(TARGET_WORDS_BIGENDIAN)
-@@ -2085,6 +2119,8 @@ static int kvm_init(MachineState *ms)
-         s->kernel_irqchip_split = mc->default_kernel_irqchip_split ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
-     }
+@@ -1588,6 +1589,7 @@ void acpi_build_tables_cleanup(AcpiBuildTables *tables, bool mfre)
+     g_array_free(tables->table_data, true);
+     g_array_free(tables->tcpalog, mfre);
+     g_array_free(tables->vmgenid, mfre);
++    g_array_free(tables->hardware_errors, mfre);
+ }
  
-+    qemu_register_reset(kvm_unpoison_all, NULL);
+ /*
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+new file mode 100644
+index 0000000..e1b3f8f
+--- /dev/null
++++ b/hw/acpi/ghes.c
+@@ -0,0 +1,89 @@
++/*
++ * Support for generating APEI tables and recording CPER for Guests
++ *
++ * Copyright (c) 2020 HUAWEI TECHNOLOGIES CO., LTD.
++ *
++ * Author: Dongjiu Geng <gengdongjiu@huawei.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
 +
-     if (s->kernel_irqchip_allowed) {
-         kvm_irqchip_create(s);
-     }
-diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
-index ac2d1f8..c660a70 100644
---- a/include/sysemu/kvm_int.h
-+++ b/include/sysemu/kvm_int.h
-@@ -42,4 +42,16 @@ void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
-                                   AddressSpace *as, int as_id);
- 
- void kvm_set_max_memslot_size(hwaddr max_slot_size);
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
 +
-+/**
-+ * kvm_hwpoison_page_add:
-+ *
-+ * Parameters:
-+ *  @ram_addr: the address in the RAM for the poisoned page
-+ *
-+ * Add a poisoned page to the list
-+ *
-+ * Return: None.
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
 + */
-+void kvm_hwpoison_page_add(ram_addr_t ram_addr);
- #endif
-diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-index 4901c6d..34f8387 100644
---- a/target/i386/kvm.c
-+++ b/target/i386/kvm.c
-@@ -24,7 +24,6 @@
- #include "sysemu/sysemu.h"
- #include "sysemu/hw_accel.h"
- #include "sysemu/kvm_int.h"
--#include "sysemu/reset.h"
- #include "sysemu/runstate.h"
- #include "kvm_i386.h"
- #include "hyperv.h"
-@@ -533,40 +532,6 @@ uint64_t kvm_arch_get_supported_msr_feature(KVMState *s, uint32_t index)
-     }
- }
++
++#include "qemu/osdep.h"
++#include "qemu/units.h"
++#include "hw/acpi/ghes.h"
++#include "hw/acpi/aml-build.h"
++
++#define ACPI_GHES_ERRORS_FW_CFG_FILE        "etc/hardware_errors"
++#define ACPI_GHES_DATA_ADDR_FW_CFG_FILE     "etc/hardware_errors_addr"
++
++/* The max size in bytes for one error block */
++#define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
++
++/* Now only support ARMv8 SEA notification type error source */
++#define ACPI_GHES_ERROR_SOURCE_COUNT        1
++
++/*
++ * Build table for the hardware error fw_cfg blob.
++ * Initialize "etc/hardware_errors" and "etc/hardware_errors_addr" fw_cfg blobs.
++ * See docs/specs/acpi_hest_ghes.rst for blobs format.
++ */
++void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
++{
++    int i, error_status_block_offset;
++
++    /* Build error_block_address */
++    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
++        build_append_int_noprefix(hardware_errors, 0, sizeof(uint64_t));
++    }
++
++    /* Build read_ack_register */
++    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
++        /*
++         * Initialize the value of read_ack_register to 1, so GHES can be
++         * writeable after (re)boot.
++         * ACPI 6.2: 18.3.2.8 Generic Hardware Error Source version 2
++         * (GHESv2 - Type 10)
++         */
++        build_append_int_noprefix(hardware_errors, 1, sizeof(uint64_t));
++    }
++
++    /* Generic Error Status Block offset in the hardware error fw_cfg blob */
++    error_status_block_offset = hardware_errors->len;
++
++    /* Reserve space for Error Status Data Block */
++    acpi_data_push(hardware_errors,
++        ACPI_GHES_MAX_RAW_DATA_LENGTH * ACPI_GHES_ERROR_SOURCE_COUNT);
++
++    /* Tell guest firmware to place hardware_errors blob into RAM */
++    bios_linker_loader_alloc(linker, ACPI_GHES_ERRORS_FW_CFG_FILE,
++                             hardware_errors, sizeof(uint64_t), false);
++
++    for (i = 0; i < ACPI_GHES_ERROR_SOURCE_COUNT; i++) {
++        /*
++         * Tell firmware to patch error_block_address entries to point to
++         * corresponding "Generic Error Status Block"
++         */
++        bios_linker_loader_add_pointer(linker,
++            ACPI_GHES_ERRORS_FW_CFG_FILE, sizeof(uint64_t) * i,
++            sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE,
++            error_status_block_offset + i * ACPI_GHES_MAX_RAW_DATA_LENGTH);
++    }
++
++    /*
++     * tell firmware to write hardware_errors GPA into
++     * hardware_errors_addr fw_cfg, once the former has been initialized.
++     */
++    bios_linker_loader_write_pointer(linker, ACPI_GHES_DATA_ADDR_FW_CFG_FILE,
++        0, sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
++}
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index f22b1e6..8397bda 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -49,6 +49,7 @@
+ #include "sysemu/reset.h"
+ #include "kvm_arm.h"
+ #include "migration/vmstate.h"
++#include "hw/acpi/ghes.h"
  
--
--typedef struct HWPoisonPage {
--    ram_addr_t ram_addr;
--    QLIST_ENTRY(HWPoisonPage) list;
--} HWPoisonPage;
--
--static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
--    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
--
--static void kvm_unpoison_all(void *param)
--{
--    HWPoisonPage *page, *next_page;
--
--    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
--        QLIST_REMOVE(page, list);
--        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
--        g_free(page);
--    }
--}
--
--static void kvm_hwpoison_page_add(ram_addr_t ram_addr)
--{
--    HWPoisonPage *page;
--
--    QLIST_FOREACH(page, &hwpoison_page_list, list) {
--        if (page->ram_addr == ram_addr) {
--            return;
--        }
--    }
--    page = g_new(HWPoisonPage, 1);
--    page->ram_addr = ram_addr;
--    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
--}
--
- static int kvm_get_mce_cap_supported(KVMState *s, uint64_t *mce_cap,
-                                      int *max_banks)
- {
-@@ -2180,7 +2145,6 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
-         fprintf(stderr, "e820_add_entry() table is full\n");
-         return ret;
-     }
--    qemu_register_reset(kvm_unpoison_all, NULL);
+ #define ARM_SPI_BASE 32
  
-     shadow_mem = object_property_get_int(OBJECT(s), "kvm-shadow-mem", &error_abort);
-     if (shadow_mem != -1) {
+@@ -818,6 +819,10 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_spcr(tables_blob, tables->linker, vms);
+ 
++    if (vms->ras) {
++        build_ghes_error_table(tables->hardware_errors, tables->linker);
++    }
++
+     if (ms->numa_state->num_nodes > 0) {
+         acpi_add_table(table_offsets, tables_blob);
+         build_srat(tables_blob, tables->linker, vms);
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index 1539fe0..ed7c893 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -220,6 +220,7 @@ struct AcpiBuildTables {
+     GArray *rsdp;
+     GArray *tcpalog;
+     GArray *vmgenid;
++    GArray *hardware_errors;
+     BIOSLinker *linker;
+ } AcpiBuildTables;
+ 
+diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+new file mode 100644
+index 0000000..50379b0
+--- /dev/null
++++ b/include/hw/acpi/ghes.h
+@@ -0,0 +1,28 @@
++/*
++ * Support for generating APEI tables and recording CPER for Guests
++ *
++ * Copyright (c) 2020 HUAWEI TECHNOLOGIES CO., LTD.
++ *
++ * Author: Dongjiu Geng <gengdongjiu@huawei.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef ACPI_GHES_H
++#define ACPI_GHES_H
++
++#include "hw/acpi/bios-linker-loader.h"
++
++void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
++#endif
 -- 
 1.8.3.1

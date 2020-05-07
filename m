@@ -1,106 +1,113 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1985083lfb;
-        Thu, 7 May 2020 06:51:48 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIvF6ZM41SrMFMQbGy52ab174K3jVVQbQYAiUY1e8an4mRcNNHpjHhcRAIAn/gVJXrWdCAF
-X-Received: by 2002:a05:620a:a93:: with SMTP id v19mr14418290qkg.416.1588859508315;
-        Thu, 07 May 2020 06:51:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588859508; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1999536lfb;
+        Thu, 7 May 2020 07:08:26 -0700 (PDT)
+X-Google-Smtp-Source: APiQypI1JtO0bdMTGhKIdcMiDpzjhajN0xtSFZA4zJS/jZF1aDIbqEQZXOQccjdVEDh0mFfXEMr2
+X-Received: by 2002:a05:620a:6d5:: with SMTP id 21mr7332731qky.417.1588860505611;
+        Thu, 07 May 2020 07:08:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588860505; cv=none;
         d=google.com; s=arc-20160816;
-        b=Np1Lc9KuKjvSDOn1i5WWntDhg3L7VaKLviqOvSZQtC5F7cAc5Y+IyyWFVjeEZkzJAE
-         OBf6qgWh3KR74ecGHbk72oBQSKiu70UR7NyKCkKe+i1kXuEIdrcvhV4uFKCbKp3gk+hV
-         NtSnF1UJD/Qqi6PEjwUPSWNSEpeKGEVJwDuMm3CIRHMlYtvLDfu5su5SeyLOGcZRR8sX
-         owCN3bsAR0PTS+LEAhnE5usGlZR85zIB//wxxHk82j0WF6b2Yoe87ccLv83Pk2hKm2C0
-         udQNrJ2GZ5V5FL9n4edPPCdEKDNjYjhwcnLbRO3urMm51nvrOJgC9ix3KiHiPLFfXinn
-         WeeQ==
+        b=0cmoC2ozhf6KFCzEaHT2QQyR8q0/uoHsYX7y+O2w4xsj7SmugfBXkeAKRUaJIz/MNI
+         eH9nx+LPd1WxIgkLcIKQeAANjy7LQt0Bkdpgp+0dKZCS8OQJoetwuWeLT3WqI6uT8whn
+         qTzh1QFMMjuhh72Bp4Gs0YYomiCKjuuiBZ4c30VJf51gqtItzgxElyOPjZ5Nd61O9DWG
+         ltqC79cdpvrr4KttBv7KFMDO0SSvrIKggRuCB5dM+7ZXy+HLLMcqU+x5ZgTXKFp6RfR2
+         LDqxOJqxiEVDWxvaK+SHvr8+uq9KLKmk/dL9XQwB9Xb4u8+QYEC3NAtXm/oL/9pddZpU
+         v14g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=omD69ttFpxcDTaYekNBFVUzGkRuZKIclc+69h9JbEvA=;
-        b=khCOLjRbd7WSR8qxMj7013b8CPEBfYJLsnGQ6gdnJIzf2g6BCoAYb7OEcFAohR6Inv
-         30SgZoAGFRxrhSpNsC8C3xsDE3RK3SWnqwe+ilS416R8kHbsDumC4xl98WmtHHqUck9P
-         9cw1gw2o2St6orXEWEAmyYJataJQnFP1lT8spoDQA9+dQxrIyoKy4WWXmTN4bl2mo1U9
-         Jj/CfsPg5yoYdsZw9XSsqTFugRdgn5ZBv56xcFUX6W3MPvUR4qsbufGzezs4G6zZ02F4
-         vkGNfjPpVNQSjIIaPx4Co4PeB8ZyfpmGC6alyC4jHMqLAPpyMktoqRcWV4jDdsPhf5Xb
-         EkMQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=WQpHWWtV7aov62Ssz/BNFT95zTeaJ0S20KmMXAJgRhM=;
+        b=jUXrQVUNSbZ4w6k8WAc1BEgyEZLua11zT3XvIzdiWW1RsGjRWM6Q+WM8+O5sA5+2wj
+         5bYbw8kluYebD+pOaRgHhBLGquDqw/J5rLkCJUvFPTlDolIuTy1EP5TxKiSJhbbnF2Yu
+         xpMuJh8hg4mrofz6xFMWXPhTpQAjpwzArem+AyQ87Bd3RC2mpG8PUQdnJS+dquhao0up
+         Amfn2VGXR11326mis5euViBOI0qatcnigzjTGr7XrQxC1J9Hqdi7y7iR+u/eAplMZTdB
+         SqIur1pGZa1EW1FzGEKPagxxUg2alURCnP86ZMHMyeWX8tmkyfB7MwFZd5O84P4k9EFw
+         ULog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IEl0+1Qh;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=crML9qiI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id o55si2934051qtf.240.2020.05.07.06.51.48
+        by mx.google.com with ESMTPS id p25si897713qtn.95.2020.05.07.07.08.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 May 2020 06:51:48 -0700 (PDT)
+        Thu, 07 May 2020 07:08:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IEl0+1Qh;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=crML9qiI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42608 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:58992 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jWgwF-0007qk-Nq
-	for alex.bennee@linaro.org; Thu, 07 May 2020 09:51:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34342)
+	id 1jWhCL-00025J-1r
+	for alex.bennee@linaro.org; Thu, 07 May 2020 10:08:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38786)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jWgsc-0002sC-UW
- for qemu-arm@nongnu.org; Thu, 07 May 2020 09:48:03 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436]:36977)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jWhCD-00023Q-7Z; Thu, 07 May 2020 10:08:17 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:39447)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jWgsZ-0002Rg-CO
- for qemu-arm@nongnu.org; Thu, 07 May 2020 09:48:01 -0400
-Received: by mail-wr1-x436.google.com with SMTP id k1so6480961wrx.4
- for <qemu-arm@nongnu.org>; Thu, 07 May 2020 06:47:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=omD69ttFpxcDTaYekNBFVUzGkRuZKIclc+69h9JbEvA=;
- b=IEl0+1Qh8WlMukYuKO3rZbTOC+RE6IQVl4gHr8vXgUgCjDXYIm3uIEU7grgG06pBGN
- j2rohfKXSesZ9uVtfxxG5wA4YML1chSKWFXlaIe0dFKNgfiXWVyHF3UJyPYCnuEc26zh
- t8p4igrhcHJHzaFrnQxk+6BK6Zl9xY0BtC9Us/zt1LzSmL9yJAM3us7wQzy2f2mM1a9Z
- NgzM+2N5fANampKxM/P/OfN02KmDhm/IC3ExDczryKJXYfjQpQYSnrnYdT1txh9oN9NZ
- eJcAhtd9AjKGW9Sv2xrOcJaQ8v+j2sEVU/nWFGGJN+/m0VRpj3927akvbtiFX+klas+j
- Sguw==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jWhCC-0003kP-3a; Thu, 07 May 2020 10:08:16 -0400
+Received: by mail-wm1-x344.google.com with SMTP id y24so7000670wma.4;
+ Thu, 07 May 2020 07:08:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=WQpHWWtV7aov62Ssz/BNFT95zTeaJ0S20KmMXAJgRhM=;
+ b=crML9qiIR16Xzonv0/ExGflj7VO6rcc3oA5mWz7nQ3c6519I9Jtac7gvUMunmnnmzc
+ +zpBhYuFk0waNxBdjJsUOLcHflYBvi5GptrKkWn+oO7f2oY1jthWFFqKvIwGADmLUroV
+ VgApi4Si7gJfJGszhvFboOWsdgcuz0Kb5frKL+kpUsMwjiL77LuO25G49pNoHVhZSYyS
+ 7KcFA02mMlj83kEYTkIiIh/CneYTBbslaRqiO2Y8WYhlg4ZbezHxC3EvNeCl4Ve6oujP
+ r9IgAHZQpNm6t617uA+cYIKZ/p8LKlT0W0YhKUZckD2GOQ//bDURKQsJ0reIOjhs5l76
+ xoNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ h=x-gm-message-state:sender:subject:to:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=omD69ttFpxcDTaYekNBFVUzGkRuZKIclc+69h9JbEvA=;
- b=XxlW7yzNNyKf/uRmu81IRwzJX9uBVAR3RwZWDGxwK3ARWmf1O2t/w02rDTA3S5LwHF
- uHP7Fhy6SfGkENqJatLxmw0AomO2STVHQpbUbywIm0VeJpP0CXPrKj8Ad3KjTOSKzcX7
- OSD5x+C2iP4tqj+wzyUqFpoHpqSD3x3aPT+XkWgmd//nXj/4K5G2EQlSUoUphcRJWQnR
- IOF+zjkVZcOtI1P34IdcFboVSEer9/QybOyWEii18oEwnBUEQ/fA4iS/qa67BtDtuCrX
- UMhBaKfqPY6/DwXQsHCzkO1GSXFZHFKOebIXQj5mQ8+FXYaY4zqNPpIxN73kbp0/hlzg
- ffmg==
-X-Gm-Message-State: AGi0PuZQ2q3PjOcN/Frcf+WP8ZZklj5wj5A85V6zFQ39p/3c20wxseWt
- zQ6kE0UHXYhbret2KRpARtfTm9cbxkeOHA==
-X-Received: by 2002:a5d:650b:: with SMTP id x11mr15299876wru.405.1588859277480; 
- Thu, 07 May 2020 06:47:57 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id s14sm8443128wme.33.2020.05.07.06.47.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 May 2020 06:47:56 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Use correct GDB XML for M-profile cores
-Date: Thu,  7 May 2020 14:47:55 +0100
-Message-Id: <20200507134755.13997-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ bh=WQpHWWtV7aov62Ssz/BNFT95zTeaJ0S20KmMXAJgRhM=;
+ b=MN1/Ardtk5LZ/PFTskZOL4v8t5h4ZrATL4WtrhHsn0iyHyYlNewAhYwQyVyDqebHYI
+ kqbTUddIe32+BgJ+3876iMSVtf3kwgFa/5E6UXaL23QN1Uv8rTSsz+tV/rJpprZUxSuh
+ 7ytQlpturmYBu6BsdBClezRiurRSKBkaOd+y0gXus2Ww11JfP0RHCe+OLaqA64XquNT/
+ z7LJ+6ryyWthjK5j9F4HiOAsSrB6DvYU+92WcSY/vNLxoYKvmdKElH1clzoaXabV7pZn
+ kNsb8bs2vn0xlDe2vHUXOth3MAsat94viKYhFChcbxd2Ti4Hm+7kcsJi2ZI8/V0kRaJT
+ cUFg==
+X-Gm-Message-State: AGi0Pua/abYcx7aLjYyosvRPrTo9XCb7R/0+CuekeaHDOkDoUZjspajh
+ 8pZnITFSRFJI/mKg5OAw7ejpOSXFDTE=
+X-Received: by 2002:a1c:e90a:: with SMTP id q10mr10283498wmc.22.1588860494044; 
+ Thu, 07 May 2020 07:08:14 -0700 (PDT)
+Received: from [192.168.1.39] (248.red-88-21-203.staticip.rima-tde.net.
+ [88.21.203.248])
+ by smtp.gmail.com with ESMTPSA id w83sm8601146wmb.37.2020.05.07.07.08.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 07 May 2020 07:08:13 -0700 (PDT)
+Subject: Re: [PATCH] target/arm: Use correct GDB XML for M-profile cores
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200507134755.13997-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <88812e26-b6a7-8f80-f9d1-cb51ed5721c9@amsat.org>
+Date: Thu, 7 May 2020 16:08:12 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
+In-Reply-To: <20200507134755.13997-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -117,137 +124,138 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fUjzkpbWMdWW
+X-TUID: Ra6HPXacu9xT
 
-GDB's remote protocol requires M-profile cores to use the feature
-name 'org.gnu.gdb.arm.m-profile' instead of the 'org.gnu.gdb.arm.core'
-feature used for A- and R-profile cores. We weren't doing this, which
-meant GDB treated our M-profile cores like A-profile ones. This mostly
-doesn't matter, but for instance means that it doesn't correctly
-handle backtraces where an M-profile exception frame is involved.
+On 5/7/20 3:47 PM, Peter Maydell wrote:
+> GDB's remote protocol requires M-profile cores to use the feature
+> name 'org.gnu.gdb.arm.m-profile' instead of the 'org.gnu.gdb.arm.core'
+> feature used for A- and R-profile cores. We weren't doing this, which
+> meant GDB treated our M-profile cores like A-profile ones. This mostly
+> doesn't matter, but for instance means that it doesn't correctly
+> handle backtraces where an M-profile exception frame is involved.
+> 
+> Ship a copy of GDB's arm-m-profile.xml and use it on the M-profile
+> cores.  The integer registers have the same offsets as the
+> arm-core.xml, but register 25 is the M-profile XPSR rather than the
+> A-profile CPSR, so we need to update arm_cpu_gdb_read_register() and
+> arm_cpu_gdb_write_register() to handle XSPR reads and writes.
+> 
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1877136
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   configure                 |  4 ++--
+>   target/arm/cpu.c          |  1 +
+>   target/arm/gdbstub.c      | 22 ++++++++++++++++++----
+>   gdb-xml/arm-m-profile.xml | 27 +++++++++++++++++++++++++++
+>   4 files changed, 48 insertions(+), 6 deletions(-)
+>   create mode 100644 gdb-xml/arm-m-profile.xml
+> 
+> diff --git a/configure b/configure
+> index 0d69c360c0e..360e7e6a0a4 100755
+> --- a/configure
+> +++ b/configure
+> @@ -7806,14 +7806,14 @@ case "$target_name" in
+>       TARGET_SYSTBL_ABI=common,oabi
+>       bflt="yes"
+>       mttcg="yes"
+> -    gdb_xml_files="arm-core.xml arm-vfp.xml arm-vfp3.xml arm-neon.xml"
+> +    gdb_xml_files="arm-core.xml arm-vfp.xml arm-vfp3.xml arm-neon.xml arm-m-profile.xml"
+>     ;;
+>     aarch64|aarch64_be)
+>       TARGET_ARCH=aarch64
+>       TARGET_BASE_ARCH=arm
+>       bflt="yes"
+>       mttcg="yes"
+> -    gdb_xml_files="aarch64-core.xml aarch64-fpu.xml arm-core.xml arm-vfp.xml arm-vfp3.xml arm-neon.xml"
+> +    gdb_xml_files="aarch64-core.xml aarch64-fpu.xml arm-core.xml arm-vfp.xml arm-vfp3.xml arm-neon.xml arm-m-profile.xml"
+>     ;;
+>     cris)
+>     ;;
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 5d64adfe76e..b386bbbfd12 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -2179,6 +2179,7 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)
+>   #endif
+>   
+>       cc->cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt;
+> +    cc->gdb_core_xml_file = "arm-m-profile.xml";
+>   }
+>   
+>   static const ARMCPRegInfo cortexr5_cp_reginfo[] = {
+> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+> index 063551df234..ecfa88f8e60 100644
+> --- a/target/arm/gdbstub.c
+> +++ b/target/arm/gdbstub.c
+> @@ -57,8 +57,12 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
+>           }
+>           return gdb_get_reg32(mem_buf, 0);
+>       case 25:
+> -        /* CPSR */
+> -        return gdb_get_reg32(mem_buf, cpsr_read(env));
+> +        /* CPSR, or XPSR for M-profile */
+> +        if (arm_feature(env, ARM_FEATURE_M)) {
+> +            return gdb_get_reg32(mem_buf, xpsr_read(env));
+> +        } else {
+> +            return gdb_get_reg32(mem_buf, cpsr_read(env));
+> +        }
+>       }
+>       /* Unknown register.  */
+>       return 0;
+> @@ -98,8 +102,18 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+>           }
+>           return 4;
+>       case 25:
+> -        /* CPSR */
+> -        cpsr_write(env, tmp, 0xffffffff, CPSRWriteByGDBStub);
+> +        /* CPSR, or XPSR for M-profile */
+> +        if (arm_feature(env, ARM_FEATURE_M)) {
+> +            /*
+> +             * Don't allow writing to XPSR.Exception as it can cause
+> +             * a transition into or out of handler mode (it's not
+> +             * writeable via the MSR insn so this is a reasonable
+> +             * restriction). Other fields are safe to update.
+> +             */
+> +            xpsr_write(env, tmp, ~XPSR_EXCP);
+> +        } else {
+> +            cpsr_write(env, tmp, 0xffffffff, CPSRWriteByGDBStub);
+> +        }
+>           return 4;
+>       }
+>       /* Unknown register.  */
+> diff --git a/gdb-xml/arm-m-profile.xml b/gdb-xml/arm-m-profile.xml
+> new file mode 100644
+> index 00000000000..5319d764eeb
+> --- /dev/null
+> +++ b/gdb-xml/arm-m-profile.xml
+> @@ -0,0 +1,27 @@
+> +<?xml version="1.0"?>
+> +<!-- Copyright (C) 2010-2020 Free Software Foundation, Inc.
+> +
+> +     Copying and distribution of this file, with or without modification,
+> +     are permitted in any medium without royalty provided the copyright
+> +     notice and this notice are preserved.  -->
+> +
+> +<!DOCTYPE feature SYSTEM "gdb-target.dtd">
+> +<feature name="org.gnu.gdb.arm.m-profile">
+> +  <reg name="r0" bitsize="32"/>
+> +  <reg name="r1" bitsize="32"/>
+> +  <reg name="r2" bitsize="32"/>
+> +  <reg name="r3" bitsize="32"/>
+> +  <reg name="r4" bitsize="32"/>
+> +  <reg name="r5" bitsize="32"/>
+> +  <reg name="r6" bitsize="32"/>
+> +  <reg name="r7" bitsize="32"/>
+> +  <reg name="r8" bitsize="32"/>
+> +  <reg name="r9" bitsize="32"/>
+> +  <reg name="r10" bitsize="32"/>
+> +  <reg name="r11" bitsize="32"/>
+> +  <reg name="r12" bitsize="32"/>
+> +  <reg name="sp" bitsize="32" type="data_ptr"/>
+> +  <reg name="lr" bitsize="32"/>
+> +  <reg name="pc" bitsize="32" type="code_ptr"/>
+> +  <reg name="xpsr" bitsize="32" regnum="25"/>
+> +</feature>
+> 
 
-Ship a copy of GDB's arm-m-profile.xml and use it on the M-profile
-cores.  The integer registers have the same offsets as the
-arm-core.xml, but register 25 is the M-profile XPSR rather than the
-A-profile CPSR, so we need to update arm_cpu_gdb_read_register() and
-arm_cpu_gdb_write_register() to handle XSPR reads and writes.
-
-Fixes: https://bugs.launchpad.net/qemu/+bug/1877136
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- configure                 |  4 ++--
- target/arm/cpu.c          |  1 +
- target/arm/gdbstub.c      | 22 ++++++++++++++++++----
- gdb-xml/arm-m-profile.xml | 27 +++++++++++++++++++++++++++
- 4 files changed, 48 insertions(+), 6 deletions(-)
- create mode 100644 gdb-xml/arm-m-profile.xml
-
-diff --git a/configure b/configure
-index 0d69c360c0e..360e7e6a0a4 100755
---- a/configure
-+++ b/configure
-@@ -7806,14 +7806,14 @@ case "$target_name" in
-     TARGET_SYSTBL_ABI=common,oabi
-     bflt="yes"
-     mttcg="yes"
--    gdb_xml_files="arm-core.xml arm-vfp.xml arm-vfp3.xml arm-neon.xml"
-+    gdb_xml_files="arm-core.xml arm-vfp.xml arm-vfp3.xml arm-neon.xml arm-m-profile.xml"
-   ;;
-   aarch64|aarch64_be)
-     TARGET_ARCH=aarch64
-     TARGET_BASE_ARCH=arm
-     bflt="yes"
-     mttcg="yes"
--    gdb_xml_files="aarch64-core.xml aarch64-fpu.xml arm-core.xml arm-vfp.xml arm-vfp3.xml arm-neon.xml"
-+    gdb_xml_files="aarch64-core.xml aarch64-fpu.xml arm-core.xml arm-vfp.xml arm-vfp3.xml arm-neon.xml arm-m-profile.xml"
-   ;;
-   cris)
-   ;;
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 5d64adfe76e..b386bbbfd12 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2179,6 +2179,7 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)
- #endif
- 
-     cc->cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt;
-+    cc->gdb_core_xml_file = "arm-m-profile.xml";
- }
- 
- static const ARMCPRegInfo cortexr5_cp_reginfo[] = {
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index 063551df234..ecfa88f8e60 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -57,8 +57,12 @@ int arm_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-         }
-         return gdb_get_reg32(mem_buf, 0);
-     case 25:
--        /* CPSR */
--        return gdb_get_reg32(mem_buf, cpsr_read(env));
-+        /* CPSR, or XPSR for M-profile */
-+        if (arm_feature(env, ARM_FEATURE_M)) {
-+            return gdb_get_reg32(mem_buf, xpsr_read(env));
-+        } else {
-+            return gdb_get_reg32(mem_buf, cpsr_read(env));
-+        }
-     }
-     /* Unknown register.  */
-     return 0;
-@@ -98,8 +102,18 @@ int arm_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-         }
-         return 4;
-     case 25:
--        /* CPSR */
--        cpsr_write(env, tmp, 0xffffffff, CPSRWriteByGDBStub);
-+        /* CPSR, or XPSR for M-profile */
-+        if (arm_feature(env, ARM_FEATURE_M)) {
-+            /*
-+             * Don't allow writing to XPSR.Exception as it can cause
-+             * a transition into or out of handler mode (it's not
-+             * writeable via the MSR insn so this is a reasonable
-+             * restriction). Other fields are safe to update.
-+             */
-+            xpsr_write(env, tmp, ~XPSR_EXCP);
-+        } else {
-+            cpsr_write(env, tmp, 0xffffffff, CPSRWriteByGDBStub);
-+        }
-         return 4;
-     }
-     /* Unknown register.  */
-diff --git a/gdb-xml/arm-m-profile.xml b/gdb-xml/arm-m-profile.xml
-new file mode 100644
-index 00000000000..5319d764eeb
---- /dev/null
-+++ b/gdb-xml/arm-m-profile.xml
-@@ -0,0 +1,27 @@
-+<?xml version="1.0"?>
-+<!-- Copyright (C) 2010-2020 Free Software Foundation, Inc.
-+
-+     Copying and distribution of this file, with or without modification,
-+     are permitted in any medium without royalty provided the copyright
-+     notice and this notice are preserved.  -->
-+
-+<!DOCTYPE feature SYSTEM "gdb-target.dtd">
-+<feature name="org.gnu.gdb.arm.m-profile">
-+  <reg name="r0" bitsize="32"/>
-+  <reg name="r1" bitsize="32"/>
-+  <reg name="r2" bitsize="32"/>
-+  <reg name="r3" bitsize="32"/>
-+  <reg name="r4" bitsize="32"/>
-+  <reg name="r5" bitsize="32"/>
-+  <reg name="r6" bitsize="32"/>
-+  <reg name="r7" bitsize="32"/>
-+  <reg name="r8" bitsize="32"/>
-+  <reg name="r9" bitsize="32"/>
-+  <reg name="r10" bitsize="32"/>
-+  <reg name="r11" bitsize="32"/>
-+  <reg name="r12" bitsize="32"/>
-+  <reg name="sp" bitsize="32" type="data_ptr"/>
-+  <reg name="lr" bitsize="32"/>
-+  <reg name="pc" bitsize="32" type="code_ptr"/>
-+  <reg name="xpsr" bitsize="32" regnum="25"/>
-+</feature>
--- 
-2.20.1
-
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

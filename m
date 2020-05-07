@@ -1,184 +1,107 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp4734570lfb;
-        Wed, 9 Dec 2020 00:11:10 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz01G8EqY3a0RoBqGKpO9wz9CO8CHycGZabcZmOPy+Zph82jVESf5dKv4rraE0KyRkx0pRw
-X-Received: by 2002:a25:d3c4:: with SMTP id e187mr2034998ybf.259.1607501470202;
-        Wed, 09 Dec 2020 00:11:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607501470; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2157162lfb;
+        Thu, 7 May 2020 10:16:45 -0700 (PDT)
+X-Received: by 2002:aa7:985e:: with SMTP id n30mr14262786pfq.163.1588871805460;
+        Thu, 07 May 2020 10:16:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588871805; cv=none;
         d=google.com; s=arc-20160816;
-        b=CrXEBr674Wxa8H2yaQ2iQB8RadfB7rVam6CSF0jFq96/Du9vRSKeqV+CiWsDtps66R
-         Hg7HDnZ72u4epfT8eqCvyQkgj+iG+hEmbjtDVCIDiyymzosCubxE1EsACyypBHsR7TFi
-         sB4LtOyt+m8Cdy3aObBnestFAe+X4wv8iYndpvrHQoSfpCHkNkJQ0DPeaKuxa/JDn/N2
-         u4XAoxN7s9nOwvYzowPSRI0dy4dA4Cvsx8C/2TsWwLPL8YPFQW2erO7y8vSBduQpSVXQ
-         RSPpskWlrvX5M7M5yw8vUV+topvSLjuXoloGVTtaD3dVejj6kiaoDvVVJVdNvVvAMGg5
-         jMNw==
+        b=s5oToZVMM47Jz6bTBH6sA3aDS8+taaDkmfQIBqVHWVuyKfJ+yqrOUNQQvVB6okzGvU
+         fMAlOH6iaNSWkTEuQg4IOzKmSe+p7YCIYwiyKSX9oKokuSeP3zKD19ldGPJ0hKdHCDdL
+         lQP4JTJ86QtiQZmYRoL5ROYeG2U7a3hSajKajDywIgGWIUFBF+5G7DtrqamJGMlIVTEO
+         PPSk+/Zsx7xjzDCnFDh1on0syoCbKr+uxjpXQzBe3e4fGKn5RfL79ucMrUbDa8QXdHf6
+         t2B7Yr010BjKTZ9qev2FSh/GdlM3TwqsCAf0hzFxKy3Wv3RDsDPyDKy6wWLTdkygQ6LP
+         qQYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=RaX88t6VM/BMBFKLt4tEMGqpsbYpWp2284JFJbaXUqo=;
-        b=M8vpsESt+3rsXTp8NQT+HFw/1Ojs1Dfz00lFeM0tK0fihEeNUCpqB30ufE0LGIYFzt
-         Dawx80wjoOovIzsPRGGzOcYrhus2xMw9sre/6YngVMhMGQKHBPaKnqmLXsNfYF41ih5x
-         AN8YR63oFPBaXe6Zn3M9+W3mWwYDNolbB3I5hYz4sa7jqeS3PZVgYjyouvPeHrX3/d9q
-         uaWEsTyefd5gISmuEiBpHQCez2ih0rkDgZp9cozvkuJrMfGO8WhWj/p/g9Bh/ikbGsHx
-         EG8fYAre6sVhNA3HPEBZxlwNKkm1yjUFRlpw7F5uL3bFFC2cGtPJS8FnCcXiZwzRl0QG
-         JpyQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=rekBVtsOQR79ipFPsbbh0+J3cKkjzywQV6MJqtQ7Hm8=;
+        b=feND4bMMfHfSRuCg3pzp+YVSmMyqMbvjt406np9LnzqdMLzmEvIEQUhVfI6aQxiIpt
+         Pyvmxv04x3NY46dnQx5CwVf8n0uwOHndVOXuE0zW3PUAwBU4Z4K/3et6NNKgp0NIWw7o
+         6+SzcyJs12o8+XDpHLHJqUNt4JD8jTg/oh29XW98Gf57q8QdVaTIA7FQMVNthJUR2k4x
+         UQoCPYUmBC1OZAklHK/VgZNuNKcy0Jr9QmTpEsa47lWXbwZwcMLgjJOMGllSYVgDM0CK
+         FbqI5YsD3NXJzU6yUYIEWGw+prZk1pYQ5TEIZOqoSygohPSkNTyThRsG+gsKhewUaaFR
+         cDEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i9si1078670ybo.105.2020.12.09.00.11.10
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q1ukqVH4;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id p13sor7681553pff.77.2020.05.07.10.16.45
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Dec 2020 00:11:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 07 May 2020 10:16:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49704 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kmuZ3-0004Is-J6
-	for alex.bennee@linaro.org; Wed, 09 Dec 2020 03:11:09 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41626)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1kmuYZ-0003j2-Rw; Wed, 09 Dec 2020 03:10:39 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2888)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lushenming@huawei.com>)
- id 1kmuYX-00075m-9j; Wed, 09 Dec 2020 03:10:39 -0500
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CrV8S2HQwz15YxT;
- Wed,  9 Dec 2020 16:10:00 +0800 (CST)
-Received: from DESKTOP-7FEPK9S.china.huawei.com (10.174.187.219) by
- DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Wed, 9 Dec 2020 16:10:25 +0800
-From: Shenming Lu <lushenming@huawei.com>
-To: Alex Williamson <alex.williamson@redhat.com>, Kirti Wankhede
- <kwankhede@nvidia.com>, Cornelia Huck <cohuck@redhat.com>, "Dr . David Alan
- Gilbert" <dgilbert@redhat.com>, Eric Auger <eric.auger@redhat.com>,
- <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: [RFC PATCH v2 3/3] vfio: Avoid disabling and enabling vectors
- repeatedly in VFIO migration
-Date: Wed, 9 Dec 2020 16:09:19 +0800
-Message-ID: <20201209080919.156-4-lushenming@huawei.com>
-X-Mailer: git-send-email 2.27.0.windows.1
-In-Reply-To: <20201209080919.156-1-lushenming@huawei.com>
-References: <20201209080919.156-1-lushenming@huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q1ukqVH4;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=rekBVtsOQR79ipFPsbbh0+J3cKkjzywQV6MJqtQ7Hm8=;
+        b=Q1ukqVH4tyNX0IuUd7NF20JFh7HEFNdVz3fYzb0AJ+2ixJamijq6UJAUWihhZPtTiy
+         8nHZ8cKnbv4+SMsJnOxTbgbhUI8etSDe0mKJpWV6MVuslija9ltC2M9jX/aKycJHHeCC
+         ST3cja/shnaSChfBOC+8DLZsKGQm8whIQt+EFXdUuC+QMY9NIubZ9dJqk863vVwxFddf
+         YK3ToXKRO3QOu6u+oApCDFXWdwZybPshiGsHsF/2w/CumfgLnXPt+tD0/o7jquSu9/Kf
+         /AvjBMRkfrpk/1qfJz8T0GqNaIRlSvP65U1P85wJJ59vmyAJXmNObDsoRW4HXMRcHWkn
+         diGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=rekBVtsOQR79ipFPsbbh0+J3cKkjzywQV6MJqtQ7Hm8=;
+        b=ZpYHsSJuRqStiXRbxwIwrgxSeFnOvwgKNqUBtaCr/M78fsCor88r6msWeCikW5CymN
+         bHI+8vpf1ZR7YNvk8+YZKxx9KDsUgCHOSZBkCUamBrZzyxLtUOYcZn8bzlitQHekHgWu
+         du3x9YgnCL1833UtO1P7kh9EmDdZxc2efwR6pgyjIjRMoTbhXUDeTLj8ipW7Vo6pXmP9
+         /0VHzRzQUGDruxYhqIxH6uLBbEt+IGHrXjOGwv5RI+paTwa7g/Q/TZoCer5R6CLLPdgm
+         O5wEskEP7Unf1uqrsTan44xebToYhV8pl5QJ7RAc9fMm5SLvDp1uWs6c6E3ZPiA/YuMQ
+         LexA==
+X-Gm-Message-State: AGi0PuZQyV83Y4lZwL8gUOVcKAL0aV51Qch/441BKsvfYcjABvv0gILL
+	TFOR1HPXIdBRMU5kcQKU0bFFsmqVappOqA==
+X-Google-Smtp-Source: APiQypKJ4MuX8kqWxIAd2eOlKARMqRm0UazIY5eKgXuw2R6w9hc/FUElNUCtz2gVQphVeE1jQvRLEg==
+X-Received: by 2002:a62:3287:: with SMTP id y129mr15413870pfy.167.1588871804498;
+        Thu, 07 May 2020 10:16:44 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
+        by smtp.gmail.com with ESMTPSA id b8sm307866pjz.51.2020.05.07.10.16.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 07 May 2020 10:16:43 -0700 (PDT)
+Subject: Re: [PULL 04/10] target/arm: Use tcg_gen_gvec_dup_imm
+To: Laurent Desnogues <laurent.desnogues@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20200506183002.3192-1-richard.henderson@linaro.org>
+ <20200506183002.3192-5-richard.henderson@linaro.org>
+ <CABoDooPCvC4Y+G4CGBUhPT_ce3rY6_ZZvTnvv8M+sXPkpN4raQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <3e0ec84f-6f25-5e97-a3c5-bb810a347d0f@linaro.org>
+Date: Thu, 7 May 2020 10:16:41 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.174.187.219]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=lushenming@huawei.com; helo=szxga04-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Neo Jia <cjia@nvidia.com>,
- Marc Zyngier <maz@kernel.org>, qemu-devel@nongnu.org, lushenming@huawei.com,
- qemu-arm@nongnu.org, yuzenghui@huawei.com, wanghaibin.wang@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Lvk4NfIyjkkx
+In-Reply-To: <CABoDooPCvC4Y+G4CGBUhPT_ce3rY6_ZZvTnvv8M+sXPkpN4raQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: DJnX5+vJiZrS
 
-Different from the normal situation when the guest starts, we can
-know the max unmasked vetctor (at the beginning) after msix_load()
-in VFIO migration. So in order to avoid ineffectively disabling and
-enabling vectors repeatedly, let's allocate all needed vectors first
-and then enable these unmasked vectors one by one without disabling.
+On 5/7/20 7:39 AM, Laurent Desnogues wrote:
+>> @@ -2044,7 +2044,7 @@ static bool trans_DUP_x(DisasContext *s, arg_DUP_x *a)
+>>              unsigned nofs = vec_reg_offset(s, a->rn, index, esz);
+>>              tcg_gen_gvec_dup_mem(esz, dofs, nofs, vsz, vsz);
+>>          } else {
+>> -            tcg_gen_gvec_dup64i(dofs, vsz, vsz, 0);
+>> +            tcg_gen_gvec_dup_imm(esz, dofs, vsz, vsz, 0);
+> 
+> For an indexed DUP, size can be 128-bit so that will fail the first
+> assert in tcg-op-gvec.c:do_dup.
 
-Signed-off-by: Shenming Lu <lushenming@huawei.com>
----
- hw/pci/msix.c         | 17 +++++++++++++++++
- hw/vfio/pci.c         | 10 ++++++++--
- include/hw/pci/msix.h |  2 ++
- 3 files changed, 27 insertions(+), 2 deletions(-)
+Ho hum, quite right.  This has already been merged, so I'll send a follow-up fix.
 
-diff --git a/hw/pci/msix.c b/hw/pci/msix.c
-index 67e34f34d6..bf291d3ff8 100644
---- a/hw/pci/msix.c
-+++ b/hw/pci/msix.c
-@@ -557,6 +557,23 @@ unsigned int msix_nr_vectors_allocated(const PCIDevice *dev)
-     return dev->msix_entries_nr;
- }
- 
-+int msix_get_max_unmasked_vector(PCIDevice *dev)
-+{
-+    int max_unmasked_vector = -1;
-+    int vector;
-+
-+    if ((dev->config[dev->msix_cap + MSIX_CONTROL_OFFSET] &
-+        (MSIX_ENABLE_MASK | MSIX_MASKALL_MASK)) == MSIX_ENABLE_MASK) {
-+        for (vector = 0; vector < dev->msix_entries_nr; vector++) {
-+            if (!msix_is_masked(dev, vector)) {
-+                max_unmasked_vector = vector;
-+            }
-+        }
-+    }
-+
-+    return max_unmasked_vector;
-+}
-+
- static int msix_set_notifier_for_vector(PCIDevice *dev, unsigned int vector)
- {
-     MSIMessage msg;
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index 51dc373695..e755ed2514 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -568,6 +568,9 @@ static void vfio_msix_vector_release(PCIDevice *pdev, unsigned int nr)
- 
- static void vfio_msix_enable(VFIOPCIDevice *vdev)
- {
-+    int max_unmasked_vector = msix_get_max_unmasked_vector(&vdev->pdev);
-+    unsigned int used_vector = MAX(max_unmasked_vector, 0);
-+
-     vfio_disable_interrupts(vdev);
- 
-     vdev->msi_vectors = g_new0(VFIOMSIVector, vdev->msix->entries);
-@@ -586,9 +589,12 @@ static void vfio_msix_enable(VFIOPCIDevice *vdev)
-      * triggering to userspace, then immediately release the vector, leaving
-      * the physical device with no vectors enabled, but MSI-X enabled, just
-      * like the guest view.
-+     * If there are unmasked vectors (such as in migration) which will be
-+     * enabled soon, we can allocate them here to avoid ineffectively disabling
-+     * and enabling vectors repeatedly later.
-      */
--    vfio_msix_vector_do_use(&vdev->pdev, 0, NULL, NULL);
--    vfio_msix_vector_release(&vdev->pdev, 0);
-+    vfio_msix_vector_do_use(&vdev->pdev, used_vector, NULL, NULL);
-+    vfio_msix_vector_release(&vdev->pdev, used_vector);
- 
-     if (msix_set_vector_notifiers(&vdev->pdev, vfio_msix_vector_use,
-                                   vfio_msix_vector_release, NULL)) {
-diff --git a/include/hw/pci/msix.h b/include/hw/pci/msix.h
-index 4c4a60c739..4bfb463fa6 100644
---- a/include/hw/pci/msix.h
-+++ b/include/hw/pci/msix.h
-@@ -23,6 +23,8 @@ void msix_uninit_exclusive_bar(PCIDevice *dev);
- 
- unsigned int msix_nr_vectors_allocated(const PCIDevice *dev);
- 
-+int msix_get_max_unmasked_vector(PCIDevice *dev);
-+
- void msix_save(PCIDevice *dev, QEMUFile *f);
- void msix_load(PCIDevice *dev, QEMUFile *f);
- 
--- 
-2.19.1
 
+r~

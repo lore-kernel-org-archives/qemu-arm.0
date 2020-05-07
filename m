@@ -1,113 +1,109 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2029504lfb;
-        Thu, 7 May 2020 07:43:26 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLVLw98B6HRoO/hfg3J61K81QdGDK4NXYF/m8RYETef+IeHKbgTXFclfKxMRg6sh5FlmFfW
-X-Received: by 2002:ae9:f018:: with SMTP id l24mr15594727qkg.66.1588862606454;
-        Thu, 07 May 2020 07:43:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588862606; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2073714lfb;
+        Thu, 7 May 2020 08:34:14 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLefZMLt8rEhs6sA4u1Xe7hJYSzL2lzMwDpwil7bb3MmS8Z18s5X0iUiKR2z7XoYrBwTyDh
+X-Received: by 2002:a37:6c07:: with SMTP id h7mr14938817qkc.328.1588865653851;
+        Thu, 07 May 2020 08:34:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588865653; cv=none;
         d=google.com; s=arc-20160816;
-        b=RH6KFhRSQTx6upnqkscRw+7vDhJHKI+fkOMkFipdTMNgB43K1ArxBQsn+iPcG8vFUn
-         lQML8tZXUYlKDnxEyDZ25/lhpzdI5/J99jlaCbkjaHvQsNRp17B/YIwwkGaXqhAUJkjx
-         VPnejDuML3F0MpLsDfVAz8k7Sr/sUylO3Cm3Ho7gFdzhZXBAQJZMxEaxPgOpRYzZoXQp
-         5CuEibA0XYRPjtft7hhVXMPAnycSwN1LnWSydeo/iW+6mLEgDYdcUS1tE3mIpX/k/t40
-         cZZAzXPKOhahJ8Tq7euGNs2FuyWq/dSZFRMOSundvrE5wupfbpCKzoJ8nZz27tSVH+Pq
-         9IyQ==
+        b=unOVa7q49QWYJphy5FtJMp3RlWe1oP3jxzVGSnmtziE6eaNe4Ao10iTxrjNyIjWrHs
+         i5wVi9KBj2tII12p0udQ7gNcwIrUlSWfNLZUJRQde92nFmaD1hmiIKdO+9onRv4/+pfy
+         JXiXehZBv6uCBNlCRbZBD9iA5ZzXK7OPnxvJjV2Ia2tyr88t5NiGrtZ5FisFPOsRpbyq
+         1hVl4aMndeMTTvOwuycUTs2EXKZnnPbF7luxBay6VU/tlskfZJz47ilVRgVUEFr6NSFQ
+         oisClHL2C25OEC6LRVmFSCnX0K3YYVzIRHV0GgdnMp7v5RMpETU2mJApswF9gPU6IXYG
+         FRzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Fmj+TxsqcfaWnGRv+bXSTtnVxhBzJpHOBFAax8SPGR4=;
-        b=raQNKxfQOP05UChljOhlEyJuHaNzOTup/goSL4q2U6LlYE+tDtx+W0bV7idfdVOFM3
-         j66PXTlzAm1GDrlErRP6mBmJkzZaPGUTBfGqEmF1Izd8nFhp6XhKiik5skIAoN7Ck3Gd
-         TZ/iQjos9F8RuufzfK0leVxlA9YxyDAUbyjAPiPg2Be2xERUmpJU68Lbv6jgWqse8hNh
-         Qa0+uz+fbJnW5XZd6wu4JiYo2vWS2K7OztXtXGc6rW5H2opd6AuKEEeDwR+KDM5F4BZo
-         vW/CA1MejbLLXW3RTR8Bl06va/dHZsqaGRDQ0niGnpJJfwl80cmuPlWZS9H4KsMyLHHd
-         R5Kg==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:user-agent:in-reply-to:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=oGduyjyywtxKiRwzHamUPOKfkvgg/geURqpsKFsvGyI=;
+        b=BXop+90L/J+dveqDnCNZpK8IY626asBdHaSQchwBQikEYH2q1rj5OlsAsllG+7LP3T
+         Yh/7AoW4lNN0Z4ubf8DoybOwOLmIaTav1ui3aOw6PNwLz5VwjS+tfIveViwXA+ubkGP8
+         oQmUH6GptSEgMDTTNg5M88yDjkJSMhnpGkffRv7wmoiKa1XIZq1Rm0FaiN8Xe5iipN7n
+         c7FjiSOY2+f7+muExz47kqdZWsiGkUUNTld/j/lpcjmTKKBy3/3yybLNhe1nZrpV3/5A
+         K7XD4alDN8RWpSft3Jrn8DyGWs0LbmwIXqCf+OaHWQkF6jcAw6w/Aat3eO8npvLUtNpU
+         lRWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QRXP7HFD;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NhIPZNFs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id j61si3435921qva.176.2020.05.07.07.43.26
+        by mx.google.com with ESMTPS id y190si3221386qkb.74.2020.05.07.08.34.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 May 2020 07:43:26 -0700 (PDT)
+        Thu, 07 May 2020 08:34:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QRXP7HFD;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NhIPZNFs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35336 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56774 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jWhkD-0005kN-SV
-	for alex.bennee@linaro.org; Thu, 07 May 2020 10:43:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47230)
+	id 1jWiXN-0005Zn-9H
+	for alex.bennee@linaro.org; Thu, 07 May 2020 11:34:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57652)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jWhk5-0005is-RT
- for qemu-arm@nongnu.org; Thu, 07 May 2020 10:43:17 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:36730
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1jWiXE-0005Xz-Be
+ for qemu-arm@nongnu.org; Thu, 07 May 2020 11:34:04 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:47140
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jWhk4-000399-CT
- for qemu-arm@nongnu.org; Thu, 07 May 2020 10:43:17 -0400
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1jWiXD-0002bs-1r
+ for qemu-arm@nongnu.org; Thu, 07 May 2020 11:34:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588862595;
+ s=mimecast20190719; t=1588865642;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Fmj+TxsqcfaWnGRv+bXSTtnVxhBzJpHOBFAax8SPGR4=;
- b=QRXP7HFDFR08cpaXhy4ak/dz+1levBWXhPHc/1HZFwbXijUowgV+M4I5QQwaUfqX7CYbTH
- 9phR+B96CZmdq2OZsFTXpCDLSMaEMF7Ker0L6/OPX+35lUFU9UOa+WrGllOxY5oA6ZqWKB
- 8lxwHeBobC0UToa+SRSPdyq+fmaWRtY=
+ bh=oGduyjyywtxKiRwzHamUPOKfkvgg/geURqpsKFsvGyI=;
+ b=NhIPZNFsRQ+yvbyR4rjdA0meilMVlTYTC6Jvc20MOAJCS+KkggylLVFJylLrO+Hv2pPpkz
+ aIeNQcqkFR7Mipws5wJbLAQeqwyZaNVG/X+I1oAdod4xo/Th+z/klKvbBF5AHFE2j31/jo
+ 6a5ojnswotrdzUoIamOFdzwb5Zlewp8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-58-71pHwSlQOY2syutbCSN_Ww-1; Thu, 07 May 2020 10:43:13 -0400
-X-MC-Unique: 71pHwSlQOY2syutbCSN_Ww-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-443-nYy4-QDXM_qQydf8gRSFgQ-1; Thu, 07 May 2020 11:34:00 -0400
+X-MC-Unique: nYy4-QDXM_qQydf8gRSFgQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AC12319057A1;
- Thu,  7 May 2020 14:43:11 +0000 (UTC)
-Received: from [10.36.114.214] (ovpn-114-214.ams2.redhat.com [10.36.114.214])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A9555707BA;
- Thu,  7 May 2020 14:42:56 +0000 (UTC)
-Subject: Re: [PATCH v9 8/9] virtio-iommu: Implement probe request
-To: Bharat Bhushan <bharatb.linux@gmail.com>
-References: <20200323084617.1782-1-bbhushan2@marvell.com>
- <20200323084617.1782-9-bbhushan2@marvell.com>
- <20200423160952.GB645865@myrica>
- <199e049a-99f0-7760-778f-b7c547f158e9@redhat.com>
- <CAAeCc_nPrmiHDe61drkFmFVVWqOg6yvmC13TVfKmiZn1GF2eXA@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <44bd0135-89ec-caa0-bb47-f3a8c69860e7@redhat.com>
-Date: Thu, 7 May 2020 16:42:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 68A1B107ACCA;
+ Thu,  7 May 2020 15:33:59 +0000 (UTC)
+Received: from work-vm (ovpn-114-224.ams2.redhat.com [10.36.114.224])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 59A4D5D9DA;
+ Thu,  7 May 2020 15:33:47 +0000 (UTC)
+Date: Thu, 7 May 2020 16:33:44 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Keqian Zhu <zhukeqian1@huawei.com>
+Subject: Re: [PATCH v3] migration/throttle: Add cpu-throttle-tailslow
+ migration parameter
+Message-ID: <20200507153344.GE17348@work-vm>
+References: <20200413101508.54793-1-zhukeqian1@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <CAAeCc_nPrmiHDe61drkFmFVVWqOg6yvmC13TVfKmiZn1GF2eXA@mail.gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <20200413101508.54793-1-zhukeqian1@huawei.com>
+User-Agent: Mutt/1.13.4 (2020-02-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.61;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/07 02:00:54
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/07 00:55:34
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001, T_HK_NAME_DR=0.01, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,408 +116,323 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Zhong, Yang" <yang.zhong@intel.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>, kevin.tian@intel.com,
- tnowicki@marvell.com, mst@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
- drjones@redhat.com, peterx@redhat.com, qemu-devel@nongnu.org,
- alex.williamson@redhat.com, qemu-arm@nongnu.org,
- Bharat Bhushan <bbhushan2@marvell.com>, linuc.decode@gmail.com,
- eric.auger.pro@gmail.com
+Cc: Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ wanghaibin.wang@huawei.com, Eric Blake <eblake@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iy+nyaoewt5w
+X-TUID: 9QXwUEuDaPCH
 
-Hi Bharat,
-
-On 5/5/20 11:06 AM, Bharat Bhushan wrote:
-> On Fri, Apr 24, 2020 at 7:22 PM Auger Eric <eric.auger@redhat.com> wrote:
->>
->> Hi Bharat,
->> On 4/23/20 6:09 PM, Jean-Philippe Brucker wrote:
->>> Hi Bharat,
->>>
->>> A few more things found while rebasing
->>>
->>> On Mon, Mar 23, 2020 at 02:16:16PM +0530, Bharat Bhushan wrote:
->>>> This patch implements the PROBE request. Currently supported
->>>> page size mask per endpoint is returned. Also append a NONE
->>>> property in the end.
->>>>
->>>> Signed-off-by: Bharat Bhushan <bbhushan2@marvell.com>
->>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>> ---
->>>>  include/standard-headers/linux/virtio_iommu.h |   6 +
->>>>  hw/virtio/virtio-iommu.c                      | 161 +++++++++++++++++=
--
->>>>  hw/virtio/trace-events                        |   2 +
->>>>  3 files changed, 166 insertions(+), 3 deletions(-)
->>>>
->>>> diff --git a/include/standard-headers/linux/virtio_iommu.h b/include/s=
-tandard-headers/linux/virtio_iommu.h
->>>> index b9443b83a1..8a0d47b907 100644
->>>> --- a/include/standard-headers/linux/virtio_iommu.h
->>>> +++ b/include/standard-headers/linux/virtio_iommu.h
->>>> @@ -111,6 +111,7 @@ struct virtio_iommu_req_unmap {
->>>>
->>>>  #define VIRTIO_IOMMU_PROBE_T_NONE           0
->>>>  #define VIRTIO_IOMMU_PROBE_T_RESV_MEM               1
->>>> +#define VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK 2
->>>>
->>>>  #define VIRTIO_IOMMU_PROBE_T_MASK           0xfff
->>>>
->>>> @@ -130,6 +131,11 @@ struct virtio_iommu_probe_resv_mem {
->>>>      uint64_t                                        end;
->>>>  };
->>>>
->>>> +struct virtio_iommu_probe_pgsize_mask {
->>>> +    struct virtio_iommu_probe_property      head;
->>>> +    uint64_t                                pgsize_bitmap;
->>>> +};
->>>> +
->>>>  struct virtio_iommu_req_probe {
->>>>      struct virtio_iommu_req_head            head;
->>>>      uint32_t                                        endpoint;
->>>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
->>>> index 747e3cf1da..63fbacdcdc 100644
->>>> --- a/hw/virtio/virtio-iommu.c
->>>> +++ b/hw/virtio/virtio-iommu.c
->>>> @@ -38,6 +38,10 @@
->>>>
->>>>  /* Max size */
->>>>  #define VIOMMU_DEFAULT_QUEUE_SIZE 256
->>>> +#define VIOMMU_PROBE_SIZE 512
->>>> +
->>>> +#define SUPPORTED_PROBE_PROPERTIES (\
->>>> +    1 << VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK)
->>>>
->>>>  typedef struct VirtIOIOMMUDomain {
->>>>      uint32_t id;
->>>> @@ -62,6 +66,13 @@ typedef struct VirtIOIOMMUMapping {
->>>>      uint32_t flags;
->>>>  } VirtIOIOMMUMapping;
->>>>
->>>> +typedef struct VirtIOIOMMUPropBuffer {
->>>> +    VirtIOIOMMUEndpoint *endpoint;
->>>> +    size_t filled;
->>>> +    uint8_t *start;
->>>> +    bool error;
->>>
->>> It doesn't seem like bufstate->error gets used anywhere
->> maybe rebase your work on
->> [PATCH for-4.2 v10 10/15] virtio-iommu: Implement probe request
->> which tests it.
+* Keqian Zhu (zhukeqian1@huawei.com) wrote:
+> At the tail stage of throttling, the Guest is very sensitive to
+> CPU percentage while the @cpu-throttle-increment is excessive
+> usually at tail stage.
 >=20
-> This was the staring point for me, As of now i moved away from "error"
-> from above struct.
+> If this parameter is true, we will compute the ideal CPU percentage
+> used by the Guest, which may exactly make the dirty rate match the
+> dirty rate threshold. Then we will choose a smaller throttle increment
+> between the one specified by @cpu-throttle-increment and the one
+> generated by ideal CPU percentage.
 >=20
->>
->> Also in
->> [Qemu-devel] [PATCH for-4.2 v10 10/15] virtio-iommu: Implement probe req=
-uest
->> I changed the implementation to keep it simpler.
-
-In [PATCH 2/5] virtio-iommu: Implement RESV_MEM probe request
-I reworked the original implementation. I think this version is simpler
-to start from. I removed the VirtIOIOMMUPropBuffer struct which looks
-more complex than requested.
-
-Thanks
-
-Eric
->>
->> Thanks
->>
->> Eric
->>>
->>>> +} VirtIOIOMMUPropBuffer;
->>>> +
->>>>  static inline uint16_t virtio_iommu_get_bdf(IOMMUDevice *dev)
->>>>  {
->>>>      return PCI_BUILD_BDF(pci_bus_num(dev->bus), dev->devfn);
->>>> @@ -490,6 +501,114 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
->>>>      return ret;
->>>>  }
->>>>
->>>> +static int virtio_iommu_fill_none_prop(VirtIOIOMMUPropBuffer *bufstat=
-e)
->>>> +{
->>>> +    struct virtio_iommu_probe_property *prop;
->>>> +
->>>> +    prop =3D (struct virtio_iommu_probe_property *)
->>>> +                (bufstate->start + bufstate->filled);
->>>> +    prop->type =3D 0;
->>>> +    prop->length =3D 0;
->>>> +    bufstate->filled +=3D sizeof(*prop);
->>>> +    trace_virtio_iommu_fill_none_property(bufstate->endpoint->id);
->>>> +    return 0;
->>>> +}
->>>> +
->>>> +static int virtio_iommu_fill_page_size_mask(VirtIOIOMMUPropBuffer *bu=
-fstate)
->>>> +{
->>>> +    struct virtio_iommu_probe_pgsize_mask *page_size_mask;
->>>> +    size_t prop_size =3D sizeof(*page_size_mask);
->>>> +    VirtIOIOMMUEndpoint *ep =3D bufstate->endpoint;
->>>> +    VirtIOIOMMU *s =3D ep->viommu;
->>>> +    IOMMUDevice *sdev;
->>>> +
->>>> +    if (bufstate->filled + prop_size >=3D VIOMMU_PROBE_SIZE) {
->>>> +        bufstate->error =3D true;
->>>> +        /* get the traversal stopped by returning true */
->>>> +        return true;
->>>> +    }
->>>> +
->>>> +    page_size_mask =3D (struct virtio_iommu_probe_pgsize_mask *)
->>>> +                     (bufstate->start + bufstate->filled);
->>>> +
->>>> +    page_size_mask->head.type =3D VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK=
-;
->>>> +    page_size_mask->head.length =3D prop_size;
->>>> +    QLIST_FOREACH(sdev, &s->notifiers_list, next) {
->>>> +        if (ep->id =3D=3D sdev->devfn) {
->>>> +            page_size_mask->pgsize_bitmap =3D sdev->page_size_mask;
->>>
->>> Do we need a cpu_to_le64 here?
+> Therefore, it is compatible to traditional throttling, meanwhile
+> the throttle increment won't be excessive at tail stage. This may
+> make migration time longer, and is disabled by default.
 >=20
-> Ack, yes, even head.type and head.length needed  cpu_to_le16().
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+
+Queued
+
+> ---
+> Cc: Juan Quintela <quintela@redhat.com>
+> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+> Cc: Eric Blake <eblake@redhat.com>
+> Cc: Markus Armbruster <armbru@redhat.com>
+> ---
+>  migration/migration.c | 13 ++++++++++++
+>  migration/ram.c       | 25 +++++++++++++++++-----
+>  monitor/hmp-cmds.c    |  8 ++++++++
+>  qapi/migration.json   | 48 +++++++++++++++++++++++++++++++++++++++++++
+>  4 files changed, 89 insertions(+), 5 deletions(-)
 >=20
->>>
->>>> +    }
->>>> +    }
->>>> +    bufstate->filled +=3D sizeof(*page_size_mask);
->>>> +    trace_virtio_iommu_fill_pgsize_mask_property(bufstate->endpoint->=
-id,
->>>> +                                                 page_size_mask->pgsi=
-ze_bitmap,
->>>> +                                                 bufstate->filled);
->>>> +    return false;
->>>> +}
->>>> +
->>>> +/* Fill the properties[] buffer with properties of type @type */
->>>> +static int virtio_iommu_fill_property(int type,
->>>> +                                      VirtIOIOMMUPropBuffer *bufstate=
-)
->>>> +{
->>>> +    int ret =3D -ENOSPC;
->>>> +
->>>> +    if (bufstate->filled + sizeof(struct virtio_iommu_probe_property)
->>>> +            >=3D VIOMMU_PROBE_SIZE) {
->>>> +        /* no space left for the header */
->>>> +        bufstate->error =3D true;
->>>> +        goto out;
->>>> +    }
->>>> +
->>>> +    switch (type) {
->>>> +    case VIRTIO_IOMMU_PROBE_T_NONE:
->>>> +        ret =3D virtio_iommu_fill_none_prop(bufstate);
->>>> +        break;
->>>> +    case VIRTIO_IOMMU_PROBE_T_PAGE_SIZE_MASK:
->>>> +    {
->>>> +        ret =3D virtio_iommu_fill_page_size_mask(bufstate);
->>>> +    break;
->>>> +    }
->>>> +    default:
->>>> +        ret =3D -ENOENT;
->>>> +        break;
->>>> +    }
->>>> +out:
->>>> +    if (ret) {
->>>> +        error_report("%s property of type=3D%d could not be filled (%=
-d),"
->>>> +                     " remaining size =3D 0x%lx",
->>>> +                     __func__, type, ret, bufstate->filled);
->>>> +    }
->>>> +    return ret;
->>>> +}
->>>> +
->>>> +/**
->>>> + * virtio_iommu_probe - Fill the probe request buffer with all
->>>> + * the properties the device is able to return and add a NONE
->>>> + * property at the end. @buf points to properties[].
->>>> + */
->>>> +static int virtio_iommu_probe(VirtIOIOMMU *s,
->>>> +                              struct virtio_iommu_req_probe *req,
->>>> +                              uint8_t *buf)
->>>> +{
->>>> +    uint32_t ep_id =3D le32_to_cpu(req->endpoint);
->>>> +    VirtIOIOMMUEndpoint *ep =3D virtio_iommu_get_endpoint(s, ep_id);
->>>> +    int16_t prop_types =3D SUPPORTED_PROBE_PROPERTIES, type;
->>>> +    VirtIOIOMMUPropBuffer bufstate =3D {.start =3D buf, .filled =3D 0=
+> diff --git a/migration/migration.c b/migration/migration.c
+> index 187ac0410c..d478a87290 100644
+> --- a/migration/migration.c
+> +++ b/migration/migration.c
+> @@ -785,6 +785,8 @@ MigrationParameters *qmp_query_migrate_parameters(Err=
+or **errp)
+>      params->cpu_throttle_initial =3D s->parameters.cpu_throttle_initial;
+>      params->has_cpu_throttle_increment =3D true;
+>      params->cpu_throttle_increment =3D s->parameters.cpu_throttle_increm=
+ent;
+> +    params->has_cpu_throttle_tailslow =3D true;
+> +    params->cpu_throttle_tailslow =3D s->parameters.cpu_throttle_tailslo=
+w;
+>      params->has_tls_creds =3D true;
+>      params->tls_creds =3D g_strdup(s->parameters.tls_creds);
+>      params->has_tls_hostname =3D true;
+> @@ -1324,6 +1326,10 @@ static void migrate_params_test_apply(MigrateSetPa=
+rameters *params,
+>          dest->cpu_throttle_increment =3D params->cpu_throttle_increment;
+>      }
+> =20
+> +    if (params->has_cpu_throttle_tailslow) {
+> +        dest->cpu_throttle_tailslow =3D params->cpu_throttle_tailslow;
+> +    }
+> +
+>      if (params->has_tls_creds) {
+>          assert(params->tls_creds->type =3D=3D QTYPE_QSTRING);
+>          dest->tls_creds =3D g_strdup(params->tls_creds->u.s);
+> @@ -1412,6 +1418,10 @@ static void migrate_params_apply(MigrateSetParamet=
+ers *params, Error **errp)
+>          s->parameters.cpu_throttle_increment =3D params->cpu_throttle_in=
+crement;
+>      }
+> =20
+> +    if (params->has_cpu_throttle_tailslow) {
+> +        s->parameters.cpu_throttle_tailslow =3D params->cpu_throttle_tai=
+lslow;
+> +    }
+> +
+>      if (params->has_tls_creds) {
+>          g_free(s->parameters.tls_creds);
+>          assert(params->tls_creds->type =3D=3D QTYPE_QSTRING);
+> @@ -3594,6 +3604,8 @@ static Property migration_properties[] =3D {
+>      DEFINE_PROP_UINT8("x-cpu-throttle-increment", MigrationState,
+>                        parameters.cpu_throttle_increment,
+>                        DEFAULT_MIGRATE_CPU_THROTTLE_INCREMENT),
+> +    DEFINE_PROP_BOOL("x-cpu-throttle-tailslow", MigrationState,
+> +                      parameters.cpu_throttle_tailslow, false),
+>      DEFINE_PROP_SIZE("x-max-bandwidth", MigrationState,
+>                        parameters.max_bandwidth, MAX_THROTTLE),
+>      DEFINE_PROP_UINT64("x-downtime-limit", MigrationState,
+> @@ -3700,6 +3712,7 @@ static void migration_instance_init(Object *obj)
+>      params->has_throttle_trigger_threshold =3D true;
+>      params->has_cpu_throttle_initial =3D true;
+>      params->has_cpu_throttle_increment =3D true;
+> +    params->has_cpu_throttle_tailslow =3D true;
+>      params->has_max_bandwidth =3D true;
+>      params->has_downtime_limit =3D true;
+>      params->has_x_checkpoint_delay =3D true;
+> diff --git a/migration/ram.c b/migration/ram.c
+> index 04f13feb2e..3317c99786 100644
+> --- a/migration/ram.c
+> +++ b/migration/ram.c
+> @@ -616,20 +616,34 @@ static size_t save_page_header(RAMState *rs, QEMUFi=
+le *f,  RAMBlock *block,
+>   * able to complete migration. Some workloads dirty memory way too
+>   * fast and will not effectively converge, even with auto-converge.
+>   */
+> -static void mig_throttle_guest_down(void)
+> +static void mig_throttle_guest_down(uint64_t bytes_dirty_period,
+> +                                    uint64_t bytes_dirty_threshold)
+>  {
+>      MigrationState *s =3D migrate_get_current();
+>      uint64_t pct_initial =3D s->parameters.cpu_throttle_initial;
+> -    uint64_t pct_icrement =3D s->parameters.cpu_throttle_increment;
+> +    uint64_t pct_increment =3D s->parameters.cpu_throttle_increment;
+> +    bool pct_tailslow =3D s->parameters.cpu_throttle_tailslow;
+>      int pct_max =3D s->parameters.max_cpu_throttle;
+> =20
+> +    uint64_t throttle_now =3D cpu_throttle_get_percentage();
+> +    uint64_t cpu_now, cpu_ideal, throttle_inc;
+> +
+>      /* We have not started throttling yet. Let's start it. */
+>      if (!cpu_throttle_active()) {
+>          cpu_throttle_set(pct_initial);
+>      } else {
+>          /* Throttling already on, just increase the rate */
+> -        cpu_throttle_set(MIN(cpu_throttle_get_percentage() + pct_icremen=
+t,
+> -                         pct_max));
+> +        if (!pct_tailslow) {
+> +            throttle_inc =3D pct_increment;
+> +        } else {
+> +            /* Compute the ideal CPU percentage used by Guest, which may
+> +             * make the dirty rate match the dirty rate threshold. */
+> +            cpu_now =3D 100 - throttle_now;
+> +            cpu_ideal =3D cpu_now * (bytes_dirty_threshold * 1.0 /
+> +                        bytes_dirty_period);
+> +            throttle_inc =3D MIN(cpu_now - cpu_ideal, pct_increment);
+> +        }
+> +        cpu_throttle_set(MIN(throttle_now + throttle_inc, pct_max));
+>      }
+>  }
+> =20
+> @@ -919,7 +933,8 @@ static void migration_trigger_throttle(RAMState *rs)
+>              (++rs->dirty_rate_high_cnt >=3D 2)) {
+>              trace_migration_throttle();
+>              rs->dirty_rate_high_cnt =3D 0;
+> -            mig_throttle_guest_down();
+> +            mig_throttle_guest_down(bytes_dirty_period,
+> +                                    bytes_dirty_threshold);
+>          }
+>      }
+>  }
+> diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+> index 9b94e67879..acd7539273 100644
+> --- a/monitor/hmp-cmds.c
+> +++ b/monitor/hmp-cmds.c
+> @@ -419,6 +419,10 @@ void hmp_info_migrate_parameters(Monitor *mon, const=
+ QDict *qdict)
+>          monitor_printf(mon, "%s: %u\n",
+>              MigrationParameter_str(MIGRATION_PARAMETER_CPU_THROTTLE_INCR=
+EMENT),
+>              params->cpu_throttle_increment);
+> +        assert(params->has_cpu_throttle_tailslow);
+> +        monitor_printf(mon, "%s: %s\n",
+> +            MigrationParameter_str(MIGRATION_PARAMETER_CPU_THROTTLE_TAIL=
+SLOW),
+> +            params->cpu_throttle_tailslow ? "on" : "off");
+>          assert(params->has_max_cpu_throttle);
+>          monitor_printf(mon, "%s: %u\n",
+>              MigrationParameter_str(MIGRATION_PARAMETER_MAX_CPU_THROTTLE)=
 ,
->>>> +                                       .error =3D false, .endpoint =
-=3D ep};
->>>
->>> Probably need to check if ep is valid before going further
+> @@ -1271,6 +1275,10 @@ void hmp_migrate_set_parameter(Monitor *mon, const=
+ QDict *qdict)
+>          p->has_cpu_throttle_increment =3D true;
+>          visit_type_int(v, param, &p->cpu_throttle_increment, &err);
+>          break;
+> +    case MIGRATION_PARAMETER_CPU_THROTTLE_TAILSLOW:
+> +        p->has_cpu_throttle_tailslow =3D true;
+> +        visit_type_bool(v, param, &p->cpu_throttle_tailslow, &err);
+> +        break;
+>      case MIGRATION_PARAMETER_MAX_CPU_THROTTLE:
+>          p->has_max_cpu_throttle =3D true;
+>          visit_type_int(v, param, &p->max_cpu_throttle, &err);
+> diff --git a/qapi/migration.json b/qapi/migration.json
+> index eca2981d0a..ee6c5a0cae 100644
+> --- a/qapi/migration.json
+> +++ b/qapi/migration.json
+> @@ -552,6 +552,21 @@
+>  #                          auto-converge detects that migration is not m=
+aking
+>  #                          progress. The default value is 10. (Since 2.7=
+)
+>  #
+> +# @cpu-throttle-tailslow: Make CPU throttling slower at tail stage
+> +#                         At the tail stage of throttling, the Guest is =
+very
+> +#                         sensitive to CPU percentage while the @cpu-thr=
+ottle
+> +#                         -increment is excessive usually at tail stage.
+> +#                         If this parameter is true, we will compute the=
+ ideal
+> +#                         CPU percentage used by the Guest, which may ex=
+actly make
+> +#                         the dirty rate match the dirty rate threshold.=
+ Then we
+> +#                         will choose a smaller throttle increment betwe=
+en the
+> +#                         one specified by @cpu-throttle-increment and t=
+he one
+> +#                         generated by ideal CPU percentage.
+> +#                         Therefore, it is compatible to traditional thr=
+ottling,
+> +#                         meanwhile the throttle increment won't be exce=
+ssive
+> +#                         at tail stage.
+> +#                         The default value is false. (Since 5.1)
+> +#
+>  # @tls-creds: ID of the 'tls-creds' object that provides credentials for
+>  #             establishing a TLS connection over the migration data chan=
+nel.
+>  #             On the outgoing side of the migration, the credentials mus=
+t
+> @@ -631,6 +646,7 @@
+>             'compress-level', 'compress-threads', 'decompress-threads',
+>             'compress-wait-thread', 'throttle-trigger-threshold',
+>             'cpu-throttle-initial', 'cpu-throttle-increment',
+> +           'cpu-throttle-tailslow',
+>             'tls-creds', 'tls-hostname', 'tls-authz', 'max-bandwidth',
+>             'downtime-limit', 'x-checkpoint-delay', 'block-incremental',
+>             'multifd-channels',
+> @@ -676,6 +692,21 @@
+>  #                          auto-converge detects that migration is not m=
+aking
+>  #                          progress. The default value is 10. (Since 2.7=
+)
+>  #
+> +# @cpu-throttle-tailslow: Make CPU throttling slower at tail stage
+> +#                         At the tail stage of throttling, the Guest is =
+very
+> +#                         sensitive to CPU percentage while the @cpu-thr=
+ottle
+> +#                         -increment is excessive usually at tail stage.
+> +#                         If this parameter is true, we will compute the=
+ ideal
+> +#                         CPU percentage used by the Guest, which may ex=
+actly make
+> +#                         the dirty rate match the dirty rate threshold.=
+ Then we
+> +#                         will choose a smaller throttle increment betwe=
+en the
+> +#                         one specified by @cpu-throttle-increment and t=
+he one
+> +#                         generated by ideal CPU percentage.
+> +#                         Therefore, it is compatible to traditional thr=
+ottling,
+> +#                         meanwhile the throttle increment won't be exce=
+ssive
+> +#                         at tail stage.
+> +#                         The default value is false. (Since 5.1)
+> +#
+>  # @tls-creds: ID of the 'tls-creds' object that provides credentials
+>  #             for establishing a TLS connection over the migration data
+>  #             channel. On the outgoing side of the migration, the creden=
+tials
+> @@ -763,6 +794,7 @@
+>              '*throttle-trigger-threshold': 'int',
+>              '*cpu-throttle-initial': 'int',
+>              '*cpu-throttle-increment': 'int',
+> +            '*cpu-throttle-tailslow': 'bool',
+>              '*tls-creds': 'StrOrNull',
+>              '*tls-hostname': 'StrOrNull',
+>              '*tls-authz': 'StrOrNull',
+> @@ -834,6 +866,21 @@
+>  #                          auto-converge detects that migration is not m=
+aking
+>  #                          progress. (Since 2.7)
+>  #
+> +# @cpu-throttle-tailslow: Make CPU throttling slower at tail stage
+> +#                         At the tail stage of throttling, the Guest is =
+very
+> +#                         sensitive to CPU percentage while the @cpu-thr=
+ottle
+> +#                         -increment is excessive usually at tail stage.
+> +#                         If this parameter is true, we will compute the=
+ ideal
+> +#                         CPU percentage used by the Guest, which may ex=
+actly make
+> +#                         the dirty rate match the dirty rate threshold.=
+ Then we
+> +#                         will choose a smaller throttle increment betwe=
+en the
+> +#                         one specified by @cpu-throttle-increment and t=
+he one
+> +#                         generated by ideal CPU percentage.
+> +#                         Therefore, it is compatible to traditional thr=
+ottling,
+> +#                         meanwhile the throttle increment won't be exce=
+ssive
+> +#                         at tail stage.
+> +#                         The default value is false. (Since 5.1)
+> +#
+>  # @tls-creds: ID of the 'tls-creds' object that provides credentials
+>  #             for establishing a TLS connection over the migration data
+>  #             channel. On the outgoing side of the migration, the creden=
+tials
+> @@ -921,6 +968,7 @@
+>              '*throttle-trigger-threshold': 'uint8',
+>              '*cpu-throttle-initial': 'uint8',
+>              '*cpu-throttle-increment': 'uint8',
+> +            '*cpu-throttle-tailslow': 'bool',
+>              '*tls-creds': 'str',
+>              '*tls-hostname': 'str',
+>              '*tls-authz': 'str',
+> --=20
+> 2.19.1
 >=20
-> yes, will take care
 >=20
->>>
->>>> +
->>>> +    while ((type =3D ctz32(prop_types)) !=3D 32) {
->>>> +        if (virtio_iommu_fill_property(type, &bufstate)) {
->>>> +            goto failure;
->>>> +        }
->>>> +        prop_types &=3D ~(1 << type);
->>>> +    }
->>>> +    if (virtio_iommu_fill_property(VIRTIO_IOMMU_PROBE_T_NONE, &bufsta=
-te)) {
->>>> +        goto failure;
->>>> +    }
->>>
->>> We got rid of the NONE property in the spec, now there is:
->>>
->>>  "If the device doesn=E2=80=99t fill all probe_size bytes with properti=
-es, it
->>>   SHOULD fill the remaining bytes of properties with zeroes."
->>>
->>> So I think you can get rid of virtio_iommu_fill_none_prop() and fill th=
-e
->>> rest of the buffer with zeroes here instead.
->=20
-> will do changes accordingly.
->=20
-> Stay Safe !!
->=20
-> Thanks
-> -Bharat
->>>
->>> Thanks,
->>> Jean
->>>
->>>> +    return VIRTIO_IOMMU_S_OK;
->>>> +failure:
->>>> +    return VIRTIO_IOMMU_S_INVAL;
->>>> +}
->>>> +
->>>>  static int virtio_iommu_iov_to_req(struct iovec *iov,
->>>>                                     unsigned int iov_cnt,
->>>>                                     void *req, size_t req_sz)
->>>> @@ -519,6 +638,17 @@ virtio_iommu_handle_req(detach)
->>>>  virtio_iommu_handle_req(map)
->>>>  virtio_iommu_handle_req(unmap)
->>>>
->>>> +static int virtio_iommu_handle_probe(VirtIOIOMMU *s,
->>>> +                                     struct iovec *iov,
->>>> +                                     unsigned int iov_cnt,
->>>> +                                     uint8_t *buf)
->>>> +{
->>>> +    struct virtio_iommu_req_probe req;
->>>> +    int ret =3D virtio_iommu_iov_to_req(iov, iov_cnt, &req, sizeof(re=
-q));
->>>> +
->>>> +    return ret ? ret : virtio_iommu_probe(s, &req, buf);
->>>> +}
->>>> +
->>>>  static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue=
- *vq)
->>>>  {
->>>>      VirtIOIOMMU *s =3D VIRTIO_IOMMU(vdev);
->>>> @@ -564,17 +694,33 @@ static void virtio_iommu_handle_command(VirtIODe=
-vice *vdev, VirtQueue *vq)
->>>>          case VIRTIO_IOMMU_T_UNMAP:
->>>>              tail.status =3D virtio_iommu_handle_unmap(s, iov, iov_cnt=
-);
->>>>              break;
->>>> +        case VIRTIO_IOMMU_T_PROBE:
->>>> +        {
->>>> +            struct virtio_iommu_req_tail *ptail;
->>>> +            uint8_t *buf =3D g_malloc0(s->config.probe_size + sizeof(=
-tail));
->>>> +
->>>> +            ptail =3D (struct virtio_iommu_req_tail *)
->>>> +                        (buf + s->config.probe_size);
->>>> +            ptail->status =3D virtio_iommu_handle_probe(s, iov, iov_c=
-nt, buf);
->>>> +
->>>> +            sz =3D iov_from_buf(elem->in_sg, elem->in_num, 0,
->>>> +                              buf, s->config.probe_size + sizeof(tail=
-));
->>>> +            g_free(buf);
->>>> +            assert(sz =3D=3D s->config.probe_size + sizeof(tail));
->>>> +            goto push;
->>>> +        }
->>>>          default:
->>>>              tail.status =3D VIRTIO_IOMMU_S_UNSUPP;
->>>>          }
->>>> -        qemu_mutex_unlock(&s->mutex);
->>>>
->>>>  out:
->>>>          sz =3D iov_from_buf(elem->in_sg, elem->in_num, 0,
->>>>                            &tail, sizeof(tail));
->>>>          assert(sz =3D=3D sizeof(tail));
->>>>
->>>> -        virtqueue_push(vq, elem, sizeof(tail));
->>>> +push:
->>>> +        qemu_mutex_unlock(&s->mutex);
->>>> +        virtqueue_push(vq, elem, sz);
->>>>          virtio_notify(vdev, vq);
->>>>          g_free(elem);
->>>>      }
->>>> @@ -634,16 +780,23 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMM=
-UMemoryRegion *mr, hwaddr addr,
->>>>      VirtIOIOMMUEndpoint *ep;
->>>>      uint32_t sid, flags;
->>>>      bool bypass_allowed;
->>>> +    hwaddr addr_mask;
->>>>      bool found;
->>>>
->>>>      interval.low =3D addr;
->>>>      interval.high =3D addr + 1;
->>>>
->>>> +    if (sdev->page_size_mask) {
->>>> +        addr_mask =3D (1 << ctz32(sdev->page_size_mask)) - 1;
->>>> +    } else {
->>>> +        addr_mask =3D (1 << ctz32(s->config.page_size_mask)) - 1;
->>>> +    }
->>>> +
->>>>      IOMMUTLBEntry entry =3D {
->>>>          .target_as =3D &address_space_memory,
->>>>          .iova =3D addr,
->>>>          .translated_addr =3D addr,
->>>> -        .addr_mask =3D (1 << ctz32(s->config.page_size_mask)) - 1,
->>>> +        .addr_mask =3D addr_mask,
->>>>          .perm =3D IOMMU_NONE,
->>>>      };
->>>>
->>>> @@ -831,6 +984,7 @@ static void virtio_iommu_device_realize(DeviceStat=
-e *dev, Error **errp)
->>>>      s->config.page_size_mask =3D TARGET_PAGE_MASK;
->>>>      s->config.input_range.end =3D -1UL;
->>>>      s->config.domain_range.end =3D 32;
->>>> +    s->config.probe_size =3D VIOMMU_PROBE_SIZE;
->>>>
->>>>      virtio_add_feature(&s->features, VIRTIO_RING_F_EVENT_IDX);
->>>>      virtio_add_feature(&s->features, VIRTIO_RING_F_INDIRECT_DESC);
->>>> @@ -840,6 +994,7 @@ static void virtio_iommu_device_realize(DeviceStat=
-e *dev, Error **errp)
->>>>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MAP_UNMAP);
->>>>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_BYPASS);
->>>>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MMIO);
->>>> +    virtio_add_feature(&s->features, VIRTIO_IOMMU_F_PROBE);
->>>>
->>>>      qemu_mutex_init(&s->mutex);
->>>>
->>>> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
->>>> index 8bae651191..b0a6e4bda3 100644
->>>> --- a/hw/virtio/trace-events
->>>> +++ b/hw/virtio/trace-events
->>>> @@ -76,3 +76,5 @@ virtio_iommu_report_fault(uint8_t reason, uint32_t f=
-lags, uint32_t endpoint, uin
->>>>  virtio_iommu_notify_map(const char *name, uint64_t iova, uint64_t pad=
-dr, uint64_t map_size) "mr=3D%s iova=3D0x%"PRIx64" pa=3D0x%" PRIx64" size=
-=3D0x%"PRIx64
->>>>  virtio_iommu_notify_unmap(const char *name, uint64_t iova, uint64_t m=
-ap_size) "mr=3D%s iova=3D0x%"PRIx64" size=3D0x%"PRIx64
->>>>  virtio_iommu_remap(uint64_t iova, uint64_t pa, uint64_t size) "iova=
-=3D0x%"PRIx64" pa=3D0x%" PRIx64" size=3D0x%"PRIx64""
->>>> +virtio_iommu_fill_none_property(uint32_t devid) "devid=3D%d"
->>>> +virtio_iommu_fill_pgsize_mask_property(uint32_t devid, uint64_t pgsiz=
-e_mask, size_t filled) "dev=3D %d, pgsize_mask=3D0x%"PRIx64" filled=3D0x%lx=
-"
->>>> --
->>>> 2.17.1
->>>>
->>>
->>
->=20
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 

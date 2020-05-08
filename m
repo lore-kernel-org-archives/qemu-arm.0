@@ -1,178 +1,202 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp121133lfb;
-        Fri, 8 May 2020 05:57:45 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLkZ6R7hD//KJ/DulNotwQVoFaujCJAAhtNG5K81DwSl6uat/+rOEAPi1OYr1X0AMgpB5s8
-X-Received: by 2002:ac8:51d3:: with SMTP id d19mr2759111qtn.141.1588942665136;
-        Fri, 08 May 2020 05:57:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588942665; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp132300lfb;
+        Fri, 8 May 2020 06:09:11 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIKMYqMTh6mbj22o2lIsBUlPwoaRBjx55Lvh9J6t20h5t2l1wXG6I5rfLGNl+fRKrwfJ9q7
+X-Received: by 2002:ac8:7606:: with SMTP id t6mr2847923qtq.331.1588943351305;
+        Fri, 08 May 2020 06:09:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588943351; cv=none;
         d=google.com; s=arc-20160816;
-        b=GxFDALFby3x10qDZj0cheGR/Js+3CRuMBTCgENhqfCiWK5hmuiL0EZpab24Om0eD23
-         pFEl/19iP0AMhDCx0CPJr5qe6zjg3L5j6qDQfw1yIKcj2zTeCWzfJDFV13ugR6zVM4zQ
-         IfiXgM2YDHnVJs+2s0vDLy7d7bYeRerqwiXRN/KMOn8sbe8X8EmYY7lg/0ceF9C/0rKi
-         tr18gXBlmTV21zuXBswmEpBwxnYpk60fCOPIYMZvQqjdUM0+aZFZCsexgnWDlAcOHU38
-         +2b5giLKj2J5ZILDWDoF7Do63Tier98F6d7awfdFAtIHcKL2+JTiaZRDZLSZB3j3Q6Xd
-         UMAQ==
+        b=E/cPo00EJiUSPQqRux5PkwdrnruZgkhtJfojEeKR+O0FwlE67EwtRQ9RIF6WP8Prv2
+         bghzcOIKZLHqvSBzae/5cENUibuw/xCPlwpKIhurq8tLdPSnK/kYKKgPieTrvt2tHb5s
+         noWTAjnOEdHEM/U/W8xnIWFiflVSFu3tJXXDCBi+GRIkrvJbG/EwUs31yGuPniSQtMEk
+         TKuXNVYUrStTOyjrUESnYwDuiaOOlJL6b3ieRFgs0yIy3/uwNGD4CKIm9b5ap8UPozu9
+         vwsKqb+rqSNAz8xBhu5UOM+Zee8qHtsz3X7B/n/emSdPakCMMw6ulcmM5GfXGGUfLuZN
+         zmiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=zudctO3EkR+8Y0s3mx6MbBIauAULqPgX14OPAMKsxPM=;
-        b=sd8+WdFektfkZNvT5XlDXWoxksXM50AkVJWnQjCfxJYq6mZW7MYiTiscc6DiU+Hcf2
-         AmuL3qxrgpXNj6n2dSAcrtIixkh082TuHS8Rv/9umLCQfSGPSfyWB4uOQ5OKL1qU8JyX
-         46oZZiViArVDDtgWxe0YuHjuTvA+nMw8AHFWA9Wkqxy+SFnbgDwtIdoApU7i9cam3ri6
-         BDuw9h+H6QK1oIf41FxGqUoWyiiIecayuedp6dsH0aIM1h5I3S7p5spaqjcLZCBd1afQ
-         gnl5tSh5T+C/Wkiad0TtQyBXZ5ARvWHNT7eKH92XAqXRjNsn9InPJxpS91yuPUbriTdM
-         hm+g==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=SfoftjUdJMP/vemqd09MfiuAR5q0nKJtH0beyh9JsQg=;
+        b=FB67jHmWuG+ARjVSbo9ZwqceqItqZdxT89H9uwngOF2soFzX5b6wd92b5+yGhFWa1W
+         Buy+ylvxkNOeJ+HsD0MPKwBiuFW2izGGcgpODvFcrXN38aBS1XwMUo8QidMaKdO461hg
+         NjuTt/SGZ+VphKZAJzGSL5iTvx66w91cw1XmzUN5hRFhu1cFd+d15pIqyl/VsgoAv4gc
+         Gm/ZZKfayw3esAw9adYBnVyKTYzBy/iI/Ha3dyJWL29ChHRGGpW28RJjy06htuRTW1Ui
+         +DhD9qFeTWfwlqvrO7Ftf933zdB75/fRlEBbjGg8IwTB5x/RXj5/NXWDQ5gEV0VfoT3d
+         AJ4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GyG3gvoZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=buOYjOXc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id r6si1024140qke.255.2020.05.08.05.57.44
+        by mx.google.com with ESMTPS id j12si1280605qvu.89.2020.05.08.06.09.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 May 2020 05:57:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Fri, 08 May 2020 06:09:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GyG3gvoZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33788 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=buOYjOXc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:53398 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jX2ZU-0003Xf-Ib
-	for alex.bennee@linaro.org; Fri, 08 May 2020 08:57:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51960)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jX2kY-0008B8-N9
+	for alex.bennee@linaro.org; Fri, 08 May 2020 09:09:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56526)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jX2St-0005zE-Ot
- for qemu-devel@nongnu.org; Fri, 08 May 2020 08:50:55 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:38126
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jX2Ss-0002So-Ki
- for qemu-devel@nongnu.org; Fri, 08 May 2020 08:50:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588942253;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zudctO3EkR+8Y0s3mx6MbBIauAULqPgX14OPAMKsxPM=;
- b=GyG3gvoZIszpvvKVWhZ0elNqWCCN4vkybmpJiEVQscR5ZIa5exV7asPCw/XFbvpL1fDRlc
- GqolCWINcY3fyXorw/H3QG00EXRb60CwdLwgNTSXcoPiDXIslBHrY+87FPaYNXu/L1JYJX
- gmy6SSah2UEjEVkb8Qg+o4KOfW6Gx4o=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-76-1-TUPxSPMNaE1-cw9UJ2Pg-1; Fri, 08 May 2020 08:50:52 -0400
-X-MC-Unique: 1-TUPxSPMNaE1-cw9UJ2Pg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DFAC2107ACCA;
- Fri,  8 May 2020 12:50:48 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-113-6.ams2.redhat.com [10.36.113.6])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8B92B5C1BE;
- Fri,  8 May 2020 12:50:42 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 0D88F11358BC; Fri,  8 May 2020 14:50:41 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v2 1/3] target: Remove unnecessary CPU() cast
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jX2kP-00086s-0L; Fri, 08 May 2020 09:09:01 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:37905)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jX2kO-0007oN-7O; Fri, 08 May 2020 09:09:00 -0400
+Received: by mail-wr1-x441.google.com with SMTP id x17so1773079wrt.5;
+ Fri, 08 May 2020 06:08:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=SfoftjUdJMP/vemqd09MfiuAR5q0nKJtH0beyh9JsQg=;
+ b=buOYjOXc2/tIRGGk9mjFWqjrviH/6shur17U6RKWI2VfnGj0jhu/j1HwE055G95CxE
+ RT2I+OVK3GxUqG4LwYG7coF2qnGOdV8GiaQqJkVhH0R4vx8q8MrNCC4aF/Axd01eqJ0a
+ hvnWfuoZUPxaxHjak7DxgRmHuOxReHOkUaO6yJsDTeTTTUoLEr5AW/tfQqJVBC60cX3e
+ A1x+fyJINBTWYPbcniWG+sU7UIefEakcisBAjkBt5tLrZn0J8Pr6Pu11r9pRiRfMDNYE
+ ZBcx0gCAdPOHOQw9hrhP3bWhJkECk7KmGOZKGAS1kgQBSq6r3eBaxmZ9w4GzmgZtWi5Y
+ OT5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=SfoftjUdJMP/vemqd09MfiuAR5q0nKJtH0beyh9JsQg=;
+ b=uVXeTCsR5Ys2ImiMtiZzNgLVoyW0+MXOr41kBosXWlC71BWaiUCWmSXqG40OcVh+Vc
+ XL/JXvIhQ9dKcBLXPLwmFPpLoOq59mKKdVbCwG4b0do8rVWSX8bvxI7ZKc67OKi5UNF8
+ 3uoLt3eAtivsIKmyT9kVvFcjbOVmvbACy+8CrQhxg6xEWRDJCdFMXnrKm/61G9ARVN+W
+ Jv1XAyUtJcCYMkzbjfRZD3RUHXOEfumUzxxqYpDDVmD1ajLDLhYKVAWAV8rzodDxbeqc
+ jqhmEUIzcYX9m37FLiC6xhKnmr1x2ReVJpXHpzU2wLk7ksitKHDwj0iOpP8zfuxbA9Bm
+ J5zQ==
+X-Gm-Message-State: AGi0PuYRCZSC6FNzdibmAe+mQJH8lUqRpMlu4Q7Hexnb17qKuO8veltf
+ d5g8R6wefL1HslqjsMwDv+U=
+X-Received: by 2002:adf:e9d0:: with SMTP id l16mr2782543wrn.69.1588943337081; 
+ Fri, 08 May 2020 06:08:57 -0700 (PDT)
+Received: from [192.168.1.38] (17.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.17])
+ by smtp.gmail.com with ESMTPSA id s14sm12369462wmh.18.2020.05.08.06.08.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 08 May 2020 06:08:56 -0700 (PDT)
+Subject: Re: [PATCH v2 2/3] various: Remove unnecessary OBJECT() cast
+To: Markus Armbruster <armbru@redhat.com>
 References: <20200504100735.10269-1-f4bug@amsat.org>
- <20200504100735.10269-2-f4bug@amsat.org>
-Date: Fri, 08 May 2020 14:50:41 +0200
-In-Reply-To: <20200504100735.10269-2-f4bug@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 4 May 2020 12:07:33
- +0200")
-Message-ID: <87imh6y4im.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ <20200504100735.10269-3-f4bug@amsat.org> <87mu6iy4k3.fsf@dusky.pond.sub.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <b23abb5d-7222-c6ad-7314-a4138cb5d062@amsat.org>
+Date: Fri, 8 May 2020 15:08:54 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/08 08:00:48
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+In-Reply-To: <87mu6iy4k3.fsf@dusky.pond.sub.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
  Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
- David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ qemu-block@nongnu.org, David Hildenbrand <david@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
  Joel Stanley <joel@jms.id.au>, Anthony Perard <anthony.perard@citrix.com>,
  xen-devel@lists.xenproject.org, David Gibson <david@gibson.dropbear.id.au>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <minyard@acm.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
  qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
- "Daniel P. =?utf-8?Q?Berrang=C3=A9?=" <berrange@redhat.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-ppc@nongnu.org,
+ John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
  Andrew Jeffery <andrew@aj.id.au>, Cornelia Huck <cohuck@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>, Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BRKLhIruzugN
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: T81+8n/tLXCZ
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+On 5/8/20 2:49 PM, Markus Armbruster wrote:
+> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
+> 
+>> The OBJECT() macro is defined as:
+>>
+>>    #define OBJECT(obj) ((Object *)(obj))
+>>
+>> which expands to:
+>>
+>>    ((Object *)object_dynamic_cast_assert((Object *)(obj), (name),
+>>                                          __FILE__, __LINE__, __func__))
+> 
+> Nope :)
+> 
+>> This assertion can only fail when @obj points to something other
+>> than its stated type, i.e. when we're in undefined behavior country.
+> 
+> There is no assertion.
+> 
+>> Remove the unnecessary OBJECT() casts when we already know the
+>> pointer is of Object type.
+>>
+>> Patch created mechanically using spatch with this script:
+>>
+>>    @@
+>>    typedef Object;
+>>    Object *o;
+>>    @@
+>>    -   OBJECT(o)
+>>    +   o
+>>
+>> Acked-by: Cornelia Huck <cohuck@redhat.com>
+>> Acked-by: Corey Minyard <cminyard@mvista.com>
+>> Acked-by: John Snow <jsnow@redhat.com>
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>> v2: Reword (Markus)
+> 
+> My rewording suggestion applied to PATCH 3, not to this one.
 
-> The CPU() macro is defined as:
->
->   #define CPU(obj) ((CPUState *)(obj))
->
-> which expands to:
->
->   ((CPUState *)object_dynamic_cast_assert((Object *)(obj), (name),
->                                           __FILE__, __LINE__, __func__))
->
-> This assertion can only fail when @obj points to something other
-> than its stated type, i.e. when we're in undefined behavior country.
->
-> Remove the unnecessary CPU() casts when we already know the pointer
-> is of CPUState type.
->
-> Patch created mechanically using spatch with this script:
->
->   @@
->   typedef CPUState;
->   CPUState *s;
->   @@
->   -   CPU(s)
->   +   s
->
-> Acked-by: David Gibson <david@gibson.dropbear.id.au>
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+OK.
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> 
+> With v2's commit message;
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
+Are you willing to take these patches? In that case, are you OK to take 
+1 & 3 and I resend 2?
+
+Thanks,
+
+Phil.

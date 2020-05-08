@@ -1,120 +1,105 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2674075lfb;
-        Thu, 7 May 2020 23:33:43 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKSfqqSdiUX5g5WM3KZ8L0HitRyd2eD/5Cx27c71xUb7hAc9jlOBWUyCCVekGH7LtRrzLrP
-X-Received: by 2002:a37:b842:: with SMTP id i63mr1235554qkf.42.1588919623802;
-        Thu, 07 May 2020 23:33:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588919623; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2675068lfb;
+        Thu, 7 May 2020 23:35:32 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKo44l9JmFyLCVWTz26nBA+T0SwsL/xSq6QOXgpd4j9mNq6vcVstqE9MfgOYRTXtTT0DXZu
+X-Received: by 2002:ac8:6d1d:: with SMTP id o29mr1314342qtt.327.1588919732403;
+        Thu, 07 May 2020 23:35:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588919732; cv=none;
         d=google.com; s=arc-20160816;
-        b=UVSUcqWK4GR+aWuFZH9C7xMCJRYv4Zz3b1HJtW8sNhU/wQNqUZF9m1Q/isMaNhY65Q
-         dWa+5Ip7IUlEavG9WdJzzclLtT8RTNV5Wrl9gG7Hsnu1jgQQJs+PY6CuDRhCq1TfsUf1
-         +JXcnTe9uL5yZGk4FIR+UbhS+d5f4Zlcv6rndkkqmh2ZY2S8ZBL4ywvur6lUFmkl6K5N
-         O5Kp6sDetrmhaPrJTuyO8VWVK6+MfT1PDY0YyRXK1yKDovk1yJBr6ecKDO6stYCrdHof
-         mDB6jmaXIcl3g/zurW3EekNenX5cNNpxbfstctG8jC4XBQaY+ekvUhIqFXysMWseZqMM
-         QDRw==
+        b=TBwUmEE7xQ23qRNjFdeIx5Z3cmAXjxgUXwXt2RlO2RVKW+rDqpkINGLu/gykzk8rWk
+         7d0pqZfWtQo4Q7/gZwSO9+wg/2f+NC95cdTJTksY3p41cqHKJTmy2LOsWtLA4mgx4k9P
+         QhJB3Kphxz+gwXEfrBS4IeZsfXCCOGE9OKO+JTlmGqifOG8Ur1+S8lBJYsbO/TZRlEDc
+         L4n831W99cx8vQCRPXhiDfGXCDnKSxzQAMHNZs6uzw4LQWf9GQ/DWZyLazffnmQ0+Koz
+         rweU/IfrriPZgHRRMp+xgR6EPmELVLBODu4NlZZjY4emHlVv7RSX8bpicZrRkZjNj3TH
+         hlzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=jwwfqYn37ZuuA2XRfHT8No2IRghgmxoJoLrdND3kOeo=;
-        b=0WvtgjN1QBIAyToAhGj2oNuYkbw4QlvP5l12ROWdXkfnYAEspHtXWWZFKSdX88CIfZ
-         9jSxdkiiGhX2FJLAYoJ5aYeiTNMwIgH5DwIRDvhyfIxZuvoO+IErskcegHwmLkG0lnEC
-         MKwgiUNzT38xOfozW8YrcfI3MEmPB9hgcURKW7lUjPC3BItY2eObPOxInIscdMf2omt2
-         GkG0CQL/KCja4mmKYhuvqdjci4uvMfMYvAcvdPy6Dc1FcX63foDViZeg7hq/QmjFaT81
-         LcwskSERkS/1PFpVF/xpncTLOr1ZuY8b+c1ybcUL0XurB5S4OR9on4Br/yPiTmobl7bl
-         RJZw==
+        bh=znyt2gmWunAyhQ/YOcaWlSQ+KmrrcSiMzOx8z/LLGB0=;
+        b=qYOC4CbB1jcxoAjrtXJ011vIx8WFeZa1mj8lBJdlnlENfj+xiK+oa1vSj6TZc2hZnN
+         vHqASS86Z4mTo6C4wllTPSgx/UD+WiKp9xwf2B8oqT8YQ2w6Z7zUitcLNhQDPwiROb37
+         lUKJqtKkHDDSND4WnafHHtmgoFXSa+STFdX1JHK8Y1gb2GFM3k1nhjx+xbyVIYujFFoP
+         zXydV+btg2oL3K4lHGTLvdXG3659b9T211EX9Jlz98LoRQoWhZfaCTv8lInCF3th186u
+         EKHK4zAIc4uEpLc6XSRmOAtYST7tuZMdVT+txmlj48Fa3oziyVd30pGvhk/trFaCDqBG
+         zKDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OY5sd55L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aFRbYIaV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id c3si520849qvq.73.2020.05.07.23.33.43
+        by mx.google.com with ESMTPS id b16si401956qkc.371.2020.05.07.23.35.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 May 2020 23:33:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+        Thu, 07 May 2020 23:35:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OY5sd55L;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aFRbYIaV;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56124 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:32834 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jWwZr-0007lU-9P
-	for alex.bennee@linaro.org; Fri, 08 May 2020 02:33:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49202)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jWwbb-0001OO-Rg
+	for alex.bennee@linaro.org; Fri, 08 May 2020 02:35:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49402)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jWwZi-0007kQ-8j
- for qemu-arm@nongnu.org; Fri, 08 May 2020 02:33:34 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27931
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jWwaV-00008A-SC
+ for qemu-devel@nongnu.org; Fri, 08 May 2020 02:34:25 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:30046
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jWwZh-0005Va-DM
- for qemu-arm@nongnu.org; Fri, 08 May 2020 02:33:33 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jWwaU-000833-BC
+ for qemu-devel@nongnu.org; Fri, 08 May 2020 02:34:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588919611;
+ s=mimecast20190719; t=1588919661;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jwwfqYn37ZuuA2XRfHT8No2IRghgmxoJoLrdND3kOeo=;
- b=OY5sd55L8+CStaBbHvmVn2J0wbutV8idTNAHOv91tcknSIehYE9WxEtMeqmUd1OPoVjdTb
- 4k5KnRf3bAnHlDrqpcJ+kwqRkQx4V3tdB4aNp1kBWx6VKm7Sv6D70Bb9CJS7mGXOyMgmfW
- vtgUKg2n8J5qSwnT4lV+NOs3z4UV49A=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-486-0JVmKCcWOVyGq0ZNeJYtZw-1; Fri, 08 May 2020 02:33:30 -0400
-X-MC-Unique: 0JVmKCcWOVyGq0ZNeJYtZw-1
-Received: by mail-wr1-f71.google.com with SMTP id a12so412946wrv.3
- for <qemu-arm@nongnu.org>; Thu, 07 May 2020 23:33:29 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=kINlKotLXZTdgtrcxlOO9cYoJFDWW0LLP3PX1RNmEic=;
- b=Xx5DZijmndrHaFyNOqK84MWes2ub1VRvuR7MZ3Vyv5tO8Az/rco0sr4MJVKG9ghLIM
- LqUji8QEe81CB+IG1jgt8DmV8sMpWXL1RBkn/IIzhT2TLaIptBp73TOsvmXYvpFJ67Xp
- 14A/e7SKkj/s5Lo8Dmd/QWG2qMmJfmNzTuP0PKZ7nkKptnVhdAIxNbmXqndtD5jWmPhQ
- 8yWdRKDBBX9euTEwmhBemAmX3G4wZ3+k9cp8C58RASLSbt2Yabyov+eS1Fv3mxVKfOk8
- als/6rTLWQ/L95lqALOWijqmJHkTDL92lJH15L9JvSNyUiekqfkobIQM7gZ9uiEmt5gr
- G+ag==
-X-Gm-Message-State: AGi0PuZTdGGqldfKlLuP4eFOfc6CRQZl6fqnPHhdjmSWcser3wa8wttm
- Y1dQZFQ/iKcHS5x9lhOwUS025s2EhBnWexP+m3QmDEXNcW8gJt1IO+aGvYIBaSSpQpo81O5jcS5
- kpaeqFQDb4Pv6
-X-Received: by 2002:a5d:4704:: with SMTP id y4mr1090910wrq.96.1588919608690;
- Thu, 07 May 2020 23:33:28 -0700 (PDT)
-X-Received: by 2002:a5d:4704:: with SMTP id y4mr1090892wrq.96.1588919608463;
- Thu, 07 May 2020 23:33:28 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:20ea:bae4:47a7:31db?
- ([2001:b07:6468:f312:20ea:bae4:47a7:31db])
- by smtp.gmail.com with ESMTPSA id r2sm1323945wrg.84.2020.05.07.23.33.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 May 2020 23:33:28 -0700 (PDT)
-Subject: Re: [PATCH 0/4] memory: Add memory_region_msync() & make NVMe
- emulated device generic
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <20200508062456.23344-1-philmd@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <9396e0cb-388a-e08e-c066-82a60708ecdc@redhat.com>
-Date: Fri, 8 May 2020 08:33:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ bh=znyt2gmWunAyhQ/YOcaWlSQ+KmrrcSiMzOx8z/LLGB0=;
+ b=aFRbYIaVKG7ZNF9ghS2qwUkIiI+BE8xCTEETSIF9ZMAHVr5A3uyZfU06HOOs/8hPM2bT9Z
+ jnvdzflO1SqvBwmyc5F8W0x9AwwSeg5rralVjfBvrF6ERUxpSgIZsuVpo/L/he5aKOuFPU
+ EgmYiVxp9kOlteb0uUGO0V8WcfuurtE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-179-xFhURgpCMlepBpVp4bJ-OQ-1; Fri, 08 May 2020 02:34:20 -0400
+X-MC-Unique: xFhURgpCMlepBpVp4bJ-OQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AE84A1005510;
+ Fri,  8 May 2020 06:34:18 +0000 (UTC)
+Received: from [10.36.114.214] (ovpn-114-214.ams2.redhat.com [10.36.114.214])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4D652605CE;
+ Fri,  8 May 2020 06:34:11 +0000 (UTC)
+Subject: Re: [PATCH 3/5] virtio-iommu: Handle reserved regions in the
+ translation process
+To: Peter Xu <peterx@redhat.com>
+References: <20200507143201.31080-1-eric.auger@redhat.com>
+ <20200507143201.31080-4-eric.auger@redhat.com>
+ <20200507194736.GM228260@xz-x1>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <b10251bc-e63f-a593-1a1b-5ac7b7c573ab@redhat.com>
+Date: Fri, 8 May 2020 08:34:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20200508062456.23344-1-philmd@redhat.com>
+In-Reply-To: <20200507194736.GM228260@xz-x1>
 Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/08 02:25:09
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/08 02:23:32
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,37 +108,75 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Beata Michalska <beata.michalska@linaro.org>, qemu-block@nongnu.org,
- Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
- Keith Busch <kbusch@kernel.org>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L7NBCkWzVQed
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
+ armbru@redhat.com, qemu-arm@nongnu.org, jean-philippe@linaro.org,
+ bbhushan2@marvell.com, eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GVjyo4or5Z3P
 
-On 08/05/20 08:24, Philippe Mathieu-Daud=C3=A9 wrote:
-> It is not clear if dccvap_writefn() really needs
-> memory_region_writeback() or could use memory_region_msync().
+Hi Peter,
 
-Indeed, I don't understand the code and why it matters that
-mr->dirty_log_mask is nonzero.
+On 5/7/20 9:47 PM, Peter Xu wrote:
+> Hi, Eric,
+> 
+> On Thu, May 07, 2020 at 04:31:59PM +0200, Eric Auger wrote:
+>> @@ -640,6 +641,24 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>>          goto unlock;
+>>      }
+>>  
+>> +    for (i = 0; i < s->nb_reserved_regions; i++) {
+>> +        if (interval.low >= s->reserved_regions[i].low &&
+>> +            interval.low <= s->reserved_regions[i].high) {
+> 
+> Should this be s/low/high/?
+I meant addr >= s->reserved_regions[i].low && addr <=
+s->reserved_regions[i].high
 
-mr->dirty_log_mask tells if dirty tracking has been enabled, not if the
-page is dirty.  It would always be true during live migration and when
-running on TCG, but otherwise it would always be false.
+We only compare a single iova against reserved range boundaries and
+boundaries are inclusive
+> 
+> For this case (high==low+1) I guess maybe it's also easier to use "addr >= low
+> && addr < high".
+Yes using addr directly is definitively more readable ;-)
 
-Beata, can you explain what you had in mind? :)
+Thanks
 
-Paolo
+Eric
+> 
+> Thanks,
+> 
+>> +            switch (s->reserved_regions[i].type) {
+>> +            case VIRTIO_IOMMU_RESV_MEM_T_MSI:
+>> +                entry.perm = flag;
+>> +                break;
+>> +            case VIRTIO_IOMMU_RESV_MEM_T_RESERVED:
+>> +            default:
+>> +                virtio_iommu_report_fault(s, VIRTIO_IOMMU_FAULT_R_MAPPING,
+>> +                                          VIRTIO_IOMMU_FAULT_F_ADDRESS,
+>> +                                          sid, addr);
+>> +                break;
+>> +            }
+>> +            goto unlock;
+>> +        }
+>> +    }
+>> +
+>>      if (!ep->domain) {
+>>          if (!bypass_allowed) {
+>>              error_report_once("%s %02x:%02x.%01x not attached to any domain",
+>> -- 
+>> 2.20.1
+>>
+> 
 

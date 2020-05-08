@@ -1,95 +1,95 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp119982lfb;
-        Fri, 8 May 2020 05:56:12 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJAHPiOIc5vQv45HbM78Kaf2nlw2UCpnOB1Eueq+6a1zO5zBed1+lh0ehl1X0HKeI9KqXGC
-X-Received: by 2002:a05:620a:132a:: with SMTP id p10mr2603841qkj.494.1588942572138;
-        Fri, 08 May 2020 05:56:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588942572; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp120095lfb;
+        Fri, 8 May 2020 05:56:20 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIjGgu+uu6W6XiYrS2tZ76EubgMl6zeGUyHccphIy6D494gEbfxpbHvkC+RK4c1OpYjNlhf
+X-Received: by 2002:ac8:7683:: with SMTP id g3mr2902043qtr.166.1588942580030;
+        Fri, 08 May 2020 05:56:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588942580; cv=none;
         d=google.com; s=arc-20160816;
-        b=amek/yun1SKBqmzwcTnqXJXSTsK2mKzYFU+gkmMuTTEiFGbMqeXO2t+wv8lfA0G6Y0
-         ze8LxmkSyOwDFxLlV13xY7b1LZyQGf4bq/CyLulSD19iNiL2lHMSS7NBXGIKWmUAQ1lb
-         eclujJcJAbrLT/T/S15h+DbfHJwpPUWgJPZwFTET414IZDTe18SxIFtVN/HCL5svkq5w
-         3RYI3SXySYkdmrMRXsY6Wg/B6zrpbUhgReqNsN6XqGLzvvCKbw/8UuxjR2djcSeLTcDc
-         wdznsAh8VWIrjX/BjZgO+/cjdd77usngA96Iy0Pu/NhmrM5zJZXmUU+eVIcEtNToxgNZ
-         yEHQ==
+        b=L7eqFY+hYWRhAiq7HAFSheXFQl/Uvf25DDE+v0wu5V2XHJTLxGy5wniGnsMJYnQc8S
+         lwL5GQBfynZp84CnOhaueg7tJdmIqBW62Fi18asWbVGMOQ/Xd8Mt+vSx+Jpqisj5cXah
+         /svpCYol4J7uYxid+Om5wRnAD87TwR7A+gy8KkZPMoF5vVhJiy9RzZ1eEGVjEcMr5RBa
+         FskHXm00aaHCgcKiP5HymfLb5npkKFHl6DNq6jI1S0jFA9IqFEB4WgYZVon+FjqgNywh
+         HCJ54bg5BoAcizUGVCN5U72QwzCFO4J1rYscyR7MudC0cXiQAORcA6vpZw54wRkS5fU3
+         tPgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:user-agent:message-id:in-reply-to:date:references
          :subject:to:from:dkim-signature;
-        bh=fsnozb6kIQGYwomOyBKftMgcGklRNkmQU34LmQ0rQgU=;
-        b=FyYNNOU9DoCjuF3aUUFee1KLCAdSjhWKrzBgmzT3i4SXnNZj5KvIDui4EuM+nZEKtJ
-         qkvbpNpjzeOeLt7U2IXXajpYDrhWxoAVbXQkWW9B/O+mTGw+sZ5SUoVbTELG3pcs6IiD
-         /obSm5keiRJ3VulI1RYYAyNpnzYFUqbnLeAw9oF0iOVYDsMAEK1SVV4XCFhJLlmPB16B
-         KWaq8zz7Dw4pPhyAhrG57mBVEja1xWvjlhUqqkdgfJKhQeRxOYTagD90MvnIgH60RzGc
-         hO+qMoNrB4/qArSfkPihMOMGHTIhHAodJukfpCxb205arA+ruvvFMn9G+Yqc9XWyHNa2
-         JIyA==
+        bh=mr4uqpTXg1sXYxmIwAO3pDUOz2ZcsDiSAVP7r/LI/bA=;
+        b=n2vYGlO3kcpT+9d05Hi979L5fVHy0x2y1tQXjgwtTeUxe/TTacpxk9G6JKQWqRMkoh
+         /Oo3agS61l/OBxTB3sXGieWaYkAnGV5Yx6sG7uzflVq3iUkPjf5gFs3P89RmKIJ3FM1v
+         dlAQ1+OiZ0ck0f2ZqbcRJiy8DdFuiypxHf8bR5IrBhlZJ4ZHIE0UjIrC9ZWQswUaDGX5
+         aL0cpXxxczLxUXOeifr0VNFoio3g+vDSx45fRroitgFBo/kU4MBEifZjwnFXWkTOGdxy
+         qgP2Gku/7el8YcprbFrCcdn/Ql747TYp5kPnN7+dvwMfP0viWXy6rOWZSzxtp9/YSnoF
+         UdSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SfOLxMtd;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dDia5XBl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id 75si923154qtg.304.2020.05.08.05.56.11
+        by mx.google.com with ESMTPS id ci18si1217544qvb.177.2020.05.08.05.56.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 May 2020 05:56:12 -0700 (PDT)
+        Fri, 08 May 2020 05:56:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SfOLxMtd;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dDia5XBl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55320 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56134 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jX2Xz-0000RW-HM
-	for alex.bennee@linaro.org; Fri, 08 May 2020 08:56:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50956)
+	id 1jX2Y7-0000lo-DX
+	for alex.bennee@linaro.org; Fri, 08 May 2020 08:56:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51554)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jX2PY-0001GV-W3
- for qemu-arm@nongnu.org; Fri, 08 May 2020 08:47:29 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:44082
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jX2S5-0004pX-8f
+ for qemu-arm@nongnu.org; Fri, 08 May 2020 08:50:05 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:48954
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jX2PX-0001Y4-5Q
- for qemu-arm@nongnu.org; Fri, 08 May 2020 08:47:28 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jX2S4-0007YY-Df
+ for qemu-arm@nongnu.org; Fri, 08 May 2020 08:50:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588942040;
+ s=mimecast20190719; t=1588942203;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=fsnozb6kIQGYwomOyBKftMgcGklRNkmQU34LmQ0rQgU=;
- b=SfOLxMtdXmgGzdvsjglMWBv6LvsfWkuqYSTFU0S7UUeod9yianCmFpbt22Ldh9gefBd/AV
- nZrazawrPwp0YQZq04JYtEMDzU0ofDX/vaOzWiwwDIuAephuHrsdf/54Me+aTjeXvffehr
- VjFudQC+cZ8C3epxhiJ0IM5rDl4TnJA=
+ bh=mr4uqpTXg1sXYxmIwAO3pDUOz2ZcsDiSAVP7r/LI/bA=;
+ b=dDia5XBlTA3Wm7yyFulPmJDfJsgkrpLBMc749SFGqJui70j8b+3qjeYE+BOppuzaOPCFyu
+ inUuaWXTaRwGfQqUyvl2Q+DnJ5MetqSjR4ESRFRhYGKt7PM0KDNU455sHRsez4UxYwpp9X
+ Y5IMbaiaMp9LV+rRYXsWuLlUwJgtBHE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-381-xHC9BoC8MPSLoyVaICWZKA-1; Fri, 08 May 2020 08:47:17 -0400
-X-MC-Unique: xHC9BoC8MPSLoyVaICWZKA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-373-4YAIeqf8OaueleRfKAlSYA-1; Fri, 08 May 2020 08:50:00 -0400
+X-MC-Unique: 4YAIeqf8OaueleRfKAlSYA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 541CB107ACF2;
- Fri,  8 May 2020 12:47:13 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ABB70800688;
+ Fri,  8 May 2020 12:49:56 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-113-6.ams2.redhat.com [10.36.113.6])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 60BF76ACF1;
- Fri,  8 May 2020 12:47:06 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 500E85D9CA;
+ Fri,  8 May 2020 12:49:50 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id D67E811358BC; Fri,  8 May 2020 14:47:04 +0200 (CEST)
+ id E80F711358BC; Fri,  8 May 2020 14:49:48 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v2 3/3] hw: Remove unnecessary DEVICE() cast
+Subject: Re: [PATCH v2 2/3] various: Remove unnecessary OBJECT() cast
 References: <20200504100735.10269-1-f4bug@amsat.org>
- <20200504100735.10269-4-f4bug@amsat.org>
-Date: Fri, 08 May 2020 14:47:04 +0200
-In-Reply-To: <20200504100735.10269-4-f4bug@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 4 May 2020 12:07:35
+ <20200504100735.10269-3-f4bug@amsat.org>
+Date: Fri, 08 May 2020 14:49:48 +0200
+In-Reply-To: <20200504100735.10269-3-f4bug@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 4 May 2020 12:07:34
  +0200")
-Message-ID: <87r1vuy4on.fsf@dusky.pond.sub.org>
+Message-ID: <87mu6iy4k3.fsf@dusky.pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
@@ -132,54 +132,56 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
  qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, qemu-ppc@nongnu.org,
+ John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
  "Daniel P. =?utf-8?Q?Berrang=C3=A9?=" <berrange@redhat.com>,
  Andrew Jeffery <andrew@aj.id.au>, Cornelia Huck <cohuck@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>, Corey Minyard <cminyard@mvista.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 19a8BWLKtvKB
+X-TUID: 3VN/iivhdYfh
 
 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-> The DEVICE() macro is defined as:
+> The OBJECT() macro is defined as:
 >
->   #define DEVICE(obj) OBJECT_CHECK(DeviceState, (obj), TYPE_DEVICE)
+>   #define OBJECT(obj) ((Object *)(obj))
 >
 > which expands to:
 >
->   ((DeviceState *)object_dynamic_cast_assert((Object *)(obj), (name),
->                                              __FILE__, __LINE__,
->                                              __func__))
->
+>   ((Object *)object_dynamic_cast_assert((Object *)(obj), (name),
+>                                         __FILE__, __LINE__, __func__))
+
+Nope :)
+
 > This assertion can only fail when @obj points to something other
 > than its stated type, i.e. when we're in undefined behavior country.
->
-> Remove the unnecessary DEVICE() casts when we already know the
-> pointer is of DeviceState type.
+
+There is no assertion.
+
+> Remove the unnecessary OBJECT() casts when we already know the
+> pointer is of Object type.
 >
 > Patch created mechanically using spatch with this script:
 >
 >   @@
->   typedef DeviceState;
->   DeviceState *s;
+>   typedef Object;
+>   Object *o;
 >   @@
->   -   DEVICE(s)
->   +   s
+>   -   OBJECT(o)
+>   +   o
 >
-> Acked-by: David Gibson <david@gibson.dropbear.id.au>
-> Acked-by: Paul Durrant <paul@xen.org>
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Acked-by: Cornelia Huck <cohuck@redhat.com>
+> Acked-by: Corey Minyard <cminyard@mvista.com>
 > Acked-by: John Snow <jsnow@redhat.com>
 > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+> v2: Reword (Markus)
 
-Lovely.
+My rewording suggestion applied to PATCH 3, not to this one.
 
+With v2's commit message;
 Reviewed-by: Markus Armbruster <armbru@redhat.com>
-
-Now repeat this exercise for each QOM type cast macro :)
 

@@ -1,48 +1,48 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2521527lfb;
-        Thu, 7 May 2020 19:17:51 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIgAHnNEoNlO6zL/z/cVr4AgpjAPkEdccZ8LzHRg/frxsjBITK4EMMkFqoKQbL/gn6Yfb48
-X-Received: by 2002:a17:906:6a02:: with SMTP id o2mr37610ejr.223.1588904271827;
-        Thu, 07 May 2020 19:17:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588904271; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2521538lfb;
+        Thu, 7 May 2020 19:17:53 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIatX7m9FObREcQk5hGTUlZV1uGKd8Hhad973dhhMrSqeSnPCMMJMP9AtRmr6O41rtjR6Ne
+X-Received: by 2002:a50:8b42:: with SMTP id l60mr295399edl.55.1588904272941;
+        Thu, 07 May 2020 19:17:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588904272; cv=none;
         d=google.com; s=arc-20160816;
-        b=xOT+/W5RNJ55UWERYFecxZapoJejk1JvFzbTzh2IgzINKz6R4hFLxtFMKu4ADw11Ws
-         yalOVOBao9x744A2hYyIygg+ALde3EZf3ve3oVc7/2a+bD9x9+T73qaXUcSpt/AHe9sU
-         jPW5smxxfafwsIo/NCV9cQIFhdOz08rwIUBs39RAXpBZZu4azqz4KQvXEXrUNmpaBdU/
-         GDmaJdwpK81PLAeIkr3a+rrCeDZze5zRMTKnm0xQ3hERkM3KZaFNj3HqI2pRUBuMBadm
-         fjKgEGecQxaUsOSdo+27FeYWsJ+aL7xKYqPtjt1tEJHqBmnbjFv8dPS7ofulTKN/EF2J
-         +0jg==
+        b=KQR/b3N2336iSMgwOnoXDYLOutuWgZCWTwaPK/0u8lqWfLMIU8O5Q+QYMmbJrELnaq
+         yxCN83cgQl/LYXCySN0Ja3UVnH8lQcQRWdb4MY+3frRgYI38PIixJlqiIQbxl4Al5m0H
+         664GgH23NMOMv3a6x3dFvao4sf3E/JvtACPB71s0mhlW7E9d/kyjuawxLIknFpo/S81m
+         G26NRSABi87Z+1D7FKJQNiPFRwlCczn3D8UprQlgF9okfZ8caJooLJt9Q+uGXTeE5A/K
+         kG3OFqjB6usHQka2GJjS0xK4K799k0CdIQqxzzRgxXEJ/RAP1mw8F1wlLh/DL4K5Cp78
+         FhnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=GB05fazCB/9re57lDYE7Px9yYzZk+yj2wHmrPhX/0Yw=;
-        b=xntvB/K4gl8h2o21xFSW3gRP+Y1LAPc6FueP5ylRTxBRlOSlyqAwEBXjQYwNUWRlhj
-         38LyAY1XPJN+94LlV/Xa9vfHC0DDomw2Q1Jj7shBOBcFKEIO3GWeHe0YLRh83EMC9n1K
-         PLhI7N69ecqpAeC8IHU37JBhOQANkrWRE3IM1lIkEeRbnObXk9uqtK2n19XgsT1/t+8l
-         ItcvppJkpwRqJyhh+qQv+1P+QZhaCELB+uteTso7Akzj3EhELlyT/Oun/iIu6Aw+VVYd
-         QznnpIGLRfctR6hlt6dzesUGHX/l1G7aomr3g8k/y/EFovcpxPxtrK1KDAwtC3q0WMwo
-         kWpA==
+        bh=+NrsFRkaV14TWrOWDAwx6NygpFySVhKg7ieQpXgSzvU=;
+        b=TrE0Og6wkl34Yw7M0roQQCMmHNYCspszwBYnDq4yRNlULTiu1lJD6KU4EwIkUT1UhE
+         6Lc4zyCeaniiIoxrbWZcLSaOpcQvOYOfgtpprFGbebTcrvqPCYbYLKVwQIEjbpUEMKDX
+         T3GyBx8hABSn3ws1WWL/EefCguSRNxMgggCxO+6LQ+MCfjMVT7b0ok2mALXKpR1ZAymx
+         yVtQJyPWAfgGPwrhMh9cKF8Tqdn9weM1IToBf90FJcVPFr0ccyZ1bifrYzO40LuD9AzL
+         iWF+ymsDOZ7ot++qhrRcVEonyV6eN9LfoxO+03lV0PoUfiaSt6NsZvDj46HV9plsnpUL
+         rsnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id g24si124136ejb.433.2020.05.07.19.17.51;
-        Thu, 07 May 2020 19:17:51 -0700 (PDT)
+        by mx.google.com with ESMTP id g24si124136ejb.433.2020.05.07.19.17.52;
+        Thu, 07 May 2020 19:17:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726924AbgEHCRu (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 7 May 2020 22:17:50 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4344 "EHLO huawei.com"
+        id S1727086AbgEHCRw (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 7 May 2020 22:17:52 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4343 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726926AbgEHCRt (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 7 May 2020 22:17:49 -0400
+        id S1726930AbgEHCRv (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 7 May 2020 22:17:51 -0400
 Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 538B71A5FB7D54325133;
+        by Forcepoint Email with ESMTP id 4C25BBB27AEB7C00B24F;
         Fri,  8 May 2020 10:17:46 +0800 (CST)
 Received: from huawei.com (10.151.151.243) by DGGEMS408-HUB.china.huawei.com
  (10.3.19.208) with Microsoft SMTP Server id 14.3.487.0; Fri, 8 May 2020
- 10:17:40 +0800
+ 10:17:36 +0800
 From:   Dongjiu Geng <gengdongjiu@huawei.com>
 To:     <imammedo@redhat.com>, <mst@redhat.com>,
         <xiaoguangrong.eric@gmail.com>, <peter.maydell@linaro.org>,
@@ -52,9 +52,9 @@ To:     <imammedo@redhat.com>, <mst@redhat.com>,
         <kvm@vger.kernel.org>, <qemu-arm@nongnu.org>
 CC:     <gengdongjiu@huawei.com>, <zhengxiang9@huawei.com>,
         <Jonathan.Cameron@huawei.com>, <linuxarm@huawei.com>
-Subject: [PATCH RESEND v26 07/10] KVM: Move hwpoison page related functions into kvm-all.c
-Date:   Fri, 8 May 2020 10:19:27 +0800
-Message-ID: <20200508021930.37955-8-gengdongjiu@huawei.com>
+Subject: [PATCH RESEND v26 01/10] acpi: nvdimm: change NVDIMM_UUID_LE to a common macro
+Date:   Fri, 8 May 2020 10:19:21 +0800
+Message-ID: <20200508021930.37955-2-gengdongjiu@huawei.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200508021930.37955-1-gengdongjiu@huawei.com>
 References: <20200508021930.37955-1-gengdongjiu@huawei.com>
@@ -66,168 +66,93 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: eEXCI/RLyIZo
+X-TUID: pgcaSAdD7wkW
 
-kvm_hwpoison_page_add() and kvm_unpoison_all() will both
-be used by X86 and ARM platforms, so moving them into
-"accel/kvm/kvm-all.c" to avoid duplicate code.
+The little end UUID is used in many places, so make
+NVDIMM_UUID_LE to a common macro to convert the UUID
+to a little end array.
 
-For architectures that don't use the poison-list functionality
-the reset handler will harmlessly do nothing, so let's register
-the kvm_unpoison_all() function in the generic kvm_init() function.
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Xiang Zheng <zhengxiang9@huawei.com>
 Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
 ---
- accel/kvm/kvm-all.c      | 36 ++++++++++++++++++++++++++++++++++++
- include/sysemu/kvm_int.h | 12 ++++++++++++
- target/i386/kvm.c        | 36 ------------------------------------
- 3 files changed, 48 insertions(+), 36 deletions(-)
+Change since v25:
+1. Address Peter's comments to add a proper doc-comment comment for
+   UUID_LE macros.
+---
+ hw/acpi/nvdimm.c    | 10 +++-------
+ include/qemu/uuid.h | 27 +++++++++++++++++++++++++++
+ 2 files changed, 30 insertions(+), 7 deletions(-)
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 439a4ef..36be117 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -44,6 +44,7 @@
- #include "qapi/visitor.h"
- #include "qapi/qapi-types-common.h"
- #include "qapi/qapi-visit-common.h"
-+#include "sysemu/reset.h"
+diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+index fa7bf8b..9316d12 100644
+--- a/hw/acpi/nvdimm.c
++++ b/hw/acpi/nvdimm.c
+@@ -27,6 +27,7 @@
+  */
  
- #include "hw/boards.h"
+ #include "qemu/osdep.h"
++#include "qemu/uuid.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/aml-build.h"
+ #include "hw/acpi/bios-linker-loader.h"
+@@ -34,18 +35,13 @@
+ #include "hw/mem/nvdimm.h"
+ #include "qemu/nvdimm-utils.h"
  
-@@ -883,6 +884,39 @@ int kvm_vm_check_extension(KVMState *s, unsigned int extension)
-     return ret;
- }
+-#define NVDIMM_UUID_LE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)             \
+-   { (a) & 0xff, ((a) >> 8) & 0xff, ((a) >> 16) & 0xff, ((a) >> 24) & 0xff, \
+-     (b) & 0xff, ((b) >> 8) & 0xff, (c) & 0xff, ((c) >> 8) & 0xff,          \
+-     (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) }
+-
+ /*
+  * define Byte Addressable Persistent Memory (PM) Region according to
+  * ACPI 6.0: 5.2.25.1 System Physical Address Range Structure.
+  */
+ static const uint8_t nvdimm_nfit_spa_uuid[] =
+-      NVDIMM_UUID_LE(0x66f0d379, 0xb4f3, 0x4074, 0xac, 0x43, 0x0d, 0x33,
+-                     0x18, 0xb7, 0x8c, 0xdb);
++      UUID_LE(0x66f0d379, 0xb4f3, 0x4074, 0xac, 0x43, 0x0d, 0x33,
++              0x18, 0xb7, 0x8c, 0xdb);
  
-+typedef struct HWPoisonPage {
-+    ram_addr_t ram_addr;
-+    QLIST_ENTRY(HWPoisonPage) list;
-+} HWPoisonPage;
-+
-+static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
-+    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
-+
-+static void kvm_unpoison_all(void *param)
-+{
-+    HWPoisonPage *page, *next_page;
-+
-+    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
-+        QLIST_REMOVE(page, list);
-+        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
-+        g_free(page);
-+    }
-+}
-+
-+void kvm_hwpoison_page_add(ram_addr_t ram_addr)
-+{
-+    HWPoisonPage *page;
-+
-+    QLIST_FOREACH(page, &hwpoison_page_list, list) {
-+        if (page->ram_addr == ram_addr) {
-+            return;
-+        }
-+    }
-+    page = g_new(HWPoisonPage, 1);
-+    page->ram_addr = ram_addr;
-+    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
-+}
-+
- static uint32_t adjust_ioeventfd_endianness(uint32_t val, uint32_t size)
- {
- #if defined(HOST_WORDS_BIGENDIAN) != defined(TARGET_WORDS_BIGENDIAN)
-@@ -2085,6 +2119,8 @@ static int kvm_init(MachineState *ms)
-         s->kernel_irqchip_split = mc->default_kernel_irqchip_split ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
-     }
+ /*
+  * NVDIMM Firmware Interface Table
+diff --git a/include/qemu/uuid.h b/include/qemu/uuid.h
+index 129c45f..9925feb 100644
+--- a/include/qemu/uuid.h
++++ b/include/qemu/uuid.h
+@@ -34,6 +34,33 @@ typedef struct {
+     };
+ } QemuUUID;
  
-+    qemu_register_reset(kvm_unpoison_all, NULL);
-+
-     if (s->kernel_irqchip_allowed) {
-         kvm_irqchip_create(s);
-     }
-diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
-index ac2d1f8..c660a70 100644
---- a/include/sysemu/kvm_int.h
-+++ b/include/sysemu/kvm_int.h
-@@ -42,4 +42,16 @@ void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
-                                   AddressSpace *as, int as_id);
- 
- void kvm_set_max_memslot_size(hwaddr max_slot_size);
-+
 +/**
-+ * kvm_hwpoison_page_add:
++ * UUID_LE - converts the fields of UUID to little-endian array,
++ * each of parameters is the filed of UUID.
 + *
-+ * Parameters:
-+ *  @ram_addr: the address in the RAM for the poisoned page
-+ *
-+ * Add a poisoned page to the list
-+ *
-+ * Return: None.
++ * @time_low: The low field of the timestamp
++ * @time_mid: The middle field of the timestamp
++ * @time_hi_and_version: The high field of the timestamp
++ *                       multiplexed with the version number
++ * @clock_seq_hi_and_reserved: The high field of the clock
++ *                             sequence multiplexed with the variant
++ * @clock_seq_low: The low field of the clock sequence
++ * @node0: The spatially unique node0 identifier
++ * @node1: The spatially unique node1 identifier
++ * @node2: The spatially unique node2 identifier
++ * @node3: The spatially unique node3 identifier
++ * @node4: The spatially unique node4 identifier
++ * @node5: The spatially unique node5 identifier
 + */
-+void kvm_hwpoison_page_add(ram_addr_t ram_addr);
- #endif
-diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-index 4901c6d..34f8387 100644
---- a/target/i386/kvm.c
-+++ b/target/i386/kvm.c
-@@ -24,7 +24,6 @@
- #include "sysemu/sysemu.h"
- #include "sysemu/hw_accel.h"
- #include "sysemu/kvm_int.h"
--#include "sysemu/reset.h"
- #include "sysemu/runstate.h"
- #include "kvm_i386.h"
- #include "hyperv.h"
-@@ -533,40 +532,6 @@ uint64_t kvm_arch_get_supported_msr_feature(KVMState *s, uint32_t index)
-     }
- }
- 
--
--typedef struct HWPoisonPage {
--    ram_addr_t ram_addr;
--    QLIST_ENTRY(HWPoisonPage) list;
--} HWPoisonPage;
--
--static QLIST_HEAD(, HWPoisonPage) hwpoison_page_list =
--    QLIST_HEAD_INITIALIZER(hwpoison_page_list);
--
--static void kvm_unpoison_all(void *param)
--{
--    HWPoisonPage *page, *next_page;
--
--    QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
--        QLIST_REMOVE(page, list);
--        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
--        g_free(page);
--    }
--}
--
--static void kvm_hwpoison_page_add(ram_addr_t ram_addr)
--{
--    HWPoisonPage *page;
--
--    QLIST_FOREACH(page, &hwpoison_page_list, list) {
--        if (page->ram_addr == ram_addr) {
--            return;
--        }
--    }
--    page = g_new(HWPoisonPage, 1);
--    page->ram_addr = ram_addr;
--    QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
--}
--
- static int kvm_get_mce_cap_supported(KVMState *s, uint64_t *mce_cap,
-                                      int *max_banks)
- {
-@@ -2180,7 +2145,6 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
-         fprintf(stderr, "e820_add_entry() table is full\n");
-         return ret;
-     }
--    qemu_register_reset(kvm_unpoison_all, NULL);
- 
-     shadow_mem = object_property_get_int(OBJECT(s), "kvm-shadow-mem", &error_abort);
-     if (shadow_mem != -1) {
++#define UUID_LE(time_low, time_mid, time_hi_and_version,                    \
++  clock_seq_hi_and_reserved, clock_seq_low, node0, node1, node2,            \
++  node3, node4, node5)                                                      \
++  { (time_low) & 0xff, ((time_low) >> 8) & 0xff, ((time_low) >> 16) & 0xff, \
++    ((time_low) >> 24) & 0xff, (time_mid) & 0xff, ((time_mid) >> 8) & 0xff, \
++    (time_hi_and_version) & 0xff, ((time_hi_and_version) >> 8) & 0xff,      \
++    (clock_seq_hi_and_reserved), (clock_seq_low), (node0), (node1), (node2),\
++    (node3), (node4), (node5) }
++
+ #define UUID_FMT "%02hhx%02hhx%02hhx%02hhx-" \
+                  "%02hhx%02hhx-%02hhx%02hhx-" \
+                  "%02hhx%02hhx-" \
 -- 
 1.8.3.1

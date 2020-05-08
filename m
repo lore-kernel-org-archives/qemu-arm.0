@@ -1,102 +1,102 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp54893lfb;
-        Fri, 8 May 2020 04:26:46 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJmTNcoUyFHkKw/9Ou+PyMc+3YJw9nzEQuCY+DUKyY0zdqs9aql7Zd6SN7bhskE7bmDvscH
-X-Received: by 2002:a0c:c38e:: with SMTP id o14mr2404960qvi.232.1588937206744;
-        Fri, 08 May 2020 04:26:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588937206; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp56916lfb;
+        Fri, 8 May 2020 04:30:17 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKBeo9EQOpW+Ogjik4sR833j3ClA18JmTnn2XxqOHum0RROvMdXfrjCkFqmkJ4KevwgE6L0
+X-Received: by 2002:a05:620a:699:: with SMTP id f25mr2343003qkh.5.1588937416868;
+        Fri, 08 May 2020 04:30:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588937416; cv=none;
         d=google.com; s=arc-20160816;
-        b=up7UAvOxFEbCeiLvNX4rUCmg+RkyvHKrTRHFbT0QJfSSzeStA76Qi31U5BuFXpfROb
-         KdugyAv3SoZxhnIW3IhgKZ8HpIfVs/pID+SMVZRGc8JF2a+9eQYLZAfxppGs4eng7yJ4
-         oqzQTE2fZW0+Ko4oykjFVJe+OOpmr6zWW4hQ6EJXWvHdHPH3rtCPyquGJg2auc8uVL3X
-         K5XRaOwwbCewbnJ1Yge/VTkDe6j8NHRlFfZRHeq5L6NW53zwvLeHSZgQBCRZBp+OhgSl
-         Y6atQaXkK4YfJ5uiqd/hMDqnS9xL9tBPRrJfe0ZAdif+Zu6Qm8+L6qwC2bSLgFXZFqih
-         I1og==
+        b=gDSHAv4FJe00tgcOw4MxRkZhTkYTE8g2ZRaoa9LT2rYCvJuX+syCnaXPsS/ewRh65p
+         mR1qQsmCfYOLDgOs2StX5GgL9jrqQFbBEwbrQoIm0HO3XHPU+I2kBiUHOKksGwp7aMXL
+         XjjsdOM6FFBEREJBl5UHwi2nxkN0jt2vPMlfUi4PtiCR6Au9gte4ZbAmtHnRE5gohZdC
+         k48eqTVH00zOF2ml1B8fLgSP68Jn3LLdJlhoilLPTHmhgdl1yJPRA2JSnhMe9WB8osb2
+         h4dZxxfMfaivy3fAgwxiYZG5ngHP2azbKiNZVzp0F731a1cRhRldofVq7JjsBP6Ryo15
+         CZTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:subject:to
          :from:date:dkim-signature;
-        bh=ttI5KK4hgA95nb8HMd+yUteR0hkZwnjuSGYFdDVU2Ww=;
-        b=H5wBRz+S+cPGci2QsnFAF1hJyyYdh56OufEc9yNpSO0YxW7bgY3LKMqa59RoZp4QmZ
-         au5yKUGEMBp5kSPBVUK6b9ec5ViVW249HkgBMQDc5ITsavS0Ns6uIYLNoJMb7jGVU270
-         5eveEWEhucSWBzFlKjysJHVa0d4WU90J+nnAO01moWjgE9GQv5pA6g720ZhI25AFL1RF
-         HqDJSPTUYWt5x6bG2m7zrcXAyHitzeUT3gzalpGHU0PigP4g+DnhQmCYXTEOIE0gF3om
-         LgLeEVA9lGY8eP7FEi+rMNwuxSVGkjEdzUpsQyNbBoPaalsahmbaY0OGwiAQQYXKTMab
-         v5lQ==
+        bh=9qo89ZBDPvbx5XzA56F/vtCd71kZmWqz536FwRQK3ek=;
+        b=TQK0ezlta1aKBSBa6dggFYBrDkepYshRq9Gt92saYLo1lCMpGxZNyCVSguNLEMMsuB
+         RZ25b3E3FoPdElmLyElPnWZWx484ub3yj5eG8ncnmY/04XWN/STTaFATpgTQBjhe6UZk
+         XiElQO9F6NIfVuOJujmb1AeiAY4PyphBWz7T+CI6wH1D8DQPcnHHxYk0dTZez/LJXbbX
+         Hnzi7W54qa7kCx9TaJ5SSk9/jl1cU2YmSJO0e6dSiQfIjaP+vFjY0YX0i1GXReNjbtwf
+         b9e/HkjXQO4g+hLfxoWU+rjdQCJdLPCwAaZGXhko5qHwTUtg2vI5BcprpZUx1D1E0F5g
+         NwoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=k81mc9zz;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Zg44ct2v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id u11si947003qkj.210.2020.05.08.04.26.46
+        by mx.google.com with ESMTPS id n6si881521qtd.100.2020.05.08.04.30.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 May 2020 04:26:46 -0700 (PDT)
+        Fri, 08 May 2020 04:30:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=k81mc9zz;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Zg44ct2v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42806 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45426 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jX19S-0000H2-6l
-	for alex.bennee@linaro.org; Fri, 08 May 2020 07:26:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60154)
+	id 1jX1Cq-0002Rg-7J
+	for alex.bennee@linaro.org; Fri, 08 May 2020 07:30:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jX18y-0008LQ-7v; Fri, 08 May 2020 07:26:16 -0400
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:36238)
+ id 1jX1Ch-0002RX-1T; Fri, 08 May 2020 07:30:07 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:37222)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jX18x-0005v3-BE; Fri, 08 May 2020 07:26:15 -0400
-Received: by mail-lj1-x244.google.com with SMTP id u15so1291797ljd.3;
- Fri, 08 May 2020 04:26:14 -0700 (PDT)
+ id 1jX1Cg-0005L9-15; Fri, 08 May 2020 07:30:06 -0400
+Received: by mail-lf1-x143.google.com with SMTP id t11so1140462lfe.4;
+ Fri, 08 May 2020 04:30:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=ttI5KK4hgA95nb8HMd+yUteR0hkZwnjuSGYFdDVU2Ww=;
- b=k81mc9zzA0H9fi2Wj8s9oClqqv8eTjpovc/78sXMuyVSK6VgDTrLIX9Dy3YPgf27Xs
- 4Y+l2o826kRlJujjASJgZVcmlWmqed//oN9BPWqwmZmG2YGLtb4X2shsQeH0LxMF0MIU
- 3X6x1nz4AiYv2w3uDdpOuOP7ogCiNAKkk04Ydvu8jhpIwCTIGk4SXDGiBxBTKZ+xLE9/
- AH7pyZmUhYHByqAIETBjhP/CDot9ni928ja0mswCJ7D5JYf7u4Sk2KM11THckZHhzY6O
- q5tkxFmpL3el3KqlJrmQ5DFZGmNnyU1JMwEZzNhnGcFWfq5V/0fy0GBJSuwfnta10dnQ
- K+Xg==
+ bh=9qo89ZBDPvbx5XzA56F/vtCd71kZmWqz536FwRQK3ek=;
+ b=Zg44ct2volCR8XxvSzlCg2ef38YnHlHmHwgDLYRYMYqOa/kqh122P6AAfVkkm0vKLB
+ UtpX7OgL84qbV3kmC7TkADkCaLDQK+6iTwUoHJe2bZ7D8nOXE8POcfZ+dZuH+vz4wkwl
+ LJ1KDw02MvowQWnQe9Thw+MLDqS160qsw5EA2FjkFzhR5xEStVsnS6MMgOg2CovaeVws
+ l3ffQJgAYvJxUGcgCKB+xGGrVGzKSDw4lOpBBjqj5YrysY5mkIpGi5zmnNfSpSRCU99s
+ dG7VWoIkZ1ZZB7eiGWiLD46qKkrNdNT9PfDCEbgDaOk7vQreDvrwaNaKoBKnPWAzYH1P
+ q64Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=ttI5KK4hgA95nb8HMd+yUteR0hkZwnjuSGYFdDVU2Ww=;
- b=KoxUX7NBHg7GhBk/kuGM6VeCvsBoco2uwhwepDoEuqO3wWdFECvSECL40X+Lix8wo8
- yxbd9B/+WItG6J8QfPTpm+nJyvsqtSM5RpqUSYcBwXKZiU7nxt5216Nli2JNx0wQtxyU
- RDM6N1C24UhzE1N233FEed/lKiRSdjDrtV12s3AxN66XHCKWAnnLRBYD8mCIJFVlBbG8
- S/m8DoudhGLEHFJCDeFgE1PPTv8G4qxcVGzVJw022L5tWDEL6dnbzgkYxQOoIc5bjuxU
- gQCPti7UQmx5P+497OoVYbv04KSV0STsfZTrcEMVmGaMrFaU0PDp9lhj0Ea4A+5FGyYp
- 3DeQ==
-X-Gm-Message-State: AOAM531XhfrZuofdUHgwWVqzjuSMF+pbdyqPJq8KXtAce5wDffcV4QJo
- rUjkd5V55tKhS3fz5Tt8iuY=
-X-Received: by 2002:a2e:8e68:: with SMTP id t8mr1344709ljk.93.1588937172944;
- Fri, 08 May 2020 04:26:12 -0700 (PDT)
+ bh=9qo89ZBDPvbx5XzA56F/vtCd71kZmWqz536FwRQK3ek=;
+ b=LKh/cI0/nAu90ARo/ofO4kfMoE62QWhr1D45Q5zokpxnMxydT9m4QbEY5wyUncEtqE
+ 1bXExYA8HX8UN6R4TNLvCGgdMhAhSIytPEDhsS5m/n7Br+spe+POhySZHXe1GhdWBzgR
+ UnzskZv3gcnfQb0VPy9sd9iFrH2s1kb0x+cksJHOyXFmy9DLV/rnjlekOfFfwAjdOJyw
+ YEUfP/M6BL1iHizeOVDdjgq57ZfVymqFW7wJ602WjqNQBcZLGAfwbZEAHFyIwqNSJWtp
+ ywRUg+W7Web3tf5o1+NodBMEa/W+cPDtMzFFirHO1jKQCddEzxlIcPIkDSTMqELw/lkr
+ TxzQ==
+X-Gm-Message-State: AOAM532ujoWL0gfG4Z0mRaqKh+1v3hdGq1ou5D/FseXLd2ASqCih9HQ7
+ OjjVnVej0exmnifTkhS7jsw=
+X-Received: by 2002:ac2:4145:: with SMTP id c5mr1600325lfi.91.1588937403954;
+ Fri, 08 May 2020 04:30:03 -0700 (PDT)
 Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id d9sm985765lfa.77.2020.05.08.04.26.12
+ by smtp.gmail.com with ESMTPSA id a24sm1026750ljk.10.2020.05.08.04.30.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 May 2020 04:26:12 -0700 (PDT)
-Date: Fri, 8 May 2020 13:25:56 +0200
+ Fri, 08 May 2020 04:30:03 -0700 (PDT)
+Date: Fri, 8 May 2020 13:29:47 +0200
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-Subject: Re: [PATCH v3 02/11] net: cadence_gem: Fix the queue address update
- during wrap around
-Message-ID: <20200508112556.GM5519@toto>
+Subject: Re: [PATCH v3 06/11] net: cadence_gem: Move tx/rx packet buffert to
+ CadenceGEMState
+Message-ID: <20200508112947.GN5519@toto>
 References: <1588935645-20351-1-git-send-email-sai.pavan.boddu@xilinx.com>
- <1588935645-20351-3-git-send-email-sai.pavan.boddu@xilinx.com>
+ <1588935645-20351-7-git-send-email-sai.pavan.boddu@xilinx.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1588935645-20351-3-git-send-email-sai.pavan.boddu@xilinx.com>
+In-Reply-To: <1588935645-20351-7-git-send-email-sai.pavan.boddu@xilinx.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::244;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x244.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::143;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x143.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -126,99 +126,152 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
  Ramon Fried <rfried.dev@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: f/HdFSZNK3Ea
+X-TUID: O+k+1GfRJv3q
 
-On Fri, May 08, 2020 at 04:30:36PM +0530, Sai Pavan Boddu wrote:
-> During wrap around and reset, queues are pointing to initial base
-> address of queue 0, irrespective of what queue we are dealing with.
-> Fix it by assigning proper base address every time.
-
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-
-
+On Fri, May 08, 2020 at 04:30:40PM +0530, Sai Pavan Boddu wrote:
+> Moving this buffers to CadenceGEMState, as their size will be increased
+> more when JUMBO frames support is added.
 > 
 > Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
 > ---
->  hw/net/cadence_gem.c | 37 +++++++++++++++++++++++++++++++++----
->  1 file changed, 33 insertions(+), 4 deletions(-)
+>  hw/net/cadence_gem.c         | 52 ++++++++++++++++++++++++++------------------
+>  include/hw/net/cadence_gem.h |  2 ++
+>  2 files changed, 33 insertions(+), 21 deletions(-)
 > 
 > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index 5476c62..e6dc436 100644
+> index 77a0588..5ccec1a 100644
 > --- a/hw/net/cadence_gem.c
 > +++ b/hw/net/cadence_gem.c
-> @@ -845,6 +845,35 @@ static int get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
->      return 0;
->  }
+> @@ -314,6 +314,8 @@
 >  
-> +static uint32_t gem_get_queue_base_addr(CadenceGEMState *s, bool tx, int q)
-> +{
-> +    uint32_t base_addr = 0;
+>  #define GEM_MODID_VALUE 0x00020118
+>  
+> +#define MAX_FRAME_SIZE 2048
 > +
-> +    switch (q) {
-> +    case 0:
-> +        base_addr = s->regs[tx ? GEM_TXQBASE : GEM_RXQBASE];
-> +        break;
-> +    case 1 ... (MAX_PRIORITY_QUEUES - 1):
-> +        base_addr = s->regs[(tx ? GEM_TRANSMIT_Q1_PTR :
-> +                                 GEM_RECEIVE_Q1_PTR) + q - 1];
-> +        break;
-> +    default:
-> +        g_assert_not_reached();
-> +    };
-> +
-> +    return base_addr;
-> +}
-> +
-> +static uint32_t gem_get_tx_queue_base_addr(CadenceGEMState *s, int q)
-> +{
-> +    return gem_get_queue_base_addr(s, true, q);
-> +}
-> +
-> +static uint32_t gem_get_rx_queue_base_addr(CadenceGEMState *s, int q)
-> +{
-> +    return gem_get_queue_base_addr(s, false, q);
-> +}
-> +
->  static hwaddr gem_get_desc_addr(CadenceGEMState *s, bool tx, int q)
+>  static inline uint64_t tx_desc_get_buffer(CadenceGEMState *s, uint32_t *desc)
 >  {
->      hwaddr desc_addr = 0;
-> @@ -1043,7 +1072,7 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
->          /* Next descriptor */
->          if (rx_desc_get_wrap(s->rx_desc[q])) {
->              DB_PRINT("wrapping RX descriptor list\n");
-> -            s->rx_desc_addr[q] = s->regs[GEM_RXQBASE];
-> +            s->rx_desc_addr[q] = gem_get_rx_queue_base_addr(s, q);
->          } else {
->              DB_PRINT("incrementing RX descriptor list\n");
->              s->rx_desc_addr[q] += 4 * gem_get_desc_len(s, true);
-> @@ -1199,7 +1228,7 @@ static void gem_transmit(CadenceGEMState *s)
->                                      sizeof(desc_first));
->                  /* Advance the hardware current descriptor past this packet */
->                  if (tx_desc_get_wrap(desc)) {
-> -                    s->tx_desc_addr[q] = s->regs[GEM_TXQBASE];
-> +                    s->tx_desc_addr[q] = gem_get_tx_queue_base_addr(s, q);
->                  } else {
->                      s->tx_desc_addr[q] = packet_desc_addr +
->                                           4 * gem_get_desc_len(s, false);
-> @@ -1251,7 +1280,7 @@ static void gem_transmit(CadenceGEMState *s)
->                  } else {
->                      packet_desc_addr = 0;
->                  }
-> -                packet_desc_addr |= s->regs[GEM_TXQBASE];
-> +                packet_desc_addr |= gem_get_tx_queue_base_addr(s, q);
->              } else {
->                  packet_desc_addr += 4 * gem_get_desc_len(s, false);
->              }
-> @@ -1457,7 +1486,7 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
->          if (!(val & GEM_NWCTRL_TXENA)) {
->              /* Reset to start of Q when transmit disabled. */
->              for (i = 0; i < s->num_priority_queues; i++) {
-> -                s->tx_desc_addr[i] = s->regs[GEM_TXQBASE];
-> +                s->tx_desc_addr[i] = gem_get_tx_queue_base_addr(s, i);
->              }
+>      uint64_t ret = desc[0];
+> @@ -928,17 +930,14 @@ static void gem_get_rx_desc(CadenceGEMState *s, int q)
+>   */
+>  static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+>  {
+> -    CadenceGEMState *s;
+> +    CadenceGEMState *s = qemu_get_nic_opaque(nc);
+>      unsigned   rxbufsize, bytes_to_copy;
+>      unsigned   rxbuf_offset;
+> -    uint8_t    rxbuf[2048];
+>      uint8_t   *rxbuf_ptr;
+>      bool first_desc = true;
+>      int maf;
+>      int q = 0;
+>  
+> -    s = qemu_get_nic_opaque(nc);
+> -
+>      /* Is this destination MAC address "for us" ? */
+>      maf = gem_mac_address_filter(s, buf);
+>      if (maf == GEM_RX_REJECT) {
+> @@ -994,19 +993,19 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+>      } else {
+>          unsigned crc_val;
+>  
+> -        if (size > sizeof(rxbuf) - sizeof(crc_val)) {
+> -            size = sizeof(rxbuf) - sizeof(crc_val);
+> +        if (size > MAX_FRAME_SIZE - sizeof(crc_val)) {
+> +            size = MAX_FRAME_SIZE - sizeof(crc_val);
 >          }
->          if (gem_can_receive(qemu_get_queue(s->nic))) {
-> -- 
-> 2.7.4
-> 
+>          bytes_to_copy = size;
+>          /* The application wants the FCS field, which QEMU does not provide.
+>           * We must try and calculate one.
+>           */
+>  
+> -        memcpy(rxbuf, buf, size);
+> -        memset(rxbuf + size, 0, sizeof(rxbuf) - size);
+> -        rxbuf_ptr = rxbuf;
+> -        crc_val = cpu_to_le32(crc32(0, rxbuf, MAX(size, 60)));
+> -        memcpy(rxbuf + size, &crc_val, sizeof(crc_val));
+> +        memcpy(s->rx_packet, buf, size);
+> +        memset(s->rx_packet + size, 0, MAX_FRAME_SIZE - size);
+> +        rxbuf_ptr = s->rx_packet;
+> +        crc_val = cpu_to_le32(crc32(0, s->rx_packet, MAX(size, 60)));
+> +        memcpy(s->rx_packet + size, &crc_val, sizeof(crc_val));
+>  
+>          bytes_to_copy += 4;
+>          size += 4;
+> @@ -1152,7 +1151,6 @@ static void gem_transmit(CadenceGEMState *s)
+>  {
+>      uint32_t desc[DESC_MAX_NUM_WORDS];
+>      hwaddr packet_desc_addr;
+> -    uint8_t     tx_packet[2048];
+>      uint8_t     *p;
+>      unsigned    total_bytes;
+>      int q = 0;
+> @@ -1168,7 +1166,7 @@ static void gem_transmit(CadenceGEMState *s)
+>       * Packets scattered across multiple descriptors are gathered to this
+>       * one contiguous buffer first.
+>       */
+> -    p = tx_packet;
+> +    p = s->tx_packet;
+>      total_bytes = 0;
+>  
+>      for (q = s->num_priority_queues - 1; q >= 0; q--) {
+> @@ -1198,12 +1196,12 @@ static void gem_transmit(CadenceGEMState *s)
+>                  break;
+>              }
+>  
+> -            if (tx_desc_get_length(desc) > sizeof(tx_packet) -
+> -                                               (p - tx_packet)) {
+> +            if (tx_desc_get_length(desc) > MAX_FRAME_SIZE -
+> +                                               (p - s->tx_packet)) {
+>                  DB_PRINT("TX descriptor @ 0x%" HWADDR_PRIx \
+>                           " too large: size 0x%x space 0x%zx\n",
+>                           packet_desc_addr, tx_desc_get_length(desc),
+> -                         sizeof(tx_packet) - (p - tx_packet));
+> +                         MAX_FRAME_SIZE - (p - s->tx_packet));
+>                  break;
+>              }
+>  
+> @@ -1248,24 +1246,24 @@ static void gem_transmit(CadenceGEMState *s)
+>  
+>                  /* Is checksum offload enabled? */
+>                  if (s->regs[GEM_DMACFG] & GEM_DMACFG_TXCSUM_OFFL) {
+> -                    net_checksum_calculate(tx_packet, total_bytes);
+> +                    net_checksum_calculate(s->tx_packet, total_bytes);
+>                  }
+>  
+>                  /* Update MAC statistics */
+> -                gem_transmit_updatestats(s, tx_packet, total_bytes);
+> +                gem_transmit_updatestats(s, s->tx_packet, total_bytes);
+>  
+>                  /* Send the packet somewhere */
+>                  if (s->phy_loop || (s->regs[GEM_NWCTRL] &
+>                                      GEM_NWCTRL_LOCALLOOP)) {
+> -                    gem_receive(qemu_get_queue(s->nic), tx_packet,
+> +                    gem_receive(qemu_get_queue(s->nic), s->tx_packet,
+>                                  total_bytes);
+>                  } else {
+> -                    qemu_send_packet(qemu_get_queue(s->nic), tx_packet,
+> +                    qemu_send_packet(qemu_get_queue(s->nic), s->tx_packet,
+>                                       total_bytes);
+>                  }
+>  
+>                  /* Prepare for next packet */
+> -                p = tx_packet;
+> +                p = s->tx_packet;
+>                  total_bytes = 0;
+>              }
+>  
+> @@ -1612,6 +1610,17 @@ static void gem_realize(DeviceState *dev, Error **errp)
+>  
+>      s->nic = qemu_new_nic(&net_gem_info, &s->conf,
+>                            object_get_typename(OBJECT(dev)), dev->id, s);
+> +
+> +    s->tx_packet = g_new0(uint8_t, MAX_FRAME_SIZE);
+> +    s->rx_packet = g_new0(uint8_t, MAX_FRAME_SIZE);
+
+Hi Sai,
+
+Since you're only using MAX_FRAME_SIZE these could be arrays
+in CadenceGEMState.
+
+With that change:
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>

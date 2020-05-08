@@ -1,164 +1,111 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp42535lfb;
-        Fri, 8 May 2020 04:09:15 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIKmnbC5rDZcSM0bnCC1APBDRmM5s9s/8vEFxqEiE4rJbgGOJGTxmb0tcmbXPrJeoG+AurO
-X-Received: by 2002:a37:e310:: with SMTP id y16mr2277470qki.275.1588936155650;
-        Fri, 08 May 2020 04:09:15 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1588936155; cv=pass;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp177090lfb;
+        Fri, 8 May 2020 07:02:46 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJl7DZt2EN61DA62E/l/jfjV6AXO7RobLBG453FBlWeENhfwsnag6/QDB9JIXZVZwSyvnQn
+X-Received: by 2002:ac8:2a76:: with SMTP id l51mr3071406qtl.81.1588946566503;
+        Fri, 08 May 2020 07:02:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588946566; cv=none;
         d=google.com; s=arc-20160816;
-        b=MV8YPOHmF3Xva4idjjYcvdf75UrGAzWPHIwpmkTWrrqCrjSuwNrfOzm0Pg25wFPooI
-         mZvWRMf8JcZQbH5v4EVJKQ1dZaE+y/R3UjHBI5hvVYcLJqmIugDWeMZqUxmZ2MbM1fmX
-         OYZ+mZSE5VWSLA8lSnwKJNwmtErUdPWDHziQv1PHlN0O8WGPAhsH4yuHc1F3jSEOyhuO
-         7c7PwqZ+yMEipLC873slU0gxZftfN0QSqt3dRsDA67zkA4fr95Tt4m9C6jp/vkUOfFZR
-         a2S3WLyBG6j4fWCtBJtxe4fB/sFwfY/gidid2d8i5Q/nwzdNZD6SI+JIw4zkOoJV4KfT
-         v5GA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=ae6LTdugmej1r4GDo+ctYJpkq2yW8zm8dSuDywwov7/kfgzOoSJD0isqK6ORKhBFTU
+         sWpzbO62kl7NkSDmWIqd3U/dGP/mNfK5ZjptSG05pVwbfKiLOQRS/pUFSn+09u8MWsyG
+         y6GpX/xbb8RSUc6Mbd86mY9iJMWCHl3FlkLpyMBXXd8c4oRSuA/nwOJzzZbT9veEd9Kj
+         SJnIwJRHkTmfW2mNKU7CMb7ApUx4vuc1r7FDowQ4vKhWpKu+EQLapj4YtNkpFKVZD95W
+         Tbs0z/l9XC0z2XYeHFdM6idOEELrHQRrK9KuNUH1rZbre3A8c6nqP6u78XIDVCSrPTfw
+         m9Aw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from:dkim-signature;
-        bh=7O3/7uVfukvTqVtr1FjQXKdSgWhJup4HXv4ZmaowwC4=;
-        b=mHJzU04+bpctWW4slx/+ZgNsNv0qtziw0W3zfq5sUQ6grumg7qvN5BAvrEXrSlBK26
-         nnXuIjtC8lhGoZVLtQckDII0tsbXEXgv9YQ1yZzaHueWTF7/QP55CU79m5hiuS7vgVAt
-         7+5DPQoe4/j/TuUunSdFU+j6xKtdAGmVzSg1Ls/1epKGdLHIzJgED5EsKNo5Po5efhW9
-         9sHcSyNeYg6aeRZeULXfGPfrrGMA5n9vDNwcFBCloqNa8HlQeJoOu+Tus5+FylRwzCIz
-         uzNSXDu3LtNMmU0HXrtP2RQ84Ft6YzBr5kUlXVsbgJO8gIWqX5IUL7mHQkyfqgAlYgvc
-         FXZw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=XpZYjA7h;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=D4WUVpJaNktKm8yiSVR8Ag5EHn1iBp68/krnD+2KPcg=;
+        b=KU6SzdQUbnzZ8a4aliEEnUc7fTTJWdHdxwTa2/jDBcGR1q1N/i1b4sKZSlfff3YoQT
+         Q+bCJ6QrrxZ+6BsQqMgn6+nCBgHKM3CE2ZLiU0T06vX+JDsuaTM5LHmSPonEY0FsNQR8
+         ZgLBnMqZznI6By41JKkr6267384QD9inhJImxkGvyKBk6MRqdy7b7yGqJXavOX7SlE9a
+         XtLvY0BElPu1Sw/rjT6M8JOvAtO1v9jvYtLkRUfpntlp66cVXpFeHGPO/hT8bpOMgU7d
+         rYBZQHVIA4isJ4obRcRel/mIWqtgaBfkboE5EKa3QSBFReOTp1PojDD9TV+WDlqn/fMf
+         ZZpg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KKv4A3YJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id a8si286798qkl.125.2020.05.08.04.09.15
+        by mx.google.com with ESMTPS id 138si1073210qkm.228.2020.05.08.07.02.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 May 2020 04:09:15 -0700 (PDT)
+        Fri, 08 May 2020 07:02:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=XpZYjA7h;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:32952 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KKv4A3YJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59146 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jX0sU-0007bp-V9
-	for alex.bennee@linaro.org; Fri, 08 May 2020 07:09:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55802)
+	id 1jX3aP-0002VN-O0
+	for alex.bennee@linaro.org; Fri, 08 May 2020 10:02:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41988)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
- id 1jX0s8-0007Xd-PY; Fri, 08 May 2020 07:08:52 -0400
-Received: from mail-mw2nam12on2044.outbound.protection.outlook.com
- ([40.107.244.44]:6030 helo=NAM12-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
- id 1jX0s7-000213-Q2; Fri, 08 May 2020 07:08:52 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YP1VROUSAskCKge5tg/tFKN42JIB43sQ1dIJePvJBspwciJsScxVPVmUZDdUzf/3pfP+bCyKnCNNVirLqEeBFD2roRfjEI/B5GnCe7L4nB2RbdmB18bKBuX1Z64VMfa+wYn1gdAhzPFyGy29UriRwteVwIVkwTkMI2gUYxTQM5Yl4+YHM2eiJ1hsRxj6X9uKfOGff0XpQBp3R413qYP8KdHlWZ4EOPj+J7tr6YFren6TyyjSrEMPWt1JjcWikI5rHchpquN7Dtd4v4OLeG/blUGdKG8E5bXL0mFWspTzy+yMaZyFpJTZAux/++BuTVfuazYsONasPr6BuafT+vZl1A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7O3/7uVfukvTqVtr1FjQXKdSgWhJup4HXv4ZmaowwC4=;
- b=BqH+L83uZ4UZXmWOGFeGYn9Sht8vHjIlnz3Ji9sgyxOsXyO62lYB8koz40PkCADwwavOsLcK/3igTZKBp/xrRU6decgxY9/k7Sb0Yrvw2vkweO2oH86qnMGAAOuU+CzltuuHXAssFkeZSXa/unegw7Rn+0Tlor7WvmtgeK9ONv+L1DB+UCsJ85hdWPe6jU/2gaPHt8DrAXKtXY89LewHQjuJjl6xa42ZY/cIEUHmWqriYFNXE84K8hAV8cTKWGG4WOJQR413Il3hrBllNiPnVwda7JM3l4RYcztNwBMKrRgphLCQs93bcWItm7HQkJRncjnltBmzTj3S+yeH6lybvA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.60.83) smtp.rcpttodomain=wdc.com smtp.mailfrom=xilinx.com;
- dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7O3/7uVfukvTqVtr1FjQXKdSgWhJup4HXv4ZmaowwC4=;
- b=XpZYjA7hq01BvRTLyD3cOBmYBATHAnsXyYh0SO/yx4Hr4x7/R6AJh7xsa9urBaMjzjR+0ahm9ONqmH7zM852IxLsJusDVNxjOuyQV7aXuyek9iQ1xz1WbNCc+7Dbs3SV5rBwhGGEcq7n6G1HOH5ggb+OCS19k6K8uLg4QNMAlv8=
-Received: from SN4PR0601CA0003.namprd06.prod.outlook.com
- (2603:10b6:803:2f::13) by DM5PR02MB2315.namprd02.prod.outlook.com
- (2603:10b6:3:4f::20) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.20; Fri, 8 May
- 2020 11:08:48 +0000
-Received: from SN1NAM02FT049.eop-nam02.prod.protection.outlook.com
- (2603:10b6:803:2f:cafe::ab) by SN4PR0601CA0003.outlook.office365.com
- (2603:10b6:803:2f::13) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.26 via Frontend
- Transport; Fri, 8 May 2020 11:08:48 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
- smtp.mailfrom=xilinx.com; wdc.com; dkim=none (message not signed)
- header.d=none;wdc.com; dmarc=bestguesspass action=none
- header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
-Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
- SN1NAM02FT049.mail.protection.outlook.com (10.152.72.166) with Microsoft SMTP
- Server id 15.20.2979.29 via Frontend Transport; Fri, 8 May 2020 11:08:48
- +0000
-Received: from [149.199.38.66] (port=35792 helo=xsj-pvapsmtp01)
- by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
- (envelope-from <sai.pavan.boddu@xilinx.com>)
- id 1jX0rt-0002Tm-90; Fri, 08 May 2020 04:08:37 -0700
-Received: from [127.0.0.1] (helo=xsj-smtp-dlp2.xlnx.xilinx.com)
- by xsj-pvapsmtp01 with esmtp (Exim 4.63)
- (envelope-from <sai.pavan.boddu@xilinx.com>)
- id 1jX0s4-0005ar-2B; Fri, 08 May 2020 04:08:48 -0700
-Received: from xsj-pvapsmtp01 (maildrop.xilinx.com [149.199.38.66])
- by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id 048B8l7b021174; 
- Fri, 8 May 2020 04:08:47 -0700
-Received: from [10.140.6.35] (helo=xhdsaipava40.xilinx.com)
- by xsj-pvapsmtp01 with esmtp (Exim 4.63)
- (envelope-from <saipava@xhdsaipava40.xilinx.com>)
- id 1jX0s2-0005a4-Ru; Fri, 08 May 2020 04:08:47 -0700
-Received: by xhdsaipava40.xilinx.com (Postfix, from userid 14131)
- id C8F5613C03F7; Fri,  8 May 2020 16:30:54 +0530 (IST)
-From: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Tong Ho <tong.ho@xilinx.com>, Ramon Fried <rfried.dev@gmail.com>
-Subject: [PATCH v3 03/11] net: cadence_gem: Fix irq update w.r.t queue
-Date: Fri,  8 May 2020 16:30:37 +0530
-Message-Id: <1588935645-20351-4-git-send-email-sai.pavan.boddu@xilinx.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1588935645-20351-1-git-send-email-sai.pavan.boddu@xilinx.com>
-References: <1588935645-20351-1-git-send-email-sai.pavan.boddu@xilinx.com>
-X-RCIS-Action: ALLOW
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.83; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapsmtpgw01; PTR:unknown-60-83.xilinx.com; CAT:NONE;
- SFTY:;
- SFS:(376002)(136003)(346002)(39860400002)(396003)(46966005)(33430700001)(36756003)(4326008)(42186006)(26005)(186003)(110136005)(70586007)(33440700001)(70206006)(336012)(426003)(2616005)(2906002)(8676002)(8936002)(5660300002)(478600001)(316002)(6266002)(82740400003)(47076004)(6666004)(82310400002)(356005)(81166007)(309714004);
- DIR:OUT; SFP:1101; 
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jX3aB-0002UM-Fh
+ for qemu-arm@nongnu.org; Fri, 08 May 2020 10:02:32 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:34190
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jX3a7-0000Mk-OS
+ for qemu-arm@nongnu.org; Fri, 08 May 2020 10:02:30 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1588946545;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=D4WUVpJaNktKm8yiSVR8Ag5EHn1iBp68/krnD+2KPcg=;
+ b=KKv4A3YJS5OcJCWO9tbSXQqHYymP4a/KCIh7Fa1Uxo0gNKd3i11IYUwMzl3+pZIxHrI+Lm
+ wMoaCEa4BvrxIvewTANVQphp3X5g6yshAgwHYZQR5K0MD1CBmA0ua3Mjy1NgFPMjXJroEF
+ 6Ym9uHR5aagg11fZrAiV2fNi6VKx3c0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-456-uExnF8TWPnu2MwiThRQbEg-1; Fri, 08 May 2020 10:02:24 -0400
+X-MC-Unique: uExnF8TWPnu2MwiThRQbEg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C9AAF107ACF4;
+ Fri,  8 May 2020 14:02:22 +0000 (UTC)
+Received: from [10.36.114.214] (ovpn-114-214.ams2.redhat.com [10.36.114.214])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A2DE6707DE;
+ Fri,  8 May 2020 14:02:04 +0000 (UTC)
+Subject: Re: [PATCH 2/5] virtio-iommu: Implement RESV_MEM probe request
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+References: <20200507143201.31080-1-eric.auger@redhat.com>
+ <20200507143201.31080-3-eric.auger@redhat.com>
+ <20200508092605.GB1770804@myrica>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <583efffc-8dbb-6217-a596-2ee8d56892d7@redhat.com>
+Date: Fri, 8 May 2020 16:02:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 9954b02f-501f-4214-70ad-08d7f3402ec5
-X-MS-TrafficTypeDiagnostic: DM5PR02MB2315:
-X-Microsoft-Antispam-PRVS: <DM5PR02MB2315C88A09EB339E2BCD10EBCAA20@DM5PR02MB2315.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:514;
-X-Forefront-PRVS: 039735BC4E
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: p48uVqQqqy2wenjEGCC2J//AB3MEbFVrMrC+R7be4sxod2y0c9wD3WXohZ8OisCHEcL9D5/qupbmitWiWhY5bjRoTV01hKr1Z5M8ftyvDuJtCtfcM7ZPtr3ugUBFKsrgwnU3Deym/UJAUA1/KDgdQ3vz+KZTKKyJ9M9X5qnry4qf7qqRf8rp2baYHXWNsPWAqYpFqzIeWZnyqS2KMiFw+6CXFAAiOfDK/O7w5ED4XP1kbEGMnEJ2A6MXz/oQNfovdkBeyYk5apVf8UVkYaZD3/gcC3n5IX8jrANLcPQ1oxb3Q8xFkY3GVKfYzIhOlNaVdYsnfi+8ouEsMuzgrDfU6nP11+DZPsVUr4IDq3m4OBqRzCrJQL6y0tjiEZhUlo+x7IrcJqg4njHoX28m+r+A/Dsl+6sCGp+XdcMe2I0H2DatgZp2O1np9I/eSpBVONrGrWiCt2Nfp8X9Kiro8woUW4zpn0bwLrExM0X7YatV8zP1Rz24V9TmTRS9I1pftEBDxznipqHBhCIMUWOYlbTdiw/5hKFY/zAKXXDl6m/D+Od/Zo0O6rIIdfqoyyFwH8dFlc6g2mvjzMS/HmUpMTbWAIVR6bNYyQUovs14855f5z8=
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 May 2020 11:08:48.4222 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9954b02f-501f-4214-70ad-08d7f3402ec5
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
- Helo=[xsj-pvapsmtpgw01]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR02MB2315
-Received-SPF: pass client-ip=40.107.244.44; envelope-from=saipava@xilinx.com;
- helo=NAM12-MW2-obe.outbound.protection.outlook.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/08 07:08:50
-X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200508092605.GB1770804@myrica>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=windows-1252
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/08 02:25:09
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -171,57 +118,189 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
+ peterx@redhat.com, armbru@redhat.com, qemu-arm@nongnu.org,
+ bbhushan2@marvell.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fnjqSD/O/5qh
+X-TUID: sq7NCC2REAOf
 
-Set irq's specific to a queue, present implementation is setting q1 irq
-based on q0 status.
+Hi Jean,
+On 5/8/20 11:26 AM, Jean-Philippe Brucker wrote:
+> On Thu, May 07, 2020 at 04:31:58PM +0200, Eric Auger wrote:
+>> +static ssize_t virtio_iommu_fill_resv_mem_prop(VirtIOIOMMU *s, uint32_t ep,
+>> +                                               uint8_t *buf, size_t free)
+>> +{
+>> +    struct virtio_iommu_probe_resv_mem prop = {};
+>> +    size_t size = sizeof(prop), length = size - sizeof(prop.head), total;
+>> +    int i;
+>> +
+>> +    total = size * s->nb_reserved_regions;
+>> +
+>> +    if (total > free) {
+>> +        return -ENOSPC;
+>> +    }
+>> +
+>> +    for (i = 0; i < s->nb_reserved_regions; i++) {
+>> +        prop.head.type = VIRTIO_IOMMU_PROBE_T_RESV_MEM;
+> 
+> cpu_to_le16
+> 
+>> +        prop.head.length = cpu_to_le64(length);
+> 
+> same here
+> 
+>> +        prop.subtype = cpu_to_le64(s->reserved_regions[i].type);
+> 
+> and subtype is a byte
 
-Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
----
- hw/net/cadence_gem.c | 25 +++----------------------
- 1 file changed, 3 insertions(+), 22 deletions(-)
+All fixed. Thanks for spotting this.
+> 
+>> +        prop.start = cpu_to_le64(s->reserved_regions[i].low);
+>> +        prop.end = cpu_to_le64(s->reserved_regions[i].high);
+>> +
+>> +        memcpy(buf, &prop, size);
+>> +
+>> +        trace_virtio_iommu_fill_resv_property(ep, prop.subtype,
+>> +                                              prop.start, prop.end);
+>> +        buf += size;
+>> +    }
+>> +    return total;
+>> +}
+>> +
+>> +/**
+>> + * virtio_iommu_probe - Fill the probe request buffer with
+>> + * the properties the device is able to return and add a NONE
+>> + * property at the end.
+>> + */
+>> +static int virtio_iommu_probe(VirtIOIOMMU *s,
+>> +                              struct virtio_iommu_req_probe *req,
+>> +                              uint8_t *buf)
+>> +{
+>> +    uint32_t ep_id = le32_to_cpu(req->endpoint);
+> 
+> I think we should check that the endpoint ID is sane even if we're not
+> using it at the moment (it is a SHOULD in the spec, and the page size mask
+> patch will need the ep anyway).
+OK
+> 
+>> +    struct virtio_iommu_probe_property last = {};
+>> +    size_t free = VIOMMU_PROBE_SIZE - sizeof(last);
+> 
+> last isn't needed, you can fill the whole probe buffer with valid
+> properties
+yep. This is a reminder from none prop.
+> 
+>> +    ssize_t count;
+>> +
+>> +    count = virtio_iommu_fill_resv_mem_prop(s, ep_id, buf, free);
+>> +    if (count < 0) {
+>> +            return VIRTIO_IOMMU_S_INVAL;
+> 
+> indentation?
+yes.
 
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index e6dc436..fefb360 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -554,29 +554,10 @@ static void gem_update_int_status(CadenceGEMState *s)
- {
-     int i;
- 
--    if (!s->regs[GEM_ISR]) {
--        /* ISR isn't set, clear all the interrupts */
--        for (i = 0; i < s->num_priority_queues; ++i) {
--            qemu_set_irq(s->irq[i], 0);
--        }
--        return;
--    }
-+    qemu_set_irq(s->irq[0], !!s->regs[GEM_ISR]);
- 
--    /* If we get here we know s->regs[GEM_ISR] is set, so we don't need to
--     * check it again.
--     */
--    if (s->num_priority_queues == 1) {
--        /* No priority queues, just trigger the interrupt */
--        DB_PRINT("asserting int.\n");
--        qemu_set_irq(s->irq[0], 1);
--        return;
--    }
--
--    for (i = 0; i < s->num_priority_queues; ++i) {
--        if (s->regs[GEM_INT_Q1_STATUS + i]) {
--            DB_PRINT("asserting int. (q=%d)\n", i);
--            qemu_set_irq(s->irq[i], 1);
--        }
-+    for (i = 1; i < s->num_priority_queues; ++i) {
-+        qemu_set_irq(s->irq[i], !!s->regs[GEM_INT_Q1_STATUS + i - 1]);
-     }
- }
- 
--- 
-2.7.4
+Thank you for the review
+
+Eric
+> 
+> Thanks,
+> Jean
+> 
+>> +    }
+>> +    buf += count;
+>> +    free -= count;
+>> +
+>> +    /* Fill the rest with zeroes */
+>> +    memset(buf, 0, free);
+>> +
+>> +    return VIRTIO_IOMMU_S_OK;
+>> +}
+>> +
+>>  static int virtio_iommu_iov_to_req(struct iovec *iov,
+>>                                     unsigned int iov_cnt,
+>>                                     void *req, size_t req_sz)
+>> @@ -407,6 +464,17 @@ virtio_iommu_handle_req(detach)
+>>  virtio_iommu_handle_req(map)
+>>  virtio_iommu_handle_req(unmap)
+>>  
+>> +static int virtio_iommu_handle_probe(VirtIOIOMMU *s,
+>> +                                     struct iovec *iov,
+>> +                                     unsigned int iov_cnt,
+>> +                                     uint8_t *buf)
+>> +{
+>> +    struct virtio_iommu_req_probe req;
+>> +    int ret = virtio_iommu_iov_to_req(iov, iov_cnt, &req, sizeof(req));
+>> +
+>> +    return ret ? ret : virtio_iommu_probe(s, &req, buf);
+>> +}
+>> +
+>>  static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
+>>  {
+>>      VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
+>> @@ -452,17 +520,33 @@ static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
+>>          case VIRTIO_IOMMU_T_UNMAP:
+>>              tail.status = virtio_iommu_handle_unmap(s, iov, iov_cnt);
+>>              break;
+>> +        case VIRTIO_IOMMU_T_PROBE:
+>> +        {
+>> +            struct virtio_iommu_req_tail *ptail;
+>> +            uint8_t *buf = g_malloc0(s->config.probe_size + sizeof(tail));
+>> +
+>> +            ptail = (struct virtio_iommu_req_tail *)
+>> +                        (buf + s->config.probe_size);
+>> +            ptail->status = virtio_iommu_handle_probe(s, iov, iov_cnt, buf);
+>> +
+>> +            sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
+>> +                              buf, s->config.probe_size + sizeof(tail));
+>> +            g_free(buf);
+>> +            assert(sz == s->config.probe_size + sizeof(tail));
+>> +            goto push;
+>> +        }
+>>          default:
+>>              tail.status = VIRTIO_IOMMU_S_UNSUPP;
+>>          }
+>> -        qemu_mutex_unlock(&s->mutex);
+>>  
+>>  out:
+>>          sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
+>>                            &tail, sizeof(tail));
+>>          assert(sz == sizeof(tail));
+>>  
+>> -        virtqueue_push(vq, elem, sizeof(tail));
+>> +push:
+>> +        qemu_mutex_unlock(&s->mutex);
+>> +        virtqueue_push(vq, elem, sz);
+>>          virtio_notify(vdev, vq);
+>>          g_free(elem);
+>>      }
+>> @@ -667,6 +751,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>>      s->config.page_size_mask = TARGET_PAGE_MASK;
+>>      s->config.input_range.end = -1UL;
+>>      s->config.domain_range.end = 32;
+>> +    s->config.probe_size = VIOMMU_PROBE_SIZE;
+>>  
+>>      virtio_add_feature(&s->features, VIRTIO_RING_F_EVENT_IDX);
+>>      virtio_add_feature(&s->features, VIRTIO_RING_F_INDIRECT_DESC);
+>> @@ -676,6 +761,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MAP_UNMAP);
+>>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_BYPASS);
+>>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MMIO);
+>> +    virtio_add_feature(&s->features, VIRTIO_IOMMU_F_PROBE);
+>>  
+>>      qemu_mutex_init(&s->mutex);
+>>  
+>> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
+>> index e83500bee9..5550475691 100644
+>> --- a/hw/virtio/trace-events
+>> +++ b/hw/virtio/trace-events
+>> @@ -73,3 +73,4 @@ virtio_iommu_get_domain(uint32_t domain_id) "Alloc domain=%d"
+>>  virtio_iommu_put_domain(uint32_t domain_id) "Free domain=%d"
+>>  virtio_iommu_translate_out(uint64_t virt_addr, uint64_t phys_addr, uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=%d"
+>>  virtio_iommu_report_fault(uint8_t reason, uint32_t flags, uint32_t endpoint, uint64_t addr) "FAULT reason=%d flags=%d endpoint=%d address =0x%"PRIx64
+>> +virtio_iommu_fill_resv_property(uint32_t devid, uint8_t subtype, uint64_t start, uint64_t end) "dev= %d, type=%d start=0x%"PRIx64" end=0x%"PRIx64
+>> -- 
+>> 2.20.1
+>>
+> 
 

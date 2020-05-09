@@ -1,151 +1,160 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp473562lfb;
-        Fri, 8 May 2020 13:28:21 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK/dHAvdK8VnnBrGyGJtfEjOSMALHvmVgHz+jqAAcSAXVd1PCsFdgPk4/is9TTJWajxM9Bh
-X-Received: by 2002:a37:5d42:: with SMTP id r63mr2507857qkb.317.1588969701007;
-        Fri, 08 May 2020 13:28:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588969701; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1026265lfb;
+        Sat, 9 May 2020 06:09:15 -0700 (PDT)
+X-Received: by 2002:a1c:2089:: with SMTP id g131mr2667986wmg.47.1589029755524;
+        Sat, 09 May 2020 06:09:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589029755; cv=none;
         d=google.com; s=arc-20160816;
-        b=NsNnytlS4elNlNBwspD3zBPRp1hI6xuXqxotCqAS+egybShoS9YghMi6wJr1JbmFfy
-         YcNLI9TVooJ6+ZTj4QKfTnI0lgobkUxDsQLXIBtwCze0rig0jhTrXKLZNxDt8/iyHqXS
-         8OI2Dx7/koEXU6vThrLqTWb+J68PLqZqFtUj/k/FzAzMPXqlJEHfmPfFV+x2iMJu0NYs
-         MHeu48IMLsBihJrFLFxXEox1n/NKHKtOTJKYCvj64UqAdYuDS2hZIJHTq2eO34/YR7iY
-         7+9PnpR6Fx/3urAbitxas33m7TISqvLeR05Z0gbB6TM8atSNKtr52XrKDunvLDQH5KAK
-         tA6A==
+        b=gGj9wbh/YylsfnsO7pVYiQIFqIk+TAEixb+mfhIq8UF5oYnI4HDZRuA9c4lFVoYgqz
+         I7RKmXRGLnxWk0RGCGPf1tfW5mCJgNI0Goj+PsNFWuQGTNpnS5RurHZMsmb5LLYJFm7D
+         IVFIIGxt4QbKxz0QTYeripcQh52zYzkgK3bnpUrRL+N2c0PhKw+Nj/cOjvd5JHkW3SrL
+         tI3RnjJqtljtelpYRdKhIbjOtLFnGjAgmv3uM61M6NwjUceRGG/fcPhFt5mkdg5MEj26
+         Rj6OE+2b9VcKFj0GsOvc5qOeVOGPC8u1pBVi0h0cX8/L07FUzLFzgGnYSEwX6VJnemPH
+         s5jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=lxw5IHXH7meg3SrMIDtx2FvU0tJPa/DrNR+wxpAD0c0=;
-        b=s8RwgkEmb/oYivsAiSLQzcmC3UEQcg7lB4EtgQ7d+hf0k83CHrveciJU1/T66ZTzaM
-         9ihKVedLSkguLh/L05ibwaTJfkaXwlDJpoE7msgI9ziVSEaIVugfCJFYQC3uwuUSkmRX
-         pdyu1kToUZ3nwvh3djFWetVvNXD1vQXg5FS3MoNRUhUJJpdbLDTitHtF8bcNMA1tE+Xb
-         XkkP5N0SP85CfpAL2YjLR+zYEKF7JXErqxzN0Aky1Z8FSH5wReXRaHjlsgOltWllhbcu
-         WklGpYpiL8RS++LetW9rxWARzmcY4d+AUciIreOv8vZPvS7AH9GRSE/Mbt9a2BPTScNv
-         TjJw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:sender:dkim-signature;
+        bh=iE1+mJklc9qKRY36HjqMYuwaM8rzjkNP3yQiEBI2qQE=;
+        b=0xUiaOci1vqLMclPSLIGOBqfQ7pVe6Kt6+pSvFhtBOWwQ/iJQM4wW76bm3F6NvhCcZ
+         +ut2R39uJ2lrXCvM+OnMRvvaStdR5+H/M9I6EW9Uld7qPpvuqHQe9onYjde2qwxYiBeZ
+         7S8GL/65oM0utTEdbFfwpzxSgtt+IeGFDMQc7WDGvWBGCX1bnupi9vK8cKWxj2Tk1yNt
+         goRKWTWaqqNOKwL2q1hhJbM4DhjSAn9/fg5ZJSQi3giBhQQH5UuXhgePeNPIRjbe/Qa0
+         FeDYCGjUeCYMFtMHW2MPqgLeQlC528aulTfOUCdI9icmiym7/DVdPTiCzJwzGLWoBPDJ
+         wr/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H6g+CPJx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n6si1626227qvb.59.2020.05.08.13.28.20
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 May 2020 13:28:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Gfp9lMbR;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id k2sor7857582wmi.20.2020.05.09.06.09.15
+        (Google Transport Security);
+        Sat, 09 May 2020 06:09:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H6g+CPJx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49346 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jX9bY-0002CV-AP
-	for alex.bennee@linaro.org; Fri, 08 May 2020 16:28:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49624)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jX9ZE-0007K8-AR
- for qemu-arm@nongnu.org; Fri, 08 May 2020 16:25:56 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:45973)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jX9ZB-0000Rd-Vy
- for qemu-arm@nongnu.org; Fri, 08 May 2020 16:25:55 -0400
-Received: by mail-pl1-x643.google.com with SMTP id u22so1215745plq.12
- for <qemu-arm@nongnu.org>; Fri, 08 May 2020 13:25:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=lxw5IHXH7meg3SrMIDtx2FvU0tJPa/DrNR+wxpAD0c0=;
- b=H6g+CPJxdfnkp4vqWCk0u/Pz4Nf/EAZgIPYU4kEOED5n8hgyvmU2uwnFdElCSYx/oW
- fD31nbWMURE/ZqcJNy/WpORBKQovxjk2s5R293pE20GOOIxncQujfsI3O1w4bI1U94Vn
- me5qXW/0l0XYAc/GcqYCzg7Fxli3HznLVhQiXDanO7kdLaraFNmXTkUOoGnIHyCX99Rz
- LJcuqHfDR/jY2umvuV/IX7kLFBSRLphGF+TleD7Ye9ZNaIIo9itBSotoKbshUL0+Eq0j
- FwI9GBVJN1hPqClwRGrCJF6F+/I4rjvpcXVyFopRt0oUfGofv7BZHkAE8C+WzUWitY6r
- +lhQ==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Gfp9lMbR;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=iE1+mJklc9qKRY36HjqMYuwaM8rzjkNP3yQiEBI2qQE=;
+        b=Gfp9lMbRlEqlUHuwAcIsNoFH99uSEOdkZZhVlXMQ7cyBLO1xcqqhkPG1yDHH82cj3i
+         QYYh2RjNRr0wzlukYDiCw8B1S77cQQYGby3dna5vxspS+rXNGxHMzme+dtjlteb3F2WQ
+         kckjhnnHULfUeGJMtBSWqTyrLYh/UcxdwT7+MFsTHUrh0Fz0OVujeNPZib/OIvuLpEDE
+         IVwy7MuAjCAbEYfUfUMJHCxXpNAKEfOd8GL6nL+396vTBmPyr4uxBpp0KB34h7owFKNe
+         DtbaRAp67mLJYmQay+4r6DKx6KNXJKYJz6suluGN5ZmDT9abA6HAtwjxjgLonrCHy9Z0
+         Ok0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=lxw5IHXH7meg3SrMIDtx2FvU0tJPa/DrNR+wxpAD0c0=;
- b=QzLkkWmh/fycOSpyljeFIMg9mrVNOcZHqds4b75mGV22N6C+yfn7NUPaLpbRvLZYL6
- ds6HwnRu7XHTKX+0m0VB7u7l02Y/dIi6I2QpLuneLagyRw+53FBe4rQIblpCB13J8Ii3
- U5RxsURKXgpIx3bMvYIkXJZ5uZ4TVYe1EfBYXvVxKPNWIrl8gwYQFtEQpBmMXV+IfipL
- KUDoO5Ua2L5ha3BSFUGGDaH1/zcycgeHcGst3dTYNB+BX40sCGywNyXswTMP6acVaqgk
- o1/Rt75+5WmFbTF2ZkPQVrhrbSOcGUJ+DSOaRLxv9qEha0JA4j93i3FcTl22tQ5R8BAy
- bBzA==
-X-Gm-Message-State: AGi0PuZHczUuA3AVHIr5o2w1qpLRJt431HRZMnN8Bd6IMN3DF3s2MfFz
- jDWkseymDOkAP1/tfVTO6oy5dQ==
-X-Received: by 2002:a17:90a:d983:: with SMTP id
- d3mr3595883pjv.209.1588969552240; 
- Fri, 08 May 2020 13:25:52 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
- by smtp.gmail.com with ESMTPSA id m4sm2558926pfm.26.2020.05.08.13.25.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 May 2020 13:25:51 -0700 (PDT)
-Subject: Re: [PATCH 4/4] exec: Rename qemu_ram_writeback() as qemu_ram_msync()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <20200508062456.23344-1-philmd@redhat.com>
- <20200508062456.23344-5-philmd@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <eef8407f-55ad-9c1d-bfb2-48fe3707aec2@linaro.org>
-Date: Fri, 8 May 2020 13:25:49 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+         :mime-version:content-transfer-encoding;
+        bh=iE1+mJklc9qKRY36HjqMYuwaM8rzjkNP3yQiEBI2qQE=;
+        b=WAHb79ZspdrXtah6lchM42zKirlFErHdyXIXVKKOTskqdHjLnPOIpHrVHBD+q4xAAu
+         zMLedcEFeu4q1IHbeVyB2W78TpxFVvMQZDG3VLm4BI8n7+QL0r7CzpHom7fV4BDWb4SP
+         /JZZBviSPuXAduJxBnMu/Y5kE0swvu7ksHtPQwbl9/Um1xwWdnx6qjtoniEQ5KasHcKa
+         9mAK7K34buWdEM9Zr26486WdEHMtlQbty3uUTTXf2RqPCkxex0xgeSiylsiEi5/10gW4
+         vSOSAoa4lc8jAxeHlnrBjFDny5hMTjB+s3WrXWws0/minK7DT19W6sBZQJmpzDB9z4C1
+         zjmQ==
+X-Gm-Message-State: AGi0PubjW7fgjS8v21sU24adzXDASxk8s6DUmvXmEuuO5AmVMzyShY8o
+	cTGYtpFf1uoK2QpLjlFz3N4=
+X-Google-Smtp-Source: APiQypIxSoJQrCineHduqmVzQFO86f/7GWszhtwChBJzs41MjCoAXBeO4O9AtUOwuPvrK3uUqfQyaA==
+X-Received: by 2002:a7b:ce0b:: with SMTP id m11mr21875192wmc.67.1589029755117;
+        Sat, 09 May 2020 06:09:15 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from localhost.localdomain (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
+        by smtp.gmail.com with ESMTPSA id m65sm1411410wmm.17.2020.05.09.06.09.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 09 May 2020 06:09:14 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Stafford Horne <shorne@gmail.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Roman Bolshakov <r.bolshakov@yadro.com>,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	qemu-s390x@nongnu.org,
+	Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+	Marek Vasut <marex@denx.de>,
+	Alistair Francis <Alistair.Francis@wdc.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-riscv@nongnu.org,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	qemu-ppc@nongnu.org,
+	qemu-arm@nongnu.org,
+	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Chris Wulff <crwulff@gmail.com>,
+	Richard Henderson <rth@twiddle.net>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	David Hildenbrand <david@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH 00/11] exec/cpu: Poison 'hwaddr' type in user-mode emulation
+Date: Sat,  9 May 2020 15:08:59 +0200
+Message-Id: <20200509130910.26335-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <20200508062456.23344-5-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Beata Michalska <beata.michalska@linaro.org>, qemu-block@nongnu.org,
- Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>, Keith Busch <kbusch@kernel.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lTZkST9KOIzw
+X-TUID: D9qzi29+4352
 
-On 5/7/20 11:24 PM, Philippe Mathieu-Daudé wrote:
-> Rename qemu_ram_writeback() as qemu_ram_msync() to better
-> match what it does.
-> 
-> Suggested-by: Stefan Hajnoczi <stefanha@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  include/exec/ram_addr.h | 4 ++--
->  exec.c                  | 2 +-
->  memory.c                | 2 +-
->  3 files changed, 4 insertions(+), 4 deletions(-)
+The 'hwaddr' type declared in "exec/hwaddr.h" is meant for
+system-mode emulation only. Poison it in user-mode code.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Philippe Mathieu-Daudé (11):
+  plugins: Restrict functions handling hwaddr to system-mode
+  sysemu/accel: Restrict machine methods to system-mode
+  sysemu/tcg: Only declare tcg_allowed when TCG is available
+  sysemu/hvf: Only declare hvf_allowed when HVF is available
+  target/ppc: Restrict PPCVirtualHypervisorClass to system-mode
+  target/s390x: Only compile decode_basedisp() on system-mode
+  target/s390x/helper: Clean ifdef'ry
+  target/s390x: Restrict system-mode declarations
+  target/cpu: Restrict handlers using hwaddr type to system-mode
+  exec: Use 'cpu-common.h' instead of system-mode specific 'hwaddr.h'
+  exec/cpu-common: Poison hwaddr type in user-mode emulation
 
+ include/disas/disas.h           |  2 +-
+ include/exec/cpu-common.h       |  8 ++++++--
+ include/hw/core/cpu.h           | 10 ++++++----
+ include/qemu/qemu-plugin.h      |  2 ++
+ include/sysemu/accel.h          |  4 +++-
+ include/sysemu/hvf.h            |  6 +++---
+ include/sysemu/tcg.h            |  2 +-
+ target/alpha/cpu.h              |  4 +++-
+ target/arm/cpu.h                |  6 +++---
+ target/arm/internals.h          |  4 ++++
+ target/cris/cpu.h               |  2 ++
+ target/hppa/cpu.h               |  2 +-
+ target/i386/cpu.h               |  2 ++
+ target/m68k/cpu.h               |  7 ++++++-
+ target/microblaze/cpu.h         |  5 ++++-
+ target/mips/internal.h          |  2 +-
+ target/nios2/cpu.h              |  5 ++++-
+ target/openrisc/cpu.h           |  3 ++-
+ target/ppc/cpu.h                |  6 +++---
+ target/ppc/kvm_ppc.h            | 22 +++++++++++-----------
+ target/riscv/cpu.h              | 20 ++++++++++----------
+ target/s390x/internal.h         | 15 ++++++++++-----
+ target/sh4/cpu.h                |  2 +-
+ target/sparc/cpu.h              |  2 ++
+ target/xtensa/cpu.h             | 12 +++++++-----
+ plugins/api.c                   | 17 ++---------------
+ target/hppa/cpu.c               |  4 +++-
+ target/ppc/translate_init.inc.c |  6 +++++-
+ target/s390x/helper.c           |  7 ++-----
+ 29 files changed, 110 insertions(+), 79 deletions(-)
 
-r~
+-- 
+2.21.3

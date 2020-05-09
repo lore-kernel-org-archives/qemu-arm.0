@@ -1,158 +1,170 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2297985lfb;
-        Thu, 7 May 2020 13:25:57 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJ0OuslPOnvot9nPNZJrH+w4kSrNqDG9r/IWrxdz/XkFh9bsFz7zkSJ8avHcXWF9HHBpKIt
-X-Received: by 2002:ac8:4447:: with SMTP id m7mr16012291qtn.372.1588883156851;
-        Thu, 07 May 2020 13:25:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588883156; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1026524lfb;
+        Sat, 9 May 2020 06:09:36 -0700 (PDT)
+X-Received: by 2002:a5d:4f10:: with SMTP id c16mr7989279wru.243.1589029775889;
+        Sat, 09 May 2020 06:09:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589029775; cv=none;
         d=google.com; s=arc-20160816;
-        b=DuhQg5KUVN1Ctzw2qJ+MRCLNRDeOuucDUqnUrcR2rI99dTFHl4G0OYENGmWZGGnG0m
-         9tj60L6Q1QaS1UMl8uSZQgzHASPbSMfrfFXtCShblDU1Sx9YxrEciXxXH42wnXuCWNPJ
-         +wXWvknsW4rRQFlKtFZz4uRo+NXRAjXjjQFt1vUbKqkgDTevoaY/U767reaNbqR1ku44
-         5PHQn6PANj3cvC71xujvt0C3vqD46PeS/bKYjPsi6lTLR4Bb/2XeThZ/BoTAYHVkp/Ck
-         dN4ce3OjJ3DthoIpHD/DYQ+cd3x58CczCNNCoSwfNqluoEaSYWkQFNrioiUQuatH0r87
-         9/3w==
+        b=itBeEME+TJCOs8/EYdtxwfgpB6qD/RP4YPdiVpK4wZKR66Rah7wOFcOMovq8Wcg2+w
+         /+IsqocdMVma0kpg2vIXG2hgZ+cnKfdxp+OxrmbSpqicwbRNztGea+WIiDKvQH5Msnvo
+         75tahy0jVvVsdFvaTIqJT1HWmkf8vLe2dKBgMGBf6qwZDcyu7ZUtVOn+EAOB+yTSfCn/
+         tiI9LAyTA2BEvFCPa5E+78iLq9/RYq5iwsSfFpAWudqL39UU3NASMUai5ZlAt3bVLwAa
+         78gNqPQ2/twKzLvSjU97KG9/FmCQ7N5R3c5uSCJne2K7I6DmADBm8YXFG39YgtSUhqIj
+         f1Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=UkQ2SXUns6F/5PObSbNi0PU9ulwYNF013AWTnOJW1V0=;
-        b=BekQge6o4ooo2Adau+QpU/K8U34PEnQUVMwuW68o2RGMgAHPOBNL8TGLJA6/mQT7Ub
-         /fQaSCK5Gr0hU0Wn527Qka2wl7eEHw5Z27gp/7HsbkOdVjqijLI7g5f3wu0s0YqITxcX
-         lAe1AMi8MaMgdOsNBlAlCDbCPaAOCVQ9LRJRDeZUpAsSHTnI7WLCW3uK0G+/FghuWb2z
-         7h+FUZhVxOdQg9tzIcj3p+okhEVRgxPaN0lvbU2X4xY65JwnMiaugEnSdhd9dx6iuzfi
-         M/UwcmmF2DcrL8x6zqNLKc2U0/WCFh5qbBNWSJyyOX2GxCs32snltje8hTgWarP1r9fg
-         5MKg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:sender:dkim-signature;
+        bh=dOtABLpYucdkmo0UeAZ60MKjOPNkZbYs54q0kVYNjc4=;
+        b=QJsW+t2pKF7r7nScxDK6WAOvgVM3+27Q6u48KwQmuwhl8KewZ6uk7Vw/pEnw028V5u
+         jI3/atx1trQ4XAvaw38jhR/XtCGrEljs3fCiGvF+Lxq4Ejwy9WVgi7EG9dqMMHK/aAt3
+         Gj8Cwc4Q12Mctco1yHotFAr/9E+kjtxHTYuivGrqaChhgSWagSPLat30JJ2pNxIKkaz3
+         aN3agZxOwFIwBJHxdeYEKnH/2UH9Oc3DBwwlcywoEj9X9D/KSD9G+mzl/BsAM3IXR6It
+         +05xJ/3AhsKWAD+qwAfnSl/CoRqOS4VIFNQxFu4tdoTxWLRzXVEMTjCQi/sfVHxIzuIR
+         gzvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UC43ZlZj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [2001:470:142::17])
-        by mx.google.com with ESMTPS id i189si3755391qkd.119.2020.05.07.13.25.56
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 May 2020 13:25:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) client-ip=2001:470:142::17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HQK3okQo;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id f12sor2908596wrq.59.2020.05.09.06.09.35
+        (Google Transport Security);
+        Sat, 09 May 2020 06:09:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UC43ZlZj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 2001:470:142::17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38828 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jWn5g-0000Zy-At
-	for alex.bennee@linaro.org; Thu, 07 May 2020 16:25:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43872)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <amanieu@gmail.com>)
- id 1jWn4w-0008Cb-38; Thu, 07 May 2020 16:25:10 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:43548)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <amanieu@gmail.com>)
- id 1jWn4v-0002q3-Dl; Thu, 07 May 2020 16:25:09 -0400
-Received: by mail-wr1-x444.google.com with SMTP id i15so7537202wrx.10;
- Thu, 07 May 2020 13:25:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=UkQ2SXUns6F/5PObSbNi0PU9ulwYNF013AWTnOJW1V0=;
- b=UC43ZlZjow+N6/LNlQek8nn4jbXnTe9OjaVzN1CFkpenoeUsrAm7KzfNF3+65zNiSW
- b201ttBFquhdnpUs4KS2/I2Q8QCGKaDJaKN4AwZ9sNKbdWsMJmA55VccRGhhPlOXKpRU
- i1Z/xRKFiD6s26tObIt4q+QAJJtbu/Twr1yoxelFqlp489qko7b9UAe+F8O4hX1y2uvm
- IWMqMG+DByH7c8OyIEFFcR/s0zAfFjBpyC5PXhm0NXIgSDu/bKLfKFjKqPfeeNf3clDa
- 58FOwtw2yN688MO8t3TuzG4Lok23KVdQZkxx9eZO09Cz97Ge/986+WJtDxe3nAFqCKGW
- qIOQ==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HQK3okQo;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=dOtABLpYucdkmo0UeAZ60MKjOPNkZbYs54q0kVYNjc4=;
+        b=HQK3okQo3XgNVWABTcc/YPdQSiaGJ3DfZD6sUUm77Yk8M91/zHxprIHjBdeBsmNIdg
+         Bn3+sNvRRbzvzyVK7o+vMnT7F6lWE1Iz3Dc5pZD8yA9Su/M/W/MQvv9soEeS1saLjcTe
+         1nsJCoI4Dt3gaLZtddO2soy9KlYTqguUaHTrFAwy1FsijxkmQEF8Ye47gY/UgB+Ingrx
+         MXCjshWY7FIM1TOUdJ8OPNMRLvDuykIdDhp0rhL65CbYVOl8DVPRp2ITd3RjPSV48+KN
+         dvEWFWdZoycY7hiqyy+y32YfKU0m1Agt5JeQFR0A3mdwVcz9WhrfrydHnlsV1s0wWDZY
+         JRWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=UkQ2SXUns6F/5PObSbNi0PU9ulwYNF013AWTnOJW1V0=;
- b=G+D2X36XIXxsjzQb89SW8/4no9WLSo70Cz08Ri12TErle658Dy4XMbXx6k0M2XCCXx
- 9lPv9ZeQYnKsvuZnWHGCS2I5tZ8mysv/ywLIgoBj2xsAsVkvWigjZV2hZI0+vCXS1Cah
- xIAnbZ2XJBe8sDbD6HK/sLF8jWq7oYQr3NTEQP7okz8d1+j0KxUgJwJGpmKxMSkbmaXg
- 3aML8gYcNegX3YIyqWFGkqib+2eBCaw51Ph7NURsqn13i+1gnF34z+MPvtv3LatW6nQJ
- hv6rfgTBXrNHMmI8qcl4R5rFRsSzNucFETfWAZBTxmREh6LOnAlZXd+qv7jy6VQBxSHO
- YlGw==
-X-Gm-Message-State: AGi0PubzyWkIgZBxRyc9hqbYABAN/LHYq+yK2GZR+fRBW7xx/8EfyV12
- wLHRrDY72YxTZ/oNvyqK4420qfshZGXOZw==
-X-Received: by 2002:adf:afd9:: with SMTP id y25mr17515023wrd.421.1588883107194; 
- Thu, 07 May 2020 13:25:07 -0700 (PDT)
-Received: from amanieu-laptop.home ([2a00:23c6:f081:f801:76b2:7504:9791:6959])
- by smtp.gmail.com with ESMTPSA id
- c25sm9516522wmb.44.2020.05.07.13.25.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 May 2020 13:25:06 -0700 (PDT)
-From: Amanieu d'Antras <amanieu@gmail.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+         :in-reply-to:references:mime-version:content-transfer-encoding;
+        bh=dOtABLpYucdkmo0UeAZ60MKjOPNkZbYs54q0kVYNjc4=;
+        b=tFBcUIbNCZK/MqkF2aX+Kc7CQNGqSMghIPEkK1rUEZvP6q+dCBXz3n0bPzdNCw+9xx
+         VVJNKHIHT1lwX5IEavKHm8aT9R+Q54kzlmN6dtL3AEdG5PUGvHWiG7tI35+Uvt1ahAbZ
+         nGH9/LfRsngyGfyY1mtz7oioi/mYefh3zvnC6kjLO5IXnteM0WC3YI+JF5AHRKRxYfk3
+         oH2hyzsLLPCkJ56dwcXxU/pEIIzOvLHBP6O7+QjL92BhlzUpTL3oGJ7Hpx2VF7d890/F
+         D4xe6bcH8RetpwhVd2jl8UkCayGEtjZiNmEjX7wi6Xf/kkVWjJxLtHfTP35uy1kRS0p/
+         ttDw==
+X-Gm-Message-State: AGi0PuZx4i3k6eR9ULw/ExYDCgyyKFvKsIltVw6v/RByDxfjcNmFGOmw
+	fEhYbro8hkSPQFsu+x8rjgw=
+X-Google-Smtp-Source: APiQypIV8V4JDCd+NtoSYkuzj8e2yB4xHjwhOrS9F9Bxn7DYiVKkt3jysGRG12LFj+3ejc82YWxp8A==
+X-Received: by 2002:adf:d841:: with SMTP id k1mr8240629wrl.129.1589029775565;
+        Sat, 09 May 2020 06:09:35 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from localhost.localdomain (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
+        by smtp.gmail.com with ESMTPSA id m65sm1411410wmm.17.2020.05.09.06.09.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 09 May 2020 06:09:34 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH] linux-user/arm: Reset CPSR_E when entering a signal handler
-Date: Thu,  7 May 2020 21:24:29 +0100
-Message-Id: <20200507202429.1643202-1-amanieu@gmail.com>
-X-Mailer: git-send-email 2.26.2
+Cc: Laurent Vivier <laurent@vivier.eu>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Stafford Horne <shorne@gmail.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Roman Bolshakov <r.bolshakov@yadro.com>,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	qemu-s390x@nongnu.org,
+	Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+	Marek Vasut <marex@denx.de>,
+	Alistair Francis <Alistair.Francis@wdc.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-riscv@nongnu.org,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	qemu-ppc@nongnu.org,
+	qemu-arm@nongnu.org,
+	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Chris Wulff <crwulff@gmail.com>,
+	Richard Henderson <rth@twiddle.net>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	David Hildenbrand <david@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH 07/11] target/s390x/helper: Clean ifdef'ry
+Date: Sat,  9 May 2020 15:09:06 +0200
+Message-Id: <20200509130910.26335-8-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200509130910.26335-1-f4bug@amsat.org>
+References: <20200509130910.26335-1-f4bug@amsat.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=amanieu@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Riku Voipio <riku.voipio@iki.fi>,
- qemu-arm@nongnu.org, Amanieu d'Antras <amanieu@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r0whgFLLZLZ7
+X-TUID: zao5X3jpmbEP
 
-This fixes signal handlers running with the wrong endianness if the
-interrupted code used SETEND to dynamically switch endianness.
+All this code is guarded checking CONFIG_USER_ONLY definition.
+Drop the duplicated checks.
 
-Signed-off-by: Amanieu d'Antras <amanieu@gmail.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- linux-user/arm/signal.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+Suspicious ifdef'ry in s390_handle_wait() from commit 83f7f32901c.
+---
+ target/s390x/helper.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/linux-user/arm/signal.c b/linux-user/arm/signal.c
-index d96fc27ce1..8aca5f61b7 100644
---- a/linux-user/arm/signal.c
-+++ b/linux-user/arm/signal.c
-@@ -244,6 +244,12 @@ setup_return(CPUARMState *env, struct target_sigaction *ka,
-     } else {
-         cpsr &= ~CPSR_T;
+diff --git a/target/s390x/helper.c b/target/s390x/helper.c
+index 09f60406aa..26e3b366e8 100644
+--- a/target/s390x/helper.c
++++ b/target/s390x/helper.c
+@@ -33,6 +33,7 @@
+ #endif
+ 
+ #ifndef CONFIG_USER_ONLY
++
+ void s390x_tod_timer(void *opaque)
+ {
+     cpu_inject_clock_comparator((S390CPU *) opaque);
+@@ -42,9 +43,6 @@ void s390x_cpu_timer(void *opaque)
+ {
+     cpu_inject_cpu_timer((S390CPU *) opaque);
+ }
+-#endif
+-
+-#ifndef CONFIG_USER_ONLY
+ 
+ hwaddr s390_cpu_get_phys_page_debug(CPUState *cs, vaddr vaddr)
+ {
+@@ -98,14 +96,12 @@ void s390_handle_wait(S390CPU *cpu)
+     CPUState *cs = CPU(cpu);
+ 
+     if (s390_cpu_halt(cpu) == 0) {
+-#ifndef CONFIG_USER_ONLY
+         if (is_special_wait_psw(cpu->env.psw.addr)) {
+             qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+         } else {
+             cpu->env.crash_reason = S390_CRASH_REASON_DISABLED_WAIT;
+             qemu_system_guest_panicked(cpu_get_crash_info(cs));
+         }
+-#endif
      }
-+    cpsr &= ~CPSR_E;
-+#ifdef TARGET_WORDS_BIGENDIAN
-+    if (env->cp15.sctlr_el[1] & SCTLR_E0E) {
-+        cpsr |= CPSR_E;
-+    }
-+#endif
+ }
  
-     if (ka->sa_flags & TARGET_SA_RESTORER) {
-         if (is_fdpic) {
-@@ -287,7 +293,8 @@ setup_return(CPUARMState *env, struct target_sigaction *ka,
-     env->regs[13] = frame_addr;
-     env->regs[14] = retcode;
-     env->regs[15] = handler & (thumb ? ~1 : ~3);
--    cpsr_write(env, cpsr, CPSR_IT | CPSR_T, CPSRWriteByInstr);
-+    cpsr_write(env, cpsr, CPSR_IT | CPSR_T | CPSR_E, CPSRWriteByInstr);
-+    arm_rebuild_hflags(env);
- 
+@@ -328,6 +324,7 @@ int s390_store_adtl_status(S390CPU *cpu, hwaddr addr, hwaddr len)
+     cpu_physical_memory_unmap(sa, len, 1, len);
      return 0;
  }
++
+ #endif /* CONFIG_USER_ONLY */
+ 
+ void s390_cpu_dump_state(CPUState *cs, FILE *f, int flags)
 -- 
-2.26.2
-
+2.21.3

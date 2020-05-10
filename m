@@ -1,170 +1,239 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1026524lfb;
-        Sat, 9 May 2020 06:09:36 -0700 (PDT)
-X-Received: by 2002:a5d:4f10:: with SMTP id c16mr7989279wru.243.1589029775889;
-        Sat, 09 May 2020 06:09:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589029775; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1725205lfb;
+        Sun, 10 May 2020 03:44:30 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJCTIiy1/Pf/yUqmLS21KgYkTtWNFuUXemy+i9u6T/GdAlHYL6EXtz/SAE8spsxSvjD08rf
+X-Received: by 2002:ac8:31e1:: with SMTP id i30mr11326577qte.74.1589107470065;
+        Sun, 10 May 2020 03:44:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589107470; cv=none;
         d=google.com; s=arc-20160816;
-        b=itBeEME+TJCOs8/EYdtxwfgpB6qD/RP4YPdiVpK4wZKR66Rah7wOFcOMovq8Wcg2+w
-         /+IsqocdMVma0kpg2vIXG2hgZ+cnKfdxp+OxrmbSpqicwbRNztGea+WIiDKvQH5Msnvo
-         75tahy0jVvVsdFvaTIqJT1HWmkf8vLe2dKBgMGBf6qwZDcyu7ZUtVOn+EAOB+yTSfCn/
-         tiI9LAyTA2BEvFCPa5E+78iLq9/RYq5iwsSfFpAWudqL39UU3NASMUai5ZlAt3bVLwAa
-         78gNqPQ2/twKzLvSjU97KG9/FmCQ7N5R3c5uSCJne2K7I6DmADBm8YXFG39YgtSUhqIj
-         f1Lw==
+        b=b/NvV414zPEzXiEGOHdNxjS1I2ljhZNRXCsZnCjSBMp6MLJNiXudw8lA1yzR05XwW0
+         mv3o3xN3YLBe61qC7vmNo/VkmHsyx/8e5VDEwp/RDSYXQstlUYK5hty2tGIErQM2lqFw
+         7IHomw+Spq1UaS0OXlZJsU+XaOYDQyoERB3bn0ShCEn4XQvwOJSsgiGc172KNTdzhIXs
+         gzV2ixO7cDpne3BC8hEyMsQUrSGxgqeCW3HPSawG5HpaOQz272nbGsmZD79azMhqCfeI
+         gtrVGTehAAfgj70LBlGNqmnfGsb9n/dhrICcFmtOifqwpVTr5DVsAYDy/wXYmuMLBIiK
+         OCjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=dOtABLpYucdkmo0UeAZ60MKjOPNkZbYs54q0kVYNjc4=;
-        b=QJsW+t2pKF7r7nScxDK6WAOvgVM3+27Q6u48KwQmuwhl8KewZ6uk7Vw/pEnw028V5u
-         jI3/atx1trQ4XAvaw38jhR/XtCGrEljs3fCiGvF+Lxq4Ejwy9WVgi7EG9dqMMHK/aAt3
-         Gj8Cwc4Q12Mctco1yHotFAr/9E+kjtxHTYuivGrqaChhgSWagSPLat30JJ2pNxIKkaz3
-         aN3agZxOwFIwBJHxdeYEKnH/2UH9Oc3DBwwlcywoEj9X9D/KSD9G+mzl/BsAM3IXR6It
-         +05xJ/3AhsKWAD+qwAfnSl/CoRqOS4VIFNQxFu4tdoTxWLRzXVEMTjCQi/sfVHxIzuIR
-         gzvg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=xxXonWqCVMIv8e8r2cY6NrxuihM3z3kRcazrSTkm8RA=;
+        b=TrQt0gvk/GPEAWlquoWZitEiocYXV06Fbqb6Rf/BIjYv/13w7/AddCq9NMZmf/XYhK
+         stG26F22FkP9KNWJ7VMp9Vw3l/pCi1Qb3IsITgo82kA5pGzpE2YufCI6GGrFS4w5vK4z
+         dMU7AGNFE904Kf+vaOY7GxF0VwHKMklAeGZiAptzWTMEnzaDAFfM6VdBHiFOgm+oMwSY
+         OnlqCKL/ZiF+YzS+2PUlDEpZ+hKlzhV+cFQIIIRJgmn6UVaSyBJRDrAZikRlwfA9P5Vu
+         wDVoRlA6u33I/AKcjzH7HafrkdtrW2D3T4eq9ylN14MYBfijimL2xF9ldxvJnHe+R0c2
+         bf0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HQK3okQo;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Hhxvu4ng;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f12sor2908596wrq.59.2020.05.09.06.09.35
-        (Google Transport Security);
-        Sat, 09 May 2020 06:09:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x14si3640208qtp.111.2020.05.10.03.44.29
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 10 May 2020 03:44:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HQK3okQo;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Hhxvu4ng;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=dOtABLpYucdkmo0UeAZ60MKjOPNkZbYs54q0kVYNjc4=;
-        b=HQK3okQo3XgNVWABTcc/YPdQSiaGJ3DfZD6sUUm77Yk8M91/zHxprIHjBdeBsmNIdg
-         Bn3+sNvRRbzvzyVK7o+vMnT7F6lWE1Iz3Dc5pZD8yA9Su/M/W/MQvv9soEeS1saLjcTe
-         1nsJCoI4Dt3gaLZtddO2soy9KlYTqguUaHTrFAwy1FsijxkmQEF8Ye47gY/UgB+Ingrx
-         MXCjshWY7FIM1TOUdJ8OPNMRLvDuykIdDhp0rhL65CbYVOl8DVPRp2ITd3RjPSV48+KN
-         dvEWFWdZoycY7hiqyy+y32YfKU0m1Agt5JeQFR0A3mdwVcz9WhrfrydHnlsV1s0wWDZY
-         JRWQ==
+Received: from localhost ([::1]:46818 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jXjRd-0003VB-Fp
+	for alex.bennee@linaro.org; Sun, 10 May 2020 06:44:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52118)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jXjRS-0003PQ-0F; Sun, 10 May 2020 06:44:18 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35693)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jXjRR-0001HI-54; Sun, 10 May 2020 06:44:17 -0400
+Received: by mail-wm1-x343.google.com with SMTP id n5so505429wmd.0;
+ Sun, 10 May 2020 03:44:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=xxXonWqCVMIv8e8r2cY6NrxuihM3z3kRcazrSTkm8RA=;
+ b=Hhxvu4ngq1uQsJWy0byeouIa/qmUw2lyg24hbkE9XpcSbAMSU5HfFfluJ7SjABkkNK
+ 3O3dpPopbQM7lUU2l+AvC3X2oGN+EEnO3boAmQENZJvAU3/MTDkUVea3vXUdZtHbrjgi
+ 8jSRSf2NtrO45j3eJVBKHFrPj9wN/t7uCp5zT5p/JT1Hv8YlsvyD47/HlKK+LiZiEbZN
+ X7c/+SUZXfoydFGjO9c/Zw8x9X+zEfJFzRptu/cQ0nynkxaUfaCHZ1OUs+rZTjYQjgbM
+ mkOsbSz46gch9r/Ego7ug8KhJmT7TcifguGVdwodDaDDgruspw9uBerdpEb6L/fPuWmS
+ U40w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
-         :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=dOtABLpYucdkmo0UeAZ60MKjOPNkZbYs54q0kVYNjc4=;
-        b=tFBcUIbNCZK/MqkF2aX+Kc7CQNGqSMghIPEkK1rUEZvP6q+dCBXz3n0bPzdNCw+9xx
-         VVJNKHIHT1lwX5IEavKHm8aT9R+Q54kzlmN6dtL3AEdG5PUGvHWiG7tI35+Uvt1ahAbZ
-         nGH9/LfRsngyGfyY1mtz7oioi/mYefh3zvnC6kjLO5IXnteM0WC3YI+JF5AHRKRxYfk3
-         oH2hyzsLLPCkJ56dwcXxU/pEIIzOvLHBP6O7+QjL92BhlzUpTL3oGJ7Hpx2VF7d890/F
-         D4xe6bcH8RetpwhVd2jl8UkCayGEtjZiNmEjX7wi6Xf/kkVWjJxLtHfTP35uy1kRS0p/
-         ttDw==
-X-Gm-Message-State: AGi0PuZx4i3k6eR9ULw/ExYDCgyyKFvKsIltVw6v/RByDxfjcNmFGOmw
-	fEhYbro8hkSPQFsu+x8rjgw=
-X-Google-Smtp-Source: APiQypIV8V4JDCd+NtoSYkuzj8e2yB4xHjwhOrS9F9Bxn7DYiVKkt3jysGRG12LFj+3ejc82YWxp8A==
-X-Received: by 2002:adf:d841:: with SMTP id k1mr8240629wrl.129.1589029775565;
-        Sat, 09 May 2020 06:09:35 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from localhost.localdomain (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
-        by smtp.gmail.com with ESMTPSA id m65sm1411410wmm.17.2020.05.09.06.09.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 09 May 2020 06:09:34 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=xxXonWqCVMIv8e8r2cY6NrxuihM3z3kRcazrSTkm8RA=;
+ b=p6/f2mdG3afj5HkEuHAA4b/+ixW3fLGMc29xOyfajpcK6ybEpJJhQhNeg8Vj2YGddM
+ xrcCwHyJnOjCKgfEBUagyfh8vvg/VXirvfgabbBilGkvaZAg2HAdDX8qbtdb1J7WtsjA
+ hnnaZznBfacjQ22J8TzLCXC9DG4CSdr6QsJBvsCRj/70wBJgRNLIVmWdqnELlmPZU0pL
+ V//37uJZQrxHdKYJ3TCiQDAimrLp+c8H4Lx6KsVT/T6cMmliM66hdx6hlxuqcO1vMsjg
+ n3/IZ6Y7CJhngDxYocKzMzUWV/i5uwWT/uHFmQ7mPcb+hEKw5a9DK5PjPa4WgmZO/gE5
+ 3OJg==
+X-Gm-Message-State: AGi0PuZ37R8+Oapc+c13jUPeWHqWK6M9F2eWq5lA0l0i9U36YTKA6qzV
+ 8ITTW81MgCpBkc/36ZdLyPk=
+X-Received: by 2002:a7b:c4c9:: with SMTP id g9mr25481489wmk.171.1589107453896; 
+ Sun, 10 May 2020 03:44:13 -0700 (PDT)
+Received: from [192.168.1.37] (17.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.17])
+ by smtp.gmail.com with ESMTPSA id g15sm12287672wrp.96.2020.05.10.03.44.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 10 May 2020 03:44:13 -0700 (PDT)
+Subject: Re: [PATCH 01/11] plugins: Restrict functions handling hwaddr to
+ system-mode
 To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Stafford Horne <shorne@gmail.com>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Roman Bolshakov <r.bolshakov@yadro.com>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	qemu-s390x@nongnu.org,
-	Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
-	Marek Vasut <marex@denx.de>,
-	Alistair Francis <Alistair.Francis@wdc.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-riscv@nongnu.org,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	qemu-ppc@nongnu.org,
-	qemu-arm@nongnu.org,
-	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Richard Henderson <rth@twiddle.net>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	David Hildenbrand <david@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH 07/11] target/s390x/helper: Clean ifdef'ry
-Date: Sat,  9 May 2020 15:09:06 +0200
-Message-Id: <20200509130910.26335-8-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200509130910.26335-1-f4bug@amsat.org>
 References: <20200509130910.26335-1-f4bug@amsat.org>
+ <20200509130910.26335-2-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <eb0d835e-0603-9f76-836c-aca7fb9be525@amsat.org>
+Date: Sun, 10 May 2020 12:44:10 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20200509130910.26335-2-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: zao5X3jpmbEP
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Marek Vasut <marex@denx.de>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ Richard Henderson <rth@twiddle.net>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1/zJdesdY0o6
 
-All this code is guarded checking CONFIG_USER_ONLY definition.
-Drop the duplicated checks.
+On 5/9/20 3:09 PM, Philippe Mathieu-Daudé wrote:
+> Restrict qemu_plugin_hwaddr_is_io() and
+> qemu_plugin_hwaddr_device_offset() to system-mode.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>   include/qemu/qemu-plugin.h |  2 ++
+>   plugins/api.c              | 17 ++---------------
+>   2 files changed, 4 insertions(+), 15 deletions(-)
+> 
+> diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
+> index 5502e112c8..06c271a107 100644
+> --- a/include/qemu/qemu-plugin.h
+> +++ b/include/qemu/qemu-plugin.h
+> @@ -326,6 +326,7 @@ bool qemu_plugin_mem_is_store(qemu_plugin_meminfo_t info);
+>   struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
+>                                                     uint64_t vaddr);
+>   
+> +#ifndef CONFIG_USER_ONLY
+>   /*
+>    * The following additional queries can be run on the hwaddr structure
+>    * to return information about it. For non-IO accesses the device
+> @@ -333,6 +334,7 @@ struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
+>    */
+>   bool qemu_plugin_hwaddr_is_io(struct qemu_plugin_hwaddr *hwaddr);
+>   uint64_t qemu_plugin_hwaddr_device_offset(const struct qemu_plugin_hwaddr *haddr);
+> +#endif /* CONFIG_USER_ONLY */
+>   
+>   typedef void
+>   (*qemu_plugin_vcpu_mem_cb_t)(unsigned int vcpu_index,
+> diff --git a/plugins/api.c b/plugins/api.c
+> index 53c8a73582..785ad2e45e 100644
+> --- a/plugins/api.c
+> +++ b/plugins/api.c
+> @@ -249,7 +249,8 @@ bool qemu_plugin_mem_is_store(qemu_plugin_meminfo_t info)
+>    * Virtual Memory queries
+>    */
+>   
+> -#ifdef CONFIG_SOFTMMU
+> +#ifndef CONFIG_USER_ONLY
+> +
+>   static __thread struct qemu_plugin_hwaddr hwaddr_info;
+>   
+>   struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
+> @@ -267,26 +268,14 @@ struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
+>   
+>       return &hwaddr_info;
+>   }
+> -#else
+> -struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
+> -                                                  uint64_t vaddr)
+> -{
+> -    return NULL;
+> -}
+> -#endif
+>   
+>   bool qemu_plugin_hwaddr_is_io(struct qemu_plugin_hwaddr *hwaddr)
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-Suspicious ifdef'ry in s390_handle_wait() from commit 83f7f32901c.
----
- target/s390x/helper.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+Please disregard this patch, I misinterpreted the variable name with the 
+hwaddr type.
 
-diff --git a/target/s390x/helper.c b/target/s390x/helper.c
-index 09f60406aa..26e3b366e8 100644
---- a/target/s390x/helper.c
-+++ b/target/s390x/helper.c
-@@ -33,6 +33,7 @@
- #endif
- 
- #ifndef CONFIG_USER_ONLY
-+
- void s390x_tod_timer(void *opaque)
- {
-     cpu_inject_clock_comparator((S390CPU *) opaque);
-@@ -42,9 +43,6 @@ void s390x_cpu_timer(void *opaque)
- {
-     cpu_inject_cpu_timer((S390CPU *) opaque);
- }
--#endif
--
--#ifndef CONFIG_USER_ONLY
- 
- hwaddr s390_cpu_get_phys_page_debug(CPUState *cs, vaddr vaddr)
- {
-@@ -98,14 +96,12 @@ void s390_handle_wait(S390CPU *cpu)
-     CPUState *cs = CPU(cpu);
- 
-     if (s390_cpu_halt(cpu) == 0) {
--#ifndef CONFIG_USER_ONLY
-         if (is_special_wait_psw(cpu->env.psw.addr)) {
-             qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-         } else {
-             cpu->env.crash_reason = S390_CRASH_REASON_DISABLED_WAIT;
-             qemu_system_guest_panicked(cpu_get_crash_info(cs));
-         }
--#endif
-     }
- }
- 
-@@ -328,6 +324,7 @@ int s390_store_adtl_status(S390CPU *cpu, hwaddr addr, hwaddr len)
-     cpu_physical_memory_unmap(sa, len, 1, len);
-     return 0;
- }
-+
- #endif /* CONFIG_USER_ONLY */
- 
- void s390_cpu_dump_state(CPUState *cs, FILE *f, int flags)
--- 
-2.21.3
+>   {
+> -#ifdef CONFIG_SOFTMMU
+>       return hwaddr->is_io;
+> -#else
+> -    return false;
+> -#endif
+>   }
+>   
+>   uint64_t qemu_plugin_hwaddr_device_offset(const struct qemu_plugin_hwaddr *haddr)
+>   {
+> -#ifdef CONFIG_SOFTMMU
+>       if (haddr) {
+>           if (!haddr->is_io) {
+>               ram_addr_t ram_addr = qemu_ram_addr_from_host((void *) haddr->v.ram.hostaddr);
+> @@ -299,7 +288,6 @@ uint64_t qemu_plugin_hwaddr_device_offset(const struct qemu_plugin_hwaddr *haddr
+>               return haddr->v.io.offset;
+>           }
+>       }
+> -#endif
+>       return 0;
+>   }
+>   
+> @@ -308,7 +296,6 @@ uint64_t qemu_plugin_hwaddr_device_offset(const struct qemu_plugin_hwaddr *haddr
+>    * will be. This helps the plugin dimension per-vcpu arrays.
+>    */
+>   
+> -#ifndef CONFIG_USER_ONLY
+>   static MachineState * get_ms(void)
+>   {
+>       return MACHINE(qdev_get_machine());
+> 

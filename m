@@ -1,123 +1,115 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp148461lfb;
-        Mon, 11 May 2020 05:19:59 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK1in7BpEhCyKEeiT9QrFcgyQ/XHDY90vvCOMe9KGDsSyQOeIZ2gDDgAgMVFBpo4aPoVFuu
-X-Received: by 2002:ad4:44ab:: with SMTP id n11mr15715685qvt.235.1589199599168;
-        Mon, 11 May 2020 05:19:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589199599; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp150044lfb;
+        Mon, 11 May 2020 05:21:55 -0700 (PDT)
+X-Google-Smtp-Source: APiQypK1PmyI7Zes0YDWW/4hdCcar3WvgXBI8J3ZO6Jloo7Oo5+aPc8ZhqvYuGiDpnZR0u+Tm+fH
+X-Received: by 2002:ae9:e713:: with SMTP id m19mr15250399qka.39.1589199714933;
+        Mon, 11 May 2020 05:21:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589199714; cv=none;
         d=google.com; s=arc-20160816;
-        b=ionInu9tfaCM0rTCYx0Ry9YPWRv+8m9wnMJbIclWughe0Qb/hXmb8VjwHGTWpXIIJm
-         AiZlIL2DTkediNlJskFIWS41cVhuVsjyLpdE/SynQf6Ru/wWkgoYZIvAXR5viWoBQ00V
-         NbbKTKpR+aaZTwi5QWUoZD9OZCFyPuNau5HYDvh6VetIV+ILJUt9oVStzV2iMAm2ZDd3
-         F/0Wczs512pF83P/YKy4JtE8ZM9EpZOmKlU2oVbgxnahrBiuMXpKK9E7f1LwPEAFVoWi
-         GhlXuVWWrhKdwqhMgNg3lxkm/QnUUTHC/fFVSHZii2tXtu2SoJSr2FUUvpnbsa6+16Qm
-         trvw==
+        b=yV01G0DSuGnv384GeylwoFl6T2JyKId/DzhmlZNL1o4TYIywJc41cwJVGXrP1oKAD1
+         vn6h3S2ILtu3htDNINRSJB9gf+wI7AIjD2AzUlLkiuODi+zzVA9VDbAgbx32kmfIjDb6
+         gjNUr8Ltur3Q4s5C8stMvt8CPdl9Kc/8d4y7ByL5H8yUBl46AJQHBLDXp/3zr6b75aQX
+         9noy25CxXl2YQBmDtuU8sb57JYHpaFiW46iDz+/NOTHUdBqvwQSL0ANwDNNZ18tC95jQ
+         L0AVswQ8TEVJJUy+CgJ+cP3dLo2i/6X9kkgp1PKLV0lNLIoKtrPczHekCyGLGe/0tDTa
+         hamA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=PLyMEMUtWWHmGTQnNne8rTCXzLtrmwfee1Jte6/N6K4=;
-        b=pIr1W3RcKJKB5dQwfAOjhUlnMb8kvjN3MNed7SjmGYZwPIliwmF1/Y4NtK8/p44gcY
-         G2C2JXt1IT+t8UufiolMAghAvnT7JAk6pje8CtiDIxVih/dsTnBVXC46Vb5/aA2OZAS5
-         CmUXixfdNv3swVMxNeU8mKdXqZGhOmpG/O4SN+nJDuSAISVA+ZtUWdyRjrjgjJaDAVab
-         xb1qE0rWMx/3UXuTMjv0YQZmVlgXhU1qN9gRrl3b74Vzb9kf8v4gVJmYMF/5qeDkJ2th
-         AcijV7n+NJ+UiRzs5W1abJensafzFvkULj1s8v9N+TwhcEaXNF2GdSKSazY49udT5MsK
-         icIg==
+        bh=WE9of2IJLN2TV5g7cx+rhe2s1pQe8LZRT+6pv5bh5k8=;
+        b=SMmvWHLMnVQqn7yBD0gZEzvSRNnKoDJ08XuENXdB+4xVmYrmrnS8xxvs6+IzqbpkJi
+         Kiveq7Vzmr6c9ZHPGerhA72jIj1Fnsqn1kitDkjg748imOd7wfm1Wu8wIKpWuhh/GErj
+         6HHKW515gQLCEgDIb5tIX3iY/TEDDx//s9ae7SfrTLtjPWKbNZZggY6BgXZclic7wK42
+         JC7x4XIXxOPNWenNTK4Ag+dlrUXboDBWhN0RKiK1UHPlGew7n93zATenBl2uuswDwDZ+
+         GZyLeimlXGqZkISAVLa5Dz6PXtCjF1XP6h3qhr/vPkp60aIPgDlA+K4UhWBPfj12SVNb
+         6yUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZGlRATDO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qGzM980Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h3si3202433qkm.92.2020.05.11.05.19.59
+        by mx.google.com with ESMTPS id a14si5829631qvt.76.2020.05.11.05.21.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 May 2020 05:19:59 -0700 (PDT)
+        Mon, 11 May 2020 05:21:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZGlRATDO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qGzM980Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51726 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:55510 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jY7Pa-0005ow-JM
-	for alex.bennee@linaro.org; Mon, 11 May 2020 08:19:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36570)
+	id 1jY7RS-0007cU-C7
+	for alex.bennee@linaro.org; Mon, 11 May 2020 08:21:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36830)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jY7PS-0005ns-7b
- for qemu-arm@nongnu.org; Mon, 11 May 2020 08:19:50 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:25097
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jY7PR-0001re-Ev
- for qemu-arm@nongnu.org; Mon, 11 May 2020 08:19:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589199588;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=PLyMEMUtWWHmGTQnNne8rTCXzLtrmwfee1Jte6/N6K4=;
- b=ZGlRATDOCnkCxUz7M9qdkIDqfhJmqlB3OowXwBGzMK2XnT1P+F7RwLt3hfYkTyPbXputiF
- 7hgmC5m5eUvY/It+5b3kkI+UbNQ7wHLjiDojHh+MZaGpwYHiVx6wlh0Q0deMB51KbndXQ0
- uHh1jkZiLMlGRs+SLcQSUo7uPCxr1V0=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-217-G5Cvj8_aNeCg3s4CaWag8g-1; Mon, 11 May 2020 08:19:45 -0400
-X-MC-Unique: G5Cvj8_aNeCg3s4CaWag8g-1
-Received: by mail-wr1-f71.google.com with SMTP id d16so5139202wrv.18
- for <qemu-arm@nongnu.org>; Mon, 11 May 2020 05:19:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jY7R7-0007P1-Ks; Mon, 11 May 2020 08:21:33 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:34408)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jY7R6-0002k0-TM; Mon, 11 May 2020 08:21:33 -0400
+Received: by mail-wm1-x344.google.com with SMTP id g14so6729522wme.1;
+ Mon, 11 May 2020 05:21:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=WE9of2IJLN2TV5g7cx+rhe2s1pQe8LZRT+6pv5bh5k8=;
+ b=qGzM980ZCFb5AQQoFEA8MQ32JHEcCgIFy7qb8jmVriTJ854tcVpOkUw0Gp9mgcRJrz
+ umtOArEPEl7uvJ8T/LeDb/hmJKl3eW5yDTQdnEYvwx3X/FDLJoSWXWsr8XBX24C+SjKU
+ b7qBt82KcsHm2v5FKk6W9RPUZGMnKYZIBlJjcerdI1CETnciF9qIx3Acj8b7rrZ0f17+
+ ZYJLbpbMf9sjMcjFRaKpkezpHivwX5v9i6ItjGdtwmXagTe771d1ajaaohdvsud9DfMl
+ NQqMMzJ4n0fjerHvv5PkPH1agEGq6Bk1/QSUpdTBYn4NFgEfBgD/diZhmDg0l2y799zP
+ BNrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=PLyMEMUtWWHmGTQnNne8rTCXzLtrmwfee1Jte6/N6K4=;
- b=BNwP4GWGTYhKpiZpp+CJzLoqlp8R5YKl1T/6MWWwhr+X+XsxarfahnmPxFQBTATH+O
- GND70us2lBBTtyqupKW64csJww7ipDB/urdhDMm8uSdfwPl6W7PI3sG57mi7ZtElATuP
- Y+8KjmBG+61VsCkfZte45OPF3vvyCZTjnojUa7Ncn9sWGGKxwphrmevnPlqU476WnvZY
- zc+TIU6B7MV83hGWH3cwJ5/C6m8YGseCfcK2LAqRw5HlHNcWEsYWGIt6IXz6aNx1uiaf
- 8effZZ6tn+XNdtFuOJWzTgQQ0m7yeByZ7ZCug8G024wHUvwzOUA6zhVtDsT++wv18qU6
- Zr6g==
-X-Gm-Message-State: AGi0PuZ0DQG0C+l1TdPOAMfUbBJWMDVNcfp8mtVHrpbUk65PcrTT1nIg
- XWpVJpsq4JviMJwNgrCHA4WP5leaBlY1/4hjOV+qXiRYkkZL4BHCRo2VYVa5BYTZtz/UQEkMXKT
- sA1mn6ZmqnjsC
-X-Received: by 2002:a5d:534e:: with SMTP id t14mr18431977wrv.15.1589199584136; 
- Mon, 11 May 2020 05:19:44 -0700 (PDT)
-X-Received: by 2002:a5d:534e:: with SMTP id t14mr18431959wrv.15.1589199583962; 
- Mon, 11 May 2020 05:19:43 -0700 (PDT)
+ bh=WE9of2IJLN2TV5g7cx+rhe2s1pQe8LZRT+6pv5bh5k8=;
+ b=ItHGx1YTgMrnr+raO7OSbbqwT7yRruQyhcT1Z4OErYa1Q79VaBzDgZvxlJ7blzh6np
+ LUivNLFnh91YWVjHj35Rbb9i2mI+qh6oTHaEXM8fjY4WWi8XufHiRTPs4LwBzm/pyTyE
+ F+T0rMJAUfKTHhclukudB9Q6yf3C3gpHp2I8M3wwPzn8xBiMdit1MWgXzIqoL9ODBqFA
+ OxSAI060sULQiXNh1a2/nhgnA/4Z4hL644rSpqIFLTPCwVY5AyM3KBdvFqOmbBFjSH5h
+ uXie3lLkCYXw3JEzIRsZ5f+s2Nd/JslqUfHn4gFw0753wyJIh2GA0jR42TjmELjd9z0C
+ /KoQ==
+X-Gm-Message-State: AGi0PuaqedOtTWEXRF980djz/f3CMPX9vhTOUz15fEwCK9pvlnc3bPFB
+ dXXl2X7VEIcnp5OHNf+2FJM=
+X-Received: by 2002:a1c:3d08:: with SMTP id k8mr21123055wma.16.1589199689700; 
+ Mon, 11 May 2020 05:21:29 -0700 (PDT)
 Received: from [192.168.1.38] (17.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id a12sm16995644wro.68.2020.05.11.05.19.43
+ by smtp.gmail.com with ESMTPSA id q5sm10055936wra.36.2020.05.11.05.21.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 11 May 2020 05:19:43 -0700 (PDT)
-Subject: Re: [PATCH v3 0/5] target/arm: Restrict TCG cpus to TCG accel
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200504172448.9402-1-philmd@redhat.com>
- <CAFEAcA_kV8HzHv3xuPRPMKC4JwH8BDfskWqwtDJ=tHMVt0i_Gg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <bacd7700-9890-5685-3022-370e4490a5ce@redhat.com>
-Date: Mon, 11 May 2020 14:19:42 +0200
+ Mon, 11 May 2020 05:21:28 -0700 (PDT)
+Subject: Re: [PATCH 08/11] target/s390x: Restrict system-mode declarations
+To: Cornelia Huck <cohuck@redhat.com>
+References: <20200509130910.26335-1-f4bug@amsat.org>
+ <20200509130910.26335-9-f4bug@amsat.org>
+ <20200511124804.1a7a43aa.cohuck@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <2bb91290-32c5-997d-c689-4d651836c7fc@amsat.org>
+Date: Mon, 11 May 2020 14:21:27 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_kV8HzHv3xuPRPMKC4JwH8BDfskWqwtDJ=tHMVt0i_Gg@mail.gmail.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200511124804.1a7a43aa.cohuck@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/11 02:55:57
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -131,44 +123,84 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Marek Vasut <marex@denx.de>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ Richard Henderson <rth@twiddle.net>, qemu-riscv@nongnu.org,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Chris Wulff <crwulff@gmail.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LL2SWPYXeylC
+X-TUID: 9CMIV3bWndM5
 
-On 5/11/20 12:48 PM, Peter Maydell wrote:
-> On Mon, 4 May 2020 at 18:24, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>
->> These are the uncontroversial patches from "Support disabling
->> TCG on ARM (part 2)"
->> https://www.mail-archive.com/qemu-devel@nongnu.org/msg689168.html
->>
->> The other patches are blocked by the "accel: Allow targets to
->> use Kconfig" series:
->> https://www.mail-archive.com/qemu-devel@nongnu.org/msg689024.html
->>
->> Patch #4 is new "Restrict v8M IDAU interface to Aarch32 CPUs".
->>
->> Since v2:
->> - Fixed set_feature() clash trying to KISS
->>    https://www.mail-archive.com/qemu-devel@nongnu.org/msg697523.html
->> - Fixed aarch64-linux-user build failure reported by Peter:
->>    https://www.mail-archive.com/qemu-devel@nongnu.org/msg699319.html
->>
->> Since v1:
->> - Dropped 'Make set_feature() available for other files' patch
->>    which fails to build with KVM only, see:
->> https://lists.gnu.org/archive/html/qemu-devel/2020-04/msg03843.html
->>
->> Many thanks to Richard Henderson for his patience (again...)!
+On 5/11/20 12:48 PM, Cornelia Huck wrote:
+> On Sat,  9 May 2020 15:09:07 +0200
+> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
 > 
+>> As these declarations are restricted to !CONFIG_USER_ONLY in
+>> helper.c, only declare them when system-mode emulation is used.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>   target/s390x/internal.h | 11 ++++++-----
+>>   1 file changed, 6 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/target/s390x/internal.h b/target/s390x/internal.h
+>> index c1678dc6bc..ddc276cdf4 100644
+>> --- a/target/s390x/internal.h
+>> +++ b/target/s390x/internal.h
+>> @@ -236,7 +236,6 @@ int s390_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+>>   
+>>   /* cc_helper.c */
+>>   const char *cc_name(enum cc_op cc_op);
+>> -void load_psw(CPUS390XState *env, uint64_t mask, uint64_t addr);
+>>   uint32_t calc_cc(CPUS390XState *env, uint32_t cc_op, uint64_t src, uint64_t dst,
+>>                    uint64_t vr);
+>>   
+>> @@ -303,18 +302,20 @@ void s390_cpu_gdb_init(CPUState *cs);
+>>   
+>>   /* helper.c */
+>>   void s390_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+>> -hwaddr s390_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+>> -hwaddr s390_cpu_get_phys_addr_debug(CPUState *cpu, vaddr addr);
+>> +void do_restart_interrupt(CPUS390XState *env);
+>> +
+>> +#ifndef CONFIG_USER_ONLY
+>> +void load_psw(CPUS390XState *env, uint64_t mask, uint64_t addr);
 > 
-> 
-> Applied to target-arm.next, thanks.
+> load_psw() is in cc_helper.c (and not in helper.c). Rather add the
+> #ifndef above, even if it is a bit awkward? Otherwise, the wrong
+> comment makes it confusing.
 
-Thanks :)
+I've been tempted to remove the kinda outdated /* helper.c */ comment...
 
 > 
-> -- PMM
+>>   uint64_t get_psw_mask(CPUS390XState *env);
+>>   void s390_cpu_recompute_watchpoints(CPUState *cs);
+>>   void s390x_tod_timer(void *opaque);
+>>   void s390x_cpu_timer(void *opaque);
+>> -void do_restart_interrupt(CPUS390XState *env);
+>>   void s390_handle_wait(S390CPU *cpu);
+>> +hwaddr s390_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+>> +hwaddr s390_cpu_get_phys_addr_debug(CPUState *cpu, vaddr addr);
+>>   #define S390_STORE_STATUS_DEF_ADDR offsetof(LowCore, floating_pt_save_area)
+>>   int s390_store_status(S390CPU *cpu, hwaddr addr, bool store_arch);
+>>   int s390_store_adtl_status(S390CPU *cpu, hwaddr addr, hwaddr len);
+>> -#ifndef CONFIG_USER_ONLY
+>>   LowCore *cpu_map_lowcore(CPUS390XState *env);
+>>   void cpu_unmap_lowcore(LowCore *lowcore);
+>>   #endif /* CONFIG_USER_ONLY */
 > 
-
+> 

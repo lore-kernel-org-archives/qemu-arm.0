@@ -1,160 +1,140 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp34208lfb;
-        Mon, 11 May 2020 02:44:09 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIRWZus+3ROjt1raMM8YqKFY62z8v4lgMXlApbyPs/aG9lzIm98aEarOQ3f6+M7oL13LdYS
-X-Received: by 2002:a17:906:c7c5:: with SMTP id dc5mr12748724ejb.50.1589190249567;
-        Mon, 11 May 2020 02:44:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589190249; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp77136lfb;
+        Mon, 11 May 2020 03:44:52 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKZB7KwR53+oPVCLmlde4P6gyjIdxMJrGiHZtfiNvgxdpjcwr2D7Ogz/uy5V5aKRf58psHL
+X-Received: by 2002:a25:de41:: with SMTP id v62mr23270174ybg.458.1589193892252;
+        Mon, 11 May 2020 03:44:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589193892; cv=none;
         d=google.com; s=arc-20160816;
-        b=CMq+PVz+nhyU8SdzaAkBDjruNy0htwxyV4zdASbEAgPNDvqCnz2myY2RT2q8UL2HAJ
-         qUZ+yIqhxBxHB5ph/oaPOvKMz5cD3jxsZwnTIpTjaEbURKJAy2qYBDSb1XXOOrwkt6lC
-         VDwP3UfAwrQNA4MkWkd91cX+swT/87W8pkBJJDrigTzWxbhlrvwQR9hYT1cvfUU3Vkec
-         m6rdctpeK3AHF18/+dVKeTFt+BbeU90G+3Xji7g7iJmc19ibDtUNwLT1L93DZRkQmCsX
-         EINmwUUEff2cx5K7vdjMsod5Sc2iCzVKY0HJs1/I7bzcIyxkWdQRI3uz0WJAUPo4Yj61
-         mM8w==
+        b=vea+k19nfJMMELnBCgTDOdnJokdAHqYBgPve34Rb4fD5ym6WXsKT2PMN/ZBKKyf9Xu
+         +n4FcMHvDMq6MmwU1GQJQDthNXfnbD4rqY6euzvMz4kgGbWz8Z/R1nuUvHKj1QWLhi9q
+         OBe3gbQRj7d+1gBtxEv9CazprZdfIHZNm0klg2R73+39aMoEYQ3Lc7tTpjHmCrmTUk8W
+         OywyiwqI5u02EYAJEZudNn5hVijFwPO0EqLLVBcSrlGzKQdpykcJdqu4fZOJk044va1w
+         6NAT8nznlF+yme1t11NdzuckqdVu+k08DbfbyF5Fjiyq2Ey7q5B83WlZK4YmOvOAcQ50
+         QVpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:from:references
-         :cc:to:subject:dkim-signature;
-        bh=j5xXskMtfJQ83SyUis7aHS9QuNHUFZz1zgWWfMVQV00=;
-        b=YsyjJ1vLZt6htIAuftYdOR8ZPWL/yC6J/yFAZw7jfipAZ9ZMVZMzrvJsCJJvzEFDtt
-         p35CrEID65FJ0+4ECEursY66HeJfqFdngtnq4gKcQtaX5l+cWlefptIbt1+gUmE97+wZ
-         MuMgmbn9DbLBPsnVT2Xz1oJfmZ8PItsHDWkCO2Y6oqTOAjSGabXxNDxrnYeIl3cG2znA
-         0/uTP5/L2wg0lTdOWGUOzrI4xolEl25rcwE2dk3AViM0Hn15qDvERT+zDBWvuEf3HNqN
-         EelwVOWlyG9rqXK1FRWeObtTIfQ2U8Kydfy9857u36kfuGPSMxN4k0YMVujEOSEaQcNA
-         5e8g==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=35YmauD/BBm1tepF7T9THdx5MtF07eXSwwbbA8QgD58=;
+        b=lZEgNwqHqtKSbIlfiocajDmDqNhBDHpmiA2W0kX+tNLd3R8VY3ldlomp3uDrnMMeml
+         mJw6SwrfeuObALvVGNu8OZNSfhSU/SFX/Ym7t/9SwUNcvk8y2YEwbjsPX+CLvtLl56VS
+         v7Ow/OfDXvDml9sZFHZPJLWzMk3r4QR3Uuusd8sb7pOQOkDkUQM9btcUe4b4kSu9J+6L
+         VN8DMTNQzgKyYUaEEIhBj6Kg5mdorGfBowE0VbPdUfuze5WyCPs4Hw+93CXDVpelID0e
+         2gSLNHLdXLGFaoGxJmoTLFVM46rPYLmLz0phSEVcmrfBn6lWCn+SAhZRIf6l80TvRAnb
+         KDrA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xw1QPhc9;
-       spf=pass (google.com: domain of david@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=david@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O5QOGNe0;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <david@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id i7si6528272edn.60.2020.05.11.02.44.09
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
+        by mx.google.com with ESMTPS id b22si3439335ybg.339.2020.05.11.03.44.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 May 2020 02:44:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of david@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        Mon, 11 May 2020 03:44:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xw1QPhc9;
-       spf=pass (google.com: domain of david@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=david@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O5QOGNe0;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1589190248;
+	s=mimecast20190719; t=1589193891;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=j5xXskMtfJQ83SyUis7aHS9QuNHUFZz1zgWWfMVQV00=;
-	b=Xw1QPhc9uBNKRQh2YdQIWYrE+WMktWAsIJf8+1zdbqUfyKNV1w76Dv9oM0Ukt9h6yAh9WZ
-	LD0tr0VmInBulWYZdfGkCdeRZsSS7YirXcV3Pi9zGfI/qdq4XpbuotGYuiyJaz6IYyhSss
-	J6hftMGEZNzuhNMEcH5mffnq2i9L69k=
+	 in-reply-to:in-reply-to:references:references;
+	bh=35YmauD/BBm1tepF7T9THdx5MtF07eXSwwbbA8QgD58=;
+	b=O5QOGNe0bKCQariC0erlltigRANA2sgTPp5TYnZZzeFxQuxFjPzrm1hDO1sft5GiQjl+2O
+	n6kF12qVEilck2r1UBUgD7t0dmIUyd51BMHVOKFc7XkzK/qOMHbuQejspfdTpzsJVjPtzQ
+	sM9bITNt49RKffJ4neRwVN8v4Ew8UMk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-327-2gyF8k4XOTCdhr-XUl6G_Q-1; Mon, 11 May 2020 05:44:04 -0400
-X-MC-Unique: 2gyF8k4XOTCdhr-XUl6G_Q-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+ us-mta-370-AamzL-fcM6yTA2yEQupXpw-1; Mon, 11 May 2020 06:44:50 -0400
+X-MC-Unique: AamzL-fcM6yTA2yEQupXpw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A7079872FEB;
-	Mon, 11 May 2020 09:44:00 +0000 (UTC)
-Received: from [10.36.114.224] (ovpn-114-224.ams2.redhat.com [10.36.114.224])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D485A610F2;
-	Mon, 11 May 2020 09:43:50 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AEB1910082EA;
+	Mon, 11 May 2020 10:44:46 +0000 (UTC)
+Received: from gondolin (ovpn-112-254.ams2.redhat.com [10.36.112.254])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id E7A1B5D9DA;
+	Mon, 11 May 2020 10:44:37 +0000 (UTC)
+Date: Mon, 11 May 2020 12:44:35 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>, Mark
+ Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Max Filippov
+ <jcmvbkbc@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Stafford Horne <shorne@gmail.com>, Roman
+ Bolshakov <r.bolshakov@yadro.com>, Sagar Karandikar
+ <sagark@eecs.berkeley.edu>, Eduardo Habkost <ehabkost@redhat.com>,
+ qemu-s390x@nongnu.org, Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Marek Vasut <marex@denx.de>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-riscv@nongnu.org, Aurelien Jarno
+ <aurelien@aurel32.net>, Bastian Koppelmann
+ <kbastian@mail.uni-paderborn.de>, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Chris Wulff <crwulff@gmail.com>, Richard Henderson
+ <rth@twiddle.net>, David Gibson <david@gibson.dropbear.id.au>, David
+ Hildenbrand <david@redhat.com>, Alex =?UTF-8?B?QmVubsOpZQ==?=
+ <alex.bennee@linaro.org>
 Subject: Re: [PATCH 07/11] target/s390x/helper: Clean ifdef'ry
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Max Filippov <jcmvbkbc@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Stafford Horne <shorne@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>, Marek Vasut
- <marex@denx.de>, Alistair Francis <Alistair.Francis@wdc.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
- Aurelien Jarno <aurelien@aurel32.net>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-ppc@nongnu.org,
- qemu-arm@nongnu.org, Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Chris Wulff <crwulff@gmail.com>,
- Richard Henderson <rth@twiddle.net>,
- David Gibson <david@gibson.dropbear.id.au>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20200509130910.26335-1-f4bug@amsat.org>
- <20200509130910.26335-8-f4bug@amsat.org>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat GmbH
-Message-ID: <35b8e7ca-6313-fc73-1c55-22c76f48f7fa@redhat.com>
-Date: Mon, 11 May 2020 11:43:49 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
-MIME-Version: 1.0
+Message-ID: <20200511124435.7b9b2f23.cohuck@redhat.com>
 In-Reply-To: <20200509130910.26335-8-f4bug@amsat.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+References: <20200509130910.26335-1-f4bug@amsat.org>
+	<20200509130910.26335-8-f4bug@amsat.org>
+Organization: Red Hat GmbH
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 6JvitqiUuSCk
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: wzFOAQnMEclE
 
-On 09.05.20 15:09, Philippe Mathieu-Daudé wrote:
+On Sat,  9 May 2020 15:09:06 +0200
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+
 > All this code is guarded checking CONFIG_USER_ONLY definition.
 > Drop the duplicated checks.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
 > Suspicious ifdef'ry in s390_handle_wait() from commit 83f7f32901c.
+> ---
+>  target/s390x/helper.c | 7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/target/s390x/helper.c b/target/s390x/helper.c
+> index 09f60406aa..26e3b366e8 100644
+> --- a/target/s390x/helper.c
+> +++ b/target/s390x/helper.c
+> @@ -33,6 +33,7 @@
+>  #endif
+> =20
+>  #ifndef CONFIG_USER_ONLY
+> +
 
-Reviewed-by: David Hildenbrand <david@redhat.com>
+I'd probably not have added the whitespace here...
 
--- 
-Thanks,
+>  void s390x_tod_timer(void *opaque)
+>  {
+>      cpu_inject_clock_comparator((S390CPU *) opaque);
 
-David / dhildenb
+(...)
+
+> @@ -328,6 +324,7 @@ int s390_store_adtl_status(S390CPU *cpu, hwaddr addr,=
+ hwaddr len)
+>      cpu_physical_memory_unmap(sa, len, 1, len);
+>      return 0;
+>  }
+> +
+
+...and here, but I don't feel strongly about it.
+
+>  #endif /* CONFIG_USER_ONLY */
+> =20
+>  void s390_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>

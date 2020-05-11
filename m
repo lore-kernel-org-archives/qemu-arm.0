@@ -1,38 +1,38 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp35785lfb;
-        Mon, 11 May 2020 02:46:24 -0700 (PDT)
-X-Received: by 2002:a05:6512:3190:: with SMTP id i16mr3759194lfe.158.1589190384839;
-        Mon, 11 May 2020 02:46:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589190384; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp36772lfb;
+        Mon, 11 May 2020 02:47:53 -0700 (PDT)
+X-Received: by 2002:ac2:4da1:: with SMTP id h1mr10202669lfe.152.1589190473400;
+        Mon, 11 May 2020 02:47:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589190473; cv=none;
         d=google.com; s=arc-20160816;
-        b=GL9FPtnvmaNW9tBNyTlMMCIiNzFDdiXsghTDffsx3s2taAFON7kCuEwWuv2iWIjN06
-         vrwE3sZdZnpDoG5HwifJHRBVSioOP1iDcaR/Ex2mDF2ASM1DD2sqHMHsLmLQa1L2ap7M
-         +/mkWzVfXqWotDD1HyzhobuAo//E0jjKeeaiRMjFf8XOeVfCKUZa+OhzgqiQ93lNpWTq
-         AWOHICXS73/oE0rDLaFDixowhb70BaI5jsNbWS/WTdeuS9JN7WOaswpB01VvsxFLM0s1
-         m8FhkfKIY8c782Uk9N4mXPHJf87VMzRSPbeYtWRjax7OcbyN4cGNneW6jvwq6EARrHXY
-         Mcfg==
+        b=jrRfmxR7UqZ/RwQvpGb4xOhVc9KtziHYuo4kYvJqqGMHMJXozX0Xb8O5Vn0CpyIYWE
+         ZQDKtHyjMzrWGISmoYmNOS8S9Ep1646j78yOajv63YMYyj6rrhuE/gXg0txIuyDJ91Av
+         2YNIjHvsQ1+BQeFmdkXXNAB14qL0MZl8leXoEPRo0HGxabhnuIZvjugaJulstj7NPzwY
+         rHWOsbka8lq/nXID4snQckOfTDVuflfzJISwG/X3Z0kqEDSzUO+YOflbGZARQ+JiH7hb
+         ARFoh+8a7odYx6WZ+yMxoQQDJ8Q5XfF1eFKjkWh1EbyciuXrATk89dWP9xSEsr3mijSZ
+         BTFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-transfer-encoding
          :content-disposition:mime-version:references:message-id:subject:cc
          :to:from:date:dkim-signature;
-        bh=gpH2tKXCjUnkJ4UxAw3yg9UWeRqETvSZhoIE66gIUc0=;
-        b=isMpfdxczWjwaVtLyR9uhe5/QD2Be6o4Z1jYxSdWCkPFcDnt9k9/WIVtaAfhSuJ1r7
-         1jiO+Z4OY6oZPTs4RrEQSBim2TRvA3sAQU7yhy1A7G7jEyDRGe1jx2OcA+4KyObjvlY9
-         pmITgtZeZafs/z5HhYVNcYdNhcDtMrUseQkRVIYBhJT7EXIcj/rVP/jxpEK6vn1q5qjT
-         IRv/1sXvotfuADFKyDIlule44pPh64eC9+qBxnIJGd+HFTHTiZFrLEs84l9+E8OSm9lx
-         iSNzCV0FXqF9iPSzDW7Fv5THCxf+jwvXasAyaQ3xowdWBBr4t1L2Rw1/SUQKfGHkt+Sj
-         yJWw==
+        bh=LLpJhfY06EKF+oBDQZd0EOAQxJmdqFBtBjBb9Q83wyQ=;
+        b=VZLPd6ZAmerW+uLS5FBKxxRvy4b5WuTK9aPweZhfVgnT3pyVMluqkVVU5YVNm9WSSP
+         KJslaBnbP+T7jSh18yDWW1F9IL3o9JYrJkEiH4BKbnmcEq0tceH1l68MCUko/a8n/AM4
+         rjoHrESSdxiTQQIfPVUSDu9BGYJdM/3q3higBokaWpjclM7De06jR8O8BEkZAMXex0AZ
+         G7e6Dhb41B5Ti7FfHuZYHHw8+5U11PGvZHbnIBERQDqmvrHo8MhRbxewJTyDJ81wRz7f
+         3abdOtJ00q+HiKZT8d+DBAReat/JZpS9+L61lMtMLnPqJWUaTWOzsnBIgH6NCIHnfjE5
+         s1kQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tjfULMxv;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dUMWPGtF;
        spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <edgar.iglesias@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id h25sor3007121lfg.26.2020.05.11.02.46.24
+        by mx.google.com with SMTPS id x25sor5391721ljh.12.2020.05.11.02.47.53
         (Google Transport Security);
-        Mon, 11 May 2020 02:46:24 -0700 (PDT)
+        Mon, 11 May 2020 02:47:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tjfULMxv;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dUMWPGtF;
        spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -40,36 +40,36 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:content-transfer-encoding:in-reply-to
          :user-agent;
-        bh=gpH2tKXCjUnkJ4UxAw3yg9UWeRqETvSZhoIE66gIUc0=;
-        b=tjfULMxv5t3BSqs/JN7wUWndEZqMYaZqFK6eRZML9KlurmdQjAcmSfX5JBOf6fRSFW
-         gSyq+YNFmXb8SLmxH8Fbrbh38XL6i6rw+zGGjkN4l15rZsAoT9A5Cw0O8d2ziiIk45II
-         VdKEQEmaLiWWq4HCJNW+sFO16P+S2Zx5FwH+9BowQUydjC/7RQszYuriSx9TvJY2nXtQ
-         2q3B6TUCBLHKXdM9shi1KNjWkGE+aL71ERDa+ef2FCYOFbvTgspB2uGIuXMp1qebXPiM
-         xUHZ/xMfY+hVrF/CXJXFSzUf7zyZu6z7567s0P/YoNF/kypUutYFV5LTKXXZExnAiu3o
-         m/bQ==
+        bh=LLpJhfY06EKF+oBDQZd0EOAQxJmdqFBtBjBb9Q83wyQ=;
+        b=dUMWPGtFKW6rfx1FUyj6/UlWhOOJJ8G4+tG7JANPNzAaQhFgWx/rOvTZeiNafCTOcN
+         Iazj2I9S83+BU11LF6gkqmvKmlCZeX9TcXBymElrfGdsW/px7YFloQ0scppSTRkCR2Lr
+         TFZT8jq/Gi1hiNimejQ7nJ5qG277mVE0w5p+WfAxuD2KetciOvfNwZMau3pqU7FvqoSG
+         9m7NKy4gJbZWd6r9mAmdjByfP/hjL0NvXiZnkEQqxcrWzZQb7k3N4CdoYLg2GlP9lVR5
+         OKVfA+kgyIpiubCPlqTP183NUYpU4btkqwNnJ3pwTJ+NcX2LorVy4tHvlr2tzmM4wwJw
+         +ZHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:content-transfer-encoding
          :in-reply-to:user-agent;
-        bh=gpH2tKXCjUnkJ4UxAw3yg9UWeRqETvSZhoIE66gIUc0=;
-        b=n6NHZYDftnD4XU4rw4O2mTSgJTzTResSHeyhKTcWE7GCH1E/8Dagms6kXlQ/3WAYoq
-         CfZ9d3iV8N+5YqBqhmX+/AFkLJNGYmXCbW4qFurmhFGomHiL7N0vtxIUvCNGgg4NhWNA
-         8s2ULJ8Frhj4OhgQfCbih7+wxzAgpU7v/CPIbE1Sh8lhOdJ23SHCgPN9zLXzy+SA5yOH
-         im8bfmxK+SPtPutAIW3K5WezDfwiCJJB3AcPz5AFXc2UuZzSNL1uyeqXeHVUaM1I6AzY
-         v6Tk2rvmZYEgrCYlLFrq5df5l5+1RNfCGfdnsC4kX4JVt7WOhv50HLKL+ItQrldxtHtM
-         Y6AA==
-X-Gm-Message-State: AOAM533N3WYvGCCVV8YDjkNMEOLiqOsOTyarnNwUqUwYPqrHcsAMnVaD
-	8itHAr+4NMOu8hRFkfQQoP8=
-X-Google-Smtp-Source: ABdhPJwKQcIsUR1P9Gu4NnWXlNjZRtdZ0QmSECJkJzR5ySzhfdIptBEcQ3dJQ8rAXmrZEQ1EJQZr4Q==
-X-Received: by 2002:a19:700b:: with SMTP id h11mr10497912lfc.62.1589190384034;
-        Mon, 11 May 2020 02:46:24 -0700 (PDT)
+        bh=LLpJhfY06EKF+oBDQZd0EOAQxJmdqFBtBjBb9Q83wyQ=;
+        b=LAzIHWoD8XNhzr8CJ2jLJDzdyHGaHkgg7tlWkJ6pCtr3iUIUxDkOGI5LtM6IyyXpd7
+         ggmqGBCh2IqXJb37Z5/RviNJ2lq3htTSbe0gjX62A6vovVc+T6pMfJ9SREaMLaIlAba3
+         f1MDKc1aqNA7RSkYs8CSC0HJKeTIyDR1N5DfgiZM/rcJgNlnHYv3Cark2Wid+BldHuI5
+         P6XCmcZrIMmQES0Vayw4LKwk3MTkSVciL2ef1UKkbcNQpPLx5p7UjcP7BEh6+vPoTShj
+         PWuzds0d13wgkdtD5kacleA9iF0cZEX6TnwAYB6x2XO17qVZ9BLWmFh7ayeeI4EUEPgF
+         496A==
+X-Gm-Message-State: AOAM5312VWb779oKTQzjcmEgMGJk/Kz1P8B6h4TnGV8G7vI1OSm9abm+
+	PHXfN528YlNEYZNJH1cb/Go=
+X-Google-Smtp-Source: ABdhPJwLcg+uXF0jvSmlx/FD+/OzvbjV1vXuoRWwrq5i5XkGfM+aIGwidcM3ywJk6CJLLncUZJjS3g==
+X-Received: by 2002:a2e:a169:: with SMTP id u9mr9793594ljl.144.1589190473033;
+        Mon, 11 May 2020 02:47:53 -0700 (PDT)
 Return-Path: <edgar.iglesias@gmail.com>
 Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
-        by smtp.gmail.com with ESMTPSA id z5sm9255843lji.30.2020.05.11.02.46.22
+        by smtp.gmail.com with ESMTPSA id w9sm9420258ljj.88.2020.05.11.02.47.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 11 May 2020 02:46:22 -0700 (PDT)
-Date: Mon, 11 May 2020 11:46:06 +0200
+        Mon, 11 May 2020 02:47:52 -0700 (PDT)
+Date: Mon, 11 May 2020 11:47:36 +0200
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
 Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
@@ -97,47 +97,61 @@ Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
 	David Gibson <david@gibson.dropbear.id.au>,
 	David Hildenbrand <david@redhat.com>,
 	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH 03/11] sysemu/tcg: Only declare tcg_allowed when TCG is
+Subject: Re: [PATCH 04/11] sysemu/hvf: Only declare hvf_allowed when HVF is
  available
-Message-ID: <20200511094606.GQ5519@toto>
+Message-ID: <20200511094736.GR5519@toto>
 References: <20200509130910.26335-1-f4bug@amsat.org>
- <20200509130910.26335-4-f4bug@amsat.org>
+ <20200509130910.26335-5-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200509130910.26335-4-f4bug@amsat.org>
+In-Reply-To: <20200509130910.26335-5-f4bug@amsat.org>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-X-TUID: APyn0All6WjD
+X-TUID: Soh+dy4sMugD
 
-On Sat, May 09, 2020 at 03:09:02PM +0200, Philippe Mathieu-Daudé wrote:
-> When TCG is not available, the tcg_allowed variable does not exist.
+On Sat, May 09, 2020 at 03:09:03PM +0200, Philippe Mathieu-Daudé wrote:
+> When HVF is not available, the tcg_allowed variable does not exist.
 
+Typo in commit message tcg_allowed -> hvf_allowed.
+
+With that fixed:
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
 
 
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  include/sysemu/tcg.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  include/sysemu/hvf.h | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/include/sysemu/tcg.h b/include/sysemu/tcg.h
-> index 7d116d2e80..d9d3ca8559 100644
-> --- a/include/sysemu/tcg.h
-> +++ b/include/sysemu/tcg.h
-> @@ -8,9 +8,9 @@
->  #ifndef SYSEMU_TCG_H
->  #define SYSEMU_TCG_H
+> diff --git a/include/sysemu/hvf.h b/include/sysemu/hvf.h
+> index d211e808e9..fe95743124 100644
+> --- a/include/sysemu/hvf.h
+> +++ b/include/sysemu/hvf.h
+> @@ -18,7 +18,6 @@
+>  #include "exec/memory.h"
+>  #include "sysemu/accel.h"
 >  
-> -extern bool tcg_allowed;
->  void tcg_exec_init(unsigned long tb_size);
->  #ifdef CONFIG_TCG
-> +extern bool tcg_allowed;
->  #define tcg_enabled() (tcg_allowed)
->  #else
->  #define tcg_enabled() 0
+> -extern bool hvf_allowed;
+>  #ifdef CONFIG_HVF
+>  #include <Hypervisor/hv.h>
+>  #include <Hypervisor/hv_vmx.h>
+> @@ -26,11 +25,12 @@ extern bool hvf_allowed;
+>  #include "target/i386/cpu.h"
+>  uint32_t hvf_get_supported_cpuid(uint32_t func, uint32_t idx,
+>                                   int reg);
+> +extern bool hvf_allowed;
+>  #define hvf_enabled() (hvf_allowed)
+> -#else
+> +#else /* !CONFIG_HVF */
+>  #define hvf_enabled() 0
+>  #define hvf_get_supported_cpuid(func, idx, reg) 0
+> -#endif
+> +#endif /* !CONFIG_HVF */
+>  
+>  /* hvf_slot flags */
+>  #define HVF_SLOT_LOG (1 << 0)
 > -- 
 > 2.21.3
 > 

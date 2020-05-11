@@ -1,133 +1,108 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp47003lfb;
-        Mon, 11 May 2020 03:02:35 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKCmdvpDMWwMtss4w+bY8YmsnPhRNiTUf6RaMPCSWh9WtM0K8y1/E83YASIwd3sZYCDQafa
-X-Received: by 2002:ac8:6642:: with SMTP id j2mr15484840qtp.158.1589191355554;
-        Mon, 11 May 2020 03:02:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589191355; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp58819lfb;
+        Mon, 11 May 2020 03:18:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwiZmSAS0ADvdGERUfSHly/Oj6LR750b/Xy2woUOzyhUXBfepoIM5h02K1vP4rQsqdgrxqJ
+X-Received: by 2002:a17:906:19d2:: with SMTP id h18mr1866237ejd.147.1589192285891;
+        Mon, 11 May 2020 03:18:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589192285; cv=none;
         d=google.com; s=arc-20160816;
-        b=0LzaC22M+LEzlP/l+eGUCA/ZUenDbOqZx2rz/BkhYRoydaHwsF0QArj90ZhJGBcQYL
-         CBwurbYy/F+Tf/scvXjTZ2kR1jbb0+erAK+S5kRdVnTsTgZw0CuDj0JJXLS61UMWc6qE
-         95w/Jy8lkpHhrp3yXrIbIO68c34AmRTSSgUUuCp+MfoFgHpxcqsmJ8UFpAbsptfPmETf
-         Zqp+irzMMDlZPTHZ2dq5VOaXr6GjhU0WATG3aCb7qXTee+h725FpmgPKFgj6X++8+FUn
-         Em19+QSGfN6msDbh+38q3e7qBOu9COoqoDgsNuxcjmow4oIML3G/sxRsWHhuIIxak1se
-         h5Hg==
+        b=xsNfTwCOJOm0uDfwQ7KzkgY7NsCI86nm39kBfDjYMApBJ2t4ZH4ZjYAM4yg5/r8HiG
+         4GG4jx4+wwj7kk5QAxoPyyniBurSo+dYIurOVPlzuVSLkf1Aiq5RMZk2Id2NKt6MEPrf
+         1N5/QHSTwVGxqAwSg6U3kNmh3jPZQcvdRIV6im3fnPvQaJtig/iwJv4at4uYzyA12WIx
+         9OlptOrAWGc0hBSv3pjjEIqDoHpZARI60o9WhS8fNYLCdEfDspINN8e4k9yQ3Or5Sj34
+         BhnL0bsiGWjQ9ws8gIOZSES5jAiQ1xKMA+Akds1l7nGg/VfnrTnjtKg8PlL6y0TutrEC
+         VnIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=8UekYAM1/5RxUAc4jSid3+PRVfxCfJKQ6eC9ocSSB5g=;
-        b=p9yQgY7GLO5uUAErmKim91LS3iQ2BE52rlCKitQFI5rnSDEh51L4+fhGDkqwkP9EiU
-         9Jk/KrEmHw91RdNF+EL5EFmyxn8r3zh1lVtB44cfRDckRF8kNnaOr/ZBrN5DSOZ8dXNb
-         vNPM/hrqTxrIQ/maakbV9wfaXvtGcWWEngrM8umwGTfLqqq0XLqFZiOGnybVhLAuukZS
-         QJZACJ1KlJSfcep5lEJIpobzElOcYmyT8UN3yTPd4eM2rmo2eb33BmZCmKUFuZYi17uq
-         ZFGCZyScMwkmPTx86Aps4uFNvd82WsTtx9QAK3Ld8jcaifjC47pn3alCb+78w6OMyX5A
-         oy0w==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=0uohFe/CHE9N14X4nOXOgWiZ9U3xHrL7OAGJhDPnCVU=;
+        b=c59fyo6Bjj8BrGO3bgc0QHKQn6eoWuyIkXCmzY40lFkd24X+knU+ZSr15Oa1uPi0p6
+         3Gz8XO67d+1Gd3UYggEF4XOSda2VZBTQkCA+/jr+NGVpxSoaeiT/75110a0wV+3G4cJu
+         NV/mD11nhrcYctxf7LxxkNoZjqwacJ/2Ik3GdJP0gLTWFoyyibFzDOWWqm7RxvDCvvQV
+         w97C1P6/JWZVt3UCiRZZJ5M4bLbJtTuFTTOCu04tv01RUHg5AN2ABVGiW4xTD+sNzCUM
+         DQBvKVQfHXT4sRMsHy5kWwLzLTDYdxj3JTzsgQ22UD/thrVt6Issw9GCIVpWebSl3Bsz
+         ejag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Nn/co+0i";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w5si3229437qvz.15.2020.05.11.03.02.35
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N4B2iYwF;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by mx.google.com with ESMTPS id d16si5985593ejb.187.2020.05.11.03.18.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 May 2020 03:02:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 11 May 2020 03:18:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Nn/co+0i";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37190 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jY5Gc-0002bG-Uy
-	for alex.bennee@linaro.org; Mon, 11 May 2020 06:02:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44490)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jY5GC-0002Zq-Qg
- for qemu-arm@nongnu.org; Mon, 11 May 2020 06:02:08 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:36334)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jY5GA-0006PA-QB
- for qemu-arm@nongnu.org; Mon, 11 May 2020 06:02:07 -0400
-Received: by mail-ot1-x342.google.com with SMTP id t3so7061035otp.3
- for <qemu-arm@nongnu.org>; Mon, 11 May 2020 03:02:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8UekYAM1/5RxUAc4jSid3+PRVfxCfJKQ6eC9ocSSB5g=;
- b=Nn/co+0iDbXT/X+Mq1a5m1GL2v2tRT40ULEEWSdEaB44lvOX/d62WfV3IK+rIEP2Ld
- YFqSNuLlZn87MBbnyViWXh3D+kohM0BXSLHs5m+ybcIJr3L2CKwxgHOz9XAq+7Z5cTQm
- a0PIXMdiIOs5xuAChUl232ifchg/nlVef2OraMfokS8tqob1ajFbfrad0hYJ/O2SsqMx
- IDNQsxHRsJWeYMNRUmWDDvKPscn9A5W+K03QvBIU8r4T0ZnyOgTn5zbSRDPubUhpO+U1
- 1nktZJ6MEcEXsRlxzXHzogQhpDLdB8zQF39QzTmNCHN1/B4UlXx3T5/8A0PpXPJJUk5N
- tRvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=8UekYAM1/5RxUAc4jSid3+PRVfxCfJKQ6eC9ocSSB5g=;
- b=avsO2ClXqPoIVuVGr35VUtqzu6Gz2jlOA5PI+V8q7yRVmpVPo/M6xHNNrR8spAGl64
- F6DmZ6QPfz+2m8dWzBFydYLcI/S5IqDnCc1/sTOo6HRn5nXT51w17xecTA9iIPa5xSa7
- FrwkP6WQ1gNPKxRx/UgAAtXE8jvB2Noej/4iliy/GwwSjPquVj3jskbjKIS/sHE3TF/K
- FH2Oq6tG6S3Swelc3pS/NlgNN3Mz8m0kJ4w8nNSxrBMHh6qotvOYT63zA1foHJE4PSpd
- kzH2mmr6AXuSiVAgQG78EYw62rqtt1WQEudth6mdjt1Xevd9CnOAm/skQJf82nKuOO4E
- Fs6w==
-X-Gm-Message-State: AGi0PubyYlOVC4oCGrVrNtbFkPANq1t3RKbAdE5AtXqVBI63wYK+vUW/
- eU7fncBo3fSdIzVQEtvouXSbRC66yajp/FnMs5WAFw==
-X-Received: by 2002:a05:6830:1e4e:: with SMTP id
- e14mr11801230otj.91.1589191321968; 
- Mon, 11 May 2020 03:02:01 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N4B2iYwF;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1589192284;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=0uohFe/CHE9N14X4nOXOgWiZ9U3xHrL7OAGJhDPnCVU=;
+	b=N4B2iYwFcf+RcSlnps3ybMcfL0i2GaTg6MVueHpeUA+fIQa7Y+eFW9A28plfn5PWC5obwG
+	TJ6q52U+pmWBBvHaElKR6fqMBlyRbr0SsPsGQLLmYNLolbUBV7jFceIfuRfhPBSBpLVB3o
+	qGFMZwyZX1tyNrtLg3L7HA4YfcjGSNU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-115-IfgDxwMvOJmNuH2c8r3lzQ-1; Mon, 11 May 2020 06:18:01 -0400
+X-MC-Unique: IfgDxwMvOJmNuH2c8r3lzQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 57B6B18FE860;
+	Mon, 11 May 2020 10:17:57 +0000 (UTC)
+Received: from gondolin (ovpn-112-254.ams2.redhat.com [10.36.112.254])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 036769323;
+	Mon, 11 May 2020 10:17:47 +0000 (UTC)
+Date: Mon, 11 May 2020 12:17:45 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>, Mark
+ Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Max Filippov
+ <jcmvbkbc@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Stafford Horne <shorne@gmail.com>, Roman
+ Bolshakov <r.bolshakov@yadro.com>, Sagar Karandikar
+ <sagark@eecs.berkeley.edu>, Eduardo Habkost <ehabkost@redhat.com>,
+ qemu-s390x@nongnu.org, Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Marek Vasut <marex@denx.de>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-riscv@nongnu.org, Aurelien Jarno
+ <aurelien@aurel32.net>, Bastian Koppelmann
+ <kbastian@mail.uni-paderborn.de>, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Chris Wulff <crwulff@gmail.com>, Richard Henderson
+ <rth@twiddle.net>, David Gibson <david@gibson.dropbear.id.au>, David
+ Hildenbrand <david@redhat.com>, Alex =?UTF-8?B?QmVubsOpZQ==?=
+ <alex.bennee@linaro.org>
+Subject: Re: [PATCH 02/11] sysemu/accel: Restrict machine methods to
+ system-mode
+Message-ID: <20200511121745.42cea0ab.cohuck@redhat.com>
+In-Reply-To: <20200509130910.26335-3-f4bug@amsat.org>
+References: <20200509130910.26335-1-f4bug@amsat.org>
+	<20200509130910.26335-3-f4bug@amsat.org>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-References: <20200505090136.341426-1-joel@jms.id.au>
-In-Reply-To: <20200505090136.341426-1-joel@jms.id.au>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 May 2020 11:01:51 +0100
-Message-ID: <CAFEAcA91CuKCL0v4U3eKjmc46eyM4bsBfk41ZYzUa61-Y09fXg@mail.gmail.com>
-Subject: Re: [PATCH] aspeed: sdmc: Implement AST2600 locking behaviour
-To: Joel Stanley <joel@jms.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jkQlyxgvu9dP
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: +K2kH+ngU29u
 
-On Tue, 5 May 2020 at 10:01, Joel Stanley <joel@jms.id.au> wrote:
->
-> The AST2600 handles this differently with the extra 'hardlock' state, so
-> move the testing to the soc specific class' write callback.
->
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
+On Sat,  9 May 2020 15:09:01 +0200
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+
+> Restrict init_machine(), setup_post() and has_memory()
+> to system-mode.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
+>  include/sysemu/accel.h | 2 ++
+>  1 file changed, 2 insertions(+)
 
-
-
-Applied to target-arm.next, thanks.
-
--- PMM
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>

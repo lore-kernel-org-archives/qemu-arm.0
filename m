@@ -1,239 +1,160 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1725205lfb;
-        Sun, 10 May 2020 03:44:30 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJCTIiy1/Pf/yUqmLS21KgYkTtWNFuUXemy+i9u6T/GdAlHYL6EXtz/SAE8spsxSvjD08rf
-X-Received: by 2002:ac8:31e1:: with SMTP id i30mr11326577qte.74.1589107470065;
-        Sun, 10 May 2020 03:44:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589107470; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp34208lfb;
+        Mon, 11 May 2020 02:44:09 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIRWZus+3ROjt1raMM8YqKFY62z8v4lgMXlApbyPs/aG9lzIm98aEarOQ3f6+M7oL13LdYS
+X-Received: by 2002:a17:906:c7c5:: with SMTP id dc5mr12748724ejb.50.1589190249567;
+        Mon, 11 May 2020 02:44:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589190249; cv=none;
         d=google.com; s=arc-20160816;
-        b=b/NvV414zPEzXiEGOHdNxjS1I2ljhZNRXCsZnCjSBMp6MLJNiXudw8lA1yzR05XwW0
-         mv3o3xN3YLBe61qC7vmNo/VkmHsyx/8e5VDEwp/RDSYXQstlUYK5hty2tGIErQM2lqFw
-         7IHomw+Spq1UaS0OXlZJsU+XaOYDQyoERB3bn0ShCEn4XQvwOJSsgiGc172KNTdzhIXs
-         gzV2ixO7cDpne3BC8hEyMsQUrSGxgqeCW3HPSawG5HpaOQz272nbGsmZD79azMhqCfeI
-         gtrVGTehAAfgj70LBlGNqmnfGsb9n/dhrICcFmtOifqwpVTr5DVsAYDy/wXYmuMLBIiK
-         OCjw==
+        b=CMq+PVz+nhyU8SdzaAkBDjruNy0htwxyV4zdASbEAgPNDvqCnz2myY2RT2q8UL2HAJ
+         qUZ+yIqhxBxHB5ph/oaPOvKMz5cD3jxsZwnTIpTjaEbURKJAy2qYBDSb1XXOOrwkt6lC
+         VDwP3UfAwrQNA4MkWkd91cX+swT/87W8pkBJJDrigTzWxbhlrvwQR9hYT1cvfUU3Vkec
+         m6rdctpeK3AHF18/+dVKeTFt+BbeU90G+3Xji7g7iJmc19ibDtUNwLT1L93DZRkQmCsX
+         EINmwUUEff2cx5K7vdjMsod5Sc2iCzVKY0HJs1/I7bzcIyxkWdQRI3uz0WJAUPo4Yj61
+         mM8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=xxXonWqCVMIv8e8r2cY6NrxuihM3z3kRcazrSTkm8RA=;
-        b=TrQt0gvk/GPEAWlquoWZitEiocYXV06Fbqb6Rf/BIjYv/13w7/AddCq9NMZmf/XYhK
-         stG26F22FkP9KNWJ7VMp9Vw3l/pCi1Qb3IsITgo82kA5pGzpE2YufCI6GGrFS4w5vK4z
-         dMU7AGNFE904Kf+vaOY7GxF0VwHKMklAeGZiAptzWTMEnzaDAFfM6VdBHiFOgm+oMwSY
-         OnlqCKL/ZiF+YzS+2PUlDEpZ+hKlzhV+cFQIIIRJgmn6UVaSyBJRDrAZikRlwfA9P5Vu
-         wDVoRlA6u33I/AKcjzH7HafrkdtrW2D3T4eq9ylN14MYBfijimL2xF9ldxvJnHe+R0c2
-         bf0w==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:from:references
+         :cc:to:subject:dkim-signature;
+        bh=j5xXskMtfJQ83SyUis7aHS9QuNHUFZz1zgWWfMVQV00=;
+        b=YsyjJ1vLZt6htIAuftYdOR8ZPWL/yC6J/yFAZw7jfipAZ9ZMVZMzrvJsCJJvzEFDtt
+         p35CrEID65FJ0+4ECEursY66HeJfqFdngtnq4gKcQtaX5l+cWlefptIbt1+gUmE97+wZ
+         MuMgmbn9DbLBPsnVT2Xz1oJfmZ8PItsHDWkCO2Y6oqTOAjSGabXxNDxrnYeIl3cG2znA
+         0/uTP5/L2wg0lTdOWGUOzrI4xolEl25rcwE2dk3AViM0Hn15qDvERT+zDBWvuEf3HNqN
+         EelwVOWlyG9rqXK1FRWeObtTIfQ2U8Kydfy9857u36kfuGPSMxN4k0YMVujEOSEaQcNA
+         5e8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Hhxvu4ng;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x14si3640208qtp.111.2020.05.10.03.44.29
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xw1QPhc9;
+       spf=pass (google.com: domain of david@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=david@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <david@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id i7si6528272edn.60.2020.05.11.02.44.09
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 10 May 2020 03:44:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 11 May 2020 02:44:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of david@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Hhxvu4ng;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:46818 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jXjRd-0003VB-Fp
-	for alex.bennee@linaro.org; Sun, 10 May 2020 06:44:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52118)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jXjRS-0003PQ-0F; Sun, 10 May 2020 06:44:18 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35693)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jXjRR-0001HI-54; Sun, 10 May 2020 06:44:17 -0400
-Received: by mail-wm1-x343.google.com with SMTP id n5so505429wmd.0;
- Sun, 10 May 2020 03:44:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=xxXonWqCVMIv8e8r2cY6NrxuihM3z3kRcazrSTkm8RA=;
- b=Hhxvu4ngq1uQsJWy0byeouIa/qmUw2lyg24hbkE9XpcSbAMSU5HfFfluJ7SjABkkNK
- 3O3dpPopbQM7lUU2l+AvC3X2oGN+EEnO3boAmQENZJvAU3/MTDkUVea3vXUdZtHbrjgi
- 8jSRSf2NtrO45j3eJVBKHFrPj9wN/t7uCp5zT5p/JT1Hv8YlsvyD47/HlKK+LiZiEbZN
- X7c/+SUZXfoydFGjO9c/Zw8x9X+zEfJFzRptu/cQ0nynkxaUfaCHZ1OUs+rZTjYQjgbM
- mkOsbSz46gch9r/Ego7ug8KhJmT7TcifguGVdwodDaDDgruspw9uBerdpEb6L/fPuWmS
- U40w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=xxXonWqCVMIv8e8r2cY6NrxuihM3z3kRcazrSTkm8RA=;
- b=p6/f2mdG3afj5HkEuHAA4b/+ixW3fLGMc29xOyfajpcK6ybEpJJhQhNeg8Vj2YGddM
- xrcCwHyJnOjCKgfEBUagyfh8vvg/VXirvfgabbBilGkvaZAg2HAdDX8qbtdb1J7WtsjA
- hnnaZznBfacjQ22J8TzLCXC9DG4CSdr6QsJBvsCRj/70wBJgRNLIVmWdqnELlmPZU0pL
- V//37uJZQrxHdKYJ3TCiQDAimrLp+c8H4Lx6KsVT/T6cMmliM66hdx6hlxuqcO1vMsjg
- n3/IZ6Y7CJhngDxYocKzMzUWV/i5uwWT/uHFmQ7mPcb+hEKw5a9DK5PjPa4WgmZO/gE5
- 3OJg==
-X-Gm-Message-State: AGi0PuZ37R8+Oapc+c13jUPeWHqWK6M9F2eWq5lA0l0i9U36YTKA6qzV
- 8ITTW81MgCpBkc/36ZdLyPk=
-X-Received: by 2002:a7b:c4c9:: with SMTP id g9mr25481489wmk.171.1589107453896; 
- Sun, 10 May 2020 03:44:13 -0700 (PDT)
-Received: from [192.168.1.37] (17.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id g15sm12287672wrp.96.2020.05.10.03.44.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 10 May 2020 03:44:13 -0700 (PDT)
-Subject: Re: [PATCH 01/11] plugins: Restrict functions handling hwaddr to
- system-mode
-To: qemu-devel@nongnu.org
-References: <20200509130910.26335-1-f4bug@amsat.org>
- <20200509130910.26335-2-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <eb0d835e-0603-9f76-836c-aca7fb9be525@amsat.org>
-Date: Sun, 10 May 2020 12:44:10 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
-MIME-Version: 1.0
-In-Reply-To: <20200509130910.26335-2-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Chris Wulff <crwulff@gmail.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>,
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xw1QPhc9;
+       spf=pass (google.com: domain of david@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=david@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1589190248;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=j5xXskMtfJQ83SyUis7aHS9QuNHUFZz1zgWWfMVQV00=;
+	b=Xw1QPhc9uBNKRQh2YdQIWYrE+WMktWAsIJf8+1zdbqUfyKNV1w76Dv9oM0Ukt9h6yAh9WZ
+	LD0tr0VmInBulWYZdfGkCdeRZsSS7YirXcV3Pi9zGfI/qdq4XpbuotGYuiyJaz6IYyhSss
+	J6hftMGEZNzuhNMEcH5mffnq2i9L69k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-327-2gyF8k4XOTCdhr-XUl6G_Q-1; Mon, 11 May 2020 05:44:04 -0400
+X-MC-Unique: 2gyF8k4XOTCdhr-XUl6G_Q-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A7079872FEB;
+	Mon, 11 May 2020 09:44:00 +0000 (UTC)
+Received: from [10.36.114.224] (ovpn-114-224.ams2.redhat.com [10.36.114.224])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D485A610F2;
+	Mon, 11 May 2020 09:43:50 +0000 (UTC)
+Subject: Re: [PATCH 07/11] target/s390x/helper: Clean ifdef'ry
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Marek Vasut <marex@denx.de>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Stafford Horne <shorne@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
+ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>, Marek Vasut
+ <marex@denx.de>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Chris Wulff <crwulff@gmail.com>,
+ Richard Henderson <rth@twiddle.net>,
  David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
- Richard Henderson <rth@twiddle.net>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1/zJdesdY0o6
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20200509130910.26335-1-f4bug@amsat.org>
+ <20200509130910.26335-8-f4bug@amsat.org>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat GmbH
+Message-ID: <35b8e7ca-6313-fc73-1c55-22c76f48f7fa@redhat.com>
+Date: Mon, 11 May 2020 11:43:49 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
+MIME-Version: 1.0
+In-Reply-To: <20200509130910.26335-8-f4bug@amsat.org>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 6JvitqiUuSCk
 
-On 5/9/20 3:09 PM, Philippe Mathieu-Daudé wrote:
-> Restrict qemu_plugin_hwaddr_is_io() and
-> qemu_plugin_hwaddr_device_offset() to system-mode.
+On 09.05.20 15:09, Philippe Mathieu-Daudé wrote:
+> All this code is guarded checking CONFIG_USER_ONLY definition.
+> Drop the duplicated checks.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->   include/qemu/qemu-plugin.h |  2 ++
->   plugins/api.c              | 17 ++---------------
->   2 files changed, 4 insertions(+), 15 deletions(-)
-> 
-> diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-> index 5502e112c8..06c271a107 100644
-> --- a/include/qemu/qemu-plugin.h
-> +++ b/include/qemu/qemu-plugin.h
-> @@ -326,6 +326,7 @@ bool qemu_plugin_mem_is_store(qemu_plugin_meminfo_t info);
->   struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
->                                                     uint64_t vaddr);
->   
-> +#ifndef CONFIG_USER_ONLY
->   /*
->    * The following additional queries can be run on the hwaddr structure
->    * to return information about it. For non-IO accesses the device
-> @@ -333,6 +334,7 @@ struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
->    */
->   bool qemu_plugin_hwaddr_is_io(struct qemu_plugin_hwaddr *hwaddr);
->   uint64_t qemu_plugin_hwaddr_device_offset(const struct qemu_plugin_hwaddr *haddr);
-> +#endif /* CONFIG_USER_ONLY */
->   
->   typedef void
->   (*qemu_plugin_vcpu_mem_cb_t)(unsigned int vcpu_index,
-> diff --git a/plugins/api.c b/plugins/api.c
-> index 53c8a73582..785ad2e45e 100644
-> --- a/plugins/api.c
-> +++ b/plugins/api.c
-> @@ -249,7 +249,8 @@ bool qemu_plugin_mem_is_store(qemu_plugin_meminfo_t info)
->    * Virtual Memory queries
->    */
->   
-> -#ifdef CONFIG_SOFTMMU
-> +#ifndef CONFIG_USER_ONLY
-> +
->   static __thread struct qemu_plugin_hwaddr hwaddr_info;
->   
->   struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
-> @@ -267,26 +268,14 @@ struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
->   
->       return &hwaddr_info;
->   }
-> -#else
-> -struct qemu_plugin_hwaddr *qemu_plugin_get_hwaddr(qemu_plugin_meminfo_t info,
-> -                                                  uint64_t vaddr)
-> -{
-> -    return NULL;
-> -}
-> -#endif
->   
->   bool qemu_plugin_hwaddr_is_io(struct qemu_plugin_hwaddr *hwaddr)
+> Suspicious ifdef'ry in s390_handle_wait() from commit 83f7f32901c.
 
-Please disregard this patch, I misinterpreted the variable name with the 
-hwaddr type.
+Reviewed-by: David Hildenbrand <david@redhat.com>
 
->   {
-> -#ifdef CONFIG_SOFTMMU
->       return hwaddr->is_io;
-> -#else
-> -    return false;
-> -#endif
->   }
->   
->   uint64_t qemu_plugin_hwaddr_device_offset(const struct qemu_plugin_hwaddr *haddr)
->   {
-> -#ifdef CONFIG_SOFTMMU
->       if (haddr) {
->           if (!haddr->is_io) {
->               ram_addr_t ram_addr = qemu_ram_addr_from_host((void *) haddr->v.ram.hostaddr);
-> @@ -299,7 +288,6 @@ uint64_t qemu_plugin_hwaddr_device_offset(const struct qemu_plugin_hwaddr *haddr
->               return haddr->v.io.offset;
->           }
->       }
-> -#endif
->       return 0;
->   }
->   
-> @@ -308,7 +296,6 @@ uint64_t qemu_plugin_hwaddr_device_offset(const struct qemu_plugin_hwaddr *haddr
->    * will be. This helps the plugin dimension per-vcpu arrays.
->    */
->   
-> -#ifndef CONFIG_USER_ONLY
->   static MachineState * get_ms(void)
->   {
->       return MACHINE(qdev_get_machine());
-> 
+-- 
+Thanks,
+
+David / dhildenb

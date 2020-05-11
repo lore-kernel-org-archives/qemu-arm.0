@@ -1,207 +1,157 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp156084lfb;
-        Mon, 11 May 2020 05:29:42 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIlS+u8a8rAOj/iZILRvtETiGqa/n7zA3E4QANSCyRHSRsTNG+v9E6vsfbQETfQfUTdsdI/
-X-Received: by 2002:a05:6402:379:: with SMTP id s25mr13654294edw.69.1589200182616;
-        Mon, 11 May 2020 05:29:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589200182; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp188918lfb;
+        Mon, 11 May 2020 06:11:43 -0700 (PDT)
+X-Google-Smtp-Source: APiQypK7WRh3uwA1ADJtcnEoKM2bJX5wAHO3kcAObqJikOSdP8o3Iqfu1e6NK5WhAcUb5yeqkUHI
+X-Received: by 2002:a05:620a:1379:: with SMTP id d25mr15647905qkl.173.1589202703002;
+        Mon, 11 May 2020 06:11:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589202702; cv=none;
         d=google.com; s=arc-20160816;
-        b=BXNxU+Zj6ZPBShsihy+Po4+FsN2JVtZkRehy6iYu4Lbod1v3b8d9LipCrC4KTLe+z9
-         c0ytjN5nsKZRETtAJm76IY1034mryhs2osK1tpyNnn84WISkAoYmQq824R9DUvIcXKay
-         5xZMQeMNgY+P4nRoyE8gW6AdYOLImA1jw0dc6W4K8iQugKT4lRvDaxxTSkqZDFbsUMf7
-         /pmKQFFytN9yzfSCtFUOBfy52OF9lgbmddlXmoodnjpJ+QpCvuff94cXyHtFLJE5ojLn
-         TkkXDOpLv/BY8XRG5s2bkZO8TxvC710PI/zV+CevWJWJF46d6StOHhrEI+74RB+KGgfy
-         TXbA==
+        b=hmu9A3cR1KXRj1ajIiCcY0JWUv6dRwdJF5J2hrUqKm6VPU5fPm54YMSXHTbftTMrTC
+         2Wbya02V7aH94yM9hhUefmQmeFUeSefKW9MnUH2q/44/h7kJmKyYaSSzn9xd0r7WzI2J
+         hEBgSZPAjqMuqN6yhxV0qwecwRr9lesooH8MMTjcKsRIop7k7yh1alL6E3yhf4WVad8W
+         pJ5MLEdx3tJ3ahLPkhnQiEZtIe3SdPfuqbiqVUfVooSmbYINMyqHTJBYXLT/x6KcP5ar
+         BWM08aLQax4owYy/Xy6HaQcIo5zo5JxpaMbQwz59aozugrdf2pJufHx6bUrVMKdIM5SO
+         BX8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=L8L4dH79F/shaoDlU4MtTMVVRmb5egfDfK9KucJ74l8=;
-        b=czn8mDVV+SBbiloVk4+dsmB6CWZtUt9f9OJo3d3mCE2+/ZoQzyxzj2I9vjaKkBgHBe
-         MfQm/gvTmBRGkUOc9QV1tnr0XXjyzng8RjRPZa71U9/Dl847S3phAk3AukUXIUjVYdnI
-         5GebfC3I5rG/ctNQIPw0Fopap0VbYpTT7cHHkLQzLaDbgDTEY5H8VHM2wdguiKLJpMkn
-         HGXH3NTqeYevW+9vyCnRb5x1nwNnVG3JE6yF0AI4OZ0ekp3OMSzxkUkPNo/Ja8s3jfGn
-         Ejr+uyagzVSiBaag3vBVx1feX4h5mZQdimN9Lil1+vqmoWI58tDK3YQ22+jc/orp4XOU
-         cxmg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=qV+WPsyPxR6+lt2ti2yn0mOEjpo225y5D7KTke+SxoI=;
+        b=x+N0NXKe586/ZbYxlIiakwWSAo7vmksfkWN3UkE7Bg8M3467uPf6yWhEA5z3wt65H1
+         lxe2WJH9nhJKwrTdRdd8PfIKUe5JIVbzjUsqozIkSJUoeyCBcR9cxXnKp3N+mX4Dr/9g
+         2BTloH/kYhXoSiX1enn+OefTUoiz4nmTXF8IOHuhnjGiESstYA/wavSvj1r9HGgDQh6I
+         PMh0d6/ihmfDKoli69RHBBtm/Fyh0YWaLV42rvQcnFx0K8Yz5933+u8COulBngSrgABm
+         ZfFPc4WHO+IVQYDE+WsNUmfQ5pAPSdH0j8DDq+HOHeiqBQGYpLs2BziRnLEiyTADty0M
+         gwtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="huSvlD/4";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id v5si6111295edi.440.2020.05.11.05.29.42;
-        Mon, 11 May 2020 05:29:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EbL09V9B;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p22si2715764qke.40.2020.05.11.06.11.42
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 11 May 2020 06:11:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="huSvlD/4";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1729941AbgEKM3i (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 11 May 2020 08:29:38 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:24812 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1729912AbgEKM3i (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 11 May 2020 08:29:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1589200176;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=L8L4dH79F/shaoDlU4MtTMVVRmb5egfDfK9KucJ74l8=;
-        b=huSvlD/4V8ymdevWIYQxB6GpqBtcZbPNX5LSmWSo3UwqQp/l1xaYAXybWy1J/B3a2w3jft
-        sR0UIdPsJzEwSdrFTZqLC2Jr9CDHT57qfIL+pdABTcB7AZqP17IHnR2dpAo9t6/VF4Dkva
-        cDK0cRpiOHrU7LbtVRaNlA9tDDbFmAA=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-425-3S5S_ZHHNHyUO1Z-WA_w4A-1; Mon, 11 May 2020 08:29:34 -0400
-X-MC-Unique: 3S5S_ZHHNHyUO1Z-WA_w4A-1
-Received: by mail-wr1-f69.google.com with SMTP id 90so5111512wrg.23
-        for <kvm@vger.kernel.org>; Mon, 11 May 2020 05:29:34 -0700 (PDT)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EbL09V9B;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:49876 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jY8De-0005fW-FB
+	for alex.bennee@linaro.org; Mon, 11 May 2020 09:11:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43610)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <amanieu@gmail.com>)
+ id 1jY8DU-0005eS-LV; Mon, 11 May 2020 09:11:32 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:33735)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <amanieu@gmail.com>)
+ id 1jY8DT-00017X-Uz; Mon, 11 May 2020 09:11:32 -0400
+Received: by mail-wm1-x342.google.com with SMTP id d207so3904014wmd.0;
+ Mon, 11 May 2020 06:11:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=qV+WPsyPxR6+lt2ti2yn0mOEjpo225y5D7KTke+SxoI=;
+ b=EbL09V9B/eLfPenF2TnjUhuEkhV+qymLv3U7PpNKuamXivLL5QDmRIdlUKgYRrI5fQ
+ SkzE+PSWvkeEdhA5bsVkuAzQigpQE3hjbGBjZV0S9VanIW0FKscmM5EDnfyy5AjfGe1T
+ U20hKxdbWYgrNY6/nKvxU9jiL75kKVI2yPgbqIrnMNs8etHFLpysxjw4czh25V1TU4St
+ rNhi9VgmC07CJaclTm6BEp5JYdrnQbS3WzL9IH0I1qLCz4BemGAd3cM5cB9ikxfkvy6Z
+ QL1WvxYGNqOpdwMS2Q3azQ5CNqcWXCxG4HOmQnXU4eMTU9w2oAyKdkiOMShE3udJkTvn
+ lqsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=L8L4dH79F/shaoDlU4MtTMVVRmb5egfDfK9KucJ74l8=;
-        b=XDsPnoHO5L4fMwckIQZxKK+0YPYeJ8kfGNmpTI4I30aOcJp7lWYWX+9GyLv7/TSFYc
-         fKUjEH46rmwtStaui3AQKS4nfbLgJzGz2jUKCvnA42STr9brrw7KH7q8vkO+AFH44jPC
-         FC82gX1iZlD31+OyGL1OCzOik8cC/jcdgIS+mcVUf02hEc0uhb17V8sFd3kDCqL98kUh
-         TbIbrdKh8bYsIoY6WaXIaIHbxyvBfHsSZcWnc+RbkO4l/4UXtMr28Ly8tc+B/VNi3Lmh
-         GqR2othFXAy6W+bGK3hbCqxlOkasc6a1noqCZd4u5+iq5oe6Xiur2KOEPdgmv22y1vbN
-         NqIg==
-X-Gm-Message-State: AGi0PuZPqcIyt/v5qE4IbfVu/5RQFCG7vvtqcTK651U0pRzRFXjDWYL1
-        aozlgTJUPFZ3Y04kIXuDH1WqSGpE9u8hF5n0cgJ+MyuiVvO7P2m+ctrgWuLgSljRosR/u92Rcau
-        hHFX5S2QBp48r
-X-Received: by 2002:a5d:6b90:: with SMTP id n16mr439010wrx.220.1589200173501;
-        Mon, 11 May 2020 05:29:33 -0700 (PDT)
-X-Received: by 2002:a5d:6b90:: with SMTP id n16mr438995wrx.220.1589200173317;
-        Mon, 11 May 2020 05:29:33 -0700 (PDT)
-Received: from [192.168.1.38] (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
-        by smtp.gmail.com with ESMTPSA id q17sm9650822wmk.36.2020.05.11.05.29.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 11 May 2020 05:29:32 -0700 (PDT)
-Subject: Re: [PATCH v26 01/10] acpi: nvdimm: change NVDIMM_UUID_LE to a common
- macro
-To:     Dongjiu Geng <gengdongjiu@huawei.com>, imammedo@redhat.com,
-        mst@redhat.com, xiaoguangrong.eric@gmail.com,
-        peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
-        pbonzini@redhat.com, fam@euphon.net, rth@twiddle.net,
-        ehabkost@redhat.com, mtosatti@redhat.com, qemu-devel@nongnu.org,
-        kvm@vger.kernel.org, qemu-arm@nongnu.org
-Cc:     zhengxiang9@huawei.com, Jonathan.Cameron@huawei.com,
-        linuxarm@huawei.com
-References: <20200507134205.7559-1-gengdongjiu@huawei.com>
- <20200507134205.7559-2-gengdongjiu@huawei.com>
-From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <4f29e19c-cb37-05e6-0ae3-c019370e090b@redhat.com>
-Date:   Mon, 11 May 2020 14:29:31 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=qV+WPsyPxR6+lt2ti2yn0mOEjpo225y5D7KTke+SxoI=;
+ b=sHbpTUWlZz0+aj71B42V1JV+AnjpAyofTo6MjOHzsfFXEmhIva+Tx/RKh151Su+WwH
+ k6Aa3Rv5xYF6e35+bK4Yyv2G6xkckSMX/oNP6KLHRpWSk7wfzKkwZPn0ckHZzZ7UEs6d
+ 0gekZ4m5n/tLC1p+7CicHiQmEEVnLf7QzvnaaqQFiiFDFMnSUgSui5ajc0JnMygtRVQ1
+ S3vl1IVWmNK/5J35D3R/aYa1pFz3vQz2exvxVFfG62X01jJIxGaHsDyxrChb4dgtJCEK
+ GRez7oBBVyW3bSzHfgSH82Uwm6WNO7o+I/7qiGEkLjgpLTi7y4b8/C6KslVKw8gH1syi
+ bjrQ==
+X-Gm-Message-State: AGi0PubiRChtmLihQ+UmM24pfO1XjqXWtv1XuE6R+A3lhK0hu+ui+89s
+ WbFxXKJgqX9ivRkISvdFaH6V5TCnt4g=
+X-Received: by 2002:a1c:7e82:: with SMTP id z124mr23960192wmc.53.1589202688548; 
+ Mon, 11 May 2020 06:11:28 -0700 (PDT)
+Received: from amanieu-laptop.home ([2a00:23c6:f081:f801:76b2:7504:9791:6959])
+ by smtp.gmail.com with ESMTPSA id
+ a7sm25831081wmj.12.2020.05.11.06.11.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 May 2020 06:11:27 -0700 (PDT)
+From: Amanieu d'Antras <amanieu@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2] linux-user/arm: Reset CPSR_E when entering a signal handler
+Date: Mon, 11 May 2020 14:11:17 +0100
+Message-Id: <20200511131117.2486486-1-amanieu@gmail.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20200507134205.7559-2-gengdongjiu@huawei.com>
-Content-Type: text/plain; charset=windows-1252; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: GeE9GT1QChxf
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=amanieu@gmail.com; helo=mail-wm1-x342.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Riku Voipio <riku.voipio@iki.fi>,
+ qemu-arm@nongnu.org, Amanieu d'Antras <amanieu@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NATektASgMtA
 
-On 5/7/20 3:41 PM, Dongjiu Geng wrote:
-> The little end UUID is used in many places, so make
-> NVDIMM_UUID_LE to a common macro to convert the UUID
-> to a little end array.
-> 
-> Reviewed-by: Xiang Zheng <zhengxiang9@huawei.com>
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> ---
-> Change since v25:
-> 1. Address Peter's comments to add a proper doc-comment comment for
->     UUID_LE macros.
-> ---
->   hw/acpi/nvdimm.c    | 10 +++-------
->   include/qemu/uuid.h | 26 ++++++++++++++++++++++++++
->   slirp               |  2 +-
->   3 files changed, 30 insertions(+), 8 deletions(-)
-> 
-> diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-> index fa7bf8b..9316d12 100644
-> --- a/hw/acpi/nvdimm.c
-> +++ b/hw/acpi/nvdimm.c
-> @@ -27,6 +27,7 @@
->    */
->   
->   #include "qemu/osdep.h"
-> +#include "qemu/uuid.h"
->   #include "hw/acpi/acpi.h"
->   #include "hw/acpi/aml-build.h"
->   #include "hw/acpi/bios-linker-loader.h"
-> @@ -34,18 +35,13 @@
->   #include "hw/mem/nvdimm.h"
->   #include "qemu/nvdimm-utils.h"
->   
-> -#define NVDIMM_UUID_LE(a, b, c, d0, d1, d2, d3, d4, d5, d6, d7)             \
-> -   { (a) & 0xff, ((a) >> 8) & 0xff, ((a) >> 16) & 0xff, ((a) >> 24) & 0xff, \
-> -     (b) & 0xff, ((b) >> 8) & 0xff, (c) & 0xff, ((c) >> 8) & 0xff,          \
-> -     (d0), (d1), (d2), (d3), (d4), (d5), (d6), (d7) }
-> -
->   /*
->    * define Byte Addressable Persistent Memory (PM) Region according to
->    * ACPI 6.0: 5.2.25.1 System Physical Address Range Structure.
->    */
->   static const uint8_t nvdimm_nfit_spa_uuid[] =
-> -      NVDIMM_UUID_LE(0x66f0d379, 0xb4f3, 0x4074, 0xac, 0x43, 0x0d, 0x33,
-> -                     0x18, 0xb7, 0x8c, 0xdb);
-> +      UUID_LE(0x66f0d379, 0xb4f3, 0x4074, 0xac, 0x43, 0x0d, 0x33,
-> +              0x18, 0xb7, 0x8c, 0xdb);
->   
->   /*
->    * NVDIMM Firmware Interface Table
-> diff --git a/include/qemu/uuid.h b/include/qemu/uuid.h
-> index 129c45f..2d17a90 100644
-> --- a/include/qemu/uuid.h
-> +++ b/include/qemu/uuid.h
-> @@ -34,6 +34,32 @@ typedef struct {
->       };
->   } QemuUUID;
->   
-> +/**
-> + * @time_low: The low field of the timestamp
-> + * @time_mid: The middle field of the timestamp
-> + * @time_hi_and_version: The high field of the timestamp
-> + *                       multiplexed with the version number
-> + * @clock_seq_hi_and_reserved: The high field of the clock
-> + *                             sequence multiplexed with the variant
-> + * @clock_seq_low: The low field of the clock sequence
-> + * @node0: The spatially unique node0 identifier
-> + * @node1: The spatially unique node1 identifier
-> + * @node2: The spatially unique node2 identifier
-> + * @node3: The spatially unique node3 identifier
-> + * @node4: The spatially unique node4 identifier
-> + * @node5: The spatially unique node5 identifier
-> + *
-> + * This macro converts the fields of UUID to little-endian array
-> + */
-> +#define UUID_LE(time_low, time_mid, time_hi_and_version, \
-> +  clock_seq_hi_and_reserved, clock_seq_low, node0, node1, node2, \
-> +  node3, node4, node5) \
-> +  { (time_low) & 0xff, ((time_low) >> 8) & 0xff, ((time_low) >> 16) & 0xff, \
-> +    ((time_low) >> 24) & 0xff, (time_mid) & 0xff, ((time_mid) >> 8) & 0xff, \
-> +    (time_hi_and_version) & 0xff, ((time_hi_and_version) >> 8) & 0xff, \
-> +    (clock_seq_hi_and_reserved), (clock_seq_low), (node0), (node1), (node2),\
-> +    (node3), (node4), (node5) }
-> +
->   #define UUID_FMT "%02hhx%02hhx%02hhx%02hhx-" \
->                    "%02hhx%02hhx-%02hhx%02hhx-" \
->                    "%02hhx%02hhx-" \
-> diff --git a/slirp b/slirp
-> index 2faae0f..55ab21c 160000
-> --- a/slirp
-> +++ b/slirp
-> @@ -1 +1 @@
-> -Subproject commit 2faae0f778f818fadc873308f983289df697eb93
-> +Subproject commit 55ab21c9a36852915b81f1b41ebaf3b6509dd8ba
+This fixes signal handlers running with the wrong endianness if the
+interrupted code used SETEND to dynamically switch endianness.
 
-The SLiRP submodule change is certainly unrelated.
+Signed-off-by: Amanieu d'Antras <amanieu@gmail.com>
+---
+ linux-user/arm/signal.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/linux-user/arm/signal.c b/linux-user/arm/signal.c
+index d96fc27ce1..a475a103e9 100644
+--- a/linux-user/arm/signal.c
++++ b/linux-user/arm/signal.c
+@@ -244,6 +244,11 @@ setup_return(CPUARMState *env, struct target_sigaction *ka,
+     } else {
+         cpsr &= ~CPSR_T;
+     }
++    if (env->cp15.sctlr_el[1] & SCTLR_E0E) {
++        cpsr |= CPSR_E;
++    } else {
++        cpsr &= ~CPSR_E;
++    }
+ 
+     if (ka->sa_flags & TARGET_SA_RESTORER) {
+         if (is_fdpic) {
+@@ -287,7 +292,8 @@ setup_return(CPUARMState *env, struct target_sigaction *ka,
+     env->regs[13] = frame_addr;
+     env->regs[14] = retcode;
+     env->regs[15] = handler & (thumb ? ~1 : ~3);
+-    cpsr_write(env, cpsr, CPSR_IT | CPSR_T, CPSRWriteByInstr);
++    cpsr_write(env, cpsr, CPSR_IT | CPSR_T | CPSR_E, CPSRWriteByInstr);
++    arm_rebuild_hflags(env);
+ 
+     return 0;
+ }
+-- 
+2.26.2
+

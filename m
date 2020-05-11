@@ -1,181 +1,123 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2463681lfb;
-        Mon, 11 May 2020 01:42:47 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKQkrMVawgyl7DL7EQC8E4y087R8TdOHb+OBdPMC1cNVutKoGIE7Y5hY6A7A9blgPEpA/zR
-X-Received: by 2002:ac8:4e44:: with SMTP id e4mr15237073qtw.326.1589186567616;
-        Mon, 11 May 2020 01:42:47 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1589186567; cv=pass;
+Received: by 2002:a19:c742:0:0:0:0:0 with SMTP id x63csp5248lff;
+        Mon, 11 May 2020 01:49:40 -0700 (PDT)
+X-Google-Smtp-Source: APiQypI1IU5cNdhIJJJFsMHCAyAs7QkZIE9yXwVPN65TppWKR1ebak03tjUM7OT1YBjRmoI/iRwQ
+X-Received: by 2002:a37:9d55:: with SMTP id g82mr12462943qke.407.1589186980790;
+        Mon, 11 May 2020 01:49:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589186980; cv=none;
         d=google.com; s=arc-20160816;
-        b=BB7JW8t3+CueH7Vfe0jjIaq/XTNpKpTzh8DeaNnH5uw6m00zl5/V2HSEB50qADGRgR
-         jDSkdYaT3dzKFl9j9ocdVRn8LqMGYObZHCPILDfsrrAsqQRvOIqihUUIaiTm+3mPq4H3
-         whtJGS7NNrd/BbQjgGxaBxKMbMhW6/cx7NqYHE5DyXLGECgmK4ELaWDXASHNVltmCR3D
-         V0kwELQJ1B2fjeaekDcJuj8OoZv2MZb9nNY/NardHYPj/kzHmRACLgHf/WmA6mUwlKdb
-         e32MROReVt+vW7ZKgc+E56k8nPE5QJZfiQ4mThg+2zRJwFRF/tXCGrfTGmbAlhrjgX7C
-         IpBA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=GNRMVDxUfD1JZcrAaANEUqW/uaWTxkKXW5TZwM/2aej2N2C8TYrHty151rDtw3fZe1
+         mHy6REgT+36hHX4D+fB1P7djJFpgAi6WVZC+jc3ySeB0u3g1NnHRJD4IwTVY8TFdkUem
+         WW5UdnkHp38XC5oHYDz4i4e83kK8RdC0PcHXA4PF1pwIP7pqqn009EZJLivPkVSONCuO
+         lZ/HhJ/63lubqU1xXynJI662U/K+tlhMI2inF0kEsv1/j0rUJUnOCPmlUkVTD7axaBbS
+         jTunc5ZsNiJVL9SQcyjIxCdjfloZUamU84vpO6vx81LF3ETXjdSNt+n58UyXTRaDCDQt
+         FArw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from:dkim-signature:dkim-signature;
-        bh=mwOE/vNkghnMqU32Xm9b73owBl1LFddPyk0Aeq5jnnw=;
-        b=WPXRCYeytpM3wE61fsd5ZluTZMCJaYMFQzRcextyTDxxw2W29XcOsoSZOhwAcwOdPO
-         S4yNKtfjQwwhj+bgL/zzPpOf4lvt1ivk7BK2FIDpGeDkvNBLGfkxxuw838hAL5GEK78i
-         1OTWo3O3xZxH81za6MrPQAt0iNG89TWl6TCsyow9s4p/hTwwI9A4Sskct+Co0534dTcR
-         2aEF4n51NjaBMvL6bYotRg/WA1PEPhQGqDDENZ9JVmF0Sc/1VJsVbC12QROECAki5kHM
-         wGwYO8XsiHjjt+qy1FCBKrMjpEmxtgdUAQucMn3WMQ+KL5FRZr0dHfPeeNq3I6ynxFuo
-         1G4A==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=temperror (no key for signature) header.i=@marvell.com header.s=pfpt0818 header.b=ZmRmTePP;
-       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector1-marvell-onmicrosoft-com header.b=sVCmCh0+;
-       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=ujm/k7XqSOSF25VoCj2jMLGjitfu9+QshnUWrWmT6LY=;
+        b=aaJFuN7vvQqMvkYG3IcnyuIdTSHySZFQwrtCU9OF4A7ReXbRc/GIANvxWl65VSUwcW
+         Xh21ywhkVbTJCOoRgHBQ2WtwYehEmOKe3A56WtzLF2RGJ8bTPuwO+/3fvqE9u4zTM/0x
+         5/ulR+fvnIOw/tBAaZ4hCaJffYDpUyuH209XlWS8xd7bNdQQ6PvbXCtLbMXVBu1HJ6dJ
+         ly+g2yIm5KIZWI8z/eYfOkXaCOSsq4QNSF0W1E6cpeMhiDcYSY3NC5FSFYxqGMI4tLGw
+         dzc0WWKL+1tYP5c4dbqQRgc0F9TPwRJB9vVepoF0/5NczhZ7L2/BmgxduxP9srHlGCvB
+         czgQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BsmejXAY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=marvell.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 75si1275639qko.134.2020.05.11.01.42.47
+        by mx.google.com with ESMTPS id n18si5337888qvq.188.2020.05.11.01.49.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 May 2020 01:42:47 -0700 (PDT)
+        Mon, 11 May 2020 01:49:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=temperror (no key for signature) header.i=@marvell.com header.s=pfpt0818 header.b=ZmRmTePP;
-       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector1-marvell-onmicrosoft-com header.b=sVCmCh0+;
-       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BsmejXAY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=marvell.com
-Received: from localhost ([::1]:54530 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36036 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jY41P-00034i-0W
-	for alex.bennee@linaro.org; Mon, 11 May 2020 04:42:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32772)
+	id 1jY484-00008f-54
+	for alex.bennee@linaro.org; Mon, 11 May 2020 04:49:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33662)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=4400c99de5=bbhushan2@marvell.com>)
- id 1jY41F-0002wb-4s; Mon, 11 May 2020 04:42:37 -0400
-Received: from mx0b-0016f401.pphosted.com ([67.231.156.173]:23634)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=4400c99de5=bbhushan2@marvell.com>)
- id 1jY41D-0001Rd-1I; Mon, 11 May 2020 04:42:36 -0400
-Received: from pps.filterd (m0045851.ppops.net [127.0.0.1])
- by mx0b-0016f401.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 04B8ZtPi020177; Mon, 11 May 2020 01:42:32 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
- h=from : to : subject
- : date : message-id : references : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=pfpt0818;
- bh=mwOE/vNkghnMqU32Xm9b73owBl1LFddPyk0Aeq5jnnw=;
- b=ZmRmTePP6RS3mdbVT7eJgo52ac5O3+azEC68LYvkLeQDsDBRMT/TrPtRZkD5hGmmxsFq
- jT2I3EUquOiEvB4xtUoRxlYViP1HTSwRZLBsNsq0v3MjLcaB3w5UXFNQNVapV4T24jT9
- q5xou6lix6oxlV3IAUSpRVZcW/M8yPM6F4qQn1XNgq7UPocy91avd4dnoLqkrClq03PT
- 7/zBcdGfIMgxY7gida+t+mrMm7rSQOoM2v9ZQfVFBtPdImT/4bzu0I3OgT98vStoY9Eq
- uQO6+xKsgIFWhF1EkqDd9mTZv0zEqzcSXGMs5M09C+ZgzfeFhoRbWWx+/woJM6Hkl6gh 9A== 
-Received: from sc-exch04.marvell.com ([199.233.58.184])
- by mx0b-0016f401.pphosted.com with ESMTP id 30wv1n5mjc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
- Mon, 11 May 2020 01:42:32 -0700
-Received: from DC5-EXCH02.marvell.com (10.69.176.39) by SC-EXCH04.marvell.com
- (10.93.176.84) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 11 May 2020 01:42:30 -0700
-Received: from SC-EXCH02.marvell.com (10.93.176.82) by DC5-EXCH02.marvell.com
- (10.69.176.39) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 11 May 2020 01:42:28 -0700
-Received: from NAM04-SN1-obe.outbound.protection.outlook.com (104.47.44.50) by
- SC-EXCH02.marvell.com (10.93.176.82) with Microsoft SMTP Server
- (TLS) id
- 15.0.1497.2 via Frontend Transport; Mon, 11 May 2020 01:42:28 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=G+x9V2XrYN4t1s383+gNuMdsXeZPCGnQBNWPzSIew8PZAbK4jPg9R1XkDv0gZ2JGU5didLsWJeu+umUDKvsGHi+QdQ6nL5wCRoIc4M1QeOewE1sJGU2DVGO0u67Pzj/PGe4BWHqhh5XeS1Aul/WxukxRsVFAYfCu4wnytxyqBxJ0BAR36p8f7ZrGuCJLbHapIFiSbFXYyIgFw4aqpxNMgWFy8iUGcfY1uqPHqdEdoBGAW1w+2G6+p4Ab7hjG5bYwMb8ds8NApu1quMGz1iM7Ap29ziLixu9sGes4+6UqCDneGB9NWbk5mFvBVO0uO7xGhMoKipW/iNC6q/W6hnA7yA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mwOE/vNkghnMqU32Xm9b73owBl1LFddPyk0Aeq5jnnw=;
- b=Kk8LQA5iNp87ADIgCJZfIUqroztKtuyhcRlE+Gdh5vF01Dc6XrZAbKG6J/0YadfSp7djCZO09c2WNl8WOyyFXlnJ/Ngw1MhWAHhqRdLWCkq8Fyv+6vCtDIXsBXZW03tii97UVbSwjnPBvKgFaLWm99fY0RuatVU/3AQJrSTcd/URKOZjbtM8ubqs9YhyULGFovAp7QBF5lvKNjUmnRE+oOWlMdoMlrb3fimzguLYIp8IWmM3Cga3T3MxFQWyfdlHhHqUF7COJm5tXEoMssREkuFBjwmyH/gsKs6XJ+gyk0QlakXg+al0J8bXu1DvTJBV9d4r8fNF1uO+YgPGgJDGgg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=marvell.com; dmarc=pass action=none header.from=marvell.com;
- dkim=pass header.d=marvell.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=marvell.onmicrosoft.com; s=selector1-marvell-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mwOE/vNkghnMqU32Xm9b73owBl1LFddPyk0Aeq5jnnw=;
- b=sVCmCh0+ndpZZiwhzwBf4kVYaFGiEKQJqu4LxARj6p3eUfjZEuEcvtBcuGLPD0A83PcFNlnmWTtttgfGpi2ASc2ZvssP7wCNw1mEX2kw+LhjeJ8pKA9NfksE8JOyvjIiHM9JBVe3i42JCwtlNTkbA/Gqn2FFpK550Ll1lAEvqU0=
-Received: from CY4PR1801MB1959.namprd18.prod.outlook.com
- (2603:10b6:910:75::25) by CY4PR1801MB1959.namprd18.prod.outlook.com
- (2603:10b6:910:75::25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.30; Mon, 11 May
- 2020 08:42:27 +0000
-Received: from CY4PR1801MB1959.namprd18.prod.outlook.com
- ([fe80::5535:d9ff:9933:5071]) by CY4PR1801MB1959.namprd18.prod.outlook.com
- ([fe80::5535:d9ff:9933:5071%6]) with mapi id 15.20.2979.033; Mon, 11 May 2020
- 08:42:27 +0000
-From: Bharat Bhushan <bbhushan2@marvell.com>
-To: Auger Eric <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>,
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jY47t-00006f-Og
+ for qemu-arm@nongnu.org; Mon, 11 May 2020 04:49:29 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:28280
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jY47r-0002Rb-NQ
+ for qemu-arm@nongnu.org; Mon, 11 May 2020 04:49:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1589186966;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ujm/k7XqSOSF25VoCj2jMLGjitfu9+QshnUWrWmT6LY=;
+ b=BsmejXAYRwcsQHccEbIqCSW6er97wwOpvguxAvfQcy0dCyButXRf94SPeiZpFPmW+NFXrl
+ UsnYTbJ9jM9HtaT8lMNSE5RWj40iC/tf2s+45MI2QwoSwgZA0Eggdg56zmBgGNMQssFC7T
+ 5Udw7mtDMC98q0jS0iDqL0uVjm+H37E=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-241-rvOx0ogyMhSSfpRb-s3XUA-1; Mon, 11 May 2020 04:49:24 -0400
+X-MC-Unique: rvOx0ogyMhSSfpRb-s3XUA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E52AC100CCCB;
+ Mon, 11 May 2020 08:49:22 +0000 (UTC)
+Received: from [10.36.114.214] (ovpn-114-214.ams2.redhat.com [10.36.114.214])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D65D210016E8;
+ Mon, 11 May 2020 08:49:14 +0000 (UTC)
+Subject: Re: [EXT] [PATCH v2 2/5] virtio-iommu: Implement RESV_MEM probe
+ request
+To: Bharat Bhushan <bbhushan2@marvell.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "mst@redhat.com" <mst@redhat.com>,
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>, "peterx@redhat.com"
- <peterx@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "mst@redhat.com" <mst@redhat.com>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>,
  "pbonzini@redhat.com" <pbonzini@redhat.com>
-Subject: RE: [EXT] [PATCH v2 2/5] virtio-iommu: Implement RESV_MEM probe
- request
-Thread-Topic: [EXT] [PATCH v2 2/5] virtio-iommu: Implement RESV_MEM probe
- request
-Thread-Index: AQHWJV6G7q81t6809kGgvGezOKtQUqiicegggAAFugCAAB0QEA==
-Date: Mon, 11 May 2020 08:42:27 +0000
-Message-ID: <CY4PR1801MB1959F371C327FDBEE4EE7B64E3A10@CY4PR1801MB1959.namprd18.prod.outlook.com>
 References: <20200508173057.32215-1-eric.auger@redhat.com>
  <20200508173057.32215-3-eric.auger@redhat.com>
  <MWHPR1801MB19669FBFAD49AD36460B0756E3A10@MWHPR1801MB1966.namprd18.prod.outlook.com>
  <ba80143c-e053-5323-70a0-72a1dcc04376@redhat.com>
-In-Reply-To: <ba80143c-e053-5323-70a0-72a1dcc04376@redhat.com>
-Accept-Language: en-IN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: redhat.com; dkim=none (message not signed)
- header.d=none;redhat.com; dmarc=none action=none header.from=marvell.com;
-x-originating-ip: [122.171.209.213]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 6e170307-a74c-4bc9-ffe1-08d7f5873c2a
-x-ms-traffictypediagnostic: CY4PR1801MB1959:
-x-microsoft-antispam-prvs: <CY4PR1801MB1959DCDA2694FD769DA59021E3A10@CY4PR1801MB1959.namprd18.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:115;
-x-forefront-prvs: 04004D94E2
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: Lb8hED0YQ7jhCYTK0UUFPXlWX1dwu8/AtMRrxOIe3Rgk1T4ynIsNSAYDDSgfoNcacLgQ7JCYt0/L6b8xOl1zmXtSLkjWIBNwNh4pQ5DE7EJ8+rEEr7w3t7lDg4kJTuLXFLpuHaL00MzZ4PLWVxgoEWrtirgUiR6COzE/aQ0Gm6XtDMeu+4btpxxkogwsMn6qbbSu7j8HWFg3nEBMwM4suD58OW/D0ZJthPZlRwWfZLl4ZG7O/YHhJMiWjG0KNnMsiNyLlO05X6amXYbrKIGr7uIiapqnFg9/Ol/BtKi3Wtrv0yU1oaJU7ULx+xi85KRdLiVoJWTgOFPpL7X5Ux627/9ua+xYPRDjdRtnoimcqOLkBv8RKrvXWaX55tZ9d5G8Tiam+oC88pEE7+JcZO66zmV9Ym0rsSravJND27MiR9oOMFs7a5ebYWUqqXJSk3YxFr19p+b1YtajWs7mdVAi5rKKVDPjgqHFORid2Z3CYEU57TRY1uVtsVpG7XccNu81t1QpSYnkEaQJmqFLh2c+OVhnjNpDjI34HfMejaSeQj0=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CY4PR1801MB1959.namprd18.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(376002)(136003)(366004)(346002)(39850400004)(396003)(33430700001)(5660300002)(66946007)(66446008)(64756008)(66556008)(71200400001)(52536014)(55016002)(7416002)(2906002)(9686003)(8676002)(110136005)(33440700001)(8936002)(66476007)(76116006)(478600001)(33656002)(86362001)(316002)(7696005)(26005)(186003)(6506007)(53546011)(921003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: wmhK/QF2hgb3HeJ/wdMzry/ubRtBo6IM3xHax5oKqyJnHY6qVajXDN6AcB49xO/BXaG2xCoLtkZG2EViAOLm4ZJEliU42u/9+cddkOKRWg56ehOTlNCrhh6IRQA9mGOs/yvzQx6Mvzk8NMOIOkaiT/yIHGQeYoT4XtF7NcY4hmo68QkqMEA5qyTAvbYdwQYGI6HU4Oxuc8Qvd/KqKGO3ovDYeGzeffx5hmEk4MoMz9dkt+vaWv0p5ECyXkonnvzwqHa2KQ+oY51rPrHORo/2qPiO8mCTFF8XnZkt8G664fOgkRc6pz/I8DFwW6OOw5+E3p0VYuctGMNC1eXacu0ag55kbRiv3weSSsV/B9bLvTeXprtUyeujrwPsAcwmpMeHyLexWofFvgrm7xc4F8d2HYxS5LhLj+HWsf5ktCAIUfmVa8W0K4NkDh0CujNBvebb7zHuEY6xpP5ziyqk61vXNXTTIbkm4Z0SFosBhDYjtzFIuyAGMlHmmNl7m/RbAfdg
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ <CY4PR1801MB1959F371C327FDBEE4EE7B64E3A10@CY4PR1801MB1959.namprd18.prod.outlook.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <8e3d767e-f22e-41d3-885a-dbda866d0310@redhat.com>
+Date: Mon, 11 May 2020 10:49:12 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6e170307-a74c-4bc9-ffe1-08d7f5873c2a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 May 2020 08:42:27.2976 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 70e1fb47-1155-421d-87fc-2e58f638b6e0
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 9zkovo8/WV1C9LVw/+RKreImU3MyVi18UNK8MoY4xWdcctV9SU2/1Sr0Z/BbdE+/81gNAdEMOvRN9bEmCOr51w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR1801MB1959
-X-OriginatorOrg: marvell.com
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.676
- definitions=2020-05-11_03:2020-05-11,
- 2020-05-11 signatures=0
-Received-SPF: pass client-ip=67.231.156.173;
- envelope-from=prvs=4400c99de5=bbhushan2@marvell.com;
- helo=mx0b-0016f401.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/11 04:42:33
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+In-Reply-To: <CY4PR1801MB1959F371C327FDBEE4EE7B64E3A10@CY4PR1801MB1959.namprd18.prod.outlook.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/11 01:43:51
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, KHOP_DYNAMIC=0.001, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -190,191 +132,293 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WYaMjKPucvwM
+X-TUID: vb9ny2OUWPU3
 
-SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBBdWdlciBF
-cmljIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+IFNlbnQ6IE1vbmRheSwgTWF5IDExLCAyMDIw
-IDEyOjI2IFBNDQo+IFRvOiBCaGFyYXQgQmh1c2hhbiA8YmJodXNoYW4yQG1hcnZlbGwuY29tPjsg
-ZXJpYy5hdWdlci5wcm9AZ21haWwuY29tOw0KPiBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUt
-YXJtQG5vbmdudS5vcmc7IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsNCj4gbXN0QHJlZGhhdC5j
-b207IGplYW4tcGhpbGlwcGVAbGluYXJvLm9yZzsgcGV0ZXJ4QHJlZGhhdC5jb207DQo+IGFybWJy
-dUByZWRoYXQuY29tOyBwYm9uemluaUByZWRoYXQuY29tDQo+IFN1YmplY3Q6IFJlOiBbRVhUXSBb
-UEFUQ0ggdjIgMi81XSB2aXJ0aW8taW9tbXU6IEltcGxlbWVudCBSRVNWX01FTSBwcm9iZQ0KPiBy
-ZXF1ZXN0DQo+IA0KPiBIaSBCaGFyYXQsDQo+IE9uIDUvMTEvMjAgODozOCBBTSwgQmhhcmF0IEJo
-dXNoYW4gd3JvdGU6DQo+ID4gSGkgRXJpYywNCj4gPg0KPiA+PiAtLS0tLU9yaWdpbmFsIE1lc3Nh
-Z2UtLS0tLQ0KPiA+PiBGcm9tOiBFcmljIEF1Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+
-ID4+IFNlbnQ6IEZyaWRheSwgTWF5IDgsIDIwMjAgMTE6MDEgUE0NCj4gPj4gVG86IGVyaWMuYXVn
-ZXIucHJvQGdtYWlsLmNvbTsgZXJpYy5hdWdlckByZWRoYXQuY29tOw0KPiA+PiBxZW11LWRldmVs
-QG5vbmdudS5vcmc7IHFlbXUtYXJtQG5vbmdudS5vcmc7IHBldGVyLm1heWRlbGxAbGluYXJvLm9y
-ZzsNCj4gPj4gbXN0QHJlZGhhdC5jb207IGplYW4tIHBoaWxpcHBlQGxpbmFyby5vcmc7IEJoYXJh
-dCBCaHVzaGFuDQo+ID4+IDxiYmh1c2hhbjJAbWFydmVsbC5jb20+OyBwZXRlcnhAcmVkaGF0LmNv
-bTsgYXJtYnJ1QHJlZGhhdC5jb207DQo+ID4+IHBib256aW5pQHJlZGhhdC5jb20NCj4gPj4gU3Vi
-amVjdDogW0VYVF0gW1BBVENIIHYyIDIvNV0gdmlydGlvLWlvbW11OiBJbXBsZW1lbnQgUkVTVl9N
-RU0gcHJvYmUNCj4gPj4gcmVxdWVzdA0KPiA+Pg0KPiA+PiBFeHRlcm5hbCBFbWFpbA0KPiA+Pg0K
-PiA+PiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0NCj4gPj4gLSBUaGlzIHBhdGNoIGltcGxlbWVudHMgdGhlIFBST0JF
-IHJlcXVlc3QuIEF0IHRoZSBtb21lbnQsIG9ubHkgVEhFDQo+ID4+IFJFU1ZfTUVNIHByb3BlcnR5
-IGlzIGhhbmRsZWQuIFRoZSBmaXJzdCBnb2FsIGlzIHRvIHJlcG9ydCBpb21tdSB3aWRlDQo+ID4+
-IHJlc2VydmVkIHJlZ2lvbnMgc3VjaCBhcyB0aGUgTVNJIHJlZ2lvbnMgc2V0IGJ5IHRoZSBtYWNo
-aW5lIGNvZGUuIE9uDQo+ID4+IHg4NiB0aGlzIHdpbGwgYmUgdGhlIElPQVBJQyBNU0kgcmVnaW9u
-LA0KPiA+PiBbMHhGRUUwMDAwMCAtIDB4RkVFRkZGRkZdLCBvbiBBUk0gdGhpcyBtYXkgYmUgdGhl
-IElUUyBkb29yYmVsbC4NCj4gPj4NCj4gPj4gSW4gdGhlIGZ1dHVyZSB3ZSBtYXkgaW50cm9kdWNl
-IHBlciBkZXZpY2UgcmVzZXJ2ZWQgcmVnaW9ucy4NCj4gPj4gVGhpcyB3aWxsIGJlIHVzZWZ1bCB3
-aGVuIHByb3RlY3RpbmcgaG9zdCBhc3NpZ25lZCBkZXZpY2VzIHdoaWNoIG1heQ0KPiA+PiBleHBv
-c2UgdGhlaXIgb3duIHJlc2VydmVkIHJlZ2lvbnMNCj4gPj4NCj4gPj4gU2lnbmVkLW9mZi1ieTog
-RXJpYyBBdWdlciA8ZXJpYy5hdWdlckByZWRoYXQuY29tPg0KPiA+Pg0KPiA+PiAtLS0NCj4gPj4N
-Cj4gPj4gdjEgLT4gdjI6DQo+ID4+IC0gbW92ZSB0aGUgdW5sb2NrIGJhY2sgdG8gdGhlIHNhbWUg
-cGxhY2UNCj4gPj4gLSByZW1vdmUgdGhlIHB1c2ggbGFiZWwgYW5kIGZhY3Rvcml6ZSB0aGUgY29k
-ZSBhZnRlciB0aGUgb3V0IGxhYmVsDQo+ID4+IC0gZml4IGEgYnVuY2ggb2YgY3B1X3RvX2xlWCBh
-Y2NvcmRpbmcgdG8gdGhlIGxhdGVzdCBzcGVjIHJldmlzaW9uDQo+ID4+IC0gZG8gbm90IHJlbW92
-ZSBzaXplb2YobGFzdCkgZnJvbSBmcmVlIHNwYWNlDQo+ID4+IC0gY2hlY2sgdGhlIGVwIGV4aXN0
-cw0KPiA+PiAtLS0NCj4gPj4gIGluY2x1ZGUvaHcvdmlydGlvL3ZpcnRpby1pb21tdS5oIHwgIDIg
-Kw0KPiA+PiAgaHcvdmlydGlvL3ZpcnRpby1pb21tdS5jICAgICAgICAgfCA5NCArKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKystLQ0KPiA+PiAgaHcvdmlydGlvL3RyYWNlLWV2ZW50cyAgICAg
-ICAgICAgfCAgMSArDQo+ID4+ICAzIGZpbGVzIGNoYW5nZWQsIDkzIGluc2VydGlvbnMoKyksIDQg
-ZGVsZXRpb25zKC0pDQo+ID4+DQo+ID4+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2h3L3ZpcnRpby92
-aXJ0aW8taW9tbXUuaA0KPiA+PiBiL2luY2x1ZGUvaHcvdmlydGlvL3ZpcnRpby1pb21tdS5oDQo+
-ID4+IGluZGV4IGU2NTMwMDRkN2MuLjQ5ZWIxMDVjZDggMTAwNjQ0DQo+ID4+IC0tLSBhL2luY2x1
-ZGUvaHcvdmlydGlvL3ZpcnRpby1pb21tdS5oDQo+ID4+ICsrKyBiL2luY2x1ZGUvaHcvdmlydGlv
-L3ZpcnRpby1pb21tdS5oDQo+ID4+IEBAIC01Myw2ICs1Myw4IEBAIHR5cGVkZWYgc3RydWN0IFZp
-cnRJT0lPTU1VIHsNCj4gPj4gICAgICBHSGFzaFRhYmxlICphc19ieV9idXNwdHI7DQo+ID4+ICAg
-ICAgSU9NTVVQY2lCdXMgKmlvbW11X3BjaWJ1c19ieV9idXNfbnVtW1BDSV9CVVNfTUFYXTsNCj4g
-Pj4gICAgICBQQ0lCdXMgKnByaW1hcnlfYnVzOw0KPiA+PiArICAgIFJlc2VydmVkUmVnaW9uICpy
-ZXNlcnZlZF9yZWdpb25zOw0KPiA+PiArICAgIHVpbnQzMl90IG5iX3Jlc2VydmVkX3JlZ2lvbnM7
-DQo+ID4+ICAgICAgR1RyZWUgKmRvbWFpbnM7DQo+ID4+ICAgICAgUWVtdU11dGV4IG11dGV4Ow0K
-PiA+PiAgICAgIEdUcmVlICplbmRwb2ludHM7DQo+ID4+IGRpZmYgLS1naXQgYS9ody92aXJ0aW8v
-dmlydGlvLWlvbW11LmMgYi9ody92aXJ0aW8vdmlydGlvLWlvbW11LmMNCj4gPj4gaW5kZXgNCj4g
-Pj4gMjJiYTg4NDhjMi4uMzVkNzcyZTAyMSAxMDA2NDQNCj4gPj4gLS0tIGEvaHcvdmlydGlvL3Zp
-cnRpby1pb21tdS5jDQo+ID4+ICsrKyBiL2h3L3ZpcnRpby92aXJ0aW8taW9tbXUuYw0KPiA+PiBA
-QCAtMzgsNiArMzgsNyBAQA0KPiA+Pg0KPiA+PiAgLyogTWF4IHNpemUgKi8NCj4gPj4gICNkZWZp
-bmUgVklPTU1VX0RFRkFVTFRfUVVFVUVfU0laRSAyNTYNCj4gPj4gKyNkZWZpbmUgVklPTU1VX1BS
-T0JFX1NJWkUgNTEyDQo+ID4+DQo+ID4+ICB0eXBlZGVmIHN0cnVjdCBWaXJ0SU9JT01NVURvbWFp
-biB7DQo+ID4+ICAgICAgdWludDMyX3QgaWQ7DQo+ID4+IEBAIC0zNzgsNiArMzc5LDY1IEBAIHN0
-YXRpYyBpbnQgdmlydGlvX2lvbW11X3VubWFwKFZpcnRJT0lPTU1VICpzLA0KPiA+PiAgICAgIHJl
-dHVybiByZXQ7DQo+ID4+ICB9DQo+ID4+DQo+ID4+ICtzdGF0aWMgc3NpemVfdCB2aXJ0aW9faW9t
-bXVfZmlsbF9yZXN2X21lbV9wcm9wKFZpcnRJT0lPTU1VICpzLCB1aW50MzJfdCBlcCwNCj4gPj4g
-KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdWludDhfdCAq
-YnVmLCBzaXplX3QNCj4gPj4gK2ZyZWUpIHsNCj4gPj4gKyAgICBzdHJ1Y3QgdmlydGlvX2lvbW11
-X3Byb2JlX3Jlc3ZfbWVtIHByb3AgPSB7fTsNCj4gPj4gKyAgICBzaXplX3Qgc2l6ZSA9IHNpemVv
-Zihwcm9wKSwgbGVuZ3RoID0gc2l6ZSAtIHNpemVvZihwcm9wLmhlYWQpLCB0b3RhbDsNCj4gPj4g
-KyAgICBpbnQgaTsNCj4gPj4gKw0KPiA+PiArICAgIHRvdGFsID0gc2l6ZSAqIHMtPm5iX3Jlc2Vy
-dmVkX3JlZ2lvbnM7DQo+ID4+ICsNCj4gPj4gKyAgICBpZiAodG90YWwgPiBmcmVlKSB7DQo+ID4+
-ICsgICAgICAgIHJldHVybiAtRU5PU1BDOw0KPiA+PiArICAgIH0NCj4gPj4gKw0KPiA+PiArICAg
-IGZvciAoaSA9IDA7IGkgPCBzLT5uYl9yZXNlcnZlZF9yZWdpb25zOyBpKyspIHsNCj4gPj4gKyAg
-ICAgICAgcHJvcC5oZWFkLnR5cGUgPSBjcHVfdG9fbGUxNihWSVJUSU9fSU9NTVVfUFJPQkVfVF9S
-RVNWX01FTSk7DQo+ID4+ICsgICAgICAgIHByb3AuaGVhZC5sZW5ndGggPSBjcHVfdG9fbGUxNihs
-ZW5ndGgpOw0KPiA+PiArICAgICAgICBwcm9wLnN1YnR5cGUgPSBzLT5yZXNlcnZlZF9yZWdpb25z
-W2ldLnR5cGU7DQo+ID4+ICsgICAgICAgIHByb3Auc3RhcnQgPSBjcHVfdG9fbGU2NChzLT5yZXNl
-cnZlZF9yZWdpb25zW2ldLmxvdyk7DQo+ID4+ICsgICAgICAgIHByb3AuZW5kID0gY3B1X3RvX2xl
-NjQocy0+cmVzZXJ2ZWRfcmVnaW9uc1tpXS5oaWdoKTsNCj4gPj4gKw0KPiA+PiArICAgICAgICBt
-ZW1jcHkoYnVmLCAmcHJvcCwgc2l6ZSk7DQo+ID4+ICsNCj4gPj4gKyAgICAgICAgdHJhY2Vfdmly
-dGlvX2lvbW11X2ZpbGxfcmVzdl9wcm9wZXJ0eShlcCwgcHJvcC5zdWJ0eXBlLA0KPiA+PiArICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHByb3Auc3RhcnQsIHBy
-b3AuZW5kKTsNCj4gPj4gKyAgICAgICAgYnVmICs9IHNpemU7DQo+ID4+ICsgICAgfQ0KPiA+PiAr
-ICAgIHJldHVybiB0b3RhbDsNCj4gPj4gK30NCj4gPj4gKw0KPiA+PiArLyoqDQo+ID4+ICsgKiB2
-aXJ0aW9faW9tbXVfcHJvYmUgLSBGaWxsIHRoZSBwcm9iZSByZXF1ZXN0IGJ1ZmZlciB3aXRoDQo+
-ID4+ICsgKiB0aGUgcHJvcGVydGllcyB0aGUgZGV2aWNlIGlzIGFibGUgdG8gcmV0dXJuIGFuZCBh
-ZGQgYSBOT05FDQo+ID4+ICsgKiBwcm9wZXJ0eSBhdCB0aGUgZW5kLg0KPiA+PiArICovDQo+ID4+
-ICtzdGF0aWMgaW50IHZpcnRpb19pb21tdV9wcm9iZShWaXJ0SU9JT01NVSAqcywNCj4gPj4gKyAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCB2aXJ0aW9faW9tbXVfcmVxX3Byb2Jl
-ICpyZXEsDQo+ID4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB1aW50OF90ICpidWYp
-IHsNCj4gPj4gKyAgICB1aW50MzJfdCBlcF9pZCA9IGxlMzJfdG9fY3B1KHJlcS0+ZW5kcG9pbnQp
-Ow0KPiA+PiArICAgIHNpemVfdCBmcmVlID0gVklPTU1VX1BST0JFX1NJWkU7DQo+ID4+ICsgICAg
-c3NpemVfdCBjb3VudDsNCj4gPj4gKw0KPiA+PiArICAgIGlmICghdmlydGlvX2lvbW11X21yKHMs
-IGVwX2lkKSkgew0KPiA+PiArICAgICAgICByZXR1cm4gVklSVElPX0lPTU1VX1NfTk9FTlQ7DQo+
-ID4+ICsgICAgfQ0KPiA+PiArDQo+ID4+ICsgICAgY291bnQgPSB2aXJ0aW9faW9tbXVfZmlsbF9y
-ZXN2X21lbV9wcm9wKHMsIGVwX2lkLCBidWYsIGZyZWUpOw0KPiA+PiArICAgIGlmIChjb3VudCA8
-IDApIHsNCj4gPj4gKyAgICAgICAgcmV0dXJuIFZJUlRJT19JT01NVV9TX0lOVkFMOw0KPiA+PiAr
-ICAgIH0NCj4gPj4gKyAgICBidWYgKz0gY291bnQ7DQo+ID4+ICsgICAgZnJlZSAtPSBjb3VudDsN
-Cj4gPj4gKw0KPiA+PiArICAgIC8qIEZpbGwgdGhlIHJlc3Qgd2l0aCB6ZXJvZXMgKi8NCj4gPj4g
-KyAgICBtZW1zZXQoYnVmLCAwLCBmcmVlKTsNCj4gPg0KPiA+IE5vIG5lZWQgdG8gZmlsbCB3aXRo
-IHplcm8gaGVyZSBhcyAiYnVmIiBpcyBzZXQgdG8gemVybyBvbiBhbGxvY2F0aW9uLCBubz8NCj4g
-DQo+IFlvdSdyZSByaWdodC4gSSB3aWxsIHJlbW92ZSB0aGlzIGluIHRoZSBuZXh0IHZlcnNpb24u
-DQo+IA0KPiBUaGFua3MNCj4gDQo+IEVyaWMNCj4gPg0KPiA+IFRoYW5rcw0KPiA+IC1CaGFyYXQN
-Cj4gPg0KPiA+PiArDQo+ID4+ICsgICAgcmV0dXJuIFZJUlRJT19JT01NVV9TX09LOw0KPiA+PiAr
-fQ0KPiA+PiArDQo+ID4+ICBzdGF0aWMgaW50IHZpcnRpb19pb21tdV9pb3ZfdG9fcmVxKHN0cnVj
-dCBpb3ZlYyAqaW92LA0KPiA+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB1
-bnNpZ25lZCBpbnQgaW92X2NudCwNCj4gPj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgdm9pZCAqcmVxLCBzaXplX3QgcmVxX3N6KSBAQA0KPiA+PiAtNDA3LDE1ICs0NjcsMjcg
-QEANCj4gPj4gdmlydGlvX2lvbW11X2hhbmRsZV9yZXEoZGV0YWNoKQ0KPiA+PiAgdmlydGlvX2lv
-bW11X2hhbmRsZV9yZXEobWFwKQ0KPiA+PiAgdmlydGlvX2lvbW11X2hhbmRsZV9yZXEodW5tYXAp
-DQo+ID4+DQo+ID4+ICtzdGF0aWMgaW50IHZpcnRpb19pb21tdV9oYW5kbGVfcHJvYmUoVmlydElP
-SU9NTVUgKnMsDQo+ID4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3Ry
-dWN0IGlvdmVjICppb3YsDQo+ID4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgdW5zaWduZWQgaW50IGlvdl9jbnQsDQo+ID4+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgdWludDhfdCAqYnVmKSB7DQo+ID4+ICsgICAgc3RydWN0IHZpcnRpb19pb21t
-dV9yZXFfcHJvYmUgcmVxOw0KPiA+PiArICAgIGludCByZXQgPSB2aXJ0aW9faW9tbXVfaW92X3Rv
-X3JlcShpb3YsIGlvdl9jbnQsICZyZXEsDQo+ID4+ICtzaXplb2YocmVxKSk7DQo+ID4+ICsNCj4g
-Pj4gKyAgICByZXR1cm4gcmV0ID8gcmV0IDogdmlydGlvX2lvbW11X3Byb2JlKHMsICZyZXEsIGJ1
-Zik7IH0NCj4gPj4gKw0KPiA+PiAgc3RhdGljIHZvaWQgdmlydGlvX2lvbW11X2hhbmRsZV9jb21t
-YW5kKFZpcnRJT0RldmljZSAqdmRldiwgVmlydFF1ZXVlDQo+ICp2cSkgIHsNCj4gPj4gICAgICBW
-aXJ0SU9JT01NVSAqcyA9IFZJUlRJT19JT01NVSh2ZGV2KTsNCj4gPj4gICAgICBzdHJ1Y3Qgdmly
-dGlvX2lvbW11X3JlcV9oZWFkIGhlYWQ7DQo+ID4+ICAgICAgc3RydWN0IHZpcnRpb19pb21tdV9y
-ZXFfdGFpbCB0YWlsID0ge307DQo+ID4+ICsgICAgc2l6ZV90IG91dHB1dF9zaXplID0gc2l6ZW9m
-KHRhaWwpLCBzejsNCj4gPj4gICAgICBWaXJ0UXVldWVFbGVtZW50ICplbGVtOw0KPiA+PiAgICAg
-IHVuc2lnbmVkIGludCBpb3ZfY250Ow0KPiA+PiAgICAgIHN0cnVjdCBpb3ZlYyAqaW92Ow0KPiA+
-PiAtICAgIHNpemVfdCBzejsNCj4gPj4gKyAgICB2b2lkICpidWYgPSBOVUxMOw0KPiA+Pg0KPiA+
-PiAgICAgIGZvciAoOzspIHsNCj4gPj4gICAgICAgICAgZWxlbSA9IHZpcnRxdWV1ZV9wb3AodnEs
-IHNpemVvZihWaXJ0UXVldWVFbGVtZW50KSk7IEBADQo+ID4+IC00NTIsNiArNTI0LDE3IEBAIHN0
-YXRpYyB2b2lkIHZpcnRpb19pb21tdV9oYW5kbGVfY29tbWFuZChWaXJ0SU9EZXZpY2UNCj4gKnZk
-ZXYsIFZpcnRRdWV1ZSAqdnEpDQo+ID4+ICAgICAgICAgIGNhc2UgVklSVElPX0lPTU1VX1RfVU5N
-QVA6DQo+ID4+ICAgICAgICAgICAgICB0YWlsLnN0YXR1cyA9IHZpcnRpb19pb21tdV9oYW5kbGVf
-dW5tYXAocywgaW92LCBpb3ZfY250KTsNCj4gPj4gICAgICAgICAgICAgIGJyZWFrOw0KPiA+PiAr
-ICAgICAgICBjYXNlIFZJUlRJT19JT01NVV9UX1BST0JFOg0KDQpBcyBwZXIgc3BlYw0KICAiDQog
-ICBJZiB0aGUgZGV2aWNlIGRvZXMgbm90IG9mZmVyIHRoZSBWSVJUSU9fSU9NTVVfRl9QUk9CRSBm
-ZWF0dXJlLCBhbmQgaWYgdGhlIGRyaXZlciBzZW5kcyBhIFZJUlRJT18tDQogICBJT01NVV9UX1BS
-T0JFIHJlcXVlc3QsIHRoZW4gdGhlIGRldmljZSBTSE9VTEQgTk9UIHdyaXRlIHRoZSBidWZmZXIg
-YW5kIFNIT1VMRCBzZXQgdGhlIHVzZWQNCiAgIGxlbmd0aCB0byB6ZXJvLg0KICAiDQpTbyB3ZSBz
-aG91bGQgY2hlY2sgaWYgZGV2aWNlIHN1cHBvcnRzICJWSVJUSU9fSU9NTVVfRl9QUk9CRSIgYmVm
-b3JlIHByb2NlZWQ/DQoNClRoYW5rcw0KLUJoYXJhdA0KDQo+ID4+ICsgICAgICAgIHsNCj4gPj4g
-KyAgICAgICAgICAgIHN0cnVjdCB2aXJ0aW9faW9tbXVfcmVxX3RhaWwgKnB0YWlsOw0KPiA+PiAr
-DQo+ID4+ICsgICAgICAgICAgICBvdXRwdXRfc2l6ZSA9IHMtPmNvbmZpZy5wcm9iZV9zaXplICsg
-c2l6ZW9mKHRhaWwpOw0KPiA+PiArICAgICAgICAgICAgYnVmID0gZ19tYWxsb2MwKG91dHB1dF9z
-aXplKTsNCj4gPj4gKw0KPiA+PiArICAgICAgICAgICAgcHRhaWwgPSAoc3RydWN0IHZpcnRpb19p
-b21tdV9yZXFfdGFpbCAqKQ0KPiA+PiArICAgICAgICAgICAgICAgICAgICAgICAgKGJ1ZiArIHMt
-PmNvbmZpZy5wcm9iZV9zaXplKTsNCj4gPj4gKyAgICAgICAgICAgIHB0YWlsLT5zdGF0dXMgPSB2
-aXJ0aW9faW9tbXVfaGFuZGxlX3Byb2JlKHMsIGlvdiwgaW92X2NudCwgYnVmKTsNCj4gPj4gKyAg
-ICAgICAgfQ0KPiA+PiAgICAgICAgICBkZWZhdWx0Og0KPiA+PiAgICAgICAgICAgICAgdGFpbC5z
-dGF0dXMgPSBWSVJUSU9fSU9NTVVfU19VTlNVUFA7DQo+ID4+ICAgICAgICAgIH0NCj4gPj4gQEAg
-LTQ1OSwxMiArNTQyLDEzIEBAIHN0YXRpYyB2b2lkDQo+ID4+IHZpcnRpb19pb21tdV9oYW5kbGVf
-Y29tbWFuZChWaXJ0SU9EZXZpY2UgKnZkZXYsIFZpcnRRdWV1ZSAqdnEpDQo+ID4+DQo+ID4+ICBv
-dXQ6DQo+ID4+ICAgICAgICAgIHN6ID0gaW92X2Zyb21fYnVmKGVsZW0tPmluX3NnLCBlbGVtLT5p
-bl9udW0sIDAsDQo+ID4+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICZ0YWlsLCBzaXplb2Yo
-dGFpbCkpOw0KPiA+PiAtICAgICAgICBhc3NlcnQoc3ogPT0gc2l6ZW9mKHRhaWwpKTsNCj4gPj4g
-KyAgICAgICAgICAgICAgICAgICAgICAgICAgYnVmID8gYnVmIDogJnRhaWwsIG91dHB1dF9zaXpl
-KTsNCj4gPj4gKyAgICAgICAgYXNzZXJ0KHN6ID09IG91dHB1dF9zaXplKTsNCj4gPj4NCj4gPj4g
-LSAgICAgICAgdmlydHF1ZXVlX3B1c2godnEsIGVsZW0sIHNpemVvZih0YWlsKSk7DQo+ID4+ICsg
-ICAgICAgIHZpcnRxdWV1ZV9wdXNoKHZxLCBlbGVtLCBzeik7DQo+ID4+ICAgICAgICAgIHZpcnRp
-b19ub3RpZnkodmRldiwgdnEpOw0KPiA+PiAgICAgICAgICBnX2ZyZWUoZWxlbSk7DQo+ID4+ICsg
-ICAgICAgIGdfZnJlZShidWYpOw0KPiA+PiAgICAgIH0NCj4gPj4gIH0NCj4gPj4NCj4gPj4gQEAg
-LTY2Nyw2ICs3NTEsNyBAQCBzdGF0aWMgdm9pZA0KPiA+PiB2aXJ0aW9faW9tbXVfZGV2aWNlX3Jl
-YWxpemUoRGV2aWNlU3RhdGUgKmRldiwgRXJyb3IgKiplcnJwKQ0KPiA+PiAgICAgIHMtPmNvbmZp
-Zy5wYWdlX3NpemVfbWFzayA9IFRBUkdFVF9QQUdFX01BU0s7DQo+ID4+ICAgICAgcy0+Y29uZmln
-LmlucHV0X3JhbmdlLmVuZCA9IC0xVUw7DQo+ID4+ICAgICAgcy0+Y29uZmlnLmRvbWFpbl9yYW5n
-ZS5lbmQgPSAzMjsNCj4gPj4gKyAgICBzLT5jb25maWcucHJvYmVfc2l6ZSA9IFZJT01NVV9QUk9C
-RV9TSVpFOw0KPiA+Pg0KPiA+PiAgICAgIHZpcnRpb19hZGRfZmVhdHVyZSgmcy0+ZmVhdHVyZXMs
-IFZJUlRJT19SSU5HX0ZfRVZFTlRfSURYKTsNCj4gPj4gICAgICB2aXJ0aW9fYWRkX2ZlYXR1cmUo
-JnMtPmZlYXR1cmVzLCBWSVJUSU9fUklOR19GX0lORElSRUNUX0RFU0MpOw0KPiA+PiBAQCAtNjc2
-LDYNCj4gPj4gKzc2MSw3IEBAIHN0YXRpYyB2b2lkIHZpcnRpb19pb21tdV9kZXZpY2VfcmVhbGl6
-ZShEZXZpY2VTdGF0ZSAqZGV2LA0KPiA+PiArRXJyb3INCj4gPj4gKiplcnJwKQ0KPiA+PiAgICAg
-IHZpcnRpb19hZGRfZmVhdHVyZSgmcy0+ZmVhdHVyZXMsIFZJUlRJT19JT01NVV9GX01BUF9VTk1B
-UCk7DQo+ID4+ICAgICAgdmlydGlvX2FkZF9mZWF0dXJlKCZzLT5mZWF0dXJlcywgVklSVElPX0lP
-TU1VX0ZfQllQQVNTKTsNCj4gPj4gICAgICB2aXJ0aW9fYWRkX2ZlYXR1cmUoJnMtPmZlYXR1cmVz
-LCBWSVJUSU9fSU9NTVVfRl9NTUlPKTsNCj4gPj4gKyAgICB2aXJ0aW9fYWRkX2ZlYXR1cmUoJnMt
-PmZlYXR1cmVzLCBWSVJUSU9fSU9NTVVfRl9QUk9CRSk7DQo+ID4+DQo+ID4+ICAgICAgcWVtdV9t
-dXRleF9pbml0KCZzLT5tdXRleCk7DQo+ID4+DQo+ID4+IGRpZmYgLS1naXQgYS9ody92aXJ0aW8v
-dHJhY2UtZXZlbnRzIGIvaHcvdmlydGlvL3RyYWNlLWV2ZW50cyBpbmRleA0KPiA+PiBlODM1MDBi
-ZWU5Li41NTUwNDc1NjkxIDEwMDY0NA0KPiA+PiAtLS0gYS9ody92aXJ0aW8vdHJhY2UtZXZlbnRz
-DQo+ID4+ICsrKyBiL2h3L3ZpcnRpby90cmFjZS1ldmVudHMNCj4gPj4gQEAgLTczLDMgKzczLDQg
-QEAgdmlydGlvX2lvbW11X2dldF9kb21haW4odWludDMyX3QgZG9tYWluX2lkKSAiQWxsb2MNCj4g
-Pj4gZG9tYWluPSVkIg0KPiA+PiAgdmlydGlvX2lvbW11X3B1dF9kb21haW4odWludDMyX3QgZG9t
-YWluX2lkKSAiRnJlZSBkb21haW49JWQiDQo+ID4+ICB2aXJ0aW9faW9tbXVfdHJhbnNsYXRlX291
-dCh1aW50NjRfdCB2aXJ0X2FkZHIsIHVpbnQ2NF90IHBoeXNfYWRkciwNCj4gPj4gdWludDMyX3Qg
-c2lkKSAiMHglIlBSSXg2NCIgLT4gMHglIlBSSXg2NCAiIGZvciBzaWQ9JWQiDQo+ID4+ICB2aXJ0
-aW9faW9tbXVfcmVwb3J0X2ZhdWx0KHVpbnQ4X3QgcmVhc29uLCB1aW50MzJfdCBmbGFncywgdWlu
-dDMyX3QNCj4gPj4gZW5kcG9pbnQsIHVpbnQ2NF90IGFkZHIpICJGQVVMVCByZWFzb249JWQgZmxh
-Z3M9JWQgZW5kcG9pbnQ9JWQNCj4gPj4gYWRkcmVzcyA9MHglIlBSSXg2NA0KPiA+PiArdmlydGlv
-X2lvbW11X2ZpbGxfcmVzdl9wcm9wZXJ0eSh1aW50MzJfdCBkZXZpZCwgdWludDhfdCBzdWJ0eXBl
-LA0KPiA+PiArdWludDY0X3Qgc3RhcnQsIHVpbnQ2NF90IGVuZCkgImRldj0gJWQsIHR5cGU9JWQg
-c3RhcnQ9MHglIlBSSXg2NCINCj4gPj4gK2VuZD0weCUiUFJJeDY0DQo+ID4+IC0tDQo+ID4+IDIu
-MjAuMQ0KPiA+DQo+ID4NCg0K
+Hi Bharat,
+
+On 5/11/20 10:42 AM, Bharat Bhushan wrote:
+> Hi Eric,
+> 
+>> -----Original Message-----
+>> From: Auger Eric <eric.auger@redhat.com>
+>> Sent: Monday, May 11, 2020 12:26 PM
+>> To: Bharat Bhushan <bbhushan2@marvell.com>; eric.auger.pro@gmail.com;
+>> qemu-devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org;
+>> mst@redhat.com; jean-philippe@linaro.org; peterx@redhat.com;
+>> armbru@redhat.com; pbonzini@redhat.com
+>> Subject: Re: [EXT] [PATCH v2 2/5] virtio-iommu: Implement RESV_MEM probe
+>> request
+>>
+>> Hi Bharat,
+>> On 5/11/20 8:38 AM, Bharat Bhushan wrote:
+>>> Hi Eric,
+>>>
+>>>> -----Original Message-----
+>>>> From: Eric Auger <eric.auger@redhat.com>
+>>>> Sent: Friday, May 8, 2020 11:01 PM
+>>>> To: eric.auger.pro@gmail.com; eric.auger@redhat.com;
+>>>> qemu-devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org;
+>>>> mst@redhat.com; jean- philippe@linaro.org; Bharat Bhushan
+>>>> <bbhushan2@marvell.com>; peterx@redhat.com; armbru@redhat.com;
+>>>> pbonzini@redhat.com
+>>>> Subject: [EXT] [PATCH v2 2/5] virtio-iommu: Implement RESV_MEM probe
+>>>> request
+>>>>
+>>>> External Email
+>>>>
+>>>> ---------------------------------------------------------------------
+>>>> - This patch implements the PROBE request. At the moment, only THE
+>>>> RESV_MEM property is handled. The first goal is to report iommu wide
+>>>> reserved regions such as the MSI regions set by the machine code. On
+>>>> x86 this will be the IOAPIC MSI region,
+>>>> [0xFEE00000 - 0xFEEFFFFF], on ARM this may be the ITS doorbell.
+>>>>
+>>>> In the future we may introduce per device reserved regions.
+>>>> This will be useful when protecting host assigned devices which may
+>>>> expose their own reserved regions
+>>>>
+>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>>
+>>>> ---
+>>>>
+>>>> v1 -> v2:
+>>>> - move the unlock back to the same place
+>>>> - remove the push label and factorize the code after the out label
+>>>> - fix a bunch of cpu_to_leX according to the latest spec revision
+>>>> - do not remove sizeof(last) from free space
+>>>> - check the ep exists
+>>>> ---
+>>>>  include/hw/virtio/virtio-iommu.h |  2 +
+>>>>  hw/virtio/virtio-iommu.c         | 94 ++++++++++++++++++++++++++++++--
+>>>>  hw/virtio/trace-events           |  1 +
+>>>>  3 files changed, 93 insertions(+), 4 deletions(-)
+>>>>
+>>>> diff --git a/include/hw/virtio/virtio-iommu.h
+>>>> b/include/hw/virtio/virtio-iommu.h
+>>>> index e653004d7c..49eb105cd8 100644
+>>>> --- a/include/hw/virtio/virtio-iommu.h
+>>>> +++ b/include/hw/virtio/virtio-iommu.h
+>>>> @@ -53,6 +53,8 @@ typedef struct VirtIOIOMMU {
+>>>>      GHashTable *as_by_busptr;
+>>>>      IOMMUPciBus *iommu_pcibus_by_bus_num[PCI_BUS_MAX];
+>>>>      PCIBus *primary_bus;
+>>>> +    ReservedRegion *reserved_regions;
+>>>> +    uint32_t nb_reserved_regions;
+>>>>      GTree *domains;
+>>>>      QemuMutex mutex;
+>>>>      GTree *endpoints;
+>>>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+>>>> index
+>>>> 22ba8848c2..35d772e021 100644
+>>>> --- a/hw/virtio/virtio-iommu.c
+>>>> +++ b/hw/virtio/virtio-iommu.c
+>>>> @@ -38,6 +38,7 @@
+>>>>
+>>>>  /* Max size */
+>>>>  #define VIOMMU_DEFAULT_QUEUE_SIZE 256
+>>>> +#define VIOMMU_PROBE_SIZE 512
+>>>>
+>>>>  typedef struct VirtIOIOMMUDomain {
+>>>>      uint32_t id;
+>>>> @@ -378,6 +379,65 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+>>>>      return ret;
+>>>>  }
+>>>>
+>>>> +static ssize_t virtio_iommu_fill_resv_mem_prop(VirtIOIOMMU *s, uint32_t ep,
+>>>> +                                               uint8_t *buf, size_t
+>>>> +free) {
+>>>> +    struct virtio_iommu_probe_resv_mem prop = {};
+>>>> +    size_t size = sizeof(prop), length = size - sizeof(prop.head), total;
+>>>> +    int i;
+>>>> +
+>>>> +    total = size * s->nb_reserved_regions;
+>>>> +
+>>>> +    if (total > free) {
+>>>> +        return -ENOSPC;
+>>>> +    }
+>>>> +
+>>>> +    for (i = 0; i < s->nb_reserved_regions; i++) {
+>>>> +        prop.head.type = cpu_to_le16(VIRTIO_IOMMU_PROBE_T_RESV_MEM);
+>>>> +        prop.head.length = cpu_to_le16(length);
+>>>> +        prop.subtype = s->reserved_regions[i].type;
+>>>> +        prop.start = cpu_to_le64(s->reserved_regions[i].low);
+>>>> +        prop.end = cpu_to_le64(s->reserved_regions[i].high);
+>>>> +
+>>>> +        memcpy(buf, &prop, size);
+>>>> +
+>>>> +        trace_virtio_iommu_fill_resv_property(ep, prop.subtype,
+>>>> +                                              prop.start, prop.end);
+>>>> +        buf += size;
+>>>> +    }
+>>>> +    return total;
+>>>> +}
+>>>> +
+>>>> +/**
+>>>> + * virtio_iommu_probe - Fill the probe request buffer with
+>>>> + * the properties the device is able to return and add a NONE
+>>>> + * property at the end.
+>>>> + */
+>>>> +static int virtio_iommu_probe(VirtIOIOMMU *s,
+>>>> +                              struct virtio_iommu_req_probe *req,
+>>>> +                              uint8_t *buf) {
+>>>> +    uint32_t ep_id = le32_to_cpu(req->endpoint);
+>>>> +    size_t free = VIOMMU_PROBE_SIZE;
+>>>> +    ssize_t count;
+>>>> +
+>>>> +    if (!virtio_iommu_mr(s, ep_id)) {
+>>>> +        return VIRTIO_IOMMU_S_NOENT;
+>>>> +    }
+>>>> +
+>>>> +    count = virtio_iommu_fill_resv_mem_prop(s, ep_id, buf, free);
+>>>> +    if (count < 0) {
+>>>> +        return VIRTIO_IOMMU_S_INVAL;
+>>>> +    }
+>>>> +    buf += count;
+>>>> +    free -= count;
+>>>> +
+>>>> +    /* Fill the rest with zeroes */
+>>>> +    memset(buf, 0, free);
+>>>
+>>> No need to fill with zero here as "buf" is set to zero on allocation, no?
+>>
+>> You're right. I will remove this in the next version.
+>>
+>> Thanks
+>>
+>> Eric
+>>>
+>>> Thanks
+>>> -Bharat
+>>>
+>>>> +
+>>>> +    return VIRTIO_IOMMU_S_OK;
+>>>> +}
+>>>> +
+>>>>  static int virtio_iommu_iov_to_req(struct iovec *iov,
+>>>>                                     unsigned int iov_cnt,
+>>>>                                     void *req, size_t req_sz) @@
+>>>> -407,15 +467,27 @@
+>>>> virtio_iommu_handle_req(detach)
+>>>>  virtio_iommu_handle_req(map)
+>>>>  virtio_iommu_handle_req(unmap)
+>>>>
+>>>> +static int virtio_iommu_handle_probe(VirtIOIOMMU *s,
+>>>> +                                     struct iovec *iov,
+>>>> +                                     unsigned int iov_cnt,
+>>>> +                                     uint8_t *buf) {
+>>>> +    struct virtio_iommu_req_probe req;
+>>>> +    int ret = virtio_iommu_iov_to_req(iov, iov_cnt, &req,
+>>>> +sizeof(req));
+>>>> +
+>>>> +    return ret ? ret : virtio_iommu_probe(s, &req, buf); }
+>>>> +
+>>>>  static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue
+>> *vq)  {
+>>>>      VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
+>>>>      struct virtio_iommu_req_head head;
+>>>>      struct virtio_iommu_req_tail tail = {};
+>>>> +    size_t output_size = sizeof(tail), sz;
+>>>>      VirtQueueElement *elem;
+>>>>      unsigned int iov_cnt;
+>>>>      struct iovec *iov;
+>>>> -    size_t sz;
+>>>> +    void *buf = NULL;
+>>>>
+>>>>      for (;;) {
+>>>>          elem = virtqueue_pop(vq, sizeof(VirtQueueElement)); @@
+>>>> -452,6 +524,17 @@ static void virtio_iommu_handle_command(VirtIODevice
+>> *vdev, VirtQueue *vq)
+>>>>          case VIRTIO_IOMMU_T_UNMAP:
+>>>>              tail.status = virtio_iommu_handle_unmap(s, iov, iov_cnt);
+>>>>              break;
+>>>> +        case VIRTIO_IOMMU_T_PROBE:
+> 
+> As per spec
+>   "
+>    If the device does not offer the VIRTIO_IOMMU_F_PROBE feature, and if the driver sends a VIRTIO_-
+>    IOMMU_T_PROBE request, then the device SHOULD NOT write the buffer and SHOULD set the used
+>    length to zero.
+>   "
+> So we should check if device supports "VIRTIO_IOMMU_F_PROBE" before proceed?
+But are the device and from that patch onwards we do support the
+VIRTIO_IOMMU_F_PROBE feature, right?
+
+Thanks
+
+Eric
+> 
+> Thanks
+> -Bharat
+> 
+>>>> +        {
+>>>> +            struct virtio_iommu_req_tail *ptail;
+>>>> +
+>>>> +            output_size = s->config.probe_size + sizeof(tail);
+>>>> +            buf = g_malloc0(output_size);
+>>>> +
+>>>> +            ptail = (struct virtio_iommu_req_tail *)
+>>>> +                        (buf + s->config.probe_size);
+>>>> +            ptail->status = virtio_iommu_handle_probe(s, iov, iov_cnt, buf);
+>>>> +        }
+>>>>          default:
+>>>>              tail.status = VIRTIO_IOMMU_S_UNSUPP;
+>>>>          }
+>>>> @@ -459,12 +542,13 @@ static void
+>>>> virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
+>>>>
+>>>>  out:
+>>>>          sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
+>>>> -                          &tail, sizeof(tail));
+>>>> -        assert(sz == sizeof(tail));
+>>>> +                          buf ? buf : &tail, output_size);
+>>>> +        assert(sz == output_size);
+>>>>
+>>>> -        virtqueue_push(vq, elem, sizeof(tail));
+>>>> +        virtqueue_push(vq, elem, sz);
+>>>>          virtio_notify(vdev, vq);
+>>>>          g_free(elem);
+>>>> +        g_free(buf);
+>>>>      }
+>>>>  }
+>>>>
+>>>> @@ -667,6 +751,7 @@ static void
+>>>> virtio_iommu_device_realize(DeviceState *dev, Error **errp)
+>>>>      s->config.page_size_mask = TARGET_PAGE_MASK;
+>>>>      s->config.input_range.end = -1UL;
+>>>>      s->config.domain_range.end = 32;
+>>>> +    s->config.probe_size = VIOMMU_PROBE_SIZE;
+>>>>
+>>>>      virtio_add_feature(&s->features, VIRTIO_RING_F_EVENT_IDX);
+>>>>      virtio_add_feature(&s->features, VIRTIO_RING_F_INDIRECT_DESC);
+>>>> @@ -676,6
+>>>> +761,7 @@ static void virtio_iommu_device_realize(DeviceState *dev,
+>>>> +Error
+>>>> **errp)
+>>>>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MAP_UNMAP);
+>>>>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_BYPASS);
+>>>>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MMIO);
+>>>> +    virtio_add_feature(&s->features, VIRTIO_IOMMU_F_PROBE);
+>>>>
+>>>>      qemu_mutex_init(&s->mutex);
+>>>>
+>>>> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events index
+>>>> e83500bee9..5550475691 100644
+>>>> --- a/hw/virtio/trace-events
+>>>> +++ b/hw/virtio/trace-events
+>>>> @@ -73,3 +73,4 @@ virtio_iommu_get_domain(uint32_t domain_id) "Alloc
+>>>> domain=%d"
+>>>>  virtio_iommu_put_domain(uint32_t domain_id) "Free domain=%d"
+>>>>  virtio_iommu_translate_out(uint64_t virt_addr, uint64_t phys_addr,
+>>>> uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=%d"
+>>>>  virtio_iommu_report_fault(uint8_t reason, uint32_t flags, uint32_t
+>>>> endpoint, uint64_t addr) "FAULT reason=%d flags=%d endpoint=%d
+>>>> address =0x%"PRIx64
+>>>> +virtio_iommu_fill_resv_property(uint32_t devid, uint8_t subtype,
+>>>> +uint64_t start, uint64_t end) "dev= %d, type=%d start=0x%"PRIx64"
+>>>> +end=0x%"PRIx64
+>>>> --
+>>>> 2.20.1
+>>>
+>>>
+> 
+

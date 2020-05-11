@@ -1,632 +1,444 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2226287lfb;
-        Sun, 10 May 2020 18:18:01 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLLPHW0UBgmaLw8hFE5jwlLVeFo2ES3+JtbFVCpmXYsNOwEn8og70hb3i4Y39zMycS7w6/i
-X-Received: by 2002:a17:90a:1b6c:: with SMTP id q99mr20605037pjq.70.1589159880709;
-        Sun, 10 May 2020 18:18:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589159880; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2388104lfb;
+        Sun, 10 May 2020 23:38:49 -0700 (PDT)
+X-Google-Smtp-Source: APiQypI8XFtk3WIEMdlLS2iM+m+VxlVGmj0e6Jcv/MNGinB7BKM0wlTmVC0lr0o0ZqhSFqcCuBQL
+X-Received: by 2002:a05:620a:13c1:: with SMTP id g1mr14394793qkl.257.1589179128938;
+        Sun, 10 May 2020 23:38:48 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1589179128; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Depjdq6Q9KjxpRl7FWy+KF7ViAUI5VSwv/bAErB/i2Z16PC7Hd9d3MGBjprVrPmM1d
-         GcJYbanpsJDcEDwImfxxmRDFL7upPbPs+XYCQceIUVtrRA54bSxgGksEIN3efrBJl81P
-         NkgnY9nTK5d+MWHEM725u6lX6EWcZHUdXYDIhQP6ksA9WAjLWliz1FMMARwMh6IUI3zO
-         7GSEJ06TMQnYB6x8tCjcC/OvFga2DZ1OFTSCD/3N4F63YN+vT8gPYIztnZY4v3QQTdLw
-         U/aJUIUZO+O6KyI0hnqu4CFQfvNqeAP7oLCyPPAy0y/Av6t1QBEcXH7NZRTd78HtyEV6
-         o9sw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=ODQDUBUvS1gFuL+EsT1eIuCrrmY+JIpStClyO9RbIj0=;
-        b=vtiPAZSmuApRuNPT7TtVy1ZrM6NZa3412ULxThtN5EY4xhlMxN2nEq+rhhXPFuzMei
-         DvOH7P2+M3K3zcITikk+lm7EM41r4nG0hFlPozQDmaXswcFXTzh0n0/S+7lUgUhTf1KC
-         BnRwAQPsGK8BTINdZHIPA4s/UZnwERoDeuTtMTIuk8cX1XwkjdIDvOSTckU682Ngn13k
-         yKqUDKrYYmk6L3wddyGkaVWCPyi5Yfo1+Yd/DUK79YkfJYrsqM4qZemkJCnkPS7+euX3
-         0xuNbx56c9615arT/gBhPu1fL+y9TMhMcYBcS34WxRo8+27HCN0UDjXILNJ+lqEHDzGJ
-         PADw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=U9Jmj3Ob;
-       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
-Return-Path: <dgibson@ozlabs.org>
-Received: from ozlabs.org (bilbo.ozlabs.org. [2401:3900:2:1::2])
-        by mx.google.com with ESMTPS id t8si6482248ply.132.2020.05.10.18.17.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 10 May 2020 18:17:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) client-ip=2401:3900:2:1::2;
+        b=HxSFeLODmDhq7RYF+MfKi28h7QODIRnygl5CwepcyaKYvxmbB1OxnWgm8pGRJVuCua
+         4PpAqFDp0+BtzI/miegtE9vVq1naa5yxsSuqedqGE5DZwd3T301zyvnOfggnkLAr2yK6
+         tYU7blY+uOmlkwFNjCzEc0YCMyd9Anm7moqtdtK0Tsog92FA8jHLy1NdZNViYbv1tulK
+         C4iEwSTIFG6d9XpPJRTjn7ixreaCtQqYKp6G/RWQUISM3fS5Pccc8M9F7+F+NMeMOiAd
+         Kx3N9zVdOHxM4tUfqiXfAH6hYCBADGsTCe7cUG5ejZbuqWKcyPmywrqaZQ+h+xyzd0uF
+         arjA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from:dkim-signature:dkim-signature;
+        bh=yw80EQ1QIDfh4OV3EYh0xrIXzFiIFDmvJhWkAO86+C8=;
+        b=vTOXzzubmiDEV3XpT6CkvaI5qpInHtgaD2dLH2lh9IEINRVetKn/k9CehOSu+cS93e
+         CwkQmCIuZ6LMwVTvBjBr7mQiSDN+GWcfi8HO+lY75BLKvfDMuPHrNXyWhqiO40rt6Tz9
+         5rjtnw1Qh3Id2vk1JiGXRNMZDUKMX1EE2SWrb7ofRCP7Z7R/5689kx7v5dnfJaxZWaDM
+         aQ3MtyUrqa+nPVe4jixh5FsqXdxM3SkE1IMD6073IlwwXIMejbOmQk2qdeb9YjjPSvwQ
+         5ac890nsDWOsYrS6rvOXT095V//rw96oeks9Hsb8Nz3qN86FW9WNH4tIQaqTwP/RLQe1
+         kHCg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=temperror (no key for signature) header.i=@marvell.com header.s=pfpt0818 header.b=Naxw6iWA;
+       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector1-marvell-onmicrosoft-com header.b=cXd8nTZF;
+       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=marvell.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z10si718990qvj.40.2020.05.10.23.38.48
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 10 May 2020 23:38:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=U9Jmj3Ob;
-       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 49L32n6MYNz9sRf; Mon, 11 May 2020 11:17:53 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1589159873;
-	bh=IC+DRYVrifSlvzsF0nUJCSElXXUTqsR1mbpFpQcOVyY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=U9Jmj3ObWXVl20bIOghx/B+PvNSXNs8rZPNM1Z/TmMX7LwJPdYVtFVNE/jhRdrzXS
-	 S1rly64BiliEtzHoE2+KPMdhdVf+NgQfeZK6LGO4YlVf2iMo6gxm0iXdYPcVZXov8r
-	 vSW8GGeWf01GRhV9tzmHbACeuMBAmSXwi3ma+1tQ=
-Date: Mon, 11 May 2020 11:16:34 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Stafford Horne <shorne@gmail.com>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Roman Bolshakov <r.bolshakov@yadro.com>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
-	Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
-	Marek Vasut <marex@denx.de>,
-	Alistair Francis <Alistair.Francis@wdc.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
-	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Richard Henderson <rth@twiddle.net>,
-	David Hildenbrand <david@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH 09/11] target/cpu: Restrict handlers using hwaddr type to
- system-mode
-Message-ID: <20200511011634.GD2183@umbus.fritz.box>
-References: <20200509130910.26335-1-f4bug@amsat.org>
- <20200509130910.26335-10-f4bug@amsat.org>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Qrgsu6vtpU/OV/zm"
-Content-Disposition: inline
-In-Reply-To: <20200509130910.26335-10-f4bug@amsat.org>
-X-TUID: NtmgkyXgfIjG
-
-
---Qrgsu6vtpU/OV/zm
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+       dkim=temperror (no key for signature) header.i=@marvell.com header.s=pfpt0818 header.b=Naxw6iWA;
+       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector1-marvell-onmicrosoft-com header.b=cXd8nTZF;
+       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=marvell.com
+Received: from localhost ([::1]:54808 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jY25Q-0002Ki-9L
+	for alex.bennee@linaro.org; Mon, 11 May 2020 02:38:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46648)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=4400c99de5=bbhushan2@marvell.com>)
+ id 1jY24z-0001hC-FC; Mon, 11 May 2020 02:38:21 -0400
+Received: from mx0a-0016f401.pphosted.com ([67.231.148.174]:36452
+ helo=mx0b-0016f401.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=4400c99de5=bbhushan2@marvell.com>)
+ id 1jY24t-0007Ca-G8; Mon, 11 May 2020 02:38:16 -0400
+Received: from pps.filterd (m0045849.ppops.net [127.0.0.1])
+ by mx0a-0016f401.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 04B6Z10T029768; Sun, 10 May 2020 23:38:10 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
+ h=from : to : subject
+ : date : message-id : references : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=pfpt0818;
+ bh=yw80EQ1QIDfh4OV3EYh0xrIXzFiIFDmvJhWkAO86+C8=;
+ b=Naxw6iWAO/g8FND/8sp8aG6bxXHtezy+Qi67a33VHHbeD82/7Uz4oO0al12Vpl2pH5y/
+ SxZOY/FwsNZxrHuFJ8tcBhpMagDL0BAyWJ5Xn65AN9r3S31+QbAjhUAMz4j7lYznidd3
+ HhIHArRv5SzRhNXu/i4YklzVPjByT9gGNerHbpDju0r4BJuSvZyC6VvTUQ7XA1AD6VFk
+ eDNFeRZxwv9cxdmNeqoG508SqSEMG5Du2DAQtjlFdG3JVi6OVRtL3doq7ubSlO5FvCLB
+ 7YntVjumpHNXnVwD004fWYrklu8hEZfaMDS+QilJUZ3DCimgAld9QrHImwKK1ncsCGPN hQ== 
+Received: from sc-exch03.marvell.com ([199.233.58.183])
+ by mx0a-0016f401.pphosted.com with ESMTP id 30wsvqdrw8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
+ Sun, 10 May 2020 23:38:10 -0700
+Received: from DC5-EXCH01.marvell.com (10.69.176.38) by SC-EXCH03.marvell.com
+ (10.93.176.83) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sun, 10 May 2020 23:38:08 -0700
+Received: from SC-EXCH04.marvell.com (10.93.176.84) by DC5-EXCH01.marvell.com
+ (10.69.176.38) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sun, 10 May 2020 23:38:08 -0700
+Received: from NAM04-CO1-obe.outbound.protection.outlook.com (104.47.45.52) by
+ SC-EXCH04.marvell.com (10.93.176.84) with Microsoft SMTP Server
+ (TLS) id
+ 15.0.1497.2 via Frontend Transport; Sun, 10 May 2020 23:38:07 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Yuq92uKz7zegbfdV9nUWzKjzC+FR/VEKHiAn+4rr5F2Y7NoGKp7BErJyqKZ0683Btsw5nUwz23IkyPDdMgHV8bUriTUTR9veKBJC23Mw9/iGGspeSmKqJ26PWirKn4xze39aWksYPPorOkdDqT4tpzIr0PRjjpnhgfK+eGSSeCPqyseLISG8361RX1LyW9EI6OVC5foAirzNl/e2dzEaKg5bsY6MFp60vIWo5hVHLbjIIMYNmiQgFmIytHevX2ZTKKbhyWQek+sIRb7RUJFuHYTJHEYL2GULNhTfGiUumSaggwS5O80BAYbZCdSC2ZrpyuWgM7pTb+X0pfGIAx9w/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=yw80EQ1QIDfh4OV3EYh0xrIXzFiIFDmvJhWkAO86+C8=;
+ b=B0n5KHEpNKMKJl4ueC17LdUeq3b4zjWrenz8QmQm+6Qery9+2A+ytIDQUVNdlYKFO3KGOvsDKqVZi1dwhBscZTg2xNXtgRcpNr0g+EYDyhtj+PE5Jc6gRFL/EnFlaoytY9a5PJNQTapLxFKuzXMR0j0e9+Q3GnrA4p5do30Y7gFrIqHa4IFMQle+soP8UlpVkCAgs5s7B3YIApaDx4kBBp/wbKYOEryL4bgJaLmM4x9FVtcjZNHW9PTV7wwzY7Y3nCeCFS3s9wwUKd/AR3s5ZT6rsHQDlaep8q4JxDErMWYq2uVcq5Yr0ZJeG1jAaYgafcbLeFmmtPSBS/m/1b6qPw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=marvell.com; dmarc=pass action=none header.from=marvell.com;
+ dkim=pass header.d=marvell.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=marvell.onmicrosoft.com; s=selector1-marvell-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=yw80EQ1QIDfh4OV3EYh0xrIXzFiIFDmvJhWkAO86+C8=;
+ b=cXd8nTZFDq/FLCXMlsEUxPJE1x4IUuujOFzOoNSvSRf600u6ZiS7u7W+pIXV2gZ4kLcQZF6fmY3H6m2yNyT9Ync8FDAAXrTh2RsetBMs5kyZCnipkfdXDL+4HQhsD9SMDwkyo6i9q9zK09UbKRWsLXHVYr8cVtMc0XNcwmGRvUA=
+Received: from MWHPR1801MB1966.namprd18.prod.outlook.com
+ (2603:10b6:301:66::20) by MWHPR1801MB1903.namprd18.prod.outlook.com
+ (2603:10b6:301:6c::13) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.34; Mon, 11 May
+ 2020 06:38:06 +0000
+Received: from MWHPR1801MB1966.namprd18.prod.outlook.com
+ ([fe80::6028:eab:73:829d]) by MWHPR1801MB1966.namprd18.prod.outlook.com
+ ([fe80::6028:eab:73:829d%3]) with mapi id 15.20.2979.033; Mon, 11 May 2020
+ 06:38:05 +0000
+From: Bharat Bhushan <bbhushan2@marvell.com>
+To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
+ <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "mst@redhat.com" <mst@redhat.com>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>, "peterx@redhat.com"
+ <peterx@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>
+Subject: RE: [EXT] [PATCH v2 2/5] virtio-iommu: Implement RESV_MEM probe
+ request
+Thread-Topic: [EXT] [PATCH v2 2/5] virtio-iommu: Implement RESV_MEM probe
+ request
+Thread-Index: AQHWJV6G7q81t6809kGgvGezOKtQUqiicegg
+Date: Mon, 11 May 2020 06:38:05 +0000
+Message-ID: <MWHPR1801MB19669FBFAD49AD36460B0756E3A10@MWHPR1801MB1966.namprd18.prod.outlook.com>
+References: <20200508173057.32215-1-eric.auger@redhat.com>
+ <20200508173057.32215-3-eric.auger@redhat.com>
+In-Reply-To: <20200508173057.32215-3-eric.auger@redhat.com>
+Accept-Language: en-IN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: redhat.com; dkim=none (message not signed)
+ header.d=none;redhat.com; dmarc=none action=none header.from=marvell.com;
+x-originating-ip: [122.171.209.213]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: c8dd0743-2aac-4c2f-7dfa-08d7f575dcb4
+x-ms-traffictypediagnostic: MWHPR1801MB1903:
+x-microsoft-antispam-prvs: <MWHPR1801MB1903AAC17936E2BD6F9CDD2CE3A10@MWHPR1801MB1903.namprd18.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:378;
+x-forefront-prvs: 04004D94E2
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: d4GiOKXMswdta8Qus+lw3xuTZTa+j0l8+tmDTJJVETLOa19KkppNGvExAag14VGy3SiGEsC0lPyzraND3J5WWvHm0PEYE+UZXpnAkD5gKjgJltWHBr7JN5CQAozzJ3AShd/Wpr00Q0mtkSdSghXqatWPuMs98mfvzLhX51LAlvk3sdo988h58bRXsXzXCy8um1xIQIDOm4FMhEgheUjuXHzUdTijcESwTbaXVxbHHaeSQOVWY0MUQjlT4erUJaEBXHtWvvyXwzv4EhedfAvM5EkL+m6yb2hv9lp/Kdxai1GEtf5NInP3EZEDdmQN9FR+5qnybIofQkcMsYTtOQL56vKBS1j05Qu5+8Gp5MI7Xqf6E8fzqYN4UxagGKtglGNM67maKpmKj/oicgd3+ouKB42vW7EqHRZ6m1YZKsnA+UKOsJUm6Ncadfsao8o2NDrATMVt35Yj8pWsTz11h4vKSpOApXYURsxk5Gh98zbD4KhMKU7Maj6XsExtpBWx9dmYq9XbB2wNoVWFEjdOdZYhxcuTEzUHUcKRtHlcYcuFqfU=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1801MB1966.namprd18.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(39850400004)(136003)(396003)(376002)(346002)(366004)(33430700001)(53546011)(5660300002)(6506007)(7416002)(8936002)(26005)(186003)(8676002)(71200400001)(2906002)(55016002)(9686003)(66556008)(110136005)(316002)(76116006)(33440700001)(33656002)(66446008)(64756008)(7696005)(52536014)(86362001)(66946007)(66476007)(478600001)(921003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: lE3CjnaXULwbwsXx/4tistS3e7gyuYv/C1Qgg7RsrxxudNp723Xjrid1VY0U72aYfUIF/pWdTCIUsG8Nd6Qgop47kQeuMieciYRQWm8wMpNH2KL+VfjF3ZS0oS88eMC3HTk09EVKfC8MUj8xB4car96aNZudSUhn00hUP4R/b4OAoJVV+Jgy54P94uFSx8VoK5jMl7jkX51va/BTcnY+p2ARLAcz70aGgokmupdHCaWmmKMsIeJjSpNuSjprYsf1lS8VQGb8lguS95cffCQqOVXnt384nQnSBEZ5s83olRS147HW5GtIotXijzuGesenT59zFGwXSsRMeceJye9n//AQ/INEKoutg8PCbxfmtFQkbqpB3Lk8M2q+xheLrOBkiUsvlgl7KWfzvIho3xkD/vzYUnuN9ItiaXz/zyabY7W7vSlgJzWCBx4GiFgwmE1jgT7KwwntOIGP0ncZOk7hllWBP98cB5vcJRkubDGMhwCQTBO+wuAY8IEtEYsj7Mmf
+x-ms-exchange-transport-forked: True
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-Network-Message-Id: c8dd0743-2aac-4c2f-7dfa-08d7f575dcb4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 May 2020 06:38:05.7570 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 70e1fb47-1155-421d-87fc-2e58f638b6e0
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: g6l3mnFifFGKuYY8DhNU49Yt1Ee6Af0W5yzRhvvm5Ar+KrxE52mP5Sddb1FR6TRbX4v6G2cj2pQU5Sh+/mZKdQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR1801MB1903
+X-OriginatorOrg: marvell.com
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.676
+ definitions=2020-05-11_01:2020-05-08,
+ 2020-05-11 signatures=0
+Received-SPF: pass client-ip=67.231.148.174;
+ envelope-from=prvs=4400c99de5=bbhushan2@marvell.com;
+ helo=mx0b-0016f401.pphosted.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/11 02:38:12
+X-ACL-Warn: Detected OS   = Linux 3.x [generic]
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, KHOP_DYNAMIC=0.001, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: F5Jhq3Lk5/7k
 
-On Sat, May 09, 2020 at 03:09:08PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> Restrict the following handlers to system-mode:
-> - do_unaligned_access
-> - do_transaction_failed
-> - get_phys_page_debug
-> - get_phys_page_attrs_debug
+Hi Eric,
+
+> -----Original Message-----
+> From: Eric Auger <eric.auger@redhat.com>
+> Sent: Friday, May 8, 2020 11:01 PM
+> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-devel@nongnu.or=
+g;
+> qemu-arm@nongnu.org; peter.maydell@linaro.org; mst@redhat.com; jean-
+> philippe@linaro.org; Bharat Bhushan <bbhushan2@marvell.com>;
+> peterx@redhat.com; armbru@redhat.com; pbonzini@redhat.com
+> Subject: [EXT] [PATCH v2 2/5] virtio-iommu: Implement RESV_MEM probe requ=
+est
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
-
-ppc parts
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
+> External Email
+>=20
+> ----------------------------------------------------------------------
+> This patch implements the PROBE request. At the moment, only THE RESV_MEM
+> property is handled. The first goal is to report iommu wide reserved regi=
+ons such as
+> the MSI regions set by the machine code. On x86 this will be the IOAPIC M=
+SI region,
+> [0xFEE00000 - 0xFEEFFFFF], on ARM this may be the ITS doorbell.
+>=20
+> In the future we may introduce per device reserved regions.
+> This will be useful when protecting host assigned devices which may expos=
+e their
+> own reserved regions
+>=20
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>=20
 > ---
->  include/hw/core/cpu.h           |  8 +++++---
->  target/alpha/cpu.h              |  4 +++-
->  target/arm/cpu.h                |  6 +++---
->  target/arm/internals.h          |  4 ++++
->  target/cris/cpu.h               |  2 ++
->  target/hppa/cpu.h               |  2 +-
->  target/i386/cpu.h               |  2 ++
->  target/m68k/cpu.h               |  7 ++++++-
->  target/microblaze/cpu.h         |  5 ++++-
->  target/mips/internal.h          |  2 +-
->  target/nios2/cpu.h              |  5 ++++-
->  target/openrisc/cpu.h           |  3 ++-
->  target/ppc/cpu.h                |  2 +-
->  target/riscv/cpu.h              | 20 ++++++++++----------
->  target/sh4/cpu.h                |  2 +-
->  target/sparc/cpu.h              |  2 ++
->  target/xtensa/cpu.h             | 12 +++++++-----
->  target/hppa/cpu.c               |  4 +++-
->  target/ppc/translate_init.inc.c |  2 +-
->  19 files changed, 62 insertions(+), 32 deletions(-)
 >=20
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index 5bf94d28cf..ed09d056d1 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -167,6 +167,7 @@ typedef struct CPUClass {
->      int reset_dump_flags;
->      bool (*has_work)(CPUState *cpu);
->      void (*do_interrupt)(CPUState *cpu);
-> +#ifndef CONFIG_USER_ONLY
->      void (*do_unaligned_access)(CPUState *cpu, vaddr addr,
->                                  MMUAccessType access_type,
->                                  int mmu_idx, uintptr_t retaddr);
-> @@ -174,6 +175,10 @@ typedef struct CPUClass {
->                                    unsigned size, MMUAccessType access_ty=
-pe,
->                                    int mmu_idx, MemTxAttrs attrs,
->                                    MemTxResult response, uintptr_t retadd=
-r);
-> +    hwaddr (*get_phys_page_debug)(CPUState *cpu, vaddr addr);
-> +    hwaddr (*get_phys_page_attrs_debug)(CPUState *cpu, vaddr addr,
-> +                                        MemTxAttrs *attrs);
-> +#endif /* CONFIG_USER_ONLY */
->      bool (*virtio_is_big_endian)(CPUState *cpu);
->      int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
->                             uint8_t *buf, int len, bool is_write);
-> @@ -189,9 +194,6 @@ typedef struct CPUClass {
->      bool (*tlb_fill)(CPUState *cpu, vaddr address, int size,
->                       MMUAccessType access_type, int mmu_idx,
->                       bool probe, uintptr_t retaddr);
-> -    hwaddr (*get_phys_page_debug)(CPUState *cpu, vaddr addr);
-> -    hwaddr (*get_phys_page_attrs_debug)(CPUState *cpu, vaddr addr,
-> -                                        MemTxAttrs *attrs);
->      int (*asidx_from_attrs)(CPUState *cpu, MemTxAttrs attrs);
->      int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
->      int (*gdb_write_register)(CPUState *cpu, uint8_t *buf, int reg);
-> diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-> index be29bdd530..b12021803e 100644
-> --- a/target/alpha/cpu.h
-> +++ b/target/alpha/cpu.h
-> @@ -279,12 +279,14 @@ extern const VMStateDescription vmstate_alpha_cpu;
->  void alpha_cpu_do_interrupt(CPUState *cpu);
->  bool alpha_cpu_exec_interrupt(CPUState *cpu, int int_req);
->  void alpha_cpu_dump_state(CPUState *cs, FILE *f, int flags);
-> -hwaddr alpha_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  int alpha_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->  int alpha_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> +#ifndef CONFIG_USER_ONLY
-> +hwaddr alpha_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  void alpha_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
->                                     MMUAccessType access_type,
->                                     int mmu_idx, uintptr_t retaddr);
-> +#endif
-> =20
->  #define cpu_list alpha_cpu_list
->  #define cpu_signal_handler cpu_alpha_signal_handler
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 8608da6b6f..d333036bb4 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -966,15 +966,15 @@ uint64_t arm_cpu_mp_affinity(int idx, uint8_t clust=
-ersz);
-> =20
->  #ifndef CONFIG_USER_ONLY
->  extern const VMStateDescription vmstate_arm_cpu;
-> +
-> +hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
-> +                                         MemTxAttrs *attrs);
->  #endif
-> =20
->  void arm_cpu_do_interrupt(CPUState *cpu);
->  void arm_v7m_cpu_do_interrupt(CPUState *cpu);
->  bool arm_cpu_exec_interrupt(CPUState *cpu, int int_req);
-> =20
-> -hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
-> -                                         MemTxAttrs *attrs);
-> -
->  int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->  int arm_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> =20
-> diff --git a/target/arm/internals.h b/target/arm/internals.h
-> index e633aff36e..c0a2a5df71 100644
-> --- a/target/arm/internals.h
-> +++ b/target/arm/internals.h
-> @@ -812,6 +812,8 @@ ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *e=
-nv, bool secstate);
->   * tables */
->  bool arm_s1_regime_using_lpae_format(CPUARMState *env, ARMMMUIdx mmu_idx=
-);
-> =20
-> +#ifndef CONFIG_USER_ONLY
-> +
->  /* Raise a data fault alignment exception for the specified virtual addr=
-ess */
->  void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
->                                   MMUAccessType access_type,
-> @@ -827,6 +829,8 @@ void arm_cpu_do_transaction_failed(CPUState *cs, hwad=
-dr physaddr,
->                                     int mmu_idx, MemTxAttrs attrs,
->                                     MemTxResult response, uintptr_t retad=
-dr);
-> =20
-> +#endif /* !CONFIG_USER_ONLY */
-> +
->  /* Call any registered EL change hooks */
->  static inline void arm_call_pre_el_change_hook(ARMCPU *cpu)
->  {
-> diff --git a/target/cris/cpu.h b/target/cris/cpu.h
-> index 8f08d7628b..e9c858ada7 100644
-> --- a/target/cris/cpu.h
-> +++ b/target/cris/cpu.h
-> @@ -193,7 +193,9 @@ bool cris_cpu_exec_interrupt(CPUState *cpu, int int_r=
-eq);
-> =20
->  void cris_cpu_dump_state(CPUState *cs, FILE *f, int flags);
-> =20
-> +#ifndef CONFIG_USER_ONLY
->  hwaddr cris_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-> +#endif
-> =20
->  int crisv10_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int re=
-g);
->  int cris_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
-> diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
-> index 801a4fb1ba..7848425f6a 100644
-> --- a/target/hppa/cpu.h
-> +++ b/target/hppa/cpu.h
-> @@ -320,7 +320,6 @@ void cpu_hppa_change_prot_id(CPUHPPAState *env);
->  #define cpu_signal_handler cpu_hppa_signal_handler
-> =20
->  int cpu_hppa_signal_handler(int host_signum, void *pinfo, void *puc);
-> -hwaddr hppa_cpu_get_phys_page_debug(CPUState *cs, vaddr addr);
->  int hppa_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->  int hppa_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
->  void hppa_cpu_do_interrupt(CPUState *cpu);
-> @@ -330,6 +329,7 @@ bool hppa_cpu_tlb_fill(CPUState *cs, vaddr address, i=
-nt size,
->                         MMUAccessType access_type, int mmu_idx,
->                         bool probe, uintptr_t retaddr);
->  #ifndef CONFIG_USER_ONLY
-> +hwaddr hppa_cpu_get_phys_page_debug(CPUState *cs, vaddr addr);
->  int hppa_get_physical_address(CPUHPPAState *env, vaddr addr, int mmu_idx,
->                                int type, hwaddr *pphys, int *pprot);
->  extern const MemoryRegionOps hppa_io_eir_ops;
-> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-> index e818fc712a..00e0cc0828 100644
-> --- a/target/i386/cpu.h
-> +++ b/target/i386/cpu.h
-> @@ -1767,8 +1767,10 @@ void x86_cpu_get_memory_mapping(CPUState *cpu, Mem=
-oryMappingList *list,
-> =20
->  void x86_cpu_dump_state(CPUState *cs, FILE *f, int flags);
-> =20
-> +#ifndef CONFIG_USER_ONLY
->  hwaddr x86_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
->                                           MemTxAttrs *attrs);
-> +#endif
-> =20
->  int x86_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->  int x86_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-> index 521ac67cdd..efc940e7ec 100644
-> --- a/target/m68k/cpu.h
-> +++ b/target/m68k/cpu.h
-> @@ -167,10 +167,13 @@ struct M68kCPU {
->  void m68k_cpu_do_interrupt(CPUState *cpu);
->  bool m68k_cpu_exec_interrupt(CPUState *cpu, int int_req);
->  void m68k_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-> -hwaddr m68k_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  int m68k_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->  int m68k_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> =20
-> +#ifndef CONFIG_USER_ONLY
-> +hwaddr m68k_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-> +#endif
-> +
->  void m68k_tcg_init(void);
->  void m68k_cpu_init_gdb(M68kCPU *cpu);
->  /*
-> @@ -529,10 +532,12 @@ static inline int cpu_mmu_index (CPUM68KState *env,=
- bool ifetch)
->  bool m68k_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
->                         MMUAccessType access_type, int mmu_idx,
->                         bool probe, uintptr_t retaddr);
-> +#ifndef CONFIG_USER_ONLY
->  void m68k_cpu_transaction_failed(CPUState *cs, hwaddr physaddr, vaddr ad=
-dr,
->                                   unsigned size, MMUAccessType access_typ=
-e,
->                                   int mmu_idx, MemTxAttrs attrs,
->                                   MemTxResult response, uintptr_t retaddr=
-);
-> +#endif
-> =20
->  typedef CPUM68KState CPUArchState;
->  typedef M68kCPU ArchCPU;
-> diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
-> index a31134b65c..eb57f04d3f 100644
-> --- a/target/microblaze/cpu.h
-> +++ b/target/microblaze/cpu.h
-> @@ -318,10 +318,13 @@ struct MicroBlazeCPU {
->  void mb_cpu_do_interrupt(CPUState *cs);
->  bool mb_cpu_exec_interrupt(CPUState *cs, int int_req);
->  void mb_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-> -hwaddr mb_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  int mb_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->  int mb_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> =20
-> +#ifndef CONFIG_USER_ONLY
-> +hwaddr mb_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-> +#endif
-> +
->  void mb_tcg_init(void);
->  /* you can call this signal handler from your SIGBUS and SIGSEGV
->     signal handlers to inform the virtual CPU of exceptions. non zero
-> diff --git a/target/mips/internal.h b/target/mips/internal.h
-> index 1bf274b3ef..c38666c6f5 100644
-> --- a/target/mips/internal.h
-> +++ b/target/mips/internal.h
-> @@ -81,7 +81,6 @@ enum CPUMIPSMSADataFormat {
->  void mips_cpu_do_interrupt(CPUState *cpu);
->  bool mips_cpu_exec_interrupt(CPUState *cpu, int int_req);
->  void mips_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-> -hwaddr mips_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  int mips_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->  int mips_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
->  void mips_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
-> @@ -150,6 +149,7 @@ void mips_cpu_do_transaction_failed(CPUState *cs, hwa=
-ddr physaddr,
->                                      MemTxResult response, uintptr_t reta=
-ddr);
->  hwaddr cpu_mips_translate_address(CPUMIPSState *env, target_ulong addres=
-s,
->                                    int rw);
-> +hwaddr mips_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  #endif
-> =20
->  #define cpu_signal_handler cpu_mips_signal_handler
-> diff --git a/target/nios2/cpu.h b/target/nios2/cpu.h
-> index 4dddf9c3a1..0703295133 100644
-> --- a/target/nios2/cpu.h
-> +++ b/target/nios2/cpu.h
-> @@ -199,11 +199,14 @@ void nios2_cpu_do_interrupt(CPUState *cs);
->  int cpu_nios2_signal_handler(int host_signum, void *pinfo, void *puc);
->  void dump_mmu(CPUNios2State *env);
->  void nios2_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-> -hwaddr nios2_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  void nios2_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
->                                     MMUAccessType access_type,
->                                     int mmu_idx, uintptr_t retaddr);
-> =20
-> +#ifndef CONFIG_USER_ONLY
-> +hwaddr nios2_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-> +#endif
-> +
->  qemu_irq *nios2_cpu_pic_init(Nios2CPU *cpu);
->  void nios2_check_interrupts(CPUNios2State *env);
-> =20
-> diff --git a/target/openrisc/cpu.h b/target/openrisc/cpu.h
-> index f37a52e153..60de8ed787 100644
-> --- a/target/openrisc/cpu.h
-> +++ b/target/openrisc/cpu.h
-> @@ -319,7 +319,6 @@ void cpu_openrisc_list(void);
->  void openrisc_cpu_do_interrupt(CPUState *cpu);
->  bool openrisc_cpu_exec_interrupt(CPUState *cpu, int int_req);
->  void openrisc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-> -hwaddr openrisc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  int openrisc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int r=
-eg);
->  int openrisc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg=
-);
->  void openrisc_translate_init(void);
-> @@ -335,6 +334,8 @@ int print_insn_or1k(bfd_vma addr, disassemble_info *i=
-nfo);
->  #ifndef CONFIG_USER_ONLY
->  extern const VMStateDescription vmstate_openrisc_cpu;
-> =20
-> +hwaddr openrisc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-> +
->  /* hw/openrisc_pic.c */
->  void cpu_openrisc_pic_init(OpenRISCCPU *cpu);
-> =20
-> diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-> index 73920a9cac..f7b27aefed 100644
-> --- a/target/ppc/cpu.h
-> +++ b/target/ppc/cpu.h
-> @@ -1209,12 +1209,12 @@ void ppc_cpu_do_interrupt(CPUState *cpu);
->  bool ppc_cpu_exec_interrupt(CPUState *cpu, int int_req);
->  void ppc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
->  void ppc_cpu_dump_statistics(CPUState *cpu, int flags);
-> -hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  int ppc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->  int ppc_cpu_gdb_read_register_apple(CPUState *cpu, GByteArray *buf, int =
-reg);
->  int ppc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
->  int ppc_cpu_gdb_write_register_apple(CPUState *cpu, uint8_t *buf, int re=
-g);
->  #ifndef CONFIG_USER_ONLY
-> +hwaddr ppc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  void ppc_gdb_gen_spr_xml(PowerPCCPU *cpu);
->  const char *ppc_gdb_get_dynamic_xml(CPUState *cs, const char *xml_name);
->  #endif
-> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-> index d0e7f5b9c5..69edee6484 100644
-> --- a/target/riscv/cpu.h
-> +++ b/target/riscv/cpu.h
-> @@ -303,18 +303,9 @@ void riscv_cpu_set_virt_enabled(CPURISCVState *env, =
-bool enable);
->  bool riscv_cpu_force_hs_excep_enabled(CPURISCVState *env);
->  void riscv_cpu_set_force_hs_excep(CPURISCVState *env, bool enable);
->  int riscv_cpu_mmu_index(CPURISCVState *env, bool ifetch);
-> -hwaddr riscv_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-> -void  riscv_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
-> -                                    MMUAccessType access_type, int mmu_i=
-dx,
-> -                                    uintptr_t retaddr);
->  bool riscv_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
->                          MMUAccessType access_type, int mmu_idx,
->                          bool probe, uintptr_t retaddr);
-> -void riscv_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
-> -                                     vaddr addr, unsigned size,
-> -                                     MMUAccessType access_type,
-> -                                     int mmu_idx, MemTxAttrs attrs,
-> -                                     MemTxResult response, uintptr_t ret=
-addr);
->  char *riscv_isa_string(RISCVCPU *cpu);
->  void riscv_cpu_list(void);
-> =20
-> @@ -323,12 +314,21 @@ void riscv_cpu_list(void);
->  #define cpu_mmu_index riscv_cpu_mmu_index
-> =20
->  #ifndef CONFIG_USER_ONLY
-> +hwaddr riscv_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-> +void  riscv_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
-> +                                    MMUAccessType access_type, int mmu_i=
-dx,
-> +                                    uintptr_t retaddr);
-> +void riscv_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
-> +                                     vaddr addr, unsigned size,
-> +                                     MMUAccessType access_type,
-> +                                     int mmu_idx, MemTxAttrs attrs,
-> +                                     MemTxResult response, uintptr_t ret=
-addr);
->  void riscv_cpu_swap_hypervisor_regs(CPURISCVState *env);
->  int riscv_cpu_claim_interrupts(RISCVCPU *cpu, uint32_t interrupts);
->  uint32_t riscv_cpu_update_mip(RISCVCPU *cpu, uint32_t mask, uint32_t val=
-ue);
->  #define BOOL_TO_MASK(x) (-!!(x)) /* helper for riscv_cpu_update_mip valu=
-e */
->  void riscv_cpu_set_rdtime_fn(CPURISCVState *env, uint64_t (*fn)(void));
-> -#endif
-> +#endif /* !CONFIG_USER_ONLY */
->  void riscv_cpu_set_mode(CPURISCVState *env, target_ulong newpriv);
-> =20
->  void riscv_translate_init(void);
-> diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
-> index dbe58c7888..40d92413b8 100644
-> --- a/target/sh4/cpu.h
-> +++ b/target/sh4/cpu.h
-> @@ -207,7 +207,6 @@ struct SuperHCPU {
->  void superh_cpu_do_interrupt(CPUState *cpu);
->  bool superh_cpu_exec_interrupt(CPUState *cpu, int int_req);
->  void superh_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-> -hwaddr superh_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  int superh_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg=
-);
->  int superh_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
->  void superh_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
-> @@ -223,6 +222,7 @@ bool superh_cpu_tlb_fill(CPUState *cs, vaddr address,=
- int size,
-> =20
->  void sh4_cpu_list(void);
->  #if !defined(CONFIG_USER_ONLY)
-> +hwaddr superh_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  void cpu_sh4_invalidate_tlb(CPUSH4State *s);
->  uint32_t cpu_sh4_read_mmaped_itlb_addr(CPUSH4State *s,
->                                         hwaddr addr);
-> diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-> index b9369398f2..31887a811a 100644
-> --- a/target/sparc/cpu.h
-> +++ b/target/sparc/cpu.h
-> @@ -570,7 +570,9 @@ extern const VMStateDescription vmstate_sparc_cpu;
-> =20
->  void sparc_cpu_do_interrupt(CPUState *cpu);
->  void sparc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-> +#ifndef CONFIG_USER_ONLY
->  hwaddr sparc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-> +#endif
->  int sparc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
->  int sparc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
->  void QEMU_NORETURN sparc_cpu_do_unaligned_access(CPUState *cpu, vaddr ad=
-dr,
-> diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-> index 7a46dccbe1..47fe57df87 100644
-> --- a/target/xtensa/cpu.h
-> +++ b/target/xtensa/cpu.h
-> @@ -564,19 +564,21 @@ bool xtensa_cpu_tlb_fill(CPUState *cs, vaddr addres=
-s, int size,
->                           bool probe, uintptr_t retaddr);
->  void xtensa_cpu_do_interrupt(CPUState *cpu);
->  bool xtensa_cpu_exec_interrupt(CPUState *cpu, int interrupt_request);
-> -void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr, vad=
-dr addr,
-> -                                      unsigned size, MMUAccessType acces=
-s_type,
-> -                                      int mmu_idx, MemTxAttrs attrs,
-> -                                      MemTxResult response, uintptr_t re=
-taddr);
->  void xtensa_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-> -hwaddr xtensa_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->  void xtensa_count_regs(const XtensaConfig *config,
->                         unsigned *n_regs, unsigned *n_core_regs);
->  int xtensa_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg=
-);
->  int xtensa_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
-> +#ifndef CONFIG_USER_ONLY
-> +hwaddr xtensa_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-> +void xtensa_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr, vad=
-dr addr,
-> +                                      unsigned size, MMUAccessType acces=
-s_type,
-> +                                      int mmu_idx, MemTxAttrs attrs,
-> +                                      MemTxResult response, uintptr_t re=
-taddr);
->  void xtensa_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
->                                      MMUAccessType access_type,
->                                      int mmu_idx, uintptr_t retaddr);
-> +#endif /* !CONFIG_USER_ONLY */
-> =20
->  #define cpu_signal_handler cpu_xtensa_signal_handler
->  #define cpu_list xtensa_cpu_list
-> diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
-> index 71b6aca45d..6d33288d2a 100644
-> --- a/target/hppa/cpu.c
-> +++ b/target/hppa/cpu.c
-> @@ -70,6 +70,7 @@ static void hppa_cpu_disas_set_info(CPUState *cs, disas=
-semble_info *info)
->      info->print_insn =3D print_insn_hppa;
+> v1 -> v2:
+> - move the unlock back to the same place
+> - remove the push label and factorize the code after the out label
+> - fix a bunch of cpu_to_leX according to the latest spec revision
+> - do not remove sizeof(last) from free space
+> - check the ep exists
+> ---
+>  include/hw/virtio/virtio-iommu.h |  2 +
+>  hw/virtio/virtio-iommu.c         | 94 ++++++++++++++++++++++++++++++--
+>  hw/virtio/trace-events           |  1 +
+>  3 files changed, 93 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-=
+iommu.h
+> index e653004d7c..49eb105cd8 100644
+> --- a/include/hw/virtio/virtio-iommu.h
+> +++ b/include/hw/virtio/virtio-iommu.h
+> @@ -53,6 +53,8 @@ typedef struct VirtIOIOMMU {
+>      GHashTable *as_by_busptr;
+>      IOMMUPciBus *iommu_pcibus_by_bus_num[PCI_BUS_MAX];
+>      PCIBus *primary_bus;
+> +    ReservedRegion *reserved_regions;
+> +    uint32_t nb_reserved_regions;
+>      GTree *domains;
+>      QemuMutex mutex;
+>      GTree *endpoints;
+> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c index
+> 22ba8848c2..35d772e021 100644
+> --- a/hw/virtio/virtio-iommu.c
+> +++ b/hw/virtio/virtio-iommu.c
+> @@ -38,6 +38,7 @@
+>=20
+>  /* Max size */
+>  #define VIOMMU_DEFAULT_QUEUE_SIZE 256
+> +#define VIOMMU_PROBE_SIZE 512
+>=20
+>  typedef struct VirtIOIOMMUDomain {
+>      uint32_t id;
+> @@ -378,6 +379,65 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+>      return ret;
 >  }
-> =20
-> +#ifndef CONFIG_USER_ONLY
->  static void hppa_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
->                                           MMUAccessType access_type,
->                                           int mmu_idx, uintptr_t retaddr)
-> @@ -86,6 +87,7 @@ static void hppa_cpu_do_unaligned_access(CPUState *cs, =
-vaddr addr,
-> =20
->      cpu_loop_exit_restore(cs, retaddr);
+>=20
+> +static ssize_t virtio_iommu_fill_resv_mem_prop(VirtIOIOMMU *s, uint32_t =
+ep,
+> +                                               uint8_t *buf, size_t
+> +free) {
+> +    struct virtio_iommu_probe_resv_mem prop =3D {};
+> +    size_t size =3D sizeof(prop), length =3D size - sizeof(prop.head), t=
+otal;
+> +    int i;
+> +
+> +    total =3D size * s->nb_reserved_regions;
+> +
+> +    if (total > free) {
+> +        return -ENOSPC;
+> +    }
+> +
+> +    for (i =3D 0; i < s->nb_reserved_regions; i++) {
+> +        prop.head.type =3D cpu_to_le16(VIRTIO_IOMMU_PROBE_T_RESV_MEM);
+> +        prop.head.length =3D cpu_to_le16(length);
+> +        prop.subtype =3D s->reserved_regions[i].type;
+> +        prop.start =3D cpu_to_le64(s->reserved_regions[i].low);
+> +        prop.end =3D cpu_to_le64(s->reserved_regions[i].high);
+> +
+> +        memcpy(buf, &prop, size);
+> +
+> +        trace_virtio_iommu_fill_resv_property(ep, prop.subtype,
+> +                                              prop.start, prop.end);
+> +        buf +=3D size;
+> +    }
+> +    return total;
+> +}
+> +
+> +/**
+> + * virtio_iommu_probe - Fill the probe request buffer with
+> + * the properties the device is able to return and add a NONE
+> + * property at the end.
+> + */
+> +static int virtio_iommu_probe(VirtIOIOMMU *s,
+> +                              struct virtio_iommu_req_probe *req,
+> +                              uint8_t *buf) {
+> +    uint32_t ep_id =3D le32_to_cpu(req->endpoint);
+> +    size_t free =3D VIOMMU_PROBE_SIZE;
+> +    ssize_t count;
+> +
+> +    if (!virtio_iommu_mr(s, ep_id)) {
+> +        return VIRTIO_IOMMU_S_NOENT;
+> +    }
+> +
+> +    count =3D virtio_iommu_fill_resv_mem_prop(s, ep_id, buf, free);
+> +    if (count < 0) {
+> +        return VIRTIO_IOMMU_S_INVAL;
+> +    }
+> +    buf +=3D count;
+> +    free -=3D count;
+> +
+> +    /* Fill the rest with zeroes */
+> +    memset(buf, 0, free);
+
+No need to fill with zero here as "buf" is set to zero on allocation, no?
+
+Thanks
+-Bharat
+
+> +
+> +    return VIRTIO_IOMMU_S_OK;
+> +}
+> +
+>  static int virtio_iommu_iov_to_req(struct iovec *iov,
+>                                     unsigned int iov_cnt,
+>                                     void *req, size_t req_sz) @@ -407,15 =
++467,27 @@
+> virtio_iommu_handle_req(detach)
+>  virtio_iommu_handle_req(map)
+>  virtio_iommu_handle_req(unmap)
+>=20
+> +static int virtio_iommu_handle_probe(VirtIOIOMMU *s,
+> +                                     struct iovec *iov,
+> +                                     unsigned int iov_cnt,
+> +                                     uint8_t *buf) {
+> +    struct virtio_iommu_req_probe req;
+> +    int ret =3D virtio_iommu_iov_to_req(iov, iov_cnt, &req, sizeof(req))=
+;
+> +
+> +    return ret ? ret : virtio_iommu_probe(s, &req, buf); }
+> +
+>  static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *v=
+q)  {
+>      VirtIOIOMMU *s =3D VIRTIO_IOMMU(vdev);
+>      struct virtio_iommu_req_head head;
+>      struct virtio_iommu_req_tail tail =3D {};
+> +    size_t output_size =3D sizeof(tail), sz;
+>      VirtQueueElement *elem;
+>      unsigned int iov_cnt;
+>      struct iovec *iov;
+> -    size_t sz;
+> +    void *buf =3D NULL;
+>=20
+>      for (;;) {
+>          elem =3D virtqueue_pop(vq, sizeof(VirtQueueElement)); @@ -452,6 =
++524,17 @@
+> static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq=
+)
+>          case VIRTIO_IOMMU_T_UNMAP:
+>              tail.status =3D virtio_iommu_handle_unmap(s, iov, iov_cnt);
+>              break;
+> +        case VIRTIO_IOMMU_T_PROBE:
+> +        {
+> +            struct virtio_iommu_req_tail *ptail;
+> +
+> +            output_size =3D s->config.probe_size + sizeof(tail);
+> +            buf =3D g_malloc0(output_size);
+> +
+> +            ptail =3D (struct virtio_iommu_req_tail *)
+> +                        (buf + s->config.probe_size);
+> +            ptail->status =3D virtio_iommu_handle_probe(s, iov, iov_cnt,=
+ buf);
+> +        }
+>          default:
+>              tail.status =3D VIRTIO_IOMMU_S_UNSUPP;
+>          }
+> @@ -459,12 +542,13 @@ static void
+> virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
+>=20
+>  out:
+>          sz =3D iov_from_buf(elem->in_sg, elem->in_num, 0,
+> -                          &tail, sizeof(tail));
+> -        assert(sz =3D=3D sizeof(tail));
+> +                          buf ? buf : &tail, output_size);
+> +        assert(sz =3D=3D output_size);
+>=20
+> -        virtqueue_push(vq, elem, sizeof(tail));
+> +        virtqueue_push(vq, elem, sz);
+>          virtio_notify(vdev, vq);
+>          g_free(elem);
+> +        g_free(buf);
+>      }
 >  }
-> +#endif /* !CONFIG_USER_ONLY */
-> =20
->  static void hppa_cpu_realizefn(DeviceState *dev, Error **errp)
->  {
-> @@ -150,8 +152,8 @@ static void hppa_cpu_class_init(ObjectClass *oc, void=
- *data)
->  #ifndef CONFIG_USER_ONLY
->      cc->get_phys_page_debug =3D hppa_cpu_get_phys_page_debug;
->      dc->vmsd =3D &vmstate_hppa_cpu;
-> -#endif
->      cc->do_unaligned_access =3D hppa_cpu_do_unaligned_access;
-> +#endif
->      cc->disas_set_info =3D hppa_cpu_disas_set_info;
->      cc->tcg_initialize =3D hppa_translate_init;
-> =20
-> diff --git a/target/ppc/translate_init.inc.c b/target/ppc/translate_init.=
-inc.c
-> index 4ea0cc501b..8c428e2009 100644
-> --- a/target/ppc/translate_init.inc.c
-> +++ b/target/ppc/translate_init.inc.c
-> @@ -10892,8 +10892,8 @@ static void ppc_cpu_class_init(ObjectClass *oc, v=
-oid *data)
->      cc->set_pc =3D ppc_cpu_set_pc;
->      cc->gdb_read_register =3D ppc_cpu_gdb_read_register;
->      cc->gdb_write_register =3D ppc_cpu_gdb_write_register;
-> -    cc->do_unaligned_access =3D ppc_cpu_do_unaligned_access;
->  #ifndef CONFIG_USER_ONLY
-> +    cc->do_unaligned_access =3D ppc_cpu_do_unaligned_access;
->      cc->get_phys_page_debug =3D ppc_cpu_get_phys_page_debug;
->      cc->vmsd =3D &vmstate_ppc_cpu;
->  #endif
+>=20
+> @@ -667,6 +751,7 @@ static void virtio_iommu_device_realize(DeviceState *=
+dev,
+> Error **errp)
+>      s->config.page_size_mask =3D TARGET_PAGE_MASK;
+>      s->config.input_range.end =3D -1UL;
+>      s->config.domain_range.end =3D 32;
+> +    s->config.probe_size =3D VIOMMU_PROBE_SIZE;
+>=20
+>      virtio_add_feature(&s->features, VIRTIO_RING_F_EVENT_IDX);
+>      virtio_add_feature(&s->features, VIRTIO_RING_F_INDIRECT_DESC); @@ -6=
+76,6
+> +761,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error
+> **errp)
+>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MAP_UNMAP);
+>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_BYPASS);
+>      virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MMIO);
+> +    virtio_add_feature(&s->features, VIRTIO_IOMMU_F_PROBE);
+>=20
+>      qemu_mutex_init(&s->mutex);
+>=20
+> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events index
+> e83500bee9..5550475691 100644
+> --- a/hw/virtio/trace-events
+> +++ b/hw/virtio/trace-events
+> @@ -73,3 +73,4 @@ virtio_iommu_get_domain(uint32_t domain_id) "Alloc
+> domain=3D%d"
+>  virtio_iommu_put_domain(uint32_t domain_id) "Free domain=3D%d"
+>  virtio_iommu_translate_out(uint64_t virt_addr, uint64_t phys_addr, uint3=
+2_t sid)
+> "0x%"PRIx64" -> 0x%"PRIx64 " for sid=3D%d"
+>  virtio_iommu_report_fault(uint8_t reason, uint32_t flags, uint32_t endpo=
+int,
+> uint64_t addr) "FAULT reason=3D%d flags=3D%d endpoint=3D%d address =3D0x%=
+"PRIx64
+> +virtio_iommu_fill_resv_property(uint32_t devid, uint8_t subtype,
+> +uint64_t start, uint64_t end) "dev=3D %d, type=3D%d start=3D0x%"PRIx64"
+> +end=3D0x%"PRIx64
+> --
+> 2.20.1
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---Qrgsu6vtpU/OV/zm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl64p3IACgkQbDjKyiDZ
-s5IeuBAAmTQsnMgzeOQtAdSatGBcoZgmEkFdesZ53PV2hfHhIAUne0WZKpaa1iaH
-aOUOVRZN/6MRGOO4kvAdhbIjYlq+1mifAcCc/hZjv88TZoimLREvidmMZbVZP/rO
-BVaW/i5/QzbaHbmp+hMvEC3vBSznsA5EXjZjBXXXl080BrHCz3BJWOyE5JiqlRhp
-LAtPyCrFi9OhnsEqu9LMzU7GydY2USjCbGAq7GhYM3iMMFTBSRojNPsILKR7+Dsw
-pS0VERWRZlt21qLAJSsCj8/VaRnh1e0aBVWEBizaAUuk1mJGi23egBqGRpz6V8hN
-V7MMNnk8MlDp/A13Ums0PGMO/hqZr3RWnoOBT51758qASCURtXExsGpQZYjCU4UR
-8V2RuNEAQJli8zop7Yo4RiR5XW+G+g36KUlKJ+o3kHbHTaG475VKFu/RXXx8OdQ3
-uBYYjvIjf+AgRLUHOmMQJVNWpPikOP+k15OQyee5NcrBlay5/Q6X+1Wqi5vGS6vT
-V312WlLpvxLZEnM484CKziG/X6i5zFsUi6dDqUiLbs4picELJV1uv7O63Jl4AjoB
-RmkcSgrzynEqK7rxRm7N2/hTeu8hJGnazhNTh6aa5HjyQwI4J+hWwakYsNhuDSwR
-cAxhR+chMb41yBVqu78eapmqZ1oDl+cyqZI2dbdMI7BThuqqK+Q=
-=k9bI
------END PGP SIGNATURE-----
-
---Qrgsu6vtpU/OV/zm--

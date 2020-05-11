@@ -1,106 +1,105 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp150044lfb;
-        Mon, 11 May 2020 05:21:55 -0700 (PDT)
-X-Google-Smtp-Source: APiQypK1PmyI7Zes0YDWW/4hdCcar3WvgXBI8J3ZO6Jloo7Oo5+aPc8ZhqvYuGiDpnZR0u+Tm+fH
-X-Received: by 2002:ae9:e713:: with SMTP id m19mr15250399qka.39.1589199714933;
-        Mon, 11 May 2020 05:21:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589199714; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp152212lfb;
+        Mon, 11 May 2020 05:24:45 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIlqHd1lQC2REknuPJuBcuFsCiydgKtVW/QqDeoHtGvgLI0R37+SD0anf5678pByGPjvJgx
+X-Received: by 2002:a0c:c190:: with SMTP id n16mr15430110qvh.107.1589199885452;
+        Mon, 11 May 2020 05:24:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589199885; cv=none;
         d=google.com; s=arc-20160816;
-        b=yV01G0DSuGnv384GeylwoFl6T2JyKId/DzhmlZNL1o4TYIywJc41cwJVGXrP1oKAD1
-         vn6h3S2ILtu3htDNINRSJB9gf+wI7AIjD2AzUlLkiuODi+zzVA9VDbAgbx32kmfIjDb6
-         gjNUr8Ltur3Q4s5C8stMvt8CPdl9Kc/8d4y7ByL5H8yUBl46AJQHBLDXp/3zr6b75aQX
-         9noy25CxXl2YQBmDtuU8sb57JYHpaFiW46iDz+/NOTHUdBqvwQSL0ANwDNNZ18tC95jQ
-         L0AVswQ8TEVJJUy+CgJ+cP3dLo2i/6X9kkgp1PKLV0lNLIoKtrPczHekCyGLGe/0tDTa
-         hamA==
+        b=VLn7+oeKVKJeh+ziQaQfaQidMFBEc7Lg17kY7rz7Itq/yjGhRQTdmY3KXrOZ0VSSef
+         IJj1UJYPCjGRCGeM4EjlyisYIyoUcSfCpEWHHzdZWxkaV8iqyrJYElErhN6EbxBRjTuR
+         gMt9eJkDUFE0t3596jh3AuTNoVPcFmHyFC5eKEuIn1M/GO27bH6aAhgAzOaOL/s+3x+c
+         m//dO2kcp2cWP3V6KjxdgTkmyRsmYuZcq/NroL6xs4Ensdd4coSOlbJTfOovtBgmMSbt
+         yT4Zvf6TiRmCkk+1JIUlHGmHro1vf+Uzz78pD9RGuXx4Zt/1BbMZxeZucbmYuK9iIt1W
+         bnBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=WE9of2IJLN2TV5g7cx+rhe2s1pQe8LZRT+6pv5bh5k8=;
-        b=SMmvWHLMnVQqn7yBD0gZEzvSRNnKoDJ08XuENXdB+4xVmYrmrnS8xxvs6+IzqbpkJi
-         Kiveq7Vzmr6c9ZHPGerhA72jIj1Fnsqn1kitDkjg748imOd7wfm1Wu8wIKpWuhh/GErj
-         6HHKW515gQLCEgDIb5tIX3iY/TEDDx//s9ae7SfrTLtjPWKbNZZggY6BgXZclic7wK42
-         JC7x4XIXxOPNWenNTK4Ag+dlrUXboDBWhN0RKiK1UHPlGew7n93zATenBl2uuswDwDZ+
-         GZyLeimlXGqZkISAVLa5Dz6PXtCjF1XP6h3qhr/vPkp60aIPgDlA+K4UhWBPfj12SVNb
-         6yUg==
+        bh=vAPfxjqThNPJhfJkrO3DuZdVyej2WKzeiTE+Tbap9WY=;
+        b=pdS2zgaLzknKY+GPxlNBeJZE/+GotpxZm8w6KhXrTY8c42Faj3bYfxcFdIh0DJ5lLs
+         n/+Fkv+6/lwzrYusS8BjhCS0P4w05oOdBEoXzWWK1xZODwKK+JgLCVxGtAsPMCK4tgfK
+         8ow49CJrD+2nfvRW3u4sOYzMRVNgEKlPp4ZCcq2eETFkliYxEenNWWh5bcscCnl9I51B
+         V6lWfoH6udMnT7cf61mvV++AHAE0+HezM8jGfx/EiDRMIa4ALusPepRURe+J3w9qsof4
+         U4YiLAImSsecL2NL/AlvzClkpzIpKHm+8iX6bt2wzYEf2Et+d4Zxq9GWSWO6yUGT73NW
+         lMZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qGzM980Z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GrDaCS2g;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a14si5829631qvt.76.2020.05.11.05.21.54
+        by mx.google.com with ESMTPS id v6si61107qvf.97.2020.05.11.05.24.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 May 2020 05:21:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 11 May 2020 05:24:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qGzM980Z;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GrDaCS2g;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:55510 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35714 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jY7RS-0007cU-C7
-	for alex.bennee@linaro.org; Mon, 11 May 2020 08:21:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36830)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jY7UC-0003C3-SJ
+	for alex.bennee@linaro.org; Mon, 11 May 2020 08:24:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37116)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jY7R7-0007P1-Ks; Mon, 11 May 2020 08:21:33 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:34408)
+ id 1jY7T0-0001s3-3b; Mon, 11 May 2020 08:23:30 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:37062)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jY7R6-0002k0-TM; Mon, 11 May 2020 08:21:33 -0400
-Received: by mail-wm1-x344.google.com with SMTP id g14so6729522wme.1;
- Mon, 11 May 2020 05:21:31 -0700 (PDT)
+ id 1jY7Sz-0004db-7l; Mon, 11 May 2020 08:23:29 -0400
+Received: by mail-wr1-x443.google.com with SMTP id k1so10705080wrx.4;
+ Mon, 11 May 2020 05:23:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=WE9of2IJLN2TV5g7cx+rhe2s1pQe8LZRT+6pv5bh5k8=;
- b=qGzM980ZCFb5AQQoFEA8MQ32JHEcCgIFy7qb8jmVriTJ854tcVpOkUw0Gp9mgcRJrz
- umtOArEPEl7uvJ8T/LeDb/hmJKl3eW5yDTQdnEYvwx3X/FDLJoSWXWsr8XBX24C+SjKU
- b7qBt82KcsHm2v5FKk6W9RPUZGMnKYZIBlJjcerdI1CETnciF9qIx3Acj8b7rrZ0f17+
- ZYJLbpbMf9sjMcjFRaKpkezpHivwX5v9i6ItjGdtwmXagTe771d1ajaaohdvsud9DfMl
- NQqMMzJ4n0fjerHvv5PkPH1agEGq6Bk1/QSUpdTBYn4NFgEfBgD/diZhmDg0l2y799zP
- BNrg==
+ bh=vAPfxjqThNPJhfJkrO3DuZdVyej2WKzeiTE+Tbap9WY=;
+ b=GrDaCS2gVl0Ais9EHxzmojL44v+n7eSQUYETJRuT6UubKMrwy8qgxdPFB9x9Oq2alg
+ joFamIeIfu3fzJdWdzQblpZaYx9xXyHG+ZxfNPvm7kMi6zcsgCaCdjtrWtnkH1EpTaoJ
+ stk3TS4ZLiZgPus/YjsRVB47Yn37AaUDgCopWIRIvOJvC3cI6IREzf67n6pkPhvbjCz9
+ /U3sYtsUen2zLVQnLQG1yvfSeKe9N+U4Jnx5YYNDJ3ZNWLDszvypzS9VMKLLxzBQcbDQ
+ 5RzcSZil/aAcVV13VrwbLsP1AVp4PIW5CicVEpAAAwaUQGubW4TRGnSv27778jxQ0tzo
+ 2dfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=WE9of2IJLN2TV5g7cx+rhe2s1pQe8LZRT+6pv5bh5k8=;
- b=ItHGx1YTgMrnr+raO7OSbbqwT7yRruQyhcT1Z4OErYa1Q79VaBzDgZvxlJ7blzh6np
- LUivNLFnh91YWVjHj35Rbb9i2mI+qh6oTHaEXM8fjY4WWi8XufHiRTPs4LwBzm/pyTyE
- F+T0rMJAUfKTHhclukudB9Q6yf3C3gpHp2I8M3wwPzn8xBiMdit1MWgXzIqoL9ODBqFA
- OxSAI060sULQiXNh1a2/nhgnA/4Z4hL644rSpqIFLTPCwVY5AyM3KBdvFqOmbBFjSH5h
- uXie3lLkCYXw3JEzIRsZ5f+s2Nd/JslqUfHn4gFw0753wyJIh2GA0jR42TjmELjd9z0C
- /KoQ==
-X-Gm-Message-State: AGi0PuaqedOtTWEXRF980djz/f3CMPX9vhTOUz15fEwCK9pvlnc3bPFB
- dXXl2X7VEIcnp5OHNf+2FJM=
-X-Received: by 2002:a1c:3d08:: with SMTP id k8mr21123055wma.16.1589199689700; 
- Mon, 11 May 2020 05:21:29 -0700 (PDT)
+ bh=vAPfxjqThNPJhfJkrO3DuZdVyej2WKzeiTE+Tbap9WY=;
+ b=sO+ohKxTKIf1+YwzQcXLWXFBJUwt1tyPYlhWCzL+h89TCi+jGBWpRtCH7MJ86YrGo5
+ DDBbD6I7vqwDnC+vpjkgXImRDmx4DhRIhMtWMJ7HUY3bwy88QILQw5uUgbJjr+9jjzIh
+ 6ZN6Q8r1EKrYc4K6MTP8BinUvFOfR7W6Z+fv+22dj/xbZKEvcvBR6ZmaZCqwOq4clFbE
+ wUe7aG5QZP2JHXmQluO5Bsq/feUhpHxtczTMBN7jXks/qyx8xB2mTTz9itT+Gnna3aV4
+ 6XxcuHERmGxTQl8REBmzSocl2GrwBddCwu4RFNUyok0jFGJeTwyzifhueK84zsQbVCC8
+ +NHg==
+X-Gm-Message-State: AGi0PubjAPCrjLmGWkkEP9JxND7YQSjZJSYHyTJvVt37+BZgGko/iSbh
+ QQPPWtdmwTywwlrfFxtBixk=
+X-Received: by 2002:adf:e751:: with SMTP id c17mr19841001wrn.351.1589199807105; 
+ Mon, 11 May 2020 05:23:27 -0700 (PDT)
 Received: from [192.168.1.38] (17.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id q5sm10055936wra.36.2020.05.11.05.21.27
+ by smtp.gmail.com with ESMTPSA id 32sm17695700wrg.19.2020.05.11.05.23.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 11 May 2020 05:21:28 -0700 (PDT)
-Subject: Re: [PATCH 08/11] target/s390x: Restrict system-mode declarations
-To: Cornelia Huck <cohuck@redhat.com>
-References: <20200509130910.26335-1-f4bug@amsat.org>
- <20200509130910.26335-9-f4bug@amsat.org>
- <20200511124804.1a7a43aa.cohuck@redhat.com>
+ Mon, 11 May 2020 05:23:26 -0700 (PDT)
+Subject: Re: [PATCH 0/4] hw/arm/nrf51: Extend tracing
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200504072822.18799-1-f4bug@amsat.org>
+ <CAFEAcA99uztOyAODdb=oGo7XM45dj-uWY6yiMW2LBACQH5=GUA@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <2bb91290-32c5-997d-c689-4d651836c7fc@amsat.org>
-Date: Mon, 11 May 2020 14:21:27 +0200
+Message-ID: <e605fa67-f11f-f327-7e9a-040d49a4d57c@amsat.org>
+Date: Mon, 11 May 2020 14:23:25 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200511124804.1a7a43aa.cohuck@redhat.com>
+In-Reply-To: <CAFEAcA99uztOyAODdb=oGo7XM45dj-uWY6yiMW2LBACQH5=GUA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -112,95 +111,46 @@ X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Marek Vasut <marex@denx.de>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
- Richard Henderson <rth@twiddle.net>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9CMIV3bWndM5
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?Q?Steffen_G=c3=b6rtz?= <contrib@steffen-goertz.de>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9aRv90CMQPhD
 
-On 5/11/20 12:48 PM, Cornelia Huck wrote:
-> On Sat,  9 May 2020 15:09:07 +0200
-> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
-> 
->> As these declarations are restricted to !CONFIG_USER_ONLY in
->> helper.c, only declare them when system-mode emulation is used.
+On 5/11/20 12:45 PM, Peter Maydell wrote:
+> On Mon, 4 May 2020 at 08:28, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
 >>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>   target/s390x/internal.h | 11 ++++++-----
->>   1 file changed, 6 insertions(+), 5 deletions(-)
+>> Few patches while playing with the Zephyr Project.
 >>
->> diff --git a/target/s390x/internal.h b/target/s390x/internal.h
->> index c1678dc6bc..ddc276cdf4 100644
->> --- a/target/s390x/internal.h
->> +++ b/target/s390x/internal.h
->> @@ -236,7 +236,6 @@ int s390_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
->>   
->>   /* cc_helper.c */
->>   const char *cc_name(enum cc_op cc_op);
->> -void load_psw(CPUS390XState *env, uint64_t mask, uint64_t addr);
->>   uint32_t calc_cc(CPUS390XState *env, uint32_t cc_op, uint64_t src, uint64_t dst,
->>                    uint64_t vr);
->>   
->> @@ -303,18 +302,20 @@ void s390_cpu_gdb_init(CPUState *cs);
->>   
->>   /* helper.c */
->>   void s390_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
->> -hwaddr s390_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->> -hwaddr s390_cpu_get_phys_addr_debug(CPUState *cpu, vaddr addr);
->> +void do_restart_interrupt(CPUS390XState *env);
->> +
->> +#ifndef CONFIG_USER_ONLY
->> +void load_psw(CPUS390XState *env, uint64_t mask, uint64_t addr);
+>> - better display of unimplemented peripheral accesses,
+>> - better display of timers use.
+>>
+>> Philippe Mathieu-Daudé (4):
+>>    hw/arm/nrf51: Add NRF51_PERIPHERAL_SIZE definition
+>>    hw/arm/nrf51_soc: Mark some peripherals as unimplemented
+>>    hw/timer/nrf51_timer: Display timer ID in trace events
+>>    hw/timer/nrf51_timer: Add trace event of counter value update
 > 
-> load_psw() is in cc_helper.c (and not in helper.c). Rather add the
-> #ifndef above, even if it is a bit awkward? Otherwise, the wrong
-> comment makes it confusing.
+> Hi; I've put patches 1, 3 and 4 into target-arm.next as they
+> have been reviewed and are independent of the unimp-peripherals
+> patch.
 
-I've been tempted to remove the kinda outdated /* helper.c */ comment...
+Appreciated! I plan to respin the unimp-peripherals patch with better 
+description once I've the PPI peripheral working.
 
 > 
->>   uint64_t get_psw_mask(CPUS390XState *env);
->>   void s390_cpu_recompute_watchpoints(CPUState *cs);
->>   void s390x_tod_timer(void *opaque);
->>   void s390x_cpu_timer(void *opaque);
->> -void do_restart_interrupt(CPUS390XState *env);
->>   void s390_handle_wait(S390CPU *cpu);
->> +hwaddr s390_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->> +hwaddr s390_cpu_get_phys_addr_debug(CPUState *cpu, vaddr addr);
->>   #define S390_STORE_STATUS_DEF_ADDR offsetof(LowCore, floating_pt_save_area)
->>   int s390_store_status(S390CPU *cpu, hwaddr addr, bool store_arch);
->>   int s390_store_adtl_status(S390CPU *cpu, hwaddr addr, hwaddr len);
->> -#ifndef CONFIG_USER_ONLY
->>   LowCore *cpu_map_lowcore(CPUS390XState *env);
->>   void cpu_unmap_lowcore(LowCore *lowcore);
->>   #endif /* CONFIG_USER_ONLY */
-> 
+> thanks
+> -- PMM
 > 

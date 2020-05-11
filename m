@@ -1,127 +1,237 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp495400lfb;
-        Mon, 11 May 2020 12:42:16 -0700 (PDT)
-X-Google-Smtp-Source: APiQypI9g78IFHlj8qs166A169UeCoBMURPd/iLJOBHhI2YwLnHEDZJDQQNPPX7PqIeqIbtE+CIT
-X-Received: by 2002:a17:906:17c5:: with SMTP id u5mr14868794eje.275.1589226136744;
-        Mon, 11 May 2020 12:42:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589226136; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp541518lfb;
+        Mon, 11 May 2020 13:54:18 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJUe86g4FJ+FcQjyO73wDkY3Qi4OQ0TlJPwFvtPPxSEj+zcUn0NcWHxmVkkYUZmXSraSvrx
+X-Received: by 2002:ad4:4dc8:: with SMTP id cw8mr18268660qvb.83.1589230458627;
+        Mon, 11 May 2020 13:54:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589230458; cv=none;
         d=google.com; s=arc-20160816;
-        b=THqsBi751rIMddXgIGfdX4+zn8vNIOiUgPhbPRDLHQysWVgEieVtuuPpbxnCafY0Xn
-         YD55IkhDg6iiRtn00ahs0cxRBU1QTGbp/XU2fk/pTGTFopelVYXS4BG8hAwT2GAMqSlA
-         +U665Nw5M4a0UgtvT1xbSYtdsj4sBtlmRneDegv4Tp/RDR9mFgDjdv1MhoV1ZHbPuC4L
-         9jSsNgpLsF7GyWTHZmf/psC1tcmVCkE5/M0X/7ezT0GrQ8ink5e1/A/sksdkKww/ozIy
-         /olPwtnaGqQTqWfnjCE1yuHwdkmHyCtWPFXKfzGasrAxtp7uw7VmjtJ06/fj8nM38KfK
-         B72g==
+        b=T0N/Ap2GdXT7rhojNSqxsr0Jb2tX3EKZpvMbyAc7mZkHQpevGk88GxgpxGxwZIkqcy
+         RF+kWSRe2qlriX2tw9Dlb6e79az7dPoublFnGGv7138+6eBdATkuF8H4zf18ElWVhOo1
+         9ahRNKnZcPHtb3671r2uWCqToawhdhTIy2GR93oKXGvTDK4by6tEFQXKVm+S+LJkpqPX
+         a8RyNZVAup3lUCxZMTpPLRmaNIBqk49rNUv2w1MvOjEpX0RkD7lH4uXtSG0/AgsYEfIZ
+         siI1qIqjYYXZdR9ODpzRLOh/C/UArM2QdYRaJR67H1pcdAhaEGOodUllUuVcWoFDnPTE
+         0PFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=oOh2Z7/M0Scy2VhE1vh2P6Ofb/aNSQeEkWCfPFiyStQ=;
-        b=KSGMuEy5KehjNnRL2N+35KRC9sqc39iK8rzdch82yqcdNopWlVB4p8i7Oy99bvypjJ
-         Sog+goWWB2JMwBDqjgTteqpdOf4GDRth3Dsn5UzycHsIwa5dXA33u9nDnQ4IuD3yPi8M
-         FzVrXnKzHeV3tlSDSF7B7VrF9hrCFD4yE7ePbBgNvHxmTqWjUyv2zy/s5sD45QPW2M+V
-         NADiScN2YWWc+Y2oMN2MY/EN2/PWGUWIw5bVrAjubGuw9WkTyothSRSXUKSjOSWDF3tr
-         NgpIxlNuXNdplPSByXtDtQUWsRbKU1d9hz9QovqYkSY+pML4qChxmGYeSVyTTX797ic8
-         mARg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=ApfKdlbM1fYSPPea3LqjcLYgAh8qqScfosbbY+F3O8c=;
+        b=GqLwhi5uuh1nCYdKuoauD/wmikP0EqP0zyfEJCkeife3rKi2g673ZPieDZFXcb/1vA
+         rhRYmSJN7OQtTso6TVekCQcX9w3Lg98hE6hLuyW2ZRgfH0I5wFeFIX2+zNDiNT6e1HLF
+         ij3x8ZSvycuTEiChLZFTamqp4nOwmzaRzadElq41eVF2OGvrIffDlVcGyUTSS5I+X0+q
+         2miYzuPxOgM3xuTrvsMrYO3fcEyk3tqADhB8eh0tHF9p3dgflz80/k5z1ORgk763+Z6w
+         6Wh+Ecf/ll9cxmYjAyPiA7bjkx+8MUYEyrBoh4XAZNb0YAoqL5tGM69B7XWaeAJOIAJc
+         LCWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aXHW1Q3D;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id 5si6211771edx.30.2020.05.11.12.42.16;
-        Mon, 11 May 2020 12:42:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aDKB71U5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s19si6631743qvv.46.2020.05.11.13.54.18
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 11 May 2020 13:54:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aXHW1Q3D;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1731216AbgEKTmP (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 11 May 2020 15:42:15 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:40219 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1729453AbgEKTmP (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 11 May 2020 15:42:15 -0400
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aDKB71U5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51270 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jYFRK-0001UA-1L
+	for alex.bennee@linaro.org; Mon, 11 May 2020 16:54:18 -0400
+Received: from [2001:470:142:3::10] (port=35520 helo=eggs.gnu.org)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jYFQg-0001QQ-4T
+ for qemu-arm@nongnu.org; Mon, 11 May 2020 16:53:39 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:22135
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jYFQC-0005N0-O8
+ for qemu-arm@nongnu.org; Mon, 11 May 2020 16:53:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1589226133;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=oOh2Z7/M0Scy2VhE1vh2P6Ofb/aNSQeEkWCfPFiyStQ=;
-        b=aXHW1Q3Dw+2X/BeUerCiXSomWqCHuUYB35xLt/ZWbEHNxPYuGaWeA5OfNiEfa9+2HiqLpy
-        ZpA3mvwK2Zqse4hE12EHapcJ3E8d2+H+BwXdUvTsN3E8ZXTO5woxZXOMYhs+SMel84U75i
-        xPKa0lVirpvOC4jtfnoBFW7vivhwoy0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-140-Ycbk1aNhOuef7Tn96R4PIw-1; Mon, 11 May 2020 15:42:12 -0400
-X-MC-Unique: Ycbk1aNhOuef7Tn96R4PIw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3C63E8014C0;
-        Mon, 11 May 2020 19:42:10 +0000 (UTC)
-Received: from localhost (unknown [10.40.208.7])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 345611000232;
-        Mon, 11 May 2020 19:42:01 +0000 (UTC)
-Date:   Mon, 11 May 2020 21:41:57 +0200
-From:   Igor Mammedov <imammedo@redhat.com>
-To:     gengdongjiu <gengdongjiu@huawei.com>
-Cc:     Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
-        <mst@redhat.com>, <xiaoguangrong.eric@gmail.com>,
-        <peter.maydell@linaro.org>, <shannon.zhaosl@gmail.com>,
-        <pbonzini@redhat.com>, <fam@euphon.net>, <rth@twiddle.net>,
-        <ehabkost@redhat.com>, <mtosatti@redhat.com>,
-        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
-        <qemu-arm@nongnu.org>, <zhengxiang9@huawei.com>,
-        <linuxarm@huawei.com>, <Jonathan.Cameron@huawei.com>
-Subject: Re: [PATCH v26 01/10] acpi: nvdimm: change NVDIMM_UUID_LE to a
- common macro
-Message-ID: <20200511214157.6a64526a@redhat.com>
-In-Reply-To: <777c44a0-b977-a8fe-a3c6-5b217e9093af@huawei.com>
-References: <20200507134205.7559-1-gengdongjiu@huawei.com>
-        <20200507134205.7559-2-gengdongjiu@huawei.com>
-        <4f29e19c-cb37-05e6-0ae3-c019370e090b@redhat.com>
-        <777c44a0-b977-a8fe-a3c6-5b217e9093af@huawei.com>
+ s=mimecast20190719; t=1589230373;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=ApfKdlbM1fYSPPea3LqjcLYgAh8qqScfosbbY+F3O8c=;
+ b=aDKB71U5kDVXXM0UdUi0aMu2UtDHZZbG88eAqXS62499VFCeA7hOMRl/0Ik60FY1MJJMt+
+ ZaPzMAULEO2XVggIMEldATmPx+Fp4f/hiAi0oh4/xzyfm6GVCTqdC11aCGb4X+gM6DsyWy
+ lnz8wiwynr2fVJcGRe6jdPhvsoIuxUc=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-59-vH_fxPTiMYmzrbgW-58Ihw-1; Mon, 11 May 2020 16:52:51 -0400
+X-MC-Unique: vH_fxPTiMYmzrbgW-58Ihw-1
+Received: by mail-wr1-f72.google.com with SMTP id r11so5801707wrx.21
+ for <qemu-arm@nongnu.org>; Mon, 11 May 2020 13:52:51 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ApfKdlbM1fYSPPea3LqjcLYgAh8qqScfosbbY+F3O8c=;
+ b=tRNwlpyTJnc4Jh9H5tvxlU29kGDaCGjivnnmMC6+dYp9CKtGui+FHNj/lmgYe+8fpc
+ iQMC43HgkNlgge0MqAonmb5C4dN6nvj0WhMJKL2puzJuIfKoARTxkS+5DZEOy/bzuWvy
+ c0OpDdgRrSauShZnSOPQVwwQQ4eHPT7kRtfdIsWB0srCtYO0ZpCq80YxYeyLJw5oZ5wE
+ uDSIknuDZ4anujf2sM2eU/NUB+dLaOksGuspP9rLtIy2jwr+f9LxYYyq3tt6H5sjvNi1
+ zzizfhO3RWsnMjc/eW3TuViwIEpBF39plfaAsIgJkMqd45jD7o2NVhL/bIwA+Gwsd3Gm
+ SwKw==
+X-Gm-Message-State: AGi0PuZhNfWFo0BSvCez9M2p043y2/gLrBfob8rWXE205S/dRKwDOXmr
+ VHMZlXRJIHzg/8JqMn/j6yikyw47ttff+83jG+B5a66drMQcrN1K+YFTgQpL4WL1T9VaaRiQY/I
+ SHafWuKx4HxNT
+X-Received: by 2002:a05:600c:2284:: with SMTP id
+ 4mr31952888wmf.97.1589230370222; 
+ Mon, 11 May 2020 13:52:50 -0700 (PDT)
+X-Received: by 2002:a05:600c:2284:: with SMTP id
+ 4mr31952847wmf.97.1589230369854; 
+ Mon, 11 May 2020 13:52:49 -0700 (PDT)
+Received: from localhost.localdomain (17.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.17])
+ by smtp.gmail.com with ESMTPSA id k5sm18146092wrx.16.2020.05.11.13.52.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 May 2020 13:52:49 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] hw: Use QEMU_IS_ALIGNED() on parallel flash block size
+Date: Mon, 11 May 2020 22:52:46 +0200
+Message-Id: <20200511205246.24621-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 3b5E7cycXj+i
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/11 02:55:57
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ T_DKIM_INVALID=0.01, T_SPF_HELO_TEMPERROR=0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, qemu-riscv@nongnu.org,
+ qemu-block@nongnu.org, Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Eduardo Habkost <ehabkost@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ qemu-arm@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Leif Lindholm <leif@nuviainc.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FVViJOcy3Kv1
 
-On Mon, 11 May 2020 22:05:28 +0800
-gengdongjiu <gengdongjiu@huawei.com> wrote:
+Use the QEMU_IS_ALIGNED() macro to verify the flash block size
+is properly aligned. It is quicker to process when reviewing.
 
-> >> +=C2=A0=C2=A0=C2=A0 (node3), (node4), (node5) }
-> >> +
-> >> =C2=A0 #define UUID_FMT "%02hhx%02hhx%02hhx%02hhx-" \
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "%02hhx%02hhx-%02hhx%02hhx-" \
-> >> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "%02hhx%02hhx-" \
-> >> diff --git a/slirp b/slirp
-> >> index 2faae0f..55ab21c 160000
-> >> --- a/slirp
-> >> +++ b/slirp
-> >> @@ -1 +1 @@
-> >> -Subproject commit 2faae0f778f818fadc873308f983289df697eb93
-> >> +Subproject commit 55ab21c9a36852915b81f1b41ebaf3b6509dd8ba =20
-> >=20
-> > The SLiRP submodule change is certainly unrelated. =20
->=20
-> Thanks Philippe's review and comments. I submitted another patchset "[PAT=
-CH RESEND v26 00/10] Add ARMv8 RAS virtualization support in QEMU" to fix i=
-t, please review that patchset.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ hw/arm/sbsa-ref.c       | 2 +-
+ hw/arm/virt.c           | 2 +-
+ hw/block/pflash_cfi01.c | 2 +-
+ hw/block/pflash_cfi02.c | 2 +-
+ hw/i386/pc_sysfw.c      | 2 +-
+ hw/riscv/virt.c         | 2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
 
-for future, adding RESEND doesn't make sence here. If you change patches th=
-en just bump version.
->=20
-> >=20
-> >=20
-> > .
-> >  =20
->=20
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 8409ba853d..b379e4a76a 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -241,7 +241,7 @@ static void sbsa_flash_map1(PFlashCFI01 *flash,
+ {
+     DeviceState *dev = DEVICE(flash);
+ 
+-    assert(size % SBSA_FLASH_SECTOR_SIZE == 0);
++    assert(QEMU_IS_ALIGNED(size, SBSA_FLASH_SECTOR_SIZE));
+     assert(size / SBSA_FLASH_SECTOR_SIZE <= UINT32_MAX);
+     qdev_prop_set_uint32(dev, "num-blocks", size / SBSA_FLASH_SECTOR_SIZE);
+     qdev_init_nofail(dev);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 634db0cfe9..0a99fddb3d 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -978,7 +978,7 @@ static void virt_flash_map1(PFlashCFI01 *flash,
+ {
+     DeviceState *dev = DEVICE(flash);
+ 
+-    assert(size % VIRT_FLASH_SECTOR_SIZE == 0);
++    assert(QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE));
+     assert(size / VIRT_FLASH_SECTOR_SIZE <= UINT32_MAX);
+     qdev_prop_set_uint32(dev, "num-blocks", size / VIRT_FLASH_SECTOR_SIZE);
+     qdev_init_nofail(dev);
+diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
+index f586bac269..11922c0f96 100644
+--- a/hw/block/pflash_cfi01.c
++++ b/hw/block/pflash_cfi01.c
+@@ -964,7 +964,7 @@ PFlashCFI01 *pflash_cfi01_register(hwaddr base,
+     if (blk) {
+         qdev_prop_set_drive(dev, "drive", blk, &error_abort);
+     }
+-    assert(size % sector_len == 0);
++    assert(QEMU_IS_ALIGNED(size, sector_len));
+     qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
+     qdev_prop_set_uint64(dev, "sector-length", sector_len);
+     qdev_prop_set_uint8(dev, "width", bank_width);
+diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
+index c6b6f2d082..895f7daee3 100644
+--- a/hw/block/pflash_cfi02.c
++++ b/hw/block/pflash_cfi02.c
+@@ -1003,7 +1003,7 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
+     if (blk) {
+         qdev_prop_set_drive(dev, "drive", blk, &error_abort);
+     }
+-    assert(size % sector_len == 0);
++    assert(QEMU_IS_ALIGNED(size, sector_len));
+     qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
+     qdev_prop_set_uint32(dev, "sector-length", sector_len);
+     qdev_prop_set_uint8(dev, "width", width);
+diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
+index f5f3f466b0..fad41f0e73 100644
+--- a/hw/i386/pc_sysfw.c
++++ b/hw/i386/pc_sysfw.c
+@@ -168,7 +168,7 @@ static void pc_system_flash_map(PCMachineState *pcms,
+                          blk_name(blk), strerror(-size));
+             exit(1);
+         }
+-        if (size == 0 || size % FLASH_SECTOR_SIZE != 0) {
++        if (size == 0 || !QEMU_IS_ALIGNED(size, FLASH_SECTOR_SIZE)) {
+             error_report("system firmware block device %s has invalid size "
+                          "%" PRId64,
+                          blk_name(blk), size);
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index daae3ebdbb..71481d59c2 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -112,7 +112,7 @@ static void virt_flash_map1(PFlashCFI01 *flash,
+ {
+     DeviceState *dev = DEVICE(flash);
+ 
+-    assert(size % VIRT_FLASH_SECTOR_SIZE == 0);
++    assert(QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE));
+     assert(size / VIRT_FLASH_SECTOR_SIZE <= UINT32_MAX);
+     qdev_prop_set_uint32(dev, "num-blocks", size / VIRT_FLASH_SECTOR_SIZE);
+     qdev_init_nofail(dev);
+-- 
+2.21.3
+

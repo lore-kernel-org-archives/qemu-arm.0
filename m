@@ -1,157 +1,239 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp36772lfb;
-        Mon, 11 May 2020 02:47:53 -0700 (PDT)
-X-Received: by 2002:ac2:4da1:: with SMTP id h1mr10202669lfe.152.1589190473400;
-        Mon, 11 May 2020 02:47:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589190473; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp38918lfb;
+        Mon, 11 May 2020 02:51:22 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLYypkFzf+qTeV7CQ3ekEt6dv2ahWhokGEW3byNPo0hmjgVt9VAk84GqwmoZXfMXwccYgQ5
+X-Received: by 2002:a37:84c5:: with SMTP id g188mr5447514qkd.344.1589190682108;
+        Mon, 11 May 2020 02:51:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589190682; cv=none;
         d=google.com; s=arc-20160816;
-        b=jrRfmxR7UqZ/RwQvpGb4xOhVc9KtziHYuo4kYvJqqGMHMJXozX0Xb8O5Vn0CpyIYWE
-         ZQDKtHyjMzrWGISmoYmNOS8S9Ep1646j78yOajv63YMYyj6rrhuE/gXg0txIuyDJ91Av
-         2YNIjHvsQ1+BQeFmdkXXNAB14qL0MZl8leXoEPRo0HGxabhnuIZvjugaJulstj7NPzwY
-         rHWOsbka8lq/nXID4snQckOfTDVuflfzJISwG/X3Z0kqEDSzUO+YOflbGZARQ+JiH7hb
-         ARFoh+8a7odYx6WZ+yMxoQQDJ8Q5XfF1eFKjkWh1EbyciuXrATk89dWP9xSEsr3mijSZ
-         BTFQ==
+        b=tyt3LqiRXP5VfMk8bH5QuCL68w7OIE1LZe2tDd6ucjqfPuX6aF/wRCC5GPFkNbG/xd
+         93Re+OnTI86bSQTTkqpScz4fFkQpnURAAiha0CFMyi+TB0ahgvB8dbWdNzOYzIFGPgR+
+         2brsQCDufl/EQOldV8EOO12XVLUIIMdC4QJzMhn990AYaBNRh+F+WhpAKTEpGtuZS0Nr
+         3SixnuloFMacfg2pELhi2OegulE9qdEFNmlqGIFygtBQZtofXNHpz51GvfH2gbtCbCg/
+         o6QUD41rjI7xR5OaTjATKws5R7bUw9+Hrh+v2ARDdxv4gXMFRwhG/sAsaufZCiPo8kpZ
+         snBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=LLpJhfY06EKF+oBDQZd0EOAQxJmdqFBtBjBb9Q83wyQ=;
-        b=VZLPd6ZAmerW+uLS5FBKxxRvy4b5WuTK9aPweZhfVgnT3pyVMluqkVVU5YVNm9WSSP
-         KJslaBnbP+T7jSh18yDWW1F9IL3o9JYrJkEiH4BKbnmcEq0tceH1l68MCUko/a8n/AM4
-         rjoHrESSdxiTQQIfPVUSDu9BGYJdM/3q3higBokaWpjclM7De06jR8O8BEkZAMXex0AZ
-         G7e6Dhb41B5Ti7FfHuZYHHw8+5U11PGvZHbnIBERQDqmvrHo8MhRbxewJTyDJ81wRz7f
-         3abdOtJ00q+HiKZT8d+DBAReat/JZpS9+L61lMtMLnPqJWUaTWOzsnBIgH6NCIHnfjE5
-         s1kQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=5nn4+ebUEGjP12SLduyrxAK7er7p9DMP21wNjR3eT3M=;
+        b=pZycmZKsqKlaOCsQzUM8a0mOr1TXodbcQODTDPfnmCzDOiwwBSe9YOKDTyhrSRiK/Z
+         tv62zTeERgJ+cYHXd/hCYOgf+ki4dYQbTpSQfYIZ0SlPU9Sp0gRQxMU6MyJmLnQuTrkG
+         W/Mz6f2lmpmDFvQiD5Vy/fMeBCA1/3Iz9e0exrzG5vZjLPEujSnBFEA6LMk6U+pw+5Md
+         94+7EutjR5nTSGqVUaPkwEfvQczodsPwNeHdX5jvFgq0kU8lPEnt1h5gliguboGgq3ki
+         RUNieLxCPoKU8AFj4TOY6ymN9oUFGlu0Xo8h61ugjwh2TBzG9z4wq7fMdyCHby+l1Vzx
+         8ACw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dUMWPGtF;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id x25sor5391721ljh.12.2020.05.11.02.47.53
-        (Google Transport Security);
-        Mon, 11 May 2020 02:47:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UPd8FYj1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y40si665428qvf.197.2020.05.11.02.51.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 11 May 2020 02:51:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dUMWPGtF;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to
-         :user-agent;
-        bh=LLpJhfY06EKF+oBDQZd0EOAQxJmdqFBtBjBb9Q83wyQ=;
-        b=dUMWPGtFKW6rfx1FUyj6/UlWhOOJJ8G4+tG7JANPNzAaQhFgWx/rOvTZeiNafCTOcN
-         Iazj2I9S83+BU11LF6gkqmvKmlCZeX9TcXBymElrfGdsW/px7YFloQ0scppSTRkCR2Lr
-         TFZT8jq/Gi1hiNimejQ7nJ5qG277mVE0w5p+WfAxuD2KetciOvfNwZMau3pqU7FvqoSG
-         9m7NKy4gJbZWd6r9mAmdjByfP/hjL0NvXiZnkEQqxcrWzZQb7k3N4CdoYLg2GlP9lVR5
-         OKVfA+kgyIpiubCPlqTP183NUYpU4btkqwNnJ3pwTJ+NcX2LorVy4tHvlr2tzmM4wwJw
-         +ZHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to:user-agent;
-        bh=LLpJhfY06EKF+oBDQZd0EOAQxJmdqFBtBjBb9Q83wyQ=;
-        b=LAzIHWoD8XNhzr8CJ2jLJDzdyHGaHkgg7tlWkJ6pCtr3iUIUxDkOGI5LtM6IyyXpd7
-         ggmqGBCh2IqXJb37Z5/RviNJ2lq3htTSbe0gjX62A6vovVc+T6pMfJ9SREaMLaIlAba3
-         f1MDKc1aqNA7RSkYs8CSC0HJKeTIyDR1N5DfgiZM/rcJgNlnHYv3Cark2Wid+BldHuI5
-         P6XCmcZrIMmQES0Vayw4LKwk3MTkSVciL2ef1UKkbcNQpPLx5p7UjcP7BEh6+vPoTShj
-         PWuzds0d13wgkdtD5kacleA9iF0cZEX6TnwAYB6x2XO17qVZ9BLWmFh7ayeeI4EUEPgF
-         496A==
-X-Gm-Message-State: AOAM5312VWb779oKTQzjcmEgMGJk/Kz1P8B6h4TnGV8G7vI1OSm9abm+
-	PHXfN528YlNEYZNJH1cb/Go=
-X-Google-Smtp-Source: ABdhPJwLcg+uXF0jvSmlx/FD+/OzvbjV1vXuoRWwrq5i5XkGfM+aIGwidcM3ywJk6CJLLncUZJjS3g==
-X-Received: by 2002:a2e:a169:: with SMTP id u9mr9793594ljl.144.1589190473033;
-        Mon, 11 May 2020 02:47:53 -0700 (PDT)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
-        by smtp.gmail.com with ESMTPSA id w9sm9420258ljj.88.2020.05.11.02.47.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 11 May 2020 02:47:52 -0700 (PDT)
-Date: Mon, 11 May 2020 11:47:36 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Stafford Horne <shorne@gmail.com>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Roman Bolshakov <r.bolshakov@yadro.com>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
-	Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
-	Marek Vasut <marex@denx.de>,
-	Alistair Francis <Alistair.Francis@wdc.com>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
-	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Chris Wulff <crwulff@gmail.com>,
-	Richard Henderson <rth@twiddle.net>,
-	David Gibson <david@gibson.dropbear.id.au>,
-	David Hildenbrand <david@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH 04/11] sysemu/hvf: Only declare hvf_allowed when HVF is
- available
-Message-ID: <20200511094736.GR5519@toto>
-References: <20200509130910.26335-1-f4bug@amsat.org>
- <20200509130910.26335-5-f4bug@amsat.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UPd8FYj1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37360 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jY55l-0005oQ-Dh
+	for alex.bennee@linaro.org; Mon, 11 May 2020 05:51:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42894)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1jY55c-0005ll-5q
+ for qemu-arm@nongnu.org; Mon, 11 May 2020 05:51:12 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:33898
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1jY55a-0004eU-Ej
+ for qemu-arm@nongnu.org; Mon, 11 May 2020 05:51:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1589190668;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=5nn4+ebUEGjP12SLduyrxAK7er7p9DMP21wNjR3eT3M=;
+ b=UPd8FYj1/UpDxcaZrZ8+k3QOHoZBrzc122p+mF/Fvatg/qZHmJcoPG5H4c/Jtua5DdLY80
+ 3tQRCEWPKyoz/6UjKkeYKqejsL3TorxLmOZQJEpmtxPPchH8j+N5Wm4MrFo0NnODPH2ANP
+ oh4A2HTdeae79GQZNrFpzWrgBbZElDk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-362--CLs1YARNcS8YLgkDqlpXQ-1; Mon, 11 May 2020 05:50:34 -0400
+X-MC-Unique: -CLs1YARNcS8YLgkDqlpXQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A69441054F8F;
+ Mon, 11 May 2020 09:50:32 +0000 (UTC)
+Received: from localhost (ovpn-114-247.ams2.redhat.com [10.36.114.247])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2701D9CB9;
+ Mon, 11 May 2020 09:50:31 +0000 (UTC)
+Date: Mon, 11 May 2020 10:50:30 +0100
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Subject: Re: [PATCH v2 4/4] exec: Rename qemu_ram_writeback() as
+ qemu_ram_msync()
+Message-ID: <20200511095030.GA162792@stefanha-x1.localdomain>
+References: <20200511081719.31641-1-philmd@redhat.com>
+ <20200511081719.31641-5-philmd@redhat.com>
 MIME-Version: 1.0
+In-Reply-To: <20200511081719.31641-5-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="rwEMma7ioTxnRzrJ"
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/11 03:10:56
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Beata Michalska <beata.michalska@linaro.org>, qemu-block@nongnu.org,
+ Juan Quintela <quintela@redhat.com>, qemu-devel@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
+ Keith Busch <kbusch@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BE+TjTVKWlDV
+
+--rwEMma7ioTxnRzrJ
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200509130910.26335-5-f4bug@amsat.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-TUID: Soh+dy4sMugD
+Content-Transfer-Encoding: quoted-printable
 
-On Sat, May 09, 2020 at 03:09:03PM +0200, Philippe Mathieu-Daudé wrote:
-> When HVF is not available, the tcg_allowed variable does not exist.
+On Mon, May 11, 2020 at 10:17:19AM +0200, Philippe Mathieu-Daud=E9 wrote:
+> Rename qemu_ram_writeback() as qemu_ram_msync() to better
+> match what it does.
 
-Typo in commit message tcg_allowed -> hvf_allowed.
+Based on Juan's comment in the other email thread I think this commit
+description could be expanded. Let's explain the rationale for this
+change:
 
-With that fixed:
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+  qemu_ram_writeback() and memory_region_do_writeback() have similar names
+  but perform different functions. qemu_ram_writeback() is concerned with
+  syncing changes to the underlying memory device (NVDIMM or file-backed
+  RAM). memory_region_do_writeback() is concerned with dirty memory
+  logging.
 
+  Rename qemu_ram_writeback() to prevent confusion with
+  memory_region_do_writeback().
 
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>=20
+> Suggested-by: Stefan Hajnoczi <stefanha@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 > ---
->  include/sysemu/hvf.h | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/include/sysemu/hvf.h b/include/sysemu/hvf.h
-> index d211e808e9..fe95743124 100644
-> --- a/include/sysemu/hvf.h
-> +++ b/include/sysemu/hvf.h
-> @@ -18,7 +18,6 @@
->  #include "exec/memory.h"
->  #include "sysemu/accel.h"
->  
-> -extern bool hvf_allowed;
->  #ifdef CONFIG_HVF
->  #include <Hypervisor/hv.h>
->  #include <Hypervisor/hv_vmx.h>
-> @@ -26,11 +25,12 @@ extern bool hvf_allowed;
->  #include "target/i386/cpu.h"
->  uint32_t hvf_get_supported_cpuid(uint32_t func, uint32_t idx,
->                                   int reg);
-> +extern bool hvf_allowed;
->  #define hvf_enabled() (hvf_allowed)
-> -#else
-> +#else /* !CONFIG_HVF */
->  #define hvf_enabled() 0
->  #define hvf_get_supported_cpuid(func, idx, reg) 0
-> -#endif
-> +#endif /* !CONFIG_HVF */
->  
->  /* hvf_slot flags */
->  #define HVF_SLOT_LOG (1 << 0)
-> -- 
+>  include/exec/ram_addr.h | 4 ++--
+>  exec.c                  | 2 +-
+>  memory.c                | 3 +--
+>  3 files changed, 4 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
+> index a94809f89b..84817e19fa 100644
+> --- a/include/exec/ram_addr.h
+> +++ b/include/exec/ram_addr.h
+> @@ -136,12 +136,12 @@ void qemu_ram_free(RAMBlock *block);
+> =20
+>  int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp);
+> =20
+> -void qemu_ram_writeback(RAMBlock *block, ram_addr_t start, ram_addr_t le=
+ngth);
+> +void qemu_ram_msync(RAMBlock *block, ram_addr_t start, ram_addr_t length=
+);
+> =20
+>  /* Clear whole block of mem */
+>  static inline void qemu_ram_block_writeback(RAMBlock *block)
+>  {
+> -    qemu_ram_writeback(block, 0, block->used_length);
+> +    qemu_ram_msync(block, 0, block->used_length);
+>  }
+> =20
+>  #define DIRTY_CLIENTS_ALL     ((1 << DIRTY_MEMORY_NUM) - 1)
+> diff --git a/exec.c b/exec.c
+> index 2874bb5088..f5a8cdf370 100644
+> --- a/exec.c
+> +++ b/exec.c
+> @@ -2127,7 +2127,7 @@ int qemu_ram_resize(RAMBlock *block, ram_addr_t new=
+size, Error **errp)
+>   * Otherwise no-op.
+>   * @Note: this is supposed to be a synchronous op.
+>   */
+> -void qemu_ram_writeback(RAMBlock *block, ram_addr_t start, ram_addr_t le=
+ngth)
+> +void qemu_ram_msync(RAMBlock *block, ram_addr_t start, ram_addr_t length=
+)
+>  {
+>      /* The requested range should fit in within the block range */
+>      g_assert((start + length) <=3D block->used_length);
+> diff --git a/memory.c b/memory.c
+> index 73534b26f4..5bfa1429df 100644
+> --- a/memory.c
+> +++ b/memory.c
+> @@ -2197,7 +2197,6 @@ void memory_region_ram_resize(MemoryRegion *mr, ram=
+_addr_t newsize, Error **errp
+>      qemu_ram_resize(mr->ram_block, newsize, errp);
+>  }
+> =20
+> -
+>  void memory_region_sync(MemoryRegion *mr, hwaddr addr, hwaddr size)
+>  {
+>      /*
+> @@ -2205,7 +2204,7 @@ void memory_region_sync(MemoryRegion *mr, hwaddr ad=
+dr, hwaddr size)
+>       * different types of memory regions
+>       */
+>      if (mr->ram_block) {
+> -        qemu_ram_writeback(mr->ram_block, addr, size);
+> +        qemu_ram_msync(mr->ram_block, addr, size);
+>      }
+>  }
+> =20
+> --=20
 > 2.21.3
-> 
+>=20
+
+--rwEMma7ioTxnRzrJ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl65H+QACgkQnKSrs4Gr
+c8jv2Qf9FdFxat/l9/fF9kJ7noztTBcqr4GVwlKgemqW7WpSryJVfQVw0BiZmcx9
+OzB6ETcwue2jKQYa61llIrRsb6Fb96IozHAKAfVsjeP2EZlf00thrg8NfDRPtF7h
+freqnBSPC7ufszU/sVJ5Vb/AzbiWaajKdJ9UYU8h9s0Pq+8dvx+g0E1K8jmJUKZt
+bucl0HVRn2vgn6QZC3UzNMgErx2qaf4opKY7aTdSfQQEr2aRWf38CoDCTK+6k5Lb
+2xTTxCmDip+Doav33NcXMa1/3iBaPIEMQ1eGeRn1auweApyaL1ZXaPT4rvfMyH5b
+MkgPygxBzdu6fGMFvvBWyYLkn3gYTg==
+=aXLF
+-----END PGP SIGNATURE-----
+
+--rwEMma7ioTxnRzrJ--
+

@@ -1,64 +1,64 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp60649lfb;
-        Mon, 11 May 2020 03:20:42 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJI8ZN1Ajw/t4OuGX/QrPVkyh6TMhAS6nsfJMmF8lHkRk9YKh3VEVb7bGXsCBp/BUJtJnjF
-X-Received: by 2002:a05:6402:759:: with SMTP id p25mr13115500edy.102.1589192442512;
-        Mon, 11 May 2020 03:20:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589192442; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp62248lfb;
+        Mon, 11 May 2020 03:23:10 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKOkHgSNYh8BN+vBJvdocEm0I2KZ9RLttWpJ2TUCrJaAC3qVjOrD2KRloS2TBWB9k8eL0af
+X-Received: by 2002:a25:cc86:: with SMTP id l128mr25666912ybf.21.1589192590213;
+        Mon, 11 May 2020 03:23:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589192590; cv=none;
         d=google.com; s=arc-20160816;
-        b=PVcifpJFDFctTiPfGgrVR89k84IvknjLznBkzN3/8qQh6kdPwJVu7IrxAWPiAm1ANt
-         CzO4qVdiHlO+h18BkaB5/Ppz8HAB2tu9IV8VFVukQFPJZici60deYtZTcBdkm3AU08s+
-         0jctUXKOCIdAWUZ2KkFTeIJlW7jB+Bs95VEtJO5B6TV53Gema9+otxkNPzB4jxLXk3l8
-         F3gCDc1ZJnNWFzVzJD/Z/LbwndanSWKw26/XpeoqCb16HtmwYf+ZTGQs4Jcw7hvE1H3c
-         x2WdyMKyfjXta+BSNaU6whG2UYBJKjbShka25J7wYWp9Ud73LEFQfJaW1mibesFO/cTu
-         ifiQ==
+        b=e6CZxG0/AWFhz80N0LzQOYlTd/XVP9ddjjNFbXAy/GaeY7BEWNBhSsCPTb+4XSwNj8
+         z/0qAP+hT22nnn923Y5aiRnloKoFAE8QF7UUUZy59gZH4zx+2ezw20X2UEvs5dQEGTvM
+         aj04cpfeQzEVVmkzlOX6AYyEzRbfPlhnix7mTqN3LW9/HQNO/SPYFFF+QXK8sdY7IbZd
+         BRxCl+XD0aVLuxs0CzxR53OZlqF4iX+uNY8n7MFBdTcBHcmw6r+yBo6gLN8zg4yoRwMN
+         U9BAdLMmx+6o9kQFWrIrjiohjHtwewlBRcDOwtD4OrfCF5uBtfurlwlxn/4QEPNfQkKf
+         RdTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:organization:references
          :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=6K7Jb9KxhJ0Z3M7+jg0dXDkWcgyqfOLfhefCZZo0kM4=;
-        b=qQgAhOuf+nTsXUQJZ2mvANIO6Gl+fCX6/WlmSvqVH/glRMZ3xVnfomJ9AhzyUe+/rq
-         5LNaN0RUQvymefBtn775y4qeS27s9QkxZaRLtk+WBQxo+h8DUFK6CGsUmJ2P1mhExrw5
-         A/Fzg8MyXN5cXTUNoHDFRd7Jj3GOYYDYQdOmgNNWo2Ox4vnWbFpqREn5iN0KcVQGfv7N
-         vfyDuyxsyc/pAEuss+tgOOpwoOUPzXxRm5KzSELpYp5J7bqRZUXsTX2NjG4koDaYoes6
-         l9GBv/JenkLWxVbd1qxcBb4uv0dcJJ8SXRszYNY7Lff2LtYzOQ/dQy/aJN8S3zuarZSQ
-         Ku2g==
+        bh=fjwqSxqwfRj484Q2fFsCL+k+aOfgW88Vo9dsKivk/WM=;
+        b=blGhoiJP/sop3Q1DcBldRPs7PimSAekRPM44xnf5sUsaNXlIuYo/dNYZ17K5iPn3dR
+         E0DHqCtY/QbI3QqL4NLokXaMaGJ7kZzizC9+wHaDC9clrI7qwDRtN+UDgYkSL4VJSgma
+         rWDbo2oOhr3cr3ucPKTAUBVsX+RN0MepX1L7F8rzyr8RhEpDghEJnVPTY5XM7nQjKBF+
+         wFM8EJI+glpI2JDT5cRarhHPgDIvi05PbNUn3HgtphLTQqxhKs3uO9gUp0P67kWyPnC7
+         eLZKe4id90JqLyMoxYDoKZ5Fptagt9Ir0OPQc1RYR4PctlwWfIghPsjArmDVtf4Gz+/G
+         xnGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JD1jxiiz;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a84U+NTY;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id s26si5270506ejv.367.2020.05.11.03.20.42
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
+        by mx.google.com with ESMTPS id c205si10311554yba.381.2020.05.11.03.23.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 May 2020 03:20:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        Mon, 11 May 2020 03:23:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JD1jxiiz;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a84U+NTY;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1589192441;
+	s=mimecast20190719; t=1589192589;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=6K7Jb9KxhJ0Z3M7+jg0dXDkWcgyqfOLfhefCZZo0kM4=;
-	b=JD1jxiiz2f2/YE1d2P4qkbZUkH3QsBRhbG63HCQGBdyak3tDFRWus64vDlkE3fiYPSyCSF
-	0HztYeixura4nePe+hhREm0hOdxsbwfQPehn5XEYWn6F4gJoFDVK0/gsHe1qdEJ12CdcnL
-	sLr0j6vSWZeXozXWOFJU33bdVCwNnko=
+	bh=fjwqSxqwfRj484Q2fFsCL+k+aOfgW88Vo9dsKivk/WM=;
+	b=a84U+NTYoyx9rxRc7q3R3V52xunouhQrN4U1hzC3DFrw0hpJmZqdmihV9PWW+JRCjkf/d7
+	xsgv6vKLrfbLAXI/1Hda7bueFJpTTvdoQY4ALDxyRPPij5a0YYMbPjNdSy5vmgLLKoc8QV
+	Pl8TjdwaGHjIIh6+2Bnsn4i/bKSicG8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-85-s32iGES-OYWOk8FgG4pPwA-1; Mon, 11 May 2020 06:20:38 -0400
-X-MC-Unique: s32iGES-OYWOk8FgG4pPwA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+ us-mta-218-Vbgy9PrXPw--Kja-ugNE5A-1; Mon, 11 May 2020 06:23:06 -0400
+X-MC-Unique: Vbgy9PrXPw--Kja-ugNE5A-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1407CEC1B3;
-	Mon, 11 May 2020 10:20:35 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D13BA107ACF4;
+	Mon, 11 May 2020 10:23:02 +0000 (UTC)
 Received: from gondolin (ovpn-112-254.ams2.redhat.com [10.36.112.254])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A7AD85D9DA;
-	Mon, 11 May 2020 10:20:26 +0000 (UTC)
-Date: Mon, 11 May 2020 12:20:24 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 567CD6C76B;
+	Mon, 11 May 2020 10:22:54 +0000 (UTC)
+Date: Mon, 11 May 2020 12:22:51 +0200
 From: Cornelia Huck <cohuck@redhat.com>
 To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
 Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>, Mark
@@ -79,29 +79,32 @@ Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>, Mark
  <rth@twiddle.net>, David Gibson <david@gibson.dropbear.id.au>, David
  Hildenbrand <david@redhat.com>, Alex =?UTF-8?B?QmVubsOpZQ==?=
  <alex.bennee@linaro.org>
-Subject: Re: [PATCH 03/11] sysemu/tcg: Only declare tcg_allowed when TCG is
+Subject: Re: [PATCH 04/11] sysemu/hvf: Only declare hvf_allowed when HVF is
  available
-Message-ID: <20200511122024.1f684a63.cohuck@redhat.com>
-In-Reply-To: <20200509130910.26335-4-f4bug@amsat.org>
+Message-ID: <20200511122251.6b2975fb.cohuck@redhat.com>
+In-Reply-To: <20200509130910.26335-5-f4bug@amsat.org>
 References: <20200509130910.26335-1-f4bug@amsat.org>
-	<20200509130910.26335-4-f4bug@amsat.org>
+	<20200509130910.26335-5-f4bug@amsat.org>
 Organization: Red Hat GmbH
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: CSrjblJjGRQE
+X-TUID: CuN5u8nwYXby
 
-On Sat,  9 May 2020 15:09:02 +0200
+On Sat,  9 May 2020 15:09:03 +0200
 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
 
-> When TCG is not available, the tcg_allowed variable does not exist.
+> When HVF is not available, the tcg_allowed variable does not exist.
+
+s/tcg_allowed/hvf_allowed/
+
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  include/sysemu/tcg.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  include/sysemu/hvf.h | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>

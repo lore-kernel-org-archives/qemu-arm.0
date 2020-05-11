@@ -1,159 +1,145 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp39749lfb;
-        Mon, 11 May 2020 02:52:36 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIrAdqx+SE9PHI8HfDkEbSKPEcrgG0voB6SzXJZScGZxOi2aZJi0iQPYBa46ggcd+uhnhLG
-X-Received: by 2002:a05:6214:8e9:: with SMTP id dr9mr15152496qvb.84.1589190756130;
-        Mon, 11 May 2020 02:52:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589190756; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp41022lfb;
+        Mon, 11 May 2020 02:54:31 -0700 (PDT)
+X-Received: by 2002:a2e:6e13:: with SMTP id j19mr9855838ljc.292.1589190871495;
+        Mon, 11 May 2020 02:54:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589190871; cv=none;
         d=google.com; s=arc-20160816;
-        b=c1yUP+7LAxm65lSTtqpcmeyYxFRFW59M0Q8QxNoOPRT+y2HNt9NJgp56993yGTrFTb
-         ay3rcqdR9UFklnCFnV5r1FDNNbaV3W+1/GL8uzNTicMQMlPK/byJ0lTSmlqllNdK9fEL
-         nxsUZNJjDurCzGDjvSn1KhXhPQ/urfc46h4sZX4/PnvwpXa5np5qLHFFGaz5eWNwMsE6
-         fohwO07VgLt8y0TU3qWTZm9Ahd5zWkPe7XYryjpyg4WdfzyiZIWlFpnP4bFaNwn3bucc
-         xTafucZOWZEVKy4t2Vf3Q7XdlJX6nNmW7HZ1A6E1532Fb2sL2BcOZWUwC9expsxsOJ78
-         V/3A==
+        b=W/fSju91oMIGN2xwhNSRRP6VsqVLPDjGyITNSgKh2lEjx8kFYOGhO1HwsgFmPyRTyz
+         T24KmJbkjkDzpv3TAOyj0EFJdRBcXpmRWU5qYf0Yqvr3L9PV910tB5oWfmKoupmdVr0R
+         S73ikmnnHOXoBL4no2fRqjtNUZGxiH6inlJtY50XqQQ9VFGYiuYTB5S4bmnq30N5+XPs
+         vdEkH/WmENlH2MuNkFiW+siyyWsA/Yq6Vsn+WLI0h9C9LSZ3rVHFk4eFl7F2xAmhgMWM
+         uSCWj3YKxzLaTV1Dk7qDCwv82yWSTqyPguhoG2VOz72Ew2y8kn/ojEXMDsnWUtd8WDSG
+         VNiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=fffYlOjj/vQkdA3oSh5IEdQf1eF2J+wkUp4CVQxNbFw=;
-        b=OzyXCmn3vF89n9d0t9ZG7W6OexxePS+NRqtYdiLkqbitLflwZ3I1Xdde1hUtt7t5+s
-         Yenpg0iF0n5svNP8YhZPQM3ky4wm3CBtds3pFP+9IGjWigRcYzFYUWiSeoWJqgH6gB4x
-         el0RFSBR/icxhsD6BsS6vn/AnfypBlZmf3mRG8tIgGEhkquYAWPiN0J2mmfFVv5J9Vgs
-         IZOrebzPlpq65GpC8sb8L2vGC+2Z+chrlwXtynlj2d22X81mSgL1gtW8WiwCZxH6Td3v
-         PUQh/KVieEikE6vgak9YF7fw9uE9idqEeznjLYVEn7jlOrPOxfV47Yjdst4lzQHSknXF
-         rcgw==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=tiyyfkVX+Vv+hcjnSdTeDu1LOtGQ32sOhl+9tc0AzN0=;
+        b=eHywjzm004dXoT5ScK6SAAB0HeLTcBjmWL1NzvTmKVUtd7L202VulWIRkQRRQG4JJe
+         xWGpbGzUdWvUe7GEXp/j+xdHW9Cb38jUBWQ4J3uZ0jVDAepcaNf+vusVqpX4HvxjtNYE
+         nQ94hCnlIbDxsXPwN7Rh7SmrnjeB3gZGbw27UNJz4VzESR64JUdZkwqVU7txX8k8I/Dk
+         jRsbemarrehW6SI583KHbLzmMkRIVPJQqpUuMxbwFsAXLj7Xis9qhYzzq/iAZghbetuy
+         nHOEAM3gMa1dIDAdjJy5EqSPGW3gyTvzJigoxnggMvFS5FuC8T6P0Apt0BoEOnI0Bes2
+         G5iw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Byhg+zOS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c49si3477579qtd.333.2020.05.11.02.52.35
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 May 2020 02:52:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fMKMwzHK;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id b12sor5331200ljo.25.2020.05.11.02.54.31
+        (Google Transport Security);
+        Mon, 11 May 2020 02:54:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Byhg+zOS;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41184 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jY56x-0007Oq-If
-	for alex.bennee@linaro.org; Mon, 11 May 2020 05:52:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42950)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jY55u-0006BK-T2
- for qemu-devel@nongnu.org; Mon, 11 May 2020 05:51:31 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:40293)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jY55t-0004ht-KX
- for qemu-devel@nongnu.org; Mon, 11 May 2020 05:51:30 -0400
-Received: by mail-oi1-x244.google.com with SMTP id t199so14603418oif.7
- for <qemu-devel@nongnu.org>; Mon, 11 May 2020 02:51:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=fffYlOjj/vQkdA3oSh5IEdQf1eF2J+wkUp4CVQxNbFw=;
- b=Byhg+zOStRJdeK67AUq9rtM7LBZsc+Cvt8xAtgPQqeeWoUf7QZadT7Z3la8LcEhPlr
- r1AiFY03ejjkUWoaEQ3vjO9dmaGaamboIjLzKj7EMUD1spf0PLNE6BkwEn2ji8tshc9/
- tYfrrGQJ5BDyU1beelef2xk4ZwKkNTm69/cxj681/CXKiS9lJSCreS79hZjWQg5mKHuj
- MnQDjglBc62/GJxbHBBMTu2jd2uFLKH/zcTDiJ9wtDAlFv0Q6Iu+uTfFMjKkNzqf/NDL
- rTad87f+kQg4vMhrd5OOmxbG5/ljA9QatUo0RQP4VEkMk6AX6K+tnbRt25tAtOI9HStk
- lyCw==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fMKMwzHK;
+       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:content-transfer-encoding:in-reply-to
+         :user-agent;
+        bh=tiyyfkVX+Vv+hcjnSdTeDu1LOtGQ32sOhl+9tc0AzN0=;
+        b=fMKMwzHKAL+cC6GYL7w6Jo1hhb5zYEWOu+Hm1gsRT7aE0QuTlXpXlcee6I1vIfHTZC
+         Vo9VeSvSNJboZSAY84hXz1eBveXwKvejjHIovRw4E9UfTyYUg71VuDjwlGLgEGTSpzey
+         gcCq7dQYd/ajywcWswVmaM5wJQSPlaC4vZTjAmuEVpU5L83wA3QvdbZMz8izaqS5NSTm
+         oofor2fr+mK8xGjfS7pD7W4SNCyqQdNEB4eWGL+hLA7IQg4UbP2qqb7gMdvDlICBAqFs
+         zW7MSa0A1LOrKMzwxLhYfNPT4H0V3Gf4h4sUii3tJFgofR40LLf6Q3o+UA9GeDOw8op9
+         sqUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=fffYlOjj/vQkdA3oSh5IEdQf1eF2J+wkUp4CVQxNbFw=;
- b=hpgW1VEjYp9UTg9HGXZXD8/PwAavOd21T8PoiNJWMMnN9ePz6MOsRkWNN7vflDfRMA
- wU4MbmUk5HWERI+0GCJppig0bHmWaK/zbBFq3n6HzB2shM5+Ts2QAdEi/91hj+v0Y+uH
- bkAzgVMPenjWnm+Gvl/XKDi+7wa1i3Gemu8zc3T7jehEu/e3HaNU1ZNZRYglgnR1815S
- MaGUxc5/dJSW88FMb4B4EjAFV0yGwPHSnpmt0CZZAI5IFsS9abr9RMBgHX2WzLUNnQgI
- kCp5Cqq/KccVUeWb9DQxKKKqMgDtZyMFbC7RTTSCyhZX9woxGawLOcgxc0mOSrWenJpQ
- mkdg==
-X-Gm-Message-State: AGi0PuatIJWnb5sRKozSO4BC1R4F69iXYqnTSVOaVxe6Repv+HK4CiHy
- 2jZymLbYUMAjB4Ngq62Mgb69KCxaE2whT6GIEUvpZA==
-X-Received: by 2002:aca:895:: with SMTP id 143mr19060802oii.163.1589190687722; 
- Mon, 11 May 2020 02:51:27 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to:user-agent;
+        bh=tiyyfkVX+Vv+hcjnSdTeDu1LOtGQ32sOhl+9tc0AzN0=;
+        b=qMDb+ZwcAONInqkZ/97vqJL6R5Pv/1g//ijaHW3GHxDM/9qgFzNB5QWuWPx5uTxzP/
+         EO+prJsyr/JOppjPZ1JkmBzWG5kY4RJC8/2bqB5JTVyWlvVCUl77HzNfBa00DYFz5xD3
+         pojMZ8IbFsNzBeD7R5jpmSjymmZ6gQkv/FkrLIklrMY9W4R65NPmHZ7ybf6QTpneaIzA
+         ZiTxQmjoQxVb/vuWjEjrVKNEq30JSzHryG7wA6nWdvl1HtaQgpfAmrIsG80bNq02veCN
+         kABVHOmJwL6J/s7rI+5+iI07RcZvriE6Vd/ysUlElcFaxDceKMLF9ZvPQStciHHz45zP
+         qXaQ==
+X-Gm-Message-State: AOAM530BMPLEYRpc9KvqUXTMsYWGKF4CXIm3QdFzMaoAViDx2/WJKe5W
+	oXKWqXyCo/hKHfmQiVnNfJ4=
+X-Google-Smtp-Source: ABdhPJz+MtRuntfrRkEMQVanEs2Ehicxuu4xy5lCw5aWu+zWimC9nOZPengQVdTQtuxI9wjfgHFNyQ==
+X-Received: by 2002:a2e:6e13:: with SMTP id j19mr9855811ljc.292.1589190871093;
+        Mon, 11 May 2020 02:54:31 -0700 (PDT)
+Return-Path: <edgar.iglesias@gmail.com>
+Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+        by smtp.gmail.com with ESMTPSA id s7sm10412923lfb.40.2020.05.11.02.54.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 May 2020 02:54:29 -0700 (PDT)
+Date: Mon, 11 May 2020 11:54:13 +0200
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Stafford Horne <shorne@gmail.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Roman Bolshakov <r.bolshakov@yadro.com>,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	Eduardo Habkost <ehabkost@redhat.com>, qemu-s390x@nongnu.org,
+	Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+	Marek Vasut <marex@denx.de>,
+	Alistair Francis <Alistair.Francis@wdc.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Chris Wulff <crwulff@gmail.com>,
+	Richard Henderson <rth@twiddle.net>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	David Hildenbrand <david@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Subject: Re: [PATCH 02/11] sysemu/accel: Restrict machine methods to
+ system-mode
+Message-ID: <20200511095413.GS5519@toto>
+References: <20200509130910.26335-1-f4bug@amsat.org>
+ <20200509130910.26335-3-f4bug@amsat.org>
 MIME-Version: 1.0
-References: <20200504081953.245912-1-joel@jms.id.au>
- <CACPK8XfTg1OucOEeiUE711_+-Pz4daYCrPmKFDTj25keeM8aMQ@mail.gmail.com>
- <3e8500ab-929b-a3f0-f8b6-fcf8ea5c1306@kaod.org>
-In-Reply-To: <3e8500ab-929b-a3f0-f8b6-fcf8ea5c1306@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 May 2020 10:51:16 +0100
-Message-ID: <CAFEAcA-DksOUWgyi7AfnUjNNk40Zd1kzkgXtJVXfFSdM=outJQ@mail.gmail.com>
-Subject: Re: [PATCH v3] aspeed: Add boot stub for smp booting
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::244;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x244.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Joel Stanley <joel@jms.id.au>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7i566URxqQWY
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20200509130910.26335-3-f4bug@amsat.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-TUID: mlIIyD9vwZ0f
 
-On Fri, 8 May 2020 at 15:27, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> Indeed, with OpenBMC kernel v5.4.32-260-g7dc9442bbe7d and wfi (patch v3),
->
->     [    0.045214] smp: Bringing up secondary CPUs ...
->     [    1.178127] CPU1: failed to come online
->     [    1.187309] smp: Brought up 1 node, 1 CPU
->     [    1.187590] SMP: Total of 1 processors activated (2250.00 BogoMIPS=
-).
->     [    1.187786] CPU: All CPU(s) started in HYP mode.
->     [    1.187850] CPU: Virtualization extensions available.
->
-> When using wfe (patch v2),
->
->     [    0.091092] smp: Bringing up secondary CPUs ...
->     [    0.096628] smp: Brought up 1 node, 2 CPUs
->     [    0.096718] SMP: Total of 2 processors activated (4500.00 BogoMIPS=
-).
->     [    0.096768] CPU: All CPU(s) started in HYP mode.
->     [    0.096785] CPU: Virtualization extensions available.
+On Sat, May 09, 2020 at 03:09:01PM +0200, Philippe Mathieu-Daudé wrote:
+> Restrict init_machine(), setup_post() and has_memory()
+> to system-mode.
 
-OK, I've applied patch v2 to target-arm.next.
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
-v3 looked a bit odd anyway -- a wfi-based secondary loop generally
-needs to prod the GIC to enable interrupts for the core before
-going into its loop (compare the 32-bit smpboot[] code in hw/arm/boot.c).
-But looking at the code in the kernel's arch/arm/mach-aspeed/platsmp.c,
-it uses dsb_sev() to prod the secondary core, so only wfe will
-work here. If you find that you are often in situations where the
-secondary cores are not started and so QEMU is wasting host CPU
-in this busy-loop, you could look at implementing a non-noop
-wfe/sev in QEMU, though it's not completely trivial because of
-all the things other than sev that are 'wfe wake-up events'.
 
-thanks
--- PMM
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  include/sysemu/accel.h | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/include/sysemu/accel.h b/include/sysemu/accel.h
+> index 47e5788530..e08b8ab8fa 100644
+> --- a/include/sysemu/accel.h
+> +++ b/include/sysemu/accel.h
+> @@ -37,10 +37,12 @@ typedef struct AccelClass {
+>      /*< public >*/
+>  
+>      const char *name;
+> +#ifndef CONFIG_USER_ONLY
+>      int (*init_machine)(MachineState *ms);
+>      void (*setup_post)(MachineState *ms, AccelState *accel);
+>      bool (*has_memory)(MachineState *ms, AddressSpace *as,
+>                         hwaddr start_addr, hwaddr size);
+> +#endif
+>      bool *allowed;
+>      /*
+>       * Array of global properties that would be applied when specific
+> -- 
+> 2.21.3
+> 

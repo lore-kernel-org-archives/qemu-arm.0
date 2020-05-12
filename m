@@ -1,79 +1,104 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3450615wrv;
-        Fri, 19 Jul 2019 04:15:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxHglxWRW5ZSm8hghWe2N2JqTcak+Wwm89jfsteoILTrChZdzQV+Zznnok8jWm5brs1pCI6
-X-Received: by 2002:a37:8604:: with SMTP id i4mr34141604qkd.255.1563534907054;
-        Fri, 19 Jul 2019 04:15:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563534907; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1127505lfb;
+        Tue, 12 May 2020 05:44:20 -0700 (PDT)
+X-Google-Smtp-Source: APiQypIhQtOWsq3zQkl97JjDUVfnelBaylBDs3Wv76DAYAf7/hozsypDw5Fskguytm/oq+SVWvoc
+X-Received: by 2002:ac8:5209:: with SMTP id r9mr21157767qtn.57.1589287460416;
+        Tue, 12 May 2020 05:44:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589287460; cv=none;
         d=google.com; s=arc-20160816;
-        b=X1pWkuhO99tvOvHIDzYqmpYR1BogFcdP7x+G96Q10NHso+FJFsJMglMO6imNgc8+zt
-         F6Q8BeNVSnhYImUtNf1YV1b505srS+LbKDgMfzyvxDS4Hg/V6l2os1WF0MHvnE3Z7G7+
-         HjQUtmOEvc28ooeym7wqvIz415AWpYyNWnBhGzPFJF+ORXLSbhDP+7FE1YfSRwczygOH
-         EWjtmQJzDvJZVZGVcAOrv9zyXdE6B4yEraAqi4qSpuwE/DPI04L7VpDoDtXiUSfsLl8L
-         0HydqwMkWZu0TE4xMG89yRp28bOP48ZB5OPrL3/yYKycCbsTzaek/sTg0tJH/owUOQwy
-         hr2Q==
+        b=0tLrL2qsxz0+xK72Akya2XRu1CfPdx27YcBii6R2OqweUNXaBhuivDWneZ+OdDi0iw
+         LvgssdKQ1gfvx849RMJUZwrkPHPtMsTgGWsGY0KBN41ZTVRFGpiBXJxZTrb2EV/964re
+         PFfNGcBTGUCvuGmO6np4mQSLbHmRSsCoz50wp/tgPGg1uHwczeNoh9u3XtmgG7AqJSZh
+         7D/79Eo0TqHeoVugN6LpLmikGVzZ6NX9vR8VFNxgqXFRUOxUY5cnyusIQfIm4ivnFQaf
+         ZSEwg7Uoi/6wfoYTyX6Js1ybLyOSbKaYm0ypHgyrcqodZ68+zaNOsSec36BbjQhb03Oo
+         OIYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=tpFGqMVXiZ4GUehmiqJCH/1OyLe53wOtbbRLxE6Nt8Q=;
-        b=upH5dqUJHQYDMRwi/fIVJc8FM5PJEXUJLOuoVIMc6nJm3yCv1qP1+qOsYN8PvX7Y3N
-         aWJA7VIXHE1gG/prYRLj3t6Uy9OfyAjbITKY2wSgru3eCOm6dT4QC5rtVFfFX/DlInCE
-         98su+MeWvf/YNy7LSREwoix4i2FM0PvTufhIf3ef8dCXlQDTKCD5VyjN1baBETVVajze
-         /Nt6KagLCO+DnRiK3FQBVR9A3WSoXFdfP6sPV7GIX8USIYESD6XMHZVnn4vixSEzdQh+
-         84GFVa6iAlB0Vm/bM+COzO2CiPHSdEcsZ3BkxtSbjbhBsGMeJxeHfcYdQ28hOwvwdifB
-         Bsnw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=H2uAqVYHNg2yvKLW2FO44iqltVo4e3uY0P/Jgote3O8=;
+        b=m/HoV+HTkNCdKA67DiplyUb45QHJ5yfWnAEMteeElFFs+T0OrpLlKylHEKcAJmKZLF
+         Sn1o6S/qrI3u+9/8DMpf7MHUGs9w2v2hWGdDMlY0eotVb4l70ccg9xnpKNyQFZYy+lQS
+         kUaAR/YMbvbk35PWIdz+U57+/I9uHOoCWV4wotR6lpPFXf5ACJ2UP7Cld+jwplhrmtCk
+         Pnc36C4d3S4WHn4TKPdlKO5tnFYP3zBbaBmlH0h031HUyyXHgUib9AAuwNEi73vcXBcz
+         iw6ZnYGAfDdZRveRzVxP82nL79oUDQ2LYzvG6KoNp1ntfdlcLAc1eKEViOrNt4PCwS+U
+         SXGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=vrxXVlrE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n9si20766828qta.275.2019.07.19.04.15.06
+        by mx.google.com with ESMTPS id a19si2778758qko.305.2020.05.12.05.44.20
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jul 2019 04:15:07 -0700 (PDT)
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 12 May 2020 05:44:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=vrxXVlrE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44056 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34694 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hoQqw-0004XS-H5
-	for alex.bennee@linaro.org; Fri, 19 Jul 2019 07:15:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35269)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hoQqs-0004X3-B4
- for qemu-arm@nongnu.org; Fri, 19 Jul 2019 07:15:03 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hoQqr-0008Ok-Fd
- for qemu-arm@nongnu.org; Fri, 19 Jul 2019 07:15:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49892)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1hoQqr-0008Ng-A1; Fri, 19 Jul 2019 07:15:01 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 160C230821F4;
- Fri, 19 Jul 2019 11:15:00 +0000 (UTC)
-Received: from x1w.redhat.com (unknown [10.40.205.153])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E461A61991;
- Fri, 19 Jul 2019 11:14:54 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 19 Jul 2019 13:14:51 +0200
-Message-Id: <20190719111451.12406-1-philmd@redhat.com>
+	id 1jYUGh-00018k-RB
+	for alex.bennee@linaro.org; Tue, 12 May 2020 08:44:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42234)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jYUGZ-00018E-Mr
+ for qemu-arm@nongnu.org; Tue, 12 May 2020 08:44:11 -0400
+Received: from mail-oo1-xc41.google.com ([2607:f8b0:4864:20::c41]:38633)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jYUGY-0001Lk-AV
+ for qemu-arm@nongnu.org; Tue, 12 May 2020 08:44:11 -0400
+Received: by mail-oo1-xc41.google.com with SMTP id i9so2673233ool.5
+ for <qemu-arm@nongnu.org>; Tue, 12 May 2020 05:44:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=H2uAqVYHNg2yvKLW2FO44iqltVo4e3uY0P/Jgote3O8=;
+ b=vrxXVlrELUH9qpVByiX/6ZKIwwyt+ti4cYs/QFRu8GBmLxucesBGSXHTGS7T3c084B
+ UAPABK+B2q1ehC7wHdZ7NZQw4sOi7JCPPcMO42nTvAIN1pmBtVHfKYY1Bz951w4ag3SG
+ eSRa+vs564t87w0Pm3kwwsVbq+YEdF0uaYUzXmqvbznrm7W9Zw4C4Kx2gH7dxD63zF/Y
+ pDqmS9F5DtyaeE1w+In+HNBgjaIil58pTb0aK5re5KDwCZ8ItK/YpCauEZhH/YeaInD2
+ Pk6E+eD4TYLIInkRzg+30Qmq2ATxGPTgodkWAoj6EP+qv6kG949MR6fZreAecpIVfCo+
+ culQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=H2uAqVYHNg2yvKLW2FO44iqltVo4e3uY0P/Jgote3O8=;
+ b=A1toSmXmGo7oaDk9pcXHzgNl2xGGXyTvszy5ml7RyMQ4K4MYDBVwlw/rdtnRMDP+JE
+ AcNkws5fCEkwrUSMmUKVruhTZVNJm+azJyimkTLRa9s7rcM//2N92cW7i6ZA19rrknc1
+ +Kye/aOerAYnwSMCnZelNGz7roUrF4reNZmR7mpyzvIjEiF4ZKiqwiNxyyYW5T8tbwTu
+ 4EOjYJK2ZR/ITjnfV1IAKIo6a5gndmvy2lCRdo0tLSOZ6XlGnCWZPWRXzf5k8Ubc6U2Y
+ L2jOKpFXLGuKEGQlUVYksQvT/avG4DGL7E35aMzJDSLj7dar5MvscfZh4uIC7VEUlPKx
+ gOtw==
+X-Gm-Message-State: AGi0PuawN81BU4IDaqZUV5Zf0EtZCxW1SsgGFyqDtuvpjC3Lw2j2uDsR
+ tOZ+/g5vYeSnC3JM5xj4BmV+EPtf+SIm2evFRwT8Vixn
+X-Received: by 2002:a4a:3556:: with SMTP id w22mr11981224oog.20.1589287448622; 
+ Tue, 12 May 2020 05:44:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.47]); Fri, 19 Jul 2019 11:15:00 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH-for-4.1] target/arm: Add missing break statement
- for Hypervisor Trap Exception
+References: <20200420212206.12776-1-peter.maydell@linaro.org>
+In-Reply-To: <20200420212206.12776-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 12 May 2020 13:43:57 +0100
+Message-ID: <CAFEAcA_T+07JhcY8rGLW6dchsfyez54fenZtJAYV++d+dxzn9A@mail.gmail.com>
+Subject: Re: [PATCH 0/4] linux-user/arm: Fix BKPT, SVC immediate handling
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c41;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oo1-xc41.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -85,48 +110,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Luc Michel <luc.michel@greensocs.com>
+Cc: omerg681@gmail.com, Riku Voipio <riku.voipio@iki.fi>,
+ Laurent Vivier <laurent@vivier.eu>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QpsPeYfGzlZ9
+X-TUID: QA6ePM8HnuOP
 
-Reported by GCC9 when building with  -Wimplicit-fallthrough=3D2:
+On Mon, 20 Apr 2020 at 22:22, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This patchseries fixes issues with the code in linux-user/arm/cpu_loop.c:
+>  * it incorrectly thinks BKPT is a syscall instruction
+>    (https://bugs.launchpad.net/qemu/+bug/1873898, reported via irc)
+>  * a stale line of code means we incorrectly NOP SVC #0xf0002
+>  * we don't implement the distinction between 0x9f0000..0x9f07ff
+>    (should return -ENOSYS if not implemented) and higher numbers
+>    (should cause a SIGILL)
+>  * we abort() for bad immediate values to SVC (ie not the 0 of EABI
+>    or the >0x9f0000 of OABI); the kernel delivers a SIGILL for these
+>  * for Thumb mode, we never use the immediate value from the insn,
+>    but we always read it anyway
+>
+> This patchseries fixes all those things. (I started out fixing the
+> BKPT bug; everything else is problems I spotted along the way while
+> I was reading this bit of code...)
 
-  target/arm/helper.c: In function =E2=80=98arm_cpu_do_interrupt_aarch32_=
-hyp=E2=80=99:
-  target/arm/helper.c:7958:14: error: this statement may fall through [-W=
-error=3Dimplicit-fallthrough=3D]
-   7958 |         addr =3D 0x14;
-        |         ~~~~~^~~~~~
-  target/arm/helper.c:7959:5: note: here
-   7959 |     default:
-        |     ^~~~~~~
-  cc1: all warnings being treated as errors
+Laurent, do you want me to post a v2 with the -2/-4 thinko fixed
+so you can put it via the linux-user tree, or should I just take
+this via target-arm.next?
 
-Fixes: b9bc21ff9f9
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- target/arm/helper.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 20f8728be1..b74c23a9bc 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -7956,6 +7956,7 @@ static void arm_cpu_do_interrupt_aarch32_hyp(CPUSta=
-te *cs)
-         break;
-     case EXCP_HYP_TRAP:
-         addr =3D 0x14;
-+        break;
-     default:
-         cpu_abort(cs, "Unhandled exception 0x%x\n", cs->exception_index)=
-;
-     }
---=20
-2.20.1
-
+thanks
+-- PMM

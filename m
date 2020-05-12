@@ -1,63 +1,63 @@
-Received: by 2002:a05:6214:92e:0:0:0:0 with SMTP id dk14csp217604qvb;
-        Tue, 12 May 2020 08:10:13 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKzDZnkxzCt7TuTmO1vIuQ/3tTgkeARld85e2B1HscBtgqrorNysbGzs4joeLeRBqdGM357
-X-Received: by 2002:ae9:edd8:: with SMTP id c207mr22099784qkg.347.1589296213709;
-        Tue, 12 May 2020 08:10:13 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1589296213; cv=pass;
+Received: by 2002:a05:6214:92e:0:0:0:0 with SMTP id dk14csp219867qvb;
+        Tue, 12 May 2020 08:12:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwSbsBQjZLx0c5aYja1QIWKNxpv8gtztrRWXsgRAGEwa7aw4c98Ksjob2zMTH1YgmojY9g4
+X-Received: by 2002:ac8:60d2:: with SMTP id i18mr1950510qtm.244.1589296370106;
+        Tue, 12 May 2020 08:12:50 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1589296370; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Gt+iQLVZT4mTpYxhaWdjh2ii8r9e1X+9LI1ophihSE2juhIFl1Z3c8wICzlgHnk/oS
-         AaSfhzcJmecv8fcxr3YwiorE04SKKVlTvkt3catApP71eX/vM1KH+tgGTjyh+1FbUVx7
-         xpt9S7ifLBQdf6QtNCDEoBfxCMFnJdRky4jo9ryN1in+sPFB/O3IRIwRyK192Nghmoar
-         JoT8yeBm7IvB9T5wbJMTEO8PKs7LiGS2s0Aq27hRtC8aTS+i45yexo+GUm++sQbqqhNY
-         Bb+j1H6nZ47sMOaUNz0QTlo1Vho9MWBvjdcYiquuZyb/xI32oSFDVnhGUPsjHmJ8Py2n
-         J0mg==
+        b=OcFQ4LpVwYq1dYj7DzoO2kIuiCxmnHwOWY2S5YuwKYIIn5NOuJLJXOwXNxx47GsOJV
+         6bGbTmjt2nBUw9X6pI/s/erdJ1VDeG1NbtHrwXexbdWpNuzHAP+zQAiU6UqEV+ImVI35
+         nkop3XLuslY2cAMswVpgln6+bebJIwP7OCAw53Yaq3smevtWbQ0ddSaTuNEYazzIG04h
+         94fqIBXzTLHrhd4E1Xdjj4TL/qsODEb6KUKhcgfy5NXot2b0/s2d5ErX+Ta6oA1Z2C4a
+         S3+SSpi3e+tx3Bh4laoPBiiOF4tA/0iR7yr9f7L0+kBpMZz9GDELzDpjWfG6KVxkYOnt
+         C2iw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from:dkim-signature;
-        bh=kHbwx8DDwAgkmuW5mQVte3k0zRqUyTVvLZAW8sLRfG0=;
-        b=NYWHpwgQaL5GqkBj2HcBYGoWlDiBT766Sa6l60dN4pUIaa2tZY2WJl1SHH0hEM4UGY
-         QBePERHPGxiJIKo2KIFIQkrZjpXfu88eZShiDvTvK43hbdk6TlKWLCykq3LJr7Ie1EcR
-         LlaPsJJL8clQ1vx2NSasrINjSxC15Aaj5WYzNLt/eFbKkc+ZQV508HSXRxYFgzaf5JNz
-         YDZtAmOq/F6CNgSqHy23UL/oFC552nl8IQRAu8IylPrpuWTtS3uGlgWxyMYgPvVZSsu+
-         A1WiFKZrsetS6vOqekQBBqwIEXtkmQBSNMvDy7GUO/rXRmURzUU7dYbFe6rx6Onh1iAE
-         M23Q==
+        bh=QDDfQay8WPdmdMcKmLynxs0u9Nr1s4msHPOvoJh9eKE=;
+        b=NG/N0TgJntOSXZDLwSn47hWLnBG/WbMQUlinI63ORm1ANZGJINCNTVTMOO6OgwmGAN
+         /TTKGNmU7LV49ML8muybMpGFeqRr6xKmsyE6uGmtmiX1bOylnAbjt7siHqW1C+c8fkWs
+         FQhoq8Fhq5L9TUFE4g0fG7cCpxw7URgOesWY+Ay1gNAij2MZrFrNE1c5OJPqPOKF/w1h
+         KuwYswO/CDxbZKJY6TQREWuO+OK+bWL3SKVKGR7V1Rdenm6F8TZcfh+bCyPNU3xYRDlj
+         k2jsWsxfWtugsoh3qQP85pu3I2etp/9+a1p4/xGt5BuKLcjMvOzp0ksbiLYHv5kl8bAR
+         Gh+Q==
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=SJOyTdJ4;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=d9whPErF;
        arc=pass (i=1 spf=pass spfdomain=xilinx.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dw20si5484787qvb.13.2020.05.12.08.10.13
+        by mx.google.com with ESMTPS id h7si5340898qtq.75.2020.05.12.08.12.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 May 2020 08:10:13 -0700 (PDT)
+        Tue, 12 May 2020 08:12:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=SJOyTdJ4;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=d9whPErF;
        arc=pass (i=1 spf=pass spfdomain=xilinx.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56002 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36998 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jYWXt-0001ty-47
-	for alex.bennee@linaro.org; Tue, 12 May 2020 11:10:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35248)
+	id 1jYWaP-00063x-Iy
+	for alex.bennee@linaro.org; Tue, 12 May 2020 11:12:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35274)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
- id 1jYWSV-0001PZ-IV; Tue, 12 May 2020 11:04:39 -0400
-Received: from mail-eopbgr690081.outbound.protection.outlook.com
- ([40.107.69.81]:4096 helo=NAM04-CO1-obe.outbound.protection.outlook.com)
+ id 1jYWSX-0001Th-A7; Tue, 12 May 2020 11:04:41 -0400
+Received: from mail-bn7nam10on2056.outbound.protection.outlook.com
+ ([40.107.92.56]:22250 helo=NAM10-BN7-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
- id 1jYWST-0002dM-Jk; Tue, 12 May 2020 11:04:39 -0400
+ id 1jYWSU-0002eS-7U; Tue, 12 May 2020 11:04:40 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XmYqNMBbUFpUT3b4fKa49lykdaYB2tQzUeNQoiupAViZkkRk71oSed2FoxJj09LDvpnTT+n3FlvQHUY/b+ZK6OHNLIpTKxkB8ptkWeudiy7s8ELwJX7VjeAgMG5OwG2oj/X/mAj2Rui3t8AbD7UH3jamZP+ZE1C0LE6vr270HNuT1dZGt/XCYqWjsNhboH4ZP9ybesmI0DslbiIF4KRkQjCadZ8+78V2DmgCn6yxbpwzHEjwXgdGJjbbc4kM2jyPxxE+xfbSVn9ZQkPMF/g7OIdEl2DGdismhq0lSesyNWz8BrNvuKXXUgZKsK1PaCi5Yxp04e7uHDQVlVpcY/ElNw==
+ b=VF+eW+cGGRR7Q7Dqs6hpQ6plWEA7eMNumW6MhXYRRT8g4HzUm0yJmrFP20BKN82Gb7mq9mm+GFt+SsDlXFmS9C4kAHd3Q9sazsmtYkEdlH08JGiOmqQM08fmiIWG2Ozy6cWhDzh5QwzmX92M+Uqu1TZTcJwDtQ+sDrTykL4SAq7zB4ZY5yDhRgM9EO4Qped4E1N4fmvV+UE4TBn0EeZLGT/UBR5JRB5ingzaDp87WRvNqH9S4jrZRwnh8RVfThWa76B+5UVjVVMqgU2GO/nokdKBu39apA5Cn5OpEn+z71u5E0s1FcmzxKCGPu+wOIHzzPAqZuOlbWeixj71jJKh6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kHbwx8DDwAgkmuW5mQVte3k0zRqUyTVvLZAW8sLRfG0=;
- b=Paoel3/nlUePqz32175ycFRbwtRTXk4XXZRNQos5aMZBenZfYDjU8UfkCNY4L4S09eoADZrg0G3rJSc+dUXPekfSFGTHAx3nBfr90mXoSUGjkzdxnU9sBqjsbQwZChDj0/PaPRMRy822Ux+VnMqKL+Kk0F2m+LPs3DavqG68IyIg+vPOUs4gRtjkA+6p26vqmltE6spsn198g6t5UH9UwnNVIjRN+/bJcgisGvOd9XVeRV1IY4UW++QbyYHtDvPG8w6X+KC434UooRkLRgmGvHRpC6qzWjVDNg2qJHlEmiZSZ2RuJZIBDFDbYMwx2IpdJT2fvdgb9vzJBEcA+0Px0A==
+ bh=QDDfQay8WPdmdMcKmLynxs0u9Nr1s4msHPOvoJh9eKE=;
+ b=hCNe9WQPZJBYeiMewbZ0KYzPw7Ud/2PJTyqDnY8fGywrRXKHxyLWpSnirD5ueFXX3UykKKW9HwH7haobjidL64VQEeTHE/JuHK94R4uDHRdJGNI8SKSFa6j79q37u1JD8wc0y3wvQV5LzcpOo1BMP+abCBsNICK1GH+Jcbdoy4HX6K6wN26k2HwtWN9YrS+Nf5V4czqOav/U72XIucftN9r60nAQRWqIUoi/o2R/2wJNIyxvCiuc7FIB3vcfaSgE9tvQofdrczKF2TjTsREgc7BVkfCsZon3om/QRkozHLaHcbT/vzWAMpPw21MhfgIfcMRYQ3S4HAnFyZuKzSg7DA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  149.199.60.83) smtp.rcpttodomain=gmail.com smtp.mailfrom=xilinx.com;
  dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
@@ -65,18 +65,18 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kHbwx8DDwAgkmuW5mQVte3k0zRqUyTVvLZAW8sLRfG0=;
- b=SJOyTdJ4VyPd/jIkUN6B7C++7Cd2XRlQl2VM5pw7LD9QUKNQbRRS37mv6npLRBcCAG10aLMk+Xp1d+IcZGj/H0yekURrhSU/hXSnGtdRFoe9wgfQbH5RWLZHT6opP5BPENKqODB1RY4Nk7DluO0YUBuj0ed/8Jig2PcyPbSlkT8=
-Received: from MN2PR01CA0012.prod.exchangelabs.com (2603:10b6:208:10c::25) by
- BL0PR02MB5396.namprd02.prod.outlook.com (2603:10b6:208:86::16) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2979.34; Tue, 12 May 2020 15:04:34 +0000
-Received: from BL2NAM02FT043.eop-nam02.prod.protection.outlook.com
- (2603:10b6:208:10c:cafe::47) by MN2PR01CA0012.outlook.office365.com
- (2603:10b6:208:10c::25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.27 via Frontend
- Transport; Tue, 12 May 2020 15:04:34 +0000
+ bh=QDDfQay8WPdmdMcKmLynxs0u9Nr1s4msHPOvoJh9eKE=;
+ b=d9whPErFS5piPFhw2pFasvsUZAaDMI4+Vni+rT9onx6xYk5sM3H4G7h6/twe+v5t7OikVSs1cRXSRVbIcFvtCcGTPSSlBzZYGyabn7DyQJo9HQpSfxO45jUW1SY7dLhs/ZS7nltRpqT/O2vJ+aDl284ldfrmn04AlylI/EOPxLI=
+Received: from BL0PR1501CA0026.namprd15.prod.outlook.com
+ (2603:10b6:207:17::39) by MN2PR02MB6605.namprd02.prod.outlook.com
+ (2603:10b6:208:15f::18) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.29; Tue, 12 May
+ 2020 15:04:35 +0000
+Received: from BL2NAM02FT028.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:207:17:cafe::3b) by BL0PR1501CA0026.outlook.office365.com
+ (2603:10b6:207:17::39) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.28 via Frontend
+ Transport; Tue, 12 May 2020 15:04:35 +0000
 Authentication-Results: spf=pass (sender IP is 149.199.60.83)
  smtp.mailfrom=xilinx.com; gmail.com; dkim=none (message not signed)
  header.d=none;gmail.com; dmarc=bestguesspass action=none
@@ -85,23 +85,23 @@ Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
  149.199.60.83 as permitted sender) receiver=protection.outlook.com;
  client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
 Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
- BL2NAM02FT043.mail.protection.outlook.com (10.152.77.95) with Microsoft SMTP
- Server id 15.20.2979.29 via Frontend Transport; Tue, 12 May 2020 15:04:33
+ BL2NAM02FT028.mail.protection.outlook.com (10.152.77.165) with Microsoft SMTP
+ Server id 15.20.2979.29 via Frontend Transport; Tue, 12 May 2020 15:04:35
  +0000
-Received: from [149.199.38.66] (port=48762 helo=xsj-pvapsmtp01)
+Received: from [149.199.38.66] (port=48874 helo=xsj-pvapsmtp01)
  by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
  (envelope-from <sai.pavan.boddu@xilinx.com>)
- id 1jYWS8-00045M-Uw; Tue, 12 May 2020 08:04:16 -0700
+ id 1jYWSA-00045v-JQ; Tue, 12 May 2020 08:04:18 -0700
 Received: from localhost ([127.0.0.1] helo=xsj-pvapsmtp01)
  by xsj-pvapsmtp01 with esmtp (Exim 4.63)
  (envelope-from <sai.pavan.boddu@xilinx.com>)
- id 1jYWSP-0003nu-9M; Tue, 12 May 2020 08:04:33 -0700
+ id 1jYWSQ-0003oq-VA; Tue, 12 May 2020 08:04:34 -0700
 Received: from [10.140.6.35] (helo=xhdsaipava40.xilinx.com)
  by xsj-pvapsmtp01 with esmtp (Exim 4.63)
  (envelope-from <saipava@xhdsaipava40.xilinx.com>)
- id 1jYWSO-0003nk-NS; Tue, 12 May 2020 08:04:32 -0700
+ id 1jYWSP-0003o8-Oq; Tue, 12 May 2020 08:04:34 -0700
 Received: by xhdsaipava40.xilinx.com (Postfix, from userid 14131)
- id 258CB13C00F6; Tue, 12 May 2020 20:26:29 +0530 (IST)
+ id 5049813C0175; Tue, 12 May 2020 20:26:29 +0530 (IST)
 From: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
 To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Alistair Francis <Alistair.Francis@wdc.com>,
@@ -109,9 +109,9 @@ To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Tong Ho <tong.ho@xilinx.com>, Ramon Fried <rfried.dev@gmail.com>
-Subject: [PATCH v5 01/12] net: cadence_gem: Fix debug statements
-Date: Tue, 12 May 2020 20:24:43 +0530
-Message-Id: <1589295294-26466-2-git-send-email-sai.pavan.boddu@xilinx.com>
+Subject: [PATCH v5 07/12] net: cadence_gem: Fix up code style
+Date: Tue, 12 May 2020 20:24:49 +0530
+Message-Id: <1589295294-26466-8-git-send-email-sai.pavan.boddu@xilinx.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1589295294-26466-1-git-send-email-sai.pavan.boddu@xilinx.com>
 References: <1589295294-26466-1-git-send-email-sai.pavan.boddu@xilinx.com>
@@ -122,37 +122,37 @@ X-MS-Office365-Filtering-HT: Tenant
 X-Forefront-Antispam-Report: CIP:149.199.60.83; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:xsj-pvapsmtpgw01; PTR:unknown-60-83.xilinx.com; CAT:NONE;
  SFTY:;
- SFS:(136003)(346002)(376002)(39860400002)(396003)(46966005)(33430700001)(5660300002)(33440700001)(82310400002)(8936002)(8676002)(36756003)(478600001)(6666004)(186003)(4326008)(356005)(42186006)(316002)(2906002)(70586007)(70206006)(81166007)(110136005)(47076004)(336012)(426003)(2616005)(26005)(82740400003)(6266002);
+ SFS:(39860400002)(136003)(396003)(346002)(376002)(46966005)(33430700001)(186003)(8936002)(47076004)(5660300002)(81166007)(33440700001)(6266002)(6666004)(30864003)(4326008)(70206006)(36756003)(26005)(70586007)(356005)(82740400003)(42186006)(2906002)(316002)(82310400002)(8676002)(426003)(336012)(478600001)(2616005)(110136005);
  DIR:OUT; SFP:1101; 
 MIME-Version: 1.0
 Content-Type: text/plain
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 595f0322-56ba-4b68-57d2-08d7f685c7a9
-X-MS-TrafficTypeDiagnostic: BL0PR02MB5396:
-X-Microsoft-Antispam-PRVS: <BL0PR02MB53963358D4C67E39955FA519CABE0@BL0PR02MB5396.namprd02.prod.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: 5b891d3b-1774-427a-c667-08d7f685c8a6
+X-MS-TrafficTypeDiagnostic: MN2PR02MB6605:
+X-Microsoft-Antispam-PRVS: <MN2PR02MB66050440839753F6E572AAE0CABE0@MN2PR02MB6605.namprd02.prod.outlook.com>
 X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:127;
+X-MS-Oob-TLC-OOBClassifiers: OLM:281;
 X-Forefront-PRVS: 0401647B7F
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: r7B+BO3cXEo0U2IGWUtVh1Wl7NsxN1vxYknKkJeGH3SAp5I2dwZhGffmGPzh9l94eLyl0MY3RF4l3UXfCKP/AnW0KxPO3TmOoYd0FqiqEtp7HPCTzNOjL1lAOj1nO1GjkTgZ58ls5ET4KRCFA96UCuCVxuE1+ohmsUu44BMs3oTnDkrdrRQeCFdsg9ukMKvqJa3k5rumdJH4cIBR5t+ydCn8r+1McPSO30Hj1GuaRyu7GDzR3PUyKSu6jCea3MJfR9/Zammaaerq3ArK7Znmh/ZoGlSno+U30OP9a59ioYlu6BzIxMp/LCg67eGD+o9zmx1+nTnQP5svEHftAiefs+5bSSze9zueaf0tLU+RQl6rS4Y5wvLqx5toF4fq24toXuk1UN/tslt6HcWVVIpw7QeB80wZjYrisKw/QigvOthD1q/RAtHTd2FKHT08Rla6EpUJvOtJJWd1P7NLejYtSbjWT+3CzLDP9p7FhEj+mDjJaZvbabAiv/m6y+7phYwLSc2gcBljkEjCbhKo74xkuPLSCGCXpdYvom9msle8UaW94NkKaXI6oW7piioLk39nflfrTNs6YkmFJGV9Ms2EZg==
+X-Microsoft-Antispam-Message-Info: kkxo5DyGjCY6nqRhFQUaFc48yi3BjrGQ2+BgW7HfpufJEnDDu9XO2qBmM80p1vbNQHpvoJar2IGYPfIzlyi2qrFe8YICOQBgYO7zicBbB71vfdESxtOB0x+h9nMaEmhCozjMs5pVyL+bmxwSpm+AcxtYqaB6pI6gXr2xHd32edK/yOzmdDXkYng9u4YfuCJmbXKAIWvoftIzpc1aL6JTBE+qeVtIrjcTSbklQhM6L7HtiCco+wth7PIG5nNtLUpf5nuU7L/tewPc/WEpTf1GuR7rvc0NTrcFGiA25JUgnis/r/JG+lx1VGODYAnEKKb28OTEnD7LN+WzTwS9axiS5GgwZYamAno5AmfZGLjAShDmByKExG07G5a1N95KLdouZPrQQJVr95JQrqneWqEi9R4LsXoopIJeiRXrrW86r3//LPqToUlxoi8Di6CRrT8e/k9K8MkZg1lex1J0zUCsGBLG7wW3/idVDKfsIDlDtx22K3T0CyoWWtd/ew12grO4h3qeGjAwVTm6pkWZYI7aDuEuVOfcOydGECbzLE0JuODb4j4QC7PRpNAMlWH7aseMyixa2ARylMD1UTcCEd7erQ==
 X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 May 2020 15:04:33.6911 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 595f0322-56ba-4b68-57d2-08d7f685c7a9
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 May 2020 15:04:35.3520 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5b891d3b-1774-427a-c667-08d7f685c8a6
 X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
  Helo=[xsj-pvapsmtpgw01]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR02MB5396
-Received-SPF: pass client-ip=40.107.69.81; envelope-from=saipava@xilinx.com;
- helo=NAM04-CO1-obe.outbound.protection.outlook.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 11:04:35
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR02MB6605
+Received-SPF: pass client-ip=40.107.92.56; envelope-from=saipava@xilinx.com;
+ helo=NAM10-BN7-obe.outbound.protection.outlook.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 11:04:36
 X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -170,76 +170,233 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tb1d6OMIseWN
+X-TUID: PFjDzdAG7pns
 
-Enabling debug breaks the build, Fix them and make debug statements
-always compilable. Fix few statements to use sized integer casting.
+Fix the code style for register definitions.
 
 Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 ---
- hw/net/cadence_gem.c | 27 +++++++++++++--------------
- 1 file changed, 13 insertions(+), 14 deletions(-)
+ hw/net/cadence_gem.c | 204 ++++++++++++++++++++++++++-------------------------
+ 1 file changed, 103 insertions(+), 101 deletions(-)
 
 diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index 22a0b1b..5476c62 100644
+index 11e36d0..f6ff27c 100644
 --- a/hw/net/cadence_gem.c
 +++ b/hw/net/cadence_gem.c
-@@ -35,14 +35,13 @@
- #include "sysemu/dma.h"
- #include "net/checksum.h"
+@@ -43,110 +43,112 @@
+     } \
+ } while (0)
  
--#ifdef CADENCE_GEM_ERR_DEBUG
--#define DB_PRINT(...) do { \
--    fprintf(stderr,  ": %s: ", __func__); \
--    fprintf(stderr, ## __VA_ARGS__); \
--    } while (0)
--#else
--    #define DB_PRINT(...)
--#endif
-+#define CADENCE_GEM_ERR_DEBUG 0
-+#define DB_PRINT(...) do {\
-+    if (CADENCE_GEM_ERR_DEBUG) {   \
-+        qemu_log(": %s: ", __func__); \
-+        qemu_log(__VA_ARGS__); \
-+    } \
-+} while (0)
+-#define GEM_NWCTRL        (0x00000000/4) /* Network Control reg */
+-#define GEM_NWCFG         (0x00000004/4) /* Network Config reg */
+-#define GEM_NWSTATUS      (0x00000008/4) /* Network Status reg */
+-#define GEM_USERIO        (0x0000000C/4) /* User IO reg */
+-#define GEM_DMACFG        (0x00000010/4) /* DMA Control reg */
+-#define GEM_TXSTATUS      (0x00000014/4) /* TX Status reg */
+-#define GEM_RXQBASE       (0x00000018/4) /* RX Q Base address reg */
+-#define GEM_TXQBASE       (0x0000001C/4) /* TX Q Base address reg */
+-#define GEM_RXSTATUS      (0x00000020/4) /* RX Status reg */
+-#define GEM_ISR           (0x00000024/4) /* Interrupt Status reg */
+-#define GEM_IER           (0x00000028/4) /* Interrupt Enable reg */
+-#define GEM_IDR           (0x0000002C/4) /* Interrupt Disable reg */
+-#define GEM_IMR           (0x00000030/4) /* Interrupt Mask reg */
+-#define GEM_PHYMNTNC      (0x00000034/4) /* Phy Maintenance reg */
+-#define GEM_RXPAUSE       (0x00000038/4) /* RX Pause Time reg */
+-#define GEM_TXPAUSE       (0x0000003C/4) /* TX Pause Time reg */
+-#define GEM_TXPARTIALSF   (0x00000040/4) /* TX Partial Store and Forward */
+-#define GEM_RXPARTIALSF   (0x00000044/4) /* RX Partial Store and Forward */
+-#define GEM_HASHLO        (0x00000080/4) /* Hash Low address reg */
+-#define GEM_HASHHI        (0x00000084/4) /* Hash High address reg */
+-#define GEM_SPADDR1LO     (0x00000088/4) /* Specific addr 1 low reg */
+-#define GEM_SPADDR1HI     (0x0000008C/4) /* Specific addr 1 high reg */
+-#define GEM_SPADDR2LO     (0x00000090/4) /* Specific addr 2 low reg */
+-#define GEM_SPADDR2HI     (0x00000094/4) /* Specific addr 2 high reg */
+-#define GEM_SPADDR3LO     (0x00000098/4) /* Specific addr 3 low reg */
+-#define GEM_SPADDR3HI     (0x0000009C/4) /* Specific addr 3 high reg */
+-#define GEM_SPADDR4LO     (0x000000A0/4) /* Specific addr 4 low reg */
+-#define GEM_SPADDR4HI     (0x000000A4/4) /* Specific addr 4 high reg */
+-#define GEM_TIDMATCH1     (0x000000A8/4) /* Type ID1 Match reg */
+-#define GEM_TIDMATCH2     (0x000000AC/4) /* Type ID2 Match reg */
+-#define GEM_TIDMATCH3     (0x000000B0/4) /* Type ID3 Match reg */
+-#define GEM_TIDMATCH4     (0x000000B4/4) /* Type ID4 Match reg */
+-#define GEM_WOLAN         (0x000000B8/4) /* Wake on LAN reg */
+-#define GEM_IPGSTRETCH    (0x000000BC/4) /* IPG Stretch reg */
+-#define GEM_SVLAN         (0x000000C0/4) /* Stacked VLAN reg */
+-#define GEM_MODID         (0x000000FC/4) /* Module ID reg */
+-#define GEM_OCTTXLO       (0x00000100/4) /* Octects transmitted Low reg */
+-#define GEM_OCTTXHI       (0x00000104/4) /* Octects transmitted High reg */
+-#define GEM_TXCNT         (0x00000108/4) /* Error-free Frames transmitted */
+-#define GEM_TXBCNT        (0x0000010C/4) /* Error-free Broadcast Frames */
+-#define GEM_TXMCNT        (0x00000110/4) /* Error-free Multicast Frame */
+-#define GEM_TXPAUSECNT    (0x00000114/4) /* Pause Frames Transmitted */
+-#define GEM_TX64CNT       (0x00000118/4) /* Error-free 64 TX */
+-#define GEM_TX65CNT       (0x0000011C/4) /* Error-free 65-127 TX */
+-#define GEM_TX128CNT      (0x00000120/4) /* Error-free 128-255 TX */
+-#define GEM_TX256CNT      (0x00000124/4) /* Error-free 256-511 */
+-#define GEM_TX512CNT      (0x00000128/4) /* Error-free 512-1023 TX */
+-#define GEM_TX1024CNT     (0x0000012C/4) /* Error-free 1024-1518 TX */
+-#define GEM_TX1519CNT     (0x00000130/4) /* Error-free larger than 1519 TX */
+-#define GEM_TXURUNCNT     (0x00000134/4) /* TX under run error counter */
+-#define GEM_SINGLECOLLCNT (0x00000138/4) /* Single Collision Frames */
+-#define GEM_MULTCOLLCNT   (0x0000013C/4) /* Multiple Collision Frames */
+-#define GEM_EXCESSCOLLCNT (0x00000140/4) /* Excessive Collision Frames */
+-#define GEM_LATECOLLCNT   (0x00000144/4) /* Late Collision Frames */
+-#define GEM_DEFERTXCNT    (0x00000148/4) /* Deferred Transmission Frames */
+-#define GEM_CSENSECNT     (0x0000014C/4) /* Carrier Sense Error Counter */
+-#define GEM_OCTRXLO       (0x00000150/4) /* Octects Received register Low */
+-#define GEM_OCTRXHI       (0x00000154/4) /* Octects Received register High */
+-#define GEM_RXCNT         (0x00000158/4) /* Error-free Frames Received */
+-#define GEM_RXBROADCNT    (0x0000015C/4) /* Error-free Broadcast Frames RX */
+-#define GEM_RXMULTICNT    (0x00000160/4) /* Error-free Multicast Frames RX */
+-#define GEM_RXPAUSECNT    (0x00000164/4) /* Pause Frames Received Counter */
+-#define GEM_RX64CNT       (0x00000168/4) /* Error-free 64 byte Frames RX */
+-#define GEM_RX65CNT       (0x0000016C/4) /* Error-free 65-127B Frames RX */
+-#define GEM_RX128CNT      (0x00000170/4) /* Error-free 128-255B Frames RX */
+-#define GEM_RX256CNT      (0x00000174/4) /* Error-free 256-512B Frames RX */
+-#define GEM_RX512CNT      (0x00000178/4) /* Error-free 512-1023B Frames RX */
+-#define GEM_RX1024CNT     (0x0000017C/4) /* Error-free 1024-1518B Frames RX */
+-#define GEM_RX1519CNT     (0x00000180/4) /* Error-free 1519-max Frames RX */
+-#define GEM_RXUNDERCNT    (0x00000184/4) /* Undersize Frames Received */
+-#define GEM_RXOVERCNT     (0x00000188/4) /* Oversize Frames Received */
+-#define GEM_RXJABCNT      (0x0000018C/4) /* Jabbers Received Counter */
+-#define GEM_RXFCSCNT      (0x00000190/4) /* Frame Check seq. Error Counter */
+-#define GEM_RXLENERRCNT   (0x00000194/4) /* Length Field Error Counter */
+-#define GEM_RXSYMERRCNT   (0x00000198/4) /* Symbol Error Counter */
+-#define GEM_RXALIGNERRCNT (0x0000019C/4) /* Alignment Error Counter */
+-#define GEM_RXRSCERRCNT   (0x000001A0/4) /* Receive Resource Error Counter */
+-#define GEM_RXORUNCNT     (0x000001A4/4) /* Receive Overrun Counter */
+-#define GEM_RXIPCSERRCNT  (0x000001A8/4) /* IP header Checksum Error Counter */
+-#define GEM_RXTCPCCNT     (0x000001AC/4) /* TCP Checksum Error Counter */
+-#define GEM_RXUDPCCNT     (0x000001B0/4) /* UDP Checksum Error Counter */
+-
+-#define GEM_1588S         (0x000001D0/4) /* 1588 Timer Seconds */
+-#define GEM_1588NS        (0x000001D4/4) /* 1588 Timer Nanoseconds */
+-#define GEM_1588ADJ       (0x000001D8/4) /* 1588 Timer Adjust */
+-#define GEM_1588INC       (0x000001DC/4) /* 1588 Timer Increment */
+-#define GEM_PTPETXS       (0x000001E0/4) /* PTP Event Frame Transmitted (s) */
+-#define GEM_PTPETXNS      (0x000001E4/4) /* PTP Event Frame Transmitted (ns) */
+-#define GEM_PTPERXS       (0x000001E8/4) /* PTP Event Frame Received (s) */
+-#define GEM_PTPERXNS      (0x000001EC/4) /* PTP Event Frame Received (ns) */
+-#define GEM_PTPPTXS       (0x000001E0/4) /* PTP Peer Frame Transmitted (s) */
+-#define GEM_PTPPTXNS      (0x000001E4/4) /* PTP Peer Frame Transmitted (ns) */
+-#define GEM_PTPPRXS       (0x000001E8/4) /* PTP Peer Frame Received (s) */
+-#define GEM_PTPPRXNS      (0x000001EC/4) /* PTP Peer Frame Received (ns) */
++#define GEM_NWCTRL        (0x00000000 / 4) /* Network Control reg */
++#define GEM_NWCFG         (0x00000004 / 4) /* Network Config reg */
++#define GEM_NWSTATUS      (0x00000008 / 4) /* Network Status reg */
++#define GEM_USERIO        (0x0000000C / 4) /* User IO reg */
++#define GEM_DMACFG        (0x00000010 / 4) /* DMA Control reg */
++#define GEM_TXSTATUS      (0x00000014 / 4) /* TX Status reg */
++#define GEM_RXQBASE       (0x00000018 / 4) /* RX Q Base address reg */
++#define GEM_TXQBASE       (0x0000001C / 4) /* TX Q Base address reg */
++#define GEM_RXSTATUS      (0x00000020 / 4) /* RX Status reg */
++#define GEM_ISR           (0x00000024 / 4) /* Interrupt Status reg */
++#define GEM_IER           (0x00000028 / 4) /* Interrupt Enable reg */
++#define GEM_IDR           (0x0000002C / 4) /* Interrupt Disable reg */
++#define GEM_IMR           (0x00000030 / 4) /* Interrupt Mask reg */
++#define GEM_PHYMNTNC      (0x00000034 / 4) /* Phy Maintenance reg */
++#define GEM_RXPAUSE       (0x00000038 / 4) /* RX Pause Time reg */
++#define GEM_TXPAUSE       (0x0000003C / 4) /* TX Pause Time reg */
++#define GEM_TXPARTIALSF   (0x00000040 / 4) /* TX Partial Store and Forward */
++#define GEM_RXPARTIALSF   (0x00000044 / 4) /* RX Partial Store and Forward */
++#define GEM_HASHLO        (0x00000080 / 4) /* Hash Low address reg */
++#define GEM_HASHHI        (0x00000084 / 4) /* Hash High address reg */
++#define GEM_SPADDR1LO     (0x00000088 / 4) /* Specific addr 1 low reg */
++#define GEM_SPADDR1HI     (0x0000008C / 4) /* Specific addr 1 high reg */
++#define GEM_SPADDR2LO     (0x00000090 / 4) /* Specific addr 2 low reg */
++#define GEM_SPADDR2HI     (0x00000094 / 4) /* Specific addr 2 high reg */
++#define GEM_SPADDR3LO     (0x00000098 / 4) /* Specific addr 3 low reg */
++#define GEM_SPADDR3HI     (0x0000009C / 4) /* Specific addr 3 high reg */
++#define GEM_SPADDR4LO     (0x000000A0 / 4) /* Specific addr 4 low reg */
++#define GEM_SPADDR4HI     (0x000000A4 / 4) /* Specific addr 4 high reg */
++#define GEM_TIDMATCH1     (0x000000A8 / 4) /* Type ID1 Match reg */
++#define GEM_TIDMATCH2     (0x000000AC / 4) /* Type ID2 Match reg */
++#define GEM_TIDMATCH3     (0x000000B0 / 4) /* Type ID3 Match reg */
++#define GEM_TIDMATCH4     (0x000000B4 / 4) /* Type ID4 Match reg */
++#define GEM_WOLAN         (0x000000B8 / 4) /* Wake on LAN reg */
++#define GEM_IPGSTRETCH    (0x000000BC / 4) /* IPG Stretch reg */
++#define GEM_SVLAN         (0x000000C0 / 4) /* Stacked VLAN reg */
++#define GEM_MODID         (0x000000FC / 4) /* Module ID reg */
++#define GEM_OCTTXLO       (0x00000100 / 4) /* Octects transmitted Low reg */
++#define GEM_OCTTXHI       (0x00000104 / 4) /* Octects transmitted High reg */
++#define GEM_TXCNT         (0x00000108 / 4) /* Error-free Frames transmitted */
++#define GEM_TXBCNT        (0x0000010C / 4) /* Error-free Broadcast Frames */
++#define GEM_TXMCNT        (0x00000110 / 4) /* Error-free Multicast Frame */
++#define GEM_TXPAUSECNT    (0x00000114 / 4) /* Pause Frames Transmitted */
++#define GEM_TX64CNT       (0x00000118 / 4) /* Error-free 64 TX */
++#define GEM_TX65CNT       (0x0000011C / 4) /* Error-free 65-127 TX */
++#define GEM_TX128CNT      (0x00000120 / 4) /* Error-free 128-255 TX */
++#define GEM_TX256CNT      (0x00000124 / 4) /* Error-free 256-511 */
++#define GEM_TX512CNT      (0x00000128 / 4) /* Error-free 512-1023 TX */
++#define GEM_TX1024CNT     (0x0000012C / 4) /* Error-free 1024-1518 TX */
++#define GEM_TX1519CNT     (0x00000130 / 4) /* Error-free larger than 1519 TX */
++#define GEM_TXURUNCNT     (0x00000134 / 4) /* TX under run error counter */
++#define GEM_SINGLECOLLCNT (0x00000138 / 4) /* Single Collision Frames */
++#define GEM_MULTCOLLCNT   (0x0000013C / 4) /* Multiple Collision Frames */
++#define GEM_EXCESSCOLLCNT (0x00000140 / 4) /* Excessive Collision Frames */
++#define GEM_LATECOLLCNT   (0x00000144 / 4) /* Late Collision Frames */
++#define GEM_DEFERTXCNT    (0x00000148 / 4) /* Deferred Transmission Frames */
++#define GEM_CSENSECNT     (0x0000014C / 4) /* Carrier Sense Error Counter */
++#define GEM_OCTRXLO       (0x00000150 / 4) /* Octects Received register Low */
++#define GEM_OCTRXHI       (0x00000154 / 4) /* Octects Received register High */
++#define GEM_RXCNT         (0x00000158 / 4) /* Error-free Frames Received */
++#define GEM_RXBROADCNT    (0x0000015C / 4) /* Error-free Broadcast Frames RX */
++#define GEM_RXMULTICNT    (0x00000160 / 4) /* Error-free Multicast Frames RX */
++#define GEM_RXPAUSECNT    (0x00000164 / 4) /* Pause Frames Received Counter */
++#define GEM_RX64CNT       (0x00000168 / 4) /* Error-free 64 byte Frames RX */
++#define GEM_RX65CNT       (0x0000016C / 4) /* Error-free 65-127B Frames RX */
++#define GEM_RX128CNT      (0x00000170 / 4) /* Error-free 128-255B Frames RX */
++#define GEM_RX256CNT      (0x00000174 / 4) /* Error-free 256-512B Frames RX */
++#define GEM_RX512CNT      (0x00000178 / 4) /* Error-free 512-1023B Frames RX */
++#define GEM_RX1024CNT     (0x0000017C / 4) /* Error-free 1024-1518B Frames RX */
++#define GEM_RX1519CNT     (0x00000180 / 4) /* Error-free 1519-max Frames RX */
++#define GEM_RXUNDERCNT    (0x00000184 / 4) /* Undersize Frames Received */
++#define GEM_RXOVERCNT     (0x00000188 / 4) /* Oversize Frames Received */
++#define GEM_RXJABCNT      (0x0000018C / 4) /* Jabbers Received Counter */
++#define GEM_RXFCSCNT      (0x00000190 / 4) /* Frame Check seq. Error Counter */
++#define GEM_RXLENERRCNT   (0x00000194 / 4) /* Length Field Error Counter */
++#define GEM_RXSYMERRCNT   (0x00000198 / 4) /* Symbol Error Counter */
++#define GEM_RXALIGNERRCNT (0x0000019C / 4) /* Alignment Error Counter */
++#define GEM_RXRSCERRCNT   (0x000001A0 / 4) /* Receive Resource Error Counter */
++#define GEM_RXORUNCNT     (0x000001A4 / 4) /* Receive Overrun Counter */
++#define GEM_RXIPCSERRCNT  (0x000001A8 / 4) /* IP header Checksum Err Counter */
++#define GEM_RXTCPCCNT     (0x000001AC / 4) /* TCP Checksum Error Counter */
++#define GEM_RXUDPCCNT     (0x000001B0 / 4) /* UDP Checksum Error Counter */
++
++#define GEM_1588S         (0x000001D0 / 4) /* 1588 Timer Seconds */
++#define GEM_1588NS        (0x000001D4 / 4) /* 1588 Timer Nanoseconds */
++#define GEM_1588ADJ       (0x000001D8 / 4) /* 1588 Timer Adjust */
++#define GEM_1588INC       (0x000001DC / 4) /* 1588 Timer Increment */
++#define GEM_PTPETXS       (0x000001E0 / 4) /* PTP Event Frame Transmitted (s) */
++#define GEM_PTPETXNS      (0x000001E4 / 4) /*
++                                            * PTP Event Frame Transmitted (ns)
++                                            */
++#define GEM_PTPERXS       (0x000001E8 / 4) /* PTP Event Frame Received (s) */
++#define GEM_PTPERXNS      (0x000001EC / 4) /* PTP Event Frame Received (ns) */
++#define GEM_PTPPTXS       (0x000001E0 / 4) /* PTP Peer Frame Transmitted (s) */
++#define GEM_PTPPTXNS      (0x000001E4 / 4) /* PTP Peer Frame Transmitted (ns) */
++#define GEM_PTPPRXS       (0x000001E8 / 4) /* PTP Peer Frame Received (s) */
++#define GEM_PTPPRXNS      (0x000001EC / 4) /* PTP Peer Frame Received (ns) */
  
- #define GEM_NWCTRL        (0x00000000/4) /* Network Control reg */
- #define GEM_NWCFG         (0x00000004/4) /* Network Config reg */
-@@ -979,7 +978,7 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
-         size += 4;
-     }
+ /* Design Configuration Registers */
+-#define GEM_DESCONF       (0x00000280/4)
+-#define GEM_DESCONF2      (0x00000284/4)
+-#define GEM_DESCONF3      (0x00000288/4)
+-#define GEM_DESCONF4      (0x0000028C/4)
+-#define GEM_DESCONF5      (0x00000290/4)
+-#define GEM_DESCONF6      (0x00000294/4)
++#define GEM_DESCONF       (0x00000280 / 4)
++#define GEM_DESCONF2      (0x00000284 / 4)
++#define GEM_DESCONF3      (0x00000288 / 4)
++#define GEM_DESCONF4      (0x0000028C / 4)
++#define GEM_DESCONF5      (0x00000290 / 4)
++#define GEM_DESCONF6      (0x00000294 / 4)
+ #define GEM_DESCONF6_64B_MASK (1U << 23)
+-#define GEM_DESCONF7      (0x00000298/4)
++#define GEM_DESCONF7      (0x00000298 / 4)
  
--    DB_PRINT("config bufsize: %d packet size: %ld\n", rxbufsize, size);
-+    DB_PRINT("config bufsize: %u packet size: %zd\n", rxbufsize, size);
- 
-     /* Find which queue we are targeting */
-     q = get_queue_from_screen(s, rxbuf_ptr, rxbufsize);
-@@ -992,9 +991,9 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
-             return -1;
-         }
- 
--        DB_PRINT("copy %u bytes to 0x%" PRIx64 "\n",
--                 MIN(bytes_to_copy, rxbufsize),
--                 rx_desc_get_buffer(s, s->rx_desc[q]));
-+        DB_PRINT("copy %" PRIu32 " bytes to 0x%" PRIx64 "\n",
-+                MIN(bytes_to_copy, rxbufsize),
-+                rx_desc_get_buffer(s, s->rx_desc[q]));
- 
-         /* Copy packet data to emulated DMA buffer */
-         address_space_write(&s->dma_as, rx_desc_get_buffer(s, s->rx_desc[q]) +
-@@ -1160,8 +1159,8 @@ static void gem_transmit(CadenceGEMState *s)
-              */
-             if ((tx_desc_get_buffer(s, desc) == 0) ||
-                 (tx_desc_get_length(desc) == 0)) {
--                DB_PRINT("Invalid TX descriptor @ 0x%x\n",
--                         (unsigned)packet_desc_addr);
-+                DB_PRINT("Invalid TX descriptor @ 0x%" HWADDR_PRIx "\n",
-+                         packet_desc_addr);
-                 break;
-             }
- 
+ #define GEM_INT_Q1_STATUS               (0x00000400 / 4)
+ #define GEM_INT_Q1_MASK                 (0x00000640 / 4)
 -- 
 2.7.4
 

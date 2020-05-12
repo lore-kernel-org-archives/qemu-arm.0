@@ -1,400 +1,163 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1329996lfb;
-        Tue, 12 May 2020 09:56:25 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKskgQt8RysOPse0/5b9xFNqhqv6c62+5ug1NWj6I4wlLgzUty5AcVJ1DNg3HWtRlLAbR6V
-X-Received: by 2002:a17:906:6411:: with SMTP id d17mr18878217ejm.109.1589302585787;
-        Tue, 12 May 2020 09:56:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589302585; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1348026lfb;
+        Tue, 12 May 2020 10:18:15 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJDZ9RBP8Ttn3JNy8USRvDqLQlNLbHHGZ/5+tT04siJKycw1PxxPA5igViAzj09A2eazsFe
+X-Received: by 2002:a37:7745:: with SMTP id s66mr9647345qkc.429.1589303895033;
+        Tue, 12 May 2020 10:18:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589303895; cv=none;
         d=google.com; s=arc-20160816;
-        b=OIp4eXGImgNgQzwUUo5gezxG3kYBdTpoFUK37DEM1tepa7p/7L0cO9cEQfsbeLkEKq
-         kzmVwPaPoYgM9m/NnR8LbrOB5FBdkEvMuRS1Ba2exyMETerp8gmBREjaUpLn9RCQ/tSY
-         qKluqGh8NZG4CC+LylJx63S0A7ffP2wLfmwBHe3BqNtPSmLo8/NpGmdDUlIOJgufEe11
-         Z2x3kyaRRqyQre4oXc4Cxv889YA/5zF9eJXKo+aNOWyoFQxdXvc8vCt/Qz3pz8Y2aBsx
-         o99Lexp1yY1ScV3hdt/dDtK7dUaiLo5ybjFR/jCEKeO6qs5h9TrEV4ViDU9wgklNU7X5
-         ZLJQ==
+        b=KAlCoQrY0kah5l4tH/f5swKyYaeZvJgJyUq6/RQYW7hTXYAmJycVyh4vJtW0cAm4o9
+         yvabZmf/C1InqkGJiLzyxUM699NSStUplkItZ/M+Pz3rA9g4zk/0k9OTl4991FOJCQ4r
+         +Fw+kkMm83DEOcfjHk3j1J6Vxt8G/Kxn8y5MKMghfAxOv5z3mUpo0cH0ftZfEKXOCtoi
+         iI1WdPdHoSeAKB9P/GN+Td4LcgLJlAiHrUbJBV98zDCwdJJWZLbNs5expCUdPr9L/EEX
+         L841V+JWuHr/EAm8nw1EAQc6+gfBi6yAJtQtdvXCLkaXQQ/ggZnawvhHlxQ2dvNBgJGt
+         VoYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=jvTpgwbd+LTkl54Kt4cTm/vhOyWXxlbq+3ojpz64Gk8=;
-        b=WZMUTERx+R0vKA+oZ4u7a3ciZAzZiF1z1e/F5v0KYZlVSNIpN6usd9p0e+vx2QhVyn
-         UfiMA/RlTftIA6xt/Ys0bExtQFxZjEmFC4ddv4L4TzeZZ7v7xz1UTPkc/N7Y9cVVOGVT
-         M29qi+MN0EJfCbVI0Jz/H1AkueHl5sb5t4g65tg3OZcaVOc6Gpx69Zjr9KyHo8moGlZ3
-         64jyF7e/Ol0zEcsDSTU6HwfZnBGMXdowt/4n2aVuALTYNsKNcCGvv0jJbKnujQ7tb1hG
-         S6ezSiGBftB8JetO68EZyu+uKtj+HKLfawH9XRCg9duf37TG/ubsuMmcVCf5bWp0rbHX
-         9eJQ==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=WCmG8NceZRyTKj/xY60V7+ftAOxSguGIXh/rAYmdL/c=;
+        b=BkyMps+6HpS/yHTwuLm24E+XyiIIoNanomjVZ2o137yTGKX7BDSETHGzTRBIv8dW2w
+         UCXlPMFTYjI1ZXSyztwZqkr4tWJI1IHL1EGg95890hjut+7xCa2A86t/Bm+zj/OhoirY
+         X4T88mVSfkLaH0QE9J0DcBqADBiVBGu5JjIiQzujJocjWneRv/pn/JpdD2xK7+Ol34nu
+         HytOaxQ48NBSciAqUFoi3gFj3DeINvxMZdL+6n36ezKO5cQGrmtDKScyeyutPZOApCSB
+         QuUNum/Sm6sBJf3JHLiBUBmelF5wALvH8BWxrgkMrWrHJ4NSC2eSwW7XFyQsU1Q/bm6E
+         0GOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sEbNz3QB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=m6zPJuCD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9si6188722eja.138.2020.05.12.09.56.25
+        by mx.google.com with ESMTPS id g6si7832276qtp.275.2020.05.12.10.18.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 May 2020 09:56:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 May 2020 10:18:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sEbNz3QB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55610 helo=lists1p.gnu.org)
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=m6zPJuCD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40106 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jYYCe-00038U-Kr
-	for alex.bennee@linaro.org; Tue, 12 May 2020 12:56:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50774)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jYYXm-0002WX-Fk
+	for alex.bennee@linaro.org; Tue, 12 May 2020 13:18:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56670)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jYXwK-0006yU-M3
- for qemu-devel@nongnu.org; Tue, 12 May 2020 12:39:32 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:36783)
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1jYYX7-0001xz-My
+ for qemu-arm@nongnu.org; Tue, 12 May 2020 13:17:33 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:40021)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jYXwJ-0006N5-6l
- for qemu-devel@nongnu.org; Tue, 12 May 2020 12:39:32 -0400
-Received: by mail-wm1-x343.google.com with SMTP id w19so9435217wmc.1
- for <qemu-devel@nongnu.org>; Tue, 12 May 2020 09:39:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=jvTpgwbd+LTkl54Kt4cTm/vhOyWXxlbq+3ojpz64Gk8=;
- b=sEbNz3QB4lL4aDrpkmxAcr6fgTDjTqatABWw3sURm2rR6Dd8qAllDmwCLs+TES7AWI
- Ew1enGJ1mQ6m3iB50WAhoJy/C5xd07nBba73QQEdlv3qK4LmzTKnhDTrbiDmfKV1Jrra
- tuibWe3bgwrCjxHMWsfQsdiuNg3lcXLuP4oIzao2TZUC7Yu45TP7uZ8SXv2dSB5MmNdD
- D4t65L0kx1jfVHR97B6s7ferIeY85z1C72393a+eLxWAv0NbMvYzmlet2H5y6/HHO0YD
- jA6gkBS+vOLI3ul3jrbLncAaQqBHd5Jh/3Ef5vjBY2qePKRJ8pALG+B7l7zHyy8K8HQU
- djpQ==
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1jYYX5-00014E-Ea
+ for qemu-arm@nongnu.org; Tue, 12 May 2020 13:17:33 -0400
+Received: by mail-wr1-x444.google.com with SMTP id e16so16502054wra.7
+ for <qemu-arm@nongnu.org>; Tue, 12 May 2020 10:17:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=WCmG8NceZRyTKj/xY60V7+ftAOxSguGIXh/rAYmdL/c=;
+ b=m6zPJuCD1+RjnqmeDQMCw5QIY15OSj+E18XmWlEU+019ct63MFCyXeAfPegrq0CdP1
+ GlbxwqxZBhDj0yylk6sB361+QNIXHFkEB2RFRhIQK0hB/rmhPqPoLIRKa5m+pY7vF+Dw
+ xnWbj5Pr3jo+73DEoCrU55YyZYPBpejxWAcRSH/X1khr5rZscpR/d2y+0AFot5wogWvE
+ GuynbDDYDgUoGWaJbOdz9rhtX9TkIXlW+qUsFDohrlsbebfVJdGVHxA7yTI4YdDfs4VN
+ WTFD9ThWwnyh0Js46Zs1LhBXAN3RHZbt/KHugL3jbCctreUhL0VfKT2FHdgomzEpUnBL
+ UEZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=jvTpgwbd+LTkl54Kt4cTm/vhOyWXxlbq+3ojpz64Gk8=;
- b=qUU8O1Qh33K6d94cvXBlJ7dYMqEO+SZKvYEsJ8nTJEyxvhhan81YSBM++GSGKO5Ff+
- FMSTMBfC6EMHlR/KUMiupbdg/yBCtIL47Qzk4Un+aI/YiT9epG3pVkhd4QuMFNNDB2EF
- BXkOXy3m3rpyWly1/mZC9FMzVlE4UAfehC6rcspPRS+0PFg3rgxdv6F4x+ZF7jszFmWb
- AXsB6fgfixdZfmBPKgNexRfXD3M4Vo34h9u0qiIbswtQsaZ67wbYvReEZs3GNfsv33ej
- RXCS/rf1xqjXfxAfZb5t+WHW7P9wFrlZqf5hk4oKi03ZgOaO+V0BZvfaxL25NMw2Ue+j
- v3jA==
-X-Gm-Message-State: AGi0PuYLdAf46ducuuq3eibZZOK/62uD+c+epM4tCXDidYTJb/HAi2No
- VzxFVBQUvwOwjE3T3VZ2evyvS+2wU51Ajg==
-X-Received: by 2002:a1c:19c1:: with SMTP id 184mr22810671wmz.29.1589301569642; 
- Tue, 12 May 2020 09:39:29 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id o205sm18525981wmo.32.2020.05.12.09.39.28
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=WCmG8NceZRyTKj/xY60V7+ftAOxSguGIXh/rAYmdL/c=;
+ b=VJVpps6ABb/eiDUGkZ5u++GXNLAGfdh7UUGDdEw39FIGw8ZhZsdjIgtXZbej7sq00h
+ t5Lw1oWDiyxZUTIIkNiWRlqUUB+urTweuWRoPKRXXIKZeyJcil4knEc8cfgTEYJdMYut
+ lQ1eIU+b56jiXQp33cbSXdVPpTWE07AEFHfbJC1XAGe8gzs+C6qat5JeVij+gZ0ZJkt6
+ faZjTQDnuslcjW3CREbs1eFPjsQgSDQX0QRUll4sWMWC7ocqY99Wgr+ClfrQFr0gQ3JW
+ Q8udZZjKCs14mrWeyv+YV6LoQIHszqW+bixBi1Ypuc9equ7NoYp0Jubd9kkKy1hpVWwG
+ s5Eg==
+X-Gm-Message-State: AGi0PuYCxEeqFD67Bm/8JgLS/Bzw2YdJuWeEmNJsXoDsenAjIrNkpXgK
+ /oAlwo3xneg91KQJ7Xw4VVh8xg==
+X-Received: by 2002:a5d:448e:: with SMTP id j14mr14015145wrq.261.1589303848055; 
+ Tue, 12 May 2020 10:17:28 -0700 (PDT)
+Received: from vanye ([2001:470:1f09:12f0:b26e:bfff:fea9:f1b8])
+ by smtp.gmail.com with ESMTPSA id a24sm32185404wmb.24.2020.05.12.10.17.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 May 2020 09:39:29 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 17/17] target/arm: Convert NEON VFMA,
- VFMS 3-reg-same insns to decodetree
-Date: Tue, 12 May 2020 17:39:04 +0100
-Message-Id: <20200512163904.10918-18-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200512163904.10918-1-peter.maydell@linaro.org>
-References: <20200512163904.10918-1-peter.maydell@linaro.org>
+ Tue, 12 May 2020 10:17:27 -0700 (PDT)
+Date: Tue, 12 May 2020 18:17:25 +0100
+From: Leif Lindholm <leif@nuviainc.com>
+To: Radoslaw Biernacki <rad@semihalf.com>
+Subject: Re: [PATCH] MAINTAINERS: Update Radoslaw Biernacki email address
+Message-ID: <20200512171725.GN21486@vanye>
+References: <20200512170704.9290-1-rad@semihalf.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200512170704.9290-1-rad@semihalf.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=leif@nuviainc.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gjoLAtWSskgU
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ philmd@redhat.com, qemu-devel <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: TEkxLuaRInlF
 
-Convert the Neon floating point VFMA and VFMS insn to decodetree.
-These are the last insns in the 3-reg-same group so we can
-remove all the support/loop code from the old decoder.
+On Tue, May 12, 2020 at 19:07:04 +0200, Radoslaw Biernacki wrote:
+> My Linaro account is no longer active and stop forwarding emails to me.
+> Changing it to my current employer domain.
+> 
+> Signed-off-by: Radoslaw Biernacki <rad@semihalf.com>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/neon-dp.decode       |   3 +
- target/arm/translate-neon.inc.c |  41 ++++++++
- target/arm/translate.c          | 176 +-------------------------------
- 3 files changed, 46 insertions(+), 174 deletions(-)
+Acked-by: Leif Lindholm <leif@nuviainc.com>
 
-diff --git a/target/arm/neon-dp.decode b/target/arm/neon-dp.decode
-index c276faf8cce..f53bf8a4494 100644
---- a/target/arm/neon-dp.decode
-+++ b/target/arm/neon-dp.decode
-@@ -175,6 +175,9 @@ SHA256H2_3s      1111 001 1 0 . 01 .... .... 1100 . 1 . 0 .... \
- SHA256SU1_3s     1111 001 1 0 . 10 .... .... 1100 . 1 . 0 .... \
-                  vm=%vm_dp vn=%vn_dp vd=%vd_dp
- 
-+VFMA_fp_3s       1111 001 0 0 . 0 . .... .... 1100 ... 1 .... @3same_fp
-+VFMS_fp_3s       1111 001 0 0 . 1 . .... .... 1100 ... 1 .... @3same_fp
-+
- VQRDMLSH_3s      1111 001 1 0 . .. .... .... 1100 ... 1 .... @3same
- 
- VADD_fp_3s       1111 001 0 0 . 0 . .... .... 1101 ... 0 .... @3same_fp
-diff --git a/target/arm/translate-neon.inc.c b/target/arm/translate-neon.inc.c
-index 263d2b47132..7212876e8f0 100644
---- a/target/arm/translate-neon.inc.c
-+++ b/target/arm/translate-neon.inc.c
-@@ -1207,6 +1207,47 @@ static bool trans_VRSQRTS_fp_3s(DisasContext *s, arg_3same *a)
-     return do_3same(s, a, gen_VRSQRTS_fp_3s);
- }
- 
-+static void gen_VFMA_fp_3s(TCGv_i32 vd, TCGv_i32 vn, TCGv_i32 vm,
-+                            TCGv_ptr fpstatus)
-+{
-+    gen_helper_vfp_muladds(vd, vn, vm, vd, fpstatus);
-+}
-+
-+static bool trans_VFMA_fp_3s(DisasContext *s, arg_3same *a)
-+{
-+    if (!dc_isar_feature(aa32_simdfmac, s)) {
-+        return false;
-+    }
-+
-+    if (a->size != 0) {
-+        /* TODO fp16 support */
-+        return false;
-+    }
-+
-+    return do_3same_fp(s, a, gen_VFMA_fp_3s, true);
-+}
-+
-+static void gen_VFMS_fp_3s(TCGv_i32 vd, TCGv_i32 vn, TCGv_i32 vm,
-+                            TCGv_ptr fpstatus)
-+{
-+    gen_helper_vfp_negs(vn, vn);
-+    gen_helper_vfp_muladds(vd, vn, vm, vd, fpstatus);
-+}
-+
-+static bool trans_VFMS_fp_3s(DisasContext *s, arg_3same *a)
-+{
-+    if (!dc_isar_feature(aa32_simdfmac, s)) {
-+        return false;
-+    }
-+
-+    if (a->size != 0) {
-+        /* TODO fp16 support */
-+        return false;
-+    }
-+
-+    return do_3same_fp(s, a, gen_VFMS_fp_3s, true);
-+}
-+
- static bool do_3same_fp_pair(DisasContext *s, arg_3same *a, VFPGen3OpSPFn *fn)
- {
-     /* FP operations handled pairwise 32 bits at a time */
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index c1d4fab8e80..4c9bb8b5ac0 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -3391,78 +3391,6 @@ static void gen_neon_narrow_op(int op, int u, int size,
-     }
- }
- 
--/* Symbolic constants for op fields for Neon 3-register same-length.
-- * The values correspond to bits [11:8,4]; see the ARM ARM DDI0406B
-- * table A7-9.
-- */
--#define NEON_3R_VHADD 0
--#define NEON_3R_VQADD 1
--#define NEON_3R_VRHADD 2
--#define NEON_3R_LOGIC 3 /* VAND,VBIC,VORR,VMOV,VORN,VEOR,VBIF,VBIT,VBSL */
--#define NEON_3R_VHSUB 4
--#define NEON_3R_VQSUB 5
--#define NEON_3R_VCGT 6
--#define NEON_3R_VCGE 7
--#define NEON_3R_VSHL 8
--#define NEON_3R_VQSHL 9
--#define NEON_3R_VRSHL 10
--#define NEON_3R_VQRSHL 11
--#define NEON_3R_VMAX 12
--#define NEON_3R_VMIN 13
--#define NEON_3R_VABD 14
--#define NEON_3R_VABA 15
--#define NEON_3R_VADD_VSUB 16
--#define NEON_3R_VTST_VCEQ 17
--#define NEON_3R_VML 18 /* VMLA, VMLS */
--#define NEON_3R_VMUL 19
--#define NEON_3R_VPMAX 20
--#define NEON_3R_VPMIN 21
--#define NEON_3R_VQDMULH_VQRDMULH 22
--#define NEON_3R_VPADD_VQRDMLAH 23
--#define NEON_3R_SHA 24 /* SHA1C,SHA1P,SHA1M,SHA1SU0,SHA256H{2},SHA256SU1 */
--#define NEON_3R_VFM_VQRDMLSH 25 /* VFMA, VFMS, VQRDMLSH */
--#define NEON_3R_FLOAT_ARITH 26 /* float VADD, VSUB, VPADD, VABD */
--#define NEON_3R_FLOAT_MULTIPLY 27 /* float VMLA, VMLS, VMUL */
--#define NEON_3R_FLOAT_CMP 28 /* float VCEQ, VCGE, VCGT */
--#define NEON_3R_FLOAT_ACMP 29 /* float VACGE, VACGT, VACLE, VACLT */
--#define NEON_3R_FLOAT_MINMAX 30 /* float VMIN, VMAX */
--#define NEON_3R_FLOAT_MISC 31 /* float VRECPS, VRSQRTS, VMAXNM/MINNM */
--
--static const uint8_t neon_3r_sizes[] = {
--    [NEON_3R_VHADD] = 0x7,
--    [NEON_3R_VQADD] = 0xf,
--    [NEON_3R_VRHADD] = 0x7,
--    [NEON_3R_LOGIC] = 0xf, /* size field encodes op type */
--    [NEON_3R_VHSUB] = 0x7,
--    [NEON_3R_VQSUB] = 0xf,
--    [NEON_3R_VCGT] = 0x7,
--    [NEON_3R_VCGE] = 0x7,
--    [NEON_3R_VSHL] = 0xf,
--    [NEON_3R_VQSHL] = 0xf,
--    [NEON_3R_VRSHL] = 0xf,
--    [NEON_3R_VQRSHL] = 0xf,
--    [NEON_3R_VMAX] = 0x7,
--    [NEON_3R_VMIN] = 0x7,
--    [NEON_3R_VABD] = 0x7,
--    [NEON_3R_VABA] = 0x7,
--    [NEON_3R_VADD_VSUB] = 0xf,
--    [NEON_3R_VTST_VCEQ] = 0x7,
--    [NEON_3R_VML] = 0x7,
--    [NEON_3R_VMUL] = 0x7,
--    [NEON_3R_VPMAX] = 0x7,
--    [NEON_3R_VPMIN] = 0x7,
--    [NEON_3R_VQDMULH_VQRDMULH] = 0x6,
--    [NEON_3R_VPADD_VQRDMLAH] = 0x7,
--    [NEON_3R_SHA] = 0xf, /* size field encodes op type */
--    [NEON_3R_VFM_VQRDMLSH] = 0x7, /* For VFM, size bit 1 encodes op */
--    [NEON_3R_FLOAT_ARITH] = 0x5, /* size bit 1 encodes op */
--    [NEON_3R_FLOAT_MULTIPLY] = 0x5, /* size bit 1 encodes op */
--    [NEON_3R_FLOAT_CMP] = 0x5, /* size bit 1 encodes op */
--    [NEON_3R_FLOAT_ACMP] = 0x5, /* size bit 1 encodes op */
--    [NEON_3R_FLOAT_MINMAX] = 0x5, /* size bit 1 encodes op */
--    [NEON_3R_FLOAT_MISC] = 0x5, /* size bit 1 encodes op */
--};
--
- /* Symbolic constants for op fields for Neon 2-register miscellaneous.
-  * The values correspond to bits [17:16,10:7]; see the ARM ARM DDI0406B
-  * table A7-13.
-@@ -5383,108 +5311,8 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
-     rm_ofs = neon_reg_offset(rm, 0);
- 
-     if ((insn & (1 << 23)) == 0) {
--        /* Three register same length.  */
--        op = ((insn >> 7) & 0x1e) | ((insn >> 4) & 1);
--        /* Catch invalid op and bad size combinations: UNDEF */
--        if ((neon_3r_sizes[op] & (1 << size)) == 0) {
--            return 1;
--        }
--        /* All insns of this form UNDEF for either this condition or the
--         * superset of cases "Q==1"; we catch the latter later.
--         */
--        if (q && ((rd | rn | rm) & 1)) {
--            return 1;
--        }
--        switch (op) {
--        case NEON_3R_VFM_VQRDMLSH:
--            if (!u) {
--                /* VFM, VFMS */
--                if (size == 1) {
--                    return 1;
--                }
--                break;
--            }
--            /* VQRDMLSH : handled by decodetree */
--            return 1;
--
--        case NEON_3R_VADD_VSUB:
--        case NEON_3R_LOGIC:
--        case NEON_3R_VMAX:
--        case NEON_3R_VMIN:
--        case NEON_3R_VTST_VCEQ:
--        case NEON_3R_VCGT:
--        case NEON_3R_VCGE:
--        case NEON_3R_VQADD:
--        case NEON_3R_VQSUB:
--        case NEON_3R_VMUL:
--        case NEON_3R_VML:
--        case NEON_3R_VSHL:
--        case NEON_3R_SHA:
--        case NEON_3R_VHADD:
--        case NEON_3R_VRHADD:
--        case NEON_3R_VHSUB:
--        case NEON_3R_VABD:
--        case NEON_3R_VABA:
--        case NEON_3R_VQSHL:
--        case NEON_3R_VRSHL:
--        case NEON_3R_VQRSHL:
--        case NEON_3R_VPMAX:
--        case NEON_3R_VPMIN:
--        case NEON_3R_VPADD_VQRDMLAH:
--        case NEON_3R_VQDMULH_VQRDMULH:
--        case NEON_3R_FLOAT_ARITH:
--        case NEON_3R_FLOAT_MULTIPLY:
--        case NEON_3R_FLOAT_CMP:
--        case NEON_3R_FLOAT_ACMP:
--        case NEON_3R_FLOAT_MINMAX:
--        case NEON_3R_FLOAT_MISC:
--            /* Already handled by decodetree */
--            return 1;
--        }
--
--        if (size == 3) {
--            /* 64-bit element instructions: handled by decodetree */
--            return 1;
--        }
--        switch (op) {
--        case NEON_3R_VFM_VQRDMLSH:
--            if (!dc_isar_feature(aa32_simdfmac, s)) {
--                return 1;
--            }
--            break;
--        default:
--            break;
--        }
--
--        for (pass = 0; pass < (q ? 4 : 2); pass++) {
--
--        /* Elementwise.  */
--        tmp = neon_load_reg(rn, pass);
--        tmp2 = neon_load_reg(rm, pass);
--        switch (op) {
--        case NEON_3R_VFM_VQRDMLSH:
--        {
--            /* VFMA, VFMS: fused multiply-add */
--            TCGv_ptr fpstatus = get_fpstatus_ptr(1);
--            TCGv_i32 tmp3 = neon_load_reg(rd, pass);
--            if (size) {
--                /* VFMS */
--                gen_helper_vfp_negs(tmp, tmp);
--            }
--            gen_helper_vfp_muladds(tmp, tmp, tmp2, tmp3, fpstatus);
--            tcg_temp_free_i32(tmp3);
--            tcg_temp_free_ptr(fpstatus);
--            break;
--        }
--        default:
--            abort();
--        }
--        tcg_temp_free_i32(tmp2);
--
--        neon_store_reg(rd, pass, tmp);
--
--        } /* for pass */
--        /* End of 3 register same size operations.  */
-+        /* Three register same length: handled by decodetree */
-+        return 1;
-     } else if (insn & (1 << 4)) {
-         if ((insn & 0x00380080) != 0) {
-             /* Two registers and shift.  */
--- 
-2.20.1
-
+> ---
+>  .mailmap    | 1 +
+>  MAINTAINERS | 2 +-
+>  2 files changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/.mailmap b/.mailmap
+> index 6412067bde..668da447e3 100644
+> --- a/.mailmap
+> +++ b/.mailmap
+> @@ -46,6 +46,7 @@ Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com> <arikalo@wavecomp.com>
+>  Anthony Liguori <anthony@codemonkey.ws> Anthony Liguori <aliguori@us.ibm.com>
+>  James Hogan <jhogan@kernel.org> <james.hogan@imgtec.com>
+>  Leif Lindholm <leif@nuviainc.com> <leif.lindholm@linaro.org>
+> +Radoslaw Biernacki <rad@semihalf.com> <radoslaw.biernacki@linaro.org>
+>  Paul Burton <pburton@wavecomp.com> <paul.burton@mips.com>
+>  Paul Burton <pburton@wavecomp.com> <paul.burton@imgtec.com>
+>  Paul Burton <pburton@wavecomp.com> <paul@archlinuxmips.org>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 1f84e3ae2c..a9d6893036 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -799,7 +799,7 @@ F: include/hw/misc/imx6_*.h
+>  F: include/hw/ssi/imx_spi.h
+>  
+>  SBSA-REF
+> -M: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+> +M: Radoslaw Biernacki <rad@semihalf.com>
+>  M: Peter Maydell <peter.maydell@linaro.org>
+>  R: Leif Lindholm <leif@nuviainc.com>
+>  L: qemu-arm@nongnu.org
+> -- 
+> 2.17.1
+> 

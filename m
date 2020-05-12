@@ -1,101 +1,151 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp864116lfb;
-        Mon, 11 May 2020 23:02:23 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJ57dnulhpmNuGiwkOlFruYu5Bbqk8L4cpfAz0rjPi6kL2OfPBDhCU+089ENBUCHbDUhVNb
-X-Received: by 2002:a0c:e60d:: with SMTP id z13mr11247093qvm.137.1589263343839;
-        Mon, 11 May 2020 23:02:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589263343; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp894555lfb;
+        Mon, 11 May 2020 23:53:33 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKUXvc+tfDTMl3zzq9j0WVvCUG6UvQhP5/nRp729XWp5aYWw9AwiErai5+1g1MZSgnakDU6
+X-Received: by 2002:a37:414a:: with SMTP id o71mr19956169qka.141.1589266413049;
+        Mon, 11 May 2020 23:53:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589266413; cv=none;
         d=google.com; s=arc-20160816;
-        b=MBe+FsvOASXXtci63hTAn+AkI7P4aTlGXj1aqVeOY0BQjkY2+ll7XN2Pgfsh3T5Rdb
-         JsJE/f9qvhvsKPlGeCT6RR+7FJ9iaLBaY2wIESWSrWt94t7SMfJiOViX9ErfMHWQQf8t
-         tW1nM2NYC9yXqJ/OOjdX5+On8+bFAvgp3VBx7Jr5ld23SJV+Hkhwn85oQTLybOoY8A5Y
-         K/LKjO9/3wOO0+hsllH1DQ2zL/PvXe89yg0zIoemY4N3chLkwPFs6H9ZlQO0Q/3vUHQ2
-         7BbF/ao8FHgpXP+JFn6ASYqdQyv2VSkfUhjfhwcxyNeAhuvYEFfriR3iSmCHbKKCdBMr
-         UbBw==
+        b=NvkneKWxVgjXNS0YHflQqaKpg5Aa8rzeKDQpjNflfhjNkP5iBo2d/9nVneM+Oqhmrj
+         +y8AS1asYv/PF3FRXTSSmHes1Bllob4kml9n25Iw0hk7MprktNRnbNVxPDV5zASRuKTU
+         norNAZAROdPxOkw4JmcHaPuxCswnbSbH4e1uZfih6p6gQwSuawfEle4cveuI7jNGdFhw
+         JpMLnCyd4IQLpn5ghVQHPHLGFYk/cWShGysEFCskSdX1b8poFCMjASLVqPUZqQYk4adg
+         X/Mwo2Pb0V7RFUUtv+7voCO9R/ukpaAVNnDwFq6qmuwt8Cp+P3o8eA4EtFNfEVJWQo8D
+         E7FA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=nugp8cv/l75vGPOWqJLtFmJBdhcRZ01YnyHn34TCwiE=;
-        b=VLcc2bVlwNc/CuFZdEX+g+TCQOEaWiCtC3c3sm8f1fEMoXCr1Hftx8R6SgpWPhSQeJ
-         vGK1T0Y0Vfb1PIlk87on+1XQ275hTBvqBTOzkf/lZwue2z3BJxoWFWh8RQ7jxQe3D+Sy
-         HTpkl9npFhLgJs4uLGNtrUIsA2WTDOI3sol4QB1nMrrXCGW5P8q2oia02NnCUr+bSv+Q
-         6TzHZ4u0nh3EWYiTuoKTiG3BJUUw8ekYMu3lRMgZdktqxVqS+aI2ZAh+TEGZNskIx2oD
-         FyeB9M+uZYYxE4lrJTkowKE9FAlDCBB7AMZcBbUA9RZ1yBrt5jtUUpFqJ+2itWQkbXcG
-         yFgw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:autocrypt:from:references:to:subject
+         :dkim-signature;
+        bh=JD8mC5PgvPojuJ/apN+ecdkGeB9Hukxjdh9zL1AaXxI=;
+        b=Zl1dqTmkakNfq4xLhlxNLijBkNw8iQ5hhBcgY8UcKs2M5Hr4cRsYePH5gGxp7GjhS8
+         lfhrNsd4onqoQKEWuHTQSxDkBmbUQu257unRgz++H81yWD/1ruwlZ/npkrPpyg5Nomo7
+         6QV6GdkCN3vCdkxO6GfNX4G9NA5nPYSlSa3wpMC03vg8fRQyZdhhwlQCoXU3/czKtD05
+         n29sRPmqnzS3YmUvDha46mGZEZcVWKP9u/uzVF5aaVOGzd0d0aPjSX5kPwmCmsZra9fY
+         kp+ZdI+40Pmk0gS+vpXZdGD7fa3V0oRkbqs/qZClfEFcjmCqDDq+x5ikxfNc8jxxHvpT
+         r6YA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LY+s0qOF;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hfNRV+Yu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a73si6985387qkb.188.2020.05.11.23.02.23
+        by mx.google.com with ESMTPS id e9si6506486qth.94.2020.05.11.23.53.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 May 2020 23:02:23 -0700 (PDT)
+        Mon, 11 May 2020 23:53:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LY+s0qOF;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hfNRV+Yu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44716 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55874 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jYNzj-0001yP-8D
-	for alex.bennee@linaro.org; Tue, 12 May 2020 02:02:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46824)
+	id 1jYOnD-0002n3-IN
+	for alex.bennee@linaro.org; Tue, 12 May 2020 02:53:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52008)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1jYNzV-0001n7-EH
- for qemu-arm@nongnu.org; Tue, 12 May 2020 02:02:09 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:28957
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1jYOm3-0000lT-Id
+ for qemu-arm@nongnu.org; Tue, 12 May 2020 02:52:19 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:56208
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1jYNzU-0006mp-MC
- for qemu-arm@nongnu.org; Tue, 12 May 2020 02:02:09 -0400
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1jYOm2-0003aR-5s
+ for qemu-arm@nongnu.org; Tue, 12 May 2020 02:52:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589263325;
+ s=mimecast20190719; t=1589266337;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nugp8cv/l75vGPOWqJLtFmJBdhcRZ01YnyHn34TCwiE=;
- b=LY+s0qOFuiL+OTrDA3zvXO+JnIl81fL5smiREvWXY6b0P1bsQlEMxukPYi+4uIQR1HCld9
- uu8q6Xmgtt+a1j0YJDkTkncwWJiDGaMfP+/L11Ttig2lOfbbmtX3zkB1bDyQXt+RHvcytq
- OetaqIbfcbHV17sFyYSJaxOY/SmdvjA=
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=JD8mC5PgvPojuJ/apN+ecdkGeB9Hukxjdh9zL1AaXxI=;
+ b=hfNRV+Yuc1qJ+O5i1WrXJa4f9Q0zg1by1k9XklDYmWS9rGGsa2mgSYrsnJubCmTum7FGf3
+ m0oaYiab5ya0dgQ2QAFiB81aOggAFeTkO2dFRc9CfQqDtmHRiwFrUrr3wl+WRnR/WZKamy
+ AiCo4+Fw5yvnZC2Nh5wJtSWBz0BkShw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-226-9kTSJPCUNjuQd4HWHxIfhA-1; Tue, 12 May 2020 02:02:02 -0400
-X-MC-Unique: 9kTSJPCUNjuQd4HWHxIfhA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-193-_ql0_n6TO4KK743Gf-Gm9Q-1; Tue, 12 May 2020 02:52:15 -0400
+X-MC-Unique: _ql0_n6TO4KK743Gf-Gm9Q-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 26EA38015CE;
- Tue, 12 May 2020 06:01:58 +0000 (UTC)
-Received: from gondolin (ovpn-112-176.ams2.redhat.com [10.36.112.176])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9FACB5D9DD;
- Tue, 12 May 2020 06:01:48 +0000 (UTC)
-Date: Tue, 12 May 2020 08:01:46 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4BC3FEC1A1;
+ Tue, 12 May 2020 06:52:12 +0000 (UTC)
+Received: from [10.36.113.77] (ovpn-113-77.ams2.redhat.com [10.36.113.77])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 51BC12E17B;
+ Tue, 12 May 2020 06:52:06 +0000 (UTC)
 Subject: Re: [PATCH 08/11] target/s390x: Restrict system-mode declarations
-Message-ID: <20200512080146.7d0f4ae2.cohuck@redhat.com>
-In-Reply-To: <2bb91290-32c5-997d-c689-4d651836c7fc@amsat.org>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Cornelia Huck <cohuck@redhat.com>
 References: <20200509130910.26335-1-f4bug@amsat.org>
  <20200509130910.26335-9-f4bug@amsat.org>
  <20200511124804.1a7a43aa.cohuck@redhat.com>
  <2bb91290-32c5-997d-c689-4d651836c7fc@amsat.org>
+ <20200512080146.7d0f4ae2.cohuck@redhat.com>
+ <76077ce6-9981-35e0-89d2-3059438a139d@amsat.org>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
 Organization: Red Hat GmbH
+Message-ID: <e5b5feb0-7abd-b78d-94fe-d0cc20e54cb7@redhat.com>
+Date: Tue, 12 May 2020 08:52:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <76077ce6-9981-35e0-89d2-3059438a139d@amsat.org>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=cohuck@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=david@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 02:02:05
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 01:41:59
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,13 +167,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Marek Vasut <marex@denx.de>,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Marek Vasut <marex@denx.de>,
  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
  Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
  David Gibson <david@gibson.dropbear.id.au>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
@@ -131,80 +179,68 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <rth@twiddle.net>, qemu-riscv@nongnu.org,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Chris Wulff <crwulff@gmail.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
+ Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SUWCYxqccckQ
+X-TUID: nzGDccjPxVdB
 
-On Mon, 11 May 2020 14:21:27 +0200
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+On 12.05.20 08:46, Philippe Mathieu-Daudé wrote:
+> On 5/12/20 8:01 AM, Cornelia Huck wrote:
+>> On Mon, 11 May 2020 14:21:27 +0200
+>> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>>> On 5/11/20 12:48 PM, Cornelia Huck wrote:
+>>>> On Sat,  9 May 2020 15:09:07 +0200
+>>>> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>>>    
+>>>>> As these declarations are restricted to !CONFIG_USER_ONLY in
+>>>>> helper.c, only declare them when system-mode emulation is used.
+>>>>>
+>>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>>>> ---
+>>>>>    target/s390x/internal.h | 11 ++++++-----
+>>>>>    1 file changed, 6 insertions(+), 5 deletions(-)
+>>>>>
+>>>>> diff --git a/target/s390x/internal.h b/target/s390x/internal.h
+>>>>> index c1678dc6bc..ddc276cdf4 100644
+>>>>> --- a/target/s390x/internal.h
+>>>>> +++ b/target/s390x/internal.h
+>>>>> @@ -236,7 +236,6 @@ int s390_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+>>>>>    
+>>>>>    /* cc_helper.c */
+>>>>>    const char *cc_name(enum cc_op cc_op);
+>>>>> -void load_psw(CPUS390XState *env, uint64_t mask, uint64_t addr);
+>>>>>    uint32_t calc_cc(CPUS390XState *env, uint32_t cc_op, uint64_t src, uint64_t dst,
+>>>>>                     uint64_t vr);
+>>>>>    
+>>>>> @@ -303,18 +302,20 @@ void s390_cpu_gdb_init(CPUState *cs);
+>>>>>    
+>>>>>    /* helper.c */
+>>>>>    void s390_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+>>>>> -hwaddr s390_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+>>>>> -hwaddr s390_cpu_get_phys_addr_debug(CPUState *cpu, vaddr addr);
+>>>>> +void do_restart_interrupt(CPUS390XState *env);
+>>>>> +
+>>>>> +#ifndef CONFIG_USER_ONLY
+>>>>> +void load_psw(CPUS390XState *env, uint64_t mask, uint64_t addr);
+>>>>
+>>>> load_psw() is in cc_helper.c (and not in helper.c). Rather add the
+>>>> #ifndef above, even if it is a bit awkward? Otherwise, the wrong
+>>>> comment makes it confusing.
+>>>
+>>> I've been tempted to remove the kinda outdated /* helper.c */ comment...
+>>
+>> I don't think they're really outdated, but not sure how useful they are
+>> to people. I'm not personally attached to them, other opinions?
+> 
+> Since the project switched to git, developers can now use git-grep :)
 
-> On 5/11/20 12:48 PM, Cornelia Huck wrote:
-> > On Sat,  9 May 2020 15:09:07 +0200
-> > Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
-> >  =20
-> >> As these declarations are restricted to !CONFIG_USER_ONLY in
-> >> helper.c, only declare them when system-mode emulation is used.
-> >>
-> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> >> ---
-> >>   target/s390x/internal.h | 11 ++++++-----
-> >>   1 file changed, 6 insertions(+), 5 deletions(-)
-> >>
-> >> diff --git a/target/s390x/internal.h b/target/s390x/internal.h
-> >> index c1678dc6bc..ddc276cdf4 100644
-> >> --- a/target/s390x/internal.h
-> >> +++ b/target/s390x/internal.h
-> >> @@ -236,7 +236,6 @@ int s390_cpu_write_elf64_note(WriteCoreDumpFunctio=
-n f, CPUState *cs,
-> >>  =20
-> >>   /* cc_helper.c */
-> >>   const char *cc_name(enum cc_op cc_op);
-> >> -void load_psw(CPUS390XState *env, uint64_t mask, uint64_t addr);
-> >>   uint32_t calc_cc(CPUS390XState *env, uint32_t cc_op, uint64_t src, u=
-int64_t dst,
-> >>                    uint64_t vr);
-> >>  =20
-> >> @@ -303,18 +302,20 @@ void s390_cpu_gdb_init(CPUState *cs);
-> >>  =20
-> >>   /* helper.c */
-> >>   void s390_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
-> >> -hwaddr s390_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-> >> -hwaddr s390_cpu_get_phys_addr_debug(CPUState *cpu, vaddr addr);
-> >> +void do_restart_interrupt(CPUS390XState *env);
-> >> +
-> >> +#ifndef CONFIG_USER_ONLY
-> >> +void load_psw(CPUS390XState *env, uint64_t mask, uint64_t addr); =20
-> >=20
-> > load_psw() is in cc_helper.c (and not in helper.c). Rather add the
-> > #ifndef above, even if it is a bit awkward? Otherwise, the wrong
-> > comment makes it confusing. =20
->=20
-> I've been tempted to remove the kinda outdated /* helper.c */ comment...
+I consider these quite valuable to structure the file. But my life would
+go on without them.
 
-I don't think they're really outdated, but not sure how useful they are
-to people. I'm not personally attached to them, other opinions?
+-- 
+Thanks,
 
->=20
-> >  =20
-> >>   uint64_t get_psw_mask(CPUS390XState *env);
-> >>   void s390_cpu_recompute_watchpoints(CPUState *cs);
-> >>   void s390x_tod_timer(void *opaque);
-> >>   void s390x_cpu_timer(void *opaque);
-> >> -void do_restart_interrupt(CPUS390XState *env);
-> >>   void s390_handle_wait(S390CPU *cpu);
-> >> +hwaddr s390_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
-> >> +hwaddr s390_cpu_get_phys_addr_debug(CPUState *cpu, vaddr addr);
-> >>   #define S390_STORE_STATUS_DEF_ADDR offsetof(LowCore, floating_pt_sav=
-e_area)
-> >>   int s390_store_status(S390CPU *cpu, hwaddr addr, bool store_arch);
-> >>   int s390_store_adtl_status(S390CPU *cpu, hwaddr addr, hwaddr len);
-> >> -#ifndef CONFIG_USER_ONLY
-> >>   LowCore *cpu_map_lowcore(CPUS390XState *env);
-> >>   void cpu_unmap_lowcore(LowCore *lowcore);
-> >>   #endif /* CONFIG_USER_ONLY */ =20
-> >=20
-> >  =20
->=20
+David / dhildenb
 

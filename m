@@ -1,210 +1,221 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1131630lfb;
-        Tue, 12 May 2020 05:50:03 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJjI/HMF2ODjPFnA3AUITJ83UObJAlDtyCAgKH9N9zwdVaiLaC3cqBYlsBaTHyc7QwqBcFL
-X-Received: by 2002:a0c:8045:: with SMTP id 63mr20786915qva.68.1589287803758;
-        Tue, 12 May 2020 05:50:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589287803; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1154425lfb;
+        Tue, 12 May 2020 06:18:51 -0700 (PDT)
+X-Google-Smtp-Source: APiQypJxn00vV2vCPvOfFoODE3excOqOOfAVehZoEmWoXtZEYUhIVC/CUmQH7slswpCsptOyOnHW
+X-Received: by 2002:ae9:edd7:: with SMTP id c206mr20274928qkg.157.1589289530756;
+        Tue, 12 May 2020 06:18:50 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1589289530; cv=pass;
         d=google.com; s=arc-20160816;
-        b=xd0hrssSnyfeNU5d8WkVvUHkvsSjn59CHbdBH8swby1eS8yqec1aRXryW09nPy57Xp
-         BwAYY3tRDluLqZmtdtXHRTejLxYTfLfKLPPk+1avS/j1OGraqO76kSHFp1VIGBXwOtZY
-         thMyK/8ldH19GQyz0UCJkGnW0agEVxVu/PssPXQyolORyAW/y/JfbNs60sB0B1arNw/x
-         qwXYdg8OKw2uSfJRLAQ3+dn9gW63tPwi3ovdSBKHzi/fNvOo3Ri1jeAHiY4XcvIRhgTn
-         h+6k0a9AsQzzqxZVWo0XQsZ7icqjR/Lqfr4r2G4Y4jF9u9xZ+MOO3UM3VwQi6uGcdJnY
-         9puw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=VvbRpEohIi9agUK9bnhxrm7FNJy5bRaHunNaszOARiiRkJBXV6//0qyp2Ge3mzmZY9
+         W6XjTXGJXX6WP0d8aC3O+bvBhr4PJVTyMLAu9tUa4DgQ0txb/+N+Z7Rmr2HEZzRUIhsc
+         VuM06l71gnjtXBFKbMLoYBunoU7MsuP0gDyWn3VDX4Y/TStJhoTWmb76ZHgnY7hZe99M
+         Su8u61NmpsdjrEmsUUq885d3pFtE652UtbbBKplm6+K8uF+4IQIKX8P0x5m0E0c14zTX
+         jO3yWSjaFwACAgMA+ZGdaBc6hpywJfGYGa/9EkR9KYkjEc9FeSmWEaxG7eR4dS2IY+ye
+         gGQw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=A6r3NaFnAcVrEeMqXBb5G94A6MKmDfEU/jj3VfxkxEo=;
-        b=w8LsCNvFO70ULz7PlLcRjqypzzw1OIXG4ayabbMMHCvFgPPWrBHMcaU1TeHR7vVP+E
-         MgVEsedMUu6rDs3f/PHQ8kvbs5mVjXvnQN3NdNnbJLYwVBtn8IXYXwMzi9obbJgjeQuP
-         KKFizgph4n7iCpUfVYF+LK3RW7TUD8kUkmPjSTlm68y6lN0lDOEOwNQzvQ/jqEeaKlxi
-         mrVkjlydpMEGqRRjtTcX7KkEwVej3/Cw5MzSTkFewClrN7TflK3Om2doiC0Saqixdv8T
-         ZPbN9mS6puHzFjkrZDtRO6oeQAkAvyZzXvpwpwOjv14piCoymbQ0ZlOlQL7XZGT6Y2Co
-         SdZA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A6KPWvUB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from:dkim-signature;
+        bh=CXNdFxGW0sTf0/7o7k+pawDvfv7e8b/Pzl6aIVb+bJc=;
+        b=IYUNU1Kqvvni47iR9TIv+XAuu3YM4pMWISJWeYC8R2yF7GDrZeDn8r4leNP+ip+eA4
+         pyePUCBJ112C/xvxjcqMstamJBs9IVje39vwUe6DRXYhVyLc4sfE+WR2b25liVPb1fxe
+         652MJbxDxqEWx99LXPSWV8GkOl34lgVOf3jAo6fCCOFsSCP8lN7TlEvxOESVUfz71wve
+         6q+9kOgtWjvDVYVlZMMFa4h9zzK2XMlM++IZAWeQiz2RqU+u5lrF4huUx9RKWveA7ESj
+         jAuar/Qz22HasSaZk26Km5o+YQeqwXDq1suv84jy7nQsm9UFeDVMo3UvUXcJul986GBc
+         UrLQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=ciRM6XNt;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eb10si768462qvb.88.2020.05.12.05.50.03
+        by mx.google.com with ESMTPS id s4si7206984qvt.85.2020.05.12.06.18.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 May 2020 05:50:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 12 May 2020 06:18:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A6KPWvUB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41556 helo=lists1p.gnu.org)
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=ciRM6XNt;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45442 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jYUMF-0004sM-5R
-	for alex.bennee@linaro.org; Tue, 12 May 2020 08:50:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60238)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jYUo6-0007TV-0e
+	for alex.bennee@linaro.org; Tue, 12 May 2020 09:18:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46668)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <radoslaw.biernacki@gmail.com>)
- id 1jYT03-0004ab-B3; Tue, 12 May 2020 07:23:03 -0400
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c]:39856)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <radoslaw.biernacki@gmail.com>)
- id 1jYT01-0002Qd-Fp; Tue, 12 May 2020 07:23:02 -0400
-Received: by mail-ot1-x32c.google.com with SMTP id m13so10164364otf.6;
- Tue, 12 May 2020 04:23:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=A6r3NaFnAcVrEeMqXBb5G94A6MKmDfEU/jj3VfxkxEo=;
- b=A6KPWvUBtQC0Vzwotm99EbXHRuICLUByTW2St1ZPGDjmca70SOwXf8z8zBBawAjMlc
- K/euaAM2YB+Zb0lsPoJnFvm7BY8XmpBvCtjjq9Z1hUiY4R+GAzdBUEBF3lFeT3BSTnrg
- bQQ8VARsBqizeTgDR9xTk9ylviYVZH1ughlMxS1ZCcudqR17RQXRpSs2FzGCkY5CoyTg
- KUTYykBXYCRDBcHcy7ks3r3zd8LUYLAN5Z0ZvX9SBS+uuV1IwGu8xyzUAnwLdS2qTc6e
- NyZ/XMZdg5Yr/yAhZpt84znrwiD0+3QLF5PEcFhNNj3sOFWwFouR02mOB/UMhrCxkVWt
- 3tiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=A6r3NaFnAcVrEeMqXBb5G94A6MKmDfEU/jj3VfxkxEo=;
- b=uUtkQeEULwIkObo8guQtvEoj0RNiwe3/0iAgeHx2JpvKRyjLE4/M0zJBLrxsXee9RA
- XgtXF1VwB2LXCxL3Q07ix0ZGwI3rkaRiyZs2hsP4yf1p9XloU0RfVnZ4NTdnHCyEu+YR
- 4ynb0DXuZw11DOETrD1k9oH9MqruNa2JHIEhjfe8DESITimI1xuRyh5x8PfiSTXx4WZg
- ZNz4ckU+PG39SDWnpUi1xV0Ntn/HJG7vHWlEiWuvD5/eMEZzM5VyjSGmjFxSTeClDgBc
- BY5UIIRps5P8a6iCTIyrhJv51EryUi5/OGBfIXg5BXypjuVly19m0b/6x3g+zr/y846v
- xjGA==
-X-Gm-Message-State: AGi0PubWESvZj1ARAiASx+xVLu4CGK4tJi16Mbe7ujwlW0Ld3XpvkAiG
- zQEa0kfnbKFsgvrw3yILMgptWQ8XAK4aSr7eiLc=
-X-Received: by 2002:a05:6830:1b65:: with SMTP id
- d5mr15417069ote.141.1589282579309; 
- Tue, 12 May 2020 04:22:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
+ id 1jYUnr-0007T1-IF; Tue, 12 May 2020 09:18:35 -0400
+Received: from mail-mw2nam10on2064.outbound.protection.outlook.com
+ ([40.107.94.64]:6145 helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <saipava@xilinx.com>)
+ id 1jYUnp-0001zC-Sb; Tue, 12 May 2020 09:18:34 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ZXtmw2Ai4+YF8rY62GeRQUq/mPfgHX8ccTP73m5C+mSFOS0aH7gStR33T2fQIgVh5fREHSmIyxosCqcZVsIHm4BspjyEASp/TqcKC+j3IbfaJnpqBFA83dgN5ug2T+OO/EhXfRDDvUAn5Y9gvon4S+gk+6WB3RQbPiL/JzGgp8arn2SWNGYiP7ARufNI+64E082sEC13NsUnkFYLuCQulb8CestyyacJghuA7oWL3fL5EJ50HcgpWI50NMqhF7uUJA/21lmWSLPsEEnb5Tw5ZEtk1Gzt34XJcyzahtKW0Rz/g82n7pCTTmKYCxqRYLRaJWBBtX4YR2tWtR/iBOslEA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CXNdFxGW0sTf0/7o7k+pawDvfv7e8b/Pzl6aIVb+bJc=;
+ b=Zj8ih787s49o2VCsaLxtq2rs3IYbG15IzuROGVYgBv7vQS533fJAnHIuZKdnENbafwfZ5Kg7MDBOArMHGnHA0U4bLwe8vXd0s50X6N+5tvqsb5W4y4OdHouQbktvKEdPstW+VXk7V0XXbaCdVOHp9hqNwkUN6MAJBsyNBHhIXLwn8ZAEo7+B4xrRr6kuqpXJPGGv+/9jfFzCDM20cwiOL4ZLSj8lMZj5lcAQtxt3A/trz0piXgNnW4/0QVGz/4f4ouaDU2aUS69aon9ooJ2O0eGiMMbHy5/d7x7aVScx8b3u+XC1JZ2RAc8DT1qnT7oHkOcryCRS66ttJX0EU9WO5w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.60.83) smtp.rcpttodomain=wdc.com smtp.mailfrom=xilinx.com;
+ dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
+ not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CXNdFxGW0sTf0/7o7k+pawDvfv7e8b/Pzl6aIVb+bJc=;
+ b=ciRM6XNtJ/5bFtUte8Abm8gziEWU7GBFOwMzmf3YnFQobtuqhDCGaqiEejNxanBTuBMfLxhbeOQBMMkewvEgVlhmwTekv11F+oCu58fEKnQo0/ne8cuJjc2OC29Mx6D4yi38lxtXVcUzB2mpZlEAICUR9IRxhzCyfEOfruyLR68=
+Received: from CY4PR02CA0040.namprd02.prod.outlook.com (2603:10b6:903:117::26)
+ by DM6PR02MB4332.namprd02.prod.outlook.com (2603:10b6:5:23::32) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2979.33; Tue, 12 May
+ 2020 13:18:29 +0000
+Received: from CY1NAM02FT003.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:903:117:cafe::2e) by CY4PR02CA0040.outlook.office365.com
+ (2603:10b6:903:117::26) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3000.20 via Frontend
+ Transport; Tue, 12 May 2020 13:18:29 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
+ smtp.mailfrom=xilinx.com; wdc.com; dkim=none (message not signed)
+ header.d=none;wdc.com; dmarc=bestguesspass action=none
+ header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+ CY1NAM02FT003.mail.protection.outlook.com (10.152.74.151) with Microsoft SMTP
+ Server id 15.20.2979.29 via Frontend Transport; Tue, 12 May 2020 13:18:28
+ +0000
+Received: from [149.199.38.66] (port=47602 helo=xsj-pvapsmtp01)
+ by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
+ (envelope-from <sai.pavan.boddu@xilinx.com>)
+ id 1jYUnU-0002QD-6K; Tue, 12 May 2020 06:18:12 -0700
+Received: from [127.0.0.1] (helo=xsj-smtp-dlp1.xlnx.xilinx.com)
+ by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+ (envelope-from <sai.pavan.boddu@xilinx.com>)
+ id 1jYUnk-0005Ya-DM; Tue, 12 May 2020 06:18:28 -0700
+Received: from xsj-pvapsmtp01 (mailhost.xilinx.com [149.199.38.66])
+ by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id 04CDIR8q016830; 
+ Tue, 12 May 2020 06:18:27 -0700
+Received: from [10.140.6.35] (helo=xhdsaipava40.xilinx.com)
+ by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+ (envelope-from <saipava@xhdsaipava40.xilinx.com>)
+ id 1jYUnj-0005Y5-4z; Tue, 12 May 2020 06:18:27 -0700
+Received: by xhdsaipava40.xilinx.com (Postfix, from userid 14131)
+ id BF24913C0168; Tue, 12 May 2020 18:40:23 +0530 (IST)
+From: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Tong Ho <tong.ho@xilinx.com>, Ramon Fried <rfried.dev@gmail.com>
+Subject: [PATCH v4 00/12] Cadence GEM Fixes
+Date: Tue, 12 May 2020 18:39:55 +0530
+Message-Id: <1589289007-23629-1-git-send-email-sai.pavan.boddu@xilinx.com>
+X-Mailer: git-send-email 2.7.4
+X-RCIS-Action: ALLOW
+X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
+X-TM-AS-User-Approved-Sender: Yes;Yes
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:149.199.60.83; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:xsj-pvapsmtpgw01; PTR:unknown-60-83.xilinx.com; CAT:NONE;
+ SFTY:;
+ SFS:(39860400002)(376002)(346002)(396003)(136003)(46966005)(33430700001)(110136005)(8676002)(26005)(6266002)(478600001)(42186006)(316002)(4326008)(426003)(186003)(2616005)(82310400002)(8936002)(81166007)(36756003)(47076004)(356005)(70586007)(2906002)(33440700001)(5660300002)(70206006)(82740400003)(336012)(6666004);
+ DIR:OUT; SFP:1101; 
 MIME-Version: 1.0
-References: <dcb8d325-a2af-0c68-ad64-87f41521d4bb@redhat.com>
- <20200512093717.GZ21486@vanye>
-In-Reply-To: <20200512093717.GZ21486@vanye>
-From: Radoslaw Biernacki <radoslaw.biernacki@gmail.com>
-Date: Tue, 12 May 2020 13:22:49 +0200
-Message-ID: <CADp3C4vtiHnrcXCTzj-bUOCs=G=V6ayAtn9L7nEf+0BQSxDcWg@mail.gmail.com>
-Subject: Re: SBSA-REF maintainer email bouncing
-To: Leif Lindholm <leif@nuviainc.com>
-Content-Type: multipart/alternative; boundary="0000000000009669fb05a571af28"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32c;
- envelope-from=radoslaw.biernacki@gmail.com; helo=mail-ot1-x32c.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+Content-Type: text/plain
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 1ddb9a21-04cd-4e63-b64c-08d7f676f5d7
+X-MS-TrafficTypeDiagnostic: DM6PR02MB4332:
+X-Microsoft-Antispam-PRVS: <DM6PR02MB4332580DA4E19B0D7F55C803CABE0@DM6PR02MB4332.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:4941;
+X-Forefront-PRVS: 0401647B7F
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: wMb0MyNloREmBeDEXYCWOtDDfhSQ+N1MnwDISp34xtpvSn2MIEbe7Dmt/YgTqRJoVvANqiJor8aroMGT/mMqZT4+jRR1F9P4UilFX+5D3KKmh3CbLectkozbwszvVpUsarhCtMKD6qYlZbwhHajqWC2QQvgCkuy/why+KHU1m1PYrR1yNm9zVXJokAD/mP/R08GjdX8SsIW5x6OX7Fs5FVRiKZxrYQp3P0MMrTWJRBBiCIOh3ksXr9uDYMu6EbqkJPo/cE910fK1QuAUpGXAYl82fye64DSzTRXSnyDs8CQ4m6EAM1Xy0r83oy20UsgklhV54+WJdHGx1WpiGf8Ldta0+WjLOx5Q+913bI9CyZRvbGvSWsxop0AYVo8wqAMiBQH4hnsvQ+UfyP4IlR1S0MPxqtKnXO6N4ijxKyJuiJrBVp8J9eagq37FcJWqzA5veg3/dFFFQEplv2tY6LDbCKtensyCr1Aa88n+/3uovf8RXCdLeh0FxkvDt+LhbG1Txmol2PXrdI3+PMNWeWqaBd7qWYcp3m3KCO7stcLLDZuMgiPPRwJcsGylXxnmAQjO1CZONvHZecpVB7xiq1sj2g==
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 May 2020 13:18:28.7203 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1ddb9a21-04cd-4e63-b64c-08d7f676f5d7
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
+ Helo=[xsj-pvapsmtpgw01]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR02MB4332
+Received-SPF: pass client-ip=40.107.94.64; envelope-from=saipava@xilinx.com;
+ helo=NAM10-MW2-obe.outbound.protection.outlook.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 09:18:31
+X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 12 May 2020 08:48:17 -0400
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- qemu-devel <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Uk6EFnVPHM6P
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: b035om9KVfFO
 
---0000000000009669fb05a571af28
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi,
 
-Yes my Linaro account is not active anymore.
-I will sent a patch witch email update to rad@semihalf.com as this is my
-company's email.
+Following patch series fixes issues with priority queues,
+Adds JUMBO Frame support,
+Makes Debug statements compilable &
+Fixes related to multicast frames.
 
-wt., 12 maj 2020, 11:37 u=C5=BCytkownik Leif Lindholm <leif@nuviainc.com>
-napisa=C5=82:
+Changes for V2:
+	Fixed build failure on fedora docker machine
+	Fix buggy debug print to use sized integer casting
+Changes for V3:
+	1/10: Fixed debug statments to use %u and %zd
+	      Remove rxoffset for buffer address
+	2/10: Add inline functions to get tx/rx queue base address.
+	4/10: fix read only mask
+	5/10: Move packet buffers to CadenceGEMState
+	6/10: Add JUMBO MAX LEN register
+Changes for V4:
+	7/11: Fix up the existing code style in register defines
+	8/11: jumbo-max-len property sets the default value of jumbo frame
+	      Add frame lenght checks for tx and rx
 
-> On Tue, May 12, 2020 at 08:34:13 +0200, Philippe Mathieu-Daud=C3=A9 wrote=
-:
-> > Hello,
-> >
-> > Radoslaw Biernacki is listed as maintainer for the SBSA-REF board.
-> >
-> > His radoslaw.biernacki@linaro.org email address no longer works,
-> > apparently "Radoslaw Biernacki no longer works for Linaro".
->
-> That was probably technically the case already when the patches went
-> in, but Radek was given an "associate account" for continuity.
->
-> I'm digging into what happened (although as _I_ don't work for Linaro
-> anymore, that might take a bit longer than it otherwise would have).
->
-> /
->     Leif
->
-> >   SBSA-REF
-> >   M: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
-> >   M: Peter Maydell <peter.maydell@linaro.org>
-> >   R: Leif Lindholm <leif@nuviainc.com>
-> >   L: qemu-arm@nongnu.org
-> >   S: Maintained
-> >   F: hw/arm/sbsa-ref.c
-> >
->
+Sai Pavan Boddu (11):
+  net: cadence_gem: Fix debug statements
+  net: cadence_gem: Fix the queue address update during wrap around
+  net: cadence_gem: Fix irq update w.r.t queue
+  net: cadence_gem: Define access permission for interrupt registers
+  net: cadence_gem: Set ISR according to queue in use
+  net: cadence_gem: Move tx/rx packet buffert to CadenceGEMState
+  net: cadence_gem: Fix up code style
+  net: cadence_gem: Add support for jumbo frames
+  net: cadnece_gem: Update irq_read_clear field of designcfg_debug1 reg
+  net: cadence_gem: Update the reset value for interrupt mask register
+  net: cadence_gem: TX_LAST bit should be set by guest
 
---0000000000009669fb05a571af28
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Tong Ho (1):
+  net: cadence_gem: Fix RX address filtering
 
-<div dir=3D"auto">Yes my Linaro account is not active anymore.<div dir=3D"a=
-uto">I will sent a patch witch email update to <a href=3D"mailto:rad@semiha=
-lf.com">rad@semihalf.com</a> as this is my company&#39;s email.</div></div>=
-<br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">wt., 1=
-2 maj 2020, 11:37 u=C5=BCytkownik Leif Lindholm &lt;<a href=3D"mailto:leif@=
-nuviainc.com">leif@nuviainc.com</a>&gt; napisa=C5=82:<br></div><blockquote =
-class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid=
-;padding-left:1ex">On Tue, May 12, 2020 at 08:34:13 +0200, Philippe Mathieu=
--Daud=C3=A9 wrote:<br>
-&gt; Hello,<br>
-&gt; <br>
-&gt; Radoslaw Biernacki is listed as maintainer for the SBSA-REF board.<br>
-&gt; <br>
-&gt; His <a href=3D"mailto:radoslaw.biernacki@linaro.org" target=3D"_blank"=
- rel=3D"noreferrer">radoslaw.biernacki@linaro.org</a> email address no long=
-er works,<br>
-&gt; apparently &quot;Radoslaw Biernacki no longer works for Linaro&quot;.<=
-br>
-<br>
-That was probably technically the case already when the patches went<br>
-in, but Radek was given an &quot;associate account&quot; for continuity.<br=
->
-<br>
-I&#39;m digging into what happened (although as _I_ don&#39;t work for Lina=
-ro<br>
-anymore, that might take a bit longer than it otherwise would have).<br>
-<br>
-/<br>
-=C2=A0 =C2=A0 Leif<br>
-<br>
-&gt;=C2=A0 =C2=A0SBSA-REF<br>
-&gt;=C2=A0 =C2=A0M: Radoslaw Biernacki &lt;<a href=3D"mailto:radoslaw.biern=
-acki@linaro.org" target=3D"_blank" rel=3D"noreferrer">radoslaw.biernacki@li=
-naro.org</a>&gt;<br>
-&gt;=C2=A0 =C2=A0M: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linar=
-o.org" target=3D"_blank" rel=3D"noreferrer">peter.maydell@linaro.org</a>&gt=
-;<br>
-&gt;=C2=A0 =C2=A0R: Leif Lindholm &lt;<a href=3D"mailto:leif@nuviainc.com" =
-target=3D"_blank" rel=3D"noreferrer">leif@nuviainc.com</a>&gt;<br>
-&gt;=C2=A0 =C2=A0L: <a href=3D"mailto:qemu-arm@nongnu.org" target=3D"_blank=
-" rel=3D"noreferrer">qemu-arm@nongnu.org</a><br>
-&gt;=C2=A0 =C2=A0S: Maintained<br>
-&gt;=C2=A0 =C2=A0F: hw/arm/sbsa-ref.c<br>
-&gt; <br>
-</blockquote></div>
+ hw/net/cadence_gem.c         | 453 ++++++++++++++++++++++++-------------------
+ include/hw/net/cadence_gem.h |   6 +
+ 2 files changed, 260 insertions(+), 199 deletions(-)
 
---0000000000009669fb05a571af28--
+-- 
+2.7.4
+

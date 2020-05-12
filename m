@@ -1,152 +1,138 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp555233lfb;
-        Mon, 11 May 2020 14:12:15 -0700 (PDT)
-X-Google-Smtp-Source: APiQypJoQDvSiXtgUxu48MP0O6KJbJHrrXZLpGB4PUsKFXqrKnEQvjeIYKrTjqJJuUJZzRqT9MvB
-X-Received: by 2002:ac8:3664:: with SMTP id n33mr19563947qtb.363.1589231535286;
-        Mon, 11 May 2020 14:12:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589231535; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp767881lfb;
+        Mon, 11 May 2020 20:03:18 -0700 (PDT)
+X-Google-Smtp-Source: APiQypKsHXEwTlEAtRlMm9LNRN41e3Aq+2srYgwenhnsC9eoAlEWAxwyICaOFDIDRwPs+Nflm/qf
+X-Received: by 2002:a17:906:6944:: with SMTP id c4mr16165131ejs.96.1589252598400;
+        Mon, 11 May 2020 20:03:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589252598; cv=none;
         d=google.com; s=arc-20160816;
-        b=zYPFNk3jx8FhGmS18oZQUC1Aa+uNZt1o2Te6oFakdf5WcaMEUf33ANJEEEA91XCGVS
-         GkMe41PWweLkT33CQi2Wpn9+EWy8Em9vddO6qAOMAOu9aSdxDWnZIUvDuvT5ifFeP2JQ
-         rlMJMr0MYBcrXR5vTlLzvElcOqszsXWq+83RexXFuWDujPn19RWRfXM/gxWDZgWX34Tt
-         ITguSg6UMmVVwoWkejImRbvROw/6ijOQKkmW+DiIq0zKtt/GOnxKgCxxE56W2NIHsFLJ
-         TxGGjdfA/uoDycbiBwrV614ZOl4BChwApCqlNJvwULSpsFz0NDffznhgPi0rTK6yv3O9
-         Smzg==
+        b=BgUGQsO6S5aF9PhLqDSU+6HBHxcRx4hPt43xlvIhQKZ/8hqrZBXCNkGzxWzrryYJ49
+         anwOxpS8E50irSjPHBf4Q8Q2ZtkiRXmIXr+QgUKcJbgJDNcQ2k6+05SK8w0YEsd9tpiW
+         q5gXk/PrroBujFaV+ot5/SWmlIT+YpYB3c6EO3Y1Ey7paczsaPAQYCxy6wwBqXhNkiGq
+         xjR0zpd2m+20yUsKFhFNix2ObHdbd/RhsFVseXAnPe78RnGU4FLc2iSRR7zsgG7X2H9w
+         tViW9Ru2fWZikSbwtdt6qiLJNxIVMDdhxM+icLZ8VJURHwRph0r4RldUsF0KHpHImqLQ
+         Ysag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=BU3FEZ7eueZUvi2B9gCb6a6ZgqGmsW/r9yKr8z1X69Q=;
-        b=I5ACfsWx3YUabIrVhojnrTHQ6fZemo2nmI0uLq67VdLsUvcSorq0BygWqkbkXWT1jU
-         JuyQz+6Ur5NUzg7lLE8KvLcC+KZDrgez7u/WIMynRBqgby7j+i71N1+isQ0mjBzfUhxw
-         WdGH6yD+pEeERoys1iSTaRtTvHf0vwuHOQAwtWtyKoA57Sc/XAWMxJuRrTA226NU0u0Y
-         dcqpGzmCsV68mpm9OR3f7Vi5WeWNN8C99CnunzuU/pda7m7Yg7r/w1IZHoQqzkchdAXN
-         WuP0B6b+LMPb2WRLDnVGHi47D45voLLc9YFqhlC/LEld5F0rW/9AC80X2/pOMtgMF7AH
-         C+gg==
+        h=list-id:precedence:sender:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=s+fvDRZ1CPRG/7H9NdYT/yaVKL6n50iFZFAJ/UH7uSY=;
+        b=HNJLL+Wv64nYe6x5Wqo3ULLmXHSMmsBeVyy9SJlFi8PlycUvLyCXahJwWiv1VKA4nQ
+         MM/tUpWyycUfUdedk+hLBPSeXFVPuYn8T2FtohArZArXeve8g/T2ClljJRoV1vQpYU+H
+         SQx766kRMP9ya0up+bwC8apVWHcwwylK2BQkp5vZeRi/mD3TutCupY7h4gRDLp2ObGel
+         InCjQqCod64foT4Oyj/gout2pL+34hr5NleewXLxghiDIAPhYLIS3t6wyJw9HslsrAXK
+         FeqvODNUSpHwaT1N9erXaJbHMUu3UDlSZoa35XhcJzVdGzIkzvTOqj81l+O5Pje8KQac
+         EJ0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MoF+nPEu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c19si452279qvk.153.2020.05.11.14.12.15
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 May 2020 14:12:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id l23si1677934edj.333.2020.05.11.20.03.17;
+        Mon, 11 May 2020 20:03:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MoF+nPEu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34694 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jYFig-0003Nw-Lw
-	for alex.bennee@linaro.org; Mon, 11 May 2020 17:12:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39542)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1jYFiX-0003M8-Ps
- for qemu-arm@nongnu.org; Mon, 11 May 2020 17:12:05 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20380
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1jYFiV-00061H-JP
- for qemu-arm@nongnu.org; Mon, 11 May 2020 17:12:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589231521;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=BU3FEZ7eueZUvi2B9gCb6a6ZgqGmsW/r9yKr8z1X69Q=;
- b=MoF+nPEuiz3aulCYb+YAMtrTFtwLu5I3V5EqI19siCYMlvODTbu8Ajvx/ErCD8Kmz6lIr0
- fFkC9zsFsVPCsEQAFi3TBUs7tN/27vFVo5DKN/HdSNzMNV40fiRtW84kAOnI+g8KmfOH8D
- JBpoHN6ss8w2EuHZVn1bqQA1EmAz3Fc=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-24-OpDU1SdrOti084JjMrdC1w-1; Mon, 11 May 2020 17:11:59 -0400
-X-MC-Unique: OpDU1SdrOti084JjMrdC1w-1
-Received: by mail-qk1-f199.google.com with SMTP id r189so6990602qkc.3
- for <qemu-arm@nongnu.org>; Mon, 11 May 2020 14:11:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=BU3FEZ7eueZUvi2B9gCb6a6ZgqGmsW/r9yKr8z1X69Q=;
- b=HwpgStVYwe2xgS/I1rniVY3g3I0OQEsX87Mzd+D61h3wezzoynt6X3Eat/evhEe0pw
- jUN3cU4WvFEjxRpPdwV7xOFSU+jnfolQgb0pFzlmULRNtmt1c5I2oNTfcg/hS2ZNkrIH
- WDMSlaQTZSqC2GrxZKSi6gO3W0quhMRElteBLSQgi+xJClcI4qlowIRHL5GyItUkEKy+
- 75zxIN9jWv8fMnxyZnT/LGabAJVdka5rhaJQP+mzatx45ALJ9qMVAGx64rzXaUxfeODN
- pn1Q/FA/3OXKWQlcTLhMb0pd0fb2aEaSVeh9p2AmT3MD5t1x0yKRjkPOl/RcrlILpGeO
- 41Ug==
-X-Gm-Message-State: AGi0PuZDTcbp+PPG+b9davStrfOTov0/tVDRNViannQvAIA7DzuVEoli
- S+APP/8T14yQvcGG2TsWEjw4Ujp3SThlf9U2rZ5qJ249e7uMn5+ULM5s21ivJYyGCpL1UOPvDhe
- Ilpe8peDOQNLx
-X-Received: by 2002:ac8:6695:: with SMTP id d21mr18780367qtp.176.1589231519474; 
- Mon, 11 May 2020 14:11:59 -0700 (PDT)
-X-Received: by 2002:ac8:6695:: with SMTP id d21mr18780346qtp.176.1589231519208; 
- Mon, 11 May 2020 14:11:59 -0700 (PDT)
-Received: from xz-x1 ([2607:9880:19c0:32::2])
- by smtp.gmail.com with ESMTPSA id l2sm9315250qkd.57.2020.05.11.14.11.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 May 2020 14:11:58 -0700 (PDT)
-Date: Mon, 11 May 2020 17:11:56 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v2 3/5] virtio-iommu: Handle reserved regions in the
- translation process
-Message-ID: <20200511211156.GM228260@xz-x1>
-References: <20200508173057.32215-1-eric.auger@redhat.com>
- <20200508173057.32215-4-eric.auger@redhat.com>
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1728614AbgELDDN (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Mon, 11 May 2020 23:03:13 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:51726 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1727942AbgELDDN (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 11 May 2020 23:03:13 -0400
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 9119AE9D41E74A1CA8F9;
+        Tue, 12 May 2020 11:03:11 +0800 (CST)
+Received: from huawei.com (10.151.151.243) by DGGEMS413-HUB.china.huawei.com
+ (10.3.19.213) with Microsoft SMTP Server id 14.3.487.0; Tue, 12 May 2020
+ 11:03:04 +0800
+From:   Dongjiu Geng <gengdongjiu@huawei.com>
+To:     <imammedo@redhat.com>, <mst@redhat.com>,
+        <xiaoguangrong.eric@gmail.com>, <peter.maydell@linaro.org>,
+        <shannon.zhaosl@gmail.com>, <fam@euphon.net>, <rth@twiddle.net>,
+        <ehabkost@redhat.com>, <mtosatti@redhat.com>,
+        <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
+        <qemu-arm@nongnu.org>, <pbonzini@redhat.com>, <philmd@redhat.com>
+CC:     <gengdongjiu@huawei.com>, <zhengxiang9@huawei.com>,
+        <Jonathan.Cameron@huawei.com>, <linuxarm@huawei.com>
+Subject: [PATCH v27 02/10] hw/arm/virt: Introduce a RAS machine option
+Date:   Tue, 12 May 2020 11:06:01 +0800
+Message-ID: <20200512030609.19593-3-gengdongjiu@huawei.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200512030609.19593-1-gengdongjiu@huawei.com>
+References: <20200512030609.19593-1-gengdongjiu@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200508173057.32215-4-eric.auger@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=peterx@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/11 00:05:06
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, jean-philippe@linaro.org, mst@redhat.com,
- qemu-devel@nongnu.org, armbru@redhat.com, qemu-arm@nongnu.org,
- pbonzini@redhat.com, bbhushan2@marvell.com, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Qz6u68UcRX4G
+Content-Type: text/plain
+X-Originating-IP: [10.151.151.243]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: hPF36EQmFBnQ
 
-On Fri, May 08, 2020 at 07:30:55PM +0200, Eric Auger wrote:
-> When translating an address we need to check if it belongs to
-> a reserved virtual address range. If it does, there are 2 cases:
-> 
-> - it belongs to a RESERVED region: the guest should neither use
->   this address in a MAP not instruct the end-point to DMA on
->   them. We report an error
-> 
-> - It belongs to an MSI region: we bypass the translation.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+RAS Virtualization feature is not supported now, so
+add a RAS machine option and disable it by default.
 
-Reviewed-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+---
+ hw/arm/virt.c         | 23 +++++++++++++++++++++++
+ include/hw/arm/virt.h |  1 +
+ 2 files changed, 24 insertions(+)
 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 171e690..2d46c3f 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1995,6 +1995,20 @@ static void virt_set_acpi(Object *obj, Visitor *v, const char *name,
+     visit_type_OnOffAuto(v, name, &vms->acpi, errp);
+ }
+ 
++static bool virt_get_ras(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    return vms->ras;
++}
++
++static void virt_set_ras(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->ras = value;
++}
++
+ static char *virt_get_gic_version(Object *obj, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+@@ -2327,6 +2341,15 @@ static void virt_instance_init(Object *obj)
+                                     "Valid values are none and smmuv3",
+                                     NULL);
+ 
++    /* Default disallows RAS instantiation */
++    vms->ras = false;
++    object_property_add_bool(obj, "ras", virt_get_ras,
++                             virt_set_ras, NULL);
++    object_property_set_description(obj, "ras",
++                                    "Set on/off to enable/disable reporting host memory errors "
++                                    "to a KVM guest using ACPI and guest external abort exceptions",
++                                    NULL);
++
+     vms->irqmap = a15irqmap;
+ 
+     virt_flash_create(vms);
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 6d67ace..31878dd 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -132,6 +132,7 @@ typedef struct {
+     bool highmem_ecam;
+     bool its;
+     bool virt;
++    bool ras;
+     OnOffAuto acpi;
+     VirtGICType gic_version;
+     VirtIOMMUType iommu;
 -- 
-Peter Xu
-
+1.8.3.1

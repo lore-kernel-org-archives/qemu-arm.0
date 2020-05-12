@@ -1,127 +1,151 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp875877lfb;
-        Mon, 11 May 2020 23:20:16 -0700 (PDT)
-X-Google-Smtp-Source: APiQypIH5ymPgFd6PbUN8W6fkpB0OU60a+ndMx21ZviiS0FZ6qrTZrKJdRcg6b2NibLlf989TvBi
-X-Received: by 2002:a05:6402:c87:: with SMTP id cm7mr13958995edb.285.1589264416470;
-        Mon, 11 May 2020 23:20:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589264416; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp883918lfb;
+        Mon, 11 May 2020 23:34:29 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLIR+HiNoswG9LAMzU9PHwlAmbwMoDn7yGcRXMmRZuBiUS+VpzPClWPimUNdbW/cRXTY3ur
+X-Received: by 2002:ac8:24e7:: with SMTP id t36mr13867942qtt.360.1589265269713;
+        Mon, 11 May 2020 23:34:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589265269; cv=none;
         d=google.com; s=arc-20160816;
-        b=t3Ic0qGpi1N/CDHb0W+ZX3BqZ3Zv/Mt+UTehLt9jhzrRWcy8Y5HhnuZm/vAUHj1PyZ
-         ouUWh1TjByr1OtU1/1cVnqrkyZXHnzlXUGtKogqtpG7zn4kf2ggXeYblTFBvIWVkseuS
-         TvuQtYOGL7lrOqw2i5b7QMf2Sqrpfqi6Xdg1LOoQdjixstgZVgkDegtUnY8ZEn7yKzwU
-         slQ6mR0KsOqW0FI+u0dt7H5qEH0PC3ctS99vA5XftBzbTg8MJSjlDPChnLa7A7q/U8UX
-         QQvxy3uUoD5BuZxQU/CrFZyuixa7BcEFlr+5Vt9ynwsarejQYrI1x3k3pemAPkjrSYWC
-         QvAg==
+        b=IBJYrW5sRaz4PNzSpSNjN1YEdTVZGstw9ZQnnnM+YpWHbXPRGiGp9w11kt3R9nHY/b
+         xK/PL7KJ2GRbgdHxCLaJN58FDvB8MxdrYmzdSEP9eX7m2mz2Wwdcn59B/Y7seRC4fPpR
+         c1lqiZx63Rhj65s9cLacb4fPyB/xvs6oM4QLIfFlc7f52Yr8B7fT7QO9Y3S2MydIpFzg
+         e3ARDC1yFfxJKmH427eGV2Y+FpK6NsQH8LEOm0CytLNM2/xXprJj7SGHm0HOhf8usUjw
+         wAGvB5h3p+UJchxlLWWJa2yqxKjfFfOH3TEsCoExdP5oNIQAH1PH4Tr90ANX8/QwkEHV
+         p7+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:references:cc:to:from:subject
-         :dkim-signature;
-        bh=1HQTdxjBEpGIyjgdIPCiV/6/3iE1I9+2al6dRVoDtNw=;
-        b=ylwlq8K2VmUUntKo3RY6sDeUOQD4kJDkAFlbmbQMQ6QRTtmBmlDD1vjZjFIVX/PJfC
-         qTzoCF54gSxmyAcYVusRA1Ius5IVCYr8Tkoe6r17Huj5PtFPUQ5UTo4qZtNrj5tTuhUz
-         kxRqRKy+G7NKTMf2BWSwoLGRJ/ZJxDDxz1D9VPuS4jxWkZNXAjztC9lPuzg6CwfUiDVX
-         qoriiq2gccha12rO7DRJl3um/zZERGALAvfHCDsV288s+7ADLpQRVqicHT8A24LQpXzy
-         fR3Ux05Hk0YLCDMNpGUCgpLZ1/Jon5DjUTggX1zXeyd1fxrC97fV51r+BJ6ebWLJ2K1e
-         BY7A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:mime-version:user-agent:date:message-id:subject
+         :from:to:dkim-signature;
+        bh=JCusBzwy8B1uDd17LgzWIUtUKGYE2Mkj9ONUU1JKpj4=;
+        b=NLWRYR/1sqGzfgZyaORwij/8+ag+ZDKRod4kOPXz9XQxZm4C7IBLOW7aUr60JM1taQ
+         vdtM1MhnnLq1qGlGWs6U3vVj1m89xBUQgwxE96SxY+3lql0Yi5uNmX28pw/f1zXK/4ia
+         WqDhMIsnhdkrzXDDjeqVbfLQFSgCl97C13sdcxxHdcSVj1DhAu7RboSu0wUS4FE2a0Sw
+         2R34ihFZKgp/q6irAwF1P7THJy2nSZNjlxxu4ft7FOvVp6LGz9bzCtfqtYq+ryOmisNB
+         OlMuYLjKOmx3mYrX1/zpNS4o55RQLAvDeuRheWKOSKd7Rk+lvRAN4GFO6O8DwDE0QphT
+         7hMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ONoPDaxx;
-       spf=pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id i20si7547146edx.314.2020.05.11.23.20.16
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YbVB8SQX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g47si3597903qta.235.2020.05.11.23.34.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 11 May 2020 23:20:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 11 May 2020 23:34:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ONoPDaxx;
-       spf=pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YbVB8SQX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60206 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jYOUn-0006TL-6k
+	for alex.bennee@linaro.org; Tue, 12 May 2020 02:34:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50254)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jYOUf-0006RH-FJ
+ for qemu-arm@nongnu.org; Tue, 12 May 2020 02:34:21 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:54324
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jYOUd-0006jW-W4
+ for qemu-arm@nongnu.org; Tue, 12 May 2020 02:34:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1589264415;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:openpgp:openpgp;
-	bh=1HQTdxjBEpGIyjgdIPCiV/6/3iE1I9+2al6dRVoDtNw=;
-	b=ONoPDaxxxiUftZi2h14AQ1hqdV4dmo5Bak1O97X3QqnytZDd9BK2sI9rBL1AZxMKDNIn+I
-	LkBneC2pfgzFKyHcuWQPvoGxtalqL/CedYv2LB07FWn7htNtdYAzF1wu7XakNamRUF7+51
-	arNaY4/62J3C28QQLzjCDFIDKFF4Tzc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-431-F76wCez3P4KaVVy4JzzVJQ-1; Tue, 12 May 2020 02:20:13 -0400
-X-MC-Unique: F76wCez3P4KaVVy4JzzVJQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 348CFA0C01;
-	Tue, 12 May 2020 06:20:12 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-112.ams2.redhat.com [10.36.112.112])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EF2A35D9DD;
-	Tue, 12 May 2020 06:20:06 +0000 (UTC)
-Subject: Re: [PATCH v2] tests/acceptance: Add a test for the canon-a1100
- machine
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>,
- Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>
-References: <20200129090420.13954-1-thuth@redhat.com>
- <a967c93c-58b2-9a8d-02fe-e7fc9e833827@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <55becaae-cde0-3fcb-dd81-ece1dcb68113@redhat.com>
-Date: Tue, 12 May 2020 08:20:04 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ s=mimecast20190719; t=1589265259;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=JCusBzwy8B1uDd17LgzWIUtUKGYE2Mkj9ONUU1JKpj4=;
+ b=YbVB8SQXAjsj2rGT9tsmVw+QAqrymcpu67ibVUAbd0lJTVB34eIMa7gofil68jg0ONcev+
+ ypEo3nsiN78WSL4W0Zl2bBdLfbeWZ2hHF9zJn/KUQVDCInSpyQgy7mMH9xTAHhj1y1Mk75
+ 5hUqbtZYH8kFqCm5YaomFjRQ3L4lFcU=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-217-lKVDuOecNjaA6Pc0KyUk7w-1; Tue, 12 May 2020 02:34:16 -0400
+X-MC-Unique: lKVDuOecNjaA6Pc0KyUk7w-1
+Received: by mail-wr1-f72.google.com with SMTP id j16so6431356wrw.20
+ for <qemu-arm@nongnu.org>; Mon, 11 May 2020 23:34:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=JCusBzwy8B1uDd17LgzWIUtUKGYE2Mkj9ONUU1JKpj4=;
+ b=WOYKS+wxAMd42FQLw45xVjkDQtl1oETpeWdbE7zbBNX4zwiUn9U6Iu8DQfDC7FEZ0X
+ gq5o+f67pQdhPtBCurCBOqe64pW432eqZ3npguQ56x+ABHfSxOE+6YNDHmTXxh8TK27F
+ 3CcLAXJTkwun+VuGf8asU5NfwLOBOjsEPbYukbnfxDbXCVc6lFsqvRi9cpR/fe0D03+Q
+ dkgRGKfiMt2P407RtRiq13c0/rFu3WRMTGjuUEwuBQ4UtkWY+wmYDrM5CEQM9eA3KkUN
+ NdyMOuXSURQLRvLGcZGz8VyrwDJssUDCEE5QtL5puAnrhQQP8tvzeNEbA3UCaH183GkE
+ 0idg==
+X-Gm-Message-State: AGi0PuYmteAG+V9s+iLWb9NVhUskPg2khdDRURXUfPKQFiO++1/hDuOn
+ EnEw7Ni3pd9IeGLNL6mJ00MVEPlvZJXSLPuqgr24BAIHRPI3aNteIpSciQImEQTQnFibG1on8My
+ LheYC1VlGn5P2
+X-Received: by 2002:a1c:a3c5:: with SMTP id
+ m188mr14416907wme.160.1589265255221; 
+ Mon, 11 May 2020 23:34:15 -0700 (PDT)
+X-Received: by 2002:a1c:a3c5:: with SMTP id
+ m188mr14416878wme.160.1589265254938; 
+ Mon, 11 May 2020 23:34:14 -0700 (PDT)
+Received: from [192.168.1.38] (17.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.17])
+ by smtp.gmail.com with ESMTPSA id q5sm14215476wra.36.2020.05.11.23.34.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 11 May 2020 23:34:14 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <leif@nuviainc.com>, qemu-arm <qemu-arm@nongnu.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Subject: SBSA-REF maintainer email bouncing
+Message-ID: <dcb8d325-a2af-0c68-ad64-87f41521d4bb@redhat.com>
+Date: Tue, 12 May 2020 08:34:13 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <a967c93c-58b2-9a8d-02fe-e7fc9e833827@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-X-TUID: MiZS6vbvbrX7
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 01:41:59
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: radoslaw.biernacki@gmail.com, qemu-devel <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XVc09vqN6qPG
 
-On 10/02/2020 17.59, Thomas Huth wrote:
-> On 29/01/2020 10.04, Thomas Huth wrote:
->> The canon-a1100 machine can be used with the Barebox firmware. The
->> QEMU Advent Calendar 2018 features a pre-compiled image which we
->> can use for testing.
->>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
->> Tested-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  v2:
->>  - Rename file and add class docstring to please pylint
->>  - Add entry to MAINTAINERS
->>  - Add :avocado: tags=device:pflash_cfi02
->>
->>  MAINTAINERS                                |  1 +
->>  tests/acceptance/machine_arm_canona1100.py | 35 ++++++++++++++++++++++
->>  2 files changed, 36 insertions(+)
->>  create mode 100644 tests/acceptance/machine_arm_canona1100.py
->>
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index efd3f3875f..ddf6fe0794 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -561,6 +561,7 @@ S: Odd Fixes
->>  F: include/hw/arm/digic.h
->>  F: hw/*/digic*
->>  F: include/hw/*/digic*
->> +F: tests/acceptance/machine_arm_canona1100.py
-> [...]
-> 
->  Hi Peter,
-> 
-> could you maybe take this patch through your ARM tree?
+Hello,
 
-Ping?
+Radoslaw Biernacki is listed as maintainer for the SBSA-REF board.
 
- Thomas
+His radoslaw.biernacki@linaro.org email address no longer works,
+apparently "Radoslaw Biernacki no longer works for Linaro".
+
+   SBSA-REF
+   M: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
+   M: Peter Maydell <peter.maydell@linaro.org>
+   R: Leif Lindholm <leif@nuviainc.com>
+   L: qemu-arm@nongnu.org
+   S: Maintained
+   F: hw/arm/sbsa-ref.c
+

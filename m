@@ -1,304 +1,85 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp768002lfb;
-        Mon, 11 May 2020 20:03:29 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKLqcqIeimASSbs1KHGd0Q4i8eUpgoTNCGl5hVKW4E4Zad1Dwqo8REgdqbuk6hT7kcoh1qj
-X-Received: by 2002:a05:6402:6cb:: with SMTP id n11mr16389687edy.210.1589252609149;
-        Mon, 11 May 2020 20:03:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589252609; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp769804lfb;
+        Mon, 11 May 2020 20:06:18 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLttUuwMDXqIu7FPhl9E1b/SkLCdr4OkmULFXxKISA6CJWv6cTK0DD5ge82/TzkWIdFwfxk
+X-Received: by 2002:a50:e70a:: with SMTP id a10mr16986015edn.124.1589252778448;
+        Mon, 11 May 2020 20:06:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589252778; cv=none;
         d=google.com; s=arc-20160816;
-        b=v1/tjIlKlLj37rwmhBiJHWaLcKA3F4A8KHt//f7JTeHJzcOFcz2cGtWnTkXGum+W85
-         JytEpcM0MKbV4/Z6HpmHPRsAMMGPA2vvSjKKOdfSDuTGxHZPrTLCE1GNP+vCFji6+qWq
-         mUBDrdwtyVromCF/vZvS7M+zXnHDpCho8nRSXrxU2lpDuiV2SYdcLJ456OwMo2T7vup8
-         5YOW+IitRXILCPzyjC+JJWrJ1tnzCfnNNNSY9sv1+YosiDSYmSvksB9oGi87SY/T5dDs
-         KpuNgtaIaz226QgaQdvVeHjJBx3qMFUzKN5/XqVVwON+d7p2nYyn6u1CzvG/k9MbKHLr
-         ZwfA==
+        b=ufy3dnAXeXZejxMISWdXibcEJ1ZyaYCMdeCma+KiIGS4gQ+HoUaZsYaUw0G9MxX1N3
+         H0KYVpPTc622K+quGs01FYlU+H07kEMQCWOnBS/NuEzY8iwT4hEgx3rjZgKFkE3EeLT+
+         T2w6fHsfvKGC0RohEWBZHBwX03oybYShVADEKYVf2RrLT8NpbpVseXjgWV1HEj3q5TfV
+         +2qkd3dvn4+cGQh5CZGSfaeZmGSBAMMCjNKndqzuogr9driHYXohgv6A/u/kqBVghk+r
+         jjgwe4MG0pfFgezhEbXJwgEz02pM/P8mjg/zJIETb93rUVPVQQmYahFjCKEGj1QjvLMg
+         65AA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=R1qv1bYaUkR72cKbUOUKRnFwuhiviY2lHsnjoGRwVx0=;
-        b=DNdXTd315Ie2N6EL0+OwsrzuQd1Wa6nfXp5LPhrvMftVxDWo0Mrp0K6ySGKqJoX4bJ
-         uaaY/ibLTE+j5a+S46SYBYzW9b6vUeTxg5+UDmdqMMh5CPQLm1+YHnh7lsHVkBvgawcd
-         +R59ZKf6Chst2gDT0EBR8eBKITjehuzISa4HBcSLKufqKfzDskaYriyZa0gAPwB4g7ov
-         L9a634InUygp9uvEQNzXmh5qixzVzJihm+4YmzzVucN/4I1sUAMKlajnrUM7RXbOlS1M
-         8FrRaq7EkWoIg/vrsIas/GT+y4vlTLhjaDgL4ljlm5o0gcsjTCRApGYsULEZdhKW5LvO
-         SPBA==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=1awtq1V7bwWCWjt7qiWknor4ugYWq2+uGFYNTYjrgG0=;
+        b=0IAEbNjeUTiKD/WfcXdtaEoRTebz6WATby8HBICbq4X2hvQm97L5Q0qVd9X5azFJM1
+         OLADU1kkoKNMiclqFQqw/XzruYNJkRV0hxB6o0Z5NMgMmHTU7iV9wxqFtPlVcuXTm6tW
+         NijmidaFZR3oNU98+Bs3+wHMrT0818Nh7Pozslix0wT57DzfN7copc5IerguN8T/L427
+         weQm9g/mScth8IXbVKANU0Dih0mc6jMIBnxP7ZnJLZC21oU44hpoOrsr1yZLZcQzGIYN
+         vQcEu/TVH3jNc8AnL3qbaPjF4yGmixpLDXWP1hZY+ddk3cWm4ys/JGekT7WJ0zLb+EkL
+         z0TA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id l23si1677934edj.333.2020.05.11.20.03.29;
-        Mon, 11 May 2020 20:03:29 -0700 (PDT)
+        by mx.google.com with ESMTP id l23si1677934edj.333.2020.05.11.20.06.18;
+        Mon, 11 May 2020 20:06:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728707AbgELDD2 (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 11 May 2020 23:03:28 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:4339 "EHLO huawei.com"
+        id S1728559AbgELDGR (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Mon, 11 May 2020 23:06:17 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4395 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1728639AbgELDDV (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 11 May 2020 23:03:21 -0400
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id DB7A2835BDC436624081;
-        Tue, 12 May 2020 11:03:16 +0800 (CST)
-Received: from huawei.com (10.151.151.243) by DGGEMS413-HUB.china.huawei.com
- (10.3.19.213) with Microsoft SMTP Server id 14.3.487.0; Tue, 12 May 2020
- 11:03:10 +0800
-From:   Dongjiu Geng <gengdongjiu@huawei.com>
-To:     <imammedo@redhat.com>, <mst@redhat.com>,
-        <xiaoguangrong.eric@gmail.com>, <peter.maydell@linaro.org>,
-        <shannon.zhaosl@gmail.com>, <fam@euphon.net>, <rth@twiddle.net>,
+        id S1728348AbgELDGQ (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 11 May 2020 23:06:16 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
+        by Forcepoint Email with ESMTP id 188011085950D5E99F69;
+        Tue, 12 May 2020 11:06:14 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS406-HUB.china.huawei.com
+ (10.3.19.206) with Microsoft SMTP Server id 14.3.487.0; Tue, 12 May 2020
+ 11:06:05 +0800
+Subject: Re: [PATCH v26 01/10] acpi: nvdimm: change NVDIMM_UUID_LE to a common
+ macro
+To:     Igor Mammedov <imammedo@redhat.com>
+CC:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+        <mst@redhat.com>, <xiaoguangrong.eric@gmail.com>,
+        <peter.maydell@linaro.org>, <shannon.zhaosl@gmail.com>,
+        <pbonzini@redhat.com>, <fam@euphon.net>, <rth@twiddle.net>,
         <ehabkost@redhat.com>, <mtosatti@redhat.com>,
         <qemu-devel@nongnu.org>, <kvm@vger.kernel.org>,
-        <qemu-arm@nongnu.org>, <pbonzini@redhat.com>, <philmd@redhat.com>
-CC:     <gengdongjiu@huawei.com>, <zhengxiang9@huawei.com>,
-        <Jonathan.Cameron@huawei.com>, <linuxarm@huawei.com>
-Subject: [PATCH v27 09/10] target-arm: kvm64: handle SIGBUS signal from kernel or KVM
-Date:   Tue, 12 May 2020 11:06:08 +0800
-Message-ID: <20200512030609.19593-10-gengdongjiu@huawei.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200512030609.19593-1-gengdongjiu@huawei.com>
-References: <20200512030609.19593-1-gengdongjiu@huawei.com>
+        <qemu-arm@nongnu.org>, <zhengxiang9@huawei.com>,
+        <linuxarm@huawei.com>, <Jonathan.Cameron@huawei.com>
+References: <20200507134205.7559-1-gengdongjiu@huawei.com>
+ <20200507134205.7559-2-gengdongjiu@huawei.com>
+ <4f29e19c-cb37-05e6-0ae3-c019370e090b@redhat.com>
+ <777c44a0-b977-a8fe-a3c6-5b217e9093af@huawei.com>
+ <20200511214157.6a64526a@redhat.com>
+From:   gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <58878e68-22a3-376b-0ad3-1945c5c76758@huawei.com>
+Date:   Tue, 12 May 2020 11:06:04 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.151.151.243]
+In-Reply-To: <20200511214157.6a64526a@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.142.68.147]
 X-CFilter-Loop: Reflected
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: JATN/RpJ5yn7
+X-TUID: tLuEI0xb+Qw+
 
-Add a SIGBUS signal handler. In this handler, it checks the SIGBUS type,
-translates the host VA delivered by host to guest PA, then fills this PA
-to guest APEI GHES memory, then notifies guest according to the SIGBUS
-type.
+On 2020/5/12 3:41, Igor Mammedov wrote:
+> for future, adding RESEND doesn't make sence here. If you change patches then just bump version.
 
-When guest accesses the poisoned memory, it will generate a Synchronous
-External Abort(SEA). Then host kernel gets an APEI notification and calls
-memory_failure() to unmapped the affected page in stage 2, finally
-returns to guest.
-
-Guest continues to access the PG_hwpoison page, it will trap to KVM as
-stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered to
-Qemu, Qemu records this error address into guest APEI GHES memory and
-notifes guest using Synchronous-External-Abort(SEA).
-
-In order to inject a vSEA, we introduce the kvm_inject_arm_sea() function
-in which we can setup the type of exception and the syndrome information.
-When switching to guest, the target vcpu will jump to the synchronous
-external abort vector table entry.
-
-The ESR_ELx.DFSC is set to synchronous external abort(0x10), and the
-ESR_ELx.FnV is set to not valid(0x1), which will tell guest that FAR is
-not valid and hold an UNKNOWN value. These values will be set to KVM
-register structures through KVM_SET_ONE_REG IOCTL.
-
-Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Acked-by: Xiang Zheng <zhengxiang9@huawei.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
----
- include/sysemu/kvm.h    |  3 +-
- target/arm/cpu.h        |  4 +++
- target/arm/helper.c     |  2 +-
- target/arm/internals.h  |  5 ++--
- target/arm/kvm64.c      | 77 +++++++++++++++++++++++++++++++++++++++++++++++++
- target/arm/tlb_helper.c |  2 +-
- target/i386/cpu.h       |  2 ++
- 7 files changed, 89 insertions(+), 6 deletions(-)
-
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 141342d..3b22504 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -379,8 +379,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
- /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
- unsigned long kvm_arch_vcpu_id(CPUState *cpu);
- 
--#ifdef TARGET_I386
--#define KVM_HAVE_MCE_INJECTION 1
-+#ifdef KVM_HAVE_MCE_INJECTION
- void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
- #endif
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 8608da6..89f51c6 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -28,6 +28,10 @@
- /* ARM processors have a weak memory model */
- #define TCG_GUEST_DEFAULT_MO      (0)
- 
-+#ifdef TARGET_AARCH64
-+#define KVM_HAVE_MCE_INJECTION 1
-+#endif
-+
- #define EXCP_UDEF            1   /* undefined instruction */
- #define EXCP_SWI             2   /* software interrupt */
- #define EXCP_PREFETCH_ABORT  3
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a94f650..355b2d5 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -3481,7 +3481,7 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-              * Report exception with ESR indicating a fault due to a
-              * translation table walk for a cache maintenance instruction.
-              */
--            syn = syn_data_abort_no_iss(current_el == target_el,
-+            syn = syn_data_abort_no_iss(current_el == target_el, 0,
-                                         fi.ea, 1, fi.s1ptw, 1, fsc);
-             env->exception.vaddress = value;
-             env->exception.fsr = fsr;
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index e633aff..37c22a9 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -451,13 +451,14 @@ static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
-         | ARM_EL_IL | (ea << 9) | (s1ptw << 7) | fsc;
- }
- 
--static inline uint32_t syn_data_abort_no_iss(int same_el,
-+static inline uint32_t syn_data_abort_no_iss(int same_el, int fnv,
-                                              int ea, int cm, int s1ptw,
-                                              int wnr, int fsc)
- {
-     return (EC_DATAABORT << ARM_EL_EC_SHIFT) | (same_el << ARM_EL_EC_SHIFT)
-            | ARM_EL_IL
--           | (ea << 9) | (cm << 8) | (s1ptw << 7) | (wnr << 6) | fsc;
-+           | (fnv << 10) | (ea << 9) | (cm << 8) | (s1ptw << 7)
-+           | (wnr << 6) | fsc;
- }
- 
- static inline uint32_t syn_data_abort_with_iss(int same_el,
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index be5b31c..d53f7f2 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -28,6 +28,9 @@
- #include "sysemu/kvm_int.h"
- #include "kvm_arm.h"
- #include "internals.h"
-+#include "hw/acpi/acpi.h"
-+#include "hw/acpi/ghes.h"
-+#include "hw/arm/virt.h"
- 
- static bool have_guest_debug;
- 
-@@ -893,6 +896,30 @@ int kvm_arm_cpreg_level(uint64_t regidx)
-     return KVM_PUT_RUNTIME_STATE;
- }
- 
-+/* Callers must hold the iothread mutex lock */
-+static void kvm_inject_arm_sea(CPUState *c)
-+{
-+    ARMCPU *cpu = ARM_CPU(c);
-+    CPUARMState *env = &cpu->env;
-+    CPUClass *cc = CPU_GET_CLASS(c);
-+    uint32_t esr;
-+    bool same_el;
-+
-+    c->exception_index = EXCP_DATA_ABORT;
-+    env->exception.target_el = 1;
-+
-+    /*
-+     * Set the DFSC to synchronous external abort and set FnV to not valid,
-+     * this will tell guest the FAR_ELx is UNKNOWN for this abort.
-+     */
-+    same_el = arm_current_el(env) == env->exception.target_el;
-+    esr = syn_data_abort_no_iss(same_el, 1, 0, 0, 0, 0, 0x10);
-+
-+    env->exception.syndrome = esr;
-+
-+    cc->do_interrupt(c);
-+}
-+
- #define AARCH64_CORE_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U64 | \
-                  KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
- 
-@@ -1326,6 +1353,56 @@ int kvm_arch_get_registers(CPUState *cs)
-     return ret;
- }
- 
-+void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-+{
-+    ram_addr_t ram_addr;
-+    hwaddr paddr;
-+    Object *obj = qdev_get_machine();
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+    bool acpi_enabled = virt_is_acpi_enabled(vms);
-+
-+    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
-+
-+    if (acpi_enabled && addr &&
-+            object_property_get_bool(obj, "ras", NULL)) {
-+        ram_addr = qemu_ram_addr_from_host(addr);
-+        if (ram_addr != RAM_ADDR_INVALID &&
-+            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-+            kvm_hwpoison_page_add(ram_addr);
-+            /*
-+             * If this is a BUS_MCEERR_AR, we know we have been called
-+             * synchronously from the vCPU thread, so we can easily
-+             * synchronize the state and inject an error.
-+             *
-+             * TODO: we currently don't tell the guest at all about
-+             * BUS_MCEERR_AO. In that case we might either be being
-+             * called synchronously from the vCPU thread, or a bit
-+             * later from the main thread, so doing the injection of
-+             * the error would be more complicated.
-+             */
-+            if (code == BUS_MCEERR_AR) {
-+                kvm_cpu_synchronize_state(c);
-+                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
-+                    kvm_inject_arm_sea(c);
-+                } else {
-+                    error_report("failed to record the error");
-+                    abort();
-+                }
-+            }
-+            return;
-+        }
-+        if (code == BUS_MCEERR_AO) {
-+            error_report("Hardware memory error at addr %p for memory used by "
-+                "QEMU itself instead of guest system!", addr);
-+        }
-+    }
-+
-+    if (code == BUS_MCEERR_AR) {
-+        error_report("Hardware memory error!");
-+        exit(1);
-+    }
-+}
-+
- /* C6.6.29 BRK instruction */
- static const uint32_t brk_insn = 0xd4200000;
- 
-diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-index e63f8bd..7388494 100644
---- a/target/arm/tlb_helper.c
-+++ b/target/arm/tlb_helper.c
-@@ -33,7 +33,7 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
-      * ISV field.
-      */
-     if (!(template_syn & ARM_EL_ISV) || target_el != 2 || s1ptw) {
--        syn = syn_data_abort_no_iss(same_el,
-+        syn = syn_data_abort_no_iss(same_el, 0,
-                                     ea, 0, s1ptw, is_write, fsc);
-     } else {
-         /*
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index e818fc7..408392d 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -29,6 +29,8 @@
- /* The x86 has a strong memory model with some store-after-load re-ordering */
- #define TCG_GUEST_DEFAULT_MO      (TCG_MO_ALL & ~TCG_MO_ST_LD)
- 
-+#define KVM_HAVE_MCE_INJECTION 1
-+
- /* Maximum instruction code size */
- #define TARGET_MAX_INSN_SIZE 16
- 
--- 
-1.8.3.1
+Igor,
+    Thanks for the reminder, Just now I submitted a new patchset version to avoid this confusion.

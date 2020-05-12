@@ -1,157 +1,111 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp894555lfb;
-        Mon, 11 May 2020 23:53:33 -0700 (PDT)
-X-Google-Smtp-Source: APiQypKUXvc+tfDTMl3zzq9j0WVvCUG6UvQhP5/nRp729XWp5aYWw9AwiErai5+1g1MZSgnakDU6
-X-Received: by 2002:a37:414a:: with SMTP id o71mr19956169qka.141.1589266413049;
-        Mon, 11 May 2020 23:53:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589266413; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp899541lfb;
+        Tue, 12 May 2020 00:01:56 -0700 (PDT)
+X-Google-Smtp-Source: APiQypLdnmwKKemHcIJM1wjtG0Jfc3hcLTem5hRLejdQxFo5Tu7dDX0zKiNg/CFMsIR7YVAKOQIU
+X-Received: by 2002:a0c:b31b:: with SMTP id s27mr19907418qve.158.1589266916147;
+        Tue, 12 May 2020 00:01:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589266916; cv=none;
         d=google.com; s=arc-20160816;
-        b=NvkneKWxVgjXNS0YHflQqaKpg5Aa8rzeKDQpjNflfhjNkP5iBo2d/9nVneM+Oqhmrj
-         +y8AS1asYv/PF3FRXTSSmHes1Bllob4kml9n25Iw0hk7MprktNRnbNVxPDV5zASRuKTU
-         norNAZAROdPxOkw4JmcHaPuxCswnbSbH4e1uZfih6p6gQwSuawfEle4cveuI7jNGdFhw
-         JpMLnCyd4IQLpn5ghVQHPHLGFYk/cWShGysEFCskSdX1b8poFCMjASLVqPUZqQYk4adg
-         X/Mwo2Pb0V7RFUUtv+7voCO9R/ukpaAVNnDwFq6qmuwt8Cp+P3o8eA4EtFNfEVJWQo8D
-         E7FA==
+        b=Xhnw7ckcYYAFsI+r9zHiohWUmn5z8reuTzLF4yOQ7Fzf3yRHgtHFvoeNm1BjBbriog
+         fN7LmVGvnqbe33j5HIrYfI3HibjnTWzH+HDclHPrUi9fppq7Zppu1x8LXS9ckBKSWstW
+         DTv42OMA4eQc0z2k65Udj5lHA4z/sJ0AYDMm7EHB8S0VINVXMa00NMSRI4G9dDs532S8
+         V7hu1OTxj3QE/+E1g9kR5ox8JmAoqTYqCw3IfZNowsG96BXe9m5C4xWTRGvQ0RNQS8mG
+         ebdM/yetdckdGqW8H09CPE+gibcyKcwBSNJrlnHsrK7+mnxBmoOJ0ZZbdwEip8TKNVFZ
+         mR3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:from:references:to:subject
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=JD8mC5PgvPojuJ/apN+ecdkGeB9Hukxjdh9zL1AaXxI=;
-        b=Zl1dqTmkakNfq4xLhlxNLijBkNw8iQ5hhBcgY8UcKs2M5Hr4cRsYePH5gGxp7GjhS8
-         lfhrNsd4onqoQKEWuHTQSxDkBmbUQu257unRgz++H81yWD/1ruwlZ/npkrPpyg5Nomo7
-         6QV6GdkCN3vCdkxO6GfNX4G9NA5nPYSlSa3wpMC03vg8fRQyZdhhwlQCoXU3/czKtD05
-         n29sRPmqnzS3YmUvDha46mGZEZcVWKP9u/uzVF5aaVOGzd0d0aPjSX5kPwmCmsZra9fY
-         kp+ZdI+40Pmk0gS+vpXZdGD7fa3V0oRkbqs/qZClfEFcjmCqDDq+x5ikxfNc8jxxHvpT
-         r6YA==
+        bh=uzSFoHvo+LUbrscxwLzY12kA7xl8hv+snls8859rSqE=;
+        b=TmR4ic0tw6l1fJEpesj2o5/TM9xGl0xgaty+z4MmKiOSYYlbhFA+a7b2+ZpRwKKQau
+         CLpmuv2y7DtamFhFn+X3Yl2OJOOAQN36m1A/CtYfVzhp4dIuTgkGiXokApeTClMFAjRk
+         Wf5ND1ILa4AQ96U6Kgi79hWvNXdy1PFj9FeuFBsCYog7dIeTyiyEEbCU8kUUY2kW0eS9
+         NVpM5LqmA03YZKAfjSxS4JkKeXQxxzDqNmrj4rXBuivKKReAiIqzuum8qYKfIzt8+k/O
+         toIIHCBWQb6OV7nPqBFmU+chVvScil+YVCIffg7H9o3jh8HXSRdoaRuorrUkyWBkbLmm
+         jlIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hfNRV+Yu;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MKr7oaKI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9si6506486qth.94.2020.05.11.23.53.32
+        by mx.google.com with ESMTPS id r4si5328717qtm.294.2020.05.12.00.01.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 May 2020 23:53:33 -0700 (PDT)
+        Tue, 12 May 2020 00:01:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hfNRV+Yu;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MKr7oaKI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55874 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:50580 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jYOnD-0002n3-IN
-	for alex.bennee@linaro.org; Tue, 12 May 2020 02:53:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52008)
+	id 1jYOvL-0005EZ-I3
+	for alex.bennee@linaro.org; Tue, 12 May 2020 03:01:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53172)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1jYOm3-0000lT-Id
- for qemu-arm@nongnu.org; Tue, 12 May 2020 02:52:19 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:56208
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1jYOm2-0003aR-5s
- for qemu-arm@nongnu.org; Tue, 12 May 2020 02:52:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589266337;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=JD8mC5PgvPojuJ/apN+ecdkGeB9Hukxjdh9zL1AaXxI=;
- b=hfNRV+Yuc1qJ+O5i1WrXJa4f9Q0zg1by1k9XklDYmWS9rGGsa2mgSYrsnJubCmTum7FGf3
- m0oaYiab5ya0dgQ2QAFiB81aOggAFeTkO2dFRc9CfQqDtmHRiwFrUrr3wl+WRnR/WZKamy
- AiCo4+Fw5yvnZC2Nh5wJtSWBz0BkShw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-193-_ql0_n6TO4KK743Gf-Gm9Q-1; Tue, 12 May 2020 02:52:15 -0400
-X-MC-Unique: _ql0_n6TO4KK743Gf-Gm9Q-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4BC3FEC1A1;
- Tue, 12 May 2020 06:52:12 +0000 (UTC)
-Received: from [10.36.113.77] (ovpn-113-77.ams2.redhat.com [10.36.113.77])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 51BC12E17B;
- Tue, 12 May 2020 06:52:06 +0000 (UTC)
-Subject: Re: [PATCH 08/11] target/s390x: Restrict system-mode declarations
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Cornelia Huck <cohuck@redhat.com>
-References: <20200509130910.26335-1-f4bug@amsat.org>
- <20200509130910.26335-9-f4bug@amsat.org>
- <20200511124804.1a7a43aa.cohuck@redhat.com>
- <2bb91290-32c5-997d-c689-4d651836c7fc@amsat.org>
- <20200512080146.7d0f4ae2.cohuck@redhat.com>
- <76077ce6-9981-35e0-89d2-3059438a139d@amsat.org>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat GmbH
-Message-ID: <e5b5feb0-7abd-b78d-94fe-d0cc20e54cb7@redhat.com>
-Date: Tue, 12 May 2020 08:52:05 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jYOu0-00040V-OK; Tue, 12 May 2020 03:00:32 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35341)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jYOtz-0005Zs-Ie; Tue, 12 May 2020 03:00:32 -0400
+Received: by mail-wr1-x441.google.com with SMTP id j5so13940013wrq.2;
+ Tue, 12 May 2020 00:00:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=uzSFoHvo+LUbrscxwLzY12kA7xl8hv+snls8859rSqE=;
+ b=MKr7oaKIpdvu+7LhBS2ehzLga85rG20OmN/PQECwyNW6HJtJzgNbzn6/VSmt4HvpaE
+ PCKkjxQ0SA9tDrjwV2vTRFt33MrBgYxXvJmW3xKfeh/jSPmVCKrB3mCNpYWS26HX3o5O
+ hlh2XRl77sADIzjOQD3FhYzhGwWsvB5BiIRbRqJcq1rHxnkK6RXA18djF/X0TIRbJyDn
+ w32lo0jVIS5hyOvbEactOn62WitR6SoI48eG9jU8v5NFciT+6Ug1P8t2rQ2nPvMv008M
+ V6i7jvjYu8DN9SMM2V5Ykxmbtqbcxq4MNOc0Hft0mb7XvhhkZNICRLM4vW532M5F8WP6
+ cBgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=uzSFoHvo+LUbrscxwLzY12kA7xl8hv+snls8859rSqE=;
+ b=JDe/wcBWg1Hkl/PiTaONZpG2vjvAkOJDT/skolVgAhByoO2+8rBx5MH+E9+/YydV5n
+ xClAYa1ujcdGgsc4zBi8p1sMDi4YwXmcmFCiEMq/GTyI1LTyMt4juIU/MWL+gevcX8Db
+ JMbe6PKbPx8F7NOiw6qnq6yZFs93qJlms2EIxwqtytkcpz1Q4wyY1dFA8lESjhbpHcFG
+ 8YmS+ne/ttJypYnG5VWmwmKRlp8vYvBLc/aDJldANDlz/YqHxGvFbmVbONCn+NdGXIPC
+ AL7+wQjDB1UvGYXobR3UsVFALZge0vTng6CJGv2jxouM2uPenrg77NThTRt83qZEe8TT
+ n4fA==
+X-Gm-Message-State: AGi0PuZXImIQsOqwEWNFZlctXI3e9E6RCUSQbKjbqelneEU9kj3zkR4X
+ ep8ylZTOJhY5NoI63gYiA8y342RFBcSHuQ==
+X-Received: by 2002:a5d:6b8c:: with SMTP id n12mr23302823wrx.107.1589266828240; 
+ Tue, 12 May 2020 00:00:28 -0700 (PDT)
+Received: from localhost.localdomain (17.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.17])
+ by smtp.gmail.com with ESMTPSA id i17sm30322243wml.23.2020.05.12.00.00.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 May 2020 00:00:27 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 1/3] target: Remove unnecessary CPU() cast
+Date: Tue, 12 May 2020 09:00:18 +0200
+Message-Id: <20200512070020.22782-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200512070020.22782-1-f4bug@amsat.org>
+References: <20200512070020.22782-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <76077ce6-9981-35e0-89d2-3059438a139d@amsat.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/12 01:41:59
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -165,82 +119,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- Marek Vasut <marex@denx.de>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Gerd Hoffmann <kraxel@redhat.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, David Hildenbrand <david@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-ppc@nongnu.org,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, Stafford Horne <shorne@gmail.com>,
- Richard Henderson <rth@twiddle.net>, qemu-riscv@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>, Roman Bolshakov <r.bolshakov@yadro.com>,
- Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+ Joel Stanley <joel@jms.id.au>, Anthony Perard <anthony.perard@citrix.com>,
+ xen-devel@lists.xenproject.org, David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <minyard@acm.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Cornelia Huck <cohuck@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nzGDccjPxVdB
+X-TUID: G5ZWOyhL9KWS
 
-On 12.05.20 08:46, Philippe Mathieu-Daudé wrote:
-> On 5/12/20 8:01 AM, Cornelia Huck wrote:
->> On Mon, 11 May 2020 14:21:27 +0200
->> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>
->>> On 5/11/20 12:48 PM, Cornelia Huck wrote:
->>>> On Sat,  9 May 2020 15:09:07 +0200
->>>> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>>>    
->>>>> As these declarations are restricted to !CONFIG_USER_ONLY in
->>>>> helper.c, only declare them when system-mode emulation is used.
->>>>>
->>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>>>> ---
->>>>>    target/s390x/internal.h | 11 ++++++-----
->>>>>    1 file changed, 6 insertions(+), 5 deletions(-)
->>>>>
->>>>> diff --git a/target/s390x/internal.h b/target/s390x/internal.h
->>>>> index c1678dc6bc..ddc276cdf4 100644
->>>>> --- a/target/s390x/internal.h
->>>>> +++ b/target/s390x/internal.h
->>>>> @@ -236,7 +236,6 @@ int s390_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
->>>>>    
->>>>>    /* cc_helper.c */
->>>>>    const char *cc_name(enum cc_op cc_op);
->>>>> -void load_psw(CPUS390XState *env, uint64_t mask, uint64_t addr);
->>>>>    uint32_t calc_cc(CPUS390XState *env, uint32_t cc_op, uint64_t src, uint64_t dst,
->>>>>                     uint64_t vr);
->>>>>    
->>>>> @@ -303,18 +302,20 @@ void s390_cpu_gdb_init(CPUState *cs);
->>>>>    
->>>>>    /* helper.c */
->>>>>    void s390_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
->>>>> -hwaddr s390_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
->>>>> -hwaddr s390_cpu_get_phys_addr_debug(CPUState *cpu, vaddr addr);
->>>>> +void do_restart_interrupt(CPUS390XState *env);
->>>>> +
->>>>> +#ifndef CONFIG_USER_ONLY
->>>>> +void load_psw(CPUS390XState *env, uint64_t mask, uint64_t addr);
->>>>
->>>> load_psw() is in cc_helper.c (and not in helper.c). Rather add the
->>>> #ifndef above, even if it is a bit awkward? Otherwise, the wrong
->>>> comment makes it confusing.
->>>
->>> I've been tempted to remove the kinda outdated /* helper.c */ comment...
->>
->> I don't think they're really outdated, but not sure how useful they are
->> to people. I'm not personally attached to them, other opinions?
-> 
-> Since the project switched to git, developers can now use git-grep :)
+The CPU() macro is defined as:
 
-I consider these quite valuable to structure the file. But my life would
-go on without them.
+  #define CPU(obj) ((CPUState *)(obj))
 
+which expands to:
+
+  ((CPUState *)object_dynamic_cast_assert((Object *)(obj), (name),
+                                          __FILE__, __LINE__, __func__))
+
+This assertion can only fail when @obj points to something other
+than its stated type, i.e. when we're in undefined behavior country.
+
+Remove the unnecessary CPU() casts when we already know the pointer
+is of CPUState type.
+
+Patch created mechanically using spatch with this script:
+
+  @@
+  typedef CPUState;
+  CPUState *s;
+  @@
+  -   CPU(s)
+  +   s
+
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ target/ppc/mmu_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
+index 86c667b094..8972714775 100644
+--- a/target/ppc/mmu_helper.c
++++ b/target/ppc/mmu_helper.c
+@@ -1820,7 +1820,7 @@ static inline void do_invalidate_BAT(CPUPPCState *env, target_ulong BATu,
+     if (((end - base) >> TARGET_PAGE_BITS) > 1024) {
+         /* Flushing 1024 4K pages is slower than a complete flush */
+         LOG_BATS("Flush all BATs\n");
+-        tlb_flush(CPU(cs));
++        tlb_flush(cs);
+         LOG_BATS("Flush done\n");
+         return;
+     }
 -- 
-Thanks,
-
-David / dhildenb
+2.21.3
 

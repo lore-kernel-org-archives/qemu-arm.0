@@ -1,118 +1,315 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1266515lfb;
-        Thu, 14 May 2020 04:12:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxyzMgKdhj+SdEE2rBZwWRfzGdjzvpme62u7P1occPksG2RPFPvP0n+eK5pDplw8iAUhiY6
-X-Received: by 2002:a17:906:5681:: with SMTP id am1mr1541100ejc.376.1589454722214;
-        Thu, 14 May 2020 04:12:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589454722; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1323092lfb;
+        Thu, 14 May 2020 05:25:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyj4HNUkPBHcsESjLcgWs7CFtNvX0WyVC2jCM/z1QRzBRLvLV0A78UY5xXErIAb1c9M4+mj
+X-Received: by 2002:a0c:b60c:: with SMTP id f12mr4459217qve.244.1589459129647;
+        Thu, 14 May 2020 05:25:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589459129; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q9X8mDSrCa96w8JzvpQixxo4NlUDS/4dGvATYdUXj0IVQ4LGSnzbRtfv6Vk8ntLsPB
-         VxcGYh6m+a41IAJsh13YLBGJagL5LkTvfoxA43KS2LWycG38eAv2OK6KbJZq6UawMpvj
-         erNPb7kSm0p6bOGZrBQZas2r3XopTZuH9+7WnDnT2B2w7Ak7ksluRhDSsXnA3HqcnlSX
-         CuMaUjDeImcepoiuLKLMhL/6JKEKwI0pEmxbG3fb3KGzAgraN7S1d3KGXOmxDpxMMbF5
-         43qjcQkwPQU8qYwRPzBlfEfbRQZgJ56BaI7gupFvKHTYIrPI9Ii6/wX4fFzEAexgZYUV
-         KShw==
+        b=OInaLAbOFJgmdZd6Nia7CVD3tksdJ1tlDpRoWea+ZPwMJ7zBDCwrIsQ2Dyaw3b8zsx
+         8U3+yVNnW2oZNkYywNo9wuwYDHMY8QGC0Ai12EygsSGyZv0AhdDiOwd8noOzie/ckReM
+         iDQMusMsbJlakE//0QASbMKCB5v1F2+MPevmjAZ2MYxltJIXYNRgaSdaTR/GVLNHvr0i
+         mBEvax1g8ekRtJzZirmnSL4J8QY87eErW3CDLVtg9I8EMdQmwOhoM9ci6UAmwr/GWIRY
+         t8dstLqRY4IpKvP1enIpEpVU5bRKfMyUqSLK0w0XsukJdTgffB8CMtAy3gTe5miB96iY
+         Z/2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Kmgi+cXn2gA4xTq/eWQ2tj3BWMUlW5Uh0vA4ZY02OgQ=;
-        b=zYSHPhQePjvgmGmdmTwaGtQg0q5OUlirYNkx1LvOl/fdogM35Y9sr9X8jIi7FgF7tO
-         DVtreJLn3FcInGQjDds/9Dgyrm5V+8iltat4ploDErb20U809etTzglY8db/hupDwBdn
-         Jj6IjbdZmwIVOgl6Z9Jlqa9Bcjj+CXAiiJErTUZUeJwsD9Bw33VmKtuA41NHTi6SIu5P
-         11AcDUxIBwVOQJ5DkiwQgeCDF8fq6XHUrNMwQHtBp4WDktvIDB7HCAiTJTwsXGxNRXVi
-         lifXkUoxsK8Qdc+JNbMjsw9jorzC7/6+Kgw0h7RcMuEhvE/m2QNl8ZF0Ym/8ahE4LX+0
-         fmkQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=UEssYOxRgdnpOaKMgKLdtfHrBF8ko5OQYY77tTV68kE=;
+        b=A8HnDZ/I2h33reyl2O0skG0f7zAIKkn4RBnxuQRVYSPLZcF3TfpVdUJmq7ix5FFEVe
+         iynX1BGxWp47uBWgIWzmYd4UloHsoJ8EHqsw4ZYotdguDISeQ3ZuL58UOxsjNv4tHyIC
+         OiP+pl13wCYzXPCp6OeMMBjKDdwkeMBfNyzuTS4ymRQ+4y7SvhntyWFs8akWPXwKNsIq
+         EsM0c9gCU+HHHKLUWaAYK3DTbNAg+IoAGF92hVYTJAQwiQLExyd1eUmpQXUrncxfBI6d
+         l2ajml+w4wETv0PFfTchbL6hValOlwKT+1ciFX09cC9UBx8u05xqprmL4gY9dwGNaNqg
+         B50Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yOD9BEP+;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id cz15si1410130edb.381.2020.05.14.04.12.02;
-        Thu, 14 May 2020 04:12:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aNHy0HYN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z20si1431987qkg.373.2020.05.14.05.25.29
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 14 May 2020 05:25:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yOD9BEP+;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726465AbgENLMB (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 14 May 2020 07:12:01 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:60994 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1726166AbgENLMA (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 14 May 2020 07:12:00 -0400
-Received: from mail-ot1-x344.google.com (mail-ot1-x344.google.com [IPv6:2607:f8b0:4864:20::344])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 584B7C061A0C
-        for <kvm@vger.kernel.org>; Thu, 14 May 2020 04:12:00 -0700 (PDT)
-Received: by mail-ot1-x344.google.com with SMTP id z25so1972863otq.13
-        for <kvm@vger.kernel.org>; Thu, 14 May 2020 04:12:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=Kmgi+cXn2gA4xTq/eWQ2tj3BWMUlW5Uh0vA4ZY02OgQ=;
-        b=yOD9BEP+L4vp0L0QbU0583eI/64Vtdb+Vt8GUEIqlZjLC8UQDZhgu8acs5q0pZmY3R
-         o00lLwlujnB8dGEB7NYufCm/qVRyh3bBTKmFL6YAs6DfZWjM/RacaQTLetZ2d2iekcMh
-         2wpjzSe+4GJ3LYuag1nA+wWtaJoJR07cfnIvUkpUs5BPpQInS7+j5u99dKm6/cj4rr4V
-         86qn8/Ne8n7JS2qc9+6xJwquyiClpVEjianf1m5fU45slKhjr8pxYlZNUCNzD3rr7fIb
-         b3UB20VZ1tVEnjBF6i/bND/paxzBEFewoe71UUmQ5NCH65A/Qdh4zsyyxBVxwVIFZoDq
-         MYyQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=Kmgi+cXn2gA4xTq/eWQ2tj3BWMUlW5Uh0vA4ZY02OgQ=;
-        b=TFWGQKtUV2B/T+Y7l0xnXaQSZcsDgkYBj1sfXH/oSDS+7C5N+CNo1nghDe1YvMgpEi
-         S3uv0nfuQflwRDXqnKABqtDwi+u7JdvEduBU+zBTnU3LIuW/3NQJ2IGdZIW6/o4MuElI
-         Uu3dZyYfEM5ROsZBLqhf8TYVT92JdbS4Ykj7gZqhtDWiloofWfqMQNoiw7G91xJPjr/4
-         GVmSrW0iEkFOXi7f3BP3IGr+Lfe/fXXMWo24czdWCkFfuTrIw1m4MweijtBLl8VuDvDx
-         z1b+YctBgoEltiqM8g0njhayAnJkRZkukbyt/AxpfHDl9gaKsl748tfaZAOObfDWzcxO
-         0DPQ==
-X-Gm-Message-State: AOAM533WTPecQfW0jqqbhHNHKUtdp93TLLl6fykdfORyT9ONUVAk8Q1Y
-        c9hXylx1smETNUVhHADLmjIzk7pu6LIGEv0vqbVb2Q==
-X-Received: by 2002:a05:6830:1e4e:: with SMTP id e14mr3006788otj.91.1589454719798;
- Thu, 14 May 2020 04:11:59 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200512030609.19593-1-gengdongjiu@huawei.com> <20200512030609.19593-2-gengdongjiu@huawei.com>
-In-Reply-To: <20200512030609.19593-2-gengdongjiu@huawei.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Thu, 14 May 2020 12:11:48 +0100
-Message-ID: <CAFEAcA9RBWDM4gwputTLmePuL9FJ7Xv5x1uqyFHoru21S4GkeA@mail.gmail.com>
-Subject: Re: [PATCH v27 01/10] acpi: nvdimm: change NVDIMM_UUID_LE to a common macro
-To:     Dongjiu Geng <gengdongjiu@huawei.com>
-Cc:     Igor Mammedov <imammedo@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        Fam Zheng <fam@euphon.net>,
-        Richard Henderson <rth@twiddle.net>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        kvm-devel <kvm@vger.kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
-        Zheng Xiang <zhengxiang9@huawei.com>,
-        Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-        Linuxarm <linuxarm@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: /lJ0Dz1/dQAz
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=aNHy0HYN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59422 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jZCvY-0004Az-Vz
+	for alex.bennee@linaro.org; Thu, 14 May 2020 08:25:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51274)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jZCtv-0001cL-Cr
+ for qemu-devel@nongnu.org; Thu, 14 May 2020 08:23:47 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:25335
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jZCts-0003Z0-D6
+ for qemu-devel@nongnu.org; Thu, 14 May 2020 08:23:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1589459023;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:content-type:content-type:in-reply-to:in-reply-to:
+ references:references; bh=UEssYOxRgdnpOaKMgKLdtfHrBF8ko5OQYY77tTV68kE=;
+ b=aNHy0HYNAtAV0PeM7PqKkSbPQL6M7sSStiO7IdWOKwMik2ciejnGjn1RYdBlT5Ftg7iZXC
+ 7UtvhUJpkATZNbO2zC+dQiP8ZbE5EAGyI5FeavlLJTeYaqLQ4XU2+/Gk4/X7UMr80fZDuz
+ pXut4vdQUL1vwoL/myRqG+9MjfD9tsw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-156-TChUPvhuMFuHmr6FgIUsfA-1; Thu, 14 May 2020 08:23:41 -0400
+X-MC-Unique: TChUPvhuMFuHmr6FgIUsfA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6A75A107B265;
+ Thu, 14 May 2020 12:23:39 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-115-145.ams2.redhat.com
+ [10.36.115.145])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C330C78868;
+ Thu, 14 May 2020 12:23:35 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id C65DA17538; Thu, 14 May 2020 14:23:34 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL 3/7] dwc-hsotg (dwc2) USB host controller state definitions
+Date: Thu, 14 May 2020 14:23:30 +0200
+Message-Id: <20200514122334.25089-4-kraxel@redhat.com>
+In-Reply-To: <20200514122334.25089-1-kraxel@redhat.com>
+References: <20200514122334.25089-1-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/13 22:25:42
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Paul Zimmerman <pauldzim@gmail.com>, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XxIxR2tYO4MN
 
-On Tue, 12 May 2020 at 04:03, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
->
-> The little end UUID is used in many places, so make
-> NVDIMM_UUID_LE to a common macro to convert the UUID
-> to a little end array.
->
-> Reviewed-by: Xiang Zheng <zhengxiang9@huawei.com>
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> ---
+From: Paul Zimmerman <pauldzim@gmail.com>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Add the dwc-hsotg (dwc2) USB host controller state definitions.
+Mostly based on hw/usb/hcd-ehci.h.
 
-thanks
--- PMM
+Signed-off-by: Paul Zimmerman <pauldzim@gmail.com>
+Message-id: 20200512064900.28554-4-pauldzim@gmail.com
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ hw/usb/hcd-dwc2.h | 173 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 173 insertions(+)
+ create mode 100644 hw/usb/hcd-dwc2.h
+
+diff --git a/hw/usb/hcd-dwc2.h b/hw/usb/hcd-dwc2.h
+new file mode 100644
+index 000000000000..7d7ea604a433
+--- /dev/null
++++ b/hw/usb/hcd-dwc2.h
+@@ -0,0 +1,173 @@
++/*
++ * dwc-hsotg (dwc2) USB host controller state definitions
++ *
++ * Based on hw/usb/hcd-ehci.h
++ *
++ * Copyright (c) 2020 Paul Zimmerman <pauldzim@gmail.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ * GNU General Public License for more details.
++ */
++
++#ifndef HW_USB_DWC2_H
++#define HW_USB_DWC2_H
++
++#include "qemu/timer.h"
++#include "hw/irq.h"
++#include "hw/sysbus.h"
++#include "hw/usb.h"
++#include "sysemu/dma.h"
++
++#define DWC2_MMIO_SIZE      0x11000
++
++#define DWC2_NB_CHAN        8       /* Number of host channels */
++#define DWC2_MAX_XFER_SIZE  65536   /* Max transfer size expected in HCTSIZ */
++
++typedef struct DWC2Packet DWC2Packet;
++typedef struct DWC2State DWC2State;
++
++enum async_state {
++    DWC2_ASYNC_NONE = 0,
++    DWC2_ASYNC_INITIALIZED,
++    DWC2_ASYNC_INFLIGHT,
++    DWC2_ASYNC_FINISHED,
++};
++
++struct DWC2Packet {
++    USBPacket packet;
++    uint32_t devadr;
++    uint32_t epnum;
++    uint32_t epdir;
++    uint32_t mps;
++    uint32_t pid;
++    uint32_t index;
++    uint32_t pcnt;
++    uint32_t len;
++    int32_t async;
++    bool small;
++    bool needs_service;
++};
++
++struct DWC2State {
++    SysBusDevice parent_obj;
++    USBBus bus;
++    qemu_irq irq;
++    MemoryRegion *dma_mr;
++    AddressSpace dma_as;
++    MemoryRegion container;
++    MemoryRegion hsotg;
++    MemoryRegion fifos;
++
++    union {
++#define DWC2_GLBREG_SIZE    0x70
++        uint32_t glbreg[DWC2_GLBREG_SIZE / sizeof(uint32_t)];
++        struct {
++            uint32_t gotgctl;       /* 00 */
++            uint32_t gotgint;       /* 04 */
++            uint32_t gahbcfg;       /* 08 */
++            uint32_t gusbcfg;       /* 0c */
++            uint32_t grstctl;       /* 10 */
++            uint32_t gintsts;       /* 14 */
++            uint32_t gintmsk;       /* 18 */
++            uint32_t grxstsr;       /* 1c */
++            uint32_t grxstsp;       /* 20 */
++            uint32_t grxfsiz;       /* 24 */
++            uint32_t gnptxfsiz;     /* 28 */
++            uint32_t gnptxsts;      /* 2c */
++            uint32_t gi2cctl;       /* 30 */
++            uint32_t gpvndctl;      /* 34 */
++            uint32_t ggpio;         /* 38 */
++            uint32_t guid;          /* 3c */
++            uint32_t gsnpsid;       /* 40 */
++            uint32_t ghwcfg1;       /* 44 */
++            uint32_t ghwcfg2;       /* 48 */
++            uint32_t ghwcfg3;       /* 4c */
++            uint32_t ghwcfg4;       /* 50 */
++            uint32_t glpmcfg;       /* 54 */
++            uint32_t gpwrdn;        /* 58 */
++            uint32_t gdfifocfg;     /* 5c */
++            uint32_t gadpctl;       /* 60 */
++            uint32_t grefclk;       /* 64 */
++            uint32_t gintmsk2;      /* 68 */
++            uint32_t gintsts2;      /* 6c */
++        };
++    };
++
++    union {
++#define DWC2_FSZREG_SIZE    0x04
++        uint32_t fszreg[DWC2_FSZREG_SIZE / sizeof(uint32_t)];
++        struct {
++            uint32_t hptxfsiz;      /* 100 */
++        };
++    };
++
++    union {
++#define DWC2_HREG0_SIZE     0x44
++        uint32_t hreg0[DWC2_HREG0_SIZE / sizeof(uint32_t)];
++        struct {
++            uint32_t hcfg;          /* 400 */
++            uint32_t hfir;          /* 404 */
++            uint32_t hfnum;         /* 408 */
++            uint32_t rsvd0;         /* 40c */
++            uint32_t hptxsts;       /* 410 */
++            uint32_t haint;         /* 414 */
++            uint32_t haintmsk;      /* 418 */
++            uint32_t hflbaddr;      /* 41c */
++            uint32_t rsvd1[8];      /* 420-43c */
++            uint32_t hprt0;         /* 440 */
++        };
++    };
++
++#define DWC2_HREG1_SIZE     (0x20 * DWC2_NB_CHAN)
++    uint32_t hreg1[DWC2_HREG1_SIZE / sizeof(uint32_t)];
++
++#define hcchar(_ch)     hreg1[((_ch) << 3) + 0] /* 500, 520, ... */
++#define hcsplt(_ch)     hreg1[((_ch) << 3) + 1] /* 504, 524, ... */
++#define hcint(_ch)      hreg1[((_ch) << 3) + 2] /* 508, 528, ... */
++#define hcintmsk(_ch)   hreg1[((_ch) << 3) + 3] /* 50c, 52c, ... */
++#define hctsiz(_ch)     hreg1[((_ch) << 3) + 4] /* 510, 530, ... */
++#define hcdma(_ch)      hreg1[((_ch) << 3) + 5] /* 514, 534, ... */
++#define hcdmab(_ch)     hreg1[((_ch) << 3) + 7] /* 51c, 53c, ... */
++
++    union {
++#define DWC2_PCGREG_SIZE    0x08
++        uint32_t pcgreg[DWC2_PCGREG_SIZE / sizeof(uint32_t)];
++        struct {
++            uint32_t pcgctl;        /* e00 */
++            uint32_t pcgcctl1;      /* e04 */
++        };
++    };
++
++    /* TODO - implement FIFO registers for slave mode */
++#define DWC2_HFIFO_SIZE     (0x1000 * DWC2_NB_CHAN)
++
++    /*
++     *  Internal state
++     */
++    QEMUTimer *eof_timer;
++    QEMUTimer *frame_timer;
++    QEMUBH *async_bh;
++    int64_t sof_time;
++    int64_t usb_frame_time;
++    int64_t usb_bit_time;
++    uint32_t usb_version;
++    uint16_t frame_number;
++    uint16_t fi;
++    uint16_t next_chan;
++    bool working;
++    USBPort uport;
++    DWC2Packet packet[DWC2_NB_CHAN];                   /* one packet per chan */
++    uint8_t usb_buf[DWC2_NB_CHAN][DWC2_MAX_XFER_SIZE]; /* one buffer per chan */
++};
++
++#define TYPE_DWC2_USB   "dwc2-usb"
++#define DWC2_USB(obj)   OBJECT_CHECK(DWC2State, (obj), TYPE_DWC2_USB)
++
++#endif
+-- 
+2.18.4
+

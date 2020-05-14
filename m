@@ -1,101 +1,101 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1399246lfb;
-        Thu, 14 May 2020 06:59:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwA62FgL0panXyQiAX5W2Ns+HTPd4rok+GpIuzAI7GnCRXhSQVUv1PXgM6zknfeZ0afw27i
-X-Received: by 2002:ae9:ebc3:: with SMTP id b186mr5244946qkg.85.1589464779808;
-        Thu, 14 May 2020 06:59:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589464779; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1399657lfb;
+        Thu, 14 May 2020 07:00:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxmMx8rCV2OEGcHi94MliP8calTJIAsIvIoW196zVyJq4T5EGXotgWAv7E6nPA+3f4hIloy
+X-Received: by 2002:ad4:5449:: with SMTP id h9mr5037074qvt.108.1589464808702;
+        Thu, 14 May 2020 07:00:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589464808; cv=none;
         d=google.com; s=arc-20160816;
-        b=GU561J4sil4N58GLJjVudy+IuYQG8gKyn6ql3Bfe9DuTehQyF6eGX+xS15xnmq66WP
-         AvvVIVP0hwSCEJCg/NBbda1cnJu35+5c5okZxrbazz5jSGFcv/RNdNXo5t/ZM0bnS8wJ
-         gUis37UqGv8Z38CiMZFCMwoXLWW9dh08/dbYmOYJ9xG98GyPoPeSQc0gLIlV4s+mj7jf
-         EQYn17R1cx3gAPFuR8R+ViVtaztH0GKIwXUWOYVmxrKyIBwstrkFjh1DzsTfbVH5vd/5
-         HM+hvy8AEyG7LFbn9VmE4YRxW55L8jcvTuyOr1dixRLu2rrYwbfESplRwZwwlNoYDuQ5
-         VW9A==
+        b=w/adT/aI/fVJdtMgoB9rWlPNAVnRdG21nXJBHVIGM61/GTuItUAgZizmutdNf1fEue
+         WuYCfX0VZelh8htUcSVfU6ZYbQa/H4CacNvXoJwXHPqm7iF+hWKUcjvVhr0Md1W3H5Sr
+         tUkTnNlQRS7sdDXJlqpCCdhHfS17oKDyDiQzM4xjFSj/26IsoPugMZk3bmUTEyjhSio9
+         1HVVbGNMWmWMC7LbeiBt93Ur6bDoqBz7SbwCJzMMuyjgPqv4xf1VwP3MvLwYUZiw4FQp
+         8Fp7G9oqSvXaXe0R7LMCGWi1RCV5cb0mWg0Gur1dY64ch6XX/8soJUim7Pk4zOPvZEzC
+         hhNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:subject:to
          :from:date:dkim-signature;
-        bh=AM7iNf6fLa7IegAF+g2oxI9yxQDbM3YK7gZa3wIUCJQ=;
-        b=QlTqQibmHwseVav3UB7AXjYqoY47gx39I4d5KmEvzZMnYoGo7+sOSKoCamDM6ywEwv
-         hyRDWI/VrfdOzx0TizLB8RmTmx21yCaGJH0NajALpvANe/tNjwmujUhiJthN9A5mfLyE
-         p4TLvVqqDocW1cQQ/M4ZgtHYByixXdpUQj9jBKWrDkRQtA9tQBuI1QPSQzz2zjkKbdiI
-         3tvtqraFj6j0NzR892YhkY9E4DhQvq0SNviKxfDcWCWtJYsE4y/N5rPUXhJ3unYgJTtw
-         Z5b9Aj6QrzpQPIBa2f0p3voaAQnquEPXKXd+xeBodVKrxplTp/FsW5lEBt1ZmD/0NgP6
-         v7zw==
+        bh=LhtvcWxfYjGugdFY3l7eclUrSZkEkCzjO0DAj0NIx48=;
+        b=m/9KBjmkxgG/i9rfRUKcREjxZFNfd9wTJ+zSoA4uka9GXLkSVRnurVZlecG4oTqlvO
+         pwge1wXGY23GM0626YCIFOJxOKsbOarCTGyoZsH7GT3qYZQ6ItLpHbVWhqFEEbacEZGl
+         uHeIcaXNPDEzCmwiYMCGo8g0ptnjNrR6KI1jmKvYDOlj0ePd6loPlJIScxv0vmI67cTt
+         ZP8jFw0l3eRegn064xu8SPj5FGRIgKF6KqaqmWspN0UtYXC4qg8rndvFVi2wU68lg+zE
+         D2qolE3qrOsPFHWFw+/hMx1CwiAxuSHgiI0MuhzDa1eYjnfJFnHzQWy5awD0tnPE7DCy
+         toBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VMsfFxEr;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YMikLC7k;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14si1956797qtp.272.2020.05.14.06.59.39
+        by mx.google.com with ESMTPS id y25si1546687qky.41.2020.05.14.07.00.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 May 2020 06:59:39 -0700 (PDT)
+        Thu, 14 May 2020 07:00:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=VMsfFxEr;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YMikLC7k;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37326 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39694 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jZEOh-0005co-7g
-	for alex.bennee@linaro.org; Thu, 14 May 2020 09:59:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35492)
+	id 1jZEPA-0006cd-4C
+	for alex.bennee@linaro.org; Thu, 14 May 2020 10:00:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35534)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jZELt-0000Uq-DL; Thu, 14 May 2020 09:56:45 -0400
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:42227)
+ id 1jZEM9-00015k-5S; Thu, 14 May 2020 09:57:02 -0400
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:45727)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jZELs-0000MA-D9; Thu, 14 May 2020 09:56:45 -0400
-Received: by mail-lf1-x144.google.com with SMTP id r17so2699318lff.9;
- Thu, 14 May 2020 06:56:43 -0700 (PDT)
+ id 1jZEM7-0000Nv-Kl; Thu, 14 May 2020 09:57:00 -0400
+Received: by mail-lj1-x244.google.com with SMTP id h4so3573268ljg.12;
+ Thu, 14 May 2020 06:56:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=AM7iNf6fLa7IegAF+g2oxI9yxQDbM3YK7gZa3wIUCJQ=;
- b=VMsfFxErnA1SSAMUW1cSi3HAXRvk49VR8p8Wz2enYTaOwn+o4AP4y1TxkH9/HqudMT
- DcWJGxdVcd15/QIPBzJnlILdfyjqr6zDrCcOvQU/jlHFxZAtxAQuljFmAo1PU6/ptjCt
- mNe2RxZQHW8Mb839FWq2EW9iul0prd8K81ox5CMd70aDnF/uFhRX4rSQ2YlmIL7DQOzb
- /ZSCnpSxHh986CM0dXkqAnqx+afsTHTPdfs2bgz5mTNCH/Myn9rxDjJefV9hliXVa8et
- EOuc2ykBN7qhoKuNZKb7t5pecU80Ua8T1T+hlFF1il+wXfXkD/cKDUaQ1grQ8xmfy3g1
- L4Kg==
+ bh=LhtvcWxfYjGugdFY3l7eclUrSZkEkCzjO0DAj0NIx48=;
+ b=YMikLC7kFHDdQADArSb3Tjy+V32MlPZzGN/vJrjkBDjNoUU+wIOH2R/LKmHEwClKXR
+ LFfbKFmLBp8cILxG3T9w8PKRIX0uqwH6zVjd2jj3eItW6E3vPo1AXgD+GLf6772/EwKC
+ UKhDg8ofgXVQ5UxkTtffzgVaE7kxgLYRA9gy5SP7+oIHZOisoplEFimbjD39xN4hRaif
+ bf3bAYtAmso0dL6eH2YESVco8poQKvWYgAic03XK9uUGPYUOqhUAVmBWeW7l+4/tgQc6
+ ydIpVGEhlIT1mOy8qA+6WZB8grcCVM319z/KfU660Ofr9sqh3NCXNeMCq9USkgA8uxo1
+ /5iA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=AM7iNf6fLa7IegAF+g2oxI9yxQDbM3YK7gZa3wIUCJQ=;
- b=djhmQpVDxmJNtZrvUGQ4EkLSIGXchWHnulZVuzNY82TF6caIHvgytvUGHU/YCmlAh4
- iw4xc1U2C5wX3qkxctOycm1Z2rRkWrlJgE66ehpM+HBQJelhKD1L5o2/pYCKIYr5bqXe
- 2hgAfwFvFM7FSLI21RmoxR70Mg7YaOO7Yef49dyHst4K1WZDAqUnT1yPeg3ZMEp6MdN7
- vxXaNqFg0sbf0d+KKFHhqUNkfbZPDXk72w0pTokn0Lm8UPFBycaHIaAdkN9JJZrREGSk
- rC5nud2aIJ9I+13Ml1rMuT1mbT/OzIILiZgpgvGVYmfOczEtrlaKLvQFC5sqmkPMiwDu
- UCkA==
-X-Gm-Message-State: AOAM5334q7Ki6Ijdx2O5GIZ930L0SfnDPULqUXH7RzUtoC06gWtw5xI5
- D5OjXt9LO8n8/0SRKvWXvjI=
-X-Received: by 2002:ac2:5046:: with SMTP id a6mr3394837lfm.103.1589464602281; 
- Thu, 14 May 2020 06:56:42 -0700 (PDT)
+ bh=LhtvcWxfYjGugdFY3l7eclUrSZkEkCzjO0DAj0NIx48=;
+ b=m7+fe9aN+vJIJfXwUEMU8CCLJ95HB6zQT8NrIrdUGYCgy1yqQOXFUhVf8nqbZWZ/JD
+ kp5jK2TGNHeMj0Am3W5HdJe2WeeAXuATIA+x9oxK/BJwGqAKs0CzxjnQ6CDs0RyDLsmN
+ xTQUmegL67XmN3+9Ua99CwiFAvzcCd2tBIaRjszLQyZHAiFCtQn9NtDz5MUY+O7XDT06
+ wHGN8lSc9u5okRqpJ+3IZCklWydtRBQbcRLtLZl0gTIP6McAt+PV+WszpFlV6z3w8tPG
+ O/Gtk8MXVndipSjQgdnSUdq7DVdpxo3p82sSM1VE6svnIR4RjjZAbeeOHLCbjli4wJ6T
+ jYfA==
+X-Gm-Message-State: AOAM532bQdFkOM30l6clM98QiIM1JBwsY5Eqz2yZ3lBQM8ANOkKoyUlZ
+ CL8DQt18J8vxjcBCpe5RljDzBP8ZKFA=
+X-Received: by 2002:a2e:b4a5:: with SMTP id q5mr3098336ljm.58.1589464617804;
+ Thu, 14 May 2020 06:56:57 -0700 (PDT)
 Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id x11sm1894311lfe.6.2020.05.14.06.56.41
+ by smtp.gmail.com with ESMTPSA id v12sm1550353ljc.37.2020.05.14.06.56.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 May 2020 06:56:41 -0700 (PDT)
-Date: Thu, 14 May 2020 15:56:25 +0200
+ Thu, 14 May 2020 06:56:57 -0700 (PDT)
+Date: Thu, 14 May 2020 15:56:40 +0200
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 4/5] docs/system: Document the various MPS2 models
-Message-ID: <20200514135625.GZ5519@toto>
+Subject: Re: [PATCH 5/5] docs/system: Document Musca boards
+Message-ID: <20200514135640.GA5519@toto>
 References: <20200507151819.28444-1-peter.maydell@linaro.org>
- <20200507151819.28444-5-peter.maydell@linaro.org>
+ <20200507151819.28444-6-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200507151819.28444-5-peter.maydell@linaro.org>
+In-Reply-To: <20200507151819.28444-6-peter.maydell@linaro.org>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::144;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x144.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::244;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x244.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -120,82 +120,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5o+PhRfyVVAr
+X-TUID: 5sY53PMzTWJ0
 
-On Thu, May 07, 2020 at 04:18:18PM +0100, Peter Maydell wrote:
-> Add basic documentation of the MPS2 board models.
->
+On Thu, May 07, 2020 at 04:18:19PM +0100, Peter Maydell wrote:
+> Provide a minimal documentation of the Musca boards.
 
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 
- 
+
+
+> 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  docs/system/arm/mps2.rst   | 29 +++++++++++++++++++++++++++++
+>  docs/system/arm/musca.rst  | 31 +++++++++++++++++++++++++++++++
 >  docs/system/target-arm.rst |  1 +
 >  MAINTAINERS                |  1 +
->  3 files changed, 31 insertions(+)
->  create mode 100644 docs/system/arm/mps2.rst
+>  3 files changed, 33 insertions(+)
+>  create mode 100644 docs/system/arm/musca.rst
 > 
-> diff --git a/docs/system/arm/mps2.rst b/docs/system/arm/mps2.rst
+> diff --git a/docs/system/arm/musca.rst b/docs/system/arm/musca.rst
 > new file mode 100644
-> index 00000000000..3a98cb59b0d
+> index 00000000000..8375c5008d5
 > --- /dev/null
-> +++ b/docs/system/arm/mps2.rst
-> @@ -0,0 +1,29 @@
-> +Arm MPS2 boards (``mps2-an385``, ``mps2-an505``, ``mps2-an511``, ``mps2-an521``)
-> +================================================================================
+> +++ b/docs/system/arm/musca.rst
+> @@ -0,0 +1,31 @@
+> +Arm Musca boards (``musca-a``, ``musca-b1``)
+> +============================================
 > +
-> +These board models all use Arm M-profile CPUs.
+> +The Arm Musca development boards are a reference implementation
+> +of a system using the SSE-200 subsystem for embedded. They are
+> +dual Cortex-M33 systems.
 > +
-> +The Arm MPS2 and MPS2+ dev boards are FPGA based (the 2+ has a bigger
-> +FPGA but is otherwise the same as the 2). Since the CPU itself
-> +and most of the devices are in the FPGA, the details of the board
-> +as seen by the guest depend significantly on the FPGA image.
+> +QEMU provides models of the A and B1 variants of this board.
 > +
-> +QEMU models the following FPGA images:
+> +Unimplemented devices:
 > +
-> +``mps2-an385``
-> +  Cortex-M3 as documented in ARM Application Note AN385
-> +``mps2-an511``
-> +  Cortex-M3 'DesignStart' as documented in AN511
-> +``mps2-an505``
-> +  Cortex-M33 as documented in ARM Application Note AN505
-> +``mps2-an521``
-> +  Dual Cortex-M33 as documented in Application Note AN521
+> +- SPI
+> +- |I2C|
+> +- |I2S|
+> +- PWM
+> +- QSPI
+> +- Timer
+> +- SCC
+> +- GPIO
+> +- eFlash
+> +- MHU
+> +- PVT
+> +- SDIO
+> +- CryptoCell
 > +
-> +Differences between QEMU and real hardware:
+> +Note that (like the real hardware) the Musca-A machine is
+> +asymmetric: CPU 0 does not have the FPU or DSP extensions,
+> +but CPU 1 does. Also like the real hardware, the memory maps
+> +for the A and B1 variants differ significantly, so guest
+> +software must be built for the right variant.
 > +
-> +- AN385 remapping of low 16K of memory to either ZBT SSRAM1 or to
-> +  block RAM is unimplemented (QEMU always maps this to ZBT SSRAM1, as
-> +  if zbt_boot_ctrl is always zero)
-> +- QEMU provides a LAN9118 ethernet rather than LAN9220; the only guest
-> +  visible difference is that the LAN9118 doesn't support checksum
-> +  offloading
 > diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-> index 4779293d731..15bcf9f81f0 100644
+> index 15bcf9f81f0..1b86b93c346 100644
 > --- a/docs/system/target-arm.rst
 > +++ b/docs/system/target-arm.rst
-> @@ -71,6 +71,7 @@ undocumented; you can get a complete list by running
->     :maxdepth: 1
+> @@ -72,6 +72,7 @@ undocumented; you can get a complete list by running
 >  
 >     arm/integratorcp
-> +   arm/mps2
+>     arm/mps2
+> +   arm/musca
 >     arm/realview
 >     arm/versatile
 >     arm/vexpress
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 74cff1c3818..ea7bdd359e0 100644
+> index ea7bdd359e0..f8e0fdb4ef2 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -699,6 +699,7 @@ F: hw/misc/armsse-cpuid.c
->  F: include/hw/misc/armsse-cpuid.h
->  F: hw/misc/armsse-mhu.c
->  F: include/hw/misc/armsse-mhu.h
-> +F: docs/system/arm/mps2.rst
+> @@ -706,6 +706,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+>  L: qemu-arm@nongnu.org
+>  S: Maintained
+>  F: hw/arm/musca.c
+> +F: docs/system/arm/musca.rst
 >  
->  Musca
->  M: Peter Maydell <peter.maydell@linaro.org>
+>  Musicpal
+>  M: Jan Kiszka <jan.kiszka@web.de>
 > -- 
 > 2.20.1
 > 

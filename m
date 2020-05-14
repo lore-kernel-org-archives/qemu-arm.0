@@ -1,102 +1,102 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1395889lfb;
-        Thu, 14 May 2020 06:54:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJznhLT0E3DT1KY7yS4kHzFyDYx9/687ZWdG99D1bARtHwDa7NBtxVKa8/KVQ6zRsb5iH8E5
-X-Received: by 2002:aed:2b25:: with SMTP id p34mr4504117qtd.383.1589464488869;
-        Thu, 14 May 2020 06:54:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589464488; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1397807lfb;
+        Thu, 14 May 2020 06:57:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw1RWEGfmDTO6e/3aLn4KecFGW/gP/IwXPJK+C6zygC1CqH9WGVE2Dskx1B8+wrQYyhqaew
+X-Received: by 2002:a05:6214:28d:: with SMTP id l13mr4986248qvv.181.1589464653675;
+        Thu, 14 May 2020 06:57:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589464653; cv=none;
         d=google.com; s=arc-20160816;
-        b=II9KFp9zkI+8h0rnWPGr2RDxIwRJR5i2MhC82EraLxNWbYiQI0UTvO1xsLSMrhkJHM
-         0UVQoeEzEtKKIHMv5yOEfYq6FVPK+3pFw8hyuswmIEIDS7fPQAPhs4oIsuoFNf6/rSt9
-         BXN3MwGw7pOxnSyx6e2bux2itRPlXAdMSgfMdlkIAWTflFjHSlW3bkV+J6aUjRVaesWl
-         INE78Mb+JiQV8GOZ8iV2L4zGsGW7LpeawW1w86AHZ2vJVpqgnbO8h4C/Rzk0qXK9NAX9
-         OkyHcVU2lZ+XQR1LdjwJ9AD+luyy65+iQ27l0A/jP7owK2WuqUcP9zqef5DC4Vdd25YI
-         p1/g==
+        b=vI5DgB0ckBQ6BoqAB0VNBmw35rj6PkM3JY+bJj8POiTsqwMYUIImzl0NQ/5+btApot
+         dJqndskB+Gf3VWtj9GCgWkxB5qKgT7nINO5DkIVTuPqV+sB00cBUGoTvHUfwE949+oM7
+         IETLNAylGXa7mKOOdElkdr9HqG/dPgUJrzfeLwkl9OVwDcOZrSVd/G7BGXKegc1OZzmD
+         TzpThjgRt0lPxQExOZ6DCI8qGhK1QG4+/n0itaoWFoSnZuQzsptvVco3dFdy6Zqvmls3
+         YIWxgyfgTm4WyVap0ibOtsqnlKCmy1LCIvsxVDC50QSIEmR0DTS/f7HumIg5NIVzgWAz
+         Vx4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:subject:to
          :from:date:dkim-signature;
-        bh=iO3sxqa6uRbK6tbM9gvYcV5wCzXYGAcL3OcFmKTeXU8=;
-        b=rJnF5s3WTWA1eOM0Je5FSe0LBcEksmOt/mlrbcLFCRw2esxIUA4TSJA/WCQKlDADBF
-         hHqA9PimTJl1Gs4y/Z/pxNTTQ4zRYyidmftzqY3+0PMpwegw40rHzrZOQ/ba5QzPUBpm
-         njkykCHJpbg6E9LO/7A+/vawOZ7vjt90J40khLLwiMjphI4pR7ZaE3YTR/tjaF+Xi2pV
-         I2tr2F1JUHjuVd/sZ/Zx620xYYyaJFuZ8PBQtPIJFtSqgN33BOCzKmE3q4efLU73VSVt
-         99BtxjH76vA1kJ8BxP4lLuGMBVf3ShNLukwVNq5z93wFXffJ483bGgvSW6fyyP3bMIn2
-         e/aw==
+        bh=Fwa9E1kynr3Sx/7kJs6FRrjoDiyCspTyloxodGW5mYw=;
+        b=lc+s3C0BWRGjikh55ny/Ht2vXAj5sV5+5+9twsWZmCNSszqkMcymD6tergh68Vf86C
+         7yAkw8Eht7osu31SMIPnRZbYvyhm2HfT+YzDkUD09vd9+L81LrJoTNnChesH6lzbrd05
+         1NmiGHWXXrKiWDj02brKXw53LJcAA7myaFfVONV0InxzIi9KpCcki5eIpxr+3JjF5Z2F
+         PdtnsclLXyStyvhktlkI/Y11XnOCKlP9D+KUs3baD2qS0/8JTv8of72BZf4WH/41CLqL
+         aomh+xRQtFXdBedZYpHank2Iyc5tevOzya30bpWHBgKDCmEpsW0ztrFX8WlDEPl8162V
+         Pk1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L8SyS4cL;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l6TdBuId;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b21si1446289qkl.28.2020.05.14.06.54.48
+        by mx.google.com with ESMTPS id n12si1727456qtk.166.2020.05.14.06.57.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 May 2020 06:54:48 -0700 (PDT)
+        Thu, 14 May 2020 06:57:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L8SyS4cL;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l6TdBuId;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45102 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56942 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jZEK0-000560-9D
-	for alex.bennee@linaro.org; Thu, 14 May 2020 09:54:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35272)
+	id 1jZEMf-0001wF-3p
+	for alex.bennee@linaro.org; Thu, 14 May 2020 09:57:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35300)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jZEJs-00054L-7e; Thu, 14 May 2020 09:54:40 -0400
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:46855)
+ id 1jZEKM-0006Bz-Hh; Thu, 14 May 2020 09:55:10 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:44523)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1jZEJq-0008Cn-OL; Thu, 14 May 2020 09:54:39 -0400
-Received: by mail-lj1-x243.google.com with SMTP id f18so3568323lja.13;
- Thu, 14 May 2020 06:54:37 -0700 (PDT)
+ id 1jZEKL-0008MX-Ng; Thu, 14 May 2020 09:55:10 -0400
+Received: by mail-lf1-x143.google.com with SMTP id d22so2682160lfm.11;
+ Thu, 14 May 2020 06:55:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=iO3sxqa6uRbK6tbM9gvYcV5wCzXYGAcL3OcFmKTeXU8=;
- b=L8SyS4cLvHZ32MAPdS91cLeNrTFXVTVEeGLdkGX+yFPuuVqbLsSq/n+bVw66x/m//v
- +lUDWWsT6hFoHEGmraMtnnZI9tDSKX3aSHxJdvTeRfKTUB1qkW/GHUnMW3KGMuuoMI5v
- 7/pl0DLIs9YB0lKXMcyK4HtJZ5EzqLCoKGndirAVw4fDWWEU3u51+3loilhTI7s16zy/
- XsA5+87uKhfs66cQGjqNUFTKx/ehte3x1tiSLVL00N2Q/jh0ZVOIMPxBTi3Hpjd5maBX
- 25pRyTRcBfp5Q2/DU1/krj0K576UUMcPy11QGp6fhwwhVBhdq1GkzB+pCDZ/BhlIJaq/
- cBTg==
+ bh=Fwa9E1kynr3Sx/7kJs6FRrjoDiyCspTyloxodGW5mYw=;
+ b=l6TdBuId8hIyrCRzvz7NaHT45pPR+eDTeYHYszd6VV3L0lBzs1jThUFr4GNp1vEoTB
+ 7OjOz8fAvHixh8VsbMSLChToBzJ4Q7eFmIjjeKYdy2yGleTrb40/oqdHa7fXT1eV8j/S
+ yd/Oqupa4knrqVK9VJjPP/UG+IQ0I0FJ1cV/sRj1VCUTjcgqo7suuDhHx1d+5ZDFClRD
+ k1cugrC7jb9fWoybjM4BqD+bx/O3Iay+ooeKnN0m2t8VHwrnNunVEXfCZYJf3w9SBKIo
+ Bv1wMOy9WbU1jdZFBcvnOwaGeldSCw0yx8wJOwwFu63n1NdaQwQRf2yz9IWLF8WMHbhC
+ C/Sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=iO3sxqa6uRbK6tbM9gvYcV5wCzXYGAcL3OcFmKTeXU8=;
- b=jQIqYU0VagXp5nQHmD3rT8rjRn7rDenzEldKM4VPyrgLuK3Ysp5DcOtJOrbUFSUmwh
- bBBS7DvwNPqt6jox17oT7gBC8LOTnHTPKlFMWzAjkd5F7h2Znk/9omuscAvozgl3aJXh
- u/aHynPh2c1EHYfZISFn15ctvFcYPzX/9FmUjuSXgU/A2zvK/tqeMhzETdoRJJ5DEHzj
- sUVjbARAvczZcmV/LXZzOCJNqJvEpc70jos4F7dRb/54wh1cAthIHPIV1VQ6sF97gCM8
- XrTFaaMkZbiGQEs1cZO7CB2sNn3bM1TJHTH4s3mFT8jKTSTWLpnGND6HfNIdDvlxSNY/
- JHww==
-X-Gm-Message-State: AOAM530ph48nuKE7J2PeoXNZutYkCyrbQ4u8gJ2znqrYpMAWdIFyNZ3l
- R3TJKt8snrXRsdYNJubCe50=
-X-Received: by 2002:a2e:8590:: with SMTP id b16mr2994989lji.45.1589464476110; 
- Thu, 14 May 2020 06:54:36 -0700 (PDT)
+ bh=Fwa9E1kynr3Sx/7kJs6FRrjoDiyCspTyloxodGW5mYw=;
+ b=VBUyGbuM5QCt2VFLoOubfgXn0IKhNuNQ8o0nVdDxq2kaYOuu1NWmkQNpZjmdzYQo28
+ JXfEOLk0vEwhzs6+2s5DWFaSTzSkhD+EfARvVa5sC6IE0LcdvISEMJhDslF2CY3kCIue
+ 4Sp70Zcefb7rVbynfqoZlKkQx/YF2yWFHZli2QT9Yw4Wrccb9LqdmulapW1/ifLVSwHj
+ ojPkYoeezrS+6xVyb/3WyOcGJ7FOcE6Y3PSO0jQCONbd70SUoN7qFvSxaEqYLoainXj1
+ fG4wrcFN5yvfTmAK2R2hRwvZdoD8IpWg2KlrUSeM5cIGrSPo6zSSN6+2nlNl13OJkpi6
+ N0nA==
+X-Gm-Message-State: AOAM531RWFe6ObLqWvnw3vrnoaBc4Xn6WCi4JKEDqgGo30vk1snLd+Bl
+ Ct2M2tAa9sfbzwIoLK8v0LQ=
+X-Received: by 2002:a19:84c7:: with SMTP id g190mr3009309lfd.69.1589464507348; 
+ Thu, 14 May 2020 06:55:07 -0700 (PDT)
 Received: from localhost (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id i11sm1941877ljg.9.2020.05.14.06.54.35
+ by smtp.gmail.com with ESMTPSA id d22sm1876291lfi.31.2020.05.14.06.55.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 May 2020 06:54:35 -0700 (PDT)
-Date: Thu, 14 May 2020 15:54:18 +0200
+ Thu, 14 May 2020 06:55:06 -0700 (PDT)
+Date: Thu, 14 May 2020 15:54:50 +0200
 From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 1/5] docs/system: Add 'Arm' to the Integrator/CP document
- title
-Message-ID: <20200514135418.GW5519@toto>
+Subject: Re: [PATCH 2/5] docs/system: Sort Arm board index into alphabetical
+ order
+Message-ID: <20200514135450.GX5519@toto>
 References: <20200507151819.28444-1-peter.maydell@linaro.org>
- <20200507151819.28444-2-peter.maydell@linaro.org>
+ <20200507151819.28444-3-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200507151819.28444-2-peter.maydell@linaro.org>
+In-Reply-To: <20200507151819.28444-3-peter.maydell@linaro.org>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::243;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x243.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::143;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x143.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -121,35 +121,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZJP2oBwnJoIY
+X-TUID: 6qM1YpVHkL/M
 
-On Thu, May 07, 2020 at 04:18:15PM +0100, Peter Maydell wrote:
-> Add 'Arm' to the Integrator/CP document title, for consistency with
-> the titling of the other documentation of Arm devboard models
-> (versatile, realview).
+On Thu, May 07, 2020 at 04:18:16PM +0100, Peter Maydell wrote:
+> Sort the board index into alphabetical order.  (Note that we need to
+> sort alphabetically by the title text of each file, which isn't the
+> same ordering as sorting by the filename.)
 
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
 
 
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  docs/system/arm/integratorcp.rst | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  docs/system/target-arm.rst | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
 > 
-> diff --git a/docs/system/arm/integratorcp.rst b/docs/system/arm/integratorcp.rst
-> index e6f050f602b..594438008e4 100644
-> --- a/docs/system/arm/integratorcp.rst
-> +++ b/docs/system/arm/integratorcp.rst
-> @@ -1,5 +1,5 @@
-> -Integrator/CP (``integratorcp``)
-> -================================
-> +Arm Integrator/CP (``integratorcp``)
-> +====================================
+> diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+> index 324e2af1cbc..d1196cbe01c 100644
+> --- a/docs/system/target-arm.rst
+> +++ b/docs/system/target-arm.rst
+> @@ -71,15 +71,15 @@ undocumented; you can get a complete list by running
+>     :maxdepth: 1
 >  
->  The Arm Integrator/CP board is emulated with the following devices:
+>     arm/integratorcp
+> -   arm/versatile
+>     arm/realview
+> -   arm/xscale
+> -   arm/palm
+> -   arm/nseries
+> -   arm/stellaris
+> +   arm/versatile
+>     arm/musicpal
+> -   arm/sx1
+> +   arm/nseries
+>     arm/orangepi
+> +   arm/palm
+> +   arm/xscale
+> +   arm/sx1
+> +   arm/stellaris
 >  
+>  Arm CPU features
+>  ================
 > -- 
 > 2.20.1
 > 

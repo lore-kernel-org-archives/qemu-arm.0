@@ -1,125 +1,167 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp5101238lfa;
-        Tue, 20 Oct 2020 13:09:42 -0700 (PDT)
-X-Received: by 2002:a17:906:1fc7:: with SMTP id e7mr5169312ejt.283.1603224582585;
-        Tue, 20 Oct 2020 13:09:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603224582; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1375021lfb;
+        Thu, 14 May 2020 06:29:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzRzUQNPBdi6wLT4K/IcQ7IC82T4HgtOQvpjJRHcmnQcuXMDwBwr1b7tlDfR2b7tdaZ4v5R
+X-Received: by 2002:a05:620a:2155:: with SMTP id m21mr2396883qkm.243.1589462950975;
+        Thu, 14 May 2020 06:29:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589462950; cv=none;
         d=google.com; s=arc-20160816;
-        b=iQWvFl5AS9uFHDnVYZF8FB4n66sSYPOkGzMmsgTWbJ3YKFTWGwoze9O+TotJ/qxZvc
-         JASlBTJ1FxYXdMhkvwgbYRkY28xq3bwfgbJhtNVEQDrmv4A95so0nAbNMOTOjairm9uB
-         pnpZsyyHTYYjhZNj2Fh/OQP8AF956NJO2vrB0WVHN7jNUxDFehtnUGIeEECpKP1lKYLJ
-         s+FhC/NShF3blXwMzSQNPHxNXEB6yrMtaIV5xnk/xS4lCt3I/4ce09deJ1xql88YS6Gx
-         yrb/pSRHrcfRJMTZSiG9WSAFa5QoOugO62pDgWW/9kOzT10N0/coLTRnwiJ/6YxzvfLf
-         VlFA==
+        b=trOIWGVWWVDWDsg/hdJkvO0H+Aujp3IZ1Vc7SyEPUAvikGva8EsvMSZ6Gz6H9tu9cN
+         A4C8h+htI5CRWQ8T54GdvZlCmwrgnhbR/eDCvHghyt6UMLWiT9LbrGHZssux2Q9S9A1X
+         bSP74nYMT38mW8NmQ+ItBHooj+UxYa/csZukXtWixzJ3BiosR4DAHMLm08tg5pr9ix0t
+         jEFLMbUlYC7Ft9jCjrNxy9V2rfjJYEX+bwIEIkR/hT5xR25oocgtO5Tr/Tm2X4YqoxNT
+         OJs3q0ZClMNKIfIN+1rKmEV0x3YVryfMxdqyKcLL1Tz4cPDxB6x0gn1M4LPRgYr+paf9
+         OKOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=Sp1TpqpKZUEUMinzBTWcok5u1j2qfcRRULl9ZfNE/kw=;
-        b=fp6jaGNjAJYRy9bGe80atmtOW8VvnLvp8Tr46HmOeS3y3RlTj0odzCfssW7nyNhX0t
-         yW5jQXq5ooFqB/gU18Edmo3gbJpiJf7GOjcr5HceMlGWzw9wnfdJ6hjP6/rGpjeEFX5b
-         ie+Zik8lnfUkYCGMWp1icJ1f8XDZ9zIeHEuaZXJnhsJ+EUsFoMEo9M8EewcG+fRZVVHd
-         14wU4gOwgHf/ioZGCMbDtT4WvfbSB2ds/rJgJqrZqlZ5T5ZWvKLx/YRHP9Gyaq69kZL/
-         u46jkGG6omnNtXTln4jwhkRDIY0zwAw2l7KnH96vA4m0KDzNIZH6Mx2yeruBBEX7Mzgh
-         RwRw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=lrUy0J28zBHHg4g5WRm2XWIMgS4FBFMxmKrKoLGt2Jw=;
+        b=cayL06nK34MX8AYWCnyocZBo0JaXi0k1phqH83L2mKGup6Evxf0/13LvB5JGcQ8+ql
+         B5JZ3vPS0VqAALNPdwok9O3ppTEzEfiFlybxnXFUihNlyyf6yWHGtmWFalSIYogqmqGc
+         VA7TB3gtrVTO9pASUPJd/g/mRHnuqbnZXJvwpbaamIH4iRTkN+IDatyXZYrOSeQzZBSc
+         Yqi8t47TAD7D07quOSZgv2jDcTeiaPj5AI5QCbil3AOGi1LYyClYqmYhuQ83mEwSPSY2
+         PCwD1uPwXpJgmXuBWD5w9Fb4onyFPZVx5sSr3xY4UsWmyGtO+poOiaQnBtLqI0nt9xST
+         8ahg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lDmNek6I;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ArNfQkzZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id p26sor2450422edt.25.2020.10.20.13.09.42
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r15si1446394qvz.38.2020.05.14.06.29.10
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 20 Oct 2020 13:09:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 14 May 2020 06:29:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lDmNek6I;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ArNfQkzZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=Sp1TpqpKZUEUMinzBTWcok5u1j2qfcRRULl9ZfNE/kw=;
-        b=lDmNek6IYfLGpJxVhjVEmmU6fLVmWkhdCF+T2OyGYMN4YBLFTAyv91LkIReshRKfac
-         MWIPqAEzytiVMiD8jk4ZYb/dfCwAHhX27JQtH99FQsluFWiN+xesiPi+IRWx9d9KaOrq
-         VyiiAniMuMANVad9oufcQqcN021Ajl+JY50mcUfI4kfWU7uaq1zBrd+kgqNgF0zqWbUa
-         mlnSPEKszY9RKy1fc/WPY4hsEJK1yaa5QlREWsMf94uPG/TXNtmpetN4V+FB/AEw8uhK
-         4xiTnAdhzVAXUO78FY/OmLOlr0qPLJeXtT6+eh0aNbiAmNMyKPBwOluQvl6QjKhM3M23
-         zHGw==
+Received: from localhost ([::1]:35154 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jZDvC-0000WM-Dk
+	for alex.bennee@linaro.org; Thu, 14 May 2020 09:29:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59980)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jZDuZ-00087o-2F
+ for qemu-devel@nongnu.org; Thu, 14 May 2020 09:28:31 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:39718)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jZDuY-0002E3-7J
+ for qemu-devel@nongnu.org; Thu, 14 May 2020 09:28:30 -0400
+Received: by mail-oi1-x242.google.com with SMTP id s198so677420oie.6
+ for <qemu-devel@nongnu.org>; Thu, 14 May 2020 06:28:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=lrUy0J28zBHHg4g5WRm2XWIMgS4FBFMxmKrKoLGt2Jw=;
+ b=ArNfQkzZq7HTe13wq21uQAg69VWtIJ9StIDi6afrXI3wU1DeX+CWTm4nufozIWddXO
+ B5SPglYrzCklBddPPyDOW+1ZJng4fRIGFrLdqS0BRXKQetoReYgz9HxW/Pbimke1IX2H
+ c26UYuXEaYZEBvh/ZCbLmd8/KilFX9chSXETwOAmlZljyLV+Ap5d0efpNKHyPucDd9zG
+ sbTaJ46C7juwwVl/mrKTA1ExT4hT9tLdbheJGZkDdTyVJwrI3Y+lI/siGRVtT09F311W
+ 1kD0wZFdBDaKd6ZQo/th+gauuNQPMwqVTcsjeQiFTO17xEe09LCSyMTdrpg/DKNvTiv0
+ W+0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=Sp1TpqpKZUEUMinzBTWcok5u1j2qfcRRULl9ZfNE/kw=;
-        b=LHu9RsHtfTcIWzOPOKEw6HZ2SPhzhifZ9DnbNJv/bOFsC6x9jUOhx4v6kTYU8A7cQ5
-         PJ/lGssOO9x9xG0I7q3fIDZjB6rwtAtLwJh1xVdDY+b4iToFfPF88rHekGEb4fMH8CvP
-         +uJBdkQboDQd+tjJ/ukrSRej/YbLJM/hUYSa69IeEQQRaYTiIMok7tAYCK1erEEqlTq6
-         7zJxResKjHCD7KXvuWo61R2fSFQSDn++/ceVUKtxP+j+mynA+9lCq5zBFRU9/4ppxy/S
-         Xg48K18jlei3PQEu/c2+F5kfGssWsFOil0Ti9FZ08eR4RCE3I9NYt8KrW4gdj8zShEgN
-         9lVg==
-X-Gm-Message-State: AOAM532Di1LcnhXnKgFW3LtggMsOkRz1UaIgKmCJb9mDCMLxGafb3GXh
-	+imNPmIBvIpyh+d7h1kN9y2qCtXCHfWo/1O232Q97mAVM8Us2SUh
-X-Google-Smtp-Source: ABdhPJzXVH4UwDw/CFPjiRlyMeVHwOdmOVc2xI2+0yj2r4gXk2b8Yr3G4lFtLippT4jsaqkb67xuAuBQ9VwXxn39ap0=
-X-Received: by 2002:aa7:d79a:: with SMTP id s26mr4487917edq.251.1603224582227;
- Tue, 20 Oct 2020 13:09:42 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to;
+ bh=lrUy0J28zBHHg4g5WRm2XWIMgS4FBFMxmKrKoLGt2Jw=;
+ b=oYgnW8rGX74vwxTtdT0QDhs1HiDSkokfo5hOaBPqQYf8vXese2GhtuH8sUM7F/+taH
+ 0BNpGBe8Tka5nSfr6i6roVwK76Vjbiql7fj6/MTL8W5Rn/tVYeBK6725+gBY7xIfPzyI
+ 2FEQCk/Y4rkZeRTAEwx6t7kE6qnI9IT7Ee/WP/PRB8nXdP+PYgbYMmHXeTqpei2q4I4p
+ uxPfjnpA3U8iKWP3SKZaYT9Q5l9ERlI+o39/xP9POhDMBc71SIXwoBoAKRWsgXx5i1kp
+ +/ewcM2wgqqYlquEpKgcGEs4/e3Vl+A/D7kQL9AnW2ecNJnc/4ilgU8rUG1JKlTs2q67
+ WFjQ==
+X-Gm-Message-State: AGi0Pube8zNJF786dZ4DaUTHtqONnxayvnWJd1a9qQ7zSP1BgOGOIUEO
+ XNoKp7SQTvYCdF6zeOlBTJo4XMoCzpGXpzU78KD6Kw==
+X-Received: by 2002:aca:895:: with SMTP id 143mr30671482oii.163.1589462909184; 
+ Thu, 14 May 2020 06:28:29 -0700 (PDT)
 MIME-Version: 1.0
-References: <20201016184207.786698-1-richard.henderson@linaro.org>
-In-Reply-To: <20201016184207.786698-1-richard.henderson@linaro.org>
+References: <20200507151819.28444-1-peter.maydell@linaro.org>
+In-Reply-To: <20200507151819.28444-1-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Oct 2020 21:09:30 +0100
-Message-ID: <CAFEAcA9d7h=LCKP7B3G+Wx5CUr41+bY9ziyycGamL0EsTMgxDQ@mail.gmail.com>
-Subject: Re: [PATCH v11 00/12] linux-user: User support for AArch64 BTI
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Laurent Vivier <laurent@vivier.eu>
+Date: Thu, 14 May 2020 14:28:17 +0100
+Message-ID: <CAFEAcA_p1x6S10yswHgOkMd=KrxcTGh9TD47+k1LRKM0xy5x+Q@mail.gmail.com>
+Subject: Re: [PATCH 0/5] docs/system: Document some arm board models
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: r4VFxWf+ZGmv
+Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oBoPJx7jA4kE
 
-On Fri, 16 Oct 2020 at 19:42, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> The kernel abi for this was merged in v5.8, just as the qemu 5.1
-> merge window was closing, so this slipped to the next dev cycle.
->
-> Changes from v10:
->   * Include Phil's plug of interp_name memory leak.
->   * Convert error reporting to Error api.
->   * Mirror the kernel's code structure for parsing notes
->     (though Error means that it's not exactly the same).
->   * Split aarch64 stuff from basic note parsing patch.
->
-> Changes from v9:
->   * Split what is now patch 7 into 3 more (pmm).
->   * All prerequisites are now upstream.
-
-Unfortunately the bti-2 test dumps core (x86-64 Linux host):
-
-make[2]: Entering directory
-'/home/petmay01/linaro/qemu-for-merges/build/all-linux-static/tests/tcg/aarch64-linux-user'
-timeout 60  /home/petmay01/linaro/qemu-for-merges/build/all-linux-static/qemu-aarch64
--cpu max pauth-5 >  pauth-5.out
-make[2]: Leaving directory
-'/home/petmay01/linaro/qemu-for-merges/build/all-linux-static/tests/tcg/aarch64-linux-user'
-make[2]: Entering directory
-'/home/petmay01/linaro/qemu-for-merges/build/all-linux-static/tests/tcg/aarch64-linux-user'
-timeout 60  /home/petmay01/linaro/qemu-for-merges/build/all-linux-static/qemu-aarch64
- bti-2 >  bti-2.out
-qemu: uncaught target signal 11 (Segmentation fault) - core dumped
-timeout: the monitored command dumped core
-Segmentation fault
-../Makefile.target:152: recipe for target 'run-bti-2' failed
-make[2]: *** [run-bti-2] Error 139
-make[2]: Leaving directory
-'/home/petmay01/linaro/qemu-for-merges/build/all-linux-static/tests/tcg/aarch64-linux-user'
-/home/petmay01/linaro/qemu-for-merges/tests/tcg/Makefile.qemu:85:
-recipe for target 'run-guest-tests' failed
-make[1]: *** [run-guest-tests] Error 2
-/home/petmay01/linaro/qemu-for-merges/tests/Makefile.include:61:
-recipe for target 'run-tcg-tests-aarch64-linux-user' failed
-make: *** [run-tcg-tests-aarch64-linux-user] Error 2
-
-I've dropped the series from the pullreq.
+Ping for review?
 
 thanks
 -- PMM
+
+On Thu, 7 May 2020 at 16:18, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This patchset adds (minimal) documentation of these Arm board models:
+>
+> vexpress-a15         ARM Versatile Express for Cortex-A15
+> vexpress-a9          ARM Versatile Express for Cortex-A9
+> mps2-an385           ARM MPS2 with AN385 FPGA image for Cortex-M35
+> mps2-an505           ARM MPS2 with AN505 FPGA image for Cortex-M33
+> mps2-an511           ARM MPS2 with AN511 DesignStart FPGA image for Cortex-M3
+> mps2-an521           ARM MPS2 with AN521 FPGA image for dual Cortex-M33
+> musca-a              ARM Musca-A board (dual Cortex-M33)
+> musca-b1             ARM Musca-B1 board (dual Cortex-M33)
+>
+> to the system emulator manual.
+>
+> Patches 1 and 2 are minor tidyup of the board table-of-contents
+> before we start adding new entries with patches 3-5.
+>
+> I'm aiming more for "at least note that the boards exist" than
+> "fully comprehensive" documentation here -- there are still another
+> 37 Arm board models with no documentation at all...
+>
+> thanks
+> -- PMM
+>
+> Peter Maydell (5):
+>   docs/system: Add 'Arm' to the Integrator/CP document title
+>   docs/system: Sort Arm board index into alphabetical order
+>   docs/system: Document Arm Versatile Express boards
+>   docs/system: Document the various MPS2 models
+>   docs/system: Document Musca boards
+>
+>  docs/system/arm/integratorcp.rst |  4 +--
+>  docs/system/arm/mps2.rst         | 29 +++++++++++++++
+>  docs/system/arm/musca.rst        | 31 +++++++++++++++++
+>  docs/system/arm/vexpress.rst     | 60 ++++++++++++++++++++++++++++++++
+>  docs/system/target-arm.rst       | 15 ++++----
+>  MAINTAINERS                      |  3 ++
+>  6 files changed, 134 insertions(+), 8 deletions(-)
+>  create mode 100644 docs/system/arm/mps2.rst
+>  create mode 100644 docs/system/arm/musca.rst
+>  create mode 100644 docs/system/arm/vexpress.rst
+>
+> --
+> 2.20.1
+>

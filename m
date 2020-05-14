@@ -1,98 +1,94 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1262139lfb;
-        Thu, 14 May 2020 04:06:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyma+r3Kvzrzz1jCYTe6V05zI+h/RtDJWzF1+7XrEhKTkJq0rOpv6MO9w4Ydlsxpbi0aDQo
-X-Received: by 2002:a37:bd82:: with SMTP id n124mr771475qkf.168.1589454401568;
-        Thu, 14 May 2020 04:06:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589454401; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1338134lfb;
+        Thu, 14 May 2020 05:45:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyXpNiwLmaEK9lM/x6ew+M+//6RZyzxVGPct3sErJWrBXmvD7XcexdUh9nPl+ZwW6lWbqzi
+X-Received: by 2002:a37:9ac6:: with SMTP id c189mr4554145qke.398.1589460322527;
+        Thu, 14 May 2020 05:45:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589460322; cv=none;
         d=google.com; s=arc-20160816;
-        b=GpRElRVw8rbV/WIHoHphAbgHxEMyjzUGjjv3R5fRomGE3RqIwz98Z8Wj7rpYOk/FG6
-         borAnrTDSCCb3z9Su/ZWXKQ/VYyISfuzmuKrOVgsYuInM/ahWVYBK+dRsn74vNgo+mXy
-         HGsjeF70mEW4HhmJjrpSwstTyadnP8c6eyZoL6w51KPzEtHNdSvyv5EdbdctWjVQLlua
-         BkDUeTzTPqmf6+u5kZRMxqWPs8X0gLg5YPNeEJlUE7bGrroH7UeTOLUb7tInQlcrEmbV
-         p4MFPlrQpYuB2QoLxcY3Xpoe0t9Bj5wi5J5IKPc7dw9pFCtNYADXlGce+BFtwtOS+Yu/
-         b/HA==
+        b=i5BGpUJVMFwTN/2ePMD1jxTdPXzgd74ZdwZ55hjUqjsHKcOzy3iJdT9Hd/tWbM9F62
+         0oqK5OAswErKUWM1Mc+Rm6ld6LbQJG9Z1JgYNzOvSRxtKKd7u7DrnMdjWbY3TzPUvZxV
+         r7rLN3mLV7a2dwLxIPMAgRwGXVpgUxQdiESwTWOPSpw0sh2P3qSXw9xLZGH7dLszXt1J
+         FWDaACNP/0Sg3Dn/AoKjReVtnLKy+CEYUPf3CNho0oPMRhKbEPkLMAQ7TaXyIvi8Uk3f
+         nkamfu2mNO2Wkfe8NbvAHJR87TVQV60ezObLtOsSXqf2P1h63fbcuKp8ii5E64ZBYisM
+         aswg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=HbeeO/BTGyvvjWbZiSyGfUxAZ3Hjc8dAPRDWFG1ndi0=;
-        b=NiC1AQxCMIZn5lGtSIJcN6B1BLbVGcloC5laq7hH4cXjrS7CZF+ITY69gGus2GdTRm
-         obXUxyEOFBHBPN2gwIFfBuduxA0tdr+LmLJMRJa59LvWQ9uBqPPfE2hHj/hXpgLi5SuK
-         LuqQMcQFOvAOKrqNh54j7qm2W8l1vQoqj11Hxno1qYjahNfWPr7kJGeJtfhNFIaj6+3c
-         7pE2F86u2IeMSGIztjV285UP3yQPqdpoReb6mNxiO+42XYdfRDq7g1S9SlQsgUwz33F3
-         OZfYbF9dVHTdrBsLA+OB5qd6ukbHL+eZD+JNytv1qB3yl4EXdvALBcfxuwpXF7F38LBc
-         Wuuw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=1oyf3cwa4ysv0F+1gus4rSNb6qxm3CMa4cO5H6tMf2I=;
+        b=WBsVa0IG7bpMytny4hWfjmAdavWHNdTjb2Atm6wiJ0dBtr6CH/3FlN+J5w1CQzVICx
+         fBMRM9GAt3QQcYcXURWtiVJ1+ME2gN7T7PVvqXY6gQk2l0Tfqx8/EmNFjFfzUr0mPTs5
+         pLTqLLz0KOAmcCijG+SgFgTPTmoWd5SAzmm5+uIqqodj9pkesZAGzVAwjB2FkqGfrZle
+         sgezCoJ7pGn//brNTbaKnX/8QOX0kMCnQ7geUQ4NWMJ8r7jJd16DWwaLaKjjtTvqJyIg
+         p39lJT6A52tGc1tDGioQZfIOaCQmOnGZ2NJoPMppUnZNkkIHE7fNiXuB8y+6KlAyV9mr
+         9qYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=T5SMAR+X;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=ypVTyL7c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 92si1408538qtf.197.2020.05.14.04.06.41
+        by mx.google.com with ESMTPS id q41si1607134qtb.266.2020.05.14.05.45.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 May 2020 04:06:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 May 2020 05:45:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=T5SMAR+X;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=ypVTyL7c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51116 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60812 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jZBhI-0005AS-Tq
-	for alex.bennee@linaro.org; Thu, 14 May 2020 07:06:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42452)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jZDEn-0006lX-Qb
+	for alex.bennee@linaro.org; Thu, 14 May 2020 08:45:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jZBg7-00047t-67
- for qemu-devel@nongnu.org; Thu, 14 May 2020 07:05:27 -0400
-Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f]:33298)
+ id 1jZDDE-0003j3-7O
+ for qemu-arm@nongnu.org; Thu, 14 May 2020 08:43:44 -0400
+Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334]:41326)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jZBg5-0001ZH-S2
- for qemu-devel@nongnu.org; Thu, 14 May 2020 07:05:26 -0400
-Received: by mail-ot1-x32f.google.com with SMTP id v17so2030887ote.0
- for <qemu-devel@nongnu.org>; Thu, 14 May 2020 04:05:25 -0700 (PDT)
+ id 1jZDDD-0007s5-58
+ for qemu-arm@nongnu.org; Thu, 14 May 2020 08:43:43 -0400
+Received: by mail-ot1-x334.google.com with SMTP id 63so2195086oto.8
+ for <qemu-arm@nongnu.org>; Thu, 14 May 2020 05:43:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=HbeeO/BTGyvvjWbZiSyGfUxAZ3Hjc8dAPRDWFG1ndi0=;
- b=T5SMAR+Xk0B/raCyvqQdLfTuhN/gdBYcLsytGVePaj55xweWnW8Z1vMu5cr1791Jj0
- er8BkFsJHZ+BDpWa5oY7lL0m+GR0liTFc/K3IS965ogP+35FqPwv6RXzyzZh9AfHJx5M
- QzcmL2CCj8jzlUc7P4WGQrm2XdEiAgY60lEd61uX+429ahH30OWz3fGeyqF8TVORiiLe
- 96Dg2u7MgeDBlQzqIPTxeRFDPm2d5PEoSf1/iZ3ThXiGKjTnuQRswmqSJXyl2SlrJ2ON
- gEWCjBKtcMBX2HPW+FxDJmrpXt+e+ZMv80mTaTreMrNms0BfUzcquuRmIwX+nW0u/VlW
- NNMQ==
+ :cc; bh=1oyf3cwa4ysv0F+1gus4rSNb6qxm3CMa4cO5H6tMf2I=;
+ b=ypVTyL7cDMoH7l0+bEz1PvWvRoTGnmzkwEhJMemYlViCP3ME+po2WXRtzCrH32ibpl
+ Ms1yBFDXmSRlg2HsqN3ggloNRmZX4sDaqv+xAxgUqSM2vy1YLHlp4SotmgxRIgTfY9DK
+ fUADazs7u19X1vHtN60EuwZXjpXIu0967bUwxdxWeS5JqLMUMqEQ/rcDPQaKGCRlHoEW
+ MwLACr1ieJwkDjSJ6KCi/S2fsjhrTTDHj+0t7Ok+BOnI6+kp6CxAIyLdKw3Zo0/gKqtg
+ HMYrOxcfSIR7MoHdK6lIzPzr515j5C1m1i1jHJ9oIKz85OTsEnofgAqDAcPWsRv67Kvk
+ iZkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=HbeeO/BTGyvvjWbZiSyGfUxAZ3Hjc8dAPRDWFG1ndi0=;
- b=JZmrBq9D6/TN3Uz17HNTrOfokevstRkrtjTRw8PbzYWWhEIdX/5681RJMak812I72R
- Slj6uv1a6+ixq5DeICxcu/Pmj1nsREbd4LwtazVU4+UrZCKIdrI23vp9L33b1HE74aS0
- RiXIhucw6OwUu/wHXu9DY8RzAG5r8urW4ft9YEZNWUkW+2fnQg6LPDiqfGZ/n3rmfWNF
- YZ7IXDu+svwnULffTlrP35FhrFJTa94qZYu2Ljb9b/wtrq22XunJFG3x49+LWDpfFoqV
- 2J45tmVRa8J6D2U8uHaWacxQd63vaR6TbXw7CEOFXovklp9T8i/Rf/fkYEu4AuchFAjv
- J8Cg==
-X-Gm-Message-State: AOAM531KDXqX8nHBx0p/JvG9SHDCWH2XyugtqmIai7RuK8iSG7l5w6Xm
- hAXZ3f7Ld7lVAMY8PG1ZL9jL9N8kxdGbKdf3KOjHCQ==
-X-Received: by 2002:a9d:b82:: with SMTP id 2mr857222oth.221.1589454324467;
- Thu, 14 May 2020 04:05:24 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=1oyf3cwa4ysv0F+1gus4rSNb6qxm3CMa4cO5H6tMf2I=;
+ b=XdQxUCkpZz2KztjMp/o4byVaw1eRXFpOMMfiBqRMSSj59HHXomtXfIa3ydHZFnwQlL
+ /F80IvoqIUv2epczrS89sWlpDgxEkTrcOQkel1l3pFjiD3hmDnPgHX89ynkOEggxzWsv
+ LiBiEx5S+OHvPJ9b8nllVf3tuaPA4WR6u6JyoOdIxRsGLBgRX7dYirqjcvuvdZfuky+d
+ v5LIkapMNGjs0+WQte5npU3R/tev/XJRG4trzYFrV3gHaw1FiiUn8HpeU6/39v3wynUG
+ xZ+zWVM4k/sybzBI+jzFjEbr677q6utcg6cXbpq7kF3GbGlbUPQPA2SaQ04E2wnmwQp0
+ osaw==
+X-Gm-Message-State: AOAM533CBE0ZO5iv8+Nvmd+0VqIMQi/xOOgyM6gwDAjeOtjl/b1nYA+I
+ c4s1L1ro/UUO4mCXmQQeHc8OWyPuESUnMINN9eyHDA==
+X-Received: by 2002:a9d:398b:: with SMTP id y11mr3378687otb.135.1589460221598; 
+ Thu, 14 May 2020 05:43:41 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200506173035.2154053-1-patrick@stwcx.xyz>
- <20200506183219.2166987-1-patrick@stwcx.xyz>
-In-Reply-To: <20200506183219.2166987-1-patrick@stwcx.xyz>
+References: <20200514122334.25089-1-kraxel@redhat.com>
+In-Reply-To: <20200514122334.25089-1-kraxel@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 14 May 2020 12:05:13 +0100
-Message-ID: <CAFEAcA87XxQTdAHLRzF7cuuqbbWVN=+UOGO7jOVrWv0S=g12Gw@mail.gmail.com>
-Subject: Re: [PATCH v3] aspeed: Add support for the sonorapass-bmc board
-To: Patrick Williams <patrick@stwcx.xyz>
+Date: Thu, 14 May 2020 13:43:30 +0100
+Message-ID: <CAFEAcA-Hmh+SygS7eWfYWsHSYnTFWFccz1GrXDbX=UHqOH38mA@mail.gmail.com>
+Subject: Re: [PULL 0/7] Usb 20200514 patches
+To: Gerd Hoffmann <kraxel@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x32f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x334.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -103,44 +99,54 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Amithash Prasad <amithash@fb.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Vijay Khemka <vijaykhemka@fb.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FCL0OnHWpkLJ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1NZ9PUpgpxcx
 
-On Wed, 6 May 2020 at 19:32, Patrick Williams <patrick@stwcx.xyz> wrote:
+On Thu, 14 May 2020 at 13:23, Gerd Hoffmann <kraxel@redhat.com> wrote:
 >
-> Sonora Pass is a 2 socket x86 motherboard designed by Facebook
-> and supported by OpenBMC.  Strapping configuration was obtained
-> from hardware and i2c configuration is based on dts found at:
+> The following changes since commit d5c75ec500d96f1d93447f990cd5a4ef5ba27fae:
 >
-> https://github.com/facebook/openbmc-linux/blob/1633c87b8ba7c162095787c988=
-979b748ba65dc8/arch/arm/boot/dts/aspeed-bmc-facebook-sonorapass.dts
+>   Merge remote-tracking branch 'remotes/stefanberger/tags/pull-tpm-2020-05-08-1' into staging (2020-05-12 17:00:10 +0100)
 >
-> Booted a test image of http://github.com/facebook/openbmc to login
-> prompt.
+> are available in the Git repository at:
 >
-> Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
-> Reviewed-by: Amithash Prasad <amithash@fb.com>
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>   git://git.kraxel.org/qemu tags/usb-20200514-pull-request
+>
+> for you to fetch changes up to 8b2b45c506f4d71b831473d8de93b3cedaea4844:
+>
+>   raspi2 acceptance test: add test for dwc-hsotg (dwc2) USB host (2020-05-13 11:06:37 +0200)
+>
+> ----------------------------------------------------------------
+> usb: add dwc2 emulation for raspi machines.
+>
+> ----------------------------------------------------------------
+>
+> Paul Zimmerman (7):
+>   raspi: add BCM2835 SOC MPHI emulation
+>   dwc-hsotg (dwc2) USB host controller register definitions
+>   dwc-hsotg (dwc2) USB host controller state definitions
+>   dwc-hsotg (dwc2) USB host controller emulation
+>   usb: add short-packet handling to usb-storage driver
+>   wire in the dwc-hsotg (dwc2) USB host controller emulation
+>   raspi2 acceptance test: add test for dwc-hsotg (dwc2) USB host
 
+Could we wait til we've had the patches reviewed first, please?
 
-
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM

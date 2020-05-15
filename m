@@ -1,207 +1,172 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1643935lfb;
-        Thu, 14 May 2020 12:04:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxT7LL9OzKYLOiplQHuwu9TtY+QBGYW+9OltfB5jb7OgrUHSZKsDi7+Wk4bxb2bLh4PfnKx
-X-Received: by 2002:a0c:90e7:: with SMTP id p94mr6566172qvp.219.1589483080099;
-        Thu, 14 May 2020 12:04:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589483080; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp164554lfb;
+        Thu, 14 May 2020 21:41:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxogTa1brevC1niauqfl0ME5RA0GRKSg1VLxzSIAfRlynbJMo25o2A14gJ38Oeff7pWcjzc
+X-Received: by 2002:a0c:e7cc:: with SMTP id c12mr1759193qvo.231.1589517665030;
+        Thu, 14 May 2020 21:41:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589517665; cv=none;
         d=google.com; s=arc-20160816;
-        b=YngHOMI/ZGjgGb/zikswEeK8lJ24E2xqS0AWi4C7Gc8CFBKX1sp/6VmOqVO8Cx8sJW
-         ueID7094Nn6Mqt9lBh7ZRmExiRSuBbS/CSfalbQKIqdnYzD0Ds9+SYv6XA8QR/zyhOqL
-         hcTacuFtviuG48BA+xrrY6+x7BRqNd0YxGtMzAwl/mXlqGFBiBuP5nl4HhgAAuIraStk
-         OEZOZxF/3BKNzv0MI9fGbsRvK0MS3JJD4kxIyvuzva7A8fUNnsVsyrq0AiyIQq7sFMqi
-         86JgON2fBIMirSOyj4ino1fpKxuhr9AM4F5qHe1T7u8ds7PCSEpto8sInn3gX7it809k
-         PALw==
+        b=KI2n/JR2H8pRM9czH1T2Av5VWevmas65smxmnHr+9YNsVZl4y0YvdIFm+/na7Eho3A
+         BbyuZ1LE3+V7Ctc1krZoo22EFQQq2x+Z3nVnH+mMsHzeCg3D4e4fZKJ4mxEF6/2gVIjD
+         ktUmQspAY9BfQvAZ7DHMiueNlVlC2xHmkOOhhFgsjxsYtnDUCgCKIF22BkrjP8FUBBhF
+         xtLQAR1mQUrW+4xd4Z8xNTVcwHH/CmvW3gJT67KWFh//xx6x2gc9gXlnWvzqi8lC5Ce4
+         wllr1+zmVWlSd19vEXAvkRxNgjofjWZutCYKOHAJCQ8ct8G/BzmQsoPWJEqJhZpGyxqZ
+         8zyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=5c/cqTSBeacgrG9vD8SV8joXa3WDKDX9leqs1xGxGE4=;
-        b=aC+jBY7aIImRF585NJFoHLKw+8v0k0eYML8oVp3znHikilyCfkCT6opN5d8X98Xr7e
-         0MqAIqgknsJWgjE4e3nm7ggRh19fwstT6XKAB3Ct/+7zcL6p3KdXqF75zTCPGgEmHmA1
-         kEr3x/Y/+DE5CXQA1TdWhVBb5xlN3t/SmDLZ6wAOrc+RtxtE3NNYIBxQIABcKlEgVaNA
-         7hepPNrrn50Nii7f/oL+0d7onkBvXmhi92FPsdA0a8o2l1U0xlFCqj58c1l6aKW2P2Ry
-         U6TPJb1+5jj7nEsuaEzYLzmwttF+GOw40J9u2Btnu3tsQUx/xgCO8JwXeaW63piP9mmo
-         VSlg==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=OKJR3XWl1FD5yBYTcoQ2dBjNcY31o5w0McSpi+jkOug=;
+        b=AWVqGt05DNqRjl4xxzcOoR2S7u/PbJHtSibqDTThnrNlAbsud8arSVRDL77IBU4dhH
+         610U7f5zEOwKH6UCAxmSTmSrbzBi8wzy/YSl59zLSSGICqK9auTNfYS6ATLH8IyKqoXQ
+         JlmFn3Hg3DeEHYiVSKZmn4PiyTlPX6X+ewXBB9wuEQJwVtm7d6cUNDWkdcNXKft52m2M
+         J6SvY/gaHA8rGDqAHjFEjoUC4V1yD2BgUoAh4KXtMOJvMtGg7AcnT9VYPCdfE97TlT8w
+         vlRfkNH1v8BWvNBQaAXRt5zVNi7un+dryxOUskdSbGVl+2qfLswlT2VRlViK6dS5ZiX4
+         Zh2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cTCA2i63;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XvMj7qjb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d129si1918780qke.338.2020.05.14.12.04.39
+        by mx.google.com with ESMTPS id o13si678791qti.8.2020.05.14.21.41.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 May 2020 12:04:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 May 2020 21:41:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cTCA2i63;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:46352 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XvMj7qjb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45468 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jZJ9r-0003FR-Gr
-	for alex.bennee@linaro.org; Thu, 14 May 2020 15:04:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55068)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jZS9g-0001fc-H8
+	for alex.bennee@linaro.org; Fri, 15 May 2020 00:41:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41238)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jZJ9g-0003Ep-J3; Thu, 14 May 2020 15:04:28 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:35571)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jZJ9f-00030k-Ir; Thu, 14 May 2020 15:04:28 -0400
-Received: by mail-wr1-x444.google.com with SMTP id j5so14230wrq.2;
- Thu, 14 May 2020 12:04:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=5c/cqTSBeacgrG9vD8SV8joXa3WDKDX9leqs1xGxGE4=;
- b=cTCA2i63BCynziUv2M2XCPslY5UixvstTkS2yccWkf8NTPuna/VM0Rgebf6n0H10l4
- x5dkIM161msa23IeE4gdg8Brlli3oF5DB8En8Ufy9KjWfLisOtJQupBrzvFTlgBfTrFn
- uL7h5xrbJBURJOWGdE7Xmr/VK/AgKGiMWxv5C4ZlDJfLDhHvn17k1O2k1N5b8laJ6P8Q
- aJQGzzuqfgQAfYIhnit4d0ajndkibXnCIrDaQrdi8v+vC2kriEblkvtzv3Cc7q6+U5l0
- RSLQjJHd+8XlYnhxBeLnRsklvLkPEeRl+DlnspXjB3hy3Ilr4rLan60c0YJI6ge1G2dT
- OJhQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=5c/cqTSBeacgrG9vD8SV8joXa3WDKDX9leqs1xGxGE4=;
- b=NuZptyAvLBARsft3T15I66COgoyQdYZ+7MTdSmllxQfbbUz+X1xh1ClNtGYohKFuJ7
- zPO0DmE6qZE85c7/o+sXvp4Cnn2jSXTg2QZA9XlDyrH9uGqbF3HL2akTr58NeP60Ar7l
- 3BWWr+TYXUcl+9U1S5fiwVsQyWqhrvoErxnGd8/gxfwfaqCRfX9JAR866yp5S8UQj/pQ
- 9QJn3BUIkBKijAU2a5ruCTM5ArVVx3e3403FlNycI+dQ8b+wUchp5NJAPkEKMW0ngC+Z
- jdl/LFZKQpiNTBEqvJYzC8kugT43+WzEhXTJSbuxbm+v2s3g6Bec9MLXTjJQ3SV/zgZw
- Z7Tw==
-X-Gm-Message-State: AOAM533rohURc/xTa0JW5F2swBmL14J+plU6hgdd3R3HspnJYPb74E4j
- IXwieCL8rsQjOOGry9ldNthLZzY1CyE=
-X-Received: by 2002:adf:fa0b:: with SMTP id m11mr2895092wrr.417.1589483065073; 
- Thu, 14 May 2020 12:04:25 -0700 (PDT)
-Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id w15sm5225773wrl.73.2020.05.14.12.04.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 May 2020 12:04:23 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3] tests/acceptance: Add a test for the canon-a1100 machine
-Date: Thu, 14 May 2020 21:04:22 +0200
-Message-Id: <20200514190422.23645-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jZS7z-0008If-PR
+ for qemu-devel@nongnu.org; Fri, 15 May 2020 00:39:19 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:50263
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jZS7y-0007it-UG
+ for qemu-devel@nongnu.org; Fri, 15 May 2020 00:39:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1589517554;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=OKJR3XWl1FD5yBYTcoQ2dBjNcY31o5w0McSpi+jkOug=;
+ b=XvMj7qjbsdMLyUITpJNmPh/3qiusP+q3OWLjYbI/QcMRwSWgmiFfybZYgaoB7OUWh8EAH6
+ cjcrl42zgBTpoK01KVVvUBteCKdhLhEfCwRn2W/n4agGla7+s4HG4hG2FI6vFeS55C0D52
+ p0Pd7wdj5lcGdKCTsw0He5O+ueek/6Y=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-107-4tGOUR7dN4mlE7aK9dqnnQ-1; Fri, 15 May 2020 00:39:10 -0400
+X-MC-Unique: 4tGOUR7dN4mlE7aK9dqnnQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C3776460;
+ Fri, 15 May 2020 04:39:06 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-113-6.ams2.redhat.com [10.36.113.6])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7AD5360BE2;
+ Fri, 15 May 2020 04:38:59 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 082E611358BC; Fri, 15 May 2020 06:38:58 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v3 2/3] various: Remove unnecessary OBJECT() cast
+References: <20200512070020.22782-1-f4bug@amsat.org>
+ <20200512070020.22782-3-f4bug@amsat.org>
+Date: Fri, 15 May 2020 06:38:57 +0200
+In-Reply-To: <20200512070020.22782-3-f4bug@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 12 May 2020 09:00:19
+ +0200")
+Message-ID: <87r1vlstge.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/15 00:39:12
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
- Antony Pavlov <antonynpavlov@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cHLR0xNewwQK
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org, David Hildenbrand <david@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Joel Stanley <joel@jms.id.au>, Anthony Perard <anthony.perard@citrix.com>,
+ xen-devel@lists.xenproject.org, Richard Henderson <rth@twiddle.net>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <minyard@acm.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, qemu-ppc@nongnu.org,
+ John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
+ "Daniel P. =?utf-8?Q?Berrang=C3=A9?=" <berrange@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Cornelia Huck <cohuck@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, Corey Minyard <cminyard@mvista.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bW0SuwCf29+g
 
-From: Thomas Huth <thuth@redhat.com>
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-The canon-a1100 machine can be used with the Barebox firmware. The
-QEMU Advent Calendar 2018 features a pre-compiled image which we
-can use for testing.
+> The OBJECT() macro is defined as:
+>
+>   #define OBJECT(obj) ((Object *)(obj))
+>
+> Remove the unnecessary OBJECT() casts when we already know the
+> pointer is of Object type.
+>
+> Patch created mechanically using spatch with this script:
+>
+>   @@
+>   typedef Object;
+>   Object *o;
+>   @@
+>   -   OBJECT(o)
+>   +   o
+>
+> Acked-by: Cornelia Huck <cohuck@redhat.com>
+> Acked-by: Corey Minyard <cminyard@mvista.com>
+> Acked-by: John Snow <jsnow@redhat.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Tested-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20200129090420.13954-1-thuth@redhat.com>
-[PMD: Rebased MAINTAINERS]
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-Thomas asked me to watch for few of his patches to get merged,
-but I missed this one.
-Peter: I suppose it is flushed of your REVIEW folder, so resending.
----
- MAINTAINERS                                |  1 +
- tests/acceptance/machine_arm_canona1100.py | 35 ++++++++++++++++++++++
- 2 files changed, 36 insertions(+)
- create mode 100644 tests/acceptance/machine_arm_canona1100.py
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index f02e290702..d1fb688c0e 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -607,6 +607,7 @@ S: Odd Fixes
- F: include/hw/arm/digic.h
- F: hw/*/digic*
- F: include/hw/*/digic*
-+F: tests/acceptance/machine_arm_canona1100.py
- 
- Goldfish RTC
- M: Anup Patel <anup.patel@wdc.com>
-diff --git a/tests/acceptance/machine_arm_canona1100.py b/tests/acceptance/machine_arm_canona1100.py
-new file mode 100644
-index 0000000000..0e5c43dbcf
---- /dev/null
-+++ b/tests/acceptance/machine_arm_canona1100.py
-@@ -0,0 +1,35 @@
-+# Functional test that boots the canon-a1100 machine with firmware
-+#
-+# Copyright (c) 2020 Red Hat, Inc.
-+#
-+# Author:
-+#  Thomas Huth <thuth@redhat.com>
-+#
-+# This work is licensed under the terms of the GNU GPL, version 2 or
-+# later.  See the COPYING file in the top-level directory.
-+
-+from avocado_qemu import Test
-+from avocado_qemu import wait_for_console_pattern
-+from avocado.utils import archive
-+
-+class CanonA1100Machine(Test):
-+    """Boots the barebox firmware and checks that the console is operational"""
-+
-+    timeout = 90
-+
-+    def test_arm_canona1100(self):
-+        """
-+        :avocado: tags=arch:arm
-+        :avocado: tags=machine:canon-a1100
-+        :avocado: tags=device:pflash_cfi02
-+        """
-+        tar_url = ('https://www.qemu-advent-calendar.org'
-+                   '/2018/download/day18.tar.xz')
-+        tar_hash = '068b5fc4242b29381acee94713509f8a876e9db6'
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        archive.extract(file_path, self.workdir)
-+        self.vm.set_console()
-+        self.vm.add_args('-bios',
-+                         self.workdir + '/day18/barebox.canon-a1100.bin')
-+        self.vm.launch()
-+        wait_for_console_pattern(self, 'running /env/bin/init')
--- 
-2.21.3
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 

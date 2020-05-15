@@ -1,100 +1,103 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp547321lfb;
-        Fri, 15 May 2020 07:21:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyDT1qu0XasQKi+j/DX/9mVzDzgfwM0JjjmZFudc7euUR5Imb9c5odtCJdBJ+cGBbKUWp6I
-X-Received: by 2002:ae9:e901:: with SMTP id x1mr3444839qkf.131.1589552471547;
-        Fri, 15 May 2020 07:21:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589552471; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp547384lfb;
+        Fri, 15 May 2020 07:21:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwYViMh1Rjcd6N8evE+7DPXKAlfaiw4+vXJ2XmBhZJSj8COwSgzhUGvVoKmj+0+IAZE0dm2
+X-Received: by 2002:a0c:f485:: with SMTP id i5mr3783368qvm.144.1589552476204;
+        Fri, 15 May 2020 07:21:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589552476; cv=none;
         d=google.com; s=arc-20160816;
-        b=aDEnkPH+y8YLp9yeeIbAWucG6+tPjx6XZPcJmI1Vg2B4kcrKGa3VThinbgg0u58Fxn
-         M1qlEIxRSRvWqhCnB0y02kwX6TtYQArd2v3zW/281s3LAVyMq7ax0WoXa6Ke6/CYUIE7
-         uzYjr7CSJIW5ksAeHGFMXgO60ALUf7kCJGS1UaD0vBFkbCFr5HvAxdIGJbvxtmajedDL
-         9sAn6nDkCG47DlAj96mXBZK587Y5+xUIKTMgwo7zO+DbIVFAkvwDmBPZSx4/pV9fg5TH
-         OWdPkZtIBFgWbH69SILaFVt8Q3heDFoMqF2N1aFqat8HpKenNvYsplFFCEjx9rhCxCKi
-         gnVw==
+        b=Mn95MdR2r5nQBUP+3PtAL7HupB7L3xEScFS4cSWDwu+B44cKVjTwufb2X28oPfWT1s
+         T5UtSaC8WS4Xx9mm8oDmtBhgTPQW3cMpKCymq1RK2q+faupu7I5JU6ufxP+lQe2g7P2V
+         C5YdPoQpvMiLFNbwJuA8abRiOH5UH+dNa2DwhDvfX4e06paG3kfL9ZtAOnhe8mGtv4gp
+         FKVCKMBNMiJc5qdjyszTaaeVc8vCfZkfyN8OBcArcJNQjz/CmBCHH/kQySz0QW20RTYU
+         iuDhdxLHPL8C+rLQ98ZQl7mHV9wxr+5TuuEgiDDmhwB/PjbsKWjmzBsCfU19wVr0Q5Jm
+         WUWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=aL6ItULe8uy/C+feP/tdNAy0BWvdReAXzNWosk7d33A=;
-        b=ZVxgH479qcmPiJqcs+QTcrOpL7JpWIPcOPFcjXzN8Rvvct/2vzBTEPc4SR38BOyn0f
-         YVPiSvAtFmwQ2QNat5iEQFuy0E/TEahxVtKMUfgxvkm7TSz5Bp0LW6u2ALAQ3B0AdyXY
-         BxhW0qpWH2N16g7OaMXP5P0II7V0askZFXW7wF03EIBh8OhQf6HU45RBAcH4RVrQ8cDp
-         wZZa9DncovhPtTyvQDaj6JhVvqwSN3bmpS1Vt/k4IyDLvGpYkuofwra+JUOlyc5iVd52
-         rcfyKSbXKi7uPJ+uB4wc0Wa4lpYyZCIkiMoPxVPe3LVR/OWGV3WLqOeORLj08NFjMJmq
-         M8Yg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=17miaZnAVR6c8E+5NalM9aupFX47F8Zsgz/tNLlnYGE=;
+        b=iKayh0vA+I4hEGF4TwiFO9OgRdOCNbvYJU6fwPMlbUKHTR2TF3BGjnxFTkPdb29jY7
+         FrhGiFdlM+S/mIXe19MYrjmoYLUJ9QoD+FLmbRMR5ln3ClrSICZooNcRCHCNKqHz8bgg
+         B2RJrlaK1SxTyBlVXH32y/O2hJyMFR4XZ4JGpQN8IuFDWmcRJyH9j4g+q1xLXF3DiLuC
+         iWs+W4d5C24XuImdyWfXwWQ+z3RJu2DCU1XTnzIUUqWcG7vnfq7ufV9o78YoVJ7mLoEd
+         he/e49sLAwdNGkoYj/CsuRy2fmkWIKAzMNmbzdcJY2s8tiVGsanayN6F8n7gbf/x834E
+         Rh6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q5r2vyxQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=D0deTJfL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d27si1342647qtc.52.2020.05.15.07.21.11
+        by mx.google.com with ESMTPS id d51si1268714qtc.364.2020.05.15.07.21.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 May 2020 07:21:11 -0700 (PDT)
+        Fri, 15 May 2020 07:21:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q5r2vyxQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=D0deTJfL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58098 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58372 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jZbD4-0000cN-Pt
-	for alex.bennee@linaro.org; Fri, 15 May 2020 10:21:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34738)
+	id 1jZbD9-0000ko-8k
+	for alex.bennee@linaro.org; Fri, 15 May 2020 10:21:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34772)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jZbCv-0000bI-8R
- for qemu-arm@nongnu.org; Fri, 15 May 2020 10:21:01 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:40553)
+ id 1jZbCy-0000f5-7B
+ for qemu-arm@nongnu.org; Fri, 15 May 2020 10:21:04 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:47012)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jZbCu-0003rL-9r
- for qemu-arm@nongnu.org; Fri, 15 May 2020 10:21:00 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id e16so3755487wra.7
- for <qemu-arm@nongnu.org>; Fri, 15 May 2020 07:20:59 -0700 (PDT)
+ id 1jZbCw-0003rr-O8
+ for qemu-arm@nongnu.org; Fri, 15 May 2020 10:21:03 -0400
+Received: by mail-wr1-x442.google.com with SMTP id w7so3705570wre.13
+ for <qemu-arm@nongnu.org>; Fri, 15 May 2020 07:21:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aL6ItULe8uy/C+feP/tdNAy0BWvdReAXzNWosk7d33A=;
- b=Q5r2vyxQ8ge0ZWy8b8ROWYPNGUvz43I8u4UtyA3idBuQSmcBo7aJzCOAeA+wdVetX9
- TLeWNrrV4KlYoGRIWVRjfazsiIpX04rwypQ25nmgm8vroyHjfWA7psJado6Wf4EW3h9v
- YmsBaKuenMcxCbvisglyUP0yJRs9540EzEKav0ftnw2xdHBIH2n/T/cMB/Gfrt07Mp9p
- lSUXSEBf3jkkrgPA17Zf+iSdYIVBG6u861tkpaqlkx1D9PsCUDjTf9RTmrjZL+WrWH3m
- ju6LY3Amf5g5Cgabhk2eyMXWgEQSdcntgiPH8r1gnWDXAzEN629stmhe4zaxrGi7H6ay
- xpBA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=17miaZnAVR6c8E+5NalM9aupFX47F8Zsgz/tNLlnYGE=;
+ b=D0deTJfLmgHltI/6u5Nua2Vfio85SFd+D8DvqxMP5X0NmioFo/1fy4SUyj3hCOZALO
+ nsBC0yFREmmff7lkOcY3z8LqrUzHTuiCvsSZtDd+DJ9aRLoub+VdocB9wAWk24mrghtG
+ 8+h+KBBj5Scm7ti6za1YZAiANvLIyTkrUV5MK3fzRBm92yJuwXkU8ysCOIFYZASEto7j
+ a3MaJCEijnBgwFF7HhwzyYcFPTd1lkamyE1a1lwVuMyMTHfK+QFCMWC0xDuHPUaxiiEL
+ 8UAZ3byOKvn5wR/Jte15lnyPhN/a8lD3cWgSyrP5Us4a9J5s8soP4yjtKxB8/qWFdCmj
+ lAxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aL6ItULe8uy/C+feP/tdNAy0BWvdReAXzNWosk7d33A=;
- b=hZLCEKqKUgF637n79x+64Y32CG7hQkpI1FBovDYsSGav9miwKv6ZqcCNtxGc/Zm3Ct
- LejiJhlpNk6JHbWLjKTxDLzXLpdb1ZskL4tvx3/ZjVirDKpjBVkSoUbcqAKAPCmDMhNl
- c35LByFGgPZFOGN8hB9LhTs8diR33ffBNJRnJiOWiKGBKngtLOUfxVRRGE/FZuJTsiNF
- q47/5piF8dgpre22X5PLMmnm06dT8dOPVHE/FvwCY0rlXcZmhGfmG+p3UcJGDYGnAuiZ
- NAX97KGOYs4TIne8R7LCVFCTB49gI+jZpwKuymJUO+d0G/yacWpG8Nv2ZoowMoQcBWj7
- n2YQ==
-X-Gm-Message-State: AOAM532Ds+CT5GIDpp8zUqELlsrl618iNVQS3OWnPdEZ8pYBuGWWBDWf
- 0zd69F2IkeubdvD3aVQ105zck0bgrQXu7g==
-X-Received: by 2002:adf:face:: with SMTP id a14mr4444256wrs.397.1589552458682; 
- Fri, 15 May 2020 07:20:58 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=17miaZnAVR6c8E+5NalM9aupFX47F8Zsgz/tNLlnYGE=;
+ b=X150MArlbzQsuRo7jxcIXX6++PWS9wQ2s1uMkQsaX2b1lqOFDB1coq7pRpP/vrJyoo
+ 9vEos9rewiuVFn6poOOGrbKSh5Cc8MNxH16ISQXN9S57LxI4GBtpNmVppEHg+SreOt26
+ +Ao469663fiXIAV8r4+q07zT+sffpt34Nwy7npbFba5JbIXtRWEhyhxBDtEaidcOCBuJ
+ TlN66SOED7AxNUptaRaps4qVt23f1orsGNsQUSd4OgvYtUlDlFRjBAwI7KFoHnhd5oPQ
+ kA85MM3BGKhX2k9mtcA7gwKFeootc/TCRXHb68SAOeI4f1WdU2aURKOKPu3kvRV3opN4
+ oIIQ==
+X-Gm-Message-State: AOAM533lGQ3TG1m7hhMdDVFBEyVFwWzgslfJyZmx6oOf/5d3pUE6/aGb
+ DIe5g/FZ2LlJeDOiIQoayNOVM8uQcDprjw==
+X-Received: by 2002:a5d:522d:: with SMTP id i13mr4642896wra.306.1589552460990; 
+ Fri, 15 May 2020 07:21:00 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id s14sm3738327wmh.18.2020.05.15.07.20.57
+ by smtp.gmail.com with ESMTPSA id s14sm3738327wmh.18.2020.05.15.07.20.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 May 2020 07:20:58 -0700 (PDT)
+ Fri, 15 May 2020 07:21:00 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 00/10] target/arm: Convert 2-reg-shift and 1-reg-imm Neon
- insns to decodetree
-Date: Fri, 15 May 2020 15:20:46 +0100
-Message-Id: <20200515142056.21346-1-peter.maydell@linaro.org>
+Subject: [PATCH 02/10] target/arm: Convert Neon VSHL and VSLI 2-reg-shift insn
+ to decodetree
+Date: Fri, 15 May 2020 15:20:48 +0100
+Message-Id: <20200515142056.21346-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200515142056.21346-1-peter.maydell@linaro.org>
+References: <20200515142056.21346-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -119,36 +122,135 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mKeeMjzjIKqR
+X-TUID: 2dltLuhjHrez
 
-This patchset converts the Neon insns in the 2-register-and-shift-amount
-and 1-register-and-modified-immediate groups to decodetree.
+Convert the VSHL and VSLI insns from the Neon 2-registers-and-a-shift
+group to decodetree.
 
-Patch 1 is a trivial dead-macro-deletion that got missed in
-the 3-reg-same conversion.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/neon-dp.decode       | 27 +++++++++++++++++++++++
+ target/arm/translate-neon.inc.c | 38 +++++++++++++++++++++++++++++++++
+ target/arm/translate.c          | 18 +++++++---------
+ 3 files changed, 73 insertions(+), 10 deletions(-)
 
-thanks
--- PMM
-
-Peter Maydell (10):
-  target/arm: Remove unused GEN_NEON_INTEGER_OP macro
-  target/arm: Convert Neon VSHL and VSLI 2-reg-shift insn to decodetree
-  target/arm: Convert Neon VSHR 2-reg-shift insns to decodetree
-  target/arm: Convert Neon VSRA, VSRI, VRSHR, VRSRA 2-reg-shift insns to
-    decodetree
-  target/arm: Convert VQSHLU, VQSHL 2-reg-shift insns to decodetree
-  target/arm: Convert Neon narrowing shifts with op==8 to decodetree
-  target/arm: Convert Neon narrowing shifts with op==9 to decodetree
-  target/arm: Convert Neon VSHLL, VMOVL to decodetree
-  target/arm: Convert VCVT fixed-point ops to decodetree
-  target/arm: Convert Neon one-register-and-immediate insns to
-    decodetree
-
- target/arm/neon-dp.decode       | 280 ++++++++++++++
- target/arm/translate-neon.inc.c | 662 ++++++++++++++++++++++++++++++++
- target/arm/translate.c          | 511 +-----------------------
- 3 files changed, 944 insertions(+), 509 deletions(-)
-
+diff --git a/target/arm/neon-dp.decode b/target/arm/neon-dp.decode
+index 8beb1db768b..df7b4798a5a 100644
+--- a/target/arm/neon-dp.decode
++++ b/target/arm/neon-dp.decode
+@@ -199,3 +199,30 @@ VRECPS_fp_3s     1111 001 0 0 . 0 . .... .... 1111 ... 1 .... @3same_fp
+ VRSQRTS_fp_3s    1111 001 0 0 . 1 . .... .... 1111 ... 1 .... @3same_fp
+ VMAXNM_fp_3s     1111 001 1 0 . 0 . .... .... 1111 ... 1 .... @3same_fp
+ VMINNM_fp_3s     1111 001 1 0 . 1 . .... .... 1111 ... 1 .... @3same_fp
++
++######################################################################
++# 2-reg-and-shift grouping:
++# 1111 001 U 1 D immH:3 immL:3 Vd:4 opc:4 L Q M 1 Vm:4
++######################################################################
++&2reg_shift vm vd q shift size
++
++@2reg_shift      .... ... . . . ...... .... .... . q:1 . . .... \
++                 &2reg_shift vm=%vm_dp vd=%vd_dp
++
++VSHL_2sh         1111 001 0 1 . shift:6     .... 0101 1 . . 1 .... \
++                 @2reg_shift size=3
++VSHL_2sh         1111 001 0 1 . 1 shift:5   .... 0101 0 . . 1 .... \
++                 @2reg_shift size=2
++VSHL_2sh         1111 001 0 1 . 01 shift:4  .... 0101 0 . . 1 .... \
++                 @2reg_shift size=1
++VSHL_2sh         1111 001 0 1 . 001 shift:3 .... 0101 0 . . 1 .... \
++                 @2reg_shift size=0
++
++VSLI_2sh         1111 001 1 1 . shift:6     .... 0101 1 . . 1 .... \
++                 @2reg_shift size=3
++VSLI_2sh         1111 001 1 1 . 1 shift:5   .... 0101 0 . . 1 .... \
++                 @2reg_shift size=2
++VSLI_2sh         1111 001 1 1 . 01 shift:4  .... 0101 0 . . 1 .... \
++                 @2reg_shift size=1
++VSLI_2sh         1111 001 1 1 . 001 shift:3 .... 0101 0 . . 1 .... \
++                 @2reg_shift size=0
+diff --git a/target/arm/translate-neon.inc.c b/target/arm/translate-neon.inc.c
+index 3fe65a0b080..305213fe6d9 100644
+--- a/target/arm/translate-neon.inc.c
++++ b/target/arm/translate-neon.inc.c
+@@ -1310,3 +1310,41 @@ static bool do_3same_fp_pair(DisasContext *s, arg_3same *a, VFPGen3OpSPFn *fn)
+ DO_3S_FP_PAIR(VPADD, gen_helper_vfp_adds)
+ DO_3S_FP_PAIR(VPMAX, gen_helper_vfp_maxs)
+ DO_3S_FP_PAIR(VPMIN, gen_helper_vfp_mins)
++
++static bool do_vector_2sh(DisasContext *s, arg_2reg_shift *a, GVecGen2iFn *fn)
++{
++    /* Handle a 2-reg-shift insn which can be vectorized. */
++    int vec_size = a->q ? 16 : 8;
++    int rd_ofs = neon_reg_offset(a->vd, 0);
++    int rm_ofs = neon_reg_offset(a->vm, 0);
++
++    if (!arm_dc_feature(s, ARM_FEATURE_NEON)) {
++        return false;
++    }
++
++    /* UNDEF accesses to D16-D31 if they don't exist. */
++    if (!dc_isar_feature(aa32_simd_r32, s) &&
++        ((a->vd | a->vm) & 0x10)) {
++        return false;
++    }
++
++    if ((a->vm | a->vd) & a->q) {
++        return false;
++    }
++
++    if (!vfp_access_check(s)) {
++        return true;
++    }
++
++    fn(a->size, rd_ofs, rm_ofs, a->shift, vec_size, vec_size);
++    return true;
++}
++
++#define DO_2SH(INSN, FUNC)                                              \
++    static bool trans_##INSN##_2sh(DisasContext *s, arg_2reg_shift *a)  \
++    {                                                                   \
++        return do_vector_2sh(s, a, FUNC);                               \
++    }                                                                   \
++
++DO_2SH(VSHL, tcg_gen_gvec_shli)
++DO_2SH(VSLI, gen_gvec_sli)
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index c8296116d4b..d0a4a08f6d9 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -5294,6 +5294,14 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+         if ((insn & 0x00380080) != 0) {
+             /* Two registers and shift.  */
+             op = (insn >> 8) & 0xf;
++
++            switch (op) {
++            case 5: /* VSHL, VSLI */
++                return 1; /* handled by decodetree */
++            default:
++                break;
++            }
++
+             if (insn & (1 << 7)) {
+                 /* 64-bit shift. */
+                 if (op > 7) {
+@@ -5387,16 +5395,6 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+                     gen_gvec_sri(size, rd_ofs, rm_ofs, shift,
+                                  vec_size, vec_size);
+                     return 0;
+-
+-                case 5: /* VSHL, VSLI */
+-                    if (u) { /* VSLI */
+-                        gen_gvec_sli(size, rd_ofs, rm_ofs, shift,
+-                                     vec_size, vec_size);
+-                    } else { /* VSHL */
+-                        tcg_gen_gvec_shli(size, rd_ofs, rm_ofs, shift,
+-                                          vec_size, vec_size);
+-                    }
+-                    return 0;
+                 }
+ 
+                 if (size == 3) {
 -- 
 2.20.1
 

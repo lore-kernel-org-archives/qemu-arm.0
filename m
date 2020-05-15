@@ -1,80 +1,80 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp678944lfb;
-        Fri, 15 May 2020 10:08:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6zvPMjNwXBFf3lCebuwfrA3fuWYfcwA7fWafNPJ1Z9GgX7T62+WlNmZ9unkBikqVqizrI
-X-Received: by 2002:a17:906:4749:: with SMTP id j9mr3812791ejs.23.1589562498809;
-        Fri, 15 May 2020 10:08:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589562498; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp679003lfb;
+        Fri, 15 May 2020 10:08:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyQLW/kQ3jdhU128WFNgGFZYZ7j9JLFLN4zIaF0ooIpOKwTWE9CJXs5lXTQ/Z16IamWT11c
+X-Received: by 2002:aa7:c415:: with SMTP id j21mr3604808edq.266.1589562502720;
+        Fri, 15 May 2020 10:08:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589562502; cv=none;
         d=google.com; s=arc-20160816;
-        b=MufdfdCR5gvZg/sHFXyKfiu/M8C8HZ2wfrBjLbEXoj2CY5L+Xv/ysflsat63g0JhKT
-         PFiDDwMs8sG4WtDzwVl3zzk3d5kMkac83mahmkHGPNE3UJOSR/o+pWOOuP63Ti73AunG
-         6Ugzmw43LQMm+FndEbktIuPT8BqDSNgVxinYIamtFm9uh9AF8R15OVdHlPC96nreHyjK
-         UV/crD0NifKsZPQw0EzLo1CqwwGTeq6bOmXsd9KtAnDL2O3CcbEoEfOxR/rDk70kEUUz
-         NanYWJo+HE8o+ehpWe3oDrD7Lg8PgsRE/KkjGDiCbL5Ax5Ph4RIBigTyX4ZBRAyTGnK0
-         vNpw==
+        b=IGJvcMP9RJyntliDC+cLn4ATDWCO0Uln2E/XzDWSxaT8zK3Vi7ZFHm7yvdBhbftu5V
+         5IPYiX5gHH9wwlnKFKtmIrGHDXuQFgL4yMzto/zySy3lAFjugJ6hdWfFZX2CSQSqlZ9G
+         5K/sqDLbeimA3UGu9sjPOZs5ilD78G5HUCb4mra8PcxXodxAPCD3Mpn+TsnZY6ty7jDh
+         VMibSduRRh+p2tWlH7d9/OtlCfac7IiZnw97umf5SjS9k1bjCcXUdhxNX2f4FLO8mxls
+         4KpQF6jKgUq5n2H21U8lm2X5cqtdkbDyKBKxOUBgISpJrmaAdDzzsy5in7v4wS9pJ570
+         kRrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=1LWNrIr5sPkmnUIPfYOIlIROnAtcVQlofpnnefmhg9k=;
-        b=Dv45uHIncuT7Fz6dlQiKyHp3VILAaW5i5YQPCotk+o5/Tsz3L7SHgIhBd4E/yN/Ksg
-         GCy9nooQU3bJYlrft3o7pJt6idjwE+JwdkjcMUum/BQg38RuHNxNWDv0k6WY1YMRZhV4
-         mRUao/xlms2QTxCxScVunexPRK9D1mOijCQzKLLsSteyP6FXiDALDUueVoyoW+6vqyCO
-         XplfOy1uqUUrF8fiGnNlQ0HvILmFe6mPP/7+mRnYpyJt+IFAg6NHRkuW8J3La5Avk0l7
-         yn4t/tko9C9UCUDp5xTPud3SMlJcxMAZNDsmMcDGVOsjo8DTPxa9xdE9cchxDyicXgzH
-         GlZg==
+        bh=LtqBVDpcxzLSIYr46Mh7kdVW472e1QUV+XMsC1Vk51c=;
+        b=nJV4u7A8r5oYt1vpZdxnfTXX+D3Oz8IRbR9iZQzMPHvRV/41tswlQaiWmfG7odf2ED
+         2Vgy5vZBuBQGK7s4OH1qUePkfvFOaiJaEssTsv0tLz9Nsr5M7yPIAIdMo7UyzGgBRGBj
+         Y6UL97Cl7FDytkKx7OR1LN+de1jGAZXMKWsYcpaHdOq0UdhDBSSuul3RbzdYzru4tYZu
+         vURluSjF6I7N6Pi/iBzCHvCclSArPIs/ZVZuIsn49hs+LW+VSwFF02xi/gIRFTJaGi7V
+         X2s1+/f9eyaivs2topUu4voLXCVD0rx+IqRCLkQ5VwJdzWXcu18EBzu82K4+S1GL32Dp
+         Yaiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xb3KNAmQ;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fovsmLAq;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id dh10si345441edb.311.2020.05.15.10.08.18
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by mx.google.com with ESMTPS id j60si1384021edc.8.2020.05.15.10.08.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 May 2020 10:08:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        Fri, 15 May 2020 10:08:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xb3KNAmQ;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fovsmLAq;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1589562497;
+	s=mimecast20190719; t=1589562501;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=1LWNrIr5sPkmnUIPfYOIlIROnAtcVQlofpnnefmhg9k=;
-	b=Xb3KNAmQQVsZ6eqabOyJiAyz1BgvNAreX74HcCC513GZlfJMsp/PchSwJa31bw+TXJ88OL
-	fBIcJu7WfL6DqmMYEVAxqqcYnZFXdY8Gel2nG8bIPgVqvXE8ppoDPN1S5QMs1lLtBuHwPY
-	UhUbbsCMwArn9DpaZs6uH9gvDCY6Xqc=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-307-SlTdVrDoNqWrVHtaY2tn3Q-1; Fri, 15 May 2020 13:08:14 -0400
-X-MC-Unique: SlTdVrDoNqWrVHtaY2tn3Q-1
-Received: by mail-wr1-f71.google.com with SMTP id p8so1481119wrj.5
-        for <alex.bennee@linaro.org>; Fri, 15 May 2020 10:08:13 -0700 (PDT)
+	bh=LtqBVDpcxzLSIYr46Mh7kdVW472e1QUV+XMsC1Vk51c=;
+	b=fovsmLAqsKcuttUUSF8HXN1cOfhnVKOFnY5uyRRLsFjcdsEU/+rD7WX8N9LjuzmnaqufPe
+	R/k2zUoqvexnQ99TmtcfcCS/oVK6klizCiRYHB0BFjHHUs4KknpFKvW9keYQOIGZUrT41H
+	9qTQmOBwk9ajLfu6x9AhVxwNquHPS9s=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-455-Gn7m3EyMNaqoOnvYuqYpRg-1; Fri, 15 May 2020 13:08:19 -0400
+X-MC-Unique: Gn7m3EyMNaqoOnvYuqYpRg-1
+Received: by mail-wm1-f69.google.com with SMTP id u11so1259594wmc.7
+        for <alex.bennee@linaro.org>; Fri, 15 May 2020 10:08:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=1LWNrIr5sPkmnUIPfYOIlIROnAtcVQlofpnnefmhg9k=;
-        b=sFMXIwdrpxDWr0xHJeF1Ew7G26WlthTSLMyp2d+SA6y42jqOJxv6b4tIZKuO/XTlKf
-         QXYRryOUeJfIvyzBXY6oRg/Wom7MR1mnBK2Tj89ME6MtIZPo8WAMjEu0/J1evpW5Hi4K
-         Qq+MDM7igTZ8epxU6+GdAN08AK6/i9CmzGCIhEH50v8VrqC9UNnMdqZkb3QjqCHdwsYw
-         ZNoKjjZ07T+bylINHKdzEJK0nZH5+nQK7amtlCeHy8G2IaXC5SRv2WJJnIbYYZ7TGRDy
-         KbkErKVoZyzXcM6dJ91jaWOMsERB8fD27u0hBahp6Wm1r2DPTpy4XJY9MK50f6lxvLRy
-         F+tw==
-X-Gm-Message-State: AOAM5330KIIy+3RfgjujhU8EfX9XmSNwt+aJsh9UP4PlOSZso72fOLJt
-	pnwRyJiZiYp6KJFbUb8ySoOnMagVu+uETeRBpWzc5Ek6oK31CBcTqv/UVSQtKFcH5r1BSt3Vbh9
-	VjH9i2naLHhacnMSW
-X-Received: by 2002:adf:94c2:: with SMTP id 60mr5228986wrr.366.1589562492972;
-        Fri, 15 May 2020 10:08:12 -0700 (PDT)
-X-Received: by 2002:adf:94c2:: with SMTP id 60mr5228966wrr.366.1589562492758;
-        Fri, 15 May 2020 10:08:12 -0700 (PDT)
+        bh=LtqBVDpcxzLSIYr46Mh7kdVW472e1QUV+XMsC1Vk51c=;
+        b=d4ByQEYB98HX5Ibp6hjlw3GPBgT+p4fHem3rsojmFWR5Fd2meFYiUab+JARRS5Cw+X
+         mTvUUKoxLBlmgegjKJ7xWQSX/EfMoPw7rmqd1Z/sDyKYa/ICsjWoqlnZDkFmkMzUc27c
+         l51Kzfh4jGYDvx/dO611HpUg/Bzr2FpAgDGgitnKH7+6D9QoOsMaJ9+0yZhPDBNwy5Wp
+         +vBM9NThMCUBUjv/pUo5+rghnqHtkaPRPV9vITgzJxlwg3/9DNL4RaioghnCAud+trZg
+         9v1Y9Pf4HfJqFq0yQfWh4Kx+gPQXX5zKoYkgsObXOs2JwX+6Vk30sg1vgvrguxbSIYD3
+         92sA==
+X-Gm-Message-State: AOAM5312E8mupentkxG+YYc0rzZiK5SyCUwnoUVERYStpmMGhV7lkXrU
+	fnAO10HudHxEAFuTczWmA63Iaq5PGPDm3JcxMMGQx65nj6uVSFZuL2fk+Ue/iWe5CYg+ZMCVDxi
+	/xHFtw5TLWVXXD2MX
+X-Received: by 2002:a7b:c086:: with SMTP id r6mr4873585wmh.29.1589562498392;
+        Fri, 15 May 2020 10:08:18 -0700 (PDT)
+X-Received: by 2002:a7b:c086:: with SMTP id r6mr4873567wmh.29.1589562498195;
+        Fri, 15 May 2020 10:08:18 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
-        by smtp.gmail.com with ESMTPSA id e22sm4742390wrc.41.2020.05.15.10.08.11
+        by smtp.gmail.com with ESMTPSA id j1sm4416059wrm.40.2020.05.15.10.08.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 May 2020 10:08:12 -0700 (PDT)
+        Fri, 15 May 2020 10:08:17 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Max Filippov <jcmvbkbc@gmail.com>,
@@ -98,9 +98,9 @@ Cc: Max Filippov <jcmvbkbc@gmail.com>,
 	Michael Walle <michael@walle.cc>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 01/10] MAINTAINERS: Fix KVM path expansion glob
-Date: Fri, 15 May 2020 19:07:55 +0200
-Message-Id: <20200515170804.5707-2-philmd@redhat.com>
+Subject: [PATCH v2 02/10] MAINTAINERS: Add an 'overall' entry for accelerators
+Date: Fri, 15 May 2020 19:07:56 +0200
+Message-Id: <20200515170804.5707-3-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200515170804.5707-1-philmd@redhat.com>
 References: <20200515170804.5707-1-philmd@redhat.com>
@@ -110,30 +110,35 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8;
 	text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: +jt8SMtk/llG
+X-TUID: fZezy877cEcp
 
-The KVM files has been moved from target-ARCH to the target/ARCH/
-folder in commit fcf5ef2a. Fix the pathname expansion.
-
-Fixes: fcf5ef2a ("Move target-* CPU file into a target/ folder")
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+---
+ MAINTAINERS | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 47ef3139e6..fd88a3de49 100644
+index fd88a3de49..659092eb43 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -361,7 +361,7 @@ Overall KVM CPUs
- M: Paolo Bonzini <pbonzini@redhat.com>
- L: kvm@vger.kernel.org
- S: Supported
--F: */kvm.*
-+F: */*/kvm*
- F: accel/kvm/
- F: accel/stubs/kvm-stub.c
- F: include/hw/kvm/
+@@ -415,6 +415,15 @@ S: Supported
+ F: target/i386/kvm.c
+ F: scripts/kvm/vmxcap
+ 
++Guest CPU Cores (other accelerators)
++------------------------------------
++Overall
++M: Richard Henderson <rth@twiddle.net>
++R: Paolo Bonzini <pbonzini@redhat.com>
++S: Maintained
++F: include/sysemu/accel.h
++F: accel/stubs/Makefile.objs
++
+ X86 HVF CPUs
+ M: Roman Bolshakov <r.bolshakov@yadro.com>
+ S: Maintained
 -- 
 2.21.3

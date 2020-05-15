@@ -1,94 +1,167 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id p1sm5475227wrx.3.2020.10.28.04.16.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 Oct 2020 04:16:02 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 068941FF7E;
-	Wed, 28 Oct 2020 11:16:02 +0000 (GMT)
-References: <20201026212853.92880-1-keithp@keithp.com>
- <20201026212853.92880-2-keithp@keithp.com>
- <CAFEAcA-0_WLMP1Y1sgcu7Ng+0w8Ovt9DVWzYU8ZA_FA2+bwcUw@mail.gmail.com>
- <87pn53e3ke.fsf@keithp.com>
- <CAFEAcA8Sha5QYbO25dtzBZHoXUeiGVv8aojPFTMrst8nbVDAdg@mail.gmail.com>
- <87k0vbdthq.fsf@keithp.com>
-User-agent: mu4e 1.5.6; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Keith Packard <keithp@keithp.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, QEMU Developers
- <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org
- <qemu-arm@nongnu.org>, Palmer Dabbelt <palmer@dabbelt.com>, "Alistair
- Francis" <Alistair.Francis@wdc.com>, Sagar Karandikar
- <sagark@eecs.berkeley.edu>, Bastian Koppelmann
- <kbastian@mail.uni-paderborn.de>, "open list:RISC-V"
- <qemu-riscv@nongnu.org>
-Subject: Re: [PATCH 1/4] semihosting: Move ARM semihosting code to shared
- directories
-In-reply-to: <87k0vbdthq.fsf@keithp.com>
-Date: Wed, 28 Oct 2020 11:16:01 +0000
-Message-ID: <87lffqmwi6.fsf@linaro.org>
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp742538lfb;
+        Fri, 15 May 2020 11:34:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx2T60aEtKuDrlyrQtW1Xj6VYu4vJYfez1jbtUHtHKDkq0dGfScm2GgiKD706n5QyFmB0RM
+X-Received: by 2002:ac8:2aa6:: with SMTP id b35mr4766393qta.153.1589567661997;
+        Fri, 15 May 2020 11:34:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589567661; cv=none;
+        d=google.com; s=arc-20160816;
+        b=qIkX+r3mZCaR8tpVgkPztSzmPRt4cQdKNtbpN+9UnGGl7vhXBVfvmSV5U2NmyzCxSP
+         O7fWNJYzL1hLT0JJznpcpqzcm5SNm4FBtX6UGQ7JvKsGJCu1HEGivEOkSJU8ZCwM11rL
+         rEFj+yXZmXxI3X/QJidi0gtoFUJeOoFdhRM0V2kXMZ2UzvEiccnKiLMcogH3rMGFC0lv
+         eA6BAO7mfv8EPG4y/zxxjX0o6vpT2rrjABhxyj44W5BfbdYNu/xdnSffQaqloIGqVBHx
+         5G7y91zcwnzRjohqIbLwuNidGvcO0J6SPsPrLtIHFdxQhqUC87cW7NejQ4OctZXUuWvS
+         iiMQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=7+R0wGR0TzyHt4PaQaWcOlFGkbI1G+AYd/eUIw65yUM=;
+        b=HNR5lf0gHrZIsZRrHLIoH2s/K+IpkZEWuvr4g9vaM+UMgBkwk3yA9gu1MxXt5cmsCv
+         lfbUybd9MGy/LcP0e0ZJrrq+mDoRktkd+c9N9hgv7Kb71tgxGSphmZg5Cd/6Exu8Ij6l
+         wkMmbYaHq82G8+joGUNAFfpyl0ABkK+lr5fmlrVewcemysG0flmeNEgW5n2G3j6P4s8n
+         U9VYWHom5JSZ7U+MR6IVx6SBsJ3yRUqY3n2fgwldr2xAX5f+tM0HDTZ5dPmLr16r+g1t
+         13aXexg/uuSp2s6k1p85e7XaCaUWnL/8cI32YH1j1g0q372gUt2zRTToxpGjxmSgHiXb
+         dZPA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=eGImXlU2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g11si1713111qtb.341.2020.05.15.11.34.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 15 May 2020 11:34:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=eGImXlU2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59776 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jZfA5-0000Bo-F5
+	for alex.bennee@linaro.org; Fri, 15 May 2020 14:34:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52434)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jZf9x-0000BX-SZ
+ for qemu-arm@nongnu.org; Fri, 15 May 2020 14:34:13 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:32786)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jZf9w-0002TC-MS
+ for qemu-arm@nongnu.org; Fri, 15 May 2020 14:34:13 -0400
+Received: by mail-ot1-x344.google.com with SMTP id v17so2710137ote.0
+ for <qemu-arm@nongnu.org>; Fri, 15 May 2020 11:34:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=7+R0wGR0TzyHt4PaQaWcOlFGkbI1G+AYd/eUIw65yUM=;
+ b=eGImXlU2A26C+bPwa98eyGtniLme8ZjnRn0kZ1W8usP7u9w8IUKv4DIovclz+FHhZP
+ QoYlUGD+FEXeEfdsI6EcSIIkyp5biiEZ+NZ2Gi2ee6DTTxa5x8lplzf4VYHp15P+V8vL
+ z6pSlZgvx+DBloTsbjLRGGEZFlG+fJzCN/+p+JTIklb3PZlzS+NVOND2vKafvgg5Axsp
+ Dl1x0OJkvAaa2tu6dwtiTLeYpBhIpTCnOZm2EQdIePkNsOaal9UeazBx6dSQK0EBGqzq
+ gBAijNFMjKhWpZog1ZTaWzFlo0X+Sr+p3nlW8Sy21rWsGKqc9iaSZ6p05kqGHRlacRsR
+ uoQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7+R0wGR0TzyHt4PaQaWcOlFGkbI1G+AYd/eUIw65yUM=;
+ b=UCxy33IHdrAeCQhiQ/SngZY0STVMSIhFUdpsaCHtPb+M/RD4qTG/j7JXx1uVik5Zgb
+ sJMVPnFqILdd4xdVGpAYNEgz2wF533Zf6Xg788Z63q7KHG/zRQwaayEosInPQR3TgI0H
+ 1r0ulu2f9qEPOfMpa6kGL5CTVD3KW6alZKs22VJELpzWhjv+9hr+IgDTpVCzszQYTaud
+ QT+DeLVcsa6yv3HOQFsvIAjuU5lJKCwZRiRD1zg7I4d/OYeDzThCaKKAmihbRzPsboP1
+ BwW0h9lDdDty6Lnv3XlJEDevjP2/UMEWA0UpLIeWnfOVjTrhSeuVHfZZZn+ucNI5MObG
+ hQqw==
+X-Gm-Message-State: AOAM531DUcRyXkCu2qh0oaZBa+7NMu7Eb77vLvG+MMC3yAtyWESwbnrJ
+ g9GPFP/S5ZlLQWzgiBVmOV49l65ubZUxhpjSpEXFiA==
+X-Received: by 2002:a9d:b82:: with SMTP id 2mr3114800oth.221.1589567651259;
+ Fri, 15 May 2020 11:34:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: JnCj0XqHxaDP
+References: <20200507202429.1643202-1-amanieu@gmail.com>
+In-Reply-To: <20200507202429.1643202-1-amanieu@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 15 May 2020 19:33:59 +0100
+Message-ID: <CAFEAcA-n8-pOcwovsS1Z3T4AMa1Nueo2yik9zX5H16QAHeE05A@mail.gmail.com>
+Subject: Re: [PATCH] linux-user/arm: Reset CPSR_E when entering a signal
+ handler
+To: "Amanieu d'Antras" <amanieu@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PwJKqKB6TTdW
 
-
-Keith Packard <keithp@keithp.com> writes:
-
-> Peter Maydell <peter.maydell@linaro.org> writes:
+On Thu, 7 May 2020 at 21:25, Amanieu d'Antras <amanieu@gmail.com> wrote:
 >
->>>         arm_ss.add(when: 'CONFIG_TCG', if_true: files ('common-semi.c'))
->>>         riscv_ss.add(files('common-semi.c'))
->>>
->>> This appears to work in my testing (building arm, risc-v and x86_64
->>> configs).
->>
->> I'm not a kconfig expert but it might be preferable to have
->> a new CONFIG_ for arm-semihosting-ABI which the relevant
->> targets enable. Somebody else may be able to advise.
+> This fixes signal handlers running with the wrong endianness if the
+> interrupted code used SETEND to dynamically switch endianness.
 >
-> The change above makes this do exactly what the old code did -- add this
-> file to the arm_ss sourceset whenever CONFIG_TCG is true. arm_ss is
-> only used to build ARM targets, so this file gets added only for those
-> targets. Here's what the patch to target/arm/meson.build and
-> hw/semihosting/meson.build looks like now.
+> Signed-off-by: Amanieu d'Antras <amanieu@gmail.com>
+> ---
+>  linux-user/arm/signal.c | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
 >
-> diff --git a/target/arm/meson.build b/target/arm/meson.build
-> index f5de2a77b8..15b936c101 100644
-> --- a/target/arm/meson.build
-> +++ b/target/arm/meson.build
-> @@ -32,8 +32,6 @@ arm_ss.add(files(
->  ))
->  arm_ss.add(zlib)
->=20=20
-> -arm_ss.add(when: 'CONFIG_TCG', if_true: files('arm-semi.c'))
-> -
->  arm_ss.add(when: 'CONFIG_KVM', if_true: files('kvm.c', 'kvm64.c'), if_fa=
-lse: files('kvm-stub.c'))
->=20=20
->  arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+> diff --git a/linux-user/arm/signal.c b/linux-user/arm/signal.c
+> index d96fc27ce1..8aca5f61b7 100644
+> --- a/linux-user/arm/signal.c
+> +++ b/linux-user/arm/signal.c
+> @@ -244,6 +244,12 @@ setup_return(CPUARMState *env, struct target_sigaction *ka,
+>      } else {
+>          cpsr &= ~CPSR_T;
+>      }
+> +    cpsr &= ~CPSR_E;
+> +#ifdef TARGET_WORDS_BIGENDIAN
+> +    if (env->cp15.sctlr_el[1] & SCTLR_E0E) {
+> +        cpsr |= CPSR_E;
+> +    }
+> +#endif
 >
-> diff --git a/hw/semihosting/meson.build b/hw/semihosting/meson.build
-> index f40ac574c4..26538e81e7 100644
-> --- a/hw/semihosting/meson.build
-> +++ b/hw/semihosting/meson.build
-> @@ -2,3 +2,5 @@ specific_ss.add(when: 'CONFIG_SEMIHOSTING', if_true: file=
-s(
->    'config.c',
->    'console.c',
->  ))
-> +
-> +arm_ss.add(when: 'CONFIG_TCG', if_true: files ('common-semi.c'))
+>      if (ka->sa_flags & TARGET_SA_RESTORER) {
+>          if (is_fdpic) {
+> @@ -287,7 +293,8 @@ setup_return(CPUARMState *env, struct target_sigaction *ka,
+>      env->regs[13] = frame_addr;
+>      env->regs[14] = retcode;
+>      env->regs[15] = handler & (thumb ? ~1 : ~3);
+> -    cpsr_write(env, cpsr, CPSR_IT | CPSR_T, CPSRWriteByInstr);
+> +    cpsr_write(env, cpsr, CPSR_IT | CPSR_T | CPSR_E, CPSRWriteByInstr);
+> +    arm_rebuild_hflags(env);
 
-I don't think we want arm specific adds in the common code. I think what
-Peter was suggesting is a new config symbol that only ARM and RISC
-define, e.g something like:
+I was just looking at the signal code's handling of CPSR for a different
+reason, and I noticed that at the moment we don't allow CPSR.E to be
+updated from the signal frame when the signal handler returns
+(because CPSR_USER doesn't contain CPSR_E and that's what we
+use in restore_sigcontext() to define what bits from the frame we
+allow updating). Don't you find that when the interrupted code
+returns from the signal handler that it ends up running with the
+wrong endianness (ie the endianness the handler used) ?
 
-  specific_ss.add(when: 'CONFIG_ARM_STYLE_SEMIHOSTING',
-                  if_true: files ('common-semi.c'))
+I'm going to fix this by putting CPSR_E in CPSR_USER, anyway.
 
-or some other suitably descriptive symbol. Otherwise you have to keep
-adding an foo_ss.add line for each architecture that wants it.
-
---=20
-Alex Benn=C3=A9e
+thanks
+-- PMM

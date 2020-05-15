@@ -1,289 +1,182 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp679594lfb;
-        Fri, 15 May 2020 10:09:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyisfbpCWI0IB5ie47h5cmLFVMytSfpmd+nNZWaWQL3QAPLNGIryLEjdE2CU9jhQTs0n2da
-X-Received: by 2002:a25:bb8e:: with SMTP id y14mr6990338ybg.342.1589562547259;
-        Fri, 15 May 2020 10:09:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589562547; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp852897lfb;
+        Fri, 15 May 2020 14:27:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy+JudoVdaepMCuR37C/yrf8H5pAAbopuY6+xrFPw8GaoZPtX/8iXQEg3KQ9OtzqMyTf1tx
+X-Received: by 2002:a0c:b524:: with SMTP id d36mr5487706qve.12.1589578022010;
+        Fri, 15 May 2020 14:27:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589578022; cv=none;
         d=google.com; s=arc-20160816;
-        b=CxYVldr9uHmXWsE71GAZL8QNASHbvVBFzf4ZcCKI1PwC3Xb5KZvHhcNoRHBXe3fPOv
-         VPfQ8V8qQmum12zyYVxkW76YfxYBBMhokw7VlTzbO+LtwxrX05dgi1KoE4A4j9pqwZWB
-         qglKO38HwNirG41i8zqBv3WO/8dS6XtY75g1Ye/3oFqURd/udwbKSRL7q/2Fpns9URW6
-         hL0abTPhQIcqG3awXt7VYGKmF4XZQChRGAbaFmN/HRMAx/s7zk2jTVbl3KOo+925Ls/F
-         xtdtvNuW8bVVsCVaadONl0TuVs3sFvkiVNVKsB+L9nqMSaJ7VO78NtQLLz2vbKBo2ueY
-         ecnQ==
+        b=kVI7Bh8MFaRPDVAXuXhUCjO2cB754WeOqAh1SuxxpFulR1doWLsWNhWLMByq7l/NNo
+         PAIjyV1dpde/OLUc0Q8dsgKwAJlVpHg4+E1cBWGIv79DK7PnD7iiErpt63EMHFHoaCI3
+         taf5O2p9BSPDu8PjGGqUDwFxiy77yZ2lemO7M8Kc7KnGQcICCB4Jg1drob4X0+SqbX/b
+         DAj6lA93P4Q3A+sgQb6xqlyyiigOn2FI1KrUJ+hItFK8WWcvJ5TJrrfZ9f9SFoEvNxEa
+         nxXJwyegeXm93MPh6Ql7aRxeNC5po5g7GRMlyWq0viydD8LgjpIjYtR3YJ31k8j8u50o
+         sEdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=1ZX0QW9DXonbuBshkLSkBrNCbZ8d0l65fGU32CLsfp4=;
-        b=Yl7EovEpxtnk3h8tuVNqFhYXr6/Mo5KMFbvswUf4ZjKsyd8cwkH6lAeiTj0enpC0bL
-         TljwvVA6u7onMzsIWW8Bntn1LyjP+O1WCx7MbmDrVTXF9l40kw+vTcl/vbU8u1MdAxKd
-         1N6enrI2e15R5knghWYr643WQEXa/0jy2qw6dHpo0j8GcsXojmm57R0eePRBl96OIlvl
-         w1kpcCAwB5D+/cOwq9iiMk/hLuS7tR8bw4MXoced4Iz/KVR/FMOMlNbsE+He3ayKMGj/
-         W5zpJXpULbeozPYXfGZPkOroumVYcSLFt1qG2CtauB/qZ00E7Z75LwbgbMmeiXfXmsO0
-         R4oQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=doBDCdXTOPTW9EhBLw1oNuUemWsv3RZ2j8ZS9h9ROBQ=;
+        b=XSgvCZsVkVBf+W587QKdeSaWxCXY8hTRXX7v1IC2/uEWik3QIU8xvBzIehTBuyrq+/
+         8PJmR7fxwPx79qmu0ahE5U7lHo9Qiiy5wHPrYpft7FQSwhYDl2kol4X6SIZjAHIFgw2f
+         s8u8c0JJ+5pso62B6uhcoNC/IRWXXi7Y1eBqxp2KN2EhdrUkwj1tK1oFMO5ZnTPaEyro
+         T+sR4iOozLRihVZfHVoONeDBX/oz75hcj+h7DZVu+qQxBSaesT5K0b86+eeKd14if+XC
+         r+15dW+1TApuCm1fYTvAqR2kj6H9wQcstCkZ5SqweAH1nN66NCxw5ou6ArDHowcZ58au
+         hb7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c6MQ2fvi;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by mx.google.com with ESMTPS id s10si2375477ybk.313.2020.05.15.10.09.07
+       dkim=pass header.i=@linaro.org header.s=google header.b=vBKrSKGW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w186si1789617qkb.367.2020.05.15.14.27.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 May 2020 10:09:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 15 May 2020 14:27:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c6MQ2fvi;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1589562546;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=1ZX0QW9DXonbuBshkLSkBrNCbZ8d0l65fGU32CLsfp4=;
-	b=c6MQ2fviuAenTVXMnkgD5pmEk+tp2W49Xz4hh+CW4ygB57rgg+DOMTVdRVCXA9i/ykK5vG
-	upj06bwukL2OZM+JnoL7sftEIQ+TCx7YofLhNkhTgKSVt0uA4mDzHfWRTFMlbbVjkgCrin
-	ReMn+scaY2X4nvlP0K12sTlX+8iSD5w=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-244-Ri93pGu_NM282FYpK-goeA-1; Fri, 15 May 2020 13:09:05 -0400
-X-MC-Unique: Ri93pGu_NM282FYpK-goeA-1
-Received: by mail-wr1-f69.google.com with SMTP id 37so1489051wrc.4
-        for <alex.bennee@linaro.org>; Fri, 15 May 2020 10:09:05 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=vBKrSKGW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57364 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jZhrB-0008Ky-8w
+	for alex.bennee@linaro.org; Fri, 15 May 2020 17:27:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43546)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jZhqz-0008Iv-Lo
+ for qemu-arm@nongnu.org; Fri, 15 May 2020 17:26:49 -0400
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:46812)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jZhqy-0008AP-Pn
+ for qemu-arm@nongnu.org; Fri, 15 May 2020 17:26:49 -0400
+Received: by mail-pl1-x643.google.com with SMTP id b12so1412693plz.13
+ for <qemu-arm@nongnu.org>; Fri, 15 May 2020 14:26:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=doBDCdXTOPTW9EhBLw1oNuUemWsv3RZ2j8ZS9h9ROBQ=;
+ b=vBKrSKGWY2NG5K7wr5CXRYf0r4Eh+i1BZSEgDlD9UjRuwL7U4jimXGIfztBmWlUwld
+ WsnMprYdNzPxKeeAqjf73WNLae5/G3yLUOF9U9mdk5l+hoblPsO7vrvvuG5lnhQwBeaQ
+ 2v/q19RgbrBpQHDywQo73IkZ7/w1W9pc/7h9KB4Elc4Ewkj6QVUVZ13YZDhW8WadqE6g
+ 0MfpOwHm3m2K+o86uALWKO6kaPLWVenG1lgSaQVGB9MIpLcLPVrkvznXhjjNTlW0mMTP
+ h3kWeysh3Qc4H4V8SfW/P5aC+u4Eldi/rLssQGBAj88j6NPP48OKtTuHR2PH83l9ZxY9
+ ZafQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=1ZX0QW9DXonbuBshkLSkBrNCbZ8d0l65fGU32CLsfp4=;
-        b=N43ObRoLvQcHuyMj6pOUVzvqhuPSO+KJ9M4JhN2P+Q4WZNDGHFkSg0umyTGKNO1nWO
-         wQudbOYoxhcH+kT2xWqud3E0uACRZu6uzlNotFkM/IzwtodtzWkrm1UgyH3Hgqsowf0L
-         WbtpcGLrJqw9b/7T2gKuu2Lu2ND7hTPCt3of2E4ilfvQQu4CXxDIKcQb/0WIIzeckJUr
-         UYPiBKS2yioATMNegoJlNn+nFgiSnsE8apb/xOocNWtiWvwKv5/kqJhIkj2R4tbRrvOr
-         +b1UBXJzRaYkwoKVXih7V8gR6oiMFz0CAfWzNuqQ9SV/iDxmCDX9wo0JO0tvdVRf4+0d
-         /qbg==
-X-Gm-Message-State: AOAM5317RExRIFgkiMEwxifyXEZ0O2pD1lJbd7TJm4VCDBXbQmvxRb4T
-	g/ocQECyiP/dLm9qQdj8S4RqqSkb+UrvE+6hX36oGJo5OOOzdEqwp04oQDApm79BKZ74/iBifK4
-	R8MDG3iPHtyEqqLCH
-X-Received: by 2002:a1c:2502:: with SMTP id l2mr3758348wml.111.1589562544153;
-        Fri, 15 May 2020 10:09:04 -0700 (PDT)
-X-Received: by 2002:a1c:2502:: with SMTP id l2mr3758311wml.111.1589562543904;
-        Fri, 15 May 2020 10:09:03 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
-        by smtp.gmail.com with ESMTPSA id 5sm4556980wmd.19.2020.05.15.10.09.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 May 2020 10:09:03 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Max Filippov <jcmvbkbc@gmail.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Alistair Francis <Alistair.Francis@wdc.com>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	Richard Henderson <rth@twiddle.net>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Chris Wulff <crwulff@gmail.com>,
-	qemu-riscv@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>,
-	Thomas Huth <thuth@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Marek Vasut <marex@denx.de>,
-	Michael Walle <michael@walle.cc>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v2 10/10] hw/semihosting: Make the feature depend of TCG, and allow to disable it
-Date: Fri, 15 May 2020 19:08:04 +0200
-Message-Id: <20200515170804.5707-11-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200515170804.5707-1-philmd@redhat.com>
-References: <20200515170804.5707-1-philmd@redhat.com>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=doBDCdXTOPTW9EhBLw1oNuUemWsv3RZ2j8ZS9h9ROBQ=;
+ b=onypanQjZ3OfFWxSg9JNOshJ76TKoGvJHjkMarmdgk0X1rHAkeyrxIgEWdGF9jqsu5
+ fwIfvFzCzgABMi9aGRnl/SZwsYC0VKKlc4VIEFgTNxIiuCuZfBlfAVOImq0EWtthpkFn
+ oBODDJv+FjAa3AFmTzBONZyamuobx52un53gjlXzvN5DV23N9EhzwCl2Y8J+YNUyFYqq
+ ENdkmGBPb1rQsEXH2dtIAWGMjRNwjTsu4DXJbo8ChGOZFD9ahVi5XdnTlpHAcTs+qETc
+ tWrgapLnAf7m53qNhUEvgpxujziV80sCyAeIkZfzDj2bxif0WUG7IHe3/is2nl98NIBK
+ 5ICw==
+X-Gm-Message-State: AOAM533aeLrdJEhyH9QyHExu3sVh8ad5BgXEMwJThk/Dwsd48LME2PLj
+ 4dzjyrxsfRmndItTle1gHS1uCg==
+X-Received: by 2002:a17:90a:fd16:: with SMTP id
+ cv22mr5166468pjb.169.1589578007277; 
+ Fri, 15 May 2020 14:26:47 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
+ by smtp.gmail.com with ESMTPSA id u5sm2746985pfu.198.2020.05.15.14.26.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 15 May 2020 14:26:46 -0700 (PDT)
+Subject: Re: [PATCH] target/arm: Allow user-mode code to write CPSR.E via MSR
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200515185026.30080-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <327074ea-2c2f-ad45-b53f-1c4dcb69f9bf@linaro.org>
+Date: Fri, 15 May 2020 14:26:44 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-TUID: 4FGHRy08+DaB
+In-Reply-To: <20200515185026.30080-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EDoEs3sInPzB
 
-The semihosting feature is only meaningful when using TCG.
+On 5/15/20 11:50 AM, Peter Maydell wrote:
+> Using the MSR instruction to write to CPSR.E is deprecated, but it is
+> required to work from any mode including unprivileged code.  We were
+> incorrectly forbidding usermode code from writing it because
+> CPSR_USER did not include the CPSR_E bit.
+> 
+> We use CPSR_USER in only three places:
+>  * as the mask of what to allow userspace MSR to write to CPSR
+>  * when deciding what bits a linux-user signal-return should be
+>    able to write from the sigcontext structure
+>  * in target_user_copy_regs() when we set up the initial
+>    registers for the linux-user process
+> 
+> In the first two cases not being able to update CPSR.E is a
+> bug, and in the third case it doesn't matter because CPSR.E
+> is always 0 there. So we can fix both bugs by adding CPSR_E
+> to CPSR_EXEC.
 
-Do not enable it by default, and let the few targets requiring
-it to manually select it.
-The targets restricted to TCG that previously selected it
-(see commit 16932bb761e52c2 'introduce CONFIG_SEMIHOSTING')
-are left unmodified; however the selection is moved to the
-target Kconfig.
+Wrong variable in description here.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- default-configs/arm-softmmu.mak         | 1 -
- default-configs/lm32-softmmu.mak        | 2 --
- default-configs/m68k-softmmu.mak        | 2 --
- default-configs/mips-softmmu-common.mak | 3 ---
- default-configs/nios2-softmmu.mak       | 2 --
- default-configs/xtensa-softmmu.mak      | 2 --
- hw/semihosting/Kconfig                  | 4 +++-
- target/arm/Kconfig                      | 2 ++
- target/lm32/Kconfig                     | 2 ++
- target/m68k/Kconfig                     | 2 ++
- target/mips/Kconfig                     | 2 ++
- target/nios2/Kconfig                    | 2 ++
- target/riscv/Kconfig                    | 2 ++
- target/xtensa/Kconfig                   | 2 ++
- 14 files changed, 17 insertions(+), 13 deletions(-)
- create mode 100644 target/arm/Kconfig
- create mode 100644 target/lm32/Kconfig
- create mode 100644 target/m68k/Kconfig
- create mode 100644 target/mips/Kconfig
- create mode 100644 target/nios2/Kconfig
- create mode 100644 target/riscv/Kconfig
- create mode 100644 target/xtensa/Kconfig
+Otherwise,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index 8fc09a4a51..f6044f1121 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -40,6 +40,5 @@ CONFIG_MICROBIT=y
- CONFIG_FSL_IMX25=y
- CONFIG_FSL_IMX7=y
- CONFIG_FSL_IMX6UL=y
--CONFIG_SEMIHOSTING=y
- CONFIG_ALLWINNER_H3=y
- CONFIG_ACPI_APEI=y
-diff --git a/default-configs/lm32-softmmu.mak b/default-configs/lm32-softmmu.mak
-index 115b3e34c9..6d259665d6 100644
---- a/default-configs/lm32-softmmu.mak
-+++ b/default-configs/lm32-softmmu.mak
-@@ -4,8 +4,6 @@
- #
- #CONFIG_MILKYMIST_TMU2=n        # disabling it actually causes compile-time failures
- 
--CONFIG_SEMIHOSTING=y
--
- # Boards:
- #
- CONFIG_LM32=y
-diff --git a/default-configs/m68k-softmmu.mak b/default-configs/m68k-softmmu.mak
-index 6629fd2aa3..4fef4bd731 100644
---- a/default-configs/m68k-softmmu.mak
-+++ b/default-configs/m68k-softmmu.mak
-@@ -1,7 +1,5 @@
- # Default configuration for m68k-softmmu
- 
--CONFIG_SEMIHOSTING=y
--
- # Boards:
- #
- CONFIG_AN5206=y
-diff --git a/default-configs/mips-softmmu-common.mak b/default-configs/mips-softmmu-common.mak
-index da29c6c0b2..6c0904b200 100644
---- a/default-configs/mips-softmmu-common.mak
-+++ b/default-configs/mips-softmmu-common.mak
-@@ -1,8 +1,5 @@
- # Common mips*-softmmu CONFIG defines
- 
--# CONFIG_SEMIHOSTING is always required on this architecture
--CONFIG_SEMIHOSTING=y
--
- CONFIG_ISA_BUS=y
- CONFIG_PCI=y
- CONFIG_PCI_DEVICES=y
-diff --git a/default-configs/nios2-softmmu.mak b/default-configs/nios2-softmmu.mak
-index 1bc4082ea9..e130d024e6 100644
---- a/default-configs/nios2-softmmu.mak
-+++ b/default-configs/nios2-softmmu.mak
-@@ -1,7 +1,5 @@
- # Default configuration for nios2-softmmu
- 
--CONFIG_SEMIHOSTING=y
--
- # Boards:
- #
- CONFIG_NIOS2_10M50=y
-diff --git a/default-configs/xtensa-softmmu.mak b/default-configs/xtensa-softmmu.mak
-index 4fe1bf00c9..49e4c9da88 100644
---- a/default-configs/xtensa-softmmu.mak
-+++ b/default-configs/xtensa-softmmu.mak
-@@ -1,7 +1,5 @@
- # Default configuration for Xtensa
- 
--CONFIG_SEMIHOSTING=y
--
- # Boards:
- #
- CONFIG_XTENSA_SIM=y
-diff --git a/hw/semihosting/Kconfig b/hw/semihosting/Kconfig
-index efe0a30734..30befcdd21 100644
---- a/hw/semihosting/Kconfig
-+++ b/hw/semihosting/Kconfig
-@@ -1,3 +1,5 @@
- 
-+# default is 'n'
- config SEMIHOSTING
--       bool
-+    bool
-+    depends on TCG
-diff --git a/target/arm/Kconfig b/target/arm/Kconfig
-new file mode 100644
-index 0000000000..3224cac4ad
---- /dev/null
-+++ b/target/arm/Kconfig
-@@ -0,0 +1,2 @@
-+config SEMIHOSTING
-+    default y if TCG
-diff --git a/target/lm32/Kconfig b/target/lm32/Kconfig
-new file mode 100644
-index 0000000000..c0a9a9e799
---- /dev/null
-+++ b/target/lm32/Kconfig
-@@ -0,0 +1,2 @@
-+config SEMIHOSTING
-+    default y
-diff --git a/target/m68k/Kconfig b/target/m68k/Kconfig
-new file mode 100644
-index 0000000000..c0a9a9e799
---- /dev/null
-+++ b/target/m68k/Kconfig
-@@ -0,0 +1,2 @@
-+config SEMIHOSTING
-+    default y
-diff --git a/target/mips/Kconfig b/target/mips/Kconfig
-new file mode 100644
-index 0000000000..3224cac4ad
---- /dev/null
-+++ b/target/mips/Kconfig
-@@ -0,0 +1,2 @@
-+config SEMIHOSTING
-+    default y if TCG
-diff --git a/target/nios2/Kconfig b/target/nios2/Kconfig
-new file mode 100644
-index 0000000000..c0a9a9e799
---- /dev/null
-+++ b/target/nios2/Kconfig
-@@ -0,0 +1,2 @@
-+config SEMIHOSTING
-+    default y
-diff --git a/target/riscv/Kconfig b/target/riscv/Kconfig
-new file mode 100644
-index 0000000000..3224cac4ad
---- /dev/null
-+++ b/target/riscv/Kconfig
-@@ -0,0 +1,2 @@
-+config SEMIHOSTING
-+    default y if TCG
-diff --git a/target/xtensa/Kconfig b/target/xtensa/Kconfig
-new file mode 100644
-index 0000000000..c0a9a9e799
---- /dev/null
-+++ b/target/xtensa/Kconfig
-@@ -0,0 +1,2 @@
-+config SEMIHOSTING
-+    default y
--- 
-2.21.3
+
+r~
+
+> 
+> (The recommended way to change CPSR.E is to use the 'SETEND'
+> instruction, which we do correctly allow from usermode code.)
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Bug reported on IRC. Quick-and-dirty test case at:
+>  https://people.linaro.org/~peter.maydell/msr-setend.c
+> 
+>  target/arm/cpu.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 5d995368d4f..677584e5da0 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1230,7 +1230,7 @@ void pmu_init(ARMCPU *cpu);
+>  #define CACHED_CPSR_BITS (CPSR_T | CPSR_AIF | CPSR_GE | CPSR_IT | CPSR_Q \
+>      | CPSR_NZCV)
+>  /* Bits writable in user mode.  */
+> -#define CPSR_USER (CPSR_NZCV | CPSR_Q | CPSR_GE)
+> +#define CPSR_USER (CPSR_NZCV | CPSR_Q | CPSR_GE | CPSR_E)
+>  /* Execution state bits.  MRS read as zero, MSR writes ignored.  */
+>  #define CPSR_EXEC (CPSR_T | CPSR_IT | CPSR_J | CPSR_IL)
+>  
+> 
+

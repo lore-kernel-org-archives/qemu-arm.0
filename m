@@ -1,107 +1,101 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2157162lfb;
-        Thu, 7 May 2020 10:16:45 -0700 (PDT)
-X-Received: by 2002:aa7:985e:: with SMTP id n30mr14262786pfq.163.1588871805460;
-        Thu, 07 May 2020 10:16:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588871805; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3102512lfb;
+        Mon, 18 May 2020 07:46:26 -0700 (PDT)
+X-Received: by 2002:a9d:3f44:: with SMTP id m62mr11879970otc.38.1589813186531;
+        Mon, 18 May 2020 07:46:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589813186; cv=none;
         d=google.com; s=arc-20160816;
-        b=s5oToZVMM47Jz6bTBH6sA3aDS8+taaDkmfQIBqVHWVuyKfJ+yqrOUNQQvVB6okzGvU
-         fMAlOH6iaNSWkTEuQg4IOzKmSe+p7YCIYwiyKSX9oKokuSeP3zKD19ldGPJ0hKdHCDdL
-         lQP4JTJ86QtiQZmYRoL5ROYeG2U7a3hSajKajDywIgGWIUFBF+5G7DtrqamJGMlIVTEO
-         PPSk+/Zsx7xjzDCnFDh1on0syoCbKr+uxjpXQzBe3e4fGKn5RfL79ucMrUbDa8QXdHf6
-         t2B7Yr010BjKTZ9qev2FSh/GdlM3TwqsCAf0hzFxKy3Wv3RDsDPyDKy6wWLTdkygQ6LP
-         qQYw==
+        b=iAcvs33nvhKV88kfatrfgr9bwg+my5w2Th1w/913vemME/oXzWnwa5utgwaCpJUjT1
+         Vu6d1XGVbOzOnkGKCI/Jc+QP/oMErk0N9L9AtzHaxHcZFTpi6PW/RkShppDkWnLkHUO9
+         BGAR1WcOOpsYDD8WBg4QvJkAj8nRAZV/RTOMxFAGmqeDyG153kdu2FyPJ4f0UIaGglZk
+         T1sZPYdpz8ZBEBtwMLZly1X7qT93PimErU0tjfkniWZpq9O3NJ8mTindn6t5OrUEKXP7
+         I750w5wbqnFiDePBJObiEq2Cc+jREFJGB/sB+YuxFQLEZXr99LzvRa6zdKvpNIL56ciD
+         Ux9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=rekBVtsOQR79ipFPsbbh0+J3cKkjzywQV6MJqtQ7Hm8=;
-        b=feND4bMMfHfSRuCg3pzp+YVSmMyqMbvjt406np9LnzqdMLzmEvIEQUhVfI6aQxiIpt
-         Pyvmxv04x3NY46dnQx5CwVf8n0uwOHndVOXuE0zW3PUAwBU4Z4K/3et6NNKgp0NIWw7o
-         6+SzcyJs12o8+XDpHLHJqUNt4JD8jTg/oh29XW98Gf57q8QdVaTIA7FQMVNthJUR2k4x
-         UQoCPYUmBC1OZAklHK/VgZNuNKcy0Jr9QmTpEsa47lWXbwZwcMLgjJOMGllSYVgDM0CK
-         FbqI5YsD3NXJzU6yUYIEWGw+prZk1pYQ5TEIZOqoSygohPSkNTyThRsG+gsKhewUaaFR
-         cDEw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=Yg5Gk3dDviSnJiLkiL3wJMyhIIyqlq1pt8iO8sb2z3M=;
+        b=kj7b29UJLwe9b+YE2tBlYtHBhjqBvVgUbH7OXxlYTy2uFN4+M/nSVjBwbYGuN5uJbe
+         a1eMCeL0xpsmUyJ+Teo0e3D454v340vtHdcFH8BFkwAwRcJTypIw9pzs7DRT3W8eI9VH
+         rSEoB/vHNf0m34X1GAWLxdf+HEYxiDEOxcUhKs50mpmyDlkWdyd/vjcPT6CJk0YS9P0m
+         bO8cIPb2KSPQkcBevan+etUswanG8gWO64LgdKXwY5hSmxDzeB8dwd0PQFn0xE97WuSX
+         RamcDOLrwqz252VwLbNkOjIIJofO/AfZBThoVQclUEJ2Aww1yZocYGY1PE68+VJSv4Kp
+         SgCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q1ukqVH4;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MavUC32T;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id p13sor7681553pff.77.2020.05.07.10.16.45
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id w11sor13730598oog.8.2020.05.18.07.46.26
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 07 May 2020 10:16:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 18 May 2020 07:46:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q1ukqVH4;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MavUC32T;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=rekBVtsOQR79ipFPsbbh0+J3cKkjzywQV6MJqtQ7Hm8=;
-        b=Q1ukqVH4tyNX0IuUd7NF20JFh7HEFNdVz3fYzb0AJ+2ixJamijq6UJAUWihhZPtTiy
-         8nHZ8cKnbv4+SMsJnOxTbgbhUI8etSDe0mKJpWV6MVuslija9ltC2M9jX/aKycJHHeCC
-         ST3cja/shnaSChfBOC+8DLZsKGQm8whIQt+EFXdUuC+QMY9NIubZ9dJqk863vVwxFddf
-         YK3ToXKRO3QOu6u+oApCDFXWdwZybPshiGsHsF/2w/CumfgLnXPt+tD0/o7jquSu9/Kf
-         /AvjBMRkfrpk/1qfJz8T0GqNaIRlSvP65U1P85wJJ59vmyAJXmNObDsoRW4HXMRcHWkn
-         diGg==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=Yg5Gk3dDviSnJiLkiL3wJMyhIIyqlq1pt8iO8sb2z3M=;
+        b=MavUC32TMJnMXk96KOjxjiFjv9y3DmwRH+8meCFVBlaBfNk/uJn9MMIupggQdUYp/w
+         XkyKi4uvlEl6MSzo74ab1mT3A4ogxIosyVyI9AW6SvzdyEtSQoeWMNKsSGnACIwLhzoF
+         dWqe86VCKujMrP6so7p6MstMsI1p8e+YicjYqJOGLOcbzmk/bNKIHWJHDwr9pyQRk/fW
+         Oamr9u3T5f4FrFzofWqLuVEPqRV7GTJ0BrkgNoMLK5yJ83pHacIthmMpD3ws1eiycO04
+         bhI51K7Pgloi1dp18aFintEcGUveQYWaSZzbzK50aZJszWdPubuJe/cYpt4xnk0GOho6
+         NGsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=rekBVtsOQR79ipFPsbbh0+J3cKkjzywQV6MJqtQ7Hm8=;
-        b=ZpYHsSJuRqStiXRbxwIwrgxSeFnOvwgKNqUBtaCr/M78fsCor88r6msWeCikW5CymN
-         bHI+8vpf1ZR7YNvk8+YZKxx9KDsUgCHOSZBkCUamBrZzyxLtUOYcZn8bzlitQHekHgWu
-         du3x9YgnCL1833UtO1P7kh9EmDdZxc2efwR6pgyjIjRMoTbhXUDeTLj8ipW7Vo6pXmP9
-         /0VHzRzQUGDruxYhqIxH6uLBbEt+IGHrXjOGwv5RI+paTwa7g/Q/TZoCer5R6CLLPdgm
-         O5wEskEP7Unf1uqrsTan44xebToYhV8pl5QJ7RAc9fMm5SLvDp1uWs6c6E3ZPiA/YuMQ
-         LexA==
-X-Gm-Message-State: AGi0PuZQyV83Y4lZwL8gUOVcKAL0aV51Qch/441BKsvfYcjABvv0gILL
-	TFOR1HPXIdBRMU5kcQKU0bFFsmqVappOqA==
-X-Google-Smtp-Source: APiQypKJ4MuX8kqWxIAd2eOlKARMqRm0UazIY5eKgXuw2R6w9hc/FUElNUCtz2gVQphVeE1jQvRLEg==
-X-Received: by 2002:a62:3287:: with SMTP id y129mr15413870pfy.167.1588871804498;
-        Thu, 07 May 2020 10:16:44 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (174-21-149-226.tukw.qwest.net. [174.21.149.226])
-        by smtp.gmail.com with ESMTPSA id b8sm307866pjz.51.2020.05.07.10.16.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 07 May 2020 10:16:43 -0700 (PDT)
-Subject: Re: [PULL 04/10] target/arm: Use tcg_gen_gvec_dup_imm
-To: Laurent Desnogues <laurent.desnogues@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20200506183002.3192-1-richard.henderson@linaro.org>
- <20200506183002.3192-5-richard.henderson@linaro.org>
- <CABoDooPCvC4Y+G4CGBUhPT_ce3rY6_ZZvTnvv8M+sXPkpN4raQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <3e0ec84f-6f25-5e97-a3c5-bb810a347d0f@linaro.org>
-Date: Thu, 7 May 2020 10:16:41 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=Yg5Gk3dDviSnJiLkiL3wJMyhIIyqlq1pt8iO8sb2z3M=;
+        b=BnrGga/9EStdcm38eAMfpm74wcxOvGsI++1NyiXuVZFQbWO+kCZNuHNfy8uCBhpiXz
+         HWRnD/bpB1eDB0707SmKqP9dHDMTmX71wdufDvxTPVD2arciT04U0iob2OAL8TRLzYxj
+         mJccanyrQkJj2wB2JE/mWA/rRcBzAK+DSo158pn6f27c6EszAesnlp/Ngqun3LUQNCnX
+         3mriDEqYx0CI0JoKAtH5RDABxGdllHcOiwsZfE3WIeSV/ayjByN7Z9U69gxEvoHVlTg/
+         mNhcu7I/9S/vvb7p49YFcwwUwDjJL1Z+ei2XLOfoGLXqWQ79v8i5CcJ37nOIwvCyKx92
+         31Qg==
+X-Gm-Message-State: AOAM532QtOxxI4+AtLXS3HN+hX+31BZxfW9Uqx3KNVt4zGy517H8ZU6Z
+	Ekw34brox+hXesse5llQXTmdg8L8D6N35Mi99nznHMuV
+X-Google-Smtp-Source: ABdhPJzSJUIDY0tuP5fZZX7BjSgprqLVb98gvRNXDQLbiwMH/OXQQO3SZOergSTsIhVECQ8sDRzp7bz04mP5nv3N6oM=
+X-Received: by 2002:a4a:3556:: with SMTP id w22mr13049640oog.20.1589813186025;
+ Mon, 18 May 2020 07:46:26 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CABoDooPCvC4Y+G4CGBUhPT_ce3rY6_ZZvTnvv8M+sXPkpN4raQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: DJnX5+vJiZrS
+References: <20200312194219.24406-1-richard.henderson@linaro.org>
+In-Reply-To: <20200312194219.24406-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 18 May 2020 15:46:14 +0100
+Message-ID: <CAFEAcA-3YYciv1VZZdeYZOZYAgaRrTvPj6kHUbBv06-0otoGdw@mail.gmail.com>
+Subject: Re: [PATCH v6 00/42] target/arm: Implement ARMv8.5-MemTag, system mode
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: uzDCLtSqjYW9
 
-On 5/7/20 7:39 AM, Laurent Desnogues wrote:
->> @@ -2044,7 +2044,7 @@ static bool trans_DUP_x(DisasContext *s, arg_DUP_x *a)
->>              unsigned nofs = vec_reg_offset(s, a->rn, index, esz);
->>              tcg_gen_gvec_dup_mem(esz, dofs, nofs, vsz, vsz);
->>          } else {
->> -            tcg_gen_gvec_dup64i(dofs, vsz, vsz, 0);
->> +            tcg_gen_gvec_dup_imm(esz, dofs, vsz, vsz, 0);
-> 
-> For an indexed DUP, size can be 128-bit so that will fail the first
-> assert in tcg-op-gvec.c:do_dup.
+On Thu, 12 Mar 2020 at 19:42, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> I've done quite a lot of reorg since v5, so much so that I've dropped
+> most of the review tags that had been given.
+>
+> There are a couple of major improvements to note:
+>
+> * The effective ATA bit is in hflags, noting whether access to the
+>   allocation tags is enabled by the OS.  This is moderately expensive
+>   to compute, so it's better to hold on to that.  This allows trivial
+>   inlining of some of the operations.
+>
+> * Updates for SVE, and thus
+>
+> Based-on: <20200311064420.30606-1-richard.henderson@linaro.org>
+> ("target/arm: sve load/store improvements")
 
-Ho hum, quite right.  This has already been merged, so I'll send a follow-up fix.
+For clarity, given this is now 2 months old I'm just going to drop
+it from my to-review queue on the assumption that you'll do a
+rebase-and-resend at some point now the prereq patchset is in master.
 
-
-r~
+thanks
+-- PMM

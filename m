@@ -1,91 +1,91 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3157631lfb;
-        Mon, 18 May 2020 08:53:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypm69mXFiZ98H2CHlph5x66Z/4EZFYndM6lsSGuuR0bro6hzfb3Xxgv4gbKnE1hzophHuW
-X-Received: by 2002:a05:6402:204b:: with SMTP id bc11mr13773001edb.114.1589817200079;
-        Mon, 18 May 2020 08:53:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589817200; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3157655lfb;
+        Mon, 18 May 2020 08:53:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwvfTtT/K1sZg6Cgtztp0Ukh8rOtlgZOT88XfUYma9yePpqcUuJzglJhtkB9PT1OfkUwWvA
+X-Received: by 2002:a05:6402:3044:: with SMTP id bu4mr14893699edb.342.1589817201151;
+        Mon, 18 May 2020 08:53:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589817201; cv=none;
         d=google.com; s=arc-20160816;
-        b=cPQJco6HiiqMVeboVaaFZSlZy9GuHEl3w23t0RJl6BMnBC0UJoVPQH/rLfh7VkN/99
-         M0mBuzI9AAt/gkVqaogJbKCO5tXrCNP4tzEoVNtwUne3FB31Y0yhXCrL5gyU8G09/viJ
-         5ASn/1txon8LcuZEwbDadqO41ZOpiO1p+fPzO6u5YMA6AznClih87TJRnF1Gt4FjeeAZ
-         TTOBxrVZpHYehru6IMhB/a7O7wdevgWMwJSqYhoXOrRvd1CfHCCOqWgCoXXwfl2Z+ufw
-         sObpypKSy1a8JvwB+RUDqzVmZWpbp3pKeSOeQiCGbTcIszFboa3VZGacoqv/nT1v2Mys
-         Bosw==
+        b=KhWVAcDPVnmg2U6vuG6XpvG5zFmjK3CgKmgCvYqXpux14ecxgDUpZeTB2OAAQBpRap
+         I2DGslQ/StONCJ1c1vgxlZK8iolsxZd3iq2+BektjhTHdoyblAg86hLmq0y+FWgEB++9
+         BMNG9u/oK4ZBzPvlbaXR3PNtHQVMbLhVzTdg/KpiDtZURXh3k4lbYYH5KT/lE4vpA7CD
+         qRVnRLNRhz2icsQv4GPgUlf/SnHcgwq6QEjRPz72gaSUlKE43u4FPMeUa5sNINpFZx50
+         ajJU3AQjsQGcRAaMZAFQMuK7MAEAwBksNMwe1VwoA5nwJ9xfWAC2fz0VXxM2YejVXSTE
+         SFrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=YgUO7urc8a2H2l0AjA6/YcXX+FHCC3nhZ10cz3IJGT0=;
-        b=qTCokGT6SwFtuv6U4vIjYLR3FCLKo99b8pPEIp4li9G4qgVRHZH7qEsHPgACBbHmrb
-         3BujxbVDf4edl4XJVsKUxzQU258fYWji2c2vFwLMm3kNSZkBudhNIr/5CeS9ytwnMLDe
-         IXfO3mqSrMi7Gide99+LaDMzKKep27aH5WmZ7vOVjvE7hnxEQgp67K/3XI5R2WCTTTPJ
-         cXkLkLgdtKAJzmJ8/0fduI3L+AIvWxf/vstJHGsQo4wExdWrzG66Mzq2CUYJuquoisBD
-         TWBS/dk0eVL7OmtlhZ/BfEmzEdgXxMuY7lUJMf0JkyinZLiN3vuJ87pEqxOuccU7tip1
-         XtXg==
+        bh=MwRjIJKrjZvOQLKRDS7bp2j+HXuefv0dlJUo1+WtTjQ=;
+        b=qPh+wI7cOGcCrreJY/deA3uK2TVMx3xHxwKG+2SrfPDOMtqYpE3u+0PyKU1BieDIiL
+         aCUUi5kzD8qzjH8cA+VgKovvMjGwIzbjpioGLoN3EjFNe3e0g2QDco5SLAemxzyhIIGk
+         xGkmlO9g9uDoY/NH0B98/tTiJ10W3mdTbsg5Nv5DkrxvAFYnz/DPIOBfXobSa14Fe0Ro
+         UzD7qua0ypoTL4Oha4MS/86Foy1stJSLkJnHZOCfgfi+g6h7g0XPTvTC18ZT70jlOn+t
+         VC/zPyeIkYkn6sZ1qk2iWE6CFx2rAAjNIApm0UNHZJdWo5P3utmuKPgOlf1SJ7imLDhd
+         BSTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IOBfw97b;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=egYB1Vpd;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id do11si8281395ejc.450.2020.05.18.08.53.19;
-        Mon, 18 May 2020 08:53:20 -0700 (PDT)
+        by mx.google.com with ESMTP id do11si8281395ejc.450.2020.05.18.08.53.21;
+        Mon, 18 May 2020 08:53:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IOBfw97b;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=egYB1Vpd;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728491AbgERPxR (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 18 May 2020 11:53:17 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:42558 "EHLO
+        id S1728110AbgERPxU (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Mon, 18 May 2020 11:53:20 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:42566 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1728301AbgERPxQ (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 18 May 2020 11:53:16 -0400
-Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com [IPv6:2a00:1450:4864:20::342])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 175AFC061A0C
-        for <kvm@vger.kernel.org>; Mon, 18 May 2020 08:53:16 -0700 (PDT)
-Received: by mail-wm1-x342.google.com with SMTP id u188so42432wmu.1
-        for <kvm@vger.kernel.org>; Mon, 18 May 2020 08:53:16 -0700 (PDT)
+        with ESMTP id S1728494AbgERPxT (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 18 May 2020 11:53:19 -0400
+Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com [IPv6:2a00:1450:4864:20::443])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 5C38AC061A0C
+        for <kvm@vger.kernel.org>; Mon, 18 May 2020 08:53:18 -0700 (PDT)
+Received: by mail-wr1-x443.google.com with SMTP id k13so10387422wrx.3
+        for <kvm@vger.kernel.org>; Mon, 18 May 2020 08:53:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=YgUO7urc8a2H2l0AjA6/YcXX+FHCC3nhZ10cz3IJGT0=;
-        b=IOBfw97bri/HK4rNN8hBH3fS/bLjGzm8A0H/8IkZ8BNpXTH5MWOLMb3YVIeMZKbemA
-         3ANvreACUxm3uKFDJZEe4MA+7GDtRxgdRAvLMjOBMc7JlM5setDqR+rAAjGrhOViOGZF
-         2Wqfu4cYar/pwmzsrnDNSa2HYymGPUjbGygmgHP6rSFAaV7KZ4Aj7Zf8fLfG4mjSdzoj
-         O0xMbKFIM8aKXXnAyWz+2OWRz7ivmrJrmm2ilOqTEom06SGkiN9a0F3K1QeVvnWoTdEt
-         L9ra6YC/35hRflgOsBpof5I6H7BbRnEo+uNLoC00Y9tDyfK0lemm9ge5tj8eq1k8Vg70
-         hyyQ==
+        bh=MwRjIJKrjZvOQLKRDS7bp2j+HXuefv0dlJUo1+WtTjQ=;
+        b=egYB1VpdfFdcLU33RJfphrswTKxeIP4BjafZIjlthVmO7DNr1l7McScI+IvtmLndG9
+         WjD9LpiJcPgoH1MQBUkML5lgSFY7x3NaGka7xlkROcXaUy0M0SBcrXd5T4VzdZLNz/tc
+         JPL6wSS5HtdO9ff8Wg6X7bJESUkg8Ef8SEfUZKgdpq2BBN6kuw95k/w84PQl6K2QTuQC
+         IfkMkWm7skqibMMRLPYi373AjZVNZgP9ah9kIfJgJMlSEaP6vC7XibL1zckb5Buz9xo2
+         NTkPmJYYngauoD6KSjjGbIr3/BaenDgDt52tGVYYC0VdUp9L+LhUZnZUisxS9bM1br6K
+         NHqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=YgUO7urc8a2H2l0AjA6/YcXX+FHCC3nhZ10cz3IJGT0=;
-        b=Cy+6osAJMM8IZ7SvfZ8rRCySVJ8+RWbLCct/CGZ1Uqk8MAQF4cTBJKISpngD5obqc+
-         6yUR0Tj79mRxvIFMGALylj12t3j5NQmI1P6u8n7bgPVNFu2plo9FXzyN4HpoRAhNusMO
-         rqz9T7qDCWwSqiYMbsoejSKRkP1PM6kUhS9fn9b+4siiTfg0Rk8CnwRBgIoOhoq1vWXg
-         sOpmZkFv3QwAiqxglkm9Y5KAhIncNr1wI731Q0SDq9E3DL7WlzWak3VXmOGiLbkeMJWt
-         AJfJf4n3PMJDJwUqFCENbAc2EUgJG2PEl04QYAPajtl50SkhxWb88q7GamOeFxY03QgY
-         FLbA==
-X-Gm-Message-State: AOAM533ADu9X/3qs4GUuWIwx0OSJLTubG8OViwv2chp0T8HNrIOFgotn
-        fZGAj1CuTu0n1xEqNosYLMk=
-X-Received: by 2002:a1c:4cb:: with SMTP id 194mr42967wme.124.1589817194856;
-        Mon, 18 May 2020 08:53:14 -0700 (PDT)
+        bh=MwRjIJKrjZvOQLKRDS7bp2j+HXuefv0dlJUo1+WtTjQ=;
+        b=nzKuJg3kXUJnqFrGBHs4FQpsPZ+jg3Su7zTjS2R13N8v805XiaCk/87PoBsC4aayiX
+         +3Zhp3ZehSJLgDUxepZO3ImQp1woZywWCb2a3zrauGwY7DmDPsIsfu6QT8pQ54jpbKF4
+         jFlHTalT09P2le4KuhOhl/K07LJve9myjw4EGrOPoYOGEm+cvrFHzy8FVOmqiMFRwoLG
+         vPUAoWUhFvY+JWIwrxhjDn3A5zNkAFTsZHXLgtAHUBcuBdZUOlWlpnjx72i0gmla3AkD
+         Bh2HZXfCFUZOnWqNlZSabx5Z1KFlg568zVrhjeWBJ4Xjz82vTsvam/Y3EjAeC8bHWgF/
+         SSOw==
+X-Gm-Message-State: AOAM530WWcX1OEtJHdw/N0Tk69qXmH5i+VDtZ5B4Yc4knA/Al2tPKnqk
+        CaKdaszq/L1tSHWjkcC0i1g=
+X-Received: by 2002:a5d:6144:: with SMTP id y4mr21050664wrt.185.1589817197210;
+        Mon, 18 May 2020 08:53:17 -0700 (PDT)
 Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
-        by smtp.gmail.com with ESMTPSA id 7sm17647462wra.50.2020.05.18.08.53.13
+        by smtp.gmail.com with ESMTPSA id 7sm17647462wra.50.2020.05.18.08.53.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 May 2020 08:53:14 -0700 (PDT)
+        Mon, 18 May 2020 08:53:16 -0700 (PDT)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To:     qemu-devel@nongnu.org
 Cc:     Peter Maydell <peter.maydell@linaro.org>,
         Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
         qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>,
         =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v2 4/7] hw/elf_ops: Do not ignore write failures when loading ELF
-Date:   Mon, 18 May 2020 17:53:05 +0200
-Message-Id: <20200518155308.15851-5-f4bug@amsat.org>
+Subject: [RFC PATCH v2 6/7] accel/kvm: Let KVM_EXIT_MMIO return error
+Date:   Mon, 18 May 2020 17:53:07 +0200
+Message-Id: <20200518155308.15851-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200518155308.15851-1-f4bug@amsat.org>
 References: <20200518155308.15851-1-f4bug@amsat.org>
@@ -97,37 +97,48 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: I23yyDS9pL3g
+X-TUID: 5wMcMBXbetCk
 
-Do not ignore the MemTxResult error type returned by
-address_space_write().
+Give the hypervisor a possibility to catch any error
+occuring during KVM_EXIT_MMIO.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/elf_ops.h | 11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
+RFC because maybe we simply want to ignore this error instead
+---
+ accel/kvm/kvm-all.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
-index 398a4a2c85..6fdff3dced 100644
---- a/include/hw/elf_ops.h
-+++ b/include/hw/elf_ops.h
-@@ -553,9 +553,14 @@ static int glue(load_elf, SZ)(const char *name, int fd,
-                     rom_add_elf_program(label, mapped_file, data, file_size,
-                                         mem_size, addr, as);
-                 } else {
--                    address_space_write(as ? as : &address_space_memory,
--                                        addr, MEMTXATTRS_UNSPECIFIED,
--                                        data, file_size);
-+                    MemTxResult res;
-+
-+                    res = address_space_write(as ? as : &address_space_memory,
-+                                              addr, MEMTXATTRS_UNSPECIFIED,
-+                                              data, file_size);
-+                    if (res != MEMTX_OK) {
-+                        goto fail;
-+                    }
-                 }
-             }
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index d06cc04079..8dbcb8fda3 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2357,6 +2357,7 @@ int kvm_cpu_exec(CPUState *cpu)
  
+     do {
+         MemTxAttrs attrs;
++        MemTxResult res;
+ 
+         if (cpu->vcpu_dirty) {
+             kvm_arch_put_registers(cpu, KVM_PUT_RUNTIME_STATE);
+@@ -2429,12 +2430,12 @@ int kvm_cpu_exec(CPUState *cpu)
+         case KVM_EXIT_MMIO:
+             DPRINTF("handle_mmio\n");
+             /* Called outside BQL */
+-            address_space_rw(&address_space_memory,
+-                             run->mmio.phys_addr, attrs,
+-                             run->mmio.data,
+-                             run->mmio.len,
+-                             run->mmio.is_write);
+-            ret = 0;
++            res = address_space_rw(&address_space_memory,
++                                   run->mmio.phys_addr, attrs,
++                                   run->mmio.data,
++                                   run->mmio.len,
++                                   run->mmio.is_write);
++            ret = res == MEMTX_OK ? 0 : -1;
+             break;
+         case KVM_EXIT_IRQ_WINDOW_OPEN:
+             DPRINTF("irq_window_open\n");
 -- 
 2.21.3

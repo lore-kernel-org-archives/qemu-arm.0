@@ -1,91 +1,91 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3157722lfb;
-        Mon, 18 May 2020 08:53:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxDMJxFeE7D8c9AgBF0GvrvrtNudMJaSexr78pY49sOkmwt4nPufWLrMB8ag5grPDSYXBzE
-X-Received: by 2002:a05:6402:348:: with SMTP id r8mr9062352edw.130.1589817204085;
-        Mon, 18 May 2020 08:53:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589817204; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3157759lfb;
+        Mon, 18 May 2020 08:53:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxt1gHsntdAdDzO0rwtt2MzykuezorqjmhFEoWotqgWSrNsX1IDn3ksWxeXDibUyb8TWGBY
+X-Received: by 2002:a17:906:70d:: with SMTP id y13mr7739800ejb.99.1589817206228;
+        Mon, 18 May 2020 08:53:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589817206; cv=none;
         d=google.com; s=arc-20160816;
-        b=so2mnYc2vGh9H/auzuryxGpFWrQcAym5mSHFCkX3/2YVd4mYi0wcfRKaFTeW1BQKiS
-         xAHb6jh5RNElae/lg+HX6bNBknPIli163P5ICyFe5WRrK5tqlgleoNpMTdnZy+HBkr65
-         U0UMLLwviA//JY0g7vv9+H0/Z9KbeCu+K9zlLMrTvH/FN48WkK/kAq4g2MsZ8txH4IEc
-         C+Z8TvBkdbxTBRNMz5fkSryXTIaWSXO8tN+r0CTzs5irwt/aUgUTHJFRB+RCXvz9qVAL
-         rz00nsiJzBsyMlv7t+HNEFcw5Z1tc8l1xzjDl7chPVrfusbB9Z1y/79xOAfhnLborEa0
-         AcBQ==
+        b=sq4Au80lK65nzIunxJt/+WSbUROsNTOwC+7SoDoWquZjqdAWYcj/CcHyE2C1HbOEQ3
+         6H4Ag8wEzlRl1rIKkwu/+DgQg7kcyeCnDne7tT4I44+RCHBLNvnW63hi6lhf+u+C3c7O
+         DdrKak1CJn4KpNk9M6OuZbmZjhH36O+Nkkl5BQjjobzcIhnZnyeLiqUlvKDiUp6a5+r+
+         iA7RZ9Lj3DqsGBBV9m3Sw43yUbJ9poeV+p4lu0P7xDvE5mzw96K0l+Vro7JSc/XE75LX
+         ozXLEgZZuijnjevHfG1M0zx48vsVg7+h8yh6Gbni42y357wcArKbURA47jcESJMbotFc
+         XJng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=cD0HVhIueot6xPtNOGreyU0JTmhLcSi0Ka6Qp1Nps5Q=;
-        b=MWajw2/E+8U7UuSJre7np6MdsIcUtHyWkgbqvzLAX0X/ApWmH32i/drBaoh77KzLZe
-         /uKXFq17yOS3SgomvQaC+hpjHb7urEtrW2e+97guCV2Kr0gKwwzKog6y4BhKDaFuMvol
-         i76uyh45LEvW0EbFH74zvHLzPrzu6he6+wTlr/zaRQ/W63V4SbHor1rj5ucVJh1sC10u
-         /BsxNXIV7jFCGZi1Cb/Ci3VBIE7s+3flLicsHKXAEfSb11wLPCVNBclpv3Qv8NmgdPNt
-         P3U3U8NJn7Yd3P7aQmpcpGZ6Zb/uwRih+Xc6jhcKSXya1ng8OjDlYy1m3stby4pPCqSn
-         dmxQ==
+        bh=bB9pDUjiIlea3U386GXuZY1NOAMaybVFycH+ZuoRiV0=;
+        b=gPYs1Vu6DanLHpayhqDaqvuaPqoSvHeDvg+XIRyEiFDXtmxfBcNxNbPHmi8yg+AP8/
+         nQUGma7FQ6kWDlhEYQ7+B0jnm4/0/DSWWtxVmrJJ+UZk5AhRLrEsD6RNcQ/Jb2h/09kw
+         AezENRTHN4U2FkFo0k7gDGATCiM7HdLi3DT2Iw4VkfdytO8SyzUzagleaDHQ+lmf75S4
+         LakRCJTxV87OZ1dtfQPNw31qhpIFp7dp6jabEsDu82NCsdtstojWbbbt62J4VfQz9Vn0
+         22GcfYhDaqit6QZr8Sy60uAwbNc+nO4i71/22Wd2dcKtg5+//RU5+gDw3rOx57tw23Mb
+         U4sQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UzUkQrcn;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nurR+oeq;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id do11si8281395ejc.450.2020.05.18.08.53.23;
-        Mon, 18 May 2020 08:53:24 -0700 (PDT)
+        by mx.google.com with ESMTP id do11si8281395ejc.450.2020.05.18.08.53.26;
+        Mon, 18 May 2020 08:53:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UzUkQrcn;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nurR+oeq;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728502AbgERPxX (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 18 May 2020 11:53:23 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:42576 "EHLO
+        id S1728267AbgERPxZ (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Mon, 18 May 2020 11:53:25 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:42552 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1728421AbgERPxU (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 18 May 2020 11:53:20 -0400
-Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com [IPv6:2a00:1450:4864:20::343])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id A9D97C061A0C
-        for <kvm@vger.kernel.org>; Mon, 18 May 2020 08:53:19 -0700 (PDT)
-Received: by mail-wm1-x343.google.com with SMTP id z72so33121wmc.2
-        for <kvm@vger.kernel.org>; Mon, 18 May 2020 08:53:19 -0700 (PDT)
+        with ESMTP id S1728420AbgERPxP (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 18 May 2020 11:53:15 -0400
+Received: from mail-wm1-x342.google.com (mail-wm1-x342.google.com [IPv6:2a00:1450:4864:20::342])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id CEE0DC05BD0A
+        for <kvm@vger.kernel.org>; Mon, 18 May 2020 08:53:14 -0700 (PDT)
+Received: by mail-wm1-x342.google.com with SMTP id z72so32834wmc.2
+        for <kvm@vger.kernel.org>; Mon, 18 May 2020 08:53:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=cD0HVhIueot6xPtNOGreyU0JTmhLcSi0Ka6Qp1Nps5Q=;
-        b=UzUkQrcnedIIS0eyBH/lUMfwWEMl0dN7u8jvYptYKbxkrDH/d7z9FHA5lgbVk4b94O
-         9YAsA3AZn2b3y23TJXdtQz1KIUNf5Kvipq/cnwubNhPTe53nxW24cMT50ESHX3H4/wcQ
-         izcXRSOCK5zCoYLLjt/KGEQqmZ2xpp7fgYwN6WliyF/fNgU4etLfxeZKj8Dfe4i9Q/Sr
-         k+accbUYJeyeAfmxcwQTfyKvG3PYOmsnm3vdHwfVqIiDFu1ZpptTbNsUCxJf+JeIb1C8
-         vxCoLsu7zynaFKgFBWTWnh3KBOoSK1a7SAlaqYJ94LEYAqcFAYBIpjyYkeJlDWSWQwVo
-         QmvA==
+        bh=bB9pDUjiIlea3U386GXuZY1NOAMaybVFycH+ZuoRiV0=;
+        b=nurR+oeqvO38IlVAvYjrxVv0j0dklv6u3yVTDJ9MjtfJGYrgNsKLWs7v/EuSfT1Fyw
+         0hekQj/tWlRwGvIoHSlzW9AuZtciTPQcEplw1Pk8G6K0Hbrx+YNLGqJqwsJiwTdGA5Ne
+         v9/csSObyWiXDO8tXRQFSARTVgrKmme1B4xlK6G65N3bOCs9+um2jRul25Bre3/UOTza
+         OGPqc/K941siuivQI1Wp+Y4WrR+at7LjrzQjI27bJrNP8FSbQYpiJjFPWWuWesiUuFfw
+         ukETX0f+LCej7jAyGWg6NyrNnHEv4M8WOryfTbHiRYhmsQGp7mnvZiMDjtMW3y6pEggr
+         wGSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=cD0HVhIueot6xPtNOGreyU0JTmhLcSi0Ka6Qp1Nps5Q=;
-        b=m5zhDRlepKZNRhKRDOdN2ZLrCEYw699GYNRyb+kVrfx//sDcREos7wf90M/+XiiUrp
-         2/lFKPhr1XVoPw/ah0z35XD3x5UH998rqalHdsQH2AKd71yF/8PgluuSla3fxMNN5F5Q
-         jKNxeByS43ojlsHSQHK/Jy9wniYJC8sW5QjRhkqqb6OZA+oLgb3hyaM9NJtLVLf0aUUI
-         d8l0ItmYBW0FcH1OguvIFx1+Xk7Oyu6S2SAFvKtfw/zJfEwZXuh0BHsSnIm8PoCd5jX2
-         M0Ha+r7EA6QWybkV1ExrcmQv1oAKaWr6Wq9ybGk4JVbyK+T1HWk+4R4YuINrESRZEALW
-         pGfg==
-X-Gm-Message-State: AOAM530nbGbEWiNY16PFlsBVXwxKKXbKWLajFYcR0aF6UOiXeN4lijp1
-        vvL915rGNcWBEctsgc3EvzE67sDy160=
-X-Received: by 2002:a1c:7e03:: with SMTP id z3mr52303wmc.88.1589817198412;
-        Mon, 18 May 2020 08:53:18 -0700 (PDT)
+        bh=bB9pDUjiIlea3U386GXuZY1NOAMaybVFycH+ZuoRiV0=;
+        b=No+p//DTF41je92W1dhLOyDoVMiqmNK+t7ulQoNSv3BNyTOFvty9hk7Dlg5kDaylSS
+         WXji4Q+kPcn0/ZLAGWAf4DU2uqy/euCCrpzKwqgx4cbZWNzLPLwxuhUwUuALBXtLlOJ4
+         eMgosjWZVMb5AwOwuOU1bGp+FApO1aMXR3KwtdtXN3fD5YtJZ6WywxFp4Geug1vcJTbd
+         2gYVDEB7FqMesAlctohVV9VyKDSMAvskz6U6mbi2Lv0kLYh51vYwL8zAgpKigjYUN8fE
+         9b4sm3U4Ek+fuFqBFdx8+eLoW5YS/HyGwsaUdSDr+DjtGD4m8VPj6e5K9jKh3O78xCio
+         ustQ==
+X-Gm-Message-State: AOAM5314QrOi8wuvtfrbOaTeXkcnz71VjnZ4hhaZTgZLW4QFgagvNNyo
+        dflHCzYPIZ++AibtskzP2iZ6u87yBto=
+X-Received: by 2002:a1c:6884:: with SMTP id d126mr20131549wmc.179.1589817193623;
+        Mon, 18 May 2020 08:53:13 -0700 (PDT)
 Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
-        by smtp.gmail.com with ESMTPSA id 7sm17647462wra.50.2020.05.18.08.53.17
+        by smtp.gmail.com with ESMTPSA id 7sm17647462wra.50.2020.05.18.08.53.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 May 2020 08:53:17 -0700 (PDT)
+        Mon, 18 May 2020 08:53:12 -0700 (PDT)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To:     qemu-devel@nongnu.org
 Cc:     Peter Maydell <peter.maydell@linaro.org>,
         Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
         qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>,
         =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [RFC PATCH v2 7/7] hw/core/loader: Assert loading ROM regions succeeds at reset
-Date:   Mon, 18 May 2020 17:53:08 +0200
-Message-Id: <20200518155308.15851-8-f4bug@amsat.org>
+Subject: [PATCH v2 3/7] disas: Let disas::read_memory() handler return EIO on error
+Date:   Mon, 18 May 2020 17:53:04 +0200
+Message-Id: <20200518155308.15851-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200518155308.15851-1-f4bug@amsat.org>
 References: <20200518155308.15851-1-f4bug@amsat.org>
@@ -97,36 +97,49 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: kKmqR4cFy1HG
+X-TUID: LYe6qhZRq3Ge
 
-If we are unable to load a blob in a ROM region, we should not
-ignore it and let the machine boot.
+Both cpu_memory_rw_debug() and address_space_read() return
+an error on failed transaction. Check the returned value,
+and return EIO in case of error.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-RFC: Maybe more polite with user to use hw_error()?
----
- hw/core/loader.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ disas.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
-diff --git a/hw/core/loader.c b/hw/core/loader.c
-index 8bbb1797a4..4e046388b4 100644
---- a/hw/core/loader.c
-+++ b/hw/core/loader.c
-@@ -1146,8 +1146,12 @@ static void rom_reset(void *unused)
-             void *host = memory_region_get_ram_ptr(rom->mr);
-             memcpy(host, rom->data, rom->datasize);
-         } else {
--            address_space_write_rom(rom->as, rom->addr, MEMTXATTRS_UNSPECIFIED,
--                                    rom->data, rom->datasize);
-+            MemTxResult res;
+diff --git a/disas.c b/disas.c
+index 45285d3f63..c1397d3933 100644
+--- a/disas.c
++++ b/disas.c
+@@ -39,9 +39,11 @@ target_read_memory (bfd_vma memaddr,
+                     struct disassemble_info *info)
+ {
+     CPUDebug *s = container_of(info, CPUDebug, info);
++    int r;
+ 
+-    cpu_memory_rw_debug(s->cpu, memaddr, myaddr, length, 0);
+-    return 0;
++    r = cpu_memory_rw_debug(s->cpu, memaddr, myaddr, length, 0);
 +
-+            res = address_space_write_rom(rom->as, rom->addr,
-+                                          MEMTXATTRS_UNSPECIFIED,
-+                                          rom->data, rom->datasize);
-+            assert(res == MEMTX_OK);
-         }
-         if (rom->isrom) {
-             /* rom needs to be written only once */
++    return r ? EIO : 0;
+ }
+ 
+ /* Print an error message.  We can assume that this is in response to
+@@ -718,10 +720,11 @@ physical_read_memory(bfd_vma memaddr, bfd_byte *myaddr, int length,
+                      struct disassemble_info *info)
+ {
+     CPUDebug *s = container_of(info, CPUDebug, info);
++    MemTxResult res;
+ 
+-    address_space_read(s->cpu->as, memaddr, MEMTXATTRS_UNSPECIFIED,
+-                       myaddr, length);
+-    return 0;
++    res = address_space_read(s->cpu->as, memaddr, MEMTXATTRS_UNSPECIFIED,
++                             myaddr, length);
++    return res == MEMTX_OK ? 0 : EIO;
+ }
+ 
+ /* Disassembler for the monitor.  */
 -- 
 2.21.3

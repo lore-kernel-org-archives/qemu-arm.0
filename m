@@ -1,114 +1,114 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1298500lfc;
-        Thu, 4 Jun 2020 02:55:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzG0asGNdR9jFGgmp77u8Q5/hkFtnhc/CPxi5Ui+Lxy0ScQ3WT+3fvtwAzfPcwuC8/5UvOS
-X-Received: by 2002:a25:b941:: with SMTP id s1mr6763752ybm.151.1591264531647;
-        Thu, 04 Jun 2020 02:55:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591264531; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3066218lfb;
+        Mon, 18 May 2020 07:04:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwM8Gl9yMNqlYpRYpu5dj6VggjAfD3ueai3LbjrdKT9XZC09FH3eRAW6KjF2D20yKToM1wi
+X-Received: by 2002:ad4:4c4f:: with SMTP id cs15mr15265315qvb.117.1589810663875;
+        Mon, 18 May 2020 07:04:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589810663; cv=none;
         d=google.com; s=arc-20160816;
-        b=w4Rgk5e3j6GNtoVSRf05ZwaG/xsgOKZRSLgpHDGdSUYPojMgEmEWcP7uSQqZyjp+qm
-         G/RDmk1B64ipat1QzDUh+IFxqUsjO0OmLPGhhlXV/hP31E7uo2aqJKTybKNzDVN4BYOc
-         PQAtD6wT/QbymTPQxH0YDQIx28Ge0dU1W+mJWmoiwyTLONSnWN9Z23zQNJna68yAqH0I
-         8FT8IzdoS63WlRTiWdTdF6i2LvKJkLV7ld7LMGgmIw9JLPz7+g8lH8bZ2BRCZAXKqyFK
-         ZdiCAFy0HIJoPqJ94d/zg2bs5NqGnYh5+L435R+dLnqw0xAP5jyfeNLggADG0eSNCQFz
-         K5NQ==
+        b=X1Gto6GmRVdlGxoLRUAvSELLjeES6AmK9eMk/7HP5bX4pnh8ws3GyrX+Yzv2slnomz
+         0sAqrqAN3hNw8x05Xp1zyoKFIq9l5h1YfD3OloNIgFH6mXiGg0XGjr7txp4xavI0aLWx
+         kJQ1MtpH8rQ1t6/sgaQxLKMyTuAh8FHIEKgtx1WwzezteMEoVmRxpz1DLLk1bj97QH6U
+         heEzRxvklyKLQ9200ENlmiiDnlJ7yKkzQrsHiLchJyue4yquEAIl3WXPeJijsKDUVfWr
+         7Mcn/jTAeJ1UuWodKMr4E1pAU5O7zHLxUCsa71VaMvCzJIvHpJZGY/HKeJkUbBW2OQaH
+         6hDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=qtQO1PHizJRNEjLMYPCE+ygNSPTAXbLO8rC4l0RpJc4=;
-        b=TSA5wG56KHKxg+XeMoPF+5w1Ez1Y/PaXFw5ZONvnovQ6iX6sMNhTUFkmtBo7kTynAP
-         1B34Y+cGTyuC1JhcM0JCIKXH3GNX1FYdTxp78lgjHF9/26kAZMkxqsgUayXkc0d174BI
-         0fmpQaD4mahOW3Yy8RtJsaSyu/WtSj078PaOOh6RKYkKS0O3LEv3wMnzKaO+Ww4yIi/U
-         2FdNTQ7UnllDCH5mAuCkV9bb8BFhFjVgVbbggWctDQUiCFhClQNKh/tWyTFZwQNM308E
-         n345ZYbchcz7lpHFPJLBgcc73XZBcxw1611UURr2iL8aJDptJrQu2vVJqfyYK4J66+k2
-         n17w==
+        bh=evhhH7dZopCrkDO4cvbqtNz/8xpqFu/oQnLDI6akZY4=;
+        b=KjUbBADjxsinXAPqsBQ601hFegnjU/v+FOmaLrbFyTx2Mgx6BwH+GgEnh1swZv/tV/
+         3Vkje3UhcZ6K8GsFIf9+LXk2kgyvQ8fozoucXUkLLUjyXWsnnVnYS2RwyffuA+Ygi7m8
+         mjTbkFOjD9ySJA847EryPNsNU0dvqwSKBm4rJXvN3/kJH7nJgpdMemwSo9YJOC8pAKIf
+         917yrzYkQfRksgUcDWChTEIgeT5cBXXZSPIZ+TVNa6EapOTpTQCNHheycinwpUowQ3j1
+         NyinQXJvAt32dlBa36IHgbx11v5ibeMvd0Uvj2Vxi3fDpzRbtvoZNgyid4oM4D2+DYNN
+         4Rjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZYsQ34Yu;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c5I658dF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c67si2961426ybb.98.2020.06.04.02.55.31
+        by mx.google.com with ESMTPS id z8si5693477qtn.259.2020.05.18.07.04.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jun 2020 02:55:31 -0700 (PDT)
+        Mon, 18 May 2020 07:04:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZYsQ34Yu;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c5I658dF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38090 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:49228 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgmaw-0004tv-Vo
-	for alex.bennee@linaro.org; Thu, 04 Jun 2020 05:55:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58898)
+	id 1jagNT-0005hR-2u
+	for alex.bennee@linaro.org; Mon, 18 May 2020 10:04:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37606)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jgmaJ-0004Sp-35
- for qemu-devel@nongnu.org; Thu, 04 Jun 2020 05:54:51 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:36573
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jgmaH-0005yY-0h
- for qemu-devel@nongnu.org; Thu, 04 Jun 2020 05:54:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591264486;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qtQO1PHizJRNEjLMYPCE+ygNSPTAXbLO8rC4l0RpJc4=;
- b=ZYsQ34YuJ+PKh5IXuNxD/xq9XQNNtF9hRD5fIFZ9Nr1mVS6Bz0INqzE8MGdKmgxbnjjOI0
- TqaEN4/g7FZGeToiHQI/SHNt9SIHWoIySPgo7JsCgE1Tc9suoVQWpUaYrc0VM9eZ8YPjRm
- OH3oeTp7cRE5BUfM5UIKdeTdyKiNA6Y=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-367-ceWFD_30MjKrafUAF8YRGQ-1; Thu, 04 Jun 2020 05:54:44 -0400
-X-MC-Unique: ceWFD_30MjKrafUAF8YRGQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4CCC8A0BDC;
- Thu,  4 Jun 2020 09:54:43 +0000 (UTC)
-Received: from localhost (unknown [10.40.208.51])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 37BCD7CCC8;
- Thu,  4 Jun 2020 09:54:34 +0000 (UTC)
-Date: Thu, 4 Jun 2020 11:54:30 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Subject: Re: [Question] Regarding containers
- "unattached/peripheral/anonymous" - their relation with hot(un)plug of
- devices
-Message-ID: <20200604115430.029c488a@redhat.com>
-In-Reply-To: <ab94a6dec7b9435cbb36ca9d488a0daa@huawei.com>
-References: <70446b6cbf5442488a40fe809f38c3c8@huawei.com>
- <20200124145404.1d15209e@redhat.com>
- <77dbc712482545078986adcd72567630@huawei.com>
- <20200124170645.3d794ac6@redhat.com>
- <b8fccc99d7344b2485c0db76886af9c8@huawei.com>
- <20200127160352.54f95875@redhat.com>
- <ab94a6dec7b9435cbb36ca9d488a0daa@huawei.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jagMQ-00047D-Af; Mon, 18 May 2020 10:03:18 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:36592)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jagMP-00018w-FK; Mon, 18 May 2020 10:03:17 -0400
+Received: by mail-wm1-x343.google.com with SMTP id u188so10572623wmu.1;
+ Mon, 18 May 2020 07:03:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=evhhH7dZopCrkDO4cvbqtNz/8xpqFu/oQnLDI6akZY4=;
+ b=c5I658dFWf1VZZuazd4Kj7w50u2EWUkexys7LVKJz/4e9PWYc7o/3YHfSterxEtqKv
+ mzmub8+2u9jz67AlDVD3oFFpzsMProfzUjy+GgjxyBAh4yE0Qz2IxrFHql09LbgQYop1
+ buYYt/byehj13JRAODn4zh1JwAFICDAL898QHmR2qdxMUwTKnkgefmpb/FFviptln4d/
+ eeEmCtVx7bmxafl9DkzMJyH9P02tOTd+dkvJuzXx3Y1sOvtNKdCUXTWKKsgnWoInSKSe
+ qEucls1v8jV00GG3e4olhDFs1ODhFCtMaWIIIQBAjxNrAXz4YMtSv0bQXPJH4s8iYLOb
+ pSLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=evhhH7dZopCrkDO4cvbqtNz/8xpqFu/oQnLDI6akZY4=;
+ b=C8DgrLZEsf7DyN8A1FBM7E4yB91+bTTT+di64y2fR6phw8A25Xl+RiNaIQHEDvyqeQ
+ x2MsO0JUjW5jcl2FUakbECA0zuTsOJKSUkYWoaVfPQZJQYMAv118F8LRjEYqizjvFKu0
+ C7SaW0AXOQFm9f9vPtwlAjjVKZYuzo9+jieS6Abm2/NT2pqFx9JDgtwTqIqiYj2O5Xeq
+ hDdxQaWlFVU7XzlCoNKvOs+9eYorPhWpTI7uyjTHD75S1+kDVzu0ehjw0XWHuNtk464o
+ PUcrm2rLiSd5JegLIsC0O0ylCUbCN4U+EPBphMfWYsF7YTZm0kyQgRDLP9L+hbkeyOcu
+ hgbQ==
+X-Gm-Message-State: AOAM530Eqq2d7NFOzYP5VU55IXGWYpnBQ7J414gQ83On5XxUGWtnm2YQ
+ BLa6IbQGfIoKglK+daBVISEEP1rNdTQ=
+X-Received: by 2002:a05:600c:2055:: with SMTP id
+ p21mr20273588wmg.127.1589810594949; 
+ Mon, 18 May 2020 07:03:14 -0700 (PDT)
+Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.17])
+ by smtp.gmail.com with ESMTPSA id s67sm16611946wmf.3.2020.05.18.07.03.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 May 2020 07:03:12 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 1/4] hw/arm/integratorcp: Replace hw_error() by
+ qemu_log_mask()
+Date: Mon, 18 May 2020 16:03:06 +0200
+Message-Id: <20200518140309.5220-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200518140309.5220-1-f4bug@amsat.org>
+References: <20200518140309.5220-1-f4bug@amsat.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/04 01:31:23
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,186 +121,104 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>,
- "mst@redhat.com" <mst@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, pbonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2rA2B/laT3m7
+X-TUID: SB19RRTcR94I
 
-On Wed, 3 Jun 2020 15:13:26 +0000
-Salil Mehta <salil.mehta@huawei.com> wrote:
+hw_error() calls exit(). This a bit overkill when we can log
+the accesses as unimplemented or guest error.
 
-> Hi Igor,
-> My sincere Apologies, I just realized that I missed to reply this mail.
-> I was distracted to something else in  the month of the February and
-> had only resumed working on hotplug in march. But will still reply to
-> this mail. Also, I have incorporated most of the below points as in the
-> vcpu hotplug patches as per your suggestions.
-> 
-> 
-> > From: Qemu-arm [mailto:qemu-arm-bounces+salil.mehta=huawei.com@nongnu.org]
-> > On Behalf Of Igor Mammedov
-> > Sent: Monday, January 27, 2020 3:04 PM
-> > To: Salil Mehta <salil.mehta@huawei.com>
-> > 
-> > On Fri, 24 Jan 2020 18:44:16 +0000
-> > Salil Mehta <salil.mehta@huawei.com> wrote:
-> >   
-> > > > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > > > Sent: Friday, January 24, 2020 4:07 PM
-> > > >
-> > > > On Fri, 24 Jan 2020 15:02:10 +0000
-> > > > Salil Mehta <salil.mehta@huawei.com> wrote:
-> > > >  
-> > > > > > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > > > > > Sent: Friday, January 24, 2020 1:54 PM
-> > > > > > To: Salil Mehta <salil.mehta@huawei.com>
-> > > > > >
-> > > > > > On Fri, 24 Jan 2020 11:20:15 +0000
-> > > > > > Salil Mehta <salil.mehta@huawei.com> wrote:
-> > > > > >  
-> > > > > > > Hello,
-> > > > > > > I am working on vCPU Hotplug feature for ARM64 and I am in mid of understanding
-> > > > > > > some aspect of device_add/device_del interface of the QEMU.
-> > > > > > >
-> > > > > > > Observations:
-> > > > > > > 1. Any object initialised by qmp_device_add() gets into /machine/unattached
-> > > > > > > container. I traced the flow to code leg inside  device_set_realized()
-> > > > > > > 2. I could see the reverse qmp_device_del() expects the device to be in
-> > > > > > > /machine/peripheral container.
-> > > > > > > 3. I could see any object initially added to unattached container did not had
-> > > > > > > their parents until object_add_property_child() was called further in the leg.
-> > > > > > > which effectively meant a new property was created and property table
-> > > > > > > populated and child was parented.
-> > > > > > > 4. Generally, container  /machine/peripheral was being used wherever
-> > > > > > > DEVICE(dev)->id was present and non-null.
-> > > > > > >
-> > > > > > > Question:
-> > > > > > > 1. Wanted to confirm my understanding about the use of having separate
-> > > > > > > containers like unattached, peripheral and anonymous.  
-> > > > > >  
-> > > > > > > 2. At init time all the vcpus goes under *unattached* container. Now,
-> > > > > > > qmp_device_del() cannot be used to unplug them. I am wondering  
-> > > > > >
-> > > > > > device is put into 'unattached' in case it wasn't assigned a parent.
-> > > > > > Usually it happens when board creates device directly.  
-> > > > >
-> > > > >
-> > > > > Sure, but if we decide that certain number(N) of vcpus are hotplugabble
-> > > > > and certain subset of N (say 'n' < 'N') should be allowed to be present
-> > > > > or cold-plugged at the init time then I wonder which of the following
-> > > > > is correct approach:
-> > > > >
-> > > > > 1. Bring all of N vcpus at boot time under "peripheral" container
-> > > > >                                    OR
-> > > > > 2. Just bring subset 'n' of 'N' under "peripheral" container and rest
-> > > > >     under "unattached" container? And later as and when rest of the
-> > > > >     vcpus are hotplugged they should be transferred from "unattached"
-> > > > >     container to "peripheral" container?  
-> > > >
-> > > > issue with that is that to put device into "peripheral" container,
-> > > > 'the user' must provide 'id'. (currently QEMU isn't able to do it on its own
-> > > > [1])
-> > > >
-> > > > But it doesn't mean that cold-plugged CPUs can't be unpluged.
-> > > > What current users could do is start QEMU like this (simplified version):
-> > > >
-> > > >  $QEMU -smp 1,maxcpus=N -device foo-cpu-type,id=CPU00 -device
-> > > > foo-cpu-type,id=CPU01 ...
-> > > >
-> > > > i.e. 1st CPU is not manageable due to lack if 'id' and is created by board code,
-> > > > the rest have 'id' and could be managed.  
-> > >
-> > >
-> > > I understand, that we can somehow assign ids from the QMP interface but
-> > > above will not push vcpus into "peripheral" container. They will appear
-> > > in "unattached" container but with specified names and as-far-as I can
-> > > see in the code 'device_del' can only delete objects/devices from the
-> > > 'peripheral' container?  
-> > 
-> > qemu-system-x86_64 -monitor stdio \
-> >     -smp 1,maxcpus=3 \
-> >     -device qemu64-x86_64-cpu,id=foo,socket-id=1,core-id=0,thread-id=0 \
-> >     -device qemu64-x86_64-cpu,socket-id=2,core-id=0,thread-id=0
-> > 
-> > (qemu) info hotpluggable-cpus
-> > Hotpluggable CPUs:
-> >   type: "qemu64-x86_64-cpu"
-> >   vcpus_count: "1"
-> >   qom_path: "/machine/peripheral-anon/device[0]"
-> >                       ^^^^^^^^^^^^^^^
-> >   CPUInstance Properties:
-> >     socket-id: "2"
-> >     core-id: "0"
-> >     thread-id: "0"
-> >   type: "qemu64-x86_64-cpu"
-> >   vcpus_count: "1"
-> >   qom_path: "/machine/peripheral/foo"
-> >                       ^^^^^^^^^^
-> > 
-> > in gist, if device is created with any variant of device_add,
-> > it goes to "peripheral[-anon]" including cold-plugged one.  
-> 
-> 
-> I am not sure why you said "including cold-plugged one"? I hope by
-> cold-plug'ging you mean here are the CPUs which already exist at
-> the boot time of the Guest VM and plugged using -device?
+When fuzzing the devices, we don't want the whole process to
+exit. Replace some hw_error() calls by qemu_log_mask().
 
-yes, it's about a plugged one with  '-device'
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/integratorcp.c | 23 +++++++++++++++--------
+ 1 file changed, 15 insertions(+), 8 deletions(-)
 
+diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
+index 6d69010d06..5fb54e5aa7 100644
+--- a/hw/arm/integratorcp.c
++++ b/hw/arm/integratorcp.c
+@@ -20,6 +20,7 @@
+ #include "exec/address-spaces.h"
+ #include "sysemu/runstate.h"
+ #include "sysemu/sysemu.h"
++#include "qemu/log.h"
+ #include "qemu/error-report.h"
+ #include "hw/char/pl011.h"
+ #include "hw/hw.h"
+@@ -144,8 +145,9 @@ static uint64_t integratorcm_read(void *opaque, hwaddr offset,
+         /* ??? Voltage control unimplemented.  */
+         return 0;
+     default:
+-        hw_error("integratorcm_read: Unimplemented offset 0x%x\n",
+-                 (int)offset);
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Unimplemented offset 0x%" HWADDR_PRIX "\n",
++                      __func__, offset);
+         return 0;
+     }
+ }
+@@ -252,8 +254,9 @@ static void integratorcm_write(void *opaque, hwaddr offset,
+         /* ??? Voltage control unimplemented.  */
+         break;
+     default:
+-        hw_error("integratorcm_write: Unimplemented offset 0x%x\n",
+-                 (int)offset);
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Unimplemented offset 0x%" HWADDR_PRIX "\n",
++                      __func__, offset);
+         break;
+     }
+ }
+@@ -394,7 +397,8 @@ static uint64_t icp_pic_read(void *opaque, hwaddr offset,
+     case 5: /* INT_SOFTCLR */
+     case 11: /* FRQ_ENABLECLR */
+     default:
+-        printf ("icp_pic_read: Bad register offset 0x%x\n", (int)offset);
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
++                      __func__, offset);
+         return 0;
+     }
+ }
+@@ -430,7 +434,8 @@ static void icp_pic_write(void *opaque, hwaddr offset,
+     case 8: /* FRQ_STATUS */
+     case 9: /* FRQ_RAWSTAT */
+     default:
+-        printf ("icp_pic_write: Bad register offset 0x%x\n", (int)offset);
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
++                      __func__, offset);
+         return;
+     }
+     icp_pic_update(s);
+@@ -504,7 +509,8 @@ static uint64_t icp_control_read(void *opaque, hwaddr offset,
+     case 3: /* CP_DECODE */
+         return 0x11;
+     default:
+-        hw_error("icp_control_read: Bad offset %x\n", (int)offset);
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
++                      __func__, offset);
+         return 0;
+     }
+ }
+@@ -524,7 +530,8 @@ static void icp_control_write(void *opaque, hwaddr offset,
+         /* Nothing interesting implemented yet.  */
+         break;
+     default:
+-        hw_error("icp_control_write: Bad offset %x\n", (int)offset);
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
++                      __func__, offset);
+     }
+ }
  
-> >   CPUInstance Properties:
-> >     socket-id: "1"
-> >     core-id: "0"
-> >     thread-id: "0"
-> >   type: "qemu64-x86_64-cpu"
-> >   vcpus_count: "1"
-> >   qom_path: "/machine/unattached/device[0]"  
->                           ^^^^^^^^^^^^^
-> 
-> Unless you have pasted wrongly here, above output also shows qom path
-> as 'unattached' for cold-plugged CPUs. Am I missing something? :)
-> 
-> 
-> >   CPUInstance Properties:
-> >     socket-id: "0"
-> >     core-id: "0"
-> >     thread-id: "0"  
-> 
-> 
-> 
-> > > Plus, having those many ids specified for over large number of vcpus
-> > > does not looks very practical solution. We need interface like auto  
-> > number of IDs is not a problem since it's usually handled by management
-> > software just fine (ex: libvirt does it)
-> >   
-> > > Generation of ids even at the boot time. I could see from the link you
-> > > have shared that it is already being used by ID_BLOCK subsystem. Can we
-> > > create a new subsystem for cpus under this and do the auto Generation
-> > > of vcpu ids as well?  
-> > 
-> > I'm not sure that auto ids was actually merged.
-> > (I thought it wasn't)  
-> 
-> 
-> Well if you were referring to below then it has been part of qemu for quite
-> long now:
-> 
-> Patch: util - add automated ID generation utility
-> File: https://github.com/qemu/qemu/blob/master/util/id.c
-> Commit-id: https://github.com/qemu/qemu/commit/a0f1913637e6
-
-Thanks, I didn't know that it eventually got merged.
-
-> 
-> > Anyway auto IDs are not directly related to enabling CPU hotplug for ARM,
-> > if you feel they should be generated you can try to propose patches.  
-> 
-> Sure. 
-> 
-> 
-[...]
+-- 
+2.21.3
 

@@ -1,224 +1,122 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3209373lfb;
-        Mon, 18 May 2020 09:54:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyuwPUXnlZB1qZ+W0yCJaIqGeVBWEmuopb0bWbvtllcZozV4OqWuZ7tfJ3OHd1jExCMpCKT
-X-Received: by 2002:a0c:aec5:: with SMTP id n5mr17133005qvd.0.1589820881027;
-        Mon, 18 May 2020 09:54:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589820881; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3210261lfb;
+        Mon, 18 May 2020 09:55:43 -0700 (PDT)
+X-Received: by 2002:a05:6e02:530:: with SMTP id h16mr15676297ils.2.1589820943378;
+        Mon, 18 May 2020 09:55:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589820943; cv=none;
         d=google.com; s=arc-20160816;
-        b=iO6AGMzpvvX3qqTuTBRoGyDOnBhZH0pAZ+/VQrf/K8Pgegk78iBAyrJxmEEDstHEiJ
-         //Ptsadnf6dOYy3PvvaHzme49zExIttZy3UDQZoyR0qC6c4bTTKifR+OkhFNU5avNG+I
-         YtyUWxLtbyGP4mELYtrUohRtongbPBgyKh3sGz/UyczZ+LRSsda5I+GhXIEHmIIt1x16
-         hEZLM9uc35BuGEuqwHwjiEjaE6zOwuJRxYw+W/FOzu3HuhQotAIP5X5/WdPtLit0XcEX
-         E64GsmccROLslpTuIRmy7A0dAPZQQ1ip+frwY+4WMHOuM5iw5CRCTK2+4+wUrCai2uvm
-         7zmQ==
+        b=lJCGsb5vmMr38H6hMey5S3j0EHUrEkrTs01ioA7UC9ZXjVksmIaOlTJIJR0GTeokXB
+         waFrPDlt/DTi5vLyWIGQsoZgFqm2sSQAMQhgeoKlngat56566dvo+VPU6ywhjKFp7rh7
+         ato0qf0v9pWoRWDtVCCBGxwjCfXIYHeqCcAyIgcJTRSvuicJv/+T6Pj0HIo4reywScWP
+         egxibhMoG+K4rNCM45d+oYLFu2v3q3uA7s6ZAH52LXaWCxbVS576Y6vZ31vc3IhIEddT
+         gu2S3WyUvZzDHip5sBVyZpBk2DYt78pH8GUZ/t8dvGX4qgx5Gy3vWjUgnfoVdMKuhvM9
+         JCHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=i1QfDnXLF3pdgsHDH6l70vgoP0qLzQyf5+UWG7s+x5w=;
-        b=YsNEW77hh1IRnnQcjh06qXTk4DmsN2KdJsahHpaF2kRMQ9Nq4k5fyi3NaUeHr6cTGO
-         zRqoZraBCo3OERF8THZSYf1nO98Uwvx7JFOP8R3v7vaYNMyR3yCYEWitR54a/4QpkhLf
-         adFBJTOqXR8lIuciW6vdzhEs9fAH/40Qbt8MV5IIpa+S/c7RyJl29t2T2kTabwN6UHZA
-         ld+Q3QdP5URDDgfDCC1s2ryMga7GlrU/O4vVwj/si9G0FXvSz13G8/GLjNCy0e8g2BYg
-         K/S/2zlu+/Tbtkr2Tc679UNPBemRK9pAj20x++RkFCUDLF17O/Cm+SQoNBLhN0jGxPjW
-         a17Q==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Ol0ORCGLTTuGNMRHjrIAOAqtx3daiObs8nq3fxwOcNM=;
+        b=dcDV2ExzGkUd99jqPWJb/hgycA1lqZEywa7FufXpGmi2U/yWQ62HZxw5ez6xSEqKIA
+         dKR9jpXUnNG5RnPDQMD/DOzkHCjoErRsUF2em+CrAUSBp38kusYWryjE9aEBpbU280UN
+         5xJanWlQ70TufxtmXexAiqhI0BsfEGapFaf/IM96RzKxNfvAv9KFTCKKLFukZE9S+Pjb
+         f1/WHJ4o60AGav88KPbqVu7fEoYPVEXLyiI1GSy6d/V7/c36ncxii4a0TfI5jQpN8cDv
+         PKZYISSCbXLi9fej8emLTqfPGxwq9QRV01KBzl4P0zA1221YszENUU/9HmKLUzMVULGX
+         /NdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Uf2uGQaI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x24si5964270qta.91.2020.05.18.09.54.40
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 May 2020 09:54:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nSu7d5PQ;
+       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <alistair23@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id d191sor11501685iog.24.2020.05.18.09.55.43
+        (Google Transport Security);
+        Mon, 18 May 2020 09:55:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Uf2uGQaI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39622 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jaj2G-0006xy-GG
-	for alex.bennee@linaro.org; Mon, 18 May 2020 12:54:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33818)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jaj15-0005Bw-7f; Mon, 18 May 2020 12:53:27 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:46450)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jaj14-0001FN-B5; Mon, 18 May 2020 12:53:26 -0400
-Received: by mail-io1-xd42.google.com with SMTP id j8so11293837iog.13;
- Mon, 18 May 2020 09:53:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=i1QfDnXLF3pdgsHDH6l70vgoP0qLzQyf5+UWG7s+x5w=;
- b=Uf2uGQaIhD+W6YvwxSt0CWRoiieWL0EqVuZ+Fj1Esuib6hV1c9NBZrSJMLaaNmG2nW
- //GPWZOj993fGPZp0ivvAPDFMevIVULOCU+TxuHo6651XKqF/QPgk2Vmrqaya6w7AIUq
- DcN1R9k/oMCN4uFIJuU9fxETj/2KcJtJLLCAKQOm75LcXtqYX8TgjD+QK6WcYLU4GVa8
- You0IQkVun9fs+KoZLwlgDadL5rF/O1TlKnRu4isSFWCRiXqP/W9szt43ahLHFZR7QWV
- Pbt1JTvIZCx8xxvstCiHArrJocCU0X/k4gy+10o+ATreFXcw1VTxxuXGbVvdMsShrTl5
- 2dew==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nSu7d5PQ;
+       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=Ol0ORCGLTTuGNMRHjrIAOAqtx3daiObs8nq3fxwOcNM=;
+        b=nSu7d5PQzivLEqe9GLyI58sGSC+c4/nr9FoJRlSQL/URJ+/d1tzuMFlUHDh751Ibnr
+         TuvYBNcinysfWXV3l7ccigQoznczl/Goqh0+Rwvmko3bdZxKUECaQx0H/xr24gVhYFX8
+         6A1n6U8irBGKf08Ms+FXNs736swCn8mvDmD9AgNHl3+XTDKSCU3OWsE0NmH57wVF97Zl
+         jyHJoEDr3Jbp4XE/sswKlj2b9SzroC+bh+XNdn8JNIQ0VsZXS+neb7dZA8bHx/km83jN
+         ZhQ+o6DorX8miuy15g58k1kObZLlyHS6QNcpKeJ7jeKW/9BGEPi89Ny5BReyXEcXNhGj
+         V+uA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=i1QfDnXLF3pdgsHDH6l70vgoP0qLzQyf5+UWG7s+x5w=;
- b=XLI3j1FMAKTe6VuB9wIWPDBMOM99MmaohLNbV88dMN/rQTSGgyJ2ukjsoS/SoMaese
- EQcbyOabUXo3buxwvARWQJNkk0lvZamKMj7nkSMOyo91TodupOfj6/28/J7J/dOcumte
- pJZ8npsWttovtVG1DVUqr1TkbHw1+YT7d7NLTWSPkmwOz6Z0FD4nOUpSk881cDO3lx7Q
- wIfbG78lFjQoJ05J24AxBmqWoo/3YYTssBpDXH3WJxpulekNudynL8SHAz7B36BSLQS8
- pcZnKsV/I8pp1+oEkmXtQhyym21+QUuu4Ae0jkepmuVOPQnfrMpa9+Nw0dnor7wFxOxa
- lRGA==
-X-Gm-Message-State: AOAM532YDzxDjsOL0CNeHZKKaMIGzLd8h1uAT2rpsVIgnQ7SnUPLCC27
- aWG+LbxcFFQ49kZAB+AjsYvcu1aj45+PEkxXwZ0=
-X-Received: by 2002:a6b:dc11:: with SMTP id s17mr15582879ioc.42.1589820804960; 
- Mon, 18 May 2020 09:53:24 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=Ol0ORCGLTTuGNMRHjrIAOAqtx3daiObs8nq3fxwOcNM=;
+        b=eqkyC0gjxJtVffLloNKHFzBUXf6rY+NH7r9B6sDyOiXX3tDZn43cGmm/s4IJwWQe5r
+         9YSvjJlPVWEP7x18OOygVevNrlxYOCKPtDPuHX+O5d1t/R7BIRjuZsvYF1+Hrms7SdyW
+         BUQ4fbuAYWLeMKSHEBKjaKr0p9aE3riWh7SRupTcuchNa0EtNlwOYpqBtKN/Mb1IV9wx
+         yR81YBMJVdNNo1VMHrnuUUb7f8/SpzdXJ9jQFsygKdRsxLaDohc3hRo51RSS8G1157JD
+         q7l5Fz/wJE1fTLgHSQtz45OGLGwT9KNy+IVQeOXiBy5MX0EDahkC8Sx2ewlWBcsOAhbT
+         K1Kg==
+X-Gm-Message-State: AOAM530RlZJGLwZtJYkQzAK+4zqiHeQj/ZFAxH4c4ir3dSdxcznZ+ZAz
+	IpQiDhLN19ydDVMc3boD+G/iMvfQC1hwYq5jbf6qsFNL
+X-Google-Smtp-Source: ABdhPJwFXLE0/NAwksdqDOgpM2P+9Afs7WHw0wRXDp6XyaCC7/YsedlKzPh8y9jVqesoR/WPbnIx9mxgMLxJ+qZMvyE=
+X-Received: by 2002:a02:a118:: with SMTP id f24mr17042201jag.8.1589820942980;
+ Mon, 18 May 2020 09:55:42 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200518140309.5220-1-f4bug@amsat.org>
- <20200518140309.5220-5-f4bug@amsat.org>
-In-Reply-To: <20200518140309.5220-5-f4bug@amsat.org>
+References: <20200515170804.5707-1-philmd@redhat.com> <20200515170804.5707-6-philmd@redhat.com>
+In-Reply-To: <20200515170804.5707-6-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 18 May 2020 09:44:33 -0700
-Message-ID: <CAKmqyKONqrqs+4AyyA86zL35Jw3bKU44BCy7ZhmHb7XTj+Z0zA@mail.gmail.com>
-Subject: Re: [PATCH v2 4/4] hw/timer/exynos4210_mct: Replace hw_error() by
- qemu_log_mask()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Mon, 18 May 2020 09:46:52 -0700
+Message-ID: <CAKmqyKPAcizLC=wmNpmatpcxXtp9YcaruJGCC_=SpPgSYP-BHA@mail.gmail.com>
+Subject: Re: [PATCH v2 05/10] Makefile: Remove dangerous EOL trailing backslash
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Marek Vasut <marex@denx.de>, 
+	Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
+	"open list:RISC-V" <qemu-riscv@nongnu.org>, Sagar Karandikar <sagark@eecs.berkeley.edu>, 
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, Chris Wulff <crwulff@gmail.com>, 
+	Laurent Vivier <laurent@vivier.eu>, Max Filippov <jcmvbkbc@gmail.com>, 
+	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm <qemu-arm@nongnu.org>, 
+	Palmer Dabbelt <palmer@dabbelt.com>, Michael Walle <michael@walle.cc>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <Alistair.Francis@wdc.com>, 
+	Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m55bfbWIgyca
+X-TUID: FDAOkVPN+2iY
 
-On Mon, May 18, 2020 at 7:05 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
+On Fri, May 15, 2020 at 10:11 AM Philippe Mathieu-Daud=C3=A9
+<philmd@redhat.com> wrote:
 >
-> hw_error() calls exit(). This a bit overkill when we can log
-> the accesses as unimplemented or guest error.
+> One might get caught trying to understand unexpected Makefile
+> behavior. Trailing backslash can help to split very long lines,
+> but are rather dangerous when nothing follow. Preserve other
+> developers debugging time by removing this one.
 >
-> When fuzzing the devices, we don't want the whole process to
-> exit. Replace some hw_error() calls by qemu_log_mask().
->
-> Per the datasheet "Exynos 4412 RISC Microprocessor Rev 1.00"
-> Chapter 25 "Multi Core Timer (MCT)" figure 1 and table 4,
-> the default value on the APB bus is 0.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
 > ---
-> v2: Fixes -Wsometimes-uninitialized:
+>  Makefile | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> hw/timer/exynos4210_mct.c:1158:5: error: variable 'value' is used uniniti=
-alized whenever switch default is taken [-Werror,-Wsometimes-uninitialized]
->     default:
->     ^~~~~~~
-> hw/timer/exynos4210_mct.c:1163:12: note: uninitialized use occurs here
->     return value;
->            ^~~~~
-> hw/timer/exynos4210_mct.c:1063:19: note: initialize the variable 'value' =
-to silence this warning
->     uint32_t value;
->                   ^
->                    =3D 0
-> ---
->  hw/timer/exynos4210_mct.c | 12 +++++-------
->  1 file changed, 5 insertions(+), 7 deletions(-)
+> diff --git a/Makefile b/Makefile
+> index 34275f57c9..84453789f9 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -420,7 +420,7 @@ MINIKCONF_ARGS =3D \
 >
-> diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
-> index 570cf7075b..29a4b10676 100644
-> --- a/hw/timer/exynos4210_mct.c
-> +++ b/hw/timer/exynos4210_mct.c
-> @@ -54,7 +54,6 @@
+>  MINIKCONF_INPUTS =3D $(SRC_PATH)/Kconfig.host $(SRC_PATH)/hw/Kconfig
+>  MINIKCONF_DEPS =3D $(MINIKCONF_INPUTS) $(wildcard $(SRC_PATH)/hw/*/Kconf=
+ig)
+> -MINIKCONF =3D $(PYTHON) $(SRC_PATH)/scripts/minikconf.py \
+> +MINIKCONF =3D $(PYTHON) $(SRC_PATH)/scripts/minikconf.py
 >
->  #include "qemu/osdep.h"
->  #include "qemu/log.h"
-> -#include "hw/hw.h"
->  #include "hw/sysbus.h"
->  #include "migration/vmstate.h"
->  #include "qemu/timer.h"
-> @@ -62,7 +61,6 @@
->  #include "hw/ptimer.h"
->
->  #include "hw/arm/exynos4210.h"
-> -#include "hw/hw.h"
->  #include "hw/irq.h"
->
->  //#define DEBUG_MCT
-> @@ -1062,7 +1060,7 @@ static uint64_t exynos4210_mct_read(void *opaque, h=
-waddr offset,
->      int index;
->      int shift;
->      uint64_t count;
-> -    uint32_t value;
-> +    uint32_t value =3D 0;
->      int lt_i;
->
->      switch (offset) {
-> @@ -1158,8 +1156,8 @@ static uint64_t exynos4210_mct_read(void *opaque, h=
-waddr offset,
->          break;
->
->      default:
-> -        hw_error("exynos4210.mct: bad read offset "
-> -                TARGET_FMT_plx "\n", offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX =
-"\n",
-> +                      __func__, offset);
->          break;
->      }
->      return value;
-> @@ -1484,8 +1482,8 @@ static void exynos4210_mct_write(void *opaque, hwad=
-dr offset,
->          break;
->
->      default:
-> -        hw_error("exynos4210.mct: bad write offset "
-> -                TARGET_FMT_plx "\n", offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX =
-"\n",
-> +                      __func__, offset);
->          break;
->      }
->  }
+>  $(SUBDIR_DEVICES_MAK): %/config-devices.mak: default-configs/%.mak $(MIN=
+IKCONF_DEPS) $(BUILD_DIR)/config-host.mak
+>         $(call quiet-command, $(MINIKCONF) $(MINIKCONF_ARGS) > $@.tmp, "G=
+EN", "$@.tmp")
 > --
 > 2.21.3
 >

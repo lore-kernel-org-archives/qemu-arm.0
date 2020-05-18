@@ -1,103 +1,125 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2904324lfb;
-        Mon, 18 May 2020 03:31:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCdRaLyqmqFpidmTSNQhOC7WUpPjQzrOt436szkPZbM/jeTkoGDMHqXulweECIMqmGrSIs
-X-Received: by 2002:a37:9ec4:: with SMTP id h187mr15020676qke.72.1589797872920;
-        Mon, 18 May 2020 03:31:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589797872; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2933532lfb;
+        Mon, 18 May 2020 04:13:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwXWeWw6wBolxvxe0dBdL9q7VcpBU9w1so9g9iu+3v7Y4z4u5cPNStVE/Qar2hlyCeWmvdT
+X-Received: by 2002:aed:3f7b:: with SMTP id q56mr15661927qtf.152.1589800401681;
+        Mon, 18 May 2020 04:13:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589800401; cv=none;
         d=google.com; s=arc-20160816;
-        b=XS7d9EW0bZzoqGk3238t6ZAsFhIuCh2Uw0r0E52WCO2MIc3tiRqYM5xWHE+qv+BG6f
-         18UIV35Aip6QTD2nbeAK3RRAcEx4scW8m+v1nRe/CPJk4Pry4s+jGW7lykCsW04Y/p16
-         DliI5JWKriOlBnqkLB4vx638Zp+P++EryDFRiv/CFNX9S7d+U9qdP7ZNyC0vFpHe9B/p
-         o5gQFfKUE5F73WPnXv9DSEhsk8mOfCd0cRVCqRC1IbasgAryOEHVW/zKmLrovfSMkPbj
-         TaW5Ma8Sb7Emn42f1y0cPqqIknq1FH/vUPYQhEPWFvCnMRxEV2jQXiasXF8TYtfndqEb
-         QTuQ==
+        b=cReegIOp8VJLkPMAwpNiiuyzt90vJQV80fGUFcxXbYzplY8l1G269qvTLoFEcmGZqs
+         9Q0/mOPE0c0GQsjvPvUqPHCFgqFWSt80kLMRHkuDip5qd79wHQ/H+QKvmj91WvXSj9N7
+         qA9DV5hEMDUl/FDDaKzLuR+EhJ2bU6wTVbw9SVy2Tf2kMal9Ds8ine20QDRhDItxo21o
+         oUdsNLKuI1slb4xZ+etLBp9kNYNdRwEtRkkp/x3mAdYkVZqqclEsv+MeZQDP3nw78YRB
+         ohDhUp6eeXDShwQNZddULHzf/pYUkvegb/9BhDqi78P4aUsa/g9wNnN780F2Ry/9MBbU
+         s4Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=o/GPKSYYNOf5fJUKvBnddpNIXiQERov0ePibcKwRAYE=;
-        b=R2djWh+JAU3w5jgsk870D+OXtB+wr7SSUmLVXnPw3op6cnlOQD4rdzlrfKRA3bjD8v
-         EiPDA0lmkIAub5Wgrhgk7AKLD6VVNu65SOU7bXFW9g37+sur5SB0SLvhhBNyHY038308
-         tNsYtB9oKotNTZenJIH0ziKCx8+hleleYi23eph+jBFKymTwh2i2e2wIqgjsWOtooOFB
-         dE9ERVXJ2kxA1CJVmahbH6sFn/KLlTzoZhW+z4jgxFMHFqNzIb6mBIC1RtWMAFdGL5N6
-         jV6qe3DYzs44IhyQFEVz2wmbXoSeXBxEQED9XLQKSYGk05+tagft2Rf+c9S2+Cg4ehrx
-         ujeg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=UCfIlQydaij2SjlGv4c506nsNsyE9ecXqfPWb2n/UtA=;
+        b=K9nm6ToSd212dY1V6XPhHIm1ARGWezvyBWf3rmomwPwuvuneI3pTRWHKS2L6f99ieL
+         Vb21VHhB2Gq6wqR51Qwpo1V2tkTfL+j+3sbi2tgc3TwfDG002zNrCKYxLGWEYLsIejPE
+         FrIunp0M419zLcGR9m/PKsKSCnvNlXcfhK3MsV6b1h/fXMtR5gpiQ/dh+/wbIGyImoMv
+         S2Sm/h0LpbICstkGIPLuLaSkbkdRPEDpRE8h1RANKEFAudQGKKgA9Dejgg9h61Xk3e4m
+         7SIOu7wyiSljojCFqYcP8+7RRdXCrkFE+pPlNeKaw3piCWwXAOSzgR/yPNuNcboFfglK
+         wuhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=esvvk8uE;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OZDqc7sK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f5si5056380qka.277.2020.05.18.03.31.12
+        by mx.google.com with ESMTPS id n9si5331548qvx.50.2020.05.18.04.13.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 May 2020 03:31:12 -0700 (PDT)
+        Mon, 18 May 2020 04:13:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=esvvk8uE;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OZDqc7sK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53406 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41534 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jad3A-0001Ob-CE
-	for alex.bennee@linaro.org; Mon, 18 May 2020 06:31:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60564)
+	id 1jadhx-0006XO-6D
+	for alex.bennee@linaro.org; Mon, 18 May 2020 07:13:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38906)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jad2s-0001NA-R2
- for qemu-arm@nongnu.org; Mon, 18 May 2020 06:30:55 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:36005)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jad2q-0002Nu-EL
- for qemu-arm@nongnu.org; Mon, 18 May 2020 06:30:54 -0400
-Received: by mail-ot1-x341.google.com with SMTP id h7so621630otr.3
- for <qemu-arm@nongnu.org>; Mon, 18 May 2020 03:30:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=o/GPKSYYNOf5fJUKvBnddpNIXiQERov0ePibcKwRAYE=;
- b=esvvk8uEE7eNEISZBQqwfRKzzMVqGxhNzrzureWb1rM13fbgpVmtOykXSRAN3NbM6g
- 3m6ZgGJ3DbZwK5pJy8JtN4ddo1lUN+pRz4hyRllAKHXN1kRi6r84ewHgoZSrLcubzIXp
- rJhLDSm4jOK433VsnUjexKE3zl79/DEx2wR3o55pJ6aE53CYUIJogVsrRXECFZlgojB4
- TWC4/pgcamfvFF7qyaulB/KFdGEK4jxfSt6RGjT0JiDlssr9e/r85eA8j2hwnHoE6GOj
- s90pZ8bK4Sc55JvKh76OYZ3GO2bjrmi82K+myep1hjw5mE+oEiN0o/qs77rBoOjXwhdK
- Fg5A==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jadhq-0006X5-Si
+ for qemu-arm@nongnu.org; Mon, 18 May 2020 07:13:14 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20585
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jadhp-0005hK-IT
+ for qemu-arm@nongnu.org; Mon, 18 May 2020 07:13:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1589800392;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=UCfIlQydaij2SjlGv4c506nsNsyE9ecXqfPWb2n/UtA=;
+ b=OZDqc7sKTKwj3jYv+D0fRp1rumE0nMTid8vs3ODPwj2ANiSuNXp2E09OJBjAN21N/kOLaJ
+ 8/3qn+IYEfSlZWR6FfSbxRsezOjdbMCF+vOjufsUgQ7nEqI7kmWBo+RGb2cb6lTSWs19Ej
+ 6iVRPnKH8xAUHnmtRcZEb45BMW1xELw=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-446-O0Fs0OCBOIezTo92tjyPhg-1; Mon, 18 May 2020 07:13:08 -0400
+X-MC-Unique: O0Fs0OCBOIezTo92tjyPhg-1
+Received: by mail-wr1-f70.google.com with SMTP id g10so5510781wrr.10
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2020 04:13:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=o/GPKSYYNOf5fJUKvBnddpNIXiQERov0ePibcKwRAYE=;
- b=uDdRIzkU3vdTztYPqY6fhNaekSiV36gwLouCapwSQxUDtnzSht2lVxjozIe9EsrUGo
- bsSzSGtTpqzKHmDcTDX6JVX1OtQfPnSh8qkozPcr46Dv2dJFGFMBbvjkYERZo6lyQ5bK
- YQAW+vEFt36WSUErsu3Gts+o35JnoXLhj1LhC8b721vYXCxXK/8mPJ/KZejdAki9Ct5Y
- vamn2Y6daJppvQ7HPH4D4GihOKCoZRuYENyPgOeO86Jkpyd8W9wm+Kh/6DMrbLT6ye+T
- n22ql8UONinQsJ8aPT6IhtAAuDlyzb/EKPi4ewYOoBUWnvJSGkEG/nNldo3sRAzYaTnS
- Q0ew==
-X-Gm-Message-State: AOAM531+m2Hn0pxFuuxkgkzELKQxasunZw77+iKnh4SYpemFqyCtJxDr
- ZRdidrYodrb/VCQhCaHe9BTDfvIX29Lah8RrgTY6Tw==
-X-Received: by 2002:a9d:3623:: with SMTP id w32mr9904865otb.91.1589797851126; 
- Mon, 18 May 2020 03:30:51 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200518050408.4579-1-armbru@redhat.com>
- <20200518050408.4579-3-armbru@redhat.com>
-In-Reply-To: <20200518050408.4579-3-armbru@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 May 2020 11:30:40 +0100
-Message-ID: <CAFEAcA-FKUHyG=bgJqPG49WZDXV8JGQqqZXOw49C8_h9mYS5iA@mail.gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=UCfIlQydaij2SjlGv4c506nsNsyE9ecXqfPWb2n/UtA=;
+ b=QyHSNFkjWilHC1k4ZV73G8ogy+cB4kmcjtrxvIU7y/2HJfIUELCLJuoPzbbGd4CSxc
+ 4CGJO8tC6ezyqKlp+a4ndqqj/M+rRiuV68Hncf1Gv0zm9QCMUWAck6W/oric0S9oOW0W
+ q+8ck9Ni5pXEE7Y7PGv3MsGC3cDbb4krpLTW1rBEp7Y3wremsqmewCrsmCRE17BTH0G6
+ VyZuKTFvBWNgvUgjjkftMiXHkgcA3oHrjq2d31uhm9PiGhePnF8/b1gCmGjKMAPdLeL+
+ mW5Yq7ekwCc9VE9nJjP7TJEWbvkQwrOnr3XgoCalXqe3yTMe3g2vFWk892NKMFwnAhaK
+ tXzw==
+X-Gm-Message-State: AOAM532345T4lj0yYVYwyCaF6lWvFC7ZN9KnJqa7J1lVihOriR1YbjgF
+ R3g+crbHFPHM1F9QGkk6pbknnXhbR77CO8NEPrNjYrF3p47xd1M/d2QkiaEKRkGbWXw2Bn6VMR+
+ 5OoQWkVBD3GsU
+X-Received: by 2002:a5d:6286:: with SMTP id k6mr14874038wru.123.1589800387251; 
+ Mon, 18 May 2020 04:13:07 -0700 (PDT)
+X-Received: by 2002:a5d:6286:: with SMTP id k6mr14873993wru.123.1589800386906; 
+ Mon, 18 May 2020 04:13:06 -0700 (PDT)
+Received: from [192.168.1.38] (17.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.17])
+ by smtp.gmail.com with ESMTPSA id f127sm16757511wmf.17.2020.05.18.04.13.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 18 May 2020 04:13:06 -0700 (PDT)
 Subject: Re: [PATCH 02/24] display/xlnx_dp: Fix to realize "i2c-ddc" and
  "aux-to-i2c-bridge"
-To: Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>
+References: <20200518050408.4579-1-armbru@redhat.com>
+ <20200518050408.4579-3-armbru@redhat.com>
+ <CAFEAcA-FKUHyG=bgJqPG49WZDXV8JGQqqZXOw49C8_h9mYS5iA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <8daeec76-0851-54a3-d84b-67a6019eef85@redhat.com>
+Date: Mon, 18 May 2020 13:13:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-FKUHyG=bgJqPG49WZDXV8JGQqqZXOw49C8_h9mYS5iA@mail.gmail.com>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=philmd@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/17 22:51:00
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -120,28 +142,35 @@ Cc: "Daniel P. Berrange" <berrange@redhat.com>,
  KONRAD Frederic <fred.konrad@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /iGHKAvuaSvL
+X-TUID: oG/ec0YQlUvU
 
-On Mon, 18 May 2020 at 06:04, Markus Armbruster <armbru@redhat.com> wrote:
->
-> xlnx_dp_init() creates these two devices, but they're never realized.
-> Affects machine xlnx-zcu102.
->
-> I wonder how this ever worked.  If the "device becomes real only on
-> realize" thing actually works, then we've always been missing these
-> two devices, yet nobody noticed.
+On 5/18/20 12:30 PM, Peter Maydell wrote:
+> On Mon, 18 May 2020 at 06:04, Markus Armbruster <armbru@redhat.com> wrote:
+>>
+>> xlnx_dp_init() creates these two devices, but they're never realized.
+>> Affects machine xlnx-zcu102.
+>>
+>> I wonder how this ever worked.  If the "device becomes real only on
+>> realize" thing actually works, then we've always been missing these
+>> two devices, yet nobody noticed.
+> 
+> It depends entirely on the implementation of the device.
+> If it happens to do nothing in the realize method that
+> matters (eg i2c-ddc has no realize method and does the limited
+> amount of initialization it needs in instance_init) then the
+> device will (by lucky accident) work just fine.
+> 
+> We should really ideally have an assert() in the DeviceClass
+> reset that the device was realized, so we can keep this kind
+> of bug out of the codebase. (Last time I looked it wasn't obvious
+> exactly where to put the assert now that we have both legacy-reset
+> and three-phase-reset, unfortunately.)
 
-It depends entirely on the implementation of the device.
-If it happens to do nothing in the realize method that
-matters (eg i2c-ddc has no realize method and does the limited
-amount of initialization it needs in instance_init) then the
-device will (by lucky accident) work just fine.
+Your wish came true in the last patch of this series! #24:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg704239.html
 
-We should really ideally have an assert() in the DeviceClass
-reset that the device was realized, so we can keep this kind
-of bug out of the codebase. (Last time I looked it wasn't obvious
-exactly where to put the assert now that we have both legacy-reset
-and three-phase-reset, unfortunately.)
+> 
+> thanks
+> -- PMM
+> 
 
-thanks
--- PMM

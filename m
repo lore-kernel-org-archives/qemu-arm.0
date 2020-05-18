@@ -1,121 +1,210 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp840419lfm;
-        Wed, 1 Jul 2020 13:47:20 -0700 (PDT)
-X-Received: by 2002:a54:408e:: with SMTP id i14mr10150507oii.175.1593636440288;
-        Wed, 01 Jul 2020 13:47:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593636440; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2702628lfb;
+        Sun, 17 May 2020 22:04:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwyxlKQLkq4tcWARgcGk7bFVvlwY0Wlg7E+pIiROCGhKGzFbkjzYsodCZHcLLwgL+zABQih
+X-Received: by 2002:a37:a351:: with SMTP id m78mr14911021qke.265.1589778270978;
+        Sun, 17 May 2020 22:04:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589778270; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZeHNFWkJQBwfeDBz6pHSpxk+ueRBS0AoKtw4JJn2+UBUaX65vXuOnnNVptHHAJLJ8Q
-         1uAp28SwZRGWFiWWcdMLO4YPTgv7+ysCDDmeT/w6J8Jmz2lFtKInf0bOhwHYfhLUF+U7
-         yfk/2DwYVzvohpkpIRyZx/gRdZQI1QC2DGxO6uqOgDCH3rdqeCfMAUcXu9c/YProHH5t
-         3gvO7GUxYvNhqU6/5qssfnEwH+fXvhguwpqbcVj3jNW4xnwVOGLtcm8Ze54/3OG19Bw3
-         QmZSjwa2xWBhAy4Vpv8XzczSJr+CbM2f09aZ8/pOPxNUyb7e0lxz72lPL4SFpRzaFRBI
-         mxvQ==
+        b=kxoaV54Dn6TxWn3RK12LUeSYMnmxgjwa+ttm7x+NDWZpWeMZ2Zo7/NlZc6ftm7wE6x
+         Rcwb0EKX/AuXh8nDU8gyYVO2NWcSRLjo41GwTyJ2Oit5Qg2bTDiOTzBjWN55N3zossqG
+         GCYPicElhKcy6GZUaHxcK3GG+jnPAggTjNrgx9/N4L3mvblgnZxNZ90b4rWAlqcP+5d9
+         0rRqA1z6819en1nhPU6I+iaUrxYFl4EY0n5azuZcevRNVWz7RBX0o17CmtcXkbukll17
+         VqGpqxf+kqvxnf8dImMkbPrFYMnxwFA/9JaKkJpP8qQzgGEuG2jJKalqUCDbdzE1oAXf
+         9pnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=NS99qhyL/fdn4mBR75hJsxF0sNVyQqI7PaTGFtqZkfA=;
-        b=m/4+izJmbFItqopi9YfWTNp1cQ6yoLA9zgh34ST2oVmm3KMJuUjALiJ5PugIZmc+Ku
-         VuLeThQxhcq3Lq18Cdt8EFvLQj8TMYRyquuOt5jfIMxEhlFAMbtt6hdyKlWy/pFhmDJ/
-         tPrGHNdnyfRzda1rgsOCPj/uj1btXbb4YkIMwq6fLwWmyhj6Wfhnf4zdVM4hzgada8Sq
-         buA+ifLpnRvkb8arNUIrkt5s1IC/Og8dtfCs+NBjjmwZh2olFPfctXqteI2a2s1UF3Gv
-         I4DO7MGOVm7Oz2yk0us3zjW4fVEyR56l+9dZdqcw0U7YUmkQQ43yb0yuXTIpKfrGdMYT
-         89gw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=eXVMvm1PxSB5tcsPFS9fnNgDrjSKRPK4CNQ0NUGIpCA=;
+        b=Es602SSkcXgDXM2rndGDYpf630lfAdcqZRgfc6GOVuWxYLE51JEuexEYLgnmEblcOh
+         ZNg0j0AAYdzqn8knGM0DFkHCB37kCMhKN7rp1GX3m4JpgX+84zgouYaoKkhxGrV7ffnz
+         21KzEusimKE6Qu/TDxo5woq7j3khrdSmh7mkGbNigFE0DFBA9n8oANpFTN2WXl6PAGxT
+         OQ4Be4SvpgJUwtfS5I0Kq3D7pJgPhWxBwmEQD/sBqojeMzXyWIY/ewFKu4BeyJS857ay
+         BbS76ypxZmPZt7i9KPQlTsQXGo1G0pEu9BN89u9gY27aAxF5b/eKvqG4GdRzyxoDLS0R
+         LCuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B+jY0ppJ;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id k71sor4052995otk.100.2020.07.01.13.47.19
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EGhWge9B;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p21si5315170qtf.143.2020.05.17.22.04.30
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 01 Jul 2020 13:47:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 17 May 2020 22:04:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B+jY0ppJ;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=NS99qhyL/fdn4mBR75hJsxF0sNVyQqI7PaTGFtqZkfA=;
-        b=B+jY0ppJQkHbJxcziqEhjiUqZmmFJgHsUhPYe45EHt+08bM0N1zgvNCCf46Y/tJAIu
-         G4JvY9uGrW3W+XBDXdruy5rVALEZHeWvgQvsQUnTRucgzkkN9Gc7eGviQkWJBmDdg48G
-         xhv1QUdKQn+UD1RPlprqIKuQZbze5HC4YnfiAHdArk1OWOz6eCxZ+URFhwbyMi12lUxc
-         OQwP70/2HWXR0NXW6HNJ1vTLF5yD7y55Sup+XIw6/KHVH+eryh9FSwTcCusA7rjooEeC
-         SkjVR2rXNrtQLicl+43So0KO9hkyqIrAR9Qx4bYzPXdZpzlVMTQceHW9KvIx9FLpPOcW
-         5kpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=NS99qhyL/fdn4mBR75hJsxF0sNVyQqI7PaTGFtqZkfA=;
-        b=SzlcQ9kj+iCJVmEaeWEdXiThQp/5coF+t8eD7+kQcLPLqNhaTo9ubALB9Ij/+Iu7wr
-         9ZRPpMuOJ0qBGZi4v/u1kxg8/D2mHWXNVnYjY5PgvMngtou/WBEFc9puBi0iKTjp4W0F
-         oHl/MJTcd8WZAQJmMBBFNeO4ns7v65mHCKMvZhEAUSZDkG2xiRTke2EL50CvAMLAIl9D
-         2mpMX5bOpvlOT38s4zvbe1VvG4RBiiQoX8ODpNkboWsaXkJw55I8EKDBLoyRaw91TqC0
-         Kur0qrAfuDfGFNwv7vXICznAqPFxd5BI5L5aFg0vA9a/SMe0YfIKUbHvuJiq2SQu44zl
-         R4Fw==
-X-Gm-Message-State: AOAM530rgAqv1Erd/qyxBPTH0x1GNgkOV4A8A9O5UD8hlqbVugLZWGT3
-	6Q0YMjsHNvYaPuR8YoFQqT6Pk05gG54K5MnyD1fz0ejwnbt3LQZ3
-X-Google-Smtp-Source: ABdhPJwaN8ZebAef5emBG204pfVdkXZqfjiPamo/sGFafI237deS+C9vAj+UbJs84M/rQxjTRESXSny+yF78fazKevE=
-X-Received: by 2002:a05:6830:10ce:: with SMTP id z14mr16178878oto.135.1593636439510;
- Wed, 01 Jul 2020 13:47:19 -0700 (PDT)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EGhWge9B;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34050 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jaXx0-0008PM-Cz
+	for alex.bennee@linaro.org; Mon, 18 May 2020 01:04:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49180)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jaXwn-0008MM-OT
+ for qemu-arm@nongnu.org; Mon, 18 May 2020 01:04:17 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:49646
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jaXwl-0004Jq-Dp
+ for qemu-arm@nongnu.org; Mon, 18 May 2020 01:04:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1589778254;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=eXVMvm1PxSB5tcsPFS9fnNgDrjSKRPK4CNQ0NUGIpCA=;
+ b=EGhWge9BRo+X/7iaGeiK580FPPLYJoxHLLGSzdr4UYUooSEpyntMA40u2Rv9xS+e/2A4wT
+ Epv13FOnJd8GUkQAD2MZusIuW65mErGheRzKf1qvoDpK6XRuxkqdW0KJHUGHBqk+9+W5np
+ mODS3zUXmwiBDtDV9p04ELLTHfqG4Dw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-386-MaCBv4BTPiqywP1AHwcE_w-1; Mon, 18 May 2020 01:04:11 -0400
+X-MC-Unique: MaCBv4BTPiqywP1AHwcE_w-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EB7051005512;
+ Mon, 18 May 2020 05:04:09 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-32.ams2.redhat.com
+ [10.36.112.32])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B8DDC5F7EA;
+ Mon, 18 May 2020 05:04:09 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 1829911358BD; Mon, 18 May 2020 07:04:08 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 01/24] arm/stm32f405: Fix realization of "stm32f2xx-adc"
+ devices
+Date: Mon, 18 May 2020 07:03:45 +0200
+Message-Id: <20200518050408.4579-2-armbru@redhat.com>
+In-Reply-To: <20200518050408.4579-1-armbru@redhat.com>
+References: <20200518050408.4579-1-armbru@redhat.com>
 MIME-Version: 1.0
-References: <20200701200848.26746-1-agraf@csgraf.de>
-In-Reply-To: <20200701200848.26746-1-agraf@csgraf.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 1 Jul 2020 21:47:08 +0100
-Message-ID: <CAFEAcA9S5v0LHMNc4fu9JGUzecbg8DsogZuCEv_aGNqVxRAcDQ@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Treat unknown SMC calls as NOP
-To: Alexander Graf <agraf@csgraf.de>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: vkRWKJOhm9Fg
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/17 23:32:08
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
+ ehabkost@redhat.com, Alistair Francis <alistair@alistair23.me>,
+ qemu-arm@nongnu.org, pbonzini@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zwf2HYIVuvsC
 
-On Wed, 1 Jul 2020 at 21:08, Alexander Graf <agraf@csgraf.de> wrote:
->
-> We currently treat unknown SMC calls as UNDEF. This behavior is different
-> from KVM, which treats them as NOP.
->
-> Unfortunately, the UNDEF exception breaks running Windows for ARM in QEMU,
-> as that probes an OEM SMCCC call on boot, but does not expect to receive
-> an UNDEF exception as response.
->
-> So instead, let's follow the KVM path and ignore SMC calls that we don't
-> handle. This fixes booting the Windows 10 for ARM preview in TCG for me.
->
-> Signed-off-by: Alexander Graf <agraf@csgraf.de>
+stm32f405_soc_initfn() creates six such devices, but
+stm32f405_soc_realize() realizes only one.  Affects machine
+netduinoplus2.
 
-> +    if (cs->exception_index == EXCP_SMC &&
-> +        !arm_feature(env, ARM_FEATURE_EL3) &&
-> +        cpu->psci_conduit != QEMU_PSCI_CONDUIT_SMC) {
+I wonder how this ever worked.  If the "device becomes real only on
+realize" thing actually works, then we've always been missing five of
+six such devices, yet nobody noticed.
 
-This condition says: "we got an SMC, and this CPU doesn't
-have EL3, and we're not imitating real EL3 firmware".
-The architecturally correct behaviour here (since we don't
-implement nested-virt yet, which might allow it to trap
-to guest EL2) is to UNDEF, as far as I can see from a quick
-look at the AArch64.CheckForSMCUndefOrTrap().
+Fix stm32f405_soc_realize() to realize all six.  Visible in "info
+qtree":
 
-I'm not sure why KVM makes these NOP; if I'm right about the
-architectural behaviour then making them NOP would be a KVM bug.
+     bus: main-system-bus
+       type System
+       dev: stm32f405-soc, id ""
+         cpu-type = "cortex-m4-arm-cpu"
+       dev: stm32f2xx-adc, id ""
+         gpio-out "sysbus-irq" 1
+    -    mmio ffffffffffffffff/00000000000000ff
+    +    mmio 0000000040012000/00000000000000ff
+       dev: stm32f2xx-adc, id ""
+         gpio-out "sysbus-irq" 1
+    -    mmio ffffffffffffffff/00000000000000ff
+    +    mmio 0000000040012000/00000000000000ff
+       dev: stm32f2xx-adc, id ""
+         gpio-out "sysbus-irq" 1
+    -    mmio ffffffffffffffff/00000000000000ff
+    +    mmio 0000000040012000/00000000000000ff
+       dev: stm32f2xx-adc, id ""
+         gpio-out "sysbus-irq" 1
+    -    mmio ffffffffffffffff/00000000000000ff
+    +    mmio 0000000040012000/00000000000000ff
+       dev: stm32f2xx-adc, id ""
+         gpio-out "sysbus-irq" 1
+         mmio 0000000040012000/00000000000000ff
+       dev: stm32f2xx-adc, id ""
+         gpio-out "sysbus-irq" 1
+    -    mmio ffffffffffffffff/00000000000000ff
+    +    mmio 0000000040012000/00000000000000ff
+       dev: armv7m, id ""
 
-If Windows makes an SMC call on boot that seems like a guest
-bug: it would crash on a real CPU without EL2/EL3 as well.
+The mmio addresses look suspicious.
 
-      *  Conduit SMC, valid call  Trap to EL2         PSCI Call
-      *  Conduit SMC, inval call  Trap to EL2         Undef insn
--     *  Conduit not SMC          Undef insn          Undef insn
-+     *  Conduit not SMC          nop                 nop
+Fixes: 529fc5fd3e18ace8f739afd02dc0953354f39442
+Cc: Alistair Francis <alistair@alistair23.me>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ hw/arm/stm32f405_soc.c | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
 
-The line in this table that your commit message says you're
-fixing is "Conduit SMC, inval call"; the line your code
-change affects is "Conduit not SMC", which is not the same
-thing. (I'd have to look at the PSCI spec to see what it
-requires for SMCs that aren't valid PSCI calls.)
+diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
+index 4f10ce6176..4649502711 100644
+--- a/hw/arm/stm32f405_soc.c
++++ b/hw/arm/stm32f405_soc.c
+@@ -185,16 +185,18 @@ static void stm32f405_soc_realize(DeviceState *dev_soc, Error **errp)
+     qdev_connect_gpio_out(DEVICE(&s->adc_irqs), 0,
+                           qdev_get_gpio_in(armv7m, ADC_IRQ));
+ 
+-    dev = DEVICE(&(s->adc[i]));
+-    object_property_set_bool(OBJECT(&s->adc[i]), true, "realized", &err);
+-    if (err != NULL) {
+-        error_propagate(errp, err);
+-        return;
++    for (i = 0; i < STM_NUM_ADCS; i++) {
++        dev = DEVICE(&(s->adc[i]));
++        object_property_set_bool(OBJECT(&s->adc[i]), true, "realized", &err);
++        if (err != NULL) {
++            error_propagate(errp, err);
++            return;
++        }
++        busdev = SYS_BUS_DEVICE(dev);
++        sysbus_mmio_map(busdev, 0, ADC_ADDR);
++        sysbus_connect_irq(busdev, 0,
++                           qdev_get_gpio_in(DEVICE(&s->adc_irqs), i));
+     }
+-    busdev = SYS_BUS_DEVICE(dev);
+-    sysbus_mmio_map(busdev, 0, ADC_ADDR);
+-    sysbus_connect_irq(busdev, 0,
+-                       qdev_get_gpio_in(DEVICE(&s->adc_irqs), i));
+ 
+     /* SPI devices */
+     for (i = 0; i < STM_NUM_SPIS; i++) {
+-- 
+2.21.1
 
-thanks
--- PMM

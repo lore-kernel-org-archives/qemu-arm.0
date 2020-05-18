@@ -1,243 +1,125 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3005677lfb;
-        Mon, 18 May 2020 05:51:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx+rrIrLSw4Bgd7GR5JkYsfvzQBf3VeoWgGnygiristP1ZKAP+vWIDqwICIcBvGsSO30Gja
-X-Received: by 2002:a05:6214:18ec:: with SMTP id ep12mr9328968qvb.216.1589806266962;
-        Mon, 18 May 2020 05:51:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589806266; cv=none;
-        d=google.com; s=arc-20160816;
-        b=BZItVMAzsWDr1tYmzTsGD9FkK+JYypGankgeigt9JdrhlZ/Pi2vVgOiK83Fkw245aH
-         MUPyB7v/7Q1R39TEB5/VNvK320Ij8Zdsqu6EY3mNCqOUtuKhqoAZNlfL/oLmxQ0jfihc
-         d9/jUXVv9v4GAUL3DBXNjUg2O63c6Y0w0kt5YczEkkIlZKoi1ZGGGftqIuAQImUPyTVQ
-         XeJRaNUlqST6XA+K8IIc2Qjbzsu/+CIsHzgGpnLCWCaGWzJQVUGiEvBVhndD3iPs0I3l
-         O32wLegQe/L0aI28+f8CaFbkmBIPkIDT1UC7jrUbCzlgWCcd3d1qkY7GtJnJROuCpsPf
-         8gpQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=qtV5b4Z/XtezT8P8ZBmElN4tH8V6CxN5eoS0EIqEjTE=;
-        b=zSk+Ozxb+X/A+2tj+4lobRdBM6lxzEn10O3hXGyJEmEDjOpk9Vy1lwTZEudnca2Phs
-         q/wkxoEe5YV2dw7x7SETScAMzReFLHsfO6a+pmPoqAjn3jwQD+NNieaCrYH0gdBnSik+
-         NXHhriXHQjemLnWKsxd8Gy6iE9kOF9R7PFkFwKuSh5vkUy20B4uIGYO/3i5kHI6B9u0y
-         vLMnLOlPWs5Oew1Z2gXnnpHTazNNsv9qCZMrOZlQcQU/SFUHVhEZ1LcTz0vHaloAnrl1
-         D9wAx148XFrW30d36nWfrn/5+/TNubG4ArUOzAs+fgVpeqeINFV1c+rgkLHFqUCSZm0V
-         xz6Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g8HmA0m+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3013601lfb;
+        Mon, 18 May 2020 06:01:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyXe0f/YVM5KuRRD1wLkaWfMj6ifFex5W+zW3gleomUgsj/77cBxsvQvJ85QscAZGkOiwgo
+X-Received: by 2002:a37:c20a:: with SMTP id i10mr15481023qkm.29.1589806913627;
+        Mon, 18 May 2020 06:01:53 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k20si5827399qtu.115.2020.05.18.05.51.06
+        by mx.google.com with ESMTPS id dg11si3139427qvb.166.2020.05.18.06.01.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 May 2020 05:51:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 May 2020 06:01:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g8HmA0m+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59424 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45062 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jafEY-0000jB-9t
-	for alex.bennee@linaro.org; Mon, 18 May 2020 08:51:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53732)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jafOy-0007Hn-VB
+	for alex.bennee@linaro.org; Mon, 18 May 2020 09:01:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55544)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jafDM-0008BN-CQ
- for qemu-devel@nongnu.org; Mon, 18 May 2020 08:49:52 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:32231
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jafOr-0007F2-UU; Mon, 18 May 2020 09:01:45 -0400
+Resent-Date: Mon, 18 May 2020 09:01:45 -0400
+Resent-Message-Id: <E1jafOr-0007F2-UU@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21383)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jafDL-0006kF-FU
- for qemu-devel@nongnu.org; Mon, 18 May 2020 08:49:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589806190;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qtV5b4Z/XtezT8P8ZBmElN4tH8V6CxN5eoS0EIqEjTE=;
- b=g8HmA0m+M8GIKpk3hbmeD0cA8/jKN8jqWMe0TR08IecQGyl11YBBU9Ppc7Hi/UXvm52y74
- DxzE8sVizkxXrA7P6Um4QfoHJQ/aFC1h5my/6ki9IbYQJpOThfiB8Ja2e/g5hwIi5z5mBE
- G4yQXCFuDxQoixn8U90s85ItdQNDbvg=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-369-YxMtbU78MwWhUavXdb_ogg-1; Mon, 18 May 2020 08:49:49 -0400
-X-MC-Unique: YxMtbU78MwWhUavXdb_ogg-1
-Received: by mail-wr1-f71.google.com with SMTP id z8so5570061wrp.7
- for <qemu-devel@nongnu.org>; Mon, 18 May 2020 05:49:48 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=qtV5b4Z/XtezT8P8ZBmElN4tH8V6CxN5eoS0EIqEjTE=;
- b=HwQ6YmmzLMWf0gIEU5OKiEkRHHAR28suNLRwMu7I4Rt7BxQ21ZgE2e+j5W4j6XXSg5
- jAwq56j/XftA8fu1zKTuT5AUmf961iifbKWF9tpQvv8uPp3z7X1A+40Zc4WF5opsVddF
- ERLasswWnfvDJwztyCPKO1JsMPvKhPcBJLq36LGeHVn5qFZtshiFn2IKk/0n6yYbiHXX
- qSzdWMjQ9UiKB0j1p+pIhrJcuENtmpM/GMLP0b479kwLSWHD/hu55DtDhCHpI7SBvP1f
- 48liSF9MQHvWQaYFLIhH7F0bj5BYOCb43EEQvdSCHwxzM1NQqRktUxFn+bIvfVoML+ug
- NtKw==
-X-Gm-Message-State: AOAM533xkJ/sicGqvdhga4Uws41AFgy8HpqPOTdaMfofH35Bv1OUMrCO
- Pw/m6uqCjSnZjSSjWL4aV6h4oljMio00xctea2psrKkV7BYQf8ANUxQX1RNbGUOuaX2LNFk9ToY
- 7/n2y3ksOBxAr7Jw=
-X-Received: by 2002:a1c:2943:: with SMTP id p64mr3612188wmp.42.1589806187898; 
- Mon, 18 May 2020 05:49:47 -0700 (PDT)
-X-Received: by 2002:a1c:2943:: with SMTP id p64mr3612153wmp.42.1589806187646; 
- Mon, 18 May 2020 05:49:47 -0700 (PDT)
-Received: from [192.168.178.58] ([151.30.90.67])
- by smtp.gmail.com with ESMTPSA id e22sm16814111wrc.41.2020.05.18.05.49.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 May 2020 05:49:47 -0700 (PDT)
-Subject: Re: [PATCH] hw: Use QEMU_IS_ALIGNED() on parallel flash block size
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <20200511205246.24621-1-philmd@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <60f129c2-499d-01e1-e0ee-9fd6ac759736@redhat.com>
-Date: Mon, 18 May 2020 14:49:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jafOp-0000zB-8J; Mon, 18 May 2020 09:01:45 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1589806887; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=kRtFHpOdjE76jfZaVq/0JC+28KtsPE7oZ95CeyEQdK+UVhGeyaIV1t8ZfvCcMkLCA/NGV6SQALqqUUMDuMHEnjUK0zD2A1kSv3ID+ecFTL4ppcB8WYGdMVDqZRDMAiqkZ6nzlYRGIWoOcWCslDBYiBQud1rGCNRLeIpplIgQSEk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1589806887;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=Jt15/qc+kCAmLUKTh2InF5KY2TxP533zLp/PDPkfuMw=; 
+ b=hvK1c1yC5fb43N0LnVsiQtCwEgZ68Pd4HacShnQa4CA0iBUQNXFF+JHL4BYOleLZVRyQuFG5v636v3+uj3G/3z9tCu+pQNQ/o+IB3baoTNs3UCl2n+V3OvHE5EDvl2Jdg/wV20h0MZkgLFZN/sqKM4jrNe71VLsHLCz++UQKah8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1589806884987715.5984974737307;
+ Mon, 18 May 2020 06:01:24 -0700 (PDT)
+Message-ID: <158980688319.15373.2806704576300550846@45ef0f9c86ae>
+In-Reply-To: <20200518095203.1013-1-f4bug@amsat.org>
+Subject: Re: [PATCH 0/4] hw/arm: Replace hw_error() by qemu_log_mask()
 MIME-Version: 1.0
-In-Reply-To: <20200511205246.24621-1-philmd@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/17 22:52:27
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: f4bug@amsat.org
+Date: Mon, 18 May 2020 06:01:24 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/18 08:50:08
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>, qemu-riscv@nongnu.org,
- qemu-block@nongnu.org, Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Eduardo Habkost <ehabkost@redhat.com>, Max Reitz <mreitz@redhat.com>,
- qemu-arm@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Leif Lindholm <leif@nuviainc.com>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZbHuR8hAkRRF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, i.mitsyanko@gmail.com, alistair@alistair23.me,
+ qemu-devel@nongnu.org, f4bug@amsat.org, qemu-arm@nongnu.org,
+ pbonzini@redhat.com, marcandre.lureau@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MSHPVl6OXZWA
 
-On 11/05/20 22:52, Philippe Mathieu-Daudé wrote:
-> Use the QEMU_IS_ALIGNED() macro to verify the flash block size
-> is properly aligned. It is quicker to process when reviewing.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  hw/arm/sbsa-ref.c       | 2 +-
->  hw/arm/virt.c           | 2 +-
->  hw/block/pflash_cfi01.c | 2 +-
->  hw/block/pflash_cfi02.c | 2 +-
->  hw/i386/pc_sysfw.c      | 2 +-
->  hw/riscv/virt.c         | 2 +-
->  6 files changed, 6 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index 8409ba853d..b379e4a76a 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -241,7 +241,7 @@ static void sbsa_flash_map1(PFlashCFI01 *flash,
->  {
->      DeviceState *dev = DEVICE(flash);
->  
-> -    assert(size % SBSA_FLASH_SECTOR_SIZE == 0);
-> +    assert(QEMU_IS_ALIGNED(size, SBSA_FLASH_SECTOR_SIZE));
->      assert(size / SBSA_FLASH_SECTOR_SIZE <= UINT32_MAX);
->      qdev_prop_set_uint32(dev, "num-blocks", size / SBSA_FLASH_SECTOR_SIZE);
->      qdev_init_nofail(dev);
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 634db0cfe9..0a99fddb3d 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -978,7 +978,7 @@ static void virt_flash_map1(PFlashCFI01 *flash,
->  {
->      DeviceState *dev = DEVICE(flash);
->  
-> -    assert(size % VIRT_FLASH_SECTOR_SIZE == 0);
-> +    assert(QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE));
->      assert(size / VIRT_FLASH_SECTOR_SIZE <= UINT32_MAX);
->      qdev_prop_set_uint32(dev, "num-blocks", size / VIRT_FLASH_SECTOR_SIZE);
->      qdev_init_nofail(dev);
-> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-> index f586bac269..11922c0f96 100644
-> --- a/hw/block/pflash_cfi01.c
-> +++ b/hw/block/pflash_cfi01.c
-> @@ -964,7 +964,7 @@ PFlashCFI01 *pflash_cfi01_register(hwaddr base,
->      if (blk) {
->          qdev_prop_set_drive(dev, "drive", blk, &error_abort);
->      }
-> -    assert(size % sector_len == 0);
-> +    assert(QEMU_IS_ALIGNED(size, sector_len));
->      qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
->      qdev_prop_set_uint64(dev, "sector-length", sector_len);
->      qdev_prop_set_uint8(dev, "width", bank_width);
-> diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-> index c6b6f2d082..895f7daee3 100644
-> --- a/hw/block/pflash_cfi02.c
-> +++ b/hw/block/pflash_cfi02.c
-> @@ -1003,7 +1003,7 @@ PFlashCFI02 *pflash_cfi02_register(hwaddr base,
->      if (blk) {
->          qdev_prop_set_drive(dev, "drive", blk, &error_abort);
->      }
-> -    assert(size % sector_len == 0);
-> +    assert(QEMU_IS_ALIGNED(size, sector_len));
->      qdev_prop_set_uint32(dev, "num-blocks", size / sector_len);
->      qdev_prop_set_uint32(dev, "sector-length", sector_len);
->      qdev_prop_set_uint8(dev, "width", width);
-> diff --git a/hw/i386/pc_sysfw.c b/hw/i386/pc_sysfw.c
-> index f5f3f466b0..fad41f0e73 100644
-> --- a/hw/i386/pc_sysfw.c
-> +++ b/hw/i386/pc_sysfw.c
-> @@ -168,7 +168,7 @@ static void pc_system_flash_map(PCMachineState *pcms,
->                           blk_name(blk), strerror(-size));
->              exit(1);
->          }
-> -        if (size == 0 || size % FLASH_SECTOR_SIZE != 0) {
-> +        if (size == 0 || !QEMU_IS_ALIGNED(size, FLASH_SECTOR_SIZE)) {
->              error_report("system firmware block device %s has invalid size "
->                           "%" PRId64,
->                           blk_name(blk), size);
-> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> index daae3ebdbb..71481d59c2 100644
-> --- a/hw/riscv/virt.c
-> +++ b/hw/riscv/virt.c
-> @@ -112,7 +112,7 @@ static void virt_flash_map1(PFlashCFI01 *flash,
->  {
->      DeviceState *dev = DEVICE(flash);
->  
-> -    assert(size % VIRT_FLASH_SECTOR_SIZE == 0);
-> +    assert(QEMU_IS_ALIGNED(size, VIRT_FLASH_SECTOR_SIZE));
->      assert(size / VIRT_FLASH_SECTOR_SIZE <= UINT32_MAX);
->      qdev_prop_set_uint32(dev, "num-blocks", size / VIRT_FLASH_SECTOR_SIZE);
->      qdev_init_nofail(dev);
-> 
-
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDUxODA5NTIwMy4xMDEz
+LTEtZjRidWdAYW1zYXQub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0aGUgZG9ja2Vy
+LW1pbmd3QGZlZG9yYSBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGluZyBjb21tYW5k
+cyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5zdGFsbGVkLCB5
+b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1QgU0NSSVBUIEJF
+R0lOID09PQojISAvYmluL2Jhc2gKZXhwb3J0IEFSQ0g9eDg2XzY0Cm1ha2UgZG9ja2VyLWltYWdl
+LWZlZG9yYSBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1taW5nd0BmZWRvcmEg
+Sj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCiAgQlVJTEQgICBwYy1iaW9z
+L29wdGlvbnJvbS9tdWx0aWJvb3QuaW1nCiAgQ0MgICAgICBwYy1iaW9zL29wdGlvbnJvbS9wdmhf
+bWFpbi5vCi90bXAvcWVtdS10ZXN0L3NyYy9ody90aW1lci9leHlub3M0MjEwX21jdC5jOiBJbiBm
+dW5jdGlvbiAnZXh5bm9zNDIxMF9tY3RfcmVhZCc6Ci90bXAvcWVtdS10ZXN0L3NyYy9ody90aW1l
+ci9leHlub3M0MjEwX21jdC5jOjExNjM6MTI6IGVycm9yOiAndmFsdWUnIG1heSBiZSB1c2VkIHVu
+aW5pdGlhbGl6ZWQgaW4gdGhpcyBmdW5jdGlvbiBbLVdlcnJvcj1tYXliZS11bmluaXRpYWxpemVk
+XQogICAgIHJldHVybiB2YWx1ZTsKICAgICAgICAgICAgXn5+fn4KY2MxOiBhbGwgd2FybmluZ3Mg
+YmVpbmcgdHJlYXRlZCBhcyBlcnJvcnMKbWFrZTogKioqIFsvdG1wL3FlbXUtdGVzdC9zcmMvcnVs
+ZXMubWFrOjY5OiBody90aW1lci9leHlub3M0MjEwX21jdC5vXSBFcnJvciAxCm1ha2U6ICoqKiBX
+YWl0aW5nIGZvciB1bmZpbmlzaGVkIGpvYnMuLi4uCiAgQlVJTEQgICBwYy1iaW9zL29wdGlvbnJv
+bS9saW51eGJvb3QuaW1nCiAgQlVJTEQgICBwYy1iaW9zL29wdGlvbnJvbS9tdWx0aWJvb3QucmF3
+Ci0tLQogICAgcmFpc2UgQ2FsbGVkUHJvY2Vzc0Vycm9yKHJldGNvZGUsIGNtZCkKc3VicHJvY2Vz
+cy5DYWxsZWRQcm9jZXNzRXJyb3I6IENvbW1hbmQgJ1snc3VkbycsICctbicsICdkb2NrZXInLCAn
+cnVuJywgJy0tbGFiZWwnLCAnY29tLnFlbXUuaW5zdGFuY2UudXVpZD02NmU2OWU2NmRiNmE0Y2Vl
+OTNiOWU3MGU1MGMwYmMzMScsICctdScsICcxMDAzJywgJy0tc2VjdXJpdHktb3B0JywgJ3NlY2Nv
+bXA9dW5jb25maW5lZCcsICctLXJtJywgJy1lJywgJ1RBUkdFVF9MSVNUPScsICctZScsICdFWFRS
+QV9DT05GSUdVUkVfT1BUUz0nLCAnLWUnLCAnVj0nLCAnLWUnLCAnSj0xNCcsICctZScsICdERUJV
+Rz0nLCAnLWUnLCAnU0hPV19FTlY9JywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90bXAvY2NhY2hl
+JywgJy12JywgJy9ob21lL3BhdGNoZXcyLy5jYWNoZS9xZW11LWRvY2tlci1jY2FjaGU6L3Zhci90
+bXAvY2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLWFnczQxNWRv
+L3NyYy9kb2NrZXItc3JjLjIwMjAtMDUtMTgtMDguNTguMzguNTIxOTovdmFyL3RtcC9xZW11Onos
+cm8nLCAncWVtdTpmZWRvcmEnLCAnL3Zhci90bXAvcWVtdS9ydW4nLCAndGVzdC1taW5ndyddJyBy
+ZXR1cm5lZCBub24temVybyBleGl0IHN0YXR1cyAyLgpmaWx0ZXI9LS1maWx0ZXI9bGFiZWw9Y29t
+LnFlbXUuaW5zdGFuY2UudXVpZD02NmU2OWU2NmRiNmE0Y2VlOTNiOWU3MGU1MGMwYmMzMQptYWtl
+WzFdOiAqKiogW2RvY2tlci1ydW5dIEVycm9yIDEKbWFrZVsxXTogTGVhdmluZyBkaXJlY3Rvcnkg
+YC92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1hZ3M0MTVkby9zcmMnCm1ha2U6ICoqKiBbZG9j
+a2VyLXJ1bi10ZXN0LW1pbmd3QGZlZG9yYV0gRXJyb3IgMgoKcmVhbCAgICAybTQ1LjIwMHMKdXNl
+ciAgICAwbTguNTI2cwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNo
+ZXcub3JnL2xvZ3MvMjAyMDA1MTgwOTUyMDMuMTAxMy0xLWY0YnVnQGFtc2F0Lm9yZy90ZXN0aW5n
+LmRvY2tlci1taW5nd0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBh
+dXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNl
+bmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=

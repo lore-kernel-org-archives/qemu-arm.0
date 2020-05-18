@@ -1,91 +1,91 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3157698lfb;
-        Mon, 18 May 2020 08:53:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwBi6HzhtQYgJ4H4DpvE17C+khUgwjw+hZumq7kFhjYJrVyHhv36/rxCKfz1IurRzwK/t7E
-X-Received: by 2002:a17:906:704c:: with SMTP id r12mr15127903ejj.105.1589817203418;
-        Mon, 18 May 2020 08:53:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589817203; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3157722lfb;
+        Mon, 18 May 2020 08:53:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxDMJxFeE7D8c9AgBF0GvrvrtNudMJaSexr78pY49sOkmwt4nPufWLrMB8ag5grPDSYXBzE
+X-Received: by 2002:a05:6402:348:: with SMTP id r8mr9062352edw.130.1589817204085;
+        Mon, 18 May 2020 08:53:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589817204; cv=none;
         d=google.com; s=arc-20160816;
-        b=a6DEoXAh81r04SV+Vit+ib/2dZDEu+gHYxt2/vdW77iFybv1gjDLtCK0jCWp2fwXKo
-         8zVpXQjVRGU043in72a43C5Q8vjYnVsawZ5+Yv1jFQV1AKrwuaVctenAIZHmtRIMD5Ya
-         QzGAIaoBp0skta6/hhAnFBAzTs4oCoM/butvVNFNfCX5x5jte7RPfeERy4Y93yP2udE7
-         TcRpd5YKIIFxM4sr8zCSNTWvFugalZ1D9+pPMCBgld8CH0J5xtPe7tfnvw7dEhSOy0xS
-         lqGRp4Z5E9XAplUnv2ZTuD2wbTRcI5a+mm0xXPGb70Y+Ut9YWeufqcGPrHai+fPDd7nY
-         fX+w==
+        b=so2mnYc2vGh9H/auzuryxGpFWrQcAym5mSHFCkX3/2YVd4mYi0wcfRKaFTeW1BQKiS
+         xAHb6jh5RNElae/lg+HX6bNBknPIli163P5ICyFe5WRrK5tqlgleoNpMTdnZy+HBkr65
+         U0UMLLwviA//JY0g7vv9+H0/Z9KbeCu+K9zlLMrTvH/FN48WkK/kAq4g2MsZ8txH4IEc
+         C+Z8TvBkdbxTBRNMz5fkSryXTIaWSXO8tN+r0CTzs5irwt/aUgUTHJFRB+RCXvz9qVAL
+         rz00nsiJzBsyMlv7t+HNEFcw5Z1tc8l1xzjDl7chPVrfusbB9Z1y/79xOAfhnLborEa0
+         AcBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=WPXev8+IwguGZ8+5BAOfNLRRppnJCLUsP59v0te4Ye0=;
-        b=evi/sGiWDsMZeJi5VbZlW84emma+XlCPeecagvqUzXksdGSZaRrvWxwimQhNEFb5aB
-         DNVKzUuHyyFosFV186T9ufKJjqFOqjaWWu7sJewffuKyEl1bWbZB8IAjJEY8rI22FYmg
-         6WhjJAK66unKXgSyiILSHF5535eKbSK8YJ7/I31CRHxdXWa1GuAEFMIKYHLqEe9zeYgO
-         x5veYqYAGAptR5qZwAmh2c07PaJhi3MH+JoYXcFQwrSS5ncF4STdu3p4eyp0D0PNGStv
-         IJV3V/fJUZsfsVEjzNGYYGoyd+NnaPDTcU5mZk/vAnhhuJygE/BPRFDCXUCYxZUE7SsB
-         hmug==
+        bh=cD0HVhIueot6xPtNOGreyU0JTmhLcSi0Ka6Qp1Nps5Q=;
+        b=MWajw2/E+8U7UuSJre7np6MdsIcUtHyWkgbqvzLAX0X/ApWmH32i/drBaoh77KzLZe
+         /uKXFq17yOS3SgomvQaC+hpjHb7urEtrW2e+97guCV2Kr0gKwwzKog6y4BhKDaFuMvol
+         i76uyh45LEvW0EbFH74zvHLzPrzu6he6+wTlr/zaRQ/W63V4SbHor1rj5ucVJh1sC10u
+         /BsxNXIV7jFCGZi1Cb/Ci3VBIE7s+3flLicsHKXAEfSb11wLPCVNBclpv3Qv8NmgdPNt
+         P3U3U8NJn7Yd3P7aQmpcpGZ6Zb/uwRih+Xc6jhcKSXya1ng8OjDlYy1m3stby4pPCqSn
+         dmxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GBNszTaa;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UzUkQrcn;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
         by mx.google.com with ESMTP id do11si8281395ejc.450.2020.05.18.08.53.23;
-        Mon, 18 May 2020 08:53:23 -0700 (PDT)
+        Mon, 18 May 2020 08:53:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GBNszTaa;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UzUkQrcn;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728461AbgERPxQ (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 18 May 2020 11:53:16 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:42542 "EHLO
+        id S1728502AbgERPxX (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Mon, 18 May 2020 11:53:23 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:42576 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1727050AbgERPxN (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 18 May 2020 11:53:13 -0400
+        with ESMTP id S1728421AbgERPxU (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 18 May 2020 11:53:20 -0400
 Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com [IPv6:2a00:1450:4864:20::343])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 6724EC061A0C
-        for <kvm@vger.kernel.org>; Mon, 18 May 2020 08:53:13 -0700 (PDT)
-Received: by mail-wm1-x343.google.com with SMTP id m185so25450wme.3
-        for <kvm@vger.kernel.org>; Mon, 18 May 2020 08:53:13 -0700 (PDT)
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id A9D97C061A0C
+        for <kvm@vger.kernel.org>; Mon, 18 May 2020 08:53:19 -0700 (PDT)
+Received: by mail-wm1-x343.google.com with SMTP id z72so33121wmc.2
+        for <kvm@vger.kernel.org>; Mon, 18 May 2020 08:53:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=WPXev8+IwguGZ8+5BAOfNLRRppnJCLUsP59v0te4Ye0=;
-        b=GBNszTaaBEoLSKErf6Onp2KjlP2lFLTKTV4hGUyCnOMb7cgyVRocIEAPY8J3mCvb8Z
-         vCLXgoCH3exBUN+Yjhpatnjh2Fa5e1ewx1l3wOj4/SrE8ApiJzbGKFBw2Fk0/ADaP63I
-         bKZiVONe3xodATG6yQv3Mm0gvaazMRU/T7zFjIayETtffjPtUlcgjkmY4YHXL9KjPjUG
-         8NwSfTHR05vPqYuItDiHZDYMDcHpYzEeXbnyBK2nu5eOha5ZGzFFsSAJhOruzapfQKPz
-         24y236VkwWStBZHxoh2/GZN2xjsFUq8IM0KPfG/DLwlqaj2FIlz5EX4CG6JWCxKql8/O
-         rSgA==
+        bh=cD0HVhIueot6xPtNOGreyU0JTmhLcSi0Ka6Qp1Nps5Q=;
+        b=UzUkQrcnedIIS0eyBH/lUMfwWEMl0dN7u8jvYptYKbxkrDH/d7z9FHA5lgbVk4b94O
+         9YAsA3AZn2b3y23TJXdtQz1KIUNf5Kvipq/cnwubNhPTe53nxW24cMT50ESHX3H4/wcQ
+         izcXRSOCK5zCoYLLjt/KGEQqmZ2xpp7fgYwN6WliyF/fNgU4etLfxeZKj8Dfe4i9Q/Sr
+         k+accbUYJeyeAfmxcwQTfyKvG3PYOmsnm3vdHwfVqIiDFu1ZpptTbNsUCxJf+JeIb1C8
+         vxCoLsu7zynaFKgFBWTWnh3KBOoSK1a7SAlaqYJ94LEYAqcFAYBIpjyYkeJlDWSWQwVo
+         QmvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
          :in-reply-to:references:mime-version:content-transfer-encoding;
-        bh=WPXev8+IwguGZ8+5BAOfNLRRppnJCLUsP59v0te4Ye0=;
-        b=Bg/vPV2C128Of0qT69sEReRvrrN+rKmRGMY7Um0HQNjxJ+M14WoGzvyQSF6TwX3kMN
-         1Bfdhg5plF7vRUu6j9Gh3SY2VzQw9VAStp8XsyLB9VL71la9Nh3ZWyWkmlrCKS9CgniZ
-         I/Ckr90WUjj+xw9v1fRxQG0pT+nJh9YRGlmdIu+77aK6HFH1mae2nCQdqdHG6psqdVy9
-         4sdmmSlCyuPrtpIoSojaqE8NVUcl3+In6dXSibzMsNMZoHSffqunlVHBvAL4a73kk1U5
-         dYsCX/bDldyd2iAyjNMJuGgvjnuSwuLr7eswPVUv7QZEpDCuNelXex3lTUx/HRusX00W
-         hBgA==
-X-Gm-Message-State: AOAM531o5S2soUAHfa97pcmc1pOFEN/+Y5Ny1+VJB/XciCx70tjFYUqF
-        25JMSu8PuFS2hSYOp2uIXWQ=
-X-Received: by 2002:a7b:c8d4:: with SMTP id f20mr60869wml.72.1589817192193;
-        Mon, 18 May 2020 08:53:12 -0700 (PDT)
+        bh=cD0HVhIueot6xPtNOGreyU0JTmhLcSi0Ka6Qp1Nps5Q=;
+        b=m5zhDRlepKZNRhKRDOdN2ZLrCEYw699GYNRyb+kVrfx//sDcREos7wf90M/+XiiUrp
+         2/lFKPhr1XVoPw/ah0z35XD3x5UH998rqalHdsQH2AKd71yF/8PgluuSla3fxMNN5F5Q
+         jKNxeByS43ojlsHSQHK/Jy9wniYJC8sW5QjRhkqqb6OZA+oLgb3hyaM9NJtLVLf0aUUI
+         d8l0ItmYBW0FcH1OguvIFx1+Xk7Oyu6S2SAFvKtfw/zJfEwZXuh0BHsSnIm8PoCd5jX2
+         M0Ha+r7EA6QWybkV1ExrcmQv1oAKaWr6Wq9ybGk4JVbyK+T1HWk+4R4YuINrESRZEALW
+         pGfg==
+X-Gm-Message-State: AOAM530nbGbEWiNY16PFlsBVXwxKKXbKWLajFYcR0aF6UOiXeN4lijp1
+        vvL915rGNcWBEctsgc3EvzE67sDy160=
+X-Received: by 2002:a1c:7e03:: with SMTP id z3mr52303wmc.88.1589817198412;
+        Mon, 18 May 2020 08:53:18 -0700 (PDT)
 Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
-        by smtp.gmail.com with ESMTPSA id 7sm17647462wra.50.2020.05.18.08.53.11
+        by smtp.gmail.com with ESMTPSA id 7sm17647462wra.50.2020.05.18.08.53.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 May 2020 08:53:11 -0700 (PDT)
+        Mon, 18 May 2020 08:53:17 -0700 (PDT)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To:     qemu-devel@nongnu.org
 Cc:     Peter Maydell <peter.maydell@linaro.org>,
         Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
         qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>,
         =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v2 2/7] exec: Propagate cpu_memory_rw_debug() error
-Date:   Mon, 18 May 2020 17:53:03 +0200
-Message-Id: <20200518155308.15851-3-f4bug@amsat.org>
+Subject: [RFC PATCH v2 7/7] hw/core/loader: Assert loading ROM regions succeeds at reset
+Date:   Mon, 18 May 2020 17:53:08 +0200
+Message-Id: <20200518155308.15851-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200518155308.15851-1-f4bug@amsat.org>
 References: <20200518155308.15851-1-f4bug@amsat.org>
@@ -97,59 +97,36 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: QnGOUxoVHFla
+X-TUID: kKmqR4cFy1HG
 
-Do not ignore the MemTxResult error type returned by
-the address_space_rw() API.
+If we are unable to load a blob in a ROM region, we should not
+ignore it and let the machine boot.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/exec/cpu-all.h |  1 +
- exec.c                 | 12 ++++++++----
- 2 files changed, 9 insertions(+), 4 deletions(-)
+RFC: Maybe more polite with user to use hw_error()?
+---
+ hw/core/loader.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index d14374bdd4..fb4e8a8e29 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -413,6 +413,7 @@ void dump_exec_info(void);
- void dump_opcount_info(void);
- #endif /* !CONFIG_USER_ONLY */
- 
-+/* Returns: 0 on success, -1 on error */
- int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
-                         void *ptr, target_ulong len, bool is_write);
- 
-diff --git a/exec.c b/exec.c
-index 877b51cc5c..ae5a6944ef 100644
---- a/exec.c
-+++ b/exec.c
-@@ -3769,6 +3769,7 @@ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
-     while (len > 0) {
-         int asidx;
-         MemTxAttrs attrs;
-+        MemTxResult res;
- 
-         page = addr & TARGET_PAGE_MASK;
-         phys_addr = cpu_get_phys_page_attrs_debug(cpu, page, &attrs);
-@@ -3781,11 +3782,14 @@ int cpu_memory_rw_debug(CPUState *cpu, target_ulong addr,
-             l = len;
-         phys_addr += (addr & ~TARGET_PAGE_MASK);
-         if (is_write) {
--            address_space_write_rom(cpu->cpu_ases[asidx].as, phys_addr,
--                                    attrs, buf, l);
-+            res = address_space_write_rom(cpu->cpu_ases[asidx].as, phys_addr,
-+                                          attrs, buf, l);
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 8bbb1797a4..4e046388b4 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -1146,8 +1146,12 @@ static void rom_reset(void *unused)
+             void *host = memory_region_get_ram_ptr(rom->mr);
+             memcpy(host, rom->data, rom->datasize);
          } else {
--            address_space_read(cpu->cpu_ases[asidx].as, phys_addr, attrs, buf,
--                               l);
-+            res = address_space_read(cpu->cpu_ases[asidx].as, phys_addr,
-+                                     attrs, buf, l);
-+        }
-+        if (res != MEMTX_OK) {
-+            return -1;
+-            address_space_write_rom(rom->as, rom->addr, MEMTXATTRS_UNSPECIFIED,
+-                                    rom->data, rom->datasize);
++            MemTxResult res;
++
++            res = address_space_write_rom(rom->as, rom->addr,
++                                          MEMTXATTRS_UNSPECIFIED,
++                                          rom->data, rom->datasize);
++            assert(res == MEMTX_OK);
          }
-         len -= l;
-         buf += l;
+         if (rom->isrom) {
+             /* rom needs to be written only once */
 -- 
 2.21.3

@@ -1,156 +1,198 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3115077lfb;
-        Mon, 18 May 2020 08:02:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzaRKfQ9mv+B1LsYHfVAmjUBLkoq61MHk/WJ8ScepncGTaDPbGUB/kVqOx1waqrebnA1Jsc
-X-Received: by 2002:ac8:1aab:: with SMTP id x40mr17026437qtj.358.1589814131243;
-        Mon, 18 May 2020 08:02:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589814131; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3146319lfb;
+        Mon, 18 May 2020 08:38:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz677TxxYGLbWZJfmeXt7n4SJAh+ya8icQK0ESJZ1jTomK8AsA8OQkZJk5VNh6gYxszZFcC
+X-Received: by 2002:a05:620a:a93:: with SMTP id v19mr16288685qkg.416.1589816338813;
+        Mon, 18 May 2020 08:38:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589816338; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xy7Dm3Bv1LjNuaWL6kZ5VlbKxLGT3jhPgCIly2Wwb+vMGf4TTWJa7jP0I+AbWzwoyp
-         KIoky5q5X4BGUdw5Ces0AVfMXL7ak++dlHKw6JeNj6uKAWR+1qZfzeZQ8/b09Y/RagTV
-         q1kEsJlLQKfB1xzZJUomEWq/Bhw8ljj67QstzjIMKNIHRxOLfUBdBriJZ6VS8Boih7Wl
-         +dJf/9B5sLHwCOXSXJXwv8sW7mBWLjlkrjmYu4nSA/FklVSIWVpeY7SiHaR8CVp1FOAt
-         bodmSnJaBHbLYuoLyE1UwaxCVCSrIhGxxiFw8n7OeSRU6A2NGIeWP3l3hKP1QXOFdv0/
-         JY8Q==
+        b=QhAJ0RYGIQDRXwDOZ+QoQQRl2G2x/anB4WzBfb6SiKineanz+wjQaKRD5KRto5KtOK
+         GcW8akAT7740yF/3kJXRWIn5StpZBhF64M597QLYmd3XfF3M1PCQMK/V4lpSAVIvCyAH
+         aYFASv169e3lVVmWuWXLJWjAdunLCReWvaHEeMasPBX8g+JeQ80iECEivquLnZY++wbV
+         Y45EGE2X0m/hxyj0bvsZ4uNOPB4z9MiOyMNs1R8hS45FY+3nQ4d63qdZ0dKMjVUHrnoW
+         zoOmMR2uVlF5IkY7EfdCr7qhhn3/kG+VwMSvO9YMaS9oiCpv38io8pjBjEs7xubCvOdS
+         PU3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=kAnFLR/iZLNvMTVRqFp6K8khL813q1hzXRqbt0f3Ezw=;
-        b=jIZjG/FBiIihoCWAMQmUEOzU6wo/3WHBrAlgSi2LPjHh3CMM9T6VSrEZ0EVTI6D5/r
-         rKC2Ptt8zS2aIr0/LzTbYBwPQnio1uijySFrOKoVleobL5rcEiGl7uneZUv0TYwHhm94
-         b8f2I7V5FlavR5TAUEyyTeiT4NUaargA7zrA3YUmmPkicsAq5F5KmpC7V8fc6PtBjdhL
-         ZzjT3IcZQCxHnjK/uy4kfA8QZ1K8YLfuhbtt/hUOa+M+fyarkLqQneb2cUYYv9Rho0HS
-         rFzQe+bkAbCi8dYBGhdHDLqP308JtF+s2IPjQbme+81niz0xW+jCQ2U5ZQuFRAvAMbyA
-         6zEQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :organization:subject:to:from:feedback-id:x_cmae_category;
+        bh=Hh0wazArD9y+XrAc98zKptnweV8QnbSdVh1Q7Gsgr/c=;
+        b=ybXQ99ZQoR6psN69E+ithT/G94xuTWOV165xGfwduL9J0y7BXas9oJiciFUHfJEgK4
+         UBtSsiaS6eRO88yffEItqEdP6UF+R3itW5K5jFHDv4TC9sAjvpy8l1tysy4jJLkCQoYK
+         97KMO3XOQpndOz7ccLW/1GRY09iI5mveNXm3yuymG7X24nfAXgQXqk0cEPyP62n20b2h
+         pLrLopTGygajFiOuixb/CJF/xpVhp0aByhD8qgHrKf0gSRl+Lscfemfx2BFGW+Tjdx5J
+         61ZcoY8u1leKu9ef9BOep+/edj7KXu+xsqB1jiXPNWF0mJTJBAaQ3YmkLyHhLkekI7XH
+         LVIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uYyWDsHh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w22si5712796qkf.349.2020.05.18.08.02.10
+        by mx.google.com with ESMTPS id n33si1982306qvd.120.2020.05.18.08.38.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 May 2020 08:02:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 May 2020 08:38:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uYyWDsHh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38760 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35142 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jahHO-0005w3-Fp
-	for alex.bennee@linaro.org; Mon, 18 May 2020 11:02:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46114)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jahr0-00081c-8F
+	for alex.bennee@linaro.org; Mon, 18 May 2020 11:38:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50708)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jahH9-0005uR-S9
- for qemu-arm@nongnu.org; Mon, 18 May 2020 11:01:55 -0400
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:42073)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jahH7-0002ff-Rj
- for qemu-arm@nongnu.org; Mon, 18 May 2020 11:01:55 -0400
-Received: by mail-oi1-x241.google.com with SMTP id l6so3338729oic.9
- for <qemu-arm@nongnu.org>; Mon, 18 May 2020 08:01:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=kAnFLR/iZLNvMTVRqFp6K8khL813q1hzXRqbt0f3Ezw=;
- b=uYyWDsHhWakQ+eALy/4A5EXpFnmCnF5FKCoMDVVLaduW2BN/HETk3+JdYe+V51EtHm
- 0AMbaHsz0039oarI6yDx9WTCpRjgjZQt7YW7r209kWYPIje7pY+jY2IideIHioT1FTvu
- M2FycW9lC+tRQyAsV+YOSxei7jqnwY45G/6Qakoe9rxFl0u/4L3k7x89/4qbdwxM4sTZ
- 2slo4nFiNpjT+IDFlRott+wa292lujaHLW0+BjOGO316bPrmJXLdZ16SRt2IiZJ1AWVT
- g0INCzw/Im3fTJ+XuDP2z3SPUJTFDbiGtAtX8HosX6YJG7K3P5wiEZWFT10LWXKFnbCD
- JZ4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=kAnFLR/iZLNvMTVRqFp6K8khL813q1hzXRqbt0f3Ezw=;
- b=Z9DD2W5+PTkDEMNPNBoiuTWg18oKiUr4j8XigkKK9g6t8X3I38mrlV3U/+ILBrjYZ9
- KDqoiWAOW1F37byZx1sI76JQQ67pMyjTuA/BZe2voqDddXe+vkMzBjKDB4BTlAq7GXIM
- 5yEzpX7oQmOBjvDhAwHBFEtFWSMQRUB89qgCpFUgY8iAzIKmKVSVRv6Vfn8doJAMnNV5
- Bq3Rdu66CfxVii7jGo6KF0SqkPsSmZb1GLr3uRbslDVFetUz3hjqU1xeSH/z/hl6q2bQ
- Ve5/HWm6KY8peOKAwIGOodwc2bXIPn/NjOXV07ghZ1j9+o07ujqUqEZAsWd8vuhbLtJI
- n/uA==
-X-Gm-Message-State: AOAM531imdWKnfaYSCOF+ma0XP4quPlWqS4ajh+u5HKv0l4+o23QxKLA
- FxFzTK6W8dL0KhRMxfKk1nOj34jOzJ0KvD5l5NWbCg==
-X-Received: by 2002:aca:895:: with SMTP id 143mr11175682oii.163.1589814111302; 
- Mon, 18 May 2020 08:01:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <yates@digitalsignallabs.com>)
+ id 1jahpz-0007Ah-Tm
+ for qemu-devel@nongnu.org; Mon, 18 May 2020 11:37:55 -0400
+Received: from mail.onyx.syn-alias.com ([206.152.134.66]:15060
+ helo=smtp.centurylink.net)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <yates@digitalsignallabs.com>)
+ id 1jahpy-0004YY-Ud
+ for qemu-devel@nongnu.org; Mon, 18 May 2020 11:37:55 -0400
+X_CMAE_Category: , ,
+X-CNFS-Analysis: v=2.3 cv=UcYvt5aN c=1 sm=1 tr=0
+ a=/DUmtE38f4iOwNXrSUBayA==:117 a=/DUmtE38f4iOwNXrSUBayA==:17
+ a=KGjhK52YXX0A:10 a=IkcTkHD0fZMA:10 a=sTwFKg_x9MkA:10 a=PPsO2EghCewA:10
+ a=eQrCS-SpgXYA:10 a=Ixn1CAxRAAAA:8 a=KKAkSRfTAAAA:8 a=o83nqyVRAAAA:8
+ a=yrnTiy7_AAAA:8 a=f8P1XVG16obXfP6Dja8A:9 a=F_KZppjTv5wU1dKm:21
+ a=vfVfDnR6hk7UIB99:21 a=QEXdDO2ut3YA:10 a=_0vDLAJOulx5KDpLVjVP:22
+ a=cvBusfyB2V15izCimMoJ:22 a=d2wp0cl8BqqoVUBAGsA6:22
+X-CM-Score: 0
+X-Scanned-by: Cloudmark Authority Engine
+Feedback-ID: dfw:ctl:res:onyx
+X-Authed-Username: eWF0ZXNmcmVlZGFyYW5keUBjZW50dXJ5bGluay5uZXQ=
+Authentication-Results: smtp02.onyx.dfw.sync.lan
+ smtp.user=yatesfreedarandy@centurylink.net; auth=pass (LOGIN)
+Received: from [71.217.96.46] ([71.217.96.46:47022]
+ helo=galois.digitalsignallabs.com)
+ by smtp.centurylink.net (envelope-from <yates@digitalsignallabs.com>)
+ (ecelerity 3.6.25.56547 r(Core:3.6.25.0)) with ESMTPA
+ id 77/47-19512-ECBA2CE5; Mon, 18 May 2020 11:37:50 -0400
+Received: from localhost.localdomain (unknown [71.217.96.46])
+ by galois.digitalsignallabs.com (Postfix) with ESMTPA id 7C0D62E019C;
+ Mon, 18 May 2020 11:37:49 -0400 (EDT)
+From: Randy Yates <yates@digitalsignallabs.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH] target/arm: Allow user-mode code to write CPSR.E via MSR
+Organization: Digital Signal Labs
+References: <20200515185026.30080-1-peter.maydell@linaro.org>
+ <327074ea-2c2f-ad45-b53f-1c4dcb69f9bf@linaro.org>
+ <8c049fb3-7122-3ac5-e7bd-0c905bd459e4@amsat.org>
+Date: Mon, 18 May 2020 11:37:49 -0400
+In-Reply-To: <8c049fb3-7122-3ac5-e7bd-0c905bd459e4@amsat.org> ("Philippe
+ \=\?utf-8\?Q\?Mathieu-Daud\=C3\=A9\=22's\?\= message of "Sat,
+ 16 May 2020 07:19:14 +0200")
+Message-ID: <87k119i78y.fsf@digitalsignallabs.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-References: <20200514190422.23645-1-f4bug@amsat.org>
-In-Reply-To: <20200514190422.23645-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 May 2020 16:01:39 +0100
-Message-ID: <CAFEAcA-RFEQvAr_Zvu+z5Es6X2vpDTo9_YCmb9Hqc+iqLfeK0w@mail.gmail.com>
-Subject: Re: [PATCH v3] tests/acceptance: Add a test for the canon-a1100
- machine
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::241;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x241.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Received-SPF: none client-ip=206.152.134.66;
+ envelope-from=yates@digitalsignallabs.com; helo=smtp.centurylink.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/18 11:37:51
+X-ACL-Warn: Detected OS   = Linux 2.6.x
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Antony Pavlov <antonynpavlov@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZwvTk++rpOij
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Randy Yates <yates@ieee.org>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hU2bssDoe7i0
 
-On Thu, 14 May 2020 at 20:04, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
+Thank you Philippe and the QEMU team!
+
+--Randy
+
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+
+> On 5/15/20 11:26 PM, Richard Henderson wrote:
+>> On 5/15/20 11:50 AM, Peter Maydell wrote:
+>>> Using the MSR instruction to write to CPSR.E is deprecated, but it is
+>>> required to work from any mode including unprivileged code.  We were
+>>> incorrectly forbidding usermode code from writing it because
+>>> CPSR_USER did not include the CPSR_E bit.
+>>>
+>>> We use CPSR_USER in only three places:
+>>>   * as the mask of what to allow userspace MSR to write to CPSR
+>>>   * when deciding what bits a linux-user signal-return should be
+>>>     able to write from the sigcontext structure
+>>>   * in target_user_copy_regs() when we set up the initial
+>>>     registers for the linux-user process
+>>>
+>>> In the first two cases not being able to update CPSR.E is a
+>>> bug, and in the third case it doesn't matter because CPSR.E
+>>> is always 0 there. So we can fix both bugs by adding CPSR_E
+>>> to CPSR_EXEC.
+>>
+>> Wrong variable in description here.
 >
-> From: Thomas Huth <thuth@redhat.com>
+> Indeed CPSR_EXEC -> CPSR_USER typo.
 >
-> The canon-a1100 machine can be used with the Barebox firmware. The
-> QEMU Advent Calendar 2018 features a pre-compiled image which we
-> can use for testing.
+>>
+>> Otherwise,
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>>
+>>
+>> r~
+>>
+>>>
+>>> (The recommended way to change CPSR.E is to use the 'SETEND'
+>>> instruction, which we do correctly allow from usermode code.)
+>>>
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>>> ---
+>>> Bug reported on IRC.
 >
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Reviewed-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-> Tested-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> Message-Id: <20200129090420.13954-1-thuth@redhat.com>
-> [PMD: Rebased MAINTAINERS]
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> Thomas asked me to watch for few of his patches to get merged,
-> but I missed this one.
-> Peter: I suppose it is flushed of your REVIEW folder, so resending.
-> ---
->  MAINTAINERS                                |  1 +
->  tests/acceptance/machine_arm_canona1100.py | 35 ++++++++++++++++++++++
->  2 files changed, 36 insertions(+)
->  create mode 100644 tests/acceptance/machine_arm_canona1100.py
+> Similar to commit a1ecb4381829d7:
+>
+> Reported-by: Randy Yates <yates@ieee.org>
+>
+>> Quick-and-dirty test case at:
+>>>   https://people.linaro.org/~peter.maydell/msr-setend.c
+>>>
+>>>   target/arm/cpu.h | 2 +-
+>>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+>>> index 5d995368d4f..677584e5da0 100644
+>>> --- a/target/arm/cpu.h
+>>> +++ b/target/arm/cpu.h
+>>> @@ -1230,7 +1230,7 @@ void pmu_init(ARMCPU *cpu);
+>>>   #define CACHED_CPSR_BITS (CPSR_T | CPSR_AIF | CPSR_GE | CPSR_IT | CPS=
+R_Q \
+>>>       | CPSR_NZCV)
+>>>   /* Bits writable in user mode.  */
+>>> -#define CPSR_USER (CPSR_NZCV | CPSR_Q | CPSR_GE)
+>>> +#define CPSR_USER (CPSR_NZCV | CPSR_Q | CPSR_GE | CPSR_E)
+>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>
+>>>   /* Execution state bits.  MRS read as zero, MSR writes ignored.  */
+>>>   #define CPSR_EXEC (CPSR_T | CPSR_IT | CPSR_J | CPSR_IL)
+>>>=20=20=20
+>>>
+>>
+>>
+>
 
-
-
-Applied to target-arm.next, thanks.
-
--- PMM
+--=20
+Randy Yates, DSP/Embedded Firmware Developer
+Digital Signal Labs
+http://www.digitalsignallabs.com

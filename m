@@ -1,123 +1,167 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2327064lfb;
-        Sun, 17 May 2020 11:00:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyV664kBXKFiWb4Np7ZGPPySNpAelp6i+tl4IVE5Be6UUNEgxyj84s9jBblNVouwIeQrc1r
-X-Received: by 2002:a17:907:392:: with SMTP id ss18mr11811292ejb.156.1589738435206;
-        Sun, 17 May 2020 11:00:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589738435; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2702569lfb;
+        Sun, 17 May 2020 22:04:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw5f2VGELfIGzOoYpd0a3vptiMNYIdU72fFhO5h86VoJ0/RQ7ZB+XUR1/ewJzH4Ur1WBBHE
+X-Received: by 2002:a37:6658:: with SMTP id a85mr14325590qkc.493.1589778267537;
+        Sun, 17 May 2020 22:04:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589778267; cv=none;
         d=google.com; s=arc-20160816;
-        b=tOhcauY62bpYFJh20O3GOM4jYIK7qbYpWz/+ZzsbInL8nG/0IorHnlaZT9+dVZ2IE+
-         iC0ZL7tYBn6tt3pniJbFPFVaWSvEMdcjLrcq7MHz4ACYoDfZFvsP811gCGPFBj2juLLz
-         URdFhh0r1CHMM/DQMGyF7Kt1DRWXs89rmAcV5AE4CNguPFsNTEVkr8mPMfAgHJOj7QsZ
-         queZ9LXvkfbSwOLdg3PX8JkZ7pa+tycRfkcgHXqwgAp7h39FWLtL2tviKGyvCfnOO+q1
-         vTQ/qps1gaTGDOpi0qpIP7Tn9zF7zTQ0ui6JQbvp909oC4uUsLNPOsmTfmdccCX20A4j
-         GvcQ==
+        b=kqu9g5wQ273Eqoleicr+NL8TCoMHExipF5eTsg1ywHdeAohFNyoZzkOeVLWLcOtg6r
+         OFU4kftEfb8Ey8rdK7q6bXm+mhCTlD1pDujQBCCu1W02BcUci32iYgw1uurLqvq5jweQ
+         PMFQMbh4lyZQ+thsHbL0t6wAawNpfA91B4JGSK6rl1uHuvlkaWHz2NczlQWasbg9uTZT
+         NWKH1aU+oKgcbhZ2kRf1i8NDmz/Q7jPINiR4geyBB/csFbrH5E3Dl4u9jYSJupOPTQl9
+         juvsrT5Cgf/0GWezeMm31oGHCwRFvcHQ1iChtopD7WRSIhJ+4mnFqB8CjpcXdv8W4dhK
+         UhAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=fLpKO8sZ/hqI9BOhCP2moj/9si8EyxyqgTEpAoV6SQ0=;
-        b=EQedMSyLW7ywCMaB141ayXbB2576hhtcZhG3dAfjEFS/0GmdZ2btVRvUlT1W84O06B
-         3mV4ZVez+Nuy+S9gt9d6F5ogG/PzEGs/b2hwlXDkCf2/8LZ7Euk16lf2A5SYIdDcNxpp
-         YyerBz1KbIU9AaNFgOJF+6W67WRoC2CW+srGuclNRWTrIrvg2DlQoku6QCDpNxpsIuiE
-         BuwtmKGshIAGrg7cGQIQFOLkfTStMAYGm5IfKhkKPBRVGiGh2yYq0OswpahmESJ8rnhh
-         /ZjTog6qprSfh8FcfT0Mei6/M7moiQtDOdyr87zUs7ucy55Ryj1FzirPjlAoF/DWYHH4
-         zJtA==
+        bh=xRs+DjLR3Y4rVR+MfxAtvurXdFDZgeO6io8w2miIdIQ=;
+        b=CKZZCz4rSlxifNthSvkN7Y6eE7zKfZGQG6dQEv0EtA4BNpKBzLjpxbsPY4+huhNjK/
+         oNqQyqhZhxVdgvnCdsKGMMTUAWYYWDznJ0mrnop/+pP0mZG3MsSo466CLfCqklK2zwLY
+         3MQ8x9NT98O2Y+jVOCf9VzKy9NGyuN9gpbkNma1IVA1H9D65TPQvUcIf7V480mVd/3pz
+         KmzvyXvaLu5SNG72MN8RCIPXetLdJkEvEeOvGSGE3zYM1+1L8t6GrKtJC//enQQjOt2V
+         PZbIBE+BLplJqxK6pTBcKCsI2VNYB9hTJqESf7uewHY3dGRaGiObXqksj8hR6A/8x0GP
+         utdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BmaebbH4;
-       spf=pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id l22si4553196eds.197.2020.05.17.11.00.34
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="eYd/3LF1";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 203si5275537qkf.268.2020.05.17.22.04.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 May 2020 11:00:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 17 May 2020 22:04:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BmaebbH4;
-       spf=pass (google.com: domain of thuth@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="eYd/3LF1";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33952 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jaXww-0008LI-Os
+	for alex.bennee@linaro.org; Mon, 18 May 2020 01:04:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49124)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jaXwk-0008KC-VA
+ for qemu-arm@nongnu.org; Mon, 18 May 2020 01:04:14 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:24913
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jaXwj-0004JU-W6
+ for qemu-arm@nongnu.org; Mon, 18 May 2020 01:04:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1589738434;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:openpgp:openpgp;
-	bh=fLpKO8sZ/hqI9BOhCP2moj/9si8EyxyqgTEpAoV6SQ0=;
-	b=BmaebbH4h1dYotZT/x5TF++cSL5ANvpG73uSJTEKHpe09JP1msZXNTEEzZt79vOCDXKhSj
-	FXBX/L2dtyC/IdFF/U6q4v/Z56YcwKRbAcoXAN46I77kooF2SwWO3wsX5VgwCxiHV39csa
-	1GjSrqk7eb39KCSZWbYQRh2DifvL7/8=
+ s=mimecast20190719; t=1589778252;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=xRs+DjLR3Y4rVR+MfxAtvurXdFDZgeO6io8w2miIdIQ=;
+ b=eYd/3LF1bYUnkWLHp4Lz1KB3MA1GZ5z3/+9TbgH1gYEFS8qzwyMxDyhE4ro3qzCCnkb2EF
+ 1q09iEeYI57RP43Y0nHpW9F/jtTk+JRyuXYzDddERqjSRTfA+unAo8QT4HsNyN6484WtSy
+ HeEP+MhSoMJLwtvFEp5B34ULyiwNML4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-225-gqQGG_ssOUKA9tW4Zb9CzQ-1; Sun, 17 May 2020 14:00:30 -0400
-X-MC-Unique: gqQGG_ssOUKA9tW4Zb9CzQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2358C460;
-	Sun, 17 May 2020 18:00:26 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-98.ams2.redhat.com [10.36.112.98])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 6BFE85D9D7;
-	Sun, 17 May 2020 18:00:19 +0000 (UTC)
-Subject: Re: [PATCH v2 05/10] Makefile: Remove dangerous EOL trailing
- backslash
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Marek Vasut <marex@denx.de>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-riscv@nongnu.org, Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Michael Walle <michael@walle.cc>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20200515170804.5707-1-philmd@redhat.com>
- <20200515170804.5707-6-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <d1eea504-4e09-55a4-53be-20f812f5b272@redhat.com>
-Date: Sun, 17 May 2020 20:00:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ us-mta-197-2y-88NA9NP-feCjgufqn3w-1; Mon, 18 May 2020 01:04:10 -0400
+X-MC-Unique: 2y-88NA9NP-feCjgufqn3w-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CD9CD872FE0;
+ Mon, 18 May 2020 05:04:09 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-32.ams2.redhat.com
+ [10.36.112.32])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8F9F3600E5;
+ Mon, 18 May 2020 05:04:09 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 1EA3811358BF; Mon, 18 May 2020 07:04:08 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 03/24] sd/pxa2xx_mmci: Fix to realize "pxa2xx-mmci" device
+Date: Mon, 18 May 2020 07:03:47 +0200
+Message-Id: <20200518050408.4579-4-armbru@redhat.com>
+In-Reply-To: <20200518050408.4579-1-armbru@redhat.com>
+References: <20200518050408.4579-1-armbru@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200515170804.5707-6-philmd@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-X-TUID: XXT+B094hA/9
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/18 00:53:04
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
+ ehabkost@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
+ Andrzej Zaborowski <balrogg@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2z7IeQRWmOsc
 
-On 15/05/2020 19.07, Philippe Mathieu-Daudé wrote:
-> One might get caught trying to understand unexpected Makefile
-> behavior. Trailing backslash can help to split very long lines,
-> but are rather dangerous when nothing follow. Preserve other
-> developers debugging time by removing this one.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  Makefile | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/Makefile b/Makefile
-> index 34275f57c9..84453789f9 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -420,7 +420,7 @@ MINIKCONF_ARGS = \
->  
->  MINIKCONF_INPUTS = $(SRC_PATH)/Kconfig.host $(SRC_PATH)/hw/Kconfig
->  MINIKCONF_DEPS = $(MINIKCONF_INPUTS) $(wildcard $(SRC_PATH)/hw/*/Kconfig)
-> -MINIKCONF = $(PYTHON) $(SRC_PATH)/scripts/minikconf.py \
-> +MINIKCONF = $(PYTHON) $(SRC_PATH)/scripts/minikconf.py
->  
->  $(SUBDIR_DEVICES_MAK): %/config-devices.mak: default-configs/%.mak $(MINIKCONF_DEPS) $(BUILD_DIR)/config-host.mak
->  	$(call quiet-command, $(MINIKCONF) $(MINIKCONF_ARGS) > $@.tmp, "GEN", "$@.tmp")
-> 
+pxa2xx_mmci_init() creates a "pxa2xx-mmci" device, but neglects to
+realize it.  Affects machines akita, borzoi, connex, mainstone, spitz,
+terrier, tosa, verdex, and z2.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+I wonder how this ever worked.  If the "device becomes real only on
+realize" thing actually works, then we've always been missing the
+device, yet nobody noticed.
+
+Fix by realizing it right away.  Visible in "info qom-tree"; here's
+the change for akita:
+
+     /machine (akita-machine)
+       [...]
+       /unattached (container)
+         [...]
+    +    /device[5] (pxa2xx-mmci)
+    +      /pxa2xx-mmci[0] (qemu:memory-region)
+    +      /sd-bus (pxa2xx-mmci-bus)
+         [rest of device[*] renumbered...]
+
+Fixes: 7a9468c92517e19037bfe2272f64f5dadaf9db15
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ hw/sd/pxa2xx_mmci.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+index 8f9ab0ec16..6a80181bc9 100644
+--- a/hw/sd/pxa2xx_mmci.c
++++ b/hw/sd/pxa2xx_mmci.c
+@@ -492,6 +492,7 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+     sysbus_connect_irq(sbd, 0, irq);
+     qdev_connect_gpio_out_named(dev, "rx-dma", 0, rx_dma);
+     qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
++    qdev_init_nofail(dev);
+ 
+     /* Create and plug in the sd card */
+     carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
+-- 
+2.21.1
+

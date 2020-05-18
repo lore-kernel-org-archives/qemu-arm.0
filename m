@@ -1,156 +1,165 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1462538lfc;
-        Thu, 4 Jun 2020 06:37:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwF1heqK9bT3gB8+BIuYgX4rxrySXSF64jAuRI07dqn7dxbKceRSeenBOLzlczraMBpNfkf
-X-Received: by 2002:ac8:3a87:: with SMTP id x7mr4610748qte.251.1591277876708;
-        Thu, 04 Jun 2020 06:37:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591277876; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3074558lfb;
+        Mon, 18 May 2020 07:13:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJze2+Vxl/KRfltoeEpDCILpdZHby9RFHkHbHfViLNNewMWLDOnPRf1FFsItwRFdk2l4RXxK
+X-Received: by 2002:a37:640b:: with SMTP id y11mr16437385qkb.266.1589811202459;
+        Mon, 18 May 2020 07:13:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589811202; cv=none;
         d=google.com; s=arc-20160816;
-        b=ghDyqxW+ERTO+Y9EaDmmcL5pif4QMrPjy21B+uF7ASpReUnwFdrViD4Rh57qMLIeRx
-         dQzqli4u5ne0zb9T/4C1i3gIZNw8k2GzAyP+tmRiZ8NICrlcwfX5mJghQzOqzHd++bpa
-         QDtgL2+lAG8PAUANyHHbFsll3MPHWWjKZ7SlIV+zvRYw0igOCzBdv1Ytepzu8B4kCsa3
-         1YnsXqyw5pGlrPhOVkKlamYcpmklZoR6T68xeV6gmXkJCTN+yJC2kFeDa13tl67TWJSJ
-         aZAtjdDO7SyrIm085Rw2Kx8AaEaBufH2IcStWJ3HixWTuxIPtif2FL91/Iym4OeaH+Lh
-         HP9A==
+        b=S4tOrARoyUb9IxzObYNdUFBd6kvchiMW8rG+t5ZC9yz1ruld0MrZYoRtlWZ4ZSK09S
+         uuTY8NJJ+zAE9JTLo+4E4Klog5uVc1wJSimyyAyEbvSCljyWQMsZkE6FFVrzns7LtE8z
+         0ooNmkshmyQ3I4SmoDEwxHZhgHwTC+O+atJTPACh0b+juvQNFBsIPODI0JzwYgowIZRC
+         H7l/et6a0YEGjxsB9HpGY3uAVlLjXk9n6dYy7kPxZvvDsrN+MQ4qAQICSGTk8SAZJ8Gz
+         leXF/2BQQIIDNbiw5eF2d5RxhHyXtTznTWyvw/JC/t4ph/6N+qhqyP02YaUHUt/HNf9K
+         nIXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=UsWjs9xlXObL2v2+JDDYJm1tCUO8dT6JI/J/qwHFKIw=;
-        b=RLiby9teYILgxsa4QjCWohKiJnrGgmbn2o0pjUbwb3JHjfVEqjnBqftgiMh1ybXuJn
-         NjTHxlvmKCjTwnblBu2ckx8Suoylx1hEUawDpyLsxGMZIa6gMTID4tZbUKfMPmxf96eM
-         Tao4DsQIzlUcVFrSjRkQSKLQtFe0QDYpm+xkwSvi3LObD+P21RFdfbYEJ/rnwU5ij1ui
-         7ZZHXdOdnOqf5qdLTlSNvncvO3/SxPw9CFhFJe1psGr0Ov1Ku83cZHOUPmImHSOe+xuC
-         DGlAMLmq9Tf33HbZ56CmQYBjegE2TmEJ2tb26Gb67dPP3m0Pnxr9YexouYuewLR6i25W
-         snag==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=qO0DEQsgPpTJ3W4/yS4w/C15HNNzg8b4HlcX8EpUruc=;
+        b=f4KobKmaNuKDHgA9PMUqID1Ed79JK325l04xXQBVW3mCE+Xj0Z7VZa4VDCa+YFPyTp
+         /cssmyzPnDRmgU6ltCtcUpyuP/hefAz3NlANV3J/0AADy3j2l3oUSF94udByIN4RCc2h
+         cXPTA0ZJ4wPAitHqOTN/o55tDdr8Y3aFTLUHXVGRZ4qz+zSx6RcSgmLFpYSBtvUFDAD9
+         o9YF91iTT/CTuomnE9JHj7AfbNbxM5vTffbPZ1cqd2p3dt9jORNDrivnlcQts4etEyWt
+         5iomEyJk5dB5D559uxKgPKgOAf5G8+MMN2LZbfVWn56QncSmpubW+O0CdCnF47WORWtk
+         lKpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=d6lkZg00;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id f10si2682967qtp.272.2020.06.04.06.37.56;
-        Thu, 04 Jun 2020 06:37:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=pass header.i=@linaro.org header.s=google header.b=XmKgEizO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d12si5370687qvz.215.2020.05.18.07.13.22
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 18 May 2020 07:13:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=d6lkZg00;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 5BF6A4B35C;
-	Thu,  4 Jun 2020 09:37:56 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@linaro.org
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zPOETuuG-2-1; Thu,  4 Jun 2020 09:37:53 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 308504B35B;
-	Thu,  4 Jun 2020 09:37:53 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 300994B354
- for <kvmarm@lists.cs.columbia.edu>; Thu,  4 Jun 2020 09:37:52 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AiXe9qcUT7p7 for <kvmarm@lists.cs.columbia.edu>;
- Thu,  4 Jun 2020 09:37:48 -0400 (EDT)
-Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
- [209.85.167.194])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 15E824B2FC
- for <kvmarm@lists.cs.columbia.edu>; Thu,  4 Jun 2020 09:37:48 -0400 (EDT)
-Received: by mail-oi1-f194.google.com with SMTP id a137so5097711oii.3
- for <kvmarm@lists.cs.columbia.edu>; Thu, 04 Jun 2020 06:37:48 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=XmKgEizO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60654 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jagW9-0002cf-Qj
+	for alex.bennee@linaro.org; Mon, 18 May 2020 10:13:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39422)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jagW3-0002c9-11
+ for qemu-arm@nongnu.org; Mon, 18 May 2020 10:13:15 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:36718)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jagW1-0004mz-Q7
+ for qemu-arm@nongnu.org; Mon, 18 May 2020 10:13:14 -0400
+Received: by mail-wm1-x344.google.com with SMTP id u188so10622185wmu.1
+ for <qemu-arm@nongnu.org>; Mon, 18 May 2020 07:13:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=VzZ6Wiac3hkSNr5jQzhWPiHZxuLwzhsmIf66iTOTCD4=;
- b=d6lkZg00g4aEpYR7gFHX3mGWaI+f6OcmuiSIr1JuUdjzHQQA+cqQJJLp4LcWq+akqu
- ktc7fZV6YkLdsqjUgI6qm7SvZdOB+9/DhHTXBAFCwLfqI7OYzUvV79+1rZvZ3QqHtj3T
- YaM7mP1rp0DNmIDKql5u/BBh/Rq0hLB+NnvFCBgJ2Xui+DBZ7WdaATemgG2S0A40eGOb
- 7tEV+aLwq2iNg1nHz1dangZyL5pvFTt+4/yPwme+MHKFTV9AbpVwLS8QTelwXPjNb7WI
- vuoAQXmR6X5VcPAX3juNLHm8MuI9ABi/AG4z1lOD/pTPlmBBSNDkswED7p9NAHUWP7np
- HFXg==
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=qO0DEQsgPpTJ3W4/yS4w/C15HNNzg8b4HlcX8EpUruc=;
+ b=XmKgEizOBA1chni4ASZaRYuql3iwXDMa7UlnILXK2ermaciojwvuDedMYpVfDQI+Qq
+ cJz9LaZqXPOD2VOO+tNge51ZKsr6MBkBU5DmyMeR5kjsfZtdJi92hxE62LT10hNYjUjS
+ rLGJDt7duZlqcDUyILQdAHELxiev9CE7VStJTBz+Iw3UOZm8OcyvWJntl2TIinkdUPLt
+ Od+SRWvoEeelSMTMGjp8urvH/SMAx3uIal2BAcR1CZiqpzBBXKGe1TAAueMPi2O4/e+t
+ 1sC7bPjmdkXJycEdaMvMOITHj7VZBN4NF33VdsmUPfUx9m41lZStxoUONsMz0IzuMuNO
+ RelA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=VzZ6Wiac3hkSNr5jQzhWPiHZxuLwzhsmIf66iTOTCD4=;
- b=SHI/VtntkhMqUdbEujnBcZfCts6TSWk11ZmXMgCzW5y+DSkP4tW2jW/I9AfZgk/9d4
- kc1enRtvWQeBX8/LHOgdu9RrJntudYZctdxcDWl03Rf8ps63WYwU98RnwrqdAgXz8aCI
- 3exkErKimt4P71C7Mj6t9eU28MfJ/z/k3GMHt8oTOZ9JebBMKokeoSLxxYR+pgo4fudw
- 8Nbi0BNXJPN3vnm80sIrRJPoB2P2N6FA1A4oJDMhbvPa7WOl9rZ7i+kJI44R5bfZKDDQ
- CQLX77oMD0+ZR8PLMdm88slb5rLqNACVG0/4ktdTBNZC7+0/GgGLEZll4XjrP2d6sIha
- oZzg==
-X-Gm-Message-State: AOAM531ZdInyQBi5IYfF2084lo8r5zda9jAzIALThhsbw44Mvu8f5Yjy
- eJBCFQtXWlrW01NEr14Aykegib2ioo57KRayCnDBLQ==
-X-Received: by 2002:aca:5152:: with SMTP id f79mr3017830oib.146.1591277867402; 
- Thu, 04 Jun 2020 06:37:47 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200604125544.GW28566@vanye>
- <CAFEAcA-ACvx19HZBk-nusMCOkr-D3KReUJRTouL02rLEXOUanQ@mail.gmail.com>
- <20200604133221.zpqv5segdv7qwio6@kamzik.brq.redhat.com>
-In-Reply-To: <20200604133221.zpqv5segdv7qwio6@kamzik.brq.redhat.com>
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=qO0DEQsgPpTJ3W4/yS4w/C15HNNzg8b4HlcX8EpUruc=;
+ b=kZu8WT/sAQmPmK9WKE6pnc0ZLI7dvZoRHHvtqKep4WR+NLxwK8guZd790Sbw31vj9J
+ 4PNbjvWsTo0wEpFoA53nMR7o5/I/7vE5Ke3dEVEvJK9Wtggrk3g1xhwD0zX0zgX3MkSc
+ GbuadeOpJndmyRzQgUVaUYFYFC3bkzqGSe6jbJ0bDXpq+pmC1iE8wG2DJdrxBxyqAk4h
+ B+ptekixs5YWY2cUdj+ARzamC78O9hV294a0+CnWjkB4VfO7ex6sV3R2Bw+V9CZfYSEn
+ Ns9Rf3x8o7hbx1F68ZC0bCXtlTBzpuUYgjdDVH5oyp4poM64Oa+eJSkux9gg0GXFxTPP
+ 1E9w==
+X-Gm-Message-State: AOAM531TQO3qcfHy8Wzx82vcapTn3ywbozBYvAJdKwbl4k7p8R1p+QTE
+ ssrDGnBXSpurGbUMCc2l1/4K5AKJxJZbdw==
+X-Received: by 2002:a1c:6344:: with SMTP id x65mr20647401wmb.51.1589811192092; 
+ Mon, 18 May 2020 07:13:12 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id l19sm17229075wmj.14.2020.05.18.07.13.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 May 2020 07:13:11 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 4 Jun 2020 14:37:36 +0100
-Message-ID: <CAFEAcA8EOis7=2rderA6qi31Yuaubt=9_yWxoc82v1paPQD_rA@mail.gmail.com>
-Subject: Re: kvm_target, QEMU_KVM_ARM_TARGET_GENERIC_V8 questions
-To: Andrew Jones <drjones@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Leif Lindholm <leif@nuviainc.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Allow user-mode code to write CPSR.E via MSR
+Date: Mon, 18 May 2020 15:13:09 +0100
+Message-Id: <20200518141309.11998-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 1ewuVibLJjFF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BofMI5LP2coT
 
-On Thu, 4 Jun 2020 at 14:32, Andrew Jones <drjones@redhat.com> wrote:
-> On Thu, Jun 04, 2020 at 02:10:08PM +0100, Peter Maydell wrote:
-> > These explicit settings are correct, because for these CPUs
-> > the kernel does have a "give me what I want in particular"
-> > setting (which it will fail on the wrong h/w), and also as
-> > back-compat for older kernels that predate the GENERIC_V8
-> > define and only recognize the explicit "give me an A53" value.
->
-> Actually, I think the failing for the wrong hardware is about all these
-> older targets do. I didn't look real closely, but I think all targets
-> produce the same result for the guest, which is to pass through the host
-> ID registers.
+Using the MSR instruction to write to CPSR.E is deprecated, but it is
+required to work from any mode including unprivileged code.  We were
+incorrectly forbidding usermode code from writing it because
+CPSR_USER did not include the CPSR_E bit.
 
-Yes; it's just that originally "specify CPU exactly" was the
-only interface, and there wasn't a GENERIC_V8 at all.
-I actually suspect that current QEMU will no longer work
-on a kernel that's so old that it lacks the GENERIC_V8 and
-PREFERRED_TARGET support[*], but we don't have an explicit "we need
-at least host kernel version X" requirement that we track, so
-it's hard to say for certain. (If we cared enough to test we
-could likely delete a bit of back-compat handling code in QEMU.)
+We use CPSR_USER in only three places:
+ * as the mask of what to allow userspace MSR to write to CPSR
+ * when deciding what bits a linux-user signal-return should be
+   able to write from the sigcontext structure
+ * in target_user_copy_regs() when we set up the initial
+   registers for the linux-user process
 
-[*] in particular I have a feeling that recent changes to the
-GIC handling code in the virt board implicitly dropped handling
-for ancient kernels
+In the first two cases not being able to update CPSR.E is a
+bug, and in the third case it doesn't matter because CPSR.E
+is always 0 there. So we can fix both bugs by adding CPSR_E
+to CPSR_EXEC.
 
-thanks
--- PMM
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+(The recommended way to change CPSR.E is to use the 'SETEND'
+instruction, which we do correctly allow from usermode code.)
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Bug reported on IRC. Quick-and-dirty test case at:
+ https://people.linaro.org/~peter.maydell/msr-setend.c
+
+ target/arm/cpu.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 5d995368d4f..677584e5da0 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1230,7 +1230,7 @@ void pmu_init(ARMCPU *cpu);
+ #define CACHED_CPSR_BITS (CPSR_T | CPSR_AIF | CPSR_GE | CPSR_IT | CPSR_Q \
+     | CPSR_NZCV)
+ /* Bits writable in user mode.  */
+-#define CPSR_USER (CPSR_NZCV | CPSR_Q | CPSR_GE)
++#define CPSR_USER (CPSR_NZCV | CPSR_Q | CPSR_GE | CPSR_E)
+ /* Execution state bits.  MRS read as zero, MSR writes ignored.  */
+ #define CPSR_EXEC (CPSR_T | CPSR_IT | CPSR_J | CPSR_IL)
+ 
+-- 
+2.20.1
+

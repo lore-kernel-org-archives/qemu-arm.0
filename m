@@ -1,98 +1,99 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1704473lfc;
-        Thu, 4 Jun 2020 11:43:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwktL0QY9yOkXze0zvj3pXsN/aQ7OvW4qfk/BdAp8gYmZHEsjZDV9anNKf0xTh4CPpPtjNY
-X-Received: by 2002:a25:a165:: with SMTP id z92mr10113905ybh.48.1591296208069;
-        Thu, 04 Jun 2020 11:43:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591296208; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3087892lfb;
+        Mon, 18 May 2020 07:28:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwYoSggQQS6ntiaILHYJX+t49QpiUu8NeHdfy523OBzm0KkpUckcBn1BceWHLaZgnDIRk+T
+X-Received: by 2002:ad4:408b:: with SMTP id l11mr15537744qvp.156.1589812138189;
+        Mon, 18 May 2020 07:28:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589812138; cv=none;
         d=google.com; s=arc-20160816;
-        b=eqiBrRXBEbGsy0VvZWTlgx8N6BzhwYG28oBuNkV8QC0GdVpG8ergaAukCooknHymic
-         wIMMZmCWjK/AC14yBv/N8AmxKo6Man/cuYqja6pO9YgfwybckJgqTbpa9xcVSxlsq+v8
-         sP4HtcIg/+uriqt8oZaExIyptzhGRTwUqBSALYRAX5Ky0T4lgWE+A9aF6sf0sy6xsVwH
-         TMFPaTTyXWqEJ0XaKKvYKomnml2fn2J8f6oS8v1pKmi6MvP3lodwiKk4eFLgZiisq9ES
-         MUERnIkgCSv1Mld+MkqnKKgowWz13KkOmLdU/NFQEk/P5ORHdZapiqLH5JbiXsOWbUG3
-         aAAw==
+        b=L7rVlO9UZczJuPosMcW0dzaQ5aERs8QXZheZ8Ltxc9/oW4aUIkgE35+573b3hLi/B5
+         XQPZzVcH+yhVZVs/PleZVyzdgoGx/KvF+CH4keGNtSwKzCVC5kRlFSevSfij8Pxl046D
+         eMuXIIo7lKtYedyUTx1FxyGFQK+mk06zDPpghOmMZPTgWCVn/atJCR2KJq4NTlbaphse
+         7YVFj1SZJfqeJLy6e+CbcrNyxURmnHRvY5MEe+iCOBxWdZKRod0ggToSP/1/tdcMoP7M
+         rLEiLGJOxA5l3VsSFiDycZFcnl81sEt+BD9aZraua9vvfNCIrnFajwfYG/vVlK91Iyne
+         VBqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=V+tqJ4we1CwKNF7vfPzsSSNsnmnzFHhUB3cgyBqkxgk=;
-        b=ry1xZypkiPo84Kn68ORYKAOJ1U+yZfAo4useJrScoppxXGmi7UF70rRkr+zMbcUivB
-         zkpwihQk72WIb33MvtNiEDciJ+F2Zkm3NMwSL+08CflDLwjCQPA0H8D1Ablj0hJDwg23
-         /1EoFbc+tAUamjPtXRySvz1ckGsVIkCIC3egkgWgzipFVOwLzbGzhGH14ZsZbg0njqe6
-         WbgKkOaeJ+LMJ0iIBn6mWylckPxhNq3zDbEtvzwYIFILQvzSH+Yw/aqUeEW4IqQzCglD
-         NssFo+vlC3oIlbzr3gJzYbhyxBdKiSZH5A02CdcuwBR7H2r5Livzr3AgvVHsnc8cA/RG
-         qZhQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=00ShRuslEy4BzxQbUPtydgOGX+tNRA8D9prQR/vuBmQ=;
+        b=YZ/DQDJhF0nKsa3sQ3M/+FHm+btM6fpZgymCqDLj/e4khsPHzROGtF3eVtN8dGoKdo
+         XFeGAc+EUfmX2ywhKe+9+CLvc0xO8/7sCyoSJMrz8+JJAOQqccOM74BJgdB9p4VqD/gX
+         kKVjpEcrGN7RXVxuRnFGhS0Dp9KumrAUEldSFiQFQG03KlAOkEj3igEVuCjte0Buy9iK
+         QUj8m5ABjiWigjxtCOVIQ6YxbxPC81OaqXzB2zB3UGPtdyvYzl0g5xRTTLK9LRLTuqXm
+         twmmqyTFWbtupywxgH5EDW/77Te3uDvGjzyRFq4iVS2r9qoGgiOpNHvkGSXJevjfPmdO
+         d7DQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JqgYANN6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=oGaGIc1y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z12si5156977ybg.174.2020.06.04.11.43.27
+        by mx.google.com with ESMTPS id g145si5775446qke.107.2020.05.18.07.28.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jun 2020 11:43:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 May 2020 07:28:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JqgYANN6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=oGaGIc1y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43864 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49068 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgupr-0006vU-FC
-	for alex.bennee@linaro.org; Thu, 04 Jun 2020 14:43:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39402)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jaglF-0001tO-Lb
+	for alex.bennee@linaro.org; Mon, 18 May 2020 10:28:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41512)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jgupk-0006uz-R8
- for qemu-arm@nongnu.org; Thu, 04 Jun 2020 14:43:20 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:38183)
+ id 1jagkR-000115-D7
+ for qemu-devel@nongnu.org; Mon, 18 May 2020 10:28:07 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:39520)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jgupj-0001p5-Of
- for qemu-arm@nongnu.org; Thu, 04 Jun 2020 14:43:20 -0400
-Received: by mail-ot1-x344.google.com with SMTP id o13so5583575otl.5
- for <qemu-arm@nongnu.org>; Thu, 04 Jun 2020 11:43:19 -0700 (PDT)
+ id 1jagkQ-0000jI-66
+ for qemu-devel@nongnu.org; Mon, 18 May 2020 10:28:06 -0400
+Received: by mail-wm1-x344.google.com with SMTP id w64so10680102wmg.4
+ for <qemu-devel@nongnu.org>; Mon, 18 May 2020 07:28:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=V+tqJ4we1CwKNF7vfPzsSSNsnmnzFHhUB3cgyBqkxgk=;
- b=JqgYANN6wCRpfWlLBsko7YwgwNfwEaWNit+i2c5alu3KgyDbJVujVZkxQFwQkH46Wf
- 7OVXpwcwfGe/EcYpm0heZcAtrB636jHZz3jtv5xdDxNtG8xoVrDASEVXZrWkRMgSo9lN
- YMJIoJUT+PA0WAKUR723LbTufO6g7MUD6Ea5tvU5vli1KhV5ddWMe518xwMxwsrnz8Mk
- fE3NjREHwI0OJjuY0tE7L573hdV3H94jcczLbleQlC/I6+hlHyv5vwycstK4ZWTGPqcX
- ar3SsGoapFv2eqcfhNECk+JtIp+PZtrG+7DA2aFTbeZjcXWQ5VOjwtcEtAsEsz9F1hje
- 4y8g==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=00ShRuslEy4BzxQbUPtydgOGX+tNRA8D9prQR/vuBmQ=;
+ b=oGaGIc1yKjjinsdSJN0pLzgqeHqmiS0wV9ugknNs3rBNChoDkYU2wOOYezL4Ge5TUD
+ SNnUhwOwt6fBnopm1t7/PkwszWVZcztGmagwPVOrPUJ7a35TAG9+yTICvjfNsdbUz6RX
+ BaovrDLsB/rfInxbmKrCR8ShXvMRhfTiX4fY/Gdi8t8CSsbK4tStSgYVm3xvC7inh1Jk
+ gO6Nh8PeCt2lX0pWV+kMgnsPAx0AsU16oX8+zuv873UHZcHPGQHvBEcvpuTaQS0CPjli
+ 2zaqbX6aC+X4nizZL363BU4i0fBXo0xWt/6jFmukB0ox5y2cGNqmMuL/jccQ268xDkwH
+ PoxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=V+tqJ4we1CwKNF7vfPzsSSNsnmnzFHhUB3cgyBqkxgk=;
- b=E8Ukh8L/T/zuhdk5DXEtTxNF9DdPmscKELfnDHMGXTzwV/eeKBjuOUxjUzKWT0rwVp
- KL2hYCO11CmXbWt6jiVllW+3Aq4mqw8cwFH4ZwtACdqAdsEJrkEPAo3ZbYoma6dxr3uv
- gJBu3HrR1FoXVXGOPMb/+xiWigvtFLlU0CEWkgInoMEkI8kvt23Br+m+X9i1Qnb7+S5K
- 15IwnrJDg0Djkyg3/KcHtfEWyE84wcexUQ9kvY6x2wn2NSvOT4JvKagDKVQPbv1wGpR9
- sWxmr5TH9aNqpKnfL9jnsAtmnnEHYxH8+xHnDOWWSWgSlWG1WkPT2TmVpeqAk0vq1VQP
- hlkg==
-X-Gm-Message-State: AOAM532yvhc9KkNQEGYAlpwll4bjuduwj/xeURHnne1K4LcBPoX+uDgs
- Pgwhz56rHZ2eMPY1S9sg8AGoR7Mzvzn7qv4IbtUhtQ==
-X-Received: by 2002:a9d:b82:: with SMTP id 2mr4528725oth.221.1591296197806;
- Thu, 04 Jun 2020 11:43:17 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200604125544.GW28566@vanye>
- <20200604131802.7w4hncgq2gopbw6z@kamzik.brq.redhat.com>
- <20200604160300.GB28566@vanye>
- <CAFEAcA8MTB5VQQbMuSfkGc9JcGeawL_GUY8Pcs3yxT9kdncZJw@mail.gmail.com>
- <20200604162607.GC28566@vanye>
-In-Reply-To: <20200604162607.GC28566@vanye>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=00ShRuslEy4BzxQbUPtydgOGX+tNRA8D9prQR/vuBmQ=;
+ b=BuMOGE1Y7z0gFMImkmkkax9Ngg/5hpJNOst+vyNsTLbILT4ZwBO9K2o4h9ngLzFrKw
+ AterqV3TY7qjJgLdQ1FdkDsRUOEpnccdTjZ6p072ka5Vbn+dkSQZPjf6pzWTvywDJl1Z
+ JTCT3t596BhSfwqjet/5bzTl3TQz8x21hrOa/+iiDLDhwQCo749AT4gv6JN9UfdEfbjO
+ IfnnxwYmZq4vLQc/WJIeL9DBJk1xNlrU3ZBPja/jAmkdtkfm0gKotdmhP6yI+9ZH4iBH
+ sFxaDC7gjNVkdZOr5/RpXpblI01TU6hLwRWpWutV+JCUq787cKARknlGbs4J+GBvDEXd
+ iDpg==
+X-Gm-Message-State: AOAM532N1oDHXQA/7uPDu6mZmVF023AaH0jqOok3PRkGfV+vxWydknNI
+ Hfwe27pRwfnRPm7qZ4xEFuFe7A==
+X-Received: by 2002:a1c:7410:: with SMTP id p16mr20520201wmc.134.1589812084155; 
+ Mon, 18 May 2020 07:28:04 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id p17sm211245wmi.3.2020.05.18.07.28.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 18 May 2020 07:28:03 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 4 Jun 2020 19:43:06 +0100
-Message-ID: <CAFEAcA-wX-vKek_Zt5hmjiQNP1utCO7yGJQPcuny1M7xncYsQg@mail.gmail.com>
-Subject: Re: kvm_target, QEMU_KVM_ARM_TARGET_GENERIC_V8 questions
-To: Leif Lindholm <leif@nuviainc.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH v2] target/arm: Allow user-mode code to write CPSR.E via MSR
+Date: Mon, 18 May 2020 15:28:01 +0100
+Message-Id: <20200518142801.20503-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -103,95 +104,84 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Andrew Jones <drjones@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Wps8lvT+CXm0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Amanieu d'Antras <amanieu@gmail.com>, Riku Voipio <riku.voipio@iki.fi>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: C6nrCkSDYmSn
 
-On Thu, 4 Jun 2020 at 17:26, Leif Lindholm <leif@nuviainc.com> wrote:
->
-> On Thu, Jun 04, 2020 at 17:09:30 +0100, Peter Maydell wrote:
-> > On Thu, 4 Jun 2020 at 17:03, Leif Lindholm <leif@nuviainc.com> wrote:
-> > > But there's also things like:
-> > > - a57_initfn explicitly setting kvm_target, then only being called
-> > >   from max_initfn for !kvm_enabled()
-> >
-> > Expected -- a KVM 'max' is nothing to do with a TCG 'max':
-> >  * for KVM, -cpu max means "same as -cpu host"
-> >  * for TCG, -cpu max means "start with an A57, then add in all the
-> >    extra architectural features that have been added since then".
->
-> Sure. But why are we setting the kvm_target at all for the
-> !kvm_enabled() case?
+Using the MSR instruction to write to CPSR.E is deprecated, but it is
+required to work from any mode including unprivileged code.  We were
+incorrectly forbidding usermode code from writing it because
+CPSR_USER did not include the CPSR_E bit.
 
-Because it happens to be set in the a57 initfn, and it's harmless
-if we're not using TCG. I feel like some of your take on this set of
-functions comes from thinking of max_initfn as in some sense the
-'primary' function here, when it's the other way around : a57_initfn
-is the standard kind of CPU initfn (behaving in and written the same
-way as a53_initfn and a72_initfn), whereas max_initfn is an odd
-special case which happens for convenience-of-implementation
-to piggyback on the a57 implementation.
+We use CPSR_USER in only three places:
+ * as the mask of what to allow userspace MSR to write to CPSR
+ * when deciding what bits a linux-user signal-return should be
+   able to write from the sigcontext structure
+ * in target_user_copy_regs() when we set up the initial
+   registers for the linux-user process
 
-> > kvm_target being set by a57_initfn is specifically for the case
-> > where a KVM user is using "-cpu cortex-a57".
-> >
-> > > - a57_initfn setting cpu->dtb_compatible to "arm,cortex-a57"
-> >
-> > What else would it set it to?
->
-> Hmm, I had been hoping there was a generic v8a one - kvm64.c kind of
-> got my hopes up with "arm,arm-v8".
+In the first two cases not being able to update CPSR.E is a bug, and
+in the third case it doesn't matter because CPSR.E is always 0 there.
+So we can fix both bugs by adding CPSR_E to CPSR_USER.
 
-Ah, that's the other way around -- yes, for 'max' we should be using a
-more generic value, not accidentally using 'cortex-a57'. (Linux doesn't
-in practice care IIRC, which is why this bug hasn't been noticed.) But
-for an actual cortex-a57 model we should report as arm,cortex-a57.
+Because the cpsr_write() in restore_sigcontext() is now changing
+a CPSR bit which is cached in hflags, we need to add an
+arm_rebuild_hflags() call there; the callsite in
+target_user_copy_regs() was already rebuilding hflags for other
+reasons.
 
-https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/cpus.yaml
-is the official list of permitted strings, incidentally.
+(The recommended way to change CPSR.E is to use the 'SETEND'
+instruction, which we do correctly allow from usermode code.)
 
-> > > - a57 initfn setting cpu->midr, max_initfn overwriting parts of it
-> >
-> > Also expected, TCG's -cpu max is "A57 with lots of extras".
->
-> Maybe I'm being too rigid in my thinking here, but it does kind of jar
-> to see code call a function called aarch64_a57_initfn to have it write
-> a value where it then throws away the only thing in the value that
-> made it a57.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+v2 changes:
+ * fixed wrong variable name in commit message
+ * added arm_rebuild_hflags() call in restore_sigcontext()
+---
+ target/arm/cpu.h        | 2 +-
+ linux-user/arm/signal.c | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-The things that make it an A57 are all the feature flag and ID
-register values (which is is what tells the TCG implementation
-how the CPU should behave). The MIDR value is the least interesting
-bit of the a57_initfn in some ways: it doesn't change the QEMU
-emulation's behaviour and mostly guests don't care what the value
-is except for purposes of installing errata workarounds that don't
-matter for QEMU: your average guest would work just as well with
-any MIDR...
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 5d995368d4f..677584e5da0 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1230,7 +1230,7 @@ void pmu_init(ARMCPU *cpu);
+ #define CACHED_CPSR_BITS (CPSR_T | CPSR_AIF | CPSR_GE | CPSR_IT | CPSR_Q \
+     | CPSR_NZCV)
+ /* Bits writable in user mode.  */
+-#define CPSR_USER (CPSR_NZCV | CPSR_Q | CPSR_GE)
++#define CPSR_USER (CPSR_NZCV | CPSR_Q | CPSR_GE | CPSR_E)
+ /* Execution state bits.  MRS read as zero, MSR writes ignored.  */
+ #define CPSR_EXEC (CPSR_T | CPSR_IT | CPSR_J | CPSR_IL)
+ 
+diff --git a/linux-user/arm/signal.c b/linux-user/arm/signal.c
+index a475a103e97..698985a647e 100644
+--- a/linux-user/arm/signal.c
++++ b/linux-user/arm/signal.c
+@@ -552,6 +552,7 @@ restore_sigcontext(CPUARMState *env, struct target_sigcontext *sc)
+ #ifdef TARGET_CONFIG_CPU_32
+     __get_user(cpsr, &sc->arm_cpsr);
+     cpsr_write(env, cpsr, CPSR_USER | CPSR_EXEC, CPSRWriteByInstr);
++    arm_rebuild_hflags(env);
+ #endif
+ 
+     err |= !valid_user_regs(env);
+-- 
+2.20.1
 
-> Not entirely unrelated question:
-> Would you take added field definitions in target/arm/cpu.h for
-> features not yet emulated in QEMU but defined in released versions of
-> ARM ARM?
-
-Yes in theory (you'll see that we have a bunch of field definitions already
-which we don't yet implement, because we tend to define all the fields
-for an ID register at the point where we want to access one field), but
-on the other hand there's usually no need to actually use them unless
-we're adding the emulation for the feature, so the question is: what would
-you do with them if you added them?
-
-thanks
--- PMM

@@ -1,116 +1,132 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3164283lfb;
-        Mon, 18 May 2020 09:01:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6Rh2JLoJ4Ck64ORuuqnbWnGpN81YGavzkN/xMPM1AYeR0B1lG9KfX+tvHl9AZfvFkJIhL
-X-Received: by 2002:aa7:c887:: with SMTP id p7mr14027823eds.269.1589817704796;
-        Mon, 18 May 2020 09:01:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589817704; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3169199lfb;
+        Mon, 18 May 2020 09:06:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwJAnw0Q0lx/bETkaFEgreXdFQ4JQc2vGi94+plsXLOBNPk0CRYmbJN+p+E3tS9otLiiJKi
+X-Received: by 2002:aa7:de0e:: with SMTP id h14mr14816918edv.82.1589818012476;
+        Mon, 18 May 2020 09:06:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589818012; cv=none;
         d=google.com; s=arc-20160816;
-        b=DfLvws1F9MLGi7aaRjXRRqnbR7RWfqvaKRjJJMUk28sgZ+18A6w5u7t/wcpHuEdRZ1
-         /xXQglgpGc7XJOyGKxLbxgpYquw1a+7jU3l6JeTmPeBwbb7Yvc/I/lucjhrSlvC4wMan
-         n8PiZCMyroqLxMtjrFTIdh8jqC/gLvSRNcypbjuCVBugnz0KXTOoVerJkajeCs6linKW
-         weQ20R9A8c/wb+Pap871BO/q02GaZzGgvm3EySXCvGEPSKE7y6HRFLhNYLPL/iIUKjHe
-         HHb0BfWLYEjw6T5nQi5M5SZ0tBk26BB4llwly6nIc3suFp9hMy81aLXwNIZ7YhCVpVTD
-         XKzg==
+        b=UtLgby15qlmsttkLRrpqZqrpckMHoGpsmSzXbmixY8e513t1JQQkeMDrZTFtG55zcS
+         qziH9xO+aBOZZgvdFrqYVwCnTEACHwAXDglK8QdbHrlxPpH3K35BC6wWinQAntmsy7kU
+         1B9JUS85lGcGHBayV8sOT8gcI+L9qw14NvlBM7jkY4OY1QTrVzmfwuYkk7nymfzhDE59
+         MxzZjWV4v8ekcmn+Ebic0XHVMijii8l1qUn6yb4sGQaMXlJtAh5zwcykRZckPNVB4vf0
+         Id+/dOxqDI5eOqu/1sbG+/1nGozVLu27bFWzG5XzhI4A+fK+2S5X4mnMJuGpMHDkP2T/
+         ZRxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:cc:to:subject
-         :message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=+Csgbxdb0qPLhWsI6+64x/kUGz0KGGbmksUNP6HDZ5k=;
-        b=ybmbu0tpV8gBh7QfnTwp1EWs/J7gObjkI9xYb64heSpZVZBhRRELs33QgZhUXTL4Id
-         +l34CavyAOU7GBKBBo+96pDKoXLC0z+o+RiVKG6uHFOBTXJWJ+ZN1vg87zyHHjsHMQwe
-         iybTW+GJta8gO5sMjnUJdNpRDeVevs0mZy8iX8g/MHDyfm8le5+do66SsdPCcdix/4vt
-         Uq7G/cMizXmMiGCB5koKwlsUZkKOqyj+QD/PPOMhjRSf/g8NXK/tnDN/mETH8DpAsAXq
-         W8h/Bi2gPSmKxBROD6EH5gbOUDgOEltSx0RJXMsnzztBHO/5OCCFn32oTIZDS5OQuuEl
-         s7Ig==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:dkim-signature;
+        bh=nc8u+kw9xx6d2Me7r51tf/V+eAZD6omt37yF0+esBOU=;
+        b=d8qc6yH/fcj3mHrzEwT51+TnU+nEp4vKBBB5ey6hAeJj7Uas1nUdsMFzu2Q4zK1L7x
+         gx0LFrSwTvBHz7nPVglDdf6+96MXvR2BcPu/tN+9VYXswpmvMAPlG3otU8vohI9oqQHh
+         aL8vsEiTjA9B7FtZiNkXzh2l9ldl6IgerwFZGts2fY1gjyIfVdc4Ijktfu1EdtiVJrQN
+         wwpxmCyFSnTZYoNv2nJWAuRLPbNKHPO5KlDIxC13jPSI7YZ0xuePVvlz65fE6sQj5jCZ
+         ovxQrtW/+Zwklm1TC8VZKXW4bOwkK0jLFutHmyTD5XQ1OzrhTEVgaQYgXTGwN2JCrsiQ
+         J10Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TXAc1gm8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nwelkd6D;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id x24si7191560ejc.301.2020.05.18.09.01.44;
-        Mon, 18 May 2020 09:01:44 -0700 (PDT)
+        by mx.google.com with ESMTP id g17si6695231ejc.416.2020.05.18.09.06.52;
+        Mon, 18 May 2020 09:06:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TXAc1gm8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nwelkd6D;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727942AbgERQBn (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Mon, 18 May 2020 12:01:43 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:43932 "EHLO
+        id S1727040AbgERQGs (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Mon, 18 May 2020 12:06:48 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:44742 "EHLO
         lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1726958AbgERQBn (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 18 May 2020 12:01:43 -0400
-Received: from mail-ot1-x344.google.com (mail-ot1-x344.google.com [IPv6:2607:f8b0:4864:20::344])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id E7C39C061A0C
-        for <kvm@vger.kernel.org>; Mon, 18 May 2020 09:01:41 -0700 (PDT)
-Received: by mail-ot1-x344.google.com with SMTP id a68so8458420otb.10
-        for <kvm@vger.kernel.org>; Mon, 18 May 2020 09:01:41 -0700 (PDT)
+        with ESMTP id S1727005AbgERQGs (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 18 May 2020 12:06:48 -0400
+Received: from mail-wr1-x441.google.com (mail-wr1-x441.google.com [IPv6:2a00:1450:4864:20::441])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 20A0AC061A0C
+        for <kvm@vger.kernel.org>; Mon, 18 May 2020 09:06:48 -0700 (PDT)
+Received: by mail-wr1-x441.google.com with SMTP id 50so12478922wrc.11
+        for <kvm@vger.kernel.org>; Mon, 18 May 2020 09:06:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=+Csgbxdb0qPLhWsI6+64x/kUGz0KGGbmksUNP6HDZ5k=;
-        b=TXAc1gm8E9fWfG1aZ5JEtdBX6ZKEIniB+udkwYEaE/7YZkLO32zNrFFiKGRfUuNqJl
-         XYTGH9hVJPGhW9a1wTDYps+tFPe57gj666pce4XxQrmqZqXIe3EqTxydUWyHE2AlI9Ul
-         0j7JLMnFOIZHMMap8Iud3NpHglttPrbWB6wieRAKJHXvX9jdspsUAZ7A0oTdUE9bRYy3
-         /N6TuMsVnmKmwofQepGq5+kMT6I2aFQZ0RqHG2L7iDkwevY1vQqtQEBLPz3Y3IGaAL4/
-         J2L1gx9EdF19viSo41SfCyUT0okLiH5HHIKFcYHrDyfy2IfHaXQ76pNB5zdlv4zOuRsC
-         U35g==
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=nc8u+kw9xx6d2Me7r51tf/V+eAZD6omt37yF0+esBOU=;
+        b=nwelkd6DaiyrhP+y/Sh3h2z+sz7nNgkPtzL/5ouRJgDmM6W5CLFfkaEOmuqA6ZZVE4
+         5QrFSh4APyYT7Uuch6qdKxbz4EQZ9FNJHb5XniqTdO205iIjM6Oj0qAPAWmiBpaS6Ult
+         bhbXNFVUxzKpTtys56H9Er9+CwvzhShqqyAD4VT8rcnbgPE9frM7B/fVU5m+QQO4MNTL
+         hXb14KTX+pBZ5E0i4uKJFHRmQl14kK6EdEqte9jpFdVaCnFfk8rmONqonPSv9x1WmDH3
+         6KxzwuopypOvexNbMclX0fFe1al4plMoHTIjHfc46WRcS28p3OcDMDDnKCbn+nqpoEL9
+         LGEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=+Csgbxdb0qPLhWsI6+64x/kUGz0KGGbmksUNP6HDZ5k=;
-        b=mOUuuLPYJB1TqDfRmp6u0qTHxpJwtFZv9JM2BT/955JopV3bdKR4ZVxMPkgnt0aqEQ
-         P9MR1rTxXMXm/eDRiO7FGTv+B+2T5h/ec5MpB3pe54b/4tWAEHsgihcHKPwcEiMdqLcY
-         5EmSFxugsazbLetAb0EG9iDAdeDrngMJS6AYkyJzK5JTvFW6jyCUlRcCMOs3WczBDpDG
-         yWRFuBklr61nyxIAC2KVm+NUiDvOnyXEyE6+Ru9aOOf+pykTtHfzS9b5sS1TzONk9VtU
-         VgtksVo2x6awUFu3l/X9m7mN9r36m1QpUWayoy+FphupgezKv8V7u4zf1Fn5gsdFLca1
-         tSog==
-X-Gm-Message-State: AOAM531wo/URPsyOxdZ+Ij2Zjbc+l+p6QRF4eCiWWhJEfQlrwTRA1Fb0
-        qiNdAGTbMu8VodtMIHwyHv6Kp69vKS/7XpOQLn8haA==
-X-Received: by 2002:a05:6830:158b:: with SMTP id i11mr3252405otr.135.1589817700265;
- Mon, 18 May 2020 09:01:40 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200518155308.15851-1-f4bug@amsat.org> <20200518155308.15851-7-f4bug@amsat.org>
-In-Reply-To: <20200518155308.15851-7-f4bug@amsat.org>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Mon, 18 May 2020 17:01:28 +0100
-Message-ID: <CAFEAcA8tGgyYgHXT5LVGz675JMq6VWR56H++XO5gtTrcaZiDQQ@mail.gmail.com>
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=nc8u+kw9xx6d2Me7r51tf/V+eAZD6omt37yF0+esBOU=;
+        b=Gc5UTKPkLOKXQ02is2cAQVuh83vX+gsxZJSbFTBCmA33uO8nJ4UQWsfhuD2vqMv5dF
+         VM0B2cd82dm05H/noqH91OSjyH4cJONAJRXkY2KtNdxKyU8jRFCF1NBCQM89/815Xz9e
+         OT1+IsASntLui2tIwIZTSArYpmTCIqHJo0hR3pxCxWmh1BaheqhggI4pWNm3nMOLQcYv
+         kttRZzFJP1xWA2pOeUEM2VpAJmLLo3fIeKF64dW0uHmdU8g1ycNfTyU6np8j4HAc5NlT
+         oiOxP1sDJkQiX3sZO7vOiakuJqjya42yixzhDMZjTYNQbXb9ObxchLZuGO+Rgp2M+mH6
+         iA0Q==
+X-Gm-Message-State: AOAM530GWGgwYOJt+jz50c+DuUiS2RbSz8bfBnRBDmHuYAvJ2eGmN+7i
+        4hSp61d7Jm07QsoMjPyrZJ8=
+X-Received: by 2002:adf:e74a:: with SMTP id c10mr20962424wrn.109.1589818006872;
+        Mon, 18 May 2020 09:06:46 -0700 (PDT)
+Received: from [192.168.1.38] (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
+        by smtp.gmail.com with ESMTPSA id g6sm17164529wrp.75.2020.05.18.09.06.45
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 18 May 2020 09:06:46 -0700 (PDT)
 Subject: Re: [RFC PATCH v2 6/7] accel/kvm: Let KVM_EXIT_MMIO return error
-To:     =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc:     QEMU Developers <qemu-devel@nongnu.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        kvm-devel <kvm@vger.kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+To:     Peter Maydell <peter.maydell@linaro.org>
+Cc:     Paolo Bonzini <pbonzini@redhat.com>,
+        qemu-arm <qemu-arm@nongnu.org>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        kvm-devel <kvm@vger.kernel.org>,
         Richard Henderson <rth@twiddle.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+References: <20200518155308.15851-1-f4bug@amsat.org>
+ <20200518155308.15851-7-f4bug@amsat.org>
+ <CAFEAcA8tGgyYgHXT5LVGz675JMq6VWR56H++XO5gtTrcaZiDQQ@mail.gmail.com>
+From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <b86345bc-2fd7-12d9-cb58-3ae92a6b5681@amsat.org>
+Date:   Mon, 18 May 2020 18:06:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8tGgyYgHXT5LVGz675JMq6VWR56H++XO5gtTrcaZiDQQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 8oNj1eWUM8xA
+X-TUID: isC/JiFLzCOn
 
-On Mon, 18 May 2020 at 16:53, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> Give the hypervisor a possibility to catch any error
-> occuring during KVM_EXIT_MMIO.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> RFC because maybe we simply want to ignore this error instead
+On 5/18/20 6:01 PM, Peter Maydell wrote:
+> On Mon, 18 May 2020 at 16:53, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> Give the hypervisor a possibility to catch any error
+>> occuring during KVM_EXIT_MMIO.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>> RFC because maybe we simply want to ignore this error instead
+> 
+> The "right" answer is that the kernel should enhance the KVM_EXIT_MMIO
+> API to allow userspace to say "sorry, you got a bus error on that
+> memory access the guest just tried" (which the kernel then has to
+> turn into an appropriate guest exception, or ignore, depending on
+> what the architecture requires.) You don't want to set ret to
+> non-zero here, because that will cause us to VM_STOP, and I
+> suspect that x86 at least is relying on the implict RAZ/WI
+> behaviour it currently gets.
 
-The "right" answer is that the kernel should enhance the KVM_EXIT_MMIO
-API to allow userspace to say "sorry, you got a bus error on that
-memory access the guest just tried" (which the kernel then has to
-turn into an appropriate guest exception, or ignore, depending on
-what the architecture requires.) You don't want to set ret to
-non-zero here, because that will cause us to VM_STOP, and I
-suspect that x86 at least is relying on the implict RAZ/WI
-behaviour it currently gets.
+OK, similar to the worst case I expected here.
+Thank you for the clear explanation :)
 
-thanks
--- PMM
+> 
+> thanks
+> -- PMM
+> 

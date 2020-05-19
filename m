@@ -1,107 +1,108 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp4129967lfb;
-        Tue, 19 May 2020 08:17:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxx4MLAcLsPDNEEldFiNcqNtnge009WHlc+iIScSyZbiQ7O1nKcrk6KhIdh9jVCRVdTSLFA
-X-Received: by 2002:ae9:ea0f:: with SMTP id f15mr22228609qkg.435.1589901437344;
-        Tue, 19 May 2020 08:17:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589901437; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp4137689lfb;
+        Tue, 19 May 2020 08:26:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwn6nfsG53hcQjLmxIdzJWpbUP/txV1DPM8rFIJ/q6pu9nwTmITkwMUjyKl9344mofaTYcd
+X-Received: by 2002:a37:a2d1:: with SMTP id l200mr21255363qke.236.1589901969516;
+        Tue, 19 May 2020 08:26:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589901969; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gr+TauwEMEklrTRH9WrtjitYYbIDgCx/3cv6PQFGSe6zG7sEwEy3SpWHsd0EZvak+K
-         Mp1Fm0nVHss0KwmBGs6D+dbXecOk4AaXx7dkWMPyimMSc4YByiTqdaX2f1rfH6kvZWae
-         IjZG4dmPxdXMLaicvlelYSmuzNeUl/vO3CYBhk5LNYD7y16tbiEid/E7IPegtGUZhcS5
-         CiPTfaClUpnZQkFnIusxPI3CIf0MStfLKrv2ZNpJwonskZ01F90QpeVdy2C3go3FG7wV
-         gP1pPvxwzLwc6ty7GLf8Wq372GUOiYbDkfWkQQsw27xoKEuOFkJRoOvF9wfYJKzHbLtY
-         hBCQ==
+        b=ouKLp/11ULJU7qrAiwquXeF/mOWoAFC+jJs38zevYTshpsS+xwFXFdOBVs7BYc/SoJ
+         vHu7BrFxaItRWEthUh0/3f3XT+nIy6dh3c8nVkwKL+8H/gzZNYBa27+cMohCJRjourMu
+         VfqyL05O2eBJyadLfMd775IlqHBhEPmcXemAsMoyFtTZVpiLkGWLJD7hcpG0ERxOInqs
+         qb5Zyr1eNjsv84ZsSvF4255xfyuitWNLB+FUZ8nMLU6hj9T+ljSk48sFT44FhU0K3j0P
+         Ps9t8NNTiaqa8bZA34Y0NL9Jw8IpFzVA4tkpetTpeFNwKd2SB0aHWC6lzPRuIvFu49sh
+         obPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=tqNPJ2qlbgindtQDqmEZgtsuos9sPlbkNEiIAspxVTs=;
-        b=qYwQDMM/isMNDJI8YVniY3K2krlyLjK/O0dRnN7UnCqQbP/1YXQniHSLB1elFMQTQT
-         H+JGAp2xY8bJxqVMBEeR1ihugBID5u9roPWnrRNV+FQF4r1RQbQYpDGH93TU2FeeZJYz
-         1yVRhuazECzHbtscqQWa2XslozNSpMHjUjH+cWw7IYdFBAzG0iZKNVoVUUuTntGwbafa
-         /WRdWbchQLiGH3eRyNbpHii4G0UEkYRr7OK5FuplWkCm1sZM2KYrpoQwLe2qEI2Vrys5
-         VX7Gv9GHjPQmXVGsVsWeQqORdSwAZyBEvnxyNrXfw3qmpSgV95dYExe+41SZdoZmveQA
-         IlvA==
+        bh=8WpkpWs8V86Gc8gc77N2XQWTpffdKfWcfxHGbhsMmCc=;
+        b=BtAdY0C8imIRY+pwcUS1T7U/TN1lnx7qz4Z2vsqrFq9He/wPeSGFpoSv+adLRNI9Zx
+         dZLXfvRgIakH5TzqFxsQ9xdOTTbjUjikZlhu1SPvxdUyCzalA+t+BE3rYm55pTPo2mFr
+         wp2n0N2EoKolBTvxOyn/y9+NAP8NB4PP72Dn80I9lRKRkI7tPTpkxh4EldwLgF0OWiOI
+         lrA8pC8NOdG6QrYc/bEm4go1SkGEDZW2T/wm3ce1y6zVYBKLDZUs43HaDd/cMOvDSvDH
+         aQZ/Moa/5oIVEbT697XMe30yqq/57tDSCGCzilJWrlDRHGclDVVvmP61PXq1XvMnt0OM
+         xXUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aBmZC8WO;
+       dkim=fail header.i=@linaro.org header.s=google header.b=mMRxRrAE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o19si55793qke.115.2020.05.19.08.17.17
+        by mx.google.com with ESMTPS id v123si68322qkb.151.2020.05.19.08.26.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 May 2020 08:17:17 -0700 (PDT)
+        Tue, 19 May 2020 08:26:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aBmZC8WO;
+       dkim=fail header.i=@linaro.org header.s=google header.b=mMRxRrAE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59984 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40318 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jb3zY-0004ic-L2
-	for alex.bennee@linaro.org; Tue, 19 May 2020 11:17:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46028)
+	id 1jb488-000387-Tm
+	for alex.bennee@linaro.org; Tue, 19 May 2020 11:26:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45874)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jb3lC-0006pi-Bv
- for qemu-arm@nongnu.org; Tue, 19 May 2020 11:02:26 -0400
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:42041)
+ id 1jb3kI-0004j4-Aw
+ for qemu-arm@nongnu.org; Tue, 19 May 2020 11:01:30 -0400
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:33809)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jb3l9-0004dF-8M
- for qemu-arm@nongnu.org; Tue, 19 May 2020 11:02:24 -0400
-Received: by mail-pl1-x642.google.com with SMTP id k19so5732689pll.9
- for <qemu-arm@nongnu.org>; Tue, 19 May 2020 08:02:22 -0700 (PDT)
+ id 1jb3kG-0004Ps-Gr
+ for qemu-arm@nongnu.org; Tue, 19 May 2020 11:01:29 -0400
+Received: by mail-pl1-x644.google.com with SMTP id d3so1027015pln.1
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2020 08:01:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=tqNPJ2qlbgindtQDqmEZgtsuos9sPlbkNEiIAspxVTs=;
- b=aBmZC8WOl7MQPVNZmpvpHxAHZWxL6pODQeAzSFx0gcnbBOVnUF0JEYJF9xlnjLviyS
- uUPH8uLh6n8JFF5Q12EKAG5pV/uqiZztUEtlrIAnysVWq339C4Ilf0yj6BOSD4yuweSr
- fSDig6P67GGdh6krl/DgUKkJCSF0QU2VgrqmiTulSF07hPojFWbIcAR1IJlVX7jFV9NO
- SCWLI9925izfLDwAilcTp7vAYpEjfjbYvYgX3Z0uvV7S0OG/MqGKHwwEjuZC3G28ube4
- GmC5BzatlsxoZkY30rELB3+qjt4bbl54vB4WNtrfCDoFRqFt/nJ8JN6FLSFevfjioj23
- KxyA==
+ bh=8WpkpWs8V86Gc8gc77N2XQWTpffdKfWcfxHGbhsMmCc=;
+ b=mMRxRrAE4XvnMSqwO2ocdQ1cwhs50eUlpW7oVyzheg9zfDPBBzrIz0xRm5eNNOKkS3
+ VledJpczhTgTWGMjo2VMMwC7uoZRgZyDI95WnY+UklkXcPCNM7R7vuNwnVtf7oEeNXqQ
+ VaQi/Q71v5qpj48RYWQanQOVwNpjSHBJpsYxdlX5ONy3VqokDx48oePEYfmclBNGNg1f
+ vZuyxQ9SJg2SCnP6dCO2Qia18eR47m98EgFQhMY9htjoeglDLUeyR1H4rScs1VUsY3pk
+ nIeQd4eSHUatm6R45lJpmYpGjwlaX0IxugTM5aVgNkJPNsqcgTc2y3AJVsiSFuKT+7dF
+ ooHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=tqNPJ2qlbgindtQDqmEZgtsuos9sPlbkNEiIAspxVTs=;
- b=b0zPtCgoN8PytNtpjBR/1PkRCPR1EE67luH2NCwuxqo8GFnwa9EcA5U6nDgjsYzw50
- sR+tTRfeaeqLMN4TgyRwT49dnsz+Tpcm1QgoeMe5kQclDp6mdgtzdiTJGE3eDFvkqaC3
- RJo15TSMPkDd+eLQ2mH9YleH65v9LQoK0INMor0Z6lH/1MZ0iDUMqOMFl3VBWdDAfCY9
- gkJUzt9gA3eGcsxzUSbVmfOp94OAKmzH7B0ZvDYA9skCER6P71KuvLNKd23stOyZitZJ
- N4tgBBYzrZBUiNcuB36z2GD02nyqvR8w4dWBNVloXBmb3rd8cZ8ps466oVmycMNEisei
- VWHg==
-X-Gm-Message-State: AOAM533IUzly2Fb3Jrhweu1qXaVGxNlEY7jO7O64mRL/RpIiM+uquWth
- xNKR5fYVKTCVp6jf0RIIyDbLtg==
-X-Received: by 2002:a17:90a:7ace:: with SMTP id
- b14mr4973656pjl.116.1589900541523; 
- Tue, 19 May 2020 08:02:21 -0700 (PDT)
+ bh=8WpkpWs8V86Gc8gc77N2XQWTpffdKfWcfxHGbhsMmCc=;
+ b=Fz8Y0q7+UnEjZAo3yXCbMKKHgPevKiiRQbthfQz8zuT11kPWjcSf887GMvU3K/BX1l
+ +uzbKWSbpsHNc7RDlCtyAQz93ZD/6qGZ4+YJ9vT6ZmQ3kFiAqi2XTd089afIJsiGv5d0
+ lBuEK9+3uy+hChSk7CabwU+4X3vYqCgLebwa8CfN06iD9jdZJ3UCUeuQ9iRhbHRVR2bc
+ WBSFPiMVXrK6f0N5F4zWr3fixaxmPI1V54nQCr364FhKPAMTHH8YBb2v5ZCd3fU7ySPp
+ Fu4+4Xa1Bg51r66o8HBmusNQS5bDZRMySz4grzZJBCXnX6z0HkfH29KsrhiKH+cmZh8M
+ shWw==
+X-Gm-Message-State: AOAM532wPZzNYLv0RBTD4T9I7lgnv9UxdcqAi/tJiHGpg+aac/P8AtqN
+ hJrJNcolKXgPCtW3o9842deITA==
+X-Received: by 2002:a17:90a:d598:: with SMTP id
+ v24mr5095316pju.167.1589900485507; 
+ Tue, 19 May 2020 08:01:25 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id 127sm11902367pfw.72.2020.05.19.08.02.19
+ by smtp.gmail.com with ESMTPSA id b29sm108691pff.176.2020.05.19.08.01.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 May 2020 08:02:20 -0700 (PDT)
-Subject: Re: [PATCH] linux-user/arm/signal.c: Drop TARGET_CONFIG_CPU_32
+ Tue, 19 May 2020 08:01:23 -0700 (PDT)
+Subject: Re: [PATCH v2] target/arm: Allow user-mode code to write CPSR.E via
+ MSR
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-References: <20200518143014.20689-1-peter.maydell@linaro.org>
+References: <20200518142801.20503-1-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <21f42bb8-074e-3e63-989d-fa0c94c55e2a@linaro.org>
-Date: Tue, 19 May 2020 08:02:18 -0700
+Message-ID: <dd4cbf09-8f6d-8034-661b-ffa4195e56d7@linaro.org>
+Date: Tue, 19 May 2020 08:01:21 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200518143014.20689-1-peter.maydell@linaro.org>
+In-Reply-To: <20200518142801.20503-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::644;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x644.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -123,32 +124,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>
+Cc: Riku Voipio <riku.voipio@iki.fi>, Amanieu d'Antras <amanieu@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Jav6ig4u+WQS
+X-TUID: EBu1fKUIDiVi
 
-On 5/18/20 7:30 AM, Peter Maydell wrote:
-> The Arm signal-handling code has some parts ifdeffed with a
-> TARGET_CONFIG_CPU_32, which is always defined. This is a leftover
-> from when this code's structure was based on the Linux kernel
-> signal handling code, where it was intended to support 26-bit
-> Arm CPUs. The kernel dropped its CONFIG_CPU_32 in kernel commit
-> 4da8b8208eded0ba21e3 in 2009.
+On 5/18/20 7:28 AM, Peter Maydell wrote:
+> Using the MSR instruction to write to CPSR.E is deprecated, but it is
+> required to work from any mode including unprivileged code.  We were
+> incorrectly forbidding usermode code from writing it because
+> CPSR_USER did not include the CPSR_E bit.
 > 
-> QEMU has never had 26-bit CPU support and is unlikely to ever
-> add it; we certainly aren't going to support 26-bit Linux
-> binaries via linux-user mode. The ifdef is just unhelpful
-> noise, so remove it entirely.
+> We use CPSR_USER in only three places:
+>  * as the mask of what to allow userspace MSR to write to CPSR
+>  * when deciding what bits a linux-user signal-return should be
+>    able to write from the sigcontext structure
+>  * in target_user_copy_regs() when we set up the initial
+>    registers for the linux-user process
+> 
+> In the first two cases not being able to update CPSR.E is a bug, and
+> in the third case it doesn't matter because CPSR.E is always 0 there.
+> So we can fix both bugs by adding CPSR_E to CPSR_USER.
+> 
+> Because the cpsr_write() in restore_sigcontext() is now changing
+> a CPSR bit which is cached in hflags, we need to add an
+> arm_rebuild_hflags() call there; the callsite in
+> target_user_copy_regs() was already rebuilding hflags for other
+> reasons.
+> 
+> (The recommended way to change CPSR.E is to use the 'SETEND'
+> instruction, which we do correctly allow from usermode code.)
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> Based-on: <20200518142801.20503-1-peter.maydell@linaro.org>
-> ("[PATCH v2] target/arm: Allow user-mode code to write CPSR.E via MSR")
-> to avoid a textual conflict.
-> 
->  linux-user/arm/signal.c | 6 ------
->  1 file changed, 6 deletions(-)
+> v2 changes:
+>  * fixed wrong variable name in commit message
+>  * added arm_rebuild_hflags() call in restore_sigcontext()
+> ---
+>  target/arm/cpu.h        | 2 +-
+>  linux-user/arm/signal.c | 1 +
+>  2 files changed, 2 insertions(+), 1 deletion(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

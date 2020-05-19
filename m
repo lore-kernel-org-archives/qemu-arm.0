@@ -1,166 +1,137 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3862099lfb;
-        Tue, 19 May 2020 02:36:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw49VXPS9bWXEPih/KZcdjy8+FFA0msfmu8keHjFKk2Dnk1g6FzPsJYwXWVbLr1FPf1MaWT
-X-Received: by 2002:a05:620a:1316:: with SMTP id o22mr19072109qkj.422.1589880986841;
-        Tue, 19 May 2020 02:36:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589880986; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3870505lfb;
+        Tue, 19 May 2020 02:48:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzC5hhG9zCD2Sh4O73iQh46Qoh5MMf35GMYHFL2vAvjS6fTH7XAqwxs5bGmMNV962u0qdif
+X-Received: by 2002:ad4:4aa3:: with SMTP id i3mr20351361qvx.28.1589881737684;
+        Tue, 19 May 2020 02:48:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589881737; cv=none;
         d=google.com; s=arc-20160816;
-        b=Re83V89QlhSa9qJbgdkncJiuFjmadlWninT40odAPfG8Lymyv61+dCe4PqhZeY+6cu
-         9FSA6CyjgsD5l3M7TBYBOmhXji5Pgw7xz7KGGDIjhGiSEoC5UljV78i3VUfJGvIhOWjJ
-         W4z9BkUFH/eEahB5NgyMVbvOhOFl1RNcdKK5VbGQt6NX+oMq2Nn8WpPBphUnYnMp//Dc
-         v4aS05cnqMvibqdiWAoTRwTLjdmv1xy29s8QCoPKhp8asCJOVea51AhGq9kjbm1t0rei
-         pVJ2fbobfBQnI7YmNu4xNafAXJ54XA1uVXJ+dm3VZQ341pSLIkqg4bpWYb59t5WUwCkq
-         XcCg==
+        b=T4XD818XXT+Z36vNMNH2lJL/8xNL/xBeZYIYAydt3YoUqSIYk315iDRjc6ib9rnXfk
+         qzeCvU0t+9ATXOM1DJ2U1xOlOU6VQGVa+QzgIwUmZfWMaGbhIeikQuOSC1zigJWW0MWv
+         cS1/PrwQmPqWLwtxH4Z4q2yu+Qe8BeyhOy2tcycIIaCfZnqSeyThizmeADQRJv13ahOL
+         IR98it3SwufGHSMatKtu+8zr4Ladr7I9LV12+WYOAL6dT5wTpwHT9bsKvhJNF/Izt1y5
+         tsgaL37fzw2R/0O1MVOKIzSv7j7MPhjC/h5Sjs9TJw/Vm0aIbUvgxhI1m0lIicjg/0yC
+         n5hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=DZDqZMh6xHsVLTySbcxeuWSCRMA58VzFbYs7YNk8rKY=;
-        b=wFG4j4Yt08A8+AYFC6tk97zc3evKt2lT5SjQYw7T1Zo4WKuziiXPuvrVlDsgRqMC1N
-         0LsCi/Efxs1X9Du6VJQ8HIif3sTtVLQQThPlWS7sW7qyVzXbWb7W3qeadvQwORLdKn+A
-         54BQiVTXp0V3nWEvVhdx69vwa6/ld6nLf9nV0CovQgyDe3xVlaMFWCtm6tke1rxDFrwI
-         gNcoXpniPj00Xz9kyDc1itg/LC0hPIOTWNm431EjlBVhx8iEB0VmnIuSYEvdiuf5BJAg
-         ZvwsKWBwa8HWxNQGwtVh4Orm6FC78CRE5zNDdEDfvrMFA5gpeB35+NCoZiGxqb/RFndq
-         1nMw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ak2H7rB/DvgHdGwou1WvaV9Jt0pud1tPDPyoqj484WU=;
+        b=jdt22iPjxJgBDNVIj35vj8VsH3ze57o+BhM6SLQPvINv2ztLiefa37nKLNxlk268JX
+         p16xhFgQyGZ5vNlmb074NmDm2ALQKMj2/iv6dkDmBzatKJR6vRNBAQ+NzqneGRxFE9KM
+         e4wMLwTSbCLs4LgXK49TA8EA58A2O7Oyx9C2R7OrZt5PvOuk5S58SVGe8O+Hzv0jQLLm
+         pysjGuQwT3coJjhAxX8gZBC74rM5XbGvv18rPhODZgAxwZlx6hJtA9zMmOQYbxPV6gha
+         RL/5nA/LV4hQ1syXGktHO5hCYzaRRo90g6Yoxw5JnbR2uawUG0p4WMUqM7RzM+aaOkfn
+         QU2w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZoR+grii;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t58si2358007qte.129.2020.05.19.02.36.26
+        by mx.google.com with ESMTPS id 4si7250014qks.154.2020.05.19.02.48.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 May 2020 02:36:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 19 May 2020 02:48:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52542 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZoR+grii;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48840 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jayfi-0005oz-Bl
-	for alex.bennee@linaro.org; Tue, 19 May 2020 05:36:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60518)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jayrp-0000Bm-3Q
+	for alex.bennee@linaro.org; Tue, 19 May 2020 05:48:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33976)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jayf8-0005Pt-1f
- for qemu-devel@nongnu.org; Tue, 19 May 2020 05:35:50 -0400
-Received: from 10.mo7.mail-out.ovh.net ([178.33.250.56]:53303)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jayf6-0007gU-UB
- for qemu-devel@nongnu.org; Tue, 19 May 2020 05:35:49 -0400
-Received: from player789.ha.ovh.net (unknown [10.110.208.131])
- by mo7.mail-out.ovh.net (Postfix) with ESMTP id 412A91654DE
- for <qemu-devel@nongnu.org>; Tue, 19 May 2020 11:35:46 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player789.ha.ovh.net (Postfix) with ESMTPSA id 1825F1289D8FE;
- Tue, 19 May 2020 09:35:35 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-103G0056ebaf816-57fe-41d9-80f3-70ed41fbb63f,3DCE2E61E2D7C1BA27EF92566E0C35A5904F621F)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH 05/24] aspeed: Don't create unwanted "cortex-a7-arm-cpu"
- devices
-To: Markus Armbruster <armbru@redhat.com>, Joel Stanley <joel@jms.id.au>
-References: <20200518050408.4579-1-armbru@redhat.com>
- <20200518050408.4579-6-armbru@redhat.com>
- <fbd7151f-159f-7568-77cb-7ce86f4948ba@kaod.org>
- <CACPK8Xf+Qf0BkOiDWj_wKXT-yF+2N0Ton01Nq7Xm5yie+fqqwA@mail.gmail.com>
- <87r1vg5vep.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <802f4237-8e2b-e322-a7ba-24ec33d7b99d@kaod.org>
-Date: Tue, 19 May 2020 11:35:34 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jayrV-00007o-Fb
+ for qemu-arm@nongnu.org; Tue, 19 May 2020 05:48:37 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:33516)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jayrU-0001gj-IN
+ for qemu-arm@nongnu.org; Tue, 19 May 2020 05:48:37 -0400
+Received: by mail-ot1-x341.google.com with SMTP id v17so10644884ote.0
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2020 02:48:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ak2H7rB/DvgHdGwou1WvaV9Jt0pud1tPDPyoqj484WU=;
+ b=ZoR+griibeFsv/ylck1g290gkBjicjwztH30AQbKgEz+UWFKvUaAl2lMVoPo69TvBj
+ 8BLcO9aSgCmdwY6pIcNaI9WK293sBpcDRNzfn7jRc3MxtAow6R0CVmNroDNEfhEl3TKF
+ cVeQAosox5SdznwMY68ERNJyH9qIWG9kUOqqKSd+fFNFXlEyaRAN+vTZAy2KeOmYi5d1
+ I5ORxyIGl8X+rZ+bnkvp1uz/yRUs7WVIgfcskY7rF0ttXWPB0iWngwNbowgxjho232Tu
+ oTEhO4kSwBsZ2C0uyg99wW7E++x052rDT5h940+HwzuQiSQObnDGGF0BkzcKxUIVQIdH
+ TcJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ak2H7rB/DvgHdGwou1WvaV9Jt0pud1tPDPyoqj484WU=;
+ b=mHjao0zpJnGMfKCuAQYKKJnkQdRUQhstwRX+Ru+8xt/wMvr23hwdfxubXsmgj4Pqam
+ Fw7r/vkx/9P0bMpcIJ0OhgfhoRD486CzD6BM26T51bK4tF9RZM6WPJTcQqPTm3GqT6fO
+ l3SHBH66cH9yX5xHIDvULAMuXOy2BS4W6VbCcUEINjL0Frca5f9+du61uMEhnCfLkb9N
+ 41DoB7TtZwkdMzN/3xz3zT1e5GrzP9IIn0lU6ZQTFqFrys4BXVVjqO/F5pwwhG7MBcGH
+ vJpLTeE+ci6rhIch8C84tTyZYPcvl0tPBQ4RFI+rQg5fR8eQ2t8xy+QrIMF12cy4AT5e
+ JbgQ==
+X-Gm-Message-State: AOAM533rWSzgFpXf/aD97Fk+kbbhB/x31u2i6xkaDLUMjLwc68+Z8CRu
+ Juui1FenLpIFOEWKjS9chDjlfBwl5EL+nF96qoMwHA==
+X-Received: by 2002:a9d:3623:: with SMTP id w32mr13573014otb.91.1589881714921; 
+ Tue, 19 May 2020 02:48:34 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <87r1vg5vep.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 12137482472405240782
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedruddtjedgudekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefffdvtddugeeifeduuefghfejgfeigeeigeeltedthefgieeiveeuiefhgeefgfenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejkeelrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrgh
-Received-SPF: pass client-ip=178.33.250.56; envelope-from=clg@kaod.org;
- helo=10.mo7.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/19 05:35:46
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+References: <20200518050408.4579-1-armbru@redhat.com>
+ <20200518050408.4579-3-armbru@redhat.com>
+ <d6b1e66a-23be-e38f-1140-9b45618741e7@adacore.com>
+ <878sho7bor.fsf@dusky.pond.sub.org>
+In-Reply-To: <878sho7bor.fsf@dusky.pond.sub.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 19 May 2020 10:48:24 +0100
+Message-ID: <CAFEAcA9tVM7RhgUyjOAfc18Ti=Z_yk-BhL7r070aqkxsPPBwcg@mail.gmail.com>
+Subject: Re: [PATCH 02/24] display/xlnx_dp: Fix to realize "i2c-ddc" and
+ "aux-to-i2c-bridge"
+To: Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
- Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Daniel P. Berrange" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
  QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vEAd4WtGfpxe
+ Paolo Bonzini <pbonzini@redhat.com>, Fred Konrad <konrad@adacore.com>,
+ KONRAD Frederic <fred.konrad@greensocs.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HyJE/oFlXUqH
 
-On 5/19/20 7:46 AM, Markus Armbruster wrote:
-> Joel Stanley <joel@jms.id.au> writes:
-> 
->> On Mon, 18 May 2020 at 12:24, Cédric Le Goater <clg@kaod.org> wrote:
->>>
->>> On 5/18/20 7:03 AM, Markus Armbruster wrote:
->>>> The number of CPUs is controlled by property "num-cpus".
->>>> aspeed_soc_ast2600_init() creates the maximum supported number.
->>>> aspeed_soc_ast2600_realize() realizes only the wanted number.  Works,
->>>> although it leaves unrealized devices hanging around in the QOM
->>>> composition tree.  Affects machines ast2600-evb and tacoma-bmc.
->>>>
->>>> Make the init functions create only the wanted ones.  Visible in "info
->>>> qom-tree"; here's the change for ast2600-evb:
->>>>
->>>>      /machine (ast2600-evb-machine)
->>>>        [...]
->>>>        /soc (ast2600-a1)
->>>>          [...]
->>>>          /cpu[0] (cortex-a7-arm-cpu)
->>>>            /unnamed-gpio-in[0] (irq)
->>>>            /unnamed-gpio-in[1] (irq)
->>>>            /unnamed-gpio-in[2] (irq)
->>>>            /unnamed-gpio-in[3] (irq)
->>>>     -    /cpu[1] (cortex-a7-arm-cpu)
->>>>     -      /unnamed-gpio-in[0] (irq)
->>>>     -      /unnamed-gpio-in[1] (irq)
->>>>     -      /unnamed-gpio-in[2] (irq)
->>>>     -      /unnamed-gpio-in[3] (irq)
->>>>          /ehci[0] (platform-ehci-usb)
->>>>
->>>> Cc: "Cédric Le Goater" <clg@kaod.org>
->>>> Cc: Peter Maydell <peter.maydell@linaro.org>
->>>> Cc: Andrew Jeffery <andrew@aj.id.au>
->>>> Cc: Joel Stanley <joel@jms.id.au>
->>>> Cc: qemu-arm@nongnu.org
->>>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->>>
->>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
->>>
->>> Joel, Andrew,
->>>
->>> Shouldn't we enforce a default/min/max number of CPUs of 2 for the AST2600 ?
->>> That's the SoC definition. The fact it is configurable in the Aspeed model
->>> was nice to have during bringup but we are now done.
->>
->> Agreed, we want there to always be two CPUs for the 2600.
-> 
-> Follow-up patch welcome!
+On Tue, 19 May 2020 at 06:09, Markus Armbruster <armbru@redhat.com> wrote:
+> I figure the "device becomes real only on realize" thing is actually
+> more myth than thing.
 
-I just sent a patch on this topic.
+It's not a myth, it's an API guarantee thing. If you don't realize
+the device you create before you use it then you're in the world of
+unspecified behaviour, and anything could happen: maybe it works,
+maybe it doesn't, maybe it works today and breaks tomorrow.
 
-C.
- 
-
+thanks
+-- PMM

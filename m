@@ -1,94 +1,93 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3538427lfb;
-        Mon, 18 May 2020 17:39:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHmAIeCR9MhuBjJYS8Nbt6FS94HFso79xstrahJ6qMuw02s0sm/kw5OOXaBaz3Br3C9aCe
-X-Received: by 2002:ad4:5684:: with SMTP id bc4mr19193556qvb.85.1589848771051;
-        Mon, 18 May 2020 17:39:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589848771; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3539214lfb;
+        Mon, 18 May 2020 17:40:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxneQtd8QMmtNPJZgflamwV3yq7PJDy5y2rMHjlYcLPcyjvjHJ5ePfCoOl0qEEZ9rR5Tg2R
+X-Received: by 2002:ac8:670b:: with SMTP id e11mr19953102qtp.365.1589848855010;
+        Mon, 18 May 2020 17:40:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589848855; cv=none;
         d=google.com; s=arc-20160816;
-        b=rWRn6oQOlOStchVMogflPixICPLICqOCyWI4V1FCn0ZqWTuTVJgW82FLlZEi4HKVrg
-         ScX1tdzBKuEZcBfaiXLYPwnWHeGIEL2x9U/zTWvvygyaXQFTRDuruIW+PM+m6btIuoYU
-         uQF8S1VpI0lQBJc+OaWX4MNbYLmNi2UVIIfGBkDjRdZyqHeV5k4L86Vb3dJgMpDF9KwB
-         FaLQDDjWktUXz4ZSiHFZxi0Nny7BrApMpIb+c22bSZeMdBzVqXMeNKljuP9x5EhE4Ri/
-         KWWgTHSuZDulqp4xHfrfxI6USJLDz7brfqmv5QTI/2vyw1P7cpCHJSY7T5kT473KrnsD
-         fkvQ==
+        b=HBtPRBrFqSW8OJ8cRi9LOtxzu9VQgErnbpqbz4HhgT3fU/SLQ2hw7cLoRKR8YN2wFw
+         edkprTO1BDDF7izhkvhi0ghJ1VA4RUwI//kUcuaFNoiAsY0zPKpPGNujJgmlNq+VGGfW
+         FQWSdrrzdXLqmMZqdvqSK2iAYV43+ATabXjhbbviEN0vd2tt1/QeptzThl34TIKH9yMk
+         gc+rd41C8kQX2jBUbi21+kaz7IY7FabhsN1OyhMHY9hkGBZu0iyf9CUQ6jqex92DbE9I
+         JZepWfUySjg/wB56qdIINjJbVRgl3q94L7KEFGH2DNMl7ky57QpnZSKn6vRjlTG5ZvNC
+         Z+Ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=XHr1u4Up0QpG/c/A3SDWCSoQmzZzYbzXevGQqA1OMKo=;
-        b=ndHyZFnqfEnpCaBJnc7o4KVgeKz4XjDBkdYv6EH7z4ZJy1NfBdYckARsS65dXYKn4N
-         KUg2QTRNoaccElsjlXgdg9f87n1hek57HRmliZeqqOucHzOK5Uti82tNumATAkk9nMYn
-         p29zd8Nf8qbTB5Y6Zirsw7sXSNoaLD74xpmRGbQUk3vfYOCClVUXqdJ8RBQ17UEeNtaN
-         8FWpYmJ5SYvQ2hrr3INJY+URAx6zZ1xHpggoKlG/eK5zf5D4I8+dA3cIfst0/VP2PCcb
-         FX2FlbXrBmuknKb5UcoPeXt3mjx7yWgrNI/EIxe4E14IJ3loM+tpW519rXIAfOoUO7pG
-         B6fA==
+        bh=k2Zs4uU66rBLlRwIdnw2zZdEU9sfm8kTZjMAiamRZOE=;
+        b=muRaswlhRPPD7fI+k/qnIf0lxHVE+PNj6dfNzzhaxixIhtILX/wrHhAagKvtEO/yDO
+         d0xqLhfTV+AH9QP2n9kTiXsZMwiWGfRRIR58SmBIsG4PXIQUEbHvWivzg7pOqQa7/585
+         LnZFfBlF6d3xXkNcFeSx8uGW3cKr/D14LmoHUMvVJJAgIUaqcN642OMuxC2j8aEmRVv7
+         6HB4+ruZ668xu88cv64A7wt0UETi3MuSSt5ADmV2uCPY+K/0I8tbNwWiKS+ID/F49dtx
+         mp2iS1Uj1HH56MwJQfWCDSbYvKheAj70c0fKPvytisZrse05D5Fjs/7y66mng6xG+c4i
+         Rkew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=lvLNfHNK;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=DfkdIwDN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h207si6327259qke.16.2020.05.18.17.39.30
+        by mx.google.com with ESMTPS id h15si6430798qvx.36.2020.05.18.17.40.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 May 2020 17:39:31 -0700 (PDT)
+        Mon, 18 May 2020 17:40:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=lvLNfHNK;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=DfkdIwDN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37660 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39656 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jaqI6-0005Ad-CA
-	for alex.bennee@linaro.org; Mon, 18 May 2020 20:39:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33612)
+	id 1jaqJS-000627-B3
+	for alex.bennee@linaro.org; Mon, 18 May 2020 20:40:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33758)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1jaqHj-00058G-US; Mon, 18 May 2020 20:39:07 -0400
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:41638)
+ id 1jaqIo-00060Q-VP; Mon, 18 May 2020 20:40:14 -0400
+Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:34926)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1jaqHh-0004Lh-NR; Mon, 18 May 2020 20:39:07 -0400
-Received: by mail-ej1-x643.google.com with SMTP id x1so10341810ejd.8;
- Mon, 18 May 2020 17:39:04 -0700 (PDT)
+ id 1jaqIo-0004an-7K; Mon, 18 May 2020 20:40:14 -0400
+Received: by mail-ed1-x541.google.com with SMTP id be9so6014188edb.2;
+ Mon, 18 May 2020 17:40:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=XHr1u4Up0QpG/c/A3SDWCSoQmzZzYbzXevGQqA1OMKo=;
- b=lvLNfHNKiG8o0SqLjl2nCcZzw9vBV4OE+lBoxXHzK+MozzrdbUUCn2of2X8BJrR+KZ
- 5FEDgw36ldHQ/jtvF8FR2943+7l0EV/OARDlnPzJpti3x+tLtLh4wKUnF8d5dFMcmCfS
- 34jSvxo17Y9AgjuBPgHSbaK0ocLQz5AJTiYuM=
+ bh=k2Zs4uU66rBLlRwIdnw2zZdEU9sfm8kTZjMAiamRZOE=;
+ b=DfkdIwDNnrWa/zQZpySq44dejwikghiFrAN4dtd2FzmlKyfCRR4gUk4gMaros/NdWH
+ xon3l/fUHHzd1bxwXjtacbwnaUQ9J1VkDipru8W9RGzevcIJc1gjRp/zer7mhOXTLhjT
+ bNq27ErJCaQ3szGIwQubWMFxDnjyzaXz7cTu4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=XHr1u4Up0QpG/c/A3SDWCSoQmzZzYbzXevGQqA1OMKo=;
- b=QOY68aEe7pvIyZulGCmf1tOyzJ3Urao8I7VsSFmY7h66JXMnWB3SzM17wClwfUAnVQ
- 8h3+Pz+ivviXSGiVqZpvkMtNF7aeb36xyYcmxjFu4rRvNJQM1G8ENYt5ioigV469BrBd
- AyNBTBoXKQlKo6v2PEw/yhYyOER1Tckldh90XE4rfDod9Y3L/aThBtr41vN+9KhBRAtv
- /KC1XCCwzRMv7SZiZVBdN6C+jG2aWNcmlT//hI8I43+sUSYyGKF9zD9WM44sB5hFP6Id
- sSiwnS/eFOFwiHB7ocpH4/YP0Jrvxr5hL6wiMwveCaPX/R/XQTvKARJCiothG23O5TV+
- Pv3w==
-X-Gm-Message-State: AOAM532Rk9wtZTVqRSmHUTP1XWdarCRVBBtpg6Re9MhSUoh6S3o4zEKJ
- 4f6+fdcHJtZ8lUz0c8G8l/r/jH3NAE7SqfMxAxs=
-X-Received: by 2002:a17:906:1f87:: with SMTP id
- t7mr13935251ejr.50.1589848743574; 
- Mon, 18 May 2020 17:39:03 -0700 (PDT)
+ bh=k2Zs4uU66rBLlRwIdnw2zZdEU9sfm8kTZjMAiamRZOE=;
+ b=ZusroeKQbhKKnSU7z79cYUT1qkyKgnaqr4NlSybJZ7xpP2ES/dY9XschrPMJZPzcFK
+ ++EYAQEP4LYuaFOU/zG5m1JN6Flh6deDw4j+ozDaUr3GFvzq/v1E81+cMVES1QVu46Em
+ i3LVHGG7U6fsoW+NVxDpECx4mhi7WCCGNcHeuE27lIaW4x30WX0Dg0PyOMbZWZfDujJR
+ MeKjU2/UtxqmyO7A/bJ7Bd3kiImEeljt8j16aAneUvpzAZ1wgZTJLFx/k0JVDmQoFxXL
+ TVGy11B8OUlxHRzNCGbg83/6rcA/n8N4AmTbkwfJJL/6NmLHGxxjXzSZPHHlS5smGw5F
+ MLSg==
+X-Gm-Message-State: AOAM533i/TmQThurpw4i5fyWQmGUQI3Ov7vm1m2KLsdZfXHsiZkhfNbW
+ iELQ0ZSaLqNExtCVMqoPaH2wHO/Vb2l+iiS5dKQ=
+X-Received: by 2002:a50:e444:: with SMTP id e4mr15501058edm.191.1589848812480; 
+ Mon, 18 May 2020 17:40:12 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200518050408.4579-1-armbru@redhat.com>
- <20200518050408.4579-5-armbru@redhat.com>
- <9fc4a6e2-fa90-ba62-91cf-e22eb3ef4cdc@kaod.org>
-In-Reply-To: <9fc4a6e2-fa90-ba62-91cf-e22eb3ef4cdc@kaod.org>
+ <20200518050408.4579-6-armbru@redhat.com>
+ <fbd7151f-159f-7568-77cb-7ce86f4948ba@kaod.org>
+In-Reply-To: <fbd7151f-159f-7568-77cb-7ce86f4948ba@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Tue, 19 May 2020 00:38:51 +0000
-Message-ID: <CACPK8XcxVrA3E-c=jkszXd2Z6PMLO=tWDF60DTu-E3cyUdXD2A@mail.gmail.com>
-Subject: Re: [PATCH 04/24] aspeed: Don't create unwanted "ftgmac100",
- "aspeed-mmi" devices
+Date: Tue, 19 May 2020 00:40:00 +0000
+Message-ID: <CACPK8Xf+Qf0BkOiDWj_wKXT-yF+2N0Ton01Nq7Xm5yie+fqqwA@mail.gmail.com>
+Subject: Re: [PATCH 05/24] aspeed: Don't create unwanted "cortex-a7-arm-cpu"
+ devices
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::643;
- envelope-from=joel.stan@gmail.com; helo=mail-ej1-x643.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::541;
+ envelope-from=joel.stan@gmail.com; helo=mail-ed1-x541.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -117,18 +116,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
  qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OQOFC3mgk7Lv
+X-TUID: UnONpxecULs2
 
-On Mon, 18 May 2020 at 12:19, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Mon, 18 May 2020 at 12:24, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
 > On 5/18/20 7:03 AM, Markus Armbruster wrote:
-> > These devices are optional, and controlled by @nb_nics.
-> > aspeed_soc_ast2600_init() and aspeed_soc_init() create the maximum
-> > supported number.  aspeed_soc_ast2600_realize() and
-> > aspeed_soc_realize() realize only the wanted number.  Works, although
-> > it can leave unrealized devices hanging around in the QOM composition
-> > tree.  Affects machines ast2500-evb, ast2600-evb, palmetto-bmc,
-> > romulus-bmc, swift-bmc, tacoma-bmc, and witherspoon-bmc.
+> > The number of CPUs is controlled by property "num-cpus".
+> > aspeed_soc_ast2600_init() creates the maximum supported number.
+> > aspeed_soc_ast2600_realize() realizes only the wanted number.  Works,
+> > although it leaves unrealized devices hanging around in the QOM
+> > composition tree.  Affects machines ast2600-evb and tacoma-bmc.
 > >
 > > Make the init functions create only the wanted ones.  Visible in "info
 > > qom-tree"; here's the change for ast2600-evb:
@@ -137,44 +134,17 @@ On Mon, 18 May 2020 at 12:19, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 > >        [...]
 > >        /soc (ast2600-a1)
 > >          [...]
-> >          /ftgmac100[0] (ftgmac100)
-> >            /ftgmac100[0] (qemu:memory-region)
-> >     -    /ftgmac100[1] (ftgmac100)
-> >     -    /ftgmac100[2] (ftgmac100)
-> >     -    /ftgmac100[3] (ftgmac100)
-> >          /gpio (aspeed.gpio-ast2600)
-> >          [...]
-> >          /mii[0] (aspeed-mmi)
-> >            /aspeed-mmi[0] (qemu:memory-region)
-> >     -    /mii[1] (aspeed-mmi)
-> >     -    /mii[2] (aspeed-mmi)
-> >     -    /mii[3] (aspeed-mmi)
-> >          /rtc (aspeed.rtc)
-> >
-> > I'm not sure creating @nb_nics devices makes sense.  How many does the
-> > physical chip provide?
->
-> The AST2400, AST2500 SoC have 2 macs and the AST2600 has 4. Each machine
-> define the one it uses, generally MAC0 but the tacoma board uses MAC3.
->
-> Shouldn't the model reflect the real address space independently from
-> the NIC backends defined on the command line ?
-
-Agreed, the MAC hardware is present in all instances of the AST2600,
-so they should be present in qemu. Only some boards wire up a network
-device to the other side.
-
-It would be advantageous for us to be able to specify which device is
-being connected to on the command line. Currently we do this by
-connecting all devices up to the one we care about which is an ugly
-workaround.
-
-> How should we proceed in such cases ?
->
-> Thanks,
->
-> C.
->
+> >          /cpu[0] (cortex-a7-arm-cpu)
+> >            /unnamed-gpio-in[0] (irq)
+> >            /unnamed-gpio-in[1] (irq)
+> >            /unnamed-gpio-in[2] (irq)
+> >            /unnamed-gpio-in[3] (irq)
+> >     -    /cpu[1] (cortex-a7-arm-cpu)
+> >     -      /unnamed-gpio-in[0] (irq)
+> >     -      /unnamed-gpio-in[1] (irq)
+> >     -      /unnamed-gpio-in[2] (irq)
+> >     -      /unnamed-gpio-in[3] (irq)
+> >          /ehci[0] (platform-ehci-usb)
 > >
 > > Cc: "C=C3=A9dric Le Goater" <clg@kaod.org>
 > > Cc: Peter Maydell <peter.maydell@linaro.org>
@@ -182,40 +152,43 @@ workaround.
 > > Cc: Joel Stanley <joel@jms.id.au>
 > > Cc: qemu-arm@nongnu.org
 > > Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>
+> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>
+> Joel, Andrew,
+>
+> Shouldn't we enforce a default/min/max number of CPUs of 2 for the AST260=
+0 ?
+> That's the SoC definition. The fact it is configurable in the Aspeed mode=
+l
+> was nice to have during bringup but we are now done.
+
+Agreed, we want there to always be two CPUs for the 2600.
+
+>
+> Thanks,
+>
+> C.
+>
 > > ---
-> >  hw/arm/aspeed_ast2600.c | 2 +-
-> >  hw/arm/aspeed_soc.c     | 2 +-
-> >  2 files changed, 2 insertions(+), 2 deletions(-)
+> >  hw/arm/aspeed_ast2600.c | 3 +++
+> >  1 file changed, 3 insertions(+)
 > >
 > > diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> > index 71a0acfe26..0a6a77dd54 100644
+> > index 0a6a77dd54..6ffa587a7f 100644
 > > --- a/hw/arm/aspeed_ast2600.c
 > > +++ b/hw/arm/aspeed_ast2600.c
-> > @@ -188,7 +188,7 @@ static void aspeed_soc_ast2600_init(Object *obj)
-> >                                sizeof(s->wdt[i]), typename);
+> > @@ -287,6 +287,9 @@ static void aspeed_soc_ast2600_realize(DeviceState =
+*dev, Error **errp)
+> >              return;
+> >          }
 > >      }
+> > +    for (; i < sc->num_cpus; i++) {
+> > +        object_unparent(OBJECT(&s->cpu[i]));
+> > +    }
 > >
-> > -    for (i =3D 0; i < sc->macs_num; i++) {
-> > +    for (i =3D 0; i < nb_nics && i < sc->macs_num; i++) {
-> >          sysbus_init_child_obj(obj, "ftgmac100[*]", OBJECT(&s->ftgmac10=
-0[i]),
-> >                                sizeof(s->ftgmac100[i]), TYPE_FTGMAC100)=
-;
-> >
-> > diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> > index cf6b6dd116..7ca860392a 100644
-> > --- a/hw/arm/aspeed_soc.c
-> > +++ b/hw/arm/aspeed_soc.c
-> > @@ -203,7 +203,7 @@ static void aspeed_soc_init(Object *obj)
-> >                                sizeof(s->wdt[i]), typename);
-> >      }
-> >
-> > -    for (i =3D 0; i < sc->macs_num; i++) {
-> > +    for (i =3D 0; i < nb_nics && i < sc->macs_num; i++) {
-> >          sysbus_init_child_obj(obj, "ftgmac100[*]", OBJECT(&s->ftgmac10=
-0[i]),
-> >                                sizeof(s->ftgmac100[i]), TYPE_FTGMAC100)=
-;
-> >      }
+> >      /* A7MPCORE */
+> >      object_property_set_int(OBJECT(&s->a7mpcore), s->num_cpus, "num-cp=
+u",
 > >
 >

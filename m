@@ -1,160 +1,340 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3832392lfb;
-        Tue, 19 May 2020 01:53:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwgK3hTVgqfurNEpGwbWabIXys0k5AG/Ng2ZzDC5j/Pxqn6pZzllgfHJ1WbkS2n7HnsgY4l
-X-Received: by 2002:ac8:33c5:: with SMTP id d5mr11131721qtb.346.1589878380138;
-        Tue, 19 May 2020 01:53:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589878380; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3848830lfb;
+        Tue, 19 May 2020 02:16:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz8IDXCMTwZZfMcurovAM9eJW25/RYhU3rfSK2DYJ4PhhVsPWlOa5KZth2jPn7h48q8Y4g/
+X-Received: by 2002:ac8:4e38:: with SMTP id d24mr20913474qtw.343.1589879813302;
+        Tue, 19 May 2020 02:16:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589879813; cv=none;
         d=google.com; s=arc-20160816;
-        b=etQecPMJ20x6yt/zCfT6CvvX5rtZJ4v2/MAuDWcHClTkE3Hep2d2nuA4BCv0CmwPw7
-         Ndqs9c8sZ+0dgH2NvL1olkM4fKAuZirv4N0mblUsqaTIsDia49jhm8vPtKSEeY7b8sXz
-         07l8SsNjzLrwsSEX+CAQiVaCI/5M9oHC+0DxLdPlwiFs8WRM+qx1D5Dixz7jQxSGprcf
-         orErZwFx8q45RYwggN/xFN9KvtWUjeh0pTrwFR2OxEQHAdrPU5q6pk3u7FITnFgGSzse
-         FOC1LQFA+DUvD9k6+5lZK9VW8GAEt3aQMqUOOKaRvFulbFrrItQm6hzdRtw4hRwF9dF9
-         zTfg==
+        b=u3FCsMxtO2ZQ3IEdsFWhxxmgx9ZHmfNQ4Jsh4RhO5Nb9HId4WrTVD9Tr7tLF9vi8aW
+         Dpgrw4N1wygt0XKLBidtuCGiVnnrWihj4PPkvWIaWzgDcMKTG1TF1024/dFZW5S3wJGE
+         djxRXVWcW3GSrGudFn7puqGJeEsBNLKJDiL+AsNOYUe4oT2pnCd57z3KzXvA6MYXgHHb
+         lZD0JHF0wMlFDZIxRohgAARY3m0Tp6axjeJxNkkhJCLrBWAAEXpL6oj7lrStsr7nCSX0
+         ZGr1hx2vQwSdADNpJtSDBN2zZ1kVbEXx9Kjpsw/37XB+uXzYvxAH2WVx8xJYXPZ8QOVo
+         esrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from;
-        bh=pOuUI+1tST3FK7Wstgga3Y1tPCzNwcrbCogRrWYxRyg=;
-        b=O9Y3VSLWp/9OVQvbSFGk6PGwq353rvGbCgTDbBk7/ndv8K7l0w1pCT2AHkUBx05liB
-         hbZspyyiM4UiAcGkq1Cce0Jrk0kKb0Az9YehX5eQfOJhK/Hf91GA2Xj+bmiVqw2uTA55
-         o7C7De6oo2lqLfi20/q4zR0xrFEbeP7tWk59m0S3ls4YjH1arODu0TuKOpVe0SXBXO2E
-         g7uE4zW/vfG7Uhpe6GE3EHxclttKJW9Zvs3FzCZqB+fC11E0HMGQ2EZI7YbiMN93BGs/
-         9yZjITpDsnU/l0yLWOUM48tgTLKG/cGTrKNgB1uaU6dPsydfVGGAJ65cyKy/Fixh3KTw
-         3FTg==
+        bh=SMTuRMaAts0InEs9j9GfJ0SiWf81BbG5ne9GXjTeq50=;
+        b=bgcGcup8B60c7ij6cswMswAKW9O2DCh8cnZNP4tlhZQwnUA+9j1xAcls27jH/hAYqY
+         fCabTpKLAGwzA1mBDzI4tLVnACaP0scXpJ2b87VrNddOmbBOi/ziiGPK9V4BoDwQ9iDI
+         R5B0TKMssCclsEstWHudo0ZfkR0RClk35i4S3zNLdqcUpLVzIo631w3yzzmpH6hAoxjT
+         1Y5JWcT6s9NCvrvsgh0zy90CTKEgpNV7YBC3VaJ6D6qa7OlfnSKNqWSL3Ism5+Xx4EnW
+         gATjj5CTm+XTKdwn7H+JGkgZpZzzl0v8qWSvYt3w07MlbINK1bZxpnBhDsJWUaGAfppt
+         yXUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l14si6813661qvy.66.2020.05.19.01.52.59
+        by mx.google.com with ESMTPS id w5si6899498qvz.15.2020.05.19.02.16.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 May 2020 01:53:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 19 May 2020 02:16:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34370 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37920 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jaxzf-0007Ep-LK
-	for alex.bennee@linaro.org; Tue, 19 May 2020 04:52:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54040)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jayMm-0006Fu-PK
+	for alex.bennee@linaro.org; Tue, 19 May 2020 05:16:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58120)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <geert@linux-m68k.org>)
- id 1jaxyW-0006D5-MI
- for qemu-devel@nongnu.org; Tue, 19 May 2020 04:51:48 -0400
-Received: from laurent.telenet-ops.be ([2a02:1800:110:4::f00:19]:49374)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <geert@linux-m68k.org>)
- id 1jaxyV-0004KV-In
- for qemu-devel@nongnu.org; Tue, 19 May 2020 04:51:48 -0400
-Received: from ramsan ([IPv6:2a02:1810:ac12:ed60:918e:b928:22c1:d715])
- by laurent.telenet-ops.be with bizsmtp
- id gYrk2200S4CPMDc01Yrkql; Tue, 19 May 2020 10:51:44 +0200
-Received: from rox.of.borg ([192.168.97.57]) by ramsan with esmtp (Exim 4.90_1)
- (envelope-from <geert@linux-m68k.org>)
- id 1jaxyS-0002Mh-GL; Tue, 19 May 2020 10:51:44 +0200
-Received: from geert by rox.of.borg with local (Exim 4.90_1)
- (envelope-from <geert@linux-m68k.org>)
- id 1jaxyS-0000Mw-E7; Tue, 19 May 2020 10:51:44 +0200
-From: Geert Uytterhoeven <geert+renesas@glider.be>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jayMe-0006Dl-Qh
+ for qemu-arm@nongnu.org; Tue, 19 May 2020 05:16:44 -0400
+Received: from 12.mo1.mail-out.ovh.net ([87.98.162.229]:42584)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jayMd-00037D-9y
+ for qemu-arm@nongnu.org; Tue, 19 May 2020 05:16:44 -0400
+Received: from player694.ha.ovh.net (unknown [10.110.103.225])
+ by mo1.mail-out.ovh.net (Postfix) with ESMTP id 810761C1C2E
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2020 11:16:40 +0200 (CEST)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player694.ha.ovh.net (Postfix) with ESMTPSA id 4F918126C8305;
+ Tue, 19 May 2020 09:16:33 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-95G001e6ebdbc6-b6bb-4170-a941-45022525ee74,3DCE2E61E2D7C1BA27EF92566E0C35A5904F621F)
+ smtp.auth=clg@kaod.org
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH] ARM: PL061: Introduce N_GPIOS
-Date: Tue, 19 May 2020 10:51:43 +0200
-Message-Id: <20200519085143.1376-1-geert+renesas@glider.be>
-X-Mailer: git-send-email 2.17.1
+Subject: [PATCH] arm/aspeed: Compute the number of CPUs from the SoC definition
+Date: Tue, 19 May 2020 11:16:31 +0200
+Message-Id: <20200519091631.1006073-1-clg@kaod.org>
+X-Mailer: git-send-email 2.25.4
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2a02:1800:110:4::f00:19;
- envelope-from=geert@linux-m68k.org; helo=laurent.telenet-ops.be
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
+X-Ovh-Tracer-Id: 11815193626044959505
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedruddtjedgudegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffogggtgfesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeikeekleffteegleevveejheetuddviedvleejvedvueevtdfgieduieeviedugfenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrheileegrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+Received-SPF: pass client-ip=87.98.162.229; envelope-from=clg@kaod.org;
+ helo=12.mo1.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/19 05:16:40
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J1Tbdt2kxgq3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OQIevipO3rvd
 
-Add a definition for the number of GPIO lines controlled by a PL061
-instance, and use it instead of the hardcoded magic value 8.
+Commit ece09beec457 ("aspeed: introduce a configurable number of CPU
+per machine") was a convient change during bringup but the Aspeed SoCs
+have a fixed number of CPUs : one for the AST2400 and AST2500, and two
+for the AST2600.
 
-Suggested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Remove the "num-cpu" property from the SoC state and use the fixed
+number of CPUs defined in the SoC class instead. Compute the default,
+min, max number of CPUs of the machine directly from the SoC class
+definition.
+
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/gpio/pl061.c | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ include/hw/arm/aspeed_soc.h |  1 -
+ hw/arm/aspeed.c             | 29 ++++++++++++++++++++++++-----
+ hw/arm/aspeed_ast2600.c     | 20 +++++++-------------
+ hw/arm/aspeed_soc.c         |  9 +--------
+ 4 files changed, 32 insertions(+), 27 deletions(-)
 
-diff --git a/hw/gpio/pl061.c b/hw/gpio/pl061.c
-index 2a828260bdb0b946..6d3c36bc16cf9e0d 100644
---- a/hw/gpio/pl061.c
-+++ b/hw/gpio/pl061.c
-@@ -36,6 +36,8 @@ static const uint8_t pl061_id_luminary[12] =
- #define TYPE_PL061 "pl061"
- #define PL061(obj) OBJECT_CHECK(PL061State, (obj), TYPE_PL061)
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 78b9f6ae532f..914115f3ef77 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -40,7 +40,6 @@ typedef struct AspeedSoCState {
  
-+#define N_GPIOS 8
-+
- typedef struct PL061State {
-     SysBusDevice parent_obj;
+     /*< public >*/
+     ARMCPU cpu[ASPEED_CPUS_NUM];
+-    uint32_t num_cpus;
+     A15MPPrivState     a7mpcore;
+     MemoryRegion *dram_mr;
+     MemoryRegion sram;
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 4d57d1e4363b..6f8f4b88f8ab 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -283,8 +283,6 @@ static void aspeed_machine_init(MachineState *machine)
+                             &error_abort);
+     object_property_set_int(OBJECT(&bmc->soc), amc->num_cs, "num-cs",
+                             &error_abort);
+-    object_property_set_int(OBJECT(&bmc->soc), machine->smp.cpus, "num-cpus",
+-                            &error_abort);
+     object_property_set_link(OBJECT(&bmc->soc), OBJECT(&bmc->ram_container),
+                              "dram", &error_abort);
+     if (machine->kernel_filename) {
+@@ -337,7 +335,7 @@ static void aspeed_machine_init(MachineState *machine)
+         }
+     }
  
-@@ -62,7 +64,7 @@ typedef struct PL061State {
-     uint32_t cr;
-     uint32_t amsel;
-     qemu_irq irq;
--    qemu_irq out[8];
-+    qemu_irq out[N_GPIOS];
-     const unsigned char *id;
-     uint32_t rsvd_start; /* reserved area: [rsvd_start, 0xfcc] */
- } PL061State;
-@@ -112,7 +114,7 @@ static void pl061_update(PL061State *s)
-     changed = s->old_out_data ^ out;
-     if (changed) {
-         s->old_out_data = out;
--        for (i = 0; i < 8; i++) {
-+        for (i = 0; i < N_GPIOS; i++) {
-             mask = 1 << i;
-             if (changed & mask) {
-                 DPRINTF("Set output %d = %d\n", i, (out & mask) != 0);
-@@ -125,7 +127,7 @@ static void pl061_update(PL061State *s)
-     changed = (s->old_in_data ^ s->data) & ~s->dir;
-     if (changed) {
-         s->old_in_data = s->data;
--        for (i = 0; i < 8; i++) {
-+        for (i = 0; i < N_GPIOS; i++) {
-             mask = 1 << i;
-             if (changed & mask) {
-                 DPRINTF("Changed input %d = %d\n", i, (s->data & mask) != 0);
-@@ -364,8 +366,8 @@ static void pl061_init(Object *obj)
-     memory_region_init_io(&s->iomem, obj, &pl061_ops, s, "pl061", 0x1000);
-     sysbus_init_mmio(sbd, &s->iomem);
-     sysbus_init_irq(sbd, &s->irq);
--    qdev_init_gpio_in(dev, pl061_set_irq, 8);
--    qdev_init_gpio_out(dev, s->out, 8);
-+    qdev_init_gpio_in(dev, pl061_set_irq, N_GPIOS);
-+    qdev_init_gpio_out(dev, s->out, N_GPIOS);
+-    if (machine->kernel_filename && bmc->soc.num_cpus > 1) {
++    if (machine->kernel_filename && sc->num_cpus > 1) {
+         /* With no u-boot we must set up a boot stub for the secondary CPU */
+         MemoryRegion *smpboot = g_new(MemoryRegion, 1);
+         memory_region_init_ram(smpboot, OBJECT(bmc), "aspeed.smpboot",
+@@ -352,7 +350,7 @@ static void aspeed_machine_init(MachineState *machine)
+ 
+     aspeed_board_binfo.ram_size = ram_size;
+     aspeed_board_binfo.loader_start = sc->memmap[ASPEED_SDRAM];
+-    aspeed_board_binfo.nb_cpus = bmc->soc.num_cpus;
++    aspeed_board_binfo.nb_cpus = sc->num_cpus;
+ 
+     if (amc->i2c_init) {
+         amc->i2c_init(bmc);
+@@ -549,12 +547,17 @@ static void aspeed_machine_class_props_init(ObjectClass *oc)
+                            "boot directly from CE0 flash device", &error_abort);
  }
  
- static void pl061_class_init(ObjectClass *klass, void *data)
++static int aspeed_soc_num_cpus(const char *soc_name)
++{
++   AspeedSoCClass *sc = ASPEED_SOC_CLASS(object_class_by_name(soc_name));
++   return sc->num_cpus;
++}
++
+ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+ 
+     mc->init = aspeed_machine_init;
+-    mc->max_cpus = ASPEED_CPUS_NUM;
+     mc->no_floppy = 1;
+     mc->no_cdrom = 1;
+     mc->no_parallel = 1;
+@@ -576,6 +579,8 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc, void *data)
+     amc->num_cs    = 1;
+     amc->i2c_init  = palmetto_bmc_i2c_init;
+     mc->default_ram_size       = 256 * MiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
+@@ -591,6 +596,8 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
+     amc->num_cs    = 1;
+     amc->i2c_init  = ast2500_evb_i2c_init;
+     mc->default_ram_size       = 512 * MiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+ static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
+@@ -606,6 +613,8 @@ static void aspeed_machine_romulus_class_init(ObjectClass *oc, void *data)
+     amc->num_cs    = 2;
+     amc->i2c_init  = romulus_bmc_i2c_init;
+     mc->default_ram_size       = 512 * MiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
+@@ -621,6 +630,8 @@ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc, void *data)
+     amc->num_cs    = 2;
+     amc->i2c_init  = sonorapass_bmc_i2c_init;
+     mc->default_ram_size       = 512 * MiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+ static void aspeed_machine_swift_class_init(ObjectClass *oc, void *data)
+@@ -636,6 +647,8 @@ static void aspeed_machine_swift_class_init(ObjectClass *oc, void *data)
+     amc->num_cs    = 2;
+     amc->i2c_init  = swift_bmc_i2c_init;
+     mc->default_ram_size       = 512 * MiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+ static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
+@@ -651,6 +664,8 @@ static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
+     amc->num_cs    = 2;
+     amc->i2c_init  = witherspoon_bmc_i2c_init;
+     mc->default_ram_size = 512 * MiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
+@@ -667,6 +682,8 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
+     amc->num_cs    = 1;
+     amc->i2c_init  = ast2600_evb_i2c_init;
+     mc->default_ram_size = 1 * GiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
+@@ -683,6 +700,8 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
+     amc->num_cs    = 2;
+     amc->i2c_init  = witherspoon_bmc_i2c_init; /* Same board layout */
+     mc->default_ram_size = 1 * GiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
+ static const TypeInfo aspeed_machine_types[] = {
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index c6e0ab84ac86..114b94f8f44d 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -256,17 +256,11 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     create_unimplemented_device("aspeed.video", sc->memmap[ASPEED_VIDEO],
+                                 0x1000);
+ 
+-    if (s->num_cpus > sc->num_cpus) {
+-        warn_report("%s: invalid number of CPUs %d, using default %d",
+-                    sc->name, s->num_cpus, sc->num_cpus);
+-        s->num_cpus = sc->num_cpus;
+-    }
+-
+     /* CPU */
+-    for (i = 0; i < s->num_cpus; i++) {
++    for (i = 0; i < sc->num_cpus; i++) {
+         object_property_set_int(OBJECT(&s->cpu[i]), QEMU_PSCI_CONDUIT_SMC,
+                                 "psci-conduit", &error_abort);
+-        if (s->num_cpus > 1) {
++        if (sc->num_cpus > 1) {
+             object_property_set_int(OBJECT(&s->cpu[i]),
+                                     ASPEED_A7MPCORE_ADDR,
+                                     "reset-cbar", &error_abort);
+@@ -290,7 +284,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* A7MPCORE */
+-    object_property_set_int(OBJECT(&s->a7mpcore), s->num_cpus, "num-cpu",
++    object_property_set_int(OBJECT(&s->a7mpcore), sc->num_cpus, "num-cpu",
+                             &error_abort);
+     object_property_set_int(OBJECT(&s->a7mpcore),
+                             ASPEED_SOC_AST2600_MAX_IRQ + GIC_INTERNAL,
+@@ -300,18 +294,18 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+                              &error_abort);
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->a7mpcore), 0, ASPEED_A7MPCORE_ADDR);
+ 
+-    for (i = 0; i < s->num_cpus; i++) {
++    for (i = 0; i < sc->num_cpus; i++) {
+         SysBusDevice *sbd = SYS_BUS_DEVICE(&s->a7mpcore);
+         DeviceState  *d   = DEVICE(qemu_get_cpu(i));
+ 
+         irq = qdev_get_gpio_in(d, ARM_CPU_IRQ);
+         sysbus_connect_irq(sbd, i, irq);
+         irq = qdev_get_gpio_in(d, ARM_CPU_FIQ);
+-        sysbus_connect_irq(sbd, i + s->num_cpus, irq);
++        sysbus_connect_irq(sbd, i + sc->num_cpus, irq);
+         irq = qdev_get_gpio_in(d, ARM_CPU_VIRQ);
+-        sysbus_connect_irq(sbd, i + 2 * s->num_cpus, irq);
++        sysbus_connect_irq(sbd, i + 2 * sc->num_cpus, irq);
+         irq = qdev_get_gpio_in(d, ARM_CPU_VFIQ);
+-        sysbus_connect_irq(sbd, i + 3 * s->num_cpus, irq);
++        sysbus_connect_irq(sbd, i + 3 * sc->num_cpus, irq);
+     }
+ 
+     /* SRAM */
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 696c7fda14b7..984d29087dce 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -243,14 +243,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     create_unimplemented_device("aspeed.video", sc->memmap[ASPEED_VIDEO],
+                                 0x1000);
+ 
+-    if (s->num_cpus > sc->num_cpus) {
+-        warn_report("%s: invalid number of CPUs %d, using default %d",
+-                    sc->name, s->num_cpus, sc->num_cpus);
+-        s->num_cpus = sc->num_cpus;
+-    }
+-
+     /* CPU */
+-    for (i = 0; i < s->num_cpus; i++) {
++    for (i = 0; i < sc->num_cpus; i++) {
+         object_property_set_bool(OBJECT(&s->cpu[i]), true, "realized", &err);
+         if (err) {
+             error_propagate(errp, err);
+@@ -461,7 +455,6 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+                        aspeed_soc_get_irq(s, ASPEED_SDHCI));
+ }
+ static Property aspeed_soc_properties[] = {
+-    DEFINE_PROP_UINT32("num-cpus", AspeedSoCState, num_cpus, 0),
+     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
 -- 
-2.17.1
+2.25.4
 

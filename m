@@ -1,130 +1,115 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3951602lfb;
-        Tue, 19 May 2020 04:43:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwhX0qD77/GiWON1F3hlfS+XUHk/3+cljQmKR4BoNd2C+TpMsaElrfWYrAOPADKH9EpG18y
-X-Received: by 2002:ac8:714c:: with SMTP id h12mr21598078qtp.372.1589888585100;
-        Tue, 19 May 2020 04:43:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589888585; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3964399lfb;
+        Tue, 19 May 2020 05:01:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwKIrz0yV+PaZfZObiLPPoUr7P4w0b4Icp0TIz4+vouuIJ9C57pnZPnCQzFYG8HrvPDTCDf
+X-Received: by 2002:aed:2142:: with SMTP id 60mr20147298qtc.177.1589889718426;
+        Tue, 19 May 2020 05:01:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589889718; cv=none;
         d=google.com; s=arc-20160816;
-        b=UU8EXLww4g4DppU5PZDrgNC5lY1cScmmbwFWiK5FF9WgrEXy4YfKJh8Udy6aFiVxIZ
-         4BCkPqq/a/Rlksss99A2AlmfK2LixmzTxKcupVNoM4im/5Hazg6rsdeIHs6Nn6HT25+j
-         xRfbOg0NUwIzgNQnspGTcqs2xpO9g7Ntpy9h9dyQQ/KaCMD01MDvlRZvgHwv/nntImoz
-         GDhAwEUaBeIqPKU4063fZ4mbEdMQvtSQX2D3kvo15ZAdMRk+6FxgD4dgVwa/n/7EAq60
-         bRvR1fCu8EfRPuKLFOaCYSicD4ABW37zz0gFcUJ3dtbJCerjvV45B9pBCYz/dgAobGgi
-         vsTg==
+        b=EDMeDcNKhua9t/TP4BBJeGvbi0nBl337aV8a7mJ+0TruZYeqmskYHOpPx/uyeX3yuq
+         2yUhg+kAnTkjCpPTZWtxzlUpns6p0Xh9pqeJx5JSK0e2lz3LfJp7dnD7OVNXrYTM90Gg
+         AmNHU1fNHXb+Z3TtgZ1MfCUaGU4hVMZV3b/LJk5ReS5D9qfHUkdUJF/R7ob4vGJeRG/d
+         2Po0tAFTvRK73f7GtNEfGVaN656SyrUeXXeWHOfb5oeK/51msdHaimy1uZ0fOv5ivZfF
+         HsSVFCv6E/7aNNZorbVeBIfyKl73BCN+RyjvEi1LY05xkkizidIDjalEAtIVHavl6jkL
+         w+zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=Yaysbhkhicn1Ru1ZEMMVMvi0BgSX4QtdKWZN/r/+Ous=;
-        b=q8ZRfbV9dM1CEtPZ9zOOOHXcFCYmnz/mcGBNCofE1Bnv9vkMKpfa0x6thcjgkMjtqS
-         Nvb4XytF4g5/I7E/p7XgiEE4QScSrd9+S7z7L1NCMi0bVbYI8dH8UOQQaQbqGvmCS0oG
-         MdfPWi+sSx8gsXF47O7L0Ix350cjmCPnJsbxyXQ1T/fHY8IuRK58c5J48UpruzE9l5i5
-         alv/tT18I/VQ8T/QHd9B5YfqiVrLNusTZQYgzxez7uC2Z1rR3lFBT7I4RndxXv9t1wmy
-         7GltkJZRutolJznyeJhgfHNdjbb2mZNaCXfKwm0czBWxi4jxC2Kuc7vu8pgvjBCTm43o
-         RwAw==
+        bh=tihzVMw/QIrw+2PDY5/1GihVk/6gQrdDDiTpLx+s7VM=;
+        b=moOIOGY92u3O8PbtJvqoP9afgfaiJcHbbmQ4hHribMdNrRFMvtoettnvAfacRh3fIo
+         ix0DXAa+wv2A+ysZ0dCZMaJ9jzSpelaJBeIjy9cgSaa3BVSvWo/Os4LFkVcLlM7hP9YX
+         igP5fEyl2vy2a5HGMylpbcBdNHaZe8bmdCrsCVv/xq9bgD4h0jWjv+y1t4SHktWjnVAx
+         shHiJpczlbpBxPkbKFUD3VKU83ddRTttmXclYWEK7tDMF1CV2ZXBkf+vqgHGaDYz/4nQ
+         5HApQLbAEv21JCsO3UzDKQTbrOpc3u7UY/2Rx3tb/pglU8GBIGXXz/PLH4AcDvTxzUtz
+         CJWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GUc0zPwr;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O52Cw1qI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q10si7474931qtn.9.2020.05.19.04.43.04
+        by mx.google.com with ESMTPS id r17si6965096qvl.85.2020.05.19.05.01.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 May 2020 04:43:05 -0700 (PDT)
+        Tue, 19 May 2020 05:01:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GUc0zPwr;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O52Cw1qI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55432 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:38306 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jb0eG-0002Qy-Hz
-	for alex.bennee@linaro.org; Tue, 19 May 2020 07:43:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46066)
+	id 1jb0wX-000119-On
+	for alex.bennee@linaro.org; Tue, 19 May 2020 08:01:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48354)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jb0dS-0001h7-VA
- for qemu-arm@nongnu.org; Tue, 19 May 2020 07:42:15 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:59972
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jb0dR-0001LZ-P2
- for qemu-arm@nongnu.org; Tue, 19 May 2020 07:42:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589888532;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Yaysbhkhicn1Ru1ZEMMVMvi0BgSX4QtdKWZN/r/+Ous=;
- b=GUc0zPwrgTZ/aX13EwOP6a1+iHJ/J0fCM/4Zdld1CRRAhU84YP9Uv+wb/33PKJcykhVpZa
- 1sg+R7LxnymaNvTjm2c9ZuVzUCbnpnbDR36eqW0ghRleOT27a4SDGjiF5GKfZ3loHTIXo3
- dM4qK0G/1QSxNr0V0kXTHWaGyvCmT9Q=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-60-WGGC-9TaNbesK7RVI8KwFw-1; Tue, 19 May 2020 07:42:11 -0400
-X-MC-Unique: WGGC-9TaNbesK7RVI8KwFw-1
-Received: by mail-wm1-f70.google.com with SMTP id o8so963024wmd.0
- for <qemu-arm@nongnu.org>; Tue, 19 May 2020 04:42:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jb0wQ-0000zr-Iy; Tue, 19 May 2020 08:01:50 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:39413)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jb0wP-0005Ti-Lc; Tue, 19 May 2020 08:01:50 -0400
+Received: by mail-wm1-x341.google.com with SMTP id w64so3215733wmg.4;
+ Tue, 19 May 2020 05:01:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=tihzVMw/QIrw+2PDY5/1GihVk/6gQrdDDiTpLx+s7VM=;
+ b=O52Cw1qI12wuWTuszaOQBJW8nb1iSjHcwnw0zUgVj2J3jw7cFuQaezdvPe50BJkvQC
+ BiWO5tgrQ6kL6cLzF64U+Zox1fU7nOG1AmEuYYYTzUfMBV1LqYVUYML9tO63uQysUNe2
+ UYlpMD7OiPQjPLBIrwo7KTTSh1ZuRFCc1uG+RpUsoPOhXMA6lfh4M48vHi5haBQYXyuo
+ OMOV0fwqu39RY4SgSW6hFU2DJfVLoeLoaLabuS1gTrU9InrJpX3uj0bn/Lw6SB5CuxYq
+ vTYLy2uyrAGaO0iNFJyo6eVq+aZwPGeHzqbRyanC42JeqNFGWJc7PwLlBNhY5V0Cr4UT
+ 9K4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Yaysbhkhicn1Ru1ZEMMVMvi0BgSX4QtdKWZN/r/+Ous=;
- b=K1utcyePjeEaFem42sjoXJjCR2Nmq7AMP+KhvF+PuZQ5pgq0x107asqReREJI9Q0D/
- P4ZlXkop15sEevKtk+AgBw6XXp2pEDSjdIENLP30KUmwZyVd4yd/ljgc+Rq/d6Mvs3Ot
- 0hUpEduqJ9ZpbLJHSVT75ULXNeQ4xFgOxo7XqNrJUIYCQX2Yz7/xzrHO0aoDFJRUAJZY
- gsq5fwIIIBSV3bfduE3AGE4k7CMu0kng31ZvjWSUsk8u5ZRaqKhHfN5O43d6R381gyyT
- QZl60QISucutVwKoJz6H9RTzqnXFFU+pNkwqm9fDJ7rzF0XMYf8uyZNOVOxDWpWooP+x
- cJeA==
-X-Gm-Message-State: AOAM533X/4fEoPgV9k+nAdWugy32LDzP0p5+M5po/99FPk8kSYe0t4DY
- koHFPb8eFxKPTXgV4vro9YC1RCWVPsYcRHhD1sYHKLglTsThByAefAmWuTAm99t9OZc0uepH2Zx
- 1wuJCpOsskV6L
-X-Received: by 2002:a05:6000:110b:: with SMTP id
- z11mr26742862wrw.16.1589888530171; 
- Tue, 19 May 2020 04:42:10 -0700 (PDT)
-X-Received: by 2002:a05:6000:110b:: with SMTP id
- z11mr26742825wrw.16.1589888529830; 
- Tue, 19 May 2020 04:42:09 -0700 (PDT)
+ bh=tihzVMw/QIrw+2PDY5/1GihVk/6gQrdDDiTpLx+s7VM=;
+ b=Sg45pdth2O+94R+Mif8u4Oygo5u+hihnddgReOs7NxgRQCotcoWSavlta5xZUzySd4
+ 6r+jEwYge5okADGXLV27VBhO/e5hzmyy2SvSLehjYhmRDfylLCaLpaCkoDHNMrI6190y
+ eZ3OthPHvGEOs6LNiCcrY7k56tnN3mCdBG6Irfp9nTvQPkWz3rxo/bpn5tu8qvGXQaIE
+ XTIx1LSLCukCPeMVqeq9lKC77xRetsvEpc1n/fpS8SuvaSWg2g95aZrJ3F02b20KZVvI
+ iXcdKWFnOQPkyb6bSJ+aGnTGOrn8MIEgOQM9Vq2rvF6Cz5N3U+AAGQhu//AGqARsw3Nk
+ nqIg==
+X-Gm-Message-State: AOAM530DqMMKi8tkqg2XG87J+v/uCfu0ZaHYcdVfh/fINN0Q9M1erNo8
+ WLBiR85TWjk41W/gCh0w0VFB/s+xAfs=
+X-Received: by 2002:a1c:dc02:: with SMTP id t2mr3664647wmg.8.1589889705304;
+ Tue, 19 May 2020 05:01:45 -0700 (PDT)
 Received: from [192.168.1.39] (17.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id r11sm21625621wro.15.2020.05.19.04.42.08
+ by smtp.gmail.com with ESMTPSA id h74sm21709768wrh.76.2020.05.19.05.01.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 May 2020 04:42:09 -0700 (PDT)
-Subject: Re: [PATCH 04/24] aspeed: Don't create unwanted "ftgmac100",
- "aspeed-mmi" devices
-To: Markus Armbruster <armbru@redhat.com>, Andrew Jeffery <andrew@aj.id.au>
-References: <20200518050408.4579-1-armbru@redhat.com>
- <20200518050408.4579-5-armbru@redhat.com>
- <9fc4a6e2-fa90-ba62-91cf-e22eb3ef4cdc@kaod.org>
- <eb1b203d-44ba-4b89-b96b-4e7bf993ac67@www.fastmail.com>
- <87v9ks5vg7.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <9cfcba4e-1237-8eb9-7c83-490729f082fe@redhat.com>
-Date: Tue, 19 May 2020 13:42:07 +0200
+ Tue, 19 May 2020 05:01:42 -0700 (PDT)
+Subject: Re: [PATCH] ARM: PL061: Introduce N_GPIOS
+To: Geert Uytterhoeven <geert+renesas@glider.be>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20200519085143.1376-1-geert+renesas@glider.be>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <83f920b8-7555-bfc4-6cb6-096f5e5c6d80@amsat.org>
+Date: Tue, 19 May 2020 14:01:41 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <87v9ks5vg7.fsf@dusky.pond.sub.org>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200519085143.1376-1-geert+renesas@glider.be>
 Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/18 23:56:10
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -137,77 +122,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
- Eduardo Habkost <ehabkost@redhat.com>,
- Cameron Esfahani via <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D8ehvBGG4OCL
+X-TUID: mJt6tYuZ/3wj
 
-On 5/19/20 7:45 AM, Markus Armbruster wrote:
-> "Andrew Jeffery" <andrew@aj.id.au> writes:
+On 5/19/20 10:51 AM, Geert Uytterhoeven wrote:
+> Add a definition for the number of GPIO lines controlled by a PL061
+> instance, and use it instead of the hardcoded magic value 8.
 > 
->> On Mon, 18 May 2020, at 21:49, Cédric Le Goater wrote:
->>> On 5/18/20 7:03 AM, Markus Armbruster wrote:
->>>> These devices are optional, and controlled by @nb_nics.
->>>> aspeed_soc_ast2600_init() and aspeed_soc_init() create the maximum
->>>> supported number.  aspeed_soc_ast2600_realize() and
->>>> aspeed_soc_realize() realize only the wanted number.  Works, although
->>>> it can leave unrealized devices hanging around in the QOM composition
->>>> tree.  Affects machines ast2500-evb, ast2600-evb, palmetto-bmc,
->>>> romulus-bmc, swift-bmc, tacoma-bmc, and witherspoon-bmc.
->>>>
->>>> Make the init functions create only the wanted ones.  Visible in "info
->>>> qom-tree"; here's the change for ast2600-evb:
->>>>
->>>>       /machine (ast2600-evb-machine)
->>>>         [...]
->>>>         /soc (ast2600-a1)
->>>>           [...]
->>>>           /ftgmac100[0] (ftgmac100)
->>>>             /ftgmac100[0] (qemu:memory-region)
->>>>      -    /ftgmac100[1] (ftgmac100)
->>>>      -    /ftgmac100[2] (ftgmac100)
->>>>      -    /ftgmac100[3] (ftgmac100)
->>>>           /gpio (aspeed.gpio-ast2600)
->>>>           [...]
->>>>           /mii[0] (aspeed-mmi)
->>>>             /aspeed-mmi[0] (qemu:memory-region)
->>>>      -    /mii[1] (aspeed-mmi)
->>>>      -    /mii[2] (aspeed-mmi)
->>>>      -    /mii[3] (aspeed-mmi)
->>>>           /rtc (aspeed.rtc)
->>>>
->>>> I'm not sure creating @nb_nics devices makes sense.  How many does the
->>>> physical chip provide?
->>>
->>> The AST2400, AST2500 SoC have 2 macs and the AST2600 has 4. Each machine
->>> define the one it uses, generally MAC0 but the tacoma board uses MAC3.
->>>
->>> Shouldn't the model reflect the real address space independently from
->>> the NIC backends defined on the command line ?
+> Suggested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
-If the SoC has N ftgmac100 peripherals, you need to mmio-map the N 
-instances, else your guest will get MEMTX_DECODE_ERROR trying to access 
-it, regardless command line NIC plugged.
+Thanks for following up.
 
->>
->> That's my feeling too, though I'm not sure what to make of the unrealised devices
->> in the QOM tree. Does it matter? It hasn't bothered me.
-> 
-> Depending on what the initialization code does, unrealized devices can
-> be anything from a little wasted memory to open bear trap.  I don't
-> really expect the latter extreme in the code, as I expect bear traps to
-> quickly catch the developer that set them.
-> 
-> I guess the unrealized devices cleaned up in this patch did no actual
-> harm.
-> 
-> Still, it's an unhealthy state, and that's why I clean it up.  "[PATCH
-> 24/24] qdev: Assert onboard devices all get realized properly" should
-> ensure we stay clean.
-> 
-> 
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+> ---
+>   hw/gpio/pl061.c | 12 +++++++-----
+>   1 file changed, 7 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/gpio/pl061.c b/hw/gpio/pl061.c
+> index 2a828260bdb0b946..6d3c36bc16cf9e0d 100644
+> --- a/hw/gpio/pl061.c
+> +++ b/hw/gpio/pl061.c
+> @@ -36,6 +36,8 @@ static const uint8_t pl061_id_luminary[12] =
+>   #define TYPE_PL061 "pl061"
+>   #define PL061(obj) OBJECT_CHECK(PL061State, (obj), TYPE_PL061)
+>   
+> +#define N_GPIOS 8
+> +
+>   typedef struct PL061State {
+>       SysBusDevice parent_obj;
+>   
+> @@ -62,7 +64,7 @@ typedef struct PL061State {
+>       uint32_t cr;
+>       uint32_t amsel;
+>       qemu_irq irq;
+> -    qemu_irq out[8];
+> +    qemu_irq out[N_GPIOS];
+>       const unsigned char *id;
+>       uint32_t rsvd_start; /* reserved area: [rsvd_start, 0xfcc] */
+>   } PL061State;
+> @@ -112,7 +114,7 @@ static void pl061_update(PL061State *s)
+>       changed = s->old_out_data ^ out;
+>       if (changed) {
+>           s->old_out_data = out;
+> -        for (i = 0; i < 8; i++) {
+> +        for (i = 0; i < N_GPIOS; i++) {
+>               mask = 1 << i;
+>               if (changed & mask) {
+>                   DPRINTF("Set output %d = %d\n", i, (out & mask) != 0);
+> @@ -125,7 +127,7 @@ static void pl061_update(PL061State *s)
+>       changed = (s->old_in_data ^ s->data) & ~s->dir;
+>       if (changed) {
+>           s->old_in_data = s->data;
+> -        for (i = 0; i < 8; i++) {
+> +        for (i = 0; i < N_GPIOS; i++) {
+>               mask = 1 << i;
+>               if (changed & mask) {
+>                   DPRINTF("Changed input %d = %d\n", i, (s->data & mask) != 0);
+> @@ -364,8 +366,8 @@ static void pl061_init(Object *obj)
+>       memory_region_init_io(&s->iomem, obj, &pl061_ops, s, "pl061", 0x1000);
+>       sysbus_init_mmio(sbd, &s->iomem);
+>       sysbus_init_irq(sbd, &s->irq);
+> -    qdev_init_gpio_in(dev, pl061_set_irq, 8);
+> -    qdev_init_gpio_out(dev, s->out, 8);
+> +    qdev_init_gpio_in(dev, pl061_set_irq, N_GPIOS);
+> +    qdev_init_gpio_out(dev, s->out, N_GPIOS);
+>   }
+>   
+>   static void pl061_class_init(ObjectClass *klass, void *data)
+> 

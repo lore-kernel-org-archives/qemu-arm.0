@@ -1,272 +1,107 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2402449lfq;
-        Sat, 3 Oct 2020 04:47:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxyGkA57Mv+ygU2WRYSLiQoO9wG14dGOgbvI6rr+iAilMFfhn+vRWy838PkRg2jB7g0FpHc
-X-Received: by 2002:a25:3403:: with SMTP id b3mr8013023yba.455.1601725625868;
-        Sat, 03 Oct 2020 04:47:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601725625; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp4137584lfb;
+        Tue, 19 May 2020 08:26:03 -0700 (PDT)
+X-Received: by 2002:a63:e60b:: with SMTP id g11mr5477958pgh.120.1589901962864;
+        Tue, 19 May 2020 08:26:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589901962; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zq587Rl+DqahEkvUnTp9kFPX9Q8A4TI3HAAze3PPb2wVCxkMm3gFNE/x8ZtUyMWA8g
-         YXZnQS9Bjx4Mv/e3O6u4g8G+DhHASEPz0HhdsIqYO6c6pFU8R4rJSxqaG0qH48EP+vE/
-         Xn+XnGWccIDFLnx56PwxxS+glETIT9A7ZKPCWdjTG32QNnRCLf6bRHnZ5j0DPmNzhahZ
-         GUhGbTD0otZPbnp4zOPoqLTEbRfiT2X6zxveG1qMK/Ll8DoPWqdp+RRa8clJYT5DuZPP
-         oN6BbOhtgyYMmJQ/d3gaV58NzoXXekmwq4f0Gw2t1bQjnje5FPIHM5ThTmT5fT5fYNKD
-         n2RA==
+        b=ndkYKbuE9JUjKyOfJ1x0zcvBj6F5ntsZ2NyphHkbDFlC7vUACsLcmXbgADp5FUp0H/
+         F2P0V0/Sia0NXtW4Qbrdv1kCgd2gUAwkdRb09pbJGWxIV+oBCmEfdd7NX7Qn0O0I8huw
+         iXsRgOWU5QW/ZtulVuhs7cE+CzfSeOBwsYcFN/E25nuyikPj0JioKDBjpxFgwDYCew4t
+         gF1c/xpwR0G4RrVTvjA/b/SS1quhRvPIUPOm6jeKxuS5jIPikwRBs5P+wtNMKZFyN5Ym
+         KvjLmCibAZFCFixdyVMcIgfqA8cx62KYLYR0EaPTUvpox2eR0FkDjC6nuTzByIDkzpcX
+         XcyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:mime-version:user-agent:date:message-id
-         :autocrypt:subject:from:to:dkim-signature;
-        bh=UQAQ658tWo0SQ2pFgLvhfQv4/gA6qMy0OThf6EDpyUg=;
-        b=Hk+z/+FeyCHrZGgKtIiRRRlt9tPQhQ4ED78eFPN9VvTmTgNYvimPYMXFjVF/e1G84N
-         B+Dt2UaZZ/XinfZjIOqh+vpN+LPlmLhHHenx7lOYtV/gwi5gFuCaSMJPPzs6LocbfXZA
-         7geYdvb8FNE4ileeKaQ8x0gyrPv5dYs5CFRdtPfteRIsxeD72ap0Sf4aY5V5HTycsLku
-         CwhVvSqmJRBJzFSUOkHZCbZiRwdwWAC8nt+qlYzPA5fAvnoPK6HcWKxSLrIyEbR7CXCp
-         gS7/BeFjYR3ZcyiyC9MezFfe8yK3ng4gLgfPNrj79Tfq9HtdSPzS8c9Mz7ywgZnMm0TR
-         CkbA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=1yOKRJBrLMOqpYn7HveRFDPZudPhxWBTAMeOFnmFlyE=;
+        b=wSO46AWrF+Av1RMPjRaY0ILg9jH2IdxqAqmzxV9sDAUI4S2q/rHqW1r13OPaDOOJ7C
+         C0UTSMSuia6zuef19KictZPoqKRNtSpoy+E+vzxpdhWkKdDlFP67gt96K0Dq0Heu+X9x
+         UWFo9ZYrNMO4THmYgiPQPfo2BvbfsK1JAts2Y7crNWKkQWYZInAQ9U0s9spJPshrwbaN
+         rY62X1Q06+zpFqUuhbDZmdYDnE0/sVEax7VLx4w3i3qjOLczpx8TV9N1a8mGngVBrPY5
+         WEa5WHlIF2RKEzALv9Qs+V4Y4A0+03WZCuS/K6tR7zAfr3GFyIdiPdtHo7OXW+3sQMvw
+         bxFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Zsdf0w8c;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b200si5439393ybg.65.2020.10.03.04.47.05
+       dkim=pass header.i=@linaro.org header.s=google header.b="ULk/fcTB";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id bj8sor4990887plb.68.2020.05.19.08.26.02
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 03 Oct 2020 04:47:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 19 May 2020 08:26:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Zsdf0w8c;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60582 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kOg0H-0005eu-90
-	for alex.bennee@linaro.org; Sat, 03 Oct 2020 07:47:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55714)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <74cmonty@gmail.com>)
- id 1kOfz5-00058w-Kn; Sat, 03 Oct 2020 07:45:51 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:43586)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <74cmonty@gmail.com>)
- id 1kOfz3-0005ig-5p; Sat, 03 Oct 2020 07:45:51 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id k15so4584022wrn.10;
- Sat, 03 Oct 2020 04:45:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:from:subject:autocrypt:message-id:date:user-agent
- :mime-version:content-transfer-encoding:content-language;
- bh=UQAQ658tWo0SQ2pFgLvhfQv4/gA6qMy0OThf6EDpyUg=;
- b=Zsdf0w8cBYXoStoSB1XrZy1+Bu39a1xKdOAVjW21Q1FJwmufUaw2jP4JDPyfYRX4GV
- qG2akseziebgS7BkKuhLV3HC22Ltj4gS1Qhse4/k/DOITixaFLiTDnNgGV3MxMUSYmaG
- aSj19sEjFaeh7hIX1plNCgHCosTXNCKLYOMDMIwKFE9SOM/lgcPk1+RAFdwlfkoyWSfQ
- b+2lde5+78tV//bFKM0AgUO8o81y63vNgYTt2X+5Wq/WIRPrXhdrAZ2r2CGKnr48kkn3
- cQTyRJU1XCOJOSTMybO2YOItBZ1/msGKIkfVox0K5sv5ozPSoI0RmpDEutoft6BIrLDB
- nvGQ==
+       dkim=pass header.i=@linaro.org header.s=google header.b="ULk/fcTB";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=1yOKRJBrLMOqpYn7HveRFDPZudPhxWBTAMeOFnmFlyE=;
+        b=ULk/fcTBsT81MIJcEJ9Ddzsqsl0UuTpaNk2/bROU1Id7ePFtMU/jfEtl06iDb3dwBS
+         NYPJtSGYwYKK3NUg43rX2YaCMNyGYwrTlYac39EGaCrOvPcClSWKze0X3Ruror6IZplm
+         jFzL9Q1zCZN+G+RWQ50sjwB9BNZj9wQG1CcSAPlIY51My73iHmawhvmqLGLPeWrmKQMY
+         J5MqEGrWQbehDSJo8meD2VpRVair6z6OwaWtW/wcGMu9ZL2p+xKp26olo1hWwg90L6PA
+         ZMZQDrRS8WV/JlwcY2cQoXZGLNpmgstCTR3MCCZgM8j31+/GQiA7MOur2e62LtqXma3o
+         3/Dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:from:subject:autocrypt:message-id:date
- :user-agent:mime-version:content-transfer-encoding:content-language;
- bh=UQAQ658tWo0SQ2pFgLvhfQv4/gA6qMy0OThf6EDpyUg=;
- b=dzMNhQE1e8kgPkQ+IOWIjuBT3M1d/Pyqs2ll7ztYxnp2lO5uZAQePWQgcDJcp4t+My
- t8TfjpPKKzZSYwj31FIC1XWUAKNIpbV0ev2BYG0Qkckv3KJrdicG1K6YxZJxu4bDgJoR
- /SZXF30gXEuUc5MqPhk29HnTlqe2x78uY/Pg5RNElR4h8AaWxefAMMGrCJUknp0MgTsO
- agGTvyXueYQKyh2T+0NEG7F6oplU+iYyYXT/VndvTcFgUO6+Y5svYPTo6b0HMM5Ml4yR
- nXRqKsNy8Fy97y5vGzeYzSgpKDsvisFYDPY2N07wT4dzs73ikyWrcq0IATOHUHI1gSom
- K4gA==
-X-Gm-Message-State: AOAM530Grxy2dwWSM4tws4Fhwa3F4WaxhN7+jab4G2Xeju5th5veMWsy
- waXUkJkoVII72QJmqDM8Zj0JsHVsrh0vOA==
-X-Received: by 2002:adf:d4c7:: with SMTP id w7mr8007069wrk.263.1601725546418; 
- Sat, 03 Oct 2020 04:45:46 -0700 (PDT)
-Received: from [192.168.1.11] (b2b-94-79-184-225.unitymedia.biz.
- [94.79.184.225])
- by smtp.gmail.com with ESMTPSA id r14sm5186110wrn.56.2020.10.03.04.45.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 03 Oct 2020 04:45:45 -0700 (PDT)
-To: qemu-arm@nongnu.org
-From: Thomas <74cmonty@gmail.com>
-Subject: Emulate Rpi with QEMU fails
-Autocrypt: addr=74cmonty@gmail.com; keydata=
- mQINBF4TnboBEADY2L+hbvziFfGtGQaE0JHCw3hzgNvXAmU341m/W6baZewJwjvHJC4255NF
- 1L6gAkypIYXB3WCnQgyk6pe06OcbOqqZGzPzgdo8g+rDyEHwyy/IR8t0b6xAwwwDEIJRUMw0
- C8XIRhiq8FbEVQRAqE5D0rxxdb17jZo5sUnmNzgBzi1j11TsJJdKFPp8ix0rzjcTe7XXDGtM
- H6bpCVisrDS6s3rxulDe7mUvtxsnqAwfcBqHSF+Xn+myoaApFCAT31BbCf1ROHbF/SOr83DZ
- NTeqjzwcdUTJNJbyTdbgmugBaBscWzJXF4b5p4eRDP94319pFtDHo1VVib1Lb3DN79Ph3ufy
- 5r5kO3e/WBT9KYioY9iBJMsexyVrZ6n4lhZAtq339VJG0vscbjtkJMBqpbpAjCy9TCAxwxUJ
- PWcjpnbp16hr/1ti+P0JqPxrDDObVP4hrM+myts/vy6EUy5/Ktx3q9LTArVwC2LS4aiIeL/A
- 9wOztQKMj+VYwT1ayKuffEr8oocBHqSweNfvtCJbzo4p9vTkzYFKvXOZcWN0EcbAB7CVBgSO
- 81LV8eRgLmFc1jNTO9nitQNfXrSthBpVa43/4KarZZ83ovG0lYYARlk/2re5FH/B9mbJM9Ip
- Pxk26NC89jSn6BzruvNq4e4imegbdFKbTDcQ7kiK8RJ4nKJSsQARAQABiQJVBCABCAA/FiEE
- BMfHRxblcSKeqcn2lRi3NOwA0cUFAl8y6MghHQFTdXBlcnNlZWRlZCBieSAyRDlCRTExREU5
- OTUxMzFGAAoJEJUYtzTsANHFOw4QAKJMtsonehNNvQ1RHM/R7A+Tq70REnC9nZXWgKCW4g6u
- pxDIwK1VKD3YpCP+V1D66DyXzxz7EeTAJ04fZukphHyHhfqsbsPGAW2IiZddbifn1+3TsjoA
- FP6l5/mn+oC9zNm1ggtgcDFIxqNHLzB+ZjmTRDqxxHrem9/4ftQyz76KWZy4ZbuYva10Ee0V
- IpXt6ElCcHBnD6Uiy3QczuWCQEY27Vf4fJekM+0i7QZtyBmF/frMrK9yF/qpTP9iYrUOhM66
- I9ApBFWo54OFXwbikR5R013TUQ6a0jp9Bmk4xEzhqy6QMI7GwH0pdLD4iPSitpHqSyWAGAXg
- MW67EIljbP3FzmxJ4JJt3gXxFYO78WldL3/Gsn/ABMPHo3qJ1QSB1o1CgP3SJF6gS2naaSHV
- xh8ef8jq8v5dT97EbBBnI5Le4XT//ev+eixWl5TViZuRk7LyJ6+lrEHIApUO389iR67tTCKC
- OZEDIW/xTuik3gYcZZbMC71dzxlmTghwt0IVLhr4f36QV7RZdaUguT9YdFUv/4W3bIXQaulI
- 595IPfV/uKIKGnHgoNIWF0Lg6qXBXauNSjlZ11gVpfYpJrbH1fEQuBMp0t00bRHFxEPsoGPf
- 2mrBMFF3Q82kreQ2d0Oi2jHIHcXNovPeNt7HznOQ15TyNwRyGv/szI85j7fiBIrVtCVUaG9t
- YXMgU2NobmVpZGVyIDw3NGNtb250eUBnbWFpbC5jb20+iQJNBBMBCgA3AhsBBAsJCgQFFQoJ
- CAMFFgIDAQACHgECF4AWIQQEx8dHFuVxIp6pyfaVGLc07ADRxQUCXmy56AAKCRCVGLc07ADR
- xVEUD/9CVtQdTd7BwR2cD3WpvN505V6vPJ9N8TIfJpbq8G0WUe2mYPIdzEcPkEDTFEuL9hKL
- ofFm2C6z+j4KWPdrMozNQsHpBDPkRu4imoruKmJJO/WQbB5uEmkoJbsra/OneZmgOeUY6Sw5
- qx0uvJcpJWxCNsCZlYnjgoFh88dXji2xbPjN5lYpH+jnLgkLYiLYP+cXFNncTEpiarh3GvZk
- G3/4demwC6fEk0yKnysMUjcwCYx86eXqfWmePJH4jgnB1GuCJ/9A3YSfcMBE/j706t/Y6V7M
- viF3X/a3wwpnISE6y7j8sEmLfAbBZeiUHvtBMbAtH1KDXGZ8mMjzDOlASqm64IXX5YtoBtGu
- 4GbvQWB/Xr96GI9NGT67lGuB/sMiJM3VA8hHVtUYz7ZUDJ+GpS/lAutPUdSoqYv7FdGVYg1h
- i63r6H695JtoR04rOhWo2h6IV2kDNxKvFBiPHPFZrE+jKAEnx3UPyraI0nhI5B9Oqgu5i9uK
- cnOfHMIJwif0VbZvLO1e+EpGbB6U5nXcL9/Z97+yILnzKsKfbo6wZiLjObmeqnEo5h4c8e1N
- YT6NtdWqy13nSSJu1oOW6/j2Ckh3VL/Qp+A56sqsTXjNMAsmwp1+Jw/E/+6QyqF1JMEIpQU3
- skdc9jPaJ9VVfD7tB0teXMsYOmYTj04einZZOK/0kLkCDQReE55QARAAu3wguCEg5SbsDRF3
- klP3UisbjEpEMrqBj0rQ+D9vfy8+prnDMqzR/ue9bvKOUDsbUsXsTQj3eiEdz8fSBPsquTnJ
- GPqSB8CBJ+Cf+eRCQrJzcpylAMuRwn6Cw1YIieQnGVybwU4zT/wKIbBUvVFb3DdW/FW49Js0
- 5b3tvTLldMEGxmhxQfoIbdrZcCL1lmMf3BUG1NOo6HH0lUV1L4/Nk+RmwosxQnXevdCzhdza
- MMnf8YmdlUwvaYNwpoD7BBosiz+oaFRA5D3eWK2F9UI0MmfHFI0K7enPLieV9h4a/ZVFjhKV
- dIJqLyDM7WJGZgXM+66kz+TtF3OZb1HMAwkvILzKAjZo4UV4lxc1fXpjpaI36UJrkCK6lgB6
- mz4CxZYFooVZ4s0m/djBJJx4fL4ne2mDiOYAqcxRuMkdeWVQLkUuyPCz/aeDG+BdP6E7e4Hm
- Qp+FCisp8IL8/CPL28enoobXkYMlqsnq3JuSN8pi9npg05Dlqyr8H/FiE4HS6xorX5tpgnvU
- wzScNqfKPOHO4OPSZ15wQ5cp3P0NjeyCBzZJ/zOVIvQYJMV9b4XMQocjnUOBrttT8c+0d/am
- t+iUn0GBok9Y775Q8y3D1n6NiAQFyiGVENZfdiOlxWCI272JJGa1n4zui8wN+sFkY8KHPPXZ
- m2ev0SoNyOKfXWDMLPMAEQEAAYkCPAQYAQoAJhYhBATHx0cW5XEinqnJ9pUYtzTsANHFBQJe
- E55QAhsMBQkB4TOAAAoJEJUYtzTsANHFpfMP/R8P47hedzQkv4/jf6QR7n0D/EnO7kKrOrYw
- ShJBeQtg6WBsOJ+dE51kHWYMt8RoJ0iu/ye5V8BahcwPPHLjFvVFx348eHIFy21w1YBnQ/pw
- SrsgBXLaL1h0ZVq1idn5ajj1EE4AKxERgpIEBMSSST2orsK57Kc60bTcf8hLbo0aYVJG1QkK
- ROkOE6Id7cfV6YUxQqA7kygVbPDaPu57N58ETyxyqGYn4SsUu2uu6nW42bxT3+VHE4EamISC
- vATTUWzMaYzls+iPhDCTEHz+6flGBcM1E8ovxFhrzTXKteOjWN7ppdZpJ/yrE6Elgj91wguf
- Blw4vGrbPJcUDqtU8gWV2UYhVIBQhVzzjSO6Vjp7JWSd70/+VPB9HQPbxTZkagG451qHvwaB
- BcuaGmVjVQDuL2iz0sQL73obwaQ8547/R7/s7dIZgat/ugDFWkL036B9dzcqo8/yOu0eXPvr
- 6+Kaq8I5Sy4qpD/YZ9PShqkoyf49KBz82FtMlorpcXqAN0kws97JU/yQH7QS8mWgTDdJi4Ra
- EikBCOFVG7JXrkSqOj5k3masGqnosQgQMb1HTOnUVbi24KidkHEWQ/nCd+xaToX2/ONzmHuG
- BsXTMZv93Z17RfygDvKhDzrPfLOEaOW51FgtwwjAA75Nt8Dv5gapcGaZH1jWT+EapxcxPsh6
- uQINBF4Tn10BEAC8gN00174Lby7Xdk1/RZlMImtFzWbehp+y0S5KBmUwIcYZmHzHDD0WUFBP
- LldUDb2rJT2p2WdguZclaulpzl8G00y0pb/nE0QeAu/vQZq3Kv9x/ooVM4a/fM205kgCMNT8
- Q/k8v/ij5/cfiJY26UmTelsrJjWRMQ738/VpVjWvpkyIQWMXodnLtBYwc+Fizqi4WXIcv2Ry
- ozs5XD3yRQ1e7F7BcYU9KRzMVwUVdCUkdvOeSOUOuhTK/pFPmUoEDIZveOgedhPlimpGhKxB
- ItzAuKALr73KOf1j45eiscAwPZdXjjoch0LKgozzqK4TowDE9ZGARMdLGnWBwuio21m1TZZa
- LYbJfwC6/bL3dywoVELDf4WLkY6US/3CFYleFPP1Subze9OqL9oJwxNkbG2KQ54wXow6g0nn
- eypXkis8FkqBwxthCFRdV5z0k/lFcdCtceY4KUTEEX4U9PdIMswgshjcEPW1V+NEkx9u7zZE
- aBYuaek12tFChPEB7cAT7P3d3G7L77GDzPfKwhzkrbt+tmYtbv6jLLQwMdXnaslg+8RwS44p
- 6ZhAS0BHF23+KV8nSTfcoQtOZ1CCsZUSZ3bsfHVnyiWUU/2to1iTr+J8ppZ/zSmM8STiMYvP
- uMTk1o0yRszaRKcqb/JcZO4Cm2fDKduSoQLaJ82DwfDw4UHGIQARAQABiQRyBBgBCgAmFiEE
- BMfHRxblcSKeqcn2lRi3NOwA0cUFAl4Tn10CGwIFCQHhM4ACQAkQlRi3NOwA0cXBdCAEGQEK
- AB0WIQSb8HznJDqNY7kKAPEmzcZBOGoduAUCXhOfXQAKCRAmzcZBOGoduJaeEACtYMLlhEbb
- 47V/ei8lBsO0rj/PSmCCmpnkW61cIQWe0G07ZcoJs4dnRSkNZIoqxtb1hjngtIGUZx4xCen4
- B194E5Ud3ZMkLSz0l5tEl1ZmnP4TRWFUTXHdqY9iFm5ZATaqMv6my5i9sxKVOSRkIDVyiItY
- OYmMzuMTY5xxge4wm3LCOCrE9/zSaIWOU2XAyBrHsQevWkEmj+i3ybKVp64OQHZdRA16TS8F
- r3hJzmM34BdUgyMqTHOYdEdCvtQW9uGM6rynPIXu3Je3nl6DWvT6IQRnyD8IOXlcm+GPpyyO
- 7qIzuxtn/xcFxxl56cenhdlr5gJFcFQ93tzFWy8a/yfgghk6jsTDQ0g/MDJtGl9fjoiOK7Kw
- EO4tJqMsDxMOdUkYwzgqo8TPI3yz1VywLndjjokH/9Cnuc50V88/LDiWx3OlcQMdaEO+e3HC
- 4pvT3J10WTlsChTvBHT7EkIdRuFytQlxFlcNt+tdVnUEWZxeJ46o6u65+haAjPVIzwaHLtT9
- i5kWJspub5I6KE1aUj1xQ9LGN/L4xnZIMov2NkCa3mlH4AMqPtJVBOO8mjgSj10ormmtQjCg
- bcDYQLyW8/hgMHlU3l3RUkyQd3M2A4DXAGE3lHEvcLrZhHkBoua8vyt/g5aoVPg1ED+PSK09
- CgmJx636ZqeoYfNPENiqk+X87QF8D/92Ai0VQgPpcIAa0CSthnExuvFgD/eL0t+mz7QMvuXJ
- w8VUJ/xj0ScpSk0BZ2CkZNjaXayD/+WJ5Aj0L/lZmsx0dVY5g9WDsa+3bNu6ifXee35eGy0G
- Fl3YHgNu3WO+/JOXwnTGzWYZq4UdaUuBAQ/TwUi2lVHG5cBtwyXuj8Jnua3VdqLbjiKVdOxH
- OWkq3vpHCISHGg423urK+JOPYAnY4ZJVh3ew4XcPHVzpMfGdTEoJ6i4cGj4NKnbaLDF9zNEY
- 2VVyg3dtlM+QDSK1DiV1ATTfAqxCKzyye8MZdCiGMxHtdZWp8tpv/PBgWWb9AAcEBSqm41nD
- 7BZ1Msdmkm50yr50ELkQgvGn8tBr+30roNe67h3HZXgKDAukYXjNtpyCTMWjKuwEjH+xOzX5
- aQGUN2+ABMCk7dmmLdpXXfEB8gydtS5mFsCZMGcYqL2Bv5GpUeDqevI5JLbmDD38JME/nz6W
- ir/HRh9SN2bh2LoNu/qtZhrtYTFOfTMlVYXS3JNIbhkht/JI14NSM9vfo4ImMIxtec93mizS
- 5/qe1KR4rECS4pHHftFcHh7Z1AC7u4PxL5OQ1g92GeI5L7rtQktLhc3kND2uSO+8WP9LtRED
- tM03Gkxs35MxtYjIUaNT2v+AYUBjo+BAlS8L1rvnPXTo2n54ZJnE9538hB3GLC9BDA==
-Message-ID: <47dbcad4-3121-b1c3-06fa-abec7c353fb6@gmail.com>
-Date: Sat, 3 Oct 2020 13:45:44 +0200
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=1yOKRJBrLMOqpYn7HveRFDPZudPhxWBTAMeOFnmFlyE=;
+        b=rZBcw3pJnIQ72CVNbhc3Mit3RukW8yEawSBh4ZLgpcveWLS+udLJGDd/+cXrtSUF2L
+         l+T7CglZsPmx6oUAsDdlLq/OzMfWv46GQYh8xl0hum9g3+e1K/ARgg/0ESP+LuzaYvfJ
+         m0+KLTjhRdfiuLnwmW0PrWeM/Jl3fJVlnaKCOmJ8U6o4/rEWJzHc2k+T28Gz1IsA0YS1
+         LD2ZwXtJDkNykUFVQzzNnKqYTvF38bXGajfGS+04Jk0Zs4WX6HtTyuIEdQs3s4Axuyh/
+         5gX7C8Nhesjzv/SeX+oO2qumzNjLKStn5+w/aWqrqgLadqselRHQj8inVv3c4UyX3Vp7
+         9nhA==
+X-Gm-Message-State: AOAM533Llc/YVPsGvmFnfB8cNQ7ViAGc7yVe1Lq+c04f+hxPvvG+WBbw
+	GkW9lnMPx1AGWSZIwyiHbb+Ntl94if6sWg==
+X-Google-Smtp-Source: ABdhPJxO9moHaODU8HfiQSlOLMw7FcQjTDdUHRaJYui5wy6CPhr1zG2fZdZszxSzkeDzxuY/xdYN1g==
+X-Received: by 2002:a17:902:8f8b:: with SMTP id z11mr78549plo.208.1589901962381;
+        Tue, 19 May 2020 08:26:02 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
+        by smtp.gmail.com with ESMTPSA id r12sm10107011pgv.59.2020.05.19.08.26.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 19 May 2020 08:26:01 -0700 (PDT)
+Subject: Re: [PATCH v2] tests/tcg: fix invocation of the memory record/replay
+ tests
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20200518162903.883-1-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <9c82070d-8024-9d5e-82c9-5c81fa711e20@linaro.org>
+Date: Tue, 19 May 2020 08:25:59 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ Thunderbird/68.7.0
 MIME-Version: 1.0
+In-Reply-To: <20200518162903.883-1-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Language: de-DE
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=74cmonty@gmail.com; helo=mail-wr1-x42f.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JAe6rTiqBy+/
+X-TUID: fys6OqSwemso
 
-Hi,
+On 5/18/20 9:29 AM, Alex Bennée wrote:
+> I'm not sure when this broke but we should use EXTRA_RUNS for
+> "virtual" tests which are not generated from the binary names.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> 
+> ---
+> v2
+>   - keep the PHONY's for the benefit of output
+> ---
+>  tests/tcg/aarch64/Makefile.softmmu-target | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-I'm trying to emulate Rpi with QEMU.
-I found
-[url=https://www.raspberry-pi-geek.de/ausgaben/rpg/2014/04/raspberry-pi-emulieren/]this[/url]
-arcticle in Raspberry Pi Geek documenting the steps including persistent
-storage on host.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-However when starting the emulation with command
-qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -serial stdio -hda
-2020-08-20-raspios-buster-armhf-lite.img -net
-"user,hostfwd=tcp::5022-:22" -dtb versatile-pb-buster.dtb -kernel
-kernel-qemu-5.4.51-buster -append "root=/dev/sda2 rootfstype=ext4 rw
-panic=1" -no-reboot
-I get this error:
-VFS: Cannot open root device "sda2" or unknown-block(0,0): error -6
-Please append a correct "root=" boot option; here are the available
-partitions:
-0100            4096 ram0
- (driver?)
-0101            4096 ram1
- (driver?)
-0102            4096 ram2
- (driver?)
-0103            4096 ram3
- (driver?)
-0104            4096 ram4
- (driver?)
-0105            4096 ram5
- (driver?)
-0106            4096 ram6
- (driver?)
-0107            4096 ram7
- (driver?)
-0108            4096 ram8
- (driver?)
-0109            4096 ram9
- (driver?)
-010a            4096 ram10
- (driver?)
-010b            4096 ram11
- (driver?)
-010c            4096 ram12
- (driver?)
-010d            4096 ram13
- (driver?)
-010e            4096 ram14
- (driver?)
-010f            4096 ram15
- (driver?)
-1f00           65536 mtdblock0
- (driver?)
-Kernel panic - not syncing: VFS: Unable to mount root fs on
-unknown-block(0,0)
 
-I assume this is related to the content in fstab of RaspiOS:
-proc            /proc           proc    defaults          0       0
-PARTUUID=907af7d0-01  /boot           vfat    defaults          0       2
-PARTUUID=907af7d0-02  /               ext4    defaults,noatime  0       1
-
-Can you please advise how to fix this error?
-
-THX
+r~

@@ -1,195 +1,142 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3527312lfb;
-        Mon, 18 May 2020 17:21:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz44iuDvaopSs27teNSg8sb0UDgZNf5lqCIrS/OJRutqa+AMw2xMt9/iR/IxQEpcPog3NTY
-X-Received: by 2002:a37:484c:: with SMTP id v73mr18130653qka.496.1589847684630;
-        Mon, 18 May 2020 17:21:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589847684; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3798290lfb;
+        Tue, 19 May 2020 00:58:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyjAL6QimNYjFKYRAaZ9PPwe5u2Fxo5VyANnqxFmMsd6dlHTkjrxebmPEqc9jgE6Q3JvOGw
+X-Received: by 2002:a17:906:944e:: with SMTP id z14mr18808572ejx.86.1589875094265;
+        Tue, 19 May 2020 00:58:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589875094; cv=none;
         d=google.com; s=arc-20160816;
-        b=qVGJXxD4gBWry3Xkqyu3uUTbkOaamcihUGRikH3pVBqflKEDZDESVOgTi7Q40uNphk
-         1S/hylI0FCH4Lk+oCatkHA6CS1auseQLqyqCUbM8zjyL3I01B2PnptRvTUNBXOcEQK0W
-         he1P6sxKh4JlvQ1zoA5Fj/GSRaW3jAImfHuxc4hzEj8OR5nwlhsp343hHSuAyxOl41dU
-         gYQk5AeOYdwGBvws9vjlrM53uqN+u/Qg7/H0q8GIcvbKpMz3+d5Nq3djZI2BzXfZ1Fkf
-         Gpsm03A7Ue9JXYXV4hudfWLB1EL4fAHHtyZZoZaIeEU7sFfJSN4ggkFtwT0BZaDs8zHC
-         zMcg==
+        b=UDBKeTIFsIqoC55q+boslVce3Iu798x1MqNe4Uk8+CGTUTNATNCfC32k/TabeT0e72
+         a8EaDpTDvHDRG6YT4H6wPJXt9rf/wdwWhUuOIzfBIbYIUiKTtx+VEKsFINtm+r/F0WRs
+         RiMqAhNjcWndoHmGetm1JNm1Y9BBAgUR/2od5aYw6DBWrM+CVPofnIPsFxNr4ElMrLNu
+         28QzJnicqLO3uwqb0kPbSZBqwgNiKK8gWPXic2C6GEJ/fvHUz4ymd9JgkwpLQOTCV/tf
+         RYUGvP8ls6kYwCwXfLRIWX05CJy7V+wF4ZHWIKUAhQw9XSKAzaP8bJQ+E0QxjnJwkqXQ
+         G87w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :subject:to:from:date:references:in-reply-to:message-id:mime-version
-         :user-agent:dkim-signature:dkim-signature;
-        bh=5ejPM4auQg3IJ4AMz7sVnACxB15QpCyHfC7+4XrK7Jg=;
-        b=nSsi6o3mpYfXnoIpCX6bQAYT+ZNjInBj9e1ut5SeZ8zOpmZLjzo5HlXN7vrEMP5eX8
-         YgVkBJZyIXlnX4dzkDVx7yrkLGD04Q85sW2e+IewdYttlKNHWQrWdW/3/xW1OkHHcZoW
-         NLgcp2Rzwp/e6UKI5VeVQYMr2/xxNnIqzXHiLTn6f8O+svLXe537xUoR6S4XMj0r0ucQ
-         ru0cEAB1v3+xUB7pk6XmZo1kfcgtwq63rzBQ82nc6PUScmsc0HzFSW6ZoG6MDuPFezti
-         jaCz4RpGOGf8ZTWK1VV6BkMHt20aFh+w5N7s2NRJVT08nnZBYtOqXXc62R7nUkYcXcPC
-         HhTw==
+        h=list-id:precedence:sender:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=a4VuYgpozh5k2UbrW8UQBTZQVsj6kKrTwTGf6FkRTGs=;
+        b=J4IWPgpPcw2NcXdwIiItacN5zh7tm0d6ClgZ7ngDnHisMGU4xM3JmGJHqVniEzrlGO
+         JPAnhXXEbVGg4xsq4Y3jsETN4lKzruqPAe9eWYdgpzKAQQTH3jjQrRNHMso3eGbIztEG
+         ZCywxZO895SnWaoFmaZJDW+rss2SLpPTuIP9ObXWlP2DypyB2qYCX009Sts4WZzl7G0S
+         HMM5frfhq4pDSvxNVAzR8W6WofjUe4/gx2PvXJt4TuJF0tzFQRjTMsdzsMyuGjpaOK55
+         q+Vek4r1WD/efATF9IDlzKz0+zqikr7Z3bd0y7W3WEvAgfkEqsxHLWHUCT1BAddd6PPb
+         /u9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=LKxvgFSX;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=dfEnzr5J;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cl10si6575626qvb.147.2020.05.18.17.21.24
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 May 2020 17:21:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bbNGh2kg;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id r8si8249925edi.84.2020.05.19.00.58.14;
+        Tue, 19 May 2020 00:58:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=LKxvgFSX;
-       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=dfEnzr5J;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57610 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jaq0a-0008OP-2B
-	for alex.bennee@linaro.org; Mon, 18 May 2020 20:21:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59570)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1jaq0G-0008J1-1J; Mon, 18 May 2020 20:21:04 -0400
-Received: from out3-smtp.messagingengine.com ([66.111.4.27]:40199)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1jaq0C-0008Oc-NX; Mon, 18 May 2020 20:21:03 -0400
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id 0DF965C00EE;
- Mon, 18 May 2020 20:20:58 -0400 (EDT)
-Received: from imap2 ([10.202.2.52])
- by compute3.internal (MEProxy); Mon, 18 May 2020 20:20:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type:content-transfer-encoding; s=fm2; bh=5ejPM
- 4auQg3IJ4AMz7sVnACxB15QpCyHfC7+4XrK7Jg=; b=LKxvgFSXh+aYfairVi8uw
- YseOUv15oW5kflI9avqGgXc1mTAbnygqTNpH20v4WgNuU01107oBItAPgG4mz8o0
- ZNF0658YOwa7Q+tLNxX6DzdDSt7JpRWeT4iaLRYkfWMuM0Uu2zVnuQ4AmTKhblkv
- HgCgWprANuyoofRXgA52PK4VrXQf/5XuPamt2n+CjcirUmGA90YZPlgyOl3UHyij
- FhSeoJpSj53OoXPunWP4fVIriPckdNeIUSj1wmD78Dgg+wFtINYJkP3Oywyzmsy0
- Z3ua2nw6sWobq+VZV4Uu96b0gEb+Z1cYAw4PG1c/0kCFKy1Ql/bu6T0V4elYsxgH
- A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm2; bh=5ejPM4auQg3IJ4AMz7sVnACxB15QpCyHfC7+4XrK7
- Jg=; b=dfEnzr5JL7GyZJNPb/eSuUnZj8ZjWTcHIGK64uKJClgyb6fUWeWfsQ80q
- m4agxbM/P9o2npHdpPPHNYUmqO9C2TWV0bgymOL1LFmVjk+tfFe19Vqx+Xo8ET5X
- TAK59AlMZ5OiXmehLTCi3S3i4wCtx5CMxvueQWCASRvLZSnrKnJfGY7rubf1CBtM
- sFEopCV/mYxluRqGvsxnfhwWOsSsnO5g0yuYBOhxAfJxwOe9VLXPy81/tqMU61VA
- B2k//fgJxEdXawhi6BupYQ43yo9s31fN5cdrBjC5tyj0XMlTCD71wkgY9zsSQvkL
- 8owCY4EyCYpAhgnrkVmF+PrhSd0xw==
-X-ME-Sender: <xms:aSbDXlquVdMV4_GIcosaQVD0kljhcUBbQLRkfWxn2kDTF-lsJFedtg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduhedruddtiedgfeefucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepofgfggfkjghffffhvffutgfgsehtqhertderreejnecuhfhrohhmpedftehn
- ughrvgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucggtf
- frrghtthgvrhhnpedvgeekheegfedvhfethefhudetteegueeggfeiieegueehkedugedt
- kefglefgheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
- hmpegrnhgurhgvfiesrghjrdhiugdrrghu
-X-ME-Proxy: <xmx:aSbDXno0DgUJomhdlMe0W7Lmo9hDBYxXJYY01R4ZliZ_peoLmrMhsg>
- <xmx:aSbDXiNMCg7CqiYhclcGIHl7L-6mc6vWTJAfNtfZOZGtpNBFNa4CbA>
- <xmx:aSbDXg5J8QkI-xyyavASClJWBY3ocX8Ka7hOp_E0Z781PG5nJehMug>
- <xmx:aibDXuTMMffbQht9uVfFPO-Sj4kM3AB3IvGKw3PJFbeYeV_ZcPVs4w>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 042D4E00F8; Mon, 18 May 2020 20:20:57 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.3.0-dev0-464-g810d66a-fmstable-20200518v1
-Mime-Version: 1.0
-Message-Id: <eb1b203d-44ba-4b89-b96b-4e7bf993ac67@www.fastmail.com>
-In-Reply-To: <9fc4a6e2-fa90-ba62-91cf-e22eb3ef4cdc@kaod.org>
-References: <20200518050408.4579-1-armbru@redhat.com>
- <20200518050408.4579-5-armbru@redhat.com>
- <9fc4a6e2-fa90-ba62-91cf-e22eb3ef4cdc@kaod.org>
-Date: Tue, 19 May 2020 09:50:34 +0930
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- "Markus Armbruster" <armbru@redhat.com>,
- "Cameron Esfahani via" <qemu-devel@nongnu.org>
-Subject: =?UTF-8?Q?Re:_[PATCH_04/24]_aspeed:_Don't_create_unwanted_"ftgmac100", _"?=
- =?UTF-8?Q?aspeed-mmi"_devices?=
-Content-Type: text/plain;charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=66.111.4.27; envelope-from=andrew@aj.id.au;
- helo=out3-smtp.messagingengine.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/18 19:21:57
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8ycuMV6zjMhM
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bbNGh2kg;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1728237AbgESH6N (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 19 May 2020 03:58:13 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:58483 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1726943AbgESH6M (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 19 May 2020 03:58:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1589875091;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=a4VuYgpozh5k2UbrW8UQBTZQVsj6kKrTwTGf6FkRTGs=;
+        b=bbNGh2kgT189Adii9+5OQBE9tqQYhlnRDcgSY3YvOjlRjiclxklDymDilNWo3hRFlaeXy8
+        SXcPSZohWjcYB0lCxC32Cf00Zy50r0ugmmbTmi0Uv8ktZs8OLFnPraqsbClvyztXQ3ZiT1
+        hP9aEALyyrYhqTNrXyfW3J8TMpEif6w=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-64-WPHoRY7eNkq_rmM9tqZrUQ-1; Tue, 19 May 2020 03:58:09 -0400
+X-MC-Unique: WPHoRY7eNkq_rmM9tqZrUQ-1
+Received: by mail-wr1-f70.google.com with SMTP id 30so6885474wrq.15
+        for <kvm@vger.kernel.org>; Tue, 19 May 2020 00:58:09 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to;
+        bh=a4VuYgpozh5k2UbrW8UQBTZQVsj6kKrTwTGf6FkRTGs=;
+        b=jcJ7LY/wVgFRoLtoe4OMRam3EzlNqDHIsnxinS02H9nE9Zer6nIqVOfkayU5yb3pCP
+         WfnwQNwmmRxGj+5ClIjYSdKgXo2gNERAn35lpZFvtI4t1Zh7KgSFjoeAaNycTLRuAaLb
+         5YYzlbcQfoivPfrwuIMNyOky7MFjc2/pb3IZHkoCV84z1o3IQiPJMKlbtvIXHN9rEBSD
+         PdubMT2WPB9PRvMvrxIKzFpwOcqzIAxqbFGVn94m1HCScrMRFB8EWlTxj8//lScXPm3b
+         SW5XfRVKgD+PuHuc7yIHRC+So40K5RcCB7omsRLlrxSY3w0UBXE5tVgdP4MT8Vu8Rpvx
+         kweQ==
+X-Gm-Message-State: AOAM532IuCIZ2YudJs+rP8TtJPVBC30aWIIz1vdd7tS1gnmuZtczOoSR
+        Jxy+imMfwcgNiDqvzP84odXZs3TxxCynNvh/OKvUe8I5rpZhPmpTFQL1ECEFAFX9sETgXcDYEVB
+        r3naaf6aVen7Y
+X-Received: by 2002:a1c:81d0:: with SMTP id c199mr3722633wmd.125.1589875088194;
+        Tue, 19 May 2020 00:58:08 -0700 (PDT)
+X-Received: by 2002:a1c:81d0:: with SMTP id c199mr3722606wmd.125.1589875087928;
+        Tue, 19 May 2020 00:58:07 -0700 (PDT)
+Received: from steredhat (host108-207-dynamic.49-79-r.retail.telecomitalia.it. [79.49.207.108])
+        by smtp.gmail.com with ESMTPSA id l19sm2876436wmj.14.2020.05.19.00.58.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 19 May 2020 00:58:07 -0700 (PDT)
+Date:   Tue, 19 May 2020 09:58:05 +0200
+From:   Stefano Garzarella <sgarzare@redhat.com>
+To:     Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+        Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
+        qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>
+Subject: Re: [PATCH v2 4/7] hw/elf_ops: Do not ignore write failures when
+ loading ELF
+Message-ID: <20200519075805.tgrzbz2qscco5thh@steredhat>
+References: <20200518155308.15851-1-f4bug@amsat.org>
+ <20200518155308.15851-5-f4bug@amsat.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20200518155308.15851-5-f4bug@amsat.org>
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: iBB2YPdw+mO7
 
+On Mon, May 18, 2020 at 05:53:05PM +0200, Philippe Mathieu-Daudé wrote:
+> Do not ignore the MemTxResult error type returned by
+> address_space_write().
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  include/hw/elf_ops.h | 11 ++++++++---
+>  1 file changed, 8 insertions(+), 3 deletions(-)
 
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
 
-On Mon, 18 May 2020, at 21:49, C=C3=A9dric Le Goater wrote:
-> On 5/18/20 7:03 AM, Markus Armbruster wrote:
-> > These devices are optional, and controlled by @nb_nics.
-> > aspeed_soc_ast2600_init() and aspeed_soc_init() create the maximum
-> > supported number.  aspeed_soc_ast2600_realize() and
-> > aspeed_soc_realize() realize only the wanted number.  Works, althoug=
-h
-> > it can leave unrealized devices hanging around in the QOM compositio=
-n
-> > tree.  Affects machines ast2500-evb, ast2600-evb, palmetto-bmc,
-> > romulus-bmc, swift-bmc, tacoma-bmc, and witherspoon-bmc.
-> >=20
-> > Make the init functions create only the wanted ones.  Visible in "in=
-fo
-> > qom-tree"; here's the change for ast2600-evb:
-> >=20
-> >      /machine (ast2600-evb-machine)
-> >        [...]
-> >        /soc (ast2600-a1)
-> >          [...]
-> >          /ftgmac100[0] (ftgmac100)
-> >            /ftgmac100[0] (qemu:memory-region)
-> >     -    /ftgmac100[1] (ftgmac100)
-> >     -    /ftgmac100[2] (ftgmac100)
-> >     -    /ftgmac100[3] (ftgmac100)
-> >          /gpio (aspeed.gpio-ast2600)
-> >          [...]
-> >          /mii[0] (aspeed-mmi)
-> >            /aspeed-mmi[0] (qemu:memory-region)
-> >     -    /mii[1] (aspeed-mmi)
-> >     -    /mii[2] (aspeed-mmi)
-> >     -    /mii[3] (aspeed-mmi)
-> >          /rtc (aspeed.rtc)
-> >=20
-> > I'm not sure creating @nb_nics devices makes sense.  How many does t=
-he
-> > physical chip provide?
->=20
-> The AST2400, AST2500 SoC have 2 macs and the AST2600 has 4. Each machi=
-ne
-> define the one it uses, generally MAC0 but the tacoma board uses MAC3.=
-
->=20
-> Shouldn't the model reflect the real address space independently from
-> the NIC backends defined on the command line ? =20
-
-That's my feeling too, though I'm not sure what to make of the unrealise=
-d devices
-in the QOM tree. Does it matter? It hasn't bothered me.
-
-Andrew
+> 
+> diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
+> index 398a4a2c85..6fdff3dced 100644
+> --- a/include/hw/elf_ops.h
+> +++ b/include/hw/elf_ops.h
+> @@ -553,9 +553,14 @@ static int glue(load_elf, SZ)(const char *name, int fd,
+>                      rom_add_elf_program(label, mapped_file, data, file_size,
+>                                          mem_size, addr, as);
+>                  } else {
+> -                    address_space_write(as ? as : &address_space_memory,
+> -                                        addr, MEMTXATTRS_UNSPECIFIED,
+> -                                        data, file_size);
+> +                    MemTxResult res;
+> +
+> +                    res = address_space_write(as ? as : &address_space_memory,
+> +                                              addr, MEMTXATTRS_UNSPECIFIED,
+> +                                              data, file_size);
+> +                    if (res != MEMTX_OK) {
+> +                        goto fail;
+> +                    }
+>                  }
+>              }
+>  
+> -- 
+> 2.21.3
+> 

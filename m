@@ -1,148 +1,334 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3969658lfb;
-        Tue, 19 May 2020 05:07:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwn0xQYGJBDGx6Zs1ZLHnJFN03YgNf6XUhIemBX9w2dhY6QNHSWFtHrEYUUaOqRhquinXfe
-X-Received: by 2002:ac8:19ce:: with SMTP id s14mr14628570qtk.202.1589890055663;
-        Tue, 19 May 2020 05:07:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589890055; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3998488lfb;
+        Tue, 19 May 2020 05:46:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz/3Es8Tx4wYVVVbp44SmplIHWK/mRqeK30kuHWJnxtPdqnyx1i3uhdJ0MnkaCqGD2MR2Fm
+X-Received: by 2002:a05:620a:62c:: with SMTP id 12mr6043540qkv.234.1589892362327;
+        Tue, 19 May 2020 05:46:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589892362; cv=none;
         d=google.com; s=arc-20160816;
-        b=odBOb9jUPrQfp+mIc1YSsbN1hD2W6npqlBDqjWvc8ln9k2A1gvwV0tdemd0Ko8eA7j
-         FJ5MZ8MccMctE+AKIm7iLhY8R+AO8iWVNT2iWR4BUSX/CM4Uf6LTVypmgKT8VI1kuuQJ
-         akwgDxRzN5YbXj+lLDrpAWwiVjr1f5Nj24ak8GM0wO3hWa4+8HyupxtW7scv5jn52vMc
-         kpR5coV88w1NHBuAj5+wsLXsrsDSJ76+FAYw+Ysu9lMI97t86ysYrZ+9kTKRm82etmpD
-         llzyfioBo/ebsIrqhIenvzgcvQSFEFbm/6FWrJktMfTQGPr/sIu30b93Clv7+9pwworg
-         aZTw==
+        b=ZEz6Wva0r4GGEy6l9Xcqojmu86rwZAuy54rRpxQ1JDWzBzdimDKWHf1ua4zZduarGl
+         W/H6Om4lxxKZv4qPFcmIKjhy8UbFO2OP0m+Rr4f9c/eRSCQueLq9CbgP1unpXMZU0mty
+         jcUx1OhhkA3C3ctzp3AD7I2g0dvDuMkdagNNtHOPw/TUhEhW0WOcDyQ1iSP7v6yt8TYU
+         qCJLAZymRw5UAq2MGkRkQIMqvYubAhPWSNGT7fmAvOs50Q+gzFLywacGoQOptMVr9AbE
+         CZ+q99w1JcrBlAa3X3bjO1q8xNnQG+wCecrB0MDQLceu9bT6q9p6pyHXPecSkbxKEJ9X
+         BDIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:in-reply-to:date:references:subject:to:from
-         :dkim-signature;
-        bh=1yixPAmz5zUZC7JmB18g9+vNTk7riD6tfYch1kgwzfk=;
-        b=xegarVW4lxwBzWBv07BRhzdcimYEzdWadk2p9Tyc+s52/ZRzhB99O+mRkSFz8cf8vl
-         5KupmFz6VWbaIhQ+Hchp2ah2+4dTDxHnbkIuX1ETmiG+8d2cFt+o3Ec3WLlIHi2Qpqcg
-         3Y61fnjd97kPya4UhB9tMAE01irr7vTB7iOByXPZlOISaheF4Zn7Xf1cSNxNGZV2G/mN
-         WXgR2gOOUcftFh4g0QjIr9+b5lT3ypRtiuPMXLozUePJxWQTqaCxQ9Rc69gWIDEqgx5U
-         yNAQAHUUnlYyoe1PiWo7ob//hLqp/ZLPNPZp1gbIeb6iK/ErUpAH7EyO2vZr1JLBQHx9
-         B6hA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=E9Lj+QwflKcmAl2h7iX/IkVI/N5DM92SZTQv0S8DWkc=;
+        b=mx9Sz92ZSMHcVJ3vctFVcQg0NgaGmHiyrZdnRgvI89f6IUg6glDWE0jpl0o8drObLR
+         /8iCBRA3PTs3LmOC8ZaD7uF99xm4d8IUSu13B+7DSNH9ToOkOvLb9v/Ti/FgU6VtE0Gu
+         fdRi6Z3H6wyIuW6cs9NDVGF0lEBl5+2z7K3hmNiR8450iKhZwoYRchhQyMXpWjdEtWgb
+         f2O6/Fs4tmZBU4N9nReZNtW0tsqwFsww5NRGeyv8UTo13RxVSwYG4pxHZB7X9Cu9XLNk
+         ZjcXZ0S9h47HB+M8RLVikl8ZTMtrPLIPRUrGUCJyIbd5h0Wr/q94zNLCt8hjwJ5meQeE
+         TmRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b2QGYbkT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m36si7395244qtb.162.2020.05.19.05.07.35
+        by mx.google.com with ESMTPS id cc17si7161828qvb.16.2020.05.19.05.46.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 May 2020 05:07:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 19 May 2020 05:46:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b2QGYbkT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42668 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59784 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jb11z-0003M4-0a
-	for alex.bennee@linaro.org; Tue, 19 May 2020 08:07:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49232)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jb1dB-0004So-OM
+	for alex.bennee@linaro.org; Tue, 19 May 2020 08:46:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53874)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jb11r-0003LQ-Kf
- for qemu-arm@nongnu.org; Tue, 19 May 2020 08:07:27 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:34932
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jb11q-0006ff-EC
- for qemu-arm@nongnu.org; Tue, 19 May 2020 08:07:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589890045;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=1yixPAmz5zUZC7JmB18g9+vNTk7riD6tfYch1kgwzfk=;
- b=b2QGYbkT2vwm8lJxTI2V3vJ2xsgx16K5jaPqly1ZhPv5WvejVO3rxd47lpc4pnSxbbw2wD
- lY7fUZejvLo+eeOZ8riDN2gLQ3uq7S6r6OnPRqDHoO0D00W9mZYukRv7jeWe82UBguoflo
- AXIeIQLANVuFEFyziSslLCxHy/z13rg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-452-iTOyIywwM4it_aaskxbC5w-1; Tue, 19 May 2020 08:07:21 -0400
-X-MC-Unique: iTOyIywwM4it_aaskxbC5w-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AABA315C5C;
- Tue, 19 May 2020 12:07:14 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-32.ams2.redhat.com
- [10.36.112.32])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BFE6752FB4;
- Tue, 19 May 2020 12:07:13 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id EC7FB11358BC; Tue, 19 May 2020 14:07:02 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 02/24] display/xlnx_dp: Fix to realize "i2c-ddc" and
- "aux-to-i2c-bridge"
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jb1cE-0003es-0f
+ for qemu-devel@nongnu.org; Tue, 19 May 2020 08:45:02 -0400
+Received: from 2.mo2.mail-out.ovh.net ([188.165.53.149]:56360)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jb1cC-0007Ei-Ap
+ for qemu-devel@nongnu.org; Tue, 19 May 2020 08:45:01 -0400
+Received: from player762.ha.ovh.net (unknown [10.110.115.164])
+ by mo2.mail-out.ovh.net (Postfix) with ESMTP id 505441D6F95
+ for <qemu-devel@nongnu.org>; Tue, 19 May 2020 14:44:50 +0200 (CEST)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player762.ha.ovh.net (Postfix) with ESMTPSA id 964B4128372D1;
+ Tue, 19 May 2020 12:44:39 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-99G003cfbe62b5-1fd8-4905-abaa-811a0817e4e2,3DCE2E61E2D7C1BA27EF92566E0C35A5904F621F)
+ smtp.auth=clg@kaod.org
+Subject: Re: [PATCH 04/24] aspeed: Don't create unwanted "ftgmac100",
+ "aspeed-mmi" devices
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Andrew Jeffery <andrew@aj.id.au>
 References: <20200518050408.4579-1-armbru@redhat.com>
- <20200518050408.4579-3-armbru@redhat.com>
- <d6b1e66a-23be-e38f-1140-9b45618741e7@adacore.com>
- <878sho7bor.fsf@dusky.pond.sub.org>
- <CAFEAcA9tVM7RhgUyjOAfc18Ti=Z_yk-BhL7r070aqkxsPPBwcg@mail.gmail.com>
-Date: Tue, 19 May 2020 14:07:02 +0200
-In-Reply-To: <CAFEAcA9tVM7RhgUyjOAfc18Ti=Z_yk-BhL7r070aqkxsPPBwcg@mail.gmail.com>
- (Peter Maydell's message of "Tue, 19 May 2020 10:48:24 +0100")
-Message-ID: <87blmk2knt.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ <20200518050408.4579-5-armbru@redhat.com>
+ <9fc4a6e2-fa90-ba62-91cf-e22eb3ef4cdc@kaod.org>
+ <eb1b203d-44ba-4b89-b96b-4e7bf993ac67@www.fastmail.com>
+ <87v9ks5vg7.fsf@dusky.pond.sub.org>
+ <9cfcba4e-1237-8eb9-7c83-490729f082fe@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <6ad3605d-3233-378e-5c37-ed4afbacfc66@kaod.org>
+Date: Tue, 19 May 2020 14:44:37 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/18 23:19:13
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+In-Reply-To: <9cfcba4e-1237-8eb9-7c83-490729f082fe@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Ovh-Tracer-Id: 15330534606601423827
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -83
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedruddtjedgheegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegfrhhlucfvnfffucdludejmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhephfevvdehieeftdevfeelleffgfehtdfgvdegteeijeetudejgedutdduudfhteeknecuffhomhgrihhnpehophgvnhhpohifvghrrdighiiinecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeeivddrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=188.165.53.149; envelope-from=clg@kaod.org;
+ helo=2.mo2.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/19 08:44:50
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Daniel P. Berrange" <berrange@redhat.com>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
  Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Fred Konrad <konrad@adacore.com>,
- KONRAD Frederic <fred.konrad@greensocs.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yDfuh1xf1tiV
+ Cameron Esfahani via <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xaMlku8/S5BM
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+On 5/19/20 1:42 PM, Philippe Mathieu-Daudé wrote:
+> On 5/19/20 7:45 AM, Markus Armbruster wrote:
+>> "Andrew Jeffery" <andrew@aj.id.au> writes:
+>>
+>>> On Mon, 18 May 2020, at 21:49, Cédric Le Goater wrote:
+>>>> On 5/18/20 7:03 AM, Markus Armbruster wrote:
+>>>>> These devices are optional, and controlled by @nb_nics.
+>>>>> aspeed_soc_ast2600_init() and aspeed_soc_init() create the maximum
+>>>>> supported number.  aspeed_soc_ast2600_realize() and
+>>>>> aspeed_soc_realize() realize only the wanted number.  Works, although
+>>>>> it can leave unrealized devices hanging around in the QOM composition
+>>>>> tree.  Affects machines ast2500-evb, ast2600-evb, palmetto-bmc,
+>>>>> romulus-bmc, swift-bmc, tacoma-bmc, and witherspoon-bmc.
+>>>>>
+>>>>> Make the init functions create only the wanted ones.  Visible in "info
+>>>>> qom-tree"; here's the change for ast2600-evb:
+>>>>>
+>>>>>       /machine (ast2600-evb-machine)
+>>>>>         [...]
+>>>>>         /soc (ast2600-a1)
+>>>>>           [...]
+>>>>>           /ftgmac100[0] (ftgmac100)
+>>>>>             /ftgmac100[0] (qemu:memory-region)
+>>>>>      -    /ftgmac100[1] (ftgmac100)
+>>>>>      -    /ftgmac100[2] (ftgmac100)
+>>>>>      -    /ftgmac100[3] (ftgmac100)
+>>>>>           /gpio (aspeed.gpio-ast2600)
+>>>>>           [...]
+>>>>>           /mii[0] (aspeed-mmi)
+>>>>>             /aspeed-mmi[0] (qemu:memory-region)
+>>>>>      -    /mii[1] (aspeed-mmi)
+>>>>>      -    /mii[2] (aspeed-mmi)
+>>>>>      -    /mii[3] (aspeed-mmi)
+>>>>>           /rtc (aspeed.rtc)
+>>>>>
+>>>>> I'm not sure creating @nb_nics devices makes sense.  How many does the
+>>>>> physical chip provide?
+>>>>
+>>>> The AST2400, AST2500 SoC have 2 macs and the AST2600 has 4. Each machine
+>>>> define the one it uses, generally MAC0 but the tacoma board uses MAC3.
+>>>>
+>>>> Shouldn't the model reflect the real address space independently from
+>>>> the NIC backends defined on the command line ?
+> 
+> If the SoC has N ftgmac100 peripherals, you need to mmio-map the N instances, 
+> else your guest will get MEMTX_DECODE_ERROR trying to access it, regardless 
+> command line NIC plugged.
+ 
+yes. This is what I do with the patch attached below but I have another 
+problem.
 
-> On Tue, 19 May 2020 at 06:09, Markus Armbruster <armbru@redhat.com> wrote:
->> I figure the "device becomes real only on realize" thing is actually
->> more myth than thing.
->
-> It's not a myth, it's an API guarantee thing. If you don't realize
-> the device you create before you use it then you're in the world of
-> unspecified behaviour, and anything could happen: maybe it works,
-> maybe it doesn't, maybe it works today and breaks tomorrow.
+Get a witherspoon-tacoma flash image :
 
-It's a myth in the sense "we want it to be that way, but it often
-ain't" :)
+    https://openpower.xyz/job/openbmc-build/distro=ubuntu,label=builder,target=witherspoon-tacoma/lastSuccessfulBuild/artifact/deploy/images/witherspoon-tacoma/flash-witherspoon-tacoma
 
-Of course your right in that it is also a case of "use the interface the
-specified way, or else".
+Run :
+
+    qemu-system-arm -M tacoma-bmc -nic user -drive file=./flash-witherspoon-tacoma,format=raw,if=mtd -nographic -nodefaults -serial mon:stdio
+    qemu-system-arm: warning: nic ftgmac100.0 has no peer
+    qemu-system-arm: warning: nic ftgmac100.1 has no peer
+    qemu-system-arm: warning: nic ftgmac100.3 has no peer
+    
+    
+    U-Boot 2019.04 (May 06 2020 - 04:20:01 +0000)
+    
+    SOC: AST2600-A1 
+    LPC Mode: SIO:Enable : SuperIO-2e
+    Eth: MAC0: RMII/NCSI, MAC1: RMII/NCSI, MAC2: RMII/NCSI, MAC3: RMII/NCSI
+    Model: Tacoma
+    DRAM:  already initialized, 1008 MiB
+    ...
+
+How do I deal with the "no peer" warnings ? 
+
+Thanks,
+
+C.
+
+
+From a3c2772eca8a541158345e6f219ce524f1bc017b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Date: Tue, 19 May 2020 14:39:55 +0200
+Subject: [PATCH] arm/aspeed: Rework NIC attachment
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ include/hw/arm/aspeed.h     |  1 +
+ include/hw/arm/aspeed_soc.h |  1 +
+ hw/arm/aspeed.c             |  5 +++++
+ hw/arm/aspeed_ast2600.c     |  9 +++++++--
+ hw/arm/aspeed_soc.c         | 10 ++++++++--
+ 5 files changed, 22 insertions(+), 4 deletions(-)
+
+diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+index 18521484b90e..7e71152b3554 100644
+--- a/include/hw/arm/aspeed.h
++++ b/include/hw/arm/aspeed.h
+@@ -39,6 +39,7 @@ typedef struct AspeedMachineClass {
+     const char *fmc_model;
+     const char *spi_model;
+     uint32_t num_cs;
++    uint32_t nic_mask;
+     void (*i2c_init)(AspeedBoardState *bmc);
+ } AspeedMachineClass;
+ 
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 914115f3ef77..32e9a232a049 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -55,6 +55,7 @@ typedef struct AspeedSoCState {
+     AspeedSDMCState sdmc;
+     AspeedWDTState wdt[ASPEED_WDTS_NUM];
+     FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
++    uint32_t nic_mask;
+     AspeedMiiState mii[ASPEED_MACS_NUM];
+     AspeedGPIOState gpio;
+     AspeedGPIOState gpio_1_8v;
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 6f8f4b88f8ab..338b5db20cf9 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -283,6 +283,8 @@ static void aspeed_machine_init(MachineState *machine)
+                             &error_abort);
+     object_property_set_int(OBJECT(&bmc->soc), amc->num_cs, "num-cs",
+                             &error_abort);
++    object_property_set_int(OBJECT(&bmc->soc), amc->nic_mask, "nic-mask",
++                            &error_abort);
+     object_property_set_link(OBJECT(&bmc->soc), OBJECT(&bmc->ram_container),
+                              "dram", &error_abort);
+     if (machine->kernel_filename) {
+@@ -556,12 +558,14 @@ static int aspeed_soc_num_cpus(const char *soc_name)
+ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+ 
+     mc->init = aspeed_machine_init;
+     mc->no_floppy = 1;
+     mc->no_cdrom = 1;
+     mc->no_parallel = 1;
+     mc->default_ram_id = "ram";
++    amc->nic_mask = 1; /* First NIC */
+ 
+     aspeed_machine_class_props_init(oc);
+ }
+@@ -698,6 +702,7 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
+     amc->fmc_model = "mx66l1g45g";
+     amc->spi_model = "mx66l1g45g";
+     amc->num_cs    = 2;
++    amc->nic_mask  = 0x4; /* third NIC */
+     amc->i2c_init  = witherspoon_bmc_i2c_init; /* Same board layout */
+     mc->default_ram_size = 1 * GiB;
+     mc->default_cpus = mc->min_cpus = mc->max_cpus =
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 114b94f8f44d..0e303c3018e7 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -247,6 +247,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     Error *err = NULL, *local_err = NULL;
+     qemu_irq irq;
++    NICInfo *nd = &nd_table[0];
+ 
+     /* IO space */
+     create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_IOMEM],
+@@ -462,8 +463,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* Net */
+-    for (i = 0; i < nb_nics && i < sc->macs_num; i++) {
+-        qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]);
++    for (i = 0; i < sc->macs_num; i++) {
++        if ((s->nic_mask & (1 << i)) && nd->used) {
++            qemu_check_nic_model(nd, TYPE_FTGMAC100);
++            qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), nd);
++            nd++;
++        }
+         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed",
+                                  &err);
+         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realized",
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 984d29087dce..cc4f6769e763 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -234,6 +234,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     AspeedSoCState *s = ASPEED_SOC(dev);
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     Error *err = NULL, *local_err = NULL;
++    NICInfo *nd = &nd_table[0];
+ 
+     /* IO space */
+     create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_IOMEM],
+@@ -405,8 +406,12 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* Net */
+-    for (i = 0; i < nb_nics && i < sc->macs_num; i++) {
+-        qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]);
++    for (i = 0; i < sc->macs_num; i++) {
++        if ((s->nic_mask & (1 << i)) && nd->used) {
++            qemu_check_nic_model(nd, TYPE_FTGMAC100);
++            qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), nd);
++            nd++;
++        }
+         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed",
+                                  &err);
+         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realized",
+@@ -455,6 +460,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+                        aspeed_soc_get_irq(s, ASPEED_SDHCI));
+ }
+ static Property aspeed_soc_properties[] = {
++    DEFINE_PROP_UINT32("nic-mask", AspeedSoCState, nic_mask, 0x1),
+     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
+-- 
+2.25.4
 

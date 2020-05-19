@@ -1,142 +1,130 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3798290lfb;
-        Tue, 19 May 2020 00:58:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyjAL6QimNYjFKYRAaZ9PPwe5u2Fxo5VyANnqxFmMsd6dlHTkjrxebmPEqc9jgE6Q3JvOGw
-X-Received: by 2002:a17:906:944e:: with SMTP id z14mr18808572ejx.86.1589875094265;
-        Tue, 19 May 2020 00:58:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589875094; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3830625lfb;
+        Tue, 19 May 2020 01:49:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzi0Ub7VQvKFaKiHph48C6wniX1IuxHmAREFk/DHi74ulZ64bYNC6+PplqsCtJn8LEG9ysi
+X-Received: by 2002:ac8:518f:: with SMTP id c15mr20200819qtn.142.1589878172988;
+        Tue, 19 May 2020 01:49:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589878172; cv=none;
         d=google.com; s=arc-20160816;
-        b=UDBKeTIFsIqoC55q+boslVce3Iu798x1MqNe4Uk8+CGTUTNATNCfC32k/TabeT0e72
-         a8EaDpTDvHDRG6YT4H6wPJXt9rf/wdwWhUuOIzfBIbYIUiKTtx+VEKsFINtm+r/F0WRs
-         RiMqAhNjcWndoHmGetm1JNm1Y9BBAgUR/2od5aYw6DBWrM+CVPofnIPsFxNr4ElMrLNu
-         28QzJnicqLO3uwqb0kPbSZBqwgNiKK8gWPXic2C6GEJ/fvHUz4ymd9JgkwpLQOTCV/tf
-         RYUGvP8ls6kYwCwXfLRIWX05CJy7V+wF4ZHWIKUAhQw9XSKAzaP8bJQ+E0QxjnJwkqXQ
-         G87w==
+        b=jcUupYolgYRRrvr8PYvYVQWtHxv+WDPvaaLUskgOwY+kHkNShhURGPkkUJ8n/9DWPg
+         VdfqbhnVf+pC2IOSljwzNeG2m2/4qKK/VioJqUEYY0UDbwi5ELkbNgy/R3aAnozItCNH
+         OGtcoU+E3cXeQn/5+brsdPdRxmZX0G41aV5xvkboqszNum1YQu5Xx2/+yHiHESmTmqcZ
+         VMU2IJ09HtPuH6S06PsoKB34bab5z2W0P6Poa1wyJmYec3qlm6mTsZk0AkssxLvLt1Di
+         7VavS2fCc/IN4J5Zx3Ut2AFvDQvY9VFWvcvWLoxtlyi+NKTb7qpRBrUbj3fg43i/N9OR
+         nyhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=a4VuYgpozh5k2UbrW8UQBTZQVsj6kKrTwTGf6FkRTGs=;
-        b=J4IWPgpPcw2NcXdwIiItacN5zh7tm0d6ClgZ7ngDnHisMGU4xM3JmGJHqVniEzrlGO
-         JPAnhXXEbVGg4xsq4Y3jsETN4lKzruqPAe9eWYdgpzKAQQTH3jjQrRNHMso3eGbIztEG
-         ZCywxZO895SnWaoFmaZJDW+rss2SLpPTuIP9ObXWlP2DypyB2qYCX009Sts4WZzl7G0S
-         HMM5frfhq4pDSvxNVAzR8W6WofjUe4/gx2PvXJt4TuJF0tzFQRjTMsdzsMyuGjpaOK55
-         q+Vek4r1WD/efATF9IDlzKz0+zqikr7Z3bd0y7W3WEvAgfkEqsxHLWHUCT1BAddd6PPb
-         /u9g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from;
+        bh=B49AWPD+6J2nW0qdjXofvGWJMe5HVvktRWlzLmZRZEo=;
+        b=AWlH3jAoWGc1TRonEIrH62atIf9u8wKlirOHrPrenZNzW/lvMWAF64ACxL+iku5WrC
+         wS2D8NGZc2TGnDrDytDxJPr2Y903vRsAvllnP5v75/6cKM+agmkRBDL3+VnvvTOGsmj+
+         ofBEwMscG807gVFU2SEi/xtxS7ytyLOeTH3flpg1t12l90h31JmuOAwksheq7mzn1Ppa
+         wN2Lfwh6gxEF4IDoJQ47lthw6ZfQUHGuVduhGqBLzWMegHR9CeKQPXDeFZvnh9aNuYMP
+         +IYjcJhxJFaHOUyIeNNAwkmPAB9uGYrbp1PpjDwHn/d0k4y0z30M6RPQHtB1UcUsfPNx
+         Gs3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bbNGh2kg;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id r8si8249925edi.84.2020.05.19.00.58.14;
-        Tue, 19 May 2020 00:58:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h17si7056146qtk.14.2020.05.19.01.49.32
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 19 May 2020 01:49:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bbNGh2kg;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728237AbgESH6N (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 19 May 2020 03:58:13 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:58483 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1726943AbgESH6M (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 19 May 2020 03:58:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1589875091;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=a4VuYgpozh5k2UbrW8UQBTZQVsj6kKrTwTGf6FkRTGs=;
-        b=bbNGh2kgT189Adii9+5OQBE9tqQYhlnRDcgSY3YvOjlRjiclxklDymDilNWo3hRFlaeXy8
-        SXcPSZohWjcYB0lCxC32Cf00Zy50r0ugmmbTmi0Uv8ktZs8OLFnPraqsbClvyztXQ3ZiT1
-        hP9aEALyyrYhqTNrXyfW3J8TMpEif6w=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-64-WPHoRY7eNkq_rmM9tqZrUQ-1; Tue, 19 May 2020 03:58:09 -0400
-X-MC-Unique: WPHoRY7eNkq_rmM9tqZrUQ-1
-Received: by mail-wr1-f70.google.com with SMTP id 30so6885474wrq.15
-        for <kvm@vger.kernel.org>; Tue, 19 May 2020 00:58:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=a4VuYgpozh5k2UbrW8UQBTZQVsj6kKrTwTGf6FkRTGs=;
-        b=jcJ7LY/wVgFRoLtoe4OMRam3EzlNqDHIsnxinS02H9nE9Zer6nIqVOfkayU5yb3pCP
-         WfnwQNwmmRxGj+5ClIjYSdKgXo2gNERAn35lpZFvtI4t1Zh7KgSFjoeAaNycTLRuAaLb
-         5YYzlbcQfoivPfrwuIMNyOky7MFjc2/pb3IZHkoCV84z1o3IQiPJMKlbtvIXHN9rEBSD
-         PdubMT2WPB9PRvMvrxIKzFpwOcqzIAxqbFGVn94m1HCScrMRFB8EWlTxj8//lScXPm3b
-         SW5XfRVKgD+PuHuc7yIHRC+So40K5RcCB7omsRLlrxSY3w0UBXE5tVgdP4MT8Vu8Rpvx
-         kweQ==
-X-Gm-Message-State: AOAM532IuCIZ2YudJs+rP8TtJPVBC30aWIIz1vdd7tS1gnmuZtczOoSR
-        Jxy+imMfwcgNiDqvzP84odXZs3TxxCynNvh/OKvUe8I5rpZhPmpTFQL1ECEFAFX9sETgXcDYEVB
-        r3naaf6aVen7Y
-X-Received: by 2002:a1c:81d0:: with SMTP id c199mr3722633wmd.125.1589875088194;
-        Tue, 19 May 2020 00:58:08 -0700 (PDT)
-X-Received: by 2002:a1c:81d0:: with SMTP id c199mr3722606wmd.125.1589875087928;
-        Tue, 19 May 2020 00:58:07 -0700 (PDT)
-Received: from steredhat (host108-207-dynamic.49-79-r.retail.telecomitalia.it. [79.49.207.108])
-        by smtp.gmail.com with ESMTPSA id l19sm2876436wmj.14.2020.05.19.00.58.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 May 2020 00:58:07 -0700 (PDT)
-Date:   Tue, 19 May 2020 09:58:05 +0200
-From:   Stefano Garzarella <sgarzare@redhat.com>
-To:     Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
-        qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>
-Subject: Re: [PATCH v2 4/7] hw/elf_ops: Do not ignore write failures when
- loading ELF
-Message-ID: <20200519075805.tgrzbz2qscco5thh@steredhat>
-References: <20200518155308.15851-1-f4bug@amsat.org>
- <20200518155308.15851-5-f4bug@amsat.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200518155308.15851-5-f4bug@amsat.org>
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: iBB2YPdw+mO7
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54774 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jaxwJ-0003sk-FX
+	for alex.bennee@linaro.org; Tue, 19 May 2020 04:49:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53774)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <geert@linux-m68k.org>)
+ id 1jaxw3-0003oM-VA
+ for qemu-arm@nongnu.org; Tue, 19 May 2020 04:49:17 -0400
+Received: from michel.telenet-ops.be ([2a02:1800:110:4::f00:18]:42060)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <geert@linux-m68k.org>)
+ id 1jaxw2-0003vU-0l
+ for qemu-arm@nongnu.org; Tue, 19 May 2020 04:49:15 -0400
+Received: from ramsan ([IPv6:2a02:1810:ac12:ed60:918e:b928:22c1:d715])
+ by michel.telenet-ops.be with bizsmtp
+ id gYp6220074CPMDc06Yp60y; Tue, 19 May 2020 10:49:07 +0200
+Received: from rox.of.borg ([192.168.97.57]) by ramsan with esmtp (Exim 4.90_1)
+ (envelope-from <geert@linux-m68k.org>)
+ id 1jaxvu-0002Fv-1l; Tue, 19 May 2020 10:49:06 +0200
+Received: from geert by rox.of.borg with local (Exim 4.90_1)
+ (envelope-from <geert@linux-m68k.org>)
+ id 1jaxvt-0000I0-Va; Tue, 19 May 2020 10:49:05 +0200
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] hw/arm/virt: Fix PL061 node name and properties
+Date: Tue, 19 May 2020 10:49:04 +0200
+Message-Id: <20200519084904.1069-1-geert+renesas@glider.be>
+X-Mailer: git-send-email 2.17.1
+Received-SPF: none client-ip=2a02:1800:110:4::f00:18;
+ envelope-from=geert@linux-m68k.org; helo=michel.telenet-ops.be
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RHMp1JpWfmVG
 
-On Mon, May 18, 2020 at 05:53:05PM +0200, Philippe Mathieu-Daudé wrote:
-> Do not ignore the MemTxResult error type returned by
-> address_space_write().
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  include/hw/elf_ops.h | 11 ++++++++---
->  1 file changed, 8 insertions(+), 3 deletions(-)
+Make the created node comply with the PL061 Device Tree bindings:
+  - Use generic node name "gpio" instead of "pl061",
+  - Add missing "#interrupt-cells" and "interrupt-controller"
+    properties.
 
-Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
+Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+---
+Split off from "[PATCH QEMU v2 2/5] ARM: PL061: Extract pl061_create_fdt()"
+(https://lore.kernel.org/r/20200423090118.11199-3-geert+renesas@glider.be).
+---
+ hw/arm/virt.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-> 
-> diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
-> index 398a4a2c85..6fdff3dced 100644
-> --- a/include/hw/elf_ops.h
-> +++ b/include/hw/elf_ops.h
-> @@ -553,9 +553,14 @@ static int glue(load_elf, SZ)(const char *name, int fd,
->                      rom_add_elf_program(label, mapped_file, data, file_size,
->                                          mem_size, addr, as);
->                  } else {
-> -                    address_space_write(as ? as : &address_space_memory,
-> -                                        addr, MEMTXATTRS_UNSPECIFIED,
-> -                                        data, file_size);
-> +                    MemTxResult res;
-> +
-> +                    res = address_space_write(as ? as : &address_space_memory,
-> +                                              addr, MEMTXATTRS_UNSPECIFIED,
-> +                                              data, file_size);
-> +                    if (res != MEMTX_OK) {
-> +                        goto fail;
-> +                    }
->                  }
->              }
->  
-> -- 
-> 2.21.3
-> 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 7dc96abf72cf2b9a..99593d7bce4d85cb 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -818,13 +818,15 @@ static void create_gpio(const VirtMachineState *vms)
+                                      qdev_get_gpio_in(vms->gic, irq));
+ 
+     uint32_t phandle = qemu_fdt_alloc_phandle(vms->fdt);
+-    nodename = g_strdup_printf("/pl061@%" PRIx64, base);
++    nodename = g_strdup_printf("/gpio@%" PRIx64, base);
+     qemu_fdt_add_subnode(vms->fdt, nodename);
+     qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
+                                  2, base, 2, size);
+     qemu_fdt_setprop(vms->fdt, nodename, "compatible", compat, sizeof(compat));
+     qemu_fdt_setprop_cell(vms->fdt, nodename, "#gpio-cells", 2);
+     qemu_fdt_setprop(vms->fdt, nodename, "gpio-controller", NULL, 0);
++    qemu_fdt_setprop_cell(vms->fdt, nodename, "#interrupt-cells", 2);
++    qemu_fdt_setprop(vms->fdt, nodename, "interrupt-controller", NULL, 0);
+     qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
+                            GIC_FDT_IRQ_TYPE_SPI, irq,
+                            GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+-- 
+2.17.1
+

@@ -1,114 +1,83 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp4139701lfb;
-        Tue, 19 May 2020 08:28:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxBg4UJnqmBg10fij1hgIYyUtgQYJLwQqzV2AzMI0/vj5gKYNsStwGA30bCE02ejXUDbN3B
-X-Received: by 2002:ae9:ed8e:: with SMTP id c136mr19897152qkg.180.1589902112879;
-        Tue, 19 May 2020 08:28:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589902112; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp4184654lfb;
+        Tue, 19 May 2020 09:20:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwngmYz7vny/OmCIKmcdXdDWkp9mLSR7JAgO6uHieEeyHVt8qN4U66/AiYEvs+XQb7oGuVv
+X-Received: by 2002:aed:2d02:: with SMTP id h2mr499290qtd.83.1589905229667;
+        Tue, 19 May 2020 09:20:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589905229; cv=none;
         d=google.com; s=arc-20160816;
-        b=tHWFZwmv/dgk/lDpljG0RR//ogmeAAQUArdCd01Yp886b8NKQuug4Vss1CzS4/e8je
-         Dda/xu9ZDlWkuD3oVv3AaBZRXuFxEoS+UZGaMGDLx8PufwcDapOqiJiNUu4Za3XjfgmU
-         lw9S44M2AFKt8jSkFgNTpAYWPJJUu21EIu4q4v3ftGCOVxXcb69P2l7hM2WdPF9dDwZB
-         pFmbrCtHdkft1bKB+xFwnsnPye20JR3UATEBlwmJwmwlcCm4XzNdrNuv438Gcc3zSL7C
-         hJilXhVA5VXDPL/vxGLnly9sd/Gqfc3TnZncJei9LxCj/9ebE6DS6aOV7srnAae2Kewj
-         wkcg==
+        b=vc6ePlajYhCnkw/ERgDN7r9u/rbfu+xvv3E9+DftecTXNGkF/lYK3mctu0dgP5Kn/h
+         ZuS9LFy+RiYC+pI+XazN0YTtpW9VwI0xBJ2wgP82o/vKOn1HYjeM7bMhE2B0rdE0nVsJ
+         PCokNIkmM8F7CdddF1lOOvAe50fj4bQDsXpY4/nChfaJDPVU88e3c0noPKEIi046MldH
+         YOf8bLHdZzYWAXtVcLTp6b0RcJg+QUbVDnvLW8wcmbSOOkgtb6VE+ga5O4OFGpWhq2qV
+         222uYydniAciILmLVDCFWXiw0hnieh55845cf0RmZmT+d1PkCmZA0i/kaJZco6qyBeQf
+         DZ4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ekV9LOn45uEl+E8BDFIUMuZv1J5gOmEIjpzRNluTkUM=;
-        b=wD+tEbRH3PF+nRC3TutMAPYHg5c7uy9iiPC+MR3XP5rlpO4zcoWfvrB7cJ2Zg5lEBG
-         5pV3IglyJ78iLpptSub9HdQE/myRRh4tml/Fb36E/2JG284iz6OZW4xjPZyHymFd7Y8f
-         5kXpROxL/WK8MBhz2+wYN5c2w99l3XXfJB/dnrYLgBuJSlk0v+LKoL+BLJwd1hx+7VAW
-         fjtPeOhCzm3iHm8ZFPixcUthHIJFGBCB3lvZ7lpqLpST8fvzf7zDcOn3igxvNxLa4KLH
-         NGB06mHgOiYbiDvGRLG0lhrW+bMcmpQ91eUZIAb2K7Vh57eBOJp9yFMccO7E85QTOcg9
-         CQxQ==
+         :mime-version:message-id:date:subject:to:from;
+        bh=h6dEByxl9FFm8JrTLyVUnNfmX54oPtMcJSlqXEJnWRs=;
+        b=MF7Qg9l9wwOJqr25awojTVIBEj8I3nlo0C5jncpAuYQb1GwgSiAWCogE5UaQM3I6M1
+         qsXR7XqJwBQoWMiX/6tShWw5KFjV1NE0kWP+zEaLdXdeIpromIng0d27EjA7bsy4IhDD
+         DW68smhclzCmjQ5BXjGqbzQ6wvdkDHzSNy6J9X0lpeVWs6KJI5NKA/ZvDbvrrOmUuz1q
+         sHDGvbVrPxWp4iiAPRfzrvQD1kt4vKJzTqVjQcKdfOgV5zPYPhg79LhPh+n1Uye8LaLO
+         lpKyWDNt7O4ycp5XHQFs8pZjDlvl1SggZaMnPbJ/QyhyzyZI3/TOxffVVNfJ5jMYHfUs
+         FsZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mM0V5zU3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 16si65610qks.262.2020.05.19.08.28.32
+        by mx.google.com with ESMTPS id i23si174165qkl.11.2020.05.19.09.20.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 May 2020 08:28:32 -0700 (PDT)
+        Tue, 19 May 2020 09:20:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mM0V5zU3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49632 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58562 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jb4AS-00071u-AI
-	for alex.bennee@linaro.org; Tue, 19 May 2020 11:28:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48152)
+	id 1jb4yj-00075i-3x
+	for alex.bennee@linaro.org; Tue, 19 May 2020 12:20:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56840)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jb43W-0005WZ-Si
- for qemu-arm@nongnu.org; Tue, 19 May 2020 11:21:22 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:44480)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jb43V-0001Hs-Pb
- for qemu-arm@nongnu.org; Tue, 19 May 2020 11:21:22 -0400
-Received: by mail-pl1-x643.google.com with SMTP id w19so3973716ply.11
- for <qemu-arm@nongnu.org>; Tue, 19 May 2020 08:21:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=ekV9LOn45uEl+E8BDFIUMuZv1J5gOmEIjpzRNluTkUM=;
- b=mM0V5zU36vLlfLmcpkZSffXhm86r6jXSSlN2a8wXn1wqbvHrs/+k6f3iCvZkOqCUPh
- Ianv1NwcmIc+3m8aIwzzpqxorJcBEr3F+Ntyatkp4/z+3mSfH1psaJ9wem65ITxyIvDU
- gVaUNzbl+KYoqQENLv5Cj9jKX7WsdjvAl+bTChSykecpkekKHJUCV+ZCgghZ7GkF5+V0
- iRhVi6TzKAZyz9cWuCsHEFANYUzzj195PgRe4ts6QqerzIL/pTAZVmB8aGAPCIWzAY80
- ptudNhEsZjvcFlBDr0WQTpJdnRuj4On74Bnd/ErP8qM1VMwab1hWwMvzK60857APxc3h
- BZCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ekV9LOn45uEl+E8BDFIUMuZv1J5gOmEIjpzRNluTkUM=;
- b=FcsXqwAVhCXN5BaL1V5DtEv250RXoKib79YPGGc6myUqt8uAY/ABn2VpnaZj1ZyZbu
- 81L8fmHLFcruVbgeZZMgAKFBOT+LbRrv5NM8Pfojs/PGgElN6fKwcmn2uOGrla4Yikh5
- sp+lFVEtg9Wk7/WZsyzJJVl0dEGF+TfP8q27gFn/LVD44GfaQQNSqUO14pMdMsp3SGR5
- dB/Cas+Jpy2AuvGvfifqfhZiZyv9RJbNxi5jN2nWvU13r31TvlJaA6kcVOR82xvDxGmY
- b1uS4CljtnB/yCrxHyMuZvk+4uIIRpV1ETeMHETsNhfRU5NnPWK74F5ez62765cuCqyg
- SaSA==
-X-Gm-Message-State: AOAM533DKW66UREl2lRWgs9LOFF8HkEbq7g2OYy4XrxrhgPcvXd9d7wg
- pC58UAxLfl603jr/0lWcIrfpCQ==
-X-Received: by 2002:a17:90a:4497:: with SMTP id t23mr97534pjg.88.1589901679045; 
- Tue, 19 May 2020 08:21:19 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id i2sm10352158pgb.14.2020.05.19.08.21.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 May 2020 08:21:18 -0700 (PDT)
-Subject: Re: [PATCH RISU] arm.risu, thumb.risu: Add v8.2 DP and FHM insns
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20200518154719.18562-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <8d939086-a431-0922-4623-88cb517993f1@linaro.org>
-Date: Tue, 19 May 2020 08:21:16 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jb4yT-000731-RV
+ for qemu-arm@nongnu.org; Tue, 19 May 2020 12:20:13 -0400
+Received: from 6.mo3.mail-out.ovh.net ([188.165.43.173]:34579)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jb4yQ-0007jy-Hq
+ for qemu-arm@nongnu.org; Tue, 19 May 2020 12:20:12 -0400
+Received: from player696.ha.ovh.net (unknown [10.108.57.38])
+ by mo3.mail-out.ovh.net (Postfix) with ESMTP id F09D5250BC2
+ for <qemu-arm@nongnu.org>; Tue, 19 May 2020 18:20:07 +0200 (CEST)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player696.ha.ovh.net (Postfix) with ESMTPSA id 72DC812938A03;
+ Tue, 19 May 2020 16:19:59 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-106R00652b81922-5089-440c-ac07-4a2fd88bd71a,3DCE2E61E2D7C1BA27EF92566E0C35A5904F621F)
+ smtp.auth=clg@kaod.org
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] arm/aspeed: Rework NIC attachment
+Date: Tue, 19 May 2020 18:19:57 +0200
+Message-Id: <20200519161957.1056027-1-clg@kaod.org>
+X-Mailer: git-send-email 2.25.4
 MIME-Version: 1.0
-In-Reply-To: <20200518154719.18562-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Ovh-Tracer-Id: 519884282638732049
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedruddtjedgleekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffogggtgfesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeegtddutdeugeefvefhhfdvgefhjeffvedvtefhkeeiheffhfdvffelleegvdenucffohhmrghinhepohiilhgrsghsrdhorhhgnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrieeliedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=188.165.43.173; envelope-from=clg@kaod.org;
+ helo=6.mo3.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/19 12:20:08
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -122,30 +91,196 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VbHo1gg+C6OA
+X-TUID: 9bbq4rnqA9gy
 
-On 5/18/20 8:47 AM, Peter Maydell wrote:
-> Add coverage for the v8.2 DP and v8.2 FHM insns in the Neon extension
-> space.  (We already had the v8.1 VQRDMLAH/VQRDLSH and the v8.3
-> VCADD/VCMLA, so this brings the risu coverage into line with what
-> QEMU has implemented so far.)
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> I added these patterns as part of testing for the first part
-> of the Neon decodetree conversion and forgot I'd never sent out the
-> risu patch for review.
-> 
->  arm.risu   | 18 ++++++++++++++++++
->  thumb.risu | 18 ++++++++++++++++++
->  2 files changed, 36 insertions(+)
+The AST2400 and AST2500 SoCs have two MACs but only the first MAC0 is
+active on the Aspeed machines using these SoCs. The AST2600 has four
+MACs. The AST2600 EVB machine activates MAC1, MAC2 and MAC3 and the
+Tacoma BMC machine activates MAC2.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Introduce a bit-field property "macs-mask" under the Aspeed SoC model
+to link the active MACs of the machine being started with the available
+network devices.
 
-Sorry I didn't submit these myself February last year.  I still have them
-sitting in a separate .risu file that I used for testing originally.
+Inactive MACs will have no peer and QEMU will warn the user with :
 
+    qemu-system-arm: warning: nic ftgmac100.0 has no peer
+    qemu-system-arm: warning: nic ftgmac100.1 has no peer
+    qemu-system-arm: warning: nic ftgmac100.3 has no peer
 
-t~
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+
+ To be applied on top of patch "arm/aspeed: Compute the number of CPUs
+ from the SoC definition" 
+ 
+ http://patchwork.ozlabs.org/project/qemu-devel/patch/20200519091631.1006073-1-clg@kaod.org/
+ 
+ include/hw/arm/aspeed.h     |  1 +
+ include/hw/arm/aspeed_soc.h |  6 ++++++
+ hw/arm/aspeed.c             |  6 ++++++
+ hw/arm/aspeed_ast2600.c     | 11 ++++++++---
+ hw/arm/aspeed_soc.c         | 10 ++++++++--
+ 5 files changed, 29 insertions(+), 5 deletions(-)
+
+diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+index 18521484b90e..842dff485f5b 100644
+--- a/include/hw/arm/aspeed.h
++++ b/include/hw/arm/aspeed.h
+@@ -39,6 +39,7 @@ typedef struct AspeedMachineClass {
+     const char *fmc_model;
+     const char *spi_model;
+     uint32_t num_cs;
++    uint32_t macs_mask;
+     void (*i2c_init)(AspeedBoardState *bmc);
+ } AspeedMachineClass;
+ 
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 914115f3ef77..fdb9e05bc47c 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -34,6 +34,11 @@
+ #define ASPEED_CPUS_NUM  2
+ #define ASPEED_MACS_NUM  4
+ 
++#define ASPEED_MAC0_ON   (1 << 0)
++#define ASPEED_MAC1_ON   (1 << 1)
++#define ASPEED_MAC2_ON   (1 << 2)
++#define ASPEED_MAC3_ON   (1 << 3)
++
+ typedef struct AspeedSoCState {
+     /*< private >*/
+     DeviceState parent;
+@@ -55,6 +60,7 @@ typedef struct AspeedSoCState {
+     AspeedSDMCState sdmc;
+     AspeedWDTState wdt[ASPEED_WDTS_NUM];
+     FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
++    uint32_t macs_mask;
+     AspeedMiiState mii[ASPEED_MACS_NUM];
+     AspeedGPIOState gpio;
+     AspeedGPIOState gpio_1_8v;
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 6f8f4b88f8ab..79c683864d7e 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -283,6 +283,8 @@ static void aspeed_machine_init(MachineState *machine)
+                             &error_abort);
+     object_property_set_int(OBJECT(&bmc->soc), amc->num_cs, "num-cs",
+                             &error_abort);
++    object_property_set_int(OBJECT(&bmc->soc), amc->macs_mask, "macs-mask",
++                            &error_abort);
+     object_property_set_link(OBJECT(&bmc->soc), OBJECT(&bmc->ram_container),
+                              "dram", &error_abort);
+     if (machine->kernel_filename) {
+@@ -556,12 +558,14 @@ static int aspeed_soc_num_cpus(const char *soc_name)
+ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+ 
+     mc->init = aspeed_machine_init;
+     mc->no_floppy = 1;
+     mc->no_cdrom = 1;
+     mc->no_parallel = 1;
+     mc->default_ram_id = "ram";
++    amc->macs_mask = ASPEED_MAC0_ON;
+ 
+     aspeed_machine_class_props_init(oc);
+ }
+@@ -680,6 +684,7 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
+     amc->fmc_model = "w25q512jv";
+     amc->spi_model = "mx66u51235f";
+     amc->num_cs    = 1;
++    amc->macs_mask  = ASPEED_MAC1_ON | ASPEED_MAC2_ON | ASPEED_MAC3_ON;
+     amc->i2c_init  = ast2600_evb_i2c_init;
+     mc->default_ram_size = 1 * GiB;
+     mc->default_cpus = mc->min_cpus = mc->max_cpus =
+@@ -698,6 +703,7 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
+     amc->fmc_model = "mx66l1g45g";
+     amc->spi_model = "mx66l1g45g";
+     amc->num_cs    = 2;
++    amc->macs_mask  = ASPEED_MAC2_ON;
+     amc->i2c_init  = witherspoon_bmc_i2c_init; /* Same board layout */
+     mc->default_ram_size = 1 * GiB;
+     mc->default_cpus = mc->min_cpus = mc->max_cpus =
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 114b94f8f44d..fa85122f6d78 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -247,6 +247,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     Error *err = NULL, *local_err = NULL;
+     qemu_irq irq;
++    NICInfo *nd = &nd_table[0];
+ 
+     /* IO space */
+     create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_IOMEM],
+@@ -462,8 +463,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* Net */
+-    for (i = 0; i < nb_nics && i < sc->macs_num; i++) {
+-        qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]);
++    for (i = 0; i < sc->macs_num; i++) {
++        if ((s->macs_mask & (1 << i)) && nd->used) {
++            qemu_check_nic_model(nd, TYPE_FTGMAC100);
++            qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), nd);
++            nd++;
++        }
+         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed",
+                                  &err);
+         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realized",
+@@ -471,7 +476,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+         error_propagate(&err, local_err);
+         if (err) {
+             error_propagate(errp, err);
+-           return;
++            return;
+         }
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
+                         sc->memmap[ASPEED_ETH1 + i]);
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index 984d29087dce..d2c6a5760790 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -234,6 +234,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     AspeedSoCState *s = ASPEED_SOC(dev);
+     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
+     Error *err = NULL, *local_err = NULL;
++    NICInfo *nd = &nd_table[0];
+ 
+     /* IO space */
+     create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_IOMEM],
+@@ -405,8 +406,12 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* Net */
+-    for (i = 0; i < nb_nics && i < sc->macs_num; i++) {
+-        qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]);
++    for (i = 0; i < sc->macs_num; i++) {
++        if ((s->macs_mask & (1 << i)) && nd->used) {
++            qemu_check_nic_model(nd, TYPE_FTGMAC100);
++            qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), nd);
++            nd++;
++        }
+         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed",
+                                  &err);
+         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realized",
+@@ -455,6 +460,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+                        aspeed_soc_get_irq(s, ASPEED_SDHCI));
+ }
+ static Property aspeed_soc_properties[] = {
++    DEFINE_PROP_UINT32("macs-mask", AspeedSoCState, macs_mask, 0x1),
+     DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
+-- 
+2.25.4
+

@@ -1,102 +1,126 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp636946lfb;
-        Wed, 20 May 2020 07:33:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyyOjN2WqxlmYbF0aZRHHmZ76W+pOPOQKfZKVJbio0i8Ge/W/esZ6T3IrBGF2IIKJKMuO/d
-X-Received: by 2002:a05:620a:1524:: with SMTP id n4mr5076733qkk.490.1589985203891;
-        Wed, 20 May 2020 07:33:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589985203; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3527312lfb;
+        Mon, 18 May 2020 17:21:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz44iuDvaopSs27teNSg8sb0UDgZNf5lqCIrS/OJRutqa+AMw2xMt9/iR/IxQEpcPog3NTY
+X-Received: by 2002:a37:484c:: with SMTP id v73mr18130653qka.496.1589847684630;
+        Mon, 18 May 2020 17:21:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589847684; cv=none;
         d=google.com; s=arc-20160816;
-        b=p6XIkwgH0BCXDW82tDtH0T9fKvksq+rNdYaP+LBbB5aQG6tqaNNbHdgWffyKESo63l
-         6CMxWMYiSFl/32SKVOBJd7IblBI80nLvvCQRshUWwHCgROomAgY2zIDFsytitcz9CHUF
-         zArWdiU24ZtLMbSwj3FR2T5l64sSryZ2Od/mu9vRuFE78xVUiWGwwphlr63HtVQyTSED
-         glSVu4v4IH1yGi8S7yTV/ZwA7PKhZC2ZG3jBvKDA8cAiFL3aEeHoQ8+cE0ae92LtMpWv
-         25gauRcQ7Am9JJWFFp8gJzV8peDdtPBtfMTumz7rTT0nVWnAMimjG8WNJfDNF15pFhI1
-         w7Pw==
+        b=qVGJXxD4gBWry3Xkqyu3uUTbkOaamcihUGRikH3pVBqflKEDZDESVOgTi7Q40uNphk
+         1S/hylI0FCH4Lk+oCatkHA6CS1auseQLqyqCUbM8zjyL3I01B2PnptRvTUNBXOcEQK0W
+         he1P6sxKh4JlvQ1zoA5Fj/GSRaW3jAImfHuxc4hzEj8OR5nwlhsp343hHSuAyxOl41dU
+         gYQk5AeOYdwGBvws9vjlrM53uqN+u/Qg7/H0q8GIcvbKpMz3+d5Nq3djZI2BzXfZ1Fkf
+         Gpsm03A7Ue9JXYXV4hudfWLB1EL4fAHHtyZZoZaIeEU7sFfJSN4ggkFtwT0BZaDs8zHC
+         zMcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=PXxBZetuYeBOwMYKyQFovUtIjAoxzqAocsmZ8HOO5i8=;
-        b=sR8wZX/XB/4jhfgbI/WJSil5U8vCG6kNQ4wqtyfZCbc1Aty1QRMxn4LLYXPA374FF5
-         8ZckU+sg70Fr1cDIFWzlcfqp6hxH8joPf7hb/dGwNNdESQuwRTSRg1wD635paWnfFDag
-         Rw91l01mqEffRA7pDPBBiGuuzBMumFK/iW8GNj/RmDY2wFPbYhmDY0Z0U1nDIjqTB9vq
-         6F4/sLXHNDbxy+K8gFNMGvmvyvfsM2fGXnaHqDUmNvzTjpkM/iGa9vECOrhomKQnLRmo
-         qcFrqwAWx9gBvg6SOMt96REBCB+DEYgfaUb/b/mYsJNgH4ymUpbzzeVl901T2sNXn1td
-         mGBw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :subject:to:from:date:references:in-reply-to:message-id:mime-version
+         :user-agent:dkim-signature:dkim-signature;
+        bh=5ejPM4auQg3IJ4AMz7sVnACxB15QpCyHfC7+4XrK7Jg=;
+        b=nSsi6o3mpYfXnoIpCX6bQAYT+ZNjInBj9e1ut5SeZ8zOpmZLjzo5HlXN7vrEMP5eX8
+         YgVkBJZyIXlnX4dzkDVx7yrkLGD04Q85sW2e+IewdYttlKNHWQrWdW/3/xW1OkHHcZoW
+         NLgcp2Rzwp/e6UKI5VeVQYMr2/xxNnIqzXHiLTn6f8O+svLXe537xUoR6S4XMj0r0ucQ
+         ru0cEAB1v3+xUB7pk6XmZo1kfcgtwq63rzBQ82nc6PUScmsc0HzFSW6ZoG6MDuPFezti
+         jaCz4RpGOGf8ZTWK1VV6BkMHt20aFh+w5N7s2NRJVT08nnZBYtOqXXc62R7nUkYcXcPC
+         HhTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uiEUvca4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=LKxvgFSX;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=dfEnzr5J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w144si1883107qkb.18.2020.05.20.07.33.23
+        by mx.google.com with ESMTPS id cl10si6575626qvb.147.2020.05.18.17.21.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 May 2020 07:33:23 -0700 (PDT)
+        Mon, 18 May 2020 17:21:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uiEUvca4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41194 helo=lists1p.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=LKxvgFSX;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=dfEnzr5J;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57610 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jbPmc-0002TO-93
-	for alex.bennee@linaro.org; Wed, 20 May 2020 10:33:22 -0400
+	id 1jaq0a-0008OP-2B
+	for alex.bennee@linaro.org; Mon, 18 May 2020 20:21:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10]:59570)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <e.mikitas@gmail.com>)
- id 1jbPmU-0002Rf-67; Wed, 20 May 2020 10:33:14 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37226)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <e.mikitas@gmail.com>)
- id 1jbPmT-0008Pl-Dk; Wed, 20 May 2020 10:33:13 -0400
-Received: by mail-wm1-x343.google.com with SMTP id z72so3115383wmc.2;
- Wed, 20 May 2020 07:33:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=PXxBZetuYeBOwMYKyQFovUtIjAoxzqAocsmZ8HOO5i8=;
- b=uiEUvca4nZ5Oqzkf8wtGDcHrGU9jK9S5S3JHLngZBQJhNJ/kjcXVcWw2Q41l9RGTU+
- vn8fe9A6MzL9Q7w4Dhq+IQfJSRAqIGSysD7dRDkZzaEUxJKJcrjAKNNivH6XAV8X3bVi
- JL0WjNJI89M25S6S4pm6HQyvFr5G7p1QQXseQnklj9KdLsI9nWRZuLTP90kT65WTUz9R
- qSX4IIxr2lkPsvEs3p49Xc3f2DixbVbm+yuMYUVvzTGZ7DPTbCMABHDIJNOQuDHhvzWJ
- DIyQm9ik4T51I0Tz++H8OIyVBJtv8etu8Cxc5cNhtKCJ2QRG05h7mP1HV5qCCuC1yayZ
- dS0w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=PXxBZetuYeBOwMYKyQFovUtIjAoxzqAocsmZ8HOO5i8=;
- b=NhWqu2l1ETeU3UXBhoWgzWcG6rCDHxvOFsFDE4EN1Rk71aYHlNoobaVsOxwjaflc33
- hClg9RHAcWtT8tblMhRr+8NQF5/Oh1ktV8tr54mUgHLT4pYik+Jzo+cJ1V8ZgPpqKg/Y
- E92Y0ZARAluW68E6GZOzonNoNa4DPUld/NLpC/ZK+hSrEGalEFFO5q4CttIn3Q33UaeC
- RvC8kJ31Gn8+KdycSA7CTCZC2qcnvaRgn5SlPrS5YeK+pWfN3LEWCvVKBLaXzyE0H5Z7
- W7zLNEd7G9ECJytj3Qg6gyTBSh3RV0hZ7oZSvw355n2NVxbHIjI7Go1XpD6k0ZrHR1mj
- a/VQ==
-X-Gm-Message-State: AOAM532lMt4Z3/KlLnN8CLYiQbeiYuq3grJz4caao3S4zttA6VqPS65E
- iJkQFJufQtmPZ3C4eP599MdUU4PSu5pxiQ==
-X-Received: by 2002:a7b:c0d1:: with SMTP id s17mr4689213wmh.157.1589985190334; 
- Wed, 20 May 2020 07:33:10 -0700 (PDT)
-Received: from eden-linux.lan (bzq-109-66-59-205.red.bezeqint.net.
- [109.66.59.205])
- by smtp.gmail.com with ESMTPSA id l18sm3180072wmj.22.2020.05.20.07.33.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 May 2020 07:33:09 -0700 (PDT)
-From: Eden Mikitas <e.mikitas@gmail.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] ssi/imx_spi: Removed unnecessary cast and fixed condition in
- while statement
-Date: Wed, 20 May 2020 17:32:55 +0300
-Message-Id: <20200520143255.27235-1-e.mikitas@gmail.com>
-X-Mailer: git-send-email 2.17.1
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=e.mikitas@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1jaq0G-0008J1-1J; Mon, 18 May 2020 20:21:04 -0400
+Received: from out3-smtp.messagingengine.com ([66.111.4.27]:40199)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1jaq0C-0008Oc-NX; Mon, 18 May 2020 20:21:03 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.nyi.internal (Postfix) with ESMTP id 0DF965C00EE;
+ Mon, 18 May 2020 20:20:58 -0400 (EDT)
+Received: from imap2 ([10.202.2.52])
+ by compute3.internal (MEProxy); Mon, 18 May 2020 20:20:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+ mime-version:message-id:in-reply-to:references:date:from:to:cc
+ :subject:content-type:content-transfer-encoding; s=fm2; bh=5ejPM
+ 4auQg3IJ4AMz7sVnACxB15QpCyHfC7+4XrK7Jg=; b=LKxvgFSXh+aYfairVi8uw
+ YseOUv15oW5kflI9avqGgXc1mTAbnygqTNpH20v4WgNuU01107oBItAPgG4mz8o0
+ ZNF0658YOwa7Q+tLNxX6DzdDSt7JpRWeT4iaLRYkfWMuM0Uu2zVnuQ4AmTKhblkv
+ HgCgWprANuyoofRXgA52PK4VrXQf/5XuPamt2n+CjcirUmGA90YZPlgyOl3UHyij
+ FhSeoJpSj53OoXPunWP4fVIriPckdNeIUSj1wmD78Dgg+wFtINYJkP3Oywyzmsy0
+ Z3ua2nw6sWobq+VZV4Uu96b0gEb+Z1cYAw4PG1c/0kCFKy1Ql/bu6T0V4elYsxgH
+ A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:in-reply-to:message-id:mime-version:references
+ :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm2; bh=5ejPM4auQg3IJ4AMz7sVnACxB15QpCyHfC7+4XrK7
+ Jg=; b=dfEnzr5JL7GyZJNPb/eSuUnZj8ZjWTcHIGK64uKJClgyb6fUWeWfsQ80q
+ m4agxbM/P9o2npHdpPPHNYUmqO9C2TWV0bgymOL1LFmVjk+tfFe19Vqx+Xo8ET5X
+ TAK59AlMZ5OiXmehLTCi3S3i4wCtx5CMxvueQWCASRvLZSnrKnJfGY7rubf1CBtM
+ sFEopCV/mYxluRqGvsxnfhwWOsSsnO5g0yuYBOhxAfJxwOe9VLXPy81/tqMU61VA
+ B2k//fgJxEdXawhi6BupYQ43yo9s31fN5cdrBjC5tyj0XMlTCD71wkgY9zsSQvkL
+ 8owCY4EyCYpAhgnrkVmF+PrhSd0xw==
+X-ME-Sender: <xms:aSbDXlquVdMV4_GIcosaQVD0kljhcUBbQLRkfWxn2kDTF-lsJFedtg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduhedruddtiedgfeefucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepofgfggfkjghffffhvffutgfgsehtqhertderreejnecuhfhrohhmpedftehn
+ ughrvgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucggtf
+ frrghtthgvrhhnpedvgeekheegfedvhfethefhudetteegueeggfeiieegueehkedugedt
+ kefglefgheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
+ hmpegrnhgurhgvfiesrghjrdhiugdrrghu
+X-ME-Proxy: <xmx:aSbDXno0DgUJomhdlMe0W7Lmo9hDBYxXJYY01R4ZliZ_peoLmrMhsg>
+ <xmx:aSbDXiNMCg7CqiYhclcGIHl7L-6mc6vWTJAfNtfZOZGtpNBFNa4CbA>
+ <xmx:aSbDXg5J8QkI-xyyavASClJWBY3ocX8Ka7hOp_E0Z781PG5nJehMug>
+ <xmx:aibDXuTMMffbQht9uVfFPO-Sj4kM3AB3IvGKw3PJFbeYeV_ZcPVs4w>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id 042D4E00F8; Mon, 18 May 2020 20:20:57 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.3.0-dev0-464-g810d66a-fmstable-20200518v1
+Mime-Version: 1.0
+Message-Id: <eb1b203d-44ba-4b89-b96b-4e7bf993ac67@www.fastmail.com>
+In-Reply-To: <9fc4a6e2-fa90-ba62-91cf-e22eb3ef4cdc@kaod.org>
+References: <20200518050408.4579-1-armbru@redhat.com>
+ <20200518050408.4579-5-armbru@redhat.com>
+ <9fc4a6e2-fa90-ba62-91cf-e22eb3ef4cdc@kaod.org>
+Date: Tue, 19 May 2020 09:50:34 +0930
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ "Markus Armbruster" <armbru@redhat.com>,
+ "Cameron Esfahani via" <qemu-devel@nongnu.org>
+Subject: =?UTF-8?Q?Re:_[PATCH_04/24]_aspeed:_Don't_create_unwanted_"ftgmac100", _"?=
+ =?UTF-8?Q?aspeed-mmi"_devices?=
+Content-Type: text/plain;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=66.111.4.27; envelope-from=andrew@aj.id.au;
+ helo=out3-smtp.messagingengine.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/18 19:21:57
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,50 +133,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Alistair Francis <alistair@alistair23.me>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- "open list:i.MX31 kzm" <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>, Eden Mikitas <e.mikitas@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JvX1qR0ELYjD
+X-TUID: 8ycuMV6zjMhM
 
-When inserting the value retrieved (rx) from the spi slave, rx is pushed to
-rx_fifo after being cast to uint8_t. rx_fifo is a fifo32, and the rx
-register the driver uses is also 32 bit. This zeroes the 24 most
-significant bits of rx. This proved problematic with devices that expect to
-use the whole 32 bits of the rx register.
-I tested this change by running `make check` and by booting linux on
-sabrelite (which uses an spi flash device).
 
-Signed-off-by: Eden Mikitas <e.mikitas@gmail.com>
----
- hw/ssi/imx_spi.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index 2dd9a631e1..43b2f14dd2 100644
---- a/hw/ssi/imx_spi.c
-+++ b/hw/ssi/imx_spi.c
-@@ -182,7 +182,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
- 
-         rx = 0;
- 
--        while (tx_burst) {
-+        while (tx_burst > 0) {
-             uint8_t byte = tx & 0xff;
- 
-             DPRINTF("writing 0x%02x\n", (uint32_t)byte);
-@@ -206,7 +206,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
-         if (fifo32_is_full(&s->rx_fifo)) {
-             s->regs[ECSPI_STATREG] |= ECSPI_STATREG_RO;
-         } else {
--            fifo32_push(&s->rx_fifo, (uint8_t)rx);
-+            fifo32_push(&s->rx_fifo, rx);
-         }
- 
-         if (s->burst_length <= 0) {
--- 
-2.17.1
+On Mon, 18 May 2020, at 21:49, C=C3=A9dric Le Goater wrote:
+> On 5/18/20 7:03 AM, Markus Armbruster wrote:
+> > These devices are optional, and controlled by @nb_nics.
+> > aspeed_soc_ast2600_init() and aspeed_soc_init() create the maximum
+> > supported number.  aspeed_soc_ast2600_realize() and
+> > aspeed_soc_realize() realize only the wanted number.  Works, althoug=
+h
+> > it can leave unrealized devices hanging around in the QOM compositio=
+n
+> > tree.  Affects machines ast2500-evb, ast2600-evb, palmetto-bmc,
+> > romulus-bmc, swift-bmc, tacoma-bmc, and witherspoon-bmc.
+> >=20
+> > Make the init functions create only the wanted ones.  Visible in "in=
+fo
+> > qom-tree"; here's the change for ast2600-evb:
+> >=20
+> >      /machine (ast2600-evb-machine)
+> >        [...]
+> >        /soc (ast2600-a1)
+> >          [...]
+> >          /ftgmac100[0] (ftgmac100)
+> >            /ftgmac100[0] (qemu:memory-region)
+> >     -    /ftgmac100[1] (ftgmac100)
+> >     -    /ftgmac100[2] (ftgmac100)
+> >     -    /ftgmac100[3] (ftgmac100)
+> >          /gpio (aspeed.gpio-ast2600)
+> >          [...]
+> >          /mii[0] (aspeed-mmi)
+> >            /aspeed-mmi[0] (qemu:memory-region)
+> >     -    /mii[1] (aspeed-mmi)
+> >     -    /mii[2] (aspeed-mmi)
+> >     -    /mii[3] (aspeed-mmi)
+> >          /rtc (aspeed.rtc)
+> >=20
+> > I'm not sure creating @nb_nics devices makes sense.  How many does t=
+he
+> > physical chip provide?
+>=20
+> The AST2400, AST2500 SoC have 2 macs and the AST2600 has 4. Each machi=
+ne
+> define the one it uses, generally MAC0 but the tacoma board uses MAC3.=
 
+>=20
+> Shouldn't the model reflect the real address space independently from
+> the NIC backends defined on the command line ? =20
+
+That's my feeling too, though I'm not sure what to make of the unrealise=
+d devices
+in the QOM tree. Does it matter? It hasn't bothered me.
+
+Andrew

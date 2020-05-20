@@ -1,109 +1,90 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp289414lfb;
-        Tue, 19 May 2020 23:35:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyBIMO3Dd2r1JJoHFzZ6ffuGmPues2VNz0Eiw84K6nDI4KLCLiYx6pB+7jAYj9KFWsP3Rql
-X-Received: by 2002:ac8:6f2f:: with SMTP id i15mr3784089qtv.53.1589956505494;
-        Tue, 19 May 2020 23:35:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589956505; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp297313lfb;
+        Tue, 19 May 2020 23:50:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxBWVWEnlvNEq+saNbQFfFOff1MlP4rxbq78x936rYSE7kFFaqzQbYl6aeY3ekn3qxMxmK0
+X-Received: by 2002:a05:620a:951:: with SMTP id w17mr3329597qkw.371.1589957403263;
+        Tue, 19 May 2020 23:50:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589957403; cv=none;
         d=google.com; s=arc-20160816;
-        b=dGgE2VzuwqrD0Wfz+AnWOks2dHbvbCuVx7XigINSEWNRgSSvNY9K2oVdmQFR5gEuBd
-         Fn0JCeIjKJH3HBPQ+bMhXsnzydd199CKjt+RQQ0g/1FT9kle2ikcJi2p8kCDa/Ge15/R
-         QxHwx/5G3WvtfFUMpmOBuFelTAbidlmCiAmva/Q2OWaGL1lGW4gUegziuHgQU4DV4oZ6
-         LPJdH7tcOd/mOE84tknsd4IXmKZd8woh4D/4glWiCqrbo6CW8xkhdae+CkfoppwEpjMf
-         /Vcef8Epl9E1G55GW4CftZT9H+lXBn3YvMKPmU2jdlx0Qn/UB1Xp0+xrJ75cRiI3pinO
-         cRWw==
+        b=LQXD/lcbhzr8JIBD9ahLtLaNvxcfFsHT85+TQTUVjA/P1BG55ffu7KjFq5PMOqQqQL
+         FoTnsos/XBkkvyn/xLpmmt0bI9dKUqY4tChiq11cgDjrqYWC/GhC1cAhFihp6esrWVGC
+         5BvdQohDN5U9iP2vyhXz9pQiZPXW6RZSibQcq94Dm2hAl5W2daSUQoZBSFRS+PsFmXpc
+         nMZ7EmbEMTafqjdWvcK2H1XL7i+yEECSVqmsuZpKAfEVe2C0amG1CoE9JyorZ+SllF+r
+         27waVgLAsV7eEO1Lm+DFKRpR1OFG5MJHDcCwoI7jh8Z3PbjWMPsKOWGUG1PRR6tGKITb
+         EuFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=DvtOTdZYpqNd5yOuvG1jwwAjtCRqGjHyHOk8o/AvruA=;
-        b=DWY79T7s1d0y8VNhcXoAfXey1/x/hNR0o0SrDIS3sS+TCvxOjDC03MgFvAeK5K708q
-         ug9SU+tR3pmdZuI+3eZvyJFpJvjbD8W0MynpGTaqP5i9kcUWv61lnJSGXFoO7sF4+rov
-         K+NBChpS3jFaLmmhn5bvzmODgBW+Rx3TlUqcfsvdJQ3HgYjQWr7Ppfu2TEHeYNA8I+YU
-         ryourw8ypHy4svt6mimDBOBPMxHqLtFcUoCwgOO3unsIrbyyOdGvrfceBvFIf9wVNAKB
-         5EjJhHED3vZIvrRJuFl1duMEzzA1ZDUvHlzzda/6CtyCXFfi45fQ0SJIakj51YTaL4Mc
-         kvtg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=enWYZD75AO1ehX3bR2TjQ6Ri7YEcPJcTp55txvRW0VM=;
+        b=JdL2NSn9vlQChxxkKu8r6Drc22jf9Bq0BmISlx2YCv/eR1p23JM5aOWcXg0so/5aPt
+         ZRB4CbWJcyjcbHB2ynkp14ivCs1AxtACw/fnzFGTB/3vwGJRUR4097FIZMml+AqoAS62
+         QOVy1ClsjCZMWbiTY/WqUUTY9i3Wii5z37yUuqBr5o4RZJut+/SluE4hPLFy8G8Gn4Sc
+         HeRPjzgCdFqbD/oBqodlHOcgvNIcBW+hOBEGMLEIKgeYAdgbPy8krU3QXoQFZSI0lg2N
+         XEg9q8O+7uTUSxOd9sku2jT29U28Kxz0UYH/Uc5TyBlpG/Fz1tANZlp55AzRzSWyYrgQ
+         jliw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dbJqnGRr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f2si1043363qvw.133.2020.05.19.23.35.05
+        by mx.google.com with ESMTPS id f39si933339qtb.174.2020.05.19.23.50.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 May 2020 23:35:05 -0700 (PDT)
+        Tue, 19 May 2020 23:50:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dbJqnGRr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60102 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jbIJk-00030Q-VK
-	for alex.bennee@linaro.org; Wed, 20 May 2020 02:35:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57148)
+	id 1jbIYE-0001cF-Nv
+	for alex.bennee@linaro.org; Wed, 20 May 2020 02:50:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58010)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jbIJe-00030I-97
- for qemu-arm@nongnu.org; Wed, 20 May 2020 02:34:58 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:20515
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jbIJc-0007QP-G7
- for qemu-arm@nongnu.org; Wed, 20 May 2020 02:34:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589956495;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DvtOTdZYpqNd5yOuvG1jwwAjtCRqGjHyHOk8o/AvruA=;
- b=dbJqnGRrD/ParS2lcaKwTkh96pLhXBKssQ9UONcWlAcqQKJ9WvTkA85aDmfxV4vtLc5qOm
- XffVcPbzNDpPJ0u+bmtfQ4UJfCOlGnBHIEkrUPz91RmLLXQn6RZzBhu40lVMbqbOlBXBto
- yxzOvYJYfo1wJCr7RMXPk7r9uylQIGY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-454-ooA2d5OEO5-nMcRncOalTw-1; Wed, 20 May 2020 02:34:50 -0400
-X-MC-Unique: ooA2d5OEO5-nMcRncOalTw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 47E6A464;
- Wed, 20 May 2020 06:34:49 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-32.ams2.redhat.com
- [10.36.112.32])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DD1311001B07;
- Wed, 20 May 2020 06:34:48 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 6A11211358BC; Wed, 20 May 2020 08:34:47 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH] arm/aspeed: Rework NIC attachment
-References: <20200519161957.1056027-1-clg@kaod.org>
-Date: Wed, 20 May 2020 08:34:47 +0200
-In-Reply-To: <20200519161957.1056027-1-clg@kaod.org> (=?utf-8?Q?=22C=C3=A9?=
- =?utf-8?Q?dric?= Le Goater"'s
- message of "Tue, 19 May 2020 18:19:57 +0200")
-Message-ID: <87zha3t8qg.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jbIXy-0001bU-JT
+ for qemu-arm@nongnu.org; Wed, 20 May 2020 02:49:46 -0400
+Received: from 3.mo2.mail-out.ovh.net ([46.105.58.226]:33563)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jbIXw-000161-V0
+ for qemu-arm@nongnu.org; Wed, 20 May 2020 02:49:46 -0400
+Received: from player799.ha.ovh.net (unknown [10.110.208.83])
+ by mo2.mail-out.ovh.net (Postfix) with ESMTP id 4BCF41D6975
+ for <qemu-arm@nongnu.org>; Wed, 20 May 2020 08:49:42 +0200 (CEST)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player799.ha.ovh.net (Postfix) with ESMTPSA id 5AFD2128CAF35;
+ Wed, 20 May 2020 06:49:36 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-95G001a1f800db-7aa4-47f4-b128-588218e7a4d5,208050372AC47BB4B8F4DF084FF080F941447DBD)
+ smtp.auth=clg@kaod.org
+Subject: Re: [PATCH] arm/aspeed: Compute the number of CPUs from the SoC
+ definition
+To: Markus Armbruster <armbru@redhat.com>
+References: <20200519091631.1006073-1-clg@kaod.org>
+ <875zcrunn3.fsf@dusky.pond.sub.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <a47b9601-22d3-b46d-67ed-943bcbc1c3a8@kaod.org>
+Date: Wed, 20 May 2020 08:49:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <875zcrunn3.fsf@dusky.pond.sub.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/20 02:22:41
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Ovh-Tracer-Id: 15205559720638385107
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedruddtkedguddtlecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfeffvddtudegieefudeugffhjefgieegieegleettdehgfeiieevueeihfegfefgnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeelledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=46.105.58.226; envelope-from=clg@kaod.org;
+ helo=3.mo2.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/20 02:49:42
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -117,222 +98,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GmS6tczO8S99
+X-TUID: eKPpYTwrdxrK
 
-C=C3=A9dric Le Goater <clg@kaod.org> writes:
+On 5/20/20 8:27 AM, Markus Armbruster wrote:
+> I figure this replaces my "[PATCH 05/24] aspeed: Don't create unwanted
+> "cortex-a7-arm-cpu" devices".  Correct?
+> 
+> Let's mention it gets rid of unrealized CPUs then.  Let me try.
+> 
+> Cédric Le Goater <clg@kaod.org> writes:
+> 
+>> Commit ece09beec457 ("aspeed: introduce a configurable number of CPU
+>> per machine") was a convient change during bringup but the Aspeed SoCs
+>> have a fixed number of CPUs : one for the AST2400 and AST2500, and two
+>> for the AST2600.
+> 
+> Please add something like:
+> 
+>   When the configured number of CPUs is less than the SoC's fixed
+>   number, the "unconfigured" CPUs are left unrealized.
+> 
+>> Remove the "num-cpu" property from the SoC state and use the fixed
+>> number of CPUs defined in the SoC class instead. Compute the default,
+>> min, max number of CPUs of the machine directly from the SoC class
+>> definition.
+> 
+> Suggest to add:
+> 
+>   Visible in "info qom-tree"; here's the change for ast2600-evb:
+> 
+>      /machine (ast2600-evb-machine)
+>        /peripheral (container)
+>        /peripheral-anon (container)
+>        /soc (ast2600-a1)
+>          /a7mpcore (a15mpcore_priv)
+>            /a15mp-priv-container[0] (qemu:memory-region)
+>            /gic (arm_gic)
+>              /gic_cpu[0] (qemu:memory-region)
+>              /gic_cpu[1] (qemu:memory-region)
+>     +        /gic_cpu[2] (qemu:memory-region)
+>              /gic_dist[0] (qemu:memory-region)
+>              /gic_vcpu[0] (qemu:memory-region)
+>              /gic_viface[0] (qemu:memory-region)
+>              /gic_viface[1] (qemu:memory-region)
+>     +        /gic_viface[2] (qemu:memory-region)
+>              /unnamed-gpio-in[0] (irq)
+>              [...]
+>     +        /unnamed-gpio-in[160] (irq)
+>              [same for 161 to 190...]
+>     +        /unnamed-gpio-in[191] (irq)
+> 
+>   Also visible in "info qtree"; here's the change for ast2600-evb:
+> 
+>      bus: main-system-bus
+>        type System
+>        dev: a15mpcore_priv, id ""
+>          gpio-in "" 128
+>     -    gpio-out "sysbus-irq" 5
+>     -    num-cpu = 1 (0x1)
+>     +    gpio-out "sysbus-irq" 10
+>     +    num-cpu = 2 (0x2)
+>          num-irq = 160 (0xa0)
+>          mmio 0000000040460000/0000000000008000
+>        dev: arm_gic, id ""
+>     -    gpio-in "" 160
+>     -    num-cpu = 1 (0x1)
+>     +    gpio-in "" 192
+>     +    num-cpu = 2 (0x2)
+>          num-irq = 160 (0xa0)
+>          revision = 2 (0x2)
+>          has-security-extensions = true
+>          has-virtualization-extensions = true
+>          num-priority-bits = 8 (0x8)
+>          mmio ffffffffffffffff/0000000000001000
+>          mmio ffffffffffffffff/0000000000002000
+>          mmio ffffffffffffffff/0000000000001000
+>          mmio ffffffffffffffff/0000000000002000
+>          mmio ffffffffffffffff/0000000000000100
+>     +    mmio ffffffffffffffff/0000000000000100
+>     +    mmio ffffffffffffffff/0000000000000200
+>          mmio ffffffffffffffff/0000000000000200
+> 
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> 
+> Patch looks good.
+> 
+> Preferably with an improved commit message:
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> 
+> I'd like to pick your patch into v2 of my "Fixes around device
+> realization".  May I amend your commit message as shown above?
 
-> The AST2400 and AST2500 SoCs have two MACs but only the first MAC0 is
-> active on the Aspeed machines using these SoCs. The AST2600 has four
-> MACs. The AST2600 EVB machine activates MAC1, MAC2 and MAC3 and the
-> Tacoma BMC machine activates MAC2.
->
-> Introduce a bit-field property "macs-mask" under the Aspeed SoC model
-> to link the active MACs of the machine being started with the available
-> network devices.
->
-> Inactive MACs will have no peer and QEMU will warn the user with :
->
->     qemu-system-arm: warning: nic ftgmac100.0 has no peer
->     qemu-system-arm: warning: nic ftgmac100.1 has no peer
->     qemu-system-arm: warning: nic ftgmac100.3 has no peer
+Sure.
 
-I can't reproduce this warning.  What's your exact command line?
+Thanks,
 
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
->
->  To be applied on top of patch "arm/aspeed: Compute the number of CPUs
->  from the SoC definition"=20
-> =20
->  http://patchwork.ozlabs.org/project/qemu-devel/patch/20200519091631.1006=
-073-1-clg@kaod.org/
-> =20
->  include/hw/arm/aspeed.h     |  1 +
->  include/hw/arm/aspeed_soc.h |  6 ++++++
->  hw/arm/aspeed.c             |  6 ++++++
->  hw/arm/aspeed_ast2600.c     | 11 ++++++++---
->  hw/arm/aspeed_soc.c         | 10 ++++++++--
->  5 files changed, 29 insertions(+), 5 deletions(-)
->
-> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-> index 18521484b90e..842dff485f5b 100644
-> --- a/include/hw/arm/aspeed.h
-> +++ b/include/hw/arm/aspeed.h
-> @@ -39,6 +39,7 @@ typedef struct AspeedMachineClass {
->      const char *fmc_model;
->      const char *spi_model;
->      uint32_t num_cs;
-> +    uint32_t macs_mask;
->      void (*i2c_init)(AspeedBoardState *bmc);
->  } AspeedMachineClass;
-> =20
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 914115f3ef77..fdb9e05bc47c 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -34,6 +34,11 @@
->  #define ASPEED_CPUS_NUM  2
->  #define ASPEED_MACS_NUM  4
-> =20
-> +#define ASPEED_MAC0_ON   (1 << 0)
-> +#define ASPEED_MAC1_ON   (1 << 1)
-> +#define ASPEED_MAC2_ON   (1 << 2)
-> +#define ASPEED_MAC3_ON   (1 << 3)
-> +
->  typedef struct AspeedSoCState {
->      /*< private >*/
->      DeviceState parent;
-> @@ -55,6 +60,7 @@ typedef struct AspeedSoCState {
->      AspeedSDMCState sdmc;
->      AspeedWDTState wdt[ASPEED_WDTS_NUM];
->      FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
-> +    uint32_t macs_mask;
-
-What's the purpose of this member?  When and how would it be different
-from AspeedMachineClass's macs_mask?
-
->      AspeedMiiState mii[ASPEED_MACS_NUM];
->      AspeedGPIOState gpio;
->      AspeedGPIOState gpio_1_8v;
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 6f8f4b88f8ab..79c683864d7e 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -283,6 +283,8 @@ static void aspeed_machine_init(MachineState *machine=
-)
->                              &error_abort);
->      object_property_set_int(OBJECT(&bmc->soc), amc->num_cs, "num-cs",
->                              &error_abort);
-> +    object_property_set_int(OBJECT(&bmc->soc), amc->macs_mask, "macs-mas=
-k",
-> +                            &error_abort);
->      object_property_set_link(OBJECT(&bmc->soc), OBJECT(&bmc->ram_contain=
-er),
->                               "dram", &error_abort);
->      if (machine->kernel_filename) {
-> @@ -556,12 +558,14 @@ static int aspeed_soc_num_cpus(const char *soc_name=
-)
->  static void aspeed_machine_class_init(ObjectClass *oc, void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
-> +    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-> =20
->      mc->init =3D aspeed_machine_init;
->      mc->no_floppy =3D 1;
->      mc->no_cdrom =3D 1;
->      mc->no_parallel =3D 1;
->      mc->default_ram_id =3D "ram";
-> +    amc->macs_mask =3D ASPEED_MAC0_ON;
-> =20
->      aspeed_machine_class_props_init(oc);
->  }
-> @@ -680,6 +684,7 @@ static void aspeed_machine_ast2600_evb_class_init(Obj=
-ectClass *oc, void *data)
->      amc->fmc_model =3D "w25q512jv";
->      amc->spi_model =3D "mx66u51235f";
->      amc->num_cs    =3D 1;
-> +    amc->macs_mask  =3D ASPEED_MAC1_ON | ASPEED_MAC2_ON | ASPEED_MAC3_ON=
-;
->      amc->i2c_init  =3D ast2600_evb_i2c_init;
->      mc->default_ram_size =3D 1 * GiB;
->      mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
-> @@ -698,6 +703,7 @@ static void aspeed_machine_tacoma_class_init(ObjectCl=
-ass *oc, void *data)
->      amc->fmc_model =3D "mx66l1g45g";
->      amc->spi_model =3D "mx66l1g45g";
->      amc->num_cs    =3D 2;
-> +    amc->macs_mask  =3D ASPEED_MAC2_ON;
->      amc->i2c_init  =3D witherspoon_bmc_i2c_init; /* Same board layout */
->      mc->default_ram_size =3D 1 * GiB;
->      mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index 114b94f8f44d..fa85122f6d78 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -247,6 +247,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
-ev, Error **errp)
->      AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
->      Error *err =3D NULL, *local_err =3D NULL;
->      qemu_irq irq;
-> +    NICInfo *nd =3D &nd_table[0];
-> =20
->      /* IO space */
->      create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_IOMEM=
-],
-> @@ -462,8 +463,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *=
-dev, Error **errp)
->      }
-> =20
->      /* Net */
-> -    for (i =3D 0; i < nb_nics && i < sc->macs_num; i++) {
-> -        qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]);
-> +    for (i =3D 0; i < sc->macs_num; i++) {
-> +        if ((s->macs_mask & (1 << i)) && nd->used) {
-> +            qemu_check_nic_model(nd, TYPE_FTGMAC100);
-> +            qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), nd);
-> +            nd++;
-> +        }
->          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed=
-",
->                                   &err);
->          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realiz=
-ed",
-> @@ -471,7 +476,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *d=
-ev, Error **errp)
->          error_propagate(&err, local_err);
->          if (err) {
->              error_propagate(errp, err);
-> -           return;
-> +            return;
->          }
->          sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
->                          sc->memmap[ASPEED_ETH1 + i]);
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index 984d29087dce..d2c6a5760790 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -234,6 +234,7 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
-r **errp)
->      AspeedSoCState *s =3D ASPEED_SOC(dev);
->      AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
->      Error *err =3D NULL, *local_err =3D NULL;
-> +    NICInfo *nd =3D &nd_table[0];
-> =20
->      /* IO space */
->      create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_IOMEM=
-],
-> @@ -405,8 +406,12 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
->      }
-> =20
->      /* Net */
-> -    for (i =3D 0; i < nb_nics && i < sc->macs_num; i++) {
-> -        qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]);
-> +    for (i =3D 0; i < sc->macs_num; i++) {
-> +        if ((s->macs_mask & (1 << i)) && nd->used) {
-> +            qemu_check_nic_model(nd, TYPE_FTGMAC100);
-> +            qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), nd);
-> +            nd++;
-> +        }
->          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed=
-",
->                                   &err);
->          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realiz=
-ed",
-> @@ -455,6 +460,7 @@ static void aspeed_soc_realize(DeviceState *dev, Erro=
-r **errp)
->                         aspeed_soc_get_irq(s, ASPEED_SDHCI));
->  }
->  static Property aspeed_soc_properties[] =3D {
-> +    DEFINE_PROP_UINT32("macs-mask", AspeedSoCState, macs_mask, 0x1),
->      DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION=
-,
->                       MemoryRegion *),
->      DEFINE_PROP_END_OF_LIST(),
-
+C.

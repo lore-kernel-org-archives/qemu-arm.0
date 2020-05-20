@@ -1,101 +1,101 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp581131lfb;
-        Wed, 20 May 2020 06:29:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy9eVWA3nAYyVIWT3cFc/QR000VlkvCuCvG+8sn6y4VDlGKpSv4bjCLqb0HZ8a5E3yGWoVn
-X-Received: by 2002:aed:2496:: with SMTP id t22mr5271948qtc.2.1589981389406;
-        Wed, 20 May 2020 06:29:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589981389; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp582043lfb;
+        Wed, 20 May 2020 06:30:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzyBpyhpeD88hnCDG8K5GZB/rzygrRbcY+xC0WLsfl7e+lNOwrh0FyKeVnU3ZixuNCnkZzE
+X-Received: by 2002:ae9:e418:: with SMTP id q24mr4555469qkc.69.1589981447992;
+        Wed, 20 May 2020 06:30:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589981447; cv=none;
         d=google.com; s=arc-20160816;
-        b=OA0dyaEJttPcBfuxNB+xf3Ables6E0s/zFMGXJcELXajPQMqJebwZVhpwi4K6xbnkG
-         o0bS7rFk9U8m4XIa+z4+frPH9hG7bna7YfrOgzL3cWT9R3QHId+6MQMDMVrx0R1uJSVU
-         5oM1rvYWsqzQZ3TgIeWDZvH2F3GDRUYALo6Ur2WrjANT/zn1+R13tYH5yG15aq06cplP
-         pD4hQkIpuROSkyKl/0e5IxrLMxRZ6dOYABwxmqzF6sTIIXmKEaS9XG4uVSuzRRTe31g8
-         lXKfRwEFz0Vj7Y50eKc9Mv0IBN0f1HBlBjb9ddPkPohaS1s7sUfgwEqQIVsj493zFS9g
-         s4Hg==
+        b=0xQEea7aduBBdCUrp3FXReOOi/p5Ny9UIH0b0/+sIBw6eIbBUkUP44tNy9A0fl7wxU
+         o4nVC3iKC3DzDuf9bnG2kZfZto9q1YuNEh14BbWpU5jyuA9NlPojymIRH1fNXs2keCf9
+         R0EqpPSLwcYprJHQQsTbnQI7BsYwpuCn7bp+yKvz0Pc4XEJX4NKX6/sJiyoSg6pOuT3G
+         BbWe7qlrI0+TJKPdNinMQ0wdBujUIVA5bMGZ5HXkZjArpbfc+VNod4I5cv7Z9FVxUmr7
+         ZtSQsk1wdafsZzanSZ1hcC5HU9JkusHG1Z6XCEC/SyYmI5t0Z33Qr/tdOffHWJPn9lDz
+         u2Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=6OIxpUflKpjw9oFHZKmMc0sFoAZYdcP0pMC2r+iLubc=;
-        b=ppFwh1MBywprxF5Kp0kt2RnKEyPCWZaxW2VB05XEg1ddVdLRBE2pJ4pbq85YTz4PNY
-         TGA/SlyGv5xlG9XjZhf6MIt326lH0aLGF2L/i19ksktNa2i/g2+KLq2+Lez6v8KiCv7U
-         7aet/e0TIAgkRWdXdiqkh3c7fPm6PUicai4+CrX4k60ZNtCaKVFFgZGDUAxvRT3TMIwi
-         dN3TqE2NnQOJu4D6//iHWtW7oRmb6Oty4NrQ5S5JMRDrsIvV86JbA3d9dHeQYutGtArt
-         eg8xD3rAElRLs9Y/2mLlN60ZyTN4XQEBKSZwO+2l00oBXz2DaEoed7KVrs4AMA68NQz8
-         SwsQ==
+        bh=bXE+h2BI+iedXQwFImxfC59sUb0E26EyoIxiNHNhE28=;
+        b=rvSn/sZ6l+Lcdyjx4THb2SK3ISSDdlS2kRhMTuRI207Fxj9QdVvMJolZ/wzY/Bp+V+
+         8ky1z6NRRX/94DiAuVpFfUVYnufFi4kpOEnOMjuN1qJ2TM5sjtiyo8G8Djw3ydcIjr6h
+         PY93yCqQqVzZmmeAPqYjnJZqfTEdYZVhaD4LIv3FQogvjXRHaAilKf1lCblhep7J5CFR
+         ugOAln8IstPwegrowT1akXwzEOsNA7ECLnuiR3WhzKtE4MAGB1Tx4dRO7f5Y9eni24sZ
+         LKiVxy8INfcb2rU3hzGw/GrD7tYtw/EK4hvGp0ll9ZeiuLbLjgPaJA2ebn8ETvODQ4rR
+         kQZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gmBRUY44;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Jxpepg1A;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p60si1549047qtd.99.2020.05.20.06.29.49
+        by mx.google.com with ESMTPS id v13si1665736qvl.171.2020.05.20.06.30.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 May 2020 06:29:49 -0700 (PDT)
+        Wed, 20 May 2020 06:30:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gmBRUY44;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Jxpepg1A;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40676 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45292 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jbOn6-00046n-QR
-	for alex.bennee@linaro.org; Wed, 20 May 2020 09:29:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47828)
+	id 1jbOo3-0005wx-DJ
+	for alex.bennee@linaro.org; Wed, 20 May 2020 09:30:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47746)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jbOeH-0002M6-Gj
- for qemu-devel@nongnu.org; Wed, 20 May 2020 09:20:42 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:46348
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jbOeA-000248-2e
+ for qemu-devel@nongnu.org; Wed, 20 May 2020 09:20:34 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:59749
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jbOeD-0000Jx-R8
- for qemu-devel@nongnu.org; Wed, 20 May 2020 09:20:41 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jbOe8-0000Hj-UA
+ for qemu-devel@nongnu.org; Wed, 20 May 2020 09:20:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589980836;
+ s=mimecast20190719; t=1589980832;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:content-type:content-type:in-reply-to:in-reply-to:
- references:references; bh=6OIxpUflKpjw9oFHZKmMc0sFoAZYdcP0pMC2r+iLubc=;
- b=gmBRUY44K1svrWmqDBViY87OzI28H0rV1130ierxU9wXHbh5MrbmwS2NLRl6i6xzvaQWcz
- HxiBjCoLEnxk6kzyO0Z9xmPgB9Ma/SOQVPkIUfrdmvwZMmpbh8no+2xMp1DAnIeZY/3KL3
- 5J5CrUpZdXBjPQpC7V/ekxbf0+9TNTE=
+ references:references; bh=bXE+h2BI+iedXQwFImxfC59sUb0E26EyoIxiNHNhE28=;
+ b=Jxpepg1AsoMMiyagUACedBxrYZziKuYC32ksbIsKL0IRq29OvVMgaGYP0TpuZ4ZWBe5Q2n
+ z/zM1PRmmx5tnr0xbZ0D+B1SDQKoTGX84GQrbulbSMcrKWLr6OHVmnTauCOVzCUu8AIxy2
+ qFDXP8yQahz+c754svDYOFbpE+RHupU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-391-9KxStO4rPR61EXfnfpNnJA-1; Wed, 20 May 2020 09:20:34 -0400
-X-MC-Unique: 9KxStO4rPR61EXfnfpNnJA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-217-oS24YF-UPQamE7gIf4q4rQ-1; Wed, 20 May 2020 09:20:28 -0400
+X-MC-Unique: oS24YF-UPQamE7gIf4q4rQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 85527464;
- Wed, 20 May 2020 13:20:33 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2735C1005512;
+ Wed, 20 May 2020 13:20:27 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-113-50.ams2.redhat.com
  [10.36.113.50])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 125D019C58;
- Wed, 20 May 2020 13:20:25 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 96E7882E72;
+ Wed, 20 May 2020 13:20:23 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 7A1469D73; Wed, 20 May 2020 15:20:04 +0200 (CEST)
+ id 5D8479D6A; Wed, 20 May 2020 15:20:04 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 21/22] [RfC] acpi: add per machine type acpi default
-Date: Wed, 20 May 2020 15:20:02 +0200
-Message-Id: <20200520132003.9492-22-kraxel@redhat.com>
+Subject: [PATCH v3 18/22] microvm/acpi: use GSI 16-23 for virtio
+Date: Wed, 20 May 2020 15:19:59 +0200
+Message-Id: <20200520132003.9492-19-kraxel@redhat.com>
 In-Reply-To: <20200520132003.9492-1-kraxel@redhat.com>
 References: <20200520132003.9492-1-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=kraxel@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/20 01:34:51
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/20 04:09:34
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -117,68 +117,32 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Oc0eSIJAwRMU
+X-TUID: RGqk1dG8DFho
 
-Allow setting acpi default value for each machine type.
+With ACPI enabled and IO-APIC being properly declared in the ACPI tables
+we can use interrupt lines 16-23 for virtio and avoid shared interrupts.
+
+With acpi disabled we continue to use lines 8-15.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Sergio Lopez <slp@redhat.com>
 ---
- include/hw/i386/x86.h |  1 +
- hw/i386/x86.c         | 21 ++++++++++++++++++---
- 2 files changed, 19 insertions(+), 3 deletions(-)
+ hw/i386/microvm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/i386/x86.h b/include/hw/i386/x86.h
-index b52285481687..d2fffa8252ff 100644
---- a/include/hw/i386/x86.h
-+++ b/include/hw/i386/x86.h
-@@ -37,6 +37,7 @@ typedef struct {
-     bool save_tsc_khz;
-     /* Enables contiguous-apic-ID mode */
-     bool compat_apic_id_mode;
-+    bool acpi_default;
- } X86MachineClass;
+diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
+index b38321112baa..7d8174809ae1 100644
+--- a/hw/i386/microvm.c
++++ b/hw/i386/microvm.c
+@@ -125,7 +125,7 @@ static void microvm_devices_init(MicrovmMachineState *mms)
  
- typedef struct {
-diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-index ac7a0a958781..3a56a157c5f0 100644
---- a/hw/i386/x86.c
-+++ b/hw/i386/x86.c
-@@ -940,10 +940,22 @@ static void x86_machine_set_smm(Object *obj, Visitor *v, const char *name,
+     kvmclock_create();
  
- bool x86_machine_is_acpi_enabled(X86MachineState *x86ms)
- {
--    if (x86ms->acpi == ON_OFF_AUTO_OFF) {
--        return false;
-+    X86MachineClass *x86mc = X86_MACHINE_GET_CLASS(x86ms);
-+    bool enabled;
-+
-+    switch (x86ms->acpi) {
-+    case ON_OFF_AUTO_ON:
-+        enabled = true;
-+        break;
-+    case ON_OFF_AUTO_OFF:
-+        enabled = false;
-+        break;
-+    case ON_OFF_AUTO_AUTO:
-+    default:
-+        enabled = x86mc->acpi_default;
-+        break;
-     }
--    return true;
-+    return enabled;
- }
- 
- static void x86_machine_get_acpi(Object *obj, Visitor *v, const char *name,
-@@ -991,6 +1003,9 @@ static void x86_machine_class_init(ObjectClass *oc, void *data)
-     x86mc->save_tsc_khz = true;
-     nc->nmi_monitor_handler = x86_nmi;
- 
-+    /* acpi is on by default */
-+    x86mc->acpi_default = true;
-+
-     object_class_property_add(oc, X86_MACHINE_MAX_RAM_BELOW_4G, "size",
-         x86_machine_get_max_ram_below_4g, x86_machine_set_max_ram_below_4g,
-         NULL, NULL);
+-    mms->virtio_irq_base = 8;
++    mms->virtio_irq_base = x86_machine_is_acpi_enabled(x86ms) ? 16 : 8;
+     for (i = 0; i < VIRTIO_NUM_TRANSPORTS; i++) {
+         sysbus_create_simple("virtio-mmio",
+                              VIRTIO_MMIO_BASE + i * 512,
 -- 
 2.18.4
 

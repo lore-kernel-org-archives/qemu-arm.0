@@ -1,88 +1,88 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp573473lfb;
-        Wed, 20 May 2020 06:20:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz65i8X75zrIawW7uXbGn3RxrspuAay46RLqeSpZZkJyBGbowR7P+UFsMo3ACX1B3qfyZHi
-X-Received: by 2002:a37:797:: with SMTP id 145mr1435732qkh.8.1589980855953;
-        Wed, 20 May 2020 06:20:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589980855; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp573616lfb;
+        Wed, 20 May 2020 06:21:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwmh+DIssYjMdmyZXwjKfsbaPW/r5omFJAzdmxM1n/r5zpr9bOP1+oEx4ZbKOln2IGuO2Fn
+X-Received: by 2002:ac8:534b:: with SMTP id d11mr5131015qto.287.1589980865813;
+        Wed, 20 May 2020 06:21:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589980865; cv=none;
         d=google.com; s=arc-20160816;
-        b=DfVyE9qwFY3ENrr5KqIjWQpvNjBRxCkgl4GnIJdD/V5aqaQUL0VKcb84mYTBtd1oxN
-         pIMB4LEHO6XJC2sLwlggf93ZnlmMejaAXZTWAofrwiB6bD32VXV7aAX+tduRmewf667K
-         umC2dMaF0TWWFuyEYG319HhYqrZyunEyydDsaqFTB/LrClYvBycebf4DTckZ8NooDbfo
-         J/4MwfRt8u3ymFMfIYTf9DcoPU4Qwud+47oItM6mdRwMXJi177UhWxcKOBkTZZ0Ki1Np
-         pw25xKBQA/0gtU+27rwiY63SQqiYaEuaSr+rx6lWVa7MSTju01XwvHXY0brptROXROpD
-         5Njg==
+        b=K9Svq45egCkhH4pd0137IQ6tZBsEsuZ0R0LLuiwbvHI6wp6SuV1Nx7w860PZoy51QB
+         +eKHl7xfcEXKV9HyRw1NtfNThftrs50hGKvngOgu3zQnBfYmUugWCY89TcBVg3A9QUSF
+         hdFDJKNby0PBhwXC31Tf6V0rx4oyyk+Ma6l3LAWad55APk+eyxjZxmOrhH4mslmCD3Z5
+         RIxKRG3nnJXKAhATSF9cgrBrEGOPN9KHMgE8PK9zP+zcPJHCuV1u7AcOttCkXzqyccus
+         kQIJtRmlYg5qhQrAXxDxehBdOVGKr5GeZ7rXaaKoMDDv3regnJpjahMdUxwmPirmrFTR
+         auvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=MzZODsBz007pRLcd54leFfF+Mh0RbKq9+V9Rg9SxbkY=;
-        b=cqzkruWl49qw+GU8/q+/YWxZTcgJ4yjUTKFdn6dmWtXU0IEhDp18M3iLVHwtDr14h4
-         1gzYV9sLb668EOsa4RatHCEnSi+QwR0mneRsannGoubbFsl4k13Ah5SP4AZkBlIXs7ZW
-         1MJuPp/zNNuUoBOy560ZiEAD3SoviTIDXaF7qo2s1f1+RWWEdGTDnAm4fwAhuTaD2/S9
-         EMq3prbV44U7vgxDtT2NUnA82TxPCxY+N0mrNJch0BZogST4ZdzJOOll/hl30avpkoKd
-         zIfsf+v0Ixb8eKCNV929mxBqlhdfMaHfkwo4b5dm7k/3PwmfrYOmHRGJQYmObxl31VX6
-         9Nag==
+        bh=9dP5pJMHATRMU7jZoSy5VOed74vhNKA3Gi6pt3jrRpI=;
+        b=tNqEPk9YrByvMMtdK54zCk9EYK9cqEoKhXHxehkEgdss/0BEU1yeVoOIiAvnf9Na9J
+         x5KYvAdvV4nKijUUOL6/C5I6U94g+XtayHiF6YXi2LzQJzsbMcQ6GOaL7i2yLWlUJRJz
+         xzCvjKFdpq2roqm3xndIoHN6BOIz1RUrhl0ULtV1ZMYeb0sww1G25Erbq4xoi12xRoNy
+         akXDt4IIf6M1maSF5Q+er5lNZ/6YBog9EG5Xb8vyw2zPR9WLIl7Mhk/2ld2FBAtUOqcK
+         FJLvyly8Nryu8IkO9FTZN/u18JaqMymfJ26esgqpRTe14DW7Zzu6ccyrMyuvqdobGibF
+         KgPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KmzGLvI3;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AFBnqiyP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x40si1541470qtk.356.2020.05.20.06.20.55
+        by mx.google.com with ESMTPS id c81si1748018qkg.130.2020.05.20.06.21.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 May 2020 06:20:55 -0700 (PDT)
+        Wed, 20 May 2020 06:21:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KmzGLvI3;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AFBnqiyP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55746 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56754 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jbOeV-00027W-7S
-	for alex.bennee@linaro.org; Wed, 20 May 2020 09:20:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47606)
+	id 1jbOef-0002qz-6h
+	for alex.bennee@linaro.org; Wed, 20 May 2020 09:21:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47644)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jbOdy-0001eT-T3
- for qemu-arm@nongnu.org; Wed, 20 May 2020 09:20:22 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:33573
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jbOe3-0001mP-ET
+ for qemu-arm@nongnu.org; Wed, 20 May 2020 09:20:27 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:28410
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jbOdx-00008a-G5
- for qemu-arm@nongnu.org; Wed, 20 May 2020 09:20:22 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jbOe2-0000E4-Dv
+ for qemu-arm@nongnu.org; Wed, 20 May 2020 09:20:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589980820;
+ s=mimecast20190719; t=1589980825;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:content-type:content-type:in-reply-to:in-reply-to:
- references:references; bh=MzZODsBz007pRLcd54leFfF+Mh0RbKq9+V9Rg9SxbkY=;
- b=KmzGLvI3EQ53L+QHD/g+P35qsN+Fg2JtGhdOJbboZ72umEGP22lsxMtixM9nOGjkNOjkSH
- rHydPzofaoOiTCY97gRt7qgKdAtGpOvp+svKZe8HvB+JgcDtBbbuGMUmF8FK2PEjr24XU4
- wLX1K0Fz1x81Y6S1+viQEUakxkDivm8=
+ references:references; bh=9dP5pJMHATRMU7jZoSy5VOed74vhNKA3Gi6pt3jrRpI=;
+ b=AFBnqiyP4n2Nh8sxsK2HuGxtgvyU/huk1LK+mlqX5P4MzrWxdQqc5tPnmksBqLBTf0wMhR
+ k//GyEQTQXzd6j19zo/MrZFRyfyPVbGKpCFDFcFJF7xLz21i4dfoQ3FWL2S7iYiBHuF5Uw
+ a1ZfUzhD8Xcw2V+NMOWO8PIPCkRsIwM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-54-0xj23SLuOHSRLVNCn_danQ-1; Wed, 20 May 2020 09:20:18 -0400
-X-MC-Unique: 0xj23SLuOHSRLVNCn_danQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ us-mta-478-Vn6kj1qfOVOLDr2UmnhKlQ-1; Wed, 20 May 2020 09:20:23 -0400
+X-MC-Unique: Vn6kj1qfOVOLDr2UmnhKlQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 872DA8015D1;
- Wed, 20 May 2020 13:20:17 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 871631800D42;
+ Wed, 20 May 2020 13:20:22 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-113-50.ams2.redhat.com
  [10.36.113.50])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E5BDF6AD0F;
- Wed, 20 May 2020 13:20:09 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B5ED32E170;
+ Wed, 20 May 2020 13:20:21 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id A865E9DAF; Wed, 20 May 2020 15:20:03 +0200 (CEST)
+ id E55E19D57; Wed, 20 May 2020 15:20:03 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 03/22] [testing] seabios: update config & build rules
-Date: Wed, 20 May 2020 15:19:44 +0200
-Message-Id: <20200520132003.9492-4-kraxel@redhat.com>
+Subject: [PATCH v3 08/22] acpi: fadt: add hw-reduced sleep register support
+Date: Wed, 20 May 2020 15:19:49 +0200
+Message-Id: <20200520132003.9492-9-kraxel@redhat.com>
 In-Reply-To: <20200520132003.9492-1-kraxel@redhat.com>
 References: <20200520132003.9492-1-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
@@ -118,82 +118,47 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 17WptY8ugBhM
+X-TUID: Zfa2HF88KCH+
+
+Add fields to struct AcpiFadtData and update build_fadt() to properly
+generate sleep register entries.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- roms/Makefile               |  5 ++++-
- roms/config.seabios-128k    |  3 +++
- roms/config.seabios-microvm | 26 ++++++++++++++++++++++++++
- 3 files changed, 33 insertions(+), 1 deletion(-)
- create mode 100644 roms/config.seabios-microvm
+ include/hw/acpi/acpi-defs.h | 2 ++
+ hw/acpi/aml-build.c         | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/roms/Makefile b/roms/Makefile
-index d6d4948bfc31..f7cdad027374 100644
---- a/roms/Makefile
-+++ b/roms/Makefile
-@@ -72,9 +72,12 @@ default help:
- 	@echo "  clean              -- delete the files generated by the previous" \
- 	                              "build targets"
+diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+index c13327fa7867..3be9ab504968 100644
+--- a/include/hw/acpi/acpi-defs.h
++++ b/include/hw/acpi/acpi-defs.h
+@@ -88,6 +88,8 @@ typedef struct AcpiFadtData {
+     struct AcpiGenericAddress pm_tmr;    /* PM_TMR_BLK */
+     struct AcpiGenericAddress gpe0_blk;  /* GPE0_BLK */
+     struct AcpiGenericAddress reset_reg; /* RESET_REG */
++    struct AcpiGenericAddress sleep_ctl; /* SLEEP_CONTROL_REG */
++    struct AcpiGenericAddress sleep_sts; /* SLEEP_STATUS_REG */
+     uint8_t reset_val;         /* RESET_VALUE */
+     uint8_t  rev;              /* Revision */
+     uint32_t flags;            /* Flags */
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 3681ec6e3d88..a894e2581fa2 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1865,9 +1865,9 @@ void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+     }
  
--bios: build-seabios-config-seabios-128k build-seabios-config-seabios-256k
-+bios: build-seabios-config-seabios-128k \
-+		build-seabios-config-seabios-256k \
-+		build-seabios-config-seabios-microvm
- 	cp seabios/builds/seabios-128k/bios.bin ../pc-bios/bios.bin
- 	cp seabios/builds/seabios-256k/bios.bin ../pc-bios/bios-256k.bin
-+	cp seabios/builds/seabios-microvm/bios.bin ../pc-bios/bios-microvm.bin
+     /* SLEEP_CONTROL_REG */
+-    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
++    build_append_gas_from_struct(tbl, &f->sleep_ctl);
+     /* SLEEP_STATUS_REG */
+-    build_append_gas(tbl, AML_AS_SYSTEM_MEMORY, 0 , 0, 0, 0);
++    build_append_gas_from_struct(tbl, &f->sleep_sts);
  
- vgabios seavgabios: $(patsubst %,seavgabios-%,$(vgabios_variants))
- 
-diff --git a/roms/config.seabios-128k b/roms/config.seabios-128k
-index c43912bf9de4..d18c802c46e9 100644
---- a/roms/config.seabios-128k
-+++ b/roms/config.seabios-128k
-@@ -11,8 +11,11 @@ CONFIG_USB_UAS=n
- CONFIG_SDCARD=n
- CONFIG_TCGBIOS=n
- CONFIG_MPT_SCSI=n
-+CONFIG_ESP_SCSI=n
-+CONFIG_MEGASAS=n
- CONFIG_PVSCSI=n
- CONFIG_NVME=n
- CONFIG_USE_SMM=n
- CONFIG_VGAHOOKS=n
- CONFIG_HOST_BIOS_GEOMETRY=n
-+CONFIG_ACPI_PARSE=n
-diff --git a/roms/config.seabios-microvm b/roms/config.seabios-microvm
-new file mode 100644
-index 000000000000..a253e2edc6ec
---- /dev/null
-+++ b/roms/config.seabios-microvm
-@@ -0,0 +1,26 @@
-+CONFIG_QEMU=y
-+CONFIG_QEMU_HARDWARE=y
-+CONFIG_PERMIT_UNALIGNED_PCIROM=y
-+CONFIG_ROM_SIZE=128
-+CONFIG_XEN=n
-+CONFIG_BOOTSPLASH=n
-+CONFIG_ATA=n
-+CONFIG_AHCI=n
-+CONFIG_SDCARD=n
-+CONFIG_PVSCSI=n
-+CONFIG_ESP_SCSI=n
-+CONFIG_LSI_SCSI=n
-+CONFIG_MEGASAS=n
-+CONFIG_MPT_SCSI=n
-+CONFIG_FLOPPY=n
-+CONFIG_FLASH_FLOPPY=n
-+CONFIG_NVME=n
-+CONFIG_PS2PORT=n
-+CONFIG_USB=n
-+CONFIG_LPT=n
-+CONFIG_RTC_TIMER=n
-+CONFIG_USE_SMM=n
-+CONFIG_PMTIMER=n
-+CONFIG_TCGBIOS=n
-+CONFIG_HARDWARE_IRQ=n
-+CONFIG_ACPI_PARSE=y
+     /* TODO: extra fields need to be added to support revisions above rev5 */
+     assert(f->rev == 5);
 -- 
 2.18.4
 

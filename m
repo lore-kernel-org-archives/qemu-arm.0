@@ -1,113 +1,113 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp584159lfb;
-        Wed, 20 May 2020 06:33:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwhRZ0rQnpRcAj/36giweftsup5D7CvTmDv4Aon3jFm7nVqGsZFJzn3Rz4ChRjDzqhaUIvA
-X-Received: by 2002:a05:620a:208f:: with SMTP id e15mr4336130qka.377.1589981584228;
-        Wed, 20 May 2020 06:33:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589981584; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp586190lfb;
+        Wed, 20 May 2020 06:35:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzhoUjaXbAEtBz/vf5Cs3N9boaG92rR86lqS0tEFkARXplR6zGrJBhT2HBKOLTfRGLSgFhf
+X-Received: by 2002:a0c:e806:: with SMTP id y6mr5027574qvn.177.1589981721032;
+        Wed, 20 May 2020 06:35:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589981721; cv=none;
         d=google.com; s=arc-20160816;
-        b=O0KhrkEf0LoyURonCF5TnbcEyMgzPZagYOIvGG8t/7Kdg0eKFxcWz8HY2UOCyE7h72
-         fzkf2aIpWw8U7X+7Wr7Cvb7rv6CjmQ1PG8arvQH4qtHKD2tabb3GAMkyztLXvHf4NWlk
-         A29JoJycO1eYHIAzKXlPdH+LjXm+BFB70euD+nrkF7bnKNUIXJpJP+qY88je8VFki04E
-         JkGLyxsZhQ2+q1VWmUHadfmWZ6oWX8DhpqEhmtD9487XU1uqIILcWdCOGAnttrEmJmHG
-         vWq2SwYCEFEx5Z6fz+OtATn/AV/TPRvXy5H3vcaUwuLNVrppjnK36x/E453RHQv8uXZD
-         tPJg==
+        b=075SvTwCtatWm1kifpwK4q6o65plPZFoOwFqy3KzezOmvVusvzC7rfOzFee43Te5ZK
+         AfYOTvfK8lwxpCMtkiMyfwBgajNkflW3wqjuJJVKvDmJ9KXb7mpRiAsSS+0sSA/yBTYb
+         3ZH3m4xJ1+Q5tswJeMVyQZoWdObrpJcgZwj5WMkIQvm3DyvNLkBRNfEZmTYegYqcXF5M
+         NYzoC+J6i6b6A3sfyuLHDMMVGp6dtKPIA39Fj1f6flQcvU7OaXfY86/zrvH6VfGnUEb9
+         eYuwQYfC+gvAW6CrNiajAQW9QS+QM4x5B6FAc5j3rvEYVebszW01KTziFZhOVdZ+kvMi
+         Nk/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=IwIHrpyVIX86aJn0ORsOQ0Yk0TNb79Ag+DOjqPnc9zM=;
-        b=0WuVdxQYhggbhkxrk1FX12c7tJn/Ttln28hmh2HDtqCHIkEILj9ydLeNSNFuep87Ah
-         sKz3z1vXBSwNBya8ZVm8bMWZoFUNSMR5AIZ6kthjxD1dbi8g2XVhPiWDyovkbuH5O2b4
-         en7VZmjlI9F16hSN+J9hmm6Vl+/fc9BdFsQMKvBt+LzO0TbOLPmwObBARqQxqABFaVsJ
-         M9IW90psBgQygoe7Gw4Dc3UAsm2MShq9wrZ1V7HbV9TWuZx7t+ZVMxMqCX22pySAv1pt
-         pjebAdWfNSN26AVuM0tUNmWCvewE5v+x0Lvia+DQTaofjP2lPoba+3oEUlsN7vt7aeI+
-         VLbQ==
+        bh=259SQf8MsHPnu7kDI97KADrK0adDLm45df22i1hlbp8=;
+        b=Ny51ClYMIHuxSnn6zd4/pMmhDYnE5/sPPjJiDGN4j0UpECYtjLeMKGJ9HUFr/3jkQ1
+         A1rBLZVnW7HvdV+OZrWEB/oXz4BRazIeNi8fg/l/ryAuG1vcYio8/Txt19dA0kiiTmiC
+         Rdgi00GGsZN45kUQ3zdKyd7otUwbi0s4u9ADexm/8otDeeZtTssGgBjGrPyCyjv7aB9P
+         cOqa0Sl3aYC1zvOtVlJdGBxu4i4fmaTOa3687AwhKW91stsVbO69pYH/hMElHb3DTlXU
+         Bx4Y+ZnL3i3/4hKumU1CFRSfm8uNetz4Tux+lUH1luEbDv+qWcvDP3SXUYmiOM5ni4ms
+         F00w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=X97PBlUX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Q0c9QEd2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g17si1799427qkk.12.2020.05.20.06.33.04
+        by mx.google.com with ESMTPS id q41si1517867qtb.266.2020.05.20.06.35.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 May 2020 06:33:04 -0700 (PDT)
+        Wed, 20 May 2020 06:35:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=X97PBlUX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Q0c9QEd2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55220 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jbOqF-0002oG-Ir
-	for alex.bennee@linaro.org; Wed, 20 May 2020 09:33:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48426)
+	id 1jbOsR-0007WW-Ak
+	for alex.bennee@linaro.org; Wed, 20 May 2020 09:35:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49408)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jbOjP-0006AD-MP
- for qemu-arm@nongnu.org; Wed, 20 May 2020 09:25:59 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:43118
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jbOoz-0008Pg-Hz
+ for qemu-arm@nongnu.org; Wed, 20 May 2020 09:31:45 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:33284
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jbOjO-0001Nv-Pe
- for qemu-arm@nongnu.org; Wed, 20 May 2020 09:25:59 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jbOox-0002Ur-GS
+ for qemu-arm@nongnu.org; Wed, 20 May 2020 09:31:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589981158;
+ s=mimecast20190719; t=1589981502;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=IwIHrpyVIX86aJn0ORsOQ0Yk0TNb79Ag+DOjqPnc9zM=;
- b=X97PBlUXtA2Kpt5dNN6Oo9eZ8IcsUZB009ZLxOjTSwgga/8ZUcEyK1kN4DAakjROycaieN
- /wXhCoDw/kAsXDbzY/SE3hO2nBE4ctIYK2aSCr1c9FhoKTzP6YZi/f5Bekj3lFvsFU7Y10
- o9WB6BkmbQ3/eO0KI7hzIaz4BqMPb4M=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-169-ZlrvZl2NPGSTN1GCxiDk2A-1; Wed, 20 May 2020 09:25:56 -0400
-X-MC-Unique: ZlrvZl2NPGSTN1GCxiDk2A-1
-Received: by mail-wm1-f69.google.com with SMTP id l26so898853wmh.3
- for <qemu-arm@nongnu.org>; Wed, 20 May 2020 06:25:56 -0700 (PDT)
+ bh=259SQf8MsHPnu7kDI97KADrK0adDLm45df22i1hlbp8=;
+ b=Q0c9QEd2i6zgdFnEMq6PZ+qXpjGjvEOhQhjyiyEJAHbv8bY88E77hke+TkU75bejGgUWBn
+ 9r3mc93GPHbZx+s1LE1v6zH/JLdDMfH9+vdrgejk+OOA/9RGF6Q+fRJOTCw1iXVUGISbFr
+ mAJKQmua/1w1Zt48yt3JwmMgaBtp51M=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-197-_A_XPXLXMpabRhPxqt_wjw-1; Wed, 20 May 2020 09:31:40 -0400
+X-MC-Unique: _A_XPXLXMpabRhPxqt_wjw-1
+Received: by mail-wr1-f71.google.com with SMTP id x8so1411688wrl.16
+ for <qemu-arm@nongnu.org>; Wed, 20 May 2020 06:31:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=IwIHrpyVIX86aJn0ORsOQ0Yk0TNb79Ag+DOjqPnc9zM=;
- b=Wk5T09sUBewv0aWRJDYHVNdUmazd3KGsHwfx2KUHA5SkI+Q1+APctPztd6bX+/7icQ
- ua7m+DMWRmev3toWBtMGLryoWalO+XDsj5bmovLsrSn4m5xrbdT5SslmGi9YluMt3Qty
- EluDVj2HQpg1M/tcHnjK+NX6a3Vwl4TLIhcf2/8UqWBbM/TFIEhuS+VOwBbfirhUS5lX
- PlS1zGUcKLX4tX44GclwOCt24R1XfoUO0jFcCLcqwqo7Af2S2r+tomB9yc76rcxNujf8
- fBFnfUs/TTj28Dmw1UHUrvf6Ibx27b0pS1odLZfS7SzaSfTDN8716gYxkEk9lmLQcnZe
- g5vQ==
-X-Gm-Message-State: AOAM532BB0Kft46DZh/rHjk/H6ctOQIoxWGynwFPfZcoQG2RjOb64qhV
- 0dHs50RuMf4EnURPBkrmhksP+YqEjC/hi5ePvFrvIoQ9sLeH80IAkd/nU7KGX+PhUOmDaPSKTnJ
- G4Sr1fjjCe48r
-X-Received: by 2002:adf:80f0:: with SMTP id 103mr3988799wrl.232.1589981155241; 
- Wed, 20 May 2020 06:25:55 -0700 (PDT)
-X-Received: by 2002:adf:80f0:: with SMTP id 103mr3988774wrl.232.1589981155011; 
- Wed, 20 May 2020 06:25:55 -0700 (PDT)
+ bh=259SQf8MsHPnu7kDI97KADrK0adDLm45df22i1hlbp8=;
+ b=NjYCQ7TYwHCcPHMEwnn3usc/1SX8k1qOyvT9nWRop6iufTKcr+vRMHKxRI7ZN5h1iM
+ jn5fAzxzZhHtxt2N4sIzJhw62f4Ozohk/s+d+GsvdABAvpeXoTijQXrPvYtdtAwKDLUH
+ MGgc8MFvRZDJwtROkxyWaMqLF+HCRRR6DVcDYEGhRXoeHCfROq6aayWwUOyQLYs07l9R
+ vLm5g/FhRo16/xYRMDlq+8SPsWfYuhqfXaU/yG0MWjIncNXxl+MBcVMHIzmzpV28moFV
+ ZB76B4Po4h2kAhMYYP8jv+cY4K4tczrSt0EteiHTKqiPLdN7GvxqUFKCHuNdGg1dCMDB
+ SzAQ==
+X-Gm-Message-State: AOAM530J4nzIIt7A5hOQ0TUE56l9fxCtKHUQKUR/lXqUSGf0gik76DwE
+ U7hPJlJyPadz2d0v6pfRn07B7GOJlox+EST76mtAo512plb4gYMJ8WW2EKFgTWs8D4dWCsk+Nf9
+ Hs8B1HVk5wja2
+X-Received: by 2002:a5d:4484:: with SMTP id j4mr4145319wrq.325.1589981499330; 
+ Wed, 20 May 2020 06:31:39 -0700 (PDT)
+X-Received: by 2002:a5d:4484:: with SMTP id j4mr4145289wrq.325.1589981498973; 
+ Wed, 20 May 2020 06:31:38 -0700 (PDT)
 Received: from [192.168.1.38] (17.red-88-21-202.staticip.rima-tde.net.
  [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id h133sm3213832wmf.25.2020.05.20.06.25.53
+ by smtp.gmail.com with ESMTPSA id n7sm1748446wrj.39.2020.05.20.06.31.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 20 May 2020 06:25:54 -0700 (PDT)
-Subject: Re: [PATCH v3 01/22] microvm: name qboot binary qboot.bin
+ Wed, 20 May 2020 06:31:38 -0700 (PDT)
+Subject: Re: [PATCH v3 06/22] acpi: create acpi-common.c and move madt code
 To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
 References: <20200520132003.9492-1-kraxel@redhat.com>
- <20200520132003.9492-2-kraxel@redhat.com>
+ <20200520132003.9492-7-kraxel@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <2a9e8f07-a1eb-9c3b-5070-51d5a87d76d5@redhat.com>
-Date: Wed, 20 May 2020 15:25:53 +0200
+Message-ID: <4aac4bfc-1701-d181-ba21-ba0cafd12adb@redhat.com>
+Date: Wed, 20 May 2020 15:31:37 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200520132003.9492-2-kraxel@redhat.com>
+In-Reply-To: <20200520132003.9492-7-kraxel@redhat.com>
 Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/20 04:09:34
@@ -118,7 +118,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -139,93 +139,369 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NDyjixYsjEww
-
-Hi Gerd,
+X-TUID: i+V+1hV+7J+Y
 
 On 5/20/20 3:19 PM, Gerd Hoffmann wrote:
-> qboot isn't a bios and shouldnt be named that way.
-
-Still it resides in a directory named pc-bios =)
-
-It is used later in x86_bios_rom_init() as:
-
-     bios = g_malloc(sizeof(*bios));
-     memory_region_init_ram(bios, NULL, "pc.bios", bios_size, &error_fatal);
-     if (!isapc_ram_fw) {
-         memory_region_set_readonly(bios, true);
-     }
-     ret = rom_add_file_fixed(bios_name, (uint32_t)(-bios_size), -1);
-     if (ret != 0) {
-     bios_error:
-         fprintf(stderr, "qemu: could not load PC BIOS '%s'\n", bios_name);
-         exit(1);
-     }
-     g_free(filename);
-
-Many 'bios' occurrences.
-
-Should it be called 'qboot.rom' instead?
-
+> We'll need madt support for microvm.
 > 
 > Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->   hw/i386/microvm.c                       |   4 ++--
->   pc-bios/{bios-microvm.bin => qboot.bin} | Bin
->   roms/Makefile                           |   6 +++---
->   3 files changed, 5 insertions(+), 5 deletions(-)
->   rename pc-bios/{bios-microvm.bin => qboot.bin} (100%)
+>   hw/i386/acpi-common.h |  14 ++++
+>   hw/i386/acpi-build.c  | 126 +---------------------------------
+>   hw/i386/acpi-common.c | 152 ++++++++++++++++++++++++++++++++++++++++++
+>   hw/i386/Makefile.objs |   1 +
+>   4 files changed, 170 insertions(+), 123 deletions(-)
+>   create mode 100644 hw/i386/acpi-common.h
+>   create mode 100644 hw/i386/acpi-common.c
 > 
-> diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-> index 937db10ae6a5..867d3d652145 100644
-> --- a/hw/i386/microvm.c
-> +++ b/hw/i386/microvm.c
-> @@ -47,7 +47,7 @@
->   #include "kvm_i386.h"
->   #include "hw/xen/start_info.h"
+> diff --git a/hw/i386/acpi-common.h b/hw/i386/acpi-common.h
+> new file mode 100644
+> index 000000000000..c30e461f1854
+> --- /dev/null
+> +++ b/hw/i386/acpi-common.h
+> @@ -0,0 +1,14 @@
+> +#ifndef HW_I386_ACPI_COMMON_H
+> +#define HW_I386_ACPI_COMMON_H
+> +#include "include/hw/acpi/acpi_dev_interface.h"
+> +
+> +#include "include/hw/acpi/bios-linker-loader.h"
+> +#include "include/hw/i386/x86.h"
+> +
+> +/* Default IOAPIC ID */
+> +#define ACPI_BUILD_IOAPIC_ID 0x0
+> +
+> +void acpi_build_madt(GArray *table_data, BIOSLinker *linker,
+> +                     X86MachineState *x86ms, AcpiDeviceIf *adev);
+> +
+> +#endif
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index 4f6418d60b05..c0fdd539a640 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -24,6 +24,7 @@
+>   #include "qapi/error.h"
+>   #include "qapi/qmp/qnum.h"
+>   #include "acpi-build.h"
+> +#include "acpi-common.h"
+>   #include "qemu/bitmap.h"
+>   #include "qemu/error-report.h"
+>   #include "hw/pci/pci.h"
+> @@ -89,9 +90,6 @@
+>   #define ACPI_BUILD_DPRINTF(fmt, ...)
+>   #endif
 >   
-> -#define MICROVM_BIOS_FILENAME "bios-microvm.bin"
-> +#define MICROVM_QBOOT_FILENAME "qboot.bin"
->   
->   static void microvm_set_rtc(MicrovmMachineState *mms, ISADevice *s)
->   {
-> @@ -158,7 +158,7 @@ static void microvm_devices_init(MicrovmMachineState *mms)
->       }
->   
->       if (bios_name == NULL) {
-> -        bios_name = MICROVM_BIOS_FILENAME;
-> +        bios_name = MICROVM_QBOOT_FILENAME;
->       }
->       x86_bios_rom_init(get_system_memory(), true);
+> -/* Default IOAPIC ID */
+> -#define ACPI_BUILD_IOAPIC_ID 0x0
+> -
+>   typedef struct AcpiPmInfo {
+>       bool s3_disabled;
+>       bool s4_disabled;
+> @@ -327,124 +325,6 @@ build_facs(GArray *table_data)
+>       facs->length = cpu_to_le32(sizeof(*facs));
 >   }
-> diff --git a/pc-bios/bios-microvm.bin b/pc-bios/qboot.bin
-> similarity index 100%
-> rename from pc-bios/bios-microvm.bin
-> rename to pc-bios/qboot.bin
-> diff --git a/roms/Makefile b/roms/Makefile
-> index f9acf39954dc..d6d4948bfc31 100644
-> --- a/roms/Makefile
-> +++ b/roms/Makefile
-> @@ -68,7 +68,7 @@ default help:
->   	@echo "  opensbi64-virt     -- update OpenSBI for 64-bit virt machine"
->   	@echo "  opensbi32-sifive_u -- update OpenSBI for 32-bit sifive_u machine"
->   	@echo "  opensbi64-sifive_u -- update OpenSBI for 64-bit sifive_u machine"
-> -	@echo "  bios-microvm       -- update bios-microvm.bin (qboot)"
-> +	@echo "  qboot              -- update qboot"
->   	@echo "  clean              -- delete the files generated by the previous" \
->   	                              "build targets"
 >   
-> @@ -194,9 +194,9 @@ opensbi64-sifive_u:
->   		PLATFORM="sifive/fu540"
->   	cp opensbi/build/platform/sifive/fu540/firmware/fw_jump.bin ../pc-bios/opensbi-riscv64-sifive_u-fw_jump.bin
+> -void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+> -                       const CPUArchIdList *apic_ids, GArray *entry)
+> -{
+> -    uint32_t apic_id = apic_ids->cpus[uid].arch_id;
+> -
+> -    /* ACPI spec says that LAPIC entry for non present
+> -     * CPU may be omitted from MADT or it must be marked
+> -     * as disabled. However omitting non present CPU from
+> -     * MADT breaks hotplug on linux. So possible CPUs
+> -     * should be put in MADT but kept disabled.
+> -     */
+> -    if (apic_id < 255) {
+> -        AcpiMadtProcessorApic *apic = acpi_data_push(entry, sizeof *apic);
+> -
+> -        apic->type = ACPI_APIC_PROCESSOR;
+> -        apic->length = sizeof(*apic);
+> -        apic->processor_id = uid;
+> -        apic->local_apic_id = apic_id;
+> -        if (apic_ids->cpus[uid].cpu != NULL) {
+> -            apic->flags = cpu_to_le32(1);
+> -        } else {
+> -            apic->flags = cpu_to_le32(0);
+> -        }
+> -    } else {
+> -        AcpiMadtProcessorX2Apic *apic = acpi_data_push(entry, sizeof *apic);
+> -
+> -        apic->type = ACPI_APIC_LOCAL_X2APIC;
+> -        apic->length = sizeof(*apic);
+> -        apic->uid = cpu_to_le32(uid);
+> -        apic->x2apic_id = cpu_to_le32(apic_id);
+> -        if (apic_ids->cpus[uid].cpu != NULL) {
+> -            apic->flags = cpu_to_le32(1);
+> -        } else {
+> -            apic->flags = cpu_to_le32(0);
+> -        }
+> -    }
+> -}
+> -
+> -static void
+> -build_madt(GArray *table_data, BIOSLinker *linker,
+> -           X86MachineState *x86ms, AcpiDeviceIf *adev)
+> -{
+> -    MachineClass *mc = MACHINE_GET_CLASS(x86ms);
+> -    const CPUArchIdList *apic_ids = mc->possible_cpu_arch_ids(MACHINE(x86ms));
+> -    int madt_start = table_data->len;
+> -    AcpiDeviceIfClass *adevc = ACPI_DEVICE_IF_GET_CLASS(adev);
+> -    bool x2apic_mode = false;
+> -
+> -    AcpiMultipleApicTable *madt;
+> -    AcpiMadtIoApic *io_apic;
+> -    AcpiMadtIntsrcovr *intsrcovr;
+> -    int i;
+> -
+> -    madt = acpi_data_push(table_data, sizeof *madt);
+> -    madt->local_apic_address = cpu_to_le32(APIC_DEFAULT_ADDRESS);
+> -    madt->flags = cpu_to_le32(1);
+> -
+> -    for (i = 0; i < apic_ids->len; i++) {
+> -        adevc->madt_cpu(adev, i, apic_ids, table_data);
+> -        if (apic_ids->cpus[i].arch_id > 254) {
+> -            x2apic_mode = true;
+> -        }
+> -    }
+> -
+> -    io_apic = acpi_data_push(table_data, sizeof *io_apic);
+> -    io_apic->type = ACPI_APIC_IO;
+> -    io_apic->length = sizeof(*io_apic);
+> -    io_apic->io_apic_id = ACPI_BUILD_IOAPIC_ID;
+> -    io_apic->address = cpu_to_le32(IO_APIC_DEFAULT_ADDRESS);
+> -    io_apic->interrupt = cpu_to_le32(0);
+> -
+> -    if (x86ms->apic_xrupt_override) {
+> -        intsrcovr = acpi_data_push(table_data, sizeof *intsrcovr);
+> -        intsrcovr->type   = ACPI_APIC_XRUPT_OVERRIDE;
+> -        intsrcovr->length = sizeof(*intsrcovr);
+> -        intsrcovr->source = 0;
+> -        intsrcovr->gsi    = cpu_to_le32(2);
+> -        intsrcovr->flags  = cpu_to_le16(0); /* conforms to bus specifications */
+> -    }
+> -    for (i = 1; i < 16; i++) {
+> -#define ACPI_BUILD_PCI_IRQS ((1<<5) | (1<<9) | (1<<10) | (1<<11))
+> -        if (!(ACPI_BUILD_PCI_IRQS & (1 << i))) {
+> -            /* No need for a INT source override structure. */
+> -            continue;
+> -        }
+> -        intsrcovr = acpi_data_push(table_data, sizeof *intsrcovr);
+> -        intsrcovr->type   = ACPI_APIC_XRUPT_OVERRIDE;
+> -        intsrcovr->length = sizeof(*intsrcovr);
+> -        intsrcovr->source = i;
+> -        intsrcovr->gsi    = cpu_to_le32(i);
+> -        intsrcovr->flags  = cpu_to_le16(0xd); /* active high, level triggered */
+> -    }
+> -
+> -    if (x2apic_mode) {
+> -        AcpiMadtLocalX2ApicNmi *local_nmi;
+> -
+> -        local_nmi = acpi_data_push(table_data, sizeof *local_nmi);
+> -        local_nmi->type   = ACPI_APIC_LOCAL_X2APIC_NMI;
+> -        local_nmi->length = sizeof(*local_nmi);
+> -        local_nmi->uid    = 0xFFFFFFFF; /* all processors */
+> -        local_nmi->flags  = cpu_to_le16(0);
+> -        local_nmi->lint   = 1; /* ACPI_LINT1 */
+> -    } else {
+> -        AcpiMadtLocalNmi *local_nmi;
+> -
+> -        local_nmi = acpi_data_push(table_data, sizeof *local_nmi);
+> -        local_nmi->type         = ACPI_APIC_LOCAL_NMI;
+> -        local_nmi->length       = sizeof(*local_nmi);
+> -        local_nmi->processor_id = 0xff; /* all processors */
+> -        local_nmi->flags        = cpu_to_le16(0);
+> -        local_nmi->lint         = 1; /* ACPI_LINT1 */
+> -    }
+> -
+> -    build_header(linker, table_data,
+> -                 (void *)(table_data->data + madt_start), "APIC",
+> -                 table_data->len - madt_start, 1, NULL, NULL);
+> -}
+> -
+>   static void build_append_pcihp_notify_entry(Aml *method, int slot)
+>   {
+>       Aml *if_ctx;
+> @@ -2533,8 +2413,8 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>       aml_len += tables_blob->len - fadt;
 >   
-> -bios-microvm:
-> +qboot:
->   	$(MAKE) -C qboot
-> -	cp qboot/bios.bin ../pc-bios/bios-microvm.bin
-> +	cp qboot/bios.bin ../pc-bios/qboot.bin
+>       acpi_add_table(table_offsets, tables_blob);
+> -    build_madt(tables_blob, tables->linker, x86ms,
+> -               ACPI_DEVICE_IF(pcms->acpi_dev));
+> +    acpi_build_madt(tables_blob, tables->linker, x86ms,
+> +                    ACPI_DEVICE_IF(pcms->acpi_dev));
 >   
->   clean:
->   	rm -rf seabios/.config seabios/out seabios/builds
+>       vmgenid_dev = find_vmgenid_dev();
+>       if (vmgenid_dev) {
+> diff --git a/hw/i386/acpi-common.c b/hw/i386/acpi-common.c
+> new file mode 100644
+> index 000000000000..5caca16a0b59
+> --- /dev/null
+> +++ b/hw/i386/acpi-common.c
+> @@ -0,0 +1,152 @@
+> +/* Support for generating ACPI tables and passing them to Guests
+> + *
+> + * Copyright (C) 2008-2010  Kevin O'Connor <kevin@koconnor.net>
+> + * Copyright (C) 2006 Fabrice Bellard
+> + * Copyright (C) 2013 Red Hat Inc
+> + *
+> + * Author: Michael S. Tsirkin <mst@redhat.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> +
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> +
+> + * You should have received a copy of the GNU General Public License along
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +
+> +#include "exec/memory.h"
+> +#include "hw/acpi/acpi.h"
+> +#include "hw/acpi/aml-build.h"
+> +#include "hw/acpi/utils.h"
+> +#include "hw/i386/pc.h"
+> +#include "target/i386/cpu.h"
+> +
+> +#include "acpi-build.h"
+> +#include "acpi-common.h"
+> +
+> +void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+> +                       const CPUArchIdList *apic_ids, GArray *entry)
+> +{
+> +    uint32_t apic_id = apic_ids->cpus[uid].arch_id;
+> +
+> +    /* ACPI spec says that LAPIC entry for non present
+> +     * CPU may be omitted from MADT or it must be marked
+> +     * as disabled. However omitting non present CPU from
+> +     * MADT breaks hotplug on linux. So possible CPUs
+> +     * should be put in MADT but kept disabled.
+> +     */
+> +    if (apic_id < 255) {
+> +        AcpiMadtProcessorApic *apic = acpi_data_push(entry, sizeof *apic);
+> +
+> +        apic->type = ACPI_APIC_PROCESSOR;
+> +        apic->length = sizeof(*apic);
+> +        apic->processor_id = uid;
+> +        apic->local_apic_id = apic_id;
+> +        if (apic_ids->cpus[uid].cpu != NULL) {
+> +            apic->flags = cpu_to_le32(1);
+> +        } else {
+> +            apic->flags = cpu_to_le32(0);
+> +        }
+> +    } else {
+> +        AcpiMadtProcessorX2Apic *apic = acpi_data_push(entry, sizeof *apic);
+> +
+> +        apic->type = ACPI_APIC_LOCAL_X2APIC;
+> +        apic->length = sizeof(*apic);
+> +        apic->uid = cpu_to_le32(uid);
+> +        apic->x2apic_id = cpu_to_le32(apic_id);
+> +        if (apic_ids->cpus[uid].cpu != NULL) {
+> +            apic->flags = cpu_to_le32(1);
+> +        } else {
+> +            apic->flags = cpu_to_le32(0);
+> +        }
+> +    }
+> +}
+> +
+> +void acpi_build_madt(GArray *table_data, BIOSLinker *linker,
+> +                     X86MachineState *x86ms, AcpiDeviceIf *adev)
+> +{
+> +    MachineClass *mc = MACHINE_GET_CLASS(x86ms);
+> +    const CPUArchIdList *apic_ids = mc->possible_cpu_arch_ids(MACHINE(x86ms));
+> +    int madt_start = table_data->len;
+> +    AcpiDeviceIfClass *adevc = ACPI_DEVICE_IF_GET_CLASS(adev);
+> +    bool x2apic_mode = false;
+> +
+> +    AcpiMultipleApicTable *madt;
+> +    AcpiMadtIoApic *io_apic;
+> +    AcpiMadtIntsrcovr *intsrcovr;
+> +    int i;
+> +
+> +    madt = acpi_data_push(table_data, sizeof *madt);
+> +    madt->local_apic_address = cpu_to_le32(APIC_DEFAULT_ADDRESS);
+> +    madt->flags = cpu_to_le32(1);
+> +
+> +    for (i = 0; i < apic_ids->len; i++) {
+> +        adevc->madt_cpu(adev, i, apic_ids, table_data);
+> +        if (apic_ids->cpus[i].arch_id > 254) {
+> +            x2apic_mode = true;
+> +        }
+> +    }
+> +
+> +    io_apic = acpi_data_push(table_data, sizeof *io_apic);
+> +    io_apic->type = ACPI_APIC_IO;
+> +    io_apic->length = sizeof(*io_apic);
+> +    io_apic->io_apic_id = ACPI_BUILD_IOAPIC_ID;
+> +    io_apic->address = cpu_to_le32(IO_APIC_DEFAULT_ADDRESS);
+> +    io_apic->interrupt = cpu_to_le32(0);
+> +
+> +    if (x86ms->apic_xrupt_override) {
+> +        intsrcovr = acpi_data_push(table_data, sizeof *intsrcovr);
+> +        intsrcovr->type   = ACPI_APIC_XRUPT_OVERRIDE;
+> +        intsrcovr->length = sizeof(*intsrcovr);
+> +        intsrcovr->source = 0;
+> +        intsrcovr->gsi    = cpu_to_le32(2);
+> +        intsrcovr->flags  = cpu_to_le16(0); /* conforms to bus specifications */
+> +    }
+> +    for (i = 1; i < 16; i++) {
+> +#define ACPI_BUILD_PCI_IRQS ((1<<5) | (1<<9) | (1<<10) | (1<<11))
+> +        if (!(ACPI_BUILD_PCI_IRQS & (1 << i))) {
+> +            /* No need for a INT source override structure. */
+> +            continue;
+> +        }
+> +        intsrcovr = acpi_data_push(table_data, sizeof *intsrcovr);
+> +        intsrcovr->type   = ACPI_APIC_XRUPT_OVERRIDE;
+> +        intsrcovr->length = sizeof(*intsrcovr);
+> +        intsrcovr->source = i;
+> +        intsrcovr->gsi    = cpu_to_le32(i);
+> +        intsrcovr->flags  = cpu_to_le16(0xd); /* active high, level triggered */
+> +    }
+> +
+> +    if (x2apic_mode) {
+> +        AcpiMadtLocalX2ApicNmi *local_nmi;
+> +
+> +        local_nmi = acpi_data_push(table_data, sizeof *local_nmi);
+> +        local_nmi->type   = ACPI_APIC_LOCAL_X2APIC_NMI;
+> +        local_nmi->length = sizeof(*local_nmi);
+> +        local_nmi->uid    = 0xFFFFFFFF; /* all processors */
+> +        local_nmi->flags  = cpu_to_le16(0);
+> +        local_nmi->lint   = 1; /* ACPI_LINT1 */
+> +    } else {
+> +        AcpiMadtLocalNmi *local_nmi;
+> +
+> +        local_nmi = acpi_data_push(table_data, sizeof *local_nmi);
+> +        local_nmi->type         = ACPI_APIC_LOCAL_NMI;
+> +        local_nmi->length       = sizeof(*local_nmi);
+> +        local_nmi->processor_id = 0xff; /* all processors */
+> +        local_nmi->flags        = cpu_to_le16(0);
+> +        local_nmi->lint         = 1; /* ACPI_LINT1 */
+> +    }
+> +
+> +    build_header(linker, table_data,
+> +                 (void *)(table_data->data + madt_start), "APIC",
+> +                 table_data->len - madt_start, 1, NULL, NULL);
+> +}
+> +
+> diff --git a/hw/i386/Makefile.objs b/hw/i386/Makefile.objs
+> index 8ce1b265335b..6abc74551a72 100644
+> --- a/hw/i386/Makefile.objs
+> +++ b/hw/i386/Makefile.objs
+> @@ -16,4 +16,5 @@ obj-$(CONFIG_VMMOUSE) += vmmouse.o
+>   obj-$(CONFIG_PC) += port92.o
+>   
+>   obj-y += kvmvapic.o
+> +obj-$(CONFIG_ACPI) += acpi-common.o
+>   obj-$(CONFIG_PC) += acpi-build.o
 > 
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 

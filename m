@@ -1,95 +1,116 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp573231lfb;
-        Wed, 20 May 2020 06:20:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzl8bfkRnGm9oCpmpKSgqbGCJop18v9lqUdrM2FZIy74iuCEiRcwxCXlQyyaB2AHF+hTp+q
-X-Received: by 2002:aed:2941:: with SMTP id s59mr5039640qtd.385.1589980839526;
-        Wed, 20 May 2020 06:20:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589980839; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp585973lfb;
+        Wed, 20 May 2020 06:35:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyWYiMmJjB2nSv1K9C4bFOniDMW/h/EKJ+IVyZllVFk9Bpk2Ve/adVWuIaYaPDZZch4tSFc
+X-Received: by 2002:aed:2441:: with SMTP id s1mr5336523qtc.304.1589981707358;
+        Wed, 20 May 2020 06:35:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589981707; cv=none;
         d=google.com; s=arc-20160816;
-        b=lQ5R2jL1pBlIkZj8BGQJEDegQKpzXvQmbk+O6Gycjj8MG2zQesFGUs8D71xKk4WQtV
-         thizPIwmOzC5dsQLVj8u8iOXKf9Af3PZG7d2O8WB5YhvS6ebQZ/RyMdcMWS59S7+QzGC
-         CNSjbTRDggwZ50wM64QUmIWoHrgLKDXAXkbXfdprRwP+jtofF1p3Sl+J42XYGGTaaIMA
-         GjCp1hMnHz/0E2lcrmx0bg9nd0gSU+778EifgcXEtweqrbGveZ/i09fM3HZwTYTtToTh
-         1xxLvT9dpi5OOSo2+qtD2miIRLILu0kNa2V5jDzoLWZFxpw6+GIv5KNN15m8tYzaXsU9
-         vVQg==
+        b=duPL6+kEDASQmxkUgN/THeW1lmEOm6DPMFebasPXz3DsLWxDZTmbpXtspAdrpxV0dQ
+         DWEzsio9bAUc3/sVUilKBEuMD8Sj0Dil4zx6TZb7JNWC1W+JNF5Zkvg+McCWfMNVrX5L
+         zeFT8gPtXK3zlXmj2bvIOt/EJ9doom42cXsL7OWj4Rxso8R+XY2msx/G//L5WMQzvoj6
+         gPrR8r66FqJrwy3T9u7wmdDoHNaiFFUtkgXzQzZwlXnhTpVMVmeTMepfjS3UHejSBP6t
+         OqIGL2FtCYITOroBoHMum0klISBe9bOUTo3hOCzrMcEVVflFUIoOGoxbfvx38Y2K8czy
+         D3OA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=vZeX+8kRW9FCrYnJbDk7AmYBGJYPTpHVWKR9X+Nk4SU=;
-        b=vq4jR81uGYGTn5l/6Y6OikuTi9IEs1Wdkz20KYUIcgs0hda3P3ruzyFncGElnwUZrc
-         5o8myjcVmdkQLcDEguUFgrdxdgS133aTUvYOVFO/kHz72lGWGFR+hH0GtvRvY+/vOPdf
-         zNer7S575lnzH/yY/NqmAtAjgEczZEJ4h3EtwcvRXCV/+TGWZmZmLINnEYVdR7N7We4+
-         hNeglH6N8G6ZtJrIzHPXKE8oXOaX9e3BdwHMzpnklczTXLWUhMcNneoesZuvT5gDFCul
-         rlkfLY0GbqYmLEcVTpo5LGsElcZc+7E6JxabfdirHjciZxPlV7plbvzGU3CcM72/N6e6
-         ZX8Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=+/ZKLsj99u02rgMhqtwFWQu7Na4B+yLIprFNYclwbsE=;
+        b=W/41L3SFyNW3lMlZCFHQtgJXf3VTUo9q3FPXn2QWuOsMKT5SXECfxRCwxMIeisvPWV
+         CaZrYywWbh/PZ6Js171JUh+WHMaYEUV0hdgjbnMTshNtClxRQ8UMQ+nCymtCNCualwuy
+         q2xvRDD/YAgWR/lssyGf1b6CXZoEmGxyfdtXs05Z4M341lhsfi+a/Njd+jSDgvf4qO1T
+         EDDLPAynk1HGyxfl6/NOlFg7u7MPSfkLT4gCUeb4Xg2pbYT2gbw7IXBZ9c21n3DdlP7+
+         JUsaBG4xsLO9JtwF4wDKYFyedls0PhIIc35T/z5+8SB75TegBAk3bWeyfhGkPPnxKCpE
+         1Juw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fkW21BDA;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BrELYa8N;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h30si1541623qtc.343.2020.05.20.06.20.39
+        by mx.google.com with ESMTPS id a1si1418588qtb.191.2020.05.20.06.35.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 May 2020 06:20:39 -0700 (PDT)
+        Wed, 20 May 2020 06:35:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fkW21BDA;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BrELYa8N;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55132 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37142 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jbOeE-0001n3-Kg
-	for alex.bennee@linaro.org; Wed, 20 May 2020 09:20:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47618)
+	id 1jbOsE-0007G8-Py
+	for alex.bennee@linaro.org; Wed, 20 May 2020 09:35:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49718)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jbOe1-0001io-HT
- for qemu-arm@nongnu.org; Wed, 20 May 2020 09:20:25 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:28641
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jbOqL-0003YL-ID
+ for qemu-arm@nongnu.org; Wed, 20 May 2020 09:33:09 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:31132
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jbOe0-0000Bp-PU
- for qemu-arm@nongnu.org; Wed, 20 May 2020 09:20:25 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jbOqK-000374-5W
+ for qemu-arm@nongnu.org; Wed, 20 May 2020 09:33:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1589980823;
+ s=mimecast20190719; t=1589981587;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type:in-reply-to:in-reply-to:
- references:references; bh=vZeX+8kRW9FCrYnJbDk7AmYBGJYPTpHVWKR9X+Nk4SU=;
- b=fkW21BDA+1sBBUgdBZmrPWY0Rv3BCReCnroOXhndYrFb1uT0cmCH3onvtFNEI4Bqix2RBl
- /llPOHny1Xa0kC6uy3v5luOy6KejMvGVvNOFhW5UT8tGXffak6T4mbF9iEvkeWZaStl9pc
- vi/xAHwRV6z/ubi9dRfInrgMvARWCgI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-475-ocikM8gsOiCdm6uDePCEJg-1; Wed, 20 May 2020 09:20:20 -0400
-X-MC-Unique: ocikM8gsOiCdm6uDePCEJg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 08947107ACF2;
- Wed, 20 May 2020 13:20:19 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-113-50.ams2.redhat.com
- [10.36.113.50])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D266D5D9E2;
- Wed, 20 May 2020 13:20:04 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 9CDE59DAE; Wed, 20 May 2020 15:20:03 +0200 (CEST)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 02/22] [testing] seabios: update submodule to master
- snapshot
-Date: Wed, 20 May 2020 15:19:43 +0200
-Message-Id: <20200520132003.9492-3-kraxel@redhat.com>
-In-Reply-To: <20200520132003.9492-1-kraxel@redhat.com>
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+/ZKLsj99u02rgMhqtwFWQu7Na4B+yLIprFNYclwbsE=;
+ b=BrELYa8Nlt+7JfVxqKekM8leQX7km1bKNEQvGB3s62ItZyPjCh8vThfyNgeeJoYCBr9FVl
+ 8tdPkQnwXP6U2iKGfibSBY9LYSxkJ1c05qVf4Tdip1eV19hd1TXChEFNju4FFJUVmfRnXr
+ nRvGWJ56hzysW3/dyG63iFapa27ctXg=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-54-b-cTKWM5PN-KbNEct70iSQ-1; Wed, 20 May 2020 09:33:05 -0400
+X-MC-Unique: b-cTKWM5PN-KbNEct70iSQ-1
+Received: by mail-wr1-f72.google.com with SMTP id 90so1402317wrg.23
+ for <qemu-arm@nongnu.org>; Wed, 20 May 2020 06:33:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=+/ZKLsj99u02rgMhqtwFWQu7Na4B+yLIprFNYclwbsE=;
+ b=MiB2yCc0FKbxIvfjbo6vaIWmh1NsLFriAWoc0NOPyv7GLbBn+yX5Q9B/rW1LD5KobH
+ If+IY04y+gK4psB9uJ0FdPubTThKk4fAw8prNn1xGFPPSnwyNu1Ccdc5H6Q79xtoZVBd
+ MvNwsPiiuoMfHBl6fnG8VflZCQI1BAtzxaABfryDOnafwVMXTFvJy7eINwB0FNV1MBxs
+ CzA9lJVCF94MBa3u1amaVqb3qDg+v0/IzJGwdnyPey1/l6sYgcKXTL8kKxj8ZYs6Mw52
+ T8awEhxtY9UCdgYt5VjI6a+diRbCCzbirq2eXMOsWWg2IEUMQxL1zTHkZPmvtrbZIYtC
+ agag==
+X-Gm-Message-State: AOAM532DKsbvgO9NsWQPBEBDI9RG0IGk2uiOZbw8Kur5Ztp/ZEJUvcVw
+ U9xEJhygarEPdi+bFbBsROujrLVJO5xOi5ysDiTq+GDR+CWmF149xzDpiWxqu2zM9QKI5LuA7QG
+ zoVhPmYfdOWDj
+X-Received: by 2002:a7b:cbd0:: with SMTP id n16mr4916722wmi.131.1589981584405; 
+ Wed, 20 May 2020 06:33:04 -0700 (PDT)
+X-Received: by 2002:a7b:cbd0:: with SMTP id n16mr4916696wmi.131.1589981584107; 
+ Wed, 20 May 2020 06:33:04 -0700 (PDT)
+Received: from [192.168.1.38] (17.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.17])
+ by smtp.gmail.com with ESMTPSA id b7sm3008486wmj.29.2020.05.20.06.33.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 20 May 2020 06:33:03 -0700 (PDT)
+Subject: Re: [PATCH v3 09/22] acpi: ged: rename event memory region
+To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
 References: <20200520132003.9492-1-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+ <20200520132003.9492-10-kraxel@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <b9adbb53-4b3c-dec6-5738-ea972710665d@redhat.com>
+Date: Wed, 20 May 2020 15:33:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <20200520132003.9492-10-kraxel@redhat.com>
+Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/20 04:09:34
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=philmd@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/19 22:48:02
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -113,26 +134,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XSEGfzs2fbdW
+X-TUID: anUEQdL0TaBW
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
----
- roms/seabios | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 5/20/20 3:19 PM, Gerd Hoffmann wrote:
+> Rename memory region and callbacks and ops to carry "evt" in the name
+> because a second region will be added shortly.
+> 
+> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+> ---
+>   include/hw/acpi/generic_event_device.h |  2 +-
+>   hw/acpi/generic_event_device.c         | 16 ++++++++--------
+>   2 files changed, 9 insertions(+), 9 deletions(-)
+> 
+> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+> index 83917de02425..90a9180db572 100644
+> --- a/include/hw/acpi/generic_event_device.h
+> +++ b/include/hw/acpi/generic_event_device.h
+> @@ -86,7 +86,7 @@
+>   #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
+>   
+>   typedef struct GEDState {
+> -    MemoryRegion io;
+> +    MemoryRegion evt;
+>       uint32_t     sel;
+>   } GEDState;
+>   
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index b1cbdd86b66c..1cb34111e59a 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -142,7 +142,7 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
+>   }
+>   
+>   /* Memory read by the GED _EVT AML dynamic method */
+> -static uint64_t ged_read(void *opaque, hwaddr addr, unsigned size)
+> +static uint64_t ged_evt_read(void *opaque, hwaddr addr, unsigned size)
+>   {
+>       uint64_t val = 0;
+>       GEDState *ged_st = opaque;
+> @@ -161,14 +161,14 @@ static uint64_t ged_read(void *opaque, hwaddr addr, unsigned size)
+>   }
+>   
+>   /* Nothing is expected to be written to the GED memory region */
+> -static void ged_write(void *opaque, hwaddr addr, uint64_t data,
+> -                      unsigned int size)
+> +static void ged_evt_write(void *opaque, hwaddr addr, uint64_t data,
+> +                          unsigned int size)
+>   {
+>   }
+>   
+> -static const MemoryRegionOps ged_ops = {
+> -    .read = ged_read,
+> -    .write = ged_write,
+> +static const MemoryRegionOps ged_evt_ops = {
+> +    .read = ged_evt_read,
+> +    .write = ged_evt_write,
+>       .endianness = DEVICE_LITTLE_ENDIAN,
+>       .valid = {
+>           .min_access_size = 4,
+> @@ -287,9 +287,9 @@ static void acpi_ged_initfn(Object *obj)
+>       SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+>       GEDState *ged_st = &s->ged_state;
+>   
+> -    memory_region_init_io(&ged_st->io, obj, &ged_ops, ged_st,
+> +    memory_region_init_io(&ged_st->evt, obj, &ged_evt_ops, ged_st,
+>                             TYPE_ACPI_GED, ACPI_GED_EVT_SEL_LEN);
+> -    sysbus_init_mmio(sbd, &ged_st->io);
+> +    sysbus_init_mmio(sbd, &ged_st->evt);
+>   
+>       sysbus_init_irq(sbd, &s->irq);
+>   
+> 
 
-diff --git a/roms/seabios b/roms/seabios
-index f21b5a4aeb02..b8eda1319544 160000
---- a/roms/seabios
-+++ b/roms/seabios
-@@ -1 +1 @@
--Subproject commit f21b5a4aeb020f2a5e2c6503f906a9349dd2f069
-+Subproject commit b8eda131954452bb5a236100a6572fe8f27d8021
--- 
-2.18.4
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 

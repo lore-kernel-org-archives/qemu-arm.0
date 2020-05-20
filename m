@@ -1,137 +1,233 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1596905wrg;
-        Sun, 16 Jun 2019 08:29:02 -0700 (PDT)
-X-Received: by 2002:a9d:22e4:: with SMTP id y91mr52347374ota.40.1560698942758;
-        Sun, 16 Jun 2019 08:29:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560698942; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp466645lfb;
+        Wed, 20 May 2020 04:06:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxr5a1TH3+5T2cfwBcE/r4UV0JouWCk/Wa7DapVmhYQIZdRIRv3+mKxc4wGwjaRdHkLmKed
+X-Received: by 2002:a37:aa93:: with SMTP id t141mr4289951qke.65.1589972792210;
+        Wed, 20 May 2020 04:06:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589972792; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zw7lzyL41aUDXwHUuL46t5UCiACDD7wUPmfxboWBqiEPriWvHtQgwFk3Frc8d70V6q
-         7l3tLhSeF6f7m8WW2EWkAIyGOBuxjgGo0epZjej8KD+c0Hk6Sm6VHbb5rSjUcLofjkuf
-         68qBx/SahWqV+hVXcZ1eIcmaqMe/S8xnNrQx+IFhQ06p96AH6r+4oHB5cFxzlyYd/CYD
-         27tB5DYIZaUwqdzMmeCgspQVm0hKL0enxRH9kG2M2ih27c0mixGxqdExpVNRtSonKhfz
-         R4owiWTWBThvT+aVlrUTgiKngZQTUHqD5mUsIkJi/YVW8uqh7GRHUn0DYfFkgan/41CW
-         qX8g==
+        b=PM1O6tEfOgABvumjAKlwiw/WIjVdyp78qwZbfRAFrUMwtI12OD5XlVbeUmbHDYlhPL
+         3qos7qRdkn7RWNE+NKrx2Ioi8Pgn85SObAVQg/bwHPNfG+qrfw6E10Nu8AfBXYc65VPC
+         ZaBGqKCmGXw+cZVNg4UWopU/mbhqAxlJj1v0MdmFazUqqrmKcBCJQBzj6CbLJizABnMp
+         noeTLNaG5hx/gxeRfGRI04Z89496bAyJgMcHQpUalK6cAq8/G7x5f+RT3iPuX5mK0vDr
+         +iYKaTmRJfUgNZIJoempulwtqlRrYbR2zfIBnoHPwmHjgzUKdCuLSF+QPAaRX9AmggMI
+         k4ZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature;
-        bh=vK2oPIWdX926GUcGpRQ9GL1RbklUyvCRcQMw7+hazb8=;
-        b=kvYy8dOsBqk69OQ63WXl3ZcnqTrNTnPZ86XjK8sSPiZ2RAd7E9jp4W/fc4dKkXVNwh
-         fuUGyehLhtV776M5HFwLG+A5od+Ju+PTXMA5Zzk7Lb6cTlOddfnULqpQ3JWlAud8OquI
-         mGe0B7/8cl+lQX1YOj6dsQqCUh7DpomDebuFH/x+kH4hpVoj2dANMjoJmjOHWokf3fXk
-         zDr9ysebTCZhLlMIwbIMhe96PJmrJKuAa8wh7Xsbd8Fffw7Mj4uWhIq1I1bDqpfqpfbu
-         3pMi+Y9sxBOn3WUCxc2uu7O9X9e1NZse8NZTiyD1bTZHNJFu744xFGeHSL0Bbdi3FZiD
-         H4Kg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=EPz+0kdVtW5q8N+2z/Wh5x38FOKcb3/jyNq+Nneaz2E=;
+        b=rqndE13lwboNrdrLEBPJgECq0QOYt43UJ5SHxer8yESEczYPYP6r/FzY/AbJ4q9QgU
+         8kefsMTOUljGPEp4eyUrOhrzssPOxHTD55/agIiSEkJPo16WSfWuiJZNXxnq2NF05t17
+         Axa3gu7rgfBv0WmYTmPn20w2hsneFxJeW8b0jTRa34MDYDcFv+rczkW2nlRVs31YB2xd
+         lfGm6u35Bcz0KkQFxdIwa8lM64c4dASZOt+8+XHi8/kIWoaEIu5vGPyTCITRpN4773qG
+         cRYd3nQhAgvEn4t3WZVVGYNy1cMlh6hMvNix6eRLt8gWogR6RGuBZBJEcl2rCXBxckZU
+         OYFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mTM+odr6;
-       spf=pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=aleksandar.m.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <aleksandar.m.mail@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id l16sor3418393oib.19.2019.06.16.08.29.02
-        (Google Transport Security);
-        Sun, 16 Jun 2019 08:29:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 1si336484qke.115.2020.05.20.04.06.31
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 20 May 2020 04:06:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mTM+odr6;
-       spf=pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=aleksandar.m.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=vK2oPIWdX926GUcGpRQ9GL1RbklUyvCRcQMw7+hazb8=;
-        b=mTM+odr6KdX0eBMiBRnRwhCCANR/YCMH9Ykxq7WcRPtje3A9mz1cBGL3Hd8aojwPSH
-         2/afOJKbZhuovnINjMjb2uSl9eUd/ixR49H9uFZ/oCOwQ4O5VH1vuzB8Ns/OrCrd6djh
-         A07QqeTd1EIuhN1gdfXGag4PKJMH9udd9hxMpWm7RqYVMwiID5yTTpn9Q/l3k2dTluRT
-         b2H9brROds9vBysMzlSBUoJA3MG36WD4CLrUq5no1LDv7Z+M7+3Q2DuXXTY22Nf2u9jR
-         HyR7L0VoTjFbu7GamRxcxneCVUtgRZZkRXfjGgN8lPvxryr/pnq3ZBifbVgC+ro6hBW5
-         46Kg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=vK2oPIWdX926GUcGpRQ9GL1RbklUyvCRcQMw7+hazb8=;
-        b=QgHmdDohcBX692eeq0qke60WOGxKn3A2ZpvB1pE8kPaiiRy89Js2Zj1NlyrmFE/8Nm
-         pKfKYgfCpgkqgP8Kk6Z1OGAdxQvIlGZpCdEJU/aOGCsPwbDx1ahQVHKSNjzRMacneixB
-         oEU4+lI5YHW7qhBG99XNTkhnzIF8eq5hm+LvmzwnPYxdv/MBmLIh7aYG/o8d+/iX+oAz
-         cuDFcj7wvpXnWDLm5eBSqinWSDgGsolY2gi6NMCDq4KaemKCeamEwhUcjnb3Zn/kza3k
-         YcBuAp9XhYlKF9JxmB4FVNAceuVHYoVc/+hGgmHE65hEeTBrX3oCN9p64OsMRXdB5nXK
-         QdhQ==
-X-Gm-Message-State: APjAAAUjRtsb4epBdQ0xt7wK0eFlwY1kgtF5L3r+PHap7YLZuDgLOZjJ
-	hXeCBfjimdXzdwmxTB/w/AhLVsj91qEBGDhe988qlUl6
-X-Google-Smtp-Source: APXvYqwgIiGIbcXzgePDeYz01EDCKPRHSoMIe0MTuQapCcIyL7EEKapTTak3/vGGYJIIhWTAUDOeFKK3ETEBvfoRmuU=
-X-Received: by 2002:aca:c2c3:: with SMTP id s186mr7410618oif.79.1560698942297;
- Sun, 16 Jun 2019 08:29:02 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42312 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jbMYR-0000Pg-Hr
+	for alex.bennee@linaro.org; Wed, 20 May 2020 07:06:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58948)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jbMYI-0000NI-00; Wed, 20 May 2020 07:06:22 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3766 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jbMYG-0007zY-BS; Wed, 20 May 2020 07:06:21 -0400
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id E867F647BB5BB2D5ABED;
+ Wed, 20 May 2020 19:06:09 +0800 (CST)
+Received: from S00345302A-PC.china.huawei.com (10.47.27.193) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.487.0; Wed, 20 May 2020 19:06:01 +0800
+From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: [PATCH v2] arm/virt: Add memory hot remove support
+Date: Wed, 20 May 2020 12:03:54 +0100
+Message-ID: <20200520110354.14352-1-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
 MIME-Version: 1.0
-Received: by 2002:a9d:20e4:0:0:0:0:0 with HTTP; Sun, 16 Jun 2019 08:29:01
- -0700 (PDT)
-Received: by 2002:a9d:20e4:0:0:0:0:0 with HTTP; Sun, 16 Jun 2019 08:29:01
- -0700 (PDT)
-In-Reply-To: <c81017d4-0ea0-99f3-854d-6ab4b514a15c@redhat.com>
-References: <20190531154735.20809-1-philmd@redhat.com> <CAFEAcA9TJGq-8fMv2amQEEGz9QKCNWYwJxCXrjqSh=Yc87yTww@mail.gmail.com>
- <947e851b-4b95-3126-2eaf-d5d16f8b831b@redhat.com> <431872249.25606899.1559321648368.JavaMail.zimbra@redhat.com>
- <a3cbd83c-a942-25f4-d424-bbbc0013acec@redhat.com> <c81017d4-0ea0-99f3-854d-6ab4b514a15c@redhat.com>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Sun, 16 Jun 2019 17:29:01 +0200
-Message-ID: <CAL1e-=gEsF=-ttE5Ts=drjRGjOT9nCOmka+adj461U95w--sAw@mail.gmail.com>
-Subject: Re: [Qemu-devel] [RFC PATCH 0/2] target: Build with
- CONFIG_SEMIHOSTING disabled
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Aurelien Jarno <aurelien@aurel32.net>, qemu-arm <qemu-arm@nongnu.org>, 
-	Aleksandar Markovic <amarkovic@wavecomp.com>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Samuel Ortiz <sameo@linux.intel.com>, Richard Henderson <richard.henderson@linaro.org>, 
-	Aleksandar Rikalo <arikalo@wavecomp.com>, Miroslav Rezanina <mrezanin@redhat.com>, 
-	Rob Bradford <robert.bradford@intel.com>, jhogan@kernel.org
-Content-Type: multipart/alternative; boundary="0000000000000e9b7f058b728a6c"
-X-TUID: EaoPuuKrP+zy
+Content-Type: text/plain
+X-Originating-IP: [10.47.27.193]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=shameerali.kolothum.thodi@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/20 05:37:42
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, mst@redhat.com, linuxarm@huawei.com,
+ xuwei5@hisilicon.com, eric.auger@redhat.com, prime.zeng@hisilicon.com,
+ imammedo@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OnfTvIeJnyKN
 
---0000000000000e9b7f058b728a6c
-Content-Type: text/plain; charset="UTF-8"
+This adds support for memory hot remove on arm/virt that
+uses acpi ged device.
 
-> Aleksandar: Can we use SEMIHOSTING on KVM MIPS?
->
+Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+---
+RFC v1 --> v2
+  -Rebased on top of latest Qemu master.
+  -Dropped "RFC" and tested with kernel 5.7-rc6
+---
+ hw/acpi/generic_event_device.c | 28 +++++++++++++++++
+ hw/arm/virt.c                  | 56 ++++++++++++++++++++++++++++++++--
+ 2 files changed, 82 insertions(+), 2 deletions(-)
 
-You can assume the answer is no, we can't. But James Hogan, who maintains
-MIPS KVM, may have different view, and his answer would override mine.
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index b1cbdd86b6..2b3bedcd2f 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -193,6 +193,32 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
+     }
+ }
+ 
++static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
++                                       DeviceState *dev, Error **errp)
++{
++    AcpiGedState *s = ACPI_GED(hotplug_dev);
++
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
++        acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
++    } else {
++        error_setg(errp, "acpi: device unplug request for unsupported device"
++                   " type: %s", object_get_typename(OBJECT(dev)));
++    }
++}
++
++static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
++                               DeviceState *dev, Error **errp)
++{
++    AcpiGedState *s = ACPI_GED(hotplug_dev);
++
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
++        acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
++    } else {
++        error_setg(errp, "acpi: device unplug for unsupported device"
++                   " type: %s", object_get_typename(OBJECT(dev)));
++    }
++}
++
+ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+ {
+     AcpiGedState *s = ACPI_GED(adev);
+@@ -318,6 +344,8 @@ static void acpi_ged_class_init(ObjectClass *class, void *data)
+     dc->vmsd = &vmstate_acpi_ged;
+ 
+     hc->plug = acpi_ged_device_plug_cb;
++    hc->unplug_request = acpi_ged_unplug_request_cb;
++    hc->unplug = acpi_ged_unplug_cb;
+ 
+     adevc->send_event = acpi_ged_send_event;
+ }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 37462a6f78..110fa73990 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2177,11 +2177,62 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+     }
+ }
+ 
++static void virt_dimm_unplug_request(HotplugHandler *hotplug_dev,
++                                     DeviceState *dev, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
++    Error *local_err = NULL;
++
++    if (!vms->acpi_dev) {
++        error_setg(errp,
++                   "memory hotplug is not enabled: missing acpi-ged device");
++        goto out;
++    }
++
++    hotplug_handler_unplug_request(HOTPLUG_HANDLER(vms->acpi_dev), dev,
++                                   &local_err);
++out:
++    error_propagate(errp, local_err);
++}
++
++static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
++                             DeviceState *dev, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
++    Error *local_err = NULL;
++
++    hotplug_handler_unplug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
++    if (local_err) {
++        goto out;
++    }
++
++    pc_dimm_unplug(PC_DIMM(dev), MACHINE(vms));
++    object_property_set_bool(OBJECT(dev), false, "realized", NULL);
++
++ out:
++    error_propagate(errp, local_err);
++}
++
+ static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
+                                           DeviceState *dev, Error **errp)
+ {
+-    error_setg(errp, "device unplug request for unsupported device"
+-               " type: %s", object_get_typename(OBJECT(dev)));
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
++        virt_dimm_unplug_request(hotplug_dev, dev, errp);
++    } else {
++        error_setg(errp, "device unplug request for unsupported device"
++                   " type: %s", object_get_typename(OBJECT(dev)));
++    }
++}
++
++static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
++                                          DeviceState *dev, Error **errp)
++{
++    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
++        virt_dimm_unplug(hotplug_dev, dev, errp);
++    } else {
++        error_setg(errp, "virt: device unplug for unsupported device"
++                   " type: %s", object_get_typename(OBJECT(dev)));
++    }
+ }
+ 
+ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
+@@ -2262,6 +2313,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     hc->pre_plug = virt_machine_device_pre_plug_cb;
+     hc->plug = virt_machine_device_plug_cb;
+     hc->unplug_request = virt_machine_device_unplug_request_cb;
++    hc->unplug = virt_machine_device_unplug_cb;
+     mc->numa_mem_supported = true;
+     mc->nvdimm_supported = true;
+     mc->auto_enable_numa_with_memhp = true;
+-- 
+2.17.1
 
-Yours,
-Aleksandar
 
-> For ARM Peter said:
->
-> "semihosting hooks either SVC or HLT instructions, and inside
->  KVM both of those go to EL1, ie to the guest, and can't be
->  trapped to KVM."
->
-> Thanks,
->
-> Phil.
->
-
---0000000000000e9b7f058b728a6c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<p dir=3D"ltr"><br>
-&gt; Aleksandar: Can we use SEMIHOSTING on KVM MIPS?<br>
-&gt;</p>
-<p dir=3D"ltr">You can assume the answer is no, we can&#39;t. But James Hog=
-an, who maintains MIPS KVM, may have different view, and his answer would o=
-verride mine.</p>
-<p dir=3D"ltr">Yours,<br>
-Aleksandar</p>
-<p dir=3D"ltr">&gt; For ARM Peter said:<br>
-&gt;<br>
-&gt; &quot;semihosting hooks either SVC or HLT instructions, and inside<br>
-&gt; =C2=A0KVM both of those go to EL1, ie to the guest, and can&#39;t be<b=
-r>
-&gt; =C2=A0trapped to KVM.&quot;<br>
-&gt;<br>
-&gt; Thanks,<br>
-&gt;<br>
-&gt; Phil.<br>
-&gt;<br>
-</p>
-
---0000000000000e9b7f058b728a6c--

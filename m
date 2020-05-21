@@ -1,94 +1,95 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1767483lfb;
-        Thu, 21 May 2020 10:20:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx/GXggRMZJhCs81mOiwPkzZIltKkDQKE7e/Y8p9zYWyjyvVK/lCv8SjpGGUMK31TzG7nwv
-X-Received: by 2002:ac8:d8c:: with SMTP id s12mr7688747qti.61.1590081656670;
-        Thu, 21 May 2020 10:20:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590081656; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1768037lfb;
+        Thu, 21 May 2020 10:21:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwjbTtVQj8r81qHe50H+cfenw0jfF1NmMUV2nqmwvTTVpbsV1FNdIvadT9iEkjZbgpwy5qp
+X-Received: by 2002:a37:4ed1:: with SMTP id c200mr10453646qkb.385.1590081698480;
+        Thu, 21 May 2020 10:21:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590081698; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fnr4Io2Wmrfk58yIEujSRTarZFZRUTr2k2/Eu+XqhjH5gfR18Wi+MCycHmrmW2Hic3
-         TtDB5EtchH2TcZBk+iWurBG7B6HSOQ6zMfgTFPao/M9hcFNBtCtsG6GYYfODzoRXxsrD
-         PaDFo9/qgHCgXDvh8tY0JBgSHgi3WmhiwfOnYicz7FsKbxILMFz2IMtj5FzdYAg8OZcv
-         P4nvZY/mD2GZ84D9wAD2ptewbY1n6TLmTPbuwwGwLrOuhABUTp8uZmrZaH5rnhW4ZogD
-         iKPnEhu/WM2ofrQRERP7KaSFGsVVhXXQcUjC4ShOsxtcOLo5PhFVzKoh1mYFMY/dzGDY
-         kr9A==
+        b=cY8SF3HThl7XcSMV3/d8xd3EB6EW8H7UosmgcWOA1lqQcrsHn6PtC7ipHkxJfll7br
+         XRTWkBzLEInBXBa1CqL3zS//bCKVrosqgflpy2rFROO/AEnLUgzI5u+ZPrgS6JkRBGi4
+         JOXJQSwX/2EUWNi9DqBhuwMSu+NJWij7rUhwK00WUBxOKTlcnFrsnryU2QrxVAtu8yri
+         RCKHQcXlGFiEl4sZbilqwno1cTZJvLZGb1XuNEX3+BxwKUMBrwKriPOLWvr88aH1qh79
+         HSl8Z/VbECm01da92tHOd+YNiv3SVFc05iUFnpbYiSBbuHszlErIIY7q4cnbdSwzYH2g
+         zFVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=pLFCIp0XFHZeGWDRfPEhCpc7Fs4qtKzYvjQ0W/FfaSM=;
-        b=X102iPkMQv9n2/eABc+fnFedV2t7Xyi9jB/TLR6hasfjYPS4IHi1RUF2DZadPQewvP
-         LjIlwPI+ebYV3AOFIscAIPdjZ2Xe1SVmoDl93oVZ3BdqvWKeSLV18v7mVZiwIf6/tS9p
-         zzj1/DOtgHPb1Ihtq4cktfhUaTA8WBrU0tYor/OOKOblOi3K614dWCpZEqVgVFxyL0JV
-         DvFSz6QbPmyrO2L+XqvJ23GvkqGsPPQeRiRbqWEWWLzRIn2j27g557i3tm449wzL6Ww+
-         c7lZ3jPo6s8aBgNcRed6xfIQy37yE+D9Fd5TyDPRuFAx6ol2nGXvfXlC5iktbOgb7Ocb
-         JPmg==
+        bh=oHKmpJirg4EZoTKDF575j+PCYShCNB8Xm+6VogrN6FA=;
+        b=C+01L35c35UqKgkTnWw0cbYWtb2dIWGGCZBVUldwd9a8UbtRXw+B9FSnwvxYWrTD1S
+         ppiey0zDjSAob+vqbealyMmuT3GWAETautlb8KGgDrP708RH/+ijw/z59h4mg6SvjYg9
+         ZXY9QAITrUUkHiLK6ro6rnu8Y4dyRId4LfXW5IxMfastAa0AtwVTzcxQBq1PfqOzPYhS
+         EROQP40uDk3B833N1acc8A67SPS5ee2y4Qjx1q6u3SOyL4qHjU2KydSfRrC3z5qwaa4+
+         hrDq8a3iD/uI8TY/iup4Ti8JLlKYeSxOirZbT0ZrvrOHXstVrAmIS1YwD05aj8SHXC9O
+         r8HQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Mmkk+70z;
+       dkim=fail header.i=@linaro.org header.s=google header.b=G4Eqelj7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z40si3652693qth.244.2020.05.21.10.20.56
+        by mx.google.com with ESMTPS id l2si3569239qth.62.2020.05.21.10.21.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 May 2020 10:20:56 -0700 (PDT)
+        Thu, 21 May 2020 10:21:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Mmkk+70z;
+       dkim=fail header.i=@linaro.org header.s=google header.b=G4Eqelj7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50368 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52892 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jbosK-0005oh-4A
-	for alex.bennee@linaro.org; Thu, 21 May 2020 13:20:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52470)
+	id 1jbosz-0007d2-Qv
+	for alex.bennee@linaro.org; Thu, 21 May 2020 13:21:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51696)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jbodM-0005OZ-Lj
- for qemu-arm@nongnu.org; Thu, 21 May 2020 13:05:28 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:40801)
+ id 1jboXu-00012j-KX
+ for qemu-arm@nongnu.org; Thu, 21 May 2020 12:59:50 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:40657)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jbodJ-0002cE-6D
- for qemu-arm@nongnu.org; Thu, 21 May 2020 13:05:28 -0400
-Received: by mail-oi1-x242.google.com with SMTP id v128so6797282oia.7
- for <qemu-arm@nongnu.org>; Thu, 21 May 2020 10:05:24 -0700 (PDT)
+ id 1jboXt-00016X-F4
+ for qemu-arm@nongnu.org; Thu, 21 May 2020 12:59:50 -0400
+Received: by mail-ot1-x343.google.com with SMTP id d26so6028003otc.7
+ for <qemu-arm@nongnu.org>; Thu, 21 May 2020 09:59:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=pLFCIp0XFHZeGWDRfPEhCpc7Fs4qtKzYvjQ0W/FfaSM=;
- b=Mmkk+70zD/89rdujcnneto7uMGa9SbFNBrB0DVeAfBxci8pcFW4tXDNWLhkiHkyRxH
- ibercEhWtyj4XYbLkviAecFp5xjQKBU2qzTYSaRjJP9xE4aS2Q0PCP9hEmxT5RlBCsof
- WkFI8YHURhitHTB8gUQSTNNKcdNt7kgL4PRH8aFgevV7TTdOdgvDXJBKuU6rXQZCBrt1
- 4HrThCh/PAPzp+P6mGX4fGhYwWxxVcKxBACUCpAgc+aqi1/Q5B+/LecviO9L+wL9eHBh
- YokVG5ENMQUoqAPZzdRdLInnzPz/+vaJ9cO5aruqr/Y3NFg0mgXfGZlWO5GAJHEuif7l
- hlJA==
+ :cc; bh=oHKmpJirg4EZoTKDF575j+PCYShCNB8Xm+6VogrN6FA=;
+ b=G4Eqelj72FTUuEXOQDgLe1SoQH1v4Ua5qW0EWqZ8ULWhG3c+WQbKYZo9vWNniboF/O
+ PHf/AznmoUJk2dltC+/ThYvTKdN2s2KCMvOvdvm3IynzPiHWaVvdnJtDJbrA/sP8meYV
+ 7PLQ/AASuNRXviX1CLYakMauQGlHAdJQAI2kaOg71DTLeCS/I4hKPh12cLXEeaQPe9pD
+ xImacx9JfiSZnZKMOtKD7tKRSohBwXDwW7s6WH6YQD7xOCPgEI6pzF8bb66tfI+KA137
+ GCNO56iA69u6+YbumNJaMTh+ea3UKgUzg6d7RQg2915hK+Np+xka8RjaCv83PubIlRRk
+ wvCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=pLFCIp0XFHZeGWDRfPEhCpc7Fs4qtKzYvjQ0W/FfaSM=;
- b=gm+9vTwCde+e/XLnqDRVNQJweINZMMb1RMaVb9pJvINqNjy43nhRUHTi1nBWgQrJy9
- 9xT01fkHbf0CbizUw1DweC0FqE/IkWrkucNAdeto0gquYyDmf1jYfQg8KVRP4NAjlvWp
- k7v7KVlRkImSa0pNtmWgSh+x2DvxfKy3Sv8EVXtZRG21CO2I3/mCvwz3jZpeQQXN5L9L
- Eh0mLJiEnksQKcTAdZ8OUgwKwJDMSdy+PJ5B2LPXVVZ+5jFMHHep3812A/qovRiYdbSQ
- Vz+1nNY1xG2Zv9sH7RM2TAS5D8SWc5XqCRwbdBld3dbcopcnbTIK+aSl93ZqHctJxh4u
- ij8g==
-X-Gm-Message-State: AOAM533xhueHy1Rv1QzEj91wOurGdAuuh36Cva1oUI68RShdYSd1CNl/
- V2qvvxPozowQqK5J0lEOQqukWW9gVZblJn4mWcMQKVtz
-X-Received: by 2002:aca:eb96:: with SMTP id j144mr6875001oih.48.1590080723816; 
- Thu, 21 May 2020 10:05:23 -0700 (PDT)
+ bh=oHKmpJirg4EZoTKDF575j+PCYShCNB8Xm+6VogrN6FA=;
+ b=JcH8MmQecg1qvjz7PysvpQxR25b/qSZ2RfGLrbrbg5zr720ewrzCCQZmIfrvvdkgOd
+ fBuHJyN7z0IPW/JxauTPTShsQtFICqHlUlUy/n/6dgrsOXj5N2itmjrsoFvg+yQFvgjB
+ T2y3n2h1oSsOBB5/hpnQ46hkopNgBEvyoJVcqp/UtwnkrNVmDh3EtUqAqOTF1UUD1pXV
+ Sn8uqW+PhmTcK+8g2XcBYdwDTGNqLwgglf8dKKT4imNqo6vQYqBri8X0KR6WBO6dPq96
+ jrjyr7lTcygS36wXeeRmm7N0qH+21vl9yXhMfPryK/808F2ehYeM73GpGft+h4wBwWB+
+ Id7Q==
+X-Gm-Message-State: AOAM533upmpsixFo2c2vHMAZGTytHRTmE2+eyDQd/WCXCDJdDW5mvmFe
+ szLrrHhCwm63pcw8AL3lwigTcz8kk5KpwcmT3ti/Ow==
+X-Received: by 2002:a05:6830:158b:: with SMTP id
+ i11mr8016316otr.135.1590080387984; 
+ Thu, 21 May 2020 09:59:47 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200518143014.20689-1-peter.maydell@linaro.org>
-In-Reply-To: <20200518143014.20689-1-peter.maydell@linaro.org>
+References: <20200519084904.1069-1-geert+renesas@glider.be>
+In-Reply-To: <20200519084904.1069-1-geert+renesas@glider.be>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 May 2020 18:05:12 +0100
-Message-ID: <CAFEAcA-X1MpWx-_Y_UwSyToZs+M2__vKj8tRSKEPMDq8t_M47w@mail.gmail.com>
-Subject: Re: [PATCH] linux-user/arm/signal.c: Drop TARGET_CONFIG_CPU_32
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Date: Thu, 21 May 2020 17:59:37 +0100
+Message-ID: <CAFEAcA9-wQ72_M+ZY+EbEgw1L9LVchBgpLivexFXVZ3HuCtcZg@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/virt: Fix PL061 node name and properties
+To: Geert Uytterhoeven <geert+renesas@glider.be>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -110,30 +111,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GrbU6M643vrL
+X-TUID: 3gMxOJNIp4+7
 
-On Mon, 18 May 2020 at 15:30, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Tue, 19 May 2020 at 09:49, Geert Uytterhoeven
+<geert+renesas@glider.be> wrote:
+> Make the created node comply with the PL061 Device Tree bindings:
+>   - Use generic node name "gpio" instead of "pl061",
+>   - Add missing "#interrupt-cells" and "interrupt-controller"
+>     properties.
+
+Where have these properties come from? They must be optional,
+because in the version of the binding documentation from Linux
+5.0 they're not described:
+https://elixir.bootlin.com/linux/v5.0/source/Documentation/devicetree/bindings/gpio/pl061-gpio.txt
+
+They seem to have magically appeared in kernel commit
+910f38bed9439e765f7e, which purports to only be a change
+of format from plain text to yaml but has added some
+extra properties and claimed them to be mandatory.
+
+Since the devicetree spec says that the interrupt-controller
+property "defines a node as an interrupt controller node"
+and a GPIO chip isn't an interrupt controller, this seems
+like some kind of error in the dtb binding. Maybe I'm
+missing something...
+
+What actually goes wrong if QEMU doesn't specify these
+properties?
+
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 7dc96abf72cf2b9a..99593d7bce4d85cb 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -818,13 +818,15 @@ static void create_gpio(const VirtMachineState *vms)
+>                                       qdev_get_gpio_in(vms->gic, irq));
 >
-> The Arm signal-handling code has some parts ifdeffed with a
-> TARGET_CONFIG_CPU_32, which is always defined. This is a leftover
-> from when this code's structure was based on the Linux kernel
-> signal handling code, where it was intended to support 26-bit
-> Arm CPUs. The kernel dropped its CONFIG_CPU_32 in kernel commit
-> 4da8b8208eded0ba21e3 in 2009.
->
-> QEMU has never had 26-bit CPU support and is unlikely to ever
-> add it; we certainly aren't going to support 26-bit Linux
-> binaries via linux-user mode. The ifdef is just unhelpful
-> noise, so remove it entirely.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
+>      uint32_t phandle = qemu_fdt_alloc_phandle(vms->fdt);
+> -    nodename = g_strdup_printf("/pl061@%" PRIx64, base);
+> +    nodename = g_strdup_printf("/gpio@%" PRIx64, base);
 
+Does the devicetree binding really mandate what the node name is?
+I thought that finding the right device was doe via the
+'compatible' string and the nodename could be whatever the
+device tree creator wanted.
 
-
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM

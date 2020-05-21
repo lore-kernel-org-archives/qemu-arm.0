@@ -1,138 +1,118 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1682274lfb;
-        Thu, 21 May 2020 08:40:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyA2YiKc0FYo17+543uF+N+EMct+04mi7fliqAVD6A2VDgSkfwU0TRR51UP1s8TjF+zn1Ot
-X-Received: by 2002:a50:e70a:: with SMTP id a10mr8447492edn.124.1590075617651;
-        Thu, 21 May 2020 08:40:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590075617; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1686902lfb;
+        Thu, 21 May 2020 08:45:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyf8JdWJgzwQcXUMq6Kp1l2ZjdPTk+1RE4bhoqdsD0L7SHiuV90A02TQeOD5LWClCIHploN
+X-Received: by 2002:a17:906:3041:: with SMTP id d1mr4266208ejd.7.1590075956584;
+        Thu, 21 May 2020 08:45:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590075956; cv=none;
         d=google.com; s=arc-20160816;
-        b=iNEzHlxhls6Uv82gArPyZhtNd70XgWj6+vzw2hLJ0IBY67Sz0f8dvL/GiLIHdTJg6C
-         x6VIIIEUlT7KoMjzrsoL+tcyGseUrRNIWAsYLTLXfRchiYiWVuHUHTd+8jBY+O6qHAI3
-         hRT5RMqY8jFM4oMb7LJZHsedCmhz4cYYFGvAfZbIkWG0lzLqyUza34y1XARtHnay7a6B
-         MrtoneexuhxILMK6WhUQC5kWtjLeHDim5BCnqJZ0yKP/yEX9lNpyHAUgC5Qn8TBrGlKD
-         F6MoyJmnrZ4wXB0YNpxzjmh1H2zXcVmDsUVxAwPW9VsyRKt/ZO9Lo3L5YEmzrcYxc0rf
-         Mhhw==
+        b=p/GegYtzRQLkEb0Te8ZGyWMqdNZkVkmLxIs9QqMWpLjM2k0YrgVVIFgEr3FqUIIIbW
+         I0NSxq67n/3QGBS46/NCIBoEjjBedW8yZn2rdoH4CE4KI8O5YnKc1F8uCxAAJ2BmKwnk
+         6S0q2EzgcdzvDu15cGS+Vo9zLvV7taVr1ApzuWS2zhHCkgNHZXilCqv6Vsg32VkVrcvN
+         lckNCZFNMffZu9hSpyL3gH9Vj8VR2JvbDFQWm7nytakdmsaGG3lI3O02arb82PA2f0BW
+         V76wqCk4GE0FX8besHGrsc3I2KD5tZXl5PMyQPNkn8BzYS59jvTbnrEvEpL+pqnRsBPC
+         hhJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=kenpgJBk4auwpqa56sHWeaXAdh8oFne+jS5kW7dDT3Q=;
-        b=o4h7CcExeWgN/CUUPKLur8KwVevlgJZFQQJMK+jd6K8dRkSV7EPgakVn5G6JHH2Gea
-         JGUAqtBg2J+vFJEHvc7KOmEXs1+JcSzb1r+kP/zYMfkGhTpkMcnf9U4/ZdFO0+V5OnJn
-         w3G1ZH/KoK2EzM8WTFj6BqlauRTZp8kHGWiJP0fF05rcdygULKR/OQ2gzUAdGJ9RsbFc
-         t9zmOJ3MN/4eI7ZGNsI+aphs6gaClrVd61P4b+U6YWa6eliBgKNzeSBVbFlgvro19A2s
-         qMm7TosQXEv3ZV5gRHDxJiUXXbKYW6Za4HFZr+N84frQ/MfQ6UBI6zQObUqnyzekG0AJ
-         FBRQ==
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=8h1ZPoBxJvuQvx2ziXpdx/NQiUgWmqZ1hoQbkwoXnSQ=;
+        b=zT8xkDUq6JzB3DS4+JaqmFt+88LJ4rm7tXvfblUFb7g2BrkKuPJeGaTAinKXb6glg4
+         FhE9NLuDWo1SZqL7yf7yw7CTWTQpcWFMQBGvp3xNA/KObFIVk4+5fSsyN/wM0fNQIgtt
+         YKgNphLW+A8kHqcj4DlxeU7roY3Jzi06+taGU3V54cC9e7CxeEgXU3iB8IoTTfrq4Sgh
+         rBNdaRDwpK7Ry3mW+w6dHHhAwG6eDx3Dt8GGPkVbZkCT/cY18Sciujmb10/DymNUm3AF
+         JSUmZQmeZhutp6THkekUPCmt9n2fcczV3m45qhrimV0wQjTl9fmhrMVBrhT5mDfT50jC
+         IGrA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aA6nrH98;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SlQZLiB4;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id v18si3732466ejb.705.2020.05.21.08.40.17;
-        Thu, 21 May 2020 08:40:17 -0700 (PDT)
+        by mx.google.com with ESMTP id d31si3444608edc.462.2020.05.21.08.45.56;
+        Thu, 21 May 2020 08:45:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aA6nrH98;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SlQZLiB4;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1729786AbgEUPkQ (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 21 May 2020 11:40:16 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:38791 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1728267AbgEUPkQ (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 21 May 2020 11:40:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1590075614;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=kenpgJBk4auwpqa56sHWeaXAdh8oFne+jS5kW7dDT3Q=;
-        b=aA6nrH98tbB8DmLvjITj9G3b+pz+kXrhGXJ2y7ExdS+K2nUO3mnooKDwSOpEEzLWM6VVzh
-        gYPl/kw7qlE2LrUZ6JimwzUgH3nR02qUrzJgZOkmCN1lXqtSLvIlr/AOA9xix48tqktOqE
-        8TcgeZcR5LjCG1v3Jntb2FI6/7Gn8u8=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-211-dlcgbeTKPtehoqhw7hX0zg-1; Thu, 21 May 2020 11:40:07 -0400
-X-MC-Unique: dlcgbeTKPtehoqhw7hX0zg-1
-Received: by mail-wr1-f72.google.com with SMTP id e1so586892wrm.3
-        for <kvm@vger.kernel.org>; Thu, 21 May 2020 08:40:07 -0700 (PDT)
+        id S1728316AbgEUPpz (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 21 May 2020 11:45:55 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:38680 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1727973AbgEUPpz (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 21 May 2020 11:45:55 -0400
+Received: from mail-oo1-xc44.google.com (mail-oo1-xc44.google.com [IPv6:2607:f8b0:4864:20::c44])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id F14C7C061A0E
+        for <kvm@vger.kernel.org>; Thu, 21 May 2020 08:45:54 -0700 (PDT)
+Received: by mail-oo1-xc44.google.com with SMTP id p123so1522766oop.12
+        for <kvm@vger.kernel.org>; Thu, 21 May 2020 08:45:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=8h1ZPoBxJvuQvx2ziXpdx/NQiUgWmqZ1hoQbkwoXnSQ=;
+        b=SlQZLiB4OFUSMtrURCnULNta22198oi+Z5RQAyBqo38LQk9Wha8N10/YPkuBWPYcSV
+         v0dSGU9HBPNNIrm+eyaZTbxOTlAN/5UVuXo/cRYgucmP/HGV5nChW+Q00R9WpbIoCX6x
+         PnDtVFdl4tD0EDId0iZ4Y8lp9MVazgA3g1/JGyZzN5QoT2KYF2uaj3bXRr4B5IhSI9Ix
+         A+ZRl1caqAKOoRzSsN2cMlYXlQA5F+VlGNFj5+2ufUKqgS/NXx0aew8IzlZBikCPtrD5
+         bMgxLoeMq5bcK8G35nZBb9ubrSzNanS+gwpQBB9ZWi77//UAfqBJZd82VOxRt5ykYr9O
+         2Ozg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=kenpgJBk4auwpqa56sHWeaXAdh8oFne+jS5kW7dDT3Q=;
-        b=RGhCVDO5XqWd4fj9a9SAHV25Ru2ZbtaNjPbSFQSHHAb7dBOUd+cq5SKIjv1JnwrXBd
-         l6edQMOST+GWgWNXLTx1H/mSJUeD+9a97Gc7XrlQ5BnSPJpMu8TCSAEAYLmgMTr/N9XE
-         iY+FAV/RenE5+08R6CfHgAcZMPf57GBpyus72VJhMFyJ+gLz5C/8e0SSETzZVzg+MWYu
-         D+pKT5WWg7gu7xTO7TS+HRZCMEWleTmy7vTFIV/3CfvKIi7CJACQIAriQzaK+JQVsK/T
-         kKbRQWWoi9xS3KLzpzfv83Vwwgp/6nK9rgbf27Ax/w+Emnz5YsdJIoSDofXpwq+O9PP5
-         BU4w==
-X-Gm-Message-State: AOAM533js+OCu+fHrwdzIsExS9OLgbtz02lNYGTQamQ5HntEA2Gpytrq
-        YPaDHhyG+2e2xkgaHkACOUgeh+KYJpNZ++BzqE9g79aLJxnj8r0q3tAa6ykJF4Kj4kKjDvCUhMN
-        XVHXIaxK//eGr
-X-Received: by 2002:adf:eb08:: with SMTP id s8mr4857962wrn.361.1590075606569;
-        Thu, 21 May 2020 08:40:06 -0700 (PDT)
-X-Received: by 2002:adf:eb08:: with SMTP id s8mr4857943wrn.361.1590075606355;
-        Thu, 21 May 2020 08:40:06 -0700 (PDT)
-Received: from [192.168.178.58] ([151.21.160.154])
-        by smtp.gmail.com with ESMTPSA id a17sm2925213wmm.23.2020.05.21.08.40.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 21 May 2020 08:40:05 -0700 (PDT)
-Subject: Re: [PATCH v2 0/7] exec/memory: Enforce checking MemTxResult values
-To:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-        qemu-devel@nongnu.org
-Cc:     Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
-        qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>
-References: <20200518155308.15851-1-f4bug@amsat.org>
-From:   Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <97559075-f7f3-3b18-a34d-3e7a419817ab@redhat.com>
-Date:   Thu, 21 May 2020 17:40:04 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=8h1ZPoBxJvuQvx2ziXpdx/NQiUgWmqZ1hoQbkwoXnSQ=;
+        b=Km85YAtIGK5lxf81rCBs+ejWMZRz2SnGJtYzoxnw68QMZ8+tYfA9vmeOtaEZrZblcx
+         94xwb4nXVsNQ5h4RHPin0gusf1E0kj0peKX1lhlo/uN+hmKYB1FQ23Ut5wOvYfwBSfJo
+         SZoLuHQIbbdPUrGRpSzakzehJkbIG/cJAFrbPksIVmWK2m2XhiXAl2NBoLQUOFhF3fkx
+         xQReVyPx4I4RZikncYVOmoujtoNrUhHtYNchXwBO3jjCOezxSMMYrn1HFmtAluiaXNZI
+         8Opi7IH97L3JnBJl4cGUWzVmFdH6BCcO0kf/Zb/Bx7XmQSqetAKt5ExfG5w64atghNug
+         nbmg==
+X-Gm-Message-State: AOAM532bfOhBxUao/u6fIwFzLClsw1iOQwJNRY2dcSXdsvJmb27Qp29i
+        gjaSiHjE9zET0jw14Nm7aLgRWJxCCnCPg9ZcfbcdFQ==
+X-Received: by 2002:a4a:8253:: with SMTP id t19mr7809624oog.69.1590075954348;
+ Thu, 21 May 2020 08:45:54 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200518155308.15851-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+References: <20200518155308.15851-1-f4bug@amsat.org> <20200518155308.15851-7-f4bug@amsat.org>
+ <CAFEAcA8tGgyYgHXT5LVGz675JMq6VWR56H++XO5gtTrcaZiDQQ@mail.gmail.com> <0c0cbdc0-a809-b80b-ade3-9bdc6f95b1a8@redhat.com>
+In-Reply-To: <0c0cbdc0-a809-b80b-ade3-9bdc6f95b1a8@redhat.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Thu, 21 May 2020 16:45:43 +0100
+Message-ID: <CAFEAcA_WOEeV53yr7SmWqyOnbfWYg3COr-C+mjaCuAPw=refcQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 6/7] accel/kvm: Let KVM_EXIT_MMIO return error
+To:     Paolo Bonzini <pbonzini@redhat.com>
+Cc:     =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        kvm-devel <kvm@vger.kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+        Richard Henderson <rth@twiddle.net>
+Content-Type: text/plain; charset="UTF-8"
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: kYetSQ+3HHCd
+X-TUID: h5yxfPGx0NyC
 
-On 18/05/20 17:53, Philippe Mathieu-Daudé wrote:
-> Various places ignore the MemTxResult indicator of
-> transaction failed. Fix the easy places.
-> The rest are the DMA devices, which require deeper
-> analysis.
-> 
-> Since v1:
-> - Dropped "exec/memory: Emit warning when MemTxResult is ignored"
->   https://www.mail-archive.com/qemu-devel@nongnu.org/msg704180.html
-> 
-> Philippe Mathieu-Daudé (7):
->   exec: Let address_space_read/write_cached() propagate MemTxResult
->   exec: Propagate cpu_memory_rw_debug() error
->   disas: Let disas::read_memory() handler return EIO on error
->   hw/elf_ops: Do not ignore write failures when loading ELF
->   hw/arm/boot: Abort if set_kernel_args() fails
->   accel/kvm: Let KVM_EXIT_MMIO return error
->   hw/core/loader: Assert loading ROM regions succeeds at reset
-> 
->  include/exec/cpu-all.h |  1 +
->  include/exec/memory.h  | 19 +++++++++++--------
->  include/hw/elf_ops.h   | 11 ++++++++---
->  accel/kvm/kvm-all.c    | 13 +++++++------
->  disas.c                | 13 ++++++++-----
->  exec.c                 | 28 ++++++++++++++++------------
->  hw/arm/boot.c          | 19 +++++++++++++------
->  hw/core/loader.c       |  8 ++++++--
->  8 files changed, 70 insertions(+), 42 deletions(-)
-> 
+On Thu, 21 May 2020 at 16:39, Paolo Bonzini <pbonzini@redhat.com> wrote:
+>
+> On 18/05/20 18:01, Peter Maydell wrote:
+> > The "right" answer is that the kernel should enhance the KVM_EXIT_MMIO
+> > API to allow userspace to say "sorry, you got a bus error on that
+> > memory access the guest just tried" (which the kernel then has to
+> > turn into an appropriate guest exception, or ignore, depending on
+> > what the architecture requires.) You don't want to set ret to
+> > non-zero here, because that will cause us to VM_STOP, and I
+> > suspect that x86 at least is relying on the implict RAZ/WI
+> > behaviour it currently gets.
+>
+> Yes, it is.  It may even be already possible to inject the right
+> exception (on ARM) through KVM_SET_VCPU_EVENTS or something like that, too.
 
-Queued patches 1-4, thanks.
+Yeah, in theory we could deliver an exception from userspace
+by updating all the register state, but I think the kernel really
+ought to do it both (a) because it's just a neater API to do it
+that way round and (b) because the kernel is the one that has
+the info about the faulting insn that it might need for things
+like setting up a syndrome register value.
 
-Paolo
+thanks
+-- PMM

@@ -1,149 +1,203 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1885278lfb;
-        Thu, 21 May 2020 12:55:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyK7xPAjpO87sTrTjcVapiURC1uzo+R/5KkwOWWk1df+ol7E5SeypmhSXUlA6pb/Vo8K5Oe
-X-Received: by 2002:a25:bb08:: with SMTP id z8mr18428069ybg.129.1590090938990;
-        Thu, 21 May 2020 12:55:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590090938; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1887775lfb;
+        Thu, 21 May 2020 12:59:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw++acCrfPyGzxynS1Qhf1TMd4MYb09ox+z77Yt5qtuL+Eq+frtKldGiZMZ6f3MCAoj6mZY
+X-Received: by 2002:a25:4455:: with SMTP id r82mr18781699yba.213.1590091164682;
+        Thu, 21 May 2020 12:59:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590091164; cv=none;
         d=google.com; s=arc-20160816;
-        b=EMG/XD6J3McLIAoXufVEhGy5XzenaxWADFl3wBM7Yt3aa2TsbM4vIWlv/PX12vTOzg
-         FwK1k+OHAGkKAcNCr491XzL+B70E34uhvsJXrndKh/txkijSZtjx5JTk+p1KsSKMJ98H
-         WrT4QdWqHQ2sofsD0mapW2szF2NkEy1ywmwpkK4WRnaQSsN3B9lKSikkzfsfdgupA0Eh
-         VdgnHbYRC1kpYaCyKEIykkHMaBR/bRdvoAOniulPG+Bovi/YkzHFI05T26SPUWkEtA7i
-         OQpOH3Ixy8Loxph/GfwaQc9PzSUrRnzw2m+/LQtrteqRQAJLGW1eYZGkdymengpeWL8v
-         h6Pw==
+        b=XSYnKlCOldIJt/ljupfKFVLmyUhxggBKRHOlRRRLhgz+CCNyWLW8YbXCcCkzgNeBuT
+         Ioz4myb4/aQ4mvLCE5NdlHFmXZdrqYD/e1EKEEfObYQVi4xJ6MxCANIF06vW/bNvsPEq
+         8iYioPBWqqNTlc9ktGEl5VoSYOxAO6Q+P9kP8IH3ndmR6hi+/rrQPQQGUuCTjnuJwUSv
+         5YVKiXsANI0YwGenxnehn7QxZpJQ1emmHxbKhA8JQ4XCZIjxBS5JSqioyXcojGFAws8v
+         ZCzKJN/RrRXQVAL1xS+De4hDTS5+SctRZJLqliB/V8zpPanQZGRhXBZIbOm3xO+8AkRo
+         d7wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=Wc4Xp9iP+y8ib2misl6Q6rQMS1Tn4Or4Kjqx/XnGrz4=;
-        b=0vxh47G82dEf7H4pc3AafrzkirF6bvjr+UnAMT6iC2SMgl9qq12ZFZy1ET9ICANi1P
-         3qO5U6wQSP9DonvK5Fye0XJMqhcdydWYOaqs+7mwVRbm2jZ9OV9++MHoJJ8ntPI2nvxz
-         uBPl9p6f0KzWGGSMQ2FcMWIqhXyE+xcIC2jwAx8y+7eg9aqijOOe8GweyUzVAxa1ZF7F
-         0ZAd8++WIYWHVML2FI0yjdC8KlfQxJ+CNQB+i3/BUV6H+XYQIWKxH3BahyfdvYW6VhVP
-         +gAgRcGGKfQbofxCoLMBB2HsqMCclX8Qbwd5MGAfTZN1pvXPiza2maYZgkm45P67cU2A
-         TcVA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=guRcykgqBUf/uuxJ52t2kwsJO8KdY5hMp8f0NDASSU0=;
+        b=jy56xI3j8vLk/sYp8TKYxEM/D1h7jq1q2tuZC4Nm/RjXI41/UVYzz/W7GacENJAVZw
+         h4dHFPqTB7G7K0PTSEnWTc5hper9hPTYHXh4kisfI44LD4jxUGCFryVEJ4yaAEf/jP+t
+         UdBOOUooZ11UabXr5+0EWNRlwaiAPJMlDk12GsIg/IpPTe+06GpHPg5uwm0D69ANQ1DF
+         ZjShAfegT1BQAAyJ24g0eP7WzFg8KLMgC4B9m8FgtZOSwha/tE4Qr4+Hq0mDtvebCUSs
+         dcJsa/WO9B446EvV8mwNm0yTFraLHoI5zmqQSeXegueonjRx+jGBWS0bb6gpRvUtyx4o
+         vubA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=clHdwUue;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QtdiZID7;
        spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by mx.google.com with ESMTPS id g5si5846953ybg.300.2020.05.21.12.55.38
+        by mx.google.com with ESMTPS id j142si1980133ybj.36.2020.05.21.12.59.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 May 2020 12:55:38 -0700 (PDT)
+        Thu, 21 May 2020 12:59:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=clHdwUue;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QtdiZID7;
        spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1590090938;
+	s=mimecast20190719; t=1590091163;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Wc4Xp9iP+y8ib2misl6Q6rQMS1Tn4Or4Kjqx/XnGrz4=;
-	b=clHdwUuetl4RqJt0aBdFeuFIyackAB45klWWsTSkU0jCHdHMf1jJkKegx/ekunOx56Duyz
-	S6LU1+kNQQqVk4vigRWCPUsNi0mnBsdMydexdn6pYE4C+4d5tuWKnKwlc64vB7QovqkhFz
-	csfnaa2Uwmn3bvo23qTG364KX1rpDi8=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-384-HARXqCgxN6a4HdeUMNjECw-1; Thu, 21 May 2020 15:55:36 -0400
-X-MC-Unique: HARXqCgxN6a4HdeUMNjECw-1
-Received: by mail-wm1-f69.google.com with SMTP id t62so3072372wmt.7
-        for <alex.bennee@linaro.org>; Thu, 21 May 2020 12:55:36 -0700 (PDT)
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=guRcykgqBUf/uuxJ52t2kwsJO8KdY5hMp8f0NDASSU0=;
+	b=QtdiZID7766kibU6lUOXH9rhJs/d2RbJkY1h7nTIv33r5UrG8b8I6L7Ztrh6XUHXq4t/5M
+	X9X8JfGeQRHdN6UKeX5LC5i0D3yEpX3HlAqm+hw2huCh8lztfisnmbntR7JXr2sSVrjGPW
+	iSA5p0Zec9+LGbw1DG0nwsR/0ROdNOQ=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-18-cLZvCdOjOrK2bqh0sLCOsQ-1; Thu, 21 May 2020 15:59:16 -0400
+X-MC-Unique: cLZvCdOjOrK2bqh0sLCOsQ-1
+Received: by mail-wm1-f71.google.com with SMTP id j132so1528146wma.8
+        for <alex.bennee@linaro.org>; Thu, 21 May 2020 12:59:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=Wc4Xp9iP+y8ib2misl6Q6rQMS1Tn4Or4Kjqx/XnGrz4=;
-        b=rBHPytoXZ9+OU61jGkkq/6px7SFSyx7jcZpIW3voW2Hktp9KIBfijlWO2qB0AVSVSY
-         NJ2NTqx1b5aq6wkYlCP0z3PIqOsBP7//o14GOVxUiYVKhHbJvs19JsWFgqmKw62OczCL
-         0yKy/ZenmTfH+4hryl3p3xB+GTcfHkxfIaZkDgETlfp3b2p2Vu6/Gm7s9PhOyLofTCT1
-         DwT5fiOSeHy0sor5sleZcSe4EPP4tET+1/bRqUrva4dHQLXaj7s+xTSB9qEkHhc+RVVL
-         D/7ZbJj0ZuVz2YW1DmgFWj4c4pCIL5qyWn0xoMgsuKIGaAQp25r9ykD4Ryq/RFpElu/q
-         NPHw==
-X-Gm-Message-State: AOAM533vcO/Z5ctn3Yjakj6RrSap3lsHBw9m8VezM3kEbF+qkk1mildW
-	Ndf4xJEu+bofL+pEEzBpmAw7I7ofCe5qbkLZjyiY8DQSujQN4OAtUfWAb8E2UhO4ZhTJArwoovr
-	bVSc/Cy0L4oeI1qO3
-X-Received: by 2002:a1c:bb0a:: with SMTP id l10mr10217243wmf.186.1590090935418;
-        Thu, 21 May 2020 12:55:35 -0700 (PDT)
-X-Received: by 2002:a1c:bb0a:: with SMTP id l10mr10217230wmf.186.1590090935136;
-        Thu, 21 May 2020 12:55:35 -0700 (PDT)
+        bh=guRcykgqBUf/uuxJ52t2kwsJO8KdY5hMp8f0NDASSU0=;
+        b=QE++DDiqFsok7KMZL4rnyBAELxt6H7eJbJyudpq5wjudRkIFvys3rcWe3smIFGDZFU
+         td7tVUesta4hVL5wmQtRwcoGo5CRjHvdlX3Oreh4CGEb22g656mrUVeTNHEiMSsiHCY6
+         omnYBcvemFc7XH/K4mW4p6cu3B5WrvsB7n39hcFXe20YB6Y/djZvfGjzXYpzj4qzTDJj
+         9dbkvt9qJyhKjx+GowHwfDFGWuBlKRggmj0KXaGB8AXRWyqeSX1oDhztflPyc8+wZF8p
+         b4YENGR2mN1C2/4DNH7PP1z3yhkNuPixVBMjR6cq9uTgc4WanMUddjWjWpykIO+aNa5K
+         AGHw==
+X-Gm-Message-State: AOAM531VX0iEpndewtFOWytAbdXY1TCqxyxgdzEX8ekYJh0ObSC2ebin
+	R/omsm4Dwv421OcfErifC/dSjj2MMJn9PAXP9wlh2KFKkENSqlCrfAKVZUUF/8fuqhqRyS5nBEq
+	ILQ1TB2p+40cNmqEW
+X-Received: by 2002:adf:8041:: with SMTP id 59mr215551wrk.278.1590091155004;
+        Thu, 21 May 2020 12:59:15 -0700 (PDT)
+X-Received: by 2002:adf:8041:: with SMTP id 59mr215534wrk.278.1590091154541;
+        Thu, 21 May 2020 12:59:14 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.40] (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
-        by smtp.gmail.com with ESMTPSA id l19sm7846585wmj.14.2020.05.21.12.55.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 21 May 2020 12:55:34 -0700 (PDT)
-Subject: Re: [PATCH v2 10/10] hw/semihosting: Make the feature depend of TCG,
- and allow to disable it
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Cc: Marek Vasut <marex@denx.de>, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>, qemu-riscv@nongnu.org,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Michael Walle <michael@walle.cc>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
-References: <20200515170804.5707-1-philmd@redhat.com>
- <20200515170804.5707-11-philmd@redhat.com>
- <a67da86e-8486-9fea-ae1c-db65bf5c4acc@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <2810165c-62f9-1cc0-d610-115525d6a06a@redhat.com>
-Date: Thu, 21 May 2020 21:55:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+Received: from localhost.localdomain (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
+        by smtp.gmail.com with ESMTPSA id e21sm7338181wme.34.2020.05.21.12.59.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 May 2020 12:59:13 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Chris Wulff <crwulff@gmail.com>,
+	qemu-arm@nongnu.org,
+	Laurent Vivier <laurent@vivier.eu>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+	Michael Walle <michael@walle.cc>,
+	Marek Vasut <marex@denx.de>,
+	qemu-riscv@nongnu.org,
+	Thomas Huth <thuth@redhat.com>,
+	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+	Alistair Francis <Alistair.Francis@wdc.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Sagar Karandikar <sagark@eecs.berkeley.edu>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v3 00/11] accel: Allow targets to use Kconfig, disable semihosting by default
+Date: Thu, 21 May 2020 21:59:00 +0200
+Message-Id: <20200521195911.19685-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <a67da86e-8486-9fea-ae1c-db65bf5c4acc@linaro.org>
-Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: TS49yQ0YPipp
+X-TUID: WF3cVwbJ2eCy
 
-On 5/19/20 11:44 PM, Richard Henderson wrote:
-> On 5/15/20 10:08 AM, Philippe Mathieu-Daudé wrote:
->> +++ b/hw/semihosting/Kconfig
->> @@ -1,3 +1,5 @@
->>   
->> +# default is 'n'
->>   config SEMIHOSTING
->> -       bool
->> +    bool
->> +    depends on TCG
->> diff --git a/target/arm/Kconfig b/target/arm/Kconfig
->> new file mode 100644
->> index 0000000000..3224cac4ad
->> --- /dev/null
->> +++ b/target/arm/Kconfig
->> @@ -0,0 +1,2 @@
->> +config SEMIHOSTING
->> +    default y if TCG
-> 
-> Do you really have to duplicate the TCG condition?
+Missing review: patch #9 'rules.mak: Add base-arch rule'
+and patch #11 'semihosting: Make the feature depend of TCG'
 
-How so? The semihosting default table is:
+This series include generic patches I took of the KVM/ARM
+specific series which will follow.
 
-       TCG KVM XEN
-       y n y n y n
-TCG y - - y y y y
-     n   - n n n n
-KVM y     - - n n
-     n         n n
-XEN y         - -
-     n           -
+- List orphan accelerators in MAINTAINERS
+- Add accel/Kconfig
+- Allow targets to use their how Kconfig
+- Enforce semihosting on architecture where required,
+  disable it elsewhere
 
-So checking for TCG is the simpler way.
+Since v2:
+- Addressed Thomas review comments
+- Fixed problem when including TARGET instead of BASE_TARGET
 
-Maybe I'm not understanding well your question.
+Since v1:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg689024.html
+- Drop HVF MAINTAINERS patch (merged elsewhere)
+- Kconfig-select SEMIHOSTING (bonzini)
+- Drop user-mode selection patches
+- consider m68k/nios2/xtensa/riscv (pm215)
+- reword Kconfig SEMIHOSTING description (pm215)
+- reset some of rth R-b tags
 
-The logic is if TCG is selected, SEMIHOSTING is too.
+Previous RFC for semihosting posted earlier:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg631218.html
+
+$ git backport-diff -u v2 -r v3
+Key:
+[----] : patches are identical
+[####] : number of functional differences between upstream/downstream patch
+[down] : patch is downstream-only
+The flags [FC] indicate (F)unctional and (C)ontextual differences, respectively
+
+001/11:[----] [--] 'MAINTAINERS: Fix KVM path expansion glob'
+002/11:[0002] [FC] 'MAINTAINERS: Add an 'overall' entry for accelerators'
+003/11:[----] [-C] 'MAINTAINERS: Add an entry for the HAX accelerator'
+004/11:[----] [--] 'accel/tcg: Add stub for probe_access()'
+005/11:[----] [--] 'Makefile: Remove dangerous EOL trailing backslash'
+006/11:[----] [--] 'Makefile: Write MINIKCONF variables as one entry per line'
+007/11:[----] [--] 'accel/Kconfig: Extract accel selectors into their own config'
+008/11:[----] [--] 'accel/Kconfig: Add the TCG selector'
+009/11:[down] 'rules.mak: Add base-arch() rule'
+010/11:[0002] [FC] 'Makefile: Allow target-specific optional Kconfig'
+011/11:[0014] [FC] 'hw/semihosting: Make the feature depend of TCG, and allow to disable it'
+
+Philippe Mathieu-Daudé (11):
+  MAINTAINERS: Fix KVM path expansion glob
+  MAINTAINERS: Add an 'overall' entry for accelerators
+  MAINTAINERS: Add an entry for the HAX accelerator
+  accel/tcg: Add stub for probe_access()
+  Makefile: Remove dangerous EOL trailing backslash
+  Makefile: Write MINIKCONF variables as one entry per line
+  accel/Kconfig: Extract accel selectors into their own config
+  accel/Kconfig: Add the TCG selector
+  rules.mak: Add base-arch() rule
+  Makefile: Allow target-specific optional Kconfig
+  hw/semihosting: Make the feature depend of TCG, and allow to disable
+    it
+
+ Makefile                                | 15 +++++++++++----
+ default-configs/arm-softmmu.mak         |  1 -
+ default-configs/lm32-softmmu.mak        |  2 --
+ default-configs/m68k-softmmu.mak        |  2 --
+ default-configs/mips-softmmu-common.mak |  3 ---
+ default-configs/nios2-softmmu.mak       |  2 --
+ default-configs/xtensa-softmmu.mak      |  2 --
+ rules.mak                               | 16 ++++++++++++++++
+ accel/stubs/tcg-stub.c                  |  7 +++++++
+ Kconfig.host                            |  7 -------
+ MAINTAINERS                             | 19 ++++++++++++++++++-
+ accel/Kconfig                           |  9 +++++++++
+ hw/semihosting/Kconfig                  |  4 +++-
+ target/arm/Kconfig                      |  2 ++
+ target/lm32/Kconfig                     |  2 ++
+ target/m68k/Kconfig                     |  2 ++
+ target/mips/Kconfig                     |  2 ++
+ target/nios2/Kconfig                    |  2 ++
+ target/riscv/Kconfig                    |  2 ++
+ target/xtensa/Kconfig                   |  2 ++
+ 20 files changed, 78 insertions(+), 25 deletions(-)
+ create mode 100644 accel/Kconfig
+ create mode 100644 target/arm/Kconfig
+ create mode 100644 target/lm32/Kconfig
+ create mode 100644 target/m68k/Kconfig
+ create mode 100644 target/mips/Kconfig
+ create mode 100644 target/nios2/Kconfig
+ create mode 100644 target/riscv/Kconfig
+ create mode 100644 target/xtensa/Kconfig
+
+-- 
+2.21.3

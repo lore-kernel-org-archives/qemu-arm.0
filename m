@@ -1,145 +1,191 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1888358lfb;
-        Thu, 21 May 2020 13:00:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzp7CaA4CEUtvAvbMIqikeHmVHCj2TxUfLmOtwX/nIabqeI8IwhJ3BI8t7zqldvn5ePQOwh
-X-Received: by 2002:a5b:903:: with SMTP id a3mr18166299ybq.141.1590091213884;
-        Thu, 21 May 2020 13:00:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590091213; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1917163lfb;
+        Thu, 21 May 2020 13:37:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy0VcWPgBz96r6OaLkRv9X6EcDZZ3bYjv5WfULq+D5oko+Kk6HyEctecnE7KP98qd3YJTEC
+X-Received: by 2002:a37:7904:: with SMTP id u4mr11747419qkc.297.1590093455675;
+        Thu, 21 May 2020 13:37:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590093455; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nvn/zBuwCiekLKzvG8NWxMXl1ZDjJ5O5Ur/kGK99PY7yNON9SeT9dB9wMC8dWMTrFx
-         mccuy28VCB8VlqXLB1x3a4EzHRe1PZc7Ns0RRmgkDAcP7VI9Fk5YkzrCGoggV+i8lwtA
-         YzWzOW6D1LeCI3oMtAMS+H9qBpJUhwcXbwuM5ORsUo9xp/NVBsDOGcgH+k3qixT4J0YK
-         bnuQCdztCnJQT4hEjnP4gXeLdZTWarpvSzT/0GMgSeOOx1NQvYKNXDhpJmeQXNZx+mcr
-         MBZyOD2d9fHIrVJHaomk6mDHFt01TAfPeFms/aIuLfItDtYAHZv+W+wNp8BHH3A8lgLc
-         oI5A==
+        b=QaRDanEzPb/XzHlDH3JWDSDADff/RFhC/VFnvHsufL7eWMIwSowIGf1z028OwCoEG+
+         AZ/gstPRB5tHMClcMJmwCIwk0Xu34J3k7nwRu+ZChec+CeKN51eYLguQwF4hu/MxveSb
+         if12ApE01O/NDnm6ohifYoVdKSvvFvWm5gFnLvOewx1Z00ooZzbGMWlZD6aw/Qj8CkOq
+         VPvSCYxjB1qEaFpyyFtQhVKv4qrlMiGcoHb4oYPhtJFZ2UYCDJEkTZevWVcClfxfL73c
+         RsJfma5tcq7LSJef7brGJ0ZomBqYroKhwHVTOYeDa8ggcPBUQ6d4Ygy6/26P0OfzJFou
+         MLxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=KqNAKdeyZY4N/WN8/VheKglAqudMynHtJmA2N/wtx2U=;
-        b=DM9nUz+nbr7/830R+i3TFvJ/mYIQAL3MoStBA+gvOapdjwFZj7lSqo4mvl8DRWHC2Y
-         S/L9sro61+2DDeIANU+51+RGLF4yUOyEngf31n9TWCXNcFqUME5dspO965hlr41HvErM
-         N+08i+H101aHvngWQFeWj5aqbdbqajL+AvgG0UjocDZOxJYvKSBq0hERMv1jd1OhJTgW
-         uempzapDbUsThvNEcO3SHa5J0krfzdkolrytohlostfvD+jZODe0gUqJOyZ7s9/cFZKq
-         xTFsS4eWcm1e5kUdzZeC5rAgsGBs1ZIzyWI0M8Yj0fpld7JEKG6C7IIzxX1Dw4Gfn2d5
-         M12w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
+         :message-id:date:dkim-signature;
+        bh=tGxrjpstm4I7PAN/kuQkbl2KdvRqWXweBxIWEzXPUS0=;
+        b=so5plEx/koeD6bOm+fQkrt5W3HivzAqo1vLIpfRuuahBqby7FOBXulvxdMHRDBsl9E
+         O95YjVVuYQCObcg1LRY3kRQjdb1QT4G6wFy6+/B/tBcakneu8qR3aYvkKaTC6BnO5CDh
+         pYTE7DhM+RpSxi5urBNuuEzf34uRGVE1VerHvCCXs7pdhnII+ZVg8c5PLrnEzi9svRkO
+         5HB8bGgQ+7nPOQ722612g327zzcgLw7B6pF4MVxJiLBA3IIqilw6EvI3NQ9zIQM7eWzR
+         QPpbeHYpyQIod8VPRUeEvp9WOvY11iyneYFAWKjvZF/C1ZSCBwIWzCSpbICa8+sTUHyA
+         +HCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="bjut5/jr";
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by mx.google.com with ESMTPS id e7si5690932ybe.99.2020.05.21.13.00.13
+       dkim=pass header.i=@google.com header.s=20161025 header.b=Rb9xo580;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q39si1824542qtc.192.2020.05.21.13.37.35
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 May 2020 13:00:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 21 May 2020 13:37:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="bjut5/jr";
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1590091213;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=KqNAKdeyZY4N/WN8/VheKglAqudMynHtJmA2N/wtx2U=;
-	b=bjut5/jry8dMJw1PXO3YrRAkTfFnhcDR6LNWa9Ck+vPnxu3QtCmrdlsAsFBLgBpuHaHvpQ
-	HbWsbZFe/tQlgtT28pBoB4B2evmpIX7EsxQCsgCjg/wpsQPidAvYtxCVtqkoI2M+BBZ/jM
-	X0KdrnTQLk+kJJLgqrNqLoK2jpMCzmA=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-512-RHoRJeFCNM6JADznO2TL8A-1; Thu, 21 May 2020 16:00:09 -0400
-X-MC-Unique: RHoRJeFCNM6JADznO2TL8A-1
-Received: by mail-wm1-f70.google.com with SMTP id z5so87853wml.6
-        for <alex.bennee@linaro.org>; Thu, 21 May 2020 13:00:09 -0700 (PDT)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=Rb9xo580;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:41886 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jbrwd-0001CI-0v
+	for alex.bennee@linaro.org; Thu, 21 May 2020 16:37:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38688)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <31NTGXgsKCJU6H97CC3BD3C5DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--hskinnemoen.bounces.google.com>)
+ id 1jbqlT-0005TA-PT
+ for qemu-arm@nongnu.org; Thu, 21 May 2020 15:21:59 -0400
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:40002)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <31NTGXgsKCJU6H97CC3BD3C5DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--hskinnemoen.bounces.google.com>)
+ id 1jbqlS-0001iz-Dn
+ for qemu-arm@nongnu.org; Thu, 21 May 2020 15:21:59 -0400
+Received: by mail-yb1-xb4a.google.com with SMTP id 137so6521971ybf.7
+ for <qemu-arm@nongnu.org>; Thu, 21 May 2020 12:21:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=tGxrjpstm4I7PAN/kuQkbl2KdvRqWXweBxIWEzXPUS0=;
+ b=Rb9xo580Cp4PkbnfGEYMeoLvbnxzM/jWkefINiY4AQhk+CTvp0DwP79x9bjZuKkztD
+ iL2s1AokqH+yB7byGWfGE/FHIFItjUFyTtCQ4AX9+BGBL33flQNdxUoTKR2TyXEMA3CJ
+ 6ZXXT+U5gey0Xg0Chw2NiQPfzBSDFGc6vLcXDC8xVpfiCnhhYHBED0DTakRNuPMHKWo0
+ SVWpGfceoA9LYq9wZCDrnPIZDEbKgd4t2tZC1YJ3/fR7puc5hncR1ml1+YzrS0/PC3OP
+ 6Z6UuXvaK+Bsz5xZ9RNjEQGqY4mkrSwzO7f2qWuevtb+SFVx5PcvQHDSl7coUP/b/ID1
+ weXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=KqNAKdeyZY4N/WN8/VheKglAqudMynHtJmA2N/wtx2U=;
-        b=KW5TZVa1HSjDtMn2uxQikdEp0FQJJRFalotnJwdVQID6t8nd+Ve5c8p6ZPL3DBtSxx
-         e774exulPDxOGTEeWiZy7MRHuySISKuooWclTDnHQnOzwVGWlcNT8fbDIoLRtz5lLeMy
-         QpFrv4J422NvcA1OeZCRXrMysgLsknhBAPluhw7eR9L8ieYrQ3FsLo5t/s/z/29ssMbc
-         lA3P7nd1dmTymIucqDvc3QNfE0PXhfuAtcq1/V9CVfTTDr9DHdohU9ti8cvlwb5EcD8S
-         DjaL+hRNv0pA/1k2DDQ9ygwLqPzgkRyT5WVHr/wuXT5AXHIO3cVQMu8u5fPlVAZybidO
-         C+xg==
-X-Gm-Message-State: AOAM530rki4ypUfXdAFMjXOSTaFJdacehJrur1UmYwDnYpttq9pF0SSU
-	D+FM4u+1P6InHQow1VfuMRtvMp2F2B0m7jiiQFYQB9rRcNSX3GHIit1wcb8UzmNYsyEbyeDNug7
-	plciO6L/mO3Wyadzg
-X-Received: by 2002:a05:6000:8:: with SMTP id h8mr235568wrx.372.1590091208414;
-        Thu, 21 May 2020 13:00:08 -0700 (PDT)
-X-Received: by 2002:a05:6000:8:: with SMTP id h8mr235543wrx.372.1590091208262;
-        Thu, 21 May 2020 13:00:08 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from localhost.localdomain (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
-        by smtp.gmail.com with ESMTPSA id j4sm5672973wrx.24.2020.05.21.13.00.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 21 May 2020 13:00:07 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Chris Wulff <crwulff@gmail.com>,
-	qemu-arm@nongnu.org,
-	Laurent Vivier <laurent@vivier.eu>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Max Filippov <jcmvbkbc@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-	Michael Walle <michael@walle.cc>,
-	Marek Vasut <marex@denx.de>,
-	qemu-riscv@nongnu.org,
-	Thomas Huth <thuth@redhat.com>,
-	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
-	Alistair Francis <Alistair.Francis@wdc.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Sagar Karandikar <sagark@eecs.berkeley.edu>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v3 10/11] Makefile: Allow target-specific optional Kconfig
-Date: Thu, 21 May 2020 21:59:10 +0200
-Message-Id: <20200521195911.19685-11-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200521195911.19685-1-philmd@redhat.com>
-References: <20200521195911.19685-1-philmd@redhat.com>
-MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-TUID: zRsNYIHlDh5r
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=tGxrjpstm4I7PAN/kuQkbl2KdvRqWXweBxIWEzXPUS0=;
+ b=tPQokCRzs9vSmMJkWLRsAW8lUaSddBMx4VEvoYBe5CFvoRbPiBP+QYsYwmPYb+aAm7
+ KZoGsdhL2cuu9u6487ziu7hH0r2gJBD5BM6gXx0QEZm/bxpP5wLzl2X6ow+F/NgYE/ZU
+ 88TZJ9hDK3ZXPVqsD8N2NtYsfWFCoxMzGiXvrYWX/ZDkFbN+hNjiCone0ivVnMuumkoY
+ OodcrCxX5hwKzZPdqU158WkxDJbG1pL1V+k1LFWAy4ywL+ZpiDJgYisJ5nKauOiixm+I
+ YjAe8BLWD7heJ+NQzbIF4m6JkG7Nooy/P4476yCZMLvD4tBiAHQzJ+RrZErSDDrpGBlU
+ GSZA==
+X-Gm-Message-State: AOAM532CP6d6G98gmMkP6DvhkrOIMULqm69M7btqe11bNrdewTzot3A6
+ SFrWV9LQTUW+BGwXwwarUMAbuybd/krX427OYA==
+X-Received: by 2002:a25:8808:: with SMTP id c8mr18042665ybl.159.1590088916644; 
+ Thu, 21 May 2020 12:21:56 -0700 (PDT)
+Date: Thu, 21 May 2020 12:21:27 -0700
+Message-Id: <20200521192133.127559-1-hskinnemoen@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.27.0.rc0.183.gde8f92d652-goog
+Subject: [PATCH 0/6] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC machines
+From: Havard Skinnemoen <hskinnemoen@google.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
+ kfting@nuvoton.com, Havard Skinnemoen <hskinnemoen@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
+ envelope-from=31NTGXgsKCJU6H97CC3BD3C5DD5A3.1DBF3BJ-zGBCDC5CJ.DG5@flex--hskinnemoen.bounces.google.com;
+ helo=mail-yb1-xb4a.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 21 May 2020 16:37:25 -0400
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AR7dhcx9ALmi
 
-Allow use of target-specific Kconfig file.
+This patch series models enough of the Nuvoton NPCM730 and NPCM750 SoCs to boot
+a minimal Linux kernel. This includes device models for:
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
-v3: Use base-arch() to include TARGET_BASE_ARCH/Kconfig
----
- Makefile | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+  - Global Configuration Registers
+  - Clock Control
+  - Timers
 
-diff --git a/Makefile b/Makefile
-index f8a45e1379..d5009cd304 100644
---- a/Makefile
-+++ b/Makefile
-@@ -423,11 +423,13 @@ MINIKCONF_INPUTS = $(SRC_PATH)/Kconfig.host \
-                    $(SRC_PATH)/accel/Kconfig \
-                    $(SRC_PATH)/hw/Kconfig
- MINIKCONF_DEPS = $(MINIKCONF_INPUTS) \
--                 $(wildcard $(SRC_PATH)/hw/*/Kconfig)
-+                 $(wildcard $(SRC_PATH)/hw/*/Kconfig) \
-+                 $(wildcard $(SRC_PATH)/target/*/Kconfig)
- MINIKCONF = $(PYTHON) $(SRC_PATH)/scripts/minikconf.py
- 
- $(SUBDIR_DEVICES_MAK): %/config-devices.mak: default-configs/%.mak $(MINIKCONF_DEPS) $(BUILD_DIR)/config-host.mak
- 	$(call quiet-command, $(MINIKCONF) $(MINIKCONF_ARGS) \
-+		$(wildcard $(SRC_PATH)/target/$(call base-arch, $(firstword $(subst -, ,$@)))/Kconfig) \
- 		> $@.tmp, "GEN", "$@.tmp")
- 	$(call quiet-command, if test -f $@; then \
- 	  if cmp -s $@.old $@; then \
+These modules, along with the existing Cortex A9 CPU cores and built-in
+peripherals, are integrated into a NPCM730 or NPCM750 SoC, which in turn form
+the foundation for the quanta-gsj and npcm750-evb machines, respectively. The
+two SoCs are very similar; the only difference is that NPCM730 is missing some
+peripherals that NPCM750 has, and which are not considered essential for
+datacenter use (e.g. graphics controllers). For more information, see
+
+https://www.nuvoton.com/products/cloud-computing/ibmc/
+
+Both quanta-gsj and npcm750-evb correspond to real boards supported by OpenBMC.
+While this initial series uses a stripped-down kernel for testing, future
+series will be tested using OpenBMC images built from public sources. I'm
+currently putting the finishing touches on flash controller support, which is
+necessary to boot a full OpenBMC image, and will be enabled by the next series.
+
+The patches in this series were developed by Google and reviewed by Nuvoton. We
+will be maintaining the machine and peripheral support together.
+
+The data sheet for these SoCs is not generally available. Please let me know if
+more comments are needed to understand the device behavior.
+
+Thanks for reviewing,
+
+Havard
+
+Havard Skinnemoen (6):
+  npcm7xx: Add config symbol
+  hw/misc: Add NPCM7xx System Global Control Registers device model
+  hw/misc: Add NPCM7xx Clock Controller device model
+  hw/timer: Add NPCM7xx Timer device model
+  hw/arm: Add NPCM730 and NPCM750 SoC models
+  hw/arm: Add two NPCM7xx-based machines
+
+ MAINTAINERS                      |  12 +
+ default-configs/arm-softmmu.mak  |   1 +
+ hw/arm/Kconfig                   |   8 +
+ hw/arm/Makefile.objs             |   1 +
+ hw/arm/npcm7xx.c                 | 328 +++++++++++++++++++++++
+ hw/arm/npcm7xx_boards.c          | 108 ++++++++
+ hw/misc/Makefile.objs            |   2 +
+ hw/misc/npcm7xx_clk.c            | 210 +++++++++++++++
+ hw/misc/npcm7xx_gcr.c            | 160 +++++++++++
+ hw/misc/trace-events             |   8 +
+ hw/timer/Makefile.objs           |   1 +
+ hw/timer/npcm7xx_timer.c         | 437 +++++++++++++++++++++++++++++++
+ hw/timer/trace-events            |   5 +
+ include/hw/arm/npcm7xx.h         |  98 +++++++
+ include/hw/misc/npcm7xx_clk.h    |  65 +++++
+ include/hw/misc/npcm7xx_gcr.h    |  74 ++++++
+ include/hw/timer/npcm7xx_timer.h |  95 +++++++
+ 17 files changed, 1613 insertions(+)
+ create mode 100644 hw/arm/npcm7xx.c
+ create mode 100644 hw/arm/npcm7xx_boards.c
+ create mode 100644 hw/misc/npcm7xx_clk.c
+ create mode 100644 hw/misc/npcm7xx_gcr.c
+ create mode 100644 hw/timer/npcm7xx_timer.c
+ create mode 100644 include/hw/arm/npcm7xx.h
+ create mode 100644 include/hw/misc/npcm7xx_clk.h
+ create mode 100644 include/hw/misc/npcm7xx_gcr.h
+ create mode 100644 include/hw/timer/npcm7xx_timer.h
+
 -- 
-2.21.3
+2.27.0.rc0.183.gde8f92d652-goog
+

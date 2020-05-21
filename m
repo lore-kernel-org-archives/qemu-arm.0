@@ -1,134 +1,151 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1777291lfb;
-        Thu, 21 May 2020 10:33:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx29YunfhIEbqf+ofRj98I4jVk0YYLZr9EI/9g3EWWoOTrN1oTFE6rC/8PbkGWbuZdEXOAj
-X-Received: by 2002:a25:9c04:: with SMTP id c4mr17375579ybo.103.1590082406336;
-        Thu, 21 May 2020 10:33:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590082406; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1835247lfb;
+        Thu, 21 May 2020 11:49:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx5TzJ1nxbWklUpBYrWAog9eFCYeXr8Y7tQFekBP/ECm8qyXC31azF3gfq4TGgaZFW8KPLu
+X-Received: by 2002:a25:787:: with SMTP id 129mr17028347ybh.359.1590086998002;
+        Thu, 21 May 2020 11:49:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590086997; cv=none;
         d=google.com; s=arc-20160816;
-        b=PSwrAX8r4+JTp4M7K/z0PVanpvtGQQkkj5S4xuyCTcNK9PS0rVhrk1HU5gVUd//gyc
-         BX/GhA2UGJ7hVsgqusaEOdWffUvoRRcscNh+KETutA23RNZ+h1YQ7H560nJ5tFoMrzCp
-         e2NyF6uQ8I/9OYRSWuHYV8Jf7Q2I/bCbt8GWBRZ3vY9ydmmZwisWZ5HUi5zekAW0eg7m
-         qTNpJWMXl1U7U0dYmIwhEdRKptyIK8hd6wvrgdkKnP6ZVPkb2MjQu2gjfeXTggqq6uBa
-         Q+Imzl9dyT3TrYDRH4bF7rYHC8SdJvK9od5Tcl5ryxUegQtKanFAYzs5zSFgdGaRrrY1
-         YGkw==
+        b=bbv/B1duOp5qpJTPA8yqStlZYrLpem/x4jms1o96t4ts6Vlzz9/Ds9dQ7q7G04MOk1
+         bmr3Vpf1nB2nauLi8bnEFlSW314R2MQl9mywhpRbe+vTbytjrBKMuxYlUIZmSDAxT6nH
+         rbQ50Zpog89kBOtJuwEwzP2gANcyRLNCL9f8teQyJ9SZkFezwVj9MpTvTzRiKVeuOW5D
+         qdSYY6RKeIV0lXHFybYuIjOJtbwFKvYuS0rdXj/qnNamJ3OI5g/c9RuDA9FJkCn+oABy
+         fnR5qxeyvzGpMHlNcAXV33+jarAG2imMAERDz1SB/mkS/Ua0/3OhhCcrckkg5TZRa2od
+         ZZ6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=OQzcYHoz5Czl27l47Bsn/r0C/ioFvgugtKBDv+ZDzvI=;
-        b=oXGM5jKLC2ug6lqMzpeoSitlus86Y4a4eXrTWfClIv7AhM0k8zd5vXwXQQqegmvYh1
-         RXqQ11tfxiBPOOHbsReGZH4yT/SnZJnHwi0pLhodHbfaY/yaB3jEXK2j4EP6H0oNKWz/
-         9Bf+ualByhtNFwwwsMgpr1zFXyICt5e7QtuIpsHHkcd+kOsb4Ec11sT7j9qDbLhkWLHZ
-         JXn2HwKhMwHsBMnv6iCr7ab0kI3JaBEqAww90wPdSRLIZsNFn/lOZqcFO+ZLFIdEu2hV
-         0WW1BUrnM53qFE2we4ThhdeZrIv6qQ4COnd3q9fPiZtpkK0a/nG1yG936BghHUCyQGM9
-         gNsA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=vg+43JhF462N0nwHUjxtwXluWT7aGYu/k17D/8knOpY=;
+        b=Vl0w7ptrs5zGbW3ll5KgN3VC4JnutODNrYnzrLWKaRMBFQUibtJVjbrObr3hx66oYd
+         j4WVPDl/UvlclB66WSBqDVuyVPiNIG/Hxh/AleK6brzClcQKw28+ItZDYDWTHCpHsxdg
+         YmzuBJ54n6nJt6av67W5TWAxJBgfpgaEqfoTrm2tjJS3pi47mbg0OVJeFbmMzGtsTWvJ
+         lOfd2q8zJ0ApdEvfudBjo8acs3w0r3qugwqKH+09HHhCqBTjnbkQ92UY1xusSciTNiu5
+         IpnGODcLZ0bwNoaxXsfT9rhB4G/ZduAixuNWoq+/jHfycMqjBVe2QbFnnGs9TqNBmAM/
+         O7QQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LyAq5mq2;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by mx.google.com with ESMTPS id y145si5633090yby.457.2020.05.21.10.33.26
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tRQ4Ki5S;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r206si5498549ybc.378.2020.05.21.11.49.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 May 2020 10:33:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 21 May 2020 11:49:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LyAq5mq2;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1590082405;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=OQzcYHoz5Czl27l47Bsn/r0C/ioFvgugtKBDv+ZDzvI=;
-	b=LyAq5mq27bLA52mwJjTDZ71+oZ5nyZ+wO5p6KpYn6lkq9z6nfqgtsDqY8CMinEd0c7M8KA
-	9OJO5Y6lSOOPAVb+yIYr/6rbQULThkvMH8wb6dNZsPuxV70+pCbqJsEArnTXHUFpQMNZUj
-	fRBEd+SZ6il0BZRrVo5lrKrPDWzYoXc=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-410-Pmirb7dTO2GfDQN1g0DXZQ-1; Thu, 21 May 2020 13:33:23 -0400
-X-MC-Unique: Pmirb7dTO2GfDQN1g0DXZQ-1
-Received: by mail-wr1-f71.google.com with SMTP id r7so3204182wrc.13
-        for <alex.bennee@linaro.org>; Thu, 21 May 2020 10:33:22 -0700 (PDT)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tRQ4Ki5S;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:60622 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jbqGT-0004xz-Af
+	for alex.bennee@linaro.org; Thu, 21 May 2020 14:49:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57446)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <e.mikitas@gmail.com>)
+ id 1jbqGG-0004vP-FP; Thu, 21 May 2020 14:49:44 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:53130)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <e.mikitas@gmail.com>)
+ id 1jbqGF-00008f-JA; Thu, 21 May 2020 14:49:43 -0400
+Received: by mail-wm1-x343.google.com with SMTP id z4so6454259wmi.2;
+ Thu, 21 May 2020 11:49:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=vg+43JhF462N0nwHUjxtwXluWT7aGYu/k17D/8knOpY=;
+ b=tRQ4Ki5SKHdqbeJZ0S67QSYStq8Z/eTzINOJpHD10h/OiAlPXnXzYfYLOrhPiK6Vvw
+ DBD4Wd9XaLzuuZceeUBbFdRzqoDma5HpuTXpDv38Q/C82Ch1PY9SzVp8OG0TDPBkBV00
+ 1daUVnQ+8AGTY2soRxgi0c2CLtyT8hosxUzEV5uBHb1CNvowWUHpQlqQ9t3UIib4clI9
+ XZrLlJTlNgegXZfwpLJum1nlRZl8iGwg1KLb/pYgRl6zFHlWLDqud9Mr+p0ydLwhzy0M
+ Ufd3/l9bngW7FCE2ZjABhIW8pPOT+A2OFxTap15TqjzROMBYKqROfDwSk1Tyd5wYGCeu
+ DvOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=OQzcYHoz5Czl27l47Bsn/r0C/ioFvgugtKBDv+ZDzvI=;
-        b=MOkmXoHPhMv5TlUUPDFMHZJ1X6ylaqz2+dpE8DcG/KkjUXke+hcLxal9k0xN0ndjJK
-         V1xMJJti+4fIqhVCY4mUpE89rAcZfzG2SRaf49MiXrovGCHr7ESFdSGbbcON1bGWJi62
-         j5Xk//EWQPlnoB5Z2lV5o4SE5u/2+KhD1MTTU5NPSZ+5g0xDmvcmKzzX2+ghqv4S4xCf
-         eGSOlzqRbTKFqu2yRY595rJeC7z2x75W79iz90X+xJSHYqXGwCmpmSxra6QVhaq0zHPz
-         Cb4DyWUNv4yIKvExAHP9RXCGeiy6sktrY5vU/2VvGW9ZZU2YdMGCCW9vfh8tMFalknIi
-         ++gw==
-X-Gm-Message-State: AOAM532mrTUM3RbmDZtBBCCvGtIus0RXRzyj1Q0MGcNv0WWuutlGM2Lg
-	YoyRVzZAITjvM8fUvF/FJARJDzjztmY4U2Hfet189v54S8x5T8ww5nxXj8V4QSxfNlYNtno2kT8
-	Z7ISBTLsqOKojKVrNMX4+KOB/xmwBZpUf
-X-Received: by 2002:adf:ea90:: with SMTP id s16mr9308879wrm.19.1590082401885;
-        Thu, 21 May 2020 10:33:21 -0700 (PDT)
-X-Received: by 2002:adf:ea90:: with SMTP id s16mr9308857wrm.19.1590082401656;
- Thu, 21 May 2020 10:33:21 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200515170804.5707-1-philmd@redhat.com> <20200515170804.5707-10-philmd@redhat.com>
-In-Reply-To: <20200515170804.5707-10-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Date: Thu, 21 May 2020 19:33:10 +0200
-Message-ID: <CAP+75-WA8mDfBHkUtHvz_q3n__CH-XmKA-Jf92FHFFOQR4oUFQ@mail.gmail.com>
-Subject: Re: [PATCH v2 09/10] Makefile: Allow target-specific optional Kconfig
-To: QEMU Developers <qemu-devel@nongnu.org>
-Cc: Max Filippov <jcmvbkbc@gmail.com>, Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>, 
-	Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis <Alistair.Francis@wdc.com>, 
-	Sagar Karandikar <sagark@eecs.berkeley.edu>, Richard Henderson <rth@twiddle.net>, 
-	qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Chris Wulff <crwulff@gmail.com>, "open list:RISC-V" <qemu-riscv@nongnu.org>, 
-	Laurent Vivier <laurent@vivier.eu>, Thomas Huth <thuth@redhat.com>, 
-	Peter Maydell <peter.maydell@linaro.org>, 
-	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, 
-	Marek Vasut <marex@denx.de>, Michael Walle <michael@walle.cc>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: cbYY3Sl5WgBZ
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=vg+43JhF462N0nwHUjxtwXluWT7aGYu/k17D/8knOpY=;
+ b=sKw1c+yyfXJaIR8aS0AQQ4KugNXWKh8/IDZXlgQ8GvynaCyQ40Pg+NqUp5W1QCnXyf
+ NfwHPtniMPpXsvYuZkrFv/hOuD0zweTd+HSzxU1hvd2JLuHsT9IJ/N1nBOS3nxDSVy6T
+ biwQi0nMLJtzeNqzXddS/ZGbBECurB8sYbcn6/MG46vV551cuN0bU7AnLDFlmooRxmVe
+ R5qGSbZTUbYr7u9+LDgtPjbglbNQJXJYI+6mAY59cuuUxz7wSsbjyUi1BomXp/JKYCM9
+ TYtYfnsjzQLocbDcEpfOQ0vIrMu4CKkeR5Yxa6vGcZA2nUE/ydTLo4eREjYT5pHpq5Gi
+ +OQw==
+X-Gm-Message-State: AOAM530vEJDf+7QQXE1632PeveW5AfCleTkuSi1IzFPeKUK+kic9pcyz
+ pmMwNnakjG2oJnX7TTcEzFY=
+X-Received: by 2002:a1c:b604:: with SMTP id g4mr9829829wmf.103.1590086981015; 
+ Thu, 21 May 2020 11:49:41 -0700 (PDT)
+Received: from eden-linux.lan (bzq-109-66-59-205.red.bezeqint.net.
+ [109.66.59.205])
+ by smtp.gmail.com with ESMTPSA id g69sm2590022wmg.15.2020.05.21.11.49.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 21 May 2020 11:49:40 -0700 (PDT)
+From: Eden Mikitas <e.mikitas@gmail.com>
+To: peter.maydell@linaro.org
+Subject: Re: [PATCH] ssi/imx_spi: Removed unnecessary cast and fixed condition
+ in while statement
+Date: Thu, 21 May 2020 21:49:23 +0300
+Message-Id: <20200521184923.19360-1-e.mikitas@gmail.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <CAFEAcA_i=HsBtpJh_o4+NWNeUihvNTccfB67gs0WrXttYdTc2A@mail.gmail.com>
+References: <CAFEAcA_i=HsBtpJh_o4+NWNeUihvNTccfB67gs0WrXttYdTc2A@mail.gmail.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=e.mikitas@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-trivial@nongnu.org, alistair@alistair23.me, qemu-devel@nongnu.org,
+ jcd@tribudubois.net, qemu-arm@nongnu.org, peter.chubb@nicta.com.au,
+ e.mikitas@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QCbGrhEtsjJH
 
-On Fri, May 15, 2020 at 7:08 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> Allow use of target-specific Kconfig file.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  Makefile | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->
-> diff --git a/Makefile b/Makefile
-> index b4c0830b26..5fce168fcb 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -423,11 +423,13 @@ MINIKCONF_INPUTS =3D $(SRC_PATH)/Kconfig.host \
->                     $(SRC_PATH)/accel/Kconfig \
->                     $(SRC_PATH)/hw/Kconfig
->  MINIKCONF_DEPS =3D $(MINIKCONF_INPUTS) \
-> -                 $(wildcard $(SRC_PATH)/hw/*/Kconfig)
-> +                 $(wildcard $(SRC_PATH)/hw/*/Kconfig) \
-> +                 $(wildcard $(SRC_PATH)/target/*/Kconfig)
->  MINIKCONF =3D $(PYTHON) $(SRC_PATH)/scripts/minikconf.py
->
->  $(SUBDIR_DEVICES_MAK): %/config-devices.mak: default-configs/%.mak $(MIN=
-IKCONF_DEPS) $(BUILD_DIR)/config-host.mak
->         $(call quiet-command, $(MINIKCONF) $(MINIKCONF_ARGS) \
-> +               $(wildcard $(SRC_PATH)/target/$(firstword $(subst -, ,$@)=
-)/Kconfig) \
+The ecspi controller is supposed to support burst length of 1 to 4096 bits,
+meaning it is possible to configure it to use a value that isn't a multiple
+of 8 (to my understanding). In that case, since tx_burst is always
+decremented by 8, it will underflow. Sorry I didn't include an explanation.
+Should I resubmit the patch?
 
-This is incorrect, $@ is a $TARGET_ARCH (example aarch64) and we want
-to include $TARGET_BASE_ARCH (example arm).
+>
+> >              DPRINTF("writing 0x%02x\n", (uint32_t)byte);
+> > @@ -206,7 +206,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+> >          if (fifo32_is_full(&s->rx_fifo)) {
+> >              s->regs[ECSPI_STATREG] |= ECSPI_STATREG_RO;
+> >          } else {
+> > -            fifo32_push(&s->rx_fifo, (uint8_t)rx);
+> > +            fifo32_push(&s->rx_fifo, rx);
+> >          }
+> >
+> >          if (s->burst_length <= 0) {
+>
+> This seems like a separate change to the first one;
+> in general unrelated changes should be each in their
+> own patch, rather than combined into a single patch.
 
->                 > $@.tmp, "GEN", "$@.tmp")
->         $(call quiet-command, if test -f $@; then \
->           if cmp -s $@.old $@; then \
-> --
-> 2.21.3
+Should I resubmit this as a patch?
+
+>
+> The fifo32_push() part of this change looks correct to me.
+>
+> thanks
+> -- PMM
 >

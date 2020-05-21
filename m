@@ -1,173 +1,215 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1735667lfb;
-        Thu, 21 May 2020 09:42:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyYh1YRgZHNLCWSNEKRFVrqT1VVfirHN0QyhrEsi/6fF+iiPfwahAsa2FYYKH2t59GjQA6D
-X-Received: by 2002:a25:bd8f:: with SMTP id f15mr17242169ybh.96.1590079337663;
-        Thu, 21 May 2020 09:42:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590079337; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1736659lfb;
+        Thu, 21 May 2020 09:43:39 -0700 (PDT)
+X-Received: by 2002:a0c:e9c9:: with SMTP id q9mr10621946qvo.215.1590079419212;
+        Thu, 21 May 2020 09:43:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590079419; cv=none;
         d=google.com; s=arc-20160816;
-        b=ETJepAYVxPS2gPiWEZVOwfI8nWLnsiCjHAz2qJGHEa1d22R6VkYm7VCrhNoVgOXSyp
-         FeN+IT6f0t5GT7Y5O0QyFgwvgqkLBmUD2BWptyn5Dlj70En/JNd3DOb8TLON5/j3uZQF
-         7WrYDC0UF2TRO8OqhtWLDe56dLsdNBDBe/9XxYQ4FJniiLIkVNtv8UfR+I1XceGMnlpy
-         ar5kekHwvt2Y2PUb4cuSoo93dT8B0os0mXBsZwjiG/htleWpk8gsHjTvACsx53aioNKg
-         vgWQTBqyOVzXEOVlO1kz1KQZA35uohxzM4Ts4AENjZj5xdz/20YR5II3eOrQR+H8TD07
-         6V4w==
+        b=a9jekxBZfXLOOXjA3V0eJkXaVOjpt6ihrSUlMlbgT3HqNEbrQB/bYKeVw4+mDriiEZ
+         jOVpLxBY7lPuV6z4LIs/0out0Mbsysh/+BBKtSvLmRgV2ZCoLe1iVGpSV+ViYA/DIrUF
+         lv5U1RNlj2xm0PfV7CCfbbiBHMyMiKRFrtOKnOcrZaF+woOTJiHwG0k2GHzo0pJno42o
+         xFbOoyJe3br85XCATAWVgmHHx7tVj1aB5AmR3TJu56pFYrsQHC5x03LpmG+gRVy/d2Nj
+         gcw8ub5+KZUMgqArfe9/+fnuvo1QxA/oaV/tazLGhoVlX9U0q+1811T3NVKMNSF5cDh9
+         J4UA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=8E/poLvZzRLPdzPli9ukalkP/v2cZkBvpmdtH4RI/Xw=;
-        b=Q1647ahWHh2cLmjy4Hy5SUpbs1EYs4myx/XuIG6DMMcJX5nq1VlvOUiVlW1y781B/X
-         DDPfIYfP9pOARXmI131sNVUbyFySRI0k5pD5p5P6udROnACZE5pED+HVmf4HuHUwj12L
-         z/5HALxnbKIwDlImYngH4PhYnI8Fxd2cDdr977MK4KCGwEaB+rOH4ZL7CKx8r1M6dxI8
-         fu1hoTTSfIDJ0zRZ00F405dtlChLLYbvzi15SYHK1Te6aUNnZtywsRRxeZsYwkQXBUik
-         8D9Li1/rx2ZogEgkZQNmu1+Gar+tVJXEOqwvStlYdzf5O3dUQy33nLgsd7+WQpjG8QOh
-         c7sQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=dMJD65Hlj8sZEjsVc6zG0Ir/AhvAmDKltVf3k3r4CgY=;
+        b=vIeNPpPGQgbLh9v3X5/q136N4t291u8Lg8hprq5zB/T7J+xT17zbdrwPytz4dLxsmz
+         d1jl8SAYGfE+vb5FWypxXkpViyalcYzPYc0HAik4hwByL94tY/W9X0lWNQd38Hr53j8t
+         wgOwaZoOn29eX9Kd/aHEaUTSSoyQIeh8TheyWFzmyR+i81aGPWBR03NLupq+Jt3NZF0+
+         48onwxC6g6+3IQdZYBe+Gz6ZstDFbFw4Sa3U+A1EZPYs9bJ83M9uLN9z4ipLSwJ0rDVb
+         fM3WnGmr4RflfvYUOrqMnFHqMjNdeAItIL96zj/VNfDcjbPf5AyqZb1T64Zsr2y4xd1M
+         bNgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eZyh2Eor;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c9si5494899ybq.416.2020.05.21.09.42.17
+       dkim=pass header.i=@linaro.org header.s=google header.b=qxolO3NH;
+       spf=pass (google.com: domain of robert.foley@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=robert.foley@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <robert.foley@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id u5sor8654909qvt.54.2020.05.21.09.43.39
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 May 2020 09:42:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 21 May 2020 09:43:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of robert.foley@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eZyh2Eor;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46830 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jboGv-0000Ky-1C
-	for alex.bennee@linaro.org; Thu, 21 May 2020 12:42:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49530)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jboGn-0000K6-Rk
- for qemu-arm@nongnu.org; Thu, 21 May 2020 12:42:09 -0400
-Received: from mail-oo1-xc42.google.com ([2607:f8b0:4864:20::c42]:45845)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jboGm-0006Cs-0E
- for qemu-arm@nongnu.org; Thu, 21 May 2020 12:42:09 -0400
-Received: by mail-oo1-xc42.google.com with SMTP id p123so1559523oop.12
- for <qemu-arm@nongnu.org>; Thu, 21 May 2020 09:42:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8E/poLvZzRLPdzPli9ukalkP/v2cZkBvpmdtH4RI/Xw=;
- b=eZyh2EoreYs9k+rK4XeDxZjRuLGsib1jv0W4KOn56jGEojb40/3eb50axs3BMKnQPM
- 6XbixvXJO3pPXEB9VDCg+vPsG1P/CGC0RjEPRxX8M/60v8fjL638Fnu72hQQcFvsRg2+
- 5M1ag/fFMd59yYu+cf3e5q2WoWBd3unUcPpwG2LxUhcsQH7atfUzMZYjbm6mu/p8qkZR
- XllEVAN6urSoeUif2kWQzcKkmNv5ZHcuRsReMAHNYGzNHMs360jE9GxWispRTPPeOJ/Y
- Ml9go81xBH8Xt6JCm3UrtqdYzDubzKURrGDcnzXhbSotjP/lcmPBOki+k7g72y4czfhp
- dWrw==
+       dkim=pass header.i=@linaro.org header.s=google header.b=qxolO3NH;
+       spf=pass (google.com: domain of robert.foley@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=robert.foley@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=dMJD65Hlj8sZEjsVc6zG0Ir/AhvAmDKltVf3k3r4CgY=;
+        b=qxolO3NHBjbuWSRVm36ecn5krJ1xJDM5MsGZe5bSWEmRz2qykCI/o2yo/NPfJ3CxQP
+         UqPRK/+HK3cnZax4qIl/EXV5PqZd/zWzN9uyUetgiB/7NayvCslb5KR2+jKttR6Flm2o
+         oXT0VevNgkoD14jUvTXvMbjiDA++0c8Oxv6GGAMV8JWe2+MxNWrBAx2195PKKvY0FGUv
+         PG/n6uqVOMcQO9T4xYRpIRjbIaoyaCYpJzMPk/pkLqj/XsNniKiEmGjm9TwiyZqI64dO
+         BBWUZDbpuiCo6+JCd2RC0lsYhp/6YKmL9IeXLsLkxmkzObsyg3H/Y7sf+uHiLQXhrWbv
+         7/sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=8E/poLvZzRLPdzPli9ukalkP/v2cZkBvpmdtH4RI/Xw=;
- b=KffpYez77KJFLd/iv80QX95CFv7R3K8Ez+1OP4oDaFH1BmXElUtZOiF7Q3PeGcxSx4
- 5QP3NPa2UEJdxnfylm1zdbK13wKiu1r1b+LUEonjpkBqLLrotX0oXaCNb/WdV9tCWDvR
- LD2XaOwpVXtIW+I35HPYhz7q4hXqyKXAvHOpSjxmO8LL9K9yzjLNNqn8VjQsSFwn8+IE
- HIaWb4kK8OWepb/f3yKcHi1AQUF4JUSG7kV+4iNOnmPaloUqIBe1SqttoZyWYhwjPCcw
- j8tpvPFhrbIYD34R0oFCKWffnrtNcOCOjeQ3pFLJe3tS3WiMi15eUss17blCAKl4zZSj
- SZUg==
-X-Gm-Message-State: AOAM5330FlK8T7ak3nbvoeOJCsBT6YIdiaoZz5OoHIqNRcpzdT/7M5K2
- g2VtD3Myjpd12iu4SKZSjBSC7PtEHY/zTAnOZAeA/w==
-X-Received: by 2002:a4a:3556:: with SMTP id w22mr7967412oog.20.1590079326635; 
- Thu, 21 May 2020 09:42:06 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=dMJD65Hlj8sZEjsVc6zG0Ir/AhvAmDKltVf3k3r4CgY=;
+        b=VEZREgIgb8D3ld9Kd1ityaUdoGGev5ZmTrKGcPWAYVIEcOTNweO7JjaA33+qV9Cohq
+         LwZJJNK8cTCSi/gm6lZGXkcEoqNXEIwPBV/2t7Gorqwt+bajtgLcqjXfZs8MD6UZHLLJ
+         5+VH1jhKxwSwoKpWINZVEn4ZdWH0kmYtZCTGbh18ArXksPeP62GfayHBKhhwS5S1qUV3
+         80LjP6aUIYkkvbz9gbDc8DFBOMsNM+avsd/IBbJhWRkqPayydIsWR9QcQwI5I4RrGqR2
+         QeNPMueu59DM372b2ZCcqfkdZEh4dK11/qzwqV4LOQBTZCwKHNvR/yMBV2PkgvKbp46s
+         BIpw==
+X-Gm-Message-State: AOAM5334td+lQFWXHdASM/ggc+PunrDP587ods9ePJsOdZJSFvjBbff6
+	rp0dBjrV3k/WBjmYhK42YrQAs1jK
+X-Google-Smtp-Source: ABdhPJzU6+L9m9eKgmFy4T2CpzBwZGdFhnu+SPFlwBxgP8YjJY+IKwveBx7QWv1alWwOabyJgBzpMA==
+X-Received: by 2002:a0c:f590:: with SMTP id k16mr11076855qvm.81.1590079418769;
+        Thu, 21 May 2020 09:43:38 -0700 (PDT)
+Return-Path: <robert.foley@linaro.org>
+Received: from Rfoley-MA01.hsd1.ma.comcast.net ([2601:199:4480:60c0:1944:c530:655c:5583])
+        by smtp.gmail.com with ESMTPSA id x24sm5923829qth.57.2020.05.21.09.43.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 May 2020 09:43:37 -0700 (PDT)
+From: Robert Foley <robert.foley@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: alex.bennee@linaro.org,
+	richard.henderson@linaro.org,
+	cota@braap.org,
+	peter.puhov@linaro.org,
+	robert.foley@linaro.org,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
+Subject: [PATCH v9 18/74] arm: convert to cpu_halted
+Date: Thu, 21 May 2020 12:39:15 -0400
+Message-Id: <20200521164011.638-19-robert.foley@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200521164011.638-1-robert.foley@linaro.org>
+References: <20200521164011.638-1-robert.foley@linaro.org>
 MIME-Version: 1.0
-References: <20200520143255.27235-1-e.mikitas@gmail.com>
-In-Reply-To: <20200520143255.27235-1-e.mikitas@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 May 2020 17:41:55 +0100
-Message-ID: <CAFEAcA_i=HsBtpJh_o4+NWNeUihvNTccfB67gs0WrXttYdTc2A@mail.gmail.com>
-Subject: Re: [PATCH] ssi/imx_spi: Removed unnecessary cast and fixed condition
- in while statement
-To: Eden Mikitas <e.mikitas@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c42;
- envelope-from=peter.maydell@linaro.org; helo=mail-oo1-xc42.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- "open list:i.MX31 \(kzm\)" <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AJ2yLn0tWvde
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: lN4XddElqkWu
 
-On Wed, 20 May 2020 at 15:33, Eden Mikitas <e.mikitas@gmail.com> wrote:
-> When inserting the value retrieved (rx) from the spi slave, rx is pushed to
-> rx_fifo after being cast to uint8_t. rx_fifo is a fifo32, and the rx
-> register the driver uses is also 32 bit. This zeroes the 24 most
-> significant bits of rx. This proved problematic with devices that expect to
-> use the whole 32 bits of the rx register.
-> I tested this change by running `make check` and by booting linux on
-> sabrelite (which uses an spi flash device).
->
-> Signed-off-by: Eden Mikitas <e.mikitas@gmail.com>
-> ---
->  hw/ssi/imx_spi.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-> index 2dd9a631e1..43b2f14dd2 100644
-> --- a/hw/ssi/imx_spi.c
-> +++ b/hw/ssi/imx_spi.c
-> @@ -182,7 +182,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
->
->          rx = 0;
->
-> -        while (tx_burst) {
-> +        while (tx_burst > 0) {
->              uint8_t byte = tx & 0xff;
+From: "Emilio G. Cota" <cota@braap.org>
 
-When does this make a difference? Looking at the code
-I don't think tx_burst can ever be negative at this
-point, in which case the two conditions are equivalent.
-What was the motivation for this change?
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Emilio G. Cota <cota@braap.org>
+Signed-off-by: Robert Foley <robert.foley@linaro.org>
+---
+ hw/arm/omap1.c            | 4 ++--
+ hw/arm/pxa2xx_gpio.c      | 2 +-
+ hw/arm/pxa2xx_pic.c       | 2 +-
+ target/arm/arm-powerctl.c | 6 +++---
+ target/arm/cpu.c          | 2 +-
+ target/arm/op_helper.c    | 2 +-
+ 6 files changed, 9 insertions(+), 9 deletions(-)
 
->              DPRINTF("writing 0x%02x\n", (uint32_t)byte);
-> @@ -206,7 +206,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
->          if (fifo32_is_full(&s->rx_fifo)) {
->              s->regs[ECSPI_STATREG] |= ECSPI_STATREG_RO;
->          } else {
-> -            fifo32_push(&s->rx_fifo, (uint8_t)rx);
-> +            fifo32_push(&s->rx_fifo, rx);
->          }
->
->          if (s->burst_length <= 0) {
-
-This seems like a separate change to the first one;
-in general unrelated changes should be each in their
-own patch, rather than combined into a single patch.
-
-The fifo32_push() part of this change looks correct to me.
-
-thanks
--- PMM
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index 761cc17ea9..83b1d63f27 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
+@@ -1776,7 +1776,7 @@ static uint64_t omap_clkdsp_read(void *opaque, hwaddr addr,
+     case 0x18:	/* DSP_SYSST */
+         cpu = CPU(s->cpu);
+         return (s->clkm.clocking_scheme << 11) | s->clkm.cold_start |
+-                (cpu->halted << 6);      /* Quite useless... */
++                (cpu_halted(cpu) << 6);      /* Quite useless... */
+     }
+ 
+     OMAP_BAD_REG(addr);
+@@ -3797,7 +3797,7 @@ void omap_mpu_wakeup(void *opaque, int irq, int req)
+     struct omap_mpu_state_s *mpu = (struct omap_mpu_state_s *) opaque;
+     CPUState *cpu = CPU(mpu->cpu);
+ 
+-    if (cpu->halted) {
++    if (cpu_halted(cpu)) {
+         cpu_interrupt(cpu, CPU_INTERRUPT_EXITTB);
+     }
+ }
+diff --git a/hw/arm/pxa2xx_gpio.c b/hw/arm/pxa2xx_gpio.c
+index f8df3cc227..23b4a06a4f 100644
+--- a/hw/arm/pxa2xx_gpio.c
++++ b/hw/arm/pxa2xx_gpio.c
+@@ -132,7 +132,7 @@ static void pxa2xx_gpio_set(void *opaque, int line, int level)
+         pxa2xx_gpio_irq_update(s);
+ 
+     /* Wake-up GPIOs */
+-    if (cpu->halted && (mask & ~s->dir[bank] & pxa2xx_gpio_wake[bank])) {
++    if (cpu_halted(cpu) && (mask & ~s->dir[bank] & pxa2xx_gpio_wake[bank])) {
+         cpu_interrupt(cpu, CPU_INTERRUPT_EXITTB);
+     }
+ }
+diff --git a/hw/arm/pxa2xx_pic.c b/hw/arm/pxa2xx_pic.c
+index 203d4d28af..057448c2ed 100644
+--- a/hw/arm/pxa2xx_pic.c
++++ b/hw/arm/pxa2xx_pic.c
+@@ -58,7 +58,7 @@ static void pxa2xx_pic_update(void *opaque)
+     PXA2xxPICState *s = (PXA2xxPICState *) opaque;
+     CPUState *cpu = CPU(s->cpu);
+ 
+-    if (cpu->halted) {
++    if (cpu_halted(cpu)) {
+         mask[0] = s->int_pending[0] & (s->int_enabled[0] | s->int_idle);
+         mask[1] = s->int_pending[1] & (s->int_enabled[1] | s->int_idle);
+         if (mask[0] || mask[1]) {
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index b75f813b40..f0db413519 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -64,7 +64,7 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
+ 
+     /* Initialize the cpu we are turning on */
+     cpu_reset(target_cpu_state);
+-    target_cpu_state->halted = 0;
++    cpu_halted_set(target_cpu_state, 0);
+ 
+     if (info->target_aa64) {
+         if ((info->target_el < 3) && arm_feature(&target_cpu->env,
+@@ -241,7 +241,7 @@ static void arm_set_cpu_on_and_reset_async_work(CPUState *target_cpu_state,
+ 
+     /* Initialize the cpu we are turning on */
+     cpu_reset(target_cpu_state);
+-    target_cpu_state->halted = 0;
++    cpu_halted_set(target_cpu_state, 0);
+ 
+     /* Finally set the power status */
+     assert(qemu_mutex_iothread_locked());
+@@ -297,7 +297,7 @@ static void arm_set_cpu_off_async_work(CPUState *target_cpu_state,
+ 
+     assert(qemu_mutex_iothread_locked());
+     target_cpu->power_state = PSCI_OFF;
+-    target_cpu_state->halted = 1;
++    cpu_halted_set(target_cpu_state, 1);
+     target_cpu_state->exception_index = EXCP_HLT;
+ }
+ 
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 32bec156f2..dc435a18a1 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -175,7 +175,7 @@ static void arm_cpu_reset(DeviceState *dev)
+     env->vfp.xregs[ARM_VFP_MVFR2] = cpu->isar.mvfr2;
+ 
+     cpu->power_state = cpu->start_powered_off ? PSCI_OFF : PSCI_ON;
+-    s->halted = cpu->start_powered_off;
++    cpu_halted_set(s, cpu->start_powered_off);
+ 
+     if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
+         env->iwmmxt.cregs[ARM_IWMMXT_wCID] = 0x69051000 | 'Q';
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index eb0de080f1..88c86a4346 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -305,7 +305,7 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
+     }
+ 
+     cs->exception_index = EXCP_HLT;
+-    cs->halted = 1;
++    cpu_halted_set(cs, 1);
+     cpu_loop_exit(cs);
+ }
+ 
+-- 
+2.17.1

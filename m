@@ -1,138 +1,199 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp706685lfb;
-        Wed, 20 May 2020 08:56:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxcdL1kqQF1gCp86WIaKVFkkJhP2dUiQuFVQyjzwKxJya0qWwO1pc19/goXrnGDcjG/Uiu4
-X-Received: by 2002:a37:bd81:: with SMTP id n123mr5166350qkf.57.1589990180503;
-        Wed, 20 May 2020 08:56:20 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1332057lfb;
+        Thu, 21 May 2020 00:59:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz483+IhC8k5i9/QqIbtZlPM1j3Jtf4NxfK/sBQ0xHsxy8Qx0bFSP4rRTmbHRiIIOtqX1r+
+X-Received: by 2002:a0c:f388:: with SMTP id i8mr9172804qvk.124.1590047965539;
+        Thu, 21 May 2020 00:59:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590047965; cv=none;
+        d=google.com; s=arc-20160816;
+        b=T67ryEH5pzwKi3Bn+O15VZGM7wWoW42dX/MiyeK7+63FGskE0lz9gw6oVMVapKMDQx
+         GxlZ16WVUnR4HvKU5n49eRbNkI0ndzHbvU1p8HXxXtBtrfOJIEumwIDyGdYzx3X1W/Dv
+         /CBm2EuzAcrXHSRP7fZN7dFHIhRMF19Ur8CRJU+uZetA/6O6tRVDHnGbHsZG7DetNxQn
+         9ORiaFZKiR//giuLv36HhgDF31L/egrfaq20N0+Q6t2ue6Y0kI69CEGzMd2zGlnIFw1d
+         1TMwhugBwSiAwg5DBPpl7dWjfxu1guoav0MHXI4+HFDHOFEzEwDoSlYfZscwd3zzN94w
+         2PpQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=57YaKa9BHFEUtBziFfUy/l9IGUB153INf5Tvp3kpsqc=;
+        b=XdlnSMmqWQpVCRh9NOuhONYac3GMrA6yCSTeDaL+eP4cdGoY/N2vQTp2V0rfPkVMmY
+         YpVoPUXbvNBxBLj4b7+4WoRYhmCq1k4c1F2KgVFrVyvrzGaNDcExdrQO4RwDKIXaaaX7
+         f0MXINTxmLquTrbMzGKWXXiiA45towxwoIGI+p+QZXKcLqouU2UX1nVpcUlnGE/6vhzL
+         HJQKZMJ1+9WO0RghD3ZF5/zVC/RxVDsNAcJ3/zMVU2JYkZbC+BCLH/rGljUj+pbzkeZ8
+         /jmiSFqhNR+HdcqVswKF5v/BF8C1sESA5VZ4A0DfWqQ1/M1EZe1TluymKyIXp3X/pWyz
+         CCIA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jSZIiFZT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q40si1808423qtb.354.2020.05.20.08.56.20
+        by mx.google.com with ESMTPS id 20si3124231qkf.237.2020.05.21.00.59.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 May 2020 08:56:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 21 May 2020 00:59:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59710 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jSZIiFZT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43280 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jbR4t-0003cz-Ui
-	for alex.bennee@linaro.org; Wed, 20 May 2020 11:56:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42210)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jbg6v-000582-1c
+	for alex.bennee@linaro.org; Thu, 21 May 2020 03:59:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49368)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jbR2i-00083E-CE; Wed, 20 May 2020 11:54:04 -0400
-Resent-Date: Wed, 20 May 2020 11:54:04 -0400
-Resent-Message-Id: <E1jbR2i-00083E-CE@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21783)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1jbg6o-00057a-VV
+ for qemu-arm@nongnu.org; Thu, 21 May 2020 03:59:18 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:42742
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jbR2g-0001Hj-JU; Wed, 20 May 2020 11:54:04 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1589990031; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=gxoIY6Cty2fNGCjMW6sTd4pRms56rPkP2fEIL6pSHRQJPf9GBxtAv4j7QKhScEd5QnI5akBD/+vku6YZMu3dt91JBL0JKTEb1gpAxBIhZ58Ye4hQOR95FbRMwJvmajAWNOUMltVdC/5Vja3mv89QvwO6hkTxoDUFx9CzI/CsoQM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1589990031;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=tx6wVHsfw7OS+dFxLj6lZFIgNEjVcIm6KlEK7Sgzo64=; 
- b=NrFpNn8In5YWCnV2xJbewUkPdwx066YOidFuzooSLT/GIQW0NO+U4BqFM3sn5u6NpAfE7mcyF9oLGqhHpAAAb/ldX+nVRNipHFpJvAkFbjCXiu85e/hJYvA4K9c198cPLFSCO2gVKKWv5vZ2euf5KZEuS9t8PRstFL2SKadWzuo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1589990029173269.8900933964204;
- Wed, 20 May 2020 08:53:49 -0700 (PDT)
-Message-ID: <158999002740.28633.15086035982719918736@45ef0f9c86ae>
-In-Reply-To: <20200520132003.9492-1-kraxel@redhat.com>
-Subject: Re: [PATCH v3 00/22] microvm: add acpi support
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1jbg6o-0000ZG-8o
+ for qemu-arm@nongnu.org; Thu, 21 May 2020 03:59:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590047956;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=57YaKa9BHFEUtBziFfUy/l9IGUB153INf5Tvp3kpsqc=;
+ b=jSZIiFZTYGDPqmuZIC+lRaCqQ+obfof6pLOu0w47KJArhuzvEeAXytAGLFlK2PXcnGhtLH
+ XG2rzQnTFlaOtNmfFmmIQRFwrB6FQakqPiL6Is9dyZ/8H43w/uqxn4mJTSTsBVH6ckDD71
+ HWvjSj78Y0Oc2+MxLu0z5dLbmT5e2ds=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-144-1IXsag8KPb6BdouentaxGA-1; Thu, 21 May 2020 03:59:13 -0400
+X-MC-Unique: 1IXsag8KPb6BdouentaxGA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E8063107ACCA;
+ Thu, 21 May 2020 07:59:11 +0000 (UTC)
+Received: from nas.mammed.net (unknown [10.40.193.252])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6167B5C1B0;
+ Thu, 21 May 2020 07:59:01 +0000 (UTC)
+Date: Thu, 21 May 2020 09:58:59 +0200
+From: Igor Mammedow <imammedo@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [PATCH v3 09/22] acpi: ged: rename event memory region
+Message-ID: <20200521095859.45791508@nas.mammed.net>
+In-Reply-To: <20200520132003.9492-10-kraxel@redhat.com>
+References: <20200520132003.9492-1-kraxel@redhat.com>
+ <20200520132003.9492-10-kraxel@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: kraxel@redhat.com
-Date: Wed, 20 May 2020 08:53:49 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/20 11:46:47
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/21 00:43:26
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, slp@redhat.com,
- mst@redhat.com, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, kraxel@redhat.com, imammedo@redhat.com,
- pbonzini@redhat.com, rth@twiddle.net
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JPzNpXI2yYGc
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LlmNU0STyIQx
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDUyMDEzMjAwMy45NDky
-LTEta3JheGVsQHJlZGhhdC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRoZSBkb2Nr
-ZXItbWluZ3dAZmVkb3JhIGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5nIGNvbW1h
-bmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0YWxsZWQs
-IHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBTQ1JJUFQg
-QkVHSU4gPT09CiMhIC9iaW4vYmFzaApleHBvcnQgQVJDSD14ODZfNjQKbWFrZSBkb2NrZXItaW1h
-Z2UtZmVkb3JhIFY9MSBORVRXT1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LW1pbmd3QGZlZG9y
-YSBKPTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKICBDQyAgICAgIHg4Nl82
-NC1zb2Z0bW11L3RhcmdldC9pMzg2L21weF9oZWxwZXIubwogIENDICAgICAgeDg2XzY0LXNvZnRt
-bXUvdGFyZ2V0L2kzODYvc2VnX2hlbHBlci5vCi90bXAvcWVtdS10ZXN0L3NyYy9ody9pMzg2L2Fj
-cGktbWljcm92bS5jOiBJbiBmdW5jdGlvbiAnYnVpbGRfZHNkdF9taWNyb3ZtJzoKL3RtcC9xZW11
-LXRlc3Qvc3JjL2h3L2kzODYvYWNwaS1taWNyb3ZtLmM6MTA5OjU6IGVycm9yOiBpbXBsaWNpdCBk
-ZWNsYXJhdGlvbiBvZiBmdW5jdGlvbiAnZndfY2ZnX2FkZF9hY3BpX2RzZHQnOyBkaWQgeW91IG1l
-YW4gJ2Z3X2NmZ19hZGRfZmlsZSc/IFstV2Vycm9yPWltcGxpY2l0LWZ1bmN0aW9uLWRlY2xhcmF0
-aW9uXQogICAgIGZ3X2NmZ19hZGRfYWNwaV9kc2R0KHNiX3Njb3BlLCB4ODZtcy0+ZndfY2ZnKTsK
-ICAgICBefn5+fn5+fn5+fn5+fn5+fn5+fgogICAgIGZ3X2NmZ19hZGRfZmlsZQovdG1wL3FlbXUt
-dGVzdC9zcmMvaHcvaTM4Ni9hY3BpLW1pY3Jvdm0uYzoxMDk6NTogZXJyb3I6IG5lc3RlZCBleHRl
-cm4gZGVjbGFyYXRpb24gb2YgJ2Z3X2NmZ19hZGRfYWNwaV9kc2R0JyBbLVdlcnJvcj1uZXN0ZWQt
-ZXh0ZXJuc10KY2MxOiBhbGwgd2FybmluZ3MgYmVpbmcgdHJlYXRlZCBhcyBlcnJvcnMKICBDQyAg
-ICAgIHg4Nl82NC1zb2Z0bW11L3RhcmdldC9pMzg2L3NtbV9oZWxwZXIubwptYWtlWzFdOiAqKiog
-Wy90bXAvcWVtdS10ZXN0L3NyYy9ydWxlcy5tYWs6Njk6IGh3L2kzODYvYWNwaS1taWNyb3ZtLm9d
-IEVycm9yIDEKbWFrZVsxXTogKioqIFdhaXRpbmcgZm9yIHVuZmluaXNoZWQgam9icy4uLi4KICBD
-QyAgICAgIGFhcmNoNjQtc29mdG1tdS9ody9hcm0vZGlnaWNfYm9hcmRzLm8KICBDQyAgICAgIGFh
-cmNoNjQtc29mdG1tdS9ody9hcm0vZXh5bm9zNF9ib2FyZHMubwotLS0KICBDQyAgICAgIGFhcmNo
-NjQtc29mdG1tdS9ody9hcm0vdmV4cHJlc3MubwogIENDICAgICAgYWFyY2g2NC1zb2Z0bW11L2h3
-L2FybS94aWxpbnhfenlucS5vCiAgQ0MgICAgICBhYXJjaDY0LXNvZnRtbXUvaHcvYXJtL3NhYnJl
-bGl0ZS5vCm1ha2U6ICoqKiBbTWFrZWZpbGU6NTI3OiB4ODZfNjQtc29mdG1tdS9hbGxdIEVycm9y
-IDIKbWFrZTogKioqIFdhaXRpbmcgZm9yIHVuZmluaXNoZWQgam9icy4uLi4KICBDQyAgICAgIGFh
-cmNoNjQtc29mdG1tdS9ody9hcm0vYXJtdjdtLm8KICBDQyAgICAgIGFhcmNoNjQtc29mdG1tdS9o
-dy9hcm0vZXh5bm9zNDIxMC5vCi0tLQogICAgcmFpc2UgQ2FsbGVkUHJvY2Vzc0Vycm9yKHJldGNv
-ZGUsIGNtZCkKc3VicHJvY2Vzcy5DYWxsZWRQcm9jZXNzRXJyb3I6IENvbW1hbmQgJ1snc3Vkbycs
-ICctbicsICdkb2NrZXInLCAncnVuJywgJy0tbGFiZWwnLCAnY29tLnFlbXUuaW5zdGFuY2UudXVp
-ZD04N2U3OTc0NWYyYWU0MmFlOTc0ZWI5YjI0N2Q0YWY3NicsICctdScsICcxMDAzJywgJy0tc2Vj
-dXJpdHktb3B0JywgJ3NlY2NvbXA9dW5jb25maW5lZCcsICctLXJtJywgJy1lJywgJ1RBUkdFVF9M
-SVNUPScsICctZScsICdFWFRSQV9DT05GSUdVUkVfT1BUUz0nLCAnLWUnLCAnVj0nLCAnLWUnLCAn
-Sj0xNCcsICctZScsICdERUJVRz0nLCAnLWUnLCAnU0hPV19FTlY9JywgJy1lJywgJ0NDQUNIRV9E
-SVI9L3Zhci90bXAvY2NhY2hlJywgJy12JywgJy9ob21lL3BhdGNoZXcyLy5jYWNoZS9xZW11LWRv
-Y2tlci1jY2FjaGU6L3Zhci90bXAvY2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10
-ZXN0ZXItdG1wLTQzZmh2YTl0L3NyYy9kb2NrZXItc3JjLjIwMjAtMDUtMjAtMTEuNTAuNDUuMTY3
-MTM6L3Zhci90bXAvcWVtdTp6LHJvJywgJ3FlbXU6ZmVkb3JhJywgJy92YXIvdG1wL3FlbXUvcnVu
-JywgJ3Rlc3QtbWluZ3cnXScgcmV0dXJuZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4KZmlsdGVy
-PS0tZmlsdGVyPWxhYmVsPWNvbS5xZW11Lmluc3RhbmNlLnV1aWQ9ODdlNzk3NDVmMmFlNDJhZTk3
-NGViOWIyNDdkNGFmNzYKbWFrZVsxXTogKioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06
-IExlYXZpbmcgZGlyZWN0b3J5IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtNDNmaHZhOXQv
-c3JjJwptYWtlOiAqKiogW2RvY2tlci1ydW4tdGVzdC1taW5nd0BmZWRvcmFdIEVycm9yIDIKCnJl
-YWwgICAgM20xLjYyMnMKdXNlciAgICAwbTcuNDIzcwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFi
-bGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDA1MjAxMzIwMDMuOTQ5Mi0xLWtyYXhl
-bEByZWRoYXQuY29tL3Rlc3RpbmcuZG9ja2VyLW1pbmd3QGZlZG9yYS8/dHlwZT1tZXNzYWdlLgot
-LS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRj
-aGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVk
-aGF0LmNvbQ==
+On Wed, 20 May 2020 15:19:50 +0200
+Gerd Hoffmann <kraxel@redhat.com> wrote:
+
+> Rename memory region and callbacks and ops to carry "evt" in the name
+> because a second region will be added shortly.
+> 
+> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+
+Reviewed-by: Igor Mammedow <imammedo@redhat.com>
+
+> ---
+>  include/hw/acpi/generic_event_device.h |  2 +-
+>  hw/acpi/generic_event_device.c         | 16 ++++++++--------
+>  2 files changed, 9 insertions(+), 9 deletions(-)
+> 
+> diff --git a/include/hw/acpi/generic_event_device.h
+> b/include/hw/acpi/generic_event_device.h index
+> 83917de02425..90a9180db572 100644 ---
+> a/include/hw/acpi/generic_event_device.h +++
+> b/include/hw/acpi/generic_event_device.h @@ -86,7 +86,7 @@
+>  #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
+>  
+>  typedef struct GEDState {
+> -    MemoryRegion io;
+> +    MemoryRegion evt;
+>      uint32_t     sel;
+>  } GEDState;
+>  
+> diff --git a/hw/acpi/generic_event_device.c
+> b/hw/acpi/generic_event_device.c index b1cbdd86b66c..1cb34111e59a
+> 100644 --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -142,7 +142,7 @@ void build_ged_aml(Aml *table, const char *name,
+> HotplugHandler *hotplug_dev, }
+>  
+>  /* Memory read by the GED _EVT AML dynamic method */
+> -static uint64_t ged_read(void *opaque, hwaddr addr, unsigned size)
+> +static uint64_t ged_evt_read(void *opaque, hwaddr addr, unsigned
+> size) {
+>      uint64_t val = 0;
+>      GEDState *ged_st = opaque;
+> @@ -161,14 +161,14 @@ static uint64_t ged_read(void *opaque, hwaddr
+> addr, unsigned size) }
+>  
+>  /* Nothing is expected to be written to the GED memory region */
+> -static void ged_write(void *opaque, hwaddr addr, uint64_t data,
+> -                      unsigned int size)
+> +static void ged_evt_write(void *opaque, hwaddr addr, uint64_t data,
+> +                          unsigned int size)
+>  {
+>  }
+>  
+> -static const MemoryRegionOps ged_ops = {
+> -    .read = ged_read,
+> -    .write = ged_write,
+> +static const MemoryRegionOps ged_evt_ops = {
+> +    .read = ged_evt_read,
+> +    .write = ged_evt_write,
+>      .endianness = DEVICE_LITTLE_ENDIAN,
+>      .valid = {
+>          .min_access_size = 4,
+> @@ -287,9 +287,9 @@ static void acpi_ged_initfn(Object *obj)
+>      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+>      GEDState *ged_st = &s->ged_state;
+>  
+> -    memory_region_init_io(&ged_st->io, obj, &ged_ops, ged_st,
+> +    memory_region_init_io(&ged_st->evt, obj, &ged_evt_ops, ged_st,
+>                            TYPE_ACPI_GED, ACPI_GED_EVT_SEL_LEN);
+> -    sysbus_init_mmio(sbd, &ged_st->io);
+> +    sysbus_init_mmio(sbd, &ged_st->evt);
+>  
+>      sysbus_init_irq(sbd, &s->irq);
+>  
+

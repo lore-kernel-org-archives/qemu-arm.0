@@ -1,72 +1,72 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1736659lfb;
-        Thu, 21 May 2020 09:43:39 -0700 (PDT)
-X-Received: by 2002:a0c:e9c9:: with SMTP id q9mr10621946qvo.215.1590079419212;
-        Thu, 21 May 2020 09:43:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590079419; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1737096lfb;
+        Thu, 21 May 2020 09:44:07 -0700 (PDT)
+X-Received: by 2002:a37:84c5:: with SMTP id g188mr10131010qkd.344.1590079447684;
+        Thu, 21 May 2020 09:44:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590079447; cv=none;
         d=google.com; s=arc-20160816;
-        b=a9jekxBZfXLOOXjA3V0eJkXaVOjpt6ihrSUlMlbgT3HqNEbrQB/bYKeVw4+mDriiEZ
-         jOVpLxBY7lPuV6z4LIs/0out0Mbsysh/+BBKtSvLmRgV2ZCoLe1iVGpSV+ViYA/DIrUF
-         lv5U1RNlj2xm0PfV7CCfbbiBHMyMiKRFrtOKnOcrZaF+woOTJiHwG0k2GHzo0pJno42o
-         xFbOoyJe3br85XCATAWVgmHHx7tVj1aB5AmR3TJu56pFYrsQHC5x03LpmG+gRVy/d2Nj
-         gcw8ub5+KZUMgqArfe9/+fnuvo1QxA/oaV/tazLGhoVlX9U0q+1811T3NVKMNSF5cDh9
-         J4UA==
+        b=AbvNuI6nmY+U59rKKNEthenfqZwEa0qoUrS1nTshI7GaGOpVoAqdXN32wmwS9mrThn
+         GKpdSjA+V+ck7BHxXUfQkxNiRPCwJi4bTd9dM8wzuMS2cphrnWFv0Jxvn5v9d91lQ/eZ
+         ifTCr7mm+dBEQis2bKXhwTsvDKUhTMOS79D6TawY61z2s8zZqUoGpe3tGgAsmPSUHjH3
+         s0zTHugn6y7reuA/m9si9/WLdpdpTPcWO541eutvpnQAnVrDSbS+cOYXZYrrXSZGfaSi
+         RRTnssPQVu0mpK7SRLWDCq31SaoOuhOwseJluxDOGD2YyvYmSDr9nU7Qy6db1rq+/A/J
+         287w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=dMJD65Hlj8sZEjsVc6zG0Ir/AhvAmDKltVf3k3r4CgY=;
-        b=vIeNPpPGQgbLh9v3X5/q136N4t291u8Lg8hprq5zB/T7J+xT17zbdrwPytz4dLxsmz
-         d1jl8SAYGfE+vb5FWypxXkpViyalcYzPYc0HAik4hwByL94tY/W9X0lWNQd38Hr53j8t
-         wgOwaZoOn29eX9Kd/aHEaUTSSoyQIeh8TheyWFzmyR+i81aGPWBR03NLupq+Jt3NZF0+
-         48onwxC6g6+3IQdZYBe+Gz6ZstDFbFw4Sa3U+A1EZPYs9bJ83M9uLN9z4ipLSwJ0rDVb
-         fM3WnGmr4RflfvYUOrqMnFHqMjNdeAItIL96zj/VNfDcjbPf5AyqZb1T64Zsr2y4xd1M
-         bNgw==
+        bh=yGVX5kDKORVWzWyGlj0YwmQls1Q4ENhSP5KQMqWdryo=;
+        b=VJKvbvRI5aBDI4ZJPDX64YUqpD0Rwi6kgg7Z1xfWrMUpszZpNKj4tQDFCT0jfTGqYM
+         DoBaK7wwWW30bHpOBF0+WdzSCAMdqUJlEx7BZEgxqzQ+TIvrV70LHLwPnlOdNgbdR54B
+         sDR8aNP7UdViXABfo7Ht9bqSYfnYKSfZU212RPmRyLClRODSBSbxqV9yra18wg8bFFt6
+         m0FyJD/qpiHiSkSNb83vRxecJAZaL0VW29EsX3ItLlzAIPaC4tS6+3DhFPn2XVuGGO7L
+         00w6MscUUbIS/K+fXLxDZMNv1j+ZhCpS3FLXraS6SdA8h6/vfgsM3YyBrxZ2DOeClAMg
+         EvJw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qxolO3NH;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PnNuNSdi;
        spf=pass (google.com: domain of robert.foley@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=robert.foley@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <robert.foley@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id u5sor8654909qvt.54.2020.05.21.09.43.39
+        by mx.google.com with SMTPS id p7sor6120516qki.72.2020.05.21.09.44.07
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 21 May 2020 09:43:39 -0700 (PDT)
+        Thu, 21 May 2020 09:44:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of robert.foley@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qxolO3NH;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PnNuNSdi;
        spf=pass (google.com: domain of robert.foley@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=robert.foley@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=dMJD65Hlj8sZEjsVc6zG0Ir/AhvAmDKltVf3k3r4CgY=;
-        b=qxolO3NHBjbuWSRVm36ecn5krJ1xJDM5MsGZe5bSWEmRz2qykCI/o2yo/NPfJ3CxQP
-         UqPRK/+HK3cnZax4qIl/EXV5PqZd/zWzN9uyUetgiB/7NayvCslb5KR2+jKttR6Flm2o
-         oXT0VevNgkoD14jUvTXvMbjiDA++0c8Oxv6GGAMV8JWe2+MxNWrBAx2195PKKvY0FGUv
-         PG/n6uqVOMcQO9T4xYRpIRjbIaoyaCYpJzMPk/pkLqj/XsNniKiEmGjm9TwiyZqI64dO
-         BBWUZDbpuiCo6+JCd2RC0lsYhp/6YKmL9IeXLsLkxmkzObsyg3H/Y7sf+uHiLQXhrWbv
-         7/sg==
+        bh=yGVX5kDKORVWzWyGlj0YwmQls1Q4ENhSP5KQMqWdryo=;
+        b=PnNuNSdiscK9zZByW9Q9FHuJsaSawEAEhX4G1K9tT0Il1Yy0rgKX38wsSLAoBrT3l4
+         5Sp1OwBk016raKFaypH/c/EwNpdr1gc/zpv3dC3jqbDoMqJ8aYyzq7PusgBRjO9hpmjO
+         ieL2HrKusmEbRzD27Mn7G2LCviU6YXjLGJqR7+2RE12+jMWaNVzZX7RTvNAb9ZB2KZHs
+         6QAf1qls0gjP5hVPwMoBULz4bjtpd9dJJ4G0TPrOsECwoU/NCJkODQ8G9rSk6p3Qq32W
+         T0NeTw+xMcpon/Kvfn7Q2m9lT9u8PW6pEpCcAOf68jKFlxZaLftr2LJ1hGEDlCksE/y5
+         y0OA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=dMJD65Hlj8sZEjsVc6zG0Ir/AhvAmDKltVf3k3r4CgY=;
-        b=VEZREgIgb8D3ld9Kd1ityaUdoGGev5ZmTrKGcPWAYVIEcOTNweO7JjaA33+qV9Cohq
-         LwZJJNK8cTCSi/gm6lZGXkcEoqNXEIwPBV/2t7Gorqwt+bajtgLcqjXfZs8MD6UZHLLJ
-         5+VH1jhKxwSwoKpWINZVEn4ZdWH0kmYtZCTGbh18ArXksPeP62GfayHBKhhwS5S1qUV3
-         80LjP6aUIYkkvbz9gbDc8DFBOMsNM+avsd/IBbJhWRkqPayydIsWR9QcQwI5I4RrGqR2
-         QeNPMueu59DM372b2ZCcqfkdZEh4dK11/qzwqV4LOQBTZCwKHNvR/yMBV2PkgvKbp46s
-         BIpw==
-X-Gm-Message-State: AOAM5334td+lQFWXHdASM/ggc+PunrDP587ods9ePJsOdZJSFvjBbff6
-	rp0dBjrV3k/WBjmYhK42YrQAs1jK
-X-Google-Smtp-Source: ABdhPJzU6+L9m9eKgmFy4T2CpzBwZGdFhnu+SPFlwBxgP8YjJY+IKwveBx7QWv1alWwOabyJgBzpMA==
-X-Received: by 2002:a0c:f590:: with SMTP id k16mr11076855qvm.81.1590079418769;
-        Thu, 21 May 2020 09:43:38 -0700 (PDT)
+        bh=yGVX5kDKORVWzWyGlj0YwmQls1Q4ENhSP5KQMqWdryo=;
+        b=A5r1NiEPyXy5xrGMgGbSkh+M4XJMUeqE3vccow1XGnGD1dR28/PZeOlS3K/5nEz8Di
+         9MreFOQrnjF3mH1IYgdRAwGkPKsqT61w2aPzmQ57p2O6fSPE258CJtVXPevD1sMpkQ+6
+         fqXyQcY23Ye9E5na1kj5XbIfZZnPnlrb4YeixXnrpNnnbQZaQIZ9F4+aHPpSlrjeJJUv
+         hM0Ikd39+kZZuJU9npJpgBS1zR2DT1mecMVRgRJFT5iV1pJGxPs9adp+Q2nef+Bb0fPj
+         petCS/aKlIMXjCUo4tY5/dcByac2k3UrmMF0WpgKaum3T+tw5inRJ9fkbAcWK4a8DY7c
+         0KRw==
+X-Gm-Message-State: AOAM532AmyCjVbGyJScTICmIq0JvI70RU/a5rf1W6+aqvndWC9vh9QyQ
+	u/iiC2+DwEBt4FOcNCz6r3bT1ZOa
+X-Google-Smtp-Source: ABdhPJwVipEc+70rUkpGn5Lvk1kyNeCvJKL4TGjOc8O6aQBBiWdbJZUaOzHQjJWK3C/nZPGprQpbYg==
+X-Received: by 2002:a37:46c9:: with SMTP id t192mr7538363qka.3.1590079447298;
+        Thu, 21 May 2020 09:44:07 -0700 (PDT)
 Return-Path: <robert.foley@linaro.org>
 Received: from Rfoley-MA01.hsd1.ma.comcast.net ([2601:199:4480:60c0:1944:c530:655c:5583])
-        by smtp.gmail.com with ESMTPSA id x24sm5923829qth.57.2020.05.21.09.43.37
+        by smtp.gmail.com with ESMTPSA id x24sm5923829qth.57.2020.05.21.09.44.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 21 May 2020 09:43:37 -0700 (PDT)
+        Thu, 21 May 2020 09:44:06 -0700 (PDT)
 From: Robert Foley <robert.foley@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: alex.bennee@linaro.org,
@@ -74,23 +74,21 @@ Cc: alex.bennee@linaro.org,
 	cota@braap.org,
 	peter.puhov@linaro.org,
 	robert.foley@linaro.org,
-	Andrzej Zaborowski <balrogg@gmail.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org
-Subject: [PATCH v9 18/74] arm: convert to cpu_halted
-Date: Thu, 21 May 2020 12:39:15 -0400
-Message-Id: <20200521164011.638-19-robert.foley@linaro.org>
+Subject: [PATCH v9 39/74] arm: convert to cpu_interrupt_request
+Date: Thu, 21 May 2020 12:39:36 -0400
+Message-Id: <20200521164011.638-40-robert.foley@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200521164011.638-1-robert.foley@linaro.org>
 References: <20200521164011.638-1-robert.foley@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: lN4XddElqkWu
+X-TUID: XI88iMyFyzO2
 
 From: "Emilio G. Cota" <cota@braap.org>
 
-Cc: Andrzej Zaborowski <balrogg@gmail.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
@@ -98,118 +96,111 @@ Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Emilio G. Cota <cota@braap.org>
 Signed-off-by: Robert Foley <robert.foley@linaro.org>
 ---
- hw/arm/omap1.c            | 4 ++--
- hw/arm/pxa2xx_gpio.c      | 2 +-
- hw/arm/pxa2xx_pic.c       | 2 +-
- target/arm/arm-powerctl.c | 6 +++---
- target/arm/cpu.c          | 2 +-
- target/arm/op_helper.c    | 2 +-
- 6 files changed, 9 insertions(+), 9 deletions(-)
+ target/arm/cpu.c     |  6 +++---
+ target/arm/helper.c  | 16 +++++++---------
+ target/arm/machine.c |  2 +-
+ 3 files changed, 11 insertions(+), 13 deletions(-)
 
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index 761cc17ea9..83b1d63f27 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -1776,7 +1776,7 @@ static uint64_t omap_clkdsp_read(void *opaque, hwaddr addr,
-     case 0x18:	/* DSP_SYSST */
-         cpu = CPU(s->cpu);
-         return (s->clkm.clocking_scheme << 11) | s->clkm.cold_start |
--                (cpu->halted << 6);      /* Quite useless... */
-+                (cpu_halted(cpu) << 6);      /* Quite useless... */
-     }
- 
-     OMAP_BAD_REG(addr);
-@@ -3797,7 +3797,7 @@ void omap_mpu_wakeup(void *opaque, int irq, int req)
-     struct omap_mpu_state_s *mpu = (struct omap_mpu_state_s *) opaque;
-     CPUState *cpu = CPU(mpu->cpu);
- 
--    if (cpu->halted) {
-+    if (cpu_halted(cpu)) {
-         cpu_interrupt(cpu, CPU_INTERRUPT_EXITTB);
-     }
- }
-diff --git a/hw/arm/pxa2xx_gpio.c b/hw/arm/pxa2xx_gpio.c
-index f8df3cc227..23b4a06a4f 100644
---- a/hw/arm/pxa2xx_gpio.c
-+++ b/hw/arm/pxa2xx_gpio.c
-@@ -132,7 +132,7 @@ static void pxa2xx_gpio_set(void *opaque, int line, int level)
-         pxa2xx_gpio_irq_update(s);
- 
-     /* Wake-up GPIOs */
--    if (cpu->halted && (mask & ~s->dir[bank] & pxa2xx_gpio_wake[bank])) {
-+    if (cpu_halted(cpu) && (mask & ~s->dir[bank] & pxa2xx_gpio_wake[bank])) {
-         cpu_interrupt(cpu, CPU_INTERRUPT_EXITTB);
-     }
- }
-diff --git a/hw/arm/pxa2xx_pic.c b/hw/arm/pxa2xx_pic.c
-index 203d4d28af..057448c2ed 100644
---- a/hw/arm/pxa2xx_pic.c
-+++ b/hw/arm/pxa2xx_pic.c
-@@ -58,7 +58,7 @@ static void pxa2xx_pic_update(void *opaque)
-     PXA2xxPICState *s = (PXA2xxPICState *) opaque;
-     CPUState *cpu = CPU(s->cpu);
- 
--    if (cpu->halted) {
-+    if (cpu_halted(cpu)) {
-         mask[0] = s->int_pending[0] & (s->int_enabled[0] | s->int_idle);
-         mask[1] = s->int_pending[1] & (s->int_enabled[1] | s->int_idle);
-         if (mask[0] || mask[1]) {
-diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
-index b75f813b40..f0db413519 100644
---- a/target/arm/arm-powerctl.c
-+++ b/target/arm/arm-powerctl.c
-@@ -64,7 +64,7 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
- 
-     /* Initialize the cpu we are turning on */
-     cpu_reset(target_cpu_state);
--    target_cpu_state->halted = 0;
-+    cpu_halted_set(target_cpu_state, 0);
- 
-     if (info->target_aa64) {
-         if ((info->target_el < 3) && arm_feature(&target_cpu->env,
-@@ -241,7 +241,7 @@ static void arm_set_cpu_on_and_reset_async_work(CPUState *target_cpu_state,
- 
-     /* Initialize the cpu we are turning on */
-     cpu_reset(target_cpu_state);
--    target_cpu_state->halted = 0;
-+    cpu_halted_set(target_cpu_state, 0);
- 
-     /* Finally set the power status */
-     assert(qemu_mutex_iothread_locked());
-@@ -297,7 +297,7 @@ static void arm_set_cpu_off_async_work(CPUState *target_cpu_state,
- 
-     assert(qemu_mutex_iothread_locked());
-     target_cpu->power_state = PSCI_OFF;
--    target_cpu_state->halted = 1;
-+    cpu_halted_set(target_cpu_state, 1);
-     target_cpu_state->exception_index = EXCP_HLT;
- }
- 
 diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 32bec156f2..dc435a18a1 100644
+index dc435a18a1..6c308268a9 100644
 --- a/target/arm/cpu.c
 +++ b/target/arm/cpu.c
-@@ -175,7 +175,7 @@ static void arm_cpu_reset(DeviceState *dev)
-     env->vfp.xregs[ARM_VFP_MVFR2] = cpu->isar.mvfr2;
+@@ -75,7 +75,7 @@ static bool arm_cpu_has_work(CPUState *cs)
+     ARMCPU *cpu = ARM_CPU(cs);
  
-     cpu->power_state = cpu->start_powered_off ? PSCI_OFF : PSCI_ON;
--    s->halted = cpu->start_powered_off;
-+    cpu_halted_set(s, cpu->start_powered_off);
+     return (cpu->power_state != PSCI_OFF)
+-        && cs->interrupt_request &
++        && cpu_interrupt_request(cs) &
+         (CPU_INTERRUPT_FIQ | CPU_INTERRUPT_HARD
+          | CPU_INTERRUPT_VFIQ | CPU_INTERRUPT_VIRQ
+          | CPU_INTERRUPT_EXITTB);
+@@ -586,7 +586,7 @@ void arm_cpu_update_virq(ARMCPU *cpu)
+     bool new_state = (env->cp15.hcr_el2 & HCR_VI) ||
+         (env->irq_line_state & CPU_INTERRUPT_VIRQ);
  
-     if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
-         env->iwmmxt.cregs[ARM_IWMMXT_wCID] = 0x69051000 | 'Q';
-diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-index eb0de080f1..88c86a4346 100644
---- a/target/arm/op_helper.c
-+++ b/target/arm/op_helper.c
-@@ -305,7 +305,7 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
+-    if (new_state != ((cs->interrupt_request & CPU_INTERRUPT_VIRQ) != 0)) {
++    if (new_state != ((cpu_interrupt_request(cs) & CPU_INTERRUPT_VIRQ) != 0)) {
+         if (new_state) {
+             cpu_interrupt(cs, CPU_INTERRUPT_VIRQ);
+         } else {
+@@ -607,7 +607,7 @@ void arm_cpu_update_vfiq(ARMCPU *cpu)
+     bool new_state = (env->cp15.hcr_el2 & HCR_VF) ||
+         (env->irq_line_state & CPU_INTERRUPT_VFIQ);
+ 
+-    if (new_state != ((cs->interrupt_request & CPU_INTERRUPT_VFIQ) != 0)) {
++    if (new_state != ((cpu_interrupt_request(cs) & CPU_INTERRUPT_VFIQ) != 0)) {
+         if (new_state) {
+             cpu_interrupt(cs, CPU_INTERRUPT_VFIQ);
+         } else {
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index a92ae55672..5d018b2d88 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -2079,26 +2079,27 @@ static uint64_t isr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     CPUState *cs = env_cpu(env);
+     uint64_t hcr_el2 = arm_hcr_el2_eff(env);
+     uint64_t ret = 0;
++    uint32_t interrupt_request = cpu_interrupt_request(cs);
+     bool allow_virt = (arm_current_el(env) == 1 &&
+                        (!arm_is_secure_below_el3(env) ||
+                         (env->cp15.scr_el3 & SCR_EEL2)));
+ 
+     if (allow_virt && (hcr_el2 & HCR_IMO)) {
+-        if (cs->interrupt_request & CPU_INTERRUPT_VIRQ) {
++        if (interrupt_request & CPU_INTERRUPT_VIRQ) {
+             ret |= CPSR_I;
+         }
+     } else {
+-        if (cs->interrupt_request & CPU_INTERRUPT_HARD) {
++        if (interrupt_request & CPU_INTERRUPT_HARD) {
+             ret |= CPSR_I;
+         }
      }
  
-     cs->exception_index = EXCP_HLT;
--    cs->halted = 1;
-+    cpu_halted_set(cs, 1);
-     cpu_loop_exit(cs);
- }
+     if (allow_virt && (hcr_el2 & HCR_FMO)) {
+-        if (cs->interrupt_request & CPU_INTERRUPT_VFIQ) {
++        if (interrupt_request & CPU_INTERRUPT_VFIQ) {
+             ret |= CPSR_F;
+         }
+     } else {
+-        if (cs->interrupt_request & CPU_INTERRUPT_FIQ) {
++        if (interrupt_request & CPU_INTERRUPT_FIQ) {
+             ret |= CPSR_F;
+         }
+     }
+@@ -9591,10 +9592,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+     }
+ #endif
  
+-    /* Hooks may change global state so BQL should be held, also the
+-     * BQL needs to be held for any modification of
+-     * cs->interrupt_request.
+-     */
++    /* Hooks may change global state so BQL should be held */
+     g_assert(qemu_mutex_iothread_locked());
+ 
+     arm_call_pre_el_change_hook(cpu);
+@@ -9609,7 +9607,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+     arm_call_el_change_hook(cpu);
+ 
+     if (!kvm_enabled()) {
+-        cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
++        cpu_interrupt_request_or(cs, CPU_INTERRUPT_EXITTB);
+     }
+ }
+ #endif /* !CONFIG_USER_ONLY */
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index c5a2114f51..42f4368de3 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -713,7 +713,7 @@ static int cpu_post_load(void *opaque, int version_id)
+     if (env->irq_line_state == UINT32_MAX) {
+         CPUState *cs = CPU(cpu);
+ 
+-        env->irq_line_state = cs->interrupt_request &
++        env->irq_line_state = cpu_interrupt_request(cs) &
+             (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ |
+              CPU_INTERRUPT_VIRQ | CPU_INTERRUPT_VFIQ);
+     }
 -- 
 2.17.1

@@ -1,387 +1,486 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1319851lfb;
-        Thu, 21 May 2020 00:36:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw35D85HgIt+JBDjxVxdZF2VG9zKCya0wDjcS2j0J+LCT/MlAiKS9j08CO1SZfQQPwoGOFN
-X-Received: by 2002:ac8:6642:: with SMTP id j2mr9252176qtp.158.1590046593331;
-        Thu, 21 May 2020 00:36:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590046593; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1419225lfb;
+        Thu, 21 May 2020 03:12:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzvh9kGuv1IeQAy5PgZBlaXVT/cuGij/moMsInjhxteZ9/kM7/ObUi0tMDh57HUIDjwSYyZ
+X-Received: by 2002:aed:3247:: with SMTP id y65mr3710393qtd.193.1590055935827;
+        Thu, 21 May 2020 03:12:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590055935; cv=none;
         d=google.com; s=arc-20160816;
-        b=L+PMJU6PHQVSUfP71pBuQDYvnCexxhZ2cd/tHy03ZxI8g3pmQjVkr7hog6c29A0+oj
-         hDKSb6uUFEoUD2hNpNroZg0vRFssD1eS9r1s5O7y8BQMXZoEpw6gzl6ye3hSlnL7/yOC
-         rATIcZR9FDrzanPyDpPtSGVeXLWJV5nLw59vd/V/aR3UCPe0wJfcGkI5S8a8ZkTO4KvG
-         sKgX2irR6opJS4AaTDkSFmTD5brIq3Lkelum+dCxW2Qx+/GGPMJYj97mAFgVzKF7NfXx
-         5od88ZkVOQvII4nQBetedwG2LronmQKS1aGQoTToJJvq5edILq3TmBIxohIqrOVsNIX2
-         ia5g==
+        b=GtbizQnbcgLgf9uE+jr35CDC4Sjd8kC8QI2tX5EM/+m3bZ/mWTmmJz+p7iVU0DyDmY
+         OVEbZvFQoXLzZKVM6SVtvGv9VWbH6cGpUdhuX8V+On3X/66NaKJyYIvLvovwLA8lLNzH
+         575BhssC5/iZCH4Wd5VkI5DLABi1XqPR4XBc0an5Nuz50PO04i5WqJDBl4Zt+S2Erxpi
+         WIoyqg3EHCMj/8SqXDlCeTQwAU8F62gQS5uyGNrW+pJGy+d5O0culpQag0z0Zdckg6gN
+         EF2ySPAmHIWP9t8ItYxdijz7u7x3FuUDSGh5JS456KKtexy79Qjyk/W4c7wk2AEYN41x
+         BvEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=kH5yeG9XCFv+s9KnrFXk8iHaJ0w0O/Afq4TlroAAyG8=;
-        b=00vZH+dIg3Z+fx1IgGLZ/5NZ9+C8jxKuHAmmMtiIG7TNASBZwI4GL87x1fnlmYnyUq
-         mcK8VCVQ68B+kRlcrEpA2F+E9yiatqw/tMgQ/gsoZ+czcJTjg97yo7DAxLy1xIbyVTt+
-         vIzJLeIOFGRAxFSc/mesZNhS507aM2EyK33lZV4XMP4F0YDrXlEM2ssVREz5evRlN1L1
-         sFjFA/Tg46KD23gcW7KL+9stWOV2vyR1W7X3dutpI98b9cQ+VeoIy6a36IO5BKbYvdDW
-         IcwjHIPQhP1AQgF8+nGU7PHjpYRuqm6lNZ/oM8Jm46eN2482DAAwuiii7Y9tRihmMtuj
-         HBSQ==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=wNmxZddpo9v4KEslKYkUZW8wziwySozumPvd0hYx1fA=;
+        b=XUOBLdKYixa1ir/thYMwgeSQeXEUQct9AAx6QLZmqrYGIPpx3JTfSTCc77lourtcFU
+         E+TVkXoPOOS19I/DrWrncZ0PfqNZCLiRCdBftAGfy8VII/NJAyfOqX7jhIH6AYaGEGPc
+         Ti79RobKL4vwrczbYDnxvqmsqPRhahfavVeRcNC1BekPSxx+b2TRhT4H4i2nwozpNv4E
+         H3CMxZ3nl+n0KQ0+EU5L+ZfwsuevkJ+LJXg634takGa4zzMfmErYFdCIivGVV+sqSd6o
+         qrygikL5nQTjvQzq/2+h1bRHsD7WY4P+CVCZSucLnH6jKVJlEKeU4lKxR7ZO7jbbc2pL
+         OX0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KaUqOXYt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v10si3089235qtj.317.2020.05.21.00.36.33
+        by mx.google.com with ESMTPS id a141si1783151qkc.134.2020.05.21.03.12.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 May 2020 00:36:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 21 May 2020 03:12:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59614 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KaUqOXYt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38360 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jbfkm-0001Kd-OH
-	for alex.bennee@linaro.org; Thu, 21 May 2020 03:36:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46946)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jbiBT-000262-9b
+	for alex.bennee@linaro.org; Thu, 21 May 2020 06:12:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33964)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jbfkf-0001KM-Kk
- for qemu-arm@nongnu.org; Thu, 21 May 2020 03:36:25 -0400
-Received: from 8.mo5.mail-out.ovh.net ([178.32.116.78]:49952)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jbfkd-0004pY-O2
- for qemu-arm@nongnu.org; Thu, 21 May 2020 03:36:25 -0400
-Received: from player762.ha.ovh.net (unknown [10.110.208.183])
- by mo5.mail-out.ovh.net (Postfix) with ESMTP id 5BAF6276D04
- for <qemu-arm@nongnu.org>; Thu, 21 May 2020 09:36:13 +0200 (CEST)
-Received: from kaod.org (lfbn-tou-1-335-225.w86-206.abo.wanadoo.fr
- [86.206.169.225]) (Authenticated sender: clg@kaod.org)
- by player762.ha.ovh.net (Postfix) with ESMTPSA id B92691293AA64;
- Thu, 21 May 2020 07:36:05 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G002ed2bfcd1-964a-43d4-b8bd-815c8a3d78d8,814BE501F1048BCFB57FB4F14E8CAD466B88CA3D)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH] arm/aspeed: Rework NIC attachment
-To: Markus Armbruster <armbru@redhat.com>
-References: <20200519161957.1056027-1-clg@kaod.org>
- <87zha3t8qg.fsf@dusky.pond.sub.org>
- <3ead6228-b61b-ca8b-6ebc-dd9299f1a334@kaod.org>
- <87367uobma.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <836e30f9-d029-5ec9-3b05-b0d8541869ff@kaod.org>
-Date: Thu, 21 May 2020 09:36:05 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1jbi9G-0007Ih-Uy
+ for qemu-devel@nongnu.org; Thu, 21 May 2020 06:09:58 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:55586
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1jbi9F-0008Fx-Cy
+ for qemu-devel@nongnu.org; Thu, 21 May 2020 06:09:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590055796;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wNmxZddpo9v4KEslKYkUZW8wziwySozumPvd0hYx1fA=;
+ b=KaUqOXYtnxo0ph70ekukRF+kQpKS7FW658mWPsFUCu/JMQUSUbaF7V/1gUlt1b43qQlaZS
+ xOnImUbGKNf3lE+MaIM3dX08ulB+59O0WMJtfiufYJWR1urB6pIB9MMQE3/wRcekpmWIQh
+ EXVRRt1f4Sya/wtei72gB/06SUW5gxY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-454-5h7j7CIuNuulcRrQeTIUVA-1; Thu, 21 May 2020 06:09:55 -0400
+X-MC-Unique: 5h7j7CIuNuulcRrQeTIUVA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CAA691853C6F;
+ Thu, 21 May 2020 10:09:53 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.12])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AD5341CA;
+ Thu, 21 May 2020 10:09:40 +0000 (UTC)
+Date: Thu, 21 May 2020 12:09:38 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [PATCH v3 16/22] microvm/acpi: add minimal acpi support
+Message-ID: <20200521120938.73189e83@redhat.com>
+In-Reply-To: <20200520132003.9492-17-kraxel@redhat.com>
+References: <20200520132003.9492-1-kraxel@redhat.com>
+ <20200520132003.9492-17-kraxel@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <87367uobma.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 3417106217695218467
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -77
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedruddutddguddukecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenfghrlhcuvffnffculddvfedmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeiuddvhfefjeegjeeiheeftddtveekjefghffgffeuvdffleeiveefteekgefggeenucffohhmrghinhepohhpvghnphhofigvrhdrgiihiidpohiilhgrsghsrdhorhhgnecukfhppedtrddtrddtrddtpdekiedrvddtiedrudeiledrvddvheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejiedvrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
-Received-SPF: pass client-ip=178.32.116.78; envelope-from=clg@kaod.org;
- helo=8.mo5.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/21 03:36:13
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/21 01:47:40
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: msexApotvRZG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0jix2dD25iHG
 
-On 5/20/20 5:43 PM, Markus Armbruster wrote:
-> Cédric Le Goater <clg@kaod.org> writes:
-> 
->> On 5/20/20 8:34 AM, Markus Armbruster wrote:
->>> Cédric Le Goater <clg@kaod.org> writes:
->>>
->>>> The AST2400 and AST2500 SoCs have two MACs but only the first MAC0 is
->>>> active on the Aspeed machines using these SoCs. The AST2600 has four
->>>> MACs. The AST2600 EVB machine activates MAC1, MAC2 and MAC3 and the
->>>> Tacoma BMC machine activates MAC2.
->>>>
->>>> Introduce a bit-field property "macs-mask" under the Aspeed SoC model
->>>> to link the active MACs of the machine being started with the available
->>>> network devices.
->>>>
->>>> Inactive MACs will have no peer and QEMU will warn the user with :
->>>>
->>>>     qemu-system-arm: warning: nic ftgmac100.0 has no peer
->>>>     qemu-system-arm: warning: nic ftgmac100.1 has no peer
->>>>     qemu-system-arm: warning: nic ftgmac100.3 has no peer
->>>
->>> I can't reproduce this warning.  What's your exact command line?
->>
->> Get a witherspoon-tacoma flash image :
->>
->>     $ wget https://openpower.xyz/job/openbmc-build/distro=ubuntu,label=builder,target=witherspoon-tacoma/lastSuccessfulBuild/artifact/deploy/images/witherspoon-tacoma/flash-witherspoon-tacoma
->>
->> Run :
->>
->>     $ qemu-system-arm -M tacoma-bmc -nic user -drive file=./flash-witherspoon-tacoma,format=raw,if=mtd -nographic -nodefaults -serial mon:stdio
->>     qemu-system-arm: warning: nic ftgmac100.0 has no peer
->>     qemu-system-arm: warning: nic ftgmac100.1 has no peer
->>     qemu-system-arm: warning: nic ftgmac100.3 has no peer
-> 
-> I must have run the wrong binary somehow.
-> 
->>>
->>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->>>> ---
->>>>
->>>>  To be applied on top of patch "arm/aspeed: Compute the number of CPUs
->>>>  from the SoC definition" 
->>>>  
->>>>  http://patchwork.ozlabs.org/project/qemu-devel/patch/20200519091631.1006073-1-clg@kaod.org/
->>>>  
->>>>  include/hw/arm/aspeed.h     |  1 +
->>>>  include/hw/arm/aspeed_soc.h |  6 ++++++
->>>>  hw/arm/aspeed.c             |  6 ++++++
->>>>  hw/arm/aspeed_ast2600.c     | 11 ++++++++---
->>>>  hw/arm/aspeed_soc.c         | 10 ++++++++--
->>>>  5 files changed, 29 insertions(+), 5 deletions(-)
->>>>
->>>> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
->>>> index 18521484b90e..842dff485f5b 100644
->>>> --- a/include/hw/arm/aspeed.h
->>>> +++ b/include/hw/arm/aspeed.h
->>>> @@ -39,6 +39,7 @@ typedef struct AspeedMachineClass {
->>>>      const char *fmc_model;
->>>>      const char *spi_model;
->>>>      uint32_t num_cs;
->>>> +    uint32_t macs_mask;
->>>>      void (*i2c_init)(AspeedBoardState *bmc);
->>>>  } AspeedMachineClass;
->>>>  
->>>> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
->>>> index 914115f3ef77..fdb9e05bc47c 100644
->>>> --- a/include/hw/arm/aspeed_soc.h
->>>> +++ b/include/hw/arm/aspeed_soc.h
->>>> @@ -34,6 +34,11 @@
->>>>  #define ASPEED_CPUS_NUM  2
->>>>  #define ASPEED_MACS_NUM  4
->>>>  
->>>> +#define ASPEED_MAC0_ON   (1 << 0)
->>>> +#define ASPEED_MAC1_ON   (1 << 1)
->>>> +#define ASPEED_MAC2_ON   (1 << 2)
->>>> +#define ASPEED_MAC3_ON   (1 << 3)
->>>> +
->>>>  typedef struct AspeedSoCState {
->>>>      /*< private >*/
->>>>      DeviceState parent;
->>>> @@ -55,6 +60,7 @@ typedef struct AspeedSoCState {
->>>>      AspeedSDMCState sdmc;
->>>>      AspeedWDTState wdt[ASPEED_WDTS_NUM];
->>>>      FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
->>>> +    uint32_t macs_mask;
->>>
->>> What's the purpose of this member?  When and how would it be different
->>> from AspeedMachineClass's macs_mask?
->>
->> Each machine activates a different set of MACs even if using the same SoC.
->> So, the SoC macs_mask is overiden when the machine initializes the SoC in 
->> aspeed_machine_init().
-> 
-> Let me try to rephrase my question below.
-> 
->> That said, I think the default SoC macs_mask should be all MACS, a value 
->> of 0xFFFFFFFF would be fine, and not only the first MAC as this patch does.
->>
->>>>      AspeedMiiState mii[ASPEED_MACS_NUM];
->>>>      AspeedGPIOState gpio;
->>>>      AspeedGPIOState gpio_1_8v;
->>>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->>>> index 6f8f4b88f8ab..79c683864d7e 100644
->>>> --- a/hw/arm/aspeed.c
->>>> +++ b/hw/arm/aspeed.c
->>>> @@ -283,6 +283,8 @@ static void aspeed_machine_init(MachineState *machine)
->>>>                              &error_abort);
->>>>      object_property_set_int(OBJECT(&bmc->soc), amc->num_cs, "num-cs",
->>>>                              &error_abort);
->>>> +    object_property_set_int(OBJECT(&bmc->soc), amc->macs_mask, "macs-mask",
->>>> +                            &error_abort);
-> 
-> Here, you set AspeedSocState member macs_mask to AspeedMachineClass
-> member macs_mask.
+On Wed, 20 May 2020 15:19:57 +0200
+Gerd Hoffmann <kraxel@redhat.com> wrote:
 
-yes. aspeed_machine_init() is common to all machines. AspeedMachineClass
-gathers the differences.
+> $subject says all.  Can be controlled using -M microvm,acpi=on/off.
+
+thanks for really nice and clean impl.
+There are a couple minor notes below, but otherwise
+
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
 > 
->>>>      object_property_set_link(OBJECT(&bmc->soc), OBJECT(&bmc->ram_container),
->>>>                               "dram", &error_abort);
->>>>      if (machine->kernel_filename) {
->>>> @@ -556,12 +558,14 @@ static int aspeed_soc_num_cpus(const char *soc_name)
->>>>  static void aspeed_machine_class_init(ObjectClass *oc, void *data)
->>>>  {
->>>>      MachineClass *mc = MACHINE_CLASS(oc);
->>>> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
->>>>  
->>>>      mc->init = aspeed_machine_init;
->>>>      mc->no_floppy = 1;
->>>>      mc->no_cdrom = 1;
->>>>      mc->no_parallel = 1;
->>>>      mc->default_ram_id = "ram";
->>>> +    amc->macs_mask = ASPEED_MAC0_ON;
+> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+> ---
+>  hw/i386/acpi-microvm.h    |   6 ++
+>  include/hw/i386/microvm.h |   9 ++
+>  hw/i386/acpi-microvm.c    | 182 ++++++++++++++++++++++++++++++++++++++
+>  hw/i386/microvm.c         |  37 ++++++++
+>  hw/i386/Kconfig           |   1 +
+>  hw/i386/Makefile.objs     |   1 +
+>  6 files changed, 236 insertions(+)
+>  create mode 100644 hw/i386/acpi-microvm.h
+>  create mode 100644 hw/i386/acpi-microvm.c
 > 
-> Abstract base type's .class_init() sets AspeedMachineClass's macs_mask
-> to "just first one".
+> diff --git a/hw/i386/acpi-microvm.h b/hw/i386/acpi-microvm.h
+> new file mode 100644
+> index 000000000000..6a6c2967102b
+> --- /dev/null
+> +++ b/hw/i386/acpi-microvm.h
+> @@ -0,0 +1,6 @@
+> +#ifndef HW_I386_ACPI_MICROVM_H
+> +#define HW_I386_ACPI_MICROVM_H
+> +
+> +void acpi_setup_microvm(void);
+> +
+> +#endif
+> diff --git a/include/hw/i386/microvm.h b/include/hw/i386/microvm.h
+> index 2709306c4016..ebd7f49d5de8 100644
+> --- a/include/hw/i386/microvm.h
+> +++ b/include/hw/i386/microvm.h
+> @@ -24,12 +24,18 @@
+>  
+>  #include "hw/boards.h"
+>  #include "hw/i386/x86.h"
+> +#include "hw/acpi/acpi_dev_interface.h"
+>  
+>  /* Platform virtio definitions */
+>  #define VIRTIO_MMIO_BASE      0xc0000000
+>  #define VIRTIO_NUM_TRANSPORTS 8
+>  #define VIRTIO_CMDLINE_MAXLEN 64
+>  
+> +#define GED_MMIO_BASE         0xc1000000
+> +#define GED_MMIO_BASE_MEMHP   (GED_MMIO_BASE + 0x100)
+> +#define GED_MMIO_BASE_REGS    (GED_MMIO_BASE + 0x200)
+> +#define GED_MMIO_IRQ          9
+> +
+>  /* Machine type options */
+>  #define MICROVM_MACHINE_PIT                 "pit"
+>  #define MICROVM_MACHINE_PIC                 "pic"
+> @@ -58,6 +64,9 @@ typedef struct {
+>      /* Machine state */
+>      uint32_t virtio_irq_base;
+>      bool kernel_cmdline_fixed;
+> +    Notifier machine_done;
+> +    Notifier powerdown_req;
+> +    AcpiDeviceIf *acpi_dev;
+>  } MicrovmMachineState;
+>  
+>  #define TYPE_MICROVM_MACHINE   MACHINE_TYPE_NAME("microvm")
+> diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
+> new file mode 100644
+> index 000000000000..d2dd024909cc
+> --- /dev/null
+> +++ b/hw/i386/acpi-microvm.c
+> @@ -0,0 +1,182 @@
+> +/* Support for generating ACPI tables and passing them to Guests
+> + *
+> + * Copyright (C) 2008-2010  Kevin O'Connor <kevin@koconnor.net>
+> + * Copyright (C) 2006 Fabrice Bellard
+> + * Copyright (C) 2013 Red Hat Inc
+> + *
+> + * Author: Michael S. Tsirkin <mst@redhat.com>
+since you wrote it s/^^^/Gerd/
 
-Yes. This covers all AST2400 and AST2500 machines. Only the AST2600 
-use a different set of MACs.
- 
-> 
->>>>  
->>>>      aspeed_machine_class_props_init(oc);
->>>>  }
->>>> @@ -680,6 +684,7 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
->>>>      amc->fmc_model = "w25q512jv";
->>>>      amc->spi_model = "mx66u51235f";
->>>>      amc->num_cs    = 1;
->>>> +    amc->macs_mask  = ASPEED_MAC1_ON | ASPEED_MAC2_ON | ASPEED_MAC3_ON;
->>>>      amc->i2c_init  = ast2600_evb_i2c_init;
->>>>      mc->default_ram_size = 1 * GiB;
->>>>      mc->default_cpus = mc->min_cpus = mc->max_cpus =
->>>> @@ -698,6 +703,7 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
->>>>      amc->fmc_model = "mx66l1g45g";
->>>>      amc->spi_model = "mx66l1g45g";
->>>>      amc->num_cs    = 2;
->>>> +    amc->macs_mask  = ASPEED_MAC2_ON;
->>>>      amc->i2c_init  = witherspoon_bmc_i2c_init; /* Same board layout */
->>>>      mc->default_ram_size = 1 * GiB;
->>>>      mc->default_cpus = mc->min_cpus = mc->max_cpus =
-> 
-> Two concrete types' .class_init() override this default.
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> +
+> + * This program is distributed in the hope that it will be useful,
+> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> + * GNU General Public License for more details.
+> +
+> + * You should have received a copy of the GNU General Public License along
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +
+> +#include "exec/memory.h"
+> +#include "hw/acpi/acpi.h"
+> +#include "hw/acpi/aml-build.h"
+> +#include "hw/acpi/bios-linker-loader.h"
+> +#include "hw/acpi/generic_event_device.h"
+> +#include "hw/acpi/utils.h"
+> +#include "hw/boards.h"
+> +#include "hw/i386/fw_cfg.h"
+> +#include "hw/i386/microvm.h"
+> +
+> +#include "acpi-common.h"
+> +#include "acpi-microvm.h"
+> +
+> +static void
+> +build_dsdt_microvm(GArray *table_data, BIOSLinker *linker,
+> +                   MicrovmMachineState *mms)
+> +{
+> +    X86MachineState *x86ms = X86_MACHINE(mms);
+> +    Aml *dsdt, *sb_scope, *scope, *pkg;
+> +    bool ambiguous;
+> +    Object *isabus;
+> +
+> +    isabus = object_resolve_path_type("", TYPE_ISA_BUS, &ambiguous);
+> +    assert(isabus);
+> +    assert(!ambiguous);
+> +
+> +    dsdt = init_aml_allocator();
+> +
+> +    /* Reserve space for header */
+> +    acpi_data_push(dsdt->buf, sizeof(AcpiTableHeader));
+> +
+> +    sb_scope = aml_scope("_SB");
+> +    fw_cfg_add_acpi_dsdt(sb_scope, x86ms->fw_cfg);
+> +    isa_build_aml(ISA_BUS(isabus), sb_scope);
+> +    build_ged_aml(sb_scope, GED_DEVICE, HOTPLUG_HANDLER(mms->acpi_dev),
+> +                  GED_MMIO_IRQ, AML_SYSTEM_MEMORY, GED_MMIO_BASE);
+> +    acpi_dsdt_add_power_button(sb_scope);
+> +    aml_append(dsdt, sb_scope);
+> +
+> +    scope = aml_scope("\\");
+> +    pkg = aml_package(4);
+> +    aml_append(pkg, aml_int(5)); /* SLEEP_CONTROL_REG.SLP_TYP */
+> +    aml_append(pkg, aml_int(0)); /* ignored */
+> +    aml_append(pkg, aml_int(0)); /* reserved */
+> +    aml_append(pkg, aml_int(0)); /* reserved */
+> +    aml_append(scope, aml_name_decl("_S5", pkg));
+> +    aml_append(dsdt, scope);
+> +
+> +    /* copy AML table into ACPI tables blob and patch header there */
+> +    g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len);
+> +    build_header(linker, table_data,
+> +        (void *)(table_data->data + table_data->len - dsdt->buf->len),
+> +        "DSDT", dsdt->buf->len, 5, NULL, NULL);
+> +    free_aml_allocator();
+> +}
+> +
+> +static void acpi_build_microvm(AcpiBuildTables *tables,
+> +                               MicrovmMachineState *mms)
+> +{
+> +    MachineState *machine = MACHINE(mms);
+> +    GArray *table_offsets;
+> +    GArray *tables_blob = tables->table_data;
+> +    unsigned dsdt, xsdt;
+> +    AcpiFadtData pmfadt = {
+> +        .rev = 5,
+> +        .minor_ver = 1,
+> +        .flags = ((1 << ACPI_FADT_F_HW_REDUCED_ACPI) |
+> +                  (1 << ACPI_FADT_F_RESET_REG_SUP)),
+> +        .sleep_ctl = {
+> +            .space_id = AML_AS_SYSTEM_MEMORY,
+> +            .bit_width = 8,
+> +            .address = GED_MMIO_BASE_REGS + ACPI_GED_REG_SLEEP_CTL,
+> +        },
+> +        .sleep_sts = {
+> +            .space_id = AML_AS_SYSTEM_MEMORY,
+> +            .bit_width = 8,
+> +            .address = GED_MMIO_BASE_REGS + ACPI_GED_REG_SLEEP_STS,
+> +        },
+> +        .reset_reg = {
+> +            .space_id = AML_AS_SYSTEM_MEMORY,
+> +            .bit_width = 8,
+> +            .address = GED_MMIO_BASE_REGS + ACPI_GED_REG_RESET,
+> +        },
+> +        .reset_val = ACPI_GED_RESET_VALUE,
+> +    };
+> +
+> +    table_offsets = g_array_new(false, true /* clear */,
+> +                                        sizeof(uint32_t));
+> +    bios_linker_loader_alloc(tables->linker,
+> +                             ACPI_BUILD_TABLE_FILE, tables_blob,
+> +                             64 /* Ensure FACS is aligned */,
+> +                             false /* high memory */);
+> +
+> +    dsdt = tables_blob->len;
+> +    build_dsdt_microvm(tables_blob, tables->linker, mms);
+> +
+> +    pmfadt.dsdt_tbl_offset = &dsdt;
+> +    pmfadt.xdsdt_tbl_offset = &dsdt;
+> +    acpi_add_table(table_offsets, tables_blob);
+> +    build_fadt(tables_blob, tables->linker, &pmfadt, NULL, NULL);
+> +
+> +    acpi_add_table(table_offsets, tables_blob);
+> +    acpi_build_madt(tables_blob, tables->linker, X86_MACHINE(machine),
+> +                    mms->acpi_dev, false);
+> +
+> +    xsdt = tables_blob->len;
+> +    build_xsdt(tables_blob, tables->linker, table_offsets, NULL, NULL);
+> +
+> +    /* RSDP is in FSEG memory, so allocate it separately */
+> +    {
+> +        AcpiRsdpData rsdp_data = {
+> +            .revision = 2,
+> +            .oem_id = ACPI_BUILD_APPNAME6,
+> +            .xsdt_tbl_offset = &xsdt,
+> +            .rsdt_tbl_offset = NULL,
+> +        };
+> +        build_rsdp(tables->rsdp, tables->linker, &rsdp_data);
+> +    }
+> +
+> +    /* Cleanup memory that's no longer used. */
+> +    g_array_free(table_offsets, true);
+> +}
+> +
+> +static void acpi_build_no_update(void *build_opaque)
+> +{
+> +    /* nothing, microvm tables don't change at runtime */
+> +}
+> +
+> +void acpi_setup_microvm(void)
+> +{
+> +    MicrovmMachineState *mms = MICROVM_MACHINE(qdev_get_machine());
+> +    X86MachineState *x86ms = X86_MACHINE(mms);
+> +    AcpiBuildTables tables;
+> +
+> +    assert(x86ms->fw_cfg);
+> +
+> +    if (!x86_machine_is_acpi_enabled(x86ms)) {
+> +        return;
+> +    }
+> +
+> +    acpi_build_tables_init(&tables);
+> +    acpi_build_microvm(&tables, mms);
+> +
+> +    /* Now expose it all to Guest */
+> +    acpi_add_rom_blob(acpi_build_no_update, NULL,
+> +                      tables.table_data,
+> +                      ACPI_BUILD_TABLE_FILE,
+> +                      ACPI_BUILD_TABLE_MAX_SIZE);
+> +    acpi_add_rom_blob(acpi_build_no_update, NULL,
+> +                      tables.linker->cmd_blob,
+> +                      "etc/table-loader", 0);
+> +    acpi_add_rom_blob(acpi_build_no_update, NULL,
+> +                      tables.rsdp,
+> +                      ACPI_BUILD_RSDP_FILE, 0);
+> +
+> +    acpi_build_tables_cleanup(&tables, false);
+> +}
+> diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
+> index ea4460714a99..b38321112baa 100644
+> --- a/hw/i386/microvm.c
+> +++ b/hw/i386/microvm.c
+> @@ -26,6 +26,8 @@
+>  #include "sysemu/cpus.h"
+>  #include "sysemu/numa.h"
+>  #include "sysemu/reset.h"
+> +#include "sysemu/runstate.h"
+> +#include "acpi-microvm.h"
+>  
+>  #include "hw/loader.h"
+>  #include "hw/irq.h"
+> @@ -41,6 +43,8 @@
+>  #include "hw/i386/e820_memory_layout.h"
+>  #include "hw/i386/fw_cfg.h"
+>  #include "hw/virtio/virtio-mmio.h"
+> +#include "hw/acpi/acpi.h"
+> +#include "hw/acpi/generic_event_device.h"
+>  
+>  #include "cpu.h"
+>  #include "elf.h"
+> @@ -129,6 +133,17 @@ static void microvm_devices_init(MicrovmMachineState *mms)
+>      }
+>  
+>      /* Optional and legacy devices */
+> +    if (x86_machine_is_acpi_enabled(x86ms)) {
+> +        DeviceState *dev = qdev_create(NULL, TYPE_ACPI_GED_X86);
+> +        qdev_prop_set_uint32(dev, "ged-event", ACPI_GED_PWR_DOWN_EVT);
+> +        sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, GED_MMIO_BASE);
+> +        /* sysbus_mmio_map(SYS_BUS_DEVICE(dev), 1, GED_MMIO_BASE_MEMHP); */
+> +        sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, GED_MMIO_BASE_REGS);
+> +        sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0,
+> +                           x86ms->gsi[GED_MMIO_IRQ]);
+> +        qdev_init_nofail(dev);
+> +        mms->acpi_dev = ACPI_DEVICE_IF(dev);
+considering all x86 machines have it, maybe move acpi_dev field to parent type?
 
-yes.
- 
-> Fine with me.
-> 
->>>> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
->>>> index 114b94f8f44d..fa85122f6d78 100644
->>>> --- a/hw/arm/aspeed_ast2600.c
->>>> +++ b/hw/arm/aspeed_ast2600.c
->>>> @@ -247,6 +247,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->>>>      AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
->>>>      Error *err = NULL, *local_err = NULL;
->>>>      qemu_irq irq;
->>>> +    NICInfo *nd = &nd_table[0];
->>>>  
->>>>      /* IO space */
->>>>      create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_IOMEM],
->>>> @@ -462,8 +463,12 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->>>>      }
->>>>  
->>>>      /* Net */
->>>> -    for (i = 0; i < nb_nics && i < sc->macs_num; i++) {
->>>> -        qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]);
->>>> +    for (i = 0; i < sc->macs_num; i++) {
->>>> +        if ((s->macs_mask & (1 << i)) && nd->used) {
-> 
-> This checks AspeedSocState's member.
->
->>>> +            qemu_check_nic_model(nd, TYPE_FTGMAC100);
->>>> +            qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), nd);
->>>> +            nd++;
->>>> +        }
->>>>          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed",
->>>>                                   &err);
->>>>          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realized",
->>>> @@ -471,7 +476,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->>>>          error_propagate(&err, local_err);
->>>>          if (err) {
->>>>              error_propagate(errp, err);
->>>> -           return;
->>>> +            return;
->>>>          }
->>>>          sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
->>>>                          sc->memmap[ASPEED_ETH1 + i]);
->>>> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
->>>> index 984d29087dce..d2c6a5760790 100644
->>>> --- a/hw/arm/aspeed_soc.c
->>>> +++ b/hw/arm/aspeed_soc.c
->>>> @@ -234,6 +234,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->>>>      AspeedSoCState *s = ASPEED_SOC(dev);
->>>>      AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
->>>>      Error *err = NULL, *local_err = NULL;
->>>> +    NICInfo *nd = &nd_table[0];
->>>>  
->>>>      /* IO space */
->>>>      create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_IOMEM],
->>>> @@ -405,8 +406,12 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->>>>      }
->>>>  
->>>>      /* Net */
->>>> -    for (i = 0; i < nb_nics && i < sc->macs_num; i++) {
->>>> -        qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]);
->>>> +    for (i = 0; i < sc->macs_num; i++) {
->>>> +        if ((s->macs_mask & (1 << i)) && nd->used) {
-> 
-> Likewise.
-> 
-> Now my rephrased question: why do you need to store macs_mask both in
-> AspeedSoCState and in AspeedMachineClass?  As far as I can tell, their
-> values are the same for any given machine.
+> +    }
+>  
+>      if (mms->pic == ON_OFF_AUTO_ON || mms->pic == ON_OFF_AUTO_AUTO) {
+>          qemu_irq *i8259;
+> @@ -457,6 +472,23 @@ static void microvm_machine_set_auto_kernel_cmdline(Object *obj, bool value,
+>      mms->auto_kernel_cmdline = value;
+>  }
+>  
+> +static void microvm_machine_done(Notifier *notifier, void *data)
+> +{
+> +    acpi_setup_microvm();
+pass MicrovmMachineState down to acpi_setup_microvm() the same way you are doing below?
+(and avoid qdev_get_machine() in acpi_setup_microvm())
 
-yes, they are the same because the parent machine "propagates" the top 
-level configuration to all sub-devices. The SoC is one of these and its 
-initial settings are generic and do not make assumption on the machine 
-characteristics.
-
-The general case is "use MAC0" only, which works for all AST2400 and
-AST2500 machines but the AST2600 machines have a different configuration. 
-
-I agree there is some redundancy in this design pattern. What do you 
-have in mind ? 
-
-> 
->>>> +            qemu_check_nic_model(nd, TYPE_FTGMAC100);
->>>> +            qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), nd);
->>>> +            nd++;
->>>> +        }
->>>>          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed",
->>>>                                   &err);
->>>>          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realized",
->>>> @@ -455,6 +460,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->>>>                         aspeed_soc_get_irq(s, ASPEED_SDHCI));
->>>>  }
->>>>  static Property aspeed_soc_properties[] = {
->>>> +    DEFINE_PROP_UINT32("macs-mask", AspeedSoCState, macs_mask, 0x1),
-> 
-> Shouldn't this be ASPEED_MAC0_ON rather than 0x1?
-
-yes. or 0x0 ? and let the machine fully in charge of the configuration.
-
-> Hmm, isn't aspeed_machine_class_init()'s amc->macs_mask = ASPEED_MAC0_ON
-> redundant with this?
-
-yes. So 0x0 is better.
-
-Thanks,
-
-C.
-
-> 
->>>>      DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_REGION,
->>>>                       MemoryRegion *),
->>>>      DEFINE_PROP_END_OF_LIST(),
->>>
-> 
+> +}
+> +
+> +static void microvm_powerdown_req(Notifier *notifier, void *data)
+> +{
+> +    MicrovmMachineState *mms = container_of(notifier, MicrovmMachineState,
+> +                                            powerdown_req);
+> +
+> +    if (mms->acpi_dev) {
+> +        Object *obj = OBJECT(mms->acpi_dev);
+> +        AcpiDeviceIfClass *adevc = ACPI_DEVICE_IF_GET_CLASS(obj);
+> +        adevc->send_event(mms->acpi_dev, ACPI_POWER_DOWN_STATUS);
+> +    }
+> +}
+> +
+>  static void microvm_machine_initfn(Object *obj)
+>  {
+>      MicrovmMachineState *mms = MICROVM_MACHINE(obj);
+> @@ -471,6 +503,11 @@ static void microvm_machine_initfn(Object *obj)
+>  
+>      /* State */
+>      mms->kernel_cmdline_fixed = false;
+> +
+> +    mms->machine_done.notify = microvm_machine_done;
+> +    qemu_add_machine_init_done_notifier(&mms->machine_done);
+> +    mms->powerdown_req.notify = microvm_powerdown_req;
+> +    qemu_register_powerdown_notifier(&mms->powerdown_req);
+>  }
+>  
+>  static void microvm_class_init(ObjectClass *oc, void *data)
+> diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
+> index c93f32f6579d..be746bcb49eb 100644
+> --- a/hw/i386/Kconfig
+> +++ b/hw/i386/Kconfig
+> @@ -102,6 +102,7 @@ config MICROVM
+>      select I8259
+>      select MC146818RTC
+>      select VIRTIO_MMIO
+> +    select ACPI_HW_REDUCED
+>  
+>  config X86_IOMMU
+>      bool
+> diff --git a/hw/i386/Makefile.objs b/hw/i386/Makefile.objs
+> index 622739305882..bbb2fe78f3cd 100644
+> --- a/hw/i386/Makefile.objs
+> +++ b/hw/i386/Makefile.objs
+> @@ -19,3 +19,4 @@ obj-y += kvmvapic.o
+>  obj-$(CONFIG_ACPI) += acpi-common.o
+>  obj-$(CONFIG_ACPI_HW_REDUCED) += generic_event_device_x86.o
+>  obj-$(CONFIG_PC) += acpi-build.o
+> +obj-$(CONFIG_MICROVM) += acpi-microvm.o
 

@@ -1,89 +1,88 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1379487lfb;
-        Thu, 21 May 2020 02:12:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCzeHZVVP8MUMMj1Jp9BCwdKieMk7nURMlSs8Wvdq2Vr38PiuFvKNUIO95iRIcMmh+sDkq
-X-Received: by 2002:a37:2711:: with SMTP id n17mr8917080qkn.430.1590052373729;
-        Thu, 21 May 2020 02:12:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590052373; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1379547lfb;
+        Thu, 21 May 2020 02:12:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyxQ23Hi4Rp9eFBwx+c6F2XI+NYMGity3O4YRd1jHooH4jqFMwNslE2PBrIaQfELvhLqUmJ
+X-Received: by 2002:a0c:b501:: with SMTP id d1mr9112621qve.63.1590052379220;
+        Thu, 21 May 2020 02:12:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590052379; cv=none;
         d=google.com; s=arc-20160816;
-        b=fzKw5/DDmOi+0dUrc2E+/akg2Y5fZ6XtRVN7+I90qnfOT2gSTiNc1NYoSch/cGZQ9M
-         tvQlDHJiddyLNJBC+iq0W7BRfpA+vxqE9096+dZQI5yW2rgVbGyr2SXTtRT+TrRvKIHO
-         yG1TrB88I4WzZgfuT4UJmD7rfHGzkzP/d2qE8gKovfNeUrgEMEG0xK3ctfurk8OEMwPD
-         d08A4xNq1cwLxvcTBzvLzpGX3g7x7S3avIb3fVqi5vy5Toml79Tl11Jd2KBIZG92lJ1H
-         S6tQ+CepnTTnvZ40/vyas0TdhMNgUIRDdiKIbHkL62xheQldTao/QhxtdWrHPzGgNtSZ
-         XaOA==
+        b=bSZg18qRGkuqIK3seBFIzzvTwwIGJxKI36rPsZ9KDdADTH9d3azVy2UPjtKiQCxciz
+         ps+khfiE5l5/dX3xA5RzTwT+SCc5TXbBDhem7gFOn72Z1EGU3lyv5Xm/Zcd910WS/T8F
+         FBHiK4S+bXQQDBZmlzYiERhua6nnZuv0Fk4AW3jy3CiIhlKj+ozRslD2y6tZirtk9WOd
+         Q48ZGQdwimVby8CShwXNLwukYf/dMGN8KoqAYa5nH3b3FGlWy/JQVFBjIcTy3AZyuHIf
+         pa9CqXKjigX06BjcfBE+LxcptLVe+vIaRbdRk48Lrf21rTTohG54shqA3TwN6dVlOj4l
+         AHHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=1czAJ1x/IV6ed1bEr1v7sbxUSM/1M7JNSIvpPOu9AnM=;
-        b=LmWF0e97RsMbAAuQ2NSi6808EMnm1juMLe5bRrazXVsfPow4U17QLtJ4f6FY1cb4jE
-         SaetxSbavNV2zrMBQLV4gfjbZJAPcRajto66Q8mjoUEkj88DoWnvCbtLmEdYuag2mkmx
-         EeP41K9CqeCwwATwQAeL2kCqTlfEmTqx5dVH2pWXA2MtJg7+8vtKvR4S5N9yPm56CEXt
-         Mz++sA2/lqoHAvJSVIpXkyzsQJd4TcXr/twEDRTYo96ehh/3JewnQSp07l8ru/f5kpZw
-         8zH+6dR+S3oEsxeTAJHRAengY/nCn63AzsO9f6E2Iaa1UyqAjzrXyK9xNAQpivvxfpCh
-         535w==
+        bh=0vYMi+kgVnD/ZFNncBOFCqHi5dc2slD8n10tuwHQGQo=;
+        b=u2wGml0y0ShFFQ8l1USEz/t08gZKatV8IZXB2APBrbjEUJ95YcNv/oxiRkffRZJ5NY
+         ROmU2vbJofcqfbf5Ic5/rEN66GJeq9nMOUPbc7E53bzC3mu6zk1arXPLvMbBsXsqzycO
+         jIYerL+9ogVqqv/5KIUlnTU1GlvELppA7fWtwZBXhx4kZqKUUscEvFTVmIAMQF8AZ8Pb
+         qg7fcBDYNFKGUiOOlyILY3+9wZGDWcs7VP+3NpfeVt/ipu5069ERGko/FJzzdKstFNNH
+         mLXXmaqPjJKoKdlUqw/JOTPBQQ1rZADd4lERyq2DsXOSg9zzHOIFthsnyrZCfaFWCwCZ
+         BycQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fRO9Hdn9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Of8Mden/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d8si2985193qto.279.2020.05.21.02.12.53
+        by mx.google.com with ESMTPS id 16si3395963qks.262.2020.05.21.02.12.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 May 2020 02:12:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 21 May 2020 02:12:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fRO9Hdn9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Of8Mden/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37694 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39298 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jbhG1-0006Av-4K
-	for alex.bennee@linaro.org; Thu, 21 May 2020 05:12:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55580)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jbhG6-0006zG-LS
+	for alex.bennee@linaro.org; Thu, 21 May 2020 05:12:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55622)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jbhEy-0004Y3-1V
- for qemu-devel@nongnu.org; Thu, 21 May 2020 05:11:48 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:34177
+ id 1jbhF9-0004su-AF
+ for qemu-arm@nongnu.org; Thu, 21 May 2020 05:11:59 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:52134
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jbhEw-0005L6-N0
- for qemu-devel@nongnu.org; Thu, 21 May 2020 05:11:47 -0400
+ id 1jbhF8-0005M9-4R
+ for qemu-arm@nongnu.org; Thu, 21 May 2020 05:11:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590052306;
+ s=mimecast20190719; t=1590052317;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=1czAJ1x/IV6ed1bEr1v7sbxUSM/1M7JNSIvpPOu9AnM=;
- b=fRO9Hdn9wN8cAZm5yWghbmZXS1qijaRC0FR6r2yGjNV0rjTJQtTAWTWi/O9GO7nD4wTxQr
- OtaPH/1oKKUchZ9wq1fm1HP33tSrmbWmHA6DYbmzyBovlWbsxnzB307SJRbJnuJsb9HSmC
- 1vPGiH5ijU7KJabUzkLpjUsbBdiZP2E=
+ bh=0vYMi+kgVnD/ZFNncBOFCqHi5dc2slD8n10tuwHQGQo=;
+ b=Of8Mden/WPd746mx2HOZwRL6bb/NiqqVPiEPpw2CP3L8ACRENOkxlSVtq/TrYhK6EkyjoK
+ BBfDoDsCTtwxHTSKNRgesBBass1oAyiu7pXHAYxuGv52eRADXlmX/rxwv4/vHwsOh5OmMu
+ 5E4WoLueqnu9UYU9NK5siO7rdP9CVVw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-145-vYGYtdXmMUCtSkWSzXc-hQ-1; Thu, 21 May 2020 05:11:44 -0400
-X-MC-Unique: vYGYtdXmMUCtSkWSzXc-hQ-1
+ us-mta-141-scbFFwPJPxmNkZgXeJBJeA-1; Thu, 21 May 2020 05:11:53 -0400
+X-MC-Unique: scbFFwPJPxmNkZgXeJBJeA-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D9D3218FF660;
- Thu, 21 May 2020 09:11:42 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E23EA80183C;
+ Thu, 21 May 2020 09:11:51 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-113-56.ams2.redhat.com [10.36.113.56])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 088C45D9CA;
- Thu, 21 May 2020 09:11:39 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 183845D9C9;
+ Thu, 21 May 2020 09:11:48 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, peterx@redhat.com
-Subject: [PATCH 4/9] hw/arm/smmu: Introduce SMMUTLBEntry for PTW and IOTLB
- value
-Date: Thu, 21 May 2020 11:10:54 +0200
-Message-Id: <20200521091059.9453-5-eric.auger@redhat.com>
+Subject: [PATCH 6/9] hw/arm/smmu-common: Manage IOTLB block entries
+Date: Thu, 21 May 2020 11:10:56 +0200
+Message-Id: <20200521091059.9453-7-eric.auger@redhat.com>
 In-Reply-To: <20200521091059.9453-1-eric.auger@redhat.com>
 References: <20200521091059.9453-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -104,217 +103,246 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: jean-philippe@linaro.org, robh@kernel.org, robin.murphy@arm.com,
  mst@redhat.com, zhangfei.gao@foxmail.com, shameerali.kolothum.thodi@huawei.com,
  will@kernel.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sR3IRCzETEJH
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: s/9s0Z4kGyQX
 
-Introduce a specialized SMMUTLBEntry to store the result of
-the PTW and cache in the IOTLB. This structure extends the
-generic IOMMUTLBEntry struct with the level of the entry and
-the granule size.
+At the moment each entry in the IOTLB corresponds to a page sized
+mapping (4K, 16K or 64K), even if the page belongs to a mapped
+block. In case of block mapping this unefficiently consume IOTLB
+entries.
 
-Those latter will be useful when implementing range invalidation.
+Change the value of the entry so that it reflects the actual
+mapping it belongs to (block or page start address and size).
+
+Also the level/tg of the entry is encoded in the key. In subsequent
+patches we will enable range invalidation. This latter is able
+to provide the level/tg of the entry.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/hw/arm/smmu-common.h | 14 +++++++++++---
- hw/arm/smmu-common.c         | 30 ++++++++++++++++--------------
- hw/arm/smmuv3.c              | 10 +++++-----
- 3 files changed, 32 insertions(+), 22 deletions(-)
+ hw/arm/smmu-internal.h       | 10 ++++++
+ include/hw/arm/smmu-common.h |  8 +++--
+ hw/arm/smmu-common.c         | 61 +++++++++++++++++++++++++++---------
+ hw/arm/smmuv3.c              |  6 ++--
+ hw/arm/trace-events          |  2 +-
+ 5 files changed, 66 insertions(+), 21 deletions(-)
 
+diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
+index 2ecb6f1dc6..f60b48dc9b 100644
+--- a/hw/arm/smmu-internal.h
++++ b/hw/arm/smmu-internal.h
+@@ -97,7 +97,17 @@ uint64_t iova_level_offset(uint64_t iova, int inputsize,
+ }
+ 
+ #define SMMU_IOTLB_ASID_SHIFT  40
++#define SMMU_IOTLB_LEVEL_SHIFT 56
++#define SMMU_IOTLB_TG_SHIFT    58
+ 
+ #define SMMU_IOTLB_ASID(key) (((key) >> SMMU_IOTLB_ASID_SHIFT) & 0xFFFF)
+ #define SMMU_IOTLB_IOVA(key) (((key) & MAKE_64BIT_MASK(0, 40)) << 12)
++
++struct SMMUIOTLBPageInvInfo {
++    int asid;
++    uint64_t iova;
++    uint64_t mask;
++};
++typedef struct SMMUIOTLBPageInvInfo SMMUIOTLBPageInvInfo;
++
+ #endif
 diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index 7b9d2f0eb7..f6ee78e16c 100644
+index 676e53c086..34a13c7cd6 100644
 --- a/include/hw/arm/smmu-common.h
 +++ b/include/hw/arm/smmu-common.h
-@@ -52,6 +52,14 @@ typedef struct SMMUTransTableInfo {
-     uint8_t granule_sz;        /* granule page shift */
- } SMMUTransTableInfo;
- 
-+struct SMMUTLBEntry {
-+    IOMMUTLBEntry entry;
-+    uint8_t level;
-+    uint8_t granule;
-+};
-+
-+typedef struct SMMUTLBEntry SMMUTLBEntry;
-+
- /*
-  * Generic structure populated by derived SMMU devices
-  * after decoding the configuration information and used as
-@@ -135,7 +143,7 @@ static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
-  * pair, according to @cfg translation config
-  */
- int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
--             IOMMUTLBEntry *tlbe, SMMUPTWEventInfo *info);
-+             SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info);
- 
- /**
-  * select_tt - compute which translation table shall be used according to
-@@ -148,8 +156,8 @@ IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid);
+@@ -157,12 +157,14 @@ IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid);
  
  #define SMMU_IOTLB_MAX_SIZE 256
  
--IOMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg, hwaddr iova);
--void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, IOMMUTLBEntry *entry);
-+SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg, hwaddr iova);
-+void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry);
- uint64_t smmu_get_iotlb_key(uint16_t asid, uint64_t iova);
+-SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg, hwaddr iova);
++SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
++                                SMMUTransTableInfo *tt, hwaddr iova);
+ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry);
+-uint64_t smmu_get_iotlb_key(uint16_t asid, uint64_t iova);
++uint64_t smmu_get_iotlb_key(uint16_t asid, uint64_t iova,
++                            uint8_t tg, uint8_t level);
  void smmu_iotlb_inv_all(SMMUState *s);
  void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid);
+-void smmu_iotlb_inv_iova(SMMUState *s, uint16_t asid, dma_addr_t iova);
++void smmu_iotlb_inv_iova(SMMUState *s, int asid, dma_addr_t iova);
+ 
+ /* Unmap the range of all the notifiers registered to any IOMMU mr */
+ void smmu_inv_notifiers_all(SMMUState *s);
 diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 3101043540..aa88b62efb 100644
+index c2ed8346fb..27804fbb2d 100644
 --- a/hw/arm/smmu-common.c
 +++ b/hw/arm/smmu-common.c
-@@ -47,11 +47,11 @@ uint64_t smmu_get_iotlb_key(uint16_t asid, uint64_t iova)
-     return iova >> 12 | (uint64_t)(asid) << SMMU_IOTLB_ASID_SHIFT;
+@@ -42,16 +42,33 @@ static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
+     return *((const uint64_t *)v1) == *((const uint64_t *)v2);
  }
  
--IOMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
-+SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
-                                  hwaddr iova)
+-uint64_t smmu_get_iotlb_key(uint16_t asid, uint64_t iova)
++uint64_t smmu_get_iotlb_key(uint16_t asid, uint64_t iova,
++                            uint8_t tg, uint8_t level)
  {
-     uint64_t key = smmu_get_iotlb_key(cfg->asid, iova);
--    IOMMUTLBEntry *entry = g_hash_table_lookup(bs->iotlb, &key);
-+    SMMUTLBEntry *entry = g_hash_table_lookup(bs->iotlb, &key);
+-    return iova >> 12 | (uint64_t)(asid) << SMMU_IOTLB_ASID_SHIFT;
++    return iova >> 12 | (uint64_t)(asid) << SMMU_IOTLB_ASID_SHIFT |
++           (uint64_t)(level) << SMMU_IOTLB_LEVEL_SHIFT |
++           (uint64_t)(tg) << SMMU_IOTLB_TG_SHIFT;
+ }
+ 
+ SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+-                                 hwaddr iova)
++                                SMMUTransTableInfo *tt, hwaddr iova)
+ {
+-    uint64_t key = smmu_get_iotlb_key(cfg->asid, iova);
+-    SMMUTLBEntry *entry = g_hash_table_lookup(bs->iotlb, &key);
++    uint8_t tg = (tt->granule_sz - 10) / 2;
++    int level = tt->starting_level;
++    SMMUTLBEntry *entry = NULL;
++
++    while (level <= 3) {
++        uint64_t subpage_size = 1ULL << level_shift(level, tt->granule_sz);
++        uint64_t mask = subpage_size - 1;
++        uint64_t key;
++
++        key = smmu_get_iotlb_key(cfg->asid, iova & ~mask, tg, level);
++        entry = g_hash_table_lookup(bs->iotlb, &key);
++        if (entry) {
++            break;
++        }
++        level++;
++    }
  
      if (entry) {
          cfg->iotlb_hits++;
-@@ -69,7 +69,7 @@ IOMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
-     return entry;
- }
- 
--void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, IOMMUTLBEntry *entry)
-+void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *new)
+@@ -72,13 +89,14 @@ SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *new)
  {
      uint64_t *key = g_new0(uint64_t, 1);
++    uint8_t tg = (new->granule - 10) / 2;
  
-@@ -77,9 +77,9 @@ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, IOMMUTLBEntry *entry)
+     if (g_hash_table_size(bs->iotlb) >= SMMU_IOTLB_MAX_SIZE) {
          smmu_iotlb_inv_all(bs);
      }
  
--    *key = smmu_get_iotlb_key(cfg->asid, entry->iova);
--    trace_smmu_iotlb_insert(cfg->asid, entry->iova);
--    g_hash_table_insert(bs->iotlb, key, entry);
-+    *key = smmu_get_iotlb_key(cfg->asid, new->entry.iova);
-+    trace_smmu_iotlb_insert(cfg->asid, new->entry.iova);
-+    g_hash_table_insert(bs->iotlb, key, new);
+-    *key = smmu_get_iotlb_key(cfg->asid, new->entry.iova);
+-    trace_smmu_iotlb_insert(cfg->asid, new->entry.iova);
++    *key = smmu_get_iotlb_key(cfg->asid, new->entry.iova, tg, new->level);
++    trace_smmu_iotlb_insert(cfg->asid, new->entry.iova, tg, new->level);
+     g_hash_table_insert(bs->iotlb, key, new);
  }
  
- inline void smmu_iotlb_inv_all(SMMUState *s)
-@@ -199,7 +199,7 @@ SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova)
-  * @cfg: translation config
-  * @iova: iova to translate
-  * @perm: access type
-- * @tlbe: IOMMUTLBEntry (out)
-+ * @tlbe: SMMUTLBEntry (out)
-  * @info: handle to an error info
-  *
-  * Return 0 on success, < 0 on error. In case of error, @info is filled
-@@ -209,7 +209,7 @@ SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova)
-  */
- static int smmu_ptw_64(SMMUTransCfg *cfg,
-                        dma_addr_t iova, IOMMUAccessFlags perm,
--                       IOMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
-+                       SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
+@@ -97,12 +115,28 @@ static gboolean smmu_hash_remove_by_asid(gpointer key, gpointer value,
+     return SMMU_IOTLB_ASID(*iotlb_key) == asid;
+ }
+ 
+-inline void smmu_iotlb_inv_iova(SMMUState *s, uint16_t asid, dma_addr_t iova)
++static gboolean smmu_hash_remove_by_asid_iova(gpointer key, gpointer value,
++                                         gpointer user_data)
  {
-     dma_addr_t baseaddr, indexmask;
-     int stage = cfg->stage;
-@@ -229,8 +229,8 @@ static int smmu_ptw_64(SMMUTransCfg *cfg,
+-    uint64_t key = smmu_get_iotlb_key(asid, iova);
++    SMMUTLBEntry *iter = (SMMUTLBEntry *)value;
++    IOMMUTLBEntry *entry = &iter->entry;
++    SMMUIOTLBPageInvInfo *info = (SMMUIOTLBPageInvInfo *)user_data;
++    uint64_t *iotlb_key = (uint64_t *)key;
++
++    if (info->asid >= 0) {
++        return (info->asid == SMMU_IOTLB_ASID(*iotlb_key)) &&
++                ((info->iova & ~entry->addr_mask) == entry->iova);
++    } else {
++        return (info->iova & ~entry->addr_mask) == entry->iova;
++    }
++}
++
++inline void smmu_iotlb_inv_iova(SMMUState *s, int asid, dma_addr_t iova)
++{
++    SMMUIOTLBPageInvInfo info = {.asid = asid, .iova = iova};
+ 
+     trace_smmu_iotlb_inv_iova(asid, iova);
+-    g_hash_table_remove(s->iotlb, &key);
++    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_asid_iova, &info);
+ }
+ 
+ inline void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid)
+@@ -229,9 +263,6 @@ static int smmu_ptw_64(SMMUTransCfg *cfg,
      baseaddr = extract64(tt->ttb, 0, 48);
      baseaddr &= ~indexmask;
  
--    tlbe->iova = iova;
--    tlbe->addr_mask = (1 << granule_sz) - 1;
-+    tlbe->entry.iova = iova;
-+    tlbe->entry.addr_mask = (1 << granule_sz) - 1;
- 
+-    tlbe->entry.iova = iova;
+-    tlbe->entry.addr_mask = (1 << granule_sz) - 1;
+-
      while (level <= 3) {
          uint64_t subpage_size = 1ULL << level_shift(level, granule_sz);
-@@ -281,13 +281,15 @@ static int smmu_ptw_64(SMMUTransCfg *cfg,
+         uint64_t mask = subpage_size - 1;
+@@ -281,7 +312,9 @@ static int smmu_ptw_64(SMMUTransCfg *cfg,
              goto error;
          }
  
--        tlbe->translated_addr = gpa + (iova & mask);
--        tlbe->perm = PTE_AP_TO_PERM(ap);
-+        tlbe->entry.translated_addr = gpa + (iova & mask);
-+        tlbe->entry.perm = PTE_AP_TO_PERM(ap);
-+        tlbe->level = level;
-+        tlbe->granule = granule_sz;
-         return 0;
-     }
-     info->type = SMMU_PTW_ERR_TRANSLATION;
- error:
--    tlbe->perm = IOMMU_NONE;
-+    tlbe->entry.perm = IOMMU_NONE;
-     return -EINVAL;
- }
- 
-@@ -303,7 +305,7 @@ error:
-  * return 0 on success
-  */
- inline int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
--             IOMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
-+             SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
- {
-     if (!cfg->aa64) {
-         /*
+-        tlbe->entry.translated_addr = gpa + (iova & mask);
++        tlbe->entry.translated_addr = gpa;
++        tlbe->entry.iova = iova & ~mask;
++        tlbe->entry.addr_mask = mask;
+         tlbe->entry.perm = PTE_AP_TO_PERM(ap);
+         tlbe->level = level;
+         tlbe->granule = granule_sz;
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index cd2a2e7e14..db74d27add 100644
+index 12d3e972d6..931a2b6872 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -626,7 +626,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-     SMMUTranslationStatus status;
-     SMMUState *bs = ARM_SMMU(s);
-     uint64_t page_mask, aligned_addr;
--    IOMMUTLBEntry *cached_entry = NULL;
-+    SMMUTLBEntry *cached_entry = NULL;
-     SMMUTransTableInfo *tt;
-     SMMUTransCfg *cfg = NULL;
-     IOMMUTLBEntry entry = {
-@@ -676,7 +676,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+@@ -678,7 +678,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+     page_mask = (1ULL << (tt->granule_sz)) - 1;
+     aligned_addr = addr & ~page_mask;
  
-     cached_entry = smmu_iotlb_lookup(bs, cfg, aligned_addr);
+-    cached_entry = smmu_iotlb_lookup(bs, cfg, aligned_addr);
++    cached_entry = smmu_iotlb_lookup(bs, cfg, tt, aligned_addr);
      if (cached_entry) {
--        if ((flag & IOMMU_WO) && !(cached_entry->perm & IOMMU_WO)) {
-+        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm & IOMMU_WO)) {
+         if ((flag & IOMMU_WO) && !(cached_entry->entry.perm & IOMMU_WO)) {
              status = SMMU_TRANS_ERROR;
-             if (event.record_trans_faults) {
-                 event.type = SMMU_EVT_F_PERMISSION;
-@@ -689,7 +689,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-         goto epilogue;
-     }
- 
--    cached_entry = g_new0(IOMMUTLBEntry, 1);
-+    cached_entry = g_new0(SMMUTLBEntry, 1);
- 
-     if (smmu_ptw(cfg, aligned_addr, flag, cached_entry, &ptw_info)) {
-         g_free(cached_entry);
-@@ -743,9 +743,9 @@ epilogue:
-     switch (status) {
+@@ -748,7 +748,7 @@ epilogue:
      case SMMU_TRANS_SUCCESS:
          entry.perm = flag;
--        entry.translated_addr = cached_entry->translated_addr +
-+        entry.translated_addr = cached_entry->entry.translated_addr +
-                                     (addr & page_mask);
--        entry.addr_mask = cached_entry->addr_mask;
-+        entry.addr_mask = cached_entry->entry.addr_mask;
+         entry.translated_addr = cached_entry->entry.translated_addr +
+-                                    (addr & page_mask);
++                                    (addr & cached_entry->entry.addr_mask);
+         entry.addr_mask = cached_entry->entry.addr_mask;
          trace_smmuv3_translate_success(mr->parent_obj.name, sid, addr,
                                         entry.translated_addr, entry.perm);
-         break;
+@@ -976,7 +976,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+ 
+             trace_smmuv3_cmdq_tlbi_nh_vaa(vmid, addr);
+             smmuv3_inv_notifiers_iova(bs, -1, addr);
+-            smmu_iotlb_inv_all(bs);
++            smmu_iotlb_inv_iova(bs, -1, addr);
+             break;
+         }
+         case SMMU_CMD_TLBI_NH_VA:
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index 7263b9c586..2d445c99b7 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -16,7 +16,7 @@ smmu_iotlb_inv_iova(uint16_t asid, uint64_t addr) "IOTLB invalidate asid=%d addr
+ smmu_inv_notifiers_mr(const char *name) "iommu mr=%s"
+ smmu_iotlb_lookup_hit(uint16_t asid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache HIT asid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
+ smmu_iotlb_lookup_miss(uint16_t asid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache MISS asid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
+-smmu_iotlb_insert(uint16_t asid, uint64_t addr) "IOTLB ++ asid=%d addr=0x%"PRIx64
++smmu_iotlb_insert(uint16_t asid, uint64_t addr, uint8_t tg, uint8_t level) "IOTLB ++ asid=%d addr=0x%"PRIx64" tg=%d level=%d"
+ 
+ # smmuv3.c
+ smmuv3_read_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
 -- 
 2.20.1
 

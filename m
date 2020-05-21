@@ -1,97 +1,95 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1766106lfb;
-        Thu, 21 May 2020 10:19:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxPcUeY0bXt4d8e14e/cmVL1x8ocMyO4G0SOjkAwqcBFOpJ48dqzY4W5lHIqLFmPLSKHArP
-X-Received: by 2002:aed:3009:: with SMTP id 9mr11644490qte.191.1590081549478;
-        Thu, 21 May 2020 10:19:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590081549; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1767330lfb;
+        Thu, 21 May 2020 10:20:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzJQAmGLP1FBCs7XqpL9TWehCt+LqOxa7/ARI8wK06m0UN7uVnluCTsI4poeGozxG4vwIVi
+X-Received: by 2002:a25:ba8b:: with SMTP id s11mr15640815ybg.310.1590081647108;
+        Thu, 21 May 2020 10:20:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590081647; cv=none;
         d=google.com; s=arc-20160816;
-        b=yENBwc+79CAkD/8K2Sgo6MmuMfG7OXfSA6rYi+hT5gEbkSME5cPiRYJmoEpMy5VrsV
-         O1m3V1VJ8uNFmT1fi7f647YgmO3yge1bSZX41+Al2a7/VSq7mFeVJBm/H59x8dMQTb/V
-         4DWcunkMcvHImwBmstD12ElBq+rCmjfLPb72KkapJQKy1KxX7NLXtyV5f/GNqDLeSdlZ
-         Rs1tjWHGCYCLm5Y6tVEvhImNFY/lJKHRI9EnY8TXOjpc3oqYbdM8HBqtnPQ0gdAzczUV
-         S2OuL+28A3ed4HPO49jIkdZv+bt8tDDwM6ZOdjlXDzUiYA0FT7HzvvH7nqIema2TF0zu
-         Sbng==
+        b=XsjZQ/31ksuJV9kRuJZCDnl+EPQUL1ugK10FA7tGoDn4dSyJbJqUXL6F/obpIFZneW
+         TEphh1HEEEAs7rwdNVZ4yP61+mAuVuuFZdBjDNh6pmp3YJpENN/vfrMpcrDJqkucwgg4
+         vIak3cETBgiXoKbyX5+K9xxA/O5gwzBp5NE70xdUWZQFlyrGWyEtvt951a3iLRPDoNVe
+         pKVVYxc4NeaYfmCdtCxdo3ISuN+1IwDsCS0HAj6KPHcgiKXvdHMjchkoU8rtmRzIAGpi
+         BWg1HznncNcm+3z7wawlpJor6b5IEjzXr/8ZPxCDTorM5rFjX4famsRmX4hnWEEtpTSJ
+         TcUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=RRVNm8yyLwG+jWu/U7zrvE67aC9THe5XI6GoogL1M/M=;
-        b=Fc6syfhcs2HDRCsnEpZdLgg/O9oEIl9YLRq0iOd0XTGlMBhLM3O7TWAD6+yyAhVxxC
-         DIXnq/BUGLoQEIyUy47+CBw0TpA9YIAYmXB2I0it7MUt9zP2v0if3pE99NvYwRPUdcod
-         1YTlztNsovKDzGX+blcMkFuGkW08lVjpVUDflO5kimcDmIPdMcehHH4A4yhzIrD5XDZc
-         Ue7SEfDk5Cm2nJtbzL8V3x1TkfI9rN8IU8IiRtnQ5tCEwFm8OwhoYZyQKoYJ9UaAko5v
-         gnMsw4F4baaRuezXOWIOtWoa2pxgw/OR4AwFRH8WNcuaqmEBuJJRMNJERBmmWqhDsEh1
-         9E4Q==
+        bh=IVvQ4BnC7G1Cm6dall93+lmFqFNZBQ6yoJcC7Zbwr9s=;
+        b=iRbGhUrpV+5oNM8JrLAsxCrHoTIj11pAajrVdRrkPDd3cdxtGRtlOqt1urwn/vgabp
+         I3SMzkfrN95eFsznmGX1PMDwHDDQnyS/X3+qgOeB19b/2Q8VnNw8ngQTcCzo5Yk3RlC0
+         0PFAXnkcLIIDODQKy7NypaSYiXQlO/qEsR5NPe6C4bgtL501S1pHNH693x+3dIz0Rspa
+         wrCyxOdV47RO2BkUS5ShJxLC3oDsDpFXV5U+z2hhZ1opvfcGNTsdgkzSvAxU9PRA+6Ka
+         KzjwnF69gAs0TK3A2wUMXfkCR6NpWzQiAWo5kJ65kuu6QHNg+Tj0Obcax7Ni5Fvr3mQx
+         umhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JZUko1Ew;
+       dkim=fail header.i=@linaro.org header.s=google header.b=M0FtSt16;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s6si3847201qkj.116.2020.05.21.10.19.09
+        by mx.google.com with ESMTPS id b132si1556751ybg.314.2020.05.21.10.20.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 May 2020 10:19:09 -0700 (PDT)
+        Thu, 21 May 2020 10:20:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=JZUko1Ew;
+       dkim=fail header.i=@linaro.org header.s=google header.b=M0FtSt16;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41160 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49604 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jboqa-0001H6-SY
-	for alex.bennee@linaro.org; Thu, 21 May 2020 13:19:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52216)
+	id 1jbosA-0005JO-CV
+	for alex.bennee@linaro.org; Thu, 21 May 2020 13:20:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52388)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jbobi-000876-P2
- for qemu-arm@nongnu.org; Thu, 21 May 2020 13:03:46 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:33912)
+ id 1jboch-00030O-DK
+ for qemu-arm@nongnu.org; Thu, 21 May 2020 13:04:47 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:39225)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jbobh-0002SG-S7
- for qemu-arm@nongnu.org; Thu, 21 May 2020 13:03:46 -0400
-Received: by mail-ot1-x344.google.com with SMTP id b18so6078026oti.1
- for <qemu-arm@nongnu.org>; Thu, 21 May 2020 10:03:45 -0700 (PDT)
+ id 1jbocg-0002YJ-2j
+ for qemu-arm@nongnu.org; Thu, 21 May 2020 13:04:47 -0400
+Received: by mail-oi1-x243.google.com with SMTP id s198so6813980oie.6
+ for <qemu-arm@nongnu.org>; Thu, 21 May 2020 10:04:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=RRVNm8yyLwG+jWu/U7zrvE67aC9THe5XI6GoogL1M/M=;
- b=JZUko1EwucyUqV1BeC+Onn7zX0mWd5uLsM8zMmv03bZdYvPhbSel0e33ZXc4LbGDNf
- WiLyz3HBtU1nfwtH6HpNEAimVrtA65l3JeObCGcLtzuWDywGf8VwB9xqKTMixqSzrP0p
- ifAbKLBFklQpIzO29lc6zzYJS43T0cNHvNhueFxtgW6psSOWrb47v5/f1QeVB0tR8Fz9
- 7FpX+G7xYS3qccDhYcf3i0ASgX4o1rNUIsxjvLyU0Xe5UQpjHW44MUil4Y1vWx7DBt02
- zjuG3dfNHOpCctevFWvlS+IsyMxhfnmhhHNi37GCLZMvIbRlbHCtBRTIheWzHE6VDETB
- TyMQ==
+ :cc; bh=IVvQ4BnC7G1Cm6dall93+lmFqFNZBQ6yoJcC7Zbwr9s=;
+ b=M0FtSt16hrFEPgUdCTy68KJLezgkuLQTTwU5Y93/VSYIMXN2l9Q+WL8IrNswX/NQjD
+ fYtm8awR4R5FEgSQtbYGXrnUkqSwu+0EHmFevRwg0Q9Dz7+QD5Wcmmv1DeyfEp4kXiwy
+ p9K2uALB+4EaYYI8WjJI9nHuOR33vy27HABY1MfrRyMehtGXzMd5JBJPRn7VTh5I+YEw
+ xa2ABFFg/mUxZyffs7ou4g+y4ot17gmYDx5NbLCuAmFg3Vh7n777SB+SuHCCRT9nq30K
+ Fs6cJxM3h2NacmzHJtjZ83vwpuztjoe1kzPSWbjASbvNMp93zy9ANeKU9SPYZ0bIo2jb
+ +ZlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=RRVNm8yyLwG+jWu/U7zrvE67aC9THe5XI6GoogL1M/M=;
- b=WBjbxz6UKXFY4yesW7NvPLH/sbmJuK2mpf7aZvXBnUhjZUKd443UHs7B3GUdBn5IjC
- araMEEnIIcb9wosB5A3m7zhwAhKlIHAG3Vf2vVKlagkUB37saBhzjsXkWWeS9QWGB8WJ
- qWNWcRgmBB3GGVJ5U5kHNxDVmlRJEG2+4B0MPWIqzauVF/j+BuoP7R+fFJfgV5uQ0VdO
- xHRWb9bPcWliUZLRam44YbDTXS7+CNQ/wZsOJKXT3rlvbb1audGVIJwfy0rnhFpVj2Gn
- xfcpyuFcHEftpIM0ImoapYmnpUXQPjdzXqcx2sT/1zt5auepL4yQIJTSCFYHLWN+s+/8
- j9lw==
-X-Gm-Message-State: AOAM532xkivAYxudqA7xMB5zYWSvQ8F9iIqYB+gBFKLCEsVhvqfzuYaB
- MXHzynGgJSyD6G5D3ai3cQBe4mj6Hq0vr4e8gr7W1Q==
-X-Received: by 2002:a05:6830:158b:: with SMTP id
- i11mr8034778otr.135.1590080624595; 
- Thu, 21 May 2020 10:03:44 -0700 (PDT)
+ bh=IVvQ4BnC7G1Cm6dall93+lmFqFNZBQ6yoJcC7Zbwr9s=;
+ b=JfImSJokAgDa56zbAybObwlVLmvjgP6KWdBkEWO1ga8fj8nZ3nS4JZn6BQNvURe0QD
+ yxCPxWQdV9Z3YjFqgeYqarcbRT85q67b0R/GFW7KKrsSrBMEP5BZItUH5bjPHRXy/3Cv
+ 3gycU+0YFVMZxj7cFAfMHTAdXaqptZizKu+HWREZzvL9jAarldVzHzD1Jaq4dOE2FKv5
+ ShAt4OXi+ijxGG/GOivUszrBlhE5/XALMwx7yJc8ME5IAfcCQFaTPHv+4pTF5fd5YRtG
+ 9qYr6ygOydIrIv5qyiOO/AhSHiLI9n+6psP5dmrBp4q5/erxKjhMfEe8C8agtq8Z9lMb
+ H6SA==
+X-Gm-Message-State: AOAM5300p/GRQ70W1QEsdT9JIH3sz4gFzS0mfc02r9EGrdjw8VRh8lcQ
+ /5QGzDeMfcMfA0NJFJCRc6fj59DCybtFNyxEWiP4FvoT
+X-Received: by 2002:aca:eb96:: with SMTP id j144mr6872783oih.48.1590080684653; 
+ Thu, 21 May 2020 10:04:44 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200511131117.2486486-1-amanieu@gmail.com>
- <CAFEAcA_2X2CY3Z6Pwcd=p-vboPuYZPJOfx4smoQCoWtjo5sABQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA_2X2CY3Z6Pwcd=p-vboPuYZPJOfx4smoQCoWtjo5sABQ@mail.gmail.com>
+References: <20200518142801.20503-1-peter.maydell@linaro.org>
+In-Reply-To: <20200518142801.20503-1-peter.maydell@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 21 May 2020 18:03:33 +0100
-Message-ID: <CAFEAcA_C6Xv=-Lqq2xsgXWCUYvzCLiM9ZtZvV6q4kO8g-ugUFw@mail.gmail.com>
-Subject: Re: [PATCH v2] linux-user/arm: Reset CPSR_E when entering a signal
- handler
-To: "Amanieu d'Antras" <amanieu@gmail.com>
+Date: Thu, 21 May 2020 18:04:33 +0100
+Message-ID: <CAFEAcA8TDGUX-3x6Ha9skH8rO7mWEXzrDPYvqe=e2+yTiOQ1eA@mail.gmail.com>
+Subject: Re: [PATCH v2] target/arm: Allow user-mode code to write CPSR.E via
+ MSR
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x243.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -113,26 +111,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Riku Voipio <riku.voipio@iki.fi>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Amanieu d'Antras <amanieu@gmail.com>, Riku Voipio <riku.voipio@iki.fi>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nL2gVJO1VfKT
+X-TUID: 0JUPe1bswfYV
 
-On Mon, 11 May 2020 at 14:23, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Mon, 18 May 2020 at 15:28, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> On Mon, 11 May 2020 at 14:11, Amanieu d'Antras <amanieu@gmail.com> wrote:
-> >
-> > This fixes signal handlers running with the wrong endianness if the
-> > interrupted code used SETEND to dynamically switch endianness.
-> >
-> > Signed-off-by: Amanieu d'Antras <amanieu@gmail.com>
-> > ---
-> >  linux-user/arm/signal.c | 8 +++++++-
-> >  1 file changed, 7 insertions(+), 1 deletion(-)
-> >
+> Using the MSR instruction to write to CPSR.E is deprecated, but it is
+> required to work from any mode including unprivileged code.  We were
+> incorrectly forbidding usermode code from writing it because
+> CPSR_USER did not include the CPSR_E bit.
 >
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> We use CPSR_USER in only three places:
+>  * as the mask of what to allow userspace MSR to write to CPSR
+>  * when deciding what bits a linux-user signal-return should be
+>    able to write from the sigcontext structure
+>  * in target_user_copy_regs() when we set up the initial
+>    registers for the linux-user process
+>
+> In the first two cases not being able to update CPSR.E is a bug, and
+> in the third case it doesn't matter because CPSR.E is always 0 there.
+> So we can fix both bugs by adding CPSR_E to CPSR_USER.
+>
+> Because the cpsr_write() in restore_sigcontext() is now changing
+> a CPSR bit which is cached in hflags, we need to add an
+> arm_rebuild_hflags() call there; the callsite in
+> target_user_copy_regs() was already rebuilding hflags for other
+> reasons.
+>
+> (The recommended way to change CPSR.E is to use the 'SETEND'
+> instruction, which we do correctly allow from usermode code.)
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 
 

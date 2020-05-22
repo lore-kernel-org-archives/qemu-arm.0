@@ -1,155 +1,219 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1655496lfb;
-        Thu, 21 May 2020 08:09:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzqI9rjuOQ5fSzt31gRKrKvfCsfXyl7e8QHhPQ/nVIda/uye9YcaFk6ZvWHkymlGBve8p0y
-X-Received: by 2002:a17:906:f9d7:: with SMTP id lj23mr4323674ejb.218.1590073794764;
-        Thu, 21 May 2020 08:09:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590073794; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2355643lfb;
+        Fri, 22 May 2020 01:29:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwLF5oHQXO67pzJSkeA0p0RImTxQBJoDnQa/WXlwS593RihmNjDAdsuebjNEOpLeVEb5cBU
+X-Received: by 2002:a25:b901:: with SMTP id x1mr22428571ybj.498.1590136166615;
+        Fri, 22 May 2020 01:29:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590136166; cv=none;
         d=google.com; s=arc-20160816;
-        b=QtLMW9mtf/A9GAcZGaSfzDSB1hOtZ2XmJnC5vvQC1neY5cJXgf99WLPCnEpFcWqTIt
-         fr7d6yFLyC5zAc3Yuhqj2IB+tTmI8u1bW3ubOE53K3S571d0UKwdboWHVaVaxMWf41Ez
-         uVeSrPhTGVwZrTSEdnUN5NH2QtkOtuZWVl0wPgtEAcK9WEAow2vphAvSmMi8JrtqQvNe
-         gOVp9NS5c0euqLf5f574qOYqyUogE75Xd3jyNWKlneqgXmGVt7mGuc3WN2y2aAwBv1EL
-         Mr5c3fzL4Jp8kXD1iTENqwhKSmHnAE1BPpEpKCr+kCIvaS9jL6DwTyRaXkozpyTa/7lR
-         rnDg==
+        b=i6W/EL0Vn3tOGalfN/APBEguOHpxnHrdJa9PEfaJZb2wFQL9eMutE5FHZXPYea3FVj
+         q0IxKz2Je00Hev1/THx1QtUGa28h1K2VQKZOE16BBW0364ii9x4omvF1vJZky+cunx7D
+         BxDYQ0IpQ8MyoqUdIDDIHjpQBZ7yMX0ue/5hIumQOkwINFCrDnRd7idbGJZoKPWvUUq4
+         See9c5nHt7LsfaR1VllSoCR/popCN6nwQDaxT6Rf4vd6OLfoESfulr7PqU8x1ksbSNn6
+         qVCd3I0FY1uv+oxE5SA6kj9NyGySdpc42rLXCqGu5n+NMZxIL/9L/KJ58zHzrNWbw96D
+         xdCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=4C2rlTA9x8STJ/ou3J/Z32EJLvR3kTYr7pxFIXxvcMY=;
-        b=Y4qMqtVSASyxnhN78dI7r7OQGGpwr1370ky3BmYDIpn+pKC4JoSPbkvMAWmCRCRm0b
-         sT4EB7lfChKOEHqV50di7wEj1L6kx0CtUpfjNuhvWEbAwKek/1asHzimvxcyPIqi4GPS
-         qyFKKePC6Ji4rqCFbG/Te6ln3bysqEQ+U2nazOiR4vEOrEfDeXx9p3YSMtU/ZPZKZ5ev
-         zftQ7FBTBgQhsBCFaOJ0nJwdE2AllZ+rVcqCLMz4cMujdSkJWXx0ynPNa7DvcsMhiPk3
-         d/0BrJ794o3dQvnU2LZx2b+Avp68wMUbZhlr8/q3v4f97fPH/4eiI74KcChInIjYxsWf
-         oUbA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version;
+        bh=UiNrG7HGs3W8q6IqBr6PtGoNoWHovdYvwbjl0qlZS1Q=;
+        b=kSXxuDietAiCR6A/mYflIN93MMpLU0I2kwSiWgVlkxG0T+6JTHdliKnU9I08zVzcQu
+         CjVPsbe14vAXvD/Xnp0khvZ7Rkj+IdwBG8JPWf6n9CNIpgLaZCzvAXSUi59QLi5QfY/2
+         ROaoZdlZjFm7wn8M4Xu3Hj9Y8kq4NSsrH9zNZvamtNMdIUJFYmXFQa/8HsVFbu3dZH+a
+         yxjD1HGOSn1EG9dpEdN3+MYb/V7tYZsF18uUClL79bN/sQzql9E+UJJxviUcewh8vHC4
+         Rsk6QqLQnFyKwj6wRb85XUUoO1IJ+H1WLxKcDwlxbPcViCmnZkT68/yxVqzYYZfu5cQK
+         SPsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f5PfsRJS;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id dr12si4395385ejc.352.2020.05.21.08.09.54
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id l7si2022645ybk.172.2020.05.22.01.29.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 May 2020 08:09:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 22 May 2020 01:29:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f5PfsRJS;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1590073793;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=4C2rlTA9x8STJ/ou3J/Z32EJLvR3kTYr7pxFIXxvcMY=;
-	b=f5PfsRJSfbw+/gC2kGZaijMkHiuMinpf+dwtnYuD/11SlRmjRxwOTkSPMfRebJR1vdnilI
-	HhRxmG7yvzkOchkR5ZWFIgRrq54m6B8M78pejx5pWDpbWIkCFR2hzQfr4vvJRFanOKT1eJ
-	FKX/oiImLKyUJy2lRrXi5voCMomesus=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-471-4WG4ln5ZM0ql49YgoPFqvw-1; Thu, 21 May 2020 11:09:49 -0400
-X-MC-Unique: 4WG4ln5ZM0ql49YgoPFqvw-1
-Received: by mail-wm1-f69.google.com with SMTP id j132so1252145wma.8
-        for <alex.bennee@linaro.org>; Thu, 21 May 2020 08:09:49 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49810 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jc33V-0005c0-W0
+	for alex.bennee@linaro.org; Fri, 22 May 2020 04:29:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47296)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <geert.uytterhoeven@gmail.com>)
+ id 1jc33Q-0005az-3A; Fri, 22 May 2020 04:29:20 -0400
+Received: from mail-oi1-f194.google.com ([209.85.167.194]:43246)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <geert.uytterhoeven@gmail.com>)
+ id 1jc33O-0002Ae-Qh; Fri, 22 May 2020 04:29:19 -0400
+Received: by mail-oi1-f194.google.com with SMTP id i22so8614135oik.10;
+ Fri, 22 May 2020 01:29:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=4C2rlTA9x8STJ/ou3J/Z32EJLvR3kTYr7pxFIXxvcMY=;
-        b=hjyAtrq1mu86VuPLmGahmkFfrHnszLRBA0Slo+vmmTGyYY003ZVWwUtXDqpzL+696C
-         6z0Iy1aj0W78PmIg6jbvwLBm7ui3x6ZVkXQJbippi4Ki/CzpPwqfLaC/16v5XN3bf9yt
-         yhQwRdiaYpKAe1Awcz6JtZvRfYh0X6f8LLyRJgsHJH53gPQSiAUzlwweFmvoQsoy2j2t
-         ODB8eybB/idOxeW6aDYX13a+1S+B/Ne+0be8q6NvbxGuMYqn5J/xASscek3MizurjV4Y
-         Iri4jgILXhXGs/K6m2jZQtNEuw/Cx1UsGQ+g5nidvlWt2K0aLHWN/REUAmmTvV0tUIFP
-         HBHg==
-X-Gm-Message-State: AOAM533kMcFdAbC3TRrCe0b62tCsjsTSrQ+5NjIPWSQqcgN6dkm9Pq1P
-	Eg3U7a0NTmdy6hDArux4XF/Koo34MhNSnV32v1rYVkcwpoQDZs8uD+LTReovDL2RK0gGXlGdNkV
-	JnoyeS2/SlQbvF4/o
-X-Received: by 2002:adf:b354:: with SMTP id k20mr879801wrd.412.1590073788229;
-        Thu, 21 May 2020 08:09:48 -0700 (PDT)
-X-Received: by 2002:adf:b354:: with SMTP id k20mr879775wrd.412.1590073787981;
-        Thu, 21 May 2020 08:09:47 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.40] (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
-        by smtp.gmail.com with ESMTPSA id b65sm7154112wmc.30.2020.05.21.08.09.46
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 21 May 2020 08:09:47 -0700 (PDT)
-Subject: Re: [PATCH v2 02/10] MAINTAINERS: Add an 'overall' entry for
- accelerators
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: Max Filippov <jcmvbkbc@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Richard Henderson <rth@twiddle.net>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Chris Wulff <crwulff@gmail.com>, qemu-riscv@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Peter Maydell
- <peter.maydell@linaro.org>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Marek Vasut <marex@denx.de>, Michael Walle <michael@walle.cc>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20200515170804.5707-1-philmd@redhat.com>
- <20200515170804.5707-3-philmd@redhat.com>
- <528c5bbd-7bf4-4dc8-c69e-5d5b6fa30493@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <8853e7ba-aceb-fbe0-2eb4-b9e18111d81d@redhat.com>
-Date: Thu, 21 May 2020 17:09:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=UiNrG7HGs3W8q6IqBr6PtGoNoWHovdYvwbjl0qlZS1Q=;
+ b=C+fB54CZFWMlTdLLGTGlvRVKeSELuLZBIieaLlcnyBsTLvxfkUskrw4MXp1JNGbRsY
+ 0HvU47fw0Ev/SxNSYcXnC33TSYWnFlCIyCuB1BKTBw8c2DuCrL2/NLS+v7+khncmIIF4
+ I4sYHqaLHxQYVeTAuwN8fVYD5KH0OnxN7XLhBdKw+8lTX7y3ocA9GLK/GYZPV23hVF8V
+ ruvzaLq0yxz411qau5vYishBn95ntaTzdgkzG2+/BUfjJxcs2lEaAfxH8TuZGBzlbX0k
+ SR+WK25c4JWbmFRZarlb8w5MOQ4fiqDnJpE9t7JsnCr3kZR8eVTLd8MTPFf6oC9tohEx
+ /n+Q==
+X-Gm-Message-State: AOAM530SVZ0MvGTVX3cQG2qlwCz6c897qBAZbTCH4Ggn5R9YKM9mWzDm
+ Bgh5RWp7c4uUUILbxGozbVFZLeDE7fEhR2g6C2s=
+X-Received: by 2002:aca:cd93:: with SMTP id d141mr1715139oig.148.1590136156801; 
+ Fri, 22 May 2020 01:29:16 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <528c5bbd-7bf4-4dc8-c69e-5d5b6fa30493@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 17b3z4R4BOis
+References: <20200519084904.1069-1-geert+renesas@glider.be>
+ <CAFEAcA9-wQ72_M+ZY+EbEgw1L9LVchBgpLivexFXVZ3HuCtcZg@mail.gmail.com>
+In-Reply-To: <CAFEAcA9-wQ72_M+ZY+EbEgw1L9LVchBgpLivexFXVZ3HuCtcZg@mail.gmail.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Fri, 22 May 2020 10:29:05 +0200
+Message-ID: <CAMuHMdWrTbWTrLvMnX=60F+UqH6DJ9kDU1FZ5TnT2=mbah1yfg@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/virt: Fix PL061 node name and properties
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=209.85.167.194;
+ envelope-from=geert.uytterhoeven@gmail.com; helo=mail-oi1-f194.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/22 04:29:17
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pBi9ziaz2Eit
 
-On 5/17/20 7:26 PM, Thomas Huth wrote:
-> On 15/05/2020 19.07, Philippe Mathieu-Daudé wrote:
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->> Cc: Paolo Bonzini <pbonzini@redhat.com>
->> ---
->>   MAINTAINERS | 9 +++++++++
->>   1 file changed, 9 insertions(+)
->>
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index fd88a3de49..659092eb43 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -415,6 +415,15 @@ S: Supported
->>   F: target/i386/kvm.c
->>   F: scripts/kvm/vmxcap
->>   
->> +Guest CPU Cores (other accelerators)
-> 
-> Maybe s/other accelerators/accelerators generic code/ ?
+Hi Peter,
 
-But then we have HVF and WHPX listed there...
+On Thu, May 21, 2020 at 6:59 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+> On Tue, 19 May 2020 at 09:49, Geert Uytterhoeven
+> <geert+renesas@glider.be> wrote:
+> > Make the created node comply with the PL061 Device Tree bindings:
+> >   - Use generic node name "gpio" instead of "pl061",
+> >   - Add missing "#interrupt-cells" and "interrupt-controller"
+> >     properties.
+>
+> Where have these properties come from? They must be optional,
+> because in the version of the binding documentation from Linux
+> 5.0 they're not described:
+> https://elixir.bootlin.com/linux/v5.0/source/Documentation/devicetree/bindings/gpio/pl061-gpio.txt
 
-> 
->> +------------------------------------
->> +Overall
->> +M: Richard Henderson <rth@twiddle.net>
->> +R: Paolo Bonzini <pbonzini@redhat.com>
->> +S: Maintained
->> +F: include/sysemu/accel.h
->> +F: accel/stubs/Makefile.objs
-> 
-> What about accel/accel.c and accel/Makefile.objs ? Should they also be
-> in the list here?
+Many old DT bindings are incomplete.
 
-OK.
+> They seem to have magically appeared in kernel commit
+> 910f38bed9439e765f7e, which purports to only be a change
+> of format from plain text to yaml but has added some
+> extra properties and claimed them to be mandatory.
 
-> 
->   Thomas
-> 
+The main motivation behind the conversion from plain text to yaml is to
+do automatic validation of DTS files, based on the bindings.  During the
+conversion process, many issues are detected, and fixed; not only in the
+DTS files, but also in the bindings (e.g. missing properties, like in
+this case).
+
+When running the validation on a device tree passed to the guest
+(extracted from /sys/firmware/devicetree/base, converted to dts, and
+ manually fixed up the phandles), the following is reported about the
+pl061 node:
+
+    virt.dt.yaml: pl061@9030000: {'reg': [[0, 151191552, 0, 4096]],
+'gpio-controller': True, 'phandle': [[32771]], '#gpio-cells': [[2]],
+'clocks': [[32768]], '#interrupt-cells': [[2]], 'compatible':
+['arm,pl061', 'arm,primecell'], 'clock-names': ['apb_pclk'],
+'$nodename': ['pl061@9030000']} is not valid under any of the given
+schemas
+    [...]
+            virt.dt.yaml: pl061@9030000: 'interrupts' is a required property
+
+    virt.dt.yaml: pl061@9030000: $nodename:0: 'pl061@9030000' does not
+match '^gpio@[0-9a-f]+$'
+    virt.dt.yaml: pl061@9030000: 'interrupt-controller' is a required property
+
+> Since the devicetree spec says that the interrupt-controller
+> property "defines a node as an interrupt controller node"
+> and a GPIO chip isn't an interrupt controller, this seems
+> like some kind of error in the dtb binding. Maybe I'm
+> missing something...
+
+PL061 is an interrupt controller, as it can assert its interrupt output
+based on activity on GPIO input lines.
+
+> What actually goes wrong if QEMU doesn't specify these
+> properties?
+
+It means that other devices that have their interrupt output connected
+to a PL061 GPIO input won't work, as their driver in the guest OS cannot
+find the interrupt.  Note that arm/virt.c currently doesn't instantiate
+such devices.
+
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index 7dc96abf72cf2b9a..99593d7bce4d85cb 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -818,13 +818,15 @@ static void create_gpio(const VirtMachineState *vms)
+> >                                       qdev_get_gpio_in(vms->gic, irq));
+> >
+> >      uint32_t phandle = qemu_fdt_alloc_phandle(vms->fdt);
+> > -    nodename = g_strdup_printf("/pl061@%" PRIx64, base);
+> > +    nodename = g_strdup_printf("/gpio@%" PRIx64, base);
+>
+> Does the devicetree binding really mandate what the node name is?
+> I thought that finding the right device was doe via the
+> 'compatible' string and the nodename could be whatever the
+> device tree creator wanted.
+
+Matching is indeed done based on compatible value.
+
+For node names, please see
+https://github.com/devicetree-org/devicetree-specification/releases/tag/v0.3
+
+   "2.2.2 Generic Names Recommendation
+
+    The name of a node should be somewhat generic, reflecting the
+    function of the device and not its precise programming model. If
+    appropriate, the name should be one of the following choices:
+
+    [...]
+
+    - gpio
+
+    [...]"
+
+While many new generic names have been added recently, "gpio" was
+already documented in the Power.orgTM Standard for Embedded Power
+ArchitectureTM Platform Requirements (ePAPR).
+
+I hope the above explains the rationale behind these change better.
+Thanks!
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds

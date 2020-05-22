@@ -1,102 +1,121 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2144406lfb;
-        Thu, 21 May 2020 19:30:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJymd7vjHdnPwVwxN1r/1ZPoKbPGG/Qrlarp1gERsEAzoiEEW+C7rNithQEpO5NhUU0tLJwQ
-X-Received: by 2002:a17:906:aeca:: with SMTP id me10mr6587880ejb.367.1590114632468;
-        Thu, 21 May 2020 19:30:32 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1590114632; cv=pass;
-        d=google.com; s=arc-20160816;
-        b=FYF8dVp9SUWXcbno2e+TSHLPQPPqfk0VhfdeNoc7NmRkbCABCoFnE31m9XkmIp754X
-         QmpN3ChhmeJ4oqLot1uATAVd98YzuKzEXEuJitH10kh+fbN47I9lLyUKNALMjRo/1cTd
-         he7XuijRVnctQa1rrrkTkSGtNYQcZqyIIChkLpzS1fqYr5glBPBrV2CemzerZZrNBzWY
-         c4ehGFuhGzX1bpnAoL7OvoqhHj7s48YdCtBQ3R3lRw3Ezw7srWxTbFEajYgwVLzxex9h
-         bAyWRRtQMCQUu+PzYGcm8NA5fDFV72AmzVQJ/PXb9I2WDx7T9o0SYGkHMDviufbioS94
-         Y4Yg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
-         :reply-to:subject:in-reply-to:message-id;
-        bh=0AczOR5wUifqMSsTEH72NUkg8qL/sKUoJPOWQrWWe7o=;
-        b=o9IltmsFFW7srQhenHY+EYufbDZnCVnUHcZ4P9/zzLHGwvyprbwVJd/ELETfr3P0/R
-         T5C5t9/2w/45rY0uBmIHCvOuUrBzf4Rc+LBeKE9M2aHdTJm889WHCgOvZFtVbXMoYR6/
-         DnxbGctw2H+W/KCaghZR1p0/U4ZYlzoIsMoGGdRvP3QL7riZ6C/H4hNGSFPDKdWRSXyB
-         /lwJ34iQGh7lai0lq7aJOvQrQlvm9Kt7Tl/RJ2vNPLO5Gd+R+GaglMc9RC+Q5/mTFXlx
-         eCxwhdsGbzUQdfaX0MLbxpG1bmInffct++v/TwTCdJoI3TOVZZATXpLPHqNMbF/3ijvM
-         1SOQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.53 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-Return-Path: <no-reply@patchew.org>
-Received: from sender4-of-o53.zoho.com (sender4-of-o53.zoho.com. [136.143.188.53])
-        by mx.google.com with ESMTPS id a99si4218771edf.381.2020.05.21.19.30.30
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 May 2020 19:30:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 136.143.188.53 as permitted sender) client-ip=136.143.188.53;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2229125lfb;
+        Thu, 21 May 2020 21:58:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy+LJIvv/ZfuHNv9lEWlrCq6OVtqmDOA6ctBTykV1e96k8/uoZEDkPIVDm0trssaKGcs9BB
+X-Received: by 2002:ac8:2aa6:: with SMTP id b35mr13420987qta.153.1590123499527;
+        Thu, 21 May 2020 21:58:19 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c20si4116395qkl.217.2020.05.21.21.58.19
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 21 May 2020 21:58:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.53 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-ARC-Seal: i=1; a=rsa-sha256; t=1590114605; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=K6uQGYY+AXuccOcRqv6f/paw02yiFGL0UDgafvTZyQ/bFcBjUxDc6olRXj7q3zsMKbiRDWjJWi2ZNoi6sBdHYM6X0kCu+oq5Bw7yaf93L2L0EKQgO07NisxTJ//6hPEI59J5U0F2t2mAH3QzQAKlAAEQMaDYV0S6/lIxhMpgBMo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1590114605; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To; 
-	bh=0AczOR5wUifqMSsTEH72NUkg8qL/sKUoJPOWQrWWe7o=; 
-	b=PSAC1CkiPrHo5rNrDzGDalbAbK8UjIPZyKnzgZikQrZF9M3ux3H60Zwi18lxAuNCc4di9YPZ0xDTrDNcMEClkU0q2IfSz6Jv3cTtByMBetta7NQ4Ir6o/1Oe23jOa27Qb0sO8MJmI+CxxI6TsX7M5yZadQ5sgIypZKxXN+58T9I=
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54074 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jbzlD-0004BR-1d
+	for alex.bennee@linaro.org; Fri, 22 May 2020 00:58:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57938)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jbzke-0003lm-S4; Fri, 22 May 2020 00:57:44 -0400
+Resent-Date: Fri, 22 May 2020 00:57:44 -0400
+Resent-Message-Id: <E1jbzke-0003lm-S4@lists.gnu.org>
+Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21397)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jbzkd-0006uu-Hm; Fri, 22 May 2020 00:57:44 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1590123448; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=OLZG64Xj/2xEMvcHBS0ejsj5k3iaCdlhhLJnu8kciHAhptVK8NvtH435P3zsi6xDEPlPM4DjGusbR+lKe+gPBcJAG+uflmCzADco/eQ1iebusG0hLwpDdE9170rsztv+CJ31wi3d+pSZ+1zDA+e2/U8YEBcN1DI5TA8O7woJB+k=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1590123448;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=WoB5qOwzwgo5oTvW24SYCnoY7Blk6a7y1ej0AsEhmls=; 
+ b=LiqfiPB682YSVBhh5qclqQB58rCn3q6SkcVf5tkP8j1pkKRaJXH2e0lUJLIQtEMPTg45h2lgVEkTmA1yQB1nQmvaY3nrcusTS5MtwO4r2I5UsDsbhmsrYJ8JnrXdHSgULKyjC6jAxVomlw8a0u3D6bERnPXW03TICccXZYagekQ=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
-	with SMTPS id 1590114603942437.70291499269945; Thu, 21 May 2020 19:30:03 -0700 (PDT)
-Message-ID: <159011460144.1576.16339028461103520423@45ef0f9c86ae>
-In-Reply-To: <20200521195911.19685-1-philmd@redhat.com>
-Subject: Re: [PATCH v3 00/11] accel: Allow targets to use Kconfig, disable semihosting by default
-Reply-To: <qemu-devel@nongnu.org>
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1590123446617446.6411581550344;
+ Thu, 21 May 2020 21:57:26 -0700 (PDT)
+Message-ID: <159012344531.1576.16247674450419808706@45ef0f9c86ae>
+In-Reply-To: <20200521192133.127559-1-hskinnemoen@google.com>
+Subject: Re: [PATCH 0/6] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC machines
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Resent-From: 
 From: no-reply@patchew.org
-To: philmd@redhat.com
-Cc: qemu-devel@nongnu.org, marex@denx.de, peter.maydell@linaro.org, thuth@redhat.com, qemu-riscv@nongnu.org, sagark@eecs.berkeley.edu, aleksandar.qemu.devel@gmail.com, kbastian@mail.uni-paderborn.de, crwulff@gmail.com, laurent@vivier.eu, philmd@redhat.com, jcmvbkbc@gmail.com, michael@walle.cc, qemu-arm@nongnu.org, palmer@dabbelt.com, pbonzini@redhat.com, Alistair.Francis@wdc.com, alex.bennee@linaro.org, aleksandar.rikalo@rt-rk.com, aurelien@aurel32.net, rth@twiddle.net
-Date: Thu, 21 May 2020 19:30:03 -0700 (PDT)
+To: hskinnemoen@google.com
+Date: Thu, 21 May 2020 21:57:26 -0700 (PDT)
 X-ZohoMailClient: External
-X-TUID: bhv/DJ/+N/sy
+Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o53.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/21 21:51:00
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, hskinnemoen@google.com, qemu-devel@nongnu.org,
+ kfting@nuvoton.com, qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0qpZIbQFmsso
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDUyMTE5NTkxMS4xOTY4
-NS0xLXBoaWxtZEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0aGUgZG9j
-a2VyLXF1aWNrQGNlbnRvczcgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3RpbmcgY29t
-bWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGluc3RhbGxl
-ZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNUIFNDUklQ
-VCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKbWFrZSBkb2NrZXItaW1hZ2UtY2VudG9zNyBWPTEgTkVU
-V09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1xdWlja0BjZW50b3M3IFNIT1dfRU5WPTEgSj0x
-NCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCiAgVEVTVCAgICBpb3Rlc3QtcWNv
-dzI6IDA0MApzb2NrZXRfYWNjZXB0IGZhaWxlZDogUmVzb3VyY2UgdGVtcG9yYXJpbHkgdW5hdmFp
-bGFibGUKKioKRVJST1I6L3RtcC9xZW11LXRlc3Qvc3JjL3Rlc3RzL3F0ZXN0L2xpYnF0ZXN0LmM6
-MzAxOnF0ZXN0X2luaXRfd2l0aG91dF9xbXBfaGFuZHNoYWtlOiBhc3NlcnRpb24gZmFpbGVkOiAo
-cy0+ZmQgPj0gMCAmJiBzLT5xbXBfZmQgPj0gMCkKL3RtcC9xZW11LXRlc3Qvc3JjL3Rlc3RzL3F0
-ZXN0L2xpYnF0ZXN0LmM6MTY2OiBraWxsX3FlbXUoKSB0cmllZCB0byB0ZXJtaW5hdGUgUUVNVSBw
-cm9jZXNzIGJ1dCBlbmNvdW50ZXJlZCBleGl0IHN0YXR1cyAxIChleHBlY3RlZCAwKQpFUlJPUiAt
-IEJhaWwgb3V0ISBFUlJPUjovdG1wL3FlbXUtdGVzdC9zcmMvdGVzdHMvcXRlc3QvbGlicXRlc3Qu
-YzozMDE6cXRlc3RfaW5pdF93aXRob3V0X3FtcF9oYW5kc2hha2U6IGFzc2VydGlvbiBmYWlsZWQ6
-IChzLT5mZCA+PSAwICYmIHMtPnFtcF9mZCA+PSAwKQptYWtlOiAqKiogW2NoZWNrLXF0ZXN0LXg4
-Nl82NF0gRXJyb3IgMQptYWtlOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgog
-IFRFU1QgICAgaW90ZXN0LXFjb3cyOiAwNDEKICBURVNUICAgIGlvdGVzdC1xY293MjogMDQyCi0t
-LQogICAgcmFpc2UgQ2FsbGVkUHJvY2Vzc0Vycm9yKHJldGNvZGUsIGNtZCkKc3VicHJvY2Vzcy5D
-YWxsZWRQcm9jZXNzRXJyb3I6IENvbW1hbmQgJ1snc3VkbycsICctbicsICdkb2NrZXInLCAncnVu
-JywgJy0tbGFiZWwnLCAnY29tLnFlbXUuaW5zdGFuY2UudXVpZD00MjQ0NmYxY2IzZDg0YjA4OTcz
-YmM0N2U1ZmMyNDFhMicsICctdScsICcxMDAzJywgJy0tc2VjdXJpdHktb3B0JywgJ3NlY2NvbXA9
-dW5jb25maW5lZCcsICctLXJtJywgJy1lJywgJ1RBUkdFVF9MSVNUPScsICctZScsICdFWFRSQV9D
-T05GSUdVUkVfT1BUUz0nLCAnLWUnLCAnVj0nLCAnLWUnLCAnSj0xNCcsICctZScsICdERUJVRz0n
-LCAnLWUnLCAnU0hPV19FTlY9MScsICctZScsICdDQ0FDSEVfRElSPS92YXIvdG1wL2NjYWNoZScs
-ICctdicsICcvaG9tZS9wYXRjaGV3Mi8uY2FjaGUvcWVtdS1kb2NrZXItY2NhY2hlOi92YXIvdG1w
-L2NjYWNoZTp6JywgJy12JywgJy92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1tNXYyNzFlby9z
-cmMvZG9ja2VyLXNyYy4yMDIwLTA1LTIxLTIyLjE0LjE3LjgyODU6L3Zhci90bXAvcWVtdTp6LHJv
-JywgJ3FlbXU6Y2VudG9zNycsICcvdmFyL3RtcC9xZW11L3J1bicsICd0ZXN0LXF1aWNrJ10nIHJl
-dHVybmVkIG5vbi16ZXJvIGV4aXQgc3RhdHVzIDIuCmZpbHRlcj0tLWZpbHRlcj1sYWJlbD1jb20u
-cWVtdS5pbnN0YW5jZS51dWlkPTQyNDQ2ZjFjYjNkODRiMDg5NzNiYzQ3ZTVmYzI0MWEyCm1ha2Vb
-MV06ICoqKiBbZG9ja2VyLXJ1bl0gRXJyb3IgMQptYWtlWzFdOiBMZWF2aW5nIGRpcmVjdG9yeSBg
-L3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLW01djI3MWVvL3NyYycKbWFrZTogKioqIFtkb2Nr
-ZXItcnVuLXRlc3QtcXVpY2tAY2VudG9zN10gRXJyb3IgMgoKcmVhbCAgICAxNW00NC41NjZzCnVz
-ZXIgICAgMG04LjkzM3MKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRj
-aGV3Lm9yZy9sb2dzLzIwMjAwNTIxMTk1OTExLjE5Njg1LTEtcGhpbG1kQHJlZGhhdC5jb20vdGVz
-dGluZy5kb2NrZXItcXVpY2tAY2VudG9zNy8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJh
-dGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVh
-c2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDUyMTE5MjEzMy4xMjc1
+NTktMS1oc2tpbm5lbW9lbkBnb29nbGUuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0
+aGUgZG9ja2VyLXF1aWNrQGNlbnRvczcgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3Rp
+bmcgY29tbWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGlu
+c3RhbGxlZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNU
+IFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKbWFrZSBkb2NrZXItaW1hZ2UtY2VudG9zNyBW
+PTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1xdWlja0BjZW50b3M3IFNIT1dfRU5W
+PTEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCkJyb2tlbiBwaXBlCi90
+bXAvcWVtdS10ZXN0L3NyYy90ZXN0cy9xdGVzdC9saWJxdGVzdC5jOjE2Njoga2lsbF9xZW11KCkg
+dHJpZWQgdG8gdGVybWluYXRlIFFFTVUgcHJvY2VzcyBidXQgZW5jb3VudGVyZWQgZXhpdCBzdGF0
+dXMgMSAoZXhwZWN0ZWQgMCkKICBURVNUICAgIGlvdGVzdC1xY293MjogMDg5CkVSUk9SIC0gdG9v
+IGZldyB0ZXN0cyBydW4gKGV4cGVjdGVkIDY4LCBnb3QgMjEpCm1ha2U6ICoqKiBbY2hlY2stcXRl
+c3QtYWFyY2g2NF0gRXJyb3IgMQptYWtlOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2Jz
+Li4uLgogIFRFU1QgICAgaW90ZXN0LXFjb3cyOiAwOTAKICBURVNUICAgIGlvdGVzdC1xY293Mjog
+MDk3Ci0tLQogICAgcmFpc2UgQ2FsbGVkUHJvY2Vzc0Vycm9yKHJldGNvZGUsIGNtZCkKc3VicHJv
+Y2Vzcy5DYWxsZWRQcm9jZXNzRXJyb3I6IENvbW1hbmQgJ1snc3VkbycsICctbicsICdkb2NrZXIn
+LCAncnVuJywgJy0tbGFiZWwnLCAnY29tLnFlbXUuaW5zdGFuY2UudXVpZD05MzVjYzdmMjAxYTk0
+YTJlODY1Y2YwODE2MzZhMmNmNCcsICctdScsICcxMDAxJywgJy0tc2VjdXJpdHktb3B0JywgJ3Nl
+Y2NvbXA9dW5jb25maW5lZCcsICctLXJtJywgJy1lJywgJ1RBUkdFVF9MSVNUPScsICctZScsICdF
+WFRSQV9DT05GSUdVUkVfT1BUUz0nLCAnLWUnLCAnVj0nLCAnLWUnLCAnSj0xNCcsICctZScsICdE
+RUJVRz0nLCAnLWUnLCAnU0hPV19FTlY9MScsICctZScsICdDQ0FDSEVfRElSPS92YXIvdG1wL2Nj
+YWNoZScsICctdicsICcvaG9tZS9wYXRjaGV3Ly5jYWNoZS9xZW11LWRvY2tlci1jY2FjaGU6L3Zh
+ci90bXAvY2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLWV2a2J5
+NTJuL3NyYy9kb2NrZXItc3JjLjIwMjAtMDUtMjItMDAuMzkuNTIuMTczNjE6L3Zhci90bXAvcWVt
+dTp6LHJvJywgJ3FlbXU6Y2VudG9zNycsICcvdmFyL3RtcC9xZW11L3J1bicsICd0ZXN0LXF1aWNr
+J10nIHJldHVybmVkIG5vbi16ZXJvIGV4aXQgc3RhdHVzIDIuCmZpbHRlcj0tLWZpbHRlcj1sYWJl
+bD1jb20ucWVtdS5pbnN0YW5jZS51dWlkPTkzNWNjN2YyMDFhOTRhMmU4NjVjZjA4MTYzNmEyY2Y0
+Cm1ha2VbMV06ICoqKiBbZG9ja2VyLXJ1bl0gRXJyb3IgMQptYWtlWzFdOiBMZWF2aW5nIGRpcmVj
+dG9yeSBgL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLWV2a2J5NTJuL3NyYycKbWFrZTogKioq
+IFtkb2NrZXItcnVuLXRlc3QtcXVpY2tAY2VudG9zN10gRXJyb3IgMgoKcmVhbCAgICAxN20zNC4y
+NTZzCnVzZXIgICAgMG05LjAwNnMKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6
+Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwNTIxMTkyMTMzLjEyNzU1OS0xLWhza2lubmVtb2VuQGdv
+b2dsZS5jb20vdGVzdGluZy5kb2NrZXItcXVpY2tAY2VudG9zNy8/dHlwZT1tZXNzYWdlLgotLS0K
+RW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3
+Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0
+LmNvbQ==

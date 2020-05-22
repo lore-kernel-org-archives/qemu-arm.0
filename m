@@ -1,98 +1,102 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2629847lfb;
-        Fri, 22 May 2020 07:32:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxD1VFBScNM3NbWkhNqPb0C9uq2BnmsjRjWW896czIOV9dVSez9mJ6tDkFq0Zoz1QCqZaaa
-X-Received: by 2002:a25:7102:: with SMTP id m2mr23090482ybc.327.1590157961974;
-        Fri, 22 May 2020 07:32:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590157961; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2639077lfb;
+        Fri, 22 May 2020 07:43:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw7MpU844p/i8HJsZWxAAZpEJ9U7Gj/f+36NuA4w8hy4veQZUfY+a6K45zBtk2xUXwCr6YT
+X-Received: by 2002:a25:4888:: with SMTP id v130mr22262659yba.211.1590158619519;
+        Fri, 22 May 2020 07:43:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590158619; cv=none;
         d=google.com; s=arc-20160816;
-        b=JcdKsKv3LXwLx9Mvj3MwUs/E2Zigo5rxfdwCkqODQlm46XgA0QxJSi3H4+16Lbnx7E
-         NUTbc0C/J/vapdphcbJnft8BHspB0GcUFMBN9HMwhmn69o1N0FQigLeXFaWC9aj9CSQ8
-         n2VL6Art8xXWBi78VJ5KKEpjBE31wA58h96bOEYfkMHj1RmrxumACRinIfOuj/1FzUPj
-         s8Cmv1NcSgi2Rc2zKv91XuITuS52RoP9OBrwB57ZHxz8qHx2eW7QSovmpjIs2Em9kQ5N
-         8XCJub7OxKcryVCwZThsof/agwfCbkJzjnxsW+Z2mbvJAcYV85R20fRSdZGDBd8FtSA5
-         ta3w==
+        b=jmWR8rlUo+c/8zsbUCKiQba87HH39KL52Q+mmhzPtYEvfkQTmpHAyObdvOT05WIPuV
+         qFqSZDcoz1xbfPpEL5KTEbYWDG4b7/EW6vptuDY7JISoS9wRdk59ezzFAec5EX1be2qS
+         QuYm8yq45fElY/by8FuUUxuCnkG8DbAr5Iff1kTRitjqiNz3PAvHklveMRpIpnFG5Ue5
+         Tqll6k23sX8ONkZ7iqGEDK5+O3K/1fcdJ9zkKLGpnpuYpfn2z3o25mD8w1J1dLTMvuTz
+         gbWYdnJJOGM6XYeRYWvco8YjhkJuATJLcyYrJL+roESR06KHmZvaFZu2Q1hWnsPRxeSw
+         frOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=2Os3q5btY6LuVi+A8WytGUb1KrFMmt4muWaugIPZFic=;
-        b=htsqHtA1wqKY18wJUnrO5dXc5XddgLEqBcaEpscKQ9xNZzD7UdQBaJHaj+LjnedneE
-         V3/RFxsQgqq+jPEixHkihNhXyhhMaN+QZNn9j/cgAB9bsNG0+E666Zny3YHNyE9oL0xg
-         pe7eDUIMlx/7e3g1ecQV+EWkrmtJnSrwuHOX7EInC210lsai1OwQQyouNYY7GAeFybih
-         nRhkYGIWuX0uVm7WaJ132GF0KqW1PUVas6/mEv83w4ksg5/3jDmfiHH6BGpk9F8EW+x6
-         SClW4O4a2JdHRHbfAd+By/6OuvKDAoJ94HnQ72usibWlGXrxQ0LLKbkpYdUKpsEieUn8
-         amgQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=MzXM9ZTSVhAGl1xhNJfU6hscjoth3y+knm1AH12KcsM=;
+        b=BP8GQARThnbt6KA0fDINShGbUwSWafIJHjcx+5nW3slXrEXVEIj0m8ENxzEGd44pmy
+         FG1FJFmuUJLTAdR35cs3uSiSkgD6amvA5A/7fhtGYI9I5Riyy0BK5k9xHnJ+YFdx2zJ7
+         eF8q2QZ2UWrMGvnbRT/qKZlqzjXAK8cAAODmI3/+SiUGTaAFyvgLpLb7x17xzCvo66tV
+         nH6ds1+Ql8orDttxGaD7ALncMIRDWbuLpOHxT3YNuurE6Mj018DlOa2H4NeUXTbint6S
+         DM0lSDu6f7krDlRdPvWwsSl47YrecxZX4vQi6oNv6SeCjiuw9HwLEh0X1Ezvw7lVVPLP
+         PjCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SS1aMVKY;
+       dkim=fail header.i=@linaro.org header.s=google header.b=pgWRDJDf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x142si7559245ybg.415.2020.05.22.07.32.41
+        by mx.google.com with ESMTPS id w72si8277479ybe.394.2020.05.22.07.43.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 May 2020 07:32:41 -0700 (PDT)
+        Fri, 22 May 2020 07:43:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SS1aMVKY;
+       dkim=fail header.i=@linaro.org header.s=google header.b=pgWRDJDf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43398 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33186 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jc8j3-0007au-CY
-	for alex.bennee@linaro.org; Fri, 22 May 2020 10:32:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56872)
+	id 1jc8te-0002Z6-Tn
+	for alex.bennee@linaro.org; Fri, 22 May 2020 10:43:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58602)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jc8iT-0006kl-NA
- for qemu-arm@nongnu.org; Fri, 22 May 2020 10:32:05 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:32824)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1jc8tY-0002Xz-T6
+ for qemu-arm@nongnu.org; Fri, 22 May 2020 10:43:32 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:55561)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jc8iS-0001qb-Oy
- for qemu-arm@nongnu.org; Fri, 22 May 2020 10:32:05 -0400
-Received: by mail-ot1-x341.google.com with SMTP id v17so8425526ote.0
- for <qemu-arm@nongnu.org>; Fri, 22 May 2020 07:32:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1jc8tW-0003x4-QD
+ for qemu-arm@nongnu.org; Fri, 22 May 2020 10:43:32 -0400
+Received: by mail-wm1-x344.google.com with SMTP id f13so8861284wmc.5
+ for <qemu-arm@nongnu.org>; Fri, 22 May 2020 07:43:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2Os3q5btY6LuVi+A8WytGUb1KrFMmt4muWaugIPZFic=;
- b=SS1aMVKYvF1mJJIOqI+/TLgN19vqtK+ofoBLs7HGoyHWPK6vnD91MZCuFFSzEyszvv
- 4wHsFz3uymv04rRzGfC4oCi0+q1b+UwRaz9G3D41pniQVVq8wuGY3NC3Ta4IpwUFncmH
- fHk44QmT0wYYxpoxZ3bqjfCCtA1F6+izvC57QbFo49c7hMKCgF5w9GhE3/K1qtUmVPnr
- dIoc7Ahj2OhRkujUkn3tkiNDQgoAszERqoOqTvTKAgklxD11sR6RAaEev/7d7BRj5eIJ
- kugpP60XqgEAvw4cPd34eDrhwn9l8Kqqzi/3TdaXGnZweZmd+n2qQ6h8rWmRzxKCCGu+
- BGSg==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=MzXM9ZTSVhAGl1xhNJfU6hscjoth3y+knm1AH12KcsM=;
+ b=pgWRDJDfRcoJuttcwyI+yTrDi+pUBuIYkag0yzfHfVJRDe7+ItmXheyjCsci/z0fTf
+ 6NMtSBP4Qn/0g9Sf4qdYCFuIanCsaELFi6AMw54xNnBBrbpnypnoCYrR6AulzUwVnGBL
+ GSGFzZBx4o51lxomAvJIhcrNuw3BfeXGFSuCb3xKHI8xhyu+z+rZ063/hdTBpgYfM9qS
+ NDLJKpcjnSGdGMvU3dIi4LFOiFV2EodTVFb4y7OMQWomNErTg7kREQqsLOtY7U9M25VB
+ EUfXzF/0ulbFJh8wxKLOHkqwWgKlCnD4KQeAdd/LRtnY2ZQ0H7WpThTSyyOY260aXpug
+ AFeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2Os3q5btY6LuVi+A8WytGUb1KrFMmt4muWaugIPZFic=;
- b=gsJAWLNYlBSIp/Qmwib0nIGK+H+O5OYENJ3TdjO5ngWOREhl1Mk6KVnLIeSiFw79iL
- sZNyq065piMVcBVww6Z+Ir+JUwVqTd7oMCpE5JVxo/LS8YHw3r2oHUDGkXSOSm02qOq+
- XehwLf0FlQoBR5E/mSQXdZ2j2q/eNGhXIxLPu/VfRdkpeQUkQmoX5i09EiS9vXuJ3QYN
- lIIkvOrSR3V412JHzoxt8z7IhkNr4VdvrUVrk15kjwZqhCXgiTAgwlZhq3n+3G472IL9
- RhLnJk74b+7PrDPBQ8s086FK2FU6GYEyDSnccmG1RZpMWfOPs+3nykUHMsEGsaeN8MYw
- u8gQ==
-X-Gm-Message-State: AOAM532c4hE6QpGhsDqPqtoCWGPobnaIOKKEvoVkYDa2Yz24VkSIrnZB
- yxWYYt1sj30jtnRqcSmQ/IAmcWDmD5ZIwDawfW2Lbg==
-X-Received: by 2002:a05:6830:158b:: with SMTP id
- i11mr11464006otr.135.1590157923388; 
- Fri, 22 May 2020 07:32:03 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=MzXM9ZTSVhAGl1xhNJfU6hscjoth3y+knm1AH12KcsM=;
+ b=E86ZP19cuP5GP7789qut2bgS2Vhi37EHyKI00QXLXIPCnld915PkqiPxB6cAMNKzuM
+ onbbCLb3Lojc0osW9fz0A3TtRbtLdH2PrXA9vqWzY2zRyv4LIRI770TWi6gbXmZtdVKq
+ CWi1l84t6CW+1XRRLdq/HisiS2kvXEA4iS3fBJA/3Q+HgziW/0tdG4LoOXaoXUAT3XuZ
+ J2lUkYC3Z7/MN8W0tIp39LKD5zUed/fS4gMuaJ7k6OUDhnkOh7l+e/aV+tkVTAS3BNwi
+ dUQ4vzm4HA+8gqyWw/W+gAjpRT26KFyaaemKZiHngWU3/oAUomq+FbWCpX2sq0IJETRD
+ pBuw==
+X-Gm-Message-State: AOAM5311MXKh0lWguEjj+1MjggMh4fSnqKabO3+9MRsnblS+TNedWdEm
+ kUKQbSaMRagvyTHG3o3wDcidwg==
+X-Received: by 2002:a1c:96d8:: with SMTP id y207mr6574623wmd.167.1590158608911; 
+ Fri, 22 May 2020 07:43:28 -0700 (PDT)
+Received: from myrica ([2001:171b:226e:c200:c43b:ef78:d083:b355])
+ by smtp.gmail.com with ESMTPSA id x5sm10154315wro.12.2020.05.22.07.43.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 22 May 2020 07:43:27 -0700 (PDT)
+Date: Fri, 22 May 2020 16:43:17 +0200
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v2 5/5] hw/arm/virt: Let the virtio-iommu bypass MSIs
+Message-ID: <20200522144317.GB3453945@myrica>
+References: <20200508173057.32215-1-eric.auger@redhat.com>
+ <20200508173057.32215-6-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20200515142056.21346-1-peter.maydell@linaro.org>
- <20200515142056.21346-11-peter.maydell@linaro.org>
- <96522b6c-8d33-51b4-cbdb-e8973f6487b5@linaro.org>
-In-Reply-To: <96522b6c-8d33-51b4-cbdb-e8973f6487b5@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 May 2020 15:31:52 +0100
-Message-ID: <CAFEAcA_bpUD0aK4kxpeRofGX2swKBU6OgZhVBvUAhmcnUOH=iQ@mail.gmail.com>
-Subject: Re: [PATCH 10/10] target/arm: Convert Neon one-register-and-immediate
- insns to decodetree
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x341.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200508173057.32215-6-eric.auger@redhat.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -114,20 +118,117 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
+ peterx@redhat.com, armbru@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
+ bbhushan2@marvell.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xDJHPoKHppws
+X-TUID: hVRoGDB+fr6W
 
-On Sat, 16 May 2020 at 03:51, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> I wonder if it's worth repeating VORR/VBIC so many times.
-> You can just as well do the (cmode & 1) && cmode < 12 check in the trans_ function.
+On Fri, May 08, 2020 at 07:30:57PM +0200, Eric Auger wrote:
+> At the moment the virtio-iommu translates MSI transactions.
+> This behavior is inherited from ARM SMMU. The virt machine
+> code knows where the guest MSI doorbells are so we can easily
+> declare those regions as VIRTIO_IOMMU_RESV_MEM_T_MSI. With that
+> setting the guest will not map MSIs through the IOMMU and those
+> transactions will be simply bypassed.
+> 
+> Depending on which MSI controller is in use (ITS or GICV2M),
+> we declare either:
+> - the ITS interrupt translation space (ITS_base + 0x10000),
+>   containing the GITS_TRANSLATOR or
+> - The GICV2M single frame, containing the MSI_SETSP_NS register.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
+> ---
+> 
+> v1 -> v2:
+> - Test which MSI controller is instantiated
+> - If GICV2M is in use, declare its doorbell as an MSI doorbell too
+> ---
+>  include/hw/arm/virt.h |  6 ++++++
+>  hw/arm/virt.c         | 18 ++++++++++++++++++
+>  2 files changed, 24 insertions(+)
+> 
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 6d67ace76e..ad20cb6e15 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -96,6 +96,11 @@ typedef enum VirtIOMMUType {
+>      VIRT_IOMMU_VIRTIO,
+>  } VirtIOMMUType;
+>  
+> +typedef enum VirtMSIControllerType {
+> +    VIRT_GICV2M,
+> +    VIRT_ITS,
+> +} VirtMSIControllerType;
 
-OK; at that point we might as well just have a single
-Vimm_1r pattern and distinguish VORR/VBIC/VMOV in the
-trans function, rather than having three trans functions
-which are all doing decode on cmode/op anyway.
+I think you need a third value for msi_controller == 0. If I instantiate a
+GICv3 without ITS at the moment the V2M region gets reserved. Not a big
+deal since MSIs aren't supported at all in this case, but it would be
+cleaner to skip any reservation.
 
-thanks
--- PMM
+Thanks,
+Jean
+
+> +
+>  typedef enum VirtGICType {
+>      VIRT_GIC_VERSION_MAX,
+>      VIRT_GIC_VERSION_HOST,
+> @@ -135,6 +140,7 @@ typedef struct {
+>      OnOffAuto acpi;
+>      VirtGICType gic_version;
+>      VirtIOMMUType iommu;
+> +    VirtMSIControllerType msi_controller;
+>      uint16_t virtio_iommu_bdf;
+>      struct arm_boot_info bootinfo;
+>      MemMapEntry *memmap;
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 634db0cfe9..d2dd07885b 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -602,6 +602,7 @@ static void create_its(VirtMachineState *vms)
+>      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_GIC_ITS].base);
+>  
+>      fdt_add_its_gic_node(vms);
+> +    vms->msi_controller = VIRT_ITS;
+>  }
+>  
+>  static void create_v2m(VirtMachineState *vms)
+> @@ -622,6 +623,7 @@ static void create_v2m(VirtMachineState *vms)
+>      }
+>  
+>      fdt_add_v2m_gic_node(vms);
+> +    vms->msi_controller = VIRT_GICV2M;
+>  }
+>  
+>  static void create_gic(VirtMachineState *vms)
+> @@ -2136,8 +2138,24 @@ out:
+>  static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+>                                              DeviceState *dev, Error **errp)
+>  {
+> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +
+>      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>          virt_memory_pre_plug(hotplug_dev, dev, errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+> +        /* we declare a VIRTIO_IOMMU_RESV_MEM_T_MSI region */
+> +
+> +        if (vms->msi_controller == VIRT_ITS) {
+> +            /* GITS_TRANSLATER page */
+> +            qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
+> +            qdev_prop_set_string(dev, "reserved-regions[0]",
+> +                                 "0x8090000, 0x809FFFF, 1");
+> +        } else if (vms->msi_controller == VIRT_GICV2M) {
+> +            /* MSI_SETSPI_NS page */
+> +            qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
+> +            qdev_prop_set_string(dev, "reserved-regions[0]",
+> +                                 "0x8020000, 0x8020FFF, 1");
+> +        }
+>      }
+>  }
+>  
+> -- 
+> 2.20.1
+> 

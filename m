@@ -1,99 +1,98 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2495863lfb;
-        Fri, 22 May 2020 04:51:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyrbwrcgpuHRvegPuWpnH2gLq6d1Ie8pxlqoK8Weai04CCXdgGtmkugXcPY1en74qbp84Oa
-X-Received: by 2002:a05:620a:1101:: with SMTP id o1mr14080491qkk.387.1590148271241;
-        Fri, 22 May 2020 04:51:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590148271; cv=none;
+Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2495968lfb;
+        Fri, 22 May 2020 04:51:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxV9OSqe5EM4BD5WOo9BslKU5EMSCqSmQhy0pbKIaOAz7Ci9Pjy+SNuarjJq9Te7YIxxeEF
+X-Received: by 2002:ac8:670d:: with SMTP id e13mr15528438qtp.374.1590148280527;
+        Fri, 22 May 2020 04:51:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590148280; cv=none;
         d=google.com; s=arc-20160816;
-        b=BJLQXGfOe/8Ob2KFmcRai8g4qOoPV/dFdpRBkfa1yWeIImdijMxeQ8PvhW0XvGmHOA
-         2SfikGHIcJ4XENBINHPT40x/Gshvgwq8p4kP4wJclGuQ77GAVIZp4T/eO2w1N0z8oTV4
-         M6Xsa+Sb+na2QkVAtxK7Voxj+9/9W6I9LpmOiSSgPBtxQtR77lNKTjrEJgOs6j8O9Zci
-         HEyI7R7X+3V0xsEfxRAL76Pj2Q06YNzjTvZTu8HsvnIHvrITzjbUHHoIukhlK5JZNZLr
-         QB9ghnZmPRj18dJOQZZwVB5fu9dX5VeSGzc7b/gerq/MkcfhAwOLZ5ZV305fNEUypvnA
-         ogTw==
+        b=POl3md6Yhid1y7E4UZ0ADRt37HsIhtnh4OwIuwkbJpbnRZrxalorKSG4E3F4ICR5/2
+         nn1QvJnsvT3Z5q+MtbP1a4FB4zm3ALIZzVF7yRCR8pODGs4CkSoZYGfy2y3jE3WBdaot
+         zbNdKZSGMY36nEa/WY5RYAB95hVi1xTuRNIyQcaxKE0hRnXmGum6SB2xByxPAIvjrNeV
+         KxZFGygmoN9/hWkvAd69bYYqUj4q4lS90V4p46udqKCbMxyVU+68SUu0NfZAOf9PcmAV
+         5bUntjqCpzkvg3Oj6/MlsTbe1VLCmmS8Oow6Q+68/nvmeUYh31/cAK4SQRLWnYv+maR3
+         TL4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=PeC4/6Bbi6vdN3UI8jEqDsfyPpIFP8TzdU+CFw09D9g=;
-        b=UOFQkSEb+rLirDEHz2sMBdq4tXAy1QNId6yZjnUILCfvGg0hdswFmnYOCbF0ZUr2eK
-         foSnx4VtW4Kag/fXv3PEiZuApfrxDA54xYfJOXd2NFRgsH6phQ9zJoP2LbWEEQYHcCXF
-         uLU7z2q52wjuH/X4BQnpH9kwNH/4/6p3eswOMsbc5tLZIojWuUbC5V3/mru7nycbLUCV
-         ribGz0DLqfhsJgnAptOQI6aV9+JpNR+4aL/KBTsO5ghiUNU+at6qaz/+j3ID7UK4tq6/
-         DX0dffXh7Y646GH6eaCOrROwS3+NLy+KdJJfeeJ0CubTJPypbUaewA5X1LOVWFusBfbg
-         MnvQ==
+        bh=ATw2AQdt0tMLUBC524HixfrRhPl572ZT8HtNHYF2xvw=;
+        b=QdUJXkXi/9b4odRmEN4FVivXI7HqFJxZfhzlFlaOXf6G0/aovE3qT8KqTbqIhQ9Qzj
+         kpc4ITHbOaQOOO/D/i6rO2LR24r9R8Cx+7hbVjcGrIKCq/T+oTUb7mpATtUKkvs8LCBy
+         o0pqnv2R5DDoqDUofw0dN9c3dXkGHRbhys45/c/PUEmBRo1pJ9muR/EQXgS5bE51IccJ
+         4lJ8IFIV5LQVAhVCy5JxSba/4lOakhUz7KlD7fp/ngrHAkDaWgk3u4pIGr5kkCAqCFFr
+         LhBY+VgVVTMHjwkqVKCeuJYWWKCAZvnS3UfsUlCOq4B6aKdwB/D0Lkqga00Jy4BgOLDM
+         gPLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ADKhULdR;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dxBVMRpg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p8si4620740qvt.187.2020.05.22.04.51.11
+        by mx.google.com with ESMTPS id n9si965899qtf.370.2020.05.22.04.51.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 May 2020 04:51:11 -0700 (PDT)
+        Fri, 22 May 2020 04:51:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ADKhULdR;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dxBVMRpg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51804 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52820 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jc6Ck-0003An-Jx
-	for alex.bennee@linaro.org; Fri, 22 May 2020 07:51:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37612)
+	id 1jc6Ct-0003aJ-W3
+	for alex.bennee@linaro.org; Fri, 22 May 2020 07:51:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37618)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <e.mikitas@gmail.com>)
- id 1jc6Cb-00037V-Fj; Fri, 22 May 2020 07:51:01 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:40358)
+ id 1jc6Cg-0003JP-9Q; Fri, 22 May 2020 07:51:06 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:55743)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <e.mikitas@gmail.com>)
- id 1jc6Ca-0004cD-Md; Fri, 22 May 2020 07:51:01 -0400
-Received: by mail-wm1-x341.google.com with SMTP id n18so9542725wmj.5;
- Fri, 22 May 2020 04:50:59 -0700 (PDT)
+ id 1jc6Cf-0004cP-Bl; Fri, 22 May 2020 07:51:05 -0400
+Received: by mail-wm1-x342.google.com with SMTP id f13so8374141wmc.5;
+ Fri, 22 May 2020 04:51:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=PeC4/6Bbi6vdN3UI8jEqDsfyPpIFP8TzdU+CFw09D9g=;
- b=ADKhULdRIiNbFVy02LOfvd5zmaNxrf7Z4KbicuV+8XD0qVronN+0P7D8bxRubcT5MM
- lWe7eLoX2Eb4Or4Q0zJ6T6ArEMh1eYC32ShM0c6MP6rKW9R7pWDB34B5CUABBzCp92Ji
- 9nQR88FRqpTUH4zD68crT6+oDHRVwGLDg8ZCJbpMBoLRpe5OenbHpM/hhTuwZpcb9tQa
- UmkdCP/VjIKuPQYmwXi85DXXhjgcL+erK/2wmhE1wu+F7rOmFsMmkEhnjsLb8tvd/Imy
- GLU3jU/VgzJTlltHe0niEOmj5z4YumfyGBns/DiG0YZJGSUH5ezQNKSOHX2V4AQSF3Wr
- NlNg==
+ bh=ATw2AQdt0tMLUBC524HixfrRhPl572ZT8HtNHYF2xvw=;
+ b=dxBVMRpg+o021KVHz5A8ks0zutiZTujaLqO42y2jmH0xWCjP6saCePCEciz/aotlv2
+ auN9x41lY5UXjVFoi2hQdFPA5caXoKjxjqXL0gpC1cCvwCQVeCCQ+VHbAnxfAMkWsnv5
+ 8BLDHzi6xsH3htbgiKiI8rnRYEwFVb8nekUuvXBDovBDHCdBA2sBbDUXdbzRrJSCIo4i
+ AiaQox3x70+aaDcnuJ+BboGY8Kpp3zLmjwcpS0cKpQGzv71EIwK+P33+cq4UrWMF8pPQ
+ yoHOVZrcfsjj8MmASQuZnmCLoh+Rsa0ZBTnsZAxdsOeDNlJWZXRsCP7rBOQ2/0clZ/yC
+ bggA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=PeC4/6Bbi6vdN3UI8jEqDsfyPpIFP8TzdU+CFw09D9g=;
- b=FcSSTqG3czcPSBYdlNImhyfOd0hwG6LzsGdGZRJaogZrTtn6tTOUYQpEH5bgEtFD74
- UPOSFdplzpgPTsattl72d3UgVGgImxlYfnm2YfBfmtszDF2Tz5+kHJrXM9Wo+NYNoqNv
- wnfhayVcoecU5uQrFTzDj2NTVvQ+f0KnpHNTH7wxbUvoIkzVrpZHwT8T9B6XG4t6lvHT
- R4QPL6fNsP1lbwSPDJcYCGf3cAdfth1Opu47s3knpqD895hAJP60hnwR1DIKlgaDVOb4
- FMvgzK6dUZ7OHkZhXV60IQLRE4+JJHqnuQooxE8I+NQGtsa4hT1Q02Dpqs94bmXMj0os
- rVlg==
-X-Gm-Message-State: AOAM533qIcqRZdVPwayLAe3AzPxgHAMouUZmVy91EQ5RwGhIeVbkHFtI
- urBd/kcEWbpdmjYHHp06qFw=
-X-Received: by 2002:a1c:3286:: with SMTP id
- y128mr12994051wmy.119.1590148258773; 
- Fri, 22 May 2020 04:50:58 -0700 (PDT)
+ bh=ATw2AQdt0tMLUBC524HixfrRhPl572ZT8HtNHYF2xvw=;
+ b=re4ndstB6uSFYJRxJbGZTuPIqqxlJKGRQSPS3yc80tk6ohj9LsS3Ss1dTU/aCc75qt
+ SxejqNCYZamwuh0GEFILqPhPsIOVrdz4692TZJ1Q+GO0e6O3HR9bI42N1EDpjLFHC+gU
+ me9ZsdzP/nRPweWsXJEPryS4UPK+tE7IC2rEAHMNOkye4VBqP4+UaE8iZ6TCeuHwV93+
+ VECfnNXu0nq03DyNTNEOSIgIAa53kIlqWtna39+KDST0NGu/JP4FLXU4s9UbVVD0UMib
+ gtctvv3r7uxs6i9jLUkd/EMJS4YHxSuCbW+fJ9xt4RDNHR8r3FxxBBR7hd8PyVC4/XZ7
+ erEQ==
+X-Gm-Message-State: AOAM530j8f0u7c4iX4F4gcfX8G9FWzJV4S1EFrYXy1evgjGvaWKbEotw
+ xwWLM97tNBFSpgUoHh+yvM0=
+X-Received: by 2002:a1c:dc05:: with SMTP id t5mr13600278wmg.112.1590148262694; 
+ Fri, 22 May 2020 04:51:02 -0700 (PDT)
 Received: from eden-linux.lan (bzq-109-66-59-205.red.bezeqint.net.
  [109.66.59.205])
- by smtp.gmail.com with ESMTPSA id m3sm9237640wrn.96.2020.05.22.04.50.57
+ by smtp.gmail.com with ESMTPSA id m3sm9237640wrn.96.2020.05.22.04.51.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 May 2020 04:50:58 -0700 (PDT)
+ Fri, 22 May 2020 04:51:01 -0700 (PDT)
 From: Eden Mikitas <e.mikitas@gmail.com>
 To: peter.maydell@linaro.org
-Subject: [PATCH 1/2] hw/ssi/imx_spi: changed while statement to prevent
- underflow
-Date: Fri, 22 May 2020 14:50:35 +0300
-Message-Id: <20200522115036.31516-2-e.mikitas@gmail.com>
+Subject: [PATCH 2/2] hw/ssi/imx_spi: Removed unnecessary cast of rx data
+ received from slave
+Date: Fri, 22 May 2020 14:50:36 +0300
+Message-Id: <20200522115036.31516-3-e.mikitas@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200522115036.31516-1-e.mikitas@gmail.com>
 References: <CAFEAcA8FFc_Vf-UQO9f_3qoXiCJf9N1uWh7qB-WXrEWTzKBu8Q@mail.gmail.com>
  <20200522115036.31516-1-e.mikitas@gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=e.mikitas@gmail.com; helo=mail-wm1-x341.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=e.mikitas@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -119,13 +118,13 @@ Cc: qemu-trivial@nongnu.org, alistair@alistair23.me, qemu-devel@nongnu.org,
  e.mikitas@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SG1z7HVslvtf
+X-TUID: 8acOMEso9ep+
 
-The while statement in question only checked if tx_burst is not 0.
-tx_burst is a signed int, which is assigned the value put by the
-guest driver in ECSPI_CONREG. The burst length can be anywhere
-between 1 and 4096, and since tx_burst is always decremented by 8
-it could possibly underflow, causing an infinite loop.
+When inserting the value retrieved (rx) from the spi slave, rx is pushed to
+rx_fifo after being cast to uint8_t. rx_fifo is a fifo32, and the rx
+register the driver uses is also 32 bit. This zeroes the 24 most
+significant bits of rx. This proved problematic with devices that expect to
+use the whole 32 bits of the rx register.
 
 Signed-off-by: Eden Mikitas <e.mikitas@gmail.com>
 ---
@@ -133,18 +132,18 @@ Signed-off-by: Eden Mikitas <e.mikitas@gmail.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index 2dd9a631e1..6fef5c7958 100644
+index 6fef5c7958..43b2f14dd2 100644
 --- a/hw/ssi/imx_spi.c
 +++ b/hw/ssi/imx_spi.c
-@@ -182,7 +182,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+@@ -206,7 +206,7 @@ static void imx_spi_flush_txfifo(IMXSPIState *s)
+         if (fifo32_is_full(&s->rx_fifo)) {
+             s->regs[ECSPI_STATREG] |= ECSPI_STATREG_RO;
+         } else {
+-            fifo32_push(&s->rx_fifo, (uint8_t)rx);
++            fifo32_push(&s->rx_fifo, rx);
+         }
  
-         rx = 0;
- 
--        while (tx_burst) {
-+        while (tx_burst > 0) {
-             uint8_t byte = tx & 0xff;
- 
-             DPRINTF("writing 0x%02x\n", (uint32_t)byte);
+         if (s->burst_length <= 0) {
 -- 
 2.17.1
 

@@ -1,105 +1,100 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1932333lfc;
-        Mon, 25 May 2020 04:09:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxOX/WxPN6TrSuRjYDV9NnDXKZeMR5Z9bfunQMxDCq34c6DNhJp+jzuNmrDaxt74tULt5Gv
-X-Received: by 2002:ae9:de06:: with SMTP id s6mr5761042qkf.173.1590404977075;
-        Mon, 25 May 2020 04:09:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590404977; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1932789lfc;
+        Mon, 25 May 2020 04:10:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwqxmGSExKk8B4EOuRHA2qwtxuWYqbG3K9sYwwJRpNjJQvbjBZ7xVzQKVHEXTFPDAs1mpkm
+X-Received: by 2002:aed:2d23:: with SMTP id h32mr27167093qtd.389.1590405015981;
+        Mon, 25 May 2020 04:10:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590405015; cv=none;
         d=google.com; s=arc-20160816;
-        b=FRNHgkaqg2r2WfdZbO1UKBk/Cn/bAGxcPyyYs957wbsBicn2JvhVGFjB9gEFxVLq1H
-         Kt7lOS8834w2r3xUpjisW8A2YWkxIipIJgwYvFteczhWlUbtgyxQ+4pdw35zXCH62IF/
-         2C4MhtwNY3WxQTwYOgXzTQ2UznZh1Y2oyCAZ/tTXtuuvC8z70sgTe/KnZO2j9qiirtlT
-         4Zodm39icNDBTmPqBAnAF0RWN9yN/LgdbfUwcapjwjeZam+18McemjjKFLfb547jMpLM
-         F125R72YKKg7vtTGhnuS79nzW7jcmRL0+IAdcerF1Llcm9uzPEELryiwSe1wJ9kflR9K
-         vR1w==
+        b=hRm0iGasNzwYFZTLIfUEQIqPSBAAhE4UHhfpRtobMa1pJSbvrJ6adxvymQ9sjHL9xv
+         lAsCwTymyZ4rCGfTP41ckSpWV31UR1VxMcNrQhnqJhuPpPHxZPBFbU59pyn+7+KOSlHN
+         WVF/7WLVqYEg/+RTkKxnfbrkMnGO4eC9ABUwB8Sqz+MC+djJR7H2oGuAijurRY5oeUqt
+         KKnEYxC4Tmp9MZasp+Yr61BeLkMpovqhIYVVYdVDIfCbXu0jKpfCbgB0egiKC8pPP0u+
+         9IjcbR/iFgd9gnTiA2Nc18ntKS9tiZTv2nLNqYRbeQuNGUC1NPZiIcgUSSNgRjInlBkZ
+         zp0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=qsDlFr7X5YpYxj34oz7cBsGY/Z0+d8AKGL3oMvP1VfI=;
-        b=s/SRvbJmpRTfnBW9KmfGXQO0FlaQOP/nk89Az/QB69xBJLDT/y8BLyKoaZzhl6MSAi
-         iuhcHJfmULu57+d210JqPIsC3FRD8O2bLvG4h4HMoefbvYWX6O2aUbBBpBXMc/jQLG1m
-         h0SoazvpZYBXtDmpIbCSidg76ti4Inlw06vlNSUndXHLF+qedzbdRoWzYhHHE/Uz/bft
-         W0FH4d8k+Yika9/SYrAmSAgcS56L8pZU22lkc0NAM7vy2qpuqPkIH0VeCTqCxKcDQHGi
-         CyOhhnblRbYjc2OwrQ1SWoJFNBvBF02bfhywntnrLSSWZZ9qZskn+aRwVjPvYDZg3JX7
-         0W9g==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=JIFaeFek0SvjmieIuqV9ZQHX7s4EvNNwtRVCIFLPqBM=;
+        b=qR6bLOdJG8H9yGE+eLNe+DWPQ/A4QkXAV94iTuo4btZ6CBcPOv6KuepdNoPFi7YMzW
+         BH5ovda8ftB+Xldz7vY0XlLOZPy+3DEdr14hIh4MVMlAxmk7k0Rmoz650jzqJTfAG9IH
+         v8lVfEavUkkkl8ik4hK8kQKm2tdWzDDu47P15sctTp8yllo/KodtB4EXLT+tszmRQafa
+         rpbaMKPPO51m6pwkE90+coC6nWFCGsJ58Yd5kGZ9pnvxE/hW/3h8Fb2rJPncN5D2x5HF
+         YU7Fq4Z7H2LsEzWbTxJx9PVUxDyNJzWCXT8V6F7uLbjdCjHC7jJPp6JbXN5GgcUx+2vU
+         4lCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EasWQ4C1;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VxjMdZES;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y62si9434451qka.278.2020.05.25.04.09.36
+        by mx.google.com with ESMTPS id u25si8878526qkm.312.2020.05.25.04.10.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 May 2020 04:09:37 -0700 (PDT)
+        Mon, 25 May 2020 04:10:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EasWQ4C1;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VxjMdZES;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43438 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44932 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jdAzA-0001lk-I4
-	for alex.bennee@linaro.org; Mon, 25 May 2020 07:09:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56556)
+	id 1jdAzn-0002N5-EZ
+	for alex.bennee@linaro.org; Mon, 25 May 2020 07:10:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56630)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdAz3-0001kh-OJ; Mon, 25 May 2020 07:09:29 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:44603)
+ id 1jdAze-0002JC-9z; Mon, 25 May 2020 07:10:06 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43374)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdAz3-0006lx-6L; Mon, 25 May 2020 07:09:29 -0400
-Received: by mail-wr1-x443.google.com with SMTP id y17so8326358wrn.11;
- Mon, 25 May 2020 04:09:28 -0700 (PDT)
+ id 1jdAzd-0006qS-MM; Mon, 25 May 2020 07:10:06 -0400
+Received: by mail-wr1-x441.google.com with SMTP id i15so16676264wrx.10;
+ Mon, 25 May 2020 04:10:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=qsDlFr7X5YpYxj34oz7cBsGY/Z0+d8AKGL3oMvP1VfI=;
- b=EasWQ4C1KLkYFLSU2hAQPnqxFsGvqrNyvxzGXwcgXzrrvW+ubPRXkbBbuMn+YTp+P9
- 5MvKHFlbwGKHMwYcvJdGzxJzlctUYfJ/gh9Q0kPvr+pNyJdzEmKVHKyc2CNsxpHbQ/ZZ
- vENWNCWFXBTqdTsgdCULxsHTYz1A8/apdpRfghUjvnVhEo7nR/2g8qIjkZXKxB7ylPCc
- rzshwJGNkJLFf/V+fSj5ClncbNuWzrQKi0FSGYOEuz6Ai7OzYdPzvstf1mFKCPEBue5n
- 7YhAVBSOA8QfeTDKS0S3+rSlPII7zLT2nPYGEFj5wJ0ovnH5JTQbQmAXFqS4O9EMlS9C
- nRNw==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=JIFaeFek0SvjmieIuqV9ZQHX7s4EvNNwtRVCIFLPqBM=;
+ b=VxjMdZESY8SxnXATmKnoAVQKPP1bmGfkLSj+iWBH5Wn91KgVVJnxKc9JJ9j8loY0QK
+ P2CwB1golbfv5dari5QV1o5+Uy+z7n+kQ5kGukKXahaF6KZSqYxxwWZpBmezCtwsxu6g
+ tdKShgR3mmof2CCpcWDVhuZAEe/16NFYXHZ1LXbMl7RqYUUTtgkTspX56i6kjx558xMD
+ 3LXyXCPhDAy31y64tkG5WyH0J8Houa82gwL6B2orwTdeAS3E4niDxqbxCkuoXW1752M6
+ /2VGxh233rOekUNG9gPGDSHPt23XaMNwsKMQF+9SQRPAt5iVLt5H10YC95QoyddPkStb
+ mMpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=qsDlFr7X5YpYxj34oz7cBsGY/Z0+d8AKGL3oMvP1VfI=;
- b=RHKM26d/LJEQfsSFNOYNjy69lyFF+tykpTfUS9tA6oEoFi3B2TPwbQVh94ByDTxXuf
- nYUuC1GpwX3S6nkYPpsVUqvshwKNJM77kdInO1OJWR66xWtfnkXckGPIeDFsW86CDJLj
- UdYqZ3W6p4W7IeCMuebT5k3QhglCraQgLuYcKw6VLVVWCfb0y162w/N5Elr3VvIFtlQM
- gWqnq0mQ+11Fbrx0UNkWbXi/7EFdAKZLTgziwy0GxFfhY08hHLCPzPUhfWZEHfD3N8eQ
- aHNKCNeLYP8n0K2N3vxb59e4XeZfh0qjO+9AOo7WgJBGQRXiA6zwFjhAJgD0JruTqS97
- +/xA==
-X-Gm-Message-State: AOAM532pdE2N26Zhi3yRU0gp8BpnJ8QY1kXX/XCFRfdbiLpaBl9/3PZp
- hA4H8yCoSEyEDWqEZM/YpFw=
-X-Received: by 2002:a5d:45c2:: with SMTP id b2mr13969152wrs.323.1590404967016; 
- Mon, 25 May 2020 04:09:27 -0700 (PDT)
-Received: from [192.168.1.36] (71.red-88-21-204.staticip.rima-tde.net.
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=JIFaeFek0SvjmieIuqV9ZQHX7s4EvNNwtRVCIFLPqBM=;
+ b=CUfHg80TqHl1upGY1NwbIMvcRpIiQ4AZ/3pC7+DY3MGWiWgF3UJL7oRku95qu/X2CU
+ O8pAHtDKuW1coWtfA40+FkpyMXahBJ1v80+RUxZJ7flfVw0r3NThEmxa1BAOd03TQ3L8
+ Er2RJr1ir7rDS6m5eAlctDcuOlhYoRqaMC+jl6fjuC1SuPccH4+LNpjUjpzCgxDBNz10
+ LMKYbxbW6Bg0Y5xg/0BJfNOoNXk4X5xMtX6QNUkQgxRndBV4KbwmeTzdnG4AQKADeHql
+ my4QrFEzeRwYWLffWxOGurrMC4Zvu7/JdRq59blwnOAuZFs8rTFP+UrqNAtI9yJ/zFuY
+ 9YwQ==
+X-Gm-Message-State: AOAM533g04e63CJKaxhLmkoafEr744AD67NCTiERT0Q+IrZBIaC6R80t
+ 4eJxEs45IPfW4XGBL1wdic9lSPXLEjM=
+X-Received: by 2002:a5d:5585:: with SMTP id i5mr11547107wrv.112.1590405003215; 
+ Mon, 25 May 2020 04:10:03 -0700 (PDT)
+Received: from localhost.localdomain (71.red-88-21-204.staticip.rima-tde.net.
  [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id l204sm8009785wmf.19.2020.05.25.04.09.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 May 2020 04:09:26 -0700 (PDT)
-Subject: Re: [PATCH] hw/adc/stm32f2xx_adc: Correct memory region size and
- access size
+ by smtp.gmail.com with ESMTPSA id p65sm17516870wmp.36.2020.05.25.04.10.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 25 May 2020 04:10:02 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-References: <20200525110800.7230-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <c247002e-f3fe-cac4-9a04-a78d86571f6f@amsat.org>
-Date: Mon, 25 May 2020 13:09:25 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+Subject: [PATCH v2] hw/adc/stm32f2xx_adc: Correct memory region size and
+ access size
+Date: Mon, 25 May 2020 13:10:01 +0200
+Message-Id: <20200525111001.8147-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <20200525110800.7230-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -123,43 +118,56 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ql7W4n4uhDOl
+X-TUID: xhUsWEwXa73W
 
-On 5/25/20 1:08 PM, Philippe Mathieu-Daudé wrote:
-> The ADC region size is 256B, split as:
->  - [0x00 - 0x4f] defined
->  - [0x50 - 0xff] reserved
-> 
-> All registers are 32-bit (thus when the datasheet mentions the
-> last defined register is 0x4c, it means its address range is
-> 0x4c .. 0x4f.
-> 
-> This model implementation is also 32-bit. Set MemoryRegionOps
-> 'impl' fields.
-> 
-> See:
->   'RM0033 Reference manual Rev 8', Table 10.13.18 "ADC register map".
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/adc/stm32f2xx_adc.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/adc/stm32f2xx_adc.c b/hw/adc/stm32f2xx_adc.c
-> index 4f9d485ecf..5d834a98f6 100644
-> --- a/hw/adc/stm32f2xx_adc.c
-> +++ b/hw/adc/stm32f2xx_adc.c
-> @@ -278,7 +278,7 @@ static void stm32f2xx_adc_init(Object *obj)
->      sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
->  
->      memory_region_init_io(&s->mmio, obj, &stm32f2xx_adc_ops, s,
-> -                          TYPE_STM32F2XX_ADC, 0xFF);
-> +                          TYPE_STM32F2XX_ADC, 0x100);
->      sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
->  }
->  
+The ADC region size is 256B, split as:
+ - [0x00 - 0x4f] defined
+ - [0x50 - 0xff] reserved
 
-Please ignore this patch, it is incomplete.
+All registers are 32-bit (thus when the datasheet mentions the
+last defined register is 0x4c, it means its address range is
+0x4c .. 0x4f.
+
+This model implementation is also 32-bit. Set MemoryRegionOps
+'impl' fields.
+
+See:
+  'RM0033 Reference manual Rev 8', Table 10.13.18 "ADC register map".
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+v2: Commit staged changes... (MemoryRegionOps::impl)
+---
+ hw/adc/stm32f2xx_adc.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/hw/adc/stm32f2xx_adc.c b/hw/adc/stm32f2xx_adc.c
+index 4f9d485ecf..01a0b14e69 100644
+--- a/hw/adc/stm32f2xx_adc.c
++++ b/hw/adc/stm32f2xx_adc.c
+@@ -246,6 +246,8 @@ static const MemoryRegionOps stm32f2xx_adc_ops = {
+     .read = stm32f2xx_adc_read,
+     .write = stm32f2xx_adc_write,
+     .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl.min_access_size = 4,
++    .impl.max_access_size = 4,
+ };
+ 
+ static const VMStateDescription vmstate_stm32f2xx_adc = {
+@@ -278,7 +280,7 @@ static void stm32f2xx_adc_init(Object *obj)
+     sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
+ 
+     memory_region_init_io(&s->mmio, obj, &stm32f2xx_adc_ops, s,
+-                          TYPE_STM32F2XX_ADC, 0xFF);
++                          TYPE_STM32F2XX_ADC, 0x100);
+     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+ }
+ 
+-- 
+2.21.3
+

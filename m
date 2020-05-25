@@ -1,91 +1,106 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1794053lfc;
-        Mon, 25 May 2020 00:26:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxQnM5cK0C6W+og3HZZLHdgnPJQ8bO0eS3xBOarwO944ndh7xM7rVNwtkkQ+aBC+kXuW6t9
-X-Received: by 2002:a37:8844:: with SMTP id k65mr26320060qkd.309.1590391617304;
-        Mon, 25 May 2020 00:26:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590391617; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1784394lfc;
+        Mon, 25 May 2020 00:10:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx/gFTpdwD+Uq6amIlT/YsHca5plF6PefElSkU4/xu0AP6E2zrcmZbzjsRiLeAStmEnsMfb
+X-Received: by 2002:a25:f508:: with SMTP id a8mr24953696ybe.395.1590390606575;
+        Mon, 25 May 2020 00:10:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590390606; cv=none;
         d=google.com; s=arc-20160816;
-        b=AsQ0or22e6S4e1yNDEjCHk2Vlnx40aEKD0aoKdalhlOeJ+Mzb61ZQKleWO89F9ecDj
-         /uyy6EMKqNBp44eXpG3X4aec33yfvXy61o+/YC4i9mtmi/spJXkSXvV3RYcGuLBN4OTj
-         hhjDQiurwzF4ZewWhq45mGIeY50V7n3XXgEMBVNd+Rtew7YSFPMBstop1+YQtdvkmngY
-         UAziGsoiYJt3jJMuBEhLMZJUzcdifbhtQlbA6xefndosb2OJyLyuZlFvsuO6VU27Uiw9
-         FNqk/SPgj2tvEsAXWCF61rSxCBhswbFprli1hiHB4YPKIkC8bVQbamEx4flLKpFQyGKf
-         CE3g==
+        b=t1TuezCgWJyUNSrZR4VJyoyGrKg7o7wfnP5m2HZooOWlGryoUZQipcbcBF6zx2s3OD
+         dChAlIywebioRy0/dRJdgUVdq/95lptaF9c28ZLVcenJ4acFZoG2if0c+MRZCM6JIpzp
+         AVphPhjxd9sbCWcqYIeX5N0R9cpxoRpsh/igMRN/FRR8IwKv7WUJfZNJx/WMwWP7j5M4
+         ZVqAineLaopIVqefipH+k7/PWJux1DjIzootWQU4NiRHcaqBILDMypDqz5n7Oyp9kRA4
+         fi0pKZ8HMwyGNUpAiLvWbzrxac39NNxP4xNJPiB+gfS5lGo6cSJTGimfWpBnj6WU6eRW
+         FaFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=1bNu6oGRD8gxdN02xABNvQD2MATRZEUukTxl91nVRgU=;
-        b=qQahAfMDn+Sr9m1qddLBl76vW1m7lgEpCMJoya3co0HTKntqJNs1XgZsKbnhfPxrqN
-         JBSYfvoGgcg4Jsys3NS6V7fh+cZHllLpv1VjmsSUKSYbPX3ho+AnDMEFNN2t/CnUGDfp
-         Hh4g538d3VpBXPwng3dSxJTzclNC4Nzax0eqn8EccO9cOu6x6fAjt8OjJ1pN7WeHXXCW
-         d7g5+TWsc+Y9h+BxTP6HsLkcsD6gQRcs4kcwu0/GnFOSspwX/w/7+SS7tKeTysUqLlgj
-         LIPsrVk2mF8//P1yMoVJMEjlvgmuD2dT8tP+7nQngMddBpYxS84FuIiz5PgavJEc2Yr3
-         O+SA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=ANlVNtOlTC0ycej1WoTiAcxni43KHeGVrRD12xPwRUo=;
+        b=Qk6ucVVmVGhuJVNrhZdNy7RgG1xS5sVaLJAfQlT+1uu+mAT615n+ORVWD3FUcRpQNd
+         7IpcAn/Z7OjHnYxrhinQFMtOEMwwSfu3ieZnLPB1IkEwF+hOZR933gpXIB3+/q7XpxW4
+         5WRQC3Xt4AIOoBS9w2yFsqyHXAqJOc6h13NQun/J3btrHn8l/UKr7qxWv3B4J0k1KGpa
+         YeM3T6TodrvhHvDi0YmP4r5z1WFJ8Qukkv2w43TeQFk13/gN7Hbahl7ODxH17XWAekki
+         JzSiP8Z9DbOeh4F8eY7UVVvs5PlxH37dft4PFimW/aFqXIuB/mOub9ee/eMtG3FyfQWA
+         YoWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=An4ssYEC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FAU2h5WE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r20si9185324qtk.7.2020.05.25.00.26.57
+        by mx.google.com with ESMTPS id j8si15685396ybp.161.2020.05.25.00.10.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 May 2020 00:26:57 -0700 (PDT)
+        Mon, 25 May 2020 00:10:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=An4ssYEC;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FAU2h5WE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56342 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39298 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jd7Vg-0002vx-Ow
-	for alex.bennee@linaro.org; Mon, 25 May 2020 03:26:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34802)
+	id 1jd7FN-0002by-QV
+	for alex.bennee@linaro.org; Mon, 25 May 2020 03:10:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33368)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jd7VZ-0002ue-4k
- for qemu-arm@nongnu.org; Mon, 25 May 2020 03:26:49 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27111
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jd7FE-0002Z4-MX
+ for qemu-arm@nongnu.org; Mon, 25 May 2020 03:09:56 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:20044
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jd7VX-0000zS-Ee
- for qemu-arm@nongnu.org; Mon, 25 May 2020 03:26:48 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jd7FC-0006xo-KY
+ for qemu-arm@nongnu.org; Mon, 25 May 2020 03:09:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590391606;
+ s=mimecast20190719; t=1590390593;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type;
- bh=1bNu6oGRD8gxdN02xABNvQD2MATRZEUukTxl91nVRgU=;
- b=An4ssYECodq2/MG6kRPvpG+yMhISzzRfMgUG1KYkeY9ATXvVa+ZFAicF8Bsg81nWFOZ0aC
- o/4rmH8lEO935wQ7HkKdLHvMOOZL7SEPkDcoAFYdkLCzGHektX4Yn7yIMm3KrPrZMMIC4P
- QOBLZbpvUgT7k0wxCg5iK+ABgOdmQYo=
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ANlVNtOlTC0ycej1WoTiAcxni43KHeGVrRD12xPwRUo=;
+ b=FAU2h5WEh2l1tASu56X9UYsMA7YqzXMKls3BIyzjy4v241Ps7v+fJPofgIIlqeV+lw38xY
+ ACHNghuc9WvEMicT1mEhBInq/Mi1MmRldM3IG9wFhwXkD0xDCXiqxmllzS5J4Htb74DENH
+ G7G/gO/kyrg0D4LkNy7rJEWjlabKUeQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-292-AR_pXaXnPYCLfAUZugo2_g-1; Mon, 25 May 2020 03:26:40 -0400
-X-MC-Unique: AR_pXaXnPYCLfAUZugo2_g-1
+ us-mta-487-VKk1kW7QM6-WXJJL0UUGvw-1; Mon, 25 May 2020 03:09:32 -0400
+X-MC-Unique: VKk1kW7QM6-WXJJL0UUGvw-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A58C1107ACCA;
- Mon, 25 May 2020 07:26:39 +0000 (UTC)
-Received: from thuth.com (ovpn-113-78.ams2.redhat.com [10.36.113.78])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CCA9C5C1B2;
- Mon, 25 May 2020 07:26:33 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
-Subject: [PATCH] tests/acceptance: Add a boot test for the xlnx-versal-virt
- machine
-Date: Mon, 25 May 2020 09:26:30 +0200
-Message-Id: <20200525072630.22280-1-thuth@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BBFF61005510;
+ Mon, 25 May 2020 07:09:30 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-32.ams2.redhat.com
+ [10.36.112.32])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 118675C1B2;
+ Mon, 25 May 2020 07:09:29 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 77168113864A; Mon, 25 May 2020 09:09:28 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Subject: Re: [PATCH] arm/aspeed: Rework NIC attachment
+References: <20200519161957.1056027-1-clg@kaod.org>
+ <87zha3t8qg.fsf@dusky.pond.sub.org>
+ <3ead6228-b61b-ca8b-6ebc-dd9299f1a334@kaod.org>
+ <87367uobma.fsf@dusky.pond.sub.org>
+ <836e30f9-d029-5ec9-3b05-b0d8541869ff@kaod.org>
+Date: Mon, 25 May 2020 09:09:28 +0200
+In-Reply-To: <836e30f9-d029-5ec9-3b05-b0d8541869ff@kaod.org>
+ (=?utf-8?Q?=22C=C3=A9dric?= Le
+ Goater"'s message of "Thu, 21 May 2020 09:36:05 +0200")
+Message-ID: <87eer8fq3b.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=thuth@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/25 01:44:10
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/25 00:06:24
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -106,60 +121,338 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Cleber Rosa <crosa@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9nd3jI+NNtes
+X-TUID: 1GGTgjamvA2F
 
-As described by Edgar here:
+C=C3=A9dric Le Goater <clg@kaod.org> writes:
 
- https://www.mail-archive.com/qemu-devel@nongnu.org/msg605124.html
+> On 5/20/20 5:43 PM, Markus Armbruster wrote:
+>> C=C3=A9dric Le Goater <clg@kaod.org> writes:
+>>=20
+>>> On 5/20/20 8:34 AM, Markus Armbruster wrote:
+>>>> C=C3=A9dric Le Goater <clg@kaod.org> writes:
+>>>>
+>>>>> The AST2400 and AST2500 SoCs have two MACs but only the first MAC0 is
+>>>>> active on the Aspeed machines using these SoCs. The AST2600 has four
+>>>>> MACs. The AST2600 EVB machine activates MAC1, MAC2 and MAC3 and the
+>>>>> Tacoma BMC machine activates MAC2.
+>>>>>
+>>>>> Introduce a bit-field property "macs-mask" under the Aspeed SoC model
+>>>>> to link the active MACs of the machine being started with the availab=
+le
+>>>>> network devices.
+>>>>>
+>>>>> Inactive MACs will have no peer and QEMU will warn the user with :
+>>>>>
+>>>>>     qemu-system-arm: warning: nic ftgmac100.0 has no peer
+>>>>>     qemu-system-arm: warning: nic ftgmac100.1 has no peer
+>>>>>     qemu-system-arm: warning: nic ftgmac100.3 has no peer
+>>>>
+>>>> I can't reproduce this warning.  What's your exact command line?
+>>>
+>>> Get a witherspoon-tacoma flash image :
+>>>
+>>>     $ wget https://openpower.xyz/job/openbmc-build/distro=3Dubuntu,labe=
+l=3Dbuilder,target=3Dwitherspoon-tacoma/lastSuccessfulBuild/artifact/deploy=
+/images/witherspoon-tacoma/flash-witherspoon-tacoma
+>>>
+>>> Run :
+>>>
+>>>     $ qemu-system-arm -M tacoma-bmc -nic user -drive file=3D./flash-wit=
+herspoon-tacoma,format=3Draw,if=3Dmtd -nographic -nodefaults -serial mon:st=
+dio
+>>>     qemu-system-arm: warning: nic ftgmac100.0 has no peer
+>>>     qemu-system-arm: warning: nic ftgmac100.1 has no peer
+>>>     qemu-system-arm: warning: nic ftgmac100.3 has no peer
+>>=20
+>> I must have run the wrong binary somehow.
+>>=20
+>>>>
+>>>>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>>>>> ---
+>>>>>
+>>>>>  To be applied on top of patch "arm/aspeed: Compute the number of CPU=
+s
+>>>>>  from the SoC definition"=20
+>>>>> =20
+>>>>>  http://patchwork.ozlabs.org/project/qemu-devel/patch/20200519091631.=
+1006073-1-clg@kaod.org/
+>>>>> =20
+>>>>>  include/hw/arm/aspeed.h     |  1 +
+>>>>>  include/hw/arm/aspeed_soc.h |  6 ++++++
+>>>>>  hw/arm/aspeed.c             |  6 ++++++
+>>>>>  hw/arm/aspeed_ast2600.c     | 11 ++++++++---
+>>>>>  hw/arm/aspeed_soc.c         | 10 ++++++++--
+>>>>>  5 files changed, 29 insertions(+), 5 deletions(-)
+>>>>>
+>>>>> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+>>>>> index 18521484b90e..842dff485f5b 100644
+>>>>> --- a/include/hw/arm/aspeed.h
+>>>>> +++ b/include/hw/arm/aspeed.h
+>>>>> @@ -39,6 +39,7 @@ typedef struct AspeedMachineClass {
+>>>>>      const char *fmc_model;
+>>>>>      const char *spi_model;
+>>>>>      uint32_t num_cs;
+>>>>> +    uint32_t macs_mask;
+>>>>>      void (*i2c_init)(AspeedBoardState *bmc);
+>>>>>  } AspeedMachineClass;
+>>>>> =20
+>>>>> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.=
+h
+>>>>> index 914115f3ef77..fdb9e05bc47c 100644
+>>>>> --- a/include/hw/arm/aspeed_soc.h
+>>>>> +++ b/include/hw/arm/aspeed_soc.h
+>>>>> @@ -34,6 +34,11 @@
+>>>>>  #define ASPEED_CPUS_NUM  2
+>>>>>  #define ASPEED_MACS_NUM  4
+>>>>> =20
+>>>>> +#define ASPEED_MAC0_ON   (1 << 0)
+>>>>> +#define ASPEED_MAC1_ON   (1 << 1)
+>>>>> +#define ASPEED_MAC2_ON   (1 << 2)
+>>>>> +#define ASPEED_MAC3_ON   (1 << 3)
+>>>>> +
+>>>>>  typedef struct AspeedSoCState {
+>>>>>      /*< private >*/
+>>>>>      DeviceState parent;
+>>>>> @@ -55,6 +60,7 @@ typedef struct AspeedSoCState {
+>>>>>      AspeedSDMCState sdmc;
+>>>>>      AspeedWDTState wdt[ASPEED_WDTS_NUM];
+>>>>>      FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
+>>>>> +    uint32_t macs_mask;
+>>>>
+>>>> What's the purpose of this member?  When and how would it be different
+>>>> from AspeedMachineClass's macs_mask?
+>>>
+>>> Each machine activates a different set of MACs even if using the same S=
+oC.
+>>> So, the SoC macs_mask is overiden when the machine initializes the SoC =
+in=20
+>>> aspeed_machine_init().
+>>=20
+>> Let me try to rephrase my question below.
+>>=20
+>>> That said, I think the default SoC macs_mask should be all MACS, a valu=
+e=20
+>>> of 0xFFFFFFFF would be fine, and not only the first MAC as this patch d=
+oes.
+>>>
+>>>>>      AspeedMiiState mii[ASPEED_MACS_NUM];
+>>>>>      AspeedGPIOState gpio;
+>>>>>      AspeedGPIOState gpio_1_8v;
+>>>>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+>>>>> index 6f8f4b88f8ab..79c683864d7e 100644
+>>>>> --- a/hw/arm/aspeed.c
+>>>>> +++ b/hw/arm/aspeed.c
+>>>>> @@ -283,6 +283,8 @@ static void aspeed_machine_init(MachineState *mac=
+hine)
+>>>>>                              &error_abort);
+>>>>>      object_property_set_int(OBJECT(&bmc->soc), amc->num_cs, "num-cs"=
+,
+>>>>>                              &error_abort);
+>>>>> +    object_property_set_int(OBJECT(&bmc->soc), amc->macs_mask, "macs=
+-mask",
+>>>>> +                            &error_abort);
+>>=20
+>> Here, you set AspeedSocState member macs_mask to AspeedMachineClass
+>> member macs_mask.
+>
+> yes. aspeed_machine_init() is common to all machines. AspeedMachineClass
+> gathers the differences.
+>
+>>=20
+>>>>>      object_property_set_link(OBJECT(&bmc->soc), OBJECT(&bmc->ram_con=
+tainer),
+>>>>>                               "dram", &error_abort);
+>>>>>      if (machine->kernel_filename) {
+>>>>> @@ -556,12 +558,14 @@ static int aspeed_soc_num_cpus(const char *soc_=
+name)
+>>>>>  static void aspeed_machine_class_init(ObjectClass *oc, void *data)
+>>>>>  {
+>>>>>      MachineClass *mc =3D MACHINE_CLASS(oc);
+>>>>> +    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
+>>>>> =20
+>>>>>      mc->init =3D aspeed_machine_init;
+>>>>>      mc->no_floppy =3D 1;
+>>>>>      mc->no_cdrom =3D 1;
+>>>>>      mc->no_parallel =3D 1;
+>>>>>      mc->default_ram_id =3D "ram";
+>>>>> +    amc->macs_mask =3D ASPEED_MAC0_ON;
+>>=20
+>> Abstract base type's .class_init() sets AspeedMachineClass's macs_mask
+>> to "just first one".
+>
+> Yes. This covers all AST2400 and AST2500 machines. Only the AST2600=20
+> use a different set of MACs.
+> =20
+>>=20
+>>>>> =20
+>>>>>      aspeed_machine_class_props_init(oc);
+>>>>>  }
+>>>>> @@ -680,6 +684,7 @@ static void aspeed_machine_ast2600_evb_class_init=
+(ObjectClass *oc, void *data)
+>>>>>      amc->fmc_model =3D "w25q512jv";
+>>>>>      amc->spi_model =3D "mx66u51235f";
+>>>>>      amc->num_cs    =3D 1;
+>>>>> +    amc->macs_mask  =3D ASPEED_MAC1_ON | ASPEED_MAC2_ON | ASPEED_MAC=
+3_ON;
+>>>>>      amc->i2c_init  =3D ast2600_evb_i2c_init;
+>>>>>      mc->default_ram_size =3D 1 * GiB;
+>>>>>      mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
+>>>>> @@ -698,6 +703,7 @@ static void aspeed_machine_tacoma_class_init(Obje=
+ctClass *oc, void *data)
+>>>>>      amc->fmc_model =3D "mx66l1g45g";
+>>>>>      amc->spi_model =3D "mx66l1g45g";
+>>>>>      amc->num_cs    =3D 2;
+>>>>> +    amc->macs_mask  =3D ASPEED_MAC2_ON;
+>>>>>      amc->i2c_init  =3D witherspoon_bmc_i2c_init; /* Same board layou=
+t */
+>>>>>      mc->default_ram_size =3D 1 * GiB;
+>>>>>      mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
+>>=20
+>> Two concrete types' .class_init() override this default.
+>
+> yes.
+> =20
+>> Fine with me.
+>>=20
+>>>>> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+>>>>> index 114b94f8f44d..fa85122f6d78 100644
+>>>>> --- a/hw/arm/aspeed_ast2600.c
+>>>>> +++ b/hw/arm/aspeed_ast2600.c
+>>>>> @@ -247,6 +247,7 @@ static void aspeed_soc_ast2600_realize(DeviceStat=
+e *dev, Error **errp)
+>>>>>      AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
+>>>>>      Error *err =3D NULL, *local_err =3D NULL;
+>>>>>      qemu_irq irq;
+>>>>> +    NICInfo *nd =3D &nd_table[0];
+>>>>> =20
+>>>>>      /* IO space */
+>>>>>      create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_I=
+OMEM],
+>>>>> @@ -462,8 +463,12 @@ static void aspeed_soc_ast2600_realize(DeviceSta=
+te *dev, Error **errp)
+>>>>>      }
+>>>>> =20
+>>>>>      /* Net */
+>>>>> -    for (i =3D 0; i < nb_nics && i < sc->macs_num; i++) {
+>>>>> -        qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[=
+i]);
+>>>>> +    for (i =3D 0; i < sc->macs_num; i++) {
+>>>>> +        if ((s->macs_mask & (1 << i)) && nd->used) {
+>>=20
+>> This checks AspeedSocState's member.
+>>
+>>>>> +            qemu_check_nic_model(nd, TYPE_FTGMAC100);
+>>>>> +            qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), nd);
+>>>>> +            nd++;
+>>>>> +        }
+>>>>>          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "as=
+peed",
+>>>>>                                   &err);
+>>>>>          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "re=
+alized",
+>>>>> @@ -471,7 +476,7 @@ static void aspeed_soc_ast2600_realize(DeviceStat=
+e *dev, Error **errp)
+>>>>>          error_propagate(&err, local_err);
+>>>>>          if (err) {
+>>>>>              error_propagate(errp, err);
+>>>>> -           return;
+>>>>> +            return;
+>>>>>          }
+>>>>>          sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
+>>>>>                          sc->memmap[ASPEED_ETH1 + i]);
+>>>>> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+>>>>> index 984d29087dce..d2c6a5760790 100644
+>>>>> --- a/hw/arm/aspeed_soc.c
+>>>>> +++ b/hw/arm/aspeed_soc.c
+>>>>> @@ -234,6 +234,7 @@ static void aspeed_soc_realize(DeviceState *dev, =
+Error **errp)
+>>>>>      AspeedSoCState *s =3D ASPEED_SOC(dev);
+>>>>>      AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
+>>>>>      Error *err =3D NULL, *local_err =3D NULL;
+>>>>> +    NICInfo *nd =3D &nd_table[0];
+>>>>> =20
+>>>>>      /* IO space */
+>>>>>      create_unimplemented_device("aspeed_soc.io", sc->memmap[ASPEED_I=
+OMEM],
+>>>>> @@ -405,8 +406,12 @@ static void aspeed_soc_realize(DeviceState *dev,=
+ Error **errp)
+>>>>>      }
+>>>>> =20
+>>>>>      /* Net */
+>>>>> -    for (i =3D 0; i < nb_nics && i < sc->macs_num; i++) {
+>>>>> -        qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[=
+i]);
+>>>>> +    for (i =3D 0; i < sc->macs_num; i++) {
+>>>>> +        if ((s->macs_mask & (1 << i)) && nd->used) {
+>>=20
+>> Likewise.
+>>=20
+>> Now my rephrased question: why do you need to store macs_mask both in
+>> AspeedSoCState and in AspeedMachineClass?  As far as I can tell, their
+>> values are the same for any given machine.
+>
+> yes, they are the same because the parent machine "propagates" the top=20
+> level configuration to all sub-devices. The SoC is one of these and its=
+=20
+> initial settings are generic and do not make assumption on the machine=20
+> characteristics.
+>
+> The general case is "use MAC0" only, which works for all AST2400 and
+> AST2500 machines but the AST2600 machines have a different configuration.=
+=20
+>
+> I agree there is some redundancy in this design pattern. What do you=20
+> have in mind ?=20
 
-we can use the Ubuntu kernel for testing the xlnx-versal-virt machine.
-So let's add a boot test for this now.
+I'd drop AspeedSoCState's copy of @macs_mask.  That way, readers don't
+have to trace the data flow to find out that the two copies of
+@macs_mask are actually identical.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- tests/acceptance/boot_linux_console.py | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+This is not a demand.  Having two copies isn't wrong.  It's just mildly
+confusing.
 
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index 0653c8c1bf..430a6c3b43 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -307,6 +307,30 @@ class BootLinuxConsole(Test):
-         console_pattern = 'Kernel command line: %s' % kernel_command_line
-         self.wait_for_console_pattern(console_pattern)
- 
-+    def test_aarch64_xlnx_versal_virt(self):
-+        """
-+        :avocado: tags=arch:aarch64
-+        :avocado: tags=machine:xlnx-versal-virt
-+        """
-+        kernel_url = ('http://ports.ubuntu.com/ubuntu-ports/dists/'
-+                      'bionic-updates/main/installer-arm64/current/images/'
-+                      'netboot/ubuntu-installer/arm64/linux')
-+        kernel_hash = '5bfc54cf7ed8157d93f6e5b0241e727b6dc22c50'
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+
-+        initrd_url = ('http://ports.ubuntu.com/ubuntu-ports/dists/'
-+                      'bionic-updates/main/installer-arm64/current/images/'
-+                      'netboot/ubuntu-installer/arm64/initrd.gz')
-+        initrd_hash = 'd385d3e88d53e2004c5d43cbe668b458a094f772'
-+        initrd_path = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
-+
-+        self.vm.set_console()
-+        self.vm.add_args('-m', '2G',
-+                         '-kernel', kernel_path,
-+                         '-initrd', initrd_path)
-+        self.vm.launch()
-+        self.wait_for_console_pattern('Checked W+X mappings: passed')
-+
-     def test_arm_virt(self):
-         """
-         :avocado: tags=arch:arm
--- 
-2.18.1
+>>>>> +            qemu_check_nic_model(nd, TYPE_FTGMAC100);
+>>>>> +            qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), nd);
+>>>>> +            nd++;
+>>>>> +        }
+>>>>>          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "as=
+peed",
+>>>>>                                   &err);
+>>>>>          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "re=
+alized",
+>>>>> @@ -455,6 +460,7 @@ static void aspeed_soc_realize(DeviceState *dev, =
+Error **errp)
+>>>>>                         aspeed_soc_get_irq(s, ASPEED_SDHCI));
+>>>>>  }
+>>>>>  static Property aspeed_soc_properties[] =3D {
+>>>>> +    DEFINE_PROP_UINT32("macs-mask", AspeedSoCState, macs_mask, 0x1),
+>>=20
+>> Shouldn't this be ASPEED_MAC0_ON rather than 0x1?
+>
+> yes. or 0x0 ? and let the machine fully in charge of the configuration.
+
+Works for me.
+
+>> Hmm, isn't aspeed_machine_class_init()'s amc->macs_mask =3D ASPEED_MAC0_=
+ON
+>> redundant with this?
+>
+> yes. So 0x0 is better.
+>
+> Thanks,
+>
+> C.
+>
+>>=20
+>>>>>      DEFINE_PROP_LINK("dram", AspeedSoCState, dram_mr, TYPE_MEMORY_RE=
+GION,
+>>>>>                       MemoryRegion *),
+>>>>>      DEFINE_PROP_END_OF_LIST(),
+>>>>
+>>=20
 

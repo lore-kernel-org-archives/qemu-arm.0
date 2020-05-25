@@ -1,159 +1,162 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1677384lfc;
-        Sun, 24 May 2020 20:49:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwgALomjOjgQi5cQ36ERSLvtyfQ3boghsZ6enVZCLnrF3s9IPN/KkYmQ0MRUOJh3z/uUlBj
-X-Received: by 2002:a5b:811:: with SMTP id x17mr39496367ybp.27.1590378545001;
-        Sun, 24 May 2020 20:49:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590378544; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1740400lfc;
+        Sun, 24 May 2020 22:50:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzAeFBpdNmwVj4MGzQHozcN8PpPZUG0jQDcBzLJ+nJFXBuvJ4TsUBGeaptt6k0+SPF6QLhP
+X-Received: by 2002:ac8:6b8a:: with SMTP id z10mr25880494qts.373.1590385847129;
+        Sun, 24 May 2020 22:50:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590385847; cv=none;
         d=google.com; s=arc-20160816;
-        b=M/S04dg26WAUuwpZu1A8kQIIhuuGc7oXDK3h2AF1MP1poP+TF6UnQyupPESONFJv/s
-         r4NBD17lQVBBB+mHFrNCgDhP6PT/49HGy5f+A7uXLB3frr+TEhDnCyW54lHZeWZpzPpH
-         L5Z8IHN3Rz/fwWfnIuTv72biEYQuUk9tT8T01394TD2Q49pQSNABTH7dYGg7wilC/HtU
-         w2Ucm1TyaCECh1ka8f/rHV5bb86g0BfTaTG0FVfodJ3qD363kT/drbc396u3o/PWydx+
-         o9LCz1ogIxstLCbz494E2vNYsrOWLDxs04pODHcrArQy18C1s7OGQo70MT8n/XFwPyHU
-         Lmuw==
+        b=Lwmrc2EvxOVbPUCN1ivJ5VCuqfSOaGbIp03x6mQGcnhdco7Wtc3VKlAfSoTUUWKh7r
+         BgNYIA2Oy3lQce/P4j4lu0DFB3veRhR2+jxtBPb0LoT2eNSzAzBCCIdqB+f0uMiZlCPV
+         Z4XIprN24JvUf6RTwDPzLnx5D5e8n54gKSrQ6rbPxTqTLSV0GOUbhOdcRHWaSMFeH7u5
+         seD4PreoyoQMXLZgSTrum/aib1kNlWnZ+xapPYhuES2A3fx3MDpprnfDUgHpG9ACsnTH
+         68NnPoWauNlGC5Sf50UH80sS3G6gcWEujjZyasZ+Y3+B6IVy2dktzl1a2LUKA48VFimh
+         dxgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:to:from
          :dkim-signature;
-        bh=Xkslp0bcUbSqRBvOaVQSgMmVi3d4Gn9gVFXVfSGdOCE=;
-        b=xrAKl/iOOkfRBwDKJFn47CW6E0cYKhAdRofMTg+9LaoVoBrGBWB9prmtGaQ/pzFeW0
-         sYwEmVrD2xm7vPBqUd/1RaEZAXXCk8auu/eZryB2ySStFkJGZK29kj8fTZekh7Q8estY
-         9NG1LKnM1USPBQp3WaitYNnjv8obvldR/cwrTNu/Uf4XGRaTrvhU9j+s12ONEYQcC17t
-         QNxLkq2za8fEUQOTBoxyE/0pHum1WU4EnJMUgzCQSFgjZTJN8pSWdpJXGhgzoEbN2Oy1
-         B+IPjBpWSrdqvoA7Erq9d+KBNCgDMjk2LuKPcOgsvATG4j0/uUN2eCqtJsSRu7I2IS5M
-         ZC/A==
+        bh=uPh6CUANVKuCjrjuZpJmLuUBq8PgRqtst+kLsP2TYFY=;
+        b=pAPVyXj5thqIxh54IIpTlZGfsAGPm1DZJjVpDd9x1r7w41xHZMiW9wqDdoEBrjVaiq
+         wN37vpyQ8Wmh1k8nS2YuL5RqQuWCMo9H0uxpcxEJE6eZBrnGpEgI/iex+f30AttWXJXa
+         hmogfDYQf8YZnpAhS7+UeNkEx4LKmpK6ab2m+p6OB0IgKjANPB/DpXSxQo6MO4r/6B7c
+         3l9i1WEQx6qtZzFRDTVEtnl6/vZRawzGQHg/CvUiJ7PFpc3sJ+vpbK33CjKcbfhNBCGy
+         iJ8UTH3Pl7Ks2d8fp5U9/7DCgzFSEWF93CMbXnBPAX6ieIk6mAqxb4LgM7TZtuFNIqNB
+         R9PA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p3o1UhSH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Znjgqd0e;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w78si16093170ybe.184.2020.05.24.20.49.04
+        by mx.google.com with ESMTPS id p18si8641898qkp.254.2020.05.24.22.50.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 24 May 2020 20:49:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 24 May 2020 22:50:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p3o1UhSH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:59380 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Znjgqd0e;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34080 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jd46q-00044a-E7
-	for alex.bennee@linaro.org; Sun, 24 May 2020 23:49:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46674)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jd60c-0006dF-Je
+	for alex.bennee@linaro.org; Mon, 25 May 2020 01:50:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jd431-0008Ap-1b; Sun, 24 May 2020 23:45:07 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:35812)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jd430-0006vb-1A; Sun, 24 May 2020 23:45:06 -0400
-Received: by mail-wm1-x344.google.com with SMTP id n5so15455951wmd.0;
- Sun, 24 May 2020 20:45:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Xkslp0bcUbSqRBvOaVQSgMmVi3d4Gn9gVFXVfSGdOCE=;
- b=p3o1UhSHcL1RF1FW1OUze2JJ2p/w0TmE/a54omUR2LncONL1M3KyHs8OlX0t2d/a1G
- 9ms71OanUt/8x5+NPlW42t077SUQVtT3X1KerdXSg85njVg37yZTk7HATO+J4F2GoSkm
- dhNJVk00f2Sf4Hee5TLVoC4qD4shMVetenr+oSJP9jE9c3KxeBesZIVO586dn1Ql5f1q
- MpIVs5kh9ow0lNx2n1D9yJ4MvhJWe78fW1hPN/cMGie0Dn56zgimmBc8GVGNbGIJvJih
- U5/5opBxsYmkSU2izMqEtx402+Dv2d2eHrKmgcPqSDsXau2IV+HKJuJt4FJYhh3CcpsP
- aPPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=Xkslp0bcUbSqRBvOaVQSgMmVi3d4Gn9gVFXVfSGdOCE=;
- b=c/yPQKEwPdWWpn4Fmx/SF6tdWP7oisG/Sj2CZttXMvXTPKE7zF2XsaO2egPJJw9tif
- mcMk/ZWNnJbNKqPOPe3YYFfYRJeyov9f7a0/zaNmG8OqL4U+7/Xf3Eu31PcXYhscEwLz
- hQaI8GsGy25HOIR7LUhza0p3y012OfdN37Ggot20Nqr1OWt+Osmh955+1bM2Rp8Vf9+l
- nBDumUU5v0kysRWT+szg1iPZdDCk5xPIS5bBjStG1Ii55BJidpX0+ocEuAvv0pqckTTG
- sCfalQRwpx3QeAzax05EPpCH2AqJHnNYHRK4yZV+PIftMpTBtzfGXnMqvQKrLnozv04M
- eyLA==
-X-Gm-Message-State: AOAM530gHhiN3jDmOhnrJERm/anHlz/d9nzRB2xQqIWVBptR/gMoqBfy
- /F3K6FJ5MnGFMZURsZ41MkWLkNz/hUM=
-X-Received: by 2002:a7b:cbc5:: with SMTP id n5mr23647343wmi.110.1590378303557; 
- Sun, 24 May 2020 20:45:03 -0700 (PDT)
-Received: from localhost.localdomain (71.red-88-21-204.staticip.rima-tde.net.
- [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id n9sm17555150wmj.5.2020.05.24.20.45.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 24 May 2020 20:45:02 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 2/4] hw/display/dpcd: Fix memory region size
-Date: Mon, 25 May 2020 05:44:57 +0200
-Message-Id: <20200525034459.28535-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200525034459.28535-1-f4bug@amsat.org>
-References: <20200525034459.28535-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jd60V-0006bB-Cn
+ for qemu-arm@nongnu.org; Mon, 25 May 2020 01:50:39 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:26546
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jd60R-0002qq-Dm
+ for qemu-arm@nongnu.org; Mon, 25 May 2020 01:50:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590385834;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=uPh6CUANVKuCjrjuZpJmLuUBq8PgRqtst+kLsP2TYFY=;
+ b=Znjgqd0eqOISp5cusZ9opDUYqGpO4P4wVwAYiCc5Dd5eC4VQCvdan2h2pj1yyWwk/iblIQ
+ QMODyuM1vhlz+vblmebUHzDRiozg9my51Yqll2AC9uG6TIT52PYxQX2JPKY9uUOpjcjfGx
+ 0tk0SYA0/s4Pm2FYXnLzA9G3IKs1EdY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-480-Niwq4LCVNWiM4vTrnN1rCA-1; Mon, 25 May 2020 01:50:32 -0400
+X-MC-Unique: Niwq4LCVNWiM4vTrnN1rCA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9F01D460;
+ Mon, 25 May 2020 05:50:31 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-32.ams2.redhat.com
+ [10.36.112.32])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 59D7860CD0;
+ Mon, 25 May 2020 05:50:31 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id DE762113864A; Mon, 25 May 2020 07:50:29 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 06/24] armv7m: Bury unwanted "ARM,bitband-memory" devices
+References: <20200518050408.4579-1-armbru@redhat.com>
+ <20200518050408.4579-7-armbru@redhat.com>
+ <CAFEAcA9UampZxo-4Z=6+LKkC9HLrdGYT5AcLyiGVYvgU5VE+cA@mail.gmail.com>
+Date: Mon, 25 May 2020 07:50:29 +0200
+In-Reply-To: <CAFEAcA9UampZxo-4Z=6+LKkC9HLrdGYT5AcLyiGVYvgU5VE+cA@mail.gmail.com>
+ (Peter Maydell's message of "Thu, 21 May 2020 17:17:25 +0100")
+Message-ID: <878shgh8be.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/25 01:44:10
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K2ZVwg05EPcZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Eduardo Habkost <ehabkost@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gtIWSNhuwvyH
 
-The memory region size is 512K.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/display/dpcd.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> On Mon, 18 May 2020 at 06:04, Markus Armbruster <armbru@redhat.com> wrote:
+>>
+>> These devices are optional, and enabled by property "enable-bitband".
+>> armv7m_instance_init() creates them unconditionally, because the
+>> property has not been set then.  armv7m_realize() realizes them only
+>> when the property is true.  Works, although it leaves unrealized
+>> devices hanging around in the QOM composition tree.  Affects machines
+>> microbit, mps2-an505, mps2-an521, musca-a, and musca-b1.
+>>
+>> Bury the unwanted devices by making armv7m_realize() unparent them.
+>> Visible in "info qom-tree"; here's the change for microbit:
+>>
+>>      /machine (microbit-machine)
+>>        /microbit.twi (microbit.i2c)
+>>          /microbit.twi[0] (qemu:memory-region)
+>>        /nrf51 (nrf51-soc)
+>>          /armv6m (armv7m)
+>>            /armv7m-container[0] (qemu:memory-region)
+>>     -      /bitband[0] (ARM,bitband-memory)
+>>     -        /bitband[0] (qemu:memory-region)
+>>     -      /bitband[1] (ARM,bitband-memory)
+>>     -        /bitband[0] (qemu:memory-region)
+>>            /cpu (cortex-m0-arm-cpu)
+>
+> What does "bury" mean here? To me it implies "they still
+> exist but we've stuck them in a hole somewhere and covered
+> them up", but the qom-tree delta suggests we've actually
+> really deleted them?
 
-diff --git a/hw/display/dpcd.c b/hw/display/dpcd.c
-index 170545c605..0c1b7b35fb 100644
---- a/hw/display/dpcd.c
-+++ b/hw/display/dpcd.c
-@@ -1,5 +1,5 @@
- /*
-- * dpcd.c
-+ * Xilinx Display Port Control Data
-  *
-  *  Copyright (C) 2015 : GreenSocs Ltd
-  *      http://www.greensocs.com/ , email: info@greensocs.com
-@@ -137,7 +137,7 @@ static void dpcd_init(Object *obj)
- {
-     DPCDState *s = DPCD(obj);
- 
--    memory_region_init_io(&s->iomem, obj, &aux_ops, s, TYPE_DPCD, 0x7FFFF);
-+    memory_region_init_io(&s->iomem, obj, &aux_ops, s, TYPE_DPCD, 0x80000);
-     aux_init_mmio(AUX_SLAVE(obj), &s->iomem);
- }
- 
--- 
-2.21.3
+We really delete them now.
+
+"They've been lying dead in the streets; give them a decent burial".
+
+Would you like me to s/Bury/Delete/?
 

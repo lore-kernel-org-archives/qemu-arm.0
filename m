@@ -1,92 +1,93 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp281351lfc;
-        Tue, 26 May 2020 09:29:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzAV9+Qjq2UkN9W8gXaPPShQ5GiDpGy16ZW7fCoQts9A2hHbnYHYXScRh6iB6ZG1prQsyoy
-X-Received: by 2002:a25:ba4b:: with SMTP id z11mr3082270ybj.105.1590510549420;
-        Tue, 26 May 2020 09:29:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590510549; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp299145lfc;
+        Tue, 26 May 2020 09:52:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxIcF62bqurOqfad9xujIB6a8uLuj6Izb/3xHcpHUEpAq+gJbQ/CqL3WHTKDdvq21Ipxbaw
+X-Received: by 2002:a25:f505:: with SMTP id a5mr2939617ybe.195.1590511937818;
+        Tue, 26 May 2020 09:52:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590511937; cv=none;
         d=google.com; s=arc-20160816;
-        b=J2NgIcra2eQiLq7uRG1AF9UziHUz9Z8DNsY7t0y8TRe1iVuoocyBkdfIvxRtapBH4V
-         7Fr5yudCKBctWoBulf48ZknhpQkM3tc73kaO5Si25kKaCYp25DAMI91ZS4xn9hvUsqWh
-         DayqfnuE+Z1V3i/NgsA4DWnRsgwH1WEttcqfWnhL1BjYnzETAHY6+HoE8X0/fU4iHiTt
-         cBFikpHMdA6PlMQqHbCA9HBOJqn/283Az1Yu1Do1wwLa0NW8+/NaVLTg920M9JCYQkYz
-         BLOhD0gkxL0KrhT6FmRysq6MYV4gvG5SYwRbdCDI7gNriEhMFvEi87EQGtGBP0DoTYpG
-         BYhg==
+        b=QhryenAH9bbDM6gPdBToNst/4HMdVTd719scX5N4Gtep6uH0VkuXUeMdz3NCxDFwg2
+         v7Jxra6+oNIokxlUAmiZZU1jHYiP+FfYCFMlwWv9kJUYsyK6E0+sEE0yNFRiPYsMv3vl
+         iO5BLJa7Zeoa2CctE0vEuX8LC+aQbMLvnFqk505eeGiMT64X+R0D2Yh166YMtW6V0wWm
+         JGl1gzF2PlQ1XyP/F8v8evyftkn6RUI0klpUONArR2PwHCnifNQAkHfHPCQm/OdSNqGS
+         a8HRO31l3hXSMQCSznAMDrWQg03P5eXhVVoYRZaDlKgAPcFn6rJWosp/n8Tm5HOEvr4f
+         2GVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=5tBqtXYJu6MqQ0/JHvw/YkqqhCbb5FSWfs4YssNy1Zc=;
-        b=YAXxFVpwnjCsegpGzjGwTy1YTCsfHICKrQIVpd7vomHuS18IX2lx9HHPDYuptUftj/
-         EyhIBpT8x9F7dolflPDQOEVA+x8Js45Q7G5yc1eZ1+TVrlChFyVEn+694EQf+bDqygin
-         EMgCBYcLzvEG+e7nJM/513Yula9XZxGf5yq4pyLg3r55rSulbzSAxvEUaGZNx8Q5GYOy
-         hwscoLAmCWvhAovlRZS92LXq9dRP4saICQzoFovrO6Gv5hGW5dB5FgLz2nH8kAbOEJjD
-         zdOns7wLdNYlDOCNqKf11chGYhKEU6TLnUMMLfj+j6NXpQ0fqZbgqTxJneNQzxDuYCEF
-         Pw4Q==
+        bh=4xhxIuW5e7MTY17vJexhuzlogi09eAgFg3lNXL700Oc=;
+        b=y5uZK5EH2VEEeiKbEASTdNjWtROnY87UEUTSq75NILlLCcXjvURhLW3yEoTaHrsMiP
+         ve+C93fCLmiqF1kGT9b9GHW2Fnppijrd0AW9s7OzmMnqxAfSsiBoDfKRkRO4cgzyuQqM
+         wrYmeNXwQS50bd+V2rk0qOoacl3aHBPvOPdvH1utj0HRq301EqFnOnEEwT1XcH/D0btC
+         UKcw/q/RZyDm7a5iEr6AfYbOBe/mpYw1xzif0dOuLasWswfwPPZz99aSeEAQUJr7UVhc
+         Aacmf2VZVDsfNuUacXBQMMiB7cmohh9+G+vm8lCS/EHNczlAAVN70Ic+/KPgDWt9h/yg
+         vNow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y6CFotiv;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uygr6lw7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e136si376948yba.34.2020.05.26.09.29.09
+        by mx.google.com with ESMTPS id z66si388760ybc.286.2020.05.26.09.52.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 May 2020 09:29:09 -0700 (PDT)
+        Tue, 26 May 2020 09:52:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y6CFotiv;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uygr6lw7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51872 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49402 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jdcRw-00028q-N8
-	for alex.bennee@linaro.org; Tue, 26 May 2020 12:29:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55036)
+	id 1jdcoL-0001hv-5K
+	for alex.bennee@linaro.org; Tue, 26 May 2020 12:52:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdcQo-0001C5-Bk; Tue, 26 May 2020 12:27:58 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:41014)
+ id 1jdcmu-0008Mx-Fs; Tue, 26 May 2020 12:50:48 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:41494)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdcQn-0001Vi-Cu; Tue, 26 May 2020 12:27:58 -0400
-Received: by mail-io1-xd42.google.com with SMTP id o5so22648071iow.8;
- Tue, 26 May 2020 09:27:56 -0700 (PDT)
+ id 1jdcmt-0008P8-8X; Tue, 26 May 2020 12:50:48 -0400
+Received: by mail-io1-xd42.google.com with SMTP id o5so22742175iow.8;
+ Tue, 26 May 2020 09:50:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=5tBqtXYJu6MqQ0/JHvw/YkqqhCbb5FSWfs4YssNy1Zc=;
- b=Y6CFotivyIi96bMAYu+TXDwKNnLse7bKJHnwPCcR+8QYXUqmyQRrwgr6dkucalx+Eh
- IVrUu77YIg/ygGkZeXY0mw8UfmXpL6zojBWtZaA5X2y3etNLejxYOxJx2h5+pyPVO1Xv
- JJMUfsD23mNvObApIPJ5bhPmMElLu7ohAUnaMoLEkB3MlASIG27BIt2V2K0w3P89++Ip
- u89EKAGW6D1nJpYcAJKl3vBrKFuZEh8eI8N5XxDhwyDSMC7gyJck0Cj5E3zRnenquYmh
- mnBFydMwLsQotFwoPXwk/9Rdy0KYNg3hRt65VPPA5xvNcqkZ3GLFnAjVCr1Yzp8Sx6x5
- UdWg==
+ bh=4xhxIuW5e7MTY17vJexhuzlogi09eAgFg3lNXL700Oc=;
+ b=uygr6lw7iZ5vnE1WD+PojkgydN/vd4U/GOGrtaI/dHHgBelfq8fXQLEZBUGrcMUsNx
+ s2rQZCjSKAqSfcK26TuA2103yaVQA3WDL0sguGB5GmNSdahiErUrIshSroZpJjAta886
+ Wss6/sg8albn11yBHg+T+F6OPJO3A/Ks743qAmYjkoKN8ovFpnCnqZcczJLQ8Bk7jyaA
+ gjlkDQg/DjFGTOlQj6LfX6zQ8nXnTkGhDLdAftnT57/lMh27od5U7QDjJ0S9ao1+O02a
+ lB6WeJLRnWOGG1xIvPLT6PgkU3fTrzwHHzNiXPOvz3cC0Yfs8c/koWijyChHWvWFFps2
+ Ek7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=5tBqtXYJu6MqQ0/JHvw/YkqqhCbb5FSWfs4YssNy1Zc=;
- b=Or8wDMCf5zM0Q/nflK9zs+Djhd1Pz3mfiuzI2m9W+FgD6RAoZppBHrgTeh9L5EZVyI
- UmamzrF35s/O0dShJOOgWX+/EdvwXiQ5RfTUdGc+UQBAZt1R8ZnNkSu/I7tdY1RdLo3O
- qK7LNhmizkUj0+tYeKeP3VQFCbdpOWDyrpUuHSMPjfqXX3K8/+jyqymAZKlnM920rNko
- dfxRMDjK5UpGMVAtp/7OphXJE6jpSE2TiO2q+s0OrpBObbN/W+niewK/TDo/EWWE85mo
- NFeRHsDm6wwh3crzs31X4CbPnpuCJ2hVS6cinZRdbnNuUfWdrTiGlKU4wgtXhwV+AWiF
- yYBg==
-X-Gm-Message-State: AOAM532jIXMyh/mdInrHnLAsJ9VrSCSgZYHUxKiUJXJCtCvGbpEZOWZ9
- MkJfixlYwULBYkXtPgEZyTyhoYVz3ueg34exkFY=
-X-Received: by 2002:a5d:9604:: with SMTP id w4mr18128397iol.105.1590510476036; 
- Tue, 26 May 2020 09:27:56 -0700 (PDT)
+ bh=4xhxIuW5e7MTY17vJexhuzlogi09eAgFg3lNXL700Oc=;
+ b=P1LIyHs0mAzCei121O86kF/tnPI9SkJLpxCrz6ryvr5kaLeBswOHtD0WsWVCg+7O3T
+ mYq47dOYj6iEV+6imzwLXygiEaPJrk29YS2nnzIKVuOYhIWgmscjnjAZW267+M7lS74s
+ ubnPbreOmURq7h1wcVHaZOGLKoigCtTODtvMyHGGfCHNa8MJY5e9f/YSK8WB0t0MPo2Z
+ 4HtWTcZhyoJW37QkNjGQRvm8xKFWuoq3XPoQ2lYbimZdBof4vjtT1CfP2m8er6sQ2/78
+ W+bsqPpb7bnBepIF6j//FAekNqGSZXst39vn4K9TeJkyu/sFH//XuxjwrpwzYHdDHidb
+ 5zhw==
+X-Gm-Message-State: AOAM5306fIBOM7ql0S9QRIAzs0p455DlVoGiuKupvYpbb5w450XmUrAm
+ Ec4Ne8A8LKgFq6ZKvQLBiT6+HE1PmreQTSlhGtc=
+X-Received: by 2002:a5d:9d03:: with SMTP id j3mr4516138ioj.176.1590511845417; 
+ Tue, 26 May 2020 09:50:45 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200525141237.15243-1-thuth@redhat.com>
-In-Reply-To: <20200525141237.15243-1-thuth@redhat.com>
+References: <20200526062252.19852-1-f4bug@amsat.org>
+ <20200526062252.19852-3-f4bug@amsat.org>
+In-Reply-To: <20200526062252.19852-3-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 26 May 2020 09:18:57 -0700
-Message-ID: <CAKmqyKMLezOO+EsjhpDO5RPM9pJFxtnZ7XcA3POeyjNb4yAEtQ@mail.gmail.com>
-Subject: Re: [PATCH v2] tests/acceptance: Add a boot test for the
- xlnx-versal-virt machine
-To: Thomas Huth <thuth@redhat.com>
+Date: Tue, 26 May 2020 09:41:46 -0700
+Message-ID: <CAKmqyKMhGXK+NPH16neMJc+8q7tGACHzTpMqT1CgpXT6x9fR0A@mail.gmail.com>
+Subject: Re: [PATCH 02/14] hw/display/cg3: Convert debug printf()s to trace
+ events
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
@@ -114,83 +115,102 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
  Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Cleber Rosa <crosa@redhat.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Gerd Hoffmann <kraxel@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cvU4mrYR/UvC
+X-TUID: UmkLAFNhQ0em
 
-On Mon, May 25, 2020 at 7:13 AM Thomas Huth <thuth@redhat.com> wrote:
+On Mon, May 25, 2020 at 11:23 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
 >
-> As described by Edgar here:
+> Convert DPRINTF() to trace events and remove ifdef'ry.
 >
->  https://www.mail-archive.com/qemu-devel@nongnu.org/msg605124.html
->
-> we can use the Ubuntu kernel for testing the xlnx-versal-virt machine.
-> So let's add a boot test for this now.
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
 > ---
->  v2: Added "tags=3Ddevice:pl011" and "tags=3Ddevice:arm_gicv3"
+>  hw/display/cg3.c        | 14 ++++----------
+>  hw/display/trace-events |  4 ++++
+>  2 files changed, 8 insertions(+), 10 deletions(-)
 >
->  tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
->  1 file changed, 26 insertions(+)
+> diff --git a/hw/display/cg3.c b/hw/display/cg3.c
+> index f7f1c199ce..7cbe6e56ff 100644
+> --- a/hw/display/cg3.c
+> +++ b/hw/display/cg3.c
+> @@ -35,6 +35,7 @@
+>  #include "hw/qdev-properties.h"
+>  #include "qemu/log.h"
+>  #include "qemu/module.h"
+> +#include "trace.h"
 >
-> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/bo=
-ot_linux_console.py
-> index 0653c8c1bf..965272387c 100644
-> --- a/tests/acceptance/boot_linux_console.py
-> +++ b/tests/acceptance/boot_linux_console.py
-> @@ -307,6 +307,32 @@ class BootLinuxConsole(Test):
->          console_pattern =3D 'Kernel command line: %s' % kernel_command_l=
-ine
->          self.wait_for_console_pattern(console_pattern)
+>  /* Change to 1 to enable debugging */
+>  #define DEBUG_CG3 0
+> @@ -63,12 +64,6 @@
+>  #define CG3_VRAM_SIZE 0x100000
+>  #define CG3_VRAM_OFFSET 0x800000
 >
-> +    def test_aarch64_xlnx_versal_virt(self):
-> +        """
-> +        :avocado: tags=3Darch:aarch64
-> +        :avocado: tags=3Dmachine:xlnx-versal-virt
-> +        :avocado: tags=3Ddevice:pl011
-> +        :avocado: tags=3Ddevice:arm_gicv3
-> +        """
-> +        kernel_url =3D ('http://ports.ubuntu.com/ubuntu-ports/dists/'
-> +                      'bionic-updates/main/installer-arm64/current/image=
-s/'
-> +                      'netboot/ubuntu-installer/arm64/linux')
-> +        kernel_hash =3D '5bfc54cf7ed8157d93f6e5b0241e727b6dc22c50'
-> +        kernel_path =3D self.fetch_asset(kernel_url, asset_hash=3Dkernel=
-_hash)
+> -#define DPRINTF(fmt, ...) do { \
+> -    if (DEBUG_CG3) { \
+> -        printf("CG3: " fmt , ## __VA_ARGS__); \
+> -    } \
+> -} while (0)
+> -
+>  #define TYPE_CG3 "cgthree"
+>  #define CG3(obj) OBJECT_CHECK(CG3State, (obj), TYPE_CG3)
+>
+> @@ -195,7 +190,8 @@ static uint64_t cg3_reg_read(void *opaque, hwaddr add=
+r, unsigned size)
+>          val =3D 0;
+>          break;
+>      }
+> -    DPRINTF("read %02x from reg %" HWADDR_PRIx "\n", val, addr);
+> +    trace_cg3_read(addr, val, size);
 > +
-> +        initrd_url =3D ('http://ports.ubuntu.com/ubuntu-ports/dists/'
-> +                      'bionic-updates/main/installer-arm64/current/image=
-s/'
-> +                      'netboot/ubuntu-installer/arm64/initrd.gz')
-> +        initrd_hash =3D 'd385d3e88d53e2004c5d43cbe668b458a094f772'
-> +        initrd_path =3D self.fetch_asset(initrd_url, asset_hash=3Dinitrd=
-_hash)
+>      return val;
+>  }
+>
+> @@ -206,9 +202,7 @@ static void cg3_reg_write(void *opaque, hwaddr addr, =
+uint64_t val,
+>      uint8_t regval;
+>      int i;
+>
+> -    DPRINTF("write %" PRIx64 " to reg %" HWADDR_PRIx " size %d\n",
+> -            val, addr, size);
+> -
+> +    trace_cg3_write(addr, val, size);
+>      switch (addr) {
+>      case CG3_REG_BT458_ADDR:
+>          s->dac_index =3D val;
+> diff --git a/hw/display/trace-events b/hw/display/trace-events
+> index e6e22bef88..47b2b168ae 100644
+> --- a/hw/display/trace-events
+> +++ b/hw/display/trace-events
+> @@ -151,3 +151,7 @@ artist_vram_write(unsigned int size, uint64_t addr, u=
+int64_t val) "%u 0x%"PRIx64
+>  artist_fill_window(unsigned int start_x, unsigned int start_y, unsigned =
+int width, unsigned int height, uint32_t op, uint32_t ctlpln) "start=3D%ux%=
+u length=3D%ux%u op=3D0x%08x ctlpln=3D0x%08x"
+>  artist_block_move(unsigned int start_x, unsigned int start_y, unsigned i=
+nt dest_x, unsigned int dest_y, unsigned int width, unsigned int height) "s=
+ource %ux%u -> dest %ux%u size %ux%u"
+>  artist_draw_line(unsigned int start_x, unsigned int start_y, unsigned in=
+t end_x, unsigned int end_y) "%ux%u %ux%u"
 > +
-> +        self.vm.set_console()
-> +        self.vm.add_args('-m', '2G',
-> +                         '-kernel', kernel_path,
-> +                         '-initrd', initrd_path)
-> +        self.vm.launch()
-> +        self.wait_for_console_pattern('Checked W+X mappings: passed')
-> +
->      def test_arm_virt(self):
->          """
->          :avocado: tags=3Darch:arm
+> +# cg3.c
+> +cg3_read(uint32_t addr, uint32_t val, unsigned size) "read addr:0x%06"PR=
+Ix32" val:0x%08"PRIx32" size:%u"
+> +cg3_write(uint32_t addr, uint32_t val, unsigned size) "write addr:0x%06"=
+PRIx32" val:0x%08"PRIx32" size:%u"
 > --
-> 2.18.1
+> 2.21.3
 >
 >

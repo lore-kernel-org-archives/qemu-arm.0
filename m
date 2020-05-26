@@ -1,95 +1,94 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2673097lfc;
-        Mon, 25 May 2020 23:23:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwUL6g/dGL1Mf2ej+/fevEISGw/I+M/l+LzGvugmwXnsMHejBAejLDm+WKH9FvlJWTONWz1
-X-Received: by 2002:a05:6902:508:: with SMTP id x8mr48168882ybs.206.1590474202942;
-        Mon, 25 May 2020 23:23:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590474202; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2673490lfc;
+        Mon, 25 May 2020 23:24:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwGVrIjYqxSmfXPqgDsTrueCjEDy0TkXqPjcRAYJnyCeim/h7PLwziyM/+wRoT+/cdIE/uO
+X-Received: by 2002:a05:620a:200a:: with SMTP id c10mr21674073qka.218.1590474245111;
+        Mon, 25 May 2020 23:24:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590474245; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZYYaBfclFINGiADf4wUGcTTNnZ4HfRr0KOXGzPbSnl9kUR3ne+z5z922E8bu3JbK6e
-         2gmGnb8FgmUQCTDqCoMJsWVtb3UQgZOyXHJZUMJAv4bE0l5dgnstd7xBE1kcx6rOzFML
-         rAePKwvOFerXwiZcZs7a0JPp3fPboRTw9baz14DtMG4kx7KbMUHMGFZijSqIB19DVsFP
-         7mM3yg6itEB51IZpcuzZcbo1ysSGQTWxSOheEOO19Hz7fqFdOqyVsIHo8D8b38BvzlIK
-         drvJEe/fyo8se+YqFuVwEOocx3+v8Q1kFLDZYcX7ZYrNnpozBKkkGs3DLERAaT+ceTDY
-         tIDw==
+        b=iIV7gVCMzOWYIV/I+zQqtYHhVvjAMncRb7LGrH7dzJ6m40QmQfecDNIx6zjoiFxMFv
+         0l5LD1+ORvnSLqrkpT2Sgiw24F9F5SHFaTHZ9H844TO5Deisf+fSbsQaKjuBrVoMQGkN
+         MvEjjDwgKFQz3sTeL54V4vqHyFe9LdqB7keaPsdLp3BC4Eft0qEpdGjT8lKUmM52oZ2F
+         ZIMFWXraGVSlgYNaiZp409S/9UlgbUMRyeQGlbXZyCJfFc2rs5gF/7ucDUVo1E+cP58r
+         HE6Jy9329MKSK3VzJN5B2MvqmeMbXzg34Lpc4ku96J7C20N6W+tDewtzBw0Y065Dzld5
+         OxZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=cAS9vKi2N/HAp/t/0K9X49WNII1M7/uVCyjiDB52u+M=;
-        b=iA5Db+YESY51y4n3Dh+yIR9pQznDyK0K2tYOi9w9bzHcs4zkSyO++3FaLbq6OBVDtJ
-         7xF8POWwziea4vcetR/jDAEePDrideNkEPVEyzLIBkYS1jJabursu0edd/RNKuBcxVRP
-         J9V96gOS9iRKV9bbZzRjnBjTN5C3zf7q8YB79lJ7FuO+3kziHRRwxPaQhWctB8Jhv6Kc
-         Byxn5PcF5lJYQx3Qh7baRmkJ506hVmiI8Io9xcSJzOD4WKQgrIVUPifXrOCF7nDVknE0
-         f2unI0yUfuK9xpA6UGOD/n1HGY+K1UaPSqbdNrxOMeucAcMwTIadmeMh93uY47V7BORY
-         cZuQ==
+        bh=Xkslp0bcUbSqRBvOaVQSgMmVi3d4Gn9gVFXVfSGdOCE=;
+        b=vMq54QzCihvfM9TsSPXeYRLjR1Yv3ZkemfEBo77C3VBIvpYWmVzG0TITN3O0CbrY36
+         TrlGMLbWyHOu2saLL5T/Wmaztnmue6SzrTeY6J+nGNGsVpFUdg9FchZoii7P6yCRsJdP
+         fMKjLWvJPkwvjDdRlf83KroVI6gG0jUGHElJfLnypyBXC+cvyMQA4l43zaPzryArtOzM
+         iQc7VCrwqVaJ68gx2V2To+tKakhpj40IIZuk/aw29ELEeiV70b5FZbPcTFMnRk+qKwqe
+         RcZuF3nwbdgpAtHkqPYRQBcJtRdcTsqkPquqEiexEJAaDiPGM6KdkGhU//y5t5j0PXE3
+         TxIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="TyjTa/Dj";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CzU7afDn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s66si12415752yba.220.2020.05.25.23.23.22
+        by mx.google.com with ESMTPS id d197si7870237qkb.17.2020.05.25.23.24.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 May 2020 23:23:22 -0700 (PDT)
+        Mon, 25 May 2020 23:24:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="TyjTa/Dj";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CzU7afDn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:48890 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52004 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jdSzi-000784-9m
-	for alex.bennee@linaro.org; Tue, 26 May 2020 02:23:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34246)
+	id 1jdT0N-0008OL-Bd
+	for alex.bennee@linaro.org; Tue, 26 May 2020 02:24:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdSzP-0006bj-R8; Tue, 26 May 2020 02:23:03 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:41036)
+ id 1jdSzU-0006oO-8q; Tue, 26 May 2020 02:23:08 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:44859)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdSzP-0002TG-1q; Tue, 26 May 2020 02:23:03 -0400
-Received: by mail-wr1-x442.google.com with SMTP id j10so3583918wrw.8;
- Mon, 25 May 2020 23:23:01 -0700 (PDT)
+ id 1jdSzT-0002Ty-Hn; Tue, 26 May 2020 02:23:07 -0400
+Received: by mail-wr1-x444.google.com with SMTP id y17so10795364wrn.11;
+ Mon, 25 May 2020 23:23:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cAS9vKi2N/HAp/t/0K9X49WNII1M7/uVCyjiDB52u+M=;
- b=TyjTa/DjX6XKXLJv2jKOeTH3KRs9IkO/poDsu5k8Nndv2RPiiuNSCKRpy1lZcp/O+a
- ip3X+CMdZqolqMlTCEd5t+MMAFL60vkDnI+IWyk+q2p4507J2UNSNcNHbMvB9RYukDPL
- +5qErcgg0ZJ1Zk441ZHSOoxdWuaaO0ltFZp0mk74VQOkfqfh4LhZcHXfskrXQeVnnW3C
- 9Lh7GwTNDX0wJruOSYc671TIN7yvi3NOx46n7eKrUV/LhuxiNzW64dDHS9hjzEc78dBr
- kex5/yYV/C7C7XdOQpSDhZsimB1OjaejlHa0eicWy/HZT18WrahpGlJx5AOTFMmdR4SP
- MTYw==
+ bh=Xkslp0bcUbSqRBvOaVQSgMmVi3d4Gn9gVFXVfSGdOCE=;
+ b=CzU7afDn/BrEvMaSH98TXT4W9PACIV1YcfWxyjMs55LUiGmtUnIaOqeajwVGl2zpef
+ nc9Rhv5za0ebqaE7h3wljCBH96II3Gl92jyogxwZpkJUXbFlsCzXX4janDF5wDb9ZpGO
+ M75cQNfpQlu2h0auJIT6hkuiYSQ4pa3X5eAb/2fS3PBGlZoGhRuazjq4405v8AFtCRUm
+ gO0kTyONHKFNikVUAl2YUYWRi/FmOpmjni5h6T6NRN4LAPSueSw9yfoJddd/QjIysGBZ
+ iQBE3tQJusFJ4/gh2EhD80u2XX56H8/QGwYCX/RlPMTJpaeUE2se1UdwkpEhBDbH/9Zn
+ 2dlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=cAS9vKi2N/HAp/t/0K9X49WNII1M7/uVCyjiDB52u+M=;
- b=SI3KYVstngmFv/DF7vg489PyUxEY8PMDk6VIDVcOYIN6U1EkfazZPiAYQKopjPOxOr
- 29PEKxXQdEggI8uQq0UsNsTcaavdOuY9iNSZI0BmCwmk5mXb4SU7J+z8/twNGy5+avST
- /TpTSYdj6REl/ZoYm81JLrdt7V0SZTtf1nBRguxe+ppEpkw5NzHW0KfumydMPHsgl7+5
- dcjDSo8TrFsErweBAKE8Dn66PbGz6fchFhL/Xh2FiLdWnl2S1c8Gj71D+cc2T+JU5k8o
- 2GRL+4bm0WuLl8v9C8ygDNSksxq8yA5bZV5VoG6+k5c/9Vy0PacxxsJLg3GBDiSQqMvO
- 0zGQ==
-X-Gm-Message-State: AOAM531ivOhFQ9iDEJxECBD66Ne/gAZtO5ejkbG5LKks+GH4u3z+rjfn
- kmBVEzA97SJ8bIwfzC3M3BCqYNpYVvQ=
-X-Received: by 2002:adf:ea11:: with SMTP id q17mr16484093wrm.75.1590474181081; 
- Mon, 25 May 2020 23:23:01 -0700 (PDT)
+ bh=Xkslp0bcUbSqRBvOaVQSgMmVi3d4Gn9gVFXVfSGdOCE=;
+ b=HswH8pgK3cA0RPuAqo0QS9aMtkfDyiyweqBadp9nZ+h8dBK+4TyS0SjCAnIQrPfWax
+ KJ4ZWMrkjP8uPbZ/ZRXoNTUBuTrypY+TtRMWnFFKt79XZ2av1Ua7R1h0qh/O3xliBVQf
+ VO4ose4l6DCjqr6ZH7fDux8/xupjqH+RjffiWlr+oisQy7i3FlKFMwRQlwGj50cx3Ekb
+ 9newMWNJojb00+1xUHUq85jF44sngmxD+uzeQfSyBmOCXfaQBzDKCK9mNm98S3eWSw6+
+ 9SBreGqIeQpx/o9yA8ZhVk3iUjXApzhGcEDoohyIBFSNskbHg75YeIq6fFbbCeSva7yW
+ Fyyw==
+X-Gm-Message-State: AOAM5300SljZft/gEQiAtzXGpK1rinWQ6zlOYUYiTcQYyF1ql6aRPXsl
+ pgxgOTfzygkAJtaMLLxaJNiCUmuHEyM=
+X-Received: by 2002:adf:e682:: with SMTP id r2mr17707267wrm.378.1590474185418; 
+ Mon, 25 May 2020 23:23:05 -0700 (PDT)
 Received: from localhost.localdomain (71.red-88-21-204.staticip.rima-tde.net.
  [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id a16sm5764745wrx.8.2020.05.25.23.22.59
+ by smtp.gmail.com with ESMTPSA id a16sm5764745wrx.8.2020.05.25.23.23.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 May 2020 23:23:00 -0700 (PDT)
+ Mon, 25 May 2020 23:23:04 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Gerd Hoffmann <kraxel@redhat.com>,
 	qemu-devel@nongnu.org
-Subject: [PATCH 04/14] hw/display/cirrus_vga: Use qemu_log_mask(UNIMP) instead
- of debug printf
-Date: Tue, 26 May 2020 08:22:42 +0200
-Message-Id: <20200526062252.19852-5-f4bug@amsat.org>
+Subject: [PATCH 07/14] hw/display/dpcd: Fix memory region size
+Date: Tue, 26 May 2020 08:22:45 +0200
+Message-Id: <20200526062252.19852-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200526062252.19852-1-f4bug@amsat.org>
 References: <20200526062252.19852-1-f4bug@amsat.org>
@@ -97,8 +96,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -129,60 +128,33 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xs/0pTDD87ip
+X-TUID: jMcuwMFY3VZc
 
-Replace some debug printf() calls by qemu_log_mask(LOG_UNIMP),
-and add a new one in cirrus_linear_bitblt_read().
+The memory region size is 512K.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/display/cirrus_vga.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+ hw/display/dpcd.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
-index 33ccdde000..f9f837b850 100644
---- a/hw/display/cirrus_vga.c
-+++ b/hw/display/cirrus_vga.c
-@@ -35,6 +35,7 @@
- #include "qemu/osdep.h"
- #include "qemu/module.h"
- #include "qemu/units.h"
-+#include "qemu/log.h"
- #include "sysemu/reset.h"
- #include "qapi/error.h"
- #include "trace.h"
-@@ -905,9 +906,8 @@ static int cirrus_bitblt_cputovideo(CirrusVGAState * s)
- static int cirrus_bitblt_videotocpu(CirrusVGAState * s)
+diff --git a/hw/display/dpcd.c b/hw/display/dpcd.c
+index 170545c605..0c1b7b35fb 100644
+--- a/hw/display/dpcd.c
++++ b/hw/display/dpcd.c
+@@ -1,5 +1,5 @@
+ /*
+- * dpcd.c
++ * Xilinx Display Port Control Data
+  *
+  *  Copyright (C) 2015 : GreenSocs Ltd
+  *      http://www.greensocs.com/ , email: info@greensocs.com
+@@ -137,7 +137,7 @@ static void dpcd_init(Object *obj)
  {
-     /* XXX */
--#ifdef DEBUG_BITBLT
--    printf("cirrus: bitblt (video to cpu) is not implemented yet\n");
--#endif
-+    qemu_log_mask(LOG_UNIMP,
-+                  "cirrus: bitblt (video to cpu) is not implemented\n");
-     return 0;
- }
+     DPCDState *s = DPCD(obj);
  
-@@ -989,9 +989,8 @@ static void cirrus_bitblt_start(CirrusVGAState * s)
- 	 cirrus_blt_mode & (CIRRUS_BLTMODE_MEMSYSSRC |
- 			    CIRRUS_BLTMODE_MEMSYSDEST))
- 	== (CIRRUS_BLTMODE_MEMSYSSRC | CIRRUS_BLTMODE_MEMSYSDEST)) {
--#ifdef DEBUG_BITBLT
--	printf("cirrus: bitblt - memory-to-memory copy is requested\n");
--#endif
-+        qemu_log_mask(LOG_UNIMP,
-+                      "cirrus: bitblt - memory-to-memory copy requested\n");
- 	goto bitblt_ignore;
-     }
- 
-@@ -2412,6 +2411,9 @@ static uint64_t cirrus_linear_bitblt_read(void *opaque,
- 
-     /* XXX handle bitblt */
-     (void)s;
-+    qemu_log_mask(LOG_UNIMP,
-+                  "cirrus: linear bitblt is not implemented\n");
-+
-     return 0xff;
+-    memory_region_init_io(&s->iomem, obj, &aux_ops, s, TYPE_DPCD, 0x7FFFF);
++    memory_region_init_io(&s->iomem, obj, &aux_ops, s, TYPE_DPCD, 0x80000);
+     aux_init_mmio(AUX_SLAVE(obj), &s->iomem);
  }
  
 -- 

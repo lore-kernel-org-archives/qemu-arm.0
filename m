@@ -1,97 +1,97 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp303807lfc;
-        Tue, 26 May 2020 09:58:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyUhrKTc+I4KZC47VLSdXintWpzsz4q3OJhhgtNx5U7rLk94pn7kz6GFLlLZnpglTqKKOB7
-X-Received: by 2002:a5b:f4d:: with SMTP id y13mr3343881ybr.50.1590512338116;
-        Tue, 26 May 2020 09:58:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590512338; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp304277lfc;
+        Tue, 26 May 2020 09:59:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyqJRoaeQU46bZFtr3vGTwg4RiT3NRV6Ox6gVsTP66IahM5NGMSUtmed3wT9IRYfF6i2lHF
+X-Received: by 2002:ac8:1308:: with SMTP id e8mr2378317qtj.24.1590512375587;
+        Tue, 26 May 2020 09:59:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590512375; cv=none;
         d=google.com; s=arc-20160816;
-        b=PftUAFUP+dM4sGBuCoKPPHrDkhwIBcccHjix6tjTXxg4kI/U5KZ+rhvRiLCYZeflvh
-         XoX4ygFJ/f1h6OBjn8nxOFQEjxos4VGBCO321Zoz7+4GnlGq1iYtD4HWLZ7Tl27nRu+h
-         oKgI8HyvQnib+HUnOq5JEjITlz8Qm14ZWxewK5Nb7kCEas9LJgAtklVWSnIiIM/8vBKI
-         AfEH+AIbX/JmgsoQHLhX4SWjezz3VDxJe8qK7MUcwb/9uZFt9098CWPK6yE2bp9rpafo
-         eSN+WgByqsiQwM7tcttu6B7NzXjKX+t+g0YpessvqtyhUtnlCKN5iZl/qU4sNRv1ajH4
-         /Ctw==
+        b=DoreAotGZKxPR9zSdEVoDgykpnMd/rrPy93oimOYrPm6e5i2XzwydPPcIgKCdP5vtG
+         CNEKwgYXoc6CIXUgWij7R4g5+UfJaw0XNevKSZDtGyP+DC6/ENUb9GulX10nJL6Hp5Tb
+         OwS4pV5mP4oYkRGf7DlCkzpvLyWSgw/7UnLidsW1zXBBSOeFHdKHy7al3TvR8FjNSZdY
+         ebFbc3tTK48eNC/WhT50dU7y/9Hl1/MvWRPvSehJHBysAh+8A8blZfmknxDk0mbXMwrx
+         7sUiOMTuNoMTW4q0mlYB+7CFGWlCkMqFJK2ssvlmopX8RFLX4OW9KYVx/oJBgRnhcEqe
+         aV+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=2KoUX+e5g1rmy+CRz+7sdJM4czxsGYzwfbSWV5cSDkM=;
-        b=1HIwzLVqdS4TLSKtjj8PrU7XOea9/QBB2qMpaMzUqInfXOubaGFKD6yX9tXxo5+OFA
-         wftNzhD6yrhZSpLG4m5VsGCoMQs0NLVM3/B5ljo7Gt2Q+koYnl/m0sXb9c2cvXABoJG2
-         PDfwuepUfpOalyHNghL5BfNGFCMTYtmnwZUAxvLHGmhHgnKhgCytdZi8u5WHHsRPa8m0
-         rgMW29OYShUcos/pO7zpmQFAzks10930HjgoB5cIzP6ouY/64VhHuep68o8QTFMO6TZ2
-         j7Plf2buOJXhzKj+9TLlj0ZZnoAW8o6wbNBnU5E9kbmDuZEqWznhtgeB/Wf+KU7QluDN
-         83aA==
+        bh=UaBvgKQcklPNmrmRbw60e70SnGLomqQFDLLUcqlmqwg=;
+        b=YK5cuPBqbWayx4uVI3tdPf9ao6amxt2Fd/Z5o8lpikd4TmbaT/uGWPip7lGR0FQej0
+         JZVHUwh7y5gYRXjnS81XxgZI62zbIJu3pPaoDoaGXdxUz+rdkLRlqtxgQmIIs+UFVXXf
+         9F6Is6DpdfozVf+z6aACeef0kAGkxv9mF7KejRCqeeCa6s1lxvWlwNIe8qqoFTpRTPcz
+         rO9D/cVz5eVIPlEnYCaWFO2CxIXVbUeK+pdnXpGJs/oRPViq8OKoZvGxWeP9JIZl1FyM
+         fsnrWitXatjTpSroLsk8u+Qhv8SnuNnaS7OX4UtairzfMLU35+yk4/wgp/w+dlIGlwiB
+         obiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=S0w04FF7;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=F0OzhjBe;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z11si401497ybj.382.2020.05.26.09.58.57
+        by mx.google.com with ESMTPS id h46si129829qtc.345.2020.05.26.09.59.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 May 2020 09:58:58 -0700 (PDT)
+        Tue, 26 May 2020 09:59:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=S0w04FF7;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=F0OzhjBe;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:48298 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jdcun-0006uc-Fu
-	for alex.bennee@linaro.org; Tue, 26 May 2020 12:58:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49296)
+	id 1jdcvO-0007ZH-Vh
+	for alex.bennee@linaro.org; Tue, 26 May 2020 12:59:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55962)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdcly-0007Gs-1U; Tue, 26 May 2020 12:49:50 -0400
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:42005)
+ id 1jdcsH-0001sO-CW; Tue, 26 May 2020 12:56:21 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:40337)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdclx-0007qE-4I; Tue, 26 May 2020 12:49:49 -0400
-Received: by mail-il1-x144.google.com with SMTP id 18so21175643iln.9;
- Tue, 26 May 2020 09:49:48 -0700 (PDT)
+ id 1jdcsF-0003Rg-TL; Tue, 26 May 2020 12:56:20 -0400
+Received: by mail-io1-xd42.google.com with SMTP id q8so21391954iow.7;
+ Tue, 26 May 2020 09:56:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=2KoUX+e5g1rmy+CRz+7sdJM4czxsGYzwfbSWV5cSDkM=;
- b=S0w04FF7T7bnf84GgZ7iEeaGAjKRa99jBNbbiznc6NxicvC649WmHhpTTTPuIWktIG
- 2yiSdjFAXjNfZ4uA6tP0KDgaynlXOjPbFq4aMIvgZ4LlKgdDfhWhSBdceF7LO5c4IMLy
- xFQ0XemyFB7fKVX6AL/8TEcgT+MRNRJ5HovYRKZeBXWLPa/6tuqpe7rJBzTe3dSv6NEE
- bM/A1e16xbiefPkTt1poacZ7ZTW3Byt2LzIW+89rFls7/Jk9tSUykZaMpI4gnRt8cg57
- LaPBd/x8NLo7oRWF2uO1n3vPqcTOPbQMiZgSLViQg/9JmHnivyGepGA/0YLPJqZqplIA
- ClZA==
+ bh=UaBvgKQcklPNmrmRbw60e70SnGLomqQFDLLUcqlmqwg=;
+ b=F0OzhjBeoSAlxYqugpvac9k0zNVfyJZ1+3/CYaJEVtBbSgjsGVRRLvrH8FgshLGCmr
+ 0oE8uGPMa7FjtyJ8goFoJK/ADORdxT33xC/hGaM1NRWXUe1UojPQ59ntBf1ulh1ussrI
+ 7kV5PN5BAkuwiBYXbLYbsTslkvfGdxPixpfHnLceOep3+3eYM4UrxAAWFxkhiMjwUP+b
+ elaDCe0x3KCuLmXaa+vbtfzcylUez01b+dkDqy4DO8vVJxzkCTxlBRLmZyJsk9gi19pZ
+ BSDqxasz/jwly/cUkhyzpixf2hki172FQg9UAXUCuhm4OwAL8An5/K4OUBqS8g5PP87+
+ ai2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=2KoUX+e5g1rmy+CRz+7sdJM4czxsGYzwfbSWV5cSDkM=;
- b=BvrWCe9GsLf1NVIcFwxyDrGDzEspVk+qxKoLrZbGAbf4cdnakKUypKnSStUnW/fuTc
- fOZJQVerT0uvE5Y30y7tPoxGrLAcLlc/lwVwGe7/VykoAtjzwvCmvvBhdHXorarY8haL
- WRPd4RokZTd+qZAFkw7taIdptsX08crBJ7UEEF/2QQx7YzrX2OFad5DgRj/+TJwXsN6L
- JxVOR38bYhVrPU81zk579u4yHYzV7yDuzIKzXSQfdfssR37L8YxGF1E8y2iyU9eYs6mN
- +J4ZZBj/VUlR9YFghsa8DRQo0wpJzYkJ6WJUDr26QInpliVqaJMvbdXU0t4FeDQdscDn
- tqKA==
-X-Gm-Message-State: AOAM532/jMibkaTkuxfbwkeyFg+SevJ/1D1SdQfzbu9hEfN02aSj4Fa6
- Qpls3Uzq0KrI2vHP1ZCeQLcKJ/2MtAWwd6uLBVw=
-X-Received: by 2002:a92:d087:: with SMTP id h7mr2131565ilh.227.1590511787083; 
- Tue, 26 May 2020 09:49:47 -0700 (PDT)
+ bh=UaBvgKQcklPNmrmRbw60e70SnGLomqQFDLLUcqlmqwg=;
+ b=mm3vSih8hzgV3hkcrw8r8I95hLYjIZastE0Ehyxuh+SvlC1zNTaKsR4C8WMRGZ194L
+ an2oDdqk/BxcWzZLuC6wTxARxNVbTes3VMlEeuevzDSvA9RFW9hqYa69F6B6v/HsRRD0
+ wMkGwov0dmYFfKaIQ5GESRgERwgPWZiWjAj61FcHErKmAt7EIL9qlh1Ck97MY6Opn2IL
+ 9YEyzLxwD1gu9FSgzRaIaoZ0nLyVJDsiQdy/9hSSNZm9xuOFTrR+ehTESMjsaIJUBgMy
+ RHvKH/bcLU9qa2VF8RqzTE8vJU92kqYfhoWaCSMqZ63J7Xrzl9gIOgruLwGESnmuK0Tn
+ VCSw==
+X-Gm-Message-State: AOAM533wGrSoeYX4GMyF8o2lT+N969naT8uYUVDbJ/LiAsvdBDfQOsfL
+ AATweeA7q+afSp4w2xa8c12OSfr1gyGvgGjkU5U=
+X-Received: by 2002:a02:6543:: with SMTP id u64mr1986792jab.26.1590512176396; 
+ Tue, 26 May 2020 09:56:16 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200526062252.19852-1-f4bug@amsat.org>
- <20200526062252.19852-2-f4bug@amsat.org>
-In-Reply-To: <20200526062252.19852-2-f4bug@amsat.org>
+ <20200526062252.19852-4-f4bug@amsat.org>
+In-Reply-To: <20200526062252.19852-4-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 26 May 2020 09:40:48 -0700
-Message-ID: <CAKmqyKNqv=CKpWpshU854joqp4KjxYjbNGdaik-BX-XePx5kvg@mail.gmail.com>
-Subject: Re: [PATCH 01/14] hw/display/edid: Add missing 'qdev-properties.h'
- header
+Date: Tue, 26 May 2020 09:47:15 -0700
+Message-ID: <CAKmqyKPzfVkCiQTa2a9kaT0a-ZVR6=LSmW-A29e=O2NkMXhwjg@mail.gmail.com>
+Subject: Re: [PATCH 03/14] hw/display/cirrus_vga: Convert debug printf() to
+ trace event
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x144.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -116,35 +116,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  QEMU Trivial <qemu-trivial@nongnu.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
  Gerd Hoffmann <kraxel@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r2IxC/UKqZMZ
+X-TUID: qkynwveOvhJ3
 
-On Mon, May 25, 2020 at 11:23 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+On Mon, May 25, 2020 at 11:25 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
 rg> wrote:
 >
-> When trying to consume the DEFINE_EDID_PROPERTIES() macro
-> by including "hw/display/edid.h", we get this build failure:
->
->   include/hw/display/edid.h:24:5: error: implicit declaration of
->   function =E2=80=98DEFINE_PROP_UINT32=E2=80=99 [-Werror=3Dimplicit-funct=
-ion-declaration]
->      24 |     DEFINE_PROP_UINT32("xres", _state, _edid_info.prefx, 0),   =
- \
->         |     ^~~~~~~~~~~~~~~~~~
->
-> Headers should be self-contained, and one shouldn't have to
-> dig to find the missing headers.
-> In this case "hw/qdev-properties.h" is missing. Add it.
->
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
@@ -152,21 +136,42 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  include/hw/display/edid.h | 1 +
->  1 file changed, 1 insertion(+)
+>  hw/display/cirrus_vga.c | 4 +---
+>  hw/display/trace-events | 1 +
+>  2 files changed, 2 insertions(+), 3 deletions(-)
 >
-> diff --git a/include/hw/display/edid.h b/include/hw/display/edid.h
-> index ff99dc0a05..23371ee82c 100644
-> --- a/include/hw/display/edid.h
-> +++ b/include/hw/display/edid.h
-> @@ -2,6 +2,7 @@
->  #define EDID_H
+> diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
+> index 1f29731ffe..33ccdde000 100644
+> --- a/hw/display/cirrus_vga.c
+> +++ b/hw/display/cirrus_vga.c
+> @@ -1512,9 +1512,7 @@ static int cirrus_vga_read_gr(CirrusVGAState * s, u=
+nsigned reg_index)
+>  static void
+>  cirrus_vga_write_gr(CirrusVGAState * s, unsigned reg_index, int reg_valu=
+e)
+>  {
+> -#if defined(DEBUG_BITBLT) && 0
+> -    printf("gr%02x: %02x\n", reg_index, reg_value);
+> -#endif
+> +    trace_vga_cirrus_write_gr(reg_index, reg_value);
+>      switch (reg_index) {
+>      case 0x00:                 // Standard VGA, BGCOLOR 0x000000ff
+>         s->vga.gr[reg_index] =3D reg_value & gr_mask[reg_index];
+> diff --git a/hw/display/trace-events b/hw/display/trace-events
+> index 47b2b168ae..c3043e4ced 100644
+> --- a/hw/display/trace-events
+> +++ b/hw/display/trace-events
+> @@ -133,6 +133,7 @@ vga_vbe_write(uint32_t index, uint32_t val) "index 0x=
+%x, val 0x%x"
+>  vga_cirrus_read_io(uint32_t addr, uint32_t val) "addr 0x%x, val 0x%x"
+>  vga_cirrus_write_io(uint32_t addr, uint32_t val) "addr 0x%x, val 0x%x"
+>  vga_cirrus_write_blt(uint32_t offset, uint32_t val) "offset 0x%x, val 0x=
+%x"
+> +vga_cirrus_write_gr(uint8_t index, uint8_t val) "GR addr 0x%02x, val 0x%=
+02x"
 >
->  #include "qom/object.h"
-> +#include "hw/qdev-properties.h"
->
->  typedef struct qemu_edid_info {
->      const char *vendor; /* http://www.uefi.org/pnp_id_list */
+>  # sii9022.c
+>  sii9022_read_reg(uint8_t addr, uint8_t val) "addr 0x%02x, val 0x%02x"
 > --
 > 2.21.3
 >

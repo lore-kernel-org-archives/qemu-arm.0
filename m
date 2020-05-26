@@ -1,97 +1,97 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp300014lfc;
-        Tue, 26 May 2020 09:53:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzJkQCkWxB6i1KU/ETyZZMtTZ+6NCl+tYfombfWAYbHdYFpfgzM/pW1KCvnZ/TqderQKLK5
-X-Received: by 2002:a5b:343:: with SMTP id q3mr2798049ybp.154.1590512003423;
-        Tue, 26 May 2020 09:53:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590512003; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp300552lfc;
+        Tue, 26 May 2020 09:54:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy6JFjdKd8b1VKlZU4iH8k4O3qT5Q/yjv4ysUTMCD4r3QZuIOPsv1YQq6RG+kBFPkYRtNzI
+X-Received: by 2002:a25:f413:: with SMTP id q19mr3140794ybd.178.1590512047705;
+        Tue, 26 May 2020 09:54:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590512047; cv=none;
         d=google.com; s=arc-20160816;
-        b=wKtcSH8DDTWshMwZ0qzwnZIdvxJ4IGXzNUJRwB73tMAfjUpe9wTSA40P3EZtEC3G2a
-         3z1UAXOjxiVyb/ZP+XAEKITL0mGG6szqk/tGf2NFcI8OysbETBtbpPaUSAvrHIToH3gD
-         BHXRHeuhE2EF+8WElDmCb3DFOBMGkwoQfafkvKh6VEL77JYNBmAZyw7Zh05RZ9mft384
-         0GjOpUCiQx4Nop79bsZ0IxwuLQsfQfAehU12JGtAhjgM/8qnmCH9SpA776midC/BEbil
-         G357m4ZnYfP8WMFrs6zxVB4oARv09+OY7k9kcow3JdTHV5orMQrkANM9Ch8dmAOf1/8j
-         TkJg==
+        b=r9OPpMfdyR9tg0LpBvW+p8JY6PxkbvmZDuXFWC+OBDsWtLiPpvC3qmj4GvaFzMDjiM
+         9cqEdP7JU+qytgZZzADSTSAa2oIS2Hjiu61Z+gqtN1k9frAeGH1C5QQbXYdGzcAZv51d
+         vbs8ubBhvF9S/I5tCKGt8/wtSN4xBbRnvUb/EAGzuBS8oMEczbDnpDxJg9ebF/CxYiaU
+         7WO5N2RPNboXvK0j4ywiZg75jKz2YskGUTLj9QVktEEseIJrqnFzFsbwUaJUxby9d6bA
+         Y63rqmFPQZ3hcA/hC5trDs2gPVl/lO5NCXQMlpvNTJOz4Nnc5wC71Db/VOg8KYt51Iri
+         MXRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=tYo9sYUc1YcmN8vha8IZg/Ov6XqShz9MUm0+3EOHego=;
-        b=nowBCofj8e8sNdCpcAW42vcT/k5GQlYZnzMN2WmEeKhJ5MuKbDeKJ6q/noaOtsPm2N
-         mYZVvPb59QQ20WjUIgTatp5uvqHInvfQU2Ffor+r0NORtzWqV86+8VZdrg/3h9OGMYWc
-         7cRrcxlYy2OhoBdz8EqJxVjLFG7BPipPeJppViSkU3UtWDNToo/Tj64y7yBAL8U9ZFeW
-         vlvKVtlyjuy9pk6AkFymRyaW5Wn51yYnJOTemEWdBLsiLixWGE5fXkY6bXTBV5eppxk1
-         LPmmhxIadURWryCzo6hN/LP/O3HqLzEbMz0RVyQmMj/tbGznslXcPDmFAzL5dM0ibHGc
-         pf9A==
+        bh=cI2kBYN4v92zgki8aIm+KltLVDl7Q7AyJhU1Q/w/19I=;
+        b=Fn5GlhfvRRGQXgjehNTxXTGaghhDzBrkYbL/w62YLfDYNklyPO/w5uySHApMtwRh5t
+         dSLid7YNeYRfh3FzyY09afVoJpcJLsGAEq9ek7GG80pTC+YgWQrB+7RJqWsdUTGaWA5g
+         szHVrn6P9aVN0Yb/SNKxS1pt0dWCaYERq+U2uhSPc/AfjmRnuSdV6NriIHyMWEXddSms
+         RQnMkSmobi4GXW92U3BBViwqkwjjN2DS5AgYghMHjumfG9wZM4yjysSajSWwSF1SpabJ
+         4/uyZ7EjjQMRhthiJQo+QZQfJTeSFwQfTM9i4WEAxotBeN84PXbkyK0tq9xZ4LHPciZC
+         +NQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=udSGiwpT;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WH1Iy3+H;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l11si433261ybq.16.2020.05.26.09.53.23
+        by mx.google.com with ESMTPS id k5si417978ybk.27.2020.05.26.09.54.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 May 2020 09:53:23 -0700 (PDT)
+        Tue, 26 May 2020 09:54:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=udSGiwpT;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WH1Iy3+H;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55826 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59130 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jdcpO-0004Jn-Ni
-	for alex.bennee@linaro.org; Tue, 26 May 2020 12:53:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52570)
+	id 1jdcq7-0005jO-21
+	for alex.bennee@linaro.org; Tue, 26 May 2020 12:54:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47884)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdcpB-0004Fy-JL; Tue, 26 May 2020 12:53:09 -0400
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:38542)
+ id 1jdcki-0005A3-81; Tue, 26 May 2020 12:48:32 -0400
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:40724)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdcp7-0001KX-1b; Tue, 26 May 2020 12:53:09 -0400
-Received: by mail-il1-x144.google.com with SMTP id q18so19006ilm.5;
- Tue, 26 May 2020 09:53:03 -0700 (PDT)
+ id 1jdckh-00070P-1S; Tue, 26 May 2020 12:48:31 -0400
+Received: by mail-il1-x142.google.com with SMTP id a18so3871230ilp.7;
+ Tue, 26 May 2020 09:48:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=tYo9sYUc1YcmN8vha8IZg/Ov6XqShz9MUm0+3EOHego=;
- b=udSGiwpT3+ivgeCGVVSz0LAp6D+LhL5y3c3XLKEALfo3k8Op26sIkr/D7MouEpmS7i
- Om0dvoTeUO4ZGGETIPqpBcZwzS5wxC7VF9v2WQMrG1hAGCv0rfDGSuURrjopxgVkGNyT
- tzXwKCC0w2Vhj3vmYDXdDbsnIzeizDuciVR7xQJvCxZYj/xibbXz5ba+/0w2RKifLvjX
- dgYBxK1aN5Ss+B63dCibr1ua/z1wWC6+FIs5N0YX5n4yt561caXbugduVShXdQMfQfca
- tdEASVkLczwvd2zSK8b5Z52ykaG71jHHiPXCPLbKGdD/CeJql2ozUcXgNHB8LkMYWAIi
- 6o5w==
+ bh=cI2kBYN4v92zgki8aIm+KltLVDl7Q7AyJhU1Q/w/19I=;
+ b=WH1Iy3+HM6GY0QWzvBllseWDzwXzXwH0BylC7P+OrrzTzKwlb0U0RKhkZ4hqdFNVv4
+ 7CE1CI6eAPJ68XfxUtCdeaJ5H80YGfoAumQQmLUjwMZdVQltnK+xtwi8jHO/eLXLkEfr
+ hPnpNpEvfBobhfrau36aU1Mp5baX4u5gY2M3pKgHgzoV8aCWzIoort4z7FecQdXxf4L8
+ u5uW3N8+ZEatBbiJM0Y+6l23/u+WuXNYhKduqoREIDel1TXf6AXhST7YMCxZUoLOy2Lo
+ TUBJfw4T0jlRTLPI79WLkSjKRjz+7+n9YPMRIXW9x00o4L/Xgbgpoo1h/etI+FOdcdLj
+ cMtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=tYo9sYUc1YcmN8vha8IZg/Ov6XqShz9MUm0+3EOHego=;
- b=Fy6fIJSHujsH3Cm4iF41/qlcaIaZWS/z8eF+Aores9pf1rWNolXXGn7nSQ3fJ1KS29
- bdYcOZwrazw+ClFV2GKTL2NLb7YcSCHp/gIfE/K9Sc5PtSJPtOo2xZ3ASEjCq5PRdj0D
- hk2IuMXp11QIMevmLq60s9e2unJIBWIQ88n8AG9bF/zK/WYcHe1S3JDe9+BuFks14qJS
- HaNudCTLBwGvabewxVJLe7LXD9bdwv45tso5k0DN9n1rINtKDV0JXibLD3ju2obuZrL7
- vh4rc7AFZ4uaYYhW+nV1eexVrtvE67sCRAFkPcKHkGfejpmep8ehhRJzGiAdbTJ1Kc2M
- 70YQ==
-X-Gm-Message-State: AOAM531Stazui7OE1heu1LFNhqLtXSBsDP2wamE5m7IYeVNOCpa+Pgg8
- 37ub7ifKPOfBsP0Z6c8PqA6md8lUwbaMwkKCYUE=
-X-Received: by 2002:a92:de02:: with SMTP id x2mr2073022ilm.267.1590511983065; 
- Tue, 26 May 2020 09:53:03 -0700 (PDT)
+ bh=cI2kBYN4v92zgki8aIm+KltLVDl7Q7AyJhU1Q/w/19I=;
+ b=aWOFDSsMrq6bcK+M0iDcE9m1gu9QY97tbkXd4eNdK0rqNYtDPlwG5hrYhWxPq4/Z3q
+ Yyy6OhqvfVBYS11ZWy8FB5OR6wTnIGtVfE/1NRCeLmMiS+HkwI8Dp/Olz2X3vvZ3Og3/
+ UgX1xs82bTpBBYe2mj7gZ8wCQiQGWGm4fVb2uRgNdzewHWfsyIqS91oVB26ysnEgH9lo
+ LNXCwEfPgOx7aYsE7X4v3OLKRWAu1rhFe2SY7efHM1QXNBn5zYnSg4XtLO3RoqlB+rnZ
+ cM+mvdn/4XL82z//WUORf0pV09Z1vkFFqJ6LsaDDoCJf8qSbx0+MqiOIfkcU2/kHj+70
+ HjsA==
+X-Gm-Message-State: AOAM530bm6ftlOMh4E90BV8h1W76JMxUoqcffOPaFUmFqg8k2lcoXPna
+ a6BsBYYf4tYaFzp8rIT2K1dik9DXZJmGFVCkVG8=
+X-Received: by 2002:a92:48d1:: with SMTP id j78mr2059806ilg.131.1590511708940; 
+ Tue, 26 May 2020 09:48:28 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200526062252.19852-1-f4bug@amsat.org>
- <20200526062252.19852-6-f4bug@amsat.org>
-In-Reply-To: <20200526062252.19852-6-f4bug@amsat.org>
+References: <20200525034459.28535-1-f4bug@amsat.org>
+ <20200525034459.28535-4-f4bug@amsat.org>
+In-Reply-To: <20200525034459.28535-4-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 26 May 2020 09:44:04 -0700
-Message-ID: <CAKmqyKPkLpPYYjXF9NfQ3hOvNj9EAEYzp+MKFjF1B2viRaycCg@mail.gmail.com>
-Subject: Re: [PATCH 05/14] hw/display/cirrus_vga: Use qemu_log_mask(ERROR)
- instead of debug printf
+Date: Tue, 26 May 2020 09:39:30 -0700
+Message-ID: <CAKmqyKM=i6jp6y023ExLztqTeg6dc+O5Rv05_tYcCYi48E1-pA@mail.gmail.com>
+Subject: Re: [PATCH 3/4] hw/display/dpcd: Convert debug printf()s to trace
+ events
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x144.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x142.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -117,18 +117,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  QEMU Trivial <qemu-trivial@nongnu.org>,
  Alistair Francis <alistair@alistair23.me>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Gerd Hoffmann <kraxel@redhat.com>
+ qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ovYLETRPbzRr
+X-TUID: tcBiXnx2tA+w
 
-On Mon, May 25, 2020 at 11:27 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
+On Sun, May 24, 2020 at 8:46 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
 >
-> Replace some debug printf() calls by qemu_log_mask(LOG_GUEST_ERROR).
+> Convert DPRINTF() to trace events and remove ifdef'ry.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
@@ -137,198 +135,78 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/display/cirrus_vga.c | 77 ++++++++++++++++++-----------------------
->  1 file changed, 33 insertions(+), 44 deletions(-)
+>  hw/display/dpcd.c       | 16 +++-------------
+>  hw/display/trace-events |  4 ++++
+>  2 files changed, 7 insertions(+), 13 deletions(-)
 >
-> diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
-> index f9f837b850..76e2dc5bb6 100644
-> --- a/hw/display/cirrus_vga.c
-> +++ b/hw/display/cirrus_vga.c
-> @@ -978,9 +978,8 @@ static void cirrus_bitblt_start(CirrusVGAState * s)
->         s->cirrus_blt_pixelwidth =3D 4;
->         break;
->      default:
-> -#ifdef DEBUG_BITBLT
-> -       printf("cirrus: bitblt - pixel width is unknown\n");
+> diff --git a/hw/display/dpcd.c b/hw/display/dpcd.c
+> index 0c1b7b35fb..64463654a1 100644
+> --- a/hw/display/dpcd.c
+> +++ b/hw/display/dpcd.c
+> @@ -32,16 +32,7 @@
+>  #include "hw/misc/auxbus.h"
+>  #include "migration/vmstate.h"
+>  #include "hw/display/dpcd.h"
+> -
+> -#ifndef DEBUG_DPCD
+> -#define DEBUG_DPCD 0
 > -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "cirrus: bitblt - pixel width is unknown\n");
->         goto bitblt_ignore;
+> -
+> -#define DPRINTF(fmt, ...) do {                                          =
+       \
+> -    if (DEBUG_DPCD) {                                                   =
+       \
+> -        qemu_log("dpcd: " fmt, ## __VA_ARGS__);                         =
+       \
+> -    }                                                                   =
+       \
+> -} while (0)
+> +#include "trace.h"
+>
+>  #define DPCD_READABLE_AREA                      0x600
+>
+> @@ -70,8 +61,8 @@ static uint64_t dpcd_read(void *opaque, hwaddr offset, =
+unsigned size)
+>                                         offset);
+>          ret =3D 0;
 >      }
->      s->cirrus_blt_mode &=3D ~CIRRUS_BLTMODE_PIXELWIDTHMASK;
-> @@ -1037,7 +1036,9 @@ static void cirrus_bitblt_start(CirrusVGAState * s)
->          } else {
->             if (s->cirrus_blt_mode & CIRRUS_BLTMODE_TRANSPARENTCOMP) {
->                 if (s->cirrus_blt_pixelwidth > 2) {
-> -                   printf("src transparent without colorexpand must be 8=
-bpp or 16bpp\n");
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "cirrus: src transparent without colorexpand "
-> +                          "must be 8bpp or 16bpp\n");
->                     goto bitblt_ignore;
->                 }
->                 if (s->cirrus_blt_mode & CIRRUS_BLTMODE_BACKWARDS) {
-> @@ -1135,10 +1136,9 @@ static uint32_t cirrus_get_bpp16_depth(CirrusVGASt=
-ate * s)
->         ret =3D 16;
->         break;                  /* XGA HiColor */
->      default:
-> -#ifdef DEBUG_CIRRUS
-> -       printf("cirrus: invalid DAC value %x in 16bpp\n",
-> -              (s->cirrus_hidden_dac_data & 0xf));
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "cirrus: invalid DAC value 0x%x in 16bpp\n",
-> +                      (s->cirrus_hidden_dac_data & 0xf));
->         ret =3D 15;               /* XXX */
->         break;
->      }
-> @@ -1307,11 +1307,9 @@ static int cirrus_vga_read_sr(CirrusVGAState * s)
->  #endif
->         return s->vga.sr[s->vga.sr_index];
->      default:
-> -#ifdef DEBUG_CIRRUS
-> -       printf("cirrus: inport sr_index %02x\n", s->vga.sr_index);
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "cirrus: inport sr_index 0x%02x\n", s->vga.sr_inde=
-x);
->         return 0xff;
-> -       break;
->      }
+> +    trace_dpcd_read(offset, ret);
+>
+> -    DPRINTF("read 0x%" PRIX8 " @0x%" HWADDR_PRIX "\n", ret, offset);
+>      return ret;
 >  }
 >
-> @@ -1400,10 +1398,9 @@ static void cirrus_vga_write_sr(CirrusVGAState * s=
-, uint32_t val)
->          cirrus_update_memory_access(s);
->          break;
->      default:
-> -#ifdef DEBUG_CIRRUS
-> -       printf("cirrus: outport sr_index %02x, sr_value %02x\n",
-> -               s->vga.sr_index, val);
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "cirrus: outport sr_index 0x%02x, sr_value 0x%02x\=
-n",
-> +                      s->vga.sr_index, val);
->         break;
->      }
->  }
-> @@ -1501,9 +1498,8 @@ static int cirrus_vga_read_gr(CirrusVGAState * s, u=
-nsigned reg_index)
->      if (reg_index < 0x3a) {
->         return s->vga.gr[reg_index];
+> @@ -80,8 +71,7 @@ static void dpcd_write(void *opaque, hwaddr offset, uin=
+t64_t value,
+>  {
+>      DPCDState *e =3D DPCD(opaque);
+>
+> -    DPRINTF("write 0x%" PRIX8 " @0x%" HWADDR_PRIX "\n", (uint8_t)value, =
+offset);
+> -
+> +    trace_dpcd_write(offset, value);
+>      if (offset < DPCD_READABLE_AREA) {
+>          e->dpcd_info[offset] =3D value;
 >      } else {
-> -#ifdef DEBUG_CIRRUS
-> -       printf("cirrus: inport gr_index %02x\n", reg_index);
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "cirrus: inport gr_index 0x%02x\n", reg_index);
->         return 0xff;
->      }
->  }
-> @@ -1590,10 +1586,9 @@ cirrus_vga_write_gr(CirrusVGAState * s, unsigned r=
-eg_index, int reg_value)
->         cirrus_write_bitblt(s, reg_value);
->         break;
->      default:
-> -#ifdef DEBUG_CIRRUS
-> -       printf("cirrus: outport gr_index %02x, gr_value %02x\n", reg_inde=
-x,
-> -              reg_value);
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "cirrus: outport gr_index 0x%02x, gr_value 0x%02x\=
-n",
-> +                      reg_index, reg_value);
->         break;
->      }
->  }
-> @@ -1648,9 +1643,8 @@ static int cirrus_vga_read_cr(CirrusVGAState * s, u=
-nsigned reg_index)
->         return s->vga.ar_index & 0x3f;
->         break;
->      default:
-> -#ifdef DEBUG_CIRRUS
-> -       printf("cirrus: inport cr_index %02x\n", reg_index);
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "cirrus: inport cr_index 0x%02x\n", reg_index);
->         return 0xff;
->      }
->  }
-> @@ -1721,10 +1715,9 @@ static void cirrus_vga_write_cr(CirrusVGAState * s=
-, int reg_value)
->         break;
->      case 0x25:                 // Part Status
->      default:
-> -#ifdef DEBUG_CIRRUS
-> -       printf("cirrus: outport cr_index %02x, cr_value %02x\n",
-> -               s->vga.cr_index, reg_value);
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "cirrus: outport cr_index 0x%02x, cr_value 0x%02x\=
-n",
-> +                      s->vga.cr_index, reg_value);
->         break;
->      }
->  }
-> @@ -1834,9 +1827,8 @@ static uint8_t cirrus_mmio_blt_read(CirrusVGAState =
-* s, unsigned address)
->         value =3D cirrus_vga_read_gr(s, 0x31);
->         break;
->      default:
-> -#ifdef DEBUG_CIRRUS
-> -       printf("cirrus: mmio read - address 0x%04x\n", address);
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "cirrus: mmio read - address 0x%04x\n", address);
->         break;
->      }
->
-> @@ -1946,10 +1938,9 @@ static void cirrus_mmio_blt_write(CirrusVGAState *=
- s, unsigned address,
->         cirrus_vga_write_gr(s, 0x31, value);
->         break;
->      default:
-> -#ifdef DEBUG_CIRRUS
-> -       printf("cirrus: mmio write - addr 0x%04x val 0x%02x (ignored)\n",
-> -              address, value);
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "cirrus: mmio write - addr 0x%04x val 0x%02x (igno=
-red)\n",
-> +                      address, value);
->         break;
->      }
->  }
-> @@ -2047,9 +2038,8 @@ static uint64_t cirrus_vga_mem_read(void *opaque,
->         }
->      } else {
->         val =3D 0xff;
-> -#ifdef DEBUG_CIRRUS
-> -       printf("cirrus: mem_readb " TARGET_FMT_plx "\n", addr);
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "cirrus: mem_readb 0x" TARGET_FMT_plx "\n", addr);
->      }
->      return val;
->  }
-> @@ -2112,10 +2102,9 @@ static void cirrus_vga_mem_write(void *opaque,
->             cirrus_mmio_blt_write(s, addr & 0xff, mem_value);
->         }
->      } else {
-> -#ifdef DEBUG_CIRRUS
-> -        printf("cirrus: mem_writeb " TARGET_FMT_plx " value 0x%02" PRIu6=
-4 "\n", addr,
-> -               mem_value);
-> -#endif
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "cirrus: mem_writeb 0x" TARGET_FMT_plx " "
-> +                      "value 0x%02" PRIu64 "\n", addr, mem_value);
->      }
->  }
->
+> diff --git a/hw/display/trace-events b/hw/display/trace-events
+> index e6e22bef88..00543f1601 100644
+> --- a/hw/display/trace-events
+> +++ b/hw/display/trace-events
+> @@ -151,3 +151,7 @@ artist_vram_write(unsigned int size, uint64_t addr, u=
+int64_t val) "%u 0x%"PRIx64
+>  artist_fill_window(unsigned int start_x, unsigned int start_y, unsigned =
+int width, unsigned int height, uint32_t op, uint32_t ctlpln) "start=3D%ux%=
+u length=3D%ux%u op=3D0x%08x ctlpln=3D0x%08x"
+>  artist_block_move(unsigned int start_x, unsigned int start_y, unsigned i=
+nt dest_x, unsigned int dest_y, unsigned int width, unsigned int height) "s=
+ource %ux%u -> dest %ux%u size %ux%u"
+>  artist_draw_line(unsigned int start_x, unsigned int start_y, unsigned in=
+t end_x, unsigned int end_y) "%ux%u %ux%u"
+> +
+> +# dpcd.c
+> +dpcd_read(uint32_t addr, uint8_t val) "read addr:0x%"PRIx32" val:0x%02x"
+> +dpcd_write(uint32_t addr, uint8_t val) "write addr:0x%"PRIx32" val:0x%02=
+x"
 > --
 > 2.21.3
 >

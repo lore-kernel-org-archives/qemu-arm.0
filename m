@@ -1,97 +1,97 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp333370lfc;
-        Tue, 26 May 2020 10:37:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzgnCEO7Fg5/qgz/BeXAlOAbqHtPVVM9LsZM5yr15Gx35/9edoAe6F5aWKE1tQbpwP50NAJ
-X-Received: by 2002:a25:6c41:: with SMTP id h62mr3414943ybc.82.1590514667439;
-        Tue, 26 May 2020 10:37:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590514667; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp335608lfc;
+        Tue, 26 May 2020 10:40:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwvFhGD7oLYzymdcLyEaa1Rku3Lh+qypk9c1OvS4ueAzfeGZ2CukflxnZc5ARdGgQjdxoYV
+X-Received: by 2002:a25:d64d:: with SMTP id n74mr3395334ybg.276.1590514859430;
+        Tue, 26 May 2020 10:40:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590514859; cv=none;
         d=google.com; s=arc-20160816;
-        b=ELjw9RdIz1znYdEa11BUBHxYOepWusLhzu54l5lFCLimAiN+N7Zpjrgc/xZPxob497
-         LdzAZ/RiLZppNDgXExjK1vVNlUC6Bpwv9Jwrx8FHVCsEv706H/5Re8SYhe9015eBrWIW
-         lSq+JdOfZczzL8yagsvjQ3+GbnxPtJVBerHUpQcTsXBM5x/b/g06eIAL8r1QB4W7KjTz
-         jeGc/y6zKlyxLlrQxxI/aXLmT1enF3CPTkHEcAuD8jeHoyKte8IylKZhH6BUzmVk2g3f
-         fBD8suZQmVnuM9qeS1M/S0pKJ9R7bO2dYSYdPHb6Akkq8uz79FQ5cGxhLr5kvO3xGiPS
-         7O5w==
+        b=QlEVLKMUaGtEG7qFp21zEJUWkFTWlbUXAAkBXTtVQTk1+d1N1Q/H9vwPp+Ufub+rPj
+         Yj2TnqE7qtpQBOaOfaMDxAWScT+DbQPMr9FMAYfUuW5atfY0oUB2JiAk5Gr9+IaWxcDA
+         8ifU/Gu1szO3UPJoUPfor8agpGmWseaoM26GtxIb35+kcGPGc7XGE+xzYoc3w7+ddGua
+         vtRMfmPBT6Uzsr8MjFKIYwDPCRf3J033CbmPQ/riEGvGtbOxnh8l5zUgkYnOUzW8NFrs
+         hW992K373COsC8jIGMW+RkHljLGrRWp5u7bj9GnMHP+icijyoFLDA0r9LxfaGK0TsXJn
+         l+OQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=wZBEHWBN/GWyvAOIWg38QMcm0Xw7UK4cDCEX+YPwHq0=;
-        b=zrNdU1jnZbLDYf72V7G0BepF6DM9dbHXi6CXZ6h1yuidjUa7ajsBr3aw3xe6lNOFxp
-         ISrJbj5yGoCJ3lMDcnghSRDQqdbY83Pegrx8fnjlKR5mzpHzSkEZq4LmA8p7hbDBfPHi
-         2OprJz6o/oGpZj427UAP7hq/FZNVxLaRED+rvK1JSc0FaQ+6FZnj5lFLtvyRjRzTphE1
-         e9+It3w0zcBvjpPOi9PI7GQIDeJQcUn3VxFGGWFX+DltvsoQCga7J1P2fdUdrO1POct3
-         1TZW9+oMUO41vA0qljXS+dkHhTzb9rwcOYMu5SNjRsUfw36KSlx7MIe+aCj49t87u8Di
-         kjEg==
+        bh=7dIEbDvjdPSgiC8KM+8KpNw2JYaYxr6R5A6LSlImonY=;
+        b=UCdC/3pbcgSXRlVd4oKoyPQRGVDfwtT10aknIKsdPK/B06FppOg/5d3WbOgG6t38qO
+         iCDS17tYEZaaUpmM0l9WZu93ljiVvab1pYcu+TZdM9yF02MgxRgK1zfgebjEHHkikd0v
+         tA5jTHfk74oaHlQk6LXOt+LYYOFS7lq8kMMnjIY5oeM87n5Fe4RMLovmHrsyLb6ZrjWF
+         nCzKMeeAu8FK4Z1i8QItbq+YWBdLo9q2bgTAL4QCJh++Gvi4jf5mzhLbsTKGBgWx0QdN
+         NHMqPQBazc0Tw/Z3/WyF1CtlsthsgIptOJzJ67zyjc+DdC1DVovQzSRp4AuD2RxKKThk
+         ZOqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="pzJJ/xyW";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jQgFVP3z;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h8si534500ybg.279.2020.05.26.10.37.47
+        by mx.google.com with ESMTPS id l1si771515ybt.108.2020.05.26.10.40.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 May 2020 10:37:47 -0700 (PDT)
+        Tue, 26 May 2020 10:40:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="pzJJ/xyW";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jQgFVP3z;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35758 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46334 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jddWM-0001I9-QR
-	for alex.bennee@linaro.org; Tue, 26 May 2020 13:37:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44058)
+	id 1jddZS-0005uu-J0
+	for alex.bennee@linaro.org; Tue, 26 May 2020 13:40:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45530)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jddUl-0007sH-HA; Tue, 26 May 2020 13:36:07 -0400
-Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43]:42098)
+ id 1jddW8-0001j9-Vn; Tue, 26 May 2020 13:37:33 -0400
+Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:36680)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jddUk-0004v5-1L; Tue, 26 May 2020 13:36:07 -0400
-Received: by mail-qv1-xf43.google.com with SMTP id g20so9819307qvb.9;
- Tue, 26 May 2020 10:36:04 -0700 (PDT)
+ id 1jddW7-0005ll-4D; Tue, 26 May 2020 13:37:31 -0400
+Received: by mail-il1-x141.google.com with SMTP id 17so21344269ilj.3;
+ Tue, 26 May 2020 10:37:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=wZBEHWBN/GWyvAOIWg38QMcm0Xw7UK4cDCEX+YPwHq0=;
- b=pzJJ/xyW0wd2saucqlepyUgN4z1JDgC2AM+XDdjqvZx2CQc/4YgdM+lFQQn9QiPmR1
- H54E7MizTyag7wNOMOTg731pDe+3I6yMrDbeacgA8d0UQ6wYcViHQjFqaGONi+J7gda0
- UrN2u0IP577j+VYICj2Y3LB+8kicuE1fBtxAwVwiUXMp1ZWare8v77DjBK+634DgDdCv
- q1UFkHGLoJ3aitUAZOQ/XZ4iwjPqElPNX9HM0ja+ti7eix8MR6eTepvh/S9Jni749G6r
- jlumnl/GLeDk7IO6Zff57Vv4R6GRwb7EoOsUf7/NQScWl5QuhDZ8FT9hZ7ZgtdbK9kwZ
- WP7w==
+ bh=7dIEbDvjdPSgiC8KM+8KpNw2JYaYxr6R5A6LSlImonY=;
+ b=jQgFVP3zBEvCFOi/6th7JnPuipZCfzltmxZv+SAGJbagvzWUylgKGdXJTbxZ/wqNIR
+ 8cr9l+hXsuY3MfkvyUYE2FDHVv3Q++ZKvgJN12jdv6C11BrFVr8RuJIDJHhjKWpFlWCF
+ WMiEC/9BdIics6oxDXdqi8E0eVKzqCrtmbnhAti77ZtRsYE4/M0+S/09dw474ZJKbHFi
+ 9FG1QRJwvkjk8fCT7C1Yi2EFxnGD4V5TRfY/JR88nqPkikv90yNpkhvXgf0RGrpsWA0R
+ hiWYEYaGOKd3+tFwn62+jvI55mmfQo+HE0MxDmAK3XsYJuGFIFHXxNzb/XBeggEgzxex
+ ndkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=wZBEHWBN/GWyvAOIWg38QMcm0Xw7UK4cDCEX+YPwHq0=;
- b=M5JgJEP2dYdPEVgbLY26MjCWUvt2RC5pqe40VeUu6WRnQosUX4qhA6+TFHfumZMFxG
- sICn/jC48dfv8haPUtgI/vP9l9azWDt/ntyHH43+T+KrRMn3NpSDuh4LcXm/Z0ZKhMfb
- a4fcpQyT5ktcfDlJt/3pBkIgWjedH83NZ+Dr16uIFfkRiBRFQUBynPZZzllyzg0wEI7I
- UFJOfFVTmlBONka153TrZL0jntteWEkZOgbBSzB9Z+kv5YsHnTl7kV3XVSH2duhO/VoG
- QlSnhVpX5M/LuNVeLMnjCE+02V32lHQnKSn36L02WKUA3yZm6DozPipsiWMqQod5wR5I
- Ewww==
-X-Gm-Message-State: AOAM532WhrRGiEUImQsJMJocHaiIs8LCHr+UX6PmFwrdgaYBwVQbl+Fc
- NOmk/5zPNiMnnAM1ysmWEdQ7o8cAPJdIIN/q/Ig=
-X-Received: by 2002:a0c:a2a2:: with SMTP id g31mr4436671qva.15.1590514563646; 
- Tue, 26 May 2020 10:36:03 -0700 (PDT)
+ bh=7dIEbDvjdPSgiC8KM+8KpNw2JYaYxr6R5A6LSlImonY=;
+ b=UE4WoQ+LhGxQtUFXVwXHAQreVzRAKJZjCPke00y1jxpypceB8Mf4cMqSEIZ8q95iCS
+ VT8ZvSqBrtocBWLXV5bkqzZJhpYZZ2xnX18lfkDiXIi2fto2/kiPycKFurTuu0LhCGKn
+ 3LyVNpQKfgCK4uoyd6Si4wZjC8yTTv92bg9FSFQ16itZ+hZXetLqOz00Bc0KgzwnLRhM
+ GS5nspLPiJw8ju3DwZ/LJo8fcavkvgVbOHu+OQr5ZblghVE8igCzD3STGIIbNe7nkFy4
+ aR5RPfYkB9esspp3xDJUSvRhHQ2J8oX6T9/i7Biz7QvSWp3w6gH7cNf/v5ErddFwAuGx
+ PDTA==
+X-Gm-Message-State: AOAM533l0ZZO5ohZftrRntKIDgoKjrq+mBRTK+G4h1mEy6kMW8KcX4Uq
+ mBO7OAI76YucMStKaluufn97Y6MQNH04jGYHil4=
+X-Received: by 2002:a92:d087:: with SMTP id h7mr2336786ilh.227.1590514649527; 
+ Tue, 26 May 2020 10:37:29 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200526062252.19852-1-f4bug@amsat.org>
- <20200526062252.19852-13-f4bug@amsat.org>
-In-Reply-To: <20200526062252.19852-13-f4bug@amsat.org>
+ <20200526062252.19852-15-f4bug@amsat.org>
+In-Reply-To: <20200526062252.19852-15-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 26 May 2020 10:27:01 -0700
-Message-ID: <CAKmqyKNH7F2+9FCFza9FYFyj=xycYxjBmr2tSwdkXZSk5T8vrQ@mail.gmail.com>
-Subject: Re: [PATCH 12/14] hw/display/exynos4210_fimd: Use
- qemu_log_mask(GUEST_ERROR)
+Date: Tue, 26 May 2020 10:28:29 -0700
+Message-ID: <CAKmqyKM9r2QXppfiEW4RVrXNbYzhx-Ds2CsODKVUk0Sxei0JwA@mail.gmail.com>
+Subject: Re: [PATCH 14/14] hw/display/pxa2xx_lcd: Replace printf() call by
+ qemu_log_mask()
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f43;
- envelope-from=alistair23@gmail.com; helo=mail-qv1-xf43.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x141.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -124,12 +124,14 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jAWVX1ehlPwT
+X-TUID: Ow9eKHHDQlnp
 
-On Mon, May 25, 2020 at 11:34 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+On Mon, May 25, 2020 at 11:36 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
 rg> wrote:
 >
-> Replace DPRINT_ERROR() by qemu_log_mask(GUEST_ERROR).
+> Replace printf() calls by qemu_log_mask(UNIMP), which is
+> disabled by default. This avoid flooding the terminal when
+> fuzzing the device.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
@@ -138,175 +140,76 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/display/exynos4210_fimd.c | 46 +++++++++++++++++++++++-------------
->  1 file changed, 29 insertions(+), 17 deletions(-)
+>  hw/display/pxa2xx_lcd.c | 26 ++++++++++++++------------
+>  1 file changed, 14 insertions(+), 12 deletions(-)
 >
-> diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-> index 1c0266ce9f..4b7286b7c9 100644
-> --- a/hw/display/exynos4210_fimd.c
-> +++ b/hw/display/exynos4210_fimd.c
-> @@ -31,6 +31,7 @@
->  #include "ui/pixel_ops.h"
->  #include "qemu/bswap.h"
->  #include "qemu/module.h"
-> +#include "qemu/log.h"
+> diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
+> index d5f2e82a4e..ff90104b80 100644
+> --- a/hw/display/pxa2xx_lcd.c
+> +++ b/hw/display/pxa2xx_lcd.c
+> @@ -426,9 +426,10 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr o=
+ffset,
+>          if ((s->control[0] & LCCR0_ENB) && !(value & LCCR0_ENB))
+>              s->status[0] |=3D LCSR0_QD;
 >
->  /* Debug messages configuration */
->  #define EXYNOS4210_FIMD_DEBUG              0
-> @@ -39,20 +40,15 @@
->  #if EXYNOS4210_FIMD_DEBUG =3D=3D 0
->      #define DPRINT_L1(fmt, args...)       do { } while (0)
->      #define DPRINT_L2(fmt, args...)       do { } while (0)
-> -    #define DPRINT_ERROR(fmt, args...)    do { } while (0)
->  #elif EXYNOS4210_FIMD_DEBUG =3D=3D 1
->      #define DPRINT_L1(fmt, args...) \
->          do {fprintf(stderr, "QEMU FIMD: "fmt, ## args); } while (0)
->      #define DPRINT_L2(fmt, args...)       do { } while (0)
-> -    #define DPRINT_ERROR(fmt, args...)  \
-> -        do {fprintf(stderr, "QEMU FIMD ERROR: "fmt, ## args); } while (0=
-)
->  #else
->      #define DPRINT_L1(fmt, args...) \
->          do {fprintf(stderr, "QEMU FIMD: "fmt, ## args); } while (0)
->      #define DPRINT_L2(fmt, args...) \
->          do {fprintf(stderr, "QEMU FIMD: "fmt, ## args); } while (0)
-> -    #define DPRINT_ERROR(fmt, args...)  \
-> -        do {fprintf(stderr, "QEMU FIMD ERROR: "fmt, ## args); } while (0=
-)
->  #endif
->
->  #if EXYNOS4210_FIMD_MODE_TRACE =3D=3D 0
-> @@ -1108,7 +1104,7 @@ static inline int fimd_get_buffer_id(Exynos4210fimd=
-Window *w)
->      case FIMD_WINCON_BUF2_STAT:
->          return 2;
->      default:
-> -        DPRINT_ERROR("Non-existent buffer index\n");
-> +        qemu_log_mask(LOG_GUEST_ERROR, "FIMD: Non-existent buffer index\=
-n");
->          return 0;
->      }
->  }
-> @@ -1160,20 +1156,24 @@ static void fimd_update_memory_section(Exynos4210=
-fimdState *s, unsigned win)
->
->      if (int128_get64(w->mem_section.size) !=3D w->fb_len ||
->              !memory_region_is_ram(w->mem_section.mr)) {
-> -        DPRINT_ERROR("Failed to find window %u framebuffer region\n", wi=
-n);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "FIMD: Failed to find window %u framebuffer region=
-\n",
-> +                      win);
->          goto error_return;
->      }
->
->      w->host_fb_addr =3D cpu_physical_memory_map(fb_start_addr, &fb_mappe=
-d_len,
->                                                false);
->      if (!w->host_fb_addr) {
-> -        DPRINT_ERROR("Failed to map window %u framebuffer\n", win);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "FIMD: Failed to map window %u framebuffer\n", win=
-);
->          goto error_return;
->      }
->
->      if (fb_mapped_len !=3D w->fb_len) {
-> -        DPRINT_ERROR("Window %u mapped framebuffer length is less then "
-> -                "expected\n", win);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "FIMD: Window %u mapped framebuffer length is less=
- than "
-> +                      "expected\n", win);
->          cpu_physical_memory_unmap(w->host_fb_addr, fb_mapped_len, 0, 0);
->          goto error_return;
->      }
-> @@ -1490,7 +1490,9 @@ static void exynos4210_fimd_write(void *opaque, hwa=
-ddr offset,
->              break;
->          case 3:
->              if (w !=3D 1 && w !=3D 2) {
-> -                DPRINT_ERROR("Bad write offset 0x%08x\n", offset);
-> +                qemu_log_mask(LOG_GUEST_ERROR,
-> +                              "FIMD: Bad write offset 0x%08"HWADDR_PRIx"=
-\n",
-> +                              offset);
->                  return;
->              }
->              s->window[w].osdsize =3D val;
-> @@ -1624,7 +1626,9 @@ static void exynos4210_fimd_write(void *opaque, hwa=
-ddr offset,
+> -        if (!(s->control[0] & LCCR0_LCDT) && (value & LCCR0_LCDT))
+> -            printf("%s: internal frame buffer unsupported\n", __func__);
+> -
+> +        if (!(s->control[0] & LCCR0_LCDT) && (value & LCCR0_LCDT)) {
+> +            qemu_log_mask(LOG_UNIMP,
+> +                          "%s: internal frame buffer unsupported\n", __f=
+unc__);
+> +        }
+>          if ((s->control[3] & LCCR3_API) &&
+>                  (value & LCCR0_ENB) && !(value & LCCR0_LCDT))
+>              s->status[0] |=3D LCSR0_ABC;
+> @@ -462,9 +463,9 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr of=
+fset,
 >          break;
->      case FIMD_VIDW0ADD0_B2 ... FIMD_VIDW4ADD0_B2:
->          if (offset & 0x0004) {
-> -            DPRINT_ERROR("bad write offset 0x%08x\n", offset);
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "FIMD: bad write offset 0x%08"HWADDR_PRIx"\n",
-> +                          offset);
->              break;
->          }
->          w =3D (offset - FIMD_VIDW0ADD0_B2) >> 3;
-> @@ -1638,14 +1642,18 @@ static void exynos4210_fimd_write(void *opaque, h=
-waddr offset,
->          break;
->      case FIMD_SHD_ADD0_START ... FIMD_SHD_ADD0_END:
->          if (offset & 0x0004) {
-> -            DPRINT_ERROR("bad write offset 0x%08x\n", offset);
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "FIMD: bad write offset 0x%08"HWADDR_PRIx"\n",
-> +                          offset);
->              break;
->          }
->          s->window[(offset - FIMD_SHD_ADD0_START) >> 3].shadow_buf_start =
-=3D val;
->          break;
->      case FIMD_SHD_ADD1_START ... FIMD_SHD_ADD1_END:
->          if (offset & 0x0004) {
-> -            DPRINT_ERROR("bad write offset 0x%08x\n", offset);
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "FIMD: bad write offset 0x%08"HWADDR_PRIx"\n",
-> +                          offset);
->              break;
->          }
->          s->window[(offset - FIMD_SHD_ADD1_START) >> 3].shadow_buf_end =
-=3D val;
-> @@ -1665,7 +1673,8 @@ static void exynos4210_fimd_write(void *opaque, hwa=
-ddr offset,
->          s->window[w].palette[i] =3D val;
->          break;
->      default:
-> -        DPRINT_ERROR("bad write offset 0x%08x\n", offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "FIMD: bad write offset 0x%08"HWADDR_PRIx"\n", off=
-set);
->          break;
->      }
->  }
-> @@ -1715,7 +1724,9 @@ static uint64_t exynos4210_fimd_read(void *opaque, =
-hwaddr offset,
->              break;
->          case 3:
->              if (w !=3D 1 && w !=3D 2) {
-> -                DPRINT_ERROR("bad read offset 0x%08x\n", offset);
-> +                qemu_log_mask(LOG_GUEST_ERROR,
-> +                              "FIMD: bad read offset 0x%08"HWADDR_PRIx"\=
-n",
-> +                              offset);
->                  return 0xBAADBAAD;
->              }
->              ret =3D s->window[w].osdsize;
-> @@ -1809,7 +1820,8 @@ static uint64_t exynos4210_fimd_read(void *opaque, =
-hwaddr offset,
->          return s->window[w].palette[i];
->      }
 >
-> -    DPRINT_ERROR("bad read offset 0x%08x\n", offset);
-> +    qemu_log_mask(LOG_GUEST_ERROR,
-> +                  "FIMD: bad read offset 0x%08"HWADDR_PRIx"\n", offset);
->      return 0xBAADBAAD;
->  }
+>      case OVL1C1:
+> -        if (!(s->ovl1c[0] & OVLC1_EN) && (value & OVLC1_EN))
+> -            printf("%s: Overlay 1 not supported\n", __func__);
+> -
+> +        if (!(s->ovl1c[0] & OVLC1_EN) && (value & OVLC1_EN)) {
+> +            qemu_log_mask(LOG_UNIMP, "%s: Overlay 1 not supported\n", __=
+func__);
+> +        }
+>          s->ovl1c[0] =3D value & 0x80ffffff;
+>          s->dma_ch[1].up =3D (value & OVLC1_EN) || (s->control[0] & LCCR0=
+_SDS);
+>          break;
+> @@ -474,9 +475,9 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr of=
+fset,
+>          break;
 >
+>      case OVL2C1:
+> -        if (!(s->ovl2c[0] & OVLC1_EN) && (value & OVLC1_EN))
+> -            printf("%s: Overlay 2 not supported\n", __func__);
+> -
+> +        if (!(s->ovl2c[0] & OVLC1_EN) && (value & OVLC1_EN)) {
+> +            qemu_log_mask(LOG_UNIMP, "%s: Overlay 2 not supported\n", __=
+func__);
+> +        }
+>          s->ovl2c[0] =3D value & 0x80ffffff;
+>          s->dma_ch[2].up =3D !!(value & OVLC1_EN);
+>          s->dma_ch[3].up =3D !!(value & OVLC1_EN);
+> @@ -488,9 +489,10 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr o=
+ffset,
+>          break;
+>
+>      case CCR:
+> -        if (!(s->ccr & CCR_CEN) && (value & CCR_CEN))
+> -            printf("%s: Hardware cursor unimplemented\n", __func__);
+> -
+> +        if (!(s->ccr & CCR_CEN) && (value & CCR_CEN)) {
+> +            qemu_log_mask(LOG_UNIMP,
+> +                          "%s: Hardware cursor unimplemented\n", __func_=
+_);
+> +        }
+>          s->ccr =3D value & 0x81ffffe7;
+>          s->dma_ch[5].up =3D !!(value & CCR_CEN);
+>          break;
 > --
 > 2.21.3
 >

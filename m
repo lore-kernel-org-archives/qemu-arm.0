@@ -1,97 +1,96 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp300552lfc;
-        Tue, 26 May 2020 09:54:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy6JFjdKd8b1VKlZU4iH8k4O3qT5Q/yjv4ysUTMCD4r3QZuIOPsv1YQq6RG+kBFPkYRtNzI
-X-Received: by 2002:a25:f413:: with SMTP id q19mr3140794ybd.178.1590512047705;
-        Tue, 26 May 2020 09:54:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590512047; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp300771lfc;
+        Tue, 26 May 2020 09:54:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzxn7M/X0q7zVIr27aneG1b+P4dd71TY2xaxhbM7zOTtr/a+6vAKvQckvQVkeygnsuTBZss
+X-Received: by 2002:a25:ba81:: with SMTP id s1mr3152845ybg.114.1590512067364;
+        Tue, 26 May 2020 09:54:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590512067; cv=none;
         d=google.com; s=arc-20160816;
-        b=r9OPpMfdyR9tg0LpBvW+p8JY6PxkbvmZDuXFWC+OBDsWtLiPpvC3qmj4GvaFzMDjiM
-         9cqEdP7JU+qytgZZzADSTSAa2oIS2Hjiu61Z+gqtN1k9frAeGH1C5QQbXYdGzcAZv51d
-         vbs8ubBhvF9S/I5tCKGt8/wtSN4xBbRnvUb/EAGzuBS8oMEczbDnpDxJg9ebF/CxYiaU
-         7WO5N2RPNboXvK0j4ywiZg75jKz2YskGUTLj9QVktEEseIJrqnFzFsbwUaJUxby9d6bA
-         Y63rqmFPQZ3hcA/hC5trDs2gPVl/lO5NCXQMlpvNTJOz4Nnc5wC71Db/VOg8KYt51Iri
-         MXRQ==
+        b=HPC/F8SUXN9VBISu6raaFb1RFQubONTjUDhWciVHyAI7XyMu3QSADK4b/7fIEGeZnC
+         JLsICh8w9kYIp6zMRxonPquywyZrPiMPGlDTcnVGuy+Gi7USWwk/Y679IsJF0C04s/NC
+         62qBEvY0oCKl7HdHNh6gMeFUgCXx7fwLgrbIpqbWSfNt/CgI6nycfANCDzLFQyvTFK9u
+         hyhx3VKBtycCRDZqpnqtxuSi4Oh+F6kIjRZJ5XBuYXWpNB72d4wgMQtll3pFg/OgulW1
+         DYuVeoAOaDl0XDCqxv2VMK5zj8NW0L9GtnmDApSFBf5efSQPYRd4sjDTSQwh8Jd+pkOQ
+         o0vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=cI2kBYN4v92zgki8aIm+KltLVDl7Q7AyJhU1Q/w/19I=;
-        b=Fn5GlhfvRRGQXgjehNTxXTGaghhDzBrkYbL/w62YLfDYNklyPO/w5uySHApMtwRh5t
-         dSLid7YNeYRfh3FzyY09afVoJpcJLsGAEq9ek7GG80pTC+YgWQrB+7RJqWsdUTGaWA5g
-         szHVrn6P9aVN0Yb/SNKxS1pt0dWCaYERq+U2uhSPc/AfjmRnuSdV6NriIHyMWEXddSms
-         RQnMkSmobi4GXW92U3BBViwqkwjjN2DS5AgYghMHjumfG9wZM4yjysSajSWwSF1SpabJ
-         4/uyZ7EjjQMRhthiJQo+QZQfJTeSFwQfTM9i4WEAxotBeN84PXbkyK0tq9xZ4LHPciZC
-         +NQg==
+        bh=US/6pi8OtL/tZoq7LUrwfxAw/HJhGUy2KOFK+AJwJY0=;
+        b=YJQ6he1zRoSK97rkeMokTxI8z/WbVWx4cjXSTeMEkA0jYpR12TmEdkQWGhhumuUIFs
+         faRXuS4xPluhFVwXS8HB5c3oSaUaMP7ohB0ryBaPirTWxHKaoW+m7JyEg+AOtJD5jyHM
+         fj1hjZsvDnWOS03vptWywI/xZVK7KRPoM+eCJ3VdiORMC9HP8xBF8aFH9fDtX7VnUm2L
+         8LS1iz++FA4ibbSp0tdmjp9hJDTf1zBTEiNatS7gfCDpq0UWTULVu5FUQtwJ4gbLUhT3
+         xWPSZMg2FJ/Ieyyo09RriZ5FEjKm5zsvMbqelEsMGvVEv1g/+Av9T+sN4Vz9PQqduNg0
+         5oFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WH1Iy3+H;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p828qJp1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k5si417978ybk.27.2020.05.26.09.54.07
+        by mx.google.com with ESMTPS id o67si413570ybc.150.2020.05.26.09.54.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 May 2020 09:54:07 -0700 (PDT)
+        Tue, 26 May 2020 09:54:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WH1Iy3+H;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p828qJp1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59130 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60326 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jdcq7-0005jO-21
-	for alex.bennee@linaro.org; Tue, 26 May 2020 12:54:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47884)
+	id 1jdcqQ-0006Jz-P1
+	for alex.bennee@linaro.org; Tue, 26 May 2020 12:54:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46444)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdcki-0005A3-81; Tue, 26 May 2020 12:48:32 -0400
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:40724)
+ id 1jdcjZ-0003Uj-TZ; Tue, 26 May 2020 12:47:21 -0400
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:37492)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdckh-00070P-1S; Tue, 26 May 2020 12:48:31 -0400
-Received: by mail-il1-x142.google.com with SMTP id a18so3871230ilp.7;
- Tue, 26 May 2020 09:48:29 -0700 (PDT)
+ id 1jdcjY-00069K-FW; Tue, 26 May 2020 12:47:21 -0400
+Received: by mail-il1-x143.google.com with SMTP id r2so9945188ila.4;
+ Tue, 26 May 2020 09:47:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=cI2kBYN4v92zgki8aIm+KltLVDl7Q7AyJhU1Q/w/19I=;
- b=WH1Iy3+HM6GY0QWzvBllseWDzwXzXwH0BylC7P+OrrzTzKwlb0U0RKhkZ4hqdFNVv4
- 7CE1CI6eAPJ68XfxUtCdeaJ5H80YGfoAumQQmLUjwMZdVQltnK+xtwi8jHO/eLXLkEfr
- hPnpNpEvfBobhfrau36aU1Mp5baX4u5gY2M3pKgHgzoV8aCWzIoort4z7FecQdXxf4L8
- u5uW3N8+ZEatBbiJM0Y+6l23/u+WuXNYhKduqoREIDel1TXf6AXhST7YMCxZUoLOy2Lo
- TUBJfw4T0jlRTLPI79WLkSjKRjz+7+n9YPMRIXW9x00o4L/Xgbgpoo1h/etI+FOdcdLj
- cMtw==
+ bh=US/6pi8OtL/tZoq7LUrwfxAw/HJhGUy2KOFK+AJwJY0=;
+ b=p828qJp1PNv27RqFu1RwVggVVqpacLEuw/lKMbQd1CL4tB8R8ryd3T7o1O8X5e1RBI
+ omBXyriaK2xOdZF+NYC0vscjxestICNIhAChN/AXtUz9g6ViFvDeARzpjI60+pf43V0S
+ Nmj7WblBIrhJ4kZn6eWE/gV4JPWx3J1asYwjJcf5abmbGyP580rb1upWMPTrjTd0wrVq
+ ruHsFdGoPt8ZBoQPGP7zvKFBKxGAOkBgqOC838Nhpn2zZPyINYEib5Xam5SvOYcaAikc
+ q1HZatM4NqR1mdVOZS8Vqa1ICysa0ftxkO7QDghAA5Przydkj/7KqS+FnTf7ldFDNlMl
+ UvAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=cI2kBYN4v92zgki8aIm+KltLVDl7Q7AyJhU1Q/w/19I=;
- b=aWOFDSsMrq6bcK+M0iDcE9m1gu9QY97tbkXd4eNdK0rqNYtDPlwG5hrYhWxPq4/Z3q
- Yyy6OhqvfVBYS11ZWy8FB5OR6wTnIGtVfE/1NRCeLmMiS+HkwI8Dp/Olz2X3vvZ3Og3/
- UgX1xs82bTpBBYe2mj7gZ8wCQiQGWGm4fVb2uRgNdzewHWfsyIqS91oVB26ysnEgH9lo
- LNXCwEfPgOx7aYsE7X4v3OLKRWAu1rhFe2SY7efHM1QXNBn5zYnSg4XtLO3RoqlB+rnZ
- cM+mvdn/4XL82z//WUORf0pV09Z1vkFFqJ6LsaDDoCJf8qSbx0+MqiOIfkcU2/kHj+70
- HjsA==
-X-Gm-Message-State: AOAM530bm6ftlOMh4E90BV8h1W76JMxUoqcffOPaFUmFqg8k2lcoXPna
- a6BsBYYf4tYaFzp8rIT2K1dik9DXZJmGFVCkVG8=
-X-Received: by 2002:a92:48d1:: with SMTP id j78mr2059806ilg.131.1590511708940; 
- Tue, 26 May 2020 09:48:28 -0700 (PDT)
+ bh=US/6pi8OtL/tZoq7LUrwfxAw/HJhGUy2KOFK+AJwJY0=;
+ b=hS7vOsGOgY/uhP+RgeQ4aIA2M+jmSxjxO4opEfYIOfsAY814Km+MlFXH0nvAuuZKKU
+ Hf0SorPREonwTIMTu+o5qhdf6Dv3zCtOP7/RlRixNm6fpHpKSMYki3fNqjWW7Ev8vlsL
+ UNriZ+QczJEjAMkjkNMEy2ezyrjxqx5Kd1e6dDUsGhcU/NHJmTlgIj3uFbOz7vu4qjfg
+ 9L8/KKa5/dWdawwmSe+83ChDKAJ+7TrLvMxPklPneH3Rd0A1BH+D4FeSHayaNI/9lguk
+ NUhf/an4qafTumEWq+UV22t+/LJSq/cioPyFQuFuomRCNczEd+fn+FW8u5f+95DlFMuS
+ lV2w==
+X-Gm-Message-State: AOAM532QK4NlR7azKowbkWGWiSIkllbDTPgx9gJMVKQqOytAiP/c+aAY
+ jbknP3CsFZ7+Wh9a1SGW1FeN5KX9Sc7sRU4fu38=
+X-Received: by 2002:a92:de02:: with SMTP id x2mr2048228ilm.267.1590511638212; 
+ Tue, 26 May 2020 09:47:18 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200525034459.28535-1-f4bug@amsat.org>
- <20200525034459.28535-4-f4bug@amsat.org>
-In-Reply-To: <20200525034459.28535-4-f4bug@amsat.org>
+ <20200525034459.28535-3-f4bug@amsat.org>
+In-Reply-To: <20200525034459.28535-3-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 26 May 2020 09:39:30 -0700
-Message-ID: <CAKmqyKM=i6jp6y023ExLztqTeg6dc+O5Rv05_tYcCYi48E1-pA@mail.gmail.com>
-Subject: Re: [PATCH 3/4] hw/display/dpcd: Convert debug printf()s to trace
- events
+Date: Tue, 26 May 2020 09:38:18 -0700
+Message-ID: <CAKmqyKNAf4KKdGM=_s5AWa4-G6YYH2CLOnTd-E0cvQtVa6+sCA@mail.gmail.com>
+Subject: Re: [PATCH 2/4] hw/display/dpcd: Fix memory region size
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x142.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x143.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -121,12 +120,12 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tcBiXnx2tA+w
+X-TUID: 9RpEolsRfVne
 
-On Sun, May 24, 2020 at 8:46 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+On Sun, May 24, 2020 at 8:48 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g> wrote:
 >
-> Convert DPRINTF() to trace events and remove ifdef'ry.
+> The memory region size is 512K.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
@@ -135,78 +134,31 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/display/dpcd.c       | 16 +++-------------
->  hw/display/trace-events |  4 ++++
->  2 files changed, 7 insertions(+), 13 deletions(-)
+>  hw/display/dpcd.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
 > diff --git a/hw/display/dpcd.c b/hw/display/dpcd.c
-> index 0c1b7b35fb..64463654a1 100644
+> index 170545c605..0c1b7b35fb 100644
 > --- a/hw/display/dpcd.c
 > +++ b/hw/display/dpcd.c
-> @@ -32,16 +32,7 @@
->  #include "hw/misc/auxbus.h"
->  #include "migration/vmstate.h"
->  #include "hw/display/dpcd.h"
-> -
-> -#ifndef DEBUG_DPCD
-> -#define DEBUG_DPCD 0
-> -#endif
-> -
-> -#define DPRINTF(fmt, ...) do {                                          =
-       \
-> -    if (DEBUG_DPCD) {                                                   =
-       \
-> -        qemu_log("dpcd: " fmt, ## __VA_ARGS__);                         =
-       \
-> -    }                                                                   =
-       \
-> -} while (0)
-> +#include "trace.h"
+> @@ -1,5 +1,5 @@
+>  /*
+> - * dpcd.c
+> + * Xilinx Display Port Control Data
+>   *
+>   *  Copyright (C) 2015 : GreenSocs Ltd
+>   *      http://www.greensocs.com/ , email: info@greensocs.com
+> @@ -137,7 +137,7 @@ static void dpcd_init(Object *obj)
+>  {
+>      DPCDState *s =3D DPCD(obj);
 >
->  #define DPCD_READABLE_AREA                      0x600
->
-> @@ -70,8 +61,8 @@ static uint64_t dpcd_read(void *opaque, hwaddr offset, =
-unsigned size)
->                                         offset);
->          ret =3D 0;
->      }
-> +    trace_dpcd_read(offset, ret);
->
-> -    DPRINTF("read 0x%" PRIX8 " @0x%" HWADDR_PRIX "\n", ret, offset);
->      return ret;
+> -    memory_region_init_io(&s->iomem, obj, &aux_ops, s, TYPE_DPCD, 0x7FFF=
+F);
+> +    memory_region_init_io(&s->iomem, obj, &aux_ops, s, TYPE_DPCD, 0x8000=
+0);
+>      aux_init_mmio(AUX_SLAVE(obj), &s->iomem);
 >  }
 >
-> @@ -80,8 +71,7 @@ static void dpcd_write(void *opaque, hwaddr offset, uin=
-t64_t value,
->  {
->      DPCDState *e =3D DPCD(opaque);
->
-> -    DPRINTF("write 0x%" PRIX8 " @0x%" HWADDR_PRIX "\n", (uint8_t)value, =
-offset);
-> -
-> +    trace_dpcd_write(offset, value);
->      if (offset < DPCD_READABLE_AREA) {
->          e->dpcd_info[offset] =3D value;
->      } else {
-> diff --git a/hw/display/trace-events b/hw/display/trace-events
-> index e6e22bef88..00543f1601 100644
-> --- a/hw/display/trace-events
-> +++ b/hw/display/trace-events
-> @@ -151,3 +151,7 @@ artist_vram_write(unsigned int size, uint64_t addr, u=
-int64_t val) "%u 0x%"PRIx64
->  artist_fill_window(unsigned int start_x, unsigned int start_y, unsigned =
-int width, unsigned int height, uint32_t op, uint32_t ctlpln) "start=3D%ux%=
-u length=3D%ux%u op=3D0x%08x ctlpln=3D0x%08x"
->  artist_block_move(unsigned int start_x, unsigned int start_y, unsigned i=
-nt dest_x, unsigned int dest_y, unsigned int width, unsigned int height) "s=
-ource %ux%u -> dest %ux%u size %ux%u"
->  artist_draw_line(unsigned int start_x, unsigned int start_y, unsigned in=
-t end_x, unsigned int end_y) "%ux%u %ux%u"
-> +
-> +# dpcd.c
-> +dpcd_read(uint32_t addr, uint8_t val) "read addr:0x%"PRIx32" val:0x%02x"
-> +dpcd_write(uint32_t addr, uint8_t val) "write addr:0x%"PRIx32" val:0x%02=
-x"
 > --
 > 2.21.3
 >

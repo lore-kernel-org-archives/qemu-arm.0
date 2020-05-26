@@ -1,95 +1,94 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2673610lfc;
-        Mon, 25 May 2020 23:24:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz0PkIdUIDdlZLDykyqAgPtdt/MnE2mSvIn2Jnvmtq3FXvrWg/54vyGxt02xsXJqZHZvIdj
-X-Received: by 2002:ac8:2a55:: with SMTP id l21mr31204858qtl.151.1590474257577;
-        Mon, 25 May 2020 23:24:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590474257; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2674227lfc;
+        Mon, 25 May 2020 23:25:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyltECSNGN1uL2X2lMB7RWxix3W8SEE8UPXa3ueocrgshKF5DU6xkoXgQVrTrupqSWTusP2
+X-Received: by 2002:a25:b9c4:: with SMTP id y4mr48878459ybj.349.1590474322376;
+        Mon, 25 May 2020 23:25:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590474322; cv=none;
         d=google.com; s=arc-20160816;
-        b=l2hjXS8XJpBtGTRF9T5GM8rV78oIKeNug37QbkYuPqhCvc4Dfy0S/IfPQF6bYMRIcV
-         sUe2UYqkQ1C5qcT6dsWhzYtj0p+xxMHq+Apdzl0nQyMx1LmjEgmRnj7O+xMTa8x3Q4Fi
-         vMfkmKiqDRocyRNYBVQIpFzVAeHS3ab2U/AhAafaQ4598n6PgxxhYxHbmE8D+MijOvQq
-         NyEumxw7dvbk+nUwJqttdiopT/PTHyXGo5eAYg+d8wz/hOGQ+GUA8MhlA/2BQ9mj8Ggh
-         39ft3t6+I+vo2HTCqUbdfSlWiD7cFZdw1NSjQTnIk+6MdS9To04AzeUQsor7iHGeWJNP
-         oC2Q==
+        b=A/oqAmzJFdCs9LBsoHLRL9MbvRc581L07s/hgWQT/AQc6eJLuPiRuA9wVxEaQR99kE
+         zv4GrGeTj3Hxu4ueR0YfgJl/nHVIsiZnuSUI8oNaWVNGrK7fV50r7cg/cfrrlHX8SiP6
+         m+/3uZ3jAajhQ/V9vvPV8qODYzL4f03Kl/NIiizITyUckva683qGwFPebuO9bgywTkV3
+         SWEYCgGw7PSgEgvoExYZ++kPYwa/SgTo63APqfaw48/VIKT0wLfXWxDetrn9zkv1hmoH
+         cr7jlNhBBS4GbYyZ6nsMObNbiYaMUiroBPyz78AIKJhMr1YFCaXVhl1oejCx+TOclo03
+         CEXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=SgLfard/QkYYaxVOCOSV6DhAdq/g3xj9+l6N2FqFR44=;
-        b=KV/3pnaZ0s2/L0Azugs+Km6/THC00Vtk6ck8EHCI4kj/gxJwvYmc6LU78InSzls0/6
-         jMJrLrin9Z0XLIIhI9h9Rj2JePHg1PL6ONqHavyTG3proShMnoGw3LCjXyWUiLS2lK0z
-         A81SFRf30X84LsLMfc+ZRTwQlUuDaZn6zTEQ3TtPcNphglJ0XsErA47+DjuDQgQE+Uaq
-         jj3l03AxnM9Toeb5lk55FtmQNwesLiCk0w6gl0eqCLiug3vLISVI+ZWfGJ96F+28KjXo
-         ocZjMFE9rKgqmEI1aXlt2DwQO+DTHyPf6uLiUYHXXw0Hm30a9YXc28HIcWsIBUf7SiP1
-         0slw==
+        bh=3Mw4XoFuB+WMIXi00bK5o6APoDCeHGuoxLk+0OqrWeM=;
+        b=GxwpU6Yb43EUrVxhULC8c7x5fSXQbSS+qUbVMk4EulKg7NgJlm7LeMRhOutqriejPU
+         XheyUmm8n8uknXVwZGyxpUncCjHXlJhLMhxxoXQ4ilIk2s3ohWYnRhbRhXVIKELx/dlo
+         pzOeKsFUZwWI/dJCTHC1AkwBholUudz/7NI1IV0B3S+FKc8KfZmArRsHBw/L5OG4hxUC
+         qgHLXK36LaCXmbNMZ7U9RX4XYpY8SgkWF+5XoJbOjqIIZCEJm+apbV4BqutYV3uHkjfZ
+         cnZCD84AVNCu/BmFb+ja4VQetrcwi16XsxXc3WyyJZ5aS43Z9Qf4rfaF6clR/r+RuS3K
+         uWLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r9vBj7SX;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=X1w3KNPC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j9si10357245qvu.93.2020.05.25.23.24.17
+        by mx.google.com with ESMTPS id f128si21306128ybg.350.2020.05.25.23.25.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 May 2020 23:24:17 -0700 (PDT)
+        Mon, 25 May 2020 23:25:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r9vBj7SX;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=X1w3KNPC;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:51600 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57106 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jdT0b-0008EN-0j
-	for alex.bennee@linaro.org; Tue, 26 May 2020 02:24:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34230)
+	id 1jdT1d-00020h-Lb
+	for alex.bennee@linaro.org; Tue, 26 May 2020 02:25:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34266)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdSzL-0006QR-02; Tue, 26 May 2020 02:22:59 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:52916)
+ id 1jdSzV-0006se-Oy; Tue, 26 May 2020 02:23:09 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:46652)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jdSzK-0002Se-9Q; Tue, 26 May 2020 02:22:58 -0400
-Received: by mail-wm1-x342.google.com with SMTP id r9so2018508wmh.2;
- Mon, 25 May 2020 23:22:57 -0700 (PDT)
+ id 1jdSzU-0002UF-Tp; Tue, 26 May 2020 02:23:09 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id x6so5575156wrm.13;
+ Mon, 25 May 2020 23:23:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=SgLfard/QkYYaxVOCOSV6DhAdq/g3xj9+l6N2FqFR44=;
- b=r9vBj7SX91M+JbFbuINmfHYf+CRoECvQsK5TM99jK0b56LpXVtgXMYTPPP4bRHhBlC
- vgvh6TW7/sG65gfJJGGFTRXnkeFbKszcqvGpyESOMZ4R3Xn1mXrRQXjv/PNrFCBjL1ZN
- yfvBlTMSsNBich3WdzYRcQnwPlMq4zd2ZpI5fq7BoNHzWPSadDeznYLGRjEGAO2Il0NV
- Xz9w2QOuDI1XUXLbmiCcQRf8NS64+Sx6wP0otHac5uQ4tm0/iVU3S2BqFai2va6Y9o0s
- hplUpNjPu5LMLZGnWRSrUfz5QgIVsoLzhY6bJEVEOqCOvwMNaE9zlPtLGh7N6hJVQeOs
- SWAA==
+ bh=3Mw4XoFuB+WMIXi00bK5o6APoDCeHGuoxLk+0OqrWeM=;
+ b=X1w3KNPC/efOP9Dly5RnGNrJeg9gdhY5nYvcGiOrQpMarPEln6Gw1VEAldogOakJ+q
+ 4TUGOmFYEqk84i0Z+T2evAsj5JAHEGPB/L+3zZoQ/2TB+jEhsFuAsoDGAhYF5+rMxF1u
+ Mwexl4jkGkI5ojlmg6jqYXB//tLp+a/011pgNbBO3Ktlt/aUIc8Qo0bK/JcZRALxU/2m
+ gbyFLXsr0vvP+9/nCcQGEms+VtH9VtKzL3p+DHq7AXSX7cQIV/HmJHz9pCHBIX4SvHg9
+ avODktTW23EG5wjK+2qhkMiVShnS8hYTDI/3PfDIJozIMr0+4ScyWbr7yCF8l5N3vSrn
+ X1ZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=SgLfard/QkYYaxVOCOSV6DhAdq/g3xj9+l6N2FqFR44=;
- b=bgZju4zsUSnFdbPRlNr+5K4+L4jUaI/brLiLQ3+OXZTdOL4vLvAWPH9hrM2gGTHsnk
- eZsN1k/0BgL2/dtRXpagMNUd6bLLgHnylSzl0LG/GoBKiXKFWKwEdsNfMtyONEVGBWNw
- z788XxMqTf+UJ0h0Cmpd0LRjxBZ2cG4OCOfXqR0IUpACeB1papboP9oplcK2ZKkvdT4c
- gi6zX6o5BBtjgcBrOSiYrAVftob31JPOmcC/dWkRn0lw5sm5L9rsHzC2kkxDzQ/2n5zR
- hMVT2h/rZwZTl/Y72VmhzDskD7o6Kw1D+8Ub+KJ/qdaF1nTZ/xxBE2LH+Dby/9lidsFA
- 1l4w==
-X-Gm-Message-State: AOAM532YJ88N2TIk4ApnAafo5emiPsIN5X4Itsg0Pk2J0gQ1tGQEY51L
- CQNyBruy/OJXosiQKleBlCYmkqX5gxI=
-X-Received: by 2002:a1c:9cd5:: with SMTP id
- f204mr21021904wme.105.1590474176489; 
- Mon, 25 May 2020 23:22:56 -0700 (PDT)
+ bh=3Mw4XoFuB+WMIXi00bK5o6APoDCeHGuoxLk+0OqrWeM=;
+ b=C5ipFWyiK/ShNN2M/eEFSw0GIwyC7eoiQO6WnjrvMeT3sHxj5fZJUPfTROH7fi9WdO
+ a5/DunsCO9deMKxFN+r8V/wmHno3bkV+Y8j74FoQxPNpyuVeF93Vhy7sYV8YT8g0PvyJ
+ h/aOtETkcgO6ViWxP9YS22mdQyk7scHSW8JbaXTwMpNJbK8Y5Lkp2lP9ucqQDSjTJnk4
+ 95HU8164DmS+QGUuP3JYDTOG300i3j+dgsnMqc7tZ55UdoHOy6GBCOtV6aP6SvvVd0au
+ lfedohVrhYufKudmIcxmcEJkTherkq5z/5lADIH0BQuVTBehOVT5LjvSZEP3gRkb+j9+
+ jo2g==
+X-Gm-Message-State: AOAM530OeVeL+vbdFzm+p3Fr0Kva5CBEDLwCYQCjt3CpSez/zEuOXG2f
+ +ZJ8LpjbDk2l1AIHg4SZzEY=
+X-Received: by 2002:a5d:4b47:: with SMTP id w7mr7978941wrs.234.1590474186904; 
+ Mon, 25 May 2020 23:23:06 -0700 (PDT)
 Received: from localhost.localdomain (71.red-88-21-204.staticip.rima-tde.net.
  [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id a16sm5764745wrx.8.2020.05.25.23.22.55
+ by smtp.gmail.com with ESMTPSA id a16sm5764745wrx.8.2020.05.25.23.23.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 May 2020 23:22:55 -0700 (PDT)
+ Mon, 25 May 2020 23:23:06 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Gerd Hoffmann <kraxel@redhat.com>,
 	qemu-devel@nongnu.org
-Subject: [PATCH 01/14] hw/display/edid: Add missing 'qdev-properties.h' header
-Date: Tue, 26 May 2020 08:22:39 +0200
-Message-Id: <20200526062252.19852-2-f4bug@amsat.org>
+Subject: [PATCH 08/14] hw/display/dpcd: Convert debug printf()s to trace events
+Date: Tue, 26 May 2020 08:22:46 +0200
+Message-Id: <20200526062252.19852-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200526062252.19852-1-f4bug@amsat.org>
 References: <20200526062252.19852-1-f4bug@amsat.org>
@@ -97,8 +96,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -122,7 +121,6 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
@@ -130,38 +128,70 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2kR7Ch3agNEQ
+X-TUID: IWutqWJZzLVH
 
-When trying to consume the DEFINE_EDID_PROPERTIES() macro
-by including "hw/display/edid.h", we get this build failure:
+Convert DPRINTF() to trace events and remove ifdef'ry.
 
-  include/hw/display/edid.h:24:5: error: implicit declaration of
-  function ‘DEFINE_PROP_UINT32’ [-Werror=implicit-function-declaration]
-     24 |     DEFINE_PROP_UINT32("xres", _state, _edid_info.prefx, 0),    \
-        |     ^~~~~~~~~~~~~~~~~~
-
-Headers should be self-contained, and one shouldn't have to
-dig to find the missing headers.
-In this case "hw/qdev-properties.h" is missing. Add it.
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/display/edid.h | 1 +
- 1 file changed, 1 insertion(+)
+ hw/display/dpcd.c       | 16 +++-------------
+ hw/display/trace-events |  4 ++++
+ 2 files changed, 7 insertions(+), 13 deletions(-)
 
-diff --git a/include/hw/display/edid.h b/include/hw/display/edid.h
-index ff99dc0a05..23371ee82c 100644
---- a/include/hw/display/edid.h
-+++ b/include/hw/display/edid.h
-@@ -2,6 +2,7 @@
- #define EDID_H
+diff --git a/hw/display/dpcd.c b/hw/display/dpcd.c
+index 0c1b7b35fb..64463654a1 100644
+--- a/hw/display/dpcd.c
++++ b/hw/display/dpcd.c
+@@ -32,16 +32,7 @@
+ #include "hw/misc/auxbus.h"
+ #include "migration/vmstate.h"
+ #include "hw/display/dpcd.h"
+-
+-#ifndef DEBUG_DPCD
+-#define DEBUG_DPCD 0
+-#endif
+-
+-#define DPRINTF(fmt, ...) do {                                                 \
+-    if (DEBUG_DPCD) {                                                          \
+-        qemu_log("dpcd: " fmt, ## __VA_ARGS__);                                \
+-    }                                                                          \
+-} while (0)
++#include "trace.h"
  
- #include "qom/object.h"
-+#include "hw/qdev-properties.h"
+ #define DPCD_READABLE_AREA                      0x600
  
- typedef struct qemu_edid_info {
-     const char *vendor; /* http://www.uefi.org/pnp_id_list */
+@@ -70,8 +61,8 @@ static uint64_t dpcd_read(void *opaque, hwaddr offset, unsigned size)
+                                        offset);
+         ret = 0;
+     }
++    trace_dpcd_read(offset, ret);
+ 
+-    DPRINTF("read 0x%" PRIX8 " @0x%" HWADDR_PRIX "\n", ret, offset);
+     return ret;
+ }
+ 
+@@ -80,8 +71,7 @@ static void dpcd_write(void *opaque, hwaddr offset, uint64_t value,
+ {
+     DPCDState *e = DPCD(opaque);
+ 
+-    DPRINTF("write 0x%" PRIX8 " @0x%" HWADDR_PRIX "\n", (uint8_t)value, offset);
+-
++    trace_dpcd_write(offset, value);
+     if (offset < DPCD_READABLE_AREA) {
+         e->dpcd_info[offset] = value;
+     } else {
+diff --git a/hw/display/trace-events b/hw/display/trace-events
+index bb089a5f5e..72d4c9812c 100644
+--- a/hw/display/trace-events
++++ b/hw/display/trace-events
+@@ -157,3 +157,7 @@ artist_draw_line(unsigned int start_x, unsigned int start_y, unsigned int end_x,
+ # cg3.c
+ cg3_read(uint32_t addr, uint32_t val, unsigned size) "read addr:0x%06"PRIx32" val:0x%08"PRIx32" size:%u"
+ cg3_write(uint32_t addr, uint32_t val, unsigned size) "write addr:0x%06"PRIx32" val:0x%08"PRIx32" size:%u"
++
++# dpcd.c
++dpcd_read(uint32_t addr, uint8_t val) "read addr:0x%"PRIx32" val:0x%02x"
++dpcd_write(uint32_t addr, uint8_t val) "write addr:0x%"PRIx32" val:0x%02x"
 -- 
 2.21.3
 

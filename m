@@ -1,106 +1,110 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2397563lfc;
-        Mon, 25 May 2020 15:12:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxGot+8A5CLLZ3F4tHcokgnjd42KlvUrlMd7aDuYLNd1SifA6sJnk+IjpTkJwijIb2kYyS8
-X-Received: by 2002:a05:620a:22b6:: with SMTP id p22mr6079835qkh.51.1590444765736;
-        Mon, 25 May 2020 15:12:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590444765; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2618135lfc;
+        Mon, 25 May 2020 21:49:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyYYuBP1+kQvoh8vyHACieUwV0Fh2T/u7U/wfGz8hROWQ2yN1ywixqZJCXRjCCJKi7CpuOm
+X-Received: by 2002:a37:e06:: with SMTP id 6mr191752qko.125.1590468541256;
+        Mon, 25 May 2020 21:49:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590468541; cv=none;
         d=google.com; s=arc-20160816;
-        b=zNoHoNpb8IPrBG6QUx+2tcEfTCgwTxuSI8+XoI1t4YC2dgQ1+uHxQOC5rPB/S2ihx+
-         rkMU+I5uH8bRCBfypLDel0xOOGhBy5F1ftRuLMlqaS9owhAxe6hcyIJTdNGRfp77Pv1K
-         xH7++oaMuToMQS8VRIDaOJNXzAywmSyBvuRkRH7e467G1V8D4MDOMponzHm4XXPvJV44
-         O2fXY+2qm2UNbeLIcHJ1fL4cKuGavJaKJRCC+vuGiCECkpu+F1S/KWf89R+y/yy9BQmX
-         jESWeq41cRurMgppe3hYZCPpIU7LVcg8vkSDI8mztVQ0Jc5t12PxSNKHlNY3oFBrfL1+
-         /Jjg==
+        b=qyWjz8q6V5bXK4Zpr16Y72DQV3or+1Ab2+qD3r9e5EUGeUOqMHB+YREFosANh2k0b6
+         JjYM+ZAsW74hbwBnBeY04GKlbmgJMtuTV7hoD6IeO3E3cHiL+umaMgF7ZTmssg6x3s5I
+         aNRDmU2uGlv8CKR9vzPwCFn315t9PZGfYvtEDl6TulylqECpcqAsW43gBWBNaqSzXacs
+         k2i97JnUNZSScSA9GFpS4uOd5VApgiUZdIUezhXJzh0QugSntqdXA+1Xw3bx9i8Nrrem
+         LhmfFF/GjusDBvVffYnf644N2Cn1rnGsBhEM9QZsgsK9R25MsmM0Ru3ANeHlmHaguE5t
+         2XUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=0ybd/vTKoMnsphUJs3gJenYD5RIMfyIS7Gf777XZfUE=;
-        b=m+QLmrVOGH/tHz1Z2mdwIk6ScPEwJAF0rbbV024k87NvPkf3p2fcFQ9M/RWsLOERAX
-         bBIOgmEtiM99fbYN6abqH+oM8Tvv7VAnKAsLzZmDXPXxElA6zciCYbryFRaJCFQfNbfX
-         o3lgK61iF2/pl0a4crBOgt/kwEcH/vFvraw9L9wmxNn1NLegvpO3OEqFie1YCn1daToI
-         Pu8/tB0GTZREEI3g+sjtRXbxqhclZpI1M7IS1MhxBfGQjviN5uZvfx4NHBjlnMENyMPZ
-         9m9CI4eucaf0gL1yCOUpeGaT45cPaDMlWBgObTrx+xj4LRWHgwLe1WwCePcH6L5rmD0r
-         e1Pg==
+        bh=kTtIt+PGiXS7I6J5XlPeQ5fiJGg8Ep4BqurDKwOpqFs=;
+        b=i+DlSS4/D/2qW4drrdOgER7qRT41uVBS/OM+XgsSMkIrtckUaqZAGjCA85hhzVJwNF
+         3q5kvoyxJ146n9TXcvUmPuZjs8wubZMdg+k10iyU49CaeZo7y7yNn/7FJx8cGROO/EQy
+         BnBCP7HyoPJM9ig76PlSrOoYe1Ghhn6K/8A+N8EPSqMBjn7EZFe7aQo/pGqPkc7PT025
+         ArndR8Y/f47a7SejecAecuw+PVxOI8iz9nvoqqvqIS5oE8dnpIj7FPV13RadmiFLoRbm
+         emNlw0IZemWClttaMtZfAfmDO/kUb92ASXoPIcSwJO7oukQEuX0Yz1HRlDCgsDOdLQvH
+         Ah7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XgZpt+Ut;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QHQlDcDO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e11si3512358qtc.332.2020.05.25.15.12.45
+        by mx.google.com with ESMTPS id y66si10872469qka.188.2020.05.25.21.49.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 May 2020 15:12:45 -0700 (PDT)
+        Mon, 25 May 2020 21:49:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XgZpt+Ut;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QHQlDcDO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46700 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40164 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jdLKv-0007os-5e
-	for alex.bennee@linaro.org; Mon, 25 May 2020 18:12:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40020)
+	id 1jdRWO-0002Cx-Mf
+	for alex.bennee@linaro.org; Tue, 26 May 2020 00:49:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54872)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdLKj-0007l9-O2; Mon, 25 May 2020 18:12:33 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:41392)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jdLKi-0007iE-WA; Mon, 25 May 2020 18:12:33 -0400
-Received: by mail-io1-xd42.google.com with SMTP id o5so19956037iow.8;
- Mon, 25 May 2020 15:12:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=0ybd/vTKoMnsphUJs3gJenYD5RIMfyIS7Gf777XZfUE=;
- b=XgZpt+Ut03IhuPnpXy2q5o1yt/ITg4lGHEhioOtOe4vL/AavNK2CcZqv4wnU0v8dxJ
- reuXOUOxn1WkqKLyWKebe/wgZzLEaAkDrk/AKCVS5grnSi0l2hZzFw67+UQmDEdWd4Qa
- W5nNEBgC5XyHu7AO4cD8QjLBc8C4kEddSMx5GNQQWcPk1T6zxjYOe0yc9+mn1gEX3gev
- s1GMcYZKco1eYcSYAhbZrm4+vh2amPYvGRc9hLl7lZNNm91NM00huAhe/71hnPbHFPdq
- XGfrktQ+UqtuyDprPNA+6SgEGn+r4NKLnbyW2UQlQA5MpIi0MnJxRC+QoSJ3HutPJ5F/
- bZ+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=0ybd/vTKoMnsphUJs3gJenYD5RIMfyIS7Gf777XZfUE=;
- b=D0wZn52Ea/6Fzz4xzC68F9sNNZdGuNBNry1AmKF9ZiI9eAQZ+NGQZPuYbSMwILjNuO
- F4+0W3NYyGXhCviNv91YckbO3j+tIu1fTzHdui7e3vesTObIF7wuOEkBLVgWdyLzOhtq
- Q6cIfklTVr8Lsj+62sfqjNjdZgfMptcJgljxFEhkPOZVSlsOB7dwOXehB9GLI3cZDiHC
- 8V4asO4CWP0wGCcjtxnDY/h1cRlKz+I1m0BmSmWzTGNYK15wNRuLPyxtLIQCJRB6uK0R
- Yp8tvUzNZhBzL0wu00YaFHs5z9hWBWV6jc5hFRtGaHXTkulQFDdeCXXIHGvg28NaC4An
- fyAg==
-X-Gm-Message-State: AOAM530sezWmy4peDas80X0c5/CHRIYr04znz42GiIvnitFLa5IQdZH2
- 8HCtIx5hGHHkviIOT8DdG8P2ACPSE7gZf2duHpY=
-X-Received: by 2002:a02:7009:: with SMTP id f9mr15768023jac.8.1590444750530;
- Mon, 25 May 2020 15:12:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jdRWG-00024w-3M
+ for qemu-arm@nongnu.org; Tue, 26 May 2020 00:48:52 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:41101
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jdRWE-0002fz-Hb
+ for qemu-arm@nongnu.org; Tue, 26 May 2020 00:48:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590468529;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=kTtIt+PGiXS7I6J5XlPeQ5fiJGg8Ep4BqurDKwOpqFs=;
+ b=QHQlDcDO0MCrnIkl0tkO2s3ZeiZNqrMXW8Mkb7U2wlbnGkbcK44HSZZ9YcDpzXZT68+odq
+ 45+3VRt5HgVZA08uvHDW4J7HaW6oKJck9XyVVxKjWUSZzxnUEFLsNgEnnqJChCU+pu+uMz
+ lsu1S46NMIN24LTwOEGpvSqxafmWD5g=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-327-cOZKar-pO0C3scoMmziVUw-1; Tue, 26 May 2020 00:48:47 -0400
+X-MC-Unique: cOZKar-pO0C3scoMmziVUw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0B4241005512;
+ Tue, 26 May 2020 04:48:46 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-113-50.ams2.redhat.com
+ [10.36.113.50])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3777F5D9E5;
+ Tue, 26 May 2020 04:48:40 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 32DC81753B; Tue, 26 May 2020 06:48:39 +0200 (CEST)
+Date: Tue, 26 May 2020 06:48:39 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Subject: Re: [PATCH v3 14/22] microvm: use 2G split unconditionally
+Message-ID: <20200526044839.bncj6iltugnzgfmy@sirius.home.kraxel.org>
+References: <20200520132003.9492-1-kraxel@redhat.com>
+ <20200520132003.9492-15-kraxel@redhat.com>
+ <20200521112921.641f12bb@redhat.com>
+ <20200525114508.hhvyzjiqja6knz6l@sirius.home.kraxel.org>
+ <20200525183615.5f8e67d3@redhat.com>
 MIME-Version: 1.0
-References: <20200525111001.8147-1-f4bug@amsat.org>
-In-Reply-To: <20200525111001.8147-1-f4bug@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 25 May 2020 15:12:03 -0700
-Message-ID: <CAKmqyKP+7p2Kmti_Ds68ja=gLgY96tKjMhN8ACgDfaFv+XROgA@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/adc/stm32f2xx_adc: Correct memory region size and
- access size
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200525183615.5f8e67d3@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/26 00:48:49
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,67 +117,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4n+8It9cPMFb
+X-TUID: fPqlpsbql4TH
 
-On Mon, May 25, 2020 at 4:10 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> The ADC region size is 256B, split as:
->  - [0x00 - 0x4f] defined
->  - [0x50 - 0xff] reserved
->
-> All registers are 32-bit (thus when the datasheet mentions the
-> last defined register is 0x4c, it means its address range is
-> 0x4c .. 0x4f.
->
-> This model implementation is also 32-bit. Set MemoryRegionOps
-> 'impl' fields.
->
-> See:
->   'RM0033 Reference manual Rev 8', Table 10.13.18 "ADC register map".
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > Well, I think we can (should) drop max-ram-below-4g too.  There is
+> > no reason to use that with microvm, other that shooting yourself into
+> > the foot (by making mmio overlap with ram).
+> > 
+> > With that being gone too there isn't much logic left ...
+> 
+> I wonder if we need 2G split for microvm at all?
+> Can we map 1 contiguous big blob from 0 GPA and overlay bios & other x86 TOLUD stuff?
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+I think it would work, but it has some drawbacks:
 
-Alistair
+  (1) we loose a bit of memory.
+  (2) we loose a gigabyte page.
+  (3) we wouldn't have guard pages (unused address space) between
+      between ram and mmio space.
 
-> ---
-> v2: Commit staged changes... (MemoryRegionOps::impl)
-> ---
->  hw/adc/stm32f2xx_adc.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/adc/stm32f2xx_adc.c b/hw/adc/stm32f2xx_adc.c
-> index 4f9d485ecf..01a0b14e69 100644
-> --- a/hw/adc/stm32f2xx_adc.c
-> +++ b/hw/adc/stm32f2xx_adc.c
-> @@ -246,6 +246,8 @@ static const MemoryRegionOps stm32f2xx_adc_ops =3D {
->      .read =3D stm32f2xx_adc_read,
->      .write =3D stm32f2xx_adc_write,
->      .endianness =3D DEVICE_NATIVE_ENDIAN,
-> +    .impl.min_access_size =3D 4,
-> +    .impl.max_access_size =3D 4,
->  };
->
->  static const VMStateDescription vmstate_stm32f2xx_adc =3D {
-> @@ -278,7 +280,7 @@ static void stm32f2xx_adc_init(Object *obj)
->      sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
->
->      memory_region_init_io(&s->mmio, obj, &stm32f2xx_adc_ops, s,
-> -                          TYPE_STM32F2XX_ADC, 0xFF);
-> +                          TYPE_STM32F2XX_ADC, 0x100);
->      sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
->  }
->
-> --
-> 2.21.3
->
->
+take care,
+  Gerd
+

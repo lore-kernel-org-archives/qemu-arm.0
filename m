@@ -1,153 +1,196 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp20934lfc;
-        Tue, 26 May 2020 03:57:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzZ1XQbT2iSY87sI1ghwgGdcKXVmSbk9sPGEVcIw1xTUX3zZkVwNVYj2+RZoWPgSvzppbLC
-X-Received: by 2002:a25:4f44:: with SMTP id d65mr636978ybb.149.1590490627056;
-        Tue, 26 May 2020 03:57:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590490627; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp281351lfc;
+        Tue, 26 May 2020 09:29:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzAV9+Qjq2UkN9W8gXaPPShQ5GiDpGy16ZW7fCoQts9A2hHbnYHYXScRh6iB6ZG1prQsyoy
+X-Received: by 2002:a25:ba4b:: with SMTP id z11mr3082270ybj.105.1590510549420;
+        Tue, 26 May 2020 09:29:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590510549; cv=none;
         d=google.com; s=arc-20160816;
-        b=hpFbtjsgw1k771GnTzsoiTZ0fkVSsH9UAAoRJPqLneocvT2q244aGPWDbmhL3GMaih
-         svHqgWwmg01ddrlw6X/ZgY/58jtvc77XKZIuillY6eZgXnoVI/wJ0sXtSTUOcZ2WCqji
-         gotdc69E0TiFGPHVVA96ouier6QiT1N8ppV6kSwKSoVOJnEFFQ39pJo/AivH5bN9Syio
-         2luX/vJ/WaXUl4Es7AwuVlDv+mULaYdElQ+SUGJpT2lB7IcfOfj2reYyGnygT5kDptC7
-         EvFQi3MEMt+UHUe9RBa1H02MiC8MOhuZXw97K5Mu5oN69wNWlfA2qmgx6xBGyeFij4dl
-         p7xA==
+        b=J2NgIcra2eQiLq7uRG1AF9UziHUz9Z8DNsY7t0y8TRe1iVuoocyBkdfIvxRtapBH4V
+         7Fr5yudCKBctWoBulf48ZknhpQkM3tc73kaO5Si25kKaCYp25DAMI91ZS4xn9hvUsqWh
+         DayqfnuE+Z1V3i/NgsA4DWnRsgwH1WEttcqfWnhL1BjYnzETAHY6+HoE8X0/fU4iHiTt
+         cBFikpHMdA6PlMQqHbCA9HBOJqn/283Az1Yu1Do1wwLa0NW8+/NaVLTg920M9JCYQkYz
+         BLOhD0gkxL0KrhT6FmRysq6MYV4gvG5SYwRbdCDI7gNriEhMFvEi87EQGtGBP0DoTYpG
+         BYhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=9ElR8/TiWTLU4MenHCo/KuQT+CrmA8r6BBjyiu48rJs=;
-        b=li0jWloWf2UJdJfLOsCU4P1z7rDVvzjKBCe1qnYI/NLuxxbrsbzKWx/UxwGLVygRyy
-         g/bfk064MhHsEbqxyGBx+mnKBed0UOb1aBcLwG0QFPMH+w841WP7jG5eIsFrVkuAzuM5
-         h0f+37f4KliuWhvgpTC2WhORUOHx2rIGli27djY5SiGYsJ1veMoTzHtu3BEd2rdiGdiQ
-         ZYqA7iQgk4pXTOCQzR3DhEpClPwOmQHDEPIJXX9n/+MUS+2nJlYPZDlRc5egd6xDijpM
-         WvhYZ/X7ETUFYROB6WO9spDbQArz7YL5IWnW7UdqVCfB++hWKhgGXVyW3ODgZDyxcxAL
-         xLdg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=5tBqtXYJu6MqQ0/JHvw/YkqqhCbb5FSWfs4YssNy1Zc=;
+        b=YAXxFVpwnjCsegpGzjGwTy1YTCsfHICKrQIVpd7vomHuS18IX2lx9HHPDYuptUftj/
+         EyhIBpT8x9F7dolflPDQOEVA+x8Js45Q7G5yc1eZ1+TVrlChFyVEn+694EQf+bDqygin
+         EMgCBYcLzvEG+e7nJM/513Yula9XZxGf5yq4pyLg3r55rSulbzSAxvEUaGZNx8Q5GYOy
+         hwscoLAmCWvhAovlRZS92LXq9dRP4saICQzoFovrO6Gv5hGW5dB5FgLz2nH8kAbOEJjD
+         zdOns7wLdNYlDOCNqKf11chGYhKEU6TLnUMMLfj+j6NXpQ0fqZbgqTxJneNQzxDuYCEF
+         Pw4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SCFN2Gvz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y6CFotiv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z187si18365625ybz.309.2020.05.26.03.57.06
+        by mx.google.com with ESMTPS id e136si376948yba.34.2020.05.26.09.29.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 May 2020 03:57:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 26 May 2020 09:29:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SCFN2Gvz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37010 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y6CFotiv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:51872 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jdXGc-0006MR-G6
-	for alex.bennee@linaro.org; Tue, 26 May 2020 06:57:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38860)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jdcRw-00028q-N8
+	for alex.bennee@linaro.org; Tue, 26 May 2020 12:29:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55036)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jdX7l-0007IC-UZ
- for qemu-arm@nongnu.org; Tue, 26 May 2020 06:47:57 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:52606
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jdX7l-0002Cn-08
- for qemu-arm@nongnu.org; Tue, 26 May 2020 06:47:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590490075;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=9ElR8/TiWTLU4MenHCo/KuQT+CrmA8r6BBjyiu48rJs=;
- b=SCFN2GvzDjhCH9VDdhJNDAr1DC+7g/EYd1mE/+ZTZmAt9+/xhl7QXHrmY+h31EUcmR0o8T
- 0DdTmgJydI5UT6kpVG9xKrdEvdZkY7OSvgxcZX2/PwBq8oXuKfcWXN0TDJPmZruO/7FWjP
- MIWdUkwt22ykaDQvyNIu8M0mp+Zd5gQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-372-isFpXgsrP2287zNLfysvtg-1; Tue, 26 May 2020 06:47:52 -0400
-X-MC-Unique: isFpXgsrP2287zNLfysvtg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 986AF19057A6;
- Tue, 26 May 2020 10:47:50 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-113-50.ams2.redhat.com
- [10.36.113.50])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2376B60C47;
- Tue, 26 May 2020 10:47:50 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 3810F16E2C; Tue, 26 May 2020 12:47:48 +0200 (CEST)
-Date: Tue, 26 May 2020 12:47:48 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 11/14] hw/display/vmware_vga: Let the PCI device own its
- I/O MemoryRegion
-Message-ID: <20200526104748.wayie5aovk5omz3t@sirius.home.kraxel.org>
-References: <20200526062252.19852-1-f4bug@amsat.org>
- <20200526062252.19852-12-f4bug@amsat.org>
- <20200526080123.ul5r4abphqfi7lkq@sirius.home.kraxel.org>
- <4a6478f2-6b70-40df-093f-e81d2437bfa7@amsat.org>
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jdcQo-0001C5-Bk; Tue, 26 May 2020 12:27:58 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:41014)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jdcQn-0001Vi-Cu; Tue, 26 May 2020 12:27:58 -0400
+Received: by mail-io1-xd42.google.com with SMTP id o5so22648071iow.8;
+ Tue, 26 May 2020 09:27:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=5tBqtXYJu6MqQ0/JHvw/YkqqhCbb5FSWfs4YssNy1Zc=;
+ b=Y6CFotivyIi96bMAYu+TXDwKNnLse7bKJHnwPCcR+8QYXUqmyQRrwgr6dkucalx+Eh
+ IVrUu77YIg/ygGkZeXY0mw8UfmXpL6zojBWtZaA5X2y3etNLejxYOxJx2h5+pyPVO1Xv
+ JJMUfsD23mNvObApIPJ5bhPmMElLu7ohAUnaMoLEkB3MlASIG27BIt2V2K0w3P89++Ip
+ u89EKAGW6D1nJpYcAJKl3vBrKFuZEh8eI8N5XxDhwyDSMC7gyJck0Cj5E3zRnenquYmh
+ mnBFydMwLsQotFwoPXwk/9Rdy0KYNg3hRt65VPPA5xvNcqkZ3GLFnAjVCr1Yzp8Sx6x5
+ UdWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=5tBqtXYJu6MqQ0/JHvw/YkqqhCbb5FSWfs4YssNy1Zc=;
+ b=Or8wDMCf5zM0Q/nflK9zs+Djhd1Pz3mfiuzI2m9W+FgD6RAoZppBHrgTeh9L5EZVyI
+ UmamzrF35s/O0dShJOOgWX+/EdvwXiQ5RfTUdGc+UQBAZt1R8ZnNkSu/I7tdY1RdLo3O
+ qK7LNhmizkUj0+tYeKeP3VQFCbdpOWDyrpUuHSMPjfqXX3K8/+jyqymAZKlnM920rNko
+ dfxRMDjK5UpGMVAtp/7OphXJE6jpSE2TiO2q+s0OrpBObbN/W+niewK/TDo/EWWE85mo
+ NFeRHsDm6wwh3crzs31X4CbPnpuCJ2hVS6cinZRdbnNuUfWdrTiGlKU4wgtXhwV+AWiF
+ yYBg==
+X-Gm-Message-State: AOAM532jIXMyh/mdInrHnLAsJ9VrSCSgZYHUxKiUJXJCtCvGbpEZOWZ9
+ MkJfixlYwULBYkXtPgEZyTyhoYVz3ueg34exkFY=
+X-Received: by 2002:a5d:9604:: with SMTP id w4mr18128397iol.105.1590510476036; 
+ Tue, 26 May 2020 09:27:56 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <4a6478f2-6b70-40df-093f-e81d2437bfa7@amsat.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/26 01:14:47
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+References: <20200525141237.15243-1-thuth@redhat.com>
+In-Reply-To: <20200525141237.15243-1-thuth@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 26 May 2020 09:18:57 -0700
+Message-ID: <CAKmqyKMLezOO+EsjhpDO5RPM9pJFxtnZ7XcA3POeyjNb4yAEtQ@mail.gmail.com>
+Subject: Re: [PATCH v2] tests/acceptance: Add a boot test for the
+ xlnx-versal-virt machine
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
- Andrzej Zaborowski <balrogg@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RBdLfeALkRFX
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Cleber Rosa <crosa@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cvU4mrYR/UvC
 
-On Tue, May 26, 2020 at 10:16:19AM +0200, Philippe Mathieu-Daudé wrote:
-> On 5/26/20 10:01 AM, Gerd Hoffmann wrote:
-> > On Tue, May 26, 2020 at 08:22:49AM +0200, Philippe Mathieu-DaudÃƒÆ’Ã‚Â© wrote:
-> >> To avoid the orphan I/O memory region being added in the /unattached
-> >> QOM container, register the PCI device as its owner.
-> >>
-> >> Signed-off-by: Philippe Mathieu-DaudÃƒÆ’Ã‚Â© <f4bug@amsat.org>
-> >> ---
-> >> RFC: This might break migration
-> > 
-> > --verbose please.  This doesn't touch the live migration data stream?
-> 
-> Oops, this is an I/O region... I was confused by this warning form Peter:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg681970.html
-> 
-> But it is restricted to RAM regions, so this patch is harmless.
+On Mon, May 25, 2020 at 7:13 AM Thomas Huth <thuth@redhat.com> wrote:
+>
+> As described by Edgar here:
+>
+>  https://www.mail-archive.com/qemu-devel@nongnu.org/msg605124.html
+>
+> we can use the Ubuntu kernel for testing the xlnx-versal-virt machine.
+> So let's add a boot test for this now.
+>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Yes, for ram regions this is a problem, this is why vga has
-global_vmstate.  No problem for io.  Series looks fine then.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-take care,
-  Gerd
+Alistair
 
+> ---
+>  v2: Added "tags=3Ddevice:pl011" and "tags=3Ddevice:arm_gicv3"
+>
+>  tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
+>
+> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/bo=
+ot_linux_console.py
+> index 0653c8c1bf..965272387c 100644
+> --- a/tests/acceptance/boot_linux_console.py
+> +++ b/tests/acceptance/boot_linux_console.py
+> @@ -307,6 +307,32 @@ class BootLinuxConsole(Test):
+>          console_pattern =3D 'Kernel command line: %s' % kernel_command_l=
+ine
+>          self.wait_for_console_pattern(console_pattern)
+>
+> +    def test_aarch64_xlnx_versal_virt(self):
+> +        """
+> +        :avocado: tags=3Darch:aarch64
+> +        :avocado: tags=3Dmachine:xlnx-versal-virt
+> +        :avocado: tags=3Ddevice:pl011
+> +        :avocado: tags=3Ddevice:arm_gicv3
+> +        """
+> +        kernel_url =3D ('http://ports.ubuntu.com/ubuntu-ports/dists/'
+> +                      'bionic-updates/main/installer-arm64/current/image=
+s/'
+> +                      'netboot/ubuntu-installer/arm64/linux')
+> +        kernel_hash =3D '5bfc54cf7ed8157d93f6e5b0241e727b6dc22c50'
+> +        kernel_path =3D self.fetch_asset(kernel_url, asset_hash=3Dkernel=
+_hash)
+> +
+> +        initrd_url =3D ('http://ports.ubuntu.com/ubuntu-ports/dists/'
+> +                      'bionic-updates/main/installer-arm64/current/image=
+s/'
+> +                      'netboot/ubuntu-installer/arm64/initrd.gz')
+> +        initrd_hash =3D 'd385d3e88d53e2004c5d43cbe668b458a094f772'
+> +        initrd_path =3D self.fetch_asset(initrd_url, asset_hash=3Dinitrd=
+_hash)
+> +
+> +        self.vm.set_console()
+> +        self.vm.add_args('-m', '2G',
+> +                         '-kernel', kernel_path,
+> +                         '-initrd', initrd_path)
+> +        self.vm.launch()
+> +        self.wait_for_console_pattern('Checked W+X mappings: passed')
+> +
+>      def test_arm_virt(self):
+>          """
+>          :avocado: tags=3Darch:arm
+> --
+> 2.18.1
+>
+>

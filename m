@@ -1,109 +1,163 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1110656lfc;
-        Wed, 27 May 2020 07:12:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy8R9nL8x7JsnKoyjwxizgLbBCkVihle8sQVTHgZOUWcfLOt5wLMTV6dVKphZT6uHukUTSb
-X-Received: by 2002:aa7:c942:: with SMTP id h2mr24325488edt.23.1590588746500;
-        Wed, 27 May 2020 07:12:26 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1590588746; cv=pass;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1129590lfc;
+        Wed, 27 May 2020 07:35:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyZtMBDEC1Wm0NagdV+8eW1nhxffIk7aXpBxMLO5FVseKpNufMMQwnhestAFQnPPWienucI
+X-Received: by 2002:ac8:5691:: with SMTP id h17mr4482372qta.105.1590590140295;
+        Wed, 27 May 2020 07:35:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590590140; cv=none;
         d=google.com; s=arc-20160816;
-        b=aZorNvj7bk7TIAGa2sMBUSmMsW7hdxsx7phzILzmuVNXL0n3oNcB5Yr2o1SQM28bXT
-         bKM/W4oMfv2QeVwAPRqPDI767G9Cae6qmtfm1JmYtNddsbHnkfHACB+HmpCS9h1F7xG7
-         jIPbrvjHcIE0X6Jbwnf1M1kqBBdI7lxi/L7aFgnKAQL+loygcN265plA6rhs7Kh4jf4Y
-         Yr7bJPlWomJocjsBBtIXJoOPQ0mdMygVr69LgpeBcaDC5jZZTN5dWN5bzwI5oEFuB0m8
-         7W0LODdo1yvKP/FwbeHrYO6M6tCTqNifeA3BriVQxQ2E3dDizRIecotrx+XjAGDyX+6x
-         /MyQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
-         :reply-to:subject:in-reply-to:message-id;
-        bh=WAyzjL3hEXT84H/Z2H6ONVPz1tt8FwSrVRCJOz7nvg8=;
-        b=CirrJ0gD3tsYttD4uXQXtr2p6XwbP+ERoIAK7gfeLp02+dOLLutJOPsPlZVOgnH8Jx
-         /U4yPNG6aC+wfEUvqGygoqEb/b3K+DERRHWR244kgcycWPFL+Xn9DdlWlBYUW2gPR9La
-         GaJnYIp5cGxwVzTnVC0HlnkSBkwow/C8Klwf6WPLHCMUb3NyNfvfRAdMODbUjmrCd7/T
-         ydTGnPVoqVvXbMHttPuTJX++hsg62ivVYFd1/nfv9Xa2YozZZ+k3B5S7nF0SAI6TMQg8
-         1Irl5UfMtgIHbnQRMSgEtWFKOfNhRrn1a4MhwIzEB2elld95ZzonjB2uVb4If4+BJrnh
-         pqGA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.53 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-Return-Path: <no-reply@patchew.org>
-Received: from sender4-of-o53.zoho.com (sender4-of-o53.zoho.com. [136.143.188.53])
-        by mx.google.com with ESMTPS id j1si1650372eds.281.2020.05.27.07.12.25
+        b=p8FDL8z/izuCEuWvHu2SxDHHHUehXx7b3uxMbFsFVL2r294eEbg8aKIXsAacKrRalY
+         WnP0ckQMJJyVjBsY/FT60EBYDXSqBfY/zvkS6M80QErhfmwqRUXrqJcK8YBORZoMEWDc
+         ojN28Qf3kdTF1t37ucbXfKEBfG/eHwK33JucDyF654hauV7qVwq8ZiqKEW0mUuei3Vrw
+         akc4bGuUfb2ps3zv5miXbjXiuH09VrvE4khwqfzXw33oEmsL/iUKzmLEU0e0nYlghZGr
+         H8qWkP38yn5ahAUQskxw/+SAB1wf5O0TnMGhyQCtNhLYqa2cCnoU3R9bl/xrOlyfeWvk
+         AkFA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=YKxoEE+BG3qxOUVv0Ue8Hx9aOtDaoNDq/wWxBr5SYyw=;
+        b=x4czspD0/zZbpsraH/lI70FLj+dLheXV3HJhc3L8oakdKJ/f9QRuvnpmJxeJPHTuoL
+         pUnfqcxEpdJqLZkG5aVMytOr6BM8064GCjrcv8wh7C3IjfuCFJaK3+/Myz9ES7E2Y2iy
+         +0ph/xvOgCT+afy39Yahb8/ox2wO+8gffmsAv3ShmibCzIW77AZzBbl86UNMiLxqahVn
+         YmXgNiWyhQS9qVgk+6CDlsVtLzooZ5lgo9jKaxLhHcoovqY7BWfiwpaJMD9g1kBvEBOB
+         cxFcNGb2V9xaV2X4DbhAH7UbnFM1RMYnYEzc1QQivCtPhNjEz/Eu9kjgXAG17xu3Vvl9
+         mRTw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eBmK87xX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a18si1588474qtw.354.2020.05.27.07.35.40
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 27 May 2020 07:12:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 136.143.188.53 as permitted sender) client-ip=136.143.188.53;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 27 May 2020 07:35:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.53 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-ARC-Seal: i=1; a=rsa-sha256; t=1590588743; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=bZaexx1sXc0b76ZjDrU21Yi4OeED0YA3jM+BB/MnxtaHinOxxTNolAKk7IGTUADxgOOeAA4D/cJxbju3eCYspG91wEla0Rv4BERfPeARedgkYElpO4iKBOdmgmuo9upISdYGUAlz4z66pIzAP6/X/8pfdoPtyl1Ou9vO0EEOLKc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1590588743; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To; 
-	bh=WAyzjL3hEXT84H/Z2H6ONVPz1tt8FwSrVRCJOz7nvg8=; 
-	b=Ct2cWzPw3/aJnAU8pBJpjwqBeUi9E7Yh9O7XwJfS84a/1hJWtrQkeQVgFsl+UH2C8mh1YrbWq/60wxxw2WR3a+kxb+DnDiJZeQ1qrIlg4V31a0Hq+/v++wXF1HXqkO5x+cjdnvF5oY7kMTmmLQ61hViVLx3eZM4cB5/GT0TvTpo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
-	with SMTPS id 1590588741032122.77576622460163; Wed, 27 May 2020 07:12:21 -0700 (PDT)
-Message-ID: <159058873989.16318.11496237609169277676@45ef0f9c86ae>
-In-Reply-To: <20200527100546.29297-1-alex.bennee@linaro.org>
-Subject: Re: [PATCH  v1 0/3] some linux-user guest_base fixes
-Reply-To: <qemu-devel@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eBmK87xX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60360 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jdx9f-00050U-PD
+	for alex.bennee@linaro.org; Wed, 27 May 2020 10:35:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41838)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1jdx9U-0004yw-P4
+ for qemu-arm@nongnu.org; Wed, 27 May 2020 10:35:28 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:42943
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1jdx9T-0002dS-Lz
+ for qemu-arm@nongnu.org; Wed, 27 May 2020 10:35:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590590126;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=YKxoEE+BG3qxOUVv0Ue8Hx9aOtDaoNDq/wWxBr5SYyw=;
+ b=eBmK87xXdR9DZ3/XZbc+uKL7bxaxItC5SYdHUYUc4LSQYjvjEK2O2YnyP9rk+FK6QjLCTb
+ 4vO9Va1wGe8ZVwp4EWCgj1SNc+ShgYERs2K+ndNZYE00Vzh6mJyMKji9Zz74TPoblrr1iX
+ FiNAjfc6aPpI7ffRQc6J5r2X9Xc4h5w=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-315-5SF_7Q6YNbi9btlls8-rvw-1; Wed, 27 May 2020 10:35:22 -0400
+X-MC-Unique: 5SF_7Q6YNbi9btlls8-rvw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6DF6A18FE870;
+ Wed, 27 May 2020 14:35:21 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9432F1BCBE;
+ Wed, 27 May 2020 14:35:10 +0000 (UTC)
+Date: Wed, 27 May 2020 16:35:07 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v3 14/22] microvm: use 2G split unconditionally
+Message-ID: <20200527163507.094f7c0f@redhat.com>
+In-Reply-To: <20200527162646.694b2d47@redhat.com>
+References: <20200520132003.9492-1-kraxel@redhat.com>
+ <20200520132003.9492-15-kraxel@redhat.com>
+ <20200521112921.641f12bb@redhat.com>
+ <20200525114508.hhvyzjiqja6knz6l@sirius.home.kraxel.org>
+ <20200525183615.5f8e67d3@redhat.com>
+ <20200526044839.bncj6iltugnzgfmy@sirius.home.kraxel.org>
+ <20200527142545.32e91049@redhat.com>
+ <58ced517-1ad4-c895-afe6-fec690791f4f@redhat.com>
+ <20200527162646.694b2d47@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: alex.bennee@linaro.org
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org
-Date: Wed, 27 May 2020 07:12:21 -0700 (PDT)
-X-ZohoMailClient: External
-X-TUID: TQr5pU5ok+FE
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/27 00:45:05
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1okmVDbK3DXg
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDUyNzEwMDU0Ni4yOTI5
-Ny0xLWFsZXguYmVubmVlQGxpbmFyby5vcmcvCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8g
-aGF2ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9y
-ZSBpbmZvcm1hdGlvbjoKCk1lc3NhZ2UtaWQ6IDIwMjAwNTI3MTAwNTQ2LjI5Mjk3LTEtYWxleC5i
-ZW5uZWVAbGluYXJvLm9yZwpTdWJqZWN0OiBbUEFUQ0ggIHYxIDAvM10gc29tZSBsaW51eC11c2Vy
-IGd1ZXN0X2Jhc2UgZml4ZXMKVHlwZTogc2VyaWVzCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09
-CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0
-IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlm
-Zi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3Jh
-bQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJ
-UFQgRU5EID09PQoKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUK
-IC0gW3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8yMDIwMDUyNzEwMDU0Ni4yOTI5Ny0xLWFsZXgu
-YmVubmVlQGxpbmFyby5vcmcgLT4gcGF0Y2hldy8yMDIwMDUyNzEwMDU0Ni4yOTI5Ny0xLWFsZXgu
-YmVubmVlQGxpbmFyby5vcmcKU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwphNTM3ZTEz
-IHRlc3RzL3RjZzogYWRkIHNpbXBsZSBjb21tcGFnZSB0ZXN0IGNhc2UKMjZjNDI0ZSBsaW51eC11
-c2VyOiBkZWFsIHdpdGggYWRkcmVzcyB3cmFwIGZvciBBUk1fQ09NTVBBR0Ugb24gMzIgYml0Cjg4
-MjVjYjEgbGludXgtdXNlcjogcHJvdmlkZSBmYWxsYmFjayBwZ2RfZmluZF9ob2xlIGZvciBiYXJl
-IGNocm9vdHMKCj09PSBPVVRQVVQgQkVHSU4gPT09CjEvMyBDaGVja2luZyBjb21taXQgODgyNWNi
-MTQ4ZmE4IChsaW51eC11c2VyOiBwcm92aWRlIGZhbGxiYWNrIHBnZF9maW5kX2hvbGUgZm9yIGJh
-cmUgY2hyb290cykKV0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzQ0OiBGSUxFOiBs
-aW51eC11c2VyL2VsZmxvYWQuYzoyMTE0Ogorc3RhdGljIHVpbnRwdHJfdCBwZ2RfZmluZF9ob2xl
-X2ZhbGxiYWNrKHVpbnRwdHJfdCBndWVzdF9zaXplLCB1aW50cHRyX3QgYnJrLCBsb25nIGFsaWdu
-KQoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5pbmdzLCA2MCBsaW5lcyBjaGVja2VkCgpQYXRjaCAx
-LzMgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVy
-cm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBz
-ZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KMi8zIENoZWNraW5nIGNvbW1pdCAyNmM0MjRl
-MzQ2ZGYgKGxpbnV4LXVzZXI6IGRlYWwgd2l0aCBhZGRyZXNzIHdyYXAgZm9yIEFSTV9DT01NUEFH
-RSBvbiAzMiBiaXQpCjMvMyBDaGVja2luZyBjb21taXQgYTUzN2UxM2RiZWE1ICh0ZXN0cy90Y2c6
-IGFkZCBzaW1wbGUgY29tbXBhZ2UgdGVzdCBjYXNlKQpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3Ig
-ZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQgdXBkYXRpbmc/CiMyODogCm5l
-dyBmaWxlIG1vZGUgMTAwNjQ0CgpFUlJPUjogVXNlIG9mIHZvbGF0aWxlIGlzIHVzdWFsbHkgd3Jv
-bmcsIHBsZWFzZSBhZGQgYSBjb21tZW50CiM1NzogRklMRTogdGVzdHMvdGNnL2FybS9jb21tcGFn
-ZS5jOjI1OgordHlwZWRlZiBpbnQgKGNtcHhjaGdfZm4pKGludCBvbGR2YWwsIGludCBuZXd2YWws
-IHZvbGF0aWxlIGludCAqcHRyKTsKCkVSUk9SOiBVc2Ugb2Ygdm9sYXRpbGUgaXMgdXN1YWxseSB3
-cm9uZywgcGxlYXNlIGFkZCBhIGNvbW1lbnQKIzYzOiBGSUxFOiB0ZXN0cy90Y2cvYXJtL2NvbW1w
-YWdlLmM6MzE6CisgICAgICAgICAgICAgICAgICAgICAgICAgICB2b2xhdGlsZSBpbnQ2NF90ICpw
-dHIpOwoKdG90YWw6IDIgZXJyb3JzLCAxIHdhcm5pbmdzLCA2OSBsaW5lcyBjaGVja2VkCgpQYXRj
-aCAzLzMgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNl
-IGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVy
-LCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCj09PSBPVVRQVVQgRU5EID09PQoKVGVz
-dCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxl
-IGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwNTI3MTAwNTQ2LjI5Mjk3LTEtYWxleC5i
-ZW5uZWVAbGluYXJvLm9yZy90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVt
-YWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5v
-cmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5j
-b20=
+On Wed, 27 May 2020 16:26:46 +0200
+Igor Mammedov <imammedo@redhat.com> wrote:
+
+> On Wed, 27 May 2020 15:06:28 +0200
+> Paolo Bonzini <pbonzini@redhat.com> wrote:
+> 
+> > On 27/05/20 14:25, Igor Mammedov wrote:  
+> > >>   (2) we loose a gigabyte page.    
+> > >           I'm not sure waht exactly we loose in this case.
+> > >           Lets assume we allocating guest 5G of continuous RAM using 1G huge pages,
+> > >           in this case I'd think that on host side MMIO overlay won't affect RAM blob
+> > >           on guest side pagetables will be fragmented due to MMIO holes, but guest still
+> > >           could use huge pages smaller ones in fragmented area and 1G where there is no fragmentation.    
+> > 
+> > Access to the 3G-4G area would not be able to use 1G EPT pages.  
+> Could it use 2Mb pages instead of 1Gb?
+> Do we really care about 1 gigabyte huge page in microvm intended usecase?
+> (fast starting VMs for microservices like FaaS, which unlikely would use much memory to begin with)
+
+my interest in having single memory region, is in possibility of drop in conversion to [nv|pc-dimm] later on
+without breaking ABI. (I'm not sure that we actually need it though)
+
+
+> > But why use 2G split instead of 3G?  There's only very little MMIO and
+> > no PCI hole (including no huge MMCONFIG BAR) on microvm.
+> > 
+> > Paolo
+> >   
+> 
+> 
+

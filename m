@@ -1,258 +1,176 @@
-Received: by 2002:a05:6214:92e:0:0:0:0 with SMTP id dk14csp659442qvb;
-        Wed, 27 May 2020 05:44:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyE/K9QA0JzEb3F8wdRHpWqcmX4nl7sqQBNoS3f+nVYGV/MF++8C6oQOCQeic/BHy/O1yXL
-X-Received: by 2002:a25:32d6:: with SMTP id y205mr10000228yby.396.1590583498815;
-        Wed, 27 May 2020 05:44:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590583498; cv=none;
+Received: by 2002:a05:6214:92e:0:0:0:0 with SMTP id dk14csp662956qvb;
+        Wed, 27 May 2020 05:50:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxxgPqJRRit9QGtw40bk2F81Ic3vcfcn0GsXNTyqqtb2KuyDcPtJmZz2Tzu34wbzK+LObAF
+X-Received: by 2002:a37:9c55:: with SMTP id f82mr3783777qke.225.1590583832847;
+        Wed, 27 May 2020 05:50:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590583832; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZX7dn+IuqwBVKoPtIWZ0cH3/vvl2mFN/xVAxp0egkp+iWM1Soq2ShDLd5vghHwfAr6
-         TU3Ntti4G60MHD7xEA9RF8Fv9Wqnn3gS5TjH1OBeuOmkMs5QrBfmpQvZr3iARvoOdqMw
-         BQ73K/qMmGlgZX46yLjw0P02ycHmihPNgH9qt8pXM5SyvOhLkPKANaPEpLBqpt+K1P0E
-         RHekV3KgjtZwMWHhM7NCylrQe99D29PEqTijrz2aGd0msUHHPFk0MDfqfd8JnC2NFF+1
-         72IUHJt5KVQmh/lTWzfTCyNYW0f+nzXVy8dnFIw1v6qFqkHX1ejqi7SfaOxwJw9oSdEJ
-         um/Q==
+        b=T2nKNhsUzhOnesk/BlhDeLQ//xs8NbcwuuprTk9XIgAonTPqr4MEYkpnYr12QPBnRO
+         Hq8zHFZ2K6nXUe3FENYza8He9EV+nPeXGG2gJJU2i2lsXew6D6zRSIAaRQq1LWhsSokG
+         QFjnYcZ7msme0Mz0ENZ7CpQR0BuWUNTFEC1OuGq/rYATk8EgNbphXbqjV/mtrG6pVPnX
+         o2uewbOaJPalV8E/FrXqtZR/maGufHV5sP0kMYtnlFLryPqo0ejOiihEwS0VDuVqMPcV
+         6EBHG7nj7+iwl0ShRpt1I0MrnbGdhmo2TiRdO3b92cu2V9EZR6HNVhz+RgUbTCkHTbMW
+         +Stg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=zjNgbv3vGsdMq1y0hslhcKT9xjILOJzDdojK6OEaJrA=;
-        b=Jo5eZllV4sjPF/0Tk6hHpNk1yxXc915spo39YiaYXM7dC5C314QYLvR0pVa0jueIoj
-         3X0AR6ZGc+8sFvO4OLgMMDc11eVJwVYUmwR0Ed15SPePKVqDXhJfhBlnU8RYm+zxbzye
-         gaieDPfO5QJjh5WdrC6BjnoqP8MfwtpOLjAtd2EOaWG18+5/BWSdk2ADuRqm6U2It5wD
-         MhBi3NJlLFJ3UVFD8/5Fl6cGjebppZ9i6jryki8fwiWfTCVDbeExv4+BQvh30TVz8ye4
-         tf5OwIwfYSrSQGPnV9bFkDHD9UI2cDoljhAdVbXYCjxKgmsnVuetwYLRtL5gw1eGBZlG
-         sXUA==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=cdrcJ4tWIfsVuxC8hlUvY3Vp2ojYRkqC5WIJtimHwTU=;
+        b=dIRFrekgR+QgOEs+4Kx52NaMGQUvybFhrDIpapLl90MUpUpcvEw2HVv1I7CWeWU3nj
+         pTkFQUxIZVf8c/Z4zyjaL7lNyZ/HMoN9E/mWeHdSrmJl1P5nD1RWgrCRdz51GPohzXIB
+         ND1Vq2KL3DVFtJAMWzG76fT92BUSSJ1NS/YrrwWhxRvA2FI58Zko8Bx8adEQw6LccSyC
+         JWQDHe6f6Zbt/e1HE/TSnME+sFHOeoo/sonn/cX9yG7kE4xVbjVvKEiawp+08hdJ8IeV
+         ipmyx0F3s7tAauqPqjI10tXyJdgY0bK/mD0PPGJpV6HhOGDuTP64CfpiITomGomSyt3E
+         ilug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Qb/9EV1S";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l1si4111480ybt.108.2020.05.27.05.44.58
+        by mx.google.com with ESMTPS id l9si1747388qke.12.2020.05.27.05.50.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 May 2020 05:44:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 27 May 2020 05:50:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54324 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Qb/9EV1S";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:43488 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jdvQY-0007B6-BR
-	for alex.bennee@linaro.org; Wed, 27 May 2020 08:44:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52762)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jdvVw-0008H1-Cm
+	for alex.bennee@linaro.org; Wed, 27 May 2020 08:50:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53816)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jdvPx-0006lz-1m
- for qemu-devel@nongnu.org; Wed, 27 May 2020 08:44:21 -0400
-Received: from 3.mo6.mail-out.ovh.net ([178.33.253.26]:38322)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jdvPv-0000xA-KR
- for qemu-devel@nongnu.org; Wed, 27 May 2020 08:44:20 -0400
-Received: from player778.ha.ovh.net (unknown [10.110.103.168])
- by mo6.mail-out.ovh.net (Postfix) with ESMTP id C3487215477
- for <qemu-devel@nongnu.org>; Wed, 27 May 2020 14:44:16 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player778.ha.ovh.net (Postfix) with ESMTPSA id 638F312C879E6;
- Wed, 27 May 2020 12:44:08 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-95G001e6d2c8b5-f5b1-41b8-a6e8-cee2ff1e4530,A19C442F5A36D79893466B97850BD964E95F9B50)
- smtp.auth=clg@kaod.org
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3] arm/aspeed: Rework NIC attachment
-Date: Wed, 27 May 2020 14:44:06 +0200
-Message-Id: <20200527124406.329503-1-clg@kaod.org>
-X-Mailer: git-send-email 2.25.4
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1jdvVp-0008Gp-Ly; Wed, 27 May 2020 08:50:25 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:53845)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1jdvVo-0003bv-KA; Wed, 27 May 2020 08:50:25 -0400
+Received: by mail-wm1-x344.google.com with SMTP id l26so2922266wme.3;
+ Wed, 27 May 2020 05:50:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=cdrcJ4tWIfsVuxC8hlUvY3Vp2ojYRkqC5WIJtimHwTU=;
+ b=Qb/9EV1SoXRumIdt451LiMfrP3palf0o3pCbV9EJDh3oixF08Q02mkpTauewUEiulH
+ ck+dIphz4ZcchcqM92LxsSkr06BwJitG8uPFcRkXohnZTV8fzTtR4zBLs1WxSnYVdpb2
+ y0vSjBImfDl24Rd3++BlCvQMJXJw5+2L+vv2XTu9VBTt2VsEbrXEYbw8tcswNWlNNZ1Z
+ 7BJKC5H9d1z9ektCQxwTuLCWYxuCdRKTdh+5wQWCLesRoBtkn1NuDBsY+7mpRYmS6KjL
+ IiPPPOTIMKf1dnaM5T5IN+I4xu5PgxPID4WARUl6KvPhv7bqbcZa9JzH6ieZNBVgnvsk
+ uoUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=cdrcJ4tWIfsVuxC8hlUvY3Vp2ojYRkqC5WIJtimHwTU=;
+ b=sh04wcIT0jMpTn9AYGtQyN/ObWlK0jSP48wzB8qsSSXD0JC+mzATfTiVlwOEaeYq3u
+ UjuFKmMwPFBlNSTSiH6+ZaCgm0fxW51rFkPKyAzwRNFmkpeDmshZsis5+e+QquiNaWn7
+ SQb7ZCyu8NrradIkmBqUMBsyEeMxfo5vQPRXrhAlqd7lcvFuUOMfcRofLrNy/d+TKvNX
+ 7zOVtSgivC86lIhHAhckhi9SRhZOEaccVhUXXmP9HR+4LCMzpUz7rxt0RDAqrB8rzOBl
+ QmdT9T5deESXKqxT8R2FtQsIpMeBikv3140WxK3jioL+2TNRcBfTn0OzGzRNWY6JANLm
+ lYrQ==
+X-Gm-Message-State: AOAM533ZdJEtor3ABTyJcD58+3BryujQjNcSYxIowggKvTI+2jQtkAKT
+ Akk1e0eT3nNs0o4ZOmSl8EA=
+X-Received: by 2002:a1c:bb05:: with SMTP id l5mr3989327wmf.141.1590583819233; 
+ Wed, 27 May 2020 05:50:19 -0700 (PDT)
+Received: from localhost ([51.15.41.238])
+ by smtp.gmail.com with ESMTPSA id m23sm2612038wmg.45.2020.05.27.05.50.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 May 2020 05:50:17 -0700 (PDT)
+Date: Wed, 27 May 2020 13:50:16 +0100
+From: Stefan Hajnoczi <stefanha@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Subject: Re: [PATCH 0/4] memory: Add memory_region_msync() & make NVMe
+ emulated device generic
+Message-ID: <20200527125016.GF29137@stefanha-x1.localdomain>
+References: <20200508062456.23344-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 6962565027480177425
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedruddvgedghedtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffogggtgfesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeegtddutdeugeefvefhhfdvgefhjeffvedvtefhkeeiheffhfdvffelleegvdenucffohhmrghinhepohiilhgrsghsrdhorhhgnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeejkedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=178.33.253.26; envelope-from=clg@kaod.org;
- helo=3.mo6.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/27 08:44:17
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="vKFfOv5t3oGVpiF+"
+Content-Disposition: inline
+In-Reply-To: <20200508062456.23344-1-philmd@redhat.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=stefanha@gmail.com; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iHyo6wD0bFpU
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Beata Michalska <beata.michalska@linaro.org>, qemu-block@nongnu.org,
+ qemu-devel@nongnu.org, Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
+ Keith Busch <kbusch@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9n10P05L1gN0
 
-The number of MACs supported by an Aspeed SoC is defined by "macs_num"
-under the SoC model, that is two for the AST2400 and AST2500 and four
-for the AST2600. The model initializes the maximum number of supported
-MACs but the number of realized devices is capped by the number of
-network device back-ends defined on the command line. This can leave
-unrealized devices hanging around in the QOM composition tree.
 
-Modify the machine initialization to define which MACs are attached to
-a network device back-end using a bit-field property "macs-mask" and
-let the SoC realize all network devices.
+--vKFfOv5t3oGVpiF+
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-The default setting of "macs-mask" is "use MAC0" only, which works for
-all our AST2400 and AST2500 machines. The AST2600 machines have
-different configurations. The AST2600 EVB machine activates MAC1, MAC2
-and MAC3 and the Tacoma BMC machine activates MAC2.
+On Fri, May 08, 2020 at 08:24:52AM +0200, Philippe Mathieu-Daud=E9 wrote:
+> Let the NVMe emulated device be target-agnostic.
+>=20
+> It is not clear if dccvap_writefn() really needs
+> memory_region_writeback() or could use memory_region_msync().
+>=20
+> Philippe Mathieu-Daud=E9 (4):
+>   memory: Rename memory_region_do_writeback -> memory_region_writeback
+>   memory: Extract memory_region_msync() from memory_region_writeback()
+>   hw/block: Let the NVMe emulated device be target-agnostic
+>   exec: Rename qemu_ram_writeback() as qemu_ram_msync()
+>=20
+>  include/exec/memory.h   | 15 +++++++++++++--
+>  include/exec/ram_addr.h |  4 ++--
+>  exec.c                  |  2 +-
+>  hw/block/nvme.c         |  6 ++----
+>  memory.c                | 12 +++++++++---
+>  target/arm/helper.c     |  2 +-
+>  hw/block/Makefile.objs  |  2 +-
+>  7 files changed, 29 insertions(+), 14 deletions(-)
 
-Inactive MACs will have no peer and QEMU may warn the user with :
+Thanks, applied to my block tree with Paolo's Acked-by:
+https://github.com/stefanha/qemu/commits/block
 
-    qemu-system-arm: warning: nic ftgmac100.0 has no peer
-    qemu-system-arm: warning: nic ftgmac100.1 has no peer
-    qemu-system-arm: warning: nic ftgmac100.3 has no peer
+Stefan
 
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
----
+--vKFfOv5t3oGVpiF+
+Content-Type: application/pgp-signature; name="signature.asc"
 
- To be applied on top of patch :
+-----BEGIN PGP SIGNATURE-----
 
- "arm/aspeed: Compute the number of CPUs from the SoC definition" 
- http://patchwork.ozlabs.org/project/qemu-devel/patch/20200519091631.1006073-1-clg@kaod.org/
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl7OYggACgkQnKSrs4Gr
+c8hgRgf8CC2QMO6EXSDjEInBPXt7ihx86t6J0HKkhspJOMYpMapcV0JSSx1/IWQd
+AAUbxr9JbVNgZGImgJkSkBzeZ0JernnPpuQSPs/S1AaoeNUZp0TunXbfFFy2zoL+
+oF1R8KackG02+SktcfQ7vWvyG0NbuGam172T182qI31MQkNJ+TBBwfR9rludjfBo
+0+QkP5KmYcg/k53ryHGkmguFoZJ+VtGk4q89PH+A0lKTIEqvY6sXBGXb5EVWJYA3
+igazLJGMqQhcFF6voi1Vwn+292geGb4IVHyE1qE4pewEFoMTj0SojvRAUx0c+XSc
+oHyMC0td5UotWyrVS/CPChcovByAYw==
+=ZKmE
+-----END PGP SIGNATURE-----
 
- Markus, do you mind taking this patch in your QOM series also ?
-
- Thanks,
-
- C.
-
- include/hw/arm/aspeed.h |  6 ++++++
- hw/arm/aspeed.c         | 13 +++++++++++++
- hw/arm/aspeed_ast2600.c |  3 +--
- hw/arm/aspeed_soc.c     |  3 +--
- 4 files changed, 21 insertions(+), 4 deletions(-)
-
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index 18521484b90e..95b4daece86d 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -23,6 +23,11 @@ typedef struct AspeedMachine {
-     bool mmio_exec;
- } AspeedMachine;
- 
-+#define ASPEED_MAC0_ON   (1 << 0)
-+#define ASPEED_MAC1_ON   (1 << 1)
-+#define ASPEED_MAC2_ON   (1 << 2)
-+#define ASPEED_MAC3_ON   (1 << 3)
-+
- #define ASPEED_MACHINE_CLASS(klass) \
-      OBJECT_CLASS_CHECK(AspeedMachineClass, (klass), TYPE_ASPEED_MACHINE)
- #define ASPEED_MACHINE_GET_CLASS(obj) \
-@@ -39,6 +44,7 @@ typedef struct AspeedMachineClass {
-     const char *fmc_model;
-     const char *spi_model;
-     uint32_t num_cs;
-+    uint32_t macs_mask;
-     void (*i2c_init)(AspeedBoardState *bmc);
- } AspeedMachineClass;
- 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index fd5cc542a584..f8f3ef89d320 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -258,6 +258,7 @@ static void aspeed_machine_init(MachineState *machine)
-     DriveInfo *drive0 = drive_get(IF_MTD, 0, 0);
-     ram_addr_t max_ram_size;
-     int i;
-+    NICInfo *nd = &nd_table[0];
- 
-     bmc = g_new0(AspeedBoardState, 1);
- 
-@@ -277,6 +278,14 @@ static void aspeed_machine_init(MachineState *machine)
-     object_property_set_uint(OBJECT(&bmc->soc), ram_size, "ram-size",
-                              &error_fatal);
- 
-+    for (i = 0; i < sc->macs_num; i++) {
-+        if ((amc->macs_mask & (1 << i)) && nd->used) {
-+            qemu_check_nic_model(nd, TYPE_FTGMAC100);
-+            qdev_set_nic_properties(DEVICE(&bmc->soc.ftgmac100[i]), nd);
-+            nd++;
-+        }
-+    }
-+
-     object_property_set_int(OBJECT(&bmc->soc), amc->hw_strap1, "hw-strap1",
-                             &error_abort);
-     object_property_set_int(OBJECT(&bmc->soc), amc->hw_strap2, "hw-strap2",
-@@ -556,12 +565,14 @@ static int aspeed_soc_num_cpus(const char *soc_name)
- static void aspeed_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
- 
-     mc->init = aspeed_machine_init;
-     mc->no_floppy = 1;
-     mc->no_cdrom = 1;
-     mc->no_parallel = 1;
-     mc->default_ram_id = "ram";
-+    amc->macs_mask = ASPEED_MAC0_ON;
- 
-     aspeed_machine_class_props_init(oc);
- }
-@@ -680,6 +691,7 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
-     amc->fmc_model = "w25q512jv";
-     amc->spi_model = "mx66u51235f";
-     amc->num_cs    = 1;
-+    amc->macs_mask  = ASPEED_MAC1_ON | ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-     amc->i2c_init  = ast2600_evb_i2c_init;
-     mc->default_ram_size = 1 * GiB;
-     mc->default_cpus = mc->min_cpus = mc->max_cpus =
-@@ -698,6 +710,7 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
-     amc->fmc_model = "mx66l1g45g";
-     amc->spi_model = "mx66l1g45g";
-     amc->num_cs    = 2;
-+    amc->macs_mask  = ASPEED_MAC2_ON;
-     amc->i2c_init  = witherspoon_bmc_i2c_init; /* Same board layout */
-     mc->default_ram_size = 1 * GiB;
-     mc->default_cpus = mc->min_cpus = mc->max_cpus =
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index c6821b332257..b912d19f809f 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -461,8 +461,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     }
- 
-     /* Net */
--    for (i = 0; i < nb_nics && i < sc->macs_num; i++) {
--        qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]);
-+    for (i = 0; i < sc->macs_num; i++) {
-         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed",
-                                  &err);
-         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realized",
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index e6f4b59134ba..3ec1257c140b 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -404,8 +404,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-     }
- 
-     /* Net */
--    for (i = 0; i < nb_nics && i < sc->macs_num; i++) {
--        qdev_set_nic_properties(DEVICE(&s->ftgmac100[i]), &nd_table[i]);
-+    for (i = 0; i < sc->macs_num; i++) {
-         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed",
-                                  &err);
-         object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "realized",
--- 
-2.25.4
-
+--vKFfOv5t3oGVpiF+--

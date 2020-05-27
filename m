@@ -1,180 +1,254 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1144880lfc;
-        Wed, 27 May 2020 07:55:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHp+MWKsWOXoSyj13QXYR7v38mZw7m7LVqPWMFpXMJdEmFj6oppzXYF6FDN0sfbouRsLmj
-X-Received: by 2002:ac8:3f77:: with SMTP id w52mr4481389qtk.161.1590591354780;
-        Wed, 27 May 2020 07:55:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590591354; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1186712lfc;
+        Wed, 27 May 2020 08:46:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzrc+opkU/+2JM3sMp9TEpBNMmbYd8UOQ3mxTmhLh6LxkCzCFwujzMLA+QwlUPUgQc8HwSD
+X-Received: by 2002:ac8:31f3:: with SMTP id i48mr4931019qte.128.1590594409347;
+        Wed, 27 May 2020 08:46:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590594409; cv=none;
         d=google.com; s=arc-20160816;
-        b=RXcJKBOsCqo0Ff3YSxtVqBeyrG6T9008WJ4xbzN/TISH+vzCVaHE6T9P31PLueYcQR
-         o46SU7u+k5a+lr5POxSkMOy4CIr5pPSpex3u4CMIJelHlxS33tkpYVLFkgBbgN3uZmO1
-         YGssB1sSt8L2mh9T5WGBu/HLfQ4zOjQezk1WBk46Uwkzhp7Y3KZaJBsYHy0YIwDHbho9
-         WmWJxoCUdbLb8ClATTCFs+Ak6znRtxArrskOzcpz7qphjbz67cV29mm+tRg5Zdb3aeJT
-         oea6RrwEUp/6WbJ+tRgmYUvRyOqP+3r/oMEMZI3iUt7oHnDxSsb3L2qvWZNgEbKvcIA2
-         MD5A==
+        b=Ug5SGgM9E4rumO3TjNSj0d9irSdcZn2slZkju7kDrUz96nf+oBuPn/g+rbaeDtpEAo
+         +98lnFubm/eWZ9yuBHHoSCIZ5wG0wljQ5Zxcrad8H1kD4BW9JHdqxXCU0n/Q10VEuYO2
+         EAV/T/8sWR0tg+HkIwbqoTozAS2FuQ1MlTMkdsI++I8OorOdW9iBsN2iSBb3eOIXya1z
+         5w3lqTEGsy+gGTmzDJxoezcR2jcAREfrIdzx7wb4rXlH2NUbLOY59DQHnv/MGQRYcyOO
+         khCXJKSwqS7B+R3opjoGlRU9mObTO3bg/i6diaQmf42rog3R4sMIJ30y5L+7F1ptV6i3
+         gYMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=lEeSe1IRBQZQTY6sUBsPJ4KCOPChUURqmIR/pMWuNyA=;
-        b=EBVDhIpBbrkdTcduQr3gAfYiSHOnXQa8Bh/9ZPMbv57iYFrqfmAekDkCKaA5RoBh6Q
-         yLevac4l5RluSCnMtjAePq5VE7bQjZMSOolhMCaY+tFuyQhKT6s11AHG0SPFN+GzdKQL
-         X2jKooDgu9TB6byCTQNlA0AUVSIp4Hz5DOUHUIvyAw/TuC0wG7gKGx51HM3V9hDvwWlv
-         ANsLGAwAsodxihVCHkI8poERkdAGITXbwPBPzxigAQxvWhCoa0H4cam51z524CETDF16
-         7VqaBLwpBdt25AluJMEd8MVRTXRz3cKe7QUBTxSOfSgmq91IISqvKtWhbabAPfK6fFcu
-         7y9A==
+         :message-id:from:references:to:subject;
+        bh=HqnYX+YGGCx7h6fdWbWJO3IQFBbMrWtGhF1yIAlV0j0=;
+        b=hzsfbuFu8OZHK/FIfc5q25/f/tiN+O6rFOhJd0tN3SULhBwj7XgH/jWOqgOwb92Pu6
+         FwE1QZZGNJCjOwn1AyDulC67aJJeQYtypsPFntpWXyuhFNPa6CYZDHw5TOd+LWav+Jmj
+         OvvDJHSnXdyLkD/awaIwwjZo/F8/07JdtZcO97QeRgc829e7plYH3G4rrq5xCD8GQ1tg
+         Qc2XRGLXc31KcWkKLRaZCbtOoqp3enJ5xEIV52WK8YuxXY5vWgU8dER/5/Y0aL5k3dft
+         K0oaBkVxJ2cw/K4ghWB+7aR1CKeTNarHv2+cuCk5lUNOMY208B9fU62xzs9eE9pysNfZ
+         NYCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YRhpyv3d;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5si1734410qte.239.2020.05.27.07.55.54
+        by mx.google.com with ESMTPS id p3si1805139qtj.164.2020.05.27.08.46.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 May 2020 07:55:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 27 May 2020 08:46:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YRhpyv3d;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46728 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42030 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jdxTG-0002oN-6A
-	for alex.bennee@linaro.org; Wed, 27 May 2020 10:55:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44436)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jdyGW-0006uZ-O5
+	for alex.bennee@linaro.org; Wed, 27 May 2020 11:46:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52778)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jdxS7-00017Z-EO
- for qemu-devel@nongnu.org; Wed, 27 May 2020 10:54:43 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:43534
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jdxS6-0007nn-Cm
- for qemu-devel@nongnu.org; Wed, 27 May 2020 10:54:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590591281;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lEeSe1IRBQZQTY6sUBsPJ4KCOPChUURqmIR/pMWuNyA=;
- b=YRhpyv3desd4DVSob51BuZRPBVCqumF+2hTYCMafsR4Ci0DzV0SgKZGKOLP4qPGKtdEUpK
- jRvkP3xLj81FqV1ZyhGxZzobW0XO/1nmcgZLohT1cHmMFKoNvsFukh2zjj0tVOU/GBpoTB
- L1SVsRHXl/kLv7o/RHKclAiND+WoBcU=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-464-xwDPXHVbPZmxBwn3B1EBfQ-1; Wed, 27 May 2020 10:54:40 -0400
-X-MC-Unique: xwDPXHVbPZmxBwn3B1EBfQ-1
-Received: by mail-ed1-f70.google.com with SMTP id m7so10228581edr.5
- for <qemu-devel@nongnu.org>; Wed, 27 May 2020 07:54:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=lEeSe1IRBQZQTY6sUBsPJ4KCOPChUURqmIR/pMWuNyA=;
- b=Zv2BnbX6KffvrTaRZqS2D24iuEPvxwOcZN6zu76jL0P4Otd5EeWOawiyr+FAqLS8ln
- t7ARitiaZKKbrYOvcoCrl3mEbdSA1ifh4npfn3bX8QARxtvceQZmV6aCr0AKDG0L4sMo
- 59Km/dcVMvHsrOk4MvLYt+wS8Z473hJiVFYtDHBglw/gRqc/X2D4y8HPeOOegIrklE3K
- Sa0HRwmJ7D4hr/y4rRbGuIXhUv3IlH2eUrFewPBiaIwf0ngt1BIx9VoREnKWg3jXFUjY
- 5xQBURwZ0T4vuZQaUIF26dEns2nd2DXktxTXwAv/WB2kxdg4eR+GhKD/azookechGLNG
- F1lw==
-X-Gm-Message-State: AOAM530lePeno5gz91/AuGnUMDsobjVEb4tFwUmti66oPSy7apBTM/jx
- GS9dQZ+LbN2bAYhOCONZo3eveZ63uFHwFz9tn0OoXJwSA6QLe9S0aHQoIfp0udziRiZ21fEvyvN
- ioSYN8gw6a0JWBcc=
-X-Received: by 2002:a17:906:bce6:: with SMTP id
- op6mr6320880ejb.337.1590591279023; 
- Wed, 27 May 2020 07:54:39 -0700 (PDT)
-X-Received: by 2002:a17:906:bce6:: with SMTP id
- op6mr6320854ejb.337.1590591278625; 
- Wed, 27 May 2020 07:54:38 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:3c1c:ffba:c624:29b8?
- ([2001:b07:6468:f312:3c1c:ffba:c624:29b8])
- by smtp.gmail.com with ESMTPSA id f4sm3124661ejk.17.2020.05.27.07.54.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 May 2020 07:54:38 -0700 (PDT)
-Subject: Re: [PATCH v3 14/22] microvm: use 2G split unconditionally
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20200520132003.9492-1-kraxel@redhat.com>
- <20200520132003.9492-15-kraxel@redhat.com>
- <20200521112921.641f12bb@redhat.com>
- <20200525114508.hhvyzjiqja6knz6l@sirius.home.kraxel.org>
- <20200525183615.5f8e67d3@redhat.com>
- <20200526044839.bncj6iltugnzgfmy@sirius.home.kraxel.org>
- <20200527142545.32e91049@redhat.com>
- <58ced517-1ad4-c895-afe6-fec690791f4f@redhat.com>
- <20200527162646.694b2d47@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <cdeb8406-eb41-160e-817a-010241ccd457@redhat.com>
-Date: Wed, 27 May 2020 16:54:34 +0200
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jdyGO-0006qj-Im
+ for qemu-arm@nongnu.org; Wed, 27 May 2020 11:46:40 -0400
+Received: from 8.mo69.mail-out.ovh.net ([46.105.56.233]:52332)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jdyGM-0002tU-KZ
+ for qemu-arm@nongnu.org; Wed, 27 May 2020 11:46:40 -0400
+Received: from player787.ha.ovh.net (unknown [10.110.115.231])
+ by mo69.mail-out.ovh.net (Postfix) with ESMTP id D93008A1F4
+ for <qemu-arm@nongnu.org>; Wed, 27 May 2020 17:46:34 +0200 (CEST)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player787.ha.ovh.net (Postfix) with ESMTPSA id 7B4AD12F3CB20;
+ Wed, 27 May 2020 15:46:26 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R00189d38435-8926-46dd-8a79-012d20428b63,A19C442F5A36D79893466B97850BD964E95F9B50)
+ smtp.auth=clg@kaod.org
+Subject: Re: [PATCH v3] arm/aspeed: Rework NIC attachment
+To: Markus Armbruster <armbru@redhat.com>
+References: <20200527124406.329503-1-clg@kaod.org>
+ <87lfldzehq.fsf@dusky.pond.sub.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <d862f70c-aebd-c1f0-ded6-79a85fbc82f2@kaod.org>
+Date: Wed, 27 May 2020 17:46:25 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200527162646.694b2d47@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <87lfldzehq.fsf@dusky.pond.sub.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/27 05:46:19
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Ovh-Tracer-Id: 10041338322796055331
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedruddvgedgkeefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeffhfffudegjeeggedugeefgeeifffhueethefhfeekkedvkefggfelteefuddvteenucffohhmrghinhepohiilhgrsghsrdhorhhgnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeekjedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=46.105.56.233; envelope-from=clg@kaod.org;
+ helo=8.mo69.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/27 11:46:36
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ac3ER03S1T47
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9IiKN110g3yp
 
-On 27/05/20 16:26, Igor Mammedov wrote:
-> On Wed, 27 May 2020 15:06:28 +0200
-> Paolo Bonzini <pbonzini@redhat.com> wrote:
+On 5/27/20 3:36 PM, Markus Armbruster wrote:
+> Cédric Le Goater <clg@kaod.org> writes:
 > 
->> On 27/05/20 14:25, Igor Mammedov wrote:
->>>>   (2) we loose a gigabyte page.  
->>>           I'm not sure waht exactly we loose in this case.
->>>           Lets assume we allocating guest 5G of continuous RAM using 1G huge pages,
->>>           in this case I'd think that on host side MMIO overlay won't affect RAM blob
->>>           on guest side pagetables will be fragmented due to MMIO holes, but guest still
->>>           could use huge pages smaller ones in fragmented area and 1G where there is no fragmentation.  
+>> The number of MACs supported by an Aspeed SoC is defined by "macs_num"
+>> under the SoC model, that is two for the AST2400 and AST2500 and four
+>> for the AST2600. The model initializes the maximum number of supported
+>> MACs but the number of realized devices is capped by the number of
+>> network device back-ends defined on the command line. This can leave
+>> unrealized devices hanging around in the QOM composition tree.
 >>
->> Access to the 3G-4G area would not be able to use 1G EPT pages.
-> Could it use 2Mb pages instead of 1Gb?
+>> Modify the machine initialization to define which MACs are attached to
+>> a network device back-end using a bit-field property "macs-mask" and
+>> let the SoC realize all network devices.
+>>
+>> The default setting of "macs-mask" is "use MAC0" only, which works for
+>> all our AST2400 and AST2500 machines. The AST2600 machines have
+>> different configurations. The AST2600 EVB machine activates MAC1, MAC2
+>> and MAC3 and the Tacoma BMC machine activates MAC2.
+> 
+> Let's be more clear on what this means, and "This is actually a device
+> modelling fix for these two machines."  Okay?
 
-Yes, probably a mix of 2 MiB pages and 4 KiB pages around the memslot
-splits.
+Well, I guess so. It's a fix in the way we attach network backends to 
+the MACs of the machines. 
 
-> Do we really care about 1 gigabyte huge page in microvm intended usecase?
-> (fast starting VMs for microservices like FaaS, which unlikely would use much memory to begin with)
+On the tacoma-bmc, we had to use '-nic <foo> -nic <bar> -nic <good one>' 
+to configure the MAC2 in use by the machine. Which was dubious.
 
-I honestly don't think it's measurable, but at least in theory we care
-because such workloads could have more TLB misses (relative to the
-execution time) than long-lasting VMs.
+Now, a single -nic is enough.
 
-Paolo
+>> Inactive MACs will have no peer and QEMU may warn the user with :
+>>
+>>     qemu-system-arm: warning: nic ftgmac100.0 has no peer
+>>     qemu-system-arm: warning: nic ftgmac100.1 has no peer
+>>     qemu-system-arm: warning: nic ftgmac100.3 has no peer
+>>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> 
+> Here's the "info qom-tree" change for tacoma-bmc:
+> 
+>      /machine (tacoma-bmc-machine)
+>        /peripheral (container)
+>        /peripheral-anon (container)
+>        /soc (ast2600-a1)
+>          [...]
+>          /ftgmac100[0] (ftgmac100)
+>            /ftgmac100[0] (qemu:memory-region)
+>          /ftgmac100[1] (ftgmac100)
+>     +      /ftgmac100[0] (qemu:memory-region)
+>          /ftgmac100[2] (ftgmac100)
+>     +      /ftgmac100[0] (qemu:memory-region)
+>          /ftgmac100[3] (ftgmac100)
+>     +      /ftgmac100[0] (qemu:memory-region)
 
+Yes. All are realized now.
+
+>          [...]
+>          /mii[0] (aspeed-mmi)
+>            /aspeed-mmi[0] (qemu:memory-region)
+>          /mii[1] (aspeed-mmi)
+>     +      /aspeed-mmi[0] (qemu:memory-region)
+>          /mii[2] (aspeed-mmi)
+>     +      /aspeed-mmi[0] (qemu:memory-region)
+>          /mii[3] (aspeed-mmi)
+>     +      /aspeed-mmi[0] (qemu:memory-region)
+
+Same for the MMI interfaces on AST2600.
+
+> These changes are due to realizing MAC1, MAC2, MAC3.  Looks good.
+> 
+> Here's "info qtree":
+> 
+>        dev: ftgmac100, id ""
+>          gpio-out "sysbus-irq" 1
+>          aspeed = true
+>     -    mac = "52:54:00:12:34:56"
+>     -    netdev = "hub0port0"
+>     +    mac = "52:54:00:12:34:57"
+>     +    netdev = ""
+>          mmio 000000001e660000/0000000000002000
+>        dev: ftgmac100, id ""
+>     -    aspeed = false
+>     -    mac = "00:00:00:00:00:00"
+>     +    gpio-out "sysbus-irq" 1
+>     +    aspeed = true
+>     +    mac = "52:54:00:12:34:58"
+>          netdev = ""
+>     +    mmio 000000001e680000/0000000000002000
+>        dev: ftgmac100, id ""
+>     -    aspeed = false
+>     -    mac = "00:00:00:00:00:00"
+>     -    netdev = ""
+>     +    gpio-out "sysbus-irq" 1
+>     +    aspeed = true
+>     +    mac = "52:54:00:12:34:56"
+>     +    netdev = "hub0port0"
+>     +    mmio 000000001e670000/0000000000002000
+>        dev: ftgmac100, id ""
+>     -    aspeed = false
+>     -    mac = "00:00:00:00:00:00"
+>     +    gpio-out "sysbus-irq" 1
+>     +    aspeed = true
+>     +    mac = "52:54:00:12:34:59"
+>          netdev = ""
+>     +    mmio 000000001e690000/0000000000002000
+>        [...]
+>        dev: aspeed-mmi, id ""
+>          mmio 000000001e650000/0000000000000008
+>        dev: aspeed-mmi, id ""
+>     +    mmio 000000001e650008/0000000000000008
+>        dev: aspeed-mmi, id ""
+>     +    mmio 000000001e650010/0000000000000008
+>        dev: aspeed-mmi, id ""
+>     +    mmio 000000001e650018/0000000000000008
+> 
+> Here we can see the network backend now gets connected to MAC2 instead
+> of MAC0.
+
+yes.
+
+With only one nic on the command line, the backend was attached to the 
+first (unused) MAC0 of the machine and now it is attached to the first 
+active MAC2 of the machine.
+
+> 
+> This is without any networking-related options, i.e. we get just the
+> single default network backend.
+> 
+>> ---
+>>
+>>  To be applied on top of patch :
+>>
+>>  "arm/aspeed: Compute the number of CPUs from the SoC definition" 
+>>  http://patchwork.ozlabs.org/project/qemu-devel/patch/20200519091631.1006073-1-clg@kaod.org/
+>>
+>>  Markus, do you mind taking this patch in your QOM series also ?
+> 
+> On the contrary!
+> 
+> I'll work my "info qom-tree" and "info qtree" diffs into the commit
+> message, if you don't mind.
+
+Sure. 
+
+Thanks,
+
+C. 

@@ -1,113 +1,117 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id m129sm1971380wmf.2.2020.05.27.03.05.47
+        by smtp.gmail.com with ESMTPSA id t6sm2202636wma.4.2020.05.27.03.05.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 May 2020 03:05:47 -0700 (PDT)
+        Wed, 27 May 2020 03:05:50 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id DADDD1FF87;
-	Wed, 27 May 2020 11:05:46 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 479B81FF8F;
+	Wed, 27 May 2020 11:05:47 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH  v1 1/3] linux-user: provide fallback pgd_find_hole for bare chroots
-Date: Wed, 27 May 2020 11:05:44 +0100
-Message-Id: <20200527100546.29297-2-alex.bennee@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH  v1 3/3] tests/tcg: add simple commpage test case
+Date: Wed, 27 May 2020 11:05:46 +0100
+Message-Id: <20200527100546.29297-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200527100546.29297-1-alex.bennee@linaro.org>
 References: <20200527100546.29297-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 2lw6I5koS7Nn
+X-TUID: k8gKiJ3/VHN9
 
-When running QEMU out of a chroot environment we may not have access
-to /proc/self/maps. As there is no other "official" way to introspect
-our memory map we need to fall back to the original technique of
-repeatedly trying to mmap an address range until we find one that
-works.
+The COMMPAGE are a number of kernel provided user-space routines for
+32 bit ARM systems. Add a basic series of smoke tests to ensure it is
+working as it should.
 
-Fortunately it's not quite as ugly as the original code given we
-already re-factored the complications of dealing with the
-ARM_COMMPAGE. We do make an attempt to skip over brk() which is about
-the only concrete piece of information we have about the address map
-at this moment.
-
-Fixes: ee9474303
-Reported-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- linux-user/elfload.c | 48 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
+ tests/tcg/arm/commpage.c      | 61 +++++++++++++++++++++++++++++++++++
+ tests/tcg/arm/Makefile.target |  2 ++
+ 2 files changed, 63 insertions(+)
+ create mode 100644 tests/tcg/arm/commpage.c
 
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 01a9323a637..d6027867a1a 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -2099,6 +2099,50 @@ static void pgb_have_guest_base(const char *image_name, abi_ulong guest_loaddr,
-     }
- }
- 
-+/**
-+ * pgd_find_hole_fallback: potential mmap address
-+ * @guest_size: size of available space
-+ * @brk: location of break
-+ * @align: memory alignment
+diff --git a/tests/tcg/arm/commpage.c b/tests/tcg/arm/commpage.c
+new file mode 100644
+index 00000000000..c76e70cb8bd
+--- /dev/null
++++ b/tests/tcg/arm/commpage.c
+@@ -0,0 +1,61 @@
++/*
++ * Verify the COMMPAGE emulation
 + *
-+ * This is a fallback method for finding a hole in the host address
-+ * space if we don't have the benefit of being able to access
-+ * /proc/self/map. It can potentially take a very long time as we can
-+ * only dumbly iterate up the host address space seeing if the
-+ * allocation would work.
++ * The ARM commpage is a set of user space helper functions provided
++ * by the kernel in an effort to ease portability of user space code
++ * between different CPUs with potentially different capabilities. It
++ * is a 32 bit invention and similar to the vdso segment in many ways.
++ *
++ * The ABI is documented in the Linux kernel:
++ *     Documentation/arm/kernel_userspace_helpers.rst
++ *
++ * Copyright (c) 2020 Linaro Ltd
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
-+static uintptr_t pgd_find_hole_fallback(uintptr_t guest_size, uintptr_t brk, long align)
++
++#include <stdlib.h>
++#include <stdio.h>
++#include <stdint.h>
++
++#define ARM_COMMPAGE      (0xffff0f00u)
++#define ARM_KUSER_VERSION (*(int32_t *)(ARM_COMMPAGE + 0xfc))
++typedef void * (get_tls_fn)(void);
++#define ARM_KUSER_GET_TLS (*(get_tls_fn *)(ARM_COMMPAGE + 0xe0))
++typedef int (cmpxchg_fn)(int oldval, int newval, volatile int *ptr);
++#define ARM_KUSER_CMPXCHG (*(cmpxchg_fn *)(ARM_COMMPAGE + 0xc0))
++typedef void (dmb_fn)(void);
++#define ARM_KUSER_DMB (*(dmb_fn *)(ARM_COMMPAGE + 0xa0))
++typedef int (cmpxchg64_fn)(const int64_t *oldval,
++                           const int64_t *newval,
++                           volatile int64_t *ptr);
++#define ARM_KUSER_CMPXCHG64 (*(cmpxchg64_fn *)(ARM_COMMPAGE + 0x60))
++
++#define fail_unless(x)                                                  \
++    do {                                                                \
++        if (!(x)) {                                                     \
++            fprintf(stderr, "FAILED at %s:%d\n", __FILE__, __LINE__);   \
++            exit(EXIT_FAILURE);                                         \
++        }                                                               \
++    } while (0)
++
++
++int main(int argc, char *argv[argc])
 +{
-+    uintptr_t base;
++    void *kuser_tls;
++    int val = 1;
++    const int64_t oldval = 1, newval = 2;
++    int64_t val64 = 1;
 +
-+    /* Start at the bottom and work our way up */
-+    base = mmap_min_addr;
-+
-+    while (true) {
-+        uintptr_t align_start, end;
-+        align_start = ROUND_UP(base, align);
-+        end = align_start + guest_size;
-+
-+        /* if brk is anywhere in the range give ourselves some room to grow. */
-+        if (align_start <= brk && brk < end) {
-+            base += 16 * MiB;
-+            continue;
-+        } else if (align_start + guest_size < align_start) {
-+            /* we have run out of space */
-+            return -1;
-+        } else {
-+            int flags = MAP_ANONYMOUS | MAP_PRIVATE | MAP_NORESERVE | MAP_FIXED;
-+            void * mmap_start = mmap((void *) align_start, guest_size,
-+                                     PROT_NONE, flags, -1, 0);
-+            if (mmap_start != MAP_FAILED) {
-+                munmap((void *) align_start, guest_size);
-+                return (uintptr_t) mmap_start;
-+            }
-+            base += qemu_host_page_size;
-+        }
-+    }
++    fail_unless(ARM_KUSER_VERSION == 0x5);
++    kuser_tls = ARM_KUSER_GET_TLS();
++    printf("TLS = %p\n", kuser_tls);
++    fail_unless(kuser_tls != 0);
++    fail_unless(ARM_KUSER_CMPXCHG(1, 2, &val) == 0);
++    printf("val = %d\n", val);
++    /* this is a crash test, not checking an actual barrier occurs */
++    ARM_KUSER_DMB();
++    fail_unless(ARM_KUSER_CMPXCHG64(&oldval, &newval, &val64) == 0);
++    printf("val64 = %lld\n", val64);
++    return 0;
 +}
-+
- /* Return value for guest_base, or -1 if no hole found. */
- static uintptr_t pgb_find_hole(uintptr_t guest_loaddr, uintptr_t guest_size,
-                                long align)
-@@ -2114,6 +2158,10 @@ static uintptr_t pgb_find_hole(uintptr_t guest_loaddr, uintptr_t guest_size,
-     /* Read brk after we've read the maps, which will malloc. */
-     brk = (uintptr_t)sbrk(0);
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index 11c39c601ea..3da09a38be7 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -68,6 +68,8 @@ run-semiconsole-arm: semiconsole-arm
+ run-plugin-semiconsole-arm-with-%:
+ 	$(call skip-test, $<, "MANUAL ONLY")
  
-+    if (!maps) {
-+        return pgd_find_hole_fallback(guest_size, brk, align);
-+    }
++ARM_TESTS += commpage
 +
-     /* The first hole is before the first map entry. */
-     this_start = mmap_min_addr;
+ TESTS += $(ARM_TESTS)
  
+ # On ARM Linux only supports 4k pages
 -- 
 2.20.1

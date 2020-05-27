@@ -1,203 +1,113 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp904567lfc;
-        Wed, 27 May 2020 02:28:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJydYLalSBCXUTHZ45gTugfMyyN1SEqSjpmvXtM27UgoGfdfkcWzJC1Zsu1Gr5a5CDGMq4/B
-X-Received: by 2002:a25:ba88:: with SMTP id s8mr8074062ybg.312.1590571682753;
-        Wed, 27 May 2020 02:28:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590571682; cv=none;
-        d=google.com; s=arc-20160816;
-        b=zRCseO9/6mDGSsaNJ+0gScavBW/+eIpr7/NBjUdY7xx+wCShhrOaGW+NpwP1C8dmZa
-         PuegtRueEbDbIrEKHXwNiRZ/HZx8nt8aldEmIm3JVfM6yKg97V547q4wR9aDEqJVsguo
-         zHH3fh2Ya5/nC+ZQTb7PiVU+WSYZMdkTJiVNRdVYo81379IqAom+9BX0jBrYrsIaA8lT
-         h1/uGC1Q4+6lWEYxi+7km1qnnCr/Fgsg9XcRx/CFn+VKIDNGZEyfTwpgL1iCQtjsIjKD
-         Fek+kSw42wcjIotHkQofKMd6FNT0CwRiccYaNHHLQkB9d7qLwPp/5U4IkBcBBEiMEqhq
-         Zzjw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:in-reply-to:date:references:subject:to:from
-         :dkim-signature;
-        bh=Gu7tCcOQndpVsfwYXHLEQEBaPS2sslrrMYmtb49HGwc=;
-        b=miI6Z6H/30EkkPGc1udadejYKTYP2uCM5DOIiUAGC4rxPBeKi1iukrHCNl1aFgDrAk
-         2gEZ4Zjl9nHEtbdlRYO5PoN2eB3qTyUoGf/1wqSelggIG0MpIAJ1tO4N2nerOuit32/3
-         IUOB2N3ZRENFFRc9FSYFQT6XQsCurZOp5aHFesiM3AUg8fRQMjhQtg+EiHkoQFoo/VLk
-         Vyjg4gYDJhuN2AezG55fyWlEej6f6mUX+g0MGhN34Z/zwgCSusZ1W30xMs0QYWQwKK4K
-         HFzKE7Sbu4PUyFwnjCS10ruS+1qvB6dHfC7xsrxWZyWXq5TTQ+g2b4r6pkFQH04U69zi
-         KuWA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S+bCZjFu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7si2565583ybq.181.2020.05.27.02.28.02
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 May 2020 02:28:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S+bCZjFu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36748 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jdsLy-0003P4-5C
-	for alex.bennee@linaro.org; Wed, 27 May 2020 05:28:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42568)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jdsLq-0003Mp-UH
- for qemu-arm@nongnu.org; Wed, 27 May 2020 05:27:54 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:21203
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jdsLq-000760-3g
- for qemu-arm@nongnu.org; Wed, 27 May 2020 05:27:54 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590571672;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Gu7tCcOQndpVsfwYXHLEQEBaPS2sslrrMYmtb49HGwc=;
- b=S+bCZjFuiAQdwlEXvKdUVdynKzm7PG2TnHzo518i+QICPtSXe7/kmOCiVkUnnsaySi7LfY
- zLuavOqTLfrxeyCBQ1dwO11JbG/tFxvgMTjCzG/3onxHg7g+yaKmzkk1p9FMtt1qgK+fD6
- eCqyLkVYl82iCcNKbycxH/ibTsfrqy4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-390-gPNSU_juPD2KXFyYqur7xg-1; Wed, 27 May 2020 05:27:49 -0400
-X-MC-Unique: gPNSU_juPD2KXFyYqur7xg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E73C81855A0D;
- Wed, 27 May 2020 09:27:47 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-32.ams2.redhat.com
- [10.36.112.32])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 875D412A4D;
- Wed, 27 May 2020 09:27:47 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 0E8E4113864A; Wed, 27 May 2020 11:27:46 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Alistair Francis <alistair23@gmail.com>
-Subject: Re: [PATCH 01/24] arm/stm32f405: Fix realization of "stm32f2xx-adc"
- devices
-References: <20200518050408.4579-1-armbru@redhat.com>
- <20200518050408.4579-2-armbru@redhat.com>
- <CAKmqyKOun2FyT+JR8cyrP9eQn9xFDAppFb4W12ym-TPGt9h7Hg@mail.gmail.com>
- <87d0707bri.fsf@dusky.pond.sub.org>
- <CAKmqyKM3oOLfAxupqfabrj_epQCCE_YbwnkU4cRd5mtg8+7_yg@mail.gmail.com>
-Date: Wed, 27 May 2020 11:27:46 +0200
-In-Reply-To: <CAKmqyKM3oOLfAxupqfabrj_epQCCE_YbwnkU4cRd5mtg8+7_yg@mail.gmail.com>
- (Alistair Francis's message of "Tue, 19 May 2020 15:20:15 -0700")
-Message-ID: <87blm9ralp.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id m129sm1971380wmf.2.2020.05.27.03.05.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 27 May 2020 03:05:47 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id DADDD1FF87;
+	Wed, 27 May 2020 11:05:46 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Riku Voipio <riku.voipio@iki.fi>,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH  v1 1/3] linux-user: provide fallback pgd_find_hole for bare chroots
+Date: Wed, 27 May 2020 11:05:44 +0100
+Message-Id: <20200527100546.29297-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200527100546.29297-1-alex.bennee@linaro.org>
+References: <20200527100546.29297-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/27 00:49:35
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cgIiIZFD7Rw3
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: 2lw6I5koS7Nn
 
-Alistair Francis <alistair23@gmail.com> writes:
+When running QEMU out of a chroot environment we may not have access
+to /proc/self/maps. As there is no other "official" way to introspect
+our memory map we need to fall back to the original technique of
+repeatedly trying to mmap an address range until we find one that
+works.
 
-> On Mon, May 18, 2020 at 10:08 PM Markus Armbruster <armbru@redhat.com> wrote:
->>
->> Alistair Francis <alistair23@gmail.com> writes:
->>
->> > On Sun, May 17, 2020 at 10:06 PM Markus Armbruster <armbru@redhat.com> wrote:
->> >>
->> >> stm32f405_soc_initfn() creates six such devices, but
->> >> stm32f405_soc_realize() realizes only one.  Affects machine
->> >> netduinoplus2.
->> >>
->> >> I wonder how this ever worked.  If the "device becomes real only on
->> >> realize" thing actually works, then we've always been missing five of
->> >> six such devices, yet nobody noticed.
->> >
->> > I must have just been testing the first ADC.
->> >
->> >>
->> >> Fix stm32f405_soc_realize() to realize all six.  Visible in "info
->> >> qtree":
->> >>
->> >>      bus: main-system-bus
->> >>        type System
->> >>        dev: stm32f405-soc, id ""
->> >>          cpu-type = "cortex-m4-arm-cpu"
->> >>        dev: stm32f2xx-adc, id ""
->> >>          gpio-out "sysbus-irq" 1
->> >>     -    mmio ffffffffffffffff/00000000000000ff
->> >>     +    mmio 0000000040012000/00000000000000ff
->> >>        dev: stm32f2xx-adc, id ""
->> >>          gpio-out "sysbus-irq" 1
->> >>     -    mmio ffffffffffffffff/00000000000000ff
->> >>     +    mmio 0000000040012000/00000000000000ff
->> >>        dev: stm32f2xx-adc, id ""
->> >>          gpio-out "sysbus-irq" 1
->> >>     -    mmio ffffffffffffffff/00000000000000ff
->> >>     +    mmio 0000000040012000/00000000000000ff
->> >>        dev: stm32f2xx-adc, id ""
->> >>          gpio-out "sysbus-irq" 1
->> >>     -    mmio ffffffffffffffff/00000000000000ff
->> >>     +    mmio 0000000040012000/00000000000000ff
->> >>        dev: stm32f2xx-adc, id ""
->> >>          gpio-out "sysbus-irq" 1
->> >>          mmio 0000000040012000/00000000000000ff
->> >>        dev: stm32f2xx-adc, id ""
->> >>          gpio-out "sysbus-irq" 1
->> >>     -    mmio ffffffffffffffff/00000000000000ff
->> >>     +    mmio 0000000040012000/00000000000000ff
->> >>        dev: armv7m, id ""
->> >>
->> >> The mmio addresses look suspicious.
->> >
->> > Good catch, thanks :)
->>
->> I'd love to squash in corrections, but I don't know the correct
->> addresses.  Can you help?
->
-> Yep, thanks for squashing it in.
->
-> The three addresses are:
->
-> 0x40012000
-> 0x40012100
-> 0x40012200
->
-> and they all share interrupt number 18.
+Fortunately it's not quite as ugly as the original code given we
+already re-factored the complications of dealing with the
+ARM_COMMPAGE. We do make an attempt to skip over brk() which is about
+the only concrete piece of information we have about the address map
+at this moment.
 
-An the other three?  There are six devices in total...
+Fixes: ee9474303
+Reported-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ linux-user/elfload.c | 48 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
 
-> Let me know if you want me to do it.
-
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 01a9323a637..d6027867a1a 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -2099,6 +2099,50 @@ static void pgb_have_guest_base(const char *image_name, abi_ulong guest_loaddr,
+     }
+ }
+ 
++/**
++ * pgd_find_hole_fallback: potential mmap address
++ * @guest_size: size of available space
++ * @brk: location of break
++ * @align: memory alignment
++ *
++ * This is a fallback method for finding a hole in the host address
++ * space if we don't have the benefit of being able to access
++ * /proc/self/map. It can potentially take a very long time as we can
++ * only dumbly iterate up the host address space seeing if the
++ * allocation would work.
++ */
++static uintptr_t pgd_find_hole_fallback(uintptr_t guest_size, uintptr_t brk, long align)
++{
++    uintptr_t base;
++
++    /* Start at the bottom and work our way up */
++    base = mmap_min_addr;
++
++    while (true) {
++        uintptr_t align_start, end;
++        align_start = ROUND_UP(base, align);
++        end = align_start + guest_size;
++
++        /* if brk is anywhere in the range give ourselves some room to grow. */
++        if (align_start <= brk && brk < end) {
++            base += 16 * MiB;
++            continue;
++        } else if (align_start + guest_size < align_start) {
++            /* we have run out of space */
++            return -1;
++        } else {
++            int flags = MAP_ANONYMOUS | MAP_PRIVATE | MAP_NORESERVE | MAP_FIXED;
++            void * mmap_start = mmap((void *) align_start, guest_size,
++                                     PROT_NONE, flags, -1, 0);
++            if (mmap_start != MAP_FAILED) {
++                munmap((void *) align_start, guest_size);
++                return (uintptr_t) mmap_start;
++            }
++            base += qemu_host_page_size;
++        }
++    }
++}
++
+ /* Return value for guest_base, or -1 if no hole found. */
+ static uintptr_t pgb_find_hole(uintptr_t guest_loaddr, uintptr_t guest_size,
+                                long align)
+@@ -2114,6 +2158,10 @@ static uintptr_t pgb_find_hole(uintptr_t guest_loaddr, uintptr_t guest_size,
+     /* Read brk after we've read the maps, which will malloc. */
+     brk = (uintptr_t)sbrk(0);
+ 
++    if (!maps) {
++        return pgd_find_hole_fallback(guest_size, brk, align);
++    }
++
+     /* The first hole is before the first map entry. */
+     this_start = mmap_min_addr;
+ 
+-- 
+2.20.1

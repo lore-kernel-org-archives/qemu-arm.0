@@ -1,53 +1,249 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id l17sm2331662wmi.16.2020.05.27.03.05.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 May 2020 03:05:47 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id B47851FF7E;
-	Wed, 27 May 2020 11:05:46 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH  v1 0/3] some linux-user guest_base fixes
-Date: Wed, 27 May 2020 11:05:43 +0100
-Message-Id: <20200527100546.29297-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1081309lfc;
+        Wed, 27 May 2020 06:36:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxfXOtz3+bWgXP6BZiN/ImpzSfjgg4eUZxdX/bxoWNYolNsU3VsCDDs1aDWoevyfwJp4c48
+X-Received: by 2002:a25:6a54:: with SMTP id f81mr8877398ybc.479.1590586616042;
+        Wed, 27 May 2020 06:36:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590586616; cv=none;
+        d=google.com; s=arc-20160816;
+        b=VZb+qAK9BIRdGCSEokt7pLStnftmnHzsvKx7+8uaFSvz2d3fSGOTZZjrez8kpQ8anI
+         G1E/Qjvpu+qtW5PDfCFl3uW7pmn9ng7POWrfBeM8gOmZ3JHDSyqgSjEsYnpXSshkfW5h
+         VhI1yTmtkV8kKeuKLmQURJeT8jJIw9DSC0564XhzrJmFYBX/GB2ay8GteukAAmjvSv0y
+         b9K6MgTEqcSPCIs1s+znHkm2ibKtnXSLuk/WJURzfS1iY7gNu+tyDuYUxF1VVPKMGk1X
+         06LX1KNq0VdJyFs4VD0TLx5TYrX3BYvj7HWIqOvsQaG6a0P5L1ykuqIpJgy2nXTFDDW1
+         Y3vg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=ZBuOzhkSMa4jTSlzlkfDTcaOnRT4FiitzG5grCTJKzY=;
+        b=q/afmKeGBljAMRQgWigi7VQE5tihjJScLB5aRavg2FQsZEypTJmr6QKj6os9NbqBCc
+         cN6+DmB3VZ66em7k6+r4ohnf8V8C4dmYsClKXY/qIpQ6o0XbzzjFVuEBjQ8BKkabNc0z
+         ctRdgIJgziHTVk1S1MVHA4/Muho8aY8WxxfAWjsKU+pc/gR7Na56agQ/vZnXU2MFU2uU
+         oPkZ/LRTnKxRYYJeXtI+L4991JBJwVfNGgN5I8y91qzxBTpOIOOMjj+QTMJPGKElYeKh
+         JCmkjOQ+lLBLPkBBTa/xcAOGLC3W6sxN9G3uii+8DOJX6PjVZDNGSr3AtexRvQyfEV3V
+         zfFA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CCwQAF5o;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 14si3117356ybf.439.2020.05.27.06.36.55
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 27 May 2020 06:36:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CCwQAF5o;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40482 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jdwEp-0003XB-E0
+	for alex.bennee@linaro.org; Wed, 27 May 2020 09:36:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32868)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jdwEf-0003WR-CV
+ for qemu-arm@nongnu.org; Wed, 27 May 2020 09:36:45 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:22838
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jdwEd-0002H4-LD
+ for qemu-arm@nongnu.org; Wed, 27 May 2020 09:36:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590586602;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ZBuOzhkSMa4jTSlzlkfDTcaOnRT4FiitzG5grCTJKzY=;
+ b=CCwQAF5o8MIc9XCKFfCRedM5r1w7whoCIprjKSRBLQJ05Nqaxvc4Fbdsx/cwNWqak1Sdzy
+ kTriKGRblL24sJob6NUCY2GG5I8qjWFlOrce4mjOgJ3n7XfPhuP27zzZz25pqYGExGC5ri
+ txh2sivovTG3lR6pFtrObKxs9KpebXA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-326-za3VZAiAOY-dNw7fSHrCgw-1; Wed, 27 May 2020 09:36:37 -0400
+X-MC-Unique: za3VZAiAOY-dNw7fSHrCgw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 725D41005510;
+ Wed, 27 May 2020 13:36:35 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-32.ams2.redhat.com
+ [10.36.112.32])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id EB4AD5D9E5;
+ Wed, 27 May 2020 13:36:34 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 6891E113864A; Wed, 27 May 2020 15:36:33 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Subject: Re: [PATCH v3] arm/aspeed: Rework NIC attachment
+References: <20200527124406.329503-1-clg@kaod.org>
+Date: Wed, 27 May 2020 15:36:33 +0200
+In-Reply-To: <20200527124406.329503-1-clg@kaod.org> (=?utf-8?Q?=22C=C3=A9d?=
+ =?utf-8?Q?ric?= Le Goater"'s
+ message of "Wed, 27 May 2020 14:44:06 +0200")
+Message-ID: <87lfldzehq.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: LhV2o0ZZYlFo
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/27 00:49:35
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: C/tQyf6pfnvZ
 
-Hi,
+C=C3=A9dric Le Goater <clg@kaod.org> writes:
 
-Here are a couple of patches to clean-up guest_base handling for
-linux-user guests. There are two cases we hadn't accounted for/tested
-enough in the original clean-up:
+> The number of MACs supported by an Aspeed SoC is defined by "macs_num"
+> under the SoC model, that is two for the AST2400 and AST2500 and four
+> for the AST2600. The model initializes the maximum number of supported
+> MACs but the number of realized devices is capped by the number of
+> network device back-ends defined on the command line. This can leave
+> unrealized devices hanging around in the QOM composition tree.
+>
+> Modify the machine initialization to define which MACs are attached to
+> a network device back-end using a bit-field property "macs-mask" and
+> let the SoC realize all network devices.
+>
+> The default setting of "macs-mask" is "use MAC0" only, which works for
+> all our AST2400 and AST2500 machines. The AST2600 machines have
+> different configurations. The AST2600 EVB machine activates MAC1, MAC2
+> and MAC3 and the Tacoma BMC machine activates MAC2.
 
-  - chroots without /proc access
-  - 32 bit hosts and the 32 bit ARM COMMPAGE
+Let's be more clear on what this means, and "This is actually a device
+modelling fix for these two machines."  Okay?
 
-The solution to the first problem is a simple fall-back to mmap
-probing but without the ugliness of the first approach.
+> Inactive MACs will have no peer and QEMU may warn the user with :
+>
+>     qemu-system-arm: warning: nic ftgmac100.0 has no peer
+>     qemu-system-arm: warning: nic ftgmac100.1 has no peer
+>     qemu-system-arm: warning: nic ftgmac100.3 has no peer
+>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
-The second is a bit of a hack but works. Given we only ever expose one
-value from the COMMPAGE it does make me wonder if we could rip out the
-special casing and come up with a cleaner ARM only approach by hooking
-exceptions? Anyway I've included a test case for the COMMPAGE as well.
+Here's the "info qom-tree" change for tacoma-bmc:
 
-Please review
+     /machine (tacoma-bmc-machine)
+       /peripheral (container)
+       /peripheral-anon (container)
+       /soc (ast2600-a1)
+         [...]
+         /ftgmac100[0] (ftgmac100)
+           /ftgmac100[0] (qemu:memory-region)
+         /ftgmac100[1] (ftgmac100)
+    +      /ftgmac100[0] (qemu:memory-region)
+         /ftgmac100[2] (ftgmac100)
+    +      /ftgmac100[0] (qemu:memory-region)
+         /ftgmac100[3] (ftgmac100)
+    +      /ftgmac100[0] (qemu:memory-region)
+         [...]
+         /mii[0] (aspeed-mmi)
+           /aspeed-mmi[0] (qemu:memory-region)
+         /mii[1] (aspeed-mmi)
+    +      /aspeed-mmi[0] (qemu:memory-region)
+         /mii[2] (aspeed-mmi)
+    +      /aspeed-mmi[0] (qemu:memory-region)
+         /mii[3] (aspeed-mmi)
+    +      /aspeed-mmi[0] (qemu:memory-region)
 
-Alex Bennée (3):
-  linux-user: provide fallback pgd_find_hole for bare chroots
-  linux-user: deal with address wrap for ARM_COMMPAGE on 32 bit
-  tests/tcg: add simple commpage test case
+These changes are due to realizing MAC1, MAC2, MAC3.  Looks good.
 
- linux-user/elfload.c          | 66 ++++++++++++++++++++++++++++++-----
- tests/tcg/arm/commpage.c      | 61 ++++++++++++++++++++++++++++++++
- tests/tcg/arm/Makefile.target |  2 ++
- 3 files changed, 121 insertions(+), 8 deletions(-)
- create mode 100644 tests/tcg/arm/commpage.c
+Here's "info qtree":
 
--- 
-2.20.1
+       dev: ftgmac100, id ""
+         gpio-out "sysbus-irq" 1
+         aspeed =3D true
+    -    mac =3D "52:54:00:12:34:56"
+    -    netdev =3D "hub0port0"
+    +    mac =3D "52:54:00:12:34:57"
+    +    netdev =3D ""
+         mmio 000000001e660000/0000000000002000
+       dev: ftgmac100, id ""
+    -    aspeed =3D false
+    -    mac =3D "00:00:00:00:00:00"
+    +    gpio-out "sysbus-irq" 1
+    +    aspeed =3D true
+    +    mac =3D "52:54:00:12:34:58"
+         netdev =3D ""
+    +    mmio 000000001e680000/0000000000002000
+       dev: ftgmac100, id ""
+    -    aspeed =3D false
+    -    mac =3D "00:00:00:00:00:00"
+    -    netdev =3D ""
+    +    gpio-out "sysbus-irq" 1
+    +    aspeed =3D true
+    +    mac =3D "52:54:00:12:34:56"
+    +    netdev =3D "hub0port0"
+    +    mmio 000000001e670000/0000000000002000
+       dev: ftgmac100, id ""
+    -    aspeed =3D false
+    -    mac =3D "00:00:00:00:00:00"
+    +    gpio-out "sysbus-irq" 1
+    +    aspeed =3D true
+    +    mac =3D "52:54:00:12:34:59"
+         netdev =3D ""
+    +    mmio 000000001e690000/0000000000002000
+       [...]
+       dev: aspeed-mmi, id ""
+         mmio 000000001e650000/0000000000000008
+       dev: aspeed-mmi, id ""
+    +    mmio 000000001e650008/0000000000000008
+       dev: aspeed-mmi, id ""
+    +    mmio 000000001e650010/0000000000000008
+       dev: aspeed-mmi, id ""
+    +    mmio 000000001e650018/0000000000000008
+
+Here we can see the network backend now gets connected to MAC2 instead
+of MAC0.
+
+This is without any networking-related options, i.e. we get just the
+single default network backend.
+
+> ---
+>
+>  To be applied on top of patch :
+>
+>  "arm/aspeed: Compute the number of CPUs from the SoC definition"=20
+>  http://patchwork.ozlabs.org/project/qemu-devel/patch/20200519091631.1006=
+073-1-clg@kaod.org/
+>
+>  Markus, do you mind taking this patch in your QOM series also ?
+
+On the contrary!
+
+I'll work my "info qom-tree" and "info qtree" diffs into the commit
+message, if you don't mind.
+

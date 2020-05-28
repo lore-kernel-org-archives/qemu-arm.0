@@ -1,203 +1,205 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp487943lfc;
-        Thu, 28 May 2020 05:43:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzOH5RuVnWkInnso+VdjM+IzbFLb9h4NCjSAqVvZpQmM3tubQJLZOzkyULlKOdOUWlFQ2MY
-X-Received: by 2002:a25:99c1:: with SMTP id q1mr4888098ybo.139.1590669820882;
-        Thu, 28 May 2020 05:43:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590669820; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp488066lfc;
+        Thu, 28 May 2020 05:43:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzClnZgP5DU2nWZJC4CansftgcF0eI/5K71hTeuWomqEJqx684fv9+I+kyThGKu/+5rGh+9
+X-Received: by 2002:a25:448a:: with SMTP id r132mr5052436yba.277.1590669832752;
+        Thu, 28 May 2020 05:43:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590669832; cv=none;
         d=google.com; s=arc-20160816;
-        b=eIIsgGASFtbAITy/PHHB9ZaUXXhbYWMTm4OlGK1GkJleRo3m4a8NbawR9QXJgNpfbc
-         TCngXTA0qi6sf6gB4eF8nWgcllCd6SAN/bxu/zoXfWSf/oU4i03fL8rcmg+7ZF4d0WiZ
-         TC2WEvNw+CzQ9b2BPyXddFO/WpzQ/FOZ4CIUw0E/l0rSkJd3k9DNIhRtatNt8jtjIb74
-         +ABIHk89MsYvxm+Er5AUYiEhd50WwU3StXsZgseZFeyi1YzeOQaOLd8i32BeVft7JYjk
-         X6LScv+A2FIpBP30vXunl6OL769xPy09//Vwz1qXpO7JqyMcRQycocaX4qCDfZdyWSnl
-         DjkA==
+        b=rLzKL48M1P+PCiaz7n6Ublgya+qLxvakYitSHXRLbUIqtqg21AvAzjTPG9d1/OPE5Y
+         JuG4hmgyJ8n886QMwcNW9NdzIlQUVxxVecQZneSRgOFlnaz3JeBs8fX9LFmeVrf+Vr7m
+         0Ch416q5Y4m9BS0ur1A8zMNnO84QQsDDLPVoFCYg7Ov2xt/TXR14+0CTRVy/rGovxXME
+         jfa8V3rSNSzqCuGIHa12C+JkA8ZOZ/wzlk43NMUawofjdW9/n+EeglXUQNv+25HVLTuO
+         UseI7eLEZ1ijMM/hSuYPrXWV3EDlIz73wD6VU8bNceCRk675jFdSMyPuGiKbDJNhi1um
+         0m6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=RfYTyIs8StHB7o2N0JQA2LgTuiRGRst0nDa6SImXiJ0=;
-        b=nLqIrWFDWMACOc676w2bJLKJgGLR3SKfWO1brVNW5KpG8VYdnMpZtYO/8BhCu6/tof
-         h9q8TzpnpI4bRsuA8VjoA+U1Eu8DhWUOCCnWtF3IoAG9pAQlUh6skaSlozo0vi0k4mcd
-         yebABIOxV6Ous4glmTvCDXFXITu/pSDGv2BTlZfZ7WODUILuwBlXgn+1HrG+qS7viOVA
-         RkElgS8M+RN91UkjnMtd/Jb6SkpIYuWh4+bM7rGIw87h3dzAgpfxTmBDyf2QJ2sNttpq
-         YQ81/QVHblkDXq2FAVHwzmE/wWknPGfUa3WRvGK4TFv+42oziCm5zodPgM+QkyZlDgGZ
-         vgtA==
+        bh=vhaGpItVAJY0Kh28EoW+iZj4wIKFYfoIVL8Ul9ZNK3k=;
+        b=HNI0qK+bQd6PK4NhNzOpUAIN4xXh1VoicqE6fEAbzjV5yjbqGAiJqRyTfVcLocZeMH
+         Nq29QnFSH4hIfBcMIOaeXHEQGNkfSKFKT7GVTvOzkc2/KOyQVwL8PgcORpyW6CR7/F2g
+         5NJaUPtYCumEarRIXZl680gWWW1VO96D1d9uGspXQ6qO4vYMWWYd/lyoYHJYkM/31DWa
+         nNK+6XDF56No6MGjtmkcjA3j5z/dT8x5TgtfgKe0gO7txpHDfuaIDUUFLAQ8eBIuQnKB
+         8eaxF7b68Cphkrp4HBYOZyhJ3v8Xrxl4sjLRTykzqQ4A0O6+9ltffWzAUVW/L9LmM+ud
+         DvaQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BalwCH6Q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cfAy0tIY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k15si5120012ybk.39.2020.05.28.05.43.40
+        by mx.google.com with ESMTPS id c7si4985811yba.219.2020.05.28.05.43.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 May 2020 05:43:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 28 May 2020 05:43:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BalwCH6Q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cfAy0tIY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38020 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39706 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jeHsq-0008H1-9F
-	for alex.bennee@linaro.org; Thu, 28 May 2020 08:43:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33730)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jeHt2-0000tl-5h
+	for alex.bennee@linaro.org; Thu, 28 May 2020 08:43:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33720)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHm1-0001zU-IC
- for qemu-devel@nongnu.org; Thu, 28 May 2020 08:36:37 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:57583
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHm1-0001yE-3B
+ for qemu-arm@nongnu.org; Thu, 28 May 2020 08:36:37 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:35769
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHlt-0005Ff-Mm
- for qemu-devel@nongnu.org; Thu, 28 May 2020 08:36:37 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHlu-0005Gg-Jb
+ for qemu-arm@nongnu.org; Thu, 28 May 2020 08:36:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590669388;
+ s=mimecast20190719; t=1590669389;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RfYTyIs8StHB7o2N0JQA2LgTuiRGRst0nDa6SImXiJ0=;
- b=BalwCH6Qxn5cfkkuH4UIDXCh7YN0rt+vDF5V7mZRDOKljm29p/Wtq0YmM1On2dekjYkrgL
- eN5H8kfNKCb/hG5PkcjSPvXTHIzQvN7q0kMKEsz5VRa1Y7zQzSQr/qzcb8Lx14yNS0pkA4
- rKVVnytP7AUlNGeVrd65K8CwXEdfFTs=
+ bh=vhaGpItVAJY0Kh28EoW+iZj4wIKFYfoIVL8Ul9ZNK3k=;
+ b=cfAy0tIYTQ2UYTplUO9KibPyl3+s45DKtD5nKjUOSFr+QFUJDdLwqJjCxPBdLkiRcAHhAZ
+ YGX1yRZ8cjCW/Q8uffStJjViw8v61SieRpjMefdvGKkWd2Z4H0aGOOSCgY5IJjKEyl0sFR
+ AgF/k9kvEBu41GOmyD+/BFbzXxee8iY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-288-dWZhFjqXPP2CTOPKbzhjyw-1; Thu, 28 May 2020 08:36:23 -0400
-X-MC-Unique: dWZhFjqXPP2CTOPKbzhjyw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-441-613lVL-COoqGZLJCqhXdvQ-1; Thu, 28 May 2020 08:36:19 -0400
+X-MC-Unique: 613lVL-COoqGZLJCqhXdvQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5DD511855A08;
- Thu, 28 May 2020 12:36:21 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3D7DC8015CF;
+ Thu, 28 May 2020 12:36:18 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-113-50.ams2.redhat.com
  [10.36.113.50])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 19E3E2B4CC;
- Thu, 28 May 2020 12:36:19 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D3242A102D;
+ Thu, 28 May 2020 12:36:17 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id DA5479D61; Thu, 28 May 2020 14:36:09 +0200 (CEST)
+ id AE16D9D58; Thu, 28 May 2020 14:36:09 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 14/21] hw/display/pxa2xx_lcd: Replace printf() call by
- qemu_log_mask()
-Date: Thu, 28 May 2020 14:36:02 +0200
-Message-Id: <20200528123609.27362-15-kraxel@redhat.com>
+Subject: [PULL 09/21] hw/display/xlnx_dp: Replace disabled DPRINTF() by
+ error_report()
+Date: Thu, 28 May 2020 14:35:57 +0200
+Message-Id: <20200528123609.27362-10-kraxel@redhat.com>
 In-Reply-To: <20200528123609.27362-1-kraxel@redhat.com>
 References: <20200528123609.27362-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=kraxel@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/28 01:51:20
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/28 03:11:04
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Igor Mitsyanko <i.mitsyanko@gmail.com>,
  Alistair Francis <alistair@alistair23.me>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YkBJ9KZA+Xyo
+ BALATON Zoltan <balaton@eik.bme.hu>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: drHtMU9yZ/ac
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Replace printf() calls by qemu_log_mask(UNIMP), which is
-disabled by default. This avoid flooding the terminal when
-fuzzing the device.
+DPRINTF() calls are disabled by default, so when unexpected
+data is used, the whole process abort without information.
+
+Display a bit of information with error_report() before crashing.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-id: 20200526062252.19852-15-f4bug@amsat.org
+Message-id: 20200526062252.19852-10-f4bug@amsat.org
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/display/pxa2xx_lcd.c | 26 ++++++++++++++------------
- 1 file changed, 14 insertions(+), 12 deletions(-)
+ hw/display/xlnx_dp.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
-index d5f2e82a4ec3..ff90104b8011 100644
---- a/hw/display/pxa2xx_lcd.c
-+++ b/hw/display/pxa2xx_lcd.c
-@@ -426,9 +426,10 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr offset,
-         if ((s->control[0] & LCCR0_ENB) && !(value & LCCR0_ENB))
-             s->status[0] |= LCSR0_QD;
+diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+index 3e5fb44e06ee..8d940cd8d1a5 100644
+--- a/hw/display/xlnx_dp.c
++++ b/hw/display/xlnx_dp.c
+@@ -1,5 +1,5 @@
+ /*
+- * xlnx_dp.c
++ * Xilinx Display Port
+  *
+  *  Copyright (C) 2015 : GreenSocs Ltd
+  *      http://www.greensocs.com/ , email: info@greensocs.com
+@@ -24,6 +24,7 @@
  
--        if (!(s->control[0] & LCCR0_LCDT) && (value & LCCR0_LCDT))
--            printf("%s: internal frame buffer unsupported\n", __func__);
--
-+        if (!(s->control[0] & LCCR0_LCDT) && (value & LCCR0_LCDT)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "%s: internal frame buffer unsupported\n", __func__);
-+        }
-         if ((s->control[3] & LCCR3_API) &&
-                 (value & LCCR0_ENB) && !(value & LCCR0_LCDT))
-             s->status[0] |= LCSR0_ABC;
-@@ -462,9 +463,9 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr offset,
-         break;
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
++#include "qemu/error-report.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "hw/display/xlnx_dp.h"
+@@ -465,7 +466,7 @@ static uint8_t xlnx_dp_aux_pop_tx_fifo(XlnxDPState *s)
+     uint8_t ret;
  
-     case OVL1C1:
--        if (!(s->ovl1c[0] & OVLC1_EN) && (value & OVLC1_EN))
--            printf("%s: Overlay 1 not supported\n", __func__);
--
-+        if (!(s->ovl1c[0] & OVLC1_EN) && (value & OVLC1_EN)) {
-+            qemu_log_mask(LOG_UNIMP, "%s: Overlay 1 not supported\n", __func__);
-+        }
-         s->ovl1c[0] = value & 0x80ffffff;
-         s->dma_ch[1].up = (value & OVLC1_EN) || (s->control[0] & LCCR0_SDS);
+     if (fifo8_is_empty(&s->tx_fifo)) {
+-        DPRINTF("tx_fifo underflow..\n");
++        error_report("%s: TX_FIFO underflow", __func__);
+         abort();
+     }
+     ret = fifo8_pop(&s->tx_fifo);
+@@ -525,6 +526,7 @@ static void xlnx_dp_aux_set_command(XlnxDPState *s, uint32_t value)
+         qemu_log_mask(LOG_UNIMP, "xlnx_dp: Write i2c status not implemented\n");
          break;
-@@ -474,9 +475,9 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr offset,
-         break;
+     default:
++        error_report("%s: invalid command: %u", __func__, cmd);
+         abort();
+     }
  
-     case OVL2C1:
--        if (!(s->ovl2c[0] & OVLC1_EN) && (value & OVLC1_EN))
--            printf("%s: Overlay 2 not supported\n", __func__);
--
-+        if (!(s->ovl2c[0] & OVLC1_EN) && (value & OVLC1_EN)) {
-+            qemu_log_mask(LOG_UNIMP, "%s: Overlay 2 not supported\n", __func__);
-+        }
-         s->ovl2c[0] = value & 0x80ffffff;
-         s->dma_ch[2].up = !!(value & OVLC1_EN);
-         s->dma_ch[3].up = !!(value & OVLC1_EN);
-@@ -488,9 +489,10 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr offset,
+@@ -631,8 +633,8 @@ static void xlnx_dp_change_graphic_fmt(XlnxDPState *s)
+         s->g_plane.format = PIXMAN_b8g8r8;
          break;
+     default:
+-        DPRINTF("error: unsupported graphic format %u.\n",
+-                s->avbufm_registers[AV_BUF_FORMAT] & DP_GRAPHIC_MASK);
++        error_report("%s: unsupported graphic format %u", __func__,
++                     s->avbufm_registers[AV_BUF_FORMAT] & DP_GRAPHIC_MASK);
+         abort();
+     }
  
-     case CCR:
--        if (!(s->ccr & CCR_CEN) && (value & CCR_CEN))
--            printf("%s: Hardware cursor unimplemented\n", __func__);
--
-+        if (!(s->ccr & CCR_CEN) && (value & CCR_CEN)) {
-+            qemu_log_mask(LOG_UNIMP,
-+                          "%s: Hardware cursor unimplemented\n", __func__);
-+        }
-         s->ccr = value & 0x81ffffe7;
-         s->dma_ch[5].up = !!(value & CCR_CEN);
+@@ -647,8 +649,8 @@ static void xlnx_dp_change_graphic_fmt(XlnxDPState *s)
+         s->v_plane.format = PIXMAN_x8b8g8r8;
          break;
+     default:
+-        DPRINTF("error: unsupported video format %u.\n",
+-                s->avbufm_registers[AV_BUF_FORMAT] & DP_NL_VID_FMT_MASK);
++        error_report("%s: unsupported video format %u", __func__,
++                     s->avbufm_registers[AV_BUF_FORMAT] & DP_NL_VID_FMT_MASK);
+         abort();
+     }
+ 
 -- 
 2.18.4
 

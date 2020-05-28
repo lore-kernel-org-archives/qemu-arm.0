@@ -1,89 +1,88 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp485146lfc;
-        Thu, 28 May 2020 05:39:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyziB7mRRiXF0c09Q9stqf6NK4nCKo/pPmIe+hmjCzIXjX8rJ5/SYzEFk5/Zt0nwADQbQKs
-X-Received: by 2002:a25:ba0f:: with SMTP id t15mr5157059ybg.376.1590669585309;
-        Thu, 28 May 2020 05:39:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590669585; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp485432lfc;
+        Thu, 28 May 2020 05:40:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxaskNblZ4jWhO5w8pNbaMwa05Ep61EvTB9SMfAAuG/D5Y2tTnb6LylQX6qNSbsyLhMm42K
+X-Received: by 2002:a25:1f57:: with SMTP id f84mr4897131ybf.336.1590669612866;
+        Thu, 28 May 2020 05:40:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590669612; cv=none;
         d=google.com; s=arc-20160816;
-        b=zxbxyFBHSR3tq0WX4ts9MZ5AsgZIHtgisKVUh5LU+XXHpirZ+AI7R9wxuUcwuRImLM
-         Fy6rnpuOab9feYGPrhFTj+7RwNbVrDGLpRNVb38+/JaOIc2kxIseOAd1fPx/ffXIExqN
-         Ntdi9zJKify/Od1te6jOhCN+np3/2d36GzQxvlQdxu1fxzCxGtBBR846n+RklGV/kYov
-         8BaQgwYn9Puvm6WtSYXTy3elV4FWPhaRyxLJJ96RJBVJiICwLgxgwoJEI8i7bO4hN88z
-         yPW31EnYTaRqMdBwu4plo4KYA8eyw6uzpPLmf8kV21oxN/aJ+EcDKyHzPymL0hgE20Dy
-         2OAA==
+        b=Auf1vJTQoLNCZB3yLZbi0EkxktRlaSwdrK0Ms6Q/Go7CEsUn8xnl9eJYjAocc0EaeU
+         Ub8HVIa8pqBwXOe5+my9rz1kmOCsSZ/lKtLqqr9YgCT52em8F0K5xLzw5A/h9oQENXbB
+         OWiZzvqPOyxAjc8kVSBbwqui51kVX1sQ/xrabPO2H8W23Cfy+ZN95igkysONbBOxf9BP
+         TY8VC+AN7YbYvFfVH5gB5gcn2b6H5fPcxgJZtqRwYYfZmH+SG8bdX9gquFXB0I6XZsc3
+         mu3FTLfuzaoYZpAc661ry49AuaJJNxD9be+8EkaJUyYqM/AaciQuVphT8AuumA9x/42x
+         G4+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=H/6seJUaK2U1QNuJEnB6P9QD85AsJH8sJzJwLeDEzLE=;
-        b=xggVWgbSBdH3nAcLTcoKkx/kCpbN1jigIhplZ7eHbw4SKlW4rlUdC6zXpPVchcqDRD
-         rwhcUBl36fxNdZ2kmndZvcQt3Mah0xovhcD5TpCQUCOZQ/pRy/CGGPhBjIyq/PlsWgDL
-         ocZSG4Qm8ZJBZhg9ETOiUlQcUdE9HOFW9+84VxWY123bx/zLtjqC43Ies/CI2fphK240
-         C+5/ylF034aLMPOGroWV7PBIxoYR7x4o4ERUbw2+cej/8lOTbQkkP+E3y7U//nqVMoAS
-         x7AET+rmSTh6lyFE2wec8UTBd0qLtX9ljlSctl8dXEatQ1AOh+Sylm4u8McyCD96kk32
-         idAg==
+        bh=dbM4DIqFT/1AAo5DPEyqBeuBxBSshlvJ2pooOBfqays=;
+        b=WU1IG7aFnLQeiNP0J2/CkZcJMF/QNlwrz5WjGe48YR3bvbTHnk3SW+AiG8uaU636+B
+         QHJ22hyMATVyy1x2cx385RPkRAuMBQ9cKoFxBFCBXMflpMPByB6VjouSAF+DbzOZKH+S
+         zhXbjnAvPHfBwj3PA5OzG0GzlAHZ0hfqo9bDQi0rhJl1XGJYwK++UI9LbqKvu30SQ/7v
+         9M7fnYvdzKyHOu2lGRJuMpPYEViOFP5Q0UPOwmRshlmw7apa8aeOhT7zB6BaNpa0TKWG
+         wzf445K6R0Khj9ShNqLiLCqcReveZ+K1jsfqvYHPaZB3OwqvMFlHXK7aYnHFD1cAXAyn
+         pqxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eBk9Ax0+;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cM+eUoPi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p132si5411273ybc.196.2020.05.28.05.39.45
+        by mx.google.com with ESMTPS id f35si4078444ybi.135.2020.05.28.05.40.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 May 2020 05:39:45 -0700 (PDT)
+        Thu, 28 May 2020 05:40:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eBk9Ax0+;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cM+eUoPi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45614 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47824 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jeHp2-0007zg-JL
-	for alex.bennee@linaro.org; Thu, 28 May 2020 08:39:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33650)
+	id 1jeHpU-00017A-3p
+	for alex.bennee@linaro.org; Thu, 28 May 2020 08:40:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33608)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHlv-0001iK-IY
- for qemu-arm@nongnu.org; Thu, 28 May 2020 08:36:31 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:23230
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHlt-0001bB-5d
+ for qemu-arm@nongnu.org; Thu, 28 May 2020 08:36:29 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:37221
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHlq-0005BM-2a
- for qemu-arm@nongnu.org; Thu, 28 May 2020 08:36:31 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHlp-0005AN-Fh
+ for qemu-arm@nongnu.org; Thu, 28 May 2020 08:36:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1590669385;
+ s=mimecast20190719; t=1590669384;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=H/6seJUaK2U1QNuJEnB6P9QD85AsJH8sJzJwLeDEzLE=;
- b=eBk9Ax0+ukGHKXyrVLzmHqvduEW1O8F0YS8b1M+sDIqfZ9jCoN7lcJKGKOwRxIJz4sGzbe
- pmpRYHp0nmdPomZDYjG5EXQsI3QnGOcFTPyxFQdn+gyOjzWdu2E7N0+W6nRxFydvsWHego
- qxjpD+giJSHwuCoMgMwdjM+qBNs+zZM=
+ bh=dbM4DIqFT/1AAo5DPEyqBeuBxBSshlvJ2pooOBfqays=;
+ b=cM+eUoPiHcuG86Er4SIP9n+1RuZJ4NSNqnK+fxA0YZ9zdcNA2/J0cEWjXDTfiyQVGzhrKY
+ Q5vleRdeyZcw79QAG7UTu6ZMw6z371Vh2gKWGOxz3TeLT56yV0Vim8FPf87bbhd7SCw8J7
+ qksbnYSqUdCDP8jrNmyRBA7QhgetHcI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-234-OlkcRaAEMI-HYdXL3Mt_tg-1; Thu, 28 May 2020 08:36:23 -0400
-X-MC-Unique: OlkcRaAEMI-HYdXL3Mt_tg-1
+ us-mta-117-xY18pM-pNsaKqZfQxmKmcw-1; Thu, 28 May 2020 08:36:20 -0400
+X-MC-Unique: xY18pM-pNsaKqZfQxmKmcw-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2E79E8018A7;
- Thu, 28 May 2020 12:36:21 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7FD41460;
+ Thu, 28 May 2020 12:36:18 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-113-50.ams2.redhat.com
  [10.36.113.50])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 846915C1D6;
- Thu, 28 May 2020 12:36:20 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 874475C1D6;
+ Thu, 28 May 2020 12:36:16 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 9155C9D55; Thu, 28 May 2020 14:36:09 +0200 (CEST)
+ id 6AD6A9DAE; Thu, 28 May 2020 14:36:09 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 06/21] hw/display/cirrus_vga: Convert debug printf() to trace
- event
-Date: Thu, 28 May 2020 14:35:54 +0200
-Message-Id: <20200528123609.27362-7-kraxel@redhat.com>
+Subject: [PULL 02/21] hw/display/cg3: Convert debug printf()s to trace events
+Date: Thu, 28 May 2020 14:35:50 +0200
+Message-Id: <20200528123609.27362-3-kraxel@redhat.com>
 In-Reply-To: <20200528123609.27362-1-kraxel@redhat.com>
 References: <20200528123609.27362-1-kraxel@redhat.com>
 MIME-Version: 1.0
@@ -92,16 +91,16 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=kraxel@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/28 01:51:20
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/28 03:11:04
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -124,75 +123,79 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gerd Hoffmann <kraxel@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YN0KmQ0EVekJ
+X-TUID: DnX5hSUnRMZB
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Convert the final bit of DEBUG_BITBLT to a tracepoint.
+Convert DPRINTF() to trace events and remove ifdef'ry.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-id: 20200526062252.19852-7-f4bug@amsat.org
+Message-id: 20200526062252.19852-3-f4bug@amsat.org
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/display/cirrus_vga.c | 24 ++++++++++--------------
- hw/display/trace-events |  1 +
- 2 files changed, 11 insertions(+), 14 deletions(-)
+ hw/display/cg3.c        | 14 ++++----------
+ hw/display/trace-events |  4 ++++
+ 2 files changed, 8 insertions(+), 10 deletions(-)
 
-diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
-index 76e2dc5bb604..92c197cdde1d 100644
---- a/hw/display/cirrus_vga.c
-+++ b/hw/display/cirrus_vga.c
-@@ -53,7 +53,6 @@
-  */
+diff --git a/hw/display/cg3.c b/hw/display/cg3.c
+index f7f1c199ce54..7cbe6e56ff69 100644
+--- a/hw/display/cg3.c
++++ b/hw/display/cg3.c
+@@ -35,6 +35,7 @@
+ #include "hw/qdev-properties.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "trace.h"
  
- //#define DEBUG_CIRRUS
--//#define DEBUG_BITBLT
+ /* Change to 1 to enable debugging */
+ #define DEBUG_CG3 0
+@@ -63,12 +64,6 @@
+ #define CG3_VRAM_SIZE 0x100000
+ #define CG3_VRAM_OFFSET 0x800000
  
- /***************************************
-  *
-@@ -950,19 +949,16 @@ static void cirrus_bitblt_start(CirrusVGAState * s)
-     s->cirrus_blt_dstaddr &= s->cirrus_addr_mask;
-     s->cirrus_blt_srcaddr &= s->cirrus_addr_mask;
+-#define DPRINTF(fmt, ...) do { \
+-    if (DEBUG_CG3) { \
+-        printf("CG3: " fmt , ## __VA_ARGS__); \
+-    } \
+-} while (0)
+-
+ #define TYPE_CG3 "cgthree"
+ #define CG3(obj) OBJECT_CHECK(CG3State, (obj), TYPE_CG3)
  
--#ifdef DEBUG_BITBLT
--    printf("rop=0x%02x mode=0x%02x modeext=0x%02x w=%d h=%d dpitch=%d spitch=%d daddr=0x%08x saddr=0x%08x writemask=0x%02x\n",
--           blt_rop,
--           s->cirrus_blt_mode,
--           s->cirrus_blt_modeext,
--           s->cirrus_blt_width,
--           s->cirrus_blt_height,
--           s->cirrus_blt_dstpitch,
--           s->cirrus_blt_srcpitch,
--           s->cirrus_blt_dstaddr,
--           s->cirrus_blt_srcaddr,
--           s->vga.gr[0x2f]);
--#endif
-+    trace_vga_cirrus_bitblt_start(blt_rop,
-+                                  s->cirrus_blt_mode,
-+                                  s->cirrus_blt_modeext,
-+                                  s->cirrus_blt_width,
-+                                  s->cirrus_blt_height,
-+                                  s->cirrus_blt_dstpitch,
-+                                  s->cirrus_blt_srcpitch,
-+                                  s->cirrus_blt_dstaddr,
-+                                  s->cirrus_blt_srcaddr,
-+                                  s->vga.gr[0x2f]);
+@@ -195,7 +190,8 @@ static uint64_t cg3_reg_read(void *opaque, hwaddr addr, unsigned size)
+         val = 0;
+         break;
+     }
+-    DPRINTF("read %02x from reg %" HWADDR_PRIx "\n", val, addr);
++    trace_cg3_read(addr, val, size);
++
+     return val;
+ }
  
-     switch (s->cirrus_blt_mode & CIRRUS_BLTMODE_PIXELWIDTHMASK) {
-     case CIRRUS_BLTMODE_PIXELWIDTH8:
+@@ -206,9 +202,7 @@ static void cg3_reg_write(void *opaque, hwaddr addr, uint64_t val,
+     uint8_t regval;
+     int i;
+ 
+-    DPRINTF("write %" PRIx64 " to reg %" HWADDR_PRIx " size %d\n",
+-            val, addr, size);
+-
++    trace_cg3_write(addr, val, size);
+     switch (addr) {
+     case CG3_REG_BT458_ADDR:
+         s->dac_index = val;
 diff --git a/hw/display/trace-events b/hw/display/trace-events
-index c3043e4ced19..bb089a5f5e0c 100644
+index e6e22bef8899..47b2b168ae15 100644
 --- a/hw/display/trace-events
 +++ b/hw/display/trace-events
-@@ -134,6 +134,7 @@ vga_cirrus_read_io(uint32_t addr, uint32_t val) "addr 0x%x, val 0x%x"
- vga_cirrus_write_io(uint32_t addr, uint32_t val) "addr 0x%x, val 0x%x"
- vga_cirrus_write_blt(uint32_t offset, uint32_t val) "offset 0x%x, val 0x%x"
- vga_cirrus_write_gr(uint8_t index, uint8_t val) "GR addr 0x%02x, val 0x%02x"
-+vga_cirrus_bitblt_start(uint8_t blt_rop, uint8_t blt_mode, uint8_t blt_modeext, int blt_width, int blt_height, int blt_dstpitch, int blt_srcpitch, uint32_t blt_dstaddr, uint32_t blt_srcaddr, uint8_t gr_val) "rop=0x%02x mode=0x%02x modeext=0x%02x w=%d h=%d dpitch=%d spitch=%d daddr=0x%08"PRIx32" saddr=0x%08"PRIx32" writemask=0x%02x"
- 
- # sii9022.c
- sii9022_read_reg(uint8_t addr, uint8_t val) "addr 0x%02x, val 0x%02x"
+@@ -151,3 +151,7 @@ artist_vram_write(unsigned int size, uint64_t addr, uint64_t val) "%u 0x%"PRIx64
+ artist_fill_window(unsigned int start_x, unsigned int start_y, unsigned int width, unsigned int height, uint32_t op, uint32_t ctlpln) "start=%ux%u length=%ux%u op=0x%08x ctlpln=0x%08x"
+ artist_block_move(unsigned int start_x, unsigned int start_y, unsigned int dest_x, unsigned int dest_y, unsigned int width, unsigned int height) "source %ux%u -> dest %ux%u size %ux%u"
+ artist_draw_line(unsigned int start_x, unsigned int start_y, unsigned int end_x, unsigned int end_y) "%ux%u %ux%u"
++
++# cg3.c
++cg3_read(uint32_t addr, uint32_t val, unsigned size) "read addr:0x%06"PRIx32" val:0x%08"PRIx32" size:%u"
++cg3_write(uint32_t addr, uint32_t val, unsigned size) "write addr:0x%06"PRIx32" val:0x%08"PRIx32" size:%u"
 -- 
 2.18.4
 

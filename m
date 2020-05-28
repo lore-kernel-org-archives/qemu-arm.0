@@ -1,116 +1,108 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp438566lfc;
-        Thu, 28 May 2020 04:35:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwrIApOXCwoxfY0eqQwSxNq2HWp7sz/eU9BS1H4yK4rPeJatYbRsrGnHM59A9Tnhp9kXJeT
-X-Received: by 2002:a37:bbc3:: with SMTP id l186mr2311674qkf.104.1590665722914;
-        Thu, 28 May 2020 04:35:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590665722; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp482889lfc;
+        Thu, 28 May 2020 05:36:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwsBapJiAiNTEtItBCsT3b6ATx4VoNlXTnoOq+EaDUJfglYr/6cWE+6TlgVL/1vsJ/wJSUs
+X-Received: by 2002:a05:620a:ecf:: with SMTP id x15mr2399290qkm.465.1590669396942;
+        Thu, 28 May 2020 05:36:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590669396; cv=none;
         d=google.com; s=arc-20160816;
-        b=f6Jyc+817zo2NCl+Hg7YCbG/ivZsKCx+FVcroSyulh+8uqtBqBxA9bUMIgLF4HeInT
-         BH+wQhYWXOHU2sclbfiZVof3VBuWnrlm0t+B860S0sShMYAGNmK6x85Yhqjx0dGpNFFQ
-         FtLhVrtIEb58pY/EAXMAv0RgsdLHgMvzpcjmzsIkKmo7HqNf1huMyYE084YklRh3BLGr
-         RTogaksLvHjnaRK/avppSQyh1tkdzcGPlwmyGLhr8uAdJWrnuC2frx/FBIa2i+xvg5jB
-         o7ogKoaVLOV3c2YbPY8uiHqzBkeSZlZKKBA2jIyego8/c9ACDgT7gUSiXbreazvmq5vl
-         9eRQ==
+        b=zUOP3eznyACcgo5rK725q4s5PaE2oLETMTZa4dF5tTN3XeT/qWc/dynV39XLEQoE0+
+         cYyHfS1yl4NLPPtRusruqzyryTrIAXZB0p5Alj+p1kdHaX+Qc+EiqspOyML0FpGN6hXq
+         5mq3eiLOXDmY47sorDCr/rRiw3Lsd33q/xV3/4U912gO+6pXjOofJXl1rCKIyORguaGC
+         FmNy8xNqeWmS0R1yaoK5SKE8ZY44YEYFcsXrCkduX0trFlfDlxB0GJsNhUPWD6QEEfO1
+         s6FrzC9l/DthscTd0o7QRQYuHuPUcWr7bsSiI2EjxNSRvNsjPxgKwmPmlE4Q/L661tKz
+         8F1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=+GGkv7NtlRBFkOlRZdJjHeT9o5MV8pqyEnMXcfIx5FE=;
-        b=qYdo49icuk6viKGOg2q/P5yQaB3n7NC78PkJEGCsemlLJS6Uvu1Yt+QUAFSeXVHVF0
-         9yDEonenoV6LkHhrk4l29EOYuAepjKG1Zg2N1Dtyvs2PZgQTGEElzZEinC0S/QEz9P5p
-         TD37HZt9aufESx+NZOZrfEr/W8a5YRuyhPKJE+XsSBrTS5RPNDkS6iEs0INZEQN0AnZs
-         pgHMsgc5xiGmnlIlssC2qg/eEwQZWjXXMvjy80Dg940iKXke+1WoICHjDUi0OXyaSrT8
-         pvNNcNGfH20qBTntk1Qp+nG0aaw3+fXj0W8uZV6ouTURwIiZkPaTQ98qOQhiwtp1IRky
-         I2xQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=NQraKQ1whxiMPOPRulSbwT/9AZGl8U9QqvXdcnOFJ2M=;
+        b=x5UwPfV/nTeyXNbUPkXgXIBHASx76tMBOkD3ZgVTO6Y5HNnR5Eo6YETk3CegGl08UG
+         59mj47KLQltZXt/T/jfTvwzAKprQHmLOqBno8zRJHMzJX14CoNMhwNTvRQ1pNhuIFRDo
+         MIevYxfCbY1dOvFzpWNqSRNIGaUVM4JX+mu8gU/uHpkdl7ZKyGxYru1GihwsNc2RHN62
+         PU6IU3WsWHNOGZM3K2DjMf+St6s1i+qkF/fW1TDOOJLBCOhRgtxWITjbW+5sFSPAYtX/
+         bgIxUSvBXL0WozpYXIKTK3PN783rS0BwqRbQwXsk9KJYN0bWEdOjCwdZvsHyUX5M4S1F
+         n+GA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V749CZhe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YEcuxlHt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s189si1988791qka.162.2020.05.28.04.35.22
+        by mx.google.com with ESMTPS id z82si3368772qkb.9.2020.05.28.05.36.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 May 2020 04:35:22 -0700 (PDT)
+        Thu, 28 May 2020 05:36:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V749CZhe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YEcuxlHt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49204 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57994 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jeGok-0002G3-Bi
-	for alex.bennee@linaro.org; Thu, 28 May 2020 07:35:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53632)
+	id 1jeHm0-0001U3-2e
+	for alex.bennee@linaro.org; Thu, 28 May 2020 08:36:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33490)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jeGoc-0002BH-1o; Thu, 28 May 2020 07:35:14 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:33247)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jeGob-0004Mt-7l; Thu, 28 May 2020 07:35:13 -0400
-Received: by mail-wm1-x342.google.com with SMTP id j198so4311109wmj.0;
- Thu, 28 May 2020 04:35:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=+GGkv7NtlRBFkOlRZdJjHeT9o5MV8pqyEnMXcfIx5FE=;
- b=V749CZhecvGzTN5dU8i1dVplK/pwOolqp1B/FuubvwKqhPjMRFmSnceS/nz5wjT3bY
- nnNhmWAey5tis/u5bEmtGcoVdnoA/GHi/AuC4/AyG0JgCtF5+SzHpb5uHSxuWCuFSAXS
- dlk1mH/DMpPyOUFYDUb1z2iiF8LxoTH5qsRQTGrUgyljWb7Cg60U6PER1TB1NpiE6gWz
- 5hwPF1GnyBYGLeM3+z8/8vHub+rJ/Sa7aSotP4j1/fsjGCbdW1HKa10RtDcSjL655q1S
- /3YvJ05dclMYi0E1nhdPenRE+zNMMMShwYjGB+Xft/Jpek6u2P4n4mrexhweLXnFFuqB
- /yWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=+GGkv7NtlRBFkOlRZdJjHeT9o5MV8pqyEnMXcfIx5FE=;
- b=VaEpbr/v5b2frw6TO3IsVjXZ5QVuylNRLr6bp4Be5f3pq7FDNO3vbC0dyBlwfR57AO
- lk9EI4MHaOPRWOqr+JMCJfVfaQm6j+7ormQgrIcfRShnVRmDqJ5jLKWGJNYoC6Tfhc08
- XSbN2e+Nr4h6XGmqSP/sTWSs4fXjApDW7zEifHgXa2YlIxdHqGv0Bp5iA0goSWyLvvmF
- jkNW6qpUEIqXX+L9xAUoFOF1pBJw54NIcswVb7WaSsbqtjHYVdStX3xgnNblEo1FOFj+
- pnFvfrJhN8XaeXzlyFy2gIDc0weHlCbytCaTg05zvpZq5nMMOdbbqB4GOJ2DeBMbGk6Q
- hAqQ==
-X-Gm-Message-State: AOAM532lcS8xyNm9YT3pqd6Gl+yvzfJOHIqnO0AJW6lghNjm8DOGvo5M
- huGq8cTD8Xfd+kJ3NxdeqqM=
-X-Received: by 2002:a1c:9802:: with SMTP id a2mr2985210wme.74.1590665711324;
- Thu, 28 May 2020 04:35:11 -0700 (PDT)
-Received: from [192.168.1.36] (71.red-88-21-204.staticip.rima-tde.net.
- [88.21.204.71])
- by smtp.gmail.com with ESMTPSA id n23sm3366465wmc.21.2020.05.28.04.35.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 May 2020 04:35:09 -0700 (PDT)
-Subject: Re: [PATCH v2 01/24] arm/stm32f405: Fix realization of
- "stm32f2xx-adc" devices
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-References: <20200528110444.20456-1-armbru@redhat.com>
- <20200528110444.20456-2-armbru@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <a3017ada-11cc-2c55-b232-9d4bb6447916@amsat.org>
-Date: Thu, 28 May 2020 13:35:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHlo-0001SJ-Bo
+ for qemu-arm@nongnu.org; Thu, 28 May 2020 08:36:25 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:46680
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHlm-00058p-Tp
+ for qemu-arm@nongnu.org; Thu, 28 May 2020 08:36:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590669382;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NQraKQ1whxiMPOPRulSbwT/9AZGl8U9QqvXdcnOFJ2M=;
+ b=YEcuxlHtp1oi5IVguYKAr5QillPwD189ysFCe+GxMQYL3X+kkORU/Wtbdq4EFL2EDDn7SL
+ 2tU1VOJ7+VLNNhOdlfilhZaf1liWzPCaEuxcXZN9c9XjUBF21mB4U/snwNIFqRinv2QYfq
+ SvJ29O8M0pwxWLNAX5yPKVWa9JNNiWE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-37-y3HQRic6Nl69h3rhBn_Ahw-1; Thu, 28 May 2020 08:36:18 -0400
+X-MC-Unique: y3HQRic6Nl69h3rhBn_Ahw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 387301005510;
+ Thu, 28 May 2020 12:36:16 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-113-50.ams2.redhat.com
+ [10.36.113.50])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2743A7A8B4;
+ Thu, 28 May 2020 12:36:13 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 7505C9DAF; Thu, 28 May 2020 14:36:09 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL 03/21] hw/display/cirrus_vga: Convert debug printf() to trace
+ event
+Date: Thu, 28 May 2020 14:35:51 +0200
+Message-Id: <20200528123609.27362-4-kraxel@redhat.com>
+In-Reply-To: <20200528123609.27362-1-kraxel@redhat.com>
+References: <20200528123609.27362-1-kraxel@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200528110444.20456-2-armbru@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/28 03:11:04
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,120 +115,55 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
- ehabkost@redhat.com, Alistair Francis <alistair@alistair23.me>,
- qemu-arm@nongnu.org, pbonzini@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ BALATON Zoltan <balaton@eik.bme.hu>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: //cy3RHNqtxr
+X-TUID: m/rw2EeWCw+O
 
-On 5/28/20 1:04 PM, Markus Armbruster wrote:
-> stm32f405_soc_initfn() creates six such devices, but
-> stm32f405_soc_realize() realizes only one.  Affects machine
-> netduinoplus2.
-> 
-> In theory, a device becomes real only on realize.  In practice, the
-> transition from unreal to real is a fuzzy one.  The work to make a
-> device real can be spread between realize methods (fine),
-> instance_init methods (wrong), and board code wiring up the device
-> (fine as long as it effectively happens on realize).  Depending on
-> what exactly is done where, a device can work even when we neglect
-> to realize it.
-> 
-> The five unrealized devices appear to stay unreal: neither MMIO nor
-> IRQ get wired up.
-> 
-> Fix stm32f405_soc_realize() to realize and wire up all six.  Visible
-> in "info qtree":
-> 
->      bus: main-system-bus
->        type System
->        dev: stm32f405-soc, id ""
->          cpu-type = "cortex-m4-arm-cpu"
->        dev: stm32f2xx-adc, id ""
->          gpio-out "sysbus-irq" 1
->     -    mmio ffffffffffffffff/00000000000000ff
->     +    mmio 0000000040012000/00000000000000ff
->        dev: stm32f2xx-adc, id ""
->          gpio-out "sysbus-irq" 1
->     -    mmio ffffffffffffffff/00000000000000ff
->     +    mmio 0000000040012100/00000000000000ff
->        dev: stm32f2xx-adc, id ""
->          gpio-out "sysbus-irq" 1
->     -    mmio ffffffffffffffff/00000000000000ff
->     +    mmio 0000000040012200/00000000000000ff
->        dev: stm32f2xx-adc, id ""
->          gpio-out "sysbus-irq" 1
->     -    mmio ffffffffffffffff/00000000000000ff
->     +    mmio 0000000040012300/00000000000000ff
->        dev: stm32f2xx-adc, id ""
->          gpio-out "sysbus-irq" 1
->     -    mmio 0000000040012000/00000000000000ff
->     +    mmio 0000000040012400/00000000000000ff
->        dev: stm32f2xx-adc, id ""
->          gpio-out "sysbus-irq" 1
->     -    mmio ffffffffffffffff/00000000000000ff
->     +    mmio 0000000040012500/00000000000000ff
->        dev: armv7m, id ""
-> 
-> Fixes: 529fc5fd3e18ace8f739afd02dc0953354f39442
-> Cc: Alistair Francis <alistair@alistair23.me>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
->  hw/arm/stm32f405_soc.c | 23 +++++++++++++----------
->  1 file changed, 13 insertions(+), 10 deletions(-)
-> 
-> diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
-> index 4f10ce6176..c9a530eecf 100644
-> --- a/hw/arm/stm32f405_soc.c
-> +++ b/hw/arm/stm32f405_soc.c
-> @@ -37,7 +37,8 @@ static const uint32_t usart_addr[] = { 0x40011000, 0x40004400, 0x40004800,
->  /* At the moment only Timer 2 to 5 are modelled */
->  static const uint32_t timer_addr[] = { 0x40000000, 0x40000400,
->                                         0x40000800, 0x40000C00 };
-> -#define ADC_ADDR                       0x40012000
-> +static const uint32_t adc_addr[] = { 0x40012000, 0x40012100, 0x40012200,
-> +                                     0x40012300, 0x40012400, 0x40012500 };
->  static const uint32_t spi_addr[] =   { 0x40013000, 0x40003800, 0x40003C00,
->                                         0x40013400, 0x40015000, 0x40015400 };
->  #define EXTI_ADDR                      0x40013C00
-> @@ -185,16 +186,18 @@ static void stm32f405_soc_realize(DeviceState *dev_soc, Error **errp)
->      qdev_connect_gpio_out(DEVICE(&s->adc_irqs), 0,
->                            qdev_get_gpio_in(armv7m, ADC_IRQ));
->  
-> -    dev = DEVICE(&(s->adc[i]));
-> -    object_property_set_bool(OBJECT(&s->adc[i]), true, "realized", &err);
-> -    if (err != NULL) {
-> -        error_propagate(errp, err);
-> -        return;
-> +    for (i = 0; i < STM_NUM_ADCS; i++) {
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Correct fix.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Message-id: 20200526062252.19852-4-f4bug@amsat.org
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ hw/display/cirrus_vga.c | 4 +---
+ hw/display/trace-events | 1 +
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
-Problem will come back when we'll want to implement a STM SoC with 8
-ADCs, modifying the definition... We'll need to remember to unref() again.
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-> +        dev = DEVICE(&(s->adc[i]));
-> +        object_property_set_bool(OBJECT(&s->adc[i]), true, "realized", &err);
-> +        if (err != NULL) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +        busdev = SYS_BUS_DEVICE(dev);
-> +        sysbus_mmio_map(busdev, 0, adc_addr[i]);
-> +        sysbus_connect_irq(busdev, 0,
-> +                           qdev_get_gpio_in(DEVICE(&s->adc_irqs), i));
->      }
-> -    busdev = SYS_BUS_DEVICE(dev);
-> -    sysbus_mmio_map(busdev, 0, ADC_ADDR);
-> -    sysbus_connect_irq(busdev, 0,
-> -                       qdev_get_gpio_in(DEVICE(&s->adc_irqs), i));
->  
->      /* SPI devices */
->      for (i = 0; i < STM_NUM_SPIS; i++) {
-> 
+diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
+index 1f29731ffe11..33ccdde00061 100644
+--- a/hw/display/cirrus_vga.c
++++ b/hw/display/cirrus_vga.c
+@@ -1512,9 +1512,7 @@ static int cirrus_vga_read_gr(CirrusVGAState * s, unsigned reg_index)
+ static void
+ cirrus_vga_write_gr(CirrusVGAState * s, unsigned reg_index, int reg_value)
+ {
+-#if defined(DEBUG_BITBLT) && 0
+-    printf("gr%02x: %02x\n", reg_index, reg_value);
+-#endif
++    trace_vga_cirrus_write_gr(reg_index, reg_value);
+     switch (reg_index) {
+     case 0x00:			// Standard VGA, BGCOLOR 0x000000ff
+ 	s->vga.gr[reg_index] = reg_value & gr_mask[reg_index];
+diff --git a/hw/display/trace-events b/hw/display/trace-events
+index 47b2b168ae15..c3043e4ced19 100644
+--- a/hw/display/trace-events
++++ b/hw/display/trace-events
+@@ -133,6 +133,7 @@ vga_vbe_write(uint32_t index, uint32_t val) "index 0x%x, val 0x%x"
+ vga_cirrus_read_io(uint32_t addr, uint32_t val) "addr 0x%x, val 0x%x"
+ vga_cirrus_write_io(uint32_t addr, uint32_t val) "addr 0x%x, val 0x%x"
+ vga_cirrus_write_blt(uint32_t offset, uint32_t val) "offset 0x%x, val 0x%x"
++vga_cirrus_write_gr(uint8_t index, uint8_t val) "GR addr 0x%02x, val 0x%02x"
+ 
+ # sii9022.c
+ sii9022_read_reg(uint8_t addr, uint8_t val) "addr 0x%02x, val 0x%02x"
+-- 
+2.18.4
 

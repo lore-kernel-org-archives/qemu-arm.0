@@ -1,89 +1,88 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp485816lfc;
-        Thu, 28 May 2020 05:40:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwW3oyqU39RXtYZKLXosc8sbv1Zf7aGORSG45BQfYYjRxY5FiG8+PtZef1wKzhgF1RNXdrC
-X-Received: by 2002:a0c:b516:: with SMTP id d22mr2894834qve.88.1590669642108;
-        Thu, 28 May 2020 05:40:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590669642; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp486044lfc;
+        Thu, 28 May 2020 05:40:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxG0fvFWQ15CAWCAhHLRUYesmx2LRoMN6PU8HKhF4cBpVwvxKTfN3ivjjfjgF1SaCbQAJoD
+X-Received: by 2002:a5b:ed1:: with SMTP id a17mr4747884ybs.41.1590669657491;
+        Thu, 28 May 2020 05:40:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590669657; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xr9Is8GfiPmXDGC6Gkn8X59Yq6F7d3A6S0PMcJXxLKZ2luIuQyEahBstLrie2g1lzc
-         ZRkN1zZssR0Dcu4mHD4IeAAJX0OUiNjqyLmkXfIOjFRxHBvJnIpsEIb3AHZxdM6G9zxa
-         tHD9r5+52dNBn9dzBElkTBt2cwzSnfRG4BiSAS12Er2zIOOCw/7FQNngCuX2+oF6j+jV
-         tl5z8RPB6rOlXHM8e2ReHai3BS+aRcZo2/frRtsKmeyEKhLEWD65Pf2YYeCXO9p8Tj4X
-         mhkNMGu2DqMTu7oJTtxmtuwR6/7L2VlHN9THiC7rwD10PDHKzclB4NFJUWHlJXi1StyS
-         XA0w==
+        b=qN5kbnVi/lLgFjvyM/5sWRP4lCXfg3GQnawaq/Nj2l1oCQvj6ICPrtBldDdjAgmY1I
+         mT6A9YgE5zDQwGnKC3NKUKC/Wu+HC3HmKY87by5ea0a0mMrl04mholILgZMb0qPDjiwK
+         6ud2BxU22Eo3tNlpdi7sZFfb0Nx35OCfYYBNZJdw2BsVcQnx9sWPc0KKyAdau+XCOOHS
+         KD+oNemQuL1PlU7Rw6jGSjkNUGaWabY8NLYt1sz25V+M8uoqJa8/rLXcPYb9psgZk/Bu
+         uvIZjgGa6cKQ4FtT2wVQhayxvN7nvEPkteewYww0xDjGk2Rj6Nhjxkdc/Tah2edFoSbX
+         D9ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=PDmNAE+nCUZciCuaalhJy9w5nGh4jWEWyIn0MRb0hzc=;
-        b=SgmIWVnqhLOsEb8EcO6aLAwp6Yid4Kh4XktRgtZG54+tTTE0uKkACM1oE/vUWfy4Lh
-         J+gkNi/fO3xNqfYU1AdDvUB5o2XX144kDQ9292Kl/9ZdsIgmkjgW+VWKmkM8whgC4nXP
-         +wvUzSgGvbNFZQ8Oj2pxXjQc0MOIX54D5SAKuhUEfPLuLwzvv1Fb1XFmL6yzWQE0coh/
-         XiBgrLftcLw7GGDCWwShB1P9t2jza8iZs4FdUorFI7siUzrzpIv0l4xa9pgGPS/1dfiD
-         3tiKgm4aT0/RllLzThSVtU2kgy+1D/hZSUg0gT23VbIVyUhjDg/A6c8/Qh+DrFdXrKGd
-         qphA==
+        bh=278g4ageQCy0goiXt62DoB6ekK6wxlvccTR7+duFaRY=;
+        b=fv4hA2a/efMJchTMXQQAP0DzuI4i8bh7G/9ppVKKXkKRGjm4kDjjckuur4OZWvivcs
+         H5xFwuOsZzBdP/hrAUdmXWuUwJSR01QJ+PQVywmMEeQ9auXXoaRYUesD7HTpitK78bN0
+         Tsc6tLPylux1RvZNQ3BGYJ4ylI59FMzV6dYvgvT87r+qlYFJ/4h3OlL7dpGCTBZDKm0p
+         Fgs9tAX7NYGOLXcNAsphH8l4kGe6hpvKA8swfVyHRfQ5Sv7r6kpF2h97xCsXDVQoc25d
+         KhgZ7KoUrzczKw1KFp+JLqGfMkWiCp3ED5m7f6Vl3/H01pW5SFkh06XLiopHpWxGWzbO
+         bn3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mayjm75l;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KL+i3BcF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p20si3299359qkk.38.2020.05.28.05.40.41
+        by mx.google.com with ESMTPS id v141si3431480ybv.165.2020.05.28.05.40.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 May 2020 05:40:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 28 May 2020 05:40:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mayjm75l;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KL+i3BcF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51066 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51316 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jeHpx-0002JZ-EU
-	for alex.bennee@linaro.org; Thu, 28 May 2020 08:40:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33662)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jeHqC-0002Pv-QB
+	for alex.bennee@linaro.org; Thu, 28 May 2020 08:40:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33658)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHlw-0001kR-8X
- for qemu-arm@nongnu.org; Thu, 28 May 2020 08:36:32 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:43733
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHlw-0001k0-4N
+ for qemu-devel@nongnu.org; Thu, 28 May 2020 08:36:32 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:38833
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHlr-0005Bx-3U
- for qemu-arm@nongnu.org; Thu, 28 May 2020 08:36:31 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jeHlp-0005BG-VX
+ for qemu-devel@nongnu.org; Thu, 28 May 2020 08:36:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1590669385;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=PDmNAE+nCUZciCuaalhJy9w5nGh4jWEWyIn0MRb0hzc=;
- b=Mayjm75l3EzptvQrnNiH7o3z76VKaF7BtN0A4TgCTcFkQH9A6YxPrWKHiOH4M3KquV9F8+
- Db2fwIUnpXyorxAMUqrB4dfMSGfnPApnlKh4LK9G5Qtz7yonQBk/+h1h3KTDK74Kta5A2r
- oQsvcpyQ1z0zJcmJinNN7rtgWMspf8g=
+ bh=278g4ageQCy0goiXt62DoB6ekK6wxlvccTR7+duFaRY=;
+ b=KL+i3BcFWWhDCgks15xo3SE5VYy6pQAJq3QegCpX12eoO2kFcxnassR+hsG/qhP5XmtyAL
+ ei2VPju5UI9rd9lZ65v5/jDYF8J4q8FwRDhA+lho71PaeIOFI2ETB4Z7+rFRroYEg8i4IQ
+ c+AfKxxJIDv+Q1gwddYOYuRs6WKPGCU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-340-p5wut37PNO2EML3fnXlRpg-1; Thu, 28 May 2020 08:36:20 -0400
-X-MC-Unique: p5wut37PNO2EML3fnXlRpg-1
+ us-mta-320-tJKDLwrJMbWsZWSK5g48YA-1; Thu, 28 May 2020 08:36:21 -0400
+X-MC-Unique: tJKDLwrJMbWsZWSK5g48YA-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9EE33107B7C3;
- Thu, 28 May 2020 12:36:18 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 08DE3EC1A3;
+ Thu, 28 May 2020 12:36:20 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-113-50.ams2.redhat.com
  [10.36.113.50])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 094AD7A8A6;
- Thu, 28 May 2020 12:36:18 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B16F97A8B7;
+ Thu, 28 May 2020 12:36:19 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id C8B519D5B; Thu, 28 May 2020 14:36:09 +0200 (CEST)
+ id 012AB9D69; Thu, 28 May 2020 14:36:10 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 12/21] hw/display/exynos4210_fimd: Use
- qemu_log_mask(GUEST_ERROR)
-Date: Thu, 28 May 2020 14:36:00 +0200
-Message-Id: <20200528123609.27362-13-kraxel@redhat.com>
+Subject: [PULL 17/21] sm501: Use BIT(x) macro to shorten constant
+Date: Thu, 28 May 2020 14:36:05 +0200
+Message-Id: <20200528123609.27362-18-kraxel@redhat.com>
 In-Reply-To: <20200528123609.27362-1-kraxel@redhat.com>
 References: <20200528123609.27362-1-kraxel@redhat.com>
 MIME-Version: 1.0
@@ -104,185 +103,60 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Igor Mitsyanko <i.mitsyanko@gmail.com>,
  Alistair Francis <alistair@alistair23.me>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- BALATON Zoltan <balaton@eik.bme.hu>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zgxTlQ7ipgIa
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eyMB+yzzE8a0
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+From: BALATON Zoltan <balaton@eik.bme.hu>
 
-Replace DPRINT_ERROR() by qemu_log_mask(GUEST_ERROR).
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-id: 20200526062252.19852-13-f4bug@amsat.org
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-id: 124bf5de8d7cf503b32b377d0445029a76bfbd49.1590089984.git.balaton@eik.bme.hu
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/display/exynos4210_fimd.c | 46 +++++++++++++++++++++++-------------
- 1 file changed, 29 insertions(+), 17 deletions(-)
+ hw/display/sm501.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-index 1c0266ce9f2d..4b7286b7c948 100644
---- a/hw/display/exynos4210_fimd.c
-+++ b/hw/display/exynos4210_fimd.c
-@@ -31,6 +31,7 @@
- #include "ui/pixel_ops.h"
- #include "qemu/bswap.h"
- #include "qemu/module.h"
-+#include "qemu/log.h"
- 
- /* Debug messages configuration */
- #define EXYNOS4210_FIMD_DEBUG              0
-@@ -39,20 +40,15 @@
- #if EXYNOS4210_FIMD_DEBUG == 0
-     #define DPRINT_L1(fmt, args...)       do { } while (0)
-     #define DPRINT_L2(fmt, args...)       do { } while (0)
--    #define DPRINT_ERROR(fmt, args...)    do { } while (0)
- #elif EXYNOS4210_FIMD_DEBUG == 1
-     #define DPRINT_L1(fmt, args...) \
-         do {fprintf(stderr, "QEMU FIMD: "fmt, ## args); } while (0)
-     #define DPRINT_L2(fmt, args...)       do { } while (0)
--    #define DPRINT_ERROR(fmt, args...)  \
--        do {fprintf(stderr, "QEMU FIMD ERROR: "fmt, ## args); } while (0)
- #else
-     #define DPRINT_L1(fmt, args...) \
-         do {fprintf(stderr, "QEMU FIMD: "fmt, ## args); } while (0)
-     #define DPRINT_L2(fmt, args...) \
-         do {fprintf(stderr, "QEMU FIMD: "fmt, ## args); } while (0)
--    #define DPRINT_ERROR(fmt, args...)  \
--        do {fprintf(stderr, "QEMU FIMD ERROR: "fmt, ## args); } while (0)
- #endif
- 
- #if EXYNOS4210_FIMD_MODE_TRACE == 0
-@@ -1108,7 +1104,7 @@ static inline int fimd_get_buffer_id(Exynos4210fimdWindow *w)
-     case FIMD_WINCON_BUF2_STAT:
-         return 2;
-     default:
--        DPRINT_ERROR("Non-existent buffer index\n");
-+        qemu_log_mask(LOG_GUEST_ERROR, "FIMD: Non-existent buffer index\n");
-         return 0;
-     }
- }
-@@ -1160,20 +1156,24 @@ static void fimd_update_memory_section(Exynos4210fimdState *s, unsigned win)
- 
-     if (int128_get64(w->mem_section.size) != w->fb_len ||
-             !memory_region_is_ram(w->mem_section.mr)) {
--        DPRINT_ERROR("Failed to find window %u framebuffer region\n", win);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "FIMD: Failed to find window %u framebuffer region\n",
-+                      win);
-         goto error_return;
-     }
- 
-     w->host_fb_addr = cpu_physical_memory_map(fb_start_addr, &fb_mapped_len,
-                                               false);
-     if (!w->host_fb_addr) {
--        DPRINT_ERROR("Failed to map window %u framebuffer\n", win);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "FIMD: Failed to map window %u framebuffer\n", win);
-         goto error_return;
-     }
- 
-     if (fb_mapped_len != w->fb_len) {
--        DPRINT_ERROR("Window %u mapped framebuffer length is less then "
--                "expected\n", win);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "FIMD: Window %u mapped framebuffer length is less than "
-+                      "expected\n", win);
-         cpu_physical_memory_unmap(w->host_fb_addr, fb_mapped_len, 0, 0);
-         goto error_return;
-     }
-@@ -1490,7 +1490,9 @@ static void exynos4210_fimd_write(void *opaque, hwaddr offset,
-             break;
-         case 3:
-             if (w != 1 && w != 2) {
--                DPRINT_ERROR("Bad write offset 0x%08x\n", offset);
-+                qemu_log_mask(LOG_GUEST_ERROR,
-+                              "FIMD: Bad write offset 0x%08"HWADDR_PRIx"\n",
-+                              offset);
-                 return;
-             }
-             s->window[w].osdsize = val;
-@@ -1624,7 +1626,9 @@ static void exynos4210_fimd_write(void *opaque, hwaddr offset,
-         break;
-     case FIMD_VIDW0ADD0_B2 ... FIMD_VIDW4ADD0_B2:
-         if (offset & 0x0004) {
--            DPRINT_ERROR("bad write offset 0x%08x\n", offset);
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "FIMD: bad write offset 0x%08"HWADDR_PRIx"\n",
-+                          offset);
-             break;
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+index f42d05e1e4b2..97660090bb20 100644
+--- a/hw/display/sm501.c
++++ b/hw/display/sm501.c
+@@ -701,7 +701,7 @@ static void sm501_2d_operation(SM501State *s)
+ {
+     /* obtain operation parameters */
+     int cmd = (s->twoD_control >> 16) & 0x1F;
+-    int rtl = s->twoD_control & 0x8000000;
++    int rtl = s->twoD_control & BIT(27);
+     int src_x = (s->twoD_source >> 16) & 0x01FFF;
+     int src_y = s->twoD_source & 0xFFFF;
+     int dst_x = (s->twoD_destination >> 16) & 0x01FFF;
+@@ -751,8 +751,7 @@ static void sm501_2d_operation(SM501State *s)
          }
-         w = (offset - FIMD_VIDW0ADD0_B2) >> 3;
-@@ -1638,14 +1642,18 @@ static void exynos4210_fimd_write(void *opaque, hwaddr offset,
-         break;
-     case FIMD_SHD_ADD0_START ... FIMD_SHD_ADD0_END:
-         if (offset & 0x0004) {
--            DPRINT_ERROR("bad write offset 0x%08x\n", offset);
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "FIMD: bad write offset 0x%08"HWADDR_PRIx"\n",
-+                          offset);
-             break;
-         }
-         s->window[(offset - FIMD_SHD_ADD0_START) >> 3].shadow_buf_start = val;
-         break;
-     case FIMD_SHD_ADD1_START ... FIMD_SHD_ADD1_END:
-         if (offset & 0x0004) {
--            DPRINT_ERROR("bad write offset 0x%08x\n", offset);
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "FIMD: bad write offset 0x%08"HWADDR_PRIx"\n",
-+                          offset);
-             break;
-         }
-         s->window[(offset - FIMD_SHD_ADD1_START) >> 3].shadow_buf_end = val;
-@@ -1665,7 +1673,8 @@ static void exynos4210_fimd_write(void *opaque, hwaddr offset,
-         s->window[w].palette[i] = val;
-         break;
-     default:
--        DPRINT_ERROR("bad write offset 0x%08x\n", offset);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "FIMD: bad write offset 0x%08"HWADDR_PRIx"\n", offset);
-         break;
-     }
- }
-@@ -1715,7 +1724,9 @@ static uint64_t exynos4210_fimd_read(void *opaque, hwaddr offset,
-             break;
-         case 3:
-             if (w != 1 && w != 2) {
--                DPRINT_ERROR("bad read offset 0x%08x\n", offset);
-+                qemu_log_mask(LOG_GUEST_ERROR,
-+                              "FIMD: bad read offset 0x%08"HWADDR_PRIx"\n",
-+                              offset);
-                 return 0xBAADBAAD;
-             }
-             ret = s->window[w].osdsize;
-@@ -1809,7 +1820,8 @@ static uint64_t exynos4210_fimd_read(void *opaque, hwaddr offset,
-         return s->window[w].palette[i];
      }
  
--    DPRINT_ERROR("bad read offset 0x%08x\n", offset);
-+    qemu_log_mask(LOG_GUEST_ERROR,
-+                  "FIMD: bad read offset 0x%08"HWADDR_PRIx"\n", offset);
-     return 0xBAADBAAD;
- }
- 
+-    if ((s->twoD_source_base & 0x08000000) ||
+-        (s->twoD_destination_base & 0x08000000)) {
++    if (s->twoD_source_base & BIT(27) || s->twoD_destination_base & BIT(27)) {
+         qemu_log_mask(LOG_UNIMP, "sm501: only local memory is supported.\n");
+         return;
+     }
 -- 
 2.18.4
 

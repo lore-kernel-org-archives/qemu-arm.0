@@ -1,223 +1,176 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1138608lfc;
-        Wed, 27 May 2020 07:47:26 -0700 (PDT)
-X-Received: by 2002:a1c:22d7:: with SMTP id i206mr4550431wmi.186.1590590846218;
-        Wed, 27 May 2020 07:47:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590590846; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp417088lfc;
+        Thu, 28 May 2020 04:05:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw335DjYfo8zIXl5FylI9p9oVkTU6P7NNMMHnSWKI9FZFiaR4Fp3yZ6IwaFBVgzlZpl0U7d
+X-Received: by 2002:a05:620a:54b:: with SMTP id o11mr2260685qko.222.1590663919750;
+        Thu, 28 May 2020 04:05:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590663919; cv=none;
         d=google.com; s=arc-20160816;
-        b=jYqe9BpqzSQUa3vJAr5CN/hYIyYxsRjBr1oU8Hk+LozKcvekeL66HVSIAfb4XzKJ1h
-         fHPl6gY3tcM5rQlTHmrF0M6qGL77Dycyd/WczRv9VSsOFJiDflizUukkbmSXUDmEYDT0
-         7NLCZaglEAAXWkpV3Cfe2A5tcP+IM5ZM7cfFfP1pmxCEWCQYHPIrF26kobkuqF/bbER3
-         nUE1DwZP+uUWieQdX2+Evz/nMYRMd8al722JTBFIwEXJPHuRIroH1avex+aAz4A6m4d0
-         u68a3cKfeFDINeFKxbN0ZX/eDjf0YluFwzJx3oazCA88gll7NfDLy+Ol81YVUVACZllp
-         ckWQ==
+        b=g5E6DCn6WDu4N8y9L1NWEE+3yHcQBonXscC0aPU/KAZ85M6yNYfB6UZvWcn/AFcmQJ
+         7NmhFhmr7+7yTGdbXDOJ4LGq8MkOy7Kb8WBWjYjdqsKTlUDUmZdXw5ZLj1yFFAwizP9g
+         BBFPe0bgVWJYjw904WFL5Z4MQseJAtO4SfBFqCCHANE3T6ypWAdEasiUhqj18zKr+1MI
+         vU5J6UK+5xIjx6hns3Rabt9JVxjmg1Y6CYPJZXHMmT1cJAI90LdrUfvueFCma6eeKx18
+         p77HazdkZrv6z2WRIgq2h71RPmJy5bwMnHZhK0dU3HZlLrPX16j+K5XpjJzoYq1JPmHH
+         2fig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=GrOGXpO7huguJbiqlss87D9k1iAkerndtQgIwlErOGU=;
-        b=k6OUhVU8rMikAVgr0bqS907Dp3N8rnh9L+P6dEew/PMsW0+AHqXjE5W6vVCNKa5BiH
-         8LhgkptlaIpQKwHGW7pzOCveRQY/BLog4bXmIcNASN/Y2vnQsOli557+31fzAa8WXF2m
-         gOf/ZC5L2qht0MYLEj7Wg0aA99HVckEI7JxGgOaZNAXNW6eUT6R584eOniA2XKp/kD64
-         RYJjB8kiJV6a9tTHKrO3gDsOewzi2a/NLsbGXz4Bfp/fePPxR73ABE6cSTfw3GGRaTUF
-         da+uN5Af87Eit3V3JOFqr1S8FI+pCxhaVgRfEtnY7TfBH7Xvh3s2sEG+hSprX2TW4THb
-         h86w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=2E4+O8kSZsRLRCJx59FBHd9L5O/+DjWOjDBKmC0wQ4s=;
+        b=rn3owCUwR3tg40zr+wCSCP8t8BmnKcYcXDL8sJTB0rjqwTwWqRHJ9+DkpDdBFr0y9d
+         HchbwXDFrwwy6q3iBuEqv4gexIR0dua2lQExSY6QLU/zYbEf4nAQ3cyXUQxmoDXYpeNy
+         CtxAWSqptSPn0NguoySdTqSbT8rvAUMJX2R4gqUyE/5BaSagLg2ui8DeMC1yc8Hu/MLK
+         odgJsWT3su5gIy7jhwoF1VUbjhzQJAoF2a/Wtha+XzuTGY9uGSEfNfKxDhTdBL2Efpvr
+         BpAdztKCmwkByiQ4MXBa0uXzpuxv111sU4Je8xT49dcjTEp5XtSxFYSN6hPaKbTOQwse
+         MKxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SgDD3K0G;
-       spf=pass (google.com: domain of aleksandar.qemu.devel@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=aleksandar.qemu.devel@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <aleksandar.qemu.devel@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t11sor1683771wrx.44.2020.05.27.07.47.26
-        (Google Transport Security);
-        Wed, 27 May 2020 07:47:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aleksandar.qemu.devel@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NOjxLW28;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j16si400153qtv.304.2020.05.28.04.05.19
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 28 May 2020 04:05:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SgDD3K0G;
-       spf=pass (google.com: domain of aleksandar.qemu.devel@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=aleksandar.qemu.devel@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=GrOGXpO7huguJbiqlss87D9k1iAkerndtQgIwlErOGU=;
-        b=SgDD3K0GNnxPXkB645sD03pHKUf5og4Hwslcp9YtSocdYz0bjCpns2EBTYnZROqFA4
-         rBEKTX6+Xx1d04onodKDoa1ZVYbzrRhoUyXKEOH8j7KWY4XWWBDVTTgFlLEciX4kghbB
-         JDGmZpZfQEWkgUqDF5OOoEa4K2+fpp9mhYl8W0IYXH3RRdSMQNR1Z7YPwZRc+Zm8Jbjw
-         QPiDzirM8tvPN2F5CJgJ6OWdtlqxMoYBrH/o6KV++Asq5rhcOOyop/leCtHM37+JRwLN
-         90wHe5YG5pYWV0VISU/HrIwwRN/3f1yXVxm1Sa8i1zBTP4x9iALgBBtD0asu2RueUpIv
-         HcoA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=GrOGXpO7huguJbiqlss87D9k1iAkerndtQgIwlErOGU=;
-        b=fMv90tH3PpoVOmT87ThRE9bkxrlz5WtLYI2itkNw4mMoKknWoG3CLqTIbyKSPSmuy+
-         7uivLprKO5MwPx9jUHzGeymwLA9WKRGj1kIWP/ckDdHgXGeFG6WviAF156MKHYS52fez
-         +Jn0Zm4m7jtAYlTyxMUUWlsUI9Xk0k0Wdg4CenBA3gbAunb/MTJ7ffzVfvh0/dEiY7eT
-         10rlz8zIgKbOwEDMlSiYRWXMO2gQUj5R2odKSeQa6L4249fdQkZiVN7lKJzBkSSdBI7g
-         jy9lpQc9bWy7B3Hom5F5R/E9wD/dk4E1e5adSLCyxueO0+kdFyX4Kpk7R7H/VK+Ekewn
-         K1Eg==
-X-Gm-Message-State: AOAM5323C3a5hrQNEr1y2arBRs1bqZ8hnA+xZKlnv/RfuF20jZbdyivX
-	PDfVw//Fo+qrC8nxqKmlgsoAac5dH5N3XVaOw743QGB3
-X-Google-Smtp-Source: ABdhPJwaqJ9shuwQr9EJYNIOc3MgZCB9FCr7MAjKJ6MKoyoX+KaPDw9zXulTTqKOns75hxzcxIiPjtNKubUzDXFxueM=
-X-Received: by 2002:adf:e64b:: with SMTP id b11mr24234086wrn.402.1590590845626;
- Wed, 27 May 2020 07:47:25 -0700 (PDT)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NOjxLW28;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55508 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jeGLf-0005h8-3J
+	for alex.bennee@linaro.org; Thu, 28 May 2020 07:05:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49746)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jeGLE-0005fm-J3
+ for qemu-arm@nongnu.org; Thu, 28 May 2020 07:04:52 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:57606
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jeGLC-0006by-CW
+ for qemu-arm@nongnu.org; Thu, 28 May 2020 07:04:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1590663889;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2E4+O8kSZsRLRCJx59FBHd9L5O/+DjWOjDBKmC0wQ4s=;
+ b=NOjxLW2828dTwxUWWs1UzomudIQJfPiS0tQjDn1j1zmfj5bu96J7sf1khBCdaSH097K1vF
+ w9Kccv+yJVnl7/ejiVXa/am2HNVHHtufMbJgRs1uZe890c6IKI72X0WKkVXNiOMxB9dKaY
+ mJ+OFCU3YX+AcrKav15W5vF0bKWcMoU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-434-oUKh0RJsOMic5Oqf_14szA-1; Thu, 28 May 2020 07:04:47 -0400
+X-MC-Unique: oUKh0RJsOMic5Oqf_14szA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6B42A1005510;
+ Thu, 28 May 2020 11:04:46 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-32.ams2.redhat.com
+ [10.36.112.32])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 38E3E5C1B0;
+ Thu, 28 May 2020 11:04:46 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id BEEE211385E2; Thu, 28 May 2020 13:04:44 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 03/24] sd/pxa2xx_mmci: Fix to realize "pxa2xx-mmci" device
+Date: Thu, 28 May 2020 13:04:23 +0200
+Message-Id: <20200528110444.20456-4-armbru@redhat.com>
+In-Reply-To: <20200528110444.20456-1-armbru@redhat.com>
+References: <20200528110444.20456-1-armbru@redhat.com>
 MIME-Version: 1.0
-References: <20200527100546.29297-1-alex.bennee@linaro.org>
- <20200527100546.29297-3-alex.bennee@linaro.org> <CAHiYmc7EJVxKXZ4G96cL-Bm3tT8UR_dgr7y3oisUMnuJ0u3zaw@mail.gmail.com>
-In-Reply-To: <CAHiYmc7EJVxKXZ4G96cL-Bm3tT8UR_dgr7y3oisUMnuJ0u3zaw@mail.gmail.com>
-From: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
-Date: Wed, 27 May 2020 16:47:13 +0200
-Message-ID: <CAHiYmc7TYHMcitiG9ELxfz-EC8DSG1b7FeFsxXxTbu-7FSih=Q@mail.gmail.com>
-Subject: Re: [PATCH v1 2/3] linux-user: deal with address wrap for
- ARM_COMMPAGE on 32 bit
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	Bug 1880225 <1880225@bugs.launchpad.net>, Riku Voipio <riku.voipio@iki.fi>, 
-	Richard Henderson <richard.henderson@linaro.org>, Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: joiQ9FdZY0q2
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/28 06:31:20
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
+ ehabkost@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
+ Andrzej Zaborowski <balrogg@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wOEryn+Af3Rz
 
-=D1=81=D1=80=D0=B5, 27. =D0=BC=D0=B0=D1=98 2020. =D1=83 14:05 Aleksandar Ma=
-rkovic
-<aleksandar.qemu.devel@gmail.com> =D1=98=D0=B5 =D0=BD=D0=B0=D0=BF=D0=B8=D1=
-=81=D0=B0=D0=BE/=D0=BB=D0=B0:
->
-> =D1=81=D1=80=D0=B5, 27. =D0=BC=D0=B0=D1=98 2020. =D1=83 12:07 Alex Benn=
-=C3=A9e <alex.bennee@linaro.org> =D1=98=D0=B5 =D0=BD=D0=B0=D0=BF=D0=B8=D1=
-=81=D0=B0=D0=BE/=D0=BB=D0=B0:
-> >
-> > We rely on the pointer to wrap when accessing the high address of the
-> > COMMPAGE so it lands somewhere reasonable. However on 32 bit hosts we
-> > cannot afford just to map the entire 4gb address range. The old mmap
-> > trial and error code handled this by just checking we could map both
-> > the guest_base and the computed COMMPAGE address.
-> >
-> > We can't just manipulate loadaddr to get what we want so we introduce
-> > an offset which pgb_find_hole can apply when looking for a gap for
-> > guest_base that ensures there is space left to map the COMMPAGE
-> > afterwards.
-> >
-> > This is arguably a little inefficient for the one 32 bit
-> > value (kuser_helper_version) we need to keep there given all the
-> > actual code entries are picked up during the translation phase.
-> >
-> > Fixes: ee94743034b
-> > Bug: https://bugs.launchpad.net/qemu/+bug/1880225
->
-> For the scenario in this bug report, for today's master, before and after
-> applying this patch:
->
+pxa2xx_mmci_init() creates a "pxa2xx-mmci" device, but neglects to
+realize it.  Affects machines akita, borzoi, connex, mainstone, spitz,
+terrier, tosa, verdex, and z2.
 
-I am not sure how significant is this info, but I executed the test
-without applying patch 1/3, so only 2/3 was applied in the case
-"AFTER".
+In theory, a device becomes real only on realize.  In practice, the
+transition from unreal to real is a fuzzy one.  The work to make a
+device real can be spread between realize methods (fine),
+instance_init methods (wrong), and board code wiring up the device
+(fine as long as it effectively happens on realize).  Depending on
+what exactly is done where, a device can work even when we neglect
+to realize it.
 
-Aleksandar
+This one appears to work.  Nevertheless, it's a clear misuse of the
+interface.  Even when it works today (more or less by chance), it can
+break tomorrow.
 
-> BEFORE:
->
-> $ ~/Build/qemu-master/build-gcc/arm-linux-user/qemu-arm ./toupper_string-=
-arm
-> qemu-arm: /home/rtrk/Build/qemu-master/linux-user/elfload.c:2294:
-> probe_guest_base: Assertion `have_guest_base' failed.
-> Aborted
->
-> AFTER:
->
-> $ ~/Build/qemu-master/build-gcc/arm-linux-user/qemu-arm ./toupper_string-=
-arm
-> CONTROL RESULT: (toupper_string)
->  nwlrbbmqbhcdarz owkkyhiddqscdxr jmowfrxsjybldbe fsarcbynecdyggx xpklorel=
-lnmpapq
->  NWLRBBMQBHCDARZ OWKKYHIDDQSCDXR JMOWFRXSJYBLDBE FSARCBYNECDYGGX XPKLOREL=
-LNMPAPQ
->
-> So, it works in my test bed.
->
-> Tested-by: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
->
-> > Cc: Bug 1880225 <1880225@bugs.launchpad.net>
-> > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> > Cc: Richard Henderson <richard.henderson@linaro.org>
-> > Cc: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >  linux-user/elfload.c | 18 ++++++++++--------
-> >  1 file changed, 10 insertions(+), 8 deletions(-)
-> >
-> > diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-> > index d6027867a1a..31defce95b5 100644
-> > --- a/linux-user/elfload.c
-> > +++ b/linux-user/elfload.c
-> > @@ -2145,7 +2145,7 @@ static uintptr_t pgd_find_hole_fallback(uintptr_t=
- guest_size, uintptr_t brk, lon
-> >
-> >  /* Return value for guest_base, or -1 if no hole found. */
-> >  static uintptr_t pgb_find_hole(uintptr_t guest_loaddr, uintptr_t guest=
-_size,
-> > -                               long align)
-> > +                               long align, uintptr_t offset)
-> >  {
-> >      GSList *maps, *iter;
-> >      uintptr_t this_start, this_end, next_start, brk;
-> > @@ -2171,7 +2171,7 @@ static uintptr_t pgb_find_hole(uintptr_t guest_lo=
-addr, uintptr_t guest_size,
-> >
-> >          this_end =3D ((MapInfo *)iter->data)->start;
-> >          next_start =3D ((MapInfo *)iter->data)->end;
-> > -        align_start =3D ROUND_UP(this_start, align);
-> > +        align_start =3D ROUND_UP(this_start + offset, align);
-> >
-> >          /* Skip holes that are too small. */
-> >          if (align_start >=3D this_end) {
-> > @@ -2221,6 +2221,7 @@ static void pgb_static(const char *image_name, ab=
-i_ulong orig_loaddr,
-> >  {
-> >      uintptr_t loaddr =3D orig_loaddr;
-> >      uintptr_t hiaddr =3D orig_hiaddr;
-> > +    uintptr_t offset =3D 0;
-> >      uintptr_t addr;
-> >
-> >      if (hiaddr !=3D orig_hiaddr) {
-> > @@ -2234,18 +2235,19 @@ static void pgb_static(const char *image_name, =
-abi_ulong orig_loaddr,
-> >      if (ARM_COMMPAGE) {
-> >          /*
-> >           * Extend the allocation to include the commpage.
-> > -         * For a 64-bit host, this is just 4GiB; for a 32-bit host,
-> > -         * the address arithmetic will wrap around, but the difference
-> > -         * will produce the correct allocation size.
-> > +         * For a 64-bit host, this is just 4GiB; for a 32-bit host we
-> > +         * need to ensure there is space bellow the guest_base so we
-> > +         * can map the commpage in the place needed when the address
-> > +         * arithmetic wraps around.
-> >           */
-> >          if (sizeof(uintptr_t) =3D=3D 8 || loaddr >=3D 0x80000000u) {
-> >              hiaddr =3D (uintptr_t)4 << 30;
-> >          } else {
-> > -            loaddr =3D ARM_COMMPAGE & -align;
-> > +            offset =3D (128 * KiB);
-> >          }
-> >      }
-> >
-> > -    addr =3D pgb_find_hole(loaddr, hiaddr - loaddr, align);
-> > +    addr =3D pgb_find_hole(loaddr, hiaddr - loaddr, align, offset);
-> >      if (addr =3D=3D -1) {
-> >          /*
-> >           * If ARM_COMMPAGE, there *might* be a non-consecutive allocat=
-ion
-> > @@ -2280,7 +2282,7 @@ static void pgb_dynamic(const char *image_name, l=
-ong align)
-> >           * just above that, and maximises the positive guest addresses=
-.
-> >           */
-> >          commpage =3D ARM_COMMPAGE & -align;
-> > -        addr =3D pgb_find_hole(commpage, -commpage, align);
-> > +        addr =3D pgb_find_hole(commpage, -commpage, align, 0);
-> >          assert(addr !=3D -1);
-> >          guest_base =3D addr;
-> >      }
-> > --
-> > 2.20.1
-> >
-> >
+Fix by realizing it right away.  Visible in "info qom-tree"; here's
+the change for akita:
+
+     /machine (akita-machine)
+       [...]
+       /unattached (container)
+         [...]
+    +    /device[5] (pxa2xx-mmci)
+    +      /pxa2xx-mmci[0] (qemu:memory-region)
+    +      /sd-bus (pxa2xx-mmci-bus)
+         [rest of device[*] renumbered...]
+
+Fixes: 7a9468c92517e19037bfe2272f64f5dadaf9db15
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/sd/pxa2xx_mmci.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+index f9c50ddda5..c32df1b8f9 100644
+--- a/hw/sd/pxa2xx_mmci.c
++++ b/hw/sd/pxa2xx_mmci.c
+@@ -492,6 +492,7 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+     sysbus_connect_irq(sbd, 0, irq);
+     qdev_connect_gpio_out_named(dev, "rx-dma", 0, rx_dma);
+     qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
++    qdev_init_nofail(dev);
+ 
+     /* Create and plug in the sd card */
+     carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
+-- 
+2.21.3
+

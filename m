@@ -1,92 +1,93 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp417088lfc;
-        Thu, 28 May 2020 04:05:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw335DjYfo8zIXl5FylI9p9oVkTU6P7NNMMHnSWKI9FZFiaR4Fp3yZ6IwaFBVgzlZpl0U7d
-X-Received: by 2002:a05:620a:54b:: with SMTP id o11mr2260685qko.222.1590663919750;
-        Thu, 28 May 2020 04:05:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590663919; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp418308lfc;
+        Thu, 28 May 2020 04:06:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx+ExmDT5viU7eTVisYyaqt1nBRm5i7SJFCz+OP290KvsBMbtX7sPMfIXZFdJnsJhgUsR03
+X-Received: by 2002:a05:620a:164c:: with SMTP id c12mr1937220qko.343.1590663993587;
+        Thu, 28 May 2020 04:06:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590663993; cv=none;
         d=google.com; s=arc-20160816;
-        b=g5E6DCn6WDu4N8y9L1NWEE+3yHcQBonXscC0aPU/KAZ85M6yNYfB6UZvWcn/AFcmQJ
-         7NmhFhmr7+7yTGdbXDOJ4LGq8MkOy7Kb8WBWjYjdqsKTlUDUmZdXw5ZLj1yFFAwizP9g
-         BBFPe0bgVWJYjw904WFL5Z4MQseJAtO4SfBFqCCHANE3T6ypWAdEasiUhqj18zKr+1MI
-         vU5J6UK+5xIjx6hns3Rabt9JVxjmg1Y6CYPJZXHMmT1cJAI90LdrUfvueFCma6eeKx18
-         p77HazdkZrv6z2WRIgq2h71RPmJy5bwMnHZhK0dU3HZlLrPX16j+K5XpjJzoYq1JPmHH
-         2fig==
+        b=G3xz5vyIyE9l0yK1sr+qqLHQfEganm6zMJDfM/UpXIKU2kFtDJN+r6fo+4PDtgon6n
+         T+9Q4aVEIqPZlpQJm5WOYRjqHSFR8j+jRC9VoyAYPb0rx2k6Ot9Y9mLSRY0mVnc1nMP8
+         wq9k8j+eSPhiVQ0mE/7I357l4SdCEQA2FCOY7FNZl4BZoSz+lIclXXUS4NpwbRJpg83d
+         C2OwqauVkTP4FaXA/hFZNPMdHv5Y8Tgu9CC3KC+oShSxejUwgauGyAHnENTHGi1Nc4rl
+         SyGlQFSe8Sn4r7tn8tN4Xioy/CSc5YPCQ1knSFcslhenBX8UyBXF7aWV0Lw+dCnKBCIT
+         mWTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=2E4+O8kSZsRLRCJx59FBHd9L5O/+DjWOjDBKmC0wQ4s=;
-        b=rn3owCUwR3tg40zr+wCSCP8t8BmnKcYcXDL8sJTB0rjqwTwWqRHJ9+DkpDdBFr0y9d
-         HchbwXDFrwwy6q3iBuEqv4gexIR0dua2lQExSY6QLU/zYbEf4nAQ3cyXUQxmoDXYpeNy
-         CtxAWSqptSPn0NguoySdTqSbT8rvAUMJX2R4gqUyE/5BaSagLg2ui8DeMC1yc8Hu/MLK
-         odgJsWT3su5gIy7jhwoF1VUbjhzQJAoF2a/Wtha+XzuTGY9uGSEfNfKxDhTdBL2Efpvr
-         BpAdztKCmwkByiQ4MXBa0uXzpuxv111sU4Je8xT49dcjTEp5XtSxFYSN6hPaKbTOQwse
-         MKxw==
+        bh=UVcKLeFWj0VSeKdG4aLNUd6u+7CARzd27MuFmScMnPw=;
+        b=pv5m+HIyWwrBXR22xXM30XkwbIM1V9D2xb+Bg6LjG5ixs2fcqAPZjlf+YVP2QVay1J
+         NSa4N4ygai4iAb7KPSoIJvezi3riOftXTVi5gpGTUgGGkrdzb40yq33TaBGzPhaqtu0v
+         TcUqdcraBm/WveXH9uBn9wsPirca7118/18X2HjghkIdixvGO14xk9Pc5xZoEdAuCctf
+         BSHU4FgNk3yYfJy5QOStSLybghMqRvoZStwUZ+yXU61EEzQDOrAoTnTXLX/sTAnduj68
+         tT/vY1DsnrglblEYW8mepbqgu77z7RN++cxmQtI57ufOVRGCtm+s3KfCqjbqYfybgC1t
+         T3wQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NOjxLW28;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="f6zcUv/u";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j16si400153qtv.304.2020.05.28.04.05.19
+        by mx.google.com with ESMTPS id i37si3358553qtc.195.2020.05.28.04.06.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 May 2020 04:05:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 28 May 2020 04:06:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NOjxLW28;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="f6zcUv/u";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55508 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59730 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jeGLf-0005h8-3J
-	for alex.bennee@linaro.org; Thu, 28 May 2020 07:05:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49746)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jeGMr-0007b5-09
+	for alex.bennee@linaro.org; Thu, 28 May 2020 07:06:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49764)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jeGLE-0005fm-J3
- for qemu-arm@nongnu.org; Thu, 28 May 2020 07:04:52 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:57606
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jeGLF-0005gO-84
+ for qemu-devel@nongnu.org; Thu, 28 May 2020 07:04:53 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:55560
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jeGLC-0006by-CW
- for qemu-arm@nongnu.org; Thu, 28 May 2020 07:04:51 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jeGLC-0006bx-BO
+ for qemu-devel@nongnu.org; Thu, 28 May 2020 07:04:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1590663889;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2E4+O8kSZsRLRCJx59FBHd9L5O/+DjWOjDBKmC0wQ4s=;
- b=NOjxLW2828dTwxUWWs1UzomudIQJfPiS0tQjDn1j1zmfj5bu96J7sf1khBCdaSH097K1vF
- w9Kccv+yJVnl7/ejiVXa/am2HNVHHtufMbJgRs1uZe890c6IKI72X0WKkVXNiOMxB9dKaY
- mJ+OFCU3YX+AcrKav15W5vF0bKWcMoU=
+ bh=UVcKLeFWj0VSeKdG4aLNUd6u+7CARzd27MuFmScMnPw=;
+ b=f6zcUv/unXJ+QQjuzx5QVlmvtqb96MPqXQwEbwnCsrScb4f7Xh6wO02xZuXXeMA6P8ruSq
+ sNFVuoh9hpRzOuFFEkSdfMidUxrsxJvrJDdjWxQO/R0qhdjlvwVSD6eAY9weDQboM6u/M2
+ qA/JkS0rkwkdyiudmdmwUv/Sne2n0XE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-434-oUKh0RJsOMic5Oqf_14szA-1; Thu, 28 May 2020 07:04:47 -0400
-X-MC-Unique: oUKh0RJsOMic5Oqf_14szA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-432-wc5HpOncM9O1XGX0j_sLaA-1; Thu, 28 May 2020 07:04:47 -0400
+X-MC-Unique: wc5HpOncM9O1XGX0j_sLaA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6B42A1005510;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6B51D107ACCD;
  Thu, 28 May 2020 11:04:46 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-112-32.ams2.redhat.com
  [10.36.112.32])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 38E3E5C1B0;
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3919019D71;
  Thu, 28 May 2020 11:04:46 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id BEEE211385E2; Thu, 28 May 2020 13:04:44 +0200 (CEST)
+ id B78C811386A0; Thu, 28 May 2020 13:04:44 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 03/24] sd/pxa2xx_mmci: Fix to realize "pxa2xx-mmci" device
-Date: Thu, 28 May 2020 13:04:23 +0200
-Message-Id: <20200528110444.20456-4-armbru@redhat.com>
+Subject: [PATCH v2 01/24] arm/stm32f405: Fix realization of "stm32f2xx-adc"
+ devices
+Date: Thu, 28 May 2020 13:04:21 +0200
+Message-Id: <20200528110444.20456-2-armbru@redhat.com>
 In-Reply-To: <20200528110444.20456-1-armbru@redhat.com>
 References: <20200528110444.20456-1-armbru@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
@@ -103,27 +104,27 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
- ehabkost@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
- Andrzej Zaborowski <balrogg@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wOEryn+Af3Rz
+ ehabkost@redhat.com, Alistair Francis <alistair@alistair23.me>,
+ qemu-arm@nongnu.org, pbonzini@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ksRGZztLc2I5
 
-pxa2xx_mmci_init() creates a "pxa2xx-mmci" device, but neglects to
-realize it.  Affects machines akita, borzoi, connex, mainstone, spitz,
-terrier, tosa, verdex, and z2.
+stm32f405_soc_initfn() creates six such devices, but
+stm32f405_soc_realize() realizes only one.  Affects machine
+netduinoplus2.
 
 In theory, a device becomes real only on realize.  In practice, the
 transition from unreal to real is a fuzzy one.  The work to make a
@@ -133,44 +134,93 @@ instance_init methods (wrong), and board code wiring up the device
 what exactly is done where, a device can work even when we neglect
 to realize it.
 
-This one appears to work.  Nevertheless, it's a clear misuse of the
-interface.  Even when it works today (more or less by chance), it can
-break tomorrow.
+The five unrealized devices appear to stay unreal: neither MMIO nor
+IRQ get wired up.
 
-Fix by realizing it right away.  Visible in "info qom-tree"; here's
-the change for akita:
+Fix stm32f405_soc_realize() to realize and wire up all six.  Visible
+in "info qtree":
 
-     /machine (akita-machine)
-       [...]
-       /unattached (container)
-         [...]
-    +    /device[5] (pxa2xx-mmci)
-    +      /pxa2xx-mmci[0] (qemu:memory-region)
-    +      /sd-bus (pxa2xx-mmci-bus)
-         [rest of device[*] renumbered...]
+     bus: main-system-bus
+       type System
+       dev: stm32f405-soc, id ""
+         cpu-type = "cortex-m4-arm-cpu"
+       dev: stm32f2xx-adc, id ""
+         gpio-out "sysbus-irq" 1
+    -    mmio ffffffffffffffff/00000000000000ff
+    +    mmio 0000000040012000/00000000000000ff
+       dev: stm32f2xx-adc, id ""
+         gpio-out "sysbus-irq" 1
+    -    mmio ffffffffffffffff/00000000000000ff
+    +    mmio 0000000040012100/00000000000000ff
+       dev: stm32f2xx-adc, id ""
+         gpio-out "sysbus-irq" 1
+    -    mmio ffffffffffffffff/00000000000000ff
+    +    mmio 0000000040012200/00000000000000ff
+       dev: stm32f2xx-adc, id ""
+         gpio-out "sysbus-irq" 1
+    -    mmio ffffffffffffffff/00000000000000ff
+    +    mmio 0000000040012300/00000000000000ff
+       dev: stm32f2xx-adc, id ""
+         gpio-out "sysbus-irq" 1
+    -    mmio 0000000040012000/00000000000000ff
+    +    mmio 0000000040012400/00000000000000ff
+       dev: stm32f2xx-adc, id ""
+         gpio-out "sysbus-irq" 1
+    -    mmio ffffffffffffffff/00000000000000ff
+    +    mmio 0000000040012500/00000000000000ff
+       dev: armv7m, id ""
 
-Fixes: 7a9468c92517e19037bfe2272f64f5dadaf9db15
-Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Fixes: 529fc5fd3e18ace8f739afd02dc0953354f39442
+Cc: Alistair Francis <alistair@alistair23.me>
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/sd/pxa2xx_mmci.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/stm32f405_soc.c | 23 +++++++++++++----------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
 
-diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
-index f9c50ddda5..c32df1b8f9 100644
---- a/hw/sd/pxa2xx_mmci.c
-+++ b/hw/sd/pxa2xx_mmci.c
-@@ -492,6 +492,7 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
-     sysbus_connect_irq(sbd, 0, irq);
-     qdev_connect_gpio_out_named(dev, "rx-dma", 0, rx_dma);
-     qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
-+    qdev_init_nofail(dev);
+diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
+index 4f10ce6176..c9a530eecf 100644
+--- a/hw/arm/stm32f405_soc.c
++++ b/hw/arm/stm32f405_soc.c
+@@ -37,7 +37,8 @@ static const uint32_t usart_addr[] = { 0x40011000, 0x40004400, 0x40004800,
+ /* At the moment only Timer 2 to 5 are modelled */
+ static const uint32_t timer_addr[] = { 0x40000000, 0x40000400,
+                                        0x40000800, 0x40000C00 };
+-#define ADC_ADDR                       0x40012000
++static const uint32_t adc_addr[] = { 0x40012000, 0x40012100, 0x40012200,
++                                     0x40012300, 0x40012400, 0x40012500 };
+ static const uint32_t spi_addr[] =   { 0x40013000, 0x40003800, 0x40003C00,
+                                        0x40013400, 0x40015000, 0x40015400 };
+ #define EXTI_ADDR                      0x40013C00
+@@ -185,16 +186,18 @@ static void stm32f405_soc_realize(DeviceState *dev_soc, Error **errp)
+     qdev_connect_gpio_out(DEVICE(&s->adc_irqs), 0,
+                           qdev_get_gpio_in(armv7m, ADC_IRQ));
  
-     /* Create and plug in the sd card */
-     carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
+-    dev = DEVICE(&(s->adc[i]));
+-    object_property_set_bool(OBJECT(&s->adc[i]), true, "realized", &err);
+-    if (err != NULL) {
+-        error_propagate(errp, err);
+-        return;
++    for (i = 0; i < STM_NUM_ADCS; i++) {
++        dev = DEVICE(&(s->adc[i]));
++        object_property_set_bool(OBJECT(&s->adc[i]), true, "realized", &err);
++        if (err != NULL) {
++            error_propagate(errp, err);
++            return;
++        }
++        busdev = SYS_BUS_DEVICE(dev);
++        sysbus_mmio_map(busdev, 0, adc_addr[i]);
++        sysbus_connect_irq(busdev, 0,
++                           qdev_get_gpio_in(DEVICE(&s->adc_irqs), i));
+     }
+-    busdev = SYS_BUS_DEVICE(dev);
+-    sysbus_mmio_map(busdev, 0, ADC_ADDR);
+-    sysbus_connect_irq(busdev, 0,
+-                       qdev_get_gpio_in(DEVICE(&s->adc_irqs), i));
+ 
+     /* SPI devices */
+     for (i = 0; i < STM_NUM_SPIS; i++) {
 -- 
 2.21.3
 

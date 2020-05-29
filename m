@@ -1,68 +1,107 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp809596lfc;
-        Thu, 28 May 2020 12:26:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwH2Uva2nqxGkgg8ChSOZrSaAjy6hcS7pyuasg+C2fcyfv8z27dEYnITogEgEb9pSmXDCBM
-X-Received: by 2002:a25:ba4c:: with SMTP id z12mr7895903ybj.164.1590694008862;
-        Thu, 28 May 2020 12:26:48 -0700 (PDT)
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp651386lfc;
+        Fri, 29 May 2020 09:36:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwoPZVntOmu1Uc6gfVqQw5yYvdbcPRqfR08up76zLEpEDJuY6HWIHcIT7VLeLEZMmUb+WR/
+X-Received: by 2002:a25:ba4c:: with SMTP id z12mr15229913ybj.164.1590770204681;
+        Fri, 29 May 2020 09:36:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590770204; cv=none;
+        d=google.com; s=arc-20160816;
+        b=x5ha85+F++Bl9v71eY6TNqNnBJ0BvI08DiJ9eY2xIy+UvgcBGWHZ77SbDdivxbr4Zd
+         xppJ2OklB8nxPGPgKKl9LqXI5eVPb6sk65LG9r+eijDMnDzIDGSOEubTM9AwqrYHXE0c
+         CfI0hfu5YrZL2hh4QOaczvX7BjzJcdcLX/0wgW+uVFUyYyrhzbbPhZ7D4b+PSilafymV
+         raD27tG3riQrF5Iu+7fcLQIdlc4Q6VffzopsTMH+IUPM35HIlVFhmBp8Gvl7K5y2ZJSY
+         L0BMvOiBPEefkGMt98yzrYOrDbHD3ZMknI8HRGjryYQH4F6DH6EM20Rdtqd9FMSicDX8
+         qCwA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=zXn7AXifg48JVqsK9vmLot62NN8E79cUAHW8G7tpJww=;
+        b=pziSsE8yL2EtkHA7g1HaPcwpiQqIbNutiH0xBtCPCbIVvWJ0cwfEcYyTlBLHOkCJw2
+         7EOqsOz8R9n5ONypKls6ZFlEOU5hxal4rlk1DHmTC5Gp+qp6snaiv8Iv4UTdKBaNTZfM
+         sIhhprwCH82pA0qjy1gHJRFmFs1qANi9NsC3lv3Uk8NxajmkFTHHcr89II6tvSu7tMQC
+         26/tFHnYJ4SKCRbUzbR+4sWEPeX08jIXQ/gOoLCXwsFkaeIeJuIeucvWnwqsjd/G689B
+         UnqsX4fl1Qcqk3yyJyNdZye3X4+mCBwyoWhGP3W+w5kgkOldxt1ylQlUuhhqxwFkefV/
+         BQRw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HyrC0IA6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j7si6125668ybc.321.2020.05.28.12.26.48
+        by mx.google.com with ESMTPS id l204si8102413ybb.461.2020.05.29.09.36.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 May 2020 12:26:48 -0700 (PDT)
+        Fri, 29 May 2020 09:36:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49138 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=HyrC0IA6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35142 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jeOAy-0001Nw-80
-	for alex.bennee@linaro.org; Thu, 28 May 2020 15:26:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43544)
+	id 1jehzw-0006WQ-1q
+	for alex.bennee@linaro.org; Fri, 29 May 2020 12:36:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33172)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jeOAJ-0000oF-UQ; Thu, 28 May 2020 15:26:07 -0400
-Resent-Date: Thu, 28 May 2020 15:26:07 -0400
-Resent-Message-Id: <E1jeOAJ-0000oF-UQ@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21715)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jeOAH-0007NP-O2; Thu, 28 May 2020 15:26:07 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1590693953; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=c2EFVQrXCFZPyfF/aWO15Q1diSWjFcqkFbtxOd9SQtHcRX4tCBbRpBaaNMGEWiCmCI6XW+vclFZZhSg+XAavE9Pu++n4S6hUhGMYjwL5jxClx0PCoDyttzj2PKb4++RGV1MLvW+3Dxum5cHN9yCtm65MACL1TqSJaomyezYjLoM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1590693953;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=asCDpoXj7AVedWp8mswn8KD3YetPHszID9FN6AclA1Q=; 
- b=K02Kv+Qz3TK1QbwHefv9wx1LOOQmupI2eecYUOt8uODdzBB9BU7tkqDxKdOvhZ/n4Fpn4fHF0Azk7atZhXeeR4fkjE0yXSf4FA1/naz+LyPcVAp1FvR+vzjwqqVWcz0zkCsJnxc3RCoGE8KP2YzpA+lT8OG3iYz5BQAu4j40OvM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1590693950039299.8939020208626;
- Thu, 28 May 2020 12:25:50 -0700 (PDT)
-Message-ID: <159069394828.20666.8800325140315031525@45ef0f9c86ae>
-In-Reply-To: <20200528123609.27362-1-kraxel@redhat.com>
-Subject: Re: [PULL 00/21] Vga 20200528 patches
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jehzp-0006W8-Fj
+ for qemu-arm@nongnu.org; Fri, 29 May 2020 12:36:37 -0400
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332]:45342)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jehzo-0004iB-CO
+ for qemu-arm@nongnu.org; Fri, 29 May 2020 12:36:36 -0400
+Received: by mail-ot1-x332.google.com with SMTP id m2so429752otr.12
+ for <qemu-arm@nongnu.org>; Fri, 29 May 2020 09:36:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=zXn7AXifg48JVqsK9vmLot62NN8E79cUAHW8G7tpJww=;
+ b=HyrC0IA6nn1hI4HTbT7QugqwR/28LKc2Oy3eU1lM2KTLvq09G+60fVX49jH6D0V5PE
+ +xqc1GD07svWmUwRVK5FmGR7EeYw5lvs5WchmhZLRJ8RbLgyZ5O/CA/qyLSmSRyMoYtV
+ mxige4UJMHFX3ascDV5fVPwszVpViGOzd+KR6vrBoBzc1hi1GG9ALA+VPdsh7jLbqkGJ
+ Xrz6xsKyHsj8E+kABOxK4RIA4nMiUpDW5x/Gc9huMDMhC4ko2IQSgNNynHAywiXPTcqH
+ hRmGsVtBncbXv5RaMvpuCVfuuLzYR0snrW3TjYQz9Iob0kJh8Ex0GKOvOvdHwx+iu3wa
+ dtJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=zXn7AXifg48JVqsK9vmLot62NN8E79cUAHW8G7tpJww=;
+ b=BlHMhWMcyVaABIV3ZoYazqND+e75Rmr/yuLvdZ1G3rkufmenVVSYEJTr/KuctQrDeF
+ 3T2/Rf+Zw7eW+rciJpDQkppw2qbR0Pl65PUiXnYfnIK3NBV0WblkdvOx9FYI7LKbMekm
+ SwS/O4soaMUqnrKhYYiMLeDeMElrGE6lxuHR6HaLMiibrFr/lkkyn6mD7LKOv+Z5mK95
+ t66e1Ix13NbYSY4eRZZ+EK2slu65D9+DtP6JrMaM5PRk+sUgLQ7tdT1ZqiGwBjLLmgL5
+ ssCnFlkSm4I3EDw5vQIL2CwdwqA4TzWcKVA5EJEFbKLd9C9EcxSIY2QoGjUGu3jO/Z6k
+ 2rmQ==
+X-Gm-Message-State: AOAM532RB+q2/T3co8LxoHx8BZuv8yUoTb4tdMclHElpzIXIMsREdiI9
+ 4OdRWWLqq3p+ezVzvE4MuMYfylvBWERi4NoiAzNiWQ==
+X-Received: by 2002:a9d:3623:: with SMTP id w32mr6676198otb.91.1590770194679; 
+ Fri, 29 May 2020 09:36:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: kraxel@redhat.com
-Date: Thu, 28 May 2020 12:25:50 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/28 15:26:02
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+References: <20200528123609.27362-1-kraxel@redhat.com>
+ <CAFEAcA98OyyyC6gs34e3U03=dXz8GkDn5qf38UaO_XBB679V+g@mail.gmail.com>
+ <bf43132b-71c2-d411-7cf3-e9a00066ccdc@amsat.org>
+In-Reply-To: <bf43132b-71c2-d411-7cf3-e9a00066ccdc@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 29 May 2020 17:36:23 +0100
+Message-ID: <CAFEAcA_Su+2O6nm0hRfj1BqwQzSsLva+ft_f=1O47-o6U8NxBA@mail.gmail.com>
+Subject: Re: [PULL 00/21] Vga 20200528 patches
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x332.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -76,98 +115,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, i.mitsyanko@gmail.com, alistair@alistair23.me,
- mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, kraxel@redhat.com
+Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>, BALATON Zoltan <balaton@eik.bme.hu>,
+ qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nVVrpjVF+s6S
+X-TUID: DbbtYwPoqU9d
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDUyODEyMzYwOS4yNzM2
-Mi0xLWtyYXhlbEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUg
-c29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUgaW5m
-b3JtYXRpb246CgpNZXNzYWdlLWlkOiAyMDIwMDUyODEyMzYwOS4yNzM2Mi0xLWtyYXhlbEByZWRo
-YXQuY29tClN1YmplY3Q6IFtQVUxMIDAwLzIxXSBWZ2EgMjAyMDA1MjggcGF0Y2hlcwpUeXBlOiBz
-ZXJpZXMKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJz
-ZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5h
-bWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmln
-IC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBs
-IC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpVcGRhdGluZyAzYzhj
-ZjVhOWMyMWZmODc4MjE2NGQxZGVmN2Y0NGJkODg4NzEzMzg0CkZyb20gaHR0cHM6Ly9naXRodWIu
-Y29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAtIFt0YWcgdXBkYXRlXSAgICAgIHBhdGNoZXcvMjAy
-MDA1MjgxNTM3NDIuMjc0MTY0LTEta3dvbGZAcmVkaGF0LmNvbSAtPiBwYXRjaGV3LzIwMjAwNTI4
-MTUzNzQyLjI3NDE2NC0xLWt3b2xmQHJlZGhhdC5jb20KU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNo
-ICd0ZXN0Jwo5ZjJkZThjIHNtNTAxOiBSZW1vdmUgb2Jzb2xldGUgY2hhbmdlbG9nIGFuZCB0b2Rv
-IGNvbW1lbnQKNDBjNjE3OSBzbTUwMTogT3B0aW1pemUgc21hbGwgb3ZlcmxhcHBpbmcgYmxpdHMK
-YTU3ZjU0OSBzbTUwMTogUmVwbGFjZSBoYW5kIHdyaXR0ZW4gaW1wbGVtZW50YXRpb24gd2l0aCBw
-aXhtYW4gd2hlcmUgcG9zc2libGUKNzU3ZWI5NCBzbTUwMTogQ2xlYW4gdXAgbG9jYWwgdmFyaWFi
-bGVzIGluIHNtNTAxXzJkX29wZXJhdGlvbgo4ZDhlM2JlIHNtNTAxOiBVc2UgQklUKHgpIG1hY3Jv
-IHRvIHNob3J0ZW4gY29uc3RhbnQKZTdiYWEwYiBzbTUwMTogU2hvcnRlbiBsb25nIHZhcmlhYmxl
-IG5hbWVzIGluIHNtNTAxXzJkX29wZXJhdGlvbgpiMDM4NTkwIHNtNTAxOiBDb252ZXJ0IHByaW50
-ZiArIGFib3J0IHRvIHFlbXVfbG9nX21hc2sKYTUyNGIxMSBody9kaXNwbGF5L3B4YTJ4eF9sY2Q6
-IFJlcGxhY2UgcHJpbnRmKCkgY2FsbCBieSBxZW11X2xvZ19tYXNrKCkKNDEwMDBmMSBody9kaXNw
-bGF5L29tYXBfZHNzOiBSZXBsYWNlIGZwcmludGYoKSBjYWxsIGJ5IHFlbXVfbG9nX21hc2soTE9H
-X1VOSU1QKQpkYWQzMmYzIGh3L2Rpc3BsYXkvZXh5bm9zNDIxMF9maW1kOiBVc2UgcWVtdV9sb2df
-bWFzayhHVUVTVF9FUlJPUikKOThiNmQxYiBody9kaXNwbGF5L3Ztd2FyZV92Z2E6IExldCB0aGUg
-UENJIGRldmljZSBvd24gaXRzIEkvTyBNZW1vcnlSZWdpb24KZjFlYWRhYyBody9kaXNwbGF5L3Zt
-d2FyZV92Z2E6IFJlcGxhY2UgcHJpbnRmKCkgY2FsbHMgYnkgcWVtdV9sb2dfbWFzayhFUlJPUikK
-NmFkMWUzOSBody9kaXNwbGF5L3hsbnhfZHA6IFJlcGxhY2UgZGlzYWJsZWQgRFBSSU5URigpIGJ5
-IGVycm9yX3JlcG9ydCgpCjNjZmZjNTkgaHcvZGlzcGxheS9kcGNkOiBDb252ZXJ0IGRlYnVnIHBy
-aW50ZigpcyB0byB0cmFjZSBldmVudHMKZTM1OTA4NCBody9kaXNwbGF5L2RwY2Q6IEZpeCBtZW1v
-cnkgcmVnaW9uIHNpemUKMGUxOTk3MyBody9kaXNwbGF5L2NpcnJ1c192Z2E6IENvbnZlcnQgZGVi
-dWcgcHJpbnRmKCkgdG8gdHJhY2UgZXZlbnQKOTdmMzY5ZiBody9kaXNwbGF5L2NpcnJ1c192Z2E6
-IFVzZSBxZW11X2xvZ19tYXNrKEVSUk9SKSBpbnN0ZWFkIG9mIGRlYnVnIHByaW50ZgowNzU4NTY2
-IGh3L2Rpc3BsYXkvY2lycnVzX3ZnYTogVXNlIHFlbXVfbG9nX21hc2soVU5JTVApIGluc3RlYWQg
-b2YgZGVidWcgcHJpbnRmCjQ2ZjQ3ODIgaHcvZGlzcGxheS9jaXJydXNfdmdhOiBDb252ZXJ0IGRl
-YnVnIHByaW50ZigpIHRvIHRyYWNlIGV2ZW50CjRlMmQ0N2YgaHcvZGlzcGxheS9jZzM6IENvbnZl
-cnQgZGVidWcgcHJpbnRmKClzIHRvIHRyYWNlIGV2ZW50cwo2MGE0MTQ2IGh3L2Rpc3BsYXkvZWRp
-ZDogQWRkIG1pc3NpbmcgJ3FkZXYtcHJvcGVydGllcy5oJyBoZWFkZXIKCj09PSBPVVRQVVQgQkVH
-SU4gPT09CjEvMjEgQ2hlY2tpbmcgY29tbWl0IDYwYTQxNDZkZmYzNCAoaHcvZGlzcGxheS9lZGlk
-OiBBZGQgbWlzc2luZyAncWRldi1wcm9wZXJ0aWVzLmgnIGhlYWRlcikKMi8yMSBDaGVja2luZyBj
-b21taXQgNGUyZDQ3ZjgyYzFlIChody9kaXNwbGF5L2NnMzogQ29udmVydCBkZWJ1ZyBwcmludGYo
-KXMgdG8gdHJhY2UgZXZlbnRzKQozLzIxIENoZWNraW5nIGNvbW1pdCA0NmY0NzgyMmVmZWEgKGh3
-L2Rpc3BsYXkvY2lycnVzX3ZnYTogQ29udmVydCBkZWJ1ZyBwcmludGYoKSB0byB0cmFjZSBldmVu
-dCkKNC8yMSBDaGVja2luZyBjb21taXQgMDc1ODU2NmI1YTA5IChody9kaXNwbGF5L2NpcnJ1c192
-Z2E6IFVzZSBxZW11X2xvZ19tYXNrKFVOSU1QKSBpbnN0ZWFkIG9mIGRlYnVnIHByaW50ZikKNS8y
-MSBDaGVja2luZyBjb21taXQgOTdmMzY5ZjI0NzlkIChody9kaXNwbGF5L2NpcnJ1c192Z2E6IFVz
-ZSBxZW11X2xvZ19tYXNrKEVSUk9SKSBpbnN0ZWFkIG9mIGRlYnVnIHByaW50ZikKRVJST1I6IHN1
-c3BlY3QgY29kZSBpbmRlbnQgZm9yIGNvbmRpdGlvbmFsIHN0YXRlbWVudHMgKDE2LCAxMikKIzM0
-OiBGSUxFOiBody9kaXNwbGF5L2NpcnJ1c192Z2EuYzoxMDM4OgogICAgICAgICAgICAgICAgaWYg
-KHMtPmNpcnJ1c19ibHRfcGl4ZWx3aWR0aCA+IDIpIHsKKyAgICAgICAgICAgIHFlbXVfbG9nX21h
-c2soTE9HX0dVRVNUX0VSUk9SLAoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCAxNTYgbGlu
-ZXMgY2hlY2tlZAoKUGF0Y2ggNS8yMSBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcu
-ICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0g
-dG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKNi8yMSBD
-aGVja2luZyBjb21taXQgMGUxOTk3MzY2MTVlIChody9kaXNwbGF5L2NpcnJ1c192Z2E6IENvbnZl
-cnQgZGVidWcgcHJpbnRmKCkgdG8gdHJhY2UgZXZlbnQpCjcvMjEgQ2hlY2tpbmcgY29tbWl0IGUz
-NTkwODQyY2M2MyAoaHcvZGlzcGxheS9kcGNkOiBGaXggbWVtb3J5IHJlZ2lvbiBzaXplKQo4LzIx
-IENoZWNraW5nIGNvbW1pdCAzY2ZmYzU5MGRkYzEgKGh3L2Rpc3BsYXkvZHBjZDogQ29udmVydCBk
-ZWJ1ZyBwcmludGYoKXMgdG8gdHJhY2UgZXZlbnRzKQo5LzIxIENoZWNraW5nIGNvbW1pdCA2YWQx
-ZTM5OGIzYTEgKGh3L2Rpc3BsYXkveGxueF9kcDogUmVwbGFjZSBkaXNhYmxlZCBEUFJJTlRGKCkg
-YnkgZXJyb3JfcmVwb3J0KCkpCjEwLzIxIENoZWNraW5nIGNvbW1pdCBmMWVhZGFjYmYxN2IgKGh3
-L2Rpc3BsYXkvdm13YXJlX3ZnYTogUmVwbGFjZSBwcmludGYoKSBjYWxscyBieSBxZW11X2xvZ19t
-YXNrKEVSUk9SKSkKMTEvMjEgQ2hlY2tpbmcgY29tbWl0IDk4YjZkMWIyODRiMSAoaHcvZGlzcGxh
-eS92bXdhcmVfdmdhOiBMZXQgdGhlIFBDSSBkZXZpY2Ugb3duIGl0cyBJL08gTWVtb3J5UmVnaW9u
-KQoxMi8yMSBDaGVja2luZyBjb21taXQgZGFkMzJmM2IyZDdhIChody9kaXNwbGF5L2V4eW5vczQy
-MTBfZmltZDogVXNlIHFlbXVfbG9nX21hc2soR1VFU1RfRVJST1IpKQoxMy8yMSBDaGVja2luZyBj
-b21taXQgNDEwMDBmMTk4NzJjIChody9kaXNwbGF5L29tYXBfZHNzOiBSZXBsYWNlIGZwcmludGYo
-KSBjYWxsIGJ5IHFlbXVfbG9nX21hc2soTE9HX1VOSU1QKSkKMTQvMjEgQ2hlY2tpbmcgY29tbWl0
-IGE1MjRiMTFhMmNiMyAoaHcvZGlzcGxheS9weGEyeHhfbGNkOiBSZXBsYWNlIHByaW50ZigpIGNh
-bGwgYnkgcWVtdV9sb2dfbWFzaygpKQoxNS8yMSBDaGVja2luZyBjb21taXQgYjAzODU5MDE2NDY3
-IChzbTUwMTogQ29udmVydCBwcmludGYgKyBhYm9ydCB0byBxZW11X2xvZ19tYXNrKQoxNi8yMSBD
-aGVja2luZyBjb21taXQgZTdiYWEwYjRiZGRlIChzbTUwMTogU2hvcnRlbiBsb25nIHZhcmlhYmxl
-IG5hbWVzIGluIHNtNTAxXzJkX29wZXJhdGlvbikKMTcvMjEgQ2hlY2tpbmcgY29tbWl0IDhkOGUz
-YmU0MDc5NiAoc201MDE6IFVzZSBCSVQoeCkgbWFjcm8gdG8gc2hvcnRlbiBjb25zdGFudCkKMTgv
-MjEgQ2hlY2tpbmcgY29tbWl0IDc1N2ViOTRiZDAwNyAoc201MDE6IENsZWFuIHVwIGxvY2FsIHZh
-cmlhYmxlcyBpbiBzbTUwMV8yZF9vcGVyYXRpb24pCjE5LzIxIENoZWNraW5nIGNvbW1pdCBhNTdm
-NTQ5ODQ2YTEgKHNtNTAxOiBSZXBsYWNlIGhhbmQgd3JpdHRlbiBpbXBsZW1lbnRhdGlvbiB3aXRo
-IHBpeG1hbiB3aGVyZSBwb3NzaWJsZSkKMjAvMjEgQ2hlY2tpbmcgY29tbWl0IDQwYzYxNzk5MjVm
-MCAoc201MDE6IE9wdGltaXplIHNtYWxsIG92ZXJsYXBwaW5nIGJsaXRzKQoyMS8yMSBDaGVja2lu
-ZyBjb21taXQgOWYyZGU4YzcwMmEzIChzbTUwMTogUmVtb3ZlIG9ic29sZXRlIGNoYW5nZWxvZyBh
-bmQgdG9kbyBjb21tZW50KQo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQg
-d2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hl
-dy5vcmcvbG9ncy8yMDIwMDUyODEyMzYwOS4yNzM2Mi0xLWtyYXhlbEByZWRoYXQuY29tL3Rlc3Rp
-bmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRp
-Y2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3Vy
-IGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+On Fri, 29 May 2020 at 17:15, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+> On 5/29/20 12:29 PM, Peter Maydell wrote:
+> > Could somebody send a followup patch to fix the indentation
+> > error checkpatch notices, please?
+>
+> If this is part of your scripts, this is a nice feature :)
+
+No, I just noticed the patchew email.
+
+> >
+> > 5/21 Checking commit 97f369f2479d (hw/display/cirrus_vga: Use
+> > qemu_log_mask(ERROR) instead of debug printf)
+> > ERROR: suspect code indent for conditional statements (16, 12)
+> > #34: FILE: hw/display/cirrus_vga.c:1038:
+> >                 if (s->cirrus_blt_pixelwidth > 2) {
+> > +            qemu_log_mask(LOG_GUEST_ERROR,
+>
+> I explained on the patches:
+>
+>   False positive.
+
+The code is
+            if (s->cirrus_blt_mode & CIRRUS_BLTMODE_TRANSPARENTCOMP) {
+                if (s->cirrus_blt_pixelwidth > 2) {
+            qemu_log_mask(LOG_GUEST_ERROR,
+                          "cirrus: src transparent without colorexpand "
+                          "must be 8bpp or 16bpp\n");
+                    goto bitblt_ignore;
+                }
+
+checkpatch seems correct; the qemu_log_mask line is misindented,
+and looking at the commit this is a misindent introduced in
+commit 2b55f4d3504a9f34 "hw/display/cirrus_vga: Use
+qemu_log_mask(ERROR) instead of debug printf". The old
+fprintf() line was using indent of tab+tab+4 spaces, but
+the new qemu_log_mask line is indented by 12 spaces, not 20.
+(Tabs are always 8 spaces equivalent.)
+
+Some days I wonder whether we should just do a bulk detabify
+of the QEMU sources.
+
+thanks
+-- PMM

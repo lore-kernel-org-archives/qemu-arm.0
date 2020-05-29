@@ -1,110 +1,93 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp632564lfm;
-        Wed, 17 Jun 2020 06:54:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypMqi4hkYLKzvrHsDU+ybn2XHTUEF4ZcXlo05Dc/rORW/w8FWibexohGlts9IIWy8aE0DL
-X-Received: by 2002:a5b:b89:: with SMTP id l9mr12621106ybq.82.1592402065478;
-        Wed, 17 Jun 2020 06:54:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592402065; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp249279lfc;
+        Fri, 29 May 2020 01:02:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxVHK45PAcj6DeDV0U4zWRWGFuC3CYtEnBCg4JpiBqMK81zvuTX8zl+PG24bx7+Qczi0Eyf
+X-Received: by 2002:a25:b281:: with SMTP id k1mr11382152ybj.108.1590739374261;
+        Fri, 29 May 2020 01:02:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590739374; cv=none;
         d=google.com; s=arc-20160816;
-        b=O1D/xATjJYM5GvFL8cd4FMzE+GZ+QMTxXx2ZwpOfU15WvrBmXysTdtn/Oe479sC19V
-         6Rvn2DeGPytFiNRl4qyW/HtYdCprWtR+7EfH7xObeqbDyN8mtoGlPMIp+F6XYxfIowlz
-         Sv59MUosdPIjj5zBc9uVISyrygpwLqTIBVS1MTr8t4OXq5/PBRwuQGU0kH1QSDnANQsc
-         qJt4YLVSUD5Emu9dirRZs4S8o653uCvqI+FGdyt0lka50ZOGigF1qtQrhsgirMsMTq7Q
-         46dpkQtPyB/asVj4LjFXdKuH7HujB55rtaM4BybKs1ekRXs4gIkxRHX6D4uJDYPdKDwt
-         y0GA==
+        b=duR1UIm4rIGDlXF+u0evzK9ST2nIoeY5+5FNZKE3ICe/krlT/xZhc4kA3IYQof1mmT
+         1dRo1V22Ny1y2eBxLZ7SxGJD2ohPt92jExg1wM58ROmDyaMmLgbkjPYG2wNb9AFYqFbN
+         J4IsRYYQal9lGRTHH+lnbrqHgZbgJQJ+6o0zqmCcxM1RwwTtlBGTZAUEMJS0P/xNdpQ5
+         fBhL+SEOb0FrvzobQnj3GM0iYb1hQfbME3ABi6fyo7lGDy+yx+k/ATK6gINYxsAFNgpJ
+         9/rXhyIMYcJA5hVIoG+av9fqc/bJpIQe6xWnxYLblqYxWSqO9BbZRnR3f4xUXOi3GUjA
+         qikQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=SBtmpAsSpPRi2glHB1Hhi3E3x1py/PLkwZQ4PrZFc8k=;
-        b=wUTSy1kGVYzOT76bEpbMsfsq8PDGpCQ10r96Cv1ef/rNdsm06bDolpcTBXxdpihNqm
-         /uwRiZlJCr+aOaXGAY7QFYrM1Kx/i2yHRC7pGQ8Jke7JnlEBOABy8n3mvY3SklA7pjv5
-         vQo//BDfFmFVzSkio5s2cQNIFWpLGEXaXJgJxcvf1+8LQhtfCrt+M8Y2zlZizH28AzuR
-         0y8ycC3cI4uVSLfmrdjNQul+3dPD5dlUTC+2W08s6aRKa3BPmLf07bgApCZtb0aVsNUb
-         7HWkrztGfj3iEKSwoXmNJgsk41CUxsc59KDzQgoYcP53++f0bCiv5v4zcA7HSqGOwGrU
-         iKUg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version;
+        bh=wzUYv93FzC6cTw6Rjq4nNb+mQGuSBsCe1ZGs1B9hAZ8=;
+        b=kLuDhIuHrjpackoh4sV4pRwtFSY35f0RCAC6pgFyYgwrjKy7fJzqKafE9n1peKPmGM
+         apx7g3jJbkjwINqWtg/9R2BG1MHgRkodgg/BO4vtLSlvtTpTJg4Xj0T83AGi/7TdmjwW
+         s3SjqnTp7HbKTS4fxmVTWAUT9BMzVdBtMP6pWEVFXls8FdWRZnQ13G9PZFQ3VagtQFdA
+         zcI7QK3KRQ6CJAXaLaH/+BZxLYJzeuOzbPsCkxZ+HH5Pn5JMIvwQypHfXtTK8VxAwoMs
+         7oeROqD6I8HNZS2rCgpAmgDD4/8ZY39NJqRbjSn2dycyU6+2nbVn1oPfHgha2MIbXevZ
+         oNJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AB5DzQbv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o196si24255834yba.88.2020.06.17.06.54.25
+        by mx.google.com with ESMTPS id x12si7034352ybk.227.2020.05.29.01.02.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jun 2020 06:54:25 -0700 (PDT)
+        Fri, 29 May 2020 01:02:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AB5DzQbv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43516 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59436 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlYWG-0000VM-PN
-	for alex.bennee@linaro.org; Wed, 17 Jun 2020 09:54:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56830)
+	id 1jeZyf-0000I5-KY
+	for alex.bennee@linaro.org; Fri, 29 May 2020 04:02:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55262)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jlYVw-0000Tf-EU
- for qemu-arm@nongnu.org; Wed, 17 Jun 2020 09:54:04 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27980
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jlYVu-0000Fr-Mr
- for qemu-arm@nongnu.org; Wed, 17 Jun 2020 09:54:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592402041;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SBtmpAsSpPRi2glHB1Hhi3E3x1py/PLkwZQ4PrZFc8k=;
- b=AB5DzQbv3J1qf6h0kQlZqtXHHg5ARjEIjsBTvHYS5Tjx1lV8o1BcMEXAr78JexEiGTuh/x
- I1FuxryOB7JKMYppxRBjmTAwT24vSjIFgQ0WDsK6Q09Wd6svFWPomUVfR6BwPotQOHdSeT
- WxF/5hNQH8MKA7lG4sVdZhxq/7R8p40=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-500-AaWvWC3vP5G7LVrpOmZMVA-1; Wed, 17 Jun 2020 09:53:54 -0400
-X-MC-Unique: AaWvWC3vP5G7LVrpOmZMVA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 89F108730EC;
- Wed, 17 Jun 2020 13:53:53 +0000 (UTC)
-Received: from [10.36.114.197] (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4FE437931E;
- Wed, 17 Jun 2020 13:53:48 +0000 (UTC)
-Subject: Re: [PATCH v2] arm/virt: Add memory hot remove support
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20200520110354.14352-1-shameerali.kolothum.thodi@huawei.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <96e2efe0-0fda-6d73-4164-12ee9837a679@redhat.com>
-Date: Wed, 17 Jun 2020 15:53:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (Exim 4.90_1) (envelope-from <geert.uytterhoeven@gmail.com>)
+ id 1jeZy2-0007t6-3J; Fri, 29 May 2020 04:02:14 -0400
+Received: from mail-ot1-f68.google.com ([209.85.210.68]:33722)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <geert.uytterhoeven@gmail.com>)
+ id 1jeZxz-0007Hw-RO; Fri, 29 May 2020 04:02:13 -0400
+Received: by mail-ot1-f68.google.com with SMTP id v17so1330732ote.0;
+ Fri, 29 May 2020 01:02:10 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=wzUYv93FzC6cTw6Rjq4nNb+mQGuSBsCe1ZGs1B9hAZ8=;
+ b=ZpTnC5l7YNZBJk22MVWFUBgdKG49JQnS03HAec8y0t13Uz7KyR6R7TQrylk7+c3XH5
+ JUEaaMdfVMt2GfctSvTgkt5gW4Ul8P2zbQei4AwxActpm1s4HoDyQOO6Gynv6BQb/YWj
+ YKSE2oWQA3ph1PzWI+e+YmLEjNILXjHz9NsD8+7NAf2sh84QkgN5VP55NGKdQAtvTieL
+ lkaIiTiIhek/hVp/K2bcikBNiA4oErnBiO0o/S8mTpnJj5VwxmFCygay+dUUEJF3zEiG
+ NWaGgjckkSKhpGD1HP7RVV7HedJQyR5t4UPAUxEJmisWUqLB/ZuHxiZDy75y9TbM8j6o
+ hCLg==
+X-Gm-Message-State: AOAM5325Obg4cXOtv7u+8xiUKNzZC4KCf5zmHrbD6uQyv9djnxtKAYEF
+ 4ED+HsyIbTrnHsEQyciXflQi/9fPdLwxXKZEM0E=
+X-Received: by 2002:a05:6830:1151:: with SMTP id
+ x17mr5248017otq.250.1590739329716; 
+ Fri, 29 May 2020 01:02:09 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200520110354.14352-1-shameerali.kolothum.thodi@huawei.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.120;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/16 23:30:45
+References: <20200519084904.1069-1-geert+renesas@glider.be>
+ <CAFEAcA9-wQ72_M+ZY+EbEgw1L9LVchBgpLivexFXVZ3HuCtcZg@mail.gmail.com>
+ <CAMuHMdWrTbWTrLvMnX=60F+UqH6DJ9kDU1FZ5TnT2=mbah1yfg@mail.gmail.com>
+ <CAFEAcA9TzPcWWiJNTQ=EZzsSVy5qTPz5DXTePGmXWBTxZg7i7w@mail.gmail.com>
+In-Reply-To: <CAFEAcA9TzPcWWiJNTQ=EZzsSVy5qTPz5DXTePGmXWBTxZg7i7w@mail.gmail.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Fri, 29 May 2020 10:01:57 +0200
+Message-ID: <CAMuHMdX7rWDbO1s3Tbk7M0R8=BJr1PphGbUg3N49S6sq-W4cLA@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/virt: Fix PL061 node name and properties
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=209.85.210.68;
+ envelope-from=geert.uytterhoeven@gmail.com; helo=mail-ot1-f68.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/29 04:02:10
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,160 +100,172 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, linuxarm@huawei.com,
- xuwei5@hisilicon.com, prime.zeng@hisilicon.com, imammedo@redhat.com
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ Rob Herring <robh+dt@kernel.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QY/pTwl53i9r
+X-TUID: 0/ufU9KCADwD
 
-Hi Shameer,
+Hi Peter,
 
-On 5/20/20 1:03 PM, Shameer Kolothum wrote:
-> This adds support for memory hot remove on arm/virt that
-> uses acpi ged device.
-> 
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
-> RFC v1 --> v2
->   -Rebased on top of latest Qemu master.
->   -Dropped "RFC" and tested with kernel 5.7-rc6
-> ---
->  hw/acpi/generic_event_device.c | 28 +++++++++++++++++
->  hw/arm/virt.c                  | 56 ++++++++++++++++++++++++++++++++--
->  2 files changed, 82 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-> index b1cbdd86b6..2b3bedcd2f 100644
-> --- a/hw/acpi/generic_event_device.c
-> +++ b/hw/acpi/generic_event_device.c
-> @@ -193,6 +193,32 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
->      }
->  }
->  
-> +static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
-> +                                       DeviceState *dev, Error **errp)
-> +{
-> +    AcpiGedState *s = ACPI_GED(hotplug_dev);
-> +
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> +        acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
-is it allowed to unplug NVDIMM? As NVDIMM inherits from PCDIMM, I wonder
-if we have to handle the case differently (as done in hotplug part).
-> +    } else {
-> +        error_setg(errp, "acpi: device unplug request for unsupported device"
-> +                   " type: %s", object_get_typename(OBJECT(dev)));
-> +    }
-> +}
-> +
-> +static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
-> +                               DeviceState *dev, Error **errp)
-> +{
-> +    AcpiGedState *s = ACPI_GED(hotplug_dev);
-> +
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> +        acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
-> +    } else {
-> +        error_setg(errp, "acpi: device unplug for unsupported device"
-> +                   " type: %s", object_get_typename(OBJECT(dev)));
-> +    }
-> +}
-> +
->  static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
->  {
->      AcpiGedState *s = ACPI_GED(adev);
-> @@ -318,6 +344,8 @@ static void acpi_ged_class_init(ObjectClass *class, void *data)
->      dc->vmsd = &vmstate_acpi_ged;
->  
->      hc->plug = acpi_ged_device_plug_cb;
-> +    hc->unplug_request = acpi_ged_unplug_request_cb;
-> +    hc->unplug = acpi_ged_unplug_cb;
->  
->      adevc->send_event = acpi_ged_send_event;
->  }
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 37462a6f78..110fa73990 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2177,11 +2177,62 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
->      }
->  }
->  
-> +static void virt_dimm_unplug_request(HotplugHandler *hotplug_dev,
-> +                                     DeviceState *dev, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-> +    Error *local_err = NULL;
-> +
-> +    if (!vms->acpi_dev) {
-> +        error_setg(errp,
-> +                   "memory hotplug is not enabled: missing acpi-ged device");
-> +        goto out;
-> +    }
-> +
-> +    hotplug_handler_unplug_request(HOTPLUG_HANDLER(vms->acpi_dev), dev,
-> +                                   &local_err);
-> +out:
-> +    error_propagate(errp, local_err);
-> +}
-> +
-> +static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
-> +                             DeviceState *dev, Error **errp)
-> +{
-> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-> +    Error *local_err = NULL;
-> +
-> +    hotplug_handler_unplug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
-> +    if (local_err) {
-> +        goto out;
-> +    }
-> +
-> +    pc_dimm_unplug(PC_DIMM(dev), MACHINE(vms));
-> +    object_property_set_bool(OBJECT(dev), false, "realized", NULL);
-> +
-> + out:
-> +    error_propagate(errp, local_err);
-> +}
-> +
->  static void virt_machine_device_unplug_request_cb(HotplugHandler *hotplug_dev,
->                                            DeviceState *dev, Error **errp)
->  {
-> -    error_setg(errp, "device unplug request for unsupported device"
-> -               " type: %s", object_get_typename(OBJECT(dev)));
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-same here. By comparison, in hw/i386/pc.c, it is said
-"nvdimm device hot unplug is not supported yet."
+CC Rob, who made these properties mandatory in the pl061 DT bindings.
 
-what is the situation on ARM?
+On Fri, May 22, 2020 at 11:30 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+> On Fri, 22 May 2020 at 09:29, Geert Uytterhoeven <geert@linux-m68k.org> wrote:
+> > On Thu, May 21, 2020 at 6:59 PM Peter Maydell <peter.maydell@linaro.org> wrote:
+> > > On Tue, 19 May 2020 at 09:49, Geert Uytterhoeven
+> > > <geert+renesas@glider.be> wrote:
+> > > > Make the created node comply with the PL061 Device Tree bindings:
+> > > >   - Use generic node name "gpio" instead of "pl061",
+> > > >   - Add missing "#interrupt-cells" and "interrupt-controller"
+> > > >     properties.
+> > >
+> > > Where have these properties come from? They must be optional,
+> > > because in the version of the binding documentation from Linux
+> > > 5.0 they're not described:
+> > > https://elixir.bootlin.com/linux/v5.0/source/Documentation/devicetree/bindings/gpio/pl061-gpio.txt
+> >
+> > Many old DT bindings are incomplete.
+>
+> Yeah, but production QEMU is out there in the world based on
+> the old DT binding documentation. So you can't unilaterally
+> make a part of the binding that wasn't documented and that QEMU
+> didn't emit mandatory. It might be preferable for new QEMU to
+> emit it, of course.
 
-Thanks
+Indeed, else QEMU will differ (more) from real hardware. Most PL061
+GPIO controllers in DTS files in upstream Linux are marked as interrupt
+controllers (a few haven't been updated yet).
 
-Eric
-> +        virt_dimm_unplug_request(hotplug_dev, dev, errp);
-> +    } else {
-> +        error_setg(errp, "device unplug request for unsupported device"
-> +                   " type: %s", object_get_typename(OBJECT(dev)));
-> +    }
-> +}
-> +
-> +static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
-> +                                          DeviceState *dev, Error **errp)
-> +{
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> +        virt_dimm_unplug(hotplug_dev, dev, errp);
-> +    } else {
-> +        error_setg(errp, "virt: device unplug for unsupported device"
-> +                   " type: %s", object_get_typename(OBJECT(dev)));
-> +    }
->  }
->  
->  static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
-> @@ -2262,6 +2313,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->      hc->pre_plug = virt_machine_device_pre_plug_cb;
->      hc->plug = virt_machine_device_plug_cb;
->      hc->unplug_request = virt_machine_device_unplug_request_cb;
-> +    hc->unplug = virt_machine_device_unplug_cb;
->      mc->numa_mem_supported = true;
->      mc->nvdimm_supported = true;
->      mc->auto_enable_numa_with_memhp = true;
-> 
+> > When running the validation on a device tree passed to the guest
+> > (extracted from /sys/firmware/devicetree/base, converted to dts, and
+> >  manually fixed up the phandles), the following is reported about the
+> > pl061 node:
+> >
+> >     virt.dt.yaml: pl061@9030000: {'reg': [[0, 151191552, 0, 4096]],
+> > 'gpio-controller': True, 'phandle': [[32771]], '#gpio-cells': [[2]],
+> > 'clocks': [[32768]], '#interrupt-cells': [[2]], 'compatible':
+> > ['arm,pl061', 'arm,primecell'], 'clock-names': ['apb_pclk'],
+> > '$nodename': ['pl061@9030000']} is not valid under any of the given
+> > schemas
+> >     [...]
+> >             virt.dt.yaml: pl061@9030000: 'interrupts' is a required property
+> >
+> >     virt.dt.yaml: pl061@9030000: $nodename:0: 'pl061@9030000' does not
+> > match '^gpio@[0-9a-f]+$'
+> >     virt.dt.yaml: pl061@9030000: 'interrupt-controller' is a required property
+>
+> This is just saying "the yaml says these things are mandatory".
+> You could equally get rid of them by marking them optional in
+> the yaml, right?
+>
+> Also, complaining about the nodename seems like a bug in the
+> validation: it is not a mandatory part of the spec, just a
+> recommendation.
 
+I'll defer that one to Rob, too.
+
+> > > Since the devicetree spec says that the interrupt-controller
+> > > property "defines a node as an interrupt controller node"
+> > > and a GPIO chip isn't an interrupt controller, this seems
+> > > like some kind of error in the dtb binding. Maybe I'm
+> > > missing something...
+> >
+> > PL061 is an interrupt controller, as it can assert its interrupt output
+> > based on activity on GPIO input lines.
+>
+> By that logic the PL011 UART is an interrupt controller, because
+> it can assert its interrupt output based on activity on the serial
+> port input lines.
+
+Doh, bad wording on my side :-)
+
+> A GPIO controller is not an interrupt controller inherently.
+> Maybe you can use it in a system design as an interrupt
+> controller if you want to, and in that system's dtb perhaps
+> it would make sense to label it as one, but the virt board's
+> PL061 is in no way an interrupt controller -- it's just a GPIO
+> controller.
+
+Actually it is: the virt board has a gpio-keys node that ties the
+Poweroff key to a PL061 GPIO. The Linux gpio-keys driver relies on
+interrupts to detect key events (for IRQ incapable GPIOs you have to use
+"gpio-keys-polled" instead). This can easily be verified by looking at
+/proc/interrupts on the guest:
+
+ 48:          0  9030000.gpio   3 Edge      GPIO Key Poweroff
+
+(Unfortunately I don't know how to trigger a virtual key press in the
+ guest)
+
+> > > What actually goes wrong if QEMU doesn't specify these
+> > > properties?
+> >
+> > It means that other devices that have their interrupt output connected
+> > to a PL061 GPIO input won't work, as their driver in the guest OS cannot
+> > find the interrupt.  Note that arm/virt.c currently doesn't instantiate
+> > such devices.
+
+Seems I was wrong: arm/virt does have the Poweroff key, and Linux does
+find the interrupt.
+
+> OK. But why would we want to run an interrupt line through the GPIO
+> controller when we have a perfectly good interrupt controller in
+> the system already?
+
+Because the GIC (usually?) does not have its interrupt lines brought
+outside the SoC, but defers external interrupt handling to a specialized
+external IRQ handling block, or to a GPIO controller with interrupt
+capabilities (or to PCI MSI).
+If you have an external (non-PCI) device that needs to trigger an
+interrupt (e.g. an I2C sensor), its to be tied to the specialized block,
+or to a GPIO controller.
+
+> It might be reasonable to add the properties now to avoid setting
+> a bear trap for ourselves in future; on the other hand if running
+> interrupt lines through the GPIO controller doesn't work then it
+> acts as a nudge to stop people adding devices that are wired
+> up in a weird way.
+
+There are plenty of working examples for this.
+
+> > > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > > > index 7dc96abf72cf2b9a..99593d7bce4d85cb 100644
+> > > > --- a/hw/arm/virt.c
+> > > > +++ b/hw/arm/virt.c
+> > > > @@ -818,13 +818,15 @@ static void create_gpio(const VirtMachineState *vms)
+> > > >                                       qdev_get_gpio_in(vms->gic, irq));
+> > > >
+> > > >      uint32_t phandle = qemu_fdt_alloc_phandle(vms->fdt);
+> > > > -    nodename = g_strdup_printf("/pl061@%" PRIx64, base);
+> > > > +    nodename = g_strdup_printf("/gpio@%" PRIx64, base);
+> > >
+> > > Does the devicetree binding really mandate what the node name is?
+> > > I thought that finding the right device was doe via the
+> > > 'compatible' string and the nodename could be whatever the
+> > > device tree creator wanted.
+> >
+> > Matching is indeed done based on compatible value.
+>
+> OK, then we don't need to change the node name here. Lots
+> of the other devices on the virt board have node names that
+> happen to use the device name rather than being more generic.
+
+Obviously these can (and IMHO should) be fixed, too, together with all
+other validation issues.
+Thanks!
+
+Rob: full thread at
+https://lore.kernel.org/qemu-devel/20200519084904.1069-1-geert+renesas@glider.be/
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds

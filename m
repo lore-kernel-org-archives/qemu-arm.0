@@ -1,271 +1,285 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp249279lfc;
-        Fri, 29 May 2020 01:02:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxVHK45PAcj6DeDV0U4zWRWGFuC3CYtEnBCg4JpiBqMK81zvuTX8zl+PG24bx7+Qczi0Eyf
-X-Received: by 2002:a25:b281:: with SMTP id k1mr11382152ybj.108.1590739374261;
-        Fri, 29 May 2020 01:02:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590739374; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp392708lfc;
+        Fri, 29 May 2020 04:29:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyKtUiJVunF7YqoFxBg/u9S2kRYIaNp1vX7E9Vbd+grvzKp/YhIlpe0WzePqSfNfoZ3qLTO
+X-Received: by 2002:a37:9a87:: with SMTP id c129mr7075085qke.374.1590751746578;
+        Fri, 29 May 2020 04:29:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590751746; cv=none;
         d=google.com; s=arc-20160816;
-        b=duR1UIm4rIGDlXF+u0evzK9ST2nIoeY5+5FNZKE3ICe/krlT/xZhc4kA3IYQof1mmT
-         1dRo1V22Ny1y2eBxLZ7SxGJD2ohPt92jExg1wM58ROmDyaMmLgbkjPYG2wNb9AFYqFbN
-         J4IsRYYQal9lGRTHH+lnbrqHgZbgJQJ+6o0zqmCcxM1RwwTtlBGTZAUEMJS0P/xNdpQ5
-         fBhL+SEOb0FrvzobQnj3GM0iYb1hQfbME3ABi6fyo7lGDy+yx+k/ATK6gINYxsAFNgpJ
-         9/rXhyIMYcJA5hVIoG+av9fqc/bJpIQe6xWnxYLblqYxWSqO9BbZRnR3f4xUXOi3GUjA
-         qikQ==
+        b=BLo7d/36z3iF2e2IKOggYIf+HFkZGaZV1lyg/Oef/rM9l65fNZR5Ae4wkI3QufQf2z
+         7DqAPJwA9Mg/JUkYvq6Hp0M1tAQit8x5F+lYC8YbLeSl+F2aNlaLwaImSkwkV9qFQG4P
+         gyGI0OYRURMjPziP15mmjVW10ZqipD3+Jc0Rl6CShk89z+dCUx5IlCtvjdbQqhPhkNNO
+         ux5VPaXbSMjLMHKX4A1YHZQ/tz4rzkb83Z0FWzLCLcUMkMeMt/ztmz1cXybIB3kYBQAr
+         ZlUC77231cYLr924a15JKZZbkM/c1AmSDxsvp4tMZARQ+VOmdTNqGQ4xaKr4L5zk2BHl
+         CI5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version;
-        bh=wzUYv93FzC6cTw6Rjq4nNb+mQGuSBsCe1ZGs1B9hAZ8=;
-        b=kLuDhIuHrjpackoh4sV4pRwtFSY35f0RCAC6pgFyYgwrjKy7fJzqKafE9n1peKPmGM
-         apx7g3jJbkjwINqWtg/9R2BG1MHgRkodgg/BO4vtLSlvtTpTJg4Xj0T83AGi/7TdmjwW
-         s3SjqnTp7HbKTS4fxmVTWAUT9BMzVdBtMP6pWEVFXls8FdWRZnQ13G9PZFQ3VagtQFdA
-         zcI7QK3KRQ6CJAXaLaH/+BZxLYJzeuOzbPsCkxZ+HH5Pn5JMIvwQypHfXtTK8VxAwoMs
-         7oeROqD6I8HNZS2rCgpAmgDD4/8ZY39NJqRbjSn2dycyU6+2nbVn1oPfHgha2MIbXevZ
-         oNJQ==
+        h=sender:errors-to:content-transfer-encoding:mime-version
+         :list-subscribe:list-help:list-post:list-archive:list-unsubscribe
+         :list-id:precedence:cc:references:in-reply-to:message-id:date
+         :subject:to:from:dkim-signature;
+        bh=t/wTPJH2co8jTVXmUz9XBjee8DoxINhRchSjASHvCeM=;
+        b=WklA6fla99/qiSR4W/XFSBga89cOSvxyuk7aMlup3Rqh4F0ATXdG+xnRrh517U/zvM
+         ZDs4Max+7lutg0gI4pjLiQOH2pQ7DzjVUFdx8IEiuTwbeB/JCJhkYOjvpwVHgw0RJBs5
+         4RSnCntHzG/mN0cn+YSRpbi7mn6U6ZkUuFLOZfjRK1PBnM87qxo+cgt/e8BzEe8zvN2g
+         I8zShGykhqWXbZfWfzESCvS69t+jcxTGXsjYxotRtrIb+lsTv6s6qkO81O2tXlldTQM9
+         76yAvPTYGHN7PFD1vdPvVAS8JQzMTixM+h7sNqmOrC5CZtyT+cl2O/nLVC+T19NvHK3F
+         y10Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x12si7034352ybk.227.2020.05.29.01.02.54
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 May 2020 01:02:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=jic+duIi;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id s32si5105195qtk.30.2020.05.29.04.29.06;
+        Fri, 29 May 2020 04:29:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59436 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jeZyf-0000I5-KY
-	for alex.bennee@linaro.org; Fri, 29 May 2020 04:02:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55262)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <geert.uytterhoeven@gmail.com>)
- id 1jeZy2-0007t6-3J; Fri, 29 May 2020 04:02:14 -0400
-Received: from mail-ot1-f68.google.com ([209.85.210.68]:33722)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <geert.uytterhoeven@gmail.com>)
- id 1jeZxz-0007Hw-RO; Fri, 29 May 2020 04:02:13 -0400
-Received: by mail-ot1-f68.google.com with SMTP id v17so1330732ote.0;
- Fri, 29 May 2020 01:02:10 -0700 (PDT)
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=jic+duIi;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 4F0164B244;
+	Fri, 29 May 2020 07:29:06 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@linaro.org
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nzF9NZOCrQZP; Fri, 29 May 2020 07:29:05 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 298DA4B256;
+	Fri, 29 May 2020 07:29:05 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id E6A164B248
+ for <kvmarm@lists.cs.columbia.edu>; Fri, 29 May 2020 07:29:03 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6MNQuoD796ag for <kvmarm@lists.cs.columbia.edu>;
+ Fri, 29 May 2020 07:29:02 -0400 (EDT)
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id A61D74B241
+ for <kvmarm@lists.cs.columbia.edu>; Fri, 29 May 2020 07:29:02 -0400 (EDT)
+Received: by mail-wm1-f68.google.com with SMTP id u26so6604572wmn.1
+ for <kvmarm@lists.cs.columbia.edu>; Fri, 29 May 2020 04:29:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=w+6NOaFlFls8D3nC9x1kOlTsYMd9p22EFlaMUHLZshs=;
+ b=jic+duIigQwwbK4619IzvSh0AiA4B4QQuCTNSUVJqvRrkTMqxUsjgsjVq3+sNaiBns
+ Nsoua4KhSuyAv52cF03WJU1gJySRhKXrZ3pAA6foREVs/8YeqpX7CF3sYuBNMWcv5Xo/
+ 5mshbrqUubhrADQMkWLp6rQ8i5nGxiF7yFsSDf5FwJyXKhYrSoQF7mUeSXaHAXuE56NJ
+ q1BRLnys3aLaXrTIWH75KAdjGO1z5ZEhO7RCgsPyYr+mjRDFAsPo9RTTdPHvIr0soln0
+ U+BgwnPPPHGAIm1bBh5ZRCuquSei+fOodIf5HEvamQTB4zC0RdJfgLqyzft4j+t1FuOz
+ 61xQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=wzUYv93FzC6cTw6Rjq4nNb+mQGuSBsCe1ZGs1B9hAZ8=;
- b=ZpTnC5l7YNZBJk22MVWFUBgdKG49JQnS03HAec8y0t13Uz7KyR6R7TQrylk7+c3XH5
- JUEaaMdfVMt2GfctSvTgkt5gW4Ul8P2zbQei4AwxActpm1s4HoDyQOO6Gynv6BQb/YWj
- YKSE2oWQA3ph1PzWI+e+YmLEjNILXjHz9NsD8+7NAf2sh84QkgN5VP55NGKdQAtvTieL
- lkaIiTiIhek/hVp/K2bcikBNiA4oErnBiO0o/S8mTpnJj5VwxmFCygay+dUUEJF3zEiG
- NWaGgjckkSKhpGD1HP7RVV7HedJQyR5t4UPAUxEJmisWUqLB/ZuHxiZDy75y9TbM8j6o
- hCLg==
-X-Gm-Message-State: AOAM5325Obg4cXOtv7u+8xiUKNzZC4KCf5zmHrbD6uQyv9djnxtKAYEF
- 4ED+HsyIbTrnHsEQyciXflQi/9fPdLwxXKZEM0E=
-X-Received: by 2002:a05:6830:1151:: with SMTP id
- x17mr5248017otq.250.1590739329716; 
- Fri, 29 May 2020 01:02:09 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200519084904.1069-1-geert+renesas@glider.be>
- <CAFEAcA9-wQ72_M+ZY+EbEgw1L9LVchBgpLivexFXVZ3HuCtcZg@mail.gmail.com>
- <CAMuHMdWrTbWTrLvMnX=60F+UqH6DJ9kDU1FZ5TnT2=mbah1yfg@mail.gmail.com>
- <CAFEAcA9TzPcWWiJNTQ=EZzsSVy5qTPz5DXTePGmXWBTxZg7i7w@mail.gmail.com>
-In-Reply-To: <CAFEAcA9TzPcWWiJNTQ=EZzsSVy5qTPz5DXTePGmXWBTxZg7i7w@mail.gmail.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Fri, 29 May 2020 10:01:57 +0200
-Message-ID: <CAMuHMdX7rWDbO1s3Tbk7M0R8=BJr1PphGbUg3N49S6sq-W4cLA@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/virt: Fix PL061 node name and properties
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=209.85.210.68;
- envelope-from=geert.uytterhoeven@gmail.com; helo=mail-ot1-f68.google.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/29 04:02:10
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=w+6NOaFlFls8D3nC9x1kOlTsYMd9p22EFlaMUHLZshs=;
+ b=X//M6uKTPe7Ue//l8KEIKt4iCiwVtr4zn+GiPNaWEI9epfVAZUxhkl+gMfCuzLtnki
+ M2e7Vg9C3Tzg2OGpoisakrbsYXP5IbDIcvkyAqczvMqhMDw6LlFFY/dh9FALHLqvSJqW
+ vTuPWA7zCzqzg/Ki3Ntu6maLtP88LM3CU+nG2uxsk3siQY266lLtBthcrLu9L7Y0XTBs
+ hGNmMB5dqv832xpLEGmPATtVuFeIiAQNu28gkBb+53IlEtM8PDlli3NHU7RHFSRS+f7P
+ ceBKcjXDR5GMrTyCm42P9HzdAJ1wn6jBfXdPij0jda9YqtD/650nTWlUBWKSjjsEjz7f
+ xBjQ==
+X-Gm-Message-State: AOAM531ciY+GvCzhrFwwcfRN55SF/UKFaa+Tc8HvZ1qg8guTyr/f6RNZ
+ ilOW5g2v9vD8eoh89NvOOFVmWxGt5eTiaQ==
+X-Received: by 2002:a1c:df57:: with SMTP id w84mr8657607wmg.52.1590751741702; 
+ Fri, 29 May 2020 04:29:01 -0700 (PDT)
+Received: from moi-limbo-9350.home
+ (host86-151-121-39.range86-151.btcentralplus.com. [86.151.121.39])
+ by smtp.gmail.com with ESMTPSA id h188sm6449053wmh.2.2020.05.29.04.29.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 May 2020 04:29:01 -0700 (PDT)
+From: Beata Michalska <beata.michalska@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v5 1/2] target/arm: kvm: Handle DABT with no valid ISS
+Date: Fri, 29 May 2020 12:27:56 +0100
+Message-Id: <20200529112757.32235-2-beata.michalska@linaro.org>
+In-Reply-To: <20200529112757.32235-1-beata.michalska@linaro.org>
+References: <20200529112757.32235-1-beata.michalska@linaro.org>
+Cc: qemu-arm@nongnu.org, pbonzini@redhat.com, kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- Rob Herring <robh+dt@kernel.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0/ufU9KCADwD
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: 97reB2qvSKPW
 
-Hi Peter,
+On ARMv7 & ARMv8 some load/store instructions might trigger a data abort
+exception with no valid ISS info to be decoded. The lack of decode info
+makes it at least tricky to emulate those instruction which is one of the
+(many) reasons why KVM will not even try to do so.
 
-CC Rob, who made these properties mandatory in the pl061 DT bindings.
+Add support for handling those by requesting KVM to inject external
+dabt into the quest.
 
-On Fri, May 22, 2020 at 11:30 AM Peter Maydell <peter.maydell@linaro.org> wrote:
-> On Fri, 22 May 2020 at 09:29, Geert Uytterhoeven <geert@linux-m68k.org> wrote:
-> > On Thu, May 21, 2020 at 6:59 PM Peter Maydell <peter.maydell@linaro.org> wrote:
-> > > On Tue, 19 May 2020 at 09:49, Geert Uytterhoeven
-> > > <geert+renesas@glider.be> wrote:
-> > > > Make the created node comply with the PL061 Device Tree bindings:
-> > > >   - Use generic node name "gpio" instead of "pl061",
-> > > >   - Add missing "#interrupt-cells" and "interrupt-controller"
-> > > >     properties.
-> > >
-> > > Where have these properties come from? They must be optional,
-> > > because in the version of the binding documentation from Linux
-> > > 5.0 they're not described:
-> > > https://elixir.bootlin.com/linux/v5.0/source/Documentation/devicetree/bindings/gpio/pl061-gpio.txt
-> >
-> > Many old DT bindings are incomplete.
->
-> Yeah, but production QEMU is out there in the world based on
-> the old DT binding documentation. So you can't unilaterally
-> make a part of the binding that wasn't documented and that QEMU
-> didn't emit mandatory. It might be preferable for new QEMU to
-> emit it, of course.
+Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+---
+ target/arm/cpu.h     |  2 ++
+ target/arm/kvm.c     | 64 +++++++++++++++++++++++++++++++++++++++++++++++++++-
+ target/arm/kvm_arm.h | 11 +++++++++
+ 3 files changed, 76 insertions(+), 1 deletion(-)
 
-Indeed, else QEMU will differ (more) from real hardware. Most PL061
-GPIO controllers in DTS files in upstream Linux are marked as interrupt
-controllers (a few haven't been updated yet).
-
-> > When running the validation on a device tree passed to the guest
-> > (extracted from /sys/firmware/devicetree/base, converted to dts, and
-> >  manually fixed up the phandles), the following is reported about the
-> > pl061 node:
-> >
-> >     virt.dt.yaml: pl061@9030000: {'reg': [[0, 151191552, 0, 4096]],
-> > 'gpio-controller': True, 'phandle': [[32771]], '#gpio-cells': [[2]],
-> > 'clocks': [[32768]], '#interrupt-cells': [[2]], 'compatible':
-> > ['arm,pl061', 'arm,primecell'], 'clock-names': ['apb_pclk'],
-> > '$nodename': ['pl061@9030000']} is not valid under any of the given
-> > schemas
-> >     [...]
-> >             virt.dt.yaml: pl061@9030000: 'interrupts' is a required property
-> >
-> >     virt.dt.yaml: pl061@9030000: $nodename:0: 'pl061@9030000' does not
-> > match '^gpio@[0-9a-f]+$'
-> >     virt.dt.yaml: pl061@9030000: 'interrupt-controller' is a required property
->
-> This is just saying "the yaml says these things are mandatory".
-> You could equally get rid of them by marking them optional in
-> the yaml, right?
->
-> Also, complaining about the nodename seems like a bug in the
-> validation: it is not a mandatory part of the spec, just a
-> recommendation.
-
-I'll defer that one to Rob, too.
-
-> > > Since the devicetree spec says that the interrupt-controller
-> > > property "defines a node as an interrupt controller node"
-> > > and a GPIO chip isn't an interrupt controller, this seems
-> > > like some kind of error in the dtb binding. Maybe I'm
-> > > missing something...
-> >
-> > PL061 is an interrupt controller, as it can assert its interrupt output
-> > based on activity on GPIO input lines.
->
-> By that logic the PL011 UART is an interrupt controller, because
-> it can assert its interrupt output based on activity on the serial
-> port input lines.
-
-Doh, bad wording on my side :-)
-
-> A GPIO controller is not an interrupt controller inherently.
-> Maybe you can use it in a system design as an interrupt
-> controller if you want to, and in that system's dtb perhaps
-> it would make sense to label it as one, but the virt board's
-> PL061 is in no way an interrupt controller -- it's just a GPIO
-> controller.
-
-Actually it is: the virt board has a gpio-keys node that ties the
-Poweroff key to a PL061 GPIO. The Linux gpio-keys driver relies on
-interrupts to detect key events (for IRQ incapable GPIOs you have to use
-"gpio-keys-polled" instead). This can easily be verified by looking at
-/proc/interrupts on the guest:
-
- 48:          0  9030000.gpio   3 Edge      GPIO Key Poweroff
-
-(Unfortunately I don't know how to trigger a virtual key press in the
- guest)
-
-> > > What actually goes wrong if QEMU doesn't specify these
-> > > properties?
-> >
-> > It means that other devices that have their interrupt output connected
-> > to a PL061 GPIO input won't work, as their driver in the guest OS cannot
-> > find the interrupt.  Note that arm/virt.c currently doesn't instantiate
-> > such devices.
-
-Seems I was wrong: arm/virt does have the Poweroff key, and Linux does
-find the interrupt.
-
-> OK. But why would we want to run an interrupt line through the GPIO
-> controller when we have a perfectly good interrupt controller in
-> the system already?
-
-Because the GIC (usually?) does not have its interrupt lines brought
-outside the SoC, but defers external interrupt handling to a specialized
-external IRQ handling block, or to a GPIO controller with interrupt
-capabilities (or to PCI MSI).
-If you have an external (non-PCI) device that needs to trigger an
-interrupt (e.g. an I2C sensor), its to be tied to the specialized block,
-or to a GPIO controller.
-
-> It might be reasonable to add the properties now to avoid setting
-> a bear trap for ourselves in future; on the other hand if running
-> interrupt lines through the GPIO controller doesn't work then it
-> acts as a nudge to stop people adding devices that are wired
-> up in a weird way.
-
-There are plenty of working examples for this.
-
-> > > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > > > index 7dc96abf72cf2b9a..99593d7bce4d85cb 100644
-> > > > --- a/hw/arm/virt.c
-> > > > +++ b/hw/arm/virt.c
-> > > > @@ -818,13 +818,15 @@ static void create_gpio(const VirtMachineState *vms)
-> > > >                                       qdev_get_gpio_in(vms->gic, irq));
-> > > >
-> > > >      uint32_t phandle = qemu_fdt_alloc_phandle(vms->fdt);
-> > > > -    nodename = g_strdup_printf("/pl061@%" PRIx64, base);
-> > > > +    nodename = g_strdup_printf("/gpio@%" PRIx64, base);
-> > >
-> > > Does the devicetree binding really mandate what the node name is?
-> > > I thought that finding the right device was doe via the
-> > > 'compatible' string and the nodename could be whatever the
-> > > device tree creator wanted.
-> >
-> > Matching is indeed done based on compatible value.
->
-> OK, then we don't need to change the node name here. Lots
-> of the other devices on the virt board have node names that
-> happen to use the device name rather than being more generic.
-
-Obviously these can (and IMHO should) be fixed, too, together with all
-other validation issues.
-Thanks!
-
-Rob: full thread at
-https://lore.kernel.org/qemu-devel/20200519084904.1069-1-geert+renesas@glider.be/
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 677584e..3702f21 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -570,6 +570,8 @@ typedef struct CPUARMState {
+         uint64_t esr;
+     } serror;
+ 
++    uint8_t ext_dabt_pending; /* Request for injecting ext DABT */
++
+     /* State of our input IRQ/FIQ/VIRQ/VFIQ lines */
+     uint32_t irq_line_state;
+ 
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 4bdbe6d..bf84224 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -39,6 +39,7 @@ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+ 
+ static bool cap_has_mp_state;
+ static bool cap_has_inject_serror_esr;
++static bool cap_has_inject_ext_dabt;
+ 
+ static ARMHostCPUFeatures arm_host_cpu_features;
+ 
+@@ -244,6 +245,16 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+         ret = -EINVAL;
+     }
+ 
++    if (kvm_check_extension(s, KVM_CAP_ARM_NISV_TO_USER)) {
++        if (kvm_vm_enable_cap(s, KVM_CAP_ARM_NISV_TO_USER, 0)) {
++            error_report("Failed to enable KVM_CAP_ARM_NISV_TO_USER cap");
++        } else {
++            /* Set status for supporting the external dabt injection */
++            cap_has_inject_ext_dabt = kvm_check_extension(s,
++                                    KVM_CAP_ARM_INJECT_EXT_DABT);
++        }
++    }
++
+     return ret;
+ }
+ 
+@@ -703,9 +714,16 @@ int kvm_put_vcpu_events(ARMCPU *cpu)
+         events.exception.serror_esr = env->serror.esr;
+     }
+ 
++    if (cap_has_inject_ext_dabt) {
++        events.exception.ext_dabt_pending = env->ext_dabt_pending;
++    }
++
+     ret = kvm_vcpu_ioctl(CPU(cpu), KVM_SET_VCPU_EVENTS, &events);
+     if (ret) {
+         error_report("failed to put vcpu events");
++    } else {
++        /* Clear instantly if the call was successful */
++        env->ext_dabt_pending = 0;
+     }
+ 
+     return ret;
+@@ -819,7 +837,12 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+             ret = EXCP_DEBUG;
+         } /* otherwise return to guest */
+         break;
+-    default:
++    case KVM_EXIT_ARM_NISV:
++        /* External DABT with no valid iss to decode */
++        ret = kvm_arm_handle_dabt_nisv(cs, run->arm_nisv.esr_iss,
++                                       run->arm_nisv.fault_ipa);
++        break;
++     default:
+         qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
+                       __func__, run->exit_reason);
+         break;
+@@ -955,3 +978,42 @@ int kvm_arch_msi_data_to_gsi(uint32_t data)
+ {
+     return (data - 32) & 0xffff;
+ }
++
++int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
++                             uint64_t fault_ipa)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++
++   /*
++    * ISS [23:14] is invalid so there is a limited info
++    * on what has just happened so the only *useful* thing that can
++    * be retrieved from ISS is WnR & DFSC (though in some cases WnR
++    * might be less of a value as well)
++    */
++
++    /*
++     * Request KVM to inject the external data abort into the guest
++     * by setting a pending exception on the affected vcpu.
++     */
++    if (cap_has_inject_ext_dabt) {
++        /* Set pending exception */
++        env->ext_dabt_pending = 1;
++        /*
++         * Even though at this point, the vcpu regs are out of sync,
++         * directly calling the KVM_SET_VCPU_EVENTS ioctl without
++         * explicitly synchronizing those, is enough and it also avoids
++         * overwriting changes done by KVM.
++         * The vcpu is not being marked as 'dirty' as all the changes
++         * needed to inject the abort are being handled by KVM only
++         * and there is no need for syncing either way
++         */
++        return kvm_put_vcpu_events(cpu);
++    } else {
++        error_report("Data abort exception triggered by guest memory access "
++                     "at physical address: 0x"  TARGET_FMT_lx,
++                     (target_ulong)fault_ipa);
++        error_printf("KVM unable to emulate faulting instruction.\n");
++        return -1;
++    }
++}
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 48bf5e1..e939e51 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -453,6 +453,17 @@ struct kvm_guest_debug_arch;
+ void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr);
+ 
+ /**
++ * kvm_arm_handle_dabt_nisv:
++ * @cs: CPUState
++ * @esr_iss: ISS encoding (limited) for the exception from Data Abort
++ *           ISV bit set to '0b0' -> no valid instruction syndrome
++ * @fault_ipa: faulting address for the synch data abort
++ *
++ * Returns: 0 if the exception has been handled, < 0 otherwise
++ */
++int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
++                            uint64_t fault_ipa);
++/**
+  * its_class_name:
+  *
+  * Return the ITS class name to use depending on whether KVM acceleration
 -- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+2.7.4
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

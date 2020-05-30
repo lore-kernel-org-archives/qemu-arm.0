@@ -1,72 +1,140 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1330592lfc;
-        Sat, 30 May 2020 03:27:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwfP1ZLticg9sQqifoTnn7CKGIdXrqa8G11pEvKG9wrX+CE7Ulpq3hVUD3sZNjv+DTjvWSi
-X-Received: by 2002:a25:9d90:: with SMTP id v16mr21226767ybp.128.1590834446163;
-        Sat, 30 May 2020 03:27:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590834446; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1421170lfc;
+        Sat, 30 May 2020 05:46:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOiC1nC09F++++s1B0MH+/+/NwEBHqUYfX04IR61HuH0rpZKTNjhFFsm656QXffugdFleW
+X-Received: by 2002:a25:148b:: with SMTP id 133mr19941102ybu.38.1590842794282;
+        Sat, 30 May 2020 05:46:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590842794; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kd0aukTLzpceC65deQt2vNhmNmqkzHWYOCTbuwt3HuSxrIU/xKo07evgP3eYKwc9yv
-         s5xm6uIWhtF94/VH5vFapNy4F+42z/Ez0mfb4H57qfUEC/VcJPt+DIWKAzZpShvda5d8
-         4KmK+6eh6eiiuCosWTpktsNWwBMG/ab5c4+M0GypyDx/2vTgoXExvQ50Szn75QOGYruk
-         5QovmLeoP9MQadkTCmgx6P2vLbV3bYSlhKIzqPLDANPLOPVFCb7fkUf6/LTU18UOf1oc
-         8S2D3CV6buCh/DzM/T98g/cZv8xO3dUi2cB3efSRFNoQVCYuLc6Hok2bvqPsvm3AecFv
-         XN0A==
+        b=U1kjdJI1FKwuZGRk3enT4SlNgEbYvAoF/MTqwm8yF+VyC+JNnYNQj+9Z7/jwVoqKXg
+         06ZQ20LpXbBcCejvBSccK38JMcQTGQHmVZwydt7VweuOHyp5cS3QQFYcAzsl9zxWWF5L
+         ReKJEPjPNimT2PD0HFoQm9IEPPxJYHpKNsQn6TwR1LGQ/AAfPGgaM/oIlU1HENW/X1lP
+         fsFaQt+SZ4qQTOyK+XpcBueLHGl5XYL5ccsj+4SyUuyTBRgot57C7Q3IJoETeunMJqvV
+         6Ra9qbI6XdQWXvkGnRxIEYwtk2MD9f27nVPB2iiPFnQZRH6kQUkCzSwleqxv6O5MyDWe
+         WbBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=lcio0+CDEckg1P4zZnWnNhXMhCSAc/SzxJMHSNQHxZo=;
-        b=ednJHQpOKtt/5SDLJ9StsSeqhejYDS7dwn+X//s+/Ht+v0r/NATw8ezZ5waUhljzcQ
-         6vl5Y+TD9NW2yVvY/Eyak0qgF+BzDcrwDblBuvkLGv1wke12V3k7Got+cfK9yzVoz3N9
-         BnWmIsEsWrLXVe64lh/n8K7AjylaHV52bW2KWbo/NtQYw0TTES9kHhr1vnhu8uJ0aVGc
-         0sacY7pFtD40r+9rxIIuio/HNmxoTXvhPNscfGtzVhewLyhYQ4ZhLYkJtTbLj77J8YMZ
-         u7LSoAONBUwY39wP2sWQWRKLf0LVSd7GYxnIVTvRkaV0tkBG0qOpeSOKLeW89g2tVHw7
-         MQ9A==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=qXNVEHRGOjFobUatZvY5eXZg+tMvmK+MWcCn4qfVLQg=;
+        b=h978QSrJk3cWba+G3wewmUJgCb03kvkuDx85B80UlEyZzbAiMoPxpFsSeTfFjAwt6Q
+         y7nO8of72LPB28o7+YEoAvQJI9E+rYSiz21c8VNDXFixRewOZDU+cZ1Nmg5IV0HlKNNx
+         CnA26AsxyxVZhVNb34AruxQHmSGtYZvkxn723AdBm/AIacBbSNCsrx7NXBKiFbOdjgVV
+         +5rUeW3V9aCfT1dWnIsiNqM9piVU4Tmk79nVAZboqicGmnXgvkJa94aNfYupiIRNrCKX
+         CO5hUpzVAM/QPLFDCwPUiZ8NtMmfHRgs8nmXsbjFZyqb9qNrhHyR+zkeOSWMA9wIZCsL
+         UVvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BfDj4G6a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l125si9666723ybb.344.2020.05.30.03.27.25
+        by mx.google.com with ESMTPS id e189si10230956ybe.281.2020.05.30.05.46.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 30 May 2020 03:27:26 -0700 (PDT)
+        Sat, 30 May 2020 05:46:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58634 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BfDj4G6a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:55922 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jeyi5-0001oj-Ha
-	for alex.bennee@linaro.org; Sat, 30 May 2020 06:27:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57370)
+	id 1jf0sj-0005Jd-JN
+	for alex.bennee@linaro.org; Sat, 30 May 2020 08:46:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47108)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jeyhx-0001ia-PF; Sat, 30 May 2020 06:27:17 -0400
-Received: from relay11.mail.gandi.net ([217.70.178.231]:38027)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jeyhv-0002F4-QS; Sat, 30 May 2020 06:27:17 -0400
-Received: from localhost.localdomain (lns-bzn-59-82-252-130-88.adsl.proxad.net
- [82.252.130.88]) (Authenticated sender: jcd@tribudubois.net)
- by relay11.mail.gandi.net (Postfix) with ESMTPSA id 9AB57100005;
- Sat, 30 May 2020 10:27:09 +0000 (UTC)
-From: Jean-Christophe Dubois <jcd@tribudubois.net>
-To: qemu-arm@nongnu.org
-Subject: [PATCH v3] hw/net/imx_fec.c: Convert debug fprintf() to trace event
-Date: Sat, 30 May 2020 12:27:07 +0200
-Message-Id: <20200530102707.195131-1-jcd@tribudubois.net>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jf0sI-0005JI-6V; Sat, 30 May 2020 08:46:07 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:37536)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jf0sG-0002pO-HK; Sat, 30 May 2020 08:46:05 -0400
+Received: by mail-wm1-x341.google.com with SMTP id f5so6813500wmh.2;
+ Sat, 30 May 2020 05:46:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=qXNVEHRGOjFobUatZvY5eXZg+tMvmK+MWcCn4qfVLQg=;
+ b=BfDj4G6anjzdaLa1rfikxqvEsqVgCG5sHUjBzC0nrLdgn6nkq784S9ChuX2b1kyUyd
+ gaGRoLaHpureXPyvfhluyMOIpDef+JFBvs7rMr/GvlNvGxKf4BCuMcjxoCKc1rZvYnjJ
+ kmS4RNs14HVRtk/KMTp00ZopNMRCiT3C0fgp0gBkjSl2LQyKcqZp+mjFOFeGSB7pWTL7
+ rYMj2vvEdU5TZtJV7NHBubyuZPHLuiqj7PrAUirCOvFQvSwC3tcxqUvxxEqanDIEOHQu
+ 9Hrb6Dx7z9dBy9EKTOBiMlI2/GPgAypbDFSbQ7r+v9U+ZoMTeUKKT/tWK5Pgcne0ZcsX
+ Ahhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=qXNVEHRGOjFobUatZvY5eXZg+tMvmK+MWcCn4qfVLQg=;
+ b=Xd/TY5y1JSiAsltzYkoRpxIWDK5vB4RdSVoWXugv6Ao3esA70/k9vCicb4ekZTvin/
+ z2L+tfLUGKS8e0UEABXFNvX8XUFNNwG3cLlv+iGsl6nmlLZtPAAKYIIWTro7tLV1TOUz
+ MdvbQx269E4DhEvNHZ9ckuSKJz7Yw8H9siSNauRbrkg9ndRNRDEuwz66OcEhoTYteqXW
+ n5kKjB7L+sha6SxBqsjS1fMGZEDunQnu4hWPA03EDJRWBNzA9FOYeaU92lMDUjqZnRlG
+ N7xMWDE3i95gUEVZhYRoxhW3wZv4EyTZmBcT08r6CLiMLzdGt4rfhq5CeC2hWRohzCRn
+ XnRQ==
+X-Gm-Message-State: AOAM530VPQ/YxXbhegKAa6kOxbtqKL/Fo6EtESvDSFjPlznlJjZSx6v+
+ KAAVo11NkhY4EbmkPt2KZnb7RbX0
+X-Received: by 2002:a05:600c:1084:: with SMTP id
+ e4mr13679097wmd.144.1590842762034; 
+ Sat, 30 May 2020 05:46:02 -0700 (PDT)
+Received: from [192.168.1.34] (43.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.43])
+ by smtp.gmail.com with ESMTPSA id 88sm14712556wre.45.2020.05.30.05.45.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 30 May 2020 05:46:01 -0700 (PDT)
+Subject: Re: [PATCH v3] hw/net/imx_fec.c: Convert debug fprintf() to trace
+ event
+To: Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org
+References: <20200530102707.195131-1-jcd@tribudubois.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <347442c4-e1f4-57eb-937f-c551e36b7cb8@amsat.org>
+Date: Sat, 30 May 2020 14:45:59 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
+In-Reply-To: <20200530102707.195131-1-jcd@tribudubois.net>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=217.70.178.231; envelope-from=jcd@tribudubois.net;
- helo=relay11.mail.gandi.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/30 04:35:03
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,360 +147,476 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, peter.chubb@nicta.com.au, qemu-devel@nongnu.org,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: peter.maydell@linaro.org, peter.chubb@nicta.com.au, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6Pkta+jtNu1h
+X-TUID: vYkzyJYgzgss
 
-Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
----
+On 5/30/20 12:27 PM, Jean-Christophe Dubois wrote:
+> Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
+> ---
+> 
+>  v2: fix coding style issues.
+>  v3: improve tracing code based on feedback
+>      * change some tracing function names
+>      * remove unnecessary cast
+>      * add register index in addition to name
 
- v2: fix coding style issues.
- v3: improve tracing code based on feedback
-     * change some tracing function names
-     * remove unnecessary cast
-     * add register index in addition to name
+Thanks for the changes!
 
- hw/net/imx_fec.c    | 106 +++++++++++++++++++-------------------------
- hw/net/trace-events |  18 ++++++++
- 2 files changed, 63 insertions(+), 61 deletions(-)
+> 
+>  hw/net/imx_fec.c    | 106 +++++++++++++++++++-------------------------
+>  hw/net/trace-events |  18 ++++++++
+>  2 files changed, 63 insertions(+), 61 deletions(-)
+> 
+> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+> index 7adcc9df654..eefedc252de 100644
+> --- a/hw/net/imx_fec.c
+> +++ b/hw/net/imx_fec.c
+> @@ -31,34 +31,11 @@
+>  #include "qemu/module.h"
+>  #include "net/checksum.h"
+>  #include "net/eth.h"
+> +#include "trace.h"
+>  
+>  /* For crc32 */
+>  #include <zlib.h>
+>  
+> -#ifndef DEBUG_IMX_FEC
+> -#define DEBUG_IMX_FEC 0
+> -#endif
+> -
+> -#define FEC_PRINTF(fmt, args...) \
+> -    do { \
+> -        if (DEBUG_IMX_FEC) { \
+> -            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_FEC, \
+> -                                             __func__, ##args); \
+> -        } \
+> -    } while (0)
+> -
+> -#ifndef DEBUG_IMX_PHY
+> -#define DEBUG_IMX_PHY 0
+> -#endif
+> -
+> -#define PHY_PRINTF(fmt, args...) \
+> -    do { \
+> -        if (DEBUG_IMX_PHY) { \
+> -            fprintf(stderr, "[%s.phy]%s: " fmt , TYPE_IMX_FEC, \
+> -                                                 __func__, ##args); \
+> -        } \
+> -    } while (0)
+> -
+>  #define IMX_MAX_DESC    1024
+>  
+>  static const char *imx_default_reg_name(IMXFECState *s, uint32_t index)
+> @@ -262,43 +239,45 @@ static void imx_eth_update(IMXFECState *s);
+>   * For now we don't handle any GPIO/interrupt line, so the OS will
+>   * have to poll for the PHY status.
+>   */
+> -static void phy_update_irq(IMXFECState *s)
+> +static void imx_phy_update_irq(IMXFECState *s)
+>  {
+>      imx_eth_update(s);
+>  }
+>  
+> -static void phy_update_link(IMXFECState *s)
+> +static void imx_phy_update_link(IMXFECState *s)
+>  {
+>      /* Autonegotiation status mirrors link status.  */
+>      if (qemu_get_queue(s->nic)->link_down) {
+> -        PHY_PRINTF("link is down\n");
+> +        trace_imx_phy_update_link("down");
+>          s->phy_status &= ~0x0024;
+>          s->phy_int |= PHY_INT_DOWN;
+>      } else {
+> -        PHY_PRINTF("link is up\n");
+> +        trace_imx_phy_update_link("up");
+>          s->phy_status |= 0x0024;
+>          s->phy_int |= PHY_INT_ENERGYON;
+>          s->phy_int |= PHY_INT_AUTONEG_COMPLETE;
+>      }
+> -    phy_update_irq(s);
+> +    imx_phy_update_irq(s);
+>  }
+>  
+>  static void imx_eth_set_link(NetClientState *nc)
+>  {
+> -    phy_update_link(IMX_FEC(qemu_get_nic_opaque(nc)));
+> +    imx_phy_update_link(IMX_FEC(qemu_get_nic_opaque(nc)));
+>  }
+>  
+> -static void phy_reset(IMXFECState *s)
+> +static void imx_phy_reset(IMXFECState *s)
+>  {
+> +    trace_imx_phy_reset();
+> +
+>      s->phy_status = 0x7809;
+>      s->phy_control = 0x3000;
+>      s->phy_advertise = 0x01e1;
+>      s->phy_int_mask = 0;
+>      s->phy_int = 0;
+> -    phy_update_link(s);
+> +    imx_phy_update_link(s);
+>  }
+>  
+> -static uint32_t do_phy_read(IMXFECState *s, int reg)
+> +static uint32_t imx_phy_read(IMXFECState *s, int reg)
+>  {
+>      uint32_t val;
+>  
+> @@ -332,7 +311,7 @@ static uint32_t do_phy_read(IMXFECState *s, int reg)
+>      case 29:    /* Interrupt source.  */
+>          val = s->phy_int;
+>          s->phy_int = 0;
+> -        phy_update_irq(s);
+> +        imx_phy_update_irq(s);
+>          break;
+>      case 30:    /* Interrupt mask */
+>          val = s->phy_int_mask;
+> @@ -352,14 +331,14 @@ static uint32_t do_phy_read(IMXFECState *s, int reg)
+>          break;
+>      }
+>  
+> -    PHY_PRINTF("read 0x%04x @ %d\n", val, reg);
+> +    trace_imx_phy_read(val, reg);
+>  
+>      return val;
+>  }
+>  
+> -static void do_phy_write(IMXFECState *s, int reg, uint32_t val)
+> +static void imx_phy_write(IMXFECState *s, int reg, uint32_t val)
+>  {
+> -    PHY_PRINTF("write 0x%04x @ %d\n", val, reg);
+> +    trace_imx_phy_write(val, reg);
+>  
+>      if (reg > 31) {
+>          /* we only advertise one phy */
+> @@ -369,7 +348,7 @@ static void do_phy_write(IMXFECState *s, int reg, uint32_t val)
+>      switch (reg) {
+>      case 0:     /* Basic Control */
+>          if (val & 0x8000) {
+> -            phy_reset(s);
+> +            imx_phy_reset(s);
+>          } else {
+>              s->phy_control = val & 0x7980;
+>              /* Complete autonegotiation immediately.  */
+> @@ -383,7 +362,7 @@ static void do_phy_write(IMXFECState *s, int reg, uint32_t val)
+>          break;
+>      case 30:    /* Interrupt mask */
+>          s->phy_int_mask = val & 0xff;
+> -        phy_update_irq(s);
+> +        imx_phy_update_irq(s);
+>          break;
+>      case 17:
+>      case 18:
+> @@ -402,6 +381,8 @@ static void do_phy_write(IMXFECState *s, int reg, uint32_t val)
+>  static void imx_fec_read_bd(IMXFECBufDesc *bd, dma_addr_t addr)
+>  {
+>      dma_memory_read(&address_space_memory, addr, bd, sizeof(*bd));
+> +
+> +    trace_imx_fec_read_bd(addr, bd->flags, bd->length, bd->data);
+>  }
+>  
+>  static void imx_fec_write_bd(IMXFECBufDesc *bd, dma_addr_t addr)
+> @@ -412,6 +393,9 @@ static void imx_fec_write_bd(IMXFECBufDesc *bd, dma_addr_t addr)
+>  static void imx_enet_read_bd(IMXENETBufDesc *bd, dma_addr_t addr)
+>  {
+>      dma_memory_read(&address_space_memory, addr, bd, sizeof(*bd));
+> +
+> +    trace_imx_enet_read_bd(addr, bd->flags, bd->length, bd->data,
+> +                   bd->option, bd->status);
+>  }
+>  
+>  static void imx_enet_write_bd(IMXENETBufDesc *bd, dma_addr_t addr)
+> @@ -471,11 +455,11 @@ static void imx_fec_do_tx(IMXFECState *s)
+>          int len;
+>  
+>          imx_fec_read_bd(&bd, addr);
+> -        FEC_PRINTF("tx_bd %x flags %04x len %d data %08x\n",
+> -                   addr, bd.flags, bd.length, bd.data);
+>          if ((bd.flags & ENET_BD_R) == 0) {
+> +
+>              /* Run out of descriptors to transmit.  */
+> -            FEC_PRINTF("tx_bd ran out of descriptors to transmit\n");
+> +            trace_imx_eth_tx_bd_busy();
+> +
+>              break;
+>          }
+>          len = bd.length;
+> @@ -552,11 +536,11 @@ static void imx_enet_do_tx(IMXFECState *s, uint32_t index)
+>          int len;
+>  
+>          imx_enet_read_bd(&bd, addr);
+> -        FEC_PRINTF("tx_bd %x flags %04x len %d data %08x option %04x "
+> -                   "status %04x\n", addr, bd.flags, bd.length, bd.data,
+> -                   bd.option, bd.status);
+>          if ((bd.flags & ENET_BD_R) == 0) {
+>              /* Run out of descriptors to transmit.  */
+> +
+> +            trace_imx_eth_tx_bd_busy();
+> +
+>              break;
+>          }
+>          len = bd.length;
+> @@ -633,7 +617,7 @@ static void imx_eth_enable_rx(IMXFECState *s, bool flush)
+>      s->regs[ENET_RDAR] = (bd.flags & ENET_BD_E) ? ENET_RDAR_RDAR : 0;
+>  
+>      if (!s->regs[ENET_RDAR]) {
+> -        FEC_PRINTF("RX buffer full\n");
+> +        trace_imx_eth_rx_bd_full();
+>      } else if (flush) {
+>          qemu_flush_queued_packets(qemu_get_queue(s->nic));
+>      }
+> @@ -676,7 +660,7 @@ static void imx_eth_reset(DeviceState *d)
+>      memset(s->tx_descriptor, 0, sizeof(s->tx_descriptor));
+>  
+>      /* We also reset the PHY */
+> -    phy_reset(s);
+> +    imx_phy_reset(s);
+>  }
+>  
+>  static uint32_t imx_default_read(IMXFECState *s, uint32_t index)
+> @@ -774,8 +758,7 @@ static uint64_t imx_eth_read(void *opaque, hwaddr offset, unsigned size)
+>          break;
+>      }
+>  
+> -    FEC_PRINTF("reg[%s] => 0x%" PRIx32 "\n", imx_eth_reg_name(s, index),
+> -                                              value);
+> +    trace_imx_eth_read(index, imx_eth_reg_name(s, index), value);
+>  
+>      return value;
+>  }
+> @@ -884,8 +867,7 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
+>      const bool single_tx_ring = !imx_eth_is_multi_tx_ring(s);
+>      uint32_t index = offset >> 2;
+>  
+> -    FEC_PRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx_eth_reg_name(s, index),
+> -                (uint32_t)value);
+> +    trace_imx_eth_write(index, imx_eth_reg_name(s, index), value);
+>  
+>      switch (index) {
+>      case ENET_EIR:
+> @@ -940,12 +922,12 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
+>          if (extract32(value, 29, 1)) {
+>              /* This is a read operation */
+>              s->regs[ENET_MMFR] = deposit32(s->regs[ENET_MMFR], 0, 16,
+> -                                           do_phy_read(s,
+> +                                           imx_phy_read(s,
+>                                                         extract32(value,
+>                                                                   18, 10)));
+>          } else {
+>              /* This a write operation */
+> -            do_phy_write(s, extract32(value, 18, 10), extract32(value, 0, 16));
+> +            imx_phy_write(s, extract32(value, 18, 10), extract32(value, 0, 16));
+>          }
+>          /* raise the interrupt as the PHY operation is done */
+>          s->regs[ENET_EIR] |= ENET_INT_MII;
+> @@ -1053,8 +1035,6 @@ static bool imx_eth_can_receive(NetClientState *nc)
+>  {
+>      IMXFECState *s = IMX_FEC(qemu_get_nic_opaque(nc));
+>  
+> -    FEC_PRINTF("\n");
+> -
+>      return !!s->regs[ENET_RDAR];
+>  }
+>  
+> @@ -1071,7 +1051,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
+>      unsigned int buf_len;
+>      size_t size = len;
+>  
+> -    FEC_PRINTF("len %d\n", (int)size);
+> +    trace_imx_fec_receive(size);
+>  
+>      if (!s->regs[ENET_RDAR]) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Unexpected packet\n",
+> @@ -1113,7 +1093,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
+>          bd.length = buf_len;
+>          size -= buf_len;
+>  
+> -        FEC_PRINTF("rx_bd 0x%x length %d\n", addr, bd.length);
+> +        trace_imx_fec_receive_len(addr, bd.length);
+>  
+>          /* The last 4 bytes are the CRC.  */
+>          if (size < 4) {
+> @@ -1131,7 +1111,9 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
+>          if (size == 0) {
+>              /* Last buffer in frame.  */
+>              bd.flags |= flags | ENET_BD_L;
+> -            FEC_PRINTF("rx frame flags %04x\n", bd.flags);
+> +
+> +            trace_imx_fec_receive_last(bd.flags);
+> +
+>              s->regs[ENET_EIR] |= ENET_INT_RXF;
+>          } else {
+>              s->regs[ENET_EIR] |= ENET_INT_RXB;
+> @@ -1164,7 +1146,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+>      size_t size = len;
+>      bool shift16 = s->regs[ENET_RACC] & ENET_RACC_SHIFT16;
+>  
+> -    FEC_PRINTF("len %d\n", (int)size);
+> +    trace_imx_enet_receive(size);
+>  
+>      if (!s->regs[ENET_RDAR]) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Unexpected packet\n",
+> @@ -1210,7 +1192,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+>          bd.length = buf_len;
+>          size -= buf_len;
+>  
+> -        FEC_PRINTF("rx_bd 0x%x length %d\n", addr, bd.length);
+> +        trace_imx_enet_receive_len(addr, bd.length);
+>  
+>          /* The last 4 bytes are the CRC.  */
+>          if (size < 4) {
+> @@ -1246,7 +1228,9 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+>          if (size == 0) {
+>              /* Last buffer in frame.  */
+>              bd.flags |= flags | ENET_BD_L;
+> -            FEC_PRINTF("rx frame flags %04x\n", bd.flags);
+> +
+> +            trace_imx_enet_receive_last(bd.flags);
+> +
+>              /* Indicate that we've updated the last buffer descriptor. */
+>              bd.last_buffer = ENET_BD_BDU;
+>              if (bd.option & ENET_BD_RX_INT) {
+> diff --git a/hw/net/trace-events b/hw/net/trace-events
+> index e18f883cfd4..430ee36b257 100644
+> --- a/hw/net/trace-events
+> +++ b/hw/net/trace-events
+> @@ -408,3 +408,21 @@ i82596_receive_packet(size_t sz) "len=%zu"
+>  i82596_new_mac(const char *id_with_mac) "New MAC for: %s"
+>  i82596_set_multicast(uint16_t count) "Added %d multicast entries"
+>  i82596_channel_attention(void *s) "%p: Received CHANNEL ATTENTION"
+> +
+> +# imx_fec.c
+> +imx_phy_read(uint32_t val, int reg) "0x%04x <= reg[%d]"
+> +imx_phy_write(uint32_t val, int reg) "0x%04x => reg[%d]"
+> +imx_phy_update_link(const char *s) "%s"
+> +imx_phy_reset(void) ""
+> +imx_fec_read_bd(uint64_t addr, int flags, int len, int data) "tx_bd 0x%lx flags 0x%04x len %d data 0x%08x"
+> +imx_enet_read_bd(uint64_t addr, int flags, int len, int data, int options, int status) "tx_bd 0x%lx flags 0x%04x len %d data 0x%08x option 0x%04x status 0x%04x"
+> +imx_eth_tx_bd_busy(void) "tx_bd ran out of descriptors to transmit"
+> +imx_eth_rx_bd_full(void) "RX buffer is full"
+> +imx_eth_read(int reg, const char *reg_name, uint32_t value) "reg[%d:%s] => 0x%08x"
+> +imx_eth_write(int reg, const char *reg_name, uint64_t value) "reg[%d:%s] <= 0x%08lx"
+> +imx_fec_receive(size_t size) "len %ld"
+> +imx_fec_receive_len(uint64_t addr, int len) "rx_bd 0x%lx length %d"
+> +imx_fec_receive_last(int last) "rx frame flags 0x%04x"
+> +imx_enet_receive(size_t size) "len %ld"
+> +imx_enet_receive_len(uint64_t addr, int len) "rx_bd 0x%lx length %d"
+> +imx_enet_receive_last(int last) "rx frame flags 0x%04x"
+> 
 
-diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index 7adcc9df654..eefedc252de 100644
---- a/hw/net/imx_fec.c
-+++ b/hw/net/imx_fec.c
-@@ -31,34 +31,11 @@
- #include "qemu/module.h"
- #include "net/checksum.h"
- #include "net/eth.h"
-+#include "trace.h"
- 
- /* For crc32 */
- #include <zlib.h>
- 
--#ifndef DEBUG_IMX_FEC
--#define DEBUG_IMX_FEC 0
--#endif
--
--#define FEC_PRINTF(fmt, args...) \
--    do { \
--        if (DEBUG_IMX_FEC) { \
--            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_FEC, \
--                                             __func__, ##args); \
--        } \
--    } while (0)
--
--#ifndef DEBUG_IMX_PHY
--#define DEBUG_IMX_PHY 0
--#endif
--
--#define PHY_PRINTF(fmt, args...) \
--    do { \
--        if (DEBUG_IMX_PHY) { \
--            fprintf(stderr, "[%s.phy]%s: " fmt , TYPE_IMX_FEC, \
--                                                 __func__, ##args); \
--        } \
--    } while (0)
--
- #define IMX_MAX_DESC    1024
- 
- static const char *imx_default_reg_name(IMXFECState *s, uint32_t index)
-@@ -262,43 +239,45 @@ static void imx_eth_update(IMXFECState *s);
-  * For now we don't handle any GPIO/interrupt line, so the OS will
-  * have to poll for the PHY status.
-  */
--static void phy_update_irq(IMXFECState *s)
-+static void imx_phy_update_irq(IMXFECState *s)
- {
-     imx_eth_update(s);
- }
- 
--static void phy_update_link(IMXFECState *s)
-+static void imx_phy_update_link(IMXFECState *s)
- {
-     /* Autonegotiation status mirrors link status.  */
-     if (qemu_get_queue(s->nic)->link_down) {
--        PHY_PRINTF("link is down\n");
-+        trace_imx_phy_update_link("down");
-         s->phy_status &= ~0x0024;
-         s->phy_int |= PHY_INT_DOWN;
-     } else {
--        PHY_PRINTF("link is up\n");
-+        trace_imx_phy_update_link("up");
-         s->phy_status |= 0x0024;
-         s->phy_int |= PHY_INT_ENERGYON;
-         s->phy_int |= PHY_INT_AUTONEG_COMPLETE;
-     }
--    phy_update_irq(s);
-+    imx_phy_update_irq(s);
- }
- 
- static void imx_eth_set_link(NetClientState *nc)
- {
--    phy_update_link(IMX_FEC(qemu_get_nic_opaque(nc)));
-+    imx_phy_update_link(IMX_FEC(qemu_get_nic_opaque(nc)));
- }
- 
--static void phy_reset(IMXFECState *s)
-+static void imx_phy_reset(IMXFECState *s)
- {
-+    trace_imx_phy_reset();
-+
-     s->phy_status = 0x7809;
-     s->phy_control = 0x3000;
-     s->phy_advertise = 0x01e1;
-     s->phy_int_mask = 0;
-     s->phy_int = 0;
--    phy_update_link(s);
-+    imx_phy_update_link(s);
- }
- 
--static uint32_t do_phy_read(IMXFECState *s, int reg)
-+static uint32_t imx_phy_read(IMXFECState *s, int reg)
- {
-     uint32_t val;
- 
-@@ -332,7 +311,7 @@ static uint32_t do_phy_read(IMXFECState *s, int reg)
-     case 29:    /* Interrupt source.  */
-         val = s->phy_int;
-         s->phy_int = 0;
--        phy_update_irq(s);
-+        imx_phy_update_irq(s);
-         break;
-     case 30:    /* Interrupt mask */
-         val = s->phy_int_mask;
-@@ -352,14 +331,14 @@ static uint32_t do_phy_read(IMXFECState *s, int reg)
-         break;
-     }
- 
--    PHY_PRINTF("read 0x%04x @ %d\n", val, reg);
-+    trace_imx_phy_read(val, reg);
- 
-     return val;
- }
- 
--static void do_phy_write(IMXFECState *s, int reg, uint32_t val)
-+static void imx_phy_write(IMXFECState *s, int reg, uint32_t val)
- {
--    PHY_PRINTF("write 0x%04x @ %d\n", val, reg);
-+    trace_imx_phy_write(val, reg);
- 
-     if (reg > 31) {
-         /* we only advertise one phy */
-@@ -369,7 +348,7 @@ static void do_phy_write(IMXFECState *s, int reg, uint32_t val)
-     switch (reg) {
-     case 0:     /* Basic Control */
-         if (val & 0x8000) {
--            phy_reset(s);
-+            imx_phy_reset(s);
-         } else {
-             s->phy_control = val & 0x7980;
-             /* Complete autonegotiation immediately.  */
-@@ -383,7 +362,7 @@ static void do_phy_write(IMXFECState *s, int reg, uint32_t val)
-         break;
-     case 30:    /* Interrupt mask */
-         s->phy_int_mask = val & 0xff;
--        phy_update_irq(s);
-+        imx_phy_update_irq(s);
-         break;
-     case 17:
-     case 18:
-@@ -402,6 +381,8 @@ static void do_phy_write(IMXFECState *s, int reg, uint32_t val)
- static void imx_fec_read_bd(IMXFECBufDesc *bd, dma_addr_t addr)
- {
-     dma_memory_read(&address_space_memory, addr, bd, sizeof(*bd));
-+
-+    trace_imx_fec_read_bd(addr, bd->flags, bd->length, bd->data);
- }
- 
- static void imx_fec_write_bd(IMXFECBufDesc *bd, dma_addr_t addr)
-@@ -412,6 +393,9 @@ static void imx_fec_write_bd(IMXFECBufDesc *bd, dma_addr_t addr)
- static void imx_enet_read_bd(IMXENETBufDesc *bd, dma_addr_t addr)
- {
-     dma_memory_read(&address_space_memory, addr, bd, sizeof(*bd));
-+
-+    trace_imx_enet_read_bd(addr, bd->flags, bd->length, bd->data,
-+                   bd->option, bd->status);
- }
- 
- static void imx_enet_write_bd(IMXENETBufDesc *bd, dma_addr_t addr)
-@@ -471,11 +455,11 @@ static void imx_fec_do_tx(IMXFECState *s)
-         int len;
- 
-         imx_fec_read_bd(&bd, addr);
--        FEC_PRINTF("tx_bd %x flags %04x len %d data %08x\n",
--                   addr, bd.flags, bd.length, bd.data);
-         if ((bd.flags & ENET_BD_R) == 0) {
-+
-             /* Run out of descriptors to transmit.  */
--            FEC_PRINTF("tx_bd ran out of descriptors to transmit\n");
-+            trace_imx_eth_tx_bd_busy();
-+
-             break;
-         }
-         len = bd.length;
-@@ -552,11 +536,11 @@ static void imx_enet_do_tx(IMXFECState *s, uint32_t index)
-         int len;
- 
-         imx_enet_read_bd(&bd, addr);
--        FEC_PRINTF("tx_bd %x flags %04x len %d data %08x option %04x "
--                   "status %04x\n", addr, bd.flags, bd.length, bd.data,
--                   bd.option, bd.status);
-         if ((bd.flags & ENET_BD_R) == 0) {
-             /* Run out of descriptors to transmit.  */
-+
-+            trace_imx_eth_tx_bd_busy();
-+
-             break;
-         }
-         len = bd.length;
-@@ -633,7 +617,7 @@ static void imx_eth_enable_rx(IMXFECState *s, bool flush)
-     s->regs[ENET_RDAR] = (bd.flags & ENET_BD_E) ? ENET_RDAR_RDAR : 0;
- 
-     if (!s->regs[ENET_RDAR]) {
--        FEC_PRINTF("RX buffer full\n");
-+        trace_imx_eth_rx_bd_full();
-     } else if (flush) {
-         qemu_flush_queued_packets(qemu_get_queue(s->nic));
-     }
-@@ -676,7 +660,7 @@ static void imx_eth_reset(DeviceState *d)
-     memset(s->tx_descriptor, 0, sizeof(s->tx_descriptor));
- 
-     /* We also reset the PHY */
--    phy_reset(s);
-+    imx_phy_reset(s);
- }
- 
- static uint32_t imx_default_read(IMXFECState *s, uint32_t index)
-@@ -774,8 +758,7 @@ static uint64_t imx_eth_read(void *opaque, hwaddr offset, unsigned size)
-         break;
-     }
- 
--    FEC_PRINTF("reg[%s] => 0x%" PRIx32 "\n", imx_eth_reg_name(s, index),
--                                              value);
-+    trace_imx_eth_read(index, imx_eth_reg_name(s, index), value);
- 
-     return value;
- }
-@@ -884,8 +867,7 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
-     const bool single_tx_ring = !imx_eth_is_multi_tx_ring(s);
-     uint32_t index = offset >> 2;
- 
--    FEC_PRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx_eth_reg_name(s, index),
--                (uint32_t)value);
-+    trace_imx_eth_write(index, imx_eth_reg_name(s, index), value);
- 
-     switch (index) {
-     case ENET_EIR:
-@@ -940,12 +922,12 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
-         if (extract32(value, 29, 1)) {
-             /* This is a read operation */
-             s->regs[ENET_MMFR] = deposit32(s->regs[ENET_MMFR], 0, 16,
--                                           do_phy_read(s,
-+                                           imx_phy_read(s,
-                                                        extract32(value,
-                                                                  18, 10)));
-         } else {
-             /* This a write operation */
--            do_phy_write(s, extract32(value, 18, 10), extract32(value, 0, 16));
-+            imx_phy_write(s, extract32(value, 18, 10), extract32(value, 0, 16));
-         }
-         /* raise the interrupt as the PHY operation is done */
-         s->regs[ENET_EIR] |= ENET_INT_MII;
-@@ -1053,8 +1035,6 @@ static bool imx_eth_can_receive(NetClientState *nc)
- {
-     IMXFECState *s = IMX_FEC(qemu_get_nic_opaque(nc));
- 
--    FEC_PRINTF("\n");
--
-     return !!s->regs[ENET_RDAR];
- }
- 
-@@ -1071,7 +1051,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
-     unsigned int buf_len;
-     size_t size = len;
- 
--    FEC_PRINTF("len %d\n", (int)size);
-+    trace_imx_fec_receive(size);
- 
-     if (!s->regs[ENET_RDAR]) {
-         qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Unexpected packet\n",
-@@ -1113,7 +1093,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
-         bd.length = buf_len;
-         size -= buf_len;
- 
--        FEC_PRINTF("rx_bd 0x%x length %d\n", addr, bd.length);
-+        trace_imx_fec_receive_len(addr, bd.length);
- 
-         /* The last 4 bytes are the CRC.  */
-         if (size < 4) {
-@@ -1131,7 +1111,9 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
-         if (size == 0) {
-             /* Last buffer in frame.  */
-             bd.flags |= flags | ENET_BD_L;
--            FEC_PRINTF("rx frame flags %04x\n", bd.flags);
-+
-+            trace_imx_fec_receive_last(bd.flags);
-+
-             s->regs[ENET_EIR] |= ENET_INT_RXF;
-         } else {
-             s->regs[ENET_EIR] |= ENET_INT_RXB;
-@@ -1164,7 +1146,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
-     size_t size = len;
-     bool shift16 = s->regs[ENET_RACC] & ENET_RACC_SHIFT16;
- 
--    FEC_PRINTF("len %d\n", (int)size);
-+    trace_imx_enet_receive(size);
- 
-     if (!s->regs[ENET_RDAR]) {
-         qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Unexpected packet\n",
-@@ -1210,7 +1192,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
-         bd.length = buf_len;
-         size -= buf_len;
- 
--        FEC_PRINTF("rx_bd 0x%x length %d\n", addr, bd.length);
-+        trace_imx_enet_receive_len(addr, bd.length);
- 
-         /* The last 4 bytes are the CRC.  */
-         if (size < 4) {
-@@ -1246,7 +1228,9 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
-         if (size == 0) {
-             /* Last buffer in frame.  */
-             bd.flags |= flags | ENET_BD_L;
--            FEC_PRINTF("rx frame flags %04x\n", bd.flags);
-+
-+            trace_imx_enet_receive_last(bd.flags);
-+
-             /* Indicate that we've updated the last buffer descriptor. */
-             bd.last_buffer = ENET_BD_BDU;
-             if (bd.option & ENET_BD_RX_INT) {
-diff --git a/hw/net/trace-events b/hw/net/trace-events
-index e18f883cfd4..430ee36b257 100644
+Format string is incorrect on 32-bit host:
+
+  CC      hw/net/imx_fec.o
+In file included from hw/net/imx_fec.c:34:0:
+hw/net/trace.h: In function '_nocheck__trace_imx_fec_read_bd':
+hw/net/trace.h:9208:18: error: format '%lx' expects argument of type
+'long unsigned int', but argument 5 has type 'uint64_t {aka long long
+unsigned int}' [-Werror=format=]
+         qemu_log("%d@%zu.%06zu:imx_fec_read_bd " "tx_bd 0x%lx flags
+0x%04x len %d data 0x%08x" "\n",
+                  ^
+hw/net/trace.h: In function '_nocheck__trace_imx_enet_read_bd':
+hw/net/trace.h:9231:18: error: format '%lx' expects argument of type
+'long unsigned int', but argument 5 has type 'uint64_t {aka long long
+unsigned int}' [-Werror=format=]
+         qemu_log("%d@%zu.%06zu:imx_enet_read_bd " "tx_bd 0x%lx flags
+0x%04x len %d data 0x%08x option 0x%04x status 0x%04x" "\n",
+                  ^
+hw/net/trace.h: In function '_nocheck__trace_imx_eth_write':
+hw/net/trace.h:9323:18: error: format '%lx' expects argument of type
+'long unsigned int', but argument 7 has type 'uint64_t {aka long long
+unsigned int}' [-Werror=format=]
+         qemu_log("%d@%zu.%06zu:imx_eth_write " "reg[%d:%s] <= 0x%08lx"
+"\n",
+                  ^
+hw/net/trace.h: In function '_nocheck__trace_imx_fec_receive':
+hw/net/trace.h:9346:18: error: format '%ld' expects argument of type
+'long int', but argument 5 has type 'size_t {aka unsigned int}'
+[-Werror=format=]
+         qemu_log("%d@%zu.%06zu:imx_fec_receive " "len %ld" "\n",
+                  ^
+hw/net/trace.h: In function '_nocheck__trace_imx_fec_receive_len':
+hw/net/trace.h:9369:18: error: format '%lx' expects argument of type
+'long unsigned int', but argument 5 has type 'uint64_t {aka long long
+unsigned int}' [-Werror=format=]
+         qemu_log("%d@%zu.%06zu:imx_fec_receive_len " "rx_bd 0x%lx
+length %d" "\n",
+                  ^
+hw/net/trace.h: In function '_nocheck__trace_imx_enet_receive':
+hw/net/trace.h:9415:18: error: format '%ld' expects argument of type
+'long int', but argument 5 has type 'size_t {aka unsigned int}'
+[-Werror=format=]
+         qemu_log("%d@%zu.%06zu:imx_enet_receive " "len %ld" "\n",
+                  ^
+hw/net/trace.h: In function '_nocheck__trace_imx_enet_receive_len':
+hw/net/trace.h:9438:18: error: format '%lx' expects argument of type
+'long unsigned int', but argument 5 has type 'uint64_t {aka long long
+unsigned int}' [-Werror=format=]
+         qemu_log("%d@%zu.%06zu:imx_enet_receive_len " "rx_bd 0x%lx
+length %d" "\n",
+                  ^
+
+This build using:
+
+-- >8 --
 --- a/hw/net/trace-events
 +++ b/hw/net/trace-events
-@@ -408,3 +408,21 @@ i82596_receive_packet(size_t sz) "len=%zu"
- i82596_new_mac(const char *id_with_mac) "New MAC for: %s"
- i82596_set_multicast(uint16_t count) "Added %d multicast entries"
+@@ -410,19 +410,19 @@ i82596_set_multicast(uint16_t count) "Added %d
+multicast entries"
  i82596_channel_attention(void *s) "%p: Received CHANNEL ATTENTION"
-+
-+# imx_fec.c
-+imx_phy_read(uint32_t val, int reg) "0x%04x <= reg[%d]"
-+imx_phy_write(uint32_t val, int reg) "0x%04x => reg[%d]"
-+imx_phy_update_link(const char *s) "%s"
-+imx_phy_reset(void) ""
-+imx_fec_read_bd(uint64_t addr, int flags, int len, int data) "tx_bd 0x%lx flags 0x%04x len %d data 0x%08x"
-+imx_enet_read_bd(uint64_t addr, int flags, int len, int data, int options, int status) "tx_bd 0x%lx flags 0x%04x len %d data 0x%08x option 0x%04x status 0x%04x"
-+imx_eth_tx_bd_busy(void) "tx_bd ran out of descriptors to transmit"
-+imx_eth_rx_bd_full(void) "RX buffer is full"
-+imx_eth_read(int reg, const char *reg_name, uint32_t value) "reg[%d:%s] => 0x%08x"
-+imx_eth_write(int reg, const char *reg_name, uint64_t value) "reg[%d:%s] <= 0x%08lx"
-+imx_fec_receive(size_t size) "len %ld"
-+imx_fec_receive_len(uint64_t addr, int len) "rx_bd 0x%lx length %d"
-+imx_fec_receive_last(int last) "rx frame flags 0x%04x"
-+imx_enet_receive(size_t size) "len %ld"
-+imx_enet_receive_len(uint64_t addr, int len) "rx_bd 0x%lx length %d"
-+imx_enet_receive_last(int last) "rx frame flags 0x%04x"
--- 
-2.25.1
 
+ # imx_fec.c
+-imx_phy_read(uint32_t val, int reg) "0x%04x <= reg[%d]"
+-imx_phy_write(uint32_t val, int reg) "0x%04x => reg[%d]"
++imx_phy_read(uint32_t val, int reg) "0x%04"PRIx32" <= reg[%d]"
++imx_phy_write(uint32_t val, int reg) "0x%04"PRIx32" => reg[%d]"
+ imx_phy_update_link(const char *s) "%s"
+ imx_phy_reset(void) ""
+-imx_fec_read_bd(uint64_t addr, int flags, int len, int data) "tx_bd
+0x%lx flags 0x%04x len %d data 0x%08x"
+-imx_enet_read_bd(uint64_t addr, int flags, int len, int data, int
+options, int status) "tx_bd 0x%lx flags 0x%04x len %d data 0x%08x option
+0x%04x status 0x%04x"
++imx_fec_read_bd(uint64_t addr, int flags, int len, int data) "tx_bd
+0x%"PRIx64" flags 0x%04x len %d data 0x%08x"
++imx_enet_read_bd(uint64_t addr, int flags, int len, int data, int
+options, int status) "tx_bd 0x%"PRIx64" flags 0x%04x len %d data 0x%08x
+option 0x%04x status 0x%04x"
+ imx_eth_tx_bd_busy(void) "tx_bd ran out of descriptors to transmit"
+ imx_eth_rx_bd_full(void) "RX buffer is full"
+-imx_eth_read(int reg, const char *reg_name, uint32_t value) "reg[%d:%s]
+=> 0x%08x"
+-imx_eth_write(int reg, const char *reg_name, uint64_t value)
+"reg[%d:%s] <= 0x%08lx"
+-imx_fec_receive(size_t size) "len %ld"
+-imx_fec_receive_len(uint64_t addr, int len) "rx_bd 0x%lx length %d"
++imx_eth_read(int reg, const char *reg_name, uint32_t value) "reg[%d:%s]
+=> 0x%08"PRIx32
++imx_eth_write(int reg, const char *reg_name, uint64_t value)
+"reg[%d:%s] <= 0x%08"PRIx64
++imx_fec_receive(size_t size) "len %zu"
++imx_fec_receive_len(uint64_t addr, int len) "rx_bd 0x%"PRIx64" length %d"
+ imx_fec_receive_last(int last) "rx frame flags 0x%04x"
+-imx_enet_receive(size_t size) "len %ld"
+-imx_enet_receive_len(uint64_t addr, int len) "rx_bd 0x%lx length %d"
++imx_enet_receive(size_t size) "len %zu"
++imx_enet_receive_len(uint64_t addr, int len) "rx_bd 0x%"PRIx64" length %d"
+ imx_enet_receive_last(int last) "rx frame flags 0x%04x"
+---
+
+So:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+I changed
+ "x" -> PRIx32
+ "lx" -> PRIx64
+ "ld" -> "zu" for size_t type.
+
+Since the patch is already done locally, I'll simply post it as v4.
+
+Regards,
+
+Phil.

@@ -1,93 +1,93 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2398875lfc;
-        Sun, 31 May 2020 10:40:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyxn5MprH+NVkVO+SKYDksg2j3kh+nYeBcnq3sGxCxVxlRd99muv3sic7RUy3YBJlgG4j3e
-X-Received: by 2002:a25:5804:: with SMTP id m4mr27631120ybb.488.1590946859850;
-        Sun, 31 May 2020 10:40:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590946859; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2399558lfc;
+        Sun, 31 May 2020 10:42:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw8kWz0S8RI5Bsuz+h5DHyFUSvN3DWA1oOinLh5gzbjXIU1Re6O4prV+ltZw6ztxd+GX8a+
+X-Received: by 2002:a5b:344:: with SMTP id q4mr28139365ybp.29.1590946947312;
+        Sun, 31 May 2020 10:42:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590946947; cv=none;
         d=google.com; s=arc-20160816;
-        b=WRjpmGeMrta4wsUpkv8C5NSpn3MuEMKEatOj6ewVw1OIrFfR00L1qxAWcxjGNCQ8TY
-         ld9UtYgmATpJwr5o6+MY38dDj3duPahpmXcMHOE6B8EyAA3jABjlU44jY05SNBn7almm
-         Xmf8Vco+Z2j34yRLBoNZ600/9gboj1b6IyGjomjXH3TG0JQuDD3+Zlo4z1/UrmL7+fHg
-         vZnSY9ROGnhLbBaPceUSaBtT4pjmb80Jhl3pBESddRdkSNX6cT+DhyJkiRBg/tgf8t84
-         veIEBEyqG1pUk0jeDySlM9gBOKus4H1TxkO61BGJkJQOBOGT7OO2oK/34QjwweC6y74G
-         3Ang==
+        b=qXxAQ5VC+0Gsv4Lqo4kVVIuJW5GFELHjcnamSq9i5svRkOVNH+0Hf2iXV/a3GGMXcJ
+         Ss7ljd0TGjyk8dDARWuIGf7/X+uVkLgdhF55g+opVMryqIRfkbKkaPPTcyjGYaiXh4M3
+         J+6WowK50nCHnCFFsgOp8hrbLusxIeBFxxIIIqZS7M181mdNCUSaKcx4LJnGrnzeMQvD
+         oDNXKljqmJjD89I7cUKBju8akNe+w2d9ftcT5t6/NYTzm89pjHMiZsf7S2jklAY0SwYr
+         hpVRy8xy9ndgGt5ABU5dLhqzQyo4SdCBomIe8h2koLfyzaJ7Y/6jHCdKC6VkwfubK4ZK
+         69nA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=R9h6TBijqwhWtCdWuge0QqjjfhcYOfthGpKadm9tGxU=;
-        b=el9fr6vvTCSCBNwdw76ciuQ2KaINGcOK6cPJrzOWwkHBDldfNDbsAO2SExpDRom5ot
-         61QvwUPhGo7GfGgzFPJ/ReB1M4sdVovKt7hNkp2iPrXVJmpxb/TOPHWtwLFNzSyW96o2
-         0mlvx+q9Vb/sIhZWxBPu6O+08wn5zb4F1nVzM4B9GEqT2RBPkGbiZOTB1adMQaQi2JDh
-         aUc4RXiMgX5PNVvIbib0R99zU1SHxpQj0A7+ITHYhjIunYVjYnmtO9iVl/k6seq5EoBA
-         krYumy91sjvsDDOOQSspVCZKDY9hybVbJNXA5R3TKG1JMjwIts7Q6fl+TZjLw8tO3BPQ
-         o8lg==
+        bh=9Mxl/dNTcRwhkGe3G4jYrG/McOP5BFcH0HXoztP9CuE=;
+        b=sOwfiUTG0FqldfoHwu92dZa9BZXeL1QKgFSGj7snvLRg6zhZFbRWTrfI4j1bWz666x
+         RoYs3k1RqFXFFtpWbRzqYXyB+Sfof2K+E6BAGZKKdke5pUVA3xAj+xxSswb69uhmh5AH
+         qw+G1N4t10Dm82/z3Tki/87MMvNMNwtinnHUZbtGPKn9Jp5FthZ1Cc5RZGdXurfe0gaK
+         tIjqDUNwHb5ofERpWy/VOc4pI33clhYLf5pHdGG47/zyyYMf1oyc2jH9L+eFDDXPM7eV
+         Cdc8SosFn/mxXebOJNpbyvf/OPk3986BzB2Bk/1P/nsq7/APXg3iPy4VLOynZ7SVxgvH
+         Dj/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=clCSszb1;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KN9foiNw;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y185si12909245ybc.280.2020.05.31.10.40.59
+        by mx.google.com with ESMTPS id 203si12205279yba.85.2020.05.31.10.42.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 31 May 2020 10:40:59 -0700 (PDT)
+        Sun, 31 May 2020 10:42:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=clCSszb1;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KN9foiNw;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:39768 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45610 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jfRxD-0007Dl-3e
-	for alex.bennee@linaro.org; Sun, 31 May 2020 13:40:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34144)
+	id 1jfRyc-0001Aa-Ht
+	for alex.bennee@linaro.org; Sun, 31 May 2020 13:42:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34132)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfRuo-0004Aw-G7; Sun, 31 May 2020 13:38:30 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:34242)
+ id 1jfRun-0004AJ-P9; Sun, 31 May 2020 13:38:29 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35624)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfRun-0004Fo-Gr; Sun, 31 May 2020 13:38:30 -0400
-Received: by mail-wr1-x442.google.com with SMTP id r7so9246001wro.1;
- Sun, 31 May 2020 10:38:26 -0700 (PDT)
+ id 1jfRug-0004FE-3A; Sun, 31 May 2020 13:38:29 -0400
+Received: by mail-wm1-x343.google.com with SMTP id q25so217634wmj.0;
+ Sun, 31 May 2020 10:38:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=R9h6TBijqwhWtCdWuge0QqjjfhcYOfthGpKadm9tGxU=;
- b=clCSszb1FCsID9L9t4vBQapFKkE9cKOSakgm1eGvx1xsWw2JAQNwLPoaGyVtpO42pe
- kBKp/gPUmWIa/w5oOdIrRSY8p4p3XayTg3tMrrOmZmC34eM3rOnIEYRVnlpbvTCc6+Vo
- HEPQNWcpPsZAYdMebzBYVG/m9y9BWrVBmpNxm2yP1xXyoU3t8PWsCPYU5BKwTMzBj1HS
- BPino4U2lYhzNDvluhBK5euxZu9633dvESJdHU8nk0XGJtc8X7A2ua3EJZKg1u4SPdX2
- 0Jc2etnb43hAo2TU2bhSL1ZDKnP3BXxfNBGozVyquRrYoWn4Hz++GY3WW7gghPDFdniU
- m7Qw==
+ bh=9Mxl/dNTcRwhkGe3G4jYrG/McOP5BFcH0HXoztP9CuE=;
+ b=KN9foiNw1uNODlYLGsqkaiPFpDICcY39hhwQ0vwdyo0AGdI9BbCHCSkh+p4J9h4Laq
+ DuJIwu3OpLHu4sHXUICkVbKQmAQmO+D8yyfjCtpGxkzofi4Igvfw3BC01Z7/GOK9kSfa
+ /CHzYk/dCYbs+astQL+vk6kJZJNm3vCHZDeZsshhM7YKE/GswD1u2po1Hu0sHnTWODaV
+ aw+XELKTPKtS86NcCcXXbY9Yd54eTLdGu3rk0hKXJbOXEaV87ip22Lyy/G35mPcBAnhe
+ e4EhgrNgwMPPUSeRGMOLlO+3sZx1yyfRCuxcn0pMT9nWhIm8j0WbNSdQCQD9WVWhr+7/
+ mH+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=R9h6TBijqwhWtCdWuge0QqjjfhcYOfthGpKadm9tGxU=;
- b=DL9Vg8UBJUIIycFexCh3n72oBTd8H0kqjnR44VTg8EjMpVPouLKacDd+Zr/LPsOIBz
- 51xpWrV8+bYyXtO7v0pDr0SThNWXN8ak0YVYE0m81padwDvE9IlBpQWy0XDSya+XReGw
- mZild/4Fk4AAPXeR3RnbR6pazrzeCSVJJYXSsnIGgA1eDhbm55/Cw1yfOPdaiUn+Ekjl
- uY0wo1WPsMDRtVKBh0F1xdT/esOrc9Ibn8GHXOtiU4sXt7v7P9SYjU4OpApB01ubPWSk
- pmC9Ftz+pCyDbOSUPwc9DZrOmyX7OGgC0ByX7Hfjt6jZMaYQyv9xTZ2R+vJXHe7tTMZ7
- uaWA==
-X-Gm-Message-State: AOAM532if7r4pXid0WnrkVpGz7DmF79aahT+3EDeGD9qnOC7p7SRHSYs
- F3+P2DOgHXhgOocFfo6clz0Wk9bD
-X-Received: by 2002:adf:f512:: with SMTP id q18mr19634939wro.38.1590946705256; 
- Sun, 31 May 2020 10:38:25 -0700 (PDT)
+ bh=9Mxl/dNTcRwhkGe3G4jYrG/McOP5BFcH0HXoztP9CuE=;
+ b=T5U6i1oITdBY0nV2yaloG4HwpNqbcW8rgGCQTwZ0Gnzi/hazL6v2Sep/TQGmCPT+KC
+ svx/iV68xqx/cl2eZG+alo1C6nAHY9dAnBbyPjA46HaS+q0GJYEodSW4zyoakJKgd6tG
+ 0E98/xXsZIppGAh4E3NDKJ5LdZ06wLq9HarkH8WqpBMPvbgoG/U5FLW/0pYiAYVml3W9
+ sulJWdB4j/uDMnmxeauNp5aT0WKiWxIqhLlj5ksF+nGFxzQjsd1lJb30xQKMokh72p2w
+ SX+JqJzLYiWx0SbV/lBiubTV2c4hfye0y1nXwhor/y9VmlvgciZeRq1DwS7NDHcTG2JA
+ pk5Q==
+X-Gm-Message-State: AOAM532uC0yNt6xwalknb7wC/LXiLhSrvmzbJf2fWTF40PIf1UvdFWm4
+ /Lhzgts5QchmhARx9yqiSmh9Jcug
+X-Received: by 2002:a1c:5606:: with SMTP id k6mr19052387wmb.10.1590946699366; 
+ Sun, 31 May 2020 10:38:19 -0700 (PDT)
 Received: from localhost.localdomain (43.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id l19sm7973121wmj.14.2020.05.31.10.38.24
+ by smtp.gmail.com with ESMTPSA id l19sm7973121wmj.14.2020.05.31.10.38.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 May 2020 10:38:24 -0700 (PDT)
+ Sun, 31 May 2020 10:38:18 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 5/8] hw/pci-host: Use the IEC binary prefix definitions
-Date: Sun, 31 May 2020 19:38:11 +0200
-Message-Id: <20200531173814.8734-6-f4bug@amsat.org>
+Subject: [PATCH 1/8] hw/arm/aspeed: Correct DRAM container region size
+Date: Sun, 31 May 2020 19:38:07 +0200
+Message-Id: <20200531173814.8734-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200531173814.8734-1-f4bug@amsat.org>
 References: <20200531173814.8734-1-f4bug@amsat.org>
@@ -95,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -133,74 +133,47 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5Ye5sOMJC18V
+X-TUID: lw759Y0ltX1H
 
-IEC binary prefixes ease code review: the unit is explicit.
+memory_region_set_size() handle the 16 Exabytes limit by
+special-casing the UINT64_MAX value. This is not a problem
+for the 32-bit maximum, 4 GiB.
+By using the UINT32_MAX value, the aspeed-ram-container
+MemoryRegion ends up missing 1 byte:
+
+ $ qemu-system-arm -M ast2600-evb -S -monitor stdio
+ (qemu) info mtree
+
+  address-space: aspeed.fmc-ast2600-dma-dram
+    0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-container
+      0000000080000000-00000000bfffffff (prio 0, ram): ram
+      00000000c0000000-ffffffffffffffff (prio 0, i/o): max_ram
+
+Fix by using the correct value. We now have:
+
+  address-space: aspeed.fmc-ast2600-dma-dram
+    0000000080000000-000000017fffffff (prio 0, i/o): aspeed-ram-container
+      0000000080000000-00000000bfffffff (prio 0, ram): ram
+      00000000c0000000-ffffffffffffffff (prio 0, i/o): max_ram
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/pci-host/i440fx.c    | 3 ++-
- hw/pci-host/q35.c       | 2 +-
- hw/pci-host/versatile.c | 5 +++--
- 3 files changed, 6 insertions(+), 4 deletions(-)
+ hw/arm/aspeed.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
-index 0adbd77553..aefb416c8f 100644
---- a/hw/pci-host/i440fx.c
-+++ b/hw/pci-host/i440fx.c
-@@ -23,6 +23,7 @@
-  */
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 2c23297edf..62344ac6a3 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -262,7 +262,7 @@ static void aspeed_machine_init(MachineState *machine)
+     bmc = g_new0(AspeedBoardState, 1);
  
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "qemu/range.h"
- #include "hw/i386/pc.h"
- #include "hw/pci/pci.h"
-@@ -301,7 +302,7 @@ PCIBus *i440fx_init(const char *host_type, const char *pci_type,
-     memory_region_set_enabled(&f->smram_region, true);
+     memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container",
+-                       UINT32_MAX);
++                       4 * GiB);
+     memory_region_add_subregion(&bmc->ram_container, 0, machine->ram);
  
-     /* smram, as seen by SMM CPUs */
--    memory_region_init(&f->smram, OBJECT(d), "smram", 1ull << 32);
-+    memory_region_init(&f->smram, OBJECT(d), "smram", 4 * GiB);
-     memory_region_set_enabled(&f->smram, true);
-     memory_region_init_alias(&f->low_smram, OBJECT(d), "smram-low",
-                              f->ram_memory, 0xa0000, 0x20000);
-diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-index 352aeecfa7..b788f17b2c 100644
---- a/hw/pci-host/q35.c
-+++ b/hw/pci-host/q35.c
-@@ -589,7 +589,7 @@ static void mch_realize(PCIDevice *d, Error **errp)
-     memory_region_set_enabled(&mch->open_high_smram, false);
- 
-     /* smram, as seen by SMM CPUs */
--    memory_region_init(&mch->smram, OBJECT(mch), "smram", 1ull << 32);
-+    memory_region_init(&mch->smram, OBJECT(mch), "smram", 4 * GiB);
-     memory_region_set_enabled(&mch->smram, true);
-     memory_region_init_alias(&mch->low_smram, OBJECT(mch), "smram-low",
-                              mch->ram_memory, MCH_HOST_BRIDGE_SMRAM_C_BASE,
-diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
-index cfb9a78ea6..8ddfb8772a 100644
---- a/hw/pci-host/versatile.c
-+++ b/hw/pci-host/versatile.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
- #include "hw/irq.h"
-@@ -399,8 +400,8 @@ static void pci_vpb_realize(DeviceState *dev, Error **errp)
-     pci_map_irq_fn mapfn;
-     int i;
- 
--    memory_region_init(&s->pci_io_space, OBJECT(s), "pci_io", 1ULL << 32);
--    memory_region_init(&s->pci_mem_space, OBJECT(s), "pci_mem", 1ULL << 32);
-+    memory_region_init(&s->pci_io_space, OBJECT(s), "pci_io", 4 * GiB);
-+    memory_region_init(&s->pci_mem_space, OBJECT(s), "pci_mem", 4 * GiB);
- 
-     pci_root_bus_new_inplace(&s->pci_bus, sizeof(s->pci_bus), dev, "pci",
-                              &s->pci_mem_space, &s->pci_io_space,
+     object_initialize_child(OBJECT(machine), "soc", &bmc->soc,
 -- 
 2.21.3
 

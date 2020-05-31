@@ -1,479 +1,250 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1423570lfc;
-        Sat, 30 May 2020 05:50:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwRQZDWnbXnSNmNHZgveqA5RoA3SjHlzYEsTXqsjQZ2kQJSSl+Y1WvDh7cH4XYcQPzB4Nhp
-X-Received: by 2002:a25:a184:: with SMTP id a4mr20240778ybi.255.1590843040462;
-        Sat, 30 May 2020 05:50:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590843040; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2337179lfc;
+        Sun, 31 May 2020 08:58:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzW4i/J6I1RLfyfefXAvNEJCfdZvrjA89N89k+92VpKS8HbQBkvm9ijdk8hK9KqXhJZM2S8
+X-Received: by 2002:a25:cd82:: with SMTP id d124mr28529527ybf.150.1590940701133;
+        Sun, 31 May 2020 08:58:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590940701; cv=none;
         d=google.com; s=arc-20160816;
-        b=VAHJwTqMCcBbdik5935FlHFQezZcpGWMWdUtUwP0s/RX+VUsfVDhQWN6jRBG0pcNBq
-         Jl/7xfrLO7godU3hSnqZiJv9S+5iMeNv8HdVg8vo7kOaBBfzUrAc2ZXWEM7svu1rADKI
-         Vzo1aidEWPeMULwZ+VjMnQRnbSSkaiVdCZCLCVL5yQQpbR1+YeBEQJWYJEZ+Gcldbq1w
-         reNhUS1gziAJQopQNCY9uJHh0L/Ri35uUrJAaik/NEu9rrD6et0i6jrPvazxEIw/7ux+
-         2owRDHhLux5EVElSdZ9Y/HFA9RBKPn4G9eS1kbILmL4JlQe8kVEeE83bOuxxX7X7shiJ
-         22Hg==
+        b=Xwy3fh1SSRaAvMkNXYe8jJ7NI9dycdqarH2sUKXoJ1q+LL8LP4W3ZMlCpDYa+HjejR
+         0lG/cF8ncgSfORKtjJPc3kgjvCce87KYET+HeTVXNI/WWROgU4i5uSuPKDc0A043w2v8
+         v8WoLDYY+34x8EN/RMO7MYRVA7YRKgj2gTjlcvCTeu2VtmLIY83YlxKiTbaZ/mc3o3lH
+         M0wrdVvxT++StEZMm4eDaB/3L+pURJzS3KRIH6l0Q6UzuVespRdxRf2hSeHpw5sCXg8k
+         jsVvUxBrR+Jt1zULgTqVFMVWZcJlD2Ygs+8AfNXj/YPQ0UU7lyGNb4ODFi44c7XMUlzw
+         eHng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=Zz1gOWa5gNwQ4fs4+kBW6S2hVWR6Ko0izTJgNcrnpok=;
-        b=H7n1IriXvuy1HLiHGo8Uv5PYs8LbrLpof7L047wvNmndDodApSKZ0MI5N9xkallNtI
-         BLRfrFMcYEhmE7IYWVf8fAP54uPgCXcfPCTVtfQV+abWqp/kY+RsUJyjrUc1+QYUXRhS
-         Cw2SATwcT5SAbicjj2OxmQZFxOJrmQEeksNGARfB6rd6xDFP696/b+jZ+JgZ10FgK7rU
-         8LizpcS3ar7qU2HYHrZanPB5ZxPZt1La//CBJAD1BEKA6gVWHd2ombScdDrVRg3+hqDG
-         1arg9SmWIsWAq5l5bQ9nb6NY0W/tkDSgC7tyjjC4LKRJsqBg/aXiqJVok6MKagfz6iSQ
-         G6XQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:content-language
+         :accept-language:message-id:date:thread-index:thread-topic:subject
+         :to:from:ironport-sdr:ironport-sdr;
+        bh=VcshUsntyE+737Db8PTsl7zOSx3FQWsR4XI0a+MW/iY=;
+        b=bbnh61OlNdQVn+qD8H/46drhni1Z6wgAuTXXnsfuQEsVNh61wwzSPpklz4jIG9/pld
+         4MaoDitZUGcZUQhrFjFc+uNTpDeq1HwkiYua8v/K3foZtyD+CRTrNihkrjSeSbZoi3b4
+         YlWhdf+ox96ueLVNeU9rDucL+3uMEDNEbHKfw5o+u1RorsIOtE6HletGpkkwmPemj7bF
+         O63ReXebnnxxzKrR3czAc/aY5LMj29kOV2RdW52EwqdYivc6UiJvXj7kLQzmyM27XHXA
+         cRirZnnuw/ubhMiUw+4uV66cwjPRYwe66+BQhKAG1NQGb0JIUJbC9to2FNdBpnDBzGEn
+         C/Hg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WH9lzzVu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f17si10393316ybh.208.2020.05.30.05.50.40
+        by mx.google.com with ESMTPS id f5si12591541yba.363.2020.05.31.08.58.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 30 May 2020 05:50:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 31 May 2020 08:58:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WH9lzzVu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:59670 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43514 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jf0wh-0007Dw-Q6
-	for alex.bennee@linaro.org; Sat, 30 May 2020 08:50:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47306)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jfQLs-0007eE-DR
+	for alex.bennee@linaro.org; Sun, 31 May 2020 11:58:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58256)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jf0uM-0006Rx-BA; Sat, 30 May 2020 08:48:14 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:45942)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jf0uK-0004Eo-IG; Sat, 30 May 2020 08:48:13 -0400
-Received: by mail-wr1-x442.google.com with SMTP id c3so6794177wru.12;
- Sat, 30 May 2020 05:48:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Zz1gOWa5gNwQ4fs4+kBW6S2hVWR6Ko0izTJgNcrnpok=;
- b=WH9lzzVukriPus9ugp+A6mdXHCZxElMY7QJU/SUPXWjzOjTPk3yPPUrSyAIMivq6om
- 82rndUWssQ73v0knnNeYc5ESU/ohhMlIbRjuADsswQmPXMc1jhTIjhPFrmy08DwYrxLP
- Vqg3bMQzXCEHfu8UKqWzRTFcp6CFl0KWRghpCjA16WDbVBIQM8fuEzwxXrCMAWLGRBDn
- YG/l6qAciKmt7q+Ysai6JRzhAAvMKUrXjiqb/9xA/5qoJ1pSxt4iCsNb2UAFjhB9Ydiv
- A971vNP7lFfd46ml0k5nnsuh0v11gXbMFhbJ3fOZF3VjGMunD2R8XWg2FmYpXhcwo4hf
- VYtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=Zz1gOWa5gNwQ4fs4+kBW6S2hVWR6Ko0izTJgNcrnpok=;
- b=n8T0NgOqB56ee+cTU1DRAKfE4WV8dkIbQtN+vP8oKR3tlNrqhapRKFbn8KCbCYUekg
- ziY3c+ml0dTtuYBGX8KzA8NboCw2JeVdut5u0mCnNYOHG0VxwONaJRWwJJdOsZp5cRqR
- 6nkWvdagZ8FN7Ifm/Xq3/H3MZqpcBdo70Ti+ixHCyC3zS1vo90qoqxwLE0pgDN4W3IBZ
- gIoA599IHfk1taBkIuVqggBygqxhNDLtPImJC8YyRqTRkfimqPR1PC8Nzj9xk95udxNZ
- GaD4YT/1luxhMNJIBHz9fpnmzOVI2QVA7EmweEL/Kir9e0OCSgjLZLKsOUo2eDkAUt5p
- jsgw==
-X-Gm-Message-State: AOAM532CVAk4aWKJnlI75xgFh/SqxqDCGF+EV2wPNWrQzLrhsUCUbgx2
- dCAXhE76nWMY6wIlnDHOAzk+JqU3
-X-Received: by 2002:a5d:4701:: with SMTP id y1mr13029332wrq.310.1590842890035; 
- Sat, 30 May 2020 05:48:10 -0700 (PDT)
-Received: from localhost.localdomain (43.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id a81sm3356016wmd.25.2020.05.30.05.48.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 30 May 2020 05:48:09 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4] hw/net/imx_fec: Convert debug fprintf() to trace events
-Date: Sat, 30 May 2020 14:48:08 +0200
-Message-Id: <20200530124808.7560-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ (Exim 4.90_1) (envelope-from <Mina_Magdy@mentor.com>)
+ id 1jfGa9-0007Xk-96
+ for qemu-arm@nongnu.org; Sun, 31 May 2020 01:32:25 -0400
+Received: from esa1.mentor.iphmx.com ([68.232.129.153]:49392)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Mina_Magdy@mentor.com>)
+ id 1jfGa6-0006ga-AV
+ for qemu-arm@nongnu.org; Sun, 31 May 2020 01:32:24 -0400
+IronPort-SDR: 4hk44ranVNU/srte5xLxdeyXa3+dkLWLHHVKuTmvSEm8PihpUniA4IbhWx3m+Ab8QsYnNQ6Pk7
+ 4mzOUc5jHC+xJUVTPI91EK0i2ZRo9RHjJfa518+FM5B28lVu3Ny0Ablgq0Ki6tF9Wma3UN3j47
+ NTqcjLpj134qij7oaWW5pYj8ZTvCZZC8897F0BTn/9n2F63uApBc477Gf/ZBkdVds14lhoV5dM
+ VqcW0ocTbJNdF38ruFvQ4CpLmqC0YJH1RD23UC1T8wBI2i0cQxpfyLxKDoxlDV5jEFNSiSaaac
+ soc=
+X-IronPort-AV: E=Sophos;i="5.73,455,1583222400"; d="scan'208,217";a="51411530"
+Received: from orw-gwy-02-in.mentorg.com ([192.94.38.167])
+ by esa1.mentor.iphmx.com with ESMTP; 30 May 2020 21:32:16 -0800
+IronPort-SDR: UCt7OwULJwCJkhIJLNAXpxAa/jWEEjBqxpMoAWC1tDRXZNlt6HRsbb+C+Ytt0BQaq9XiSfjbbN
+ W6FpEvFb8Ovlb/b7CyxKx+EdhFGqez98OZ6QaGVVJlS4Tg3l9ptl9xN/XL76k+GmffEZTptg+h
+ JaEdk4d0MetVlAaWp1JFc16ckTez2gyxOW/RHC86QLYEdRRwNe20s1UfEeLXzmF1q3mjqR8RoF
+ zZwq4VcbZrMyFEz4QoNaen/d85AAbVPeaSrgxjGZ0G0k6hEpIB3HaV8yoLI1dzohx3hWpYyp0t
+ 3zI=
+From: "Magdy, Mina" <Mina_Magdy@mentor.com>
+To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Subject: [Qemu-devel] [PATCH 10/20] nvic: Add NS alias SCS region
+Thread-Topic: [Qemu-devel] [PATCH 10/20] nvic: Add NS alias SCS region
+Thread-Index: AdY3DL+vCCrTWOV6Tb6NxcKWhoC+3Q==
+Date: Sun, 31 May 2020 05:32:11 +0000
+Message-ID: <4bdfe2a9431643f5b6265e5198a8620f@svr-ies-mbx-02.mgc.mentorg.com>
+Accept-Language: en-US, en-IE
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [137.202.0.90]
+Content-Type: multipart/alternative;
+ boundary="_000_4bdfe2a9431643f5b6265e5198a8620fsvriesmbx02mgcmentorgco_"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=68.232.129.153;
+ envelope-from=Mina_Magdy@mentor.com; helo=esa1.mentor.iphmx.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/31 01:32:17
+X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Approved-At: Sun, 31 May 2020 11:58:12 -0400
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Y4AJHdIfmXeK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Zf++mDjaisVI
 
-From: Jean-Christophe Dubois <jcd@tribudubois.net>
+--_000_4bdfe2a9431643f5b6265e5198a8620fsvriesmbx02mgcmentorgco_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Message-Id: <20200530102707.195131-1-jcd@tribudubois.net>
-[PMD: Fixed 32-bit format string using PRIx32/PRIx64]
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-Based-on: <20200530102707.195131-1-jcd@tribudubois.net>
----
- hw/net/imx_fec.c    | 106 +++++++++++++++++++-------------------------
- hw/net/trace-events |  18 ++++++++
- 2 files changed, 63 insertions(+), 61 deletions(-)
+Hello all,
 
-diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index 7adcc9df65..eefedc252d 100644
---- a/hw/net/imx_fec.c
-+++ b/hw/net/imx_fec.c
-@@ -31,34 +31,11 @@
- #include "qemu/module.h"
- #include "net/checksum.h"
- #include "net/eth.h"
-+#include "trace.h"
- 
- /* For crc32 */
- #include <zlib.h>
- 
--#ifndef DEBUG_IMX_FEC
--#define DEBUG_IMX_FEC 0
--#endif
--
--#define FEC_PRINTF(fmt, args...) \
--    do { \
--        if (DEBUG_IMX_FEC) { \
--            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_FEC, \
--                                             __func__, ##args); \
--        } \
--    } while (0)
--
--#ifndef DEBUG_IMX_PHY
--#define DEBUG_IMX_PHY 0
--#endif
--
--#define PHY_PRINTF(fmt, args...) \
--    do { \
--        if (DEBUG_IMX_PHY) { \
--            fprintf(stderr, "[%s.phy]%s: " fmt , TYPE_IMX_FEC, \
--                                                 __func__, ##args); \
--        } \
--    } while (0)
--
- #define IMX_MAX_DESC    1024
- 
- static const char *imx_default_reg_name(IMXFECState *s, uint32_t index)
-@@ -262,43 +239,45 @@ static void imx_eth_update(IMXFECState *s);
-  * For now we don't handle any GPIO/interrupt line, so the OS will
-  * have to poll for the PHY status.
-  */
--static void phy_update_irq(IMXFECState *s)
-+static void imx_phy_update_irq(IMXFECState *s)
- {
-     imx_eth_update(s);
- }
- 
--static void phy_update_link(IMXFECState *s)
-+static void imx_phy_update_link(IMXFECState *s)
- {
-     /* Autonegotiation status mirrors link status.  */
-     if (qemu_get_queue(s->nic)->link_down) {
--        PHY_PRINTF("link is down\n");
-+        trace_imx_phy_update_link("down");
-         s->phy_status &= ~0x0024;
-         s->phy_int |= PHY_INT_DOWN;
-     } else {
--        PHY_PRINTF("link is up\n");
-+        trace_imx_phy_update_link("up");
-         s->phy_status |= 0x0024;
-         s->phy_int |= PHY_INT_ENERGYON;
-         s->phy_int |= PHY_INT_AUTONEG_COMPLETE;
-     }
--    phy_update_irq(s);
-+    imx_phy_update_irq(s);
- }
- 
- static void imx_eth_set_link(NetClientState *nc)
- {
--    phy_update_link(IMX_FEC(qemu_get_nic_opaque(nc)));
-+    imx_phy_update_link(IMX_FEC(qemu_get_nic_opaque(nc)));
- }
- 
--static void phy_reset(IMXFECState *s)
-+static void imx_phy_reset(IMXFECState *s)
- {
-+    trace_imx_phy_reset();
-+
-     s->phy_status = 0x7809;
-     s->phy_control = 0x3000;
-     s->phy_advertise = 0x01e1;
-     s->phy_int_mask = 0;
-     s->phy_int = 0;
--    phy_update_link(s);
-+    imx_phy_update_link(s);
- }
- 
--static uint32_t do_phy_read(IMXFECState *s, int reg)
-+static uint32_t imx_phy_read(IMXFECState *s, int reg)
- {
-     uint32_t val;
- 
-@@ -332,7 +311,7 @@ static uint32_t do_phy_read(IMXFECState *s, int reg)
-     case 29:    /* Interrupt source.  */
-         val = s->phy_int;
-         s->phy_int = 0;
--        phy_update_irq(s);
-+        imx_phy_update_irq(s);
-         break;
-     case 30:    /* Interrupt mask */
-         val = s->phy_int_mask;
-@@ -352,14 +331,14 @@ static uint32_t do_phy_read(IMXFECState *s, int reg)
-         break;
-     }
- 
--    PHY_PRINTF("read 0x%04x @ %d\n", val, reg);
-+    trace_imx_phy_read(val, reg);
- 
-     return val;
- }
- 
--static void do_phy_write(IMXFECState *s, int reg, uint32_t val)
-+static void imx_phy_write(IMXFECState *s, int reg, uint32_t val)
- {
--    PHY_PRINTF("write 0x%04x @ %d\n", val, reg);
-+    trace_imx_phy_write(val, reg);
- 
-     if (reg > 31) {
-         /* we only advertise one phy */
-@@ -369,7 +348,7 @@ static void do_phy_write(IMXFECState *s, int reg, uint32_t val)
-     switch (reg) {
-     case 0:     /* Basic Control */
-         if (val & 0x8000) {
--            phy_reset(s);
-+            imx_phy_reset(s);
-         } else {
-             s->phy_control = val & 0x7980;
-             /* Complete autonegotiation immediately.  */
-@@ -383,7 +362,7 @@ static void do_phy_write(IMXFECState *s, int reg, uint32_t val)
-         break;
-     case 30:    /* Interrupt mask */
-         s->phy_int_mask = val & 0xff;
--        phy_update_irq(s);
-+        imx_phy_update_irq(s);
-         break;
-     case 17:
-     case 18:
-@@ -402,6 +381,8 @@ static void do_phy_write(IMXFECState *s, int reg, uint32_t val)
- static void imx_fec_read_bd(IMXFECBufDesc *bd, dma_addr_t addr)
- {
-     dma_memory_read(&address_space_memory, addr, bd, sizeof(*bd));
-+
-+    trace_imx_fec_read_bd(addr, bd->flags, bd->length, bd->data);
- }
- 
- static void imx_fec_write_bd(IMXFECBufDesc *bd, dma_addr_t addr)
-@@ -412,6 +393,9 @@ static void imx_fec_write_bd(IMXFECBufDesc *bd, dma_addr_t addr)
- static void imx_enet_read_bd(IMXENETBufDesc *bd, dma_addr_t addr)
- {
-     dma_memory_read(&address_space_memory, addr, bd, sizeof(*bd));
-+
-+    trace_imx_enet_read_bd(addr, bd->flags, bd->length, bd->data,
-+                   bd->option, bd->status);
- }
- 
- static void imx_enet_write_bd(IMXENETBufDesc *bd, dma_addr_t addr)
-@@ -471,11 +455,11 @@ static void imx_fec_do_tx(IMXFECState *s)
-         int len;
- 
-         imx_fec_read_bd(&bd, addr);
--        FEC_PRINTF("tx_bd %x flags %04x len %d data %08x\n",
--                   addr, bd.flags, bd.length, bd.data);
-         if ((bd.flags & ENET_BD_R) == 0) {
-+
-             /* Run out of descriptors to transmit.  */
--            FEC_PRINTF("tx_bd ran out of descriptors to transmit\n");
-+            trace_imx_eth_tx_bd_busy();
-+
-             break;
-         }
-         len = bd.length;
-@@ -552,11 +536,11 @@ static void imx_enet_do_tx(IMXFECState *s, uint32_t index)
-         int len;
- 
-         imx_enet_read_bd(&bd, addr);
--        FEC_PRINTF("tx_bd %x flags %04x len %d data %08x option %04x "
--                   "status %04x\n", addr, bd.flags, bd.length, bd.data,
--                   bd.option, bd.status);
-         if ((bd.flags & ENET_BD_R) == 0) {
-             /* Run out of descriptors to transmit.  */
-+
-+            trace_imx_eth_tx_bd_busy();
-+
-             break;
-         }
-         len = bd.length;
-@@ -633,7 +617,7 @@ static void imx_eth_enable_rx(IMXFECState *s, bool flush)
-     s->regs[ENET_RDAR] = (bd.flags & ENET_BD_E) ? ENET_RDAR_RDAR : 0;
- 
-     if (!s->regs[ENET_RDAR]) {
--        FEC_PRINTF("RX buffer full\n");
-+        trace_imx_eth_rx_bd_full();
-     } else if (flush) {
-         qemu_flush_queued_packets(qemu_get_queue(s->nic));
-     }
-@@ -676,7 +660,7 @@ static void imx_eth_reset(DeviceState *d)
-     memset(s->tx_descriptor, 0, sizeof(s->tx_descriptor));
- 
-     /* We also reset the PHY */
--    phy_reset(s);
-+    imx_phy_reset(s);
- }
- 
- static uint32_t imx_default_read(IMXFECState *s, uint32_t index)
-@@ -774,8 +758,7 @@ static uint64_t imx_eth_read(void *opaque, hwaddr offset, unsigned size)
-         break;
-     }
- 
--    FEC_PRINTF("reg[%s] => 0x%" PRIx32 "\n", imx_eth_reg_name(s, index),
--                                              value);
-+    trace_imx_eth_read(index, imx_eth_reg_name(s, index), value);
- 
-     return value;
- }
-@@ -884,8 +867,7 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
-     const bool single_tx_ring = !imx_eth_is_multi_tx_ring(s);
-     uint32_t index = offset >> 2;
- 
--    FEC_PRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx_eth_reg_name(s, index),
--                (uint32_t)value);
-+    trace_imx_eth_write(index, imx_eth_reg_name(s, index), value);
- 
-     switch (index) {
-     case ENET_EIR:
-@@ -940,12 +922,12 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
-         if (extract32(value, 29, 1)) {
-             /* This is a read operation */
-             s->regs[ENET_MMFR] = deposit32(s->regs[ENET_MMFR], 0, 16,
--                                           do_phy_read(s,
-+                                           imx_phy_read(s,
-                                                        extract32(value,
-                                                                  18, 10)));
-         } else {
-             /* This a write operation */
--            do_phy_write(s, extract32(value, 18, 10), extract32(value, 0, 16));
-+            imx_phy_write(s, extract32(value, 18, 10), extract32(value, 0, 16));
-         }
-         /* raise the interrupt as the PHY operation is done */
-         s->regs[ENET_EIR] |= ENET_INT_MII;
-@@ -1053,8 +1035,6 @@ static bool imx_eth_can_receive(NetClientState *nc)
- {
-     IMXFECState *s = IMX_FEC(qemu_get_nic_opaque(nc));
- 
--    FEC_PRINTF("\n");
--
-     return !!s->regs[ENET_RDAR];
- }
- 
-@@ -1071,7 +1051,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
-     unsigned int buf_len;
-     size_t size = len;
- 
--    FEC_PRINTF("len %d\n", (int)size);
-+    trace_imx_fec_receive(size);
- 
-     if (!s->regs[ENET_RDAR]) {
-         qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Unexpected packet\n",
-@@ -1113,7 +1093,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
-         bd.length = buf_len;
-         size -= buf_len;
- 
--        FEC_PRINTF("rx_bd 0x%x length %d\n", addr, bd.length);
-+        trace_imx_fec_receive_len(addr, bd.length);
- 
-         /* The last 4 bytes are the CRC.  */
-         if (size < 4) {
-@@ -1131,7 +1111,9 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
-         if (size == 0) {
-             /* Last buffer in frame.  */
-             bd.flags |= flags | ENET_BD_L;
--            FEC_PRINTF("rx frame flags %04x\n", bd.flags);
-+
-+            trace_imx_fec_receive_last(bd.flags);
-+
-             s->regs[ENET_EIR] |= ENET_INT_RXF;
-         } else {
-             s->regs[ENET_EIR] |= ENET_INT_RXB;
-@@ -1164,7 +1146,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
-     size_t size = len;
-     bool shift16 = s->regs[ENET_RACC] & ENET_RACC_SHIFT16;
- 
--    FEC_PRINTF("len %d\n", (int)size);
-+    trace_imx_enet_receive(size);
- 
-     if (!s->regs[ENET_RDAR]) {
-         qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Unexpected packet\n",
-@@ -1210,7 +1192,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
-         bd.length = buf_len;
-         size -= buf_len;
- 
--        FEC_PRINTF("rx_bd 0x%x length %d\n", addr, bd.length);
-+        trace_imx_enet_receive_len(addr, bd.length);
- 
-         /* The last 4 bytes are the CRC.  */
-         if (size < 4) {
-@@ -1246,7 +1228,9 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
-         if (size == 0) {
-             /* Last buffer in frame.  */
-             bd.flags |= flags | ENET_BD_L;
--            FEC_PRINTF("rx frame flags %04x\n", bd.flags);
-+
-+            trace_imx_enet_receive_last(bd.flags);
-+
-             /* Indicate that we've updated the last buffer descriptor. */
-             bd.last_buffer = ENET_BD_BDU;
-             if (bd.option & ENET_BD_RX_INT) {
-diff --git a/hw/net/trace-events b/hw/net/trace-events
-index e18f883cfd..26700dad99 100644
---- a/hw/net/trace-events
-+++ b/hw/net/trace-events
-@@ -408,3 +408,21 @@ i82596_receive_packet(size_t sz) "len=%zu"
- i82596_new_mac(const char *id_with_mac) "New MAC for: %s"
- i82596_set_multicast(uint16_t count) "Added %d multicast entries"
- i82596_channel_attention(void *s) "%p: Received CHANNEL ATTENTION"
-+
-+# imx_fec.c
-+imx_phy_read(uint32_t val, int reg) "0x%04"PRIx32" <= reg[%d]"
-+imx_phy_write(uint32_t val, int reg) "0x%04"PRIx32" => reg[%d]"
-+imx_phy_update_link(const char *s) "%s"
-+imx_phy_reset(void) ""
-+imx_fec_read_bd(uint64_t addr, int flags, int len, int data) "tx_bd 0x%"PRIx64" flags 0x%04x len %d data 0x%08x"
-+imx_enet_read_bd(uint64_t addr, int flags, int len, int data, int options, int status) "tx_bd 0x%"PRIx64" flags 0x%04x len %d data 0x%08x option 0x%04x status 0x%04x"
-+imx_eth_tx_bd_busy(void) "tx_bd ran out of descriptors to transmit"
-+imx_eth_rx_bd_full(void) "RX buffer is full"
-+imx_eth_read(int reg, const char *reg_name, uint32_t value) "reg[%d:%s] => 0x%08"PRIx32
-+imx_eth_write(int reg, const char *reg_name, uint64_t value) "reg[%d:%s] <= 0x%08"PRIx64
-+imx_fec_receive(size_t size) "len %zu"
-+imx_fec_receive_len(uint64_t addr, int len) "rx_bd 0x%"PRIx64" length %d"
-+imx_fec_receive_last(int last) "rx frame flags 0x%04x"
-+imx_enet_receive(size_t size) "len %zu"
-+imx_enet_receive_len(uint64_t addr, int len) "rx_bd 0x%"PRIx64" length %d"
-+imx_enet_receive_last(int last) "rx frame flags 0x%04x"
--- 
-2.21.3
+I hope everything is going well with you.
+I'm currently going through this QEMU patch<https://lists.gnu.org/archive/h=
+tml/qemu-devel/2017-08/msg04168.html> that related to adding the NS alias f=
+or SCS region in ARMv8m cores.
 
+So I've an enquiry about this code modification, if possible.
+
+Why did you assumed that secure accesses to the alias act like NS accesses =
+to the real region registers. I discovered the any register that is accesse=
+d through its alias address behaves like accessing it in no secure state (e=
+xcept some cases where current security state is also considered along with=
+ the accessed region) ?
+
+My question was come up due to an issue while setting Application Interrupt=
+ and Reset Control Register (AIRCR). BFHFNMINS , I tried to set in secure s=
+tate  but through the alias register. But as investigated from QEMU code, t=
+he current security state is set to 0 (no secure) but the CPU state is stil=
+l secure and wasn't switched at this point.
+So any help for this issue. I really appreciate your help and your consider=
+ation.
+
+Best Regards,
+Mina.
+
+
+--_000_4bdfe2a9431643f5b6265e5198a8620fsvriesmbx02mgcmentorgco_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Comic Sans MS";
+	panose-1:3 15 7 2 3 3 2 2 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri",sans-serif;
+	color:#1F497D;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri",sans-serif;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Hello all,<o:p></o:p><=
+/span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">I hope everything is g=
+oing well with you.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">I&#8217;m currently go=
+ing through this QEMU
+<a href=3D"https://lists.gnu.org/archive/html/qemu-devel/2017-08/msg04168.h=
+tml">patch</a> that related to adding the NS alias for SCS region in ARMv8m=
+ cores.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">So I&#8217;ve an enqui=
+ry about this code modification, if possible.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Why did you assumed th=
+at secure accesses to the alias act like NS accesses to the real region reg=
+isters. I discovered the any register that is accessed through its alias ad=
+dress behaves like accessing it in no
+ secure state (except some cases where current security state is also consi=
+dered along with the accessed region) ?<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<p class=3D"MsoNormal" style=3D"margin-bottom:12.0pt"><span style=3D"color:=
+#1F497D">My question was come up due to an issue while setting
+<b>Application Interrupt and Reset Control Register (AIRCR).</b></span><spa=
+n class=3D"MsoHyperlink">
+</span><b><span style=3D"color:#1F497D">BFHFNMINS</span></b> <span style=3D=
+"color:#1F497D">
+, I tried to set in secure state</span><span dir=3D"RTL"></span><span dir=
+=3D"RTL" style=3D"font-family:&quot;Arial&quot;,sans-serif;color:#1F497D"><=
+span dir=3D"RTL"></span>
+</span><span lang=3D"AR-SA" dir=3D"RTL" style=3D"color:#1F497D">&nbsp;</spa=
+n><span style=3D"color:#1F497D">but through the alias register. But as inve=
+stigated from QEMU code, the current security state is set to 0 (no secure)=
+ but the CPU state is still secure and wasn&#8217;t
+ switched at this point.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">So any help for this i=
+ssue. I really appreciate your help and your consideration.
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Co=
+mic Sans MS&quot;;color:#1F497D;mso-fareast-language:JA">Best Regards,<br>
+Mina.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+</div>
+</body>
+</html>
+
+--_000_4bdfe2a9431643f5b6265e5198a8620fsvriesmbx02mgcmentorgco_--

@@ -1,93 +1,93 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2399878lfc;
-        Sun, 31 May 2020 10:43:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwWtDgLo46cCUSn7AIcFLt7FzhOn8wdbezDePXIUxcma4MOKvTNxiMlXklkHeKY5qj6NBan
-X-Received: by 2002:a25:e08d:: with SMTP id x135mr27455817ybg.360.1590946990690;
-        Sun, 31 May 2020 10:43:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590946990; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2400382lfc;
+        Sun, 31 May 2020 10:44:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwUhCl3XwGu5HnRasOUeAgUxhXT9f076OxIzidi8vvYT4ToWaGH95Leqb3iDrxtsCzy+nfS
+X-Received: by 2002:a25:b90a:: with SMTP id x10mr28217006ybj.334.1590947049348;
+        Sun, 31 May 2020 10:44:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590947049; cv=none;
         d=google.com; s=arc-20160816;
-        b=jKwgWDt7yJAHCuxnbyioR2J5IUDEm23klorZoWHHXy/ym1czgmY3a4YOjtG7msihOp
-         k8u9On/MkuF+EzKkl4plGPzskF5WCR55q5gCYStP9a2TzY01ckNODBh3GutZQWLa3JqV
-         paG2zA+nywqh3SWySEQKrHmjvMG2HjtAxWAQUj7BOGJAXkYvJ1EVd4ab7Hu6ooijWz0e
-         YX9JilLzmQspud52n1Z1sZSfHm5uhWnvrY8olCsa/hkBC6tCbvHf5LyKbDoqZ3W9+RvJ
-         BMO2FdjS4YSWwcS9Y0uB9zdqCy0aKv8ydcfeC3a/O9GQVIT/6ubBdW3x90JgQMHQ3b8n
-         Vwmw==
+        b=aeQ3DSIAsLdPC8gPmTcso6Xtw6q6vuyHb2zDq/db0tjZh9ZJv8YZjq3XwUiHph8OL9
+         WekT2GzvEzwqGzDwNPYswGMKuTAZ8UuLZQiB8RI4V20ni/FKJimjcccjh5mETIlAxBif
+         Tja37V6liNbzr5MGCuKkvw2JjSaK6ndLS/Eq3fSDNliJhrq9gPvPhFSVA3KlEAVYGpmr
+         jdMWMSLfwzsnqe1XWEBunUVNRYXB/qVqprcq4BnOwklCij5Db0f3aVZjHUiA3CyrCMHA
+         9jb+skb63650GoOi/nY9Lbuhuf90J4Z5iKwTW8JPQqbbLGXrNynSBmausSIWA+YAFWUz
+         6FTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Dv8k9OvX0sGDM6SnC2SEv28YQ5tgOTM9QioS6R+rf/M=;
-        b=ILNrXNYBbEQ66PcbLflUGP0YnVxuGZoaaZB3auBVMkyLh0XU5MvUGJsjRPAlxIev4h
-         ZzFMgDZTXSE8iY1RD8W6iiLgKnxIzctsrYBbzGE8WCTa8xsQXoOOFTe9g5/sLpfelS5n
-         BhrDLw+74s6kxpHFNQ60aO2KDoFXV0qzvEBijlgqU8Pftj/TF56cA1xcfHB16/ansbgu
-         qzPu3yP9cu1VPAKmApdMD2JtHUSlO2MabX0ZlrSIq+mfkVHNVy/S0IV62a7EROSvpBn/
-         1/Qa+poe8f1TT9Rpw3v7wXkiQQf5QHS+0WVe7b53SOm+zhDuKQByZN1l3e4Y2Uk9ZiFY
-         rF9A==
+        bh=nx6i+AHtHhOPOYC0ludmYEcyPCtH+R6fArfoXhgX/80=;
+        b=fbxXfiYq+6umyj77JM6FXBsVhb2cXgS8vwgGZkEwGjwWDSGWMWOV1B+pPr5JP5DnQc
+         cqMY5lGR60N1OT/R6XUjpUjUJ9NDPcqjp83gah1QYcKWPZxpEGOTWRkBegBObGwVfEz8
+         lXXLToXokJSDB2IeznttMDq1qwp0LV5jUDa49WSxmxOlN4g28TCEcrV2HhFv2M0k/NcA
+         nlkquW9ZJyF3tpIrYEe8oJcC7jBAgbTeXD5fXuInAIQ9Bh6hpaGaW0+LDZqTaeRMIZEm
+         cb60VUTeEhr1k9zyDHtkH3dddULHulLpnGPvRjTpRmcjXQnNndJtA04Zbwpj1/wJzHAF
+         x2uA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BVSryTZW;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ecRtJ9+d;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f16si11723270ybr.467.2020.05.31.10.43.10
+        by mx.google.com with ESMTPS id g11si12607066ybk.272.2020.05.31.10.44.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 31 May 2020 10:43:10 -0700 (PDT)
+        Sun, 31 May 2020 10:44:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BVSryTZW;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ecRtJ9+d;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:48492 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52556 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jfRzK-0002Jx-06
-	for alex.bennee@linaro.org; Sun, 31 May 2020 13:43:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34138)
+	id 1jfS0G-0003xr-MP
+	for alex.bennee@linaro.org; Sun, 31 May 2020 13:44:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfRuo-0004Ai-7j; Sun, 31 May 2020 13:38:30 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:41694)
+ id 1jfRup-0004CV-BP; Sun, 31 May 2020 13:38:33 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:33223)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfRun-0004Fh-Ez; Sun, 31 May 2020 13:38:29 -0400
-Received: by mail-wr1-x442.google.com with SMTP id j10so9152077wrw.8;
- Sun, 31 May 2020 10:38:24 -0700 (PDT)
+ id 1jfRuo-0004G7-Ir; Sun, 31 May 2020 13:38:30 -0400
+Received: by mail-wm1-x343.google.com with SMTP id j198so10509957wmj.0;
+ Sun, 31 May 2020 10:38:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Dv8k9OvX0sGDM6SnC2SEv28YQ5tgOTM9QioS6R+rf/M=;
- b=BVSryTZWMKqgtf1QMR74iA2a1/KO4Uy3SphIAK8LPJsyPkwckWfXDNibM+axg726DZ
- SOxrLOGVIxjQO1zqPrMp0H1sgXw3bFO+/tNCygs7RSfe47FZ6fzyl8luYeaYKphOjkVi
- OCMSIO+jJyhY8KvoRpSZImqE+0XAVhWggJCSkSwrg20N9ndbq6O399AVmjDCPvyP/Tb5
- dlQa2RKuW+AN6SwcOGxhziuKVbffRnR2ra0pRvolwWtCNXZiQU5hjwUjw+a/RC3Dn5mu
- mqyABHZCPs1C01fLaMueU7HT+U+bbJ4chOlXdK8XgTkduVhjcj2+7mnalCo1xT6WZsXh
- tIIA==
+ bh=nx6i+AHtHhOPOYC0ludmYEcyPCtH+R6fArfoXhgX/80=;
+ b=ecRtJ9+dMcz6HFcCrjMA79m2NLL9pLTe3YlR6u/5U8B/pDwEZnHkpthloUcJD9mdeX
+ z4NzrruZHIQ5BDed7AH8zcr/JzgBoZ1wQmFBvCf0zqPlH2VDi3PlRQEl/z3dTDw8CP0R
+ VEh2hNdQFoGTa0ucGgNoDbeocX77DmNTTR7f1AuNpakZHtfsid+pCIBY0so133aao2cN
+ b+i37OA+ThO+bxJeMeXuuwDMmwuLCLkIY+kfFnePWYnEWyGruAmEtPG2VehLleFSgTQF
+ GNo4UF310Aboap3C76RpTvPD64wZq/2auDdcnjb13FWLdoOod69RR73rZOQlRY4ZML6K
+ vZmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=Dv8k9OvX0sGDM6SnC2SEv28YQ5tgOTM9QioS6R+rf/M=;
- b=q7KspmcktTqGB9y6FH3akrV5pgLecMeR8lvGT+Q9e4KkOXZ8eIckVNYGg9ZkX6RIga
- VPS/6j+aZxS+ND+dRGeK1Cb6LTnDahA2ksDebHZh7pQLsRkS9i9WZPNrGO3jJuIs5HQh
- MlevVwF9U/R7/0WTTjIDtPqKklufkpXurbRZhySD40u0w0yS3dZk6v3+oFwJ0OMreuAr
- fnQ5BVOJr7FFQmb6n/9juW6eeIpb0G/T6DvVSKOR9nMD6zdnV2X7NUVB5QRJVEtGQ58G
- GrDDwLS22l9ycPwsUIBzeIXbK23gEpn0IOlbnkDFsaFDIxxXbvt6kdn3AXH4nb/FX7yx
- KstQ==
-X-Gm-Message-State: AOAM5318y4TwgjA2EefJ+xgJyOrxlIISFUietgCh/rwclK+DpNHAjODX
- N/EGNAtcDQra8zH2QsWtf16BBJBU
-X-Received: by 2002:adf:f7ce:: with SMTP id a14mr17874609wrq.362.1590946703877; 
- Sun, 31 May 2020 10:38:23 -0700 (PDT)
+ bh=nx6i+AHtHhOPOYC0ludmYEcyPCtH+R6fArfoXhgX/80=;
+ b=XSMgWox6hoVu9S4yXtAk5SJre4jJzi/4ERPAu2rmLHnbIwnvvb7xZSslaNLGdBQNIo
+ HtgkObwZ0kSOajHg1HRbCDaR2o3+oUTJp+ZgdIFYX4VEFH9Ae+3J1vfF1k9FFYOullux
+ 1gNR2p8vHE1ERaUPkf9Ji6Eoa9KmJt97woF4hyZKPzpMFSUmzEfTHP5SOtmMx9Ujqnii
+ yCtSqkjqaq8vVLBAM9g6ZRju3QEzNxN3fOifYzThmX532vPDgwGek8N8YBA1nzIajrgQ
+ P3ZQhRfoIKKbQGjd/AQJq1nTQet/K0LFxUjta7Htz/ftgVQIsSYQXuv+ZMzSAN5TMI9Q
+ sn1w==
+X-Gm-Message-State: AOAM532n3Vra+8Shyun1KHsiHCcwFJ7vYgGzL2rDeZ9ks7PQw3v3obUw
+ mD5pBP9sIs3ogASRzr06URZmyYX4
+X-Received: by 2002:a1c:39c1:: with SMTP id g184mr17816585wma.9.1590946708068; 
+ Sun, 31 May 2020 10:38:28 -0700 (PDT)
 Received: from localhost.localdomain (43.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id l19sm7973121wmj.14.2020.05.31.10.38.22
+ by smtp.gmail.com with ESMTPSA id l19sm7973121wmj.14.2020.05.31.10.38.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 May 2020 10:38:23 -0700 (PDT)
+ Sun, 31 May 2020 10:38:27 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 4/8] hw/pci/pci_bridge: Use the IEC binary prefix definitions
-Date: Sun, 31 May 2020 19:38:10 +0200
-Message-Id: <20200531173814.8734-5-f4bug@amsat.org>
+Subject: [PATCH 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix definitions
+Date: Sun, 31 May 2020 19:38:13 +0200
+Message-Id: <20200531173814.8734-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200531173814.8734-1-f4bug@amsat.org>
 References: <20200531173814.8734-1-f4bug@amsat.org>
@@ -95,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -133,36 +133,36 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UMTH9t9ZexeV
+X-TUID: oskoi/EMe8X/
 
 IEC binary prefixes ease code review: the unit is explicit.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/pci/pci_bridge.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/i386/xen/xen-hvm.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/pci/pci_bridge.c b/hw/pci/pci_bridge.c
-index 3ba3203f72..3789c17edc 100644
---- a/hw/pci/pci_bridge.c
-+++ b/hw/pci/pci_bridge.c
-@@ -423,14 +423,14 @@ int pci_bridge_qemu_reserve_cap_init(PCIDevice *dev, int cap_offset,
-     }
+diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+index 82ece6b9e7..679d74e6a3 100644
+--- a/hw/i386/xen/xen-hvm.c
++++ b/hw/i386/xen/xen-hvm.c
+@@ -9,6 +9,7 @@
+  */
  
-     if (res_reserve.mem_non_pref != (uint64_t)-1 &&
--        res_reserve.mem_non_pref >= (1ULL << 32)) {
-+        res_reserve.mem_non_pref >= 4 * GiB) {
-         error_setg(errp,
-                    "PCI resource reserve cap: mem-reserve must be less than 4G");
-         return -EINVAL;
-     }
+ #include "qemu/osdep.h"
++#include "qemu/units.h"
  
-     if (res_reserve.mem_pref_32 != (uint64_t)-1 &&
--        res_reserve.mem_pref_32 >= (1ULL << 32)) {
-+        res_reserve.mem_pref_32 >= 4 * GiB) {
-         error_setg(errp,
-                    "PCI resource reserve cap: pref32-reserve  must be less than 4G");
-         return -EINVAL;
+ #include "cpu.h"
+ #include "hw/pci/pci.h"
+@@ -230,7 +231,7 @@ static void xen_ram_init(PCMachineState *pcms,
+          * Xen does not allocate the memory continuously, it keeps a
+          * hole of the size computed above or passed in.
+          */
+-        block_len = (1ULL << 32) + x86ms->above_4g_mem_size;
++        block_len = 4 * GiB + x86ms->above_4g_mem_size;
+     }
+     memory_region_init_ram(&ram_memory, NULL, "xen.ram", block_len,
+                            &error_fatal);
 -- 
 2.21.3
 

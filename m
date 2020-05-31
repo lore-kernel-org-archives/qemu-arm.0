@@ -1,108 +1,113 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2405682lfc;
-        Sun, 31 May 2020 10:56:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHrWdub1F1oWvn/DfE9ziasWKKfvXFRzxdNFkfBUTOQ43uRChETeK8RddWk8Pfb5IAr35v
-X-Received: by 2002:a25:4ac9:: with SMTP id x192mr30583250yba.172.1590947765981;
-        Sun, 31 May 2020 10:56:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590947765; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2405900lfc;
+        Sun, 31 May 2020 10:56:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzCWNRlJm4sslIHY04ootJnmGL0qrgIqeUix/Sy6l6bBiv3Ju4xOILRONN3DE8K8+517PNW
+X-Received: by 2002:a25:9b07:: with SMTP id y7mr17060691ybn.156.1590947794029;
+        Sun, 31 May 2020 10:56:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590947794; cv=none;
         d=google.com; s=arc-20160816;
-        b=N2yuEWuoq7xK4b+OvnG0/Dl1UvU2gYlzIzJSt4+IWJo06bQWRASPAq+qDKAa3BiGhX
-         Ymkol3887ZSOO7agbaZExkODZ5zZmrVK7ipNS1CuVnPwOWNNZIjSm3WS+90CQ00o2mNY
-         7sWVY8iuFtOvAsc8/S5DzyGVKhlxbrD6Kxe3/cpTJriKVLupYPPNRvQ7LqR64wvfH4TT
-         bXei7++cAxZs2ivng1rjyzA4bv5uGKjcFVRXR/Y6SLrvjtm/r/FCIe1LndqFmetpCpCV
-         2L+9lPItl6yVnMHl6jVJYJqbQ6zqlcDRM7ut9KwHE/iPCMnQ1qEW258KK2GjZSqYVVHe
-         EkHQ==
+        b=GTBP0QirxGpOMFnzyFAZS1NUejDr6BEZi+tKaw5lsqaCxN72gRXOT8uo2OY6rsaSlQ
+         L/MbuzNCWlq5Bno22japMMsHO0bCRC7qDaL1A2xkfWhKQ9XVV/UxUQls5PHUstrpaqQ6
+         dYKNAM9LR9JPIfZuSMCy7msR/uZniy7h7E6ndaqVDyxdRKpb4EBfiHBjTpbMydjD5Geh
+         qQM4YNmjBWeY70g+nhfcBgoo0ID7iDW7qmD2hEsHB1OFDnCuw2/BobcATOFjAKLtyymh
+         ajUA6hcvfI9+JTnr7uzMbPbA8QfRZioxfgxdkKQTcO42VvNdDGpHOMYk3LL+dwh0laAC
+         oOWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=AEl6bT4q19zBH2BgMy7bXNnUtsc1bYKdZAFCBjIlSaw=;
-        b=0QG/oCbGjT4tE2TX/lEeenyugnuIO9oWd1IY6ZGQhAItymapITg9GJn+jRlxOlLUFF
-         3RofAVL8c5+KaOvtubI1u5BYCWnNKJNEHxn802HgCPyYcS2fYMWJe8E5amA4+EphV/7l
-         JRD3Lsqcd6Hd+30Kd1urBElZB2ICtomrhbPfZAmv+0Bqw+WiRuBUiE29vfyP6rzSfTy5
-         Pnoi99Ywuv5GhJcwTlJJA9nL7/Ghm0Oo3Pyc30EIxtCHnty17z5iYxdwZdZrKiX5AuEX
-         6ZgqEkAbbG/oxsFCvKQYTb1Si8eBOZ93+gOcB7Qib/c5T9mbKW6xgNiGWBH4b7JW+QaO
-         wCiQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Dvh9ZlB2YzrPmnRo8g2PXiL+qQpysab7ZLFeTg1BN6M=;
+        b=mGGYq2V0ovX5YdBEltsi8w6NQ5BtgIyA00NBq4qezcZTSb3SxjXI5Izajzi1OhWFoc
+         Apa/mmLGR/Pbq0SijypuHnQbatlc5v1a8KgR9G3xXJtfBesDiCHbWsNPCefLc/qv2pHW
+         TTBKJ9uwOGF/HuecD3W7zuNA+zMk/qUkqRwKqAKFIj9V05WecpZCLND4gNlzpRZD2d2c
+         TUaEsNiHCPBg+C7mHY+EQcWMmkc8K8lrmogVTFx/dz5R/0+vjY03I0BgPwQCjgvDLzSB
+         NqWst6hHfDYH1UsQBEYFg97zBgtGrwX/oyLymsg9vfkp7id4O7QPxzjTMs2lIJoReldk
+         BpYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eaZGRhHJ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=m5FOWe+F;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f18si12755386ybq.35.2020.05.31.10.56.05
+        by mx.google.com with ESMTPS id f128si14650143ybg.350.2020.05.31.10.56.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 31 May 2020 10:56:05 -0700 (PDT)
+        Sun, 31 May 2020 10:56:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=eaZGRhHJ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=m5FOWe+F;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:44578 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45948 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jfSBp-0004zm-CQ
-	for alex.bennee@linaro.org; Sun, 31 May 2020 13:56:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36500)
+	id 1jfSCH-0005c5-AR
+	for alex.bennee@linaro.org; Sun, 31 May 2020 13:56:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36524)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfSAJ-0003c1-4d; Sun, 31 May 2020 13:54:31 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:38982)
+ id 1jfSAM-0003cm-SH; Sun, 31 May 2020 13:54:34 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:41815)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfSAI-0007ak-E5; Sun, 31 May 2020 13:54:30 -0400
-Received: by mail-wr1-x443.google.com with SMTP id t18so9214844wru.6;
- Sun, 31 May 2020 10:54:29 -0700 (PDT)
+ id 1jfSAM-0007dB-40; Sun, 31 May 2020 13:54:34 -0400
+Received: by mail-wr1-x444.google.com with SMTP id j10so9178453wrw.8;
+ Sun, 31 May 2020 10:54:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=AEl6bT4q19zBH2BgMy7bXNnUtsc1bYKdZAFCBjIlSaw=;
- b=eaZGRhHJxQAtSw26xWGvnUufmlMGk2NZArPNF0URkkrmVRXtwPKucour5svqDI+aa2
- uyC0m4lm+G0P6RA6AWRT5/D7Uky94PrT21bsKhi01lJccbI91TIVfy/MKpyecyxrzPqd
- sWBlWcOlXd/LDU63L2mek/GMBAnSkiKwoQcGWZRMFxw993qOTA0eh3i5fxlFro1J4OtC
- fW2rgIhF3L7BZbxCzM1A4vR/SNtio9ioUCcF4wW4hHdeyBDtVz4XYCQ3B0y4wLI3+OTv
- vIppeGS8lhD6hcfqD6EZF5VIJmrkZ107g5IWtNUAWpMsKEYcKlwb+nxWFTZHVhR9HJ0G
- tEbg==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Dvh9ZlB2YzrPmnRo8g2PXiL+qQpysab7ZLFeTg1BN6M=;
+ b=m5FOWe+F0mJ3nRIzM6rEIVG4pL/paYIdc8LcC9s2mubExfLa4bP3mScZBfKAFFlUCY
+ HIqNbm/Vk8F60YK32Vz5eWU63PJnA7aRiqMKB/qFdoCCcHoWyRMkgA2E2LqMbwO2ckVj
+ fTEaC20FNMY/T0tAD71jDyN01kpx80Zbu/eS5yqISplqbdq9UPpALGcov8FUJlUjd3KE
+ DHKOk31OCux1I5V1zczEOUvOlx/137Jy4+Z45uKvwV5TrvH1p9KFohLM+iMpYwCwPVYw
+ qUU6gpbMU2tX5oLZjKVyyupdBFhAEH6MAGTUQ7OV9snrozylipWc5p0/+xU2SeRLcd4Q
+ R6vA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=AEl6bT4q19zBH2BgMy7bXNnUtsc1bYKdZAFCBjIlSaw=;
- b=fLNl3v0c7QUAST4zE9uQblMCkPzqJdxFWd0pjQofeOvtp0GlO0Mb6nSLICn7edtqzA
- FUw7bS69jLr8NHYU56MK2DQEVF/oX6A0ZchjgZmUGQPL1KtdtvASssieLnsgtnoMoiTI
- rWTWEJ2gFV4acmhlPMfTmDCuMzOVzSGTikaJWe5dfxwiB6bxbzhEv0G1h3UqbZqL6SNc
- 5k3QUUPMGmHUhqjQdM0UAXxDvxHhazoMf59/7qQOqfm0C0AJQI+Bh/LYb+YKuj+Z0yN8
- VDIq33uFVyVnc0yAxadbbBNXoMYwnHyrheHcUTz4ThnoaNP5dSyVCNnHUG/ciggOjsKN
- NA2g==
-X-Gm-Message-State: AOAM532rVMquyJMSReYJIh61VVwTi8nBUBVWfhi/uLMJrGzJlYcJTvOO
- xT/u+EQLsDJhF8bVVltaOpZLhVvr
-X-Received: by 2002:adf:fac2:: with SMTP id a2mr18199433wrs.304.1590947667965; 
- Sun, 31 May 2020 10:54:27 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=Dvh9ZlB2YzrPmnRo8g2PXiL+qQpysab7ZLFeTg1BN6M=;
+ b=WozwpQOKYax+UDpJUplxUnxehVv3UZcnd3vT3kahvGWeKZ60ooqkvAq/6XhY6rX6gm
+ N4Ie8y8z/zvhs9DVyu47vCviVroyE8G1nJ0fSMhj9HeMhhTifSgINiGNO76Chc8mKtJz
+ 3w8zTR24u71i6RZmVANbyne6Z8z1UG4h1BSoj7w7iJrwWZlwiEsb9LX42rg+vACI4cvr
+ kFsxkuq+eMU1tZjKdCRBoZM/EJN9qSRGlwsDPr45wVCStIxVQy6BCLE5LsvxOt/WKQSg
+ mbQk8a1hs7fZd3gbC1MvEopfpcRKVExYAPsWY7VFybrv82jK+gsCF0cifuAYBRuIQSM8
+ A4Kw==
+X-Gm-Message-State: AOAM532jJYtMK+eAoVqcP3YzzKGssoKND5vHy4cvacQ4L1O/p5hZjb6M
+ GYil6mFqaSO91fs0Ey/knIV/IDGo
+X-Received: by 2002:a5d:6283:: with SMTP id k3mr17748351wru.422.1590947671873; 
+ Sun, 31 May 2020 10:54:31 -0700 (PDT)
 Received: from localhost.localdomain (43.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id z7sm17862531wrt.6.2020.05.31.10.54.26
+ by smtp.gmail.com with ESMTPSA id z7sm17862531wrt.6.2020.05.31.10.54.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 31 May 2020 10:54:27 -0700 (PDT)
+ Sun, 31 May 2020 10:54:31 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 0/6] exec/memory: Rework some address and access size limits
-Date: Sun, 31 May 2020 19:54:19 +0200
-Message-Id: <20200531175425.10329-1-f4bug@amsat.org>
+Subject: [PATCH 3/6] hw/sd/allwinner-sdhost: Do DMA accesses via DMA address
+ space
+Date: Sun, 31 May 2020 19:54:22 +0200
+Message-Id: <20200531175425.10329-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200531175425.10329-1-f4bug@amsat.org>
+References: <20200531175425.10329-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
  FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -126,49 +131,131 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: As++uxr6HBTp
+X-TUID: 7TglfXlWw4R6
 
-These patches are extracted from a bigger series which
-- remove generic ISA space, restricting it to the hw
-  that really has it (mostly PCI-ISA bridges)
-- allow QTest/GDB to use any address space
-- make I/O address space target-specific (only X86 and
-  AVR have a CPU connected to it)
-- better handle Harvard architectures
+The DMA operations should not use the CPU address space, but
+the DMA address space. Add support for a DMA address space,
+and replace the cpu_physical_memory API calls by equivalent
+dma_memory_read/write calls.
 
-Various patches only make sense if the AVR arch is merged,
-so instead of waiting and keeping rebasing/testing, let's
-share what is generic and might be worthwhile.
-
-Currently the QMP/QTest commands only use the 1st CPU
-address space, which has already been reported to limit
-fuzzing/fault_injection/gdbstub.
-
-I'll probably follow with the PCI-ISA bridge part, but
-let's first see the feedback for this batch.
-
-Regards,
-
-Phil.
-
-Philippe Mathieu-Daudé (6):
-  target/s390x/mmu_helper: Use address_space_rw() in place
-  hw/dma/rc4030: Use DMA address space to do DMA accesses
-  hw/sd/allwinner-sdhost: Do DMA accesses via DMA address space
-  exec/cpu-common: Do not restrict CPU to 32-bit memory access maximum
-  exec: Restrict 32-bit CPUs to 32-bit address space
-  memory: Use CPU register size as default access_size_max
-
- include/exec/cpu-common.h        |  4 ++--
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
  include/hw/sd/allwinner-sdhost.h |  4 ++++
- exec.c                           | 10 ++++++++-
- hw/dma/rc4030.c                  |  3 ++-
  hw/sd/allwinner-sdhost.c         | 36 ++++++++++++++++++++++++++------
- hw/usb/hcd-musb.c                | 12 +++++------
- memory.c                         |  2 +-
- target/s390x/mmu_helper.c        |  6 ++++--
- 8 files changed, 58 insertions(+), 19 deletions(-)
+ 2 files changed, 34 insertions(+), 6 deletions(-)
 
+diff --git a/include/hw/sd/allwinner-sdhost.h b/include/hw/sd/allwinner-sdhost.h
+index d94606a853..ae1125c026 100644
+--- a/include/hw/sd/allwinner-sdhost.h
++++ b/include/hw/sd/allwinner-sdhost.h
+@@ -68,6 +68,10 @@ typedef struct AwSdHostState {
+     /** Maps I/O registers in physical memory */
+     MemoryRegion iomem;
+ 
++    /** DMA physical memory */
++    MemoryRegion *dma_mr;
++    AddressSpace dma_as;
++
+     /** Interrupt output signal to notify CPU */
+     qemu_irq irq;
+ 
+diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
+index f404e1fdb4..9a2b5fcaeb 100644
+--- a/hw/sd/allwinner-sdhost.c
++++ b/hw/sd/allwinner-sdhost.c
+@@ -21,7 +21,10 @@
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "qemu/units.h"
++#include "qapi/error.h"
+ #include "sysemu/blockdev.h"
++#include "sysemu/dma.h"
++#include "hw/qdev-properties.h"
+ #include "hw/irq.h"
+ #include "hw/sd/allwinner-sdhost.h"
+ #include "migration/vmstate.h"
+@@ -306,7 +309,7 @@ static uint32_t allwinner_sdhost_process_desc(AwSdHostState *s,
+     uint8_t buf[1024];
+ 
+     /* Read descriptor */
+-    cpu_physical_memory_read(desc_addr, desc, sizeof(*desc));
++    dma_memory_read(&s->dma_as, desc_addr, desc, sizeof(*desc));
+     if (desc->size == 0) {
+         desc->size = klass->max_desc_size;
+     } else if (desc->size > klass->max_desc_size) {
+@@ -331,8 +334,9 @@ static uint32_t allwinner_sdhost_process_desc(AwSdHostState *s,
+ 
+         /* Write to SD bus */
+         if (is_write) {
+-            cpu_physical_memory_read((desc->addr & DESC_SIZE_MASK) + num_done,
+-                                      buf, buf_bytes);
++            dma_memory_read(&s->dma_as,
++                            (desc->addr & DESC_SIZE_MASK) + num_done,
++                            buf, buf_bytes);
+ 
+             for (uint32_t i = 0; i < buf_bytes; i++) {
+                 sdbus_write_data(&s->sdbus, buf[i]);
+@@ -343,15 +347,16 @@ static uint32_t allwinner_sdhost_process_desc(AwSdHostState *s,
+             for (uint32_t i = 0; i < buf_bytes; i++) {
+                 buf[i] = sdbus_read_data(&s->sdbus);
+             }
+-            cpu_physical_memory_write((desc->addr & DESC_SIZE_MASK) + num_done,
+-                                       buf, buf_bytes);
++            dma_memory_write(&s->dma_as,
++                             (desc->addr & DESC_SIZE_MASK) + num_done,
++                             buf, buf_bytes);
+         }
+         num_done += buf_bytes;
+     }
+ 
+     /* Clear hold flag and flush descriptor */
+     desc->status &= ~DESC_STATUS_HOLD;
+-    cpu_physical_memory_write(desc_addr, desc, sizeof(*desc));
++    dma_memory_write(&s->dma_as, desc_addr, desc, sizeof(*desc));
+ 
+     return num_done;
+ }
+@@ -742,6 +747,17 @@ static void allwinner_sdhost_init(Object *obj)
+     sysbus_init_irq(SYS_BUS_DEVICE(s), &s->irq);
+ }
+ 
++static void allwinner_sdhost_realize(DeviceState *dev, Error **errp)
++{
++    AwSdHostState *s = AW_SDHOST(dev);
++
++    if (!s->dma_mr) {
++        error_setg(errp, "\"dma\" property must be provided.");
++        return;
++    }
++    address_space_init(&s->dma_as, s->dma_mr, "sdhost-dma");
++}
++
+ static void allwinner_sdhost_reset(DeviceState *dev)
+ {
+     AwSdHostState *s = AW_SDHOST(dev);
+@@ -787,6 +803,12 @@ static void allwinner_sdhost_reset(DeviceState *dev)
+     s->status_crc = REG_SD_CRC_STA_RST;
+ }
+ 
++static Property allwinner_sdhost_properties[] = {
++    DEFINE_PROP_LINK("dma", AwSdHostState,
++                     dma_mr, TYPE_MEMORY_REGION, MemoryRegion *),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void allwinner_sdhost_bus_class_init(ObjectClass *klass, void *data)
+ {
+     SDBusClass *sbc = SD_BUS_CLASS(klass);
+@@ -798,7 +820,9 @@ static void allwinner_sdhost_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
++    device_class_set_props(dc, allwinner_sdhost_properties);
+     dc->reset = allwinner_sdhost_reset;
++    dc->realize = allwinner_sdhost_realize;
+     dc->vmsd = &vmstate_allwinner_sdhost;
+ }
+ 
 -- 
 2.21.3
 

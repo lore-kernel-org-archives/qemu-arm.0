@@ -1,142 +1,84 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp3002807lfc;
-        Mon, 1 Jun 2020 04:16:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxKLFsJpRU9EgIucLe3HIu8K01ix1+hf+c+eMPENtEqKXqaLqDPtFFxB439sCiiTzMvsF4V
-X-Received: by 2002:a25:c08b:: with SMTP id c133mr33476128ybf.286.1591010197297;
-        Mon, 01 Jun 2020 04:16:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591010197; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp3040864lfc;
+        Mon, 1 Jun 2020 05:09:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJykzH57BKRnZEbD3bOCzPfhZca4vNDE6IAP5o4WzdcVqBwF7wOELcqQrwnLvXlX6yo8Vk/K
+X-Received: by 2002:a25:7c46:: with SMTP id x67mr34124714ybc.279.1591013342683;
+        Mon, 01 Jun 2020 05:09:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591013342; cv=none;
         d=google.com; s=arc-20160816;
-        b=smyKwnvs+rVaVyfice/91hY7ufms2TMJ96YNawS8aHsCWNCMaccZvh20fQdPT7SHPo
-         NjhbhnjSSbLx/KhCokw7fmcT7qA6uaewyQFNdpaNgO32xvPIXM1ICoq4LAdUgEUV9Vll
-         HbglI/Pvn0lk1Ftjc14+MjBZl47h6bdQTcRSTgagrd2J22ncQd5ukZ5NQ4tdpaFDK09w
-         stl7cXWFY5hHBqAVo2+hGinSRXVQBFtiZxgtDMHjYamc2R9T+LsPgesKxm3Lzi8iOx0q
-         BqsXq0IIj2PlUHbwWwHcZ3Ti3fDUjTvhhFa420dRr3HXhVmVCXGzigMpLVY5vd81RM7A
-         p44g==
+        b=iuWBjnC2Un4768ytBOUjqz1BGUIm2QYVa2CrTSwhNjXMLilLXBqbRymezpRXW+wQ9f
+         t9mAYLJ7glLPMLFJ828EExkYBbsvXD/JRhcXBaNIyrOrFYpKeB9zZNztD3q35wSzcY4I
+         8NzUL/OkAo37YQtAyceYGv1pYkKvdNXqtorL4LZF8LS88rkpXOMMTF/O+4NAFSA8vHSD
+         0yKFDMNMotXTC9REbNGqMnjceWei3iIkNdF7DQ/9uDlUgFyL+bs1LA4iWtLCnCOmAL54
+         mgWa6suio+RtQQB71IBZxfbbOiwtRuBXojYxxgBqcK2ZW+QypP0JNGs7TKJ16PxxoBMX
+         c8BQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:references:to:from:subject:dkim-signature;
-        bh=WQfJzqFfEaKfIfQ4a6l8KRYhHeFJRpYVrfeth7NbeaI=;
-        b=t05EWfmox0VW1w+WUYR9ZLesQaKJxndlo20nV0YOUWm9y1YHngW9mw2v0Y49u6DPY9
-         haUes0eCgZfJGQqsX0tNRnBta1eystKVv7TG20NH711QUT4SJrqIMfkUbOu4DIT5iQ1P
-         mCF8eVRozc4w4hfbUQ5L2wJxl3BV2NLO8kpcZKiHN8WzYrPYp4uiuNVnv+npiJO175B9
-         +3hzaHbtIJZJQfayeax1UEajG72/gF/vZIJsXT7VFmkSYkfGGpgk1tq20P3TwsOyK9bU
-         uTk58u7jgqNNTRz9w75TnDNFnKW7vUodB5hqm+Li8JR7xnI4h/FFh10MR5iFl46bV0e1
-         Xv7A==
+         :message-id:from:references:to:subject;
+        bh=1oliHMPkoEXFl7hGaduHo/FaHLK7x5T727iHL1EqF4w=;
+        b=hpApC/w0C8SHMXldAdOjhnulc6fx6J4wOwlvKI/t3TvlkjrRspDVh7duW72NUXokbE
+         LPLk16Adkm3tYW/y22dp22DB3MFsMZq47zxfjsvoyO1xB8GmkvfyMQvT28kETzS3aWm2
+         SDkXwUyps6XgttjZPp45NvOCxE9jDaMyYqBN2h4EkRphwn8EWKM/yu19+QHfga9D3pKu
+         3LSwlb3ys/ZigdceQcyBcKgZnV8cm/Q6PioNIu48LZ/t+ozQQn4ETHGJnFSecceEWgVZ
+         9Xt5TLZ+7Rq8Tws+TS12dOyqSz+M2/wLSjKy2opp7I8aEIVBOf4cKfQvywyueNk4ZO8n
+         6xFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W205YNhf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k4si14278418ybb.50.2020.06.01.04.16.37
+        by mx.google.com with ESMTPS id u17si13936920ybm.484.2020.06.01.05.09.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jun 2020 04:16:37 -0700 (PDT)
+        Mon, 01 Jun 2020 05:09:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W205YNhf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:37256 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57992 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jfiQm-0008Rv-Lb
-	for alex.bennee@linaro.org; Mon, 01 Jun 2020 07:16:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41912)
+	id 1jfjFW-0005UP-0c
+	for alex.bennee@linaro.org; Mon, 01 Jun 2020 08:09:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49702)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfiPS-0007Vb-K0; Mon, 01 Jun 2020 07:15:14 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:33281)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jfiPQ-0001to-R4; Mon, 01 Jun 2020 07:15:14 -0400
-Received: by mail-wm1-x341.google.com with SMTP id j198so11842683wmj.0;
- Mon, 01 Jun 2020 04:15:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=WQfJzqFfEaKfIfQ4a6l8KRYhHeFJRpYVrfeth7NbeaI=;
- b=W205YNhfbTjoAc+Sq9+SlEL7WiYKF5b9v5yHkY4DXyopHwJPg1SVVv2w9oIR4mdeiZ
- ST7h/2FQ9CrppRhn/J3bbwaLc+m7JhXGYYfwf5FoKVkAUCjHbK313p/oDAqp2+OiuQ4r
- motnab8vc2Rmd52V5L1Dr5cM5M/i7mdN+/Dt0ouAXWYIbm5zhpt61VXyfHGvHPrr0CoC
- wKuMWlY18eN+lp9S+laQKKZIlnLpzKuhpFWE7JvJMAv3TcbsEatQsReoROr3bwq1WeHg
- vCiXw550PsuSZzZCt6W4rjSmzJMMRbo4nTwPZfhJQQRMppYXbS56RbzP2oVOjhURm1dj
- /GwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=WQfJzqFfEaKfIfQ4a6l8KRYhHeFJRpYVrfeth7NbeaI=;
- b=cEKy5J9c0zQb5f61m+X6Hh0/XWkw4u9V1v3afsTNp4PjFTgLDi+qw3dGL1583yRyun
- yJjfEnOUI/ELNYkmTxTSaZCmEhC0Ihg8pX/DP4s1NcY/QCqhK/LjtDoQZoiEHC6htj9r
- cqM9qRAU7jOc6hbiXi6PKl8hu6L6CB7sOUTR9PCZgagK6r8Q/MCuZ1BlmGIPuQ84iFFl
- HRJim4Y2BDYI1fbOuewd8clbqAgKbPmEzbokQ0kFXQKI2eNbSJgS7vT8uzdydyJegqZM
- SGcmBi69z/E05Pf0hMETIQjFTJkh31PhMcUyvDe9Ssd+/TX9TGj+X/+0WeFMmOK7SFSp
- k8CA==
-X-Gm-Message-State: AOAM530AcTiNbr3tjLqGUz4801mcS0IY69ljR1gRAtrlRldjndJtf+GD
- ITYqieSBVvmEL/gzbgBdWvo=
-X-Received: by 2002:a1c:305:: with SMTP id 5mr20766893wmd.60.1591010110216;
- Mon, 01 Jun 2020 04:15:10 -0700 (PDT)
-Received: from [192.168.1.34] (43.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id v27sm21731098wrv.81.2020.06.01.04.15.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Jun 2020 04:15:09 -0700 (PDT)
-Subject: Re: [PATCH 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix
- definitions
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: paul@xen.org, qemu-devel@nongnu.org
-References: <20200531173814.8734-1-f4bug@amsat.org>
- <20200531173814.8734-8-f4bug@amsat.org>
- <000001d637e5$f0c4b4f0$d24e1ed0$@xen.org>
- <63327be6-10c1-6a8c-b4ed-cbbd085a35a8@amsat.org>
-Autocrypt: addr=f4bug@amsat.org; keydata=
- mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
- u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
- HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
- YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
- ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
- dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
- ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
- Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
- HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
- Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
- klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
- jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
- 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
- loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
- sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
- JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
- 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
- K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
- n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
- CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <3b4fdc66-ea78-2270-a67a-6d9138fc12c4@amsat.org>
-Date: Mon, 1 Jun 2020 13:15:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1jfjEX-0004oJ-4Z; Mon, 01 Jun 2020 08:08:01 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3772 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1jfjEV-0005cP-MF; Mon, 01 Jun 2020 08:08:00 -0400
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id BDFE388206165D7DEA85;
+ Mon,  1 Jun 2020 20:07:49 +0800 (CST)
+Received: from [127.0.0.1] (10.173.222.233) by DGGEMS412-HUB.china.huawei.com
+ (10.3.19.212) with Microsoft SMTP Server id 14.3.487.0;
+ Mon, 1 Jun 2020 20:07:38 +0800
+Subject: Re: About the kvm-no-adjvtime CPU property
+To: Andrew Jones <drjones@redhat.com>
+References: <b4389848-10fd-a906-9901-d1d354ce4842@huawei.com>
+ <20200601080718.jul5r4qebpeieyfl@kamzik.brq.redhat.com>
+From: Ying Fang <fangying1@huawei.com>
+Message-ID: <3d8729db-067c-31f9-dd69-02a218f1b53e@huawei.com>
+Date: Mon, 1 Jun 2020 20:07:31 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <63327be6-10c1-6a8c-b4ed-cbbd085a35a8@amsat.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20200601080718.jul5r4qebpeieyfl@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Originating-IP: [10.173.222.233]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=fangying1@huawei.com;
+ helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/01 08:07:50
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -149,83 +91,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: 'Peter Maydell' <peter.maydell@linaro.org>,
- 'Stefano Stabellini' <sstabellini@kernel.org>,
- 'Eduardo Habkost' <ehabkost@redhat.com>,
- "'Michael S. Tsirkin'" <mst@redhat.com>, 'Andrew Jeffery' <andrew@aj.id.au>,
- 'Helge Deller' <deller@gmx.de>, qemu-trivial@nongnu.org,
- =?UTF-8?Q?=27C=c3=a9dric_Le_Goater=27?= <clg@kaod.org>, qemu-arm@nongnu.org,
- =?UTF-8?Q?=27Herv=c3=a9_Poussineau=27?= <hpoussin@reactos.org>,
- 'Joel Stanley' <joel@jms.id.au>, 'Paolo Bonzini' <pbonzini@redhat.com>,
- 'Anthony Perard' <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- qemu-ppc@nongnu.org, 'Richard Henderson' <rth@twiddle.net>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wu.wubin@huawei.com,
+ zhang.zhanghailiang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XX10wQhpfcR0
+X-TUID: yh3iLyPiK1wP
 
-On 6/1/20 10:33 AM, Philippe Mathieu-Daudé wrote:
-> On 6/1/20 9:26 AM, Paul Durrant wrote:
->>> -----Original Message-----
->>> From: Philippe Mathieu-Daudé <philippe.mathieu.daude@gmail.com> On Behalf Of Philippe Mathieu-Daudé
->>> Sent: 31 May 2020 18:38
->>> To: qemu-devel@nongnu.org
->>> Cc: Andrew Jeffery <andrew@aj.id.au>; Helge Deller <deller@gmx.de>; Peter Maydell
->>> <peter.maydell@linaro.org>; Richard Henderson <rth@twiddle.net>; Eduardo Habkost
->>> <ehabkost@redhat.com>; Paul Durrant <paul@xen.org>; Hervé Poussineau <hpoussin@reactos.org>; Marcel
->>> Apfelbaum <marcel.apfelbaum@gmail.com>; xen-devel@lists.xenproject.org; Paolo Bonzini
->>> <pbonzini@redhat.com>; Stefano Stabellini <sstabellini@kernel.org>; Cédric Le Goater <clg@kaod.org>;
->>> qemu-trivial@nongnu.org; Joel Stanley <joel@jms.id.au>; qemu-arm@nongnu.org; Michael S. Tsirkin
->>> <mst@redhat.com>; Anthony Perard <anthony.perard@citrix.com>; qemu-ppc@nongnu.org; Philippe Mathieu-
->>> Daudé <f4bug@amsat.org>
->>> Subject: [PATCH 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix definitions
->>>
->>> IEC binary prefixes ease code review: the unit is explicit.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
->>>  hw/i386/xen/xen-hvm.c | 3 ++-
->>>  1 file changed, 2 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
->>> index 82ece6b9e7..679d74e6a3 100644
->>> --- a/hw/i386/xen/xen-hvm.c
->>> +++ b/hw/i386/xen/xen-hvm.c
->>> @@ -9,6 +9,7 @@
->>>   */
->>>
->>>  #include "qemu/osdep.h"
->>> +#include "qemu/units.h"
->>>
->>>  #include "cpu.h"
->>>  #include "hw/pci/pci.h"
->>> @@ -230,7 +231,7 @@ static void xen_ram_init(PCMachineState *pcms,
->>>           * Xen does not allocate the memory continuously, it keeps a
->>>           * hole of the size computed above or passed in.
->>>           */
->>> -        block_len = (1ULL << 32) + x86ms->above_4g_mem_size;
->>> +        block_len = 4 * GiB + x86ms->above_4g_mem_size;
->>
->> Not strictly necessary but could we retain the brackets please?
-> 
-> Sure.
-> 
-> Laurent, if this can go via your trivial@ tree, can you do the change or
-> you rather I resend the whole series?
 
-I understood reading another thread that contributor should not overload
-maintainer, so I'll simply repost this as v2.
-https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg00066.html
+
+On 2020/6/1 16:07, Andrew Jones wrote:
+> On Sat, May 30, 2020 at 04:56:26PM +0800, Ying Fang wrote:
+>> About the kvm-no-adjvtime CPU property
+>>
+>> Hi Andrew,
+>> To adjust virutal time, a new kvm cpu property kvm-no-adjvtime
+>> was introduced to 5.0 virt machine types. However the cpu
+>> property was enabled only for host-passthrough and max cpu model.
+>> As for other cpu model like cortex-a57, cortex-a53, cortex-a72,
+>> this kvm-adjvtime is not enabled by default, which means the
+>> virutal time can not be adjust for them.
+>>
+>> Here, for example, if VM is configured with kvm enabled:
+>>
+>>    <cpu mode='custom' match='exact' check='partial'>
+>>      <model fallback='allow'>cortex-a72</model>
+>>      <topology sockets='2' dies='1' cores='2' threads='1'/>
+>>      <numa>
+>>        <cell id='0' cpus='0-1' memory='16777216' unit='KiB'/>
+>>        <cell id='1' cpus='2-3' memory='16777216' unit='KiB'/>
+>>      </numa>
+>>    </cpu>
+>>
+>> We cannot adjust virtual time even if 5.0 virt machine is used.
+>> So i'd like to add it to other cpu model, do you have any
+>> suggestions here ?
+>>
+>>
+> 
+> Hi Fang,
+> 
+> The cpu feature only requires kvm.  If a cpu model may be used with kvm,
+> then the feature can be allowed to be used with the model.  What I find
+> interesting is that the cpu model is being used with kvm instead of 'host'
+> or 'max'.  Can you explain the reasons for that?  Currently, when using
+yes，the cpu model is indeed used with kvm.
+
+There is a situation where the host cpu model is Cortex-A72 and
+a 'custom' cpu mode is used to keep insrtuction set compatible between
+the source and destination host machine when doing live migration.
+So the host physical machine cpu model is Cortex-A72 but
+host-passthrough model is mode used here.
+
+> kvm, the guest will always effectively get 'host' anyway, even when a
+> model is provided. Indeed, for a model to work, kvm requires it to exactly
+> match the host cpu and even then the ID registers are passed through from
+> the host CPU, not taken from QEMU's model.
+In the above scenario, the cpu mode is Cortex-A72 but maybe only a 
+subset of cpu feature is presented to the guest.
+
+Since the cpu model is not 'host' here, the kvm-adjvtime is not enabled 
+by default. The guest virtual time will not be adjusted.
 
 > 
->>
->>   Paul
->>
->>>      }
->>>      memory_region_init_ram(&ram_memory, NULL, "xen.ram", block_len,
->>>                             &error_fatal);
->>> --
->>> 2.21.3
->>
->>
->>
+> Thanks,
+> drew
 > 
+> 
+> .
+> 
+

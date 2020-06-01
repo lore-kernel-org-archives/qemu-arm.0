@@ -1,107 +1,107 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2881286lfc;
-        Mon, 1 Jun 2020 01:13:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJze7345ggjQ4kewutEDEYPn4dFmu1F57Wz4IwVUZFOz3EC1UPpwbRnXPHVbYpm9WqmVvasZ
-X-Received: by 2002:a25:bdcb:: with SMTP id g11mr32025529ybk.256.1590999239210;
-        Mon, 01 Jun 2020 01:13:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590999239; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2893901lfc;
+        Mon, 1 Jun 2020 01:33:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzpFaUPvyjO4Zika7Gdu5vLdEZ5jHqQcAnnd7X340WO7yFVOrv++9JlmaKqpWSrBqR734Vu
+X-Received: by 2002:a25:23d6:: with SMTP id j205mr4905705ybj.60.1591000427226;
+        Mon, 01 Jun 2020 01:33:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591000427; cv=none;
         d=google.com; s=arc-20160816;
-        b=SQTypyiUzB8TrqHqzGdXa6OJTXXNDxg43y+pG9pjV8n3G7ySjzgr4GKHQcs7yqAXic
-         DtxSA5jtYB9dEhsINDVHdlVHY8HvD6fzBygmfSFUvecRwW7+mbE1c+D1hcyrQCMAik0T
-         oxZCAwM4BrCh8kfwgenCFw4F/1g3N4oFtv6uRRADGDeWuXyzDfe+T0mdrhH89oI8qHJL
-         y+SHuNtgSCRHnU0iwvZhPJ5xvuF1R4GKbqexqwk8R39wSUImsAfFrnJ+M6KQQr47jPOT
-         3fHlj4STNaIzxaf1TKUaCNxEWKj4y+NA+tbdiHTla6POs/l/T4jFl9uQnAvotQ1HkfOy
-         6nSg==
+        b=Exd+aJwDssNKabIBLlqVWtO1cdI30ViS5cLjVHDJ9FcVuKbxof57Lh7KQr/KcJtgCS
+         aJBGMCDNuX0mihZvEkNd6THB961x+zxSvhdmJCnFzp5phR15zEZtVmsjdDyH7YwjYSsD
+         G/WUFZYOV7sgaTjeHSGIAAVU4dLz+zOXSeCveuIw12wjJaP5qXefiMLvtCjg7E44TFzH
+         lCa7OJQwcui6Qzrh9OAZiEk0rbrIjOnsl4eAlbph8fqgBl7iTP36BVLLdjwEAwJ8dtDT
+         Ope0Er2S9eayp/Fgtv93OINgKYK1RQORhDHFBx5bUD49zdzlb94Hu/ie09vyFA7XX4cZ
+         AsTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=gBVOAPGbk2ZC7+R4MJVMWGJ2mnZz6fnC8zO0ZzHe3DQ=;
-        b=RrkTOBv8+7o01K/kZYgzrdp5zTj72I36BEVf+pTRY7oQ2j/Ncd3xtBUfKHK3SPPe8D
-         I3h2sctnDQfTSb2NtnEH3ThLOy93tbffhhuSWpJ8rv/8iXgwRiKfQFdsepZbrZ7ZQjKZ
-         8D6Ka7I3vEXxMRMrw7TjrV2qpbFuXjZuQ/X8/Hnmvt7idPaSYj5nGHh7fIw/QnGUm2J/
-         1SafjnN41Rg2yUZvaDH1hnlBlRFok/2Nv4vub6cE4HPP90RJG2c3IsMzt4+1mS32rIqP
-         m4C7dQu3tkOKiLd2fPugBbxSjuJZSAi4MP5yWnGi8MtEv+mVQIk8ApHTYkkZwI/xXbRy
-         HMJA==
+        bh=Wb302sgiYxfPaOUVMNPVZTgMDWXAbDEM/6w0YEYyXVI=;
+        b=dqj0m1KCJrJ4XuFvBtZEQpaJiwe5C0Xogdgw7mWfZHXBVN7XBDU1QlSyAkPPvj/MZS
+         JxGpFcqqpbSfin/d9D7HIHGa1SggPuJcHcSQOn26PoJgjp1HwcQVZl251TGCHKvMCMp5
+         is5iO5KG1ZzcGaqckkZsPu0K+y5WmO5iJI12nLKf1e39ZWIn7cnL0OC+tpcAaeIpD0AL
+         ubJy1B1Yv6sv8gEOBXyP7YCAct88Kd6pgw1kKkjvIohiP7q2p2xGQYJDYSDY2XpO0VtJ
+         T3e+36tYeRXN9eUwb+wy+QenermwzVraf5ha7v6e1bnXeMj7AAMcZO3qrFpz86LfcTEZ
+         UVLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FmgNUf38;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="qpAUJ/Xn";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n123si11101621ybf.491.2020.06.01.01.13.59
+        by mx.google.com with ESMTPS id e15si11477650ybf.44.2020.06.01.01.33.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jun 2020 01:13:59 -0700 (PDT)
+        Mon, 01 Jun 2020 01:33:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FmgNUf38;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="qpAUJ/Xn";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:58342 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41272 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jffa2-00058U-LK
-	for alex.bennee@linaro.org; Mon, 01 Jun 2020 04:13:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51452)
+	id 1jfftC-0002df-H5
+	for alex.bennee@linaro.org; Mon, 01 Jun 2020 04:33:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53472)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jffZv-000566-3V; Mon, 01 Jun 2020 04:13:51 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:35768)
+ id 1jffsy-0002MT-Ak; Mon, 01 Jun 2020 04:33:32 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:34926)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jffZu-0007sF-AH; Mon, 01 Jun 2020 04:13:50 -0400
-Received: by mail-wm1-x341.google.com with SMTP id q25so1488096wmj.0;
- Mon, 01 Jun 2020 01:13:49 -0700 (PDT)
+ id 1jffsw-0003W2-HZ; Mon, 01 Jun 2020 04:33:31 -0400
+Received: by mail-wm1-x344.google.com with SMTP id q25so1546302wmj.0;
+ Mon, 01 Jun 2020 01:33:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=gBVOAPGbk2ZC7+R4MJVMWGJ2mnZz6fnC8zO0ZzHe3DQ=;
- b=FmgNUf38gOznC7XN8kOYq3bWaG1TCFLMsQnbtBshX2xtU68yHwM0UKr5Slmz9VKitT
- lnMSegoK0P7hnAkER3MtzqcNIlX32gzjGFF8tkspBgxUpATVWYOx+Se3ldPblOVDX78B
- eHan0PTlYrUUE1iF0pLvRnK9TvfDqVX3V4atP8wEFIIHYQ2KaUraMlOWvWpq0s42v/lV
- QqjkmrZAMg7y3KS4Q/+Z9hIs5PPl++VJjj8ySVAr3rD9DGELodSvN4obmK454DTU5Mga
- gIVbB3uvTfrTZHcw7KAncVQJu4lWJscX/0/LF8LqVAVXY6pJQM4Xkp3Bbk+LHdRx7vxk
- OEig==
+ bh=Wb302sgiYxfPaOUVMNPVZTgMDWXAbDEM/6w0YEYyXVI=;
+ b=qpAUJ/XnT4mWsnqFMatowAbLLFJq43367/cBpfL/d3ZzTAp/DFEljArpThGY9+x18V
+ mEWL8q9LN1y/Kzo+yPVP9NuX/kfEdhcwtUoUfgf7soF39oOD56i779EDikiWNdymrWiX
+ iGGtrBcC2jcRqrRl9ppZVn/1WCbmq4vVN9DSxtAyiWa1+q4pxj6qRzoay8n+SQrsR0yw
+ xppjqFmvZcRSAqBhzHi3l+z0IJbui5cI7X5kxEJ1zcyLOImgzgUXu2H10/7ZMwXcJ4zi
+ f2UOMruKHQPpVSt0R+Z8WeJyW7oZywqw1PT6JFEm2PiEbYoqydIw6Ah5rnt5mxbRKRnd
+ TU3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=gBVOAPGbk2ZC7+R4MJVMWGJ2mnZz6fnC8zO0ZzHe3DQ=;
- b=FKQhm1agkXoZJvF3u3Cg+MG83KSyU8g6vXppX8L3hMrI4Y5fMFqdSCy8gvbsDbf4n2
- qc1gP3riaDvpkPRDr/F+fHtJOh8a2oHQfv/VfXtSusuTajvgvLigvK+rCSG2xCKm6JoH
- nKnjMS4Ko5bZU63dzqhgrBI6z4Rk1QDoJYPwZTEXPQYoeHJJQcI6qjUIGpFRPlQFMFOZ
- cVtDW3iOcFM96SrOto0nVMD4FZIm5ibX6RDDaYCr39eBaQKpIsCHpTVBY0R+ibCqDHee
- Sxef6XnunYA5sMY32a19sikVnq76c9oCmTGQluJ3G7o3lT7UGPhrif7sJew1RIJOjL9X
- 83bA==
-X-Gm-Message-State: AOAM532GHkEFwlKmaYwVgmo0jBFNU5fcXrgOxvghEGCNkhl4FZRbzvCB
- KgklBz+Cty04iSzKZvllvGI=
-X-Received: by 2002:a1c:9e13:: with SMTP id h19mr1600547wme.107.1590999228193; 
- Mon, 01 Jun 2020 01:13:48 -0700 (PDT)
+ bh=Wb302sgiYxfPaOUVMNPVZTgMDWXAbDEM/6w0YEYyXVI=;
+ b=mKWTxht0naIZmYrTy6iWKMksJcqbkbUX6/urX9cRaGvWRUM1BItDVSN5pW0lo7dnEp
+ 7EIC0Y2hQkdBKv9fwoZftis7kCuFydjGzZPYqy/rceng1Z1SItD/dkQCQpXC9nzttrr9
+ 2GgEF+1gHD0A89Hn7fe7m3DwoqC2OVSkHVXZHbtV5UUGkRVpHgvYbstHxEO9b8rGdMUG
+ HQm+Q5wWEpUm8RDo3OuiVLH2uI9CbTwOXizt2dUiNt4OWKWKxlXdD5ldp+X/f61zyPHq
+ My2OtHxtMDnHb4HIF2cDpW+QHB1bt79ebDiG7ofDkmaHwqHlmgeihBvHqpD/Za+nEVfm
+ /rUQ==
+X-Gm-Message-State: AOAM531NVTHFSYAgQ59pTPBk3xTzt9TNH0K37JPNw3bd2NVvCYQuJLGM
+ fGGqnWEzlqtOCnGKW7G2+qM=
+X-Received: by 2002:a1c:62d6:: with SMTP id w205mr19510946wmb.97.1591000407855; 
+ Mon, 01 Jun 2020 01:33:27 -0700 (PDT)
 Received: from [192.168.1.34] (43.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.43])
- by smtp.gmail.com with ESMTPSA id l18sm10965634wmj.22.2020.06.01.01.13.46
+ by smtp.gmail.com with ESMTPSA id l17sm11837037wmi.16.2020.06.01.01.33.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Jun 2020 01:13:47 -0700 (PDT)
-Subject: Re: [RFC PATCH 6/6] memory: Use CPU register size as default
- access_size_max
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200531175425.10329-1-f4bug@amsat.org>
- <20200531175425.10329-7-f4bug@amsat.org>
- <CAFEAcA_awdfsv=UJYQmnyCH6cFVz9O9kjUQ9+_jBb_rz73JepA@mail.gmail.com>
+ Mon, 01 Jun 2020 01:33:27 -0700 (PDT)
+Subject: Re: [PATCH 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix
+ definitions
+To: paul@xen.org, qemu-devel@nongnu.org
+References: <20200531173814.8734-1-f4bug@amsat.org>
+ <20200531173814.8734-8-f4bug@amsat.org>
+ <000001d637e5$f0c4b4f0$d24e1ed0$@xen.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <37085286-471b-7f94-f8b3-e98eef1604dd@amsat.org>
-Date: Mon, 1 Jun 2020 10:13:46 +0200
+Message-ID: <63327be6-10c1-6a8c-b4ed-cbbd085a35a8@amsat.org>
+Date: Mon, 1 Jun 2020 10:33:25 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_awdfsv=UJYQmnyCH6cFVz9O9kjUQ9+_jBb_rz73JepA@mail.gmail.com>
+In-Reply-To: <000001d637e5$f0c4b4f0$d24e1ed0$@xen.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -124,67 +124,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- David Hildenbrand <david@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Beniamino Galvani <b.galvani@gmail.com>, qemu-s390x <qemu-s390x@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <rth@twiddle.net>
+Cc: 'Peter Maydell' <peter.maydell@linaro.org>,
+ 'Stefano Stabellini' <sstabellini@kernel.org>,
+ 'Eduardo Habkost' <ehabkost@redhat.com>,
+ "'Michael S. Tsirkin'" <mst@redhat.com>, 'Andrew Jeffery' <andrew@aj.id.au>,
+ 'Helge Deller' <deller@gmx.de>, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?=27Herv=c3=a9_Poussineau=27?= <hpoussin@reactos.org>,
+ 'Joel Stanley' <joel@jms.id.au>,
+ 'Marcel Apfelbaum' <marcel.apfelbaum@gmail.com>,
+ xen-devel@lists.xenproject.org, 'Anthony Perard' <anthony.perard@citrix.com>,
+ 'Paolo Bonzini' <pbonzini@redhat.com>, 'Richard Henderson' <rth@twiddle.net>,
+ qemu-ppc@nongnu.org, =?UTF-8?Q?=27C=c3=a9dric_Le_Goater=27?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pJn43saYsIwu
+X-TUID: WHOlLPYmNMPj
 
-On 5/31/20 9:14 PM, Peter Maydell wrote:
-> On Sun, 31 May 2020 at 18:54, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+On 6/1/20 9:26 AM, Paul Durrant wrote:
+>> -----Original Message-----
+>> From: Philippe Mathieu-Daudé <philippe.mathieu.daude@gmail.com> On Behalf Of Philippe Mathieu-Daudé
+>> Sent: 31 May 2020 18:38
+>> To: qemu-devel@nongnu.org
+>> Cc: Andrew Jeffery <andrew@aj.id.au>; Helge Deller <deller@gmx.de>; Peter Maydell
+>> <peter.maydell@linaro.org>; Richard Henderson <rth@twiddle.net>; Eduardo Habkost
+>> <ehabkost@redhat.com>; Paul Durrant <paul@xen.org>; Hervé Poussineau <hpoussin@reactos.org>; Marcel
+>> Apfelbaum <marcel.apfelbaum@gmail.com>; xen-devel@lists.xenproject.org; Paolo Bonzini
+>> <pbonzini@redhat.com>; Stefano Stabellini <sstabellini@kernel.org>; Cédric Le Goater <clg@kaod.org>;
+>> qemu-trivial@nongnu.org; Joel Stanley <joel@jms.id.au>; qemu-arm@nongnu.org; Michael S. Tsirkin
+>> <mst@redhat.com>; Anthony Perard <anthony.perard@citrix.com>; qemu-ppc@nongnu.org; Philippe Mathieu-
+>> Daudé <f4bug@amsat.org>
+>> Subject: [PATCH 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix definitions
 >>
->> Do not restrict 64-bit CPU to 32-bit max access by default.
+>> IEC binary prefixes ease code review: the unit is explicit.
 >>
 >> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >> ---
->> RFC because this probably require an audit of all devices
->> used on 64-bit targets.
->> But if we find such problematic devices, they should instead
->> enforce their access_size_max = 4 rather than expecting the
->> default value to be valid...
->> ---
->>  memory.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>  hw/i386/xen/xen-hvm.c | 3 ++-
+>>  1 file changed, 2 insertions(+), 1 deletion(-)
 >>
->> diff --git a/memory.c b/memory.c
->> index fd6f3d6aca..1d6bb5cdb0 100644
->> --- a/memory.c
->> +++ b/memory.c
->> @@ -1370,7 +1370,7 @@ bool memory_region_access_valid(MemoryRegion *mr,
+>> diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+>> index 82ece6b9e7..679d74e6a3 100644
+>> --- a/hw/i386/xen/xen-hvm.c
+>> +++ b/hw/i386/xen/xen-hvm.c
+>> @@ -9,6 +9,7 @@
+>>   */
 >>
->>      access_size_max = mr->ops->valid.max_access_size;
->>      if (!mr->ops->valid.max_access_size) {
->> -        access_size_max = 4;
->> +        access_size_max = TARGET_LONG_SIZE;
+>>  #include "qemu/osdep.h"
+>> +#include "qemu/units.h"
+>>
+>>  #include "cpu.h"
+>>  #include "hw/pci/pci.h"
+>> @@ -230,7 +231,7 @@ static void xen_ram_init(PCMachineState *pcms,
+>>           * Xen does not allocate the memory continuously, it keeps a
+>>           * hole of the size computed above or passed in.
+>>           */
+>> -        block_len = (1ULL << 32) + x86ms->above_4g_mem_size;
+>> +        block_len = 4 * GiB + x86ms->above_4g_mem_size;
+> 
+> Not strictly necessary but could we retain the brackets please?
+
+Sure.
+
+Laurent, if this can go via your trivial@ tree, can you do the change or
+you rather I resend the whole series?
+
+> 
+>   Paul
+> 
 >>      }
+>>      memory_region_init_ram(&ram_memory, NULL, "xen.ram", block_len,
+>>                             &error_fatal);
+>> --
+>> 2.21.3
 > 
-> This is definitely not the right approach. TARGET_LONG_SIZE
-> is a property of the CPU, but memory_region_access_valid()
-> is testing properties of the MemoryRegion (ie the device
-> being addressed). One can have devices in a system with a
-> 64-bit CPU which can only handle being accessed at 32-bit
-> width (indeed, it's pretty common). The behaviour of a device
-> shouldn't change depending on whether we happened to compile
-> it into a system with TARGET_LONG_SIZE=4 or 8.
-
-Agreed.
-
 > 
-> (If you want to argue that we should make all our devices
-> explicit about the valid.max_access_size rather than relying
-> on "default means 4" then I wouldn't necessarily disagree.)
-
-Yes, I'd rather not have access_size_max set automagically, but fixing
-this require a long audit, and I suppose nobody cares.
-I'll drop this patch. Thanks for the review!
-
-> 
-> thanks
-> -- PMM
 > 

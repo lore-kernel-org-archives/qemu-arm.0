@@ -1,106 +1,77 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2467607lfc;
-        Sun, 31 May 2020 12:49:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw/5cyf29UpxGziagNWN0/PNUg5UERYc9FY0+bq/GRoOqcgxt3gGYBUYmNi/5d0OiCJ4Bi3
-X-Received: by 2002:a25:c1c5:: with SMTP id r188mr28149732ybf.240.1590954549014;
-        Sun, 31 May 2020 12:49:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590954549; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2735558lfc;
+        Sun, 31 May 2020 21:03:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwM6cSNCnIhtEYx/78nq4QKJviX/skkWhexO/NcyaY+A3uNwvfmU20OYBddYX30mRZnLWfI
+X-Received: by 2002:a25:bd0e:: with SMTP id f14mr29970362ybk.427.1590984231569;
+        Sun, 31 May 2020 21:03:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590984231; cv=none;
         d=google.com; s=arc-20160816;
-        b=Rbm+gzOFNJ5pFwEEJ5dEfl3zR2ipv6GhhjiSr9nuPjDs69TaWs7Y3lYO1XRc7V8Riu
-         fekpN3SS1CtADmOxU1VwsejRPUOqZ3HBB1Bov81ikGeaJqIICE7DV7SLPJ81h7jsqiWt
-         jHBQw6MSPWoh99we6BY4JrGoue9HM1SnjxGeZRT/VpKRZhELBuyvsGh4DJk4hLm9YZ6s
-         lBCL91rqH/CryfeXputuo13yv4NTPpwiHafqczpk5GVjIraP/UbGLqWNoxnDwrbAX0MS
-         sGgLooWKTPJbew4OssaqyRwOpMYVW3khWQ0i1VnH/QdmEaq4nJKoWdqMrL4L4oPmgCkE
-         GwWg==
+        b=incXDdBz18VAgxoL5/FXCbHiYxJAyTHtl6B3JkU8cmae3RKFFXgb2/5wjUs1wTazbK
+         LZTIh2dvplu5v9oENWHEHtKU4++Awl311I+FcDKn+FgnKVe7/tXU9RoBvLEJs/jJVRSr
+         xxsE4Rh0YuBxDYZaSyBr2y7MKh2IJbqF2KN99hvqiijPF/4izWt9EkPhZAR96vpfu65D
+         uhdt+xPAToB930zvhC363eNuZRJmqVllm5PcQLiSYDZohqhvr97k2DgIDMddjbKlBgqX
+         w1+vA4k0DGWXmppjoNiyT/FrKsOnUn5NZVxLRCEgLETOonJRmfNsWJPygniLjLJfxcLD
+         1ZOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=ILaa0c1UMVCHaphm0DdLpskuHaCCEchvE3UnkzWKwTU=;
-        b=TNrYiQla4qlt+reWr4B63DiyK2QDmgUGnP/phJy/rDuS3d/3Nt49DJp5TVs3HFnOE3
-         /LsXOuv8lMrJvf4vRpMB340fdfc2BME4m1ASxIE0f76T/vHyRdKHE7fW18/D4MQPMOwS
-         /UQRznS2mKlBipJUfp2FAo97q5KVFknO2PaF9KdawzeCPY7QaCmxLWCEH1rEuAQy/r8O
-         gIgIurF6V2q//2BpwKmWlqQicV/jLmFA2qp/YX7Gw31xlLHiYVGgTtDSfT0r2otWkxWO
-         Rt5FNnOLhCTJPhDKUT5RMwknvTvFmseZLfHWGX8n+ZangXgGcVJvPFs4Y5GYHN8TRP1f
-         Ykgw==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=7yriWp0cG6mGwV4GUlac1DOYPrvmiQaEH5RriH8OI04=;
+        b=XRTkfygdK1P/8cCFcKNCU5wKcq8RqxjgUrph37uwbAKZh3h/1AbusIg/BX383YoUrM
+         oBmthqd49hW5QfHvusZW4TASFD9tX/ux79oAnhyiuvypX6GldYRvA4ImFUddMIPX5zqF
+         pcKi75jn12Aq/73E9Fu/6Ih2QnHBNC8Docvp8UzNOOHngNeCoTFGhCdAkUfeGLlUbMso
+         TuzQxrCKHftR/+G+x9R6u0nX5GbGX2OHY4mLqtTShxsAXkZqwNl1quGfvzLpbPn+yKyW
+         ZxMVnxUJ5CXp4OFKc8qFTAjgSlgDl68J8TDXyzTMtfG1dV3hDOniKx17i0T/HgjSG08Z
+         tCvg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="gh/yOzBv";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 194si4121505ybn.356.2020.05.31.12.49.08
+        by mx.google.com with ESMTPS id o200si1298026yba.162.2020.05.31.21.03.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 31 May 2020 12:49:09 -0700 (PDT)
+        Sun, 31 May 2020 21:03:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="gh/yOzBv";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33960 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jfTxE-0003IN-EU
-	for alex.bennee@linaro.org; Sun, 31 May 2020 15:49:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46912)
+	id 1jfbfy-0005xD-TR
+	for alex.bennee@linaro.org; Mon, 01 Jun 2020 00:03:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57112)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jfTwx-0002xT-0X
- for qemu-arm@nongnu.org; Sun, 31 May 2020 15:48:51 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:40652)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jfTwv-0006hK-LK
- for qemu-arm@nongnu.org; Sun, 31 May 2020 15:48:50 -0400
-Received: by mail-oi1-x242.google.com with SMTP id v128so7252081oia.7
- for <qemu-arm@nongnu.org>; Sun, 31 May 2020 12:48:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=ILaa0c1UMVCHaphm0DdLpskuHaCCEchvE3UnkzWKwTU=;
- b=gh/yOzBvDIyuIfovF4HlMlYod16q8wUChDeH3hG7Vg+iTSHsq68cyaZOlaiNPIf9US
- ygkjSaJT2vmqdUJQIEGlL8gV2MtXWHco1mZIOuO5KiIKQs3G5nr+4EVe214ZZXeEv7t2
- BrAvP75A4QrCdtXWHeTAoOJNw5pvGzbuC2G/kLi877DgbTs+y3Xd2yQqelINQ+/4seCD
- JnV4TjmGBJgF8NzHohYqz7Kn6m0rIYAsc00stNMZ+W0zNNKTer3Nbo9C6s5802r+PVaz
- RvSVWI8S5dnalEPSFqzdJ82hUjtjWbzfyTWqx+oNh8fIgRphvyytYus3c9E04tDW/7Xd
- ywBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=ILaa0c1UMVCHaphm0DdLpskuHaCCEchvE3UnkzWKwTU=;
- b=UPibxi9R3s5qDIwTrPZwicnqijjUaMYTdJ4kPvHDaTxVat4WydI2IXuWJwruuHvdXR
- AVQZUL6jKeKHTRLOwFZCJFsr4XvzD9IF9d/yRWfTBTaXvERSly/skTiJnkfuN1xSKyFk
- jD3UJde5KmRDWX6HFhOWFnJAVUDAnVYIcbjd01qa7b5mWkMRMcGtl0X9JZJthaiN5Pr8
- wgsAY5QlTPF4ZZPsKIqMIx89d/ybDb7puTAbsHCt3QZRrtus3g7tdBtGv5Fsnz/gqKCR
- OKFnJIyKpHAeJSN1XAPGeLwpJ0htwjfuHflxc5C4D2c2hiMSBQTYCLyDhMEM1eB7S+/4
- t+BA==
-X-Gm-Message-State: AOAM533wdH2tkrmmrx+dY7BkhM4+F6OZsPpbbvclLxCV59Q5q6Msec48
- KReDXqgIpHt8YQRzJQj4jyYVCiDLJIXk1FtEHFbT/A==
-X-Received: by 2002:aca:5451:: with SMTP id i78mr7136005oib.48.1590954528355; 
- Sun, 31 May 2020 12:48:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1jfbfq-0005wl-3w; Mon, 01 Jun 2020 00:03:42 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3771 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1jfbfo-00081y-GG; Mon, 01 Jun 2020 00:03:41 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 25604FEA423AB5663262;
+ Mon,  1 Jun 2020 12:03:30 +0800 (CST)
+Received: from DESKTOP-5IS4806.china.huawei.com (10.173.221.230) by
+ DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 1 Jun 2020 12:03:21 +0800
+From: Keqian Zhu <zhukeqian1@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: [PATCH] migration: Count new_dirty instead of real_dirty
+Date: Mon, 1 Jun 2020 12:02:50 +0800
+Message-ID: <20200601040250.38324-1-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
 MIME-Version: 1.0
-References: <20200531173814.8734-1-f4bug@amsat.org>
-In-Reply-To: <20200531173814.8734-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 31 May 2020 20:48:37 +0100
-Message-ID: <CAFEAcA95OLKmG1xNVjAg_KPt3hfN4vT5wvZ6SJbcKk5zdYO_Gg@mail.gmail.com>
-Subject: Re: [PATCH 0/8] hw: Fix some incomplete memory region size
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Type: text/plain
+X-Originating-IP: [10.173.221.230]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=zhukeqian1@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/01 00:03:30
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,52 +84,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-ppc <qemu-ppc@nongnu.org>, Stefano Stabellini <sstabellini@kernel.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Paul Durrant <paul@xen.org>,
- Andrew Jeffery <andrew@aj.id.au>, Helge Deller <deller@gmx.de>,
- "Michael S. Tsirkin" <mst@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Joel Stanley <joel@jms.id.au>, QEMU Trivial <qemu-trivial@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Anthony Perard <anthony.perard@citrix.com>,
- "open list:X86" <xen-devel@lists.xenproject.org>,
- Richard Henderson <rth@twiddle.net>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Chao Fan <fanc.fnst@cn.fujitsu.com>,
+ Keqian Zhu <zhukeqian1@huawei.com>, wanghaibin.wang@huawei.com,
+ Juan Quintela <quintela@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: f8cnJj+QrlRG
+X-TUID: bD05WR2igET3
 
-On Sun, 31 May 2020 at 18:38, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> memory_region_set_size() handle the 16 Exabytes limit by
-> special-casing the UINT64_MAX value.
-> This is not a problem for the 32-bit maximum, 4 GiB, but
-> in some places we incorrectly use UINT32_MAX instead of
-> 4 GiB, and end up missing 1 byte in the memory region.
->
-> This series fixes the cases I encountered.
-> Also included few patches while reviewing, I replaced some
-> magic values by the IEC binary prefix equivalent.
->
-> Regards,
->
-> Phil.
->
-> Philippe Mathieu-Daud=C3=A9 (8):
->   hw/arm/aspeed: Correct DRAM container region size
->   hw/pci-host/prep: Correct RAVEN bus bridge memory region size
->   hw/pci/pci_bridge: Correct pci_bridge_io memory region size
->   hw/pci/pci_bridge: Use the IEC binary prefix definitions
->   hw/pci-host: Use the IEC binary prefix definitions
->   hw/hppa/dino: Use the IEC binary prefix definitions
->   hw/i386/xen/xen-hvm: Use the IEC binary prefix definitions
->   target/i386/cpu: Use the IEC binary prefix definitions
+DIRTY_LOG_INITIALLY_ALL_SET feature is on the queue. This fixs the
+dirty rate calculation for this feature. After introducing this
+feature, real_dirty_pages is equal to total memory size at begining.
+This causing wrong dirty rate and false positive throttling.
 
-whole series:
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+BTW, real dirty rate is not suitable and not very accurate.
 
-thanks
--- PMM
+1. For not suitable: We mainly concern on the relationship between
+   dirty rate and network bandwidth. Net increasement of dirty pages
+   makes more sense.
+2. For not very accurate: With manual dirty log clear, some dirty pages
+   will be cleared during each peroid, our "real dirty rate" is less
+   than real "real dirty rate".
+
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+---
+ include/exec/ram_addr.h | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
+index 5e59a3d8d7..af9677e291 100644
+--- a/include/exec/ram_addr.h
++++ b/include/exec/ram_addr.h
+@@ -443,7 +443,7 @@ static inline
+ uint64_t cpu_physical_memory_sync_dirty_bitmap(RAMBlock *rb,
+                                                ram_addr_t start,
+                                                ram_addr_t length,
+-                                               uint64_t *real_dirty_pages)
++                                               uint64_t *accu_dirty_pages)
+ {
+     ram_addr_t addr;
+     unsigned long word = BIT_WORD((start + rb->offset) >> TARGET_PAGE_BITS);
+@@ -469,7 +469,6 @@ uint64_t cpu_physical_memory_sync_dirty_bitmap(RAMBlock *rb,
+             if (src[idx][offset]) {
+                 unsigned long bits = atomic_xchg(&src[idx][offset], 0);
+                 unsigned long new_dirty;
+-                *real_dirty_pages += ctpopl(bits);
+                 new_dirty = ~dest[k];
+                 dest[k] |= bits;
+                 new_dirty &= bits;
+@@ -502,7 +501,6 @@ uint64_t cpu_physical_memory_sync_dirty_bitmap(RAMBlock *rb,
+                         start + addr + offset,
+                         TARGET_PAGE_SIZE,
+                         DIRTY_MEMORY_MIGRATION)) {
+-                *real_dirty_pages += 1;
+                 long k = (start + addr) >> TARGET_PAGE_BITS;
+                 if (!test_and_set_bit(k, dest)) {
+                     num_dirty++;
+@@ -511,6 +509,7 @@ uint64_t cpu_physical_memory_sync_dirty_bitmap(RAMBlock *rb,
+         }
+     }
+ 
++    *accu_dirty_pages += num_dirty;
+     return num_dirty;
+ }
+ #endif
+-- 
+2.19.1
+

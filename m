@@ -1,151 +1,174 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2967853lfc;
-        Mon, 1 Jun 2020 03:26:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwv+iVB7sPewP61TJKaYehL3hLG2vv4hJG1YjPaJX5vj5cDbHI4746cFiiqYQlflJ9/y285
-X-Received: by 2002:a25:99c8:: with SMTP id q8mr24126798ybo.261.1591007172324;
-        Mon, 01 Jun 2020 03:26:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591007172; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp3183985lfc;
+        Mon, 1 Jun 2020 08:04:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxbJj789uVIlgZEdVWTz4RQXhSYrv1SIyYglyryfGGEZRx/AvZoyV0XonfWHIyHOHR57VRn
+X-Received: by 2002:a9f:3049:: with SMTP id i9mr2946671uab.113.1591023897960;
+        Mon, 01 Jun 2020 08:04:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591023897; cv=none;
         d=google.com; s=arc-20160816;
-        b=BghrDDjEjWgjFvnMWR73dDmssIqMwo3R7toKgnq6jPnzElydBv7ChLIfpQqH87N00d
-         vco7mKGqcT2s3vDPrtzkBWSEuMIKcTjqzcFSD1QVjX+9Jze4MWTmgBS1LnIB5akBbitE
-         fZN7e0molvgckpamz9lkJpDMVIbNZW0sIqLcjrkJZgXxuinqBtziNd1yPWc0wLADKHrW
-         jcg5gWBiSl917o2PzExw7Gc+YVGHHqgv01D6AKCiWmHDhB6XfLalTqzafQJ6yeEbdVws
-         28bltWtX3aKICDBCt8sMhGbGmMs4DQu/j1HyNrvMFYb2V7fA62leNX/giZj9dOBbOXTx
-         uhMA==
+        b=OhG5un8J5kYcAvjHfLCYs7BjifmKYNSj1YMUfShsc4FnXafZ1cLskoQtQjFiqEg7Pd
+         jlKOZkA9zF3l/gQmQrcBMBjOf8ntxHRttxFkX+toi0ehj2SX8mfvcarjrFMcfAHaAf+V
+         9Vcnc8VRC9rhX7VkZASNFMviSmSGZyWJMJGp4sXmmJ8O/umP8ohmegcv3/VaQJ4xEIFk
+         HEAfyD/HJuJL2C0VBWWqNp9oVvL4ikGB7JIj79CW1rN30BPuwrkiyNFnR6zxnvExVJqj
+         /0kJqc/P61Uv1tRVMnRI9QgvYTNL20MVZ4pdPbaD1qaE8XNkwFkz6P8lTH0C9FGSk4Zf
+         tWvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=HTSaCdeUAu1HcnT2Agf6LlwsvyK0ifJSU70lffYSgu4=;
-        b=omdwplYDj2vbc/qaGZe2A+/9sHlIQVlyezTEClULaCqiMgy1R5JDxs7/KG6Va1jBe6
-         oG/CLi6zS6AILh0jfGUdTPi2zNBaccRJxoagqvOzWixQxervKlQq+8ifZ1rHc0IQKHJe
-         2U1XmkA9LLRBSA0k3+sBMPm6kC9Gnz5Np65IjwUf7e090/Kq+7v3cvaMC3YI4XDdO8Wa
-         aDnydwHHdr2h0onGLo8RDiqp5gIujUXkJE0X4Ov54ZnZZZyo0iuLO8fpn1bTx0uYHFH/
-         xoGSSqsLICalYEtOy1KLgFU1ntvWQmFXhj5xKHBPCJlYvMQg0OT0LqWkZmEpF9t2w0eZ
-         +U0A==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :message-id:date:thread-index:thread-topic:subject:to:from;
+        bh=eZF71I3X7PXe6VbVOT6+g3/pXWSJCx+8ke1iUz9tOeg=;
+        b=iwmranTlTlLk2hSRAxinCPU3fMXfLAC8uXoMs2UZLIUsswd8VHAzbMqu637ZOO/BNr
+         hY5AhTqUPwE/NOrLZtuEp+F4hmz11Im5hmJdDAz6La+EeEPoaEzTeID45Taz69gAWGlb
+         IaUzDBmabIUVjSdSl904OdOJ53qEXu6IvWE67ZGNP8MK69ddQVP/X2+vDxVBb50fl6RX
+         J9HqDvQ04iHeja75uyJmKP5tD6jtTEF4COtoSHp2kEVfC6pC6VSlwP8XWcJMwRJyDuq7
+         FEDJOcD4BvFQou3Urh24AnBiz0Di2P4zqhprJIcw0KKkMYJRElksJNAyDR3lcU+Iyn9n
+         ek3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="K/WNcTQ4";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u9si1758289ybu.422.2020.06.01.03.26.12
+        by mx.google.com with ESMTPS id b3si426560uaj.24.2020.06.01.08.04.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jun 2020 03:26:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 01 Jun 2020 08:04:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="K/WNcTQ4";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36978 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40248 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jfhdy-0005dm-38
-	for alex.bennee@linaro.org; Mon, 01 Jun 2020 06:26:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36610)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jflzl-0003y9-9H
+	for alex.bennee@linaro.org; Mon, 01 Jun 2020 11:04:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42898)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jfhZq-0000XO-RN
- for qemu-devel@nongnu.org; Mon, 01 Jun 2020 06:21:54 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:30267
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jfhZq-00008D-48
- for qemu-devel@nongnu.org; Mon, 01 Jun 2020 06:21:54 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591006913;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HTSaCdeUAu1HcnT2Agf6LlwsvyK0ifJSU70lffYSgu4=;
- b=K/WNcTQ4jfHFGwJ6WgJWnmn3R28OFvIf5hMyYtq5E8zYdyjcdk/hITi1ymaLFIMEblY20w
- HfqziDOU6KesT4oNXy/dUOhSqvb5Q580TZI56UAcC+TD6K53+1jb8KeiMgUyvjoAbieNLH
- 8YpRR/vxVMu8U5dlA1YWLnaiCv0s3f0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-398-_YcLJhhcMi2jzPNFQbz81Q-1; Mon, 01 Jun 2020 06:21:51 -0400
-X-MC-Unique: _YcLJhhcMi2jzPNFQbz81Q-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 68179107ACCD;
- Mon,  1 Jun 2020 10:21:50 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-113-56.ams2.redhat.com [10.36.113.56])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 624E9D01F6;
- Mon,  1 Jun 2020 10:21:47 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
-Subject: [RFC 4/6] tests: tpm-emu: Remove assert on TPM2_ST_NO_SESSIONS
-Date: Mon,  1 Jun 2020 12:21:11 +0200
-Message-Id: <20200601102113.1207-5-eric.auger@redhat.com>
-In-Reply-To: <20200601102113.1207-1-eric.auger@redhat.com>
-References: <20200601102113.1207-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
+ id 1jflzc-0003vT-Bo; Mon, 01 Jun 2020 11:04:48 -0400
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2101 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
+ id 1jflzb-0003GK-3J; Mon, 01 Jun 2020 11:04:47 -0400
+Received: from lhreml707-chm.china.huawei.com (unknown [172.18.7.107])
+ by Forcepoint Email with ESMTP id 41EB44215281041623E2;
+ Mon,  1 Jun 2020 16:04:34 +0100 (IST)
+Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
+ lhreml707-chm.china.huawei.com (10.201.108.56) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1913.5; Mon, 1 Jun 2020 16:04:33 +0100
+Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
+ lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1913.007; 
+ Mon, 1 Jun 2020 16:04:33 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>
+Subject: [Question] Regarding PMU initialization within the QEMU for ARM VCPUs
+Thread-Topic: [Question] Regarding PMU initialization within the QEMU for ARM
+ VCPUs
+Thread-Index: AdY3+/mIYt1+TQdDQmymnxAa7PkUWw==
+Date: Mon, 1 Jun 2020 15:04:33 +0000
+Message-ID: <b2e401cd17fe49d792d09b31bd726e35@huawei.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.47.30.0]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/01 05:58:00
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.76.210;
+ envelope-from=salil.mehta@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/01 11:04:34
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
- ardb@kernel.org, philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bOVVfEOf4hq2
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Igor Mammedov <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3xfFcZ6GK7Ch
 
-While writing tests for checking the content of TPM2 and DSDT
-along with TPM-TIS instantiation I attempted to reuse the
-framework used for TPM-TIS tests. However While dumping the
-ACPI tables I get an assert on TPM2_ST_NO_SESSIONS. My assumption
-is maybe the other tests did not execute long enough to encounter
-this. So I tentatively propose to remove the assert as it
-does not seem to break other tests and enable the new ones.
+Hello,
+I could see below within function fdt_add_pmu_nodes() part of
+hw/arm/virt.c during virt machine initialization time:
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- tests/qtest/tpm-emu.c | 1 -
- 1 file changed, 1 deletion(-)
+Observation:
+In below function, support of PMU feature is being checked for
+each vcpu and if the PMU is found part of the features then PMU
+is initialized with in the host/KVM. But if there is even one
+vcpu which is found to not support the PMU then loop is exited
+and PMU is not initialized for the rest of the vcpus as well.
 
-diff --git a/tests/qtest/tpm-emu.c b/tests/qtest/tpm-emu.c
-index c43ac4aef8..298d0eec74 100644
---- a/tests/qtest/tpm-emu.c
-+++ b/tests/qtest/tpm-emu.c
-@@ -49,7 +49,6 @@ static void *tpm_emu_tpm_thread(void *data)
-         s->tpm_msg->tag = be16_to_cpu(s->tpm_msg->tag);
-         s->tpm_msg->len = be32_to_cpu(s->tpm_msg->len);
-         g_assert_cmpint(s->tpm_msg->len, >=, minhlen);
--        g_assert_cmpint(s->tpm_msg->tag, ==, TPM2_ST_NO_SESSIONS);
- 
-         s->tpm_msg = g_realloc(s->tpm_msg, s->tpm_msg->len);
-         qio_channel_read(ioc, (char *)&s->tpm_msg->code,
--- 
-2.20.1
+static void fdt_add_pmu_nodes(const VirtMachineState *vms)
+{
+    CPUState *cpu;
+    ARMCPU *armcpu;
+    uint32_t irqflags =3D GIC_FDT_IRQ_FLAGS_LEVEL_HI;
+
+    CPU_FOREACH(cpu) {
+        armcpu =3D ARM_CPU(cpu);
+        if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+            return; ------> Here, loop exits & function returns
+        }
+        if (kvm_enabled()) {
+            if (kvm_irqchip_in_kernel()) {
+                kvm_arm_pmu_set_irq(cpu, PPI(VIRTUAL_PMU_IRQ));
+            }
+            kvm_arm_pmu_init(cpu);
+        }
+    }
+
+    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
+        irqflags =3D deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
+                             GIC_FDT_IRQ_PPI_CPU_WIDTH,
+                             (1 << vms->smp_cpus) - 1);
+    }
+
+    armcpu =3D ARM_CPU(qemu_get_cpu(0));
+    qemu_fdt_add_subnode(vms->fdt, "/pmu");
+    if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
+        const char compat[] =3D "arm,armv8-pmuv3";
+        qemu_fdt_setprop(vms->fdt, "/pmu", "compatible",
+                         compat, sizeof(compat));
+        qemu_fdt_setprop_cells(vms->fdt, "/pmu", "interrupts",
+                               GIC_FDT_IRQ_TYPE_PPI, VIRTUAL_PMU_IRQ, irqfl=
+ags);
+    }
+}
+
+Questions:
+Q1. Not sure what is the logic of the premature exit and not
+    continuing with further checks and initialization of other
+    VCPU PMUs?
+Q2. Does it even makes sense to have PMUs initialized for some
+    vcpus and not for others unless we have heterogeneous system?=20
+Q3. Also, there is a per virt machine knob of vcc->no_pmu.
+    This is something which user could specify at the init time
+    and perhaps only once but we don't use it for ARM. Perhaps
+    should have been used even before entering this function
+    to enable or disable the support as per user config?
+Q4. This function  fdt_* looks to be wrongly named. The info
+    being initialized here shall be used even when ACPI is
+    being used. Initialization part and FDT info looked
+    mixed up here if I am right?
+
+
+Best regards
+Salil
+
 

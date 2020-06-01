@@ -1,109 +1,108 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp3546855lfc;
-        Mon, 1 Jun 2020 16:38:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzfeYhyZ9beJTi/fdWNoV/iRCqU2yR/zAC5JhHAXdBWuUpArzUaqmeSWIejw8XKMOZ03hTW
-X-Received: by 2002:a25:cac7:: with SMTP id a190mr18306056ybg.223.1591054712780;
-        Mon, 01 Jun 2020 16:38:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591054712; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp3546999lfc;
+        Mon, 1 Jun 2020 16:38:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyezMFNnC/4Ixp+vidu1ivk+d8JTlm9keApjQJhwxzkuOVqjXQ4zlPpzpcOPuZcbhgNJt0w
+X-Received: by 2002:a25:6c6:: with SMTP id 189mr26914710ybg.375.1591054727596;
+        Mon, 01 Jun 2020 16:38:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591054727; cv=none;
         d=google.com; s=arc-20160816;
-        b=OCYqKQspU6aLjVDZPuMt5fil//ZDneFFJlCZ8zyu+IsmJfUEISDOfB39QrM8LOe5Wz
-         2yY+zEba1mol9XEbhGCwOlwsjIiKlM1lng40Jl2AdiP7un//uhoexrvEx29NSLmmjOns
-         otjh+dYCK4lxisMs4ggsjzxa6VmwNT8KzBN1XcVII40/G8BEm8Bmm4Xa1O/ah3SSY7MA
-         jWBAkVJl1bTsxk7r9s/NNS9GpLbJVf1XQ8iCBW2mccQGPswtnFlGvooDvS8lEBqskXXK
-         pJoJ3aOZDDpP+SG6vKXUNm7yF49X5Gz60Wwg6Jrs0fyW4hQDB+B9Iz97UOsLPwp4uqab
-         alBQ==
+        b=GinD54W4B82+GkXavD+e7EGhgMZDhgtsNmbdssc6dDWf6ZgDH3cjFOM9ywJhr/K5t4
+         uX4UZH4aqS+ysNNmQjYYDjtpdGEDbsOjtt1w3gNFyl5Gbj4ID/nmx2iyBVirUAh0sIVy
+         I2TJ/CFBsg6sLETseyRCB14T9gFxo9kly0ljptk+k0uo9xWbqiQ5j/SutnZtd809Qj74
+         7kIrfko0Oj9+3egpOJdsZbsyBMXX7x6110QueNuQkRiIiSxf4F19zd6JBHyEmAwBaM4a
+         b11Gn0/89lwj/t65n3lQvxDk+68vk47OjxGesiatMPNWntv+FP6OqjgLC62vpJrFt2Kf
+         +6Xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=HfFhYalJY0owExcssF2oPatU+OO5rT0/qJC/uP661lE=;
-        b=issH5w2T7TNf44hjhhEWFUMzEQTdE2Nd6XKx5jzNfKTe3Pk4b1TcdD2CjWxdxklgpt
-         xSLTSUV+SMMqQC7Pn8EzphvDg0w6wknYKuYI3kfDtrETmj2eWq40kWIAIRU3uoiD9adO
-         mo1LMFeNxFlVCig2K1IDn+HK37xedm3qxqYbchqSBOvFjIkgMkQKjiQazDu7G3Rj9bn1
-         1D4LR3vlkPtzUgXGmcWSKv8jHs3koAaAM1k8eTvPJPD0jtuCM6QJ8NhIe1AakrMLhyTh
-         VQD6/UKwPMD+aBhQbSHOSdI/mYMQOvEdEl17UxYG/vDXV0VihvHx5q115hjfhnC8axXk
-         nEXQ==
+        bh=hGrlH3PqgBr3ZkLXs0ICSwS5m6e98ZxaoB6gTALk4to=;
+        b=WwCo2WBTblQPR6h6gX5jLcWbrQRKybkqYNf5V/+bDuGUisHTNcLQfoQlt8oXL+PdMp
+         OLsQy6m68t8UpTT9kY6AAHhYHBoGV7CHK99kLmqTu1bgk5APWz00mAx2U/jmD9FTyhh7
+         XixevS2ScGgBJogCiGjkvD5+x5CQc2Nme3up+FDwsfpGAXDXyTdlYxOiiq0HIt7tlNQH
+         v1kVuWOlm2eB5yS1U8Vj4uTqPdT4PBzxVkuD7XyafkINlN+VXjQCyAqIwc4Mu5QYBCcV
+         5c50EwlTqYyufz1cZEQ12ysNUDrE8EEzSuoHsBUPWbROWRNHOiwpWH44q/pWxS5Mnv8h
+         FVgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=D6RFiyd3;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GFWJNcIJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e4si666293ybo.213.2020.06.01.16.38.32
+        by mx.google.com with ESMTPS id r65si791312ybc.379.2020.06.01.16.38.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jun 2020 16:38:32 -0700 (PDT)
+        Mon, 01 Jun 2020 16:38:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=D6RFiyd3;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GFWJNcIJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41732 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42402 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jfu0m-0003cm-4I
-	for alex.bennee@linaro.org; Mon, 01 Jun 2020 19:38:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48454)
+	id 1jfu10-0003vD-OZ
+	for alex.bennee@linaro.org; Mon, 01 Jun 2020 19:38:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jfu0G-0003ZI-DP
- for qemu-arm@nongnu.org; Mon, 01 Jun 2020 19:38:00 -0400
-Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:52859)
+ id 1jftyP-0000wT-KR
+ for qemu-arm@nongnu.org; Mon, 01 Jun 2020 19:36:06 -0400
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:39208)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jfu0F-0006hJ-6t
- for qemu-arm@nongnu.org; Mon, 01 Jun 2020 19:37:59 -0400
-Received: by mail-pj1-x1044.google.com with SMTP id k2so495425pjs.2
- for <qemu-arm@nongnu.org>; Mon, 01 Jun 2020 16:37:58 -0700 (PDT)
+ id 1jftyM-0004vY-Sh
+ for qemu-arm@nongnu.org; Mon, 01 Jun 2020 19:36:04 -0400
+Received: by mail-pf1-x441.google.com with SMTP id d66so4169051pfd.6
+ for <qemu-arm@nongnu.org>; Mon, 01 Jun 2020 16:36:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=HfFhYalJY0owExcssF2oPatU+OO5rT0/qJC/uP661lE=;
- b=D6RFiyd3vhs4PAjso9chbZyN90KGj+KGNss4NJQQ8ZtfXqYr8rob/58LqdkivyQ18S
- l8MM5DCaRgDBwmpNMqKrdYLfNRH4UDuLUbWD+FrxdZlCs7oRa7NWFLsPTWt+x02Cg+Y8
- cq/LBMagSbGn+1O9fmyA2upRrb1DRGWB3KkOBS4QZLb8bwrISwNs2qMqtQ5CMDZRh+fI
- HSymYViN4Vz251sbBkoz7+QKOmlsXmmdPwlsLYqWFEzzYkaFl1BQKctLNlp4pOMzWc6H
- lAQS+t6tOCAJf70J2cbezgmakkny+l09OEdidLQyiADzbfoocJWYEiW1gmFcQPbIpryA
- 8FcQ==
+ bh=hGrlH3PqgBr3ZkLXs0ICSwS5m6e98ZxaoB6gTALk4to=;
+ b=GFWJNcIJwd07F0D6M4IVLW6PM8NwXWcTh05r+2LsqCuNKmw3KcaiHOLhKJcdunMpKy
+ k8C7roaMyHD4kAFgeLh1abx6yLpKVPoLQr+e1sZVtY3Aw9W8WkhIiKz6w76YB+JqcH4P
+ MxkAomMSNK8vmd+4Jxt+xrrsCTPQEsE8onWo67228m4xttiom20ukivbUAHX8Q8JUeWg
+ 0S/zSvXhSxLPN+S8RUH60vBO3/IgfMPExKMPz0QsEnIpgApVtllcayn9Qb0l9VfAtI6h
+ +YQXQOC2rlmxeKBLJRIZWtdy0au/+c1OsjwAQZ0kpGZpn/9flGgboP2H4IxvkCRz+1fm
+ FVJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=HfFhYalJY0owExcssF2oPatU+OO5rT0/qJC/uP661lE=;
- b=MijYRcTcf1rgGyzNYcRVf4PkiS4giJTStvDvXiYPNvpWsiLYrX0ZOl9rnXw/fVx3qP
- U3hODGINBudLTaNXg6rAMdtKkM+BU+PIeLQ/CxF2ixGlUozZUmzyQ/ZxwJ+wr+fFHubC
- fdAb6FnyrKujDsrSu66+OyjUSoZSXJ3dI8jN77BZvbc8TFAErd25HhSYSnj+hf54nHUe
- frYFlsaa2IMubcMhs7JfVUd57yO/k6L6HYwySoKCajbPob4BuKOeXP7+oFoDbzZ/2Jqd
- 9Is41M8IMu6EsDG0E6PQ9T9BfXnOmGD9uW66WQKPJMUvj0EwhCYacKj+QjS+CRwY5TAG
- mLqw==
-X-Gm-Message-State: AOAM530eODRbJjcZtpRQrdV+XlL2rNuCeMF1P3Y+oRSN9BcsiOSjF7+N
- 6uMtAm5XETh4Ml+osnPUpkUDaQ==
-X-Received: by 2002:a17:902:bf43:: with SMTP id
- u3mr21921053pls.240.1591054677830; 
- Mon, 01 Jun 2020 16:37:57 -0700 (PDT)
+ bh=hGrlH3PqgBr3ZkLXs0ICSwS5m6e98ZxaoB6gTALk4to=;
+ b=DEPxMx4BU7L9TMOmkhdotGtM6bPzQXJg09yToAHsgzcuoZt9GuFjVn+QclEblz7jXv
+ 30RAQIe3nI6vsXFSUyeVTETHJY8soNlais0lY78CwQkxxOvj61Oh9tHkQ0Bu9/XB2J2c
+ gmBbpr+zHMxdeS5k9Zk4TvuODwV7Mda9g8TapjhQFSfSWQ1oOukhML3FiiLaQJSEIWTe
+ G4EOPxUTnMa0LnwvUKPHSYUw00rXsKbRu2MKNalP+IGOsu9MnF8AgldNIIuHzyQyhIVi
+ Oa4Cl0l3wW0biZwcMFcmJ2F5+iqujwtsYU/viODGqGvD5oRiyHk39dLF/X6MYELXwyt6
+ 4JWw==
+X-Gm-Message-State: AOAM532rYP2Tw5P7fesQjJ1gVfnhZFwb29hywE6LZhb3Ci6fKT4gHS5y
+ y2QPgn0kzltWWn3goG647qFjkw==
+X-Received: by 2002:a62:ee07:: with SMTP id e7mr22044574pfi.42.1591054561486; 
+ Mon, 01 Jun 2020 16:36:01 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id h13sm444790pfk.25.2020.06.01.16.37.56
+ by smtp.gmail.com with ESMTPSA id m14sm445894pgn.83.2020.06.01.16.36.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Jun 2020 16:37:57 -0700 (PDT)
-Subject: Re: [PATCH v2 8/8] target/i386/cpu: Use the IEC binary prefix
- definitions
+ Mon, 01 Jun 2020 16:36:00 -0700 (PDT)
+Subject: Re: [PATCH v2 3/8] hw/pci/pci_bridge: Correct pci_bridge_io memory
+ region size
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200601142930.29408-1-f4bug@amsat.org>
- <20200601142930.29408-9-f4bug@amsat.org>
+ <20200601142930.29408-4-f4bug@amsat.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <fc1a89c0-c631-505d-f901-6a7821c74c2b@linaro.org>
-Date: Mon, 1 Jun 2020 16:37:54 -0700
+Message-ID: <35f77178-dc79-3b4a-7562-9bc37fad9d9b@linaro.org>
+Date: Mon, 1 Jun 2020 16:35:58 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200601142930.29408-9-f4bug@amsat.org>
+In-Reply-To: <20200601142930.29408-4-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1044;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1044.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -138,16 +137,38 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cHAd0jUruPnK
+X-TUID: DmhWGZeo7h+7
 
 On 6/1/20 7:29 AM, Philippe Mathieu-Daudé wrote:
-> IEC binary prefixes ease code review: the unit is explicit.
+> memory_region_set_size() handle the 16 Exabytes limit by
+> special-casing the UINT64_MAX value. This is not a problem
+> for the 32-bit maximum, 4 GiB.
+> By using the UINT32_MAX value, the pci_bridge_io MemoryRegion
+> ends up missing 1 byte:
+> 
+>   (qemu) info mtree
+>   memory-region: pci_bridge_io
+>     0000000000000000-00000000fffffffe (prio 0, i/o): pci_bridge_io
+>       0000000000000060-0000000000000060 (prio 0, i/o): i8042-data
+>       0000000000000064-0000000000000064 (prio 0, i/o): i8042-cmd
+>       00000000000001ce-00000000000001d1 (prio 0, i/o): vbe
+>       0000000000000378-000000000000037f (prio 0, i/o): parallel
+>       00000000000003b4-00000000000003b5 (prio 0, i/o): vga
+>       ...
+> 
+> Fix by using the correct value. We now have:
+> 
+>   memory-region: pci_bridge_io
+>     0000000000000000-00000000ffffffff (prio 0, i/o): pci_bridge_io
+>       0000000000000060-0000000000000060 (prio 0, i/o): i8042-data
+>       0000000000000064-0000000000000064 (prio 0, i/o): i8042-cmd
+>       ...
 > 
 > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  target/i386/cpu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/pci/pci_bridge.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

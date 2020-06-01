@@ -1,177 +1,171 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3009905lfm;
-        Mon, 22 Jun 2020 02:29:43 -0700 (PDT)
-X-Received: by 2002:a1c:4086:: with SMTP id n128mr11456438wma.118.1592818183774;
-        Mon, 22 Jun 2020 02:29:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592818183; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2965053lfc;
+        Mon, 1 Jun 2020 03:21:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxC9yJtpAQIt20Q2k4hok49s0VNx7Z7X7Vq+X5CngDmkyG/ru6zbOc+YGb0GxJXDsPINQih
+X-Received: by 2002:a5b:843:: with SMTP id v3mr5716548ybq.106.1591006901295;
+        Mon, 01 Jun 2020 03:21:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591006901; cv=none;
         d=google.com; s=arc-20160816;
-        b=nUach5JtXREKEK6LAFEI2LiDuLDIwcRWtYZXr3d7ZliqS3A+lbvcjfmmNYoE+H3Org
-         RTGXRCD/6ecCOjqlQm+lmQh4pb77S0r8iT6M1W7IWOK1wOssCKisWcyCQgfEFYUFNB5U
-         I7mTBB77AO4z52u7Q6E3cewLbhpzyb7uhWx5fPG3naDmhBJzdLRsP3XnRevFRtVy7oXf
-         2wkgG0AI0S3TLwROJhooHutZBEmiOXhjGL6XUR/US9Urel2Xv0KpI9SJRh7VWZllQlUs
-         XbYhHbqI0indqBMWQLgTmGmKl919ov7hinEnYw+SZuiwmeNPIMJsBjlbITiDxHFPtR/D
-         weQg==
+        b=GH9gN3CxkfmZnqlhBjoD40jCbulkM9VMxeeSVZNAMpzxlePaJT3c7Oj1X6UxMko5vl
+         6f8pKtrT5+PL3QkqTY7ThF0r2QETGof8WDzn7TmHhQ+pKjaKhsek+XRXaP3ib+3hM2xG
+         rn+RJCoMKWten7Mdnq5RytjyyzcIxdJK89NOQIWzVJ8H3QaNqjnLXhEPVM05CRvHOceA
+         Gb0INja5/iDKNbwt7kZhQnXZQc93EA+BDxufODohU7CuTgQO8fZMN88Lmfd/Iia586pY
+         3BL7XgD1NngNdQ2gu4qbNmc7A0DuopL2GKCg/IViHutwGe8MBaH2XOJv0LxvR3vWKoun
+         BV4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
-         :dkim-signature;
-        bh=Ca6XJxPThXv+9bzwTR0Smz2z2ccwVBiqvYCA5LXuO5g=;
-        b=R2J4FVfd4TUSDbqeJD+JPX6xAimslg0M4nXa/zRmazSKluWpvc3TCd33TUfhcQI/nn
-         GGsK72xXdgvkH7K0y4t4rT1kP8IhEu/08TbdA5d6tSSvZkcJN1oUuQilZ7AfFEWwCbIX
-         bDMMa75xLh6cwjXqD/0xhSFthA/DO3m6QUDVzvIDNJoKGDX0a2/myfv0Ev2LWmoEuRm5
-         tyRoMWNcTL56LtSIduRAn/q9tIwaojKNyCBjOhRR7lvRHA4tj7BVyYnxtPlpxj2eqLoo
-         d+b+LyrVII97t5CiOYEoDDl1s/fKbrTafoUv2mA+yYckhottQuKxdA8tlHXoliM8dnS7
-         zEsg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=gU1OYSS8mgIP4+hlOMyKVmni/okNWAIYtzpnEPgWyIE=;
+        b=pM91kPp5zuCBwZfKcHyPQGsJ2banRlwhw0zMyJN1Y/lAZUVnERFS7pebqmrM63xXJ3
+         ZLdGu1ld6bamdtrlDXW/QLPt3aSWjxXEparAa0ecjMK+szsvd8UKOfg2KI/3o4omLc3j
+         H6aBmSuFepdYgDlPH9skH7o9f9KD6rYXUxSWsQvG6mIdq1IBVZxyf1Wp6mjxvkOrH1FX
+         /HBEQYNDuRGr4BoYZ4NcBRGFYifiArSJlNe/Je29qKW6N/m30xn+Whs+rjOq2WwbsWXE
+         iPaT+ylpPy+YEv8AwWeTuIxEjh8qf22kM7wC1pYeODfij8eG1NQOrtJ/aM9rcESkuXIS
+         Npeg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XHd1GroC;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id y24sor1488307wmj.1.2020.06.22.02.29.43
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="d8k/p8Xj";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b204si9159625ybg.181.2020.06.01.03.21.41
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 22 Jun 2020 02:29:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Jun 2020 03:21:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XHd1GroC;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=Ca6XJxPThXv+9bzwTR0Smz2z2ccwVBiqvYCA5LXuO5g=;
-        b=XHd1GroCvsPFT47grE71rL1EQTapy9qBfX5uuDm1HSZfNguTKNaUNuuDCoGlCio7ac
-         A5RYrW0HDTfI3zv0YQUY5/BhacYtcVyVtph4JjvbxzneIKUayQa0Zktrf4tiTNO1TlzP
-         /fgXK6MoN6rKI6MlPoTBk+3VFXIdrFNMVIk1gi3IZF72zCTwHkZO9EEhOfcu8+a1V0l6
-         5xKw/Kw5woAnXatMExnrRIQbqzNR2cquryX3mV2HoeF2ic3BUA+DRzKxvG65MF15tGZ5
-         XqayIV2AnJfkAMlD393GPNpOjYtA3pDHCJARGC80xhNDmAGD9WL3r62T3N08EBfsHLOQ
-         XMzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=Ca6XJxPThXv+9bzwTR0Smz2z2ccwVBiqvYCA5LXuO5g=;
-        b=OYRGj365rIo5cGSfA0BegsepmTyObeGYHMD5sSpjqgXPCGIsucfFpGg6TIsxiPqRkM
-         yLPvtjg4NZ9jgKSpDecaII+2XgXjCIdHf3Eh7x6ffDwV0jPYv4WI2ikJlWRCZl46P4tH
-         s0FQ9M8f6Odt/XR8XGIbcwlJ/bxJll7f1xwYlW6F4LSDh7C4fDHlRI5zMn3JUSMQ0+mP
-         gwgeRU3yrcXK5+hvoGM/MvWcfhOou+IAY72EJF6/tO0nQI/jgHgqsI+4652kDhYs0d3h
-         89a5kMun2CexFqRoqP5hzcwQwojYxvq9Srplf6YouNIZpP+PFNOhJ/OzdKHgOW/UL2lB
-         HKcw==
-X-Gm-Message-State: AOAM531S5rNBzOGqbnqIltHXI9h6lZNKBA4r8MCBQEZqIaXKWiIxASgs
-	+QcNyHjb0XExyz+5E/dLvSU=
-X-Google-Smtp-Source: ABdhPJy2dOGhMqPpvXMM1Ag9INNbe57fDkhac6d24pi+WWOVCM2iKIFRmg9k7Y5aRsMmZ5Hgff7ZLA==
-X-Received: by 2002:a7b:cb0f:: with SMTP id u15mr14068717wmj.34.1592818183492;
-        Mon, 22 Jun 2020 02:29:43 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.39] (1.red-83-51-162.dynamicip.rima-tde.net. [83.51.162.1])
-        by smtp.gmail.com with ESMTPSA id u10sm3862140wml.29.2020.06.22.02.29.42
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 22 Jun 2020 02:29:42 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: Role of qemu-arm
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- vincent Dupaquis <v.dupaquis@trusted-objects.com>
-Cc: qemu-arm@nongnu.org
-References: <20200619170324.12093-1-peter.maydell@linaro.org>
- <879e933c-a65c-3706-afa1-5ede1acb062c@ispras.ru>
- <e0fc64ab-b36e-99d1-90ea-8877c00f8c0f@trusted-objects.com>
- <87o8pba35w.fsf@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <7e057989-56b8-195d-247d-9ab0522ff23a@amsat.org>
-Date: Mon, 22 Jun 2020 11:29:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="d8k/p8Xj";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51750 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jfhZc-0008MW-Kx
+	for alex.bennee@linaro.org; Mon, 01 Jun 2020 06:21:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36566)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jfhZU-0008M1-VD
+ for qemu-arm@nongnu.org; Mon, 01 Jun 2020 06:21:32 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:43940
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jfhZT-00006n-Id
+ for qemu-arm@nongnu.org; Mon, 01 Jun 2020 06:21:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591006889;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=gU1OYSS8mgIP4+hlOMyKVmni/okNWAIYtzpnEPgWyIE=;
+ b=d8k/p8Xjnxjt2T3/DbhyJ/vgNymxar90gkZaHDCfNfygzQpvQMogNkYrEVzwQPIi8xUwgL
+ hcIWbijqKIhVYz4uusHTbBdD6WOqkx6uq6f+jQUqBOx1T3fqoEsCVARUPg2BNcx0OIS9sw
+ Fv7ls3ECDD4HuZlKC/y0/d2DOrg7Oqo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-409-uUOWtAjdOoqVJf6ZgzFwSw-1; Mon, 01 Jun 2020 06:21:28 -0400
+X-MC-Unique: uUOWtAjdOoqVJf6ZgzFwSw-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C88D7107ACCD;
+ Mon,  1 Jun 2020 10:21:26 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-113-56.ams2.redhat.com [10.36.113.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CFCEFD01E1;
+ Mon,  1 Jun 2020 10:21:15 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
+Subject: [RFC 0/6] TPM-TIS bios-tables-test
+Date: Mon,  1 Jun 2020 12:21:07 +0200
+Message-Id: <20200601102113.1207-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <87o8pba35w.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-X-TUID: TnAi9Je1zs5w
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/01 02:05:53
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
+ ardb@kernel.org, philmd@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Aak8e9mp7Ei7
 
-Hi Vincent,
+This series adds the test of the TPM2 and DSDT tables when the
+TPM-TIS device gets instantiated.
 
-On 6/22/20 10:57 AM, Alex Bennée wrote:
-> 
-> vincent Dupaquis <v.dupaquis@trusted-objects.com> writes:
-> 
->> Hello,
->>
->>     I am using qemu for doing simulations of code, and currently find
->> qemu-system-arm convienient.
->>
->>     But, I cannot understand how to use qemu-arm. In fact, what I am
->> searching for is a way of simulating only the ARM core, not any
->> peripherals.
+The series also allows to validate changes in the TPM2 table
+generation done in "[PATCH v3 0/4] vTPM/aarch64 ACPI support",
+sent separately.
 
-You can start a machine with only a CPU core using:
+This depends on Stefan's "acpi: tpm: Do not build TCPA table
+for TPM 2".
 
-$ qemu-system-arm -M none -cpu cortex-r5
+This is in RFC state because I am not very familiar with the
+table generation process docommented in bios-tables-test.c.
 
-The core will start running at full speed looping taking
-exception because there is no memory on its bus to fetch
-the code to run:
+I don't know how to get rid of the checkpatch errors:
+"ERROR: Does not appear to be a unified-diff format patch"
 
-$ qemu-system-arm -M none -cpu cortex-r5 -d mmu,int
-PMSA MPU lookup for execute at 0x00000000 mmu_idx 33 -> Hit (prot rwx)
-Taking exception 3 [Prefetch Abort]
-...from EL1 to EL1
-...with ESR 0x21/0x8600003f
-...with IFSR 0x8 IFAR 0x0
-Taking exception 3 [Prefetch Abort]
-...from EL1 to EL1
-...with ESR 0x21/0x8600003f
-...with IFSR 0x8 IFAR 0xc
+Surprisingly, checkpatch argues when void tables are added in
+the same time as bios-tables-test-allowed-diff.h changes.
 
-You can use the '-m <size_mb>' option to add memory (mapped
-at the 0x00000000 address).
+Most importantly, to be able to reuse tpm-emu code, I was forced
+to remove the TPM2_ST_NO_SESSIONS assert. I would be grateful
+if I could get some advises on the best way to address the issue.
 
-You can use the '-S' flag to start QEMU with the cores not
-running.
+Best Regards
 
-Example of use is via gdbstub, filling some instructions in
-memory, set $sp and $pc and singlestep.
+Eric
 
-You can also use the 'loader' device to load a file into
-memory (it can understand ELF/hex format, see
-docs/generic-loader.txt).
+This series can be found at:
+https://github.com/eauger/qemu/tree/v5.0-tpm-acpi-tests-v1
 
-Finally I also recommend you the -semihosting option.
 
-For example you can run an RTOS Fibonacci test displaying
-progress via semihosting calls, by using something like
-(mapping 2MB of DRAM at 0x0):
+Eric Auger (6):
+  test/tpm-emu: include sockets and channel headers in tpm-emu header
+  tests/acpi: Add void tables for Q35/TPM-TIS bios-tables-test
+  tests/acpi: Ignore TPM2.tis and DSDT.tis
+  tests: tpm-emu: Remove assert on TPM2_ST_NO_SESSIONS
+  bios-tables-test: Add Q35/TPM-TIS test
+  bios-tables-test: Generate reference tables for Q35/TPM-TIS
 
-$ qemu-system-arm -M none \
-  -m 2 \
-  -cpu cortex-r5 -d in_asm \
-  -semihosting-config enable=on \
-  -device loader,file=fibonacci.elf
+ tests/qtest/tpm-emu.h          |   3 ++
+ tests/qtest/bios-tables-test.c |  60 +++++++++++++++++++++++++++++++++
+ tests/qtest/tpm-emu.c          |   1 -
+ tests/data/acpi/q35/DSDT.tis   | Bin 0 -> 8468 bytes
+ tests/data/acpi/q35/TPM2.tis   | Bin 0 -> 76 bytes
+ tests/qtest/Makefile.include   |   1 +
+ 6 files changed, 64 insertions(+), 1 deletion(-)
+ create mode 100644 tests/data/acpi/q35/DSDT.tis
+ create mode 100644 tests/data/acpi/q35/TPM2.tis
 
-> 
-> There are two modes:
-> 
->   - system emulation (CPU + board and peripherals)
->   - linux-user (CPU but with a Linux syscall interface)
-> 
->> I can work with qemu-system-arm, and could not find a way
->> to use qemu-arm.
-> 
-> If you are installing via your distros package manager you probably want
-> a package called qemu-user. You can build the only the user-mode
-> packages by issuing --disable-system to the configure script.
-> 
-> The closest thing to being a "pure" just the CPU is probably a
-> standalone usermode binary that uses semihosting calls rather than a
-> libc/syscall interface.
-> 
->>
->>     Would anyone have any pointers to a documentation or a tutorial
->> using this tool ?
->>
->>     Best regards,
->>
->>         Vincent.
-> 
-> 
+-- 
+2.20.1
+

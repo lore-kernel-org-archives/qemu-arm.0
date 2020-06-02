@@ -1,354 +1,254 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp744461lfm;
-        Wed, 17 Jun 2020 09:07:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxMU3sgGbZSv7a119gDjJzNq61Ixh25okI3l0OdUxk/eprg/86UI1sfLYPipEboQ/w3h8Jk
-X-Received: by 2002:ab0:2559:: with SMTP id l25mr6448891uan.143.1592410056472;
-        Wed, 17 Jun 2020 09:07:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592410056; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4153328lfc;
+        Tue, 2 Jun 2020 08:01:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzm7IQNIUBn1O3mYrJ1TLybXbSyYSDh+FVxxJTNbIqz6Gr9aoD1FQZHdw4d5ZivUR4Vy3P+
+X-Received: by 2002:a25:4984:: with SMTP id w126mr45282164yba.20.1591110098612;
+        Tue, 02 Jun 2020 08:01:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591110098; cv=none;
         d=google.com; s=arc-20160816;
-        b=viINCv25bvmxpsnQ5oavZ1EjCsB1TUgmyLNGxkxRXeKXfTw7E9G2QJvW0elp85LKFR
-         7Ql5KTYEzmi/KR5NZDKhfQ9+q0VHUgIPGqxlDVlU0+Ok/QlKAHjj/3LBIkUShEIbE5id
-         2cPftZvaFHeB+hQRJleVf++ADQOjf8YQjp8nUvoRPDXOUkxhPw4HJh2Z+t7bPopEZmSE
-         BWMKo1a1aOXDLK8Uhs5QVXCzOUv0omcZUnb0chDLCIes8mI0T6YDuMMnvs3VSX3+sMzg
-         u0+w3uF2pwTUxj9gWLDe15MwzBosaRt0eG+oSxE1n4xh7+n3DDoK+XsZX9i5wHhhcMgA
-         NizQ==
+        b=tMuqJV4tJJsjdJGSxV7NXUqVwjCf08z9eV6TFH8wlk/lflcs+nAmVkw9LPJCvBGSu/
+         MT98ZKG1XmwCMZb7zpGbiK8Rcap0RAc85VkMtedc+WH7hW+2MsqIRHtLXTW7NnOzuhxe
+         cv4GLEIosjC+RswCiY9/nscKU/3F3AOaSeXTh2knudB5mpmAakre/qKCIORoAGbLTPd2
+         /EQ0DNJDPC1jt/eg1mDB3xWq2+QSIKrIzwjmMgEGrSvCp252AQ1bWX55pdswZzYLtMSz
+         EDGLzwQLEKaw/TEhGjyBR5tUghEprOs34a6f0tdoEz64hHXQXeGwBj5O/M2VCUArk+T1
+         XGVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=t8pYdZFhxG6qs3t9heIGKv4+TjKgCOMKFxFE6HSAUvw=;
-        b=lEkfdOrZBcgCRUQkqBiuus+QogGZ2qPoeknu234MftMnrVozXqHsh6YuY+uLykdlME
-         nHDXuKqXPXm1ek0SFXeS5jkxRPPXVyMPKO+6L/iYK85ZAE3B76T+YJdaModjNuKPG0yj
-         +7z2LXzTrZygNJU5g7X/+/Z9uOH19Afm+peCe9ulbLUZ2rWcjT8nM3zgk7R4lPZ/6xuf
-         ivPYbkRceurDVwKYcs7Eg32NFDVJRFVaZh29gr/hzMWZ0Fo8A388XOc7nXkKQ8y9zxWM
-         pZnsyL7ne0p62RX4tvKAXG7LNiTnStsZYu5B8nAWkyc2KqB/3eXrnnIHs7bL5MskWmQS
-         Vs9g==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=LP4IaES+Cgr4zDPbJ6yM8Eq9WPEoFGx8egQ6nV/yoXk=;
+        b=f2J/ObtF+jlipmpoFDvjR6velS/nDtC55UuqoENvhFs2am+LVfYQc7zrlIbEn/HQSY
+         LkrqoiaObnEkNkeHRHrAOreraMcfHJyhqHuPHWf2pvBmV8eUwXiq8wR9WoLB8b4f8EHq
+         W2s+1gtY8didD2O4oCOp6LzibVCGY3HgSkcUUDpF7XNoHU3LLpdN11salIFPshQ5HRtn
+         PyZAGdHV1jLyg/HDM0K//IKai698MfKRv3lZ+uChrHya+tATyYVF6zz4epFWxUFcTEZd
+         6frYz9xZUSr1ZPf/SrJfuzKtnWV6lf0DDooTDVEpAHaTffDAoIlmwhombBMkQ8dxrkY6
+         TpSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tAu5Falp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g16si87296vsa.74.2020.06.17.09.07.36
+        by mx.google.com with ESMTPS id c133si1867354ybb.294.2020.06.02.08.01.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jun 2020 09:07:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Jun 2020 08:01:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35514 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tAu5Falp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:37144 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlab9-0005D1-Mv
-	for alex.bennee@linaro.org; Wed, 17 Jun 2020 12:07:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36172)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jg8Q5-0002JK-VF
+	for alex.bennee@linaro.org; Tue, 02 Jun 2020 11:01:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46312)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jlaaz-00057W-2z
- for qemu-arm@nongnu.org; Wed, 17 Jun 2020 12:07:25 -0400
-Received: from 9.mo179.mail-out.ovh.net ([46.105.76.148]:35059)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jlaau-00082d-LH
- for qemu-arm@nongnu.org; Wed, 17 Jun 2020 12:07:24 -0400
-Received: from player761.ha.ovh.net (unknown [10.110.115.238])
- by mo179.mail-out.ovh.net (Postfix) with ESMTP id 7C93616F618
- for <qemu-arm@nongnu.org>; Wed, 17 Jun 2020 18:07:17 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player761.ha.ovh.net (Postfix) with ESMTPSA id AB1A1137A75BC;
- Wed, 17 Jun 2020 16:07:08 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-106R006e65d12fd-060b-4227-9e75-bb5ee351308c,ABECD89738EEB0C75E5395B338997A57DB3A3EEE)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH v2 09/12] hw/mem: Stubbed out NPCM7xx Memory Controller
- model
-To: Havard Skinnemoen <hskinnemoen@google.com>, peter.maydell@linaro.org,
- joel@jms.id.au
-References: <20200611223016.259837-1-hskinnemoen@google.com>
- <20200611223016.259837-10-hskinnemoen@google.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <262ce675-d4d8-c78f-eee6-cfdeb09862c1@kaod.org>
-Date: Wed, 17 Jun 2020 18:07:07 +0200
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jg8Oj-0001cy-E7; Tue, 02 Jun 2020 11:00:14 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:33061)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jg8Oi-0001Bs-5Q; Tue, 02 Jun 2020 11:00:13 -0400
+Received: by mail-wm1-x344.google.com with SMTP id j198so2442382wmj.0;
+ Tue, 02 Jun 2020 08:00:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=LP4IaES+Cgr4zDPbJ6yM8Eq9WPEoFGx8egQ6nV/yoXk=;
+ b=tAu5Falp0P3uHZrWyfopi3YAxu0joL6vo0bUueuQ2wp/iPCNb1TLIEcPrYlVnyyPk8
+ IERZbCS1F8Ewhy4pznEIZFl0gmcGJqRBTHxFV8np1MG0eayzeYhONvI5Rh6Cw+ZOoO/t
+ Kaz5pAPczlh3GzWTKsNNM3yoMFdpQSem3ZPQqQ6MnComq4YghgD32ytLJGjKuFITJ9qd
+ NzjSMF3LDBZylBTHOyk5czDQohbNUV0Cq5nMleUsmeV++wq+HFAl4gFAfvZc5+YhAkcz
+ L8kCR2M+dVsqHI8+r/TtdTQw/kmAwgor1dmGUdGc46AZOWj1oPhFvgv1rPxdX/zwWApy
+ Ofeg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=LP4IaES+Cgr4zDPbJ6yM8Eq9WPEoFGx8egQ6nV/yoXk=;
+ b=Cvvf1BXm+CBaBekgZKJLEm3a18o1DyFwfQ2sw037NOI7uxD3c+d7HMWU/fApiWpo8i
+ LhdihDIwMUYgs5I0+yY/iOEsxMDr9nJ9QRo04Ms8bTUIwhXt1LX2d48E6GMHxUBaCgxt
+ tq0J9C0rNmGK708P3QZWLm3SLlAN1+fi9JX9AWQicEkBScuRFD9fhNOMFL9SqvxzFClq
+ iEahqSV4kWvsY5CiDHB7TalmvYxIh3k7zlcHA9Uthn3aHGzq/T2XwyhrBExg2X/wVI8o
+ Oi1FeAZjwyxlH4sErrA46a5VJF11On7hRAcON5gVEfX38d32+mQ/n7By+tQRg/VEVBdp
+ 7O+w==
+X-Gm-Message-State: AOAM5334BoZB9McfDb59mcfBPZ9kPw7kg0IEKv7K9J+R9irMh8+8J0IQ
+ tch6Pj1KEqCJEOg0S3p+lvGIUWgw
+X-Received: by 2002:a1c:a5ce:: with SMTP id o197mr4687922wme.85.1591110009946; 
+ Tue, 02 Jun 2020 08:00:09 -0700 (PDT)
+Received: from [192.168.1.43] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id 5sm70629wmz.16.2020.06.02.08.00.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 02 Jun 2020 08:00:09 -0700 (PDT)
+Subject: Re: [PATCH] docs/system: Document Aspeed boards
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20200602135050.593692-1-clg@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <a46437ce-1be4-3c0a-8403-1c279ad8b90b@amsat.org>
+Date: Tue, 2 Jun 2020 17:00:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200611223016.259837-10-hskinnemoen@google.com>
+In-Reply-To: <20200602135050.593692-1-clg@kaod.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 4590575398909938601
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudejvddgleejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefffdvtddugeeifeduuefghfejgfeigeeigeeltedthefgieeiveeuiefhgeefgfenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejiedurdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
-Received-SPF: pass client-ip=46.105.76.148; envelope-from=clg@kaod.org;
- helo=9.mo179.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/17 12:07:17
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kfting@nuvoton.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Avi.Fishman@nuvoton.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 80/VfbTgZO9f
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nXVihjCvgwjl
 
-On 6/12/20 12:30 AM, Havard Skinnemoen wrote:
-> This just implements the bare minimum to cause the boot block to skip
-> memory intialization.
-
-initialization
-
-> 
-> Change-Id: I26fd5f3b2af5d07a24911e7e58789f7b52f78d71
-
-you should drop these tags.
-
-> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
+On 6/2/20 3:50 PM, Cédric Le Goater wrote:
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > ---
->  MAINTAINERS                 |  2 +
->  hw/arm/npcm7xx.c            | 11 +++++
->  hw/mem/Makefile.objs        |  1 +
->  hw/mem/npcm7xx_mc.c         | 83 +++++++++++++++++++++++++++++++++++++
->  include/hw/arm/npcm7xx.h    |  2 +
->  include/hw/mem/npcm7xx_mc.h | 35 ++++++++++++++++
->  6 files changed, 134 insertions(+)
->  create mode 100644 hw/mem/npcm7xx_mc.c
->  create mode 100644 include/hw/mem/npcm7xx_mc.h
+>  docs/system/arm/aspeed.rst | 85 ++++++++++++++++++++++++++++++++++++++
+>  docs/system/target-arm.rst |  1 +
+>  2 files changed, 86 insertions(+)
+>  create mode 100644 docs/system/arm/aspeed.rst
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 9814e7b4c4..9a289366ba 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -727,10 +727,12 @@ M: Tyrone Ting <kfting@nuvoton.com>
->  L: qemu-arm@nongnu.org
->  S: Supported
->  F: hw/arm/npcm7xx*
-> +F: hw/mem/npcm7xx*
->  F: hw/misc/npcm7xx*
->  F: hw/nvram/npcm7xx*
->  F: hw/timer/npcm7xx*
->  F: include/hw/arm/npcm7xx*
-> +F: include/hw/mem/npcm7xx*
->  F: include/hw/misc/npcm7xx*
->  F: include/hw/nvram/npcm7xx*
->  F: include/hw/timer/npcm7xx*
-
-maybe simplify with :
-
-  F: hw/*/npcm7xx*
-  F: include/hw/*/npcm7xx*
-
-> diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-> index f9e3b5842b..54d84bafa1 100644
-> --- a/hw/arm/npcm7xx.c
-> +++ b/hw/arm/npcm7xx.c
-> @@ -46,6 +46,7 @@
->  #define NPCM7XX_CPUP_BA         (0xF03FE000)
->  #define NPCM7XX_GCR_BA          (0xF0800000)
->  #define NPCM7XX_CLK_BA          (0xF0801000)
-> +#define NPCM7XX_MC_BA           (0xF0824000)
->  
->  /* Memory blocks at the end of the address space */
->  #define NPCM7XX_RAM2_BA         (0xFFFD0000)
-> @@ -161,6 +162,8 @@ static void npcm7xx_init(Object *obj)
->                            sizeof(s->key_storage), TYPE_NPCM7XX_KEY_STORAGE);
->      sysbus_init_child_obj(obj, "otp2", OBJECT(&s->fuse_array),
->                            sizeof(s->fuse_array), TYPE_NPCM7XX_FUSE_ARRAY);
-> +    sysbus_init_child_obj(obj, "mc", OBJECT(&s->mc), sizeof(s->mc),
-> +                          TYPE_NPCM7XX_MC);
->  
->      for (i = 0; i < ARRAY_SIZE(s->tim); i++) {
->          sysbus_init_child_obj(obj, "tim[*]", OBJECT(&s->tim[i]),
-> @@ -258,6 +261,14 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
->      sysbus_mmio_map(SYS_BUS_DEVICE(&s->fuse_array), 0, NPCM7XX_OTP2_BA);
->      npcm7xx_init_fuses(s);
->  
-> +    /* Fake Memory Controller (MC) */
-> +    object_property_set_bool(OBJECT(&s->mc), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mc), 0, NPCM7XX_MC_BA);
-> +
->      /* Timer Modules (TIM) */
->      QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_tim_addr) != ARRAY_SIZE(s->tim));
->      for (i = 0; i < ARRAY_SIZE(s->tim); i++) {
-> diff --git a/hw/mem/Makefile.objs b/hw/mem/Makefile.objs
-> index 56345befd0..9a33ef7b35 100644
-> --- a/hw/mem/Makefile.objs
-> +++ b/hw/mem/Makefile.objs
-> @@ -1,3 +1,4 @@
->  common-obj-$(CONFIG_DIMM) += pc-dimm.o
->  common-obj-y += memory-device.o
-> +common-obj-$(CONFIG_NPCM7XX) += npcm7xx_mc.o
->  common-obj-$(CONFIG_NVDIMM) += nvdimm.o
-> diff --git a/hw/mem/npcm7xx_mc.c b/hw/mem/npcm7xx_mc.c
+> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
 > new file mode 100644
-> index 0000000000..03a7fb53dc
+> index 000000000000..45f891eb3cad
 > --- /dev/null
-> +++ b/hw/mem/npcm7xx_mc.c
-> @@ -0,0 +1,83 @@
-> +/*
-> + * Nuvoton NPCM7xx Memory Controller stub
-> + *
-> + * Copyright 2020 Google LLC
-> + *
-> + * This program is free software; you can redistribute it and/or
-> + * modify it under the terms of the GNU General Public License
-> + * version 2 as published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-> + * GNU General Public License for more details.
-> + */
+> +++ b/docs/system/arm/aspeed.rst
+> @@ -0,0 +1,85 @@
+> +Aspeed family boards (``*-bmc``, ``ast2500-evb``, ``ast2600-evb``)
+> +==================================================================
 > +
-> +#include "qemu/osdep.h"
+> +The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
+> +Aspeed evaluation boards. They are based on different releases of the
+> +Aspeed SoC : the AST2400 integrating an ARM926EJ-S CPU (400MHz), the
+> +AST2500 with an ARM1176JZS CPU (800MHz) and more recently the AST2600
+> +with dual cores ARM Cortex A7 CPUs (1.2GHz).
 > +
-> +#include "hw/mem/npcm7xx_mc.h"
-> +#include "qapi/error.h"
-> +#include "qemu/log.h"
-> +#include "qemu/module.h"
-> +#include "qemu/units.h"
+> +The SoC comes with RAM, Gigabit ethernet, USB, SD/MMC, USB, SPI, I2C,
+> +etc.
 > +
-> +#define NPCM7XX_MC_REGS_SIZE (4 * KiB)
+> +AST2400 SoC based machines :
 > +
-> +static uint64_t npcm7xx_mc_read(void *opaque, hwaddr addr, unsigned int size)
-> +{
-> +    /*
-> +     * If bits 8..11 @ offset 0 are not zero, the boot block thinks the memory
-> +     * controller has already been initialized and will skip DDR training.
-> +     */
-> +    if (addr == 0) {
-> +        return 0x100;
-> +    }
+> +- ``palmetto-bmc``         OpenPOWER Palmetto POWER8 BMC
 > +
-> +    qemu_log_mask(LOG_UNIMP, "%s: mostly unimplemented\n", __func__);
+> +AST2500 SoC based machines :
 > +
-> +    return 0;
-> +}
+> +- ``ast2500-evb``          Aspeed AST2500 Evaluation board
+> +- ``romulus-bmc``          OpenPOWER Romulus POWER9 BMC
+> +- ``witherspoon-bmc``      OpenPOWER Witherspoon POWER9 BMC
+> +- ``sonorapass-bmc``       OCP SonoraPass BMC
+> +- ``swift-bmc``            OpenPOWER Swift BMC POWER9
 > +
-> +static void npcm7xx_mc_write(void *opaque, hwaddr addr, uint64_t v,
-> +                             unsigned int size)
-> +{
-> +    qemu_log_mask(LOG_UNIMP, "%s: mostly unimplemented\n", __func__);
-> +}
+> +AST2600 SoC based machines :
 > +
-> +static const MemoryRegionOps npcm7xx_mc_ops = {
-> +    .read = npcm7xx_mc_read,
-> +    .write = npcm7xx_mc_write,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .valid = {
-> +        .min_access_size = 4,
-> +        .max_access_size = 4,
-> +        .unaligned = false,
-> +    },
-> +};
+> +- ``ast2600-evb``          Aspeed AST2600 Evaluation board (Cortex A7)
+> +- ``tacoma-bmc``           OpenPOWER Witherspoon POWER9 AST2600 BMC
 > +
-> +static void npcm7xx_mc_realize(DeviceState *dev, Error **errp)
-> +{
-> +    NPCM7xxMCState *s = NPCM7XX_MC(dev);
+> +Supported devices
+> +-----------------
 > +
-> +    memory_region_init_io(&s->mmio, OBJECT(s), &npcm7xx_mc_ops, s, "regs",
-> +                          NPCM7XX_MC_REGS_SIZE);
-> +    sysbus_init_mmio(&s->parent, &s->mmio);
-> +}
+> + * SMP (for the AST2600 Cortex-A7)
+> + * Interrupt Controller (VIC)
+> + * Timer Controller
+> + * RTC Controller
+> + * I2C Controller
+> + * System Control Unit (SCU)
+> + * SRAM mapping
+> + * X-DMA Controller (basic interface)
+> + * Static Memory Controller (SMC or FMC) - Only SPI Flash support
+> + * SPI Memory Controller
+> + * USB 2.0 Controller
+> + * SD/MMC storage controllers
+> + * SDRAM controller (dummy interface for basic settings and training)
+> + * Watchdog Controller
+> + * GPIO Controller (Master only)
+> + * UART
+> + * Ethernet controllers
 > +
-> +static void npcm7xx_mc_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
 > +
-> +    dc->desc = "NPCM7xx Memory Controller stub";
-> +    dc->realize = npcm7xx_mc_realize;
-> +}
+> +Missing devices
+> +---------------
 > +
-> +static const TypeInfo npcm7xx_mc_types[] = {
-> +    {
-> +        .name = TYPE_NPCM7XX_MC,
-> +        .parent = TYPE_SYS_BUS_DEVICE,
-> +        .instance_size = sizeof(NPCM7xxMCState),
-> +        .class_init = npcm7xx_mc_class_init,
-> +    },
-> +};
-> +DEFINE_TYPES(npcm7xx_mc_types);
-> diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-> index 360cd965a7..8f49f7015c 100644
-> --- a/include/hw/arm/npcm7xx.h
-> +++ b/include/hw/arm/npcm7xx.h
-> @@ -17,6 +17,7 @@
->  
->  #include "hw/boards.h"
->  #include "hw/cpu/a9mpcore.h"
-> +#include "hw/mem/npcm7xx_mc.h"
->  #include "hw/misc/npcm7xx_clk.h"
->  #include "hw/misc/npcm7xx_gcr.h"
->  #include "hw/nvram/npcm7xx_otp.h"
-> @@ -65,6 +66,7 @@ typedef struct NPCM7xxState {
->      NPCM7xxTimerCtrlState tim[3];
->      NPCM7xxOTPState     key_storage;
->      NPCM7xxOTPState     fuse_array;
-> +    NPCM7xxMCState      mc;
->  } NPCM7xxState;
->  
->  #define TYPE_NPCM7XX    "npcm7xx"
-> diff --git a/include/hw/mem/npcm7xx_mc.h b/include/hw/mem/npcm7xx_mc.h
-> new file mode 100644
-> index 0000000000..8781f5c979
-> --- /dev/null
-> +++ b/include/hw/mem/npcm7xx_mc.h
-> @@ -0,0 +1,35 @@
-> +/*
-> + * Nuvoton NPCM7xx Memory Controller stub
-> + *
-> + * Copyright 2020 Google LLC
-> + *
-> + * This program is free software; you can redistribute it and/or
-> + * modify it under the terms of the GNU General Public License
-> + * version 2 as published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-> + * GNU General Public License for more details.
-> + */
-> +#ifndef NPCM7XX_MC_H
-> +#define NPCM7XX_MC_H
-> +
-> +#include "exec/memory.h"
-> +#include "hw/sysbus.h"
-> +
-> +/**
-> + * struct NPCM7xxMCState - Device state for the memory controller.
-> + * @parent: System bus device.
-> + * @mmio: Memory region through which registers are accessed.
-> + */
-> +typedef struct NPCM7xxMCState {
-> +    SysBusDevice parent;
-> +
-> +    MemoryRegion mmio;
-> +} NPCM7xxMCState;
-> +
-> +#define TYPE_NPCM7XX_MC "npcm7xx-mc"
-> +#define NPCM7XX_MC(obj) OBJECT_CHECK(NPCM7xxMCState, (obj), TYPE_NPCM7XX_MC)
-> +
-> +#endif /* NPCM7XX_MC_H */
-> 
+> + * Coprocessor support
+> + * ADC (out of tree implementation)
+> + * PWM and Fan Controller
+> + * LPC Bus Controller
+> + * Slave GPIO Controller
+> + * Super I/O Controller
 
+Is there public datasheet for this?
+
+> + * Hash/Crypto Engine
+> + * PCI-Express 1 Controller
+> + * Graphic Display Controller
+> + * PECI Controller
+> + * MCTP Controller
+> + * Mailbox Controller
+> + * Virtual UART
+
+Uh what is that? :)
+
+> + * eSPI Controller
+> + * I3C Controller
+> +
+> +Boot options
+> +------------
+> +
+> +The Aspeed machines can be started using the -kernel option to load a
+> +Linux kernel or from a firmare image which can be downloaded from the
+> +OpenPOWER jenkins :
+> +
+> +   https://openpower.xyz/
+> +
+> +The image should be attached as an MTD drive. Run :
+> +
+> +.. code-block:: bash
+> +
+> +  $ qemu-system-arm -M romulus-bmc -nic user \
+> +	-drive file=flash-romulus,format=raw,if=mtd -nographic
+> diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+> index dce384cb0e3e..1bd477a2936c 100644
+> --- a/docs/system/target-arm.rst
+> +++ b/docs/system/target-arm.rst
+> @@ -81,6 +81,7 @@ undocumented; you can get a complete list by running
+>     arm/realview
+>     arm/versatile
+>     arm/vexpress
+> +   arm/aspeed
+
+Maybe we should keep this section sorted.
+
+Otherwise:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+>     arm/musicpal
+>     arm/nseries
+>     arm/orangepi
+>

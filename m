@@ -1,174 +1,121 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp3183985lfc;
-        Mon, 1 Jun 2020 08:04:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxbJj789uVIlgZEdVWTz4RQXhSYrv1SIyYglyryfGGEZRx/AvZoyV0XonfWHIyHOHR57VRn
-X-Received: by 2002:a9f:3049:: with SMTP id i9mr2946671uab.113.1591023897960;
-        Mon, 01 Jun 2020 08:04:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591023897; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp3577939lfc;
+        Mon, 1 Jun 2020 17:28:51 -0700 (PDT)
+X-Received: by 2002:aa7:850f:: with SMTP id v15mr23414612pfn.277.1591057731362;
+        Mon, 01 Jun 2020 17:28:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591057731; cv=none;
         d=google.com; s=arc-20160816;
-        b=OhG5un8J5kYcAvjHfLCYs7BjifmKYNSj1YMUfShsc4FnXafZ1cLskoQtQjFiqEg7Pd
-         jlKOZkA9zF3l/gQmQrcBMBjOf8ntxHRttxFkX+toi0ehj2SX8mfvcarjrFMcfAHaAf+V
-         9Vcnc8VRC9rhX7VkZASNFMviSmSGZyWJMJGp4sXmmJ8O/umP8ohmegcv3/VaQJ4xEIFk
-         HEAfyD/HJuJL2C0VBWWqNp9oVvL4ikGB7JIj79CW1rN30BPuwrkiyNFnR6zxnvExVJqj
-         /0kJqc/P61Uv1tRVMnRI9QgvYTNL20MVZ4pdPbaD1qaE8XNkwFkz6P8lTH0C9FGSk4Zf
-         tWvQ==
+        b=HtH1RuuJFCDS/KIeySSLgt6CJdDdvhTyNb9bXA1+U2+SfZXbvdsG/HMQn7C2OxerSf
+         gnRWlb3UauTGmDWyf95xNY31859S+kt2vdrb05cOPxAX9LybK8CYGDg9gtmUA7e2kJLD
+         kzbbTYQCqbUT/N2zxcesChjojHZ87Z/ZyeBuvm1RalCxPSlyBWE3y4j4Y/0GONl4V3sB
+         sWEvnT8UWw0xlXrOIzdOvICzLWex7GpCKmatq9jXhB2OoFY67TlWxNqptUeVqWDuSo7C
+         p1Qz2dlF3S9d8r3HiUMg8f9NEly1rFIon3gkuxc+MzGIMR+9M8VbWTyT2+dvMxx4+xZY
+         9NlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :message-id:date:thread-index:thread-topic:subject:to:from;
-        bh=eZF71I3X7PXe6VbVOT6+g3/pXWSJCx+8ke1iUz9tOeg=;
-        b=iwmranTlTlLk2hSRAxinCPU3fMXfLAC8uXoMs2UZLIUsswd8VHAzbMqu637ZOO/BNr
-         hY5AhTqUPwE/NOrLZtuEp+F4hmz11Im5hmJdDAz6La+EeEPoaEzTeID45Taz69gAWGlb
-         IaUzDBmabIUVjSdSl904OdOJ53qEXu6IvWE67ZGNP8MK69ddQVP/X2+vDxVBb50fl6RX
-         J9HqDvQ04iHeja75uyJmKP5tD6jtTEF4COtoSHp2kEVfC6pC6VSlwP8XWcJMwRJyDuq7
-         FEDJOcD4BvFQou3Urh24AnBiz0Di2P4zqhprJIcw0KKkMYJRElksJNAyDR3lcU+Iyn9n
-         ek3g==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=M0imsz9/sHNDOFivF5joyeOa325xFr0yZnXh4RIvGDE=;
+        b=NWBr4PAnXxS9H7ViU3Y3/zfGc+uGNDOJy4MMTsfPCFy5uSqoJM0PLYjj7KOfGv2iY1
+         cvzo+u42EFW1WFruamzdwPKcbBZfaYSH7gNapOy+XYnXS0AWsLjZsZssq1CxmYR6EuL9
+         BNrJUqScrwzZzTWj7nZ2cuy0bwugPItrrrcJ3geY0KG+eLp64rzRwl9x+bMq7Umt5MnA
+         UVtgKdKz7pCpus57LyUBaAEOFQvh7vHxCJ+0ufkJl6c0+feTyK3PdFV52OaUiuxWfRZD
+         TufLwfPtxVn98SSj74ZRSQnlBKcc5YWOOyxViPclb9J+nKej5ZsYUr1K864MmKOzqDcw
+         rzOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b3si426560uaj.24.2020.06.01.08.04.57
+       dkim=pass header.i=@linaro.org header.s=google header.b=caC7P0Zx;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id l2sor942436pjq.43.2020.06.01.17.28.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jun 2020 08:04:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 01 Jun 2020 17:28:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40248 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jflzl-0003y9-9H
-	for alex.bennee@linaro.org; Mon, 01 Jun 2020 11:04:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42898)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jflzc-0003vT-Bo; Mon, 01 Jun 2020 11:04:48 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2101 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jflzb-0003GK-3J; Mon, 01 Jun 2020 11:04:47 -0400
-Received: from lhreml707-chm.china.huawei.com (unknown [172.18.7.107])
- by Forcepoint Email with ESMTP id 41EB44215281041623E2;
- Mon,  1 Jun 2020 16:04:34 +0100 (IST)
-Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
- lhreml707-chm.china.huawei.com (10.201.108.56) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1913.5; Mon, 1 Jun 2020 16:04:33 +0100
-Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
- lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1913.007; 
- Mon, 1 Jun 2020 16:04:33 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>
-Subject: [Question] Regarding PMU initialization within the QEMU for ARM VCPUs
-Thread-Topic: [Question] Regarding PMU initialization within the QEMU for ARM
- VCPUs
-Thread-Index: AdY3+/mIYt1+TQdDQmymnxAa7PkUWw==
-Date: Mon, 1 Jun 2020 15:04:33 +0000
-Message-ID: <b2e401cd17fe49d792d09b31bd726e35@huawei.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.30.0]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@linaro.org header.s=google header.b=caC7P0Zx;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=M0imsz9/sHNDOFivF5joyeOa325xFr0yZnXh4RIvGDE=;
+        b=caC7P0ZxUmC8VLggQF675vGd66ECyEOAHB6faIoYmf4G4GvA+Dnktpl54dYvOZPwYF
+         xWnEZY9Q7iODchrCF8RrVoI+9+/m9H0M+oqIt+CbPHPGupPxWrrwj1KzVxBt6TleDsm+
+         F/2+yYZS18FSfE7CAG6m54K0ZMHoEIVo8ppkUlb/ayKbXPbuNigx+lhKBxY3QWYVKKYo
+         iljTaeAJT8UIJqncKWAIX64DXwWvdNMxcpzU5HXDpRwMO3F7Q+/OsQ6vvh2YZASFNv/K
+         Jur75bVhOztTEq+KK3L9XaW5TBS/WfMIaRucBWwDWLZQehX4FaOfEfUQQNtz7Yy3jbVA
+         j4Vw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=M0imsz9/sHNDOFivF5joyeOa325xFr0yZnXh4RIvGDE=;
+        b=mFkMUeHFpzrTF2+uMigTKie0KbO6VNnrcmamRS6J8t3CwGecuaFvbh0FdXdoFjXKs3
+         zTIgSV785XJmwGcEiOhQPCIoB5j2dF6ov1BR5Xqdy1KVr9PXEw3WikejhF0sJN7iF5V5
+         yAegewmdSFxvJ/86bDb0l/Xz2s9ubEL+3AMxV839rfOje0VnIFqASXSiDfIY0qeFX4O+
+         4lwop8wmPu48hK2lfRYfFvPVMMo8lC/rpbtf98tvzu8TtbAVj0qvUgmFzlmAWLyyEr4S
+         hFvzJGStE4fuSEb+zQqMEvYNofRWNVu42OS0HY5tKGlrTtOZ9JXgataBgjDq0NBdgdFt
+         nJ1g==
+X-Gm-Message-State: AOAM5310j/JX6MK6qseaBELq1xKgZLPHemFhtmzSqS/HdY8lC+KrjzbF
+	vW1Swd2CtFzW73AbC9vTZUZjjsdF
+X-Google-Smtp-Source: ABdhPJz2q6TI/hDHkJdfy22l2v+6jmIL3dfOZ24MkNNqRVe+CTfbVHOpZ7Qr+rKsJJxk63aunX2h5g==
+X-Received: by 2002:a17:90a:336c:: with SMTP id m99mr2179067pjb.168.1591057730553;
+        Mon, 01 Jun 2020 17:28:50 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
+        by smtp.gmail.com with ESMTPSA id b63sm487440pfg.86.2020.06.01.17.28.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 01 Jun 2020 17:28:49 -0700 (PDT)
+Subject: Re: [PATCH v1 2/3] linux-user: deal with address wrap for
+ ARM_COMMPAGE on 32 bit
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Bug 1880225 <1880225@bugs.launchpad.net>,
+ Peter Maydell <peter.maydell@linaro.org>, Riku Voipio <riku.voipio@iki.fi>,
+ Laurent Vivier <laurent@vivier.eu>
+References: <20200527100546.29297-1-alex.bennee@linaro.org>
+ <20200527100546.29297-3-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <355ff6ba-ed8a-bc1e-4b74-c87a532e47bd@linaro.org>
+Date: Mon, 1 Jun 2020 17:28:47 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.76.210;
- envelope-from=salil.mehta@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/01 11:04:34
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>, "mst@redhat.com" <mst@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3xfFcZ6GK7Ch
+In-Reply-To: <20200527100546.29297-3-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: /7EAVmqAIH/3
 
-Hello,
-I could see below within function fdt_add_pmu_nodes() part of
-hw/arm/virt.c during virt machine initialization time:
+On 5/27/20 3:05 AM, Alex Bennée wrote:
+> @@ -2145,7 +2145,7 @@ static uintptr_t pgd_find_hole_fallback(uintptr_t guest_size, uintptr_t brk, lon
+>  
+>  /* Return value for guest_base, or -1 if no hole found. */
+>  static uintptr_t pgb_find_hole(uintptr_t guest_loaddr, uintptr_t guest_size,
+> -                               long align)
+> +                               long align, uintptr_t offset)
+>  {
+>      GSList *maps, *iter;
+>      uintptr_t this_start, this_end, next_start, brk;
+> @@ -2171,7 +2171,7 @@ static uintptr_t pgb_find_hole(uintptr_t guest_loaddr, uintptr_t guest_size,
+>  
+>          this_end = ((MapInfo *)iter->data)->start;
+>          next_start = ((MapInfo *)iter->data)->end;
+> -        align_start = ROUND_UP(this_start, align);
+> +        align_start = ROUND_UP(this_start + offset, align);
+>  
+>          /* Skip holes that are too small. */
 
-Observation:
-In below function, support of PMU feature is being checked for
-each vcpu and if the PMU is found part of the features then PMU
-is initialized with in the host/KVM. But if there is even one
-vcpu which is found to not support the PMU then loop is exited
-and PMU is not initialized for the rest of the vcpus as well.
+I suppose offset is supposed to mean we start from -offset?  You didn't update
+pgb_find_hole_fallback.
 
-static void fdt_add_pmu_nodes(const VirtMachineState *vms)
-{
-    CPUState *cpu;
-    ARMCPU *armcpu;
-    uint32_t irqflags =3D GIC_FDT_IRQ_FLAGS_LEVEL_HI;
+> -            loaddr = ARM_COMMPAGE & -align;
+> +            offset = (128 * KiB);
 
-    CPU_FOREACH(cpu) {
-        armcpu =3D ARM_CPU(cpu);
-        if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
-            return; ------> Here, loop exits & function returns
-        }
-        if (kvm_enabled()) {
-            if (kvm_irqchip_in_kernel()) {
-                kvm_arm_pmu_set_irq(cpu, PPI(VIRTUAL_PMU_IRQ));
-            }
-            kvm_arm_pmu_init(cpu);
-        }
-    }
-
-    if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
-        irqflags =3D deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
-                             GIC_FDT_IRQ_PPI_CPU_WIDTH,
-                             (1 << vms->smp_cpus) - 1);
-    }
-
-    armcpu =3D ARM_CPU(qemu_get_cpu(0));
-    qemu_fdt_add_subnode(vms->fdt, "/pmu");
-    if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
-        const char compat[] =3D "arm,armv8-pmuv3";
-        qemu_fdt_setprop(vms->fdt, "/pmu", "compatible",
-                         compat, sizeof(compat));
-        qemu_fdt_setprop_cells(vms->fdt, "/pmu", "interrupts",
-                               GIC_FDT_IRQ_TYPE_PPI, VIRTUAL_PMU_IRQ, irqfl=
-ags);
-    }
-}
-
-Questions:
-Q1. Not sure what is the logic of the premature exit and not
-    continuing with further checks and initialization of other
-    VCPU PMUs?
-Q2. Does it even makes sense to have PMUs initialized for some
-    vcpus and not for others unless we have heterogeneous system?=20
-Q3. Also, there is a per virt machine knob of vcc->no_pmu.
-    This is something which user could specify at the init time
-    and perhaps only once but we don't use it for ARM. Perhaps
-    should have been used even before entering this function
-    to enable or disable the support as per user config?
-Q4. This function  fdt_* looks to be wrongly named. The info
-    being initialized here shall be used even when ACPI is
-    being used. Initialization part and FDT info looked
-    mixed up here if I am right?
+Why 128K?  Surely this should be an expression against ARM_COMMPAGE.
 
 
-Best regards
-Salil
-
-
+r~

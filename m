@@ -1,105 +1,105 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4088191lfc;
-        Tue, 2 Jun 2020 06:40:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyqHVqXhFd1GYdx/u5jNZz7vmNvSW9mnVFK+MshTmVbpmUJHHBt75sKt/WWgzWqZfNl4zOf
-X-Received: by 2002:a25:d057:: with SMTP id h84mr25694833ybg.23.1591105221892;
-        Tue, 02 Jun 2020 06:40:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591105221; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4110706lfc;
+        Tue, 2 Jun 2020 07:08:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyKX+5e8zjbyB1OZMJ4jFZqaSLPatVFwAsiY90sMfDVzQISh574wbYH3c/ZvWSqmtjFGhID
+X-Received: by 2002:a05:6214:1925:: with SMTP id es5mr12701260qvb.165.1591106920032;
+        Tue, 02 Jun 2020 07:08:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591106920; cv=none;
         d=google.com; s=arc-20160816;
-        b=qp3jKL+Kb9JJoXjoGFZs4Vjuhkftvz0mR59mI82Js6hSKtHcKdwqD03elLtCW1RYG/
-         0Bk2U3rjp480nnnr6mhqzGZv/A0oJX4fNN6zoA7fR1qFBTvElDB0BwaLizhoVnpw78g0
-         96Q+dJD+bvAck+i+SU7WVm1UMh6U5/Ee0Ih8brmqK5TYXcLzCrcz623V77IWGfRkPTdX
-         4DGLoIia98Ab4lLRw7zMHhV+rL/ju27JUefvNqJ1HemvLegMpb/ziHTQ9KCBvJch3+8j
-         0uS+w990vAypOyeBfyGd1fzNb6cpgD8fJHGPU8llwg8Uz46JsOG+aW6AYw4RLmCWbJyU
-         fO7A==
+        b=PzUt7jDztcuDsu6IOL1ofDQs8T8Ti0PccINpL27N/hX5htkl37t0U0RSbDTAKPathB
+         jSa5d+9yQaW0liPK2qgx61Lx6AWNKDtUtomgjzgkc+bCqKAVMlGYu0evFnlT3BzS63rx
+         MsLbtl7VMS6ov9A0YDZVBaXweoK/hxuRWTJQuWxsSrqOmNDzVz2nKmHkTQpSUzZHiG4n
+         tiqicUkBSknaiG9L0JYAqEBGXjrtdPyibGC3whnCDf0etVc9ldYKi9xi2vquRMjCWH7F
+         JyJzxgJwDxoxdMTIYCArkpLVNKRL/Xprf4wUuPIoj13yaSSMgAB54BOI3wNRVQdhAKGO
+         nxWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=G1STl+XNRX3fJcng/QK+caQOwsuEveNjShC8rcmP/CU=;
-        b=lz+1Z7UFKgUkCAiv4faWbn63iHKwLZQk05TekOEdphAX16IrVZxuIFAxZdwfr58fEZ
-         0Cagl9LzTBw+k0f8C4LPY2jEgDmj6bGoWxM3oMnzwBSXqCYPgi+X4LkMoQI5C/nkv/vR
-         ies0ya7B2Rxfag+5IC3ziLyVo+sqBlvlISgxDz7flb2eixwnUAXqiMNtaaguaXGrb8z3
-         tlW1zV1Ltz3s9r5N7SXJRcaF3NpQeWGCV1kH1t1xXIN/IaKe9nWCYOsw+CryiHZWfs20
-         EiYE+O3vJOu/cx83fR91XxVSSJMKb484I3D+TPN9GNw/4a311Lqh17smrOndDDg2XWoa
-         iBIg==
+        bh=GZ75EFBsDygVr08sAtZqO3wl4Q5UI2yFLEINTM0KDeQ=;
+        b=rKbt8hKcuqlctGDG2DiE04CoIrSUg6yCdD9TfQrsWYdVbVUuUZB1AysVHReKjUOz8z
+         P7ZarxQRt4SrEWuVal8nxa9dj/D/uFIh9mF7ZmVW+USw88QtPTepuEaRT2JwcaE8ygYa
+         SOL1sBLHsjsUI3nhlYkwfP2qOf+AdHupVQz9VT/foOZAfn3sGyo7ZwFVSoHVYsMJTioi
+         63Hgi1JS4/sVZ8JX/sVsU7LtKSPBXV6e/ZE8e4iL2Wi4lCaIF3FI4fo9jqqxJrL7xixr
+         EnpdFgS75D1s8TaFliIgXaHxIK6JsHCUkhv0eJPWmGavz8dV9iDD4UjE0af4JTGPOgqM
+         5OKA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l15si2953173ybt.337.2020.06.02.06.40.21
+        by mx.google.com with ESMTPS id y21si1547373qtv.287.2020.06.02.07.08.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jun 2020 06:40:21 -0700 (PDT)
+        Tue, 02 Jun 2020 07:08:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:54714 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60980 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jg79R-0003a5-8V
-	for alex.bennee@linaro.org; Tue, 02 Jun 2020 09:40:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59510)
+	id 1jg7ap-00044N-ER
+	for alex.bennee@linaro.org; Tue, 02 Jun 2020 10:08:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37358)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jg797-0003Zm-N9; Tue, 02 Jun 2020 09:40:01 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:35684
- helo=mx0a-001b2d01.pphosted.com)
+ id 1jg7ah-000444-IU; Tue, 02 Jun 2020 10:08:33 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:62162)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jg796-0005vo-Jo; Tue, 02 Jun 2020 09:40:01 -0400
-Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
+ id 1jg7ag-0004Ya-H9; Tue, 02 Jun 2020 10:08:31 -0400
+Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 052DXflR107996; Tue, 2 Jun 2020 09:39:57 -0400
+ 052E4pZ6086693; Tue, 2 Jun 2020 10:08:27 -0400
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 31dhekw478-1
+ by mx0a-001b2d01.pphosted.com with ESMTP id 31cw8uap93-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 02 Jun 2020 09:39:57 -0400
-Received: from m0098417.ppops.net (m0098417.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 052DXpRE109166;
- Tue, 2 Jun 2020 09:39:56 -0400
-Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
- [169.62.189.10])
- by mx0a-001b2d01.pphosted.com with ESMTP id 31dhekw46u-1
+ Tue, 02 Jun 2020 10:08:26 -0400
+Received: from m0098399.ppops.net (m0098399.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 052E5CO5090321;
+ Tue, 2 Jun 2020 10:08:26 -0400
+Received: from ppma01wdc.us.ibm.com (fd.55.37a9.ip4.static.sl-reverse.com
+ [169.55.85.253])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 31cw8uap88-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 02 Jun 2020 09:39:56 -0400
-Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
- by ppma02dal.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 052DQJNT011779;
- Tue, 2 Jun 2020 13:39:55 GMT
-Received: from b01cxnp22034.gho.pok.ibm.com (b01cxnp22034.gho.pok.ibm.com
- [9.57.198.24]) by ppma02dal.us.ibm.com with ESMTP id 31bf49gp4k-1
+ Tue, 02 Jun 2020 10:08:26 -0400
+Received: from pps.filterd (ppma01wdc.us.ibm.com [127.0.0.1])
+ by ppma01wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 052E0f2V008421;
+ Tue, 2 Jun 2020 14:08:24 GMT
+Received: from b01cxnp22035.gho.pok.ibm.com (b01cxnp22035.gho.pok.ibm.com
+ [9.57.198.25]) by ppma01wdc.us.ibm.com with ESMTP id 31bf492f39-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 02 Jun 2020 13:39:55 +0000
+ Tue, 02 Jun 2020 14:08:24 +0000
 Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
  [9.57.199.109])
- by b01cxnp22034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 052Ddtjx42009022
+ by b01cxnp22035.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 052E8OiY44892522
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 2 Jun 2020 13:39:55 GMT
+ Tue, 2 Jun 2020 14:08:24 GMT
 Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 11591112064;
- Tue,  2 Jun 2020 13:39:55 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 305BA112063;
+ Tue,  2 Jun 2020 14:08:24 +0000 (GMT)
 Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E2B73112063;
- Tue,  2 Jun 2020 13:39:53 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 14896112061;
+ Tue,  2 Jun 2020 14:08:24 +0000 (GMT)
 Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
  by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTP;
- Tue,  2 Jun 2020 13:39:53 +0000 (GMT)
-Subject: Re: [RFC 4/6] tests: tpm-emu: Remove assert on TPM2_ST_NO_SESSIONS
+ Tue,  2 Jun 2020 14:08:24 +0000 (GMT)
+Subject: Re: [RFC 1/6] test/tpm-emu: include sockets and channel headers in
+ tpm-emu header
 To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
  mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
 References: <20200601102113.1207-1-eric.auger@redhat.com>
- <20200601102113.1207-5-eric.auger@redhat.com>
+ <20200601102113.1207-2-eric.auger@redhat.com>
 From: Stefan Berger <stefanb@linux.ibm.com>
-Message-ID: <50a54958-e9e0-c95f-3893-f7f790186e0e@linux.ibm.com>
-Date: Tue, 2 Jun 2020 09:39:53 -0400
+Message-ID: <915c28b6-b2cc-76ef-8d33-8422dfb5e619@linux.ibm.com>
+Date: Tue, 2 Jun 2020 10:08:23 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200601102113.1207-5-eric.auger@redhat.com>
+In-Reply-To: <20200601102113.1207-2-eric.auger@redhat.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Content-Language: en-US
@@ -108,16 +108,15 @@ X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.687
  definitions=2020-06-02_13:2020-06-02,
  2020-06-02 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015
- priorityscore=1501 impostorscore=0 lowpriorityscore=0 bulkscore=0
- adultscore=0 suspectscore=0 cotscore=-2147483648 phishscore=0
- malwarescore=0 mlxscore=0 spamscore=0 mlxlogscore=999 classifier=spam
- adjust=0 reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2006020097
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
+ lowpriorityscore=0
+ malwarescore=0 phishscore=0 impostorscore=0 clxscore=1015 adultscore=0
+ suspectscore=0 mlxlogscore=999 cotscore=-2147483648 priorityscore=1501
+ spamscore=0 mlxscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2004280000 definitions=main-2006020100
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
  helo=mx0a-001b2d01.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/02 09:30:21
-X-ACL-Warn: Detected OS   = Linux 3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/02 10:08:28
+X-ACL-Warn: Detected OS   = Linux 3.x [generic] [fuzzy]
 X-Spam_score_int: -25
 X-Spam_score: -2.6
 X-Spam_bar: --
@@ -140,39 +139,34 @@ Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
  ardb@kernel.org, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: crp+oLpc1oVt
+X-TUID: VfTRBFrnF9Th
 
 On 6/1/20 6:21 AM, Eric Auger wrote:
-> While writing tests for checking the content of TPM2 and DSDT
-> along with TPM-TIS instantiation I attempted to reuse the
-> framework used for TPM-TIS tests. However While dumping the
-> ACPI tables I get an assert on TPM2_ST_NO_SESSIONS. My assumption
-> is maybe the other tests did not execute long enough to encounter
-> this. So I tentatively propose to remove the assert as it
-> does not seem to break other tests and enable the new ones.
+> Include sockets and channel headers to that the header is
+> self-contained.
 >
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+
+
 > ---
->   tests/qtest/tpm-emu.c | 1 -
->   1 file changed, 1 deletion(-)
+>   tests/qtest/tpm-emu.h | 3 +++
+>   1 file changed, 3 insertions(+)
 >
-> diff --git a/tests/qtest/tpm-emu.c b/tests/qtest/tpm-emu.c
-> index c43ac4aef8..298d0eec74 100644
-> --- a/tests/qtest/tpm-emu.c
-> +++ b/tests/qtest/tpm-emu.c
-> @@ -49,7 +49,6 @@ static void *tpm_emu_tpm_thread(void *data)
->           s->tpm_msg->tag = be16_to_cpu(s->tpm_msg->tag);
->           s->tpm_msg->len = be32_to_cpu(s->tpm_msg->len);
->           g_assert_cmpint(s->tpm_msg->len, >=, minhlen);
-> -        g_assert_cmpint(s->tpm_msg->tag, ==, TPM2_ST_NO_SESSIONS);
-You should not have to remove this. The tests are skipped if swtpm does 
-not support TPM 2 via --tpm2 option. This would be a very old swtpm 
-version, though. So, all tests are run with --tpm2 option and any 
-response received from the TPM would be a TPM 2 response that should 
-have TPM2_ST_NO_SESSIONS as the tag. I'd be curious what other value you 
-are seeing there.
+> diff --git a/tests/qtest/tpm-emu.h b/tests/qtest/tpm-emu.h
+> index a4f1d64226..73f3bed0c4 100644
+> --- a/tests/qtest/tpm-emu.h
+> +++ b/tests/qtest/tpm-emu.h
+> @@ -16,6 +16,9 @@
+>   #define TPM_RC_FAILURE 0x101
+>   #define TPM2_ST_NO_SESSIONS 0x8001
 >   
->           s->tpm_msg = g_realloc(s->tpm_msg, s->tpm_msg->len);
->           qio_channel_read(ioc, (char *)&s->tpm_msg->code,
+> +#include "qemu/sockets.h"
+> +#include "io/channel.h"
+> +
+>   struct tpm_hdr {
+>       uint16_t tag;
+>       uint32_t len;
 
 

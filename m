@@ -1,115 +1,114 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4153328lfc;
-        Tue, 2 Jun 2020 08:01:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzm7IQNIUBn1O3mYrJ1TLybXbSyYSDh+FVxxJTNbIqz6Gr9aoD1FQZHdw4d5ZivUR4Vy3P+
-X-Received: by 2002:a25:4984:: with SMTP id w126mr45282164yba.20.1591110098612;
-        Tue, 02 Jun 2020 08:01:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591110098; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4168381lfc;
+        Tue, 2 Jun 2020 08:17:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyH/Xfoh8wGnhnUyPRd1PNDuIZUckMmbz59RsNv9ZOwrJUvMP4w04M2gIOQiESO3U2h6tcC
+X-Received: by 2002:a25:b701:: with SMTP id t1mr23175976ybj.515.1591111067003;
+        Tue, 02 Jun 2020 08:17:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591111066; cv=none;
         d=google.com; s=arc-20160816;
-        b=tMuqJV4tJJsjdJGSxV7NXUqVwjCf08z9eV6TFH8wlk/lflcs+nAmVkw9LPJCvBGSu/
-         MT98ZKG1XmwCMZb7zpGbiK8Rcap0RAc85VkMtedc+WH7hW+2MsqIRHtLXTW7NnOzuhxe
-         cv4GLEIosjC+RswCiY9/nscKU/3F3AOaSeXTh2knudB5mpmAakre/qKCIORoAGbLTPd2
-         /EQ0DNJDPC1jt/eg1mDB3xWq2+QSIKrIzwjmMgEGrSvCp252AQ1bWX55pdswZzYLtMSz
-         EDGLzwQLEKaw/TEhGjyBR5tUghEprOs34a6f0tdoEz64hHXQXeGwBj5O/M2VCUArk+T1
-         XGVQ==
+        b=pLEpLv10XKwinBDttvj9aFsiIn0TURi7p//SGiYpOofxb3heKJfwDeSE6Scl72AYgG
+         vmfYBkkMOxlTfIOGL3eNqUv44oY3h6Q8yXBqTMkdljsf1TRmbLMR+zKZIAlzv62fpvKV
+         nfNkJN14pkXNP9s/wPC7JAmD5MzKVFztDrEoRE6swsoGDwX5XGzA9eshrWj5fKO9t/0P
+         k28p5vMHWw1yucvmzhczmdnBfxpnj1bjgGtX1gtpDSjkHbgYrZj5DOMSSUn2XOG8SUqL
+         WsvzSlsPTAbxtei+wbYqYrNLkNFi2Ku+cfgDbWwENXRCF6825Mrn1JL0olN2rFBgW59O
+         9GTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=LP4IaES+Cgr4zDPbJ6yM8Eq9WPEoFGx8egQ6nV/yoXk=;
-        b=f2J/ObtF+jlipmpoFDvjR6velS/nDtC55UuqoENvhFs2am+LVfYQc7zrlIbEn/HQSY
-         LkrqoiaObnEkNkeHRHrAOreraMcfHJyhqHuPHWf2pvBmV8eUwXiq8wR9WoLB8b4f8EHq
-         W2s+1gtY8didD2O4oCOp6LzibVCGY3HgSkcUUDpF7XNoHU3LLpdN11salIFPshQ5HRtn
-         PyZAGdHV1jLyg/HDM0K//IKai698MfKRv3lZ+uChrHya+tATyYVF6zz4epFWxUFcTEZd
-         6frYz9xZUSr1ZPf/SrJfuzKtnWV6lf0DDooTDVEpAHaTffDAoIlmwhombBMkQ8dxrkY6
-         TpSg==
+        bh=F5d0r4xpOaaozoK2FL/klQUzR7XC88uuoH579R6j7uQ=;
+        b=CLOaEcQYstn5jn7TfqZcdl+EvJW5nxzu9G+IQYfq9MYe3h9B6txcs8HlWRmlC4rx1u
+         uFOeuEqWUKTb6PHfw/7WYjqNNCti9Sw6KhR92JgTjl2TQ+wF+bqJccWHOJIj9uLnMsrW
+         6unixObFjmCZ5xxe1/WNesZtT0KJ10GiLKX7xbgeE/O+pxPTDnD5G+/kf487lqmlmSVw
+         1GYPwQfy8l39BEnmI4DDCy5paShOdUKnySgSTUeqCYicfDdSGaBbPwkg+PI9NhrLIURZ
+         8JK6TOMcg3dycvQfGwgPkFrDS0wJpZ8VR0zxZsEQP94wUH9wDKGZLzZQ7MNEWciOh1A0
+         0wbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tAu5Falp;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=drRSJT5Y;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c133si1867354ybb.294.2020.06.02.08.01.38
+        by mx.google.com with ESMTPS id z65si2337429ybz.68.2020.06.02.08.17.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jun 2020 08:01:38 -0700 (PDT)
+        Tue, 02 Jun 2020 08:17:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tAu5Falp;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=drRSJT5Y;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:37144 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47938 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jg8Q5-0002JK-VF
-	for alex.bennee@linaro.org; Tue, 02 Jun 2020 11:01:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46312)
+	id 1jg8fi-0001t2-AA
+	for alex.bennee@linaro.org; Tue, 02 Jun 2020 11:17:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49358)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jg8Oj-0001cy-E7; Tue, 02 Jun 2020 11:00:14 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:33061)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jg8Oi-0001Bs-5Q; Tue, 02 Jun 2020 11:00:13 -0400
-Received: by mail-wm1-x344.google.com with SMTP id j198so2442382wmj.0;
- Tue, 02 Jun 2020 08:00:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=LP4IaES+Cgr4zDPbJ6yM8Eq9WPEoFGx8egQ6nV/yoXk=;
- b=tAu5Falp0P3uHZrWyfopi3YAxu0joL6vo0bUueuQ2wp/iPCNb1TLIEcPrYlVnyyPk8
- IERZbCS1F8Ewhy4pznEIZFl0gmcGJqRBTHxFV8np1MG0eayzeYhONvI5Rh6Cw+ZOoO/t
- Kaz5pAPczlh3GzWTKsNNM3yoMFdpQSem3ZPQqQ6MnComq4YghgD32ytLJGjKuFITJ9qd
- NzjSMF3LDBZylBTHOyk5czDQohbNUV0Cq5nMleUsmeV++wq+HFAl4gFAfvZc5+YhAkcz
- L8kCR2M+dVsqHI8+r/TtdTQw/kmAwgor1dmGUdGc46AZOWj1oPhFvgv1rPxdX/zwWApy
- Ofeg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=LP4IaES+Cgr4zDPbJ6yM8Eq9WPEoFGx8egQ6nV/yoXk=;
- b=Cvvf1BXm+CBaBekgZKJLEm3a18o1DyFwfQ2sw037NOI7uxD3c+d7HMWU/fApiWpo8i
- LhdihDIwMUYgs5I0+yY/iOEsxMDr9nJ9QRo04Ms8bTUIwhXt1LX2d48E6GMHxUBaCgxt
- tq0J9C0rNmGK708P3QZWLm3SLlAN1+fi9JX9AWQicEkBScuRFD9fhNOMFL9SqvxzFClq
- iEahqSV4kWvsY5CiDHB7TalmvYxIh3k7zlcHA9Uthn3aHGzq/T2XwyhrBExg2X/wVI8o
- Oi1FeAZjwyxlH4sErrA46a5VJF11On7hRAcON5gVEfX38d32+mQ/n7By+tQRg/VEVBdp
- 7O+w==
-X-Gm-Message-State: AOAM5334BoZB9McfDb59mcfBPZ9kPw7kg0IEKv7K9J+R9irMh8+8J0IQ
- tch6Pj1KEqCJEOg0S3p+lvGIUWgw
-X-Received: by 2002:a1c:a5ce:: with SMTP id o197mr4687922wme.85.1591110009946; 
- Tue, 02 Jun 2020 08:00:09 -0700 (PDT)
-Received: from [192.168.1.43] (181.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id 5sm70629wmz.16.2020.06.02.08.00.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Jun 2020 08:00:09 -0700 (PDT)
-Subject: Re: [PATCH] docs/system: Document Aspeed boards
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20200602135050.593692-1-clg@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <a46437ce-1be4-3c0a-8403-1c279ad8b90b@amsat.org>
-Date: Tue, 2 Jun 2020 17:00:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jg8ed-0000wB-Jw
+ for qemu-devel@nongnu.org; Tue, 02 Jun 2020 11:16:39 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:48976
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jg8ec-0006nF-Ho
+ for qemu-devel@nongnu.org; Tue, 02 Jun 2020 11:16:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591110997;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=F5d0r4xpOaaozoK2FL/klQUzR7XC88uuoH579R6j7uQ=;
+ b=drRSJT5Y6WrC9gYKSShCb47i7JKG3oodvTVX3zVtUfGdqG4+bSQPHEa84PElpLNcKQ30u/
+ vumionq5uwy8rf5IIcsJ7dNn7Jt9fMpVRR9mvCLfXmKuIwmseS/Q860vir4STUZMQb0PT7
+ SBY6PcULFyav/A85medG1VZTvk916cI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-495-9wC5EBKrOzq-0QIPxwlFjw-1; Tue, 02 Jun 2020 11:16:34 -0400
+X-MC-Unique: 9wC5EBKrOzq-0QIPxwlFjw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9B06E107ACCA;
+ Tue,  2 Jun 2020 15:16:32 +0000 (UTC)
+Received: from [10.36.113.56] (ovpn-113-56.ams2.redhat.com [10.36.113.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2F5157E7E1;
+ Tue,  2 Jun 2020 15:16:27 +0000 (UTC)
+Subject: Re: [PATCH v3 1/4] acpi: Convert build_tpm2() to build_append* API
+To: Stefan Berger <stefanb@linux.ibm.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <20200601095737.32671-1-eric.auger@redhat.com>
+ <20200601095737.32671-2-eric.auger@redhat.com>
+ <46c71777-b588-ce1f-eb8d-de1c5b3e2186@linux.ibm.com>
+ <6bd7f3a0-5a40-823e-bf67-309c9995e18e@redhat.com>
+ <a85cc67e-2d8a-2034-3b85-6e8c8d7dcad6@linux.ibm.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <b1cf9216-39ff-c597-c919-b944f76ec9b0@redhat.com>
+Date: Tue, 2 Jun 2020 17:16:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20200602135050.593692-1-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <a85cc67e-2d8a-2034-3b85-6e8c8d7dcad6@linux.ibm.com>
 Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/01 22:14:55
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,133 +121,126 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
+ ardb@kernel.org, philmd@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nXVihjCvgwjl
+X-TUID: g6a7NjRTp2Ny
 
-On 6/2/20 3:50 PM, Cédric Le Goater wrote:
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> ---
->  docs/system/arm/aspeed.rst | 85 ++++++++++++++++++++++++++++++++++++++
->  docs/system/target-arm.rst |  1 +
->  2 files changed, 86 insertions(+)
->  create mode 100644 docs/system/arm/aspeed.rst
+Hi Stefan,
+
+On 6/2/20 4:24 PM, Stefan Berger wrote:
+> On 6/2/20 9:55 AM, Auger Eric wrote:
+>> Hi Stefan,
+>> On 6/2/20 3:30 PM, Stefan Berger wrote:
+>>> On 6/1/20 5:57 AM, Eric Auger wrote:
+>>>> In preparation of its move to the generic acpi code,
+>>>> let's convert build_tpm2() to use build_append API. This
+>>>> latter now is prefered in place of direct ACPI struct field
+>>>> settings with manual endianness conversion.
+>>>>
+>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>> ---
+>>>>    hw/i386/acpi-build.c | 28 +++++++++++++++++++---------
+>>>>    1 file changed, 19 insertions(+), 9 deletions(-)
+>>>>
+>>>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+>>>> index b5669d6c65..f0d35d7b17 100644
+>>>> --- a/hw/i386/acpi-build.c
+>>>> +++ b/hw/i386/acpi-build.c
+>>>> @@ -2298,30 +2298,40 @@ build_tpm_tcpa(GArray *table_data, BIOSLinker
+>>>> *linker, GArray *tcpalog)
+>>>>    static void
+>>>>    build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+>>>>    {
+>>>> -    Acpi20TPM2 *tpm2_ptr = acpi_data_push(table_data, sizeof
+>>>> *tpm2_ptr);
+>>>> +    Acpi20TPM2 *tpm2_ptr = acpi_data_push(table_data,
+>>>> sizeof(AcpiTableHeader));
+>>> And now you want to build the data structure by pushing fields? I would
+>>> definitely NOT do this.
+>> If I didn't misinterpret things, this was recommended by Drew and Igor
+>> as buid_append* API avoids to take care of endianness and this is the
+>> API now used in the generic ACPI code. Besides I also think that in that
+>> case it does not simplify things but maybe I did that the wrong way? Or
+>> maybe I didn't understand your remark?
 > 
-> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-> new file mode 100644
-> index 000000000000..45f891eb3cad
-> --- /dev/null
-> +++ b/docs/system/arm/aspeed.rst
-> @@ -0,0 +1,85 @@
-> +Aspeed family boards (``*-bmc``, ``ast2500-evb``, ``ast2600-evb``)
-> +==================================================================
-> +
-> +The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
-> +Aspeed evaluation boards. They are based on different releases of the
-> +Aspeed SoC : the AST2400 integrating an ARM926EJ-S CPU (400MHz), the
-> +AST2500 with an ARM1176JZS CPU (800MHz) and more recently the AST2600
-> +with dual cores ARM Cortex A7 CPUs (1.2GHz).
-> +
-> +The SoC comes with RAM, Gigabit ethernet, USB, SD/MMC, USB, SPI, I2C,
-> +etc.
-> +
-> +AST2400 SoC based machines :
-> +
-> +- ``palmetto-bmc``         OpenPOWER Palmetto POWER8 BMC
-> +
-> +AST2500 SoC based machines :
-> +
-> +- ``ast2500-evb``          Aspeed AST2500 Evaluation board
-> +- ``romulus-bmc``          OpenPOWER Romulus POWER9 BMC
-> +- ``witherspoon-bmc``      OpenPOWER Witherspoon POWER9 BMC
-> +- ``sonorapass-bmc``       OCP SonoraPass BMC
-> +- ``swift-bmc``            OpenPOWER Swift BMC POWER9
-> +
-> +AST2600 SoC based machines :
-> +
-> +- ``ast2600-evb``          Aspeed AST2600 Evaluation board (Cortex A7)
-> +- ``tacoma-bmc``           OpenPOWER Witherspoon POWER9 AST2600 BMC
-> +
-> +Supported devices
-> +-----------------
-> +
-> + * SMP (for the AST2600 Cortex-A7)
-> + * Interrupt Controller (VIC)
-> + * Timer Controller
-> + * RTC Controller
-> + * I2C Controller
-> + * System Control Unit (SCU)
-> + * SRAM mapping
-> + * X-DMA Controller (basic interface)
-> + * Static Memory Controller (SMC or FMC) - Only SPI Flash support
-> + * SPI Memory Controller
-> + * USB 2.0 Controller
-> + * SD/MMC storage controllers
-> + * SDRAM controller (dummy interface for basic settings and training)
-> + * Watchdog Controller
-> + * GPIO Controller (Master only)
-> + * UART
-> + * Ethernet controllers
-> +
-> +
-> +Missing devices
-> +---------------
-> +
-> + * Coprocessor support
-> + * ADC (out of tree implementation)
-> + * PWM and Fan Controller
-> + * LPC Bus Controller
-> + * Slave GPIO Controller
-> + * Super I/O Controller
+> 
+> If that's what they are saying... I would prefer filling out data
+> structures with functions like cpu_to_acpi16() because that seems to be
+> less error prone.
+understood. Let's wait for other comments and we will make a decision
+wrt direction.
+> 
+> 
+>>>
+>>>>        unsigned log_addr_size =
+>>>> sizeof(tpm2_ptr->log_area_start_address);
+>>>>        unsigned log_addr_offset =
+>>>>            (char *)&tpm2_ptr->log_area_start_address -
+>>>> table_data->data;
+>>>> +    uint8_t start_method_params[12] = {};
+>>>>    -    tpm2_ptr->platform_class = cpu_to_le16(TPM2_ACPI_CLASS_CLIENT);
+>>>> +    /* platform class */
+>>>> +    build_append_int_noprefix(table_data, TPM2_ACPI_CLASS_CLIENT, 2);
+>>>> +    /* reserved */
+>>>> +    build_append_int_noprefix(table_data, 0, 2);
+>>>>        if (TPM_IS_TIS_ISA(tpm_find())) {
+>>>> -        tpm2_ptr->control_area_address = cpu_to_le64(0);
+>>>> -        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_MMIO);
+>>>> +        /* address of control area */
+>>>> +        build_append_int_noprefix(table_data, 0, 8);
+>>>> +        /* start method */
+>>>> +        build_append_int_noprefix(table_data, TPM2_START_METHOD_MMIO,
+>>>> 4);
+>>>>        } else if (TPM_IS_CRB(tpm_find())) {
+>>>> -        tpm2_ptr->control_area_address =
+>>>> cpu_to_le64(TPM_CRB_ADDR_CTRL);
+>>>> -        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_CRB);
+>>>> +        build_append_int_noprefix(table_data, TPM_CRB_ADDR_CTRL, 8);
+>>>> +        build_append_int_noprefix(table_data,
+>>>> TPM2_START_METHOD_CRB, 4);
+>>>>        } else {
+>>>>            g_warn_if_reached();
+>>>>        }
+>>>>    -    tpm2_ptr->log_area_minimum_length =
+>>>> -        cpu_to_le32(TPM_LOG_AREA_MINIMUM_SIZE);
+>>>> +    /* platform specific parameters */
+>>>> +    g_array_append_vals(table_data, &start_method_params, 12);
+> 
+> Maybe this should be wrapped in an inline function like
+> build_append_array() or so.
+Hum OK
+> 
+> 
+>>>>    -    acpi_data_push(tcpalog,
+>>>> le32_to_cpu(tpm2_ptr->log_area_minimum_length));
+>>>> +    /* log area minimum length */
+>>>> +    build_append_int_noprefix(table_data,
+>>>> TPM_LOG_AREA_MINIMUM_SIZE, 4);
+>>>> +
+>>>> +    acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
+> 
+> 
+> At this point we have a double-allocation of log memory on x86_64. You'd
+> need the patch I posted to create the TCPA table only for TPM 1.2.
+This series applies on top of this patch (mentionned in the cover letter).
+> 
+> 
+> 
+>>>>        bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE,
+>>>> tcpalog, 1,
+>>>>                                 false);
+>>>>          /* log area start address to be filled by Guest linker */
+>>>> +    build_append_int_noprefix(table_data, 0, 8);
+>>>>        bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+>>>>                                       log_addr_offset, log_addr_size,
+>>>>                                       ACPI_BUILD_TPMLOG_FILE, 0);
+>>>
+> 
+> 
+> 
+Thanks
 
-Is there public datasheet for this?
+Eric
 
-> + * Hash/Crypto Engine
-> + * PCI-Express 1 Controller
-> + * Graphic Display Controller
-> + * PECI Controller
-> + * MCTP Controller
-> + * Mailbox Controller
-> + * Virtual UART
-
-Uh what is that? :)
-
-> + * eSPI Controller
-> + * I3C Controller
-> +
-> +Boot options
-> +------------
-> +
-> +The Aspeed machines can be started using the -kernel option to load a
-> +Linux kernel or from a firmare image which can be downloaded from the
-> +OpenPOWER jenkins :
-> +
-> +   https://openpower.xyz/
-> +
-> +The image should be attached as an MTD drive. Run :
-> +
-> +.. code-block:: bash
-> +
-> +  $ qemu-system-arm -M romulus-bmc -nic user \
-> +	-drive file=flash-romulus,format=raw,if=mtd -nographic
-> diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-> index dce384cb0e3e..1bd477a2936c 100644
-> --- a/docs/system/target-arm.rst
-> +++ b/docs/system/target-arm.rst
-> @@ -81,6 +81,7 @@ undocumented; you can get a complete list by running
->     arm/realview
->     arm/versatile
->     arm/vexpress
-> +   arm/aspeed
-
-Maybe we should keep this section sorted.
-
-Otherwise:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
->     arm/musicpal
->     arm/nseries
->     arm/orangepi
->

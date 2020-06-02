@@ -1,116 +1,115 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3024040lfm;
-        Mon, 22 Jun 2020 02:52:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyKt48c8xPiK6Ftzw/JHPXqksx6We5w4EdRAhVNBGK1nrpdAuTqjSi9iABSs4WglHZLQS6I
-X-Received: by 2002:a25:348a:: with SMTP id b132mr28213277yba.491.1592819571950;
-        Mon, 22 Jun 2020 02:52:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592819571; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4258945lfc;
+        Tue, 2 Jun 2020 10:15:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyI5VNTJq8ZFM09q+mG/jZTveLkkEeG+o+/xnMtEmHWzzcbwrMflh1gMSQ/TqugwNUfNcDG
+X-Received: by 2002:a25:3413:: with SMTP id b19mr47043021yba.473.1591118147893;
+        Tue, 02 Jun 2020 10:15:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591118147; cv=none;
         d=google.com; s=arc-20160816;
-        b=n1bUyvG5zSiees72ALVsuQt3towOq3Nhlk0zgvVFFq+u27gzUJ6hugu6Wxfjm6X4z6
-         5SeGkIcfA+jSHuBV2vZ5VF4IRHM0Rg80fnLXpQPcExyEy3nYsW9mrQgec7QP+B4HyDae
-         YCgMnPoW8ONvZHIXxsPKlSUOjRsvy3Uey79wUof0qKMGkBemF6upwV/6C4304aoibeII
-         m4l/YzIH2BGe49pjFBHOcga9GWDphpKdTxlNWK+/E4yjQyPbTItPNMI+L0iJWhnELDMy
-         Ev+xkLXtDwAdVzExQTM6iX3AzWaSUBIjMW0PbRbwlrFo6Y55DpVxD+PFrKXH6ZUC5Tja
-         Y0IA==
+        b=TQ/avhmXfM7SrvVngU96F6/OUCk36774BAyqXsLNvHVXSq27tN2owoH87dwYMT6kb4
+         +iAOMFFUbqD0hnr1/cc5APiu3ps4IU611dbIS50Fej2ji5vwoaOpUbbyJHFMwI7Pk6JE
+         1XN/ftQ+R6cdld1FkwSmSnSzmFhSs5+21WtV8/Y9sP8eX66vUkiwS1jmQrWY3df0G4js
+         sHtjRq5z89NxM/8IXP8MuGm23jSbDatypTZQj2dgQpHO2kPGvA+QkykpaiPt7/Ti5sWu
+         85zRuhsN4Lc8DXaNUJtwDFHDX2wHBaXLak88Nt3SLHqoGzzVRlvw60+xSlj5Y6UuyeCb
+         ZnvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=/Bvc7IsiddAczfGywgS8QiU6znkFI4k8Pw0/SuBT2Ic=;
-        b=wxvv2PcHgP+xSMkMoC2penktdId8Y0+/qDpUX7viZl8VuFuL1vWw8Z7Iq8YMrVhOTU
-         23yX3wrKszgX+2oHO2lGZk0hE+b69XNVKTPsskpyd8gEY3+gD26B/4PnsIsd1i22Ai3N
-         zzW1I+mjesM43SB05BSSY+b1/YKwBH/7H+PXLQNc48MZgKMfEwpu/lI8XQgheZUNjRvi
-         7Fy6v3nsAJ1uagLBwbVQni6//Krjm4evYVpUeSIRZi0YaELhdcoIGyB+VZStPqrk6ksa
-         VJl+g1DPs6m+qwVe+F4fald/oiNMy4z1w6HQWwGndIYLUYjiLm9Nno/SFrHYys887dY6
-         zVbg==
+        bh=qdxT1XeBAqOOh1U0HFez6Rt3sDhklWxp8CC2VcQdQH8=;
+        b=CeLx6VHlHpx9fThMdS1ak0vMXj6rDPY9HHjhXJrEodWVevf64XRgN6dwE+8YcRK3Q1
+         7bMR6o+nur1qHzsXHVzUVKWCdmezRGKl31o5U8sjcMstdhUXA/MsR8O3DERwOfLdbfnV
+         z/vRzgxHfDg1s0PBdLzCq2mHUkMwZjvISMDa5a46U1K7JEKabvtAa9qSUY/nBjrQPkH/
+         TDgjgpYx6/zoIOBva6djGrsv02XDb68QHluaE0xoak3h2OYzuLE7zhBfOOz5TcoeibgK
+         sOs5M8pR89jRRLlxYK6VgNc1pmSeOCrofa5+x2Ijdm5PB8UgYHDFmmOH/It4MRlLP4Yk
+         1HDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HMxPLU7C;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WEp3uUve;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l2si20626570ybt.63.2020.06.22.02.52.51
+        by mx.google.com with ESMTPS id 139si2549684ybn.306.2020.06.02.10.15.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jun 2020 02:52:51 -0700 (PDT)
+        Tue, 02 Jun 2020 10:15:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HMxPLU7C;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WEp3uUve;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49068 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36400 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnJ8F-0002hF-C4
-	for alex.bennee@linaro.org; Mon, 22 Jun 2020 05:52:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55950)
+	id 1jgAVv-0002PY-7U
+	for alex.bennee@linaro.org; Tue, 02 Jun 2020 13:15:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42084)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jnJ86-0002dx-Jt; Mon, 22 Jun 2020 05:52:42 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:38774)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jnJ84-0005NN-Og; Mon, 22 Jun 2020 05:52:42 -0400
-Received: by mail-wr1-x441.google.com with SMTP id z13so4225957wrw.5;
- Mon, 22 Jun 2020 02:52:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=/Bvc7IsiddAczfGywgS8QiU6znkFI4k8Pw0/SuBT2Ic=;
- b=HMxPLU7Cu5ZWxof0tuSUzLdixGhDOx3ufZWz5zNqp3yV2UYQSEKJLjn3bdhZz+/3QT
- GLnnFBL2CLC9xGuhWSHYVrN6v9vVbb9utyEsFtvH/4/FxsthLRdy8hq8JhCXCbhoda0Y
- YFNq2pVm+JGRZy6AVASoM8NEv36x288pS3sHIa1Up1j50XCVHq+NvMVZCkd3P+Kir1AL
- vurFUjHfAJpdTCRfN2MbjY+zuoaU70FThWklvO4Lh5A+ZSHSG/xjDgwXZy8HIer+JOZk
- MhlqdGPgFJXlBlcFC3SYDnda8kD5nX5ttAvSV9j66qhAHrxECKOO/rhq7VtJHp/7odzx
- Lqtw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=/Bvc7IsiddAczfGywgS8QiU6znkFI4k8Pw0/SuBT2Ic=;
- b=A61plawTCgnzxhDhyLNqr6eAE5lB7K5GuTFLIHbHh52i6fmaaGO5hZ3r2HF9ipOOoS
- WBkQSciK5cJlLKGVUSRl1zUmFqOdxI7w/83DU6UBHyjfLfUot/1N3FOiocXHlUPcy/w/
- 4i2vflgBoHoRkD4ZvTUTfwqspfIPxfGWo3rbMIvScJO9Lbm+0qJptn1MqH4fZ0CZ9KSy
- mhe6wzPlG8GeZgiEldjO52+/k1cLb8rqHB0TVTQhW3MkgQHbXqeym5eN9mGkHjecQj2M
- A1Syrd9QqohukFuX3roY/w4/jj4AD9SDmPCIozyADgLUPTkrokWGalb8ZnQ0pdJZ4Rh8
- /XnA==
-X-Gm-Message-State: AOAM530TqnEP39Ic/a+LZ7WJfXcTT5t4iOjDYinVQneBX3DNUaHOYzAb
- qAYlYZtHbdLXH3Wwr7AysCo=
-X-Received: by 2002:a05:6000:ce:: with SMTP id
- q14mr10372311wrx.294.1592819558680; 
- Mon, 22 Jun 2020 02:52:38 -0700 (PDT)
-Received: from [192.168.1.39] (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id c70sm15823500wme.32.2020.06.22.02.52.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 22 Jun 2020 02:52:38 -0700 (PDT)
-Subject: Re: [PATCH v4 7/8] hw/misc/pca9552: Trace GPIO change events
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
-References: <20200620225854.31160-1-f4bug@amsat.org>
- <20200620225854.31160-8-f4bug@amsat.org>
- <fb024d85-9730-e31d-622c-60601d75c7f3@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <a4ad6480-c2f2-75bc-12d0-71000905a45f@amsat.org>
-Date: Mon, 22 Jun 2020 11:52:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jgAVn-0002PF-6X
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2020 13:15:39 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:48508
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jgAVk-0001Qw-Gg
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2020 13:15:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591118135;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qdxT1XeBAqOOh1U0HFez6Rt3sDhklWxp8CC2VcQdQH8=;
+ b=WEp3uUve0SH66w/9Mo3TvqPalOT4TtE/Lp9/dlIB2RZ28ijSKajCljmeZcM5KXc3eu0t+G
+ WuEUqEGwyJOT4Fzy5mSlu9dfILhyJJs/B7QGxEbwGTaUndjKzOKQc3+8is0NN99m4gbhKE
+ OjlKziZW/Z0bKlvivMBjypzTp9pUK2o=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-135-RU882uhDP52yPvBWUAuBdg-1; Tue, 02 Jun 2020 13:15:30 -0400
+X-MC-Unique: RU882uhDP52yPvBWUAuBdg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4A9A1800053;
+ Tue,  2 Jun 2020 17:15:29 +0000 (UTC)
+Received: from [10.36.113.56] (ovpn-113-56.ams2.redhat.com [10.36.113.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5E8435117E;
+ Tue,  2 Jun 2020 17:15:20 +0000 (UTC)
+Subject: Re: [RFC 4/6] tests: tpm-emu: Remove assert on TPM2_ST_NO_SESSIONS
+To: Stefan Berger <stefanb@linux.ibm.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
+References: <20200601102113.1207-1-eric.auger@redhat.com>
+ <20200601102113.1207-5-eric.auger@redhat.com>
+ <50a54958-e9e0-c95f-3893-f7f790186e0e@linux.ibm.com>
+ <80ce5833-90ee-cbc5-9822-cca1fabc33e6@redhat.com>
+ <b310bcc1-02aa-4948-20d0-2e66de68acb3@linux.ibm.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <0f27abdd-ee72-22be-4a3f-d2129561d09b@redhat.com>
+Date: Tue, 2 Jun 2020 19:15:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <fb024d85-9730-e31d-622c-60601d75c7f3@kaod.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <b310bcc1-02aa-4948-20d0-2e66de68acb3@linux.ibm.com>
 Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=207.211.31.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/01 23:49:17
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,102 +122,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Corey Minyard <cminyard@mvista.com>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
+ ardb@kernel.org, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ODAwR5LeVpBI
+X-TUID: nW2ZGFhbMSEZ
 
-On 6/22/20 9:01 AM, Cédric Le Goater wrote:
-> On 6/21/20 12:58 AM, Philippe Mathieu-Daudé wrote:
->> Emit a trace event when a GPIO change its state.
-> 
-> I understand now why you need 'pin_status'. 
-> 
-> We could compute 'pin_status' and 'pin_changed' in routine 
-> pca9552_update_pin_input() when updating the PCA9552_INPUT0/1 
-> register values and pass them to pca9552_display_pins_status()
-> or something like that.
+Stefan,
 
-Good idea, thanks!
+On 6/2/20 6:17 PM, Stefan Berger wrote:
+> On 6/2/20 12:13 PM, Auger Eric wrote:
+>> Hi Stefan,
+>>
+>> On 6/2/20 3:39 PM, Stefan Berger wrote:
+>>> On 6/1/20 6:21 AM, Eric Auger wrote:
+>>>> While writing tests for checking the content of TPM2 and DSDT
+>>>> along with TPM-TIS instantiation I attempted to reuse the
+>>>> framework used for TPM-TIS tests. However While dumping the
+>>>> ACPI tables I get an assert on TPM2_ST_NO_SESSIONS. My assumption
+>>>> is maybe the other tests did not execute long enough to encounter
+>>>> this. So I tentatively propose to remove the assert as it
+>>>> does not seem to break other tests and enable the new ones.
+>>>>
+>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>> ---
+>>>>    tests/qtest/tpm-emu.c | 1 -
+>>>>    1 file changed, 1 deletion(-)
+>>>>
+>>>> diff --git a/tests/qtest/tpm-emu.c b/tests/qtest/tpm-emu.c
+>>>> index c43ac4aef8..298d0eec74 100644
+>>>> --- a/tests/qtest/tpm-emu.c
+>>>> +++ b/tests/qtest/tpm-emu.c
+>>>> @@ -49,7 +49,6 @@ static void *tpm_emu_tpm_thread(void *data)
+>>>>            s->tpm_msg->tag = be16_to_cpu(s->tpm_msg->tag);
+>>>>            s->tpm_msg->len = be32_to_cpu(s->tpm_msg->len);
+>>>>            g_assert_cmpint(s->tpm_msg->len, >=, minhlen);
+>>>> -        g_assert_cmpint(s->tpm_msg->tag, ==, TPM2_ST_NO_SESSIONS);
+>>> You should not have to remove this. The tests are skipped if swtpm does
+>>> not support TPM 2 via --tpm2 option. This would be a very old swtpm
+>>> version, though. So, all tests are run with --tpm2 option and any
+>>> response received from the TPM would be a TPM 2 response that should
+>>> have TPM2_ST_NO_SESSIONS as the tag. I'd be curious what other value you
+>>> are seeing there.
+>> If I revert this patch I am getting TPM2_ST_SESSIONS on my end.
+> 
+> Is firmware/BIOS active? There's no TPM2_ST_SESSIONS coming out of QEMU.
+
+From what I understand
+
+QTEST_QEMU_BINARY=x86_64-softmmu/qemu-system-x86_64
+tests/qtest/bios-tables-test
+
+launches
+
+x86_64-softmmu/qemu-system-x86_64 \
+-qtest unix:/tmp/qtest-20181.sock \
+-qtest-log /dev/null -chardev socket,path=/tmp/qtest-20181.qmp,id=char0
+-mon chardev=char0,mode=control \
+-display none -machine q35,kernel-irqchip=off \
+-accel kvm -accel tcg \
+-net none -display none \
+-chardev socket,id=chr,path=/tmp/qemu-test_acpi_q35_tcg_tpm2.RJJCL0/sock
+-tpmdev emulator,id=dev,chardev=chr \
+-device tpm-tis,tpmdev=dev \
+-drive id=hd0,if=none,file=tests/acpi-test-disk-RAnagW,format=raw
+-device ide-hd,drive=hd0 -accel qtest
+
+acpi-test-disk-RAnagW consists in an x86 boot sector code, created by
+boot_sector_init (x86_boot_sector)
+
+Thanks
+
+Eric
+
+
+
 
 > 
-> Maybe add two different display routines also. 
->  
->>
->> Example booting obmc-phosphor-image:
->>
->>   $ qemu-system-arm -M witherspoon-bmc -trace pca9552_gpio_change
->>   1592690552.687372:pca9552_gpio_change pca1 GPIO id:0 status: 0 -> 1
->>   1592690552.690169:pca9552_gpio_change pca1 GPIO id:1 status: 0 -> 1
->>   1592690552.691673:pca9552_gpio_change pca1 GPIO id:2 status: 0 -> 1
->>   1592690552.696886:pca9552_gpio_change pca1 GPIO id:3 status: 0 -> 1
->>   1592690552.698614:pca9552_gpio_change pca1 GPIO id:13 status: 0 -> 1
->>   1592690552.699833:pca9552_gpio_change pca1 GPIO id:14 status: 0 -> 1
->>   1592690552.700842:pca9552_gpio_change pca1 GPIO id:15 status: 0 -> 1
->>   1592690683.841921:pca9552_gpio_change pca1 GPIO id:14 status: 1 -> 0
->>   1592690683.861660:pca9552_gpio_change pca1 GPIO id:14 status: 0 -> 1
->>   1592690684.371460:pca9552_gpio_change pca1 GPIO id:14 status: 1 -> 0
->>   1592690684.882115:pca9552_gpio_change pca1 GPIO id:14 status: 0 -> 1
->>   1592690685.391411:pca9552_gpio_change pca1 GPIO id:14 status: 1 -> 0
->>   1592690685.901391:pca9552_gpio_change pca1 GPIO id:14 status: 0 -> 1
->>   1592690686.411678:pca9552_gpio_change pca1 GPIO id:14 status: 1 -> 0
->>   1592690686.921279:pca9552_gpio_change pca1 GPIO id:14 status: 0 -> 1
->>
->> We notice the GPIO #14 (front-power LED) starts to blink.
->>
->> This LED is described in the witherspoon device-tree [*]:
->>
->>   front-power {
->>       retain-state-shutdown;
->>       default-state = "keep";
->>       gpios = <&pca0 14 GPIO_ACTIVE_LOW>;
->>   };
->>
->> [*] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm/boot/dts/aspeed-bmc-opp-witherspoon.dts?id=b1f9be9392f0#n140
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  hw/misc/pca9552.c    | 15 +++++++++++++++
->>  hw/misc/trace-events |  1 +
->>  2 files changed, 16 insertions(+)
->>
->> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
->> index f0d435e310..85557b78d9 100644
->> --- a/hw/misc/pca9552.c
->> +++ b/hw/misc/pca9552.c
->> @@ -60,6 +60,21 @@ static void pca9552_display_pins_status(PCA9552State *s)
->>          buf[i] = '\0';
->>          trace_pca9552_gpio_status(s->description, buf);
->>      }
->> +    if (trace_event_get_state_backends(TRACE_PCA9552_GPIO_CHANGE)) {
->> +        for (i = 0; i < s->nr_leds; i++) {
->> +            if (extract32(pins_changed, i, 1)) {
->> +                unsigned new_state = extract32(pins_status, i, 1);
->> +
->> +                /*
->> +                 * We display the state using the PCA logic ("active-high").
->> +                 * This is not the state of the LED, which signal might be
->> +                 * wired "active-low" on the board.
->> +                 */
->> +                trace_pca9552_gpio_change(s->description, i,
->> +                                          !new_state, new_state);
->> +            }
->> +        }
->> +    }
->>  }
->>  
->>  static void pca9552_update_pin_input(PCA9552State *s)
->> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
->> index 7630e59652..805d2110e0 100644
->> --- a/hw/misc/trace-events
->> +++ b/hw/misc/trace-events
->> @@ -209,3 +209,4 @@ grlib_apb_pnp_read(uint64_t addr, uint32_t value) "APB PnP read addr:0x%03"PRIx6
->>  
->>  # pca9552.c
->>  pca9552_gpio_status(const char *description, const char *buf) "%s GPIOs 0-15 [%s]"
->> +pca9552_gpio_change(const char *description, unsigned id, unsigned prev_state, unsigned current_state) "%s GPIO id:%u status: %u -> %u"
->>
+>    Stefan
 > 
 > 
+> 
+

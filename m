@@ -1,91 +1,99 @@
-Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp1668916qvs;
-        Wed, 3 Jun 2020 07:58:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxC2E9uWZrCFeq2sZUVnHWBZuY/sBRjsUBZfgu7RykHCkx+Xh2FnGfbMJmiM+hjD8Y6/OhF
-X-Received: by 2002:a25:a0c7:: with SMTP id i7mr430267ybm.169.1591196319952;
-        Wed, 03 Jun 2020 07:58:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591196319; cv=none;
+Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp1669731qvs;
+        Wed, 3 Jun 2020 07:59:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJytg/Y0rZfojGWqMyrVPgYM2cbhb6fDsyiJW8Q3vdhNjDe6IcELDaHpN2TQgxVOJIngHaKS
+X-Received: by 2002:a05:6902:4b3:: with SMTP id r19mr413656ybs.185.1591196393979;
+        Wed, 03 Jun 2020 07:59:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591196393; cv=none;
         d=google.com; s=arc-20160816;
-        b=0MzeiOmdgxvS6vhlX5sQVP3EglaIVO1gtAOgiJOzowW9y88O9xGLiykWuF9n44hCMR
-         YMYBxrxiUA8XsVjI6AHRJUMTz6XLHBPVZOLPrT8G4g1YUzDjZ/jQ9fViwZpOzj8LWhmb
-         mOpO0yvtVt4bA5LeGdaJttxtVdsjuO2DNEYPfIZPAqV2o0pl11CHC8BrIbw9XXYQR/mo
-         u3yE47oEdOeXLAMBtPZuTrxRgV4T2C+MHoK3VE9J8Ad4xAqVkVHgPL7e1rpCskiRvjdC
-         Dib+K4tTpLe3arIdtVFY0+NxEuEh8AC8IvpNRCU0B+sCLoTtOiDikiqyrYg/4tT29DiR
-         OpBA==
+        b=gIELX1Pc7v0WpRsEu2aWYMdxjV716QUn21GfofQ2e7D1WSwIUN/h89pASHRIgDxLn0
+         oCQ4niJ6rNQ545uEVWabnfklEoloa+0lYDcO4efu0C5wDINUh1wMetqBfGHKqbve452N
+         MPVmbku7HU0ZxPRdNPypA1m8xdjwCv8JCf1HxvznH0XepsPw8sBTqi6RC0cUAShXTOIb
+         nqjJeNM84IPjg5d2XSgFeLZllOm7iVIe97QxPxI5I7aQzTNGrNTyU/tZX6Ns+slzaU4z
+         XjCYemSCwIsVLrUDtlzVvsp2SRS6ZivSUY5fh8wZCmFJe8XRJgRBmJLIRzb7opFFXiEz
+         5jiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=YYfsQEI6mVVlenNuylQvqBQ8xAkbBa0s1Rzkbdr9zHg=;
-        b=zBGim7DVVOYJm9bBtZmOyxMKLPe7tUdGqJfq909WOBc/9EQAB9ZpmBx8FdNmcnMzSH
-         dbgfOUnGLMCeSt2VM/TOyqEnyoprMddpz4Jdc9/lm50Dldh9wb437KHibLMQIrVjuOPK
-         1Hew7ShT3pYQzrvCSWUCGoNFkBDpiedZQf3l8EnZJuYpLujSx/uBJdobpRPE0u/Kq/JR
-         /AbuCxAhNkulnjcp8aJ5dg7oDPv1Wm1eZ8mvYseEzoSBaZYM48xEMl8Ksd78eUzgorAK
-         cEJs2P8l27q1U19hKWisH9gnoHkYAFGnzvJx2xKzcMD0VeXjcPRVUCbDt4lOc2D9/7Gk
-         xkmA==
+        bh=ZOFbPO8NF0Qt4pG213J4v1h/uFGzFUhLJULtgTQw8KA=;
+        b=ounvLk9klTbfJvkReoE+ffkLNOWIRzfA8iq7brJGZwXPzEMSwXZwCArBLNFcH5sWMw
+         UOSbVS1hFM0DsVE2IhYyakU2FxUKkwAiI7c1nu6f37C5cBsdCxs5y8a+eMYjkyS0Vx1G
+         n9FD5hg8TcrDMvPnz44TNkaCp4TRqZsc5fvu+R534W0g0+2sC4/YfScqCMdlywu5IxsG
+         EzO+N96sG4UkKX+UFYJIppSeC4GnEdQS/8RJNDlQRkCGaNBKEB6RzA+8V57fDqWSSFXK
+         1jr6CXLQFm3tJyRbcSXF97VadxU5xudkf6AYgbeBdQb3e9eOm6zU7n81Q/evoA0Jwti4
+         z4kQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NTEbjkWR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FHv1hnt4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r4si2000952ybf.429.2020.06.03.07.58.39
+        by mx.google.com with ESMTPS id p123si1818362ybg.360.2020.06.03.07.59.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jun 2020 07:58:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 03 Jun 2020 07:59:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NTEbjkWR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33444 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FHv1hnt4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42900 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgUql-00013S-9q
-	for alex.bennee@linaro.org; Wed, 03 Jun 2020 10:58:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35736)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jgUrx-0004s8-Dw
+	for alex.bennee@linaro.org; Wed, 03 Jun 2020 10:59:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35748)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1jgUlN-0007Oa-AF; Wed, 03 Jun 2020 10:53:05 -0400
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:45945)
+ id 1jgUlP-0007V5-KA; Wed, 03 Jun 2020 10:53:07 -0400
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:41110)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1jgUlM-0000X8-50; Wed, 03 Jun 2020 10:53:04 -0400
-Received: by mail-pf1-x444.google.com with SMTP id a127so1741968pfa.12;
- Wed, 03 Jun 2020 07:53:03 -0700 (PDT)
+ id 1jgUlO-0000XT-OF; Wed, 03 Jun 2020 10:53:07 -0400
+Received: by mail-pf1-x443.google.com with SMTP id 64so1755875pfg.8;
+ Wed, 03 Jun 2020 07:53:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id;
- bh=YYfsQEI6mVVlenNuylQvqBQ8xAkbBa0s1Rzkbdr9zHg=;
- b=NTEbjkWR8sQo/c8oTzTusq/4q3wfwmes5QEGIuRenmemPVTH56u1p192YuJrcPYjGx
- FLRoTLq9zKLSx03O2ROMVfWq2mLxIyXKz56PYiHXWYgxCx4xMM9y3FYbRC86CaT4d9FO
- DGrQGthsMeYRuRm/Cbh98V+0KHAbygJTBv6mzRfGzjMUoJsvbfBRBFDxyx9INiq++MKD
- eMo2HpI6F9KNPk/R/PZtOLhyAcPU2Xffg4ZuVWRgSPd89gijES8byw0zjRtVGKVj3wIX
- lrJLp6wQDoVQzXWVSqsdliavAnTU8N+pQ047fV0Uo9wGdkeKO9qOA1qwgcwmEuDbPXrm
- 7DgA==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=ZOFbPO8NF0Qt4pG213J4v1h/uFGzFUhLJULtgTQw8KA=;
+ b=FHv1hnt4ZS4Y4rmRV1IDn8cKMySJHpNxxKmvFTfXnyjGXrgWsbvASSV+9bAgmTs0wL
+ uxQXLTyDxZeZeHEv3v+bFP5SeMJCDvUYF2DxuChwqTC72oUd5fOv7dPPHyx6T6PLpwbe
+ VgIb9I267EJcQF4rsqXf1o0aMEjRg0rQvfJPDDIFEl3OWRqWr3yyHsECP58J2H42hz0t
+ SOzXpLH2bKdlDTWM8JkE4Yto9RM1s5BR4qHjv2jJKHXnozGqNc359Yt34IoNkmr3V3+k
+ swsaI45DlaX2tvuJPTrY8fKn3giyD4elDLRoPHrmAlZgjnQVKv3YSPHAK6oV1u//m3ec
+ zYZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id;
- bh=YYfsQEI6mVVlenNuylQvqBQ8xAkbBa0s1Rzkbdr9zHg=;
- b=oVKcjLbCLENuTXEdPBasov8FfFdaC0dJWezNy1Cutc6mIPkrb1yy4I95Oc73QuCqp2
- HzrSkInfSWTn8B/dfrFSsNkWCHAYnyKGLo8Tlea4LUK0Opa8eW6L18gQAU4JC1/lqBdR
- Bu/KW0TQWxQo4Gw9rgdH3riySG7/7sBwrjui7mDLgvqCuTc7+Zn6P8g85JZqraXRW77d
- 80tlm1Jwk6X+MsXCPuf6SAsLukGj/1smvdvjVQ9ig4hx/yovwVdd2LwfNRGqJIBuCQwH
- 1z7cFdwjBocKYcl42ujhy3ripCeEMUzRfPEB6+cbQ3rb5Q4g7ienTU5IEJh7bUtWB2CB
- tFtA==
-X-Gm-Message-State: AOAM5330nwDIjdJD8e+Gj9ZD6jNUWVXyedfBq8mXzaA/CeeN7OfGyqM/
- Bq/1KsLoG7e95bI8LKwTkac=
-X-Received: by 2002:a63:3503:: with SMTP id c3mr28232188pga.371.1591195981870; 
- Wed, 03 Jun 2020 07:53:01 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=ZOFbPO8NF0Qt4pG213J4v1h/uFGzFUhLJULtgTQw8KA=;
+ b=UMEaBknKkZsujRZWp2vyR0jWQocvV3seeBoPIfq0t+vKxPo6xWOBIwcKZ3ZMq6dA1I
+ ZEo7hu2lcKjydtziMgwdRi0C+CSl6fmleN5UfeqjS9DzsGgiklUwbfhicFcGy5siV4lb
+ UGa+ZS0CdqNJq19kHq1ZWUbM4R+45UzWIABZ3oTJHzmfq7YR3nBiaXZ0tBTadmL0qGJs
+ SSa7w4Y/C9xrZiE/3fIcIB5ZXb1ppqMacbfTmxR1yM7l4TP4lPsC6rzklixSX/Asv606
+ x99tmTzLeSoX9y4+ZRbG99CbTKW5foVcZ9cBaaSlAgeBIDO3gjfCC7UX4vMzTxIUP6CS
+ gaPw==
+X-Gm-Message-State: AOAM533ul15S8SYX+GUARVSQWDdj3TaAzCMZYScjiYTzrKvZqYnczo0j
+ NpYO1AiWStFLvGRwM/M1gxk=
+X-Received: by 2002:a17:90a:8815:: with SMTP id
+ s21mr53173pjn.154.1591195985044; 
+ Wed, 03 Jun 2020 07:53:05 -0700 (PDT)
 Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id p12sm2230061pfq.69.2020.06.03.07.53.00
+ by smtp.gmail.com with ESMTPSA id m2sm2827173pjk.52.2020.06.03.07.53.04
  (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 03 Jun 2020 07:53:00 -0700 (PDT)
+ Wed, 03 Jun 2020 07:53:04 -0700 (PDT)
 From: Guenter Roeck <linux@roeck-us.net>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 0/2] sd: sdhci: Implement basic vendor specific register
- support
-Date: Wed,  3 Jun 2020 07:52:56 -0700
-Message-Id: <20200603145258.195920-1-linux@roeck-us.net>
+Subject: [PATCH v2 2/2] hw: arm: Set vendor property for IMX SDHCI emulations
+Date: Wed,  3 Jun 2020 07:52:58 -0700
+Message-Id: <20200603145258.195920-3-linux@roeck-us.net>
 X-Mailer: git-send-email 2.17.1
-Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
- envelope-from=groeck7@gmail.com; helo=mail-pf1-x444.google.com
+In-Reply-To: <20200603145258.195920-1-linux@roeck-us.net>
+References: <20200603145258.195920-1-linux@roeck-us.net>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::443;
+ envelope-from=groeck7@gmail.com; helo=mail-pf1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -95,57 +103,102 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
  FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-devel@nongnu.org,
  Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Guenter Roeck <linux@roeck-us.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1Ka/9iKLgPXU
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hZ9jqjOD1uJN
 
-The Linux kernel's IMX code now uses vendor specific commands.
-This results in endless warnings when booting the Linux kernel.
+Set vendor property to IMX to enable IMX specific functionality
+in sdhci code.
 
-sdhci-esdhc-imx 2194000.usdhc: esdhc_wait_for_card_clock_gate_off:
-	card clock still not gate off in 100us!.
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+v2: Added missing error checks
+    Added Philippe's Tested-by: tag
 
-Implement support for the vendor specific command implemented in IMX
-SDHCI hardware to be able to avoid this warning.
+ hw/arm/fsl-imx25.c  | 6 ++++++
+ hw/arm/fsl-imx6.c   | 6 ++++++
+ hw/arm/fsl-imx6ul.c | 2 ++
+ hw/arm/fsl-imx7.c   | 2 ++
+ 4 files changed, 16 insertions(+)
 
-Patch 1/2 implements vendor specific command support in the SDHCI core
-code. At this time, only IMX vendor command support is implemented,
-but the implementation is written with expandability in mind.
+diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+index cdaa79c26b..a853ffcc00 100644
+--- a/hw/arm/fsl-imx25.c
++++ b/hw/arm/fsl-imx25.c
+@@ -274,6 +274,12 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+                                  &err);
+         object_property_set_uint(OBJECT(&s->esdhc[i]), IMX25_ESDHC_CAPABILITIES,
+                                  "capareg", &err);
++        object_property_set_uint(OBJECT(&s->esdhc[i]), SDHCI_VENDOR_IMX,
++                                 "vendor", &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
+         object_property_set_bool(OBJECT(&s->esdhc[i]), true, "realized", &err);
+         if (err) {
+             error_propagate(errp, err);
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index f58c85aa8c..29677cfd59 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -350,6 +350,12 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+                                  &err);
+         object_property_set_uint(OBJECT(&s->esdhc[i]), IMX6_ESDHC_CAPABILITIES,
+                                  "capareg", &err);
++        object_property_set_uint(OBJECT(&s->esdhc[i]), SDHCI_VENDOR_IMX,
++                                 "vendor", &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
+         object_property_set_bool(OBJECT(&s->esdhc[i]), true, "realized", &err);
+         if (err) {
+             error_propagate(errp, err);
+diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+index 3ecb212da6..ce1462927c 100644
+--- a/hw/arm/fsl-imx6ul.c
++++ b/hw/arm/fsl-imx6ul.c
+@@ -505,6 +505,8 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+             FSL_IMX6UL_USDHC2_IRQ,
+         };
+ 
++        object_property_set_uint(OBJECT(&s->usdhc[i]), SDHCI_VENDOR_IMX,
++                                        "vendor", &error_abort);
+         object_property_set_bool(OBJECT(&s->usdhc[i]), true, "realized",
+                                  &error_abort);
+ 
+diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
+index 89c3b64c06..dbf16b2814 100644
+--- a/hw/arm/fsl-imx7.c
++++ b/hw/arm/fsl-imx7.c
+@@ -416,6 +416,8 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
+             FSL_IMX7_USDHC3_IRQ,
+         };
+ 
++        object_property_set_uint(OBJECT(&s->usdhc[i]), SDHCI_VENDOR_IMX,
++                                 "vendor", &error_abort);
+         object_property_set_bool(OBJECT(&s->usdhc[i]), true, "realized",
+                                  &error_abort);
+ 
+-- 
+2.17.1
 
-Patch 2/2 enables IMX SDHCI vendor extensions for all affected emulations.
-
-v2:
-- Added Reviewed-by: and Tested-by: tags to patch 1/2
-- Added missing error checks to patch 2/2
-- Added Tested-by: tag to patch 2/2
-
-----------------------------------------------------------------
-Guenter Roeck (2):
-      sd: sdhci: Implement basic vendor specific register support
-      hw: arm: Set vendor property for IMX SDHCI emulations
-
- hw/arm/fsl-imx25.c     |  6 ++++++
- hw/arm/fsl-imx6.c      |  6 ++++++
- hw/arm/fsl-imx6ul.c    |  2 ++
- hw/arm/fsl-imx7.c      |  2 ++
- hw/sd/sdhci-internal.h |  5 +++++
- hw/sd/sdhci.c          | 18 +++++++++++++++++-
- include/hw/sd/sdhci.h  |  5 +++++
- 7 files changed, 43 insertions(+), 1 deletion(-)

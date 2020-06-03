@@ -1,111 +1,94 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp304233lfc;
-        Wed, 3 Jun 2020 01:54:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwYOqISF0Po+M23L0iw6GDDsfuuw23tHnGtWbrmLHBCjxmGVMXRwqHUo6Hviq7FhiZViTb0
-X-Received: by 2002:a25:5284:: with SMTP id g126mr50618759ybb.245.1591174453584;
-        Wed, 03 Jun 2020 01:54:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591174453; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp424513lfc;
+        Wed, 3 Jun 2020 04:45:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzwR5k2gjx9a9rDfItNtwuUQij3mrj/TiKw0TZ//wQksh0tcrqqDkehDDRKCLzUBlnZDxdH
+X-Received: by 2002:a25:8084:: with SMTP id n4mr48005845ybk.102.1591184741100;
+        Wed, 03 Jun 2020 04:45:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591184741; cv=none;
         d=google.com; s=arc-20160816;
-        b=NxkhPL5nHz1F5ZRjpjaf9taxOQAHfLgeY3+BPkYfUQU3aUFl+VL6PgaGlJOgih6Cbp
-         /s4nhiocvpK/KqixQO6Vci8j42bvUoJxDXt8vfIkaSnSdBf9pQ8VxPMIm7CAVrOOvqPP
-         XVG1lianRIfV8vx1++Y0/8lNgpvQzF/mONXix/eJMWU8j6uVUsUr0rrcE+t+uMXK69u5
-         7tD98HMYxIlLfmz36l1tlraIP8VMN1KXDuvrwz9PMPd93SFfaJilIL1l6V1zRHJiIfPr
-         Wfw6DN9NpP1JeYTrb4CgtRcORhyGkrGWA9tsP2Cst8djfxDCtz0uBKa2LT4FQa681n8P
-         9UiQ==
+        b=wlSx1eJSnR4wIYIrZqRetS9M8O2eAKVecyrmmd23iSVvQ9NNocjyjaEyn6rRDt0nTE
+         jkOOQZV8GRDK/m0cjS8gL4F9e4/BkdwZcqJ1/SwYpKFVPgzr38W6eBwRGEEr2UgWKOgQ
+         M2RH4qu114ByG55WHzLP/0A+nOydSE0PhTYDTKjm7ZP71CCrg3atcXXO+inJZ4Du/3rL
+         x0pVUHsQyq/bYjJWXs5N2LN8WHUK1WFleYspvYq2XVcXMfDYZqoQF2hF5cWrH54/19yh
+         JCF9/U0RVf+x+N4p7pv64ddSrzum6ZIOIcv95fp5Cv52P5m2Yzv1ROOoic+GeQ2w7k70
+         Yzyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=QWex8TjGTKA0jX7oHTGYYPKn0RoT8P7MfBM5P+sCLNQ=;
-        b=dp8T9tgXtwUidarzskkSnm1Ee0msfJB0PRa5j1vVmtircLiM2sNeR15FFkItYF1u9N
-         BsUUXzmDVlsg9PmWVQLs+b9TPkpi6iLxqqM+RPCCr7rB50b8QvsMZBrIzaUILgC+Zyte
-         2+EM/tOn4lJ2+bgxBR6w/XcwWWv1HJt6fdTJxx5EuxlQqtcEUYnGBB/LQFvJ4VK6lPDc
-         trlrevOlwAGP3k5TBa6rYa4c/8jHa1rDFAWNCSTm0270mUoZwvZyk7RqA8EeRVinycgo
-         vB05gjMiHNt7HzxA7yDOABizw1iN8l5FrhKl1qRAIisFrUd12Ur07eEulnlZz+t9Ii0/
-         5e2g==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=dE5OSyifT3cQJLGGJhIWFamn7DJiEFoyANez3U5Mp/s=;
+        b=wD2n+04JDX7HmmUQfVKpzeGu9RfzntCBBXur55RO+xWyhSjHNb6i34t1DMU8sNtDOC
+         caC9LydjRu6nLkaHv8DMY3+zmC9kTgcMryCj+XOAaMdYdfKFd6QaYax7TstyFMumeaeb
+         Yg//xoBMU0neMZFPi+iNqRK7srTv2bryInZTnZrSvj6p+Upl3hhOE4N/+aORKcKDXu86
+         5baHYi1uOWB2hlqVGecXUZonhHkKnyUSpZ2RLyfVkDwhn93Qje6Fe+zEy16Cr68Nx+Pb
+         Zx9W+RKswTpeVPvDljm8zYT47igBlnD4kb6PrbPKFJoBJSE9Dsh2h5/ExigQ7mgGtUw/
+         NIug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ue6stcLR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i205si1127468yba.151.2020.06.03.01.54.13
+        by mx.google.com with ESMTPS id n7si1590446yba.144.2020.06.03.04.45.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jun 2020 01:54:13 -0700 (PDT)
+        Wed, 03 Jun 2020 04:45:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ue6stcLR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46844 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40106 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgPA4-0005HT-W5
-	for alex.bennee@linaro.org; Wed, 03 Jun 2020 04:54:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44202)
+	id 1jgRq0-0002zF-G4
+	for alex.bennee@linaro.org; Wed, 03 Jun 2020 07:45:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37982)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1jgP9z-0005HH-49
- for qemu-arm@nongnu.org; Wed, 03 Jun 2020 04:54:07 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:36434
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1jgP9y-0000pY-3N
- for qemu-arm@nongnu.org; Wed, 03 Jun 2020 04:54:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591174445;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QWex8TjGTKA0jX7oHTGYYPKn0RoT8P7MfBM5P+sCLNQ=;
- b=Ue6stcLRR13h6W4D2T93UOZuRQhPoXYUSaO30r1yovu3EPEL66YrFc1fTVOF9KeK5BpIHW
- LkvMOF14yymQAOFHSj9pEzSWW88FVM7u55xhbSXm+QKQL0W1LL340sEJD64IxRKb8Zj5Mh
- my48++aTgO1VSpGyVdlFJz+5okrmEw0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-418-QxY7rB10MkCXIV5UbBeXBw-1; Wed, 03 Jun 2020 04:54:01 -0400
-X-MC-Unique: QxY7rB10MkCXIV5UbBeXBw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4CCB6835B8C;
- Wed,  3 Jun 2020 08:54:00 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.141])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C91FA5C290;
- Wed,  3 Jun 2020 08:53:57 +0000 (UTC)
-Date: Wed, 3 Jun 2020 10:53:54 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Ying Fang <fangying1@huawei.com>
-Subject: Re: About the kvm-no-adjvtime CPU property
-Message-ID: <20200603085354.wcbhhuq3dhvi3moc@kamzik.brq.redhat.com>
-References: <b4389848-10fd-a906-9901-d1d354ce4842@huawei.com>
- <20200601080718.jul5r4qebpeieyfl@kamzik.brq.redhat.com>
- <3d8729db-067c-31f9-dd69-02a218f1b53e@huawei.com>
- <20200601122917.fyp2kwqzsodahnzu@kamzik.brq.redhat.com>
- <f994141f-0248-fd68-7cd5-9b948cfdbf8d@huawei.com>
+ (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
+ id 1jgRpp-0002x7-Oo; Wed, 03 Jun 2020 07:45:29 -0400
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2103 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
+ id 1jgRpn-0002Wk-6u; Wed, 03 Jun 2020 07:45:29 -0400
+Received: from lhreml703-chm.china.huawei.com (unknown [172.18.7.106])
+ by Forcepoint Email with ESMTP id A641A849E07C51F2A10C;
+ Wed,  3 Jun 2020 12:45:22 +0100 (IST)
+Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
+ lhreml703-chm.china.huawei.com (10.201.108.52) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1913.5; Wed, 3 Jun 2020 12:45:22 +0100
+Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
+ lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1913.007; 
+ Wed, 3 Jun 2020 12:45:22 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Andrew Jones <drjones@redhat.com>
+Subject: RE: [Question] Regarding PMU initialization within the QEMU for ARM
+ VCPUs
+Thread-Topic: [Question] Regarding PMU initialization within the QEMU for ARM
+ VCPUs
+Thread-Index: AdY3+/mIYt1+TQdDQmymnxAa7PkUWwBhkdKAAAS79tA=
+Date: Wed, 3 Jun 2020 11:45:22 +0000
+Message-ID: <6bacdd359e504ed8924e67ed125bf15d@huawei.com>
+References: <b2e401cd17fe49d792d09b31bd726e35@huawei.com>
+ <20200603093745.dwfb55ny34az7rez@kamzik.brq.redhat.com>
+In-Reply-To: <20200603093745.dwfb55ny34az7rez@kamzik.brq.redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.47.30.55]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-In-Reply-To: <f994141f-0248-fd68-7cd5-9b948cfdbf8d@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/03 01:04:34
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.76.210;
+ envelope-from=salil.mehta@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/03 07:45:22
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,126 +101,126 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, wu.wubin@huawei.com,
- zhang.zhanghailiang@huawei.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, "mst@redhat.com" <mst@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Igor
+ Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gOBjyCm8eOFC
+X-TUID: tN7Z8USRybbf
 
-On Tue, Jun 02, 2020 at 03:47:22PM +0800, Ying Fang wrote:
-> 
-> 
-> On 2020/6/1 20:29, Andrew Jones wrote:
-> > On Mon, Jun 01, 2020 at 08:07:31PM +0800, Ying Fang wrote:
-> > > 
-> > > 
-> > > On 2020/6/1 16:07, Andrew Jones wrote:
-> > > > On Sat, May 30, 2020 at 04:56:26PM +0800, Ying Fang wrote:
-> > > > > About the kvm-no-adjvtime CPU property
-> > > > > 
-> > > > > Hi Andrew,
-> > > > > To adjust virutal time, a new kvm cpu property kvm-no-adjvtime
-> > > > > was introduced to 5.0 virt machine types. However the cpu
-> > > > > property was enabled only for host-passthrough and max cpu model.
-> > > > > As for other cpu model like cortex-a57, cortex-a53, cortex-a72,
-> > > > > this kvm-adjvtime is not enabled by default, which means the
-> > > > > virutal time can not be adjust for them.
-> > > > > 
-> > > > > Here, for example, if VM is configured with kvm enabled:
-> > > > > 
-> > > > >     <cpu mode='custom' match='exact' check='partial'>
-> > > > >       <model fallback='allow'>cortex-a72</model>
-> > > > >       <topology sockets='2' dies='1' cores='2' threads='1'/>
-> > > > >       <numa>
-> > > > >         <cell id='0' cpus='0-1' memory='16777216' unit='KiB'/>
-> > > > >         <cell id='1' cpus='2-3' memory='16777216' unit='KiB'/>
-> > > > >       </numa>
-> > > > >     </cpu>
-> > > > > 
-> > > > > We cannot adjust virtual time even if 5.0 virt machine is used.
-> > > > > So i'd like to add it to other cpu model, do you have any
-> > > > > suggestions here ?
-> > > > > 
-> > > > > 
-> > > > 
-> > > > Hi Fang,
-> > > > 
-> > > > The cpu feature only requires kvm.  If a cpu model may be used with kvm,
-> > > > then the feature can be allowed to be used with the model.  What I find
-> > > > interesting is that the cpu model is being used with kvm instead of 'host'
-> > > > or 'max'.  Can you explain the reasons for that?  Currently, when using
-> > > yes，the cpu model is indeed used with kvm.
-> > > 
-> > > There is a situation where the host cpu model is Cortex-A72 and
-> > > a 'custom' cpu mode is used to keep insrtuction set compatible between
-> > > the source and destination host machine when doing live migration.
-> > > So the host physical machine cpu model is Cortex-A72 but
-> > > host-passthrough model is mode used here.
-> I mean host-passthrough model is 'not' used here. Sorry to make it
-> confusing.
+Hi Andrew,
+Many thanks for the reply.
 
-I guessed as much.
+> From: Andrew Jones [mailto:drjones@redhat.com]
+> Sent: Wednesday, June 3, 2020 10:38 AM
+> To: Salil Mehta <salil.mehta@huawei.com>
+> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org; Peter Maydell
+> <peter.maydell@linaro.org>; Igor Mammedov <imammedo@redhat.com>;
+> mst@redhat.com
+> Subject: Re: [Question] Regarding PMU initialization within the QEMU for =
+ARM
+> VCPUs
+>=20
+> On Mon, Jun 01, 2020 at 03:04:33PM +0000, Salil Mehta wrote:
+> > Hello,
+> > I could see below within function fdt_add_pmu_nodes() part of
+> > hw/arm/virt.c during virt machine initialization time:
+> >
+> > Observation:
+> > In below function, support of PMU feature is being checked for
+> > each vcpu and if the PMU is found part of the features then PMU
+> > is initialized with in the host/KVM. But if there is even one
+> > vcpu which is found to not support the PMU then loop is exited
+> > and PMU is not initialized for the rest of the vcpus as well.
+> >
+> > Questions:
+> > Q1. Not sure what is the logic of the premature exit and not
+> >     continuing with further checks and initialization of other
+> >     VCPU PMUs?
+>=20
+> KVM requires all VCPUs to have a PMU if one does. If the ARM ARM
+> says it's possible to have PMUs for only some CPUs, then, for TCG,
+> the restriction could be relaxed. I expect it will take more than
+> just removing the check for things to work though.
 
-> > 
-> > Are the source and destinations hosts used in the migration identical?
-> > If so, then the guest can use cpu 'host' and disable cpu features that
-> > should not be exposed (e.g. -cpu host,pmu=off).  If the source and
-> > destination hosts are not identical, then I'm curious what those exact
-> > differences are.  With the way AArch64 KVM works today, even using the
-> > Cortex-A72 cpu model should require identical hosts when migrating.  Or,
-> > at least both hosts must be compatible with Cortex-A72 and any difference
-> > in ID registers must be somehow getting hidden from the guest.
-> Yes, you are right.
-> We have AAarch64 server with cpu based on Cortex-A72 and some extra
-> instruction set added. Source host with cpu based on V1 and destination host
-> with cpu based on V2 and they are compatible with Cortex-A72. We want to use
-> a 'custom' cpu mode here to make it possible to do live migration between
-> them. This is the scenario where the 'host' cpu model is not used since a
-> 'custom' cpu model Cortex-A72 is used here .
+Got it. Many thanks for this info.
 
-What you've described here is indeed the reason to use CPU models. I.e.
-enabling the migration from a host of one type to another by creating a
-guest that only enables the features contained in both hosts (as well as
-maintaining all state that describes the CPU type, e.g. MIDR).
-Unfortunately, unless your KVM has patches that aren't upstream, then that
-doesn't work on AArch64 KVM (more on that below). It may appear to be
-working for you, because your guest kernel and userspace don't mind the
-slight differences exposed to it between the hosts, or those differences
-are limited to explicitly disabled features. If that's the case, then I
-would guess that using '-cpu host' and disabling the same features would
-"work" as well.
+During virt machine init we take cpu type from (-cpu <cpu-type>)
+option and it should apply evenly to all of the vcpus. Therefore,
+I can assume all of the processors to be identical for now. This
+combined with the KVM restriction you mentioned above means for
+PMU we could only have Enable-for-All OR Enable-for-none config
+for all of the vcpus being booted even though we at different
+places do have per-vcpu specific check like below available
 
-Here's some more details on why the Cortex-A72 CPU model doesn't matter
-with upstream KVM. First, upstream AArch64 KVM doesn't support CPU models,
-and it doesn't even have a Cortex-A72 preferred target. For Cortex-A72
-it will use "KVM_ARM_TARGET_GENERIC_V8", which is the same thing 'host'
-would do when running on a Cortex-A72. Second, if V2 of the Cortex-A72-
-based CPU you're using changed the revision of the MIDR, or any other
-state that gets passed directly through to the guest like the MIDR, then
-that state will change on migration. If a guest looks before migration and
-again after migration, then it could get confused. A guest kernel may only
-look once on boot and then not notice, but anything exposed to userspace
-is extra risky, as userspace may check more frequently.
+/* MADT */
+static void
+build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+{
+[...]
 
-In short, without KVM patches that aren't upstream, then it's risky to
-migrate between machines with V1 and V2 of these CPUs. And, it doesn't
-help to use the Cortex-A72 CPU model.
+    for (i =3D 0; i < vms->smp_cpus; i++) {
+        AcpiMadtGenericCpuInterface *gicc =3D acpi_data_push(table_data,
+                                                           sizeof(*gicc));
+        [...]
 
-Thanks,
-drew
+        if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {---> This check
+            gicc->performance_interrupt =3D cpu_to_le32(PPI(VIRTUAL_PMU_IRQ=
+));
+        }
+ [...]
+}
+
+Do per-vcpu feature check for PMU even makes sense till we allow
+heterogeneous support of processors or relax the PMU enablement
+on the per-vcpu basis within the KVM?
 
 
-> However the kvm-adjvtime
-> feature is also need. So I think we should move kvm_arm_add_vcpu_properties
-> to arm_cpu_post_init, instead of limited to 'host' and 'max' cpu model[1].
-> 
-> 1: https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg00091.html
-> > 
-> > Thanks,
-> > drew
-> > 
-> > 
-> > 
-> 
-> 
+
+>=20
+> > Q2. Does it even makes sense to have PMUs initialized for some
+> >     vcpus and not for others unless we have heterogeneous system?
+>=20
+> I don't know, but it doesn't sound like a configuration I'd like
+> to see.
+
+
+sure. but in the existing code we do prematurely exit after we
+discover first vcpu amongst the possible vcpus not supporting
+PMU feature. This looks abnormal as well?
+
+
+>=20
+> > Q3. Also, there is a per virt machine knob of vcc->no_pmu.
+> >     This is something which user could specify at the init time
+> >     and perhaps only once but we don't use it for ARM. Perhaps
+> >     should have been used even before entering this function
+> >     to enable or disable the support as per user config?
+>=20
+> It's purpose is to keep users from doing 'pmu=3Don' on 2.6 machine
+> types. On 2.7 and later machine types if you don't want a PMU
+> you should use 'pmu=3Doff'.
+
+sure. so by default on latest machines PMU is on.=20
+
+>=20
+> > Q4. This function  fdt_* looks to be wrongly named. The info
+> >     being initialized here shall be used even when ACPI is
+> >     being used. Initialization part and FDT info looked
+> >     mixed up here if I am right?
+>=20
+> Agreed. The function has the wrong name. mach-virt has many functions tha=
+t
+> mix the initialization and fdt building together, but those functions are
+> named something like create_foo(). Patches welcome.
+
+
+Will do. I have created one already. Will float soon.
+
+
+>=20
+> Thanks,
+> drew
 

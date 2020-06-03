@@ -1,103 +1,103 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp33351lfc;
-        Tue, 2 Jun 2020 18:18:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxJjEam+zJVFoK0aa+7tKe2QdcTAHV2nMEfEAjD8Fd4NU7sR88vWeQbCSXMNGCZip9FlRZM
-X-Received: by 2002:a25:6ac1:: with SMTP id f184mr47339261ybc.410.1591147091506;
-        Tue, 02 Jun 2020 18:18:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591147091; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp33385lfc;
+        Tue, 2 Jun 2020 18:18:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy6726xlothswdMNs52qqt4dJfXo58nUeTEQeunaQrjzENNYRryDzWK9tv/LKc4UBvPbmln
+X-Received: by 2002:a25:f507:: with SMTP id a7mr47807263ybe.176.1591147096225;
+        Tue, 02 Jun 2020 18:18:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591147096; cv=none;
         d=google.com; s=arc-20160816;
-        b=QQiq/dLIfXLbh9jrGtzUyPD7jw9WvA5v4+GiWqPP4EGm1E+supgNyGCECzFDJEhRKf
-         jUj3s2ZcX31Z+Jujej10WVyBEHG2/ogRkpybIleir/S3Ydh0vbXOOBBR72SDVkRIPiJ1
-         uPnljsvWsoTHrI86sqDX7bYy38BElW3XtVDSHXw24Mmz/1ROYtPg+RUGKZzSuC1/yH4a
-         Pac3oBjfjmhwyBH6+g7xZLjKIYH/wkXf6dsc7iqe4BUNRoNx+LBE2RLYQH9/jPa3o6by
-         L8Ud2KPAT9oSESdWYhU1fq0A2ifXujSGlnlyazcq6fTToM/lRZMAWd2HL+jmlUXl6FpT
-         Cw5w==
+        b=R3yJKWLruaWJMPXpIIJEk6bDwYoFlDOltAJuf3DcdydzfG/5k8NitKHm7Qez6FO6Lv
+         l5C6T9IxuG9J+whTYEdmnckMp/gdNJGuDZ+hNHXSYdikvkoRx7J+Og1PEF/IIoAdHirO
+         ne+bOm843CfVjPr/AWOAUQ44sWvyaiIpq/heaUjdETAoBTq2MnJp6wyOh//2MoQAE+Tx
+         H/7+JtvsyfUY0Q/1UUDBotu0VJK+3UEV4KDR7cc7QOcTSpl0YAKRgcTnTiDh/Gt8JW+F
+         ZzYE4jJWielE26lxcRldkM/4mwAKsd5wqwsa8ihtzyjayoCOqBy0xpKp+l9/liS67Sdg
+         F4Yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=e60Bq5SlAYtW55DZqRQCRGGXcLnTZe8NHr+quQk/wbA=;
-        b=nNZZ65sSNVaLnCkInhDLyfu/EMOrs1oJ77ytlCEJqSfBMIv2uiG51oRO3se0HGmED+
-         oKiaONv7wwQKSGaWOiZuHBo/HrF87EoyzD/Zm5kbs1ZIfMjJCY7xYLls2NL+5zpRqBY6
-         fdJmbYsOk8dFYlJeYiv3wTcxGYFvfl0F8jd6Zffc3Cv6zCQciQgR2YzRnO9ROMQxVC31
-         Pi4an6pfx/XceAGvK8BR60XtKAGWUvfOqifkdmOHzIlAHC9Wb4wXckTv24roqmCbqD7e
-         5ESTOaq74QlGKtJBUxWZtQ9AF9KBEyg4o5atkyMockHtRxLEEiEQrj/J5XoBnHKv9Eqm
-         kFOA==
+        bh=iD1HCmE/mBT9UdzHtyaiNXiw6VvhW3BvWlEg2J8SAgE=;
+        b=fZuz93WEUWcSqEgKU6UUK5EgpyfoH674neTOhSo1VpoNyhPcqHRhxOQfSYsMmXTa80
+         qoW4KA4SQdmwuDtP4GmWHr90CKNE69HxR0W2BpOsVsrOQvZcOwHeMtZUocUaiFaIapLn
+         xo3R8dZ2QFnFUIh3hzjl9L621ZTxKjOZSkGwnAE1ficG4uMevR2wLb0qpMKuQ2MWCB6I
+         B3gN6+IXxRk7UGGeO851BqJf9ev/ChrBGamlrVIQ+Stqor5gYwU82lBEfUhdugMpQ4At
+         Pr9pJkHZ8WlcscQpCnGYb0C9daYLmLzHiSvbcqzchZJ+me4/sWnxjvr8nuBxcm4Hihby
+         ECdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NtTPwYY9;
+       dkim=fail header.i=@linaro.org header.s=google header.b=s9ZCi8n7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z8si321586ybm.9.2020.06.02.18.18.11
+        by mx.google.com with ESMTPS id j128si355596yba.336.2020.06.02.18.18.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jun 2020 18:18:11 -0700 (PDT)
+        Tue, 02 Jun 2020 18:18:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NtTPwYY9;
+       dkim=fail header.i=@linaro.org header.s=google header.b=s9ZCi8n7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37210 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37714 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgI2k-0003Xb-TZ
-	for alex.bennee@linaro.org; Tue, 02 Jun 2020 21:18:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48644)
+	id 1jgI2p-0003ka-Ei
+	for alex.bennee@linaro.org; Tue, 02 Jun 2020 21:18:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48730)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jgHyM-0003qa-2Y
- for qemu-arm@nongnu.org; Tue, 02 Jun 2020 21:13:39 -0400
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:34495)
+ id 1jgHyV-000408-9o
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2020 21:13:47 -0400
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:46401)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jgHyI-0003YR-5x
- for qemu-arm@nongnu.org; Tue, 02 Jun 2020 21:13:36 -0400
-Received: by mail-pl1-x641.google.com with SMTP id n9so208201plk.1
- for <qemu-arm@nongnu.org>; Tue, 02 Jun 2020 18:13:33 -0700 (PDT)
+ id 1jgHyN-0003ZO-Hg
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2020 21:13:46 -0400
+Received: by mail-pl1-x62b.google.com with SMTP id n2so186939pld.13
+ for <qemu-arm@nongnu.org>; Tue, 02 Jun 2020 18:13:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=e60Bq5SlAYtW55DZqRQCRGGXcLnTZe8NHr+quQk/wbA=;
- b=NtTPwYY9PU7sn13lSWl2GMDyhBoH9IxK9qoGwFkNqo4bECzelUhm29RunktbGUOOHm
- AftSaMCpkEW2V7h9I0hct+lLkKdxu+OvHcTUXhYqf0q3xXNzR4CJlz4Pw0a1FKqdZ+H3
- 6xoRoleY5oPiG3/qh0KUe5u/jaTDNFOWxrxhctPlmbINs3Dc6h/LM02IP9SYOX1DcOBa
- 0cqiDPLxUXcVdGhhHawA5cMMVfLfu2RyrzrKNbSMjZWqrxsitWfo8B8mTgXI86c1XKce
- JMYgc6wi1EgFXBDfEZrTtPEyetq8toYyxIacCaXzfHWAvgPWno3GAZoXcdj9MJRyNOsh
- YBew==
+ bh=iD1HCmE/mBT9UdzHtyaiNXiw6VvhW3BvWlEg2J8SAgE=;
+ b=s9ZCi8n7qawEHTJfszwHzAbPrF2DvVIASVDLbLnXzgdllqPe4dkuFBIlN+e39NCsP7
+ /LIf5r/0D0GUkKOkgA2BzyKw2UctGsfA6O+eIrPetSZNXFFF8mMDSSB69rC3AP8qtb+3
+ kOy0AnuisCA1pQAwwr/sakoioyBrPbr79PPbUxOiUuK7fp/jVHSau3q4w6vDFUg/7y45
+ a8IMjubzJTecYAksyLJvIcdJoYLMKDMgcMl0glsqxynVHKXMjIqn5YzIElLNfRmIaB9W
+ 7K83hKLMNtgdFu/ZiIOZxrsZQMUGbatj+T2JKLF2I5oWetxbpTjInipT6eaFd3ZFBFom
+ hVLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=e60Bq5SlAYtW55DZqRQCRGGXcLnTZe8NHr+quQk/wbA=;
- b=pA8jFOZiKeIha/fyD+bOPVK4YrNfAr2d9uc0FrEA1cnPh84cqBmAwSmLwChiXMdESr
- OYqYrarjLdfaQAccF70OXcsstorsvyPAzGjojTh8vyyouWq3GTrGmtdyubOH/o+hSG3J
- QGXoy9tSL4XB/9NG8jNV0J33ZmVnmfUnQJOQEaj60xiTmlrjIhuC2oo5Vy3ooTTPEFJ8
- a/P8gF3U+mgNym+2kcofIYeocfkQJUzyzCulJ6GbE+GJxPO9O61HUbK2fADJSNpcfVfu
- 7RrF983vi3jKGoVP6FaXuD7RT4zSOLbzl8ujfTydQD4H4bKMxe1L7dX7TZt/vpLoh9BA
- gRpQ==
-X-Gm-Message-State: AOAM533yRDBbl/Q3xkeGJatgbDmVkeaiGpQ85t98U8DwRx1GYdi7CxqU
- F3HT5k5euMC6n3t6Kzbk/7Yo6A==
-X-Received: by 2002:a17:902:7783:: with SMTP id
- o3mr26908788pll.286.1591146812885; 
- Tue, 02 Jun 2020 18:13:32 -0700 (PDT)
+ bh=iD1HCmE/mBT9UdzHtyaiNXiw6VvhW3BvWlEg2J8SAgE=;
+ b=Ukg9irfVtT3e33Vgcalc9ljSeLRw+3z5d4qU6WDCi2eUuEqSxmxaIZ5r3V21iqbcPl
+ VLGSODkiDTHcZQrVuO31WfjwjH/F6mOruhNvk0fK/NvmzvknSal89phSLLTNVkJRZFsy
+ +PcIDTDdGuG/U1UCTaxSXY8/apXFEPXgjr4k6wkjBp2HbKXXF9IRUoq+cjWBAdHXQdKS
+ oG0EOdwa+MjwsoaXC8aGM0DUoH3NUuZgloqC7jErupp1Mix2j9nV5L9ROW/lovP84CY4
+ S66HVL4UIZY6stCQB6fg+feza8k6Ift0s75b2xTuGYUdxQASreMIZ6DJSy3AtcEZUCWT
+ Cj3w==
+X-Gm-Message-State: AOAM531KDXfiuMbW9uTCppCpDKR7Ud9PpsXxgIuwf6swnU3srNYEih/6
+ SB8JK+YHt5aEcZ2snbGc/oBZVg==
+X-Received: by 2002:a17:902:b103:: with SMTP id
+ q3mr21208946plr.265.1591146818066; 
+ Tue, 02 Jun 2020 18:13:38 -0700 (PDT)
 Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
  [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id 3sm290067pfe.85.2020.06.02.18.13.31
+ by smtp.gmail.com with ESMTPSA id 3sm290067pfe.85.2020.06.02.18.13.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Jun 2020 18:13:32 -0700 (PDT)
+ Tue, 02 Jun 2020 18:13:37 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v7 11/42] target/arm: Implement the GMI instruction
-Date: Tue,  2 Jun 2020 18:12:46 -0700
-Message-Id: <20200603011317.473934-12-richard.henderson@linaro.org>
+Subject: [PATCH v7 15/42] target/arm: Implement LDG, STG, ST2G instructions
+Date: Tue,  2 Jun 2020 18:12:50 -0700
+Message-Id: <20200603011317.473934-16-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200603011317.473934-1-richard.henderson@linaro.org>
 References: <20200603011317.473934-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x641.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -122,41 +122,424 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, steplong@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5wCr9noFRjYo
+X-TUID: UT7So5q7PNYy
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v6: Inline the operation.
+v2: Split out allocation_tag_mem.  Handle atomicity of stores.
+v3: Add X[t] input to these insns; require pre-cleaned addresses.
+v5: Fix !32-byte aligned operation of st2g.
+v6: Fix op2 extract, stg pre/post-index, stores vs sp, commentary;
+    use pre-computed ata.
+v7: Fix STZG iteration (stephen long)
 ---
- target/arm/translate-a64.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ target/arm/helper-a64.h    |   7 ++
+ target/arm/mte_helper.c    | 194 +++++++++++++++++++++++++++++++++++++
+ target/arm/translate-a64.c | 158 +++++++++++++++++++++++++++++-
+ 3 files changed, 354 insertions(+), 5 deletions(-)
 
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index 6c116481e8..2fa61b86fa 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -106,3 +106,10 @@ DEF_HELPER_FLAGS_2(xpacd, TCG_CALL_NO_RWG_SE, i64, env, i64)
+ 
+ DEF_HELPER_FLAGS_3(irg, TCG_CALL_NO_RWG, i64, env, i64, i64)
+ DEF_HELPER_FLAGS_4(addsubg, TCG_CALL_NO_RWG_SE, i64, env, i64, s32, i32)
++DEF_HELPER_FLAGS_3(ldg, TCG_CALL_NO_WG, i64, env, i64, i64)
++DEF_HELPER_FLAGS_3(stg, TCG_CALL_NO_WG, void, env, i64, i64)
++DEF_HELPER_FLAGS_3(stg_parallel, TCG_CALL_NO_WG, void, env, i64, i64)
++DEF_HELPER_FLAGS_2(stg_stub, TCG_CALL_NO_WG, void, env, i64)
++DEF_HELPER_FLAGS_3(st2g, TCG_CALL_NO_WG, void, env, i64, i64)
++DEF_HELPER_FLAGS_3(st2g_parallel, TCG_CALL_NO_WG, void, env, i64, i64)
++DEF_HELPER_FLAGS_2(st2g_stub, TCG_CALL_NO_WG, void, env, i64)
+diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+index 9ab9ed749d..7ec7930dfc 100644
+--- a/target/arm/mte_helper.c
++++ b/target/arm/mte_helper.c
+@@ -44,6 +44,40 @@ static int choose_nonexcluded_tag(int tag, int offset, uint16_t exclude)
+     return tag;
+ }
+ 
++/**
++ * allocation_tag_mem:
++ * @env: the cpu environment
++ * @ptr_mmu_idx: the addressing regime to use for the virtual address
++ * @ptr: the virtual address for which to look up tag memory
++ * @ptr_access: the access to use for the virtual address
++ * @ptr_size: the number of bytes in the normal memory access
++ * @tag_access: the access to use for the tag memory
++ * @tag_size: the number of bytes in the tag memory access
++ * @ra: the return address for exception handling
++ *
++ * Our tag memory is formatted as a sequence of little-endian nibbles.
++ * That is, the byte at (addr >> (LOG2_TAG_GRANULE + 1)) contains two
++ * tags, with the tag at [3:0] for the lower addr and the tag at [7:4]
++ * for the higher addr.
++ *
++ * Here, resolve the physical address from the virtual address, and return
++ * a pointer to the corresponding tag byte.  Exit with exception if the
++ * virtual address is not accessible for @ptr_access.
++ *
++ * The @ptr_size and @tag_size values may not have an obvious relation
++ * due to the alignment of @ptr, and the number of tag checks required.
++ *
++ * If there is no tag storage corresponding to @ptr, return NULL.
++ */
++static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
++                                   uint64_t ptr, MMUAccessType ptr_access,
++                                   int ptr_size, MMUAccessType tag_access,
++                                   int tag_size, uintptr_t ra)
++{
++    /* Tag storage not implemented.  */
++    return NULL;
++}
++
+ uint64_t HELPER(irg)(CPUARMState *env, uint64_t rn, uint64_t rm)
+ {
+     int rtag;
+@@ -80,3 +114,163 @@ uint64_t HELPER(addsubg)(CPUARMState *env, uint64_t ptr,
+ 
+     return address_with_allocation_tag(ptr + offset, rtag);
+ }
++
++static int load_tag1(uint64_t ptr, uint8_t *mem)
++{
++    int ofs = extract32(ptr, LOG2_TAG_GRANULE, 1) * 4;
++    return extract32(*mem, ofs, 4);
++}
++
++uint64_t HELPER(ldg)(CPUARMState *env, uint64_t ptr, uint64_t xt)
++{
++    int mmu_idx = cpu_mmu_index(env, false);
++    uint8_t *mem;
++    int rtag = 0;
++
++    /* Trap if accessing an invalid page.  */
++    mem = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_LOAD, 1,
++                             MMU_DATA_LOAD, 1, GETPC());
++
++    /* Load if page supports tags. */
++    if (mem) {
++        rtag = load_tag1(ptr, mem);
++    }
++
++    return address_with_allocation_tag(xt, rtag);
++}
++
++static void check_tag_aligned(CPUARMState *env, uint64_t ptr, uintptr_t ra)
++{
++    if (unlikely(!QEMU_IS_ALIGNED(ptr, TAG_GRANULE))) {
++        arm_cpu_do_unaligned_access(env_cpu(env), ptr, MMU_DATA_STORE,
++                                    cpu_mmu_index(env, false), ra);
++        g_assert_not_reached();
++    }
++}
++
++/* For use in a non-parallel context, store to the given nibble.  */
++static void store_tag1(uint64_t ptr, uint8_t *mem, int tag)
++{
++    int ofs = extract32(ptr, LOG2_TAG_GRANULE, 1) * 4;
++    *mem = deposit32(*mem, ofs, 4, tag);
++}
++
++/* For use in a parallel context, atomically store to the given nibble.  */
++static void store_tag1_parallel(uint64_t ptr, uint8_t *mem, int tag)
++{
++    int ofs = extract32(ptr, LOG2_TAG_GRANULE, 1) * 4;
++    uint8_t old = atomic_read(mem);
++
++    while (1) {
++        uint8_t new = deposit32(old, ofs, 4, tag);
++        uint8_t cmp = atomic_cmpxchg(mem, old, new);
++        if (likely(cmp == old)) {
++            return;
++        }
++        old = cmp;
++    }
++}
++
++typedef void stg_store1(uint64_t, uint8_t *, int);
++
++static inline void do_stg(CPUARMState *env, uint64_t ptr, uint64_t xt,
++                          uintptr_t ra, stg_store1 store1)
++{
++    int mmu_idx = cpu_mmu_index(env, false);
++    uint8_t *mem;
++
++    check_tag_aligned(env, ptr, ra);
++
++    /* Trap if accessing an invalid page.  */
++    mem = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_STORE, TAG_GRANULE,
++                             MMU_DATA_STORE, 1, ra);
++
++    /* Store if page supports tags. */
++    if (mem) {
++        store1(ptr, mem, allocation_tag_from_addr(xt));
++    }
++}
++
++void HELPER(stg)(CPUARMState *env, uint64_t ptr, uint64_t xt)
++{
++    do_stg(env, ptr, xt, GETPC(), store_tag1);
++}
++
++void HELPER(stg_parallel)(CPUARMState *env, uint64_t ptr, uint64_t xt)
++{
++    do_stg(env, ptr, xt, GETPC(), store_tag1_parallel);
++}
++
++void HELPER(stg_stub)(CPUARMState *env, uint64_t ptr)
++{
++    int mmu_idx = cpu_mmu_index(env, false);
++    uintptr_t ra = GETPC();
++
++    check_tag_aligned(env, ptr, ra);
++    probe_write(env, ptr, TAG_GRANULE, mmu_idx, ra);
++}
++
++static inline void do_st2g(CPUARMState *env, uint64_t ptr, uint64_t xt,
++                           uintptr_t ra, stg_store1 store1)
++{
++    int mmu_idx = cpu_mmu_index(env, false);
++    int tag = allocation_tag_from_addr(xt);
++    uint8_t *mem1, *mem2;
++
++    check_tag_aligned(env, ptr, ra);
++
++    /*
++     * Trap if accessing an invalid page(s).
++     * This takes priority over !allocation_tag_access_enabled.
++     */
++    if (ptr & TAG_GRANULE) {
++        /* Two stores unaligned mod TAG_GRANULE*2 -- modify two bytes. */
++        mem1 = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_STORE,
++                                  TAG_GRANULE, MMU_DATA_STORE, 1, ra);
++        mem2 = allocation_tag_mem(env, mmu_idx, ptr + TAG_GRANULE,
++                                  MMU_DATA_STORE, TAG_GRANULE,
++                                  MMU_DATA_STORE, 1, ra);
++
++        /* Store if page(s) support tags. */
++        if (mem1) {
++            store1(TAG_GRANULE, mem1, tag);
++        }
++        if (mem2) {
++            store1(0, mem2, tag);
++        }
++    } else {
++        /* Two stores aligned mod TAG_GRANULE*2 -- modify one byte. */
++        mem1 = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_STORE,
++                                  2 * TAG_GRANULE, MMU_DATA_STORE, 1, ra);
++        if (mem1) {
++            tag |= tag << 4;
++            atomic_set(mem1, tag);
++        }
++    }
++}
++
++void HELPER(st2g)(CPUARMState *env, uint64_t ptr, uint64_t xt)
++{
++    do_st2g(env, ptr, xt, GETPC(), store_tag1);
++}
++
++void HELPER(st2g_parallel)(CPUARMState *env, uint64_t ptr, uint64_t xt)
++{
++    do_st2g(env, ptr, xt, GETPC(), store_tag1_parallel);
++}
++
++void HELPER(st2g_stub)(CPUARMState *env, uint64_t ptr)
++{
++    int mmu_idx = cpu_mmu_index(env, false);
++    uintptr_t ra = GETPC();
++    int in_page = -(ptr | TARGET_PAGE_MASK);
++
++    check_tag_aligned(env, ptr, ra);
++
++    if (likely(in_page >= 2 * TAG_GRANULE)) {
++        probe_write(env, ptr, 2 * TAG_GRANULE, mmu_idx, ra);
++    } else {
++        probe_write(env, ptr, TAG_GRANULE, mmu_idx, ra);
++        probe_write(env, ptr + TAG_GRANULE, TAG_GRANULE, mmu_idx, ra);
++    }
++}
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index a18d71ad98..7d0b7d5b58 100644
+index b032829194..0725c2ca07 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -5325,6 +5325,21 @@ static void disas_data_proc_2src(DisasContext *s, uint32_t insn)
-                                              cpu_reg_sp(s, rn));
-         }
-         break;
-+    case 5: /* GMI */
-+        if (sf == 0 || !dc_isar_feature(aa64_mte_insn_reg, s)) {
-+            goto do_unallocated;
+@@ -3689,6 +3689,153 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
+     }
+ }
+ 
++/*
++ * Load/Store memory tags
++ *
++ *  31 30 29         24     22  21     12    10      5      0
++ * +-----+-------------+-----+---+------+-----+------+------+
++ * | 1 1 | 0 1 1 0 0 1 | op1 | 1 | imm9 | op2 |  Rn  |  Rt  |
++ * +-----+-------------+-----+---+------+-----+------+------+
++ */
++static void disas_ldst_tag(DisasContext *s, uint32_t insn)
++{
++    int rt = extract32(insn, 0, 5);
++    int rn = extract32(insn, 5, 5);
++    uint64_t offset = sextract64(insn, 12, 9) << LOG2_TAG_GRANULE;
++    int op2 = extract32(insn, 10, 2);
++    int op1 = extract32(insn, 22, 2);
++    bool is_load = false, is_pair = false, is_zero = false;
++    int index = 0;
++    TCGv_i64 addr, clean_addr, tcg_rt;
++
++    /* We checked insn bits [29:24,21] in the caller.  */
++    if (extract32(insn, 30, 2) != 3) {
++        goto do_unallocated;
++    }
++
++    /*
++     * @index is a tri-state variable which has 3 states:
++     * < 0 : post-index, writeback
++     * = 0 : signed offset
++     * > 0 : pre-index, writeback
++     */
++    switch (op1) {
++    case 0: /* STG */
++        if (op2 != 0) {
++            /* STG */
++            index = op2 - 2;
++            break;
++        }
++        goto do_unallocated;
++    case 1:
++        if (op2 != 0) {
++            /* STZG */
++            is_zero = true;
++            index = op2 - 2;
 +        } else {
-+            TCGv_i64 t1 = tcg_const_i64(1);
-+            TCGv_i64 t2 = tcg_temp_new_i64();
-+
-+            tcg_gen_extract_i64(t2, cpu_reg_sp(s, rn), 56, 4);
-+            tcg_gen_shl_i64(t1, t1, t2);
-+            tcg_gen_or_i64(cpu_reg(s, rd), cpu_reg(s, rm), t1);
-+
-+            tcg_temp_free_i64(t1);
-+            tcg_temp_free_i64(t2);
++            /* LDG */
++            is_load = true;
 +        }
 +        break;
-     case 8: /* LSLV */
-         handle_shift_reg(s, A64_SHIFT_TYPE_LSL, sf, rm, rn, rd);
++    case 2:
++        if (op2 != 0) {
++            /* ST2G */
++            is_pair = true;
++            index = op2 - 2;
++            break;
++        }
++        goto do_unallocated;
++    case 3:
++        if (op2 != 0) {
++            /* STZ2G */
++            is_pair = is_zero = true;
++            index = op2 - 2;
++            break;
++        }
++        goto do_unallocated;
++
++    default:
++    do_unallocated:
++        unallocated_encoding(s);
++        return;
++    }
++
++    if (!dc_isar_feature(aa64_mte_insn_reg, s)) {
++        goto do_unallocated;
++    }
++
++    if (rn == 31) {
++        gen_check_sp_alignment(s);
++    }
++
++    addr = read_cpu_reg_sp(s, rn, true);
++    if (index >= 0) {
++        /* pre-index or signed offset */
++        tcg_gen_addi_i64(addr, addr, offset);
++    }
++
++    if (is_load) {
++        tcg_rt = cpu_reg(s, rt);
++        if (s->ata) {
++            gen_helper_ldg(tcg_rt, cpu_env, addr, tcg_rt);
++        } else {
++            clean_addr = clean_data_tbi(s, addr);
++            gen_probe_access(s, clean_addr, MMU_DATA_LOAD, MO_8);
++            gen_address_with_allocation_tag0(tcg_rt, addr);
++        }
++    } else {
++        tcg_rt = cpu_reg_sp(s, rt);
++        if (!s->ata) {
++            /*
++             * For STG and ST2G, we need to check alignment and probe memory.
++             * TODO: For STZG and STZ2G, we could rely on the stores below,
++             * at least for system mode; user-only won't enforce alignment.
++             */
++            if (is_pair) {
++                gen_helper_st2g_stub(cpu_env, addr);
++            } else {
++                gen_helper_stg_stub(cpu_env, addr);
++            }
++        } else if (tb_cflags(s->base.tb) & CF_PARALLEL) {
++            if (is_pair) {
++                gen_helper_st2g_parallel(cpu_env, addr, tcg_rt);
++            } else {
++                gen_helper_stg_parallel(cpu_env, addr, tcg_rt);
++            }
++        } else {
++            if (is_pair) {
++                gen_helper_st2g(cpu_env, addr, tcg_rt);
++            } else {
++                gen_helper_stg(cpu_env, addr, tcg_rt);
++            }
++        }
++    }
++
++    if (is_zero) {
++        TCGv_i64 clean_addr = clean_data_tbi(s, addr);
++        TCGv_i64 tcg_zero = tcg_const_i64(0);
++        int mem_index = get_mem_index(s);
++        int i, n = (1 + is_pair) << LOG2_TAG_GRANULE;
++
++        tcg_gen_qemu_st_i64(tcg_zero, clean_addr, mem_index,
++                            MO_Q | MO_ALIGN_16);
++        for (i = 8; i < n; i += 8) {
++            tcg_gen_addi_i64(clean_addr, clean_addr, 8);
++            tcg_gen_qemu_st_i64(tcg_zero, clean_addr, mem_index, MO_Q);
++        }
++        tcg_temp_free_i64(tcg_zero);
++    }
++
++    if (index != 0) {
++        /* pre-index or post-index */
++        if (index < 0) {
++            /* post-index */
++            tcg_gen_addi_i64(addr, addr, offset);
++        }
++        tcg_gen_mov_i64(cpu_reg_sp(s, rn), addr);
++    }
++}
++
+ /* Loads and stores */
+ static void disas_ldst(DisasContext *s, uint32_t insn)
+ {
+@@ -3713,13 +3860,14 @@ static void disas_ldst(DisasContext *s, uint32_t insn)
+     case 0x0d: /* AdvSIMD load/store single structure */
+         disas_ldst_single_struct(s, insn);
          break;
+-    case 0x19: /* LDAPR/STLR (unscaled immediate) */
+-        if (extract32(insn, 10, 2) != 0 ||
+-            extract32(insn, 21, 1) != 0) {
++    case 0x19:
++        if (extract32(insn, 21, 1) != 0) {
++            disas_ldst_tag(s, insn);
++        } else if (extract32(insn, 10, 2) == 0) {
++            disas_ldst_ldapr_stlr(s, insn);
++        } else {
+             unallocated_encoding(s);
+-            break;
+         }
+-        disas_ldst_ldapr_stlr(s, insn);
+         break;
+     default:
+         unallocated_encoding(s);
 -- 
 2.25.1
 

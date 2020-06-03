@@ -1,261 +1,284 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp236914lfc;
-        Wed, 3 Jun 2020 00:04:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy3yLCKiybaFhY5g8kZzq74u18g5rKXwf7zI9qzTWX4vXFtMjPRuHRR3R8Fy4qlcJXe/ngO
-X-Received: by 2002:a25:448a:: with SMTP id r132mr50544605yba.277.1591167848828;
-        Wed, 03 Jun 2020 00:04:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591167848; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp240343lfc;
+        Wed, 3 Jun 2020 00:08:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJybsyiaZQYy9l9ylhr8Za3eFIn4YJ6OsUBU/0KjeqLjGYwnCVL+SrpJ0K+ZUtAf5Hirj2Vs
+X-Received: by 2002:a25:ba13:: with SMTP id t19mr44733532ybg.8.1591168123549;
+        Wed, 03 Jun 2020 00:08:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591168123; cv=none;
         d=google.com; s=arc-20160816;
-        b=I2gj/1TCj3MqeP1MKy7pyKoej68HnrH9iHvt7IV7kIKrrhgnR7868JAjlWQUtByIxV
-         46ooW48+j7MC84GqgWM9ROrUJVoBVtEjVg8/30ROncmJSjl5j2tPFapPy9op7r3D/Kb1
-         YyteaN5Uz40hIJPn7sTgwdytIP1IbEf8LVS7lawTE09Jfm+g69KAqekhb5IOQ7hIQ8DY
-         rIa1zhYszpKcLtTe01F0wHyGRUO/jSsylWMIiseXmjG2MEAFg/Bk7E9WHici0EsV+waG
-         73g8nrXvF68/bQI6aNMiioA4wzbQkc0/eUq3ZkvGWb/5BWisOrV4Dl0E0wthbLiP14CO
-         dapw==
+        b=Zw+gKDZ869iB9NBxdb5hpBm68j3FPoqermNtZwDFJjnJ1ov7EUclAbKGzWzAFK43vv
+         p45iJZUP+T0Z4kbgiGhj5onGIxWeH055P/igv/ua6BsFnHruzC9DxJ8+clQHPr72Jdzb
+         NNxleYDXypipOnKLtu2XKgmUT9Z4V2+BCe7MIupYspMF1oHaW0th0MttuMqh9WWKvkov
+         s3IFHpbRG9A8BgTJCOzOz6jkf3EiYJisdfRtf5sIfRKzg4E0laW+fzODNCnkuoyxBiCR
+         1drvfoDL46M+9S9aGhBX53FwQImJJwT7eGC8zCwsAOuBNElFPy5sdfRt+zN+ofvknVwH
+         n+sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=W8gEcy6pzQDAPp2y85iZFtFSkLFAlCU0ZdRrzjgoa2Y=;
-        b=zWhxplmE083I4hIUt+g96O+OmB9OhwTDzMV27sJFMCUQ6pPHQnk+xPmafQasWL1M7q
-         1OS/oXd79DDjMMM5tamBLSkUnyzhzQwctGzVOGb0wFLBgBsWy2AuXPtoixeF51opwk9k
-         uUeKHybAkoou9d3tqn8rnAzBhBtho8w88q1wAiuU9FHKgPUva/+S1LtFej4s4vOT/RYQ
-         8zvxS1BEv0AXtj1RVsBTEru6tpKWsZB/Zxg5dymbPBu25YYYTtWOCY66KLqczNM9TRAZ
-         oCjWR2cNH+7yeg4jb0cB4/6hNn5JLVLkiexe+lFYp0Um2zvEUKruSZ1/jDhP75a0x7Bj
-         qdDA==
+        bh=wRBYsP3BvVEwOJQPWVUJQn5NSxkf2TVTnRZH9+ZYG4Q=;
+        b=KNLVtKY3Dw7r94Hvpl6X/QGlFWH7HoNCtK+3UBt1Qot22/QZdgrkOc3VuP33R/4ynt
+         D8HSYsm49INrwOp6xrPcGql7W9L0yUPP/Abj/CxQJTSwU5d9xQR6yh7TTxT1KXKgJVVD
+         YLJpZ896NZAaFYsOoZuVlfBfRrTMMw8/w0IChEx5Y+b0zufLw2nI95JBaWJ2S5aFdVr0
+         P3fHW16VIpHIohMW7x1/X3a3lKV70rwzDZsj4RiBxd68tL9q7yUbby/lmzUl2HB4ZYZH
+         oZ9jSRq2DGzwqe3/t8/F89jhzQ1G5OsSsvjzKDVhy3WXInvdQH9Moolbm5tqSyVUftQv
+         sw0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Mm4W6kEd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G5rauD7n;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z192si901220yba.387.2020.06.03.00.04.08
+        by mx.google.com with ESMTPS id r187si928381ybf.147.2020.06.03.00.08.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jun 2020 00:04:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 03 Jun 2020 00:08:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Mm4W6kEd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45050 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G5rauD7n;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48846 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgNRY-00081x-7I
-	for alex.bennee@linaro.org; Wed, 03 Jun 2020 03:04:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33660)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jgNVy-00024w-TJ
+	for alex.bennee@linaro.org; Wed, 03 Jun 2020 03:08:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34078)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1jgNQS-0007X5-CC; Wed, 03 Jun 2020 03:03:00 -0400
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:46437)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1jgNQR-0003wJ-FY; Wed, 03 Jun 2020 03:02:59 -0400
-Received: by mail-pf1-x441.google.com with SMTP id b16so968496pfi.13;
- Wed, 03 Jun 2020 00:02:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=W8gEcy6pzQDAPp2y85iZFtFSkLFAlCU0ZdRrzjgoa2Y=;
- b=Mm4W6kEdDGgCX4+IF148D/R42u+dsRyS2TB4pB3vPaT8JPghEyvDrkSx7XvbLKEaNx
- eUrFzoLDILoFfqirh6CwrtBnzlbM73aZMQ7r+0s0wLF2vnsvNgbsX498xxDCWHaKegPg
- nhnCa3zeVav6ADC2Tg3IjVsmsI4jxCf0LIvvc/6+Ccl5r4VScvmIQ9YufazXzq57RfNg
- NwfdVgXjnWWMafq9CGjj1WrCjJskB0/Bqks6N/gJB7KeTbhOD2WjTuoDr0NvpvCGLt0m
- ib8Rrfg8KkGgk7JxiZCP1O3kY4tjJoR9XLF34qwpA8izco4msNkjwC7s2M7bRQYzImeB
- mNsw==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jgNVr-000209-JN
+ for qemu-arm@nongnu.org; Wed, 03 Jun 2020 03:08:35 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:25239
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jgNVq-0004oS-1O
+ for qemu-arm@nongnu.org; Wed, 03 Jun 2020 03:08:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591168112;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=wRBYsP3BvVEwOJQPWVUJQn5NSxkf2TVTnRZH9+ZYG4Q=;
+ b=G5rauD7nA6peV0peQ7MUHdar0DFdERo3nGCSjxCVUjRtTZrbeiVU0b0Nj3igWayrlO6UEo
+ hYsE9JgVh0mmMLkidRBwnKnItCgcdzknE11XBFSCXkXuH+v19HlSGc45bruXIr+0G72bnd
+ 9Jy0xyF6lXM9W9mfaCTnSmhcC3zXqmw=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-427-HnconQe0MKGFWPg6o0c-Ow-1; Wed, 03 Jun 2020 03:08:27 -0400
+X-MC-Unique: HnconQe0MKGFWPg6o0c-Ow-1
+Received: by mail-wr1-f71.google.com with SMTP id a4so714781wrp.5
+ for <qemu-arm@nongnu.org>; Wed, 03 Jun 2020 00:08:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=W8gEcy6pzQDAPp2y85iZFtFSkLFAlCU0ZdRrzjgoa2Y=;
- b=Q812Oce57ZMnQO6KNl+GBKxkDsdm22KK6xi2Ul1WOddhu/I1PCYUbuMgO+aH2eOobD
- W64/1AmWiTC3EXuS4hul7jIP3cFyhJU9TIWE9GJDg3ZUOpCnuS4/ATlimPdOCkZD7dnj
- 9AwnL0Uzn0P/qdomQLuXQhc6MFEa69CgaJpl59WPbZW1NNkRld2EoC2Xte+chhefhV5X
- UkbUyn1rdYccL3SNmGYm/LXXEg2Sc0D7j5sN3maQ7VkhYoT/rZXcfEhXz3WkOet3G6kl
- Ktns5I+CV2jcsdHnqBM81miWZx9x1Ghf/BHSTEjDDf9qN30siUQkYze0ur7DghNNy5Th
- iWJw==
-X-Gm-Message-State: AOAM532BKkgzEO7LbZ18DarWQV5INcgJAonJsUPaJTXJ/Ucn37TE4YVz
- uQ9qqnNj/R2n3WNRj55Wue6Nug1i
-X-Received: by 2002:a65:5a01:: with SMTP id y1mr19269757pgs.233.1591167777586; 
- Wed, 03 Jun 2020 00:02:57 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- x11sm1008501pfm.196.2020.06.03.00.02.56
+ h=x-gm-message-state:subject:to:references:from:autocrypt:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=wRBYsP3BvVEwOJQPWVUJQn5NSxkf2TVTnRZH9+ZYG4Q=;
+ b=rSxxL3SGLercUNN0innMpRtXk460uGwKveHE1+YHVJ2hG6DZfKQmVMedjlD5MZoUk3
+ FmHQlDivwImzvjRh2azuHoV0o6nE7ZNKyPrlfxSa+C5RXgIYMB8J8NU91lmCWKRf3qWQ
+ BdNTLgAUsLLQJm6HRAkPaUiC++LHRCfO0X5m5RKtBkdUj39KBxlt7JkhjoMWHU840GKS
+ ASNa5mOZgKydjI6m8sIQz1sy4rtvB39wVR4/vgpKtATT5CLFjHHLKCvp22ThXagpjGkP
+ 35NEnphIcbxmkOSwsWRrBrnWTZ4IuEMjTVf1of073GIfh/Ph/XWJM/LXbTOkPLHLwWfx
+ 4KMw==
+X-Gm-Message-State: AOAM531ulFDtIe14CKHzLvb6e6hLtjFNeqCGvwnkitte0glpWjL/PfIW
+ KwLcOC5HOAdiuMPLjzJTvt/zmJSRQMoRvLU2GwoFa6ThmjED2TJjXf0jbSN9LRZ//5fcyMjX0br
+ L2QuQyQwWk+fT
+X-Received: by 2002:adf:91c2:: with SMTP id 60mr31765268wri.41.1591168106256; 
+ Wed, 03 Jun 2020 00:08:26 -0700 (PDT)
+X-Received: by 2002:adf:91c2:: with SMTP id 60mr31765232wri.41.1591168105924; 
+ Wed, 03 Jun 2020 00:08:25 -0700 (PDT)
+Received: from [192.168.1.43] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id t8sm1853647wro.56.2020.06.03.00.08.24
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 03 Jun 2020 00:02:57 -0700 (PDT)
-Subject: Re: [PATCH 2/2] hw: arm: Set vendor property for IMX SDHCI emulations
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20200603052404.30788-1-linux@roeck-us.net>
- <20200603052404.30788-3-linux@roeck-us.net>
- <ccd8a8a5-0d40-2060-e9ea-c64c44a7d688@amsat.org>
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- xsFNBE6H1WcBEACu6jIcw5kZ5dGeJ7E7B2uweQR/4FGxH10/H1O1+ApmcQ9i87XdZQiB9cpN
- RYHA7RCEK2dh6dDccykQk3bC90xXMPg+O3R+C/SkwcnUak1UZaeK/SwQbq/t0tkMzYDRxfJ7
- nyFiKxUehbNF3r9qlJgPqONwX5vJy4/GvDHdddSCxV41P/ejsZ8PykxyJs98UWhF54tGRWFl
- 7i1xvaDB9lN5WTLRKSO7wICuLiSz5WZHXMkyF4d+/O5ll7yz/o/JxK5vO/sduYDIlFTvBZDh
- gzaEtNf5tQjsjG4io8E0Yq0ViobLkS2RTNZT8ICq/Jmvl0SpbHRvYwa2DhNsK0YjHFQBB0FX
- IdhdUEzNefcNcYvqigJpdICoP2e4yJSyflHFO4dr0OrdnGLe1Zi/8Xo/2+M1dSSEt196rXaC
- kwu2KgIgmkRBb3cp2vIBBIIowU8W3qC1+w+RdMUrZxKGWJ3juwcgveJlzMpMZNyM1jobSXZ0
- VHGMNJ3MwXlrEFPXaYJgibcg6brM6wGfX/LBvc/haWw4yO24lT5eitm4UBdIy9pKkKmHHh7s
- jfZJkB5fWKVdoCv/omy6UyH6ykLOPFugl+hVL2Prf8xrXuZe1CMS7ID9Lc8FaL1ROIN/W8Vk
- BIsJMaWOhks//7d92Uf3EArDlDShwR2+D+AMon8NULuLBHiEUQARAQABzTJHdWVudGVyIFJv
- ZWNrIChMaW51eCBhY2NvdW50KSA8bGludXhAcm9lY2stdXMubmV0PsLBgQQTAQIAKwIbAwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4ACGQEFAlVcphcFCRmg06EACgkQyx8mb86fmYFg0RAA
- nzXJzuPkLJaOmSIzPAqqnutACchT/meCOgMEpS5oLf6xn5ySZkl23OxuhpMZTVX+49c9pvBx
- hpvl5bCWFu5qC1jC2eWRYU+aZZE4sxMaAGeWenQJsiG9lP8wkfCJP3ockNu0ZXXAXwIbY1O1
- c+l11zQkZw89zNgWgKobKzrDMBFOYtAh0pAInZ9TSn7oA4Ctejouo5wUugmk8MrDtUVXmEA9
- 7f9fgKYSwl/H7dfKKsS1bDOpyJlqhEAH94BHJdK/b1tzwJCFAXFhMlmlbYEk8kWjcxQgDWMu
- GAthQzSuAyhqyZwFcOlMCNbAcTSQawSo3B9yM9mHJne5RrAbVz4TWLnEaX8gA5xK3uCNCeyI
- sqYuzA4OzcMwnnTASvzsGZoYHTFP3DQwf2nzxD6yBGCfwNGIYfS0i8YN8XcBgEcDFMWpOQhT
- Pu3HeztMnF3HXrc0t7e5rDW9zCh3k2PA6D2NV4fews9KDFhLlTfCVzf0PS1dRVVWM+4jVl6l
- HRIAgWp+2/f8dx5vPc4Ycp4IsZN0l1h9uT7qm1KTwz+sSl1zOqKD/BpfGNZfLRRxrXthvvY8
- BltcuZ4+PGFTcRkMytUbMDFMF9Cjd2W9dXD35PEtvj8wnEyzIos8bbgtLrGTv/SYhmPpahJA
- l8hPhYvmAvpOmusUUyB30StsHIU2LLccUPPOwU0ETofVZwEQALlLbQeBDTDbwQYrj0gbx3bq
- 7kpKABxN2MqeuqGr02DpS9883d/t7ontxasXoEz2GTioevvRmllJlPQERVxM8gQoNg22twF7
- pB/zsrIjxkE9heE4wYfN1AyzT+AxgYN6f8hVQ7Nrc9XgZZe+8IkuW/Nf64KzNJXnSH4u6nJM
- J2+Dt274YoFcXR1nG76Q259mKwzbCukKbd6piL+VsT/qBrLhZe9Ivbjq5WMdkQKnP7gYKCAi
- pNVJC4enWfivZsYupMd9qn7Uv/oCZDYoBTdMSBUblaLMwlcjnPpOYK5rfHvC4opxl+P/Vzyz
- 6WC2TLkPtKvYvXmdsI6rnEI4Uucg0Au/Ulg7aqqKhzGPIbVaL+U0Wk82nz6hz+WP2ggTrY1w
- ZlPlRt8WM9w6WfLf2j+PuGklj37m+KvaOEfLsF1v464dSpy1tQVHhhp8LFTxh/6RWkRIR2uF
- I4v3Xu/k5D0LhaZHpQ4C+xKsQxpTGuYh2tnRaRL14YMW1dlI3HfeB2gj7Yc8XdHh9vkpPyuT
- nY/ZsFbnvBtiw7GchKKri2gDhRb2QNNDyBnQn5mRFw7CyuFclAksOdV/sdpQnYlYcRQWOUGY
- HhQ5eqTRZjm9z+qQe/T0HQpmiPTqQcIaG/edgKVTUjITfA7AJMKLQHgp04Vylb+G6jocnQQX
- JqvvP09whbqrABEBAAHCwWUEGAECAA8CGwwFAlVcpi8FCRmg08MACgkQyx8mb86fmYHNRQ/+
- J0OZsBYP4leJvQF8lx9zif+v4ZY/6C9tTcUv/KNAE5leyrD4IKbnV4PnbrVhjq861it/zRQW
- cFpWQszZyWRwNPWUUz7ejmm9lAwPbr8xWT4qMSA43VKQ7ZCeTQJ4TC8kjqtcbw41SjkjrcTG
- wF52zFO4bOWyovVAPncvV9eGA/vtnd3xEZXQiSt91kBSqK28yjxAqK/c3G6i7IX2rg6pzgqh
- hiH3/1qM2M/LSuqAv0Rwrt/k+pZXE+B4Ud42hwmMr0TfhNxG+X7YKvjKC+SjPjqp0CaztQ0H
- nsDLSLElVROxCd9m8CAUuHplgmR3seYCOrT4jriMFBtKNPtj2EE4DNV4s7k0Zy+6iRQ8G8ng
- QjsSqYJx8iAR8JRB7Gm2rQOMv8lSRdjva++GT0VLXtHULdlzg8VjDnFZ3lfz5PWEOeIMk7Rj
- trjv82EZtrhLuLjHRCaG50OOm0hwPSk1J64R8O3HjSLdertmw7eyAYOo4RuWJguYMg5DRnBk
- WkRwrSuCn7UG+qVWZeKEsFKFOkynOs3pVbcbq1pxbhk3TRWCGRU5JolI4ohy/7JV1TVbjiDI
- HP/aVnm6NC8of26P40Pg8EdAhajZnHHjA7FrJXsy3cyIGqvg9os4rNkUWmrCfLLsZDHD8FnU
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-Message-ID: <382362f4-fbdc-5756-bc01-272af9e99185@roeck-us.net>
-Date: Wed, 3 Jun 2020 00:02:55 -0700
+ Wed, 03 Jun 2020 00:08:25 -0700 (PDT)
+Subject: Re: [PATCH] ftgmac100: Implement variable descriptor size
+To: Erik Smit <erik.lucas.smit@gmail.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>,
+ Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <CA+MHfov0TVbwjy8g_cHVa6Y-bMowCbsGLdt8uUhmcns0v_eVLw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <902ebbb5-3e9d-6720-745f-8535a5cd25e8@redhat.com>
+Date: Wed, 3 Jun 2020 09:08:24 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <ccd8a8a5-0d40-2060-e9ea-c64c44a7d688@amsat.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <CA+MHfov0TVbwjy8g_cHVa6Y-bMowCbsGLdt8uUhmcns0v_eVLw@mail.gmail.com>
 Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
- envelope-from=groeck7@gmail.com; helo=mail-pf1-x441.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/03 01:12:11
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4gXN2Un2PNwC
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: B41zE6WcPTgi
 
-On 6/2/20 11:35 PM, Philippe Mathieu-Daudé wrote:
-> Hi Guenter,
+On 6/2/20 6:47 PM, Erik Smit wrote:
+> The hardware supports variable descriptor sizes, configured with the DBLAC
+> register.
 > 
-> On 6/3/20 7:24 AM, Guenter Roeck wrote:
->> Set vendor property to IMX to enable IMX specific functionality
->> in sdhci code.
->>
->> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
->> ---
->>  hw/arm/fsl-imx25.c  | 2 ++
->>  hw/arm/fsl-imx6.c   | 2 ++
->>  hw/arm/fsl-imx6ul.c | 2 ++
->>  hw/arm/fsl-imx7.c   | 2 ++
->>  4 files changed, 8 insertions(+)
->>
->> diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
->> index cdaa79c26b..2cbd985e93 100644
->> --- a/hw/arm/fsl-imx25.c
->> +++ b/hw/arm/fsl-imx25.c
->> @@ -274,6 +274,8 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
->>                                   &err);
->>          object_property_set_uint(OBJECT(&s->esdhc[i]), IMX25_ESDHC_CAPABILITIES,
->>                                   "capareg", &err);
->> +        object_property_set_uint(OBJECT(&s->esdhc[i]), SDHCI_VENDOR_IMX,
->> +                                 "vendor", &err);
+> Most drivers use the default 2*8, which is currently hardcoded in qemu, but
+> the implementation of the driver in Supermicro BMC SMT_X11_158 uses 4*8.
 > 
-> Either check &err, or use &error_abort.
+> --
+> The implementation of the driver in Supermicro BMC SMT_X11_158 adds 4 extra
+> 4-bytes entries:
+> https://github.com/ya-mouse/openwrt-linux-aspeed/blob/master/drivers/net/ftgmac100_26.h#L387-L391
 > 
+> And sets DBLAC to 0x44f97:
+> https://github.com/ya-mouse/openwrt-linux-aspeed/blob/master/drivers/net/ftgmac100_26.c#L449
+> 
+> There's not a lot of public documentation on this hardware, but the
+> current linux driver shows the meaning of these registers:
+> 
+> https://github.com/torvalds/linux/blob/master/drivers/net/ethernet/faraday/ftgmac100.c#L280-L281
+> 
+>         iowrite32(FTGMAC100_DBLAC_RXDES_SIZE(2) |   /* 2*8 bytes RX descs */
+>                   FTGMAC100_DBLAC_TXDES_SIZE(2) |   /* 2*8 bytes TX descs */
+> 
+> Without this patch, networking in SMT_X11_158 does not pass data.
 
-Ok, I'll follow the guidance from the patch pointed to below
-and add the error check.
+Does it really 'pass' *all* the data?
 
-Thanks,
-Guenter
+This patch seems incomplete...
 
-> You can see a fix here:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg695544.html
+IMO you should 1/ declare FTGMAC100Desc as:
+
+typedef struct {
+    uint32_t        des0;
+    uint32_t        des1;
+} FTGMAC100Desc;
+
+2/ Replace the code using static '2' by dynamic use of
+FTGMAC100_DBLAC_xXDES_SIZE(dblac):
+
+  static int ftgmac100_read_bd(FTGMAC100Desc **bd, dma_addr_t addr)
+  {
+      unsigned bd_idx;
+
+      if (dma_memory_read(&address_space_memory, addr, bd, sizeof(*bd))) {
+          qemu_log_mask(LOG_GUEST_ERROR, "%s: failed to read descriptor
+@ 0x%"
+                        HWADDR_PRIx "\n", __func__, addr);
+          return -1;
+      }
+      for (bd_idx = 0; bd_idx< FTGMAC100_DBLAC_RXDES_SIZE(s->dblac);
+bd_idx++) {
+          bd[bd_idx]->des0 = le32_to_cpu(bd[bd_idx]->des0);
+          bd[bd_idx]->des1 = le32_to_cpu(bd[bd_idx]->des1);
+      }
+
+      return 0;
+  }
+
+Etc...
+
+Maybe worth introduce the bd_to_cpu()/cpu_to_bd() helpers too
+(respectively calling le32_to_cpu & cpu_to_le32).
+
 > 
-> Otherwise:
+> Signed-off-by: Erik Smit <erik.lucas.smit@gmail.com
+> <mailto:erik.lucas.smit@gmail.com>>
+> ---
+>  hw/net/ftgmac100.c | 17 +++++++++++++++--
+>  1 file changed, 15 insertions(+), 2 deletions(-)
 > 
-> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+> index 25ebee7ec2..1640b24b23 100644
+> --- a/hw/net/ftgmac100.c
+> +++ b/hw/net/ftgmac100.c
+> @@ -79,6 +79,19 @@
+>  #define FTGMAC100_APTC_TXPOLL_CNT(x)        (((x) >> 8) & 0xf)
+>  #define FTGMAC100_APTC_TXPOLL_TIME_SEL      (1 << 12)
 > 
->>          object_property_set_bool(OBJECT(&s->esdhc[i]), true, "realized", &err);
->>          if (err) {
->>              error_propagate(errp, err);
->> diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
->> index f58c85aa8c..8e9a94e4d7 100644
->> --- a/hw/arm/fsl-imx6.c
->> +++ b/hw/arm/fsl-imx6.c
->> @@ -350,6 +350,8 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
->>                                   &err);
->>          object_property_set_uint(OBJECT(&s->esdhc[i]), IMX6_ESDHC_CAPABILITIES,
->>                                   "capareg", &err);
->> +        object_property_set_uint(OBJECT(&s->esdhc[i]), SDHCI_VENDOR_IMX,
->> +                                 "vendor", &err);
->>          object_property_set_bool(OBJECT(&s->esdhc[i]), true, "realized", &err);
->>          if (err) {
->>              error_propagate(errp, err);
->> diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
->> index 3ecb212da6..ce1462927c 100644
->> --- a/hw/arm/fsl-imx6ul.c
->> +++ b/hw/arm/fsl-imx6ul.c
->> @@ -505,6 +505,8 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
->>              FSL_IMX6UL_USDHC2_IRQ,
->>          };
->>  
->> +        object_property_set_uint(OBJECT(&s->usdhc[i]), SDHCI_VENDOR_IMX,
->> +                                        "vendor", &error_abort);
->>          object_property_set_bool(OBJECT(&s->usdhc[i]), true, "realized",
->>                                   &error_abort);
->>  
->> diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
->> index 89c3b64c06..dbf16b2814 100644
->> --- a/hw/arm/fsl-imx7.c
->> +++ b/hw/arm/fsl-imx7.c
->> @@ -416,6 +416,8 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
->>              FSL_IMX7_USDHC3_IRQ,
->>          };
->>  
->> +        object_property_set_uint(OBJECT(&s->usdhc[i]), SDHCI_VENDOR_IMX,
->> +                                 "vendor", &error_abort);
->>          object_property_set_bool(OBJECT(&s->usdhc[i]), true, "realized",
->>                                   &error_abort);
->>  
->>
+> +/*
+> + * DMA burst length and arbitration control register
+> + */
+> +#define FTGMAC100_DBLAC_RXFIFO_LTHR(x)      (((x) >> 0) & 0x7)
+> +#define FTGMAC100_DBLAC_RXFIFO_HTHR(x)      (((x) >> 3) & 0x7)
+> +#define FTGMAC100_DBLAC_RX_THR_EN           (1 << 6)
+> +#define FTGMAC100_DBLAC_RXBURST_SIZE(x)     (((x) >> 8) & 0x3)
+> +#define FTGMAC100_DBLAC_TXBURST_SIZE(x)     (((x) >> 10) & 0x3)
+> +#define FTGMAC100_DBLAC_RXDES_SIZE(x)       (((x) >> 12) & 0xf)
+> +#define FTGMAC100_DBLAC_TXDES_SIZE(x)       (((x) >> 16) & 0xf)
+> +#define FTGMAC100_DBLAC_IFG_CNT(x)          (((x) >> 20) & 0x7)
+> +#define FTGMAC100_DBLAC_IFG_INC             (1 << 23)
+> +
+>  /*
+>   * PHY control register
+>   */
+> @@ -553,7 +566,7 @@ static void ftgmac100_do_tx(FTGMAC100State *s,
+> uint32_t tx_ring,
+>          if (bd.des0 & s->txdes0_edotr) {
+>              addr = tx_ring;
+>          } else {
+> -            addr += sizeof(FTGMAC100Desc);
+> +            addr += (FTGMAC100_DBLAC_TXDES_SIZE(s->dblac)) * 8;
+
+Extra parenthesis not needed.
+
+After doing 1/ you can now replace '8' by sizeof(FTGMAC100Desc).
+
+>          }
+>      }
 > 
+> @@ -982,7 +995,7 @@ static ssize_t ftgmac100_receive(NetClientState *nc,
+> const uint8_t *buf,
+>          if (bd.des0 & s->rxdes0_edorr) {
+>              addr = s->rx_ring;
+>          } else {
+> -            addr += sizeof(FTGMAC100Desc);
+> +            addr += (FTGMAC100_DBLAC_RXDES_SIZE(s->dblac)) * 8;
+>          }
+>      }
+>      s->rx_descriptor = addr;
+> --
+> 2.25.1
 

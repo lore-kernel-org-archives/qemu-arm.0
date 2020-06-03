@@ -1,103 +1,124 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4382224lfc;
-        Tue, 2 Jun 2020 13:04:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXtsIVkTHI+iSvuhMARq187gmJLRA3SxanpNFCTyBtrJwdKw3X6W6AGOwGQ8VWkG94EPRY
-X-Received: by 2002:a25:4487:: with SMTP id r129mr32041283yba.14.1591128264436;
-        Tue, 02 Jun 2020 13:04:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591128264; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp13432lfc;
+        Tue, 2 Jun 2020 17:46:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwPu2TC1UC4IS9SVu+YaTuX9aLRwnE/BEzbyPRul621oQ4djRAcxpNTcASpzOwa4JhYwt2/
+X-Received: by 2002:a25:6dc2:: with SMTP id i185mr47511747ybc.370.1591145196481;
+        Tue, 02 Jun 2020 17:46:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591145196; cv=none;
         d=google.com; s=arc-20160816;
-        b=YDzawjMKWXkAvHK3DmlibOlp+uFvDUKOlIbiYf3kX1T7Ofg92nVPjuNddKc8pIHSt1
-         eMam//mY+T1XiT5gZPGm6N8Lfp8CYwvEjoFh9Zw3c5d28cQ5V/JMpQZ79EIlvE9VNoAs
-         Ll2Gmnf6Qp7dhBrcW4dPMXeTNLWKbCfDJf5NP56gcQeds4x2CfToPCBSBbWqmINX4pdw
-         WUunilslpMUSdwKlE+phUyr+7rHc7Pu8hXdFkfnbboocpNRyI83Fk5MpVS9rVElfqpcr
-         oYyTbvX3EhPqmLG6bFMh1Yu2/4rSk1RxPh+xDMV2+xlX+T83zsHaVRioV2zRS5GptYxT
-         MG9g==
+        b=d1/CldmCM6PFK6z/1bc6RtpnDA5jfguDMCuhq/QCpsrsCMmzOb4SysP6nYUrFKO86l
+         jSvpzUoCdwtbwr/ji81m72hEfZ7ikDFH00EyWSW/eKc0TK4ujcZQRk6bSKalGgBUIHdo
+         YUaVNFwHGSGGnboV/UZkSF84XtsncCSeJKO+zFKe70XIS3jGXvBpGRkk6M8C4y1XBuai
+         QAPHmID7iapp4qKVreVulXySgkMbufS6sdCvRDl3DeGXa6tvTmmol/KIRcLsb5WBCuB8
+         Id7WJvPCnk/Rm7cyz7rWJ7HfQjkTPrT9P4JopBDejOR4aGf7pV2KF/FLjrowfutCB2Yv
+         Xpdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=0sRZuUdo7NhJjpmZ+QsJQg75Tos1es5ONp8As8ZlHQw=;
-        b=Gy2ii0E1lwh27nKzcEMAkQPgdar3IwG3ctTcb7rYETPI8vT1dHpsQ2MWOj0abJ/vlS
-         DutNBlZ/BVP30HXUw4xV45kVhxmmq9uOz+aG8vyoIh2BufC5iVhqerQ29PDRxEiy+ocA
-         tbMYRchgH3jb88cF8tHo+abcSU0T8Ley8T0lcQ0LIZxV4L7l/uOMPMXO8XyaBDSnpCcu
-         X5PVYYNFODuvCu09IiyNgLf7li4Y4eatH1wTVkgJaunr9iOMAJ413+3t6at0H7BW7GlR
-         7HfQZU8Ao+j+I+x6XtJv+FbFtgR7ue6Br/Gvxxq33CXkyvPUDgoPSz4LaXppNLtZlGWd
-         BW6w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
+         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
+         :dkim-signature;
+        bh=7Yr9sQZveh3RFZSr00zd/xCbOzSG4e2csVh5T9HsnJU=;
+        b=GjRseHl8sRsCx6mtuLLlw8HFwdbzZkr1Jf4nUkKtmeIdtTpdoNZJn1kL02tceQ35hN
+         K541iNCtMIqjzhJGceTwIBhZlDUtj6fmOIY8fNeWGbyKidM3iO1UN2YfXDixgGs+2mT/
+         8fDHYFr2jjrdMKpHG0jDijD4/PsTY31K29ulPbb7z2wUrwD2WKs+0m31/2qEGhl75OhG
+         /Buj0ZtBpwyHfyIJ7UuqV0dLT7qf2nNbvf9DUcqwJ3aUUOAnrhiUBrC2K8S83O0TGt1b
+         INfjnhT9a+mYOym4MbZ9hzc7bwMuD70tPnnhWm6aOMxCrVQxI7IshNsl+NeVQo3tb5Oh
+         mJFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rW+MyXSh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=wY3J5oII;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=svIqS5v8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8si2817528yba.275.2020.06.02.13.04.24
+        by mx.google.com with ESMTPS id s68si313179ybc.235.2020.06.02.17.46.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jun 2020 13:04:24 -0700 (PDT)
+        Tue, 02 Jun 2020 17:46:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rW+MyXSh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55134 helo=lists1p.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm2 header.b=wY3J5oII;
+       dkim=fail header.i=@messagingengine.com header.s=fm2 header.b=svIqS5v8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgD95-0007jr-OH
-	for alex.bennee@linaro.org; Tue, 02 Jun 2020 16:04:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37974)
+	id 1jgHYB-0003xc-TW
+	for alex.bennee@linaro.org; Tue, 02 Jun 2020 20:46:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42462)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <erik.lucas.smit@gmail.com>)
- id 1jgA50-0006YZ-Hp; Tue, 02 Jun 2020 12:47:58 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:35551)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <erik.lucas.smit@gmail.com>)
- id 1jgA4z-0005GU-HZ; Tue, 02 Jun 2020 12:47:58 -0400
-Received: by mail-ot1-x343.google.com with SMTP id 69so11451830otv.2;
- Tue, 02 Jun 2020 09:47:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=0sRZuUdo7NhJjpmZ+QsJQg75Tos1es5ONp8As8ZlHQw=;
- b=rW+MyXShdOfwkGOVtpsFUC9U0UcKAGwKrPZb6ff5G5ELomvSxI3PUSDi57cgc1MI0f
- vAtoxt4EXXqI6sHoJRyD4UnveZRfZoe9fChuZJ9YFyh47hTy/9PcsuZVVQcnuvtWCHPm
- tPATFQtwbdHQbmrgqhqzCTITTk6yolk4N2qOCTEq8LIbNK0Icx9X2WkJZZgIcfp3s1sf
- Zzgdv01eUzpCm416TOB74K8J0+fZ8TyBKNmFUCmZMO/0sfDbV+W9IF366XAlxTcI3Vb4
- WzFcy9t7z+d95yClD7BhFI1zB2hx/sf+OlBH3UzZnj7N4dDzqA2RIgCd+ePOjNE+8txs
- D9ww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=0sRZuUdo7NhJjpmZ+QsJQg75Tos1es5ONp8As8ZlHQw=;
- b=YAf4aBcJpp11kn7wAPH6WngrYFXk9NecRqgHLonDMd7ut/7N5xSuh0NxmQjd8MVbES
- OHdB1cTpcXXQULp6vn4+OSSmKJkH1FqaiaqXaRJK4T1/BEoFfSj9OD29L6A2vZXCdkAQ
- gbQOFdj5QdEGmvE28aVihYnZc5znoS3nvP4ZOvtaw0443nRMNZ5gJfFyd1NRnOeJbfvl
- eSUa6xVZWU4zAR7VL0gNabm6FrDgr5ysV5/38HAjpy2t+YZWx32oN+zLk5pbMhuMX1NQ
- d6UGtR01lWD5Rfdu8n029RhzOLEYt56ib0k8hXU60n5VnTv4Ma55Sy823wsRYrEEmwWz
- 6wtw==
-X-Gm-Message-State: AOAM531lTO4azqIaTOEsDtnbOouLrP814QngpbNlQUUbKVlW+MCW3z9S
- SGrritKiigk2qQXF4W2fsBL8rPxJSBO8p9aTnno=
-X-Received: by 2002:a9d:3f35:: with SMTP id m50mr179709otc.120.1591116475385; 
- Tue, 02 Jun 2020 09:47:55 -0700 (PDT)
-MIME-Version: 1.0
-From: Erik Smit <erik.lucas.smit@gmail.com>
-Date: Tue, 2 Jun 2020 18:47:44 +0200
-Message-ID: <CA+MHfov0TVbwjy8g_cHVa6Y-bMowCbsGLdt8uUhmcns0v_eVLw@mail.gmail.com>
-Subject: [PATCH] ftgmac100: Implement variable descriptor size
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, 
- Joel Stanley <joel@jms.id.au>, Jason Wang <jasowang@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000004fcaa405a71cac44"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=erik.lucas.smit@gmail.com; helo=mail-ot1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1jgHY3-0003xG-R1; Tue, 02 Jun 2020 20:46:27 -0400
+Received: from wout4-smtp.messagingengine.com ([64.147.123.20]:38477)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1jgHY2-0005sX-CC; Tue, 02 Jun 2020 20:46:27 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.west.internal (Postfix) with ESMTP id 2C82E642;
+ Tue,  2 Jun 2020 20:46:23 -0400 (EDT)
+Received: from imap2 ([10.202.2.52])
+ by compute3.internal (MEProxy); Tue, 02 Jun 2020 20:46:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+ mime-version:message-id:in-reply-to:references:date:from:to:cc
+ :subject:content-type; s=fm2; bh=7Yr9sQZveh3RFZSr00zd/xCbOzSG4e2
+ csVh5T9HsnJU=; b=wY3J5oIIxNkJpg4siTrGvC8LGKrYEAoaKqo4w18HsAtBVkL
+ XhDnYOzCRIJm3HCC70gQxoFsqCRuMsqwOw+/mv4svm0H8l4uyXiMbFzqBDQ44isa
+ 7jGahCcBaooN300fzLgunSnucX5eNOTXYOyuJllTUNpjQooAunWgvHdWHUEx0blX
+ 4gow6bqIWPctz9eOcIH7i0ru8udAA7OmVM8H+kwtoS0XHaLsbZy2UIArGGp5PBjq
+ G/D/wplLP/DQL/PR5sujHP8W8nWbkcHYkvfX2Lcs4t7h1Rl4QEE647f6f4ilQSSj
+ YnsrIUKLnOXGEAMQ7Z7zoqEtZaxoBrbIpdmdRFA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=7Yr9sQ
+ Zveh3RFZSr00zd/xCbOzSG4e2csVh5T9HsnJU=; b=svIqS5v8T7cqMfIFcREKjj
+ 1ffHiumk+WPUQ45j7qfAHpyHSVpmeWV6y89gwr5nGD2iSDOk6VoRAMJjXDHtL/LI
+ G+mHr2bkv2skfCO1JVnKU/bWE5Xs6HaNFKAnhbaIdL3HjOr+msGbAAI77Ey8NCmy
+ UERNat47pDDA8lriG4ZtCMpjgYUZINjVA6wb7QFAYzrkUAYP8kMaOM/KzY0DXPMR
+ LXXdOVMKmp2CIuMgM0ELz+4xoIb3Ac8WslpcU1gXfUaNKeVo7LhXBLvqplbMKMR3
+ +FF3liM53z0ovmVScdJm3M7qz6dLmFNvli2+QUSkgs8hEDrcBAFOgEpq5trgWuCQ
+ ==
+X-ME-Sender: <xms:3fLWXnTlkOE_6J-HJUvZ8gSepzyVUE7yWCGHoezKnyvTrcc64K9dEw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduhedrudefkedgfeefucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepofgfggfkjghffffhvffutgesthdtredtreertdenucfhrhhomhepfdetnhgu
+ rhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecuggftrf
+ grthhtvghrnhephefhfeekgfekudevheffheeihedujeefjeevjeefudfgfeeutdeuvdeh
+ hfevueffnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
+ eprghnughrvgifsegrjhdrihgurdgruh
+X-ME-Proxy: <xmx:3fLWXowGvp_rYhBqKlRIf3e8-Skd53g_nuFgX8-4lYo7oN9MuqwFvQ>
+ <xmx:3fLWXs3pOiYU9aFwNyMLT-TKIfeUygPn6OY78Ko1XEeqMiQd6DE1ew>
+ <xmx:3fLWXnAmA8kzdIIVKpWAQBbWBE7oVGcl8q_U2JzMPTYZR3QIGzqFwQ>
+ <xmx:3vLWXjsIUriRek_ZUD9XGx3VQAnlW7GqVp1HJyIjkvioIn2C-Zo4XA>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id 0BCEEE00C9; Tue,  2 Jun 2020 20:46:21 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.3.0-dev0-519-g0f677ba-fm-20200601.001-g0f677ba6
+Mime-Version: 1.0
+Message-Id: <e3d11c90-86d9-4daf-ba4c-9da98942e578@www.fastmail.com>
+In-Reply-To: <80e5403f-a842-4542-41d3-d1d8236af637@kaod.org>
+References: <20200602135050.593692-1-clg@kaod.org>
+ <a46437ce-1be4-3c0a-8403-1c279ad8b90b@amsat.org>
+ <80e5403f-a842-4542-41d3-d1d8236af637@kaod.org>
+Date: Wed, 03 Jun 2020 10:15:59 +0930
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ "Peter Maydell" <peter.maydell@linaro.org>
+Subject: Re: [PATCH] docs/system: Document Aspeed boards
+Content-Type: text/plain
+Received-SPF: pass client-ip=64.147.123.20; envelope-from=andrew@aj.id.au;
+ helo=wout4-smtp.messagingengine.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/02 20:46:23
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 02 Jun 2020 16:04:15 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,149 +130,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Cameron Esfahani via <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v4Uo9zaJNlKt
+X-TUID: AbIo+wvO9xek
 
---0000000000004fcaa405a71cac44
-Content-Type: text/plain; charset="UTF-8"
+> 
+> >> + * Hash/Crypto Engine
+> >> + * PCI-Express 1 Controller
+> >> + * Graphic Display Controller
+> >> + * PECI Controller
+> >> + * MCTP Controller
+> >> + * Mailbox Controller
+> >> + * Virtual UART
+> > 
+> > Uh what is that? :)
+> 
+> It is the host console. 
+> 
 
-The hardware supports variable descriptor sizes, configured with the DBLAC
-register.
+To explain a little more, a 16550-compatible set of registers are exposed to 
+both the host (via e.g. the LPC bus) and the BMC, but the FIFOs are shared and 
+the transmissions are nothing more than register writes/reads from each side. 
+There's no RS-232 involved, hence "Virtual" I guess.
 
-Most drivers use the default 2*8, which is currently hardcoded in qemu, but
-the implementation of the driver in Supermicro BMC SMT_X11_158 uses 4*8.
-
---
-The implementation of the driver in Supermicro BMC SMT_X11_158 adds 4 extra
-4-bytes entries:
-https://github.com/ya-mouse/openwrt-linux-aspeed/blob/master/drivers/net/ftgmac100_26.h#L387-L391
-
-And sets DBLAC to 0x44f97:
-https://github.com/ya-mouse/openwrt-linux-aspeed/blob/master/drivers/net/ftgmac100_26.c#L449
-
-There's not a lot of public documentation on this hardware, but the
-current linux driver shows the meaning of these registers:
-
-https://github.com/torvalds/linux/blob/master/drivers/net/ethernet/faraday/ftgmac100.c#L280-L281
-
-        iowrite32(FTGMAC100_DBLAC_RXDES_SIZE(2) |   /* 2*8 bytes RX descs */
-                  FTGMAC100_DBLAC_TXDES_SIZE(2) |   /* 2*8 bytes TX descs */
-
-Without this patch, networking in SMT_X11_158 does not pass data.
-
-Signed-off-by: Erik Smit <erik.lucas.smit@gmail.com>
----
- hw/net/ftgmac100.c | 17 +++++++++++++++--
- 1 file changed, 15 insertions(+), 2 deletions(-)
-
-diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-index 25ebee7ec2..1640b24b23 100644
---- a/hw/net/ftgmac100.c
-+++ b/hw/net/ftgmac100.c
-@@ -79,6 +79,19 @@
- #define FTGMAC100_APTC_TXPOLL_CNT(x)        (((x) >> 8) & 0xf)
- #define FTGMAC100_APTC_TXPOLL_TIME_SEL      (1 << 12)
-
-+/*
-+ * DMA burst length and arbitration control register
-+ */
-+#define FTGMAC100_DBLAC_RXFIFO_LTHR(x)      (((x) >> 0) & 0x7)
-+#define FTGMAC100_DBLAC_RXFIFO_HTHR(x)      (((x) >> 3) & 0x7)
-+#define FTGMAC100_DBLAC_RX_THR_EN           (1 << 6)
-+#define FTGMAC100_DBLAC_RXBURST_SIZE(x)     (((x) >> 8) & 0x3)
-+#define FTGMAC100_DBLAC_TXBURST_SIZE(x)     (((x) >> 10) & 0x3)
-+#define FTGMAC100_DBLAC_RXDES_SIZE(x)       (((x) >> 12) & 0xf)
-+#define FTGMAC100_DBLAC_TXDES_SIZE(x)       (((x) >> 16) & 0xf)
-+#define FTGMAC100_DBLAC_IFG_CNT(x)          (((x) >> 20) & 0x7)
-+#define FTGMAC100_DBLAC_IFG_INC             (1 << 23)
-+
- /*
-  * PHY control register
-  */
-@@ -553,7 +566,7 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t
-tx_ring,
-         if (bd.des0 & s->txdes0_edotr) {
-             addr = tx_ring;
-         } else {
--            addr += sizeof(FTGMAC100Desc);
-+            addr += (FTGMAC100_DBLAC_TXDES_SIZE(s->dblac)) * 8;
-         }
-     }
-
-@@ -982,7 +995,7 @@ static ssize_t ftgmac100_receive(NetClientState *nc,
-const uint8_t *buf,
-         if (bd.des0 & s->rxdes0_edorr) {
-             addr = s->rx_ring;
-         } else {
--            addr += sizeof(FTGMAC100Desc);
-+            addr += (FTGMAC100_DBLAC_RXDES_SIZE(s->dblac)) * 8;
-         }
-     }
-     s->rx_descriptor = addr;
---
-2.25.1
-
---0000000000004fcaa405a71cac44
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>The hardware supports variable descriptor sizes, conf=
-igured with the DBLAC<br>register.<br><br>Most drivers use the default 2*8,=
- which is currently hardcoded in qemu, but<br>the implementation of the dri=
-ver in Supermicro BMC SMT_X11_158 uses 4*8.<br><br>--<br>The implementation=
- of the driver in Supermicro BMC SMT_X11_158 adds 4 extra<br>4-bytes entrie=
-s:<br><a href=3D"https://github.com/ya-mouse/openwrt-linux-aspeed/blob/mast=
-er/drivers/net/ftgmac100_26.h#L387-L391">https://github.com/ya-mouse/openwr=
-t-linux-aspeed/blob/master/drivers/net/ftgmac100_26.h#L387-L391</a><br><br>=
-And sets DBLAC to 0x44f97:<br><a href=3D"https://github.com/ya-mouse/openwr=
-t-linux-aspeed/blob/master/drivers/net/ftgmac100_26.c#L449">https://github.=
-com/ya-mouse/openwrt-linux-aspeed/blob/master/drivers/net/ftgmac100_26.c#L4=
-49</a><br><br>There&#39;s not a lot of public documentation on this hardwar=
-e, but the<br>current linux driver shows the meaning of these registers:<br=
-><br><a href=3D"https://github.com/torvalds/linux/blob/master/drivers/net/e=
-thernet/faraday/ftgmac100.c#L280-L281">https://github.com/torvalds/linux/bl=
-ob/master/drivers/net/ethernet/faraday/ftgmac100.c#L280-L281</a><br><br>=C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 iowrite32(FTGMAC100_DBLAC_RXDES_SIZE(2) | =C2=A0 /=
-* 2*8 bytes RX descs */<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 FTGMAC100_DBLAC_TXDES_SIZE(2) | =C2=A0 /* 2*8 bytes TX descs=
- */<br><br>Without this patch, networking in SMT_X11_158 does not pass data=
-.<br><br>Signed-off-by: Erik Smit &lt;<a href=3D"mailto:erik.lucas.smit@gma=
-il.com">erik.lucas.smit@gmail.com</a>&gt;<br>---<br>=C2=A0hw/net/ftgmac100.=
-c | 17 +++++++++++++++--<br>=C2=A01 file changed, 15 insertions(+), 2 delet=
-ions(-)<br><br>diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c<br>inde=
-x 25ebee7ec2..1640b24b23 100644<br>--- a/hw/net/ftgmac100.c<br>+++ b/hw/net=
-/ftgmac100.c<br>@@ -79,6 +79,19 @@<br>=C2=A0#define FTGMAC100_APTC_TXPOLL_C=
-NT(x) =C2=A0 =C2=A0 =C2=A0 =C2=A0(((x) &gt;&gt; 8) &amp; 0xf)<br>=C2=A0#def=
-ine FTGMAC100_APTC_TXPOLL_TIME_SEL =C2=A0 =C2=A0 =C2=A0(1 &lt;&lt; 12)<br><=
-br>+/*<br>+ * DMA burst length and arbitration control register<br>+ */<br>=
-+#define FTGMAC100_DBLAC_RXFIFO_LTHR(x) =C2=A0 =C2=A0 =C2=A0(((x) &gt;&gt; =
-0) &amp; 0x7)<br>+#define FTGMAC100_DBLAC_RXFIFO_HTHR(x) =C2=A0 =C2=A0 =C2=
-=A0(((x) &gt;&gt; 3) &amp; 0x7)<br>+#define FTGMAC100_DBLAC_RX_THR_EN =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &lt;&lt; 6)<br>+#define FTGMAC100_DBLAC_=
-RXBURST_SIZE(x) =C2=A0 =C2=A0 (((x) &gt;&gt; 8) &amp; 0x3)<br>+#define FTGM=
-AC100_DBLAC_TXBURST_SIZE(x) =C2=A0 =C2=A0 (((x) &gt;&gt; 10) &amp; 0x3)<br>=
-+#define FTGMAC100_DBLAC_RXDES_SIZE(x) =C2=A0 =C2=A0 =C2=A0 (((x) &gt;&gt; =
-12) &amp; 0xf)<br>+#define FTGMAC100_DBLAC_TXDES_SIZE(x) =C2=A0 =C2=A0 =C2=
-=A0 (((x) &gt;&gt; 16) &amp; 0xf)<br>+#define FTGMAC100_DBLAC_IFG_CNT(x) =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(((x) &gt;&gt; 20) &amp; 0x7)<br>+#define=
- FTGMAC100_DBLAC_IFG_INC =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 (1 &lt;&=
-lt; 23)<br>+<br>=C2=A0/*<br>=C2=A0 * PHY control register<br>=C2=A0 */<br>@=
-@ -553,7 +566,7 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t =
-tx_ring,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (bd.des0 &amp; s-&gt;txdes=
-0_edotr) {<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0addr =3D tx_r=
-ing;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0} else {<br>- =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0addr +=3D sizeof(FTGMAC100Desc);<br>+ =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0addr +=3D (FTGMAC100_DBLAC_TXDES_SIZE(s-&gt;dbl=
-ac)) * 8;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>=C2=A0 =C2=A0 =C2=A0}<b=
-r><br>@@ -982,7 +995,7 @@ static ssize_t ftgmac100_receive(NetClientState *=
-nc, const uint8_t *buf,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (bd.des0 &a=
-mp; s-&gt;rxdes0_edorr) {<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0addr =3D s-&gt;rx_ring;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0} else {<br=
->- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0addr +=3D sizeof(FTGMAC100Desc)=
-;<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0addr +=3D (FTGMAC100_DBLAC_=
-RXDES_SIZE(s-&gt;dblac)) * 8;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>=C2=
-=A0 =C2=A0 =C2=A0}<br>=C2=A0 =C2=A0 =C2=A0s-&gt;rx_descriptor =3D addr;<br>=
---<br>2.25.1<br></div></div>
-
---0000000000004fcaa405a71cac44--
+Andrew

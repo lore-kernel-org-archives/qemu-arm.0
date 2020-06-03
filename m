@@ -1,93 +1,119 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp289871lfc;
-        Wed, 3 Jun 2020 01:30:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz5w6bYwkk9eVg6Jwzqv9208wXrJ2/L/d1uoI56cI0+14pTxdNhagJmcGABfU5lyCzTFhzi
-X-Received: by 2002:a25:1645:: with SMTP id 66mr49652849ybw.332.1591173011017;
-        Wed, 03 Jun 2020 01:30:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591173011; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp291496lfc;
+        Wed, 3 Jun 2020 01:32:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxKsw1bBiHF81E6XQNyK2SVI2802i3cdavYg18zF1ba3uXKd9JutsdIsikICW9gqSsIoFzQ
+X-Received: by 2002:a25:8b0c:: with SMTP id i12mr52294996ybl.371.1591173142224;
+        Wed, 03 Jun 2020 01:32:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591173142; cv=none;
         d=google.com; s=arc-20160816;
-        b=G5yxCN0zV1tS/GefFeobhYbCtAKJ15zQ2T1v3WDB/Bc2Co22O7/gIxlUjKAH/sFOdR
-         2sgmdCdxtU7JgRCatmfdNGdum93o9nZGVBggTYfPyu/c1KbK824bx6P0vsCdsykJQwxr
-         1xy5r6lTPP3eApu+4dGIa1+AqNuYsOMGw6L8jwEszxK2f6aco8+nS2gbqX2oV1myzHsX
-         n9aCcNy7LZmSXKNihWxoWIb91l2FOCK3375MYqOLBodVT+g09rVaFDf94O3bPVYOD8ff
-         65G8y3EKhbgMoccBgAq0CkpPYq3iUitXNMZvUlZcdV/+Q/HwEsmwTbLOXHf9KRJGb6jf
-         IR7g==
+        b=fiZAqL+4duhK0x533ATT9ggojp4V8aFqeDKvpFtO8PnU0HUVZFMtveSiXJsUCvOedS
+         y6RybwGM8SMc3P0bDjPj2B8IyMhrJ2Rkl4tJ1gzecd9ZBJ3Cv6LdDJit5DBPQ36ADh3F
+         zqCy7omKPI5yO5oGuyQ+91G+0sb0I/NDXYEkZXkZ+c4ltWffrH1iROs1uaeloVXDKx5J
+         4DBP5vOMWbpDFciwHuVv4swo9DKRn4zlQzu2E+zd7rlXhSym/5Xe6fd3Mi2SjEWoo7O3
+         WBBuTmT5a1fyy3PcecCWkhi6Qy4FZ0AXjPmm2XMih9vinY3OV0OINXx0r8ZaDU5hLfLD
+         XpZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=eYpjP4HI5n0xKDQnYToJ5hhU0cWQjOySbR9SpeJBOTc=;
-        b=oyTxzvVHGSrOUFejZ5rJdZN2SF/EeGxtuzDPIuOdBw2JO68qRUCWKNTIFx4yvdlN8i
-         sssjQmZsl2ueyvGAEgzHJvpuYfLVKtB/flEsW87omV6Y+qBJZMVw4kKEDta0YNfDrHq4
-         GCYjietztTsioPhsuNA3y6Te8vqZHAU7QzuX8Bz682NDs1EOxhEqoqy5IhEn9sNisfAH
-         rSwKN8/TnnQyaR7Wo7eJCQA7umA9iCkfjR7pJAZ+kEJ47ZIkpmZ0naoymffd5pDB0HoM
-         1bdYStKVJPwk3CtjgD7wC7vTeoB3eqz6g3uA6X9abqWKEaQdGwMfJ7c9QjGwjOEOz3Lq
-         /ahQ==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=DoZJcryCYWdIhRKE/ACAihvytmzm/nM3wkfzPV8Y5Q8=;
+        b=oylxaKfDfR8eXpwa0VUiTzL6MhtlTNPI4Rbj5gFMyFLE1I0ZZkJdm5SLEFyj4b/J5y
+         8k2FPiNRbM+dmT3+rmwt877VU4hiiStncLUJZOmNx3TDGuU6oWOIm2Ioo/P8wAWvnZSC
+         klS+EMvw/Zc6TvGrXB357E1CgSsJz2+Ae3/Dmhj3LRHF6Yl0JEFf29bymQ4p0JYt5T61
+         TCqk95Ca6enaskqPfhAp+i8R7CDTryK20BY1FivFnHNtsbCjhjUAeawwtzfyBnuSZxH1
+         Lc+mLNcjCqeER/WhcfEaZ3s7IQtOXghl2mSfqJPdVCvgtrVKbxVzk17y6g4pTvgi5NYj
+         DSQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=S5VDUIg7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a202si1129042ybg.327.2020.06.03.01.30.10
+        by mx.google.com with ESMTPS id g18si1189525ybd.194.2020.06.03.01.32.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jun 2020 01:30:11 -0700 (PDT)
+        Wed, 03 Jun 2020 01:32:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56282 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=S5VDUIg7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:60746 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgOmo-0002jG-9Q
-	for alex.bennee@linaro.org; Wed, 03 Jun 2020 04:30:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41956)
+	id 1jgOov-0004vB-J1
+	for alex.bennee@linaro.org; Wed, 03 Jun 2020 04:32:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jgOmf-0002iM-Il
- for qemu-arm@nongnu.org; Wed, 03 Jun 2020 04:30:01 -0400
-Received: from 4.mo2.mail-out.ovh.net ([87.98.172.75]:49150)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jgOme-0004KM-B0
- for qemu-arm@nongnu.org; Wed, 03 Jun 2020 04:30:01 -0400
-Received: from player796.ha.ovh.net (unknown [10.110.208.89])
- by mo2.mail-out.ovh.net (Postfix) with ESMTP id C83A91DD09A
- for <qemu-arm@nongnu.org>; Wed,  3 Jun 2020 10:29:56 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player796.ha.ovh.net (Postfix) with ESMTPSA id 14E2912EB2CBB;
- Wed,  3 Jun 2020 08:29:46 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G004b42397c5-7f34-4704-a98e-0fa489fd73a2,C5A150AF1F13250A6CA48450E7A9998CD11FBF1B)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH] ftgmac100: Implement variable descriptor size
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Erik Smit <erik.lucas.smit@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joel Stanley <joel@jms.id.au>, Jason Wang <jasowang@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <CA+MHfov0TVbwjy8g_cHVa6Y-bMowCbsGLdt8uUhmcns0v_eVLw@mail.gmail.com>
- <902ebbb5-3e9d-6720-745f-8535a5cd25e8@redhat.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <aae38f77-ebaa-9375-e59b-b78ea075325d@kaod.org>
-Date: Wed, 3 Jun 2020 10:29:45 +0200
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jgOon-0004tN-Dm; Wed, 03 Jun 2020 04:32:13 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:43054)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jgOol-0004sx-AO; Wed, 03 Jun 2020 04:32:12 -0400
+Received: by mail-wr1-x444.google.com with SMTP id l10so1346815wrr.10;
+ Wed, 03 Jun 2020 01:32:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=DoZJcryCYWdIhRKE/ACAihvytmzm/nM3wkfzPV8Y5Q8=;
+ b=S5VDUIg7tM4MuxhWxix26zxHtUPCZeg9QOE7ituutFmYFvgbC2hhlrF2CCzK1HI7G+
+ ZgyDGgjMTrUliihR3eJwqPriJZfFk106wGW4xsvd+Xvy4wko+YqnSH/yntWt3msyHpI+
+ /UD7ehV8Z9tbv+Mqv9OBCwoTHlNatKwCcQiMwck8xjKTueezR+YPSULMiXoClqrRzXau
+ Ru7mXmwr31BZirx0AOTVC8cdVbzMnSjBUkIMO+rPiTmpAnnT/GXgcwmF7DsIosRmTeAb
+ zlToGtZiGIFYxBz0ErOUl1mjNSw3ubcHNEHZA4nce/KisOvxB4DEWq3RLnSejaLieRUG
+ Bmdw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=DoZJcryCYWdIhRKE/ACAihvytmzm/nM3wkfzPV8Y5Q8=;
+ b=LqsIFMGJlpvWxnIdRDQPBAOThNEY+rgSU0vJPh9l89rS8Moo7OCrXr5IsCXmL7okv3
+ SdPZJpMOzzZ5AtjAwITYqGqwnsEkAWqX5MunKI/U96UgznnSo/hhlNxgNrCzrSnIhZkI
+ D4iC/tX75wSdpLy++amXHEQF29xK1a1fNx5CBM1FfXipY8PEtmQmIcVkBXeVPVVY/z4R
+ yvm5YZ0wvKJognQnOioxq4DqUhwQNNJ3x+H1t8G1JnO85ht28SWGQBVu9Ou7Mp1EEUUs
+ s73Vm+0OOQ3YPtwdT5cIGuDNYaCp1XgzaCC384DSrQtiMZizRJgyw4R7McLKivpE9lB7
+ Kmxw==
+X-Gm-Message-State: AOAM531N4gyojzki+mAPkIq0eSgbrbuuymxVIx9idPz+6mR6ZBFmasfn
+ tjCZASnsPDRWyaslYzvsBgA=
+X-Received: by 2002:a05:6000:1292:: with SMTP id
+ f18mr30430938wrx.208.1591173129014; 
+ Wed, 03 Jun 2020 01:32:09 -0700 (PDT)
+Received: from [192.168.1.43] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id k21sm2256205wrd.24.2020.06.03.01.32.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 03 Jun 2020 01:32:08 -0700 (PDT)
+Subject: Re: [PATCH 1/2] sd: sdhci: Implement basic vendor specific register
+ support
+To: Guenter Roeck <linux@roeck-us.net>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20200603052404.30788-1-linux@roeck-us.net>
+ <20200603052404.30788-2-linux@roeck-us.net>
+ <bac1b68a-3cee-5e60-dd6e-a866b04d2226@amsat.org>
+ <081d1cc3-31d3-0144-8bc0-00105f810cdc@roeck-us.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <ae39c17d-4162-b288-26e5-b0ac5808318b@amsat.org>
+Date: Wed, 3 Jun 2020 10:32:07 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <902ebbb5-3e9d-6720-745f-8535a5cd25e8@redhat.com>
+In-Reply-To: <081d1cc3-31d3-0144-8bc0-00105f810cdc@roeck-us.net>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 6882626132299189056
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudefledgtddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekhfetudefffevvdeljeeggeehvdegueeiueefjeeuledtudegudehvdevlefgheenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeeliedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=87.98.172.75; envelope-from=clg@kaod.org;
- helo=4.mo2.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/03 04:29:57
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -101,140 +127,160 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g/PpprYrH4Ez
+X-TUID: BJ01nh/DtXNg
 
-On 6/3/20 9:08 AM, Philippe Mathieu-Daudé wrote:
-> On 6/2/20 6:47 PM, Erik Smit wrote:
->> The hardware supports variable descriptor sizes, configured with the DBLAC
->> register.
+On 6/3/20 8:58 AM, Guenter Roeck wrote:
+> On 6/2/20 11:37 PM, Philippe Mathieu-Daudé wrote:
+>> Hi Guenter,
 >>
->> Most drivers use the default 2*8, which is currently hardcoded in qemu, but
->> the implementation of the driver in Supermicro BMC SMT_X11_158 uses 4*8.
+>> On 6/3/20 7:24 AM, Guenter Roeck wrote:
+>>> The Linux kernel's IMX code now uses vendor specific commands.
+>>> This results in endless warnings when booting the Linux kernel.
+>>>
+>>> sdhci-esdhc-imx 2194000.usdhc: esdhc_wait_for_card_clock_gate_off:
+>>> 	card clock still not gate off in 100us!.
+>>>
+>>> Implement support for the vendor specific command implemented in IMX hardware
+>>> to be able to avoid this warning.
+>>>
+>>> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+>>> ---
+>>>  hw/sd/sdhci-internal.h |  5 +++++
+>>>  hw/sd/sdhci.c          | 18 +++++++++++++++++-
+>>>  include/hw/sd/sdhci.h  |  5 +++++
+>>>  3 files changed, 27 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
+>>> index e7c8a523b5..e8c753d6d1 100644
+>>> --- a/hw/sd/sdhci-internal.h
+>>> +++ b/hw/sd/sdhci-internal.h
+>>> @@ -75,6 +75,7 @@
+>>>  #define SDHC_CMD_INHIBIT               0x00000001
+>>>  #define SDHC_DATA_INHIBIT              0x00000002
+>>>  #define SDHC_DAT_LINE_ACTIVE           0x00000004
+>>> +#define SDHC_IMX_CLOCK_GATE_OFF        0x00000080
+>>>  #define SDHC_DOING_WRITE               0x00000100
+>>>  #define SDHC_DOING_READ                0x00000200
+>>>  #define SDHC_SPACE_AVAILABLE           0x00000400
+>>> @@ -289,7 +290,10 @@ extern const VMStateDescription sdhci_vmstate;
+>>>  
+>>>  
+>>>  #define ESDHC_MIX_CTRL                  0x48
+>>> +
+>>>  #define ESDHC_VENDOR_SPEC               0xc0
+>>> +#define ESDHC_IMX_FRC_SDCLK_ON          (1 << 8)
 >>
->> --
->> The implementation of the driver in Supermicro BMC SMT_X11_158 adds 4 extra
->> 4-bytes entries:
->> https://github.com/ya-mouse/openwrt-linux-aspeed/blob/master/drivers/net/ftgmac100_26.h#L387-L391
+>> I searched for the datasheet but couldn't find any, so I suppose it is
+>> only available under NDA. I can not review much (in particular I wanted
+>> to check the register sizes), anyway the overall looks OK:
 >>
->> And sets DBLAC to 0x44f97:
->> https://github.com/ya-mouse/openwrt-linux-aspeed/blob/master/drivers/net/ftgmac100_26.c#L449
->>
->> There's not a lot of public documentation on this hardware, but the
->> current linux driver shows the meaning of these registers:
->>
->> https://github.com/torvalds/linux/blob/master/drivers/net/ethernet/faraday/ftgmac100.c#L280-L281
->>
->>         iowrite32(FTGMAC100_DBLAC_RXDES_SIZE(2) |   /* 2*8 bytes RX descs */
->>                   FTGMAC100_DBLAC_TXDES_SIZE(2) |   /* 2*8 bytes TX descs */
->>
->> Without this patch, networking in SMT_X11_158 does not pass data.
 > 
-> Does it really 'pass' *all* the data?
-> 
-> This patch seems incomplete...
-> 
-> IMO you should 1/ declare FTGMAC100Desc as:
-> 
-> typedef struct {
->     uint32_t        des0;
->     uint32_t        des1;
-> } FTGMAC100Desc;
+> Actually, I only had to register an account to be able to download
+> the datasheets from NXP. Register width is 32 bit.
 
-The TX and RX descriptors have 4 words in the architecture which are
-used by HW but software can use bigger size for its own purpose. This 
-is what is doing the Aspeed SDK.
+Yes, thanks for the tip!
 
-> 2/ Replace the code using static '2' by dynamic use of
-> FTGMAC100_DBLAC_xXDES_SIZE(dblac):
-> 
->   static int ftgmac100_read_bd(FTGMAC100Desc **bd, dma_addr_t addr)
->   {
->       unsigned bd_idx;
-> 
->       if (dma_memory_read(&address_space_memory, addr, bd, sizeof(*bd))) {
->           qemu_log_mask(LOG_GUEST_ERROR, "%s: failed to read descriptor
-> @ 0x%"
->                         HWADDR_PRIx "\n", __func__, addr);
->           return -1;
->       }
->       for (bd_idx = 0; bd_idx< FTGMAC100_DBLAC_RXDES_SIZE(s->dblac);
-> bd_idx++) {
->           bd[bd_idx]->des0 = le32_to_cpu(bd[bd_idx]->des0);
->           bd[bd_idx]->des1 = le32_to_cpu(bd[bd_idx]->des1);
->       }
-> 
->       return 0;
->   }
-> 
-> Etc...
-> 
+"10.3.8.28 Vendor Specific Register (uSDHCx_VEND_SPEC)"
 
-The current ftgmac100_read_bd() and ftgmac100_write_bd() routines model 
-the HW perspective and they are fine as they are I think.
+> 
+>> Acked-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-C.
+^ this can be changed by:
 
-> Maybe worth introduce the bd_to_cpu()/cpu_to_bd() helpers too
-> (respectively calling le32_to_cpu & cpu_to_le32).
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 >>
->> Signed-off-by: Erik Smit <erik.lucas.smit@gmail.com
->> <mailto:erik.lucas.smit@gmail.com>>
->> ---
->>  hw/net/ftgmac100.c | 17 +++++++++++++++--
->>  1 file changed, 15 insertions(+), 2 deletions(-)
+>> Also:
 >>
->> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
->> index 25ebee7ec2..1640b24b23 100644
->> --- a/hw/net/ftgmac100.c
->> +++ b/hw/net/ftgmac100.c
->> @@ -79,6 +79,19 @@
->>  #define FTGMAC100_APTC_TXPOLL_CNT(x)        (((x) >> 8) & 0xf)
->>  #define FTGMAC100_APTC_TXPOLL_TIME_SEL      (1 << 12)
+>> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >>
->> +/*
->> + * DMA burst length and arbitration control register
->> + */
->> +#define FTGMAC100_DBLAC_RXFIFO_LTHR(x)      (((x) >> 0) & 0x7)
->> +#define FTGMAC100_DBLAC_RXFIFO_HTHR(x)      (((x) >> 3) & 0x7)
->> +#define FTGMAC100_DBLAC_RX_THR_EN           (1 << 6)
->> +#define FTGMAC100_DBLAC_RXBURST_SIZE(x)     (((x) >> 8) & 0x3)
->> +#define FTGMAC100_DBLAC_TXBURST_SIZE(x)     (((x) >> 10) & 0x3)
->> +#define FTGMAC100_DBLAC_RXDES_SIZE(x)       (((x) >> 12) & 0xf)
->> +#define FTGMAC100_DBLAC_TXDES_SIZE(x)       (((x) >> 16) & 0xf)
->> +#define FTGMAC100_DBLAC_IFG_CNT(x)          (((x) >> 20) & 0x7)
->> +#define FTGMAC100_DBLAC_IFG_INC             (1 << 23)
->> +
->>  /*
->>   * PHY control register
->>   */
->> @@ -553,7 +566,7 @@ static void ftgmac100_do_tx(FTGMAC100State *s,
->> uint32_t tx_ring,
->>          if (bd.des0 & s->txdes0_edotr) {
->>              addr = tx_ring;
->>          } else {
->> -            addr += sizeof(FTGMAC100Desc);
->> +            addr += (FTGMAC100_DBLAC_TXDES_SIZE(s->dblac)) * 8;
+> Thanks!
 > 
-> Extra parenthesis not needed.
+> Guenter
 > 
-> After doing 1/ you can now replace '8' by sizeof(FTGMAC100Desc).
-> 
->>          }
->>      }
+>>> +
+>>>  #define ESDHC_DLL_CTRL                  0x60
+>>>  
+>>>  #define ESDHC_TUNING_CTRL               0xcc
+>>> @@ -326,6 +330,7 @@ extern const VMStateDescription sdhci_vmstate;
+>>>  #define DEFINE_SDHCI_COMMON_PROPERTIES(_state) \
+>>>      DEFINE_PROP_UINT8("sd-spec-version", _state, sd_spec_version, 2), \
+>>>      DEFINE_PROP_UINT8("uhs", _state, uhs_mode, UHS_NOT_SUPPORTED), \
+>>> +    DEFINE_PROP_UINT8("vendor", _state, vendor, SDHCI_VENDOR_NONE), \
+>>>      \
+>>>      /* Capabilities registers provide information on supported
+>>>       * features of this specific host controller implementation */ \
+>>> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+>>> index 1b75d7bab9..eb2be6529e 100644
+>>> --- a/hw/sd/sdhci.c
+>>> +++ b/hw/sd/sdhci.c
+>>> @@ -1569,11 +1569,13 @@ static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
+>>>          }
+>>>          break;
+>>>  
+>>> +    case ESDHC_VENDOR_SPEC:
+>>> +        ret = s->vendor_spec;
+>>> +        break;
+>>>      case ESDHC_DLL_CTRL:
+>>>      case ESDHC_TUNE_CTRL_STATUS:
+>>>      case ESDHC_UNDOCUMENTED_REG27:
+>>>      case ESDHC_TUNING_CTRL:
+>>> -    case ESDHC_VENDOR_SPEC:
+>>>      case ESDHC_MIX_CTRL:
+>>>      case ESDHC_WTMK_LVL:
+>>>          ret = 0;
+>>> @@ -1596,7 +1598,21 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+>>>      case ESDHC_UNDOCUMENTED_REG27:
+>>>      case ESDHC_TUNING_CTRL:
+>>>      case ESDHC_WTMK_LVL:
+>>> +        break;
+>>> +
+>>>      case ESDHC_VENDOR_SPEC:
+>>> +        s->vendor_spec = value;
+>>> +        switch (s->vendor) {
+>>> +        case SDHCI_VENDOR_IMX:
+>>> +            if (value & ESDHC_IMX_FRC_SDCLK_ON) {
+>>> +                s->prnsts &= ~SDHC_IMX_CLOCK_GATE_OFF;
+>>> +            } else {
+>>> +                s->prnsts |= SDHC_IMX_CLOCK_GATE_OFF;
+>>> +            }
+>>> +            break;
+>>> +        default:
+>>> +            break;
+>>> +        }
+>>>          break;
+>>>  
+>>>      case SDHC_HOSTCTL:
+>>> diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
+>>> index c6868c9699..5d9275f3d6 100644
+>>> --- a/include/hw/sd/sdhci.h
+>>> +++ b/include/hw/sd/sdhci.h
+>>> @@ -74,6 +74,7 @@ typedef struct SDHCIState {
+>>>      uint16_t acmd12errsts; /* Auto CMD12 error status register */
+>>>      uint16_t hostctl2;     /* Host Control 2 */
+>>>      uint64_t admasysaddr;  /* ADMA System Address Register */
+>>> +    uint16_t vendor_spec;  /* Vendor specific register */
+>>>  
+>>>      /* Read-only registers */
+>>>      uint64_t capareg;      /* Capabilities Register */
+>>> @@ -96,8 +97,12 @@ typedef struct SDHCIState {
+>>>      uint32_t quirks;
+>>>      uint8_t sd_spec_version;
+>>>      uint8_t uhs_mode;
+>>> +    uint8_t vendor;        /* For vendor specific functionality */
+>>>  } SDHCIState;
+>>>  
+>>> +#define SDHCI_VENDOR_NONE       0
+>>> +#define SDHCI_VENDOR_IMX        1
+>>> +
+>>>  /*
+>>>   * Controller does not provide transfer-complete interrupt when not
+>>>   * busy.
+>>>
 >>
->> @@ -982,7 +995,7 @@ static ssize_t ftgmac100_receive(NetClientState *nc,
->> const uint8_t *buf,
->>          if (bd.des0 & s->rxdes0_edorr) {
->>              addr = s->rx_ring;
->>          } else {
->> -            addr += sizeof(FTGMAC100Desc);
->> +            addr += (FTGMAC100_DBLAC_RXDES_SIZE(s->dblac)) * 8;
->>          }
->>      }
->>      s->rx_descriptor = addr;
->> --
->> 2.25.1
 > 
-
+> 

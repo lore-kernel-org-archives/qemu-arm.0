@@ -1,103 +1,104 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp33385lfc;
-        Tue, 2 Jun 2020 18:18:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy6726xlothswdMNs52qqt4dJfXo58nUeTEQeunaQrjzENNYRryDzWK9tv/LKc4UBvPbmln
-X-Received: by 2002:a25:f507:: with SMTP id a7mr47807263ybe.176.1591147096225;
-        Tue, 02 Jun 2020 18:18:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591147096; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp33429lfc;
+        Tue, 2 Jun 2020 18:18:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzkfcPrsssJWuWZaEqUksA7gP+K/JZMV350fE8wV06FKKb2Pd5NSGfBX2bLNx0Ebej7woF2
+X-Received: by 2002:a25:748b:: with SMTP id p133mr50546142ybc.476.1591147099854;
+        Tue, 02 Jun 2020 18:18:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591147099; cv=none;
         d=google.com; s=arc-20160816;
-        b=R3yJKWLruaWJMPXpIIJEk6bDwYoFlDOltAJuf3DcdydzfG/5k8NitKHm7Qez6FO6Lv
-         l5C6T9IxuG9J+whTYEdmnckMp/gdNJGuDZ+hNHXSYdikvkoRx7J+Og1PEF/IIoAdHirO
-         ne+bOm843CfVjPr/AWOAUQ44sWvyaiIpq/heaUjdETAoBTq2MnJp6wyOh//2MoQAE+Tx
-         H/7+JtvsyfUY0Q/1UUDBotu0VJK+3UEV4KDR7cc7QOcTSpl0YAKRgcTnTiDh/Gt8JW+F
-         ZzYE4jJWielE26lxcRldkM/4mwAKsd5wqwsa8ihtzyjayoCOqBy0xpKp+l9/liS67Sdg
-         F4Yw==
+        b=faPwkMupVBRxj9wGMbL9byjZ+KWtL0nOAne0a0znS/DxxI8CfqvJeod2L2c8hMrG9f
+         8DnMtKc5EqEUzKt98Hx/ERM0FjYas5SxIzl2ihD1kEukv54U7VDU4wUzhCDYS7tDN8/s
+         rIh6nEPg0enVdSZovuZH88Min1TuhC1uS4wE/TnQa3XsEtGawpcnO0etbc5AVWSde8P7
+         M53/BjcHv6jZeqqZtNikaItywMGAGTCsbhC8w2t2r6SxM5xM2RoKO6uCcO6tb2Zb7EfC
+         on1TRSFGf/hmI5a6J7bEpk/8sY231EesCtxwrvy9v8q45qXtWPRei1/qmCjkoxyjsP7P
+         jn0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=iD1HCmE/mBT9UdzHtyaiNXiw6VvhW3BvWlEg2J8SAgE=;
-        b=fZuz93WEUWcSqEgKU6UUK5EgpyfoH674neTOhSo1VpoNyhPcqHRhxOQfSYsMmXTa80
-         qoW4KA4SQdmwuDtP4GmWHr90CKNE69HxR0W2BpOsVsrOQvZcOwHeMtZUocUaiFaIapLn
-         xo3R8dZ2QFnFUIh3hzjl9L621ZTxKjOZSkGwnAE1ficG4uMevR2wLb0qpMKuQ2MWCB6I
-         B3gN6+IXxRk7UGGeO851BqJf9ev/ChrBGamlrVIQ+Stqor5gYwU82lBEfUhdugMpQ4At
-         Pr9pJkHZ8WlcscQpCnGYb0C9daYLmLzHiSvbcqzchZJ+me4/sWnxjvr8nuBxcm4Hihby
-         ECdQ==
+        bh=0EIkcVZM7CTGPx7yRFPLzi2q/BnEPgFyUzrQe3RUVmw=;
+        b=f9oWqN/x3+wlWJ9UFNgWXuEwYbeljQ9bi+2EsEuNwQO1pvP5MoLiZF0TyoWmkShYfy
+         2lc3nd6yRzblgtq31knHq1mWbwTwLHoQL5Q608d3VcXnBBjquV2oE5kyirXeQfN529P1
+         7VRjEYqjrGjPHHcfbmj7y6sSF/jkC0mthn2TTrcOjQdunxEEnSvaVMGjNTTbWDawrekM
+         LnOI5iw0TsdR6xajPPSzMJ4I+HhRf7aGc9p6GxpiHbiJmGebsDhB2nUNqn2EocdLigq5
+         UJOcDlItl1dnkGUNRoHiyZAkQOqz64Oly6QBGxQqIv9VtKUqKk8/o1CyyF7ugleFi4En
+         qZcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=s9ZCi8n7;
+       dkim=fail header.i=@linaro.org header.s=google header.b=A3TJV5nC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j128si355596yba.336.2020.06.02.18.18.16
+        by mx.google.com with ESMTPS id g5si363545ybg.300.2020.06.02.18.18.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jun 2020 18:18:16 -0700 (PDT)
+        Tue, 02 Jun 2020 18:18:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=s9ZCi8n7;
+       dkim=fail header.i=@linaro.org header.s=google header.b=A3TJV5nC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37714 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38194 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgI2p-0003ka-Ei
-	for alex.bennee@linaro.org; Tue, 02 Jun 2020 21:18:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48730)
+	id 1jgI2t-0003wI-7V
+	for alex.bennee@linaro.org; Tue, 02 Jun 2020 21:18:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48674)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jgHyV-000408-9o
- for qemu-arm@nongnu.org; Tue, 02 Jun 2020 21:13:47 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b]:46401)
+ id 1jgHyP-0003sd-Jt
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2020 21:13:41 -0400
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:33272)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jgHyN-0003ZO-Hg
- for qemu-arm@nongnu.org; Tue, 02 Jun 2020 21:13:46 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id n2so186939pld.13
- for <qemu-arm@nongnu.org>; Tue, 02 Jun 2020 18:13:39 -0700 (PDT)
+ id 1jgHyL-0003Yv-NS
+ for qemu-arm@nongnu.org; Tue, 02 Jun 2020 21:13:41 -0400
+Received: by mail-pl1-x644.google.com with SMTP id t7so209400plr.0
+ for <qemu-arm@nongnu.org>; Tue, 02 Jun 2020 18:13:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=iD1HCmE/mBT9UdzHtyaiNXiw6VvhW3BvWlEg2J8SAgE=;
- b=s9ZCi8n7qawEHTJfszwHzAbPrF2DvVIASVDLbLnXzgdllqPe4dkuFBIlN+e39NCsP7
- /LIf5r/0D0GUkKOkgA2BzyKw2UctGsfA6O+eIrPetSZNXFFF8mMDSSB69rC3AP8qtb+3
- kOy0AnuisCA1pQAwwr/sakoioyBrPbr79PPbUxOiUuK7fp/jVHSau3q4w6vDFUg/7y45
- a8IMjubzJTecYAksyLJvIcdJoYLMKDMgcMl0glsqxynVHKXMjIqn5YzIElLNfRmIaB9W
- 7K83hKLMNtgdFu/ZiIOZxrsZQMUGbatj+T2JKLF2I5oWetxbpTjInipT6eaFd3ZFBFom
- hVLg==
+ bh=0EIkcVZM7CTGPx7yRFPLzi2q/BnEPgFyUzrQe3RUVmw=;
+ b=A3TJV5nCnr3oYovFU1ADFd+5yfFGhL0YsAB6KWudClLp1wvvmNicYYxE+o0VmSob5o
+ p138YpdPOZiQNyBhJmc2bHHEra6CcwLLkoatJTvmxsPrgGSSvEAF+e1+6S886KwhNE9q
+ DOSTP2M15CU1MV1HQMlQ4H9byezhmyDDVF6j6FHTcFkBsx+AIvklRPWXzbStPUSYl116
+ vacfPn1/3C3TUSMtjVRqiATU/ah4CEfQA/3gnBiXw7lLJwoW8+9ldG9hbcDDQGl27Vmu
+ SBfWVCdk6F4oUAXCg0bSLVlM2TKvyudy1T/vvlfpgnwX87pb8GtZY9kwnZp4SzUsQ2iq
+ 6xLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=iD1HCmE/mBT9UdzHtyaiNXiw6VvhW3BvWlEg2J8SAgE=;
- b=Ukg9irfVtT3e33Vgcalc9ljSeLRw+3z5d4qU6WDCi2eUuEqSxmxaIZ5r3V21iqbcPl
- VLGSODkiDTHcZQrVuO31WfjwjH/F6mOruhNvk0fK/NvmzvknSal89phSLLTNVkJRZFsy
- +PcIDTDdGuG/U1UCTaxSXY8/apXFEPXgjr4k6wkjBp2HbKXXF9IRUoq+cjWBAdHXQdKS
- oG0EOdwa+MjwsoaXC8aGM0DUoH3NUuZgloqC7jErupp1Mix2j9nV5L9ROW/lovP84CY4
- S66HVL4UIZY6stCQB6fg+feza8k6Ift0s75b2xTuGYUdxQASreMIZ6DJSy3AtcEZUCWT
- Cj3w==
-X-Gm-Message-State: AOAM531KDXfiuMbW9uTCppCpDKR7Ud9PpsXxgIuwf6swnU3srNYEih/6
- SB8JK+YHt5aEcZ2snbGc/oBZVg==
-X-Received: by 2002:a17:902:b103:: with SMTP id
- q3mr21208946plr.265.1591146818066; 
- Tue, 02 Jun 2020 18:13:38 -0700 (PDT)
+ bh=0EIkcVZM7CTGPx7yRFPLzi2q/BnEPgFyUzrQe3RUVmw=;
+ b=lID+8H5YQtYL7LZtUG2AR5mpNSHBTF3Yj4rNM+wLdwF/q1JF/U0VJcVyhxovLDb5WF
+ tZTcBp0BUdxBTmKPDN8+qkUg8cbQZY1NmjqLhYHNu/p3Ook/WlliMx3XKPi4XeC6KdgL
+ fM4SDo51OszSKckMuABqEX/xhM4EnPfDTUSJZsBINLChtveeVIVhlVqvfgQpJOvPs3Xz
+ 7ZkydVFMrK47trW63Wyjjh6lE348KZsx2YJ2lRIHm99VYaPlE8ouQ1y6WH4NBpbMUIie
+ 3PagJDEzKQ2jSCVunFnQcYPDMeHNdMfUzkqWKvlLDw/mE6XrzJOuoBLeeg3JhOy3Wqh9
+ /gtw==
+X-Gm-Message-State: AOAM533p4IQgeyAP7v07BYOm5/82DEEAiitD4BlnKMxSMTSXKOb7yVtq
+ i/paqFlNPhuQ0O5MegHigDIwvg==
+X-Received: by 2002:a17:902:8218:: with SMTP id
+ x24mr27620797pln.150.1591146815640; 
+ Tue, 02 Jun 2020 18:13:35 -0700 (PDT)
 Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
  [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id 3sm290067pfe.85.2020.06.02.18.13.36
+ by smtp.gmail.com with ESMTPSA id 3sm290067pfe.85.2020.06.02.18.13.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Jun 2020 18:13:37 -0700 (PDT)
+ Tue, 02 Jun 2020 18:13:34 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v7 15/42] target/arm: Implement LDG, STG, ST2G instructions
-Date: Tue,  2 Jun 2020 18:12:50 -0700
-Message-Id: <20200603011317.473934-16-richard.henderson@linaro.org>
+Subject: [PATCH v7 13/42] target/arm: Define arm_cpu_do_unaligned_access for
+ user-only
+Date: Tue,  2 Jun 2020 18:12:48 -0700
+Message-Id: <20200603011317.473934-14-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200603011317.473934-1-richard.henderson@linaro.org>
 References: <20200603011317.473934-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::644;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x644.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -122,424 +123,126 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, steplong@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UT7So5q7PNYy
+X-TUID: aKQaBMf8QNLq
+
+We need this to raise unaligned exceptions from user mode.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v2: Split out allocation_tag_mem.  Handle atomicity of stores.
-v3: Add X[t] input to these insns; require pre-cleaned addresses.
-v5: Fix !32-byte aligned operation of st2g.
-v6: Fix op2 extract, stg pre/post-index, stores vs sp, commentary;
-    use pre-computed ata.
-v7: Fix STZG iteration (stephen long)
+v6: Use EXCP_UNALIGNED for user-only and update cpu_loop.c.
 ---
- target/arm/helper-a64.h    |   7 ++
- target/arm/mte_helper.c    | 194 +++++++++++++++++++++++++++++++++++++
- target/arm/translate-a64.c | 158 +++++++++++++++++++++++++++++-
- 3 files changed, 354 insertions(+), 5 deletions(-)
+ linux-user/aarch64/cpu_loop.c |  7 ++++++
+ linux-user/arm/cpu_loop.c     |  7 ++++++
+ target/arm/cpu.c              |  2 +-
+ target/arm/tlb_helper.c       | 41 ++++++++++++++++++++++-------------
+ 4 files changed, 41 insertions(+), 16 deletions(-)
 
-diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index 6c116481e8..2fa61b86fa 100644
---- a/target/arm/helper-a64.h
-+++ b/target/arm/helper-a64.h
-@@ -106,3 +106,10 @@ DEF_HELPER_FLAGS_2(xpacd, TCG_CALL_NO_RWG_SE, i64, env, i64)
- 
- DEF_HELPER_FLAGS_3(irg, TCG_CALL_NO_RWG, i64, env, i64, i64)
- DEF_HELPER_FLAGS_4(addsubg, TCG_CALL_NO_RWG_SE, i64, env, i64, s32, i32)
-+DEF_HELPER_FLAGS_3(ldg, TCG_CALL_NO_WG, i64, env, i64, i64)
-+DEF_HELPER_FLAGS_3(stg, TCG_CALL_NO_WG, void, env, i64, i64)
-+DEF_HELPER_FLAGS_3(stg_parallel, TCG_CALL_NO_WG, void, env, i64, i64)
-+DEF_HELPER_FLAGS_2(stg_stub, TCG_CALL_NO_WG, void, env, i64)
-+DEF_HELPER_FLAGS_3(st2g, TCG_CALL_NO_WG, void, env, i64, i64)
-+DEF_HELPER_FLAGS_3(st2g_parallel, TCG_CALL_NO_WG, void, env, i64, i64)
-+DEF_HELPER_FLAGS_2(st2g_stub, TCG_CALL_NO_WG, void, env, i64)
-diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-index 9ab9ed749d..7ec7930dfc 100644
---- a/target/arm/mte_helper.c
-+++ b/target/arm/mte_helper.c
-@@ -44,6 +44,40 @@ static int choose_nonexcluded_tag(int tag, int offset, uint16_t exclude)
-     return tag;
+diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
+index bbe9fefca8..3cca637bb9 100644
+--- a/linux-user/aarch64/cpu_loop.c
++++ b/linux-user/aarch64/cpu_loop.c
+@@ -121,6 +121,13 @@ void cpu_loop(CPUARMState *env)
+             info._sifields._sigfault._addr = env->exception.vaddress;
+             queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
+             break;
++        case EXCP_UNALIGNED:
++            info.si_signo = TARGET_SIGBUS;
++            info.si_errno = 0;
++            info.si_code = TARGET_BUS_ADRALN;
++            info._sifields._sigfault._addr = env->exception.vaddress;
++            queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
++            break;
+         case EXCP_DEBUG:
+         case EXCP_BKPT:
+             info.si_signo = TARGET_SIGTRAP;
+diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
+index 13629ee1f6..0d568d2d69 100644
+--- a/linux-user/arm/cpu_loop.c
++++ b/linux-user/arm/cpu_loop.c
+@@ -411,6 +411,13 @@ void cpu_loop(CPUARMState *env)
+                 queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
+             }
+             break;
++        case EXCP_UNALIGNED:
++            info.si_signo = TARGET_SIGBUS;
++            info.si_errno = 0;
++            info.si_code = TARGET_BUS_ADRALN;
++            info._sifields._sigfault._addr = env->exception.vaddress;
++            queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
++            break;
+         case EXCP_DEBUG:
+         case EXCP_BKPT:
+         excp_debug:
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 32bec156f2..0f1a46f531 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2166,8 +2166,8 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+     cc->tlb_fill = arm_cpu_tlb_fill;
+     cc->debug_excp_handler = arm_debug_excp_handler;
+     cc->debug_check_watchpoint = arm_debug_check_watchpoint;
+-#if !defined(CONFIG_USER_ONLY)
+     cc->do_unaligned_access = arm_cpu_do_unaligned_access;
++#if !defined(CONFIG_USER_ONLY)
+     cc->do_transaction_failed = arm_cpu_do_transaction_failed;
+     cc->adjust_watchpoint_address = arm_adjust_watchpoint_address;
+ #endif /* CONFIG_TCG && !CONFIG_USER_ONLY */
+diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+index 7388494a55..d4e6d37f4f 100644
+--- a/target/arm/tlb_helper.c
++++ b/target/arm/tlb_helper.c
+@@ -107,21 +107,6 @@ static void QEMU_NORETURN arm_deliver_fault(ARMCPU *cpu, vaddr addr,
+     raise_exception(env, exc, syn, target_el);
  }
  
-+/**
-+ * allocation_tag_mem:
-+ * @env: the cpu environment
-+ * @ptr_mmu_idx: the addressing regime to use for the virtual address
-+ * @ptr: the virtual address for which to look up tag memory
-+ * @ptr_access: the access to use for the virtual address
-+ * @ptr_size: the number of bytes in the normal memory access
-+ * @tag_access: the access to use for the tag memory
-+ * @tag_size: the number of bytes in the tag memory access
-+ * @ra: the return address for exception handling
-+ *
-+ * Our tag memory is formatted as a sequence of little-endian nibbles.
-+ * That is, the byte at (addr >> (LOG2_TAG_GRANULE + 1)) contains two
-+ * tags, with the tag at [3:0] for the lower addr and the tag at [7:4]
-+ * for the higher addr.
-+ *
-+ * Here, resolve the physical address from the virtual address, and return
-+ * a pointer to the corresponding tag byte.  Exit with exception if the
-+ * virtual address is not accessible for @ptr_access.
-+ *
-+ * The @ptr_size and @tag_size values may not have an obvious relation
-+ * due to the alignment of @ptr, and the number of tag checks required.
-+ *
-+ * If there is no tag storage corresponding to @ptr, return NULL.
-+ */
-+static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-+                                   uint64_t ptr, MMUAccessType ptr_access,
-+                                   int ptr_size, MMUAccessType tag_access,
-+                                   int tag_size, uintptr_t ra)
-+{
-+    /* Tag storage not implemented.  */
-+    return NULL;
-+}
-+
- uint64_t HELPER(irg)(CPUARMState *env, uint64_t rn, uint64_t rm)
- {
-     int rtag;
-@@ -80,3 +114,163 @@ uint64_t HELPER(addsubg)(CPUARMState *env, uint64_t ptr,
- 
-     return address_with_allocation_tag(ptr + offset, rtag);
- }
-+
-+static int load_tag1(uint64_t ptr, uint8_t *mem)
-+{
-+    int ofs = extract32(ptr, LOG2_TAG_GRANULE, 1) * 4;
-+    return extract32(*mem, ofs, 4);
-+}
-+
-+uint64_t HELPER(ldg)(CPUARMState *env, uint64_t ptr, uint64_t xt)
-+{
-+    int mmu_idx = cpu_mmu_index(env, false);
-+    uint8_t *mem;
-+    int rtag = 0;
-+
-+    /* Trap if accessing an invalid page.  */
-+    mem = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_LOAD, 1,
-+                             MMU_DATA_LOAD, 1, GETPC());
-+
-+    /* Load if page supports tags. */
-+    if (mem) {
-+        rtag = load_tag1(ptr, mem);
-+    }
-+
-+    return address_with_allocation_tag(xt, rtag);
-+}
-+
-+static void check_tag_aligned(CPUARMState *env, uint64_t ptr, uintptr_t ra)
-+{
-+    if (unlikely(!QEMU_IS_ALIGNED(ptr, TAG_GRANULE))) {
-+        arm_cpu_do_unaligned_access(env_cpu(env), ptr, MMU_DATA_STORE,
-+                                    cpu_mmu_index(env, false), ra);
-+        g_assert_not_reached();
-+    }
-+}
-+
-+/* For use in a non-parallel context, store to the given nibble.  */
-+static void store_tag1(uint64_t ptr, uint8_t *mem, int tag)
-+{
-+    int ofs = extract32(ptr, LOG2_TAG_GRANULE, 1) * 4;
-+    *mem = deposit32(*mem, ofs, 4, tag);
-+}
-+
-+/* For use in a parallel context, atomically store to the given nibble.  */
-+static void store_tag1_parallel(uint64_t ptr, uint8_t *mem, int tag)
-+{
-+    int ofs = extract32(ptr, LOG2_TAG_GRANULE, 1) * 4;
-+    uint8_t old = atomic_read(mem);
-+
-+    while (1) {
-+        uint8_t new = deposit32(old, ofs, 4, tag);
-+        uint8_t cmp = atomic_cmpxchg(mem, old, new);
-+        if (likely(cmp == old)) {
-+            return;
-+        }
-+        old = cmp;
-+    }
-+}
-+
-+typedef void stg_store1(uint64_t, uint8_t *, int);
-+
-+static inline void do_stg(CPUARMState *env, uint64_t ptr, uint64_t xt,
-+                          uintptr_t ra, stg_store1 store1)
-+{
-+    int mmu_idx = cpu_mmu_index(env, false);
-+    uint8_t *mem;
-+
-+    check_tag_aligned(env, ptr, ra);
-+
-+    /* Trap if accessing an invalid page.  */
-+    mem = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_STORE, TAG_GRANULE,
-+                             MMU_DATA_STORE, 1, ra);
-+
-+    /* Store if page supports tags. */
-+    if (mem) {
-+        store1(ptr, mem, allocation_tag_from_addr(xt));
-+    }
-+}
-+
-+void HELPER(stg)(CPUARMState *env, uint64_t ptr, uint64_t xt)
-+{
-+    do_stg(env, ptr, xt, GETPC(), store_tag1);
-+}
-+
-+void HELPER(stg_parallel)(CPUARMState *env, uint64_t ptr, uint64_t xt)
-+{
-+    do_stg(env, ptr, xt, GETPC(), store_tag1_parallel);
-+}
-+
-+void HELPER(stg_stub)(CPUARMState *env, uint64_t ptr)
-+{
-+    int mmu_idx = cpu_mmu_index(env, false);
-+    uintptr_t ra = GETPC();
-+
-+    check_tag_aligned(env, ptr, ra);
-+    probe_write(env, ptr, TAG_GRANULE, mmu_idx, ra);
-+}
-+
-+static inline void do_st2g(CPUARMState *env, uint64_t ptr, uint64_t xt,
-+                           uintptr_t ra, stg_store1 store1)
-+{
-+    int mmu_idx = cpu_mmu_index(env, false);
-+    int tag = allocation_tag_from_addr(xt);
-+    uint8_t *mem1, *mem2;
-+
-+    check_tag_aligned(env, ptr, ra);
-+
-+    /*
-+     * Trap if accessing an invalid page(s).
-+     * This takes priority over !allocation_tag_access_enabled.
-+     */
-+    if (ptr & TAG_GRANULE) {
-+        /* Two stores unaligned mod TAG_GRANULE*2 -- modify two bytes. */
-+        mem1 = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_STORE,
-+                                  TAG_GRANULE, MMU_DATA_STORE, 1, ra);
-+        mem2 = allocation_tag_mem(env, mmu_idx, ptr + TAG_GRANULE,
-+                                  MMU_DATA_STORE, TAG_GRANULE,
-+                                  MMU_DATA_STORE, 1, ra);
-+
-+        /* Store if page(s) support tags. */
-+        if (mem1) {
-+            store1(TAG_GRANULE, mem1, tag);
-+        }
-+        if (mem2) {
-+            store1(0, mem2, tag);
-+        }
-+    } else {
-+        /* Two stores aligned mod TAG_GRANULE*2 -- modify one byte. */
-+        mem1 = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_STORE,
-+                                  2 * TAG_GRANULE, MMU_DATA_STORE, 1, ra);
-+        if (mem1) {
-+            tag |= tag << 4;
-+            atomic_set(mem1, tag);
-+        }
-+    }
-+}
-+
-+void HELPER(st2g)(CPUARMState *env, uint64_t ptr, uint64_t xt)
-+{
-+    do_st2g(env, ptr, xt, GETPC(), store_tag1);
-+}
-+
-+void HELPER(st2g_parallel)(CPUARMState *env, uint64_t ptr, uint64_t xt)
-+{
-+    do_st2g(env, ptr, xt, GETPC(), store_tag1_parallel);
-+}
-+
-+void HELPER(st2g_stub)(CPUARMState *env, uint64_t ptr)
-+{
-+    int mmu_idx = cpu_mmu_index(env, false);
-+    uintptr_t ra = GETPC();
-+    int in_page = -(ptr | TARGET_PAGE_MASK);
-+
-+    check_tag_aligned(env, ptr, ra);
-+
-+    if (likely(in_page >= 2 * TAG_GRANULE)) {
-+        probe_write(env, ptr, 2 * TAG_GRANULE, mmu_idx, ra);
-+    } else {
-+        probe_write(env, ptr, TAG_GRANULE, mmu_idx, ra);
-+        probe_write(env, ptr + TAG_GRANULE, TAG_GRANULE, mmu_idx, ra);
-+    }
-+}
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index b032829194..0725c2ca07 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -3689,6 +3689,153 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
+-/* Raise a data fault alignment exception for the specified virtual address */
+-void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
+-                                 MMUAccessType access_type,
+-                                 int mmu_idx, uintptr_t retaddr)
+-{
+-    ARMCPU *cpu = ARM_CPU(cs);
+-    ARMMMUFaultInfo fi = {};
+-
+-    /* now we have a real cpu fault */
+-    cpu_restore_state(cs, retaddr, true);
+-
+-    fi.type = ARMFault_Alignment;
+-    arm_deliver_fault(cpu, vaddr, access_type, mmu_idx, &fi);
+-}
+-
+ /*
+  * arm_cpu_do_transaction_failed: handle a memory system error response
+  * (eg "no device/memory present at address") by raising an external abort
+@@ -198,3 +183,29 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
      }
+ #endif
  }
- 
-+/*
-+ * Load/Store memory tags
-+ *
-+ *  31 30 29         24     22  21     12    10      5      0
-+ * +-----+-------------+-----+---+------+-----+------+------+
-+ * | 1 1 | 0 1 1 0 0 1 | op1 | 1 | imm9 | op2 |  Rn  |  Rt  |
-+ * +-----+-------------+-----+---+------+-----+------+------+
-+ */
-+static void disas_ldst_tag(DisasContext *s, uint32_t insn)
++
++/* Raise a data fault alignment exception for the specified virtual address */
++void arm_cpu_do_unaligned_access(CPUState *cs, vaddr vaddr,
++                                 MMUAccessType access_type,
++                                 int mmu_idx, uintptr_t retaddr)
 +{
-+    int rt = extract32(insn, 0, 5);
-+    int rn = extract32(insn, 5, 5);
-+    uint64_t offset = sextract64(insn, 12, 9) << LOG2_TAG_GRANULE;
-+    int op2 = extract32(insn, 10, 2);
-+    int op1 = extract32(insn, 22, 2);
-+    bool is_load = false, is_pair = false, is_zero = false;
-+    int index = 0;
-+    TCGv_i64 addr, clean_addr, tcg_rt;
++    ARMCPU *cpu = ARM_CPU(cs);
 +
-+    /* We checked insn bits [29:24,21] in the caller.  */
-+    if (extract32(insn, 30, 2) != 3) {
-+        goto do_unallocated;
-+    }
-+
++#ifdef CONFIG_USER_ONLY
++    cpu->env.exception.vaddress = vaddr;
 +    /*
-+     * @index is a tri-state variable which has 3 states:
-+     * < 0 : post-index, writeback
-+     * = 0 : signed offset
-+     * > 0 : pre-index, writeback
++     * For HW, this is EXCP_DATA_ABORT with a proper syndrome.
++     * Make it easier for ourselves in linux-user/arm/cpu_loop.c.
 +     */
-+    switch (op1) {
-+    case 0: /* STG */
-+        if (op2 != 0) {
-+            /* STG */
-+            index = op2 - 2;
-+            break;
-+        }
-+        goto do_unallocated;
-+    case 1:
-+        if (op2 != 0) {
-+            /* STZG */
-+            is_zero = true;
-+            index = op2 - 2;
-+        } else {
-+            /* LDG */
-+            is_load = true;
-+        }
-+        break;
-+    case 2:
-+        if (op2 != 0) {
-+            /* ST2G */
-+            is_pair = true;
-+            index = op2 - 2;
-+            break;
-+        }
-+        goto do_unallocated;
-+    case 3:
-+        if (op2 != 0) {
-+            /* STZ2G */
-+            is_pair = is_zero = true;
-+            index = op2 - 2;
-+            break;
-+        }
-+        goto do_unallocated;
++    cs->exception_index = EXCP_UNALIGNED;
++    cpu_loop_exit_restore(cs, retaddr);
++#else
++    ARMMMUFaultInfo fi = {};
 +
-+    default:
-+    do_unallocated:
-+        unallocated_encoding(s);
-+        return;
-+    }
++    /* now we have a real cpu fault */
++    cpu_restore_state(cs, retaddr, true);
 +
-+    if (!dc_isar_feature(aa64_mte_insn_reg, s)) {
-+        goto do_unallocated;
-+    }
-+
-+    if (rn == 31) {
-+        gen_check_sp_alignment(s);
-+    }
-+
-+    addr = read_cpu_reg_sp(s, rn, true);
-+    if (index >= 0) {
-+        /* pre-index or signed offset */
-+        tcg_gen_addi_i64(addr, addr, offset);
-+    }
-+
-+    if (is_load) {
-+        tcg_rt = cpu_reg(s, rt);
-+        if (s->ata) {
-+            gen_helper_ldg(tcg_rt, cpu_env, addr, tcg_rt);
-+        } else {
-+            clean_addr = clean_data_tbi(s, addr);
-+            gen_probe_access(s, clean_addr, MMU_DATA_LOAD, MO_8);
-+            gen_address_with_allocation_tag0(tcg_rt, addr);
-+        }
-+    } else {
-+        tcg_rt = cpu_reg_sp(s, rt);
-+        if (!s->ata) {
-+            /*
-+             * For STG and ST2G, we need to check alignment and probe memory.
-+             * TODO: For STZG and STZ2G, we could rely on the stores below,
-+             * at least for system mode; user-only won't enforce alignment.
-+             */
-+            if (is_pair) {
-+                gen_helper_st2g_stub(cpu_env, addr);
-+            } else {
-+                gen_helper_stg_stub(cpu_env, addr);
-+            }
-+        } else if (tb_cflags(s->base.tb) & CF_PARALLEL) {
-+            if (is_pair) {
-+                gen_helper_st2g_parallel(cpu_env, addr, tcg_rt);
-+            } else {
-+                gen_helper_stg_parallel(cpu_env, addr, tcg_rt);
-+            }
-+        } else {
-+            if (is_pair) {
-+                gen_helper_st2g(cpu_env, addr, tcg_rt);
-+            } else {
-+                gen_helper_stg(cpu_env, addr, tcg_rt);
-+            }
-+        }
-+    }
-+
-+    if (is_zero) {
-+        TCGv_i64 clean_addr = clean_data_tbi(s, addr);
-+        TCGv_i64 tcg_zero = tcg_const_i64(0);
-+        int mem_index = get_mem_index(s);
-+        int i, n = (1 + is_pair) << LOG2_TAG_GRANULE;
-+
-+        tcg_gen_qemu_st_i64(tcg_zero, clean_addr, mem_index,
-+                            MO_Q | MO_ALIGN_16);
-+        for (i = 8; i < n; i += 8) {
-+            tcg_gen_addi_i64(clean_addr, clean_addr, 8);
-+            tcg_gen_qemu_st_i64(tcg_zero, clean_addr, mem_index, MO_Q);
-+        }
-+        tcg_temp_free_i64(tcg_zero);
-+    }
-+
-+    if (index != 0) {
-+        /* pre-index or post-index */
-+        if (index < 0) {
-+            /* post-index */
-+            tcg_gen_addi_i64(addr, addr, offset);
-+        }
-+        tcg_gen_mov_i64(cpu_reg_sp(s, rn), addr);
-+    }
++    fi.type = ARMFault_Alignment;
++    arm_deliver_fault(cpu, vaddr, access_type, mmu_idx, &fi);
++#endif
 +}
-+
- /* Loads and stores */
- static void disas_ldst(DisasContext *s, uint32_t insn)
- {
-@@ -3713,13 +3860,14 @@ static void disas_ldst(DisasContext *s, uint32_t insn)
-     case 0x0d: /* AdvSIMD load/store single structure */
-         disas_ldst_single_struct(s, insn);
-         break;
--    case 0x19: /* LDAPR/STLR (unscaled immediate) */
--        if (extract32(insn, 10, 2) != 0 ||
--            extract32(insn, 21, 1) != 0) {
-+    case 0x19:
-+        if (extract32(insn, 21, 1) != 0) {
-+            disas_ldst_tag(s, insn);
-+        } else if (extract32(insn, 10, 2) == 0) {
-+            disas_ldst_ldapr_stlr(s, insn);
-+        } else {
-             unallocated_encoding(s);
--            break;
-         }
--        disas_ldst_ldapr_stlr(s, insn);
-         break;
-     default:
-         unallocated_encoding(s);
 -- 
 2.25.1
 

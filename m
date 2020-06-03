@@ -1,104 +1,110 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp178782lfc;
-        Tue, 2 Jun 2020 22:26:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHwnSFWI5k2NwXc6HLjSw2sq2t/KAOzijGXdab0/WIwwXdBDYQW9HbgbA1OOPaA9K9NaUa
-X-Received: by 2002:a25:7313:: with SMTP id o19mr45658387ybc.458.1591161983484;
-        Tue, 02 Jun 2020 22:26:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591161983; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp197254lfc;
+        Tue, 2 Jun 2020 22:59:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyccWIrzfDTxlKvdS7Ax2aChpbQtW9ql2ypak5tZRhRa9PlbfUoMjNAstnVoXehQds/PqSS
+X-Received: by 2002:a25:bdcb:: with SMTP id g11mr47508620ybk.256.1591163971152;
+        Tue, 02 Jun 2020 22:59:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591163971; cv=none;
         d=google.com; s=arc-20160816;
-        b=udTjAhj5XPYzkIJ9HuwNPYMmsyUoP6bp6YqWg5Lw3mFNcgACxOtYBxlJa7yTu0cRbR
-         D44AqpO+mPCdmk7U2bxMTcxp4LKFS4rY70x5oQa5p88Fkq7Tb9dqID8SpK3C5KKF2Py9
-         OuqRxH1LTuxuExnQT72cy6aLskAS/3r9RTEMqj2K0m/1a8PKShcYgmhwcEPbjWugldIj
-         MHSpHkvKREWJG0DchEW2gWBbszVicKLxE+P35p7oE1ShcuG8E1M2cE7dWrF4j+nZnHNA
-         I94VmLmUdVpr4ZZ9jBHQ0e44rpb+JJAU2nbYiQrFcbf2v34vTEm9xVpJqj7vj2cURoBm
-         aIOQ==
+        b=HzqW4Lbw4yosS9tDcg8e/fAQUcc+Iy0fC6eR8phBucEL7EJxJFmx8WFXDyn2kDNui7
+         kzkQmbXyHhmPR/aCFQX/9UofKfo8g/6jyQ9hSrMrpyhqnf1o41RNiQIFxJ8BvNna/VXK
+         3hUtIfTf/nPNGVD10xCk61RZabFHTC2xu0C+tZbN7TV/YLaCYWcMSF+UoOC84+skikof
+         gRQvp8cFD7tC13nTVmMA+Wgp9XDSkBRw/R7zkNNvpzB4+jVmyubxoygNCq09lO5a7336
+         AW1bdp4tU9CazbXD6ncAQ9LO2IXhosQTiLoDKR3Vc6MLQW4nrFQgxaq7ds6/+7oDiep8
+         Vk2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=zAVf0eC1i4TO3oZMCKOs1PygTBx2n4QN+KOvIE2jWCE=;
-        b=JuakQlXUufFx3MItOFq9p+rQd4iie1L2ciDu2v6g9JVr0lGT/1KdxbCF4KGZ1ffJr+
-         RPI3LFVjBUyykaY/zMPvz12KxXytUS60r1t2ZRqlZUeEK7UTDi1t85fMHu1IskdQZZX1
-         zeksDNVZqMab/48MwGn/mUOvMW+zMxQPxlb34OTDSS6SeEXRodyxn+qr1I7lW9w43mvz
-         4nQtasXRlNV87GKNV0jdaLotpdPnNBQZzemNWE68XeWdBJF0/cLH1lmDdzD0K4Gkf/X3
-         9W+OmzfFedXWDmC98IA4EJ42jFbd+Ew08/TyhQJo9E9WQdQxc3yhOhOegXM1muk6eWKL
-         MpmA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=9HBR/Yl1f5/zHKx9ZNXQfOsKlTY6daAsStel41gZZFk=;
+        b=nMWE+xJgV6BPfnx4L7wHF1GlpkP+Ss7z7ZB2vkQKpwcp3tUXhePE8zgJkcjsS4Ayg4
+         l4VRXBJronIpf16a8PcqhcllOsKEm14xFw/HLb4Rtni5DDNJmGQmkiPH2tqBNVmNSOc5
+         TywDEvstsCldRKzPQw9fUQ/16XOyku4vtUzuxyZFzO9+U8X9pTeSKxwiGT9VilHPHwxO
+         0ZGJ1iIy55/gJZipoVAuIX0YGYUuHoajhbIJxcnh2L82WBqUJqwYrPo/eDPfcoF/xW2g
+         Iegm2E8VH4CNEY+Hv31Jp2GbCjz41uV2ZWCyWFq8f46cD6u2Qc00FGL1E1YVfMfS68TZ
+         tjhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hoE7ifJ1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RzWUjqOU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n127si865967ybc.137.2020.06.02.22.26.23
+        by mx.google.com with ESMTPS id l7si931193ybk.172.2020.06.02.22.59.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jun 2020 22:26:23 -0700 (PDT)
+        Tue, 02 Jun 2020 22:59:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hoE7ifJ1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46028 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RzWUjqOU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:57664 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgLuw-0000Oy-U0
-	for alex.bennee@linaro.org; Wed, 03 Jun 2020 01:26:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53332)
+	id 1jgMR0-0000FT-Ft
+	for alex.bennee@linaro.org; Wed, 03 Jun 2020 01:59:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56560)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1jgLsw-0005CK-5a; Wed, 03 Jun 2020 01:24:18 -0400
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:34007)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jgMQq-0000D5-Ut; Wed, 03 Jun 2020 01:59:20 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:43673)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1jgLsv-0001n5-DL; Wed, 03 Jun 2020 01:24:17 -0400
-Received: by mail-pf1-x441.google.com with SMTP id z64so836214pfb.1;
- Tue, 02 Jun 2020 22:24:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jgMQq-0000gE-9u; Wed, 03 Jun 2020 01:59:20 -0400
+Received: by mail-wr1-x444.google.com with SMTP id l10so918689wrr.10;
+ Tue, 02 Jun 2020 22:59:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=zAVf0eC1i4TO3oZMCKOs1PygTBx2n4QN+KOvIE2jWCE=;
- b=hoE7ifJ1CnaMm7b0C2B/35OGXnArj+qHcJ+t6LHEvO7OxEMf6f5viWFZWmd/BNbeOB
- 3GBLhPPQ7REZPZz7m2SWrzxne+KpIZeFQcXtgERS0GAKZJxu5C3czpBd739YUifTkQOX
- 0vhkit+xYNnA6ylkf76e8uwfcg5eLfZ2gvLOd1hwWb/K5EL7EOiHI4k+wymZUa8JkMyW
- pH8h8yGCnkGI6pGTWw9J98O7M3tUGf6dqno88kTHtgZkT7kHue3rzG1M0qxoKxNu1OzR
- v6wO8xj8J5rn1QSsSsVm4x0QoNZaAv1Ks7FrL0+96M+Bi2YpS/aXBaadQ9UD1D0TWGoN
- jJUw==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9HBR/Yl1f5/zHKx9ZNXQfOsKlTY6daAsStel41gZZFk=;
+ b=RzWUjqOUEXnsK4HzlRZdB0K+M/5ufQ9GJIMKzC4cvUfGAozonyEutkVzUJYHdJ4Hdr
+ oxbFiGD0gK6x1eSDAMkaK5y/DerQXbyUTtJz2QcXH9kx/vwwva0LS7ztfo7sHhn1Yqh6
+ 5ym3Qprvn2ddyWp1FBSLmptdQWkCt9verluEnM6S8opwmZPawNxGB2y6w4P6pr0J63Si
+ C3l3zQm/Vns8nNhxRaVZPbb7W0Rkw96JQY0MElE5RIGnTp4HAVKp5tAn9zv0evoczQ8Y
+ 6yRZAzyjpj4+Y9+dG+ryjFrS2RELKgisuaQlo+CkBc5Y4CUtNVHEQp16Us6eDBf4AiDt
+ W9aQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references;
- bh=zAVf0eC1i4TO3oZMCKOs1PygTBx2n4QN+KOvIE2jWCE=;
- b=RHavf/S8TTojzby6RVveH+CEYJMxTy+1oldEBCPmq+Ep0xe1g2oMUILmm7rq62Fk14
- uQeoIK29F8Fb1xswkSqm1ANLaodzMyhcZUVwJrzhsNJa4n+UJWosGWl7og21bgpaUfpH
- rUQBwhDplfWStrd8K0PbHdH3G1/RI4+Ks2KXyjYcuy+Lp6IsHErweFormuAfDG5SuZMG
- uCCA8J5EkvFO+h9peL9Xkj+buuhr5mZ2lr1OYJe7ndg9SE+eoH+IxdEZPu+qhwanpf9F
- 46eKaUXHSAgMEb72n18U/+ERaPhHDL9V5dl2qbIQxYxir7WLLMB2R8yp64cI3aAxe/I0
- Kv6A==
-X-Gm-Message-State: AOAM533++ZylU3sLFS1HOTakZcft5nZxEob3QXebXex4PudP2XqC3YLM
- IA0ZjmmOqvSCbwNmL10q74k=
-X-Received: by 2002:a63:6dc2:: with SMTP id
- i185mr26677561pgc.250.1591161855764; 
- Tue, 02 Jun 2020 22:24:15 -0700 (PDT)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id t2sm719587pfb.64.2020.06.02.22.24.15
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 02 Jun 2020 22:24:15 -0700 (PDT)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 2/2] hw: arm: Set vendor property for IMX SDHCI emulations
-Date: Tue,  2 Jun 2020 22:24:04 -0700
-Message-Id: <20200603052404.30788-3-linux@roeck-us.net>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200603052404.30788-1-linux@roeck-us.net>
-References: <20200603052404.30788-1-linux@roeck-us.net>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
- envelope-from=groeck7@gmail.com; helo=mail-pf1-x441.google.com
+ :mime-version:content-transfer-encoding;
+ bh=9HBR/Yl1f5/zHKx9ZNXQfOsKlTY6daAsStel41gZZFk=;
+ b=iPwAXlmqDW3PyKQ70fjyIiSaYcFRVefbLihX7YB/r8pyxZST8ijxhBRrR8ezdIzuLe
+ G4sGUDnQTwxrWW1Hy3rcVqOiYZ/80LrL7fjEmr9UFak750sqyzJ3GvxrWkLdh5RG65sn
+ zNUUj45/0H7IZAQK1C4rTpTP8ky1k0QaGZXpqQQgANbXTLWVR8v35zFsUxHINEbNay3C
+ eU0lIcEsOi0cBhDMGHJ1UjK9/Adq4QMkOK7FN4+3hJim7RhAKUCbWWp6W+8EMA4ZCr/G
+ Ph9yrRCH5nQZd3egwVn7SHTO9iTI2MDEVSsrzY5CtBEHtZcemR0ecRtPbLvQhCmj3lP8
+ 82BA==
+X-Gm-Message-State: AOAM5331+imc0AwT6iPlziBTakDYnP/F9WRY5wzl605UBDlF5lQmuJbh
+ Oa0P8odQZw0awkAyXCF29OdRrZdt
+X-Received: by 2002:adf:e544:: with SMTP id z4mr11757175wrm.317.1591163957652; 
+ Tue, 02 Jun 2020 22:59:17 -0700 (PDT)
+Received: from localhost.localdomain
+ (181.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id 5sm2006291wrr.5.2020.06.02.22.59.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Jun 2020 22:59:17 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3] hw/adc/stm32f2xx_adc: Correct memory region size and
+ access size
+Date: Wed,  3 Jun 2020 07:59:15 +0200
+Message-Id: <20200603055915.17678-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,77 +117,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-devel@nongnu.org,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Guenter Roeck <linux@roeck-us.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ Seth Kintigh <skintigh@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fRBGxYKPs7Uo
+X-TUID: PFuLdZvxgy3o
 
-Set vendor property to IMX to enable IMX specific functionality
-in sdhci code.
+The ADC region size is 256B, split as:
+ - [0x00 - 0x4f] defined
+ - [0x50 - 0xff] reserved
 
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+All registers are 32-bit (thus when the datasheet mentions the
+last defined register is 0x4c, it means its address range is
+0x4c .. 0x4f.
+
+This model implementation is also 32-bit. Set MemoryRegionOps
+'impl' fields.
+
+See:
+  'RM0033 Reference manual Rev 8', Table 10.13.18 "ADC register map".
+
+Reported-by: Seth Kintigh <skintigh@gmail.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/fsl-imx25.c  | 2 ++
- hw/arm/fsl-imx6.c   | 2 ++
- hw/arm/fsl-imx6ul.c | 2 ++
- hw/arm/fsl-imx7.c   | 2 ++
- 4 files changed, 8 insertions(+)
+ hw/adc/stm32f2xx_adc.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-index cdaa79c26b..2cbd985e93 100644
---- a/hw/arm/fsl-imx25.c
-+++ b/hw/arm/fsl-imx25.c
-@@ -274,6 +274,8 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
-                                  &err);
-         object_property_set_uint(OBJECT(&s->esdhc[i]), IMX25_ESDHC_CAPABILITIES,
-                                  "capareg", &err);
-+        object_property_set_uint(OBJECT(&s->esdhc[i]), SDHCI_VENDOR_IMX,
-+                                 "vendor", &err);
-         object_property_set_bool(OBJECT(&s->esdhc[i]), true, "realized", &err);
-         if (err) {
-             error_propagate(errp, err);
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index f58c85aa8c..8e9a94e4d7 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -350,6 +350,8 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-                                  &err);
-         object_property_set_uint(OBJECT(&s->esdhc[i]), IMX6_ESDHC_CAPABILITIES,
-                                  "capareg", &err);
-+        object_property_set_uint(OBJECT(&s->esdhc[i]), SDHCI_VENDOR_IMX,
-+                                 "vendor", &err);
-         object_property_set_bool(OBJECT(&s->esdhc[i]), true, "realized", &err);
-         if (err) {
-             error_propagate(errp, err);
-diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
-index 3ecb212da6..ce1462927c 100644
---- a/hw/arm/fsl-imx6ul.c
-+++ b/hw/arm/fsl-imx6ul.c
-@@ -505,6 +505,8 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
-             FSL_IMX6UL_USDHC2_IRQ,
-         };
+diff --git a/hw/adc/stm32f2xx_adc.c b/hw/adc/stm32f2xx_adc.c
+index 4f9d485ecf..01a0b14e69 100644
+--- a/hw/adc/stm32f2xx_adc.c
++++ b/hw/adc/stm32f2xx_adc.c
+@@ -246,6 +246,8 @@ static const MemoryRegionOps stm32f2xx_adc_ops = {
+     .read = stm32f2xx_adc_read,
+     .write = stm32f2xx_adc_write,
+     .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl.min_access_size = 4,
++    .impl.max_access_size = 4,
+ };
  
-+        object_property_set_uint(OBJECT(&s->usdhc[i]), SDHCI_VENDOR_IMX,
-+                                        "vendor", &error_abort);
-         object_property_set_bool(OBJECT(&s->usdhc[i]), true, "realized",
-                                  &error_abort);
+ static const VMStateDescription vmstate_stm32f2xx_adc = {
+@@ -278,7 +280,7 @@ static void stm32f2xx_adc_init(Object *obj)
+     sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
  
-diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
-index 89c3b64c06..dbf16b2814 100644
---- a/hw/arm/fsl-imx7.c
-+++ b/hw/arm/fsl-imx7.c
-@@ -416,6 +416,8 @@ static void fsl_imx7_realize(DeviceState *dev, Error **errp)
-             FSL_IMX7_USDHC3_IRQ,
-         };
- 
-+        object_property_set_uint(OBJECT(&s->usdhc[i]), SDHCI_VENDOR_IMX,
-+                                 "vendor", &error_abort);
-         object_property_set_bool(OBJECT(&s->usdhc[i]), true, "realized",
-                                  &error_abort);
+     memory_region_init_io(&s->mmio, obj, &stm32f2xx_adc_ops, s,
+-                          TYPE_STM32F2XX_ADC, 0xFF);
++                          TYPE_STM32F2XX_ADC, 0x100);
+     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+ }
  
 -- 
-2.17.1
+2.21.3
 

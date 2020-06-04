@@ -1,147 +1,280 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1348288lfc;
-        Thu, 4 Jun 2020 04:09:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy+/gj1HILHkrimoqb8NQ5drS4rhsFwfLFgmZjU+HWl1+INOms5fxYHhEXtC8uT9v6adfkh
-X-Received: by 2002:a25:80d0:: with SMTP id c16mr6963714ybm.98.1591268951363;
-        Thu, 04 Jun 2020 04:09:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591268951; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1372850lfc;
+        Thu, 4 Jun 2020 04:43:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwWPSbdQJsqBLvQ5W0/FYRbzbaSYYMijQgIDzBq0rZMqnY8c73Z6ZdDAiKP1w9inmYQwQmr
+X-Received: by 2002:a25:9010:: with SMTP id s16mr6471597ybl.2.1591271018082;
+        Thu, 04 Jun 2020 04:43:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591271018; cv=none;
         d=google.com; s=arc-20160816;
-        b=wVLZ/8r7lOqmSFss24WHALsvGgTkq8iteVtjysTmAD7voj/Iw9HfNKajuMj6EO3bM7
-         qEGe8ieH6LsmM+6gcnNU9FvaaXaI6pnrpuwV94WxJIVDYAVlElZRTC3E9kC4u43zudFJ
-         y0WUYUHjXE0EpJ4tNnFY7CeiTu3a+suqNxUJR3EqVMbRD/1VVROl/DBpM6gCEkqKBPZb
-         08GNMKvR0/Iivv+ZW4s8PEb7vHxdIzeTtcjFlF7IRwxxPXBEuHV0WDJaJZW0sfJVamwy
-         Nf95A5SYoqaWra/x8nzJ1jhR4SnXy8zQGtqMhsEm84bED1+6TqT6LANwpG7UgnGrqleV
-         Beyw==
+        b=aCdfMAEa3soGokm0ddYEl+YC9f80bSQ5dLeQhEIJckrVU4AxnWyxWJicSjHM+hk6No
+         HKVhok1IE8i2B0sjuuQpK1hYLBNqpEozdx45djHcAhvohmwzzIks9eRrY05PJCSp01kJ
+         l0+sZWt9T+uvZW5S+IorAXdd2KiSIEdZfLBLdI/VvBkXB0VBp8BUHlYHO1zFUg0n31lZ
+         4RmnogcUpMJmKPnKec17jJjC0ZOiBNqNRwErIXYEp7tJpF1xtRY0/tQncD83y2ShiN6f
+         aDM6GLleWbhX/ji7IDZJiYNm6ybn4P+pqdmcQFueZ2nenXZzvEpJq0wtd96W+3gavT/O
+         5J1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=VGsdOtrgIs225qBZokUjY8eGy6Dpy8ZA/wqlWIFnByw=;
-        b=sT8loUpWpG48J2Zy8eFzdc9GhJXtx3tw1tGsrBYHZsLaTS+J6qiDYxUdvE8bR2bH4P
-         meoVbLGzmvTazoYp3TP32YRkj3ubTrNa9fDt7sepPTqPb2Fo81cdfGHzvMH5bEXud1M5
-         4IOM5NuwAkLj2AOmVZxVq+NCZIaJKbkUslVRYpfKeWJHGYC3858aXtiWrdV1L8yZPEZU
-         cyQ7MimJCz4BRocccDDWH7iazWxzletzeM8mlLu5V5yeNjYyVZXGiw24YBdoP/8IokGQ
-         ftGUdyhWGho0d0e0gYKPvKaPBd2qo4L8C1F0OHL4bEWhN6Ke9ETta//W1GdIPKkdHKE9
-         QaOw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=S1JSaMtxY6m3kx5Ju2awNuKWdh/0zaRDe3Pg0SlO+Ns=;
+        b=zCjh592dHjUe23gBP4Brn2edz5ERBrCpl2O/dv4CQr1XTMWH750+0IH40MaWAbvcxL
+         gTH9lmTURL/AEDFJvvsCkiNKpKjUHVmK1u/eh8xlfYGzDCV7Gm+bih8x5cj7bQF2G8mN
+         uIYbyCpmIZWkbdiGSkvUIPVLmkMG/Xei2pXAv3I3KbaRRR/53A8gib09o17giN1ELDE7
+         4JzgYN/6jQl3p3YvyHEn19dOkeZPO+Yri/urmDDyGbL2WED92CClpSkl95tCVp2QdUNA
+         sfyY0rqynGc3Y8rS5rKKr12rWRMRIp9n8Bl4B6/z/yNQUBNSK0NfY9sPysUU2FbpJViN
+         IYpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y11si3920338ybm.53.2020.06.04.04.09.11
+        by mx.google.com with ESMTPS id m63si4115528ybm.430.2020.06.04.04.43.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jun 2020 04:09:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Jun 2020 04:43:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34790 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47450 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgnkE-0001Lw-Q2
-	for alex.bennee@linaro.org; Thu, 04 Jun 2020 07:09:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40486)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jgoHZ-0004Tk-Fs
+	for alex.bennee@linaro.org; Thu, 04 Jun 2020 07:43:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44434)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jgnk7-0001Kr-Pz; Thu, 04 Jun 2020 07:09:03 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2108 helo=huawei.com)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jgoGZ-0003Yn-PM
+ for qemu-devel@nongnu.org; Thu, 04 Jun 2020 07:42:35 -0400
+Received: from 3.mo178.mail-out.ovh.net ([46.105.44.197]:38198)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jgnk6-0005Wb-GC; Thu, 04 Jun 2020 07:09:03 -0400
-Received: from lhreml709-chm.china.huawei.com (unknown [172.18.7.107])
- by Forcepoint Email with ESMTP id 2540E5A64331AD41AF6C;
- Thu,  4 Jun 2020 12:08:53 +0100 (IST)
-Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
- lhreml709-chm.china.huawei.com (10.201.108.58) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1913.5; Thu, 4 Jun 2020 12:08:52 +0100
-Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
- lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1913.007; 
- Thu, 4 Jun 2020 12:08:52 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Subject: RE: [Question] Regarding containers "unattached/peripheral/anonymous"
- - their relation with hot(un)plug of devices
-Thread-Topic: [Question] Regarding containers
- "unattached/peripheral/anonymous" - their relation with hot(un)plug of
- devices
-Thread-Index: AdXSpuyfn6DVS59zTi+rGkiX0i4oLAAFtBwAAADWJeAAA8wjgAACyCnAAJHlbgAAZ8bfMBji6o4AAARuM+A=
-Date: Thu, 4 Jun 2020 11:08:52 +0000
-Message-ID: <207c66e7e2224e9888973ed5ba1fcfb4@huawei.com>
-References: <70446b6cbf5442488a40fe809f38c3c8@huawei.com>
- <20200124145404.1d15209e@redhat.com>
- <77dbc712482545078986adcd72567630@huawei.com>
- <20200124170645.3d794ac6@redhat.com>
- <b8fccc99d7344b2485c0db76886af9c8@huawei.com>
- <20200127160352.54f95875@redhat.com>
- <ab94a6dec7b9435cbb36ca9d488a0daa@huawei.com>
- <20200604115430.029c488a@redhat.com>
-In-Reply-To: <20200604115430.029c488a@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.68.203]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jgoGY-0004fc-Ag
+ for qemu-devel@nongnu.org; Thu, 04 Jun 2020 07:42:35 -0400
+Received: from player774.ha.ovh.net (unknown [10.108.57.16])
+ by mo178.mail-out.ovh.net (Postfix) with ESMTP id AF5B9A490B
+ for <qemu-devel@nongnu.org>; Thu,  4 Jun 2020 13:42:24 +0200 (CEST)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player774.ha.ovh.net (Postfix) with ESMTPSA id 408631319B8C5;
+ Thu,  4 Jun 2020 11:42:16 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-105G0064213cf25-7820-44ec-a7b8-4b27e9d6576f,
+ 2E0AA79A099E542C5FE1C9A79F210F9E9C727315) smtp.auth=clg@kaod.org
+Subject: Re: [PATCH] ftgmac100: Implement variable descriptor size
+To: Erik Smit <erik.lucas.smit@gmail.com>
+References: <CA+MHfov0TVbwjy8g_cHVa6Y-bMowCbsGLdt8uUhmcns0v_eVLw@mail.gmail.com>
+ <70cece8e-1caf-1387-25e7-971783817cc8@kaod.org>
+ <CA+MHfovyMCjqwJ+G3XyRvr5fO60sGff7bwYqSa7a=mFo8CYoSw@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <7ad445ed-d737-2966-953c-30ab2cca5c51@kaod.org>
+Date: Thu, 4 Jun 2020 13:42:15 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.76.210;
- envelope-from=salil.mehta@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/04 07:08:53
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+In-Reply-To: <CA+MHfovyMCjqwJ+G3XyRvr5fO60sGff7bwYqSa7a=mFo8CYoSw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Ovh-Tracer-Id: 16005793079041362723
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudeguddggeduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeduvdelheeitdduvdektdehfefhvedtvdevvdduffeiffehtdekuddtffffledtjeenucffohhmrghinhepghhithhhuhgsrdgtohhmpdhqvghmuhdrohhrghenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejjeegrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrgh
+Received-SPF: pass client-ip=46.105.44.197; envelope-from=clg@kaod.org;
+ helo=3.mo178.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/04 07:42:25
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>,
- "mst@redhat.com" <mst@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, pbonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DSJ6NMDzTwFB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: N16PADbYMLaI
 
-> From: Igor Mammedov [mailto:imammedo@redhat.com]
-> Sent: Thursday, June 4, 2020 10:55 AM
-> To: Salil Mehta <salil.mehta@huawei.com>
-> Cc: Andrew Jones <drjones@redhat.com>; gshan@redhat.com; mst@redhat.com;
-> qemu-devel@nongnu.org; eric.auger@redhat.com; qemu-arm@nongnu.org; pbonzi=
-ni
-> <pbonzini@redhat.com>
-> Subject: Re: [Question] Regarding containers "unattached/peripheral/anony=
-mous"
-> - their relation with hot(un)plug of devices
->=20
-> On Wed, 3 Jun 2020 15:13:26 +0000
-> Salil Mehta <salil.mehta@huawei.com> wrote:
->=20
+On 6/4/20 12:54 PM, Erik Smit wrote:
+> On Wed, 3 Jun 2020 at 10:16, Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> On 6/2/20 6:47 PM, Erik Smit wrote:
+>>> The hardware supports variable descriptor sizes, configured with the DBLAC
+>>> register.
+>>
+>> yes.
+>>
+>> The DBLAC default value is 0x00022F00 on AST2400 and 0x00022500 on AST2500
+>> and AST2600. The current reset handler needs a little fix btw.
+>>
+>> This sets the TX and RX descriptor default size to 4 words (2 * 8bytes).
+>>
+>>> Most drivers use the default 2*8, which is currently hardcoded in qemu, but
+>>> the implementation of the driver in Supermicro BMC SMT_X11_158 uses 4*8.
+>>
+>> The first 4 words are architected but the specs allows the descriptors
+>> to be bigger which is what the Aspeed SDK is doing:
+>>
+>>         outl( 0x44f97, dev->base_addr + DBLAC_REG );
+>>
+>> It's using 8 words ( 4 * 8bytes) to store some address in the fifth.
+>> This is a waste btw.
+>>
+>>
+>> Thanks for spotting this. I think the patch is correct but we need to
+>> clarify a few things.
+>>
+>>> --
+>>> The implementation of the driver in Supermicro BMC SMT_X11_158 adds 4 extra
+>>> 4-bytes entries:
+>>> https://github.com/ya-mouse/openwrt-linux-aspeed/blob/master/drivers/net/ftgmac100_26.h#L387-L391
+>>>
+>>> And sets DBLAC to 0x44f97:
+>>> https://github.com/ya-mouse/openwrt-linux-aspeed/blob/master/drivers/net/ftgmac100_26.c#L449
+>>>
+>>> There's not a lot of public documentation on this hardware, but the
+>>> current linux driver shows the meaning of these registers:
+>>>
+>>> https://github.com/torvalds/linux/blob/master/drivers/net/ethernet/faraday/ftgmac100.c#L280-L281
+>>>
+>>>         iowrite32(FTGMAC100_DBLAC_RXDES_SIZE(2) |   /* 2*8 bytes RX descs */
+>>>                   FTGMAC100_DBLAC_TXDES_SIZE(2) |   /* 2*8 bytes TX descs */
+>>>
+>>> Without this patch, networking in SMT_X11_158 does not pass data.
+>>>
+>>> Signed-off-by: Erik Smit <erik.lucas.smit@gmail.com <mailto:erik.lucas.smit@gmail.com>>
+>>> ---
+>>>  hw/net/ftgmac100.c | 17 +++++++++++++++--
+>>>  1 file changed, 15 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+>>> index 25ebee7ec2..1640b24b23 100644
+>>> --- a/hw/net/ftgmac100.c
+>>> +++ b/hw/net/ftgmac100.c
+>>> @@ -79,6 +79,19 @@
+>>>  #define FTGMAC100_APTC_TXPOLL_CNT(x)        (((x) >> 8) & 0xf)
+>>>  #define FTGMAC100_APTC_TXPOLL_TIME_SEL      (1 << 12)
+>>>
+>>> +/*
+>>> + * DMA burst length and arbitration control register
+>>> + */
+>>> +#define FTGMAC100_DBLAC_RXFIFO_LTHR(x)      (((x) >> 0) & 0x7)
+>>> +#define FTGMAC100_DBLAC_RXFIFO_HTHR(x)      (((x) >> 3) & 0x7)
+>>> +#define FTGMAC100_DBLAC_RX_THR_EN           (1 << 6)
+>>
+>> The above definitions are AST2400 only. We should say so or leave them out
+>> because the model does not use them any how.
+> 
+> Like so?
+> 
+> #define FTGMAC100_DBLAC_RXFIFO_LTHR(x)      (((x) >> 0) & 0x7)  // AST2400-only
+> #define FTGMAC100_DBLAC_RXFIFO_HTHR(x)      (((x) >> 3) & 0x7)  // AST2400-only
+> #define FTGMAC100_DBLAC_RX_THR_EN           (1 << 6)            // AST2400-only
 
-[...]
+yes, but without the C++ comments. Keep the number of chars below 
+80 also.
 
-> >
-> > I am not sure why you said "including cold-plugged one"? I hope by
-> > cold-plug'ging you mean here are the CPUs which already exist at
-> > the boot time of the Guest VM and plugged using -device?
->=20
-> yes, it's about a plugged one with  '-device'
+>>
+>>> +#define FTGMAC100_DBLAC_RXBURST_SIZE(x)     (((x) >> 8) & 0x3)
+>>> +#define FTGMAC100_DBLAC_TXBURST_SIZE(x)     (((x) >> 10) & 0x3)
+>>> +#define FTGMAC100_DBLAC_RXDES_SIZE(x)       (((x) >> 12) & 0xf)
+>>> +#define FTGMAC100_DBLAC_TXDES_SIZE(x)       (((x) >> 16) & 0xf)
+>>
+>> I would include '* 8' in the {R,T}XDES_SIZE macros
+> 
+> Agreed.
+> 
+>>> +#define FTGMAC100_DBLAC_IFG_CNT(x)          (((x) >> 20) & 0x7)
+>>> +#define FTGMAC100_DBLAC_IFG_INC             (1 << 23)
+>>> +
+>>>  /*
+>>>   * PHY control register
+>>>   */
+>>> @@ -553,7 +566,7 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t tx_ring,
+>>>          if (bd.des0 & s->txdes0_edotr) {
+>>>              addr = tx_ring;
+>>>          } else {
+>>> -            addr += sizeof(FTGMAC100Desc);
+>>> +            addr += (FTGMAC100_DBLAC_TXDES_SIZE(s->dblac)) * 8;
+>>
+>> and remove the '* 8' here.
+> 
+> Agreed.
+> 
+>>>          }
+>>>      }
+>>>
+>>> @@ -982,7 +995,7 @@ static ssize_t ftgmac100_receive(NetClientState *nc, const uint8_t *buf,
+>>>          if (bd.des0 & s->rxdes0_edorr) {
+>>>              addr = s->rx_ring;
+>>>          } else {
+>>> -            addr += sizeof(FTGMAC100Desc);
+>>> +            addr += (FTGMAC100_DBLAC_RXDES_SIZE(s->dblac)) * 8;
+>>>          }
+>>>      }
+>>>      s->rx_descriptor = addr;
+>>
+>>
+>> and when the DBLAC register is set, we should check the size values to make
+>> sure they are not under sizeof(FTGMAC100Desc), in which case we should
+>> report an error.
+> 
+> Like so?
 
+yes.
 
-Sure, thank you.
+To be precise, according to the specs :
 
-Salil.
+    Writing 0 to this field is illegal.
+
+which means that the HW can survive with only 2 words in the TX and RX 
+descriptors, word0 and word1. word2 is reserved and word3 is architected 
+to point to the TX and RX buffers. Without word3, the HW is dropping all
+send and received data, which is a bit useless and the receive part in 
+the model doesn't support that case. 
+
+I think testing against sizeof(FTGMAC100Desc) is safer for the time being,
+
+> 
+>     case FTGMAC100_DBLAC: /* DMA Burst Length and Arbitration Control */
+>         s->dblac = value;
+
+I would move the assignment after the tests. 
+
+>         if (FTGMAC100_DBLAC_TXDES_SIZE(s->dblac) < sizeof(FTGMAC100Desc))
+>             qemu_log_mask(LOG_GUEST_ERROR, "%s: transmit descriptor
+> too small : %d bytes\n",
+>                               __func__, FTGMAC100_DBLAC_TXDES_SIZE(s->dblac));
+>         if (FTGMAC100_DBLAC_RXDES_SIZE(s->dblac) < sizeof(FTGMAC100Desc))
+>             qemu_log_mask(LOG_GUEST_ERROR, "%s: receive descriptor too
+> small : %d bytes\n",
+>                               __func__, FTGMAC100_DBLAC_RXDES_SIZE(s->dblac));
+>         break;
+you need opening and closing braces and to break out from the switch 
+statement in case of error.
+
+> Also, I've not got experience submitting patches to Qemu. My next step
+> would be to respin this patch and resend it to everybody as [PATCH
+> v2]?
+
+yes. Take a look at : 
+
+	https://wiki.qemu.org/Contribute/SubmitAPatch
+
+The minimum is to run ./scripts/checkpatch.pl before sending any patch. 
+The script will tell you what's wrong.
+
+Thanks,
+
+C.

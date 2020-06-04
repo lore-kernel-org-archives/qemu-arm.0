@@ -1,81 +1,110 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1258055lfc;
-        Thu, 4 Jun 2020 01:51:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwQnQTQowg9iW1DyE7MD80e2VNwvyIXrc5lrDuGD5kWzO/XjRU8XspDfeGHTGoHWZ6IiX6h
-X-Received: by 2002:a25:1e0b:: with SMTP id e11mr6672173ybe.440.1591260700493;
-        Thu, 04 Jun 2020 01:51:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591260700; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1270332lfc;
+        Thu, 4 Jun 2020 02:09:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyxtTk2eiYIgPKaoJO/grczw1OBGbuaeSFhrmLkxswVAgBymvsTEe5qHiOc8pCPS91ImZWj
+X-Received: by 2002:a25:14d6:: with SMTP id 205mr6483216ybu.113.1591261797587;
+        Thu, 04 Jun 2020 02:09:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591261797; cv=none;
         d=google.com; s=arc-20160816;
-        b=0DD0qW9+LH8nyHdPDs+B40L015jmWnWNn1tmSlCgdmi5rg/mlpW3Ij+rZHj8bA7mrm
-         g11ohT2olRUiSK+VdnX9GTIM8B/LE+fKlQJ0PUN8cL4vFfAi3pt0llFQ4Ka8UHD7TlOh
-         O+yxpcbAqwm5aGHmfJmOBVJ5DoUULcObNP5S00cICj3YMdDNDPf91xLL8JRfTL8NX2CD
-         3kHJXAP8tY5i6R9/dIPFKrz9dhMV1sILM3m9WBlwYnO/v4ko/uXI2QqaSutF2wye8nvK
-         /XrE8wc8cZ8CBps5QnpNvJk0AWFiamSO8U4AFBvDcsP8baHYkLgfmJ6AxLGGaMmE/MoL
-         VbFg==
+        b=AutMq2oHNNl9fLolIPz4b7C597LL97kEJNWiGYM9+HesKj7tRg6o+lQy5iQSlXqV4G
+         H/gYSEIv+2Umv1M/CWgC50LCScuaJnowgfyGMDlDroZXw/4laqBbb11jryXse3emW36b
+         M+5P6TLcKvGvCg/y55tiXZVmy5wDdAe4ifdp3AfHZdGDsiE7qYEgcy5LKWoRL53kXtVJ
+         TUn2dUW9GJQ0/MF7Uaf2D6dHsWYoYAekqExCUXn22+/Hm1WryRSRa/Gh7us+yUk3aX25
+         6+7SNLQj5nsYAGSYGv2l6i8f6sktd+71zRJXahfD5RYqD9W6I5ZckGV/zn2/btu2ydMO
+         Ckhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:mime-version:user-agent:date:message-id:subject:to
-         :from;
-        bh=psPXtFBb//B1/y10e9Ei/DJ4HIjd69lbRr1nIAH3qgk=;
-        b=DdnBZDuPKap5vy7VNEiZpSeZT7rgJh6//L0iAL63a9XZnXjBvLTc+sY6WdYnJAmN3v
-         PPNg6rI8s6Fa1puGQdueo37J+VsxC0DppkQnIG1KsKo/899rP+6peXch5v07ygFIlyEo
-         h0ZU6n+YHN+8/SuIlMMRe6sSP0RKOhDUnxL9d6pgSmKMDQzKpdcVUs5N+bH/NrspkGQr
-         9jBXqshTPy73qgSKRIywWiqThfEwEljr4BYuyvOAoH5bcJzZJwVtp0kzt69nKuII5vrp
-         Vchd13LQm6F+foxOwjSmcU80FvJPTPluFDW8FMQSonXA8mjClwr8AMkm8iJP9UqUhkqt
-         iKMQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Ahalv+0V/G1nISWzjqRyM11/DubG9KRM7EMm7qYESgs=;
+        b=j2RkkgLSvwSvyvXZiEXnV5fUE36XY6WroE5QMWoUec7pLN+fMVYLQoK5aiwkAxfhx8
+         XSEabsJXbU1nFvKDm4SUvDUwSGvBTgkTsW5FC4Qkuq5kevGGYyOMgLkzrnmkJJYMUhg1
+         aqMVqfFQY/V5GuOJ0ehQGWfuHouR+UJ1+m0ev3CRY0CuCo+z8fv9G2bdjYipL+WKxggM
+         rXQIXGXBNc19HfSYVXyTinsXrBxp3BMX3UI0VS80nnDWTyWiy/tHtk3556+qXhjq0pPI
+         6RMzW2YgH9VFtnHtYCbIC2Oh7Gp/4ncn6sgtME99LJSr44uBG1IPADVNLcyzpQFK/10C
+         5dsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DuL1re++;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 80si3606164ybl.93.2020.06.04.01.51.40
+        by mx.google.com with ESMTPS id 125si3870990ybh.403.2020.06.04.02.09.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jun 2020 01:51:40 -0700 (PDT)
+        Thu, 04 Jun 2020 02:09:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56826 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DuL1re++;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55748 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jglb9-0006KZ-TR
-	for alex.bennee@linaro.org; Thu, 04 Jun 2020 04:51:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51758)
+	id 1jglsq-0004oD-Nx
+	for alex.bennee@linaro.org; Thu, 04 Jun 2020 05:09:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1jglb2-0006KA-J3; Thu, 04 Jun 2020 04:51:32 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3703 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1jglb0-0001PU-TN; Thu, 04 Jun 2020 04:51:32 -0400
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 9830EDD242F64A754FA2;
- Thu,  4 Jun 2020 16:51:22 +0800 (CST)
-Received: from [127.0.0.1] (10.173.222.233) by DGGEMS403-HUB.china.huawei.com
- (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0;
- Thu, 4 Jun 2020 16:51:15 +0800
-From: Ying Fang <fangying1@huawei.com>
-To: <richard.henderson@linaro.org>
-Subject: Forward migration broken down since virt-4.2 machine type
-Message-ID: <36de6085-86e1-f240-38f6-6e8582c2c68b@huawei.com>
-Date: Thu, 4 Jun 2020 16:51:07 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ (Exim 4.90_1) (envelope-from <mprivozn@redhat.com>)
+ id 1jglsi-0004lu-9q
+ for qemu-arm@nongnu.org; Thu, 04 Jun 2020 05:09:48 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:43042
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mprivozn@redhat.com>)
+ id 1jglsg-0005sM-PL
+ for qemu-arm@nongnu.org; Thu, 04 Jun 2020 05:09:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591261786;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Ahalv+0V/G1nISWzjqRyM11/DubG9KRM7EMm7qYESgs=;
+ b=DuL1re++NFP30uM0PbCGimMnzSZSmbeUtiMDG6TmTFJBZ54wfjVc8IsnYJL4q8Yz2HZPNR
+ 2ooshmWDMx8gIohJUvjrYZZqWsrNh5dSw1O3OIBpEdUooW+nS7bLjXCFTwu6Q5Otvpg7Mr
+ Oml3DCN4TlZEW5A4+3q2XzqI9GZWPz0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-264-2QPCRuSnNWmU8EsGLgk2jw-1; Thu, 04 Jun 2020 05:09:44 -0400
+X-MC-Unique: 2QPCRuSnNWmU8EsGLgk2jw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3ACDF1902EA2;
+ Thu,  4 Jun 2020 09:09:42 +0000 (UTC)
+Received: from [10.40.193.170] (unknown [10.40.193.170])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5724A6AD0C;
+ Thu,  4 Jun 2020 09:09:33 +0000 (UTC)
+Subject: Re: [PATCH] numa: forbid '-numa node, mem' for 5.1 and newer machine
+ types
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+References: <20200602084151.480567-1-imammedo@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Message-ID: <ac504671-b836-32f8-1231-0ff0724ca7c6@redhat.com>
+Date: Thu, 4 Jun 2020 11:09:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; format=flowed
+In-Reply-To: <20200602084151.480567-1-imammedo@redhat.com>
 Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.173.222.233]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=fangying1@huawei.com;
- helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/04 04:51:24
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=mprivozn@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/04 01:08:38
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -88,70 +117,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, wu.wubin@huawei.com,
- zhanghailiang <zhang.zhanghailiang@huawei.com>
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
+ libvir-list@redhat.com, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ pbonzini@redhat.com, rth@twiddle.net, david@gibson.dropbear.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YctySEsyg55b
+X-TUID: hWuvG0kbOOvV
 
-Hi Richard,
+On 6/2/20 10:41 AM, Igor Mammedov wrote:
+> Deprecation period is run out and it's a time to flip the switch
+> introduced by cd5ff8333a.  Disable legacy option for new machine
+> types (since 5.1) and amend documentation.
+> 
+> '-numa node,memdev' shall be used instead of disabled option
+> with new machine types.
+> 
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+>   - rebased on top of current master
+>   - move compat mode from 4.2 to 5.0
+> 
+> CC: peter.maydell@linaro.org
+> CC: ehabkost@redhat.com
+> CC: marcel.apfelbaum@gmail.com
+> CC: mst@redhat.com
+> CC: pbonzini@redhat.com
+> CC: rth@twiddle.net
+> CC: david@gibson.dropbear.id.au
+> CC: libvir-list@redhat.com
+> CC: qemu-arm@nongnu.org
+> CC: qemu-ppc@nongnu.org
+> ---
+>   docs/system/deprecated.rst | 17 -----------------
+>   hw/arm/virt.c              |  2 +-
+>   hw/core/numa.c             |  6 ++++++
+>   hw/i386/pc.c               |  1 -
+>   hw/i386/pc_piix.c          |  1 +
+>   hw/i386/pc_q35.c           |  1 +
+>   hw/ppc/spapr.c             |  2 +-
+>   qemu-options.hx            |  9 +++++----
+>   8 files changed, 15 insertions(+), 24 deletions(-)
 
-Recently we are doing some tests on forward migration based on
-arm virt machine. And we found the patch below breaks forward
-migration compatibility from virt-4.2 to virt-5.0 above machine
-type. The patch which breaks this down given by git bisect is
+This works with libvirt perfectly.
 
-commit f9506e162c33e87b609549157dd8431fcc732085
-target/arm: Remove ARM_FEATURE_VFP*
+Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
 
-QEMU may get crashed on the destination host loading cpu state.
-Here goes my question since I am not familiar with the VFP feature.
-1: Should we keep the forward migration compatibility here ?
-2: If so how can we fixed it ?
-
-Below is the crash stack:
-Thread 1 "qemu-system-aar" received signal SIGSEGV, Segmentation fault.
-[Switching to LWP 712330]
-armv7m_nvic_neg_prio_requested (opaque=0x0, secure=secure@entry=false) 
-at  qemu/hw/intc/armv7m_nvic.c:391
-391	    if (s->cpu->env.v7m.faultmask[secure]) {
-#0  armv7m_nvic_neg_prio_requested (opaque=0x0, 
-secure=secure@entry=false) at  qemu/hw/intc/armv7m_nvic.c:391
-#1  0x0000aaae6f766510 in arm_v7m_mmu_idx_for_secstate_and_priv 
-(env=0xaaae73456780, secstate=false, priv=true) at 
-qemu/target/arm/m_helper.c:2711
-#2  0x0000aaae6f7163f0 in arm_mmu_idx_el (env=env@entry=0xaaae73456780, 
-el=el@entry=1) at  qemu/target/arm/helper.c:12386
-#3  0x0000aaae6f717000 in rebuild_hflags_internal (env=0xaaae73456780) 
-at  qemu/target/arm/helper.c:12611
-#4  arm_rebuild_hflags (env=env@entry=0xaaae73456780) at 
-qemu/target/arm/helper.c:12624
-#5  0x0000aaae6f722940 in cpu_post_load (opaque=0xaaae7344ceb0, 
-version_id=<optimized out>) at  qemu/target/arm/machine.c:767
-#6  0x0000aaae6f9e0e78 in vmstate_load_state (f=f@entry=0xaaae73020260, 
-vmsd=0xaaae6fe93178 <vmstate_arm_cpu>, opaque=0xaaae7344ceb0, 
-version_id=22) at migration/vmstate.c:168
-#7  0x0000aaae6f9d9858 in vmstate_load (f=f@entry=0xaaae73020260, 
-se=se@entry=0xaaae7302f750) at migration/savevm.c:885
-#8  0x0000aaae6f9dab90 in qemu_loadvm_section_start_full 
-(f=f@entry=0xaaae73020260, mis=0xaaae72fb88a0) at migration/savevm.c:2302
-#9  0x0000aaae6f9dd248 in qemu_loadvm_state_main 
-(f=f@entry=0xaaae73020260, mis=mis@entry=0xaaae72fb88a0) at 
-migration/savevm.c:2486
-#10 0x0000aaae6f9de3bc in qemu_loadvm_state (f=0xaaae73020260) at 
-migration/savevm.c:2560
-#11 0x0000aaae6f9d489c in process_incoming_migration_co 
-(opaque=<optimized out>) at migration/migration.c:461
-#12 0x0000aaae6fb59850 in coroutine_trampoline (i0=<optimized out>, 
-i1=<optimized out>) at util/coroutine-ucontext.c:115
-#13 0x0000fffdd6c16030 in ?? () from target:/usr/lib64/libc.so.6
-
-#0  armv7m_nvic_neg_prio_requested (opaque=0x0, 
-secure=secure@entry=false) at  qemu/hw/intc/armv7m_nvic.c:391
-(gdb) p	s
-$4 = (NVICState *) 0x0
-
-Thanks.
-Ying
+Michal
 

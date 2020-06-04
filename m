@@ -1,62 +1,61 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1417305lfc;
-        Thu, 4 Jun 2020 05:42:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy9jqBHNDdLuP4JKDwxpaqLFvF3TJBJcP6rQtgNrXKhfUfMsIjBJ3OZDt5dGC354wz2+wDA
-X-Received: by 2002:a25:b5c6:: with SMTP id d6mr7534238ybg.73.1591274520051;
-        Thu, 04 Jun 2020 05:42:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591274520; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1417460lfc;
+        Thu, 4 Jun 2020 05:42:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwI9MDwN/mvrLLtBuRvHybE7KLyJWMK38lmrcnPt+ZGw3pgtxEFaE1Q1OJQzjmZ3UGd6KYe
+X-Received: by 2002:a25:5387:: with SMTP id h129mr7596342ybb.413.1591274534971;
+        Thu, 04 Jun 2020 05:42:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591274534; cv=none;
         d=google.com; s=arc-20160816;
-        b=uaBfHCryT5zGIQu0z8Kpyc9imwyMxKXwOdQTQlf4fdYzOKDOU8kiZFszKwv7MWm2mN
-         jvbH9S4NdOPMnVje7vzhdr4TZirZFQsNJMY6z5TIyh4zYHOgOqLPY2pHrQLezuQwJY7c
-         jGFOt74tGzuWcm6sHx84y0NtT/lVRIp5QBRR5LQ0noU2t4CjoFtdDTz5BjtufjMagucF
-         /tct9DuMGUyM5A1G2J8N04PkfVDKOmD6BWwXLlwpxdE5Il7+6+7+4u+qVBKagPrtcRYd
-         QWLBwrfQKyQajqS/AYkWNEj6KwF0P6S22DFbZ16qDCl5K9JffQGZptj9udlTfEM9ngQ0
-         psCQ==
+        b=bmAb3OIwvDmMipcSh3p1Cxmmgad3Co70L8QWOS6r4FI1PNKfDDzXTK/rQ+ZA7DUev0
+         akUarxiASoGJ4gqmuA8mcVXCukWklkTxyRXp+q9qqmJooXRKXI2QhPemXeI55tGQ4BgO
+         LvFuMcCt71T4gm6InihXeoeesqe96MWbsS/CKPz9OZT57cm4zq0jORfVhf6NJ+MEGKy3
+         WMVA1SbxuuSCW18JaDgg+z6Bm6Z4TYN7wYQghRmlzZ4rK1cAracCKOqFPoAmjqRI7I74
+         LYL0J3XoLS+d2Eu/yMvgv1r5/G2i6N1vm/ZRriOPTNH0tXXWRCfAIyeKQdFRSOR18vbv
+         uhXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=2mW5cvW5gxYZzpVM8wcHRJT0qd2Mm2Xpruaip9CGWVI=;
-        b=yOiYZBaH3cAoF0i71g73JtJ1vv/UbzWElNpolBy61OEUt4jFx2mYzVQqYtQSJl4Lpq
-         E4i7kePxONOHuWIr2ZAdcyp7YDopmyi5hIs+a/IqV2FQ3p58rCBNIIxSI9smMXbQCqmZ
-         YcG9zps5rfl2+nLQGNBwnUmAtUpW4ORApzTOceoztYhW4rFCEGMfAOJDhhnk5Vmpgs6e
-         2TbwY1MUisjneQ9eb+IzBw33BptZxOjI4BfGIcAwQ84vLbCIHPEm++0ph+UkzPJ1jl0D
-         3wf356BSVo5CXDlnIvwRYFxj/YDJQxpAs45snnkq/NX2qoQZVvNyXYs70KMUnTVRFvNw
-         BjHw==
+        bh=20LDk4JIEgLN5iMQkd1uE79ImFOZdn8JPWYxNc8buig=;
+        b=aR8Qck0xzvvzbDmC8LOb3+sYAWN4FZP37xhOFtV/s+jtKnAqvueAd8Eja2sjokx0QE
+         WRShxFWMQKAuCFNlvvaaEPwJsTwxvbcZXPmZRvTYihZbjhZtYg33hEz7Q78yg+H8T6gW
+         K3Yi/fQf/w7IUmcAg4Wx1gjiZy1J+p0TiNI+v2Chqu1xtS49SaPFTck6Is6IJhmEyYFe
+         lap9Dv8/Wi4But6+gfFxvQZkgfWoFvwqJ/3aqulePwrjfnV/Uq12xLLAdCfu6lPw8yIa
+         /OCoCxS9svPEi+9gzyYRWfQwS0aVhG/p+dsHQLG61PFzgM1CJDwcqVDEXbCpKpG1z0Ro
+         oW4w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a187si3910242ybg.298.2020.06.04.05.41.59
+        by mx.google.com with ESMTPS id s7si2628056ybk.458.2020.06.04.05.42.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jun 2020 05:42:00 -0700 (PDT)
+        Thu, 04 Jun 2020 05:42:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41340 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42076 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgpC3-0002ti-Eb
-	for alex.bennee@linaro.org; Thu, 04 Jun 2020 08:41:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52998)
+	id 1jgpCI-0003DX-BJ
+	for alex.bennee@linaro.org; Thu, 04 Jun 2020 08:42:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53004)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jgp9f-000824-Bo; Thu, 04 Jun 2020 08:39:31 -0400
-Received: from relay4-d.mail.gandi.net ([217.70.183.196]:35391)
+ id 1jgp9g-00085b-Qm; Thu, 04 Jun 2020 08:39:32 -0400
+Received: from relay4-d.mail.gandi.net ([217.70.183.196]:55553)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jgp9e-0001h4-FF; Thu, 04 Jun 2020 08:39:31 -0400
+ id 1jgp9f-0001i1-Lk; Thu, 04 Jun 2020 08:39:32 -0400
 X-Originating-IP: 82.252.130.88
 Received: from localhost.localdomain (lns-bzn-59-82-252-130-88.adsl.proxad.net
  [82.252.130.88]) (Authenticated sender: jcd@tribudubois.net)
- by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id 2EE69E0005;
- Thu,  4 Jun 2020 12:39:26 +0000 (UTC)
+ by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id 4A988E0018;
+ Thu,  4 Jun 2020 12:39:28 +0000 (UTC)
 From: Jean-Christophe Dubois <jcd@tribudubois.net>
 To: qemu-arm@nongnu.org
-Subject: [PATCH v5 2/3] hw/net/imx_fec: Allow phy not to be the first device
- on the mii bus.
-Date: Thu,  4 Jun 2020 14:39:09 +0200
-Message-Id: <a6223b7b5c1564afc5fb3c2a9ad514bdb41be5a5.1591272275.git.jcd@tribudubois.net>
+Subject: [PATCH v5 3/3] hw/net/imx_fec: improve PHY implementation.
+Date: Thu,  4 Jun 2020 14:39:10 +0200
+Message-Id: <cbafa49a59659051387e43b7b35d8f280e59f1a3.1591272275.git.jcd@tribudubois.net>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1591272275.git.jcd@tribudubois.net>
 References: <cover.1591272275.git.jcd@tribudubois.net>
@@ -88,94 +87,188 @@ Cc: peter.maydell@linaro.org, f4bug@amsat.org, peter.chubb@nicta.com.au,
  qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5vm2vtz5Jiul
+X-TUID: AtA8hMtURL56
 
-Up to now we were allowing only one PHY device and it had to be the
-first device on the bus.
+improve the PHY implementation with more generic code.
 
-The i.MX6UL has 2 Ethernet devices and can therefore have several
-PHY devices on the bus (and not necessarilly as device 0).
-
-This patch allows for PHY devices on 2nd, 3rd or any position.
+This patch remove a lot of harcoded values to replace them with
+generic symbols from header files.
 
 Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
 ---
  v2: Not present
  v3: Not present
  v4: Not present
- v5: Allow phy not to be the first device on the mii bus.
+ v5: improve PHY implementation.
 
- hw/net/imx_fec.c    | 19 ++++++++-----------
- hw/net/trace-events |  4 ++--
- 2 files changed, 10 insertions(+), 13 deletions(-)
+ hw/net/imx_fec.c     | 76 +++++++++++++++++++++++++++-----------------
+ include/hw/net/mii.h |  4 +++
+ 2 files changed, 50 insertions(+), 30 deletions(-)
 
 diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index eefedc252de..29e613699ee 100644
+index 29e613699ee..bf9583a93f4 100644
 --- a/hw/net/imx_fec.c
 +++ b/hw/net/imx_fec.c
-@@ -280,11 +280,9 @@ static void imx_phy_reset(IMXFECState *s)
- static uint32_t imx_phy_read(IMXFECState *s, int reg)
- {
-     uint32_t val;
-+    uint32_t phy = reg / 32;
+@@ -24,6 +24,7 @@
+ #include "qemu/osdep.h"
+ #include "hw/irq.h"
+ #include "hw/net/imx_fec.h"
++#include "hw/net/mii.h"
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
+ #include "sysemu/dma.h"
+@@ -231,6 +232,9 @@ static const VMStateDescription vmstate_imx_eth = {
+ #define PHY_INT_PARFAULT            (1 << 2)
+ #define PHY_INT_AUTONEG_PAGE        (1 << 1)
  
--    if (reg > 31) {
--        /* we only advertise one phy */
--        return 0;
--    }
-+    reg %= 32;
- 
-     switch (reg) {
-     case 0:     /* Basic Control */
-@@ -331,19 +329,18 @@ static uint32_t imx_phy_read(IMXFECState *s, int reg)
-         break;
-     }
- 
--    trace_imx_phy_read(val, reg);
-+    trace_imx_phy_read(val, phy, reg);
- 
-     return val;
- }
- 
- static void imx_phy_write(IMXFECState *s, int reg, uint32_t val)
- {
--    trace_imx_phy_write(val, reg);
-+    uint32_t phy = reg / 32;
- 
--    if (reg > 31) {
--        /* we only advertise one phy */
--        return;
--    }
-+    reg %= 32;
++#define MII_SMC911X_ISF             29
++#define MII_SMC911X_IM              30
 +
-+    trace_imx_phy_write(val, phy, reg);
+ static void imx_eth_update(IMXFECState *s);
+ 
+ /*
+@@ -249,11 +253,11 @@ static void imx_phy_update_link(IMXFECState *s)
+     /* Autonegotiation status mirrors link status.  */
+     if (qemu_get_queue(s->nic)->link_down) {
+         trace_imx_phy_update_link("down");
+-        s->phy_status &= ~0x0024;
++        s->phy_status &= ~(MII_BMSR_LINK_ST | MII_BMSR_AN_COMP);
+         s->phy_int |= PHY_INT_DOWN;
+     } else {
+         trace_imx_phy_update_link("up");
+-        s->phy_status |= 0x0024;
++        s->phy_status |= MII_BMSR_LINK_ST | MII_BMSR_AN_COMP;
+         s->phy_int |= PHY_INT_ENERGYON;
+         s->phy_int |= PHY_INT_AUTONEG_COMPLETE;
+     }
+@@ -269,9 +273,11 @@ static void imx_phy_reset(IMXFECState *s)
+ {
+     trace_imx_phy_reset();
+ 
+-    s->phy_status = 0x7809;
+-    s->phy_control = 0x3000;
+-    s->phy_advertise = 0x01e1;
++    s->phy_status = MII_BMSR_100TX_FD | MII_BMSR_100TX_HD | MII_BMSR_10T_FD |
++                    MII_BMSR_10T_HD | MII_BMSR_AUTONEG | MII_BMSR_EXTCAP;
++    s->phy_control = MII_BMCR_AUTOEN | MII_BMCR_SPEED100;
++    s->phy_advertise = MII_ANAR_CSMACD | MII_ANAR_TX | MII_ANAR_10FD |
++                       MII_ANAR_10 | MII_ANAR_TXFD;
+     s->phy_int_mask = 0;
+     s->phy_int = 0;
+     imx_phy_update_link(s);
+@@ -285,37 +291,42 @@ static uint32_t imx_phy_read(IMXFECState *s, int reg)
+     reg %= 32;
  
      switch (reg) {
-     case 0:     /* Basic Control */
-@@ -926,7 +923,7 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
-                                                        extract32(value,
-                                                                  18, 10)));
-         } else {
--            /* This a write operation */
-+            /* This is a write operation */
-             imx_phy_write(s, extract32(value, 18, 10), extract32(value, 0, 16));
-         }
-         /* raise the interrupt as the PHY operation is done */
-diff --git a/hw/net/trace-events b/hw/net/trace-events
-index 26700dad997..27dfa0ef775 100644
---- a/hw/net/trace-events
-+++ b/hw/net/trace-events
-@@ -410,8 +410,8 @@ i82596_set_multicast(uint16_t count) "Added %d multicast entries"
- i82596_channel_attention(void *s) "%p: Received CHANNEL ATTENTION"
+-    case 0:     /* Basic Control */
++    case MII_BMCR:     /* Basic Control */
+         val = s->phy_control;
+         break;
+-    case 1:     /* Basic Status */
++    case MII_BMSR:     /* Basic Status */
+         val = s->phy_status;
+         break;
+-    case 2:     /* ID1 */
+-        val = 0x0007;
++    case MII_PHYID1:     /* ID1 */
++        val = LAN911x_PHYID1;
+         break;
+-    case 3:     /* ID2 */
+-        val = 0xc0d1;
++    case MII_PHYID2:     /* ID2 */
++        val = LAN911x_PHYID2;
+         break;
+-    case 4:     /* Auto-neg advertisement */
++    case MII_ANAR:     /* Auto-neg advertisement */
+         val = s->phy_advertise;
+         break;
+-    case 5:     /* Auto-neg Link Partner Ability */
+-        val = 0x0f71;
++    case MII_ANLPAR:     /* Auto-neg Link Partner Ability */
++        val = MII_ANLPAR_CSMACD | MII_ANLPAR_10 | MII_ANLPAR_10FD |
++              MII_ANLPAR_TX | MII_ANLPAR_TXFD | MII_ANLPAR_PAUSE |
++              MII_ANLPAR_PAUSEASY;
+         break;
+-    case 6:     /* Auto-neg Expansion */
+-        val = 1;
++    case MII_ANER:     /* Auto-neg Expansion */
++        val = MII_ANER_NWAY;
+         break;
+-    case 29:    /* Interrupt source.  */
++    case MII_SMC911X_ISF:    /* Interrupt source.  */
+         val = s->phy_int;
+         s->phy_int = 0;
+         imx_phy_update_irq(s);
+         break;
+-    case 30:    /* Interrupt mask */
++    case MII_SMC911X_IM:    /* Interrupt mask */
+         val = s->phy_int_mask;
+         break;
+-    case 17:
+-    case 18:
++    case MII_NSR:
++        val = 1 << 6;
++        break;
++    case MII_LBREMR:
++    case MII_REC:
+     case 27:
+     case 31:
+         qemu_log_mask(LOG_UNIMP, "[%s.phy]%s: reg %d not implemented\n",
+@@ -343,26 +354,31 @@ static void imx_phy_write(IMXFECState *s, int reg, uint32_t val)
+     trace_imx_phy_write(val, phy, reg);
  
- # imx_fec.c
--imx_phy_read(uint32_t val, int reg) "0x%04"PRIx32" <= reg[%d]"
--imx_phy_write(uint32_t val, int reg) "0x%04"PRIx32" => reg[%d]"
-+imx_phy_read(uint32_t val, int phy, int reg) "0x%04"PRIx32" <= phy[%d].reg[%d]"
-+imx_phy_write(uint32_t val, int phy, int reg) "0x%04"PRIx32" => phy[%d].reg[%d]"
- imx_phy_update_link(const char *s) "%s"
- imx_phy_reset(void) ""
- imx_fec_read_bd(uint64_t addr, int flags, int len, int data) "tx_bd 0x%"PRIx64" flags 0x%04x len %d data 0x%08x"
+     switch (reg) {
+-    case 0:     /* Basic Control */
+-        if (val & 0x8000) {
++    case MII_BMCR:     /* Basic Control */
++        if (val & MII_BMCR_RESET) {
+             imx_phy_reset(s);
+         } else {
+-            s->phy_control = val & 0x7980;
++            s->phy_control = val & (MII_BMCR_LOOPBACK | MII_BMCR_SPEED100 |
++                                    MII_BMCR_AUTOEN | MII_BMCR_PDOWN |
++                                    MII_BMCR_FD | MII_BMCR_CTST);
+             /* Complete autonegotiation immediately.  */
+-            if (val & 0x1000) {
+-                s->phy_status |= 0x0020;
++            if (val & MII_BMCR_AUTOEN) {
++                s->phy_status |= MII_BMSR_AN_COMP;
+             }
+         }
+         break;
+-    case 4:     /* Auto-neg advertisement */
+-        s->phy_advertise = (val & 0x2d7f) | 0x80;
++    case MII_ANAR:     /* Auto-neg advertisement */
++        s->phy_advertise = (val & (MII_ANAR_PAUSE_ASYM | MII_ANAR_PAUSE |
++                                   MII_ANAR_TXFD | MII_ANAR_TX |
++                                   MII_ANAR_10FD | MII_ANAR_10 | 0x1f)) |
++                                   MII_ANAR_TX;
+         break;
+-    case 30:    /* Interrupt mask */
++    case MII_SMC911X_IM:    /* Interrupt mask */
+         s->phy_int_mask = val & 0xff;
+         imx_phy_update_irq(s);
+         break;
+-    case 17:
+-    case 18:
++    case MII_LBREMR:
++    case MII_REC:
+     case 27:
+     case 31:
+         qemu_log_mask(LOG_UNIMP, "[%s.phy)%s: reg %d not implemented\n",
+diff --git a/include/hw/net/mii.h b/include/hw/net/mii.h
+index 4ae4dcce7e3..d2001bd859b 100644
+--- a/include/hw/net/mii.h
++++ b/include/hw/net/mii.h
+@@ -112,4 +112,8 @@
+ #define DP83848_PHYID1      0x2000
+ #define DP83848_PHYID2      0x5c90
+ 
++/* SMSC LAN911x Internal PHY */
++#define LAN911x_PHYID1      0x0007
++#define LAN911x_PHYID2      0xc0d1
++
+ #endif /* MII_H */
 -- 
 2.25.1
 

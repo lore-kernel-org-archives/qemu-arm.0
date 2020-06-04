@@ -1,216 +1,284 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3067547lfb;
-        Mon, 18 May 2020 07:05:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx+eADRtlbiigg7KYd9N+EjwBO9AN+QxvuYTtdLnJQ8VV1KuHTBFBlY7gqSNWN0kQZ46RQ4
-X-Received: by 2002:a05:620a:1131:: with SMTP id p17mr16263383qkk.248.1589810742950;
-        Mon, 18 May 2020 07:05:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589810742; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1337961lfc;
+        Thu, 4 Jun 2020 03:55:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzJ4UlKmbHtZqN+tZN5lbqaW9GMsbuJB1kuam2ZlpZR5oSbgALoKLTMpiYwi+SNA9hwKVsI
+X-Received: by 2002:a25:1446:: with SMTP id 67mr6471932ybu.424.1591268100734;
+        Thu, 04 Jun 2020 03:55:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591268100; cv=none;
         d=google.com; s=arc-20160816;
-        b=jZbqDJ9SU1hf074uRP92cUQz+Uqp8EmXOuiYr75eL2VlCEyv9WCISaiWFnjOFV+0P+
-         WHsPG0bctWYSp+ZO34k8sCm/7J9GAXa4AAZV9jHCw+OeRrhjnEYFTpzuXqLkhSGE9Age
-         nLB3Z1Zz5tvTLC6pr8wZ/Hj+l0Um7KeDylLL6KKvj6Vn7PTQcgi53TtR6Wc/BJ3XOFG6
-         cb6lM2wMJJ8RRWtNheDp5v6ZSJMq6I6weVWc0eyz5sCk+Y/8hKQkwZDwRidWZ2gAu698
-         7Tjv6ZxH4Ghtjceb+TMyobd6sGq5u7aUPzrqso1SWv7XqPh5S5DHQUYGzcKKyXUExle+
-         sA8Q==
+        b=fKI+4IQw0shiyEVfA5b/Vn9QL74VAr8La9iH6qpRWY9U9wXeT9AgWYm9TFgkTegDD/
+         K8Gf4Fi+8Y8tdQOLMFQR1ZIlT5aCajCX+tETmGyH3kYTgv1pkxUOxyNxxrphShx1Tup4
+         HXRdLepjy4RyqutXEWL6ZzGK3mYSc/MdGgQ4Y9otSfz5/uAT2q+73e1E7tWH+oex4/rj
+         xrfHAMinuL325G6ZQtCEehvijyOS4ETI1lrJsyTIu8pfk45bhPCUByNieRg2Vf7/om7O
+         Mn9TLyQ39iloufYyOvZp8HlIiu7qdOg2t4vcKkjAyYXRMV7eKzuetUD5cDchBg10WcuN
+         /Uog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=ynbMaAjpiD0x7UQ7qyXtXy4p3Mbw7B/2c81S4GZ2qwY=;
-        b=L2ObCAATYJ0Ti1FM5Okkg7P1jycI7pOJP91SopZawjMbcKC0h3bVf/dD1AwJpkYpxH
-         nWcvpLX2tGvoGOECjI3VpSIeSY7JZss8dFPYvWULXNqE+XSsBxqXN+tn6pCjyjp/b+uH
-         i66fJuWs3S2wV6JUtpu5h0x8VbM75OkyT8iw7MFBCfiPdG8jE4lCYy1YheGEQk+hULXB
-         ETv5IjMmtrqXbez7ACaIGvXODrss488th1i33/M/MqMdXrhOmQ1OvezzWyTKvOznhMzZ
-         bAyS/8r1vp+yHyz7BMckGF7t9tor69LBr0uB97dDDKVXNNVk58bv4rBosayXXHwL0SZC
-         xt0w==
+        bh=SWXZ5ULvx5RiZpH9RT5nB6Ol1XPXt8/7tRPhi1veAFM=;
+        b=oAWkRrJ8rAs3+OSiSoXV50YoWIZ+YEM29L9xpSGIeUZefFzctHrycmJCibOSrbp5YC
+         z53g/e8+lhzhvNAmIDqnbtXmUL6eo6phmrkd3rY3MFmPOTEG8f2Fo/O5+MkkzvBFFXNZ
+         u+w4HX5G7e+beWcYWVAi4hWeo5rn72KrKUDqOqiCxmjwRZiJ5gRr/Ff70svqEb8JxSRP
+         Xnnd64heb5iOa6PFfHzQnDVME6gxUeXpszlhZujwPASKqBVezZWTtlFtXlDcakTKeZvg
+         U9YtZW1jvBnL5PvZJ3i/HP1TIoxgmpthMPYuGFKc1lXjk7luHEynYt7uU9ZPVoOIW4iP
+         c0OQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BPO2G5bb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZE3Kn9Qw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r1si5828267qtb.163.2020.05.18.07.05.42
+        by mx.google.com with ESMTPS id d31si4058492yba.474.2020.06.04.03.55.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 May 2020 07:05:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Jun 2020 03:55:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BPO2G5bb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:55544 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZE3Kn9Qw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:51096 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jagOk-0008Kp-AY
-	for alex.bennee@linaro.org; Mon, 18 May 2020 10:05:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37646)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jgnWW-00035S-4w
+	for alex.bennee@linaro.org; Thu, 04 Jun 2020 06:55:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39122)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jagMV-0004JO-Kf; Mon, 18 May 2020 10:03:23 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:39225)
+ (Exim 4.90_1) (envelope-from <erik.lucas.smit@gmail.com>)
+ id 1jgnWP-00034E-VM; Thu, 04 Jun 2020 06:54:53 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:43841)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jagMU-0001BP-Nd; Mon, 18 May 2020 10:03:23 -0400
-Received: by mail-wm1-x344.google.com with SMTP id w64so10563494wmg.4;
- Mon, 18 May 2020 07:03:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <erik.lucas.smit@gmail.com>)
+ id 1jgnWO-0002Pf-UV; Thu, 04 Jun 2020 06:54:53 -0400
+Received: by mail-oi1-x243.google.com with SMTP id j189so4655452oih.10;
+ Thu, 04 Jun 2020 03:54:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=ynbMaAjpiD0x7UQ7qyXtXy4p3Mbw7B/2c81S4GZ2qwY=;
- b=BPO2G5bbStMKoFidT2VTx7PyLs2AYrJD/RBVIMqaeenYWBRdzL2WdryUCuQCPWh2jI
- 5mQ93bcfwgrCxHAJ/50H2TjtRxTFaNaNQRCABd0TXTwDbEEqlvX2dhlcOpAF513pM4rY
- VcC/wcwMDiile1YVcJwMZta5RWiCiyXRhaJp5pqjzv22qGrK1+dlr/IjYT285uUf809Z
- P++/5JlNgowdNArhzIBAXr2ADwvClY8PL7v+kER9RY1yndW8LhvcuSDbGnl1X5+sXQKO
- EXQtONRJiuKMWaZVg+vYrsr2JvVe1QE1XJ7mOZjdgQRDcQKYPOYdwJtDBgn5TgPmjy5v
- iIJg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=SWXZ5ULvx5RiZpH9RT5nB6Ol1XPXt8/7tRPhi1veAFM=;
+ b=ZE3Kn9QwGWXwjhO0uIkW3XvYZNu/ayyIRPmDZpjZEuG+j7/pUB8C66S3FBUH182/Da
+ 71BU1WW2rGtTgjAozXr3ohGrqLOy7x9tp65QZ4uT0NwrGtSDuY1zPXjqo5CPRIwgr176
+ 2S1oUek+gpjtxXn7vShi3Wn+h5UCrZV2sLSjGAuAO3eQln0CWgNJ1mDQkkilYAigxS6N
+ JJGu7e1a3alkbuz5suDRfwPtdPLEf/4Lr/3Zw1mDvrmF6Ch/I9+Qfn+iFu1pvzRGHb/T
+ +bRE8imm5Zb4bZ8oJo8XQOIs25COtD0BxZcD3LQeMwbKP0OtpqHalCEBBiSSN0hLjsI0
+ RvAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=ynbMaAjpiD0x7UQ7qyXtXy4p3Mbw7B/2c81S4GZ2qwY=;
- b=QHGftmVvBSlO3EwE8vcgJpmZgdaIJdGy4SzsV3UHxgu6XRz5QCdGJ1QhYaJsE1H539
- hKhUsBqXLv43PyA+HNBWWsUQLpUAoJ4LdDkE1xNlUEs1dXjVB/AaS8FH2TQu6Q+dFBwk
- 6l+POA6I16BMy1OjJ7XvF/sK6v1xqgJbgppfEd8VX97p9md2N1EFZNBE3p6m1zmKc3au
- KQ4FmzEcrozos9lItWTOwBD2NqCI6+shJwKU/6nK8eY4Ux1xfWxg5MVNqhW2WOcnIW8T
- dfI5CcvdUsMiVrorTpn/9+wfDMgb6HxIK91tcTNu+CwvDGgXXoRJzeBa8FaUMTmJHRhk
- QIsg==
-X-Gm-Message-State: AOAM5322Ldcf/wuXAQWsplJq+Ks3OhYtQ9njtlYmGaz7lEIcsO8zwVc9
- RLLDB/u4HlDdsGaTwSZ5qdcyWpFf77E=
-X-Received: by 2002:a1c:acc8:: with SMTP id
- v191mr20554002wme.154.1589810600658; 
- Mon, 18 May 2020 07:03:20 -0700 (PDT)
-Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id s67sm16611946wmf.3.2020.05.18.07.03.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 May 2020 07:03:19 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 4/4] hw/timer/exynos4210_mct: Replace hw_error() by
- qemu_log_mask()
-Date: Mon, 18 May 2020 16:03:09 +0200
-Message-Id: <20200518140309.5220-5-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200518140309.5220-1-f4bug@amsat.org>
-References: <20200518140309.5220-1-f4bug@amsat.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=SWXZ5ULvx5RiZpH9RT5nB6Ol1XPXt8/7tRPhi1veAFM=;
+ b=uYmzFYPuZfwJQ6vy4NZ8lstmdL+BD8rz6CLnC6FXvrUXO83i+ynjuvzBnbRgwd/6+Q
+ SnDYTIqeWRbOAkr2BQWCCMpeg47sUYo7dN833cDo2RmCItGbiFKQj1snCEqIEBKUhVmC
+ UeRcikceLmYmmAb6vv97iNQOHemqFKg6M1KcljYrUMW52qVcalz52lTEH1gGdHDXfT/B
+ 52Drqcuvp1ohiVQ3KGej9xJ9mO/Whdv7evFJMxnmb7Pg+KPYa59P3NJldy/Ka2PQKO7Y
+ ui5vz0D8vKAm/yQZAkP1s+t1Rc0DGl3PasclL7/apJwnxn6Wcyn4U3zDRwhsoz48A1KB
+ Y2Kw==
+X-Gm-Message-State: AOAM530ASzu0Q3tfPMz5MIQUyAS+sHlUI65UOBCVa6M0L8YO7t5/fAjS
+ hRqIyBPzEhl3CDtiQPZsIiJPN/nHn3he/ZtVAGs=
+X-Received: by 2002:a05:6808:ab0:: with SMTP id
+ r16mr2733069oij.24.1591268090545; 
+ Thu, 04 Jun 2020 03:54:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+References: <CA+MHfov0TVbwjy8g_cHVa6Y-bMowCbsGLdt8uUhmcns0v_eVLw@mail.gmail.com>
+ <70cece8e-1caf-1387-25e7-971783817cc8@kaod.org>
+In-Reply-To: <70cece8e-1caf-1387-25e7-971783817cc8@kaod.org>
+From: Erik Smit <erik.lucas.smit@gmail.com>
+Date: Thu, 4 Jun 2020 12:54:39 +0200
+Message-ID: <CA+MHfovyMCjqwJ+G3XyRvr5fO60sGff7bwYqSa7a=mFo8CYoSw@mail.gmail.com>
+Subject: Re: [PATCH] ftgmac100: Implement variable descriptor size
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
+ envelope-from=erik.lucas.smit@gmail.com; helo=mail-oi1-x243.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oJhApV5XJ/fS
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 251onq3TinL6
 
-hw_error() calls exit(). This a bit overkill when we can log
-the accesses as unimplemented or guest error.
+On Wed, 3 Jun 2020 at 10:16, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> On 6/2/20 6:47 PM, Erik Smit wrote:
+> > The hardware supports variable descriptor sizes, configured with the DB=
+LAC
+> > register.
+>
+> yes.
+>
+> The DBLAC default value is 0x00022F00 on AST2400 and 0x00022500 on AST250=
+0
+> and AST2600. The current reset handler needs a little fix btw.
+>
+> This sets the TX and RX descriptor default size to 4 words (2 * 8bytes).
+>
+> > Most drivers use the default 2*8, which is currently hardcoded in qemu,=
+ but
+> > the implementation of the driver in Supermicro BMC SMT_X11_158 uses 4*8=
+.
+>
+> The first 4 words are architected but the specs allows the descriptors
+> to be bigger which is what the Aspeed SDK is doing:
+>
+>         outl( 0x44f97, dev->base_addr + DBLAC_REG );
+>
+> It's using 8 words ( 4 * 8bytes) to store some address in the fifth.
+> This is a waste btw.
+>
+>
+> Thanks for spotting this. I think the patch is correct but we need to
+> clarify a few things.
+>
+> > --
+> > The implementation of the driver in Supermicro BMC SMT_X11_158 adds 4 e=
+xtra
+> > 4-bytes entries:
+> > https://github.com/ya-mouse/openwrt-linux-aspeed/blob/master/drivers/ne=
+t/ftgmac100_26.h#L387-L391
+> >
+> > And sets DBLAC to 0x44f97:
+> > https://github.com/ya-mouse/openwrt-linux-aspeed/blob/master/drivers/ne=
+t/ftgmac100_26.c#L449
+> >
+> > There's not a lot of public documentation on this hardware, but the
+> > current linux driver shows the meaning of these registers:
+> >
+> > https://github.com/torvalds/linux/blob/master/drivers/net/ethernet/fara=
+day/ftgmac100.c#L280-L281
+> >
+> >         iowrite32(FTGMAC100_DBLAC_RXDES_SIZE(2) |   /* 2*8 bytes RX des=
+cs */
+> >                   FTGMAC100_DBLAC_TXDES_SIZE(2) |   /* 2*8 bytes TX des=
+cs */
+> >
+> > Without this patch, networking in SMT_X11_158 does not pass data.
+> >
+> > Signed-off-by: Erik Smit <erik.lucas.smit@gmail.com <mailto:erik.lucas.=
+smit@gmail.com>>
+> > ---
+> >  hw/net/ftgmac100.c | 17 +++++++++++++++--
+> >  1 file changed, 15 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+> > index 25ebee7ec2..1640b24b23 100644
+> > --- a/hw/net/ftgmac100.c
+> > +++ b/hw/net/ftgmac100.c
+> > @@ -79,6 +79,19 @@
+> >  #define FTGMAC100_APTC_TXPOLL_CNT(x)        (((x) >> 8) & 0xf)
+> >  #define FTGMAC100_APTC_TXPOLL_TIME_SEL      (1 << 12)
+> >
+> > +/*
+> > + * DMA burst length and arbitration control register
+> > + */
+> > +#define FTGMAC100_DBLAC_RXFIFO_LTHR(x)      (((x) >> 0) & 0x7)
+> > +#define FTGMAC100_DBLAC_RXFIFO_HTHR(x)      (((x) >> 3) & 0x7)
+> > +#define FTGMAC100_DBLAC_RX_THR_EN           (1 << 6)
+>
+> The above definitions are AST2400 only. We should say so or leave them ou=
+t
+> because the model does not use them any how.
 
-When fuzzing the devices, we don't want the whole process to
-exit. Replace some hw_error() calls by qemu_log_mask().
+Like so?
 
-Per the datasheet "Exynos 4412 RISC Microprocessor Rev 1.00"
-Chapter 25 "Multi Core Timer (MCT)" figure 1 and table 4,
-the default value on the APB bus is 0.
+#define FTGMAC100_DBLAC_RXFIFO_LTHR(x)      (((x) >> 0) & 0x7)  // AST2400-=
+only
+#define FTGMAC100_DBLAC_RXFIFO_HTHR(x)      (((x) >> 3) & 0x7)  // AST2400-=
+only
+#define FTGMAC100_DBLAC_RX_THR_EN           (1 << 6)            // AST2400-=
+only
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-v2: Fixes -Wsometimes-uninitialized:
+>
+> > +#define FTGMAC100_DBLAC_RXBURST_SIZE(x)     (((x) >> 8) & 0x3)
+> > +#define FTGMAC100_DBLAC_TXBURST_SIZE(x)     (((x) >> 10) & 0x3)
+> > +#define FTGMAC100_DBLAC_RXDES_SIZE(x)       (((x) >> 12) & 0xf)
+> > +#define FTGMAC100_DBLAC_TXDES_SIZE(x)       (((x) >> 16) & 0xf)
+>
+> I would include '* 8' in the {R,T}XDES_SIZE macros
 
-hw/timer/exynos4210_mct.c:1158:5: error: variable 'value' is used uninitialized whenever switch default is taken [-Werror,-Wsometimes-uninitialized]
-    default:
-    ^~~~~~~
-hw/timer/exynos4210_mct.c:1163:12: note: uninitialized use occurs here
-    return value;
-           ^~~~~
-hw/timer/exynos4210_mct.c:1063:19: note: initialize the variable 'value' to silence this warning
-    uint32_t value;
-                  ^
-                   = 0
----
- hw/timer/exynos4210_mct.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
+Agreed.
 
-diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
-index 570cf7075b..29a4b10676 100644
---- a/hw/timer/exynos4210_mct.c
-+++ b/hw/timer/exynos4210_mct.c
-@@ -54,7 +54,6 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/log.h"
--#include "hw/hw.h"
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
- #include "qemu/timer.h"
-@@ -62,7 +61,6 @@
- #include "hw/ptimer.h"
- 
- #include "hw/arm/exynos4210.h"
--#include "hw/hw.h"
- #include "hw/irq.h"
- 
- //#define DEBUG_MCT
-@@ -1062,7 +1060,7 @@ static uint64_t exynos4210_mct_read(void *opaque, hwaddr offset,
-     int index;
-     int shift;
-     uint64_t count;
--    uint32_t value;
-+    uint32_t value = 0;
-     int lt_i;
- 
-     switch (offset) {
-@@ -1158,8 +1156,8 @@ static uint64_t exynos4210_mct_read(void *opaque, hwaddr offset,
-         break;
- 
-     default:
--        hw_error("exynos4210.mct: bad read offset "
--                TARGET_FMT_plx "\n", offset);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
-+                      __func__, offset);
-         break;
-     }
-     return value;
-@@ -1484,8 +1482,8 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
-         break;
- 
-     default:
--        hw_error("exynos4210.mct: bad write offset "
--                TARGET_FMT_plx "\n", offset);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
-+                      __func__, offset);
-         break;
-     }
- }
--- 
-2.21.3
+> > +#define FTGMAC100_DBLAC_IFG_CNT(x)          (((x) >> 20) & 0x7)
+> > +#define FTGMAC100_DBLAC_IFG_INC             (1 << 23)
+> > +
+> >  /*
+> >   * PHY control register
+> >   */
+> > @@ -553,7 +566,7 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint=
+32_t tx_ring,
+> >          if (bd.des0 & s->txdes0_edotr) {
+> >              addr =3D tx_ring;
+> >          } else {
+> > -            addr +=3D sizeof(FTGMAC100Desc);
+> > +            addr +=3D (FTGMAC100_DBLAC_TXDES_SIZE(s->dblac)) * 8;
+>
+> and remove the '* 8' here.
 
+Agreed.
+
+> >          }
+> >      }
+> >
+> > @@ -982,7 +995,7 @@ static ssize_t ftgmac100_receive(NetClientState *nc=
+, const uint8_t *buf,
+> >          if (bd.des0 & s->rxdes0_edorr) {
+> >              addr =3D s->rx_ring;
+> >          } else {
+> > -            addr +=3D sizeof(FTGMAC100Desc);
+> > +            addr +=3D (FTGMAC100_DBLAC_RXDES_SIZE(s->dblac)) * 8;
+> >          }
+> >      }
+> >      s->rx_descriptor =3D addr;
+>
+>
+> and when the DBLAC register is set, we should check the size values to ma=
+ke
+> sure they are not under sizeof(FTGMAC100Desc), in which case we should
+> report an error.
+
+Like so?
+
+    case FTGMAC100_DBLAC: /* DMA Burst Length and Arbitration Control */
+        s->dblac =3D value;
+        if (FTGMAC100_DBLAC_TXDES_SIZE(s->dblac) < sizeof(FTGMAC100Desc))
+            qemu_log_mask(LOG_GUEST_ERROR, "%s: transmit descriptor
+too small : %d bytes\n",
+                              __func__, FTGMAC100_DBLAC_TXDES_SIZE(s->dblac=
+));
+        if (FTGMAC100_DBLAC_RXDES_SIZE(s->dblac) < sizeof(FTGMAC100Desc))
+            qemu_log_mask(LOG_GUEST_ERROR, "%s: receive descriptor too
+small : %d bytes\n",
+                              __func__, FTGMAC100_DBLAC_RXDES_SIZE(s->dblac=
+));
+        break;
+
+Also, I've not got experience submitting patches to Qemu. My next step
+would be to respin this patch and resend it to everybody as [PATCH
+v2]?
+
+Best regards,
+
+Erik Smit

@@ -1,266 +1,238 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3066187lfb;
-        Mon, 18 May 2020 07:04:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyo/19yKubqoLe/ckPW8P6FqVuNQNdX+z5p4RmDvDcRlQ0mWlmYsDEUH5yBA0HGC5ZvCCuP
-X-Received: by 2002:ac8:341c:: with SMTP id u28mr17161725qtb.0.1589810662691;
-        Mon, 18 May 2020 07:04:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589810662; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1293028lfc;
+        Thu, 4 Jun 2020 02:46:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxqWXvSxL0ShS6eeeVqU5wZFz5BAxlFFtTwmzSW6A1EbQv3QvaUWgohmKvCd+r+G3jNetAT
+X-Received: by 2002:a25:df09:: with SMTP id w9mr6782105ybg.67.1591263966853;
+        Thu, 04 Jun 2020 02:46:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591263966; cv=none;
         d=google.com; s=arc-20160816;
-        b=pZVRZJPktT4Ysax0Tuzwc5MluzOTBEFAhitYsE+6ZweP/2k2XvNUyrW9gbghzZnnYb
-         rA75BjrnNCFZPXCLpVLQqCNA1qzsR3Xj5k4AfZ6UJ9PAgmohLXIWJarLuHZYP8TmHt7R
-         tWP1eW/TzGJ00lwb2pvDS/gfECEPYZJO0lfhbL0DqeRKFoO0mJAWu997ZbqUfzBeSteB
-         fCBh5WC78NhHoDj8iFSw4ZXOy0uR6Cf43Xlk4j70YSNEMkgWnXIEzIt7XmiP3bzlzPEd
-         ymUiG67PSK2tCj+Sgk7iOuR7Wc8u+fKBph8/dz9V7rPyDx6OLZ+Na5iWh5qsZ2n0kf/r
-         qgcg==
+        b=DFL3ZRUzQXqjFGHMNxUofsrSrsOhna8iimHm5Ld22Fb/WidvAKMZoLLVIpJWLkWw8k
+         KN3FOudDLW7DdE6g96FDdlMbvPqd3xOOAtLDaGzNaRPUoYv/WxfJA8ACTBnp/j8eJadG
+         dYfqZLKcanEwd8RGlne9T21v5exDi2Rt2zrMWjuihtpNRjewYePkwMR/k5uJm5w8k7KJ
+         6rHnliZbouMi5jGyN2etX+RE8fGFB2jDEitDMU1h0CpLRtC3APyaezbWKPbxqsZ0DJES
+         dVZKiwfBOjfG8UlWnAbwHvRjq1D8mtw528OE5BsyThhlt5ZwhjWr/JU1JOtDAPB1a25G
+         XDEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=jz9Gxel1PVIdl5iYkRkenVOs1Gr8Smmd1Imlbqeyfjo=;
-        b=DMPbyhUeHMiNFumii1ajSnX2IuI9EgnfSlNqzEERoDiF/At+6lIb1/XMm37tm2PgEt
-         ktSWX5adCZuWreuFQLx8eCdp5E98CZ02jpSlMlXHLcAzAUvZSTObpbmCKQm14nb5L8Yg
-         peLob6iiNpRe3yCDcV2JrjmBHbIuUZ6x+dv9/Crvcd9O1X18OQd8do0OLyTSkAmVnv5J
-         ZXnLQ9TbJ1UrMbl7LvW3idcNLgX0C63BwvmESrATaIRHVmEhJisyNleTVJbiGWFlytp9
-         7AD4/i7HiTG3GQdZtNFcNSegXJ/JyR0yurb1sknd3JZv/C9IBYp5ZV99rPUiY3zFe0cH
-         uZ0Q==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=G+sSjSfhgOPC7Kxd2got8VqKXIFRdfZXk4i8EwKPk6A=;
+        b=tliyBxOF2JSiEAMUkHw7Kphjkjf05qlh3sLYEmbiEYUlxcWWsPC/wRdtugdD7jaylu
+         yQw44RW1j1ToOktGLhlx343kuiBHy8hB3KAPRf7VwJZG2med1381b0pCyZk3Oyc/bJ5c
+         JZUPK8JhIYo4d/46lTl4QNJsnK6NJHzZOo7WEMU+EmnqCKKbuEZbJDy0ArdrvQfvetNI
+         nTEfythmJpDC+7kJGrIPyEBmImBTC7lKA5Wi4eKwKSukA6JGzCYAc0irUaqPlFVVIwje
+         W8OJnnH3tVcimRuYm4Kh8jy7v8HiqdFAgzZ7DHoRTtR/KaQBX4a4dbyNXNt4N7Rv0DB1
+         o4QA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i1El2WNW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z5si5479553qvm.195.2020.05.18.07.04.22
+        by mx.google.com with ESMTPS id h13si4141314ybj.72.2020.06.04.02.46.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 May 2020 07:04:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Jun 2020 02:46:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i1El2WNW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49096 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57950 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jagNS-0005eC-1t
-	for alex.bennee@linaro.org; Mon, 18 May 2020 10:04:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37620)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jgmRq-0000Lk-5t
+	for alex.bennee@linaro.org; Thu, 04 Jun 2020 05:46:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57768)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jagMR-0004AM-T9; Mon, 18 May 2020 10:03:19 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:33943)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jagMQ-0001AG-U9; Mon, 18 May 2020 10:03:19 -0400
-Received: by mail-wr1-x443.google.com with SMTP id y3so12052260wrt.1;
- Mon, 18 May 2020 07:03:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=jz9Gxel1PVIdl5iYkRkenVOs1Gr8Smmd1Imlbqeyfjo=;
- b=i1El2WNWs5H5msHNsrft29y1PQsYfVZ4bkICXIMQ+kZN+ogz/TlxiLM63LSk5frAdC
- 3Y5sJ+Ym15DwSVm++rBqSNX241Aey3Bpf/MjVQgLdHJoZE/rv0sh2ajS3EA+ZMELcgqc
- iYnauOYwsJUWSzp0rIvTuKOg04FD/wdV5jmrUxGDYtJUrtIW9/w/UJsaCW+diasPKtb+
- cMm/3+NzxxbUtaGwt1H2v0tAXEapxLZtMV0e2yICKz7mKcgE4xhT3noUzeEhBJk2OSxN
- 3ROA5b1sybuZ/BgwMe0RCOsRNfpAVsJ17HRrttMM3WXDDLJOiGc5jU+y025+UovoYnkh
- 78TQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=jz9Gxel1PVIdl5iYkRkenVOs1Gr8Smmd1Imlbqeyfjo=;
- b=JGTj0fTDt8G7jz8KFRr10ozmzUk+4W6I1Jdrpc52Sgqc+ZmJj5A7zWVWSbGFk17Fjw
- mRs0WpZUPQ8UJo7TslJ9p7qoiscSCnoMAhdnSAJONcNU46b4k9w0X94pRaKwvKINnqiG
- zwNmIah3/MpPwkes/nxc/BUzA8nEYLCTAKaJWY+hTNAZMabgEs1hpQC0L+F7LdncelH9
- 2QG218Lw0l+FHLHTCPxt6R97SP81cx/C1P3mLCJZLsMkXzuKjuOjVsgnYTMTIYN8qzqA
- iJdT1xfYcvq3n8HfYQzFMKSETuAx5N3JQXDyOeHc1zL+zz8NdA8nbkVkXr3Aozg2/E66
- nEdQ==
-X-Gm-Message-State: AOAM531rQr2uY/p/D7aWNT5Dz+RBmUWJZHyKX9MWtdwL+wKvJ415kEDp
- /4oEkas8Rgxf/QHsIsgLymBcHWN+Rzw=
-X-Received: by 2002:adf:d0cb:: with SMTP id z11mr21290674wrh.116.1589810596883; 
- Mon, 18 May 2020 07:03:16 -0700 (PDT)
-Received: from x1w.redhat.com (17.red-88-21-202.staticip.rima-tde.net.
- [88.21.202.17])
- by smtp.gmail.com with ESMTPSA id s67sm16611946wmf.3.2020.05.18.07.03.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 May 2020 07:03:15 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 2/4] hw/arm/pxa2xx: Replace hw_error() by qemu_log_mask()
-Date: Mon, 18 May 2020 16:03:07 +0200
-Message-Id: <20200518140309.5220-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200518140309.5220-1-f4bug@amsat.org>
-References: <20200518140309.5220-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1jgmQq-0007Jm-Ds; Thu, 04 Jun 2020 05:45:04 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3704 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1jgmQn-0004VK-Kd; Thu, 04 Jun 2020 05:45:03 -0400
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id D4BAACFBCF918961D608;
+ Thu,  4 Jun 2020 17:44:51 +0800 (CST)
+Received: from [127.0.0.1] (10.173.222.233) by DGGEMS405-HUB.china.huawei.com
+ (10.3.19.205) with Microsoft SMTP Server id 14.3.487.0;
+ Thu, 4 Jun 2020 17:44:45 +0800
+Subject: Re: About the kvm-no-adjvtime CPU property
+To: Andrew Jones <drjones@redhat.com>
+References: <b4389848-10fd-a906-9901-d1d354ce4842@huawei.com>
+ <20200601080718.jul5r4qebpeieyfl@kamzik.brq.redhat.com>
+ <3d8729db-067c-31f9-dd69-02a218f1b53e@huawei.com>
+ <20200601122917.fyp2kwqzsodahnzu@kamzik.brq.redhat.com>
+ <f994141f-0248-fd68-7cd5-9b948cfdbf8d@huawei.com>
+ <20200603085354.wcbhhuq3dhvi3moc@kamzik.brq.redhat.com>
+From: Ying Fang <fangying1@huawei.com>
+Message-ID: <6287bc83-7a9e-005c-6807-5facfa0bef43@huawei.com>
+Date: Thu, 4 Jun 2020 17:44:37 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20200603085354.wcbhhuq3dhvi3moc@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Originating-IP: [10.173.222.233]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=fangying1@huawei.com;
+ helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/04 04:51:24
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JM0JWbuZra5+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: marc.zyngier@arm.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ wu.wubin@huawei.com, zhang.zhanghailiang@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fqt0HdkWwn7f
 
-hw_error() calls exit(). This a bit overkill when we can log
-the accesses as unimplemented or guest error.
 
-When fuzzing the devices, we don't want the whole process to
-exit. Replace some hw_error() calls by qemu_log_mask().
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/pxa2xx_gpio.c    |  7 ++++---
- hw/display/pxa2xx_lcd.c |  8 +++++---
- hw/dma/pxa2xx_dma.c     | 14 +++++++++-----
- 3 files changed, 18 insertions(+), 11 deletions(-)
+On 6/3/2020 4:53 PM, Andrew Jones wrote:
+> On Tue, Jun 02, 2020 at 03:47:22PM +0800, Ying Fang wrote:
+>>
+>>
+>> On 2020/6/1 20:29, Andrew Jones wrote:
+>>> On Mon, Jun 01, 2020 at 08:07:31PM +0800, Ying Fang wrote:
+>>>>
+>>>>
+>>>> On 2020/6/1 16:07, Andrew Jones wrote:
+>>>>> On Sat, May 30, 2020 at 04:56:26PM +0800, Ying Fang wrote:
+>>>>>> About the kvm-no-adjvtime CPU property
+>>>>>>
+>>>>>> Hi Andrew,
+>>>>>> To adjust virutal time, a new kvm cpu property kvm-no-adjvtime
+>>>>>> was introduced to 5.0 virt machine types. However the cpu
+>>>>>> property was enabled only for host-passthrough and max cpu model.
+>>>>>> As for other cpu model like cortex-a57, cortex-a53, cortex-a72,
+>>>>>> this kvm-adjvtime is not enabled by default, which means the
+>>>>>> virutal time can not be adjust for them.
+>>>>>>
+>>>>>> Here, for example, if VM is configured with kvm enabled:
+>>>>>>
+>>>>>>      <cpu mode='custom' match='exact' check='partial'>
+>>>>>>        <model fallback='allow'>cortex-a72</model>
+>>>>>>        <topology sockets='2' dies='1' cores='2' threads='1'/>
+>>>>>>        <numa>
+>>>>>>          <cell id='0' cpus='0-1' memory='16777216' unit='KiB'/>
+>>>>>>          <cell id='1' cpus='2-3' memory='16777216' unit='KiB'/>
+>>>>>>        </numa>
+>>>>>>      </cpu>
+>>>>>>
+>>>>>> We cannot adjust virtual time even if 5.0 virt machine is used.
+>>>>>> So i'd like to add it to other cpu model, do you have any
+>>>>>> suggestions here ?
+>>>>>>
+>>>>>>
+>>>>>
+>>>>> Hi Fang,
+>>>>>
+>>>>> The cpu feature only requires kvm.  If a cpu model may be used with kvm,
+>>>>> then the feature can be allowed to be used with the model.  What I find
+>>>>> interesting is that the cpu model is being used with kvm instead of 'host'
+>>>>> or 'max'.  Can you explain the reasons for that?  Currently, when using
+>>>> yes，the cpu model is indeed used with kvm.
+>>>>
+>>>> There is a situation where the host cpu model is Cortex-A72 and
+>>>> a 'custom' cpu mode is used to keep insrtuction set compatible between
+>>>> the source and destination host machine when doing live migration.
+>>>> So the host physical machine cpu model is Cortex-A72 but
+>>>> host-passthrough model is mode used here.
+>> I mean host-passthrough model is 'not' used here. Sorry to make it
+>> confusing.
+> 
+> I guessed as much.
+> 
+>>>
+>>> Are the source and destinations hosts used in the migration identical?
+>>> If so, then the guest can use cpu 'host' and disable cpu features that
+>>> should not be exposed (e.g. -cpu host,pmu=off).  If the source and
+>>> destination hosts are not identical, then I'm curious what those exact
+>>> differences are.  With the way AArch64 KVM works today, even using the
+>>> Cortex-A72 cpu model should require identical hosts when migrating.  Or,
+>>> at least both hosts must be compatible with Cortex-A72 and any difference
+>>> in ID registers must be somehow getting hidden from the guest.
+>> Yes, you are right.
+>> We have AAarch64 server with cpu based on Cortex-A72 and some extra
+>> instruction set added. Source host with cpu based on V1 and destination host
+>> with cpu based on V2 and they are compatible with Cortex-A72. We want to use
+>> a 'custom' cpu mode here to make it possible to do live migration between
+>> them. This is the scenario where the 'host' cpu model is not used since a
+>> 'custom' cpu model Cortex-A72 is used here .
+> 
+> What you've described here is indeed the reason to use CPU models. I.e.
+> enabling the migration from a host of one type to another by creating a
+> guest that only enables the features contained in both hosts (as well as
+> maintaining all state that describes the CPU type, e.g. MIDR).
+> Unfortunately, unless your KVM has patches that aren't upstream, then that
+> doesn't work on AArch64 KVM (more on that below). It may appear to be
+> working for you, because your guest kernel and userspace don't mind the
+> slight differences exposed to it between the hosts, or those differences
+> are limited to explicitly disabled features. If that's the case, then I
+> would guess that using '-cpu host' and disabling the same features would
+> "work" as well.
 
-diff --git a/hw/arm/pxa2xx_gpio.c b/hw/arm/pxa2xx_gpio.c
-index f8df3cc227..a01db54a51 100644
---- a/hw/arm/pxa2xx_gpio.c
-+++ b/hw/arm/pxa2xx_gpio.c
-@@ -9,7 +9,6 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
--#include "hw/hw.h"
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
- #include "hw/sysbus.h"
-@@ -199,7 +198,8 @@ static uint64_t pxa2xx_gpio_read(void *opaque, hwaddr offset,
-         return s->status[bank];
- 
-     default:
--        hw_error("%s: Bad offset " REG_FMT "\n", __func__, offset);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
-+                      __func__, offset);
-     }
- 
-     return 0;
-@@ -252,7 +252,8 @@ static void pxa2xx_gpio_write(void *opaque, hwaddr offset,
-         break;
- 
-     default:
--        hw_error("%s: Bad offset " REG_FMT "\n", __func__, offset);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
-+                      __func__, offset);
-     }
- }
- 
-diff --git a/hw/display/pxa2xx_lcd.c b/hw/display/pxa2xx_lcd.c
-index 464e93161a..d5f2e82a4e 100644
---- a/hw/display/pxa2xx_lcd.c
-+++ b/hw/display/pxa2xx_lcd.c
-@@ -11,7 +11,7 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "hw/hw.h"
-+#include "qemu/log.h"
- #include "hw/irq.h"
- #include "migration/vmstate.h"
- #include "ui/console.h"
-@@ -407,7 +407,8 @@ static uint64_t pxa2xx_lcdc_read(void *opaque, hwaddr offset,
- 
-     default:
-     fail:
--        hw_error("%s: Bad offset " REG_FMT "\n", __func__, offset);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
-+                      __func__, offset);
-     }
- 
-     return 0;
-@@ -562,7 +563,8 @@ static void pxa2xx_lcdc_write(void *opaque, hwaddr offset,
- 
-     default:
-     fail:
--        hw_error("%s: Bad offset " REG_FMT "\n", __func__, offset);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
-+                      __func__, offset);
-     }
- }
- 
-diff --git a/hw/dma/pxa2xx_dma.c b/hw/dma/pxa2xx_dma.c
-index 88ed4b6ff1..8a2eeb32bc 100644
---- a/hw/dma/pxa2xx_dma.c
-+++ b/hw/dma/pxa2xx_dma.c
-@@ -9,6 +9,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/log.h"
- #include "hw/hw.h"
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
-@@ -268,7 +269,8 @@ static uint64_t pxa2xx_dma_read(void *opaque, hwaddr offset,
-     unsigned int channel;
- 
-     if (size != 4) {
--        hw_error("%s: Bad access width\n", __func__);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad access width %u\n",
-+                      __func__, size);
-         return 5;
-     }
- 
-@@ -315,8 +317,8 @@ static uint64_t pxa2xx_dma_read(void *opaque, hwaddr offset,
-             return s->chan[channel].cmd;
-         }
-     }
--
--    hw_error("%s: Bad offset 0x" TARGET_FMT_plx "\n", __func__, offset);
-+    qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
-+                  __func__, offset);
-     return 7;
- }
- 
-@@ -327,7 +329,8 @@ static void pxa2xx_dma_write(void *opaque, hwaddr offset,
-     unsigned int channel;
- 
-     if (size != 4) {
--        hw_error("%s: Bad access width\n", __func__);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad access width %u\n",
-+                      __func__, size);
-         return;
-     }
- 
-@@ -420,7 +423,8 @@ static void pxa2xx_dma_write(void *opaque, hwaddr offset,
-             break;
-         }
-     fail:
--        hw_error("%s: Bad offset " TARGET_FMT_plx "\n", __func__, offset);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIX "\n",
-+                      __func__, offset);
-     }
- }
- 
--- 
-2.21.3
+Yes, upstream KVM currently does not support it. We are planning to add
+support for the aarch64 platform since we have the situation where it is
+needed for our hardware.
+
+@Marc Zyngier, is there anyone who doing on this?
+> 
+> Here's some more details on why the Cortex-A72 CPU model doesn't matter
+> with upstream KVM. First, upstream AArch64 KVM doesn't support CPU models,
+> and it doesn't even have a Cortex-A72 preferred target. For Cortex-A72
+> it will use "KVM_ARM_TARGET_GENERIC_V8", which is the same thing 'host'
+> would do when running on a Cortex-A72. Second, if V2 of the Cortex-A72-
+> based CPU you're using changed the revision of the MIDR, or any other
+> state that gets passed directly through to the guest like the MIDR, then
+> that state will change on migration. If a guest looks before migration and
+> again after migration, then it could get confused. A guest kernel may only
+> look once on boot and then not notice, but anything exposed to userspace
+> is extra risky, as userspace may check more frequently.
+
+Yes, just as explained here.
+
+> 
+> In short, without KVM patches that aren't upstream, then it's risky to
+> migrate between machines with V1 and V2 of these CPUs. And, it doesn't
+> help to use the Cortex-A72 CPU model.
+Thanks for your detailed introduction.
+
+> 
+> Thanks,
+> drew
+> 
+> 
+>> However the kvm-adjvtime
+>> feature is also need. So I think we should move kvm_arm_add_vcpu_properties
+>> to arm_cpu_post_init, instead of limited to 'host' and 'max' cpu model[1].
+>>
+>> 1: https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg00091.html
+>>>
+>>> Thanks,
+>>> drew
+>>>
+>>>
+>>>
+>>
+>>
+> 
+> 
+> .
+> 
 

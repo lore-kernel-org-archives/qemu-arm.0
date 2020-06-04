@@ -1,75 +1,102 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1417460lfc;
-        Thu, 4 Jun 2020 05:42:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwI9MDwN/mvrLLtBuRvHybE7KLyJWMK38lmrcnPt+ZGw3pgtxEFaE1Q1OJQzjmZ3UGd6KYe
-X-Received: by 2002:a25:5387:: with SMTP id h129mr7596342ybb.413.1591274534971;
-        Thu, 04 Jun 2020 05:42:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591274534; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1426457lfc;
+        Thu, 4 Jun 2020 05:55:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxiJEyDqW/EEzQ/FNoSF57dkViZJqADqSEnBk/cfoEu5KDB/ydPQbHHvVhkIEh6YFe2fMxo
+X-Received: by 2002:a25:ad56:: with SMTP id l22mr7621210ybe.383.1591275358297;
+        Thu, 04 Jun 2020 05:55:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591275358; cv=none;
         d=google.com; s=arc-20160816;
-        b=bmAb3OIwvDmMipcSh3p1Cxmmgad3Co70L8QWOS6r4FI1PNKfDDzXTK/rQ+ZA7DUev0
-         akUarxiASoGJ4gqmuA8mcVXCukWklkTxyRXp+q9qqmJooXRKXI2QhPemXeI55tGQ4BgO
-         LvFuMcCt71T4gm6InihXeoeesqe96MWbsS/CKPz9OZT57cm4zq0jORfVhf6NJ+MEGKy3
-         WMVA1SbxuuSCW18JaDgg+z6Bm6Z4TYN7wYQghRmlzZ4rK1cAracCKOqFPoAmjqRI7I74
-         LYL0J3XoLS+d2Eu/yMvgv1r5/G2i6N1vm/ZRriOPTNH0tXXWRCfAIyeKQdFRSOR18vbv
-         uhXg==
+        b=BuUPTWsZeJNgqeCK6zBeKWHyTUp3rfDDkIXb6lzKHabbBcd+l1TSN2zlPZjcY/KNrK
+         KQioPb27meY9RphBYX/Js1iYNHfwjUtqSqlKmnTUMlokXz1YPp4Jqy+p3X5Fxjzyf/I3
+         zIGkf2hpQuiUKPPbCKpUlWBnaauR4wtaeClJenwYj9PwTiKH4JEjqlH0n/ARNOxcU4co
+         zSMC4BJWHGqEYknWl0RSdOrwlaqXi56/04nQGVzFfrLk15spFVwPWy3sLJ0HO3glOHUm
+         x1YhKTRWyC4WigTx1pnmS8nK3Dnw/vL5tRRMwjp/Mx2ntwLjc2w2y81hY5/fFSY3dt4x
+         Hkig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=20LDk4JIEgLN5iMQkd1uE79ImFOZdn8JPWYxNc8buig=;
-        b=aR8Qck0xzvvzbDmC8LOb3+sYAWN4FZP37xhOFtV/s+jtKnAqvueAd8Eja2sjokx0QE
-         WRShxFWMQKAuCFNlvvaaEPwJsTwxvbcZXPmZRvTYihZbjhZtYg33hEz7Q78yg+H8T6gW
-         K3Yi/fQf/w7IUmcAg4Wx1gjiZy1J+p0TiNI+v2Chqu1xtS49SaPFTck6Is6IJhmEyYFe
-         lap9Dv8/Wi4But6+gfFxvQZkgfWoFvwqJ/3aqulePwrjfnV/Uq12xLLAdCfu6lPw8yIa
-         /OCoCxS9svPEi+9gzyYRWfQwS0aVhG/p+dsHQLG61PFzgM1CJDwcqVDEXbCpKpG1z0Ro
-         oW4w==
+         :list-unsubscribe:list-id:precedence:user-agent:content-disposition
+         :mime-version:message-id:subject:to:from:date:dkim-signature;
+        bh=rUu6a9rJHGf3ex3AMdBdG2Vh97Xd8nCLDS9SYciVjVo=;
+        b=XUKv3lUkBoEXSekLgEdIADvD+JwvcUQ1IBIEP0gGbzGQCAw00fpK77YjQ+cckQb00d
+         H0QB0OMcYyTNVVv3AHVsn9Mr64IDwhVLPfWbgdRVrYhlffFqLcnu2c2F3dZhSXFQNJHp
+         KfP00gTYricEbKNRYFFzs1dfyyAVX/P47QDgrT2wGFN0yYXAW7rbe/0RUpu6CM1cunKm
+         Q6cCyqSk7wsNLVRrsIf097qJGHndASC1IwYtJxDgqEAAqOBF61Tka7dipEMrqtJzHZLk
+         oi6wM56KnNT4m8M04Qof7XLTbPVB9coihC1vJ5KKPgSgghbACjizPX5P81qE57kSWqId
+         A2QA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=aSTdigRb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s7si2628056ybk.458.2020.06.04.05.42.14
+        by mx.google.com with ESMTPS id 139si3963714ybn.306.2020.06.04.05.55.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jun 2020 05:42:14 -0700 (PDT)
+        Thu, 04 Jun 2020 05:55:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=aSTdigRb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42076 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59356 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgpCI-0003DX-BJ
-	for alex.bennee@linaro.org; Thu, 04 Jun 2020 08:42:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53004)
+	id 1jgpPZ-0004SF-Ln
+	for alex.bennee@linaro.org; Thu, 04 Jun 2020 08:55:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55236)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jgp9g-00085b-Qm; Thu, 04 Jun 2020 08:39:32 -0400
-Received: from relay4-d.mail.gandi.net ([217.70.183.196]:55553)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jgp9f-0001i1-Lk; Thu, 04 Jun 2020 08:39:32 -0400
-X-Originating-IP: 82.252.130.88
-Received: from localhost.localdomain (lns-bzn-59-82-252-130-88.adsl.proxad.net
- [82.252.130.88]) (Authenticated sender: jcd@tribudubois.net)
- by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id 4A988E0018;
- Thu,  4 Jun 2020 12:39:28 +0000 (UTC)
-From: Jean-Christophe Dubois <jcd@tribudubois.net>
-To: qemu-arm@nongnu.org
-Subject: [PATCH v5 3/3] hw/net/imx_fec: improve PHY implementation.
-Date: Thu,  4 Jun 2020 14:39:10 +0200
-Message-Id: <cbafa49a59659051387e43b7b35d8f280e59f1a3.1591272275.git.jcd@tribudubois.net>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1591272275.git.jcd@tribudubois.net>
-References: <cover.1591272275.git.jcd@tribudubois.net>
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1jgpPS-0004Ru-GC
+ for qemu-arm@nongnu.org; Thu, 04 Jun 2020 08:55:50 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:38052)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1jgpPR-00058l-FV
+ for qemu-arm@nongnu.org; Thu, 04 Jun 2020 08:55:50 -0400
+Received: by mail-wr1-x442.google.com with SMTP id e1so5998326wrt.5
+ for <qemu-arm@nongnu.org>; Thu, 04 Jun 2020 05:55:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=rUu6a9rJHGf3ex3AMdBdG2Vh97Xd8nCLDS9SYciVjVo=;
+ b=aSTdigRbk0UwqIv6Dk3LEI947Z7u2w5LKNa5ZCrnGqpoxynUfbmljSCGJR9AyrRe32
+ 3Myvvz4rsQqpHpDE2i1A4d0IIZJTMqjTAdBO2L0EFpTfVK7rrVN5OuNFwunmJFxE/AzH
+ VIXx8ai5BcX804SU0zZ4iahNM7++RuZ9bXLzdRnHEf4NQf4KMaaxSMC8X/2tgLsQkMm6
+ wW+ImzwY6WUaY6hHIrnnuSxTgUEEpei2SFYPDP1OCzA7inTHKCsBc8jTyqwTY32nACUB
+ Q20NvwbipnBOLaTPeqW6C4VUDkh7CT+NPnWdufNIuOkHA4iGAxPwzk3Q/HLi72Ju/Aoe
+ Zyvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=rUu6a9rJHGf3ex3AMdBdG2Vh97Xd8nCLDS9SYciVjVo=;
+ b=ZJUNw1OMf/bWvsNH7gPufX9SV0Cm0lGxiDCooGlVDGbcpPa0OnsB61PyvXmWCOoFNY
+ il8FiNbBhvxXE7Rpp3z1Ar+CFCmLmXyTvrySCBds9qO/IPs+dy0Hc7oJMn5QBmmXi2ng
+ NAnyB1103QwtHlyb8tJdc7isbfKB2isPb3hqW2LhC7p0qt+A02a8d9cyDa6Aa5ToWtaS
+ f8LOonkY2xNftHBwq1tyH2G5OQ5cJeMAE6qk8Ba0d33Uffmh98HcMg+c+CN/1NC5nylB
+ kibo5adKpQ099zGTkiD7MZaZspyccqNKO/CYuuF4jAQXnA5w0DHWGCXk3zu5SJyqvo0V
+ BVUA==
+X-Gm-Message-State: AOAM5301/Oslp2Koue1rv364mgO55DUrnsll5pdT/EsMek2ypJNQaiY+
+ Z2sEiJf5ovn/LgqLBAkSVg4ziw==
+X-Received: by 2002:adf:f812:: with SMTP id s18mr4147864wrp.28.1591275347408; 
+ Thu, 04 Jun 2020 05:55:47 -0700 (PDT)
+Received: from vanye ([2001:470:1f09:12f0:b26e:bfff:fea9:f1b8])
+ by smtp.gmail.com with ESMTPSA id f9sm7627646wre.65.2020.06.04.05.55.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 04 Jun 2020 05:55:46 -0700 (PDT)
+Date: Thu, 4 Jun 2020 13:55:44 +0100
+From: Leif Lindholm <leif@nuviainc.com>
+To: qemu-devel@nongnu.org
+Subject: kvm_target, QEMU_KVM_ARM_TARGET_GENERIC_V8 questions
+Message-ID: <20200604125544.GW28566@vanye>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=217.70.183.196; envelope-from=jcd@tribudubois.net;
- helo=relay4-d.mail.gandi.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/04 08:39:21
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=leif@nuviainc.com; helo=mail-wr1-x442.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -83,192 +110,61 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, f4bug@amsat.org, peter.chubb@nicta.com.au,
- qemu-devel@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AtA8hMtURL56
+X-TUID: nymXTRU4ogln
 
-improve the PHY implementation with more generic code.
+Hi there,
 
-This patch remove a lot of harcoded values to replace them with
-generic symbols from header files.
+(all this done on current HEAD: 66234fee9c)
 
-Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
----
- v2: Not present
- v3: Not present
- v4: Not present
- v5: improve PHY implementation.
+I was looking through the definition of the aarch64 "max" cpu, and
+noticed it invokes aarch64_a57_initfn as a template, followed by
+overriding some feature and ID fields to enable additional
+functionality.
 
- hw/net/imx_fec.c     | 76 +++++++++++++++++++++++++++-----------------
- include/hw/net/mii.h |  4 +++
- 2 files changed, 50 insertions(+), 30 deletions(-)
+I then noticed it does not override kvm_target, which hence remains
+set as QEMU_KVM_ARM_TARGET_CORTEX_A57. Of course, this only happens on
+the else side of the if (kvm_enabled()) branch, so doesn't affect it.
 
-diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index 29e613699ee..bf9583a93f4 100644
---- a/hw/net/imx_fec.c
-+++ b/hw/net/imx_fec.c
-@@ -24,6 +24,7 @@
- #include "qemu/osdep.h"
- #include "hw/irq.h"
- #include "hw/net/imx_fec.h"
-+#include "hw/net/mii.h"
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
- #include "sysemu/dma.h"
-@@ -231,6 +232,9 @@ static const VMStateDescription vmstate_imx_eth = {
- #define PHY_INT_PARFAULT            (1 << 2)
- #define PHY_INT_AUTONEG_PAGE        (1 << 1)
- 
-+#define MII_SMC911X_ISF             29
-+#define MII_SMC911X_IM              30
-+
- static void imx_eth_update(IMXFECState *s);
- 
- /*
-@@ -249,11 +253,11 @@ static void imx_phy_update_link(IMXFECState *s)
-     /* Autonegotiation status mirrors link status.  */
-     if (qemu_get_queue(s->nic)->link_down) {
-         trace_imx_phy_update_link("down");
--        s->phy_status &= ~0x0024;
-+        s->phy_status &= ~(MII_BMSR_LINK_ST | MII_BMSR_AN_COMP);
-         s->phy_int |= PHY_INT_DOWN;
-     } else {
-         trace_imx_phy_update_link("up");
--        s->phy_status |= 0x0024;
-+        s->phy_status |= MII_BMSR_LINK_ST | MII_BMSR_AN_COMP;
-         s->phy_int |= PHY_INT_ENERGYON;
-         s->phy_int |= PHY_INT_AUTONEG_COMPLETE;
-     }
-@@ -269,9 +273,11 @@ static void imx_phy_reset(IMXFECState *s)
- {
-     trace_imx_phy_reset();
- 
--    s->phy_status = 0x7809;
--    s->phy_control = 0x3000;
--    s->phy_advertise = 0x01e1;
-+    s->phy_status = MII_BMSR_100TX_FD | MII_BMSR_100TX_HD | MII_BMSR_10T_FD |
-+                    MII_BMSR_10T_HD | MII_BMSR_AUTONEG | MII_BMSR_EXTCAP;
-+    s->phy_control = MII_BMCR_AUTOEN | MII_BMCR_SPEED100;
-+    s->phy_advertise = MII_ANAR_CSMACD | MII_ANAR_TX | MII_ANAR_10FD |
-+                       MII_ANAR_10 | MII_ANAR_TXFD;
-     s->phy_int_mask = 0;
-     s->phy_int = 0;
-     imx_phy_update_link(s);
-@@ -285,37 +291,42 @@ static uint32_t imx_phy_read(IMXFECState *s, int reg)
-     reg %= 32;
- 
-     switch (reg) {
--    case 0:     /* Basic Control */
-+    case MII_BMCR:     /* Basic Control */
-         val = s->phy_control;
-         break;
--    case 1:     /* Basic Status */
-+    case MII_BMSR:     /* Basic Status */
-         val = s->phy_status;
-         break;
--    case 2:     /* ID1 */
--        val = 0x0007;
-+    case MII_PHYID1:     /* ID1 */
-+        val = LAN911x_PHYID1;
-         break;
--    case 3:     /* ID2 */
--        val = 0xc0d1;
-+    case MII_PHYID2:     /* ID2 */
-+        val = LAN911x_PHYID2;
-         break;
--    case 4:     /* Auto-neg advertisement */
-+    case MII_ANAR:     /* Auto-neg advertisement */
-         val = s->phy_advertise;
-         break;
--    case 5:     /* Auto-neg Link Partner Ability */
--        val = 0x0f71;
-+    case MII_ANLPAR:     /* Auto-neg Link Partner Ability */
-+        val = MII_ANLPAR_CSMACD | MII_ANLPAR_10 | MII_ANLPAR_10FD |
-+              MII_ANLPAR_TX | MII_ANLPAR_TXFD | MII_ANLPAR_PAUSE |
-+              MII_ANLPAR_PAUSEASY;
-         break;
--    case 6:     /* Auto-neg Expansion */
--        val = 1;
-+    case MII_ANER:     /* Auto-neg Expansion */
-+        val = MII_ANER_NWAY;
-         break;
--    case 29:    /* Interrupt source.  */
-+    case MII_SMC911X_ISF:    /* Interrupt source.  */
-         val = s->phy_int;
-         s->phy_int = 0;
-         imx_phy_update_irq(s);
-         break;
--    case 30:    /* Interrupt mask */
-+    case MII_SMC911X_IM:    /* Interrupt mask */
-         val = s->phy_int_mask;
-         break;
--    case 17:
--    case 18:
-+    case MII_NSR:
-+        val = 1 << 6;
-+        break;
-+    case MII_LBREMR:
-+    case MII_REC:
-     case 27:
-     case 31:
-         qemu_log_mask(LOG_UNIMP, "[%s.phy]%s: reg %d not implemented\n",
-@@ -343,26 +354,31 @@ static void imx_phy_write(IMXFECState *s, int reg, uint32_t val)
-     trace_imx_phy_write(val, phy, reg);
- 
-     switch (reg) {
--    case 0:     /* Basic Control */
--        if (val & 0x8000) {
-+    case MII_BMCR:     /* Basic Control */
-+        if (val & MII_BMCR_RESET) {
-             imx_phy_reset(s);
-         } else {
--            s->phy_control = val & 0x7980;
-+            s->phy_control = val & (MII_BMCR_LOOPBACK | MII_BMCR_SPEED100 |
-+                                    MII_BMCR_AUTOEN | MII_BMCR_PDOWN |
-+                                    MII_BMCR_FD | MII_BMCR_CTST);
-             /* Complete autonegotiation immediately.  */
--            if (val & 0x1000) {
--                s->phy_status |= 0x0020;
-+            if (val & MII_BMCR_AUTOEN) {
-+                s->phy_status |= MII_BMSR_AN_COMP;
-             }
-         }
-         break;
--    case 4:     /* Auto-neg advertisement */
--        s->phy_advertise = (val & 0x2d7f) | 0x80;
-+    case MII_ANAR:     /* Auto-neg advertisement */
-+        s->phy_advertise = (val & (MII_ANAR_PAUSE_ASYM | MII_ANAR_PAUSE |
-+                                   MII_ANAR_TXFD | MII_ANAR_TX |
-+                                   MII_ANAR_10FD | MII_ANAR_10 | 0x1f)) |
-+                                   MII_ANAR_TX;
-         break;
--    case 30:    /* Interrupt mask */
-+    case MII_SMC911X_IM:    /* Interrupt mask */
-         s->phy_int_mask = val & 0xff;
-         imx_phy_update_irq(s);
-         break;
--    case 17:
--    case 18:
-+    case MII_LBREMR:
-+    case MII_REC:
-     case 27:
-     case 31:
-         qemu_log_mask(LOG_UNIMP, "[%s.phy)%s: reg %d not implemented\n",
-diff --git a/include/hw/net/mii.h b/include/hw/net/mii.h
-index 4ae4dcce7e3..d2001bd859b 100644
---- a/include/hw/net/mii.h
-+++ b/include/hw/net/mii.h
-@@ -112,4 +112,8 @@
- #define DP83848_PHYID1      0x2000
- #define DP83848_PHYID2      0x5c90
- 
-+/* SMSC LAN911x Internal PHY */
-+#define LAN911x_PHYID1      0x0007
-+#define LAN911x_PHYID2      0xc0d1
-+
- #endif /* MII_H */
--- 
-2.25.1
+However, while looking at this, I noticed aarch64_a72_initfn doesn't
+initialise kvm_target at all.
 
+Then I looked at the definition of QEMU_KVM_ARM_TARGET_CORTEX_A57,
+found there was also a KVM_ARM_TARGET_CORTEX_A57, and then I noticed
+there exists a KVM_ARM_TARGET_CORTEX_A57 (in
+linux-headers/asm-arm64/kvm.h), and *then* I noticed there exists a
+KVM_ARM_TARGET_GENERIC_V8 definition there as well - plus a comment
+saying "please don't add any more targets unless you really need to".
+Then I noticed there isn't a corresponding
+QEMU_KVM_ARM_TARGET_GENERIC_V8 in target/arm/kvm-consts.h.
+
+So, then I decided to actually test things, and found that
+(with -enable-kvm):
+- on Cortex-A53 hardware
+  - "max" kvm_target gets initialized to 4 (KVM_ARM_TARGET_CORTEX_A53)
+    by kvm_arm_get_host_cpu_features (as returned from the kernel for
+    vm_arm_create_scratch_host_vcpu)
+  - cortex-A72 fails to start with "KVM is not supported for this guest
+    CPU type"
+  (fair enough, it's later than A53)
+- on Cortex-A72 hardware
+  - "max" kvm_target gets initialized to 5 (KVM_ARM_TARGET_GENERIC_V8)
+    by kvm_arm_get_host_cpu_features
+  - "cortex-A72" fails to start (umm...)
+
+However ... if I haven't managed to confuse myself somewhere in here
+(which is completely possible), would it be OK if I submitted a set of
+patches that:
+- add a QEMU_KVM_ARM_TARGET_GENERIC_V8 to match the kernel one
+- set kvm_target for Cortex-A72 to QEMU_KVM_ARM_TARGET_GENERIC_V8
+  - alternatively drop the explicit settings for A57/A53
+- drop the call from aarch64_max_initfn to aarch64_a57_initfn, and
+  copy the relevant bits into the former for the !kvm case
+
+?
+
+/
+    Leif

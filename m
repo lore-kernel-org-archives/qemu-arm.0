@@ -1,44 +1,44 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1457865lfc;
-        Thu, 4 Jun 2020 06:32:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxn/icm8u6yLEsrSC+PPqHtatj31qe9V1YPhGV4U1ADXI+vfPqDdAju2+FvZiNwabXq/Tgk
-X-Received: by 2002:a37:2cc4:: with SMTP id s187mr4748276qkh.74.1591277553270;
-        Thu, 04 Jun 2020 06:32:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591277553; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1462538lfc;
+        Thu, 4 Jun 2020 06:37:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwF1heqK9bT3gB8+BIuYgX4rxrySXSF64jAuRI07dqn7dxbKceRSeenBOLzlczraMBpNfkf
+X-Received: by 2002:ac8:3a87:: with SMTP id x7mr4610748qte.251.1591277876708;
+        Thu, 04 Jun 2020 06:37:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591277876; cv=none;
         d=google.com; s=arc-20160816;
-        b=oh6mbkKb+RlmWNtpW7Vg4503hpPR8sBDEXC2Kju2BTlVcSa/sAcA62yyYHxfiaqcIA
-         RfayHOExyYxwrK5B3gVuwL6XYqAgPRatXkFe8jeHLOFVeZH33jNPOvqSnbNaIn7YS3/M
-         89fTul6vTVq2QC6hosGGjVjyU60C7WVOyFGo4rcN7WhC93EigPXXoruB6VXeV029jTNg
-         +Qz1o6h48QkPYipZQWyJxalFz3mVyO5oF1JyErsCicW70Up7j84DTvWAiUUGc3tzU5cL
-         FFUs5ayuwrCSkG8zEta+L1re6MXO/CX2s1UCW51GLLpucXJq4dGK0ebQKsz+wDZMzRuR
-         X62g==
+        b=ghDyqxW+ERTO+Y9EaDmmcL5pif4QMrPjy21B+uF7ASpReUnwFdrViD4Rh57qMLIeRx
+         dQzqli4u5ne0zb9T/4C1i3gIZNw8k2GzAyP+tmRiZ8NICrlcwfX5mJghQzOqzHd++bpa
+         QDtgL2+lAG8PAUANyHHbFsll3MPHWWjKZ7SlIV+zvRYw0igOCzBdv1Ytepzu8B4kCsa3
+         1YnsXqyw5pGlrPhOVkKlamYcpmklZoR6T68xeV6gmXkJCTN+yJC2kFeDa13tl67TWJSJ
+         aZAtjdDO7SyrIm085Rw2Kx8AaEaBufH2IcStWJ3HixWTuxIPtif2FL91/Iym4OeaH+Lh
+         HP9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=Dse4GsTomvE98yLBSAEW1yMaAbi2Lo1e8ahVmiw3Amw=;
-        b=cJha7qSofmSpulxMl3YyLJbNNkdAsb7VG3k4rKOYF92fITq5MtI2gPEyZxB4PwSLWH
-         T4lVnqrYr1RAQMihbFiWWtXfxiZDkAg3o8S3KYm6oU5mZRmJuV1m0X2+aD+tpL0ES74b
-         xTCB91HRTRO+Q7TugG8E3Ju/p5xolzp3BO7+m7b0TmDV37f+3mCtQnEIWEgQTjl/ndyJ
-         XiiX48fciBGzOa0v7evpqGFMW+V1B9+3LYVYqHqfSBe4JFHPTKT+je9n+GRaNKG4Pcej
-         aD1G9fXj9AIWyw/k+YAdrcXaEsT0TvmHhCThFl6IOg3YeZI95u5AeZVBCbZ2Xzc/j/Fq
-         QYdA==
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=UsWjs9xlXObL2v2+JDDYJm1tCUO8dT6JI/J/qwHFKIw=;
+        b=RLiby9teYILgxsa4QjCWohKiJnrGgmbn2o0pjUbwb3JHjfVEqjnBqftgiMh1ybXuJn
+         NjTHxlvmKCjTwnblBu2ckx8Suoylx1hEUawDpyLsxGMZIa6gMTID4tZbUKfMPmxf96eM
+         Tao4DsQIzlUcVFrSjRkQSKLQtFe0QDYpm+xkwSvi3LObD+P21RFdfbYEJ/rnwU5ij1ui
+         7ZZHXdOdnOqf5qdLTlSNvncvO3/SxPw9CFhFJe1psGr0Ov1Ku83cZHOUPmImHSOe+xuC
+         DGlAMLmq9Tf33HbZ56CmQYBjegE2TmEJ2tb26Gb67dPP3m0Pnxr9YexouYuewLR6i25W
+         snag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=JVtK6dMT;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=d6lkZg00;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id z62si2768133qka.138.2020.06.04.06.32.33;
-        Thu, 04 Jun 2020 06:32:33 -0700 (PDT)
+        by mx.google.com with ESMTP id f10si2682967qtp.272.2020.06.04.06.37.56;
+        Thu, 04 Jun 2020 06:37:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=JVtK6dMT;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=d6lkZg00;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id E5E0E4B108;
-	Thu,  4 Jun 2020 09:32:32 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 5BF6A4B35C;
+	Thu,  4 Jun 2020 09:37:56 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: 0.909
@@ -47,60 +47,61 @@ X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
 	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
 	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
 Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
+	(fail, message has been altered) header.i=@linaro.org
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4AeFYqhETB73; Thu,  4 Jun 2020 09:32:31 -0400 (EDT)
+	with ESMTP id zPOETuuG-2-1; Thu,  4 Jun 2020 09:37:53 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id BE2724B2C4;
-	Thu,  4 Jun 2020 09:32:31 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 308504B35B;
+	Thu,  4 Jun 2020 09:37:53 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 9FCF44B34E
- for <kvmarm@lists.cs.columbia.edu>; Thu,  4 Jun 2020 09:32:30 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 300994B354
+ for <kvmarm@lists.cs.columbia.edu>; Thu,  4 Jun 2020 09:37:52 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y2YxN+zG-B73 for <kvmarm@lists.cs.columbia.edu>;
- Thu,  4 Jun 2020 09:32:29 -0400 (EDT)
-Received: from us-smtp-delivery-1.mimecast.com
- (us-smtp-delivery-1.mimecast.com [205.139.110.120])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 9920F4B108
- for <kvmarm@lists.cs.columbia.edu>; Thu,  4 Jun 2020 09:32:29 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591277549;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=6gFuGnbbAHXxpuAojW9oFJ+0WJHlOe4n0dRuEFIwAsc=;
- b=JVtK6dMT04iYBxdFFGiNG0LX9hqDjdlj+AylV3KeyU9XunGAJ6rnVDUERB6iRkQSRpIyAd
- KYabP+e7YvyeuO+KrmMt5ep7ntgZGy0SVGFNWga0AO7s5e3r9UbfKCl0GoigwdOkuIQmRV
- cyIeFV/wkmnKh8I/NMRpNCEorTAr15Q=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-254-plk2IwRBMYma-b8Ea5M9_w-1; Thu, 04 Jun 2020 09:32:27 -0400
-X-MC-Unique: plk2IwRBMYma-b8Ea5M9_w-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3B05B107ACF3;
- Thu,  4 Jun 2020 13:32:26 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.193.197])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 64C9E78FBF;
- Thu,  4 Jun 2020 13:32:24 +0000 (UTC)
-Date: Thu, 4 Jun 2020 15:32:21 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: kvm_target, QEMU_KVM_ARM_TARGET_GENERIC_V8 questions
-Message-ID: <20200604133221.zpqv5segdv7qwio6@kamzik.brq.redhat.com>
+ with ESMTP id AiXe9qcUT7p7 for <kvmarm@lists.cs.columbia.edu>;
+ Thu,  4 Jun 2020 09:37:48 -0400 (EDT)
+Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
+ [209.85.167.194])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 15E824B2FC
+ for <kvmarm@lists.cs.columbia.edu>; Thu,  4 Jun 2020 09:37:48 -0400 (EDT)
+Received: by mail-oi1-f194.google.com with SMTP id a137so5097711oii.3
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 04 Jun 2020 06:37:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=VzZ6Wiac3hkSNr5jQzhWPiHZxuLwzhsmIf66iTOTCD4=;
+ b=d6lkZg00g4aEpYR7gFHX3mGWaI+f6OcmuiSIr1JuUdjzHQQA+cqQJJLp4LcWq+akqu
+ ktc7fZV6YkLdsqjUgI6qm7SvZdOB+9/DhHTXBAFCwLfqI7OYzUvV79+1rZvZ3QqHtj3T
+ YaM7mP1rp0DNmIDKql5u/BBh/Rq0hLB+NnvFCBgJ2Xui+DBZ7WdaATemgG2S0A40eGOb
+ 7tEV+aLwq2iNg1nHz1dangZyL5pvFTt+4/yPwme+MHKFTV9AbpVwLS8QTelwXPjNb7WI
+ vuoAQXmR6X5VcPAX3juNLHm8MuI9ABi/AG4z1lOD/pTPlmBBSNDkswED7p9NAHUWP7np
+ HFXg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=VzZ6Wiac3hkSNr5jQzhWPiHZxuLwzhsmIf66iTOTCD4=;
+ b=SHI/VtntkhMqUdbEujnBcZfCts6TSWk11ZmXMgCzW5y+DSkP4tW2jW/I9AfZgk/9d4
+ kc1enRtvWQeBX8/LHOgdu9RrJntudYZctdxcDWl03Rf8ps63WYwU98RnwrqdAgXz8aCI
+ 3exkErKimt4P71C7Mj6t9eU28MfJ/z/k3GMHt8oTOZ9JebBMKokeoSLxxYR+pgo4fudw
+ 8Nbi0BNXJPN3vnm80sIrRJPoB2P2N6FA1A4oJDMhbvPa7WOl9rZ7i+kJI44R5bfZKDDQ
+ CQLX77oMD0+ZR8PLMdm88slb5rLqNACVG0/4ktdTBNZC7+0/GgGLEZll4XjrP2d6sIha
+ oZzg==
+X-Gm-Message-State: AOAM531ZdInyQBi5IYfF2084lo8r5zda9jAzIALThhsbw44Mvu8f5Yjy
+ eJBCFQtXWlrW01NEr14Aykegib2ioo57KRayCnDBLQ==
+X-Received: by 2002:aca:5152:: with SMTP id f79mr3017830oib.146.1591277867402; 
+ Thu, 04 Jun 2020 06:37:47 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200604125544.GW28566@vanye>
  <CAFEAcA-ACvx19HZBk-nusMCOkr-D3KReUJRTouL02rLEXOUanQ@mail.gmail.com>
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-ACvx19HZBk-nusMCOkr-D3KReUJRTouL02rLEXOUanQ@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
+ <20200604133221.zpqv5segdv7qwio6@kamzik.brq.redhat.com>
+In-Reply-To: <20200604133221.zpqv5segdv7qwio6@kamzik.brq.redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 4 Jun 2020 14:37:36 +0100
+Message-ID: <CAFEAcA8EOis7=2rderA6qi31Yuaubt=9_yWxoc82v1paPQD_rA@mail.gmail.com>
+Subject: Re: kvm_target, QEMU_KVM_ARM_TARGET_GENERIC_V8 questions
+To: Andrew Jones <drjones@redhat.com>
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Leif Lindholm <leif@nuviainc.com>,
  QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
  kvmarm@lists.cs.columbia.edu
@@ -119,101 +120,36 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: fzB6bZXh48qh
+X-TUID: 1ewuVibLJjFF
 
-On Thu, Jun 04, 2020 at 02:10:08PM +0100, Peter Maydell wrote:
-> [added kvm-arm to the cc list; the kernel folks tend to hang out
-> there, not on qemu-devel, so KVM related questions are usually
-> worth raising there as well.]
-> 
-> On Thu, 4 Jun 2020 at 13:55, Leif Lindholm <leif@nuviainc.com> wrote:
-> > However, while looking at this, I noticed aarch64_a72_initfn doesn't
-> > initialise kvm_target at all.
-> 
-> Yep. The kernel doesn't support "give me a CPU that looks like
-> a Cortex-A72".
-> 
-> > So, then I decided to actually test things, and found that
-> > (with -enable-kvm):
-> > - on Cortex-A53 hardware
-> >   - "max" kvm_target gets initialized to 4 (KVM_ARM_TARGET_CORTEX_A53)
-> >     by kvm_arm_get_host_cpu_features (as returned from the kernel for
-> >     vm_arm_create_scratch_host_vcpu)
-> >   - cortex-A72 fails to start with "KVM is not supported for this guest
-> >     CPU type"
-> >   (fair enough, it's later than A53)
-> 
-> Untested, but I assume that -cpu cortex-a53 works on the A53...
-> 
-> > - on Cortex-A72 hardware
-> >   - "max" kvm_target gets initialized to 5 (KVM_ARM_TARGET_GENERIC_V8)
-> >     by kvm_arm_get_host_cpu_features
-> >   - "cortex-A72" fails to start (umm...)
-> 
-> ...and fails on the A72 host.
-> 
-> > However ... if I haven't managed to confuse myself somewhere in here
-> > (which is completely possible), would it be OK if I submitted a set of
-> > patches that:
-> > - add a QEMU_KVM_ARM_TARGET_GENERIC_V8 to match the kernel one
-> > - set kvm_target for Cortex-A72 to QEMU_KVM_ARM_TARGET_GENERIC_V8
-> 
-> This would be wrong -- it would mean that you could tell QEMU "give
-> me a guest CPU that's a Cortex-A72" and it would not error on
-> non-A72 hardware but not actually give a guest CPU that looks
-> like a Cortex-A72.
-> 
->  * If what you want is "give me something that works" then that's
->    -cpu host or -cpu max.
-> 
->  * If what you want is "give me something that's always this kind of
->    CPU regardless of the host hardware" then that's a lot of kernel
->    dev work nobody's been enthusiastic enough to undertake yet
->    (notably the "what do we do about CPU errata workarounds" question
->    would need to be solved...)
-> 
->  * If what you want is "allow me to say '-cpu cortex-a72' and have
->    it work on an A72 host and not anywhere else" then I guess we could
->    implement that on the QEMU side by querying the MIDR and checking
->    whether it was what we expected.
-
-It would match what we have for A53 and A57, so in that case it sounds
-reasonable. OTOH, it may cause headaches when we want to finally say that
-CPU models work, because it won't be clear to a user that just using
-'-cpu cortex-a72' will really work, or just work on an A72 hosts like
-before. We'll have that problem with A53 and A57 too, but maybe we
-shouldn't add any more.
-
-> 
-> >   - alternatively drop the explicit settings for A57/A53
-> 
-> These explicit settings are correct, because for these CPUs
-> the kernel does have a "give me what I want in particular"
-> setting (which it will fail on the wrong h/w), and also as
-> back-compat for older kernels that predate the GENERIC_V8
-> define and only recognize the explicit "give me an A53" value.
-
-Actually, I think the failing for the wrong hardware is about all these
-older targets do. I didn't look real closely, but I think all targets
-produce the same result for the guest, which is to pass through the host
-ID registers.
-
-> 
-> > - drop the call from aarch64_max_initfn to aarch64_a57_initfn, and
-> >   copy the relevant bits into the former for the !kvm case
-> 
-> Not sure why you care about this -- it's an implementation
-> detail of the TCG handling of the 'max' CPU. There's an argument
-> for disentangling TCG 'max' so it's not literally implemented
-> as "a57 plus newer stuff", granted.
-> 
-> thanks
-> -- PMM
+On Thu, 4 Jun 2020 at 14:32, Andrew Jones <drjones@redhat.com> wrote:
+> On Thu, Jun 04, 2020 at 02:10:08PM +0100, Peter Maydell wrote:
+> > These explicit settings are correct, because for these CPUs
+> > the kernel does have a "give me what I want in particular"
+> > setting (which it will fail on the wrong h/w), and also as
+> > back-compat for older kernels that predate the GENERIC_V8
+> > define and only recognize the explicit "give me an A53" value.
 >
+> Actually, I think the failing for the wrong hardware is about all these
+> older targets do. I didn't look real closely, but I think all targets
+> produce the same result for the guest, which is to pass through the host
+> ID registers.
 
-Thanks,
-drew
+Yes; it's just that originally "specify CPU exactly" was the
+only interface, and there wasn't a GENERIC_V8 at all.
+I actually suspect that current QEMU will no longer work
+on a kernel that's so old that it lacks the GENERIC_V8 and
+PREFERRED_TARGET support[*], but we don't have an explicit "we need
+at least host kernel version X" requirement that we track, so
+it's hard to say for certain. (If we cared enough to test we
+could likely delete a bit of back-compat handling code in QEMU.)
 
+[*] in particular I have a feeling that recent changes to the
+GIC handling code in the virt board implicitly dropped handling
+for ancient kernels
+
+thanks
+-- PMM
 _______________________________________________
 kvmarm mailing list
 kvmarm@lists.cs.columbia.edu

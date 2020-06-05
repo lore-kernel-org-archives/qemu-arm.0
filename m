@@ -1,93 +1,94 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2471672lfc;
-        Fri, 5 Jun 2020 06:52:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxGBgLGA3M3qOHP5OnZlRN2nlj/H0KqQiQdwRa9ozT4nBEKtZa9OKkttmP2fAH1l04FHbSz
-X-Received: by 2002:a25:80d0:: with SMTP id c16mr15990041ybm.98.1591365151589;
-        Fri, 05 Jun 2020 06:52:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591365151; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2473842lfc;
+        Fri, 5 Jun 2020 06:55:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy1YO/mDh/4T/5ukMXRfCXYMfCC1dXPI2YBMdVyI7UOLnem6g80xP2uz5FOIIX3oUTot/+x
+X-Received: by 2002:a25:7313:: with SMTP id o19mr15605525ybc.458.1591365330592;
+        Fri, 05 Jun 2020 06:55:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591365330; cv=none;
         d=google.com; s=arc-20160816;
-        b=nFoBtRDB7zbSpPK1dfEtx6/2MzKBjlqC6DLqeLwydGTcFA+zSN81eSUduSlAZ+t5ye
-         81nDjAXbvmfpExPgttZPP7ysLZU+nmyv7MLhtyUh52+G1Ou7Q/NP/JjhSyeu/WijE4dt
-         28spU8iK12XXxYCUBABlXAR9y9rHHRJHCmSy89I3AnYS5f4sbyIw9iqgDZoW1Pk1oiyz
-         Yu4SiMs64KBKLYzv+ES7fiHzflVYfjhvLcXdzqA64Qgj6ycRuqui3wg672p7fegsUKFG
-         38iH7SWEPR/ytNal9OMeuUYMPcSg2QOe/qpENfGNvMeCZ1UeLM+WcM5ZplW5wJcG0Nl0
-         bSsA==
+        b=nuYtKtZ1gx1xgNtUAadibsJLnabrNVjbj2fiXX3vV4HfO97Grf6E0Ze0SEw3yNldv7
+         dtGglH3XRqFWao+m8/vsVNtvO6cv93WrObjNnDHkCpDTtU/coUl/g1D6FjksL9eFY0UR
+         2NUp+y7NxY3tbJSYT35MzodX0SOY9alBf7Xh4GBgc1ERQZMJo9LTgr/sk8P+JAcLjVKH
+         Jm59s3nflCeduUvk4B4rc2WCiEMfGD3/Rb4I5ao6DBUIm8/Svjk1RgukLwxY4fbLHDvo
+         uYEG6IMa5qSENMRkgEILWjIckeNeZlwGxcKoIIYjpLaQEqY8JRfOeiejJ+bqVDnfKO/0
+         AHnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=hR8nvLRCuQUSXDiJTXdBxgIkQGPniExl3jMjL9eAfrY=;
-        b=UJg/+eejs4ju8Ifc9iiu7GJ34jxhy2eQ7dmTr9NwT13Gj/Z35N/+V1gf/iFVp8MmLp
-         1fpcbwI0OfhRk7I1/+bHHi1zgKJEU6KzD7iOj7Oj8xZyw3uEa5dJHDX09ReeUbglELof
-         FgQUiIeB6JvZ87oGwMMQtM7HaQUofzGjJlV+B9CNosWNa/r0Qg6wSET15skL9OrJBi1x
-         UfZOjoJAe1fl9vMgSzYWb7QUnT+7UmxV46LMUOjRiOFPu8Y5LOxvBxZLbpGOCSbqmciX
-         SjDVA2E02Vd9Hh/fPzHdu6w6vQpyHocKlHx/ghyPpeFSW/bm6m2tfEms5ijzTlBjdawf
-         Yeew==
+        bh=+h+dGjzftfPfZGNm1vQr2qqA9j/wsIq//2wBoB2IfFI=;
+        b=Ux9JBb6hF4Lrzg+x281JjzvU3zBFpcw21xPRMpDE/hZormabXFKXgxjEBa27Ty9MhJ
+         /E01l55LawG9kDzkDOU7461AwlxCY9Y2FDMB4xoFpPzLPk6a7BNFLQGobVyzEmAgBRU9
+         mT+nuBz2Af8uicz8K+71H4jKXXEprlrP4ZxmbvN1WVAMju4NULnDJqDkgERuSWBH4BWd
+         lgbNz/NLD8iLmakKxUx/DBeCP9nsucNQZ/2qRxwgRm+5Dc/YhifuBTkDZuSYLWguEQyH
+         hEngfZN5xDz1hFlAzq0RVTu51aEa/JPzBI9guOcD7lrkiqMjVjIUfymBXTJMMOaRGaPg
+         x7aA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XBtQ4FfU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=MxsZa23r;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n205si6798697ybf.246.2020.06.05.06.52.31
+        by mx.google.com with ESMTPS id x129si6735911ybx.444.2020.06.05.06.55.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jun 2020 06:52:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 Jun 2020 06:55:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XBtQ4FfU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=MxsZa23r;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54970 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59626 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jhClr-0001lw-1A
-	for alex.bennee@linaro.org; Fri, 05 Jun 2020 09:52:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42736)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jhCok-0003hQ-0i
+	for alex.bennee@linaro.org; Fri, 05 Jun 2020 09:55:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42910)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jhCko-0000Y6-UM
- for qemu-arm@nongnu.org; Fri, 05 Jun 2020 09:51:26 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:44566)
+ id 1jhClg-0001kC-I9
+ for qemu-devel@nongnu.org; Fri, 05 Jun 2020 09:52:20 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:41941)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jhCko-0001fb-15
- for qemu-arm@nongnu.org; Fri, 05 Jun 2020 09:51:26 -0400
-Received: by mail-oi1-x244.google.com with SMTP id x202so8240284oix.11
- for <qemu-arm@nongnu.org>; Fri, 05 Jun 2020 06:51:25 -0700 (PDT)
+ id 1jhClf-0001pa-OU
+ for qemu-devel@nongnu.org; Fri, 05 Jun 2020 09:52:20 -0400
+Received: by mail-oi1-x244.google.com with SMTP id a21so8248238oic.8
+ for <qemu-devel@nongnu.org>; Fri, 05 Jun 2020 06:52:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=hR8nvLRCuQUSXDiJTXdBxgIkQGPniExl3jMjL9eAfrY=;
- b=XBtQ4FfUFvxwu1DdSe3uePCUMKnl0NkZ1UxMyi9vctx4A0ALsfZ8Y7V/Bh9Q2x5kRy
- D96PQAg2f1O5EssSWyyiIYzAUY/0L5yqP5ZjgRadXrIL1A6XCv7w5cAO9urM/8EjaMHE
- Zrlm97K6xCHVDBjijmEUV/4inYGftgnoC1NLnDhwaDdqbHDvoO4bjv+7NNBDNHTneDI7
- ymbzdya0XkHWXywV8Zppx5R9dlPfOSLtJGGHq9fTX7AA9lJYfXfHehxuR6L3pbVQpa2u
- z9QmB+kOTbhwT36LSlFT9g+qFldqSwEpRrOVzmRRVqwCd8xstzdZQcUNd335U2ruJVLc
- FauQ==
+ bh=+h+dGjzftfPfZGNm1vQr2qqA9j/wsIq//2wBoB2IfFI=;
+ b=MxsZa23rcorL6ncvzSi96zKu2TzBpQpT0d6VoqT8RPXXQhWXYRuV88qrtSMBQFdV6M
+ 2ilMlNqF+rE80Yp5QkW5WObBHa2eKIu9g7RsrExWBs0d5aP4Jmx9ahZq68GiTg3SUeXn
+ MhwVTAjGiR96fmAsOzYroSCizh4MPYbj5xa2sSwZZp0Hkw0ZaNuCdaP7G1BSoG0ZEcUw
+ XcRE+IZ/s3bHVQzWSaH8n4PzORJdMF678Gyt74OSD8Q3/vptWm6dHqzf8Wd27FxaVLy8
+ 8zm3QjTD0Yc/eRoucMYfBjNgaKK3XS04JzKhTfKc8EZ/Ut77O4UJaOZuu3e+e9B9NIFE
+ O5kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=hR8nvLRCuQUSXDiJTXdBxgIkQGPniExl3jMjL9eAfrY=;
- b=EAowDIUomnOp9fFJiZzjoaRb8+bh95NTr+VAE5Ios+gzriw/c4gRSh9RxKA4xooU/d
- goWTJ4eVPAUlpdxKlKtwyySWdx6jaGqUpsr456ehwPKrKESVyPLNN958f227AqV5GsiP
- oXB5xx72AGTaHqX00bwvrH2y0qpR/+skfS+0zlFTxDbn+cQKouELboBQehyURhintUeo
- dFETyq77E6po1RLsMDdHRyiWCci4Bh786lwttjMFfTIvkFSudhgzBveKr+OlD2xXd04Q
- oT340f0xlGLu/b2Mz0XeA3X1JrNT0E+bvCCwW/aYUK3IwFEeeBvTXjQ7dcu+gkpbm8XN
- dn+w==
-X-Gm-Message-State: AOAM5335O0R8OjJl5I1r7jpwCYB8RI3Ma9LjATemaHKYH1x5/CmdNVzo
- JbZlGvEwqG3q/ozK2TCWDgGxeKGEJbpsBjx0sQehhH7jo5I=
-X-Received: by 2002:aca:5152:: with SMTP id f79mr1895783oib.146.1591365084666; 
- Fri, 05 Jun 2020 06:51:24 -0700 (PDT)
+ bh=+h+dGjzftfPfZGNm1vQr2qqA9j/wsIq//2wBoB2IfFI=;
+ b=bcAYucFBvv7zw4f/oV55uGQj8hAm59U0jL4mkbQSwmZPX1D+Jp2FE72QkGT0ygWWdX
+ z2wp2hWcbKhlSm7fY13bq4QC+yoGDIMcUjGxAy5jSiVqqslWDs4c7NXkSVD6qNX0R0ft
+ DicawvmzWatTYo/yQju+8PAaohLCneEL+8NTV0dTnF9t83dB2ZtyTBaujTQ85AD81v7F
+ xg18nVt78BzyyEWZnYu4hEkeTyGHPQDgKbVErJ+mW3Owuhdvyf7uhopyuBqwKmnZTWkq
+ xDgwLdEvACqe0S9WFNAsB270a4CX4jx9xpnkt+R1oqoUzo881TaP4DUXtUbBWpoTUtYu
+ 4y0Q==
+X-Gm-Message-State: AOAM530j8jJKJAwhjSGsnf16ncSp14aOj4tdK7KMmwELSqhc0GsU0Hvh
+ DwlSk2ilivfYB89KCjkVg5B8OwmkeQg6ya7FDQrgMw==
+X-Received: by 2002:aca:568c:: with SMTP id k134mr1854386oib.48.1591365138834; 
+ Fri, 05 Jun 2020 06:52:18 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200602135050.593692-1-clg@kaod.org>
-In-Reply-To: <20200602135050.593692-1-clg@kaod.org>
+References: <20200525141237.15243-1-thuth@redhat.com>
+In-Reply-To: <20200525141237.15243-1-thuth@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Jun 2020 14:51:12 +0100
-Message-ID: <CAFEAcA9DLYnnpvkJzTW28_Rzv52gC5uECxhow9GVc1fDDeOtQg@mail.gmail.com>
-Subject: Re: [PATCH] docs/system: Document Aspeed boards
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Date: Fri, 5 Jun 2020 14:52:07 +0100
+Message-ID: <CAFEAcA9Bfx06by3SSZ7q29jTAVknCObJGOUjBJLJiBkBBsr-dA@mail.gmail.com>
+Subject: Re: [PATCH v2] tests/acceptance: Add a boot test for the
+ xlnx-versal-virt machine
+To: Thomas Huth <thuth@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=2607:f8b0:4864:20::244;
@@ -102,31 +103,44 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- Joel Stanley <joel@jms.id.au>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bWQeCX1PbQY5
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Cleber Rosa <crosa@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /DXE5vz0tkmA
 
-On Tue, 2 Jun 2020 at 14:51, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Mon, 25 May 2020 at 15:12, Thomas Huth <thuth@redhat.com> wrote:
 >
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> As described by Edgar here:
+>
+>  https://www.mail-archive.com/qemu-devel@nongnu.org/msg605124.html
+>
+> we can use the Ubuntu kernel for testing the xlnx-versal-virt machine.
+> So let's add a boot test for this now.
+>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  docs/system/arm/aspeed.rst | 85 ++++++++++++++++++++++++++++++++++++++
->  docs/system/target-arm.rst |  1 +
->  2 files changed, 86 insertions(+)
->  create mode 100644 docs/system/arm/aspeed.rst
+>  v2: Added "tags=3Ddevice:pl011" and "tags=3Ddevice:arm_gicv3"
+>
+>  tests/acceptance/boot_linux_console.py | 26 ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
 
 
 

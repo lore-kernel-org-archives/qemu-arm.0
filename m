@@ -1,104 +1,103 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2074927lfc;
-        Thu, 4 Jun 2020 21:22:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzqcPkqPE4TIzC9P0kJrjj9Noh1YpMcq8oefvYfxynA1h5+l74bW7GWdMEZCz/qT4HyLeMG
-X-Received: by 2002:a25:2e48:: with SMTP id b8mr11955279ybn.56.1591330964759;
-        Thu, 04 Jun 2020 21:22:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591330964; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2076052lfc;
+        Thu, 4 Jun 2020 21:24:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwrlpir5yXUsXedlG+1xj97AUHmglP6EWQxowGhAI9YuVOofn17ejXsknlQNI2I7wO4Hs4K
+X-Received: by 2002:a25:3b94:: with SMTP id i142mr7310346yba.46.1591331095766;
+        Thu, 04 Jun 2020 21:24:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591331095; cv=none;
         d=google.com; s=arc-20160816;
-        b=ROfCHzdrXnWdMb+r+NSlRRPecTesV7zMitHsaiu83dUhc8+TF0zU+tOBu1xgg8qSlK
-         31/8CiK1hM3hDDqRD/EoYVui7xPctpIcLTJfb3lb43D/iGqt4Iq/6loOFm9hIwzbXjh4
-         P6qWFiWDXJPGjLJzVV8nz9aVSC2Jixp8MT+VBvNQQs6Nj7vd7Ai7UK2WJo3173lE5ZNb
-         sYg77athfDqnCUS6+V3oTuQwURZYZo7ZnC3Mkrg2hfolkw7gi9HSFK+4t3sXHejNv1+d
-         VGBLACyJTLjVd3yLChS6zVX+GRZQUn1CySBa/QNLmDTP8TuQMYKMHsgof+FseobZk5eU
-         Zs7w==
+        b=eUtN/0VhNnQ3WxT+lH6NhCi6tpbDnhtSkw1x2TzQKJys8cPtOs47qbJgxGQKOzJuyI
+         RMx74VCtc0yUxfrgzvqbbXMCHhJtD6rY/zJebviuitbZyb1kXJaruMB4YF4O8uM9oxwL
+         mdw4ri7qMM/1zqmVeJ7fnJRsBW/BSutdsYAxrz4jlKwFgmpuc5JTCByLhyHESKPorthV
+         DKHlbOO7Ad6/FeTJ+VcOg0SZt/apIDhWpUvpoFWxuiabwyY/zk3zyvInhQ5SAbX+xSp0
+         35M4UcKCbyLf1noP7YkV70VlwIzIOI6JpmG6dhpmTLevgOopd+OeIN/G1Dt9SaoW0D9I
+         1fRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=VnwDYHyJTXcVKd4YU4u1JIC2YJpF3XkI8XH4jG+QmBM=;
-        b=cbA3qTDqb1dkvCRVJLbFIGzKWrvIzY0weMaykqscG5RxmlEGTYcTdqWUx2SOQkuRxH
-         5cp0gjKIXUJAAdqvUVVmCh8KuyGQ6suYW3qHyCcIDb12DX914E5W/quDW5IRMUEF4M3D
-         yrp+Sg84X7rWGywIyI22sHNAhg1ouuh/Xkp+mXEHytXkSJ0V66hTUbSSejd4l8iuUG+t
-         RbUrEriYdQzYU8xCTXUtrf/C3mHyrELFYWti6NegKk+/3TPjgBSJ/qaKy9EapPecJTtQ
-         dvJ/pxyTcL0Ierv+MwYesW6jNGGlItV3GK9fu+wA2O5h3vAHv6A6sQ/cPYYp5kKKsHO/
-         dS/g==
+        bh=025+D4aoylrwlotsdqqyp7BRSM6nAeDFcADkgg9A3QU=;
+        b=w7/+W70RA2GzBNBQ29AO394LHWVsRLwdJrhXh/TwM5WWZkLVKQWhaNTYyxvGhqTF+F
+         uHmNnnirrl03cbU8qSO3utj2aytdnE9MFdokzpQxbV5FhPpAh7C1etIJNZ4d0iB4nMzX
+         s8+RrjgAzTIpDjVzFWYtI5AESUpr7va9xy0yqs5ZwVDszy8DKg5eY5X73TCWHQGHXcX/
+         Qf9pbZsEVafNjVvyqdQ0mKp8hC1606H+caPvO7DEhCfSYq6SGShctKwJQi83HJlNuLy8
+         j9AYsH/LoHKCmVdke9uBIeYtYT9AN3VW7PX/Ew6YYpSBA6MtYaCgjE9ciWsnHRLQqBi0
+         kD4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=O4UYiAV9;
+       dkim=fail header.i=@linaro.org header.s=google header.b=yrmPfvKu;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z8si5808086ybm.9.2020.06.04.21.22.44
+        by mx.google.com with ESMTPS id 203si5325483ybo.157.2020.06.04.21.24.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jun 2020 21:22:44 -0700 (PDT)
+        Thu, 04 Jun 2020 21:24:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=O4UYiAV9;
+       dkim=fail header.i=@linaro.org header.s=google header.b=yrmPfvKu;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:32832 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39814 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jh3sR-0006R7-VH
-	for alex.bennee@linaro.org; Fri, 05 Jun 2020 00:22:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39576)
+	id 1jh3uZ-00010Z-5N
+	for alex.bennee@linaro.org; Fri, 05 Jun 2020 00:24:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39586)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jh3nm-0004jI-8u
- for qemu-devel@nongnu.org; Fri, 05 Jun 2020 00:17:54 -0400
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:40215)
+ id 1jh3nn-0004lI-Gz
+ for qemu-devel@nongnu.org; Fri, 05 Jun 2020 00:17:56 -0400
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:46563)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jh3nl-0000m5-AP
- for qemu-devel@nongnu.org; Fri, 05 Jun 2020 00:17:53 -0400
-Received: by mail-pj1-x1041.google.com with SMTP id s88so2179789pjb.5
- for <qemu-devel@nongnu.org>; Thu, 04 Jun 2020 21:17:52 -0700 (PDT)
+ id 1jh3nm-0000mJ-P1
+ for qemu-devel@nongnu.org; Fri, 05 Jun 2020 00:17:55 -0400
+Received: by mail-pf1-x443.google.com with SMTP id b16so4295086pfi.13
+ for <qemu-devel@nongnu.org>; Thu, 04 Jun 2020 21:17:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=VnwDYHyJTXcVKd4YU4u1JIC2YJpF3XkI8XH4jG+QmBM=;
- b=O4UYiAV9Ibj4ddqY35TKWtkunv4B9sYlB+YwK+UeIUdNLEv92cT3NaN8GmWM9alH7Y
- 4lKUNk/gFpu5W8/DGaIewYGKBSQdeMv+RlHFcViD22IRUt3bZ24V3yy/DETld18qojHQ
- HdFY3TuTBfnXfRVzT0g8ZubDfIbhJk0U20eaRBcF/YPTWlqy/Bz3Pl/rdmI6DI6inLUT
- zcdNeDYWvOGdnr8+dlRr/QOgtdkpkqfl4fQxPuuKat3Kb0M9qBvdtkE1LSsYD12uJXYX
- EDQUMdGW/euqhY0eNbtefdgx+VUHHk83bJcsLS2A6MhNFKA4uFXw2t3Q7GDeA1HcyLvj
- xPpA==
+ bh=025+D4aoylrwlotsdqqyp7BRSM6nAeDFcADkgg9A3QU=;
+ b=yrmPfvKuRo6BzO7M2VRSldilbgVlDVJW2mbTb2+GXbbfhfFQoAOzCcnnmzH0n7yAOW
+ Zz+cnubYo3iDBzL23iRDah3EXvsFir0VrQ5lx1TFTsmDxW2ASaGYvUWmBpRc7gqqFQST
+ zApQDW2GbFDJRQmT3I+vWP3ANWVKxQh1ChLkVHAwPvGr9jC4JTbYoaIJl1hrZ3cjCA+R
+ MbZh7mGPvwM260Yvyoujzp0IsyZ26FxVHyx26R7RyVmdyamE7zqVilLa71KGphCdBzZT
+ C+/+80CxBindWcfGxebbTINgLZ8dqdz/wy+0k3aRnkkHiPEu4/PY31vA93YAOJGl/1XS
+ meRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=VnwDYHyJTXcVKd4YU4u1JIC2YJpF3XkI8XH4jG+QmBM=;
- b=ROhheJUAVy1Ad3TcQXMqtq+jETMWlDuL9FkaVH5ee1/SdSG2AJwee6RJcDZMYdixhI
- 41LPuUEyqYFUlW71q5lkVAU1s5WnF00Gq2UJq52H/nu8b7giEz/n4qR01eZV+qDXWjbb
- Owff1EVqF+MHV2DqoqEANEZywvetlsZRMLfdUCUQo5U1zcTUX/nOdooh7qCf5ECA8fuo
- RmARxiPMbOJX1YJ942Df0G8/tAnbC7XcflIOTjxmX+7JlCLtLjGoX9Ow+AkwHv4quKsx
- cydZ3UNcqRShOmX1+vFORa5f2oOL6uOOmlfZzZjljC8tu1T9nkySR/5gvSD9AQp1To6f
- PJXg==
-X-Gm-Message-State: AOAM531bhW7Irg3HZMQsnR8wEkcLT4uDFDOsJpcNI4ALClr9dC3Su05c
- MvlVbVpsfM85IrIKfc/DVyJVx5PVtqs=
-X-Received: by 2002:a17:90a:c258:: with SMTP id
- d24mr761390pjx.137.1591330671158; 
- Thu, 04 Jun 2020 21:17:51 -0700 (PDT)
+ bh=025+D4aoylrwlotsdqqyp7BRSM6nAeDFcADkgg9A3QU=;
+ b=MMZnuruYwPBKF9uzbgjXd9vmHW9S8QTq1u4mPwaCh3xiIWX1Yqo/RmE99NE5Xx5Jrj
+ d7PXC2Qk4AOvqGTysYfxOBY8ELygUus7K7FREaS674GAhhudOaJzkAEDmUShon8vuROO
+ ZOD2O65e5FeapyX4R3qyzoVngL1YSnBRw4MngHwsp9ftGTfcZTU280lCwZeEJ399ivOm
+ zxjVPR/37murvl0Lsr59LCHKjqQP76uHtYEXhF3BjQKQ+Z8ULeIlxvkxSTolCvFyOab6
+ 0KCE1a0qNjZVOblFQ2eHrOqQRqMvctjeynX1JdJGN5DWBZTuZRanniGMmUKFJqoBj1A+
+ 9nig==
+X-Gm-Message-State: AOAM531EYNWIIrRGEktyPb+Ca6LRmq66ojw25mEQmjbnRLKFO7rWPeie
+ cH0eSPTFWUDgoP7ZTUs9KXL2EoK+C5s=
+X-Received: by 2002:a62:c185:: with SMTP id i127mr8023028pfg.132.1591330673199; 
+ Thu, 04 Jun 2020 21:17:53 -0700 (PDT)
 Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
  [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id h15sm5440902pgl.12.2020.06.04.21.17.50
+ by smtp.gmail.com with ESMTPSA id h15sm5440902pgl.12.2020.06.04.21.17.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Jun 2020 21:17:50 -0700 (PDT)
+ Thu, 04 Jun 2020 21:17:52 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 13/17] linux-user/aarch64: Signal SEGV_MTESERR for sync tag
- check fault
-Date: Thu,  4 Jun 2020 21:17:29 -0700
-Message-Id: <20200605041733.415188-14-richard.henderson@linaro.org>
+Subject: [PATCH v2 14/17] linux-user/aarch64: Signal SEGV_MTEAERR for async
+ tag check error
+Date: Thu,  4 Jun 2020 21:17:30 -0700
+Message-Id: <20200605041733.415188-15-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200605041733.415188-1-richard.henderson@linaro.org>
 References: <20200605041733.415188-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1041;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1041.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::443;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -123,40 +122,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, steplong@quicinc.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MDTbG3GXx4aF
+X-TUID: f8kkrjqd2mXj
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/aarch64/target_signal.h | 2 ++
- linux-user/aarch64/cpu_loop.c      | 3 +++
- 2 files changed, 5 insertions(+)
+ linux-user/aarch64/target_signal.h |  1 +
+ linux-user/aarch64/cpu_loop.c      | 34 +++++++++++++++++++++---------
+ target/arm/mte_helper.c            | 10 +++++++++
+ 3 files changed, 35 insertions(+), 10 deletions(-)
 
 diff --git a/linux-user/aarch64/target_signal.h b/linux-user/aarch64/target_signal.h
-index ddd73169f0..777fb667fe 100644
+index 777fb667fe..18013e1b23 100644
 --- a/linux-user/aarch64/target_signal.h
 +++ b/linux-user/aarch64/target_signal.h
-@@ -21,5 +21,7 @@ typedef struct target_sigaltstack {
+@@ -21,6 +21,7 @@ typedef struct target_sigaltstack {
  
  #include "../generic/signal.h"
  
-+#define TARGET_SEGV_MTESERR  9  /* Synchronous ARM MTE exception */
-+
++#define TARGET_SEGV_MTEAERR  8  /* Asynchronous ARM MTE error */
+ #define TARGET_SEGV_MTESERR  9  /* Synchronous ARM MTE exception */
+ 
  #define TARGET_ARCH_HAS_SETUP_FRAME
- #endif /* AARCH64_TARGET_SIGNAL_H */
 diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
-index ce56e15be2..41a68a57bc 100644
+index 41a68a57bc..1b2f2b4239 100644
 --- a/linux-user/aarch64/cpu_loop.c
 +++ b/linux-user/aarch64/cpu_loop.c
-@@ -132,6 +132,9 @@ void cpu_loop(CPUARMState *env)
-             case 0x0d ... 0x0f: /* Permission fault, level {1-3} */
-                 info.si_code = TARGET_SEGV_ACCERR;
-                 break;
-+            case 0x11: /* Synchronous Tag Check Fault */
-+                info.si_code = TARGET_SEGV_MTESERR;
-+                break;
-             default:
-                 g_assert_not_reached();
+@@ -71,6 +71,21 @@
+         put_user_u16(__x, (gaddr));                     \
+     })
+ 
++static bool check_mte_async_fault(CPUARMState *env, target_siginfo_t *info)
++{
++    if (likely(env->cp15.tfsr_el[0] == 0)) {
++        return false;
++    }
++
++    env->cp15.tfsr_el[0] = 0;
++    info->si_signo = TARGET_SIGSEGV;
++    info->si_errno = 0;
++    info->_sifields._sigfault._addr = 0;
++    info->si_code = TARGET_SEGV_MTEAERR;
++    queue_signal(env, info->si_signo, QEMU_SI_FAULT, info);
++    return true;
++}
++
+ /* AArch64 main loop */
+ void cpu_loop(CPUARMState *env)
+ {
+@@ -87,15 +102,13 @@ void cpu_loop(CPUARMState *env)
+ 
+         switch (trapnr) {
+         case EXCP_SWI:
+-            ret = do_syscall(env,
+-                             env->xregs[8],
+-                             env->xregs[0],
+-                             env->xregs[1],
+-                             env->xregs[2],
+-                             env->xregs[3],
+-                             env->xregs[4],
+-                             env->xregs[5],
+-                             0, 0);
++            if (check_mte_async_fault(env, &info)) {
++                ret = -TARGET_ERESTARTSYS;
++            } else {
++                ret = do_syscall(env, env->xregs[8], env->xregs[0],
++                                 env->xregs[1], env->xregs[2], env->xregs[3],
++                                 env->xregs[4], env->xregs[5], 0, 0);
++            }
+             if (ret == -TARGET_ERESTARTSYS) {
+                 env->pc -= 4;
+             } else if (ret != -TARGET_QEMU_ESIGRETURN) {
+@@ -103,7 +116,8 @@ void cpu_loop(CPUARMState *env)
              }
+             break;
+         case EXCP_INTERRUPT:
+-            /* just indicate that signals should be handled asap */
++            /* Just indicate that signals should be handled asap. */
++            check_mte_async_fault(env, &info);
+             break;
+         case EXCP_UDEF:
+             info.si_signo = TARGET_SIGILL;
+diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+index b15fa665df..835b6d1ded 100644
+--- a/target/arm/mte_helper.c
++++ b/target/arm/mte_helper.c
+@@ -542,6 +542,16 @@ static void mte_check_fail(CPUARMState *env, int mmu_idx,
+             select = 0;
+         }
+         env->cp15.tfsr_el[el] |= 1 << select;
++#ifdef CONFIG_USER_ONLY
++        /*
++         * Stand in for a timer irq, setting _TIF_MTE_ASYNC_FAULT,
++         * which then sends a SIGSEGV when the thread is next scheduled.
++         * This cpu will return to the main loop at the end of the TB,
++         * which is rather sooner than "normal".  But the alternative
++         * is waiting until the next syscall.
++         */
++        qemu_cpu_kick(env_cpu(env));
++#endif
+         break;
+ 
+     default:
 -- 
 2.25.1
 

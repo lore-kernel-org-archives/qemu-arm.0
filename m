@@ -1,103 +1,102 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2073736lfc;
-        Thu, 4 Jun 2020 21:20:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyLeRVQDsM1EVc4hvViLbtaRLHOv2r/GJVNWj5au/Muc3O8SyQu404xKkY0w5F8WWS7TaRQ
-X-Received: by 2002:a25:ba81:: with SMTP id s1mr13698221ybg.114.1591330837087;
-        Thu, 04 Jun 2020 21:20:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591330837; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2073902lfc;
+        Thu, 4 Jun 2020 21:20:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyB+y3qkECygw96zaDuu0sDeZdL0Wr3feKAG+XeXv2TzMOXNLskJrxmCCFA/Ytvw78T9BTl
+X-Received: by 2002:a25:b701:: with SMTP id t1mr13512627ybj.515.1591330857323;
+        Thu, 04 Jun 2020 21:20:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591330857; cv=none;
         d=google.com; s=arc-20160816;
-        b=dv8oT2hOoD2e11EsTbTJ6Vq9bx0Uv+Xf0DfocPAhZeyhOHrIOZCpLJ6ap/k+66VGj3
-         Ly08DDaiFfoyONDTYjGztwfPa1xzQtLKtu8v5jUVJJ8sV8OuikdqxBO2syDg/rQB7DN+
-         KGPm0D6fcLHBYJCOZqvCmMnnl/0WftztQAzZcAz3Fk2K1HTx5PCa/iEukPDhR1K1PKn8
-         fx053AdS+/ov8NoUmA3765y4NU9ZixO7JlxbV1AOGaN5I88M+lhXj1ofoCQd49FD/Dq2
-         ceUWSJUFpkFR0NTse8qQ3TdsNfAC3Hc1M3cR9AeunSrDNB1sMF2vqweQR0kLirhrQuol
-         ag7w==
+        b=cMjhOS/AWJ586uEF91kwVyU+KhLvMLnXqiQW2BMphRlrKhhORdjjK6e9BQte23nT3z
+         NaCAiXOuc70c4Q9x0UkWPjH7rX1BUD1YEKxoPDEEx0caSF29ptBQnRJZTRztwxCXlBFa
+         LfuWsjz4JBzHUASqsTvqRuNY7jnJWFQmqcYeqkZQfiL1eB8g3E2nikiTOL0NJDu7GeW0
+         7WKnrYC2RIo/9XJUYfw0999OB2lVTnJxPTmlwcIuE6djRa+PFtMXUNDW81SyxocIAcqI
+         wKdKwZldJOeK02UKBRj4nLD7KbC8/kO/ZFVG7hirE9HOKgfyTXLAJV25r1zoOmZ+AATe
+         hNQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=IX3UPP0As7IJLtjhajwCoyh2nTlTRQqiCGAXcYWkMx4=;
-        b=vev/iKuZmZuhZd8cBGbOx9LGfxpfPdm/8DR32Mv02YVP4hUjtt1rHvZeB3rGReE5D5
-         RyQCWz3a+R1a/4lK3qfKYey+M3T3drCGLuRTehJFBlQN5pmCcIgwfVsyZqn3PVCHCesD
-         fFQEIHRYN54M4EowiXipJQP+cQSjtAGcf10k0M7Pbm14zTtTsXFbmBhcaybmCKOPa6uX
-         Jx4+W3DyJ0If/1H9BEPwbE9yfye6SlRMhkyLt++xq5Y8y8irbO7pp6Mg9zTp2Cj9zsmq
-         3OADvgx1pd78pfh8JvpcI2EDEH5o8M8Mem8saBZIHFJGkfUFAX9cu/+w0mXTY4NtfM9Y
-         G60Q==
+        bh=OzYHxasinbK12hHGjXt3IY3GTdvR0p0In8jS7714bjc=;
+        b=azJzAhhE25mIsYobB+qjzeDx97MCpa7OjO/hCHBGZZ9air1xmu9mAagx1w93v69Kkd
+         sL5s85e2EHnk/Rok0zXRSzBam00fjHMV5HWbfILFySCIq2yiiLeTHuj9u5vlUEZrt+Xc
+         R15nrqEWt2yWN1nYrAY5TpeA4z6lpHE1pp91PeRQ1v04hNSvzLHIw1pJMIPHz2obeyK3
+         /SUsUqbqX02u7P8yFjvZXNcEZCkoilHs7I5G/9sU+BkMYDUHHQi3q3ARyVrM1Ctc6uD0
+         JZ8eKMOqcCjsyAE7UpUqOMW2B9+mNwjchZuOHZslCC6vBVUJnxg04vVl/zx29NGRER+z
+         qx9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=c5IIcB5F;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GVjk9AlO;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z65si5835172ybz.68.2020.06.04.21.20.36
+        by mx.google.com with ESMTPS id r63si3016153ybc.159.2020.06.04.21.20.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jun 2020 21:20:37 -0700 (PDT)
+        Thu, 04 Jun 2020 21:20:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=c5IIcB5F;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GVjk9AlO;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50330 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52478 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jh3qO-0001wT-Bf
-	for alex.bennee@linaro.org; Fri, 05 Jun 2020 00:20:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39500)
+	id 1jh3qi-0002wc-M3
+	for alex.bennee@linaro.org; Fri, 05 Jun 2020 00:20:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39564)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jh3ne-0004Qf-06
- for qemu-devel@nongnu.org; Fri, 05 Jun 2020 00:17:46 -0400
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:35584)
+ id 1jh3nk-0004ha-E0
+ for qemu-devel@nongnu.org; Fri, 05 Jun 2020 00:17:53 -0400
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:37554)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jh3nd-0000kQ-9w
- for qemu-devel@nongnu.org; Fri, 05 Jun 2020 00:17:45 -0400
-Received: by mail-pj1-x1043.google.com with SMTP id 5so2179509pjd.0
- for <qemu-devel@nongnu.org>; Thu, 04 Jun 2020 21:17:44 -0700 (PDT)
+ id 1jh3nj-0000lf-MB
+ for qemu-devel@nongnu.org; Fri, 05 Jun 2020 00:17:52 -0400
+Received: by mail-pf1-x443.google.com with SMTP id j1so4152821pfe.4
+ for <qemu-devel@nongnu.org>; Thu, 04 Jun 2020 21:17:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=IX3UPP0As7IJLtjhajwCoyh2nTlTRQqiCGAXcYWkMx4=;
- b=c5IIcB5FKwiU5Shz5dBmNSFf2/+yMQYk3+n1aXADbGuu7tvM0D77n1PiYwK/aL77Aq
- tGwy5FJ2AH5OBcRGodiau7ZzLu70Uama4OjM/xxjE0BPRDEaycvEVmariATtEPoOX9ol
- UQdn4dzFFmQ7lylVEznpWAUtAuqmKUJqeoXZqYxke3m+ZV3IiV7uVpb32qRgBXJEP99T
- SFmJBcsTgPqOYi2cXcuX0hiNVkTBoe3MG2ym/RSi9+vxeCRmHEoVTKwDG1FUEN65h5Le
- i2RHeiDs7atAu/zCFZh4rPK/YZfhQfeFLrQMZODy7xeEuSYnlGxyePMvUjVOsxHuqqtS
- 3P6g==
+ bh=OzYHxasinbK12hHGjXt3IY3GTdvR0p0In8jS7714bjc=;
+ b=GVjk9AlOfDA0AZJUKWECc3CSMsveyiA9UBLqrsI9qYIAP5YcDDgPKCt1+Vgy6YKY6Z
+ Fv1/jsK7UcR4d9GPSIJyCQO4UCp2N4d6hOxX0wAfvRLa6JQ4wOvblIVTvWF8UGilXXAA
+ 0pjwRpf19EidPalvapvrOUklORbg/MmOQQt2jP6Xh1jIUvQEVXCwdx0evxQqXQus3nsV
+ LP6uuSic/UITigTWMufeWl+7k1JSJOZPHx0xj9Avkfd5/tTFf/sSdRZJaIDF0riPuhTk
+ KyQNKvx8W8GKpIC5FwG6sIBJ4+eifZzXx40EXeF5jT/Fn5viBvZVqX1kBeWYM13RVhcs
+ Wevg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=IX3UPP0As7IJLtjhajwCoyh2nTlTRQqiCGAXcYWkMx4=;
- b=ZfXoRp86VutsEgn3yPBUIXKB7uzvFfs/HNjS9DnQwiZQ/7Z4+n8kYELOnn6poe+s4D
- iBf9jxph8h5P362DrNa84/wo9tWnso7M58MS/ti1s2Jm8bHr4WnfonvYbTm5haL2AKGm
- c/GaOl800LWdYVup2XfljuKJTfMnXZjYGynN9I4hgCdIxrRskgmglSoNNROTolkBsRfL
- yPHVmiXgemdmGKbrYDexXHE3z3IkByD6JpOCTVn3DYMzM9C+T+gX0dejVUcCVM7rj68G
- Iw9oO8rnruqz6wjAqcJlYGl0yO0akFpqhMNCj7QqENzi7kUa90fV86F5XSJ8d7j+Wzmo
- xY4w==
-X-Gm-Message-State: AOAM530Qjs2S1otysk0ODbmWyqrLkFjozi/3v/jjG88SGUcVdNyqZXgG
- wHtaxi34fGcwW10kBgYfZN3wjoITneE=
-X-Received: by 2002:a17:90b:283:: with SMTP id
- az3mr777657pjb.232.1591330663718; 
- Thu, 04 Jun 2020 21:17:43 -0700 (PDT)
+ bh=OzYHxasinbK12hHGjXt3IY3GTdvR0p0In8jS7714bjc=;
+ b=N4f9KneHnRt3xA6VxygjhdThoe3oakSv4WzZIhXNoKMHEXdHknC3QcP8bXlTCry5rn
+ lH+DvVPB1f2qJhYavJdF1WOW6w6YACoERzEuhBbnZjt1xnyeInGFDovoOVZP/fcWY7rF
+ /QGRn0HMyyZvFQ00qWxVg33v/LZoAK5J+63G3oUiIEpooFQKuPWSv1DfAybWhwocXdds
+ EUpHsvMw4COQazPbbgXOHCqHrIkMCUd+yTulxBqb0aUwGC7CtBBEBpkOZ2MTP5Os9XhF
+ yiByC4XSYLa0JWNSARvBHVt8GBsMwMyNFirR3YQu7B9rNdc1FnW6BhIP0rYkx3oIqCWj
+ cj8w==
+X-Gm-Message-State: AOAM532YOqLmPML2W6TYSKVsfyEh4vyoZHTFZ26ohqRq0dV6Y5NW9Tz7
+ rU0d9/GUkdNuqHIi28wMzhvd5eMGnTQ=
+X-Received: by 2002:a63:c5a:: with SMTP id 26mr7460938pgm.270.1591330669986;
+ Thu, 04 Jun 2020 21:17:49 -0700 (PDT)
 Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
  [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id h15sm5440902pgl.12.2020.06.04.21.17.42
+ by smtp.gmail.com with ESMTPSA id h15sm5440902pgl.12.2020.06.04.21.17.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Jun 2020 21:17:43 -0700 (PDT)
+ Thu, 04 Jun 2020 21:17:49 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 07/17] linux-user: Fix guest_addr_valid vs reserved_va
-Date: Thu,  4 Jun 2020 21:17:23 -0700
-Message-Id: <20200605041733.415188-8-richard.henderson@linaro.org>
+Subject: [PATCH v2 12/17] linux-user/aarch64: Pass syndrome to EXC_*_ABORT
+Date: Thu,  4 Jun 2020 21:17:28 -0700
+Message-Id: <20200605041733.415188-13-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200605041733.415188-1-richard.henderson@linaro.org>
 References: <20200605041733.415188-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1043;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1043.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::443;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -122,36 +121,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, steplong@quicinc.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HnY9ypDqhzAD
+X-TUID: LDOzuFgovwG0
 
-We must always use GUEST_ADDR_MAX, because even 32-bit hosts can
-use -R <reserved_va> to restrict the memory address of the guest.
+A proper syndrome is required to fill in the proper si_code.
+Use page_get_flags to determine permission vs translation
+for user-only.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/cpu_ldst.h | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+ linux-user/aarch64/cpu_loop.c | 23 ++++++++++++++++++++---
+ target/arm/tlb_helper.c       | 27 +++++++++++++++++++++------
+ 2 files changed, 41 insertions(+), 9 deletions(-)
 
-diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
-index 3930362e20..066cf33f70 100644
---- a/include/exec/cpu_ldst.h
-+++ b/include/exec/cpu_ldst.h
-@@ -72,11 +72,10 @@ typedef uint64_t abi_ptr;
- /* All direct uses of g2h and h2g need to go away for usermode softmmu.  */
- #define g2h(x) ((void *)((unsigned long)(abi_ptr)(x) + guest_base))
- 
--#if HOST_LONG_BITS <= TARGET_VIRT_ADDR_SPACE_BITS
--#define guest_addr_valid(x) (1)
--#else
--#define guest_addr_valid(x) ((x) <= GUEST_ADDR_MAX)
--#endif
-+static inline bool guest_addr_valid(abi_ptr x)
-+{
-+    return x <= GUEST_ADDR_MAX;
-+}
- 
- static inline int guest_range_valid(unsigned long start, unsigned long len)
+diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
+index 3cca637bb9..ce56e15be2 100644
+--- a/linux-user/aarch64/cpu_loop.c
++++ b/linux-user/aarch64/cpu_loop.c
+@@ -75,7 +75,7 @@
+ void cpu_loop(CPUARMState *env)
  {
+     CPUState *cs = env_cpu(env);
+-    int trapnr;
++    int trapnr, ec, fsc;
+     abi_long ret;
+     target_siginfo_t info;
+ 
+@@ -116,9 +116,26 @@ void cpu_loop(CPUARMState *env)
+         case EXCP_DATA_ABORT:
+             info.si_signo = TARGET_SIGSEGV;
+             info.si_errno = 0;
+-            /* XXX: check env->error_code */
+-            info.si_code = TARGET_SEGV_MAPERR;
+             info._sifields._sigfault._addr = env->exception.vaddress;
++
++            /* We should only arrive here with EC in {DATAABORT, INSNABORT}. */
++            ec = extract32(env->exception.syndrome, 26, 6);
++            assert(ec == 0x24 || ec == 0x20);
++
++            /* Both EC have the same format for FSC, or close enough. */
++            fsc = extract32(env->exception.syndrome, 0, 6);
++            switch (fsc) {
++            case 0x04 ... 0x07: /* Translation fault, level {0-3} */
++                info.si_code = TARGET_SEGV_MAPERR;
++                break;
++            case 0x09 ... 0x0b: /* Access flag fault, level {1-3} */
++            case 0x0d ... 0x0f: /* Permission fault, level {1-3} */
++                info.si_code = TARGET_SEGV_ACCERR;
++                break;
++            default:
++                g_assert_not_reached();
++            }
++
+             queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
+             break;
+         case EXCP_UNALIGNED:
+diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+index d4e6d37f4f..35d84ac24f 100644
+--- a/target/arm/tlb_helper.c
++++ b/target/arm/tlb_helper.c
+@@ -10,8 +10,6 @@
+ #include "internals.h"
+ #include "exec/exec-all.h"
+ 
+-#if !defined(CONFIG_USER_ONLY)
+-
+ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+                                             unsigned int target_el,
+                                             bool same_el, bool ea,
+@@ -51,6 +49,8 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+     return syn;
+ }
+ 
++#if !defined(CONFIG_USER_ONLY)
++
+ static void QEMU_NORETURN arm_deliver_fault(ARMCPU *cpu, vaddr addr,
+                                             MMUAccessType access_type,
+                                             int mmu_idx, ARMMMUFaultInfo *fi)
+@@ -138,13 +138,28 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+     ARMCPU *cpu = ARM_CPU(cs);
+ 
+ #ifdef CONFIG_USER_ONLY
++    int flags, fsc, exc;
++    unsigned syn;
++
+     cpu->env.exception.vaddress = address;
+-    if (access_type == MMU_INST_FETCH) {
+-        cs->exception_index = EXCP_PREFETCH_ABORT;
++
++    flags = page_get_flags(useronly_clean_ptr(address));
++    if (flags & PAGE_VALID) {
++        fsc = 0xf; /* permission fault, level 3 */
+     } else {
+-        cs->exception_index = EXCP_DATA_ABORT;
++        fsc = 0x7; /* translation fault, level 3 */
+     }
+-    cpu_loop_exit_restore(cs, retaddr);
++
++    cpu_restore_state(cs, retaddr, true);
++    if (access_type == MMU_INST_FETCH) {
++        exc = EXCP_PREFETCH_ABORT;
++        syn = syn_insn_abort(0, 0, 0, fsc);
++    } else {
++        exc = EXCP_DATA_ABORT;
++        syn = merge_syn_data_abort(cpu->env.exception.syndrome, 1, 0, 0, 0,
++                                   access_type == MMU_DATA_STORE, fsc);
++    }
++    raise_exception(&cpu->env, exc, syn, 1);
+ #else
+     hwaddr phys_addr;
+     target_ulong page_size;
 -- 
 2.25.1
 

@@ -1,108 +1,116 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2557174lfc;
-        Fri, 5 Jun 2020 08:31:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVNhaMcExZuoSf9GoynIDYdxsDj4YRcnbJ3XPbntl4px4LRs8mbCnypdKeuIAiZ1ejtEP2
-X-Received: by 2002:a25:d689:: with SMTP id n131mr13675243ybg.523.1591371112814;
-        Fri, 05 Jun 2020 08:31:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591371112; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2559581lfc;
+        Fri, 5 Jun 2020 08:34:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwa6YBkmC3WqprsAp6JrebZTE9Tb4cTLWZAFxU26fl6zkpqbHX/QAIO++DKiLLHLlacVxXn
+X-Received: by 2002:a25:be41:: with SMTP id d1mr17993503ybm.462.1591371284359;
+        Fri, 05 Jun 2020 08:34:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591371284; cv=none;
         d=google.com; s=arc-20160816;
-        b=uqKwhdXorl+UWZlY9BQvdFfYKJW04Vz6qP+vXT7pvhd9/ZZ4siPSl203v8uZZz15W8
-         EnVit56hjbci5hN0FPUYexIplVjxfjNja/voE6CGDDFk/mpmcam87OiHZTeMphH8AsrO
-         B/HWDJShyYh1z0cft5bJrnji1ZolqCuZjiF5iUzcSm3VbqsVj4vvNOgiykYdZGd2teGZ
-         X3rAXU3FLD2TMhHXeyA4S6jYQk8JgXHJM2OjRP8Y1SVNPdmQSHA8KGhIQkbGRFtinPk+
-         eUpfMEIj+ICVzoMDU653sYppjoRS7KoOxEp9B5uMHBSvPhODHqop3q15GUQ+OBQXyHrP
-         gnsQ==
+        b=Xh9aAn8/z8vA5ly4p7ygl0SYJYK9aCzCXx2XjVpAG9w8cbTW/VElcnFPuUSANfoKkj
+         ds+xeoJH5gdMM8yisDsrpd+GOEFVCmHoiibL8/1xBx/vCEDDVWTvbT/wIVpT6HaTGqSn
+         0A56voxgtjqIDcTksPUbCxq/JrTt/0RjmgxZ727n6l+kkXVUzpZ5CM4MmFVX4RozO9Qk
+         dVL7M7UB3rxvPBCiRrvmezd0R7ZXopUdWAufszGPg86b3Alp3sJwYo5WOZDG6Dwz/F05
+         FIDWwBppyuosfK3WcTPDOv5fXkHQ1NJWNH4KVDAMaMqjIPq/XECTY4E0/657aKgmBJhs
+         tBaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=Y1sRs9l4mfzUIv/oGqK1YEdkP4d50sNVxztR4XH8JfQ=;
-        b=Q6Qes9h+T1s3gdcLkr84tO6P/EUxJY2yO8OFelOYcsmwHCjXdoySzTBhn44JBf2Glf
-         EeXAztm1u8CDcyYtGsdwc+8VgciW35YMW3sYP4/ewU6sdPob3ggIVlTzu3Uy3Ncz3ZZJ
-         uTW5bLQSZDOM2YxSDZzUHZdfQK7mWjwO8FlfbSIYMK1MqDDC3D2HOQpijBnl23wvB+cl
-         1UomgjFyxexZlcJEZJGHEjY4VrEcjeVJcscM3ZXD7KD8rZZvQr2sPItUJg80xz1FpSvE
-         TlHqW99D/rOHF6CiTV3gcTDiE3xDiOpYQcFWvfKbwmyAWQTzL1iqGrEnHdp/krT28Tuu
-         74ow==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=z8Uk4MiOT8Fk8076R7Colg8QeWSfB+NReO4bTL3BsUc=;
+        b=bejCBAMHgo0VqW0cPMrz1O/kL7TppKNi5BuNXVXQu3FpdmcF/F4i292Zpbpd3EW9N8
+         ZhkfvxTITO3ImBmPLfJTfGWguyn+5ljm5VN5S3wwNX03ht5W33826Sq82nxoolz4QUU8
+         Aer0HaUYx7ZMiIkmBp3M+FUQXvc/sQdHjJFdcvXeykwC2C3Oub5tIqTj9MArrDG/BqoD
+         Dl1NhuzyIre8x5tb0Hx4zwqraqadSzPFm3WmlfXWCHIu3tCO3arg+6m6iCXmROns74h+
+         DrXQin/2OY/5vZwBlEBJhQZb+Y3hxb71tsuwE3rBnUQk+zeWuDnyXspTt3TkvEDdmReJ
+         A2gw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="B/4TULMV";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SrqYmy4B;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p190si7434010ybg.434.2020.06.05.08.31.52
+        by mx.google.com with ESMTPS id e125si2109870ybe.417.2020.06.05.08.34.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jun 2020 08:31:52 -0700 (PDT)
+        Fri, 05 Jun 2020 08:34:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="B/4TULMV";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SrqYmy4B;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53514 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:59768 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jhEK0-0006pG-19
-	for alex.bennee@linaro.org; Fri, 05 Jun 2020 11:31:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56094)
+	id 1jhEMl-00015i-NO
+	for alex.bennee@linaro.org; Fri, 05 Jun 2020 11:34:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56442)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jhEJb-0006nQ-WA
- for qemu-arm@nongnu.org; Fri, 05 Jun 2020 11:31:28 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:51378
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jhEJb-0007vl-8K
- for qemu-arm@nongnu.org; Fri, 05 Jun 2020 11:31:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591371086;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Y1sRs9l4mfzUIv/oGqK1YEdkP4d50sNVxztR4XH8JfQ=;
- b=B/4TULMVTz1NFP0geNfwroHnaal9rwN3e6b2OCi6Pjma8jqpQ8zp6o8THQKUjWX/8ISDg3
- QTx9q+uvgTfbPRpZjG/gk503IaridPuD/2S+plJ8L4tRffWVqmXshyX4zDmFlfDrNJnedD
- R+g7NBUu/YqsWAloxhFuxDyZ6DV+7/M=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-293-zFUEQ4yBNvm71JWWwCKRSw-1; Fri, 05 Jun 2020 11:31:24 -0400
-X-MC-Unique: zFUEQ4yBNvm71JWWwCKRSw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7524C107B76B;
- Fri,  5 Jun 2020 15:31:23 +0000 (UTC)
-Received: from localhost (unknown [10.40.208.51])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AEA2810013C0;
- Fri,  5 Jun 2020 15:31:18 +0000 (UTC)
-Date: Fri, 5 Jun 2020 17:31:16 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Andrew Jones <drjones@redhat.com>
-Subject: Re: [Question] Regarding PMU initialization within the QEMU for ARM
- VCPUs
-Message-ID: <20200605173116.55419a1e@redhat.com>
-In-Reply-To: <20200603093745.dwfb55ny34az7rez@kamzik.brq.redhat.com>
-References: <b2e401cd17fe49d792d09b31bd726e35@huawei.com>
- <20200603093745.dwfb55ny34az7rez@kamzik.brq.redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jhEMT-000150-BW; Fri, 05 Jun 2020 11:34:26 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:42604)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jhEMR-0000SG-Sn; Fri, 05 Jun 2020 11:34:25 -0400
+Received: by mail-wr1-x441.google.com with SMTP id p5so10190325wrw.9;
+ Fri, 05 Jun 2020 08:34:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=z8Uk4MiOT8Fk8076R7Colg8QeWSfB+NReO4bTL3BsUc=;
+ b=SrqYmy4BX7LEio06FrsHk4RoGHJOghoBPeOT2sx6q3KgxY9xfvA2je16KL7hZSbOc9
+ Sn7eq3W45BnB5AVK0LlFghLA736Gw9PxuLlmcwnH8iTh3iZKM4kDBF8ExEBtiZqyFa2R
+ Df5DboBLfzEwd9Ur0TzJtU/PvdV52cmZHAUHcW7PXGNWOA7LhaftXeRWSa1+LV1tYl2q
+ d3I0bLweIw80R3k7B3GSz0T1pandhkN1CrsUaAhAkgR239+pVrt94i0DLQhyLG81iVrV
+ Rfp7pWnYim46XlyrYDQ9/cfRj/7qpBFnU3FhzeXETv3UQxK5XnjvlMtd/+IFqb8koFKA
+ EGUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=z8Uk4MiOT8Fk8076R7Colg8QeWSfB+NReO4bTL3BsUc=;
+ b=ONadOj+EF3AkBqqZTiLXOT6AQx4K1NyFktVnhTAbFdICxtDXGukpv4s/NlhiZNx2r9
+ M3PC4FOZORob5VCGgX9Fd388mAfNw4X6EExmmJluauR40UVVMNti1sAtBIrR4g7LYZWl
+ YZ8RoTgLkoBfd3DE6+jp1ceZx27Kc+jie5SDcpAtrSICiS1JXpH4Y6RFd70SkY7ftkdB
+ Z7OPjpuSGU4qGv8kAIbvATbNra9OpOHbXjgiYUpKT+iqflLJyl5gAu5o6fd+zTVnolc9
+ JD2tmpbp69eit0GD88CWOsp7UeEkZEQC7lDMJkfUwe4R5CXGjHiiGPyfEKmCZmtShMal
+ AhDQ==
+X-Gm-Message-State: AOAM533FSePXsjkXFlQ6Da5eh6LQBaFxNtiTg6y71JX687pyF1MnRfBW
+ dA7581E4NAVCQnV6Q0YH5i4=
+X-Received: by 2002:a5d:46d0:: with SMTP id g16mr11023589wrs.229.1591371261392; 
+ Fri, 05 Jun 2020 08:34:21 -0700 (PDT)
+Received: from [192.168.1.43] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id r5sm13020923wrq.0.2020.06.05.08.34.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 05 Jun 2020 08:34:20 -0700 (PDT)
+Subject: Re: [PATCH 15/16] sd/pxa2xx_mmci: Don't crash on pxa2xx_mmci_init()
+ error
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+References: <20200605145625.2920920-1-armbru@redhat.com>
+ <20200605145625.2920920-16-armbru@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <bebb2db4-3da4-28f0-1d2d-2cea34d8d7dd@amsat.org>
+Date: Fri, 5 Jun 2020 17:34:19 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/05 03:40:54
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200605145625.2920920-16-armbru@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,39 +123,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Salil Mehta <salil.mehta@huawei.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "mst@redhat.com" <mst@redhat.com>
+Cc: kwolf@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
+ berrange@redhat.com, ehabkost@redhat.com, qemu-block@nongnu.org,
+ mreitz@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com, jsnow@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QoC6GD6Pi1Mt
+X-TUID: k3PWGxRGEp4M
 
-On Wed, 3 Jun 2020 11:37:45 +0200
-Andrew Jones <drjones@redhat.com> wrote:
-
-> On Mon, Jun 01, 2020 at 03:04:33PM +0000, Salil Mehta wrote:
-> > Hello,
-> > I could see below within function fdt_add_pmu_nodes() part of
-> > hw/arm/virt.c during virt machine initialization time:
-...
+On 6/5/20 4:56 PM, Markus Armbruster wrote:
+> On error, pxa2xx_mmci_init() reports to stderr and returns NULL.
+> Callers don't check for errors.  Machines akita, borzoi, mainstone,
+> spitz, terrier, tosa, and z2 crash shortly after, like this:
 > 
-> > Q4. This function  fdt_* looks to be wrongly named. The info
-> >     being initialized here shall be used even when ACPI is
-> >     being used. Initialization part and FDT info looked
-> >     mixed up here if I am right?  
+>     $ qemu-system-aarch64 -M akita -drive if=sd,readonly=on
+>     qemu-system-aarch64: failed to init SD card: Cannot use read-only drive as SD card
+>     Segmentation fault (core dumped)
 > 
-> Agreed. The function has the wrong name. mach-virt has many functions that
-> mix the initialization and fdt building together, but those functions are
-> named something like create_foo(). Patches welcome.
-that was where I gave up on cpu hotplug arm/virt the last time.
-
-Ideally we should split out from create_foo() all firmware generation code
-(fdt) and move it to virt_machine_done time + make sure that it could be
-regenerated at reset time so guest would get updated FDT on reset.
-
+> Machines connex and verdex reach the check for orphaned drives first:
 > 
-> Thanks,
-> drew
+>     $ aarch64-softmmu/qemu-system-aarch64 -M connex -drive if=sd,readonly=on -accel qtest
+>     qemu-system-aarch64: failed to init SD card: Cannot use read-only drive as SD card
+>     qemu-system-aarch64: -drive if=sd,readonly=on: machine type does not support if=sd,bus=0,unit=0
+> 
+> Make pxa2xx_mmci_init() fail cleanly right away.
+> 
+> Cc: Andrzej Zaborowski <balrogg@gmail.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>  hw/sd/pxa2xx_mmci.c | 15 +++------------
+>  1 file changed, 3 insertions(+), 12 deletions(-)
+> 
+> diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+> index 3407617afc..68bed24480 100644
+> --- a/hw/sd/pxa2xx_mmci.c
+> +++ b/hw/sd/pxa2xx_mmci.c
+> @@ -18,7 +18,6 @@
+>  #include "hw/arm/pxa.h"
+>  #include "hw/sd/sd.h"
+>  #include "hw/qdev-properties.h"
+> -#include "qemu/error-report.h"
+>  #include "qemu/log.h"
+>  #include "qemu/module.h"
+>  #include "trace.h"
+> @@ -483,7 +482,6 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+>      DeviceState *dev, *carddev;
+>      SysBusDevice *sbd;
+>      PXA2xxMMCIState *s;
+> -    Error *err = NULL;
+>  
+>      dev = qdev_new(TYPE_PXA2XX_MMCI);
+>      s = PXA2XX_MMCI(dev);
+> @@ -496,16 +494,9 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+>  
+>      /* Create and plug in the sd card */
+>      carddev = qdev_new(TYPE_SD_CARD);
+> -    qdev_prop_set_drive_err(carddev, "drive", blk, &err);
+> -    if (err) {
+> -        error_reportf_err(err, "failed to init SD card: ");
+> -        return NULL;
+> -    }
+> -    qdev_realize_and_unref(carddev, qdev_get_child_bus(dev, "sd-bus"), &err);
+> -    if (err) {
+> -        error_reportf_err(err, "failed to init SD card: ");
+> -        return NULL;
+> -    }
+> +    qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
+> +    qdev_realize_and_unref(carddev, qdev_get_child_bus(dev, "sd-bus"),
+> +                           &error_fatal);
+>  
+>      return s;
+>  }
+> 
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 

@@ -1,95 +1,98 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2418678lfc;
-        Fri, 5 Jun 2020 05:53:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyKtw2MVsdz/kVbISLFfbNidevg6SdyoHyFc23uX06oqtKImqeGgDw1md5wcrTe7NT7jVLT
-X-Received: by 2002:a25:df09:: with SMTP id w9mr16613689ybg.67.1591361600991;
-        Fri, 05 Jun 2020 05:53:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591361600; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2451970lfc;
+        Fri, 5 Jun 2020 06:29:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyjSFdyfRe57aIQAAiu/DcKIo83ct3NSyXoaa3GLDwObQf1n9Jd8NXJqg263O+to/mMYmfD
+X-Received: by 2002:a25:6f03:: with SMTP id k3mr17206708ybc.293.1591363786668;
+        Fri, 05 Jun 2020 06:29:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591363786; cv=none;
         d=google.com; s=arc-20160816;
-        b=uO7iwZ54f0fIavS1kYYWkrO4enRgS2lzruNZ2bo8nZGKovUMaS/fukSQQoBB266cCQ
-         8Lux5o9KHOJi7KcG0uEY9AYO4mbL0A9/qIxuy7xMla4olWKbGTvnMlV/WZXGcPyD/7nn
-         j4TDcdAMYLt/wP0hIZAqr3vtTdgIkSyoKHx46xwQeAIOi+G8bihRoH3M562N02m5Ad6r
-         6+pS1a/1u+yfgix8LNjklMU6Kn+507tCXAANwdzrTbjDA6cD7t1z6LZYDZPrc0gHmDgA
-         t2wUqEizKGlLlVFbuwkJUc25FhoNruSXLl7caa2thQ2wqIUMtCCXPG/yi8assJSXFUrm
-         APlQ==
+        b=nV9QLQpd9nie2WFczhz643EwdYQU2xZhV8o3NQ3VX2Di/ItBkPo5iis9hUKOMRYg5l
+         TeHV931AUAgGHaWQPuHyWLOVg/dd9TCv9qa41mZ+H6/Tn1fwLJJsFw0oISa/pVceXplm
+         KZaBhT7UizbzusaVeDksGRDQLmdlTQKaxClwM/qpitCBjPxyJiiF24I+x33i/cuIjiBz
+         FzBkPbyD2yvieBlHTntTj7Qrx6LMwH1p50b7+PFbld63bP+3UiaU8dd6RtUR1ymY92wk
+         /CMAeju3ALC3n0ALuDZ3FLlahMONS6lE9fz7wwxUY1qoO1N8DRUs/ddPiqZHvO838rSf
+         Oy+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=mzkkXgp0w+zEtvpnuZQDyX64IpaaA/GxxdlEJ4IxYAk=;
-        b=gf6+7+V+3dI65FhB0fEnOkpnV5AGMMHpcKiEiFjKyReZF1JAlpWlxnUPpD1kw4u57O
-         CgiR4tSNm/3l9t3w+nCBx5h/ILHOXgmJAD7NWbDWmwl501EIbJhEfFnvKw+X0a9+NJx3
-         3/gfcLh7pHPv7WV5uuyQ1e8Jw3GrmizkS4Po9G8HIXRGvvLj/SyKLGM/uzE0V23COTk3
-         dnEE6beYf7s3lme4THdx0SHwYVhvdJXyJ1bv1YVav9Nq07dMp3V4IGl645D+TIlGCDSR
-         0JsfrJDZhQJi+1ILBtAomcwdlJ3V4XOhpKWK2UvL0Z8CFLtVgt/+B9SP1DrqUgGWuyLc
-         3Wkw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=MjBx5mbcnQFgKZnmd+gPc0Sz7vAMpyCVxxcFHrl1+vA=;
+        b=q0qcC03GKwfJcrs1doOkbwcZDXcpQt1tS2Cf0szVlapgqZYUj3KJ8pyX7xvQ7vmqfj
+         90d4o+CPdSboPNzMHSyjRpPtkV8fbWPbERG8amR95a2PkCsqrlxLf/ia+ZUonR1czl9m
+         B5wTEmhylufhqWrQ17QbJREaDM0w2lpHa+rf1FNtVD0+w2iqJQEqhrI32qApJFo9farm
+         PbSLSpCGvTqkHiTyOs/9VFPmt80qRfTGl9/EoNQrUpH2cVo1SP8FS/947FWC0iqGUwYK
+         kK8N2HI1KEgIcghYyBSSBeAu1hRo+jzppkj5qkFfz6F3mwfKXaQOPpf8Wvbt8iRDjKEL
+         d2RA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gJTw4agB;
+       dkim=fail header.i=@linaro.org header.s=google header.b=irCiZYGw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f85si4248568ybg.21.2020.06.05.05.53.20
+        by mx.google.com with ESMTPS id u67si6760527ybb.134.2020.06.05.06.29.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jun 2020 05:53:20 -0700 (PDT)
+        Fri, 05 Jun 2020 06:29:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gJTw4agB;
+       dkim=fail header.i=@linaro.org header.s=google header.b=irCiZYGw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35692 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37868 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jhBqa-00021p-Bx
-	for alex.bennee@linaro.org; Fri, 05 Jun 2020 08:53:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36094)
+	id 1jhCPq-0001Fb-2b
+	for alex.bennee@linaro.org; Fri, 05 Jun 2020 09:29:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40374)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jhBqO-0001sj-TG
- for qemu-arm@nongnu.org; Fri, 05 Jun 2020 08:53:08 -0400
-Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336]:38315)
+ id 1jhCPi-0001DW-Vf
+ for qemu-arm@nongnu.org; Fri, 05 Jun 2020 09:29:38 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:35442)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jhBqN-0005ho-CC
- for qemu-arm@nongnu.org; Fri, 05 Jun 2020 08:53:08 -0400
-Received: by mail-ot1-x336.google.com with SMTP id o13so7492443otl.5
- for <qemu-arm@nongnu.org>; Fri, 05 Jun 2020 05:53:06 -0700 (PDT)
+ id 1jhCPg-00057m-Mj
+ for qemu-arm@nongnu.org; Fri, 05 Jun 2020 09:29:38 -0400
+Received: by mail-ot1-x344.google.com with SMTP id 69so7596566otv.2
+ for <qemu-arm@nongnu.org>; Fri, 05 Jun 2020 06:29:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=mzkkXgp0w+zEtvpnuZQDyX64IpaaA/GxxdlEJ4IxYAk=;
- b=gJTw4agBz/WtXjXg2bTH46IGOgrNs8ru8kFG2Kyp37McdYmqyObppRDZMrRR0uua4p
- fJLctDbU3XuNw3RTldIDGYs5+NJ7+jgyGQCXbeJyA5xvhuW7mVMrcZRPO12RDyCEp1kA
- gLWoLDaY9wkldyr//BUMRkA7YaOfnYR91wFADfEMk6h/zbsEePiOPMfxs4Opyclo3xew
- 7N7KGKdpVCykVcYesLcxte2mKKScoNmiTU/dAcm/TrEVH2AKhZry958yNpzEyaGLrzVj
- LxM9JQXQtXdC1PL91A0qEQavSZYefUQnKaj+Zs4bh1OgplgXoOA+ubT1iFV15hJL3UZo
- DKug==
+ :cc:content-transfer-encoding;
+ bh=MjBx5mbcnQFgKZnmd+gPc0Sz7vAMpyCVxxcFHrl1+vA=;
+ b=irCiZYGwlllOeb6+VEa8m03LTwSiYd5ydYRors8B/kb0ReMA5drC8vBLvJJunGEYIU
+ TM9gauJg/OIaEWaGLRukEb6jybUSrgIB9PgnzkrWkREUkE8TMPAyBaFUeHj0Z/SEcMEI
+ LwP8CPMLdwnBJtQtc2nExy8vUrlfqfc13MTlvGxRDsTVyJBpwmgAS0z105GqxzlMnjBW
+ piol1QUGWgibpz63eEhPU5rrFkB36k/W832DYi3M81tsFsEClMna0epGdmFeFVL87mLQ
+ yS+cfAP7Jdxe5XRpOqMcf2L8Q8Doh1BhKThn04U8u6sbTrxwC/TEzbNX95tO7QMPZHyo
+ 1s6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=mzkkXgp0w+zEtvpnuZQDyX64IpaaA/GxxdlEJ4IxYAk=;
- b=U3N3zPvYN4UNeMm7at42900S0vvrORHA4xL1p7ymabxjGO2nHOv1oufDp45ET5x5xO
- FFBUaTLCMemqDl5tfwB//J8rHisK0odKAmeOtD38ccpnawujQ6Y7rhJtnhIl3jxYf+P9
- w+2I7Fp/nbqPyXn43jo3g5y41nc1Aj26gvoGahXzfMuc51S0ePUAc3ccdXfi6vEfgQgx
- p3YM01n7O96OdCE1c1CcnvD4uMh70g4ceBgup3bsaGP0dlgCJ4l3fvFXMv+BqfmvXeKg
- /KM6ZzN5+Ang/CvZCUnAVVwxvdE+LXVvx16gfJNviGmdCa048UBU/s5rEsQ8X26Dl+tH
- ejoA==
-X-Gm-Message-State: AOAM533/sQaOfcPnLTymh4un0YTa7HbQRxg4o7foIlC49LWoyBpDqEav
- DQ/qM34X1D1b7r4PFTydgKejvHiM0ZJRmKpugrtFyA==
-X-Received: by 2002:a05:6830:18da:: with SMTP id
- v26mr7701017ote.135.1591361586206; 
- Fri, 05 Jun 2020 05:53:06 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=MjBx5mbcnQFgKZnmd+gPc0Sz7vAMpyCVxxcFHrl1+vA=;
+ b=kiw8k4d6jaxQKSDR1pHjyIwx6zwcretMHreYUp/r3MRLUXPled3fSU5hUbASS5EAVw
+ JehSq5qBT3Yfx5+fTfiigmOqVh38VcbjGOn6bElagCiwQ9sfx1HcB8NsQrAiGgbLvw82
+ sWe1OVKTCVVCqkOrs/6pGZMY/1EN6Dr5drlvjsABajXVQ9vYg/XEHa1yx0rZpe/PuDIO
+ LTno5ZXHYA4Vbh6m4dDTms5WSAW3Xwf2QqFZCZIW7oEbw6hN/3U/q+3g1DGcUW91OkQY
+ Jk48yVgzlqwg/D5CLYXYAWYomdzFrQ8a6H8Ge3nw85W3LpVTKwvtGyCABXDl9IHGgXVB
+ gCLg==
+X-Gm-Message-State: AOAM532Kf4vAIgNlv8u5xTbNQpa5yUMaHWTXBtGhmb6q16AvPG2rF0GU
+ GqUZaz5Ur6ZZ74wMfzm+stDluCZFw+PAn5NTxA8mKA==
+X-Received: by 2002:a9d:b82:: with SMTP id 2mr7256440oth.221.1591363775642;
+ Fri, 05 Jun 2020 06:29:35 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200605094750.149957-1-stefanha@redhat.com>
-In-Reply-To: <20200605094750.149957-1-stefanha@redhat.com>
+References: <20200603055915.17678-1-f4bug@amsat.org>
+In-Reply-To: <20200603055915.17678-1-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Jun 2020 13:52:55 +0100
-Message-ID: <CAFEAcA8M+KxGbWeHK5n6wtwBLFtXL7dVBBBa9En0zn+O-rmNwQ@mail.gmail.com>
-Subject: Re: [PULL 00/11] Block patches
-To: Stefan Hajnoczi <stefanha@redhat.com>
+Date: Fri, 5 Jun 2020 14:29:24 +0100
+Message-ID: <CAFEAcA_SZ=Byk8_-GURDEWP+WuaJXwYF9rz1b+4XwPi8GSf9wA@mail.gmail.com>
+Subject: Re: [PATCH v3] hw/adc/stm32f2xx_adc: Correct memory region size and
+ access size
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x336.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -111,42 +114,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Kevin Wolf <kwolf@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
- Laurent Vivier <lvivier@redhat.com>, Julia Suvorova <jusual@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Max Reitz <mreitz@redhat.com>,
- Alexander Bulekov <alxndr@bu.edu>, Bandan Das <bsd@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Keith Busch <kbusch@kernel.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Aarushi Mehta <mehta.aaru20@gmail.com>,
- Richard Henderson <rth@twiddle.net>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair.francis@wdc.com>, Seth Kintigh <skintigh@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xti+H1PjQGqM
+X-TUID: yM/bLRucbCWu
 
-On Fri, 5 Jun 2020 at 10:48, Stefan Hajnoczi <stefanha@redhat.com> wrote:
+On Wed, 3 Jun 2020 at 06:59, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
 >
-> The following changes since commit 66234fee9c2d37bfbc523aa8d0ae5300a14cc10e:
+> The ADC region size is 256B, split as:
+>  - [0x00 - 0x4f] defined
+>  - [0x50 - 0xff] reserved
 >
->   Merge remote-tracking branch 'remotes/alistair/tags/pull-riscv-to-apply-202=
-> 00603' into staging (2020-06-04 11:38:48 +0100)
+> All registers are 32-bit (thus when the datasheet mentions the
+> last defined register is 0x4c, it means its address range is
+> 0x4c .. 0x4f.
 >
-> are available in the Git repository at:
+> This model implementation is also 32-bit. Set MemoryRegionOps
+> 'impl' fields.
 >
->   https://github.com/stefanha/qemu.git tags/block-pull-request
+> See:
+>   'RM0033 Reference manual Rev 8', Table 10.13.18 "ADC register map".
 >
-> for you to fetch changes up to 7d2410cea154bf915fb30179ebda3b17ac36e70e:
->
->   block: Factor out bdrv_run_co() (2020-06-05 09:54:48 +0100)
->
-> ----------------------------------------------------------------
-> Pull request
->
-> ----------------------------------------------------------------
+> Reported-by: Seth Kintigh <skintigh@gmail.com>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 
-Applied, thanks.
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/5.1
-for any user-visible changes.
+Applied to target-arm.next, thanks.
 
 -- PMM

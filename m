@@ -1,202 +1,120 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2559581lfc;
-        Fri, 5 Jun 2020 08:34:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwa6YBkmC3WqprsAp6JrebZTE9Tb4cTLWZAFxU26fl6zkpqbHX/QAIO++DKiLLHLlacVxXn
-X-Received: by 2002:a25:be41:: with SMTP id d1mr17993503ybm.462.1591371284359;
-        Fri, 05 Jun 2020 08:34:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591371284; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Xh9aAn8/z8vA5ly4p7ygl0SYJYK9aCzCXx2XjVpAG9w8cbTW/VElcnFPuUSANfoKkj
-         ds+xeoJH5gdMM8yisDsrpd+GOEFVCmHoiibL8/1xBx/vCEDDVWTvbT/wIVpT6HaTGqSn
-         0A56voxgtjqIDcTksPUbCxq/JrTt/0RjmgxZ727n6l+kkXVUzpZ5CM4MmFVX4RozO9Qk
-         dVL7M7UB3rxvPBCiRrvmezd0R7ZXopUdWAufszGPg86b3Alp3sJwYo5WOZDG6Dwz/F05
-         FIDWwBppyuosfK3WcTPDOv5fXkHQ1NJWNH4KVDAMaMqjIPq/XECTY4E0/657aKgmBJhs
-         tBaw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=z8Uk4MiOT8Fk8076R7Colg8QeWSfB+NReO4bTL3BsUc=;
-        b=bejCBAMHgo0VqW0cPMrz1O/kL7TppKNi5BuNXVXQu3FpdmcF/F4i292Zpbpd3EW9N8
-         ZhkfvxTITO3ImBmPLfJTfGWguyn+5ljm5VN5S3wwNX03ht5W33826Sq82nxoolz4QUU8
-         Aer0HaUYx7ZMiIkmBp3M+FUQXvc/sQdHjJFdcvXeykwC2C3Oub5tIqTj9MArrDG/BqoD
-         Dl1NhuzyIre8x5tb0Hx4zwqraqadSzPFm3WmlfXWCHIu3tCO3arg+6m6iCXmROns74h+
-         DrXQin/2OY/5vZwBlEBJhQZb+Y3hxb71tsuwE3rBnUQk+zeWuDnyXspTt3TkvEDdmReJ
-         A2gw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SrqYmy4B;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e125si2109870ybe.417.2020.06.05.08.34.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jun 2020 08:34:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SrqYmy4B;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:59768 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jhEMl-00015i-NO
-	for alex.bennee@linaro.org; Fri, 05 Jun 2020 11:34:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56442)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jhEMT-000150-BW; Fri, 05 Jun 2020 11:34:26 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:42604)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jhEMR-0000SG-Sn; Fri, 05 Jun 2020 11:34:25 -0400
-Received: by mail-wr1-x441.google.com with SMTP id p5so10190325wrw.9;
- Fri, 05 Jun 2020 08:34:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=z8Uk4MiOT8Fk8076R7Colg8QeWSfB+NReO4bTL3BsUc=;
- b=SrqYmy4BX7LEio06FrsHk4RoGHJOghoBPeOT2sx6q3KgxY9xfvA2je16KL7hZSbOc9
- Sn7eq3W45BnB5AVK0LlFghLA736Gw9PxuLlmcwnH8iTh3iZKM4kDBF8ExEBtiZqyFa2R
- Df5DboBLfzEwd9Ur0TzJtU/PvdV52cmZHAUHcW7PXGNWOA7LhaftXeRWSa1+LV1tYl2q
- d3I0bLweIw80R3k7B3GSz0T1pandhkN1CrsUaAhAkgR239+pVrt94i0DLQhyLG81iVrV
- Rfp7pWnYim46XlyrYDQ9/cfRj/7qpBFnU3FhzeXETv3UQxK5XnjvlMtd/+IFqb8koFKA
- EGUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=z8Uk4MiOT8Fk8076R7Colg8QeWSfB+NReO4bTL3BsUc=;
- b=ONadOj+EF3AkBqqZTiLXOT6AQx4K1NyFktVnhTAbFdICxtDXGukpv4s/NlhiZNx2r9
- M3PC4FOZORob5VCGgX9Fd388mAfNw4X6EExmmJluauR40UVVMNti1sAtBIrR4g7LYZWl
- YZ8RoTgLkoBfd3DE6+jp1ceZx27Kc+jie5SDcpAtrSICiS1JXpH4Y6RFd70SkY7ftkdB
- Z7OPjpuSGU4qGv8kAIbvATbNra9OpOHbXjgiYUpKT+iqflLJyl5gAu5o6fd+zTVnolc9
- JD2tmpbp69eit0GD88CWOsp7UeEkZEQC7lDMJkfUwe4R5CXGjHiiGPyfEKmCZmtShMal
- AhDQ==
-X-Gm-Message-State: AOAM533FSePXsjkXFlQ6Da5eh6LQBaFxNtiTg6y71JX687pyF1MnRfBW
- dA7581E4NAVCQnV6Q0YH5i4=
-X-Received: by 2002:a5d:46d0:: with SMTP id g16mr11023589wrs.229.1591371261392; 
- Fri, 05 Jun 2020 08:34:21 -0700 (PDT)
-Received: from [192.168.1.43] (181.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id r5sm13020923wrq.0.2020.06.05.08.34.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Jun 2020 08:34:20 -0700 (PDT)
-Subject: Re: [PATCH 15/16] sd/pxa2xx_mmci: Don't crash on pxa2xx_mmci_init()
- error
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-References: <20200605145625.2920920-1-armbru@redhat.com>
- <20200605145625.2920920-16-armbru@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <bebb2db4-3da4-28f0-1d2d-2cea34d8d7dd@amsat.org>
-Date: Fri, 5 Jun 2020 17:34:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id k17sm11284426wmj.15.2020.06.05.08.49.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 Jun 2020 08:49:50 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 483E71FF9C;
+	Fri,  5 Jun 2020 16:49:30 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH  v1 13/14] tests/tcg: add simple commpage test case
+Date: Fri,  5 Jun 2020 16:49:28 +0100
+Message-Id: <20200605154929.26910-14-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200605154929.26910-1-alex.bennee@linaro.org>
+References: <20200605154929.26910-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20200605145625.2920920-16-armbru@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kwolf@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
- berrange@redhat.com, ehabkost@redhat.com, qemu-block@nongnu.org,
- mreitz@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com, jsnow@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k3PWGxRGEp4M
+X-TUID: +ekK2v8UjvLQ
 
-On 6/5/20 4:56 PM, Markus Armbruster wrote:
-> On error, pxa2xx_mmci_init() reports to stderr and returns NULL.
-> Callers don't check for errors.  Machines akita, borzoi, mainstone,
-> spitz, terrier, tosa, and z2 crash shortly after, like this:
-> 
->     $ qemu-system-aarch64 -M akita -drive if=sd,readonly=on
->     qemu-system-aarch64: failed to init SD card: Cannot use read-only drive as SD card
->     Segmentation fault (core dumped)
-> 
-> Machines connex and verdex reach the check for orphaned drives first:
-> 
->     $ aarch64-softmmu/qemu-system-aarch64 -M connex -drive if=sd,readonly=on -accel qtest
->     qemu-system-aarch64: failed to init SD card: Cannot use read-only drive as SD card
->     qemu-system-aarch64: -drive if=sd,readonly=on: machine type does not support if=sd,bus=0,unit=0
-> 
-> Make pxa2xx_mmci_init() fail cleanly right away.
-> 
-> Cc: Andrzej Zaborowski <balrogg@gmail.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
->  hw/sd/pxa2xx_mmci.c | 15 +++------------
->  1 file changed, 3 insertions(+), 12 deletions(-)
-> 
-> diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
-> index 3407617afc..68bed24480 100644
-> --- a/hw/sd/pxa2xx_mmci.c
-> +++ b/hw/sd/pxa2xx_mmci.c
-> @@ -18,7 +18,6 @@
->  #include "hw/arm/pxa.h"
->  #include "hw/sd/sd.h"
->  #include "hw/qdev-properties.h"
-> -#include "qemu/error-report.h"
->  #include "qemu/log.h"
->  #include "qemu/module.h"
->  #include "trace.h"
-> @@ -483,7 +482,6 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
->      DeviceState *dev, *carddev;
->      SysBusDevice *sbd;
->      PXA2xxMMCIState *s;
-> -    Error *err = NULL;
->  
->      dev = qdev_new(TYPE_PXA2XX_MMCI);
->      s = PXA2XX_MMCI(dev);
-> @@ -496,16 +494,9 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
->  
->      /* Create and plug in the sd card */
->      carddev = qdev_new(TYPE_SD_CARD);
-> -    qdev_prop_set_drive_err(carddev, "drive", blk, &err);
-> -    if (err) {
-> -        error_reportf_err(err, "failed to init SD card: ");
-> -        return NULL;
-> -    }
-> -    qdev_realize_and_unref(carddev, qdev_get_child_bus(dev, "sd-bus"), &err);
-> -    if (err) {
-> -        error_reportf_err(err, "failed to init SD card: ");
-> -        return NULL;
-> -    }
-> +    qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
-> +    qdev_realize_and_unref(carddev, qdev_get_child_bus(dev, "sd-bus"),
-> +                           &error_fatal);
->  
->      return s;
->  }
-> 
+The COMMPAGE are a number of kernel provided user-space routines for
+32 bit ARM systems. Add a basic series of smoke tests to ensure it is
+working as it should.
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20200527100546.29297-4-alex.bennee@linaro.org>
+---
+ tests/tcg/arm/commpage.c      | 61 +++++++++++++++++++++++++++++++++++
+ tests/tcg/arm/Makefile.target |  2 ++
+ 2 files changed, 63 insertions(+)
+ create mode 100644 tests/tcg/arm/commpage.c
 
-
+diff --git a/tests/tcg/arm/commpage.c b/tests/tcg/arm/commpage.c
+new file mode 100644
+index 00000000000..c76e70cb8bd
+--- /dev/null
++++ b/tests/tcg/arm/commpage.c
+@@ -0,0 +1,61 @@
++/*
++ * Verify the COMMPAGE emulation
++ *
++ * The ARM commpage is a set of user space helper functions provided
++ * by the kernel in an effort to ease portability of user space code
++ * between different CPUs with potentially different capabilities. It
++ * is a 32 bit invention and similar to the vdso segment in many ways.
++ *
++ * The ABI is documented in the Linux kernel:
++ *     Documentation/arm/kernel_userspace_helpers.rst
++ *
++ * Copyright (c) 2020 Linaro Ltd
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include <stdlib.h>
++#include <stdio.h>
++#include <stdint.h>
++
++#define ARM_COMMPAGE      (0xffff0f00u)
++#define ARM_KUSER_VERSION (*(int32_t *)(ARM_COMMPAGE + 0xfc))
++typedef void * (get_tls_fn)(void);
++#define ARM_KUSER_GET_TLS (*(get_tls_fn *)(ARM_COMMPAGE + 0xe0))
++typedef int (cmpxchg_fn)(int oldval, int newval, volatile int *ptr);
++#define ARM_KUSER_CMPXCHG (*(cmpxchg_fn *)(ARM_COMMPAGE + 0xc0))
++typedef void (dmb_fn)(void);
++#define ARM_KUSER_DMB (*(dmb_fn *)(ARM_COMMPAGE + 0xa0))
++typedef int (cmpxchg64_fn)(const int64_t *oldval,
++                           const int64_t *newval,
++                           volatile int64_t *ptr);
++#define ARM_KUSER_CMPXCHG64 (*(cmpxchg64_fn *)(ARM_COMMPAGE + 0x60))
++
++#define fail_unless(x)                                                  \
++    do {                                                                \
++        if (!(x)) {                                                     \
++            fprintf(stderr, "FAILED at %s:%d\n", __FILE__, __LINE__);   \
++            exit(EXIT_FAILURE);                                         \
++        }                                                               \
++    } while (0)
++
++
++int main(int argc, char *argv[argc])
++{
++    void *kuser_tls;
++    int val = 1;
++    const int64_t oldval = 1, newval = 2;
++    int64_t val64 = 1;
++
++    fail_unless(ARM_KUSER_VERSION == 0x5);
++    kuser_tls = ARM_KUSER_GET_TLS();
++    printf("TLS = %p\n", kuser_tls);
++    fail_unless(kuser_tls != 0);
++    fail_unless(ARM_KUSER_CMPXCHG(1, 2, &val) == 0);
++    printf("val = %d\n", val);
++    /* this is a crash test, not checking an actual barrier occurs */
++    ARM_KUSER_DMB();
++    fail_unless(ARM_KUSER_CMPXCHG64(&oldval, &newval, &val64) == 0);
++    printf("val64 = %lld\n", val64);
++    return 0;
++}
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index 11c39c601ea..3da09a38be7 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -68,6 +68,8 @@ run-semiconsole-arm: semiconsole-arm
+ run-plugin-semiconsole-arm-with-%:
+ 	$(call skip-test, $<, "MANUAL ONLY")
+ 
++ARM_TESTS += commpage
++
+ TESTS += $(ARM_TESTS)
+ 
+ # On ARM Linux only supports 4k pages
+-- 
+2.20.1

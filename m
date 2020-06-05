@@ -1,326 +1,266 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp505311lfq;
-        Thu, 14 Jan 2021 10:18:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxX+2nKL40kzdn1Xo40IbwfUTVIZUjhY0424HvO8ygrYqqiIwBKFgusNNWDJBAuPizffBga
-X-Received: by 2002:a25:cc89:: with SMTP id l131mr12356460ybf.358.1610648328047;
-        Thu, 14 Jan 2021 10:18:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610648328; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2545717lfc;
+        Fri, 5 Jun 2020 08:18:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwN+IidXtSjsM4pxgKPru06KFC6+YiQ7yXylKdOBEEMHq/dK+imQT/mHWhtCLjAC4AhZthy
+X-Received: by 2002:a25:2041:: with SMTP id g62mr8716471ybg.429.1591370291450;
+        Fri, 05 Jun 2020 08:18:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591370291; cv=none;
         d=google.com; s=arc-20160816;
-        b=k9EorWAPd/iBLRTJ6R+I9Cr4SgLEvTk532XzQ3zEaJKfrtSE/A17xSEOSkQPja40CC
-         cil9FO2IKQkGmYoRxYYGMLF0Z0nSy2ab+bmUirVRLtmO3ol/CVgrbZrXdOaS0qFejH/v
-         lz3czno1uf+6VINPU+FpuGeLA07xTc3dCpcdO7bOTNtmpnzwdzZfZ6bbtJzaqFzr8tkC
-         RUkEcPGUOVnh0VKQba061xthSL4iFyXawT2NSYLuqWtGkqFIK04GmJeOcEpbIf1tnlJ9
-         +bTmiurcXNMfaLHVTVc9GEyu2z7yF8LuNA8dEs2+y48JzZ27uj8PLySANy2LvzwWBf+p
-         uVoA==
+        b=u5lOv05iPnmbfgfUVl4DsVMXWfyzVYIj8ph6EYOeT1WfBS+QxlRJn3V0lKW9NJV1tg
+         QZV4tOOQxW0+mQKpaY0BZpOyH4I5xk/wNaBOwYx7zGy8bdM4Aeunpomo0FakyNB/2U4N
+         tAXJoG2Hc793VXEWbN8OFavv1NvT12g9LZd8owDveXzocu+5ogfhfA+cA8giHgsALoJC
+         N/CUW2yfVmmwbQ7rv8CzaaPRpJfNY4/MmVjlRbL8obUz55+PIeddGpPoEBjeGhMtaMMh
+         Oo+A9dD9YdRPTP/ROsppqhjPkl5FnUJnrfKAHPss+W4uesEb7j2YGYhRzFTZAzm/melw
+         CBwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=yGs2ETkcarv3wjydbJzBfNoeJ9RIOo/NS00PvXo94ZI=;
-        b=MskC/BgpwGeD62CrVxvpGrDT5vomayD+nmN88i34rOUD2uhtNJkxY0pj2iICT/VhDs
-         tK1AJEe84X2oxigq0pWQ4xXnEYTBQbPJZ0liZOcHmL/oy4Z2FxfJC3AkM5AW1VMaHDmH
-         VTs474zDPx1xKNqVGQ/2PjsvmyLWje6mksAwQ1oLxJ+Ukjvm2qpD+c5vtOSEuFcA3PZG
-         BFOlEQh5+t38jhYvuQCXW9e7Lqyne+h6w26mvovE436N3PPx5Zy0SvIjeW20/UWjDYcM
-         i1LhFGap/t5r9ryocO92S6bb0v5uVxn2g9YBZjK7H/P1m/OcVX7V2Q9ptxTwW5ndyHOF
-         8YAA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=QhlF4TZGj5vuCft1tLRwvcNNKugqj6nkzpfX6viy8H0=;
+        b=lNKElPaeHeMj2MK386r0gakvO99RBY0smkxwecg6NDT7f0OGc4uTzQ9a0vBNEW1OLs
+         tf88W644Ty+Sk/lGlKkiLeunK4oajJLCf/FtVxZsowwy4p3rzyFWwXhNJachaEIkOw+w
+         Yq5TmguU/jpcBXBdf5tQjmuLaeGjlBzGKnXIu9NRVE25OxmxrjJv8JTvXargvWf4BK34
+         5igdw/Eld4Npgb3eIy4vHjUQEnUIGRJZJlAylqJx1Q3TeZVvMTLp9jx3BicLL23G8p0C
+         0mEwbcZDYhMzVHqCKaM7mDODoLnkmW3wfb0an2vdHpHWRfjwofwXmMhg2HXn/66lhu7A
+         T+8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aBevwnU1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=icq6qJ+g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o76si5418978yba.487.2021.01.14.10.18.47
+        by mx.google.com with ESMTPS id g13si7430388ybk.156.2020.06.05.08.18.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Jan 2021 10:18:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 05 Jun 2020 08:18:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aBevwnU1;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54330 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=icq6qJ+g;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60692 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l07Cp-0004FL-DB
-	for alex.bennee@linaro.org; Thu, 14 Jan 2021 13:18:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45060)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jhE6k-0004ki-Qs
+	for alex.bennee@linaro.org; Fri, 05 Jun 2020 11:18:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53816)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1l077N-0008GY-34; Thu, 14 Jan 2021 13:13:09 -0500
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232]:33494)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1l077K-0007lE-Gf; Thu, 14 Jan 2021 13:13:08 -0500
-Received: by mail-lj1-x232.google.com with SMTP id u21so7553076lja.0;
- Thu, 14 Jan 2021 10:13:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=yGs2ETkcarv3wjydbJzBfNoeJ9RIOo/NS00PvXo94ZI=;
- b=aBevwnU1IR9YWcz08fAgDO5lbltWsSEsCKEPCxKc/l694QfPfk+RWkd0vSG/zInL3j
- ct/GShsgo37AfkCrkFOfv7+GfHh0eDurSZ1Avte7wAyrx4LmknyHJ1QoarISdK4MhFAI
- hrNyYky0A9kqtcE8ppnY6XcwtP95Uubm5nRJna0xkwGLHH7ZyxTirULqC3fbr4xC41s4
- CXdFPFK9fEallZX/g2b31NhD6+A1xbh1wPhLAwxi7QKB+j26N99hAIpdkAY6HymcXgID
- m5ETNrzsvJpFfWoeQknDHN62pjl84NYQd8jbnv9MjTFy8tc3EyN4u0gknMll7RBa6VvU
- VCTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=yGs2ETkcarv3wjydbJzBfNoeJ9RIOo/NS00PvXo94ZI=;
- b=SGj/ekOwkn8RYIXiqZsGXHfhZaJxPc9O7BJRVAbWdxbr+h70CiCQjdGt6msoiyy+Hn
- bqM0RN76eQrE6krhrq5Agpg7hHHk6kgwpWqiIXWsgxbbuIvics7e693oI/ea/DmgRs5Q
- GXe29rr6DMT7wRlIVwIp2FIc+yBd149arqMIa4l4b7pFtAuBVHUt4Vuqp015Wgkf7kvH
- HjfRv6MUmN1l96/7Xf7TeWVhECYEkQ9CRg5WQ61FE2F32SyTkBZBUB2M1xtkRaUen8ub
- I0L5a8yVy4BHOjU6x7sgS07ViGa6PK1grhLFUlSykmMxBS22EA9DYbTv4va1MiWBf/93
- ztDw==
-X-Gm-Message-State: AOAM530MSZv23kGdspLq/hZjGQAZbeSp0uKlzDEo2cP5eSZ4YpULtFeV
- cAl5cslFjcXQWNz+vjCyeGs=
-X-Received: by 2002:a2e:8113:: with SMTP id d19mr3409578ljg.303.1610647983211; 
- Thu, 14 Jan 2021 10:13:03 -0800 (PST)
-Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
- by smtp.gmail.com with ESMTPSA id
- m83sm617881lfa.113.2021.01.14.10.13.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Jan 2021 10:13:02 -0800 (PST)
-Date: Thu, 14 Jan 2021 19:13:00 +0100
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: Bin Meng <bmeng.cn@gmail.com>
-Subject: Re: [PATCH 0/9] hw/block: m25p80: Fix the mess of dummy bytes needed
- for fast read commands
-Message-ID: <20210114181300.GA29923@fralle-msi>
-References: <20210114150902.11515-1-bmeng.cn@gmail.com>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1jhE6d-0004jI-Ne
+ for qemu-arm@nongnu.org; Fri, 05 Jun 2020 11:18:03 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:43587
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1jhE6a-0004pv-SD
+ for qemu-arm@nongnu.org; Fri, 05 Jun 2020 11:18:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591370278;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=QhlF4TZGj5vuCft1tLRwvcNNKugqj6nkzpfX6viy8H0=;
+ b=icq6qJ+g0Qfb+CEgFPGrd7vAIsFaVz8OSZzQM/JEY/0C0BEYvw6rGjRknV3OENWXN1ZG9Z
+ udujm0ZCb5xXg9uNgjl34aqXB6vpU6fZO/bT/TBMw2fMWtGiOnRJl9lmJyK/LeaKfUOqdr
+ icGXmsZM4MHI7gfUtDSVOOVPUaAmZ/Q=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-258-SU2vXVYsNmCrvF-_BJ4eag-1; Fri, 05 Jun 2020 11:17:54 -0400
+X-MC-Unique: SU2vXVYsNmCrvF-_BJ4eag-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E30AE100A8EC;
+ Fri,  5 Jun 2020 15:17:52 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.51])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 199ED7B5F3;
+ Fri,  5 Jun 2020 15:17:41 +0000 (UTC)
+Date: Fri, 5 Jun 2020 17:17:38 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [RFC 5/6] bios-tables-test: Add Q35/TPM-TIS test
+Message-ID: <20200605171738.31ed9143@redhat.com>
+In-Reply-To: <20200601102113.1207-6-eric.auger@redhat.com>
+References: <20200601102113.1207-1-eric.auger@redhat.com>
+ <20200601102113.1207-6-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210114150902.11515-1-bmeng.cn@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::232;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x232.google.com
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_WELCOMELIST=-0.01,
- USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/05 03:35:49
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-devel@nongnu.org, qemu-block@nongnu.org,
- Marcin Krzeminski <marcin.krzeminski@nokia.com>,
- Andrew Jeffery <andrew@aj.id.au>, Bin Meng <bin.meng@windriver.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Havard Skinnemoen <hskinnemoen@google.com>, Tyrone Ting <kfting@nuvoton.com>,
- qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Joe Komlodi <komlodi@xilinx.com>, Max Reitz <mreitz@redhat.com>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4q7QEaOgmt4Y
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, mst@redhat.com,
+ philmd@redhat.com, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+ qemu-arm@nongnu.org, marcandre.lureau@redhat.com, eric.auger.pro@gmail.com,
+ lersek@redhat.com, ardb@kernel.org, stefanb@linux.ibm.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: b+9Lz5KXfWAB
 
-Hi Bin,
+On Mon,  1 Jun 2020 12:21:12 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
 
-On [2021 Jan 14] Thu 23:08:53, Bin Meng wrote:
-> From: Bin Meng <bin.meng@windriver.com>
+> Test tables specific to the TPM-TIS instantiation.
+> The TPM2 is added in the framework. Also the DSDT
+> is updated with the TPM. The new function should be
+> be usable for CRB as well, later one.
 > 
-> The m25p80 model uses s->needed_bytes to indicate how many follow-up
-> bytes are expected to be received after it receives a command. For
-> example, depending on the address mode, either 3-byte address or
-> 4-byte address is needed.
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  tests/qtest/bios-tables-test.c | 60 ++++++++++++++++++++++++++++++++++
+>  tests/qtest/Makefile.include   |  1 +
+>  2 files changed, 61 insertions(+)
 > 
-> For fast read family commands, some dummy cycles are required after
-> sending the address bytes, and the dummy cycles need to be counted
-> in s->needed_bytes. This is where the mess began.
-> 
-> As the variable name (needed_bytes) indicates, the unit is in byte.
-> It is not in bit, or cycle. However for some reason the model has
-> been using the number of dummy cycles for s->needed_bytes. The right
-> approach is to convert the number of dummy cycles to bytes based on
-> the SPI protocol, for example, 6 dummy cycles for the Fast Read Quad
-> I/O (EBh) should be converted to 3 bytes per the formula (6 * 4 / 8).
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> index c9843829b3..bbba98342c 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -57,6 +57,9 @@
+>  #include "qemu/bitmap.h"
+>  #include "acpi-utils.h"
+>  #include "boot-sector.h"
+> +#include "tpm-emu.h"
+> +#include "hw/acpi/tpm.h"
+> +
+>  
+>  #define MACHINE_PC "pc"
+>  #define MACHINE_Q35 "q35"
+> @@ -874,6 +877,60 @@ static void test_acpi_piix4_tcg_numamem(void)
+>      free_test_data(&data);
+>  }
+>  
+> +uint64_t tpm_tis_base_addr;
+> +
+> +struct tpm_test_data {
+> +    const char *machine;
+> +    const char *tpm_if;
+> +};
+> +
+> +static void test_acpi_tcg_tpm(const void *context)
+> +{
 
-While not being the original implementor I must assume that above solution was
-considered but not chosen by the developers due to it is inaccuracy (it
-wouldn't be possible to model exacly 6 dummy cycles, only a multiple of 8,
-meaning that if the controller is wrongly programmed to generate 7 the error
-wouldn't be caught and the controller will still be considered "correct"). Now
-that we have this detail in the implementation I'm in favor of keeping it, this
-also because the detail is already in use for catching exactly above error.
+s/test_acpi_tcg_tpm/test_acpi_q35_tcg_tpm/
 
-> 
-> Things get complicated when interacting with different SPI or QSPI
-> flash controllers. There are major two cases:
-> 
-> - Dummy bytes prepared by drivers, and wrote to the controller fifo.
->   For such case, driver will calculate the correct number of dummy
->   bytes and write them into the tx fifo. Fixing the m25p80 model will
->   fix flashes working with such controllers.
-
-Above can be fixed while still keeping the detailed dummy cycle implementation
-inside m25p80. Perhaps one of the following could be looked into: configurating
-the amount, letting the spi ctrl fetch the amount from m25p80 or by inheriting
-some functionality handling this in the SPI controller. Or a mixture of above.
-
-> - Dummy bytes not prepared by drivers. Drivers just tell the hardware
->   the dummy cycle configuration via some registers, and hardware will
->   automatically generate dummy cycles for us. Fixing the m25p80 model
->   is not enough, and we will need to fix the SPI/QSPI models for such
->   controllers.
-> 
-> This series fixes the mess in the m25p80 from the flash side first,
-
-Considering the problems solved by the solution in tree I find m25p80 pretty
-clean, at least I don't see any clearly better way for accurately modeling the
-dummy clock cycles. Counting bits instead of bytes would for example still
-force the controllers to mark which bits to count (when transmitting one dummy
-byte from a txfifo on four lines (Quad command) it generates 2 dummy clock
-cycles since it takes two cycles to transfer 8 bits).
-
-Best regards,
-Francisco Iglesias
+I'd try to keep test specific parameter within test function isnstead of pushing it up to main(),
+drawback would be some code duplication for intializing test data and calling runner
+but it's trivial and worked well so far. See for example test_acpi_piix4_tcg_bridge/test_acpi_q35_tcg_bridge. I might seem a waste but it's consictent with what we were doing
+with bios tests.
 
 
-> followed by fixes to 3 known SPI controller models that fall into
-> the 2nd case above.
-> 
-> Please note, I have no way to verify patch 7/8/9 because:
-> 
-> * There is no public datasheet available for the SoC / SPI controller
-> * There is no QEMU docs, or details that tell people how to boot either
->   U-Boot or Linux kernel to verify the functionality
-> 
-> These 3 patches are very likely to be wrong. Hence I would like to ask
-> help from the original author who wrote these SPI controller models
-> to help testing, or completely rewrite these 3 patches to fix things.
-> Thanks!
-> 
-> Patch 6 is unvalidated with QEMU, mainly because there is no doc to
-> tell people how to boot anything to test. But I have some confidence
-> based on my read of the ZynqMP manual, as well as some experimental
-> testing on a real ZCU102 board.
-> 
-> Other flash patches can be tested with the SiFive SPI series:
-> http://patchwork.ozlabs.org/project/qemu-devel/list/?series=222391
-> 
-> Cherry-pick patch 16 and 17 from the series above, and switch to
-> different flash model to test with the following command:
-> 
-> $ qemu-system-riscv64 -nographic -M sifive_u -m 2G -smp 5 -kernel u-boot
-> 
-> I've picked up two for testing:
-> 
-> QEMU flash: "sst25vf032b"
-> 
->   U-Boot 2020.10 (Jan 14 2021 - 21:55:59 +0800)
-> 
->   CPU:   rv64imafdcsu
->   Model: SiFive HiFive Unleashed A00
->   DRAM:  2 GiB
->   MMC:
->   Loading Environment from SPIFlash... SF: Detected sst25vf032b with page size 256 Bytes, erase size 4 KiB, total 4 MiB
->   *** Warning - bad CRC, using default environment
-> 
->   In:    serial@10010000
->   Out:   serial@10010000
->   Err:   serial@10010000
->   Net:   failed to get gemgxl_reset reset
-> 
->   Warning: ethernet@10090000 MAC addresses don't match:
->   Address in DT is                52:54:00:12:34:56
->   Address in environment is       70:b3:d5:92:f0:01
->   eth0: ethernet@10090000
->   Hit any key to stop autoboot:  0
->   => sf probe
->   SF: Detected sst25vf032b with page size 256 Bytes, erase size 4 KiB,
->   total 4 MiB
->   => sf test 1ff000 1000
->   SPI flash test:
->   0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
->   1 check: 10 ticks, 400 KiB/s 3.200 Mbps
->   2 write: 170 ticks, 23 KiB/s 0.184 Mbps
->   3 read: 9 ticks, 444 KiB/s 3.552 Mbps
->   Test passed
->   0 erase: 0 ticks, 4096000 KiB/s 32768.000 Mbps
->   1 check: 10 ticks, 400 KiB/s 3.200 Mbps
->   2 write: 170 ticks, 23 KiB/s 0.184 Mbps
->   3 read: 9 ticks, 444 KiB/s 3.552 Mbps
-> 
-> QEMU flash: "mx66u51235f"
-> 
->   U-Boot 2020.10 (Jan 14 2021 - 21:55:59 +0800)
-> 
->   CPU:   rv64imafdcsu
->   Model: SiFive HiFive Unleashed A00
->   DRAM:  2 GiB
->   MMC:
->   Loading Environment from SPIFlash... SF: Detected mx66u51235f with page size 256 Bytes, erase size 4 KiB, total 64 MiB
->   *** Warning - bad CRC, using default environment
-> 
->   In:    serial@10010000
->   Out:   serial@10010000
->   Err:   serial@10010000
->   Net:   failed to get gemgxl_reset reset
-> 
->   Warning: ethernet@10090000 MAC addresses don't match:
->   Address in DT is                52:54:00:12:34:56
->   Address in environment is       70:b3:d5:92:f0:01
->   eth0: ethernet@10090000
->   Hit any key to stop autoboot:  0
->   => sf probe
->   SF: Detected mx66u51235f with page size 256 Bytes, erase size 4 KiB, total 64 MiB
->   => sf test 0 8000
->   SPI flash test:
->   0 erase: 1 ticks, 32000 KiB/s 256.000 Mbps
->   1 check: 80 ticks, 400 KiB/s 3.200 Mbps
->   2 write: 83 ticks, 385 KiB/s 3.080 Mbps
->   3 read: 79 ticks, 405 KiB/s 3.240 Mbps
->   Test passed
->   0 erase: 1 ticks, 32000 KiB/s 256.000 Mbps
->   1 check: 80 ticks, 400 KiB/s 3.200 Mbps
->   2 write: 83 ticks, 385 KiB/s 3.080 Mbps
->   3 read: 79 ticks, 405 KiB/s 3.240 Mbps
-> 
-> I am sure there will be bugs, and I have not tested all flashes affected.
-> But I want to send out this series for an early discussion and comments.
-> I will continue my testing.
-> 
-> 
-> Bin Meng (9):
->   hw/block: m25p80: Fix the number of dummy bytes needed for Windbond
->     flashes
->   hw/block: m25p80: Fix the number of dummy bytes needed for
->     Numonyx/Micron flashes
->   hw/block: m25p80: Fix the number of dummy bytes needed for Macronix
->     flashes
->   hw/block: m25p80: Fix the number of dummy bytes needed for Spansion
->     flashes
->   hw/block: m25p80: Support fast read for SST flashes
->   hw/ssi: xilinx_spips: Fix generic fifo dummy cycle handling
->   Revert "aspeed/smc: Fix number of dummy cycles for FAST_READ_4
->     command"
->   Revert "aspeed/smc: snoop SPI transfers to fake dummy cycles"
->   hw/ssi: npcm7xx_fiu: Correct the dummy cycle emulation logic
-> 
->  include/hw/ssi/aspeed_smc.h |   3 -
->  hw/block/m25p80.c           | 153 ++++++++++++++++++++++++++++--------
->  hw/ssi/aspeed_smc.c         | 116 +--------------------------
->  hw/ssi/npcm7xx_fiu.c        |   8 +-
->  hw/ssi/xilinx_spips.c       |  29 ++++++-
->  5 files changed, 153 insertions(+), 156 deletions(-)
-> 
-> -- 
-> 2.25.1
-> 
+> +    struct tpm_test_data *c = (struct tpm_test_data *)context;
+> +    gchar *tmp_dir_name = g_strdup_printf("qemu-test_acpi_%s_tcg_%s.XXXXXX",
+> +                                          c->machine, c->tpm_if);
+> +    char *tmp_path = g_dir_make_tmp(tmp_dir_name, NULL);
+> +    TestState test;
+> +    test_data data;
+> +    GThread *thread;
+> +    char *args, *variant = g_strdup_printf(".%s", c->tpm_if);
+maybe derive tpm_if from '.variant' if it's necessary at all?
+
+> +
+> +    tpm_tis_base_addr = TPM_TIS_ADDR_BASE;
+hardcode it here, so in case QEMU regresses, test could notice?
+
+> +
+> +    module_call_init(MODULE_INIT_QOM);
+why it's here?
+
+> +
+> +    test.addr = g_new0(SocketAddress, 1);
+> +    test.addr->type = SOCKET_ADDRESS_TYPE_UNIX;
+> +    test.addr->u.q_unix.path = g_build_filename(tmp_path, "sock", NULL);
+> +    g_mutex_init(&test.data_mutex);
+> +    g_cond_init(&test.data_cond);
+> +    test.data_cond_signal = false;
+> +
+> +    thread = g_thread_new(NULL, tpm_emu_ctrl_thread, &test);
+> +    tpm_emu_test_wait_cond(&test);
+perhaps make a separate helper function from this chunk
+so it could be reused from other TMP test functions.
+
+> +
+> +    memset(&data, 0, sizeof(data));
+I'd init fields with initializer, see test_acpi_virt_tcg_numamem()
+
+> +    data.machine = c->machine;
+> +    data.variant = variant;
+> +
+> +    args = g_strdup_printf(
+> +        " -chardev socket,id=chr,path=%s"
+> +        " -tpmdev emulator,id=dev,chardev=chr"
+> +        " -device tpm-%s,tpmdev=dev",
+> +        test.addr->u.q_unix.path, c->tpm_if);
+> +
+> +    test_acpi_one(args, &data);
+> +
+> +    g_thread_join(thread);
+> +    g_unlink(test.addr->u.q_unix.path);
+> +    qapi_free_SocketAddress(test.addr);
+> +    g_rmdir(tmp_path);
+> +    g_free(variant);
+> +    g_free(tmp_path);
+> +    g_free(tmp_dir_name);
+> +    free_test_data(&data);
+> +}
+> +
+>  static void test_acpi_tcg_dimm_pxm(const char *machine)
+>  {
+>      test_data data;
+> @@ -1028,6 +1085,7 @@ int main(int argc, char *argv[])
+>  {
+>      const char *arch = qtest_get_arch();
+>      int ret;
+> +    struct tpm_test_data tpm_q35_tis = {MACHINE_Q35, "tis"};
+
+I'd hide this within test_acpi_tcg_tpm() as it's done in other test functions
+
+>  
+>      g_test_init(&argc, &argv, NULL);
+>  
+> @@ -1037,6 +1095,8 @@ int main(int argc, char *argv[])
+>              return ret;
+>          }
+>  
+> +        qtest_add_data_func("acpi/q35/tpm-tis",
+> +                            &tpm_q35_tis, test_acpi_tcg_tpm);
+>          qtest_add_func("acpi/piix4", test_acpi_piix4_tcg);
+>          qtest_add_func("acpi/piix4/bridge", test_acpi_piix4_tcg_bridge);
+>          qtest_add_func("acpi/q35", test_acpi_q35_tcg);
+> diff --git a/tests/qtest/Makefile.include b/tests/qtest/Makefile.include
+> index 9e5a51d033..5023fa413d 100644
+> --- a/tests/qtest/Makefile.include
+> +++ b/tests/qtest/Makefile.include
+> @@ -262,6 +262,7 @@ tests/qtest/hd-geo-test$(EXESUF): tests/qtest/hd-geo-test.o $(libqos-obj-y)
+>  tests/qtest/boot-order-test$(EXESUF): tests/qtest/boot-order-test.o $(libqos-obj-y)
+>  tests/qtest/boot-serial-test$(EXESUF): tests/qtest/boot-serial-test.o $(libqos-obj-y)
+>  tests/qtest/bios-tables-test$(EXESUF): tests/qtest/bios-tables-test.o \
+> +        tests/qtest/tpm-emu.o $(test-io-obj-y) \
+>  	tests/qtest/boot-sector.o tests/qtest/acpi-utils.o $(libqos-obj-y)
+>  tests/qtest/pxe-test$(EXESUF): tests/qtest/pxe-test.o tests/qtest/boot-sector.o $(libqos-obj-y)
+>  tests/qtest/microbit-test$(EXESUF): tests/qtest/microbit-test.o
+

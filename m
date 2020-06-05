@@ -1,103 +1,103 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2073098lfc;
-        Thu, 4 Jun 2020 21:19:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwFMUZAB5m/EhLAMi2G8cKe2cVHYuco9AcntBbwmpqBOyOJ7PqRjariVKMAf+BHS+8ABrda
-X-Received: by 2002:a25:ad45:: with SMTP id l5mr8945005ybe.401.1591330778178;
-        Thu, 04 Jun 2020 21:19:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591330778; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp2073191lfc;
+        Thu, 4 Jun 2020 21:19:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzBVd/YHnBPHRFcnJ7F8H7JPUbiBxD9K7aIpCceOtQDK8/6h+yErUuRW9xsvYH7zdwWzCKg
+X-Received: by 2002:a25:3103:: with SMTP id x3mr15007784ybx.36.1591330786706;
+        Thu, 04 Jun 2020 21:19:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591330786; cv=none;
         d=google.com; s=arc-20160816;
-        b=larjVUtdndQdy/xWyoYLsz0kXZ7yZfaygz64kvmwLKhliMH0FCKfuT/Zbd3upfeJ28
-         yVYWKVXBMgeROFOP/I3TTWa1fHUMoNFNBXZCPqbnogqL2cWKLuBvWWlqajTtQuBMsk7W
-         k0dslC+kaaYEC+6weU2coW2n6Vjfb+NucOd3EFl907pkgpaCRf4zVe67FHEQvyxhtPq3
-         VjvGH8Qi2vyXiSjWst/1HfW5YTzBjI1YwtR/Y9akhRVg99V2+kOqEc844/L8JRUJ6n1Z
-         r+CtQBDZvW3J2iMwqefOXDcbzkzMXGOlQzIuBJlbmD0dp/g2soiUEl98F7Gy4Ty9B+al
-         SJdQ==
+        b=CEnAXX53IQBUzoqBNuBcjgtHnO313/D9ztHR5LRFY/3gwqKXdSrOy/jJ3pNovBCY8n
+         TzYQSl9rKhu3Wl/qb6GS/RF/yDKrmymeulGP1fHgMEPdcaVpNiPo7p6OcKyH3ufhunGg
+         Wt4nmDoKoQMBJ+RBRCQ+/2OIgDlux/RjwA8WESUJ6+Er32imPaAXGRqqx98Ule4jMS1W
+         6KQhTQO2Mz6ko0jy0rlvvlWHJ1WztmKiYKiHCige/hM1qrU1z3V/T4F2Yuxs4x49YPjT
+         FW6Ruxor3ACdUJvtpbzySe96ZD9zU9+fV/3QNv/v+Q/u81EnumnTbltOvSl2s8uL6hZy
+         ZJuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=mHdkZW2BtXgCCzUvavDtufJgojf9AzZZHlwJyJIkodU=;
-        b=C2OIYcMOuBi5pyzuq27bHlBn+FU5a0JmX98ZWh30MJfVXabX93cAnKEf3E/btxnaPx
-         +qlCE/VVa8ZgMl+t4k6naddd8nEZEZgXE7TLfdCjxud+fxFPlsEA5nTZJLMiF5EywMaA
-         hFxpMOllWR2vEJPv7qaUIMd2t+9YNGmjHhYosVILvrVnVz+Wnp52pd4nt2WnqJF2WNGy
-         VctTII6TX3OakwTDe3/IegR1VIHfJhfrTZ9dHPEFNHuWQTTn+9w02sfl573bBzUZ/Qu6
-         Npyrfe7D/41n/DsY6mSMEHmoex4bOxEOJn45asUkOyH0BtnLmCZaOY1wshYkoepA2lGL
-         +IwA==
+        bh=yLR2Th1A4FLiNvF9RrUXZ7U/jaonjCXwdyobyMFPwns=;
+        b=y+dJvo7ddcU1QgdfUFabzBFsvBFrIXnGOJpsXCMSDq4m22qv1QtANmGw5U7anGBJuV
+         x4mWrUG5Jax9j/+74zt5RWNuwU4MV8JhxH1otY3OkcB4zKQVog8BPmpNhsWIvUoGuDzt
+         MsZs0jDw4NdfXh1TurzulvrSPZ9nJ7lPE4c+m24vNbLEToTOKetsSuqCUUgG3wnl7/e0
+         ntW2x3xfPqURkNBeK59/vFlCauHnNSNoJ7zrMjGTJPXZU4sNFGOZQsq8H9pQSovmtxKe
+         3r3uHaQ69GQ0WO+S8vT5j59K2Z5AzMhwNOgNHxAbCGZSExuBeKas6ssdApkP6A+Ob7CK
+         g62w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=A0tjNfKG;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GOj5nQRM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l9si5917353ybf.85.2020.06.04.21.19.38
+        by mx.google.com with ESMTPS id h9si92650ybq.385.2020.06.04.21.19.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jun 2020 21:19:38 -0700 (PDT)
+        Thu, 04 Jun 2020 21:19:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=A0tjNfKG;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GOj5nQRM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45508 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46482 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jh3pR-0008IQ-I9
-	for alex.bennee@linaro.org; Fri, 05 Jun 2020 00:19:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39484)
+	id 1jh3pZ-0000Gw-WC
+	for alex.bennee@linaro.org; Fri, 05 Jun 2020 00:19:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39536)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jh3nc-0004Mk-MR
- for qemu-arm@nongnu.org; Fri, 05 Jun 2020 00:17:44 -0400
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:40214)
+ id 1jh3nh-0004bT-NC
+ for qemu-arm@nongnu.org; Fri, 05 Jun 2020 00:17:49 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:42821)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jh3nb-0000jy-Th
- for qemu-arm@nongnu.org; Fri, 05 Jun 2020 00:17:44 -0400
-Received: by mail-pj1-x1041.google.com with SMTP id s88so2179521pjb.5
- for <qemu-arm@nongnu.org>; Thu, 04 Jun 2020 21:17:43 -0700 (PDT)
+ id 1jh3ng-0000l9-Oy
+ for qemu-arm@nongnu.org; Fri, 05 Jun 2020 00:17:49 -0400
+Received: by mail-pg1-x543.google.com with SMTP id e9so4517869pgo.9
+ for <qemu-arm@nongnu.org>; Thu, 04 Jun 2020 21:17:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=mHdkZW2BtXgCCzUvavDtufJgojf9AzZZHlwJyJIkodU=;
- b=A0tjNfKG6o69Lfe9DGoQRD5xlUXCVE3IYgfK4e7eSVqCxRoJeP+FDG4Ufc9QSEhVVN
- BF/fnDWIPQEWhfJL9VG1bGcmgvAPP0TQw77ZOtbFm+wtuv7aXUZBO6lj57lqJYT5QWCd
- AXEk+pKZC7KjL+U2FUX2+94bO8y0VSwCJOBbDmBseywpQpO3XiZ8oZdvWXiWB6eyaGwB
- QcFjTHP1k10npcJwNwG/iwZC+LKii0S0hw5JzdbJA868koVF6GHvpIjMnngR02Hvqo0m
- wXZnY3XLVzepBIpLclJvUWZFB1FtB4z8cJa0lrx9UxKHPCcgbBBPjEtK9Wq1jV4vYJkQ
- Weug==
+ bh=yLR2Th1A4FLiNvF9RrUXZ7U/jaonjCXwdyobyMFPwns=;
+ b=GOj5nQRMVmP06GT6WO6lkqGGxSSz4XbxY1w5dXfQDWo37gkmhVehwjctG0mbtz8pU7
+ 3SN07v2kEzJxPXiH7fbB2XxsfjK1eqmoxo5TsOH95XuPSmvu00djLFabYcMKLS3s8tVj
+ rCDSXUSyCzeFOS+x8T0dCg3N5KoqBb0RSg4ctwxko+nHtfSGfm57KdZGtL/aURWjvZrM
+ Ky2h3LluNLZ2tV7ih9wAqDkGcMH+1aHJRWMz4SaybB9pj4Bt6G/yolmkR+kA/GmIAc0U
+ UzxYbX3Qg/6vhH58LA6QYniDQaBu5yLD9I7oIfFyi5n+BKTg+ooRFJsPb32WNNGuioVf
+ 0WBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=mHdkZW2BtXgCCzUvavDtufJgojf9AzZZHlwJyJIkodU=;
- b=kCqqyDMUlEwOzAX1e1L/Y0zD7/4fKkbDjEVm/bWpnt2ADHEPXJCbR/DFZE9gRnIJed
- 6QHZIq0LgZGmrX0sjHl9jQgl3uxLNGKBQ7N4pI8m9cXypTpirioe5cM3q06aYgLAD5rz
- hG87oDS1rvdpJNzVfOeCmVZbvsv0nuczzrCbSf0FS59qmrwIpo53v8HrpTd7NGoPRrQd
- BXL2yW7xbqP49w3F9HBTjX51IZGZNOymjY0gDylva7EYoseA1pnkHOdpSjWEBlJaJOWa
- cnzh9xt3z/bb7nMzL+K2Blj+361pkmWctFWiUzqzOatwCil0YwmusMV7dR38Yhbcl9CH
- QRng==
-X-Gm-Message-State: AOAM531cgtQ8ruOPLJ8xsBmwwR6NjtPyUgHyJVX0y4gDpBO/O3s52WC9
- T2E3BOZGHx0eYJZTtQC93GgeKw==
-X-Received: by 2002:a17:90b:605:: with SMTP id
- gb5mr699334pjb.167.1591330662669; 
- Thu, 04 Jun 2020 21:17:42 -0700 (PDT)
+ bh=yLR2Th1A4FLiNvF9RrUXZ7U/jaonjCXwdyobyMFPwns=;
+ b=VFAtkSby8M2pRCWCABaPNCHoLqTZ3QQiGipXb3bwe0PuJ1v062y3ESVpgPbgaQeXEJ
+ OfGaZJMrp3+2She3zUtxaCE3eYB+MT8YbKVbLRm76SoQd/k7uXkbFzgbNbPoyxofgmgm
+ Y5q2nUCKtgC8d4+xvBfCgn7FlxpnvtsgluxhkY+Botif8O1hfTUrYejEkeFGzxQy2+Gc
+ hP8r/1vCUQfTmzoIf+9ecjwz8OQ2AUFtQrPGo0msnMiFFxCAwqzNWcRTgAD+kn6Ymdw8
+ iZ9FKULZO9OMo59n0QkKEWXfSXH7tjKy8rSRVM0aqNkLOcWXRrgbdhHTeAtXB+6A4X43
+ DVHQ==
+X-Gm-Message-State: AOAM530oCWAq1BjrVU62acpvpPwxwmbnAtCBSH8HGzzaxdXeOLiuVRq1
+ BEgnD3VL1oUCagY7Yw1sCV3XVg==
+X-Received: by 2002:a63:a50:: with SMTP id z16mr7448730pgk.162.1591330667378; 
+ Thu, 04 Jun 2020 21:17:47 -0700 (PDT)
 Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
  [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id h15sm5440902pgl.12.2020.06.04.21.17.41
+ by smtp.gmail.com with ESMTPSA id h15sm5440902pgl.12.2020.06.04.21.17.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Jun 2020 21:17:42 -0700 (PDT)
+ Thu, 04 Jun 2020 21:17:46 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 06/17] linux-user: Do not use guest_addr_valid for h2g_valid
-Date: Thu,  4 Jun 2020 21:17:22 -0700
-Message-Id: <20200605041733.415188-7-richard.henderson@linaro.org>
+Subject: [PATCH v2 10/17] linux-user/aarch64: Implement PR_MTE_TCF and
+ PR_MTE_TAG
+Date: Thu,  4 Jun 2020 21:17:26 -0700
+Message-Id: <20200605041733.415188-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200605041733.415188-1-richard.henderson@linaro.org>
 References: <20200605041733.415188-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1041;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1041.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::543;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x543.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -122,45 +122,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, steplong@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3GPWekG1o6B8
+X-TUID: YpnV4rVTe4EQ
 
-This is the only use of guest_addr_valid that does not begin
-with a guest address, but a host address being transformed to
-a guest address.
-
-We will shortly adjust guest_addr_valid to handle guest memory
-tags, and the host address should not be subjected to that.
-
-Move h2g_valid adjacent to the other h2g macros.
+These prctl fields are required for the function of MTE.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/cpu_ldst.h | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ linux-user/aarch64/target_syscall.h |  9 ++++++
+ linux-user/syscall.c                | 46 +++++++++++++++++++++++++++++
+ 2 files changed, 55 insertions(+)
 
-diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
-index c14a48f65e..3930362e20 100644
---- a/include/exec/cpu_ldst.h
-+++ b/include/exec/cpu_ldst.h
-@@ -77,15 +77,16 @@ typedef uint64_t abi_ptr;
- #else
- #define guest_addr_valid(x) ((x) <= GUEST_ADDR_MAX)
- #endif
--#define h2g_valid(x) guest_addr_valid((unsigned long)(x) - guest_base)
+diff --git a/linux-user/aarch64/target_syscall.h b/linux-user/aarch64/target_syscall.h
+index 5fb0bf4a5d..779ca0c805 100644
+--- a/linux-user/aarch64/target_syscall.h
++++ b/linux-user/aarch64/target_syscall.h
+@@ -32,5 +32,14 @@ struct target_pt_regs {
+ #define TARGET_PR_SET_TAGGED_ADDR_CTRL 55
+ #define TARGET_PR_GET_TAGGED_ADDR_CTRL 56
+ # define TARGET_PR_TAGGED_ADDR_ENABLE  (1UL << 0)
++/* MTE tag check fault modes */
++# define TARGET_PR_MTE_TCF_SHIFT       1
++# define TARGET_PR_MTE_TCF_NONE        (0UL << TARGET_PR_MTE_TCF_SHIFT)
++# define TARGET_PR_MTE_TCF_SYNC        (1UL << TARGET_PR_MTE_TCF_SHIFT)
++# define TARGET_PR_MTE_TCF_ASYNC       (2UL << TARGET_PR_MTE_TCF_SHIFT)
++# define TARGET_PR_MTE_TCF_MASK        (3UL << TARGET_PR_MTE_TCF_SHIFT)
++/* MTE tag inclusion mask */
++# define TARGET_PR_MTE_TAG_SHIFT       3
++# define TARGET_PR_MTE_TAG_MASK        (0xffffUL << TARGET_PR_MTE_TAG_SHIFT)
  
- static inline int guest_range_valid(unsigned long start, unsigned long len)
- {
-     return len - 1 <= GUEST_ADDR_MAX && start <= GUEST_ADDR_MAX - len + 1;
- }
- 
-+#define h2g_valid(x)  ((uintptr_t)(x) - guest_base <= GUEST_ADDR_MAX)
+ #endif /* AARCH64_TARGET_SYSCALL_H */
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index e4da53c5b3..9cf3ce872d 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -10463,10 +10463,47 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+         case TARGET_PR_SET_TAGGED_ADDR_CTRL:
+             {
+                 abi_ulong valid_mask = TARGET_PR_TAGGED_ADDR_ENABLE;
++                CPUARMState *env = cpu_env;
++                ARMCPU *cpu = env_archcpu(env);
 +
- #define h2g_nocheck(x) ({ \
--    unsigned long __ret = (unsigned long)(x) - guest_base; \
-+    uintptr_t __ret = (uintptr_t)(x) - guest_base; \
-     (abi_ptr)__ret; \
- })
++                if (cpu_isar_feature(aa64_mte, cpu)) {
++                    valid_mask |= TARGET_PR_MTE_TCF_MASK;
++                    valid_mask |= TARGET_PR_MTE_TAG_MASK;
++                }
  
+                 if ((arg2 & ~valid_mask) || arg3 || arg4 || arg5) {
+                     return -TARGET_EINVAL;
+                 }
++
++                if (cpu_isar_feature(aa64_mte, cpu)) {
++                    switch (arg2 & TARGET_PR_MTE_TCF_MASK) {
++                    case TARGET_PR_MTE_TCF_NONE:
++                    case TARGET_PR_MTE_TCF_SYNC:
++                    case TARGET_PR_MTE_TCF_ASYNC:
++                        break;
++                    default:
++                        return -EINVAL;
++                    }
++
++                    /*
++                     * Write PR_MTE_TCF to SCTLR_EL1[TCF0].
++                     * Note that the syscall values are consistent with hw.
++                     */
++                    env->cp15.sctlr_el[1] =
++                        deposit64(env->cp15.sctlr_el[1], 38, 2,
++                                  arg2 >> TARGET_PR_MTE_TCF_SHIFT);
++
++                    /*
++                     * Write PR_MTE_TAG to GCR_EL1[Exclude].
++                     * Note that the syscall uses an include mask,
++                     * and hardware uses an exclude mask -- invert.
++                     */
++                    env->cp15.gcr_el1 =
++                        deposit64(env->cp15.gcr_el1, 0, 16,
++                                  ~arg2 >> TARGET_PR_MTE_TAG_SHIFT);
++                    arm_rebuild_hflags(env);
++                }
++
+                 untagged_addr_mask = (arg2 & TARGET_PR_TAGGED_ADDR_ENABLE
+                                       ? MAKE_64BIT_MASK(0, 56) : -1);
+                 return 0;
+@@ -10474,6 +10511,8 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+         case TARGET_PR_GET_TAGGED_ADDR_CTRL:
+             {
+                 abi_long ret = 0;
++                CPUARMState *env = cpu_env;
++                ARMCPU *cpu = env_archcpu(env);
+ 
+                 if (arg2 || arg3 || arg4 || arg5) {
+                     return -TARGET_EINVAL;
+@@ -10481,6 +10520,13 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+                 if (~untagged_addr_mask != 0) {
+                     ret |= TARGET_PR_TAGGED_ADDR_ENABLE;
+                 }
++                if (cpu_isar_feature(aa64_mte, cpu)) {
++                    /* See above. */
++                    ret |= (extract64(env->cp15.sctlr_el[1], 38, 2)
++                            << TARGET_PR_MTE_TCF_SHIFT);
++                    ret = deposit64(ret, TARGET_PR_MTE_TAG_SHIFT, 16,
++                                    ~env->cp15.gcr_el1);
++                }
+                 return ret;
+             }
+ #endif /* AARCH64 */
 -- 
 2.25.1
 

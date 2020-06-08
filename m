@@ -1,146 +1,117 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp5232041lfc;
-        Mon, 8 Jun 2020 09:37:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyXIqb/8kEvSVKuHk7B1S3dcXM7pf9hF6WRXOhKRhT9sDdjoj7Gye7ql7rAyWGccJjv9KsT
-X-Received: by 2002:a25:abd2:: with SMTP id v76mr32275581ybi.463.1591634230339;
-        Mon, 08 Jun 2020 09:37:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591634230; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp5244704lfc;
+        Mon, 8 Jun 2020 09:55:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz/Q8sEU4+mt7hq7858gjdI5fYKulaZErvC2WpBptxdVa6etg+qOrnFEkKpyrxqA7kf651P
+X-Received: by 2002:a25:2604:: with SMTP id m4mr38421820ybm.470.1591635332698;
+        Mon, 08 Jun 2020 09:55:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591635332; cv=none;
         d=google.com; s=arc-20160816;
-        b=s6ANVKWD9ZekUC6uiHdCashMnTJvoQWvgdNqmXnaNOhAtQDtJLLMWeMfLE41h0Y5NS
-         DYy8NVNa0GENWxupQ0p0m62CRAMR6qogdtnihZ+I661j6h74ZlBauZ6QC9H9bGKRKvtx
-         WWuYgCYS2WpEbtxjWnoZIKdyUQL6xsHuH4SkYklYVsrZ3svpjtT2IgbTSX/919wnePL8
-         HvWAPgYj6TRtqBy41mkBvsy+0U6dgmhEOKE4BQxAxAAABb3qBzCdKL7hvS5aIgllG6Z8
-         LbDd5grTCth48TB1qeUlSPnL5xrm9ICRI1fglpuBIIryrfQawTh4MkLbsb+EKkGvu98c
-         XEKQ==
+        b=C9tbNWi0Y4sk4FcyZA+5e4MridTvke20ssM4AQUL/VyshUc4mH9FIX0gRH/fq/Z3Jk
+         DTmz+mPBzm+K0TV6nm5V6WXbzsnHrl4HZJTg6SwtteVlWYYOm9+QfCi6MFLyqUuqU4j9
+         9ZP1rzMUkoDmmLzRzD4rstwidSGMf2Qxt1a8aDCe6LTPigXLkRmstLNRb18pynHRG74v
+         kvJtYC0t1B8eRO2KZ7MW5c23XAFNPzOnbT1QlIIiiEzqyq47/2XSuPxeWQCa5uehvnMw
+         pq25gnAtPmmuJySoRiGm0XfZ8gyHyFiY87+XlKulSi88cLaSrtF9Td3sAfZx7/4eHKBM
+         b0kQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=1jLMVbVyOeQVt3DxZyMkiZa3v5bA58Ubvf1vYrVyoKY=;
-        b=0NINYuhpQ+eZpIObffRGehLAYkySyRm656cM367K6eNYj95YQRHkm1inx/aTGxbx2r
-         mtFcTGbZf8pv5WbKV8HlhI44zYY3p/bmnvJmuNRKK64Up/lxoZV5wMBagERSIij4N/Wp
-         aV4MCFTaV7eypZz46TCxZGXR/MM6YoIIW5/au63y1GDVNZSfhC/vAsdl09g0LjYJvoGF
-         u/+gKnoMAy1R/NVvPqOjJWgGL0W4pkXLF29/0hdQbmlmvKVLigQDixq9OKkPXDTEyFvr
-         ghc5qSXXyuopAtu0gd2uVR2A//AAC5dTv2IVGJyC+1E5ZIDF/Qz7NsdQU0XhlQeUUAfs
-         YuJw==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:thread-index
+         :content-language:content-transfer-encoding:mime-version:message-id
+         :date:subject:in-reply-to:references:to:from:dkim-signature;
+        bh=oNB6pAr4fcRFpfN0vgO3R/SPq1U20RR7okPBo0+FgUE=;
+        b=otDAvGtMTgQZn+CC3ZCOy8ZC6eqlaNUTm9qlXEF+von1nsEO7tjZx9XVyxAE3GEJIr
+         eGfAP0EJSRuviDcnBdZZbn0vF9FxJFvFnYnTjPF7zA9KDe1IqysuB0PmNjimboIfApIk
+         LGpjt7pnBSWmbiOfBwq0uY+3oMue6VNn5d/aFpR25tk+UoFIDeQ1F9JFnIa/CbQGWAc8
+         n+FIbN5wqaSwPsTABrqmOwaJPPTE1ihkNWnxqMzVIWy4f9VHIAxT+mAsawi7D0ULIl1H
+         3/OeObVHlDDLjA2SmIgiFdtkmEkVn9lR/YHFBUgLS8eRWZ4ZRe66XyURNKix9HQxcxJw
+         2TLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JRcWnRER;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TAfmK0oQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r134si142681ybc.194.2020.06.08.09.37.10
+        by mx.google.com with ESMTPS id j11si156266ybt.84.2020.06.08.09.55.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jun 2020 09:37:10 -0700 (PDT)
+        Mon, 08 Jun 2020 09:55:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JRcWnRER;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TAfmK0oQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53570 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:33550 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiKlp-0007PM-NA
-	for alex.bennee@linaro.org; Mon, 08 Jun 2020 12:37:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39730)
+	id 1jiL3b-0001FQ-Vd
+	for alex.bennee@linaro.org; Mon, 08 Jun 2020 12:55:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45328)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jiKT5-0003Xm-9S
- for qemu-arm@nongnu.org; Mon, 08 Jun 2020 12:17:47 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:59573
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jiKT4-0002f1-7j
- for qemu-arm@nongnu.org; Mon, 08 Jun 2020 12:17:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591633065;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=1jLMVbVyOeQVt3DxZyMkiZa3v5bA58Ubvf1vYrVyoKY=;
- b=JRcWnRERdA858LJdWhdyW/963/iUinf3bTRO/Rw/ewmQTBXoxSYMDveEn8Q6NiiyKseU9Z
- yNjvWHZMf+Smy3BK2A64FcPnNJhXdFj9N1V9m3qHQGkWtqTHBThgvfE16rBfFNW9A6G/EB
- MV5mwSMpzwST2Cx6q8tbjSNhNXjtSbo=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-164-3YL_rfdPOwuSW06fDq1RBw-1; Mon, 08 Jun 2020 12:17:43 -0400
-X-MC-Unique: 3YL_rfdPOwuSW06fDq1RBw-1
-Received: by mail-wr1-f69.google.com with SMTP id l1so7351851wrc.8
- for <qemu-arm@nongnu.org>; Mon, 08 Jun 2020 09:17:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
+ id 1jiL3G-0001Co-6O; Mon, 08 Jun 2020 12:55:10 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35818)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
+ id 1jiL32-0000ht-ND; Mon, 08 Jun 2020 12:55:09 -0400
+Received: by mail-wm1-x343.google.com with SMTP id q25so245584wmj.0;
+ Mon, 08 Jun 2020 09:54:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:reply-to:to:cc:references:in-reply-to:subject:date:message-id
+ :mime-version:content-transfer-encoding:content-language
+ :thread-index; bh=oNB6pAr4fcRFpfN0vgO3R/SPq1U20RR7okPBo0+FgUE=;
+ b=TAfmK0oQkeSGz62TuViy7NuLCNk1BF68l8xbAdU7an1ZC1hVV98IKOoRjmqyaTwVAN
+ +in5sBo54K9vZ+PoT5Dju2DDOh9ml4x74mKWFDeR19EFjNT+Klc17086J5unyRp6crm0
+ iX59NmiKjPexLajwu2LCbDjom1z4V5Ya7Tr/x9a2tD7WOo4+qq200GMJWH+At1YTWsbM
+ +wJH2TSrIVK7d5tnTy4ZVb1OjT049f7NavDysekPgvsZp+8YL5JJqDIx0twx4zpgFLUZ
+ BUPmA4rk/i0fKuA7MEpGHm8R9boPmkow/IyBFJZL0415yukucMZFCcEQRzyZerGGqu0H
+ ++ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=1jLMVbVyOeQVt3DxZyMkiZa3v5bA58Ubvf1vYrVyoKY=;
- b=r5gCqgh4NS+qOEPG31cN0bKwVNXGGimeiW7ZhdvCXhr503BNS54tZ6arUbKEhIw07X
- V37zU+2u2nbjHwQHpVYex9FYkjyx+UfhAhtzyGXpstf8h+0fWgSdiknbVVY8qiDOrbJr
- pHwXUyFwGL+Qi+mUZNkL39jEiMHcIQiFET0e5FFDIl1+8CqL2SwjIw06dXzaT4HrOA5C
- ztj+XUL/gC6KZahRQafVOwxGwt4mV69JJ4mHf+aYdrH4+OfY5ucL5GxuI9adAjrwd5pn
- g0ub6YGbiutXafzxWI0ViIF/EvhVQSp6X9DIJvdPSiNAzMZdC4+GkHI815jc/aU0XBzH
- 4Vvg==
-X-Gm-Message-State: AOAM532b3ihsYEmHE1/Vhf3EaZ7cYc2L8zU9Ult2dsx0/Pfi1oBMzUs1
- jpIjehWraRGOck5C6G/JPYfoeaHQMWjEkTPi1iUJBvQhar92svL2sddpcj0+4vtlogH9Nmga6Yv
- CCzbvnKvfso9N
-X-Received: by 2002:a1c:1f48:: with SMTP id f69mr104667wmf.67.1591633062298;
- Mon, 08 Jun 2020 09:17:42 -0700 (PDT)
-X-Received: by 2002:a1c:1f48:: with SMTP id f69mr104619wmf.67.1591633062031;
- Mon, 08 Jun 2020 09:17:42 -0700 (PDT)
-Received: from [192.168.1.38] (181.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id k21sm247677wrd.24.2020.06.08.09.17.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 08 Jun 2020 09:17:41 -0700 (PDT)
-Subject: Re: [RFC PATCH 00/35] hw/qdev: Warn when using pre-qdev/QOM devices
-To: Peter Maydell <peter.maydell@linaro.org>
+ h=x-gm-message-state:from:reply-to:to:cc:references:in-reply-to
+ :subject:date:message-id:mime-version:content-transfer-encoding
+ :content-language:thread-index;
+ bh=oNB6pAr4fcRFpfN0vgO3R/SPq1U20RR7okPBo0+FgUE=;
+ b=caPW/ILB+sQl1KTOUupbXUumWUywu9CuEMZrVwOpvGWFA5jRFMZIpznHcV/FTtC9Mq
+ 7R/Q07s1zKhlm2jbf1g+jBb/khN/+Wvh9APuJfZ11pxqZVs5VzGiAS+Ue/VeCIFvz9wR
+ GtOzketXZCmhArs6bfNxYTmVc8ThpwVJhZNHycypjY2Lue264BOWggxkKftIMpDTWA4i
+ WHbnNn/FvPHMvzFNR76DCpUnlxOW2M488hGkweAR3jlzs2gG/Aq9kRU9IVES/hXM3Nj+
+ VSP85ixUQGtFC+A4PfUnoxvZVoy1YCZb6Tc0S3RWz788GqiV5Hm4uaocdU9fU5o0y2VB
+ wiwA==
+X-Gm-Message-State: AOAM532mzw7cf7+1a06FmRFd5ArI+74YoxKxUIdg7REWGV1FPOdnhiol
+ rvDaDauNekHA3XzcOfgs3qU=
+X-Received: by 2002:a1c:4e17:: with SMTP id g23mr274089wmh.38.1591635293576;
+ Mon, 08 Jun 2020 09:54:53 -0700 (PDT)
+Received: from CBGR90WXYV0 ([54.239.6.185])
+ by smtp.gmail.com with ESMTPSA id s72sm120153wme.35.2020.06.08.09.54.50
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 08 Jun 2020 09:54:52 -0700 (PDT)
+From: Paul Durrant <xadimgnik@gmail.com>
+X-Google-Original-From: "Paul Durrant" <paul@xen.org>
+To: =?utf-8?Q?'Philippe_Mathieu-Daud=C3=A9'?= <philmd@redhat.com>,
+ <qemu-devel@nongnu.org>
 References: <20200608160044.15531-1-philmd@redhat.com>
- <CAFEAcA_Ni8=mvyfG=9Aa=ym-ae9HpP8J8B0ekm8=SN2WgZ6_vA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <81653f82-484b-a04a-7b2c-1362a724d0e8@redhat.com>
-Date: Mon, 8 Jun 2020 18:17:39 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ <20200608160044.15531-16-philmd@redhat.com>
+In-Reply-To: <20200608160044.15531-16-philmd@redhat.com>
+Subject: RE: [RFC PATCH 15/35] hw/i386/xen/xen-hvm: Emit warning when old code
+ is used
+Date: Mon, 8 Jun 2020 17:54:49 +0100
+Message-ID: <004b01d63db5$87a83110$96f89330$@xen.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_Ni8=mvyfG=9Aa=ym-ae9HpP8J8B0ekm8=SN2WgZ6_vA@mail.gmail.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 11:58:00
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailer: Microsoft Outlook 16.0
+Content-Language: en-gb
+Thread-Index: AQFYw0U0oKWIX6kmOq5Lq1JhZGgcHAJ29BtBqbYsFpA=
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=xadimgnik@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -153,45 +124,111 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>,
- Magnus Damm <magnus.damm@gmail.com>, Markus Armbruster <armbru@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Anthony Perard <anthony.perard@citrix.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Andrzej Zaborowski <balrogg@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
- "open list:X86" <xen-devel@lists.xenproject.org>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>, Stafford Horne <shorne@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Richard Henderson <rth@twiddle.net>,
- "Daniel P . Berrange" <berrange@redhat.com>, Thomas Huth <huth@tuxfamily.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Michael Walle <michael@walle.cc>, qemu-ppc <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Reply-To: paul@xen.org
+Cc: 'Peter Maydell' <peter.maydell@linaro.org>,
+ 'Sagar Karandikar' <sagark@eecs.berkeley.edu>,
+ "'Michael S. Tsirkin'" <mst@redhat.com>,
+ 'Mark Cave-Ayland' <mark.cave-ayland@ilande.co.uk>,
+ 'Max Filippov' <jcmvbkbc@gmail.com>,
+ 'Alistair Francis' <Alistair.Francis@wdc.com>,
+ 'Gerd Hoffmann' <kraxel@redhat.com>,
+ 'Stefano Stabellini' <sstabellini@kernel.org>,
+ 'Magnus Damm' <magnus.damm@gmail.com>, 'Markus Armbruster' <armbru@redhat.com>,
+ 'Marcel Apfelbaum' <marcel.apfelbaum@gmail.com>,
+ 'Anthony Perard' <anthony.perard@citrix.com>,
+ =?utf-8?Q?'Marc-Andr=C3=A9_Lureau'?= <marcandre.lureau@redhat.com>,
+ 'David Gibson' <david@gibson.dropbear.id.au>,
+ 'Andrzej Zaborowski' <balrogg@gmail.com>,
+ 'Eduardo Habkost' <ehabkost@redhat.com>,
+ 'Alistair Francis' <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org,
+ 'Stafford Horne' <shorne@gmail.com>, 'Palmer Dabbelt' <palmer@dabbelt.com>,
+ 'Richard Henderson' <rth@twiddle.net>,
+ "'Daniel P . Berrange'" <berrange@redhat.com>,
+ 'Thomas Huth' <huth@tuxfamily.org>,
+ 'Bastian Koppelmann' <kbastian@mail.uni-paderborn.de>,
+ 'Michael Walle' <michael@walle.cc>, qemu-ppc@nongnu.org,
+ 'Paolo Bonzini' <pbonzini@redhat.com>, 'Aurelien Jarno' <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6E6Ie78qxgac
+X-TUID: 8JLOlv+wm7Ct
 
-On 6/8/20 6:14 PM, Peter Maydell wrote:
-> On Mon, 8 Jun 2020 at 17:00, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>
->> Based on today's IRC chat, this is a trivial RFC series
->> to anotate pre-qdev/QOM devices so developers using them
->> without knowing they are not QOM'ified yet can realize
->> it and convert them if they have time.
-> 
-> What mechanism did you use for identifying non-QOM devices?
+> -----Original Message-----
+> From: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Sent: 08 June 2020 17:00
+> To: qemu-devel@nongnu.org
+> Cc: qemu-arm@nongnu.org; Markus Armbruster <armbru@redhat.com>; Max =
+Filippov <jcmvbkbc@gmail.com>;
+> Marcel Apfelbaum <marcel.apfelbaum@gmail.com>; Peter Maydell =
+<peter.maydell@linaro.org>; Michael Walle
+> <michael@walle.cc>; Edgar E. Iglesias <edgar.iglesias@gmail.com>; =
+Aurelien Jarno
+> <aurelien@aurel32.net>; Gerd Hoffmann <kraxel@redhat.com>; Stafford =
+Horne <shorne@gmail.com>; Andrzej
+> Zaborowski <balrogg@gmail.com>; qemu-ppc@nongnu.org; Alistair Francis =
+<alistair@alistair23.me>;
+> Richard Henderson <rth@twiddle.net>; Mark Cave-Ayland =
+<mark.cave-ayland@ilande.co.uk>; Marc-Andr=C3=A9
+> Lureau <marcandre.lureau@redhat.com>; Daniel P . Berrange =
+<berrange@redhat.com>; qemu-
+> riscv@nongnu.org; Michael S. Tsirkin <mst@redhat.com>; =
+xen-devel@lists.xenproject.org; Sagar
+> Karandikar <sagark@eecs.berkeley.edu>; Anthony Perard =
+<anthony.perard@citrix.com>; Palmer Dabbelt
+> <palmer@dabbelt.com>; Stefano Stabellini <sstabellini@kernel.org>; =
+Paul Durrant <paul@xen.org>; Paolo
+> Bonzini <pbonzini@redhat.com>; Alistair Francis =
+<Alistair.Francis@wdc.com>; Eduardo Habkost
+> <ehabkost@redhat.com>; Thomas Huth <huth@tuxfamily.org>; Bastian =
+Koppelmann <kbastian@mail.uni-
+> paderborn.de>; David Gibson <david@gibson.dropbear.id.au>; Magnus Damm =
+<magnus.damm@gmail.com>;
+> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Subject: [RFC PATCH 15/35] hw/i386/xen/xen-hvm: Emit warning when old =
+code is used
+>=20
+> This code hasn't been QOM'ified yet. Warn the user.
 
-I don't think this is the complete list, this is only all the one I
-could find with:
+"Based on today's IRC chat, this is a trivial RFC series
+to anotate pre-qdev/QOM devices so developers using them
+without knowing they are not QOM'ified yet can realize
+it and convert them if they have time."
 
-  $ git grep "g_new|g_malloc" hw/
+So, how should this be coded then? The XenIOState doesn't really qualify =
+as a 'device', does it?
 
-Then on each match I manually reviewed (so I might have incorrectly
-flagged code too).
+  Paul
+
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/i386/xen/xen-hvm.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+> index 82ece6b9e7..a1163b1529 100644
+> --- a/hw/i386/xen/xen-hvm.c
+> +++ b/hw/i386/xen/xen-hvm.c
+> @@ -31,7 +31,7 @@
+>  #include "sysemu/xen-mapcache.h"
+>  #include "trace.h"
+>  #include "exec/address-spaces.h"
+> -
+> +#include "hw/qdev-deprecated.h"
+>  #include <xen/hvm/ioreq.h>
+>  #include <xen/hvm/e820.h>
+>=20
+> @@ -1401,6 +1401,8 @@ void xen_hvm_init(PCMachineState *pcms, =
+MemoryRegion **ram_memory)
+>      xen_pfn_t ioreq_pfn;
+>      XenIOState *state;
+>=20
+> +    qdev_warn_deprecated_function_used();
+> +
+>      state =3D g_malloc0(sizeof (XenIOState));
+>=20
+>      state->xce_handle =3D xenevtchn_open(NULL, 0);
+> --
+> 2.21.3
+
 

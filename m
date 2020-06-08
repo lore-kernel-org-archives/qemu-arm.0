@@ -1,97 +1,100 @@
-Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp2048516qvs;
+Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp2048519qvs;
         Mon, 8 Jun 2020 04:40:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz7RX+T5eUGgG2uoxqotx4ZUjiMjgsWpqqbQDsTIODD3bVSo0FEum9aYV1ZvJwkQ6ooKoQm
-X-Received: by 2002:a25:4ac9:: with SMTP id x192mr39864512yba.172.1591616454210;
+X-Google-Smtp-Source: ABdhPJwVvt2esa74eyYHOssC8DS2ZBRAJZ5F1J1LcYmBwDCags9+W4pXh4KFHyz+5QXvuG3b+A5q
+X-Received: by 2002:a25:3295:: with SMTP id y143mr36693660yby.321.1591616454529;
         Mon, 08 Jun 2020 04:40:54 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1591616454; cv=none;
         d=google.com; s=arc-20160816;
-        b=KhXQlIxiMJfOn9EdfQEIPOns4sioXtUj0ua5jxjiY3nSXutRZnFAf+RJFzSZ3BvtgM
-         sVXWm/r2e/4+S/nYUf+RKzeIcveo3iCGnxHeqd2SR4D5GY7N5cBXkeZ8oUNKyATalF9Z
-         sC2AZzJGaSnb/Na5TAhtd7q/hlST1BLbVLSo/esx41acUuzUGisRyvWHbfw4P0ZuTlbL
-         lu2QyY4ICL/IX14n7CRlkOOfK8BO0zCao0Kb4v03hRo04mZsKu0LyQWopHXvfNB6t0tc
-         Vznz8R57qOGPQ693YK8jWgublpkOMDPO7xWj8bCL48U6k/umNbWk2Y6/VMptsuxv9TBi
-         FkMA==
+        b=RUPGcy4NE9v6QyvF/BUAn10MtxWcntVDHwifoRKUW4xDtTSO6FYlfoIt5w9HuR9ior
+         W+AO46vgmd0zo38FxfctUEFBiJNU+xTnoLidTS6RsPqqEj3Kl4Bjs/PXZ0klfEyvvw7C
+         Edp+gMUflCyrrME+DX1pjLUAqQye3K3oTwGM515Bvm9Mjhvb6d7CnE2y5kUrpvfw301o
+         OGd00PMaj1+9u7J01bXY2hiD2eKDJskKgmYDkc/J41ExmjclVCn0YFjVAnXvZ7w94532
+         zWeLWjYr/egCxLsKRgHFnYZvtn+KRK9v3fvsPtoltun6X8GZqIYK7zA2WhjoZUDrtPaF
+         Pwyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=j5UtYOhp6/GoKwnx2MtNQCzJMyI+rDSpVdvwADTk754=;
-        b=KAXKPlF9n3UZkDzFiPgDfZ4aNEPXzefg2Z6JqpgmETCjw/Wph30p42kUtyBMc0SQm1
-         9dHd6oB1XPALTVE5JyfCZtfTew3cYr4YDckhBxXt1eV04237e88OzbP+XnEFts+8n5Si
-         Jp/q8b0zRklrHWwDW9k+FEWK6VpmhZJWQ/aeRvyJne9yh/a0HLmTAFvW5sHK4xPiv69p
-         dTgxhb743HlycCS0MWzaTF+chMEJBgVneI1j31tT8oQPe4/D7Nhd9xeKVIHnfbqGpkiG
-         R5+Jva/7goZDhAqFjnZOUu+VUWYdEy81G8qYiz8AwRtaAav2WwKs2KoAezXPQrBVvdRN
-         1dVw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=r1862+GaCeD5wjtcdsVBrJdgJrDEKBNZHNQ90XZwnrY=;
+        b=I3H/d9eLyu3PdovViFFEMJhUgv6Sht+lGL5XWh6iP3r6N8lCLd7Nn/AOPg9sFX5lLf
+         ulv+zu5kDqIdb/r1K5a3CLKz+LX99bjQHRazHfCPWBTRK6j5vM7OF82fv9ZRiOCltbdX
+         Sk4R32n1QmxcmoIjsHCGs3n9vVG7p3NaDOXKH4oJdhucQE33aNWVR9lbDHKBwtO+dhhY
+         n+ZP8OX4unMzaryZc4risZX/ekSv30ywlAzEQ4um7j4NeWtcBpcfQhKbhxZ1FFPXHETX
+         2B6RVo3C4zvVPxefR3qoRg+zBkv1eJG9qJh8SwSpjdSXQarVpFJHCZmTBStqikMOT2l6
+         vmZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=kGYvFTnd;
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=xL+R7nqn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7si7944126ybl.92.2020.06.08.04.40.54
+        by mx.google.com with ESMTPS id o137si6946747ybg.278.2020.06.08.04.40.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 08 Jun 2020 04:40:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=kGYvFTnd;
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=xL+R7nqn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57814 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57866 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiG97-0008Af-Fa
+	id 1jiG97-0008CX-Uz
 	for alex.bennee@linaro.org; Mon, 08 Jun 2020 07:40:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33522)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33538)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1jiG8n-000870-T7
- for qemu-arm@nongnu.org; Mon, 08 Jun 2020 07:40:33 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:34101)
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1jiG8p-00088W-VM
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2020 07:40:35 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:46852)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1jiG8m-0003cT-IH
- for qemu-arm@nongnu.org; Mon, 08 Jun 2020 07:40:33 -0400
-Received: by mail-wm1-x344.google.com with SMTP id u26so14085997wmn.1
- for <qemu-arm@nongnu.org>; Mon, 08 Jun 2020 04:40:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1jiG8o-0003cv-K9
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2020 07:40:35 -0400
+Received: by mail-wr1-x442.google.com with SMTP id x6so16963780wrm.13
+ for <qemu-arm@nongnu.org>; Mon, 08 Jun 2020 04:40:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=j5UtYOhp6/GoKwnx2MtNQCzJMyI+rDSpVdvwADTk754=;
- b=kGYvFTndVUoixHaTQNiGWVM2XXFajezAKBT6qIS5cdyzyvuWXrGfLTaQCjavbfWcSi
- 2gc2W7p/4twtfTuHe8v/E1REX3wWbLb1n/y0KnndLvZ/m+JnPk5WYowKvtwZ252FBoT/
- w/O5cqVuI7Pr+JuPkgrUZ7J1STszaPzHS2sxmBkRn/3fW8odmWsaOtDlzChI8fp67s4e
- mW4hy2fccC3idspT71qt3VoW26V2e1avwKtaTbmRD8uzTYgb9bZI2rVvfLyQZLJmXP26
- Hs/z4q7/NqBpM7UybZHUpVt+kA+fHPv7iAu4I1FFjX2yFWpvevVWJSASIUB92W4tf0Qw
- FyBQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=r1862+GaCeD5wjtcdsVBrJdgJrDEKBNZHNQ90XZwnrY=;
+ b=xL+R7nqnPTn/XmS1NNzKgIxtOkDDz4dJJViyl137ms4PuuS1x+jwT+qYCzLwpuVmkh
+ w87WTK5XyCQmQDoMxJE1gq+JJ74iTkJjf+rMKoHyOXXwW2xgYUrr486S3XQ8fKeUGPnO
+ YzJ5BXLLxLy5eHuv0XKiUnmMKKN7xQOvhblxV4CWXzRxwPqDGhaG1xGsqeWdbpbApRRA
+ +/hpl/WCuMQ5HyuGd9qfm+AwWm47a3iZUGOIH8lYbRj4/r+sJXM0iO6054yNkUd0Lvhz
+ DEjqubtxD165ZEt0l6BvupxQ4m481ZrO4S3JJK99K8omRFg/CRwtDrCQssM9eiPln5Ru
+ HUfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=j5UtYOhp6/GoKwnx2MtNQCzJMyI+rDSpVdvwADTk754=;
- b=Ytbt7T23mv43uptp0sEptxvrJZBWLkAFknW1X/WhZjBWTUvHz1jFhNCIqkFOTHavru
- QNExKqh+oSrnyzJXwSPk24MzZkwRxPFpCRtlJQwU5ilcfAhm+r1xqpm2b8NGmZCWImoU
- Qv0TW6vGJvbNKHcSwwpX0yK8p48753GMwnUABBOWcx8gAIA1JhMk1NqSZ5o0MI/IvRlR
- BLSKC9EzNMxBGJ9tVHElcADw0oaN+ntY3IpFlVxd2yGNRMC2z1XW8w8gHCs/+q5W5dNr
- 4qxYHwQysk0KgWszNxpnkstgOm1lxzpABu6Z8hs+lQpxzqIGxcLiuUC56IaSUJBC/lwy
- PhFQ==
-X-Gm-Message-State: AOAM530rHlrGx23OZueAtodTVYt3vco3v5Ve/9uhI3WEvhaRqX61/V2T
- Cn1Yd0yWkXi5lqtKkpe4MQCCDA==
-X-Received: by 2002:a1c:2b01:: with SMTP id r1mr6905735wmr.26.1591616430263;
- Mon, 08 Jun 2020 04:40:30 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=r1862+GaCeD5wjtcdsVBrJdgJrDEKBNZHNQ90XZwnrY=;
+ b=fJckdOKYnysCdBmT7yZwWgRwcEccTzyS0/2vACa3z+wT9lbH0GHPAkf4+uoCIRt+0R
+ ViA/eAcjcx1YsPbDmE4ygpNIV4xrI1Q9qZkNCExlF3tEUOkk4s03WI4PqrC+IC4sSCco
+ SNDfzvBjTwpzJQ4JQTcCI1cMTqVdvSHuR/7RNkh6aLBORcxlFJecPyNHD1bbMXQ73Lyl
+ 6A5hHl0nlFE8kA+K4LwuOc0ScPs7kR20EBBV/PFN+/UVeX+JX032Fhg/2CHV5UBnW1Os
+ 5gG7Ui7zPA4+z8Dpvu3DV7F7p8M/bcumZ2wgaU0EH1Nb8yA2ov4zwyuk5HQ58vs0vNWN
+ keRA==
+X-Gm-Message-State: AOAM532sbtWcif4/uIoKTN87Uadjwnv8h/KhvWtm6HoQ3xHNFFfmYXlk
+ v4GcwNcZadHqcN7OnjBW/6yef/lkqOU=
+X-Received: by 2002:a05:6000:1c7:: with SMTP id
+ t7mr22944357wrx.14.1591616433083; 
+ Mon, 08 Jun 2020 04:40:33 -0700 (PDT)
 Received: from vanye.hemma.eciton.net
  (cpc92302-cmbg19-2-0-cust304.5-4.cable.virginm.net. [82.1.209.49])
- by smtp.gmail.com with ESMTPSA id y5sm24225932wrs.63.2020.06.08.04.40.29
+ by smtp.gmail.com with ESMTPSA id y5sm24225932wrs.63.2020.06.08.04.40.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Jun 2020 04:40:29 -0700 (PDT)
+ Mon, 08 Jun 2020 04:40:32 -0700 (PDT)
 From: Leif Lindholm <leif@nuviainc.com>
 To: QEMU Developers <qemu-devel@nongnu.org>
-Subject: [RFC PATCH 0/3] target/arm: move common aarch64 init to helpers and
- make cpu max standalone
-Date: Mon,  8 Jun 2020 12:40:25 +0100
-Message-Id: <20200608114028.25345-1-leif@nuviainc.com>
+Subject: [RFC PATCH 3/3] target/arm: use cortex...common_init for cpu64 max
+Date: Mon,  8 Jun 2020 12:40:28 +0100
+Message-Id: <20200608114028.25345-4-leif@nuviainc.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200608114028.25345-1-leif@nuviainc.com>
+References: <20200608114028.25345-1-leif@nuviainc.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=leif@nuviainc.com; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=leif@nuviainc.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -18
@@ -116,45 +119,87 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
  qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CzsEWf3fjV8q
+X-TUID: FfcbEm3rGczf
 
-As a follow-up to the thread that started with
-https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg01018.html
+Drop the call to aarch64_a57_initfn from aarch64_max_initfn, replacing it
+with calls to aarch64_cpu_common_init and cortex_a72_a57_a53_common_init.
 
-Most of the a57/a53/a72 init functions is currently identical lines,
-with some individual options set up differently.
+Cache and GIC configuration is now set directly, using aarch64_a72_initfn
+as a template.
+Set cpu->dtb_compatible to "qemu,aarch64-max".
 
-Some of that duplication can be considered to be likely to apply to
-any (or at least the majoroty of) aarch64 processors to be added in
-the future.
+This has the following effects apart from the ones mentioned above:
+- kvm_target will no longer be explicitly initialized for cpu max in tcg
+  mode.
+- id_mmfr0 will now be set to an architecturally permitted value.
+- define_arm_cp_regs() is no longer called, since those registers are
+  implementation defined and specific to the supported cortex-a
+  processors.
 
-And finally, the "max" cpu init function currently calls the a57 one,
-with some non-obvious side effects including:
-- cpu dtb_compatible string set to "arm,cortex-a57"
-- kvm_target set (to A57 value) in tcg mode
-- id_mmfr0 containing a value present in real A57 cpus of the revision
-  qemu emulates, but banned by the architecture specification
-- emulating implementation-defined cortex cp registers
+Signed-off-by: Leif Lindholm <leif@nuviainc.com>
+---
+ target/arm/cpu64.c | 24 +++++++++++++++---------
+ 1 file changed, 15 insertions(+), 9 deletions(-)
 
-This series:
-- Creates a common initialization function for all aarch64 cpus, which
-  also sets up the MIDR.
-- Creates a common initialization function for the cortex cpus defined
-  in cpu64.h.
-- Detaches the "max" cpu from the A57 init, making use of both of the
-  above helper functions.
-- Can definitely be split up into additional patches (especially 3/3).
-
-Leif Lindholm (3):
-  target/arm: commonalize aarch64 cpu init
-  target/arm: move cpu64 cortex processor common init settings to
-    function
-  target/arm: use cortex...common_init for cpu64 max
-
- target/arm/cpu-qom.h |   3 +
- target/arm/cpu64.c   | 155 ++++++++++++++++++-------------------------
- 2 files changed, 66 insertions(+), 92 deletions(-)
-
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 9927c1f75d..452efe78bf 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -561,26 +561,20 @@ static void aarch64_max_initfn(Object *obj)
+     } else {
+         uint64_t t;
+         uint32_t u;
+-        aarch64_a57_initfn(obj);
+ 
++        cpu->dtb_compatible = "qemu,aarch64-max";
+         /*
+          * Reset MIDR so the guest doesn't mistake our 'max' CPU type for a real
+          * one and try to apply errata workarounds or use impdef features we
+          * don't provide.
+          * An IMPLEMENTER field of 0 means "reserved for software use";
+-         * ARCHITECTURE must be 0xf indicating "v7 or later, check ID registers
+-         * to see which features are present";
+          * the VARIANT, PARTNUM and REVISION fields are all implementation
+          * defined and we choose to define PARTNUM just in case guest
+          * code needs to distinguish this QEMU CPU from other software
+          * implementations, though this shouldn't be needed.
+          */
+-        t = FIELD_DP64(0, MIDR_EL1, IMPLEMENTER, 0);
+-        t = FIELD_DP64(t, MIDR_EL1, ARCHITECTURE, 0xf);
+-        t = FIELD_DP64(t, MIDR_EL1, PARTNUM, 'Q');
+-        t = FIELD_DP64(t, MIDR_EL1, VARIANT, 0);
+-        t = FIELD_DP64(t, MIDR_EL1, REVISION, 0);
+-        cpu->midr = t;
++        aarch64_cpu_common_init(obj, 0, 'Q', 0, 0);
++        cortex_a72_a57_a53_common_init(cpu);
+ 
+         t = cpu->isar.id_aa64isar0;
+         t = FIELD_DP64(t, ID_AA64ISAR0, AES, 2); /* AES + PMULL */
+@@ -680,12 +674,24 @@ static void aarch64_max_initfn(Object *obj)
+          * and enabling SVE in system mode is more useful in the short term.
+          */
+ 
++        cpu->reset_fpsid = 0x41034080;
++        cpu->clidr = 0x0a200023;
++        cpu->ccsidr[0] = 0x701fe00a; /* 32KB L1 dcache */
++        cpu->ccsidr[1] = 0x201fe012; /* 48KB L1 icache */
++        cpu->ccsidr[2] = 0x707fe07a; /* 1MB L2 cache */
++        cpu->gic_num_lrs = 4;
++        cpu->gic_vpribits = 5;
++        cpu->gic_vprebits = 5;
++
+ #ifdef CONFIG_USER_ONLY
+         /* For usermode -cpu max we can use a larger and more efficient DCZ
+          * blocksize since we don't have to follow what the hardware does.
+          */
+         cpu->ctr = 0x80038003; /* 32 byte I and D cacheline size, VIPT icache */
+         cpu->dcz_blocksize = 7; /*  512 bytes */
++#else
++        cpu->ctr = 0x8444c004;
++        cpu->dcz_blocksize = 4; /* 64 bytes */
+ #endif
+     }
+ 
 -- 
 2.20.1
 

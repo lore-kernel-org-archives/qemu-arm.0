@@ -1,75 +1,97 @@
-Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp2129831qvs;
-        Mon, 8 Jun 2020 06:35:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwH1XN6I8g4mEbQqa3V8o6JyOj3nQlGskBVB/YfympClixY6u6fHrK8gi84eFkRuFUC8H89
-X-Received: by 2002:a25:ef42:: with SMTP id w2mr32353947ybm.50.1591623340410;
-        Mon, 08 Jun 2020 06:35:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591623340; cv=none;
+Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp2140591qvs;
+        Mon, 8 Jun 2020 06:50:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz0Vzds5MmfwY8oKTAqysV3Y4bsB0ae+9R+UuVsrcFO6V3ZJaNi4Opz0ARgfM4FdFOfqOuq
+X-Received: by 2002:a25:af10:: with SMTP id a16mr6369157ybh.121.1591624215388;
+        Mon, 08 Jun 2020 06:50:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591624215; cv=none;
         d=google.com; s=arc-20160816;
-        b=gQptpDZTVR7veGAN2h5Wme3mtdTLXCksRG2v14o4MO+ACV08tc83+3TilsNPVlUD5D
-         jUcDlvFGFWV+6WDyq3r9HWAFWzDDGcQMp5I0SCaR/CMhE4rVhVCskeMWmxV1ERxBdPmS
-         knePGCZVP/wyJKMHGP9C7ng7L2Je0K6w5rAtzbpp+Qay18cqjSZy5pXR8Mo0mhYYm7Vy
-         1F3tVs4VcAlN6YF4rJ+KXueoOv6uN0ZZqfbt5gIDWo4N5LGDF5Rw+Eq/6osJv0bTGrRP
-         /UYAxoygTINhMkFHHOemb8g8VK7WzjekefE64Ns6dBbzb7ED51wnnUZxUYffHQNhMKxN
-         Pmkg==
+        b=aH5jLUJFDKAplWUunW0u/075Taj3BI4nkjSfcCTDKr7uuD0sBAE7hT0cMB4DuWQZmB
+         V8Yq/fn36NiJxFzk8nw5SDRNpEe07D1KZVg/tEtC5lLQNXtqS8QlW02j2NyOtLYu77sB
+         1zz+aXX77J7wbOk0lPfIklgE8Vjc6VW1DIDp3e3PLpMju6gjkJ7XUdqBU6ka5baRoviv
+         QenoKHRjclHD9IrI/ONdufCl+BShsk7exFc54SdfHQKXhU78PSE4OncCWFYgc4bGi4RX
+         YzDa/oSHMkyFyGRsCuXmzTkF8fJS0sCnPqgCIrzk/Hn4hfIgIi3LWhUlQNFXqrPdgjtS
+         ERaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=0b3kE8bZl0vkHsQhFq+qmt33n+tKh9xSD4fN32sDHsU=;
-        b=ihzEnwQeBC9yW5drUGfPuDr5BHSGmgi9STCJfH7LC+xEbQ/MbN7KeXwng1pmLy1eWg
-         pTwSmWRaWQFDYqG/BcItV4YqeeY7TW5ax0OtT+a4UbXc6tmW/ZGKBiyCQFomoDfgIQP2
-         C8xyHWaF+C+1MhiskNJ+P8hxJxz1lG5XChoGlzz7d25TAhUyL2dzVMOL6ph72YnouYQ+
-         JJ5gOcOZSeDIhe2aKas5COZ6thjr/D0Hx5W6GXNswYFtpDTfCTVgdM9ndPJUUvGK2dvC
-         pu9JI7bmDzS3XpQXoTTOxUfwc/w5134RnBjoZF9tOGGNAVRcZJ1Lfyg3r9yOtjVZ3yys
-         loMQ==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=OndyBUIRhpFNYchSq2jliXF0SofGrtE/s9+Gs1XlEqM=;
+        b=SQ5gA5OjSe5wfnpLuvRwtgpJ06gnWW+pjq5BXqonHqiUxm+k73FGUipPDW1Jwmu/T1
+         ygogSswmmxqPCSRQnS/yXWUD29g/eQgxbPpORX3FCdTtj8yZCzWrV/L+pBwbzcEtNxSH
+         ik1XkonfxvxLqTQOM7lg8x5wB1fXrlFRnTVUpV7V4h38Qc/tpf/HdAbU6bQ6uwH2k5Ha
+         a4uf+cOi2eY+dF9HdTQnbhxPvPeEc552QmKcLOl4dhFGE98LfCYVKw1D2EfzmsinaYld
+         KnRw4k1J0s/OkdB6hXmlColfaKbgwkdVuil7YdyIYRpwTUnfzrXlYIqOAPqDpWPm5tQQ
+         Mkkg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b3si14221009ybg.90.2020.06.08.06.35.40
+        by mx.google.com with ESMTPS id b75si13959480yba.453.2020.06.08.06.50.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jun 2020 06:35:40 -0700 (PDT)
+        Mon, 08 Jun 2020 06:50:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34142 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43306 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiHwB-00051q-VD
-	for alex.bennee@linaro.org; Mon, 08 Jun 2020 09:35:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49118)
+	id 1jiIAI-0001XL-Q4
+	for alex.bennee@linaro.org; Mon, 08 Jun 2020 09:50:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jiHvu-00051e-7w; Mon, 08 Jun 2020 09:35:22 -0400
-Received: from relay7-d.mail.gandi.net ([217.70.183.200]:47037)
+ (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
+ id 1jiIA5-0001Wt-0y; Mon, 08 Jun 2020 09:50:02 -0400
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2110 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jiHvs-0006FR-Ak; Mon, 08 Jun 2020 09:35:21 -0400
-X-Originating-IP: 82.252.130.88
-Received: from localhost.localdomain (lns-bzn-59-82-252-130-88.adsl.proxad.net
- [82.252.130.88]) (Authenticated sender: jcd@tribudubois.net)
- by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id C367320015;
- Mon,  8 Jun 2020 13:35:11 +0000 (UTC)
-From: Jean-Christophe Dubois <jcd@tribudubois.net>
-To: qemu-arm@nongnu.org
-Subject: [PATCH v2] hw/misc/imx6ul_ccm: Implement non writable bits in CCM
- registers
-Date: Mon,  8 Jun 2020 15:35:08 +0200
-Message-Id: <20200608133508.550046-1-jcd@tribudubois.net>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
+ id 1jiIA2-0008D2-E3; Mon, 08 Jun 2020 09:50:00 -0400
+Received: from lhreml705-chm.china.huawei.com (unknown [172.18.7.108])
+ by Forcepoint Email with ESMTP id 5209D2554581C8054EF3;
+ Mon,  8 Jun 2020 14:49:46 +0100 (IST)
+Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
+ lhreml705-chm.china.huawei.com (10.201.108.54) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1913.5; Mon, 8 Jun 2020 14:49:45 +0100
+Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
+ lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1913.007; 
+ Mon, 8 Jun 2020 14:49:46 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Subject: RE: [Question] Regarding PMU initialization within the QEMU for ARM
+ VCPUs
+Thread-Topic: [Question] Regarding PMU initialization within the QEMU for ARM
+ VCPUs
+Thread-Index: AdY3+/mIYt1+TQdDQmymnxAa7PkUWwBhkdKAAHDt5AAABBY/YACLbJEAAAWfgEA=
+Date: Mon, 8 Jun 2020 13:49:46 +0000
+Message-ID: <1e9b79f1f310452d8167a6ed29266ee3@huawei.com>
+References: <b2e401cd17fe49d792d09b31bd726e35@huawei.com>
+ <20200603093745.dwfb55ny34az7rez@kamzik.brq.redhat.com>
+ <20200605173116.55419a1e@redhat.com>
+ <0c91f4bab5d24bb3a1e7ca36d1d57221@huawei.com>
+ <20200608140026.1eb49a8b@redhat.com>
+In-Reply-To: <20200608140026.1eb49a8b@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.47.31.156]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=217.70.183.200; envelope-from=jcd@tribudubois.net;
- helo=relay7-d.mail.gandi.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 09:35:14
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.76.210;
+ envelope-from=salil.mehta@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 09:49:46
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -82,144 +104,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, peter.chubb@nicta.com.au, qemu-devel@nongnu.org,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: Peter
+ Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "mst@redhat.com" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sLuCaZjTJlfR
+X-TUID: tYN24ApIH4Dn
 
-Some bits of the CCM registers are non writable.
+> From: Igor Mammedov [mailto:imammedo@redhat.com]
+> Sent: Monday, June 8, 2020 1:00 PM
+>=20
+> On Fri, 5 Jun 2020 16:38:37 +0000
+> Salil Mehta <salil.mehta@huawei.com> wrote:
+>=20
+> > > From: Igor Mammedov [mailto:imammedo@redhat.com]
+> > > Sent: Friday, June 5, 2020 4:31 PM
+> > > To: Andrew Jones <drjones@redhat.com>
+> > > Cc: Salil Mehta <salil.mehta@huawei.com>; qemu-devel@nongnu.org;
+> > > qemu-arm@nongnu.org; Peter Maydell <peter.maydell@linaro.org>; mst@re=
+dhat.com
+> > > Subject: Re: [Question] Regarding PMU initialization within the QEMU =
+for ARM
+> > > VCPUs
+> > >
+> > > On Wed, 3 Jun 2020 11:37:45 +0200
+> > > Andrew Jones <drjones@redhat.com> wrote:
+> > >
+> > > > On Mon, Jun 01, 2020 at 03:04:33PM +0000, Salil Mehta wrote:
+> > > > > Hello,
+> > > > > I could see below within function fdt_add_pmu_nodes() part of
+> > > > > hw/arm/virt.c during virt machine initialization time:
+> > > ...
+> > > >
+> > > > > Q4. This function  fdt_* looks to be wrongly named. The info
+> > > > >     being initialized here shall be used even when ACPI is
+> > > > >     being used. Initialization part and FDT info looked
+> > > > >     mixed up here if I am right?
+> > > >
+> > > > Agreed. The function has the wrong name. mach-virt has many functio=
+ns that
+> > > > mix the initialization and fdt building together, but those functio=
+ns are
+> > > > named something like create_foo(). Patches welcome.
+> > > that was where I gave up on cpu hotplug arm/virt the last time.
+> >
+> > Were you releasing the ARM objects as well? Or are you referring to som=
+e
+> > other problem?
+> I was talking about mix of FDT and device creation code.
 
-This was left undone in the initial commit (all bits of registers were
-writable).
+Ok. I have worked around that for now. Maybe you would like to review
+it in the cpuhp patches which I should be able to float this week to the
+community.
 
-This patch adds the required code to protect the non writable bits.
+Thanks
+Salil.
 
-Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
----
-
- v2: simplify code after feedback on the first patch.
-
- hw/misc/imx6ul_ccm.c | 76 ++++++++++++++++++++++++++++++++++++--------
- 1 file changed, 63 insertions(+), 13 deletions(-)
-
-diff --git a/hw/misc/imx6ul_ccm.c b/hw/misc/imx6ul_ccm.c
-index a2fc1d0364a..5e0661dacf7 100644
---- a/hw/misc/imx6ul_ccm.c
-+++ b/hw/misc/imx6ul_ccm.c
-@@ -19,6 +19,62 @@
- 
- #include "trace.h"
- 
-+static const uint32_t ccm_mask[CCM_MAX] = {
-+    [CCM_CCR] = 0xf01fef80,
-+    [CCM_CCDR] = 0xfffeffff,
-+    [CCM_CSR] = 0xffffffff,
-+    [CCM_CCSR] = 0xfffffef2,
-+    [CCM_CACRR] = 0xfffffff8,
-+    [CCM_CBCDR] = 0xc1f8e000,
-+    [CCM_CBCMR] = 0xfc03cfff,
-+    [CCM_CSCMR1] = 0x80700000,
-+    [CCM_CSCMR2] = 0xe01ff003,
-+    [CCM_CSCDR1] = 0xfe00c780,
-+    [CCM_CS1CDR] = 0xfe00fe00,
-+    [CCM_CS2CDR] = 0xf8007000,
-+    [CCM_CDCDR] = 0xf00fffff,
-+    [CCM_CHSCCDR] = 0xfffc01ff,
-+    [CCM_CSCDR2] = 0xfe0001ff,
-+    [CCM_CSCDR3] = 0xffffc1ff,
-+    [CCM_CDHIPR] = 0xffffffff,
-+    [CCM_CTOR] = 0x00000000,
-+    [CCM_CLPCR] = 0xf39ff01c,
-+    [CCM_CISR] = 0xfb85ffbe,
-+    [CCM_CIMR] = 0xfb85ffbf,
-+    [CCM_CCOSR] = 0xfe00fe00,
-+    [CCM_CGPR] = 0xfffc3fea,
-+    [CCM_CCGR0] = 0x00000000,
-+    [CCM_CCGR1] = 0x00000000,
-+    [CCM_CCGR2] = 0x00000000,
-+    [CCM_CCGR3] = 0x00000000,
-+    [CCM_CCGR4] = 0x00000000,
-+    [CCM_CCGR5] = 0x00000000,
-+    [CCM_CCGR6] = 0x00000000,
-+    [CCM_CMEOR] = 0xafffff1f,
-+};
-+
-+static const uint32_t analog_mask[CCM_ANALOG_MAX] = {
-+    [CCM_ANALOG_PLL_ARM] = 0xfff60f80,
-+    [CCM_ANALOG_PLL_USB1] = 0xfffe0fbc,
-+    [CCM_ANALOG_PLL_USB2] = 0xfffe0fbc,
-+    [CCM_ANALOG_PLL_SYS] = 0xfffa0ffe,
-+    [CCM_ANALOG_PLL_SYS_SS] = 0x00000000,
-+    [CCM_ANALOG_PLL_SYS_NUM] = 0xc0000000,
-+    [CCM_ANALOG_PLL_SYS_DENOM] = 0xc0000000,
-+    [CCM_ANALOG_PLL_AUDIO] = 0xffe20f80,
-+    [CCM_ANALOG_PLL_AUDIO_NUM] = 0xc0000000,
-+    [CCM_ANALOG_PLL_AUDIO_DENOM] = 0xc0000000,
-+    [CCM_ANALOG_PLL_VIDEO] = 0xffe20f80,
-+    [CCM_ANALOG_PLL_VIDEO_NUM] = 0xc0000000,
-+    [CCM_ANALOG_PLL_VIDEO_DENOM] = 0xc0000000,
-+    [CCM_ANALOG_PLL_ENET] = 0xffc20ff0,
-+    [CCM_ANALOG_PFD_480] = 0x40404040,
-+    [CCM_ANALOG_PFD_528] = 0x40404040,
-+    [PMU_MISC0] = 0x01fe8306,
-+    [PMU_MISC1] = 0x07fcede0,
-+    [PMU_MISC2] = 0x005f5f5f,
-+};
-+
- static const char *imx6ul_ccm_reg_name(uint32_t reg)
- {
-     static char unknown[20];
-@@ -596,11 +652,8 @@ static void imx6ul_ccm_write(void *opaque, hwaddr offset, uint64_t value,
- 
-     trace_ccm_write_reg(imx6ul_ccm_reg_name(index), (uint32_t)value);
- 
--    /*
--     * We will do a better implementation later. In particular some bits
--     * cannot be written to.
--     */
--    s->ccm[index] = (uint32_t)value;
-+    s->ccm[index] = (s->ccm[index] & ccm_mask[index]) |
-+                           ((uint32_t)value & ~ccm_mask[index]);
- }
- 
- static uint64_t imx6ul_analog_read(void *opaque, hwaddr offset, unsigned size)
-@@ -737,7 +790,7 @@ static void imx6ul_analog_write(void *opaque, hwaddr offset, uint64_t value,
-          * the REG_NAME register. So we change the value of the
-          * REG_NAME register, setting bits passed in the value.
-          */
--        s->analog[index - 1] |= value;
-+        s->analog[index - 1] |= (value & ~analog_mask[index - 1]);
-         break;
-     case CCM_ANALOG_PLL_ARM_CLR:
-     case CCM_ANALOG_PLL_USB1_CLR:
-@@ -762,7 +815,7 @@ static void imx6ul_analog_write(void *opaque, hwaddr offset, uint64_t value,
-          * the REG_NAME register. So we change the value of the
-          * REG_NAME register, unsetting bits passed in the value.
-          */
--        s->analog[index - 2] &= ~value;
-+        s->analog[index - 2] &= ~(value & ~analog_mask[index - 2]);
-         break;
-     case CCM_ANALOG_PLL_ARM_TOG:
-     case CCM_ANALOG_PLL_USB1_TOG:
-@@ -787,14 +840,11 @@ static void imx6ul_analog_write(void *opaque, hwaddr offset, uint64_t value,
-          * the REG_NAME register. So we change the value of the
-          * REG_NAME register, toggling bits passed in the value.
-          */
--        s->analog[index - 3] ^= value;
-+        s->analog[index - 3] ^= (value & ~analog_mask[index - 3]);
-         break;
-     default:
--        /*
--         * We will do a better implementation later. In particular some bits
--         * cannot be written to.
--         */
--        s->analog[index] = value;
-+        s->analog[index] = (s->analog[index] & analog_mask[index]) |
-+                           (value & ~analog_mask[index]);
-         break;
-     }
- }
--- 
-2.25.1
+> > > Ideally we should split out from create_foo() all firmware generation=
+ code
+> > > (fdt) and move it to virt_machine_done time + make sure that it could=
+ be
+> > > regenerated at reset time so guest would get updated FDT on reset.
+> >
+> > Agreed, just like ACPI part. That would be more cleaner.
+> >
+> > Thanks
+> > Salil.
 

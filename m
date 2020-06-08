@@ -1,97 +1,116 @@
-Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp2140591qvs;
-        Mon, 8 Jun 2020 06:50:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz0Vzds5MmfwY8oKTAqysV3Y4bsB0ae+9R+UuVsrcFO6V3ZJaNi4Opz0ARgfM4FdFOfqOuq
-X-Received: by 2002:a25:af10:: with SMTP id a16mr6369157ybh.121.1591624215388;
-        Mon, 08 Jun 2020 06:50:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591624215; cv=none;
+Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp2149269qvs;
+        Mon, 8 Jun 2020 07:02:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzyDMv3+5LD0Fq0O0tOwzPu6FnVGobLNRM8mC+OiWETpHKxYWAHO1H6pslviByrnDwwcTHJ
+X-Received: by 2002:a1f:a4cd:: with SMTP id n196mr15513277vke.31.1591624958146;
+        Mon, 08 Jun 2020 07:02:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591624958; cv=none;
         d=google.com; s=arc-20160816;
-        b=aH5jLUJFDKAplWUunW0u/075Taj3BI4nkjSfcCTDKr7uuD0sBAE7hT0cMB4DuWQZmB
-         V8Yq/fn36NiJxFzk8nw5SDRNpEe07D1KZVg/tEtC5lLQNXtqS8QlW02j2NyOtLYu77sB
-         1zz+aXX77J7wbOk0lPfIklgE8Vjc6VW1DIDp3e3PLpMju6gjkJ7XUdqBU6ka5baRoviv
-         QenoKHRjclHD9IrI/ONdufCl+BShsk7exFc54SdfHQKXhU78PSE4OncCWFYgc4bGi4RX
-         YzDa/oSHMkyFyGRsCuXmzTkF8fJS0sCnPqgCIrzk/Hn4hfIgIi3LWhUlQNFXqrPdgjtS
-         ERaQ==
+        b=YsLTtUU847Lb6hIHfmOUFjvUSpENk/8R7OfLzymxLIAladmcpy3O8iAe59Ni8J0Fs1
+         vKGoXH+vziI9yEhIjZbz81yoVTV2dIm/IiqO4uOBmeSDlKp3iESLTn2Ss1PP67SvtDOV
+         vf/qoqLhVUC2dSLeHy0aDDypI/JrZRJlLmjKv+Gfdm6kU91w+nOMSBMfRXD5iSf8oEta
+         KM+FgVWflhSsTC4HpIkBY9EdWbts83cmTxJbkrQbKexJEIKO5FVE92mrLrb0zXQcK6ub
+         wNKpc8yCTW/xnU6dOL5NOSyhVsQg/jI7hKr9lrxKs+0WL2qaP7XLMwyPJFPcjrdBARfU
+         cbvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=OndyBUIRhpFNYchSq2jliXF0SofGrtE/s9+Gs1XlEqM=;
-        b=SQ5gA5OjSe5wfnpLuvRwtgpJ06gnWW+pjq5BXqonHqiUxm+k73FGUipPDW1Jwmu/T1
-         ygogSswmmxqPCSRQnS/yXWUD29g/eQgxbPpORX3FCdTtj8yZCzWrV/L+pBwbzcEtNxSH
-         ik1XkonfxvxLqTQOM7lg8x5wB1fXrlFRnTVUpV7V4h38Qc/tpf/HdAbU6bQ6uwH2k5Ha
-         a4uf+cOi2eY+dF9HdTQnbhxPvPeEc552QmKcLOl4dhFGE98LfCYVKw1D2EfzmsinaYld
-         KnRw4k1J0s/OkdB6hXmlColfaKbgwkdVuil7YdyIYRpwTUnfzrXlYIqOAPqDpWPm5tQQ
-         Mkkg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=nq2xanGLh6ZPYCzponIHSk7Z+mN3fH6xJlvcIRxXB9U=;
+        b=aaBXyXJaxF+ETSjJRWwlFUDvPqo0KcK16b4hZYI7JVbVpozKydl2I3PmCORizVOKOM
+         JqEeqsESfAmu8Nir/FG+/5Ou91UxBXS3I07eimlkV83rpBfkDO+RrkFtzgS+9mCgJGcP
+         O+ct/hLi9EmZI9puANOvzNU4g8p1xFpitPpd70VmBoVv4h/T3u8vlkLrouYwTGdtq926
+         BJcd3xceiDiNicRvc5hqZG98DMiYvPzyeO5e1DKKehqTiJn4fjDoQQnEgNzzkToVPHpB
+         0pEVIgH7cYdHt4PMo6u0q16mtKZQ88xtlyPBv89FvNUNN44Tadiu3cPnS7l+oxbEDN5g
+         IVsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SV6f0XK5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b75si13959480yba.453.2020.06.08.06.50.15
+        by mx.google.com with ESMTPS id 36si1328925uaa.150.2020.06.08.07.02.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jun 2020 06:50:15 -0700 (PDT)
+        Mon, 08 Jun 2020 07:02:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43306 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SV6f0XK5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:56470 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiIAI-0001XL-Q4
-	for alex.bennee@linaro.org; Mon, 08 Jun 2020 09:50:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50110)
+	id 1jiIMH-0007ck-Hr
+	for alex.bennee@linaro.org; Mon, 08 Jun 2020 10:02:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51330)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jiIA5-0001Wt-0y; Mon, 08 Jun 2020 09:50:02 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2110 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jiIA2-0008D2-E3; Mon, 08 Jun 2020 09:50:00 -0400
-Received: from lhreml705-chm.china.huawei.com (unknown [172.18.7.108])
- by Forcepoint Email with ESMTP id 5209D2554581C8054EF3;
- Mon,  8 Jun 2020 14:49:46 +0100 (IST)
-Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
- lhreml705-chm.china.huawei.com (10.201.108.54) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1913.5; Mon, 8 Jun 2020 14:49:45 +0100
-Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
- lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1913.007; 
- Mon, 8 Jun 2020 14:49:46 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Subject: RE: [Question] Regarding PMU initialization within the QEMU for ARM
- VCPUs
-Thread-Topic: [Question] Regarding PMU initialization within the QEMU for ARM
- VCPUs
-Thread-Index: AdY3+/mIYt1+TQdDQmymnxAa7PkUWwBhkdKAAHDt5AAABBY/YACLbJEAAAWfgEA=
-Date: Mon, 8 Jun 2020 13:49:46 +0000
-Message-ID: <1e9b79f1f310452d8167a6ed29266ee3@huawei.com>
-References: <b2e401cd17fe49d792d09b31bd726e35@huawei.com>
- <20200603093745.dwfb55ny34az7rez@kamzik.brq.redhat.com>
- <20200605173116.55419a1e@redhat.com>
- <0c91f4bab5d24bb3a1e7ca36d1d57221@huawei.com>
- <20200608140026.1eb49a8b@redhat.com>
-In-Reply-To: <20200608140026.1eb49a8b@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.31.156]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jiILw-0007bz-LN; Mon, 08 Jun 2020 10:02:16 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:44460)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jiILv-0001qC-P3; Mon, 08 Jun 2020 10:02:16 -0400
+Received: by mail-wr1-x443.google.com with SMTP id y17so17509546wrn.11;
+ Mon, 08 Jun 2020 07:02:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=nq2xanGLh6ZPYCzponIHSk7Z+mN3fH6xJlvcIRxXB9U=;
+ b=SV6f0XK55Y/JXu0hm28pUCkigZ6ZDSX9yxPA95gCM6iAzKR/LGn/GUcVNfsGG0c9tL
+ Jw2iLgiouCTKSJQGOkTJHLYA2r9O1L5tz0MiILGcNhCDlpvIDwcR1b1zjogup89n1FoX
+ HaimsmexFkcdVXhwmZM2n0OUz38vNfY3QkNcO6QKNMNiQTudq+yl96n1fS2j1qNPpvgA
+ xj2sqEOqXraw/WdSMbUBdgr5411SN8Lt4fj/47ZLfrWWMpGOrRy6IBlY7vwKTd1aGOv+
+ IqvbMmiiaKXfJVgMIl2s4jRwzRmd4BLZPvBEEHHHmaWe0prMfZ/fRwUPWvSlb2N6ZWkT
+ 6EgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=nq2xanGLh6ZPYCzponIHSk7Z+mN3fH6xJlvcIRxXB9U=;
+ b=UT7TFRgoMwMO7OKYldNuXraR+JE5LhPJv8YWaCXK0posbX/CD9XWK0w8HO9w8xSHqK
+ QFve9WEqMzLRMUawMdzKSnBZUYIfkkHqhAyNht5hz6eztJPguqkaBITzyzgoUIYpQOP6
+ uZGx61oNkhKJLNvt3XkecwbO8BB3bgUzvAswyhLyhpqu46XAXFoJs/GK/Q+rLmnGwzQw
+ voAtCmbI7ll1G1djFzFlS1jl+zQXCc6Djw/Vq1+CRNATrIaA0XYLIpcIkLFyE/a1sv0Y
+ 8kAzttQvmuqcWqBbfoa6DTtmsaf6azAv+010t+mGK4vTlfDiE9Cp/fz6lLjreZA57aa1
+ aDuw==
+X-Gm-Message-State: AOAM5338Ii41q4C5dlsU4E2vT5/yzMXlvNjp9gOT+OJKUFQjArYs7n8b
+ GbYhE6qPRmMbTpYYIivO0mE=
+X-Received: by 2002:a5d:5585:: with SMTP id i5mr23430380wrv.112.1591624933001; 
+ Mon, 08 Jun 2020 07:02:13 -0700 (PDT)
+Received: from [192.168.1.38] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id q13sm23018034wrn.84.2020.06.08.07.02.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 08 Jun 2020 07:02:11 -0700 (PDT)
+Subject: Re: [PATCH v2 06/24] armv7m: Delete unused "ARM,bitband-memory"
+ devices
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+References: <20200528110444.20456-1-armbru@redhat.com>
+ <20200528110444.20456-7-armbru@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <435ddac3-29f8-9f0a-6fa3-c369bcfd005c@amsat.org>
+Date: Mon, 8 Jun 2020 16:02:10 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.76.210;
- envelope-from=salil.mehta@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 09:49:46
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200528110444.20456-7-armbru@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -104,72 +123,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter
- Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "mst@redhat.com" <mst@redhat.com>
+Cc: pbonzini@redhat.com, qemu-arm@nongnu.org, berrange@redhat.com,
+ ehabkost@redhat.com, Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tYN24ApIH4Dn
+X-TUID: ujD4lItHjCN6
 
-> From: Igor Mammedov [mailto:imammedo@redhat.com]
-> Sent: Monday, June 8, 2020 1:00 PM
->=20
-> On Fri, 5 Jun 2020 16:38:37 +0000
-> Salil Mehta <salil.mehta@huawei.com> wrote:
->=20
-> > > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > > Sent: Friday, June 5, 2020 4:31 PM
-> > > To: Andrew Jones <drjones@redhat.com>
-> > > Cc: Salil Mehta <salil.mehta@huawei.com>; qemu-devel@nongnu.org;
-> > > qemu-arm@nongnu.org; Peter Maydell <peter.maydell@linaro.org>; mst@re=
-dhat.com
-> > > Subject: Re: [Question] Regarding PMU initialization within the QEMU =
-for ARM
-> > > VCPUs
-> > >
-> > > On Wed, 3 Jun 2020 11:37:45 +0200
-> > > Andrew Jones <drjones@redhat.com> wrote:
-> > >
-> > > > On Mon, Jun 01, 2020 at 03:04:33PM +0000, Salil Mehta wrote:
-> > > > > Hello,
-> > > > > I could see below within function fdt_add_pmu_nodes() part of
-> > > > > hw/arm/virt.c during virt machine initialization time:
-> > > ...
-> > > >
-> > > > > Q4. This function  fdt_* looks to be wrongly named. The info
-> > > > >     being initialized here shall be used even when ACPI is
-> > > > >     being used. Initialization part and FDT info looked
-> > > > >     mixed up here if I am right?
-> > > >
-> > > > Agreed. The function has the wrong name. mach-virt has many functio=
-ns that
-> > > > mix the initialization and fdt building together, but those functio=
-ns are
-> > > > named something like create_foo(). Patches welcome.
-> > > that was where I gave up on cpu hotplug arm/virt the last time.
-> >
-> > Were you releasing the ARM objects as well? Or are you referring to som=
-e
-> > other problem?
-> I was talking about mix of FDT and device creation code.
+On 5/28/20 1:04 PM, Markus Armbruster wrote:
+> These devices are optional, and enabled by property "enable-bitband".
+> armv7m_instance_init() creates them unconditionally, because the
+> property has not been set then.  armv7m_realize() realizes them only
+> when the property is true.  Works, although it leaves unrealized
+> devices hanging around in the QOM composition tree.  Affects machines
+> microbit, mps2-an505, mps2-an521, musca-a, and musca-b1.
+> 
+> Delete the unused devices by making armv7m_realize() unparent them.
+> Visible in "info qom-tree"; here's the change for microbit:
+> 
+>      /machine (microbit-machine)
+>        /microbit.twi (microbit.i2c)
+>          /microbit.twi[0] (qemu:memory-region)
+>        /nrf51 (nrf51-soc)
+>          /armv6m (armv7m)
+>            /armv7m-container[0] (qemu:memory-region)
+>     -      /bitband[0] (ARM,bitband-memory)
+>     -        /bitband[0] (qemu:memory-region)
+>     -      /bitband[1] (ARM,bitband-memory)
+>     -        /bitband[0] (qemu:memory-region)
+>            /cpu (cortex-m0-arm-cpu)
+> 
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 
-Ok. I have worked around that for now. Maybe you would like to review
-it in the cpuhp patches which I should be able to float this week to the
-community.
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Thanks
-Salil.
-
-> > > Ideally we should split out from create_foo() all firmware generation=
- code
-> > > (fdt) and move it to virt_machine_done time + make sure that it could=
- be
-> > > regenerated at reset time so guest would get updated FDT on reset.
-> >
-> > Agreed, just like ACPI part. That would be more cleaner.
-> >
-> > Thanks
-> > Salil.
+> ---
+>  hw/arm/armv7m.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+> index 7da57f56d3..f930619f53 100644
+> --- a/hw/arm/armv7m.c
+> +++ b/hw/arm/armv7m.c
+> @@ -245,8 +245,8 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+>      memory_region_add_subregion(&s->container, 0xe000e000,
+>                                  sysbus_mmio_get_region(sbd, 0));
+>  
+> -    if (s->enable_bitband) {
+> -        for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
+> +    for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
+> +        if (s->enable_bitband) {
+>              Object *obj = OBJECT(&s->bitband[i]);
+>              SysBusDevice *sbd = SYS_BUS_DEVICE(&s->bitband[i]);
+>  
+> @@ -265,6 +265,8 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+>  
+>              memory_region_add_subregion(&s->container, bitband_output_addr[i],
+>                                          sysbus_mmio_get_region(sbd, 0));
+> +        } else {
+> +            object_unparent(OBJECT(&s->bitband[i]));
+>          }
+>      }
+>  }
+> 
 

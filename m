@@ -1,102 +1,101 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp5215013lfc;
-        Mon, 8 Jun 2020 09:15:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwlHXRVh9XOX7/9TRn9dB55BXKKyknp7Dtpr7Axw05/9NBTdo014MxtA0eZDzSAKHLBYKv0
-X-Received: by 2002:a25:f204:: with SMTP id i4mr10637870ybe.486.1591632938249;
-        Mon, 08 Jun 2020 09:15:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591632938; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp5216044lfc;
+        Mon, 8 Jun 2020 09:16:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz+bPqCcd6dh0FavRwSnA67dTLlhDImuKF9/+2fWuM4CyOd5ZKBBOl8F7ocfs+1YpiwGGIZ
+X-Received: by 2002:a25:bc47:: with SMTP id d7mr39750319ybk.180.1591633005436;
+        Mon, 08 Jun 2020 09:16:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591633005; cv=none;
         d=google.com; s=arc-20160816;
-        b=kLCntyHqeU0N9Mvr6MvPxoy59divOKewFvQe8ReS2W3ruGgsSk+ZzYl01b+32gy0M7
-         SS8tKRt8W1GaHwyiRubqWgOUbJEQRsIYIoILv9sAFMxIg3gw5iu3IYWNxmaYzhUuP/rp
-         dHpUYccwefoxAiqDzIHgk+ZvaEtN8PNjqHuXQVIkhwIOa3r7EdotXR5KUXhVyJ3tQfmr
-         sK39T7XqwYW/h2NqR99SM9tplqEucEUqIi7RKIUG43bVLkzMaHZDHMAssfKpg4JdiN+y
-         S2qqnK4CgQF2JoUaX5GcMDXvamZv6EwshQU9NeAWlZZ9RGahCjTUKZ/LwYRkiHm7hERK
-         kAPg==
+        b=LZumjSvT2MB1Fa5Cgtk7aQ1KPOFgs5wsjBTXXhiTzhM1CoF1lhcZe5UXp+20RVnwzq
+         wmTPTdZwudUqTLSvzJy+8h6BMsWvmKvLK3MXdB16DLLbneBVeKu+7+1zC5DFlOSyo9HS
+         eLv+nSES2Jmgf39HKCDcOtWQTY796myFOJEIE8fAG2C3nJtilsyUUVu64N/bi0aLx7fI
+         VvXHua1w51hzH7IJhE33TdPT81zpjeswmkC5dNRNsZBdMOhAvYhMEGXqjoo6vfR0/9eo
+         exev8fN3QzaHzkLpTobXWYjLcKSX4lzviEhoLSRJFrhOMWZ/guCn5mQVQPyO+E9d88k6
+         jwIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=faJPKsgnKj1MSj1B3bxzpLa01+W3HhU/7Hynie77jqI=;
-        b=i7GYQg1QP8TnAgWX8POcCP9nTs8X661gHRyC4aggsyLiCus4m78XiaAHdCafwHv7Xx
-         IsVSuQ6sPG4NkTQHCopNOgg86juFNoLODvmuatBuXmZdB8TomdlGgt4yKuR8J2qoTaKu
-         BKYKbV2zYvqhSEVu+RkChgRHufHrMrNWHNIHETaYxa9j3chjhAr8HzcBqrqTaRNdYD5E
-         U/AL48mCG0ZjtigJnyhiZ2vcHlrdrMPRScc6vkmcoe4ARj6D1j7OddOjszT9zrLwv8fb
-         Yl5rEgBUYelM9NAllCqUmCzoitWlZRz5chgg4fAm2nXWyX5OuUJGTVj8n9gXe2kJL5rr
-         TxpA==
+        bh=WCNM8bx54yBBH5o9OGeaVnQ5KO/kQFXlsHgIbovX6w0=;
+        b=HGPguXE4RxScFnUd+ih2rgJ/lyTM52l+U+jHduzxM0TC1w0u73cHrCiD0rH38Eh9Nj
+         HJmIBJG9zaMtB4tLXYq3aVY1pO+jDAIg4+a/HtKBfus5E4C2Glh89jygRHHIjGAFzAwb
+         eHi5YmH71CBhdGP0eXNEdaeedrA2BddyIhzMzNf21cO+u2Lwnn3NUy2YvJCPLhbtcE0z
+         r/FaUYnSZDdTsh/jAxFTmC+9ncD0pyP/f5bemr7PfeiPUcFKzlqemtfchC8POxFwljoD
+         KS2o4gTB0AhESW9TuG7m4AJP8qt7lbpWTxJZ6YEXxPdgHJJJTzzsLpl+pwOlyeKac/V1
+         ysLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QmitIeyF;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hzKfVv88;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a3si80971ybo.142.2020.06.08.09.15.38
+        by mx.google.com with ESMTPS id x138si55052ybg.413.2020.06.08.09.16.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jun 2020 09:15:38 -0700 (PDT)
+        Mon, 08 Jun 2020 09:16:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QmitIeyF;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hzKfVv88;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58364 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34138 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiKQz-0007Ku-Cp
-	for alex.bennee@linaro.org; Mon, 08 Jun 2020 12:15:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37864)
+	id 1jiKS4-0000iT-MA
+	for alex.bennee@linaro.org; Mon, 08 Jun 2020 12:16:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38106)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jiKDl-0006Vp-HO
- for qemu-devel@nongnu.org; Mon, 08 Jun 2020 12:01:57 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:25430
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jiKEV-000708-T9
+ for qemu-devel@nongnu.org; Mon, 08 Jun 2020 12:02:44 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:48065
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jiKDk-0007mM-NZ
- for qemu-devel@nongnu.org; Mon, 08 Jun 2020 12:01:57 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jiKEL-0007tD-Vw
+ for qemu-devel@nongnu.org; Mon, 08 Jun 2020 12:02:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591632116;
+ s=mimecast20190719; t=1591632153;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=faJPKsgnKj1MSj1B3bxzpLa01+W3HhU/7Hynie77jqI=;
- b=QmitIeyFWMWWxO86DkQDWwTOAm8GBG5Fo0QpYuh26bGeU4JBObO7kUevkNtkXRYbn9GsPa
- gDnk+1FDe5w/V0dQW3d+BBgQb5Yu/bY8BCb6CP0a75XsVK6VXd8fY2JyUPiAu9siUIPN4R
- 13tsu2dFN2/EaPvbwbUkVPd1uq5qFjg=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-190-ejMzWpmyO8GgO0-UmpfQ-Q-1; Mon, 08 Jun 2020 12:01:51 -0400
-X-MC-Unique: ejMzWpmyO8GgO0-UmpfQ-Q-1
-Received: by mail-wm1-f71.google.com with SMTP id l2so9560wmi.2
- for <qemu-devel@nongnu.org>; Mon, 08 Jun 2020 09:01:51 -0700 (PDT)
+ bh=WCNM8bx54yBBH5o9OGeaVnQ5KO/kQFXlsHgIbovX6w0=;
+ b=hzKfVv8802+d5ihiWxX0TcKbdwdGJWNKRG/d5UzXI1UO6KhHbMGj//ggydyuyLKzkGGRxz
+ ycLl22qUD3YerfT6gYdiM0xV8R+00YGQ2qiPD0U5lTxwQHjELhSIjnF24q26OHoZVCyYrk
+ OCnBq4a5wQSHMwNYqqR6kjuM+ffTZCg=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-356-zv5fBC5mPFm-oHkn89eeKg-1; Mon, 08 Jun 2020 12:02:31 -0400
+X-MC-Unique: zv5fBC5mPFm-oHkn89eeKg-1
+Received: by mail-wr1-f69.google.com with SMTP id z10so7391608wrs.2
+ for <qemu-devel@nongnu.org>; Mon, 08 Jun 2020 09:02:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=faJPKsgnKj1MSj1B3bxzpLa01+W3HhU/7Hynie77jqI=;
- b=iMxLvvSFAaPRIMh3wzhBFfleUgI/UFIU4YxWORJFzAh8byjpA0mVf+o57jaCMaz2Q7
- ENDsJKcAUDM/lknG+k+Mh2BgF+NInSTvGri8aVIn3Yb2o7g8U/0mM1fWysng/uA+qCqp
- ybd6W0eKijWVnyU2qYtMk1/V8hw66t1OA2k+Hk/a9jnKbq+XTeWEZc6E7jCH3USC+T0+
- /u57psG8oJhwLBuoaniZMYY+dkCyIt5dwow5szsTzrYJBCIqBhOscq2/4yP0uZlZPHgm
- WKPRDOpDh+XARD3bi2vbqX0rYFABqLlsucIQtQon8TLI3YA3LQqBRyHFDHzWWIgz3WZx
- jNvg==
-X-Gm-Message-State: AOAM531LlGDMr6bsgOl0o9/6igvsmSGlhzfM99hLrLAr+h8dNf13PvuL
- Vfdmxh+gtTdYSPfXFDL6ni1KiqY516hQoZdeN7a4qhm4md/d9uIntptNeuO78SnGwojjPKIHupd
- qz6ANA8SMH6ZlGsc=
-X-Received: by 2002:adf:9304:: with SMTP id 4mr25264204wro.280.1591632109663; 
- Mon, 08 Jun 2020 09:01:49 -0700 (PDT)
-X-Received: by 2002:adf:9304:: with SMTP id 4mr25264164wro.280.1591632109513; 
- Mon, 08 Jun 2020 09:01:49 -0700 (PDT)
+ bh=WCNM8bx54yBBH5o9OGeaVnQ5KO/kQFXlsHgIbovX6w0=;
+ b=s8AvofPJWyhS9zRB/dEvIRd53Btdt19sjdKxBYjdaCBbvMAjOU+ux0kulrS2PilObe
+ aX8srXf2tMh/mkOqJXpsEc6gKfp0lHLs5gF+8TQQofkuBeuxv4QIq3oxZEBF4DvKoVvc
+ UnoEdxOnpqJJ9GTTCzTyPwCUSsvYG2q+27LFZM3T9OjO0MacHgFe6sPnu2gkVOBluwe9
+ z9iN9NfvvdeUGvZl8fgGEDpih8MwsAep7coGnAppCF1yHPJhEXRYIUey/+swHDiMMM/o
+ egOTYq2cBv/8mSjRE+qNiMOVwp1Owh8yjtrKLmdqs2d4DAcS4LWOZyOn31v0RSKixHn1
+ gjMA==
+X-Gm-Message-State: AOAM532UHAGIOQUL/HS8eXqAQjbe+lvFr5x0PwqoAmQj86dc+vUR7PHn
+ l/rgaEZ9GwgF/j9qXm7Mw/AImn8//faryuMxpQw4kej4pIv0/uNYNPEHPIMm9VnoyRCR/y3i9Dd
+ pGFsDGlpjaT1I8mk=
+X-Received: by 2002:adf:e592:: with SMTP id l18mr25927558wrm.175.1591632150058; 
+ Mon, 08 Jun 2020 09:02:30 -0700 (PDT)
+X-Received: by 2002:adf:e592:: with SMTP id l18mr25927507wrm.175.1591632149848; 
+ Mon, 08 Jun 2020 09:02:29 -0700 (PDT)
 Received: from localhost.localdomain
  (181.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id l1sm220993wrb.31.2020.06.08.09.01.47
+ by smtp.gmail.com with ESMTPSA id c6sm144638wro.92.2020.06.08.09.02.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Jun 2020 09:01:48 -0700 (PDT)
+ Mon, 08 Jun 2020 09:02:29 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH 11/35] hw/display/vga-isa-mm: Emit warning when old code
- is used
-Date: Mon,  8 Jun 2020 18:00:20 +0200
-Message-Id: <20200608160044.15531-12-philmd@redhat.com>
+Subject: [RFC PATCH 18/35] hw/input/ps2: Emit warning when old code is used
+Date: Mon,  8 Jun 2020 18:00:27 +0200
+Message-Id: <20200608160044.15531-19-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200608160044.15531-1-philmd@redhat.com>
 References: <20200608160044.15531-1-philmd@redhat.com>
@@ -152,67 +151,46 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VxJ2/SbKwc54
+X-TUID: DKDIU6dq/KIX
 
 This code hasn't been QOM'ified yet. Warn the user.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/display/vga-isa-mm.c | 5 +++++
- hw/display/vga.c        | 3 +++
- 2 files changed, 8 insertions(+)
+ hw/input/ps2.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/hw/display/vga-isa-mm.c b/hw/display/vga-isa-mm.c
-index 7321b7a06d..3e62389b63 100644
---- a/hw/display/vga-isa-mm.c
-+++ b/hw/display/vga-isa-mm.c
-@@ -29,6 +29,7 @@
- #include "hw/display/vga.h"
- #include "vga_int.h"
- #include "ui/pixel_ops.h"
+diff --git a/hw/input/ps2.c b/hw/input/ps2.c
+index f8746d2f52..0d84061cae 100644
+--- a/hw/input/ps2.c
++++ b/hw/input/ps2.c
+@@ -30,7 +30,7 @@
+ #include "ui/input.h"
+ #include "sysemu/reset.h"
+ #include "sysemu/runstate.h"
+-
 +#include "hw/qdev-deprecated.h"
- 
- #define VGA_RAM_SIZE (8 * MiB)
- 
-@@ -71,6 +72,8 @@ static void vga_mm_init(ISAVGAMMState *s, hwaddr vram_base,
- {
-     MemoryRegion *s_ioport_ctrl, *vga_io_memory;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     s->it_shift = it_shift;
-     s_ioport_ctrl = g_malloc(sizeof(*s_ioport_ctrl));
-     memory_region_init_io(s_ioport_ctrl, NULL, &vga_mm_ctrl_ops, s,
-@@ -99,6 +102,8 @@ int isa_vga_mm_init(hwaddr vram_base,
- 
-     s = g_malloc0(sizeof(*s));
- 
-+    qdev_warn_deprecated_function_used();
-+
-     s->vga.vram_size_mb = VGA_RAM_SIZE / MiB;
-     s->vga.global_vmstate = true;
-     vga_common_init(&s->vga, NULL);
-diff --git a/hw/display/vga.c b/hw/display/vga.c
-index 061fd9ab8f..d59a9c896b 100644
---- a/hw/display/vga.c
-+++ b/hw/display/vga.c
-@@ -35,6 +35,7 @@
- #include "hw/xen/xen.h"
- #include "migration/vmstate.h"
  #include "trace.h"
-+#include "hw/qdev-deprecated.h"
  
- //#define DEBUG_VGA_MEM
- //#define DEBUG_VGA_REG
-@@ -2262,6 +2263,8 @@ MemoryRegion *vga_init_io(VGACommonState *s, Object *obj,
+ /* debug PC keyboard */
+@@ -1136,6 +1136,8 @@ void *ps2_kbd_init(void (*update_irq)(void *, int), void *update_arg)
  {
-     MemoryRegion *vga_mem;
+     PS2KbdState *s = (PS2KbdState *)g_malloc0(sizeof(PS2KbdState));
  
 +    qdev_warn_deprecated_function_used();
 +
-     *vga_ports = vga_portio_list;
-     *vbe_ports = vbe_portio_list;
+     trace_ps2_kbd_init(s);
+     s->common.update_irq = update_irq;
+     s->common.update_arg = update_arg;
+@@ -1158,6 +1160,8 @@ void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg)
+ {
+     PS2MouseState *s = (PS2MouseState *)g_malloc0(sizeof(PS2MouseState));
  
++    qdev_warn_deprecated_function_used();
++
+     trace_ps2_mouse_init(s);
+     s->common.update_irq = update_irq;
+     s->common.update_arg = update_arg;
 -- 
 2.21.3
 

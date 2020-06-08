@@ -1,173 +1,212 @@
-Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp2062100qvs;
-        Mon, 8 Jun 2020 05:02:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxwCM87E+yZs831/iQK3XLwgBgXc7aGMGG4ur0FYsSQJobeNkBWPEaFUaCflmoe5uW2rFFb
-X-Received: by 2002:a0c:d442:: with SMTP id r2mr20900398qvh.59.1591617779184;
-        Mon, 08 Jun 2020 05:02:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591617779; cv=none;
+Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp2062872qvs;
+        Mon, 8 Jun 2020 05:03:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzcyvcmn40cNoW3G/k33IxixgBxf74SrV0mEZ+GJZTQijKuCAktJQx6AYNAFikxOKlnhjZP
+X-Received: by 2002:a25:328b:: with SMTP id y133mr37392670yby.468.1591617835956;
+        Mon, 08 Jun 2020 05:03:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591617835; cv=none;
         d=google.com; s=arc-20160816;
-        b=SvtegPDfXB4rklGsBIyO8JK/2u4HyoI0szaeOHrycqWGigpC3kh09dUwMqEg2UQqLS
-         JcKP1wNL29GbjWspaQl8dPikdfMCUDCLHyT6SnPxVXY0WIg8eRFYRKJlMArkXIYevbwp
-         VssUYo9oFfgWizFRQQ5wKnWwl66sfI+pabBVb7Uxs+qMqr213ZePaMwgSAJDL24rSGIX
-         oKBG4Lb5E6+F/Nt2h0DY2QfFNNlQWAtZ1YgsQUwfeEyBNcl8ePZ6fkfJ5bBn8T2/FnfN
-         2a/D//yRQ30fnmkPYu0ZckqL9h/pm7WebnJH7GTr2lS0mdnEuS+Q9HGNmUj90WWt/3Rk
-         7opg==
+        b=mW0rn2zIW7UYIwYfSLEgL4whcjmjovcybs1q7Z28IVuaz+sfNhG0JDggQz/q+N/lmH
+         B9mg9mHq7MA5un2U4Qss9PRKo4+yvIeKSr5UXtfqt2Wa0X2602be9Cqdwg/FdlpO6DSZ
+         KFVYu5fDShrWo/iPYSKomkWUerVoTDAlSp3aqZbrKCkBnMIq/rsRGiFZw39XkqRUVJEy
+         TQEypvsfBzl2NdiGM2UTbuGLWwmerOKtNNoe8v9Ez2yQE0OBnBVLdQrAFmmTqvCxAptC
+         rLMILGP2UBn+Vr2l00UUu5EP6m/P0Y+ForlRpEHtdmMqGlTL1xcaLZswm7VaUfVvfgJu
+         7vRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=0Mzq1zS5opkSh8ZWWPbOAjwcXzqrFrc9v0qCnsGMipg=;
-        b=hnzD7Al7wqmLv8rtltlQwrqq9FhwaFiIztjeQGwIjbNkexHk1HgbnhMEQob/eb1n4A
-         35kdmW3unjqNFEx2Ic5bm7IIeGMhCnbJf8nE39sFDjNvl55avS7Kkf9JKsr7F84Ccei6
-         9Ui9KM2Js/J7t28XmCk1KRLgheV0mqxtKZlq46Q/gCEv4M5sGUCEwuMhQE5BY+Ht/JcJ
-         m1fwwENjwLr9L53xFbB0aetlAXYEgK8mhA8+qmgaT3zWOIYIuLQ6cE5+gMHWUVJCOLqF
-         34K7JMklOJq16opoovebm2UsckM25jtbuFye/UbnjbuG9254hW5uMQ/YN3lmU0DRyxlL
-         bRsw==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=Ts5g2uev+1ISzrsi03Mun9L4h8pAwmrrs0sUoELtLg8=;
+        b=CXAaOmPokIU9D75paedKSgzifu66v6q2HNwmA41j6K5LtlJDbM/+1rDzhz90aFWo5g
+         yknbyQIPqv02DwfPu9MNPD4bmI+v2kVqJ4E2ZJ7H6l4NGrQFutw8P48Gkx7lIBhKtNx/
+         8aOPWyAr6POP4WQrRKAfjEsWKsYDJHHXe17DFaB+BtFx8VSPGMTOc+w/lPnhTOEcCoFi
+         58Lt9wtUamnuq+WgN4z5+Tpbi9ACXBFl5sLtS3k79jE1V9pAfpxdvZvEus2Z0k8VJu78
+         OVXlIpFG/zcMpAvZsENgPKaPoud/IsJFvOSWayRxPu/D349beYu+yZ3Ocf/h4RnTGPeS
+         bItw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dN4wZ25g;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=eOilio8S;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d8si409795qtg.227.2020.06.08.05.02.59
+        by mx.google.com with ESMTPS id w83si3912273ybw.473.2020.06.08.05.03.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jun 2020 05:02:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 08 Jun 2020 05:03:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dN4wZ25g;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56532 helo=lists1p.gnu.org)
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=eOilio8S;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60120 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiGUU-0003cg-HA
-	for alex.bennee@linaro.org; Mon, 08 Jun 2020 08:02:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35618)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jiGVP-000544-EM
+	for alex.bennee@linaro.org; Mon, 08 Jun 2020 08:03:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35852)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jiGSW-0001yO-HV
- for qemu-devel@nongnu.org; Mon, 08 Jun 2020 08:00:56 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:38847
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jiGSV-0006hj-Hr
- for qemu-devel@nongnu.org; Mon, 08 Jun 2020 08:00:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591617654;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0Mzq1zS5opkSh8ZWWPbOAjwcXzqrFrc9v0qCnsGMipg=;
- b=dN4wZ25gSBSoZ2Xs/QH9XD2ngEgoTGFAYI/9U+8K2Tz6ddnZp5vvl4x2UtD60/i9rHilmL
- flDHfK7X1yquDlQHsO5FnjsxqTnuNAfd7DgDBPzDGUBOgIgbzWLSGAeqs8rRL6Gif4MTRz
- lbUoeiyrogyNFL1CuO87/JqAK4y0nVI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-496-m2xmzFQAP6yUA7AesH7fRQ-1; Mon, 08 Jun 2020 08:00:52 -0400
-X-MC-Unique: m2xmzFQAP6yUA7AesH7fRQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A0045107ACCA;
- Mon,  8 Jun 2020 12:00:51 +0000 (UTC)
-Received: from localhost (unknown [10.40.208.64])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 83E322B5BE;
- Mon,  8 Jun 2020 12:00:48 +0000 (UTC)
-Date: Mon, 8 Jun 2020 14:00:26 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Subject: Re: [Question] Regarding PMU initialization within the QEMU for ARM
- VCPUs
-Message-ID: <20200608140026.1eb49a8b@redhat.com>
-In-Reply-To: <0c91f4bab5d24bb3a1e7ca36d1d57221@huawei.com>
-References: <b2e401cd17fe49d792d09b31bd726e35@huawei.com>
- <20200603093745.dwfb55ny34az7rez@kamzik.brq.redhat.com>
- <20200605173116.55419a1e@redhat.com>
- <0c91f4bab5d24bb3a1e7ca36d1d57221@huawei.com>
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1jiGU8-0003zj-Gr
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2020 08:02:36 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:39212)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1jiGU7-0006zs-0m
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2020 08:02:36 -0400
+Received: by mail-wr1-x444.google.com with SMTP id t18so17107686wru.6
+ for <qemu-arm@nongnu.org>; Mon, 08 Jun 2020 05:02:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=Ts5g2uev+1ISzrsi03Mun9L4h8pAwmrrs0sUoELtLg8=;
+ b=eOilio8Sg5WpnNGonExnXEscVLYs7UepYzOw+3c++gvDAZANEAnLPgQ9DXmCl/lO0s
+ vP6g47kQ6/bFLi6Szb5gZPoFkid1XNeJTA5Zu/yQdmKceuyDF9f/q1KJlbGhLlnGBr1B
+ U60DKFPBxJjK50Y62DiRzK9eSpRmHYv9KBHIsuR09shXKdEZKE6vMG967awUwpewoLNz
+ w91mZL5Jh4WaLHvnU2tE3XQk3pQ7KKFGXm8VS+VB8xRU3qOdUq5Mn/viEy9Ky2SNujKG
+ ItBSdZalIxeDb5TwnCw3iFijfkTARIp3DdSN4Zl7qBRK9W+yOzCuGbNz2OeYkf4jUgQl
+ PV3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=Ts5g2uev+1ISzrsi03Mun9L4h8pAwmrrs0sUoELtLg8=;
+ b=R1CGyZUQ2hkyZi5M0S1schVIndUS++c5Cxlz59qlpP+VTwSq30s3DrORw44pt+0eB3
+ v+qWp3YLvucyPZeRJ0fC8kLj4WrsEJn9pRw+2N1IVx0Jd5Zaf01e1XD3pEcEIELvbgkM
+ mrs0un0goxmNuT9uhZsC2gtfvMB6RteutL8fo/rZhm97Iz5dQPSPip8TqxH+BRXVGIo+
+ bOTwVUOCfnUxJ1dJg6Y01DdYwIF15UsQf5sLX3xQRpeu1iRawUsT0bv78GzBzCxrMNa+
+ cBg/vd0MiFyD1PgTmH34ogklMUNLPJdIHWtN9mFaKBioreA1QQyjhH4/Qo5XQlYYiSAR
+ kfqQ==
+X-Gm-Message-State: AOAM530WX2wNRVcADtQvelYwyABWzybtPNKVh+35G/fz0cT0SnvTTbrH
+ v/wp2k8lbN1Zs5xRaTm8tjq54w==
+X-Received: by 2002:adf:ff83:: with SMTP id j3mr23383600wrr.264.1591617749599; 
+ Mon, 08 Jun 2020 05:02:29 -0700 (PDT)
+Received: from vanye ([2001:470:1f09:12f0:b26e:bfff:fea9:f1b8])
+ by smtp.gmail.com with ESMTPSA id t189sm22484693wma.4.2020.06.08.05.02.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Jun 2020 05:02:29 -0700 (PDT)
+Date: Mon, 8 Jun 2020 13:02:26 +0100
+From: Leif Lindholm <leif@nuviainc.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: kvm_target, QEMU_KVM_ARM_TARGET_GENERIC_V8 questions
+Message-ID: <20200608120226.GM28566@vanye>
+References: <20200604125544.GW28566@vanye>
+ <20200604131802.7w4hncgq2gopbw6z@kamzik.brq.redhat.com>
+ <20200604160300.GB28566@vanye>
+ <CAFEAcA8MTB5VQQbMuSfkGc9JcGeawL_GUY8Pcs3yxT9kdncZJw@mail.gmail.com>
+ <20200604162607.GC28566@vanye>
+ <CAFEAcA-wX-vKek_Zt5hmjiQNP1utCO7yGJQPcuny1M7xncYsQg@mail.gmail.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 01:20:45
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-wX-vKek_Zt5hmjiQNP1utCO7yGJQPcuny1M7xncYsQg@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=leif@nuviainc.com; helo=mail-wr1-x444.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "mst@redhat.com" <mst@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H9nUwWK6q9Bl
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Andrew Jones <drjones@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QndemxCJZEtv
 
-On Fri, 5 Jun 2020 16:38:37 +0000
-Salil Mehta <salil.mehta@huawei.com> wrote:
+Hmm ... I managed to accidentally mark this one as read.
 
-> > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > Sent: Friday, June 5, 2020 4:31 PM
-> > To: Andrew Jones <drjones@redhat.com>
-> > Cc: Salil Mehta <salil.mehta@huawei.com>; qemu-devel@nongnu.org;
-> > qemu-arm@nongnu.org; Peter Maydell <peter.maydell@linaro.org>; mst@redhat.com
-> > Subject: Re: [Question] Regarding PMU initialization within the QEMU for ARM
-> > VCPUs
-> > 
-> > On Wed, 3 Jun 2020 11:37:45 +0200
-> > Andrew Jones <drjones@redhat.com> wrote:
-> >   
-> > > On Mon, Jun 01, 2020 at 03:04:33PM +0000, Salil Mehta wrote:  
-> > > > Hello,
-> > > > I could see below within function fdt_add_pmu_nodes() part of
-> > > > hw/arm/virt.c during virt machine initialization time:  
-> > ...  
-> > >  
-> > > > Q4. This function  fdt_* looks to be wrongly named. The info
-> > > >     being initialized here shall be used even when ACPI is
-> > > >     being used. Initialization part and FDT info looked
-> > > >     mixed up here if I am right?  
+Anyway, I spent the Friday writing the RFC I just sent out instead.
+
+On Thu, Jun 04, 2020 at 19:43:06 +0100, Peter Maydell wrote:
+> On Thu, 4 Jun 2020 at 17:26, Leif Lindholm <leif@nuviainc.com> wrote:
+> >
+> > On Thu, Jun 04, 2020 at 17:09:30 +0100, Peter Maydell wrote:
+> > > On Thu, 4 Jun 2020 at 17:03, Leif Lindholm <leif@nuviainc.com> wrote:
+> > > > But there's also things like:
+> > > > - a57_initfn explicitly setting kvm_target, then only being called
+> > > >   from max_initfn for !kvm_enabled()
 > > >
-> > > Agreed. The function has the wrong name. mach-virt has many functions that
-> > > mix the initialization and fdt building together, but those functions are
-> > > named something like create_foo(). Patches welcome.  
-> > that was where I gave up on cpu hotplug arm/virt the last time.  
+> > > Expected -- a KVM 'max' is nothing to do with a TCG 'max':
+> > >  * for KVM, -cpu max means "same as -cpu host"
+> > >  * for TCG, -cpu max means "start with an A57, then add in all the
+> > >    extra architectural features that have been added since then".
+> >
+> > Sure. But why are we setting the kvm_target at all for the
+> > !kvm_enabled() case?
 > 
-> Were you releasing the ARM objects as well? Or are you referring to some
-> other problem?
-I was talking about mix of FDT and device creation code.
+> Because it happens to be set in the a57 initfn, and it's harmless
+> if we're not using TCG. I feel like some of your take on this set of
+> functions comes from thinking of max_initfn as in some sense the
+> 'primary' function here, when it's the other way around : a57_initfn
+> is the standard kind of CPU initfn (behaving in and written the same
+> way as a53_initfn and a72_initfn), whereas max_initfn is an odd
+> special case which happens for convenience-of-implementation
+> to piggyback on the a57 implementation.
 
-> 
-> > Ideally we should split out from create_foo() all firmware generation code
-> > (fdt) and move it to virt_machine_done time + make sure that it could be
-> > regenerated at reset time so guest would get updated FDT on reset.  
-> 
-> Agreed, just like ACPI part. That would be more cleaner. 
-> 
-> Thanks
-> Salil.
-> 
-> 
+Well, my take is more looking at a part of the codebase that I was not
+previously familiar with, seeing things that seemed redundant, but not
+being confident enough to dismiss them outright so having to spend
+time investigating (and asking silly questions on list).
 
+> > > kvm_target being set by a57_initfn is specifically for the case
+> > > where a KVM user is using "-cpu cortex-a57".
+> > >
+> > > > - a57_initfn setting cpu->dtb_compatible to "arm,cortex-a57"
+> > >
+> > > What else would it set it to?
+> >
+> > Hmm, I had been hoping there was a generic v8a one - kvm64.c kind of
+> > got my hopes up with "arm,arm-v8".
+> 
+> Ah, that's the other way around -- yes, for 'max' we should be using a
+> more generic value, not accidentally using 'cortex-a57'. (Linux doesn't
+> in practice care IIRC, which is why this bug hasn't been noticed.) But
+> for an actual cortex-a57 model we should report as arm,cortex-a57.
+
+Well, I think any OS that tries to be generically bootable *has* to
+ignore that value, although it could be useful for informational
+purposes.
+
+> https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/cpus.yaml
+> is the official list of permitted strings, incidentally.
+
+My feeling is none of the values there are appropriate (arm,armv8
+indicates ARM ltd, but not aarch64 support). I made something up for
+the RFC set. We could always send a patch adding some qemu, or
+generic, target.
+
+> > Not entirely unrelated question:
+> > Would you take added field definitions in target/arm/cpu.h for
+> > features not yet emulated in QEMU but defined in released versions of
+> > ARM ARM?
+> 
+> Yes in theory (you'll see that we have a bunch of field definitions already
+> which we don't yet implement, because we tend to define all the fields
+> for an ID register at the point where we want to access one field), but
+> on the other hand there's usually no need to actually use them unless
+> we're adding the emulation for the feature, so the question is: what would
+> you do with them if you added them?
+
+Reduce the delta between internal development and upstream.
+
+This is not a suggestion NUVIA has a vast army of qemu developers
+ready to implement all features supported by ARMv8.whatever.
+But sometimes all we need is an instruction trace, and for that we
+need to make sure any selection sequences pick the optimal ones we do
+intend to implement.
+
+Best Regards,
+
+Leif

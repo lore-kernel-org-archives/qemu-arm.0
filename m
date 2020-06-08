@@ -1,255 +1,343 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4898043lfc;
-        Mon, 8 Jun 2020 02:11:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJztlJ2JS5BNDlKBBhzm8UD2D3JzpmoE5xqQ75JUXnFOWuLDxvvBRTT/FGuLFfLFcLts0e4q
-X-Received: by 2002:a25:e08d:: with SMTP id x135mr33908486ybg.482.1591607505212;
-        Mon, 08 Jun 2020 02:11:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591607505; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4931519lfc;
+        Mon, 8 Jun 2020 03:04:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyGlCBSfnzGy7LoBvIQz3OYe80C9jITnES2hMgYIOIBn0B69AOrFxD+uhhLBkKV+Sjz31uM
+X-Received: by 2002:a25:ef02:: with SMTP id g2mr12571604ybd.393.1591610665984;
+        Mon, 08 Jun 2020 03:04:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591610665; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dr6O+OtmkmITbR++606DBalVYNFGMZ4tRx5lvnufWDVdM5WdOkbAo7Ld8slp0JCMfg
-         yQ7iEETrjnBKPpHhrH70URCK3OA1V22R5fXiBdCjyOnfx4YJ84B8o9Ka4Mmxt6irCRfT
-         HIE8TAgXSOWC1nP+96SvUd7O1e+2T6t39G8hu4aGuudbwRcKGpCloIj0OnTtzHRSZbj1
-         xNblnZD9R/TK4gEgoD5Pl+5+AJGXkt5Z4xFtwGxkQsfVKNqHCy+3t6XkKzNp+RBM9bey
-         B1Xu67TrxkLxJJBVqU1hg++Rz5cf2iwXnisCOu24mtZP3Wpc+nqb8fGwxftG0sIe8u4R
-         GdzA==
+        b=T6FAEm4JbwIccdU+/40RGwHmygtAbN7McdiW5L3eUa7tFqSeIM8aGr3+tX3boze3Wv
+         sJ9yVreow32nYdDW/GYkV2yO+PKwvfDGQ3+XuNmAYBB1U5Ti6BBmpQNvdEhBc7EeIZj7
+         sxWuTf/8AGR9Zh1pI/zDcLXjMANWr2+sudBnK0MgJ1prIyd5xlVSkwTc34MpKIZ3C0sa
+         JV7hCElMpzy7F15c3wOIlWGGFweRDetgeHwobtic5bhIIsV5kQD0qoxOCC4SG0snHfs+
+         V2QAt2Q11WePSVPYHDwpYx+jr78jm3HTejJo9pSQTLmG5SS1+gX0Auzu+hZwbWSHWL8O
+         7lUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=pxeQKS5SoNo4nuLxe3e44s1xCvMRgSxI6cSBVEGz5lw=;
-        b=UvQvTRULCQU0Fq5vKeFw4Euj+oy7BtZDe8jIRlVz/nAxPl8z9CjHG2qX+t1NsdOlL2
-         +lM+qtc24O7APNF1aPFD9AvxjHpk2YojMMkQgN2BS07L0zszKCr7ZYFag9xlhyGgYuum
-         NSXPa3wZZUUQo1YwIA4sDlOTg9f1iBg+uHustPPuwd8KuD8X7X7293ZoiNLkGeCbwTJh
-         fHGODfrZRvwPsJag1oV/v4QhUi+qAIJiIq+JkuhtwO6iVTCdhDHYnL5yIkdZjsrlv9ma
-         lgeIQvzvGtLWj0MDbfZ4dzkmtZ+ngvPYSKGbYjxokYwtweLBFt10cSCCgoiEnQWv40B8
-         igRA==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=jUN0qUu47S/sq5nYzzsFh+Nb0+2SKKr28u33DAboDA8=;
+        b=MGwBkf/LjFAP30hu0diC7QWiV3ud/OE1Uz2X5VxS3B+dNEO7rInbVbsQJb3CrGkKhq
+         xwLMoSkGwS8QaDgFrdcdURQQdu0BtX9X2IU3XdT5chqGzulQAwxc8n2ND7C5EfShxXt9
+         LgwYNZM94e4Ez8P0QvBZT/ZA5AFou7ytYJDEmgudm5lBcZxmC/N4sPbm8SGEqXLp6HP8
+         JoCI+BmfHyqx1NhDgiUMVVYsbPNszfGOSS7+XHDDx7tUo2uLlhgIyS5qYtDXmx4ZunXl
+         I0PtyFC/HBr9z7DVrScvvypZSxR1p6q9QcjRWo9iCqe4Qp0FSSsaRlo1ljKwdQGTB/X0
+         kJcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RVNYb4wn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FESZSOgj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e30si3552907ybi.449.2020.06.08.02.11.45
+        by mx.google.com with ESMTPS id u2si16335575ybc.460.2020.06.08.03.04.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jun 2020 02:11:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 08 Jun 2020 03:04:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RVNYb4wn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FESZSOgj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59810 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41716 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiDom-0005ub-Jo
-	for alex.bennee@linaro.org; Mon, 08 Jun 2020 05:11:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46592)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jiEdl-000625-Ah
+	for alex.bennee@linaro.org; Mon, 08 Jun 2020 06:04:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51996)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jiDoW-0005uP-OX
- for qemu-arm@nongnu.org; Mon, 08 Jun 2020 05:11:28 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:31134)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1jiEbc-0004lU-IX
+ for qemu-devel@nongnu.org; Mon, 08 Jun 2020 06:02:19 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:57062)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jiDoV-0005zf-7m
- for qemu-arm@nongnu.org; Mon, 08 Jun 2020 05:11:27 -0400
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1jiEbZ-0005U8-7j
+ for qemu-devel@nongnu.org; Mon, 08 Jun 2020 06:02:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591607485;
+ s=mimecast20190719; t=1591610526;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=pxeQKS5SoNo4nuLxe3e44s1xCvMRgSxI6cSBVEGz5lw=;
- b=RVNYb4wn+CIKlMICPfbp7oV7OiLxbc/nGHOG33QK1OmygxOH/83fBYUND7osQB9YuxdwiM
- lEKT6dTzyNj4rCHL2rrtU8plL4OG242zBYBMAXY+0fjbCRwGRBDZCDAFFTRLAgdvxl2h9d
- VAlMQ3c/HBtmUEHHhN8wHBxax8X6uys=
+ bh=jUN0qUu47S/sq5nYzzsFh+Nb0+2SKKr28u33DAboDA8=;
+ b=FESZSOgj/YrD8DyMNYa8T+FOZ30abcZn6Q3YXYb+84m/yDCboGvujwM6LPxSTJ4lgvx4//
+ L4F0uv0WaFFrJEEVuPYNmODCVDsf0bvYw36bikXTtSF1I68Ffs5oYVGA+WOsoHpfZhNjY7
+ 541cTZJ6gz8ZhftEHOqt031L2e+919Q=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-2-RXK7qIc4P16RbHiYvy6-lQ-1; Mon, 08 Jun 2020 05:11:21 -0400
-X-MC-Unique: RXK7qIc4P16RbHiYvy6-lQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-6-ld_ElVw6PT-NlF7k17g8eA-1; Mon, 08 Jun 2020 06:02:05 -0400
+X-MC-Unique: ld_ElVw6PT-NlF7k17g8eA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C0914BFC6;
- Mon,  8 Jun 2020 09:11:19 +0000 (UTC)
-Received: from [10.36.112.85] (ovpn-112-85.ams2.redhat.com [10.36.112.85])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 14F9A891E0;
- Mon,  8 Jun 2020 09:11:10 +0000 (UTC)
-Subject: Re: [RFC 4/6] tests: tpm-emu: Remove assert on TPM2_ST_NO_SESSIONS
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20200601102113.1207-1-eric.auger@redhat.com>
- <20200601102113.1207-5-eric.auger@redhat.com>
- <50a54958-e9e0-c95f-3893-f7f790186e0e@linux.ibm.com>
- <80ce5833-90ee-cbc5-9822-cca1fabc33e6@redhat.com>
- <b310bcc1-02aa-4948-20d0-2e66de68acb3@linux.ibm.com>
- <228f7928-9ffa-498d-0158-aa08e7c3ca55@redhat.com>
- <aab64eab-f524-3385-c0c9-c0cd7a41e04e@linux.ibm.com>
- <fe6c6130-e027-af88-e005-d850a8ce0c89@redhat.com>
- <20200608103403.00dcfacc@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <be56c0cd-3626-891c-178b-05f54b892159@redhat.com>
-Date: Mon, 8 Jun 2020 11:11:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DDA1FEC1A0;
+ Mon,  8 Jun 2020 10:02:03 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.64])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5B5F119C4F;
+ Mon,  8 Jun 2020 10:01:50 +0000 (UTC)
+Date: Mon, 8 Jun 2020 12:01:48 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Greg Kurz <groug@kaod.org>
+Subject: Re: [PATCH v3] numa: forbid '-numa node, mem' for 5.1 and newer
+ machine types
+Message-ID: <20200608120148.13714591@redhat.com>
+In-Reply-To: <20200605184758.6a7aa3ef@bahia>
+References: <20200605160321.671964-1-imammedo@redhat.com>
+ <20200605184758.6a7aa3ef@bahia>
 MIME-Version: 1.0
-In-Reply-To: <20200608103403.00dcfacc@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-1.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 01:20:45
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001,
+ URIBL_SBL=1.623, URIBL_SBL_A=0.1 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, mst@redhat.com,
- lersek@redhat.com, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, marcandre.lureau@redhat.com, eric.auger.pro@gmail.com,
- philmd@redhat.com, ardb@kernel.org, Stefan Berger <stefanb@linux.ibm.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: leWLPVA70l6e
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
+ libvir-list@redhat.com, Michal Privoznik <mprivozn@redhat.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ pbonzini@redhat.com, david@gibson.dropbear.id.au, rth@twiddle.net
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tFvjA4KXqnPk
 
-Hi Igor,
+On Fri, 5 Jun 2020 18:47:58 +0200
+Greg Kurz <groug@kaod.org> wrote:
 
-On 6/8/20 10:34 AM, Igor Mammedov wrote:
-> On Fri, 5 Jun 2020 17:47:08 +0200
-> Auger Eric <eric.auger@redhat.com> wrote:
+> On Fri,  5 Jun 2020 12:03:21 -0400
+> Igor Mammedov <imammedo@redhat.com> wrote:
 > 
->> Hi Stefan,
->>
->> On 6/5/20 5:25 PM, Stefan Berger wrote:
->>> On 6/5/20 5:35 AM, Auger Eric wrote:  
->>>> Hi Stefan,
->>>>
->>>> On 6/2/20 6:17 PM, Stefan Berger wrote:  
->>>>> On 6/2/20 12:13 PM, Auger Eric wrote:  
->>>>>> Hi Stefan,
->>>>>>
->>>>>> On 6/2/20 3:39 PM, Stefan Berger wrote:  
->>>>>>> On 6/1/20 6:21 AM, Eric Auger wrote:  
->>>>>>>> While writing tests for checking the content of TPM2 and DSDT
->>>>>>>> along with TPM-TIS instantiation I attempted to reuse the
->>>>>>>> framework used for TPM-TIS tests. However While dumping the
->>>>>>>> ACPI tables I get an assert on TPM2_ST_NO_SESSIONS. My assumption
->>>>>>>> is maybe the other tests did not execute long enough to encounter
->>>>>>>> this. So I tentatively propose to remove the assert as it
->>>>>>>> does not seem to break other tests and enable the new ones.
->>>>>>>>
->>>>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>>>>>> ---
->>>>>>>>     tests/qtest/tpm-emu.c | 1 -
->>>>>>>>     1 file changed, 1 deletion(-)
->>>>>>>>
->>>>>>>> diff --git a/tests/qtest/tpm-emu.c b/tests/qtest/tpm-emu.c
->>>>>>>> index c43ac4aef8..298d0eec74 100644
->>>>>>>> --- a/tests/qtest/tpm-emu.c
->>>>>>>> +++ b/tests/qtest/tpm-emu.c
->>>>>>>> @@ -49,7 +49,6 @@ static void *tpm_emu_tpm_thread(void *data)
->>>>>>>>             s->tpm_msg->tag = be16_to_cpu(s->tpm_msg->tag);
->>>>>>>>             s->tpm_msg->len = be32_to_cpu(s->tpm_msg->len);
->>>>>>>>             g_assert_cmpint(s->tpm_msg->len, >=, minhlen);
->>>>>>>> -        g_assert_cmpint(s->tpm_msg->tag, ==, TPM2_ST_NO_SESSIONS);  
->>>>>>> You should not have to remove this. The tests are skipped if swtpm
->>>>>>> does
->>>>>>> not support TPM 2 via --tpm2 option. This would be a very old swtpm
->>>>>>> version, though. So, all tests are run with --tpm2 option and any
->>>>>>> response received from the TPM would be a TPM 2 response that should
->>>>>>> have TPM2_ST_NO_SESSIONS as the tag. I'd be curious what other
->>>>>>> value you
->>>>>>> are seeing there.  
->>>>>> If I revert this patch I am getting TPM2_ST_SESSIONS on my end.  
->>>>> Is firmware/BIOS active? There's no TPM2_ST_SESSIONS coming out of QEMU.  
->>>> So it looks SeaBIOS is in use (bios-256k.bin loaded).
->>>>
->>>> I can see MMIO accesses to the TPM and the following commands are
->>>> observable:
->>>> tpm_emu_tpm_thread code=0x181 tag=0x8001 len=0xa
->>>> tpm_emu_tpm_thread code=0x144 tag=0x8001 len=0xc
->>>> tpm_emu_tpm_thread code=0x121 tag=0x8002 len=0x20
->>>> This last one causes the assert (TPM2_CC_HierarchyControl)
->>>>
->>>> I checked in Seabios and effectively tpm20_hierarchycontrol() tags the
->>>> TPM2_CC_HierarchyControl command with TPM2_ST_SESSIONS
->>>>
->>>> Due to our emulation, maybe tpm_set_failure() gets called, inducing
->>>> tpm20_hierarchycontrol() call.
->>>>
->>>> That being said, what do you recommend? Remove the assert, improve the
->>>> emulation, other?  
->>>
->>> So this is an ACPI test. What role does the firmware play for success of
->>> the test? If the test relies on the firmware showing some sort of
->>> expected result, then I would recommend only running this test with an
->>> attached swtpm, like we run some other tests. If we don't need the
->>> firmware to succeed then I would just get rid of the assert. Probably no
->>> other test we have implemented so far was running the firmware...  
->> FWIU The goal of this test is to compare the acpi tables generated by
->> qemu against reference ones. I dont think we expect from the FW any
->> specific result but I would prefer Igor or Michael to confirm.
+> > Deprecation period is run out and it's a time to flip the switch
+> > introduced by cd5ff8333a.  Disable legacy option for new machine
+> > types (since 5.1) and amend documentation.
+> > 
+> > '-numa node,memdev' shall be used instead of disabled option
+> > with new machine types.
+> > 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
+> > ---
+> > v1:
+> >  - rebased on top of current master
+> >  - move compat mode from 4.2 to 5.0
+> > v2:
+> >  - move deprection text to recently removed section
+> > v3:
+> >  - increase title line length for (deprecated.rst)
+> >      '``-numa node,mem=``\ *size* (removed in 5.1)'
+> > 
+> > CC: peter.maydell@linaro.org
+> > CC: ehabkost@redhat.com
+> > CC: marcel.apfelbaum@gmail.com
+> > CC: mst@redhat.com
+> > CC: pbonzini@redhat.com
+> > CC: rth@twiddle.net
+> > CC: david@gibson.dropbear.id.au
+> > CC: libvir-list@redhat.com
+> > CC: qemu-arm@nongnu.org
+> > CC: qemu-ppc@nongnu.org
+> > ---
+> >  docs/system/deprecated.rst | 37 ++++++++++++++++++++-----------------
+> >  hw/arm/virt.c              |  2 +-
+> >  hw/core/numa.c             |  6 ++++++
+> >  hw/i386/pc.c               |  1 -
+> >  hw/i386/pc_piix.c          |  1 +
+> >  hw/i386/pc_q35.c           |  1 +
+> >  hw/ppc/spapr.c             |  2 +-
+> >  qemu-options.hx            |  9 +++++----
+> >  8 files changed, 35 insertions(+), 24 deletions(-)
+> > 
+> > diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
+> > index f0061f94aa..502e41ff35 100644
+> > --- a/docs/system/deprecated.rst
+> > +++ b/docs/system/deprecated.rst
+> > @@ -101,23 +101,6 @@ error in the future.
+> >  The ``-realtime mlock=on|off`` argument has been replaced by the
+> >  ``-overcommit mem-lock=on|off`` argument.
+> >  
+> > -``-numa node,mem=``\ *size* (since 4.1)
+> > -'''''''''''''''''''''''''''''''''''''''
+> > -
+> > -The parameter ``mem`` of ``-numa node`` is used to assign a part of
+> > -guest RAM to a NUMA node. But when using it, it's impossible to manage specified
+> > -RAM chunk on the host side (like bind it to a host node, setting bind policy, ...),
+> > -so guest end-ups with the fake NUMA configuration with suboptiomal performance.
+> > -However since 2014 there is an alternative way to assign RAM to a NUMA node
+> > -using parameter ``memdev``, which does the same as ``mem`` and adds
+> > -means to actualy manage node RAM on the host side. Use parameter ``memdev``
+> > -with *memory-backend-ram* backend as an replacement for parameter ``mem``
+> > -to achieve the same fake NUMA effect or a properly configured
+> > -*memory-backend-file* backend to actually benefit from NUMA configuration.
+> > -In future new machine versions will not accept the option but it will still
+> > -work with old machine types. User can check QAPI schema to see if the legacy
+> > -option is supported by looking at MachineInfo::numa-mem-supported property.
+> > -
+> >  ``-numa`` node (without memory specified) (since 4.1)
+> >  '''''''''''''''''''''''''''''''''''''''''''''''''''''
+> >  
+> > @@ -512,3 +495,23 @@ long starting at 1MiB, the old command::
+> >  can be rewritten as::
+> >  
+> >    qemu-nbd -t --image-opts driver=raw,offset=1M,size=100M,file.driver=qcow2,file.file.driver=file,file.file.filename=file.qcow2
+> > +
+> > +Command line options
+> > +--------------------
+> > +
+> > +``-numa node,mem=``\ *size* (removed in 5.1)
+> > +''''''''''''''''''''''''''''''''''''''''''''
+> > +
+> > +The parameter ``mem`` of ``-numa node`` is used to assign a part of
+> > +guest RAM to a NUMA node. But when using it, it's impossible to manage specified
+> > +RAM chunk on the host side (like bind it to a host node, setting bind policy, ...),
+> > +so guest end-ups with the fake NUMA configuration with suboptiomal performance.
+> > +However since 2014 there is an alternative way to assign RAM to a NUMA node
+> > +using parameter ``memdev``, which does the same as ``mem`` and adds
+> > +means to actualy manage node RAM on the host side. Use parameter ``memdev``
+> > +with *memory-backend-ram* backend as an replacement for parameter ``mem``
+> > +to achieve the same fake NUMA effect or a properly configured
+> > +*memory-backend-file* backend to actually benefit from NUMA configuration.
+> > +In future new machine versions will not accept the option but it will still
+> > +work with old machine types. User can check QAPI schema to see if the legacy
+> > +option is supported by looking at MachineInfo::numa-mem-supported property.
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index 37462a6f78..063d4703f7 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -2262,7 +2262,6 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+> >      hc->pre_plug = virt_machine_device_pre_plug_cb;
+> >      hc->plug = virt_machine_device_plug_cb;
+> >      hc->unplug_request = virt_machine_device_unplug_request_cb;
+> > -    mc->numa_mem_supported = true;
+> >      mc->nvdimm_supported = true;
+> >      mc->auto_enable_numa_with_memhp = true;
+> >      mc->default_ram_id = "mach-virt.ram";
+> > @@ -2375,6 +2374,7 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
+> >  static void virt_machine_5_0_options(MachineClass *mc)
+> >  {
+> >      virt_machine_5_1_options(mc);
+> > +    mc->numa_mem_supported = true;
+> >  }
+> >  DEFINE_VIRT_MACHINE(5, 0)
+> >  
+> > diff --git a/hw/core/numa.c b/hw/core/numa.c
+> > index 316bc50d75..05be412e59 100644
+> > --- a/hw/core/numa.c
+> > +++ b/hw/core/numa.c
+> > @@ -117,6 +117,12 @@ static void parse_numa_node(MachineState *ms, NumaNodeOptions *node,
+> >      }
+> >  
+> >      if (node->has_mem) {
+> > +        if (!mc->numa_mem_supported) {
+> > +            error_setg(errp, "Parameter -numa node,mem is not supported by this"
+> > +                      " machine type. Use -numa node,memdev instead");  
 > 
-> Firmware is needed to fetch tables from QEMU and place them in guest RAM,
-> it will also patch cross table pointers accordingly.
+> What about using error_append_hint() for the hint part ?
+sure, I'll send v4 shortly
+
 > 
-> So bios-tables-test checks both QEMU and firmware at the same time,
-> and reference tables are in form guest OS will see them.
-
-Thank you for your input. I guess Stefan's concern was: is that an issue
-if the FW accesses to the TPM silently fail at some (assumed late)
-point. I guess the job we expect from the FW, ie. copy the ACPI tables
-and patch tables, is done prior to that failure, hence the test success.
-So this functional failure should not be an issue for bios-table-test,
-right?
-
-Thanks
-
-Eric
-> 
->>
->> In that case, removing the assert() allows to compare the specific DSDT
->> and TPM2 tables and that's our expectation here I think.
->>
->> Thanks
->>
->> Eric
->>>
->>>
->>>    Stefan
->>>
->>>   
->>>>
->>>> Thank you in advance
->>>>
->>>> Best Regards
->>>>
->>>> Eric
->>>>  
->>>>>     Stefan
->>>>>
->>>>>
->>>>>  
->>>
->>>   
+> > +            return;
+> > +        }
+> > +
+> >          numa_info[nodenr].node_mem = node->mem;
+> >          if (!qtest_enabled()) {
+> >              warn_report("Parameter -numa node,mem is deprecated,"
+> > diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> > index 2128f3d6fe..a86136069c 100644
+> > --- a/hw/i386/pc.c
+> > +++ b/hw/i386/pc.c
+> > @@ -1960,7 +1960,6 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
+> >      hc->unplug = pc_machine_device_unplug_cb;
+> >      mc->default_cpu_type = TARGET_DEFAULT_CPU_TYPE;
+> >      mc->nvdimm_supported = true;
+> > -    mc->numa_mem_supported = true;
+> >      mc->default_ram_id = "pc.ram";
+> >  
+> >      object_class_property_add(oc, PC_MACHINE_DEVMEM_REGION_SIZE, "int",
+> > diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> > index f66e1d73ce..8955436efa 100644
+> > --- a/hw/i386/pc_piix.c
+> > +++ b/hw/i386/pc_piix.c
+> > @@ -438,6 +438,7 @@ static void pc_i440fx_5_0_machine_options(MachineClass *m)
+> >      pc_i440fx_5_1_machine_options(m);
+> >      m->alias = NULL;
+> >      m->is_default = false;
+> > +    m->numa_mem_supported = true;
+> >      compat_props_add(m->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+> >      compat_props_add(m->compat_props, pc_compat_5_0, pc_compat_5_0_len);
+> >  }
+> > diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> > index 4ba8ac8774..af6b32adb7 100644
+> > --- a/hw/i386/pc_q35.c
+> > +++ b/hw/i386/pc_q35.c
+> > @@ -366,6 +366,7 @@ static void pc_q35_5_0_machine_options(MachineClass *m)
+> >  {
+> >      pc_q35_5_1_machine_options(m);
+> >      m->alias = NULL;
+> > +    m->numa_mem_supported = true;
+> >      compat_props_add(m->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+> >      compat_props_add(m->compat_props, pc_compat_5_0, pc_compat_5_0_len);
+> >  }
+> > diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> > index 3b1a5ed865..210d61d1b3 100644
+> > --- a/hw/ppc/spapr.c
+> > +++ b/hw/ppc/spapr.c
+> > @@ -4511,7 +4511,6 @@ static void spapr_machine_class_init(ObjectClass *oc, void *data)
+> >       * in which LMBs are represented and hot-added
+> >       */
+> >      mc->numa_mem_align_shift = 28;
+> > -    mc->numa_mem_supported = true;
+> >      mc->auto_enable_numa = true;
+> >  
+> >      smc->default_caps.caps[SPAPR_CAP_HTM] = SPAPR_CAP_OFF;
+> > @@ -4599,6 +4598,7 @@ static void spapr_machine_5_0_class_options(MachineClass *mc)
+> >  {
+> >      spapr_machine_5_1_class_options(mc);
+> >      compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+> > +    mc->numa_mem_supported = true;
+> >  }
+> >  
+> >  DEFINE_SPAPR_MACHINE(5_0, "5.0", false);
+> > diff --git a/qemu-options.hx b/qemu-options.hx
+> > index 93bde2bbc8..196f468786 100644
+> > --- a/qemu-options.hx
+> > +++ b/qemu-options.hx
+> > @@ -239,10 +239,11 @@ SRST
+> >          -numa node,nodeid=0 -numa node,nodeid=1 \
+> >          -numa cpu,node-id=0,socket-id=0 -numa cpu,node-id=1,socket-id=1
+> >  
+> > -    '\ ``mem``\ ' assigns a given RAM amount to a node. '\ ``memdev``\ '
+> > -    assigns RAM from a given memory backend device to a node. If
+> > -    '\ ``mem``\ ' and '\ ``memdev``\ ' are omitted in all nodes, RAM is
+> > -    split equally between them.
+> > +    Legacy '\ ``mem``\ ' assigns a given RAM amount to a node (not supported
+> > +    for 5.1 and newer machine types). '\ ``memdev``\ ' assigns RAM from
+> > +    a given memory backend device to a node. If '\ ``mem``\ ' and
+> > +    '\ ``memdev``\ ' are omitted in all nodes, RAM is split equally between them.
+> > +
+> >  
+> >      '\ ``mem``\ ' and '\ ``memdev``\ ' are mutually exclusive.
+> >      Furthermore, if one node uses '\ ``memdev``\ ', all of them have to  
 > 
 > 
 

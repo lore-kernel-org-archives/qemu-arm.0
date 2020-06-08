@@ -1,146 +1,99 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp5285038lfc;
-        Mon, 8 Jun 2020 10:48:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwcyPxWF0RHFdDxQgs6B5pG2ofOJicK+QcpOZ7cg441ubWH1JEZPFxqChnPpbTCLxoShsQG
-X-Received: by 2002:a25:f206:: with SMTP id i6mr40190514ybe.415.1591638531729;
-        Mon, 08 Jun 2020 10:48:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591638531; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp5374633lfc;
+        Mon, 8 Jun 2020 12:54:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxPwipoJF0Js2Uga4TmpYZogvWMkC8gprz+mpEEY+IOtubGd7UOrY5AukwRBCduZB5oOSsp
+X-Received: by 2002:a25:df0b:: with SMTP id w11mr613978ybg.449.1591646082842;
+        Mon, 08 Jun 2020 12:54:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591646082; cv=none;
         d=google.com; s=arc-20160816;
-        b=EGYAvGsnsrYrzDr4DQimjTrr5aEWUJcckTydwiu36wtjcz1YlJ0/E4zShFIHso2Cn1
-         AIvov3zNHkTetAJv7/6Np8g77VQOubufSBXbI54yB+h0hqXLx2SkryOpxOTxPp+QnuLR
-         NDi8xkHHtoX7Wl3WLev1ryQoyJM7zhvXOZ5CEjRL1WRcdZmddawNNFZ3qusqLfpS9nzf
-         YSd3djLwli8977bH2HX3oCR9jR6TiW4+11j7o39mamwTkG8gJ3HCP8CYTTMzOpYi5ecR
-         9TRXLXt3xXzfUXBkOj6YXxjin7UsZFKKrS+jQMiwsR5eF4zba44O/vNhfqe3uo/7ErFc
-         94SA==
+        b=Y3j3Ph8K/pVTLHpZYKQnBe4nusG2O5Xx90xQ1Ld47EHCKkzXRqtmw5cbP4Who0aN6Z
+         vx7fepKRWvxVkHD473q+wAZYgsWTV3WK05t3l9ThG1v41N1JuPgmy33xx87W3m4joA0y
+         KGuwjdhVWgMTTrPduqSifubN6UJnEitq/lxUG/uRbAca58dr/I8m84Wbc7EcJlRsRVd0
+         qoBfrSvsgPQ8l6jM0gwnOR6Fj9XRzZaPGA8ayBArTQpGkfBtkcBdfz00IBaAD/NVhWs2
+         9oBGpwORqTX1wWvQrREMY5JACBzr04rugQ5rdSGb6wPtwZV08xkxursF5np4FHUMfPfT
+         S3lA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=RA7Qd/e5WmDCYilM5DXtSv9b2bjfckDER4ZIDZrQRWk=;
-        b=Jh5BVPJyQQVhqjjiCPirnvi4M0unW0AJswF+qP+RXWZ7qtQXcGRMWSJMwQ2AaZ1sB1
-         JvCAc5egK/6HaEin1VoyX7kBXFm08c3MPXluHi7n/LJJc65fS9wbwu0+Ea6iXu96n+qk
-         AgQ5AJ+vux0RiC9SWt8a8rqPF8/KxdLKEjvzbuHE1XH6+eKncr2UX9ETZaobNuiLrdmb
-         2WCTgnC+vZG7RsDuZOOQuQ7VJN/7H7jSf9ZjZF7U+W/Wsp1kg7qEKGFP8NnGYUpDfCJt
-         0OsJmwRXq18ZLjr7oRUQxoeDFJwTZmE97nPPliIUH3aqpHB0kQy5PG3jPo42mCZTp8Ci
-         kdIg==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date;
+        bh=+sqv/n+dHdqVQBBv8HoeSPhIX6ntoKrWvEWJ5bo+JBY=;
+        b=K35MtuoKisGZGUzGxoVOUSClqAvnzI0DE2juAEORbjf07UPzSNo+D3GWt3yNv/aJjz
+         EX9NNZNhnik0kYz+btDjv9gxo9HFlXM88kuR/z4/0/eluOPv2q8Pc6Ot5EpH5cjvCljm
+         DkPI0jjz/HxdRs3Y7z888PYszMcqJMs+dziHZd+4ho4p9e5MTKfkpQIQhgpbPoVqwXoe
+         k1HjjE/9Hhl1ibY1MKPtKU4S0oab+FXK/+fdI1+iPYx4c5noNB2g5jjMOUnZBs38f3jt
+         HLcuzdIqlHAoEXY33BHTD7kxj9tEtV7BsoQivnuM9SktN/GZq64sLi5goLPBtzX7got4
+         ukZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VSMxYU6H;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k22si258473ybf.91.2020.06.08.10.48.51
+        by mx.google.com with ESMTPS id 124si479714ybe.206.2020.06.08.12.54.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jun 2020 10:48:51 -0700 (PDT)
+        Mon, 08 Jun 2020 12:54:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VSMxYU6H;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46928 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43566 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiLtD-0000Uk-47
-	for alex.bennee@linaro.org; Mon, 08 Jun 2020 13:48:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52996)
+	id 1jiNr0-0004sX-7G
+	for alex.bennee@linaro.org; Mon, 08 Jun 2020 15:54:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37660)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jiLt2-0000U4-E0
- for qemu-arm@nongnu.org; Mon, 08 Jun 2020 13:48:40 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:28813
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jiLt0-00026x-9B
- for qemu-arm@nongnu.org; Mon, 08 Jun 2020 13:48:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591638516;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=RA7Qd/e5WmDCYilM5DXtSv9b2bjfckDER4ZIDZrQRWk=;
- b=VSMxYU6HWKWEgB7uyjZ4UNYsNE/+WmDUnNXlwmTji95gk/xKBXpudKKs+CK6OV0/yJ1ljO
- lwBJwQ11dXqe7O8UoxLTMdCgnh93dqbP9dfxd5Mt1Bz9hqtM6CjUMiLZbV4gHcUDnVBNfj
- Bm/RrpUDznjiZW9jh4FUGsuqbVngNlE=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-69-Tc3a70u2OzmOnXJa8Roajg-1; Mon, 08 Jun 2020 13:48:33 -0400
-X-MC-Unique: Tc3a70u2OzmOnXJa8Roajg-1
-Received: by mail-wr1-f69.google.com with SMTP id m14so7455617wrj.12
- for <qemu-arm@nongnu.org>; Mon, 08 Jun 2020 10:48:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
+ id 1jiNqs-0004rf-Bf; Mon, 08 Jun 2020 15:54:34 -0400
+Received: from mail-ej1-f68.google.com ([209.85.218.68]:41694)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
+ id 1jiNqp-0005i0-N2; Mon, 08 Jun 2020 15:54:33 -0400
+Received: by mail-ej1-f68.google.com with SMTP id x1so19694674ejd.8;
+ Mon, 08 Jun 2020 12:54:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=RA7Qd/e5WmDCYilM5DXtSv9b2bjfckDER4ZIDZrQRWk=;
- b=ajkbkeFbw/yxi5tv7zqZp4GiHTWpbe7Lszs0dh2xd2Ly8fTHGaS+Bx4Lk+OBZ35rG3
- OMzYAUNOmhH9jsNzB5oCW5/iOyJq0Ri2HT4q/HQq/xHxe2CXifCskgB8qXME9HwKacXe
- gtBFpmBPOq3E6/hLWFjd43spaAT+20qIhVfMY/yUnyqJGwydV+ifpMuffv6yndsaoNP1
- XrJqT4L7T1qAIFWXmlCSfDQ2YdrlpYwDNAYugqxFLmcMg3I3YenUckwvWvRLHDQOSZKd
- y2Cq4uiQhiQje/RAX+aFpHfjC5FpBLabph/UBSQXJKRtXoANTZceETOYj2IyUO71cPC0
- hjfg==
-X-Gm-Message-State: AOAM530gJVqFlKOycir8yiOM7a0cf7qcySl/pQ+u5i/N1OPVKNaPMPUk
- 4IRUKv6uXVdmqPtbwWML2Isr64qvJvTR6qAL9oQiSS0L02YJF333jOQyGlq22XNC0HbAhi/dspZ
- 8L8CLG66Ydl3o
-X-Received: by 2002:adf:a350:: with SMTP id d16mr25551665wrb.237.1591638511744; 
- Mon, 08 Jun 2020 10:48:31 -0700 (PDT)
-X-Received: by 2002:adf:a350:: with SMTP id d16mr25551649wrb.237.1591638511470; 
- Mon, 08 Jun 2020 10:48:31 -0700 (PDT)
-Received: from [192.168.1.38] (181.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id y80sm252772wmc.34.2020.06.08.10.48.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 08 Jun 2020 10:48:30 -0700 (PDT)
-Subject: Re: [PATCH v3 00/11] hw/sd/sdcard: Fix CVE-2020-13253 & cleanups
-To: qemu-devel@nongnu.org
-References: <20200605102230.21493-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <7a456fdc-eb53-063b-1d5e-24472b4057d5@redhat.com>
-Date: Mon, 8 Jun 2020 19:48:30 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=+sqv/n+dHdqVQBBv8HoeSPhIX6ntoKrWvEWJ5bo+JBY=;
+ b=tz8z038QlT7UJZiRlc0I9j8QE6jwUc//9JdqZSsbdjqWUmz6DprZfOazcwBJp7Ftmc
+ ATJ0G+AlBY7KHHoofkcrMYSFMhtHDrYG7xhC/0M7uEzmG6O6oBvThkZ5E1VuDl5mN51V
+ 7BShXXr1bjoy/Jg/qI+DKBgmeeGDqSp/spQ87Tgq68EyHwDAbalyuJDhWCE/hevXIbW8
+ Iic49q6NdF6ZgoSFxb/lM6HBels41Pmq21WTbHHN0iFFD03DJ/6YsaRDZSY9WHZl4uZB
+ 70cl/7/mWjaWK3XxrshDgItb+uZBPP0qxL5ITJnMKBS4UNeOyOyG6jIvAStx8/044xZ5
+ +vxA==
+X-Gm-Message-State: AOAM532zvVCYP5HyLYboJGmNu+4TC4zWHPJpKe8LYqIQPUy709Ij6Mxq
+ 3Dcj908ZC0UlXLdhc4WAg9o=
+X-Received: by 2002:a17:906:d9dc:: with SMTP id
+ qk28mr14717135ejb.6.1591646068901; 
+ Mon, 08 Jun 2020 12:54:28 -0700 (PDT)
+Received: from thl530.multi.box (p5791d09b.dip0.t-ipconnect.de.
+ [87.145.208.155])
+ by smtp.gmail.com with ESMTPSA id bg21sm11672524ejb.90.2020.06.08.12.54.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Jun 2020 12:54:28 -0700 (PDT)
+Date: Mon, 8 Jun 2020 21:54:21 +0200
+From: Thomas Huth <huth@tuxfamily.org>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Subject: Re: [RFC PATCH 22/35] hw/m68k/mcf520x: Emit warning when old code
+ is used
+Message-ID: <20200608215421.6322016c@thl530.multi.box>
+In-Reply-To: <20200608160044.15531-23-philmd@redhat.com>
+References: <20200608160044.15531-1-philmd@redhat.com>
+ <20200608160044.15531-23-philmd@redhat.com>
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <20200605102230.21493-1-philmd@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 05:40:56
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=209.85.218.68; envelope-from=th.huth@gmail.com;
+ helo=mail-ej1-f68.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 15:54:29
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -153,40 +106,100 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
- qemu-block@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ Paul Durrant <paul@xen.org>, Magnus Damm <magnus.damm@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org,
+ Stafford Horne <shorne@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Richard Henderson <rth@twiddle.net>,
+ "Daniel P . Berrange" <berrange@redhat.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7Jj277shAefn
+X-TUID: x50FgCnYLztp
 
-Hi Alistair,
+Am Mon,  8 Jun 2020 18:00:31 +0200
+schrieb Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>:
 
-On 6/5/20 12:22 PM, Philippe Mathieu-Daudé wrote:
-> Patches 2 & 3 fix CVE-2020-13253.
-> The rest are (accumulated) cleanups.
-> 
-> Supersedes: <20200604182502.24228-1-f4bug@amsat.org>
-> 
-> Philippe Mathieu-Daudé (11):
->   MAINTAINERS: Cc qemu-block mailing list
->   hw/sd/sdcard: Update coding style to make checkpatch.pl happy
->   hw/sd/sdcard: Do not switch to ReceivingData if address is invalid
->   hw/sd/sdcard: Restrict Class 6 commands to SCSD cards
->   hw/sd/sdcard: Update the SDState documentation
->   hw/sd/sdcard: Simplify cmd_valid_while_locked()
->   hw/sd/sdcard: Constify sd_crc*()'s message argument
->   hw/sd/sdcard: Make iolen unsigned
->   hw/sd/sdcard: Correctly display the command name in trace events
->   hw/sd/sdcard: Display offset in read/write_data() trace events
->   hw/sd/sdcard: Simplify realize() a bit
+> This code hasn't been QOM'ified yet. Warn the user.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/m68k/mcf5206.c | 5 +++++
+>  hw/m68k/mcf5208.c | 3 +++
+>  2 files changed, 8 insertions(+)
+>=20
+> diff --git a/hw/m68k/mcf5206.c b/hw/m68k/mcf5206.c
+> index a2fef04f8e..ec0d176674 100644
+> --- a/hw/m68k/mcf5206.c
+> +++ b/hw/m68k/mcf5206.c
+> @@ -16,6 +16,7 @@
+>  #include "qemu/timer.h"
+>  #include "hw/ptimer.h"
+>  #include "sysemu/sysemu.h"
+> +#include "hw/qdev-deprecated.h"
+> =20
+>  /* General purpose timer module.  */
+>  typedef struct {
+> @@ -144,6 +145,8 @@ static m5206_timer_state
+> *m5206_timer_init(qemu_irq irq) {
+>      m5206_timer_state *s;
+> =20
+> +    qdev_warn_deprecated_function_used();
+> +
+>      s =3D g_new0(m5206_timer_state, 1);
+>      s->timer =3D ptimer_init(m5206_timer_trigger, s,
+> PTIMER_POLICY_DEFAULT); s->irq =3D irq;
+> @@ -566,6 +569,8 @@ qemu_irq *mcf5206_init(MemoryRegion *sysmem,
+> uint32_t base, M68kCPU *cpu) m5206_mbar_state *s;
+>      qemu_irq *pic;
+> =20
+> +    qdev_warn_deprecated_function_used();
+> +
+>      s =3D g_new0(m5206_mbar_state, 1);
 
-I forgot to Cc you.
+Ok, it's quite obvious what you refer to here...
 
-Since you already reviewed a bunch of SD patches in the
-past, do you mind having a look a this series? It should
-be quite trivial.
+>      memory_region_init_io(&s->iomem, NULL, &m5206_mbar_ops, s,
+> diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
+> index 2ab9701ad6..72627f6833 100644
+> --- a/hw/m68k/mcf5208.c
+> +++ b/hw/m68k/mcf5208.c
+> @@ -26,6 +26,7 @@
+>  #include "hw/sysbus.h"
+>  #include "elf.h"
+>  #include "exec/address-spaces.h"
+> +#include "hw/qdev-deprecated.h"
+> =20
+>  #define SYS_FREQ 166666666
+> =20
+> @@ -191,6 +192,8 @@ static void mcf5208_sys_init(MemoryRegion
+> *address_space, qemu_irq *pic) m5208_timer_state *s;
+>      int i;
+> =20
+> +    qdev_warn_deprecated_function_used();
+> +
+>      /* SDRAMC.  */
+>      memory_region_init_io(iomem, NULL, &m5208_sys_ops, NULL,
+> "m5208-sys", 0x00004000); memory_region_add_subregion(address_space,
+> 0xfc0a8000, iomem);
 
-Thanks!
+... but it is not so obvious what you refer to here. I think that new
+function should maybe have a "char *what" parameter that contains the
+name of the struct you refer to. Or at least add a comment in front of
+the function with a short description?
 
-Phil.
-
+ Thomas

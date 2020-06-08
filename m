@@ -1,99 +1,107 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp5374633lfc;
-        Mon, 8 Jun 2020 12:54:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxPwipoJF0Js2Uga4TmpYZogvWMkC8gprz+mpEEY+IOtubGd7UOrY5AukwRBCduZB5oOSsp
-X-Received: by 2002:a25:df0b:: with SMTP id w11mr613978ybg.449.1591646082842;
-        Mon, 08 Jun 2020 12:54:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591646082; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp5474751lfc;
+        Mon, 8 Jun 2020 15:15:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxl92fnIglpORap9ZhEqWw3bc89uhk7a+mWvf9j7M7uR6/53zsoCmRtJhXPGBJz9cjQNtfd
+X-Received: by 2002:a25:2488:: with SMTP id k130mr1410339ybk.241.1591654520579;
+        Mon, 08 Jun 2020 15:15:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591654520; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y3j3Ph8K/pVTLHpZYKQnBe4nusG2O5Xx90xQ1Ld47EHCKkzXRqtmw5cbP4Who0aN6Z
-         vx7fepKRWvxVkHD473q+wAZYgsWTV3WK05t3l9ThG1v41N1JuPgmy33xx87W3m4joA0y
-         KGuwjdhVWgMTTrPduqSifubN6UJnEitq/lxUG/uRbAca58dr/I8m84Wbc7EcJlRsRVd0
-         qoBfrSvsgPQ8l6jM0gwnOR6Fj9XRzZaPGA8ayBArTQpGkfBtkcBdfz00IBaAD/NVhWs2
-         9oBGpwORqTX1wWvQrREMY5JACBzr04rugQ5rdSGb6wPtwZV08xkxursF5np4FHUMfPfT
-         S3lA==
+        b=wC/TEO4liWNzpqZHIJGV0Kol+YrFxf04lBj04GNZnNM/gRPy7oJbiqUooJbks8cDeW
+         g0b7rSfIV+lIhW5FPPOdxqajFYBQnEAKGjmysQXwKELJtLAcIeLQYR0iEQJBXpd89I2R
+         Z99L3PEHX+M1SF3tHANA8Pfpk7yzPUY0HYLJTNlJ/3G6KSLiNuLhqGgV6kpSkt0twbis
+         T9YXitedzPjhSvt7aQcDqM0zQbW7mSDOPMXZB+ighShMOC2S/MuUMDSHM7Ebz2EHfrzh
+         Hq5DE4K9y2sDQvoJrEs0c+lJslOjiiwk3hJp1+FodYiU4SGfzaAlUumryMGdH411pgPo
+         uNaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date;
-        bh=+sqv/n+dHdqVQBBv8HoeSPhIX6ntoKrWvEWJ5bo+JBY=;
-        b=K35MtuoKisGZGUzGxoVOUSClqAvnzI0DE2juAEORbjf07UPzSNo+D3GWt3yNv/aJjz
-         EX9NNZNhnik0kYz+btDjv9gxo9HFlXM88kuR/z4/0/eluOPv2q8Pc6Ot5EpH5cjvCljm
-         DkPI0jjz/HxdRs3Y7z888PYszMcqJMs+dziHZd+4ho4p9e5MTKfkpQIQhgpbPoVqwXoe
-         k1HjjE/9Hhl1ibY1MKPtKU4S0oab+FXK/+fdI1+iPYx4c5noNB2g5jjMOUnZBs38f3jt
-         HLcuzdIqlHAoEXY33BHTD7kxj9tEtV7BsoQivnuM9SktN/GZq64sLi5goLPBtzX7got4
-         ukZA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=gwtv4IjPm3W/47yWBHlgJMaTuoF3z9vgsEf55kpSKzk=;
+        b=hnuCr9ZMVuw5czAot6spDHMpAoAZfhYJxtIlI68fbAJa88IssNywjkjzSlU/Du8A4F
+         IcGeG13fMYTKKzP4crfp75+Rp1YW0zd3OaMIa1PytvOAv6hMnumyHZUHtho6bQ0DClWZ
+         PIWgI4PzTesYnMh+cdruy8JGLWBGreK9sotxxivCrqEOd3HPjPiFzxU22QzLTsBNi6sF
+         sd4/1mgPBX9WiOqMIuHW4jbMke6O3lmaCw1dO91+EKKEVz17fZh51kyKPnBtJMTtNFAo
+         VpJ29h092xWKW8C4vSY23a1b4pm4QKI/OefK0gmlg9AB2XQOS39ZJjkmPyU/nHRqBmOu
+         1V3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@google.com header.s=20161025 header.b="l/DVRVbm";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 124si479714ybe.206.2020.06.08.12.54.42
+        by mx.google.com with ESMTPS id d142si648848ybh.180.2020.06.08.15.15.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jun 2020 12:54:42 -0700 (PDT)
+        Mon, 08 Jun 2020 15:15:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43566 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b="l/DVRVbm";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:53312 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiNr0-0004sX-7G
-	for alex.bennee@linaro.org; Mon, 08 Jun 2020 15:54:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37660)
+	id 1jiQ35-0001rX-Qf
+	for alex.bennee@linaro.org; Mon, 08 Jun 2020 18:15:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52806)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
- id 1jiNqs-0004rf-Bf; Mon, 08 Jun 2020 15:54:34 -0400
-Received: from mail-ej1-f68.google.com ([209.85.218.68]:41694)
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1jiQ2v-0001r6-0D
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2020 18:15:09 -0400
+Received: from mail-vs1-xe44.google.com ([2607:f8b0:4864:20::e44]:34872)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
- id 1jiNqp-0005i0-N2; Mon, 08 Jun 2020 15:54:33 -0400
-Received: by mail-ej1-f68.google.com with SMTP id x1so19694674ejd.8;
- Mon, 08 Jun 2020 12:54:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1jiQ2t-0003ex-6M
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2020 18:15:08 -0400
+Received: by mail-vs1-xe44.google.com with SMTP id t132so10518581vst.2
+ for <qemu-arm@nongnu.org>; Mon, 08 Jun 2020 15:15:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=gwtv4IjPm3W/47yWBHlgJMaTuoF3z9vgsEf55kpSKzk=;
+ b=l/DVRVbmsP0eL2ExJ9PFQZCWSmOGdmAz1pNg/olI0pooQ14iSHn7N1cobWsYq5O97r
+ SkXZXbIjgtQlWncYrLxrIykFxQqWx10c1NKbKIchIp/uZ4lGRtyK4dk5WiGLHyWPq9xj
+ mUgZQsajgkhYOA90Qb0HwoGigpXTSymwkJGuA8Shl+SQzDnsR0etGpYbukaJPtlLHRQ6
+ Rjw/Y/US31Qb5cU4NEc4zqcU+UZmkrWsDkG0xlf5le0hz3ce+jtRa2ufpJzu9LBE3V1G
+ 3idfWENI+hzQg+Qk4VjztAkBH1aWgNmJsYDX5qNnPECuULUoetsJ6T5zEqkGcoLaIAqn
+ q+9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=+sqv/n+dHdqVQBBv8HoeSPhIX6ntoKrWvEWJ5bo+JBY=;
- b=tz8z038QlT7UJZiRlc0I9j8QE6jwUc//9JdqZSsbdjqWUmz6DprZfOazcwBJp7Ftmc
- ATJ0G+AlBY7KHHoofkcrMYSFMhtHDrYG7xhC/0M7uEzmG6O6oBvThkZ5E1VuDl5mN51V
- 7BShXXr1bjoy/Jg/qI+DKBgmeeGDqSp/spQ87Tgq68EyHwDAbalyuJDhWCE/hevXIbW8
- Iic49q6NdF6ZgoSFxb/lM6HBels41Pmq21WTbHHN0iFFD03DJ/6YsaRDZSY9WHZl4uZB
- 70cl/7/mWjaWK3XxrshDgItb+uZBPP0qxL5ITJnMKBS4UNeOyOyG6jIvAStx8/044xZ5
- +vxA==
-X-Gm-Message-State: AOAM532zvVCYP5HyLYboJGmNu+4TC4zWHPJpKe8LYqIQPUy709Ij6Mxq
- 3Dcj908ZC0UlXLdhc4WAg9o=
-X-Received: by 2002:a17:906:d9dc:: with SMTP id
- qk28mr14717135ejb.6.1591646068901; 
- Mon, 08 Jun 2020 12:54:28 -0700 (PDT)
-Received: from thl530.multi.box (p5791d09b.dip0.t-ipconnect.de.
- [87.145.208.155])
- by smtp.gmail.com with ESMTPSA id bg21sm11672524ejb.90.2020.06.08.12.54.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Jun 2020 12:54:28 -0700 (PDT)
-Date: Mon, 8 Jun 2020 21:54:21 +0200
-From: Thomas Huth <huth@tuxfamily.org>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Subject: Re: [RFC PATCH 22/35] hw/m68k/mcf520x: Emit warning when old code
- is used
-Message-ID: <20200608215421.6322016c@thl530.multi.box>
-In-Reply-To: <20200608160044.15531-23-philmd@redhat.com>
-References: <20200608160044.15531-1-philmd@redhat.com>
- <20200608160044.15531-23-philmd@redhat.com>
-X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=gwtv4IjPm3W/47yWBHlgJMaTuoF3z9vgsEf55kpSKzk=;
+ b=TzPMCow5BBKAg3d4SukHm+f+6tJMk/h/P0LW2hkIqAkmO3gVYTOSRzzHTm9Ap/sQfP
+ 44vywROLTXn8ykVutcsoB+bMo4kMsZoyj1vIGcka19KXYnfaSyHIORmo1HzsvrWOJNnY
+ u98oI9ZnFp5jFrAwHvwrYMmo5ASDl7axP2aqvXrItkc5F1jaFDfFTOuLpTdoqBDSqvrA
+ Y9kVWsc5oNWPA5Lo1f8dAoygpDorYBxGIfQT2xiPDPk4iPkNFB0T7msV/6kvwfWQ2r3w
+ CJKFZyBUdEeyb78vib8da8Paw/HWzoy3Bw/eGHEuk5ZtS/XqHT6OezfpdT9pUh3P0rKl
+ a+/g==
+X-Gm-Message-State: AOAM533qTDauIqlFn7nqA/epmFeHyv4eHJSNVg4N9QP7ZVwKtZzuyn3W
+ 4gDK6dmZcRbOqnnDh9MXvjWIBqjDsbBcvZx63N5Cgg==
+X-Received: by 2002:a05:6102:22ca:: with SMTP id
+ a10mr749158vsh.152.1591654504367; 
+ Mon, 08 Jun 2020 15:15:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.218.68; envelope-from=th.huth@gmail.com;
- helo=mail-ej1-f68.google.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 15:54:29
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+References: <20200521192133.127559-1-hskinnemoen@google.com>
+In-Reply-To: <20200521192133.127559-1-hskinnemoen@google.com>
+From: Havard Skinnemoen <hskinnemoen@google.com>
+Date: Mon, 8 Jun 2020 15:14:53 -0700
+Message-ID: <CAFQmdRYYhoWu7q350n0vNOE+pesp-UG975v1f1Yjwf9Ao0mjcg@mail.gmail.com>
+Subject: Re: [PATCH 0/6] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC machines
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, CS20 KFTing <kfting@nuvoton.com>
+Content-Type: multipart/alternative; boundary="00000000000056fedb05a799f17c"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e44;
+ envelope-from=hskinnemoen@google.com; helo=mail-vs1-xe44.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -106,100 +114,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Stefano Stabellini <sstabellini@kernel.org>,
- Paul Durrant <paul@xen.org>, Magnus Damm <magnus.damm@gmail.com>,
- Markus Armbruster <armbru@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Anthony Perard <anthony.perard@citrix.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Andrzej Zaborowski <balrogg@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org,
- Stafford Horne <shorne@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Richard Henderson <rth@twiddle.net>,
- "Daniel P . Berrange" <berrange@redhat.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x50FgCnYLztp
+X-TUID: ovhLe5Sw/6L1
 
-Am Mon,  8 Jun 2020 18:00:31 +0200
-schrieb Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>:
+--00000000000056fedb05a799f17c
+Content-Type: text/plain; charset="UTF-8"
 
-> This code hasn't been QOM'ified yet. Warn the user.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/m68k/mcf5206.c | 5 +++++
->  hw/m68k/mcf5208.c | 3 +++
->  2 files changed, 8 insertions(+)
->=20
-> diff --git a/hw/m68k/mcf5206.c b/hw/m68k/mcf5206.c
-> index a2fef04f8e..ec0d176674 100644
-> --- a/hw/m68k/mcf5206.c
-> +++ b/hw/m68k/mcf5206.c
-> @@ -16,6 +16,7 @@
->  #include "qemu/timer.h"
->  #include "hw/ptimer.h"
->  #include "sysemu/sysemu.h"
-> +#include "hw/qdev-deprecated.h"
-> =20
->  /* General purpose timer module.  */
->  typedef struct {
-> @@ -144,6 +145,8 @@ static m5206_timer_state
-> *m5206_timer_init(qemu_irq irq) {
->      m5206_timer_state *s;
-> =20
-> +    qdev_warn_deprecated_function_used();
-> +
->      s =3D g_new0(m5206_timer_state, 1);
->      s->timer =3D ptimer_init(m5206_timer_trigger, s,
-> PTIMER_POLICY_DEFAULT); s->irq =3D irq;
-> @@ -566,6 +569,8 @@ qemu_irq *mcf5206_init(MemoryRegion *sysmem,
-> uint32_t base, M68kCPU *cpu) m5206_mbar_state *s;
->      qemu_irq *pic;
-> =20
-> +    qdev_warn_deprecated_function_used();
-> +
->      s =3D g_new0(m5206_mbar_state, 1);
+On Thu, May 21, 2020 at 12:21 PM Havard Skinnemoen <hskinnemoen@google.com>
+wrote:
 
-Ok, it's quite obvious what you refer to here...
+> This patch series models enough of the Nuvoton NPCM730 and NPCM750 SoCs to
+> boot
+> a minimal Linux kernel. This includes device models for:
+>
 
->      memory_region_init_io(&s->iomem, NULL, &m5206_mbar_ops, s,
-> diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
-> index 2ab9701ad6..72627f6833 100644
-> --- a/hw/m68k/mcf5208.c
-> +++ b/hw/m68k/mcf5208.c
-> @@ -26,6 +26,7 @@
->  #include "hw/sysbus.h"
->  #include "elf.h"
->  #include "exec/address-spaces.h"
-> +#include "hw/qdev-deprecated.h"
-> =20
->  #define SYS_FREQ 166666666
-> =20
-> @@ -191,6 +192,8 @@ static void mcf5208_sys_init(MemoryRegion
-> *address_space, qemu_irq *pic) m5208_timer_state *s;
->      int i;
-> =20
-> +    qdev_warn_deprecated_function_used();
-> +
->      /* SDRAMC.  */
->      memory_region_init_io(iomem, NULL, &m5208_sys_ops, NULL,
-> "m5208-sys", 0x00004000); memory_region_add_subregion(address_space,
-> 0xfc0a8000, iomem);
+Does anyone have comments on this series? I'm currently finishing up a
+second patch series that adds flash support and a few other things so qemu
+can boot a full OpenBMC flash image built for npcm7xx.
 
-... but it is not so obvious what you refer to here. I think that new
-function should maybe have a "char *what" parameter that contains the
-name of the struct you refer to. Or at least add a comment in front of
-the function with a short description?
+If you prefer, I can combine them both into one series and send it to the
+list.
 
- Thomas
+This series can be found here:
+https://patchwork.kernel.org/project/qemu-devel/list/?series=291809
+
+Thanks,
+
+Havard
+
+--00000000000056fedb05a799f17c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">On Thu, May 21, 2020 at 12:21 PM Havard S=
+kinnemoen &lt;<a href=3D"mailto:hskinnemoen@google.com">hskinnemoen@google.=
+com</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=3D=
+"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(2=
+04,204,204);padding-left:1ex">This patch series models enough of the Nuvoto=
+n NPCM730 and NPCM750 SoCs to boot<br>
+a minimal Linux kernel. This includes device models for:<br></blockquote><d=
+iv><br></div><div>Does anyone have comments on this series? I&#39;m current=
+ly finishing up a second patch series that adds flash support and a few oth=
+er things so qemu can boot a full OpenBMC flash image built for npcm7xx.</d=
+iv><div><br></div><div>If you prefer, I can combine them both into one seri=
+es and send it to the list.</div><div><br></div><div>This series can be fou=
+nd here:=C2=A0<a href=3D"https://patchwork.kernel.org/project/qemu-devel/li=
+st/?series=3D291809" class=3D"cremed">https://patchwork.kernel.org/project/=
+qemu-devel/list/?series=3D291809</a></div><div><br></div><div>Thanks,</div>=
+<div><br></div><div>Havard</div></div></div>
+
+--00000000000056fedb05a799f17c--

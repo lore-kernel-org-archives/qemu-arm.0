@@ -1,92 +1,107 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4809293lfc;
-        Sun, 7 Jun 2020 23:36:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxqtAhIRbSGWK2iuwP1nnPgiBh2Uy9mm1dIf5E43QqBo8+FIGxuDkqlk2pSYiCLVKb8YsjL
-X-Received: by 2002:a25:cfd6:: with SMTP id f205mr34015582ybg.363.1591598218895;
-        Sun, 07 Jun 2020 23:36:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591598218; cv=none;
+Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp2048500qvs;
+        Mon, 8 Jun 2020 04:40:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxZn/SjuYACN7feeh42tIcEi0NjZpFV1sBbaCko9ONTEumhwPnj7S8gZbNNfK3c8yzDgtkg
+X-Received: by 2002:a25:5786:: with SMTP id l128mr37718818ybb.186.1591616452862;
+        Mon, 08 Jun 2020 04:40:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591616452; cv=none;
         d=google.com; s=arc-20160816;
-        b=m/N/spyJuN3zjpAyVhi6T/LXeek+TdMH2vlpvhiXSupn5vIdSPOorhR+wJzp3FydEB
-         /VjQpL+f6568mqQHnwi3/1jqpD2M9/hUFyWxi4tVvvMRwgIRRo1KZRABkZofd8DJCGde
-         4nVYmB5/pmcVNaK5Shn1UbE/usYi1EKRl7qjtBdK8xNTyikywwzc5mtgRM203SuZW3GL
-         Jj2IPw6ZVBrPTRp8f9oJaSiRrqeBTtfAj6l8FhB1wO6YF3UT71VufdNeHyrXets9XHrL
-         Uf+EOaL6KzXk993Li9ZoljrJ6oJuleQarw00k5zV/wmcWM9KbdluLb2cjoR+LI8ajEtq
-         Gdfw==
+        b=GItd6FAlmpNQOIpDd7xR0/N4sDiMbK3h9B+ov1rpMrCj4uw/izEIQMjW1mOye7O78z
+         IbZpB6v/d48eASocILpua9DWFtE7c0GdTriIviNIe1fXb6WBGC5f1v1+fMIRUMDoeKbl
+         ouB7HPQ08tGeCnU91012q1sAzRrfGZg521j/u/I6kA0/66n5kMvEBeBjQuN/ZRcgfUXF
+         LR5sTj1H280i14tGkVp8y85SX9U+ivSl3maCo8A21vlfFx7KZpGt0VylycTLcdT84Dw0
+         FLzVx1XYZAmPDRYPKiazs9ROZQ5HE2AOjL5QzpxHXjqT65XWpqvsARnfbZzwOtoGUana
+         9kcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=uLjFaQW7+iGK5CeYFCsB2VVUl88151HDpxTvvNiDSJE=;
-        b=QxlzPFBAeQWB2sMw/b3GqnqnvslHpVbQjX0Dw/YIjc5yfz/7pWXR5XV5+hSvOMENxu
-         ruQlXF23b7stlb5Kiv8qlWJRPBWIYLpRC1hFgeLHdaO4PlUsYO+fwOZmU5knObgl/ufT
-         K3UtumZuqNbTGw34I17s5cVblk0M2rn+oPKTIlhB5og84ByVIy5qPw4t53PRwVmyIWpn
-         GBXQicqcu87nMlSpt1oghnmnMIiYxZD4dmLfqyFmybDhZf+DEEd9iQgyNi35R1XA3KF8
-         QhbkCBJCUZbD/5xt++TDp0xh4n8Yff8Xe4fAhJHTP3YhpZnChAMpuOhHBvjQAT0H6mnw
-         CT6Q==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=V2TSsHVRZv5n6nm4rd17wgB0vrMj5AgJjY7Tq8D4v7E=;
+        b=adwVxeAbDLXnDXTATTkWyJO8HmsvdeCIOfmw6u6QHaLOWcCPESHhZgy6WGdhxvRFH/
+         uVFE+p+8SZqTh4qghgxQftB65dQNQF0+0SOuCHqktmmG1X7/sCyarMFpWnho8ZoIJzcp
+         y1II79s49dY/4vZs1Bg9++mITeWL8Ln8382tBPSvEcgrataBpWw7sAb7yDcmq34najaQ
+         KcC1fpbx+L7VxJcdYBTABsz60Q4etT3HRC83Wl1d/Mx6T/f0kD7Gr2nOCLcJ8/koEdUJ
+         qVjgI7lqO3ItBbYGApt2s/4nSA4Lr6vYdd7vTPYK3nYtxKyIYk3drnA/Cmm6is/c6V1N
+         Cgvg==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=XFg1V4fZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r204si8932982ybc.324.2020.06.07.23.36.58
+        by mx.google.com with ESMTPS id 139si14380091ybn.306.2020.06.08.04.40.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 07 Jun 2020 23:36:58 -0700 (PDT)
+        Mon, 08 Jun 2020 04:40:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=XFg1V4fZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49826 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57788 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiBP0-0005T5-7u
-	for alex.bennee@linaro.org; Mon, 08 Jun 2020 02:36:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34226)
+	id 1jiG95-00088I-Vg
+	for alex.bennee@linaro.org; Mon, 08 Jun 2020 07:40:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33526)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jiBOV-0005SI-LV
- for qemu-arm@nongnu.org; Mon, 08 Jun 2020 02:36:27 -0400
-Received: from 15.mo1.mail-out.ovh.net ([188.165.38.232]:45644)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jiBOU-0007kX-KT
- for qemu-arm@nongnu.org; Mon, 08 Jun 2020 02:36:27 -0400
-Received: from player792.ha.ovh.net (unknown [10.108.35.210])
- by mo1.mail-out.ovh.net (Postfix) with ESMTP id CA3541C618C
- for <qemu-arm@nongnu.org>; Mon,  8 Jun 2020 08:36:16 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player792.ha.ovh.net (Postfix) with ESMTPSA id 03BDB13295EF0;
- Mon,  8 Jun 2020 06:36:04 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G00203d79891-3c8a-49e0-99b8-92ae81f1c957,B6B0473EF73D0859AD85419D5DB97E88249038E4)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH v2] Implement configurable descriptor size in ftgmac100
-To: Erik Smit <erik.lucas.smit@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joel Stanley <joel@jms.id.au>, Jason Wang <jasowang@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <CA+MHfovYq1UAQQ341MnyGas7ScskWyjR=QE0D-RS7+zxF2mtsw@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <97e4c124-0b3c-18cd-a0f3-3b1a7c831ca6@kaod.org>
-Date: Mon, 8 Jun 2020 08:36:04 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1jiG8o-000878-EG
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2020 07:40:34 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:38594)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1jiG8m-0003cc-LD
+ for qemu-arm@nongnu.org; Mon, 08 Jun 2020 07:40:34 -0400
+Received: by mail-wr1-x442.google.com with SMTP id e1so17038857wrt.5
+ for <qemu-arm@nongnu.org>; Mon, 08 Jun 2020 04:40:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=V2TSsHVRZv5n6nm4rd17wgB0vrMj5AgJjY7Tq8D4v7E=;
+ b=XFg1V4fZYjjfguvr9MNLuyck1yG+0Hb7wzfa14c2/wyF9unIy2e0ghtwAIqhRhXXU2
+ 43YKuKn+AcYawMqkdofiH/ykZYphdHN6Z4ZuRGdbVvQSIG5Y+Pdl34P0DODLQhn1tUSf
+ pGk2hgUsHSmns/0lNL8jQXbbc0j2fUZXpTwZPhkjidrRCwjWZsrMcvuiB2sEGxH3/TQN
+ reExKqBEptWPHiAOOcmgFYAnLHPOEU/d4kBDh/pSRoPL0ZTrtByNfzhwm1pxW4Omwc+o
+ P6tXdS6v4k7yI8+7t/aRHiKdjamuNrvSaYy2d4o3BzYPwzu5fkAqDqB+kd732h8R4H53
+ RRVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=V2TSsHVRZv5n6nm4rd17wgB0vrMj5AgJjY7Tq8D4v7E=;
+ b=rWXlY0JsoUqtWjdVLKbVNQx4XhjVy3G3F0ZqfOUevRxXI8/aBDwYgd+77QyX3SJQpF
+ ABrA3UNy31FsPFRj0dMRTLoq+yOVg4QgrOM+6/ymI8pmI/pJKOLY+nTBBje10/8NtFXe
+ NPU0k4ZGFkX25pTOLyU+jb7ErNp/388Gmwlo1Tcx838jYYB8EA5Fcqp3GHeVD0NxbweH
+ y99AeykUlqCA/j72P3lTY03KS9bwJ6v8EhfEN8EYtsTB1o5debjR+QlS5yxn+6aVCNSN
+ AQ4XJyz5QqiIEb1vt6zilqxuRBgtiERaoLsVHnpXoferMYTWWKW3XmRCHRtOlgm3QKwX
+ hY6Q==
+X-Gm-Message-State: AOAM530Fy5L7Kdipn98jGCjEhCIjRqscvQTHvfXrKEL03czn/vXHYqZ2
+ tNwu45qmFaEjbrj2lotc7414aA==
+X-Received: by 2002:adf:de84:: with SMTP id w4mr23496358wrl.54.1591616431157; 
+ Mon, 08 Jun 2020 04:40:31 -0700 (PDT)
+Received: from vanye.hemma.eciton.net
+ (cpc92302-cmbg19-2-0-cust304.5-4.cable.virginm.net. [82.1.209.49])
+ by smtp.gmail.com with ESMTPSA id y5sm24225932wrs.63.2020.06.08.04.40.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Jun 2020 04:40:30 -0700 (PDT)
+From: Leif Lindholm <leif@nuviainc.com>
+To: QEMU Developers <qemu-devel@nongnu.org>
+Subject: [RFC PATCH 1/3] target/arm: commonalize aarch64 cpu init
+Date: Mon,  8 Jun 2020 12:40:26 +0100
+Message-Id: <20200608114028.25345-2-leif@nuviainc.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200608114028.25345-1-leif@nuviainc.com>
+References: <20200608114028.25345-1-leif@nuviainc.com>
 MIME-Version: 1.0
-In-Reply-To: <CA+MHfovYq1UAQQ341MnyGas7ScskWyjR=QE0D-RS7+zxF2mtsw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 15879692286817962816
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudehtddguddutdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepkefhtedufeffvedvleejgeeghedvgeeuieeufeejueeltddugeduhedvveelgfehnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejledvrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
-Received-SPF: pass client-ip=188.165.38.232; envelope-from=clg@kaod.org;
- helo=15.mo1.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 02:36:17
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001, URIBL_SBL=1.623, URIBL_SBL_A=0.1 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=leif@nuviainc.com; helo=mail-wr1-x442.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -99,116 +114,131 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZApsWim196Dh
+X-TUID: fkU+UdulX0GH
 
-On 6/6/20 11:03 AM, Erik Smit wrote:
-> The hardware supports configurable descriptor sizes, configured in the DBLAC
-> register.
-> 
-> Most drivers use the default 4 word descriptor, which is currently hardcoded,
-> but Aspeed SDK configures 8 words to store extra data.
-> 
-> ---
-> The implementation of the driver in Supermicro BMC SMT_X11_158 adds 4 extra
-> word entries:
-> https://github.com/ya-mouse/openwrt-linux-aspeed/blob/master/drivers/net/ftgmac100_26.h#L387-L391
-> 
-> And sets DBLAC to 0x44f97:
-> https://github.com/ya-mouse/openwrt-linux-aspeed/blob/master/drivers/net/ftgmac100_26.c#L449
-> 
-> There's not a lot of public documentation on this hardware, but the
-> current linux driver shows the meaning of these registers:
-> 
-> https://github.com/torvalds/linux/blob/master/drivers/net/ethernet/faraday/ftgmac100.c#L280-L281
-> 
->         iowrite32(FTGMAC100_DBLAC_RXDES_SIZE(2) |   /* 2*8 bytes RX descs */
->                   FTGMAC100_DBLAC_TXDES_SIZE(2) |   /* 2*8 bytes TX descs */
-> 
-> Without this patch, networking in SMT_X11_158 fails after the first packet.
-> 
-> changes since previous version:
-> 
-> - moved "* 8" into {R,T}XDES_SIZE macro
-> - removed the RXFIFO and RX_THR_EN defines as they're AST2400-only and not used
-> - test setting of DBLAC register for validness
-> 
-> Signed-off-by: Erik Smit <erik.lucas.smit@gmail.com>
+Some basic options will be set by all aarch64 platforms.
+Break those out into a separate aarch64_cpu_common_init function, which
+also takes implementer, partnum, variant, and revision as arguments to
+set up MIDR.
 
-We don't need the parenthesis around FTGMAC100_DBLAC_RXDES_SIZE(). Anyhow,
+Invoke this to remove duplication between a57/a53/a72 init.
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Signed-off-by: Leif Lindholm <leif@nuviainc.com>
+---
+ target/arm/cpu-qom.h |  3 +++
+ target/arm/cpu64.c   | 46 ++++++++++++++++++++++++--------------------
+ 2 files changed, 28 insertions(+), 21 deletions(-)
 
-Thanks,
-
-C. 
-
-> ---
->  hw/net/ftgmac100.c | 26 ++++++++++++++++++++++++--
->  1 file changed, 24 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-> index 25ebee7ec2..83058497c4 100644
-> --- a/hw/net/ftgmac100.c
-> +++ b/hw/net/ftgmac100.c
-> @@ -79,6 +79,16 @@
->  #define FTGMAC100_APTC_TXPOLL_CNT(x)        (((x) >> 8) & 0xf)
->  #define FTGMAC100_APTC_TXPOLL_TIME_SEL      (1 << 12)
-> 
-> +/*
-> + * DMA burst length and arbitration control register
-> + */
-> +#define FTGMAC100_DBLAC_RXBURST_SIZE(x)     (((x) >> 8) & 0x3)
-> +#define FTGMAC100_DBLAC_TXBURST_SIZE(x)     (((x) >> 10) & 0x3)
-> +#define FTGMAC100_DBLAC_RXDES_SIZE(x)       ((((x) >> 12) & 0xf) * 8)
-> +#define FTGMAC100_DBLAC_TXDES_SIZE(x)       ((((x) >> 16) & 0xf) * 8)
-> +#define FTGMAC100_DBLAC_IFG_CNT(x)          (((x) >> 20) & 0x7)
-> +#define FTGMAC100_DBLAC_IFG_INC             (1 << 23)
-> +
->  /*
->   * PHY control register
->   */
-> @@ -553,7 +563,7 @@ static void ftgmac100_do_tx(FTGMAC100State *s,
-> uint32_t tx_ring,
->          if (bd.des0 & s->txdes0_edotr) {
->              addr = tx_ring;
->          } else {
-> -            addr += sizeof(FTGMAC100Desc);
-> +            addr += (FTGMAC100_DBLAC_TXDES_SIZE(s->dblac));
->          }
->      }
-> 
-> @@ -800,6 +810,18 @@ static void ftgmac100_write(void *opaque, hwaddr addr,
->          s->phydata = value & 0xffff;
->          break;
->      case FTGMAC100_DBLAC: /* DMA Burst Length and Arbitration Control */
-> +        if (FTGMAC100_DBLAC_TXDES_SIZE(s->dblac) < sizeof(FTGMAC100Desc)) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "%s: transmit descriptor too small : %d bytes\n",
-> +                          __func__, FTGMAC100_DBLAC_TXDES_SIZE(s->dblac));
-> +            break;
-> +        }
-> +        if (FTGMAC100_DBLAC_RXDES_SIZE(s->dblac) < sizeof(FTGMAC100Desc)) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "%s: receive descriptor too small : %d bytes\n",
-> +                          __func__, FTGMAC100_DBLAC_RXDES_SIZE(s->dblac));
-> +            break;
-> +        }
->          s->dblac = value;
->          break;
->      case FTGMAC100_REVR:  /* Feature Register */
-> @@ -982,7 +1004,7 @@ static ssize_t ftgmac100_receive(NetClientState
-> *nc, const uint8_t *buf,
->          if (bd.des0 & s->rxdes0_edorr) {
->              addr = s->rx_ring;
->          } else {
-> -            addr += sizeof(FTGMAC100Desc);
-> +            addr += (FTGMAC100_DBLAC_RXDES_SIZE(s->dblac));
->          }
->      }
->      s->rx_descriptor = addr;
-> --
-> 2.25.1
-> 
+diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+index 56395b87f6..48f6303308 100644
+--- a/target/arm/cpu-qom.h
++++ b/target/arm/cpu-qom.h
+@@ -44,6 +44,9 @@ typedef struct ARMCPUInfo {
+ void arm_cpu_register(const ARMCPUInfo *info);
+ void aarch64_cpu_register(const ARMCPUInfo *info);
+ 
++void aarch64_cpu_common_init(Object *obj, uint8_t impl, uint16_t part,
++                             uint8_t var, uint8_t rev);
++
+ /**
+  * ARMCPUClass:
+  * @parent_realize: The parent class' realize handler.
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index cbc5c3868f..79786e034f 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -29,6 +29,8 @@
+ #include "kvm_arm.h"
+ #include "qapi/visitor.h"
+ 
++#define MIDR_IMPLEMENTER_ARM 0x41
++
+ #ifndef CONFIG_USER_ONLY
+ static uint64_t a57_a53_l2ctlr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+@@ -86,11 +88,19 @@ static const ARMCPRegInfo cortex_a72_a57_a53_cp_reginfo[] = {
+     REGINFO_SENTINEL
+ };
+ 
+-static void aarch64_a57_initfn(Object *obj)
++void aarch64_cpu_common_init(Object *obj, uint8_t impl, uint16_t part,
++                             uint8_t var, uint8_t rev)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
++    uint64_t t;
++
++    t = FIELD_DP64(0, MIDR_EL1, IMPLEMENTER, impl);
++    t = FIELD_DP64(t, MIDR_EL1, ARCHITECTURE, 0xf);
++    t = FIELD_DP64(t, MIDR_EL1, PARTNUM, part);
++    t = FIELD_DP64(t, MIDR_EL1, VARIANT, var);
++    t = FIELD_DP64(t, MIDR_EL1, REVISION, rev);
++    cpu->midr = t;
+ 
+-    cpu->dtb_compatible = "arm,cortex-a57";
+     set_feature(&cpu->env, ARM_FEATURE_V8);
+     set_feature(&cpu->env, ARM_FEATURE_NEON);
+     set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+@@ -99,8 +109,16 @@ static void aarch64_a57_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_EL2);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
+     set_feature(&cpu->env, ARM_FEATURE_PMU);
++}
++
++static void aarch64_a57_initfn(Object *obj)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++
++    aarch64_cpu_common_init(obj, MIDR_IMPLEMENTER_ARM, 0xd07, 1, 0);
++
++    cpu->dtb_compatible = "arm,cortex-a57";
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A57;
+-    cpu->midr = 0x411fd070;
+     cpu->revidr = 0x00000000;
+     cpu->reset_fpsid = 0x41034070;
+     cpu->isar.mvfr0 = 0x10110222;
+@@ -143,17 +161,10 @@ static void aarch64_a53_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+ 
++    aarch64_cpu_common_init(obj, MIDR_IMPLEMENTER_ARM, 0xd03, 0, 4);
++
+     cpu->dtb_compatible = "arm,cortex-a53";
+-    set_feature(&cpu->env, ARM_FEATURE_V8);
+-    set_feature(&cpu->env, ARM_FEATURE_NEON);
+-    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+-    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+-    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+-    set_feature(&cpu->env, ARM_FEATURE_EL2);
+-    set_feature(&cpu->env, ARM_FEATURE_EL3);
+-    set_feature(&cpu->env, ARM_FEATURE_PMU);
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_CORTEX_A53;
+-    cpu->midr = 0x410fd034;
+     cpu->revidr = 0x00000000;
+     cpu->reset_fpsid = 0x41034070;
+     cpu->isar.mvfr0 = 0x10110222;
+@@ -196,16 +207,9 @@ static void aarch64_a72_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+ 
++    aarch64_cpu_common_init(obj, MIDR_IMPLEMENTER_ARM, 0xd08, 0, 3);
++
+     cpu->dtb_compatible = "arm,cortex-a72";
+-    set_feature(&cpu->env, ARM_FEATURE_V8);
+-    set_feature(&cpu->env, ARM_FEATURE_NEON);
+-    set_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER);
+-    set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+-    set_feature(&cpu->env, ARM_FEATURE_CBAR_RO);
+-    set_feature(&cpu->env, ARM_FEATURE_EL2);
+-    set_feature(&cpu->env, ARM_FEATURE_EL3);
+-    set_feature(&cpu->env, ARM_FEATURE_PMU);
+-    cpu->midr = 0x410fd083;
+     cpu->revidr = 0x00000000;
+     cpu->reset_fpsid = 0x41034080;
+     cpu->isar.mvfr0 = 0x10110222;
+-- 
+2.20.1
 

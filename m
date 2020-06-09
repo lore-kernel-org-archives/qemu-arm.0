@@ -1,118 +1,119 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp378893lfc;
-        Tue, 9 Jun 2020 04:07:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyVOvbNqGI2DYdz2bK8C+8kUVKJPxm/i0U/WE93Bt4pAd/s4s+uO30A+xb6gcMXlHcVotUQ
-X-Received: by 2002:a25:76c8:: with SMTP id r191mr5415252ybc.519.1591700872496;
-        Tue, 09 Jun 2020 04:07:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591700872; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp378901lfc;
+        Tue, 9 Jun 2020 04:07:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxAIoiz/zKpQIDh+P6EC37X3NcOX1MYJR/jUD+kkR1m8+eoCv/afci0hGEnam7GjOI1kDcl
+X-Received: by 2002:a25:a12a:: with SMTP id z39mr4831711ybh.481.1591700873200;
+        Tue, 09 Jun 2020 04:07:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591700873; cv=none;
         d=google.com; s=arc-20160816;
-        b=jvGXY0wVbK97DmdZTv0g3BmtQoftsvp074dhAr/+pbt0p17Ny0juQDXOfQmhC1M6NC
-         XSXNekG9ObB4WjCjX/vaBKjgeqNrJAGGTeSfPDX/VN+I4gh2ALMkOMxRGXq8BkOq2VdR
-         x/vKwjP/gRx2fmsbuV3fEH4ErE3BFrKAg9c1CfeZ5JYsIYe8FJ2Svwqk+DR3sJIrV5SW
-         hBFTltNF5V+dXwfYdJYCVUoNOuzTxuIV4NP4X9si/mCulaEtkWB45lzl6Ed/74AGOMIi
-         oDaIVrOrAxaGx9pcgPRt0lAXqmi76YPnEvdMoZs8J99SFzwYY5Kl2ALfCvcjyU4ZKWQn
-         Kt7w==
+        b=QFSEsWJjy9QjpG6WDmq3lcqJSbwj+aM2/IM3z9jx2WzBBptvcwWy+rp6z8iaf6clix
+         GzjECjPeJoO/M65Rt8ejOmsfLrCqUTH3zYZ7G0LfBSUloox2MgQFy+/vQ0H0i0wIP0Rx
+         R3nMKxf5v0LwkjGOPMAcw/Hw8aRLr1gKE1bv2ronpzI85xV6qbqGv+I2gXrCv3XTGbWK
+         OR14WUIe39wpy0wU87uhu56ie0DzCGWnV+ELKqFaPjJ28ptWIa5mR6svnrJa8tGkAgFT
+         HjWawzzXc3+W/36pfHLtkbRZbEPVAgB1rATpD2mbk3x2LXFz+K3vRtny4QEJUJus3v40
+         BFjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=HLtEn6u9uzHwCvd1JnB+QPNLdle/XjOro9YfrFmD+kg=;
-        b=iTrxtWYOazytvHVxN+gYPO1V3Kn6i83fYMQMOXPLXgqre6zdid7BbmkrZQ3TJGuVTg
-         rZrkCIns5TfVd4PhGkK7qWW6LbxyXnl3CC8xuUcY8BmeyzhnpRXU+BKCJAJeZQp5YMnE
-         elnoM/Qt1aIfXU7xpp/vmR91K9WOJC3mH0CZmR+KGqlTRNCeax8H4TpZMVbm9Bi3Hdzx
-         4QUQrF/FWtZpaUXTAeL9l0Brz7pwImf08Sq9uZwaEs0QdlO7l8I4ckr9OCGuBTzOaeuE
-         hgFOC/Nd9+/M9qJ4h5GwMHVY+3Fedb6TPtvoyZ1aCq7avgSh/wErefNlBtoywyw661yw
-         j1TQ==
+        bh=9N2hQA54vscW2wYRbiWR3tdH19bd/eus87N3YlhQewI=;
+        b=QWq0lx2X9YhrE58jk4Z8oPlFJiLi/Nwx1yoHMapSWHgopCqUw8Ozy6JDhJeAsviLq1
+         U6c8J24BwLsGk8/lzyeh9NSR15P4CiC6043KOz9JJVfNNiBUROxD5O0jNd4OfrYvfVuw
+         rb4Sr9m7iKNl4PDXejjdFzYd8C5LJKNapOLLegj6mx33GfhbSacfWV3oX28wz6MIzOf6
+         44wNo68GzWVsEfS/EqBWa2fU6KcaO5x6vAA7zDL/5ls3CISr0ORezD0ZVMIrP2OodrcX
+         vUehEirlYKcVlS1FP45W5QEVcJZVWNQs3gADKSGvQrBRzY1/PjzecmbgUANKClaX3aXu
+         7Hsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JtxmvSON;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZTJOL9yP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t19si2267121ybt.477.2020.06.09.04.07.52
+        by mx.google.com with ESMTPS id i7si2221771ybp.320.2020.06.09.04.07.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 04:07:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Jun 2020 04:07:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JtxmvSON;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZTJOL9yP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35892 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36290 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jic6h-0000y8-RH
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 07:07:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33820)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jic6i-000198-HE
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 07:07:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33922)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jic5s-0000M1-Ji
- for qemu-devel@nongnu.org; Tue, 09 Jun 2020 07:07:00 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:45349
+ id 1jic6Z-00016T-H9
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2020 07:07:43 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:37243
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jic5r-000113-KR
- for qemu-devel@nongnu.org; Tue, 09 Jun 2020 07:07:00 -0400
+ id 1jic6Y-0001AA-R2
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2020 07:07:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591700819;
+ s=mimecast20190719; t=1591700862;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=HLtEn6u9uzHwCvd1JnB+QPNLdle/XjOro9YfrFmD+kg=;
- b=JtxmvSONAsm6XhHv31D6eIqHUVVF/KPH3pV0JakH8lAi3REA4U6NlrDxsYz59Y5f+zRRTv
- Qrg2mehFAk5eLmR6koKhkSmbpwFkKm+Q7rzBzTtnwWKzZlFGLlqiZNCM9IgRP22c4MnyS8
- c4XHCKSWTokWVBtBjMPj4lQm/tBGsS4=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-287-r_HTv20bNaOQkC50Gv8vAQ-1; Tue, 09 Jun 2020 07:06:57 -0400
-X-MC-Unique: r_HTv20bNaOQkC50Gv8vAQ-1
-Received: by mail-wm1-f71.google.com with SMTP id r1so599690wmh.7
- for <qemu-devel@nongnu.org>; Tue, 09 Jun 2020 04:06:57 -0700 (PDT)
+ bh=9N2hQA54vscW2wYRbiWR3tdH19bd/eus87N3YlhQewI=;
+ b=ZTJOL9yPanbyU6uzSdYW0J5PxT/Mxqi7lmlJR1GlDc9l8PcZg3auxay7j1r31JKU4VAKhf
+ IXgs0fdVzL4zEqOJTNCU+aG7HZCGwaexsKeegmqU+yayhqhJJNrKxTmR3uSOlw8UbbIbDg
+ 876FTcN4arwWOuI3Qvh7bDQQ+JbkgmA=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-200-KU6iBYnoMjeu3mQ9amjtXw-1; Tue, 09 Jun 2020 07:07:40 -0400
+X-MC-Unique: KU6iBYnoMjeu3mQ9amjtXw-1
+Received: by mail-wm1-f70.google.com with SMTP id j128so600796wmj.6
+ for <qemu-arm@nongnu.org>; Tue, 09 Jun 2020 04:07:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=HLtEn6u9uzHwCvd1JnB+QPNLdle/XjOro9YfrFmD+kg=;
- b=WoNCFxf+b5KJQJ8gUw5Kv0omTFK6i0qyRabFAaaz4APRbLNzcnyha55Zgj9IbZ1+BI
- z6XCyO1Ex1W5RGSP0/qvv6E/amHgLDIRObJdEnbsFgCVASRpPBVwNXeZsaUWQ6W5w2I4
- s6sNPGSigRYUpESVtFBjs4DsJbezJqMjbVX3YeEUyTxhpfAksVKArM0Uk/5aWggMVrkJ
- IYBVyc06wLWiImpdWBea1B4ZQr1InL8YFpMG4oA9JZyACHohLX0TWXKMSMwOZKtcyYeb
- +SkfsiEGd0mdiAA0gCMzBUMd3k+ANwKvwsJEb3sgCI5VBxiOJ+9X/EpfhpCPGMBTRErl
- IDQA==
-X-Gm-Message-State: AOAM531iuJwPrgRJx/YrBberCtPuqQ8EhWYsg6xVjBWDNnmBy4QOmPTV
- H1ZI7tDHXKIkMhs04tR+Ap3wvkVO0Ft0K4qMQgvTVK2li0KppUWCnmA7dk0gk+FIyDEfwcfiGV6
- hieg6RpfU7ep9v4s=
-X-Received: by 2002:adf:e648:: with SMTP id b8mr3979217wrn.386.1591700816413; 
- Tue, 09 Jun 2020 04:06:56 -0700 (PDT)
-X-Received: by 2002:adf:e648:: with SMTP id b8mr3979198wrn.386.1591700816219; 
- Tue, 09 Jun 2020 04:06:56 -0700 (PDT)
+ bh=9N2hQA54vscW2wYRbiWR3tdH19bd/eus87N3YlhQewI=;
+ b=Sv0L5NCBvyy7ClCrd63gMv0IezayDecaaui+QiQW4M1j/ZYOej+acjCfUXzgHv6/m/
+ Mtpzwv3oSEgyoJ20jbYm9nneyhTlEVbURysPiGjCGA5LAqmML2pbowdX6ALfwh5yuR58
+ hUK32ZGTSdHqzR4SGzRrjtv5m8L6V0L/mrjT8EYGRAQGDSVMMxA+TmQJTjsoXw1F9ihu
+ LGxvaNexExgvY2ikjMb6pJE+IHTlULp/L76TmU+++dfME7LtdlqyKLzDZedlZTDcPvcQ
+ j0jm0Qpuca+y2y/qLddSjSqDak2zaMDu7m6ouI7imQrGHlRQEE69/J9HdQI1i7SsCUyW
+ 1dUg==
+X-Gm-Message-State: AOAM530OuYcpe8uifM96nvhys5ST40KiCBlmA//fWx43o1Y9MvXjKFqK
+ h4c8k+ZsDvUa3cqV48CMDfMVANQhM/zEKDqlGszorqFJwOuTCPCkOVMqWo7prWc1LFtxIQtKJAj
+ FBr9t+J2jgpv2
+X-Received: by 2002:a1c:bad7:: with SMTP id k206mr3381161wmf.11.1591700858755; 
+ Tue, 09 Jun 2020 04:07:38 -0700 (PDT)
+X-Received: by 2002:a1c:bad7:: with SMTP id k206mr3381101wmf.11.1591700858431; 
+ Tue, 09 Jun 2020 04:07:38 -0700 (PDT)
 Received: from [192.168.178.58] ([151.21.172.168])
- by smtp.gmail.com with ESMTPSA id q5sm2976228wrm.62.2020.06.09.04.06.54
+ by smtp.gmail.com with ESMTPSA id s8sm3061694wrm.96.2020.06.09.04.07.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Jun 2020 04:06:55 -0700 (PDT)
-Subject: Re: [RFC PATCH 18/35] hw/input/ps2: Emit warning when old code is used
+ Tue, 09 Jun 2020 04:07:37 -0700 (PDT)
+Subject: Re: [RFC PATCH 17/35] hw/input/pckbd: Emit warning when old code is
+ used
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 References: <20200608160044.15531-1-philmd@redhat.com>
- <20200608160044.15531-19-philmd@redhat.com>
+ <20200608160044.15531-18-philmd@redhat.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <f5e33299-a8b0-8530-c8d2-4d130291722c@redhat.com>
-Date: Tue, 9 Jun 2020 13:06:53 +0200
+Message-ID: <eaa0d68f-bad7-506e-d95f-5a3da2baa180@redhat.com>
+Date: Tue, 9 Jun 2020 13:07:36 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20200608160044.15531-19-philmd@redhat.com>
+In-Reply-To: <20200608160044.15531-18-philmd@redhat.com>
 Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=pbonzini@redhat.com;
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 23:42:34
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 02:41:53
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -122,30 +123,30 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>,
- Magnus Damm <magnus.damm@gmail.com>, Markus Armbruster <armbru@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ Paul Durrant <paul@xen.org>, Magnus Damm <magnus.damm@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Anthony Perard <anthony.perard@citrix.com>,
  =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>,
- Eduardo Habkost <ehabkost@redhat.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org,
  Stafford Horne <shorne@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
@@ -154,53 +155,45 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DSScHqbfgzh3
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: u3DHxF0Y7yai
 
 On 08/06/20 18:00, Philippe Mathieu-Daudé wrote:
 > This code hasn't been QOM'ified yet. Warn the user.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/input/ps2.c | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
+>  hw/input/pckbd.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 > 
-> diff --git a/hw/input/ps2.c b/hw/input/ps2.c
-> index f8746d2f52..0d84061cae 100644
-> --- a/hw/input/ps2.c
-> +++ b/hw/input/ps2.c
-> @@ -30,7 +30,7 @@
->  #include "ui/input.h"
+> diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
+> index 60a4130320..c7f42be63b 100644
+> --- a/hw/input/pckbd.c
+> +++ b/hw/input/pckbd.c
+> @@ -31,7 +31,7 @@
+>  #include "hw/input/i8042.h"
 >  #include "sysemu/reset.h"
 >  #include "sysemu/runstate.h"
 > -
 > +#include "hw/qdev-deprecated.h"
 >  #include "trace.h"
 >  
->  /* debug PC keyboard */
-> @@ -1136,6 +1136,8 @@ void *ps2_kbd_init(void (*update_irq)(void *, int), void *update_arg)
+>  /*	Keyboard Controller Commands */
+> @@ -467,6 +467,8 @@ void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_irq,
 >  {
->      PS2KbdState *s = (PS2KbdState *)g_malloc0(sizeof(PS2KbdState));
+>      KBDState *s = g_malloc0(sizeof(KBDState));
 >  
 > +    qdev_warn_deprecated_function_used();
 > +
->      trace_ps2_kbd_init(s);
->      s->common.update_irq = update_irq;
->      s->common.update_arg = update_arg;
-> @@ -1158,6 +1160,8 @@ void *ps2_mouse_init(void (*update_irq)(void *, int), void *update_arg)
->  {
->      PS2MouseState *s = (PS2MouseState *)g_malloc0(sizeof(PS2MouseState));
->  
-> +    qdev_warn_deprecated_function_used();
-> +
->      trace_ps2_mouse_init(s);
->      s->common.update_irq = update_irq;
->      s->common.update_arg = update_arg;
+>      s->irq_kbd = kbd_irq;
+>      s->irq_mouse = mouse_irq;
+>      s->mask = mask;
 > 
 
-While the keyboard and mouse are not QOM-ified, of the controllers
-(i8042, lasips2, pl050) only lasips2 is not.  I would warn there.
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+
+The ISA variant is QOM-ified, but you placed the warning in the right place.
 
 Paolo
 

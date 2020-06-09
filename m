@@ -1,90 +1,89 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp459784lfc;
-        Tue, 9 Jun 2020 05:55:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzr0H/UF4d8A7+Aqqx2158Sa+Co3VEwY8O3d3sO/hUYlKwkzWNlUwy0pCY8KHeF3z4De4v8
-X-Received: by 2002:a5b:f4f:: with SMTP id y15mr6156207ybr.184.1591707334088;
-        Tue, 09 Jun 2020 05:55:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591707334; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp459996lfc;
+        Tue, 9 Jun 2020 05:55:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyjgTERPeJWJb9z1MIzkCDOy45P0AFvt+lB3G8c+xqxG1TDqT6ymgUbTQrBAKrAa7TRoIsu
+X-Received: by 2002:a25:bb0d:: with SMTP id z13mr6044957ybg.417.1591707351492;
+        Tue, 09 Jun 2020 05:55:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591707351; cv=none;
         d=google.com; s=arc-20160816;
-        b=B+Lda2PQGtT8ergsphM9KS1qc9WMfUwUUwK7pVLzUGLWcvacVqjstYM5JM2vS/A4PL
-         IE+MY7cfF1C4kcZoaJN8ayWMa3jV4Sm1Y67KZsqFkNC3wrWJrFt8W5amKAqljH6EtFsK
-         bTL/GMc9eO6kS9zUl78qlMm+JQMyD0qXeYULtrSdqWlZVtmfhrSZQxKE4dcf1CxW6bBH
-         QaLW3Qd21zFWtcNx9vaoRWLN2ZE/vlZlVR0q4UO2gGDZ9TYa+gDRVr+iTVuQzJbwOB4b
-         A74hLZ3AscB70vwJkCIorIE88XwjSeQBeKhPbGEN3E5QZ2iFgxUTYH0IB/j7X9aN21m+
-         /MFw==
+        b=rXysaOfFN4lO02QwcSlpArXoYVBzvmUL+t4XScDIRevbMc+33ejQIK7Znr/1C86eH7
+         vPVHZVHMf0W+uJ+1P6/1nuPmpqdaJ/ogzmrqznoufQ6LXr/S+Va56yV1UJ98wN3kSeWi
+         uhrSvvOsE/yVb2zwetU9gKskQqfAJ4YEa3U9t0cfE4AswhrVKwZXZyLIyyv1q+iLZLCU
+         FQaAOUDfYZvUEblVuNEKrSE5LLxwlP4d0lmPTl/EBd5qF4wReStLagXcEwdc2leLTGsX
+         Tt9IlsceVtjSK/ksrOuAebWWOb6Non7Ks79Y1+u8FhBta28fjZXmVKEL1unjZDE+tDBy
+         IUiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=WNMIYzaHPMueaePuL6G8Jo2xpO6e1JwToPTj/HI563g=;
-        b=g+REz81P2P507zZxiM7DzBG45yT/l1gq2fDWLVth4yPOxw4NChKkgTIeD9Rq1HiHsG
-         b+RQtsDpf7QqpQS3Wa2xQbxDqq3WTGuTnlc4RX1DZm3if6AiCTFvuNOQIZvPQ2w0/Sgu
-         3WnJpCArZqGKnZljG3eG3ThiG2xmJ/sFSyd5rLM0tjyo6fvzshMx+nlmEgV8j9XH7btE
-         VkDv6q8k9Hqh9XYHZb3KvH59O5Knil4v1iN6cNlaDCUUKK/OuVE+wuddytVlLgY7acpM
-         cZNqZUd6gVUlR5WI6QKQa/iBV/Sou63kxoGd9OeSrvCaxSmhEjls9DGGaXT/4BtxrtIt
-         n4rA==
+        bh=YFqdxsqxrQcpKcHDthetomjSp2XNH0N3qTf+jzelhLI=;
+        b=byQszgm1EeYv07ZP4NTzfXoDarZ908CSqm+l0grq6ZdWDI5oTtg+ZgKGxvpO+3u3VV
+         vzm73DRuIY0CtJWJiw1lCmHIsenTGNv822e73/h0JbgQLKIkVLK1XdS00kpy2fCalnN3
+         0N1kURsq/ujQnc1vaigN3Pilr3B07rEZTUL6kjXhfZaMKileXNEqyQFpkEtWNq0SYASt
+         jFCH0620NpxxJwJ6pnouS4lCNQinLJyUtcekQ9jfr/DNRwSBLBOkybEeO9ZewmoARek2
+         ohpnRwBlDIYzKfNsGDKRh+vx1DrM43uTaDcScwmwGIM4WbOjwdyLKb03qBIBuMUlDRSQ
+         TojQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bHHy6WKo;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Hh3M1O7w;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u8si2294869ybm.361.2020.06.09.05.55.33
+        by mx.google.com with ESMTPS id h65si2631075ybi.200.2020.06.09.05.55.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 05:55:34 -0700 (PDT)
+        Tue, 09 Jun 2020 05:55:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bHHy6WKo;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Hh3M1O7w;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52762 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53970 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jidmu-0004Li-Te
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 08:55:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45684)
+	id 1jidnC-0004w8-Qu
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 08:55:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jidml-0004JQ-7U
- for qemu-arm@nongnu.org; Tue, 09 Jun 2020 08:55:23 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:51368
+ id 1jidn2-0004sG-28
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2020 08:55:40 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:30759
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jidmk-0002VA-Ax
- for qemu-arm@nongnu.org; Tue, 09 Jun 2020 08:55:22 -0400
+ id 1jidn1-0002WQ-0x
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2020 08:55:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591707321;
+ s=mimecast20190719; t=1591707338;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WNMIYzaHPMueaePuL6G8Jo2xpO6e1JwToPTj/HI563g=;
- b=bHHy6WKooOr+WYgzKXWgR3dg7PrzppT6RIlwWjEKpd267VCzPzmLZHIpYfQt8AOn94ZUlC
- 90cVdkpdJJ4ExuGwdMEN4A/xeAlKTlfsg7VxH99PUft0phWUrFz9rl88nQmprScAefDPkg
- cOuCeI+zHV+fzCFUP06R5MuwB65Anhk=
+ bh=YFqdxsqxrQcpKcHDthetomjSp2XNH0N3qTf+jzelhLI=;
+ b=Hh3M1O7wefqN8C0pBz/NpfIlrRkrJUzdg2xDBMbuK/EnTQb8zvzhVwzOdCerV7JpAe7/wD
+ GXKtOC946r57SBh71PtHUHYGS+dXy43uthD94Wa0ePlL2POUbEyl6VgTvoW+s3RaJn8aGg
+ Z5lfKMHgvipiZMRUKqI8ZkpUqCAI3DM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-241-KqOgGoB3MUOJI5ia0yvYVw-1; Tue, 09 Jun 2020 08:55:20 -0400
-X-MC-Unique: KqOgGoB3MUOJI5ia0yvYVw-1
+ us-mta-470--lV7IxsdNNOBjso2eOALQQ-1; Tue, 09 Jun 2020 08:55:35 -0400
+X-MC-Unique: -lV7IxsdNNOBjso2eOALQQ-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9EA4680B734;
- Tue,  9 Jun 2020 12:55:18 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4FF37872FED;
+ Tue,  9 Jun 2020 12:55:34 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DF1395C6BD;
- Tue,  9 Jun 2020 12:54:32 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5A4245C1BD;
+ Tue,  9 Jun 2020 12:55:28 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
  mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
-Subject: [PATCH v2 2/5] tests/acpi: Add void tables for Q35/TPM-TIS
- bios-tables-test
-Date: Tue,  9 Jun 2020 14:54:06 +0200
-Message-Id: <20200609125409.24179-3-eric.auger@redhat.com>
+Subject: [PATCH v2 4/5] bios-tables-test: Add Q35/TPM-TIS test
+Date: Tue,  9 Jun 2020 14:54:08 +0200
+Message-Id: <20200609125409.24179-5-eric.auger@redhat.com>
 In-Reply-To: <20200609125409.24179-1-eric.auger@redhat.com>
 References: <20200609125409.24179-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -93,9 +92,9 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 23:42:34
+Received-SPF: pass client-ip=205.139.110.61;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 02:41:53
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -120,40 +119,121 @@ Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
  ardb@kernel.org, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pXHre+l00+4k
+X-TUID: kDtx5youv6XY
 
-Add placeholders for TPM and DSDT reference tables for
-Q35 TPM-TIS tests and ignore them for the time being.
+Test tables specific to the TPM-TIS instantiation.
+The TPM2 is added in the framework. Also the DSDT
+is updated with the TPM. The new function should be
+be usable for CRB as well, later one.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
 ---
-RFC -> PATCH v2:
-- squashed void tables + tests/acpi: Ignore TPM2.tis and DSDT.tis
----
- tests/qtest/bios-tables-test-allowed-diff.h |   2 ++
- tests/data/acpi/q35/DSDT.tis                | Bin
- tests/data/acpi/q35/TPM2.tis                | Bin
- 3 files changed, 2 insertions(+)
- create mode 100644 tests/data/acpi/q35/DSDT.tis
- create mode 100644 tests/data/acpi/q35/TPM2.tis
 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..a2a45d1d31 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,3 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/q35/DSDT.tis",
-+"tests/data/acpi/q35/TPM2.tis",
-diff --git a/tests/data/acpi/q35/DSDT.tis b/tests/data/acpi/q35/DSDT.tis
-new file mode 100644
-index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
-diff --git a/tests/data/acpi/q35/TPM2.tis b/tests/data/acpi/q35/TPM2.tis
-new file mode 100644
-index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+v2 -> v3:
+- use test_acpi_tcg_tpm() helper and stick to the current
+  qtest_add_func model
+- hardcode TPM_TIS_ADDR_BASE
+---
+ tests/qtest/bios-tables-test.c | 58 ++++++++++++++++++++++++++++++++++
+ tests/qtest/Makefile.include   |  1 +
+ 2 files changed, 59 insertions(+)
+
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index c9843829b3..53f104a9c5 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -57,6 +57,9 @@
+ #include "qemu/bitmap.h"
+ #include "acpi-utils.h"
+ #include "boot-sector.h"
++#include "tpm-emu.h"
++#include "hw/acpi/tpm.h"
++
+ 
+ #define MACHINE_PC "pc"
+ #define MACHINE_Q35 "q35"
+@@ -874,6 +877,60 @@ static void test_acpi_piix4_tcg_numamem(void)
+     free_test_data(&data);
+ }
+ 
++uint64_t tpm_tis_base_addr;
++
++static void test_acpi_tcg_tpm(const char *machine, const char *tpm_if,
++                              uint64_t base)
++{
++    gchar *tmp_dir_name = g_strdup_printf("qemu-test_acpi_%s_tcg_%s.XXXXXX",
++                                          machine, tpm_if);
++    char *tmp_path = g_dir_make_tmp(tmp_dir_name, NULL);
++    TestState test;
++    test_data data;
++    GThread *thread;
++    char *args, *variant = g_strdup_printf(".%s", tpm_if);
++
++    tpm_tis_base_addr = base;
++
++    module_call_init(MODULE_INIT_QOM);
++
++    test.addr = g_new0(SocketAddress, 1);
++    test.addr->type = SOCKET_ADDRESS_TYPE_UNIX;
++    test.addr->u.q_unix.path = g_build_filename(tmp_path, "sock", NULL);
++    g_mutex_init(&test.data_mutex);
++    g_cond_init(&test.data_cond);
++    test.data_cond_signal = false;
++
++    thread = g_thread_new(NULL, tpm_emu_ctrl_thread, &test);
++    tpm_emu_test_wait_cond(&test);
++
++    memset(&data, 0, sizeof(data));
++    data.machine = machine;
++    data.variant = variant;
++
++    args = g_strdup_printf(
++        " -chardev socket,id=chr,path=%s"
++        " -tpmdev emulator,id=dev,chardev=chr"
++        " -device tpm-%s,tpmdev=dev",
++        test.addr->u.q_unix.path, tpm_if);
++
++    test_acpi_one(args, &data);
++
++    g_thread_join(thread);
++    g_unlink(test.addr->u.q_unix.path);
++    qapi_free_SocketAddress(test.addr);
++    g_rmdir(tmp_path);
++    g_free(variant);
++    g_free(tmp_path);
++    g_free(tmp_dir_name);
++    free_test_data(&data);
++}
++
++static void test_acpi_q35_tcg_tpm_tis(void)
++{
++    test_acpi_tcg_tpm("q35", "tis", 0xFED40000);
++}
++
+ static void test_acpi_tcg_dimm_pxm(const char *machine)
+ {
+     test_data data;
+@@ -1037,6 +1094,7 @@ int main(int argc, char *argv[])
+             return ret;
+         }
+ 
++        qtest_add_func("acpi/q35/tpm-tis", test_acpi_q35_tcg_tpm_tis);
+         qtest_add_func("acpi/piix4", test_acpi_piix4_tcg);
+         qtest_add_func("acpi/piix4/bridge", test_acpi_piix4_tcg_bridge);
+         qtest_add_func("acpi/q35", test_acpi_q35_tcg);
+diff --git a/tests/qtest/Makefile.include b/tests/qtest/Makefile.include
+index 9e5a51d033..5023fa413d 100644
+--- a/tests/qtest/Makefile.include
++++ b/tests/qtest/Makefile.include
+@@ -262,6 +262,7 @@ tests/qtest/hd-geo-test$(EXESUF): tests/qtest/hd-geo-test.o $(libqos-obj-y)
+ tests/qtest/boot-order-test$(EXESUF): tests/qtest/boot-order-test.o $(libqos-obj-y)
+ tests/qtest/boot-serial-test$(EXESUF): tests/qtest/boot-serial-test.o $(libqos-obj-y)
+ tests/qtest/bios-tables-test$(EXESUF): tests/qtest/bios-tables-test.o \
++        tests/qtest/tpm-emu.o $(test-io-obj-y) \
+ 	tests/qtest/boot-sector.o tests/qtest/acpi-utils.o $(libqos-obj-y)
+ tests/qtest/pxe-test$(EXESUF): tests/qtest/pxe-test.o tests/qtest/boot-sector.o $(libqos-obj-y)
+ tests/qtest/microbit-test$(EXESUF): tests/qtest/microbit-test.o
 -- 
 2.20.1
 

@@ -1,107 +1,99 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp5474751lfc;
-        Mon, 8 Jun 2020 15:15:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxl92fnIglpORap9ZhEqWw3bc89uhk7a+mWvf9j7M7uR6/53zsoCmRtJhXPGBJz9cjQNtfd
-X-Received: by 2002:a25:2488:: with SMTP id k130mr1410339ybk.241.1591654520579;
-        Mon, 08 Jun 2020 15:15:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591654520; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp41111lfc;
+        Mon, 8 Jun 2020 18:36:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwTzRzwdL5k5WPndT6MI52bG2Qm2ZsPcwXVbHTrDWfz3JpprVmtQVCcMp1cC+Ii5Eds+DnR
+X-Received: by 2002:a25:b48:: with SMTP id 69mr2325681ybl.421.1591666619582;
+        Mon, 08 Jun 2020 18:36:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591666619; cv=none;
         d=google.com; s=arc-20160816;
-        b=wC/TEO4liWNzpqZHIJGV0Kol+YrFxf04lBj04GNZnNM/gRPy7oJbiqUooJbks8cDeW
-         g0b7rSfIV+lIhW5FPPOdxqajFYBQnEAKGjmysQXwKELJtLAcIeLQYR0iEQJBXpd89I2R
-         Z99L3PEHX+M1SF3tHANA8Pfpk7yzPUY0HYLJTNlJ/3G6KSLiNuLhqGgV6kpSkt0twbis
-         T9YXitedzPjhSvt7aQcDqM0zQbW7mSDOPMXZB+ighShMOC2S/MuUMDSHM7Ebz2EHfrzh
-         Hq5DE4K9y2sDQvoJrEs0c+lJslOjiiwk3hJp1+FodYiU4SGfzaAlUumryMGdH411pgPo
-         uNaw==
+        b=ckYu0GhLNItH/vi4AdQf2+FhhFQp7j2NSMv0i+ufV+PcaK97DuiFI5d/k9rRoYhofU
+         PZdQ7VFxfALXmC4N4B/5YI5GIvXGHz8hs9cA2Pra6Md6Y57yk/snuzj2St44lWq9aWc1
+         9QLIkTrfEONOTMhJT/6cdbPMqFSAru7UrLsEQu/HWP3O94lhNALLxzpv8UiLxh78IhOf
+         5jOYx6NfRORN3ZImtbvUp0xvgCvbXVMVm3iSt3f8AOG5t1ED6l42ElPdgvWwQSin3fdS
+         7/qtmzGylGmZGao1lQLE0RByic4xI4LukGbfLUrocZy82G2kDbzez0d19dB8h1K+TLUL
+         fFkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=gwtv4IjPm3W/47yWBHlgJMaTuoF3z9vgsEf55kpSKzk=;
-        b=hnuCr9ZMVuw5czAot6spDHMpAoAZfhYJxtIlI68fbAJa88IssNywjkjzSlU/Du8A4F
-         IcGeG13fMYTKKzP4crfp75+Rp1YW0zd3OaMIa1PytvOAv6hMnumyHZUHtho6bQ0DClWZ
-         PIWgI4PzTesYnMh+cdruy8JGLWBGreK9sotxxivCrqEOd3HPjPiFzxU22QzLTsBNi6sF
-         sd4/1mgPBX9WiOqMIuHW4jbMke6O3lmaCw1dO91+EKKEVz17fZh51kyKPnBtJMTtNFAo
-         VpJ29h092xWKW8C4vSY23a1b4pm4QKI/OefK0gmlg9AB2XQOS39ZJjkmPyU/nHRqBmOu
-         1V3g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=9aphTkaF/pTaor8lK4sJuIDAPhh8u4H3dPq8RbeFkUs=;
+        b=wXW2U+YtwhNfkEz2OnrEK/uZIhyjq1LcByifNAQ5/5HKJtnVROyL/uV2ciCvYMdTvd
+         Ob8au7vZid5rJuzGxWFEfIAm/Zt+L5AzBD5MLHE1wBMIBgOrvj3V9rE+fpBuH3j8D6Tv
+         BnI0Z6YhQU5vLTldper1PiP5Gfxdd94GGb6PvMr+XIadb4XpRh6EGflZGsB2R9Dj3i3R
+         RLn1CSJVH2lwQA9UKAkoExngp6PcQBqONyFy6jWiZv7HHLudBLgKBOV0Gb9deIlwVLt2
+         eaiyQO1I+UQHwiT7fBeeLR7tdz4zvOOXQayc/shuWzLML/UvxMXxsAh6wok4PnvG5lmU
+         zYUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b="l/DVRVbm";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=fail header.i=@jms.id.au header.s=google header.b=mFiX3UJ5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d142si648848ybh.180.2020.06.08.15.15.20
+        by mx.google.com with ESMTPS id 81si1162871ybc.41.2020.06.08.18.36.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jun 2020 15:15:20 -0700 (PDT)
+        Mon, 08 Jun 2020 18:36:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b="l/DVRVbm";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:53312 helo=lists1p.gnu.org)
+       dkim=fail header.i=@jms.id.au header.s=google header.b=mFiX3UJ5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36458 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiQ35-0001rX-Qf
-	for alex.bennee@linaro.org; Mon, 08 Jun 2020 18:15:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52806)
+	id 1jiTCE-0003CX-Q1
+	for alex.bennee@linaro.org; Mon, 08 Jun 2020 21:36:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40006)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jiQ2v-0001r6-0D
- for qemu-arm@nongnu.org; Mon, 08 Jun 2020 18:15:09 -0400
-Received: from mail-vs1-xe44.google.com ([2607:f8b0:4864:20::e44]:34872)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1jiTBs-0003BA-Bv; Mon, 08 Jun 2020 21:36:36 -0400
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:36824)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jiQ2t-0003ex-6M
- for qemu-arm@nongnu.org; Mon, 08 Jun 2020 18:15:08 -0400
-Received: by mail-vs1-xe44.google.com with SMTP id t132so10518581vst.2
- for <qemu-arm@nongnu.org>; Mon, 08 Jun 2020 15:15:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1jiTBr-00007X-GV; Mon, 08 Jun 2020 21:36:36 -0400
+Received: by mail-ed1-x542.google.com with SMTP id q13so15022366edi.3;
+ Mon, 08 Jun 2020 18:36:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gwtv4IjPm3W/47yWBHlgJMaTuoF3z9vgsEf55kpSKzk=;
- b=l/DVRVbmsP0eL2ExJ9PFQZCWSmOGdmAz1pNg/olI0pooQ14iSHn7N1cobWsYq5O97r
- SkXZXbIjgtQlWncYrLxrIykFxQqWx10c1NKbKIchIp/uZ4lGRtyK4dk5WiGLHyWPq9xj
- mUgZQsajgkhYOA90Qb0HwoGigpXTSymwkJGuA8Shl+SQzDnsR0etGpYbukaJPtlLHRQ6
- Rjw/Y/US31Qb5cU4NEc4zqcU+UZmkrWsDkG0xlf5le0hz3ce+jtRa2ufpJzu9LBE3V1G
- 3idfWENI+hzQg+Qk4VjztAkBH1aWgNmJsYDX5qNnPECuULUoetsJ6T5zEqkGcoLaIAqn
- q+9Q==
+ :cc; bh=9aphTkaF/pTaor8lK4sJuIDAPhh8u4H3dPq8RbeFkUs=;
+ b=mFiX3UJ54eu6BnI1/r8+w/I3+LfY4V4759zcTa/LJxNgsrGz3cIf15h4SlEgRUGF5q
+ zJH+PMsA98cjQTYor5EZShsOsoq4BQmNlaqOucl0wEKZUwAbKOvenp3oib5GqRPxeBSc
+ BFvczSOhWwvGwl9nRohOEti7U1TvEB4Jt36rw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=gwtv4IjPm3W/47yWBHlgJMaTuoF3z9vgsEf55kpSKzk=;
- b=TzPMCow5BBKAg3d4SukHm+f+6tJMk/h/P0LW2hkIqAkmO3gVYTOSRzzHTm9Ap/sQfP
- 44vywROLTXn8ykVutcsoB+bMo4kMsZoyj1vIGcka19KXYnfaSyHIORmo1HzsvrWOJNnY
- u98oI9ZnFp5jFrAwHvwrYMmo5ASDl7axP2aqvXrItkc5F1jaFDfFTOuLpTdoqBDSqvrA
- Y9kVWsc5oNWPA5Lo1f8dAoygpDorYBxGIfQT2xiPDPk4iPkNFB0T7msV/6kvwfWQ2r3w
- CJKFZyBUdEeyb78vib8da8Paw/HWzoy3Bw/eGHEuk5ZtS/XqHT6OezfpdT9pUh3P0rKl
- a+/g==
-X-Gm-Message-State: AOAM533qTDauIqlFn7nqA/epmFeHyv4eHJSNVg4N9QP7ZVwKtZzuyn3W
- 4gDK6dmZcRbOqnnDh9MXvjWIBqjDsbBcvZx63N5Cgg==
-X-Received: by 2002:a05:6102:22ca:: with SMTP id
- a10mr749158vsh.152.1591654504367; 
- Mon, 08 Jun 2020 15:15:04 -0700 (PDT)
+ bh=9aphTkaF/pTaor8lK4sJuIDAPhh8u4H3dPq8RbeFkUs=;
+ b=JcBgt3+PLANont7hH+bFTDG/47SRd6Gm3Dx/0c5XSkWa730+GLmIT28Peqo9ed8ZGM
+ PH2d93KvrVg7OovSlT4axgZIdVEiteLR28ZrIeu+TlAIFYD8CSC6NR1MVRPSNjfSzMrR
+ bpIV9sLanleTcwdwmlKrQ2A2iNsBNOtAuepHA/CJoTt12uFbCxOsiJ9yUt+j54EYyjNY
+ Bv6pSblm7+iO3F9krDbDHlzeKc7Zq72qlWRuIjzxdHu+DFXcAlViW+4fR1edGVC7KV6r
+ qS9bg1QPz9UCTkO64/HjN1T9p4KhrPJGj2nBbygcjKKKjYUQ/o3WWs8A4VK3s0nni9AR
+ a1eQ==
+X-Gm-Message-State: AOAM532gn4b0JnyeZJvDLXSyvz7BErI8HfQ7WCChRYgZfKMaW/liMScE
+ lKRS+/Rlreu73heVxjmwfWEdNqVhGYLErAJAu/Lpt9Lk
+X-Received: by 2002:a05:6402:128b:: with SMTP id
+ w11mr18834455edv.377.1591666593791; 
+ Mon, 08 Jun 2020 18:36:33 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200521192133.127559-1-hskinnemoen@google.com>
-In-Reply-To: <20200521192133.127559-1-hskinnemoen@google.com>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Mon, 8 Jun 2020 15:14:53 -0700
-Message-ID: <CAFQmdRYYhoWu7q350n0vNOE+pesp-UG975v1f1Yjwf9Ao0mjcg@mail.gmail.com>
-Subject: Re: [PATCH 0/6] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC machines
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, CS20 KFTing <kfting@nuvoton.com>
-Content-Type: multipart/alternative; boundary="00000000000056fedb05a799f17c"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e44;
- envelope-from=hskinnemoen@google.com; helo=mail-vs1-xe44.google.com
+ <20200521192133.127559-4-hskinnemoen@google.com>
+In-Reply-To: <20200521192133.127559-4-hskinnemoen@google.com>
+From: Joel Stanley <joel@jms.id.au>
+Date: Tue, 9 Jun 2020 01:36:22 +0000
+Message-ID: <CACPK8Xfz2izvKoh-eRK2-=Pm_HpndTR6Op2qUZu_1GmSt2ng4g@mail.gmail.com>
+Subject: Re: [PATCH 3/6] hw/misc: Add NPCM7xx Clock Controller device model
+To: Havard Skinnemoen <hskinnemoen@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::542;
+ envelope-from=joel.stan@gmail.com; helo=mail-ed1-x542.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=_AUTOLEARN
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,54 +106,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, kfting@nuvoton.com,
+ Avi Fishman <Avi.Fishman@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ovhLe5Sw/6L1
+X-TUID: c6F09tf2PnEZ
 
---00000000000056fedb05a799f17c
-Content-Type: text/plain; charset="UTF-8"
-
-On Thu, May 21, 2020 at 12:21 PM Havard Skinnemoen <hskinnemoen@google.com>
-wrote:
-
-> This patch series models enough of the Nuvoton NPCM730 and NPCM750 SoCs to
-> boot
-> a minimal Linux kernel. This includes device models for:
+On Thu, 21 May 2020 at 20:39, Havard Skinnemoen <hskinnemoen@google.com> wrote:
 >
+> Enough functionality to boot the Linux kernel has been implemented. This
+> includes:
+>
+>   - Correct power-on reset values so the various clock rates can be
+>     accurately calculated.
+>   - Clock enables stick around when written.
+>
+> In addition, a best effort attempt to implement SECCNT and CNTR25M was
+> made even though I don't think the kernel needs them.
+>
+> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 
-Does anyone have comments on this series? I'm currently finishing up a
-second patch series that adds flash support and a few other things so qemu
-can boot a full OpenBMC flash image built for npcm7xx.
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 
-If you prefer, I can combine them both into one series and send it to the
-list.
+> +++ b/hw/misc/npcm7xx_clk.c
 
-This series can be found here:
-https://patchwork.kernel.org/project/qemu-devel/list/?series=291809
+> +#define PLLCON_LOKI     BIT(31)
+> +#define PLLCON_LOKS     BIT(30)
+> +#define PLLCON_PWDEN    BIT(12)
+> +
+> +static const uint32_t cold_reset_values[NPCM7XX_CLK_NR_REGS] = {
 
-Thanks,
+Can you add a comment to mention where these come from? If it's the
+data sheet, note which version you're using.
 
-Havard
 
---00000000000056fedb05a799f17c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">On Thu, May 21, 2020 at 12:21 PM Havard S=
-kinnemoen &lt;<a href=3D"mailto:hskinnemoen@google.com">hskinnemoen@google.=
-com</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=3D=
-"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(2=
-04,204,204);padding-left:1ex">This patch series models enough of the Nuvoto=
-n NPCM730 and NPCM750 SoCs to boot<br>
-a minimal Linux kernel. This includes device models for:<br></blockquote><d=
-iv><br></div><div>Does anyone have comments on this series? I&#39;m current=
-ly finishing up a second patch series that adds flash support and a few oth=
-er things so qemu can boot a full OpenBMC flash image built for npcm7xx.</d=
-iv><div><br></div><div>If you prefer, I can combine them both into one seri=
-es and send it to the list.</div><div><br></div><div>This series can be fou=
-nd here:=C2=A0<a href=3D"https://patchwork.kernel.org/project/qemu-devel/li=
-st/?series=3D291809" class=3D"cremed">https://patchwork.kernel.org/project/=
-qemu-devel/list/?series=3D291809</a></div><div><br></div><div>Thanks,</div>=
-<div><br></div><div>Havard</div></div></div>
-
---00000000000056fedb05a799f17c--
+> +    [NPCM7XX_CLK_CLKEN1]        = 0xffffffff,
+> +    [NPCM7XX_CLK_CLKSEL]        = 0x004aaaaa,
+> +    [NPCM7XX_CLK_CLKDIV1]       = 0x5413f855,
+> +    [NPCM7XX_CLK_PLLCON0]       = 0x00222101 | PLLCON_LOKI,
+> +    [NPCM7XX_CLK_PLLCON1]       = 0x00202101 | PLLCON_LOKI,
+> +    [NPCM7XX_CLK_IPSRST1]       = 0x00001000,
+> +    [NPCM7XX_CLK_IPSRST2]       = 0x80000000,
+> +    [NPCM7XX_CLK_CLKEN2]        = 0xffffffff,
+> +    [NPCM7XX_CLK_CLKDIV2]       = 0xaa4f8f9f,
+> +    [NPCM7XX_CLK_CLKEN3]        = 0xffffffff,
+> +    [NPCM7XX_CLK_IPSRST3]       = 0x03000000,
+> +    [NPCM7XX_CLK_WD0RCR]        = 0xffffffff,
+> +    [NPCM7XX_CLK_WD1RCR]        = 0xffffffff,
+> +    [NPCM7XX_CLK_WD2RCR]        = 0xffffffff,
+> +    [NPCM7XX_CLK_SWRSTC1]       = 0x00000003,
+> +    [NPCM7XX_CLK_PLLCON2]       = 0x00c02105 | PLLCON_LOKI,
+> +    [NPCM7XX_CLK_CORSTC]        = 0x04000003,
+> +    [NPCM7XX_CLK_PLLCONG]       = 0x01228606 | PLLCON_LOKI,
+> +    [NPCM7XX_CLK_AHBCKFI]       = 0x000000c8,
+> +};

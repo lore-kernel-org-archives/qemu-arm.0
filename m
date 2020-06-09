@@ -1,102 +1,98 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp424089lfc;
-        Tue, 9 Jun 2020 05:10:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzeaRq2kntEZ9yift0Zf2m9zu1JJrKhMjLSzH7qissQhrhpetm5SGAei+/qmNaol3TtdNCR
-X-Received: by 2002:a25:e658:: with SMTP id d85mr5891844ybh.328.1591704655587;
-        Tue, 09 Jun 2020 05:10:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591704655; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp434327lfc;
+        Tue, 9 Jun 2020 05:24:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzvLU+SbfpJJ+LzHXVCsisKtF51m+YFv50+WXhMzWihxHBpodIcwe4NE7dQCuu4bS0KkpDe
+X-Received: by 2002:a25:7ac5:: with SMTP id v188mr6209176ybc.237.1591705453575;
+        Tue, 09 Jun 2020 05:24:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591705453; cv=none;
         d=google.com; s=arc-20160816;
-        b=VIoQbKk53vUQWrtiTqV/m7X2YF/xkh1J1IqFAdH6s3oK9NAI9gOXhn2klZc2Dim2EF
-         HC7xumwume1QpGCAXRuHeGUu3k/liCaP1XWJTCq8EFbhsqIgZuvZtoYEYE1H4AtOnj7R
-         tQZGbG0YQxNSjs7yGB0pxb1EnehCjJVN4POJusGmVArVC21/yT8powr+k2kGvfOcSYxf
-         Fq7aSTWEh0kTDqa404WI+ZqXEc1XYTtX1+diTXsWQxwIIIY37pIxxj9cpSdPQAlV6KTa
-         XRvb/ZeX9D1axdCzRXkucAn4JllD5TP+RSwbBjFAheo0XHq1B+ZICSrKqWow50FYgG1b
-         ZC3w==
+        b=nFr3m51j9ycUBFyGTflksJiLYavwA3hPe5QAnT12WifyGjYlEg7oIFHBf0H46NQNhO
+         35UdpJkFYZf62KXZlgaSeUhzGD0eLuDlfNsxOaF0ezExvA5zRs+sR4GTExZqaudYlmyD
+         JXPaCw4idaGexYwOwAn1wyEm2UYro8zpmbJyGfJKWZncbnVYNl7uOH5UmX+SpytVS1tL
+         AiPY84OeG4gPPBAhZjMs7nxbamylNrwlOOEmdthhCYZlcDsQTsivrlCpas5c1nKrTGxp
+         PfCPjTj7OjA6356AI7Uf2KWlsh/kJsIGN5cVKH5qYW6fW0Sl5+44MBAQNM5GkCs92OEd
+         Lv2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=EEzIIZ6NuQFKV8NP4srTgJCOaFzz9+Du1cZ9KCaWsms=;
-        b=gxhC3fU55kNfxnJCNA7r/Y04Je9O3qILjMRajzfLrkp/NUKfHOwlqMB764jmspsXsJ
-         H007b4XA3f5abbxW7Ekw1HIMwA4uISHGtbDHi8vbFZWi4JZmsiNd5fYdnrNkzexNfL3B
-         T29PLfnC/4KRt4IO6i2wS16JkAIT4k7FLM6PspRI5q5Zq643WxJcJfRfmiZj/DSSXTAx
-         OS0jxQUa0BsVFKMtjHvSrmqAihRsqbkeYwR+KlrCQ9E5zS3LKof6hDDoLSeX/7a1XvKU
-         oXzNlGJHLQrGhHC/8ds/f9gwnS1JUZd3GHE04g/PjRkFIvVcFE0SwcqxG5uu2kdf+93Q
-         vuxA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=96NSDVlLstzrc1zVcESoebf76Jshgi/HIVJtBXAA0ck=;
+        b=M7OJMjrXJOAs08HqLRcL7O4esd0dj8nN0FRnMKp++fjEMe4VO1mRHOxsZj8LO+g5C+
+         bY1DVe6M9ck4WkTg30ZKDgV5Psj0mT8ZY6+I+vvciV9luf4r0G96FrqIvAGl7SXNTj63
+         GiFbdUxNy/ukksdLLuCi238UmcuJxzrOpUddGwzEjv1epytR2m7mhMWJDC3usJiqVplv
+         SeL43K6xr58dfQ0G11sHvEVaN2A6lIwxha5ZzhjjWgMwt37MQR6B/gmHBwrFvKTlcA37
+         FV0JL5MWtbncdw6WbOJ45ib21718wT4zo/vksNXYL8WKXuTWB8GqTj0bQmtFY2pTbhgN
+         jPmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hfhVQjCb;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hgEEJJy+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p196si2261549ybg.113.2020.06.09.05.10.55
+        by mx.google.com with ESMTPS id d31si2749397yba.474.2020.06.09.05.24.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 05:10:55 -0700 (PDT)
+        Tue, 09 Jun 2020 05:24:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hfhVQjCb;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hgEEJJy+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47780 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55428 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jid5i-0007qx-U2
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 08:10:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40156)
+	id 1jidIa-0003G5-TM
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 08:24:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41544)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jid5Y-0007q2-NH
- for qemu-arm@nongnu.org; Tue, 09 Jun 2020 08:10:44 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:60745
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jidIA-0003Dh-K6
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2020 08:23:48 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:39082
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jid5X-0002vj-0P
- for qemu-arm@nongnu.org; Tue, 09 Jun 2020 08:10:43 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jidI9-0005Oq-AQ
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2020 08:23:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591704641;
+ s=mimecast20190719; t=1591705424;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=EEzIIZ6NuQFKV8NP4srTgJCOaFzz9+Du1cZ9KCaWsms=;
- b=hfhVQjCbXExQiWHGwUWr+rVgGjZ+cGm8oG/yV//i6VQf8YlrBcZck2XvvxDZTr001OYllv
- ZvytahYzLjfkEeyZs48pJTpnJc46wEfA4h84FNCJofe5pThWNm8ty4GlgUPbfj0C/x3JUA
- 4KSFvM1jzV6AoAEDY/mG+3ahEbbIwFM=
+ bh=96NSDVlLstzrc1zVcESoebf76Jshgi/HIVJtBXAA0ck=;
+ b=hgEEJJy+pYnUYyp8QZIjaQ+P+6XFwE56szRYiPjjfrIMF8CC4tgi4/v7HkguNerJEB4OwL
+ Q+IT6vPGNyV9mk5HBEa7qb5bIqrWhqzO6HlUMS6nOxfNxcRnLkk7Ex7bFX8QoFW3FbPXhb
+ hU37/GKb6rKwVMn/SSjFFe49dJzvsIQ=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-436-rA4teudiOia7gVo58wLuiA-1; Tue, 09 Jun 2020 08:10:37 -0400
-X-MC-Unique: rA4teudiOia7gVo58wLuiA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-330-urMu2FYIPrGrtNde29_Tsg-1; Tue, 09 Jun 2020 08:23:42 -0400
+X-MC-Unique: urMu2FYIPrGrtNde29_Tsg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 76A1E107ACF3;
- Tue,  9 Jun 2020 12:10:36 +0000 (UTC)
-Received: from [10.36.114.197] (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 685C62B4DF;
- Tue,  9 Jun 2020 12:10:24 +0000 (UTC)
-Subject: Re: [RFC 5/6] bios-tables-test: Add Q35/TPM-TIS test
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20200601102113.1207-1-eric.auger@redhat.com>
- <20200601102113.1207-6-eric.auger@redhat.com>
- <20200605171738.31ed9143@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <44238e79-6eac-041d-5f9d-999a1e86f57c@redhat.com>
-Date: Tue, 9 Jun 2020 14:10:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 94B3980B73A;
+ Tue,  9 Jun 2020 12:23:41 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 61C3C8926E;
+ Tue,  9 Jun 2020 12:23:41 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id E3CF711385C8; Tue,  9 Jun 2020 14:23:39 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 03/24] sd/pxa2xx_mmci: Fix to realize "pxa2xx-mmci" device
+Date: Tue,  9 Jun 2020 14:23:18 +0200
+Message-Id: <20200609122339.937862-4-armbru@redhat.com>
+In-Reply-To: <20200609122339.937862-1-armbru@redhat.com>
+References: <20200609122339.937862-1-armbru@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200605171738.31ed9143@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.61;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-1.mimecast.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 02:41:53
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
@@ -105,7 +101,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,167 +114,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, mst@redhat.com,
- philmd@redhat.com, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, marcandre.lureau@redhat.com, eric.auger.pro@gmail.com,
- lersek@redhat.com, ardb@kernel.org, stefanb@linux.ibm.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
+ ehabkost@redhat.com,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, pbonzini@redhat.com,
+ Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: F5wlF3kjH5uQ
+X-TUID: /+IwZGPXxPyH
 
-Hi Igor,
+pxa2xx_mmci_init() creates a "pxa2xx-mmci" device, but neglects to
+realize it.  Affects machines akita, borzoi, connex, mainstone, spitz,
+terrier, tosa, verdex, and z2.
 
-On 6/5/20 5:17 PM, Igor Mammedov wrote:
-> On Mon,  1 Jun 2020 12:21:12 +0200
-> Eric Auger <eric.auger@redhat.com> wrote:
-> 
->> Test tables specific to the TPM-TIS instantiation.
->> The TPM2 is added in the framework. Also the DSDT
->> is updated with the TPM. The new function should be
->> be usable for CRB as well, later one.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>  tests/qtest/bios-tables-test.c | 60 ++++++++++++++++++++++++++++++++++
->>  tests/qtest/Makefile.include   |  1 +
->>  2 files changed, 61 insertions(+)
->>
->> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
->> index c9843829b3..bbba98342c 100644
->> --- a/tests/qtest/bios-tables-test.c
->> +++ b/tests/qtest/bios-tables-test.c
->> @@ -57,6 +57,9 @@
->>  #include "qemu/bitmap.h"
->>  #include "acpi-utils.h"
->>  #include "boot-sector.h"
->> +#include "tpm-emu.h"
->> +#include "hw/acpi/tpm.h"
->> +
->>  
->>  #define MACHINE_PC "pc"
->>  #define MACHINE_Q35 "q35"
->> @@ -874,6 +877,60 @@ static void test_acpi_piix4_tcg_numamem(void)
->>      free_test_data(&data);
->>  }
->>  
->> +uint64_t tpm_tis_base_addr;
->> +
->> +struct tpm_test_data {
->> +    const char *machine;
->> +    const char *tpm_if;
->> +};
->> +
->> +static void test_acpi_tcg_tpm(const void *context)
->> +{
-> 
-> s/test_acpi_tcg_tpm/test_acpi_q35_tcg_tpm/
-> 
-> I'd try to keep test specific parameter within test function isnstead of pushing it up to main(),
-> drawback would be some code duplication for intializing test data and calling runner
-> but it's trivial and worked well so far. See for example test_acpi_piix4_tcg_bridge/test_acpi_q35_tcg_bridge. I might seem a waste but it's consictent with what we were doing
-> with bios tests.
-OK
-> 
-> 
->> +    struct tpm_test_data *c = (struct tpm_test_data *)context;
->> +    gchar *tmp_dir_name = g_strdup_printf("qemu-test_acpi_%s_tcg_%s.XXXXXX",
->> +                                          c->machine, c->tpm_if);
->> +    char *tmp_path = g_dir_make_tmp(tmp_dir_name, NULL);
->> +    TestState test;
->> +    test_data data;
->> +    GThread *thread;
->> +    char *args, *variant = g_strdup_printf(".%s", c->tpm_if);
-> maybe derive tpm_if from '.variant' if it's necessary at all?
-> 
->> +
->> +    tpm_tis_base_addr = TPM_TIS_ADDR_BASE;
-> hardcode it here, so in case QEMU regresses, test could notice?
-> 
->> +
->> +    module_call_init(MODULE_INIT_QOM);
-> why it's here
-Without it, I get
-/x86_64/acpi/q35/tpm-tis: **
-ERROR:qom/object.c:677:object_new_with_type: assertion failed: (type !=
-NULL)
+In theory, a device becomes real only on realize.  In practice, the
+transition from unreal to real is a fuzzy one.  The work to make a
+device real can be spread between realize methods (fine),
+instance_init methods (wrong), and board code wiring up the device
+(fine as long as it effectively happens on realize).  Depending on
+what exactly is done where, a device can work even when we neglect
+to realize it.
 
-Thanks
+This one appears to work.  Nevertheless, it's a clear misuse of the
+interface.  Even when it works today (more or less by chance), it can
+break tomorrow.
 
-Eric
+Fix by realizing it right away.  Visible in "info qom-tree"; here's
+the change for akita:
 
-> 
->> +
->> +    test.addr = g_new0(SocketAddress, 1);
->> +    test.addr->type = SOCKET_ADDRESS_TYPE_UNIX;
->> +    test.addr->u.q_unix.path = g_build_filename(tmp_path, "sock", NULL);
->> +    g_mutex_init(&test.data_mutex);
->> +    g_cond_init(&test.data_cond);
->> +    test.data_cond_signal = false;
->> +
->> +    thread = g_thread_new(NULL, tpm_emu_ctrl_thread, &test);
->> +    tpm_emu_test_wait_cond(&test);
-> perhaps make a separate helper function from this chunk
-> so it could be reused from other TMP test functions.
-> 
->> +
->> +    memset(&data, 0, sizeof(data));
-> I'd init fields with initializer, see test_acpi_virt_tcg_numamem()
-> 
->> +    data.machine = c->machine;
->> +    data.variant = variant;
->> +
->> +    args = g_strdup_printf(
->> +        " -chardev socket,id=chr,path=%s"
->> +        " -tpmdev emulator,id=dev,chardev=chr"
->> +        " -device tpm-%s,tpmdev=dev",
->> +        test.addr->u.q_unix.path, c->tpm_if);
->> +
->> +    test_acpi_one(args, &data);
->> +
->> +    g_thread_join(thread);
->> +    g_unlink(test.addr->u.q_unix.path);
->> +    qapi_free_SocketAddress(test.addr);
->> +    g_rmdir(tmp_path);
->> +    g_free(variant);
->> +    g_free(tmp_path);
->> +    g_free(tmp_dir_name);
->> +    free_test_data(&data);
->> +}
->> +
->>  static void test_acpi_tcg_dimm_pxm(const char *machine)
->>  {
->>      test_data data;
->> @@ -1028,6 +1085,7 @@ int main(int argc, char *argv[])
->>  {
->>      const char *arch = qtest_get_arch();
->>      int ret;
->> +    struct tpm_test_data tpm_q35_tis = {MACHINE_Q35, "tis"};
-> 
-> I'd hide this within test_acpi_tcg_tpm() as it's done in other test functions
-> 
->>  
->>      g_test_init(&argc, &argv, NULL);
->>  
->> @@ -1037,6 +1095,8 @@ int main(int argc, char *argv[])
->>              return ret;
->>          }
->>  
->> +        qtest_add_data_func("acpi/q35/tpm-tis",
->> +                            &tpm_q35_tis, test_acpi_tcg_tpm);
->>          qtest_add_func("acpi/piix4", test_acpi_piix4_tcg);
->>          qtest_add_func("acpi/piix4/bridge", test_acpi_piix4_tcg_bridge);
->>          qtest_add_func("acpi/q35", test_acpi_q35_tcg);
->> diff --git a/tests/qtest/Makefile.include b/tests/qtest/Makefile.include
->> index 9e5a51d033..5023fa413d 100644
->> --- a/tests/qtest/Makefile.include
->> +++ b/tests/qtest/Makefile.include
->> @@ -262,6 +262,7 @@ tests/qtest/hd-geo-test$(EXESUF): tests/qtest/hd-geo-test.o $(libqos-obj-y)
->>  tests/qtest/boot-order-test$(EXESUF): tests/qtest/boot-order-test.o $(libqos-obj-y)
->>  tests/qtest/boot-serial-test$(EXESUF): tests/qtest/boot-serial-test.o $(libqos-obj-y)
->>  tests/qtest/bios-tables-test$(EXESUF): tests/qtest/bios-tables-test.o \
->> +        tests/qtest/tpm-emu.o $(test-io-obj-y) \
->>  	tests/qtest/boot-sector.o tests/qtest/acpi-utils.o $(libqos-obj-y)
->>  tests/qtest/pxe-test$(EXESUF): tests/qtest/pxe-test.o tests/qtest/boot-sector.o $(libqos-obj-y)
->>  tests/qtest/microbit-test$(EXESUF): tests/qtest/microbit-test.o
-> 
+     /machine (akita-machine)
+       [...]
+       /unattached (container)
+         [...]
+    +    /device[5] (pxa2xx-mmci)
+    +      /pxa2xx-mmci[0] (qemu:memory-region)
+    +      /sd-bus (pxa2xx-mmci-bus)
+         [rest of device[*] renumbered...]
+
+Fixes: 7a9468c92517e19037bfe2272f64f5dadaf9db15
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/sd/pxa2xx_mmci.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+index f9c50ddda5..c32df1b8f9 100644
+--- a/hw/sd/pxa2xx_mmci.c
++++ b/hw/sd/pxa2xx_mmci.c
+@@ -492,6 +492,7 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+     sysbus_connect_irq(sbd, 0, irq);
+     qdev_connect_gpio_out_named(dev, "rx-dma", 0, rx_dma);
+     qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
++    qdev_init_nofail(dev);
+ 
+     /* Create and plug in the sd card */
+     carddev = qdev_create(qdev_get_child_bus(dev, "sd-bus"), TYPE_SD_CARD);
+-- 
+2.26.2
 

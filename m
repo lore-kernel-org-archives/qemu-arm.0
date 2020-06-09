@@ -1,111 +1,112 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp640900lfc;
-        Tue, 9 Jun 2020 09:13:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwADFsvQ8mu5R2q8FrQLmdowHG6NEgR0njmHwzncaNCU3liNwkLl+sLxLl9OZBQzbNoAdL6
-X-Received: by 2002:a25:d7d1:: with SMTP id o200mr7680820ybg.194.1591719198916;
-        Tue, 09 Jun 2020 09:13:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591719198; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp663884lfc;
+        Tue, 9 Jun 2020 09:41:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwrF2wCnSbEadOFurFn9a5LQGWdmF2G2x+cGGd3PXJqqaq7i5w84KFkTpcdqOx29vDdu3Zo
+X-Received: by 2002:a25:35d5:: with SMTP id c204mr7389035yba.292.1591720860768;
+        Tue, 09 Jun 2020 09:41:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591720860; cv=none;
         d=google.com; s=arc-20160816;
-        b=lA2BVkGNkjk67qXJaPVtd3wwkWUIEtjukbRKiZHm7H7r5ApvfEBNnTAK/OqSE/MhrT
-         hcsGmjXd88fjHm3rMA7CsGpPiM53hahAC9N0Hh+JazSsDqPIu1wL5iWYji8RN2GkRYw3
-         dP9UCB5p0h2yyuGImgctt0lsVjoDhKKBVicl6dkquEr1rkJs3BEVpuLtd2f7iW7zph/t
-         0DC8+Yvq95UPnthhY7/wSrQicpMR/SbEFJc2kE2xCTwb5FDOFMujUHljdUmQIC34tztd
-         2/Z7NFYvs5c9sYbQmp2yJM15nb+z+ddUWX7MbYSHA1naxDPF2jFoV32Dr9jVEAOQ73n2
-         RDHQ==
+        b=qq7AmPyLlvDS+hPCoYyg+Q1NB3ZMkGDoD51W0K68jSEb8sq4M9ghzyFMkuMZbZflBY
+         SY+hqOY1C0fByJL13JItI22p4Zgfi6n2neBMf6TWp8XuQlK7t5xIk76sKVXnWy9ttmxS
+         KzvpkUIINKRoTqz2hCyqUPvnCcJrLCiEKY7nt2CQ9jINC9M8Q8epu0Flh87jIWHCdX6g
+         JNtjIWJRbimFjHA6X9nLj9D4mwcqBia3rTCUG0TlmiVeWfFsbnatbVmIxsboqNXCNv7I
+         KDztHZetqUl2vZpPW9MWqlu4Taexgoy8DCbFbO1rSwoznOR38vzVYxRfLlzSZyCkxljK
+         AcXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=4BxyhI/HWfoITPOBcBEsWHge5VKsc4W1GIwr7qvVtEk=;
-        b=tZuNkJw/vVe0JvtjfYL9oQTzAkn2F9nXbmTwazOFIHjXzT8WqXZrmeMVfy1kCGtatI
-         BpSE3eN1zGW/LMy84XWZ0u/33EatekHGdYv0H3Ml195ALjmEOpq9GLVDmH5Qks35euWH
-         9Wn2ECkzQwW/PGa26bLpxRbkA9MnAN1SPjjVhRst0qBnKovhLdGix9jE2qyZl+RnrOm/
-         reX+6ByPcfjlMTBLXc2+qrKdLcq92iH1UeDnqBol8u/mIswLMskqL5W2YjMsfvtyz0bQ
-         WkYrR7qbn9saLKmt+8WTuzURNw0uBc6HRHE2c87WI0xNaZPuEUJ5EDdBs9dAKPaecxW4
-         OAtA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=FoNMkAIk8t3qqx4O79gujhahy6TuXxWimzCUkwPAVzc=;
+        b=HpsF8p6xnIUA/955E40W7GWiph4u833IjI53L0IvGfP4/H44emw0VyzCfVQeTz8IKQ
+         FBDrw3iKKUJn4Tu7KwzdpzgGDlxRZB+DKfHDlBz3+ervQTl8XA1RfT7xBda41QCZM1KF
+         t3TcLiFTJbboudL+gF5ZccNQIs1VwNv3vH6lTz2abCT6pVbIDGrCH8LGEIq2044elQPr
+         RieONHuPYGwr9K75wm+qd1PBBnux6DXhfhFeR7EHaG5VSLNLJVZwbQWkA36SUIu4bKAL
+         mM1/K3IqwHBgQ+bASvvY+B6lFDuJF7x/6N7IccboPoQoWJ0zDblot8PskdFMl01DJaWW
+         Fv4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U0Vi58wM;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=KXGxiSoW;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s6si2592686ybq.239.2020.06.09.09.13.18
+        by mx.google.com with ESMTPS id c67si2855563ybb.98.2020.06.09.09.41.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 09:13:18 -0700 (PDT)
+        Tue, 09 Jun 2020 09:41:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U0Vi58wM;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=KXGxiSoW;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56836 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:38704 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jigsI-0007rV-42
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 12:13:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42750)
+	id 1jihJ5-00045w-TS
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 12:40:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48368)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jighl-0003QF-Bq
- for qemu-devel@nongnu.org; Tue, 09 Jun 2020 12:02:25 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51921)
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1jihEk-0007TX-43
+ for qemu-devel@nongnu.org; Tue, 09 Jun 2020 12:36:30 -0400
+Received: from mail-vk1-xa43.google.com ([2607:f8b0:4864:20::a43]:40411)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jighk-0003S9-1M
- for qemu-devel@nongnu.org; Tue, 09 Jun 2020 12:02:24 -0400
-Received: by mail-wm1-x344.google.com with SMTP id u13so3364317wml.1
- for <qemu-devel@nongnu.org>; Tue, 09 Jun 2020 09:02:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=4BxyhI/HWfoITPOBcBEsWHge5VKsc4W1GIwr7qvVtEk=;
- b=U0Vi58wMh2szpgpW6gLa5+IUnXLA7WbmBmkIfMdN/VBGeAV7I3zL/mcRDOml4WrHcK
- cu+Vkhnl5cfNBxoqumm69X1mu6NDjCjykwUHfn1pxcRzvFPuws6x0zA82N4jfVyz+s0g
- 34t8oaQ21r4hX+7Wzeo4+6DWdRBX/czj10rUz1TJHqt8del95InkmupaltA4ZrDD+wz8
- G4RWFo1+ypK48C3YEqegU16OFKkhanv3fAHg238x8MYwAS/XmMsxnRTpsi124D8i++ng
- zyANMIj5xCsxz+Wpa94S9TdWu1eshnLee7K/tLZleGvW2IZBs4xvH97JTpV1xzkGRzJ4
- lg7Q==
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1jihEi-0002R4-QH
+ for qemu-devel@nongnu.org; Tue, 09 Jun 2020 12:36:29 -0400
+Received: by mail-vk1-xa43.google.com with SMTP id n22so5038432vkm.7
+ for <qemu-devel@nongnu.org>; Tue, 09 Jun 2020 09:36:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=FoNMkAIk8t3qqx4O79gujhahy6TuXxWimzCUkwPAVzc=;
+ b=KXGxiSoW5WkLQCjdaMu5wq2EUhK7e6UEDOYxw+oEU02Br07NGIkCJ7Cly6k0U5Mllx
+ iq71MrQa8NHXO2A0KcN9IAsVgJHAgoPFADDwQCYvuCfLN8SgZ7sz6rPZdcq8LUnuQ188
+ DRal8aCCPxVP33fXp8vdhiqV8HMbwMNPQ4QS5R2C0II/3HFppqMtUbNWgNhfygp4+pNn
+ rvhirLmZsUKYm3K26/WPjS16ByzdLqenqVM7NZYlGAJM2kBZQ9om5+6u6EscNvFFRDiN
+ M/LTeN8uobZBhFnlC1w8DdOjXSBugd4yNZo1Y0O4lsqyeTiGrG5aRlBX3hwr72iUnJE3
+ CZkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=4BxyhI/HWfoITPOBcBEsWHge5VKsc4W1GIwr7qvVtEk=;
- b=CwZI7lueaQHm/6RbvfSNITBJYO8H6XA9uLxlRby7vkSy6J9zANtFuNH8hSZlaXmUJJ
- BqGnjuOL+m8nDkKzQx0nn5d0qrMepKzJ0mIRFw1qZBu+8qjCyyLRRVIKm5fCgp8bqL5y
- /bq+hYvUCMbTVVr97ysz1shpE/83+NFDaAOsOrUcwdP01pf5EF/4nlBKvrL+vVHh7gkR
- joU1IoHds+CokjC7MwTYMeNRI5WUScr8ASSYJvL0/NY0ccOayaLffvVid5RpKgOZ9chU
- zqQqdfh5lzMrebMIUjJlmqyVkra6/b3R9klVTSkUcI7pjXTU8sEogp+SPbJtSGfPZQoH
- qbCw==
-X-Gm-Message-State: AOAM533WkuGx6boNkS0wIlEoOIlLQUu3c5hZs5TeDpG9jrMzjbVBzvyq
- rRr1marT82+agWTuA0PfgsQ/9A==
-X-Received: by 2002:a1c:6583:: with SMTP id z125mr4838456wmb.102.1591718542281; 
- Tue, 09 Jun 2020 09:02:22 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id b81sm3699867wmc.5.2020.06.09.09.02.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Jun 2020 09:02:21 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 7/7] target/arm: Convert Neon 3-reg-diff polynomial VMULL
-Date: Tue,  9 Jun 2020 17:02:09 +0100
-Message-Id: <20200609160209.29960-8-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200609160209.29960-1-peter.maydell@linaro.org>
-References: <20200609160209.29960-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=FoNMkAIk8t3qqx4O79gujhahy6TuXxWimzCUkwPAVzc=;
+ b=dSO9oCE3fYRMsaDNiOeaiH2R4/hli8+RqyM2N/PNizMCQZqP/85PptApv3Zdx9mRQJ
+ 25QbIqkS0DNk8oFMwbyo1Qw2hk28wSkI1o/jljseUgWbmGtSclazdot3XjegEAwq8smn
+ DJi4097ipBDbAWXaF467MYS2lrnrk3NxDjNg1sA7d/n8zCe/x+7J5X9dXUFQqc8ERPlG
+ 89GL36U93qtZskBFY6b/HZmA+y7L4DG1ERimHXHxqhaQPcwv4q4APeZyNc0ZzD3RKkVb
+ Bp9FPUGbg9eXATWQBbFXu2b+ZouKqLsO9E84ViEGMC2khg0ndgrdk9VLr5pFEo6c1lN3
+ 6ToQ==
+X-Gm-Message-State: AOAM531RIb81wYgUS+e/gVFTrdffkk9e0w3TeUGBzz4WlmX7ohCark+c
+ RdrHRxsNyz/jGX9zgo7JgHoko965ElzCHoY5ow5V2Q==
+X-Received: by 2002:a05:6122:130b:: with SMTP id
+ e11mr4392441vkp.20.1591720587331; 
+ Tue, 09 Jun 2020 09:36:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x344.google.com
+References: <20200521192133.127559-1-hskinnemoen@google.com>
+ <CAFQmdRYYhoWu7q350n0vNOE+pesp-UG975v1f1Yjwf9Ao0mjcg@mail.gmail.com>
+ <CACPK8XfOtLSVR2u12qEYxB=ggKLD-NeK8BYMW3_uRo8ExnM6Ww@mail.gmail.com>
+In-Reply-To: <CACPK8XfOtLSVR2u12qEYxB=ggKLD-NeK8BYMW3_uRo8ExnM6Ww@mail.gmail.com>
+From: Havard Skinnemoen <hskinnemoen@google.com>
+Date: Tue, 9 Jun 2020 09:36:16 -0700
+Message-ID: <CAFQmdRZoc3VDqKdkwsPzSjt_Pc5vGM+YQFN4y8jAu5VF36S6SQ@mail.gmail.com>
+Subject: Re: [PATCH 0/6] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC machines
+To: Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
+ CS20 KFTing <kfting@nuvoton.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: multipart/alternative; boundary="0000000000003111c905a7a95405"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a43;
+ envelope-from=hskinnemoen@google.com; helo=mail-vk1-xa43.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,169 +119,46 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7qjJg635ioFh
+X-TUID: s6WXUcO7ZfCE
 
-Convert the Neon 3-reg-diff insn polynomial VMULL. This is the last
-insn in this group to be converted.
+--0000000000003111c905a7a95405
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/neon-dp.decode       |  2 ++
- target/arm/translate-neon.inc.c | 43 +++++++++++++++++++++++
- target/arm/translate.c          | 60 ++-------------------------------
- 3 files changed, 48 insertions(+), 57 deletions(-)
+On Mon, Jun 8, 2020 at 6:39 PM Joel Stanley <joel@jms.id.au> wrote:
 
-diff --git a/target/arm/neon-dp.decode b/target/arm/neon-dp.decode
-index 65ea30d3edf..ed49726abf5 100644
---- a/target/arm/neon-dp.decode
-+++ b/target/arm/neon-dp.decode
-@@ -465,5 +465,7 @@ Vimm_1r          1111 001 . 1 . 000 ... .... cmode:4 0 . op:1 1 .... @1reg_imm
-     VMULL_U_3d   1111 001 1 1 . .. .... .... 1100 . 0 . 0 .... @3diff
- 
-     VQDMULL_3d   1111 001 0 1 . .. .... .... 1101 . 0 . 0 .... @3diff
-+
-+    VMULL_P_3d   1111 001 0 1 . .. .... .... 1110 . 0 . 0 .... @3diff
-   ]
- }
-diff --git a/target/arm/translate-neon.inc.c b/target/arm/translate-neon.inc.c
-index 5965b5ed845..7dbbfaaac41 100644
---- a/target/arm/translate-neon.inc.c
-+++ b/target/arm/translate-neon.inc.c
-@@ -2304,3 +2304,46 @@ static bool trans_VQDMLSL_3d(DisasContext *s, arg_3diff *a)
- 
-     return do_long_3d(s, a, opfn[a->size], accfn[a->size]);
- }
-+
-+static bool trans_VMULL_P_3d(DisasContext *s, arg_3diff *a)
-+{
-+    gen_helper_gvec_3 *fn_gvec;
-+
-+    if (!arm_dc_feature(s, ARM_FEATURE_NEON)) {
-+        return false;
-+    }
-+
-+    /* UNDEF accesses to D16-D31 if they don't exist. */
-+    if (!dc_isar_feature(aa32_simd_r32, s) &&
-+        ((a->vd | a->vn | a->vm) & 0x10)) {
-+        return false;
-+    }
-+
-+    if (a->vd & 1) {
-+        return false;
-+    }
-+
-+    switch (a->size) {
-+    case 0:
-+        fn_gvec = gen_helper_neon_pmull_h;
-+        break;
-+    case 2:
-+        if (!dc_isar_feature(aa32_pmull, s)) {
-+            return false;
-+        }
-+        fn_gvec = gen_helper_gvec_pmull_q;
-+        break;
-+    default:
-+        return false;
-+    }
-+
-+    if (!vfp_access_check(s)) {
-+        return true;
-+    }
-+
-+    tcg_gen_gvec_3_ool(neon_reg_offset(a->vd, 0),
-+                       neon_reg_offset(a->vn, 0),
-+                       neon_reg_offset(a->vm, 0),
-+                       16, 16, 0, fn_gvec);
-+    return true;
-+}
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 88e91845c02..f459fad8646 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -5181,7 +5181,7 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
- {
-     int op;
-     int q;
--    int rd, rn, rm, rd_ofs, rn_ofs, rm_ofs;
-+    int rd, rn, rm, rd_ofs, rm_ofs;
-     int size;
-     int pass;
-     int u;
-@@ -5215,7 +5215,6 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
-     size = (insn >> 20) & 3;
-     vec_size = q ? 16 : 8;
-     rd_ofs = neon_reg_offset(rd, 0);
--    rn_ofs = neon_reg_offset(rn, 0);
-     rm_ofs = neon_reg_offset(rm, 0);
- 
-     if ((insn & (1 << 23)) == 0) {
-@@ -5228,61 +5227,8 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
-         if (size != 3) {
-             op = (insn >> 8) & 0xf;
-             if ((insn & (1 << 6)) == 0) {
--                /* Three registers of different lengths.  */
--                /* undefreq: bit 0 : UNDEF if size == 0
--                 *           bit 1 : UNDEF if size == 1
--                 *           bit 2 : UNDEF if size == 2
--                 *           bit 3 : UNDEF if U == 1
--                 * Note that [2:0] set implies 'always UNDEF'
--                 */
--                int undefreq;
--                /* prewiden, src1_wide, src2_wide, undefreq */
--                static const int neon_3reg_wide[16][4] = {
--                    {0, 0, 0, 7}, /* VADDL: handled by decodetree */
--                    {0, 0, 0, 7}, /* VADDW: handled by decodetree */
--                    {0, 0, 0, 7}, /* VSUBL: handled by decodetree */
--                    {0, 0, 0, 7}, /* VSUBW: handled by decodetree */
--                    {0, 0, 0, 7}, /* VADDHN: handled by decodetree */
--                    {0, 0, 0, 7}, /* VABAL */
--                    {0, 0, 0, 7}, /* VSUBHN: handled by decodetree */
--                    {0, 0, 0, 7}, /* VABDL */
--                    {0, 0, 0, 7}, /* VMLAL */
--                    {0, 0, 0, 7}, /* VQDMLAL */
--                    {0, 0, 0, 7}, /* VMLSL */
--                    {0, 0, 0, 7}, /* VQDMLSL */
--                    {0, 0, 0, 7}, /* Integer VMULL */
--                    {0, 0, 0, 7}, /* VQDMULL */
--                    {0, 0, 0, 0xa}, /* Polynomial VMULL */
--                    {0, 0, 0, 7}, /* Reserved: always UNDEF */
--                };
--
--                undefreq = neon_3reg_wide[op][3];
--
--                if ((undefreq & (1 << size)) ||
--                    ((undefreq & 8) && u)) {
--                    return 1;
--                }
--                if (rd & 1) {
--                    return 1;
--                }
--
--                /* Handle polynomial VMULL in a single pass.  */
--                if (op == 14) {
--                    if (size == 0) {
--                        /* VMULL.P8 */
--                        tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, 16, 16,
--                                           0, gen_helper_neon_pmull_h);
--                    } else {
--                        /* VMULL.P64 */
--                        if (!dc_isar_feature(aa32_pmull, s)) {
--                            return 1;
--                        }
--                        tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, 16, 16,
--                                           0, gen_helper_gvec_pmull_q);
--                    }
--                    return 0;
--                }
--                abort(); /* all others handled by decodetree */
-+                /* Three registers of different lengths: handled by decodetree */
-+                return 1;
-             } else {
-                 /* Two registers and a scalar. NB that for ops of this form
-                  * the ARM ARM labels bit 24 as Q, but it is in our variable
--- 
-2.20.1
+> I had a look and they appear good to me. Note that I'm less in to the
+> gory details of Qemu than some of our other reviewers, so you should
+> seek  a more detailed review from someone else.
+>
+> I look forward further support so I can test the OpenBMC kernel
+> against Nuvoton boards in the same way as the Aspeed ones.
+>
 
+Great to hear that, and thanks for your review. I hope to post an updated
+patchset soon.
+
+Havard
+
+--0000000000003111c905a7a95405
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">On Mon, Jun 8, 2020 at 6:39 PM Joel Stanl=
+ey &lt;<a href=3D"mailto:joel@jms.id.au" target=3D"_blank" class=3D"cremed"=
+>joel@jms.id.au</a>&gt; wrote:</div><div class=3D"gmail_quote"><blockquote =
+class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
+id rgb(204,204,204);padding-left:1ex">
+I had a look and they appear good to me. Note that I&#39;m less in to the<b=
+r>
+gory details of Qemu than some of our other reviewers, so you should<br>
+seek=C2=A0 a more detailed review from someone else.<br>
+<br>
+I look forward further support so I can test the OpenBMC kernel<br>
+against Nuvoton boards in the same way as the Aspeed ones.<br></blockquote>=
+<div><br></div><div>Great to hear that, and thanks for your review. I hope =
+to post an updated patchset soon.</div><div><br></div><div>Havard</div></di=
+v></div>
+
+--0000000000003111c905a7a95405--

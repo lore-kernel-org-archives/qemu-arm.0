@@ -1,69 +1,116 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp695950lfc;
-        Tue, 9 Jun 2020 10:20:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxHkNC8qBzqBMngHuCBme7+h6a4vKrkkTCOkJugln3pN8YfdUeJ1WrKcHNpts2IBNhD4sBr
-X-Received: by 2002:a25:dfcc:: with SMTP id w195mr8543046ybg.372.1591723210969;
-        Tue, 09 Jun 2020 10:20:10 -0700 (PDT)
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp707957lfc;
+        Tue, 9 Jun 2020 10:34:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy/i8VEI4C+SGYcTqrcEJknAls6UlNYwOXNB37kKZWTfcjgmRN1NI0e3CSRyAnXYpTGYa4Q
+X-Received: by 2002:a5b:282:: with SMTP id x2mr8149265ybl.304.1591724085417;
+        Tue, 09 Jun 2020 10:34:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591724085; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Svb8HAFC5Vwwm0b7eeh2ZgobKBKsViKBrgv4278ZHo0egbDJ+9mJ1VjbhudctOvgMf
+         1l242JiuBdX7b4xaZ+AsXV29U1OW3K323ldo5PwiVuucJuVtklnsfVSOSHNfQeuqWCjL
+         scQ1/Sh2LeffJpucOSMxddQSURbHvfJanWXcfH/Blq7fHee85hX9/GDlmcQF0DBo3U3W
+         IYE46WnrICq2ABD5RokCvl0ILCZ1J4ZCU/o3cyWyYmD1T27I77lx3vqIliTTXLDD7G5s
+         s85YU6M3as9sL48fgNB6YA74azc7DGE7gqWbAPkwXb8Bz9ZJLqdsQBpxquq3rIcfWVxb
+         XbhQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Y1hvilM3ehM1O7SDVC1CgZ+cyVVAOKi+IJQuYCb5ono=;
+        b=WgOJrsRo7ZsqHbB1UptvKqaXi+rGsBeg6LAbm8L6cZlBPxrNb3rk/Pyccz7unqyx4H
+         lhTgePkLL54oMe8ESbY/aeqT9ddCUFhzHs4/67KcA+K2FL8JBblHHjG7KvU4HlSU6JQB
+         4Af3iQRg+8IzGkT4KzbjZrFcel5Ko9qq9K/iWPvAMtvucUbPZHkcf2kYNhdH0XZaXtou
+         XrF/6RcSek7FQcyuSTuHZ79fvjx3Cdls3t/R4DnwODSDdop5koG2P5MT6q8/nhvknZUf
+         FsVjtwAeH2WB2GgalVFOP4N2W60YtZrYSWu1/AblXCPP4xH7iuNuvMJvwjmQsBekHLgd
+         pxVw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MQHPWlgk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j128si3345618yba.336.2020.06.09.10.20.10
+        by mx.google.com with ESMTPS id x6si3051251ybg.57.2020.06.09.10.34.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 10:20:10 -0700 (PDT)
+        Tue, 09 Jun 2020 10:34:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33120 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=MQHPWlgk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54148 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jihv0-0003k0-6b
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 13:20:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51520)
+	id 1jii95-00084e-Ln
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 13:34:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52478)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jihcx-0002em-Of; Tue, 09 Jun 2020 13:01:32 -0400
-Resent-Date: Tue, 09 Jun 2020 13:01:31 -0400
-Resent-Message-Id: <E1jihcx-0002em-Of@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21322)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jihcv-0007JQ-0y; Tue, 09 Jun 2020 13:01:31 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1591722081; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=UabmRSLjBlo7kbJNmq041seskSQx0OvTnNqttlu0fZs+to7R1Fl87YnTAtQXquRbtCJC7KLpvdoWPG3OMHeHoDKWVkpmQDvLc98R7etpZH5L+F5PPuxGi+6avQKnUKPS4VUQDFciS7cbWmXIDfK2OjbR+V1E8/+H6rKahgA02EA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1591722081;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=T55iqwWLwAOkUSam/TL4c1maX0+pzjaq06YfNoH9yhY=; 
- b=WopGaLD7WXa4kuwGpA0w2pV4Q/w7JJv3yJDTcDZmo4vtjGOFhlKuMZwH4pynhohkBh9yspWdDIIHOQWXUeR6Szr6DDDLZuz0BJe7PHjbr+Zb3AkFyeEnqLlLlUhA3TvTH7G/CYlnUfgma/nVNwVrD0E7erYm0UE1DzmCwnXa9ds=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1591722074868404.79773504161847;
- Tue, 9 Jun 2020 10:01:14 -0700 (PDT)
-Message-ID: <159172207378.16186.436420331473946030@45ef0f9c86ae>
-In-Reply-To: <20200609160209.29960-1-peter.maydell@linaro.org>
-Subject: Re: [PATCH 0/7] target/arm: Convert Neon 3-reg-diff to decodetree
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jihkv-0006xM-6q
+ for qemu-devel@nongnu.org; Tue, 09 Jun 2020 13:09:45 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:39405)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jihku-0000DG-23
+ for qemu-devel@nongnu.org; Tue, 09 Jun 2020 13:09:44 -0400
+Received: by mail-pl1-x642.google.com with SMTP id v24so8276955plo.6
+ for <qemu-devel@nongnu.org>; Tue, 09 Jun 2020 10:09:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=Y1hvilM3ehM1O7SDVC1CgZ+cyVVAOKi+IJQuYCb5ono=;
+ b=MQHPWlgk9QVf9bLJr0b517ZFhLMXtjgbE+yD+teVWxsByNmNVO3sd7B5JeylRRYXXf
+ K/e6CXHSsM4Dw5Wyp0sOqmgV26Pbv2nGgNO7sNUG/gd1ygBdKITbT+XRpGHI7DxSUh+B
+ GfS2xC69wwqtvCnpuJ/uUxujA9h6O7IoZumGKIWq12vmLGJgj0/hQqVhWr51yXaBf7J/
+ RFi0c/j0chbs8GdWSTPrgTD4VI74TMQh9ehIF7PS6RP9kZll+5sfAk6Ja18N7r/9DMjY
+ E0PfgmCqm2W4m9cTBNMk/ElO2eouz2MuPr3Dw40xincSQFht3haSIVFBUQV3Yzk1EuWK
+ I5Jw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Y1hvilM3ehM1O7SDVC1CgZ+cyVVAOKi+IJQuYCb5ono=;
+ b=DmYDbg9iuzE8juhMLC+hUAO7sYALGK2G3xumwI5ufENasrwxM/anfxkTjCOsXrvRKO
+ +q9uhe8SGiHuQH5VeecXjYpuGFcK6+4c7/pI141drb7TwOEIHD0beUSo9m1F2HlW0cU2
+ YoIB5sc1Zr1BfB04jN272ThwMpG+oc2gUkd1OB1s93lvC1J4wKwqhUey2hCgF8fxdM6i
+ Fxow8sYZU5fD7IZtgCGBE341WUvzLsrnXTZVZMreXFwogwQNUJIuMAm/tYbYNsOijkKA
+ psiLlv1hOVXFOuOFYHuZfyt3cwqnRvaZWCBKM/2vIqs4WlkZqmes74hM87p6XjuT04Bt
+ /3mQ==
+X-Gm-Message-State: AOAM533PGxePZ8Sqwa34BZW4EWIoUTpw+0IQSZ4tYujJqKJSzrd7kYIE
+ UupUFomYss09m4hQyDZMc+m4cpRyr8o=
+X-Received: by 2002:a17:90a:ad03:: with SMTP id
+ r3mr6002420pjq.104.1591722582203; 
+ Tue, 09 Jun 2020 10:09:42 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
+ by smtp.gmail.com with ESMTPSA id w18sm10582175pfq.121.2020.06.09.10.09.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Jun 2020 10:09:41 -0700 (PDT)
+Subject: Re: [PATCH 1/7] target/arm: Fix missing temp frees in do_vshll_2sh
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200609160209.29960-1-peter.maydell@linaro.org>
+ <20200609160209.29960-2-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <4cfdc2ae-4766-841c-5fe8-1b7c09ccbb34@linaro.org>
+Date: Tue, 9 Jun 2020 10:09:39 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: peter.maydell@linaro.org
-Date: Tue, 9 Jun 2020 10:01:14 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 13:01:26
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200609160209.29960-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,47 +123,44 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, richard.henderson@linaro.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C5KltuTULt7b
+X-TUID: fmFsS1a9jjSH
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDYwOTE2MDIwOS4yOTk2
-MC0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQg
-dGhlIGRvY2tlci1xdWlja0BjZW50b3M3IGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0
-aW5nIGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBp
-bnN0YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVT
-VCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCm1ha2UgZG9ja2VyLWltYWdlLWNlbnRvczcg
-Vj0xIE5FVFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNyBTSE9XX0VO
-Vj0xIEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgogIENDICAgICAgYWFy
-Y2g2NC1zb2Z0bW11L3RhcmdldC9hcm0vcGF1dGhfaGVscGVyLm8KICBHRU4gICAgIHRyYWNlL2dl
-bmVyYXRlZC1oZWxwZXJzLmMKICBDQyAgICAgIGFhcmNoNjQtc29mdG1tdS90cmFjZS9jb250cm9s
-LXRhcmdldC5vCi90bXAvcWVtdS10ZXN0L3NyYy90YXJnZXQvYXJtL25lb24tZHAuZGVjb2RlOjQx
-OTogZXJyb3I6ICgnZGVmaW5pdGlvbiBoYXMgMCBiaXRzJywpCm1ha2VbMV06ICoqKiBbdGFyZ2V0
-L2FybS9kZWNvZGUtbmVvbi1kcC5pbmMuY10gRXJyb3IgMQptYWtlWzFdOiAqKiogV2FpdGluZyBm
-b3IgdW5maW5pc2hlZCBqb2JzLi4uLgptYWtlOiAqKiogW2FhcmNoNjQtc29mdG1tdS9hbGxdIEVy
-cm9yIDIKVHJhY2ViYWNrIChtb3N0IHJlY2VudCBjYWxsIGxhc3QpOgogIEZpbGUgIi4vdGVzdHMv
-ZG9ja2VyL2RvY2tlci5weSIsIGxpbmUgNjY1LCBpbiA8bW9kdWxlPgogICAgc3lzLmV4aXQobWFp
-bigpKQotLS0KICAgIHJhaXNlIENhbGxlZFByb2Nlc3NFcnJvcihyZXRjb2RlLCBjbWQpCnN1YnBy
-b2Nlc3MuQ2FsbGVkUHJvY2Vzc0Vycm9yOiBDb21tYW5kICdbJ3N1ZG8nLCAnLW4nLCAnZG9ja2Vy
-JywgJ3J1bicsICctLWxhYmVsJywgJ2NvbS5xZW11Lmluc3RhbmNlLnV1aWQ9NDQ5MDhhMjBhYjM5
-NDA0YWFjZjViODY0MGY2Yzc4MWUnLCAnLXUnLCAnMTAwMycsICctLXNlY3VyaXR5LW9wdCcsICdz
-ZWNjb21wPXVuY29uZmluZWQnLCAnLS1ybScsICctZScsICdUQVJHRVRfTElTVD0nLCAnLWUnLCAn
-RVhUUkFfQ09ORklHVVJFX09QVFM9JywgJy1lJywgJ1Y9JywgJy1lJywgJ0o9MTQnLCAnLWUnLCAn
-REVCVUc9JywgJy1lJywgJ1NIT1dfRU5WPTEnLCAnLWUnLCAnQ0NBQ0hFX0RJUj0vdmFyL3RtcC9j
-Y2FjaGUnLCAnLXYnLCAnL2hvbWUvcGF0Y2hldzIvLmNhY2hlL3FlbXUtZG9ja2VyLWNjYWNoZTov
-dmFyL3RtcC9jY2FjaGU6eicsICctdicsICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtb25w
-b3ZhcTUvc3JjL2RvY2tlci1zcmMuMjAyMC0wNi0wOS0xMi41Ny41OS4zMDYwNzovdmFyL3RtcC9x
-ZW11Onoscm8nLCAncWVtdTpjZW50b3M3JywgJy92YXIvdG1wL3FlbXUvcnVuJywgJ3Rlc3QtcXVp
-Y2snXScgcmV0dXJuZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4KZmlsdGVyPS0tZmlsdGVyPWxh
-YmVsPWNvbS5xZW11Lmluc3RhbmNlLnV1aWQ9NDQ5MDhhMjBhYjM5NDA0YWFjZjViODY0MGY2Yzc4
-MWUKbWFrZVsxXTogKioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcgZGly
-ZWN0b3J5IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtb25wb3ZhcTUvc3JjJwptYWtlOiAq
-KiogW2RvY2tlci1ydW4tdGVzdC1xdWlja0BjZW50b3M3XSBFcnJvciAyCgpyZWFsICAgIDNtMTUu
-Mjk1cwp1c2VyICAgIDBtOC41MzhzCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRw
-Oi8vcGF0Y2hldy5vcmcvbG9ncy8yMDIwMDYwOTE2MDIwOS4yOTk2MC0xLXBldGVyLm1heWRlbGxA
-bGluYXJvLm9yZy90ZXN0aW5nLmRvY2tlci1xdWlja0BjZW50b3M3Lz90eXBlPW1lc3NhZ2UuCi0t
-LQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNo
-ZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRo
-YXQuY29t
+On 6/9/20 9:02 AM, Peter Maydell wrote:
+> The widenfn() in do_vshll_2sh() does not free the input 32-bit
+> TCGv, so we need to do this in the calling code.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~
+
+> ---
+>  target/arm/translate-neon.inc.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/target/arm/translate-neon.inc.c b/target/arm/translate-neon.inc.c
+> index 664d3612607..299a61f067b 100644
+> --- a/target/arm/translate-neon.inc.c
+> +++ b/target/arm/translate-neon.inc.c
+> @@ -1624,6 +1624,7 @@ static bool do_vshll_2sh(DisasContext *s, arg_2reg_shift *a,
+>      tmp = tcg_temp_new_i64();
+>  
+>      widenfn(tmp, rm0);
+> +    tcg_temp_free_i32(rm0);
+>      if (a->shift != 0) {
+>          tcg_gen_shli_i64(tmp, tmp, a->shift);
+>          tcg_gen_andi_i64(tmp, tmp, ~widen_mask);
+> @@ -1631,6 +1632,7 @@ static bool do_vshll_2sh(DisasContext *s, arg_2reg_shift *a,
+>      neon_store_reg64(tmp, a->vd);
+>  
+>      widenfn(tmp, rm1);
+> +    tcg_temp_free_i32(rm1);
+>      if (a->shift != 0) {
+>          tcg_gen_shli_i64(tmp, tmp, a->shift);
+>          tcg_gen_andi_i64(tmp, tmp, ~widen_mask);
+> 
+

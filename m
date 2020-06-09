@@ -1,90 +1,118 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp239145lfc;
-        Tue, 9 Jun 2020 00:31:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzmijzaPkbziiCT5V2WSlMlBRr2Jy7HLyZ5Y+NPxTaIqvjzAxK3OWj5r7N04cy6Xy9NxdwK
-X-Received: by 2002:a25:d354:: with SMTP id e81mr4492969ybf.398.1591687888555;
-        Tue, 09 Jun 2020 00:31:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591687888; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp245891lfc;
+        Tue, 9 Jun 2020 00:42:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxgy3pTq/ob2Kfno6JQ/ueCXYGQITFjLvwDwuH3eesSoxANX3mN1gbOOtO5rRgTngOVwYNM
+X-Received: by 2002:a25:d489:: with SMTP id m131mr2823855ybf.204.1591688554037;
+        Tue, 09 Jun 2020 00:42:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591688554; cv=none;
         d=google.com; s=arc-20160816;
-        b=P9t5IEfuN9rh3+OkAktxdZ3/p1p8D8DrjFFr/t/QtNwWWkcVlF9MkxyaqtPHXpKIIH
-         nzHgSqaYc6DHhjJ2Sftp1cUxVfZUl4yDuYQ9YUf9Li91zYWtQy8lcE+TFsRj7hjCgQVX
-         qWeh/EMtLc2hixjsB+7yDb1SltFcJcKj/MmGGDpIgWLaqAW57l3Dedu5NOzDStkbHefy
-         KCdksZrlorzJ3VcS96EzgblinpG2TRkFHqGiUA1Rf/LGQWG1kw1U22Ijvlr+/WsXzuR5
-         R/qom+nMcYyKtFIYp1DZrD+tSdZsYBbn5qHrgjgXQv5vuk6K+Y4KEoRDlUT/8GOoELjz
-         FOuA==
+        b=UhmvSiGraNhMcWOePldOecp7nPFbR0IAybXn/oZwBYqQk4Tq2tBBxLBMNIjXBvulP/
+         tACGtohlikCOmg0EJwunCsFbg/x/fqSbaQKmQTEKeXZt0tNVX7IXfYKFfXfcm6G+caZC
+         L+ZRZwbPUQkNyNIRIqGnTj8HPGa9CqE2xrCfx9i6siebwa54JeaOhmB9wHv2i8F8kTlI
+         IAf6l/P29G2rJXlHRAyjyrRKxTDbfBLHTpF55E+eqLm2gLMBZXHioP7Odvt3YQnQn4sQ
+         D5Rm81Y2tFeAChOlmxve2LWSjsKgb2a0QRJJJrlnt78/muGXiYMlqBFbbrhUYSXFNYn9
+         e3uQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=BJMSx5i856FwYZZfxk4qwrImE/FNf4HM/U4BcRr36sE=;
-        b=Hn1ifySErv1EVxllKaZZ5VTlfIRhPD8stOUX+e44W2FfmI07/hGqOfGvwiLrhZ48wL
-         Ip24G4gNKFSPNx+NlOCeNuvOXiFh3aNJmQrLhJfcDWgdqdrGlsMCyLGYsSvMdUB6FqE9
-         N5GbeBjQeeSQizxpBFhKyl3XOzSuKqwYmVBdpugM2+oyGsoA2YcVfv7NhcgFTLALEMlM
-         sK9VzfJyrPKABTGtQ/Ae6Qiz+V5hzL6czfERInDAk4OuL1x3nypM/LK8UEdZyP0m4rSJ
-         CTap55ig3q4A6rXMV4yWZiCtoE8x+B+AnJvxXAJU7O+BtcxVe3OECkA6wYbM9jMYdQga
-         3T/g==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=FjQKd7DqIqJWbaTyIFT4KcmgiVR0pp9EmiIfsTPjyYo=;
+        b=pPU+r4O8GRhzJC5PnjriRs1YfQRSjivwGIvp8iBtBmVci7voJqrE61D5Q8z4hAf98O
+         Sh8lM1jAtKLiRRFRuFTlalhhPPmGkqxzqlFlsBUOS95O2/HpM9lGBBzI9JPZke3DU2CZ
+         V8m7g4tN4pF9jrvHCNBLbpx3gR7L6XpylkEBlhnxIdZ7w89Z6CjOawFofLFii1FM7YoY
+         p5Inczwq7Y7wQAKzEgskLDJGcghvEse1tz4hgFdifL/5Y8L3iI2/HaF2AhjWMEAjwrG0
+         rkiSgaSLm3NLmDVycsLSPTe7hs0ZK/nXv7Gu2FOyr5mfri+caYkKRwbFTHPzqjJGTiA8
+         V2Yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="T6/y6B41";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l7si2035704ybb.38.2020.06.09.00.31.28
+        by mx.google.com with ESMTPS id s88si2263176ybi.345.2020.06.09.00.42.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 00:31:28 -0700 (PDT)
+        Tue, 09 Jun 2020 00:42:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44246 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="T6/y6B41";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:55444 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiYjH-0003AJ-Rg
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 03:31:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40250)
+	id 1jiYu1-0002kL-7T
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 03:42:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41252)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jiYj7-00038Q-Jk
- for qemu-arm@nongnu.org; Tue, 09 Jun 2020 03:31:17 -0400
-Received: from 13.mo5.mail-out.ovh.net ([87.98.182.191]:48774)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jiYj6-0007R5-Jz
- for qemu-arm@nongnu.org; Tue, 09 Jun 2020 03:31:17 -0400
-Received: from player693.ha.ovh.net (unknown [10.108.42.168])
- by mo5.mail-out.ovh.net (Postfix) with ESMTP id 54EB12868FE
- for <qemu-arm@nongnu.org>; Tue,  9 Jun 2020 09:31:14 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player693.ha.ovh.net (Postfix) with ESMTPSA id A61BA13235E02;
- Tue,  9 Jun 2020 07:31:08 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-98R0026a7e6e3a-5b68-47f5-9b1a-dd91ac6d90a4,2CE69A6D3B62F9BF35ECE14C7D737F520D542DA8)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH 0/6] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC machines
-To: Havard Skinnemoen <hskinnemoen@google.com>, peter.maydell@linaro.org
-References: <20200521192133.127559-1-hskinnemoen@google.com>
- <CAFQmdRYYhoWu7q350n0vNOE+pesp-UG975v1f1Yjwf9Ao0mjcg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <60521645-6e85-cc59-7048-94db9634ad0a@kaod.org>
-Date: Tue, 9 Jun 2020 09:31:08 +0200
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jiYtq-0002hb-42; Tue, 09 Jun 2020 03:42:22 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:33227)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jiYtp-0000cA-6p; Tue, 09 Jun 2020 03:42:21 -0400
+Received: by mail-wr1-x443.google.com with SMTP id l11so20109036wru.0;
+ Tue, 09 Jun 2020 00:42:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=FjQKd7DqIqJWbaTyIFT4KcmgiVR0pp9EmiIfsTPjyYo=;
+ b=T6/y6B41JPOvxeS9Pt8gW6bAGDBVrNAs6Az8s3Famdps8f6HwnHo+qHKI9zMvKk5DB
+ zSuB8TlSmDZjgHLTEP1zA+d/DJjTO8ZgGh41Phi8cOprtZzj3KpPoGHFkh/LVK+9/5ye
+ hCXJL+6ogHfRwBSHGWSScfYrVEfub/l6C29bMggnZeeho97qR+V2f/s01bar8+dwEicV
+ oYwg2awybQblRXpSx4363k+uBTXpYDrLRiVeVCruCj+ThMuddx8Oh8zQgrsRML7rPRE/
+ NsJpIwbUZ+jAhyRY0Q/mlUWfaLNyxThh40FnlY/4gMNdhLfWA2wFa7+WFaVPwpIALfL/
+ h7TQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=FjQKd7DqIqJWbaTyIFT4KcmgiVR0pp9EmiIfsTPjyYo=;
+ b=uJEErBmXpFV0/Ap/PvJoMBZBAQSMIiA7G+KzeqLrjSyBnv+NdW0y8/mpDH+AndBnzq
+ +3E7kfT0GRmNohsN55Fo2dMnDDRyRe3YXOJ/J3dwbARCAtbY28X4BPC5bc7SvRGZw/wQ
+ j43RlU4Sdy7uyVq6dEA1BQOnavTjHW9DMRNjddvPTvpRgcfUa28Ww2tOQkv1R5Swkj+H
+ e3xm5mlUcXh+XpNoXh3llWVJqnL0eRMBE7ubRKpDKDZ1IhUwUUfm5KMXwp84jF+7HZ0Z
+ pki9ijPJi4aJooJ7jbezzYAwlgI48Y2QtKZpXZesoOpf29IbodqUwcieU/bEUJMgZM37
+ pQmw==
+X-Gm-Message-State: AOAM532pWikqLjl/ax47O2QtdtUZcZoSrsh0/zKHcqQbpHxTN8m5TsSd
+ t/cUs6EE/qllH4G2JC1r68Y=
+X-Received: by 2002:adf:9205:: with SMTP id 5mr2799942wrj.232.1591688538853;
+ Tue, 09 Jun 2020 00:42:18 -0700 (PDT)
+Received: from [192.168.1.38] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id x186sm2010030wmg.8.2020.06.09.00.42.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Jun 2020 00:42:18 -0700 (PDT)
+Subject: Re: [PATCH v2 02/24] display/xlnx_dp: Fix to realize "i2c-ddc" and
+ "aux-to-i2c-bridge"
+To: Markus Armbruster <armbru@redhat.com>
+References: <20200528110444.20456-1-armbru@redhat.com>
+ <20200528110444.20456-3-armbru@redhat.com>
+ <a64bd91c-58b5-1438-a401-5d6c04441c67@amsat.org>
+ <87tuzkssri.fsf@dusky.pond.sub.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <18c2da69-7d2b-59cb-619f-0f2d06cdedf4@amsat.org>
+Date: Tue, 9 Jun 2020 09:42:17 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <CAFQmdRYYhoWu7q350n0vNOE+pesp-UG975v1f1Yjwf9Ao0mjcg@mail.gmail.com>
+In-Reply-To: <87tuzkssri.fsf@dusky.pond.sub.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 4233946601796635561
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudehfedguddvfecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhephfffgeelfeejudevuedvvdeigeduteetveffhfffudeggfegleeljeeuieefuedvnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrieelfedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=87.98.182.191; envelope-from=clg@kaod.org;
- helo=13.mo5.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 03:31:14
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,29 +125,83 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: CS20 KFTing <kfting@nuvoton.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
+ ehabkost@redhat.com, Alistair Francis <alistair@alistair23.me>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, pbonzini@redhat.com,
+ KONRAD Frederic <fred.konrad@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YPxXp2e/f3x7
+X-TUID: oJt8E+9JCQuZ
 
-On 6/9/20 12:14 AM, Havard Skinnemoen wrote:
-> On Thu, May 21, 2020 at 12:21 PM Havard Skinnemoen <hskinnemoen@google.com <mailto:hskinnemoen@google.com>> wrote:
+On 6/9/20 7:38 AM, Markus Armbruster wrote:
+> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
 > 
->     This patch series models enough of the Nuvoton NPCM730 and NPCM750 SoCs to boot
->     a minimal Linux kernel. This includes device models for:
+>> On 5/28/20 1:04 PM, Markus Armbruster wrote:
+>>> xlnx_dp_init() creates these two devices, but they're never realized.
+>>> Affects machine xlnx-zcu102.
+>>>
+>>> In theory, a device becomes real only on realize.  In practice, the
+>>> transition from unreal to real is a fuzzy one.  The work to make a
+>>> device real can be spread between realize methods (fine),
+>>> instance_init methods (wrong), and board code wiring up the device
+>>> (fine as long as it effectively happens on realize).  Depending on
+>>> what exactly is done where, a device can work even when we neglect to
+>>> realize it.
+>>>
+>>> These two appear to work.  Nevertheless, it's a clear misuse of the
+>>> interface.  Even when it works today (more or less by chance), it can
+>>> break tomorrow.
+>>>
+>>> Fix by realizing them in xlnx_dp_realize().
+>>>
+>>> Fixes: 58ac482a66de09a7590f705e53fc6a3fb8a055e8
+>>> Cc: KONRAD Frederic <fred.konrad@greensocs.com>
+>>> Cc: Alistair Francis <alistair@alistair23.me>
+>>> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+>>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>>> Cc: qemu-arm@nongnu.org
+>>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>>> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+>>> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+>>> ---
+>>>  hw/display/xlnx_dp.c | 4 ++++
+>>>  1 file changed, 4 insertions(+)
+>>>
+>>> diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+>>> index 3e5fb44e06..bdc229a51e 100644
+>>> --- a/hw/display/xlnx_dp.c
+>>> +++ b/hw/display/xlnx_dp.c
+>>> @@ -1264,9 +1264,13 @@ static void xlnx_dp_realize(DeviceState *dev, Error **errp)
+>>>      DisplaySurface *surface;
+>>>      struct audsettings as;
+>>>  
+>>> +    qdev_init_nofail(DEVICE(s->aux_bus->bridge));
+>>
+>> Eh??? Why not realize the bridge in aux_init_bus()?
+> 
+> Because then aux_init_bus() is no longer "init", but "init and realize".
+> Instead: "[PATCH v2 32/58] auxbus: New aux_bus_realize(), pairing with
+> aux_bus_init()".  Okay?
+
+It would be easier to follow having aux_bus_realize() introduced first,
+then used it directly here. Anyway it is reviewed so I don't have a
+problem if this patch goes as it. Thanks.
+
+> 
+>>> +
+>>>      qdev_init_nofail(DEVICE(s->dpcd));
+>>>      aux_map_slave(AUX_SLAVE(s->dpcd), 0x0000);
+>>>  
+>>> +    qdev_init_nofail(DEVICE(s->edid));
+>>
+>> This one is OK.
+>>
+>>> +
+>>>      s->console = graphic_console_init(dev, 0, &xlnx_dp_gfx_ops, s);
+>>>      surface = qemu_console_surface(s->console);
+>>>      xlnx_dpdma_set_host_data_location(s->dpdma, DP_GRAPHIC_DMA_CHANNEL,
+>>>
 > 
 > 
-> Does anyone have comments on this series? I'm currently finishing up a second patch series that adds flash support and a few other things so qemu can boot a full OpenBMC flash image built for npcm7xx.
-> 
-> If you prefer, I can combine them both into one series and send it to the list.
-
-The first series was nicely presented I think, but you can extend it in v2.
-Documentation needs an update in :
-
-  docs/system/target-arm.rst
-
-Thanks,
-
-C.
-

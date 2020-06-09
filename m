@@ -1,88 +1,88 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp435614lfc;
-        Tue, 9 Jun 2020 05:26:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylVD9haMB5Q1Vg+XjI85gZZrGlipsUeXKJKTZyRu2qZxBeCjLNG8ayHUULAIZUdPUhkC4T
-X-Received: by 2002:a05:6902:1006:: with SMTP id w6mr6291004ybt.411.1591705565144;
-        Tue, 09 Jun 2020 05:26:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591705565; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp446405lfc;
+        Tue, 9 Jun 2020 05:38:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzfts/UHyE33VEfHP84T4aT9VOQnyY33rgcbRmw2VkAxhQtOm8TUwQgEaYVmnjb+1sMxZ2S
+X-Received: by 2002:a25:b882:: with SMTP id w2mr6098500ybj.160.1591706329254;
+        Tue, 09 Jun 2020 05:38:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591706329; cv=none;
         d=google.com; s=arc-20160816;
-        b=tmuUr323hWmsx39zKig4h8bG3mS/w7APaY7sNec5O+8eYo8X6gtxJNuButPZPe228K
-         yl1Ljg1Kg8pd/WwSY33R/gsHEaityp+YbYrUCyRgBzJnizh+v5FgBb2UFrbmHbQMsCw/
-         Vcz1bjUF+aingNnLYeD8uGHO411czLnXjntlTRUfZfWIDmqUgQs2xIYdm/RKrPx16+Ht
-         17ao5PYGr8X7B9i+kK24UbVtJg8wsGOwYxgl79T9PAbkhowBfkGP8W3vf74PAvRCPvkN
-         bOImyOu7sfXYiaV95n4lhjMMHRU++yTkZztO0jxbaa/cOfGb+LRE182BaEQZNjjxhWXN
-         lOnA==
+        b=UqfhDIgQQroOjBzyLPF6+UlcEAC1JhPLSN2XiLqm5oxve+R56fZETbXaID4jVt032R
+         YuK61ZDRsuNPrgnEN6OYC1r5uN00uf3i4Spx/nvLvN66ALf8S1Qo7vSeoCGjVW0UeLsJ
+         wFehMrRZKRnetUNYs4FVlh1ft7Z/VkS+J98cHl5/+wL4izUrSJUk6tLiFcAOvyQbaHLo
+         cVCaXuew3ptlsFI9SaYVDy8oheO8rmcd7YHJlZ2I1M0fZlr8ZWjVTGjpuHAwqw1VVoS5
+         h81YafZXdGzh9xLgCEak2BgOomxNbGS6OZAng8zOxEqREXL2l52/paeGdTzO1feqVVIR
+         k4Yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=a97wbzF8rIGQsC0Rq9NAGUWNPSYKmS8gW+odfXBMS+w=;
-        b=a3Kme4pMB6XQMEpSF9wxFTX4XQ80WNWgqgxt5VPRgCPhR4JQPM0w7lAJhbIClLIp9m
-         UIuM8xMmdoDaTX/Df4mKkeq7vQX/X3+s4l7m77ODUMVxE/HYkLhgt3Sm7JpP+bOKnb1w
-         CJzyIgcdO6krYK0bVhgt7F8t2nouPmUiLcBdZ5DBMB7zY7JqIewDQK7fPGuMmFLU4T5f
-         yIPpyCrw/owbsMmuBrF8IqdktjIhPDWnIAN78VtvN7SqTGOcHjpNtAgCvZgSdzNnSXkL
-         ICJxWbTfrhvoQAEaCn3tqSDD7W/2D3oeRPOEPsGLgDqS3a0yfveuHt+spx7c9qNF7HIm
-         kOVw==
+        bh=EIDCMln9RmpF1Ls7UOJGokyRuJGaYDq2TNKmskxzmO0=;
+        b=dM+RB9VYEt0lLdI4+vvzXz/PhzNJql//iElkgT0gCV832OJnSIsSNolD56Lzrz+TL6
+         rBtb7AltRcigD8oRGXKegyWvepj7oQDVMB6UubZbktzVB0O2It2V3hwHkkZuDnS7oUd8
+         +nYpo+MV0uaUM3z/RylvNr84foj/xB+nilAw7uqX0GN7Ts6c2+Rle+xtUVAZZGXbvm0F
+         tbtdL19RIbdsLTD2pw2LlXbu3aX9Fdl2NKNj1yjWVfawZljU2N6NLhsY0vFQVtfG4DN9
+         I5uTJJd3Ftdw7y2/7lKEFPsZ/wNtO9mqYrH/5aFgJVuO4WFZNwtWGOhTvRZ46er4Vafz
+         3nxA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=INDEYzPg;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RyGIOJEv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 138si2501609ybl.366.2020.06.09.05.26.04
+        by mx.google.com with ESMTPS id l135si2632934ybf.80.2020.06.09.05.38.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 05:26:05 -0700 (PDT)
+        Tue, 09 Jun 2020 05:38:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=INDEYzPg;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RyGIOJEv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59528 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46570 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jidKO-000550-Bz
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 08:26:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41562)
+	id 1jidWi-0006QG-KN
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 08:38:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41710)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jidIG-0003Eb-Nu
- for qemu-devel@nongnu.org; Tue, 09 Jun 2020 08:23:52 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:23408)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jidIO-0003X3-GP
+ for qemu-devel@nongnu.org; Tue, 09 Jun 2020 08:24:00 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:20906
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jidI9-0005Oo-K6
- for qemu-devel@nongnu.org; Tue, 09 Jun 2020 08:23:47 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jidIK-0005Su-F1
+ for qemu-devel@nongnu.org; Tue, 09 Jun 2020 08:24:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591705424;
+ s=mimecast20190719; t=1591705435;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=a97wbzF8rIGQsC0Rq9NAGUWNPSYKmS8gW+odfXBMS+w=;
- b=INDEYzPgGKrPVxYz9+bvs7fMAQsQwsa1TAKnb/uHw4vKj60GRh9voIeDdKUENrTCkQaKdt
- +mRWTa9qFJY9qIcv0kMEqreNXChWDicf9kOOw+770X7l05PdL41GEdN6vTIogXyjwQP/pQ
- jK2yaJBgn/rZza0ShpUofYkJuud5eLM=
+ bh=EIDCMln9RmpF1Ls7UOJGokyRuJGaYDq2TNKmskxzmO0=;
+ b=RyGIOJEvkK2ssx/TCT5R2VXMzAYqylUqg4ix+h2hvWWqGThE/VR4jKt9jbfz2Q02Fr/aX3
+ YqeH048YeiSHY1MHmxcdbAeWa1l4LDxxNkNKfTVxwqXOhYoI/DTzSJdNI97wbN4QRC+6r3
+ x4DIrgFgXAt0kPMlJdgbASzrMyaFv/U=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-15-etibD4K3PmCRkfkJYt8eow-1; Tue, 09 Jun 2020 08:23:42 -0400
-X-MC-Unique: etibD4K3PmCRkfkJYt8eow-1
+ us-mta-374-TV0zdXHrOgSJMdciF6Wd7Q-1; Tue, 09 Jun 2020 08:23:44 -0400
+X-MC-Unique: TV0zdXHrOgSJMdciF6Wd7Q-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 960EA805721;
- Tue,  9 Jun 2020 12:23:41 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 475F680B72E;
+ Tue,  9 Jun 2020 12:23:43 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
  [10.36.112.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 614AF5D9E4;
- Tue,  9 Jun 2020 12:23:41 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 15F335D9E4;
+ Tue,  9 Jun 2020 12:23:43 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id DCB7311385C2; Tue,  9 Jun 2020 14:23:39 +0200 (CEST)
+ id EEA6F1138539; Tue,  9 Jun 2020 14:23:39 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 01/24] arm/stm32f405: Fix realization of "stm32f2xx-adc"
- devices
-Date: Tue,  9 Jun 2020 14:23:16 +0200
-Message-Id: <20200609122339.937862-2-armbru@redhat.com>
+Subject: [PATCH v3 06/24] armv7m: Delete unused "ARM,bitband-memory" devices
+Date: Tue,  9 Jun 2020 14:23:21 +0200
+Message-Id: <20200609122339.937862-7-armbru@redhat.com>
 In-Reply-To: <20200609122339.937862-1-armbru@redhat.com>
 References: <20200609122339.937862-1-armbru@redhat.com>
 MIME-Version: 1.0
@@ -91,9 +91,9 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 23:42:34
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 02:41:53
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -115,113 +115,68 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
- ehabkost@redhat.com, Alistair Francis <alistair@alistair23.me>,
+ ehabkost@redhat.com,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-arm@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8Oj4EbXwi8KE
+X-TUID: n7oeKBrqN4SS
 
-stm32f405_soc_initfn() creates six such devices, but
-stm32f405_soc_realize() realizes only one.  Affects machine
-netduinoplus2.
+These devices are optional, and enabled by property "enable-bitband".
+armv7m_instance_init() creates them unconditionally, because the
+property has not been set then.  armv7m_realize() realizes them only
+when the property is true.  Works, although it leaves unrealized
+devices hanging around in the QOM composition tree.  Affects machines
+microbit, mps2-an505, mps2-an521, musca-a, and musca-b1.
 
-In theory, a device becomes real only on realize.  In practice, the
-transition from unreal to real is a fuzzy one.  The work to make a
-device real can be spread between realize methods (fine),
-instance_init methods (wrong), and board code wiring up the device
-(fine as long as it effectively happens on realize).  Depending on
-what exactly is done where, a device can work even when we neglect
-to realize it.
+Delete the unused devices by making armv7m_realize() unparent them.
+Visible in "info qom-tree"; here's the change for microbit:
 
-The five unrealized devices appear to stay unreal: neither MMIO nor
-IRQ get wired up.
+     /machine (microbit-machine)
+       /microbit.twi (microbit.i2c)
+         /microbit.twi[0] (qemu:memory-region)
+       /nrf51 (nrf51-soc)
+         /armv6m (armv7m)
+           /armv7m-container[0] (qemu:memory-region)
+    -      /bitband[0] (ARM,bitband-memory)
+    -        /bitband[0] (qemu:memory-region)
+    -      /bitband[1] (ARM,bitband-memory)
+    -        /bitband[0] (qemu:memory-region)
+           /cpu (cortex-m0-arm-cpu)
 
-Fix stm32f405_soc_realize() to realize and wire up all six.  Visible
-in "info qtree":
-
-     bus: main-system-bus
-       type System
-       dev: stm32f405-soc, id ""
-         cpu-type = "cortex-m4-arm-cpu"
-       dev: stm32f2xx-adc, id ""
-         gpio-out "sysbus-irq" 1
-    -    mmio ffffffffffffffff/00000000000000ff
-    +    mmio 0000000040012000/00000000000000ff
-       dev: stm32f2xx-adc, id ""
-         gpio-out "sysbus-irq" 1
-    -    mmio ffffffffffffffff/00000000000000ff
-    +    mmio 0000000040012100/00000000000000ff
-       dev: stm32f2xx-adc, id ""
-         gpio-out "sysbus-irq" 1
-    -    mmio ffffffffffffffff/00000000000000ff
-    +    mmio 0000000040012200/00000000000000ff
-       dev: stm32f2xx-adc, id ""
-         gpio-out "sysbus-irq" 1
-    -    mmio ffffffffffffffff/00000000000000ff
-    +    mmio 0000000040012300/00000000000000ff
-       dev: stm32f2xx-adc, id ""
-         gpio-out "sysbus-irq" 1
-    -    mmio 0000000040012000/00000000000000ff
-    +    mmio 0000000040012400/00000000000000ff
-       dev: stm32f2xx-adc, id ""
-         gpio-out "sysbus-irq" 1
-    -    mmio ffffffffffffffff/00000000000000ff
-    +    mmio 0000000040012500/00000000000000ff
-       dev: armv7m, id ""
-
-Fixes: 529fc5fd3e18ace8f739afd02dc0953354f39442
-Cc: Alistair Francis <alistair@alistair23.me>
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/arm/stm32f405_soc.c | 23 +++++++++++++----------
- 1 file changed, 13 insertions(+), 10 deletions(-)
+ hw/arm/armv7m.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
-index 4f10ce6176..c9a530eecf 100644
---- a/hw/arm/stm32f405_soc.c
-+++ b/hw/arm/stm32f405_soc.c
-@@ -37,7 +37,8 @@ static const uint32_t usart_addr[] = { 0x40011000, 0x40004400, 0x40004800,
- /* At the moment only Timer 2 to 5 are modelled */
- static const uint32_t timer_addr[] = { 0x40000000, 0x40000400,
-                                        0x40000800, 0x40000C00 };
--#define ADC_ADDR                       0x40012000
-+static const uint32_t adc_addr[] = { 0x40012000, 0x40012100, 0x40012200,
-+                                     0x40012300, 0x40012400, 0x40012500 };
- static const uint32_t spi_addr[] =   { 0x40013000, 0x40003800, 0x40003C00,
-                                        0x40013400, 0x40015000, 0x40015400 };
- #define EXTI_ADDR                      0x40013C00
-@@ -185,16 +186,18 @@ static void stm32f405_soc_realize(DeviceState *dev_soc, Error **errp)
-     qdev_connect_gpio_out(DEVICE(&s->adc_irqs), 0,
-                           qdev_get_gpio_in(armv7m, ADC_IRQ));
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index 7da57f56d3..f930619f53 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -245,8 +245,8 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+     memory_region_add_subregion(&s->container, 0xe000e000,
+                                 sysbus_mmio_get_region(sbd, 0));
  
--    dev = DEVICE(&(s->adc[i]));
--    object_property_set_bool(OBJECT(&s->adc[i]), true, "realized", &err);
--    if (err != NULL) {
--        error_propagate(errp, err);
--        return;
-+    for (i = 0; i < STM_NUM_ADCS; i++) {
-+        dev = DEVICE(&(s->adc[i]));
-+        object_property_set_bool(OBJECT(&s->adc[i]), true, "realized", &err);
-+        if (err != NULL) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+        busdev = SYS_BUS_DEVICE(dev);
-+        sysbus_mmio_map(busdev, 0, adc_addr[i]);
-+        sysbus_connect_irq(busdev, 0,
-+                           qdev_get_gpio_in(DEVICE(&s->adc_irqs), i));
+-    if (s->enable_bitband) {
+-        for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
++    for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
++        if (s->enable_bitband) {
+             Object *obj = OBJECT(&s->bitband[i]);
+             SysBusDevice *sbd = SYS_BUS_DEVICE(&s->bitband[i]);
+ 
+@@ -265,6 +265,8 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+ 
+             memory_region_add_subregion(&s->container, bitband_output_addr[i],
+                                         sysbus_mmio_get_region(sbd, 0));
++        } else {
++            object_unparent(OBJECT(&s->bitband[i]));
+         }
      }
--    busdev = SYS_BUS_DEVICE(dev);
--    sysbus_mmio_map(busdev, 0, ADC_ADDR);
--    sysbus_connect_irq(busdev, 0,
--                       qdev_get_gpio_in(DEVICE(&s->adc_irqs), i));
- 
-     /* SPI devices */
-     for (i = 0; i < STM_NUM_SPIS; i++) {
+ }
 -- 
 2.26.2
 

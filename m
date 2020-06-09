@@ -1,109 +1,142 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp460535lfc;
-        Tue, 9 Jun 2020 05:56:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxbxIEDZVCzRRTIh2uYAE2JfAUlTZdbCk/AmCKP+EC67X1tei+usuxYUUU2k7v7vgXNZ/SW
-X-Received: by 2002:a25:b88d:: with SMTP id w13mr6138754ybj.520.1591707396856;
-        Tue, 09 Jun 2020 05:56:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591707396; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp480377lfc;
+        Tue, 9 Jun 2020 06:16:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwjF4F1oPZlnYvv9cezphH2p+Z8BIoG4jK/cw6R8imd3e/mg8kIvjCj0DPtrwES5bCH5Kal
+X-Received: by 2002:a05:6902:72f:: with SMTP id l15mr7127568ybt.308.1591708578217;
+        Tue, 09 Jun 2020 06:16:18 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1591708578; cv=pass;
         d=google.com; s=arc-20160816;
-        b=TfRBGg1nnMroMbUkijUnp/iHLL57f88prq70bXWbNNfmOsON3nGBQBzghSUSJnHBun
-         7Srp620E6WekUrk70XJgLyjUuzbGo0a5s9V6FnUMXXcNqo+7JdSHj9URkNWTkwKh1ahH
-         ty6zBPS950vAdLO8K+MUj/yeDzwfi6a/P71JyBiF7st6xe7XqmxV7b3knG+Qdm1iAuVD
-         nk53hNN/j2+0aLcE2oIlbYb+PkL6GwW98PmBRHBmU5MkMAJGrzubeUJonDnM+PWHxPu6
-         yDaBswSdp63ZCtkkr/9r9kAZotVen4tKLwPuddbFN11IW2aEao1W6+yvztWt22qcpHcp
-         huGQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=Yd4LYrz9Lkzdb5gzqK7YHMmGIP/amugal+61e21LPPfxe/P5CD07LWlCHR/IVOs3kd
+         wdEahL0Wb1ghuAz2cfp00OUXdQ84rnDnual14edm4zonlsgafXCzkm1R8+GMyMcjyrX9
+         HFviPpLh7oVC8O85e++clhzIpWQi3BbqEolUOYiD7hIRIYN8fAgfZw0iqq1vBPwZFDOp
+         gv1CsVQPujNABEW1Wbads2uvwoNQlk7tpSNTThksOw+RHTUAhqh3AMIw0SlGxGcTUozS
+         CAneyhaL5L8AVz/OfwlFnyO7plT5S+xtOb8x/IrKqmrryFdZG2Y8Inn9oBbICzUxqZHf
+         AcRw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=1LXoltFh6aawui8nHM8/NmGE7RpX3pQSaASvH0tGBBM=;
-        b=RJ7hzeXfOwvbAEZDqaVFXkvOsu/EkwBo2xy9Ne0BprSfbFCmA+UlY341NJgd3gsa22
-         isZSPq9VZWy+RBNoc+ej/2ipmIlMqxDQLQ62wmETr8RQMNe2GCzDXw0iTsKcOyO66t8z
-         e5HqFPUV0/TmRHvKnM5nqE9fAuPDm0dezI3L5Cm8GGJoUiJGXtyB+1UQhouWSuGZ2jME
-         qOtlRWFk95B+4+JPffB3NtV1wbZCN4RQtkAMq+oREEYXWHIqRtF7PzNR7Ft7BqF8xl8t
-         pagHTvtTsQAEVhMaDisYlGHBjCVV6QP7c7g9QfF049uC4RVtp5Pk2hVVPVm83e809YEs
-         zy8w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WjXrTn6N;
+         :list-unsubscribe:list-id:precedence:mime-version:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:to:from:dkim-signature;
+        bh=kzQ4gTPM/pRL5vhZGZEckV2y7Bd8S+LeQnYAGHnIgo0=;
+        b=AXxya7VLQ8nnjhHEnQ1LfpLFv9VC1mhyO9U/sz5wcrBW5qGwrrcQ4sDhKNTyxVA8Yr
+         LtBhHctY+04e+TlUaAhmW+/+WqPXeB6li43q+NzrrG8KqXilhfVhgQdOn5ZNxjHJAvmi
+         hI7o4wQJuIWD3OQr3QTmleGloaXIA+dKwyws4JeZLtAYLzeWPKnRwnJ7vQAYHB1gemBj
+         /CEOlU/o1qm7bOL7+tKGpGFMpVCp7xs2QwLrGVyZLupjOswlu5kyu43E5Zwm4gHY9oEm
+         i/Ysu9l6dlubXxJjC0FL2NddB40mfeDwyT9WbVt5lO+v7+Gx6Uvln4HVm3ZChDHDT+LJ
+         xejA==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=UopqBzEZ;
+       arc=pass (i=1);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s3si2382772ybj.225.2020.06.09.05.56.35
+        by mx.google.com with ESMTPS id m123si2520576ybf.59.2020.06.09.06.16.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 05:56:36 -0700 (PDT)
+        Tue, 09 Jun 2020 06:16:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WjXrTn6N;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=UopqBzEZ;
+       arc=pass (i=1);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57848 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+Received: from localhost ([::1]:52204 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jidnu-0006Ww-GP
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 08:56:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45696)
+	id 1jie6z-0008Uu-JA
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 09:16:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43122)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jidmv-0004ft-Ae
- for qemu-arm@nongnu.org; Tue, 09 Jun 2020 08:55:33 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:49073
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jidmt-0002Vd-QA
- for qemu-arm@nongnu.org; Tue, 09 Jun 2020 08:55:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591707330;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1LXoltFh6aawui8nHM8/NmGE7RpX3pQSaASvH0tGBBM=;
- b=WjXrTn6N3jlsMwhypm+WRQzNmTlihc0mY6rm30RQ46+4+K446PGDAQ1vfIci3BQCgQpJeK
- As43xgyKD4VZPnkv53SPALxKtmrYHJGkqT7Q3xNo2CnXCxUr9l4xVf6myTXqoJdEJUCZ95
- 1byAQwcdJkVDOei9uoEK3b+DJ+giy9k=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-312-E1UYCuWGPeiJdODKFNlhbw-1; Tue, 09 Jun 2020 08:55:29 -0400
-X-MC-Unique: E1UYCuWGPeiJdODKFNlhbw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0285E846348;
- Tue,  9 Jun 2020 12:55:28 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 003585C1BD;
- Tue,  9 Jun 2020 12:55:18 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
-Subject: [PATCH v2 3/5] tests: tpm-emu: Remove assert on TPM2_ST_NO_SESSIONS
-Date: Tue,  9 Jun 2020 14:54:07 +0200
-Message-Id: <20200609125409.24179-4-eric.auger@redhat.com>
-In-Reply-To: <20200609125409.24179-1-eric.auger@redhat.com>
-References: <20200609125409.24179-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <feiphung@hotmail.com>)
+ id 1jiTtU-0006D3-4K; Mon, 08 Jun 2020 22:21:40 -0400
+Received: from mail-oln040092255053.outbound.protection.outlook.com
+ ([40.92.255.53]:19288 helo=APC01-HK2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <feiphung@hotmail.com>)
+ id 1jiTtS-0006b5-Md; Mon, 08 Jun 2020 22:21:39 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=mb/KxNalBYIAVLMD/8MhkCqkLt7NyeeVhGSlW5iA0KM8xCb16Q31XrTbv4Yxvk5s8y0wVEV2cRf1PnHb1kqXR+X8MF0y/spApfQInZcJQi48c9v3QCO4mYWXG4TLLVC+Xf1t4MIPOEHpUnxLuizeogjGFTIPz1g16YMTcORdoFoIcNOaARSVTgoCIfHiJ41ymPKwAmeo2HVZq/aj+q9mPAA9ChSIqHHITylf+LIrGsiVTLUNdypqNUTn+lHWTUPV5eNFdEYGgw3aXhgvYMwqhSxtgpKLjKXpdDvlwohY7HK6GzBwEWQ1FVJ0mSUKVnAhkO7+JUVSe/cuo4TGvrPV8Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kzQ4gTPM/pRL5vhZGZEckV2y7Bd8S+LeQnYAGHnIgo0=;
+ b=LEXu3Gu2lt0e9LGj1cql/UJJy3551jp75v2q1ZcbKr5GvmKQEaBuYgNr3l48uOYqzVl7WHXNLQQD7PwQByskLfVQIA1TYMHnx4QrmCQ31DVjeP0qkhZLRhYYcv6wfgV6B647qogj9mygS5HrgQdm7XDsC+bjszC7FmrbhZSlSw7B/+Irx2nkVcdQ5gxx6y+DCO7I1if20yaiK8vzjHzyRzuoEFkI/ZumS56W9mxWBOaVFoYofpznb02Dd+rDNPCDP0WUfCc/sjjS3MrC3TEKsXf68oqBoN88eJT7JCps6GQejBuBANWwo9ctLh0bOcM3/3QylrQykK0Y++FE+yPB5Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kzQ4gTPM/pRL5vhZGZEckV2y7Bd8S+LeQnYAGHnIgo0=;
+ b=UopqBzEZZTMwULv7A24HOMOnqS+a3B3a+5cIkCC7wj3hM5A0SwwDeFlUw2IXM8G9Hc+ZhRdLAMZdqqH9hBl1WJz/A5dTc1Zr2V/eG+rCyz4b50jv0s72Ybrqe9C/W6hU0pDvumd/D43LDHA2B8wM8RvVksKXJXrnREpWkPjvMh6VE6MiekgW3pbJdq/iOB77TCAtVAFT5Dd0OoLofwDmpGKe6fxbk6OWxFn3gKMKVTVEDjKOv5Yp2f7LlSFYe3kDbe/2SIwEq2ZmszAYzVmfcGK8/iNlExXmsBDWsMUQHKygvKtTFPhv4jyA7aNnGfsCzEKUwBr5Sc5/BYJof9jQvw==
+Received: from PU1APC01FT018.eop-APC01.prod.protection.outlook.com
+ (2a01:111:e400:7ebe::4b) by
+ PU1APC01HT216.eop-APC01.prod.protection.outlook.com (2a01:111:e400:7ebe::422)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3066.18; Tue, 9 Jun
+ 2020 02:21:33 +0000
+Received: from SG2PR01MB2346.apcprd01.prod.exchangelabs.com
+ (2a01:111:e400:7ebe::52) by PU1APC01FT018.mail.protection.outlook.com
+ (2a01:111:e400:7ebe::445) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3066.18 via Frontend
+ Transport; Tue, 9 Jun 2020 02:21:33 +0000
+Received: from SG2PR01MB2346.apcprd01.prod.exchangelabs.com
+ ([fe80::31cd:14e2:fd56:5333]) by SG2PR01MB2346.apcprd01.prod.exchangelabs.com
+ ([fe80::31cd:14e2:fd56:5333%3]) with mapi id 15.20.3066.023; Tue, 9 Jun 2020
+ 02:21:33 +0000
+From: Cheng Fei Phung <feiphung@hotmail.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Subject: adding netfilter_queue to kernel config for qemu
+Thread-Topic: adding netfilter_queue to kernel config for qemu
+Thread-Index: AQHWPbMWPJYA2r6UdkmRXAX1mLhRXajPjb5B
+Date: Tue, 9 Jun 2020 02:21:33 +0000
+Message-ID: <SG2PR01MB234644CA7B7DDCB2B8936E1FC1820@SG2PR01MB2346.apcprd01.prod.exchangelabs.com>
+References: <SG2PR01MB23461DD322E88DD891E9DB2BC1850@SG2PR01MB2346.apcprd01.prod.exchangelabs.com>
+In-Reply-To: <SG2PR01MB23461DD322E88DD891E9DB2BC1850@SG2PR01MB2346.apcprd01.prod.exchangelabs.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-incomingtopheadermarker: OriginalChecksum:55BCF7AF3B498CB52BA5F58FC36C9B5624560C1A54C63BA38363A8C0CE0C3228;
+ UpperCasedChecksum:C0A4E7A6A3F1FDE55AE81509C6286ECC1F67BF757671CFBF1F140BBD5C4B9449;
+ SizeAsReceived:7020; Count:46
+x-ms-exchange-messagesentrepresentingtype: 1
+x-tmn: [vPzPnFWg3j/E5IHmv2ptUYnYew1wW9rv]
+x-ms-publictraffictype: Email
+x-incomingheadercount: 46
+x-eopattributedmessage: 0
+x-ms-office365-filtering-correlation-id: f829a65f-c448-49fa-a174-08d80c1bd3f5
+x-ms-traffictypediagnostic: PU1APC01HT216:
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: mAVQfoxznGIl4p3ahoiaOlWFGTC7udEnmy5CLz9pjdahg5zl2clb9jwilLL3YnL8Xi3g6cRP5szA6cptkvfiCVvw7oK++S5XhILvtGz4k88bbcGJoBpM9inGRsLIT3wznUv5rU4lbD5jffob3ls3hojQIdx7QsrLWyn5XfmbPbpyjMahPaBHN9YqG5vj52yAd1c59T6uAbwyaYdWUnefDawj/LgCaj5G0UY9MJHEiaOyg3OyycEJzLCKfNo8oVqT
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:0; SRV:;
+ IPV:NLI; SFV:NSPM; H:SG2PR01MB2346.apcprd01.prod.exchangelabs.com; PTR:;
+ CAT:NONE; SFTY:; SFS:; DIR:OUT; SFP:1901; 
+x-ms-exchange-antispam-messagedata: qzFsr9naROuF/KUagzjzHle8Np8ZjElsKGS1sdgwN2hyjvUEtp24l9Q7wy1hbKJJj3375vQIc5FDE739M87WX4ODH2f223jNk0TeYoDSanrIzZdlpqhgrjK0UCqOkIN1oR4n4MB5ez9A7byDuz4fBA==
+x-ms-exchange-transport-forked: True
+Content-Type: multipart/alternative;
+ boundary="_000_SG2PR01MB234644CA7B7DDCB2B8936E1FC1820SG2PR01MB2346apcp_"
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 02:41:53
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-OriginatorOrg: hotmail.com
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-Network-Message-Id: f829a65f-c448-49fa-a174-08d80c1bd3f5
+X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Jun 2020 02:21:33.2475 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Internet
+X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PU1APC01HT216
+Received-SPF: pass client-ip=40.92.255.53; envelope-from=feiphung@hotmail.com;
+ helo=APC01-HK2-obe.outbound.protection.outlook.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 22:21:35
+X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 09 Jun 2020 09:16:08 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,46 +148,55 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
- ardb@kernel.org, philmd@redhat.com
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vTuuQT0MY0GC
+X-TUID: N9r+Qf43IDPM
 
-bios-tables-test executes SeaBIOS. Indeed FW is needed to
-fetch tables from QEMU and put them into the guest RAM. Also
-the FW patches cross table pointers. At some point, SeaBIOS
-ends up calling the TPM2_CC_HierarchyControl command with
-TPM2_ST_SESSIONS tag, most probably steming from
-tpm_set_failure/tpm20_hierarchycontrol SeaBIOS call path.
-This causes an assert() in the qtest tpm emulation code.
+--_000_SG2PR01MB234644CA7B7DDCB2B8936E1FC1820SG2PR01MB2346apcp_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-As the goal here is not to boot SeaBIOS completely but just
-let it grab the ACPI tables and consolidate them, let's just
-remove the assert().
+Hi
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Could anyone help with https://github.com/OP-TEE/optee_os/issues/3902#issue=
+comment-638151200 ?
 
----
 
-RFC -> PATCH:
-- reword the commit message
----
- tests/qtest/tpm-emu.c | 1 -
- 1 file changed, 1 deletion(-)
+--_000_SG2PR01MB234644CA7B7DDCB2B8936E1FC1820SG2PR01MB2346apcp_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/tests/qtest/tpm-emu.c b/tests/qtest/tpm-emu.c
-index c43ac4aef8..298d0eec74 100644
---- a/tests/qtest/tpm-emu.c
-+++ b/tests/qtest/tpm-emu.c
-@@ -49,7 +49,6 @@ static void *tpm_emu_tpm_thread(void *data)
-         s->tpm_msg->tag = be16_to_cpu(s->tpm_msg->tag);
-         s->tpm_msg->len = be32_to_cpu(s->tpm_msg->len);
-         g_assert_cmpint(s->tpm_msg->len, >=, minhlen);
--        g_assert_cmpint(s->tpm_msg->tag, ==, TPM2_ST_NO_SESSIONS);
- 
-         s->tpm_msg = g_realloc(s->tpm_msg, s->tpm_msg->len);
-         qio_channel_read(ioc, (char *)&s->tpm_msg->code,
--- 
-2.20.1
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family:Calibri,Helvetica,sans-serif; font-size:12pt; col=
+or:rgb(0,0,0)">
+Hi</div>
+<div>
+<div dir=3D"ltr">
+<div style=3D"font-family:Calibri,Helvetica,sans-serif; font-size:12pt; col=
+or:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Calibri,Helvetica,sans-serif; font-size:12pt; col=
+or:rgb(0,0,0)">
+Could anyone help with <a href=3D"https://github.com/OP-TEE/optee_os/issues=
+/3902#issuecomment-638151200" id=3D"LPlnk770618">
+https://github.com/OP-TEE/optee_os/issues/3902#issuecomment-638151200</a> ?=
+</div>
+<div style=3D"font-family:Calibri,Helvetica,sans-serif; font-size:12pt; col=
+or:rgb(0,0,0)">
+<br>
+</div>
+</div>
+</div>
+</body>
+</html>
 
+--_000_SG2PR01MB234644CA7B7DDCB2B8936E1FC1820SG2PR01MB2346apcp_--

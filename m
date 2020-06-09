@@ -1,182 +1,327 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp446405lfc;
-        Tue, 9 Jun 2020 05:38:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzfts/UHyE33VEfHP84T4aT9VOQnyY33rgcbRmw2VkAxhQtOm8TUwQgEaYVmnjb+1sMxZ2S
-X-Received: by 2002:a25:b882:: with SMTP id w2mr6098500ybj.160.1591706329254;
-        Tue, 09 Jun 2020 05:38:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591706329; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp448209lfc;
+        Tue, 9 Jun 2020 05:41:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwnhMSFkPkBYKl4Ypj/rvxAUqn9a3DIdD2+NaVR2WD2IlbJj3T5JurlT/qkTqelKLEws4sM
+X-Received: by 2002:a05:6902:4b4:: with SMTP id r20mr5803826ybs.389.1591706471427;
+        Tue, 09 Jun 2020 05:41:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591706471; cv=none;
         d=google.com; s=arc-20160816;
-        b=UqfhDIgQQroOjBzyLPF6+UlcEAC1JhPLSN2XiLqm5oxve+R56fZETbXaID4jVt032R
-         YuK61ZDRsuNPrgnEN6OYC1r5uN00uf3i4Spx/nvLvN66ALf8S1Qo7vSeoCGjVW0UeLsJ
-         wFehMrRZKRnetUNYs4FVlh1ft7Z/VkS+J98cHl5/+wL4izUrSJUk6tLiFcAOvyQbaHLo
-         cVCaXuew3ptlsFI9SaYVDy8oheO8rmcd7YHJlZ2I1M0fZlr8ZWjVTGjpuHAwqw1VVoS5
-         h81YafZXdGzh9xLgCEak2BgOomxNbGS6OZAng8zOxEqREXL2l52/paeGdTzO1feqVVIR
-         k4Yg==
+        b=gbT2oi+poMVfh28aW6XeNcPo+Xt3iDJeUidQNXUtfUYj4jQm5TwDOS+5QZrdseot3P
+         yl7chavGuqibXmuavYcPtHiF3T4n+zZruMic4nNbaIyJQw9m2rPW9RY8qUcB4vjlOcyk
+         EydQ/9cxXVEmwkuKPyg+Xuth5zdogNYydI64nhO6fd5wb0xJrTzEi9s/x8OigPIyqFRD
+         7FaXFY/vlu/8py6B7KSnM0yem8maAtfKwRadChXvCxGELQnnsdbLvw2FlSHi5zUSs7PL
+         YLnoGeQFs2I1SeGPyeNeHcARICE9jbKK+EbRUDQ6aoCeI357zbC+HaUMQTSm4k39Nw7j
+         s57w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=EIDCMln9RmpF1Ls7UOJGokyRuJGaYDq2TNKmskxzmO0=;
-        b=dM+RB9VYEt0lLdI4+vvzXz/PhzNJql//iElkgT0gCV832OJnSIsSNolD56Lzrz+TL6
-         rBtb7AltRcigD8oRGXKegyWvepj7oQDVMB6UubZbktzVB0O2It2V3hwHkkZuDnS7oUd8
-         +nYpo+MV0uaUM3z/RylvNr84foj/xB+nilAw7uqX0GN7Ts6c2+Rle+xtUVAZZGXbvm0F
-         tbtdL19RIbdsLTD2pw2LlXbu3aX9Fdl2NKNj1yjWVfawZljU2N6NLhsY0vFQVtfG4DN9
-         I5uTJJd3Ftdw7y2/7lKEFPsZ/wNtO9mqYrH/5aFgJVuO4WFZNwtWGOhTvRZ46er4Vafz
-         3nxA==
+        bh=0srfxT0e6nUZFR6Iq4rRmoV3V4fYm5JRcQS2tAU0vxw=;
+        b=dIVEE00/aR7eHYrVqeI2jdZnAKJY4xgaHjA2aoEf5tlV5MAD/gNh1dvq+UwGvivbnr
+         NqVaNE5qTxjtropYbqjo4qcshL3C4GksESu7JrDEyrWvMuyiq16EYUcE09zrkKxjspEh
+         IWpyfRKJ7tBtsypEJUoVI1+8tLKL2tzz8aWPTdv5AOHzO1r4XyCRlBJ58MTq6xsCxSZU
+         5qYGfgfsEA7dOhn59m+XtHKbzn36MZySeUP8VfKRBQFV2dUW5XA0v/MMfRniq1QPsxUE
+         k9oJhnO4bZb33n5Fz3DpGO62rVZkwJ9oPyI92CbmhOO2iYmEEH5WjGDCyHsbLoCtlL33
+         GT2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RyGIOJEv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="hBijAd/4";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l135si2632934ybf.80.2020.06.09.05.38.49
+        by mx.google.com with ESMTPS id o18si2386888yba.318.2020.06.09.05.41.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 05:38:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Jun 2020 05:41:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RyGIOJEv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46570 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="hBijAd/4";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:53188 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jidWi-0006QG-KN
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 08:38:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41710)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jidZ0-0000t9-Ka
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 08:41:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42964)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jidIO-0003X3-GP
- for qemu-devel@nongnu.org; Tue, 09 Jun 2020 08:24:00 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:20906
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jidIK-0005Su-F1
- for qemu-devel@nongnu.org; Tue, 09 Jun 2020 08:24:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591705435;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=EIDCMln9RmpF1Ls7UOJGokyRuJGaYDq2TNKmskxzmO0=;
- b=RyGIOJEvkK2ssx/TCT5R2VXMzAYqylUqg4ix+h2hvWWqGThE/VR4jKt9jbfz2Q02Fr/aX3
- YqeH048YeiSHY1MHmxcdbAeWa1l4LDxxNkNKfTVxwqXOhYoI/DTzSJdNI97wbN4QRC+6r3
- x4DIrgFgXAt0kPMlJdgbASzrMyaFv/U=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-374-TV0zdXHrOgSJMdciF6Wd7Q-1; Tue, 09 Jun 2020 08:23:44 -0400
-X-MC-Unique: TV0zdXHrOgSJMdciF6Wd7Q-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 475F680B72E;
- Tue,  9 Jun 2020 12:23:43 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
- [10.36.112.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 15F335D9E4;
- Tue,  9 Jun 2020 12:23:43 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id EEA6F1138539; Tue,  9 Jun 2020 14:23:39 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jidSj-0000Im-4F; Tue, 09 Jun 2020 08:34:41 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:35981)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jidSY-00074L-Sc; Tue, 09 Jun 2020 08:34:40 -0400
+Received: by mail-wr1-x443.google.com with SMTP id q11so21138761wrp.3;
+ Tue, 09 Jun 2020 05:34:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=0srfxT0e6nUZFR6Iq4rRmoV3V4fYm5JRcQS2tAU0vxw=;
+ b=hBijAd/46i+x7ednlZBvGseJgaQjQRWhOSbsj0oI54n58nUqF2S530xr6+XpaaxarS
+ bSRcSx05lnubiKRWMMivA6eVzr33/6btMppdsbdwV9SPavLLyhXN71v5RWvJAcucMmKc
+ 1JzVJPalhJpkCLJwOJiRDoBvdWFZvnQuakM4NMjR39SX/ElSpjiYe1IL4BEemcUwbLup
+ y7iyJO+d+cyBOyRjPKKbyGnOxiEJMYBP9tfT+C1S6rGmDhL5u3V+s/MDnY5i49TzERzx
+ J/bYy6WCr/rWVGTVD+tSLOjvb67sphqTZyHta0/KKfmVjktOPuJVSSOoycQ0RofsWmHP
+ 0+cw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=0srfxT0e6nUZFR6Iq4rRmoV3V4fYm5JRcQS2tAU0vxw=;
+ b=nfq7/2pFUQvEYUbopx331ppKuebGJiil9Sv1XmEUlKskwHzf/OrvXAkHmz1Ek2SFoh
+ Z/EzFO/qU10gc5smHvEirnjEMAoPgiDtvABgA1wRTrbLfvpIk5+0Y6/IC41E/PIxCB2a
+ xMFWO1ezsTs2oILB0phf/2BpSoQMGCbh1KF5k+/NMlHBkt4YXZ+UUV+PkHLgnidAzDzF
+ ILVuuCTQVs28rE0EW7knrwF6nsUe1BGuK0DPBY/t5cEcBaiblJ0oIYCZaWw5st8r0chJ
+ KGmq2zXkt+XzSMQVcyO97Wp1nMbQD2wcmLz8eFWp7moDaEspRnm9hifCQsRHL/8JNadK
+ n4XQ==
+X-Gm-Message-State: AOAM531Cg7J98a9ZZ2dAeGcNeBj5+x/bSCiDfyQmBDZPNwWz/2EhS0GQ
+ Dd4W14/2SSFpZAWbRo3IpPETW5Um
+X-Received: by 2002:a5d:4c87:: with SMTP id z7mr4167824wrs.100.1591706068136; 
+ Tue, 09 Jun 2020 05:34:28 -0700 (PDT)
+Received: from localhost.localdomain
+ (181.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id c81sm2920931wmd.42.2020.06.09.05.34.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Jun 2020 05:34:27 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 06/24] armv7m: Delete unused "ARM,bitband-memory" devices
-Date: Tue,  9 Jun 2020 14:23:21 +0200
-Message-Id: <20200609122339.937862-7-armbru@redhat.com>
-In-Reply-To: <20200609122339.937862-1-armbru@redhat.com>
-References: <20200609122339.937862-1-armbru@redhat.com>
+Subject: [RFC PATCH 1/5] hw/misc: Add a LED device
+Date: Tue,  9 Jun 2020 14:34:21 +0200
+Message-Id: <20200609123425.6921-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200609123425.6921-1-f4bug@amsat.org>
+References: <20200609123425.6921-1-f4bug@amsat.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 02:41:53
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
- ehabkost@redhat.com,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, pbonzini@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n7oeKBrqN4SS
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Joaquin de Andres <me@xcancerberox.com.ar>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>, Eric Blake <eblake@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8Ne6ELtQT4wo
 
-These devices are optional, and enabled by property "enable-bitband".
-armv7m_instance_init() creates them unconditionally, because the
-property has not been set then.  armv7m_realize() realizes them only
-when the property is true.  Works, although it leaves unrealized
-devices hanging around in the QOM composition tree.  Affects machines
-microbit, mps2-an505, mps2-an521, musca-a, and musca-b1.
+A LED device can be connected to a GPIO output.
 
-Delete the unused devices by making armv7m_realize() unparent them.
-Visible in "info qom-tree"; here's the change for microbit:
-
-     /machine (microbit-machine)
-       /microbit.twi (microbit.i2c)
-         /microbit.twi[0] (qemu:memory-region)
-       /nrf51 (nrf51-soc)
-         /armv6m (armv7m)
-           /armv7m-container[0] (qemu:memory-region)
-    -      /bitband[0] (ARM,bitband-memory)
-    -        /bitband[0] (qemu:memory-region)
-    -      /bitband[1] (ARM,bitband-memory)
-    -        /bitband[0] (qemu:memory-region)
-           /cpu (cortex-m0-arm-cpu)
-
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/armv7m.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ include/hw/misc/led.h | 30 ++++++++++++++++
+ hw/misc/led.c         | 84 +++++++++++++++++++++++++++++++++++++++++++
+ MAINTAINERS           |  6 ++++
+ hw/misc/Kconfig       |  3 ++
+ hw/misc/Makefile.objs |  1 +
+ hw/misc/trace-events  |  3 ++
+ 6 files changed, 127 insertions(+)
+ create mode 100644 include/hw/misc/led.h
+ create mode 100644 hw/misc/led.c
 
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index 7da57f56d3..f930619f53 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -245,8 +245,8 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
-     memory_region_add_subregion(&s->container, 0xe000e000,
-                                 sysbus_mmio_get_region(sbd, 0));
+diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
+new file mode 100644
+index 0000000000..427ca1418e
+--- /dev/null
++++ b/include/hw/misc/led.h
+@@ -0,0 +1,30 @@
++/*
++ * QEMU single LED device
++ *
++ * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef HW_MISC_LED_H
++#define HW_MISC_LED_H
++
++#include "hw/qdev-core.h"
++#include "hw/sysbus.h" /* FIXME remove */
++
++#define TYPE_LED "led"
++#define LED(obj) OBJECT_CHECK(LEDState, (obj), TYPE_LED)
++
++typedef struct LEDState {
++    /* Private */
++    SysBusDevice parent_obj; /* FIXME DeviceState */
++    /* Public */
++
++    qemu_irq irq;
++    uint8_t current_state;
++
++    /* Properties */
++    char *name;
++    uint8_t reset_state; /* TODO [GPIO_ACTIVE_LOW, GPIO_ACTIVE_HIGH] */
++} LEDState;
++
++#endif /* HW_MISC_LED_H */
+diff --git a/hw/misc/led.c b/hw/misc/led.c
+new file mode 100644
+index 0000000000..dc61b11017
+--- /dev/null
++++ b/hw/misc/led.c
+@@ -0,0 +1,84 @@
++/*
++ * QEMU single LED device
++ *
++ * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/qdev-properties.h"
++#include "hw/misc/led.h"
++#include "hw/irq.h"
++#include "migration/vmstate.h"
++#include "trace.h"
++
++static void led_set(void *opaque, int line, int new_state)
++{
++    LEDState *s = LED(opaque);
++
++    trace_led_set(s->name, s->current_state, new_state);
++
++    s->current_state = new_state;
++}
++
++static void led_reset(DeviceState *dev)
++{
++    LEDState *s = LED(dev);
++
++    s->current_state = s->reset_state;
++}
++
++static const VMStateDescription vmstate_led = {
++    .name = TYPE_LED,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT8(reset_state, LEDState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void led_realize(DeviceState *dev, Error **errp)
++{
++    LEDState *s = LED(dev);
++
++    if (s->name == NULL) {
++        error_setg(errp, "property 'name' not specified");
++        return;
++    }
++
++    qdev_init_gpio_in(DEVICE(s), led_set, 1);
++}
++
++static Property led_properties[] = {
++    DEFINE_PROP_STRING("name", LEDState, name),
++    DEFINE_PROP_UINT8("reset_state", LEDState, reset_state, 0),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void led_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->desc = "LED";
++    dc->vmsd = &vmstate_led;
++    dc->reset = led_reset;
++    dc->realize = led_realize;
++    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
++    device_class_set_props(dc, led_properties);
++}
++
++static const TypeInfo led_info = {
++    .name = TYPE_LED,
++    .parent = TYPE_SYS_BUS_DEVICE, /* FIXME TYPE_DEVICE */
++    .instance_size = sizeof(LEDState),
++    .class_init = led_class_init
++};
++
++static void led_register_types(void)
++{
++    type_register_static(&led_info);
++}
++
++type_init(led_register_types)
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 6e7890ce82..f873f0b94a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1864,6 +1864,12 @@ S: Maintained
+ F: include/hw/misc/unimp.h
+ F: hw/misc/unimp.c
  
--    if (s->enable_bitband) {
--        for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
-+    for (i = 0; i < ARRAY_SIZE(s->bitband); i++) {
-+        if (s->enable_bitband) {
-             Object *obj = OBJECT(&s->bitband[i]);
-             SysBusDevice *sbd = SYS_BUS_DEVICE(&s->bitband[i]);
++LED
++M: Philippe Mathieu-Daudé <f4bug@amsat.org>
++S: Maintained
++F: include/hw/misc/led.h
++F: hw/misc/led.c
++
+ Standard VGA
+ M: Gerd Hoffmann <kraxel@redhat.com>
+ S: Maintained
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index bdd77d8020..f60dce694d 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -126,6 +126,9 @@ config AUX
+ config UNIMP
+     bool
  
-@@ -265,6 +265,8 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
++config LED
++    bool
++
+ config MAC_VIA
+     bool
+     select MOS6522
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 60a9d80b74..aae07033f9 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -90,3 +90,4 @@ common-obj-$(CONFIG_NRF51_SOC) += nrf51_rng.o
+ obj-$(CONFIG_MAC_VIA) += mac_via.o
  
-             memory_region_add_subregion(&s->container, bitband_output_addr[i],
-                                         sysbus_mmio_get_region(sbd, 0));
-+        } else {
-+            object_unparent(OBJECT(&s->bitband[i]));
-         }
-     }
- }
+ common-obj-$(CONFIG_GRLIB) += grlib_ahb_apb_pnp.o
++common-obj-$(CONFIG_LED) += led.o
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index a5862b2bed..55d7143f23 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -198,3 +198,6 @@ via1_rtc_cmd_pram_read(int addr, int value) "addr=%u value=0x%02x"
+ via1_rtc_cmd_pram_write(int addr, int value) "addr=%u value=0x%02x"
+ via1_rtc_cmd_pram_sect_read(int sector, int offset, int addr, int value) "sector=%u offset=%u addr=%d value=0x%02x"
+ via1_rtc_cmd_pram_sect_write(int sector, int offset, int addr, int value) "sector=%u offset=%u addr=%d value=0x%02x"
++
++# led.c
++led_set(const char *name, uint8_t old_state, uint8_t new_state) "led name:'%s' state %d -> %d"
 -- 
-2.26.2
+2.21.3
 

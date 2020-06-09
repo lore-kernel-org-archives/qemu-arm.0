@@ -1,98 +1,113 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp43993lfc;
-        Mon, 8 Jun 2020 18:42:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzXfbA6UMcpLwD2EHPnMMzXx0d/mvpazkhovMvETCuQ/tI9ByWsLK1qjO8kTqlzWJXLObKy
-X-Received: by 2002:a25:dcd1:: with SMTP id y200mr2467132ybe.263.1591666970716;
-        Mon, 08 Jun 2020 18:42:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591666970; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp173833lfc;
+        Mon, 8 Jun 2020 22:39:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxyoZwBssATNKjoaWjr6sP99aHqGBi/keItzTWbD1o+HmL8XO5trm6Cy1vCWrRPmH2ByKWr
+X-Received: by 2002:a37:4682:: with SMTP id t124mr27211173qka.378.1591681150665;
+        Mon, 08 Jun 2020 22:39:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591681150; cv=none;
         d=google.com; s=arc-20160816;
-        b=e1exm8z7jYlUL22QQghwWjg9mfhFegs1PnEMEIaNJ4FiieQHj/B8u5tPYp6w5gkUTW
-         PN8DT6vLe0dbdCigcgXZ8KL/jY+peJhIWvEHaRPCKnLadqA4g9icwOU8a+g9d/Rkz4M3
-         vpoEciCkWZ0LT4LVQS8x2ctA9qCjz7P7uteFpD5ipO7k19g4r0dIa/R8G+M1eCQk+prZ
-         dvSc+g0wah/sS9S2oBvxHPWvCd1/ICoT+rJdp/7sFd340EvhKCfJuaNpAgrLmOy6ml4B
-         +N8io+xJR9mcSbsrTJW5tCGHOoZN4uH7teQq5zT5vgj7Yz/uDpwszGa5BvYMZjjfPq4n
-         Y+bQ==
+        b=ReI31C86T+4tZCLjbDtqHsB15W5iMRtDXel/gKNB0dxH8YwMNqWNUQrX3YqrOK9kXK
+         1tFmK8EMgVkMG90QkLAkHr3BcRdrEGAJ4aBOYtoxqG1vZyBnVPS8hZlgspxd46t0JXPZ
+         mnrNkPNpB1X0WvQZasORj1fahLFeyyHCU1YcxZ4CnRcJLeSjM4i1o1Z8yAInfIPeEwZg
+         5g/mPsBfyvLQan/iAQGCsMdHahRSzdROISkOGR5mCcKMOeHYCvugqQsiMxwcnflsPNzW
+         hOGhBCwS6QCLLwbTf/Me62y1ID4UUaHOi3jiCTdFrgaz1WuIGm9PuslU1QZ1yEEbMRjA
+         Y+mA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=nR8duXu/7i/owTQ/5PmEvOI0K8pxjyS17auW0MJccq8=;
-        b=jxaQuCWUvm8R7e5Y1NuxxcWnUKk37p/lySyTuEqBzK0OH7HUsQ57K8ABgUT0ECfIzP
-         vLU5ZgyHN/ufYgt5pXbElUhE9EqOIZuaVVlvUtN5jRgx7MrmpBeMF+JG4ZxtWPDckxnT
-         puWYQLcPtGcXO+N8dVFcDHPPpj2eP9Dd9y+5cOhT7lX4Cibdmz4bZ6bmkTHQIH3zMoPc
-         A2ZKk8xzYlwGRYsUGDUNAAjGTmwKXd0z+dmYXkmvm5eT7+1f+IIJ2CCX1oUVHMZ9y/6d
-         JbPp0W2DdANFDdSHMjXqmTd9L0bvgDSysVpoaSSXV4FDUfz8S6GPqVxBtV7ZeMPVv+tp
-         UF0g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=zLd6REo6AuaVxtRNsHIxpws+xNZTd3m0ZyculHj939k=;
+        b=BQDF3qa0HvkablJ5bjFT34GomlEFJMsCoLC16Qc5/WQfHIOLvWlXZh47n+aI13CeDu
+         FjMcxk8p4Az/hsYmkfRmb7Wo1OTZmb737jW9bgSFqgFXVsqoOA4IixgATDbc2ZweDBDH
+         xRqLpqOVtFxQEAufHuBtEB8FNfo4VFvVTMMY8kvi7ovzDoe5fudgTZlM/9vE6OcBHv2n
+         BQphxjMM3ipyRWCgz97/+eMrbzMPigeM8/xpnFtyEQly4YJjg195CSEGpdtqlFTlA4/d
+         lT9PEytrcYDb4V0S4dRxC4UTGpH61Fn/Q6RwM84neaqPpblz9mJdGMcsVum9Rovi81kB
+         ajtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=S6kBn+QO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SKmqx3JT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y189si1021127ybc.257.2020.06.08.18.42.50
+        by mx.google.com with ESMTPS id u14si6131309qkm.338.2020.06.08.22.39.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jun 2020 18:42:50 -0700 (PDT)
+        Mon, 08 Jun 2020 22:39:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=S6kBn+QO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47408 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SKmqx3JT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52328 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiTHt-000885-UT
-	for alex.bennee@linaro.org; Mon, 08 Jun 2020 21:42:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40210)
+	id 1jiWyb-0000Re-W9
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 01:39:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56642)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1jiTEx-0005yb-O0; Mon, 08 Jun 2020 21:39:47 -0400
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:37643)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1jiTEx-0000Vn-2J; Mon, 08 Jun 2020 21:39:47 -0400
-Received: by mail-ed1-x541.google.com with SMTP id k8so15002342edq.4;
- Mon, 08 Jun 2020 18:39:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nR8duXu/7i/owTQ/5PmEvOI0K8pxjyS17auW0MJccq8=;
- b=S6kBn+QOr3q38jWbuT9kbZVIAnqpYgcZNu3yYeCim6bpSZhC7WuWxqGUzbDMsNBq/e
- TSNtSLWWkKr5ZjB+MsPsgzP1Ls9HLHr/Xy5HCDAIjZJcOb9aMK8WoBQ9ZTp5Xnt/rIVe
- MY5e+pzjvKvKCBNSbH4ET6Xh7BldjLWgsoqGw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=nR8duXu/7i/owTQ/5PmEvOI0K8pxjyS17auW0MJccq8=;
- b=swQSiAeA3k7Q+YumbDRYCMPQ2yH/9+4QT8h1/qyOilJsSlyrxSScmpGYmo056UUUTI
- PMqG1XPym7ro/B77aKy1vBgXcEG3AaBtQs0TNF74kTgsOWvccrG8TZjOMiPljrpSUM9z
- obj0ciHkTmFZ4CUbnbJNQkWVgGUJ+JYWoNn0puQ4jOztLFkXlqkp+Rc49n3V0ClR8SWB
- qqNgUd78OqjZnJwGUFPflEciLEIpci3rLTNzmci/AFyh9+Zxe/1bBnO20mSA+wBJ2OC4
- WkB4uvt3OpyZk3CS4EJFAiv70KWx+mlvQsKvPXSVixdrFW9Z5xxi4+FcM2nMSco7Gb6T
- DdDw==
-X-Gm-Message-State: AOAM532ARnBoKMg5eEpldOIaO8yEMxd/Zqqz7a2ic5U1C1bMmV6rUDBb
- kG6K6spiKN23dZQd+dpLxaO6Y+dYHjn9hw1LbCp/HuaS
-X-Received: by 2002:a50:f094:: with SMTP id v20mr24308785edl.77.1591666785312; 
- Mon, 08 Jun 2020 18:39:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jiWyO-0000QL-NJ
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2020 01:38:56 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:24294
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jiWyJ-0004xz-Jz
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2020 01:38:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591681129;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zLd6REo6AuaVxtRNsHIxpws+xNZTd3m0ZyculHj939k=;
+ b=SKmqx3JTYsGZUcqiwGFYohJWdLS1AmGQP4w+KmaQekOSXMvsj2n4W6lq5GH16cVu/27JF7
+ fMUqzUDrc2dqu11kmPxR5zZpCgaz4V9m3+jZe5LiEbw1mxmDYdJSmZ/kb5BtvkoaxIZllt
+ qIOJGeSuPG/zEZBQJv89uaIX48m86fM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-49-tn8yV2M-MpuBKysTpNcciA-1; Tue, 09 Jun 2020 01:38:45 -0400
+X-MC-Unique: tn8yV2M-MpuBKysTpNcciA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C4E1110082EC;
+ Tue,  9 Jun 2020 05:38:43 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D087760BF3;
+ Tue,  9 Jun 2020 05:38:42 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 4912411386A6; Tue,  9 Jun 2020 07:38:41 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v2 02/24] display/xlnx_dp: Fix to realize "i2c-ddc" and
+ "aux-to-i2c-bridge"
+References: <20200528110444.20456-1-armbru@redhat.com>
+ <20200528110444.20456-3-armbru@redhat.com>
+ <a64bd91c-58b5-1438-a401-5d6c04441c67@amsat.org>
+Date: Tue, 09 Jun 2020 07:38:41 +0200
+In-Reply-To: <a64bd91c-58b5-1438-a401-5d6c04441c67@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 8 Jun 2020 16:16:20
+ +0200")
+Message-ID: <87tuzkssri.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-References: <20200521192133.127559-1-hskinnemoen@google.com>
- <CAFQmdRYYhoWu7q350n0vNOE+pesp-UG975v1f1Yjwf9Ao0mjcg@mail.gmail.com>
-In-Reply-To: <CAFQmdRYYhoWu7q350n0vNOE+pesp-UG975v1f1Yjwf9Ao0mjcg@mail.gmail.com>
-From: Joel Stanley <joel@jms.id.au>
-Date: Tue, 9 Jun 2020 01:39:33 +0000
-Message-ID: <CACPK8XfOtLSVR2u12qEYxB=ggKLD-NeK8BYMW3_uRo8ExnM6Ww@mail.gmail.com>
-Subject: Re: [PATCH 0/6] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC machines
-To: Havard Skinnemoen <hskinnemoen@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::541;
- envelope-from=joel.stan@gmail.com; helo=mail-ed1-x541.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 01:38:49
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -105,41 +120,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
+ ehabkost@redhat.com, Alistair Francis <alistair@alistair23.me>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>, pbonzini@redhat.com,
+ KONRAD Frederic <fred.konrad@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gzDj/GbAIpya
+X-TUID: IHmOPvZbgGHv
 
-On Mon, 8 Jun 2020 at 22:15, Havard Skinnemoen <hskinnemoen@google.com> wrote:
->
-> On Thu, May 21, 2020 at 12:21 PM Havard Skinnemoen <hskinnemoen@google.com> wrote:
->>
->> This patch series models enough of the Nuvoton NPCM730 and NPCM750 SoCs to boot
->> a minimal Linux kernel. This includes device models for:
->
->
-> Does anyone have comments on this series? I'm currently finishing up a second patch series that adds flash support and a few other things so qemu can boot a full OpenBMC flash image built for npcm7xx.
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-I had a look and they appear good to me. Note that I'm less in to the
-gory details of Qemu than some of our other reviewers, so you should
-seek  a more detailed review from someone else.
-
-I look forward further support so I can test the OpenBMC kernel
-against Nuvoton boards in the same way as the Aspeed ones.
-
-Cheers,
-
-Joel
-
+> On 5/28/20 1:04 PM, Markus Armbruster wrote:
+>> xlnx_dp_init() creates these two devices, but they're never realized.
+>> Affects machine xlnx-zcu102.
+>>=20
+>> In theory, a device becomes real only on realize.  In practice, the
+>> transition from unreal to real is a fuzzy one.  The work to make a
+>> device real can be spread between realize methods (fine),
+>> instance_init methods (wrong), and board code wiring up the device
+>> (fine as long as it effectively happens on realize).  Depending on
+>> what exactly is done where, a device can work even when we neglect to
+>> realize it.
+>>=20
+>> These two appear to work.  Nevertheless, it's a clear misuse of the
+>> interface.  Even when it works today (more or less by chance), it can
+>> break tomorrow.
+>>=20
+>> Fix by realizing them in xlnx_dp_realize().
+>>=20
+>> Fixes: 58ac482a66de09a7590f705e53fc6a3fb8a055e8
+>> Cc: KONRAD Frederic <fred.konrad@greensocs.com>
+>> Cc: Alistair Francis <alistair@alistair23.me>
+>> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+>> Cc: Peter Maydell <peter.maydell@linaro.org>
+>> Cc: qemu-arm@nongnu.org
+>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+>> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+>> ---
+>>  hw/display/xlnx_dp.c | 4 ++++
+>>  1 file changed, 4 insertions(+)
+>>=20
+>> diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+>> index 3e5fb44e06..bdc229a51e 100644
+>> --- a/hw/display/xlnx_dp.c
+>> +++ b/hw/display/xlnx_dp.c
+>> @@ -1264,9 +1264,13 @@ static void xlnx_dp_realize(DeviceState *dev, Err=
+or **errp)
+>>      DisplaySurface *surface;
+>>      struct audsettings as;
+>> =20
+>> +    qdev_init_nofail(DEVICE(s->aux_bus->bridge));
 >
-> If you prefer, I can combine them both into one series and send it to the list.
+> Eh??? Why not realize the bridge in aux_init_bus()?
+
+Because then aux_init_bus() is no longer "init", but "init and realize".
+Instead: "[PATCH v2 32/58] auxbus: New aux_bus_realize(), pairing with
+aux_bus_init()".  Okay?
+
+>> +
+>>      qdev_init_nofail(DEVICE(s->dpcd));
+>>      aux_map_slave(AUX_SLAVE(s->dpcd), 0x0000);
+>> =20
+>> +    qdev_init_nofail(DEVICE(s->edid));
 >
-> This series can be found here: https://patchwork.kernel.org/project/qemu-devel/list/?series=291809
+> This one is OK.
 >
-> Thanks,
->
-> Havard
+>> +
+>>      s->console =3D graphic_console_init(dev, 0, &xlnx_dp_gfx_ops, s);
+>>      surface =3D qemu_console_surface(s->console);
+>>      xlnx_dpdma_set_host_data_location(s->dpdma, DP_GRAPHIC_DMA_CHANNEL,
+>>=20
+

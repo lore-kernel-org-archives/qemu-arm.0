@@ -1,60 +1,60 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp714430lfc;
-        Tue, 9 Jun 2020 10:43:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVtZNL7VGQLovQLVB7Ic9xojBGHyJiPxyTsKfTdhw3f1VnPQeAA44YDe1Ca0c3zRRfsj/N
-X-Received: by 2002:a25:8603:: with SMTP id y3mr8272557ybk.407.1591724604450;
-        Tue, 09 Jun 2020 10:43:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591724604; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp717717lfc;
+        Tue, 9 Jun 2020 10:47:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwizNt/17kPx9DMhz2gIGCFVpk5SGfIWpkfvc/+ebOQqhMeIsbiVcP7DxQwtUj03JsqcYzR
+X-Received: by 2002:a25:8284:: with SMTP id r4mr7657344ybk.351.1591724878383;
+        Tue, 09 Jun 2020 10:47:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591724878; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ncr30mk2Q71GPb9uUaVKEoAXKQdHluLFqGcNFcA4uKObnfMvpyEhqI8SE4s4aGstVI
-         xwA/xcttoCAsFoxljg6HZsPchuZkSrXd/BPW7dt0MLaHHkEWBdH/NaNO4+yMWFB3RTb3
-         Yal/9wo9D4qy6boq7pJQAMpGbuBZZH4fB20OxE8XwPvQkwrpQRQ355HQ2ae8ArzOTIBB
-         zoE/6LZHOHRbFpB1O+IjFPKOLpzaf3/HP9ovLkCiuK2kPzsKwGJ/9mrjhhos59/ONn+3
-         l9vkv0qMnxZH9SkdmWDqOS9Od4/gCRGDFLTS2rGrMinbphGEJeXe9+b9pa8kNtoflgOk
-         NN8Q==
+        b=ouTtq7ozx4GWFfFfNmY0wUmBu+fg6V/bz3NSoM1Z6odEPvy33KByv6tssljdpnlsL7
+         b9SpvCs3emCsUe73098kerf4M0zf4YAOcfUz18pkkLaMS884koMSQHQ+NVaU89HNvuUA
+         qkFtFqyT3eVLWa8myFHFhgtkvk28t9anp291KDngc+Qg5AzJYN46A3zOB15amScNlb9Y
+         i4QAjWbYbxncYlCwK0aXAeO7X7euIO9Bp7K/Vi5ed467snfsqrta3aTrE5VaewUl0Tur
+         JIeaJzMbpNhVTb4+D+FppfYZjhkBbls7TV8UmFJ+NFk5CVRIrL349lUt4L5CLgjwMwEk
+         GA5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject;
-        bh=RBkDnuWIM61xtTnq5AhUytCtt7Svl7dl6J2flYpNKg8=;
-        b=HCAxo75d562s7FXhA2Ap7c4EPSQGANpwOvKFPiWINwAEwjoUqGbldminh3z2lDDKX4
-         gdefuno/yLwj7c8QkCGlu/VcK3prktBsTIlHXk6Qohh43dbXz+xqcL9KwvMxfAdVLQPx
-         T1sZAbHKlWCnUMq05/1o3vN95zchtk/zF108he3xudY1J1owPVsSmYL2tUgvWrWUoX+D
-         m1BoyDR3ZXxn1syQcLUNjdoH/UrcwZ5K7f7Gzn3NdpO+PdvyC63ujnA00qWRqWEA6D4x
-         DfqbAwfNueGy25samlH2VtMJNcR7CMjzPU04M3sZH3zxmlVTfBPhbp2VmQyDQ6p360NL
-         h0VA==
+        bh=rGKimE11U37kNxv9kdm7IZjcilvUV1BQuIP0wflTD+g=;
+        b=DgI/J+L3VBfwdqBDUKKODPOW+cHSYx8FCwzffx5O5PN2y9J1WkQIVsBlDNYKX/kce6
+         FlEi4ECRLszbF5lS0wuoD8S/hPFoLeq1lQWH9MRP5a+TPJvHMJmk5nhfWBR2m5CSgh+p
+         Sf9MzV2i0JaHMJHmTHPmXJJVgme1V8TaDkRsghrbtpr57mH6aV+FWagNNWOvDd/TjWs2
+         u18/VBiXlTrBE8rKWhIKe6xOhnmTJpxj+uR+FzB9FvyjzpPEMSEDkcEtIEcU18WWHezQ
+         rTaF/Htq7bjHmgZ/gLmffC2ySC4Pyso1Yd1P4UN16uAxs6waHQSwS2Y+kPbDHTtE6zF9
+         7rYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n13si2918720ybp.102.2020.06.09.10.43.24
+        by mx.google.com with ESMTPS id w1si3113976ybo.483.2020.06.09.10.47.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 10:43:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Jun 2020 10:47:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50990 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33322 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiiHT-0002HZ-M2
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 13:43:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54716)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jiiLt-00076V-GZ
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 13:47:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54620)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jii5F-0003Kp-Kw; Tue, 09 Jun 2020 13:30:45 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:44393)
+ id 1jii47-0001mc-6L; Tue, 09 Jun 2020 13:29:35 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:47189)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jii5E-0003oA-Hq; Tue, 09 Jun 2020 13:30:45 -0400
+ id 1jii46-0003Wt-28; Tue, 09 Jun 2020 13:29:34 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MidPj-1j33nt0xi3-00fjqy; Tue, 09 Jun 2020 19:30:22 +0200
-Subject: Re: [PATCH v2 6/8] hw/hppa/dino: Use the IEC binary prefix definitions
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MCsgS-1jrXkK0xc0-008tas; Tue, 09 Jun 2020 19:29:08 +0200
+Subject: Re: [PATCH v2 1/8] hw/arm/aspeed: Correct DRAM container region size
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200601142930.29408-1-f4bug@amsat.org>
- <20200601142930.29408-7-f4bug@amsat.org>
+ <20200601142930.29408-2-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -98,53 +98,53 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <8fc68c5f-2e62-9466-a6d9-873d6e101286@vivier.eu>
-Date: Tue, 9 Jun 2020 19:30:17 +0200
+Message-ID: <7a9dae30-bb50-f3cc-3806-eaa98d6ec866@vivier.eu>
+Date: Tue, 9 Jun 2020 19:29:04 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200601142930.29408-7-f4bug@amsat.org>
+In-Reply-To: <20200601142930.29408-2-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:kWoyWcZqYkxB7s/T0deiqxYb0mV6anwnErhNnJw54CTKcrEExq5
- Wy7WbIuWz8UHJEoQTXCFHlpBnHOFM1pW0qoRKo0dS9cHB/MtZOzHlLpUvQIDIHSNGyWE2lG
- we8YyRESfkZx/Jy8EBR+N9LwZ5nCp2PPkkTYLXv3W+lHEgcvQlg/mVZPbbMEkrwPpAxHYdA
- K+JIWSB51e8+BYwIJ1t+Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:LPtC63l6hr4=:5ncwvCU6J8Ds3BACsbmPUi
- jd7q7Ndin7jNNOluNsWo953J7uIhze2CX7FfiWSJ6rcUDUcMfEklKnN2LXhVTaALMLkaUk6am
- WaEKH7IayQPQTQrYNupFvtvKCebjhWgzaEBEHxMybSwEqA0v2Lxs92xDJLIjsKWSHi8p3P58M
- JZHaXForg7YWC3CbXOKarbV8qBwTgc+qTGZMoA9V4enq5BQGXPea0t4+/6hojLAGjgLs1WPaH
- ce8eobiQ6J3YyxG5Y1MJVl1HMTw7Fx1v2jPYoplGQYd/y281p8OZIC0JMB9v7JptZFKyEtoFK
- J8va5k11jdtHNrgB+tp/RqUqCYxMgoubhY50SWB/ibSc+OEh/iVNMAkP0ReXnOFPGhwMfD9sO
- E4/rf3Swmb/v5UGdIl0CkksjUg9XNzwdjzyBBTCr5AklKO92SuXyL/cbZdJP4p0EEbFI5SjoE
- E/zKXf/h8CbYhBcY8sl67Ld9y892W6KbUMHIJyOmWVQJxFHdUByQ6Z4Dwbl+dm9aPuCMmoJJc
- clt9wyg/n7nyn6C+VcoBnRpReZlqcNqalvAbmCsOeLekOZi05ZtWNKcrrfuPHq91XRdsc6CLV
- PrwwAsIgkzVCcIInV/BZMPZ0j4BXzWorzG50OYK2bf6NOd3eO5xswqND8tGX+lyATyRWus6u7
- t3VLSRllDFhfVfm0a/XyKDJ9hibl+maQb8q3ldn3PUlcAyK7s7Lr7JP5o0wnhJtwJ9UoDHIWJ
- iZwFbDefDxfCDLWaGEyDhfzE2mBt+Ww9wPNESIj7wjxtMDoANjRYR1pwHeWUJVNaTw7NYL5aZ
- dfDPp5T6SuLp7QZsjam16lPuAe/f9bd+Q2vY8CVzsskNOBzpVI=
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:IQ1R2+W1xcofpjLKnHoQc1zpzlvROpmk9GiFBZ16z8fVF2OKjf5
+ yYih0NjA8uDqyiWcn06cOU3bQ7PIjPUT7Dz+NDsnGMn4H6NBc713S2MO3vvOZcqtKkNXCUW
+ 1zwwuGkXTzMtsuPmxZqOBIPqP+cCgcNbq1OudAa+xfTiOvMSsWTIWF5VqFVauFuct+6R8Vd
+ hxf7zpZhU7hZ+pOgiSnrQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:CJwt+zB6upI=:26cXy6uCAs2DDGt8+kZhBS
+ hkMO3KuFvCWlTqllFDZl4GcdoZr2/9H1PaZ17wsNzTJzyf36CLBL7dgzkLfFvW6uO7aRj+V2z
+ RjAqOZs4D1LIQZdng9CwVgFMz9qPEmBh8LHEDqokteWQ6Rl0TIscpXlIwDROxt/FuuDqvz3hL
+ EDLfaw02eyuq0BQ+yFbxE3+MCcJC/HhIB86kg7hmH1F6J4rRv5ao7xGPwyrhmeNaLE5b6xVqf
+ Un+kRoRxWXpN/OPZjRTKzf1W6ZcZWXU+uyYlcXJ78W770wrl/Ak0A0p8rQFNNQRoDb3eI8MVI
+ uVy0wTdyuqMj1Oh7VVW8AFVDJ5qHt3zVPuvNU9jdo8RPueDg/+f0uDYOCHInNq6QKNHRJLjvf
+ MaAkV0kdizygMwBpYfJYD8gRR4jS+AYCBkqnlPBsCWYcfaIefLvSYJkngvJmD8/TRbU8p1bTS
+ YvRdqpJjUc7Bdj+KPqfOUTuvwvZ9mSsv87LtcEg4o2M39NQHgWo3XmUgOHKdx2+ZrUvuGUw8F
+ KWeWMAVh9NkJemrN8VUxzn+2pPX+BAStwtsz3tHBw//KJrOcG8BK1WtBkYp0CP+5jvjCJLRDw
+ TThQt0VcSu32RTqJ08K2ucL6RuXg7oyj26IMc6nS/mCbawD8SMpHa2+TEOuxX/BOhe0HMMknH
+ ZqIhO7xtA/+aa7cjhF4otYFC4b/wHJ5Hs+K5E+4QACd7xNJA6R0DJpbPSyaWCnEuWLpVIDtWF
+ hYWA4Boa5PVDKh3MG5rqCdG5FglfPL7JVBDmgZF9I89GmQCihVHO+JQ/6lL36HzTU4vNwbLNm
+ T/hesKtFX2HuKbPeAiyyyn+sEHy2MDzW9RIo1GdJBc8af56Z8t4dxZkmxhYa2w3rRCld97F
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 13:30:42
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 13:15:05
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
  RCVD_IN_MSPIKE_H2=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Stefano Stabellini <sstabellini@kernel.org>,
  Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
@@ -152,48 +152,59 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paul Durrant <paul@xen.org>, qemu-trivial@nongnu.org,
  =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
  =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- xen-devel@lists.xenproject.org, Anthony Perard <anthony.perard@citrix.com>,
+ Joel Stanley <joel@jms.id.au>, xen-devel@lists.xenproject.org,
+ Anthony Perard <anthony.perard@citrix.com>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
  Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W6wxwa7r5KGR
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SJfYNM6MsxNX
 
 Le 01/06/2020 à 16:29, Philippe Mathieu-Daudé a écrit :
-> IEC binary prefixes ease code review: the unit is explicit.
+> memory_region_set_size() handle the 16 Exabytes limit by
+> special-casing the UINT64_MAX value. This is not a problem
+> for the 32-bit maximum, 4 GiB.
+> By using the UINT32_MAX value, the aspeed-ram-container
+> MemoryRegion ends up missing 1 byte:
+> 
+>  $ qemu-system-arm -M ast2600-evb -S -monitor stdio
+>  (qemu) info mtree
+> 
+>   address-space: aspeed.fmc-ast2600-dma-dram
+>     0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-container
+>       0000000080000000-00000000bfffffff (prio 0, ram): ram
+>       00000000c0000000-ffffffffffffffff (prio 0, i/o): max_ram
+> 
+> Fix by using the correct value. We now have:
+> 
+>   address-space: aspeed.fmc-ast2600-dma-dram
+>     0000000080000000-000000017fffffff (prio 0, i/o): aspeed-ram-container
+>       0000000080000000-00000000bfffffff (prio 0, ram): ram
+>       00000000c0000000-ffffffffffffffff (prio 0, i/o): max_ram
 > 
 > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/hppa/dino.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  hw/arm/aspeed.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/hppa/dino.c b/hw/hppa/dino.c
-> index 2b1b38c58a..7290f23962 100644
-> --- a/hw/hppa/dino.c
-> +++ b/hw/hppa/dino.c
-> @@ -542,7 +542,7 @@ PCIBus *dino_init(MemoryRegion *addr_space,
->                                  &s->parent_obj.data_mem);
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 2c23297edf..62344ac6a3 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -262,7 +262,7 @@ static void aspeed_machine_init(MachineState *machine)
+>      bmc = g_new0(AspeedBoardState, 1);
 >  
->      /* Dino PCI bus memory.  */
-> -    memory_region_init(&s->pci_mem, OBJECT(s), "pci-memory", 1ull << 32);
-> +    memory_region_init(&s->pci_mem, OBJECT(s), "pci-memory", 4 * GiB);
+>      memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container",
+> -                       UINT32_MAX);
+> +                       4 * GiB);
+>      memory_region_add_subregion(&bmc->ram_container, 0, machine->ram);
 >  
->      b = pci_register_root_bus(dev, "pci", dino_set_irq, dino_pci_map_irq, s,
->                                &s->pci_mem, get_system_io(),
-> @@ -561,7 +561,7 @@ PCIBus *dino_init(MemoryRegion *addr_space,
->      }
->  
->      /* Set up PCI view of memory: Bus master address space.  */
-> -    memory_region_init(&s->bm, OBJECT(s), "bm-dino", 1ull << 32);
-> +    memory_region_init(&s->bm, OBJECT(s), "bm-dino", 4 * GiB);
->      memory_region_init_alias(&s->bm_ram_alias, OBJECT(s),
->                               "bm-system", addr_space, 0,
->                               0xf0000000 + DINO_MEM_CHUNK_SIZE);
+>      object_initialize_child(OBJECT(machine), "soc", &bmc->soc,
 > 
 
 Applied to my trivial-patches branch.
 
 Thanks,
 Laurent
+

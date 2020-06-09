@@ -1,111 +1,111 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp383408lfc;
-        Tue, 9 Jun 2020 04:13:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyiDABxTMPyngoZkNPEG9wkts4XyddFCSAogEuEjGUMPNjQn2Wpf9YA/dJfYigLbaf2DKgq
-X-Received: by 2002:a25:885:: with SMTP id 127mr5730301ybi.118.1591701233998;
-        Tue, 09 Jun 2020 04:13:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591701233; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp385243lfc;
+        Tue, 9 Jun 2020 04:16:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyrG+n0rz6YrzBP+/eGn4H+hRJQdHVDZTsA9cSIn5RC1VcUIvJbX2/IVDFWMWi2kq+zITyv
+X-Received: by 2002:a25:fc0a:: with SMTP id v10mr5304312ybd.119.1591701383591;
+        Tue, 09 Jun 2020 04:16:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591701383; cv=none;
         d=google.com; s=arc-20160816;
-        b=LU+lyh1eF5g409CBiZiXRum8ysHr4WG7dudOV29w2Ygd+mMFrWZeFOe4/sFRSwD1Ah
-         bT/wnidpO9JwwJvY2G8NFg79E/QnZL9NYKlRiGFXjr21UfsWjhZOMolfgz1rvYfCbp4K
-         pvXVnLy39MwT9BAALdaHN139r7eHiXuKZIk+FukUgtuEQoVOPclgyaENoZZfxoVlKlG1
-         WSLSchi9aevKdHSRXcLF7hW49z+rkJwcb58qw8JVzl/EiQ28mfOhjzIPrvyk6ruTBnHc
-         XX4grSBHwai2mJXgesVxSo0fMC7c3K+sdRDpSOktkN+rC9R0+EyxqmF1Kr6EWWtxrnOH
-         wHnA==
+        b=ov3Bl8h4rkCYP/JzG3ermYtAf43DZu7ew3XB16w5eSQenfJsT9KVRHk7vgaPX9PhcH
+         Z93uWND+6o9dyaVYueegNpa6R5NZjWBCEQ+zIqPp3ccl78037Lk4r5Kr7JFjYgmccx0t
+         4ewFR5CO0uUjtU+Enk2Ro/Hgr3aTvEHzErEhSobtiTCLmNhjL1iDKwgjjr+vhR9L1tan
+         ZIfth2GxrFdIrlxDVAz1Dzes5NYQeVNwe1PqY+x6+Gs9c794nnixpTT6H9iG098ByAtt
+         X4ZLOf/BAAQwGmopcQvHKH7HDl37NO3/6GGRWOHf5xNV4kByj1DUa4uv5jXxG+LtwgTP
+         SpUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=gC6WEmr69REgLn2lsRvv9NiGoR/bD5T6HVmJ4ITPF7o=;
-        b=qmxjE2JwW7qkPTTR7Ux/cLsrj984OVchJnswVwi20iyazS7UrrrHsQaGG2idiAFwbN
-         Bn8izM8WbKDQIXelJoQKaiN5jDRdW7xvxtIWjRxQAgXBJMrokPWziuweMohSq1sAxjpp
-         hizisVJwUoO0RpDVwsi0SgJac2lLB3Ra4xV+3yZXdhkg4H1N6TzVce1IPd9PFKqXdkh0
-         YtB7vEPRYfT+LvGagz8A4NiVI/5HRDKKri7i83kQYdfal52zljW080H4QiBlA2UXH2UZ
-         JiFE4QmsRtStLyboERU7JBUx4dKR7TkXEe8R7/giZLGmL+n1zrqKNWTVLLP/5bNLxriu
-         kTeg==
+        bh=O3lzSLGxJ8WgRzoyp9NolnrgEUC6tjBqCyG0KDbIHi0=;
+        b=xlFRoIwW8mIJF0ZUhIqXk9rqkOuQ8RqStm9iguvnEYfSIobI7YEPaLn+0jtY2fyX3E
+         Ls0L7meqfHTDnz9N5iYx6TYn7iNnNPk/VhUprKisP6A7j6imtogrXfcoxBEZFOdDNnEs
+         qnMLSIMklpTRe1VrVJKxXiicz27G0YQqPaVCPstMqyTTF1GgJ6juyGNpRUxRPuhU9qsD
+         u/IgspNxMpJWF5e0q+rZkQXJigrIXK6WMiO6jxz7zk/Xt4xtEViNfG3AMnfz5btDvMky
+         SRZFx8Ldn6hXBNwNZOy8BHBEnXdLEKDM3ykzvIrN/UD55C6MwaDnLZb8XgPJA3NUQskO
+         pOFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MKUqEEYx;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Rg2sDSqN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t3si2089179yba.451.2020.06.09.04.13.53
+        by mx.google.com with ESMTPS id v68si2421424ybb.215.2020.06.09.04.16.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 04:13:53 -0700 (PDT)
+        Tue, 09 Jun 2020 04:16:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MKUqEEYx;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Rg2sDSqN;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54408 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34142 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jicCX-0000WZ-B8
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 07:13:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34306)
+	id 1jicEw-0003qR-RI
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 07:16:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34650)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jic9v-0005gh-2X
- for qemu-devel@nongnu.org; Tue, 09 Jun 2020 07:11:11 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:51343
+ id 1jicCd-0001LF-KH
+ for qemu-devel@nongnu.org; Tue, 09 Jun 2020 07:13:59 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:51870
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1jic9u-00022r-6x
- for qemu-devel@nongnu.org; Tue, 09 Jun 2020 07:11:10 -0400
+ id 1jicCc-0002IF-S4
+ for qemu-devel@nongnu.org; Tue, 09 Jun 2020 07:13:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591701069;
+ s=mimecast20190719; t=1591701238;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gC6WEmr69REgLn2lsRvv9NiGoR/bD5T6HVmJ4ITPF7o=;
- b=MKUqEEYxr+tXS/WnVImsNVkESZCN52rzgnGVVqCOo47TU9mBwPU7xgPtfJqSU2yicTt/c0
- kqm3UXwsk6R1nlldv+2Yuc8xZHoR2WQvCO8yBXP2Xfa60juhVkINNCJTJM+V+9qUIcS1bM
- ejboYQ2UZdp6GUZ9WV8DPfS1HSPgFR8=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-302-BscNuXfWPEu63lrZVCSaiA-1; Tue, 09 Jun 2020 07:11:07 -0400
-X-MC-Unique: BscNuXfWPEu63lrZVCSaiA-1
-Received: by mail-wr1-f69.google.com with SMTP id i6so6868526wrr.23
- for <qemu-devel@nongnu.org>; Tue, 09 Jun 2020 04:11:07 -0700 (PDT)
+ bh=O3lzSLGxJ8WgRzoyp9NolnrgEUC6tjBqCyG0KDbIHi0=;
+ b=Rg2sDSqNz6mSUZRA+rtHXrL0X8hkZG8/Yib8T5MElWpJrvDYFLsgJmBy9lW2UeYM51StFY
+ UkcWSQS/PloyuYYy/Xpjjf5hprG+cxGSoyrT/2VOiHzaJ/R70EN8uIjbVsKR845DSwfMV9
+ 5lYphO8PLBcT7vqcyC+3RT0K3+anc6o=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-360-NOY5WbszN2anTZ7NwNEvOA-1; Tue, 09 Jun 2020 07:13:56 -0400
+X-MC-Unique: NOY5WbszN2anTZ7NwNEvOA-1
+Received: by mail-wm1-f70.google.com with SMTP id p24so530083wma.4
+ for <qemu-devel@nongnu.org>; Tue, 09 Jun 2020 04:13:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=gC6WEmr69REgLn2lsRvv9NiGoR/bD5T6HVmJ4ITPF7o=;
- b=jOqE9Q6kXX4XC3VEg7m+/vp0Qq/vff3dKcxOeUs6aiVIUkRSEhyEuzeBc4/TuoXSnq
- ruVob3BXHB2iDhgFpLqFnoi8diIV7vz55cCW3ttxUHiVWvWqG7ROAljPQKgTMHHoFPeJ
- nCOFxgf4G7P/hmmcOUXHBDx6dskZhHy9XDM5LhjXyjtMdGWYagqZowQqq2wRE071A+Kc
- E72eLNh5kgMat+pzIxHev0oERlnsQ4qxqUBsRyGFp/1U6IjbMEU3EjD2eQ2z+O/UWK0e
- Hy1f8esKRW0Mw01p8HIhBFv3+iO0y9h6zPEpqvT8HVPDW030DDr4Ne28HKAyY/L7jogc
- 25DQ==
-X-Gm-Message-State: AOAM533ia7xefvQMkjrvxcuFEWDTyOKvNx0VE6uOmryMjn5Gy2MpLB4+
- MlRszJNm9/zpwhmU9ZIMckKTGFrIbzdIhL2VwbdEHloLYrqYcWSmeKmNXS62RIFm9BP906ra/co
- LdnMLKL+QW2PlfhU=
-X-Received: by 2002:a5d:628c:: with SMTP id k12mr3812479wru.211.1591701066334; 
- Tue, 09 Jun 2020 04:11:06 -0700 (PDT)
-X-Received: by 2002:a5d:628c:: with SMTP id k12mr3812427wru.211.1591701066086; 
- Tue, 09 Jun 2020 04:11:06 -0700 (PDT)
+ bh=O3lzSLGxJ8WgRzoyp9NolnrgEUC6tjBqCyG0KDbIHi0=;
+ b=bzpgytSgCmY7MgxGfykwW6P0qRsyyU2pvohpWCkYKu5aoZNWut/hauCBUhIHHHIc0H
+ pwifm8CrW7Yd8Ts+YYzXESVKhTDrkmfukc5zkwI8HMd++3EO5G2a7XruFhnWLeAN7/TZ
+ UUxfn/P5YC5U1l+x4nORbkAFZ0BSYmxmrPezBfn7Ro/0zNEgthfaRcAAr2+DH36ogsvL
+ GTcC8sBye3zy5GLQMwAqGwtYu5ioNL0gsPIlM/ZebmGKNntdKvkZ86H9KQMwYCGd36Vz
+ rQgLm/WnGP5U6B6qHoku7IRVg0FXqrfkLr3q+WJPYVKUXYul5VuEpPSVI5LA6n98xTr9
+ ntpQ==
+X-Gm-Message-State: AOAM531kINJ5mZUb+soVJJFPu3nqvRXrFdumqVFL0V3Yommo3dANNrO3
+ VMuHBbu+lF/pzHTPsiFT0jN9+6LzxBmumnfHK2Dn1gOgedznAH5WlGzPa/82kpWaKu5h2tX27Hb
+ sAlb4rpmSBp5mE1E=
+X-Received: by 2002:adf:f582:: with SMTP id f2mr4186332wro.204.1591701235066; 
+ Tue, 09 Jun 2020 04:13:55 -0700 (PDT)
+X-Received: by 2002:adf:f582:: with SMTP id f2mr4186295wro.204.1591701234805; 
+ Tue, 09 Jun 2020 04:13:54 -0700 (PDT)
 Received: from [192.168.178.58] ([151.21.172.168])
- by smtp.gmail.com with ESMTPSA id r12sm3176227wrc.22.2020.06.09.04.11.04
+ by smtp.gmail.com with ESMTPSA id 50sm3179768wra.1.2020.06.09.04.13.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Jun 2020 04:11:05 -0700 (PDT)
-Subject: Re: [RFC PATCH 21/35] hw/lm32/lm32_hwsetup: Emit warning when old
+ Tue, 09 Jun 2020 04:13:54 -0700 (PDT)
+Subject: Re: [RFC PATCH 26/35] hw/openrisc/cputimer: Emit warning when old
  code is used
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 References: <20200608160044.15531-1-philmd@redhat.com>
- <20200608160044.15531-22-philmd@redhat.com>
+ <20200608160044.15531-27-philmd@redhat.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <3e036ca7-753b-55fb-3a19-7d50f5b6fd19@redhat.com>
-Date: Tue, 9 Jun 2020 13:11:03 +0200
+Message-ID: <4cdb0948-56b8-6d72-2030-ea00186c47bc@redhat.com>
+Date: Tue, 9 Jun 2020 13:13:51 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20200608160044.15531-22-philmd@redhat.com>
+In-Reply-To: <20200608160044.15531-27-philmd@redhat.com>
 Content-Language: en-US
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
@@ -157,40 +157,42 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2NVs2B9OvjRB
+X-TUID: xUqdO+MC2MCu
 
 On 08/06/20 18:00, Philippe Mathieu-Daudé wrote:
 > This code hasn't been QOM'ified yet. Warn the user.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/lm32/lm32_hwsetup.h | 3 +++
+>  hw/openrisc/cputimer.c | 3 +++
 >  1 file changed, 3 insertions(+)
 > 
-> diff --git a/hw/lm32/lm32_hwsetup.h b/hw/lm32/lm32_hwsetup.h
-> index de94de177a..f4a4d8fe4b 100644
-> --- a/hw/lm32/lm32_hwsetup.h
-> +++ b/hw/lm32/lm32_hwsetup.h
-> @@ -27,6 +27,7 @@
->  
->  #include "qemu/cutils.h"
->  #include "hw/loader.h"
+> diff --git a/hw/openrisc/cputimer.c b/hw/openrisc/cputimer.c
+> index 93268815d8..60f2c9667f 100644
+> --- a/hw/openrisc/cputimer.c
+> +++ b/hw/openrisc/cputimer.c
+> @@ -22,6 +22,7 @@
+>  #include "cpu.h"
+>  #include "migration/vmstate.h"
+>  #include "qemu/timer.h"
 > +#include "hw/qdev-deprecated.h"
 >  
->  typedef struct {
->      void *data;
-> @@ -57,6 +58,8 @@ static inline HWSetup *hwsetup_init(void)
->  {
->      HWSetup *hw;
+>  #define TIMER_PERIOD 50 /* 50 ns period for 20 MHz timer */
 >  
+> @@ -135,6 +136,8 @@ static const VMStateDescription vmstate_or1k_timer = {
+>  
+>  void cpu_openrisc_clock_init(OpenRISCCPU *cpu)
+>  {
 > +    qdev_warn_deprecated_function_used();
 > +
->      hw = g_malloc(sizeof(HWSetup));
->      hw->data = g_malloc0(TARGET_PAGE_SIZE);
->      hw->ptr = hw->data;
+>      cpu->env.timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, &openrisc_timer_cb, cpu);
+>      cpu->env.ttmr = 0x00000000;
+>  
 > 
 
-This one is okay.
+
+I was about to give this a pass, but if we did so it should be the CPU
+itself that calls cpu_openrisc_clock_init (not openrisc_sim_init).
 
 Paolo
 

@@ -1,101 +1,102 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp545876lfc;
-        Tue, 9 Jun 2020 07:24:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyl2ZszGRnp0fgTY9ri5sDmcc5WpHRnn8CYCu+a5prfHMtXyFgrr13gHzCyx4ts1ZC6rRys
-X-Received: by 2002:a25:2e48:: with SMTP id b8mr7050141ybn.521.1591712690023;
-        Tue, 09 Jun 2020 07:24:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591712690; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp551742lfc;
+        Tue, 9 Jun 2020 07:31:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZDKBhvC/m7HJkdoJ0IWfnvrPFtV8Y5IV82Qjzdby7IG6ry5dTSsw1TxOpaQX3RgmaydY2
+X-Received: by 2002:a25:c4c5:: with SMTP id u188mr6738835ybf.418.1591713081883;
+        Tue, 09 Jun 2020 07:31:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591713081; cv=none;
         d=google.com; s=arc-20160816;
-        b=kaZxIqRuWxlRvjCfuoR817qY45GaTIX6blFm04Iq0CX+eciHWQrGIVtCoIGEPfaKNO
-         veMrqRYEQudojoVaXPJna+Q7KTr9D9x+09aTD0RvojxPevVxya8NzjGZ/e3iNf1AiYYg
-         06uA53Cav6ekh2srK840zub1JnPp8ceSDOphdbtTDIazNYbAoBrhBY0JtxLHaHL8IfyW
-         4EXVGceTvTAZfbo1iz1TI7gQP2HX/7eEmKX156OMDAiFCsL0+8eZURndxR0qmYu3Jlfh
-         pg2Zw3besjfIOhxjrmMK2OeNZZNaZnrkmBRAwU5c+5jUhx25vuqcFb8cIA/fBS2bEEvi
-         zN5A==
+        b=RTCqh2cV40XuVDDTpQI8/9L14tsCAFhMazkY/PNnLU3uNgOo0VpKybFQYdVJDbkW8C
+         RdtnmVWwMm1mHTKOfCINvIcCpLJphrXTILsx0vr7Mx4RVD/yHXysE8xs65nN8a1NEkRY
+         S2+yQJEf762VDro4R4+LezgwycI3QckqQz+q/8sDx9iYlaYU+uWYv/8a2ZE01eib7i+H
+         VbmKlB47KnTzIatDEDRseZeW4IAEctalnIokYu88Rj077SkZbmachE41DifYoLXEGMwK
+         86SKAkb/Pnpj0mUV143iTn+xTnZSnv83EtAeFyqyrgFkjD4s4z3yk6zmRaTFutlGVO7U
+         8vaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=y+Fw1Essfc+ljt+c7AIE86vlszCoGY2qlzITDZgrcrc=;
-        b=fy4eie07GyBFbXsMXm5/AsNqk6sxWM8kNlsqOTjNbhZlYTeUxWn90yYhIop6562Kpn
-         NnWxullu1TCOvLQiKCaUE4KveMZX+4ICgBCTwQirNUZ9LBs7eOfmk8ax2t8krIoHk6sl
-         ZjkREG13HRiuPIeLODYkCo7q8ODaZthcJLhyIQNXqhCGrA5aJ0dGewRjHOeAiCtqzn/G
-         TsKMbmL/5a/fs6+q7vigT4w/p8Qqy4J5PuoiWjeDMbA1dPCOOOUyNh4QTKt6i2gNV7g2
-         2iqvM+fOX1uASK1pAQdq4KFfuL0Ao2G8iuhrj/osgo6NsAVw98H5URWGq7HOhayInX/X
-         bulA==
+         :message-id:organization:from:references:to:subject:dkim-signature;
+        bh=uVeprVEMa7K6trnr6W3yRjhjoGokXnTT0tdSCYklKz4=;
+        b=avRGv8ru3mnKIbBHnIremae4vsGJ1ZXT5XWjdik7Ve+L2nnzI2jr+0YQ4p4fCv51m+
+         8Sy+Ji/1wVumTORqjcd1Up6htjUglvLu0R0FdHDcG+BFEJHP0+vZnN9NRF5DfeDAYNSt
+         LOHTKX69Duj3/R3Q9wK5Njt7rREY90jFWUvd3+ORA+qzJHlWjpOFYasBZdsTA3fJmetl
+         KJMdpi9kcpwdxBPR5fQYXnw3bCFVueYUPnIHFq1Oivnp39AHCUoyx2PicZheUb3+uJvv
+         59AptnnH/dKIaRWZQxNSOu8I46/oa4QjiK4YZwDTzgOrSFz7qpUF9/WFxiArKzfJ76+R
+         bhfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bn5qrlNo;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Adu3+VH7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 189si2860667ybn.283.2020.06.09.07.24.49
+        by mx.google.com with ESMTPS id m64si2500606ybm.304.2020.06.09.07.31.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 07:24:50 -0700 (PDT)
+        Tue, 09 Jun 2020 07:31:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bn5qrlNo;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Adu3+VH7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45952 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35692 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jifBJ-0003gq-9W
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 10:24:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56002)
+	id 1jifHd-00034x-5b
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 10:31:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56830)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jifB7-0003dC-2Q
- for qemu-arm@nongnu.org; Tue, 09 Jun 2020 10:24:37 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:42017
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jifFu-00015R-TG
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2020 10:29:34 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20250
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jifB6-0001IQ-7V
- for qemu-arm@nongnu.org; Tue, 09 Jun 2020 10:24:36 -0400
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jifFt-0002FK-Pn
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2020 10:29:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591712675;
+ s=mimecast20190719; t=1591712972;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=y+Fw1Essfc+ljt+c7AIE86vlszCoGY2qlzITDZgrcrc=;
- b=bn5qrlNolnUTPG31bwwR2l/2piF+7LCUtRXYp7cGXaDVnjSHO7PhoEMO56Yl7Q1j/DDE1K
- +CBLDtPEb0qZFnYx3bo2XJT+dPubkvdc3yWcN7eomV0fRVx08jLVVbsrY/W7SMc2eMwZIf
- m5zfTZA2xW4zYFNTHch4LVBT/PkIfco=
+ bh=uVeprVEMa7K6trnr6W3yRjhjoGokXnTT0tdSCYklKz4=;
+ b=Adu3+VH7FcZR7KWCRO2BUrEgtM5cGcp75aiTsGkjDHCAb1RmtU95sfuEhg38ejoH78UzRQ
+ h2SUCGXPxC42Rg2p1oKgqKoLYDftY8mpE5C5EDTtGCva74K4aR8oaAiYVZsn+8tD0GHlh1
+ 13z7Qy2OV/G0AHClbZx+pKtiZLamDgU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-273-4W8RgeuCO1ul7qZrrh6ieA-1; Tue, 09 Jun 2020 10:24:27 -0400
-X-MC-Unique: 4W8RgeuCO1ul7qZrrh6ieA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-80-0_tqHkheMZKd4ycDeKfQbQ-1; Tue, 09 Jun 2020 10:29:28 -0400
+X-MC-Unique: 0_tqHkheMZKd4ycDeKfQbQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 854BC83DD19;
- Tue,  9 Jun 2020 14:24:25 +0000 (UTC)
-Received: from [10.36.114.197] (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C4CBE61169;
- Tue,  9 Jun 2020 14:24:10 +0000 (UTC)
-Subject: Re: [PATCH v2 0/5] TPM-TIS bios-tables-test
-To: qemu-devel@nongnu.org, no-reply@patchew.org
-References: <159171124889.14379.10327774755780970706@45ef0f9c86ae>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <b7da908f-2632-fe87-fe24-302d0ba33480@redhat.com>
-Date: Tue, 9 Jun 2020 16:24:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5BC808014D9;
+ Tue,  9 Jun 2020 14:29:26 +0000 (UTC)
+Received: from [10.3.113.22] (ovpn-113-22.phx2.redhat.com [10.3.113.22])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 08CF65D9E5;
+ Tue,  9 Jun 2020 14:29:24 +0000 (UTC)
+Subject: Re: [RFC PATCH 2/5] hw/misc/led: Add LED_STATUS_CHANGED QAPI event
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200609123425.6921-1-f4bug@amsat.org>
+ <20200609123425.6921-3-f4bug@amsat.org>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <8e5154ba-0d80-d6f3-0da0-c20072173d9a@redhat.com>
+Date: Tue, 9 Jun 2020 09:29:24 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <159171124889.14379.10327774755780970706@45ef0f9c86ae>
+In-Reply-To: <20200609123425.6921-3-f4bug@amsat.org>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 23:42:34
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=eblake@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 02:44:16
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -116,67 +117,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, mst@redhat.com,
- lersek@redhat.com, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- imammedo@redhat.com, marcandre.lureau@redhat.com, stefanb@linux.ibm.com,
- philmd@redhat.com, ardb@kernel.org, eric.auger.pro@gmail.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Joaquin de Andres <me@xcancerberox.com.ar>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Zczpq/3MwkYU
+X-TUID: Kpg3+JJIeuf0
 
-Hi,
-
-On 6/9/20 4:00 PM, no-reply@patchew.org wrote:
-> Patchew URL: https://patchew.org/QEMU/20200609125409.24179-1-eric.auger@redhat.com/
+On 6/9/20 7:34 AM, Philippe Mathieu-Daudé wrote:
+> Allow LED devices to emit STATUS_CHANGED events on a QMP chardev.
 > 
+> QMP event examples:
 > 
+> {
+>      "timestamp": {
+>          "seconds": 1591704274,
+>          "microseconds": 520850
+>      },
+>      "event": "LED_STATUS_CHANGED",
+>      "data": {
+>          "name": "Green LED #0",
+>          "status": "on"
+>      }
+> }
+> {
+>      "timestamp": {
+>          "seconds": 1591704275,
+>          "microseconds": 530912
+>      },
+>      "event": "LED_STATUS_CHANGED",
+>      "data": {
+>          "name": "Green LED #0",
+>          "status": "off"
+>      }
+> }
 > 
-> Hi,
-> 
-> This series failed the docker-quick@centos7 build test. Please find the testing commands and
-> their output below. If you have Docker installed, you can probably reproduce it
-> locally.
-time make docker-test-quick@centos7 SHOW_ENV=1 J=14 NETWORK=1
-runs fine on my side. I guess what is missing here is the dependency
-quoted in the cover letter:
-"acpi: tpm: Do not build TCPA table for TPM 2"
-
-Thanks
-
-Eric
-
-> 
-> === TEST SCRIPT BEGIN ===
-> #!/bin/bash
-> make docker-image-centos7 V=1 NETWORK=1
-> time make docker-test-quick@centos7 SHOW_ENV=1 J=14 NETWORK=1
-> === TEST SCRIPT END ===
-> 
-> Looking for expected file 'tests/data/acpi/q35/TCPA.tis'
-> Looking for expected file 'tests/data/acpi/q35/TCPA'
-> **
-> ERROR:/tmp/qemu-test/src/tests/qtest/bios-tables-test.c:370:load_expected_aml: assertion failed: (exp_sdt.aml_file)
-> ERROR - Bail out! ERROR:/tmp/qemu-test/src/tests/qtest/bios-tables-test.c:370:load_expected_aml: assertion failed: (exp_sdt.aml_file)
-> make: *** [check-qtest-x86_64] Error 1
-> make: *** Waiting for unfinished jobs....
->   TEST    iotest-qcow2: 030
->   TEST    iotest-qcow2: 031
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->     raise CalledProcessError(retcode, cmd)
-> subprocess.CalledProcessError: Command '['sudo', '-n', 'docker', 'run', '--label', 'com.qemu.instance.uuid=71e400be07f14cd09538753c536cf099', '-u', '1001', '--security-opt', 'seccomp=unconfined', '--rm', '-e', 'TARGET_LIST=', '-e', 'EXTRA_CONFIGURE_OPTS=', '-e', 'V=', '-e', 'J=14', '-e', 'DEBUG=', '-e', 'SHOW_ENV=1', '-e', 'CCACHE_DIR=/var/tmp/ccache', '-v', '/home/patchew/.cache/qemu-docker-ccache:/var/tmp/ccache:z', '-v', '/var/tmp/patchew-tester-tmp-3bqmv5j2/src/docker-src.2020-06-09-09.46.26.7521:/var/tmp/qemu:z,ro', 'qemu:centos7', '/var/tmp/qemu/run', 'test-quick']' returned non-zero exit status 2.
-> filter=--filter=label=com.qemu.instance.uuid=71e400be07f14cd09538753c536cf099
-> make[1]: *** [docker-run] Error 1
-> make[1]: Leaving directory `/var/tmp/patchew-tester-tmp-3bqmv5j2/src'
-> make: *** [docker-run-test-quick@centos7] Error 2
-> 
-> real    14m23.108s
-> user    0m9.457s
-> 
-> 
-> The full log is available at
-> http://patchew.org/logs/20200609125409.24179-1-eric.auger@redhat.com/testing.docker-quick@centos7/?type=message.
-> ---
-> Email generated automatically by Patchew [https://patchew.org/].
-> Please send your feedback to patchew-devel@redhat.com
-> 
+
+The QAPI addition looks reasonable, however,
+
+> +++ b/hw/misc/led.c
+> @@ -7,6 +7,7 @@
+>    */
+>   #include "qemu/osdep.h"
+>   #include "qapi/error.h"
+> +#include "qapi/qapi-events-led.h"
+>   #include "hw/qdev-properties.h"
+>   #include "hw/misc/led.h"
+>   #include "hw/irq.h"
+> @@ -19,6 +20,9 @@ static void led_set(void *opaque, int line, int new_state)
+>   
+>       trace_led_set(s->name, s->current_state, new_state);
+>   
+> +    /* FIXME QMP rate limite? */
+
+s/limite/limit/
+
+Yes, this is under guest control, so you MUST rate limit to avoid the 
+guest being able to DoS qemu by changing the LED so frequently as to 
+overwhelm the QMP connection with events.
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 

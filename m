@@ -1,60 +1,61 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp717717lfc;
-        Tue, 9 Jun 2020 10:47:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwizNt/17kPx9DMhz2gIGCFVpk5SGfIWpkfvc/+ebOQqhMeIsbiVcP7DxQwtUj03JsqcYzR
-X-Received: by 2002:a25:8284:: with SMTP id r4mr7657344ybk.351.1591724878383;
-        Tue, 09 Jun 2020 10:47:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591724878; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp719430lfc;
+        Tue, 9 Jun 2020 10:50:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyXkDWjbhcbyH58qM7MUFh6SYTEQxseETcL2IGJ6/2uKAWfcL70WsprPGj1CxSbBoT3B4md
+X-Received: by 2002:a25:a408:: with SMTP id f8mr7456084ybi.145.1591725024674;
+        Tue, 09 Jun 2020 10:50:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591725024; cv=none;
         d=google.com; s=arc-20160816;
-        b=ouTtq7ozx4GWFfFfNmY0wUmBu+fg6V/bz3NSoM1Z6odEPvy33KByv6tssljdpnlsL7
-         b9SpvCs3emCsUe73098kerf4M0zf4YAOcfUz18pkkLaMS884koMSQHQ+NVaU89HNvuUA
-         qkFtFqyT3eVLWa8myFHFhgtkvk28t9anp291KDngc+Qg5AzJYN46A3zOB15amScNlb9Y
-         i4QAjWbYbxncYlCwK0aXAeO7X7euIO9Bp7K/Vi5ed467snfsqrta3aTrE5VaewUl0Tur
-         JIeaJzMbpNhVTb4+D+FppfYZjhkBbls7TV8UmFJ+NFk5CVRIrL349lUt4L5CLgjwMwEk
-         GA5g==
+        b=GkbZLLT6O+/ZBizpwG55NEv2/Py4zCKoWcwNAzZeBWFjDSx6wvRXahm4icCPAY9+cJ
+         lwVo/wuf/7Gl1qDr9phgA0M+k1yQxYLM/iUHkk8wb4OL7uxRJeFW/+oqk72FZUJqr9wh
+         J2HaGJdF4YU7wm8dp9Bw/23tL8COmG4V7p3D/z5AG+Yq7XTJKiKp+Wvv8PNXRACTqcQB
+         /vEOA/ce4BeEywsSWId++5Mss3BmyDBeGVivsnMv8pQJDuGD68dyWmyJpCAGJO5UaW7l
+         9pe16Pa9K2l9oalFW8baxw9UPpDuajQICHQjJkb+mbYTiJ62QvKJl9yiPvnfR+eDI/Ex
+         /SzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject;
-        bh=rGKimE11U37kNxv9kdm7IZjcilvUV1BQuIP0wflTD+g=;
-        b=DgI/J+L3VBfwdqBDUKKODPOW+cHSYx8FCwzffx5O5PN2y9J1WkQIVsBlDNYKX/kce6
-         FlEi4ECRLszbF5lS0wuoD8S/hPFoLeq1lQWH9MRP5a+TPJvHMJmk5nhfWBR2m5CSgh+p
-         Sf9MzV2i0JaHMJHmTHPmXJJVgme1V8TaDkRsghrbtpr57mH6aV+FWagNNWOvDd/TjWs2
-         u18/VBiXlTrBE8rKWhIKe6xOhnmTJpxj+uR+FzB9FvyjzpPEMSEDkcEtIEcU18WWHezQ
-         rTaF/Htq7bjHmgZ/gLmffC2ySC4Pyso1Yd1P4UN16uAxs6waHQSwS2Y+kPbDHTtE6zF9
-         7rYw==
+        bh=kJsOiZBKiXo3gfE3adGlDoqqHAwaK8GEVVJGxZ936Rk=;
+        b=I3to7xrqYhdjNkjxOvavJLyjY0RKWCf8Z9gQL/nj4mMWc6oiFTK3xRbOhUcHF3pwLx
+         mZX4veF6AP2IKMIs11FgG0oOrooH9J2xP5CT5XFEWmlOE/fMXuhwASVf/DWt2d1bVl2t
+         QugveltRkl6/GyfQVW+JP68oR3m3NWZk8018ooHYM3CUDuTm3qvwnc1c+JFXwIq9s9H6
+         uEMeNVO1AtOqArs6satHF+3KGRDQt2xr/S+Y/uAEqDqCSwntrK6aLZK1P/7W+vh8WrV2
+         nxpY051gG+PXHi9HFOIgkUDOowbquFhRUvpBvT5p/CoOwzzYBQyuGIMV28d/k6NOxrqA
+         mONg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w1si3113976ybo.483.2020.06.09.10.47.58
+        by mx.google.com with ESMTPS id l4si3024737ybf.87.2020.06.09.10.50.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 10:47:58 -0700 (PDT)
+        Tue, 09 Jun 2020 10:50:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33322 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40602 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiiLt-00076V-GZ
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 13:47:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54620)
+	id 1jiiOF-0001wf-VV
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 13:50:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54876)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jii47-0001mc-6L; Tue, 09 Jun 2020 13:29:35 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:47189)
+ id 1jii6q-0005Jx-Vm; Tue, 09 Jun 2020 13:32:24 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:55425)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jii46-0003Wt-28; Tue, 09 Jun 2020 13:29:34 -0400
+ id 1jii6o-0003uq-NP; Tue, 09 Jun 2020 13:32:24 -0400
 Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MCsgS-1jrXkK0xc0-008tas; Tue, 09 Jun 2020 19:29:08 +0200
-Subject: Re: [PATCH v2 1/8] hw/arm/aspeed: Correct DRAM container region size
+ (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1N5VPe-1itPo10Xxi-016yew; Tue, 09 Jun 2020 19:32:03 +0200
+Subject: Re: [PATCH v2 7/8] hw/i386/xen/xen-hvm: Use the IEC binary prefix
+ definitions
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200601142930.29408-1-f4bug@amsat.org>
- <20200601142930.29408-2-f4bug@amsat.org>
+ <20200601142930.29408-8-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -98,35 +99,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <7a9dae30-bb50-f3cc-3806-eaa98d6ec866@vivier.eu>
-Date: Tue, 9 Jun 2020 19:29:04 +0200
+Message-ID: <2f517282-a950-7bb0-219b-87c843ba1aa9@vivier.eu>
+Date: Tue, 9 Jun 2020 19:31:59 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200601142930.29408-2-f4bug@amsat.org>
+In-Reply-To: <20200601142930.29408-8-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:IQ1R2+W1xcofpjLKnHoQc1zpzlvROpmk9GiFBZ16z8fVF2OKjf5
- yYih0NjA8uDqyiWcn06cOU3bQ7PIjPUT7Dz+NDsnGMn4H6NBc713S2MO3vvOZcqtKkNXCUW
- 1zwwuGkXTzMtsuPmxZqOBIPqP+cCgcNbq1OudAa+xfTiOvMSsWTIWF5VqFVauFuct+6R8Vd
- hxf7zpZhU7hZ+pOgiSnrQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:CJwt+zB6upI=:26cXy6uCAs2DDGt8+kZhBS
- hkMO3KuFvCWlTqllFDZl4GcdoZr2/9H1PaZ17wsNzTJzyf36CLBL7dgzkLfFvW6uO7aRj+V2z
- RjAqOZs4D1LIQZdng9CwVgFMz9qPEmBh8LHEDqokteWQ6Rl0TIscpXlIwDROxt/FuuDqvz3hL
- EDLfaw02eyuq0BQ+yFbxE3+MCcJC/HhIB86kg7hmH1F6J4rRv5ao7xGPwyrhmeNaLE5b6xVqf
- Un+kRoRxWXpN/OPZjRTKzf1W6ZcZWXU+uyYlcXJ78W770wrl/Ak0A0p8rQFNNQRoDb3eI8MVI
- uVy0wTdyuqMj1Oh7VVW8AFVDJ5qHt3zVPuvNU9jdo8RPueDg/+f0uDYOCHInNq6QKNHRJLjvf
- MaAkV0kdizygMwBpYfJYD8gRR4jS+AYCBkqnlPBsCWYcfaIefLvSYJkngvJmD8/TRbU8p1bTS
- YvRdqpJjUc7Bdj+KPqfOUTuvwvZ9mSsv87LtcEg4o2M39NQHgWo3XmUgOHKdx2+ZrUvuGUw8F
- KWeWMAVh9NkJemrN8VUxzn+2pPX+BAStwtsz3tHBw//KJrOcG8BK1WtBkYp0CP+5jvjCJLRDw
- TThQt0VcSu32RTqJ08K2ucL6RuXg7oyj26IMc6nS/mCbawD8SMpHa2+TEOuxX/BOhe0HMMknH
- ZqIhO7xtA/+aa7cjhF4otYFC4b/wHJ5Hs+K5E+4QACd7xNJA6R0DJpbPSyaWCnEuWLpVIDtWF
- hYWA4Boa5PVDKh3MG5rqCdG5FglfPL7JVBDmgZF9I89GmQCihVHO+JQ/6lL36HzTU4vNwbLNm
- T/hesKtFX2HuKbPeAiyyyn+sEHy2MDzW9RIo1GdJBc8af56Z8t4dxZkmxhYa2w3rRCld97F
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:iBNPhQQcrpUp/3RAl90FPZv091PWu/WsnYMgxRBZUgS/NpN9E+C
+ hZxv9XQwD3pvXNRszVBmOuyML7xIzkfIjDmnCak7jtmyRhsn3dZ+FABeocxGO22XD30Iug2
+ 2KpzFLsqT51SmDQGOSSyQL3TFg5cjFVrvR2uJ3OvVHP6vvsbqoH3O26u1u96CFJv2nlHiiZ
+ 8JJJhKp1SM7+GZbjvz0wA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:f0xq687f0Ww=:rmoSs+agvYGUQxwmVwBlzG
+ uJ00JCPeTiKSB6VJe8aFIHvejjF1nLIDFIhOy8/BxgRn4tcmimaGGWYuVSsLGimS1zZEYqH7a
+ hS/1q1JknS0LDzIXPDeciGCodKdrcKdkrOlr0Wj0N5jZe0CxFkIoxhEB31xhFd4RF4HBPGnj/
+ K8UCu/c/GcDdAY3iDVi00f8othPJcXVUIMGNX+GMbSGpSFSkhxcDtjtvuanRRS7xTXMsvKPzS
+ EFEeIobGXGwS5glc06/bSZuS480NTXr3coFiJzl3zRlcqTJvoMYkng/VYn3vrHdwnhouzXYxj
+ istZ7dmJpA4v/C7qd1CHIkz4G8+nyTsC+SA+HAhan0L1e4spAw7eOPpWnEumjILHnw9cb/8lH
+ /F3XGTbspZ7C/QtdKiZNRWQJZzu60q3i6oLOvMGKb/X0efRhylsZA5bY4f2PBvde0beFJX715
+ FyhSyZAtMZ3bSCr87PH1vdnB6uS8zBHHx+LVW2vFJjCVHwpIrc1fekNVy1+ydLDOilKQlZInS
+ wWgdSw+9HhAB88V+ZT0ItK/tRG9PiJBkEKoOQciDMFXp+yf0jk6BD8fCsuR7mh/kpNeDuISpl
+ S1v69XMQWtzBhHpJuRHfGYED1mPk/dvosk92PG3yZ7P/+/F5Y/5Hc94J8hly7PjfkqMslaqhW
+ tgIzGvwiMDajz22JOFSR+OafakXMheXLvwbmv9fy2XLkqnBN0uic57Po59R/Ef82WywX85Ift
+ WZ9EcE8/wLb4eOS83UeJS2ZywR5vjabl8J4pt2e8MAX6mQwtJnxpWuzHp053i1phlEMGvjSPv
+ IlkY22vAcvv6v51cXSZcAIYFfEAeBXpnNkpNz1n94K66tKGTvqIBx3+kdVByp/RAREhhqac
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 13:15:05
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 12:51:12
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -158,49 +159,38 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SJfYNM6MsxNX
+X-TUID: VaV7mNLWaleu
 
 Le 01/06/2020 à 16:29, Philippe Mathieu-Daudé a écrit :
-> memory_region_set_size() handle the 16 Exabytes limit by
-> special-casing the UINT64_MAX value. This is not a problem
-> for the 32-bit maximum, 4 GiB.
-> By using the UINT32_MAX value, the aspeed-ram-container
-> MemoryRegion ends up missing 1 byte:
-> 
->  $ qemu-system-arm -M ast2600-evb -S -monitor stdio
->  (qemu) info mtree
-> 
->   address-space: aspeed.fmc-ast2600-dma-dram
->     0000000080000000-000000017ffffffe (prio 0, i/o): aspeed-ram-container
->       0000000080000000-00000000bfffffff (prio 0, ram): ram
->       00000000c0000000-ffffffffffffffff (prio 0, i/o): max_ram
-> 
-> Fix by using the correct value. We now have:
-> 
->   address-space: aspeed.fmc-ast2600-dma-dram
->     0000000080000000-000000017fffffff (prio 0, i/o): aspeed-ram-container
->       0000000080000000-00000000bfffffff (prio 0, ram): ram
->       00000000c0000000-ffffffffffffffff (prio 0, i/o): max_ram
+> IEC binary prefixes ease code review: the unit is explicit.
 > 
 > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/arm/aspeed.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/i386/xen/xen-hvm.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 2c23297edf..62344ac6a3 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -262,7 +262,7 @@ static void aspeed_machine_init(MachineState *machine)
->      bmc = g_new0(AspeedBoardState, 1);
+> diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+> index 82ece6b9e7..94fe5d65e9 100644
+> --- a/hw/i386/xen/xen-hvm.c
+> +++ b/hw/i386/xen/xen-hvm.c
+> @@ -9,6 +9,7 @@
+>   */
 >  
->      memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container",
-> -                       UINT32_MAX);
-> +                       4 * GiB);
->      memory_region_add_subregion(&bmc->ram_container, 0, machine->ram);
+>  #include "qemu/osdep.h"
+> +#include "qemu/units.h"
 >  
->      object_initialize_child(OBJECT(machine), "soc", &bmc->soc,
+>  #include "cpu.h"
+>  #include "hw/pci/pci.h"
+> @@ -230,7 +231,7 @@ static void xen_ram_init(PCMachineState *pcms,
+>           * Xen does not allocate the memory continuously, it keeps a
+>           * hole of the size computed above or passed in.
+>           */
+> -        block_len = (1ULL << 32) + x86ms->above_4g_mem_size;
+> +        block_len = (4 * GiB) + x86ms->above_4g_mem_size;
+>      }
+>      memory_region_init_ram(&ram_memory, NULL, "xen.ram", block_len,
+>                             &error_fatal);
 > 
 
 Applied to my trivial-patches branch.

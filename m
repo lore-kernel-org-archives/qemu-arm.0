@@ -1,69 +1,109 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp538473lfc;
-        Tue, 9 Jun 2020 07:17:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJymrRv9mFuYGdQy07CW3IeakufkiYwdMlBl+4qipSu2bL/nCD2qudGREIZMnKXxWpI16Ayg
-X-Received: by 2002:a25:c483:: with SMTP id u125mr3400821ybf.359.1591712221276;
-        Tue, 09 Jun 2020 07:17:01 -0700 (PDT)
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp545876lfc;
+        Tue, 9 Jun 2020 07:24:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyl2ZszGRnp0fgTY9ri5sDmcc5WpHRnn8CYCu+a5prfHMtXyFgrr13gHzCyx4ts1ZC6rRys
+X-Received: by 2002:a25:2e48:: with SMTP id b8mr7050141ybn.521.1591712690023;
+        Tue, 09 Jun 2020 07:24:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591712690; cv=none;
+        d=google.com; s=arc-20160816;
+        b=kaZxIqRuWxlRvjCfuoR817qY45GaTIX6blFm04Iq0CX+eciHWQrGIVtCoIGEPfaKNO
+         veMrqRYEQudojoVaXPJna+Q7KTr9D9x+09aTD0RvojxPevVxya8NzjGZ/e3iNf1AiYYg
+         06uA53Cav6ekh2srK840zub1JnPp8ceSDOphdbtTDIazNYbAoBrhBY0JtxLHaHL8IfyW
+         4EXVGceTvTAZfbo1iz1TI7gQP2HX/7eEmKX156OMDAiFCsL0+8eZURndxR0qmYu3Jlfh
+         pg2Zw3besjfIOhxjrmMK2OeNZZNaZnrkmBRAwU5c+5jUhx25vuqcFb8cIA/fBS2bEEvi
+         zN5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=y+Fw1Essfc+ljt+c7AIE86vlszCoGY2qlzITDZgrcrc=;
+        b=fy4eie07GyBFbXsMXm5/AsNqk6sxWM8kNlsqOTjNbhZlYTeUxWn90yYhIop6562Kpn
+         NnWxullu1TCOvLQiKCaUE4KveMZX+4ICgBCTwQirNUZ9LBs7eOfmk8ax2t8krIoHk6sl
+         ZjkREG13HRiuPIeLODYkCo7q8ODaZthcJLhyIQNXqhCGrA5aJ0dGewRjHOeAiCtqzn/G
+         TsKMbmL/5a/fs6+q7vigT4w/p8Qqy4J5PuoiWjeDMbA1dPCOOOUyNh4QTKt6i2gNV7g2
+         2iqvM+fOX1uASK1pAQdq4KFfuL0Ao2G8iuhrj/osgo6NsAVw98H5URWGq7HOhayInX/X
+         bulA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bn5qrlNo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d18si2714292ybc.349.2020.06.09.07.17.01
+        by mx.google.com with ESMTPS id 189si2860667ybn.283.2020.06.09.07.24.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 07:17:01 -0700 (PDT)
+        Tue, 09 Jun 2020 07:24:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51696 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bn5qrlNo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45952 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jif3k-0002Yn-MD
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 10:17:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54838)
+	id 1jifBJ-0003gq-9W
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 10:24:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56002)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jif2G-0000mw-Ti; Tue, 09 Jun 2020 10:15:29 -0400
-Resent-Date: Tue, 09 Jun 2020 10:15:28 -0400
-Resent-Message-Id: <E1jif2G-0000mw-Ti@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21748)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jifB7-0003dC-2Q
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2020 10:24:37 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:42017
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jif2D-0007zz-RY; Tue, 09 Jun 2020 10:15:28 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1591712103; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=V1knRpXtlhEU49M1/mWsidGkz61ESe+IFDpXmeI5aUOxkjA2VvIyNIBffvJkuwPszSI1YtBYnP5OeQYDvAERqSuHKJ9J4N5jlcg3XYOMt20oGj85QJA/ekwYrnj4OTOjAZaVFuq7k8e2a4Fh/4oIcnnoOF3PIx3JyhqFGwFLCjU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1591712103;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=KN+9qKc3BUdcWOvFzY+vl/mFNOkGJ64DYLJYeyOH4Cc=; 
- b=WvnAWGkuOPU/v8qRpLysZt+ICFlYTuL9HHbowxl8jkKOr0az0127/0lV8BsHoRjIHhk4FocLiuYEzgsB26i3OuNX53/if0xqS/Z6eGuvP8QHKzPfCB+mBQtngoTQskmXcGKjlEURb9kXYvJpOsZwYTe2K8Yl5fpgfDyvelTXdCQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1591712101642141.57590110144304;
- Tue, 9 Jun 2020 07:15:01 -0700 (PDT)
-Message-ID: <159171209964.14379.13759350814032395535@45ef0f9c86ae>
-In-Reply-To: <20200609125409.24179-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jifB6-0001IQ-7V
+ for qemu-arm@nongnu.org; Tue, 09 Jun 2020 10:24:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591712675;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=y+Fw1Essfc+ljt+c7AIE86vlszCoGY2qlzITDZgrcrc=;
+ b=bn5qrlNolnUTPG31bwwR2l/2piF+7LCUtRXYp7cGXaDVnjSHO7PhoEMO56Yl7Q1j/DDE1K
+ +CBLDtPEb0qZFnYx3bo2XJT+dPubkvdc3yWcN7eomV0fRVx08jLVVbsrY/W7SMc2eMwZIf
+ m5zfTZA2xW4zYFNTHch4LVBT/PkIfco=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-273-4W8RgeuCO1ul7qZrrh6ieA-1; Tue, 09 Jun 2020 10:24:27 -0400
+X-MC-Unique: 4W8RgeuCO1ul7qZrrh6ieA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 854BC83DD19;
+ Tue,  9 Jun 2020 14:24:25 +0000 (UTC)
+Received: from [10.36.114.197] (ovpn-114-197.ams2.redhat.com [10.36.114.197])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C4CBE61169;
+ Tue,  9 Jun 2020 14:24:10 +0000 (UTC)
 Subject: Re: [PATCH v2 0/5] TPM-TIS bios-tables-test
+To: qemu-devel@nongnu.org, no-reply@patchew.org
+References: <159171124889.14379.10327774755780970706@45ef0f9c86ae>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <b7da908f-2632-fe87-fe24-302d0ba33480@redhat.com>
+Date: Tue, 9 Jun 2020 16:24:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: eric.auger@redhat.com
-Date: Tue, 9 Jun 2020 07:15:01 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 10:01:59
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+In-Reply-To: <159171124889.14379.10327774755780970706@45ef0f9c86ae>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/08 23:42:34
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,69 +116,67 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, drjones@redhat.com, mst@redhat.com,
- philmd@redhat.com, shannon.zhaosl@gmail.com, qemu-devel@nongnu.org,
- eric.auger@redhat.com, qemu-arm@nongnu.org, marcandre.lureau@redhat.com,
- imammedo@redhat.com, eric.auger.pro@gmail.com, lersek@redhat.com,
- ardb@kernel.org, stefanb@linux.ibm.com
+ lersek@redhat.com, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
+ imammedo@redhat.com, marcandre.lureau@redhat.com, stefanb@linux.ibm.com,
+ philmd@redhat.com, ardb@kernel.org, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: msJDK0KqumMZ
+X-TUID: Zczpq/3MwkYU
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDYwOTEyNTQwOS4yNDE3
-OS0xLWVyaWMuYXVnZXJAcmVkaGF0LmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0byBo
-YXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgptb3Jl
-IGluZm9ybWF0aW9uOgoKTWVzc2FnZS1pZDogMjAyMDA2MDkxMjU0MDkuMjQxNzktMS1lcmljLmF1
-Z2VyQHJlZGhhdC5jb20KU3ViamVjdDogW1BBVENIIHYyIDAvNV0gVFBNLVRJUyBiaW9zLXRhYmxl
-cy10ZXN0ClR5cGU6IHNlcmllcwoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFz
-aApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcgLS1s
-b2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBU
-cnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRz
-L2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0K
-CkZyb20gaHR0cHM6Ly9naXRodWIuY29tL3BhdGNoZXctcHJvamVjdC9xZW11CiAqIFtuZXcgdGFn
-XSAgICAgICAgIHBhdGNoZXcvMjAyMDA2MDkxMjU0MDkuMjQxNzktMS1lcmljLmF1Z2VyQHJlZGhh
-dC5jb20gLT4gcGF0Y2hldy8yMDIwMDYwOTEyNTQwOS4yNDE3OS0xLWVyaWMuYXVnZXJAcmVkaGF0
-LmNvbQpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCmU2YjIzNmMgYmlvcy10YWJsZXMt
-dGVzdDogR2VuZXJhdGUgcmVmZXJlbmNlIHRhYmxlcyBmb3IgUTM1L1RQTS1USVMKN2E0YjlmMiBi
-aW9zLXRhYmxlcy10ZXN0OiBBZGQgUTM1L1RQTS1USVMgdGVzdAo3ZmU3NmFhIHRlc3RzOiB0cG0t
-ZW11OiBSZW1vdmUgYXNzZXJ0IG9uIFRQTTJfU1RfTk9fU0VTU0lPTlMKN2EwMzBiZSB0ZXN0cy9h
-Y3BpOiBBZGQgdm9pZCB0YWJsZXMgZm9yIFEzNS9UUE0tVElTIGJpb3MtdGFibGVzLXRlc3QKNzYx
-MGZhZCB0ZXN0L3RwbS1lbXU6IGluY2x1ZGUgc29ja2V0cyBhbmQgY2hhbm5lbCBoZWFkZXJzIGlu
-IHRwbS1lbXUgaGVhZGVyCgo9PT0gT1VUUFVUIEJFR0lOID09PQoxLzUgQ2hlY2tpbmcgY29tbWl0
-IDc2MTBmYWQwZDlmOSAodGVzdC90cG0tZW11OiBpbmNsdWRlIHNvY2tldHMgYW5kIGNoYW5uZWwg
-aGVhZGVycyBpbiB0cG0tZW11IGhlYWRlcikKMi81IENoZWNraW5nIGNvbW1pdCA3YTAzMGJlMDhh
-NzggKHRlc3RzL2FjcGk6IEFkZCB2b2lkIHRhYmxlcyBmb3IgUTM1L1RQTS1USVMgYmlvcy10YWJs
-ZXMtdGVzdCkKV0FSTklORzogYWRkZWQsIG1vdmVkIG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBN
-QUlOVEFJTkVSUyBuZWVkIHVwZGF0aW5nPwojMTc6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKRVJS
-T1I6IERvIG5vdCBhZGQgZXhwZWN0ZWQgZmlsZXMgdG9nZXRoZXIgd2l0aCB0ZXN0cywgZm9sbG93
-IGluc3RydWN0aW9ucyBpbiB0ZXN0cy9xdGVzdC9iaW9zLXRhYmxlcy10ZXN0LmM6IGJvdGggdGVz
-dHMvZGF0YS9hY3BpL3EzNS9UUE0yLnRpcyBhbmQgdGVzdHMvcXRlc3QvYmlvcy10YWJsZXMtdGVz
-dC1hbGxvd2VkLWRpZmYuaCBmb3VuZAoKRVJST1I6IERvIG5vdCBhZGQgZXhwZWN0ZWQgZmlsZXMg
-dG9nZXRoZXIgd2l0aCB0ZXN0cywgZm9sbG93IGluc3RydWN0aW9ucyBpbiB0ZXN0cy9xdGVzdC9i
-aW9zLXRhYmxlcy10ZXN0LmM6IGJvdGggdGVzdHMvZGF0YS9hY3BpL3EzNS9UUE0yLnRpcyBhbmQg
-dGVzdHMvcXRlc3QvYmlvcy10YWJsZXMtdGVzdC1hbGxvd2VkLWRpZmYuaCBmb3VuZAoKdG90YWw6
-IDIgZXJyb3JzLCAxIHdhcm5pbmdzLCAzIGxpbmVzIGNoZWNrZWQKClBhdGNoIDIvNSBoYXMgc3R5
-bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBm
-YWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BB
-VENIIGluIE1BSU5UQUlORVJTLgoKMy81IENoZWNraW5nIGNvbW1pdCA3ZmU3NmFhZjhkNjggKHRl
-c3RzOiB0cG0tZW11OiBSZW1vdmUgYXNzZXJ0IG9uIFRQTTJfU1RfTk9fU0VTU0lPTlMpCjQvNSBD
-aGVja2luZyBjb21taXQgN2E0YjlmMjJkZGJkIChiaW9zLXRhYmxlcy10ZXN0OiBBZGQgUTM1L1RQ
-TS1USVMgdGVzdCkKNS81IENoZWNraW5nIGNvbW1pdCBlNmIyMzZjNDg4MDYgKGJpb3MtdGFibGVz
-LXRlc3Q6IEdlbmVyYXRlIHJlZmVyZW5jZSB0YWJsZXMgZm9yIFEzNS9UUE0tVElTKQpFUlJPUjog
-RG8gbm90IGFkZCBleHBlY3RlZCBmaWxlcyB0b2dldGhlciB3aXRoIHRlc3RzLCBmb2xsb3cgaW5z
-dHJ1Y3Rpb25zIGluIHRlc3RzL3F0ZXN0L2Jpb3MtdGFibGVzLXRlc3QuYzogYm90aCB0ZXN0cy9k
-YXRhL2FjcGkvcTM1L1RQTTIudGlzIGFuZCB0ZXN0cy9xdGVzdC9iaW9zLXRhYmxlcy10ZXN0LWFs
-bG93ZWQtZGlmZi5oIGZvdW5kCgpFUlJPUjogRG8gbm90IGFkZCBleHBlY3RlZCBmaWxlcyB0b2dl
-dGhlciB3aXRoIHRlc3RzLCBmb2xsb3cgaW5zdHJ1Y3Rpb25zIGluIHRlc3RzL3F0ZXN0L2Jpb3Mt
-dGFibGVzLXRlc3QuYzogYm90aCB0ZXN0cy9kYXRhL2FjcGkvcTM1L1RQTTIudGlzIGFuZCB0ZXN0
-cy9xdGVzdC9iaW9zLXRhYmxlcy10ZXN0LWFsbG93ZWQtZGlmZi5oIGZvdW5kCgp0b3RhbDogMiBl
-cnJvcnMsIDAgd2FybmluZ3MsIDEgbGluZXMgY2hlY2tlZAoKUGF0Y2ggNS81IGhhcyBzdHlsZSBw
-cm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNl
-IHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0gg
-aW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQg
-d2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hl
-dy5vcmcvbG9ncy8yMDIwMDYwOTEyNTQwOS4yNDE3OS0xLWVyaWMuYXVnZXJAcmVkaGF0LmNvbS90
-ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRv
-bWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQg
-eW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+Hi,
+
+On 6/9/20 4:00 PM, no-reply@patchew.org wrote:
+> Patchew URL: https://patchew.org/QEMU/20200609125409.24179-1-eric.auger@redhat.com/
+> 
+> 
+> 
+> Hi,
+> 
+> This series failed the docker-quick@centos7 build test. Please find the testing commands and
+> their output below. If you have Docker installed, you can probably reproduce it
+> locally.
+time make docker-test-quick@centos7 SHOW_ENV=1 J=14 NETWORK=1
+runs fine on my side. I guess what is missing here is the dependency
+quoted in the cover letter:
+"acpi: tpm: Do not build TCPA table for TPM 2"
+
+Thanks
+
+Eric
+
+> 
+> === TEST SCRIPT BEGIN ===
+> #!/bin/bash
+> make docker-image-centos7 V=1 NETWORK=1
+> time make docker-test-quick@centos7 SHOW_ENV=1 J=14 NETWORK=1
+> === TEST SCRIPT END ===
+> 
+> Looking for expected file 'tests/data/acpi/q35/TCPA.tis'
+> Looking for expected file 'tests/data/acpi/q35/TCPA'
+> **
+> ERROR:/tmp/qemu-test/src/tests/qtest/bios-tables-test.c:370:load_expected_aml: assertion failed: (exp_sdt.aml_file)
+> ERROR - Bail out! ERROR:/tmp/qemu-test/src/tests/qtest/bios-tables-test.c:370:load_expected_aml: assertion failed: (exp_sdt.aml_file)
+> make: *** [check-qtest-x86_64] Error 1
+> make: *** Waiting for unfinished jobs....
+>   TEST    iotest-qcow2: 030
+>   TEST    iotest-qcow2: 031
+> ---
+>     raise CalledProcessError(retcode, cmd)
+> subprocess.CalledProcessError: Command '['sudo', '-n', 'docker', 'run', '--label', 'com.qemu.instance.uuid=71e400be07f14cd09538753c536cf099', '-u', '1001', '--security-opt', 'seccomp=unconfined', '--rm', '-e', 'TARGET_LIST=', '-e', 'EXTRA_CONFIGURE_OPTS=', '-e', 'V=', '-e', 'J=14', '-e', 'DEBUG=', '-e', 'SHOW_ENV=1', '-e', 'CCACHE_DIR=/var/tmp/ccache', '-v', '/home/patchew/.cache/qemu-docker-ccache:/var/tmp/ccache:z', '-v', '/var/tmp/patchew-tester-tmp-3bqmv5j2/src/docker-src.2020-06-09-09.46.26.7521:/var/tmp/qemu:z,ro', 'qemu:centos7', '/var/tmp/qemu/run', 'test-quick']' returned non-zero exit status 2.
+> filter=--filter=label=com.qemu.instance.uuid=71e400be07f14cd09538753c536cf099
+> make[1]: *** [docker-run] Error 1
+> make[1]: Leaving directory `/var/tmp/patchew-tester-tmp-3bqmv5j2/src'
+> make: *** [docker-run-test-quick@centos7] Error 2
+> 
+> real    14m23.108s
+> user    0m9.457s
+> 
+> 
+> The full log is available at
+> http://patchew.org/logs/20200609125409.24179-1-eric.auger@redhat.com/testing.docker-quick@centos7/?type=message.
+> ---
+> Email generated automatically by Patchew [https://patchew.org/].
+> Please send your feedback to patchew-devel@redhat.com
+> 
+

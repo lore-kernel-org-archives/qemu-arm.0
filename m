@@ -1,172 +1,272 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp268366lfc;
-        Wed, 10 Jun 2020 00:41:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxpZDQ3CoHoVUNvksEVSSFfk7JrD07hgZPtoVsgRXlEc1YeUvz/cJ+Paob3Z5UEBNq/X3bv
-X-Received: by 2002:a25:3f85:: with SMTP id m127mr3340875yba.228.1591774896963;
-        Wed, 10 Jun 2020 00:41:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591774896; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp268460lfc;
+        Wed, 10 Jun 2020 00:41:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyprwjXENTWQCjJDNSnGbMxUEKQ4lsferKEEx3MBW3xu6wT1P4k2pVCgp2HsyLR4ux0gG0M
+X-Received: by 2002:a25:4d44:: with SMTP id a65mr3400941ybb.422.1591774906384;
+        Wed, 10 Jun 2020 00:41:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591774906; cv=none;
         d=google.com; s=arc-20160816;
-        b=xL6O4Aal1+J7PEfPQLSW2p+9eTTGi0z/GMKiyiMJzXpln8iMwLJXHeRvyI5b7abmpK
-         Mz1L+rSlI1ENUJD65PMzkIAOJIsa0h/180+YttpFDOg7hcpy2xhIK7BRjOAZaYv5tUwB
-         lXWtnIYY4Rx6Q6W0NxL2mXNAyinIQUUpbXFp44Iah+iL64/QDiSCYTeaUT35VRpcavl0
-         IgDEG1vN03rxwuZfO4Q2hop0x7KGw/4MXWSzpDADR8KIfPxtIvAdSDd6wNHkT56sqDmx
-         HKZMBciUW1MTnKNHC5g7w4mQB2Jq9a7DjzUo1P5ngRLPmKXYXtoOrqkUVGh8Pthgmnvv
-         JOdw==
+        b=BLvCp0eyDya4tApAcWJOcXgIYlTEJYkaTsFpTKxh5psGP4At5U55ct+IZANI0pPbvn
+         QobadnnV6RsMQc1pLk8u8Z+T7jCisRwn1oDxamuOYeWMZhVXSavXuxSyjiWvrc6DegpO
+         V5X4p4lgU6ccbgYASwEdcQq+7YvHnu1ZJs1AIUCkRHR5y6UeYtEkj7DlAiR8SUVJhgyl
+         7bUhAG0HlGvDH2sVSOlyBU/Fwy7hOseKL0AHfkqMeZJpH7Neyko3S3QlzY69F2WwzTks
+         Z9nryIfdnjGGYmS4JoOlA9yquOIDfpWzvmOmCsBYDVHQPgoi92PXSS0JBdyjT/rt0P3K
+         G3Eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=cfO2pRBMUea/f08k171Tm0HoqV/aqMV1dOcb4YJRjT4=;
-        b=OJNLYo39Vuziym7Wm58RJpASWSTgAEotr+tMxRcdStAXVVwY1NnBffjQMRhrpGXjyj
-         uB5z3qAivw4aBdXCueQ34ZM7wOCjNuVoDtm/caWAY9tVTeCoA1FMR9ZQAfRQCzRNfeFL
-         2jfiVSm0StBpzCxFr19ZfnBDLApf8SyYcEe6aNhKY2nbfsN6ztIDiiAA8hI3agj27yLg
-         632SYFySyvoTNNPzt2zgkxY0/WUSKy8qp4C5+FzHlifG7aYv13EPLPwuigjqJ9xeOC+6
-         IdhFRUcMnaYIgLsyjZk2fcOXoxOo0BZcMhqZK32o2Xirq89D4QlZ3rcX8CAdQ2rfYeje
-         mAeA==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=WEO8o2Cs/Y+uZsHUavPytdOumYu4nKLqUv8s1dzlttg=;
+        b=oeSnQ5yHYS5O7FVWcbvseqJfRWFdAEdu6l5Zn6h4D8qX8GvDb5W4V+2ioX01nrFqyU
+         iu48xj1YBKoobo9FaVCy1+LABaiR9sw7a3t+p8UR0J6dJUNyJfJsXWb2mRsHRvP4MKkj
+         LssaQnOggm9uZkodYaqM8ZQ1/vFOFNLtC2RVhEEJNbvMCA6awl+tjq9xpnq9p+oS21eh
+         8+ytu42RrnTXFOrtq5RNtOfxUFwCPlL/HbwCPXxpFZavYDGu4dnQ3Aowh1X2DgVkowfK
+         xTugKJfCm6uf+kzRLU67ZROImiSm9necGZiqJxy9hQZSCuC2SdwrQWXJPq+pCthsFQ8s
+         PFDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="i/chn9dk";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X89scjoO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d15si4628551ybs.467.2020.06.10.00.41.36
+        by mx.google.com with ESMTPS id b5si2447858yba.152.2020.06.10.00.41.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jun 2020 00:41:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 10 Jun 2020 00:41:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="i/chn9dk";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:51716 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X89scjoO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51402 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jivMe-0003V6-Ax
-	for alex.bennee@linaro.org; Wed, 10 Jun 2020 03:41:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59062)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jivMn-0003Mb-Ms
+	for alex.bennee@linaro.org; Wed, 10 Jun 2020 03:41:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jivMU-0003Sm-5C; Wed, 10 Jun 2020 03:41:26 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:40470)
- by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jivMT-0003Qf-CR; Wed, 10 Jun 2020 03:41:25 -0400
-Received: by mail-wm1-x344.google.com with SMTP id r15so835115wmh.5;
- Wed, 10 Jun 2020 00:41:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=cfO2pRBMUea/f08k171Tm0HoqV/aqMV1dOcb4YJRjT4=;
- b=i/chn9dkJ9I6L0WcyFHf14vz/I9pINZYnQUCpNBxpp6SKsGm6gs1DPPgTcidTbRF93
- EilJKmCBJ+tekmzjBQHw4B50iDuxeWc/w+wOO2pBLUbg39wepHuN7jRFJLJLf/TJiz5S
- n63JUDUoBzG8ATF223O1EsXW2IuI9W1+q0/wXQEewDZCcmtFQJZ4pFHDSwNxJR5MrYJv
- SdIRvarICXDSRgqneItQrbvActeSJcjNRkKd1FCJacie0hnV9VlXjOChmlD9l0/TWVe+
- Yu2UdF7X02XqFh82Gebrnj2u2rpbUhgkxfjStgzx7eV4/XXLPto7TrFv6aFNOOTlG7d2
- 3Lyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=cfO2pRBMUea/f08k171Tm0HoqV/aqMV1dOcb4YJRjT4=;
- b=Ou9KK0pCyMiTdp/KQOr654tcJlNg6XP/u8tDBrYn7m1WjC4nWMUBxr5r8/ysbh2WMd
- l82Zd7b7K1WTkUDjWqxg1GnvRs9OrDyN91NiEMYDd5tzEPEks70JOVJ2cxEcJ3m0QELZ
- TR+6ZZEtExWcdSKWLSNHFr9EaNqtTdfhKXkg3NhIZCFUiUESvpXSxSZYZQ31onwYoN11
- bFA8c4+myDawQz4Pm9VDcWhWxk2Spm4b6RtlHO8fjnM+ud0D/H7cJRriw6VUmWMeciUX
- OA8+v0nsjOb30XWl0Cqcg41XalD8FqiiRm8LThBO1NCd4hjlBJnXVL9SgXVhr/5oEIKE
- iJKw==
-X-Gm-Message-State: AOAM532V3U/K2AD3D/Y+vIIqBIrOMin++vXKZYTKBUIyRA+jvzAYpZe1
- 6jbA9ag6+Kb9sZWu0vO0yTI=
-X-Received: by 2002:a1c:4105:: with SMTP id o5mr1799062wma.168.1591774872482; 
- Wed, 10 Jun 2020 00:41:12 -0700 (PDT)
-Received: from [192.168.1.38] (181.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id x18sm5633596wmi.35.2020.06.10.00.41.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 10 Jun 2020 00:41:11 -0700 (PDT)
-Subject: Re: [PATCH 0/7] target/arm: Convert Neon 3-reg-diff to decodetree
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20200609160209.29960-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <8e374585-bbc4-1850-a836-4f02a06a55a4@amsat.org>
-Date: Wed, 10 Jun 2020 09:41:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1jivLi-0002wo-89
+ for qemu-devel@nongnu.org; Wed, 10 Jun 2020 03:40:38 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:45131
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1jivLh-0003AW-4h
+ for qemu-devel@nongnu.org; Wed, 10 Jun 2020 03:40:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591774835;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=WEO8o2Cs/Y+uZsHUavPytdOumYu4nKLqUv8s1dzlttg=;
+ b=X89scjoOyygqLNNyicccHvRvmcTAk+lFryHS3rws05FQdMb6OGm9+JTi6kf5phpagGAK65
+ Q6jNrht3fpR/u6rofxBp1vlnnX6p6JAtrp53ZOQ3N6CSAZAa+/gcpGKeQ8vq+Zi+C10YTl
+ 49TDSxD2oDiodhEeRECcl3yAe6BkDnY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-413-4zAh9vPFN0mGy9YwGhdCfw-1; Wed, 10 Jun 2020 03:40:32 -0400
+X-MC-Unique: 4zAh9vPFN0mGy9YwGhdCfw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D860D8018A7;
+ Wed, 10 Jun 2020 07:40:30 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.193.216])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 241185C241;
+ Wed, 10 Jun 2020 07:40:28 +0000 (UTC)
+Date: Wed, 10 Jun 2020 09:40:26 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Ying Fang <fangying1@huawei.com>
+Subject: Re: [PATCH v3] target/arm/cpu: adjust virtual time for arm cpu
+Message-ID: <20200610074026.4hm7bmeci2q6drbn@kamzik.brq.redhat.com>
+References: <20200608121243.2076-1-fangying1@huawei.com>
+ <20200608124952.lwmko6hmtuckbnlw@kamzik.brq.redhat.com>
+ <f9ddeb87-c91b-aeba-e376-9c185fe2264d@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200609160209.29960-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+In-Reply-To: <f9ddeb87-c91b-aeba-e376-9c185fe2264d@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=drjones@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 21:17:20
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +t/bAwISn36F
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ wu.wubin@huawei.com, zhang.zhanghailiang@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ON1H3fvWng+y
 
-On 6/9/20 6:02 PM, Peter Maydell wrote:
-> This patchset converts the Neon insns in the "3 registers of different
-> lengths" group to decodetree. Patch 1 is a bugfix for an earlier
-> part of the conversion that's now in master.
+On Wed, Jun 10, 2020 at 09:32:06AM +0800, Ying Fang wrote:
 > 
-> I'm definitely finding that the new decodetree version of Neon
-> is often easier to understand because we no longer try to
-> accommodate multiple different kinds of widening/narrowing/etc
-> insns in a single multi-pass loop: expanding out the loop and
-> specializing it to the particular insn type helps a lot.
+> 
+> On 6/8/2020 8:49 PM, Andrew Jones wrote:
+> > On Mon, Jun 08, 2020 at 08:12:43PM +0800, Ying Fang wrote:
+> > > From: fangying <fangying1@huawei.com>
+> > > 
+> > > Virtual time adjustment was implemented for virt-5.0 machine type,
+> > > but the cpu property was enabled only for host-passthrough and
+> > > max cpu model. Let's add it for arm cpu which has the generic timer
+> > > feature enabled.
+> > > 
+> > > Suggested-by: Andrew Jones <drjones@redhat.com>
+> > 
+> > This isn't true. I did suggest the way to arrange the code, after
+> > Peter suggested to move the kvm_arm_add_vcpu_properties() call to
+> > arm_cpu_post_init(), but I didn't suggest making this change in general,
+> > which is what this tag means. In fact, I've argued that it's pretty
+> I'm quite sorry for adding it here.
 
-I agree. The TCG ARM code is well documented, but the decodetree
-view makes it easier to review. Kinda obvious when you compare
-with the TCG code in older QEMU architectures.
-Personally I also find it easier to set breakpoints.
+No problem.
 
-> (Or maybe it's just that having to read the old code and write
-> the new version means I understand it better ;-))
+> > pointless to do this, since KVM users should be using '-cpu host' or
+> > '-cpu max' anyway. Since I don't need credit for the code arranging,
+> As discussed in thread [1], there is a situation where a 'custom' cpu mode
+> is needed for us to keep instruction set compatibility so that migration can
+> be done, just like x86 does.
+
+I understand the motivation. But, as I've said, KVM doesn't work that way.
+
+> And we are planning to add support for it if
+> nobody is currently doing that.
+
+Great! I'm looking forward to seeing the KVM patches. Especially since,
+without the KVM patches, the 'custom' CPU model isn't a custom CPU model,
+it's just a misleading way to use host passthrough. Indeed, I'm a bit
+opposed to allowing anything other than '-cpu host' and '-cpu max' (with
+features explicitly enabled/disabled, e.g. -cpu host,pmu=off) to work
+until KVM actually works with CPU models. Otherwise, how do we know the
+difference between a model that actually works and one that is just
+misleadingly named?
+
+Thanks,
+drew
+
 > 
-> Based-on: id:20200608183652.661386-1-richard.henderson@linaro.org
-> ("[PATCH v3 0/9] decodetree: Add non-overlapping groups")
-> because we use the new group syntax to set up the structure
-> for the "size==0b11" vs "size!=0b11" decode which we'll fill
-> in in subsequent patchsets.
+> Thanks.
+> Ying
 > 
-> thanks
-> -- PMM
-> 
-> Peter Maydell (7):
->   target/arm: Fix missing temp frees in do_vshll_2sh
->   target/arm: Convert Neon 3-reg-diff prewidening ops to decodetree
->   target/arm: Convert Neon 3-reg-diff narrowing ops to decodetree
->   target/arm: Convert Neon 3-reg-diff VABAL, VABDL to decodetree
->   target/arm: Convert Neon 3-reg-diff long multiplies
->   target/arm: Convert Neon 3-reg-diff saturating doubling multiplies
->   target/arm: Convert Neon 3-reg-diff polynomial VMULL
-> 
->  target/arm/translate.h          |   1 +
->  target/arm/neon-dp.decode       |  72 +++++
->  target/arm/translate-neon.inc.c | 521 ++++++++++++++++++++++++++++++++
->  target/arm/translate.c          | 222 +-------------
->  4 files changed, 597 insertions(+), 219 deletions(-)
+> [1]: https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg00022.html
+> > please just drop the tag. Peter can maybe do that on merge though. Also,
+> > despite not agreeing that we need this change today, as there's nothing
+> > wrong with it and it looks good to me
+> > 
+> > Reviewed-by: Andrew Jones <drjones@redhat.com>
+> > 
+> > Thanks,
+> > drew
+> > 
+> > > Signed-off-by: Ying Fang <fangying1@huawei.com>
+> > > 
+> > > ---
+> > > v3:
+> > > - set kvm-no-adjvtime property in kvm_arm_add_vcpu_properties
+> > > 
+> > > v2:
+> > > - move kvm_arm_add_vcpu_properties into arm_cpu_post_init
+> > > 
+> > > v1:
+> > > - initial commit
+> > > - https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg08518.html
+> > > 
+> > > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> > > index 32bec156f2..5b7a36b5d7 100644
+> > > --- a/target/arm/cpu.c
+> > > +++ b/target/arm/cpu.c
+> > > @@ -1245,6 +1245,10 @@ void arm_cpu_post_init(Object *obj)
+> > >       if (arm_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER)) {
+> > >           qdev_property_add_static(DEVICE(cpu), &arm_cpu_gt_cntfrq_property);
+> > >       }
+> > > +
+> > > +    if (kvm_enabled()) {
+> > > +        kvm_arm_add_vcpu_properties(obj);
+> > > +    }
+> > >   }
+> > >   static void arm_cpu_finalizefn(Object *obj)
+> > > @@ -2029,7 +2033,6 @@ static void arm_max_initfn(Object *obj)
+> > >       if (kvm_enabled()) {
+> > >           kvm_arm_set_cpu_features_from_host(cpu);
+> > > -        kvm_arm_add_vcpu_properties(obj);
+> > >       } else {
+> > >           cortex_a15_initfn(obj);
+> > > @@ -2183,7 +2186,6 @@ static void arm_host_initfn(Object *obj)
+> > >       if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+> > >           aarch64_add_sve_properties(obj);
+> > >       }
+> > > -    kvm_arm_add_vcpu_properties(obj);
+> > >       arm_cpu_post_init(obj);
+> > >   }
+> > > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> > > index cbc5c3868f..778cecc2e6 100644
+> > > --- a/target/arm/cpu64.c
+> > > +++ b/target/arm/cpu64.c
+> > > @@ -592,7 +592,6 @@ static void aarch64_max_initfn(Object *obj)
+> > >       if (kvm_enabled()) {
+> > >           kvm_arm_set_cpu_features_from_host(cpu);
+> > > -        kvm_arm_add_vcpu_properties(obj);
+> > >       } else {
+> > >           uint64_t t;
+> > >           uint32_t u;
+> > > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> > > index 4bdbe6dcac..eef3bbd1cc 100644
+> > > --- a/target/arm/kvm.c
+> > > +++ b/target/arm/kvm.c
+> > > @@ -194,17 +194,18 @@ static void kvm_no_adjvtime_set(Object *obj, bool value, Error **errp)
+> > >   /* KVM VCPU properties should be prefixed with "kvm-". */
+> > >   void kvm_arm_add_vcpu_properties(Object *obj)
+> > >   {
+> > > -    if (!kvm_enabled()) {
+> > > -        return;
+> > > -    }
+> > > +    ARMCPU *cpu = ARM_CPU(obj);
+> > > +    CPUARMState *env = &cpu->env;
+> > > -    ARM_CPU(obj)->kvm_adjvtime = true;
+> > > -    object_property_add_bool(obj, "kvm-no-adjvtime", kvm_no_adjvtime_get,
+> > > -                             kvm_no_adjvtime_set);
+> > > -    object_property_set_description(obj, "kvm-no-adjvtime",
+> > > -                                    "Set on to disable the adjustment of "
+> > > -                                    "the virtual counter. VM stopped time "
+> > > -                                    "will be counted.");
+> > > +    if (arm_feature(env, ARM_FEATURE_GENERIC_TIMER)) {
+> > > +        cpu->kvm_adjvtime = true;
+> > > +        object_property_add_bool(obj, "kvm-no-adjvtime", kvm_no_adjvtime_get,
+> > > +                                 kvm_no_adjvtime_set);
+> > > +        object_property_set_description(obj, "kvm-no-adjvtime",
+> > > +                                        "Set on to disable the adjustment of "
+> > > +                                        "the virtual counter. VM stopped time "
+> > > +                                        "will be counted.");
+> > > +    }
+> > >   }
+> > >   bool kvm_arm_pmu_supported(CPUState *cpu)
+> > > -- 
+> > > 2.23.0
+> > > 
+> > > 
+> > 
+> > .
+> > 
 > 
 

@@ -1,107 +1,72 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp268460lfc;
-        Wed, 10 Jun 2020 00:41:46 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyprwjXENTWQCjJDNSnGbMxUEKQ4lsferKEEx3MBW3xu6wT1P4k2pVCgp2HsyLR4ux0gG0M
-X-Received: by 2002:a25:4d44:: with SMTP id a65mr3400941ybb.422.1591774906384;
-        Wed, 10 Jun 2020 00:41:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591774906; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp311833lfc;
+        Wed, 10 Jun 2020 01:58:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzFFJAkd1ny2f86lEuswjt+veCe6EVfWbNphUzMIDEGh522EC4XlSZGw5j+6j5R5yXyAp9n
+X-Received: by 2002:a25:3784:: with SMTP id e126mr3961695yba.267.1591779484599;
+        Wed, 10 Jun 2020 01:58:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591779484; cv=none;
         d=google.com; s=arc-20160816;
-        b=BLvCp0eyDya4tApAcWJOcXgIYlTEJYkaTsFpTKxh5psGP4At5U55ct+IZANI0pPbvn
-         QobadnnV6RsMQc1pLk8u8Z+T7jCisRwn1oDxamuOYeWMZhVXSavXuxSyjiWvrc6DegpO
-         V5X4p4lgU6ccbgYASwEdcQq+7YvHnu1ZJs1AIUCkRHR5y6UeYtEkj7DlAiR8SUVJhgyl
-         7bUhAG0HlGvDH2sVSOlyBU/Fwy7hOseKL0AHfkqMeZJpH7Neyko3S3QlzY69F2WwzTks
-         Z9nryIfdnjGGYmS4JoOlA9yquOIDfpWzvmOmCsBYDVHQPgoi92PXSS0JBdyjT/rt0P3K
-         G3Eg==
+        b=cva3qnStblNNygSGt/mZMFI3ovMVGp0bDdgNm6s/XTdpKsvol+yeeMX6qzszCTEJtk
+         C2/E//VjU4ObID+IAN+5Cm/gqEp7HvfR60Hf9m+MoRN4G/8tqrJZLR4Bm56mYIU1OPdl
+         OnvoROnE4KaE7UEUfEMUAv3fddc8ODJsSTotdwd/SRB4CeZfMTJgGHR9DQUQU3SvNzg5
+         E4SY/G+fzfBuEfvwVCVBqZwF0rfSCdMqA65s5dBTNhGJU3mQ20eGUnhmvecosHdGLT6W
+         pFFmxsJG2CaaA5x0DlM5Ewm4P9N8xnfT0EDJ4r86lmdJZ9eH7O67LRmd2YrVpvcZXaKJ
+         dogA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=WEO8o2Cs/Y+uZsHUavPytdOumYu4nKLqUv8s1dzlttg=;
-        b=oeSnQ5yHYS5O7FVWcbvseqJfRWFdAEdu6l5Zn6h4D8qX8GvDb5W4V+2ioX01nrFqyU
-         iu48xj1YBKoobo9FaVCy1+LABaiR9sw7a3t+p8UR0J6dJUNyJfJsXWb2mRsHRvP4MKkj
-         LssaQnOggm9uZkodYaqM8ZQ1/vFOFNLtC2RVhEEJNbvMCA6awl+tjq9xpnq9p+oS21eh
-         8+ytu42RrnTXFOrtq5RNtOfxUFwCPlL/HbwCPXxpFZavYDGu4dnQ3Aowh1X2DgVkowfK
-         xTugKJfCm6uf+kzRLU67ZROImiSm9necGZiqJxy9hQZSCuC2SdwrQWXJPq+pCthsFQ8s
-         PFDQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=+RlEiEBdFhsmyMDkaNY6bto0uDM5bKD0jNbLIi/ZHRA=;
+        b=aauF9jDEJ9KCpeRaYkUEv9A4gGZBY1r/rZj7JOoquIKJHId4EEBoDLP0GMq+f6OznH
+         J7oj0lkLSfCQY7/oHBWYDXoX4Wbc8Gz0MdWgJyt4xADmZv5//DLcGEF08QAb16tyzTy1
+         NDUVb+gvfFR7yWXYgYb2AFaO9AkRYQcfg6zWy1Dl3wCCr6DZE2zC2Ja3EYUd9ycg4zok
+         TZW4eL9Dv6kky8IzP82ARJdZ5i/Nw3yqRVStx1hEsoM288pOk4GrhHskRgJMeL1UAcpL
+         V+XajLUnNStgGD1pk8ut6mV296QPSxO73ivRJnroIVvxuEY/+3p29/KXUu8zLqm/BXj/
+         Vk5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X89scjoO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b5si2447858yba.152.2020.06.10.00.41.46
+        by mx.google.com with ESMTPS id g15si6460860ybe.188.2020.06.10.01.58.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jun 2020 00:41:46 -0700 (PDT)
+        Wed, 10 Jun 2020 01:58:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X89scjoO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51402 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43014 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jivMn-0003Mb-Ms
-	for alex.bennee@linaro.org; Wed, 10 Jun 2020 03:41:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58926)
+	id 1jiwYd-0007K3-U1
+	for alex.bennee@linaro.org; Wed, 10 Jun 2020 04:58:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43084)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1jivLi-0002wo-89
- for qemu-devel@nongnu.org; Wed, 10 Jun 2020 03:40:38 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:45131
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1jivLh-0003AW-4h
- for qemu-devel@nongnu.org; Wed, 10 Jun 2020 03:40:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591774835;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=WEO8o2Cs/Y+uZsHUavPytdOumYu4nKLqUv8s1dzlttg=;
- b=X89scjoOyygqLNNyicccHvRvmcTAk+lFryHS3rws05FQdMb6OGm9+JTi6kf5phpagGAK65
- Q6jNrht3fpR/u6rofxBp1vlnnX6p6JAtrp53ZOQ3N6CSAZAa+/gcpGKeQ8vq+Zi+C10YTl
- 49TDSxD2oDiodhEeRECcl3yAe6BkDnY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-413-4zAh9vPFN0mGy9YwGhdCfw-1; Wed, 10 Jun 2020 03:40:32 -0400
-X-MC-Unique: 4zAh9vPFN0mGy9YwGhdCfw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D860D8018A7;
- Wed, 10 Jun 2020 07:40:30 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.193.216])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 241185C241;
- Wed, 10 Jun 2020 07:40:28 +0000 (UTC)
-Date: Wed, 10 Jun 2020 09:40:26 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Ying Fang <fangying1@huawei.com>
-Subject: Re: [PATCH v3] target/arm/cpu: adjust virtual time for arm cpu
-Message-ID: <20200610074026.4hm7bmeci2q6drbn@kamzik.brq.redhat.com>
-References: <20200608121243.2076-1-fangying1@huawei.com>
- <20200608124952.lwmko6hmtuckbnlw@kamzik.brq.redhat.com>
- <f9ddeb87-c91b-aeba-e376-9c185fe2264d@huawei.com>
+ (Exim 4.90_1) (envelope-from <vav@vav-lap.sysgo.cz>)
+ id 1jiwXe-0006Rm-3M; Wed, 10 Jun 2020 04:57:03 -0400
+Received: from mail.sysgo.com ([176.9.12.79]:38124)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vav@vav-lap.sysgo.cz>)
+ id 1jiwXd-0000Tr-4P; Wed, 10 Jun 2020 04:57:01 -0400
+Received: from vav by vav-lap with local (Exim 4.92)
+ (envelope-from <vav@vav-lap.sysgo.cz>)
+ id 1jiwNa-0007Mi-5a; Wed, 10 Jun 2020 10:46:38 +0200
+From: Vaclav Vanc <vav@sysgo.com>
+To: 
+Subject: [PATCH] hw/timer/a9gtimer: Clear pending interrupt,
+ after the clear of Event flag
+Date: Wed, 10 Jun 2020 10:45:51 +0200
+Message-Id: <20200610084551.28222-1-vav@sysgo.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <f9ddeb87-c91b-aeba-e376-9c185fe2264d@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=drjones@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 21:17:20
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=176.9.12.79; envelope-from=vav@vav-lap.sysgo.cz;
+ helo=mail.sysgo.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 04:46:39
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, HEADER_FROM_DIFFERENT_DOMAINS=1,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,159 +79,49 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- wu.wubin@huawei.com, zhang.zhanghailiang@huawei.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM cores" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ Vaclav Vanc <vav@sysgo.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ON1H3fvWng+y
+X-TUID: 8FiXomQo4z9Z
 
-On Wed, Jun 10, 2020 at 09:32:06AM +0800, Ying Fang wrote:
-> 
-> 
-> On 6/8/2020 8:49 PM, Andrew Jones wrote:
-> > On Mon, Jun 08, 2020 at 08:12:43PM +0800, Ying Fang wrote:
-> > > From: fangying <fangying1@huawei.com>
-> > > 
-> > > Virtual time adjustment was implemented for virt-5.0 machine type,
-> > > but the cpu property was enabled only for host-passthrough and
-> > > max cpu model. Let's add it for arm cpu which has the generic timer
-> > > feature enabled.
-> > > 
-> > > Suggested-by: Andrew Jones <drjones@redhat.com>
-> > 
-> > This isn't true. I did suggest the way to arrange the code, after
-> > Peter suggested to move the kvm_arm_add_vcpu_properties() call to
-> > arm_cpu_post_init(), but I didn't suggest making this change in general,
-> > which is what this tag means. In fact, I've argued that it's pretty
-> I'm quite sorry for adding it here.
+A9 Global Timer is used with Edge triggered interrupts (This is true
+at least for Zynq and i.MX6 processors).
+When Event Flag is cleared in Interrupt Status Register and new interrupt
+was supposed to be scheduled, interrupt request is never cleared.
+Since interrupt in GIC is configured as Edge triggered, new interrupts
+are not registered (because interrupt is stuck at pending and GIC thinks
+it was already serviced). As a result interrupts from timer does not work
+anymore.
 
-No problem.
+Note: This happens only when interrupt was not serviced before the next
+interrupt is suppose to be scheduled. This happens for example during
+the increased load of the host system.
 
-> > pointless to do this, since KVM users should be using '-cpu host' or
-> > '-cpu max' anyway. Since I don't need credit for the code arranging,
-> As discussed in thread [1], there is a situation where a 'custom' cpu mode
-> is needed for us to keep instruction set compatibility so that migration can
-> be done, just like x86 does.
+Interrupt is now always cleared when Event Flag is cleared.
+This is in accordance to A9 Global Timer documentation.
 
-I understand the motivation. But, as I've said, KVM doesn't work that way.
+Signed-off-by: Vaclav Vanc <vav@sysgo.com>
+---
+ hw/timer/a9gtimer.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-> And we are planning to add support for it if
-> nobody is currently doing that.
-
-Great! I'm looking forward to seeing the KVM patches. Especially since,
-without the KVM patches, the 'custom' CPU model isn't a custom CPU model,
-it's just a misleading way to use host passthrough. Indeed, I'm a bit
-opposed to allowing anything other than '-cpu host' and '-cpu max' (with
-features explicitly enabled/disabled, e.g. -cpu host,pmu=off) to work
-until KVM actually works with CPU models. Otherwise, how do we know the
-difference between a model that actually works and one that is just
-misleadingly named?
-
-Thanks,
-drew
-
-> 
-> Thanks.
-> Ying
-> 
-> [1]: https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg00022.html
-> > please just drop the tag. Peter can maybe do that on merge though. Also,
-> > despite not agreeing that we need this change today, as there's nothing
-> > wrong with it and it looks good to me
-> > 
-> > Reviewed-by: Andrew Jones <drjones@redhat.com>
-> > 
-> > Thanks,
-> > drew
-> > 
-> > > Signed-off-by: Ying Fang <fangying1@huawei.com>
-> > > 
-> > > ---
-> > > v3:
-> > > - set kvm-no-adjvtime property in kvm_arm_add_vcpu_properties
-> > > 
-> > > v2:
-> > > - move kvm_arm_add_vcpu_properties into arm_cpu_post_init
-> > > 
-> > > v1:
-> > > - initial commit
-> > > - https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg08518.html
-> > > 
-> > > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> > > index 32bec156f2..5b7a36b5d7 100644
-> > > --- a/target/arm/cpu.c
-> > > +++ b/target/arm/cpu.c
-> > > @@ -1245,6 +1245,10 @@ void arm_cpu_post_init(Object *obj)
-> > >       if (arm_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER)) {
-> > >           qdev_property_add_static(DEVICE(cpu), &arm_cpu_gt_cntfrq_property);
-> > >       }
-> > > +
-> > > +    if (kvm_enabled()) {
-> > > +        kvm_arm_add_vcpu_properties(obj);
-> > > +    }
-> > >   }
-> > >   static void arm_cpu_finalizefn(Object *obj)
-> > > @@ -2029,7 +2033,6 @@ static void arm_max_initfn(Object *obj)
-> > >       if (kvm_enabled()) {
-> > >           kvm_arm_set_cpu_features_from_host(cpu);
-> > > -        kvm_arm_add_vcpu_properties(obj);
-> > >       } else {
-> > >           cortex_a15_initfn(obj);
-> > > @@ -2183,7 +2186,6 @@ static void arm_host_initfn(Object *obj)
-> > >       if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-> > >           aarch64_add_sve_properties(obj);
-> > >       }
-> > > -    kvm_arm_add_vcpu_properties(obj);
-> > >       arm_cpu_post_init(obj);
-> > >   }
-> > > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> > > index cbc5c3868f..778cecc2e6 100644
-> > > --- a/target/arm/cpu64.c
-> > > +++ b/target/arm/cpu64.c
-> > > @@ -592,7 +592,6 @@ static void aarch64_max_initfn(Object *obj)
-> > >       if (kvm_enabled()) {
-> > >           kvm_arm_set_cpu_features_from_host(cpu);
-> > > -        kvm_arm_add_vcpu_properties(obj);
-> > >       } else {
-> > >           uint64_t t;
-> > >           uint32_t u;
-> > > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> > > index 4bdbe6dcac..eef3bbd1cc 100644
-> > > --- a/target/arm/kvm.c
-> > > +++ b/target/arm/kvm.c
-> > > @@ -194,17 +194,18 @@ static void kvm_no_adjvtime_set(Object *obj, bool value, Error **errp)
-> > >   /* KVM VCPU properties should be prefixed with "kvm-". */
-> > >   void kvm_arm_add_vcpu_properties(Object *obj)
-> > >   {
-> > > -    if (!kvm_enabled()) {
-> > > -        return;
-> > > -    }
-> > > +    ARMCPU *cpu = ARM_CPU(obj);
-> > > +    CPUARMState *env = &cpu->env;
-> > > -    ARM_CPU(obj)->kvm_adjvtime = true;
-> > > -    object_property_add_bool(obj, "kvm-no-adjvtime", kvm_no_adjvtime_get,
-> > > -                             kvm_no_adjvtime_set);
-> > > -    object_property_set_description(obj, "kvm-no-adjvtime",
-> > > -                                    "Set on to disable the adjustment of "
-> > > -                                    "the virtual counter. VM stopped time "
-> > > -                                    "will be counted.");
-> > > +    if (arm_feature(env, ARM_FEATURE_GENERIC_TIMER)) {
-> > > +        cpu->kvm_adjvtime = true;
-> > > +        object_property_add_bool(obj, "kvm-no-adjvtime", kvm_no_adjvtime_get,
-> > > +                                 kvm_no_adjvtime_set);
-> > > +        object_property_set_description(obj, "kvm-no-adjvtime",
-> > > +                                        "Set on to disable the adjustment of "
-> > > +                                        "the virtual counter. VM stopped time "
-> > > +                                        "will be counted.");
-> > > +    }
-> > >   }
-> > >   bool kvm_arm_pmu_supported(CPUState *cpu)
-> > > -- 
-> > > 2.23.0
-> > > 
-> > > 
-> > 
-> > .
-> > 
-> 
+diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
+index 7233068a37..732889105e 100644
+--- a/hw/timer/a9gtimer.c
++++ b/hw/timer/a9gtimer.c
+@@ -206,6 +206,9 @@ static void a9_gtimer_write(void *opaque, hwaddr addr, uint64_t value,
+     case R_INTERRUPT_STATUS:
+         a9_gtimer_update(s, false);
+         gtb->status &= ~value;
++        if (gtb->status == 0) {
++            qemu_set_irq(gtb->irq, 0);
++        }
+         break;
+     case R_COMPARATOR_HI:
+         shift = 32;
+-- 
+2.20.1
 

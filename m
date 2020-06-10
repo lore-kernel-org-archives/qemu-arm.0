@@ -1,127 +1,264 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp311833lfc;
-        Wed, 10 Jun 2020 01:58:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzFFJAkd1ny2f86lEuswjt+veCe6EVfWbNphUzMIDEGh522EC4XlSZGw5j+6j5R5yXyAp9n
-X-Received: by 2002:a25:3784:: with SMTP id e126mr3961695yba.267.1591779484599;
-        Wed, 10 Jun 2020 01:58:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591779484; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp428787lfc;
+        Wed, 10 Jun 2020 04:54:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwX1cyRtFfGKPILF3jeZNO6k8GqGF8PEfekEjIg/VQPtXRpmU4M7hPEVQdibaplBlBPXYdT
+X-Received: by 2002:a05:6402:3c2:: with SMTP id t2mr2099453edw.361.1591790087915;
+        Wed, 10 Jun 2020 04:54:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591790087; cv=none;
         d=google.com; s=arc-20160816;
-        b=cva3qnStblNNygSGt/mZMFI3ovMVGp0bDdgNm6s/XTdpKsvol+yeeMX6qzszCTEJtk
-         C2/E//VjU4ObID+IAN+5Cm/gqEp7HvfR60Hf9m+MoRN4G/8tqrJZLR4Bm56mYIU1OPdl
-         OnvoROnE4KaE7UEUfEMUAv3fddc8ODJsSTotdwd/SRB4CeZfMTJgGHR9DQUQU3SvNzg5
-         E4SY/G+fzfBuEfvwVCVBqZwF0rfSCdMqA65s5dBTNhGJU3mQ20eGUnhmvecosHdGLT6W
-         pFFmxsJG2CaaA5x0DlM5Ewm4P9N8xnfT0EDJ4r86lmdJZ9eH7O67LRmd2YrVpvcZXaKJ
-         dogA==
+        b=oE39oHFqNHZstPuTxE8GEVjYxcZxzV+dHoH3WKN3TQTdZpQzzrXFdLCQf50Jx8fGk2
+         mA23qqaS6kvWZDb/vlfjKNVRppbzXSaX6L1Iw0NHcNA/PDBjezx10Y2lri6Fu4BrNU4M
+         Vy/h2x5WU+uE+/yX4hr0f/La6DWKEHkl2ceh8p9fi5ZhDzrp6LD1THJUg55/VyoansUv
+         UbXF7csDElM/FFLXf9RrM3z/CVtJMk3qQNMHF/nNDMahol5HGROIZWPeV0YFKeSyVGB6
+         3qbFfBr9n3lCj8AP2B5X9mJqZSML1Ui04f34D2kh1ekW5cjvhet7qkY9JIl4tDz6vnuS
+         RC0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=+RlEiEBdFhsmyMDkaNY6bto0uDM5bKD0jNbLIi/ZHRA=;
-        b=aauF9jDEJ9KCpeRaYkUEv9A4gGZBY1r/rZj7JOoquIKJHId4EEBoDLP0GMq+f6OznH
-         J7oj0lkLSfCQY7/oHBWYDXoX4Wbc8Gz0MdWgJyt4xADmZv5//DLcGEF08QAb16tyzTy1
-         NDUVb+gvfFR7yWXYgYb2AFaO9AkRYQcfg6zWy1Dl3wCCr6DZE2zC2Ja3EYUd9ycg4zok
-         TZW4eL9Dv6kky8IzP82ARJdZ5i/Nw3yqRVStx1hEsoM288pOk4GrhHskRgJMeL1UAcpL
-         V+XajLUnNStgGD1pk8ut6mV296QPSxO73ivRJnroIVvxuEY/+3p29/KXUu8zLqm/BXj/
-         Vk5w==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=5GKw6maa7B1hSULtMqvkZqZPAWdNHZFJSoWS3golo7w=;
+        b=Il5IrVyYNt82opMNvHoJtigbxYvfPtkNRf3yjHWagrAJGWFY9LROmLId8kRlPU4UGC
+         iuyMwSPbjRiULWu9dGfCQoJB5k41mVr934LCESUFDSySfMQxoaj3z7osAbYmCZIn3Z+o
+         e3JJwxxKsmFFBWBpjtrxF9Y1XgZawnXcvbzfws13bAFWHRyohvHheGePZhXSW8e1pYok
+         Av/wMcKbZMaZLcePxpbWQyNJER2WDBTVj1vQLna5mFyTxMIEiPF+ZBBR40cVol/zGFHA
+         JpL8lps5GdDPbyy0WVFIXOtiak0R0F9U7qBm89OAbs4BnqOWjbtOfO71efmEsLzFpCBb
+         AL8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g15si6460860ybe.188.2020.06.10.01.58.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jun 2020 01:58:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bK4ZZmHJ;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id j26si12633988ejs.623.2020.06.10.04.54.47;
+        Wed, 10 Jun 2020 04:54:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43014 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jiwYd-0007K3-U1
-	for alex.bennee@linaro.org; Wed, 10 Jun 2020 04:58:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43084)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vav@vav-lap.sysgo.cz>)
- id 1jiwXe-0006Rm-3M; Wed, 10 Jun 2020 04:57:03 -0400
-Received: from mail.sysgo.com ([176.9.12.79]:38124)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vav@vav-lap.sysgo.cz>)
- id 1jiwXd-0000Tr-4P; Wed, 10 Jun 2020 04:57:01 -0400
-Received: from vav by vav-lap with local (Exim 4.92)
- (envelope-from <vav@vav-lap.sysgo.cz>)
- id 1jiwNa-0007Mi-5a; Wed, 10 Jun 2020 10:46:38 +0200
-From: Vaclav Vanc <vav@sysgo.com>
-To: 
-Subject: [PATCH] hw/timer/a9gtimer: Clear pending interrupt,
- after the clear of Event flag
-Date: Wed, 10 Jun 2020 10:45:51 +0200
-Message-Id: <20200610084551.28222-1-vav@sysgo.com>
-X-Mailer: git-send-email 2.20.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bK4ZZmHJ;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1728718AbgFJLyq (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 10 Jun 2020 07:54:46 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:26777 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1728497AbgFJLyq (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 10 Jun 2020 07:54:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1591790083;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=5GKw6maa7B1hSULtMqvkZqZPAWdNHZFJSoWS3golo7w=;
+        b=bK4ZZmHJ3Ngbplf506BdrAIJVRYXRb+zBpAlN81JSNmkC1cqriuYjd4wgpPTu0/mfXVLdu
+        HU3sApGx44QHKaDc6ltv+ffa3P4KgRYPUmRNNq4Pp2WHfvQ3/OwJqvPwdKAK5Qg//e4rkp
+        VZN27/c8m5SWJIkaISxvWzXsaB3i+x8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-5-2gkK6RQTM4eSzxW0-G2CwQ-1; Wed, 10 Jun 2020 07:54:40 -0400
+X-MC-Unique: 2gkK6RQTM4eSzxW0-G2CwQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6C6D2800053;
+        Wed, 10 Jun 2020 11:54:37 +0000 (UTC)
+Received: from t480s.redhat.com (ovpn-114-42.ams2.redhat.com [10.36.114.42])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id A38615D9D3;
+        Wed, 10 Jun 2020 11:54:20 +0000 (UTC)
+From:   David Hildenbrand <david@redhat.com>
+To:     qemu-devel@nongnu.org
+Cc:     kvm@vger.kernel.org, qemu-s390x@nongnu.org,
+        Richard Henderson <rth@twiddle.net>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        "Michael S . Tsirkin" <mst@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        teawater <teawaterz@linux.alibaba.com>,
+        Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
+        Alex Shi <alex.shi@linux.alibaba.com>,
+        Alex Williamson <alex.williamson@redhat.com>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Cornelia Huck <cohuck@redhat.com>,
+        Eric Blake <eblake@redhat.com>,
+        Eric Farman <farman@linux.ibm.com>,
+        Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
+        Halil Pasic <pasic@linux.ibm.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Janosch Frank <frankja@linux.ibm.com>,
+        Juan Quintela <quintela@redhat.com>,
+        Keith Busch <kbusch@kernel.org>,
+        Lukas Straub <lukasstraub2@web.de>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Markus Armbruster <armbru@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Pierre Morel <pmorel@linux.ibm.com>,
+        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+        Sergio Lopez <slp@redhat.com>,
+        Tony Krowiak <akrowiak@linux.ibm.com>
+Subject: [PATCH v4 00/21] virtio-mem: Paravirtualized memory hot(un)plug
+Date:   Wed, 10 Jun 2020 13:53:58 +0200
+Message-Id: <20200610115419.51688-1-david@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=176.9.12.79; envelope-from=vav@vav-lap.sysgo.cz;
- helo=mail.sysgo.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/10 04:46:39
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -8
-X-Spam_score: -0.9
-X-Spam_bar: /
-X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, HEADER_FROM_DIFFERENT_DOMAINS=1,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:ARM cores" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Vaclav Vanc <vav@sysgo.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8FiXomQo4z9Z
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: Yz6N7cF11UGy
 
-A9 Global Timer is used with Edge triggered interrupts (This is true
-at least for Zynq and i.MX6 processors).
-When Event Flag is cleared in Interrupt Status Register and new interrupt
-was supposed to be scheduled, interrupt request is never cleared.
-Since interrupt in GIC is configured as Edge triggered, new interrupts
-are not registered (because interrupt is stuck at pending and GIC thinks
-it was already serviced). As a result interrupts from timer does not work
-anymore.
+This is the very basic, initial version of virtio-mem. More info on
+virtio-mem in general can be found in the Linux kernel driver v2 posting
+[1] and in patch #10. The Linux driver is currently on its way upstream.
 
-Note: This happens only when interrupt was not serviced before the next
-interrupt is suppose to be scheduled. This happens for example during
-the increased load of the host system.
+This series is based on [3]:
+    "[PATCH v1] pc: Support coldplugging of virtio-pmem-pci devices on all
+     buses"
+And [4]:
+    "[PATCH v2] hmp: Make json format optional for qom-set"
 
-Interrupt is now always cleared when Event Flag is cleared.
-This is in accordance to A9 Global Timer documentation.
+The patches can be found at:
+    https://github.com/davidhildenbrand/qemu.git virtio-mem-v4
 
-Signed-off-by: Vaclav Vanc <vav@sysgo.com>
----
- hw/timer/a9gtimer.c | 3 +++
- 1 file changed, 3 insertions(+)
+"The basic idea of virtio-mem is to provide a flexible,
+cross-architecture memory hot(un)plug solution that avoids many limitations
+imposed by existing technologies, architectures, and interfaces."
 
-diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-index 7233068a37..732889105e 100644
---- a/hw/timer/a9gtimer.c
-+++ b/hw/timer/a9gtimer.c
-@@ -206,6 +206,9 @@ static void a9_gtimer_write(void *opaque, hwaddr addr, uint64_t value,
-     case R_INTERRUPT_STATUS:
-         a9_gtimer_update(s, false);
-         gtb->status &= ~value;
-+        if (gtb->status == 0) {
-+            qemu_set_irq(gtb->irq, 0);
-+        }
-         break;
-     case R_COMPARATOR_HI:
-         shift = 32;
+There are a lot of addons in the works (esp. protection of unplugged
+memory, better hugepage support (esp. when reading unplugged memory),
+resizeable memory backends, support for more architectures, ...), this is
+the very basic version to get the ball rolling.
+
+The first 8 patches make sure we don't have any sudden surprises e.g., if
+somebody tries to pin all memory in RAM blocks, resulting in a higher
+memory consumption than desired. The remaining patches add basic virtio-mem
+along with support for x86-64. The last patch indicates to the guest OS
+the maximum possible PFN using ACPI SRAT, such that Linux can properly
+enable the swiotlb when booting only with DMA memory.
+
+[1] https://lkml.kernel.org/r/20200311171422.10484-1-david@redhat.com
+[2] https://lkml.kernel.org/r/20200507140139.17083-1-david@redhat.com
+[3] https://lkml.kernel.org/r/20200525084511.51379-1-david@redhat.com
+[3] https://lkml.kernel.org/r/20200610075153.33892-1-david@redhat.com
+
+Based-on: <20200525084511.51379-1-david@redhat.com>
+Based-on: <20200610075153.33892-1-david@redhat.com>
+Cc: teawater <teawaterz@linux.alibaba.com>
+Cc: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
+
+v3 -> v4
+- Adapt to virtio-mem config layout change (block size now is 64bit)
+- Added "numa: Auto-enable NUMA when any memory devices are possible"
+
+v2 -> v3:
+- Rebased on upstream/[3]
+- "virtio-mem: Exclude unplugged memory during migration"
+-- Added
+- "virtio-mem: Paravirtualized memory hot(un)plug"
+-- Simplify bitmap operations, find consecutive areas
+-- Tweak error messages
+-- Reshuffle some checks
+-- Minor cleanups
+- "accel/kvm: Convert to ram_block_discard_disable()"
+- "target/i386: sev: Use ram_block_discard_disable()"
+-- Keep asserts clean of functional things
+
+v1 -> v2:
+- Rebased to object_property_*() changes
+- "exec: Introduce ram_block_discard_(disable|require)()"
+-- Change the function names and rephrase/add comments
+- "virtio-balloon: Rip out qemu_balloon_inhibit()"
+-- Add and use "migration_in_incoming_postcopy()"
+- "migration/rdma: Use ram_block_discard_disable()"
+-- Add a comment regarding pin_all vs. !pin_all
+- "virtio-mem: Paravirtualized memory hot(un)plug"
+-- Replace virtio_mem_discard_inhibited() by
+   migration_in_incoming_postcopy()
+-- Drop some asserts
+-- Drop virtio_mem_bad_request(), use virtio_error() directly, printing
+   more information
+-- Replace "Note: Discarding should never fail ..." comments by
+   error_report()
+-- Replace virtio_stw_p() by cpu_to_le16()
+-- Drop migration_addr and migration_block_size
+-- Minor cleanups
+- "linux-headers: update to contain virtio-mem"
+-- Updated to latest v4 in Linux
+- General changes
+-- Fixup the users of the renamed ram_block_discard_(disable|require)
+-- Use "X: cannot disable RAM discard"-styled error messages
+- Added
+-- "virtio-mem: Migration sanity checks"
+-- "virtio-mem: Add trace events"
+
+David Hildenbrand (21):
+  exec: Introduce ram_block_discard_(disable|require)()
+  vfio: Convert to ram_block_discard_disable()
+  accel/kvm: Convert to ram_block_discard_disable()
+  s390x/pv: Convert to ram_block_discard_disable()
+  virtio-balloon: Rip out qemu_balloon_inhibit()
+  target/i386: sev: Use ram_block_discard_disable()
+  migration/rdma: Use ram_block_discard_disable()
+  migration/colo: Use ram_block_discard_disable()
+  linux-headers: update to contain virtio-mem
+  virtio-mem: Paravirtualized memory hot(un)plug
+  virtio-pci: Proxy for virtio-mem
+  MAINTAINERS: Add myself as virtio-mem maintainer
+  hmp: Handle virtio-mem when printing memory device info
+  numa: Handle virtio-mem in NUMA stats
+  pc: Support for virtio-mem-pci
+  virtio-mem: Allow notifiers for size changes
+  virtio-pci: Send qapi events when the virtio-mem size changes
+  virtio-mem: Migration sanity checks
+  virtio-mem: Add trace events
+  virtio-mem: Exclude unplugged memory during migration
+  numa: Auto-enable NUMA when any memory devices are possible
+
+ MAINTAINERS                                 |   8 +
+ accel/kvm/kvm-all.c                         |   4 +-
+ balloon.c                                   |  17 -
+ exec.c                                      |  52 ++
+ hw/arm/virt.c                               |   2 +
+ hw/core/numa.c                              |  17 +-
+ hw/i386/Kconfig                             |   1 +
+ hw/i386/microvm.c                           |   1 +
+ hw/i386/pc.c                                |  50 +-
+ hw/i386/pc_piix.c                           |   1 +
+ hw/i386/pc_q35.c                            |   1 +
+ hw/s390x/s390-virtio-ccw.c                  |  22 +-
+ hw/vfio/ap.c                                |  10 +-
+ hw/vfio/ccw.c                               |  11 +-
+ hw/vfio/common.c                            |  53 +-
+ hw/vfio/pci.c                               |   6 +-
+ hw/virtio/Kconfig                           |  11 +
+ hw/virtio/Makefile.objs                     |   2 +
+ hw/virtio/trace-events                      |  10 +
+ hw/virtio/virtio-balloon.c                  |   8 +-
+ hw/virtio/virtio-mem-pci.c                  | 157 ++++
+ hw/virtio/virtio-mem-pci.h                  |  34 +
+ hw/virtio/virtio-mem.c                      | 872 ++++++++++++++++++++
+ include/exec/memory.h                       |  41 +
+ include/hw/boards.h                         |   1 +
+ include/hw/pci/pci.h                        |   1 +
+ include/hw/vfio/vfio-common.h               |   4 +-
+ include/hw/virtio/virtio-mem.h              |  86 ++
+ include/migration/colo.h                    |   2 +-
+ include/migration/misc.h                    |   2 +
+ include/standard-headers/linux/virtio_ids.h |   1 +
+ include/standard-headers/linux/virtio_mem.h | 211 +++++
+ include/sysemu/balloon.h                    |   2 -
+ migration/migration.c                       |  15 +-
+ migration/postcopy-ram.c                    |  23 -
+ migration/rdma.c                            |  18 +-
+ migration/savevm.c                          |  11 +-
+ monitor/hmp-cmds.c                          |  16 +
+ monitor/monitor.c                           |   1 +
+ qapi/misc.json                              |  64 +-
+ target/i386/sev.c                           |   7 +
+ 41 files changed, 1730 insertions(+), 126 deletions(-)
+ create mode 100644 hw/virtio/virtio-mem-pci.c
+ create mode 100644 hw/virtio/virtio-mem-pci.h
+ create mode 100644 hw/virtio/virtio-mem.c
+ create mode 100644 include/hw/virtio/virtio-mem.h
+ create mode 100644 include/standard-headers/linux/virtio_mem.h
+
 -- 
-2.20.1
-
+2.26.2

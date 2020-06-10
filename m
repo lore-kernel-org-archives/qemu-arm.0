@@ -1,246 +1,233 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp945774lfc;
-        Tue, 9 Jun 2020 16:24:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxlq7A9fQ0fHURilUBuIxIVGXo6cUYVZBaF/InZjWFB4ePiC8AePwX6p3PuMkoF/7BQx2hv
-X-Received: by 2002:a25:5786:: with SMTP id l128mr912702ybb.186.1591745083802;
-        Tue, 09 Jun 2020 16:24:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591745083; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp66513lfc;
+        Tue, 9 Jun 2020 18:32:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz9gB9kvqn+uP3ekSHcBOZtq1VypOmS/yw0tyBd1xw9cimz9nX0MKWF5ELJ4b9RYI6ClaXd
+X-Received: by 2002:a25:d3d0:: with SMTP id e199mr1496679ybf.27.1591752766568;
+        Tue, 09 Jun 2020 18:32:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591752766; cv=none;
         d=google.com; s=arc-20160816;
-        b=ham3wQB1WCi/RTIXf9bsdU0lRNBok0HwUK8Ve2LCtyzPTxMLOJ6NmOpUJEPxvS5C+O
-         hdzFIbbo0+ryhyMn3i/Ec7SbPo1dKC/IOjLGQgeDUtFQwgH+V+HEhcxIWbBYklVI+0X6
-         k4lsqC/UkbM5mFc0NMFC9Ejto16N6IrJEVnfuEvBW0LK/CY3KHw2Wp4OVSzsdOzfWd9Q
-         03So0MydjRio2w0o/aJ3yKVb8uWeaAjj7qJEcfbYOY/ahCd1a5AwDs3f6Z7cu089oF+u
-         gstDjyEEUH6tA+ihDM20hZsYubSVudDzsGai8OjeFytpctSNIlufSZ5FSgV1gpUkL9e1
-         tnEA==
+        b=uN0iazmZqiQYx6w7/4ANTfAeD8dTn9YTPsOquaYTrXMSul54OyCVI7aJxT9raL/wi3
+         Qlr+AAdlMOGSsjrtV+wlMRAQZ7TCvVNY4fGmmhh7lnlLd3/ziGj5nKChVoOtt7Va2kEl
+         r4XMi2qU8s/X4RJrW3Z0GzobM27Wy0FO39V/iAdZNAxaZjupXtFLGskjVOya+JG8mBzV
+         GAbkn0m2KDN7ms7x3eXDm+eFPJEgdnPWImKXX0epSJRhAGlVkTsmouUURIuGgG9mlPoS
+         fyAjbklTK9hAD1u7G6N/x61rrlQ84VHbkRKxC07phq6CU/hZzuAOk5e1ZliZmS86VE25
+         nD/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=2xozlEa/iOiEIAWB56dhJk4Va5WuvxQHsknEvWaQjQM=;
-        b=uEt6/WQjvFiIcMLUKfrsyys34yK1hKeKn+K3gYF7pqBlMgIinbyUjSwkbo43mDkLB/
-         EIX9Tj/hYMlB093Gi/NA42Vw950rEGQV2Lys+m0FTy2EmIfMhsqtbDraEVTCF+na1VVd
-         O2QXvP+ZwAsbvdooVrix71U/B8y+O+Z57n9txTir5OCuhN7V1nLchyBDIeu+CF0HeHgg
-         fedds/bNlY2VEzZjhTgbh7QFe5ubwYLNUe2MUxBJeWFc5Fw6iLnBo3xuah+ObnZSDMKb
-         AjJOIn+ujAONwC4BUXnZCbg9j3l9MQiiFW8TDLPF2LV9RFKsp9B4SC2zz0wVzZhUZ+kW
-         lw5A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=xQrFRYliSBggXLa5lcZ09b9k3ScavliF1/McdPuLwuY=;
+        b=HG4FbCO0bS4b+oJJe3t0NYAnedoKGYvHfCpH+O3pKqrQ5PaahAkxfSTbdlgmPMSSwd
+         IAEg6toX1e+IIKRCDwgneb5KeQVCQh4dQ2kbWcR9icdah+cNGWjp1yL42xWn/aVvYrIH
+         wXUWOxZR3Z6EESiykkmq8egW9fJCkvLy+0udgwEseG1iYbNYCghVantprWdXhP3Tv+RA
+         l0KDsIUJ6oOk+tkVHY6DiiMTuwLuFnBvmk+92hSBOLxkfrMRXmpPnRVrZ5833xgaztpR
+         XH7ve0RbU0msfFwOk/GQCx5RQVJBUu9RzLj+jgQIR9H2OclFaKwTwv685aK91Tb9tY/A
+         4wBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VzMpja2B;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d37si3344273ybi.96.2020.06.09.16.24.43
+        by mx.google.com with ESMTPS id 1si4323429ybe.134.2020.06.09.18.32.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jun 2020 16:24:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Jun 2020 18:32:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VzMpja2B;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37558 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53244 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jinbn-00028N-4e
-	for alex.bennee@linaro.org; Tue, 09 Jun 2020 19:24:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54786)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jipbh-0006yj-Tn
+	for alex.bennee@linaro.org; Tue, 09 Jun 2020 21:32:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43556)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jinas-0001QL-P3; Tue, 09 Jun 2020 19:23:46 -0400
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:44635)
- by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jinar-0007G7-Qn; Tue, 09 Jun 2020 19:23:46 -0400
-Received: by mail-il1-x143.google.com with SMTP id i1so124756ils.11;
- Tue, 09 Jun 2020 16:23:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=2xozlEa/iOiEIAWB56dhJk4Va5WuvxQHsknEvWaQjQM=;
- b=VzMpja2BdCmd/sBjK4m2yoL7xOfCW3ER0pEHIFvQrknWtE3D0p1x5H6AV3Rwv87/qi
- nq1fZW+xpk1vlQLEbK7g8Dz5H2FLu1aiLK0NtcFjiyE2Uv1t1SslmWVwoSWqCBtfCiZe
- WEgoZ3Ab0/orOSwwmLzzcWABVzRFdzmi5HgWW4BQPBxHtevwgaqr8KVEzL/zjbymuh+t
- QUPdYlxakLpdK92gYOJEcVO7wuiYYygC1oODQfRemgqXE5VAD0XMXlcb1HKNJhkKC2/Y
- QOr4SOT9rB1SFtXUinO+hhMnsz4Mtn3un/SItF38ZnuM2IstLfYuu9KHOhyyfGi3cH8C
- r/Ag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=2xozlEa/iOiEIAWB56dhJk4Va5WuvxQHsknEvWaQjQM=;
- b=IOad0Y5r3P42+C4SvrWPBTPFNwXPkZNCDGBmA6FZnsvJhLxZisxL/pU7oatS0UZBDQ
- nEyYMoHnUruvopyRtpe5MiSvXHCMIPQ4f/+TxhefH/vHrfQQG9voOGtRbMSIatFZAveM
- 53F3kEFD8vtSrSjDDNW8B16JIWfT2oaz33/uX/FKgWK4H0Ju8U/XVqBKSEunZ7tdKxAf
- J0ZqLEk9VM+bbRnfdZjLGZluO3DPveEm6i52F+yrq9ZrecMsEsPl91wlMMKhhWKFSQ2G
- +NRS5SstxcQwajsrVmM5WOutXab2EbYOwga4ORTZL6100tKrl1CWiJGelj7TbuRBUfd0
- IiFg==
-X-Gm-Message-State: AOAM531ame+I3ftso+flYUKUn1gqm0k37JAOAAMPzF/kg3jRHebVdfdR
- VzWXVKiMzhHIndynC9n5bY8y3/kbZ0IuV0VX81U=
-X-Received: by 2002:a92:c94b:: with SMTP id i11mr400044ilq.177.1591745013439; 
- Tue, 09 Jun 2020 16:23:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1jipba-0006yU-95; Tue, 09 Jun 2020 21:32:38 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:53934 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1jipbY-0005FU-OS; Tue, 09 Jun 2020 21:32:37 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id BD15596D4D9D500F9BD3;
+ Wed, 10 Jun 2020 09:32:24 +0800 (CST)
+Received: from [10.173.222.233] (10.173.222.233) by
+ DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
+ 14.3.487.0; Wed, 10 Jun 2020 09:32:17 +0800
+Subject: Re: [PATCH v3] target/arm/cpu: adjust virtual time for arm cpu
+To: Andrew Jones <drjones@redhat.com>
+References: <20200608121243.2076-1-fangying1@huawei.com>
+ <20200608124952.lwmko6hmtuckbnlw@kamzik.brq.redhat.com>
+From: Ying Fang <fangying1@huawei.com>
+Message-ID: <f9ddeb87-c91b-aeba-e376-9c185fe2264d@huawei.com>
+Date: Wed, 10 Jun 2020 09:32:06 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-References: <20200609122339.937862-1-armbru@redhat.com>
- <20200609122339.937862-2-armbru@redhat.com>
-In-Reply-To: <20200609122339.937862-2-armbru@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 9 Jun 2020 16:14:12 -0700
-Message-ID: <CAKmqyKPGBxODrm6vRLAYd_oFbeNsH3U_3qpS4O+w7m-YdgxLuQ@mail.gmail.com>
-Subject: Re: [PATCH v3 01/24] arm/stm32f405: Fix realization of
- "stm32f2xx-adc" devices
-To: Markus Armbruster <armbru@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x143.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <20200608124952.lwmko6hmtuckbnlw@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.173.222.233]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=fangying1@huawei.com;
+ helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/09 21:32:25
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A0JFoFRIs0IF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ wu.wubin@huawei.com, zhang.zhanghailiang@huawei.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +2mgCON2ExqF
 
-On Tue, Jun 9, 2020 at 5:24 AM Markus Armbruster <armbru@redhat.com> wrote:
->
-> stm32f405_soc_initfn() creates six such devices, but
-> stm32f405_soc_realize() realizes only one.  Affects machine
-> netduinoplus2.
->
-> In theory, a device becomes real only on realize.  In practice, the
-> transition from unreal to real is a fuzzy one.  The work to make a
-> device real can be spread between realize methods (fine),
-> instance_init methods (wrong), and board code wiring up the device
-> (fine as long as it effectively happens on realize).  Depending on
-> what exactly is done where, a device can work even when we neglect
-> to realize it.
->
-> The five unrealized devices appear to stay unreal: neither MMIO nor
-> IRQ get wired up.
->
-> Fix stm32f405_soc_realize() to realize and wire up all six.  Visible
-> in "info qtree":
->
->      bus: main-system-bus
->        type System
->        dev: stm32f405-soc, id ""
->          cpu-type =3D "cortex-m4-arm-cpu"
->        dev: stm32f2xx-adc, id ""
->          gpio-out "sysbus-irq" 1
->     -    mmio ffffffffffffffff/00000000000000ff
->     +    mmio 0000000040012000/00000000000000ff
->        dev: stm32f2xx-adc, id ""
->          gpio-out "sysbus-irq" 1
->     -    mmio ffffffffffffffff/00000000000000ff
->     +    mmio 0000000040012100/00000000000000ff
->        dev: stm32f2xx-adc, id ""
->          gpio-out "sysbus-irq" 1
->     -    mmio ffffffffffffffff/00000000000000ff
->     +    mmio 0000000040012200/00000000000000ff
->        dev: stm32f2xx-adc, id ""
->          gpio-out "sysbus-irq" 1
->     -    mmio ffffffffffffffff/00000000000000ff
->     +    mmio 0000000040012300/00000000000000ff
->        dev: stm32f2xx-adc, id ""
->          gpio-out "sysbus-irq" 1
->     -    mmio 0000000040012000/00000000000000ff
->     +    mmio 0000000040012400/00000000000000ff
->        dev: stm32f2xx-adc, id ""
->          gpio-out "sysbus-irq" 1
->     -    mmio ffffffffffffffff/00000000000000ff
->     +    mmio 0000000040012500/00000000000000ff
->        dev: armv7m, id ""
->
-> Fixes: 529fc5fd3e18ace8f739afd02dc0953354f39442
-> Cc: Alistair Francis <alistair@alistair23.me>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Alistair
+On 6/8/2020 8:49 PM, Andrew Jones wrote:
+> On Mon, Jun 08, 2020 at 08:12:43PM +0800, Ying Fang wrote:
+>> From: fangying <fangying1@huawei.com>
+>>
+>> Virtual time adjustment was implemented for virt-5.0 machine type,
+>> but the cpu property was enabled only for host-passthrough and
+>> max cpu model. Let's add it for arm cpu which has the generic timer
+>> feature enabled.
+>>
+>> Suggested-by: Andrew Jones <drjones@redhat.com>
+> 
+> This isn't true. I did suggest the way to arrange the code, after
+> Peter suggested to move the kvm_arm_add_vcpu_properties() call to
+> arm_cpu_post_init(), but I didn't suggest making this change in general,
+> which is what this tag means. In fact, I've argued that it's pretty
+I'm quite sorry for adding it here.
+> pointless to do this, since KVM users should be using '-cpu host' or
+> '-cpu max' anyway. Since I don't need credit for the code arranging,
+As discussed in thread [1], there is a situation where a 'custom' cpu 
+mode is needed for us to keep instruction set compatibility so that 
+migration can be done, just like x86 does. And we are planning to add 
+support for it if nobody is currently doing that.
 
-> ---
->  hw/arm/stm32f405_soc.c | 23 +++++++++++++----------
->  1 file changed, 13 insertions(+), 10 deletions(-)
->
-> diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
-> index 4f10ce6176..c9a530eecf 100644
-> --- a/hw/arm/stm32f405_soc.c
-> +++ b/hw/arm/stm32f405_soc.c
-> @@ -37,7 +37,8 @@ static const uint32_t usart_addr[] =3D { 0x40011000, 0x=
-40004400, 0x40004800,
->  /* At the moment only Timer 2 to 5 are modelled */
->  static const uint32_t timer_addr[] =3D { 0x40000000, 0x40000400,
->                                         0x40000800, 0x40000C00 };
-> -#define ADC_ADDR                       0x40012000
-> +static const uint32_t adc_addr[] =3D { 0x40012000, 0x40012100, 0x4001220=
-0,
-> +                                     0x40012300, 0x40012400, 0x40012500 =
-};
->  static const uint32_t spi_addr[] =3D   { 0x40013000, 0x40003800, 0x40003=
-C00,
->                                         0x40013400, 0x40015000, 0x4001540=
-0 };
->  #define EXTI_ADDR                      0x40013C00
-> @@ -185,16 +186,18 @@ static void stm32f405_soc_realize(DeviceState *dev_=
-soc, Error **errp)
->      qdev_connect_gpio_out(DEVICE(&s->adc_irqs), 0,
->                            qdev_get_gpio_in(armv7m, ADC_IRQ));
->
-> -    dev =3D DEVICE(&(s->adc[i]));
-> -    object_property_set_bool(OBJECT(&s->adc[i]), true, "realized", &err)=
-;
-> -    if (err !=3D NULL) {
-> -        error_propagate(errp, err);
-> -        return;
-> +    for (i =3D 0; i < STM_NUM_ADCS; i++) {
-> +        dev =3D DEVICE(&(s->adc[i]));
-> +        object_property_set_bool(OBJECT(&s->adc[i]), true, "realized", &=
-err);
-> +        if (err !=3D NULL) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +        busdev =3D SYS_BUS_DEVICE(dev);
-> +        sysbus_mmio_map(busdev, 0, adc_addr[i]);
-> +        sysbus_connect_irq(busdev, 0,
-> +                           qdev_get_gpio_in(DEVICE(&s->adc_irqs), i));
->      }
-> -    busdev =3D SYS_BUS_DEVICE(dev);
-> -    sysbus_mmio_map(busdev, 0, ADC_ADDR);
-> -    sysbus_connect_irq(busdev, 0,
-> -                       qdev_get_gpio_in(DEVICE(&s->adc_irqs), i));
->
->      /* SPI devices */
->      for (i =3D 0; i < STM_NUM_SPIS; i++) {
-> --
-> 2.26.2
->
->
+Thanks.
+Ying
+
+[1]: https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg00022.html
+> please just drop the tag. Peter can maybe do that on merge though. Also,
+> despite not agreeing that we need this change today, as there's nothing
+> wrong with it and it looks good to me
+> 
+> Reviewed-by: Andrew Jones <drjones@redhat.com>
+> 
+> Thanks,
+> drew
+> 
+>> Signed-off-by: Ying Fang <fangying1@huawei.com>
+>>
+>> ---
+>> v3:
+>> - set kvm-no-adjvtime property in kvm_arm_add_vcpu_properties
+>>
+>> v2:
+>> - move kvm_arm_add_vcpu_properties into arm_cpu_post_init
+>>
+>> v1:
+>> - initial commit
+>> - https://lists.gnu.org/archive/html/qemu-devel/2020-05/msg08518.html
+>>
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index 32bec156f2..5b7a36b5d7 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -1245,6 +1245,10 @@ void arm_cpu_post_init(Object *obj)
+>>       if (arm_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER)) {
+>>           qdev_property_add_static(DEVICE(cpu), &arm_cpu_gt_cntfrq_property);
+>>       }
+>> +
+>> +    if (kvm_enabled()) {
+>> +        kvm_arm_add_vcpu_properties(obj);
+>> +    }
+>>   }
+>>   
+>>   static void arm_cpu_finalizefn(Object *obj)
+>> @@ -2029,7 +2033,6 @@ static void arm_max_initfn(Object *obj)
+>>   
+>>       if (kvm_enabled()) {
+>>           kvm_arm_set_cpu_features_from_host(cpu);
+>> -        kvm_arm_add_vcpu_properties(obj);
+>>       } else {
+>>           cortex_a15_initfn(obj);
+>>   
+>> @@ -2183,7 +2186,6 @@ static void arm_host_initfn(Object *obj)
+>>       if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+>>           aarch64_add_sve_properties(obj);
+>>       }
+>> -    kvm_arm_add_vcpu_properties(obj);
+>>       arm_cpu_post_init(obj);
+>>   }
+>>   
+>> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+>> index cbc5c3868f..778cecc2e6 100644
+>> --- a/target/arm/cpu64.c
+>> +++ b/target/arm/cpu64.c
+>> @@ -592,7 +592,6 @@ static void aarch64_max_initfn(Object *obj)
+>>   
+>>       if (kvm_enabled()) {
+>>           kvm_arm_set_cpu_features_from_host(cpu);
+>> -        kvm_arm_add_vcpu_properties(obj);
+>>       } else {
+>>           uint64_t t;
+>>           uint32_t u;
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index 4bdbe6dcac..eef3bbd1cc 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -194,17 +194,18 @@ static void kvm_no_adjvtime_set(Object *obj, bool value, Error **errp)
+>>   /* KVM VCPU properties should be prefixed with "kvm-". */
+>>   void kvm_arm_add_vcpu_properties(Object *obj)
+>>   {
+>> -    if (!kvm_enabled()) {
+>> -        return;
+>> -    }
+>> +    ARMCPU *cpu = ARM_CPU(obj);
+>> +    CPUARMState *env = &cpu->env;
+>>   
+>> -    ARM_CPU(obj)->kvm_adjvtime = true;
+>> -    object_property_add_bool(obj, "kvm-no-adjvtime", kvm_no_adjvtime_get,
+>> -                             kvm_no_adjvtime_set);
+>> -    object_property_set_description(obj, "kvm-no-adjvtime",
+>> -                                    "Set on to disable the adjustment of "
+>> -                                    "the virtual counter. VM stopped time "
+>> -                                    "will be counted.");
+>> +    if (arm_feature(env, ARM_FEATURE_GENERIC_TIMER)) {
+>> +        cpu->kvm_adjvtime = true;
+>> +        object_property_add_bool(obj, "kvm-no-adjvtime", kvm_no_adjvtime_get,
+>> +                                 kvm_no_adjvtime_set);
+>> +        object_property_set_description(obj, "kvm-no-adjvtime",
+>> +                                        "Set on to disable the adjustment of "
+>> +                                        "the virtual counter. VM stopped time "
+>> +                                        "will be counted.");
+>> +    }
+>>   }
+>>   
+>>   bool kvm_arm_pmu_supported(CPUState *cpu)
+>> -- 
+>> 2.23.0
+>>
+>>
+> 
+> .
+> 

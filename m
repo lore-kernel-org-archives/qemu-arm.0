@@ -1,67 +1,69 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp428787lfc;
-        Wed, 10 Jun 2020 04:54:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwX1cyRtFfGKPILF3jeZNO6k8GqGF8PEfekEjIg/VQPtXRpmU4M7hPEVQdibaplBlBPXYdT
-X-Received: by 2002:a05:6402:3c2:: with SMTP id t2mr2099453edw.361.1591790087915;
-        Wed, 10 Jun 2020 04:54:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591790087; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp429733lfc;
+        Wed, 10 Jun 2020 04:56:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyuCBugLUBUPXsaFQsZiMcLiCWRQnmoO9eon9HgMZME4NfhPtGamnV7RxMov9pHcd6P2n3e
+X-Received: by 2002:aa7:d054:: with SMTP id n20mr2096389edo.344.1591790176256;
+        Wed, 10 Jun 2020 04:56:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591790176; cv=none;
         d=google.com; s=arc-20160816;
-        b=oE39oHFqNHZstPuTxE8GEVjYxcZxzV+dHoH3WKN3TQTdZpQzzrXFdLCQf50Jx8fGk2
-         mA23qqaS6kvWZDb/vlfjKNVRppbzXSaX6L1Iw0NHcNA/PDBjezx10Y2lri6Fu4BrNU4M
-         Vy/h2x5WU+uE+/yX4hr0f/La6DWKEHkl2ceh8p9fi5ZhDzrp6LD1THJUg55/VyoansUv
-         UbXF7csDElM/FFLXf9RrM3z/CVtJMk3qQNMHF/nNDMahol5HGROIZWPeV0YFKeSyVGB6
-         3qbFfBr9n3lCj8AP2B5X9mJqZSML1Ui04f34D2kh1ekW5cjvhet7qkY9JIl4tDz6vnuS
-         RC0A==
+        b=RZUZSWDbKGUDiV7TraT8uoRT37397lhC7arozYh1tPD68NtSWYrYFmM+5gx64cTqk/
+         +StKy8KgQeUNrJGyLozJYtZMJt4xK73HLSQBF2kWZf+OY0ynvcgYUjLIUty2iEhTxZYh
+         /7Y2ctMo8PkhdDNApmm5h+JbLMnXOOURemSZrpGGW6w933+c3dZoCBu16y5fRA2z5Q6h
+         OfTbIxehrv9S3hK1exwvfGE+DuO70cjEEVSY52nM2CnWQu3Nyil9U6/mTAK6g1ZBXGpq
+         ySDXbx8oR6fhNaMg8H4xzbC0AgFfikeKGstPpXMqeut2h+op9Roo63WfjK/VdDiLJ98i
+         yK8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=5GKw6maa7B1hSULtMqvkZqZPAWdNHZFJSoWS3golo7w=;
-        b=Il5IrVyYNt82opMNvHoJtigbxYvfPtkNRf3yjHWagrAJGWFY9LROmLId8kRlPU4UGC
-         iuyMwSPbjRiULWu9dGfCQoJB5k41mVr934LCESUFDSySfMQxoaj3z7osAbYmCZIn3Z+o
-         e3JJwxxKsmFFBWBpjtrxF9Y1XgZawnXcvbzfws13bAFWHRyohvHheGePZhXSW8e1pYok
-         Av/wMcKbZMaZLcePxpbWQyNJER2WDBTVj1vQLna5mFyTxMIEiPF+ZBBR40cVol/zGFHA
-         JpL8lps5GdDPbyy0WVFIXOtiak0R0F9U7qBm89OAbs4BnqOWjbtOfO71efmEsLzFpCBb
-         AL8g==
+         :references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=OMm4of9YaGzegN5bSIFM+q+axawQAsBn39Dg4QO3Ssc=;
+        b=hq4tvJ/l52QD25r5Tyex/ZsMx7NgH2aZ+M7LAqNusNf8m+bJKjXQAkp+YGieQNfxp8
+         TzcdAC2Lv8ItNFU4X+QTM2OfnuLB5t/ngR8sGNDEE9BadusLSPKDTz7JeFkI59Q8hqxi
+         IrCcMeSpsCLFg0VG3JxR4IA37pAcy+pKDjV11yHoqruEzrcu+jEDXOYCRQYPMLd+Tv1I
+         NQvuZQrhCt4GlqcN+/wWHJZJaI3d9yC/Bt84OdbIcNH9TCSUKXwIL09yzuUn90Zmyefa
+         pPd2H2Q1TgN9mbdq4Y1sgL29Dv1btekl85RThN7IvkA7siz9rhad5cMGE6+rAt9Pz6PA
+         Rejg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bK4ZZmHJ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vc6+AD0A;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id j26si12633988ejs.623.2020.06.10.04.54.47;
-        Wed, 10 Jun 2020 04:54:47 -0700 (PDT)
+        by mx.google.com with ESMTP id gr2si12394408ejb.221.2020.06.10.04.56.16;
+        Wed, 10 Jun 2020 04:56:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bK4ZZmHJ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Vc6+AD0A;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728718AbgFJLyq (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Wed, 10 Jun 2020 07:54:46 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:26777 "EHLO
+        id S1728902AbgFJL4O (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 10 Jun 2020 07:56:14 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:22393 "EHLO
         us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1728497AbgFJLyq (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 10 Jun 2020 07:54:46 -0400
+        with ESMTP id S1728893AbgFJL4O (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 10 Jun 2020 07:56:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1591790083;
+        s=mimecast20190719; t=1591790172;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding;
-        bh=5GKw6maa7B1hSULtMqvkZqZPAWdNHZFJSoWS3golo7w=;
-        b=bK4ZZmHJ3Ngbplf506BdrAIJVRYXRb+zBpAlN81JSNmkC1cqriuYjd4wgpPTu0/mfXVLdu
-        HU3sApGx44QHKaDc6ltv+ffa3P4KgRYPUmRNNq4Pp2WHfvQ3/OwJqvPwdKAK5Qg//e4rkp
-        VZN27/c8m5SWJIkaISxvWzXsaB3i+x8=
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=OMm4of9YaGzegN5bSIFM+q+axawQAsBn39Dg4QO3Ssc=;
+        b=Vc6+AD0AMdlrA2DwSOk6vaiZ0+BJ6swksuGsbIOqkd6I740uCsYXTe0H7sDHnrO+YSkvWN
+        no/gsWZqJcHaAQn8aRi545YN4YcQZkCKnYjESCn63h+kR3c3eLW2zdicsA/4ZG67kuGqsG
+        NhGY5FhwoaXtVPLzsZjXPBEbAeie1cU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-5-2gkK6RQTM4eSzxW0-G2CwQ-1; Wed, 10 Jun 2020 07:54:40 -0400
-X-MC-Unique: 2gkK6RQTM4eSzxW0-G2CwQ-1
+ us-mta-237-iZtHDbZuMtaMTb9TjcRE4w-1; Wed, 10 Jun 2020 07:56:10 -0400
+X-MC-Unique: iZtHDbZuMtaMTb9TjcRE4w-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6C6D2800053;
-        Wed, 10 Jun 2020 11:54:37 +0000 (UTC)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 607EF1B18BC2;
+        Wed, 10 Jun 2020 11:56:08 +0000 (UTC)
 Received: from t480s.redhat.com (ovpn-114-42.ams2.redhat.com [10.36.114.42])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id A38615D9D3;
-        Wed, 10 Jun 2020 11:54:20 +0000 (UTC)
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 188245D9D3;
+        Wed, 10 Jun 2020 11:55:59 +0000 (UTC)
 From:   David Hildenbrand <david@redhat.com>
 To:     qemu-devel@nongnu.org
 Cc:     kvm@vger.kernel.org, qemu-s390x@nongnu.org,
@@ -71,31 +73,17 @@ Cc:     kvm@vger.kernel.org, qemu-s390x@nongnu.org,
         Eduardo Habkost <ehabkost@redhat.com>,
         "Michael S . Tsirkin" <mst@redhat.com>,
         David Hildenbrand <david@redhat.com>,
-        teawater <teawaterz@linux.alibaba.com>,
-        Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
         Alex Shi <alex.shi@linux.alibaba.com>,
-        Alex Williamson <alex.williamson@redhat.com>,
-        Christian Borntraeger <borntraeger@de.ibm.com>,
-        Cornelia Huck <cohuck@redhat.com>,
-        Eric Blake <eblake@redhat.com>,
-        Eric Farman <farman@linux.ibm.com>,
-        Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
-        Halil Pasic <pasic@linux.ibm.com>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Janosch Frank <frankja@linux.ibm.com>,
-        Juan Quintela <quintela@redhat.com>,
-        Keith Busch <kbusch@kernel.org>,
-        Lukas Straub <lukasstraub2@web.de>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        Markus Armbruster <armbru@redhat.com>,
         Peter Maydell <peter.maydell@linaro.org>,
-        Pierre Morel <pmorel@linux.ibm.com>,
-        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
         Sergio Lopez <slp@redhat.com>,
-        Tony Krowiak <akrowiak@linux.ibm.com>
-Subject: [PATCH v4 00/21] virtio-mem: Paravirtualized memory hot(un)plug
-Date:   Wed, 10 Jun 2020 13:53:58 +0200
-Message-Id: <20200610115419.51688-1-david@redhat.com>
+        Igor Mammedov <imammedo@redhat.com>,
+        "qemu-arm @ nongnu . org" <qemu-arm@nongnu.org>
+Subject: [PATCH v4 21/21] numa: Auto-enable NUMA when any memory devices are possible
+Date:   Wed, 10 Jun 2020 13:54:19 +0200
+Message-Id: <20200610115419.51688-22-david@redhat.com>
+In-Reply-To: <20200610115419.51688-1-david@redhat.com>
+References: <20200610115419.51688-1-david@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
@@ -103,162 +91,150 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Yz6N7cF11UGy
+X-TUID: 6ubFCa7YqZSK
 
-This is the very basic, initial version of virtio-mem. More info on
-virtio-mem in general can be found in the Linux kernel driver v2 posting
-[1] and in patch #10. The Linux driver is currently on its way upstream.
+Let's auto-enable it also when maxmem is specified but no slots are
+defined. This will result in us properly creating ACPI srat tables,
+indicating the maximum possible PFN to the guest OS. Based on this, e.g.,
+Linux will enable the swiotlb properly.
 
-This series is based on [3]:
-    "[PATCH v1] pc: Support coldplugging of virtio-pmem-pci devices on all
-     buses"
-And [4]:
-    "[PATCH v2] hmp: Make json format optional for qom-set"
+This avoids having to manually force the switolb on (swiotlb=force) in
+Linux in case we're booting only using DMA memory (e.g., 2GB on x86-64),
+and virtio-mem adds memory later on that really needs the swiotlb to be
+used for DMA.
 
-The patches can be found at:
-    https://github.com/davidhildenbrand/qemu.git virtio-mem-v4
+Let's take care of backwards compatibility if somebody has a setup that
+specifies "maxram" without "slots".
 
-"The basic idea of virtio-mem is to provide a flexible,
-cross-architecture memory hot(un)plug solution that avoids many limitations
-imposed by existing technologies, architectures, and interfaces."
+Reported-by: Alex Shi <alex.shi@linux.alibaba.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Cc: Sergio Lopez <slp@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Richard Henderson <rth@twiddle.net>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-arm@nongnu.org <qemu-arm@nongnu.org>
+Signed-off-by: David Hildenbrand <david@redhat.com>
+---
+ hw/arm/virt.c       |  2 ++
+ hw/core/numa.c      | 11 ++++++-----
+ hw/i386/microvm.c   |  1 +
+ hw/i386/pc.c        |  1 +
+ hw/i386/pc_piix.c   |  1 +
+ hw/i386/pc_q35.c    |  1 +
+ include/hw/boards.h |  1 +
+ 7 files changed, 13 insertions(+), 5 deletions(-)
 
-There are a lot of addons in the works (esp. protection of unplugged
-memory, better hugepage support (esp. when reading unplugged memory),
-resizeable memory backends, support for more architectures, ...), this is
-the very basic version to get the ball rolling.
-
-The first 8 patches make sure we don't have any sudden surprises e.g., if
-somebody tries to pin all memory in RAM blocks, resulting in a higher
-memory consumption than desired. The remaining patches add basic virtio-mem
-along with support for x86-64. The last patch indicates to the guest OS
-the maximum possible PFN using ACPI SRAT, such that Linux can properly
-enable the swiotlb when booting only with DMA memory.
-
-[1] https://lkml.kernel.org/r/20200311171422.10484-1-david@redhat.com
-[2] https://lkml.kernel.org/r/20200507140139.17083-1-david@redhat.com
-[3] https://lkml.kernel.org/r/20200525084511.51379-1-david@redhat.com
-[3] https://lkml.kernel.org/r/20200610075153.33892-1-david@redhat.com
-
-Based-on: <20200525084511.51379-1-david@redhat.com>
-Based-on: <20200610075153.33892-1-david@redhat.com>
-Cc: teawater <teawaterz@linux.alibaba.com>
-Cc: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
-
-v3 -> v4
-- Adapt to virtio-mem config layout change (block size now is 64bit)
-- Added "numa: Auto-enable NUMA when any memory devices are possible"
-
-v2 -> v3:
-- Rebased on upstream/[3]
-- "virtio-mem: Exclude unplugged memory during migration"
--- Added
-- "virtio-mem: Paravirtualized memory hot(un)plug"
--- Simplify bitmap operations, find consecutive areas
--- Tweak error messages
--- Reshuffle some checks
--- Minor cleanups
-- "accel/kvm: Convert to ram_block_discard_disable()"
-- "target/i386: sev: Use ram_block_discard_disable()"
--- Keep asserts clean of functional things
-
-v1 -> v2:
-- Rebased to object_property_*() changes
-- "exec: Introduce ram_block_discard_(disable|require)()"
--- Change the function names and rephrase/add comments
-- "virtio-balloon: Rip out qemu_balloon_inhibit()"
--- Add and use "migration_in_incoming_postcopy()"
-- "migration/rdma: Use ram_block_discard_disable()"
--- Add a comment regarding pin_all vs. !pin_all
-- "virtio-mem: Paravirtualized memory hot(un)plug"
--- Replace virtio_mem_discard_inhibited() by
-   migration_in_incoming_postcopy()
--- Drop some asserts
--- Drop virtio_mem_bad_request(), use virtio_error() directly, printing
-   more information
--- Replace "Note: Discarding should never fail ..." comments by
-   error_report()
--- Replace virtio_stw_p() by cpu_to_le16()
--- Drop migration_addr and migration_block_size
--- Minor cleanups
-- "linux-headers: update to contain virtio-mem"
--- Updated to latest v4 in Linux
-- General changes
--- Fixup the users of the renamed ram_block_discard_(disable|require)
--- Use "X: cannot disable RAM discard"-styled error messages
-- Added
--- "virtio-mem: Migration sanity checks"
--- "virtio-mem: Add trace events"
-
-David Hildenbrand (21):
-  exec: Introduce ram_block_discard_(disable|require)()
-  vfio: Convert to ram_block_discard_disable()
-  accel/kvm: Convert to ram_block_discard_disable()
-  s390x/pv: Convert to ram_block_discard_disable()
-  virtio-balloon: Rip out qemu_balloon_inhibit()
-  target/i386: sev: Use ram_block_discard_disable()
-  migration/rdma: Use ram_block_discard_disable()
-  migration/colo: Use ram_block_discard_disable()
-  linux-headers: update to contain virtio-mem
-  virtio-mem: Paravirtualized memory hot(un)plug
-  virtio-pci: Proxy for virtio-mem
-  MAINTAINERS: Add myself as virtio-mem maintainer
-  hmp: Handle virtio-mem when printing memory device info
-  numa: Handle virtio-mem in NUMA stats
-  pc: Support for virtio-mem-pci
-  virtio-mem: Allow notifiers for size changes
-  virtio-pci: Send qapi events when the virtio-mem size changes
-  virtio-mem: Migration sanity checks
-  virtio-mem: Add trace events
-  virtio-mem: Exclude unplugged memory during migration
-  numa: Auto-enable NUMA when any memory devices are possible
-
- MAINTAINERS                                 |   8 +
- accel/kvm/kvm-all.c                         |   4 +-
- balloon.c                                   |  17 -
- exec.c                                      |  52 ++
- hw/arm/virt.c                               |   2 +
- hw/core/numa.c                              |  17 +-
- hw/i386/Kconfig                             |   1 +
- hw/i386/microvm.c                           |   1 +
- hw/i386/pc.c                                |  50 +-
- hw/i386/pc_piix.c                           |   1 +
- hw/i386/pc_q35.c                            |   1 +
- hw/s390x/s390-virtio-ccw.c                  |  22 +-
- hw/vfio/ap.c                                |  10 +-
- hw/vfio/ccw.c                               |  11 +-
- hw/vfio/common.c                            |  53 +-
- hw/vfio/pci.c                               |   6 +-
- hw/virtio/Kconfig                           |  11 +
- hw/virtio/Makefile.objs                     |   2 +
- hw/virtio/trace-events                      |  10 +
- hw/virtio/virtio-balloon.c                  |   8 +-
- hw/virtio/virtio-mem-pci.c                  | 157 ++++
- hw/virtio/virtio-mem-pci.h                  |  34 +
- hw/virtio/virtio-mem.c                      | 872 ++++++++++++++++++++
- include/exec/memory.h                       |  41 +
- include/hw/boards.h                         |   1 +
- include/hw/pci/pci.h                        |   1 +
- include/hw/vfio/vfio-common.h               |   4 +-
- include/hw/virtio/virtio-mem.h              |  86 ++
- include/migration/colo.h                    |   2 +-
- include/migration/misc.h                    |   2 +
- include/standard-headers/linux/virtio_ids.h |   1 +
- include/standard-headers/linux/virtio_mem.h | 211 +++++
- include/sysemu/balloon.h                    |   2 -
- migration/migration.c                       |  15 +-
- migration/postcopy-ram.c                    |  23 -
- migration/rdma.c                            |  18 +-
- migration/savevm.c                          |  11 +-
- monitor/hmp-cmds.c                          |  16 +
- monitor/monitor.c                           |   1 +
- qapi/misc.json                              |  64 +-
- target/i386/sev.c                           |   7 +
- 41 files changed, 1730 insertions(+), 126 deletions(-)
- create mode 100644 hw/virtio/virtio-mem-pci.c
- create mode 100644 hw/virtio/virtio-mem-pci.h
- create mode 100644 hw/virtio/virtio-mem.c
- create mode 100644 include/hw/virtio/virtio-mem.h
- create mode 100644 include/standard-headers/linux/virtio_mem.h
-
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 37462a6f78..d50ad6f841 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2265,6 +2265,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     mc->numa_mem_supported = true;
+     mc->nvdimm_supported = true;
+     mc->auto_enable_numa_with_memhp = true;
++    mc->auto_enable_numa_with_memdev = true;
+     mc->default_ram_id = "mach-virt.ram";
+ 
+     object_class_property_add(oc, "acpi", "OnOffAuto",
+@@ -2375,6 +2376,7 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
+ static void virt_machine_5_0_options(MachineClass *mc)
+ {
+     virt_machine_5_1_options(mc);
++    mc->auto_enable_numa_with_memdev = false;
+ }
+ DEFINE_VIRT_MACHINE(5, 0)
+ 
+diff --git a/hw/core/numa.c b/hw/core/numa.c
+index 06960918e7..b9923cdd45 100644
+--- a/hw/core/numa.c
++++ b/hw/core/numa.c
+@@ -681,8 +681,9 @@ void numa_complete_configuration(MachineState *ms)
+     NodeInfo *numa_info = ms->numa_state->nodes;
+ 
+     /*
+-     * If memory hotplug is enabled (slots > 0) but without '-numa'
+-     * options explicitly on CLI, guestes will break.
++     * If memory hotplug is enabled (slot > 0) or memory devices are enabled
++     * (ms->maxram_size > ram_size) but without '-numa' options explicitly on
++     * CLI, guests will break.
+      *
+      *   Windows: won't enable memory hotplug without SRAT table at all
+      *
+@@ -697,9 +698,9 @@ void numa_complete_configuration(MachineState *ms)
+      * assume there is just one node with whole RAM.
+      */
+     if (ms->numa_state->num_nodes == 0 &&
+-        ((ms->ram_slots > 0 &&
+-        mc->auto_enable_numa_with_memhp) ||
+-        mc->auto_enable_numa)) {
++        ((ms->ram_slots && mc->auto_enable_numa_with_memhp) ||
++         (ms->maxram_size > ms->ram_size && mc->auto_enable_numa_with_memdev) ||
++         mc->auto_enable_numa)) {
+             NumaNodeOptions node = { };
+             parse_numa_node(ms, &node, &error_abort);
+             numa_info[0].node_mem = ram_size;
+diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
+index 937db10ae6..2c052ee2e5 100644
+--- a/hw/i386/microvm.c
++++ b/hw/i386/microvm.c
+@@ -497,6 +497,7 @@ static void microvm_class_init(ObjectClass *oc, void *data)
+     mc->max_cpus = 288;
+     mc->has_hotpluggable_cpus = false;
+     mc->auto_enable_numa_with_memhp = false;
++    mc->auto_enable_numa_with_memdev = false;
+     mc->default_cpu_type = TARGET_DEFAULT_CPU_TYPE;
+     mc->nvdimm_supported = false;
+     mc->default_ram_id = "microvm.ram";
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index ee6368915b..ec93870de5 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -1955,6 +1955,7 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
+     mc->get_default_cpu_node_id = x86_get_default_cpu_node_id;
+     mc->possible_cpu_arch_ids = x86_possible_cpu_arch_ids;
+     mc->auto_enable_numa_with_memhp = true;
++    mc->auto_enable_numa_with_memdev = true;
+     mc->has_hotpluggable_cpus = true;
+     mc->default_boot_order = "cad";
+     mc->hot_add_cpu = pc_hot_add_cpu;
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index f66e1d73ce..1bc68c3841 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -440,6 +440,7 @@ static void pc_i440fx_5_0_machine_options(MachineClass *m)
+     m->is_default = false;
+     compat_props_add(m->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+     compat_props_add(m->compat_props, pc_compat_5_0, pc_compat_5_0_len);
++    m->auto_enable_numa_with_memdev = false;
+ }
+ 
+ DEFINE_I440FX_MACHINE(v5_0, "pc-i440fx-5.0", NULL,
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 4ba8ac8774..a17459e37c 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -368,6 +368,7 @@ static void pc_q35_5_0_machine_options(MachineClass *m)
+     m->alias = NULL;
+     compat_props_add(m->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+     compat_props_add(m->compat_props, pc_compat_5_0, pc_compat_5_0_len);
++    m->auto_enable_numa_with_memhp = false;
+ }
+ 
+ DEFINE_Q35_MACHINE(v5_0, "pc-q35-5.0", NULL,
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index 18815d9be2..426ce5f625 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -207,6 +207,7 @@ struct MachineClass {
+     const char **valid_cpu_types;
+     strList *allowed_dynamic_sysbus_devices;
+     bool auto_enable_numa_with_memhp;
++    bool auto_enable_numa_with_memdev;
+     void (*numa_auto_assign_ram)(MachineClass *mc, NodeInfo *nodes,
+                                  int nb_nodes, ram_addr_t size);
+     bool ignore_boot_device_suffixes;
 -- 
 2.26.2

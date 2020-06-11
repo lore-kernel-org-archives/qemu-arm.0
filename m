@@ -1,264 +1,316 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1504609lfc;
-        Thu, 11 Jun 2020 07:56:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzwEL3QN/8DTLP6a3xYCst7AzMB5HWqEdZqYsedIxAz7JtsgNF+lbBr2sIcqByt+Ui3mbFB
-X-Received: by 2002:a25:2d44:: with SMTP id s4mr14476186ybe.256.1591887390014;
-        Thu, 11 Jun 2020 07:56:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591887390; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1520604lfc;
+        Thu, 11 Jun 2020 08:14:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxWiypxoBP1NKs6TCOwaDZEO1hHuJDbo3i5jyZ7FZlcFS8xtubEX4lgargidT33Y5TP3JZJ
+X-Received: by 2002:a25:3849:: with SMTP id f70mr14682273yba.135.1591888490218;
+        Thu, 11 Jun 2020 08:14:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591888490; cv=none;
         d=google.com; s=arc-20160816;
-        b=zNwb5czZw/Cy6tl/9ibhtnJTNpissfUVNgpCWiWbWqtVpU6Sp1es5xlVcRfyia8O9f
-         rEsCLdg3zr08AM6mLGMkaDsyiO+1vXoIPYSAs20zlivT154zt8A8npyYpp/Y58PljNk5
-         NRdlC7hK3+tp+iqzc4WqVAlkvDN+XEY8Ttcl01ZvU9bl7qEYNKY5lSjLgjD5F/K3b136
-         Seqb8qwPgK4+tAKIN6heMxQc3Cdi4DrYKYWpSImuemBvMGo5UyHJuJF1fMmOM37LZeuR
-         /qdL7oNesAv2bVSTDNYiQnvINMvfE77Yft3FPlwL7KxHeAvLWhRVhwQ8IgeZLZo8omav
-         2hFQ==
+        b=lxovb3BMZSdCipT9UdnK30n1pCswls3VHpMG+L0mz7GpeBj31hRKYOntyLzs3Av49G
+         qpNX9lwnt3DKbakCaYkL+LGuGQ/IG8glOAnEyA+Pc/mIro/FsK9PHWvAk8eZ4uhfxkpp
+         NWvKQbAfnK6iCSlcxKbtJqVqp/gWYGnF3AAfifSMPJ/39ZN+GnSxq/DbGiw8572z07B7
+         1m2KIiBdknjyK7//e6d4Z5QDn2cYjDrg7YztIu0gxBuSgHXmqGeBRFvfqRL/FPHsOE7Q
+         tg6bq7j57R7gWL5qzzJeGDDn4KAmiXiUk1pZ+emZr+UZ6hWwrGhL352qNdtVv4mFQk4t
+         ZJ6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=srtc2Ah29M8oB8zJEweGXpRadlqbV1bf9fHHBupmYu8=;
-        b=De6Ik0geQlPkjA8roqboxJn+OhEHr/WGxr+s/hg0kaG99XKzJsVQlcs16hEi1PgvbW
-         RVYX5eb+UqIs7/NGp6+/0ZDCb4+hI5G3Cg8MaWEWsHoW3IDNPnA2jscEpCU5Hxnpbhm0
-         uK6CUZr6RZU5Lo63f3dmBGKE0nfmL8uL0WzQCEWDKCBMggt3hQ8SPApHygz9Mf+0EbYq
-         beykUyfeocBBMgIkS9bkn1fTlqcwkKGtBL1gKP4PHhh9iiKysLP5iYKf3ThcyeDi/dpQ
-         g72xZTgclZ1+rSRKarWJ3wInj7mhcswBhfWOZnhVe2vVJ8nG9WX8YAhhiTxfj5jPXyAI
-         9wJQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=BzIL894sotKgNVfIxuhlNLClyj4ig+qMlBQA2j5VmFI=;
+        b=L3YxBqwztS9neKkqhwtoU/vcsjrXIUE0y+JbwD5/qBqxgXzDK5x+3I/kW8ADibI4Ki
+         Xm1L/YRWAHXvqLXojuyjjrXj18LesdbyV6tasuFS+gmrOfVKjGvh+mLxipDNFSyPbg1l
+         6bA+L0YC03yRZf8QEedoVGlb+7Xl4TJxkPdYseOcf047R8qz9dlTWwHgrJo560MWniHi
+         cqAMO2WLVyWbntNDEi7dVuQiHHAgQ2rsEXtVlurStDCbGDahudbhYK7ZQ2ay3scG4fDh
+         7M7ECkwSxpqPsgzZ34rz49tNhS9pG1lEYLkToIGOjKRg7VulF7J1tIQINewuHWrNvW6D
+         AtIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I1AlBpEU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="B8/nmQ74";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g15si2822061ybe.188.2020.06.11.07.56.28
+        by mx.google.com with ESMTPS id l143si2664972ybf.155.2020.06.11.08.14.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jun 2020 07:56:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 11 Jun 2020 08:14:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I1AlBpEU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="B8/nmQ74";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53812 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53536 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjOd2-00070A-AC
-	for alex.bennee@linaro.org; Thu, 11 Jun 2020 10:56:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42228)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jjOun-0006Ku-EL
+	for alex.bennee@linaro.org; Thu, 11 Jun 2020 11:14:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51384)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jjOWS-0007tF-CQ
- for qemu-devel@nongnu.org; Thu, 11 Jun 2020 10:49:40 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:31697
+ id 1jjOsd-0004el-T1
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2020 11:12:36 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59747
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jjOWP-0004ts-VJ
- for qemu-devel@nongnu.org; Thu, 11 Jun 2020 10:49:39 -0400
+ id 1jjOsY-0003Sq-Ek
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2020 11:12:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591886976;
+ s=mimecast20190719; t=1591888349;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=srtc2Ah29M8oB8zJEweGXpRadlqbV1bf9fHHBupmYu8=;
- b=I1AlBpEUDllhOK/0ky/xRvsBFCOWmDLSPNXW1JR6b6k1WRGlf0uJnoaq8ijw/U78UCfWTU
- tvnJ5cRZAiT8Mbad1pDLp+08HO3VmijyFb9I+r+GpY2eutgKySRMIzzp30seFeOr0YlNl3
- ic3TvesmnmY6/7DRgktuQOdkdnnogkc=
+ bh=BzIL894sotKgNVfIxuhlNLClyj4ig+qMlBQA2j5VmFI=;
+ b=B8/nmQ743GL4uvUi3W1Z6rPU9D/Cc/dUeH6bMk3ua7c8YTcsRpwDLscIviDBj70x2ZetFI
+ laOrGH2ucAgOwGMP1OArFdOJKE6xBKdHIAZ/smnWqs/pzSch5y110TDTUq9jjCBlO4MFZ2
+ 6s4OA+EfCX3UDyOAn71aX2vJJGs6l48=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-494-4zjCMRGhNkyleCE1Df_5xw-1; Thu, 11 Jun 2020 10:49:35 -0400
-X-MC-Unique: 4zjCMRGhNkyleCE1Df_5xw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-1-dI14MvCLNmm3b-neVNbW4A-1; Thu, 11 Jun 2020 11:12:27 -0400
+X-MC-Unique: dI14MvCLNmm3b-neVNbW4A-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9F11E80B71E;
- Thu, 11 Jun 2020 14:49:33 +0000 (UTC)
-Received: from [10.36.114.197] (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D946B60E3E;
- Thu, 11 Jun 2020 14:49:22 +0000 (UTC)
-Subject: Re: [PATCH v4 1/5] acpi: Convert build_tpm2() to build_append* API
-To: Stefan Berger <stefanb@linux.ibm.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
-References: <20200611135917.18300-1-eric.auger@redhat.com>
- <20200611135917.18300-2-eric.auger@redhat.com>
- <28121558-7a75-73da-6939-da0c0e776087@linux.ibm.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <4ffc8301-b7b8-d568-ce13-477860a7a607@redhat.com>
-Date: Thu, 11 Jun 2020 16:49:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7F6D9107ACCA;
+ Thu, 11 Jun 2020 15:12:26 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-114-197.ams2.redhat.com [10.36.114.197])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 03C978FF61;
+ Thu, 11 Jun 2020 15:12:23 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
+ armbru@redhat.com, pbonzini@redhat.com, jean-philippe@linaro.org,
+ bbhushan2@marvell.com, peterx@redhat.com
+Subject: [PATCH v3 1/5] qdev: Introduce DEFINE_PROP_RESERVED_REGION
+Date: Thu, 11 Jun 2020 17:12:05 +0200
+Message-Id: <20200611151209.22547-2-eric.auger@redhat.com>
+In-Reply-To: <20200611151209.22547-1-eric.auger@redhat.com>
+References: <20200611151209.22547-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <28121558-7a75-73da-6939-da0c0e776087@linux.ibm.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120;
+Received-SPF: pass client-ip=207.211.31.120;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/11 03:29:33
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/11 08:37:10
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
- ardb@kernel.org, philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PlCpnkUT/8SL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qdbO9xF0YTra
 
-Hi Stefan,
+Introduce a new property defining a reserved region:
+<low address>, <high address>, <type>.
 
-On 6/11/20 4:25 PM, Stefan Berger wrote:
-> On 6/11/20 9:59 AM, Eric Auger wrote:
->> In preparation of its move to the generic acpi code,
->> let's convert build_tpm2() to use build_append API. This
->> latter now is prefered in place of direct ACPI struct field
->> settings with manual endianness conversion.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> v3 -> v4:
->> - Don't use Acpi20TPM2 *tpm2_ptr anymore
->> - Use variables for control area start address and start method
->> - Simplified arg values passed to bios_linker_loader_add_pointer
->> - use g_assert_not_reached()
->> ---
->>   hw/i386/acpi-build.c | 49 +++++++++++++++++++++++++++++---------------
->>   1 file changed, 33 insertions(+), 16 deletions(-)
->>
->> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
->> index b5669d6c65..f150d95ecc 100644
->> --- a/hw/i386/acpi-build.c
->> +++ b/hw/i386/acpi-build.c
->> @@ -2298,35 +2298,52 @@ build_tpm_tcpa(GArray *table_data, BIOSLinker
->> *linker, GArray *tcpalog)
->>   static void
->>   build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
->>   {
->> -    Acpi20TPM2 *tpm2_ptr = acpi_data_push(table_data, sizeof *tpm2_ptr);
->> -    unsigned log_addr_size = sizeof(tpm2_ptr->log_area_start_address);
->> -    unsigned log_addr_offset =
->> -        (char *)&tpm2_ptr->log_area_start_address - table_data->data;
->> +    uint8_t start_method_params[12] = {};
->> +    unsigned log_addr_offset, tpm2_start;
->> +    uint64_t control_area_start_address;
->> +    uint32_t start_method;
->> +    void *tpm2_ptr;
->>   -    tpm2_ptr->platform_class = cpu_to_le16(TPM2_ACPI_CLASS_CLIENT);
->> +    tpm2_start = table_data->len;
->> +    tpm2_ptr = acpi_data_push(table_data, sizeof(AcpiTableHeader));
->> +
->> +    /* Platform Class */
->> +    build_append_int_noprefix(table_data, TPM2_ACPI_CLASS_CLIENT, 2);
->> +    /* Reserved */
->> +    build_append_int_noprefix(table_data, 0, 2);
->>       if (TPM_IS_TIS_ISA(tpm_find())) {
->> -        tpm2_ptr->control_area_address = cpu_to_le64(0);
->> -        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_MMIO);
->> +        control_area_start_address = 0;
->> +        start_method = TPM2_START_METHOD_MMIO;
->>       } else if (TPM_IS_CRB(tpm_find())) {
->> -        tpm2_ptr->control_area_address = cpu_to_le64(TPM_CRB_ADDR_CTRL);
->> -        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_CRB);
->> +        control_area_start_address = TPM_CRB_ADDR_CTRL;
->> +        start_method = TPM2_START_METHOD_CRB;
->>       } else {
->> -        g_warn_if_reached();
->> +        g_assert_not_reached();
->>       }
->> +    /* Address of Control Area */
->> +    build_append_int_noprefix(table_data, control_area_start_address,
->> 8);
->> +    /* Start Method */
->> +    build_append_int_noprefix(table_data, start_method, 4);
->>   -    tpm2_ptr->log_area_minimum_length =
->> -        cpu_to_le32(TPM_LOG_AREA_MINIMUM_SIZE);
->> +    /* Platform Specific Parameters */
->> +    g_array_append_vals(table_data, &start_method_params,
->> +                        ARRAY_SIZE(start_method_params));
->>   -    acpi_data_push(tcpalog,
->> le32_to_cpu(tpm2_ptr->log_area_minimum_length));
->> +    /* Log Area Minimum Length */
->> +    build_append_int_noprefix(table_data, TPM_LOG_AREA_MINIMUM_SIZE, 4);
-> 
-> Here you push data related to TPM2 table...
-> 
-> 
->> +
->> +    acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
+This will be used to encode reserved IOVA regions.
 
-This was:
-    tpm2_ptr->log_area_minimum_length =
-        cpu_to_le32(TPM_LOG_AREA_MINIMUM_SIZE);
-> 
-> ... here you push log area memory ...
-yes.
-> 
-> 
->>       bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE,
->> tcpalog, 1,
->>                                false);
+For instance, in virtio-iommu use case, reserved IOVA regions
+will be passed by the machine code to the virtio-iommu-pci
+device (an array of those). The type of the reserved region
+will match the virtio_iommu_probe_resv_mem subtype value:
+- VIRTIO_IOMMU_RESV_MEM_T_RESERVED (0)
+- VIRTIO_IOMMU_RESV_MEM_T_MSI (1)
 
-after "acpi: tpm: Do not build TCPA table for TPM 2" we had:
+on PC/Q35 machine, this will be used to inform the
+virtio-iommu-pci device it should bypass the MSI region.
+The reserved region will be: 0xfee00000, 0xfeefffff, 1.
 
-1) acpi_data_push(tcpalog, le32_to_cpu(tpm2_ptr->log_area_minimum_length));
-2) bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE, tcpalog, 1,
-                             false);
+On ARM, we can declare the ITS MSI doorbell as an MSI
+region to prevent MSIs from being mapped on guest side.
 
-so 1) also pushed log area memory
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
->>   -    /* log area start address to be filled by Guest linker */
->> +    log_addr_offset = table_data->len;
->> +    build_append_int_noprefix(table_data, 0, 8);
-> 
-> 
-> ... here you push TPM2 table related data again. Is this right or did we
-> just mess up the TPM 2 table?
-this is to increment the table_data->len according to the
-log_addr_offset length. So yes it updates tpm2
+---
 
-The bios-table-tests passes so at least the tpm2 shall be identical.
+v11 -> v12:
+- rename into DEFINE_PROP_RESERVED_REGION
+- do not use g_strsplit anymore, use endptr instead
+- remove 0x references
+---
+ include/exec/memory.h        |  6 +++
+ include/hw/qdev-properties.h |  3 ++
+ include/qemu/typedefs.h      |  1 +
+ hw/core/qdev-properties.c    | 89 ++++++++++++++++++++++++++++++++++++
+ 4 files changed, 99 insertions(+)
 
-Thanks
-
-Eric
-> 
-> 
->> +    /* Log Area Start Address to be filled by Guest linker */
->>       bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
->> -                                   log_addr_offset, log_addr_size,
->> +                                   log_addr_offset, 8,
->>                                      ACPI_BUILD_TPMLOG_FILE, 0);
->>       build_header(linker, table_data,
->> -                 (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4,
->> NULL, NULL);
->> +                 tpm2_ptr, "TPM2", table_data->len - tpm2_start, 4,
->> NULL, NULL);
->>   }
->>     #define HOLE_640K_START  (640 * KiB)
-> 
-> 
-> 
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 3e00cdbbfa..3ee8224fa7 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -57,6 +57,12 @@ struct MemoryRegionMmio {
+     CPUWriteMemoryFunc *write[3];
+ };
+ 
++struct ReservedRegion {
++    hwaddr low;
++    hwaddr high;
++    unsigned int type;
++};
++
+ typedef struct IOMMUTLBEntry IOMMUTLBEntry;
+ 
+ /* See address_space_translate: bit 0 is read, bit 1 is write.  */
+diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
+index f161604fb6..03bf850a7e 100644
+--- a/include/hw/qdev-properties.h
++++ b/include/hw/qdev-properties.h
+@@ -19,6 +19,7 @@ extern const PropertyInfo qdev_prop_string;
+ extern const PropertyInfo qdev_prop_chr;
+ extern const PropertyInfo qdev_prop_tpm;
+ extern const PropertyInfo qdev_prop_macaddr;
++extern const PropertyInfo qdev_prop_reserved_region;
+ extern const PropertyInfo qdev_prop_on_off_auto;
+ extern const PropertyInfo qdev_prop_multifd_compression;
+ extern const PropertyInfo qdev_prop_losttickpolicy;
+@@ -183,6 +184,8 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
+     DEFINE_PROP(_n, _s, _f, qdev_prop_drive_iothread, BlockBackend *)
+ #define DEFINE_PROP_MACADDR(_n, _s, _f)         \
+     DEFINE_PROP(_n, _s, _f, qdev_prop_macaddr, MACAddr)
++#define DEFINE_PROP_RESERVED_REGION(_n, _s, _f)         \
++    DEFINE_PROP(_n, _s, _f, qdev_prop_reserved_region, ReservedRegion)
+ #define DEFINE_PROP_ON_OFF_AUTO(_n, _s, _f, _d) \
+     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_on_off_auto, OnOffAuto)
+ #define DEFINE_PROP_MULTIFD_COMPRESSION(_n, _s, _f, _d) \
+diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+index ecf3cde26c..85c4f891f4 100644
+--- a/include/qemu/typedefs.h
++++ b/include/qemu/typedefs.h
+@@ -59,6 +59,7 @@ typedef struct ISABus ISABus;
+ typedef struct ISADevice ISADevice;
+ typedef struct IsaDma IsaDma;
+ typedef struct MACAddr MACAddr;
++typedef struct ReservedRegion ReservedRegion;
+ typedef struct MachineClass MachineClass;
+ typedef struct MachineState MachineState;
+ typedef struct MemoryListener MemoryListener;
+diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+index cc924815da..15b84adbee 100644
+--- a/hw/core/qdev-properties.c
++++ b/hw/core/qdev-properties.c
+@@ -14,6 +14,7 @@
+ #include "qapi/visitor.h"
+ #include "chardev/char.h"
+ #include "qemu/uuid.h"
++#include "qemu/cutils.h"
+ 
+ void qdev_prop_set_after_realize(DeviceState *dev, const char *name,
+                                   Error **errp)
+@@ -577,6 +578,94 @@ const PropertyInfo qdev_prop_macaddr = {
+     .set   = set_mac,
+ };
+ 
++/* --- Reserved Region --- */
++
++/*
++ * accepted syntax version:
++ *   <low address>,<high address>,<type>
++ *   where low/high addresses are uint64_t in hexadecimal
++ *   and type is an unsigned integer in decimal
++ */
++static void get_reserved_region(Object *obj, Visitor *v, const char *name,
++                                void *opaque, Error **errp)
++{
++    DeviceState *dev = DEVICE(obj);
++    Property *prop = opaque;
++    ReservedRegion *rr = qdev_get_prop_ptr(dev, prop);
++    char buffer[64];
++    char *p = buffer;
++
++    snprintf(buffer, sizeof(buffer), "0x%"PRIx64",0x%"PRIx64",%u",
++             rr->low, rr->high, rr->type);
++
++    visit_type_str(v, name, &p, errp);
++}
++
++static void set_reserved_region(Object *obj, Visitor *v, const char *name,
++                                void *opaque, Error **errp)
++{
++    DeviceState *dev = DEVICE(obj);
++    Property *prop = opaque;
++    ReservedRegion *rr = qdev_get_prop_ptr(dev, prop);
++    Error *local_err = NULL;
++    const char *endptr;
++    char *str;
++    int ret;
++
++    if (dev->realized) {
++        qdev_prop_set_after_realize(dev, name, errp);
++        return;
++    }
++
++    visit_type_str(v, name, &str, &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    ret = qemu_strtou64(str, &endptr, 16, &rr->low);
++    if (ret) {
++        error_setg(errp, "Failed to decode reserved region low addr");
++        error_append_hint(errp,
++                          "should be an address in hexadecimal\n");
++        goto out;
++    }
++    if (*endptr != ',') {
++        goto separator_error;
++    }
++
++    ret = qemu_strtou64(endptr + 1, &endptr, 16, &rr->high);
++    if (ret) {
++        error_setg(errp, "Failed to decode reserved region high addr");
++        error_append_hint(errp,
++                          "should be an address in hexadecimal\n");
++        goto out;
++    }
++    if (*endptr != ',') {
++        goto separator_error;
++    }
++
++    ret = qemu_strtoui(endptr + 1, &endptr, 10, &rr->type);
++    if (ret) {
++        error_setg(errp, "Failed to decode reserved region type");
++        error_append_hint(errp, "should be an unsigned integer in decimal\n");
++    }
++    goto out;
++
++separator_error:
++    error_setg(errp, "reserved region fields must be separated with commas");
++out:
++    g_free(str);
++    return;
++}
++
++const PropertyInfo qdev_prop_reserved_region = {
++    .name  = "reserved_region",
++    .description = "Reserved Region, example: 0xFEE00000,0xFEEFFFFF,0",
++    .get   = get_reserved_region,
++    .set   = set_reserved_region,
++};
++
+ /* --- on/off/auto --- */
+ 
+ const PropertyInfo qdev_prop_on_off_auto = {
+-- 
+2.20.1
 

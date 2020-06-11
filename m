@@ -1,110 +1,127 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1526440lfc;
-        Thu, 11 Jun 2020 08:21:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxSiHJ+sekKoy+bPMjV2HxThBcQ7WrJRI3oaHvEDlYa3hVeUsOCe3XzQCv7SwAGw/9t6ReQ
-X-Received: by 2002:a25:afcd:: with SMTP id d13mr14201663ybj.413.1591888912691;
-        Thu, 11 Jun 2020 08:21:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591888912; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1526528lfc;
+        Thu, 11 Jun 2020 08:22:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJytteXC5xegmWJb7ZDmul34HpI/+ynrTndM1XLxYpVpn4g1UK+Srv2r55WqR65FkHKqQYES
+X-Received: by 2002:a25:b948:: with SMTP id s8mr14115265ybm.487.1591888921178;
+        Thu, 11 Jun 2020 08:22:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591888921; cv=none;
         d=google.com; s=arc-20160816;
-        b=OQt0U/BKxtlTWZsp6d1DYn1uBkHx8c172AjpDXryXAVec07MZK5Az4LzpsIVJiKYj7
-         peCxbWpOmacWaNJyWMHjMifCJT/UCKpgXkDgMSRh/zwPySHLWLSbA+huwGQfSbORwMUA
-         PHnT2wzIvOHPI+jmMc7wCc5tym28yE8BPNdHoYmhomJk0Dudt0ZxoWlQKpR8abS4p/Ct
-         PGr5KC+fWnTj0VWQ549tGtUWn4JJq0yKDom0GW7Rwn+6wRY9+DYlWvcCbAqf5RWWpYIr
-         UU9cZJs6P14Rgn/h6U/JiCwcXtTIltsKRaSWMzPmHmGvv8FhAe0zKqhCZfhqRn/QDJNk
-         4Trw==
+        b=ey+sC9bO54ySrxuQOuYlZrNrxdToMmJkV5610Mn1uCXmU1YdrFTLDEte26PQ0a3GWh
+         q3aec8Jp1uwkkr2zcRlS+8ssU2/VJTQ0ypIBlnI0v5v3Aht2gpOT+/TYyyqED0YGL2T4
+         QSy8J+ErcBasO9ky/ft5iBGRUyn8NHWMaiswP//F3yegUHwnEp0Kfj1wcRzb467f1wE7
+         lK8h2mcYBJGNCdApSqz0LFc6dNhXNF16D6WgYSb+X3Py6LlMQrpU5jvWvenpXe9C8ytD
+         miQ2Cpu09iPCSJnZI8mahcvFQTKQkYC3GfKVisxC4NvbsySnjOe6GXV6iQaM9b4JTj7P
+         qRsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=Szx7mFHhdUv+8B7blyxvd05ss7JydUiFKHj0I95qeOM=;
-        b=kwcdmvrhlk1UiGC7gRSnyGn7BxeqctGydPO52uCfVUnijyDDY4QTELK5QsZdzO1Lak
-         O6Q0ZaxbEzOtarfyZeX6zzQ8gebsgheXtZzQ1t582mLlx32xjZpgY9+VUijky/w0JVV5
-         4Gelfk3TT7rgS31ejTUbxoHIsimcP8x2KukD9svCIkNQJHuU9QRoeLIQZ3dxcLhBI54v
-         uCKKQmEyFYua8iOG468q5FJNkJPV8j0JN+ItBrOBWeK5eb6AcDaZhzRkBNiTFs4D2hH4
-         UUUXsWYUcgCwpaqFlce/d6vVPvbakmhzJHo7DwhQARqxiA0QWzvK1TT13azbSSJ0n+rH
-         AkDQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=mwQwUB0ursRbDXpCNmOEUCpz8FUa9P8HJWHI1kzsbQc=;
+        b=A7roDTaMwdgMOr5mG+3TLFxBUJ8MmkFK8B0S5fZE889KdCNpqP40h49iyvwAAS5L3e
+         dzZBpyDRi0ehfREwOTgfP0dssiM3v8JY6c2diG2GtndxEPmV4/cGTMmIkFiV3K6ybOXs
+         la4enPlvR0W1G771ej6oDJTl53UIj1r8tP5hLBpgh0Xmnsb4DEQzfmOePgSAFOL1Bv3I
+         RKcZgkPbJ6O+fLGLKuX8lG2/B520IeHfI0dVIMauapxaEXyj6Hto3BaZm/wIpjwORT2x
+         HGqLHtRhJUS5+qiOfR55K+26TCEu0F6qdOqlkYx019/n1HjFCTBNsuIQCwKuuIfSyEwL
+         nW4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U3BA4Mzq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7si2596894ybl.92.2020.06.11.08.21.52
+        by mx.google.com with ESMTPS id j7si2820425ybc.321.2020.06.11.08.22.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jun 2020 08:21:52 -0700 (PDT)
+        Thu, 11 Jun 2020 08:22:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U3BA4Mzq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37670 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:37812 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjP1b-0005x7-QC
-	for alex.bennee@linaro.org; Thu, 11 Jun 2020 11:21:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51422)
+	id 1jjP1k-00060a-I4
+	for alex.bennee@linaro.org; Thu, 11 Jun 2020 11:22:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51880)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jjOsj-0004gc-Kl
- for qemu-arm@nongnu.org; Thu, 11 Jun 2020 11:12:41 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:52792
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jjOsg-0003Tt-S5
- for qemu-arm@nongnu.org; Thu, 11 Jun 2020 11:12:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591888355;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Szx7mFHhdUv+8B7blyxvd05ss7JydUiFKHj0I95qeOM=;
- b=U3BA4MzqqGI5RvrgAVcwZAlpya9WjV5o/MO+7OPXe5blaASk6b35FcnpW3pFbHo+csXrBq
- ntna0z1RhK5PvMkZayPpb4h/7+cm3Zti2zeAvpr07exL8N4QVR8nfMNjtw6d4RCXCOZVpk
- Oz/INqh6jric3RnOKzjDwASru7z4AH8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-120-MaC6aQJiN5qnnWVroscO7A-1; Thu, 11 Jun 2020 11:12:34 -0400
-X-MC-Unique: MaC6aQJiN5qnnWVroscO7A-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AE2A0835B43;
- Thu, 11 Jun 2020 15:12:32 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E51948FF81;
- Thu, 11 Jun 2020 15:12:29 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
- armbru@redhat.com, pbonzini@redhat.com, jean-philippe@linaro.org,
- bbhushan2@marvell.com, peterx@redhat.com
-Subject: [PATCH v3 3/5] virtio-iommu: Handle reserved regions in the
- translation process
-Date: Thu, 11 Jun 2020 17:12:07 +0200
-Message-Id: <20200611151209.22547-4-eric.auger@redhat.com>
-In-Reply-To: <20200611151209.22547-1-eric.auger@redhat.com>
-References: <20200611151209.22547-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1jjOuN-0006KA-M4; Thu, 11 Jun 2020 11:14:23 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:60158)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1jjOuL-0003if-PQ; Thu, 11 Jun 2020 11:14:23 -0400
+Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 05BF41jN149616; Thu, 11 Jun 2020 11:14:18 -0400
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 31kdn6spaf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 11 Jun 2020 11:14:17 -0400
+Received: from m0098396.ppops.net (m0098396.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 05BF4Ewc150462;
+ Thu, 11 Jun 2020 11:14:16 -0400
+Received: from ppma02wdc.us.ibm.com (aa.5b.37a9.ip4.static.sl-reverse.com
+ [169.55.91.170])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 31kdn6sp9t-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 11 Jun 2020 11:14:16 -0400
+Received: from pps.filterd (ppma02wdc.us.ibm.com [127.0.0.1])
+ by ppma02wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 05BFAt3O006648;
+ Thu, 11 Jun 2020 15:14:15 GMT
+Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com
+ [9.57.198.29]) by ppma02wdc.us.ibm.com with ESMTP id 31g2s8w2j4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 11 Jun 2020 15:14:15 +0000
+Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
+ [9.57.199.109])
+ by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 05BFEE6v49807814
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 11 Jun 2020 15:14:15 GMT
+Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id DF35B112061;
+ Thu, 11 Jun 2020 15:14:14 +0000 (GMT)
+Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id CC52E112066;
+ Thu, 11 Jun 2020 15:14:14 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+ by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTP;
+ Thu, 11 Jun 2020 15:14:14 +0000 (GMT)
+Subject: Re: [PATCH v4 2/5] acpi: Move build_tpm2() in the generic part
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
+References: <20200611135917.18300-1-eric.auger@redhat.com>
+ <20200611135917.18300-3-eric.auger@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Message-ID: <0c34a3c3-a5b0-15a1-e8e9-418d611a26f3@linux.ibm.com>
+Date: Thu, 11 Jun 2020 11:14:14 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/11 03:29:33
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
+In-Reply-To: <20200611135917.18300-3-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.687
+ definitions=2020-06-11_15:2020-06-11,
+ 2020-06-11 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 spamscore=0
+ clxscore=1015 cotscore=-2147483648 malwarescore=0 mlxlogscore=999
+ suspectscore=0 bulkscore=0 adultscore=0 mlxscore=0 priorityscore=1501
+ lowpriorityscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2004280000 definitions=main-2006110115
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/11 10:26:43
+X-ACL-Warn: Detected OS   = Linux 3.x [generic] [fuzzy]
+X-Spam_score_int: -35
+X-Spam_score: -3.6
 X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,69 +134,172 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
+ ardb@kernel.org, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RNLfH1cGjZh8
+X-TUID: XQAQKwfoTUGs
 
-When translating an address we need to check if it belongs to
-a reserved virtual address range. If it does, there are 2 cases:
+On 6/11/20 9:59 AM, Eric Auger wrote:
+> We plan to build the TPM2 table on ARM too. In order to reuse the
+> generation code, let's move build_tpm2() to aml-build.c.
+>
+> No change in the implementation.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-- it belongs to a RESERVED region: the guest should neither use
-  this address in a MAP not instruct the end-point to DMA on
-  them. We report an error
 
-- It belongs to an MSI region: we bypass the translation.
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Peter Xu <peterx@redhat.com>
 
----
+> ---
+>   include/hw/acpi/aml-build.h |  2 ++
+>   hw/acpi/aml-build.c         | 51 +++++++++++++++++++++++++++++++++++++
+>   hw/i386/acpi-build.c        | 51 -------------------------------------
+>   3 files changed, 53 insertions(+), 51 deletions(-)
+>
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index ed7c89309e..d27da03d64 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -437,4 +437,6 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms);
+>   
+>   void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+>                   const char *oem_id, const char *oem_table_id);
+> +
+> +void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog);
+>   #endif
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index 3681ec6e3d..2a1d9fc839 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -26,6 +26,7 @@
+>   #include "qemu/bitops.h"
+>   #include "sysemu/numa.h"
+>   #include "hw/boards.h"
+> +#include "hw/acpi/tpm.h"
+>   
+>   static GArray *build_alloc_array(void)
+>   {
+> @@ -1877,6 +1878,56 @@ build_hdr:
+>                    "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
+>   }
+>   
+> +void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+> +{
+> +    uint8_t start_method_params[12] = {};
+> +    unsigned log_addr_offset, tpm2_start;
+> +    uint64_t control_area_start_address;
+> +    uint32_t start_method;
+> +    void *tpm2_ptr;
+> +
+> +    tpm2_start = table_data->len;
+> +    tpm2_ptr = acpi_data_push(table_data, sizeof(AcpiTableHeader));
+> +
+> +    /* Platform Class */
+> +    build_append_int_noprefix(table_data, TPM2_ACPI_CLASS_CLIENT, 2);
+> +    /* Reserved */
+> +    build_append_int_noprefix(table_data, 0, 2);
+> +    if (TPM_IS_TIS_ISA(tpm_find())) {
+> +        control_area_start_address = 0;
+> +        start_method = TPM2_START_METHOD_MMIO;
+> +    } else if (TPM_IS_CRB(tpm_find())) {
+> +        control_area_start_address = TPM_CRB_ADDR_CTRL;
+> +        start_method = TPM2_START_METHOD_CRB;
+> +    } else {
+> +        g_assert_not_reached();
+> +    }
+> +    /* Address of Control Area */
+> +    build_append_int_noprefix(table_data, control_area_start_address, 8);
+> +    /* Start Method */
+> +    build_append_int_noprefix(table_data, start_method, 4);
+> +
+> +    /* Platform Specific Parameters */
+> +    g_array_append_vals(table_data, &start_method_params,
+> +                        ARRAY_SIZE(start_method_params));
+> +
+> +    /* Log Area Minimum Length */
+> +    build_append_int_noprefix(table_data, TPM_LOG_AREA_MINIMUM_SIZE, 4);
+> +
+> +    acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
+> +    bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE, tcpalog, 1,
+> +                             false);
+> +
+> +    log_addr_offset = table_data->len;
+> +    build_append_int_noprefix(table_data, 0, 8);
+> +    /* Log Area Start Address to be filled by Guest linker */
+> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> +                                   log_addr_offset, 8,
+> +                                   ACPI_BUILD_TPMLOG_FILE, 0);
+> +    build_header(linker, table_data,
+> +                 tpm2_ptr, "TPM2", table_data->len - tpm2_start, 4, NULL, NULL);
+> +}
+> +
+>   /* ACPI 5.0: 6.4.3.8.2 Serial Bus Connection Descriptors */
+>   static Aml *aml_serial_bus_device(uint8_t serial_bus_type, uint8_t flags,
+>                                     uint16_t type_flags,
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index f150d95ecc..b7c7583b5f 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -2295,57 +2295,6 @@ build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+>                    (void *)tcpa, "TCPA", sizeof(*tcpa), 2, NULL, NULL);
+>   }
+>   
+> -static void
+> -build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+> -{
+> -    uint8_t start_method_params[12] = {};
+> -    unsigned log_addr_offset, tpm2_start;
+> -    uint64_t control_area_start_address;
+> -    uint32_t start_method;
+> -    void *tpm2_ptr;
+> -
+> -    tpm2_start = table_data->len;
+> -    tpm2_ptr = acpi_data_push(table_data, sizeof(AcpiTableHeader));
+> -
+> -    /* Platform Class */
+> -    build_append_int_noprefix(table_data, TPM2_ACPI_CLASS_CLIENT, 2);
+> -    /* Reserved */
+> -    build_append_int_noprefix(table_data, 0, 2);
+> -    if (TPM_IS_TIS_ISA(tpm_find())) {
+> -        control_area_start_address = 0;
+> -        start_method = TPM2_START_METHOD_MMIO;
+> -    } else if (TPM_IS_CRB(tpm_find())) {
+> -        control_area_start_address = TPM_CRB_ADDR_CTRL;
+> -        start_method = TPM2_START_METHOD_CRB;
+> -    } else {
+> -        g_assert_not_reached();
+> -    }
+> -    /* Address of Control Area */
+> -    build_append_int_noprefix(table_data, control_area_start_address, 8);
+> -    /* Start Method */
+> -    build_append_int_noprefix(table_data, start_method, 4);
+> -
+> -    /* Platform Specific Parameters */
+> -    g_array_append_vals(table_data, &start_method_params,
+> -                        ARRAY_SIZE(start_method_params));
+> -
+> -    /* Log Area Minimum Length */
+> -    build_append_int_noprefix(table_data, TPM_LOG_AREA_MINIMUM_SIZE, 4);
+> -
+> -    acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
+> -    bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE, tcpalog, 1,
+> -                             false);
+> -
+> -    log_addr_offset = table_data->len;
+> -    build_append_int_noprefix(table_data, 0, 8);
+> -    /* Log Area Start Address to be filled by Guest linker */
+> -    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> -                                   log_addr_offset, 8,
+> -                                   ACPI_BUILD_TPMLOG_FILE, 0);
+> -    build_header(linker, table_data,
+> -                 tpm2_ptr, "TPM2", table_data->len - tpm2_start, 4, NULL, NULL);
+> -}
+> -
+>   #define HOLE_640K_START  (640 * KiB)
+>   #define HOLE_640K_END   (1 * MiB)
+>   
 
-v1 -> v2:
-- use addr when testing addr belongs to the reserved region
-  and use a block local variable
----
- hw/virtio/virtio-iommu.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
 
-diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index be1527c1d6..03535a6a14 100644
---- a/hw/virtio/virtio-iommu.c
-+++ b/hw/virtio/virtio-iommu.c
-@@ -604,6 +604,7 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-     uint32_t sid, flags;
-     bool bypass_allowed;
-     bool found;
-+    int i;
- 
-     interval.low = addr;
-     interval.high = addr + 1;
-@@ -637,6 +638,25 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-         goto unlock;
-     }
- 
-+    for (i = 0; i < s->nb_reserved_regions; i++) {
-+        ReservedRegion *reg = &s->reserved_regions[i];
-+
-+        if (addr >= reg->low && addr <= reg->high) {
-+            switch (reg->type) {
-+            case VIRTIO_IOMMU_RESV_MEM_T_MSI:
-+                entry.perm = flag;
-+                break;
-+            case VIRTIO_IOMMU_RESV_MEM_T_RESERVED:
-+            default:
-+                virtio_iommu_report_fault(s, VIRTIO_IOMMU_FAULT_R_MAPPING,
-+                                          VIRTIO_IOMMU_FAULT_F_ADDRESS,
-+                                          sid, addr);
-+                break;
-+            }
-+            goto unlock;
-+        }
-+    }
-+
-     if (!ep->domain) {
-         if (!bypass_allowed) {
-             error_report_once("%s %02x:%02x.%01x not attached to any domain",
--- 
-2.20.1
 

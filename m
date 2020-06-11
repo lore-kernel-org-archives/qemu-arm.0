@@ -1,113 +1,112 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3814149lfm;
-        Tue, 30 Jun 2020 03:17:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxPQrFkzafhGbozkq0wgOnRbQbwJtg3ghygjWYEnDfH7WQsM58sAmRwJ9M8WuIr66M/iUQz
-X-Received: by 2002:a25:69c3:: with SMTP id e186mr35123983ybc.445.1593512239231;
-        Tue, 30 Jun 2020 03:17:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593512239; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1498728lfc;
+        Thu, 11 Jun 2020 07:48:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxxn+O14122nw2C2AHh3/vUMpqqEgxNdjzurBAPawXqxmKh831RPo6HtychJEUk6vrJAJJm
+X-Received: by 2002:a25:1f57:: with SMTP id f84mr14579513ybf.336.1591886902687;
+        Thu, 11 Jun 2020 07:48:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591886902; cv=none;
         d=google.com; s=arc-20160816;
-        b=VaB9AyVw2FsXDpgaV0j2ytwwtDtsHvAh9cXgCxywCNr844rHalGDyr6EdJ2atm5uST
-         7LpbHbyuTwRnVdrhSs+r2FKxPUaU9CiM39F7Vpb2zSrbxHSL57AZSW/daUtmH1/nnTui
-         NHZ4JzFIxb874hcSaoRf8zXcFBRLWvTURB+ycjCX5Ruf0s3OYopkfdjFP2BZAa+ll+/g
-         Cv/1t9E/7gclk08X90Euc5+noJvO+Lct1xfAaBuzPDYL+p8e1lHy7LpMkYcMLy9wwxCQ
-         uxss1mC3qtAjpDCXWlfR4dlwjtI70VERmw9DS97Vb2TWLm/YMeJ+cmZoZ5YmIn/oL1lC
-         CAuA==
+        b=x9DzoTrP/e4egDI6YQGmrIZnnG+a/3tTpBPK8WyNJszFTSxMT8A+YxTgnuWF5t4izy
+         XZ1JtKeXHd4/A0DnqEMPaCnMQigUI9QlZBtvCMwzpyxQk5A4K5THbKFOjmNzf/sXO7ne
+         NIRcr5J1DuUVYyqiw9VicgHqLcshyPNoC2jwyIGaKumaniDTxwnEKw3f7hwVQezalyAa
+         4qsxomti6IKzDmvXR1G4aNupGPEd78JPI9Mr0P/fPEUs+iMRt03XsPfQndHHGsMBr/6S
+         ddulpr7urF/YBBFZFPcZqom6POgAbob+HsvgBirC8TFYfP2W7dzXPbkQDG4rmpEOP9DN
+         OKUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=Vb7ygvRPmN2ygKpfVgGaW2RA5jYgFDz5aKuaFqPb4KE=;
-        b=M7PyVMb1CZGW6P1TDOn74m7zDuGfC5pt5NXRl34swobo6+cE5P+NvAtWu0qTL6Xkb+
-         ljITa1FS+NSDMs5RCcOhz+2irgmYgTjlPOOuo7+xEO42nz+x+lSK+gCGH/fRLX0E0Auf
-         +PoR+DkOMD0F7MHRVgZEvEzbMluyI6FNsJYHgHBP77EyQ7IaXr1LBpG3/mkg8IcwhggU
-         5U5NO3tANHRQ0A7goceHXmf9hjzlO2ck3jFg//1VJags2GQCH37t7yPnrkm6ElvFpjvH
-         ugPnk+/dMq1wFbNn5/JEwqYAfX9aNJ5vzqFqzBp7vO6GPdDp3Wl1b2Jd9pBRdr6lOrkc
-         2lGw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=FZ8prL94hg9EnftAZeIn2FC6K26efpGZiHbA6LxJ8Ns=;
+        b=O3ZJCVmyXes/D2CK/zZ76CA4U9P7W/IAXkY6rpAjNQy/k0XrRosKorR5SjR1YNanFc
+         iFq0drZsKRHs0CBWBUbSgQYAak05+A79jSrWdT6+1EfhXxZoXIw+Z3ARVQPpV3o8E9j9
+         0hGcVh0Y+GAs6n6Sk2EyQmLXTYPro3GxTX8Ygjhv6jaPbCYUQtdqkYicl3+vajMLcFlZ
+         uv1eLMOjnpcMKe1P86qCie15IHflMNK65BpQe1O7Q5TSAsblcl0/vGCzcSsBqEZ63U3v
+         G6Cx2lHwwCad8vHBGA29t5lkw6u8c2ujiX1Khkv0NzlPB4OFoAWfZfU1jc/LYKPf3KAF
+         o9dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a0gDTy1l;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MzzHaGO9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 145si2427684ybf.80.2020.06.30.03.17.19
+        by mx.google.com with ESMTPS id e199si2655324yba.457.2020.06.11.07.48.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jun 2020 03:17:19 -0700 (PDT)
+        Thu, 11 Jun 2020 07:48:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a0gDTy1l;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MzzHaGO9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56204 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58268 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jqDKI-0007rT-I1
-	for alex.bennee@linaro.org; Tue, 30 Jun 2020 06:17:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33436)
+	id 1jjOVB-000431-Rz
+	for alex.bennee@linaro.org; Thu, 11 Jun 2020 10:48:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41406)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jqDIf-0006Re-OW
- for qemu-devel@nongnu.org; Tue, 30 Jun 2020 06:15:37 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:24994
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jqDId-0006kV-3Z
- for qemu-devel@nongnu.org; Tue, 30 Jun 2020 06:15:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593512134;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Vb7ygvRPmN2ygKpfVgGaW2RA5jYgFDz5aKuaFqPb4KE=;
- b=a0gDTy1lm1z2nClfh99GSQPO0EKxRZxcybuJuj+l+Y3HB3VgOWBQqVWSfI0U4td8QcXu+x
- QYSakpId5jQEL1BVNaqirCIvdD2eFAxu6ruOX8IItQHmQo6Ax0vzbIQD49dVRjhHlLWfso
- EJVE3BQIwM/zqru4myvbXUQslRhOjjU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-458-GNd4VPA0NWuH1jzlPqmYFQ-1; Tue, 30 Jun 2020 06:15:30 -0400
-X-MC-Unique: GNd4VPA0NWuH1jzlPqmYFQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C7A0BEC1A9;
- Tue, 30 Jun 2020 10:15:28 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
- [10.36.112.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 09FE061981;
- Tue, 30 Jun 2020 10:15:27 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 702F811384A6; Tue, 30 Jun 2020 12:15:21 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 5/5] hw/i2c: Document the I2C qdev helpers
-References: <20200629173821.22037-1-f4bug@amsat.org>
- <20200629173821.22037-6-f4bug@amsat.org>
-Date: Tue, 30 Jun 2020 12:15:21 +0200
-In-Reply-To: <20200629173821.22037-6-f4bug@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 29 Jun 2020 19:38:21
- +0200")
-Message-ID: <87zh8kg8qu.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jjOSn-0001We-5v
+ for qemu-devel@nongnu.org; Thu, 11 Jun 2020 10:45:53 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:40620)
+ by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jjOSl-0003sr-EJ
+ for qemu-devel@nongnu.org; Thu, 11 Jun 2020 10:45:52 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id r15so5315141wmh.5
+ for <qemu-devel@nongnu.org>; Thu, 11 Jun 2020 07:45:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=FZ8prL94hg9EnftAZeIn2FC6K26efpGZiHbA6LxJ8Ns=;
+ b=MzzHaGO9uUDAgaJ4CRux/tQER3xf2CFf8gRwxhiAHbRJtJwwwaZDSYUPYJF+wkM3Or
+ J9QO+6W57d5/V8NBKrceIi29m8/4O1oOElNwxhNswDgVXeojlb5YkG5xe7iXxnF4lS6I
+ 7qb2QFjKQiQzhcO/7IMwiJ3bcvz3gMHWWA6+snIw/qNiiD/Q3GMj1OIfIP16NdNjgjrF
+ VK87yoRpgxfe1a0Oxem4zrzvve2oSCRf286QGrOYya90ziHEcUtm5oshRrSGA5RzBPKw
+ fuRr4Yl0MkCYgOg8SPwkqr59BVUWTodzMhbECXf/xSaswGIllcBGpxh3MbZ8bpjAYhUy
+ g30Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=FZ8prL94hg9EnftAZeIn2FC6K26efpGZiHbA6LxJ8Ns=;
+ b=NY42Ztsrqxm6NNNP0BodXE5ORSD3PYxUKRSIZs6HwbFc5mGo+ihv6Q/AvlrFfq0pD0
+ q81huCUi58te0aF/dLpSMEL2PrkHUSBDtdXdbnIyyYbvBJvI6URt+ufKfrDW2aEmGIzS
+ K89J9Pw+auv7OuZyc6Ep7ObCXOpHqPlqcJw3ig0eaT1qXCvdQgDvrNeMdiQBZ1SCi4QB
+ uqnekQm/CgL9BEcRXpSd0yGMIQGNzpW0O/DlC6XY8G68yBkYmnMOryskGHE0LmcRDdww
+ epeNNb9YoIlrGjMDYDdZVXczX+RHu2usOYryfBJ0Q2NjhkVFZGW3UrI5h5R04Ey7vlks
+ 9CEQ==
+X-Gm-Message-State: AOAM531nCiVuBYGZ9Ky/jDcEAxenvxeIUvvHCbk6/hBDNHgpzwBLRl0D
+ T5Z7YabHHu+/f8S+vbOb8zii1g==
+X-Received: by 2002:a7b:c08f:: with SMTP id r15mr8392776wmh.6.1591886741583;
+ Thu, 11 Jun 2020 07:45:41 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id h18sm5271658wru.7.2020.06.11.07.45.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 11 Jun 2020 07:45:41 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 07/10] target/arm: Convert Neon 2-reg-scalar long multiplies
+ to decodetree
+Date: Thu, 11 Jun 2020 15:45:26 +0100
+Message-Id: <20200611144529.8873-8-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200611144529.8873-1-peter.maydell@linaro.org>
+References: <20200611144529.8873-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 01:11:03
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,172 +119,445 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Jan Kiszka <jan.kiszka@web.de>, David Gibson <david@gibson.dropbear.id.au>,
- Joel Stanley <joel@jms.id.au>
+Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9wSdwC9SWlqk
+X-TUID: 12gFQHZwMlSP
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+Convert the Neon 2-reg-scalar long multiplies to decodetree.
+These are the last instructions in the group.
 
-> In commit d88c42ff2c we added new prototype but neglected to
-> add their documentation. Fix that.
->
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  include/hw/i2c/i2c.h | 48 ++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 48 insertions(+)
->
-> diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-> index c533058998..fcc61e509b 100644
-> --- a/include/hw/i2c/i2c.h
-> +++ b/include/hw/i2c/i2c.h
-> @@ -79,8 +79,56 @@ int i2c_send_recv(I2CBus *bus, uint8_t *data, bool sen=
-d);
->  int i2c_send(I2CBus *bus, uint8_t data);
->  uint8_t i2c_recv(I2CBus *bus);
-> =20
-> +/**
-> + * Create an I2C slave device on the heap.
-> + * @name: a device type name
-> + * @addr: I2C address of the slave when put on a bus
-> + *
-> + * This only initializes the device state structure and allows
-> + * properties to be set. Type @name must exist. The device still
-> + * needs to be realized. See qdev-core.h.
-> + */
->  I2CSlave *i2c_slave_new(const char *name, uint8_t addr);
-> +
-> +/**
-> + * Create an I2C slave device on the heap.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/neon-dp.decode       |  18 ++++
+ target/arm/translate-neon.inc.c | 163 ++++++++++++++++++++++++++++
+ target/arm/translate.c          | 182 ++------------------------------
+ 3 files changed, 187 insertions(+), 176 deletions(-)
 
-Suggest "Create and realize ..."
-
-> + * @bus: I2C bus to put it on
-> + * @name: I2C slave device type name
-> + * @addr: I2C address of the slave when put on a bus
-> + *
-> + * Create the device state structure, initialize it, put it on the
-> + * specified @bus, and drop the reference to it (the device is realized)=
-.
-> + * Any error aborts the process.
-
-Stick to imperative mood: Abort on error.
-
-Do we need the sentence?  Doc comments of object_new(), qdev_new() and
-i2c_slave_new() don't have it, they document *preconditions* instead,
-using "must", and rely on the tacit understanding that a function may
-abort or crash when its documented preconditions aren't met.  Matter of
-taste, I guess.
-
-> + */
->  I2CSlave *i2c_slave_create_simple(I2CBus *bus, const char *name, uint8_t=
- addr);
-> +
-> +/**
-> + * i2c_slave_realize_and_unref: realize and unref an I2C slave device
-
-Either consistently waste space for repeating the function name at the
-beginning of its doc comment, or consistently don't :)
-
-qdev_realize_and_unref()'s doc comment says "and drop a reference"
-instead of "unref", because "unref" is not a word.
-
-> + * @dev: I2C slave device to realize
-> + * @bus: I2C bus to put it on
-> + * @addr: I2C address of the slave on the bus
-> + * @errp: error pointer
-
-$ git-grep -h "@errp:" | sort -u
- *  @errp: pointer to Error*, to store an error if it happens
- * @errp:   error object
- * @errp: Error object
- * @errp: Error object which may be set by job_complete(); this is not
- * @errp: Error object.
- * @errp: If an error occurs, a pointer to an area to store the error
- * @errp: Output pointer for error information. Can be NULL.
- * @errp: Pointer for reporting an #Error.
- * @errp: Populated with an error in failure cases
- * @errp: a pointer to an Error that is filled if getting/setting fails.
- * @errp: a pointer to return the #Error object if an error occurs.
- * @errp: an error indicator
- * @errp: error
- * @errp: error object
- * @errp: error object handle
- * @errp: handle to an error object
- * @errp: if an error occurs, a pointer to an area to store the error
- * @errp: indirect pointer to Error to be set
- * @errp: location to store error
- * @errp: location to store error information
- * @errp: location to store error information.
- * @errp: location to store error, will be set only for exception
- * @errp: pointer to Error*, to store an error if it happens.
- * @errp: pointer to NULL initialized error object
- * @errp: pointer to a NULL initialized error object
- * @errp: pointer to a NULL-initialized error object
- * @errp: pointer to an error
- * @errp: pointer to error object
- * @errp: pointer to initialized error object
- * @errp: pointer to uninitialized error object
-
-Aside: gotta love these two.
-
- * @errp: returns an error if this function fails
- * @errp: set *errp if the check failed, with reason
- * @errp: set in case of an error
- * @errp: set on error
- * @errp: unused
- * @errp: where to put errors
-
-Plenty of choice, recommend not to invent another one :)
-
-> + *
-> + * Call 'realize' on @dev, put it on the specified @bus, and drop the
-> + * reference to it. Errors are reported via @errp and by returning
-> + * false.
-
-Recommend to use a separate paragraph for the return value.  Since your
-comment style resembles GTK-Doc style[*], you may just as well use it
-for the return value, like this:
-
-      Returns: %true on success, %false on failure.
-
-By convention, it goes after the function description.
-
-> + *
-> + * This function is useful if you have created @dev via qdev_new(),
-> + * i2c_slave_new() or i2c_slave_try_new() (which take a reference to
-> + * the device it returns to you), so that you can set properties on it
-> + * before realizing it. If you don't need to set properties then
-> + * i2c_slave_create_simple() is probably better (as it does the create,
-> + * init and realize in one step).
-> + *
-> + * If you are embedding the I2C slave into another QOM device and
-> + * initialized it via some variant on object_initialize_child() then
-> + * do not use this function, because that family of functions arrange
-> + * for the only reference to the child device to be held by the parent
-> + * via the child<> property, and so the reference-count-drop done here
-> + * would be incorrect.  (Instead you would want i2c_slave_realize(),
-> + * which doesn't currently exist but would be trivial to create if we
-> + * had any code that wanted it.)
-> + */
-
-The advice on use is more elaborate qdev_realize_and_unref()'s.  That
-one simply shows intended use.  I doubt we need more.  But as the person
-who wrote qdev_realize_and_unref(), I'm singularly unqualified judging
-the need ;)
-
->  bool i2c_slave_realize_and_unref(I2CSlave *dev, I2CBus *bus, Error **err=
-p);
-> =20
->  /* lm832x.c */
-
-
-[*] A style I dislike, but it's common in QEMU, so you're certainly
-entitled to use it.
+diff --git a/target/arm/neon-dp.decode b/target/arm/neon-dp.decode
+index 7b069abe628..9ff182f56d7 100644
+--- a/target/arm/neon-dp.decode
++++ b/target/arm/neon-dp.decode
+@@ -476,16 +476,34 @@ Vimm_1r          1111 001 . 1 . 000 ... .... cmode:4 0 . op:1 1 .... @1reg_imm
+ 
+     @2scalar     .... ... q:1 . . size:2 .... .... .... . . . . .... \
+                  &2scalar vm=%vm_dp vn=%vn_dp vd=%vd_dp
++    # For the 'long' ops the Q bit is part of insn decode
++    @2scalar_q0  .... ... . . . size:2 .... .... .... . . . . .... \
++                 &2scalar vm=%vm_dp vn=%vn_dp vd=%vd_dp q=0
+ 
+     VMLA_2sc     1111 001 . 1 . .. .... .... 0000 . 1 . 0 .... @2scalar
+     VMLA_F_2sc   1111 001 . 1 . .. .... .... 0001 . 1 . 0 .... @2scalar
+ 
++    VMLAL_S_2sc  1111 001 0 1 . .. .... .... 0010 . 1 . 0 .... @2scalar_q0
++    VMLAL_U_2sc  1111 001 1 1 . .. .... .... 0010 . 1 . 0 .... @2scalar_q0
++
++    VQDMLAL_2sc  1111 001 0 1 . .. .... .... 0011 . 1 . 0 .... @2scalar_q0
++
+     VMLS_2sc     1111 001 . 1 . .. .... .... 0100 . 1 . 0 .... @2scalar
+     VMLS_F_2sc   1111 001 . 1 . .. .... .... 0101 . 1 . 0 .... @2scalar
+ 
++    VMLSL_S_2sc  1111 001 0 1 . .. .... .... 0110 . 1 . 0 .... @2scalar_q0
++    VMLSL_U_2sc  1111 001 1 1 . .. .... .... 0110 . 1 . 0 .... @2scalar_q0
++
++    VQDMLSL_2sc  1111 001 0 1 . .. .... .... 0111 . 1 . 0 .... @2scalar_q0
++
+     VMUL_2sc     1111 001 . 1 . .. .... .... 1000 . 1 . 0 .... @2scalar
+     VMUL_F_2sc   1111 001 . 1 . .. .... .... 1001 . 1 . 0 .... @2scalar
+ 
++    VMULL_S_2sc  1111 001 0 1 . .. .... .... 1010 . 1 . 0 .... @2scalar_q0
++    VMULL_U_2sc  1111 001 1 1 . .. .... .... 1010 . 1 . 0 .... @2scalar_q0
++
++    VQDMULL_2sc  1111 001 0 1 . .. .... .... 1011 . 1 . 0 .... @2scalar_q0
++
+     VQDMULH_2sc  1111 001 . 1 . .. .... .... 1100 . 1 . 0 .... @2scalar
+     VQRDMULH_2sc 1111 001 . 1 . .. .... .... 1101 . 1 . 0 .... @2scalar
+ 
+diff --git a/target/arm/translate-neon.inc.c b/target/arm/translate-neon.inc.c
+index 19344ac331d..f054b567c8f 100644
+--- a/target/arm/translate-neon.inc.c
++++ b/target/arm/translate-neon.inc.c
+@@ -2649,3 +2649,166 @@ static bool trans_VQRDMLSH_2sc(DisasContext *s, arg_2scalar *a)
+     };
+     return do_vqrdmlah_2sc(s, a, opfn[a->size]);
+ }
++
++static bool do_2scalar_long(DisasContext *s, arg_2scalar *a,
++                            NeonGenTwoOpWidenFn *opfn,
++                            NeonGenTwo64OpFn *accfn)
++{
++    /*
++     * Two registers and a scalar, long operations: perform an
++     * operation on the input elements and the scalar which produces
++     * a double-width result, and then possibly perform an accumulation
++     * operation of that result into the destination.
++     */
++    TCGv_i32 scalar, rn;
++    TCGv_i64 rn0_64, rn1_64;
++
++    if (!arm_dc_feature(s, ARM_FEATURE_NEON)) {
++        return false;
++    }
++
++    /* UNDEF accesses to D16-D31 if they don't exist. */
++    if (!dc_isar_feature(aa32_simd_r32, s) &&
++        ((a->vd | a->vn | a->vm) & 0x10)) {
++        return false;
++    }
++
++    if (!opfn) {
++        /* Bad size (including size == 3, which is a different insn group) */
++        return false;
++    }
++
++    if (a->vd & 1) {
++        return false;
++    }
++
++    if (!vfp_access_check(s)) {
++        return true;
++    }
++
++    scalar = neon_get_scalar(a->size, a->vm);
++
++    /* Load all inputs before writing any outputs, in case of overlap */
++    rn = neon_load_reg(a->vn, 0);
++    rn0_64 = tcg_temp_new_i64();
++    opfn(rn0_64, rn, scalar);
++    tcg_temp_free_i32(rn);
++
++    rn = neon_load_reg(a->vn, 1);
++    rn1_64 = tcg_temp_new_i64();
++    opfn(rn1_64, rn, scalar);
++    tcg_temp_free_i32(rn);
++    tcg_temp_free_i32(scalar);
++
++    if (accfn) {
++        TCGv_i64 t64 = tcg_temp_new_i64();
++        neon_load_reg64(t64, a->vd);
++        accfn(t64, t64, rn0_64);
++        neon_store_reg64(t64, a->vd);
++        neon_load_reg64(t64, a->vd + 1);
++        accfn(t64, t64, rn1_64);
++        neon_store_reg64(t64, a->vd + 1);
++        tcg_temp_free_i64(t64);
++    } else {
++        neon_store_reg64(rn0_64, a->vd);
++        neon_store_reg64(rn1_64, a->vd + 1);
++    }
++    tcg_temp_free_i64(rn0_64);
++    tcg_temp_free_i64(rn1_64);
++    return true;
++}
++
++static bool trans_VMULL_S_2sc(DisasContext *s, arg_2scalar *a)
++{
++    static NeonGenTwoOpWidenFn * const opfn[] = {
++        NULL,
++        gen_helper_neon_mull_s16,
++        gen_mull_s32,
++        NULL,
++    };
++
++    return do_2scalar_long(s, a, opfn[a->size], NULL);
++}
++
++static bool trans_VMULL_U_2sc(DisasContext *s, arg_2scalar *a)
++{
++    static NeonGenTwoOpWidenFn * const opfn[] = {
++        NULL,
++        gen_helper_neon_mull_u16,
++        gen_mull_u32,
++        NULL,
++    };
++
++    return do_2scalar_long(s, a, opfn[a->size], NULL);
++}
++
++#define DO_VMLAL_2SC(INSN, MULL, ACC)                                   \
++    static bool trans_##INSN##_2sc(DisasContext *s, arg_2scalar *a)     \
++    {                                                                   \
++        static NeonGenTwoOpWidenFn * const opfn[] = {                   \
++            NULL,                                                       \
++            gen_helper_neon_##MULL##16,                                 \
++            gen_##MULL##32,                                             \
++            NULL,                                                       \
++        };                                                              \
++        static NeonGenTwo64OpFn * const accfn[] = {                     \
++            NULL,                                                       \
++            gen_helper_neon_##ACC##l_u32,                               \
++            tcg_gen_##ACC##_i64,                                        \
++            NULL,                                                       \
++        };                                                              \
++        return do_2scalar_long(s, a, opfn[a->size], accfn[a->size]);    \
++    }
++
++DO_VMLAL_2SC(VMLAL_S, mull_s, add)
++DO_VMLAL_2SC(VMLAL_U, mull_u, add)
++DO_VMLAL_2SC(VMLSL_S, mull_s, sub)
++DO_VMLAL_2SC(VMLSL_U, mull_u, sub)
++
++static bool trans_VQDMULL_2sc(DisasContext *s, arg_2scalar *a)
++{
++    static NeonGenTwoOpWidenFn * const opfn[] = {
++        NULL,
++        gen_VQDMULL_16,
++        gen_VQDMULL_32,
++        NULL,
++    };
++
++    return do_2scalar_long(s, a, opfn[a->size], NULL);
++}
++
++static bool trans_VQDMLAL_2sc(DisasContext *s, arg_2scalar *a)
++{
++    static NeonGenTwoOpWidenFn * const opfn[] = {
++        NULL,
++        gen_VQDMULL_16,
++        gen_VQDMULL_32,
++        NULL,
++    };
++    static NeonGenTwo64OpFn * const accfn[] = {
++        NULL,
++        gen_VQDMLAL_acc_16,
++        gen_VQDMLAL_acc_32,
++        NULL,
++    };
++
++    return do_2scalar_long(s, a, opfn[a->size], accfn[a->size]);
++}
++
++static bool trans_VQDMLSL_2sc(DisasContext *s, arg_2scalar *a)
++{
++    static NeonGenTwoOpWidenFn * const opfn[] = {
++        NULL,
++        gen_VQDMULL_16,
++        gen_VQDMULL_32,
++        NULL,
++    };
++    static NeonGenTwo64OpFn * const accfn[] = {
++        NULL,
++        gen_VQDMLSL_acc_16,
++        gen_VQDMLSL_acc_32,
++        NULL,
++    };
++
++    return do_2scalar_long(s, a, opfn[a->size], accfn[a->size]);
++}
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index f0db029f66d..4d39bbf035b 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -377,43 +377,6 @@ static void gen_revsh(TCGv_i32 dest, TCGv_i32 var)
+     tcg_gen_ext16s_i32(dest, var);
+ }
+ 
+-/* 32x32->64 multiply.  Marks inputs as dead.  */
+-static TCGv_i64 gen_mulu_i64_i32(TCGv_i32 a, TCGv_i32 b)
+-{
+-    TCGv_i32 lo = tcg_temp_new_i32();
+-    TCGv_i32 hi = tcg_temp_new_i32();
+-    TCGv_i64 ret;
+-
+-    tcg_gen_mulu2_i32(lo, hi, a, b);
+-    tcg_temp_free_i32(a);
+-    tcg_temp_free_i32(b);
+-
+-    ret = tcg_temp_new_i64();
+-    tcg_gen_concat_i32_i64(ret, lo, hi);
+-    tcg_temp_free_i32(lo);
+-    tcg_temp_free_i32(hi);
+-
+-    return ret;
+-}
+-
+-static TCGv_i64 gen_muls_i64_i32(TCGv_i32 a, TCGv_i32 b)
+-{
+-    TCGv_i32 lo = tcg_temp_new_i32();
+-    TCGv_i32 hi = tcg_temp_new_i32();
+-    TCGv_i64 ret;
+-
+-    tcg_gen_muls2_i32(lo, hi, a, b);
+-    tcg_temp_free_i32(a);
+-    tcg_temp_free_i32(b);
+-
+-    ret = tcg_temp_new_i64();
+-    tcg_gen_concat_i32_i64(ret, lo, hi);
+-    tcg_temp_free_i32(lo);
+-    tcg_temp_free_i32(hi);
+-
+-    return ret;
+-}
+-
+ /* Swap low and high halfwords.  */
+ static void gen_swap_half(TCGv_i32 var)
+ {
+@@ -3164,58 +3127,6 @@ static inline void gen_neon_addl(int size)
+     }
+ }
+ 
+-static inline void gen_neon_negl(TCGv_i64 var, int size)
+-{
+-    switch (size) {
+-    case 0: gen_helper_neon_negl_u16(var, var); break;
+-    case 1: gen_helper_neon_negl_u32(var, var); break;
+-    case 2:
+-        tcg_gen_neg_i64(var, var);
+-        break;
+-    default: abort();
+-    }
+-}
+-
+-static inline void gen_neon_addl_saturate(TCGv_i64 op0, TCGv_i64 op1, int size)
+-{
+-    switch (size) {
+-    case 1: gen_helper_neon_addl_saturate_s32(op0, cpu_env, op0, op1); break;
+-    case 2: gen_helper_neon_addl_saturate_s64(op0, cpu_env, op0, op1); break;
+-    default: abort();
+-    }
+-}
+-
+-static inline void gen_neon_mull(TCGv_i64 dest, TCGv_i32 a, TCGv_i32 b,
+-                                 int size, int u)
+-{
+-    TCGv_i64 tmp;
+-
+-    switch ((size << 1) | u) {
+-    case 0: gen_helper_neon_mull_s8(dest, a, b); break;
+-    case 1: gen_helper_neon_mull_u8(dest, a, b); break;
+-    case 2: gen_helper_neon_mull_s16(dest, a, b); break;
+-    case 3: gen_helper_neon_mull_u16(dest, a, b); break;
+-    case 4:
+-        tmp = gen_muls_i64_i32(a, b);
+-        tcg_gen_mov_i64(dest, tmp);
+-        tcg_temp_free_i64(tmp);
+-        break;
+-    case 5:
+-        tmp = gen_mulu_i64_i32(a, b);
+-        tcg_gen_mov_i64(dest, tmp);
+-        tcg_temp_free_i64(tmp);
+-        break;
+-    default: abort();
+-    }
+-
+-    /* gen_helper_neon_mull_[su]{8|16} do not free their parameters.
+-       Don't forget to clean them now.  */
+-    if (size < 2) {
+-        tcg_temp_free_i32(a);
+-        tcg_temp_free_i32(b);
+-    }
+-}
+-
+ static void gen_neon_narrow_op(int op, int u, int size,
+                                TCGv_i32 dest, TCGv_i64 src)
+ {
+@@ -5120,7 +5031,7 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+     int u;
+     int vec_size;
+     uint32_t imm;
+-    TCGv_i32 tmp, tmp2, tmp3, tmp4, tmp5;
++    TCGv_i32 tmp, tmp2, tmp3, tmp5;
+     TCGv_ptr ptr1;
+     TCGv_i64 tmp64;
+ 
+@@ -5158,92 +5069,11 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+         return 1;
+     } else { /* (insn & 0x00800010 == 0x00800000) */
+         if (size != 3) {
+-            op = (insn >> 8) & 0xf;
+-            if ((insn & (1 << 6)) == 0) {
+-                /* Three registers of different lengths: handled by decodetree */
+-                return 1;
+-            } else {
+-                /* Two registers and a scalar. NB that for ops of this form
+-                 * the ARM ARM labels bit 24 as Q, but it is in our variable
+-                 * 'u', not 'q'.
+-                 */
+-                if (size == 0) {
+-                    return 1;
+-                }
+-                switch (op) {
+-                case 0: /* Integer VMLA scalar */
+-                case 4: /* Integer VMLS scalar */
+-                case 8: /* Integer VMUL scalar */
+-                case 1: /* Float VMLA scalar */
+-                case 5: /* Floating point VMLS scalar */
+-                case 9: /* Floating point VMUL scalar */
+-                case 12: /* VQDMULH scalar */
+-                case 13: /* VQRDMULH scalar */
+-                case 14: /* VQRDMLAH scalar */
+-                case 15: /* VQRDMLSH scalar */
+-                    return 1; /* handled by decodetree */
+-
+-                case 3: /* VQDMLAL scalar */
+-                case 7: /* VQDMLSL scalar */
+-                case 11: /* VQDMULL scalar */
+-                    if (u == 1) {
+-                        return 1;
+-                    }
+-                    /* fall through */
+-                case 2: /* VMLAL sclar */
+-                case 6: /* VMLSL scalar */
+-                case 10: /* VMULL scalar */
+-                    if (rd & 1) {
+-                        return 1;
+-                    }
+-                    tmp2 = neon_get_scalar(size, rm);
+-                    /* We need a copy of tmp2 because gen_neon_mull
+-                     * deletes it during pass 0.  */
+-                    tmp4 = tcg_temp_new_i32();
+-                    tcg_gen_mov_i32(tmp4, tmp2);
+-                    tmp3 = neon_load_reg(rn, 1);
+-
+-                    for (pass = 0; pass < 2; pass++) {
+-                        if (pass == 0) {
+-                            tmp = neon_load_reg(rn, 0);
+-                        } else {
+-                            tmp = tmp3;
+-                            tmp2 = tmp4;
+-                        }
+-                        gen_neon_mull(cpu_V0, tmp, tmp2, size, u);
+-                        if (op != 11) {
+-                            neon_load_reg64(cpu_V1, rd + pass);
+-                        }
+-                        switch (op) {
+-                        case 6:
+-                            gen_neon_negl(cpu_V0, size);
+-                            /* Fall through */
+-                        case 2:
+-                            gen_neon_addl(size);
+-                            break;
+-                        case 3: case 7:
+-                            gen_neon_addl_saturate(cpu_V0, cpu_V0, size);
+-                            if (op == 7) {
+-                                gen_neon_negl(cpu_V0, size);
+-                            }
+-                            gen_neon_addl_saturate(cpu_V0, cpu_V1, size);
+-                            break;
+-                        case 10:
+-                            /* no-op */
+-                            break;
+-                        case 11:
+-                            gen_neon_addl_saturate(cpu_V0, cpu_V0, size);
+-                            break;
+-                        default:
+-                            abort();
+-                        }
+-                        neon_store_reg64(cpu_V0, rd + pass);
+-                    }
+-                    break;
+-                default:
+-                    g_assert_not_reached();
+-                }
+-            }
++            /*
++             * Three registers of different lengths, or two registers and
++             * a scalar: handled by decodetree
++             */
++            return 1;
+         } else { /* size == 3 */
+             if (!u) {
+                 /* Extract.  */
+-- 
+2.20.1
 

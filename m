@@ -1,316 +1,180 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1520604lfc;
-        Thu, 11 Jun 2020 08:14:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxWiypxoBP1NKs6TCOwaDZEO1hHuJDbo3i5jyZ7FZlcFS8xtubEX4lgargidT33Y5TP3JZJ
-X-Received: by 2002:a25:3849:: with SMTP id f70mr14682273yba.135.1591888490218;
-        Thu, 11 Jun 2020 08:14:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591888490; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1522230lfc;
+        Thu, 11 Jun 2020 08:16:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxuKLLcnlYLFJ5t/RevGjI+7pZ+wslqQiDHb4lnKYvnF7TXn+4ogAzsFcWxdnZFhYsWHTW0
+X-Received: by 2002:a25:d8d5:: with SMTP id p204mr14403285ybg.28.1591888603884;
+        Thu, 11 Jun 2020 08:16:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591888603; cv=none;
         d=google.com; s=arc-20160816;
-        b=lxovb3BMZSdCipT9UdnK30n1pCswls3VHpMG+L0mz7GpeBj31hRKYOntyLzs3Av49G
-         qpNX9lwnt3DKbakCaYkL+LGuGQ/IG8glOAnEyA+Pc/mIro/FsK9PHWvAk8eZ4uhfxkpp
-         NWvKQbAfnK6iCSlcxKbtJqVqp/gWYGnF3AAfifSMPJ/39ZN+GnSxq/DbGiw8572z07B7
-         1m2KIiBdknjyK7//e6d4Z5QDn2cYjDrg7YztIu0gxBuSgHXmqGeBRFvfqRL/FPHsOE7Q
-         tg6bq7j57R7gWL5qzzJeGDDn4KAmiXiUk1pZ+emZr+UZ6hWwrGhL352qNdtVv4mFQk4t
-         ZJ6Q==
+        b=0zJTwo41fcMmsZMdBm1YQPdmwxd81RGtiZt61exjvpObvaCG2YILEaI86UuaFJeUuI
+         n5OH81uIokUSd8fEhjg1O6lRm7gpOoN70D9pPCHrhT639EAYIa9Au0xwDGJTwa28wuv/
+         V6r9xuZZIelxw8OR9rdBzEOejumtj6sxP9csq6Kkj6foNZ5BbbFzt0w2TxZLH96C4cfX
+         /n7LaopxcK97AsfeB/ZtQgBtaMxEmZVAHgH3ZaLxuOBy7wJkOxfjXq22vhr9LIuBNoZN
+         gjVz0wA8ZYTeWDtI06IKI6tw3GKsayQ1m0q/2ZJ8NL8DsZjpK80PWcKi6CPDpe4sJUy3
+         BWOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=BzIL894sotKgNVfIxuhlNLClyj4ig+qMlBQA2j5VmFI=;
-        b=L3YxBqwztS9neKkqhwtoU/vcsjrXIUE0y+JbwD5/qBqxgXzDK5x+3I/kW8ADibI4Ki
-         Xm1L/YRWAHXvqLXojuyjjrXj18LesdbyV6tasuFS+gmrOfVKjGvh+mLxipDNFSyPbg1l
-         6bA+L0YC03yRZf8QEedoVGlb+7Xl4TJxkPdYseOcf047R8qz9dlTWwHgrJo560MWniHi
-         cqAMO2WLVyWbntNDEi7dVuQiHHAgQ2rsEXtVlurStDCbGDahudbhYK7ZQ2ay3scG4fDh
-         7M7ECkwSxpqPsgzZ34rz49tNhS9pG1lEYLkToIGOjKRg7VulF7J1tIQINewuHWrNvW6D
-         AtIg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=CtJm0H3P5LKt6WiNiZIWk44Frw7Af0Oa30M6sR7arrU=;
+        b=WsBsJs1Xf7thXyFdN+XwoRswpMTr2LqCi8pd2hXCbXu1nSj4IOKTC4T/G0yefKKmV5
+         JcoOXPjDNqceMSGI8wLxnpflmALWoWUjF9BgMODJkzycJKgviZtMn72jTkOTcbbtS/4X
+         wK85bpkS/LmuZD61DzebRLhoYPVZRcNrNKThvFNIRYmAELTZY2wvTQJCrNDQq/rVs7yw
+         bbMmi06sqQ1SRpw0mSYKjKvAVGG4sDoWdtoCzy+/GBsTcQkxAEsy07kMG4XmVvQM27Fz
+         3qS7eo+ZtPQd5SBBL+AdsUGoass7X9/PkchByWeWVWajRcu3We3laN+GEYq9ZvpW7JnJ
+         5RSw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="B8/nmQ74";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eLS9FqJU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l143si2664972ybf.155.2020.06.11.08.14.49
+        by mx.google.com with ESMTPS id n8si2721918ybk.265.2020.06.11.08.16.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jun 2020 08:14:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 11 Jun 2020 08:16:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="B8/nmQ74";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eLS9FqJU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53536 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54182 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjOun-0006Ku-EL
-	for alex.bennee@linaro.org; Thu, 11 Jun 2020 11:14:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51384)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jjOwd-0006cs-6I
+	for alex.bennee@linaro.org; Thu, 11 Jun 2020 11:16:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51374)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jjOsd-0004el-T1
- for qemu-arm@nongnu.org; Thu, 11 Jun 2020 11:12:36 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59747
- helo=us-smtp-1.mimecast.com)
+ id 1jjOsa-0004eG-Ox
+ for qemu-devel@nongnu.org; Thu, 11 Jun 2020 11:12:33 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:51270
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jjOsY-0003Sq-Ek
- for qemu-arm@nongnu.org; Thu, 11 Jun 2020 11:12:34 -0400
+ id 1jjOsY-0003Sm-Dd
+ for qemu-devel@nongnu.org; Thu, 11 Jun 2020 11:12:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1591888349;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BzIL894sotKgNVfIxuhlNLClyj4ig+qMlBQA2j5VmFI=;
- b=B8/nmQ743GL4uvUi3W1Z6rPU9D/Cc/dUeH6bMk3ua7c8YTcsRpwDLscIviDBj70x2ZetFI
- laOrGH2ucAgOwGMP1OArFdOJKE6xBKdHIAZ/smnWqs/pzSch5y110TDTUq9jjCBlO4MFZ2
- 6s4OA+EfCX3UDyOAn71aX2vJJGs6l48=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=CtJm0H3P5LKt6WiNiZIWk44Frw7Af0Oa30M6sR7arrU=;
+ b=eLS9FqJUdxKCo4b04LRhYvRvpqTH5lcr3gYdaNCaK1OyD1eSOGxmC8S9rzWCJFDchgw4Xb
+ HzDjaGM9LXZbH1b6i/wSwPi0IldJJYZgQ03OlKqj0izDcvTdazMawvgVcYJIbFJaZHAq1x
+ W1vu0BRg009FDS75cDq8DiZH+b5WLOE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-1-dI14MvCLNmm3b-neVNbW4A-1; Thu, 11 Jun 2020 11:12:27 -0400
-X-MC-Unique: dI14MvCLNmm3b-neVNbW4A-1
+ us-mta-127-XzDs81kuNW6cuUtdoCSTpg-1; Thu, 11 Jun 2020 11:12:25 -0400
+X-MC-Unique: XzDs81kuNW6cuUtdoCSTpg-1
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7F6D9107ACCA;
- Thu, 11 Jun 2020 15:12:26 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 03C978FF61;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A06708018A5;
  Thu, 11 Jun 2020 15:12:23 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-114-197.ams2.redhat.com [10.36.114.197])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E2A7C8FF81;
+ Thu, 11 Jun 2020 15:12:12 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  armbru@redhat.com, pbonzini@redhat.com, jean-philippe@linaro.org,
  bbhushan2@marvell.com, peterx@redhat.com
-Subject: [PATCH v3 1/5] qdev: Introduce DEFINE_PROP_RESERVED_REGION
-Date: Thu, 11 Jun 2020 17:12:05 +0200
-Message-Id: <20200611151209.22547-2-eric.auger@redhat.com>
-In-Reply-To: <20200611151209.22547-1-eric.auger@redhat.com>
-References: <20200611151209.22547-1-eric.auger@redhat.com>
+Subject: [PATCH v3 0/5] VIRTIO-IOMMU probe request support and MSI bypass on
+ ARM
+Date: Thu, 11 Jun 2020 17:12:04 +0200
+Message-Id: <20200611151209.22547-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/11 08:37:10
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/11 03:29:33
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qdbO9xF0YTra
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +8Hc46fGYAT+
 
-Introduce a new property defining a reserved region:
-<low address>, <high address>, <type>.
+By default the virtio-iommu translates MSI transactions. This
+behavior is inherited from ARM SMMU. However the virt machine
+code knows where the MSI doorbells are, so we can easily
+declare those regions as VIRTIO_IOMMU_RESV_MEM_T_MSI. With that
+setting the guest iommu subsystem will not need to map MSIs.
+This setup will simplify the VFIO integration.
 
-This will be used to encode reserved IOVA regions.
+In this series, the ITS or GICV2M doorbells are declared as
+HW MSI regions to be bypassed by the VIRTIO-IOMMU.
 
-For instance, in virtio-iommu use case, reserved IOVA regions
-will be passed by the machine code to the virtio-iommu-pci
-device (an array of those). The type of the reserved region
-will match the virtio_iommu_probe_resv_mem subtype value:
-- VIRTIO_IOMMU_RESV_MEM_T_RESERVED (0)
-- VIRTIO_IOMMU_RESV_MEM_T_MSI (1)
+This also paves the way to the x86 integration where the MSI
+region, [0xFEE00000,0xFEEFFFFF], will be exposed by the q35
+machine.  However this will be handled in a separate series
+when not-DT support gets resolved.
 
-on PC/Q35 machine, this will be used to inform the
-virtio-iommu-pci device it should bypass the MSI region.
-The reserved region will be: 0xfee00000, 0xfeefffff, 1.
+Best Regards
 
-On ARM, we can declare the ITS MSI doorbell as an MSI
-region to prevent MSIs from being mapped on guest side.
+Eric
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+This series can be found at:
+https://github.com/eauger/qemu/tree/v5.0.0-virtio-iommu-msi-bypass-v3
 
----
+History:
 
-v11 -> v12:
-- rename into DEFINE_PROP_RESERVED_REGION
-- do not use g_strsplit anymore, use endptr instead
-- remove 0x references
----
- include/exec/memory.h        |  6 +++
- include/hw/qdev-properties.h |  3 ++
- include/qemu/typedefs.h      |  1 +
- hw/core/qdev-properties.c    | 89 ++++++++++++++++++++++++++++++++++++
- 4 files changed, 99 insertions(+)
+v2 -> v3:
+- Introduce VIRT_MSI_CTRL_NONE in VirtMSIControllerType
+- do not fill the remainder of the probe buffer
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 3e00cdbbfa..3ee8224fa7 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -57,6 +57,12 @@ struct MemoryRegionMmio {
-     CPUWriteMemoryFunc *write[3];
- };
- 
-+struct ReservedRegion {
-+    hwaddr low;
-+    hwaddr high;
-+    unsigned int type;
-+};
-+
- typedef struct IOMMUTLBEntry IOMMUTLBEntry;
- 
- /* See address_space_translate: bit 0 is read, bit 1 is write.  */
-diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
-index f161604fb6..03bf850a7e 100644
---- a/include/hw/qdev-properties.h
-+++ b/include/hw/qdev-properties.h
-@@ -19,6 +19,7 @@ extern const PropertyInfo qdev_prop_string;
- extern const PropertyInfo qdev_prop_chr;
- extern const PropertyInfo qdev_prop_tpm;
- extern const PropertyInfo qdev_prop_macaddr;
-+extern const PropertyInfo qdev_prop_reserved_region;
- extern const PropertyInfo qdev_prop_on_off_auto;
- extern const PropertyInfo qdev_prop_multifd_compression;
- extern const PropertyInfo qdev_prop_losttickpolicy;
-@@ -183,6 +184,8 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
-     DEFINE_PROP(_n, _s, _f, qdev_prop_drive_iothread, BlockBackend *)
- #define DEFINE_PROP_MACADDR(_n, _s, _f)         \
-     DEFINE_PROP(_n, _s, _f, qdev_prop_macaddr, MACAddr)
-+#define DEFINE_PROP_RESERVED_REGION(_n, _s, _f)         \
-+    DEFINE_PROP(_n, _s, _f, qdev_prop_reserved_region, ReservedRegion)
- #define DEFINE_PROP_ON_OFF_AUTO(_n, _s, _f, _d) \
-     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_on_off_auto, OnOffAuto)
- #define DEFINE_PROP_MULTIFD_COMPRESSION(_n, _s, _f, _d) \
-diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
-index ecf3cde26c..85c4f891f4 100644
---- a/include/qemu/typedefs.h
-+++ b/include/qemu/typedefs.h
-@@ -59,6 +59,7 @@ typedef struct ISABus ISABus;
- typedef struct ISADevice ISADevice;
- typedef struct IsaDma IsaDma;
- typedef struct MACAddr MACAddr;
-+typedef struct ReservedRegion ReservedRegion;
- typedef struct MachineClass MachineClass;
- typedef struct MachineState MachineState;
- typedef struct MemoryListener MemoryListener;
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index cc924815da..15b84adbee 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -14,6 +14,7 @@
- #include "qapi/visitor.h"
- #include "chardev/char.h"
- #include "qemu/uuid.h"
-+#include "qemu/cutils.h"
- 
- void qdev_prop_set_after_realize(DeviceState *dev, const char *name,
-                                   Error **errp)
-@@ -577,6 +578,94 @@ const PropertyInfo qdev_prop_macaddr = {
-     .set   = set_mac,
- };
- 
-+/* --- Reserved Region --- */
-+
-+/*
-+ * accepted syntax version:
-+ *   <low address>,<high address>,<type>
-+ *   where low/high addresses are uint64_t in hexadecimal
-+ *   and type is an unsigned integer in decimal
-+ */
-+static void get_reserved_region(Object *obj, Visitor *v, const char *name,
-+                                void *opaque, Error **errp)
-+{
-+    DeviceState *dev = DEVICE(obj);
-+    Property *prop = opaque;
-+    ReservedRegion *rr = qdev_get_prop_ptr(dev, prop);
-+    char buffer[64];
-+    char *p = buffer;
-+
-+    snprintf(buffer, sizeof(buffer), "0x%"PRIx64",0x%"PRIx64",%u",
-+             rr->low, rr->high, rr->type);
-+
-+    visit_type_str(v, name, &p, errp);
-+}
-+
-+static void set_reserved_region(Object *obj, Visitor *v, const char *name,
-+                                void *opaque, Error **errp)
-+{
-+    DeviceState *dev = DEVICE(obj);
-+    Property *prop = opaque;
-+    ReservedRegion *rr = qdev_get_prop_ptr(dev, prop);
-+    Error *local_err = NULL;
-+    const char *endptr;
-+    char *str;
-+    int ret;
-+
-+    if (dev->realized) {
-+        qdev_prop_set_after_realize(dev, name, errp);
-+        return;
-+    }
-+
-+    visit_type_str(v, name, &str, &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+    ret = qemu_strtou64(str, &endptr, 16, &rr->low);
-+    if (ret) {
-+        error_setg(errp, "Failed to decode reserved region low addr");
-+        error_append_hint(errp,
-+                          "should be an address in hexadecimal\n");
-+        goto out;
-+    }
-+    if (*endptr != ',') {
-+        goto separator_error;
-+    }
-+
-+    ret = qemu_strtou64(endptr + 1, &endptr, 16, &rr->high);
-+    if (ret) {
-+        error_setg(errp, "Failed to decode reserved region high addr");
-+        error_append_hint(errp,
-+                          "should be an address in hexadecimal\n");
-+        goto out;
-+    }
-+    if (*endptr != ',') {
-+        goto separator_error;
-+    }
-+
-+    ret = qemu_strtoui(endptr + 1, &endptr, 10, &rr->type);
-+    if (ret) {
-+        error_setg(errp, "Failed to decode reserved region type");
-+        error_append_hint(errp, "should be an unsigned integer in decimal\n");
-+    }
-+    goto out;
-+
-+separator_error:
-+    error_setg(errp, "reserved region fields must be separated with commas");
-+out:
-+    g_free(str);
-+    return;
-+}
-+
-+const PropertyInfo qdev_prop_reserved_region = {
-+    .name  = "reserved_region",
-+    .description = "Reserved Region, example: 0xFEE00000,0xFEEFFFFF,0",
-+    .get   = get_reserved_region,
-+    .set   = set_reserved_region,
-+};
-+
- /* --- on/off/auto --- */
- 
- const PropertyInfo qdev_prop_on_off_auto = {
+v1 -> v2:
+- check which MSI controller is in use and advertise the
+  corresponding MSI doorbell
+- managed for both ITS and GICv2M
+- various fixes spotted by Peter and Jean-Philippe, see
+  individual logs
+
+v1: Most of those patches were respinned from
+  [PATCH for-5.0 v11 00/20] VIRTIO-IOMMU device
+  except the last one which is new
+
+Eric Auger (5):
+  qdev: Introduce DEFINE_PROP_RESERVED_REGION
+  virtio-iommu: Implement RESV_MEM probe request
+  virtio-iommu: Handle reserved regions in the translation process
+  virtio-iommu-pci: Add array of Interval properties
+  hw/arm/virt: Let the virtio-iommu bypass MSIs
+
+ include/exec/memory.h            |   6 ++
+ include/hw/arm/virt.h            |   7 ++
+ include/hw/qdev-properties.h     |   3 +
+ include/hw/virtio/virtio-iommu.h |   2 +
+ include/qemu/typedefs.h          |   1 +
+ hw/arm/virt.c                    |  18 +++++
+ hw/core/qdev-properties.c        |  89 +++++++++++++++++++++++++
+ hw/virtio/virtio-iommu-pci.c     |   3 +
+ hw/virtio/virtio-iommu.c         | 111 +++++++++++++++++++++++++++++--
+ hw/virtio/trace-events           |   1 +
+ 10 files changed, 237 insertions(+), 4 deletions(-)
+
 -- 
 2.20.1
 

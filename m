@@ -1,280 +1,159 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1462694lfc;
-        Thu, 11 Jun 2020 07:04:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzbelLK19oGM6LyUJvSNugksCEYCgZle0YAp+2z0CJW4p7tZ0rrUoD+b5qZFKfTENsREHrm
-X-Received: by 2002:a25:eb05:: with SMTP id d5mr13863085ybs.12.1591884245180;
-        Thu, 11 Jun 2020 07:04:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591884245; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1497063lfc;
+        Thu, 11 Jun 2020 07:46:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJye58ZCfw0nlOdpnYTUx0bHbyacL0J0WeBg+RKKofSOSRhIxRixTzvHNLVpItoSCv8vBM/l
+X-Received: by 2002:a5b:4cd:: with SMTP id u13mr3793206ybp.323.1591886764271;
+        Thu, 11 Jun 2020 07:46:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591886764; cv=none;
         d=google.com; s=arc-20160816;
-        b=pukvv4p3G06ccL7rPKjBULoNyQW3iyV1fQtV8BYy8Dh0xdwllkSRFUOEIai+IsWIDK
-         9eMXcY7JsDwk/RqEJidUJ5LU6TgfFQteoPUArrB+60dvjCHwF/M5BGE/RsHt8WxQD5Qt
-         QdZQBaO7v7iTL2InMuvHVXcCrzhtDUvst5GuPkhcW1Q0KA3FwVBnmeFzFFdLXfjuKdY4
-         9+WjEKhjZPctU1V/+aTeTX1pOIr5lQrB4mPojIB4LusJn2bv7sr4kgz4D+Lu0FkQTTp4
-         NzSgigZwcP7WrJg+toB0lqk5Mn6Jy1E7jhnRuIP3BXVJqrGSds9aM6KYp8mYMa+CGpRx
-         vLtw==
+        b=A0HWslaPI5VwPXz29VFlNRsSJaKDGAiPHHuTsfD0qXYb5HOq0txA1wClQD+SlS2huY
+         JOkSVjUKOiJQPBHcmW+6c+2n+ms6gXj9wu0wD5mkRlWYA3aFpNiGWJXbdcpFpu7BMT42
+         xOJYUmk/CJ7Y0ORAaYnmagqav3Mb442+J4nKMbIonmH+ZBrTU+oatV/f3VJsY+KBe2xP
+         +aS1Tm9R2GQTX9uqHh0/Uzoz/JKjl7Osh+rOUQ91Uopi9StmzSeEAp0Xrby/sJA9kDbp
+         FTfy19S6ZWtsYR66KNnLyniXXZ+59Q9xh7gwhakOakj2sRlTFwcbIs917RcF63pTsUvd
+         GWEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Vfn8PEYJwv5gpdW+8cLkQ+SzSoDxtmh4V9PWHKDoHb0=;
-        b=lLK8TfO8kP+VPkNTjydelWh9Q831md7EYT2ex3Fu3Eqyp/S5/0y11r/3T88kk+8Oto
-         qq26AchZiT5qAsy3Fp7q8IA51GRCstTHzjpaYHuFo3YKFnPm4CtioOuDsr7VISaZQAr1
-         /Ad5GZ39SqDi12/i5bCz7TLGY9kkzrociszTM7QsL2uFvzmV3h7BilJ+XdnH7DHRf++f
-         XmyphndYl2dWEl7ZWeD9xTBFA3BfUFtTg6+WL9cRMZCfmd6Y6f+Nuz4deNjDK+CSDuS0
-         0oSWAynFcw0Ao+a7KGYTgqw/BbEkPTdYjM33m+OJ2oflJygAkvdboay6pziX9SFNKMfk
-         niJw==
+        bh=mYq1MqrdFl5JxHZzgiamWFM2bwNZOEqA/8m/GF3wHr8=;
+        b=qilw8MRoUVriO7LA4OILTpj0R5lEAi4QdJHYLw/CDqY5mAD7vagUoTCkm604cnJlj9
+         4LuslYP4VDAKNI+LUzFoafJG8wLJboTPM+5P1GVo6q1m0LLq+0G82v7hJmEvyZP7BY8T
+         FfHqtmHvQL60QcG9HPNWMy0g4P+bqucpmGw0NiNxlECD/819O9L/SnLtn4tsDm4qF9Vn
+         /3JCab3RmbBKDM/MWs522dztwLUKGUUfTo7rTp0zxdLB2eswTQ02+ydwtXUnPdfZkIe6
+         J5uQicoGpAwSI+MveSp77r8oGQdvJUeBmwvB6UizxpI1Eep3ddfti1XhZJ6VSqLAFD3p
+         Izzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Gejp3q2V;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=IROQ5Xkq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12si2434614ybk.171.2020.06.11.07.04.04
+        by mx.google.com with ESMTPS id x6si2431846ybg.57.2020.06.11.07.46.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jun 2020 07:04:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 11 Jun 2020 07:46:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Gejp3q2V;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36232 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=IROQ5Xkq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51914 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjNoK-0006Nb-GS
-	for alex.bennee@linaro.org; Thu, 11 Jun 2020 10:04:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51782)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jjOSx-0001Sk-Ad
+	for alex.bennee@linaro.org; Thu, 11 Jun 2020 10:46:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41032)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jjNk9-0002BP-RA
- for qemu-devel@nongnu.org; Thu, 11 Jun 2020 09:59:45 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:35335
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jjNk8-00029R-QD
- for qemu-devel@nongnu.org; Thu, 11 Jun 2020 09:59:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591883984;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Vfn8PEYJwv5gpdW+8cLkQ+SzSoDxtmh4V9PWHKDoHb0=;
- b=Gejp3q2Vrvdg+oQyQMAt1ACHvrPtsWvSDqkcfFTX4YdpCeCx+zS8WCzufcAOZFTOymYhpv
- 8PIq+tkyNYrXrIwYmxCjG69oOPCUAUbaFRp/V7aS8WSlLd21pT1KNHxRr0D1B4NVlPtI29
- gjfv1g1yG7uCBM+q22iM7q6F5K8TaAI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-281-FTZZBi9YOrGffb5T9LhY1w-1; Thu, 11 Jun 2020 09:59:42 -0400
-X-MC-Unique: FTZZBi9YOrGffb5T9LhY1w-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 11A40107ACCA;
- Thu, 11 Jun 2020 13:59:40 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 02E365D9DC;
- Thu, 11 Jun 2020 13:59:36 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
-Subject: [PATCH v4 2/5] acpi: Move build_tpm2() in the generic part
-Date: Thu, 11 Jun 2020 15:59:14 +0200
-Message-Id: <20200611135917.18300-3-eric.auger@redhat.com>
-In-Reply-To: <20200611135917.18300-1-eric.auger@redhat.com>
-References: <20200611135917.18300-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jjOSg-0001Px-JG
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2020 10:45:46 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37018)
+ by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jjOSd-0003n1-H4
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2020 10:45:46 -0400
+Received: by mail-wm1-x343.google.com with SMTP id y20so5317868wmi.2
+ for <qemu-arm@nongnu.org>; Thu, 11 Jun 2020 07:45:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=mYq1MqrdFl5JxHZzgiamWFM2bwNZOEqA/8m/GF3wHr8=;
+ b=IROQ5XkqbQYzopH9egWOZ1AtCMddqDhN97eJ6lhyA5NBIAzmf/WtiFjGqD+Ykx3aJc
+ CcCFdYy4SB83bEdAlB3201KVrUvJTN+ixiQUcpTWumSFy0VUL1sI9Bccpeczi4H68+KQ
+ VgLbSpt7Crp3NO0FKszYsWuzuYvuJECw+SxiB+PC3q6A5DRsjRKxQuR2IhQtHDSrM8G/
+ aEv95BK4qzq0Y0VOTGuICAiNYdC6WYJWHp0KLzDmGx10m2pGZVSw3LEctgO1ZwfXGMiZ
+ QNbWKTCbR3IfQTmE8Jt6cCF0b81fKBm/WSNgbMHImS5Ztt+rH7I3Ozu0Y12H1V8aU8xV
+ xgbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=mYq1MqrdFl5JxHZzgiamWFM2bwNZOEqA/8m/GF3wHr8=;
+ b=KFSkYhkq2o1lYWrhjhaRw5tkBMJMRWEIILXGp7FY0jlNUOFHrbA9wpfhAshcdV2O+L
+ lKeQPTunWQ4brpJxEwbDrs15UBGkOEr2Xk6W4peGtiZFIj1u6+YffL9xiy/TgfXSau8S
+ SrbvH5sZyf3Ldo5rFTo8Ajt9er11gbHE4e526VrGQtgNbkYuMN5zB9ouUPHVmH0+NyMT
+ zOBqF2dY5T+/G3NCpWvN0mQJBrNmogmfyrT4C+RRMg5ntwJYC9X41PRRomU77ZZM6e+o
+ 5JX81gGJqhhKuzOVP8j+ntPTYUirQsHygauGaFEiXIvHnGJOD5LcFR/jvbCW7m3T+hO1
+ 85qw==
+X-Gm-Message-State: AOAM530pN/rIeLPUi+s8DZSJpe0FMqnQR/waM/1AjkSzXgrdQozwRvJm
+ ElwO4dDAmNKD1EsD8bHsaxiAHq/Mb2J7+g==
+X-Received: by 2002:a1c:4d11:: with SMTP id o17mr8298069wmh.37.1591886734428; 
+ Thu, 11 Jun 2020 07:45:34 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id h18sm5271658wru.7.2020.06.11.07.45.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 11 Jun 2020 07:45:33 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 01/10] target/arm: Add 'static' and 'const' annotations to
+ VSHLL function arrays
+Date: Thu, 11 Jun 2020 15:45:20 +0100
+Message-Id: <20200611144529.8873-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200611144529.8873-1-peter.maydell@linaro.org>
+References: <20200611144529.8873-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/11 08:37:10
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
- ardb@kernel.org, philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UGCov4tyIOtD
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zVubyTQY6/0V
 
-We plan to build the TPM2 table on ARM too. In order to reuse the
-generation code, let's move build_tpm2() to aml-build.c.
+Mark the arrays of function pointers in trans_VSHLL_S_2sh() and
+trans_VSHLL_U_2sh() as both 'static' and 'const'.
 
-No change in the implementation.
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/acpi/aml-build.h |  2 ++
- hw/acpi/aml-build.c         | 51 +++++++++++++++++++++++++++++++++++++
- hw/i386/acpi-build.c        | 51 -------------------------------------
- 3 files changed, 53 insertions(+), 51 deletions(-)
+ target/arm/translate-neon.inc.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index ed7c89309e..d27da03d64 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -437,4 +437,6 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms);
+diff --git a/target/arm/translate-neon.inc.c b/target/arm/translate-neon.inc.c
+index c2cc10913f8..7c4888a80c9 100644
+--- a/target/arm/translate-neon.inc.c
++++ b/target/arm/translate-neon.inc.c
+@@ -1644,7 +1644,7 @@ static bool do_vshll_2sh(DisasContext *s, arg_2reg_shift *a,
  
- void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-                 const char *oem_id, const char *oem_table_id);
-+
-+void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog);
- #endif
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index 3681ec6e3d..2a1d9fc839 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -26,6 +26,7 @@
- #include "qemu/bitops.h"
- #include "sysemu/numa.h"
- #include "hw/boards.h"
-+#include "hw/acpi/tpm.h"
- 
- static GArray *build_alloc_array(void)
+ static bool trans_VSHLL_S_2sh(DisasContext *s, arg_2reg_shift *a)
  {
-@@ -1877,6 +1878,56 @@ build_hdr:
-                  "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
- }
+-    NeonGenWidenFn *widenfn[] = {
++    static NeonGenWidenFn * const widenfn[] = {
+         gen_helper_neon_widen_s8,
+         gen_helper_neon_widen_s16,
+         tcg_gen_ext_i32_i64,
+@@ -1654,7 +1654,7 @@ static bool trans_VSHLL_S_2sh(DisasContext *s, arg_2reg_shift *a)
  
-+void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
-+{
-+    uint8_t start_method_params[12] = {};
-+    unsigned log_addr_offset, tpm2_start;
-+    uint64_t control_area_start_address;
-+    uint32_t start_method;
-+    void *tpm2_ptr;
-+
-+    tpm2_start = table_data->len;
-+    tpm2_ptr = acpi_data_push(table_data, sizeof(AcpiTableHeader));
-+
-+    /* Platform Class */
-+    build_append_int_noprefix(table_data, TPM2_ACPI_CLASS_CLIENT, 2);
-+    /* Reserved */
-+    build_append_int_noprefix(table_data, 0, 2);
-+    if (TPM_IS_TIS_ISA(tpm_find())) {
-+        control_area_start_address = 0;
-+        start_method = TPM2_START_METHOD_MMIO;
-+    } else if (TPM_IS_CRB(tpm_find())) {
-+        control_area_start_address = TPM_CRB_ADDR_CTRL;
-+        start_method = TPM2_START_METHOD_CRB;
-+    } else {
-+        g_assert_not_reached();
-+    }
-+    /* Address of Control Area */
-+    build_append_int_noprefix(table_data, control_area_start_address, 8);
-+    /* Start Method */
-+    build_append_int_noprefix(table_data, start_method, 4);
-+
-+    /* Platform Specific Parameters */
-+    g_array_append_vals(table_data, &start_method_params,
-+                        ARRAY_SIZE(start_method_params));
-+
-+    /* Log Area Minimum Length */
-+    build_append_int_noprefix(table_data, TPM_LOG_AREA_MINIMUM_SIZE, 4);
-+
-+    acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
-+    bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE, tcpalog, 1,
-+                             false);
-+
-+    log_addr_offset = table_data->len;
-+    build_append_int_noprefix(table_data, 0, 8);
-+    /* Log Area Start Address to be filled by Guest linker */
-+    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-+                                   log_addr_offset, 8,
-+                                   ACPI_BUILD_TPMLOG_FILE, 0);
-+    build_header(linker, table_data,
-+                 tpm2_ptr, "TPM2", table_data->len - tpm2_start, 4, NULL, NULL);
-+}
-+
- /* ACPI 5.0: 6.4.3.8.2 Serial Bus Connection Descriptors */
- static Aml *aml_serial_bus_device(uint8_t serial_bus_type, uint8_t flags,
-                                   uint16_t type_flags,
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index f150d95ecc..b7c7583b5f 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2295,57 +2295,6 @@ build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
-                  (void *)tcpa, "TCPA", sizeof(*tcpa), 2, NULL, NULL);
- }
- 
--static void
--build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
--{
--    uint8_t start_method_params[12] = {};
--    unsigned log_addr_offset, tpm2_start;
--    uint64_t control_area_start_address;
--    uint32_t start_method;
--    void *tpm2_ptr;
--
--    tpm2_start = table_data->len;
--    tpm2_ptr = acpi_data_push(table_data, sizeof(AcpiTableHeader));
--
--    /* Platform Class */
--    build_append_int_noprefix(table_data, TPM2_ACPI_CLASS_CLIENT, 2);
--    /* Reserved */
--    build_append_int_noprefix(table_data, 0, 2);
--    if (TPM_IS_TIS_ISA(tpm_find())) {
--        control_area_start_address = 0;
--        start_method = TPM2_START_METHOD_MMIO;
--    } else if (TPM_IS_CRB(tpm_find())) {
--        control_area_start_address = TPM_CRB_ADDR_CTRL;
--        start_method = TPM2_START_METHOD_CRB;
--    } else {
--        g_assert_not_reached();
--    }
--    /* Address of Control Area */
--    build_append_int_noprefix(table_data, control_area_start_address, 8);
--    /* Start Method */
--    build_append_int_noprefix(table_data, start_method, 4);
--
--    /* Platform Specific Parameters */
--    g_array_append_vals(table_data, &start_method_params,
--                        ARRAY_SIZE(start_method_params));
--
--    /* Log Area Minimum Length */
--    build_append_int_noprefix(table_data, TPM_LOG_AREA_MINIMUM_SIZE, 4);
--
--    acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
--    bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE, tcpalog, 1,
--                             false);
--
--    log_addr_offset = table_data->len;
--    build_append_int_noprefix(table_data, 0, 8);
--    /* Log Area Start Address to be filled by Guest linker */
--    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
--                                   log_addr_offset, 8,
--                                   ACPI_BUILD_TPMLOG_FILE, 0);
--    build_header(linker, table_data,
--                 tpm2_ptr, "TPM2", table_data->len - tpm2_start, 4, NULL, NULL);
--}
--
- #define HOLE_640K_START  (640 * KiB)
- #define HOLE_640K_END   (1 * MiB)
- 
+ static bool trans_VSHLL_U_2sh(DisasContext *s, arg_2reg_shift *a)
+ {
+-    NeonGenWidenFn *widenfn[] = {
++    static NeonGenWidenFn * const widenfn[] = {
+         gen_helper_neon_widen_u8,
+         gen_helper_neon_widen_u16,
+         tcg_gen_extu_i32_i64,
 -- 
 2.20.1
 

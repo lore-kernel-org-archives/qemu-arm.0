@@ -1,92 +1,128 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1151593lfc;
-        Wed, 10 Jun 2020 23:13:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyQ35D+xXWb0uf1i6qEjjAaHyVbdKDcCvZ1FiAejv4MUNG0S94VAc33NPEb3Sznif4P0Iwb
-X-Received: by 2002:a25:7a81:: with SMTP id v123mr11847973ybc.512.1591856006179;
-        Wed, 10 Jun 2020 23:13:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591856006; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1482847lfc;
+        Thu, 11 Jun 2020 07:27:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwxtitHJiVErVMdBSXDZ08oxlsgy5AWn8/uHMceLNGUyDf2BnZ8GNif6OiDJE5sf/MIP0lv
+X-Received: by 2002:a25:4ac9:: with SMTP id x192mr15386031yba.172.1591885636512;
+        Thu, 11 Jun 2020 07:27:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591885636; cv=none;
         d=google.com; s=arc-20160816;
-        b=odm/2TIAtmpX1BjmgOegWqwKsODfThdurHAvIPIRvsmfSXnVxMNOAjs1KATTUH8/q2
-         sIgv+hAs7kc2skBa2keJHR4ScAD2FeuqYno2Fi/Pie6o4awsdwvVLzY/5bNseaNJ5xhv
-         jtSLSUMROXa964TQfj2CfMbDsGMoZ1sY8zxPzGbjWLm47wCaLocfMLEKHyC9Vgqcsl/h
-         HTfPp93HqpZi2qOARcrx1jjJZhgbaXjirUi0X7YZATCby1oLbHkLp1fs8Egfff5rIv4I
-         9qC/nqh9iZqNyxbD/psy/R7pDjJKZHL7AfKtMCOwtv8bDzkXUjFQfUpc65wClZnd0fnm
-         YE/g==
+        b=HzURZi6LUZUzWnU+0gBBmrc8jlKHW2prxY/mVxyehzOGi+LKfUE7faAJH4uPbU/jSH
+         v8p6bwNuHmvnlTEXFDXf4g6a6nuT+CcJsUXHQJSDuk9jwDnBLtGL8ImcIQtKFuK2sO4Q
+         eL4KOi+FQ59jH2VMXEnhSXPdV2Dkhl2qnw5dgHYFuHm9dSnxvhrpAxOGrFz+/L/we4Hl
+         RdB9qQXapeDYxHjy4RnWuoTVmfE8zOZYzcF9K4dWntDFTc+mdeT2Bv2svrSH0kjghaEe
+         UPVOLiJxDhbnYlZx5wTMBq1+LACU/BaY0emWl2FPVoS30nJPwG//eXqtgx5hJLZxGDj7
+         DCrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=hG/KcH08a67H9TGBUqJ5+qvGW4TckbHpW/Gf+xLf19k=;
-        b=wSB9FEH1CYWwr6kMFGMYIMhhjLuix2aYIROgRvmImwAe5/qXtYeUdwRLKd1d02wTqs
-         IlpoSt/zW6s0/HSKLAZg9gV+xmwHcyf2t2nVdvskyCNSL4CpzUY6X6BfQY5DJqtgBjXF
-         rBUp9TLXhiRVVetZ7GaezT5I8FFezOJG07JRt9DGn+hnk1BBLhIO/nzN7zxOykJWRDUA
-         vlqHlPuiOKEYLZYHbfwjwwIeqgnwF7mkOIB810blAAIpRk7IgtblEClYen4/5zSETI+e
-         sYEcLiVcOB3YqsHgamCtmc2yjejc4IPkRtdnellu1kg3lhliWMFzxVP6vxtnJgEO2Dnc
-         n06Q==
+        bh=9QPTE56PsNk30bSgPu9hxHdLSzFnFdZNv3Bil5GZa8A=;
+        b=EsI+XsA7rwHOuG5gJ5sHKsq6Dk7GJqjCB9zwcrX28ZgU1+GxnIinilZYvfq6nk09ur
+         +Zrk8nShC1bGfYUeXnHBfIQwADpnQf4Yn4o1n5FIWVr8sr6OuNa0O74P+PIVvDMhXq71
+         6+B2JsE4MtTcSQGl/vV23UVGa0fP9DWlPazstHL0Y99/+BUG6339owbEDoKMbV5lkA0L
+         uotffoAcDfNIW6MgN/icGpvv8pXz2aKvJgSXEaosPvjBgTArG/GP7WoukXx/5VH9CmSJ
+         cGwZmyjIzjuYxVCoBSJn+RNI6t4uGOuJO7oApDrBQWaCguMTK7ZmZ1lgCWXe1kkBQJVv
+         hbYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y76si1543967ybe.493.2020.06.10.23.13.26
+        by mx.google.com with ESMTPS id l135si2553740ybf.80.2020.06.11.07.27.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jun 2020 23:13:26 -0700 (PDT)
+        Thu, 11 Jun 2020 07:27:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41620 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:55778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjGSq-0003T4-Lv
-	for alex.bennee@linaro.org; Thu, 11 Jun 2020 02:13:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58238)
+	id 1jjOAk-0003fV-O1
+	for alex.bennee@linaro.org; Thu, 11 Jun 2020 10:27:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34648)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jjGSP-0002xR-3S
- for qemu-arm@nongnu.org; Thu, 11 Jun 2020 02:12:57 -0400
-Received: from 19.mo3.mail-out.ovh.net ([178.32.98.231]:47132)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1jjOAI-0003cU-On; Thu, 11 Jun 2020 10:26:46 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:60956)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jjGSN-0005Gv-Hg
- for qemu-arm@nongnu.org; Thu, 11 Jun 2020 02:12:56 -0400
-Received: from player799.ha.ovh.net (unknown [10.108.42.239])
- by mo3.mail-out.ovh.net (Postfix) with ESMTP id 3D17B2589B9
- for <qemu-arm@nongnu.org>; Thu, 11 Jun 2020 08:12:45 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player799.ha.ovh.net (Postfix) with ESMTPSA id 86A73134299F9;
- Thu, 11 Jun 2020 06:12:37 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-106R006fdd3bafe-0a4e-4e90-adfd-1a0bc4b34b0b,C0EF776EFF99F305D3CB3540F1F035D206D19D4D)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH 5/6] hw/arm: Add NPCM730 and NPCM750 SoC models
-To: Havard Skinnemoen <hskinnemoen@google.com>
-References: <20200521192133.127559-1-hskinnemoen@google.com>
- <20200521192133.127559-6-hskinnemoen@google.com>
- <18fa4025-0a2a-4427-b74f-2b1b678e0661@kaod.org>
- <CAFQmdRY9f6tV7VoDOFpRJ0x0hr_0EAaGqZwmXnkJpbvmbF4FVQ@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <5f0864e4-5e63-4819-1f30-68a5f207e275@kaod.org>
-Date: Thu, 11 Jun 2020 08:12:37 +0200
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1jjOAH-0008Vf-Dy; Thu, 11 Jun 2020 10:26:46 -0400
+Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 05BE1p2W094426; Thu, 11 Jun 2020 10:26:42 -0400
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 31ka4j990t-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 11 Jun 2020 10:26:41 -0400
+Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 05BE1p8R094434;
+ Thu, 11 Jun 2020 10:26:41 -0400
+Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.11])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 31ka4j990d-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 11 Jun 2020 10:26:41 -0400
+Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
+ by ppma03dal.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 05BELHMm003046;
+ Thu, 11 Jun 2020 14:26:39 GMT
+Received: from b01cxnp22035.gho.pok.ibm.com (b01cxnp22035.gho.pok.ibm.com
+ [9.57.198.25]) by ppma03dal.us.ibm.com with ESMTP id 31hw1c7e6x-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 11 Jun 2020 14:26:39 +0000
+Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
+ [9.57.199.109])
+ by b01cxnp22035.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 05BEPcHS54460814
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 11 Jun 2020 14:25:38 GMT
+Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C3DEE112061;
+ Thu, 11 Jun 2020 14:25:38 +0000 (GMT)
+Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id B10E5112064;
+ Thu, 11 Jun 2020 14:25:38 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+ by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTP;
+ Thu, 11 Jun 2020 14:25:38 +0000 (GMT)
+Subject: Re: [PATCH v4 1/5] acpi: Convert build_tpm2() to build_append* API
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
+References: <20200611135917.18300-1-eric.auger@redhat.com>
+ <20200611135917.18300-2-eric.auger@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Message-ID: <28121558-7a75-73da-6939-da0c0e776087@linux.ibm.com>
+Date: Thu, 11 Jun 2020 10:25:38 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <CAFQmdRY9f6tV7VoDOFpRJ0x0hr_0EAaGqZwmXnkJpbvmbF4FVQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20200611135917.18300-2-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 14653587290785024937
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudehjedguddtiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepvedvveelvefgtddvveeijeehieegfeefjefgkeehgfevtdeuffdtkeevheeguefgnecuffhomhgrihhnpegsohhothhlihhnrdgtohhmnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeelledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=178.32.98.231; envelope-from=clg@kaod.org;
- helo=19.mo3.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/11 02:12:45
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.687
+ definitions=2020-06-11_14:2020-06-11,
+ 2020-06-11 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 adultscore=0
+ malwarescore=0 mlxlogscore=999 spamscore=0 phishscore=0 clxscore=1015
+ priorityscore=1501 bulkscore=0 suspectscore=0 impostorscore=0
+ lowpriorityscore=0 cotscore=-2147483648 classifier=spam adjust=0
+ reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2006110106
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/11 10:26:43
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -99,61 +135,117 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- CS20 KFTing <kfting@nuvoton.com>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
+Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
+ ardb@kernel.org, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VS46CJgA5TIO
+X-TUID: e6OZs7Egxp+j
 
-On 6/10/20 1:06 AM, Havard Skinnemoen wrote:
-> On Tue, Jun 9, 2020 at 12:24 AM Cédric Le Goater <clg@kaod.org <mailto:clg@kaod.org>> wrote:
-> 
->     On 5/21/20 9:21 PM, Havard Skinnemoen wrote:
->     > +void npcm7xx_write_secondary_boot(ARMCPU *cpu, const struct arm_boot_info *info)
->     > +{
->     > +    /*
->     > +     * The default smpboot stub halts the secondary CPU with a 'wfi'
->     > +     * instruction, but the arch/arm/mach-npcm/platsmp.c in the Linux kernel
->     > +     * does not send an IPI to wake it up, so the second CPU fails to boot. So
->     > +     * we need to provide our own smpboot stub that can not use 'wfi', it has
->     > +     * to spin the secondary CPU until the first CPU writes to the SCRPAD reg.
->     > +     */
->     > +    uint32_t smpboot[] = {
-> 
->     static const uint32 ?
-> 
-> 
-> I think that would be unsafe due to the byte swapping, but I'll do it if we can get rid of that somehow.
->  
-> 
-> 
->     > +        0xe59f2018,     /* ldr r2, bootreg_addr */
->     > +        0xe3a00000,     /* mov r0, #0 */
->     > +        0xe5820000,     /* str r0, [r2] */
->     > +        0xe320f002,     /* wfe */
->     > +        0xe5921000,     /* ldr r1, [r2] */
->     > +        0xe1110001,     /* tst r1, r1 */
->     > +        0x0afffffb,     /* beq <wfe> */
->     > +        0xe12fff11,     /* bx r1 */
->     > +        NPCM7XX_SMP_BOOTREG_ADDR,
->     > +    };
->     > +    int i;
->     > +
->     > +    for (i = 0; i < ARRAY_SIZE(smpboot); i++) {
->     > +        smpboot[i] = tswap32(smpboot[i]);
-> 
->     ah ! why do we need to swap the instructions ?
-> 
-> 
-> I probably stole this from https://elixir.bootlin.com/qemu/latest/source/hw/arm/exynos4210.c#L134 although there are several other examples of this pattern.
+On 6/11/20 9:59 AM, Eric Auger wrote:
+> In preparation of its move to the generic acpi code,
+> let's convert build_tpm2() to use build_append API. This
+> latter now is prefered in place of direct ACPI struct field
+> settings with manual endianness conversion.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>
+> ---
+>
+> v3 -> v4:
+> - Don't use Acpi20TPM2 *tpm2_ptr anymore
+> - Use variables for control area start address and start method
+> - Simplified arg values passed to bios_linker_loader_add_pointer
+> - use g_assert_not_reached()
+> ---
+>   hw/i386/acpi-build.c | 49 +++++++++++++++++++++++++++++---------------
+>   1 file changed, 33 insertions(+), 16 deletions(-)
+>
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index b5669d6c65..f150d95ecc 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -2298,35 +2298,52 @@ build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+>   static void
+>   build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+>   {
+> -    Acpi20TPM2 *tpm2_ptr = acpi_data_push(table_data, sizeof *tpm2_ptr);
+> -    unsigned log_addr_size = sizeof(tpm2_ptr->log_area_start_address);
+> -    unsigned log_addr_offset =
+> -        (char *)&tpm2_ptr->log_area_start_address - table_data->data;
+> +    uint8_t start_method_params[12] = {};
+> +    unsigned log_addr_offset, tpm2_start;
+> +    uint64_t control_area_start_address;
+> +    uint32_t start_method;
+> +    void *tpm2_ptr;
+>   
+> -    tpm2_ptr->platform_class = cpu_to_le16(TPM2_ACPI_CLASS_CLIENT);
+> +    tpm2_start = table_data->len;
+> +    tpm2_ptr = acpi_data_push(table_data, sizeof(AcpiTableHeader));
+> +
+> +    /* Platform Class */
+> +    build_append_int_noprefix(table_data, TPM2_ACPI_CLASS_CLIENT, 2);
+> +    /* Reserved */
+> +    build_append_int_noprefix(table_data, 0, 2);
+>       if (TPM_IS_TIS_ISA(tpm_find())) {
+> -        tpm2_ptr->control_area_address = cpu_to_le64(0);
+> -        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_MMIO);
+> +        control_area_start_address = 0;
+> +        start_method = TPM2_START_METHOD_MMIO;
+>       } else if (TPM_IS_CRB(tpm_find())) {
+> -        tpm2_ptr->control_area_address = cpu_to_le64(TPM_CRB_ADDR_CTRL);
+> -        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_CRB);
+> +        control_area_start_address = TPM_CRB_ADDR_CTRL;
+> +        start_method = TPM2_START_METHOD_CRB;
+>       } else {
+> -        g_warn_if_reached();
+> +        g_assert_not_reached();
+>       }
+> +    /* Address of Control Area */
+> +    build_append_int_noprefix(table_data, control_area_start_address, 8);
+> +    /* Start Method */
+> +    build_append_int_noprefix(table_data, start_method, 4);
+>   
+> -    tpm2_ptr->log_area_minimum_length =
+> -        cpu_to_le32(TPM_LOG_AREA_MINIMUM_SIZE);
+> +    /* Platform Specific Parameters */
+> +    g_array_append_vals(table_data, &start_method_params,
+> +                        ARRAY_SIZE(start_method_params));
+>   
+> -    acpi_data_push(tcpalog, le32_to_cpu(tpm2_ptr->log_area_minimum_length));
+> +    /* Log Area Minimum Length */
+> +    build_append_int_noprefix(table_data, TPM_LOG_AREA_MINIMUM_SIZE, 4);
 
-Some don't some do. This is a bit confusing. 
+Here you push data related to TPM2 table...
 
-Peter, should we fix the boards not doing the tswap in the secondary 
-bootloader ? 
 
-I still have access to a PP64 BE host to test.
+> +
+> +    acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
 
-Thanks, 
+... here you push log area memory ...
 
-C.
+
+>       bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE, tcpalog, 1,
+>                                false);
+>   
+> -    /* log area start address to be filled by Guest linker */
+> +    log_addr_offset = table_data->len;
+> +    build_append_int_noprefix(table_data, 0, 8);
+
+
+... here you push TPM2 table related data again. Is this right or did we 
+just mess up the TPM 2 table?
+
+
+> +    /* Log Area Start Address to be filled by Guest linker */
+>       bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> -                                   log_addr_offset, log_addr_size,
+> +                                   log_addr_offset, 8,
+>                                      ACPI_BUILD_TPMLOG_FILE, 0);
+>       build_header(linker, table_data,
+> -                 (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL, NULL);
+> +                 tpm2_ptr, "TPM2", table_data->len - tpm2_start, 4, NULL, NULL);
+>   }
+>   
+>   #define HOLE_640K_START  (640 * KiB)
+
+

@@ -1,100 +1,103 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1830952lfc;
-        Thu, 11 Jun 2020 15:32:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwAqKxhRbVFWi7DFVbdGQWtJXfTHMB4msL0OgOdhnsQqJTUWzyP3RnnLpr6sCjbZ/HbxyJd
-X-Received: by 2002:a5b:cc9:: with SMTP id e9mr5399378ybr.287.1591914758834;
-        Thu, 11 Jun 2020 15:32:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591914758; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1831006lfc;
+        Thu, 11 Jun 2020 15:32:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxaL+t0PlSd+n7peQkhdIxjTLvknC6ublb3r/SaPLYgu0z89S+956GNxhH3JAQXtLzDsfhk
+X-Received: by 2002:a25:3784:: with SMTP id e126mr18928073yba.267.1591914762856;
+        Thu, 11 Jun 2020 15:32:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591914762; cv=none;
         d=google.com; s=arc-20160816;
-        b=cf/Bh/1CJwNPFxwpYNYHpNaEu33VHqJsMHtpcV/20O6dTdLnLudomsR5N1BbNV7E/l
-         JKOgJTKCgMe2p4kBhYfO8pVyOPXx5BF4qlTf4qK1mJX1RQGWGCf6D+WgqrWQj/MTRh6L
-         6Dubz+Xb+RAaj6n+eRILQrzvkW3226LllKk1MV/+JL2L3IdMgZWbnYm9aBkbi79AY+ej
-         m2eMh3kdVHX3jL9tjrg5W5yZN39HcbDgJ3AQwjHDlV/0AN9v2ius4qVTcyMw7qptcWUs
-         Fn5oD/cNCK+/R8ASuDUypWDUttjaCox5d70YNCdJArm47p4BJ83Hnc3J0P0zPPd8766L
-         Wt1A==
+        b=WHeBzCrV/M0KEGQ5rlwakFFLr1mjxlh35gBUEXqD66vjvUvrilZBeePzOvJLDxJWbJ
+         iSSv11nOvgptZW50gsep/dtLsoM8WJoM6W+HwjrVC0SQpd15NiiYTp+E5SaV6xZerPy3
+         3R3C9iDqigKVXi6ycNt/mtVgqx13CWTmx6+/3Z6sRrEq4i7Rs/EDQYxFBFsnAmKfof3J
+         oiAPNBbjzs743iRFKWycUBZhkZfdA6M+xi/LbDn3O0avXlj0VDVyyoOIVcqgMq98wpJI
+         +8xoXxGP5JSn6VmNp1cEF2Py7midzgIyW4vhpO7Ub0zcHh5V3Is4uuX6/Yi0z2EoRVPl
+         h2Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:references
-         :mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=IQsEaB5zb1n6vsfoAp6zXcRCVesUArc2Mv6NZg2LuPw=;
-        b=Pc8dlLXPFic65TsejW/dnplOWud9mwzbkEFvO/Ihf9tcNiotrpv0aHyNA7JLoFAFhA
-         oXHXqzorfrYmrU+kovLVyFJrLf3gXrg9MGNe2G93jXFgCfrZUrKWgsjk6CF6+ZdNk016
-         kRe/cnOCIGM1BG8OTObFfx4enV3LZ2+JK9DaZDQS1oSlyz6TTnnor66OJosmiYf36zj4
-         /TyD3OGt1mhnGoMFUUYgG9DEa9DaAr0nB0LH6owASdjhJcZK1Yy/zitZqMYxswlp178T
-         J623G8RGMO08qu1mD0xU7TQ4xAwwVsQxjKWt3BHueJF/q6AK+Tb4+3t788+2bN+5pduv
-         koGQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :from:subject:references:mime-version:message-id:in-reply-to:date
+         :dkim-signature;
+        bh=UsF2OQs6/N/UD9Ok2d+0MvtdCGtXSPf3cq6HCDsjUyA=;
+        b=uQ9gRcpZEViF7DboPcHdta7Q0FKw6DG3Sqxvf86xyNRFe5SIN54hLxQEZ1ZQR5xKQQ
+         5tLIj468/S7nssZyJ0LFCkFagDzRl+9RKtqeuD44pYYR9078NNYFZROmnkHn7dgqN8jp
+         6pecSensQJNE9obHsUdUN4IN4rYbBgk06a32M9MIJ3MzrzHSHrRbklIwo4Agy6RE8yiN
+         QM3k3bvnXRWdWcRth/hJHnIBNpUm+uHUPnmi1SNb7z0mq0/BT7Bc3t7+0SzufMikUZ5i
+         j3dkVXgVzHslTabTv5TkSpJR1AyeouGWHJO5Y9LTnA8FWXJQ8RBKJd7t3Chqyg2fruju
+         S4kQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=MYXcyWQ8;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=XWfWf8Cl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14si3494340ybj.54.2020.06.11.15.32.38
+        by mx.google.com with ESMTPS id d93si3247871ybi.258.2020.06.11.15.32.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jun 2020 15:32:38 -0700 (PDT)
+        Thu, 11 Jun 2020 15:32:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=MYXcyWQ8;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=XWfWf8Cl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:59220 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59528 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjVkU-0005da-1r
-	for alex.bennee@linaro.org; Thu, 11 Jun 2020 18:32:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33506)
+	id 1jjVkY-0006CI-3f
+	for alex.bennee@linaro.org; Thu, 11 Jun 2020 18:32:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33654)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3hbDiXgsKCm4TeWUZZQYaQZSaaSXQ.OaYcQYg-PQhQXZaZSZg.adS@flex--hskinnemoen.bounces.google.com>)
- id 1jjViZ-0003sc-5n
- for qemu-devel@nongnu.org; Thu, 11 Jun 2020 18:30:40 -0400
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:36642)
+ <3ibDiXgsKCnIXiaYddUceUdWeeWbU.SecgUck-TUlUbdedWdk.ehW@flex--hskinnemoen.bounces.google.com>)
+ id 1jjVid-0003tF-8f
+ for qemu-devel@nongnu.org; Thu, 11 Jun 2020 18:30:43 -0400
+Received: from mail-qk1-x74a.google.com ([2607:f8b0:4864:20::74a]:44131)
  by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3hbDiXgsKCm4TeWUZZQYaQZSaaSXQ.OaYcQYg-PQhQXZaZSZg.adS@flex--hskinnemoen.bounces.google.com>)
- id 1jjViX-00041p-0h
- for qemu-devel@nongnu.org; Thu, 11 Jun 2020 18:30:38 -0400
-Received: by mail-yb1-xb4a.google.com with SMTP id c3so8163950ybi.3
- for <qemu-devel@nongnu.org>; Thu, 11 Jun 2020 15:30:30 -0700 (PDT)
+ <3ibDiXgsKCnIXiaYddUceUdWeeWbU.SecgUck-TUlUbdedWdk.ehW@flex--hskinnemoen.bounces.google.com>)
+ id 1jjViZ-00043D-VW
+ for qemu-devel@nongnu.org; Thu, 11 Jun 2020 18:30:42 -0400
+Received: by mail-qk1-x74a.google.com with SMTP id j16so6453027qka.11
+ for <qemu-devel@nongnu.org>; Thu, 11 Jun 2020 15:30:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=IQsEaB5zb1n6vsfoAp6zXcRCVesUArc2Mv6NZg2LuPw=;
- b=MYXcyWQ8nILs+/tnF1h6mYzKlCEpLGtUuV+ye62MtsqJ4JX9MdYKZAxFNu2Ib7eRI7
- jRqUYE0L91ddrhLOjkaV3DRdqiyIZBO2KLAepsjRL9gzpFzhFQeQIBW+h1teJVqr4Opl
- c0fXUsb1WnZ75rqkRpuS3l4Z4SayRumXYC0IqjVgFwDJWFhvETPErqCkQMpYBGZaTEyo
- cYEXwILmUsoCgjbZzkzDkZU/6MfJDlcaRKes7TLuOrmthEEM25t8pWkEuaiplIMNar0G
- ViPV2NHflxToheM6zSRwnoBpVwyogGRJTSm2AIHTmaBTRBP1TQYVYtcyAT9gRO4X/N8Z
- aGWQ==
+ :cc:content-transfer-encoding;
+ bh=UsF2OQs6/N/UD9Ok2d+0MvtdCGtXSPf3cq6HCDsjUyA=;
+ b=XWfWf8ClU3dylSd9HJHXVjnZAuoqwt/kYykWFjtZoXGNELXMEpjbfYKNw4ANReAFa1
+ EH2Cefd4AXYyad2LMxpLTzmr/C13x5047H2e/BhS51lkRwIecuf7amf76JZaXey/nl+X
+ 8AswyhlbQTrNKMvfWMiiPTmhAMytG56mLDzRqdzXqRNqn68iAzLQpF2taRM8ajF4t5dI
+ Sf7boQGv1e3Wkf5HKEvsh6CTD2Uy42muXtFHfWmnxrI5R8CdxFSqRGar3cfbn7oIzJMY
+ LZdGcABM/XyGjS7HDVOhcQSpcuJYENcx/fSzrC8x3CRG/iQo9eon/5Rzvsc/FRo1hovb
+ BIjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=IQsEaB5zb1n6vsfoAp6zXcRCVesUArc2Mv6NZg2LuPw=;
- b=Ma9XYoLPAdMjFAvBbX3XHlkSxrIfjyrSvhvmg3OJeAS157NaYWcZDbSByl1pw0wE6+
- AzxHmXW6r79t5eEUaqDZA7zGDdBwCWZEDzkOF/gb3/K2EIfHRjo+IYO8CRftSf8zyp/7
- N17fWxKI7jMuFL6RdKc4QFs+F7gFT37UV4d7mOsTOoipR9ekxrouxZ+Oz3VA/Cw9CevU
- ANPvmqf4oS0V90pOxQH3/Q0Sd3RI9KqgWTIRc8tv+UB7xtgD8u8+1fDaLHP05KKuyl0C
- d75Nr6HS2ftgfmJKlL1S/dCBcDnyCiXO7b5HkkhjEjcRonzhFOXUINnIm9ghSo2G4Jft
- UO8w==
-X-Gm-Message-State: AOAM531JSFy4yT3b3JHPHkCeo0y5nY7iUPBeXBuhBAsJrT5QeFNXYkJu
- OgjWg2sM7+ZHtaPkSp1s0is7C+gwl8qIb8w/2Q==
-X-Received: by 2002:a25:3055:: with SMTP id w82mr17824647ybw.21.1591914629653; 
- Thu, 11 Jun 2020 15:30:29 -0700 (PDT)
-Date: Thu, 11 Jun 2020 15:30:05 -0700
+ :references:subject:from:to:cc:content-transfer-encoding;
+ bh=UsF2OQs6/N/UD9Ok2d+0MvtdCGtXSPf3cq6HCDsjUyA=;
+ b=r1vMZ0pIEajQYv3GMRL34D3wBH3QlVWeBPInepcK+AgnThMqw3b3S6HuE5i872VGsu
+ djCA69vW2CoxNhzd2LLU60AAUdAZeRheS8YVJaOt2IY7J5kov0cLftUhNB54GB6tvBPg
+ ynfUVS01ltTc1YaBIavBtK8D82UkIxurk9hRgT3jhvq5JsKuiybLNBIOWwkK1QScCbPG
+ DR4xW0Rtmahpg2M2d2vmMz2hfavgq8L+359/9wKlhm78y6LERG/jBp5PZJHx6U8kuItq
+ jrwb2hzQ/nEdWl6+h3O8eRILZG4Glz8DUlcgKD7E4qiqKnjX20EaCbQLXahH/VAvsrvq
+ nYKQ==
+X-Gm-Message-State: AOAM533pXPyzmOb2twpQ0OBNvN0f3V3IdV/+jD7CN3/TGflsJ1a0NFoQ
+ iF3/HMdxDwFn2an81YY9kKhfWkfwZHXoqWE6HA==
+X-Received: by 2002:ad4:494c:: with SMTP id o12mr10205726qvy.102.1591914633355; 
+ Thu, 11 Jun 2020 15:30:33 -0700 (PDT)
+Date: Thu, 11 Jun 2020 15:30:07 -0700
 In-Reply-To: <20200611223016.259837-1-hskinnemoen@google.com>
-Message-Id: <20200611223016.259837-2-hskinnemoen@google.com>
+Message-Id: <20200611223016.259837-4-hskinnemoen@google.com>
 Mime-Version: 1.0
 References: <20200611223016.259837-1-hskinnemoen@google.com>
 X-Mailer: git-send-email 2.27.0.290.gba653c62da-goog
-Subject: [PATCH v2 01/12] npcm7xx: Add config symbol
+Subject: [PATCH v2 03/12] hw/misc: Add NPCM7xx Clock Controller device model
 From: Havard Skinnemoen <hskinnemoen@google.com>
 To: peter.maydell@linaro.org, clg@kaod.org, joel@jms.id.au
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
  kfting@nuvoton.com, Havard Skinnemoen <hskinnemoen@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=3hbDiXgsKCm4TeWUZZQYaQZSaaSXQ.OaYcQYg-PQhQXZaZSZg.adS@flex--hskinnemoen.bounces.google.com;
- helo=mail-yb1-xb4a.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::74a;
+ envelope-from=3ibDiXgsKCnIXiaYddUceUdWeeWbU.SecgUck-TUlUbdedWdk.ehW@flex--hskinnemoen.bounces.google.com;
+ helo=mail-qk1-x74a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -105
@@ -118,51 +121,365 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YLFuXyqihcHL
+X-TUID: efajzRY6hS1d
 
-Add a config symbol for the NPCM7xx BMC SoC family that subsequent
-patches can use in Makefiles.
+Enough functionality to boot the Linux kernel has been implemented. This
+includes:
 
-Change-Id: I6e4d5c58716cb6fe4ea5d06f148beeafda55f9a5
+  - Correct power-on reset values so the various clock rates can be
+    accurately calculated.
+  - Clock enables stick around when written.
+
+In addition, a best effort attempt to implement SECCNT and CNTR25M was
+made even though I don't think the kernel needs them.
+
 Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-Acked-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 ---
- default-configs/arm-softmmu.mak | 1 +
- hw/arm/Kconfig                  | 8 ++++++++
- 2 files changed, 9 insertions(+)
+ hw/misc/Makefile.objs         |   1 +
+ hw/misc/npcm7xx_clk.c         | 216 ++++++++++++++++++++++++++++++++++
+ hw/misc/trace-events          |   4 +
+ include/hw/misc/npcm7xx_clk.h |  65 ++++++++++
+ 4 files changed, 286 insertions(+)
+ create mode 100644 hw/misc/npcm7xx_clk.c
+ create mode 100644 include/hw/misc/npcm7xx_clk.h
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
-index 8fc09a4a51..9a94ebd0be 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -27,6 +27,7 @@ CONFIG_GUMSTIX=y
- CONFIG_SPITZ=y
- CONFIG_TOSA=y
- CONFIG_Z2=y
-+CONFIG_NPCM7XX=y
- CONFIG_COLLIE=y
- CONFIG_ASPEED_SOC=y
- CONFIG_NETDUINO2=y
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 9afa6eee79..3738c1f5cd 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -354,6 +354,14 @@ config XLNX_VERSAL
-     select VIRTIO_MMIO
-     select UNIMP
- 
-+config NPCM7XX
-+    bool
-+    select A9MPCORE
-+    select ARM_GIC
-+    select PL310  # cache controller
-+    select SERIAL
-+    select UNIMP
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 40a9d1c01e..2e74803005 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -51,6 +51,7 @@ common-obj-$(CONFIG_IMX) +=3D imx_rngc.o
+ common-obj-$(CONFIG_MILKYMIST) +=3D milkymist-hpdmc.o
+ common-obj-$(CONFIG_MILKYMIST) +=3D milkymist-pfpu.o
+ common-obj-$(CONFIG_MAINSTONE) +=3D mst_fpga.o
++common-obj-$(CONFIG_NPCM7XX) +=3D npcm7xx_clk.o
+ common-obj-$(CONFIG_NPCM7XX) +=3D npcm7xx_gcr.o
+ common-obj-$(CONFIG_OMAP) +=3D omap_clk.o
+ common-obj-$(CONFIG_OMAP) +=3D omap_gpmc.o
+diff --git a/hw/misc/npcm7xx_clk.c b/hw/misc/npcm7xx_clk.c
+new file mode 100644
+index 0000000000..2348683305
+--- /dev/null
++++ b/hw/misc/npcm7xx_clk.c
+@@ -0,0 +1,216 @@
++/*
++ * Nuvoton NPCM7xx Clock Control Registers.
++ *
++ * Copyright 2020 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * version 2 as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ * GNU General Public License for more details.
++ */
 +
- config FSL_IMX25
-     bool
-     select IMX
--- 
++#include "qemu/osdep.h"
++
++#include "hw/misc/npcm7xx_clk.h"
++#include "qemu/error-report.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qemu/timer.h"
++#include "qemu/units.h"
++#include "trace.h"
++
++#define PLLCON_LOKI     BIT(31)
++#define PLLCON_LOKS     BIT(30)
++#define PLLCON_PWDEN    BIT(12)
++
++/*
++ * These reset values were taken from version 0.91 of the NPCM750R data sh=
+eet.
++ *
++ * All are loaded on power-up reset. CLKENx and SWRSTR should also be load=
+ed on
++ * core domain reset, but this reset type is not yet supported by QEMU.
++ */
++static const uint32_t cold_reset_values[NPCM7XX_CLK_NR_REGS] =3D {
++    [NPCM7XX_CLK_CLKEN1]        =3D 0xffffffff,
++    [NPCM7XX_CLK_CLKSEL]        =3D 0x004aaaaa,
++    [NPCM7XX_CLK_CLKDIV1]       =3D 0x5413f855,
++    [NPCM7XX_CLK_PLLCON0]       =3D 0x00222101 | PLLCON_LOKI,
++    [NPCM7XX_CLK_PLLCON1]       =3D 0x00202101 | PLLCON_LOKI,
++    [NPCM7XX_CLK_IPSRST1]       =3D 0x00001000,
++    [NPCM7XX_CLK_IPSRST2]       =3D 0x80000000,
++    [NPCM7XX_CLK_CLKEN2]        =3D 0xffffffff,
++    [NPCM7XX_CLK_CLKDIV2]       =3D 0xaa4f8f9f,
++    [NPCM7XX_CLK_CLKEN3]        =3D 0xffffffff,
++    [NPCM7XX_CLK_IPSRST3]       =3D 0x03000000,
++    [NPCM7XX_CLK_WD0RCR]        =3D 0xffffffff,
++    [NPCM7XX_CLK_WD1RCR]        =3D 0xffffffff,
++    [NPCM7XX_CLK_WD2RCR]        =3D 0xffffffff,
++    [NPCM7XX_CLK_SWRSTC1]       =3D 0x00000003,
++    [NPCM7XX_CLK_PLLCON2]       =3D 0x00c02105 | PLLCON_LOKI,
++    [NPCM7XX_CLK_CORSTC]        =3D 0x04000003,
++    [NPCM7XX_CLK_PLLCONG]       =3D 0x01228606 | PLLCON_LOKI,
++    [NPCM7XX_CLK_AHBCKFI]       =3D 0x000000c8,
++};
++
++static uint64_t npcm7xx_clk_read(void *opaque, hwaddr offset, unsigned siz=
+e)
++{
++    uint32_t reg =3D offset / sizeof(uint32_t);
++    NPCM7xxCLKState *s =3D opaque;
++    int64_t now_ns;
++    uint32_t value =3D 0;
++
++    if (reg >=3D NPCM7XX_CLK_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: offset 0x%04x out of range\n",
++                      __func__, (unsigned int)offset);
++        return 0;
++    }
++
++    switch (reg) {
++    case NPCM7XX_CLK_SWRSTR:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: register @ 0x%04x is write-onl=
+y\n",
++                      __func__, (unsigned int)offset);
++        break;
++
++    case NPCM7XX_CLK_SECCNT:
++        now_ns =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        value =3D (now_ns - s->ref_ns) / NANOSECONDS_PER_SECOND;
++        break;
++
++    case NPCM7XX_CLK_CNTR25M:
++        now_ns =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        /*
++         * This register counts 25 MHz cycles, updating every 640 ns. It r=
+olls
++         * over to zero every second.
++         *
++         * The 4 LSBs are always zero: (1e9 / 640) << 4 =3D 25000000.
++         */
++        value =3D (((now_ns - s->ref_ns) / 640) << 4) % 25000000;
++        break;
++
++    default:
++        value =3D s->regs[reg];
++        break;
++    };
++
++    trace_npcm7xx_clk_read(offset, value);
++
++    return value;
++}
++
++static void npcm7xx_clk_write(void *opaque, hwaddr offset,
++                              uint64_t v, unsigned size)
++{
++    uint32_t reg =3D offset / sizeof(uint32_t);
++    NPCM7xxCLKState *s =3D opaque;
++    uint32_t value =3D v;
++
++    trace_npcm7xx_clk_write(offset, value);
++
++    if (reg >=3D NPCM7XX_CLK_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: offset 0x%04x out of range\n",
++                      __func__, (unsigned int)offset);
++        return;
++    }
++
++    switch (reg) {
++    case NPCM7XX_CLK_SWRSTR:
++        qemu_log_mask(LOG_UNIMP, "%s: SW reset not implemented: 0x%02x\n",
++                      __func__, value);
++        value =3D 0;
++        break;
++
++    case NPCM7XX_CLK_PLLCON0:
++    case NPCM7XX_CLK_PLLCON1:
++    case NPCM7XX_CLK_PLLCON2:
++    case NPCM7XX_CLK_PLLCONG:
++        if (value & PLLCON_PWDEN) {
++            /* Power down -- clear lock and indicate loss of lock */
++            value &=3D ~PLLCON_LOKI;
++            value |=3D PLLCON_LOKS;
++        } else {
++            /* Normal mode -- assume always locked */
++            value |=3D PLLCON_LOKI;
++            /* Keep LOKS unchanged unless cleared by writing 1 */
++            if (value & PLLCON_LOKS) {
++                value &=3D ~PLLCON_LOKS;
++            } else {
++                value |=3D (value & PLLCON_LOKS);
++            }
++        }
++        break;
++
++    case NPCM7XX_CLK_CNTR25M:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: register @ 0x%04x is read-only=
+\n",
++                      __func__, (unsigned int)offset);
++        return;
++    }
++
++    s->regs[reg] =3D value;
++}
++
++static const struct MemoryRegionOps npcm7xx_clk_ops =3D {
++    .read       =3D npcm7xx_clk_read,
++    .write      =3D npcm7xx_clk_write,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
++    .valid      =3D {
++        .min_access_size        =3D 4,
++        .max_access_size        =3D 4,
++        .unaligned              =3D false,
++    },
++};
++
++static void npcm7xx_clk_enter_reset(Object *obj, ResetType type)
++{
++    NPCM7xxCLKState *s =3D NPCM7XX_CLK(obj);
++
++    QEMU_BUILD_BUG_ON(sizeof(s->regs) !=3D sizeof(cold_reset_values));
++
++    switch (type) {
++    case RESET_TYPE_COLD:
++        memcpy(s->regs, cold_reset_values, sizeof(cold_reset_values));
++        s->ref_ns =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        return;
++    }
++
++    /*
++     * A small number of registers need to be reset on a core domain reset=
+,
++     * but no such reset type exists yet.
++     */
++    qemu_log_mask(LOG_UNIMP, "%s: reset type %d not implemented.",
++                  __func__, type);
++}
++
++static void npcm7xx_clk_init(Object *obj)
++{
++    NPCM7xxCLKState *s =3D NPCM7XX_CLK(obj);
++
++    memory_region_init_io(&s->iomem, obj, &npcm7xx_clk_ops, s,
++                          TYPE_NPCM7XX_CLK, 4 * KiB);
++    sysbus_init_mmio(&s->parent, &s->iomem);
++}
++
++static void npcm7xx_clk_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->desc =3D "NPCM7xx Clock Control Registers";
++    rc->phases.enter =3D npcm7xx_clk_enter_reset;
++}
++
++static const TypeInfo npcm7xx_clk_info =3D {
++    .name               =3D TYPE_NPCM7XX_CLK,
++    .parent             =3D TYPE_SYS_BUS_DEVICE,
++    .instance_size      =3D sizeof(NPCM7xxCLKState),
++    .instance_init      =3D npcm7xx_clk_init,
++    .class_init         =3D npcm7xx_clk_class_init,
++};
++
++static void npcm7xx_clk_register_type(void)
++{
++    type_register_static(&npcm7xx_clk_info);
++}
++type_init(npcm7xx_clk_register_type);
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 1a20ce659a..cdc41fe391 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -107,6 +107,10 @@ mos6522_set_sr_int(void) "set sr_int"
+ mos6522_write(uint64_t addr, uint64_t val) "reg=3D0x%"PRIx64 " val=3D0x%"P=
+RIx64
+ mos6522_read(uint64_t addr, unsigned val) "reg=3D0x%"PRIx64 " val=3D0x%x"
+=20
++# npcm7xx_clk.c
++npcm7xx_clk_read(uint64_t offset, uint32_t value) " offset: 0x%04" PRIx64 =
+" value: 0x%08" PRIx32
++npcm7xx_clk_write(uint64_t offset, uint32_t value) "offset: 0x%04" PRIx64 =
+" value: 0x%08" PRIx32
++
+ # npcm7xx_gcr.c
+ npcm7xx_gcr_read(uint64_t offset, uint32_t value) " offset: 0x%04" PRIx64 =
+" value: 0x%08" PRIx32
+ npcm7xx_gcr_write(uint64_t offset, uint32_t value) "offset: 0x%04" PRIx64 =
+" value: 0x%08" PRIx32
+diff --git a/include/hw/misc/npcm7xx_clk.h b/include/hw/misc/npcm7xx_clk.h
+new file mode 100644
+index 0000000000..a678b50ede
+--- /dev/null
++++ b/include/hw/misc/npcm7xx_clk.h
+@@ -0,0 +1,65 @@
++/*
++ * Nuvoton NPCM7xx Clock Control Registers.
++ *
++ * Copyright 2020 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * version 2 as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ * GNU General Public License for more details.
++ */
++#ifndef NPCM7XX_CLK_H
++#define NPCM7XX_CLK_H
++
++#include "exec/memory.h"
++#include "hw/sysbus.h"
++
++enum NPCM7xxCLKRegisters {
++    NPCM7XX_CLK_CLKEN1,
++    NPCM7XX_CLK_CLKSEL,
++    NPCM7XX_CLK_CLKDIV1,
++    NPCM7XX_CLK_PLLCON0,
++    NPCM7XX_CLK_PLLCON1,
++    NPCM7XX_CLK_SWRSTR,
++    NPCM7XX_CLK_IPSRST1         =3D 0x20 / sizeof(uint32_t),
++    NPCM7XX_CLK_IPSRST2,
++    NPCM7XX_CLK_CLKEN2,
++    NPCM7XX_CLK_CLKDIV2,
++    NPCM7XX_CLK_CLKEN3,
++    NPCM7XX_CLK_IPSRST3,
++    NPCM7XX_CLK_WD0RCR,
++    NPCM7XX_CLK_WD1RCR,
++    NPCM7XX_CLK_WD2RCR,
++    NPCM7XX_CLK_SWRSTC1,
++    NPCM7XX_CLK_SWRSTC2,
++    NPCM7XX_CLK_SWRSTC3,
++    NPCM7XX_CLK_SWRSTC4,
++    NPCM7XX_CLK_PLLCON2,
++    NPCM7XX_CLK_CLKDIV3,
++    NPCM7XX_CLK_CORSTC,
++    NPCM7XX_CLK_PLLCONG,
++    NPCM7XX_CLK_AHBCKFI,
++    NPCM7XX_CLK_SECCNT,
++    NPCM7XX_CLK_CNTR25M,
++    NPCM7XX_CLK_NR_REGS,
++};
++
++typedef struct NPCM7xxCLKState {
++    SysBusDevice parent;
++
++    MemoryRegion iomem;
++
++    uint32_t regs[NPCM7XX_CLK_NR_REGS];
++
++    /* Time reference for SECCNT and CNTR25M, initialized by power on rese=
+t */
++    int64_t ref_ns;
++} NPCM7xxCLKState;
++
++#define TYPE_NPCM7XX_CLK "npcm7xx-clk"
++#define NPCM7XX_CLK(obj) OBJECT_CHECK(NPCM7xxCLKState, (obj), TYPE_NPCM7XX=
+_CLK)
++
++#endif /* NPCM7XX_CLK_H */
+--=20
 2.27.0.290.gba653c62da-goog
 

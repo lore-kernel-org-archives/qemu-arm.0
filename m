@@ -1,91 +1,109 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1338143lfc;
-        Thu, 11 Jun 2020 04:14:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyTgRuKy5SEEFyXUfA/OlAyg3XHQBapYgtshW1QSVGtKD/yQVamN2848vwCYaa+umYVzbwF
-X-Received: by 2002:a05:6902:52b:: with SMTP id y11mr13085894ybs.465.1591874049687;
-        Thu, 11 Jun 2020 04:14:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591874049; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1541338lfc;
+        Thu, 11 Jun 2020 08:42:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxrapRU1l7nApvZxYGORLxVJpr/ZUfVrFUc3bHYLpK6hieaWXIGyRkuR4yFjUUKDRvmhr4m
+X-Received: by 2002:a25:2f4f:: with SMTP id v76mr15536065ybv.7.1591890120552;
+        Thu, 11 Jun 2020 08:42:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591890120; cv=none;
         d=google.com; s=arc-20160816;
-        b=1Iy0QkFYHeELkwvTH1GmgK5Po0B1e/5V4Qvy0L+XXlQcngjOdhbYJSp1AXozEXNoHi
-         eIocjefWFs8oQw1Nn6Z0qHJkB+LQ90z45Mk1adgURhpGsEIavJ+EXwQL4MBJnvj/J2sV
-         3dnvn0M/ljGx/cNSr/R9kQu2sd9meMDlLeQr74I9DkgwTVhW7GzXQW734LLrNG5YE/JZ
-         sTLqUg9gQaZd4t1/+vPtYl1D8eSmTBbL8fr3iwQqXoO2NUS1gixefEKCcNsZjEizB1C2
-         FBSxp7g40nfZRx+t0Ja3tK3ziZ/HTz2DynHmwjYocQ1dSOQu7UdbnNZ8cILcZst5kfxO
-         KQSw==
+        b=jtHcOZIKzZHlxxaa/+nDk7ZRNxoSFL4abqoBj/zobV/p+zlzW1fmavTWdAjPbLiWBs
+         kygRD4/c2BD9PRqnYr/Cg4t8G6+fd/Pzal/aWTJYQxZmybn3nF2Uj2J4GWu1APR1lN1I
+         wwP7sYoJcFkL5A3YW5uNjhetmSpH3V+oMQziwZt6UmUpKXQl3+ICC9kCWOCPU+V2eh5z
+         BQRdBgndi7Yb0r8NqLL3D3wFv9sogZlLdjfhCzfgzq3i0K7HP2cEkTlm8oAjdyWLGe8a
+         Yh4cnWt0p15cX7Sh4JeB0lxTLMzpHHjTZVxem8J+8ZV7LaqwAvUpDyaaIlY9A1uF4v45
+         yBqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=ZkiIg1uFn+dMQhhmS7GB9r4W5JJIeV6//+14vUA/9b4=;
-        b=Oedhbr0GUcG+nbgfDgy3DeBVnCkXWIO9GNq3j5liHwHcayIqffcrFx3ThMWx44LpDh
-         rCblwBej02HkekFJsN9BfBdWLmc/kl+/t9ZTOe97xVNkthymKJUOPEA6EZI5jBeXiKbs
-         ZDts0qs00Sc0fMmQRFftmlNmNa5lVrVk/rL6PQtcH5CJBtSFsP8q08JZGXNfVBnK0Rpa
-         4WPgsm5UXCbUqjRVr6TrvlpMBrwdELGp+9/lJICeELu633zP4keVeX76U3RZEulID4N+
-         oT/+g7vWwo8SwlBvmk4HfoYcB+9dHmRGLH5MnWmrPdvl9udmWqtIjv2yDkOHd9Ehqi9A
-         a3qA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=taWCnuUGc3aBjWxN8/zwY/zGugn1tYn2OOhu/tU0z0M=;
+        b=NDW4kX6J6Z2hGPlGSzZ9sToDrnG2lYdr3kI2dWVcwXiDSM02zvmFEnjz0Z5aR5C+SA
+         nmArBljDKuNCBO288noJ19qRGLFzvmd7bb7A9RxktqleQComo3coxS0uc0Z8CB0lfycd
+         e7FMaxb4ATrShOs8oLNqE89dPX/nMTOIvnYTalWyKQAUVaPMe3qcM1qQoRnSQXiNVR+b
+         KP/uc+uX4uudHuJqUREprJ1+mvIW2H14Lpy4KLRQZ4Fs7WdCIHDuc7EZNAbfi0TOzfa4
+         oAoOuINxYCRgh4MGCe6+1AEDTVwxU9sMtAcJFrFom6JK3ThU8t6RjZ5z1767jIut6bct
+         mpWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iGiTL+rR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a6ywLGvF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w65si2439736ybg.452.2020.06.11.04.14.09
+        by mx.google.com with ESMTPS id 81si2662787ybc.41.2020.06.11.08.42.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jun 2020 04:14:09 -0700 (PDT)
+        Thu, 11 Jun 2020 08:42:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iGiTL+rR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a6ywLGvF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47198 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42810 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjL9t-0007bE-2G
-	for alex.bennee@linaro.org; Thu, 11 Jun 2020 07:14:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44910)
+	id 1jjPL5-0006Ar-Uo
+	for alex.bennee@linaro.org; Thu, 11 Jun 2020 11:41:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35548)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1jjIra-00011g-CM
- for qemu-arm@nongnu.org; Thu, 11 Jun 2020 04:47:06 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:43567)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jjPKt-00068J-Fs
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2020 11:41:49 -0400
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:35817)
  by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1jjIrZ-0003Sk-3U
- for qemu-arm@nongnu.org; Thu, 11 Jun 2020 04:47:05 -0400
-Received: by mail-io1-xd42.google.com with SMTP id u13so5404748iol.10
- for <qemu-arm@nongnu.org>; Thu, 11 Jun 2020 01:46:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jjPKr-000251-Ds
+ for qemu-arm@nongnu.org; Thu, 11 Jun 2020 11:41:46 -0400
+Received: by mail-pj1-x1043.google.com with SMTP id i4so2530212pjd.0
+ for <qemu-arm@nongnu.org>; Thu, 11 Jun 2020 08:41:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:from:date:message-id:subject:to:cc;
- bh=ZkiIg1uFn+dMQhhmS7GB9r4W5JJIeV6//+14vUA/9b4=;
- b=iGiTL+rR7Sl6frPvOrbhP2xLWX+0exRIQUIsk/HPZNpitYCdFNhejyvo4OjhiT3ebc
- vzZpiilteLzai+KOIIEY3XPz6AZJTBbKpXS9D+Oq/e5xZgIT0sQsehTJyNgmEfF62tHp
- Ek6OX6dnN4kNS2Ww9oNX5Zz0x8ZbNTB4ijCSz9zKLbuPH0GU20TYJsv99nLBhzBZSuZy
- LXkrMMr9Alrq/OxJ9NhMkkw5+7mK9BOZrNM65OBWBt7t3pyI83YNuJmTjz24SRFBatSK
- meMTFPk9gOAYnding7+doQ3IF7wkkvk11sGPOzO6LgOWWQaxUUA0i5UBNhkdcyXdVGEP
- m77A==
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=taWCnuUGc3aBjWxN8/zwY/zGugn1tYn2OOhu/tU0z0M=;
+ b=a6ywLGvFJR36HkUvHnxlGz6GiKxo03UcolEy3izkAdH8/Eob2aE9Mq77D55Sq2QxqO
+ NOIDuiAvOLv+2MldKGoyIVhhu4o0fcy24ZNhxGbCk6R8b68Vmx7jTB66vDmq/M61Eel7
+ inePlf5zJXumvB8jL3ASuCVK9X4eWVqz1ARKPV0HUVagoVMowd3Cf6WLqliF7pvST/Yb
+ sI+XveP1EfEGuqeAyE4Ll+cElCK/yZVH/ErqjiN1IRUu+1PUydjsyfaSIErV+4hgAsN7
+ oqkirSB3swx2VsswroIKSgJK0UZt/XJG0jA4Vp1qVzIU2u9DDdEuLqlTZGTJ1Ok3lhRO
+ tq5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
- bh=ZkiIg1uFn+dMQhhmS7GB9r4W5JJIeV6//+14vUA/9b4=;
- b=ZdfmP73L0xhXx2BfF9QNc6WYukOa1ivgtltfFLeBJKrryGUG0B1LWXFyNaA8vJ+7tQ
- bFgi07m9HHNDLY3aRTTukku1femL6vzTIzGO3M5OUQbBIS5giMIMSoFxRxtyDYoe4DMf
- jKSDSEWjZ7kZipCG92+nS6vSfZOofQWTBbRRkbbciAO384otvfsivCENZIbKGbQBXB64
- fitIzJqVHAp1qOCd4R3Pv/mSiJRjEA0hQxHyEw5Kb+Vcl3jGho3BVH14E1NV0WGqbxZs
- YiXRUAsWd9JM1aOpMhnsv+L66Xe6v3d51GVFnFL/EVhxNF0Lv0Nkci00bheQxD2Gm5+q
- tvQw==
-X-Gm-Message-State: AOAM530/QkcdACquaKnbDkkGYYq4n0sODWyHPi6gMJVJ0OWoxfaEIW3H
- XOYUMJRRqdjY1UaK5Qn34s08VdsRyhSi/tNndY0I
-X-Received: by 2002:a02:810:: with SMTP id 16mr2252230jac.17.1591865216918;
- Thu, 11 Jun 2020 01:46:56 -0700 (PDT)
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=taWCnuUGc3aBjWxN8/zwY/zGugn1tYn2OOhu/tU0z0M=;
+ b=BXizlj9V83bc7qu7RsFIq2PsD91u5daDZRO8b0vcRSGWRH4pIsTC0LkpGj1vpPi+uh
+ Prw8OvI5WqPm5gsR4Cb/lkXSpPC2IUVBYxzlZNpRuZ3fvB2Rhn+oPEWiIzYnOno5uNZY
+ 3vLAF8yIdwC8lEjOo4ZQnL2tKJKM4nfmHLVTzcLVaP4SjhvqM9uURg1/x7HJxYB6GQGC
+ t/MbgWRjGw8A02plW5odVIXbzU77gxs3Eslip/SjNGxiOXQhf4e4TjVQPBxbKRGwvky3
+ EEx8F0KWE8y0fU6Br5zVlTJwXGtai+GbD/E+WlAxjJzIoMDcGi9zNQA1wU+c4NudQELQ
+ pVdg==
+X-Gm-Message-State: AOAM530n+kDMhFJeShZBIZMBNriKKqv4BVKShHVv/DlbBvxN5QZ2WX+2
+ pulGhtmAjldX7y0nr3zRKXaIew==
+X-Received: by 2002:a17:90a:e007:: with SMTP id
+ u7mr8760344pjy.208.1591890096198; 
+ Thu, 11 Jun 2020 08:41:36 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
+ by smtp.gmail.com with ESMTPSA id c2sm3537979pfi.71.2020.06.11.08.41.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 11 Jun 2020 08:41:35 -0700 (PDT)
+Subject: Re: [PATCH 01/10] target/arm: Add 'static' and 'const' annotations to
+ VSHLL function arrays
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200611144529.8873-1-peter.maydell@linaro.org>
+ <20200611144529.8873-2-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <4f4808c3-c33d-55a3-6f80-6168c64979ae@linaro.org>
+Date: Thu, 11 Jun 2020 08:41:33 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-From: Haibo Xu <haibo.xu@linaro.org>
-Date: Thu, 11 Jun 2020 16:46:45 +0800
-Message-ID: <CAJc+Z1Eb815hroFPY+9Ai_9hh=+eje+X2ENtGj9XA+_F0XUPqg@mail.gmail.com>
-Subject: Core dump happened when starting a VM on arm64 server
-To: qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
- envelope-from=haibo.xu@linaro.org; helo=mail-io1-xd42.google.com
+In-Reply-To: <20200611144529.8873-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1043;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1043.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -96,7 +114,6 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 11 Jun 2020 07:14:01 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,126 +125,19 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: drjones@redhat.com, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 44DZ2Y4ORHsT
+X-TUID: f/trphU8HfzJ
 
-Hi,
+On 6/11/20 7:45 AM, Peter Maydell wrote:
+> Mark the arrays of function pointers in trans_VSHLL_S_2sh() and
+> trans_VSHLL_U_2sh() as both 'static' and 'const'.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/translate-neon.inc.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-I met a qemu core dump issue when starting a VM with cpu feature
-"pmu=on" on an arm server.
-The commands to start the machine is:
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-  ./qemu-system-aarch64 \
-           -cpu host,pmu=on -M virt,accel=kvm,gic-version=3 -nographic
--m 2048M \
-           -kernel ./Image \
-           -initrd /boot/initrd.img-5.6.0-rc2+ \
-           -append "root=/dev/vda rw console=ttyAMA0" -nodefaults -serial stdio\
-           -drive if=none,file=./xenial.rootfs.ext4,id=hd0,format=raw \
-           -device virtio-blk-device,drive=hd0
-
-
-And here is the stack dump:
-
- Core was generated by `./qemu-system-aarch64 -cpu host,pmu=on -M
-virt,accel=kvm,gic-version=3 -nograph'.
- Program terminated with signal SIGSEGV, Segmentation fault.
- #0  kvm_ioctl (s=0x0, type=type@entry=44547) at
-/root/Downloads/qemu-git/accel/kvm/kvm-all.c:2509
- 2509        ret = ioctl(s->fd, type, arg);
- [Current thread is 1 (Thread 0xffffa5108010 (LWP 22057))]
- (gdb) bt
- #0  0x0000aaaadc432950 in kvm_ioctl (s=0x0, type=type@entry=44547) at
-/root/Downloads/qemu-git/accel/kvm/kvm-all.c:2509
- #1  0x0000aaaadc432adc in kvm_check_extension (s=<optimized out>,
-extension=extension@entry=126) at
-/root/Downloads/qemu-git/accel/kvm/kvm-all.c:866
- #2  0x0000aaaadc541ff0 in kvm_arm_pmu_supported (cpu=<optimized out>)
-at /root/Downloads/qemu-git/target/arm/kvm.c:212
- #3  0x0000aaaadc53a08c in arm_set_pmu (obj=<optimized out>,
-value=<optimized out>, errp=0xfffff2fba6b0) at
-/root/Downloads/qemu-git/target/arm/cpu.c:1113
- #4  0x0000aaaadc88facc in property_set_bool (obj=0xaaab0b61a0f0,
-v=<optimized out>, name=<optimized out>, opaque=0xaaab0b627690,
-errp=0xfffff2fba6b0)
-     at /root/Downloads/qemu-git/qom/object.c:2162
- #5  0x0000aaaadc892af4 in object_property_parse
-(obj=obj@entry=0xaaab0b61a0f0, string=<optimized out>,
-name=0xaaab0b527d00 "pmu", errp=errp@entry=0xfffff2fba6b0)
-     at /root/Downloads/qemu-git/qom/object.c:1552
- #6  0x0000aaaadc892bbc in object_apply_global_props
-(obj=0xaaab0b61a0f0, props=0xaaab0b473a60, errp=0xaaaadd003930
-<error_fatal>)
-     at /root/Downloads/qemu-git/qom/object.c:410
- #7  0x0000aaaadc891a64 in object_post_init_with_type
-(ti=0xaaab0b20e9f0, obj=0xaaab0b61a0f0) at
-/root/Downloads/qemu-git/qom/object.c:383
- #8  0x0000aaaadc891a64 in object_initialize_with_type
-(data=data@entry=0xaaab0b61a0f0, size=<optimized out>,
-type=type@entry=0xaaab0b212a40)
-     at /root/Downloads/qemu-git/qom/object.c:517
- #9  0x0000aaaadc891ba4 in object_new_with_type (type=0xaaab0b212a40)
-at /root/Downloads/qemu-git/qom/object.c:681
- #10 0x0000aaaadc4bfd10 in machvirt_init (machine=0xaaaadd003930
-<error_fatal>) at /root/Downloads/qemu-git/hw/arm/virt.c:1804
- #11 0x0000aaaadc69ec5c in machine_run_board_init
-(machine=0xaaab0b47e950) at
-/root/Downloads/qemu-git/hw/core/machine.c:1132
- #12 0x0000aaaadc51f50c in qemu_init (argc=<optimized out>,
-argv=<optimized out>, envp=<optimized out>) at
-/root/Downloads/qemu-git/softmmu/vl.c:4347
- #13 0x0000aaaadc3d2abc in main (argc=<optimized out>, argv=<optimized
-out>, envp=<optimized out>) at
-/root/Downloads/qemu-git/softmmu/main.c:48
- (gdb)
-
-
-The root cause is in the arm_get_pmu() operation which was introduced
-in ae502508f83.
-After deleting the KVM feature probe operation in this function, the
-issue can be fixed.
-
- diff --git a/target/arm/cpu.c b/target/arm/cpu.c
- index 3801e25b79..ff18db8fd4 100644
- --- a/target/arm/cpu.c
- +++ b/target/arm/cpu.c
- @@ -1110,10 +1110,6 @@ static void arm_set_pmu(Object *obj, bool
-value, Error **errp)
-      ARMCPU *cpu = ARM_CPU(obj);
-
-      if (value) {
- -        if (kvm_enabled() && !kvm_arm_pmu_supported(CPU(cpu))) {
- -            error_setg(errp, "'pmu' feature not supported by KVM on
-this host");
- -            return;
- -        }
-          set_feature(&cpu->env, ARM_FEATURE_PMU);
-      } else {
-          unset_feature(&cpu->env, ARM_FEATURE_PMU);
-
-
-According to the Qemu document(docs/system/arm/cpu-features.rst), the
-pmu is turned on by default when using KVM mode on a V8 host machine,
-which means the pmu=on is redundant when starting a VM with PMU support.
-
-  target/arm/kvm64.c
-  672     /*
-  673      * We can assume any KVM supporting CPU is at least a v8
-  674      * with VFPv4+Neon; this in turn implies most of the other
-  675      * feature bits.
-  676      */
-  677     features |= 1ULL << ARM_FEATURE_V8;
-  678     features |= 1ULL << ARM_FEATURE_NEON;
-  679     features |= 1ULL << ARM_FEATURE_AARCH64;
-  680     features |= 1ULL << ARM_FEATURE_PMU;
-  681     features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
-
-But I think we need a better way to handle this when "pmu=on" is
-present in the command line, not just trigger a core dump(qemu binary
-was built from the current master branch).
-Any comments?
-
-Regards,
-Haibo
+r~

@@ -1,93 +1,93 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp643054lfc;
-        Fri, 12 Jun 2020 10:56:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwt5emISLc5nKwy7V64hVmZ+B7KtGe1v1kmezWd8S/MkcHELiUK4ef9JaFWmq1PNY5udylE
-X-Received: by 2002:a25:bb82:: with SMTP id y2mr22847062ybg.392.1591984587328;
-        Fri, 12 Jun 2020 10:56:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591984587; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp643085lfc;
+        Fri, 12 Jun 2020 10:56:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw4Lwezp0p7C2nFu0iyUANi/3cf7xx54whL7RHR3r1Re7Z66zZQPRiPkInu78FxBC5Db7J0
+X-Received: by 2002:a25:8b12:: with SMTP id i18mr18607157ybl.377.1591984589713;
+        Fri, 12 Jun 2020 10:56:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591984589; cv=none;
         d=google.com; s=arc-20160816;
-        b=rntUn2y6pUDtp0B2FujoQ9YptDQnBS1aE1UH/eC4DyXNiqzGdx4+mjeNw3eRY3+cah
-         3qxBDPpz3dT8BoFRMIW9o0tBUssldC5FIbS/SjBwQaGC/SHaAYpxXC+RLQLkJ4QM1Qbf
-         gGyr9AMKVp7f4U7/LGrJsuSiXRoKLIUp+0VldOeq2uPfiY+GksqwGhV7qVDJhC9hEs/y
-         cH+vK7660X1qF8Rq4kxEgCl1LFOvEvh7s3CSozSG0LQ9ayJA3muOMNjuwEuuHNK2J6Z/
-         ZAS3c+yBTQuWm4LogfJwP9DhBJ0vQSWRm9wuzLz26vj2t5P8r/oVU134EnlAKdm6YT7L
-         c5Eg==
+        b=izmobzKfFT50aLmHtLrqXGCgvn1LKrzqUBKlpr0I4NBfO4bbrLXgLqaJf0qfOs0XWA
+         8cVM+6h8Xenwk3HR6T4TTWujb4FDQrtWtarRA2GTNYh7HDDHN9wF5vzczqfHtQfnG5mG
+         1CTrl6Yyu+YkHn4sa6cwFj1dKS6p33ocsu+uXp1/qb8yQgIS/zshem5UpwIXl95lYSqG
+         /Fm1IJmxdSdE9FM+9yfUFYCNM13JYu1QjJ2R9+iDG1dbXGsLT+oef1UPh2fSwYDB5Ra3
+         D6VAfK7HxfSdFdCU0qRvBB4XZwpNwIzF1FwTRGRFcHcy9QScB4QSC8kn88wQmEr8GD1D
+         BKIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=oF2pu4eIH0IdOMRtI6qyxe6R9jMEe4XzBzxqgQ2GpXQ=;
-        b=vrkQ9ndDUG9ujRxk0mrPCw8B5cc2G2odE5T7w4SgBo4sM/JKDanDQAtiw/3v4QdeJ+
-         g7/bkvb+fODhHeCaYSnyMOmKSiiQOC7Vtb08WpeNny6rupdrwPVdWI3zv23jwlQ81Vto
-         jWCi4/V14MMMqTucSwE0A8CvTi47UVFHG0WB333zLNhaDpJXv8J0j5Mnt7j+Lf5MWn4u
-         e/5q3ThLfpG8d4hgpZuztBrp5n9s1rQQHQX/h4W2lV9fMz0onpoRReMsk8Wd415OwMqp
-         j4vCso04l4R3iJR1ErVGamhpBnt+nU45C4GeP5V3N5zAdE1lU7QfS71Q8DNqoT8qgnBB
-         YLBw==
+        bh=VXyjbLpDTuE00ge+DHFSib5N0fJzn7CQXE4wINPUlB8=;
+        b=n8Ym6fKxrWNa5yx2fpNVtrAzEQA0o69qRhs5VsJDuDZe7O5O7Ejp5T+kEegB7avrLP
+         cerDMtR34zBwo0IxWvAzPILE2mxCqZxodv1ouP2khAzWng/bKI3LE1qfLhSxhiW/USL9
+         wTZoIZ5NmRU3kjRuwaeMzn4qOsdBLmYsdhlhiFVCAq/xMB5v4CEsX5nUGR9MFEKslpPZ
+         YWydlQmyl2/5TiDCOpyBs0e8Ty6PBJZAAyjLlEmvpQxKvS8xg6kXN+jS5GLL0xt4Tu6D
+         WQD89WDtcbq4IpMFNQNbUxwlG3odpXuU6nPUo9KHvM4nvhV+G8pPF+vCNXqHvttLcLtR
+         pvEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=C4SyiRbD;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WgeaN6ED;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y4si6014676ybk.397.2020.06.12.10.56.27
+        by mx.google.com with ESMTPS id a9si5794795ybo.146.2020.06.12.10.56.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Jun 2020 10:56:27 -0700 (PDT)
+        Fri, 12 Jun 2020 10:56:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=C4SyiRbD;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WgeaN6ED;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43402 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43628 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjnuk-0008Ow-LM
-	for alex.bennee@linaro.org; Fri, 12 Jun 2020 13:56:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55456)
+	id 1jjnun-0008VV-2f
+	for alex.bennee@linaro.org; Fri, 12 Jun 2020 13:56:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55524)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jjntN-0006h7-3z; Fri, 12 Jun 2020 13:55:01 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:39151)
+ id 1jjntQ-0006m1-5P; Fri, 12 Jun 2020 13:55:04 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38188)
  by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jjntL-0004Bk-Hp; Fri, 12 Jun 2020 13:55:00 -0400
-Received: by mail-wm1-x343.google.com with SMTP id k26so9060426wmi.4;
- Fri, 12 Jun 2020 10:54:46 -0700 (PDT)
+ id 1jjntO-0004C0-JE; Fri, 12 Jun 2020 13:55:03 -0400
+Received: by mail-wm1-x341.google.com with SMTP id f185so9061581wmf.3;
+ Fri, 12 Jun 2020 10:54:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=oF2pu4eIH0IdOMRtI6qyxe6R9jMEe4XzBzxqgQ2GpXQ=;
- b=C4SyiRbDbUubGZQbBGqIEn4bvaoqakz+H2dDx5mCh8lvpTXyUUbi/OKWzn4YyMjmvt
- F5zXCsHm4PxcDWv0deNtOjqZsHvpwQJea+h4tlMqaZQFE58toUwuqQsZM2SWOKhgs9es
- jRxnlzW2kOOXAFJh3oZXt2gWa0Y3XL7PtLRg/ku8n/2yYC4b+c3EthAkcNs9OzXczAs5
- S2pzL4zivZWDkaKeOGiACyhMEQs570/qtQWCmz3XhkTvlR+yvg8FMiBtG2CtQ5sSFGNX
- wnolCQZSeNm0HvziM8fiE3EOGlpxaRuyyuK3b8CIintz+YQ2hAkSgnDUJmDwTPbIR7hx
- SKEw==
+ bh=VXyjbLpDTuE00ge+DHFSib5N0fJzn7CQXE4wINPUlB8=;
+ b=WgeaN6EDTCdw9MxoftZstnYi8CHZ3U1JYCFxBleSkd7EbSpdzQmfOjx5OS1JVxjWt5
+ OYtwtqf7Xzcbef/HRl8EIqd/ICQxRSZcEAqLboLb1mOlae4VdM/9Fj5FfCI1KlRHz95h
+ ucagw2uSH6/nTXs6mSywTuO0iPgPfgpQagg89vt8dx/25k8i6MSIdkyT4HB2C4BhViK6
+ RvyfkIUqpVh5Lh9q+lGn+3phwsqqRmLs5XD0Gz+xGvkdM00F5z0WoXl+aSXUMkO5BEzF
+ QTbTBb7ZTnxcV3WRG5EejgH7NixXpk5/W1p0QLqM2YFzcH5ml1yF7GrVNBZTvO1wOhOW
+ ZwRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=oF2pu4eIH0IdOMRtI6qyxe6R9jMEe4XzBzxqgQ2GpXQ=;
- b=iZt7pp+bTM8HFPLim9jxF3RwkVZQJX6gXzhkfCjEkOIwoMtUw26RRBMA3v/oNCcEyh
- 6byTl6d2rmH4lx5GujcYKkaR5bCMBd7X4vQlwFXSX2U+dZ9gPXRmq1KA6vJyLAkiTY9B
- zoUPt29mG+P3A5LIuf1IZWFToN9hKmmSThLMDXq9ukzhauqquL3OmWaRJUF4dYZH0PdB
- /oggWoIe9RQfJZCAXu99xPSHDP/807oqy5vjXk/JLP8yY2TH7AnPY53pAGIrcvhfDzJ1
- gyuoV33kX7o02yvPSJzv4cS6c3I2WxodgX8AUBUAbZyG3doFYiXfmmSmWqowlLmE1gNb
- cYvQ==
-X-Gm-Message-State: AOAM532V+dHBhWXilriuTz97K3JerRl1Tws1mOWSsCTM/ptV949sZ/4v
- G5vlB9IUm5ONgkA11ZgH2V9pqdmA
-X-Received: by 2002:a1c:63c2:: with SMTP id x185mr124234wmb.68.1591984485123; 
- Fri, 12 Jun 2020 10:54:45 -0700 (PDT)
+ bh=VXyjbLpDTuE00ge+DHFSib5N0fJzn7CQXE4wINPUlB8=;
+ b=dMXU3jLF1st/3MTHuZQpOP3oWSkO/En54GwOWvXA58KdOiUeiEt/wohebUUtFYCTv7
+ MQqVc4ObCc9EeuAvd6urLmvA93ecLl8Qp95SpO4TFKbnsmSs+tIfj++rwRyrQal/iPhu
+ wq2sqcYuxX8FX2OuU3HoqNdvnIL3yxDbdM3Sc22Zx+Yj6O1coFe02ALAs8Hv2Tkb4onF
+ cMZ1SS1RvAKt782dSnqPKNNVcB11Qplv0kF+Mg4R7Dh1xrOdD/YNS41YR1ib4jv/G4Lj
+ NIQfzSTIlkHHvZ9vqIaPXQoSabRHpmdYvUFodcAV4VKTKfAG5+f3LEBwuwgm3AjVAt8W
+ JBtw==
+X-Gm-Message-State: AOAM530O4i2/7HVLH7UkDsgSoROqEhou/iR3KnR+K4y5nFBG3J89oDZg
+ L4i467WRnghe2P0FX6ne7bHUbelZ
+X-Received: by 2002:a1c:6389:: with SMTP id x131mr115342wmb.90.1591984488319; 
+ Fri, 12 Jun 2020 10:54:48 -0700 (PDT)
 Received: from localhost.localdomain
  (181.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id e12sm11288658wro.52.2020.06.12.10.54.43
+ by smtp.gmail.com with ESMTPSA id e12sm11288658wro.52.2020.06.12.10.54.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Jun 2020 10:54:44 -0700 (PDT)
+ Fri, 12 Jun 2020 10:54:47 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH v2 1/5] hw/misc: Add a LED device
-Date: Fri, 12 Jun 2020 19:54:36 +0200
-Message-Id: <20200612175440.9901-2-f4bug@amsat.org>
+Subject: [RFC PATCH v2 3/5] hw/misc/led: Add create_led_by_gpio_id() helper
+Date: Fri, 12 Jun 2020 19:54:38 +0200
+Message-Id: <20200612175440.9901-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200612175440.9901-1-f4bug@amsat.org>
 References: <20200612175440.9901-1-f4bug@amsat.org>
@@ -95,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -128,199 +128,68 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Mt34ZvbnZb54
+X-TUID: 7//mxseeqK4k
 
-A LED device can be connected to a GPIO output.
+Add create_led_by_gpio_id() to easily connect a LED to
+a GPIO output.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/misc/led.h | 30 ++++++++++++++++
- hw/misc/led.c         | 84 +++++++++++++++++++++++++++++++++++++++++++
- MAINTAINERS           |  6 ++++
- hw/misc/Kconfig       |  3 ++
- hw/misc/Makefile.objs |  1 +
- hw/misc/trace-events  |  3 ++
- 6 files changed, 127 insertions(+)
- create mode 100644 include/hw/misc/led.h
- create mode 100644 hw/misc/led.c
+ include/hw/misc/led.h | 14 ++++++++++++++
+ hw/misc/led.c         | 20 ++++++++++++++++++++
+ 2 files changed, 34 insertions(+)
 
 diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
-new file mode 100644
-index 0000000000..427ca1418e
---- /dev/null
+index 9300d4db6c..1b2bb96712 100644
+--- a/include/hw/misc/led.h
 +++ b/include/hw/misc/led.h
-@@ -0,0 +1,30 @@
-+/*
-+ * QEMU single LED device
+@@ -28,4 +28,18 @@ typedef struct LEDState {
+     uint8_t reset_state; /* TODO [GPIO_ACTIVE_LOW, GPIO_ACTIVE_HIGH] */
+ } LEDState;
+ 
++/**
++ * create_led_by_gpio_id: create and LED device
++ * @parent: the parent object
++ * @gpio_dev: device exporting GPIOs
++ * @gpio_id: GPIO ID of this LED
++ * @name: name of the LED
 + *
-+ * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * This utility function creates a LED and connects it to a
++ * GPIO exported by another device.
 + */
-+#ifndef HW_MISC_LED_H
-+#define HW_MISC_LED_H
++DeviceState *create_led_by_gpio_id(Object *parentobj,
++                                   DeviceState *gpio_dev, unsigned gpio_id,
++                                   const char *led_name);
 +
-+#include "hw/qdev-core.h"
-+#include "hw/sysbus.h" /* FIXME remove */
-+
-+#define TYPE_LED "led"
-+#define LED(obj) OBJECT_CHECK(LEDState, (obj), TYPE_LED)
-+
-+typedef struct LEDState {
-+    /* Private */
-+    SysBusDevice parent_obj; /* FIXME DeviceState */
-+    /* Public */
-+
-+    qemu_irq irq;
-+    uint8_t current_state;
-+
-+    /* Properties */
-+    char *name;
-+    uint8_t reset_state; /* TODO [GPIO_ACTIVE_LOW, GPIO_ACTIVE_HIGH] */
-+} LEDState;
-+
-+#endif /* HW_MISC_LED_H */
+ #endif /* HW_MISC_LED_H */
 diff --git a/hw/misc/led.c b/hw/misc/led.c
-new file mode 100644
-index 0000000000..1bae1a34c0
---- /dev/null
+index 11c7e8bb89..36de80dd67 100644
+--- a/hw/misc/led.c
 +++ b/hw/misc/led.c
-@@ -0,0 +1,84 @@
-+/*
-+ * QEMU single LED device
-+ *
-+ * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "migration/vmstate.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/misc/led.h"
-+#include "hw/irq.h"
-+#include "trace.h"
-+
-+static void led_set(void *opaque, int line, int new_state)
-+{
-+    LEDState *s = LED(opaque);
-+
-+    trace_led_set(s->name, s->current_state, new_state);
-+
-+    s->current_state = new_state;
-+}
-+
-+static void led_reset(DeviceState *dev)
-+{
-+    LEDState *s = LED(dev);
-+
-+    led_set(dev, 0, s->reset_state);
-+}
-+
-+static const VMStateDescription vmstate_led = {
-+    .name = TYPE_LED,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT8(reset_state, LEDState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void led_realize(DeviceState *dev, Error **errp)
-+{
-+    LEDState *s = LED(dev);
-+
-+    if (s->name == NULL) {
-+        error_setg(errp, "property 'name' not specified");
-+        return;
-+    }
-+
-+    qdev_init_gpio_in(DEVICE(s), led_set, 1);
-+}
-+
-+static Property led_properties[] = {
-+    DEFINE_PROP_STRING("name", LEDState, name),
-+    DEFINE_PROP_UINT8("reset_state", LEDState, reset_state, 0),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void led_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc = "LED";
-+    dc->vmsd = &vmstate_led;
-+    dc->reset = led_reset;
-+    dc->realize = led_realize;
-+    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
-+    device_class_set_props(dc, led_properties);
-+}
-+
-+static const TypeInfo led_info = {
-+    .name = TYPE_LED,
-+    .parent = TYPE_SYS_BUS_DEVICE, /* FIXME TYPE_DEVICE */
-+    .instance_size = sizeof(LEDState),
-+    .class_init = led_class_init
-+};
-+
-+static void led_register_types(void)
-+{
-+    type_register_static(&led_info);
-+}
-+
-+type_init(led_register_types)
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 3abe3faa4e..10593863dc 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1857,6 +1857,12 @@ F: docs/specs/vmgenid.txt
- F: tests/qtest/vmgenid-test.c
- F: stubs/vmgenid.c
+@@ -104,3 +104,23 @@ static void led_register_types(void)
+ }
  
-+LED
-+M: Philippe Mathieu-Daudé <f4bug@amsat.org>
-+S: Maintained
-+F: include/hw/misc/led.h
-+F: hw/misc/led.c
+ type_init(led_register_types)
 +
- Unimplemented device
- M: Peter Maydell <peter.maydell@linaro.org>
- R: Philippe Mathieu-Daudé <f4bug@amsat.org>
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index bdd77d8020..f60dce694d 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -126,6 +126,9 @@ config AUX
- config UNIMP
-     bool
- 
-+config LED
-+    bool
++DeviceState *create_led_by_gpio_id(Object *parentobj,
++                                   DeviceState *gpio_dev, unsigned gpio_id,
++                                   const char *led_name)
++{
++    DeviceState *dev;
++    char *name;
 +
- config MAC_VIA
-     bool
-     select MOS6522
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index 5aaca8a039..9efa3c941c 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -91,3 +91,4 @@ common-obj-$(CONFIG_NRF51_SOC) += nrf51_rng.o
- obj-$(CONFIG_MAC_VIA) += mac_via.o
- 
- common-obj-$(CONFIG_GRLIB) += grlib_ahb_apb_pnp.o
-+common-obj-$(CONFIG_LED) += led.o
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 5561746866..e15b7f7c81 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -206,3 +206,6 @@ via1_rtc_cmd_pram_sect_write(int sector, int offset, int addr, int value) "secto
- # grlib_ahb_apb_pnp.c
- grlib_ahb_pnp_read(uint64_t addr, uint32_t value) "AHB PnP read addr:0x%03"PRIx64" data:0x%08x"
- grlib_apb_pnp_read(uint64_t addr, uint32_t value) "APB PnP read addr:0x%03"PRIx64" data:0x%08x"
++    dev = qdev_create(NULL, TYPE_LED);
++    /* TODO set "reset_state" */
++    qdev_prop_set_string(dev, "name", led_name);
++    name = g_ascii_strdown(led_name, -1);
++    name = g_strdelimit(name, " #", '-');
++    object_property_add_child(parentobj, name, OBJECT(dev));
++    g_free(name);
++    qdev_init_nofail(dev);
++    qdev_connect_gpio_out(gpio_dev, gpio_id, qdev_get_gpio_in(dev, 0));
 +
-+# led.c
-+led_set(const char *name, uint8_t old_state, uint8_t new_state) "led name:'%s' state %d -> %d"
++    return dev;
++}
 -- 
 2.21.3
 

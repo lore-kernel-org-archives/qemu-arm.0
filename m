@@ -1,100 +1,99 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp504220lfc;
-        Fri, 12 Jun 2020 07:51:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxtho64UlUr5/JJ+4irsioM82FxSoINyDrO1+v9JC5Czl7ASF80/1d6fEYAc2LHdmMb8W1d
-X-Received: by 2002:a25:3782:: with SMTP id e124mr23480830yba.403.1591973486156;
-        Fri, 12 Jun 2020 07:51:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591973486; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp507085lfc;
+        Fri, 12 Jun 2020 07:55:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwWSsGi3rZdmknWKiFtuB6Ed2tde4Zksy0ni7zCjxb21jiQUKXHbChbVVnJtUk5oVXhupJ6
+X-Received: by 2002:a25:a408:: with SMTP id f8mr20338105ybi.145.1591973736279;
+        Fri, 12 Jun 2020 07:55:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591973736; cv=none;
         d=google.com; s=arc-20160816;
-        b=1Binm1bBDnjjXV6eWkRZ+TLswZjIOMX7IgGhM3hHljOBOyUYRBntkzAUcJZR7jMGZG
-         cH4XaGP0Lh1gyBRblhxzg337QpWSymq5INHWeeQ/yWiAUxiXGWHqFrcXGeIFEoDYzxwu
-         bGb7mJRehzHs0vjlSj7qICFivfPltzDXO4dFTI/5Yt1PwgsJqFQVdXR4djvXxGMJOyIq
-         lXZOSVDnAveIUp7N7DHhmYSwkaATS6EawyEeerDzgYWpJRno/ediNyDTGI5yNP3jsepp
-         A1OFBskY9x4IEGaVqRFcCG7JI7I8Z6nIfB0JCp2w86d4SumYuphYP0qOxk24T4iI+GoG
-         ahlg==
+        b=vzYiGFjOVPR2ucqRer+E+OfEfVqSyZDx9gbx+QxLK5HfR/v3dzuxZBeL29DQwWP4h7
+         fXhrnTs/clGsj0pBRc2jjT2OGvC3O335PeAzRrXQwJGsibogJ0aGXatgh21sEJTpvW4d
+         3O0dwfzXW0CkwnRot1+UVFHOGlIXStZIvM2rdUxoZbmzHdXQWLbzNnlDOybd9L9x82vy
+         EamVnV0uQODxfUeaGxKLZH/xSXihkGPy7ybmyqq+bqqOuWbF+QqwB9Y17nIAHzR2pHmw
+         uBn9fE6kjBAvyLHnoR+Szc2iBzNFcYWmxrs2AOVZ03KDlFzCRfydZHgv0P84tdMyd3MK
+         nRyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=ezVaZ39w/Zt6S04FtdW+skZfwDczX4yGiWwy5FV/qKo=;
-        b=yZP/tV4L/XboPD11f/ck5LPoTgqA+d9AWRMKvWgxGCVhaxc6BctNUwvm1aXjT6JEce
-         5yP9gJNSWmlcrJCSyrA/moAnMdk+rk7iF4oUoRE4L8YXa7BViJY/P79+pJK0JD4wSH7i
-         kITxQ6k6R2S28D6Jec+fhizgS3oO9Gb+VRvpJFnA03MxtkAIkkV5VXoPatyV+/WiuVVX
-         yn5JmQ7+X1QGKHnP9rOdXihYAH60bEDdwoMXdpWVECowCxMfAg/JjvIaXXFn0L24Rq7U
-         vc6BhVd4KV7GI1LJgxG6MRDVDeziEaF4BH8Yn9T8ALvEouHXzDgJ0jGk2go7V6lH1nP/
-         Lu4w==
+        bh=zGOoHYc7BnEUE5/Tw0vbz2Gw05a97G6XRUJWvEWyGjA=;
+        b=BEMFN2d+kAhKPv4RkLWEt4U8fioLviHLlkaecoOq64kcVl6rzdFEWpv7vOBRKpSKBL
+         JXuSMHcle5DjT2S1Kz8gO/SdRkS55P4eoWNjts8rAutanVmCMrunB+bE6IJDAzifiCjc
+         bZb7QKtOPyV8PotSlySQxk/HHnHhdPERz+Kr8xY91ArRg/nYKfJYWu1DRlOFaRIecDCR
+         OdA9+unGRT+4qzsA59bfbrzBp5hybpPAq68G6b1DkExpxNp3rSQUA71RTg4bUPU1cbBB
+         gpWM5AO5J0gFtqSGzsmba+nHdU/yXP5BwD0VdHEgCnzwXpQ5IRIbYNnuTTP/5JMBtNH3
+         kigg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AkwGP2a1;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SEECtxpe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k186si4895566ybf.383.2020.06.12.07.51.25
+        by mx.google.com with ESMTPS id b204si5290597ybg.181.2020.06.12.07.55.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Jun 2020 07:51:26 -0700 (PDT)
+        Fri, 12 Jun 2020 07:55:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AkwGP2a1;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SEECtxpe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33716 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51410 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjl1h-0005EY-8b
-	for alex.bennee@linaro.org; Fri, 12 Jun 2020 10:51:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49520)
+	id 1jjl5j-0005Ci-Fa
+	for alex.bennee@linaro.org; Fri, 12 Jun 2020 10:55:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49880)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jjl1Y-0005Cn-1v
- for qemu-arm@nongnu.org; Fri, 12 Jun 2020 10:51:16 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:28625
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jjl22-0006FJ-FV
+ for qemu-arm@nongnu.org; Fri, 12 Jun 2020 10:51:46 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:27526
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jjl1W-0001MH-4a
- for qemu-arm@nongnu.org; Fri, 12 Jun 2020 10:51:15 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jjl20-0001Pl-W7
+ for qemu-arm@nongnu.org; Fri, 12 Jun 2020 10:51:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591973472;
+ s=mimecast20190719; t=1591973504;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=ezVaZ39w/Zt6S04FtdW+skZfwDczX4yGiWwy5FV/qKo=;
- b=AkwGP2a1BKXZ5vI+/2/vCD9N0Ksek3rbmXEGSa1oXXuIP8+J1bSBT3dMJzrJGr5mBYYvnE
- Rq+wX9hx/lWeLLyMWTJEi1S5EXw+Prc5G/gsatuTUygTyCBHHm9U48SOPO9ncBhB7c2gVm
- Lc9WBFn+XRzC1SYYfZp3wZM9KpCIDOs=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-66-VeCVPvm2PWyUvJZEeyBPww-1; Fri, 12 Jun 2020 10:51:10 -0400
-X-MC-Unique: VeCVPvm2PWyUvJZEeyBPww-1
-Received: by mail-wm1-f71.google.com with SMTP id x6so2544991wmj.9
- for <qemu-arm@nongnu.org>; Fri, 12 Jun 2020 07:51:10 -0700 (PDT)
+ bh=zGOoHYc7BnEUE5/Tw0vbz2Gw05a97G6XRUJWvEWyGjA=;
+ b=SEECtxpeXkCFqmslM2ls3wTCJ8ocpJ/rjbxg9M0KOQdhTHERbUcekFQ5Hcez/A7x4tpCVZ
+ 5Notsa7YpfZHX9Rf211RX8I8AN5wMfK8W9kwU3wCotTUJKMoZhyUJJ3LQuYwyuzx28k2L5
+ CLlw36ihHxSsOGGIzB5Vd/eIKhm9A2U=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-429-XpofyySpNqSypyOyiDVLVQ-1; Fri, 12 Jun 2020 10:51:40 -0400
+X-MC-Unique: XpofyySpNqSypyOyiDVLVQ-1
+Received: by mail-wr1-f71.google.com with SMTP id c14so3961726wrw.11
+ for <qemu-arm@nongnu.org>; Fri, 12 Jun 2020 07:51:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=ezVaZ39w/Zt6S04FtdW+skZfwDczX4yGiWwy5FV/qKo=;
- b=gM1I2/8PBZfGskGexc+/6lDAJhfRZBLlXfImwpl5RqSJY//h2ZOnh7GFMmE1thNOTC
- IGyYMsYcEI8QpK44yH6e+1pJLhX7YeL1egvbpnlKkRCcUVIndHJ7zX3z6KxXAjYuJC8g
- 5MIz9HZ/jhasRbWqTjsOk4wwoe0dqj1UAdT+ZmMmZhirEBYI2byv9rCaKW386PmWc2oY
- Hy39xRvmWtjtv0H/IdIMc7eBArjAsiI8sbCVrS2F/ZDep/RS4tJR6CHJn5j+sLwlhhQW
- 5yNx0sHL8xfX1KWqHmpvOvSEQ9/G+qXdOCQKTnCRxjTqEWfw0v0SQGAiTEM5sohN5aVR
- GyIA==
-X-Gm-Message-State: AOAM5323vox/2Wuhpq89BYJ//ky//I1gy47KT4dbd3fLUsr1VmGdymVz
- 95BDaYOAt18Hnf/cByfqqfmoRVcWeuVMx9FPN/6rsyypdkKVoosTBygN9lbd533dkqKzIJv9hFA
- 6TncJDOurzm/v
-X-Received: by 2002:a1c:2082:: with SMTP id g124mr14255821wmg.21.1591973469590; 
- Fri, 12 Jun 2020 07:51:09 -0700 (PDT)
-X-Received: by 2002:a1c:2082:: with SMTP id g124mr14255796wmg.21.1591973469321; 
- Fri, 12 Jun 2020 07:51:09 -0700 (PDT)
+ bh=zGOoHYc7BnEUE5/Tw0vbz2Gw05a97G6XRUJWvEWyGjA=;
+ b=XLv6jFcJDHNzMMzOJAy8bYYm17748mp30kZgdzCvciyB1gYFKnRXD5wN4yBTxbVZap
+ kH4rIcfmNRT5vJ4inL7obscdLREYjvdLfLTuIoLsf3DdEmOTk4etCXPOzxxKYuMv3tph
+ yV9QnEyx293S97WcmcR2gqBe84RnnKdr6MLrK0PqD907eTAAhjfjE9BGhQL888Bx71Hy
+ 47G5BejyXlrPnmmT5PABIk5LVx4qFdhyHdj4urJ6c4sAC8YUzhBIXx9L7kRo056yt+6z
+ l5lAPFG/ZjekEgrvWfe7s3Np3w4qLDgACQ+P8u82+y9fSp1vT9axd/8ED0DdsUx4MYcu
+ HZSQ==
+X-Gm-Message-State: AOAM531ONH9A7x27i4B7EU3bT8ScqJKJ1QKJC9n7ZePPKiSCFCZVdNg0
+ 1zgS7u8oo7tVC3+wrKGvlJ5hbw7kfCB+2wNLcFueXyXQhWoB8KNS8Y1G88pqJsq1LA1MBVsH2+E
+ QXwTMQ66PlK7o
+X-Received: by 2002:a1c:7903:: with SMTP id l3mr13483921wme.50.1591973499327; 
+ Fri, 12 Jun 2020 07:51:39 -0700 (PDT)
+X-Received: by 2002:a1c:7903:: with SMTP id l3mr13483903wme.50.1591973499160; 
+ Fri, 12 Jun 2020 07:51:39 -0700 (PDT)
 Received: from redhat.com (bzq-79-178-18-124.red.bezeqint.net. [79.178.18.124])
- by smtp.gmail.com with ESMTPSA id y5sm10767253wrs.63.2020.06.12.07.51.07
+ by smtp.gmail.com with ESMTPSA id y37sm11339873wrd.55.2020.06.12.07.51.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Jun 2020 07:51:08 -0700 (PDT)
-Date: Fri, 12 Jun 2020 10:51:07 -0400
+ Fri, 12 Jun 2020 07:51:38 -0700 (PDT)
+Date: Fri, 12 Jun 2020 10:51:37 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL v2 03/58] hw/acpi/nvdimm: add a helper to augment SRAT
- generation
-Message-ID: <20200612141917.9446-4-mst@redhat.com>
+Subject: [PULL v2 16/58] arm/acpi: TPM2 ACPI table support
+Message-ID: <20200612141917.9446-17-mst@redhat.com>
 References: <20200612141917.9446-1-mst@redhat.com>
 MIME-Version: 1.0
 In-Reply-To: <20200612141917.9446-1-mst@redhat.com>
@@ -104,9 +103,9 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/12 09:30:54
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=mst@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/12 08:07:26
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -128,146 +127,98 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Jingqi Liu <jingqi.liu@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Vishal Verma <vishal.l.verma@intel.com>, Igor Mammedov <imammedo@redhat.com>,
- qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>
+ Eric Auger <eric.auger@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ Stefan Berger <stefanb@linux.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MxXCOj+BU61F
+X-TUID: wROpTbvrNPa2
 
-From: Vishal Verma <vishal.l.verma@intel.com>
+From: Eric Auger <eric.auger@redhat.com>
 
-NVDIMMs can belong to their own proximity domains, as described by the
-NFIT. In such cases, the SRAT needs to have Memory Affinity structures
-in the SRAT for these NVDIMMs, otherwise Linux doesn't populate node
-data structures properly during NUMA initialization. See the following
-for an example failure case.
+Add a TPM2 ACPI table if a TPM2.0 sysbus device has been
+dynamically instantiated.
 
-https://lore.kernel.org/linux-nvdimm/20200416225438.15208-1-vishal.l.verma@intel.com/
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-Introduce a new helper, nvdimm_build_srat(), and call it for both the
-i386 and arm versions of 'build_srat()' to augment the SRAT with
-memory affinity information for NVDIMMs.
-
-The relevant command line options to exercise this are below. Nodes 0-1
-contain CPUs and regular memory, and nodes 2-3 are the NVDIMM address
-space.
-
-    -object memory-backend-ram,id=mem0,size=2048M
-    -numa node,nodeid=0,memdev=mem0,
-    -numa cpu,node-id=0,socket-id=0
-    -object memory-backend-ram,id=mem1,size=2048M
-    -numa node,nodeid=1,memdev=mem1,
-    -numa cpu,node-id=1,socket-id=1
-    -numa node,nodeid=2,
-    -object memory-backend-file,id=nvmem0,share,mem-path=nvdimm-0,size=16384M,align=1G
-    -device nvdimm,memdev=nvmem0,id=nv0,label-size=2M,node=2
-    -numa node,nodeid=3,
-    -object memory-backend-file,id=nvmem1,share,mem-path=nvdimm-1,size=16384M,align=1G
-    -device nvdimm,memdev=nvmem1,id=nv1,label-size=2M,node=3
-
-Cc: Jingqi Liu <jingqi.liu@intel.com>
-Cc: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Jingqi Liu <jingqi.liu@intel.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Signed-off-by: Vishal Verma <vishal.l.verma@intel.com>
-Message-Id: <20200606000911.9896-3-vishal.l.verma@intel.com>
+Message-Id: <20200601095737.32671-4-eric.auger@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- include/hw/mem/nvdimm.h  |  1 +
- hw/acpi/nvdimm.c         | 23 +++++++++++++++++++++++
- hw/arm/virt-acpi-build.c |  4 ++++
- hw/i386/acpi-build.c     |  5 +++++
- 4 files changed, 33 insertions(+)
+ include/sysemu/tpm.h     | 2 ++
+ hw/acpi/aml-build.c      | 5 +++--
+ hw/arm/virt-acpi-build.c | 7 +++++++
+ 3 files changed, 12 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/mem/nvdimm.h b/include/hw/mem/nvdimm.h
-index a3c08955e8..b67a1aedf6 100644
---- a/include/hw/mem/nvdimm.h
-+++ b/include/hw/mem/nvdimm.h
-@@ -155,6 +155,7 @@ typedef struct NVDIMMState NVDIMMState;
- void nvdimm_init_acpi_state(NVDIMMState *state, MemoryRegion *io,
-                             struct AcpiGenericAddress dsm_io,
-                             FWCfgState *fw_cfg, Object *owner);
-+void nvdimm_build_srat(GArray *table_data);
- void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
-                        BIOSLinker *linker, NVDIMMState *state,
-                        uint32_t ram_slots);
-diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
-index 9316d12b70..8f7cc16add 100644
---- a/hw/acpi/nvdimm.c
-+++ b/hw/acpi/nvdimm.c
-@@ -28,6 +28,7 @@
+diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
+index f37851b1aa..03fb25941c 100644
+--- a/include/sysemu/tpm.h
++++ b/include/sysemu/tpm.h
+@@ -50,6 +50,8 @@ typedef struct TPMIfClass {
  
- #include "qemu/osdep.h"
- #include "qemu/uuid.h"
-+#include "qapi/error.h"
- #include "hw/acpi/acpi.h"
- #include "hw/acpi/aml-build.h"
- #include "hw/acpi/bios-linker-loader.h"
-@@ -1334,6 +1335,28 @@ static void nvdimm_build_ssdt(GArray *table_offsets, GArray *table_data,
-     free_aml_allocator();
- }
+ #define TPM_IS_TIS_ISA(chr)                         \
+     object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_ISA)
++#define TPM_IS_TIS_SYSBUS(chr)                      \
++    object_dynamic_cast(OBJECT(chr), TYPE_TPM_TIS_SYSBUS)
+ #define TPM_IS_CRB(chr)                             \
+     object_dynamic_cast(OBJECT(chr), TYPE_TPM_CRB)
+ #define TPM_IS_SPAPR(chr)                           \
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index b37052c1b4..d24e9e6c3a 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1885,17 +1885,18 @@ void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+     unsigned log_addr_offset =
+         (char *)&tpm2_ptr->log_area_start_address - table_data->data;
+     uint8_t start_method_params[12] = {};
++    TPMIf *tpmif = tpm_find();
  
-+void nvdimm_build_srat(GArray *table_data)
-+{
-+    GSList *device_list = nvdimm_get_device_list();
-+
-+    for (; device_list; device_list = device_list->next) {
-+        AcpiSratMemoryAffinity *numamem = NULL;
-+        DeviceState *dev = device_list->data;
-+        Object *obj = OBJECT(dev);
-+        uint64_t addr, size;
-+        int node;
-+
-+        node = object_property_get_int(obj, PC_DIMM_NODE_PROP, &error_abort);
-+        addr = object_property_get_uint(obj, PC_DIMM_ADDR_PROP, &error_abort);
-+        size = object_property_get_uint(obj, PC_DIMM_SIZE_PROP, &error_abort);
-+
-+        numamem = acpi_data_push(table_data, sizeof *numamem);
-+        build_srat_memory(numamem, addr, size, node,
-+                          MEM_AFFINITY_ENABLED | MEM_AFFINITY_NON_VOLATILE);
-+    }
-+    g_slist_free(device_list);
-+}
-+
- void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
-                        BIOSLinker *linker, NVDIMMState *state,
-                        uint32_t ram_slots)
+     /* platform class */
+     build_append_int_noprefix(table_data, TPM2_ACPI_CLASS_CLIENT, 2);
+     /* reserved */
+     build_append_int_noprefix(table_data, 0, 2);
+-    if (TPM_IS_TIS_ISA(tpm_find())) {
++    if (TPM_IS_TIS_ISA(tpmif) || TPM_IS_TIS_SYSBUS(tpmif)) {
+         /* address of control area */
+         build_append_int_noprefix(table_data, 0, 8);
+         /* start method */
+         build_append_int_noprefix(table_data, TPM2_START_METHOD_MMIO, 4);
+-    } else if (TPM_IS_CRB(tpm_find())) {
++    } else if (TPM_IS_CRB(tpmif)) {
+         build_append_int_noprefix(table_data, TPM_CRB_ADDR_CTRL, 8);
+         build_append_int_noprefix(table_data, TPM2_START_METHOD_CRB, 4);
+     } else {
 diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 1b0a584c7b..2cbccd5fe2 100644
+index 2cbccd5fe2..ca31f70f7f 100644
 --- a/hw/arm/virt-acpi-build.c
 +++ b/hw/arm/virt-acpi-build.c
-@@ -539,6 +539,10 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         }
+@@ -41,12 +41,14 @@
+ #include "hw/acpi/pci.h"
+ #include "hw/acpi/memory_hotplug.h"
+ #include "hw/acpi/generic_event_device.h"
++#include "hw/acpi/tpm.h"
+ #include "hw/pci/pcie_host.h"
+ #include "hw/pci/pci.h"
+ #include "hw/arm/virt.h"
+ #include "hw/mem/nvdimm.h"
+ #include "sysemu/numa.h"
+ #include "sysemu/reset.h"
++#include "sysemu/tpm.h"
+ #include "kvm_arm.h"
+ #include "migration/vmstate.h"
+ #include "hw/acpi/ghes.h"
+@@ -848,6 +850,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+         build_iort(tables_blob, tables->linker, vms);
      }
  
-+    if (ms->nvdimms_state->is_enabled) {
-+        nvdimm_build_srat(table_data);
++    if (tpm_get_version(tpm_find()) == TPM_VERSION_2_0) {
++        acpi_add_table(table_offsets, tables_blob);
++        build_tpm2(tables_blob, tables->linker, tables->tcpalog);
 +    }
 +
-     if (ms->device_memory) {
-         numamem = acpi_data_push(table_data, sizeof *numamem);
-         build_srat_memory(numamem, ms->device_memory->base,
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 2e15f6848e..d996525e2c 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2428,6 +2428,11 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
-                               MEM_AFFINITY_ENABLED);
-         }
-     }
-+
-+    if (machine->nvdimms_state->is_enabled) {
-+        nvdimm_build_srat(table_data);
-+    }
-+
-     slots = (table_data->len - numa_start) / sizeof *numamem;
-     for (; slots < pcms->numa_nodes + 2; slots++) {
-         numamem = acpi_data_push(table_data, sizeof *numamem);
+     /* XSDT is pointed to by RSDP */
+     xsdt = tables_blob->len;
+     build_xsdt(tables_blob, tables->linker, table_offsets, NULL, NULL);
 -- 
 MST
 

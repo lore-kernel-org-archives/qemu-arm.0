@@ -1,113 +1,150 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp577422lfc;
-        Fri, 12 Jun 2020 09:24:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy95sIXqMcRppHhvC95MMOeHlH4rTp1za2nfT3vprk9bFaD+i/0UmnIj4MwPjOJrg2EJw5w
-X-Received: by 2002:a25:1045:: with SMTP id 66mr24666538ybq.314.1591979090218;
-        Fri, 12 Jun 2020 09:24:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591979090; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp443670lfc;
+        Fri, 12 Jun 2020 06:36:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwHrMCVrYpCRdriRl9kPDY9meLVr0BrFXEPtv90bbsrnKg2FQ+oQ1wunw/e8d3SwUOv43x9
+X-Received: by 2002:a25:7903:: with SMTP id u3mr18180432ybc.416.1591968983693;
+        Fri, 12 Jun 2020 06:36:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591968983; cv=none;
         d=google.com; s=arc-20160816;
-        b=OIrjQWkt4o+DV46eIWkESmaxhHzxxoI/V6/TiNDCOXYdhpW6uLmOf3pyucbaaRtTbu
-         NPK+BKAXa5ALTbQiLbT+GF2WF92vDjoHvJFjaJ/drLDdHYnM4djA77wbzdlaqTDw2ZT8
-         Hp8kxuuCcEUZkvUsdaJTWKz7v9dCvezNsbBUdc01B0SWy4Qtkr7LFceFk0J2cxsDqQe8
-         ob+5vGCpfygz/Ib4OP5IfRyvzZw4+ejVV56hPVBqLsh+ueQEm1I68EAvoKIMFdjfzP6j
-         PbQyTaYNcQWml8nB/729s7PxXrkpKDtI3QiDaQ8jh9xeCDPDIwe5oppCfEmBmUoOatVe
-         hsMw==
+        b=N4XhTDleCPEGbocrvBo6wZ/G/JIL0XZWzhojsuVL7Zh0dq3U2hdj/BlBdYKOJaG7A7
+         bqn1C8NG6kfA9IAUWogt4q8VG1TLDKVKm+L2zoo8l3K8RrkfjM4jnE6VeHtyzrzoMNDP
+         IdkouRNqa2HTe1DzPkf7tea1K0685V101Q+67IlNEoq9I7I0AruzUDfqSZdg9YcNkKsH
+         +JqyonRqsFpEhJ4QZVPyd782o9RADrc0Uytq2aZyL2eY0Ckr2lizWlqcpaKpnY4/WxCG
+         aCXEjMSnW5ktJ3UrdD6Ac7vMNwt8oamQMTjTlnz00zrgWtZUplKoSsg2AYpyYoiRkn+W
+         1gEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ZBdoNOBMEF0YZONd1lNj5Y/k6+JiQQJ7kERWF7pOyRo=;
-        b=q8YnL8sTrzZ+SqN95Hs+El6UCa8w7gvvwpEFhwiGH8RK+1kDYJVYaORRZMv7GAOJeD
-         EyWaoRH9qWWrYAkkogL2jSVghMQZV/tLHJKSFXpt/3XX9G3LJojgAui3fTLDuLPsfr3n
-         V62X8K9qU+GL5H0UPGDgYtl93hyjNC3IegUMCWIL2JwLsB177Tz5JV/RjDQ52NVI0I48
-         JcHmA6t8ktAvD6bjqS3vPr7O56d15F9IsHXDMHjLJunVAAXUfgcwI7xWGtksYPrkOWTV
-         cNckxTrqSSLHJZp3qBmPnZn0spToclp49WVmLKZZGbgB0x3Wn+WENQ/crAQ6WEnVuc27
-         4rEw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=Lz80+phqoR2r+m4x2pMeBjqi1mnLdb+YpKV5/dpeyz8=;
+        b=V8GYcpIs/TLxsV3dz9hzK0adqA5n64ZyuHraLo+KntPhPCEo0MRwnhDMc3blo6Wid5
+         GB5SBSkQHKxxqBYRve70yqRefL39ol2qBGBFw/fAlNUlmCgF4/5OgSBncL4xkzHe1k1F
+         gAww91ycfTses/NHGyVSA0wB08KJ/OaX/qn/19FGPS0sw4nt04VH+EVM+l0+HCmACvm2
+         hOmJ4rpug6UeYQ09iIJNccKzGv8SuFtERYy2Fn+ve568LxBenrmQGp4+lUhBHGG0Darh
+         618vpXnD/m2XDmYTPJ2XJ+prX35sXZGq+711jQ/iBTNM7Jxg+DLwCef+2FqVPLnBuQjH
+         Pq5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=dTAKQ73c;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="RSTd4F/2";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q8si5793216ybc.67.2020.06.12.09.24.50
+        by mx.google.com with ESMTPS id u9si4969577ybo.200.2020.06.12.06.36.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Jun 2020 09:24:50 -0700 (PDT)
+        Fri, 12 Jun 2020 06:36:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=dTAKQ73c;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="RSTd4F/2";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:49448 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56702 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjmU5-0003mv-L6
-	for alex.bennee@linaro.org; Fri, 12 Jun 2020 12:24:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37378)
+	id 1jjjr5-0001xw-53
+	for alex.bennee@linaro.org; Fri, 12 Jun 2020 09:36:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jjmTK-0003Fc-4U
- for qemu-devel@nongnu.org; Fri, 12 Jun 2020 12:24:02 -0400
-Received: from mail-vk1-xa2d.google.com ([2607:f8b0:4864:20::a2d]:37211)
- by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jjmTI-0004EG-FX
- for qemu-devel@nongnu.org; Fri, 12 Jun 2020 12:24:01 -0400
-Received: by mail-vk1-xa2d.google.com with SMTP id q10so2388594vka.4
- for <qemu-devel@nongnu.org>; Fri, 12 Jun 2020 09:23:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ZBdoNOBMEF0YZONd1lNj5Y/k6+JiQQJ7kERWF7pOyRo=;
- b=dTAKQ73cyoPelcj13qBIZ3juj/RHD2H/2mggfRq4VMTW4ecN7iiZ3rURe0hhe0hDJ3
- 6OQ7vlOi527ln3w2zfMo7AfPu1wewgNOgSnAInTqJIDOm6ROlGAMzloO1/MNHKUX6kby
- pgePyH8jmxBc8DcCxsQMaPfKAMIdL82cT1BlPSj2U4Wl4sXrY/oti/dHUpWyeg8huaJO
- 2Gt6oPeAKo3KYC4lBjgcJJvvD6KGL295pitW8iBLF3Kl+lhZCgq0w7Oud/aZl3eATszT
- 1vNe206I/FyyRHzZMWEE3q9aj7AiMr8QdMg+8KYCgloPxoACRdg/l/kJFhWDw91b/7TY
- KRfg==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jjjqO-0001AG-Sm
+ for qemu-devel@nongnu.org; Fri, 12 Jun 2020 09:35:40 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:59303
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jjjqN-00043A-7R
+ for qemu-devel@nongnu.org; Fri, 12 Jun 2020 09:35:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591968937;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=Lz80+phqoR2r+m4x2pMeBjqi1mnLdb+YpKV5/dpeyz8=;
+ b=RSTd4F/2QYmm2yIvJE8e8D1ScvJsfU/ErRynhtb41T3h4QNByOKsDmF9i1TWyo3xrKoeRi
+ G0PA7bXPVcneRZRlBcugJKsTRFL2gO/8Jc2iLSef2QJC5+YGRoYPjCMFpC/VSJtj/vjWIf
+ xF08gwsJn9deFObtryfsXhRJYcRd4mw=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-312-Na1tdhd7McWmg_ic4svcZw-1; Fri, 12 Jun 2020 09:35:36 -0400
+X-MC-Unique: Na1tdhd7McWmg_ic4svcZw-1
+Received: by mail-wm1-f71.google.com with SMTP id r1so2466613wmh.7
+ for <qemu-devel@nongnu.org>; Fri, 12 Jun 2020 06:35:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ZBdoNOBMEF0YZONd1lNj5Y/k6+JiQQJ7kERWF7pOyRo=;
- b=j42APafhxEvFbOrdKl4BJxsdA2nfebOW5taPK+hVncaD26Mi1hcdorb/SBDuJEvgbP
- k1qE7G4/6+/S/iV2iz05/JAUxy/9L0yp+Jlqv3Z+MqgDViRWoR93F/rGZhfM90ZWz128
- MM/p88y4XPI694l4M8HB3j8DlbMgASHxMtTsbmcUeUeE39N+KyN9JNWBspMW7i//n0bQ
- IQYJYatKclh2ggtS6CLJLajDnpALjKWjCekzXew8+Bkn8Aj49SGrKj1RAMkpTZc7VUUX
- ur1HWhSgDJZNpchTtUfoirfa2P2lnkJYoZOOPK6fCRLB8xKXg9giwF2vZq2SwhnI/d96
- KQUA==
-X-Gm-Message-State: AOAM531mmPR7yESoI+miiPMQ5WYSLNtqmLMAzou8zKHA+UZMshDpZpm6
- hskzN0VBOKtji24bvnzB+3hNrFusrtpSByZLNd4eOA==
-X-Received: by 2002:a05:6122:130b:: with SMTP id
- e11mr11914299vkp.20.1591979032700; 
- Fri, 12 Jun 2020 09:23:52 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=Lz80+phqoR2r+m4x2pMeBjqi1mnLdb+YpKV5/dpeyz8=;
+ b=k68pwUIH/9U7p77umDicmmh3FqCrmAn2o3NzoiRht9Lox1qqBj7KE6zNmR+5FshqDK
+ X3QgBTvUWnh+Gn3JVrYLFWOPnQHrGzKDMRxuzXsZnqNWzPJtkvcIn5DmRiotaMY0xIW/
+ kFFJQo92Mo4YfReN32a/AXTBLh3rVhMkazxDnZaHxcErIVGSuby8mYGxliWE+nwmeG+3
+ tmKthrDudfZy8c0gwah77/AQO7ce4mPfgvL4IqrzB8+hwCk29YBg9W57c23ky8WBQvFp
+ zP8P/lt/ZOC6QrH2RW1DifX9d/4DQS0F7wsH6x1qCAXjM1+4cKsJegRfpp0ScoxphA5M
+ Dumg==
+X-Gm-Message-State: AOAM533wb/bIPlWlkBTzlmWkkALmQv8lO087PgqSaUzE95PDdjdEyve8
+ IGBh13ff1Ow/IoTMBsEM3zr5Yh6KLbGGMSPgjm2I/JbnwN/h5QhJqvGqCWngK8KQ7AMzzNXDPjZ
+ CAitIw2wu1fqw8q8=
+X-Received: by 2002:a1c:9acf:: with SMTP id
+ c198mr13397040wme.172.1591968934147; 
+ Fri, 12 Jun 2020 06:35:34 -0700 (PDT)
+X-Received: by 2002:a1c:9acf:: with SMTP id
+ c198mr13397028wme.172.1591968933963; 
+ Fri, 12 Jun 2020 06:35:33 -0700 (PDT)
+Received: from [192.168.1.40] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id v27sm11022966wrv.81.2020.06.12.06.35.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 12 Jun 2020 06:35:33 -0700 (PDT)
+Subject: Re: [PATCH v2 01/12] npcm7xx: Add config symbol
+To: Havard Skinnemoen <hskinnemoen@google.com>, peter.maydell@linaro.org,
+ clg@kaod.org, joel@jms.id.au
 References: <20200611223016.259837-1-hskinnemoen@google.com>
  <20200611223016.259837-2-hskinnemoen@google.com>
- <c16e1f35-ec5b-d479-16b4-944a4567a453@redhat.com>
-In-Reply-To: <c16e1f35-ec5b-d479-16b4-944a4567a453@redhat.com>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Fri, 12 Jun 2020 09:23:41 -0700
-Message-ID: <CAFQmdRarCC=Etq2baN9UsTBWXxJPSNcA3CKi19P6asJjLevzzw@mail.gmail.com>
-Subject: Re: [PATCH v2 01/12] npcm7xx: Add config symbol
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Joel Stanley <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
- CS20 KFTing <kfting@nuvoton.com>
-Content-Type: multipart/alternative; boundary="000000000000bcd78905a7e580e3"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a2d;
- envelope-from=hskinnemoen@google.com; helo=mail-vk1-xa2d.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -185
-X-Spam_score: -18.6
-X-Spam_bar: ------------------
-X-Spam_report: (-18.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <c16e1f35-ec5b-d479-16b4-944a4567a453@redhat.com>
+Date: Fri, 12 Jun 2020 15:35:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <20200611223016.259837-2-hskinnemoen@google.com>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=philmd@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/12 08:00:42
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,55 +157,27 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: kfting@nuvoton.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Avi.Fishman@nuvoton.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jv7iJWDXFLot
+X-TUID: 5hZkHdaBSdfP
 
---000000000000bcd78905a7e580e3
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi Havard
 
-Hi Philippe,
+On 6/12/20 12:30 AM, Havard Skinnemoen wrote:
+> Add a config symbol for the NPCM7xx BMC SoC family that subsequent
+> patches can use in Makefiles.
+> 
+> Change-Id: I6e4d5c58716cb6fe4ea5d06f148beeafda55f9a5
 
-On Fri, Jun 12, 2020 at 6:35 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.=
-com>
-wrote:
+What it this Change-Id tag used for?
 
-> Hi Havard
->
-> On 6/12/20 12:30 AM, Havard Skinnemoen wrote:
-> > Add a config symbol for the NPCM7xx BMC SoC family that subsequent
-> > patches can use in Makefiles.
-> >
-> > Change-Id: I6e4d5c58716cb6fe4ea5d06f148beeafda55f9a5
->
-> What it this Change-Id tag used for?
->
+> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> Acked-by: Joel Stanley <joel@jms.id.au>
+> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+> ---
+>  default-configs/arm-softmmu.mak | 1 +
+>  hw/arm/Kconfig                  | 8 ++++++++
+>  2 files changed, 9 insertions(+)
 
-It's used by Gerrit code review, which we use for reviews internally
-(between Google and Nuvoton). I meant to remove it before mailing the
-patches, sorry.
-
---000000000000bcd78905a7e580e3
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi Philippe,</div><div><br></div><div dir=3D"ltr">On =
-Fri, Jun 12, 2020 at 6:35 AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mai=
-lto:philmd@redhat.com">philmd@redhat.com</a>&gt; wrote:<br></div><div class=
-=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
-0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Hi Havar=
-d<br>
-<br>
-On 6/12/20 12:30 AM, Havard Skinnemoen wrote:<br>
-&gt; Add a config symbol for the NPCM7xx BMC SoC family that subsequent<br>
-&gt; patches can use in Makefiles.<br>
-&gt; <br>
-&gt; Change-Id: I6e4d5c58716cb6fe4ea5d06f148beeafda55f9a5<br>
-<br>
-What it this Change-Id tag used for?<br></blockquote><div><br></div><div>It=
-&#39;s used by Gerrit code review,=C2=A0which we use for reviews internally=
- (between Google and Nuvoton). I meant to remove it before mailing the patc=
-hes, sorry.</div></div></div>
-
---000000000000bcd78905a7e580e3--

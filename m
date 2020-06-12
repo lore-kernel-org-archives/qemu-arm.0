@@ -1,92 +1,120 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3951446lfm;
-        Tue, 23 Jun 2020 02:57:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwpKX5k8wpJkHzCH0CD6o4bcwJ1D0hU1DFk91HJz8YANFws66vG/ZX/ZAGX8CW2fIyuvkFF
-X-Received: by 2002:a25:cc90:: with SMTP id l138mr9790043ybf.377.1592906227740;
-        Tue, 23 Jun 2020 02:57:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592906227; cv=none;
+Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp504220lfc;
+        Fri, 12 Jun 2020 07:51:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxtho64UlUr5/JJ+4irsioM82FxSoINyDrO1+v9JC5Czl7ASF80/1d6fEYAc2LHdmMb8W1d
+X-Received: by 2002:a25:3782:: with SMTP id e124mr23480830yba.403.1591973486156;
+        Fri, 12 Jun 2020 07:51:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591973486; cv=none;
         d=google.com; s=arc-20160816;
-        b=FNw5b5IfN5FZ+p0PJtu8VIefSAmozRForrftgUCGR0jrdiPz9kFFSEYTlMD4tN4LK7
-         ODwhIDbsTC1z7NOQ2i1IJo7V2GwF7K5N6qfqtnefIvEEMcWxd/8M1dkY73f19IMa9tgm
-         Ud3o5mSrqd8hR9tADy3XgvhsSAyjoWM+yq+W91GjaERTWqPtslk5w62kHTS85KOvHQ6/
-         l+J703m+eNnLOgBZsjj2/XJPfvI4UNZ1JiKyyYER02fk6CTHmqLXLPFdCF672X35Yrg2
-         PK6AVsU70KY4WFm9DdP0wsmlZZsrkjoPvkGrQgLWxDKF5Y/UW9RmsHTP4zu8cXqmpfZi
-         DmsQ==
+        b=1Binm1bBDnjjXV6eWkRZ+TLswZjIOMX7IgGhM3hHljOBOyUYRBntkzAUcJZR7jMGZG
+         cH4XaGP0Lh1gyBRblhxzg337QpWSymq5INHWeeQ/yWiAUxiXGWHqFrcXGeIFEoDYzxwu
+         bGb7mJRehzHs0vjlSj7qICFivfPltzDXO4dFTI/5Yt1PwgsJqFQVdXR4djvXxGMJOyIq
+         lXZOSVDnAveIUp7N7DHhmYSwkaATS6EawyEeerDzgYWpJRno/ediNyDTGI5yNP3jsepp
+         A1OFBskY9x4IEGaVqRFcCG7JI7I8Z6nIfB0JCp2w86d4SumYuphYP0qOxk24T4iI+GoG
+         ahlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=Wn87VWmEhcOLQPLlvNjY5QnfoNSu18l1hu2JcCBkowA=;
-        b=lWKdWsuMaLzj6enbpLQo/HeDU6EMNavsZQaZjsmOZwAuxT/0tSUSZYLi+t2Umlrnhb
-         3L0E1DyJE8EqrzPv1VNUIEM2zA9h0LSr2w043aUY4oqG/4Dwe8u+sNQaNJPGGp321e1/
-         rLBmrX1/3hXqmRHtOGotOc1EIUQlhIEqexEL/Fnog/puyR+keU/rxC6dE15ZRnf4tFNc
-         f5QbqK/jD6lIvLNJSvctIT8qzPR9TkW/7E6kjLXXUL+B/Jk5eFCvd8Kj1HSjzDF84Kr4
-         SN0/eJs/vjJVoRmX4QoCsB+pgfwF9SZ6Y3ypKMqPZIuOIbzMRkCezNBPyrAQXqFrHziB
-         4j8Q==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=ezVaZ39w/Zt6S04FtdW+skZfwDczX4yGiWwy5FV/qKo=;
+        b=yZP/tV4L/XboPD11f/ck5LPoTgqA+d9AWRMKvWgxGCVhaxc6BctNUwvm1aXjT6JEce
+         5yP9gJNSWmlcrJCSyrA/moAnMdk+rk7iF4oUoRE4L8YXa7BViJY/P79+pJK0JD4wSH7i
+         kITxQ6k6R2S28D6Jec+fhizgS3oO9Gb+VRvpJFnA03MxtkAIkkV5VXoPatyV+/WiuVVX
+         yn5JmQ7+X1QGKHnP9rOdXihYAH60bEDdwoMXdpWVECowCxMfAg/JjvIaXXFn0L24Rq7U
+         vc6BhVd4KV7GI1LJgxG6MRDVDeziEaF4BH8Yn9T8ALvEouHXzDgJ0jGk2go7V6lH1nP/
+         Lu4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AkwGP2a1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a14si16297303ybp.184.2020.06.23.02.57.07
+        by mx.google.com with ESMTPS id k186si4895566ybf.383.2020.06.12.07.51.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 02:57:07 -0700 (PDT)
+        Fri, 12 Jun 2020 07:51:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35056 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AkwGP2a1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33716 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnffv-0003dd-3m
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 05:57:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44970)
+	id 1jjl1h-0005EY-8b
+	for alex.bennee@linaro.org; Fri, 12 Jun 2020 10:51:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49520)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jnffo-0003dR-98; Tue, 23 Jun 2020 05:57:00 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2117 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jnffl-0005VA-N4; Tue, 23 Jun 2020 05:57:00 -0400
-Received: from lhreml708-chm.china.huawei.com (unknown [172.18.7.107])
- by Forcepoint Email with ESMTP id D015DC1205F14913C897;
- Tue, 23 Jun 2020 10:56:54 +0100 (IST)
-Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
- lhreml708-chm.china.huawei.com (10.201.108.57) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1913.5; Tue, 23 Jun 2020 10:56:54 +0100
-Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
- lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1913.007; 
- Tue, 23 Jun 2020 10:56:54 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Andrew Jones <drjones@redhat.com>
-Subject: RE: [PATCH RFC 00/22] Support of Virtual CPU Hotplug for ARMv8 Arch
-Thread-Topic: [PATCH RFC 00/22] Support of Virtual CPU Hotplug for ARMv8 Arch
-Thread-Index: AQHWQcvNstQMr4/nnU2Xs7zxVVwVQKjl6FsAgAAbB4A=
-Date: Tue, 23 Jun 2020 09:56:54 +0000
-Message-ID: <ae90783d37454d8b9f5a189098e6bbb7@huawei.com>
-References: <20200613213629.21984-1-salil.mehta@huawei.com>
- <20200623091202.pbcbvwnk3pdvwyyy@kamzik.brq.redhat.com>
-In-Reply-To: <20200623091202.pbcbvwnk3pdvwyyy@kamzik.brq.redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.79.3]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jjl1Y-0005Cn-1v
+ for qemu-arm@nongnu.org; Fri, 12 Jun 2020 10:51:16 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:28625
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jjl1W-0001MH-4a
+ for qemu-arm@nongnu.org; Fri, 12 Jun 2020 10:51:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1591973472;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=ezVaZ39w/Zt6S04FtdW+skZfwDczX4yGiWwy5FV/qKo=;
+ b=AkwGP2a1BKXZ5vI+/2/vCD9N0Ksek3rbmXEGSa1oXXuIP8+J1bSBT3dMJzrJGr5mBYYvnE
+ Rq+wX9hx/lWeLLyMWTJEi1S5EXw+Prc5G/gsatuTUygTyCBHHm9U48SOPO9ncBhB7c2gVm
+ Lc9WBFn+XRzC1SYYfZp3wZM9KpCIDOs=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-66-VeCVPvm2PWyUvJZEeyBPww-1; Fri, 12 Jun 2020 10:51:10 -0400
+X-MC-Unique: VeCVPvm2PWyUvJZEeyBPww-1
+Received: by mail-wm1-f71.google.com with SMTP id x6so2544991wmj.9
+ for <qemu-arm@nongnu.org>; Fri, 12 Jun 2020 07:51:10 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=ezVaZ39w/Zt6S04FtdW+skZfwDczX4yGiWwy5FV/qKo=;
+ b=gM1I2/8PBZfGskGexc+/6lDAJhfRZBLlXfImwpl5RqSJY//h2ZOnh7GFMmE1thNOTC
+ IGyYMsYcEI8QpK44yH6e+1pJLhX7YeL1egvbpnlKkRCcUVIndHJ7zX3z6KxXAjYuJC8g
+ 5MIz9HZ/jhasRbWqTjsOk4wwoe0dqj1UAdT+ZmMmZhirEBYI2byv9rCaKW386PmWc2oY
+ Hy39xRvmWtjtv0H/IdIMc7eBArjAsiI8sbCVrS2F/ZDep/RS4tJR6CHJn5j+sLwlhhQW
+ 5yNx0sHL8xfX1KWqHmpvOvSEQ9/G+qXdOCQKTnCRxjTqEWfw0v0SQGAiTEM5sohN5aVR
+ GyIA==
+X-Gm-Message-State: AOAM5323vox/2Wuhpq89BYJ//ky//I1gy47KT4dbd3fLUsr1VmGdymVz
+ 95BDaYOAt18Hnf/cByfqqfmoRVcWeuVMx9FPN/6rsyypdkKVoosTBygN9lbd533dkqKzIJv9hFA
+ 6TncJDOurzm/v
+X-Received: by 2002:a1c:2082:: with SMTP id g124mr14255821wmg.21.1591973469590; 
+ Fri, 12 Jun 2020 07:51:09 -0700 (PDT)
+X-Received: by 2002:a1c:2082:: with SMTP id g124mr14255796wmg.21.1591973469321; 
+ Fri, 12 Jun 2020 07:51:09 -0700 (PDT)
+Received: from redhat.com (bzq-79-178-18-124.red.bezeqint.net. [79.178.18.124])
+ by smtp.gmail.com with ESMTPSA id y5sm10767253wrs.63.2020.06.12.07.51.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 12 Jun 2020 07:51:08 -0700 (PDT)
+Date: Fri, 12 Jun 2020 10:51:07 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL v2 03/58] hw/acpi/nvdimm: add a helper to augment SRAT
+ generation
+Message-ID: <20200612141917.9446-4-mst@redhat.com>
+References: <20200612141917.9446-1-mst@redhat.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.76.210;
- envelope-from=salil.mehta@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 05:40:59
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -51
-X-Spam_score: -5.2
-X-Spam_bar: -----
-X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200612141917.9446-1-mst@redhat.com>
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/12 09:30:54
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -99,352 +127,147 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "mehta.salil.lnk@gmail.com" <mehta.salil.lnk@gmail.com>,
- "gshan@redhat.com" <gshan@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
- "jiakernel2@gmail.com" <jiakernel2@gmail.com>,
- "maz@kernel.org" <maz@kernel.org>, "david@redhat.com" <david@redhat.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "will@kernel.org" <will@kernel.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "james.morse@arm.com" <james.morse@arm.com>,
- "catalin.marinas@arm.com" <catalin.marinas@arm.com>,
- "sudeep.holla@arm.com" <sudeep.holla@arm.com>,
- "imammedo@redhat.com" <imammedo@redhat.com>,
- "maran.wilson@oracle.com" <maran.wilson@oracle.com>,
- zhukeqian <zhukeqian1@huawei.com>,
- "wangxiongfeng \(C\)" <wangxiongfeng2@huawei.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Jingqi Liu <jingqi.liu@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Vishal Verma <vishal.l.verma@intel.com>, Igor Mammedov <imammedo@redhat.com>,
+ qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E1MBzpfg5HPK
+X-TUID: MxXCOj+BU61F
 
-> From: Andrew Jones [mailto:drjones@redhat.com]
-> Sent: Tuesday, June 23, 2020 10:12 AM
-> To: Salil Mehta <salil.mehta@huawei.com>
-> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org;
-> sudeep.holla@arm.com; gshan@redhat.com; mst@redhat.com; jiakernel2@gmail.=
-com;
-> maz@kernel.org; zhukeqian <zhukeqian1@huawei.com>; david@redhat.com;
-> richard.henderson@linaro.org; Linuxarm <linuxarm@huawei.com>;
-> eric.auger@redhat.com; james.morse@arm.com; catalin.marinas@arm.com;
-> imammedo@redhat.com; pbonzini@redhat.com; mehta.salil.lnk@gmail.com;
-> maran.wilson@oracle.com; will@kernel.org; wangxiongfeng (C)
-> <wangxiongfeng2@huawei.com>
-> Subject: Re: [PATCH RFC 00/22] Support of Virtual CPU Hotplug for ARMv8 A=
-rch
->=20
-> On Sat, Jun 13, 2020 at 10:36:07PM +0100, Salil Mehta wrote:
-> > This patch-set introduces the virtual cpu hotplug support for ARMv8
-> > architecture in QEMU. Idea is to be able to hotplug and hot-unplug the =
-vcpus
-> > while guest VM is running and no reboot is required. This does *not* ma=
-kes
-> any
-> > assumption of the physical cpu hotplug availability within the host sys=
-tem
-> but
-> > rather tries to solve the problem at virtualizer/QEMU layer and by intr=
-oducing
-> > cpu hotplug hooks and event handling within the guest kernel. No change=
-s are
-> > required within the host kernel/KVM.
-> >
-> > Motivation:
-> > This allows scaling the guest VM compute capacity on-demand which would=
- be
-> > useful for the following example scenarios,
-> > 1. Vertical Pod Autoscaling[3][4] in the cloud: Part of the orchestrati=
-on
-> >    framework which could adjust resource requests (CPU and Mem requests=
-) for
-> >    the containers in a pod, based on usage.
-> > 2. Pay-as-you-grow Business Model: Infrastructure provider could alloca=
-te and
-> >    restrict the total number of compute resources available to the gues=
-t VM
-> >    according to the SLA(Service Level Agreement). VM owner could reques=
-t for
-> >    more compute to be hot-plugged for some cost.
-> >
-> > Terminology:
-> >
-> > (*) Present cpus: Total cpus with which guest has/will boot and are ava=
-ilable
-> >                   to guest for use and can be onlined. Qemu parameter(-=
-smp)
-> > (*) Disabled cpus: Possible cpus which will not be available for the gu=
-est
-> to
-> >                    use. These can be hotplugged and made present. These=
- can be
-> > 		   thought of as un-plugged vcpus. These will be included as
-> > 		   part of sizing.
-> > (*) Posssible cpus: Total vcpus which could ever exist in VM. This incl=
-udes
-> >                     booted cpus plus any cpus which could be later plug=
-ged.
-> > 		    - Qemu parameter(-maxcpus)
-> > 	            - Possible vcpus =3D Present vcpus (+) Disabled vcpus
-> >
-> >
-> > Limitations of ARMv8 Architecture:
-> >
-> > A. Physical Limitation to CPU Hotplug:
-> > 1. ARMv8 architecture does not support the concept of the physical cpu =
-hotplug.
-> >    The closest thing which is recomended to achieve the cpu hotplug on =
-ARM
-> is
-> >    to bring down power state of the cpu using PSCI.
-> > 2. Other ARM components like GIC etc. have not been designed to realize
-> >    physical cpu hotplug capability as of now.
-> >
-> > B. Limitations of GIC to Support Virtual CPU Hotplug:
-> > 1. GIC requires various resources(related to GICR/redistributor, GICC/c=
-pu
-> >    interface etc) like memory regions to be fixed at the VM init time a=
-nd these
-> >    could not be changed later on after VM has inited.
-> > 2. Associations between GICC(GIC cpu interface) and vcpu get fixed at t=
-he VM
-> >    init time and GIC does not allows to change this association once GI=
-C has
-> >    initialized.
-> >
-> > C. Known Limitation of the KVM:
-> > 1. As of now KVM allows to create VCPUs but does not allows to delete t=
-he
-> >    already created vcpus. QEMU already provides an interface to manage =
-created
-> >    vcpus at KVM level and then to re-use them.
-> > 2. Inconsistency in interpretation of the MPIDR generated by KVM for vc=
-pus
-> >    vis-a-vis SMT/threads. This does not looks to be compliant to the MP=
-IDR
-> >    format(SMT is present) as mentioned in the ARMv8 spec. (Please corre=
-ct my
-> >    understanding if I am wrong here?)
-> >
-> >
-> > Workaround to the problems mentioned in Section B & C1:
-> > 1. We pre-size the GIC with possible vcpus at VM init time
-> > 2. Pre-create all possible vcpus at KVM and associate them with GICC
-> > 3. Park the unplugged vcpus (similar to x86)
-> >
-> >
-> > (*) For all of above please refer to Marc's suggestion here[1]
-> >
-> >
-> > Overview of the Approach:
-> > At the time of machvirt_init() we pre-create all of the possible ARMCPU
-> > objects along with the corresponding KVM vcpus at the host. Disabled KV=
-M vcpu
-> > (which are *not* "present" vcpus but are part of "possible" vcpu list) =
-are
-> > parked at per VM list "kvm_parked_vcpus" after their initialization.
-> >
-> > We create the ARMCPU objects(but these are not *realized* in QOM sense)=
- even
-> > for the disabled vcpus to facilitate the GIC initialization (pre-sized =
-with
-> > possible vcpus). After Initialization of the machine is complete we rel=
-ease
-> > the ARMCPU Objects for the disabled vcpus. These ARMCPU object shall be
-> > re-created at the time when vcpu is hot plugged. This new object is the=
-n
-> > re-attached with the earlier parked KVM vcpu which also gets unparked. =
-The
-> > ARMCPU object gets now "realized" in QEMU, which means creation of the
-> > corresponding threads, pre_plug/plug phases, and event notification to =
-the
-> > guest using ACPI GED etc. Similarly, hot-unplug leg will lead to the
-> > "unrealization" of the vcpus and will lead to similar ACPI GED events t=
-o the
-> > guest for unplug and cleanup and eventually ARMCPU object shall be rele=
-ased
-> and
-> > KVM vcpus shall be parked again.
-> >
-> > During machine init, ACPI MADT Table is sized with *possible* vcpus GIC=
-C
-> > entries. The unplugged/disabled vcpus are presented as MADT GICC DISABL=
-ED
-> > entries to the guest. This means the guest will have its resources pre-=
-sized
-> > with possible vcpus(=3Dpresent+disabled)
-> >
-> > Other approaches to deal with ARMCPU object release(after machine init)=
-:
-> > 1. The ARMCPU objects for the disabled vcpus are released in context to=
- the
-> >    virt_machine_done() notifier(approach adopted in this patch-set).
-> > 2. Defer the release of current ARMCPU object till the new vcpu object =
-is
-> >    hot plugged.
-> > 3. Never release and keep on reusing them and release once at VM exit. =
-This
-> >    solves many problems with above 2 approaches but requires change in =
-the
-> way
-> >    qdev_device_add() fetches/creates the ARMCPU object for the new vcpu=
-s being
-> >    hotplugged. For the arm cpu hotplug case we need to figure out way h=
-ow to
-> >    get access to old object and use it to "re-realize" instead of the n=
-ew
-> >    ARMCPU object.
-> >
-> > Concerns/Questions:
-> > 1. In ARM arch a cpu is uniquely represented in hierarchy using various
-> >    affinity levels which could represent thread, core, cluster, package=
-. This
-> >    is generally represented by a value in MPIDR register as per the for=
-mat
-> >    mentioned in specification. Now, the way MPIDR value is derived for =
-vcpus
-> is
-> >    done using vcpu-index. The concept of thread is not quite as same an=
-d rather
-> >    gets lost in the derivation of MPIDR for vcpus.
-> > 2. The topology info used to specify the vcpu while hot-plugging might =
-not
-> >    match with the MPIDR value given back by the KVM for the vcpu at the=
- time
-> of
-> >    init. Concept of SMT bit in MPIDR gets lost as per the derivation be=
-ing
-> done
-> >    in the KVM. Hence, concept of thread-id, core-id, socket-id if used =
-as a
-> >    topology info to derive MPIDR value as per ARM specification will no=
-t match
-> >    with MPIDR actually assigned by the KVM?
-> >    Perhaps need to carry forward work of Andrew? please check here[2]
-> > 3. Further if this info is supplied to the guest using PPTT(once introd=
-uced
-> in
-> >    QEMU) or even derived using MPIDR shall be inconsistent with the hos=
-t vcpu.
-> > 4. Any possibilities of interrupts(SGI/PPI/LPI/SPI) always remaining in
-> >    *pending* state for the cpus which have been hot-unplugged? IMHO it =
-looks
-> >    okay but will need Marc's confirmation on this.
-> > 5. If the ARMCPU object is released after the machine init, UEFI could =
-call
-> >    back virt_update_table() to re-build the ACPI tables which might nee=
-d an
-> >    ARMCPU object. Please check the discussion here[5]
-> >
-> >
-> > Commands Used:
-> >
-> > A. Qemu launch commands to init the machine
-> >
-> > $ qemu-system-aarch64 --enable-kvm -machine virt,gic-version=3D3 \
-> > -cpu host -smp cpus=3D4,maxcpus=3D6 \
-> > -m 300M \
-> > -kernel Image \
-> > -initrd rootfs.cpio.gz \
-> > -append "console=3DttyAMA0 root=3D/dev/ram rdinit=3D/init maxcpus=3D2 a=
-cpi=3Dforce" \
-> > -nographic \
-> > -bios  QEMU_EFI.fd \
-> >
-> > B. Hot-(un)plug related commands
-> >
-> > # Hotplug a host vcpu(accel=3Dkvm)
-> > $ device_add host-arm-cpu,id=3Dcore4,core-id=3D4
-> >
-> > # Hotplug a vcpu(accel=3Dtcg)
-> > $ device_add cortex-a57-arm-cpu,id=3Dcore4,core-id=3D4
-> >
-> > # Delete the vcpu
-> > $ device_del core4
-> >
-> > NOTE: I have not tested the current solution with '-device' interface. =
-The
-> use
-> >       is suggested by Igor here[6]. I will test this in coming times bu=
-t looks
-> >       it should work with existing changes.
-> >
-> >
-> > Sample output on guest after boot:
-> >
-> > $ cat /sys/devices/system/cpu/possible
-> > 0-5
-> > $ cat /sys/devices/system/cpu/present
-> > 0-3
-> > $ cat /sys/devices/system/cpu/online
-> > 0-1
-> > $ cat /sys/devices/system/cpu/offline
-> > 2-5
-> >
-> >
-> > Sample output on guest after hotplug of vcpu=3D4:
-> >
-> > $ cat /sys/devices/system/cpu/possible
-> > 0-5
-> > $ cat /sys/devices/system/cpu/present
-> > 0-4
-> > $ cat /sys/devices/system/cpu/online
-> > 0-1,4
-> > $ cat /sys/devices/system/cpu/offline
-> > 2-3,5
-> >
-> > Note: vcpu=3D4 was explicitly 'onlined' after hot-plug
-> > $ echo 1 > /sys/devices/system/cpu/cpu4/online
-> >
-> >
-> > Repository:
-> >  (*) QEMU changes for vcpu hotplug could be cloned from below site,
-> >      https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v1
-> >
-> >  (*) Guest Kernel changes required to co-work with the QEMU shall be po=
-sted
-> soon
-> >      and repo made available at above site.
-> >
-> >
-> > THINGS TO DO:
-> >  (*) Migration support
-> >  (*) TCG/Emulation support is not proper right now. Works to a certain =
-extent
-> >      but is not complete. especially the unrealize part in which there =
-is a
-> >      overflow of tcg contexts. The last is due to the fact tcg maintain=
-s a
-> >      count on number of context(per thread instance) so as we hotplug t=
-he vcpus
-> >      this counter keeps on incrementing. But during hot-unplug the coun=
-ter
-> is
-> >      not decremented.
-> >  (*) Support of hotplug with NUMA is not proper
-> >  (*) CPU Topology right now is not specified using thread/core/socket b=
-ut
-> >      rather flatly indexed using core-id. This needs consideration[2].
-> >  (*) Do we need PPTT Support for to specify right topology info to gues=
-t about
-> >      hot-plugged or unplugged vcpus?
-> >  (*) Test cases
-> >  (*) Docs need to be updated.
-> >
-> >
->=20
-> Hi Salil,
->=20
-> I realize this is just a preliminary posting and the approach hasn't been
-> finalized, but maybe in a future posting we can put a lot of this
-> information into a doc patch. I think we'll need good documentation for
-> this feature to ensure we get it right and keep in maintained correctly.
+From: Vishal Verma <vishal.l.verma@intel.com>
 
+NVDIMMs can belong to their own proximity domains, as described by the
+NFIT. In such cases, the SRAT needs to have Memory Affinity structures
+in the SRAT for these NVDIMMs, otherwise Linux doesn't populate node
+data structures properly during NUMA initialization. See the following
+for an example failure case.
 
-Sure, let us do it once we converge on the concept.
+https://lore.kernel.org/linux-nvdimm/20200416225438.15208-1-vishal.l.verma@intel.com/
 
-Thanks
-Salil.
+Introduce a new helper, nvdimm_build_srat(), and call it for both the
+i386 and arm versions of 'build_srat()' to augment the SRAT with
+memory affinity information for NVDIMMs.
+
+The relevant command line options to exercise this are below. Nodes 0-1
+contain CPUs and regular memory, and nodes 2-3 are the NVDIMM address
+space.
+
+    -object memory-backend-ram,id=mem0,size=2048M
+    -numa node,nodeid=0,memdev=mem0,
+    -numa cpu,node-id=0,socket-id=0
+    -object memory-backend-ram,id=mem1,size=2048M
+    -numa node,nodeid=1,memdev=mem1,
+    -numa cpu,node-id=1,socket-id=1
+    -numa node,nodeid=2,
+    -object memory-backend-file,id=nvmem0,share,mem-path=nvdimm-0,size=16384M,align=1G
+    -device nvdimm,memdev=nvmem0,id=nv0,label-size=2M,node=2
+    -numa node,nodeid=3,
+    -object memory-backend-file,id=nvmem1,share,mem-path=nvdimm-1,size=16384M,align=1G
+    -device nvdimm,memdev=nvmem1,id=nv1,label-size=2M,node=3
+
+Cc: Jingqi Liu <jingqi.liu@intel.com>
+Cc: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: Jingqi Liu <jingqi.liu@intel.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Signed-off-by: Vishal Verma <vishal.l.verma@intel.com>
+Message-Id: <20200606000911.9896-3-vishal.l.verma@intel.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ include/hw/mem/nvdimm.h  |  1 +
+ hw/acpi/nvdimm.c         | 23 +++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c |  4 ++++
+ hw/i386/acpi-build.c     |  5 +++++
+ 4 files changed, 33 insertions(+)
+
+diff --git a/include/hw/mem/nvdimm.h b/include/hw/mem/nvdimm.h
+index a3c08955e8..b67a1aedf6 100644
+--- a/include/hw/mem/nvdimm.h
++++ b/include/hw/mem/nvdimm.h
+@@ -155,6 +155,7 @@ typedef struct NVDIMMState NVDIMMState;
+ void nvdimm_init_acpi_state(NVDIMMState *state, MemoryRegion *io,
+                             struct AcpiGenericAddress dsm_io,
+                             FWCfgState *fw_cfg, Object *owner);
++void nvdimm_build_srat(GArray *table_data);
+ void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
+                        BIOSLinker *linker, NVDIMMState *state,
+                        uint32_t ram_slots);
+diff --git a/hw/acpi/nvdimm.c b/hw/acpi/nvdimm.c
+index 9316d12b70..8f7cc16add 100644
+--- a/hw/acpi/nvdimm.c
++++ b/hw/acpi/nvdimm.c
+@@ -28,6 +28,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/uuid.h"
++#include "qapi/error.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/aml-build.h"
+ #include "hw/acpi/bios-linker-loader.h"
+@@ -1334,6 +1335,28 @@ static void nvdimm_build_ssdt(GArray *table_offsets, GArray *table_data,
+     free_aml_allocator();
+ }
+ 
++void nvdimm_build_srat(GArray *table_data)
++{
++    GSList *device_list = nvdimm_get_device_list();
++
++    for (; device_list; device_list = device_list->next) {
++        AcpiSratMemoryAffinity *numamem = NULL;
++        DeviceState *dev = device_list->data;
++        Object *obj = OBJECT(dev);
++        uint64_t addr, size;
++        int node;
++
++        node = object_property_get_int(obj, PC_DIMM_NODE_PROP, &error_abort);
++        addr = object_property_get_uint(obj, PC_DIMM_ADDR_PROP, &error_abort);
++        size = object_property_get_uint(obj, PC_DIMM_SIZE_PROP, &error_abort);
++
++        numamem = acpi_data_push(table_data, sizeof *numamem);
++        build_srat_memory(numamem, addr, size, node,
++                          MEM_AFFINITY_ENABLED | MEM_AFFINITY_NON_VOLATILE);
++    }
++    g_slist_free(device_list);
++}
++
+ void nvdimm_build_acpi(GArray *table_offsets, GArray *table_data,
+                        BIOSLinker *linker, NVDIMMState *state,
+                        uint32_t ram_slots)
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 1b0a584c7b..2cbccd5fe2 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -539,6 +539,10 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         }
+     }
+ 
++    if (ms->nvdimms_state->is_enabled) {
++        nvdimm_build_srat(table_data);
++    }
++
+     if (ms->device_memory) {
+         numamem = acpi_data_push(table_data, sizeof *numamem);
+         build_srat_memory(numamem, ms->device_memory->base,
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 2e15f6848e..d996525e2c 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -2428,6 +2428,11 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+                               MEM_AFFINITY_ENABLED);
+         }
+     }
++
++    if (machine->nvdimms_state->is_enabled) {
++        nvdimm_build_srat(table_data);
++    }
++
+     slots = (table_data->len - numa_start) / sizeof *numamem;
+     for (; slots < pcms->numa_nodes + 2; slots++) {
+         numamem = acpi_data_push(table_data, sizeof *numamem);
+-- 
+MST
+

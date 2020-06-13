@@ -1,63 +1,63 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp453083lfm;
-        Sat, 13 Jun 2020 14:52:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwmyZpVDLNfm6pa1FtDUqLrlhQezDM2Mq+nFukY5QpSjcCXPmEe05E5Mj3Dr3mLPJBJErQO
-X-Received: by 2002:a25:b8b:: with SMTP id 133mr32966974ybl.373.1592085169491;
-        Sat, 13 Jun 2020 14:52:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592085169; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp453495lfm;
+        Sat, 13 Jun 2020 14:53:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyH7q0BE8dFMi3t4AT74bh5AxxuMqPCczeo+iuW37ZxuNUqp/a+EYFD3rNnQbuzaBXU637O
+X-Received: by 2002:a25:ef4c:: with SMTP id w12mr35456024ybm.40.1592085227773;
+        Sat, 13 Jun 2020 14:53:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592085227; cv=none;
         d=google.com; s=arc-20160816;
-        b=ThFy4Sx0FEABxjLz4XW1GX240UAT9v7ASoSFCy/P52P02AoWirHJEtKZlu6/H4xv8z
-         +ZBIum225i9kA3qiqFNtR9HI7s768EXl7+XKUeBQI3aNCYy43MF4rRQdOX5xn9bqCinV
-         WwuuDFbHb7Ur+XETLe75cEu/5p2UcZgWg6GGFIs04l8D/MDR7wbFUbsbUMUx0GyN6iIT
-         KbbGXjctOLIqfl+tqiGnQSSYoFYDNTyPobe1itNeYh1L9dfHqLePFH1lVweIhfLOLF55
-         nuKNsEZko6k5nyqWCU56QIpEADeQn049xfgrlFA3BgxeYVrGNVVS3NH6NwyraQQkAZ5e
-         uxlg==
+        b=G9yi9Qpc0VUQfgROVmIQZxrNVIOLk2p4Kkzc65IrYAwh3AeMvseU+xP8TwmolFCt3Z
+         JmazsWfhSOb8Iu7T6LhmBcARdFCp057aRUNqbXGoZAzSUB0hUIcrnv9ATvGHRG4cpzmK
+         Ov49hLX1NUcfPZDxP5GhLNci25wp09iVBPbt9hbtVA2xMeL5jJY25Gj8YhE5lE4uCpnC
+         af3TR3BJMTtue+ljz1O0zgMyUYRbXNBM9Ib3czDJQENo8zP2TPKca2pYZnHbHWzFJsl3
+         xlQYOqCjwAU2+Xr7ToQH6mIDsLSH5T8wmQ97JnyxfBmcNxMYZXQWLRYF1EJwyE5CPygQ
+         hNhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=9Lqm0yM+vJWb/imy1t0fBTQ7xHsOfll4Le6SlLYmmYM=;
-        b=oBn+rs5AwMKtByiLPvCSSlzxorK8LELQU7QPG2f+daZeyfL45lOwymTeYH3XS6uTib
-         1laKmAAgZi/Z13E2s3Nd3XrRKFBiCwElw3yjooLwiMoDSxdq94f47ywK+VhWE8vtKdte
-         FMMuZxwOonG2dqqYPJ+8G3+QQZIAqZBGGf4xoO85Vs0stDrGMnY++uzkV/nf4wsJdG3w
-         +fVlwTr3uE//97GAqxRKi7FtCrxWs87ikjPIfxk5idblKZD2T/hwsM4poaSXFuX/JWaS
-         O7P8QwVb8HMNA2rCoDGpN/s0887hzyVyhLpnDGzZgLAvLKovYBrp/yYS/Hgbd/wWdJ2n
-         szfw==
+        bh=FySlFB9vnCqhqTF97DLNoJkonHTVapI2jf0p2gGMcCU=;
+        b=iKH5ogeOyr63RoKFxkrMy90zYc21E+CxqESQEbI3egb8vWp8lc1JoigIm3JColDkc3
+         Ke71B5SPTg+PHBQVPyXv3co2avxO57lRZrBmauGCUrzGHns0tbOOXs7vGaghgmUKqqVT
+         y6OppyR+7T94iox3FLlpgIa5UVxEakrcvDBB4n7AQoqq6iYqpfGOJF9CoNwkFpPAu66f
+         lIZ9hU79jkj8suAtfH51baHTCh/WuZvddBPTcP/3ho6gzEH7Xf2DQDZQ1c84DcCHTMy/
+         WBdTdZdNYqAvhbsSj1Gayg/9Jx47XYo5vqyQy4bxLOFzNairRbgO/bBMTxmxlCfLqb8V
+         Uvtg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k12si7107106ybg.307.2020.06.13.14.52.49
+        by mx.google.com with ESMTPS id p15si8621697ybk.86.2020.06.13.14.53.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 13 Jun 2020 14:52:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 13 Jun 2020 14:53:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58184 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33756 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jkE52-000299-SW
-	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:52:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60150)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jkE5z-0003fE-3i
+	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:53:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60624)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDyF-0007EN-71; Sat, 13 Jun 2020 17:45:47 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3777 helo=huawei.com)
+ id 1jkDyi-0007v9-Os; Sat, 13 Jun 2020 17:46:16 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:44728 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDyD-0003Lc-39; Sat, 13 Jun 2020 17:45:46 -0400
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 3739E75CD75FBCF2EC6D;
- Sun, 14 Jun 2020 05:45:41 +0800 (CST)
+ id 1jkDyg-0003UX-5l; Sat, 13 Jun 2020 17:46:16 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id A0730870F7F55669E4BE;
+ Sun, 14 Jun 2020 05:46:11 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.47.30.60) by
  DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Sun, 14 Jun 2020 05:45:34 +0800
+ 14.3.487.0; Sun, 14 Jun 2020 05:46:04 +0800
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH RFC 14/22] arm/cpuhp: Release objects for *disabled* possible
- vcpus after init
-Date: Sat, 13 Jun 2020 22:36:21 +0100
-Message-ID: <20200613213629.21984-15-salil.mehta@huawei.com>
+Subject: [PATCH RFC 19/22] arm/cpuhp: Changes required to (re)init the vcpu
+ register info
+Date: Sat, 13 Jun 2020 22:36:26 +0100
+Message-ID: <20200613213629.21984-20-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
 In-Reply-To: <20200613213629.21984-1-salil.mehta@huawei.com>
 References: <20200613213629.21984-1-salil.mehta@huawei.com>
@@ -65,9 +65,9 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.47.30.60]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
+Received-SPF: pass client-ip=45.249.212.32;
  envelope-from=salil.mehta@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/13 17:44:35
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/13 17:44:20
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -76,17 +76,17 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, sudeep.holla@arm.com,
  gshan@redhat.com, mst@redhat.com, jiakernel2@gmail.com, maz@kernel.org,
  zhukeqian1@huawei.com, david@redhat.com, richard.henderson@linaro.org,
@@ -95,86 +95,271 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, sudeep.holla@arm.com,
  Salil Mehta <salil.mehta@huawei.com>, pbonzini@redhat.com,
  mehta.salil.lnk@gmail.com, maran.wilson@oracle.com, will@kernel.org,
  wangxiongfeng2@huawei.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2IdqbNRBnLG8
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8do8NrUbXVZM
 
-During machvirt_init(), ARMCPU objects are pre-created along with the
-corresponding KVM vcpus in the host. Disabled possible KVM vcpus are then
-parked at the per-virt-machine list "kvm_parked_vcpus".
-
-Prime purpose to pre-create ARMCPU objects for the disabled vcpus is to
-facilitate the GIC initialization (pre-sized with possible vcpus). GIC
-requires all vcpus corresponding to its GICC(GIC CPU Interface) to be
-initialized and present during its own initialization.
-
-After initialization of the machine is complete we release the ARMCPU objects
-for the disabled vcpus(which shall be re-created at the time when vcpu is hot
-plugged again. This newly created ARMCPU object is then attached with
-corresponding parked KVM VCPU).
-
-We have few options after the machine init where the disabled ARMCPU object
-could be released:
-1. Release in context to the virt_machine_done() notifier.(This is also our
-   current approach)
-2. Defer the release till a new vcpu object is hot plugged. Then release the
-   object in context to the pre_plug() phase.
-3. Never release and keep on reusing them and release once at VM exit. This
-   will require some modifications within the interface of qdevice_add() to
-   get old ARMCPU object instead of creating a new one for the hotplug request.
-
-Each of the above approaches come with their own pros and cons. This prototype
-uses the 1st approach.(suggestions are welcome!)
+VCPU register info needs to be re-initialized each time vcpu is hot-plugged.
+This has to be done both for emulation/TCG and KVM case. This is done in
+context to the GIC update notification for any vcpu hot-(un)plug events. This
+change adds that support and re-factors existing to maximize the code re-use.
 
 Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/arm/virt.c | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ hw/intc/arm_gicv3.c                |   1 +
+ hw/intc/arm_gicv3_common.c         |   6 +-
+ hw/intc/arm_gicv3_cpuif.c          | 134 ++++++++++++++++-------------
+ hw/intc/arm_gicv3_kvm.c            |   7 +-
+ hw/intc/gicv3_internal.h           |   1 +
+ include/hw/intc/arm_gicv3_common.h |   1 +
+ 6 files changed, 86 insertions(+), 64 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index e9ead0e2dd..0faf54aa8f 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1403,6 +1403,28 @@ static void create_secure_ram(VirtMachineState *vms,
-     g_free(nodename);
+diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
+index 66eaa97198..86f2f4cca7 100644
+--- a/hw/intc/arm_gicv3.c
++++ b/hw/intc/arm_gicv3.c
+@@ -396,6 +396,7 @@ static void arm_gicv3_class_init(ObjectClass *klass, void *data)
+     ARMGICv3Class *agc = ARM_GICV3_CLASS(klass);
+ 
+     agcc->post_load = arm_gicv3_post_load;
++    agcc->init_cpu_reginfo = gicv3_init_cpu_reginfo;
+     device_class_set_parent_realize(dc, arm_gic_realize, &agc->parent_realize);
  }
  
-+static void virt_remove_disabled_cpus(VirtMachineState *vms)
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index f6b7b359cb..01e4aba4f1 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -330,6 +330,7 @@ static void arm_gicv3_cpu_update_notifier(Notifier * notifier, void * data)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(qdev_get_machine());
+     GICv3State *s = ARM_GICV3_COMMON(vms->gic);
++    ARMGICv3CommonClass *c = ARM_GICV3_COMMON_GET_CLASS(s);
+     CPUState *cpu = (CPUState *)data;
+     int gic_cpuif_num;
+ 
+@@ -351,7 +352,10 @@ static void arm_gicv3_cpu_update_notifier(Notifier * notifier, void * data)
+     gicv3_set_gicv3state(cpu, &s->cpu[gic_cpuif_num]);
+     gicv3_set_cpustate(&s->cpu[gic_cpuif_num], cpu);
+ 
+-    /* TODO: initialize the registers info for this newly added cpu */
++    /* initialize the registers info for this newly added cpu */
++    if (c->init_cpu_reginfo) {
++        c->init_cpu_reginfo(cpu);
++    }
+ }
+ 
+ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index b3aa5979ca..1126fffa55 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -2605,6 +2605,74 @@ static const ARMCPRegInfo gicv3_cpuif_ich_apxr23_reginfo[] = {
+     REGINFO_SENTINEL
+ };
+ 
++void gicv3_init_cpu_reginfo(CPUState *cs)
 +{
-+    MachineState *ms = MACHINE(vms);
-+    int n;
++    ARMCPU *cpu = ARM_CPU(cs);
++    GICv3CPUState *gcs = icc_cs_from_env(&cpu->env);
 +
-+    /*
-+     * RFC: Question: Other approach could have been to keep them forever
-+     * and release it only once when qemu exits as part o finalize or when
-+     * new vcpu is hotplugged. In the later old could be released for the
-+     * newly created object for the same vcpu?
++    /* Note that we can't just use the GICv3CPUState as an opaque pointer
++     * in define_arm_cp_regs_with_opaque(), because when we're called back
++     * it might be with code translated by CPU 0 but run by CPU 1, in
++     * which case we'd get the wrong value.
++     * So instead we define the regs with no ri->opaque info, and
++     * get back to the GICv3CPUState from the CPUARMState.
 +     */
-+    for (n = vms->smp_cpus; n < vms->max_cpus; n++) {
-+        CPUState *cs = qemu_get_possible_cpu(n);
-+        if (!qemu_present_cpu(cs)) {
-+            CPUArchId *cpu_slot;
-+            cpu_slot = virt_find_cpu_slot(ms, cs->cpu_index);
-+            cpu_slot->cpu = NULL;
-+            object_unref(OBJECT(cs));
++    define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
++    if (arm_feature(&cpu->env, ARM_FEATURE_EL2)
++        && cpu->gic_num_lrs) {
++        int j;
++
++        gcs->maintenance_irq = cpu->gicv3_maintenance_interrupt;
++
++        gcs->num_list_regs = cpu->gic_num_lrs;
++        gcs->vpribits = cpu->gic_vpribits;
++        gcs->vprebits = cpu->gic_vprebits;
++
++        /* Check against architectural constraints: getting these
++         * wrong would be a bug in the CPU code defining these,
++         * and the implementation relies on them holding.
++         */
++        g_assert(gcs->vprebits <= gcs->vpribits);
++        g_assert(gcs->vprebits >= 5 && gcs->vprebits <= 7);
++        g_assert(gcs->vpribits >= 5 && gcs->vpribits <= 8);
++
++        define_arm_cp_regs(cpu, gicv3_cpuif_hcr_reginfo);
++
++        for (j = 0; j < gcs->num_list_regs; j++) {
++            /* Note that the AArch64 LRs are 64-bit; the AArch32 LRs
++             * are split into two cp15 regs, LR (the low part, with the
++             * same encoding as the AArch64 LR) and LRC (the high part).
++             */
++            ARMCPRegInfo lr_regset[] = {
++                { .name = "ICH_LRn_EL2", .state = ARM_CP_STATE_BOTH,
++                  .opc0 = 3, .opc1 = 4, .crn = 12,
++                  .crm = 12 + (j >> 3), .opc2 = j & 7,
++                  .type = ARM_CP_IO | ARM_CP_NO_RAW,
++                  .access = PL2_RW,
++                  .readfn = ich_lr_read,
++                  .writefn = ich_lr_write,
++                },
++                { .name = "ICH_LRCn_EL2", .state = ARM_CP_STATE_AA32,
++                  .cp = 15, .opc1 = 4, .crn = 12,
++                  .crm = 14 + (j >> 3), .opc2 = j & 7,
++                  .type = ARM_CP_IO | ARM_CP_NO_RAW,
++                  .access = PL2_RW,
++                  .readfn = ich_lr_read,
++                  .writefn = ich_lr_write,
++                },
++                REGINFO_SENTINEL
++            };
++            define_arm_cp_regs(cpu, lr_regset);
++        }
++        if (gcs->vprebits >= 6) {
++            define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr1_reginfo);
++        }
++        if (gcs->vprebits == 7) {
++            define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr23_reginfo);
 +        }
 +    }
 +}
 +
- static bool virt_pmu_init(VirtMachineState *vms)
+ static void gicv3_cpuif_el_change_hook(ARMCPU *cpu, void *opaque)
  {
-     CPUArchIdList *possible_cpus = vms->parent.possible_cpus;
-@@ -1500,6 +1522,9 @@ void virt_machine_done(Notifier *notifier, void *data)
+     GICv3CPUState *cs = opaque;
+@@ -2621,69 +2689,11 @@ void gicv3_init_cpuif(GICv3State *s)
  
-     virt_acpi_setup(vms);
-     virt_build_smbios(vms);
-+
-+    /* release the disabled ARMCPU objects used during init for pre-sizing */
-+     virt_remove_disabled_cpus(vms);
+     for (i = 0; i < s->num_cpu; i++) {
+         ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i));
+-        GICv3CPUState *cs = &s->cpu[i];
+-
+-        /* Note that we can't just use the GICv3CPUState as an opaque pointer
+-         * in define_arm_cp_regs_with_opaque(), because when we're called back
+-         * it might be with code translated by CPU 0 but run by CPU 1, in
+-         * which case we'd get the wrong value.
+-         * So instead we define the regs with no ri->opaque info, and
+-         * get back to the GICv3CPUState from the CPUARMState.
+-         */
+-        define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
+-        if (arm_feature(&cpu->env, ARM_FEATURE_EL2)
+-            && cpu->gic_num_lrs) {
+-            int j;
+ 
+-            cs->maintenance_irq = cpu->gicv3_maintenance_interrupt;
+-
+-            cs->num_list_regs = cpu->gic_num_lrs;
+-            cs->vpribits = cpu->gic_vpribits;
+-            cs->vprebits = cpu->gic_vprebits;
+-
+-            /* Check against architectural constraints: getting these
+-             * wrong would be a bug in the CPU code defining these,
+-             * and the implementation relies on them holding.
+-             */
+-            g_assert(cs->vprebits <= cs->vpribits);
+-            g_assert(cs->vprebits >= 5 && cs->vprebits <= 7);
+-            g_assert(cs->vpribits >= 5 && cs->vpribits <= 8);
+-
+-            define_arm_cp_regs(cpu, gicv3_cpuif_hcr_reginfo);
+-
+-            for (j = 0; j < cs->num_list_regs; j++) {
+-                /* Note that the AArch64 LRs are 64-bit; the AArch32 LRs
+-                 * are split into two cp15 regs, LR (the low part, with the
+-                 * same encoding as the AArch64 LR) and LRC (the high part).
+-                 */
+-                ARMCPRegInfo lr_regset[] = {
+-                    { .name = "ICH_LRn_EL2", .state = ARM_CP_STATE_BOTH,
+-                      .opc0 = 3, .opc1 = 4, .crn = 12,
+-                      .crm = 12 + (j >> 3), .opc2 = j & 7,
+-                      .type = ARM_CP_IO | ARM_CP_NO_RAW,
+-                      .access = PL2_RW,
+-                      .readfn = ich_lr_read,
+-                      .writefn = ich_lr_write,
+-                    },
+-                    { .name = "ICH_LRCn_EL2", .state = ARM_CP_STATE_AA32,
+-                      .cp = 15, .opc1 = 4, .crn = 12,
+-                      .crm = 14 + (j >> 3), .opc2 = j & 7,
+-                      .type = ARM_CP_IO | ARM_CP_NO_RAW,
+-                      .access = PL2_RW,
+-                      .readfn = ich_lr_read,
+-                      .writefn = ich_lr_write,
+-                    },
+-                    REGINFO_SENTINEL
+-                };
+-                define_arm_cp_regs(cpu, lr_regset);
+-            }
+-            if (cs->vprebits >= 6) {
+-                define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr1_reginfo);
+-            }
+-            if (cs->vprebits == 7) {
+-                define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr23_reginfo);
+-            }
++        if (qemu_present_cpu(CPU(cpu))) {
++            GICv3CPUState *cs = icc_cs_from_env(&cpu->env);
++            gicv3_init_cpu_reginfo(CPU(cpu));
++            arm_register_el_change_hook(cpu, gicv3_cpuif_el_change_hook, cs);
+         }
+-        arm_register_el_change_hook(cpu, gicv3_cpuif_el_change_hook, cs);
+     }
+ }
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index 7fe000e53c..8d19af3974 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -781,6 +781,10 @@ static void vm_change_state_handler(void *opaque, int running,
+     }
  }
  
- static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
++static void kvm_gicv3_init_cpu_reginfo(CPUState *cs)
++{
++    define_arm_cp_regs(ARM_CPU(cs), gicv3_cpuif_reginfo);
++}
+ 
+ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+ {
+@@ -813,7 +817,7 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < s->num_cpu; i++) {
+         CPUState *cs = qemu_get_cpu(i);
+         if (qemu_present_cpu(cs))
+-            define_arm_cp_regs(ARM_CPU(cs), gicv3_cpuif_reginfo);
++            kvm_gicv3_init_cpu_reginfo(cs);
+     }
+ 
+     /* Try to create the device via the device control API */
+@@ -902,6 +906,7 @@ static void kvm_arm_gicv3_class_init(ObjectClass *klass, void *data)
+ 
+     agcc->pre_save = kvm_arm_gicv3_get;
+     agcc->post_load = kvm_arm_gicv3_put;
++    agcc->init_cpu_reginfo = kvm_gicv3_init_cpu_reginfo;
+     device_class_set_parent_realize(dc, kvm_arm_gicv3_realize,
+                                     &kgc->parent_realize);
+     device_class_set_parent_reset(dc, kvm_arm_gicv3_reset, &kgc->parent_reset);
+diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+index 6e14a7a6cd..66eec3c3fc 100644
+--- a/hw/intc/gicv3_internal.h
++++ b/hw/intc/gicv3_internal.h
+@@ -298,6 +298,7 @@ void gicv3_dist_set_irq(GICv3State *s, int irq, int level);
+ void gicv3_redist_set_irq(GICv3CPUState *cs, int irq, int level);
+ void gicv3_redist_send_sgi(GICv3CPUState *cs, int grp, int irq, bool ns);
+ void gicv3_init_cpuif(GICv3State *s);
++void gicv3_init_cpu_reginfo(CPUState *cs);
+ 
+ /**
+  * gicv3_cpuif_update:
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index b51f74c728..4d1cbc66db 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -294,6 +294,7 @@ typedef struct ARMGICv3CommonClass {
+ 
+     void (*pre_save)(GICv3State *s);
+     void (*post_load)(GICv3State *s);
++    void (*init_cpu_reginfo)(CPUState *cs);
+ } ARMGICv3CommonClass;
+ 
+ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
 -- 
 2.17.1
 

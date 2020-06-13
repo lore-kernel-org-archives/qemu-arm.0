@@ -1,111 +1,80 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp881394lfc;
-        Fri, 12 Jun 2020 17:19:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzdQO/VWE8JiPM25lBhr0rd+2Pbit2alrnEH3uDlflz6gp2zZzjxlCske5yDW/bB2z/Tf3E
-X-Received: by 2002:a25:c101:: with SMTP id r1mr15625914ybf.112.1592007570319;
-        Fri, 12 Jun 2020 17:19:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592007570; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp450020lfm;
+        Sat, 13 Jun 2020 14:45:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZOfCwdK33Nphd5m5PF9o54WNIpv7BmJcIZ9Vuv0/g1IKc38l6hhz3Z8Rc3ITmkktu+YRu
+X-Received: by 2002:a25:c343:: with SMTP id t64mr21031808ybf.289.1592084707678;
+        Sat, 13 Jun 2020 14:45:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592084707; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zr+jBNTgruQn0yMnGOKA+e1atw6kbBvUpkIDXqDsy9EhtydkGSZa9AOLEYHWjgThPz
-         736bOASb4T4B3RVPLystv3ku8X4ovs3sl2I9FUQ+ZJzWsUFGw2+MRDYCUA5Sge/f5G0M
-         Di5/dJVt6GdBlMmmAV7OFVP1bWIAVMYDl66L/hEkDvUalgMVVm92Iq5/W2Ofs+qlauun
-         g+kLL4rjP1QROwh1BXVOZunZHJqyDm3qnA9XveuOJaYVychMd93BJtjXpH0UjLDlGLGO
-         y9HX0YiUY7aHaIyhTX66TufvNsVm4mUQiQgV1bsdV/+cPI3CqNFjdSbMzwLj8gFfzyiC
-         UZ7g==
+        b=VG74+KGWeDNpkVlBDYR7eI0ar+OcJw3VBVtmofu1+Noi6H+RdoyJQcec4lrqbSUszh
+         mlWCY1iR3IMJKTIB2Z/iEOTrHpD2BY/DBzrZGrj5KjOuyc35IGGvHhyBqxpMSfuSW/6a
+         D55frP50kKCiT5fLotT4WveRAV8a1x3YTnWMdxeWYGYoVY4kXQA0+EkDT9W7HiWE+ryQ
+         sUEx1APWjqR3y1R7GzVxSYrrfwOPONBBTRc4OzUNw/Y9qM8D8sPcrM8O1Rk2vI3C6Z16
+         lnPXl8Q4yPON9Yz3hYHE+DU9PydJ0cM/f8wQ3LFvQRuIwa1iJrCel2Y44oJgPIqdhnzO
+         t9Ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=fePs81fA+XH2lGKybDVVekfZVoP1uy6wDnoFXdUsDDw=;
-        b=CIWWeLxGyzw6QIIMztb6hy1s0av6QjZeFz1QlfV8GrGxR2N/OAvCfSKGb18nX5Sjcm
-         5ac1sRcswChLxqkUzHlSD7jK+ovvK92Q89GluUn1KIWQR7221rtPaAFrQLfDOQ15Bgol
-         RDG2W5wKYnPHBsrUlC7YPL3nNN2+Rc2bKKnJesWOiHjjPdYMJsF5l/eT3+UfTfU+/w/B
-         F3edrZeaGQA0K3Orhs7UR2M+ppoMHMyFEqhAlwgIjBUIzlgo8nZucA3DcQTde0wl16KZ
-         eATU6bZcTXocyTKxmekN/9l9qCmV4RAu6HCz6Ndn2TcpDh1CIi8ZKIXzpQq5wFSagFCZ
-         LP5Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from;
+        bh=kzBMVZPHy1tyJ/FQ7rN7ireqpFu1TxBPFuGfAGsCkHk=;
+        b=FKSIwaSzPcF9oKd2ruph902A+amVx8hBv5+2JVjzNnuJdyNr5yiHQdjJT9cjkyXC7C
+         R/eWFSvmxWn88rBshwE/DNB+DPduPoeMUUJK3RKXsDHl76PHWsVkH1YCGQCQR5izAkPf
+         Wh3ZflnjRueyk0Z/rjPUHkLRwPDYlsGJJuUCPnfaaj6dRX0DvNw/YlbgRmXhXRUpuUld
+         4ZSNKdVCK2nauph71zRx4ow5SA+swJnXU4eKRrdJAFaQU/MICAsSN22KU4H0GoM8/IU3
+         KESAeG+EJo2EBMqjwMeTH9qjJgm0sbcwOzP5M6mgZDFI9vE0+Wpu8u1/bBwoe282R8x+
+         S5Vw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=CinAQnau;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p18si6393225ybl.126.2020.06.12.17.19.30
+        by mx.google.com with ESMTPS id 14si8910932ybj.54.2020.06.13.14.45.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Jun 2020 17:19:30 -0700 (PDT)
+        Sat, 13 Jun 2020 14:45:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=CinAQnau;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:39474 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56090 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjttR-0002Xi-O7
-	for alex.bennee@linaro.org; Fri, 12 Jun 2020 20:19:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38812)
+	id 1jkDxa-0005ZP-S3
+	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:45:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59274)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jjttL-0002XT-IV
- for qemu-arm@nongnu.org; Fri, 12 Jun 2020 20:19:23 -0400
-Received: from mail-ua1-x929.google.com ([2607:f8b0:4864:20::929]:42710)
- by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jjttJ-0002Ks-EH
- for qemu-arm@nongnu.org; Fri, 12 Jun 2020 20:19:23 -0400
-Received: by mail-ua1-x929.google.com with SMTP id c15so3797452uar.9
- for <qemu-arm@nongnu.org>; Fri, 12 Jun 2020 17:19:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fePs81fA+XH2lGKybDVVekfZVoP1uy6wDnoFXdUsDDw=;
- b=CinAQnauJYNORGoTD1BsTNa3j/4gsBkChCiWeuB/0VgO29M+ie3EvSIATS6kDMMxTO
- aeGr7kDX3zt7XIGdUdQ9fyhfrDxrCld2tZk5W82ouMwEucjSfintecmYWvhzoIUs2/GR
- keDhEIeorMFODMGlilIT/ws04Tc9/b+yIU+zgp6zJ1tdyCkKiFKyeGHipKOQulY2OoyT
- hHjnLjxNE4IrXNLEn+Nl74gqIDwy8cr8Gzwg4Uthq4vKsVRTfKeZT5HD45g3419gqoUw
- Q3QZbuQmkliIadgaAwMDy0K2dHkgeSo4GpkS8+USudCCxOgvcM8FpAGGNrTS0T5oAzlW
- jE8A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=fePs81fA+XH2lGKybDVVekfZVoP1uy6wDnoFXdUsDDw=;
- b=MxcjFUPHmVc+TQGwh95088jb82xpKUmhnj45DBYf9nvCxO1DhwdGnn+G2hboVeg+az
- bIQKhSk95jsnmCy5Ct5BTIiqh9kUH5fT7sZJwYUZ3Fky4zPC2/I+lwxiqHc9PiDEY1Xo
- dckM8G1HGKPYCwjHhvsPHRBtxI6ZoyF3VGhsbai5fbnLk+kV0OCPzkP3Shx+UBnWeI8I
- VKKMGte7saA+1h7HOYNhvGV8fdxHDnPe8z2sUP+8VBlvWzHgXuQSpwTAmm+EoCerfTNJ
- AylALGj55rhWPnE1qyWA2ClVOJ9IDbUFRflzHnwdpUH0BhvwE117b/iQWjsFOMP/14Rf
- SF2A==
-X-Gm-Message-State: AOAM533hYWD0jG+6pumlgngoOdzqTMG61xBlpwBIlYFwF4R5gXm+GglL
- GwyHXg7x1kFEKnSc5gSbbNezD3fXnGDvpN+qkifOTQ==
-X-Received: by 2002:ab0:6ec6:: with SMTP id c6mr14608973uav.7.1592007554624;
- Fri, 12 Jun 2020 17:19:14 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
+ id 1jkDxP-0005Wc-Pj; Sat, 13 Jun 2020 17:44:55 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:43308 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
+ id 1jkDxM-00037Y-Ti; Sat, 13 Jun 2020 17:44:55 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 73BE68C24A74F8661BE4;
+ Sun, 14 Jun 2020 05:44:50 +0800 (CST)
+Received: from A190218597.china.huawei.com (10.47.30.60) by
+ DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
+ 14.3.487.0; Sun, 14 Jun 2020 05:44:41 +0800
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: [PATCH RFC 05/22] arm/cpuhp: Pre-create disabled possible vcpus
+ @machine init
+Date: Sat, 13 Jun 2020 22:36:12 +0100
+Message-ID: <20200613213629.21984-6-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.8.3
+In-Reply-To: <20200613213629.21984-1-salil.mehta@huawei.com>
+References: <20200613213629.21984-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
-References: <20200611223016.259837-1-hskinnemoen@google.com>
- <20200611223016.259837-12-hskinnemoen@google.com>
-In-Reply-To: <20200611223016.259837-12-hskinnemoen@google.com>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Fri, 12 Jun 2020 17:19:03 -0700
-Message-ID: <CAFQmdRbMb5HBvhV02rd8beC4KtxyMjLb0SXrmgRSSDY3eG_N2A@mail.gmail.com>
-Subject: Re: [PATCH v2 11/12] hw/arm: Wire up BMC boot flash for npcm750-evb
- and quanta-gsj
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Joel Stanley <joel@jms.id.au>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
- CS20 KFTing <kfting@nuvoton.com>
-Content-Type: multipart/alternative; boundary="000000000000c6637705a7ec2424"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::929;
- envelope-from=hskinnemoen@google.com; helo=mail-ua1-x929.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -185
-X-Spam_score: -18.6
-X-Spam_bar: ------------------
-X-Spam_report: (-18.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=_AUTOLEARN
+Content-Type: text/plain
+X-Originating-IP: [10.47.30.60]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32;
+ envelope-from=salil.mehta@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/13 17:44:20
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,98 +87,233 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, drjones@redhat.com, sudeep.holla@arm.com,
+ gshan@redhat.com, mst@redhat.com, jiakernel2@gmail.com, maz@kernel.org,
+ zhukeqian1@huawei.com, david@redhat.com, richard.henderson@linaro.org,
+ linuxarm@huawei.com, eric.auger@redhat.com, james.morse@arm.com,
+ catalin.marinas@arm.com, imammedo@redhat.com,
+ Salil Mehta <salil.mehta@huawei.com>, pbonzini@redhat.com,
+ mehta.salil.lnk@gmail.com, maran.wilson@oracle.com, will@kernel.org,
+ wangxiongfeng2@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 897fuCmcchac
+X-TUID: wM1tedU2J5MP
 
---000000000000c6637705a7ec2424
-Content-Type: text/plain; charset="UTF-8"
+In ARMv8 architecture, GIC needs all the vcpus to be created and present when
+it is initialized. This is because:
+1. GICC and MPIDR association must be fixed at the VM initialization time.
+   This is represented by register GIC_TYPER(mp_afffinity, proc_num)
+2. GICC(cpu interfaces), GICR(redistributors) etc all must be initialized
+   at the boot time as well.
+3. Memory regions associated with GICR etc. cannot be changed(add/del/mod)
+   after VM has inited.
 
-On Thu, Jun 11, 2020 at 3:30 PM Havard Skinnemoen <hskinnemoen@google.com>
-wrote:
+This patch adds the support to pre-create all such possible vcpus within the
+host using the KVM interface as part of the virt machine initialization. These
+vcpus could later be attached to QOM/ACPI while they are actually hot plugged
+and made present.
 
-> @@ -57,18 +72,30 @@ static NPCM7xxState *npcm7xx_create_soc(MachineState
-> *machine)
->  static void npcm750_evb_init(MachineState *machine)
->  {
->      NPCM7xxState *soc;
-> +    DriveInfo *dinfo;
->
->      soc = npcm7xx_create_soc(machine);
->
-> +    dinfo = drive_get(IF_MTD, 0, 0);
-> +    if (dinfo) {
-> +        npcm7xx_connect_flash(&soc->fiu[0], 0, "w25q256", dinfo);
->
+NOTE: There is some refactoring related to the kvm_destroy_vcpu/kvm_get_vcpu
+      (to make use of the common code) has been intentionaly left out in RFC
+      version to avoid obscuring the framework change of the cpu hotplug. The
+      existing code being presented in this patch could further be optimized
+      later.
 
-Btw, this does not actually work. I initially tested it with the same flash
-chip as gsj, which seems to work, but after switching to the Winbond model
-(as per the npcm750 evb schematics) it looks like it reads incorrect data
-in DIO mode.
+Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+---
+ accel/kvm/kvm-all.c  | 31 +++++++++++++++++++++++++++++
+ hw/arm/virt.c        | 46 ++++++++++++++++++++++++++++++++++++++++++--
+ include/sysemu/kvm.h |  2 ++
+ target/arm/kvm.c     | 32 ++++++++++++++++++++++++++++++
+ target/arm/kvm_arm.h | 11 +++++++++++
+ 5 files changed, 120 insertions(+), 2 deletions(-)
 
-While trying to figure out what's going wrong, I stumbled across this patch:
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index d06cc04079..8e1c7b3d13 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -329,6 +329,37 @@ err:
+     return ret;
+ }
+ 
++void kvm_park_vcpu(CPUState *cs)
++{
++    unsigned long vcpu_id = cs->cpu_index;
++    struct KVMParkedVcpu *vcpu;
++
++    vcpu = g_malloc0(sizeof(*vcpu));
++    vcpu->vcpu_id = vcpu_id;
++    vcpu->kvm_fd = cs->kvm_fd;
++    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
++}
++
++int kvm_create_vcpu(CPUState *cpu)
++{
++    unsigned long vcpu_id = cpu->cpu_index;
++    KVMState *s = kvm_state;
++    int ret = 0;
++
++    DPRINTF("kvm_create_vcpu\n");
++
++    ret = kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
++    if (ret < 0) {
++        goto err;
++    }
++    cpu->kvm_fd = ret;
++    cpu->kvm_state = s;
++    cpu->vcpu_dirty = true;
++
++err:
++    return ret;
++}
++
+ int kvm_destroy_vcpu(CPUState *cpu)
+ {
+     KVMState *s = kvm_state;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 184bed8716..8040473d30 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1828,14 +1828,56 @@ static void machvirt_init(MachineState *machine)
+     possible_cpus = mc->possible_cpu_arch_ids(machine);
+     for (n = 0; n < possible_cpus->len; n++) {
+         Object *cpuobj;
++        CPUState *cs;
+ 
+         cpuobj = object_new(possible_cpus->cpus[n].type);
++        cs = CPU(cpuobj);
+ 
+         aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
+         object_property_set_int(cpuobj, n, "core-id", NULL);
+ 
+-        object_property_set_bool(cpuobj, true, "realized", &error_fatal);
+-        object_unref(cpuobj);
++        if (n < vms->smp_cpus) {
++            char *core_id = g_strdup_printf("core%d", n);
++            qdev_set_id(DEVICE(cpuobj),core_id);
++            object_property_set_bool(cpuobj, true, "realized", &error_fatal);
++            g_free(core_id);
++            object_unref(OBJECT(cs));
++        } else {
++            CPUArchId *cpu_slot;
++            /* handling for vcpus which are yet to be hot-plugged */
++            cs->cpu_index = n;
++            /* ARM host vcpu features need to be fixed at the boot time */
++            virt_cpu_set_properties(cpuobj, &possible_cpus->cpus[n]);
++            /*
++             * For KVM, we shall be pre-creating the now disabled/un-plugged
++             * possbile host vcpus and park them till the time they are
++             * actually hot plugged. This is required to pre-size the host
++             * GICC and GICR with the all possible vcpus for this VM.
++             */
++            if (kvm_enabled()) {
++               kvm_arm_create_host_vcpu(ARM_CPU(cs));
++            }
++            /*
++             * Add disabled vcpu to cpu slot during the init phase of the virt machine.
++             * 1. We need this ARMCPU object during the GIC init. This object
++             *    will facilitate in pre-realizing the gic. Any info like
++             *    mp-affinity(required to derive gicr_type) etc could still be
++             *    fetched while preserving QOM abstraction akin to realized
++             *    vcpus.
++             * 2. Now, after initialization of the virt machine is complete we could use
++             *    two approaches to deal with this ARMCPU object:
++             *    (i) re-use this ARMCPU object during hotplug of this vcpu.
++             *                             OR
++             *    (ii) defer release this ARMCPU object after gic has been
++             *         initialized or during pre-plug phase when a vcpu is
++             *         hotplugged.
++             *
++             *    We will use the (ii) approach and release the ARMCPU objects after GIC
++             *    and machine has been initialized in machine_init_done() phase
++             */
++             cpu_slot = virt_find_cpu_slot(machine, cs->cpu_index);
++             cpu_slot->cpu = OBJECT(cs);
++        }
+     }
+     fdt_add_timer_nodes(vms);
+     fdt_add_cpu_nodes(vms);
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index 3b2250471c..ca06bfeb17 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -218,7 +218,9 @@ int kvm_has_intx_set_mask(void);
+ 
+ int kvm_init_vcpu(CPUState *cpu);
+ int kvm_cpu_exec(CPUState *cpu);
++int kvm_create_vcpu(CPUState *cpu);
+ int kvm_destroy_vcpu(CPUState *cpu);
++void kvm_park_vcpu(CPUState *cs);
+ 
+ /**
+  * kvm_arm_supports_user_irq
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 4bdbe6dcac..9fd447d111 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -597,6 +597,38 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu)
+     write_list_to_cpustate(cpu);
+ }
+ 
++void kvm_arm_create_host_vcpu(ARMCPU *cpu)
++{
++    CPUState *cs = CPU(cpu);
++    unsigned long vcpu_id = cs->cpu_index;
++    int ret;
++
++    ret = kvm_create_vcpu(cs);
++    if (ret < 0) {
++        error_report("Failed to create host vcpu %ld", vcpu_id);
++        abort();
++    }
++
++    /*
++     * Initialize the vcpu in the host. This will reset the sys regs
++     * for this vcpu and related registers like MPIDR_EL1 etc. also
++     * gets programmed during this call to host. These are referred
++     * later while setting device attributes of the GICR during GICv3
++     * reset
++     */
++    ret = kvm_arch_init_vcpu(cs);
++    if (ret < 0) {
++        error_report("Failed to initialize host vcpu %ld", vcpu_id);
++        abort();
++    }
++
++    /*
++     * park the created vcpu. shall be used during kvm_get_vcpu() when
++     * threads are created during realization of ARM vcpus
++     */
++    kvm_park_vcpu(cs);
++}
++
+ /*
+  * Update KVM's MP_STATE based on what QEMU thinks it is
+  */
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 48bf5e16d5..a9e316cfee 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -155,6 +155,17 @@ void kvm_arm_cpu_post_load(ARMCPU *cpu);
+  */
+ void kvm_arm_reset_vcpu(ARMCPU *cpu);
+ 
++/**
++ * kvm_arm_create_host_vcpu:
++ * @cpu: ARMCPU
++ *
++ * Called at to pre create all possible kvm vcpus within the the host at the
++ * virt machine init time. This will also init this pre-created vcpu and
++ * hence result in vcpu reset at host. These pre created and inited vcpus
++ * shall be parked for use when ARM vcpus are actually realized.
++ */
++void kvm_arm_create_host_vcpu(ARMCPU *cpu);
++
+ /**
+  * kvm_arm_init_serror_injection:
+  * @cs: CPUState
+-- 
+2.17.1
 
-https://lists.gnu.org/archive/html/qemu-devel/2016-07/msg01586.html
 
-which I don't understand. It looks like the winbond model wants one dummy
-cycle after the address, since dummy cycles are modeled as byte transfers.
-This doesn't seem to match the data sheet, which specifies 4 dummy cycles
-in DIO mode (which is actually a special command byte transferred across
-two data lines).
-
-If the "continuous read mode command" is actually modeled as a single byte,
-then it makes sense because that works out to 4 dummy cycles in DIO mode.
-However, I don't understand how the flash controller model is supposed to
-detect this situation, and I don't see any flash controller models that
-support sending anything but dummy _bits_ between the address and data
-phases.
-
-Could you please clarify how this is supposed to work? Are there any
-existing machines that use a w25 chip in DIO mode?
-
-Havard
-
---000000000000c6637705a7ec2424
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">On Thu, Jun 11, 2020 at 3:30 PM Havard Sk=
-innemoen &lt;<a href=3D"mailto:hskinnemoen@google.com">hskinnemoen@google.c=
-om</a>&gt; wrote:</div><div class=3D"gmail_quote"><blockquote class=3D"gmai=
-l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
-4,204);padding-left:1ex">
-@@ -57,18 +72,30 @@ static NPCM7xxState *npcm7xx_create_soc(MachineState *m=
-achine)<br>
-=C2=A0static void npcm750_evb_init(MachineState *machine)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0NPCM7xxState *soc;<br>
-+=C2=A0 =C2=A0 DriveInfo *dinfo;<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0soc =3D npcm7xx_create_soc(machine);<br>
-<br>
-+=C2=A0 =C2=A0 dinfo =3D drive_get(IF_MTD, 0, 0);<br>
-+=C2=A0 =C2=A0 if (dinfo) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 npcm7xx_connect_flash(&amp;soc-&gt;fiu[0], 0, =
-&quot;w25q256&quot;, dinfo);<br></blockquote><div><br></div><div>Btw, this =
-does not actually work. I initially tested it with the same flash chip as g=
-sj, which seems to work, but after switching to the=C2=A0Winbond model (as =
-per the npcm750 evb schematics) it looks like it reads incorrect data in DI=
-O mode.</div><div><br></div><div>While trying to figure out what&#39;s goin=
-g wrong, I stumbled across this patch:</div><div><br></div><div><a href=3D"=
-https://lists.gnu.org/archive/html/qemu-devel/2016-07/msg01586.html">https:=
-//lists.gnu.org/archive/html/qemu-devel/2016-07/msg01586.html</a></div><div=
-><br></div><div>which I don&#39;t understand. It looks like the winbond mod=
-el wants one dummy cycle after the address, since dummy cycles are modeled =
-as byte transfers. This doesn&#39;t seem to match the data sheet, which spe=
-cifies 4 dummy cycles in DIO mode (which is actually a special command byte=
- transferred across two data lines).</div><div><br></div><div>If the &quot;=
-continuous read mode command&quot; is actually modeled as a single byte, th=
-en it makes sense because that works out to 4 dummy cycles in DIO mode. How=
-ever, I don&#39;t understand how the flash controller model is supposed to =
-detect this situation, and I don&#39;t see any flash controller models that=
- support sending anything but dummy _bits_ between the address and data pha=
-ses.</div><div><br></div><div>Could you please clarify how this is supposed=
- to work? Are there any existing machines that use a w25 chip in DIO mode?<=
-/div><div><br></div><div>Havard</div></div></div>
-
---000000000000c6637705a7ec2424--

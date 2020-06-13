@@ -1,63 +1,63 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp454955lfm;
-        Sat, 13 Jun 2020 14:57:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz9KSzWvDc+XXJkTQszrirF5vjT5KoasmAHedM3xNwAh+4T7Vc8+DdDANjdOt6k3rZGdNVw
-X-Received: by 2002:a25:be05:: with SMTP id h5mr28774254ybk.131.1592085450799;
-        Sat, 13 Jun 2020 14:57:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592085450; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp455281lfm;
+        Sat, 13 Jun 2020 14:58:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwhsxnuoV+Flh+Jow7lztI+PeKs9lLNKV3937EuoFq4gRlYQpMVy12Ly+BzSZhko+eZmtja
+X-Received: by 2002:a5b:7ce:: with SMTP id t14mr25274467ybq.334.1592085499940;
+        Sat, 13 Jun 2020 14:58:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592085499; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZqKTAqTI6+5zZq1OiGD7JtPFP8UPHTV5qwLoUgMwARD00u+YrhEIF82yM7RCdys/jL
-         d51NHQA2uVKZdKWw4x4bBIvJZrEzx/eh/htpIuHj6mOjV7RNiF/4z57tczQG7sSw00j5
-         zYKtb9yoqmOMU495hxYc460p2UoOS/H/N23ohyZSKx2ZpkX8Sxc3WaWDDfcmSqa1qjsI
-         k7PtP32BHdgpuWd6uj8Zd9Fh0emkt1j4+EvOYURUedOy5x9xhqJk337sxcKJAyn38jEc
-         K70QzbCX36trx9JGnW8vlRY9388IQsWueSHcN0pnpFVx6SLijaqWIma0NEmnXJF1/PtM
-         9dvQ==
+        b=YF0U9o7QTBOcP17HVMjN78eUTjFxgJo2HsvvyGeiRgbOSHeuX0A3N8uqgypK4Mp/JW
+         dF3qobY3xMyaEQIaWg/zZ0xzJnAxT0HRFoxCNWvIbS18RZLH/67OrpANX5X/+41zPPzR
+         I+Nx44Floeua0hSEkKJpgeTBC309HxaSXzlhlO7QdJuxddJSpzCB8K39APvEyXi/gI7z
+         vgkkzsHCJ4sgedjlGiPQ+J2ykJD44N+L0+cOdbQE3V452IrT/GAm/T1E8ZdMKcry8HR/
+         LB4QnyykYQrGL5KYv8PCIQOqty1vPLhSvU6mzqXVHZzT2/eYLNkDaDvZFjLVVsNwjilz
+         84Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=p8f2316/5VSDlnkLsjAR4bYn/6sfpOsqMa3xuXFRUoM=;
-        b=O4pTh6T0sOpYjm7icPnLun4ljF5kL/v/Lvd3CHiyCGBw+56F4vFLR922LzLgmnKDzB
-         MhhM06huyy7vLeWKWQi3aWZBZwSWxOWv0R7zukxerPGd6CwTwjbIIknWPRG8NT9Q8c0k
-         JAj088ON+3VsuLdpa6ILHL3H8jp1niXx7jds/ztJqn8pLNz1Ti4QeDEiLTSAdntgAAak
-         B1k+67eYThB/n2i3SytS5lrGxpqFC0fkLpDDaAjvkIgRgcPm9Hnrnhb2JM9LgofpL7aL
-         IRmMj0iwFaFdnO6rcfNdVSAdm+DYLdErkvagC8CeRzrnyjOiVtezcQKHcxEnoya9jYf2
-         ROTg==
+        bh=4cVN28VjMENCx0IFmQJzpUI3LgjxlJrnqpjaewVQlKg=;
+        b=IVoWrXuEhNEceYo1FxGWwF3beYhtU4uRXBWVWerUuCw2iuf6mx63c1ZzQF5qdM+Wxb
+         qFCzmgi2g5UUeHx5xXQ9xqtQ4CVBMW+kJm1DpNmY6uMKi7rvrRPSIuBtJDxKd7fwVWlO
+         MZUMqiHbWVHD6ttwQC0MkCk/jfTCup4giGL7VBW+6BGY0te88ajrqpHpwFd06FgtyzXx
+         jIgxPDdQer1iqFB1u553H0DSaz+8a3aZNXm1huMoTQYGmqNCaTHD2jACvr+zTryAz7/r
+         YrK6Kze45jhJXCzIlGXNKf6ZNiz+Lmigvi4e9BIz4aKPp73HE3D6AZsBt0D141pV8rUg
+         +kjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s72si9261562ybi.447.2020.06.13.14.57.30
+        by mx.google.com with ESMTPS id v9si7921245ybk.256.2020.06.13.14.58.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 13 Jun 2020 14:57:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 13 Jun 2020 14:58:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46356 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49260 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jkE9a-000127-56
-	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:57:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60472)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jkEAN-0002E9-Bo
+	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:58:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60914)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDyY-0007XF-IW; Sat, 13 Jun 2020 17:46:06 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3709 helo=huawei.com)
+ id 1jkDz3-0000IX-H9; Sat, 13 Jun 2020 17:46:37 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3711 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDyW-0003SP-1z; Sat, 13 Jun 2020 17:46:06 -0400
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 7C39C247F741223B5826;
- Sun, 14 Jun 2020 05:46:01 +0800 (CST)
+ id 1jkDz0-0003ZU-Mh; Sat, 13 Jun 2020 17:46:37 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id DF420C054C62182343E8;
+ Sun, 14 Jun 2020 05:46:31 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.47.30.60) by
  DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Sun, 14 Jun 2020 05:45:52 +0800
+ 14.3.487.0; Sun, 14 Jun 2020 05:46:22 +0800
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH RFC 17/22] arm/cpuhp: Changes to (un)wire GICC<->VCPU IRQs
- during hot-(un)plug
-Date: Sat, 13 Jun 2020 22:36:24 +0100
-Message-ID: <20200613213629.21984-18-salil.mehta@huawei.com>
+Subject: [PATCH RFC 22/22] arm/cpuhp: Add support of *unrealize* ARMCPU during
+ vcpu hot-unplug
+Date: Sat, 13 Jun 2020 22:36:29 +0100
+Message-ID: <20200613213629.21984-23-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
 In-Reply-To: <20200613213629.21984-1-salil.mehta@huawei.com>
 References: <20200613213629.21984-1-salil.mehta@huawei.com>
@@ -76,17 +76,17 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, sudeep.holla@arm.com,
  gshan@redhat.com, mst@redhat.com, jiakernel2@gmail.com, maz@kernel.org,
  zhukeqian1@huawei.com, david@redhat.com, richard.henderson@linaro.org,
@@ -95,231 +95,414 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, sudeep.holla@arm.com,
  Salil Mehta <salil.mehta@huawei.com>, pbonzini@redhat.com,
  mehta.salil.lnk@gmail.com, maran.wilson@oracle.com, will@kernel.org,
  wangxiongfeng2@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c/cJwDZV/CGC
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NdTxbic0HKnh
 
-Refactors the existing gic create code to extract common code to wire the
-vcpu<->gic interrupts. This function could be used with cold-plug case and also
-used when vcpu is hot-plugged. It also introduces a new function to unwire the
-vcpu>->gic interrupts for the vcpu hot-unplug cases.
+During vcpu hot-unplug ARM cpu unrealization shall happen which should do away
+with all the vcpu thread creations, allocations, registrations which happened
+as part of the realization process of the ARM cpu. This change introduces the
+ARM cpu unrealize function taking care of exactly that.
+
+Note, initialized vcpus are not destroyed at host KVM but are rather parked in
+the QEMU/KVM layer. These are later reused once vcpu is hotplugged again.
 
 Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/arm/virt.c          | 144 +++++++++++++++++++++++++++++------------
- hw/core/qdev.c         |   2 +-
- include/hw/qdev-core.h |   2 +
- 3 files changed, 104 insertions(+), 44 deletions(-)
+ exec.c                  | 24 ++++++++++++
+ gdbstub.c               | 13 +++++++
+ include/exec/exec-all.h |  8 ++++
+ include/exec/gdbstub.h  |  1 +
+ include/hw/core/cpu.h   |  2 +
+ target/arm/cpu-qom.h    |  3 ++
+ target/arm/cpu.c        | 86 +++++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu.h        | 13 +++++++
+ target/arm/helper.c     | 31 +++++++++++++++
+ target/arm/internals.h  |  1 +
+ target/arm/kvm64.c      |  7 +++-
+ 11 files changed, 188 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ac2941159a..f0295e940e 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -615,6 +615,103 @@ static void create_v2m(VirtMachineState *vms)
-     fdt_add_v2m_gic_node(vms);
+diff --git a/exec.c b/exec.c
+index a0bf9d61c8..7e808affdf 100644
+--- a/exec.c
++++ b/exec.c
+@@ -869,6 +869,7 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
+ 
+     if (!cpu->cpu_ases) {
+         cpu->cpu_ases = g_new0(CPUAddressSpace, cpu->num_ases);
++        cpu->cpu_ases_ref_count = cpu->num_ases;
+     }
+ 
+     newas = &cpu->cpu_ases[asidx];
+@@ -881,6 +882,29 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
+     }
  }
  
-+static void unwire_gic_cpu_irqs(VirtMachineState *vms, CPUState *cs)
++void cpu_address_space_destroy(CPUState *cpu, int asidx)
 +{
-+    unsigned int max_cpus = vms->max_cpus;
-+    DeviceState *cpudev = DEVICE(cs);
-+    DeviceState *gicdev = vms->gic;
-+    int cpu = CPU(cs)->cpu_index;
-+    int type = vms->gic_version;
-+    int irq;
++    CPUAddressSpace *cpuas;
 +
-+    /* Mapping from the output timer irq lines from the CPU to the
-+     * GIC PPI inputs we use for the virt board.
-+     */
-+    const int timer_irq[] = {
-+        [GTIMER_PHYS] = ARCH_TIMER_NS_EL1_IRQ,
-+        [GTIMER_VIRT] = ARCH_TIMER_VIRT_IRQ,
-+        [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
-+        [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ,
-+    };
++    assert(asidx < cpu->num_ases);
++    assert(asidx == 0 || !kvm_enabled());
++    assert(cpu->cpu_ases);
 +
-+    for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
-+        qdev_disconnect_gpio_out_named(cpudev, NULL, irq);
++    cpuas = &cpu->cpu_ases[asidx];
++    if (tcg_enabled()) {
++        memory_listener_unregister(&cpuas->tcg_as_listener);
 +    }
 +
-+    if (type == 3) {
-+        qdev_disconnect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt", 0);
-+    } else if (vms->virt) {
-+        qdev_disconnect_gpio_out_named(gicdev, SYSBUS_DEVICE_GPIO_IRQ, cpu + 4 * max_cpus);
++    address_space_destroy(cpuas->as);
++
++    if(cpu->cpu_ases_ref_count == 1) {
++        g_free(cpu->cpu_ases);
++        cpu->cpu_ases = NULL;
 +    }
 +
-+    /*
-+     * RFC: Question: This currently does not takes care of intimating the devices
-+     * which might be sitting on system bus. Do we need a sysbus_disconnect_irq()
-+     * which also does the job of notification beside disconnection?
-+     */
-+    qdev_disconnect_gpio_out_named(cpudev, "pmu-interrupt", 0);
-+    qdev_disconnect_gpio_out_named(gicdev, SYSBUS_DEVICE_GPIO_IRQ, cpu);
-+    qdev_disconnect_gpio_out_named(gicdev,
-+                                   SYSBUS_DEVICE_GPIO_IRQ, cpu + max_cpus);
-+    qdev_disconnect_gpio_out_named(gicdev, SYSBUS_DEVICE_GPIO_IRQ,
-+                                   cpu + 2 * max_cpus);
-+    qdev_disconnect_gpio_out_named(gicdev, SYSBUS_DEVICE_GPIO_IRQ,
-+                                   cpu + 3 * max_cpus);
++    cpu->cpu_ases_ref_count--;
 +}
 +
-+static void wire_gic_cpu_irqs(VirtMachineState *vms, CPUState *cs)
+ AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)
+ {
+     /* Return the AddressSpace corresponding to the specified index */
+diff --git a/gdbstub.c b/gdbstub.c
+index 6950fd243f..e960268d15 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -982,6 +982,19 @@ void gdb_register_coprocessor(CPUState *cpu,
+     }
+ }
+ 
++void gdb_unregister_coprocessor_all(CPUState *cpu)
 +{
-+    unsigned int max_cpus = vms->max_cpus;
-+    DeviceState *cpudev = DEVICE(cs);
-+    DeviceState *gicdev = vms->gic;
-+    int cpu = CPU(cs)->cpu_index;
-+    int type = vms->gic_version;
-+    SysBusDevice *gicbusdev;
-+    int ppibase;
-+    int irq;
++    GDBRegisterState *s, *p;
 +
-+    ppibase = NUM_IRQS + cpu * GIC_INTERNAL + GIC_NR_SGIS;
-+
-+    /* Mapping from the output timer irq lines from the CPU to the
-+     * GIC PPI inputs we use for the virt board.
-+     */
-+    const int timer_irq[] = {
-+        [GTIMER_PHYS] = ARCH_TIMER_NS_EL1_IRQ,
-+        [GTIMER_VIRT] = ARCH_TIMER_VIRT_IRQ,
-+        [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
-+        [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ,
-+    };
-+
-+    for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
-+        qdev_connect_gpio_out(cpudev, irq,
-+                              qdev_get_gpio_in(gicdev,
-+                                               ppibase + timer_irq[irq]));
++    p = cpu->gdb_regs;
++    while (p) {
++        s = p;
++        p = p->next;
++        g_free(s);
 +    }
-+
-+    gicbusdev = SYS_BUS_DEVICE(gicdev);
-+    if (type == 3) {
-+        qemu_irq irq = qdev_get_gpio_in(gicdev,
-+                                        ppibase + ARCH_GIC_MAINT_IRQ);
-+        qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt",
-+                                    0, irq);
-+    } else if (vms->virt) {
-+        qemu_irq irq = qdev_get_gpio_in(gicdev,
-+                                        ppibase + ARCH_GIC_MAINT_IRQ);
-+        sysbus_connect_irq(gicbusdev, cpu + 4 * max_cpus, irq);
-+    }
-+
-+    qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
-+                                qdev_get_gpio_in(gicdev,
-+                                                 ppibase + VIRTUAL_PMU_IRQ));
-+    sysbus_connect_irq(gicbusdev, cpu, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
-+    sysbus_connect_irq(gicbusdev, cpu + max_cpus,
-+                       qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
-+    sysbus_connect_irq(gicbusdev, cpu + 2 * max_cpus,
-+                       qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
-+    sysbus_connect_irq(gicbusdev, cpu + 3 * max_cpus,
-+                       qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
++    cpu->gdb_regs = NULL;
 +}
 +
- static void create_gic(VirtMachineState *vms)
+ #ifndef CONFIG_USER_ONLY
+ /* Translate GDB watchpoint type to a flags value for cpu_watchpoint_* */
+ static inline int xlat_gdb_type(CPUState *cpu, int gdbtype)
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 8792bea07a..44420c144d 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -115,6 +115,14 @@ void cpu_reloading_memory_map(void);
+  */
+ void cpu_address_space_init(CPUState *cpu, int asidx,
+                             const char *prefix, MemoryRegion *mr);
++/**
++ * cpu_address_space_destroy:
++ * @cpu: CPU for which address space needs to be destroyed
++ * @asidx: integer index of this address space
++ *
++ * Note that with KVM only one address space is supported.
++ */
++void cpu_address_space_destroy(CPUState *cpu, int asidx);
+ #endif
+ 
+ #if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index 94d8f83e92..db2336d0df 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -73,6 +73,7 @@ typedef int (*gdb_set_reg_cb)(CPUArchState *env, uint8_t *buf, int reg);
+ void gdb_register_coprocessor(CPUState *cpu,
+                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
+                               int num_regs, const char *xml, int g_pos);
++void gdb_unregister_coprocessor_all(CPUState *cpu);
+ 
+ /*
+  * The GDB remote protocol transfers values in target byte order. As
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index d9cae71ea5..851f03dd83 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -379,6 +379,7 @@ struct CPUState {
+     struct qemu_work_item *queued_work_first, *queued_work_last;
+ 
+     CPUAddressSpace *cpu_ases;
++    int cpu_ases_ref_count;
+     int num_ases;
+     AddressSpace *as;
+     MemoryRegion *memory;
+@@ -410,6 +411,7 @@ struct CPUState {
+     int kvm_fd;
+     struct KVMState *kvm_state;
+     struct kvm_run *kvm_run;
++    VMChangeStateEntry *vmcse;
+ 
+     /* Used for events with 'vcpu' and *without* the 'disabled' properties */
+     DECLARE_BITMAP(trace_dstate_delayed, CPU_TRACE_DSTATE_MAX_EVENTS);
+diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
+index 56395b87f6..d943683551 100644
+--- a/target/arm/cpu-qom.h
++++ b/target/arm/cpu-qom.h
+@@ -58,6 +58,7 @@ typedef struct ARMCPUClass {
+ 
+     const ARMCPUInfo *info;
+     DeviceRealize parent_realize;
++    DeviceUnrealize parent_unrealize;
+     DeviceReset parent_reset;
+ } ARMCPUClass;
+ 
+@@ -76,7 +77,9 @@ typedef struct AArch64CPUClass {
+ } AArch64CPUClass;
+ 
+ void register_cp_regs_for_features(ARMCPU *cpu);
++void unregister_cp_regs_for_features(ARMCPU *cpu);
+ void init_cpreg_list(ARMCPU *cpu);
++void destroy_cpreg_list(ARMCPU *cpu);
+ 
+ /* Callback functions for the generic timer's timers. */
+ void arm_gt_ptimer_cb(void *opaque);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 0c9f5f970e..dac42c418d 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -92,6 +92,16 @@ void arm_register_pre_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
+     QLIST_INSERT_HEAD(&cpu->pre_el_change_hooks, entry, node);
+ }
+ 
++void arm_unregister_pre_el_change_hooks(ARMCPU *cpu)
++{
++    ARMELChangeHook *entry, *next;
++
++    QLIST_FOREACH_SAFE(entry, &cpu->pre_el_change_hooks, node, next) {
++        QLIST_REMOVE(entry, node);
++        g_free(entry);
++    }
++}
++
+ void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
+                                  void *opaque)
  {
-     /* We create a standalone GIC */
-@@ -684,47 +781,7 @@ static void create_gic(VirtMachineState *vms)
-      * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
-      */
-     for (i = 0; i < smp_cpus; i++) {
--        DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
--        int ppibase = NUM_IRQS + i * GIC_INTERNAL + GIC_NR_SGIS;
--        int irq;
--        /* Mapping from the output timer irq lines from the CPU to the
--         * GIC PPI inputs we use for the virt board.
--         */
--        const int timer_irq[] = {
--            [GTIMER_PHYS] = ARCH_TIMER_NS_EL1_IRQ,
--            [GTIMER_VIRT] = ARCH_TIMER_VIRT_IRQ,
--            [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
--            [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ,
--        };
--
--        for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
--            qdev_connect_gpio_out(cpudev, irq,
--                                  qdev_get_gpio_in(vms->gic,
--                                                   ppibase + timer_irq[irq]));
--        }
--
--        if (type == 3) {
--            qemu_irq irq = qdev_get_gpio_in(vms->gic,
--                                            ppibase + ARCH_GIC_MAINT_IRQ);
--            qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt",
--                                        0, irq);
--        } else if (vms->virt) {
--            qemu_irq irq = qdev_get_gpio_in(vms->gic,
--                                            ppibase + ARCH_GIC_MAINT_IRQ);
--            sysbus_connect_irq(gicbusdev, i + 4 * max_cpus, irq);
--        }
--
--        qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
--                                    qdev_get_gpio_in(vms->gic, ppibase
--                                                     + VIRTUAL_PMU_IRQ));
--
--        sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
--        sysbus_connect_irq(gicbusdev, i + max_cpus,
--                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
--        sysbus_connect_irq(gicbusdev, i + 2 * max_cpus,
--                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
--        sysbus_connect_irq(gicbusdev, i + 3 * max_cpus,
--                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-+        wire_gic_cpu_irqs(vms, qemu_get_cpu(i));
+@@ -103,6 +113,16 @@ void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
+     QLIST_INSERT_HEAD(&cpu->el_change_hooks, entry, node);
+ }
+ 
++void arm_unregister_el_change_hooks(ARMCPU *cpu)
++{
++    ARMELChangeHook *entry, *next;
++
++    QLIST_FOREACH_SAFE(entry, &cpu->el_change_hooks, node, next) {
++        QLIST_REMOVE(entry, node);
++        g_free(entry);
++    }
++}
++
+ static void cp_reg_reset(gpointer key, gpointer value, gpointer opaque)
+ {
+     /* Reset a single ARMCPRegInfo register */
+@@ -1765,6 +1785,70 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     acc->parent_realize(dev, errp);
+ }
+ 
++static void arm_cpu_unrealizefn(DeviceState *dev)
++{
++    ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
++    ARMCPU *cpu = ARM_CPU(dev);
++    CPUARMState *env = &cpu->env;
++    CPUState *cs = CPU(dev);
++
++    /* rock 'n' un-roll, whatever happened in the arm_cpu_realizefn cleanly */
++    if (cpu->has_el3 || arm_feature(env, ARM_FEATURE_M_SECURITY)) {
++        cpu_address_space_destroy(cs, ARMASIdx_S);
++    }
++    cpu_address_space_destroy(cs, ARMASIdx_NS);
++
++    destroy_cpreg_list(cpu);
++    arm_cpu_unregister_gdb_regs(cpu);
++    unregister_cp_regs_for_features(cpu);
++
++    if (cpu->sau_sregion && arm_feature(env, ARM_FEATURE_M_SECURITY)) {
++           g_free(env->sau.rbar);
++           g_free(env->sau.rlar);
++    }
++
++    if (arm_feature(env, ARM_FEATURE_PMSA) &&
++        arm_feature(env, ARM_FEATURE_V7) &&
++        cpu->pmsav7_dregion) {
++        if (arm_feature(env, ARM_FEATURE_V8)) {
++            g_free(env->pmsav8.rbar[M_REG_NS]);
++            g_free(env->pmsav8.rlar[M_REG_NS]);
++            if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
++                g_free(env->pmsav8.rbar[M_REG_S]);
++                g_free(env->pmsav8.rlar[M_REG_S]);
++            }
++        } else {
++            g_free(env->pmsav7.drbar);
++            g_free(env->pmsav7.drsr);
++            g_free(env->pmsav7.dracr);
++        }
++    }
++
++    if (arm_feature(env, ARM_FEATURE_PMU)) {
++        if (!kvm_enabled()) {
++            arm_unregister_pre_el_change_hooks(cpu);
++            arm_unregister_el_change_hooks(cpu);
++        }
++
++#ifndef CONFIG_USER_ONLY
++        if (cpu->pmu_timer) {
++            timer_del(cpu->pmu_timer);
++        }
++#endif
++    }
++
++    cpu_remove_sync(CPU(dev));
++    acc->parent_unrealize(dev);
++
++#ifndef CONFIG_USER_ONLY
++    timer_del(cpu->gt_timer[GTIMER_PHYS]);
++    timer_del(cpu->gt_timer[GTIMER_VIRT]);
++    timer_del(cpu->gt_timer[GTIMER_HYP]);
++    timer_del(cpu->gt_timer[GTIMER_SEC]);
++    timer_del(cpu->gt_timer[GTIMER_HYPVIRT]);
++#endif
++}
++
+ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
+ {
+     ObjectClass *oc;
+@@ -2145,6 +2229,8 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
+ 
+     device_class_set_parent_realize(dc, arm_cpu_realizefn,
+                                     &acc->parent_realize);
++    device_class_set_parent_unrealize(dc, arm_cpu_unrealizefn,
++				      &acc->parent_unrealize);
+ 
+     device_class_set_props(dc, arm_cpu_properties);
+     device_class_set_parent_reset(dc, arm_cpu_reset, &acc->parent_reset);
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 5c4991156e..a8e7cb9fb1 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3337,6 +3337,13 @@ static inline AddressSpace *arm_addressspace(CPUState *cs, MemTxAttrs attrs)
+  */
+ void arm_register_pre_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
+                                  void *opaque);
++/**
++ * arm_unregister_pre_el_change_hook:
++ * unregister all pre EL change hook functions. Generally called during
++ * unrealize'ing leg
++ */
++void arm_unregister_pre_el_change_hooks(ARMCPU *cpu);
++
+ /**
+  * arm_register_el_change_hook:
+  * Register a hook function which will be called immediately after this
+@@ -3349,6 +3356,12 @@ void arm_register_pre_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
+  */
+ void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook, void
+         *opaque);
++/**
++ * arm_unregister_el_change_hook:
++ * unregister all EL change hook functions.  Generally called during
++ * unrealize'ing leg
++ */
++void arm_unregister_el_change_hooks(ARMCPU *cpu);
+ 
+ /**
+  * arm_rebuild_hflags:
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 972a766730..dc4100ea89 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -502,6 +502,19 @@ void init_cpreg_list(ARMCPU *cpu)
+     g_list_free(keys);
+ }
+ 
++void destroy_cpreg_list(ARMCPU *cpu)
++{
++    assert(cpu->cpreg_indexes);
++    assert(cpu->cpreg_values);
++    assert(cpu->cpreg_vmstate_indexes);
++    assert(cpu->cpreg_vmstate_values);
++
++    g_free(cpu->cpreg_indexes);
++    g_free(cpu->cpreg_values);
++    g_free(cpu->cpreg_vmstate_indexes);
++    g_free(cpu->cpreg_vmstate_values);
++}
++
+ /*
+  * Some registers are not accessible from AArch32 EL3 if SCR.NS == 0.
+  */
+@@ -7981,6 +7994,18 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+ #endif
+ }
+ 
++void unregister_cp_regs_for_features(ARMCPU *cpu)
++{
++    CPUARMState *env = &cpu->env;
++    if (arm_feature(env, ARM_FEATURE_M)) {
++        /* M profile has no coprocessor registers */
++        return;
++    }
++
++    /* empty it all. unregister all the coprocessor registers */
++    g_hash_table_remove_all(cpu->cp_regs);
++}
++
+ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+ {
+     CPUState *cs = CPU(cpu);
+@@ -8019,6 +8044,12 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+ 
+ }
+ 
++void arm_cpu_unregister_gdb_regs(ARMCPU *cpu)
++{
++    CPUState *cs = CPU(cpu);
++    gdb_unregister_coprocessor_all(cs);
++}
++
+ /* Sort alphabetically by type name, except for "any". */
+ static gint arm_cpu_list_compare(gconstpointer a, gconstpointer b)
+ {
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 4bdbc3a8ac..8ece9e09f5 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -169,6 +169,7 @@ static inline int r14_bank_number(int mode)
+ }
+ 
+ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu);
++void arm_cpu_unregister_gdb_regs(ARMCPU *cpu);
+ void arm_translate_init(void);
+ 
+ enum arm_fprounding {
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index f09ed9f4df..b6df17912e 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -775,7 +775,9 @@ int kvm_arch_init_vcpu(CPUState *cs)
+         return -EINVAL;
      }
  
-     fdt_add_gic_node(vms);
-@@ -2382,6 +2439,7 @@ static void virt_cpu_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
- static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-                           Error **errp)
+-    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cs);
++    if (qemu_present_cpu(cs))
++        cs->vmcse = qemu_add_vm_change_state_handler(kvm_arm_vm_state_change,
++                                                     cs);
+ 
+     /* Determine init features for this CPU */
+     memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+@@ -840,6 +842,9 @@ int kvm_arch_init_vcpu(CPUState *cs)
+ 
+ int kvm_arch_destroy_vcpu(CPUState *cs)
  {
-+    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-     MachineState *ms = MACHINE(hotplug_dev);
-     ARMCPU *cpu = ARM_CPU(dev);
-     CPUState *cs = CPU(dev);
-@@ -2392,7 +2450,7 @@ static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-     cpu_slot->cpu = OBJECT(dev);
- 
-     if (dev->hotplugged) {
--        /* TODO: wire the gic-cpu irqs */
-+        wire_gic_cpu_irqs(vms, cs);
-         /* TODO: update acpi hotplug state and send cpu hotplug event to guest */
-         /* TODO: register this cpu for reset & update F/W info for the next boot */
-     }
-@@ -2447,7 +2505,7 @@ static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
- 
-     /* TODO: update the acpi cpu hotplug state for cpu hot-unplug */
- 
--    /* TODO: unwire the gic-cpu irqs here */
-+    unwire_gic_cpu_irqs(vms, cs);
-     /* TODO: update the GIC about this hot unplug change */
- 
-     /* TODO: unregister this cpu for reset & update F/W info for the next boot */
-diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index 9e5538aeae..65b3ec7c8f 100644
---- a/hw/core/qdev.c
-+++ b/hw/core/qdev.c
-@@ -563,7 +563,7 @@ qemu_irq qdev_get_gpio_out_connector(DeviceState *dev, const char *name, int n)
- 
- /* disconnect a GPIO output, returning the disconnected input (if any) */
- 
--static qemu_irq qdev_disconnect_gpio_out_named(DeviceState *dev,
-+qemu_irq qdev_disconnect_gpio_out_named(DeviceState *dev,
-                                                const char *name, int n)
- {
-     char *propname = g_strdup_printf("%s[%d]",
-diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index b870b27966..8434cc5a3e 100644
---- a/include/hw/qdev-core.h
-+++ b/include/hw/qdev-core.h
-@@ -355,6 +355,8 @@ void qdev_connect_gpio_out_named(DeviceState *dev, const char *name, int n,
- qemu_irq qdev_get_gpio_out_connector(DeviceState *dev, const char *name, int n);
- qemu_irq qdev_intercept_gpio_out(DeviceState *dev, qemu_irq icpt,
-                                  const char *name, int n);
-+qemu_irq qdev_disconnect_gpio_out_named(DeviceState *dev,
-+                                               const char *name, int n);
- 
- BusState *qdev_get_child_bus(DeviceState *dev, const char *name);
++    if (qemu_present_cpu(cs))
++        qemu_del_vm_change_state_handler(cs->vmcse);
++
+     return 0;
+ }
  
 -- 
 2.17.1

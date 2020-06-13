@@ -1,80 +1,69 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp455281lfm;
-        Sat, 13 Jun 2020 14:58:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwhsxnuoV+Flh+Jow7lztI+PeKs9lLNKV3937EuoFq4gRlYQpMVy12Ly+BzSZhko+eZmtja
-X-Received: by 2002:a5b:7ce:: with SMTP id t14mr25274467ybq.334.1592085499940;
-        Sat, 13 Jun 2020 14:58:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592085499; cv=none;
-        d=google.com; s=arc-20160816;
-        b=YF0U9o7QTBOcP17HVMjN78eUTjFxgJo2HsvvyGeiRgbOSHeuX0A3N8uqgypK4Mp/JW
-         dF3qobY3xMyaEQIaWg/zZ0xzJnAxT0HRFoxCNWvIbS18RZLH/67OrpANX5X/+41zPPzR
-         I+Nx44Floeua0hSEkKJpgeTBC309HxaSXzlhlO7QdJuxddJSpzCB8K39APvEyXi/gI7z
-         vgkkzsHCJ4sgedjlGiPQ+J2ykJD44N+L0+cOdbQE3V452IrT/GAm/T1E8ZdMKcry8HR/
-         LB4QnyykYQrGL5KYv8PCIQOqty1vPLhSvU6mzqXVHZzT2/eYLNkDaDvZFjLVVsNwjilz
-         84Lw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=4cVN28VjMENCx0IFmQJzpUI3LgjxlJrnqpjaewVQlKg=;
-        b=IVoWrXuEhNEceYo1FxGWwF3beYhtU4uRXBWVWerUuCw2iuf6mx63c1ZzQF5qdM+Wxb
-         qFCzmgi2g5UUeHx5xXQ9xqtQ4CVBMW+kJm1DpNmY6uMKi7rvrRPSIuBtJDxKd7fwVWlO
-         MZUMqiHbWVHD6ttwQC0MkCk/jfTCup4giGL7VBW+6BGY0te88ajrqpHpwFd06FgtyzXx
-         jIgxPDdQer1iqFB1u553H0DSaz+8a3aZNXm1huMoTQYGmqNCaTHD2jACvr+zTryAz7/r
-         YrK6Kze45jhJXCzIlGXNKf6ZNiz+Lmigvi4e9BIz4aKPp73HE3D6AZsBt0D141pV8rUg
-         +kjg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp469144lfm;
+        Sat, 13 Jun 2020 15:25:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwpnJPhvKd0m2mxkhwODIv2DiNgMMtgHPATvC/tVD9i1I5izjxG3+g5uOJrvE/+JnzArGP/
+X-Received: by 2002:a25:7b41:: with SMTP id w62mr31032465ybc.435.1592087124539;
+        Sat, 13 Jun 2020 15:25:24 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v9si7921245ybk.256.2020.06.13.14.58.19
+        by mx.google.com with ESMTPS id e17si9299392ybn.340.2020.06.13.15.25.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 13 Jun 2020 14:58:19 -0700 (PDT)
+        Sat, 13 Jun 2020 15:25:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49260 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37890 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jkEAN-0002E9-Bo
-	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:58:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60914)
+	id 1jkEaZ-0005Ka-Ty
+	for alex.bennee@linaro.org; Sat, 13 Jun 2020 18:25:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45272)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDz3-0000IX-H9; Sat, 13 Jun 2020 17:46:37 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3711 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDz0-0003ZU-Mh; Sat, 13 Jun 2020 17:46:37 -0400
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id DF420C054C62182343E8;
- Sun, 14 Jun 2020 05:46:31 +0800 (CST)
-Received: from A190218597.china.huawei.com (10.47.30.60) by
- DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Sun, 14 Jun 2020 05:46:22 +0800
-From: Salil Mehta <salil.mehta@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH RFC 22/22] arm/cpuhp: Add support of *unrealize* ARMCPU during
- vcpu hot-unplug
-Date: Sat, 13 Jun 2020 22:36:29 +0100
-Message-ID: <20200613213629.21984-23-salil.mehta@huawei.com>
-X-Mailer: git-send-email 2.8.3
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jkEaR-0005Ik-GE; Sat, 13 Jun 2020 18:25:15 -0400
+Resent-Date: Sat, 13 Jun 2020 18:25:15 -0400
+Resent-Message-Id: <E1jkEaR-0005Ik-GE@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21706)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jkEaO-0001BL-UM; Sat, 13 Jun 2020 18:25:15 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1592087079; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=jy56bFVpj0Y49vAtcaihhOdr7USoNx9hYQj7ST5EpMHtezbJCH9gGhA2jGnyY8axVVK7zRtSmKMR8fjxrhbdpF07ne8VshRYROuIKJFoD9vI79PcXdqLjj6QbIbGAGYZtY0LZ1WaRp0A9/dZnA4YWakTj82dPgeRgz21ULVkpRw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1592087079;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=z3JhaTLn2aDaes/Vy6oTWalv6qtxOchgzWJdzJPTHYc=; 
+ b=E0EixLWYTyyms2QRs+b9lj3jwqojmd6ikLZxsQCBVclJsX5UqYXgIOL9Y6wNBNxrMwbzg75vD7j2ngHRLSfAMJE03txt5MT6GgYZpEACOQ813WdVuJJvu6HFBDovuBZUaHUX5z4d2SlRV71j90YC8qunH20QI/d+DKIZxB9Wweg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1592087076574124.36103233910012;
+ Sat, 13 Jun 2020 15:24:36 -0700 (PDT)
+Message-ID: <159208707355.19484.2198690175838390820@45ef0f9c86ae>
 In-Reply-To: <20200613213629.21984-1-salil.mehta@huawei.com>
-References: <20200613213629.21984-1-salil.mehta@huawei.com>
+Subject: Re: [PATCH RFC 00/22] Support of Virtual CPU Hotplug for ARMv8 Arch
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.47.30.60]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=salil.mehta@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/13 17:44:30
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: salil.mehta@huawei.com
+Date: Sat, 13 Jun 2020 15:24:36 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/13 18:25:08
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -87,424 +76,87 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, sudeep.holla@arm.com,
- gshan@redhat.com, mst@redhat.com, jiakernel2@gmail.com, maz@kernel.org,
- zhukeqian1@huawei.com, david@redhat.com, richard.henderson@linaro.org,
- linuxarm@huawei.com, eric.auger@redhat.com, james.morse@arm.com,
- catalin.marinas@arm.com, imammedo@redhat.com,
- Salil Mehta <salil.mehta@huawei.com>, pbonzini@redhat.com,
- mehta.salil.lnk@gmail.com, maran.wilson@oracle.com, will@kernel.org,
- wangxiongfeng2@huawei.com
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, gshan@redhat.com, mst@redhat.com,
+ catalin.marinas@arm.com, qemu-devel@nongnu.org, will@kernel.org,
+ wangxiongfeng2@huawei.com, jiakernel2@gmail.com, maz@kernel.org,
+ zhukeqian1@huawei.com, david@redhat.com, drjones@redhat.com,
+ mehta.salil.lnk@gmail.com, richard.henderson@linaro.org, linuxarm@huawei.com,
+ eric.auger@redhat.com, qemu-arm@nongnu.org, imammedo@redhat.com,
+ salil.mehta@huawei.com, maran.wilson@oracle.com, james.morse@arm.com,
+ sudeep.holla@arm.com, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NdTxbic0HKnh
+X-TUID: +45rcjiCIl5e
 
-During vcpu hot-unplug ARM cpu unrealization shall happen which should do away
-with all the vcpu thread creations, allocations, registrations which happened
-as part of the realization process of the ARM cpu. This change introduces the
-ARM cpu unrealize function taking care of exactly that.
-
-Note, initialized vcpus are not destroyed at host KVM but are rather parked in
-the QEMU/KVM layer. These are later reused once vcpu is hotplugged again.
-
-Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
----
- exec.c                  | 24 ++++++++++++
- gdbstub.c               | 13 +++++++
- include/exec/exec-all.h |  8 ++++
- include/exec/gdbstub.h  |  1 +
- include/hw/core/cpu.h   |  2 +
- target/arm/cpu-qom.h    |  3 ++
- target/arm/cpu.c        | 86 +++++++++++++++++++++++++++++++++++++++++
- target/arm/cpu.h        | 13 +++++++
- target/arm/helper.c     | 31 +++++++++++++++
- target/arm/internals.h  |  1 +
- target/arm/kvm64.c      |  7 +++-
- 11 files changed, 188 insertions(+), 1 deletion(-)
-
-diff --git a/exec.c b/exec.c
-index a0bf9d61c8..7e808affdf 100644
---- a/exec.c
-+++ b/exec.c
-@@ -869,6 +869,7 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
- 
-     if (!cpu->cpu_ases) {
-         cpu->cpu_ases = g_new0(CPUAddressSpace, cpu->num_ases);
-+        cpu->cpu_ases_ref_count = cpu->num_ases;
-     }
- 
-     newas = &cpu->cpu_ases[asidx];
-@@ -881,6 +882,29 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
-     }
- }
- 
-+void cpu_address_space_destroy(CPUState *cpu, int asidx)
-+{
-+    CPUAddressSpace *cpuas;
-+
-+    assert(asidx < cpu->num_ases);
-+    assert(asidx == 0 || !kvm_enabled());
-+    assert(cpu->cpu_ases);
-+
-+    cpuas = &cpu->cpu_ases[asidx];
-+    if (tcg_enabled()) {
-+        memory_listener_unregister(&cpuas->tcg_as_listener);
-+    }
-+
-+    address_space_destroy(cpuas->as);
-+
-+    if(cpu->cpu_ases_ref_count == 1) {
-+        g_free(cpu->cpu_ases);
-+        cpu->cpu_ases = NULL;
-+    }
-+
-+    cpu->cpu_ases_ref_count--;
-+}
-+
- AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)
- {
-     /* Return the AddressSpace corresponding to the specified index */
-diff --git a/gdbstub.c b/gdbstub.c
-index 6950fd243f..e960268d15 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -982,6 +982,19 @@ void gdb_register_coprocessor(CPUState *cpu,
-     }
- }
- 
-+void gdb_unregister_coprocessor_all(CPUState *cpu)
-+{
-+    GDBRegisterState *s, *p;
-+
-+    p = cpu->gdb_regs;
-+    while (p) {
-+        s = p;
-+        p = p->next;
-+        g_free(s);
-+    }
-+    cpu->gdb_regs = NULL;
-+}
-+
- #ifndef CONFIG_USER_ONLY
- /* Translate GDB watchpoint type to a flags value for cpu_watchpoint_* */
- static inline int xlat_gdb_type(CPUState *cpu, int gdbtype)
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index 8792bea07a..44420c144d 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -115,6 +115,14 @@ void cpu_reloading_memory_map(void);
-  */
- void cpu_address_space_init(CPUState *cpu, int asidx,
-                             const char *prefix, MemoryRegion *mr);
-+/**
-+ * cpu_address_space_destroy:
-+ * @cpu: CPU for which address space needs to be destroyed
-+ * @asidx: integer index of this address space
-+ *
-+ * Note that with KVM only one address space is supported.
-+ */
-+void cpu_address_space_destroy(CPUState *cpu, int asidx);
- #endif
- 
- #if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 94d8f83e92..db2336d0df 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -73,6 +73,7 @@ typedef int (*gdb_set_reg_cb)(CPUArchState *env, uint8_t *buf, int reg);
- void gdb_register_coprocessor(CPUState *cpu,
-                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
-                               int num_regs, const char *xml, int g_pos);
-+void gdb_unregister_coprocessor_all(CPUState *cpu);
- 
- /*
-  * The GDB remote protocol transfers values in target byte order. As
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index d9cae71ea5..851f03dd83 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -379,6 +379,7 @@ struct CPUState {
-     struct qemu_work_item *queued_work_first, *queued_work_last;
- 
-     CPUAddressSpace *cpu_ases;
-+    int cpu_ases_ref_count;
-     int num_ases;
-     AddressSpace *as;
-     MemoryRegion *memory;
-@@ -410,6 +411,7 @@ struct CPUState {
-     int kvm_fd;
-     struct KVMState *kvm_state;
-     struct kvm_run *kvm_run;
-+    VMChangeStateEntry *vmcse;
- 
-     /* Used for events with 'vcpu' and *without* the 'disabled' properties */
-     DECLARE_BITMAP(trace_dstate_delayed, CPU_TRACE_DSTATE_MAX_EVENTS);
-diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
-index 56395b87f6..d943683551 100644
---- a/target/arm/cpu-qom.h
-+++ b/target/arm/cpu-qom.h
-@@ -58,6 +58,7 @@ typedef struct ARMCPUClass {
- 
-     const ARMCPUInfo *info;
-     DeviceRealize parent_realize;
-+    DeviceUnrealize parent_unrealize;
-     DeviceReset parent_reset;
- } ARMCPUClass;
- 
-@@ -76,7 +77,9 @@ typedef struct AArch64CPUClass {
- } AArch64CPUClass;
- 
- void register_cp_regs_for_features(ARMCPU *cpu);
-+void unregister_cp_regs_for_features(ARMCPU *cpu);
- void init_cpreg_list(ARMCPU *cpu);
-+void destroy_cpreg_list(ARMCPU *cpu);
- 
- /* Callback functions for the generic timer's timers. */
- void arm_gt_ptimer_cb(void *opaque);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 0c9f5f970e..dac42c418d 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -92,6 +92,16 @@ void arm_register_pre_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
-     QLIST_INSERT_HEAD(&cpu->pre_el_change_hooks, entry, node);
- }
- 
-+void arm_unregister_pre_el_change_hooks(ARMCPU *cpu)
-+{
-+    ARMELChangeHook *entry, *next;
-+
-+    QLIST_FOREACH_SAFE(entry, &cpu->pre_el_change_hooks, node, next) {
-+        QLIST_REMOVE(entry, node);
-+        g_free(entry);
-+    }
-+}
-+
- void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
-                                  void *opaque)
- {
-@@ -103,6 +113,16 @@ void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
-     QLIST_INSERT_HEAD(&cpu->el_change_hooks, entry, node);
- }
- 
-+void arm_unregister_el_change_hooks(ARMCPU *cpu)
-+{
-+    ARMELChangeHook *entry, *next;
-+
-+    QLIST_FOREACH_SAFE(entry, &cpu->el_change_hooks, node, next) {
-+        QLIST_REMOVE(entry, node);
-+        g_free(entry);
-+    }
-+}
-+
- static void cp_reg_reset(gpointer key, gpointer value, gpointer opaque)
- {
-     /* Reset a single ARMCPRegInfo register */
-@@ -1765,6 +1785,70 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     acc->parent_realize(dev, errp);
- }
- 
-+static void arm_cpu_unrealizefn(DeviceState *dev)
-+{
-+    ARMCPUClass *acc = ARM_CPU_GET_CLASS(dev);
-+    ARMCPU *cpu = ARM_CPU(dev);
-+    CPUARMState *env = &cpu->env;
-+    CPUState *cs = CPU(dev);
-+
-+    /* rock 'n' un-roll, whatever happened in the arm_cpu_realizefn cleanly */
-+    if (cpu->has_el3 || arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-+        cpu_address_space_destroy(cs, ARMASIdx_S);
-+    }
-+    cpu_address_space_destroy(cs, ARMASIdx_NS);
-+
-+    destroy_cpreg_list(cpu);
-+    arm_cpu_unregister_gdb_regs(cpu);
-+    unregister_cp_regs_for_features(cpu);
-+
-+    if (cpu->sau_sregion && arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-+           g_free(env->sau.rbar);
-+           g_free(env->sau.rlar);
-+    }
-+
-+    if (arm_feature(env, ARM_FEATURE_PMSA) &&
-+        arm_feature(env, ARM_FEATURE_V7) &&
-+        cpu->pmsav7_dregion) {
-+        if (arm_feature(env, ARM_FEATURE_V8)) {
-+            g_free(env->pmsav8.rbar[M_REG_NS]);
-+            g_free(env->pmsav8.rlar[M_REG_NS]);
-+            if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
-+                g_free(env->pmsav8.rbar[M_REG_S]);
-+                g_free(env->pmsav8.rlar[M_REG_S]);
-+            }
-+        } else {
-+            g_free(env->pmsav7.drbar);
-+            g_free(env->pmsav7.drsr);
-+            g_free(env->pmsav7.dracr);
-+        }
-+    }
-+
-+    if (arm_feature(env, ARM_FEATURE_PMU)) {
-+        if (!kvm_enabled()) {
-+            arm_unregister_pre_el_change_hooks(cpu);
-+            arm_unregister_el_change_hooks(cpu);
-+        }
-+
-+#ifndef CONFIG_USER_ONLY
-+        if (cpu->pmu_timer) {
-+            timer_del(cpu->pmu_timer);
-+        }
-+#endif
-+    }
-+
-+    cpu_remove_sync(CPU(dev));
-+    acc->parent_unrealize(dev);
-+
-+#ifndef CONFIG_USER_ONLY
-+    timer_del(cpu->gt_timer[GTIMER_PHYS]);
-+    timer_del(cpu->gt_timer[GTIMER_VIRT]);
-+    timer_del(cpu->gt_timer[GTIMER_HYP]);
-+    timer_del(cpu->gt_timer[GTIMER_SEC]);
-+    timer_del(cpu->gt_timer[GTIMER_HYPVIRT]);
-+#endif
-+}
-+
- static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
- {
-     ObjectClass *oc;
-@@ -2145,6 +2229,8 @@ static void arm_cpu_class_init(ObjectClass *oc, void *data)
- 
-     device_class_set_parent_realize(dc, arm_cpu_realizefn,
-                                     &acc->parent_realize);
-+    device_class_set_parent_unrealize(dc, arm_cpu_unrealizefn,
-+				      &acc->parent_unrealize);
- 
-     device_class_set_props(dc, arm_cpu_properties);
-     device_class_set_parent_reset(dc, arm_cpu_reset, &acc->parent_reset);
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 5c4991156e..a8e7cb9fb1 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3337,6 +3337,13 @@ static inline AddressSpace *arm_addressspace(CPUState *cs, MemTxAttrs attrs)
-  */
- void arm_register_pre_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
-                                  void *opaque);
-+/**
-+ * arm_unregister_pre_el_change_hook:
-+ * unregister all pre EL change hook functions. Generally called during
-+ * unrealize'ing leg
-+ */
-+void arm_unregister_pre_el_change_hooks(ARMCPU *cpu);
-+
- /**
-  * arm_register_el_change_hook:
-  * Register a hook function which will be called immediately after this
-@@ -3349,6 +3356,12 @@ void arm_register_pre_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
-  */
- void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook, void
-         *opaque);
-+/**
-+ * arm_unregister_el_change_hook:
-+ * unregister all EL change hook functions.  Generally called during
-+ * unrealize'ing leg
-+ */
-+void arm_unregister_el_change_hooks(ARMCPU *cpu);
- 
- /**
-  * arm_rebuild_hflags:
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 972a766730..dc4100ea89 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -502,6 +502,19 @@ void init_cpreg_list(ARMCPU *cpu)
-     g_list_free(keys);
- }
- 
-+void destroy_cpreg_list(ARMCPU *cpu)
-+{
-+    assert(cpu->cpreg_indexes);
-+    assert(cpu->cpreg_values);
-+    assert(cpu->cpreg_vmstate_indexes);
-+    assert(cpu->cpreg_vmstate_values);
-+
-+    g_free(cpu->cpreg_indexes);
-+    g_free(cpu->cpreg_values);
-+    g_free(cpu->cpreg_vmstate_indexes);
-+    g_free(cpu->cpreg_vmstate_values);
-+}
-+
- /*
-  * Some registers are not accessible from AArch32 EL3 if SCR.NS == 0.
-  */
-@@ -7981,6 +7994,18 @@ void register_cp_regs_for_features(ARMCPU *cpu)
- #endif
- }
- 
-+void unregister_cp_regs_for_features(ARMCPU *cpu)
-+{
-+    CPUARMState *env = &cpu->env;
-+    if (arm_feature(env, ARM_FEATURE_M)) {
-+        /* M profile has no coprocessor registers */
-+        return;
-+    }
-+
-+    /* empty it all. unregister all the coprocessor registers */
-+    g_hash_table_remove_all(cpu->cp_regs);
-+}
-+
- void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
- {
-     CPUState *cs = CPU(cpu);
-@@ -8019,6 +8044,12 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
- 
- }
- 
-+void arm_cpu_unregister_gdb_regs(ARMCPU *cpu)
-+{
-+    CPUState *cs = CPU(cpu);
-+    gdb_unregister_coprocessor_all(cs);
-+}
-+
- /* Sort alphabetically by type name, except for "any". */
- static gint arm_cpu_list_compare(gconstpointer a, gconstpointer b)
- {
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 4bdbc3a8ac..8ece9e09f5 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -169,6 +169,7 @@ static inline int r14_bank_number(int mode)
- }
- 
- void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu);
-+void arm_cpu_unregister_gdb_regs(ARMCPU *cpu);
- void arm_translate_init(void);
- 
- enum arm_fprounding {
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index f09ed9f4df..b6df17912e 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -775,7 +775,9 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         return -EINVAL;
-     }
- 
--    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cs);
-+    if (qemu_present_cpu(cs))
-+        cs->vmcse = qemu_add_vm_change_state_handler(kvm_arm_vm_state_change,
-+                                                     cs);
- 
-     /* Determine init features for this CPU */
-     memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
-@@ -840,6 +842,9 @@ int kvm_arch_init_vcpu(CPUState *cs)
- 
- int kvm_arch_destroy_vcpu(CPUState *cs)
- {
-+    if (qemu_present_cpu(cs))
-+        qemu_del_vm_change_state_handler(cs->vmcse);
-+
-     return 0;
- }
- 
--- 
-2.17.1
-
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDYxMzIxMzYyOS4yMTk4
+NC0xLXNhbGlsLm1laHRhQGh1YXdlaS5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRo
+ZSBkb2NrZXItcXVpY2tAY2VudG9zNyBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGlu
+ZyBjb21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5z
+dGFsbGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1Qg
+U0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAptYWtlIGRvY2tlci1pbWFnZS1jZW50b3M3IFY9
+MSBORVRXT1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LXF1aWNrQGNlbnRvczcgU0hPV19FTlY9
+MSBKPTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKICBURVNUICAgIGNoZWNr
+LXVuaXQ6IHRlc3RzL3Rlc3QtY2hhcgogIFRFU1QgICAgY2hlY2stcXRlc3QtYWFyY2g2NDogdGVz
+dHMvcXRlc3QvdHBtLXRpcy1kZXZpY2Utc3d0cG0tdGVzdAogIFRFU1QgICAgY2hlY2stcXRlc3Qt
+YWFyY2g2NDogdGVzdHMvcXRlc3QvbnVtYS10ZXN0CnFlbXUtc3lzdGVtLWFhcmNoNjQ6IHdhcm5p
+bmc6IEZvciBHSUN2MiBtYXgtY3B1cyBtdXN0IGJlIGVxdWFsIHRvIHNtcC1jcHVzCnFlbXUtc3lz
+dGVtLWFhcmNoNjQ6IHdhcm5pbmc6IE92ZXJyaWRpbmcgc3BlY2lmaWVkIG1heC1jcHVzKDgpIHdp
+dGggc21wLWNwdXMoOCkKICBURVNUICAgIGlvdGVzdC1xY293MjogMDAzCnFlbXUtc3lzdGVtLWFh
+cmNoNjQ6IHdhcm5pbmc6IEZvciBHSUN2MiBtYXgtY3B1cyBtdXN0IGJlIGVxdWFsIHRvIHNtcC1j
+cHVzCnFlbXUtc3lzdGVtLWFhcmNoNjQ6IHdhcm5pbmc6IE92ZXJyaWRpbmcgc3BlY2lmaWVkIG1h
+eC1jcHVzKDgpIHdpdGggc21wLWNwdXMoOCkKcWVtdS1zeXN0ZW0tYWFyY2g2NDogd2FybmluZzog
+Rm9yIEdJQ3YyIG1heC1jcHVzIG11c3QgYmUgZXF1YWwgdG8gc21wLWNwdXMKcWVtdS1zeXN0ZW0t
+YWFyY2g2NDogd2FybmluZzogT3ZlcnJpZGluZyBzcGVjaWZpZWQgbWF4LWNwdXMoOCkgd2l0aCBz
+bXAtY3B1cyg4KQpxZW11LXN5c3RlbS1hYXJjaDY0OiB3YXJuaW5nOiBGb3IgR0lDdjIgbWF4LWNw
+dXMgbXVzdCBiZSBlcXVhbCB0byBzbXAtY3B1cwpxZW11LXN5c3RlbS1hYXJjaDY0OiB3YXJuaW5n
+OiBPdmVycmlkaW5nIHNwZWNpZmllZCBtYXgtY3B1cyg4KSB3aXRoIHNtcC1jcHVzKDgpCnFlbXUt
+c3lzdGVtLWFhcmNoNjQ6IHdhcm5pbmc6IEZvciBHSUN2MiBtYXgtY3B1cyBtdXN0IGJlIGVxdWFs
+IHRvIHNtcC1jcHVzCnFlbXUtc3lzdGVtLWFhcmNoNjQ6IHdhcm5pbmc6IE92ZXJyaWRpbmcgc3Bl
+Y2lmaWVkIG1heC1jcHVzKDIpIHdpdGggc21wLWNwdXMoMikKICBURVNUICAgIGNoZWNrLXF0ZXN0
+LWFhcmNoNjQ6IHRlc3RzL3F0ZXN0L2Jvb3Qtc2VyaWFsLXRlc3QKcWVtdS1zeXN0ZW0tYWFyY2g2
+NDogd2FybmluZzogRm9yIEdJQ3YyIG1heC1jcHVzIG11c3QgYmUgZXF1YWwgdG8gc21wLWNwdXMK
+cWVtdS1zeXN0ZW0tYWFyY2g2NDogd2FybmluZzogT3ZlcnJpZGluZyBzcGVjaWZpZWQgbWF4LWNw
+dXMoMSkgd2l0aCBzbXAtY3B1cygxKQogIFRFU1QgICAgY2hlY2stcXRlc3QtYWFyY2g2NDogdGVz
+dHMvcXRlc3QvbWlncmF0aW9uLXRlc3QKICBURVNUICAgIGNoZWNrLXVuaXQ6IHRlc3RzL2NoZWNr
+LXFudW0KICBURVNUICAgIGlvdGVzdC1xY293MjogMDA0Ci0tLQpxZW11LXN5c3RlbS1hYXJjaDY0
+OiBmYWxsaW5nIGJhY2sgdG8gdGNnCiAgVEVTVCAgICBpb3Rlc3QtcWNvdzI6IDA2MAogIFRFU1Qg
+ICAgY2hlY2stcXRlc3QtYWFyY2g2NDogdGVzdHMvcXRlc3QvYmlvcy10YWJsZXMtdGVzdApxZW11
+LXN5c3RlbS1hYXJjaDY0OiB3YXJuaW5nOiBGb3IgR0lDdjIgbWF4LWNwdXMgbXVzdCBiZSBlcXVh
+bCB0byBzbXAtY3B1cwpxZW11LXN5c3RlbS1hYXJjaDY0OiB3YXJuaW5nOiBPdmVycmlkaW5nIHNw
+ZWNpZmllZCBtYXgtY3B1cygxKSB3aXRoIHNtcC1jcHVzKDEpCiAgVEVTVCAgICBpb3Rlc3QtcWNv
+dzI6IDA2MQogIFRFU1QgICAgaW90ZXN0LXFjb3cyOiAwNjIKICBURVNUICAgIGlvdGVzdC1xY293
+MjogMDYzCi0tLQphY3BpLXRlc3Q6IFdhcm5pbmchIERTRFQgYmluYXJ5IGZpbGUgbWlzbWF0Y2gu
+IEFjdHVhbCBbYW1sOi90bXAvYW1sLTNQRklNMF0sIEV4cGVjdGVkIFthbWw6dGVzdHMvZGF0YS9h
+Y3BpL3ZpcnQvRFNEVF0uClNlZSBzb3VyY2UgZmlsZSB0ZXN0cy9xdGVzdC9iaW9zLXRhYmxlcy10
+ZXN0LmMgZm9yIGluc3RydWN0aW9ucyBvbiBob3cgdG8gdXBkYXRlIGV4cGVjdGVkIGZpbGVzLgp0
+byBzZWUgQVNMIGRpZmYgYmV0d2VlbiBtaXNtYXRjaGVkIGZpbGVzIGluc3RhbGwgSUFTTCwgcmVi
+dWlsZCBRRU1VIGZyb20gc2NyYXRjaCBhbmQgcmUtcnVuIHRlc3RzIHdpdGggVj0xIGVudmlyb25t
+ZW50IHZhcmlhYmxlIHNldCoqCkVSUk9SOi90bXAvcWVtdS10ZXN0L3NyYy90ZXN0cy9xdGVzdC9i
+aW9zLXRhYmxlcy10ZXN0LmM6NDk0OnRlc3RfYWNwaV9hc2w6IGFzc2VydGlvbiBmYWlsZWQ6IChh
+bGxfdGFibGVzX21hdGNoKQpFUlJPUiAtIEJhaWwgb3V0ISBFUlJPUjovdG1wL3FlbXUtdGVzdC9z
+cmMvdGVzdHMvcXRlc3QvYmlvcy10YWJsZXMtdGVzdC5jOjQ5NDp0ZXN0X2FjcGlfYXNsOiBhc3Nl
+cnRpb24gZmFpbGVkOiAoYWxsX3RhYmxlc19tYXRjaCkKbWFrZTogKioqIFtjaGVjay1xdGVzdC1h
+YXJjaDY0XSBFcnJvciAxCm1ha2U6ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpvYnMuLi4u
+CiAgVEVTVCAgICBpb3Rlc3QtcWNvdzI6IDA3MwogIFRFU1QgICAgaW90ZXN0LXFjb3cyOiAwNzQK
+LS0tCiAgICByYWlzZSBDYWxsZWRQcm9jZXNzRXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9jZXNz
+LkNhbGxlZFByb2Nlc3NFcnJvcjogQ29tbWFuZCAnWydzdWRvJywgJy1uJywgJ2RvY2tlcicsICdy
+dW4nLCAnLS1sYWJlbCcsICdjb20ucWVtdS5pbnN0YW5jZS51dWlkPTg1YjU1YjQ1NWQ1NTQ0OTI5
+NzQ2OWJmM2E5ODFjYWJkJywgJy11JywgJzEwMDEnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2VjY29t
+cD11bmNvbmZpbmVkJywgJy0tcm0nLCAnLWUnLCAnVEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VYVFJB
+X0NPTkZJR1VSRV9PUFRTPScsICctZScsICdWPScsICctZScsICdKPTE0JywgJy1lJywgJ0RFQlVH
+PScsICctZScsICdTSE9XX0VOVj0xJywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90bXAvY2NhY2hl
+JywgJy12JywgJy9ob21lL3BhdGNoZXcvLmNhY2hlL3FlbXUtZG9ja2VyLWNjYWNoZTovdmFyL3Rt
+cC9jY2FjaGU6eicsICctdicsICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtaThwenhhdmIv
+c3JjL2RvY2tlci1zcmMuMjAyMC0wNi0xMy0xOC4wOC4wMy4yOTM2NDovdmFyL3RtcC9xZW11Onos
+cm8nLCAncWVtdTpjZW50b3M3JywgJy92YXIvdG1wL3FlbXUvcnVuJywgJ3Rlc3QtcXVpY2snXScg
+cmV0dXJuZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4KZmlsdGVyPS0tZmlsdGVyPWxhYmVsPWNv
+bS5xZW11Lmluc3RhbmNlLnV1aWQ9ODViNTViNDU1ZDU1NDQ5Mjk3NDY5YmYzYTk4MWNhYmQKbWFr
+ZVsxXTogKioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcgZGlyZWN0b3J5
+IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtaThwenhhdmIvc3JjJwptYWtlOiAqKiogW2Rv
+Y2tlci1ydW4tdGVzdC1xdWlja0BjZW50b3M3XSBFcnJvciAyCgpyZWFsICAgIDE2bTMwLjg3MXMK
+dXNlciAgICAwbTkuNDEwcwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3Bh
+dGNoZXcub3JnL2xvZ3MvMjAyMDA2MTMyMTM2MjkuMjE5ODQtMS1zYWxpbC5tZWh0YUBodWF3ZWku
+Y29tL3Rlc3RpbmcuZG9ja2VyLXF1aWNrQGNlbnRvczcvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWls
+IGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcv
+XS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=

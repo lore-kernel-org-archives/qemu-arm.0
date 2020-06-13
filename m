@@ -1,62 +1,63 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp450510lfm;
-        Sat, 13 Jun 2020 14:46:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJykEaYKJ9yy/Lj4cSzSNKs+QG/6ndhmdru1GjXD/2p3VRBeR49ntkF2avrZGuDHWK5jeU1f
-X-Received: by 2002:a5b:b4c:: with SMTP id b12mr28452003ybr.433.1592084773704;
-        Sat, 13 Jun 2020 14:46:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592084773; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp450818lfm;
+        Sat, 13 Jun 2020 14:46:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwcZFIXKoIrJKSfAjkQMSas5uYgx6HqaZvx3WnghJCn0WLYOTRFqRpbtsF556p60jE1vjw3
+X-Received: by 2002:a25:544:: with SMTP id 65mr32836260ybf.309.1592084811691;
+        Sat, 13 Jun 2020 14:46:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592084811; cv=none;
         d=google.com; s=arc-20160816;
-        b=aryjlUo60ISE/OnHvRLUVmSr6YS7zVPXvW2OsPECLFVAU6NtELysQwcS5rh1XcJ3f6
-         tQdYGp8duTEAVLPAuN5D+UZhxZV8XZHEOsAzvjwGWy+HqoxJAS6Su82KOHzII1RSGp7S
-         xDxhW36Xn831FMT6IcR5ip/8GJK20MPOCPuq3owyYJDVSllEFBLXssK37fhP7RBSijJm
-         u8ghkDka1iJBbtma3mFxoTAhAuHA7cFzQYYjhfKulI7w35/VAqtLLLzYC5O5lyrq5l0z
-         0uGRav6jGXUFTFIsH43qHL2h6SE3lgZ1ey4d+WXtWaZhfrdXrAw1kb9jRVt5l+3/NlVE
-         CjhA==
+        b=kDHorxk/SPPayIvfiU/VTI++I4Iizyi6wQTCpBoAXzeKsPnmOCDbqC6ve4wrwM4tQj
+         v2GS+nuwf1DWRG1pmttZP2DgSArWFX9DRJmQVP2GupcqAp1FZX5QNAhm2JxDHbgmBZsF
+         gn+pJxf7TvnsTOA7hToqIAauvWexC5bsiNyDOSOzd/78q6NsuHurSNoohEfhNnr6JI9A
+         Z2lshdlG6rlSzKwbhJ2ivn5KBrcg+lnjWc9YfzOInotz67R8jiSZLxw5wER43HhDeEd+
+         aqfK4iwDDBDx30gotf4nh5kSKiTgBntrb8ftC7O7+VqEutc4NiBOLlN+iiLVDwBZYXFt
+         WGuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=HDc5SqTaiv5cjFQdsPhWGO1JmoYIcr+nMKCwD0LLu4M=;
-        b=0uHIOc9a9AfYCPE3UJXQmBwWEe74tCq66NBvah+B+TtVyyp+yLuKek43iuGvmR8+uM
-         OZSQkYHT1/R+cuPFXfk06Kr4B/GP5iOAfvaS5AHDE2BforQbhliEFWNk5opUAwmx/fER
-         cw1oD+wLt33ySzYGE8PsNPqT2ErLml4tclDcCBCn/RHRCnYAYSWAAYI1OuBsRYR0iQTd
-         BlvoVWLKOA0r7k0Vk1zVu9ix9It6VeA7asgNmhiTzPXt4cxzQZZn1HdehEaZZs+Kc/LM
-         uJNxMSgZwdSeS49ap4JmxqB5kJuLyvQL/S+FcBfuit/r3Uw1abI/n1rl61lthiGnKEOX
-         /8Iw==
+        bh=vPd+cOVtu89Nbj+2udAclRJX9S7Ge6qH7q/5qGexaaU=;
+        b=vJaoPNmYp0pdGntc4n/xr2MIs9qzYEZw4AykD5eeuwzh2bA0z6gzZLa7iUGLBFVdOn
+         40M6TpSBCKNpR7GejUS7hiczQZmGSLNf8F1hx3V2Yy6fkmQuDX+ps/PyXt1DWR/dfWUX
+         a71qDNbLXj6Z8oALxwxV8nfwJtC783kEGJCpkDV/v2SzSFVmt8IQvu7OaJZw8uYFzxYT
+         5wH1aPi/ETo3ZZt/wt81E6cFgcv0wcy4bhQV02LgdmRa/0nCQRIf+NOGRohftLxENg5w
+         3OyhC1VUUlmApRhSNXi39XHeIH5rpBPc259kxMbESdOTkQler5dfSc4rOFdP8SV1EN8f
+         aWbg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f5si8924153ybk.395.2020.06.13.14.46.13
+        by mx.google.com with ESMTPS id q66si9632946ybg.144.2020.06.13.14.46.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 13 Jun 2020 14:46:13 -0700 (PDT)
+        Sat, 13 Jun 2020 14:46:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58656 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jkDyf-0006np-1V
-	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:46:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59082)
+	id 1jkDzG-0008J0-EL
+	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:46:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59680)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDx6-0005A1-JT; Sat, 13 Jun 2020 17:44:36 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3706 helo=huawei.com)
+ id 1jkDxp-0006Vg-87; Sat, 13 Jun 2020 17:45:21 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3707 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDx4-00036A-F1; Sat, 13 Jun 2020 17:44:36 -0400
+ id 1jkDxn-0003CN-93; Sat, 13 Jun 2020 17:45:20 -0400
 Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 3046C9153F694E10A53E;
- Sun, 14 Jun 2020 05:44:30 +0800 (CST)
+ by Forcepoint Email with ESMTP id D13F932AE4BA90251945;
+ Sun, 14 Jun 2020 05:45:15 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.47.30.60) by
  DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Sun, 14 Jun 2020 05:44:23 +0800
+ 14.3.487.0; Sun, 14 Jun 2020 05:45:05 +0800
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH RFC 02/22] arm/cpuhp: Add new ARMCPU core-id property
-Date: Sat, 13 Jun 2020 22:36:09 +0100
-Message-ID: <20200613213629.21984-3-salil.mehta@huawei.com>
+Subject: [PATCH RFC 09/22] arm/cpuhp: Init GED framework with cpu hotplug
+ events
+Date: Sat, 13 Jun 2020 22:36:16 +0100
+Message-ID: <20200613213629.21984-10-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
 In-Reply-To: <20200613213629.21984-1-salil.mehta@huawei.com>
 References: <20200613213629.21984-1-salil.mehta@huawei.com>
@@ -96,98 +97,100 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, sudeep.holla@arm.com,
  wangxiongfeng2@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A3CABkJt1IUD
+X-TUID: QX7TanfQwr2Z
 
-This shall be used to store user specified core index and shall be directly
-used as slot-index during hot{plug|unplug} of vcpu.
+ACPI GED(as described in the ACPI 6.2 spec) can be used to generate ACPI events
+when OSPM/guest receives an interrupt listed in the _CRS object of GED. OSPM
+then maps or demultiplexes the event by evaluating _EVT method.
 
-For now, we are not taking into account of other topology info like thread-id,
-socket-id to derive mp-affinity. Host KVM uses vcpu-id to derive the mpidr for
-the vcpu of the guest. This is not in exact corroboration with the ARM spec
-view of the MPIDR. Hence, the concept of threads or SMT bit present as part of
-the MPIDR_EL1 also gets lost.
-
-Also, we need ACPI PPTT Table support in QEMU to be able to export this
-topology info to the guest VM and the info should be consistent with what host
-cpu supports if accel=kvm is being used.
-
-Perhaps some comments on this will help? @Andrew/drjones@redhat.com
+This change adds the support of cpu hotplug event initialization in the
+existing GED framework.
 
 Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/arm/virt.c    | 5 +++++
- target/arm/cpu.c | 5 +++++
- target/arm/cpu.h | 1 +
- 3 files changed, 11 insertions(+)
+ hw/acpi/generic_event_device.c         | 8 ++++++++
+ hw/arm/virt.c                          | 3 ++-
+ include/hw/acpi/generic_event_device.h | 5 +++++
+ 3 files changed, 15 insertions(+), 1 deletion(-)
 
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index 1cb34111e5..0f2c8a959e 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -25,6 +25,7 @@ static const uint32_t ged_supported_events[] = {
+     ACPI_GED_MEM_HOTPLUG_EVT,
+     ACPI_GED_PWR_DOWN_EVT,
+     ACPI_GED_NVDIMM_HOTPLUG_EVT,
++    ACPI_GED_CPU_HOTPLUG_EVT,
+ };
+ 
+ /*
+@@ -305,6 +306,13 @@ static void acpi_ged_initfn(Object *obj)
+      sysbus_init_mmio(sbd, &s->container_memhp);
+      acpi_memory_hotplug_init(&s->container_memhp, OBJECT(dev),
+                               &s->memhp_state, 0);
++
++     s->cpuhp.device = OBJECT(s);
++     memory_region_init(&s->container_cpuhp, OBJECT(dev), "cpuhp container",
++                        ACPI_CPU_HOTPLUG_REG_LEN);
++     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container_cpuhp);
++     cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
++                         &s->cpuhp_state, 0);
+ }
+ 
+ static void acpi_ged_class_init(ObjectClass *class, void *data)
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 5d1afdd031..c4ed955776 100644
+index fe37babe35..e9ead0e2dd 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -1778,6 +1778,7 @@ static void machvirt_init(MachineState *machine)
-                           &error_fatal);
+@@ -552,7 +552,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+     DeviceState *dev;
+     MachineState *ms = MACHINE(vms);
+     int irq = vms->irqmap[VIRT_ACPI_GED];
+-    uint32_t event = ACPI_GED_PWR_DOWN_EVT;
++    uint32_t event = ACPI_GED_PWR_DOWN_EVT | ACPI_GED_CPU_HOTPLUG_EVT;
  
-         aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
-+        object_property_set_int(cpuobj, n, "core-id", NULL);
+     if (ms->ram_slots) {
+         event |= ACPI_GED_MEM_HOTPLUG_EVT;
+@@ -567,6 +567,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
  
-         if (!vms->secure) {
-             object_property_set_bool(cpuobj, false, "has_el3", NULL);
-@@ -2081,6 +2082,7 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
- {
-     int n;
-     unsigned int max_cpus = ms->smp.max_cpus;
-+    unsigned int smp_threads = ms->smp.threads;
-     VirtMachineState *vms = VIRT_MACHINE(ms);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_ACPI_GED].base);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 1, vms->memmap[VIRT_PCDIMM_ACPI].base);
++    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, vms->memmap[VIRT_CPUHP_ACPI].base);
+     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(vms->gic, irq));
  
-     if (ms->possible_cpus) {
-@@ -2093,8 +2095,11 @@ static const CPUArchIdList *virt_possible_cpu_arch_ids(MachineState *ms)
-     ms->possible_cpus->len = max_cpus;
-     for (n = 0; n < ms->possible_cpus->len; n++) {
-         ms->possible_cpus->cpus[n].type = ms->cpu_type;
-+        ms->possible_cpus->cpus[n].vcpus_count = smp_threads;
-         ms->possible_cpus->cpus[n].arch_id =
-             virt_cpu_mp_affinity(vms, n);
-+        ms->possible_cpus->cpus[n].props.has_core_id = true;
-+        ms->possible_cpus->cpus[n].props.core_id = n;
-         ms->possible_cpus->cpus[n].props.has_thread_id = true;
-         ms->possible_cpus->cpus[n].props.thread_id = n;
-     }
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 32bec156f2..33a58086a9 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1086,6 +1086,9 @@ static Property arm_cpu_has_dsp_property =
- static Property arm_cpu_has_mpu_property =
-             DEFINE_PROP_BOOL("has-mpu", ARMCPU, has_mpu, true);
+     qdev_init_nofail(dev);
+diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+index 90a9180db5..b04037cf62 100644
+--- a/include/hw/acpi/generic_event_device.h
++++ b/include/hw/acpi/generic_event_device.h
+@@ -62,6 +62,7 @@
+ #include "hw/sysbus.h"
+ #include "hw/acpi/memory_hotplug.h"
+ #include "hw/acpi/ghes.h"
++#include "hw/acpi/cpu_hotplug.h"
  
-+static Property arm_cpu_coreid_property =
-+            DEFINE_PROP_INT32("core-id", ARMCPU, core_id, -1);
-+
- /* This is like DEFINE_PROP_UINT32 but it doesn't set the default value,
-  * because the CPU initfn will have already set cpu->pmsav7_dregion to
-  * the right value for that particular CPU type, and we don't want
-@@ -1168,6 +1171,8 @@ void arm_cpu_post_init(Object *obj)
-         qdev_property_add_static(DEVICE(obj), &arm_cpu_rvbar_property);
-     }
+ #define ACPI_POWER_BUTTON_DEVICE "PWRB"
  
-+    qdev_property_add_static(DEVICE(obj), &arm_cpu_coreid_property);
-+
- #ifndef CONFIG_USER_ONLY
-     if (arm_feature(&cpu->env, ARM_FEATURE_EL3)) {
-         /* Add the has_el3 state CPU property only if EL3 is allowed.  This will
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 677584e5da..5c4991156e 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -949,6 +949,7 @@ struct ARMCPU {
-     QLIST_HEAD(, ARMELChangeHook) el_change_hooks;
+@@ -84,6 +85,7 @@
+ #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
+ #define ACPI_GED_PWR_DOWN_EVT      0x2
+ #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
++#define ACPI_GED_CPU_HOTPLUG_EVT    0x8
  
-     int32_t node_id; /* NUMA node this CPU belongs to */
-+    int32_t core_id; /* core-id of this ARM VCPU */
- 
-     /* Used to synchronize KVM and QEMU in-kernel device levels */
-     uint8_t device_irq_level;
+ typedef struct GEDState {
+     MemoryRegion evt;
+@@ -94,6 +96,9 @@ typedef struct AcpiGedState {
+     SysBusDevice parent_obj;
+     MemHotplugState memhp_state;
+     MemoryRegion container_memhp;
++    CPUHotplugState cpuhp_state;
++    MemoryRegion container_cpuhp;
++    AcpiCpuHotplug cpuhp;
+     GEDState ged_state;
+     uint32_t ged_event_bitmap;
+     qemu_irq irq;
 -- 
 2.17.1
 

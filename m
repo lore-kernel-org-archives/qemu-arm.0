@@ -1,63 +1,62 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp450818lfm;
-        Sat, 13 Jun 2020 14:46:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwcZFIXKoIrJKSfAjkQMSas5uYgx6HqaZvx3WnghJCn0WLYOTRFqRpbtsF556p60jE1vjw3
-X-Received: by 2002:a25:544:: with SMTP id 65mr32836260ybf.309.1592084811691;
-        Sat, 13 Jun 2020 14:46:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592084811; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp451691lfm;
+        Sat, 13 Jun 2020 14:49:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxe22/lRRnkrh5WAiPFr9J/rXTfKycTmG+upxLkM3e1iZvvWRH9Md4cHG+8NoQAbMQqX4+Z
+X-Received: by 2002:a25:cbcc:: with SMTP id b195mr31793525ybg.91.1592084960160;
+        Sat, 13 Jun 2020 14:49:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592084960; cv=none;
         d=google.com; s=arc-20160816;
-        b=kDHorxk/SPPayIvfiU/VTI++I4Iizyi6wQTCpBoAXzeKsPnmOCDbqC6ve4wrwM4tQj
-         v2GS+nuwf1DWRG1pmttZP2DgSArWFX9DRJmQVP2GupcqAp1FZX5QNAhm2JxDHbgmBZsF
-         gn+pJxf7TvnsTOA7hToqIAauvWexC5bsiNyDOSOzd/78q6NsuHurSNoohEfhNnr6JI9A
-         Z2lshdlG6rlSzKwbhJ2ivn5KBrcg+lnjWc9YfzOInotz67R8jiSZLxw5wER43HhDeEd+
-         aqfK4iwDDBDx30gotf4nh5kSKiTgBntrb8ftC7O7+VqEutc4NiBOLlN+iiLVDwBZYXFt
-         WGuA==
+        b=xp5RIoTOmirl95VQAw2dcLmwoIsviE6Hbked2V4XH1fqLem3D5aMUjN6CNfAcfS76C
+         ti8DCtQ3PKK7Wjj2V+1clcBnZpusZQet1eabANmraKtfg1oia3ma6KuZaSF6l6R6nXjU
+         2bIROeIB1h9aAItWln14bCiTUoGPifKsdE1ysZahhkLwgpmACu6vMkzIb559Zm5hluVp
+         1g8bbs4ZQZykZ/NNEgR0YakUHsWP5WIumpbssLBD13JamLDbnpr86B5zz9DCvKAcFrgs
+         DWd1rRdcMV7VxvOILKfWKHsePLLK6MsdPq4HlAPo43bbhfwfyP81U0QzU/C+V5WRmC0k
+         9u1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=vPd+cOVtu89Nbj+2udAclRJX9S7Ge6qH7q/5qGexaaU=;
-        b=vJaoPNmYp0pdGntc4n/xr2MIs9qzYEZw4AykD5eeuwzh2bA0z6gzZLa7iUGLBFVdOn
-         40M6TpSBCKNpR7GejUS7hiczQZmGSLNf8F1hx3V2Yy6fkmQuDX+ps/PyXt1DWR/dfWUX
-         a71qDNbLXj6Z8oALxwxV8nfwJtC783kEGJCpkDV/v2SzSFVmt8IQvu7OaJZw8uYFzxYT
-         5wH1aPi/ETo3ZZt/wt81E6cFgcv0wcy4bhQV02LgdmRa/0nCQRIf+NOGRohftLxENg5w
-         3OyhC1VUUlmApRhSNXi39XHeIH5rpBPc259kxMbESdOTkQler5dfSc4rOFdP8SV1EN8f
-         aWbg==
+        bh=0yff527cHXWdzwx+n5n2z19CODuo/vU7BLGvOJJjAsc=;
+        b=YvEIIZTMwGEFCMytqCWpl0+ibG6fAI/ltRkpoLtzPbCT8WedKJXYCTfRVqUNZWnjPC
+         C7i/Jivb4O18julbNe0b+AlaZfuhgenP6Lhb2hoZ4PEDLGvHCPYlsuuPB903J99xYKwe
+         ri6N1JPprANsEhiA0No4EtSc7O91IYNFPq/4EPArHOPBDAz96GPzm+4gkdiRzan37pPa
+         G+CBSY35xdksguqlQgCj8LUMrqFELbjtIFsbgsjz3F2syG9uipxBN1xjYQjiis0P8Iys
+         p0+mWvILOemGSlrY4rCbwoWsjBilNmXer5Z+O62hqOLFKTM3UH8doO7w4BwnfTJbN+rp
+         3gnA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q66si9632946ybg.144.2020.06.13.14.46.51
+        by mx.google.com with ESMTPS id a18si8961585ybs.368.2020.06.13.14.49.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 13 Jun 2020 14:46:51 -0700 (PDT)
+        Sat, 13 Jun 2020 14:49:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33954 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42466 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jkDzG-0008J0-EL
-	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:46:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59680)
+	id 1jkE1f-0003cT-GY
+	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:49:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59844)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDxp-0006Vg-87; Sat, 13 Jun 2020 17:45:21 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3707 helo=huawei.com)
+ id 1jkDxz-0006tJ-C3; Sat, 13 Jun 2020 17:45:31 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3776 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDxn-0003CN-93; Sat, 13 Jun 2020 17:45:20 -0400
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id D13F932AE4BA90251945;
- Sun, 14 Jun 2020 05:45:15 +0800 (CST)
+ id 1jkDxx-0003GQ-Dn; Sat, 13 Jun 2020 17:45:31 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id EF046561478D198E2282;
+ Sun, 14 Jun 2020 05:45:25 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.47.30.60) by
  DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Sun, 14 Jun 2020 05:45:05 +0800
+ 14.3.487.0; Sun, 14 Jun 2020 05:45:17 +0800
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH RFC 09/22] arm/cpuhp: Init GED framework with cpu hotplug
- events
-Date: Sat, 13 Jun 2020 22:36:16 +0100
-Message-ID: <20200613213629.21984-10-salil.mehta@huawei.com>
+Subject: [PATCH RFC 11/22] arm/cpuhp: Update GED _EVT method AML with cpu scan
+Date: Sat, 13 Jun 2020 22:36:18 +0100
+Message-ID: <20200613213629.21984-12-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
 In-Reply-To: <20200613213629.21984-1-salil.mehta@huawei.com>
 References: <20200613213629.21984-1-salil.mehta@huawei.com>
@@ -65,9 +64,9 @@ MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.47.30.60]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
+Received-SPF: pass client-ip=45.249.212.191;
  envelope-from=salil.mehta@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/13 17:44:30
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/13 17:44:35
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -97,100 +96,51 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, sudeep.holla@arm.com,
  wangxiongfeng2@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QX7TanfQwr2Z
+X-TUID: nxtv0yqF/8gJ
 
-ACPI GED(as described in the ACPI 6.2 spec) can be used to generate ACPI events
-when OSPM/guest receives an interrupt listed in the _CRS object of GED. OSPM
-then maps or demultiplexes the event by evaluating _EVT method.
+OSPM evaluates _EVT method to map the event. The cpu hotplug event eventually
+results in start of the cpu scan. Scan figures out the cpu and the kind of
+event(plug/unplug) and notifies it back to the guest.
 
-This change adds the support of cpu hotplug event initialization in the
-existing GED framework.
+The change in this patch updates the GED AML _EVT method with the call to
+\\_SB.CPUS.CSCN which will do above.
 
 Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/acpi/generic_event_device.c         | 8 ++++++++
- hw/arm/virt.c                          | 3 ++-
- include/hw/acpi/generic_event_device.h | 5 +++++
- 3 files changed, 15 insertions(+), 1 deletion(-)
+ hw/acpi/generic_event_device.c | 4 ++++
+ include/hw/acpi/cpu_hotplug.h  | 3 +++
+ 2 files changed, 7 insertions(+)
 
 diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 1cb34111e5..0f2c8a959e 100644
+index 0f2c8a959e..79177deda2 100644
 --- a/hw/acpi/generic_event_device.c
 +++ b/hw/acpi/generic_event_device.c
-@@ -25,6 +25,7 @@ static const uint32_t ged_supported_events[] = {
-     ACPI_GED_MEM_HOTPLUG_EVT,
-     ACPI_GED_PWR_DOWN_EVT,
-     ACPI_GED_NVDIMM_HOTPLUG_EVT,
-+    ACPI_GED_CPU_HOTPLUG_EVT,
- };
+@@ -108,6 +108,10 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
+                 aml_append(if_ctx, aml_call0(MEMORY_DEVICES_CONTAINER "."
+                                              MEMORY_SLOT_SCAN_METHOD));
+                 break;
++            case ACPI_GED_CPU_HOTPLUG_EVT:
++                aml_append(if_ctx, aml_call0(ACPI_CPU_CONTAINER "."
++                                             ACPI_CPU_SCAN_METHOD));
++                break;
+             case ACPI_GED_PWR_DOWN_EVT:
+                 aml_append(if_ctx,
+                            aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
+diff --git a/include/hw/acpi/cpu_hotplug.h b/include/hw/acpi/cpu_hotplug.h
+index 48b291e45e..f47fc8e79b 100644
+--- a/include/hw/acpi/cpu_hotplug.h
++++ b/include/hw/acpi/cpu_hotplug.h
+@@ -20,6 +20,9 @@
+ #include "hw/acpi/cpu.h"
  
- /*
-@@ -305,6 +306,13 @@ static void acpi_ged_initfn(Object *obj)
-      sysbus_init_mmio(sbd, &s->container_memhp);
-      acpi_memory_hotplug_init(&s->container_memhp, OBJECT(dev),
-                               &s->memhp_state, 0);
+ #define ACPI_CPU_HOTPLUG_REG_LEN 12
++#define ACPI_CPU_SCAN_METHOD "CSCN"
++#define ACPI_CPU_CONTAINER "\\_SB.CPUS"
 +
-+     s->cpuhp.device = OBJECT(s);
-+     memory_region_init(&s->container_cpuhp, OBJECT(dev), "cpuhp container",
-+                        ACPI_CPU_HOTPLUG_REG_LEN);
-+     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container_cpuhp);
-+     cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
-+                         &s->cpuhp_state, 0);
- }
  
- static void acpi_ged_class_init(ObjectClass *class, void *data)
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index fe37babe35..e9ead0e2dd 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -552,7 +552,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
-     DeviceState *dev;
-     MachineState *ms = MACHINE(vms);
-     int irq = vms->irqmap[VIRT_ACPI_GED];
--    uint32_t event = ACPI_GED_PWR_DOWN_EVT;
-+    uint32_t event = ACPI_GED_PWR_DOWN_EVT | ACPI_GED_CPU_HOTPLUG_EVT;
- 
-     if (ms->ram_slots) {
-         event |= ACPI_GED_MEM_HOTPLUG_EVT;
-@@ -567,6 +567,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
- 
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_ACPI_GED].base);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 1, vms->memmap[VIRT_PCDIMM_ACPI].base);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, vms->memmap[VIRT_CPUHP_ACPI].base);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(vms->gic, irq));
- 
-     qdev_init_nofail(dev);
-diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-index 90a9180db5..b04037cf62 100644
---- a/include/hw/acpi/generic_event_device.h
-+++ b/include/hw/acpi/generic_event_device.h
-@@ -62,6 +62,7 @@
- #include "hw/sysbus.h"
- #include "hw/acpi/memory_hotplug.h"
- #include "hw/acpi/ghes.h"
-+#include "hw/acpi/cpu_hotplug.h"
- 
- #define ACPI_POWER_BUTTON_DEVICE "PWRB"
- 
-@@ -84,6 +85,7 @@
- #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
- #define ACPI_GED_PWR_DOWN_EVT      0x2
- #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
-+#define ACPI_GED_CPU_HOTPLUG_EVT    0x8
- 
- typedef struct GEDState {
-     MemoryRegion evt;
-@@ -94,6 +96,9 @@ typedef struct AcpiGedState {
-     SysBusDevice parent_obj;
-     MemHotplugState memhp_state;
-     MemoryRegion container_memhp;
-+    CPUHotplugState cpuhp_state;
-+    MemoryRegion container_cpuhp;
-+    AcpiCpuHotplug cpuhp;
-     GEDState ged_state;
-     uint32_t ged_event_bitmap;
-     qemu_irq irq;
+ typedef struct AcpiCpuHotplug {
+     Object *device;
 -- 
 2.17.1
 

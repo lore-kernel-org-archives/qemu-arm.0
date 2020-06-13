@@ -1,63 +1,63 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp453630lfm;
-        Sat, 13 Jun 2020 14:54:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHEu1djygUb2eZ1kleEd/WNSaozt8vaUbsJ0pCTZtw6+OKMXfiMvvyct2rAg8LcCGmxBwX
-X-Received: by 2002:a25:3a41:: with SMTP id h62mr32205204yba.242.1592085246356;
-        Sat, 13 Jun 2020 14:54:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592085246; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp453782lfm;
+        Sat, 13 Jun 2020 14:54:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy8zzm7eL+Yp0qnPq13MBejUOToDmqxJ1d5ZqSO+7d9mRC726DgpwOAhsOZtPdBsBGz3oGz
+X-Received: by 2002:a25:c4c5:: with SMTP id u188mr32374746ybf.418.1592085271122;
+        Sat, 13 Jun 2020 14:54:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592085271; cv=none;
         d=google.com; s=arc-20160816;
-        b=EQhlTPRCSJnsHUzbAUH95hM/BYgysBYBBpd5ATjUW9WE9nDon4oppdJJWnmUCee6qP
-         Iv03UjKrF6ZHeoX057OmXYd3WP358MadnwM55xpl2tDIAcNjzx26mC4b//g3lr6eerHu
-         8KpW4qf3jxUFa+6+KiLW5/aB+hfwYpJBEr39ZQFg9EggVQkJ9yQrCZi0Bns1mGWWFHHK
-         XZa9W9ocs47ffdIIikwu0gGB+INeFgOQvorlihMwCUEm1yxwGBqVScvJPUp49xEXQHi2
-         gt5EIorRxSd3lxj7TD1Gyo70I6Ww/hTPjG+sQIwRvIvPRG49WZc/jDVCUnZfYi/UWxeu
-         wisA==
+        b=Zp1EstnPGrKhoFnxMZPYc5MK3O0skt/CCKuydPeyIIeUBz5jcqoR8f7vr2iruwJqyJ
+         VmCvghpISktZ+lTL6yzQjaJEZ+YVrdnGNXXEWJVgQYSzKjovFJUMt5NmiWhnfJrdYhFC
+         r+ODHeW5Wu+H6iB9Mqwy9GvLy3PbwJwG4Pm8jTM/Gf0NzYxdDiWNoBFDPuEdw+aOwwl/
+         dIkN6hRXLtpC0B/HPfa3rXOv9SfYGOqbPG19W6pyMQ1z9oPGtd9T/r81bZLaz8B15FXu
+         YfhHcoGE14SNDG/gan2QINEWpy2HOqUfuNu/dpFqDpwGhs0JYzVTamO1P7Ld5CCR4tyU
+         w7VQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=/tWxw/WWHfWZ2Cq6hbEV2KECSxerlNR8BsdfjfmZGHM=;
-        b=wdFWZJfcdMs50hO04jeVabWXnbv5Tpls6GhQwm45LjZ3BrsJOONM9IIRidVqOrPTle
-         cQyelFGz4Yl1FIC/htBp3eRVPwoK8ozPtzt6qTa2Gtq6VIUlwf1zI9ngzTcDC1ifaLyB
-         n7Ay/w/sH3vddFta10q2Gv6KzrO2Wm/7QxKVALDqnYFlXdX25+CkQe4+yOLJzMZ0HL76
-         ZqHDsJ1NWH4MNx+hE3rspVw99Tz5wkcNl3qyWnCC87bD5lA/XOhl6+6ovuP3wm6LuS4b
-         zl5EGYr8HB/Ox8XG3OXFgiJ88/B30jWYU/jLFFjEJUYWPh8nSiTNM/rFmyyhLsLRvKDa
-         P25Q==
+        bh=H71NmMoW77S+w9rsQDoYQ9tD581PAyyF2x1qKmnvehE=;
+        b=sJThaYyF5S1Z7cFGZEn7b//Tm5Aq+9+usFecicUdkmTKz99M/89uVB0f4AHWTeEgx1
+         WcWihsyIS7vQuH/PAxTK7cgTjOk6LUzVifeTCMnjiSqTZN0+IJRrWE6LgJ/DUY4eiNwB
+         zeSKPcT3BIxQQyZEVYCRHLQxmAaCJzom7RcQZ9M6q/qwFQ9Df1s0IrjWua8b6Y0oP3XJ
+         YmvTJwkLNxKcMwRAmTSO7gC5z6zV+swKpqDMqywgYIP1t1EdEwh1CHLf0jYahmHsvvJI
+         lxFcbvWm9B7lNDK1SNSi2NdVdv4Afs4pF1MQ3Wm1xwe3l6ne5D/YgyiM+EtPrgIZm/ls
+         m7mw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i3si8676226ybh.240.2020.06.13.14.54.06
+        by mx.google.com with ESMTPS id f190si8643306ybb.481.2020.06.13.14.54.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 13 Jun 2020 14:54:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 13 Jun 2020 14:54:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34886 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38618 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jkE6H-00046m-Pe
-	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:54:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60290)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jkE6g-0005c3-EA
+	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:54:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60826)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDyN-0007IP-R0; Sat, 13 Jun 2020 17:45:55 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3778 helo=huawei.com)
+ id 1jkDyx-0008UN-E4; Sat, 13 Jun 2020 17:46:31 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3781 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDyL-0003Ro-UB; Sat, 13 Jun 2020 17:45:55 -0400
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 5DD21511CC70ECC0FB03;
- Sun, 14 Jun 2020 05:45:51 +0800 (CST)
+ id 1jkDyv-0003XB-BN; Sat, 13 Jun 2020 17:46:31 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id CF2BFCA6A4741F8A654F;
+ Sun, 14 Jun 2020 05:46:26 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.47.30.60) by
  DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Sun, 14 Jun 2020 05:45:40 +0800
+ 14.3.487.0; Sun, 14 Jun 2020 05:46:16 +0800
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH RFC 15/22] arm/cpuhp: Update ACPI GED framework to support
- vcpu hotplug
-Date: Sat, 13 Jun 2020 22:36:22 +0100
-Message-ID: <20200613213629.21984-16-salil.mehta@huawei.com>
+Subject: [PATCH RFC 21/22] arm/cpuhp: Changes required for reset and to
+ support next boot
+Date: Sat, 13 Jun 2020 22:36:28 +0100
+Message-ID: <20200613213629.21984-22-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
 In-Reply-To: <20200613213629.21984-1-salil.mehta@huawei.com>
 References: <20200613213629.21984-1-salil.mehta@huawei.com>
@@ -76,17 +76,17 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com, sudeep.holla@arm.com,
  gshan@redhat.com, mst@redhat.com, jiakernel2@gmail.com, maz@kernel.org,
  zhukeqian1@huawei.com, david@redhat.com, richard.henderson@linaro.org,
@@ -95,103 +95,116 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, sudeep.holla@arm.com,
  Salil Mehta <salil.mehta@huawei.com>, pbonzini@redhat.com,
  mehta.salil.lnk@gmail.com, maran.wilson@oracle.com, will@kernel.org,
  wangxiongfeng2@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3r41Y0+1nBjH
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ybG8X4Z7T7M9
 
-ACPI GED shall be used to convey to the guest kernel about any cpu hot-(un)plug
-events. Therefore, existing ACPI GED framework inside QEMU needs to be enhanced
-to support CPU hotplug state and events.
+Updates the firmware config with the next boot cpus information and also
+registers the reset callback to be called when guest reboots to reset the cpu.
 
 Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/acpi/generic_event_device.c | 42 ++++++++++++++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ hw/arm/boot.c         |  2 +-
+ hw/arm/virt.c         | 18 ++++++++++++++----
+ include/hw/arm/boot.h |  2 ++
+ include/hw/arm/virt.h |  1 +
+ 4 files changed, 18 insertions(+), 5 deletions(-)
 
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 79177deda2..df81e9292a 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -13,7 +13,9 @@
- #include "qapi/error.h"
- #include "exec/address-spaces.h"
- #include "hw/acpi/acpi.h"
-+#include "hw/acpi/cpu.h"
- #include "hw/acpi/generic_event_device.h"
-+#include "hw/arm/virt.h"
- #include "hw/irq.h"
- #include "hw/mem/pc-dimm.h"
- #include "hw/mem/nvdimm.h"
-@@ -192,12 +194,47 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-         } else {
-             acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
-         }
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-     } else {
-         error_setg(errp, "virt: device plug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-     }
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index fef4072db1..05f329c1e1 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -675,7 +675,7 @@ fail:
+     return -1;
  }
  
-+static void acpi_ged_device_unplug_request_cb(HotplugHandler *hotplug_dev,
-+                                    DeviceState *dev, Error **errp)
-+{
-+    AcpiGedState *s = ACPI_GED(hotplug_dev);
-+
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+            acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-+    } else {
-+        error_setg(errp, "virt: device unplug request for the unsupported device"
-+                   " type: %s", object_get_typename(OBJECT(dev)));
-+    }
-+}
-+
-+static void acpi_ged_device_unplug_cb(HotplugHandler *hotplug_dev,
-+                                      DeviceState *dev, Error **errp)
-+{
-+    AcpiGedState *s = ACPI_GED(hotplug_dev);
-+
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+            acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
-+     } else {
-+         error_setg(errp, "virt: device plug request for unsupported device"
-+                    " type: %s", object_get_typename(OBJECT(dev)));
-+     }
-+}
-+
-+static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
-+{
-+    AcpiGedState *s = ACPI_GED(adev);
-+
-+    acpi_cpu_ospm_status(&s->cpuhp_state, list);
-+}
-+
- static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+-static void do_cpu_reset(void *opaque)
++void do_cpu_reset(void *opaque)
  {
-     AcpiGedState *s = ACPI_GED(adev);
-@@ -210,6 +247,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
-         sel = ACPI_GED_PWR_DOWN_EVT;
-     } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
-         sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
-+    } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
-+        sel = ACPI_GED_CPU_HOTPLUG_EVT;
-     } else {
-         /* Unknown event. Return without generating interrupt. */
-         warn_report("GED: Unsupported event %d. No irq injected", ev);
-@@ -330,8 +369,11 @@ static void acpi_ged_class_init(ObjectClass *class, void *data)
-     dc->vmsd = &vmstate_acpi_ged;
+     ARMCPU *cpu = opaque;
+     CPUState *cs = CPU(cpu);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index db7eca1b84..55101c0050 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -47,6 +47,7 @@
+ #include "sysemu/device_tree.h"
+ #include "sysemu/numa.h"
+ #include "sysemu/runstate.h"
++#include "sysemu/reset.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/tpm.h"
+ #include "sysemu/kvm.h"
+@@ -1149,14 +1150,13 @@ static bool virt_firmware_init(VirtMachineState *vms,
  
-     hc->plug = acpi_ged_device_plug_cb;
-+    hc->unplug_request = acpi_ged_device_unplug_request_cb;
-+    hc->unplug = acpi_ged_device_unplug_cb;
+ static FWCfgState *create_fw_cfg(const VirtMachineState *vms, AddressSpace *as)
+ {
+-    MachineState *ms = MACHINE(vms);
+     hwaddr base = vms->memmap[VIRT_FW_CFG].base;
+     hwaddr size = vms->memmap[VIRT_FW_CFG].size;
+     FWCfgState *fw_cfg;
+     char *nodename;
  
-     adevc->send_event = acpi_ged_send_event;
-+    adevc->ospm_status = acpi_ged_ospm_status;
- }
+     fw_cfg = fw_cfg_init_mem_wide(base + 8, base, 8, base + 16, as);
+-    fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)ms->smp.cpus);
++    fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, vms->boot_cpus);
  
- static const TypeInfo acpi_ged_info = {
+     nodename = g_strdup_printf("/fw-cfg@%" PRIx64, base);
+     qemu_fdt_add_subnode(vms->fdt, nodename);
+@@ -2468,7 +2468,13 @@ static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+         hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
+         if (local_err)
+             goto fail;
+-        /* TODO: register this cpu for reset & update F/W info for the next boot */
++
++        /* register this cpu for reset & update F/W info for the next boot */
++        qemu_register_reset(do_cpu_reset, ARM_CPU(cs));
++        vms->boot_cpus++;
++        if (vms->fw_cfg) {
++            fw_cfg_modify_i16(vms->fw_cfg, FW_CFG_NB_CPUS, vms->boot_cpus);
++        }
+     }
+ 
+     cs->disabled = false;
+@@ -2540,7 +2546,11 @@ static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
+     unwire_gic_cpu_irqs(vms, cs);
+     virt_update_gic(vms, cs);
+ 
+-    /* TODO: unregister this cpu for reset & update F/W info for the next boot */
++    qemu_unregister_reset(do_cpu_reset, ARM_CPU(cs));
++    vms->boot_cpus--;
++    if (vms->fw_cfg) {
++        fw_cfg_modify_i16(vms->fw_cfg, FW_CFG_NB_CPUS, vms->boot_cpus);
++    }
+ 
+     qemu_opts_del(dev->opts);
+     dev->opts = NULL;
+diff --git a/include/hw/arm/boot.h b/include/hw/arm/boot.h
+index ce2b48b88b..aa156967af 100644
+--- a/include/hw/arm/boot.h
++++ b/include/hw/arm/boot.h
+@@ -163,6 +163,8 @@ AddressSpace *arm_boot_address_space(ARMCPU *cpu,
+ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+                  hwaddr addr_limit, AddressSpace *as, MachineState *ms);
+ 
++void do_cpu_reset(void *opaque);
++
+ /* Write a secure board setup routine with a dummy handler for SMCs */
+ void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
+                                             const struct arm_boot_info *info,
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index c287433219..df785ea6ba 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -147,6 +147,7 @@ typedef struct {
+     const int *irqmap;
+     int smp_cpus;
+     int max_cpus;
++    uint16_t boot_cpus;
+     void *fdt;
+     int fdt_size;
+     uint32_t clock_phandle;
 -- 
 2.17.1
 

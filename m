@@ -1,62 +1,62 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp452953lfm;
-        Sat, 13 Jun 2020 14:52:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxyc0E1zFGm1IAX1j5m4taOdohO7Hdt4QriRX0EzO2vle4V+4t7kKOWakDRQsL2Dlx0zfgx
-X-Received: by 2002:a25:cbcc:: with SMTP id b195mr31806067ybg.91.1592085148514;
-        Sat, 13 Jun 2020 14:52:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592085148; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp452964lfm;
+        Sat, 13 Jun 2020 14:52:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwbtU7+0yMRIOzxwIaNzdsyFQ7+jFSoczZNCqVEJ7hHkciS0AV/+OKUYFidRTmA/wGdml5G
+X-Received: by 2002:a05:6902:52b:: with SMTP id y11mr32878191ybs.465.1592085150401;
+        Sat, 13 Jun 2020 14:52:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592085150; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wpq+5Xdr7dlNQuLWsNZxwW9Rs577TeOOcysN3lL00nLbPpMylucHgwBnrsTIRFoiu1
-         6LKIwMsGDDRszHvAha4H0nHW+yFC4Y1xVDmwUzlaS3lUQojyis3fbfQoPkZZkNIexqFO
-         3U/L43dLy0T7D333oM5uS12GP0QqOuRrFeRks5YpZsQQkuIjQZ/vFvayLoiHNwC7qyrV
-         /b1Ntj/eEE6VevJQZJQNf50BdoT9+sf+iRhUgfJin9O3IWK6vzjcbIvi6xng5UiurnDL
-         y61BLncADz4JQvp/9yjmNNEi+xEuw1ByRuP7hjVf5FhMK9Hh30FwTjhbEOpt7cIGIqll
-         5IXw==
+        b=dE5fAqvJFaRxmovIeHZUXtaEYaIT46IhO9dSEjsx+p1Cjlomb2ipOklQWh0hz1n3R6
+         RbRDG10wlQl+KFdZoGGu9dJBKqywNgKiLIjxnO0TmucOR3fCgDwSSFoPmw22RUK0bjAV
+         ZOx2yWD7Pt6ci1nRuB99sGv0HLEiQC3tqeI64x4xsJiC+R2zGy24FlWV7y10EBLT2kaa
+         I4PjT38h8hpe1sNoY4vUp8Myw17LuIGLWI9BPGjpe4JxAMyh22/h7JXZhbQlmdFc3LtP
+         xx10oTRPF9awINCXna/pa+qRvuDwdkpYQ+Iun42xwP5Ti9lOg4s5zLnbObFI32vLqQFr
+         bP1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=+ij8GyCM3oXYKcm46ws/+hpKPnX/09FUIQ9ohbajXxk=;
-        b=p0VSipgYoXYneanImPRmMmo1lO+mSGWx2NdwaQp7xiDqOx24QpEapyLZRr0BOFU58d
-         k2rJfvC55g49Effr8fCykQxEPGql0LNkBjhUHcyUMYr6XhAkomJxIJe/ICXo6syQyYX0
-         jYD6JtsU+ZoqVv0MW3AV4fZDYsBV0o4Q4b030swR3aF68Tz9/g0j5sWzLoTE0ehnptGe
-         UIFrXHWxPTNg6aJZ42xg4Xbz+vxGeS2Syub2irxrofY/ONzhwgR2XLeerkyuMA/MUXJ3
-         Bcp9vUGPmCrsegpJ5uDlRKDaPD70LvOp9iWu3fNe8c23nQ/7TZCDNICHRGrKfkCGWa53
-         qsdA==
+        bh=6jyAHKProIjLZGVANIJSrbVoTFIZB/Y6Mxl60bFRFLw=;
+        b=Hl+I35Gs1TW53Ym1080ao5E4PhCCydXvObPMXKuw14FXoDm2GZLFTzgh0uafQwF1V4
+         8aFtzE08d2cQpfJjjU/agLfKjeV4+uh8ZzozYCFiKO5Cc+O7Z4j+mZs/69EL6BbmIY6B
+         El7q9S+WLXz7YHTCfw8YUXAgCyzEEx+/vYF2WfnEE5tsNm6wy4t4ksP0m2gxSOaIaD0m
+         Aa2UPlAr/VBG1lVEGCNeZ9hQcXOAUT2d4Wz0jacZQwo8HKO1HswMaEK7bTxCWp038W2a
+         Y74FgBPyvEbzjTmMQGuIXIdAQKDJuhGyfEnXTd8VubD9Pyhf2KIjxS1BXG58VjpT21O5
+         +wVA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y76si8820146ybe.493.2020.06.13.14.52.28
+        by mx.google.com with ESMTPS id n191si8894721yba.173.2020.06.13.14.52.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 13 Jun 2020 14:52:28 -0700 (PDT)
+        Sat, 13 Jun 2020 14:52:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56240 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56396 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jkE4h-0001IV-SB
-	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:52:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59500)
+	id 1jkE4j-0001O5-R8
+	for alex.bennee@linaro.org; Sat, 13 Jun 2020 17:52:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60088)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDxf-000689-94; Sat, 13 Jun 2020 17:45:11 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:32854 helo=huawei.com)
+ id 1jkDyC-0007A9-4b; Sat, 13 Jun 2020 17:45:45 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:33284 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jkDxd-0003Ba-88; Sat, 13 Jun 2020 17:45:10 -0400
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id A998042E24438AB2505D;
- Sun, 14 Jun 2020 05:45:05 +0800 (CST)
+ id 1jkDy7-0003L7-PR; Sat, 13 Jun 2020 17:45:43 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 2238FFF1004DFACDB16F;
+ Sun, 14 Jun 2020 05:45:36 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.47.30.60) by
  DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.487.0; Sun, 14 Jun 2020 05:44:59 +0800
+ 14.3.487.0; Sun, 14 Jun 2020 05:45:29 +0800
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH RFC 08/22] arm/cpuhp: Enable ACPI support for vcpu hotplug
-Date: Sat, 13 Jun 2020 22:36:15 +0100
-Message-ID: <20200613213629.21984-9-salil.mehta@huawei.com>
+Subject: [PATCH RFC 13/22] arm/cpuhp: Add ACPI _MAT entry for Processor object
+Date: Sat, 13 Jun 2020 22:36:20 +0100
+Message-ID: <20200613213629.21984-14-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
 In-Reply-To: <20200613213629.21984-1-salil.mehta@huawei.com>
 References: <20200613213629.21984-1-salil.mehta@huawei.com>
@@ -96,114 +96,89 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, sudeep.holla@arm.com,
  wangxiongfeng2@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xIIsKJG5H1vc
+X-TUID: +Oy0E/W0DcNX
 
-ACPI is required to interface QEMU with the guest. Roughly falls into below
-cases,
+Adds a function which builds the ACPI _MAT entry for processor objects. This
+shall be called from the cpus AML for all possible vcpus.
 
-1. Convey the possible vcpus config at the machine init time to the guest
-   using various DSDT tables like MADT etc.
-2. Convey vcpu hotplug events to guest(using GED)
-3. Assist in evaluation of various ACPI methods(like _EVT, _STA, _OST, _EJ0,
-   _MAT etc.)
-4. Provides ACPI cpu hotplug state and 12 Byte memory mapped cpu hotplug
-   control register interface to the OSPM/guest corresponding to each possible
-   vcpu. The register interface consists of various R/W fields and their
-   handling operations. These are called when ever register fields or memory
-   regions are accessed(i.e. read or written) by OSPM when ever it evaluates
-   various ACPI methods.
-
-Note: lot of this framework code is inherited from the changes already done for
-      x86 but still some minor changes are required to make it compatible with
-      ARM64.)
-
-This patch enables the ACPI support for virtual cpu hotplug in kconfig and
-during initialization.
+The entry is passed to the guest kernel with ACPI_MADT_GICC_ENABLED flag when
+it evaluates _MAT object. OSPM evaluates _MAT object in context to the cpu
+hotplug event.
 
 Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/acpi/cpu.c                 | 6 +++++-
- hw/arm/Kconfig                | 1 +
- hw/arm/virt.c                 | 2 ++
- include/hw/acpi/cpu_hotplug.h | 2 ++
- include/hw/arm/virt.h         | 1 +
- 5 files changed, 11 insertions(+), 1 deletion(-)
+ hw/acpi/cpu.c            |  5 +++++
+ hw/arm/virt-acpi-build.c | 20 ++++++++++++++++++++
+ include/hw/arm/virt.h    |  1 +
+ 3 files changed, 26 insertions(+)
 
 diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-index 3d6a500fb7..21fe0463b9 100644
+index 867fdd6993..a79dc65120 100644
 --- a/hw/acpi/cpu.c
 +++ b/hw/acpi/cpu.c
-@@ -218,7 +218,11 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
-     state->dev_count = id_list->len;
-     state->devs = g_new0(typeof(*state->devs), state->dev_count);
-     for (i = 0; i < id_list->len; i++) {
--        state->devs[i].cpu =  CPU(id_list->cpus[i].cpu);
-+        struct CPUState *cpu = CPU(id_list->cpus[i].cpu);
-+        if (qemu_present_cpu(cpu))
-+            state->devs[i].cpu = cpu;
-+        else
-+            state->devs[i].cpu = NULL;
-         state->devs[i].arch_id = id_list->cpus[i].arch_id;
-     }
-     memory_region_init_io(&state->ctrl_reg, owner, &cpu_hotplug_ops, state,
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 9afa6eee79..cb67fb806b 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -26,6 +26,7 @@ config ARM_VIRT
-     select ACPI_MEMORY_HOTPLUG
-     select ACPI_HW_REDUCED
-     select ACPI_NVDIMM
-+    select ACPI_CPU_HOTPLUG
+@@ -565,6 +565,11 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+                 apic->flags = cpu_to_le32(1);
+                 break;
+             }
++            case ACPI_APIC_GENERIC_CPU_INTERFACE: {
++                AcpiMadtGenericCpuInterface *gicc = (void *)madt_buf->data;
++                gicc->flags = cpu_to_le32(1);
++                break;
++            }
+             default:
+                 assert(0);
+             }
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index c654e2c9a3..354fd775f9 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -593,6 +593,22 @@ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ }
  
- config CHEETAH
-     bool
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 7f938f289b..fe37babe35 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -75,6 +75,7 @@
- #include "hw/mem/pc-dimm.h"
- #include "hw/mem/nvdimm.h"
- #include "hw/acpi/generic_event_device.h"
-+#include "hw/acpi/cpu_hotplug.h"
- #include "hw/virtio/virtio-iommu.h"
- #include "hw/char/pl011.h"
- #include "qemu/guest-random.h"
-@@ -151,6 +152,7 @@ static const MemMapEntry base_memmap[] = {
-     [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
-     [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
-     [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
-+    [VIRT_CPUHP_ACPI] =         { 0x090a0000, ACPI_CPU_HOTPLUG_REG_LEN},
-     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
-     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-diff --git a/include/hw/acpi/cpu_hotplug.h b/include/hw/acpi/cpu_hotplug.h
-index 3b932abbbb..48b291e45e 100644
---- a/include/hw/acpi/cpu_hotplug.h
-+++ b/include/hw/acpi/cpu_hotplug.h
-@@ -19,6 +19,8 @@
- #include "hw/hotplug.h"
- #include "hw/acpi/cpu.h"
- 
-+#define ACPI_CPU_HOTPLUG_REG_LEN 12
+ /* MADT */
++static void
++build_mat_entry(AcpiDeviceIf *adev, int uid, const CPUArchIdList *arch_ids,
++                    GArray *entry)
++{
++    AcpiMadtGenericCpuInterface *gicc = acpi_data_push(entry,sizeof(*gicc));
++    MachineState *ms = MACHINE(qdev_get_machine());
++    CPUArchIdList *possible_cpus = ms->possible_cpus;
 +
- typedef struct AcpiCpuHotplug {
-     Object *device;
-     MemoryRegion io;
++    /* fill the relevant fields of _MAT entry for GICC */
++    gicc->type = ACPI_APIC_GENERIC_CPU_INTERFACE;
++    gicc->length = sizeof(*gicc);
++    gicc->cpu_interface_number = cpu_to_le32(uid);
++    gicc->arm_mpidr = possible_cpus->cpus[uid].arch_id;
++    gicc->uid = cpu_to_le32(uid);
++}
++
+ static void
+ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ {
+@@ -741,6 +757,10 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+              .acpi_1_compatible = false,
+              .has_legacy_cphp = false
+         };
++        AcpiDeviceIfClass *adevc;
++        /* _MAT entry shall be used within cpus aml */
++        adevc = ACPI_DEVICE_IF_CLASS(DEVICE_GET_CLASS(vms->acpi_dev));
++        adevc->madt_cpu = build_mat_entry;
+ 
+         build_cpus_aml(scope, ms, opts, memmap[VIRT_CPUHP_ACPI].base,
+                        "\\_SB", NULL, AML_SYSTEM_MEMORY);
 diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 3ffbda6217..e0bd9df69d 100644
+index e0bd9df69d..e8468d8cf6 100644
 --- a/include/hw/arm/virt.h
 +++ b/include/hw/arm/virt.h
-@@ -80,6 +80,7 @@ enum {
-     VIRT_PCDIMM_ACPI,
-     VIRT_ACPI_GED,
-     VIRT_NVDIMM_ACPI,
-+    VIRT_CPUHP_ACPI,
-     VIRT_LOWMEMMAP_LAST,
- };
+@@ -37,6 +37,7 @@
+ #include "hw/block/flash.h"
+ #include "sysemu/kvm.h"
+ #include "hw/intc/arm_gicv3_common.h"
++#include "hw/acpi/acpi_dev_interface.h"
  
+ #define NUM_GICV2M_SPIS       64
+ #define NUM_VIRTIO_TRANSPORTS 32
 -- 
 2.17.1
 

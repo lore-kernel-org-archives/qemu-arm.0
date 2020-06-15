@@ -1,126 +1,149 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp674361lfm;
-        Fri, 19 Jun 2020 08:07:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxwz0Zggn+3NYJds1bNv6QQ4L6d9SO3RL1LOGc51T1Zy0RyOLckSpK5Uzev7uRPJkCmCe9T
-X-Received: by 2002:a25:ca8d:: with SMTP id a135mr6105062ybg.382.1592579253304;
-        Fri, 19 Jun 2020 08:07:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592579253; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1764110lfm;
+        Mon, 15 Jun 2020 07:57:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy7zybt0YXL3wp55DskLGHZ24O4tI/DUq5Psrq2EtYAGuoZCqnxwQJ0etPgSTxVV4bhofWU
+X-Received: by 2002:a25:2f4b:: with SMTP id v72mr45534130ybv.232.1592233060544;
+        Mon, 15 Jun 2020 07:57:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592233060; cv=none;
         d=google.com; s=arc-20160816;
-        b=W/KYyC02JbfZ28B141Tw/yRCP1B03ed4k+shaZTFXWh+jxzaDqmkqN6fZ1/GNBU9LT
-         vPcChKsPZQhMtRlQAFL4Oj1SC/i2pLB6e2iLBKFm5OdLpURVlC5s9kysan5K9vsfG5KB
-         WnfOcjBSQ1zfh5S2qF0L9rJz6aUYgw+R2agYzmnpbUqUyWwqqOJX/Kk/9EadqSmGaBrj
-         fsPE8swQoR01bXRWm/tybPh2uzkTJ5eXB7kMTv1unmo/NF+ru57FhkdtLXHjLye6JEYn
-         5oAg1IUr5ih5zpkn5RQkoEMYbD5x/xNXeTywsu9mY+doElbQqALQiB9t5cqrZB23+VB1
-         jNjg==
+        b=CeraPHZNiIgRiIY5nTLnZi0L10zY5Vnyhf3BLtPgLUM56qqJsktfcRu1qMGnjdbR/L
+         bFuiaRVvtYccII+H3LLiY53yfMxRSYadbgN2kVHPwWXvRtS3hOi0BGILeeEKnJoqbGMD
+         1upa3LdnVprS3f/jOlc++w34aKd9KJsxTNB++fHilej59LwmOR+px8UGbKgC+wrHqIe0
+         Pxz3gFYMevHBgeVMqOf3gboSKcHiSioifB1WBU9QoLyMY+ZjNL4BgEkdHMDZl/YJpNiz
+         bSEPeJ1ySoeaxunFLYA6F1j+qznWG+FcWP98VJ0OuCjTTQUHHzfmnF0Y0UpRGgyzOBTt
+         PFLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=C//Y6bbnz23lTvZAwLlIHVPCVeZ3j27xLiCs+tuefJY=;
-        b=tJNC5yBTYft5plsgB/NRJqyvHSBwEawva9T+s5XHDH+szjnxM1/EENxDgKUv+hwNsr
-         hmZ4+ScE/Cy4vZGezKRKzs8lvddo6+gXKBvLWE/1q0P+8h4an4vE7ZWgywTCr1Z//646
-         KNoZnxo53liWMWeNj0J+veDlwvQNWuB6vW1pcUetDQ78aE7qoyerJm9PqEn/SzLj58U5
-         HBOChWmyALOJsxcSctHugFkT0P5OxxoA7Gcj7BfNzfB96GVaglzlbA50OmqdxXs/hHL3
-         87SXNPXg2OOFxZxLQQpQCXWF/B2bYeXfH8b4fMKkx04NjOas4JjkQ2xQzdO5rIiG4VXe
-         ruEA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=lfae3rppXNAdE7IF0YTrwr+MIE/ADa70w2imZpUvVLA=;
+        b=wzdvhfzA40IPvvvmrHpo1sszQ9FWb8hyN+MQfzIL35826Ujm0bb9Fl5TK+e8BcwXJZ
+         cz4RBcE/L9DrT3SLWBs5Fgmx09297zhLulejVzRSXdogN2gX8dYongCBOXoCYMrMy6cQ
+         6J09EY59cz90mtr34gAhf5jSeOtwKVLLEGcJdPLeuIh6HCLO8PcsptgOdAfRUvsaYHRD
+         6S/ypOxl9Usop75a50Ztjm6KVCOU5pzle1oFAyQ3GbTj0ptEbblg9cGbRe65h1df9iXk
+         Mz+CH/fxXyTuLSM+9af6OmsdeVJ6k0FA8rymU5BNl1X4C8xtwfsntDJ3iICYUQIigOz6
+         8Ubw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/S5FJcT";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c6si4945665ybq.112.2020.06.19.08.07.33
+        by mx.google.com with ESMTPS id 3si13826930yba.308.2020.06.15.07.57.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jun 2020 08:07:33 -0700 (PDT)
+        Mon, 15 Jun 2020 07:57:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/S5FJcT";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:45698 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42828 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jmIc8-0000CI-MI
-	for alex.bennee@linaro.org; Fri, 19 Jun 2020 11:07:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51100)
+	id 1jkqYN-0001mS-TC
+	for alex.bennee@linaro.org; Mon, 15 Jun 2020 10:57:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58970)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jmIbz-0000A4-Pa; Fri, 19 Jun 2020 11:07:23 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:16256
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jmIbx-0007Cb-M5; Fri, 19 Jun 2020 11:07:23 -0400
-Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 05JF2Skb131603; Fri, 19 Jun 2020 11:07:18 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 31rthaa5w9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 19 Jun 2020 11:07:18 -0400
-Received: from m0098419.ppops.net (m0098419.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 05JF2YIf132218;
- Fri, 19 Jun 2020 11:07:18 -0400
-Received: from ppma01wdc.us.ibm.com (fd.55.37a9.ip4.static.sl-reverse.com
- [169.55.85.253])
- by mx0b-001b2d01.pphosted.com with ESMTP id 31rthaa5vb-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 19 Jun 2020 11:07:18 -0400
-Received: from pps.filterd (ppma01wdc.us.ibm.com [127.0.0.1])
- by ppma01wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 05JF5Wda012113;
- Fri, 19 Jun 2020 15:07:16 GMT
-Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com
- [9.57.198.26]) by ppma01wdc.us.ibm.com with ESMTP id 31q6bdmcwp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 19 Jun 2020 15:07:16 +0000
-Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com
- [9.57.199.111])
- by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 05JF7G5Q37880118
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 19 Jun 2020 15:07:16 GMT
-Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6307CAC05B;
- Fri, 19 Jun 2020 15:07:16 +0000 (GMT)
-Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id ADBC9AC059;
- Fri, 19 Jun 2020 15:07:15 +0000 (GMT)
-Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
- by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
- Fri, 19 Jun 2020 15:07:15 +0000 (GMT)
-Subject: Re: [PATCH v6 1/3] acpi: Some build_tpm2() code reshape
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jkqY7-0001UK-LT
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2020 10:57:23 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:37387
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jkqY5-0003WM-QH
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2020 10:57:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592233041;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=lfae3rppXNAdE7IF0YTrwr+MIE/ADa70w2imZpUvVLA=;
+ b=g/S5FJcTqdlafrU0U6a6oJkEd50lcS3WD7qx8WF5IhfJShNJ/gM09sYg6/qYoKkf4O9RE9
+ LIEdBtIKF7sFyqo1gOWCrke4YEghczvPkamnvK6dmAnJDrXLo82tdAERY6DhmWt0XrLEqs
+ mcEoDGw25ULN54peFVC9LGkI9jLT9bQ=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-214-sk1SW4TyPciBKyhtddJ-WA-1; Mon, 15 Jun 2020 10:57:16 -0400
+X-MC-Unique: sk1SW4TyPciBKyhtddJ-WA-1
+Received: by mail-ed1-f71.google.com with SMTP id c1so4997855edd.21
+ for <qemu-arm@nongnu.org>; Mon, 15 Jun 2020 07:57:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=lfae3rppXNAdE7IF0YTrwr+MIE/ADa70w2imZpUvVLA=;
+ b=b9Gc5d4DZYSo0D57ID3KI7GO6dRjBNrN/EH261zceQEF4usRB7+EJWtRbhttggB0kB
+ mUv963JptZegk5pISOVD3ZABzqfr/O9xE6mg3vznQNUW+7ZnTbPf0pYe+0L2FgvycuQo
+ neDE+YGjkcIcAtYFYN7guilqp9JrG3bxCVMW5nY/ygQnuPpggsYT+mFoejRXOyMb4tbB
+ lgKc4abSV60vEBG9JC0DuaHFKABoOQW9D4zm/Uahm9v2wdz3krW+q0vjdBanY2THlrk1
+ 7KnGDn4lr4rL/H0tR2AooHA+g1EcPBRjtbQYWLBiUgXDeyr4bojL2i1GpHb2H3QZeQpG
+ UgOQ==
+X-Gm-Message-State: AOAM5321fkANWwv0HjFdc9APZbvr8Ni1l2lJ1WIEHxPPRPkNPx8+WH2K
+ g3zZ4a8QS8LXZeKyX6CgtZHv1u3zscIZHU4hJ8LqENh09kBjAqW6E0hGPxESFEfTek9HIQUh4pW
+ YIsXWPyQLqhMP
+X-Received: by 2002:a05:6402:b79:: with SMTP id
+ cb25mr24597436edb.334.1592233034806; 
+ Mon, 15 Jun 2020 07:57:14 -0700 (PDT)
+X-Received: by 2002:a05:6402:b79:: with SMTP id
+ cb25mr24597403edb.334.1592233034484; 
+ Mon, 15 Jun 2020 07:57:14 -0700 (PDT)
+Received: from [192.168.1.38] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id jt16sm1488149ejb.57.2020.06.15.07.57.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 15 Jun 2020 07:57:13 -0700 (PDT)
+Subject: Re: [PATCH] bios-tables-test: Fix "-tpmdev: invalid option"
 To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, imammedo@redhat.com
-References: <20200619141851.16272-1-eric.auger@redhat.com>
- <20200619141851.16272-2-eric.auger@redhat.com>
-From: Stefan Berger <stefanb@linux.ibm.com>
-Message-ID: <cd32ba20-a52d-4ff3-6f01-f03241dfc50d@linux.ibm.com>
-Date: Fri, 19 Jun 2020 11:07:15 -0400
+ stefanb@linux.ibm.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, mst@redhat.com, imammedo@redhat.com
+References: <20200615135051.2213-1-eric.auger@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <aa595991-7f3a-fd83-026b-1b35aaf9c49e@redhat.com>
+Date: Mon, 15 Jun 2020 16:57:12 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200619141851.16272-2-eric.auger@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <20200615135051.2213-1-eric.auger@redhat.com>
 Content-Language: en-US
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.687
- definitions=2020-06-19_16:2020-06-19,
- 2020-06-19 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0
- phishscore=0 clxscore=1015 priorityscore=1501 adultscore=0 malwarescore=0
- mlxscore=0 mlxlogscore=999 spamscore=0 impostorscore=0 suspectscore=0
- bulkscore=0 cotscore=-2147483648 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2004280000 definitions=main-2006190107
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/19 11:07:20
-X-ACL-Warn: Detected OS   = Linux 3.x [generic]
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/15 01:12:36
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -134,121 +157,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: thuth@redhat.com, lersek@redhat.com, drjones@redhat.com,
- shannon.zhaosl@gmail.com, marcandre.lureau@redhat.com, philmd@redhat.com,
- ardb@kernel.org
+Cc: thuth@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TTr/xp6nFIdk
+X-TUID: 5ZB+RJzyS+DI
 
-On 6/19/20 10:18 AM, Eric Auger wrote:
-> Remove any reference to Acpi20TPM2 and adopt an implementation
-> similar to build_ghes_v2().
->
+On 6/15/20 3:50 PM, Eric Auger wrote:
+> When configure is run with "--disable-tpm", the bios-tables-test
+> q35/tis test fails with "-tpmdev: invalid option".
+> 
+> Skip the test if CONFIG_TPM is unset.
+> 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Suggested-by: Igor Mammedov <imammedo@redhat.com>
->
+> Reported-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->
-> v5 -> v6:
-> - add reference to the spec + comment about LAML and LASA fields
-> - also moved LASA intro comment above build_append_int_noprefix()
->    as requested by Igor
-> ---
->   hw/acpi/aml-build.c | 54 +++++++++++++++++++++++++++++----------------
->   1 file changed, 35 insertions(+), 19 deletions(-)
->
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index 2cb7b991ef..1cc08a3eb9 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -1878,48 +1878,64 @@ build_hdr:
->                    "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
->   }
->   
-> +/*
-> + * build_tpm2 - Build the TPM2 table as specified in table 7 of
-> + * "TCG ACPI Specification; Family 1.2 and 2.0;
-> + * Level 00 Revision 00.37, December 19, 2014"
-> + * Note: the LASA and LAML fields are optional for TPM-2.0 (the above
-> + * table does not mention them) but are needed at least for SeaBIOS.
-> + * See the Acpi20TPM2 struct for the corresponding layout.
-> + */
->   void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
->   {
-> -    Acpi20TPM2 *tpm2_ptr = acpi_data_push(table_data, sizeof(AcpiTableHeader));
-> -    unsigned log_addr_size = sizeof(tpm2_ptr->log_area_start_address);
-> -    unsigned log_addr_offset =
-> -        (char *)&tpm2_ptr->log_area_start_address - table_data->data;
->       uint8_t start_method_params[12] = {};
-> +    unsigned log_addr_offset, tpm2_start;
-> +    uint64_t control_area_start_address;
->       TPMIf *tpmif = tpm_find();
-> +    uint32_t start_method;
-> +    void *tpm2_ptr;
->   
-> -    /* platform class */
-> +    tpm2_start = table_data->len;
-> +    tpm2_ptr = acpi_data_push(table_data, sizeof(AcpiTableHeader));
-> +
-> +    /* Platform Class */
->       build_append_int_noprefix(table_data, TPM2_ACPI_CLASS_CLIENT, 2);
-> -    /* reserved */
-> +    /* Reserved */
->       build_append_int_noprefix(table_data, 0, 2);
->       if (TPM_IS_TIS_ISA(tpmif) || TPM_IS_TIS_SYSBUS(tpmif)) {
-> -        /* address of control area */
-> -        build_append_int_noprefix(table_data, 0, 8);
-> -        /* start method */
-> -        build_append_int_noprefix(table_data, TPM2_START_METHOD_MMIO, 4);
-> +        control_area_start_address = 0;
-> +        start_method = TPM2_START_METHOD_MMIO;
->       } else if (TPM_IS_CRB(tpmif)) {
-> -        build_append_int_noprefix(table_data, TPM_CRB_ADDR_CTRL, 8);
-> -        build_append_int_noprefix(table_data, TPM2_START_METHOD_CRB, 4);
-> +        control_area_start_address = TPM_CRB_ADDR_CTRL;
-> +        start_method = TPM2_START_METHOD_CRB;
->       } else {
-> -        g_warn_if_reached();
-> +        g_assert_not_reached();
->       }
-> +    /* Address of Control Area */
-> +    build_append_int_noprefix(table_data, control_area_start_address, 8);
-> +    /* Start Method */
-> +    build_append_int_noprefix(table_data, start_method, 4);
->   
-> -    /* platform specific parameters */
-> -    g_array_append_vals(table_data, &start_method_params, 12);
-> +    /* Platform Specific Parameters */
-> +    g_array_append_vals(table_data, &start_method_params,
-> +                        ARRAY_SIZE(start_method_params));
->   
-> -    /* log area minimum length */
-> +    /* Log Area Minimum Length */
->       build_append_int_noprefix(table_data, TPM_LOG_AREA_MINIMUM_SIZE, 4);
->   
->       acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
->       bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE, tcpalog, 1,
->                                false);
->   
-> -    /* log area start address to be filled by Guest linker */
-> +    log_addr_offset = table_data->len;
-> +
+>  tests/qtest/bios-tables-test.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> index 53f104a9c5..b482f76c03 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -882,6 +882,7 @@ uint64_t tpm_tis_base_addr;
+>  static void test_acpi_tcg_tpm(const char *machine, const char *tpm_if,
+>                                uint64_t base)
+>  {
+> +#ifdef CONFIG_TPM
+>      gchar *tmp_dir_name = g_strdup_printf("qemu-test_acpi_%s_tcg_%s.XXXXXX",
+>                                            machine, tpm_if);
+>      char *tmp_path = g_dir_make_tmp(tmp_dir_name, NULL);
+> @@ -924,6 +925,9 @@ static void test_acpi_tcg_tpm(const char *machine, const char *tpm_if,
+>      g_free(tmp_path);
+>      g_free(tmp_dir_name);
+>      free_test_data(&data);
+> +#else
+> +    g_test_skip("TPM disabled");
+> +#endif
+>  }
+>  
+>  static void test_acpi_q35_tcg_tpm_tis(void)
+> 
 
-Don't have to subtract tpm2_start from it ?
+This is simpler than Thomas' version.
 
-
-> +    /* Log Area Start Address to be filled by Guest linker */
->       build_append_int_noprefix(table_data, 0, 8);
->       bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-> -                                   log_addr_offset, log_addr_size,
-> +                                   log_addr_offset, 8,
->                                      ACPI_BUILD_TPMLOG_FILE, 0);
->       build_header(linker, table_data,
-> -                 (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL, NULL);
-> +                 tpm2_ptr, "TPM2", table_data->len - tpm2_start, 4, NULL, NULL);
->   }
->   
->   /* ACPI 5.0: 6.4.3.8.2 Serial Bus Connection Descriptors */
-
+Fixes: 5da7c35e25 ("bios-tables-test: Add Q35/TPM-TIS test")
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 

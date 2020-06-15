@@ -1,108 +1,104 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1683568lfm;
-        Mon, 15 Jun 2020 06:18:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyUXfw/viYv4wfTZKeou2ErBnIPw05dWdn0z+uDW1Movpv2G/c5xfleapCl14P91p07tjIx
-X-Received: by 2002:a25:d151:: with SMTP id i78mr11635418ybg.74.1592227103312;
-        Mon, 15 Jun 2020 06:18:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592227103; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1709676lfm;
+        Mon, 15 Jun 2020 06:51:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxDVzAn6WL7dmbazZjsHrEdXsuHcXWtKy/m9rDhpkZ/z4jVbquVBvrMWmZ0tIpuiTz/iWbT
+X-Received: by 2002:a25:ad5a:: with SMTP id l26mr41476443ybe.188.1592229078779;
+        Mon, 15 Jun 2020 06:51:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592229078; cv=none;
         d=google.com; s=arc-20160816;
-        b=zctMlkPcLFnugo/OChGifT5I8NMklve/eK894HHgNdXTnh47qzx6BbHaJDv0e2YXra
-         78OGbtExHdKwCt3usa0h88G8wjzARCsSrWekjg3kOukvKE8xGyPKGcaJNgLmehYbAhWN
-         8K/JK+Mr3kvJls23tlS8KnSv86VVcQJs7YIgIE5+CtsUIkUjQGZndyAAlfHqXZ+3tx2A
-         fohellpUa636lmsQBZxaNVkUglf6mLwDoDr2pdHmloxjXVGfLno74CRpZtaw/uAUAU3k
-         aPOe8X7BsU53JJ5LL/KKwAEQluySY1FLL1clhPImkW+RkM8iD937l8MgvjmRPeIRhokf
-         8sRw==
+        b=eVOAeEAt9q914b/OM5rLqpkAyvocuPVgIphZatRGQAz+rVJF9XUrdM4/hXe6T4f15c
+         H/8cCUqZo2dh0scuP9j8QvQmLifT1ym5R/CuYWkgRfVOriONwb108kw4IGx9WSHT+uvE
+         i1h7N3FGKzvPphhe8jLiRdv/eqk+yhze0jroDnC6ND2LzNyu7b7ZdQLUjyCP9BymVq3r
+         b+SO2mBsRiLEurfB6/Bp6sr5CVtY6BJRs0UvUEkrxtNVTTPGz+M3RlpQ4wl11gCCUum1
+         eKILu1V5faAjNIUdNyFMFpZS/u0/epXCIpr6+MB63ieualfe3CPSImItAfdDiHmw9aVC
+         qCbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=C9iU4xzLDYGTz5JXVfcQMLl8F0Fm+tJzkudP0dqBOnw=;
-        b=fdSIaCkt0utSYq6A0J3J6/mApXwb9IOSiqkCRuoDUCqk4wVh2KIiSiQ6b7O4w9rGTj
-         NDcZFO24DNm+Px/LrxNpFECvpMT3tqOfDSGJ7xWAHCE2TLms6E8WZba6y73SKh4ipcXz
-         XJ+RFAsY1GVEp+ssgehs1sQkZ2YQcMBq6+VgNs1UZjZnA1tcp0VMArzRVZtt2953hcY5
-         p0TgFxtuTRDAf9A7jlyLPxt3hrBZDor8HcVaSFdmaN4gx8R4FzF3wBpXxAEQo+z8Jqim
-         3jdexT5UeN1SEhxTxhTU1vKzKDQIJnMyEx7nWqFC9EnjWjeNOOGCQntkCXwKB4ns2aXy
-         bGYw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=R1vmQhia25dZPeeC9y6WkhxF+ixuZ7VSqwLTNTglzAs=;
+        b=fP0OaanSde0hhoc33ytc8rNZeVag0LyiBQo+ei+HrVb3mqfLZw23OUPFVxG43AWOOF
+         /nbFECbdCNUKNFEP2fIEpm+vhMr3M5ovBf1tU9Nlur3EMftkLf9eJmuAPlhlQp5JvhqA
+         sSPT/a6zuRYD/gqMfMVXUnYevnPPLPCFSwjmuZ7BlhMr2cFAAi43X+FKYKN1qGNxpPzH
+         ZcDOt03GYguuJQaBIrOuBhk2bBtrlOXB0iHNh+GgaeyZlxOA3m/NrJXJGGOeHhCtrZbp
+         7ZnmHZlARc6er8BsmBoaiNEr1AQoKFVcwz9zxPZ+XE4Z7JZJk1XXr1Uidpo1dvb2PdDU
+         Yz6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MbeNEfx8;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Db2Sb00j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y4si14520523ybk.397.2020.06.15.06.18.23
+        by mx.google.com with ESMTPS id a3si13632707ybo.142.2020.06.15.06.51.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jun 2020 06:18:23 -0700 (PDT)
+        Mon, 15 Jun 2020 06:51:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MbeNEfx8;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Db2Sb00j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58984 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52110 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jkp0I-0005Fh-Lv
-	for alex.bennee@linaro.org; Mon, 15 Jun 2020 09:18:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33692)
+	id 1jkpWA-000800-4q
+	for alex.bennee@linaro.org; Mon, 15 Jun 2020 09:51:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41482)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jkp0B-0005EV-3r
- for qemu-arm@nongnu.org; Mon, 15 Jun 2020 09:18:15 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:46830)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jkp09-0002Se-2W
- for qemu-arm@nongnu.org; Mon, 15 Jun 2020 09:18:14 -0400
-Received: by mail-ot1-x344.google.com with SMTP id g7so13034288oti.13
- for <qemu-arm@nongnu.org>; Mon, 15 Jun 2020 06:18:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=C9iU4xzLDYGTz5JXVfcQMLl8F0Fm+tJzkudP0dqBOnw=;
- b=MbeNEfx8v+yWc+GRLCSHSsUJTP6X+CoJmAaxBG05trp5Kkxx52q5XBfDh7T0Ec9VM7
- 0VT/UzZS/Ds647O7LtJIl5sLi9h0ayOigyllgkAjVmAo8EQTTiDqGiIg0vGYY5roG1Yz
- jb03g/siksYQyZPAH9tgPplvSDqLi+Ki7KPWry6XldiKCCcL/znLkKQeDoi5+1HxlARH
- RhF2rQzSh69+jpLI0T9k2hbZEGqBSwXQVB1Y4sKfPENRwWFHp2QRQFZCBIYtlpGXZR0k
- /sdwPlj35LEYyAk/7GsFTjP9AbMlTuaNCV3yhBpcE1HJvl54BLqmo5IgaSnC1Wz6uEeZ
- h+TQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=C9iU4xzLDYGTz5JXVfcQMLl8F0Fm+tJzkudP0dqBOnw=;
- b=DieSOxJjyiobVHGSRJWY+noRX6nkW0usWGT3+Km38Un4TDbfIXNJkDgRyUE/NNBj23
- Ctwte5LcZQuQjVleRwFl4bsJvgO4/1HGGXDRI4+V36gUbOuCnBsv4D71+I3Xq20VFLsz
- u6ZB4oEsYjEK5b9EVwMXWacWPnRDrWIP2lkltVnDDYP1T/sZ+m8q2pWrjDP6eQpnEXNO
- +yzlSbM+qvUG0r28tEP7JVrV4JMhqoaFHjWxL/DZaai3lSYF722Jk/uDU6kyaeeDBre8
- XiJyyzj2bOnOXsFqrbI/6dxnPecRMYhey5Gdv6elyt9ix38SdkXhBgNz+UsNI09XjOux
- XUWA==
-X-Gm-Message-State: AOAM531y031g7JitlNWPdSYSVBqH8/a/iar6hRASM5baoDKT6jMdMRCn
- eP2t3zQc9glwYfY8t58z3UM63Zgc2o1eP6PnVAZ0DQ==
-X-Received: by 2002:a9d:67d6:: with SMTP id c22mr20428357otn.221.1592227091647; 
- Mon, 15 Jun 2020 06:18:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jkpW2-0007ye-UR
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2020 09:51:10 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:38993
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jkpW1-0008NS-G2
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2020 09:51:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592229068;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=R1vmQhia25dZPeeC9y6WkhxF+ixuZ7VSqwLTNTglzAs=;
+ b=Db2Sb00jDogaW0u6BOn41s5Pxs1ioHEhgVCXo0LhBwtHr7+Pz54aV4yjXf1ruFn5a6OndF
+ Q/x/nlQErVJpwbe6iCtyHOVHLayy/mfgli8q4QLsv7p3nEVITMyU426LSpFdddd79fLvnU
+ twa7zcOEfO1tU7EkjxTyjnOLkVVdBqQ=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-487-dsdNhBGdN6quX4rsai-tvA-1; Mon, 15 Jun 2020 09:51:05 -0400
+X-MC-Unique: dsdNhBGdN6quX4rsai-tvA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B297E18FE88C;
+ Mon, 15 Jun 2020 13:51:03 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-114-197.ams2.redhat.com [10.36.114.197])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 09AB95C1B0;
+ Mon, 15 Jun 2020 13:50:54 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ mst@redhat.com, imammedo@redhat.com
+Subject: [PATCH] bios-tables-test: Fix "-tpmdev: invalid option"
+Date: Mon, 15 Jun 2020 15:50:51 +0200
+Message-Id: <20200615135051.2213-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20200603145258.195920-1-linux@roeck-us.net>
- <20200603145258.195920-3-linux@roeck-us.net>
-In-Reply-To: <20200603145258.195920-3-linux@roeck-us.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 15 Jun 2020 14:18:00 +0100
-Message-ID: <CAFEAcA9HE0Be9QNfGKxp4YL-V_+khUNS4KOL43LBC9mQd75eLA@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] hw: arm: Set vendor property for IMX SDHCI
- emulations
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/15 01:17:36
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,56 +111,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: thuth@redhat.com, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Q/OGfi5/QYEM
+X-TUID: j6MQccefyLLQ
 
-On Wed, 3 Jun 2020 at 15:53, Guenter Roeck <linux@roeck-us.net> wrote:
->
-> Set vendor property to IMX to enable IMX specific functionality
-> in sdhci code.
->
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> ---
-> v2: Added missing error checks
->     Added Philippe's Tested-by: tag
->
->  hw/arm/fsl-imx25.c  | 6 ++++++
->  hw/arm/fsl-imx6.c   | 6 ++++++
->  hw/arm/fsl-imx6ul.c | 2 ++
->  hw/arm/fsl-imx7.c   | 2 ++
->  4 files changed, 16 insertions(+)
->
-> diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-> index cdaa79c26b..a853ffcc00 100644
-> --- a/hw/arm/fsl-imx25.c
-> +++ b/hw/arm/fsl-imx25.c
-> @@ -274,6 +274,12 @@ static void fsl_imx25_realize(DeviceState *dev, Erro=
-r **errp)
->                                   &err);
->          object_property_set_uint(OBJECT(&s->esdhc[i]), IMX25_ESDHC_CAPAB=
-ILITIES,
->                                   "capareg", &err);
-> +        object_property_set_uint(OBJECT(&s->esdhc[i]), SDHCI_VENDOR_IMX,
-> +                                 "vendor", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
+When configure is run with "--disable-tpm", the bios-tables-test
+q35/tis test fails with "-tpmdev: invalid option".
 
-The existing error handling in this function is wrong -- for multiple
-calls that take a pointer to a local Error*, the
-check-and-error_propagate() has to be done after each call, it can't
-be rolled up into a single check after all the calls. (see
-include/qapi/error.h for the patterns that are valid).
+Skip the test if CONFIG_TPM is unset.
 
-On the other hand this change is correct-in-itself so I guess it
-isn't making the problem worse...
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reported-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ tests/qtest/bios-tables-test.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-thanks
--- PMM
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index 53f104a9c5..b482f76c03 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -882,6 +882,7 @@ uint64_t tpm_tis_base_addr;
+ static void test_acpi_tcg_tpm(const char *machine, const char *tpm_if,
+                               uint64_t base)
+ {
++#ifdef CONFIG_TPM
+     gchar *tmp_dir_name = g_strdup_printf("qemu-test_acpi_%s_tcg_%s.XXXXXX",
+                                           machine, tpm_if);
+     char *tmp_path = g_dir_make_tmp(tmp_dir_name, NULL);
+@@ -924,6 +925,9 @@ static void test_acpi_tcg_tpm(const char *machine, const char *tpm_if,
+     g_free(tmp_path);
+     g_free(tmp_dir_name);
+     free_test_data(&data);
++#else
++    g_test_skip("TPM disabled");
++#endif
+ }
+ 
+ static void test_acpi_q35_tcg_tpm_tis(void)
+-- 
+2.20.1
+

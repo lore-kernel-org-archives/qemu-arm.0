@@ -1,104 +1,111 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1588997lfm;
-        Mon, 15 Jun 2020 04:07:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwzY2up5tv8MB32IcYjPCoxJlyCBZdWUdqs8Wq15PArbXfpZ7TXmo+xYdoqFpkFdA/tEdXw
-X-Received: by 2002:a25:aaa9:: with SMTP id t38mr40913739ybi.312.1592219219930;
-        Mon, 15 Jun 2020 04:06:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592219219; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1617984lfm;
+        Mon, 15 Jun 2020 04:50:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyN9PWkGPu5QnOw7SZVpdouFz5qqkgH/tqvnHj/y1LmFW/myTLZ7JJWlNSdotVTGHCwLQgj
+X-Received: by 2002:a25:dcd1:: with SMTP id y200mr42044400ybe.263.1592221829320;
+        Mon, 15 Jun 2020 04:50:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592221829; cv=none;
         d=google.com; s=arc-20160816;
-        b=BtUFJEsA93pBosH6dy3Vx6ngQPTqJqWpxlKij1eGAwXT4wzB3+9EHySiWZ8LBGdP/u
-         E1pLXBMYVOco8B8JWWWr5jk80jjEh8FVgUmxE7p+8MymUyXApqY/JNAwjd5KgZWwUtPD
-         5pOqwV1XqM04l+1ZCpdCrk4PRW2XZrbzQvZbiT1In/T+Ws9SQR0CReKF0YC222mfIfth
-         Ykr20NI6jXO2ad+LgcrTOR57U055coAwNdiPVAe3MsZcB9HVkXhvQb4PowAPbgLz/bQl
-         VHfE8gmLZD+AtdPzQ0UwWiqG6J3GlBdS/HCxlpBfThdRpwT/TazjV7R8GzTiuC5y4rAd
-         KQGw==
+        b=pkSkCWWNKE1U9xRMG2H+fyMArOuBNJBRpv9rI6qspubuSaq3tuw/I10Uybud5rjvh3
+         f8d986oQd4YKr5+RxwEysMXnyL02+9FGShp1VaesglHVdh4QsKRq/T0/hPxdxMtLFV4K
+         2heNEuzMzdVL8dGWweY46VN57BqGJDj41ArEIRSIco6KuaWRm8aB9cHF3gvmREz4iu+d
+         foJsWAmwfYLfTo2ulwffHWWiAPgr6OLlNDagM5JsUKbbHeMJoySvu1CrnPIfSG5LBoMi
+         Re4euTTltfvSDHlyLFvl74RmEvHUdrqi3W95jNqHV/NILE9qesmivnkTt6ucF1AVcytN
+         ojaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=t4jnwsfDh4rQUgMQ8ScaNHjXqaxBLjFZUQJluio1Pk8=;
-        b=kNqokhGbSkjmrDkNWp7CuoA90LWOwiS7gvLi15CGNdDTBweB/2amLVo6VoimX6zn6P
-         oEOMQAZhdOP3cCU0GTThw49JyKB3UuA7i092m6fQjCUyT7TDqp0LGVIOzpOC6thDKpQ7
-         SnMYmy0cFWnMzU1LDxNQcL2BHxw6xYyG+8To5+8jUCZNDsg+cuLP5xnePvH3+KNeh/Ru
-         Bv1qzsDASWhtYaOmQX5tlLzdOD6zRtPXx1ByNKJvdFsgXd9a6mv17XG+IgH1xCVt47S0
-         PnWqbdKsTUqesNCcbw6XH+PviMXnWRcQuTPEnIYdoRj9LvjAJUunaEdmNWY8oyIXYNFJ
-         vo4Q==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:user-agent:in-reply-to:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=KFIqSX7fGjKxxX+cx4QxHu2SckfJptj9dJkeU30D0bo=;
+        b=goDtIQEC07tFUJdKQvPfXetfacnA/j5sytLFaN0oSIDtZ/FW0suM60w6YjT7lPjX1M
+         s3ZtgbMDLzjlT1tycg0KXAB94dFrJkZHjGy9mcCVNexcLiIvTkwb4CbHc3X6byeSHNIb
+         ale5N1stvIc27ydrAG0vZe1HOL9B3Ww0LgjCC2ABpEjGbiZhsB6T7rNCIAw06ascBmtx
+         xuDo8RncUWicMLsJTnlTh3zSWUSFSLlRJYuDuReW+kdSJ6p59tKPJqE78ucZxxiGnuE3
+         SmshtOxyIf+eElxxF2ffo2OgEugAN5D8bszXR5XNvWnI/i6tZ7LkLyzpk1/7FS6Va5ed
+         ybuw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=E3TT+qkl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BjVvKVwX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e81si14588228ybf.12.2020.06.15.04.06.59
+        by mx.google.com with ESMTPS id o18si13477970yba.318.2020.06.15.04.50.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jun 2020 04:06:59 -0700 (PDT)
+        Mon, 15 Jun 2020 04:50:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=E3TT+qkl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BjVvKVwX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60794 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52250 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jkmx9-00015W-C6
-	for alex.bennee@linaro.org; Mon, 15 Jun 2020 07:06:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58504)
+	id 1jkndE-00041Z-Jx
+	for alex.bennee@linaro.org; Mon, 15 Jun 2020 07:50:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40592)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jkmx2-00014q-Jd
- for qemu-arm@nongnu.org; Mon, 15 Jun 2020 07:06:52 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:46620)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jkmwy-0004BT-Qa
- for qemu-arm@nongnu.org; Mon, 15 Jun 2020 07:06:52 -0400
-Received: by mail-oi1-x242.google.com with SMTP id 25so15457228oiy.13
- for <qemu-arm@nongnu.org>; Mon, 15 Jun 2020 04:06:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=t4jnwsfDh4rQUgMQ8ScaNHjXqaxBLjFZUQJluio1Pk8=;
- b=E3TT+qklclIkRzn9FsH1hqTIRuHGVitCx1WtrZfB3ulVSPeyCZUWeXlsTsIvP19V3a
- gocVZ1Zsg8iT75wR8SbfSPv09EOGMC0dkId8mbey7ONEKfYvuMzvxNvwBrm0j09fO801
- IU3Qem6COa7Es4ZscXPqN9zxkaIze1Xv0hjw0T8gbtbMwKsw+1a+Tc/fsvOuF2pr8yv7
- gu2TE74JXHFFwMLg6qXU5dgE0cahNb8tplZrln9kdAGGEM8sUpii48vFWArwYeOpJm+E
- V4nuVVDMStbvHd20ObvtHyXugvUNMD5MMEXFoSRThLgv1CAnJJ0qsvLzDlQRMQnsAwSo
- yiyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=t4jnwsfDh4rQUgMQ8ScaNHjXqaxBLjFZUQJluio1Pk8=;
- b=MgrzPfOJY5g6ppRMa//sJ0WiRukJQX69DUXNNJkzFxNNC7rULC53UFlSKmsWQE4GZi
- VmxfQEh7CP/q+oTJ539zFgiO7B1Mnnw4hWnNJmXn+0r2fJdVdgSQz5KhYX5nSG1ADS3w
- CinG/FfHGUI6tdVTLZ5bdY3SQD5eSkUkDldTOUbBQaAvC5s7njS7p9CVL7QEe2RCvXkw
- Ij9mk4Y6MVpNOwnH9QEEq5q/hEJtrsF4sdfsxaWth2GCg8+Id11zNV2Mpc2M5FBDI85L
- Cuo4g5dYgcQdglvVL4YqRj3/bt8xkC/+6x1XHdgCdTPUPonKs5tyxbDvwvCzakyCWIQT
- Dcjg==
-X-Gm-Message-State: AOAM530F60S7if7t+klgH+RKM/XMJTKhhFlxu4luQQOks3D7IMx7Bv73
- XvgSc3BgoqaZXP0eEv8PB5lecyCnAJVTqmqDubPzKAZUd/I=
-X-Received: by 2002:aca:5152:: with SMTP id f79mr8121333oib.146.1592219207018; 
- Mon, 15 Jun 2020 04:06:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1jknd3-0003zJ-Kg
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2020 07:50:17 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:20146
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1jknd1-0003Oh-Gg
+ for qemu-arm@nongnu.org; Mon, 15 Jun 2020 07:50:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592221814;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KFIqSX7fGjKxxX+cx4QxHu2SckfJptj9dJkeU30D0bo=;
+ b=BjVvKVwXoD+e+Rkh64I3iVFVqF3P9cyzELfaw2hLi+B/wN4UhBYTHjHdIpEvuwyzKi5izH
+ hfavjPFMem8zjUqFI2Gz+fpbnuVIiXO+ZXDJHFRxRsYE3v+ZPw+ZSs3JV+3cHPh+KuvNP3
+ giNmJkMUes5USKaeM/z0WBdIAOuwBgk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-488-DCRsjIeDOeO5fBGjwZRqZg-1; Mon, 15 Jun 2020 07:50:12 -0400
+X-MC-Unique: DCRsjIeDOeO5fBGjwZRqZg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7D343EC1A1;
+ Mon, 15 Jun 2020 11:50:10 +0000 (UTC)
+Received: from work-vm (ovpn-114-201.ams2.redhat.com [10.36.114.201])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E72F35D9CC;
+ Mon, 15 Jun 2020 11:50:04 +0000 (UTC)
+Date: Mon, 15 Jun 2020 12:50:02 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [RFC PATCH v2 1/5] hw/misc: Add a LED device
+Message-ID: <20200615115002.GH2883@work-vm>
+References: <20200612175440.9901-1-f4bug@amsat.org>
+ <20200612175440.9901-2-f4bug@amsat.org>
+ <20200615105544.GG2883@work-vm>
+ <4fa46a7c-7769-3712-c580-46af066abe29@amsat.org>
 MIME-Version: 1.0
-References: <20200608133508.550046-1-jcd@tribudubois.net>
-In-Reply-To: <20200608133508.550046-1-jcd@tribudubois.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 15 Jun 2020 12:06:35 +0100
-Message-ID: <CAFEAcA-q3jzqXvm5_bkBH_Yhbf_aeaiu_PXHeCD3iD5S0bpg=A@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/misc/imx6ul_ccm: Implement non writable bits in CCM
- registers
-To: Jean-Christophe Dubois <jcd@tribudubois.net>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+In-Reply-To: <4fa46a7c-7769-3712-c580-46af066abe29@amsat.org>
+User-Agent: Mutt/1.14.0 (2020-05-02)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/15 01:12:36
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,28 +118,259 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Peter Chubb <peter.chubb@nicta.com.au>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Esteban Bosse <estebanbosse@gmail.com>,
+ qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pwhKDE2oNBh2
+X-TUID: UiuzPsS79d2U
 
-On Mon, 8 Jun 2020 at 14:35, Jean-Christophe Dubois <jcd@tribudubois.net> wrote:
->
-> Some bits of the CCM registers are non writable.
->
-> This was left undone in the initial commit (all bits of registers were
-> writable).
->
-> This patch adds the required code to protect the non writable bits.
->
-> Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
-> ---
->
->  v2: simplify code after feedback on the first patch.
+* Philippe Mathieu-Daudé (f4bug@amsat.org) wrote:
+> On 6/15/20 12:55 PM, Dr. David Alan Gilbert wrote:
+> > * Philippe Mathieu-DaudÃ© (f4bug@amsat.org) wrote:
+> >> A LED device can be connected to a GPIO output.
+> >>
+> >> Signed-off-by: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+> >> ---
+> >>  include/hw/misc/led.h | 30 ++++++++++++++++
+> >>  hw/misc/led.c         | 84 +++++++++++++++++++++++++++++++++++++++++++
+> >>  MAINTAINERS           |  6 ++++
+> >>  hw/misc/Kconfig       |  3 ++
+> >>  hw/misc/Makefile.objs |  1 +
+> >>  hw/misc/trace-events  |  3 ++
+> >>  6 files changed, 127 insertions(+)
+> >>  create mode 100644 include/hw/misc/led.h
+> >>  create mode 100644 hw/misc/led.c
+> >>
+> >> diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
+> >> new file mode 100644
+> >> index 0000000000..427ca1418e
+> >> --- /dev/null
+> >> +++ b/include/hw/misc/led.h
+> >> @@ -0,0 +1,30 @@
+> >> +/*
+> >> + * QEMU single LED device
+> >> + *
+> >> + * Copyright (C) 2020 Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+> >> + *
+> >> + * SPDX-License-Identifier: GPL-2.0-or-later
+> >> + */
+> >> +#ifndef HW_MISC_LED_H
+> >> +#define HW_MISC_LED_H
+> >> +
+> >> +#include "hw/qdev-core.h"
+> >> +#include "hw/sysbus.h" /* FIXME remove */
+> >> +
+> >> +#define TYPE_LED "led"
+> >> +#define LED(obj) OBJECT_CHECK(LEDState, (obj), TYPE_LED)
+> >> +
+> >> +typedef struct LEDState {
+> >> +    /* Private */
+> >> +    SysBusDevice parent_obj; /* FIXME DeviceState */
+> >> +    /* Public */
+> >> +
+> >> +    qemu_irq irq;
+> > 
+> > Why an irq?
+> 
+> We model GPIO/IRQ the same way, this is simply a GPIO, right?
+> 
+> It makes modeling easier IMO. This is for visualization purpose.
+> 
+> > 
+> >> +    uint8_t current_state;
+> > 
+> > Is the state of this device boolean or is it a 0..255 0=off, 255=full
+> > on, analog thing?
+> > Can an LED device be connected to a PWM device driving a GPIO - what
+> > happens?
+> 
+> Well I simply wanted to use a boolean, but I need to consider
+> if we can model intensity here in case of PWM. This is interesting.
 
+Which then leads to an interesting question about your events in the
+next mail;  if I was to connect an LED to a PWM driven GPIO I'd get
+zillions of events which may not be what I want.
 
+Dave
 
-Applied to target-arm.next, thanks.
+> > 
+> > Dave
+> > 
+> > 
+> >> +    /* Properties */
+> >> +    char *name;
+> >> +    uint8_t reset_state; /* TODO [GPIO_ACTIVE_LOW, GPIO_ACTIVE_HIGH] */
+> >> +} LEDState;
+> >> +
+> >> +#endif /* HW_MISC_LED_H */
+> >> diff --git a/hw/misc/led.c b/hw/misc/led.c
+> >> new file mode 100644
+> >> index 0000000000..1bae1a34c0
+> >> --- /dev/null
+> >> +++ b/hw/misc/led.c
+> >> @@ -0,0 +1,84 @@
+> >> +/*
+> >> + * QEMU single LED device
+> >> + *
+> >> + * Copyright (C) 2020 Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+> >> + *
+> >> + * SPDX-License-Identifier: GPL-2.0-or-later
+> >> + */
+> >> +#include "qemu/osdep.h"
+> >> +#include "qapi/error.h"
+> >> +#include "migration/vmstate.h"
+> >> +#include "hw/qdev-properties.h"
+> >> +#include "hw/misc/led.h"
+> >> +#include "hw/irq.h"
+> >> +#include "trace.h"
+> >> +
+> >> +static void led_set(void *opaque, int line, int new_state)
+> >> +{
+> >> +    LEDState *s = LED(opaque);
+> >> +
+> >> +    trace_led_set(s->name, s->current_state, new_state);
+> >> +
+> >> +    s->current_state = new_state;
+> >> +}
+> >> +
+> >> +static void led_reset(DeviceState *dev)
+> >> +{
+> >> +    LEDState *s = LED(dev);
+> >> +
+> >> +    led_set(dev, 0, s->reset_state);
+> >> +}
+> >> +
+> >> +static const VMStateDescription vmstate_led = {
+> >> +    .name = TYPE_LED,
+> >> +    .version_id = 1,
+> >> +    .minimum_version_id = 1,
+> >> +    .fields = (VMStateField[]) {
+> >> +        VMSTATE_UINT8(reset_state, LEDState),
+> > 
+> > I'm not sure you need to migrate this - this is a property that's set on
+> > the device, not a dynamic state of the device
+> 
+> Yes you are right.
+> 
+> >> +        VMSTATE_END_OF_LIST()
+> >> +    }
+> >> +};
+> >> +
+> >> +static void led_realize(DeviceState *dev, Error **errp)
+> >> +{
+> >> +    LEDState *s = LED(dev);
+> >> +
+> >> +    if (s->name == NULL) {
+> >> +        error_setg(errp, "property 'name' not specified");
+> >> +        return;
+> >> +    }
+> >> +
+> >> +    qdev_init_gpio_in(DEVICE(s), led_set, 1);
+> >> +}
+> >> +
+> >> +static Property led_properties[] = {
+> >> +    DEFINE_PROP_STRING("name", LEDState, name),
+> >> +    DEFINE_PROP_UINT8("reset_state", LEDState, reset_state, 0),
+> > 
+> > I suggest you add a property for the notional colour; that way any UIs
+> > that are built can use that as a hint.
+> 
+> Great idea, thanks!
+> 
+> > 
+> > Dave
+> > 
+> >> +    DEFINE_PROP_END_OF_LIST(),
+> >> +};
+> >> +
+> >> +static void led_class_init(ObjectClass *klass, void *data)
+> >> +{
+> >> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> >> +
+> >> +    dc->desc = "LED";
+> >> +    dc->vmsd = &vmstate_led;
+> >> +    dc->reset = led_reset;
+> >> +    dc->realize = led_realize;
+> >> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
+> >> +    device_class_set_props(dc, led_properties);
+> >> +}
+> >> +
+> >> +static const TypeInfo led_info = {
+> >> +    .name = TYPE_LED,
+> >> +    .parent = TYPE_SYS_BUS_DEVICE, /* FIXME TYPE_DEVICE */
+> >> +    .instance_size = sizeof(LEDState),
+> >> +    .class_init = led_class_init
+> >> +};
+> >> +
+> >> +static void led_register_types(void)
+> >> +{
+> >> +    type_register_static(&led_info);
+> >> +}
+> >> +
+> >> +type_init(led_register_types)
+> >> diff --git a/MAINTAINERS b/MAINTAINERS
+> >> index 3abe3faa4e..10593863dc 100644
+> >> --- a/MAINTAINERS
+> >> +++ b/MAINTAINERS
+> >> @@ -1857,6 +1857,12 @@ F: docs/specs/vmgenid.txt
+> >>  F: tests/qtest/vmgenid-test.c
+> >>  F: stubs/vmgenid.c
+> >>  
+> >> +LED
+> >> +M: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+> >> +S: Maintained
+> >> +F: include/hw/misc/led.h
+> >> +F: hw/misc/led.c
+> >> +
+> >>  Unimplemented device
+> >>  M: Peter Maydell <peter.maydell@linaro.org>
+> >>  R: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+> >> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> >> index bdd77d8020..f60dce694d 100644
+> >> --- a/hw/misc/Kconfig
+> >> +++ b/hw/misc/Kconfig
+> >> @@ -126,6 +126,9 @@ config AUX
+> >>  config UNIMP
+> >>      bool
+> >>  
+> >> +config LED
+> >> +    bool
+> >> +
+> >>  config MAC_VIA
+> >>      bool
+> >>      select MOS6522
+> >> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> >> index 5aaca8a039..9efa3c941c 100644
+> >> --- a/hw/misc/Makefile.objs
+> >> +++ b/hw/misc/Makefile.objs
+> >> @@ -91,3 +91,4 @@ common-obj-$(CONFIG_NRF51_SOC) += nrf51_rng.o
+> >>  obj-$(CONFIG_MAC_VIA) += mac_via.o
+> >>  
+> >>  common-obj-$(CONFIG_GRLIB) += grlib_ahb_apb_pnp.o
+> >> +common-obj-$(CONFIG_LED) += led.o
+> >> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> >> index 5561746866..e15b7f7c81 100644
+> >> --- a/hw/misc/trace-events
+> >> +++ b/hw/misc/trace-events
+> >> @@ -206,3 +206,6 @@ via1_rtc_cmd_pram_sect_write(int sector, int offset, int addr, int value) "secto
+> >>  # grlib_ahb_apb_pnp.c
+> >>  grlib_ahb_pnp_read(uint64_t addr, uint32_t value) "AHB PnP read addr:0x%03"PRIx64" data:0x%08x"
+> >>  grlib_apb_pnp_read(uint64_t addr, uint32_t value) "APB PnP read addr:0x%03"PRIx64" data:0x%08x"
+> >> +
+> >> +# led.c
+> >> +led_set(const char *name, uint8_t old_state, uint8_t new_state) "led name:'%s' state %d -> %d"
+> >> -- 
+> >> 2.21.3
+> >>
+> > --
+> > Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+> > 
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 
--- PMM

@@ -1,222 +1,172 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1831237lfm;
-        Mon, 15 Jun 2020 09:18:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVThk/j/BHjpc7F4AS2/eB2ifUXrxYOe5Gin4+ydFSGIlTavUcGSIC4AXLV+1w4Wjb0iFv
-X-Received: by 2002:a9f:2788:: with SMTP id b8mr19558233uab.81.1592237929680;
-        Mon, 15 Jun 2020 09:18:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592237929; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1837929lfm;
+        Mon, 15 Jun 2020 09:27:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyBnRtxfwCrUmKhNG+8h0HWIxgensDha11SbEh23CGnLXZfVbMgpxH4hOTzR+YSXF+lii62
+X-Received: by 2002:a5b:707:: with SMTP id g7mr42957261ybq.136.1592238447659;
+        Mon, 15 Jun 2020 09:27:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592238447; cv=none;
         d=google.com; s=arc-20160816;
-        b=GwWeh1U+8bjYjnuMgjfjO9bfNkKEGRcIhLhUf8AEFme3kvBP9IVatT58wRsM1cyWk0
-         NDzcj9wk8qNFcqIVcQ+dDl9DKbsBcQrzy0WtRYv2WuiFdBf9xv3NoYQbNZDq4IpkXCna
-         UZkFZ8n4FSrCo4UKbN20B4RrXnxW0dfZA/Ba70bpKhW7XRO7iL5rBT44OGIUFdjOlhUs
-         XDuB7DrrdDlFTa20poppX3qwr1nvSQM1FHlCYH5mSheeCq4SFjVOK17Fz7Y2hfohZaDm
-         /Pxp+tusFygcPL74+yFJvII1F1abLb+Zf6mm+YUtO/nVU+Bk834IesBUOD2McP59PjCd
-         3Ekg==
+        b=NBCqVTrfAk8bp/uACvzymlijSoYur6lqFO20g8cWCCVGxMz7A169w3JtjSFAIJBKgz
+         IIvM2oDnUq19+5P1+W9wYCeo6NtpAuGsKt7cPmmbtuAjIPuHw0lrcqr7eX1+Zgv0PopB
+         Fhe8czx9WUpf0bvLCaYvpeCjPCf/B3OVIjmAzZ1cie9G+87wBYQSM1+7xaOIV4lx2Qev
+         FUtl+InBBfKfYZKJqXUYU+BJMVhnsq2bjIVCkzzRuqcLYa+mvXevuuIvRNxZzWEhdCfL
+         l+WEz4Vqh2q/MLrR4A123AIBmme4LVAcXPADC6OTpvg6ZOMmlt3fq4fY2qjuk1ahovH6
+         EJAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=zC4goslGunDLLrNxY4ATSQMQcFz/lPFddQgtcjnZqng=;
-        b=DIZnpEjOcDqSuNBW8nh54Cub9juR7NqemBn1bexNdjVTeUYNGBuxyEEcFUsJD2CoRC
-         m77kYkA9UniIbWHmxbCc4JLKZR20nwuLROSAQ81yZMtRWyDet3dJb9vbsJ96ZljADKoK
-         zvLi8elLqjzu8bzkiE/JrsNtZy0khvdyvG3ms6gnQZX7/N1h5WO54ta5OYmOarZLRQNm
-         aLJV7rnOW2VrPY9uGX3pZjMNi5iuDJYd9e5+8bHEgzBJXvVhSukbP1ix5qJ50a5uWtSZ
-         V5KRFIEg4s+I5Lc3XmkI/ZAmVOvNzs/NvwqxTAQHtDEoGAB01cR6W71X9DECiME/BQMR
-         Xkog==
+         :message-id:openpgp:from:references:to:subject:dkim-signature;
+        bh=00FXCB2yidhJiULOJDZcEYz8JWa1gwYhziImrZ06J3Q=;
+        b=0D3Mku9Htk99eqsfQBkAc6EkLpI/LoifIFVi2H2mMxh/UwmSQXqtdFoosyCdAklw+O
+         WJKTnpowXgMby84CqQI0G2W6MdRr8tGAmr9M94qIkLeXIhysfbleytISwgi6nRj94Oq5
+         s1sVlst7xBq4Q4PC9eLZe59GuOoMPvoU9pPE/P1GY2DuNDWTPhMIlnryqX0dzm255lE9
+         mTUVNgK98EqNYTZUSZ6XaIBCJb7TedoABmTk5GQAF3ZTAXLEs3MKiC8axeb7LB0H5QP+
+         qCma0IuL3QjpuS07wJjkZtnl3zHDbTg7y95MBkHdGLXW5eLpmiWHLHawd05yDQL6rVmE
+         YXXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CupwCTMO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c0LIYHKL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r12si1578488vsq.11.2020.06.15.09.18.49
+        by mx.google.com with ESMTPS id y6si13491267ybb.127.2020.06.15.09.27.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jun 2020 09:18:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 15 Jun 2020 09:27:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CupwCTMO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:46640 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c0LIYHKL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60484 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jkrou-0007bN-UB
-	for alex.bennee@linaro.org; Mon, 15 Jun 2020 12:18:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52904)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jkrxH-0005fK-0t
+	for alex.bennee@linaro.org; Mon, 15 Jun 2020 12:27:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55846)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jkroX-0007A1-RH; Mon, 15 Jun 2020 12:18:25 -0400
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:40071)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jkroW-0004B7-0H; Mon, 15 Jun 2020 12:18:25 -0400
-Received: by mail-ed1-x544.google.com with SMTP id p18so11956526eds.7;
- Mon, 15 Jun 2020 09:18:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=zC4goslGunDLLrNxY4ATSQMQcFz/lPFddQgtcjnZqng=;
- b=CupwCTMOUfSPgQPbktUrbFB2lbOSeajPPY4L1qlAjtuHSD2rXpOfsFzT7Ck46gl832
- aREtpQYp7HItdSj+3fauiwZKhJZeT0oOQ/L25ObpuXYAzqwMxI/VPZd101Iz4szdmNN2
- v+cZ9FZJ9nJ3MyDgTh1hWik7BA/XCoBSJU6SS2YAbt4eYVIm51apwYmVwyTwhBbiQRim
- AUP/P8GpXXu5G/AVVsBwL+4g3duT7ht/tEzrAbDKeVrg3Rb8s4rSqzboZ1r2Uowj/t0O
- OlQRNLVRgGsGGdaPGEG1O6IxUblEOW8yzY/KFYoljMJPJnm7Q8CeracGw8+hREdlpFjq
- bI2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=zC4goslGunDLLrNxY4ATSQMQcFz/lPFddQgtcjnZqng=;
- b=Zz27/UENbbf5Sx8xew4JrZDEN+nXAhO9AGQRmHIq56iwjq5XHEA3+H3CXkuvkyqlBD
- izEmf97wcExdGOHoE2elUGkqjo35T3uiKkQFvGzAezr59fDZUk45iC43q8m4rooYPAKF
- 42Rgo80B6hVy/Me+4hSdqaT0Id57L3uyklYVyoN83g7XlFKLmkWWGFFbBLAN/497od5s
- W7USbLsEwE0UG95G/t26bP7WOeRfr++qMOk3E3Uez7hYGKxFggvWFmZWICZ4ntpWMCnH
- N3x5Xxh1WrEVqiCwzfFXHRluID879BuWV3w1BS9JYVVrpkiqPLvYut7LotNuoQST79ze
- 4iPQ==
-X-Gm-Message-State: AOAM53065H7gZViyenEgczfEYBz3iWp37+IYv2kuRiNoj/jbICCEfU7V
- xvndXa4L6Hajn82hdo+sFyWIEf82
-X-Received: by 2002:a50:a701:: with SMTP id h1mr23910970edc.170.1592237901453; 
- Mon, 15 Jun 2020 09:18:21 -0700 (PDT)
-Received: from [192.168.1.38] (181.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id g22sm8676688edj.63.2020.06.15.09.18.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Jun 2020 09:18:20 -0700 (PDT)
-Subject: Re: [RFC PATCH v2 5/5] hw/arm/tosa: Use LED device for the Bluetooth
- led
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200612175440.9901-1-f4bug@amsat.org>
- <20200612175440.9901-6-f4bug@amsat.org>
- <CAFEAcA9tMd0VxEm_O1yre36kWp0U48SZj8tMna25h5M02X-_VQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <d2f6adcc-a796-26bf-9463-5e9bbc143197@amsat.org>
-Date: Mon, 15 Jun 2020 18:18:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jkrw3-0004Fe-J9
+ for qemu-devel@nongnu.org; Mon, 15 Jun 2020 12:26:11 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:37828
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1jkrw1-0005zg-Fl
+ for qemu-devel@nongnu.org; Mon, 15 Jun 2020 12:26:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592238368;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=00FXCB2yidhJiULOJDZcEYz8JWa1gwYhziImrZ06J3Q=;
+ b=c0LIYHKLvT4LlCEa6rcgrweNwUcxG2ZMX5OoHnstsppVFnx4Kc5mG8x+Q7kPoiGlnteqTN
+ 83QviHiC5lePCZFbFpT9YfMi+u5phxiCAaPnlBtyciPgEZg+QeukjPWlnIbQrsyWEMTmRL
+ dB2Yl9kkAf1DBd7yaZniYWECydVNFt0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-87-2GzG0F6KOpegitOqR8HYwg-1; Mon, 15 Jun 2020 12:26:06 -0400
+X-MC-Unique: 2GzG0F6KOpegitOqR8HYwg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C17F91981086;
+ Mon, 15 Jun 2020 16:20:17 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-214.ams2.redhat.com [10.36.112.214])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 93A489034B;
+ Mon, 15 Jun 2020 16:19:57 +0000 (UTC)
+Subject: Re: [PATCH] bios-tables-test: Fix "-tpmdev: invalid option"
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ stefanb@linux.ibm.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, mst@redhat.com, imammedo@redhat.com
+References: <20200615135051.2213-1-eric.auger@redhat.com>
+ <aa595991-7f3a-fd83-026b-1b35aaf9c49e@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <34566599-4194-f092-774e-4c60eca647a4@redhat.com>
+Date: Mon, 15 Jun 2020 18:19:55 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9tMd0VxEm_O1yre36kWp0U48SZj8tMna25h5M02X-_VQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <aa595991-7f3a-fd83-026b-1b35aaf9c49e@redhat.com>
 Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::544;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x544.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/15 01:43:27
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Eric Blake <eblake@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Esteban Bosse <estebanbosse@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: clgryFRzHvzl
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1N0hggp02zfV
 
-On 6/15/20 6:00 PM, Peter Maydell wrote:
-> On Fri, 12 Jun 2020 at 18:54, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+On 15/06/2020 16.57, Philippe Mathieu-Daudé wrote:
+> On 6/15/20 3:50 PM, Eric Auger wrote:
+>> When configure is run with "--disable-tpm", the bios-tables-test
+>> q35/tis test fails with "-tpmdev: invalid option".
 >>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> Skip the test if CONFIG_TPM is unset.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Reported-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 >> ---
->>  hw/arm/tosa.c  | 7 +++----
->>  hw/arm/Kconfig | 1 +
->>  2 files changed, 4 insertions(+), 4 deletions(-)
+>>  tests/qtest/bios-tables-test.c | 4 ++++
+>>  1 file changed, 4 insertions(+)
 >>
->> diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
->> index 5dee2d76c6..86d7e0283a 100644
->> --- a/hw/arm/tosa.c
->> +++ b/hw/arm/tosa.c
->> @@ -24,6 +24,7 @@
->>  #include "hw/irq.h"
->>  #include "hw/ssi/ssi.h"
->>  #include "hw/sysbus.h"
->> +#include "hw/misc/led.h"
->>  #include "exec/address-spaces.h"
->>
->>  #define TOSA_RAM    0x04000000
->> @@ -68,9 +69,6 @@ static void tosa_microdrive_attach(PXA2xxState *cpu)
->>  static void tosa_out_switch(void *opaque, int line, int level)
+>> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+>> index 53f104a9c5..b482f76c03 100644
+>> --- a/tests/qtest/bios-tables-test.c
+>> +++ b/tests/qtest/bios-tables-test.c
+>> @@ -882,6 +882,7 @@ uint64_t tpm_tis_base_addr;
+>>  static void test_acpi_tcg_tpm(const char *machine, const char *tpm_if,
+>>                                uint64_t base)
 >>  {
->>      switch (line) {
->> -        case 0:
->> -            fprintf(stderr, "blue LED %s.\n", level ? "on" : "off");
->> -            break;
->>          case 1:
->>              fprintf(stderr, "green LED %s.\n", level ? "on" : "off");
->>              break;
+>> +#ifdef CONFIG_TPM
+>>      gchar *tmp_dir_name = g_strdup_printf("qemu-test_acpi_%s_tcg_%s.XXXXXX",
+>>                                            machine, tpm_if);
+>>      char *tmp_path = g_dir_make_tmp(tmp_dir_name, NULL);
+>> @@ -924,6 +925,9 @@ static void test_acpi_tcg_tpm(const char *machine, const char *tpm_if,
+>>      g_free(tmp_path);
+>>      g_free(tmp_dir_name);
+>>      free_test_data(&data);
+>> +#else
+>> +    g_test_skip("TPM disabled");
+>> +#endif
+>>  }
+>>  
+>>  static void test_acpi_q35_tcg_tpm_tis(void)
+>>
 > 
-> Why convert the blue LED and not the green, amber or wlan LEDs ?
-
-I don't have the schematics to verify the mapping is correct:
-
-#define TOSA_GPIO_BT_LED		(TOSA_SCOOP_JC_GPIO_BASE + 0)
-#define TOSA_GPIO_NOTE_LED		(TOSA_SCOOP_JC_GPIO_BASE + 1)
-#define TOSA_GPIO_CHRG_ERR_LED		(TOSA_SCOOP_JC_GPIO_BASE + 2)
-#define TOSA_GPIO_TC6393XB_L3V_ON	(TOSA_SCOOP_JC_GPIO_BASE + 5)
-#define TOSA_GPIO_WLAN_LED		(TOSA_SCOOP_JC_GPIO_BASE + 7)
-
-static void tosa_out_switch(void *opaque, int line, int level)
-{
-    switch (line) {
-        case 0:
-            fprintf(stderr, "blue LED %s.\n", level ? "on" : "off");
-            break;
-        case 1:
-            fprintf(stderr, "green LED %s.\n", level ? "on" : "off");
-            break;
-        case 2:
-            fprintf(stderr, "amber LED %s.\n", level ? "on" : "off");
-            break;
-        case 3:
-            fprintf(stderr, "wlan LED %s.\n", level ? "on" : "off");
-            break;
-        default:
-            fprintf(stderr, "Uhandled out event: %d = %d\n", line, level);
-            break;
-    }
-}
-
-    qdev_connect_gpio_out(scp1, TOSA_GPIO_BT_LED, outsignals[0]);
-    qdev_connect_gpio_out(scp1, TOSA_GPIO_NOTE_LED, outsignals[1]);
-    qdev_connect_gpio_out(scp1, TOSA_GPIO_CHRG_ERR_LED, outsignals[2]);
-    qdev_connect_gpio_out(scp1, TOSA_GPIO_WLAN_LED, outsignals[3]);
-
-I wanted a simple proof-of-concept I could test with a board,
-to show how easy this API can be used.
-
-Using the binaries from here:
-https://www.omegamoon.com/blog/static.php?page=ZaurusAndroid
-
-the blue LED never blinks, probably because we remove the
-bluetooth stack. Or maybe I haven't figured the correct
-command line options.
-
-For the next RFC I plan to rework to have a single LED container
-per board, to have a unique singleton object that generates QMP
-events.
-
+> This is simpler than Thomas' version.
 > 
-> thanks
-> -- PMM
-> 
+> Fixes: 5da7c35e25 ("bios-tables-test: Add Q35/TPM-TIS test")
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
+Your version is indeed nicer than mine, so let's use yours!
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+

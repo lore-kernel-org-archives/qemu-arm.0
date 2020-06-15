@@ -1,75 +1,182 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id a3sm23805858wrp.91.2020.06.15.07.19.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jun 2020 07:19:24 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 077F91FF8C;
-	Mon, 15 Jun 2020 15:19:23 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: cota@braap.org,
-	fam@euphon.net,
-	berrange@redhat.com,
-	f4bug@amsat.org,
-	richard.henderson@linaro.org,
-	balrogg@gmail.com,
-	aurelien@aurel32.net,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v1 2/2] tests/tcg: ensure -cpu max also used for plugin run
-Date: Mon, 15 Jun 2020 15:19:22 +0100
-Message-Id: <20200615141922.18829-3-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200615141922.18829-1-alex.bennee@linaro.org>
-References: <20200615141922.18829-1-alex.bennee@linaro.org>
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1747418lfm;
+        Mon, 15 Jun 2020 07:36:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyeC+xeeMtNrEK6U52CvBDjADUU6TAJKNZH7tcPIIZY0MhaGktl3nqMdZM7hBRLmc9vCRWL
+X-Received: by 2002:a05:6902:1005:: with SMTP id w5mr29476834ybt.173.1592231775729;
+        Mon, 15 Jun 2020 07:36:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592231775; cv=none;
+        d=google.com; s=arc-20160816;
+        b=HR6ee4cFQEH1fESh66JSdGyvnKVFfFaOHhRzRywtclzNMEDjonCYbwOl9BT+2FraFm
+         T7eZjtl+tnD7l8v5LMvhc+qLcoCZ2ZGgTjWfWw9bF1pObgMeE1JN4UH2nPiZQTryxxmb
+         OdpDJO4s262qtuuN0wQOQ038onhELzBCJnaVkVbKNaWaf9qKwv0blHwVRJmWs8rNw0dc
+         QlV6S1likQmeImfxgdN3bx6MdlP9067bL/08ZuSXZ1jsD7670fwEvTE1BYWAfbKNgYPe
+         igiPm/KOpsBwCTQxS3LmruoW6p2LboYldwJG1Pwk3OGplwAq+XQmulfPBWvvDGh9YEVd
+         YsbA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=FiJi+yMh8P7j3gyxpnc38+h1PspUjTgRA7C3mWRCj48=;
+        b=epBDVjDh9TY+auLfJ+3N4+Zkr2LS/cJTlSPIHAgy+WYDUt8bRL+qr3OX7A66JRHweF
+         5cRqW3hRqJ33jCSth9JmD94ny/GIhpnDBFyC/D1JTuMsHUsq6W7dKPqx8ZDrbkwFZXRq
+         eB1CW7BFxULFPe3qWP2Bif3cznKMkfb/b+yfI0Da7NSia5ofOLENko3a93Tscw6sd5QY
+         ln/oOsV7dgX4pXihT13nMbN3tqWOn8u02NOZ8mjgTE1prwN8/N+hWU3r0dN0BP9p3s1O
+         /1uzF++RtAhI6JX+ZE0o63N3NWS+uprTNpTXxzvR7EC9cC5dxGiZdcLsJdF+vxDW0Lzp
+         lE/g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b62si9611669yba.153.2020.06.15.07.36.15
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 15 Jun 2020 07:36:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:48472 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jkqDf-0007OO-2K
+	for alex.bennee@linaro.org; Mon, 15 Jun 2020 10:36:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50458)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1jkqDW-0007NG-TB; Mon, 15 Jun 2020 10:36:06 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:38354)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1jkqDS-0007X1-5T; Mon, 15 Jun 2020 10:36:06 -0400
+Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 05FEU8Nq093453; Mon, 15 Jun 2020 10:35:59 -0400
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 31n45cmxeq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 15 Jun 2020 10:35:58 -0400
+Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 05FE2Q70093638;
+ Mon, 15 Jun 2020 10:35:50 -0400
+Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.10])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 31n45cmxaw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 15 Jun 2020 10:35:50 -0400
+Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
+ by ppma02dal.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 05FEYvY2023129;
+ Mon, 15 Jun 2020 14:35:42 GMT
+Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com
+ [9.57.198.26]) by ppma02dal.us.ibm.com with ESMTP id 31mpe9dyjx-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 15 Jun 2020 14:35:42 +0000
+Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
+ [9.57.199.109])
+ by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 05FEZfx812649206
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 15 Jun 2020 14:35:41 GMT
+Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4BFF0112064;
+ Mon, 15 Jun 2020 14:35:41 +0000 (GMT)
+Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id F2BA8112061;
+ Mon, 15 Jun 2020 14:35:40 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+ by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTP;
+ Mon, 15 Jun 2020 14:35:40 +0000 (GMT)
+Subject: Re: [PATCH] bios-tables-test: Fix "-tpmdev: invalid option"
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ mst@redhat.com, imammedo@redhat.com
+References: <20200615135051.2213-1-eric.auger@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Message-ID: <abac56f1-ca0a-bc1d-7024-639869e319b7@linux.ibm.com>
+Date: Mon, 15 Jun 2020 10:35:40 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20200615135051.2213-1-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: wDQB5zcG05s9
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.687
+ definitions=2020-06-15_03:2020-06-15,
+ 2020-06-15 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0
+ suspectscore=2 phishscore=0 adultscore=0 mlxlogscore=999
+ priorityscore=1501 bulkscore=0 malwarescore=0 spamscore=0 impostorscore=0
+ clxscore=1015 cotscore=-2147483648 mlxscore=0 classifier=spam adjust=0
+ reason=mlx scancount=1 engine=8.12.0-2004280000
+ definitions=main-2006150111
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/15 08:37:04
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: thuth@redhat.com, philmd@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hsFcZnHWEx1y
 
-The check-tcg plugins build was failing because some special case
-tests that needed -cpu max failed because the plugin variant hadn't
-carried across the QEMU_OPTS tweak.
+On 6/15/20 9:50 AM, Eric Auger wrote:
+> When configure is run with "--disable-tpm", the bios-tables-test
+> q35/tis test fails with "-tpmdev: invalid option".
+>
+> Skip the test if CONFIG_TPM is unset.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Reported-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Guests which globally set QEMU_OPTS=-cpu FOO where unaffected.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/tcg/aarch64/Makefile.target | 3 ++-
- tests/tcg/i386/Makefile.target    | 1 +
- 2 files changed, 3 insertions(+), 1 deletion(-)
+Tested-by: Stefan Berger <stefanb@linux.ibm.com>
 
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 6d60a2f2eed..b617f2ac7e0 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -20,8 +20,9 @@ run-fcvt: fcvt
- # Pauth Tests
- ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_3),)
- AARCH64_TESTS += pauth-1 pauth-2 pauth-4
--run-pauth-%: QEMU_OPTS += -cpu max
- pauth-%: CFLAGS += -march=armv8.3-a
-+run-pauth-%: QEMU_OPTS += -cpu max
-+run-plugin-pauth-%: QEMU_OPTS += -cpu max
- endif
- 
- # Semihosting smoke test for linux-user
-diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
-index 53efec06683..1a6463a7dc1 100644
---- a/tests/tcg/i386/Makefile.target
-+++ b/tests/tcg/i386/Makefile.target
-@@ -12,6 +12,7 @@ X86_64_TESTS:=$(filter test-i386-ssse3, $(ALL_X86_TESTS))
- 
- test-i386-pcmpistri: CFLAGS += -msse4.2
- run-test-i386-pcmpistri: QEMU_OPTS += -cpu max
-+run-plugin-test-i386-pcmpistri-%: QEMU_OPTS += -cpu max
- 
- #
- # hello-i386 is a barebones app
--- 
-2.20.1
+
+> ---
+>   tests/qtest/bios-tables-test.c | 4 ++++
+>   1 file changed, 4 insertions(+)
+>
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> index 53f104a9c5..b482f76c03 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -882,6 +882,7 @@ uint64_t tpm_tis_base_addr;
+>   static void test_acpi_tcg_tpm(const char *machine, const char *tpm_if,
+>                                 uint64_t base)
+>   {
+> +#ifdef CONFIG_TPM
+>       gchar *tmp_dir_name = g_strdup_printf("qemu-test_acpi_%s_tcg_%s.XXXXXX",
+>                                             machine, tpm_if);
+>       char *tmp_path = g_dir_make_tmp(tmp_dir_name, NULL);
+> @@ -924,6 +925,9 @@ static void test_acpi_tcg_tpm(const char *machine, const char *tpm_if,
+>       g_free(tmp_path);
+>       g_free(tmp_dir_name);
+>       free_test_data(&data);
+> +#else
+> +    g_test_skip("TPM disabled");
+> +#endif
+>   }
+>   
+>   static void test_acpi_q35_tcg_tpm_tis(void)
+
+

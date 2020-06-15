@@ -1,104 +1,83 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1709676lfm;
-        Mon, 15 Jun 2020 06:51:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxDVzAn6WL7dmbazZjsHrEdXsuHcXWtKy/m9rDhpkZ/z4jVbquVBvrMWmZ0tIpuiTz/iWbT
-X-Received: by 2002:a25:ad5a:: with SMTP id l26mr41476443ybe.188.1592229078779;
-        Mon, 15 Jun 2020 06:51:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592229078; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1978458lfm;
+        Mon, 15 Jun 2020 12:45:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxn021jaf7Y9PotBpT06sPVIicb4fVtAEBp4Lna7VKHqEr2lPCyph3Al2fxFWylS0mSNG4W
+X-Received: by 2002:a25:8092:: with SMTP id n18mr20498885ybk.80.1592250339992;
+        Mon, 15 Jun 2020 12:45:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592250339; cv=none;
         d=google.com; s=arc-20160816;
-        b=eVOAeEAt9q914b/OM5rLqpkAyvocuPVgIphZatRGQAz+rVJF9XUrdM4/hXe6T4f15c
-         H/8cCUqZo2dh0scuP9j8QvQmLifT1ym5R/CuYWkgRfVOriONwb108kw4IGx9WSHT+uvE
-         i1h7N3FGKzvPphhe8jLiRdv/eqk+yhze0jroDnC6ND2LzNyu7b7ZdQLUjyCP9BymVq3r
-         b+SO2mBsRiLEurfB6/Bp6sr5CVtY6BJRs0UvUEkrxtNVTTPGz+M3RlpQ4wl11gCCUum1
-         eKILu1V5faAjNIUdNyFMFpZS/u0/epXCIpr6+MB63ieualfe3CPSImItAfdDiHmw9aVC
-         qCbQ==
+        b=tbH5wAf54eGIENNIlMa3DORYFhdslF4fp1Vr4umfV8uCAJUWPrhYL1Yz1+98kRMBVV
+         znTQWWaT6LrHW9qSESoZrdboWj9C6c9M8bjQtcRi8Q7veiaGgNXb9kBsiWTIHA2vfkJx
+         eAq6T2drDBHLi1HXqY/ehNSFZHEvLTQCEnQi4dkN9h+JRD3Wt+9ViUTAyJlSOw8fTkdT
+         WVjbNKmSaA/w/K9teLFaITz9iL0aZqtwYBCw5z1wg5MqMVj1UpCxVep8FSLEsAVxuLOi
+         pjhb4OR0Hcs6/sJsQYiYWh5qKhbFIgedhYLnwYIed/U/6BsfL8KC+Kt0kdBQMXEowVj9
+         VpFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=R1vmQhia25dZPeeC9y6WkhxF+ixuZ7VSqwLTNTglzAs=;
-        b=fP0OaanSde0hhoc33ytc8rNZeVag0LyiBQo+ei+HrVb3mqfLZw23OUPFVxG43AWOOF
-         /nbFECbdCNUKNFEP2fIEpm+vhMr3M5ovBf1tU9Nlur3EMftkLf9eJmuAPlhlQp5JvhqA
-         sSPT/a6zuRYD/gqMfMVXUnYevnPPLPCFSwjmuZ7BlhMr2cFAAi43X+FKYKN1qGNxpPzH
-         ZcDOt03GYguuJQaBIrOuBhk2bBtrlOXB0iHNh+GgaeyZlxOA3m/NrJXJGGOeHhCtrZbp
-         7ZnmHZlARc6er8BsmBoaiNEr1AQoKFVcwz9zxPZ+XE4Z7JZJk1XXr1Uidpo1dvb2PdDU
-         Yz6g==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=Wf0z7etnCLh4+T10IDx+FcjDOdj7jWp8bkrDQSbEopM=;
+        b=ABHWv/QEP4NG6ZVx/3K1pIbej+e91MkmKe/7v7Hw7Nx97KCfwMRUKspkWW6Q6OuxQr
+         a8/gf5Jskpepw+SJWeeSSwhnnXUpEo2uCqfYNgnMgPudhxAQzsHRaqAKAe+noZpuDeNf
+         IYqkAweE668ZmkenwHxf+AMk27bh0TLNbfKzVJAU8Ih3gAxL6XaQ1mEpklsFOoDlP89c
+         /0x+1lQFf8DpDUIqt4vx83LL6FEigim8ZcFSX6RaDTcPMm0W6oQ6TrsPNPsX6WJk7IDP
+         9zUjIOnLMBZ2pj7b0TaQR9cgfSyK5scNLzT7b7PVf4ZaxllOmH4r2T7VuIxoZVQ8myhj
+         g0BA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Db2Sb00j;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a3si13632707ybo.142.2020.06.15.06.51.18
+        by mx.google.com with ESMTPS id b71si13918463ybg.277.2020.06.15.12.45.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jun 2020 06:51:18 -0700 (PDT)
+        Mon, 15 Jun 2020 12:45:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Db2Sb00j;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52110 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36374 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jkpWA-000800-4q
-	for alex.bennee@linaro.org; Mon, 15 Jun 2020 09:51:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41482)
+	id 1jkv35-0003dT-3v
+	for alex.bennee@linaro.org; Mon, 15 Jun 2020 15:45:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49490)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jkpW2-0007ye-UR
- for qemu-arm@nongnu.org; Mon, 15 Jun 2020 09:51:10 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:38993
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jkpW1-0008NS-G2
- for qemu-arm@nongnu.org; Mon, 15 Jun 2020 09:51:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592229068;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=R1vmQhia25dZPeeC9y6WkhxF+ixuZ7VSqwLTNTglzAs=;
- b=Db2Sb00jDogaW0u6BOn41s5Pxs1ioHEhgVCXo0LhBwtHr7+Pz54aV4yjXf1ruFn5a6OndF
- Q/x/nlQErVJpwbe6iCtyHOVHLayy/mfgli8q4QLsv7p3nEVITMyU426LSpFdddd79fLvnU
- twa7zcOEfO1tU7EkjxTyjnOLkVVdBqQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-487-dsdNhBGdN6quX4rsai-tvA-1; Mon, 15 Jun 2020 09:51:05 -0400
-X-MC-Unique: dsdNhBGdN6quX4rsai-tvA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B297E18FE88C;
- Mon, 15 Jun 2020 13:51:03 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 09AB95C1B0;
- Mon, 15 Jun 2020 13:50:54 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, imammedo@redhat.com
-Subject: [PATCH] bios-tables-test: Fix "-tpmdev: invalid option"
-Date: Mon, 15 Jun 2020 15:50:51 +0200
-Message-Id: <20200615135051.2213-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
+ id 1jkv2g-0003bt-Fn; Mon, 15 Jun 2020 15:45:14 -0400
+Received: from relay3-d.mail.gandi.net ([217.70.183.195]:43647)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
+ id 1jkv2c-0007JX-J8; Mon, 15 Jun 2020 15:45:13 -0400
+X-Originating-IP: 82.252.130.88
+Received: from [192.168.1.155] (lns-bzn-59-82-252-130-88.adsl.proxad.net
+ [82.252.130.88]) (Authenticated sender: jcd@tribudubois.net)
+ by relay3-d.mail.gandi.net (Postfix) with ESMTPSA id 2F62A60002;
+ Mon, 15 Jun 2020 19:45:00 +0000 (UTC)
+Subject: Re: [PATCH v5 2/3] hw/net/imx_fec: Allow phy not to be the first
+ device on the mii bus.
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <cover.1591272275.git.jcd@tribudubois.net>
+ <a6223b7b5c1564afc5fb3c2a9ad514bdb41be5a5.1591272275.git.jcd@tribudubois.net>
+ <CAFEAcA_b0k4m29NqU82GC2xvjQXTVkYWQei8hrG2fxjQAcgc0g@mail.gmail.com>
+From: Jean-Christophe DUBOIS <jcd@tribudubois.net>
+Message-ID: <53c48a6c-340c-d688-e935-c74ac519af84@tribudubois.net>
+Date: Mon, 15 Jun 2020 21:45:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <CAFEAcA_b0k4m29NqU82GC2xvjQXTVkYWQei8hrG2fxjQAcgc0g@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/15 01:17:36
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Content-Language: en-US
+Received-SPF: pass client-ip=217.70.183.195; envelope-from=jcd@tribudubois.net;
+ helo=relay3-d.mail.gandi.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/15 15:45:05
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,44 +90,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: thuth@redhat.com, philmd@redhat.com
+Cc: qemu-arm <qemu-arm@nongnu.org>, Peter Chubb <peter.chubb@nicta.com.au>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j6MQccefyLLQ
+X-TUID: nxpjyeWbMGGy
 
-When configure is run with "--disable-tpm", the bios-tables-test
-q35/tis test fails with "-tpmdev: invalid option".
+Le 15/06/2020 à 14:23, Peter Maydell a écrit :
+> On Thu, 4 Jun 2020 at 13:39, Jean-Christophe Dubois <jcd@tribudubois.net> wrote:
+>> Up to now we were allowing only one PHY device and it had to be the
+>> first device on the bus.
+>>
+>> The i.MX6UL has 2 Ethernet devices and can therefore have several
+>> PHY devices on the bus (and not necessarilly as device 0).
+>>
+>> This patch allows for PHY devices on 2nd, 3rd or any position.
+>>
+>> Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
+>> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+>> index eefedc252de..29e613699ee 100644
+>> --- a/hw/net/imx_fec.c
+>> +++ b/hw/net/imx_fec.c
+>> @@ -280,11 +280,9 @@ static void imx_phy_reset(IMXFECState *s)
+>>   static uint32_t imx_phy_read(IMXFECState *s, int reg)
+>>   {
+>>       uint32_t val;
+>> +    uint32_t phy = reg / 32;
+>>
+>> -    if (reg > 31) {
+>> -        /* we only advertise one phy */
+>> -        return 0;
+>> -    }
+>> +    reg %= 32;
+> This change means we now support multiple PHYs...
 
-Skip the test if CONFIG_TPM is unset.
+Yes, on the i.MX6UL there are 2 ENET devices but only one MDIO bus to 
+acess the PHYs.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reported-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- tests/qtest/bios-tables-test.c | 4 ++++
- 1 file changed, 4 insertions(+)
+On the i.MX6UL evaluation board, PHY seems to be at offset/adress 1 and 2.
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index 53f104a9c5..b482f76c03 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -882,6 +882,7 @@ uint64_t tpm_tis_base_addr;
- static void test_acpi_tcg_tpm(const char *machine, const char *tpm_if,
-                               uint64_t base)
- {
-+#ifdef CONFIG_TPM
-     gchar *tmp_dir_name = g_strdup_printf("qemu-test_acpi_%s_tcg_%s.XXXXXX",
-                                           machine, tpm_if);
-     char *tmp_path = g_dir_make_tmp(tmp_dir_name, NULL);
-@@ -924,6 +925,9 @@ static void test_acpi_tcg_tpm(const char *machine, const char *tpm_if,
-     g_free(tmp_path);
-     g_free(tmp_dir_name);
-     free_test_data(&data);
-+#else
-+    g_test_skip("TPM disabled");
-+#endif
- }
- 
- static void test_acpi_q35_tcg_tpm_tis(void)
--- 
-2.20.1
+See linux/arch/arm/boot/dts/imx6ul-14x14-evk.dtsi for details.
+
+>
+>>       switch (reg) {
+>>       case 0:     /* Basic Control */
+>> @@ -331,19 +329,18 @@ static uint32_t imx_phy_read(IMXFECState *s, int reg)
+>>           break;
+>>       }
+>>
+>> -    trace_imx_phy_read(val, reg);
+>> +    trace_imx_phy_read(val, phy, reg);
+> ...but the only change we actually make is to trace the phy number.
+> Surely if there is more than one phy then each phy needs to have
+> its own state (phy_control/phy_status/phy_advertise/etc), rather
+> than all these PHYs all sharing the same state under the hood?
+
+Well there might be several PHYs on the MDIO bus but each PHY is used 
+only by one ENET device. There is no plan for one ENET to use either 
+PHY. It can only use one.
+
+In Qemu (or at least in the FEC ethernet device emulator) the phy state 
+is embedded in the ethernet device state.
+
+>
+> It also sounds from your commit message as if there isn't a
+> large number of PHYs, but only perhaps two. In that case
+> don't we need to fail attempts to access non-existent PHYs
+> and only work with the ones which actually exist on any
+> given board?
+
+As stated on the particular i.MX6UL evaluation board there are 2 phys 
+connected to the MDIO bus at adresse 1 and 2.
+
+On another board the PHYs could be at different addresses or we might 
+use only one MAC and therefore only one PHY.
+
+So in order to be able to fail on bad PHY access we need to discriminate 
+for each board which PHYs are actually present and at what address on 
+the MDIO bus. We would also need to know which PHY is connected to which 
+MAC.
+
+I might have overlook something but so far there is no clear separate 
+PHY and MAC implementation.
+
+Usually the PHY is more or less part of the MAC implementation and there 
+are no easy way to instantiate them separately then connect them with 
+the required bus (MDIO and MAC).
+
+I guess it might be feasible even if it sounds like overkill most of the 
+time (you usually get one MAC connected to one PHY).
+
+Is there such a qemu framework that would allow to connect multiple PHY 
+to a single MDIO bus and then each PHY to a specific MAC device? Could 
+you point me in the right direction ?
+
+>
+> thanks
+> -- PMM
+
 

@@ -1,90 +1,114 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp488494lfm;
-        Fri, 19 Jun 2020 04:21:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwMT04eRqSoZQgeYcMJpxjEbvjkeXZVPWQdZgxJjieijlNgcNmf6tcWSl6EDCcWuUTLckjr
-X-Received: by 2002:a25:ae8c:: with SMTP id b12mr4855294ybj.502.1592565678905;
-        Fri, 19 Jun 2020 04:21:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592565678; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1598050lfm;
+        Mon, 15 Jun 2020 04:20:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyzX0QKlYlJ4I2lztP4rafvqmUMi8+txedDU4E6Rq7G1LZ8QC4Bv51zkBeWLOs07qH0bKvO
+X-Received: by 2002:a25:b511:: with SMTP id p17mr41114505ybj.86.1592220003861;
+        Mon, 15 Jun 2020 04:20:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592220003; cv=none;
         d=google.com; s=arc-20160816;
-        b=fQTmpumLWPhcPpZwyCYocwQUbbpg1BUQ9bRejCro/4bmAnypU7bo4tHC4umn8nOYRW
-         ZjrQfxMmbW/BwnQyMclHnzXcNJdU94ULVTG1byL6zjDdEQrK37u96jiBcIwTZS5B4nwE
-         8j9P21vmopSxK/f6N0wj3YkbsusE6Wpgk0AxiBcugNExYZba8JIGfwFemLpn+ir083ey
-         ee8KHQVMSITLwDYbuXkiNKxhRdsKz5x9ddSpVn18iAWnPLgaBcigEkmJ8Ft1JmQe1Teq
-         AKJwS+68nAUNOSpksXoqNaoxHBPGuLjiRibe6Vx4sPex52NFqCc2R6b1zrrXX3q3hLvi
-         qaSQ==
+        b=g+re3QpWRQWSJ/gO44P0ItoSumRD9/o6XUUd0pa6mCRHP2fnIWKEXj3KK2ktbbFBR+
+         HY0ayouRzctotuaCjj3qJwcakqwSdYz0WCTzAOYuoV1VA5k1jWAdvb7IYcSknO6DmlAT
+         ew/vVTXRaEQROA1uIeRdt2GSivc8F5sx5IjNyXXo5nr+ShYUer49wRkIWSGr+QqXRyhe
+         osXxGZwa89WMBxtkppCjXPx34Rzl95D5U2j7VwB/z44ugCQDJkaKiKf82fvBkxkDlYR4
+         GmxZxSOpAa8HNrpkLicHmjww8LzhaTKEeNEOT6DY5FvOrAbzqCb+5hBtGRXkxyHXfClV
+         vjlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:content-language
-         :accept-language:message-id:date:thread-index:thread-topic:subject
-         :to:from;
-        bh=OxM+NIAb/wB9UH88KLBEpoA1L5sqOmv7rWC9Dd/ze4Q=;
-        b=hOJ8etDbUB5XjUdy/uqwC4Na2AHYS1rEi8okc3TsBDKaMCoREGMEqzTfFgA82my3kB
-         X6w0e/b+r4qB9/IWyRD3G8GPNPyBr5oLNGkYz1V/a0eQM2/SF6fSDptqfmq9MwJqgy3G
-         x1dKtoR7mPQ/O0JKWAUj474Nc1zdbVAhYGOKMdDunqFyY1vz1NXvxOHUShql/K92cbvK
-         nIDVLG9DzLCoWmykmvauQghwWp3VLNyeeLgPtVRwZO0Hyg5D4+0nqqJk+80HIA+1ifes
-         g9mf2hweX7jt3tJJeN7TjzlPsHJqvsll8sqkevG4JKUpux3mqlhLkbL+nZYxE4YHXwup
-         4sCg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=rOmIHbZe5kQiQji9jANHWdGJtWBuqiztPhVjYLwrD+I=;
+        b=pcYX8h5aSVOlCC887SoqkZORg5MjfR2AouQXYGDP01NeBiuaVQ0CiHogxShUtuefz7
+         hCBASspahdKvqPSHzOe+Q3cVrT2XRsWu/Fd0YCcIZBw0E7slQ03q/S5ftycDLR3BjJ4t
+         KoIJpF5EPpjzXP72JzJvDcwN8fpA0km6WI/r4+ukiMkueYoDw6KlIlbWyD9EPsuo3Km+
+         ApkliN39100srCaUbbnryEWFSFqxVw1ku4NEYLE6ja4sqoq1nqJGcCGIEb72daVtpX1K
+         AxNNHai5kEMdqHh9rXP2uCnX763JhyCOvjZxfhSasrTa0BYqTV8MBwNVpb92Rc73i0Ts
+         JC1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FVsAEpss;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e144si4900742ybb.461.2020.06.19.04.21.18
+        by mx.google.com with ESMTPS id d3si11615315yba.205.2020.06.15.04.20.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jun 2020 04:21:18 -0700 (PDT)
+        Mon, 15 Jun 2020 04:20:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34364 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FVsAEpss;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:37362 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jmF5C-0000uv-AG
-	for alex.bennee@linaro.org; Fri, 19 Jun 2020 07:21:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39826)
+	id 1jkn9n-0003rF-8M
+	for alex.bennee@linaro.org; Mon, 15 Jun 2020 07:20:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33520)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <henrik.uhrenfeldt@huawei.com>)
- id 1jmF4q-0000gB-34
- for qemu-arm@nongnu.org; Fri, 19 Jun 2020 07:20:56 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2114 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <henrik.uhrenfeldt@huawei.com>)
- id 1jmF4n-0007lG-L5
- for qemu-arm@nongnu.org; Fri, 19 Jun 2020 07:20:55 -0400
-Received: from lhreml718-chm.china.huawei.com (unknown [172.18.7.108])
- by Forcepoint Email with ESMTP id 0EE6690851C8450B7DB8
- for <qemu-arm@nongnu.org>; Fri, 19 Jun 2020 12:20:51 +0100 (IST)
-Received: from lhreml718-chm.china.huawei.com (10.201.108.69) by
- lhreml718-chm.china.huawei.com (10.201.108.69) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1913.5; Fri, 19 Jun 2020 12:20:50 +0100
-Received: from lhreml718-chm.china.huawei.com ([10.201.108.69]) by
- lhreml718-chm.china.huawei.com ([10.201.108.69]) with mapi id 15.01.1913.007; 
- Fri, 19 Jun 2020 12:20:50 +0100
-From: Henrik Uhrenfeldt <henrik.uhrenfeldt@huawei.com>
-To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Subject: [QUESTION] ARMv8.4-SecEL2 support
-Thread-Topic: [QUESTION] ARMv8.4-SecEL2 support
-Thread-Index: AdZGK6b+evk3DL9mRQSmPYmKzDbTPA==
-Date: Fri, 19 Jun 2020 11:20:50 +0000
-Message-ID: <828021babb144be29ce518681ff6d89f@huawei.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.66.137]
-Content-Type: multipart/alternative;
- boundary="_000_828021babb144be29ce518681ff6d89fhuaweicom_"
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jkn9h-0003qq-4k; Mon, 15 Jun 2020 07:19:57 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51097)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jkn9f-0006Fx-Ej; Mon, 15 Jun 2020 07:19:56 -0400
+Received: by mail-wm1-x344.google.com with SMTP id l17so14249448wmj.0;
+ Mon, 15 Jun 2020 04:19:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=rOmIHbZe5kQiQji9jANHWdGJtWBuqiztPhVjYLwrD+I=;
+ b=FVsAEpssir+hzoHh1OwyfFGZTpALAGnyKkP0tDFOewQdy3II7eOPIyUh3FQAAAneei
+ 0xw9LMILnY7CVGnRU8PiuYFWayMV5YCci4VrwMfNuVWPrYfI+oZvao+bhgVn2a+SM2/O
+ mtu20YB6RnCcU4v7VyxV0MBzahmTIuDft3HETs0T4bMhF3I+DA4ciHx48oUgQPevxm3T
+ Dl8bce5ANcsvhpPoUadVGYT6yziAZyQMsa81cemllXkp/vBJKsn5NXXXhoayJGzSVSTY
+ j5BgWjEqSO29Hdn+mlfzyqbAN4Tk66RB7L5hQzYcUVoo+Dn3UnEnSvzCmikOiPKBP1q1
+ yEdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=rOmIHbZe5kQiQji9jANHWdGJtWBuqiztPhVjYLwrD+I=;
+ b=jvZhAALyHzHgkibKLgBxBww7lPAzGaRCuw/I/MWJXpJYZdabOGvMhwXzxepTZOfW9W
+ NUxzBUMIhKFUhHTQOUYojSvD4fFt1jc+UyZGpYddgoMbmyEg9NtCbFMwXgrpm8Sd2ODv
+ 371n0FU+dhnSLMnS3BZTPg6XqgaE3M67aVYRPZaaCEQD5OFfFmwanVS2UOwgnu0HK3ef
+ fCfAvHSsPTKXXVyaOSj0L/7eBVI/+IPvCLRr+QPbezkguTnnixRIiZXMm6oQGTQEaxdB
+ 5bndCILmP6cOl2UgOzjLF6huy2HjSNClf9bf7l1ndiVGxww5Z4ZkequJRCHwOAM5t0q2
+ wsJQ==
+X-Gm-Message-State: AOAM530yirIR0UB7z8uTe3LGgycyMXqMetNh9Bm5pnVDUjSVfGKQx7jr
+ xlkgSLfDg0sah1Iz+X6S3TA=
+X-Received: by 2002:a1c:771a:: with SMTP id t26mr12449678wmi.65.1592219993535; 
+ Mon, 15 Jun 2020 04:19:53 -0700 (PDT)
+Received: from [192.168.1.40] (181.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.181])
+ by smtp.gmail.com with ESMTPSA id s2sm21072576wmh.11.2020.06.15.04.19.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 15 Jun 2020 04:19:52 -0700 (PDT)
+Subject: Re: [RFC PATCH v2 1/5] hw/misc: Add a LED device
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+References: <20200612175440.9901-1-f4bug@amsat.org>
+ <20200612175440.9901-2-f4bug@amsat.org> <20200615105544.GG2883@work-vm>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <4fa46a7c-7769-3712-c580-46af066abe29@amsat.org>
+Date: Mon, 15 Jun 2020 13:19:50 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.76.210;
- envelope-from=henrik.uhrenfeldt@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/19 07:20:51
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -51
-X-Spam_score: -5.2
-X-Spam_bar: -----
-X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200615105544.GG2883@work-vm>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,71 +121,248 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Eric Blake <eblake@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Esteban Bosse <estebanbosse@gmail.com>,
+ qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IE32ofRU1MIT
+X-TUID: cRbfh2pTHrGF
 
---_000_828021babb144be29ce518681ff6d89fhuaweicom_
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+On 6/15/20 12:55 PM, Dr. David Alan Gilbert wrote:
+> * Philippe Mathieu-DaudÃ© (f4bug@amsat.org) wrote:
+>> A LED device can be connected to a GPIO output.
+>>
+>> Signed-off-by: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+>> ---
+>>  include/hw/misc/led.h | 30 ++++++++++++++++
+>>  hw/misc/led.c         | 84 +++++++++++++++++++++++++++++++++++++++++++
+>>  MAINTAINERS           |  6 ++++
+>>  hw/misc/Kconfig       |  3 ++
+>>  hw/misc/Makefile.objs |  1 +
+>>  hw/misc/trace-events  |  3 ++
+>>  6 files changed, 127 insertions(+)
+>>  create mode 100644 include/hw/misc/led.h
+>>  create mode 100644 hw/misc/led.c
+>>
+>> diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
+>> new file mode 100644
+>> index 0000000000..427ca1418e
+>> --- /dev/null
+>> +++ b/include/hw/misc/led.h
+>> @@ -0,0 +1,30 @@
+>> +/*
+>> + * QEMU single LED device
+>> + *
+>> + * Copyright (C) 2020 Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +#ifndef HW_MISC_LED_H
+>> +#define HW_MISC_LED_H
+>> +
+>> +#include "hw/qdev-core.h"
+>> +#include "hw/sysbus.h" /* FIXME remove */
+>> +
+>> +#define TYPE_LED "led"
+>> +#define LED(obj) OBJECT_CHECK(LEDState, (obj), TYPE_LED)
+>> +
+>> +typedef struct LEDState {
+>> +    /* Private */
+>> +    SysBusDevice parent_obj; /* FIXME DeviceState */
+>> +    /* Public */
+>> +
+>> +    qemu_irq irq;
+> 
+> Why an irq?
 
-RGVhciBsaXN0LA0KDQpJIGFtIGFib3V0IHRvIGRvIHNvbWUgd29yayB3aXRoIHRoZSBBUk0gU2Vj
-dXJlIEVMMiBmZWF0dXJlIChBUk12OC40LVNlY0VMMikuIFFFTVUgdmlydCB0YXJnZXQgaGFzIGJl
-ZW4gbXkgZW52aXJvbm1lbnQgb2YgY2hvaWNlIGZvciBzb21lIHRpbWUsIGFuZCBJIHdvdWxkIGxp
-a2UgdG8gZG8gaXQgaW4gUUVNVSB2aXJ0IGlmIHBvc3NpYmxlLg0KDQpTZXZlcmFsIHBsYWNlcyBp
-biB0YXJnZXQvYXJtL2hlbHBlci5jIG1lbnRpb24gIlRPRE86IEFSTXY4LjQtU2VjRUwyIi4gV291
-bGQgYW55b25lIGhlcmUgb24gdGhlIGxpc3QgYmUgYXdhcmUgb2YgYW55IGN1cnJlbnQgcGxhbnMg
-dG8gc3VwcG9ydCBpdD8NCg0KQmVzdCByZWdhcmRzLA0KSGVucmlrDQo=
+We model GPIO/IRQ the same way, this is simply a GPIO, right?
 
---_000_828021babb144be29ce518681ff6d89fhuaweicom_
-Content-Type: text/html; charset="utf-8"
-Content-Transfer-Encoding: base64
+It makes modeling easier IMO. This is for visualization purpose.
 
-PGh0bWwgeG1sbnM6dj0idXJuOnNjaGVtYXMtbWljcm9zb2Z0LWNvbTp2bWwiIHhtbG5zOm89InVy
-bjpzY2hlbWFzLW1pY3Jvc29mdC1jb206b2ZmaWNlOm9mZmljZSIgeG1sbnM6dz0idXJuOnNjaGVt
-YXMtbWljcm9zb2Z0LWNvbTpvZmZpY2U6d29yZCIgeG1sbnM6ZHQ9InV1aWQ6QzJGNDEwMTAtNjVC
-My0xMWQxLUEyOUYtMDBBQTAwQzE0ODgyIiB4bWxuczptPSJodHRwOi8vc2NoZW1hcy5taWNyb3Nv
-ZnQuY29tL29mZmljZS8yMDA0LzEyL29tbWwiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy9UUi9S
-RUMtaHRtbDQwIj4NCjxoZWFkPg0KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250
-ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgiPg0KPG1ldGEgbmFtZT0iR2VuZXJhdG9yIiBj
-b250ZW50PSJNaWNyb3NvZnQgV29yZCAxNSAoZmlsdGVyZWQgbWVkaXVtKSI+DQo8c3R5bGU+PCEt
-LQ0KLyogRm9udCBEZWZpbml0aW9ucyAqLw0KQGZvbnQtZmFjZQ0KCXtmb250LWZhbWlseToiQ2Ft
-YnJpYSBNYXRoIjsNCglwYW5vc2UtMToyIDQgNSAzIDUgNCA2IDMgMiA0O30NCkBmb250LWZhY2UN
-Cgl7Zm9udC1mYW1pbHk6Q2FsaWJyaTsNCglwYW5vc2UtMToyIDE1IDUgMiAyIDIgNCAzIDIgNDt9
-DQovKiBTdHlsZSBEZWZpbml0aW9ucyAqLw0KcC5Nc29Ob3JtYWwsIGxpLk1zb05vcm1hbCwgZGl2
-Lk1zb05vcm1hbA0KCXttYXJnaW46MGNtOw0KCW1hcmdpbi1ib3R0b206LjAwMDFwdDsNCglmb250
-LXNpemU6MTEuMHB0Ow0KCWZvbnQtZmFtaWx5OiJDYWxpYnJpIixzYW5zLXNlcmlmOw0KCW1zby1m
-YXJlYXN0LWxhbmd1YWdlOkVOLVVTO30NCmE6bGluaywgc3Bhbi5Nc29IeXBlcmxpbmsNCgl7bXNv
-LXN0eWxlLXByaW9yaXR5Ojk5Ow0KCWNvbG9yOiMwNTYzQzE7DQoJdGV4dC1kZWNvcmF0aW9uOnVu
-ZGVybGluZTt9DQphOnZpc2l0ZWQsIHNwYW4uTXNvSHlwZXJsaW5rRm9sbG93ZWQNCgl7bXNvLXN0
-eWxlLXByaW9yaXR5Ojk5Ow0KCWNvbG9yOiM5NTRGNzI7DQoJdGV4dC1kZWNvcmF0aW9uOnVuZGVy
-bGluZTt9DQpzcGFuLkVtYWlsU3R5bGUxNw0KCXttc28tc3R5bGUtdHlwZTpwZXJzb25hbC1jb21w
-b3NlOw0KCWZvbnQtZmFtaWx5OiJDYWxpYnJpIixzYW5zLXNlcmlmOw0KCWNvbG9yOndpbmRvd3Rl
-eHQ7fQ0KLk1zb0NocERlZmF1bHQNCgl7bXNvLXN0eWxlLXR5cGU6ZXhwb3J0LW9ubHk7DQoJbXNv
-LWZhcmVhc3QtbGFuZ3VhZ2U6RU4tVVM7fQ0KQHBhZ2UgV29yZFNlY3Rpb24xDQoJe3NpemU6NjEy
-LjBwdCA3OTIuMHB0Ow0KCW1hcmdpbjo3Mi4wcHQgNzIuMHB0IDcyLjBwdCA3Mi4wcHQ7fQ0KZGl2
-LldvcmRTZWN0aW9uMQ0KCXtwYWdlOldvcmRTZWN0aW9uMTt9DQotLT48L3N0eWxlPjwhLS1baWYg
-Z3RlIG1zbyA5XT48eG1sPg0KPG86c2hhcGVkZWZhdWx0cyB2OmV4dD0iZWRpdCIgc3BpZG1heD0i
-MTAyNiIgLz4NCjwveG1sPjwhW2VuZGlmXS0tPjwhLS1baWYgZ3RlIG1zbyA5XT48eG1sPg0KPG86
-c2hhcGVsYXlvdXQgdjpleHQ9ImVkaXQiPg0KPG86aWRtYXAgdjpleHQ9ImVkaXQiIGRhdGE9IjEi
-IC8+DQo8L286c2hhcGVsYXlvdXQ+PC94bWw+PCFbZW5kaWZdLS0+DQo8L2hlYWQ+DQo8Ym9keSBs
-YW5nPSJlbi1ESyIgbGluaz0iIzA1NjNDMSIgdmxpbms9IiM5NTRGNzIiPg0KPGRpdiBjbGFzcz0i
-V29yZFNlY3Rpb24xIj4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPkRlYXIgbGlzdCw8bzpwPjwvbzpw
-PjwvcD4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPiZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNw
-OyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZu
-YnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNw
-OyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyA8bzpwPjwvbzpwPjwv
-cD4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPkkgYW0gYWJvdXQgdG8gZG8gc29tZSB3b3JrIHdpdGgg
-dGhlIEFSTSBTZWN1cmUgRUwyIGZlYXR1cmUgKEFSTXY4LjQtU2VjRUwyKS4gUUVNVSB2aXJ0IHRh
-cmdldCBoYXMgYmVlbiBteSBlbnZpcm9ubWVudCBvZiBjaG9pY2UgZm9yIHNvbWUgdGltZSwgYW5k
-IEkgd291bGQgbGlrZSB0byBkbyBpdCBpbiBRRU1VIHZpcnQgaWYgcG9zc2libGUuPG86cD48L286
-cD48L3A+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj48bzpwPiZuYnNwOzwvbzpwPjwvcD4NCjxwIGNs
-YXNzPSJNc29Ob3JtYWwiPlNldmVyYWwgcGxhY2VzIGluIHRhcmdldC9hcm0vaGVscGVyLmMgbWVu
-dGlvbiAmcXVvdDtUT0RPOiBBUk12OC40LVNlY0VMMiZxdW90Oy4gV291bGQgYW55b25lIGhlcmUg
-b24gdGhlIGxpc3QgYmUgYXdhcmUgb2YgYW55IGN1cnJlbnQgcGxhbnMgdG8gc3VwcG9ydCBpdD88
-bzpwPjwvbzpwPjwvcD4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPjxvOnA+Jm5ic3A7PC9vOnA+PC9w
-Pg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+QmVzdCByZWdhcmRzLDxvOnA+PC9vOnA+PC9wPg0KPHAg
-Y2xhc3M9Ik1zb05vcm1hbCI+SGVucmlrPG86cD48L286cD48L3A+DQo8L2Rpdj4NCjwvYm9keT4N
-CjwvaHRtbD4NCg==
+> 
+>> +    uint8_t current_state;
+> 
+> Is the state of this device boolean or is it a 0..255 0=off, 255=full
+> on, analog thing?
+> Can an LED device be connected to a PWM device driving a GPIO - what
+> happens?
 
---_000_828021babb144be29ce518681ff6d89fhuaweicom_--
+Well I simply wanted to use a boolean, but I need to consider
+if we can model intensity here in case of PWM. This is interesting.
+
+> 
+> Dave
+> 
+> 
+>> +    /* Properties */
+>> +    char *name;
+>> +    uint8_t reset_state; /* TODO [GPIO_ACTIVE_LOW, GPIO_ACTIVE_HIGH] */
+>> +} LEDState;
+>> +
+>> +#endif /* HW_MISC_LED_H */
+>> diff --git a/hw/misc/led.c b/hw/misc/led.c
+>> new file mode 100644
+>> index 0000000000..1bae1a34c0
+>> --- /dev/null
+>> +++ b/hw/misc/led.c
+>> @@ -0,0 +1,84 @@
+>> +/*
+>> + * QEMU single LED device
+>> + *
+>> + * Copyright (C) 2020 Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +#include "qemu/osdep.h"
+>> +#include "qapi/error.h"
+>> +#include "migration/vmstate.h"
+>> +#include "hw/qdev-properties.h"
+>> +#include "hw/misc/led.h"
+>> +#include "hw/irq.h"
+>> +#include "trace.h"
+>> +
+>> +static void led_set(void *opaque, int line, int new_state)
+>> +{
+>> +    LEDState *s = LED(opaque);
+>> +
+>> +    trace_led_set(s->name, s->current_state, new_state);
+>> +
+>> +    s->current_state = new_state;
+>> +}
+>> +
+>> +static void led_reset(DeviceState *dev)
+>> +{
+>> +    LEDState *s = LED(dev);
+>> +
+>> +    led_set(dev, 0, s->reset_state);
+>> +}
+>> +
+>> +static const VMStateDescription vmstate_led = {
+>> +    .name = TYPE_LED,
+>> +    .version_id = 1,
+>> +    .minimum_version_id = 1,
+>> +    .fields = (VMStateField[]) {
+>> +        VMSTATE_UINT8(reset_state, LEDState),
+> 
+> I'm not sure you need to migrate this - this is a property that's set on
+> the device, not a dynamic state of the device
+
+Yes you are right.
+
+>> +        VMSTATE_END_OF_LIST()
+>> +    }
+>> +};
+>> +
+>> +static void led_realize(DeviceState *dev, Error **errp)
+>> +{
+>> +    LEDState *s = LED(dev);
+>> +
+>> +    if (s->name == NULL) {
+>> +        error_setg(errp, "property 'name' not specified");
+>> +        return;
+>> +    }
+>> +
+>> +    qdev_init_gpio_in(DEVICE(s), led_set, 1);
+>> +}
+>> +
+>> +static Property led_properties[] = {
+>> +    DEFINE_PROP_STRING("name", LEDState, name),
+>> +    DEFINE_PROP_UINT8("reset_state", LEDState, reset_state, 0),
+> 
+> I suggest you add a property for the notional colour; that way any UIs
+> that are built can use that as a hint.
+
+Great idea, thanks!
+
+> 
+> Dave
+> 
+>> +    DEFINE_PROP_END_OF_LIST(),
+>> +};
+>> +
+>> +static void led_class_init(ObjectClass *klass, void *data)
+>> +{
+>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>> +
+>> +    dc->desc = "LED";
+>> +    dc->vmsd = &vmstate_led;
+>> +    dc->reset = led_reset;
+>> +    dc->realize = led_realize;
+>> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
+>> +    device_class_set_props(dc, led_properties);
+>> +}
+>> +
+>> +static const TypeInfo led_info = {
+>> +    .name = TYPE_LED,
+>> +    .parent = TYPE_SYS_BUS_DEVICE, /* FIXME TYPE_DEVICE */
+>> +    .instance_size = sizeof(LEDState),
+>> +    .class_init = led_class_init
+>> +};
+>> +
+>> +static void led_register_types(void)
+>> +{
+>> +    type_register_static(&led_info);
+>> +}
+>> +
+>> +type_init(led_register_types)
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 3abe3faa4e..10593863dc 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -1857,6 +1857,12 @@ F: docs/specs/vmgenid.txt
+>>  F: tests/qtest/vmgenid-test.c
+>>  F: stubs/vmgenid.c
+>>  
+>> +LED
+>> +M: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+>> +S: Maintained
+>> +F: include/hw/misc/led.h
+>> +F: hw/misc/led.c
+>> +
+>>  Unimplemented device
+>>  M: Peter Maydell <peter.maydell@linaro.org>
+>>  R: Philippe Mathieu-DaudÃ© <f4bug@amsat.org>
+>> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+>> index bdd77d8020..f60dce694d 100644
+>> --- a/hw/misc/Kconfig
+>> +++ b/hw/misc/Kconfig
+>> @@ -126,6 +126,9 @@ config AUX
+>>  config UNIMP
+>>      bool
+>>  
+>> +config LED
+>> +    bool
+>> +
+>>  config MAC_VIA
+>>      bool
+>>      select MOS6522
+>> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+>> index 5aaca8a039..9efa3c941c 100644
+>> --- a/hw/misc/Makefile.objs
+>> +++ b/hw/misc/Makefile.objs
+>> @@ -91,3 +91,4 @@ common-obj-$(CONFIG_NRF51_SOC) += nrf51_rng.o
+>>  obj-$(CONFIG_MAC_VIA) += mac_via.o
+>>  
+>>  common-obj-$(CONFIG_GRLIB) += grlib_ahb_apb_pnp.o
+>> +common-obj-$(CONFIG_LED) += led.o
+>> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+>> index 5561746866..e15b7f7c81 100644
+>> --- a/hw/misc/trace-events
+>> +++ b/hw/misc/trace-events
+>> @@ -206,3 +206,6 @@ via1_rtc_cmd_pram_sect_write(int sector, int offset, int addr, int value) "secto
+>>  # grlib_ahb_apb_pnp.c
+>>  grlib_ahb_pnp_read(uint64_t addr, uint32_t value) "AHB PnP read addr:0x%03"PRIx64" data:0x%08x"
+>>  grlib_apb_pnp_read(uint64_t addr, uint32_t value) "APB PnP read addr:0x%03"PRIx64" data:0x%08x"
+>> +
+>> +# led.c
+>> +led_set(const char *name, uint8_t old_state, uint8_t new_state) "led name:'%s' state %d -> %d"
+>> -- 
+>> 2.21.3
+>>
+> --
+> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+> 

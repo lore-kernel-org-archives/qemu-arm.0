@@ -1,207 +1,346 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp487668lfm;
-        Fri, 19 Jun 2020 04:20:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzLOivwMsI/M/inwDW7seg+x/Sa00aC7otE8pj3YZ9Qe4ziPGLba4b6GReb3jcc86QSyvsz
-X-Received: by 2002:a25:b90e:: with SMTP id x14mr5563085ybj.8.1592565608403;
-        Fri, 19 Jun 2020 04:20:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592565608; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1581483lfm;
+        Mon, 15 Jun 2020 03:56:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwGNnUJeZ8nY+jQCFeOyC1C9+09NBLr6E1aZZxdKm/tK150/Fcb1ve48NsPuUNtFEx9F+Ka
+X-Received: by 2002:a25:aa2a:: with SMTP id s39mr43242161ybi.296.1592218602821;
+        Mon, 15 Jun 2020 03:56:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592218602; cv=none;
         d=google.com; s=arc-20160816;
-        b=e67jqGAFaS9nYeZO5XjCElpZl8uIbW8nfvDo4B3RLjIPZlDjwFTBjocFCYE1yBMWYL
-         ZIFUV4gJwwgGhtwBAd9Gmtue3QYArNciQ0KcdMvsZVExXQd0uF92uf7sH26kz/lDWuDW
-         6DCXsV0EEsWBwpymorJGOPHDF2MKq9OimFj7TjzNsYgzYrek1v75PZQYmUlSZe8SdmIR
-         baU10vwJ8eLUBbUTOQc0u1uD9jKR0VZ4HdQrQqdDqZM6NpdiWoJjgrfPpPLBxU4m6mKP
-         v9LhLSJ9ij+gA6yaxsQeiuVx4iOKTPC95BluCj151KiCHtWqeIyP7c4iOwLxG72StdQ/
-         rCEA==
+        b=D/SzAhCCnEW30i0MCHLX3Sbo8HsOcgmJkuMYkfxcoPG82HEqKJ829x7rtUnfuPph4O
+         yBanzl6F1wcf7RHZtqyjigHL5yPXm8F8yKn9e3bfhHuQC3LFESIPnAvQVnuw3rh9SMii
+         BfxgZ2HrA2qc32CrpnTbqswwHQQBg+MlowtY1XMU5bH8pahPL77Df8eO1i7JDBonwbTT
+         0Ova/22KFueG8sf3jn7CK4kmQnLjFMIGDyoqvXUzJG0mpmF1tMspiFShZT2tNuT0Zkou
+         Hz8ca4a3UT8PmqdC6/VW2l7jja1Q/WxcgbfUmK/7g4jxCyk2V8STnwtQisZ0zZNAHVEL
+         RXYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=mFTPargZ3Hfc8qe6eNXGPCevsRjHNvJiuGB6OskI738=;
-        b=LT0LAnyj+B8Ao/NVbIDNsM1b1o05XVzZkSY8pG+l2Jd+n/KH+a3NM30h7kL/VVv1vf
-         Jxw8c0997YTKe2gr+O2Ql4M3HypGwMWQMjzgMaIBiEzx9HB5ZX/a2wvDmGFJgVodeacd
-         XoH69vwkSqwBCJhSe+zxt4hjvWYHD6SsXg/RsYd3n1AI9zQSIdB3YRELKoquVKBCdbYa
-         6hQvg62fYqEM5hhvEMqd/+evitSXah82bJI7zo62a8SopYIg2qP+zH/4BzbYorTGm4hb
-         19YLaiKG06VNmv5Kj1O/4dRAxoTJjbYt8iyGo3ENVZ5fdd/SNnEn2D7A3IcPogDPO3IH
-         NV3w==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:user-agent:in-reply-to:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=rhESTFqxq0pvnue1BIOiHdFsPn2o02OR2ulJyb0OSBs=;
+        b=WWMwmBldFkvFamCCEK+kqMDljU3qLZ4ZNVJCfhjzQ7iCy4DTzPciFMx4/9XtTv8Zxn
+         rwu3J7eGQFFmTi7JVjHtCS5EbGSEM4G4Bs4Z9zfANWoEa/sI+Cte77rcSRw1qX40uzkk
+         DVwSdTZqd3ybF6X3wNyF/qBdo7Oi9h8ak11L+QlCpcSKIGlJN3BopE6ArO6HXVDvloPN
+         xXNqkglnghM0Pb1dqMx8X1lgzZImRqZrwWY7SIYI8ZwiK6rz9gzCTTZJyldposxluJY8
+         nIp4k0UdVe0Ua/vZIFri7bR8XRmKMBqClbK0LYd8VAJo2m+Pfqtd0kcd4GGr1Rk3JNex
+         9wyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EeZAiw9H;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p16si4781224yba.199.2020.06.19.04.20.08
+        by mx.google.com with ESMTPS id f17si14145810ybh.208.2020.06.15.03.56.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jun 2020 04:20:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 15 Jun 2020 03:56:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:60114 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EeZAiw9H;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50800 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jmF43-0008BN-Mp
-	for alex.bennee@linaro.org; Fri, 19 Jun 2020 07:20:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39600)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jkmnC-0004qh-8X
+	for alex.bennee@linaro.org; Mon, 15 Jun 2020 06:56:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56428)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jmF3t-0008B8-So; Fri, 19 Jun 2020 07:19:57 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:45774
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jmF3s-0007Td-0N; Fri, 19 Jun 2020 07:19:57 -0400
-Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 05JB3rBU129952; Fri, 19 Jun 2020 07:19:53 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 31rkh06gd3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 19 Jun 2020 07:19:52 -0400
-Received: from m0098414.ppops.net (m0098414.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 05JB414W131019;
- Fri, 19 Jun 2020 07:19:52 -0400
-Received: from ppma01wdc.us.ibm.com (fd.55.37a9.ip4.static.sl-reverse.com
- [169.55.85.253])
- by mx0b-001b2d01.pphosted.com with ESMTP id 31rkh06gcr-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 19 Jun 2020 07:19:52 -0400
-Received: from pps.filterd (ppma01wdc.us.ibm.com [127.0.0.1])
- by ppma01wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 05JBJT5J018374;
- Fri, 19 Jun 2020 11:19:51 GMT
-Received: from b01cxnp22035.gho.pok.ibm.com (b01cxnp22035.gho.pok.ibm.com
- [9.57.198.25]) by ppma01wdc.us.ibm.com with ESMTP id 31q6bdk4j6-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 19 Jun 2020 11:19:51 +0000
-Received: from b01ledav003.gho.pok.ibm.com (b01ledav003.gho.pok.ibm.com
- [9.57.199.108])
- by b01cxnp22035.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 05JBJpkH49611140
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 19 Jun 2020 11:19:51 GMT
-Received: from b01ledav003.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 784B2B2064;
- Fri, 19 Jun 2020 11:19:51 +0000 (GMT)
-Received: from b01ledav003.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 64577B205F;
- Fri, 19 Jun 2020 11:19:51 +0000 (GMT)
-Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
- by b01ledav003.gho.pok.ibm.com (Postfix) with ESMTP;
- Fri, 19 Jun 2020 11:19:51 +0000 (GMT)
-Subject: Re: [PATCH v4 1/5] acpi: Convert build_tpm2() to build_append* API
-To: Auger Eric <eric.auger@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>
-References: <20200611135917.18300-1-eric.auger@redhat.com>
- <20200611135917.18300-2-eric.auger@redhat.com>
- <20200616143327.2ee38a48@redhat.com>
- <3c3b466a-c965-e3f6-9bd6-74fce9c424c8@linux.ibm.com>
- <ed1b453d-2568-2134-3e86-c268e82a90f8@redhat.com>
- <ded58c6b-dcea-67ef-4f3c-b8af9f149ae8@redhat.com>
- <44663542-8352-2398-a297-3e1fe7f4bfd5@redhat.com>
-From: Stefan Berger <stefanb@linux.ibm.com>
-Message-ID: <ce60f439-fd2a-a72b-f004-44a01f4c5bdf@linux.ibm.com>
-Date: Fri, 19 Jun 2020 07:19:51 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1jkmmX-0004PZ-7b
+ for qemu-devel@nongnu.org; Mon, 15 Jun 2020 06:56:01 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:49502
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
+ id 1jkmmV-0002Er-D8
+ for qemu-devel@nongnu.org; Mon, 15 Jun 2020 06:56:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592218557;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=rhESTFqxq0pvnue1BIOiHdFsPn2o02OR2ulJyb0OSBs=;
+ b=EeZAiw9HFTTEmG3IJXK3hIcNsAwsZp/iY2AKoUSKaz45hwxOC7BSxwhw9bXWy2eTkbAP4R
+ PsTBeL88Xf9rSWqXcprMKsHir40zbhFi/O+upgPPOXu6do+xFaBNNMWj5sEXx+G+zeu0NO
+ x44cdiTsDAg/GA9VDXvf6lK5bHH0cfM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-293-ab01Cja0M5q8JLV4m-kElQ-1; Mon, 15 Jun 2020 06:55:54 -0400
+X-MC-Unique: ab01Cja0M5q8JLV4m-kElQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 81E3C18A8222;
+ Mon, 15 Jun 2020 10:55:52 +0000 (UTC)
+Received: from work-vm (ovpn-114-201.ams2.redhat.com [10.36.114.201])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id EFD1D60C80;
+ Mon, 15 Jun 2020 10:55:46 +0000 (UTC)
+Date: Mon, 15 Jun 2020 11:55:44 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [RFC PATCH v2 1/5] hw/misc: Add a LED device
+Message-ID: <20200615105544.GG2883@work-vm>
+References: <20200612175440.9901-1-f4bug@amsat.org>
+ <20200612175440.9901-2-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <44663542-8352-2398-a297-3e1fe7f4bfd5@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20200612175440.9901-2-f4bug@amsat.org>
+User-Agent: Mutt/1.14.0 (2020-05-02)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.687
- definitions=2020-06-19_08:2020-06-19,
- 2020-06-19 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxscore=0 malwarescore=0
- adultscore=0 bulkscore=0 impostorscore=0 lowpriorityscore=0
- mlxlogscore=999 cotscore=-2147483648 phishscore=0 spamscore=0
- suspectscore=0 priorityscore=1501 clxscore=1015 classifier=spam adjust=0
- reason=mlx scancount=1 engine=8.12.0-2004280000
- definitions=main-2006190080
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/19 06:50:18
-X-ACL-Warn: Detected OS   = Linux 3.x [generic]
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=dgilbert@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/15 01:43:27
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, drjones@redhat.com, mst@redhat.com,
- qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- marcandre.lureau@redhat.com, philmd@redhat.com, ardb@kernel.org,
- eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Tt+Wg+GaAyeQ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Esteban Bosse <estebanbosse@gmail.com>, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: G7cQSltx3LGW
 
-On 6/19/20 5:43 AM, Auger Eric wrote:
-> Hi Laszlo,
->
-> On 6/19/20 11:38 AM, Laszlo Ersek wrote:
->> On 06/18/20 09:50, Auger Eric wrote:
->>> Hi Stefan, Igor,
->>>
->>> On 6/16/20 4:11 PM, Stefan Berger wrote:
->>>> On 6/16/20 8:33 AM, Igor Mammedov wrote:
->>>>> nevertheless looks like faithfull conversion,
->>>>> btw why you didn't drop Acpi20TPM2 structure definition?
->>>>>
->>>> If we get rid of the table we should keep a reference to this document,
->>>> table 7: "TCG ACPI Specification; Family 1.2 and 2.0; Level 00 Revision
->>>> 00.37, December 19, 2014"
->>>>
->>>> https://trustedcomputinggroup.org/wp-content/uploads/TCG_ACPIGeneralSpecification_1-10_0-37-Published.pdf
->>>>
->>>>
->>>>
->>> Further looking at this spec, the log_area_minimum_length and
->>> log_area_start_address only are described in
->>> - Table 2 (TCG Hardware InterfaceDescription Table Format for TPM 1.2
->>> Clients)
->>> - Table 4 (TCG Hardware Interface Description Table Format for TPM 1.2
->>> Servers)
->>> but not in Table 7, ie. not for TPM 2.0.
->>>
->>> Are they really needed for TPM2 or what do I miss?
->> (side comment:
->>
->> LASA and LAML are optional with TPM-2.0. From the discussion at
->> <https://bugzilla.tianocore.org/show_bug.cgi?id=978>.
+* Philippe Mathieu-Daudé (f4bug@amsat.org) wrote:
+> A LED device can be connected to a GPIO output.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  include/hw/misc/led.h | 30 ++++++++++++++++
+>  hw/misc/led.c         | 84 +++++++++++++++++++++++++++++++++++++++++++
+>  MAINTAINERS           |  6 ++++
+>  hw/misc/Kconfig       |  3 ++
+>  hw/misc/Makefile.objs |  1 +
+>  hw/misc/trace-events  |  3 ++
+>  6 files changed, 127 insertions(+)
+>  create mode 100644 include/hw/misc/led.h
+>  create mode 100644 hw/misc/led.c
+> 
+> diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
+> new file mode 100644
+> index 0000000000..427ca1418e
+> --- /dev/null
+> +++ b/include/hw/misc/led.h
+> @@ -0,0 +1,30 @@
+> +/*
+> + * QEMU single LED device
+> + *
+> + * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +#ifndef HW_MISC_LED_H
+> +#define HW_MISC_LED_H
+> +
+> +#include "hw/qdev-core.h"
+> +#include "hw/sysbus.h" /* FIXME remove */
+> +
+> +#define TYPE_LED "led"
+> +#define LED(obj) OBJECT_CHECK(LEDState, (obj), TYPE_LED)
+> +
+> +typedef struct LEDState {
+> +    /* Private */
+> +    SysBusDevice parent_obj; /* FIXME DeviceState */
+> +    /* Public */
+> +
+> +    qemu_irq irq;
+
+Why an irq?
+
+> +    uint8_t current_state;
+
+Is the state of this device boolean or is it a 0..255 0=off, 255=full
+on, analog thing?
+Can an LED device be connected to a PWM device driving a GPIO - what
+happens?
+
+Dave
 
 
-They are needed for (x86) BIOS, such as SeaBIOS, not for UEFI, though. I 
-do not know about ARM.
+> +    /* Properties */
+> +    char *name;
+> +    uint8_t reset_state; /* TODO [GPIO_ACTIVE_LOW, GPIO_ACTIVE_HIGH] */
+> +} LEDState;
+> +
+> +#endif /* HW_MISC_LED_H */
+> diff --git a/hw/misc/led.c b/hw/misc/led.c
+> new file mode 100644
+> index 0000000000..1bae1a34c0
+> --- /dev/null
+> +++ b/hw/misc/led.c
+> @@ -0,0 +1,84 @@
+> +/*
+> + * QEMU single LED device
+> + *
+> + * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "migration/vmstate.h"
+> +#include "hw/qdev-properties.h"
+> +#include "hw/misc/led.h"
+> +#include "hw/irq.h"
+> +#include "trace.h"
+> +
+> +static void led_set(void *opaque, int line, int new_state)
+> +{
+> +    LEDState *s = LED(opaque);
+> +
+> +    trace_led_set(s->name, s->current_state, new_state);
+> +
+> +    s->current_state = new_state;
+> +}
+> +
+> +static void led_reset(DeviceState *dev)
+> +{
+> +    LEDState *s = LED(dev);
+> +
+> +    led_set(dev, 0, s->reset_state);
+> +}
+> +
+> +static const VMStateDescription vmstate_led = {
+> +    .name = TYPE_LED,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT8(reset_state, LEDState),
 
+I'm not sure you need to migrate this - this is a property that's set on
+the device, not a dynamic state of the device
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void led_realize(DeviceState *dev, Error **errp)
+> +{
+> +    LEDState *s = LED(dev);
+> +
+> +    if (s->name == NULL) {
+> +        error_setg(errp, "property 'name' not specified");
+> +        return;
+> +    }
+> +
+> +    qdev_init_gpio_in(DEVICE(s), led_set, 1);
+> +}
+> +
+> +static Property led_properties[] = {
+> +    DEFINE_PROP_STRING("name", LEDState, name),
+> +    DEFINE_PROP_UINT8("reset_state", LEDState, reset_state, 0),
 
-> Thank you for the pointer and info. I failed to find this info in the
-> spec. Given the risk of confusion, I would personally keep struct
-> Acpi20TPM2 and maybe add a comment. Stefan?
+I suggest you add a property for the notional colour; that way any UIs
+that are built can use that as a hint.
 
-Either way is fine with me for as long as we know where to find the 
-layout of the structure.
+Dave
 
-   Stefan
-
->
-> Thanks
->
-> Eric
->> )
->>
->> Thanks
->> Laszlo
->>
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static void led_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->desc = "LED";
+> +    dc->vmsd = &vmstate_led;
+> +    dc->reset = led_reset;
+> +    dc->realize = led_realize;
+> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
+> +    device_class_set_props(dc, led_properties);
+> +}
+> +
+> +static const TypeInfo led_info = {
+> +    .name = TYPE_LED,
+> +    .parent = TYPE_SYS_BUS_DEVICE, /* FIXME TYPE_DEVICE */
+> +    .instance_size = sizeof(LEDState),
+> +    .class_init = led_class_init
+> +};
+> +
+> +static void led_register_types(void)
+> +{
+> +    type_register_static(&led_info);
+> +}
+> +
+> +type_init(led_register_types)
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 3abe3faa4e..10593863dc 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1857,6 +1857,12 @@ F: docs/specs/vmgenid.txt
+>  F: tests/qtest/vmgenid-test.c
+>  F: stubs/vmgenid.c
+>  
+> +LED
+> +M: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> +S: Maintained
+> +F: include/hw/misc/led.h
+> +F: hw/misc/led.c
+> +
+>  Unimplemented device
+>  M: Peter Maydell <peter.maydell@linaro.org>
+>  R: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> index bdd77d8020..f60dce694d 100644
+> --- a/hw/misc/Kconfig
+> +++ b/hw/misc/Kconfig
+> @@ -126,6 +126,9 @@ config AUX
+>  config UNIMP
+>      bool
+>  
+> +config LED
+> +    bool
+> +
+>  config MAC_VIA
+>      bool
+>      select MOS6522
+> diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+> index 5aaca8a039..9efa3c941c 100644
+> --- a/hw/misc/Makefile.objs
+> +++ b/hw/misc/Makefile.objs
+> @@ -91,3 +91,4 @@ common-obj-$(CONFIG_NRF51_SOC) += nrf51_rng.o
+>  obj-$(CONFIG_MAC_VIA) += mac_via.o
+>  
+>  common-obj-$(CONFIG_GRLIB) += grlib_ahb_apb_pnp.o
+> +common-obj-$(CONFIG_LED) += led.o
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index 5561746866..e15b7f7c81 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -206,3 +206,6 @@ via1_rtc_cmd_pram_sect_write(int sector, int offset, int addr, int value) "secto
+>  # grlib_ahb_apb_pnp.c
+>  grlib_ahb_pnp_read(uint64_t addr, uint32_t value) "AHB PnP read addr:0x%03"PRIx64" data:0x%08x"
+>  grlib_apb_pnp_read(uint64_t addr, uint32_t value) "APB PnP read addr:0x%03"PRIx64" data:0x%08x"
+> +
+> +# led.c
+> +led_set(const char *name, uint8_t old_state, uint8_t new_state) "led name:'%s' state %d -> %d"
+> -- 
+> 2.21.3
+> 
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 

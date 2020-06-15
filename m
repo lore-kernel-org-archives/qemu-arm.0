@@ -1,141 +1,163 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp709020lfm;
-        Wed, 17 Jun 2020 08:23:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwkyd29djVtUWDfoEsESaaDuzI2NppJ6l0F65/Ns2xsX2ORiE+XIeqP+CAHEPV+FOAd1KJ1
-X-Received: by 2002:a05:6402:b31:: with SMTP id bo17mr8028859edb.152.1592407414333;
-        Wed, 17 Jun 2020 08:23:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592407414; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1331307lfm;
+        Sun, 14 Jun 2020 20:19:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyf00M50sTALHBgcp5yIXBvFOf/rh2hlMAJD5ZyVu0PU+VtHGoX4Z2NiUcvNW9mc1PW4TR7
+X-Received: by 2002:a25:3b94:: with SMTP id i142mr38306518yba.46.1592191146654;
+        Sun, 14 Jun 2020 20:19:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592191146; cv=none;
         d=google.com; s=arc-20160816;
-        b=RIy8L0r6NjFOI26mf+mG6XKKCuIxyuKvMLuIfydnjgqdPKFN74Zv/H6Vd+d0ZsLRQN
-         aA3i0e7YtVgiupjzHYa5Wjs1WyRAaXj0SD13RXo419XtDuvNtYHLaToEKv/ZDMorzYkZ
-         6Qos216Q6o2YV/w2lo3UKrDvYAmtGsROqfp22+NM3n3cXa4rM1TtcnFb6ZJp0RsdBsvs
-         F0KMrUW220aAIlgZ97/t/ZDGqLU0fFqmyJ7Oz5EtYcS3Fcdz2Orl0PXGeScFNt5nBaK0
-         zkg6aRxq0ZBs9lZSUYvuWL4zq5m4LEp+NANoBPSZPqGS28ke0SK3dpf+/i34K+O168AL
-         9J5g==
+        b=ZA3ZbaEcembzUlaXFI4TeH3GX9ABYqmPNB1fVj0EoGeRwkM7rtC9oEiyGqsI8uUHAT
+         9ID+B20jsp7nSnWrnobAs4IQrcbQaB+373S8jP1KjVdqhO/1z5Ev3YDbyGRhnY6EWRwn
+         BkW6arQhDuwXypAqS6yowVg+KgMkpzwVkDmUfcsYutmJHLg4DKZ/0Nu+L8gqzc+a9ssH
+         UxmInKPRM98h4IS+60h0QcDmjOjNwOcFX3qJS9+eyMWFuqMOT9tZV+uOsESWFDRymVUu
+         50GM60q/zz2pQLDqNKQAXzWlGpjrMAPIYz6vVKTY7X8fZlKJuJojxt/uZcF4I3jKM72n
+         uIxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=OMGMAgb/5UifaIGbODbFjmGBLWcB8dnNVyt+gw1JtEc=;
-        b=vH3XY3+WfhQe0KImsx87zH+OXRt8nBoZbVAWomqAEvc39ubQBPOHt6tTuKVwWZcvY5
-         gXGTrCN37tPGCh/rVyXkKtOAMUV0PYY9hXubdBTu4UMgc8/h+klaZWa2SlK4xCV9i4oF
-         7Ogo5fbJ10vKgK/S+XWBcrX7cXGPQP8igGs+bMuEVCw4+EfrNtIG1KiRkYKjBfSrXi5h
-         Z7U4up2to9XKmOx+VbhCeUhSF56rvP0L/Q65/gVcLYRwM17fnNE7lTMkpQa/cnM5Peji
-         dldmHbNeWEyLH8I9AHkkHD+lKSC1rIH/NiemtE6QyQW79nd36NnJT8/ZNG4B+ce/vFiE
-         bWGw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=mf6EFQsSTaRR9RmOKTbO8/p4hqYkGadG4m1ZTqx2xuQ=;
+        b=Otc3pAujIycN7DFf96SIWMBOwOTS2BF8Y7kTLtrHkuHrXA1s+Qxnr7VbYixiIyIwar
+         7drghOuIVaY6ohxRmk2AYBN0Y8m5FQ2IXsc9Jo7GBja2bNTzBIq2cn6+aHbIuGos4aaL
+         XFWZrfwkMurBDp61PObqTMJAf9WKb98rDXwixKu5eWFlEyJ9K99rALI8cPcAhTjrxeb2
+         Rnc+9aLXzbeCHSBu7KQyc0qLywNzAwKHh2Hf8ZDKKT5TXCMHBEgDbwHuYFbX3E2/6WcJ
+         IhFogFwT2Z188EJ4gBFiMuxcbXGob0SyztUWG2QD3kglHnV4zaDlLXJwd0wtizDVfe0f
+         dI9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MWeu04yy;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id l23si107949ejc.94.2020.06.17.08.23.34;
-        Wed, 17 Jun 2020 08:23:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d93si12492273ybi.258.2020.06.14.20.19.06
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 14 Jun 2020 20:19:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MWeu04yy;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726909AbgFQPXd (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Wed, 17 Jun 2020 11:23:33 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:39053 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1726355AbgFQPXc (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Wed, 17 Jun 2020 11:23:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1592407411;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=OMGMAgb/5UifaIGbODbFjmGBLWcB8dnNVyt+gw1JtEc=;
-        b=MWeu04yyK/UeDbczmR0urSNl3pARCRILq7dwU3s8WVSX7GwYvixR70aTn8aRdcBjRQoQBE
-        kGTBsghIN827XWdcYK6VlmC3edO5Kp5TDkz7EM+a8KHzkODkoNLu5lee4nNQHhS1hypYOu
-        HV3DVJ/8BBHZPprdTLl0JF76hNTNiLc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-337-4S3kMawcNimedK5ic6DyHw-1; Wed, 17 Jun 2020 11:23:27 -0400
-X-MC-Unique: 4S3kMawcNimedK5ic6DyHw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 02F65835BBA;
-        Wed, 17 Jun 2020 15:23:26 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.194.159])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 496BE5C1D6;
-        Wed, 17 Jun 2020 15:23:22 +0000 (UTC)
-Date:   Wed, 17 Jun 2020 17:23:19 +0200
-From:   Andrew Jones <drjones@redhat.com>
-To:     Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        kvm@vger.kernel.org, qemu-arm@nongnu.org,
-        Haibo Xu <haibo.xu@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH] target/arm/kvm: Check supported feature per accelerator
- (not per vCPU)
-Message-ID: <20200617152319.l77b4kdzwcftx7by@kamzik.brq.redhat.com>
-References: <20200617130800.26355-1-philmd@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41802 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jkfeM-0003cl-1L
+	for alex.bennee@linaro.org; Sun, 14 Jun 2020 23:19:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48338)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1jkfeE-0003cY-FG; Sun, 14 Jun 2020 23:18:58 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:41470 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1jkfeC-0004sF-Ge; Sun, 14 Jun 2020 23:18:58 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id B9AA485A7CB47FF9F78A;
+ Mon, 15 Jun 2020 11:18:45 +0800 (CST)
+Received: from [10.173.221.230] (10.173.221.230) by
+ DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 15 Jun 2020 11:18:35 +0800
+Subject: Re: [PATCH] migration: Count new_dirty instead of real_dirty
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, <jianjay.zhou@huawei.com>
+References: <20200601040250.38324-1-zhukeqian1@huawei.com>
+From: zhukeqian <zhukeqian1@huawei.com>
+Message-ID: <3205abb1-8e47-fc19-1213-ead621711291@huawei.com>
+Date: Mon, 15 Jun 2020 11:18:35 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200617130800.26355-1-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: w+3wgnwjvQ5a
+In-Reply-To: <20200601040250.38324-1-zhukeqian1@huawei.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.173.221.230]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=zhukeqian1@huawei.com;
+ helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/14 23:18:47
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: wanghaibin.wang@huawei.com, Chao Fan <fanc.fnst@cn.fujitsu.com>,
+ Juan Quintela <quintela@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gys9Yx9VBpSI
 
-On Wed, Jun 17, 2020 at 03:08:00PM +0200, Philippe Mathieu-Daudé wrote:
-> Since commit d70c996df23f, when enabling the PMU we get:
-> 
->   $ qemu-system-aarch64 -cpu host,pmu=on -M virt,accel=kvm,gic-version=3
->   Segmentation fault (core dumped)
-> 
->   Thread 1 "qemu-system-aar" received signal SIGSEGV, Segmentation fault.
->   0x0000aaaaaae356d0 in kvm_ioctl (s=0x0, type=44547) at accel/kvm/kvm-all.c:2588
->   2588        ret = ioctl(s->fd, type, arg);
->   (gdb) bt
->   #0  0x0000aaaaaae356d0 in kvm_ioctl (s=0x0, type=44547) at accel/kvm/kvm-all.c:2588
->   #1  0x0000aaaaaae31568 in kvm_check_extension (s=0x0, extension=126) at accel/kvm/kvm-all.c:916
->   #2  0x0000aaaaaafce254 in kvm_arm_pmu_supported (cpu=0xaaaaac214ab0) at target/arm/kvm.c:213
->   #3  0x0000aaaaaafc0f94 in arm_set_pmu (obj=0xaaaaac214ab0, value=true, errp=0xffffffffe438) at target/arm/cpu.c:1111
->   #4  0x0000aaaaab5533ac in property_set_bool (obj=0xaaaaac214ab0, v=0xaaaaac223a80, name=0xaaaaac11a970 "pmu", opaque=0xaaaaac222730, errp=0xffffffffe438) at qom/object.c:2170
->   #5  0x0000aaaaab5512f0 in object_property_set (obj=0xaaaaac214ab0, v=0xaaaaac223a80, name=0xaaaaac11a970 "pmu", errp=0xffffffffe438) at qom/object.c:1328
->   #6  0x0000aaaaab551e10 in object_property_parse (obj=0xaaaaac214ab0, string=0xaaaaac11b4c0 "on", name=0xaaaaac11a970 "pmu", errp=0xffffffffe438) at qom/object.c:1561
->   #7  0x0000aaaaab54ee8c in object_apply_global_props (obj=0xaaaaac214ab0, props=0xaaaaac018e20, errp=0xaaaaabd6fd88 <error_fatal>) at qom/object.c:407
->   #8  0x0000aaaaab1dd5a4 in qdev_prop_set_globals (dev=0xaaaaac214ab0) at hw/core/qdev-properties.c:1218
->   #9  0x0000aaaaab1d9fac in device_post_init (obj=0xaaaaac214ab0) at hw/core/qdev.c:1050
->   ...
->   #15 0x0000aaaaab54f310 in object_initialize_with_type (obj=0xaaaaac214ab0, size=52208, type=0xaaaaabe237f0) at qom/object.c:512
->   #16 0x0000aaaaab54fa24 in object_new_with_type (type=0xaaaaabe237f0) at qom/object.c:687
->   #17 0x0000aaaaab54fa80 in object_new (typename=0xaaaaabe23970 "host-arm-cpu") at qom/object.c:702
->   #18 0x0000aaaaaaf04a74 in machvirt_init (machine=0xaaaaac0a8550) at hw/arm/virt.c:1770
->   #19 0x0000aaaaab1e8720 in machine_run_board_init (machine=0xaaaaac0a8550) at hw/core/machine.c:1138
->   #20 0x0000aaaaaaf95394 in qemu_init (argc=5, argv=0xffffffffea58, envp=0xffffffffea88) at softmmu/vl.c:4348
->   #21 0x0000aaaaaada3f74 in main (argc=<optimized out>, argv=<optimized out>, envp=<optimized out>) at softmmu/main.c:48
-> 
-> This is because in frame #2, cpu->kvm_state is still NULL
-> (the vCPU is not yet realized).
-> 
-> KVM has a hard requirement of all cores supporting the same
-> feature set. We only need to check if the accelerator supports
-> a feature, not each vCPU individually.
-> 
-> Fix by kvm_arm_<FEATURE>_supported() functions take a AccelState
-> argument (already realized/valid at this point) instead of a
-> CPUState argument.
+Hi Paolo and Jian Zhou,
 
-I'd rather not do that. IMO, a CPU feature test should operate on CPU,
-not an "accelerator". How that test is implemented is another story.
-If the CPUState isn't interesting, but it points to something that is,
-or there's another function that uses globals to get the job done, then
-fine, but the callers of a CPU feature test shouldn't need to know that.
-
-I think we should just revert d70c996df23f and then apply the same
-change to kvm_arm_pmu_supported() that other similar functions got
-with 4f7f589381d5.
+Do you have any suggestion on this patch?
 
 Thanks,
-drew
+Keqian
+
+On 2020/6/1 12:02, Keqian Zhu wrote:
+> DIRTY_LOG_INITIALLY_ALL_SET feature is on the queue. This fixs the
+> dirty rate calculation for this feature. After introducing this
+> feature, real_dirty_pages is equal to total memory size at begining.
+> This causing wrong dirty rate and false positive throttling.
+> 
+> BTW, real dirty rate is not suitable and not very accurate.
+> 
+> 1. For not suitable: We mainly concern on the relationship between
+>    dirty rate and network bandwidth. Net increasement of dirty pages
+>    makes more sense.
+> 2. For not very accurate: With manual dirty log clear, some dirty pages
+>    will be cleared during each peroid, our "real dirty rate" is less
+>    than real "real dirty rate".
+> 
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> ---
+>  include/exec/ram_addr.h | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
+> index 5e59a3d8d7..af9677e291 100644
+> --- a/include/exec/ram_addr.h
+> +++ b/include/exec/ram_addr.h
+> @@ -443,7 +443,7 @@ static inline
+>  uint64_t cpu_physical_memory_sync_dirty_bitmap(RAMBlock *rb,
+>                                                 ram_addr_t start,
+>                                                 ram_addr_t length,
+> -                                               uint64_t *real_dirty_pages)
+> +                                               uint64_t *accu_dirty_pages)
+>  {
+>      ram_addr_t addr;
+>      unsigned long word = BIT_WORD((start + rb->offset) >> TARGET_PAGE_BITS);
+> @@ -469,7 +469,6 @@ uint64_t cpu_physical_memory_sync_dirty_bitmap(RAMBlock *rb,
+>              if (src[idx][offset]) {
+>                  unsigned long bits = atomic_xchg(&src[idx][offset], 0);
+>                  unsigned long new_dirty;
+> -                *real_dirty_pages += ctpopl(bits);
+>                  new_dirty = ~dest[k];
+>                  dest[k] |= bits;
+>                  new_dirty &= bits;
+> @@ -502,7 +501,6 @@ uint64_t cpu_physical_memory_sync_dirty_bitmap(RAMBlock *rb,
+>                          start + addr + offset,
+>                          TARGET_PAGE_SIZE,
+>                          DIRTY_MEMORY_MIGRATION)) {
+> -                *real_dirty_pages += 1;
+>                  long k = (start + addr) >> TARGET_PAGE_BITS;
+>                  if (!test_and_set_bit(k, dest)) {
+>                      num_dirty++;
+> @@ -511,6 +509,7 @@ uint64_t cpu_physical_memory_sync_dirty_bitmap(RAMBlock *rb,
+>          }
+>      }
+>  
+> +    *accu_dirty_pages += num_dirty;
+>      return num_dirty;
+>  }
+>  #endif
+> 

@@ -1,98 +1,98 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2482859lfm;
-        Tue, 16 Jun 2020 03:22:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxtZWy8FBSKjBkl9ljBvLrBW1+EqzwvMMZUV1T5ElO/DzIz3/9fKOq6AOPRAqJzxLvEItlS
-X-Received: by 2002:a25:4901:: with SMTP id w1mr3099237yba.31.1592302928258;
-        Tue, 16 Jun 2020 03:22:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592302928; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2485350lfm;
+        Tue, 16 Jun 2020 03:26:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw3M5mZmswnzieghI+8EsgSJAT0PDVdEamMFKlnN8q1Wuf5sM5n8BU3GVeam/M/FkIpgIDc
+X-Received: by 2002:a25:b0f:: with SMTP id 15mr3066506ybl.258.1592303189929;
+        Tue, 16 Jun 2020 03:26:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592303189; cv=none;
         d=google.com; s=arc-20160816;
-        b=nurYngUWKOqY4waWD3ERDdMkuwWJTPBCDgo4z7mSY8zYuaWN6VpHmW/9XRjRL5GT3s
-         LhzGHNi4FEb8kD+WP51VsLbx/TUEsT5XdtwGLPo2ntM26B7onICnyYAz3iUcXLl+K868
-         UUaDxIKFbZiO+yZP0riu9NM/B4usd2By6Bh23bw0Y9ayA3O96D/mdDW+wIARAbypyEUN
-         JAzK2xHOKdF1eI2hKmPHhSz9gtxUi6syyaLuuL1xq6Tpp3oWxefVYezuezjTQ/bapfO1
-         oNK8UxWsvHyZjBe+h4QxV8PLwggEnykAy+EvL2M0toWmeisf0btHv6oYqd7cI/gXsF3a
-         P2Jg==
+        b=ROI8u9rtlQ0Rwi+Wdewcxvd5v9zVI19FtyS88RnjDoODZEy2vYXupUbFGUS8h4qPZo
+         vGP8bM5KrYLDb799hjpGe3taHpLzQIHkEzk/C+Vq/w1J8Q40Ttfxhotl+xIPpDH7I8Xk
+         zexyf4WjabYZkaA2gznc5YF5J/3/DfyRLTh8NNonPiKD4YhEe5LEwTLj1XlsVU1hf1ax
+         zzW/6ywShei8Oc+Knok4qP2dIEaOPy/zFxOE8AM58LZIOLC2PQ1ssdrehKiDfbxFY8uC
+         VFzeV4LejF0xOnDn5ADA4GTA/JxMEXO8LSDqXV4ROtoFrPGcGhGcbiTht1jyKx0/gz3B
+         M+zQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=rZ5RV2Xt87KOcGezzlr4cpIJUUSEU7Ipl8/CDMy2YiA=;
-        b=rDC4CFgwvRrCNFczlsEaXaTrROwMGgloKXnFCX96uzAvFdNkzWTJ/5cIbjUV/RaXbL
-         +Yk3ACCdV1bzEv4HM8Wpd6xFMp03uEh/RF2LVhFkga0F6Lwk6a9fNNlIMkATZqIqBSGF
-         jvytwqAj5k0bQ8BN9YF2Y9YajGdNdNkgOqH3FMYMwlERaFn/GbWuUuZsbpvPStHk5v0a
-         Jp9rYFpNbyJxZBYsdcASQqGVAqJoHr7w8tA2j+Cm7w3e+lLX3UdkxuEKq8I4K/cVNgmF
-         ndSGn5xsnAskaQSdONgHi3Kl6Qa3TufjFquvQvzzkCv1h3RCXmJ9zSCfPUjCwOCIAB+6
-         /H/w==
+        bh=TagrXxMco/bVd5aQvDXBMDyoFAwI0Sy4YIAMKuyqlfY=;
+        b=MqSrIrgE88iW5bBNRxZ4D60xf2AXIkB9I1g4KRJrmQ4Txb+7mQ+RCkK8KIQSFhxnsc
+         uJIXtws5pm/2e5k0rNtNg0wiWPstanmAsQubpzp+7n+Hlf0R2vls9K8Fr5DI3gkXBvI0
+         yeQfZ6Ln6wMd395+dBg2d/Dc/QDOmda3tfyFikbgeOB6lrAU6QZtV7m9RWRy9u3ej/LU
+         ksbl0TzDQhJoNoYE335K2FbxSThZLrVk2+LaWW0SkF/I7VO1k5wng2orRpkH/0PFg263
+         q5z8DJ+1xgS6wPIlooKpre1e+OPYGhVCDbPongWCvsecMPzmd1oh3FB+vnUN7XzWFgqK
+         u1Cg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=TqW9lnpO;
+       dkim=fail header.i=@linaro.org header.s=google header.b=bEi0rkuU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1si14658801ybs.64.2020.06.16.03.22.08
+        by mx.google.com with ESMTPS id p3si13325002ybl.410.2020.06.16.03.26.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jun 2020 03:22:08 -0700 (PDT)
+        Tue, 16 Jun 2020 03:26:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=TqW9lnpO;
+       dkim=fail header.i=@linaro.org header.s=google header.b=bEi0rkuU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58956 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33394 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jl8jH-00066j-MQ
-	for alex.bennee@linaro.org; Tue, 16 Jun 2020 06:22:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57020)
+	id 1jl8nV-0007i3-9A
+	for alex.bennee@linaro.org; Tue, 16 Jun 2020 06:26:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57620)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jl8j9-00064z-DQ
- for qemu-arm@nongnu.org; Tue, 16 Jun 2020 06:21:59 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:35154)
+ id 1jl8nK-0007hQ-Td
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2020 06:26:19 -0400
+Received: from mail-oo1-xc42.google.com ([2607:f8b0:4864:20::c42]:45130)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jl8j7-0008Ra-TG
- for qemu-arm@nongnu.org; Tue, 16 Jun 2020 06:21:59 -0400
-Received: by mail-oi1-x242.google.com with SMTP id k4so18768995oik.2
- for <qemu-arm@nongnu.org>; Tue, 16 Jun 2020 03:21:57 -0700 (PDT)
+ id 1jl8nJ-0000q6-1n
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2020 06:26:18 -0400
+Received: by mail-oo1-xc42.google.com with SMTP id k7so3977501ooo.12
+ for <qemu-arm@nongnu.org>; Tue, 16 Jun 2020 03:26:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=rZ5RV2Xt87KOcGezzlr4cpIJUUSEU7Ipl8/CDMy2YiA=;
- b=TqW9lnpO574Cv9nM+1LIVqDa5nDL1bFgW4jIY9urwBVWJwiUQiuJdcI5HqnDGdza2h
- Gm0Z50adhRrbXUWWEurvKeo8v1EPADA7tM30N92RNHZU8TJVZiK5h4/Z28zllrNlY4au
- LnmzROH93gnFXc9sap+BkXhBun3u8FSIC61e3DSbAAXH1KagBNhI8VweOeMuXYBwJuMf
- jPnX5NeBbIWZ+M7aH38S6iI67bmH0Ygp52cCKfn2uHZ06wQPLX0Qe3l3RhwaO1FxHmbl
- WQOIuj+Yas057iDGCMPpexLsMqF4YyA+N/xZyrVq7XlvuIi95knB1DM53jPd/yCpWwS3
- zqUg==
+ bh=TagrXxMco/bVd5aQvDXBMDyoFAwI0Sy4YIAMKuyqlfY=;
+ b=bEi0rkuUhuaCI+t7xE64Wsmq8USacDXNQsZgxl3zB18qbCSPCZliMa8iNeUud6AU5e
+ KTGG+LW0USL/EU2xxr/dyMeggD5+5uPzm1ugeK8Pq/IGo52YQYcaJkFMAcV1mh6x3j/1
+ 7k69lv1TlpRQZDAuMg5TS4E5dAjeoZanQBdSVN/WtyYYrsfB65ruYGeJbY+wW4TthDzn
+ H5WgNBPDHGapRtHmCBYHeF1Fea0R/U1KozJa9hLRBq9BLcFl5lmg2BX0lFR1Y17zgVb0
+ f7EspWvggErQkbgUVD3hysMB8iH9vJO6IrE+INuREzYG+a6f4/wImsapQ0wfaZDUCJZJ
+ nlzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=rZ5RV2Xt87KOcGezzlr4cpIJUUSEU7Ipl8/CDMy2YiA=;
- b=f5s64zyiF0vKygjGDZmrilTrIm3sH4Jy/w2JHQY+wGChYxFqK+TQUbfJQpzMKo+lVK
- WDBzJ9tmD1dbkY7j8nWWwQM3dlPweKvukBPrEOkaRRohsKMmISth62L+y01g+aTVO+1d
- SNyv+i73qdqXlH1WhbBXyRaPrXnkgoo1GxiUjXlymO5ifq7ONqYRg0JdGTB82IBfXZej
- gRR8jDk9JszLMbEoc/3njs3ZrFzOvLcDeanagQZ/gv0RTz0LtuFeWF4cr4MwpDPF373v
- MU7sR1UeBj5pYZvv0s0Jt6EhZiNrts2EdsQNaoiw2MCcLBHB48pOn3oCVk1t6sm1L9mU
- 7Jhg==
-X-Gm-Message-State: AOAM531Fyvt4JvhrCcP4u0pMnK2pPAltwig8JnVcvLLwbaIj30f123UV
- JVWxO2tTNzIuakF1IjUcBPn3WKbwzIkYhkBRZqJuwg==
-X-Received: by 2002:aca:5152:: with SMTP id f79mr2648504oib.146.1592302916649; 
- Tue, 16 Jun 2020 03:21:56 -0700 (PDT)
+ bh=TagrXxMco/bVd5aQvDXBMDyoFAwI0Sy4YIAMKuyqlfY=;
+ b=K5OMKs/02EJC5PJNKv69Uph8QYtcHcFUCOxXAcLEe6vzTBRplZUClrnbj39oVM7Lik
+ NiRN4bKSSQeniwcBdn6W8ZqA7OtwUs6qZTSaVjV7iturOu2skeCP1D+l+qH29kuVDKwt
+ vNDf+CDF5WD13u38xIu/3tCXypDxLuq07C0gUDRcP8uKIpbsHbySTfCDvocMgN8Rec1Y
+ gZxB7MZIkek92yqLXEX5v/2nzlPxcq0q+6XraD/Vubt2SsWIrU/+LaWKegIpRMjBrehP
+ CeGs7braMOlCh6M6/HFb87UbpsKMHRzIhW+bySrL8dcjI6FyHZFmISl2wyB9OY1G4fB5
+ /suw==
+X-Gm-Message-State: AOAM531pCc9M7+eWYSGffphs5eBliP/UPu8Fa8n/qeahthnzLPZwo6so
+ vDoJ+Wm2Qc5wB+PRm0CbYqscesBmCOfX0fZ0LKP8pw==
+X-Received: by 2002:a4a:a20b:: with SMTP id m11mr1813539ool.20.1592303175800; 
+ Tue, 16 Jun 2020 03:26:15 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200616063157.16389-1-f4bug@amsat.org>
- <20200616063157.16389-6-f4bug@amsat.org>
-In-Reply-To: <20200616063157.16389-6-f4bug@amsat.org>
+ <20200616063157.16389-7-f4bug@amsat.org>
+In-Reply-To: <20200616063157.16389-7-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Jun 2020 11:21:45 +0100
-Message-ID: <CAFEAcA9oruR9iXVwPxDMxdGe+Nv8zS9DZ=g3ta96_sSz3-rumg@mail.gmail.com>
-Subject: Re: [PATCH 5/7] hw/arm/mps2: Add I2C busses on FPGA APB
+Date: Tue, 16 Jun 2020 11:26:04 +0100
+Message-ID: <CAFEAcA8HKmMpgZMTuL6PSQNd2gy8h8HSvu6GwvTy8_h93teHjg@mail.gmail.com>
+Subject: Re: [PATCH 6/7] hw/arm/mps2: Map the FPGA I/O block
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c42;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oo1-xc42.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -119,44 +119,31 @@ Cc: Esteban Bosse <estebanbosse@gmail.com>,
  QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MLurPadzS9qN
+X-TUID: zbEaotyzVSL0
 
 On Tue, 16 Jun 2020 at 07:32, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
  wrote:
 >
-> There are 4 different I2C peripherals on the FPGA APB.
->
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/arm/mps2.c | 7 +++++++
->  1 file changed, 7 insertions(+)
->
-> diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-> index 4a49bfa9b9..6224d7a63c 100644
-> --- a/hw/arm/mps2.c
-> +++ b/hw/arm/mps2.c
-> @@ -321,6 +321,7 @@ static void mps2_common_init(MachineState *machine)
->          create_unimplemented_device("cmsdk-ahb-gpio", gpiobase[i], 0x100=
-0);
->      }
->
-> +    /* FPGA APB */
->      sysbus_init_child_obj(OBJECT(mms), "scc", &mms->scc,
->                            sizeof(mms->scc), TYPE_MPS2_SCC);
->      sccdev =3D DEVICE(&mms->scc);
-> @@ -330,6 +331,12 @@ static void mps2_common_init(MachineState *machine)
->      object_property_set_bool(OBJECT(&mms->scc), true, "realized",
->                               &error_fatal);
->      sysbus_mmio_map(SYS_BUS_DEVICE(sccdev), 0, 0x4002f000);
-> +    for (i =3D 0; i < 4; i++) {
-> +        static const hwaddr i2cbase[] =3D {0x40022000, 0x40023000,
-> +                                         0x40029000, 0x4002a000};
-> +
-> +        sysbus_create_simple("versatile_i2c", i2cbase[i], NULL);
-> +    }
 
-Is this device really the same as the I2C controller h/w
-on the versatile board ?
+> @@ -337,6 +339,11 @@ static void mps2_common_init(MachineState *machine)
+>
+>          sysbus_create_simple("versatile_i2c", i2cbase[i], NULL);
+>      }
+> +    sysbus_init_child_obj(OBJECT(mms), "fpgaio", &mms->fpgaio,
+> +                          sizeof(mms->fpgaio), TYPE_MPS2_FPGAIO);
+> +    object_property_set_bool(OBJECT(&mms->fpgaio), true, "realized",
+> +                             &error_fatal);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&mms->fpgaio), 0, 0x40028000);
+
+AN385 TRM isn't entirely clear but I suspect that you need to set
+the FPGAIO's prescale-clk property because the default of 20MHz
+isn't what the AN385 runs at. The FPGAIO model's default is written
+to match the AN505, which is 20MHz, but AN385 and AN511 are both
+25MHz:
+https://developer.arm.com/tools-and-software/development-boards/fpga-protot=
+yping-boards/mps2
 
 thanks
 -- PMM

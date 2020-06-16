@@ -1,102 +1,102 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2801253lfm;
-        Tue, 16 Jun 2020 10:11:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxT2eOicgeopACmQyqEsKd0BQKqE6pqE/jLO4j6rxqyDExeZjsezgV+v0V1FdStyzHCe3ly
-X-Received: by 2002:a25:9909:: with SMTP id z9mr5571120ybn.174.1592327503350;
-        Tue, 16 Jun 2020 10:11:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592327503; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2801944lfm;
+        Tue, 16 Jun 2020 10:12:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJza0+Aj1P+77x841mXGrfbcllNZWzV8QMj4HqNLgdfVvdjVtAAgzFOiz7B3CeKGFHmCMwrX
+X-Received: by 2002:a25:ce06:: with SMTP id x6mr5667956ybe.319.1592327554453;
+        Tue, 16 Jun 2020 10:12:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592327554; cv=none;
         d=google.com; s=arc-20160816;
-        b=NZYNFqCwPby9j2sgOtQfge9TL9SMCQlx+KQTfCA0txjC1q4CE+2TxwjkcE1UtM6yyd
-         C5/kDyc7j8An6jpMjEnrvdj0N8twdY6QB9KAxhGYde2X//bBuQAHOep3fqyBW2Hl/lAd
-         cmhHvd6PfQqgjzfRGG9YeP6sY5txBTgaCTZxByFmeFeAbADFACAMEXJK4wW5ZHi4DIo4
-         j0JDlp/QqMnmgWrduxuEzbvj4mElWaX7CxcOFZBYrQN7O3XTpIvTWFUzUErYAVKD0pV5
-         9ldcILVKSqWCtV6mjqU9wJY0y1bAefnq40QxVEIED2rtsomyZd4IzlE3rybjkcqd6YVW
-         lEnw==
+        b=RTgCSFr+7QIyhbKwMzLkEQ9TGjG+uYpt4858fapqSbc9qwM4rCpfmkOEpfGStihsCg
+         jOh/bfW9pzBcKx6BwlY//YndiRbY1weoGMXHvSkdGwABRdTQlkPO1/xRmUeAx8cikGeo
+         OjZS2iTSlFou3pU8WOvblbB1fSEfxERzIhUxFQxccBAR1hW65j89PpT97JriBTZrZWA9
+         m3dezwG8ufrGmxlrGlrWCrVZL/Sc41hPOREdXbxeGTwQNEJAeMVMyE25X5J8QF38mIpj
+         kpPflKFRnYEuFivv5XGoD33MJNwOYseESz1rmIDaWA0kOVtBMCz5A2grG6TAN2xotMKR
+         eQkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=xWDTix/EFrDbpFYcthSvvgWszuD0YBkrPi92WsJkrek=;
-        b=YJR89mRz8TZ6oa9PUjXnh22GGrl0pArvohnJDrFXymZ6A2flvc/D0BsV5WqauDb4HM
-         Y0GQYSw2FrT06NmbXmElYxD/t6/8e6nGGqK3awK+PS0b825X9aj2W3bPAM7whyIg0NT7
-         W3/DCMjy2F/XkRrP33rcTRQL0+2Oy+9v1PmFDT6Cq85aF6kBbY5/BCZqxoS6QxfaqUTH
-         GuCb6KJgyKVuXm8vwNtlkkQdiYaTQ3aYMtTgiSFbHH7fTSaKx4TZaMNFeg8qCon1T+9E
-         mu+zGzIrE+1gHtT1YLM6sm8o7XdZPsivlo4GHW9XDPsiHat34aHvU3Lum1SPrpykM8O7
-         soug==
+        bh=3ljny7kzY5+YovQYIFcaKIcwx9fioEhuEMYRzUduLVQ=;
+        b=VRR7qE5KpoPU72cExHRJ2OJts0rcHl3xZl4sfRH3SRicrlLlXxkIRZeyrKWSZ2jnlf
+         +/kx4vuxKND+MHcmfDQYukMo7PRk8Cu2M7whMEPIMkOTeqKAKgjtk6rIR5r9k5uPHA/1
+         LN2FfsuBFc9KvoIiFwRdLYNmYYWAXqC5oPlEybF3BDV9oBTXBHkKJ8vTn/LdD9/vnKu6
+         8Wv7Y08kNmnj2tYzXQ+KLZ5u6jdtGTVyaeYiKJjzb87z+SPvYttTHcufBHvdxUzILoAm
+         bRzORZzkPIAo8kA2bW+RF2ROk4+Oheo6GXja39jPriekGLTnC0Oap4fctRflxp/R0K4e
+         Mstg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="B+oIK/0U";
+       dkim=pass header.i=@linaro.org header.s=google header.b=E9h7OuHP;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s6si15302223ybq.239.2020.06.16.10.11.43
+        by mx.google.com with ESMTPS id v13si16082638ybm.381.2020.06.16.10.12.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jun 2020 10:11:43 -0700 (PDT)
+        Tue, 16 Jun 2020 10:12:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="B+oIK/0U";
+       dkim=pass header.i=@linaro.org header.s=google header.b=E9h7OuHP;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41486 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46394 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlF7e-0006so-O3
-	for alex.bennee@linaro.org; Tue, 16 Jun 2020 13:11:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46666)
+	id 1jlF8T-0000WR-Ng
+	for alex.bennee@linaro.org; Tue, 16 Jun 2020 13:12:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jlF4u-0000zI-A1
- for qemu-devel@nongnu.org; Tue, 16 Jun 2020 13:08:52 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:52877)
+ id 1jlF5C-0001fI-8Z
+ for qemu-devel@nongnu.org; Tue, 16 Jun 2020 13:09:10 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:38845)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jlF4s-0007QT-Il
- for qemu-devel@nongnu.org; Tue, 16 Jun 2020 13:08:52 -0400
-Received: by mail-wm1-x343.google.com with SMTP id r9so3583884wmh.2
- for <qemu-devel@nongnu.org>; Tue, 16 Jun 2020 10:08:50 -0700 (PDT)
+ id 1jlF5A-0007WN-3T
+ for qemu-devel@nongnu.org; Tue, 16 Jun 2020 13:09:09 -0400
+Received: by mail-wr1-x442.google.com with SMTP id e1so21601532wrt.5
+ for <qemu-devel@nongnu.org>; Tue, 16 Jun 2020 10:09:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=xWDTix/EFrDbpFYcthSvvgWszuD0YBkrPi92WsJkrek=;
- b=B+oIK/0UaCUu8kjSV1lidcxOl9ORLboEDGyaNq6SiX+YIWndub5PlD5ki+csGnIk+q
- T5PMaNZMOubupQ9hvo/HYGFfEW267BZhJIPC1nL090d2/utWXcJrcaW4SSD49aw8+mCF
- L3d+wJkuAGbj3tHtvx0bGNY8d770vw1FR21hP7RBtxXdBEw1k0lAmEiMVMnanKq7t9R+
- qoiklSoGdAjyr1rgCev7OY7y/anUyaA0eVbeEqMXd+cpFWLANQht+LJjBznvD0GPQh3z
- G7Ml+zb9v8OeAJxaj4wZhdwr4mtlYwPH28HlLWQbajMHq/fvXxAWwNhRK+6TxLzM/ymh
- jbng==
+ bh=3ljny7kzY5+YovQYIFcaKIcwx9fioEhuEMYRzUduLVQ=;
+ b=E9h7OuHP3xwxQw3+24QWfnLj09s1OSr0wfLf7NZmWcv7YnZhKML8bxljocuN2YSkCy
+ mU+5ym0qoKs3OawUJHrd25oiIIublERjKW1UzdZos5ZFvm3f8U6DBlt5U+fJWFyZHsWm
+ 2FyKly86SiFLp0psT8vPAB4VFn/iXoIS/rTh3aVxVHks4JcoJTegfLfjq+nwb9bUUpcJ
+ LaletovLZBg03qEZE1GNm5sU6cKYNUYk9U3FpAXoYW3FSDGZEcjPRa0An7jjW+QJBkDr
+ enwvhD9ecCuLjyPSEkCnoUMrOGv8iXHDaBNWoRT/PjvI07MNE6c7B+OkbzC+uEXW7pUk
+ rO2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=xWDTix/EFrDbpFYcthSvvgWszuD0YBkrPi92WsJkrek=;
- b=WJ0IMx7Xe3+KMY8Tq0vqDo0FbYty8j/VxNyjILlENR3aIydSihmJ1r8futBxIgUT/r
- XvTQ813lwI14TvGWrX+YKST4HHnqemM2Qyv9CGuVi9Dl+0cBEysXF+Nomwj7bHLtpIB3
- kau36iOYacb08Zl0JIitAYLGuY28yBJNx4SHiVaetwkPScu4EISEiihIjqeabMYLxv7h
- B5adT/MAffu7L+4E0Av5pehGBuXrL6n7bvnd+riO1EXUj3aHyGR8yW9u/eDANBbTuzf5
- 5SlpmjCerulVKvSCN7F04VtJU5/F81ofK+oUSvqVnOaLfEkgjbg0+5jxHP7Tyn8fYlJ7
- Sstg==
-X-Gm-Message-State: AOAM533epIRUsISufdwBVv477u6gCa7ptJDLuFXBbhxa3e/kac63b57K
- s9fHvVufsm5cFu8MoU5RBlVtJ63lsbdP3Q==
-X-Received: by 2002:a1c:2b01:: with SMTP id r1mr4463121wmr.26.1592327329086;
- Tue, 16 Jun 2020 10:08:49 -0700 (PDT)
+ bh=3ljny7kzY5+YovQYIFcaKIcwx9fioEhuEMYRzUduLVQ=;
+ b=rrYBueFEqyjVifPnpRgIrL+PnIhvijQm/P+sTrC0bSaH0JiiYtksdQybMrpvqAIMW9
+ ZV+GxcCUrsntnRZCkE6axL1ZMVPqsCbvEXlaph/geyxGvKiuy7oTNs4y20yKPdOw+Kgg
+ h9TveusiGqMj4hQONk0Ayc9vTyKXCJuIlHju8zFrIZm55SIKqlMiJpso9g6LwAuD+n9x
+ MCUOrvi4G+u2h2DlzzadbnREFMBpMS7nX8m2DK/9bwV0XDROMfy4xb6dMv+CgfABWuZw
+ PaJpomjFL/vfSWUWYGrp/dX2WT1Xu2uePJ7zFa35boPpkOl+qEPVSUrvZ4L+W6A0QT/a
+ xGPA==
+X-Gm-Message-State: AOAM531c0rsCLAnMgF0b0dzGmXzadSe/qMhrnDViWQdAFt3Fculz4oZ3
+ 5aX7LNdcjx4VEYkeND3pRs7oV2yuA8kp7A==
+X-Received: by 2002:adf:9404:: with SMTP id 4mr3952334wrq.367.1592327346680;
+ Tue, 16 Jun 2020 10:09:06 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y80sm5263216wmc.34.2020.06.16.10.08.48
+ by smtp.gmail.com with ESMTPSA id y80sm5263216wmc.34.2020.06.16.10.09.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Jun 2020 10:08:48 -0700 (PDT)
+ Tue, 16 Jun 2020 10:09:06 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 01/21] target/arm: Convert Neon 2-reg-misc VREV64 to decodetree
-Date: Tue, 16 Jun 2020 18:08:24 +0100
-Message-Id: <20200616170844.13318-2-peter.maydell@linaro.org>
+Subject: [PATCH 15/21] target/arm: Convert simple fp Neon 2-reg-misc insns
+Date: Tue, 16 Jun 2020 18:08:38 +0100
+Message-Id: <20200616170844.13318-16-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200616170844.13318-1-peter.maydell@linaro.org>
 References: <20200616170844.13318-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -121,53 +121,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dYdnzuasn0Er
+X-TUID: pffjb5icv0qE
 
-Convert the Neon VREV64 insn from the 2-reg-misc grouping to decodetree.
+Convert the Neon 2-reg-misc insns which are implemented with
+simple calls to functions that take the input, output and
+fpstatus pointer.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/neon-dp.decode       | 12 ++++++++
- target/arm/translate-neon.inc.c | 50 +++++++++++++++++++++++++++++++++
- target/arm/translate.c          | 24 ++--------------
- 3 files changed, 64 insertions(+), 22 deletions(-)
+ target/arm/translate.h          |  1 +
+ target/arm/neon-dp.decode       |  8 +++++
+ target/arm/translate-neon.inc.c | 62 +++++++++++++++++++++++++++++++++
+ target/arm/translate.c          | 56 ++++-------------------------
+ 4 files changed, 78 insertions(+), 49 deletions(-)
 
+diff --git a/target/arm/translate.h b/target/arm/translate.h
+index 4dbeee4c89f..19650a9e2d7 100644
+--- a/target/arm/translate.h
++++ b/target/arm/translate.h
+@@ -373,6 +373,7 @@ typedef void NeonGenNarrowFn(TCGv_i32, TCGv_i64);
+ typedef void NeonGenNarrowEnvFn(TCGv_i32, TCGv_ptr, TCGv_i64);
+ typedef void NeonGenWidenFn(TCGv_i64, TCGv_i32);
+ typedef void NeonGenTwoOpWidenFn(TCGv_i64, TCGv_i32, TCGv_i32);
++typedef void NeonGenOneSingleOpFn(TCGv_i32, TCGv_i32, TCGv_ptr);
+ typedef void NeonGenTwoSingleOpFn(TCGv_i32, TCGv_i32, TCGv_i32, TCGv_ptr);
+ typedef void NeonGenTwoDoubleOpFn(TCGv_i64, TCGv_i64, TCGv_i64, TCGv_ptr);
+ typedef void NeonGenOne64OpFn(TCGv_i64, TCGv_i64);
 diff --git a/target/arm/neon-dp.decode b/target/arm/neon-dp.decode
-index 6d890b2161f..e12fdf30957 100644
+index f0bb34a49eb..ea8d5fd99c3 100644
 --- a/target/arm/neon-dp.decode
 +++ b/target/arm/neon-dp.decode
-@@ -429,6 +429,18 @@ Vimm_1r          1111 001 . 1 . 000 ... .... cmode:4 0 . op:1 1 .... @1reg_imm
-                  vm=%vm_dp vd=%vd_dp size=1
-     VDUP_scalar  1111 001 1 1 . 11 index:1 100 .... 11 000 q:1 . 0 .... \
-                  vm=%vm_dp vd=%vd_dp size=2
+@@ -497,11 +497,19 @@ Vimm_1r          1111 001 . 1 . 000 ... .... cmode:4 0 . op:1 1 .... @1reg_imm
+     SHA1SU1      1111 001 11 . 11 .. 10 .... 0 0111 0 . 0 .... @2misc_q1
+     SHA256SU0    1111 001 11 . 11 .. 10 .... 0 0111 1 . 0 .... @2misc_q1
+ 
++    VRINTX       1111 001 11 . 11 .. 10 .... 0 1001 . . 0 .... @2misc
 +
-+    ##################################################################
-+    # 2-reg-misc grouping:
-+    # 1111 001 11 D 11 size:2 opc1:2 Vd:4 0 opc2:4 q:1 M 0 Vm:4
-+    ##################################################################
-+
-+    &2misc vd vm q size
-+
-+    @2misc       .... ... .. . .. size:2 .. .... . .... q:1 . . .... \
-+                 &2misc vm=%vm_dp vd=%vd_dp
-+
-+    VREV64       1111 001 11 . 11 .. 00 .... 0 0000 . . 0 .... @2misc
+     VCVT_F16_F32 1111 001 11 . 11 .. 10 .... 0 1100 0 . 0 .... @2misc_q0
+     VCVT_F32_F16 1111 001 11 . 11 .. 10 .... 0 1110 0 . 0 .... @2misc_q0
+ 
+     VRECPE       1111 001 11 . 11 .. 11 .... 0 1000 . . 0 .... @2misc
+     VRSQRTE      1111 001 11 . 11 .. 11 .... 0 1001 . . 0 .... @2misc
++    VRECPE_F     1111 001 11 . 11 .. 11 .... 0 1010 . . 0 .... @2misc
++    VRSQRTE_F    1111 001 11 . 11 .. 11 .... 0 1011 . . 0 .... @2misc
++    VCVT_FS      1111 001 11 . 11 .. 11 .... 0 1100 . . 0 .... @2misc
++    VCVT_FU      1111 001 11 . 11 .. 11 .... 0 1101 . . 0 .... @2misc
++    VCVT_SF      1111 001 11 . 11 .. 11 .... 0 1110 . . 0 .... @2misc
++    VCVT_UF      1111 001 11 . 11 .. 11 .... 0 1111 . . 0 .... @2misc
    ]
  
    # Subgroup for size != 0b11
 diff --git a/target/arm/translate-neon.inc.c b/target/arm/translate-neon.inc.c
-index a5aa56bbdeb..90431a5383f 100644
+index 2b5dc86f628..ab183e47d7d 100644
 --- a/target/arm/translate-neon.inc.c
 +++ b/target/arm/translate-neon.inc.c
-@@ -2970,3 +2970,53 @@ static bool trans_VDUP_scalar(DisasContext *s, arg_VDUP_scalar *a)
-                          a->q ? 16 : 8, a->q ? 16 : 8);
-     return true;
+@@ -3706,3 +3706,65 @@ static bool trans_VQNEG(DisasContext *s, arg_2misc *a)
+     };
+     return do_2misc(s, a, fn[a->size]);
  }
 +
-+static bool trans_VREV64(DisasContext *s, arg_VREV64 *a)
++static bool do_2misc_fp(DisasContext *s, arg_2misc *a,
++                        NeonGenOneSingleOpFn *fn)
 +{
-+    int pass, half;
++    int pass;
++    TCGv_ptr fpst;
 +
++    /* Handle a 2-reg-misc operation by iterating 32 bits at a time */
 +    if (!arm_dc_feature(s, ARM_FEATURE_NEON)) {
 +        return false;
 +    }
@@ -178,11 +197,12 @@ index a5aa56bbdeb..90431a5383f 100644
 +        return false;
 +    }
 +
-+    if ((a->vd | a->vm) & a->q) {
++    if (a->size != 2) {
++        /* TODO: FP16 will be the size == 1 case */
 +        return false;
 +    }
 +
-+    if (a->size == 3) {
++    if ((a->vd | a->vm) & a->q) {
 +        return false;
 +    }
 +
@@ -190,64 +210,118 @@ index a5aa56bbdeb..90431a5383f 100644
 +        return true;
 +    }
 +
-+    for (pass = 0; pass < (a->q ? 2 : 1); pass++) {
-+        TCGv_i32 tmp[2];
-+
-+        for (half = 0; half < 2; half++) {
-+            tmp[half] = neon_load_reg(a->vm, pass * 2 + half);
-+            switch (a->size) {
-+            case 0:
-+                tcg_gen_bswap32_i32(tmp[half], tmp[half]);
-+                break;
-+            case 1:
-+                gen_swap_half(tmp[half]);
-+                break;
-+            case 2:
-+                break;
-+            default:
-+                g_assert_not_reached();
-+            }
-+        }
-+        neon_store_reg(a->vd, pass * 2, tmp[1]);
-+        neon_store_reg(a->vd, pass * 2 + 1, tmp[0]);
++    fpst = get_fpstatus_ptr(1);
++    for (pass = 0; pass < (a->q ? 4 : 2); pass++) {
++        TCGv_i32 tmp = neon_load_reg(a->vm, pass);
++        fn(tmp, tmp, fpst);
++        neon_store_reg(a->vd, pass, tmp);
 +    }
++    tcg_temp_free_ptr(fpst);
++
 +    return true;
 +}
++
++#define DO_2MISC_FP(INSN, FUNC)                                 \
++    static bool trans_##INSN(DisasContext *s, arg_2misc *a)     \
++    {                                                           \
++        return do_2misc_fp(s, a, FUNC);                         \
++    }
++
++DO_2MISC_FP(VRECPE_F, gen_helper_recpe_f32)
++DO_2MISC_FP(VRSQRTE_F, gen_helper_rsqrte_f32)
++DO_2MISC_FP(VCVT_FS, gen_helper_vfp_sitos)
++DO_2MISC_FP(VCVT_FU, gen_helper_vfp_uitos)
++DO_2MISC_FP(VCVT_SF, gen_helper_vfp_tosizs)
++DO_2MISC_FP(VCVT_UF, gen_helper_vfp_touizs)
++
++static bool trans_VRINTX(DisasContext *s, arg_2misc *a)
++{
++    if (!arm_dc_feature(s, ARM_FEATURE_V8)) {
++        return false;
++    }
++    return do_2misc_fp(s, a, gen_helper_rints_exact);
++}
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 6d18892adee..5fca38b5fae 100644
+index 3cbd2ab0c96..48377860c75 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -5092,28 +5092,8 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
-                 }
-                 switch (op) {
-                 case NEON_2RM_VREV64:
--                    for (pass = 0; pass < (q ? 2 : 1); pass++) {
--                        tmp = neon_load_reg(rm, pass * 2);
--                        tmp2 = neon_load_reg(rm, pass * 2 + 1);
--                        switch (size) {
--                        case 0: tcg_gen_bswap32_i32(tmp, tmp); break;
--                        case 1: gen_swap_half(tmp); break;
--                        case 2: /* no-op */ break;
--                        default: abort();
+@@ -4947,6 +4947,13 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+                 case NEON_2RM_VRSQRTE:
+                 case NEON_2RM_VQABS:
+                 case NEON_2RM_VQNEG:
++                case NEON_2RM_VRECPE_F:
++                case NEON_2RM_VRSQRTE_F:
++                case NEON_2RM_VCVT_FS:
++                case NEON_2RM_VCVT_FU:
++                case NEON_2RM_VCVT_SF:
++                case NEON_2RM_VCVT_UF:
++                case NEON_2RM_VRINTX:
+                     /* handled by decodetree */
+                     return 1;
+                 case NEON_2RM_VTRN:
+@@ -5052,13 +5059,6 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+                             tcg_temp_free_i32(tcg_rmode);
+                             break;
+                         }
+-                        case NEON_2RM_VRINTX:
+-                        {
+-                            TCGv_ptr fpstatus = get_fpstatus_ptr(1);
+-                            gen_helper_rints_exact(tmp, tmp, fpstatus);
+-                            tcg_temp_free_ptr(fpstatus);
+-                            break;
 -                        }
--                        neon_store_reg(rd, pass * 2 + 1, tmp);
--                        if (size == 2) {
--                            neon_store_reg(rd, pass * 2, tmp2);
--                        } else {
--                            switch (size) {
--                            case 0: tcg_gen_bswap32_i32(tmp2, tmp2); break;
--                            case 1: gen_swap_half(tmp2); break;
--                            default: abort();
--                            }
--                            neon_store_reg(rd, pass * 2, tmp2);
+                         case NEON_2RM_VCVTAU:
+                         case NEON_2RM_VCVTAS:
+                         case NEON_2RM_VCVTNU:
+@@ -5093,48 +5093,6 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
+                             tcg_temp_free_ptr(fpst);
+                             break;
+                         }
+-                        case NEON_2RM_VRECPE_F:
+-                        {
+-                            TCGv_ptr fpstatus = get_fpstatus_ptr(1);
+-                            gen_helper_recpe_f32(tmp, tmp, fpstatus);
+-                            tcg_temp_free_ptr(fpstatus);
+-                            break;
 -                        }
--                    }
--                    break;
-+                    /* handled by decodetree */
-+                    return 1;
-                 case NEON_2RM_VPADDL: case NEON_2RM_VPADDL_U:
-                 case NEON_2RM_VPADAL: case NEON_2RM_VPADAL_U:
-                     for (pass = 0; pass < q + 1; pass++) {
+-                        case NEON_2RM_VRSQRTE_F:
+-                        {
+-                            TCGv_ptr fpstatus = get_fpstatus_ptr(1);
+-                            gen_helper_rsqrte_f32(tmp, tmp, fpstatus);
+-                            tcg_temp_free_ptr(fpstatus);
+-                            break;
+-                        }
+-                        case NEON_2RM_VCVT_FS: /* VCVT.F32.S32 */
+-                        {
+-                            TCGv_ptr fpstatus = get_fpstatus_ptr(1);
+-                            gen_helper_vfp_sitos(tmp, tmp, fpstatus);
+-                            tcg_temp_free_ptr(fpstatus);
+-                            break;
+-                        }
+-                        case NEON_2RM_VCVT_FU: /* VCVT.F32.U32 */
+-                        {
+-                            TCGv_ptr fpstatus = get_fpstatus_ptr(1);
+-                            gen_helper_vfp_uitos(tmp, tmp, fpstatus);
+-                            tcg_temp_free_ptr(fpstatus);
+-                            break;
+-                        }
+-                        case NEON_2RM_VCVT_SF: /* VCVT.S32.F32 */
+-                        {
+-                            TCGv_ptr fpstatus = get_fpstatus_ptr(1);
+-                            gen_helper_vfp_tosizs(tmp, tmp, fpstatus);
+-                            tcg_temp_free_ptr(fpstatus);
+-                            break;
+-                        }
+-                        case NEON_2RM_VCVT_UF: /* VCVT.U32.F32 */
+-                        {
+-                            TCGv_ptr fpstatus = get_fpstatus_ptr(1);
+-                            gen_helper_vfp_touizs(tmp, tmp, fpstatus);
+-                            tcg_temp_free_ptr(fpstatus);
+-                            break;
+-                        }
+                         default:
+                             /* Reserved op values were caught by the
+                              * neon_2rm_sizes[] check earlier.
 -- 
 2.20.1
 

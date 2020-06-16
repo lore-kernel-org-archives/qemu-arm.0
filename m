@@ -1,82 +1,85 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1978458lfm;
-        Mon, 15 Jun 2020 12:45:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxn021jaf7Y9PotBpT06sPVIicb4fVtAEBp4Lna7VKHqEr2lPCyph3Al2fxFWylS0mSNG4W
-X-Received: by 2002:a25:8092:: with SMTP id n18mr20498885ybk.80.1592250339992;
-        Mon, 15 Jun 2020 12:45:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592250339; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2189231lfm;
+        Mon, 15 Jun 2020 18:22:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwRi3uOmCnmhN6BG+keDoknz8ybe4iZBrlZLjTwldXJiuQuC5CVXX2zCvnhfwaZznwEU/aa
+X-Received: by 2002:a25:b8c6:: with SMTP id g6mr550398ybm.101.1592270576575;
+        Mon, 15 Jun 2020 18:22:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592270576; cv=none;
         d=google.com; s=arc-20160816;
-        b=tbH5wAf54eGIENNIlMa3DORYFhdslF4fp1Vr4umfV8uCAJUWPrhYL1Yz1+98kRMBVV
-         znTQWWaT6LrHW9qSESoZrdboWj9C6c9M8bjQtcRi8Q7veiaGgNXb9kBsiWTIHA2vfkJx
-         eAq6T2drDBHLi1HXqY/ehNSFZHEvLTQCEnQi4dkN9h+JRD3Wt+9ViUTAyJlSOw8fTkdT
-         WVjbNKmSaA/w/K9teLFaITz9iL0aZqtwYBCw5z1wg5MqMVj1UpCxVep8FSLEsAVxuLOi
-         pjhb4OR0Hcs6/sJsQYiYWh5qKhbFIgedhYLnwYIed/U/6BsfL8KC+Kt0kdBQMXEowVj9
-         VpFw==
+        b=lM7I/xnR5mmBHcCdGrftKjt3NqzpkMQVhcmbmtrrcWae1zwC+5IMZFubFtGNsAOgq/
+         4q96QtRCFf4sl3gETbw0Qox31Z2i9pAdBmt9uJfaZ28oNJSKN71x6qKzp9/+A2NAADaN
+         HJwmwogI+NB5R9jXBmJlCKNcpTpY8kBqZBGBjpEALMfkJwrEH8JT8lbCHfRoTeSZXlxc
+         3B/Iz+uECpOOVHKj/Fof7lgNHHOxEC6YAd3QdakeNIPb//GqwAR818PQN27vA02Zc3tr
+         e8913+dA8eWQ9nUoXepfi0IzP4wC6OpGtn/YLLifbHpJTI/OX/GmT/+2LSSNMN4LhuCJ
+         /JuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=Wf0z7etnCLh4+T10IDx+FcjDOdj7jWp8bkrDQSbEopM=;
-        b=ABHWv/QEP4NG6ZVx/3K1pIbej+e91MkmKe/7v7Hw7Nx97KCfwMRUKspkWW6Q6OuxQr
-         a8/gf5Jskpepw+SJWeeSSwhnnXUpEo2uCqfYNgnMgPudhxAQzsHRaqAKAe+noZpuDeNf
-         IYqkAweE668ZmkenwHxf+AMk27bh0TLNbfKzVJAU8Ih3gAxL6XaQ1mEpklsFOoDlP89c
-         /0x+1lQFf8DpDUIqt4vx83LL6FEigim8ZcFSX6RaDTcPMm0W6oQ6TrsPNPsX6WJk7IDP
-         9zUjIOnLMBZ2pj7b0TaQR9cgfSyK5scNLzT7b7PVf4ZaxllOmH4r2T7VuIxoZVQ8myhj
-         g0BA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=iraqiW7jnnqluFUvnChTreEGJyD1Z1yGpZZpcTHI6cI=;
+        b=BRMJYBYYy1hT+S5CGANIcerSLg4RdcMn3Qt3txVc8E9ikb2k6lciIKYTEp/DvfWN0W
+         wrieqCt4nIzELfPjFbtp4usLKFJt92XJK+R3Ef6fSHuxshm4Fv66VRNHTGUhJTt81tzw
+         r9uFBCMBTxuEheTSM4AQpq6DMiX53CY88HdfRFtIIOiqHD8kUULVM2fjsdZgBetYplgU
+         EoL8Tj2YIiHubYKyy5u5TmjAW13FsRvfpf3rI9EC/vp8PfD1Bvb2P11bUPqpo9GIk9sR
+         1UcKiruiPZ3lUkO0r2KrKVXPsA1lg2OBO8lKrBcVk/+89vLZcpVC3N535x4UCAuYkJmF
+         khaA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b71si13918463ybg.277.2020.06.15.12.45.39
+        by mx.google.com with ESMTPS id 124si14733636yba.182.2020.06.15.18.22.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jun 2020 12:45:39 -0700 (PDT)
+        Mon, 15 Jun 2020 18:22:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36374 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44856 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jkv35-0003dT-3v
-	for alex.bennee@linaro.org; Mon, 15 Jun 2020 15:45:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49490)
+	id 1jl0JU-0000PQ-00
+	for alex.bennee@linaro.org; Mon, 15 Jun 2020 21:22:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53132)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jkv2g-0003bt-Fn; Mon, 15 Jun 2020 15:45:14 -0400
-Received: from relay3-d.mail.gandi.net ([217.70.183.195]:43647)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1jl0JM-0000Nn-BV; Mon, 15 Jun 2020 21:22:48 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:49526 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jkv2c-0007JX-J8; Mon, 15 Jun 2020 15:45:13 -0400
-X-Originating-IP: 82.252.130.88
-Received: from [192.168.1.155] (lns-bzn-59-82-252-130-88.adsl.proxad.net
- [82.252.130.88]) (Authenticated sender: jcd@tribudubois.net)
- by relay3-d.mail.gandi.net (Postfix) with ESMTPSA id 2F62A60002;
- Mon, 15 Jun 2020 19:45:00 +0000 (UTC)
-Subject: Re: [PATCH v5 2/3] hw/net/imx_fec: Allow phy not to be the first
- device on the mii bus.
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <cover.1591272275.git.jcd@tribudubois.net>
- <a6223b7b5c1564afc5fb3c2a9ad514bdb41be5a5.1591272275.git.jcd@tribudubois.net>
- <CAFEAcA_b0k4m29NqU82GC2xvjQXTVkYWQei8hrG2fxjQAcgc0g@mail.gmail.com>
-From: Jean-Christophe DUBOIS <jcd@tribudubois.net>
-Message-ID: <53c48a6c-340c-d688-e935-c74ac519af84@tribudubois.net>
-Date: Mon, 15 Jun 2020 21:45:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1jl0JK-0003Kt-3x; Mon, 15 Jun 2020 21:22:48 -0400
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id E3BD2B692E6F6C204C76;
+ Tue, 16 Jun 2020 09:22:36 +0800 (CST)
+Received: from [10.173.221.230] (10.173.221.230) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.487.0; Tue, 16 Jun 2020 09:22:30 +0800
+Subject: Re: [PATCH] migration: Count new_dirty instead of real_dirty
+To: "Zhoujian (jay)" <jianjay.zhou@huawei.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "Paolo
+ Bonzini" <pbonzini@redhat.com>
+References: <20200601040250.38324-1-zhukeqian1@huawei.com>
+ <3205abb1-8e47-fc19-1213-ead621711291@huawei.com>
+ <B2D15215269B544CADD246097EACE7474BD38EFD@DGGEMM528-MBX.china.huawei.com>
+From: zhukeqian <zhukeqian1@huawei.com>
+Message-ID: <33d07693-eb61-3ba1-b88b-c90bf10b8864@huawei.com>
+Date: Tue, 16 Jun 2020 09:22:29 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_b0k4m29NqU82GC2xvjQXTVkYWQei8hrG2fxjQAcgc0g@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=217.70.183.195; envelope-from=jcd@tribudubois.net;
- helo=relay3-d.mail.gandi.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/15 15:45:05
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+In-Reply-To: <B2D15215269B544CADD246097EACE7474BD38EFD@DGGEMM528-MBX.china.huawei.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.173.221.230]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=zhukeqian1@huawei.com;
+ helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/15 21:22:37
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -90,103 +93,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Peter Chubb <peter.chubb@nicta.com.au>,
- QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Cc: "Wanghaibin \(D\)" <wanghaibin.wang@huawei.com>,
+ Chao Fan <fanc.fnst@cn.fujitsu.com>,
+ "Huangweidong \(C\)" <weidong.huang@huawei.com>,
+ Juan Quintela <quintela@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nxpjyeWbMGGy
+X-TUID: 5gxKHkOI1nKJ
 
-Le 15/06/2020 à 14:23, Peter Maydell a écrit :
-> On Thu, 4 Jun 2020 at 13:39, Jean-Christophe Dubois <jcd@tribudubois.net> wrote:
->> Up to now we were allowing only one PHY device and it had to be the
->> first device on the bus.
+Hi Jay Zhou,
+
+On 2020/6/15 19:50, Zhoujian (jay) wrote:
+> Hi Keqian,
+> 
+>> -----Original Message-----
+>> From: zhukeqian
+>> Sent: Monday, June 15, 2020 11:19 AM
+>> To: qemu-devel@nongnu.org; qemu-arm@nongnu.org; Paolo Bonzini
+>> <pbonzini@redhat.com>; Zhoujian (jay) <jianjay.zhou@huawei.com>
+>> Cc: Juan Quintela <quintela@redhat.com>; Chao Fan <fanc.fnst@cn.fujitsu.com>;
+>> Wanghaibin (D) <wanghaibin.wang@huawei.com>
+>> Subject: Re: [PATCH] migration: Count new_dirty instead of real_dirty
 >>
->> The i.MX6UL has 2 Ethernet devices and can therefore have several
->> PHY devices on the bus (and not necessarilly as device 0).
+>> Hi Paolo and Jian Zhou,
 >>
->> This patch allows for PHY devices on 2nd, 3rd or any position.
+>> Do you have any suggestion on this patch?
 >>
->> Signed-off-by: Jean-Christophe Dubois <jcd@tribudubois.net>
->> diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
->> index eefedc252de..29e613699ee 100644
->> --- a/hw/net/imx_fec.c
->> +++ b/hw/net/imx_fec.c
->> @@ -280,11 +280,9 @@ static void imx_phy_reset(IMXFECState *s)
->>   static uint32_t imx_phy_read(IMXFECState *s, int reg)
->>   {
->>       uint32_t val;
->> +    uint32_t phy = reg / 32;
+>> Thanks,
+>> Keqian
 >>
->> -    if (reg > 31) {
->> -        /* we only advertise one phy */
->> -        return 0;
->> -    }
->> +    reg %= 32;
-> This change means we now support multiple PHYs...
+>> On 2020/6/1 12:02, Keqian Zhu wrote:
+>>> DIRTY_LOG_INITIALLY_ALL_SET feature is on the queue. This fixs the
+> 
+> s/fixs/fixes
+Thanks.
+> 
+>>> dirty rate calculation for this feature. After introducing this
+>>> feature, real_dirty_pages is equal to total memory size at begining.
+>>> This causing wrong dirty rate and false positive throttling.
+> 
+> I think it should be tested whether DIRTY_LOG_INITIALLY_ALL_SET is enabled
+> in ram_init_bitmaps(maybe?) in order to be compatible with the old path.
+Yeah, you are right ;-)
 
-Yes, on the i.MX6UL there are 2 ENET devices but only one MDIO bus to 
-acess the PHYs.
+But after I tested old path yesterday, I found that the num_dirty_pages_period
+becomes total ram size after log sync in ram_init_bitmaps. The reason is that
+bitmap of ramblock is initialized to be all set, so old path counts them as dirty
+by mistake.
 
-On the i.MX6UL evaluation board, PHY seems to be at offset/adress 1 and 2.
+This bug causes false positive throttling at the end of first ram save iteration,
+even without our DIRTY_LOG_INITIALLY_ALL_SET feature.
+> 
+> Thanks,
+> Jay Zhou
+> 
+>>>
+>>> BTW, real dirty rate is not suitable and not very accurate.
+>>>
+>>> 1. For not suitable: We mainly concern on the relationship between
+>>>    dirty rate and network bandwidth. Net increasement of dirty pages
+>>>    makes more sense.
+>>> 2. For not very accurate: With manual dirty log clear, some dirty pages
+>>>    will be cleared during each peroid, our "real dirty rate" is less
+>>>    than real "real dirty rate".
+> 
+I should correct these commit messages for reason above :-)
+> 
+> 
+>>>
+>>> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+[...]
 
-See linux/arch/arm/boot/dts/imx6ul-14x14-evk.dtsi for details.
-
->
->>       switch (reg) {
->>       case 0:     /* Basic Control */
->> @@ -331,19 +329,18 @@ static uint32_t imx_phy_read(IMXFECState *s, int reg)
->>           break;
->>       }
->>
->> -    trace_imx_phy_read(val, reg);
->> +    trace_imx_phy_read(val, phy, reg);
-> ...but the only change we actually make is to trace the phy number.
-> Surely if there is more than one phy then each phy needs to have
-> its own state (phy_control/phy_status/phy_advertise/etc), rather
-> than all these PHYs all sharing the same state under the hood?
-
-Well there might be several PHYs on the MDIO bus but each PHY is used 
-only by one ENET device. There is no plan for one ENET to use either 
-PHY. It can only use one.
-
-In Qemu (or at least in the FEC ethernet device emulator) the phy state 
-is embedded in the ethernet device state.
-
->
-> It also sounds from your commit message as if there isn't a
-> large number of PHYs, but only perhaps two. In that case
-> don't we need to fail attempts to access non-existent PHYs
-> and only work with the ones which actually exist on any
-> given board?
-
-As stated on the particular i.MX6UL evaluation board there are 2 phys 
-connected to the MDIO bus at adresse 1 and 2.
-
-On another board the PHYs could be at different addresses or we might 
-use only one MAC and therefore only one PHY.
-
-So in order to be able to fail on bad PHY access we need to discriminate 
-for each board which PHYs are actually present and at what address on 
-the MDIO bus. We would also need to know which PHY is connected to which 
-MAC.
-
-I might have overlook something but so far there is no clear separate 
-PHY and MAC implementation.
-
-Usually the PHY is more or less part of the MAC implementation and there 
-are no easy way to instantiate them separately then connect them with 
-the required bus (MDIO and MAC).
-
-I guess it might be feasible even if it sounds like overkill most of the 
-time (you usually get one MAC connected to one PHY).
-
-Is there such a qemu framework that would allow to connect multiple PHY 
-to a single MDIO bus and then each PHY to a specific MAC device? Could 
-you point me in the right direction ?
-
->
-> thanks
-> -- PMM
-
-
+Thanks,
+Keqian

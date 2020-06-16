@@ -1,163 +1,96 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2496680lfm;
-        Tue, 16 Jun 2020 03:44:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyVoYIWJt7Fr/R+x8cmzR/Rzq2tit0kYDXheX1IIBfcU3GEzkqPI41D/jH2DLwfvLKTbJ/r
-X-Received: by 2002:a25:fc0a:: with SMTP id v10mr2945152ybd.119.1592304249447;
-        Tue, 16 Jun 2020 03:44:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592304249; cv=none;
-        d=google.com; s=arc-20160816;
-        b=emTy2tpLSuRsr1VavVkch1WsIEVge9VPwfXC8FSaWev+MnyoY7oC1BIsWlXgWSWsJY
-         BL25bhXnrLmtj2upYQ+zRmUt4EaHFGlHl0iDJA+bouIS4/1p4kpS9yvA/8AV080OIu6l
-         FukP1+lvyt1VSoUn6AkVd5cIPWCtHLTYkQ0DF90vMu7fVNxZRYg9TjJFBnsNhyb3orBH
-         tfKUhCutAcdacuNYQqQO5gWhpXqv8w632iOxhpxn4itihQxJLlWz+60F0TWZckBmhi/N
-         XZXiZ2vrNPWMi7s6cSwkIQAvA78yKXV4kCGQGVWnS3gVwXWwgw9TX0Bs1moTxhP1cZU0
-         5XzA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=h7NdL+NijAu3nvj3Mja/Bszo88XodLCkY5SkSHUqUP4=;
-        b=l4PXLIUgz1i6aHYH1Ib6yJ5muzSdjnbHPlMjYuBgbZcgJXiDbtKeN5yLQHwIW0LgGK
-         xmpHj6WYKErsj9q7JS7gbKkXPPNeZtT3MSKWmLwshjcw6zlMKP/5/h5T6C8W/dIRX2B8
-         QCLXMiYhLkPrGLuov88sxfBHfdoqISRPlM/oXHyIjFmHLewOlVvrzQ+VUguItWs8QF6h
-         LesnG5QPF26/RRL7u9OzJMuqogxKyg8DMpTiZ7vLLQ9Aj9ONGBLx0OeDC0jqTuJKpAzZ
-         IYwTrYSWltau21cPjU0Z+8rSvDXQ/Aa1fIqnY/TiP/XWFw/wFw/XAtJIxTqhkJT+B0/x
-         PRaQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=prC98ftq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 1si16714106ybe.134.2020.06.16.03.44.09
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jun 2020 03:44:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=prC98ftq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:36578 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jl94a-00050Z-RE
-	for alex.bennee@linaro.org; Tue, 16 Jun 2020 06:44:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60250)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jl919-0008Vc-UN; Tue, 16 Jun 2020 06:40:35 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35395)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jl918-000366-CC; Tue, 16 Jun 2020 06:40:35 -0400
-Received: by mail-wm1-x343.google.com with SMTP id q25so2561619wmj.0;
- Tue, 16 Jun 2020 03:40:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=h7NdL+NijAu3nvj3Mja/Bszo88XodLCkY5SkSHUqUP4=;
- b=prC98ftqldHXLAR51i7Sq8GqiLTiCbsewJuT2mKyPdLD2NfF1oGrxWYJ9ckJjsZYgZ
- K9POjXntfWNgmGWD/CzwBaV2q3uwXswsd+RhvIS2ZEMBTQ0vMN6Upbk5VLzm6pe2d0UX
- ffKLMISo9KI0gy8ORJxTonkDSXpZJROl48z3daXTLgDNhD/hbPNSHh+Fgk4d27Ocrmbu
- sCH7LD/+xqu68VGanWI6DXjYNlgYmnw+4LsnbJy6mVUXeEJFACFdgBz++OycRJSq90Op
- CvjCxq9Mg0iQLoa0OgkRoeSY9vPfoMyeK+msqMexJ6TqKT3gt0PCBV9yeLVtH35m4YpG
- RrpA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=h7NdL+NijAu3nvj3Mja/Bszo88XodLCkY5SkSHUqUP4=;
- b=AEAEiJRLxEYVDoA14Al6KH+qpz6H22flU7S5Mq+FvnweuZvC4zxnZCZSjtAhDj0amY
- 60rDCpZJmESg9V8ldRhqYIN+Bsjm2cXjv58tPw5HUVyjyZR7OuDH5xKS7hFZUdaCyYvW
- uYMHjLux5poG0aZDVAiyZ+nOGnnYVyUGq/yflelopt7hCu848e02cKUu3FnV1ls903Mh
- +VyI7jjxrqqVqbEU9xXFoHnAwcfbwJCS13iH2z/jaQmGhwjjFnqhPOu/EiZaMumL2zQ7
- E3jefRJOhuQ1KlSb0KNOmlGeYZPNoPhPJKQ0mz1x3KW0vT2VQplfYsTjntUCCW3HMe/c
- or1Q==
-X-Gm-Message-State: AOAM532iPBdX+cP1IiCSH4iUtZXDF6X/qtFxVkYj4N2ll8+xxj1YKj2N
- huFYjKOPkv1gOoKtolh4piMDO+Ju
-X-Received: by 2002:a1c:790f:: with SMTP id l15mr2497604wme.161.1592304032180; 
- Tue, 16 Jun 2020 03:40:32 -0700 (PDT)
-Received: from [192.168.1.41] (181.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id s72sm3427093wme.35.2020.06.16.03.40.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Jun 2020 03:40:31 -0700 (PDT)
-Subject: Re: [PATCH 7/7] hw/misc/mps2-fpgaio: Implement push-buttons
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200616063157.16389-1-f4bug@amsat.org>
- <20200616063157.16389-8-f4bug@amsat.org>
- <CAFEAcA8c3QVD=PcfMOXn720E0ExSdV+mb3qoA61AFrFVstFHHw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <84c3ce87-fefd-5741-7588-7a8ca12fde4c@amsat.org>
-Date: Tue, 16 Jun 2020 12:40:30 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id v6sm30963902wrf.61.2020.06.16.06.01.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 16 Jun 2020 06:01:29 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 168C61FFA6;
+	Tue, 16 Jun 2020 13:53:26 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PULL 19/21] tests/tcg: build plugin list from contents of src directory
+Date: Tue, 16 Jun 2020 13:53:22 +0100
+Message-Id: <20200616125324.19045-20-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200616125324.19045-1-alex.bennee@linaro.org>
+References: <20200616125324.19045-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8c3QVD=PcfMOXn720E0ExSdV+mb3qoA61AFrFVstFHHw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Esteban Bosse <estebanbosse@gmail.com>,
- Joaquin de Andres <me@xcancerberox.com.ar>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NHqfY+iPjkuP
+X-TUID: uMzFwUSuVpEJ
 
-On 6/16/20 12:27 PM, Peter Maydell wrote:
-> On Tue, 16 Jun 2020 at 07:32, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>
->> The FPGA system control block has 2 push-buttons labelled PB0/PB1.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
-> 
->> @@ -249,6 +258,8 @@ static void mps2_fpgaio_init(Object *obj)
->>      memory_region_init_io(&s->iomem, obj, &mps2_fpgaio_ops, s,
->>                            "mps2-fpgaio", 0x1000);
->>      sysbus_init_mmio(sbd, &s->iomem);
->> +
->> +    qdev_init_gpio_in_named(DEVICE(s), mps2_fpgaio_push_button, "PB", 2);
->>  }
-> 
-> This change seems kind of pointless unless these GPIO lines are
-> actually wired up to something.
+If you jump back and forth between branches while developing plugins
+you end up debugging failures caused by plugins left in the build
+directory. Fix this by basing plugins on the source tree instead.
 
-Yes, I should have kept it out of this series, or documented
-better the goal in the cover.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20200615141922.18829-2-alex.bennee@linaro.org>
 
-I'm setting the roots to motivate a team of developers to
-work on a visualization of the MPS2 board. The push-button is
-supported by Zephyr, so the the idea is the visualizer generates
-QMP GPIO event to be processed such in pca9552_set_led(), and
-interact with the guest firmware.
-
-> 
-> thanks
-> -- PMM
-> 
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index b3cff3cad1a..2ae86776cdc 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -126,9 +126,10 @@ RUN_TESTS=$(patsubst %,run-%, $(TESTS))
+ 
+ # If plugins exist also include those in the tests
+ ifeq ($(CONFIG_PLUGIN),y)
+-PLUGIN_DIR=../../plugin
+-VPATH+=$(PLUGIN_DIR)
+-PLUGINS=$(notdir $(wildcard $(PLUGIN_DIR)/*.so))
++PLUGIN_SRC=$(SRC_PATH)/tests/plugin
++PLUGIN_LIB=../../plugin
++VPATH+=$(PLUGIN_LIB)
++PLUGINS=$(patsubst %.c, lib%.so, $(notdir $(wildcard $(PLUGIN_SRC)/*.c)))
+ 
+ # We need to ensure expand the run-plugin-TEST-with-PLUGIN
+ # pre-requistes manually here as we can't use stems to handle it. We
+@@ -152,7 +153,7 @@ run-%: %
+ 
+ run-plugin-%:
+ 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
+-		-plugin $(PLUGIN_DIR)/$(call extract-plugin,$@) \
++		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
+ 		-d plugin -D $*.pout \
+ 		 $(call strip-plugin,$<), \
+ 	"$* on $(TARGET_NAME)")
+@@ -168,7 +169,7 @@ run-plugin-%:
+ 	$(call run-test, $@, \
+ 	  $(QEMU) -monitor none -display none \
+ 		  -chardev file$(COMMA)path=$@.out$(COMMA)id=output \
+-	   	  -plugin $(PLUGIN_DIR)/$(call extract-plugin,$@) \
++	   	  -plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
+ 	    	  -d plugin -D $*.pout \
+ 	   	  $(QEMU_OPTS) $(call strip-plugin,$<), \
+ 	  "$* on $(TARGET_NAME)")
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 312f36cde5f..6d60a2f2eed 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -31,7 +31,7 @@ run-semihosting: semihosting
+ 
+ run-plugin-semihosting-with-%:
+ 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
+-		-plugin $(PLUGIN_DIR)/$(call extract-plugin,$@) \
++		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
+ 		 $(call strip-plugin,$<) 2> $<.err, \
+ 		"$< on $(TARGET_NAME) with $*")
+ 
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index 3da09a38be7..ec951565626 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -45,7 +45,7 @@ run-semihosting-arm: semihosting-arm
+ 
+ run-plugin-semihosting-with-%:
+ 	$(call run-test, $@, $(QEMU) $(QEMU_OPTS) \
+-		-plugin $(PLUGIN_DIR)/$(call extract-plugin,$@) \
++		-plugin $(PLUGIN_LIB)/$(call extract-plugin,$@) \
+ 		 $(call strip-plugin,$<) 2> $<.err, \
+ 		"$< on $(TARGET_NAME) with $*")
+ 
+-- 
+2.20.1

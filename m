@@ -1,94 +1,94 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2348426lfm;
-        Mon, 15 Jun 2020 23:34:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyOemZCOUlR5NnfJwFgc5bN/1swa6lG+hkHWJ8g95j/kpyY26AIZko0n6eSa0tuOBphWPkv
-X-Received: by 2002:a25:af4a:: with SMTP id c10mr1902837ybj.270.1592289254802;
-        Mon, 15 Jun 2020 23:34:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592289254; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2348642lfm;
+        Mon, 15 Jun 2020 23:34:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxDVj3kHwz8izh6Bp4d5gPKGA3Y/uX0H3iXnonGGWH8FHQmYO7LMY4bt7FfM+11CU+VwLHa
+X-Received: by 2002:a25:49c4:: with SMTP id w187mr1734883yba.211.1592289279915;
+        Mon, 15 Jun 2020 23:34:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592289279; cv=none;
         d=google.com; s=arc-20160816;
-        b=1IZrl2Ae3qnxmHV7LW6RSiw9il49C9VOTvIANcgFbLk4oHzm+a2e/CZulzTTQiFMkV
-         0G8R+F39WWXuw5wwajSoIv5o2BLbJ97yi+kosRmzS0gLd69PeqY5P26F1r7+qAIgU+fD
-         tXVpMu2HXoKbtPcv9fNAQssjyqcXsgMzbUfX2tVx/p2gJl3uRtmMe/Q1jpIhP8zn3pqQ
-         j5H858eMZLC4aV5qco5sYGAbHcKiyGIG+iShTasq3Oi4qhn7hwWjAvzSaiR1oAB8U7Rq
-         paH2MelxfpLitUNO8QFlUo9X0bY84TdZCLJvV88dDdHowSa/syGxTQfBbLYmvacnbaZ+
-         yZMw==
+        b=OOlM6pFaBDaU45i0Iz3aZL+uoD5s4jf+ol2fhmj5D3zqthzYrh/1mKicUAqbEE7NoA
+         f5liTYVGn41fYGX43596VCilbi71GA3kgFMSGOftWjN6hx5mNCypvu2FBPJ1eJLbUHQH
+         auowbh0fwQXJbruZgiGyRnzNex8M3ih0g5DHXbxjkJm/Es2TxnVzUI88uoFy5eQsrLZd
+         TR+Gv5SCbH44YuLG8w0uhAzKBf72q6AD2Yd6iZaxhIPl1wBUY5XDvCD2tFwAa4arTJEU
+         +VjIm4U8a1+fyR5sTUOHDPZWeBVLyLDiX4/HjkSdowOq9SkPMbXvOIwNKHf0HB30MgjP
+         sQZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=cOk8KAmRqbditcK3tUyn2RQFRwEFLc0t20rHeY/wkGk=;
-        b=k8ae2OfvOTBoszXZk5rW5W/Rmo5GvtnsQ6eyW58oLeyhgsrG+pQJgHO71T/3iaVOEJ
-         Faa5Y7OmfER2SL1DiEfF3vWIH8yccTOqi5KfRTtO6kyJUSUeFCOPkdYVA1a93Yqhg6S8
-         aGgDES22G7bzuw7vluCwUxWTZu58KM0mXlbF7o6Q98OVQxM0S/5+KjeTwPLzCb649KQg
-         60i3QQ2aQ3/AvBb7H52JJdzQyOQZddbcgMi0KaVeHHAr5xa6MEBXOMF+1FpFfYcP2r1x
-         JvbrzJEAkTo+sJjoQvFGQflk7PQdadUDYbv5H0mjP+sL65+Mdi9+izq6LjuRyRcikApi
-         kwRw==
+        bh=MjgVP8rwX0nk7ybJEZVD26qOTyCHQ8rjBa6s5OZUNzs=;
+        b=07rKcKkuUKCW/Aa/CKkaLHmewTQdNVlV6FC7XKpMBz1K5Qn5jOh+I8hjF2XyeD6Z7J
+         wzhMjI7v0BN0KkpWgS1PgBJoHIVfVAxpgYpqDSgqjv5sLhS7V4Sx16MAMIgACyEK7Rbr
+         9rGtZEwzqKQR5Ilghou+ICW5Zv+aO3cZ06uK1rfP/q2S6/0Iw5F0jRGbPqaWRDZgpDje
+         oqhnaqvHLD72aUuFy0Lt2hQDm+2nqn/XqaZ+cx5rw3UdoO5Suwpmfm79apmidS8WoZkA
+         3vD+bJ3gBt22FHzxhT47Oo+rom+5cVSm+Sl+Vhtf0TNQtjTJWXxh9LdFW97JId9sAsSv
+         jetA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FfM1zO0D;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sBV0tcVo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e81si16962695yba.149.2020.06.15.23.34.14
+        by mx.google.com with ESMTPS id k12si13179251ybg.307.2020.06.15.23.34.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jun 2020 23:34:14 -0700 (PDT)
+        Mon, 15 Jun 2020 23:34:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FfM1zO0D;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sBV0tcVo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:47762 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48510 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jl5Ak-0001FC-3d
-	for alex.bennee@linaro.org; Tue, 16 Jun 2020 02:34:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39348)
+	id 1jl5B9-0001Xd-8s
+	for alex.bennee@linaro.org; Tue, 16 Jun 2020 02:34:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39332)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jl58h-0007ye-LB; Tue, 16 Jun 2020 02:32:07 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:35033)
+ id 1jl58g-0007wR-KV; Tue, 16 Jun 2020 02:32:06 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:37448)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jl58f-0003Lu-Tm; Tue, 16 Jun 2020 02:32:07 -0400
-Received: by mail-wr1-x444.google.com with SMTP id x14so19470695wrp.2;
- Mon, 15 Jun 2020 23:32:05 -0700 (PDT)
+ id 1jl58e-0003Lk-Ta; Tue, 16 Jun 2020 02:32:06 -0400
+Received: by mail-wr1-x444.google.com with SMTP id x13so19439573wrv.4;
+ Mon, 15 Jun 2020 23:32:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cOk8KAmRqbditcK3tUyn2RQFRwEFLc0t20rHeY/wkGk=;
- b=FfM1zO0D84sphPl8TX3M4U3jzZNT3EBhVaG810iD2iWv3LxtvkqKp9kB866cUqYucK
- ow7Bps+LGDYz6NCzbCVZBh7cRwAf2Pcn1FqU/tpg+Hoxr6YRCzu2xpSGozG8M49d3+GY
- RYEa8g59UHCUkih8KP47NfSMEpFwR4f5YQNgNDmgay20xqo2efZ59eTREGPGMZDJoiwh
- a7cT9u9jlgIc1NPixKmsJE0+wFqznKhJyNOFo33U9aG6UqbBQ3PzSydO9cEAteowPC0N
- u5ueFcqEUK91ofkGKCBO813BeMN4sZUhve26FO0ObIzd98TeuqQNJ+zn85sLIO+GMJ6h
- re8w==
+ bh=MjgVP8rwX0nk7ybJEZVD26qOTyCHQ8rjBa6s5OZUNzs=;
+ b=sBV0tcVoyjFqt1tVIHJE+6IUOMYpnGXt9S+RgQDfZjA9NOv5tjC1sg9ErQTj7r7USx
+ IQRta6mwBfv7PmQZM8/NDJ3s4JS7VvEcznMWyiRRMgolaf0b9yQeYytC9MUtcf/2SqVI
+ MPepvu8uqkipGJJPz/7H5+H6TOI0xsx+H6GfyYlscitRJs3S/nCDlhNxymHPAf4w4wb0
+ D33za4FDs4BxrJbsju3v+FgSHMY+lgsvVfrvdc0ULAehQSYRbgjgJYIRWMbeiOzciMte
+ Ng2/l0P9rmV4a3nDB9AHZzFgh0avziaKClgHYv8jKFP8WxpXH5pmcE0D+vBezardStt2
+ kwiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=cOk8KAmRqbditcK3tUyn2RQFRwEFLc0t20rHeY/wkGk=;
- b=nTLaIN+cgt8uQUizHZxzxf5NzVQ0q5yG9kvVOIdj9Zcro4IjBNm1ZYBW5BYET6LDyW
- 34u7803stVPLYIyczDgWzYcAmC9yRdyMS9bCFbPF2F9GPNrfQd6XkNopjXVNXlag6UIH
- ohCtIPySPVIwbkzc7Wc3HA1cO1NXDMhTz/V9fbRa+wnYBEyp/IYpxjnqaL/1kqlBNSFz
- AmGR23vBgzgLHVtviIWDzpu2J4CJvIlw0HxfREuG/a45UTvAkl0SU70TU4Ty1VAAzKqg
- j3Tw2mJwMSY2Ckt9ABLFPZiTsNDbEW3JFSuU1/eihfp+2IkrIANWl4Rd0wbAOY/tEAPI
- IYzw==
-X-Gm-Message-State: AOAM530BFPLHhcce4eE/ZizzR0hUVVY3UAXJ99eBTry7vJ8YlOX6QkFm
- jb1MzgTsD0nOTS8PMI3RN5znej7n
-X-Received: by 2002:adf:ecce:: with SMTP id s14mr1352042wro.154.1592289124048; 
- Mon, 15 Jun 2020 23:32:04 -0700 (PDT)
+ bh=MjgVP8rwX0nk7ybJEZVD26qOTyCHQ8rjBa6s5OZUNzs=;
+ b=j+mpgQ8WbfnfIpIADZxgIF9TjlZJB77e3f+Vqyq5nyKSUVdLiyQQlh93u8hQAgfwZ0
+ DqWULdFmqq5tN71vwh9KE6sKa1fWXvMCFdQmW9XSqW7mqJa2sBcJk67TKWsllM3oH7fh
+ h1wvZSI/ESjesbxucIucrDkwbTVP3gwErfLY94E4XU4qaCnkwLoVNHgCjuoP1tWOxetd
+ dw/XlOSxRWOraRi8I6GdLJVokaqfzF/J95kQWVTcMlO9kadFRw4tbd77WcXBo66uCB7s
+ AxzLVlpN5aI8LH/Uf9ZeMQo4nZPaTYZdKmLrcv+ktrEbzB1Lc6ubVTfJdCeYMxLbzmt+
+ IscA==
+X-Gm-Message-State: AOAM530LGAx93xNHsHqhqWhZl9Rj2+Hu0rw41ZLrB9Uh82joCjRXYgbY
+ djTB+D/K31xDEQLYZNn390P7A26T
+X-Received: by 2002:adf:a350:: with SMTP id d16mr1345314wrb.237.1592289122994; 
+ Mon, 15 Jun 2020 23:32:02 -0700 (PDT)
 Received: from localhost.localdomain
  (181.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id t188sm2483250wmt.27.2020.06.15.23.32.03
+ by smtp.gmail.com with ESMTPSA id t188sm2483250wmt.27.2020.06.15.23.32.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Jun 2020 23:32:03 -0700 (PDT)
+ Mon, 15 Jun 2020 23:32:02 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 4/7] hw/arm/mps2: Add CMSDK AHB GPIO peripherals as
- unimplemented devices
-Date: Tue, 16 Jun 2020 08:31:54 +0200
-Message-Id: <20200616063157.16389-5-f4bug@amsat.org>
+Subject: [PATCH 3/7] hw/arm/mps2: Add CMSDK APB watchdog as unimplemented
+ device
+Date: Tue, 16 Jun 2020 08:31:53 +0200
+Message-Id: <20200616063157.16389-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200616063157.16389-1-f4bug@amsat.org>
 References: <20200616063157.16389-1-f4bug@amsat.org>
@@ -125,71 +125,41 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Esteban Bosse <estebanbosse@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZGmRTjTM3kpS
+X-TUID: lE3yc3NnATNQ
 
-Register the GPIO peripherals as unimplemented to better
-follow their accesses, for example booting Zephyr:
+Register the watchdog peripheral as unimplemented to better
+follow its accesses, for example booting Zephyr:
 
   ----------------
-  IN: arm_mps2_pinmux_init
-  0x00001160:  f64f 0231  movw     r2, #0xf831
-  0x00001164:  4b06       ldr      r3, [pc, #0x18]
-  0x00001166:  2000       movs     r0, #0
-  0x00001168:  619a       str      r2, [r3, #0x18]
-  0x0000116a:  f24c 426f  movw     r2, #0xc46f
-  0x0000116e:  f503 5380  add.w    r3, r3, #0x1000
-  0x00001172:  619a       str      r2, [r3, #0x18]
-  0x00001174:  f44f 529e  mov.w    r2, #0x13c0
-  0x00001178:  f503 5380  add.w    r3, r3, #0x1000
-  0x0000117c:  619a       str      r2, [r3, #0x18]
-  0x0000117e:  4770       bx       lr
-  cmsdk-ahb-gpio: unimplemented device write (size 4, value 0xf831, offset 0x18)
-  cmsdk-ahb-gpio: unimplemented device write (size 4, value 0xc46f, offset 0x18)
-  cmsdk-ahb-gpio: unimplemented device write (size 4, value 0x13c0, offset 0x18)
+  IN: wdog_cmsdk_apb_init
+  0x00000900:  b508       push     {r3, lr}
+  0x00000902:  4b07       ldr      r3, [pc, #0x1c]
+  0x00000904:  4a07       ldr      r2, [pc, #0x1c]
+  0x00000906:  6018       str      r0, [r3]
+  0x00000908:  4b07       ldr      r3, [pc, #0x1c]
+  0x0000090a:  4808       ldr      r0, [pc, #0x20]
+  0x0000090c:  f8c3 2c00  str.w    r2, [r3, #0xc00]
+  0x00000910:  4a07       ldr      r2, [pc, #0x1c]
+  0x00000912:  6812       ldr      r2, [r2]
+  0x00000914:  601a       str      r2, [r3]
+  0x00000916:  f000 f9f9  bl       #0xd0c
+  cmsdk-apb-watchdog: unimplemented device write (size 4, value 0x1acce551, offset 0xc00)
+  cmsdk-apb-watchdog: unimplemented device write (size 4, value 0xe4e1c00, offset 0x0)
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/mps2.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ hw/arm/mps2.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-index 570ec50aa8..4a49bfa9b9 100644
+index 1e8d5f21f9..570ec50aa8 100644
 --- a/hw/arm/mps2.c
 +++ b/hw/arm/mps2.c
-@@ -111,6 +111,7 @@ static void mps2_common_init(MachineState *machine)
-     MemoryRegion *system_memory = get_system_memory();
-     MachineClass *mc = MACHINE_GET_CLASS(machine);
-     DeviceState *armv7m, *sccdev;
-+    int i;
- 
-     if (strcmp(machine->cpu_type, mc->default_cpu_type) != 0) {
-         error_report("This board can only be used with CPU %s",
-@@ -228,7 +229,6 @@ static void mps2_common_init(MachineState *machine)
-          */
-         Object *orgate;
-         DeviceState *orgate_dev;
--        int i;
- 
-         orgate = object_new(TYPE_OR_IRQ);
-         object_property_set_int(orgate, 6, "num-lines", &error_fatal);
-@@ -265,7 +265,6 @@ static void mps2_common_init(MachineState *machine)
-          */
-         Object *orgate;
-         DeviceState *orgate_dev;
--        int i;
- 
-         orgate = object_new(TYPE_OR_IRQ);
-         object_property_set_int(orgate, 10, "num-lines", &error_fatal);
-@@ -315,6 +314,12 @@ static void mps2_common_init(MachineState *machine)
+@@ -314,6 +314,7 @@ static void mps2_common_init(MachineState *machine)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&mms->dualtimer), 0,
                         qdev_get_gpio_in(armv7m, 10));
      sysbus_mmio_map(SYS_BUS_DEVICE(&mms->dualtimer), 0, 0x40002000);
-     create_unimplemented_device("cmsdk-apb-watchdog", 0x40008000, 0x1000);
-+    for (i = 0; i < 4; i++) {
-+        static const hwaddr gpiobase[] = {0x40010000, 0x40011000,
-+                                          0x40012000, 0x40013000};
-+
-+        create_unimplemented_device("cmsdk-ahb-gpio", gpiobase[i], 0x1000);
-+    }
++    create_unimplemented_device("cmsdk-apb-watchdog", 0x40008000, 0x1000);
  
      sysbus_init_child_obj(OBJECT(mms), "scc", &mms->scc,
                            sizeof(mms->scc), TYPE_MPS2_SCC);

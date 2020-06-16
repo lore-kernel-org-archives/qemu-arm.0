@@ -1,116 +1,115 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2839976lfm;
-        Tue, 16 Jun 2020 11:06:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzN1U398gxXAsMaeRE1zx9ltDVx4CIYYceN3p1+2SnRcNkjHWxksadZGqpPyW43TlvRoo9B
-X-Received: by 2002:a25:dcd1:: with SMTP id y200mr6178467ybe.263.1592330770853;
-        Tue, 16 Jun 2020 11:06:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592330770; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2849430lfm;
+        Tue, 16 Jun 2020 11:18:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx4JW9J+ffAGO0XBrOVOm16//q5Aq8VCLCesrsGrNfbXS7F7jrx3b6B0rKBnbAQAYUIrczA
+X-Received: by 2002:a25:7386:: with SMTP id o128mr6095674ybc.266.1592331539171;
+        Tue, 16 Jun 2020 11:18:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592331539; cv=none;
         d=google.com; s=arc-20160816;
-        b=cU3YVWJ7t2K4kHtXFK6oh7GPgvm18kAxmB+SYqp3LYFULclNaqPF/pnGdTWNTrNou2
-         XYb25Zot/JZCIpyGGRMxEMR0V+kzFZ8OG8ZhGDE2ccf09qxGWNBSCMahVUsCn8p2bPhP
-         WtgNCPF2FVeXbliRJ5HvvGsUa1fQIMsgmt6YjO91p4U5HMfT2+APOWxJC4fnBqkxu9X/
-         /OMe4QjKvEPhPEtBIoBBMjWD7KyfH/79Ee+NX4U/KBFzJNhr+VY2LQujzV9/A0u/h+NC
-         hgBkv7NgmtmNg7/5GtQtSB0lETo2swkkTpJXWQIanUZZLJonb+x28joTzeYIEX4BrrAe
-         AwTw==
+        b=ac2HbfA8/r/CCQaLVyLl70QnrXxpOR/O/xwZ60I38dPgwT6THzErjzRUrPFPTrBp3B
+         ws7RkjGIGE8hymhwyv+yZdL8a1Ii4J67+jwFJz4QJCqZDWuZE09rgzGIo5Mc0qaouLjg
+         hMwX8s4LaFOMTx/3n1/Lx9AXfeUQZ0Ww07ds8/oI6hpb8wT67bX5oCtBoiglLPhNC63D
+         EV77bNkVnX8HB0XxQ/DuYXXPX/KWK7lBKYtPonbp/5wTn/YSyUsO5I6w3tjyotVyFTLi
+         I1b+atEyLbcCQZPcyU0fM5VSOxMX2x/op8SzpXLcy/HYiGEyuA1w+bWZRz1GPj+9Lpb0
+         wlIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=eFv/74GIC90zXDmx/pN7hXJcT2/FHGZ6zxZ2uMPgNsA=;
-        b=swXSxOxcwEAnSdia/uyYAUvkzP5ANP4eYQQFpQvmcNJmVdWlMbH3+FIKSnFISD1/kX
-         Y3nfSffqNZIPb1l2DuiGKlmdXFTboxNVqTST+P+7551RhJbdJvyWWb09/8fC2VN3NPif
-         vTcgYb3n8lo2GH8HtCd8F0zq+MELsBEDf456kke3/82THapE3J1kfHwAwIY6KJGiYXid
-         Tw74j+nio3RQhCJCkhQ6KLVu9SbH7ENAlOSespcJClyw5NLxzFPT2T6t6jIuqtILU5Ng
-         rutjL0YRJHRIKRi7IPe8o21kUkcJH/zuNL/T4UhmsAISYtpYzuaGbRN9w4wyURiatfpg
-         v9rA==
+        bh=Ixv0qVVSKgtQHXUSiBt5c9qUuMecZtLrd9j1SkGWHU4=;
+        b=M/hjn7+mzq1PKwYz/3W+CVVOzX9ug3lela5GlSfnFHJOwgETbo0hOoRs5Rz5yy6wVY
+         sq3/OI4AWC4c8HQ/bFmF75ojhO86b4RBnS39Zb+e/NjccrdZoMjaIjlRb/oyg262v+/b
+         c0fSMDARCy9bH2/zfgQrNbJHVfc2WFQ2gg9BisRk4Hzhjc/yyJ4BiSxT7iTq9mN562Q0
+         bfnIhOpSBEttPQCN8/LUF4tnPVEbfIT3lw3n2nPgM9KfwZX/6D3Za4WfrSpT7sDgJncE
+         vEs+I2S4FOzsnOOfv2yqZqUE9s5OXe0tc00OZ1hYOc6ZCeKuP6/Y2xSY7KeuHgeQ6HNs
+         cvog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p5JOSr31;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QT52wECj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u5si18322819ybc.479.2020.06.16.11.06.10
+        by mx.google.com with ESMTPS id x1si17439764ybs.237.2020.06.16.11.18.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jun 2020 11:06:10 -0700 (PDT)
+        Tue, 16 Jun 2020 11:18:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=p5JOSr31;
+       dkim=pass header.i=@linaro.org header.s=google header.b=QT52wECj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:60328 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41320 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlFyM-0003Uv-A6
-	for alex.bennee@linaro.org; Tue, 16 Jun 2020 14:06:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33104)
+	id 1jlGAk-0001HH-Gf
+	for alex.bennee@linaro.org; Tue, 16 Jun 2020 14:18:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35098)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jlFyA-0003UU-Pj; Tue, 16 Jun 2020 14:05:58 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43423)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jlGAb-0001H9-Mg
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2020 14:18:49 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:35461)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jlFy9-0001OL-5O; Tue, 16 Jun 2020 14:05:58 -0400
-Received: by mail-wr1-x441.google.com with SMTP id l10so21706894wrr.10;
- Tue, 16 Jun 2020 11:05:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jlGAZ-0003Lv-GK
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2020 14:18:49 -0400
+Received: by mail-pl1-x642.google.com with SMTP id k1so8645531pls.2
+ for <qemu-arm@nongnu.org>; Tue, 16 Jun 2020 11:18:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=eFv/74GIC90zXDmx/pN7hXJcT2/FHGZ6zxZ2uMPgNsA=;
- b=p5JOSr31AD56J4MUIf4IQXDggj2Z/JF7EBkCO07B8u6pulrrJ+dVE0htkhUrY21ZzM
- IrEaXfp7Pb/vmvD60L6wueyFoXSQjLEoSVlZVn2Hf/vjthzgkrwqwCB0bKUYAwb47Uf5
- x3dsxoSpzpYhB/gB8y9ZiEmH1gJAJGXNoUoewM1LcVAE4SkdbiKpYTznDneYZnREc7vE
- mnOo6yYINtegawDemT3r1StA9cGHH5aoSariNV72FoFbaOBpw5ByzRLsd7BHfetor3zV
- ydX4O2NZPoNkdRCw1F5y45auCqg2Y89Qa4rOmeeUuT1x/bu1lGXGa87F51PAXQ3tAULC
- vDrg==
+ bh=Ixv0qVVSKgtQHXUSiBt5c9qUuMecZtLrd9j1SkGWHU4=;
+ b=QT52wECj2VluwLSeXHUqf23yIvH1HsUaCqvTSTAQJu8AYv/MJ2/Xnx53lXhgw3W8Rf
+ 2iGWrEzRzabvSNB0uvo3T6sLUR5VcCww/x37RRdOjprUY32oi/QM4FeH/ZTGSGYS4bPw
+ gdX8HqsVpxiU0V5OUVvw1rsZ/bf+QZoLnUDGd4Myw83/rRlHlrXDhdENA0NnAAW/Riw6
+ fxxTiFRnfQw6pdwG5GdbeHrYvAo+Yy4JAzzXKxj63kIBvWHVLm1r1tiWx52r7Q5I0hg6
+ KiALemtXG4MrH5BxKt0k1xOMet1Urs11vD7jLvhplhJS6kAyTg58cR7RyADiyYpMEuHj
+ MrAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=eFv/74GIC90zXDmx/pN7hXJcT2/FHGZ6zxZ2uMPgNsA=;
- b=sJbFvJ87Ne1dyl8jbOME2/zfFmfH/HD1b0m1n81AWDqTMV4efOhJ2nqnik2RuGAc/s
- tmxR84sSdLap0dh4GtRAOgm84hefWJJdegj5kWWxcqrLl1brWC74aWLub//GUT4lPzoW
- cr9ufcNAB+llvF++Gnuk1T2hQh82fuIpzWcrchIRRzideXApHusN0FXYi/UURgivq1lh
- vhGgCZ9Zl7WWvD4uynF0e4DZecIF4+/ocQXJ6EWT01lMRJbE/aCdq/SZNcB9j4Xp287e
- zqu7ixSj0hOGNiVs0gBCB15R2Oxj3d7ZEh7RcBuFDUe6R002j7dM3X2+mDVYFSdeibfk
- OeLQ==
-X-Gm-Message-State: AOAM531qvzB2k8DAh/JigVIiQSz/2WxaFXyVz/7zbxDbo3wtRY12HqDQ
- NIGEWW2QR1IaWJWrnzvMYvY=
-X-Received: by 2002:adf:eacc:: with SMTP id o12mr4460351wrn.139.1592330755090; 
- Tue, 16 Jun 2020 11:05:55 -0700 (PDT)
-Received: from [192.168.1.37] (93.red-83-59-160.dynamicip.rima-tde.net.
- [83.59.160.93])
- by smtp.gmail.com with ESMTPSA id d16sm5021110wmd.42.2020.06.16.11.05.54
+ bh=Ixv0qVVSKgtQHXUSiBt5c9qUuMecZtLrd9j1SkGWHU4=;
+ b=O29cRqJtZXlD9RtLZpdDrzr1rBmGnZJ+DhMardOzaZzHtLtx/U1yTPdGNPmwswr1Bj
+ zwZVkIQgBYIjA2rqVHxZfDtkDvYxUMVPoDRfdgC0VxMUSkJMh+YBW0mIjHrxlodxqyyk
+ Y/nEUmfS93vOreg0npFtRnGTg8U1cyX2s/7Y/chpoJKvWf22QD8LPzYG0VUkvTi/cT6l
+ DoRkGK1j+kz72RRIL6rBWokH9XQaD/qxcEEVSozMgJdSy980smpoZGje0W8sN9gqkFsi
+ oqWwkOfIyUhmpljYTJRe2f1X/ZPOp+ELokp1sJTnJ19+MDAXSwCWZqrgh99fe8TD5DDJ
+ HDgQ==
+X-Gm-Message-State: AOAM532PbcpQQFuMkS53QezATz9j/LwgrLfhnipaoVwUJUjocutKY4zy
+ t0L8uaR24qUN7aQvEJ5OmjVvJg==
+X-Received: by 2002:a17:90a:32ee:: with SMTP id
+ l101mr4263446pjb.213.1592331525708; 
+ Tue, 16 Jun 2020 11:18:45 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
+ by smtp.gmail.com with ESMTPSA id b11sm17810745pfr.58.2020.06.16.11.18.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Jun 2020 11:05:54 -0700 (PDT)
-Subject: Re: [PATCH 1/2] hw/misc/pca9552: Trace LED On/Off events
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
-References: <20200616094542.25415-1-f4bug@amsat.org>
- <20200616094542.25415-2-f4bug@amsat.org>
- <ce02c953-073a-3843-5830-930cc194117c@kaod.org>
- <3181da82-6dcf-9826-5747-7601204faa9f@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <55785519-20e6-9637-1bc8-d396879f4595@amsat.org>
-Date: Tue, 16 Jun 2020 20:05:53 +0200
+ Tue, 16 Jun 2020 11:18:45 -0700 (PDT)
+Subject: Re: [PATCH RFC v2] target/arm: Implement SVE2 TBL, TBX
+To: Stephen Long <steplong@quicinc.com>, qemu-devel@nongnu.org
+References: <20200428144352.9275-1-steplong@quicinc.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <b7412e55-f2d6-eb01-d95c-26b8dfb194d9@linaro.org>
+Date: Tue, 16 Jun 2020 11:18:42 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <3181da82-6dcf-9826-5747-7601204faa9f@kaod.org>
+In-Reply-To: <20200428144352.9275-1-steplong@quicinc.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,82 +122,22 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joaquin de Andres <me@xcancerberox.com.ar>,
- Esteban Bosse <estebanbosse@gmail.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Guenter Roeck <linux@roeck-us.net>
+Cc: qemu-arm@nongnu.org, apazos@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qwhm+eEcJUwB
+X-TUID: L2g4iAs1TnKV
 
-On 6/16/20 7:15 PM, Cédric Le Goater wrote:
-> After a closer look,
-> 
->>> @@ -45,9 +46,15 @@ static void pca9552_update_pin_input(PCA9552State *s)
->>>          switch (config) {
->>>          case PCA9552_LED_ON:
->>>              s->regs[input_reg] |= 1 << input_shift;
->>> +            if (input_shift < s->nr_leds) {
-> This seems like a superfluous test.
+On 4/28/20 7:43 AM, Stephen Long wrote:
+> Signed-off-by: Stephen Long <steplong@quicinc.com>
+> ---
+>  target/arm/helper-sve.h    | 10 ++++++
+>  target/arm/internals.h     | 12 +++++++
+>  target/arm/sve.decode      |  5 +++
+>  target/arm/sve_helper.c    | 71 ++++++++++++++++++++++++++++++++++----
+>  target/arm/translate-sve.c | 20 +++++++++++
+>  5 files changed, 112 insertions(+), 6 deletions(-)
 
-Indeed.
+I've rearranged the macros in sve_helper.c a little and queued.
 
-> 
->>> +                trace_pca9552_led_set(input_shift, true);
-> 
-> This should be using 'i' and the output is not very concise : 
-> 
-> 564609@1592326881.815616:pca9552_led_set LED#0 state:1
-> 564609@1592326881.815660:pca9552_led_set LED#1 state:1
-> 564609@1592326881.815669:pca9552_led_set LED#2 state:1
-> 564609@1592326881.815677:pca9552_led_set LED#3 state:1
-> 564609@1592326881.815706:pca9552_led_set LED#4 state:0
-> 564609@1592326881.815715:pca9552_led_set LED#5 state:0
-> 564609@1592326881.815727:pca9552_led_set LED#6 state:0
-> 564609@1592326881.815740:pca9552_led_set LED#7 state:0
-> 564609@1592326881.815748:pca9552_led_set LED#8 state:0
-> 564609@1592326881.815759:pca9552_led_set LED#9 state:0
-> 564609@1592326881.815767:pca9552_led_set LED#10 state:0
-> 564609@1592326881.815779:pca9552_led_set LED#11 state:0
-> 564609@1592326881.815790:pca9552_led_set LED#12 state:0
-> 564609@1592326881.815802:pca9552_led_set LED#13 state:1
-> 564609@1592326881.815813:pca9552_led_set LED#14 state:1
-> 564609@1592326881.815826:pca9552_led_set LED#15 state:1
-> 
-> I would instead simply dump the contents of the PCA9552_INPUT registers : 
-> 
-> LEDS = 1111000000000101
-> LEDS = 1111000000000111
-> ....
 
-Good idea, thanks!
-
-> 
-> C.
-> 
-> 
->>> +            }
->>>              break;
->>>          case PCA9552_LED_OFF:
->>>              s->regs[input_reg] &= ~(1 << input_shift);
->>> +            if (input_shift < s->nr_leds) {
->>> +                trace_pca9552_led_set(input_shift, false);
->>> +            }
->>>              break;
->>>          case PCA9552_LED_PWM0:
->>>          case PCA9552_LED_PWM1:
->>> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
->>> index 5561746866..ed80d0d1be 100644
->>> --- a/hw/misc/trace-events
->>> +++ b/hw/misc/trace-events
->>> @@ -206,3 +206,6 @@ via1_rtc_cmd_pram_sect_write(int sector, int offset, int addr, int value) "secto
->>>  # grlib_ahb_apb_pnp.c
->>>  grlib_ahb_pnp_read(uint64_t addr, uint32_t value) "AHB PnP read addr:0x%03"PRIx64" data:0x%08x"
->>>  grlib_apb_pnp_read(uint64_t addr, uint32_t value) "APB PnP read addr:0x%03"PRIx64" data:0x%08x"
->>> +
->>> +# pca9552.c
->>> +pca9552_led_set(unsigned id, bool state) "LED#%d state:%u"
->>>
->>
-> 
-> 
+r~

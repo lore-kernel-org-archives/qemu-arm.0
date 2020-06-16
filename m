@@ -1,93 +1,93 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2349332lfm;
-        Mon, 15 Jun 2020 23:36:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx14pvOryNhSvG8XTxTohD7oievsyLjchnViEKDoy3C/Q9Bj46R4sKGng3FdVqfRsxnUA5P
-X-Received: by 2002:a25:3bca:: with SMTP id i193mr1917411yba.182.1592289362333;
-        Mon, 15 Jun 2020 23:36:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592289362; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2349438lfm;
+        Mon, 15 Jun 2020 23:36:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwSa0FibiCJfCUQU186S/bJLI0W5bxjkoTfy5bgO8jjfYnaEs/c/4hjGoqjC1dpOZdHzLzA
+X-Received: by 2002:a25:d4b:: with SMTP id 72mr2036476ybn.22.1592289372402;
+        Mon, 15 Jun 2020 23:36:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592289372; cv=none;
         d=google.com; s=arc-20160816;
-        b=WzQ75BF1NZOrowtwUrkeeHnmGefzmtXLW39KeG7SxLak/ifxyuDbNhks/i2WmbaiAD
-         tfeaxiUTufiNn4ouTVU17i8My8O6bci81w2qFLVQOr4jwg1XtI9rT4RHkM8CUnAFO+tK
-         WaX2vQgJgL5jMYo1l3EUa/jEzjGQHUNvTXmVO2U7gIoP3wIvijluV1MuUnOivVZERyA+
-         CxvNxLz/184c+PWHVRinzzUJe4EPtJHJ/wKaPVrf1TuetUo89aAAjs/Q9ZaRHD39PBqX
-         65RNV5ZyNFRq2PgeeU6o6NEjv1BER0nMHs4Qxm02oCuWG+ePddu9QGKZTbeYOuoewrIE
-         DjuQ==
+        b=qOXyDmhrWnIVnRw5T/HK+293vG2qyXzdlbX/4Q884hy85VTWqC9XhNulZNlR1Oiroq
+         eYfK4sPncF+gq7vDfSUe5yHXbS1xTSKBLC6j88QqlqyjPKP8Mir+DRlbJxj3X41CNPPe
+         WB8wM8zZzB/7i0d52a/bqLfa6pJG/rj9g1ntdU97hf0idSTgrI0IMH/UZV6vHYTYHVfV
+         yZAcDDKEKELmKlaaSVPUlHl9kGQMc5ZunRBwPq+AzuFS9BSbQBLEok02v5qhj6fMHiAK
+         UJV+7vjbFWepCQVQxhAPp3U8a/Dl4MsDSJJy5Xlvi5awaUPJ/gwq52IoFQCQW8GTtmQV
+         NMeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=2FjgOSd/PcaKbg94PaHicHO0rGFHpV0TnPuxXVdcN10=;
-        b=W0ZRAvmKyV9pJ8q2Tgtl+gthrO26huv9WEjxZKGB7Z7eF9rCRqQ00ClonYSGI7CM5e
-         ns4EvdthXfvTEKtV9P+uj8nbdaZx7GMopCq/uwUEn8J8eoxtc3YRbMnwxG0pH/P0M5bQ
-         F4J5Q4bu22iXLjh7HtdG5Z98rXgxwybPHErbwE6CA347CmeDbW1YNz8DlNKSH1NW/gpI
-         VNUkd5Cq+uAdLoojI03zPT6T2PC5wb5IkEX6u+LJuAegYb5/dh8ziDS3UrhNSPc9Ym9d
-         v+21VWKh9lmhoipcqFXX5aGrsnwg8oyWY9guCkJlQPfq09GHRosQ0lTqStShKJwcxRK8
-         hZKA==
+        bh=YSemiN4fbL6V0zVgew+3sXrasP2DCRMVckmXdCuQt0Q=;
+        b=QGNKbsZoy9rMZ1pYesoACDwysJ5lPVDW1HKJVpD3UrphQVcm4PavOKcUOhSxxaEoUW
+         ggsaDx4YgCX5heCxmmtALLOzEchNJx/ZV8n5B0Ck3nTZCcXZCLyVgP1ai1uC1J6A9995
+         l6fzj+CFfd3II/RWcnRHgUmB1UMLJDahnMFkQQsIpKe8uZgY1lo0JBnxssKfCYYyb8tW
+         iaYjo3grsvB+KBKDf6Xi5bQyqgFbTqpKTnfWmNRlM+qjaq6MaLkRqcsc1+4csaBgvd/w
+         vOBCrbPJJUPqCuKctdtc5LzB8edMV+GIpQQ0j/UVRAaW7St0lv/DuaWsmayJXYt+z5pq
+         HxhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=T5PsuaTM;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="rIDFg/il";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f77si10853819yba.56.2020.06.15.23.36.02
+        by mx.google.com with ESMTPS id h62si16136543yba.480.2020.06.15.23.36.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jun 2020 23:36:02 -0700 (PDT)
+        Mon, 15 Jun 2020 23:36:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=T5PsuaTM;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="rIDFg/il";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:54336 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55348 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jl5CT-00040S-Mk
-	for alex.bennee@linaro.org; Tue, 16 Jun 2020 02:36:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39372)
+	id 1jl5Cd-0004RA-O7
+	for alex.bennee@linaro.org; Tue, 16 Jun 2020 02:36:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39382)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jl58j-00082C-QT; Tue, 16 Jun 2020 02:32:09 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:33754)
+ id 1jl58k-00084a-ME; Tue, 16 Jun 2020 02:32:10 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:50889)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jl58i-0003Mc-2W; Tue, 16 Jun 2020 02:32:09 -0400
-Received: by mail-wr1-x442.google.com with SMTP id l11so19465026wru.0;
- Mon, 15 Jun 2020 23:32:07 -0700 (PDT)
+ id 1jl58j-0003Mp-38; Tue, 16 Jun 2020 02:32:10 -0400
+Received: by mail-wm1-x342.google.com with SMTP id l17so1724103wmj.0;
+ Mon, 15 Jun 2020 23:32:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=2FjgOSd/PcaKbg94PaHicHO0rGFHpV0TnPuxXVdcN10=;
- b=T5PsuaTM5zThSTjUXQD/0QYhszyEdhoZHQp8fhpUlPl7mAtK235dFj/CuvulyuNC45
- D4WcjwAEZex9pSb326jKayEUew1vxgnA2ap1jDLxL7ISjeZhelQg+HIVkybgzswZmb3E
- /NyqDeijTjljMlgKldEwu3NuUnLnDIBgzDNBekopeNCh2qEvAW/N4p99rdvP3lXt/Fuv
- RTA9Rnm2AbHqk8J5Zm/itD9hAf0R/40XKYoyMEBStSqyxrlH6IzPlTODrB0dc+zcPwb8
- y65VcVCr4wfvGB1KTo3vUlLKfaAy68bpGqjoYyGToXpV1tqQKFHQ7GPJAFYUY8Z164Bj
- L9RA==
+ bh=YSemiN4fbL6V0zVgew+3sXrasP2DCRMVckmXdCuQt0Q=;
+ b=rIDFg/ilVdF18P/muCtqY2rGWKrLtSdARF1XIyJZhfyKw68ALtIaXRBbefq5eIS/pN
+ KcMAyFKiME8ibiIV8rmURcD6ha5u3Y9PXL2bLuA/D82rY4fwExp2LJt49gPkKB1eDgcf
+ hj8pKJ1e5Nn0YA88iS0kW5g3IXdTLq48fdUD0NA+effKSzyTG5byKKCTQXTbniL3JpS2
+ 1TBsVf+KpP1RQhYnsO1TtzCkueO0Y1rnLhFYqr2FzmoF+4FPYwmzNk3pei+qhLxEC5gc
+ NkbNVu1T8i4+Eqt/KaGkM6jUSBvF/db3YfqgfiU+VXpI8C9xrrwIcNhuRLhmyL3zmPlj
+ bXaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=2FjgOSd/PcaKbg94PaHicHO0rGFHpV0TnPuxXVdcN10=;
- b=jOLSWNHAdegBT3VPJDSjc+9jJC7nyQ9Djm7J6hK1GfDRt69eGNLKMGPSrme67nxfRY
- hcIu8LMaif8AndPq9J5YZemaOoxLtXrggYY761Nf/HckgYdZ1isWhYnKUJLH8Eq6V5U4
- jrqOwtEPJta5BzTubM7AbS1DW7auYP8wNgn8UVXwgiy2fN30DLEzbsj3vEvS1d0CP+rX
- hTVKtuMVe0hmsAlaWmYGiAV0y8SqpkWYQoCyCHLS5KQmolFJ/Bz52xibTtdstU8feELI
- /cOdcYR1h3YhkDkBYra2Jm6KyfGqhi6DW1C1zqIs+VhVnljSOQmLGUqWKFw6GToHBeuE
- SP8A==
-X-Gm-Message-State: AOAM532sdqHXssNiIM0gcHC6Fiy4i2gnxV2P1n49QMQkp8ZmyVWM6CS/
- DqeRlnlzXnE1ykKj3WEHXUBxykM5
-X-Received: by 2002:a5d:5744:: with SMTP id q4mr1264543wrw.137.1592289126139; 
- Mon, 15 Jun 2020 23:32:06 -0700 (PDT)
+ bh=YSemiN4fbL6V0zVgew+3sXrasP2DCRMVckmXdCuQt0Q=;
+ b=riwRADmysHHvZlbdi+wtjrdEoqY2IcjnaDd7plL+cxigGMHb7lnGpGwFGlfO5LdfIb
+ FDwepOUCJ6A7zY+xkxzDQPUxad6nPrxR1W814eJk9WZpZptNArD80DrlTsZ6EgTBNWsJ
+ r4EozAo3r6I+UF4SLhTlOtxeGVYC5hDWKmSth6PVz9g0M4NHsGR1AyCTEnhmihqCtgjb
+ TaGdCoGBFhyvjdJxLM88IL5mkM/GsBxZHE2UeLDjT0VgVoIuKiSHY54/eGGkBtqlkQlZ
+ VMlhd4eT9q5jt0+e4PIyHeMyYsnU1UszroBcjun0pHzA591conXJPp9zjNSpENIwt+r2
+ wMAw==
+X-Gm-Message-State: AOAM5319pZ21+nRXWJ5NA7dW0L8yheAAz2RLygawVqgv0PmSXTBNe7+r
+ CMFwnf/iyokJJdNOMyotKB2LfvTd
+X-Received: by 2002:a1c:59c7:: with SMTP id n190mr1453521wmb.61.1592289127191; 
+ Mon, 15 Jun 2020 23:32:07 -0700 (PDT)
 Received: from localhost.localdomain
  (181.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id t188sm2483250wmt.27.2020.06.15.23.32.05
+ by smtp.gmail.com with ESMTPSA id t188sm2483250wmt.27.2020.06.15.23.32.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 15 Jun 2020 23:32:05 -0700 (PDT)
+ Mon, 15 Jun 2020 23:32:06 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 6/7] hw/arm/mps2: Map the FPGA I/O block
-Date: Tue, 16 Jun 2020 08:31:56 +0200
-Message-Id: <20200616063157.16389-7-f4bug@amsat.org>
+Subject: [PATCH 7/7] hw/misc/mps2-fpgaio: Implement push-buttons
+Date: Tue, 16 Jun 2020 08:31:57 +0200
+Message-Id: <20200616063157.16389-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200616063157.16389-1-f4bug@amsat.org>
 References: <20200616063157.16389-1-f4bug@amsat.org>
@@ -95,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -124,45 +124,80 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Esteban Bosse <estebanbosse@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /UfePXSZ8eRY
+X-TUID: +q/KioSasjAE
+
+The FPGA system control block has 2 push-buttons labelled PB0/PB1.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/mps2.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ include/hw/misc/mps2-fpgaio.h |  1 +
+ hw/misc/mps2-fpgaio.c         | 13 ++++++++++++-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-index 6224d7a63c..345ba551ab 100644
---- a/hw/arm/mps2.c
-+++ b/hw/arm/mps2.c
-@@ -38,6 +38,7 @@
- #include "hw/timer/cmsdk-apb-timer.h"
- #include "hw/timer/cmsdk-apb-dualtimer.h"
- #include "hw/misc/mps2-scc.h"
-+#include "hw/misc/mps2-fpgaio.h"
- #include "hw/net/lan9118.h"
- #include "net/net.h"
+diff --git a/include/hw/misc/mps2-fpgaio.h b/include/hw/misc/mps2-fpgaio.h
+index 69e265cd4b..521900ae81 100644
+--- a/include/hw/misc/mps2-fpgaio.h
++++ b/include/hw/misc/mps2-fpgaio.h
+@@ -34,6 +34,7 @@ typedef struct {
+     MemoryRegion iomem;
  
-@@ -66,6 +67,7 @@ typedef struct {
-     MemoryRegion blockram_m3;
-     MemoryRegion sram;
-     MPS2SCC scc;
-+    MPS2FPGAIO fpgaio;
-     CMSDKAPBDualTimer dualtimer;
- } MPS2MachineState;
+     uint32_t led0;
++    uint32_t button;
+     uint32_t prescale;
+     uint32_t misc;
  
-@@ -337,6 +339,11 @@ static void mps2_common_init(MachineState *machine)
+diff --git a/hw/misc/mps2-fpgaio.c b/hw/misc/mps2-fpgaio.c
+index 2f3fbeef34..655e7a14fc 100644
+--- a/hw/misc/mps2-fpgaio.c
++++ b/hw/misc/mps2-fpgaio.c
+@@ -18,6 +18,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "qemu/bitops.h"
+ #include "qapi/error.h"
+ #include "trace.h"
+ #include "hw/sysbus.h"
+@@ -36,6 +37,13 @@ REG32(PRESCALE, 0x1c)
+ REG32(PSCNTR, 0x20)
+ REG32(MISC, 0x4c)
  
-         sysbus_create_simple("versatile_i2c", i2cbase[i], NULL);
-     }
-+    sysbus_init_child_obj(OBJECT(mms), "fpgaio", &mms->fpgaio,
-+                          sizeof(mms->fpgaio), TYPE_MPS2_FPGAIO);
-+    object_property_set_bool(OBJECT(&mms->fpgaio), true, "realized",
-+                             &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&mms->fpgaio), 0, 0x40028000);
++static void mps2_fpgaio_push_button(void *opaque, int irq, int level)
++{
++    MPS2FPGAIO *s = MPS2_FPGAIO(opaque);
++
++    s->button = deposit32(s->button, irq, 1, level);
++}
++
+ static uint32_t counter_from_tickoff(int64_t now, int64_t tick_offset, int frq)
+ {
+     return muldiv64(now - tick_offset, frq, NANOSECONDS_PER_SECOND);
+@@ -131,7 +139,7 @@ static uint64_t mps2_fpgaio_read(void *opaque, hwaddr offset, unsigned size)
+         /* User-pressable board buttons. We don't model that, so just return
+          * zeroes.
+          */
+-        r = 0;
++        r = s->button;
+         break;
+     case A_PRESCALE:
+         r = s->prescale;
+@@ -232,6 +240,7 @@ static void mps2_fpgaio_reset(DeviceState *dev)
  
-     /* In hardware this is a LAN9220; the LAN9118 is software compatible
-      * except that it doesn't support the checksum-offload feature.
+     trace_mps2_fpgaio_reset();
+     s->led0 = 0;
++    s->button = 0;
+     s->prescale = 0;
+     s->misc = 0;
+     s->clk1hz_tick_offset = tickoff_from_counter(now, 0, 1);
+@@ -249,6 +258,8 @@ static void mps2_fpgaio_init(Object *obj)
+     memory_region_init_io(&s->iomem, obj, &mps2_fpgaio_ops, s,
+                           "mps2-fpgaio", 0x1000);
+     sysbus_init_mmio(sbd, &s->iomem);
++
++    qdev_init_gpio_in_named(DEVICE(s), mps2_fpgaio_push_button, "PB", 2);
+ }
+ 
+ static bool mps2_fpgaio_counters_needed(void *opaque)
 -- 
 2.21.3
 

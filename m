@@ -1,107 +1,106 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2876511lfm;
-        Tue, 16 Jun 2020 12:00:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyPRgFhAKSL0ECbtP6SGqohk9WKcjBijWjL5Tm24kCx2nWf0m0+gVkFxssFlXABDet21O4B
-X-Received: by 2002:a25:9c45:: with SMTP id x5mr5945382ybo.107.1592334032155;
-        Tue, 16 Jun 2020 12:00:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592334032; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2876704lfm;
+        Tue, 16 Jun 2020 12:00:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx4O4xolN1hIh2l/MESYiG2xnkuCeQLzwJWlzrUs0JvucE+RhW6oXGTUboeqfj2wtCdYANT
+X-Received: by 2002:a25:7003:: with SMTP id l3mr6534048ybc.380.1592334046420;
+        Tue, 16 Jun 2020 12:00:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592334046; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q5fcpQncEE6rW0jCLtrgXbi3l0aJKBWylKUmnIwfhTz7RYd3txoP6FoGp2Rp1Wo8ya
-         cLl2uBwdENqLOHdHiLu35eawjKZvbE+sHlJ1xx4NuDJQRPIV+b0d/+dl2YzgPePM1PBd
-         rwMFekLPrRl1Vn89C2VYrzMmKeM4CeZelxWWy4uliM8rta1iCbBDuG5bsLxeH3gRKlL+
-         dH0Jl7T4d6h8IfkgKlL8vlTPuD2J5SLdaSzW7Qrj/6Qz83+tCkdriq2qL8KY6H9yQFH0
-         nBcpWWx2bm6Mz4O2iCzCIJ/eFPOaTsBbIHC6us64oVfFr43JjVgRuIO6/PKoxfp+6PWN
-         r34g==
+        b=mVJs4ZIJxST+Dfl8/h/WaO3CCCr/hkd5sjuXfIjmD97bbqZji+nWe/yO9cvJDby5FL
+         HYdC37bsb6mn1jykuwnXY02vJbTJTTUbPvA9XT9Qcwhlmbzm0SlmlLqXbY1PFIucRb62
+         dPZ5Gn66ogaJnP22ErKetA2RASBma/aaW5IpJ97nPgE1j3Ef3jw83KmAsuErftkYixve
+         vGT/nOd1ZMga/WHQNxi0gATfWSpqg7tVqEC6uaO704DvonpOkj+e0IRKN7As4VhELVoW
+         /vNSprivQzAWCdQI7g2TWOdVHYiDPeCUc9TMyazkrsWbrCEWPnKiOTEhCggR4axidiUv
+         30mA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=o7ps3wGvKL1kZ4fCeed8jixQ/nEFktW3NRHBgvRpEDQ=;
-        b=Svguhp+nRisV9IKdKSRxh0fHApLox+B2Bn1Vdwc9xgoI7+EvaQqUOsY/flb8VH4mQ9
-         57ROQkrD5nGBm+isODWK+RBpthWHRcBvClvCJhqe5/CtQSkpjq0dV4m5lE1KgO7/iP8H
-         vYN0oNVfN16HLI1ynnBh07MILSnQFy6pmdvOPKo51RpEQjOzmrXGj+1bOzodmKXwuhD9
-         RHKcRPH9k55/ZAGuOg+6J7iyNj3ZS2AcT5adIHOcD7LUy616vix4gjfCURonyAqqvL5x
-         jhVE+TIBQIOGtdXDIqyGLLTYJE/t8pXwZVkMVF3iBG3D5+WpmJZ8ZlJ5V4xeVYLXryNN
-         4D/Q==
+        bh=lODIeabYy1sWGEgwJXGcvNIdPesDYL5vG0+jAHyV8WE=;
+        b=tqiYv3LaHqFSHDZxsYudpM/WbuROji1UncCxajem1noD2CiiXlLa1qyQ1b1JR5isiW
+         1hvNBVy6us5JcIYQL2IM3gB5H03hDE48ykApJxPKEruXxVFP0dKxHXb/FhGwx4Z7GPzN
+         K6JOKkqFbUmaEIoD1UV6YcUVq+oa7ZLv6f3eMgHWh4FcGHooOgk3ZNk9vfVLBbQbZ2vm
+         aSoboFdRyFJ31q48lOEsrMACb7KbaaQPy/cp6ovsF8QUjKkVB31b8GdJT+t5fkpE8H46
+         pPuBi0oHhjlobTaf+GyvF24UDFLs28sCE/F1u/oTf8p93NeluK6VIEEe6uGOMhEemWBt
+         E+zQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p9seZ234;
+       dkim=pass header.i=@linaro.org header.s=google header.b="UX6t/pDX";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p12si18051750ybl.94.2020.06.16.12.00.31
+        by mx.google.com with ESMTPS id v83si17014391ybv.434.2020.06.16.12.00.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jun 2020 12:00:32 -0700 (PDT)
+        Tue, 16 Jun 2020 12:00:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p9seZ234;
+       dkim=pass header.i=@linaro.org header.s=google header.b="UX6t/pDX";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34418 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35138 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlGox-0001bV-HS
-	for alex.bennee@linaro.org; Tue, 16 Jun 2020 15:00:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42504)
+	id 1jlGpB-000203-OY
+	for alex.bennee@linaro.org; Tue, 16 Jun 2020 15:00:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42576)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jlGoH-0001HC-SY
- for qemu-arm@nongnu.org; Tue, 16 Jun 2020 14:59:49 -0400
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:39304)
+ id 1jlGoe-0001cR-QE
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2020 15:00:12 -0400
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:33966)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jlGoB-0001dD-O7
- for qemu-arm@nongnu.org; Tue, 16 Jun 2020 14:59:49 -0400
-Received: by mail-pj1-x1043.google.com with SMTP id h95so2023502pje.4
- for <qemu-arm@nongnu.org>; Tue, 16 Jun 2020 11:59:43 -0700 (PDT)
+ id 1jlGoc-0001hu-Fg
+ for qemu-arm@nongnu.org; Tue, 16 Jun 2020 15:00:12 -0400
+Received: by mail-pj1-x1044.google.com with SMTP id a45so1426343pje.1
+ for <qemu-arm@nongnu.org>; Tue, 16 Jun 2020 12:00:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=o7ps3wGvKL1kZ4fCeed8jixQ/nEFktW3NRHBgvRpEDQ=;
- b=p9seZ234ejiKxnsCIyQW2QzMxHYnAnyl7BfK9fxdLOD4bw2H+60fFIFNfNjG08yIto
- X4Uwc5RAjUNiuaQGZwltT9SZ7oUdrECdLIy5JUTTA9OgedATppxylAUv+oFcuLZit/jP
- HPiT74P9fk8vLeaZU1W/mmxTTtj3C0FpUxqVHm6+A+cb+MvMKp+7tvBivguLOZwtmPAj
- K1zIYEHw8/JWfCOnUbzmnEDIR0WK2YKUv625na8T+y9CYAIrmkIK4Nktp3lsD4yxW1wG
- RY5yG8mzsvEgu59QPF4lS02HQXQ9PvyzG6IhttvBxPoBzcdfEQvIEQG5H3nTDUeoa9SJ
- 3PmA==
+ bh=lODIeabYy1sWGEgwJXGcvNIdPesDYL5vG0+jAHyV8WE=;
+ b=UX6t/pDXWPzeEjyYzLwdeOE1UqAhIAaN2ZAZyepCcGRYiJdnFLk7Y6OUBQWfMiR5KD
+ ne7k7+SpZmq3tIVyRyHUUznFdUItUrVl5XO6hqpVDCTFYMbeEqK+C72aMHShgAYjocD4
+ YOm8dso3sLH4rTdR7v7FzfLRk9TZxuqgSlKqsuTwLrOBg0hMtp8Ug90XukhM4uLy/7ac
+ GF9R0CY7zo0NqhTaO6D6mKzbh8qaAZOlNIpJReiDREFYiYunXXVA/WdDijZOOzT2pP2Y
+ mATXHrjNQiSOumFTu39dMdYOS9i6plYBKsjQZTWLri1Dm9p/cyzImgUzp83ryn5rUif2
+ ZgKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=o7ps3wGvKL1kZ4fCeed8jixQ/nEFktW3NRHBgvRpEDQ=;
- b=BdjaO8BPSxXh/WA8GoJpsBpZ8xjk6qd8kP0SUKpBYR9jNKZUzX/RwMOBbUOurGUyHF
- carb/8shGS96XC5ViW4ITruXAvEjWu4CMLG6KVsit/1t9wdFB8aD69RY8LnNQhQOlDU5
- dFL1WDQglqOemYAlfIrzxVlq/OgziodjW7QNhex4ror+v1bPQRaMlhXGG5vIgYzhfJZV
- Wd+k+6TOpwLdv0s7QNKTdSKKW+6xHYAFoPFQP8tqVRek32LX3KQV1KOokWRwUIptuLBA
- eexfqKaQowSt+rGADVF39Hsp9tev95H+e1jqpvJql+jafuLV0s+g4hoAeShMKl6UeNbN
- WDAw==
-X-Gm-Message-State: AOAM530KKIgdhNKtqIrFHmI3d1GfIQul8IhKwBNLTwLT4K5HXJExQAZ6
- boxUHtfNxlwBvYQp95v0Q5ve/g==
-X-Received: by 2002:a17:90a:6886:: with SMTP id
- a6mr4721617pjd.170.1592333982246; 
- Tue, 16 Jun 2020 11:59:42 -0700 (PDT)
+ bh=lODIeabYy1sWGEgwJXGcvNIdPesDYL5vG0+jAHyV8WE=;
+ b=H+Rz44y/qMfGtxYk6I7u0oQer1+ojx98CZ+FCErCTS6f/ev/TEhmHSDAaD1XDaVFbH
+ 3ZMI7cfD6edlQ3ioE+OLvprWIH5YRO88mKlbh9T8Y5nzhhx4aj5x6BTJGTas2xTvLG4t
+ xpILJIjJIZ/QMDaQfxeiIZptQjWkTzKTQihcKplcj5N80OfVOuTWWPoymcAa9+vGutM+
+ 37QsXH9jtXHoXgd7WrsjajynUP+lHt/iQ0MoCNP+pD7tJozCoCWRLxNSSmiMqB6yjhXy
+ ouCDHuBYT78wS86DLbQQ3b+bojXGq69pSi5B95xK9LD1QhO/V7fRxNS7qINOuWrkEwbA
+ Tm2w==
+X-Gm-Message-State: AOAM530yySuA3KWA0hW2b4kvhMPVvUDGwQftzdr2GJ/ygFLh13EN5+9x
+ lMwTFq6pB6b4QXx7ariQ6TbwhoH66pE=
+X-Received: by 2002:a17:902:8bc7:: with SMTP id
+ r7mr3357321plo.57.1592334009034; 
+ Tue, 16 Jun 2020 12:00:09 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id m7sm18295967pfb.1.2020.06.16.11.59.40
+ by smtp.gmail.com with ESMTPSA id jz23sm3333058pjb.2.2020.06.16.12.00.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Jun 2020 11:59:41 -0700 (PDT)
-Subject: Re: [PATCH RFC 3/3] target/arm: Implement SVE2 FCVTXNT
+ Tue, 16 Jun 2020 12:00:08 -0700 (PDT)
+Subject: Re: [PATCH RFC 0/3] target/arm: Implement SVE2 fp conversion
 To: Stephen Long <steplong@quicinc.com>, qemu-devel@nongnu.org
 References: <20200428174332.17162-1-steplong@quicinc.com>
- <20200428174332.17162-4-steplong@quicinc.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <1760d76c-068c-4842-f5dc-5f4b3f3719cd@linaro.org>
-Date: Tue, 16 Jun 2020 11:59:39 -0700
+Message-ID: <db57c0a3-634f-caef-cab6-8b692a22e661@linaro.org>
+Date: Tue, 16 Jun 2020 12:00:06 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200428174332.17162-4-steplong@quicinc.com>
+In-Reply-To: <20200428174332.17162-1-steplong@quicinc.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1043;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1043.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1044;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1044.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -126,20 +125,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm@nongnu.org, apazos@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ij2HyDdnLdMd
+X-TUID: FqDFOnaA0ZcV
 
 On 4/28/20 10:43 AM, Stephen Long wrote:
-> +void HELPER(sve2_fcvtxnt)(void *vd, void *vn, void *vg,
-> +                          void *status, uint32_t desc)
-> +{
-> +    set_float_rounding_mode(float_round_to_odd, status);
-> +    HELPER(sve2_fcvtnt_ds)(vd, vn, vg, status, desc);
-> +}
+> The only insn left in this category is BFCVTNT. I couldn't find any
+> helper functions for bfloats so I'm not sure how to approach this insn.
+> 
+> Also, for insn FCVTXNT, I'm not sure if it is ok to set the status rounding
+> mode to odd like that.
+> 
+> Stephen Long (3):
+>   target/arm: Implement SVE2 FCVTNT
+>   target/arm: Implement SVE2 FCVTLT
+>   target/arm: Implement SVE2 FCVTXNT
 
-This is incorrect, as it leaves the rounding mode set to odd.
-
-I've adjusted trans_FCVTXNT to the existing do_frint_mode, which handles
-switching to and back from a fixed rounding mode.
+Queued, with the change to the third patch as mentioned.
 
 
 r~

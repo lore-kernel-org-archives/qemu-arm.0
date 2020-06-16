@@ -1,100 +1,102 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2458820lfm;
-        Tue, 16 Jun 2020 02:45:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyEWSvWkugszmyzerPVDCq0WLyAjZoo4q6tZYqy0Xi2Tmrfw5uVyWuHe9PvHTnuhSVQ/eDA
-X-Received: by 2002:a25:c507:: with SMTP id v7mr2724818ybe.306.1592300758652;
-        Tue, 16 Jun 2020 02:45:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592300758; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2458839lfm;
+        Tue, 16 Jun 2020 02:46:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyRefls7WuXwntWhxg6r92Ke+AaA9GfYcfvqmyMLZPYI1kJQNVRWBYdyR8bLBl/9PGWTw20
+X-Received: by 2002:a25:a0c7:: with SMTP id i7mr2922136ybm.420.1592300761509;
+        Tue, 16 Jun 2020 02:46:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592300761; cv=none;
         d=google.com; s=arc-20160816;
-        b=v1eVp7KAmn1Sl7tKJGRsYvqHRj89WRS5ZoCE27WXptxjeGMmZL3AsfL30qo+Zd/BZw
-         lv8C6gB+x0TmTy6fK2TbDqDDekBkojEMZhka5PNp8fnYIds6AFdd/mvz5hMAwmaay0mk
-         ynhnJcubm2/d26bUrVHtBAgdIdVOHSuN7lf0lTRC7/38fOS/XADNNdZSONvDd3B3hQFg
-         5lXDrbQcq6Wbdtt8LYFJARiI3Lp3HPMQ6kY0mWN5whlckHCzqWA2+dW20yvoFZ2AbV/X
-         9CaKNFpeMJr7jWgkCW8Ja3KYSZ+RjuiXuXdtfZuHcQlzguQsw5L84yK+/kLAaC5yJKCj
-         XZjQ==
+        b=SUXKEJ3UGulfHb9/69IYio6T7c7FV/Nr/IaVZY9iFCC6+VwFVPh9qf0/wHgYTN8PWL
+         6wSDNclDRKNeFHXto1RihQYuBWnQ5Z250qkAmI6kFSFe9IX457xCaFaYBURC3aci+ns8
+         /gOg+m/hITXUduZJO4Byl8a8oC3OSI1newOimiErwfy23jE9oepuqRjaf1c3ul6qTX6r
+         criuD35n9B6JgKsZIKV/XAZw6fZTvJznz71I4weQoxAZJ1rbrN96omzbIJ2JZ4TM5uFm
+         Zq8JefPaVOpcIYasBWCScHzKPwjZyFwnTy1V/z1XFZg2kBoVXCberK8FkkPM6vWFXLU1
+         yC2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=BkfrXS6jUPlOeSckQNT81vLmPXJox8SVcSY2Hn3/dQU=;
-        b=06rxLiOJF2G824jXygldv/Iap4jrranK+0XYF14OddWwLK447uz4xBQOUbkvizO/Zq
-         iieihgDvW+trF5hDZpZI9cJpt2P6+f58o5fNIF5a0RyPg4MnpQ3PBE8gQRIiMfoH/nOZ
-         a93ch2I5kaWwcxMXHg6hALeLgDJ51dihSU48khIk1eStKMk6Rg4moPowBkvE5qGKvVjO
-         eeyXajF07OnEHrNof49UldYXydoDO8yHmvkNa3q7LLhhBvmCABmFOWtK+UTyjM7rEiRq
-         BQOe94zxsgwMldx0dftIZSr3PsTZ5LbW+T9oxQt3VBLylB7rDUq+amnIJTj7Kgy6DRP1
-         vTtw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=pfO7RXZ9AYJ/DjgBHj2w4iXg2BcEpoZpY+MZ/Colj/Q=;
+        b=LXk/U0tMixNbcurEtYbj0lz/3MCyzGFXpP7TxIU0Oe0FUyU37hLPaHjS46dDTr8a3A
+         l2jSb1Zmd2XNhTmi/6o8rm8YNaSM2m1KCimeCANc0ZjbP+1xwa3M5GDHlHec2ZseRKLt
+         buem4gZAISKChDes3AM3mcqMYhPpAM5/zN0HOR3m/x0ZVQ7F8R/AysitjkbC/56jRfH/
+         j3QmNHZVOkJz58olXM+SB1BG9u8waRW+Ss3wfcUJyldeMSkaPioT7qZdB2ZXUGwyIIDK
+         uzx3Q0dHjiDk4vLvskM4SQz9Q2/aku7TslWSmPazlEEkhw4WAvRyqnuxnB6TSY5b1FpP
+         As9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=X5xFtwLt;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KxzkE+kN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 66si16441409ybl.32.2020.06.16.02.45.58
+        by mx.google.com with ESMTPS id c4si14669804ybs.411.2020.06.16.02.46.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jun 2020 02:45:58 -0700 (PDT)
+        Tue, 16 Jun 2020 02:46:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=X5xFtwLt;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KxzkE+kN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:55100 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55240 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jl8AI-0000p7-0n
-	for alex.bennee@linaro.org; Tue, 16 Jun 2020 05:45:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48674)
+	id 1jl8AK-0000tm-Rn
+	for alex.bennee@linaro.org; Tue, 16 Jun 2020 05:46:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jl8A8-0000ok-IH; Tue, 16 Jun 2020 05:45:48 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:42357)
+ id 1jl8AB-0000rW-Nq; Tue, 16 Jun 2020 05:45:51 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:34963)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jl8A7-00023o-4I; Tue, 16 Jun 2020 05:45:48 -0400
-Received: by mail-wr1-x442.google.com with SMTP id p5so20015348wrw.9;
- Tue, 16 Jun 2020 02:45:46 -0700 (PDT)
+ id 1jl8A9-000265-RG; Tue, 16 Jun 2020 05:45:51 -0400
+Received: by mail-wm1-x332.google.com with SMTP id q25so2387420wmj.0;
+ Tue, 16 Jun 2020 02:45:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=BkfrXS6jUPlOeSckQNT81vLmPXJox8SVcSY2Hn3/dQU=;
- b=X5xFtwLtOOEPDu0XJMfuwgOijMyOKlho5ap4523Ap0QtiJ+AbQF1TQ/08/8QQ8sMFf
- vxFP0joX+6+Hx0RnwQ3FGwIotstkyizRgUcBB1Rq4iQUVYR5AUd7bNmLgi7tItR8IGrf
- MiRZDPnqsEC98BuFIUDPAqzTi2i1Nm9ACMSAqOkpk5VAaVxjLUsoUkGCv1YIXLs9FcWw
- uJRBmElBvPTITsT0yXMy3ksMeUXng0QIv4b1R87a6woicM2B6gae/zh4eWqsPaDZmlwe
- oHzHDelx28QdtJOvpSi+SnVxqhydoim9pAgvPD11tX4oceRsNerWwU9QbS19URDR7lHb
- 7WBg==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=pfO7RXZ9AYJ/DjgBHj2w4iXg2BcEpoZpY+MZ/Colj/Q=;
+ b=KxzkE+kN8d+/yMtCLY1rzEEnkce4mOs2MuyvzONtDwHw1al6D8OQMOW6ZAr0lKDYAl
+ 6jivjgal0lK8KKlIWNfNyx/+eEnjViaDyH5nYwjfbntGqQDoXl2QurpPyTm+Ehl+TQtN
+ 32x4W+MMV/eFcU1th8H9ebPPrJ9iPy2aWGIu0Z9pFdUvvfa+ZQ4jAQxStV9/dIN4zUBu
+ GmFzdfR9c74wLiX9tz+8N1o65kv4b3E0GSb5/3n5Lu/P5GIzk4AgnFNH236C6ri5AI7t
+ gdrZpRmvIzG9O2ygbuOZQCZ6qVywbB7qVLCndMrC60xPEJ7yFQ9XiR7mq/EqdMbNw74e
+ tjIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=BkfrXS6jUPlOeSckQNT81vLmPXJox8SVcSY2Hn3/dQU=;
- b=fTpVIK8iabNa0cEF/R3P6QQyYTfTfBY7HyoOen81cX+SF+kRNszeoLTzer3izghaMP
- BNNcrQ3BV+/EsExLT8iEKPshddchaQZTLCDHSjifAc5WjTxyVS3gJvgSP8iRcy27/m/Q
- TyujDbR8UFAo9mSVyTetyW/FYOwAP7th/XkyDjFYmjfXdCax+PcCzeKMCAK7X/npfyJn
- kwXiZQrDGVOIYrn75DVqHRHWcbVHudFCa6hKNdGakK61HfokIUUT2zAB6HX5qZNDExxb
- tOUmCDty4MvoOwsf5IilKPv5DCC+JOqkPeaBlxBGXgJeKoQnhDyL81Vq2sW0nMxW/ZZT
- VQ9A==
-X-Gm-Message-State: AOAM532e7VePo7IuAgNRnBU95bCmvnLYv46/lHf8VHKIIkMKaHdbBwPY
- T/CoM0U/CUYLwUXmms+upF7qVG/t
-X-Received: by 2002:adf:e587:: with SMTP id l7mr2155993wrm.352.1592300745151; 
- Tue, 16 Jun 2020 02:45:45 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=pfO7RXZ9AYJ/DjgBHj2w4iXg2BcEpoZpY+MZ/Colj/Q=;
+ b=um1IGh5n2rh0lHCJlMcsuEUY/V2anqtjt/VvD4gmXhgUxf2H+UO3qEvcvOO9VSCAVH
+ pNV0+aBM863VrwRnjDCm9Tmp3K+TmdKiAJ3120owH0EIzXjt+4ALhFtSmSgSoMG7+5ip
+ qVYZ7+eGmuV9KZTtmZdHqXguxw7kyhxtUNrAeq7j84Ju08v03juinUYr3KDs1WNhJPs6
+ TAdwmB31Val6ycZAw/Lfv/n0s0XGdW9ewvfdaX367z+gRIDp2bQAK2LasT4subD6DNYg
+ LtxZtr2bMs+X4HOUfR20WYmU9s4tIh5ram81JT6Q1DRBtrqtyyzdsUmXkO3wnkOeBbYW
+ OWgA==
+X-Gm-Message-State: AOAM531i/UxpPHxyg6W2wnAqT6+AZoQE7rakKLQFrWr93vOeMPNnDUyi
+ +xsWpHGqdPcNqsItYqGZNno77svA
+X-Received: by 2002:a1c:7f4e:: with SMTP id a75mr2386452wmd.127.1592300747903; 
+ Tue, 16 Jun 2020 02:45:47 -0700 (PDT)
 Received: from localhost.localdomain
  (181.red-88-10-103.dynamicip.rima-tde.net. [88.10.103.181])
- by smtp.gmail.com with ESMTPSA id o82sm3254017wmo.40.2020.06.16.02.45.44
+ by smtp.gmail.com with ESMTPSA id o82sm3254017wmo.40.2020.06.16.02.45.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Jun 2020 02:45:44 -0700 (PDT)
+ Tue, 16 Jun 2020 02:45:47 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 0/2] hw/misc/pca9552: Trace LEDs events,
- make LEDs 13-15 as GPIOs
-Date: Tue, 16 Jun 2020 11:45:40 +0200
-Message-Id: <20200616094542.25415-1-f4bug@amsat.org>
+Subject: [PATCH 2/2] hw/misc/pca9552: Make LEDs 13-15 also GPIOs
+Date: Tue, 16 Jun 2020 11:45:42 +0200
+Message-Id: <20200616094542.25415-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200616094542.25415-1-f4bug@amsat.org>
+References: <20200616094542.25415-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x332.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -124,19 +126,114 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U+7dEtnpDvI0
+X-TUID: 12aKU6TFBBr8
 
-The PCA9552 LEDs 13-15 can also be used as GPIOs.
+The PCA9552 has 3 GPIOs, add them.
 
-Philippe Mathieu-Daudé (2):
-  hw/misc/pca9552: Trace LED On/Off events
-  hw/misc/pca9552: Make LEDs 13-15 also GPIOs
+See 'PCA9552 Product Datasheet Rev. 05 - 9 March 2006',
+chapter 6.4 'Pins used as GPIOs':
 
+  LED pins not used to control LEDs can be used as general
+  purpose I/Os (GPIOs).
+  For use as input, set LEDn to high-impedance (01) and then
+  read the pin state via the input register.
+  For use as output, connect external pull-up resistor to the
+  pin and size it according to the DC recommended operating
+  characteristics. LED output pin is HIGH when the output is
+  programmed as high-impedance, and LOW when the output is
+  programmed LOW through the ‘LED selector’ register. The
+  output can be pulse-width controlled when PWM0 or PWM1 are
+  used.
+
+And chapter 8 'Application design-in information':
+
+  LED0 to LED12 are used as LED drivers.
+  LED13 to LED15 are used as regular GPIOs.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
  include/hw/misc/pca9552.h |  2 ++
- hw/misc/pca9552.c         | 25 +++++++++++++++++++++++++
- hw/misc/trace-events      |  3 +++
- 3 files changed, 30 insertions(+)
+ hw/misc/pca9552.c         | 18 ++++++++++++++++++
+ 2 files changed, 20 insertions(+)
 
+diff --git a/include/hw/misc/pca9552.h b/include/hw/misc/pca9552.h
+index ebb43c63fe..7e47ea312d 100644
+--- a/include/hw/misc/pca9552.h
++++ b/include/hw/misc/pca9552.h
+@@ -15,6 +15,7 @@
+ #define PCA9552(obj) OBJECT_CHECK(PCA9552State, (obj), TYPE_PCA9552)
+ 
+ #define PCA9552_NR_REGS 10
++#define PCA9552_NR_GPIOS 3
+ 
+ typedef struct PCA9552State {
+     /*< private >*/
+@@ -27,6 +28,7 @@ typedef struct PCA9552State {
+     uint8_t regs[PCA9552_NR_REGS];
+     uint8_t max_reg;
+     uint8_t nr_leds;
++    qemu_irq gpio[PCA9552_NR_GPIOS];
+ } PCA9552State;
+ 
+ #endif
+diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+index a3d0decbff..6ca6c0dbc2 100644
+--- a/hw/misc/pca9552.c
++++ b/hw/misc/pca9552.c
+@@ -12,8 +12,10 @@
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "qemu/bitops.h"
+ #include "hw/misc/pca9552.h"
+ #include "hw/misc/pca9552_regs.h"
++#include "hw/irq.h"
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
+ #include "qapi/visitor.h"
+@@ -48,12 +50,16 @@ static void pca9552_update_pin_input(PCA9552State *s)
+             s->regs[input_reg] |= 1 << input_shift;
+             if (input_shift < s->nr_leds) {
+                 trace_pca9552_led_set(input_shift, true);
++            } else {
++                qemu_set_irq(s->gpio[input_shift - s->nr_leds], 1);
+             }
+             break;
+         case PCA9552_LED_OFF:
+             s->regs[input_reg] &= ~(1 << input_shift);
+             if (input_shift < s->nr_leds) {
+                 trace_pca9552_led_set(input_shift, false);
++            } else {
++                qemu_set_irq(s->gpio[input_shift - s->nr_leds], 0);
+             }
+             break;
+         case PCA9552_LED_PWM0:
+@@ -65,6 +71,16 @@ static void pca9552_update_pin_input(PCA9552State *s)
+     }
+ }
+ 
++static void pca9552_gpio_set(void *opaque, int n, int enable)
++{
++    PCA9552State *s = opaque;
++
++    /* LED13 to LED15 are used as regular GPIOs. */
++    s->regs[PCA9552_LS3] = deposit32(s->regs[PCA9552_LS3], n + 1, 1,
++                                     enable ? PCA9552_LED_ON : PCA9552_LED_OFF);
++    pca9552_update_pin_input(s);
++}
++
+ static uint8_t pca9552_read(PCA9552State *s, uint8_t reg)
+ {
+     switch (reg) {
+@@ -308,6 +324,8 @@ static void pca9552_initfn(Object *obj)
+                             NULL, NULL);
+         g_free(name);
+     }
++    qdev_init_gpio_in(DEVICE(obj), pca9552_gpio_set, PCA9552_NR_GPIOS);
++    qdev_init_gpio_out(DEVICE(obj), s->gpio, PCA9552_NR_GPIOS);
+ }
+ 
+ static void pca9552_class_init(ObjectClass *klass, void *data)
 -- 
 2.21.3
 

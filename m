@@ -1,188 +1,214 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4139268lfc;
-        Tue, 2 Jun 2020 07:43:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6cQD1Kv/XEtfnPAKfnyua4mRAQLFI6Qfhnhpj0Sq/mg3OZCokIYqEu+8JwPAsgwdCc6OZ
-X-Received: by 2002:a25:8888:: with SMTP id d8mr40311309ybl.87.1591109022819;
-        Tue, 02 Jun 2020 07:43:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591109022; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp966855lfm;
+        Wed, 17 Jun 2020 14:03:40 -0700 (PDT)
+X-Received: by 2002:ac8:7092:: with SMTP id y18mr1153993qto.354.1592427820609;
+        Wed, 17 Jun 2020 14:03:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592427820; cv=none;
         d=google.com; s=arc-20160816;
-        b=0sYqkpvh5qvJGfPBd0YRRLTuC9RJ9bAjiuCmsq56snedvq4nyOfp/N4jM0OBjWNbJ8
-         vGy8RXBFVOms6ddxPGGQs5Pib1BCtI9Km7O02/4BcPpLU5WWvjF6ZYFYazWSXJqkIxC+
-         YQI3ezL7uPeHmRmXT2UjayvC55mDgHLIAH2u++sr7o5UmI5AGl5Fs2y4EotMDHonp7EU
-         L97X6lLLqpruo+Oq4jLjHUsMT2+CB+HDhAFWoAS6BV17x/EZzjh2k97TVAPzBJO6ryY2
-         bOCiuQjTCWXgfnGQlt2mtHKuixlVqrRP/qm0qAqk8aNGjIhMYptICH6/I+Zjjo3/8GfT
-         nKig==
+        b=GvypjlTtV8Mwt4t0LrjcMbYeDOfllP5JAr/ECbLw9rNmzHOaQg0RD1+oloNYntg6B3
+         8uddz/i5TVByt7P6O93g3ZzXvpSJ7PG4z+05y+czV/J6RQGx4MQNwbDDjFrXeqFiJoSo
+         yslLCMfdaOKM3QMtiTSK11dMMuoq2lBg7zZGyCxRxhUcZJ6/rLN9K2fxPrmdq0jbMDjT
+         YOGvv8xoVx37VT8Fy7OvCRvBjmWkUzz0joCpbtL4epgplsfSAlCRIe+CZuDNM2kW2JtQ
+         e05oSFOrPRqoWBlto1XR3zH2WohoZYf7CTEHzil9cUVY8gX38YpT5UfcXiZYQUIKmIb5
+         1Liw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject;
-        bh=84FmoE2G3WANruwABYuTAhzPvq3PqRO4DEsy2cvgT+w=;
-        b=vNaG1rJteKwi0xWw4lXf6nrVjVWy73IqGqMmpvECvy6dgMjWTff/FkaZ3x2dlXZ7ff
-         Wo/ZeJOH/RH1rVZAovOLKqITkygTNU6RFvlmlfDobzN4kuH4VMupJs2Xe5zBQjwUqTYh
-         sE1OD2qtuMFsTc+XphAO2gf5wf7ZoKDJOB5J44ziMEVmm0dkVbpZx43AL703vFkbbRuv
-         9F/VSs545RK877aVZEMI/0yuMYMWVabrhU1kkY0RjsM+DpYcOJiOe8fq1fFJ86HAIjfg
-         R6/fKKHNyKCgYv/XM0TasxXAcc0/aG5OAw3wO0Z55qyGK5jl3CYhg42cDMlkXW6Kavu2
-         xK8g==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=8/IOqlv1sAgxjuNf6Y85K/ZDCKml0j6c2FyJ0KPQgug=;
+        b=bgSVFCHY3Bu3FRk7ejwmmYV2+tGc/eauexMhzqGH7l0cjXpY4r7y8azM2jUU4wOdRh
+         /GtYAA+DX4g+jvew0hAwDG4qlq56Wt1isU82og3XCcSp7FZkKlm+K0JKNpSyk07PPiwy
+         cROYb4sTp0NDwaFAkhkZITNNgXKOMWV40msvox+OobDHoMoafTBz9i5T8dC3WlYsBKNr
+         SApMsorQ+v0K/sA38rih9gNbA6SEOpvIA0dwZp/tVaXBJJMmrNrBe8GjFxe6ku4ifRnh
+         2J0ZT4GNr3LiUMOEcZ4VEKwCOGm4rlEJ0EXwLiuL2t5lYUEQAqvTOBeNU+rW0TMsP4FU
+         DpVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a4si2166990ybm.260.2020.06.02.07.43.42
+       dkim=pass header.i=@linaro.org header.s=google header.b=UaETTkwf;
+       spf=pass (google.com: domain of robert.foley@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=robert.foley@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <robert.foley@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id p7sor1082296qvy.20.2020.06.17.14.03.40
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jun 2020 07:43:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 17 Jun 2020 14:03:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of robert.foley@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:45172 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jg88k-00082R-78
-	for alex.bennee@linaro.org; Tue, 02 Jun 2020 10:43:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43440)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jg88c-00081L-9N; Tue, 02 Jun 2020 10:43:34 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:5316)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jg88b-0006ZA-9S; Tue, 02 Jun 2020 10:43:33 -0400
-Received: from pps.filterd (m0098410.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 052EWJHn090513; Tue, 2 Jun 2020 10:43:29 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 31dr0h9xfd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 02 Jun 2020 10:43:29 -0400
-Received: from m0098410.ppops.net (m0098410.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 052EWbHc091715;
- Tue, 2 Jun 2020 10:43:29 -0400
-Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com
- [169.62.189.10])
- by mx0a-001b2d01.pphosted.com with ESMTP id 31dr0h9xey-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 02 Jun 2020 10:43:28 -0400
-Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
- by ppma02dal.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 052EQKVM001927;
- Tue, 2 Jun 2020 14:43:28 GMT
-Received: from b01cxnp23032.gho.pok.ibm.com (b01cxnp23032.gho.pok.ibm.com
- [9.57.198.27]) by ppma02dal.us.ibm.com with ESMTP id 31bf49hd09-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 02 Jun 2020 14:43:28 +0000
-Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
- [9.57.199.109])
- by b01cxnp23032.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 052EhRRY49217944
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 2 Jun 2020 14:43:27 GMT
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 3B747112064;
- Tue,  2 Jun 2020 14:43:27 +0000 (GMT)
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 23823112061;
- Tue,  2 Jun 2020 14:43:27 +0000 (GMT)
-Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
- by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTP;
- Tue,  2 Jun 2020 14:43:27 +0000 (GMT)
-Subject: Re: [RFC 4/6] tests: tpm-emu: Remove assert on TPM2_ST_NO_SESSIONS
-From: Stefan Berger <stefanb@linux.ibm.com>
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
-References: <20200601102113.1207-1-eric.auger@redhat.com>
- <20200601102113.1207-5-eric.auger@redhat.com>
- <50a54958-e9e0-c95f-3893-f7f790186e0e@linux.ibm.com>
-Message-ID: <819aff96-6be2-3a3b-2b79-cd8e88029041@linux.ibm.com>
-Date: Tue, 2 Jun 2020 10:43:27 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+       dkim=pass header.i=@linaro.org header.s=google header.b=UaETTkwf;
+       spf=pass (google.com: domain of robert.foley@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=robert.foley@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=8/IOqlv1sAgxjuNf6Y85K/ZDCKml0j6c2FyJ0KPQgug=;
+        b=UaETTkwfDdnYPXLtIYH5paeb1vy/0aphoujhPrx+mgSsso+GIaJR6UIeoBCE78mT7Z
+         6FruA6t8aHcrQ98v33eAc8R0suRVo6PUjRdIPuzDyqj7r8NUd4Hzk9pKvYPpdYiEpS6i
+         An6MkTkh+l1GxUZSi2Lkmt0rXkOwlj8VVLgZrnZhpSZptW0lg0akKVwJNr73JM/cl7XE
+         ZYqUoCwTRY6bKuWMYoKv73msc8QQOe9HEpEYN7i4i4QiVtFxsKW0WX9YEwh937gewEWk
+         f0zxdmh/6IlpQeLQsIMUjL81/OUOVjnOFDA9hnWPq0He2VjhTaNkmfiQLyTLiEMeqwnt
+         X54A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=8/IOqlv1sAgxjuNf6Y85K/ZDCKml0j6c2FyJ0KPQgug=;
+        b=KZuqIf51DUkJ4KFyO0+D2AprJwO6ehaT5ahDg3/6sLO3L8PJKtSkJkB9UkhRgS5l/B
+         aSuDrIdMgRPTrAxgEzYh/ugjGCD2YT8UW/urIKhZgGDUAOX81N2P5wO1r5BVnB2QDY1K
+         JA6YVkSQx1VKhB8JemjuCv0430G4E7vzi9goD0P6cbSiDTRbPUwfymSUPps8yjOd8ZgF
+         rxphq3uOAy8EPzSMXjpgi+7ZXtFrTbg2FTULqXM9Jm62fFn+aiEn69W+jp2B1gYZFYoG
+         GycoQKCLShr7nujYSRhKY7iwTYsMiq9wP5ZxyjBbUrIVdjraafs8l/iM5mnTai4Js1yG
+         y8qg==
+X-Gm-Message-State: AOAM5309jJNBBRa06is9aY7tsdXn52Cp3YAy8JTxtQV433lIkA8vCvGo
+	WJKvALsLNEb9PjNa/kTVeb+mHDqK
+X-Google-Smtp-Source: ABdhPJx5CtnxDhIY41kwToFLmyBYSELYIP1ZEQ6iXrBY4fq47jhx7L1yu6O8g3Uf9MZJNjuAEqbKpw==
+X-Received: by 2002:ac8:6bc1:: with SMTP id b1mr1111814qtt.65.1592427820196;
+        Wed, 17 Jun 2020 14:03:40 -0700 (PDT)
+Return-Path: <robert.foley@linaro.org>
+Received: from Rfoley-MA01.hsd1.ma.comcast.net ([2601:199:4480:60c0:fc79:714c:9711:2e9c])
+        by smtp.gmail.com with ESMTPSA id w13sm997245qkb.91.2020.06.17.14.03.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 17 Jun 2020 14:03:39 -0700 (PDT)
+From: Robert Foley <robert.foley@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: alex.bennee@linaro.org,
+	cota@braap.org,
+	peter.puhov@linaro.org,
+	robert.foley@linaro.org,
+	Andrzej Zaborowski <balrogg@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
+Subject: [PATCH v10 17/73] arm: convert to cpu_halted
+Date: Wed, 17 Jun 2020 17:01:35 -0400
+Message-Id: <20200617210231.4393-18-robert.foley@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200617210231.4393-1-robert.foley@linaro.org>
+References: <20200617210231.4393-1-robert.foley@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <50a54958-e9e0-c95f-3893-f7f790186e0e@linux.ibm.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.687
- definitions=2020-06-02_13:2020-06-02,
- 2020-06-02 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 mlxscore=0
- bulkscore=0 adultscore=0 impostorscore=0 cotscore=-2147483648 phishscore=0
- mlxlogscore=999 spamscore=0 priorityscore=1501 suspectscore=0
- lowpriorityscore=0 clxscore=1015 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2004280000 definitions=main-2006020100
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/02 10:08:28
-X-ACL-Warn: Detected OS   = Linux 3.x [generic] [fuzzy]
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, KHOP_DYNAMIC=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
- ardb@kernel.org, philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kKp74o1jWu7E
+X-TUID: /NY3FWOcgHLL
 
-On 6/2/20 9:39 AM, Stefan Berger wrote:
-> On 6/1/20 6:21 AM, Eric Auger wrote:
->> While writing tests for checking the content of TPM2 and DSDT
->> along with TPM-TIS instantiation I attempted to reuse the
->> framework used for TPM-TIS tests. However While dumping the
->> ACPI tables I get an assert on TPM2_ST_NO_SESSIONS. My assumption
->> is maybe the other tests did not execute long enough to encounter
->> this. So I tentatively propose to remove the assert as it
->> does not seem to break other tests and enable the new ones.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>   tests/qtest/tpm-emu.c | 1 -
->>   1 file changed, 1 deletion(-)
->>
->> diff --git a/tests/qtest/tpm-emu.c b/tests/qtest/tpm-emu.c
->> index c43ac4aef8..298d0eec74 100644
->> --- a/tests/qtest/tpm-emu.c
->> +++ b/tests/qtest/tpm-emu.c
->> @@ -49,7 +49,6 @@ static void *tpm_emu_tpm_thread(void *data)
->>           s->tpm_msg->tag = be16_to_cpu(s->tpm_msg->tag);
->>           s->tpm_msg->len = be32_to_cpu(s->tpm_msg->len);
->>           g_assert_cmpint(s->tpm_msg->len, >=, minhlen);
->> -        g_assert_cmpint(s->tpm_msg->tag, ==, TPM2_ST_NO_SESSIONS);
-> You should not have to remove this. The tests are skipped if swtpm 
-> does not support TPM 2 via --tpm2 option. This would be a very old 
-> swtpm version, though. So, all tests are run with --tpm2 option and 
-> any response received from the TPM would be a TPM 2 response that 
-> should have TPM2_ST_NO_SESSIONS as the tag. I'd be curious what other 
-> value you are seeing there.
+From: "Emilio G. Cota" <cota@braap.org>
 
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Emilio G. Cota <cota@braap.org>
+Signed-off-by: Robert Foley <robert.foley@linaro.org>
+---
+ hw/arm/omap1.c            | 4 ++--
+ hw/arm/pxa2xx_gpio.c      | 2 +-
+ hw/arm/pxa2xx_pic.c       | 2 +-
+ target/arm/arm-powerctl.c | 6 +++---
+ target/arm/cpu.c          | 2 +-
+ target/arm/op_helper.c    | 2 +-
+ 6 files changed, 9 insertions(+), 9 deletions(-)
 
-In hw/tpm/tpm_util.c tpm_util_test_tpmdev() we have a probing function 
-that tries to determine whether the attached TPM is a TPM 1.2 or TPM 2. 
-It sends a TPM 2 command first and I would say this is the only command 
-we should see in this (fake) TPM emulation here. We respond with a TPM 2 
-command header [indicating failure], but the probing function should 
-then not proceed to probe with the TPM 1.2 command.
-
-
->>             s->tpm_msg = g_realloc(s->tpm_msg, s->tpm_msg->len);
->>           qio_channel_read(ioc, (char *)&s->tpm_msg->code,
->
->
-
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index 6ba0df6b6d..d0963a7ff7 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
+@@ -1776,7 +1776,7 @@ static uint64_t omap_clkdsp_read(void *opaque, hwaddr addr,
+     case 0x18:	/* DSP_SYSST */
+         cpu = CPU(s->cpu);
+         return (s->clkm.clocking_scheme << 11) | s->clkm.cold_start |
+-                (cpu->halted << 6);      /* Quite useless... */
++                (cpu_halted(cpu) << 6);      /* Quite useless... */
+     }
+ 
+     OMAP_BAD_REG(addr);
+@@ -3797,7 +3797,7 @@ void omap_mpu_wakeup(void *opaque, int irq, int req)
+     struct omap_mpu_state_s *mpu = (struct omap_mpu_state_s *) opaque;
+     CPUState *cpu = CPU(mpu->cpu);
+ 
+-    if (cpu->halted) {
++    if (cpu_halted(cpu)) {
+         cpu_interrupt(cpu, CPU_INTERRUPT_EXITTB);
+     }
+ }
+diff --git a/hw/arm/pxa2xx_gpio.c b/hw/arm/pxa2xx_gpio.c
+index d6d0d0b08e..266a1d45b4 100644
+--- a/hw/arm/pxa2xx_gpio.c
++++ b/hw/arm/pxa2xx_gpio.c
+@@ -132,7 +132,7 @@ static void pxa2xx_gpio_set(void *opaque, int line, int level)
+         pxa2xx_gpio_irq_update(s);
+ 
+     /* Wake-up GPIOs */
+-    if (cpu->halted && (mask & ~s->dir[bank] & pxa2xx_gpio_wake[bank])) {
++    if (cpu_halted(cpu) && (mask & ~s->dir[bank] & pxa2xx_gpio_wake[bank])) {
+         cpu_interrupt(cpu, CPU_INTERRUPT_EXITTB);
+     }
+ }
+diff --git a/hw/arm/pxa2xx_pic.c b/hw/arm/pxa2xx_pic.c
+index 105c5e63f2..3c58546e30 100644
+--- a/hw/arm/pxa2xx_pic.c
++++ b/hw/arm/pxa2xx_pic.c
+@@ -59,7 +59,7 @@ static void pxa2xx_pic_update(void *opaque)
+     PXA2xxPICState *s = (PXA2xxPICState *) opaque;
+     CPUState *cpu = CPU(s->cpu);
+ 
+-    if (cpu->halted) {
++    if (cpu_halted(cpu)) {
+         mask[0] = s->int_pending[0] & (s->int_enabled[0] | s->int_idle);
+         mask[1] = s->int_pending[1] & (s->int_enabled[1] | s->int_idle);
+         if (mask[0] || mask[1]) {
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index b75f813b40..f0db413519 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -64,7 +64,7 @@ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
+ 
+     /* Initialize the cpu we are turning on */
+     cpu_reset(target_cpu_state);
+-    target_cpu_state->halted = 0;
++    cpu_halted_set(target_cpu_state, 0);
+ 
+     if (info->target_aa64) {
+         if ((info->target_el < 3) && arm_feature(&target_cpu->env,
+@@ -241,7 +241,7 @@ static void arm_set_cpu_on_and_reset_async_work(CPUState *target_cpu_state,
+ 
+     /* Initialize the cpu we are turning on */
+     cpu_reset(target_cpu_state);
+-    target_cpu_state->halted = 0;
++    cpu_halted_set(target_cpu_state, 0);
+ 
+     /* Finally set the power status */
+     assert(qemu_mutex_iothread_locked());
+@@ -297,7 +297,7 @@ static void arm_set_cpu_off_async_work(CPUState *target_cpu_state,
+ 
+     assert(qemu_mutex_iothread_locked());
+     target_cpu->power_state = PSCI_OFF;
+-    target_cpu_state->halted = 1;
++    cpu_halted_set(target_cpu_state, 1);
+     target_cpu_state->exception_index = EXCP_HLT;
+ }
+ 
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 5b7a36b5d7..df5c019145 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -175,7 +175,7 @@ static void arm_cpu_reset(DeviceState *dev)
+     env->vfp.xregs[ARM_VFP_MVFR2] = cpu->isar.mvfr2;
+ 
+     cpu->power_state = cpu->start_powered_off ? PSCI_OFF : PSCI_ON;
+-    s->halted = cpu->start_powered_off;
++    cpu_halted_set(s, cpu->start_powered_off);
+ 
+     if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
+         env->iwmmxt.cregs[ARM_IWMMXT_wCID] = 0x69051000 | 'Q';
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index eb0de080f1..88c86a4346 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -305,7 +305,7 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
+     }
+ 
+     cs->exception_index = EXCP_HLT;
+-    cs->halted = 1;
++    cpu_halted_set(cs, 1);
+     cpu_loop_exit(cs);
+ }
+ 
+-- 
+2.17.1

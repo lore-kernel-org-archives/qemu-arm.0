@@ -1,94 +1,94 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp318942lfm;
-        Tue, 16 Jun 2020 22:56:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0KwqVmS58FggmR/FIiiCkobbXK9aMGzZGEwLT5+IdR1qER+31V+HZGyZZ8R08FHD7wm1n
-X-Received: by 2002:a25:d9c2:: with SMTP id q185mr10325045ybg.5.1592373409658;
-        Tue, 16 Jun 2020 22:56:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592373409; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp319001lfm;
+        Tue, 16 Jun 2020 22:56:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyZye4vpvGNxu99OKnDsl5e6F8WP6lT/oZBE/sluYOZTup3v9aG8+9oyF5ISLwLTN2L6HNS
+X-Received: by 2002:a25:d3d0:: with SMTP id e199mr9891109ybf.27.1592373418227;
+        Tue, 16 Jun 2020 22:56:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592373418; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tl4DWxJi7aJMetjDhKHnI0CCdMmezze86Kd4zfUTwisz3A1c2hxNBRW+Ui7u73jKk5
-         H6QyMKEjJOb3dtKlJTCAYGXVJucy8hxEkO1lRoii2eQEqisvkcHH2JkBXDSzF8kO6az1
-         9id59lgkMDt5wtLkCrcPGG0pd96TBcoeYbsnRruym8kiHRO0sNCNegnjXfGjGGC/yoNp
-         hvjwdDUOc3JlYUeJi+qVYGvUw0d0KeQhC06s1J4mM/YNVT8pJXYSZS1FnCEmkBhGYEUf
-         pHkdjqwxU+PszgOATOzugoU3xlYZTGQ9YSshBnTzXXxURsuvdx6A9zrD1TZ6gOI7ECWH
-         ej9Q==
+        b=0pK/Xle9citjOIIDim+LuG1P3b36q7u8JRb5BBXnbpmoWKRrH85n6l9XHudLG5HxOg
+         P4hvS7WHMaQ97lwTTr3eqHgLoC92xZDtWe3TU/IWWreFOQmubSsfu7JtEXYZIwzLgzW6
+         2HJIMc4G15xtWXdkf2BopYO3b4kgMo9BhecAZWHqeXW2SZGPBbhn8+VxAElbeT3k/KNI
+         WFc+3ZiwRDT2MKuC//4sMcygzBW65UGf4J6VILEsWxczIamZRzGsP4Sssyc83AOwo/tz
+         5o7ZT4C8TU0KysgY2MyhUNktxaY3gx9g3c2Y5P0a6UVPT77A6K15e12jmgSXdBs3R2gM
+         ytQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=whMizvqXayFxbp1IF4VRvbw0c99w7Q6BaIOEKga3yHk=;
-        b=FqInWBiMfEut/EPp+s1qIlNPCELRNeIiCXatxVX0puRp32R742DoJZK+3wviPztFA9
-         DgIs/FoXCpmOxmhyh6sp7eYTT8YeUkwP5z9DpepNGD7YeCLbZ1XI/ZhommMln/DNhDUi
-         xDAXpFDp2jzE8gwt9OKVT/fyRz9nlvYAVGja2Yu+g2g003P7mRMy2NscF5dDimMRdu8A
-         4Co9KxzOjB+LfniMvzjKBBT2MfEc5r3lTaMViFwMylw/Ji07Mugu5quvK3KZJrbtWeIX
-         Eak/m9VFP/ixEPdhDE0sU620j0HBwNGy3g+dcVOilJ/HDqjZ2a4gR4C7fDMe/kQkPV2q
-         xZkQ==
+        bh=jSEeTcKy/ADpk72o56Tu0O5sgQThR0gpRTB3AEGbkUA=;
+        b=vlhb0x8VB2PWDYu1d+pD7IOD3yi5+n7gq3C0SM2uv4jAJrEc/tg+wG9esrBSUpfEdz
+         hSltkoqysB7NvdKxJpvoGWjouDym1nWzxUi88G0+CbuXmEPoIbH3sylsJ2G9CbAjeNPP
+         eYUCDEhA+xSeT+5Yl5aiASO8mbBsDaBAW/wFfcM0GYA2pNhx/RWmC25y1HVddJ0jz1vr
+         Xef5uNSfPv3sKNDBj8arwL6iY3DxdzfbDX/2oWwb9sp/dPS4mHglck8eEPGIAPk6woZr
+         TOXMa1RkQe60Bw2RlLrHpgsCGcvDor8t6avssIWOCF0h7zsukpVjyUMXlvO6xTYrSEwk
+         esTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="MKid9/Gy";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aOJMd5EI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b203si17235853yba.469.2020.06.16.22.56.49
+        by mx.google.com with ESMTPS id l188si19939092ybc.385.2020.06.16.22.56.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jun 2020 22:56:49 -0700 (PDT)
+        Tue, 16 Jun 2020 22:56:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="MKid9/Gy";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aOJMd5EI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:50410 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51146 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlR45-0002o2-1o
-	for alex.bennee@linaro.org; Wed, 17 Jun 2020 01:56:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49784)
+	id 1jlR4D-00035x-Hv
+	for alex.bennee@linaro.org; Wed, 17 Jun 2020 01:56:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49804)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jlQzm-0002oG-EG; Wed, 17 Jun 2020 01:52:22 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:46275)
+ id 1jlQzn-0002rA-K3; Wed, 17 Jun 2020 01:52:23 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35664)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jlQzj-0004TC-PE; Wed, 17 Jun 2020 01:52:22 -0400
-Received: by mail-wr1-x444.google.com with SMTP id x6so883448wrm.13;
- Tue, 16 Jun 2020 22:52:19 -0700 (PDT)
+ id 1jlQzl-0004TQ-UO; Wed, 17 Jun 2020 01:52:23 -0400
+Received: by mail-wr1-x441.google.com with SMTP id x14so940294wrp.2;
+ Tue, 16 Jun 2020 22:52:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=whMizvqXayFxbp1IF4VRvbw0c99w7Q6BaIOEKga3yHk=;
- b=MKid9/GyKouaGElE0l78IKv5okkEDiqOBt2W8D3P1UN2dUzTAVEJnTnFBf71PlswyX
- H/K4ix7Q1p1PgzwKDBM4YqKPnVWNZ5YCHUZf4mvkeFLMUqiHXAIwEENcGcv33RFAQWaf
- CAN9RNC/03PzTfoQkcee9LLr2cEKjGyEwD120WEwB/6o4/w65a8bTiOvBUQcnEveqdGb
- qHt6UuB8MyJY6kC/SE1WFkEQCTkOwU+yoSVngfsFtpce2IQNbzlXEP+fDtNJObpDuB/L
- vG+Liwm0eo0fWITTrxVVENVtOIr7USFbTiUdPXHkFCATvStX5kHWa7Ey/64rhzM1gMZf
- ZnkA==
+ bh=jSEeTcKy/ADpk72o56Tu0O5sgQThR0gpRTB3AEGbkUA=;
+ b=aOJMd5EInz701+l4IHZsHwBP1JJv4oDGrS5kOw3TBvpkWGXYl8TNIXffjvRbHstpXT
+ 9v0Pj2fpZLQ5dKWvFvxlm+bxPkK/cGPpUiddcZ6J/UtB3GQ/NnBTpjSgKh5Crh665NPE
+ RZ2b5Nfe0oH+M0H1vhsQdMICQKVqjbQ/1KrMKuMLDelhduv79QA50ec2vM2ZnkQXON8M
+ dIhqVo77IskBLm3xbzX6PcYijFvM94EnHQB9NY+G6c1HsxjcJMi2TAedV/mByKL0BzuN
+ aCC480Nbjdr1MUhu4/A73OkPNv0FVpKV+Dwqa/lHumn59o1llHIuGtQJKfhKFbE2fNcG
+ F1Lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=whMizvqXayFxbp1IF4VRvbw0c99w7Q6BaIOEKga3yHk=;
- b=YFoechiAcY48mrO4Gji3FvwLz5F6GSv4QOURafGufQyGqUcb0XQRpZpgkoh6+dofGn
- q1vchZiNF7u2F1ZehPU8z+vSz+RfhG5Y/TH4lZp39p4s3jj4jJl7gfEjQbqW6PwTm3vR
- cJjeVqngqzan1xV1W28+67zmShf42LcksLODb6Zs81e5ncxFbi5cbpnaMFf9UqoRLM2V
- Qoj8K8hDgbLGpyN5qGvTZeKZzgBzuTIzhJzEVx9GraTY/NVJVmLpkNw7coEYzkyQgASK
- Ztir6QUVoW48Smu+K5uF5bPDoLHyxvZSbopPCc6K1tNKOVlP8bmQBc+qMqbPg5VJ4wVe
- O6jw==
-X-Gm-Message-State: AOAM5320kI10kMpgk44LR4fbqv1UUaqljK9Rx+8en04fgkj1XSuoq1hT
- O6LudszSuP4wf+FityPolM1Sqy8I
-X-Received: by 2002:adf:e285:: with SMTP id v5mr6420929wri.129.1592373137978; 
- Tue, 16 Jun 2020 22:52:17 -0700 (PDT)
+ bh=jSEeTcKy/ADpk72o56Tu0O5sgQThR0gpRTB3AEGbkUA=;
+ b=kd//IproVgO03+KySWV3EomVUhD0oPjbvuUWtdmjh7OqwkHMYxsu0v0m4ZQgNdg50l
+ TSzTKotBA2nvSEqpfGeQDjtBBqRGbKRP8qfP7+I7FG4sGcb8CKrrh8MmA/ljMpSXRN2X
+ QpSZ8ropF1AdT3eV2j6kE5BE5GyCRWBWAG/z0QalTRlBEgMgHPbHmLAPJjmxwbt08YNz
+ c/dJBrSqH9lvGtVExE10MOSBMhiznXTWI9bgm6Xz8USBuS8VL23IkhmFfdfh6RHb2jNI
+ xVsJk7iSeGbvRWHAevzVMnR0VavThY2OV3L5pPITK7QqR+joq+njYJ8brcbC5UF04CQT
+ Tgew==
+X-Gm-Message-State: AOAM533BRAwrVeZwsm9ArenK09t7EQrlCCRJfhcWC/LAF/Xur+Pdvc1d
+ WvzqqsJ+VlATobNQyIsOtsPZDUTy
+X-Received: by 2002:a05:6000:1289:: with SMTP id
+ f9mr6727409wrx.5.1592373140099; 
+ Tue, 16 Jun 2020 22:52:20 -0700 (PDT)
 Received: from localhost.localdomain (93.red-83-59-160.dynamicip.rima-tde.net.
  [83.59.160.93])
- by smtp.gmail.com with ESMTPSA id d28sm3000809wrc.50.2020.06.16.22.52.16
+ by smtp.gmail.com with ESMTPSA id d28sm3000809wrc.50.2020.06.16.22.52.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Jun 2020 22:52:17 -0700 (PDT)
+ Tue, 16 Jun 2020 22:52:19 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 09/14] hw/arm/mps2: Add CMSDK AHB GPIO peripherals as
- unimplemented devices
-Date: Wed, 17 Jun 2020 07:52:00 +0200
-Message-Id: <20200617055205.3576-10-f4bug@amsat.org>
+Subject: [PATCH v2 11/14] hw/arm/mps2: Add SPI devices
+Date: Wed, 17 Jun 2020 07:52:02 +0200
+Message-Id: <20200617055205.3576-12-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200617055205.3576-1-f4bug@amsat.org>
 References: <20200617055205.3576-1-f4bug@amsat.org>
@@ -96,8 +96,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -125,74 +125,61 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Esteban Bosse <estebanbosse@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ifTntEsq2GkG
+X-TUID: 5KANaKfiHxo5
 
-Register the GPIO peripherals as unimplemented to better
-follow their accesses, for example booting Zephyr:
+From 'Application Note AN385', chapter 3.9, SPI:
 
-  ----------------
-  IN: arm_mps2_pinmux_init
-  0x00001160:  f64f 0231  movw     r2, #0xf831
-  0x00001164:  4b06       ldr      r3, [pc, #0x18]
-  0x00001166:  2000       movs     r0, #0
-  0x00001168:  619a       str      r2, [r3, #0x18]
-  0x0000116a:  f24c 426f  movw     r2, #0xc46f
-  0x0000116e:  f503 5380  add.w    r3, r3, #0x1000
-  0x00001172:  619a       str      r2, [r3, #0x18]
-  0x00001174:  f44f 529e  mov.w    r2, #0x13c0
-  0x00001178:  f503 5380  add.w    r3, r3, #0x1000
-  0x0000117c:  619a       str      r2, [r3, #0x18]
-  0x0000117e:  4770       bx       lr
-  cmsdk-ahb-gpio: unimplemented device write (size 4, value 0xf831, offset 0x18)
-  cmsdk-ahb-gpio: unimplemented device write (size 4, value 0xc46f, offset 0x18)
-  cmsdk-ahb-gpio: unimplemented device write (size 4, value 0x13c0, offset 0x18)
+  The SMM implements five PL022 SPI modules.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Two pairs of modules share the same OR-gated IRQ.
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/mps2.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ hw/arm/mps2.c | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
 diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-index f7bef20b40..c66c595d4a 100644
+index e106123225..daa26f68d7 100644
 --- a/hw/arm/mps2.c
 +++ b/hw/arm/mps2.c
-@@ -113,6 +113,7 @@ static void mps2_common_init(MachineState *machine)
-     MemoryRegion *system_memory = get_system_memory();
-     MachineClass *mc = MACHINE_GET_CLASS(machine);
-     DeviceState *armv7m, *sccdev;
-+    int i;
- 
-     if (strcmp(machine->cpu_type, mc->default_cpu_type) != 0) {
-         error_report("This board can only be used with CPU %s",
-@@ -228,7 +229,6 @@ static void mps2_common_init(MachineState *machine)
-          */
-         Object *orgate;
-         DeviceState *orgate_dev;
--        int i;
- 
-         orgate = object_new(TYPE_OR_IRQ);
-         object_property_set_int(orgate, 6, "num-lines", &error_fatal);
-@@ -265,7 +265,6 @@ static void mps2_common_init(MachineState *machine)
-          */
-         Object *orgate;
-         DeviceState *orgate_dev;
--        int i;
- 
-         orgate = object_new(TYPE_OR_IRQ);
-         object_property_set_int(orgate, 10, "num-lines", &error_fatal);
-@@ -301,6 +300,11 @@ static void mps2_common_init(MachineState *machine)
-     default:
-         g_assert_not_reached();
-     }
-+    for (i = 0; i < 4; i++) {
-+        static const hwaddr gpiobase[] = {0x40010000, 0x40011000,
-+                                          0x40012000, 0x40013000};
-+        create_unimplemented_device("cmsdk-ahb-gpio", gpiobase[i], 0x1000);
+@@ -39,6 +39,7 @@
+ #include "hw/timer/cmsdk-apb-dualtimer.h"
+ #include "hw/misc/mps2-scc.h"
+ #include "hw/misc/mps2-fpgaio.h"
++#include "hw/ssi/pl022.h"
+ #include "hw/net/lan9118.h"
+ #include "net/net.h"
+ #include "hw/watchdog/cmsdk-apb-watchdog.h"
+@@ -341,6 +342,29 @@ static void mps2_common_init(MachineState *machine)
+     qdev_prop_set_uint32(DEVICE(&mms->fpgaio), "prescale-clk", 25000000);
+     sysbus_realize(SYS_BUS_DEVICE(&mms->fpgaio), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(&mms->fpgaio), 0, 0x40028000);
++    sysbus_create_simple(TYPE_PL022, 0x40025000,        /* External ADC */
++                         qdev_get_gpio_in(armv7m, 22));
++    for (i = 0; i < 2; i++) {
++        static const int spi_irqno[] = {11, 24};
++        static const hwaddr spibase[] = {0x40020000,    /* APB */
++                                         0x40021000,    /* LCD */
++                                         0x40026000,    /* Shield0 */
++                                         0x40027000};   /* Shield1 */
++        DeviceState *orgate_dev;
++        Object *orgate;
++        int j;
++
++        orgate = object_new(TYPE_OR_IRQ);
++        object_property_set_int(orgate, 2, "num-lines", &error_fatal);
++        orgate_dev = DEVICE(orgate);
++        qdev_realize(orgate_dev, NULL, &error_fatal);
++        qdev_connect_gpio_out(orgate_dev, 0,
++                              qdev_get_gpio_in(armv7m, spi_irqno[i]));
++        for (j = 0; j < 2; j++) {
++            sysbus_create_simple(TYPE_PL022, spibase[2 * i + j],
++                                 qdev_get_gpio_in(orgate_dev, j));
++        }
 +    }
  
-     /* CMSDK APB subsystem */
-     cmsdk_apb_timer_create(0x40000000, qdev_get_gpio_in(armv7m, 8), SYSCLK_FRQ);
+     /* In hardware this is a LAN9220; the LAN9118 is software compatible
+      * except that it doesn't support the checksum-offload feature.
 -- 
 2.21.3
 

@@ -1,94 +1,93 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp319293lfm;
-        Tue, 16 Jun 2020 22:57:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxRByObAmeb/fc37YYxo7gTq/R0t4IkMXOHS1McNdYkiJrYffpXTb9cKDXO2Gz3pQTps+u7
-X-Received: by 2002:a25:e8b:: with SMTP id 133mr9530642ybo.13.1592373446210;
-        Tue, 16 Jun 2020 22:57:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592373446; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp319752lfm;
+        Tue, 16 Jun 2020 22:58:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzFyJe2RfHWC6pSOt9uQ8Uzbcv9OmD4BZEe8V8C4dgwWjCQdl9crlxyxSJmc6Ml+ux/qthD
+X-Received: by 2002:a25:dd81:: with SMTP id u123mr9744357ybg.146.1592373499047;
+        Tue, 16 Jun 2020 22:58:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592373499; cv=none;
         d=google.com; s=arc-20160816;
-        b=RiOuLn3cf7hjUmbM0qznRLLi84SsKOg8hDE8RSSiAwj6XqInHF5SVKS1Aq6HMuKX25
-         fXkIqfVnclC0MbGjXdRZMRpDDVs2e2l7pxLt+c+lMKo9wAaTcKOCU3ScobgWX+pUgIc2
-         AFCsaNjcs1SMUssht1ChK9poErRM7kT9hL2w285qMXnqfJ1nrEqkO0MGGleI5hIHhoTC
-         +wpvj9BteztHgk9U5Dzm4EMsiH54GmXXrj9wwTwQPZNnI75ZVBA4UK+mUK+xMUhIfm+p
-         GZmtUug/9AzSLOIjpy5AZpdudi+shoEtVit+xtRR2folc7KqKKYSJ6dp9P4nkGbozZaZ
-         pO4A==
+        b=08uMgp2OlFmKqxzVIznLz6zRhbWAVpC3PAwNnnFiUsSMn0SvasXwy3Wp6HkLp5PrgX
+         kaH26Cr9vF1qz/5zKJreAOAQBbpO95fjReXB9w1wLDuc5DSIB9Oa61Lj6JFNLGNSAi+T
+         6qCFIcM2N1EpGtqvEkAtMdD3hS5PZivrQ1znNnDDzx2XjMbcGISX2xAmb5QhtDOXFEUk
+         yJTrV7RUCP8NgXnIXUIOXrKEAQJJ+/uoa4mYuyhDVyQwnnMF3AgrUbMsbtesTA8E8Alj
+         yvQOna4uLhvJ2/mUAdhKHJnzvtNuqNA7zv0DNSq6o2A7eGJwsB7m3eUzsmX60i1d+aBG
+         FL8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=cg5OZZgeFdkySmBsDID4sS8qarnHbFdRK4wloQNjZ2E=;
-        b=gEMHpzPULStoBR2d/FONfgdpUlyP/anxeZPrdLjFDBi5m91Rm5JLb1QcH74PCml5An
-         scviu6RfTo+QKjtPeMMwos1Kb/um+vdqxDbug3tYknn3kHUY9O2ksLzkVblNeHASOJrE
-         1QsK+1QSYcOO8cpiAEQhQaDk7FtWxF1QAtA4iMSO/oP8XP1YqHBPwjShuUlxn/rZQ+8G
-         IWrxArwkcCXhNFSaCYmdl6+0zoOxHH65OE+19hiqbMm1i4BJLYmdhcLroRd20oBx2Nkq
-         1Fzt5d6bI31oU2ywyPujbf+V4hS5TQ7h/pQzFPOBMnc25Wu+IcV1BLyFjq2CCo+iWsKJ
-         efzQ==
+        bh=xBt1JdUtXnVHDFLzLhbnDdhHBrdVurpC1i/gmVlTBm8=;
+        b=CuPdwjq6ZEKOWqj3BwQ5iHR7ZSx/ipbYWpdV5f4YMd/aNdWroJWEsTiCIT3sweVtcF
+         tblixL1ZuaH3pcg92BvIw2xkbGGuenpyOzNWf/9Yan02ikSZu97pGdM3O0HZcVlbT/HP
+         +G+jylzW21kvbM/8Xe5xGl48iPyhQtsy9YLwEqHvVdDsoXHWGv8IIuQmHcOYdXbz2aVg
+         +fqCWbLMQD3t3RDhahLfydPBUWZjSe2veLwQG9V6TjeHcfJMxwizHlivKG08Pw/Vs3ml
+         V9Elkf3xGmeFEbzCcTpNMM2K71JuLdtbePYLSbuhKqwhSPnHXOmohFONjwDPvuye9FBj
+         5ppw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dsbKIV4O;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JYlWuSrZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q3si15515506ybo.115.2020.06.16.22.57.26
+        by mx.google.com with ESMTPS id r4si10647629ybo.358.2020.06.16.22.58.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jun 2020 22:57:26 -0700 (PDT)
+        Tue, 16 Jun 2020 22:58:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dsbKIV4O;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JYlWuSrZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:52006 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54936 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlR4f-0003SP-Ie
-	for alex.bennee@linaro.org; Wed, 17 Jun 2020 01:57:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49748)
+	id 1jlR5V-0004ny-Vr
+	for alex.bennee@linaro.org; Wed, 17 Jun 2020 01:58:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49818)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jlQzi-0002f1-2T; Wed, 17 Jun 2020 01:52:18 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:33027)
+ id 1jlQzo-0002uI-PZ; Wed, 17 Jun 2020 01:52:24 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:52148)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jlQzg-0004ST-EQ; Wed, 17 Jun 2020 01:52:17 -0400
-Received: by mail-wr1-x441.google.com with SMTP id l11so954416wru.0;
- Tue, 16 Jun 2020 22:52:15 -0700 (PDT)
+ id 1jlQzn-0004Te-7q; Wed, 17 Jun 2020 01:52:24 -0400
+Received: by mail-wm1-x343.google.com with SMTP id b82so603405wmb.1;
+ Tue, 16 Jun 2020 22:52:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cg5OZZgeFdkySmBsDID4sS8qarnHbFdRK4wloQNjZ2E=;
- b=dsbKIV4O6UW9D34HPyz4x0JsQR5PpSXq7B6LRYAcivUcVNbOCBTjlJAGxsFPDg/jQ+
- TgMgF8LGQaEo5GHaeCUKVOWYemZEaqGy6nI2NyzdBsnMLV0B+n4dBV9lWv35hIzGm3c1
- nbrzAtHOwocUrk9yXtY3tZ0xikCf8DUQBX50LPqqhHfN0eMm6v8aPS8LER1ow7r4KOVb
- 0rBf/RJ89ISk2aUomERaqIB/EhJaufu4VH/rDhKVPxenj94HCiQMeiUH9vWkx/Z0R2vI
- fBhc6fYDnv7GJdnhFyuQnvszxe7pD01s2S1iD34JrTfQr1SrYd9rVkF8yu9q/xsVIqan
- CIXw==
+ bh=xBt1JdUtXnVHDFLzLhbnDdhHBrdVurpC1i/gmVlTBm8=;
+ b=JYlWuSrZ3RFNBDkWMAs8yqAf/eUDHyl9+PB9pWPMpQOWTlR4aPS/eFKVjwLVeGJgcj
+ b8vCjriROPsAoaj3Ii+02qzKhQVW7hze0WXe++Q3wO4CXg+H1aqbXCtowglztOyUUFUT
+ btsMOvLnc8B//AZwAFeRwMVwI2dhFMvVlp/ic6rmNBtSg96sVyBZy11qVt/hIIhsBuH2
+ bKukVN5IeCWqpr2WrwILtlgFoBRuMlIVXkhGk7lx+lLoT4wCNlDQtZkYm9rCGfPag2fX
+ z+X/2ag/5xdppdqDPdwnpwVLWaG5oN1oUYj+lL17cLKNg6oZWI3FzlEiFH1wY/b/gmzw
+ qSBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=cg5OZZgeFdkySmBsDID4sS8qarnHbFdRK4wloQNjZ2E=;
- b=r7g97rsRaUYOlQqI6IGqTnWznVxg012r8o6mjCc7dSnn3we6x19gOwMMyfobytvoDg
- pBGPPrCSZDPhVbMbwHUKG1fb+nWCkjPUrAfD/z+Jh+XlVWNke5QenNakAylRBPhGJb1z
- CXCbrAUlscBzpcRkRSFILTQWYMdRsjYNzloQi76JXoHgpbXfMDhtb9OHFvIhq9SgG9Um
- k2Q+txomZXSu2KVTnM+ZeA7tIlBnM5qsCvCoDia1XYKkb+VC+ZgL7KWx9a+fmaOZX43m
- ppK/1M+pQeOC9hfzHdtg7X2MF6XsOllJHZdrfPug1Sbr8AssA1S638AeRywA/aiKF3G/
- J9NQ==
-X-Gm-Message-State: AOAM530aITYyczTdbxANmFf7jyUp+LmpYMcMiGUr53RJTtjIHbVd+BKC
- EYpS9gjnHID0KwC0tq2S36xh+KgY
-X-Received: by 2002:a5d:49c5:: with SMTP id t5mr6725072wrs.18.1592373134616;
- Tue, 16 Jun 2020 22:52:14 -0700 (PDT)
+ bh=xBt1JdUtXnVHDFLzLhbnDdhHBrdVurpC1i/gmVlTBm8=;
+ b=M4tv0n/t6xMiH7xiLpdBArdK4N6NQ/EMVa13PeN0hY3sbiLlpRcQW6kx0jwqpwAmNv
+ WhnHkvBqYUZ9aNVNTdtN62x2aEG3I9rJm+m4EhXkPcV0XaCPudBFpzlfY4NnR52ZuSas
+ 6ITpq12m9Gy9au1XAE723znlG8Hd89tuXDioRGOXkYAgYGI3Hl5FG6mIAQeYMVe9GM0x
+ Y+5h6AKI4BW7gs0LHr0oZI7FAlGntkCIVdphh8blGrlvnIweSS5/2ANWTubgu+t7Ysta
+ 97Ii8QrtIdQoc0Vm4bPUqoqZTYXr96guoIYiO2dk+QopVQgJBM05zuaRlU2cJDy5KFUL
+ iO2Q==
+X-Gm-Message-State: AOAM532DuSTwu1U+az74Yuy/1qGtcn+bPC+SPe0oL+2RXuEz7fNol+4m
+ n15CyEpjT8ZWEjgf+5QkfgasccmP
+X-Received: by 2002:a1c:de82:: with SMTP id v124mr6768495wmg.89.1592373141262; 
+ Tue, 16 Jun 2020 22:52:21 -0700 (PDT)
 Received: from localhost.localdomain (93.red-83-59-160.dynamicip.rima-tde.net.
  [83.59.160.93])
- by smtp.gmail.com with ESMTPSA id d28sm3000809wrc.50.2020.06.16.22.52.13
+ by smtp.gmail.com with ESMTPSA id d28sm3000809wrc.50.2020.06.16.22.52.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Jun 2020 22:52:14 -0700 (PDT)
+ Tue, 16 Jun 2020 22:52:20 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 06/14] hw/arm/mps2: Document CMSDK/FPGA APB subsystem
- sections
-Date: Wed, 17 Jun 2020 07:51:57 +0200
-Message-Id: <20200617055205.3576-7-f4bug@amsat.org>
+Subject: [PATCH v2 12/14] hw/arm/mps2: Add I2C devices
+Date: Wed, 17 Jun 2020 07:52:03 +0200
+Message-Id: <20200617055205.3576-13-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200617055205.3576-1-f4bug@amsat.org>
 References: <20200617055205.3576-1-f4bug@amsat.org>
@@ -96,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -125,46 +124,45 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Esteban Bosse <estebanbosse@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d8+M8C1iIOmL
+X-TUID: n4hEsjLaziBe
+
+From 'Application Note AN385', chapter 3.14:
+
+  The SMM implements a simple SBCon interface based on I2C.
+
+There are 4 SBCon interfaces on the FPGA APB subsystem.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/mps2.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ hw/arm/mps2.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-index daa55f730b..ee555f919d 100644
+index daa26f68d7..2f6acbf2c2 100644
 --- a/hw/arm/mps2.c
 +++ b/hw/arm/mps2.c
-@@ -65,7 +65,9 @@ typedef struct {
-     MemoryRegion blockram_m2;
-     MemoryRegion blockram_m3;
-     MemoryRegion sram;
-+    /* FPGA APB subsystem */
-     MPS2SCC scc;
-+    /* CMSDK APB subsystem */
-     CMSDKAPBDualTimer dualtimer;
- } MPS2MachineState;
- 
-@@ -299,9 +301,9 @@ static void mps2_common_init(MachineState *machine)
-         g_assert_not_reached();
+@@ -40,6 +40,7 @@
+ #include "hw/misc/mps2-scc.h"
+ #include "hw/misc/mps2-fpgaio.h"
+ #include "hw/ssi/pl022.h"
++#include "hw/i2c/arm_sbcon_i2c.h"
+ #include "hw/net/lan9118.h"
+ #include "net/net.h"
+ #include "hw/watchdog/cmsdk-apb-watchdog.h"
+@@ -365,6 +366,13 @@ static void mps2_common_init(MachineState *machine)
+                                  qdev_get_gpio_in(orgate_dev, j));
+         }
      }
++    for (i = 0; i < 4; i++) {
++        static const hwaddr i2cbase[] = {0x40022000,    /* Touch */
++                                         0x40023000,    /* Audio */
++                                         0x40029000,    /* Shield0 */
++                                         0x4002a000};   /* Shield1 */
++        sysbus_create_simple(TYPE_ARM_SBCON_I2C, i2cbase[i], NULL);
++    }
  
-+    /* CMSDK APB subsystem */
-     cmsdk_apb_timer_create(0x40000000, qdev_get_gpio_in(armv7m, 8), SYSCLK_FRQ);
-     cmsdk_apb_timer_create(0x40001000, qdev_get_gpio_in(armv7m, 9), SYSCLK_FRQ);
--
-     object_initialize_child(OBJECT(mms), "dualtimer", &mms->dualtimer,
-                             TYPE_CMSDK_APB_DUALTIMER);
-     qdev_prop_set_uint32(DEVICE(&mms->dualtimer), "pclk-frq", SYSCLK_FRQ);
-@@ -310,6 +312,7 @@ static void mps2_common_init(MachineState *machine)
-                        qdev_get_gpio_in(armv7m, 10));
-     sysbus_mmio_map(SYS_BUS_DEVICE(&mms->dualtimer), 0, 0x40002000);
- 
-+    /* FPGA APB subsystem */
-     object_initialize_child(OBJECT(mms), "scc", &mms->scc, TYPE_MPS2_SCC);
-     sccdev = DEVICE(&mms->scc);
-     qdev_prop_set_uint32(sccdev, "scc-cfg4", 0x2);
+     /* In hardware this is a LAN9220; the LAN9118 is software compatible
+      * except that it doesn't support the checksum-offload feature.
 -- 
 2.21.3
 

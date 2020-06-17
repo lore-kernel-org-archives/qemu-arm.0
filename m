@@ -1,94 +1,94 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp370782lfm;
-        Wed, 17 Jun 2020 00:25:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyMkoyRESQ5kydQSFetEYwIASs8iMty1waY2b/nTu/qjm2f8lS5Hc3gdKuJuozWO/zB0qrD
-X-Received: by 2002:a25:d354:: with SMTP id e81mr11211306ybf.398.1592378756036;
-        Wed, 17 Jun 2020 00:25:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592378756; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp370814lfm;
+        Wed, 17 Jun 2020 00:26:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxVrWJfSGpyQ0f8NfUxdg7+En8hNMxRUgKJkNbV1iEufUK5041jT/iTlEProAfd0rvnNjuA
+X-Received: by 2002:a25:ba0f:: with SMTP id t15mr10931916ybg.376.1592378761926;
+        Wed, 17 Jun 2020 00:26:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592378761; cv=none;
         d=google.com; s=arc-20160816;
-        b=TvZWQni1V8AnyQ1GbetDkGYU23sGPRG+odRSrUEOgA9+HoU7uMK1SE6mz0msGSIpT4
-         pG8y50KJMeDoLn6c3+qleb2ppRQQyxCNSYuYdCMoV+z3QTy9b7sp7mnHXBG+0zs7Bccm
-         j1YJOwXBpTimDPK0wZZomZvLodHw11MblEv4Yr4BBKiibEf33EKUO8xMyyHHbfnS6iIl
-         PkL+WtxoF0WAaS1DVYZmqBi+xeqi7u+XK6+yV0AbsGQGA1DY6esLCcPLP9PstEJKEsrs
-         wgnoK7U0Zf2IH0JJKKJDNraNb1/bAkPuPqzxBwW3DdH8x03dEzQ5C1rHD9SimaMEJeKr
-         qTOw==
+        b=lRZBGhI3/alObh6q5zJRVe2o1Omtsh8k4VWwtw20kk3R58vpfbDSc5d1Ltcdck/KV0
+         8gPNklB7AzoMOyFLPw2/FKdKESiBSp4kqasQdMJ7ee8bn/1xKSK1TkIXxFusuIj5AiNb
+         TCslRdOpt5g3BRU8ZfzWeEtUUX6/1dXdIX5Ef15YlApz6ead1QMjdzS8XIYMrWHAffgA
+         WNLAGaHPVAHyrjc4KKIw+msgosNFtVmvX0r9deP9WiYMqbc6yFx4GrOGsukobrmKKOrv
+         qSpmUUHLwD56GfE1opq3fwuWPnNTQU+fsbn1wyecFwOPANZ2RDox2xcXn2lsSULcP2LA
+         YXSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=BVuLqYtrt8uBmV3Fe5GFgsc46Ji8iMLXSf7RHd88kek=;
-        b=xtnWf//8p8Ztt1YEQYBfNVVVEg4yMh4K1k7wT/+rLyrGr997lmGuzFWmGSxrfQFQnN
-         WIn+9O0Pyz+yjvptSKNCoW867t9ZfgYzAnN2DQzkSyb9SSSamGl8AdbIalmhY+PUCNWf
-         5+do5H15VvLZzK5EkQ9gptJfG1sx9iFQPXU1ZYs7lP5cxaT3AJaRrRc0vtqT41bMLH6e
-         AEmAw/w4R/v7Cc4HhCIE9K+FiKhhK5gWOnu6ML5RRDTwAGyBbF/7AMHC/HDmcAZvYPW/
-         ovk9BZcuLCHW1a+RF6yUnAIgA780jw6Fp8FcAprzx1HNKcZ9lJvA+n2cMp259WcCqFop
-         trkg==
+        bh=F2YxX9VCCUyY03bbs5Etq9snItCbfRtbE7wliPQ48mM=;
+        b=BoggLrBGOPmnuQMgD/XOa2YQudWxXgm6IOrvollnItNB19YqsAwj5V9Xjs/RB4e1IE
+         25NuXLEDBcYSQWSs/RjBhXZQdlek7q4vJLRxyAJi8wLpUgNqXbc4EANksc+s519Ox2aB
+         c6wGQKotJAYCs5wiYDm8lsOJl5/oSEhw7Sf3SauPK2QoQ46hm4lNslKLUAMpJjDt5BaT
+         nV1UuvlPnPY24TooZ9Eej2f7Dt3x20rpjLckJW++cEAiUrF3TYmBgmfZ4OhyJtSrSNn6
+         z4X8uUcgwvd2hO5tKIGqo/Pl1T3QDCKyl1zaC19okUNZTqieYg9EvzZc7Y9vMYpS/+Rp
+         mHhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GPlx6IzH;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nReDE7X5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h5si19526462ybg.170.2020.06.17.00.25.55
+        by mx.google.com with ESMTPS id m12si18649340ybk.402.2020.06.17.00.26.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jun 2020 00:25:56 -0700 (PDT)
+        Wed, 17 Jun 2020 00:26:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GPlx6IzH;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nReDE7X5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:53246 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53466 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlSSJ-0004T9-A4
-	for alex.bennee@linaro.org; Wed, 17 Jun 2020 03:25:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40944)
+	id 1jlSSP-0004bl-3q
+	for alex.bennee@linaro.org; Wed, 17 Jun 2020 03:26:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40984)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jlSSA-0004RM-Cy; Wed, 17 Jun 2020 03:25:46 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:55175)
+ id 1jlSSD-0004XM-Mz; Wed, 17 Jun 2020 03:25:49 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35611)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jlSS8-0002Y6-TJ; Wed, 17 Jun 2020 03:25:46 -0400
-Received: by mail-wm1-x343.google.com with SMTP id g10so794389wmh.4;
- Wed, 17 Jun 2020 00:25:44 -0700 (PDT)
+ id 1jlSSC-0002aN-2B; Wed, 17 Jun 2020 03:25:49 -0400
+Received: by mail-wr1-x441.google.com with SMTP id x14so1172293wrp.2;
+ Wed, 17 Jun 2020 00:25:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=BVuLqYtrt8uBmV3Fe5GFgsc46Ji8iMLXSf7RHd88kek=;
- b=GPlx6IzHGYH3NeCHlM+gcHWjqm7pIIwQRisVevA6wjEEhj44wSMsiJDOnuktCyfA64
- 7xWdBBZQyMCKMb92x1a9lPgTeHQGHNvKavsQ2LZTxygOoRy/G0WSaKlsBV82oe18Dwf5
- GHB3gr8N5/LEH4xr5pBE0eNsrzt/C2chjn55F1naJjwhxAI3nwFAfvJ/+BaqidH7O4xZ
- GcHC3v9uAY5phUBmIQ43SiGRij6ah0fGgtblb28ta3uqZhfSI941BymVV0OTSpD/KWD9
- /UxNBtr5z4FOOmlJlwBTDm7RIniQGEVvF18KjvVLc2UfCrBfvAEiQY+Rw1J52/lttwv8
- BkcA==
+ bh=F2YxX9VCCUyY03bbs5Etq9snItCbfRtbE7wliPQ48mM=;
+ b=nReDE7X54tsGZKuzKKfgyO7o91mE9AMYQ61BD5+nrD5ecAf9wXRaRsBBiD9mqycf9u
+ Fw0cRfbm0vPbhfH6E/AYjE1nd3JzE0gGduujItqAiH9DXNL+M/Ms35Pwl8Kc2jh1ZNIn
+ q69cNpiNwOBOnHzerceQKxCWyra1DnWfU9u+GdYGNZHXEReHuPlOpEjwz04wWelQ4uXZ
+ oLnr9714tMsYtVhI7/5qfluZpFiP9isaREJ2ZLHLEwAe0gNHXCftqHG6OAAPgYfcOY2n
+ xtL/KSl++7C6zAqtbYfQiNJhahy8vpjJfYOQJbFshlZoXFmfbZIzGpeUmBcD0SmRjZ80
+ vCRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=BVuLqYtrt8uBmV3Fe5GFgsc46Ji8iMLXSf7RHd88kek=;
- b=nwYl/ZPouKJjcbgiIBnUBOZh5HxLZBAKGTlrQ6bAye92bHiR2hcLnRB6KBXTYWN4Jm
- zobIPCbqF8qhesFGyHQZZyEA0quMzth/vYUjwbfMiw9nAdD+sb29UTjwKwqG9o5402r4
- X0uqdsvo5VeOAPFdQ0SY5N3wJLejdfm9EeZrSjgtZW/+Cnr04mgbPf0oIw20LYgzdqhn
- y071nyjV0VIg/e622Y3ugonwOSDd/DBiO9AKeBR8T/maQ2aIcN3YjtWC+wUOgSNLlUJQ
- XjoyRJh8WFDUXl6wHdPfF88qrjuHkpq3P8kSg/x2bO2/MUedMT666s2AsfUa25GaZZU3
- PwtA==
-X-Gm-Message-State: AOAM532eQbIZVvPJAQmR9hecURaUEqIYW/C2i8asWtoRJBsc05o+nSZ8
- uHKTKnaG5Z+nghehyuMulAhVC4Kn
-X-Received: by 2002:a1c:bd84:: with SMTP id n126mr6660098wmf.149.1592378743056; 
- Wed, 17 Jun 2020 00:25:43 -0700 (PDT)
+ bh=F2YxX9VCCUyY03bbs5Etq9snItCbfRtbE7wliPQ48mM=;
+ b=ixCQWPSmk21IXZvZEwr23vvo9XeSbGJQwMTqI0MPRKZfcIC6GURyG4SJJGpWEzwEO/
+ 9oLm4Hus/oyM6+D0Yirx2XpDFNzTFKvLkfH46Qh+U3SS6RlSAKw/bS8e1UWBwz2WFhgA
+ D6EPRfsVFYru/xRjgNCvV7nrC9kCUcfk4aW4FpalTsFInZGYUWdyfPliN+de06w6oGe/
+ DFoL9Huy4p4WYUcMjyOQXzzzRY4TROG3wZCWplCMnpzcQt+SWOgLzWMryVELzjKudB04
+ EJwb2el5t2iYKM6aw754Ba+2NM4n/3FqQ0cnvGbU5Qw7hz54oMzwGCSTRTfCKgS0GOzK
+ nOCQ==
+X-Gm-Message-State: AOAM533j35ZNVMfEdpw/wVfrgB29uLAxMZlO22PvwhvScDxci+FExEG0
+ dlyN/8DD1EHkFYQXDI5YEpLAQkDn
+X-Received: by 2002:a5d:4710:: with SMTP id y16mr2361123wrq.189.1592378746100; 
+ Wed, 17 Jun 2020 00:25:46 -0700 (PDT)
 Received: from localhost.localdomain (93.red-83-59-160.dynamicip.rima-tde.net.
  [83.59.160.93])
- by smtp.gmail.com with ESMTPSA id j5sm32894781wrq.39.2020.06.17.00.25.41
+ by smtp.gmail.com with ESMTPSA id j5sm32894781wrq.39.2020.06.17.00.25.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Jun 2020 00:25:42 -0700 (PDT)
+ Wed, 17 Jun 2020 00:25:45 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 01/14] hw/watchdog/cmsdk-apb-watchdog: Add trace event for
- lock status
-Date: Wed, 17 Jun 2020 09:25:26 +0200
-Message-Id: <20200617072539.32686-2-f4bug@amsat.org>
+Subject: [PATCH v3 04/14] hw/i2c: Add header for ARM SBCon two-wire serial bus
+ interface
+Date: Wed, 17 Jun 2020 09:25:29 +0200
+Message-Id: <20200617072539.32686-5-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200617072539.32686-1-f4bug@amsat.org>
 References: <20200617072539.32686-1-f4bug@amsat.org>
@@ -96,8 +96,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -125,37 +125,127 @@ Cc: Esteban Bosse <estebanbosse@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DJv+kTnmxLQ2
+X-TUID: z7mOnPX76Y1F
 
-Add a trace event to see when a guest disable/enable the watchdog.
+'ARM SBCon two-wire serial bus interface' is the official
+name describing the pair of registers used to bitbanging
+I2C in the Versatile boards.
+
+Make the private VersatileI2CState structure as public
+ArmSbconI2CState.
+Add the TYPE_ARM_SBCON_I2C, alias to our current
+TYPE_VERSATILE_I2C model.
+Rename the memory region description as 'arm_sbcon_i2c'.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/watchdog/cmsdk-apb-watchdog.c | 1 +
- hw/watchdog/trace-events         | 1 +
- 2 files changed, 2 insertions(+)
+ include/hw/i2c/arm_sbcon_i2c.h | 35 ++++++++++++++++++++++++++++++++++
+ hw/i2c/versatile_i2c.c         | 17 +++++------------
+ MAINTAINERS                    |  1 +
+ 3 files changed, 41 insertions(+), 12 deletions(-)
+ create mode 100644 include/hw/i2c/arm_sbcon_i2c.h
 
-diff --git a/hw/watchdog/cmsdk-apb-watchdog.c b/hw/watchdog/cmsdk-apb-watchdog.c
-index 1541365914..5bbadadfa6 100644
---- a/hw/watchdog/cmsdk-apb-watchdog.c
-+++ b/hw/watchdog/cmsdk-apb-watchdog.c
-@@ -225,6 +225,7 @@ static void cmsdk_apb_watchdog_write(void *opaque, hwaddr offset,
-         break;
-     case A_WDOGLOCK:
-         s->lock = (value != WDOG_UNLOCK_VALUE);
-+        trace_cmsdk_apb_watchdog_lock(s->lock);
-         break;
-     case A_WDOGITCR:
-         if (s->is_luminary) {
-diff --git a/hw/watchdog/trace-events b/hw/watchdog/trace-events
-index ab94d7df50..3124ca1f1b 100644
---- a/hw/watchdog/trace-events
-+++ b/hw/watchdog/trace-events
-@@ -4,3 +4,4 @@
- cmsdk_apb_watchdog_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB watchdog read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- cmsdk_apb_watchdog_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB watchdog write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- cmsdk_apb_watchdog_reset(void) "CMSDK APB watchdog: reset"
-+cmsdk_apb_watchdog_lock(uint32_t lock) "CMSDK APB watchdog: lock %" PRIu32
+diff --git a/include/hw/i2c/arm_sbcon_i2c.h b/include/hw/i2c/arm_sbcon_i2c.h
+new file mode 100644
+index 0000000000..5d96507ab6
+--- /dev/null
++++ b/include/hw/i2c/arm_sbcon_i2c.h
+@@ -0,0 +1,35 @@
++/*
++ * ARM SBCon two-wire serial bus interface (I2C bitbang)
++ *   a.k.a.
++ * ARM Versatile I2C controller
++ *
++ * Copyright (c) 2006-2007 CodeSourcery.
++ * Copyright (c) 2012 Oskar Andero <oskar.andero@gmail.com>
++ * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef HW_I2C_ARM_SBCON_H
++#define HW_I2C_ARM_SBCON_H
++
++#include "hw/sysbus.h"
++#include "hw/i2c/bitbang_i2c.h"
++
++#define TYPE_VERSATILE_I2C "versatile_i2c"
++#define TYPE_ARM_SBCON_I2C TYPE_VERSATILE_I2C
++
++#define ARM_SBCON_I2C(obj) \
++    OBJECT_CHECK(ArmSbconI2CState, (obj), TYPE_ARM_SBCON_I2C)
++
++typedef struct ArmSbconI2CState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++    /*< public >*/
++
++    MemoryRegion iomem;
++    bitbang_i2c_interface bitbang;
++    int out;
++    int in;
++} ArmSbconI2CState;
++
++#endif /* HW_I2C_ARM_SBCON_H */
+diff --git a/hw/i2c/versatile_i2c.c b/hw/i2c/versatile_i2c.c
+index 0ce10a1bcc..da8cda2ec1 100644
+--- a/hw/i2c/versatile_i2c.c
++++ b/hw/i2c/versatile_i2c.c
+@@ -1,5 +1,6 @@
+ /*
+- * ARM Versatile I2C controller
++ * ARM SBCon two-wire serial bus interface (I2C bitbang)
++ * a.k.a. ARM Versatile I2C controller
+  *
+  * Copyright (c) 2006-2007 CodeSourcery.
+  * Copyright (c) 2012 Oskar Andero <oskar.andero@gmail.com>
+@@ -22,24 +23,16 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "hw/sysbus.h"
+-#include "hw/i2c/bitbang_i2c.h"
++#include "hw/i2c/arm_sbcon_i2c.h"
+ #include "hw/registerfields.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ 
+-#define TYPE_VERSATILE_I2C "versatile_i2c"
+ #define VERSATILE_I2C(obj) \
+     OBJECT_CHECK(VersatileI2CState, (obj), TYPE_VERSATILE_I2C)
+ 
+-typedef struct VersatileI2CState {
+-    SysBusDevice parent_obj;
++typedef ArmSbconI2CState VersatileI2CState;
+ 
+-    MemoryRegion iomem;
+-    bitbang_i2c_interface bitbang;
+-    int out;
+-    int in;
+-} VersatileI2CState;
+ 
+ REG32(CONTROL_GET, 0)
+ REG32(CONTROL_SET, 0)
+@@ -99,7 +92,7 @@ static void versatile_i2c_init(Object *obj)
+     bus = i2c_init_bus(dev, "i2c");
+     bitbang_i2c_init(&s->bitbang, bus);
+     memory_region_init_io(&s->iomem, obj, &versatile_i2c_ops, s,
+-                          "versatile_i2c", 0x1000);
++                          "arm_sbcon_i2c", 0x1000);
+     sysbus_init_mmio(sbd, &s->iomem);
+ }
+ 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 955cc8dd5c..185d39e151 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -842,6 +842,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/*/versatile*
++F: include/hw/i2c/arm_sbcon_i2c.h
+ F: hw/misc/arm_sysctl.c
+ F: docs/system/arm/versatile.rst
+ 
 -- 
 2.21.3
 

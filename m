@@ -1,93 +1,93 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp372598lfm;
-        Wed, 17 Jun 2020 00:29:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyqA9KfsRbfynmlYM8GjgcJCmDtTzU+Sx1Rhgy0E9c/HTC85RnB1A4KCWOypznn8loPuHBS
-X-Received: by 2002:a25:400e:: with SMTP id n14mr9335611yba.424.1592378957300;
-        Wed, 17 Jun 2020 00:29:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592378957; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp373263lfm;
+        Wed, 17 Jun 2020 00:30:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwNq+FyWWZMJTbammUsxX4EYJHV4YYycoT8M2NpWedUpwo6UoUAbjCbBM+1Yvgf+/niRYBO
+X-Received: by 2002:a25:dfcc:: with SMTP id w195mr11068779ybg.372.1592379029121;
+        Wed, 17 Jun 2020 00:30:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592379029; cv=none;
         d=google.com; s=arc-20160816;
-        b=XaVQ11N/B5QvxElCwHdO8ekzJ8kVXkdIZbveILIxmeSXd2XTgmV4bl7cvYYMbTdytf
-         77EUtd1XaL6uu77w4A/iK7o6HG4r+N3IJGbjpyaJSXd8tYg4iQjgnrNi6kX4Gbk+EtCQ
-         ffqC67rE+sPMTWmE7aZvq0grPAHKv3iBK5JkvbtQs+DNbCSY2BmmbA/C0WGNIyinrWAL
-         XVBduCHVWLGXv29EFzRGVZFFx/0SrtA4EyHSux+Y9MSDOKkNnwy3E6McBP77iy2idnWM
-         WWF4BUg2LJ1RXrRZ1yNM88aaRJSvJJ2+KJyI46H9JgKR8JEQgG+dqk1wFZuTGs15Db2N
-         seoQ==
+        b=HOa5MEXYPIfI3buj9wuw6wSXTKvPw5tA2wEuXvuQXx8AhkAMllTT8xDa6jrtgNTU/u
+         Gfba9i9DcM0bOqhkzqPhI27jzVaxXTkCq3yJwNT6mzYNuk238j7T8uIPhA/HzGm2srns
+         N5xwYgEth8D4JRe1OjFRAxCNJsDtTMX9Jt6cIq5URUdn8LaU9JoXaX5VKFSvuUgJRU9w
+         CphvfV3YXJg6q+1GfESsXGt6rmjYtOQOe0I2/gJI4xy5k/dtwZ1rxikbJ+pTPlepxd88
+         aXMBDNhPXT8HmRHXZauWa2XH2QyGZSRHmmoIKhLaCAOuhP9ll0rXHFMORJNSxC+0BzNt
+         ievA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=FBTuMSOiLwpA4yPchfEYPLFdnrdZHjpXEDQDsJPN5pY=;
-        b=r59clAy4416VvZrYWaab0e+7y4TyuxE+nvSBegMTfLW/Z05I5F4FyLWeQfDkItGiMf
-         Ix7pQCzbByYAMDg+XSSzATZ7cDr3qEPx+4EPunNONsF4k9NDBXlZ+UcCdes8dDr/lVsG
-         L19KDfsXvuRYD/hIsOHLK+HHpPWhdPs9MKzv+hpBIi8dW7F+NJRqvAojZn6/UnI/+VF2
-         B77vGXYu3rB5GYCofeboSoqMCs9LrFLRW1GrnpPQv1aAhV6OvdXr30kug6ZV7+88ZPMf
-         PY4XvttkZCxoqcesCbq//sZyhIwEbxYwITiCm0UP3e6BAj4OlZddaWapEFzJb6exNe8H
-         QVmw==
+        bh=gRuYrkZwAIJ2Q2Q4lPg1tjWevvwY/3xzxDc6xxMros0=;
+        b=T6SYZ57qtfSnLZwXlEYABF9EkZnvN+1NbR+AXnybXjc/jngOx3mNsSsJvnIa1cHSfk
+         okIaX14le3WCNf12ja8WHWRQizMCSelTThZbxdeeFqrV3AeM8scEdIlBG/Ny4fMrTLr4
+         uW0pFQ/zNlRORg3HT8414y6itaycinqY/wuc23ydiUkXaRY9zHElLkE25S2QuQ6UF3Ap
+         M4IUzh9264YazvRn2ZpeUskzaBEJ7I7S4/s1aEVSqsOzoqnSkZGnfrXFarkf/phzZ8mj
+         J5LDTnn8DyV5GHfvO4d12Fkod/fupIzdBMUujehDUCTFWXdOG4FG/wnLZZMjEHa8E07x
+         Vysw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=H8FTmBWP;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Fa7mOoDl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n205si19149851ybf.246.2020.06.17.00.29.17
+        by mx.google.com with ESMTPS id n4si17923234yba.245.2020.06.17.00.30.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jun 2020 00:29:17 -0700 (PDT)
+        Wed, 17 Jun 2020 00:30:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=H8FTmBWP;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Fa7mOoDl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:38096 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42960 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlSVY-0001g9-Mg
-	for alex.bennee@linaro.org; Wed, 17 Jun 2020 03:29:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41028)
+	id 1jlSWi-0003s1-H3
+	for alex.bennee@linaro.org; Wed, 17 Jun 2020 03:30:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40974)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jlSSG-0004eR-OJ; Wed, 17 Jun 2020 03:25:52 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:50936)
+ id 1jlSSC-0004V8-PU; Wed, 17 Jun 2020 03:25:48 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:55176)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jlSSF-0002ax-8x; Wed, 17 Jun 2020 03:25:52 -0400
-Received: by mail-wm1-x344.google.com with SMTP id l17so805589wmj.0;
- Wed, 17 Jun 2020 00:25:50 -0700 (PDT)
+ id 1jlSSA-0002Z7-Vt; Wed, 17 Jun 2020 03:25:48 -0400
+Received: by mail-wm1-x344.google.com with SMTP id g10so794474wmh.4;
+ Wed, 17 Jun 2020 00:25:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=FBTuMSOiLwpA4yPchfEYPLFdnrdZHjpXEDQDsJPN5pY=;
- b=H8FTmBWPbuT0503K0fu/NHESlWV/tf1E2Bn6iZCOF8zkK+oYDEm4Thz9NxkIuC7nkc
- j5cMmDjh+TZPlB/wb4e+0Fgrz9Im4VEXu5WtXk2K7qKf2vtHEpAn7gzg64nwdPQPTQ8/
- +Uh5TUxhbAd9uuyLMmrsvYq+avoKx+Yb8cvv8F+/5amvBNQrYuawdIQutWzG96iLWlCo
- HKJnbM1+gSFojWBMzXkHwYCtwqP5jGL7x0IYWznRg22CBmbg5oAKJUDI3bVQq8Ybqfws
- 11nuV+n9UlCxExP6xcc+iTY9RZn6nPfoU7F3KlVXsBuFGbT7XNxI1qiHVdIPLKEiMx2Y
- f5ew==
+ bh=gRuYrkZwAIJ2Q2Q4lPg1tjWevvwY/3xzxDc6xxMros0=;
+ b=Fa7mOoDl6z6gH7ieeOWAN3PUnzx1fNJLc+q0jN46c2JPc4h8S2Ov4N0uihhifmOV7S
+ +R1l4ZHpxsStx1NWeJOMTMK7Bm26B611BLDM47Jfu+EolyCk6eOA8Q1KSyZQ5238vfOM
+ O09eYKt36h+1FrJLMKNW525/ZVT91YIin3n0P4N1EeU/ebzxYw1nyy26CANizRCZ/W4t
+ nxOfEEWBvyDUT1DDzdsP9WdU/nFc9ATgV9AbE5kcrrUvMyRXqZS7Oytj00olINuA+eIc
+ xSZAHom3dyF1tvwN84GvOFl4rKUkrauZEwRYOzjvngrIFsYjxh+QhhEepXX+4xUMf0Fx
+ 7nJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=FBTuMSOiLwpA4yPchfEYPLFdnrdZHjpXEDQDsJPN5pY=;
- b=KQoW7MIge+FQcgTLwWpxQSwtnHohqpxDF+a/4EK4NMo0S3DfW2pjNVD3Ggoa3cjA8E
- Jc1yVvrRwKdABtijJOrtZygiWLKdYhsNsyLCDQqb7WKY1kdh0EJewZQSxPVDUwra4y3k
- C5Cn8Div/Sh6uF4qCu6ezupHn5Am8RL2fz+9v2K2SwixsU3tnF1eMuk9lgAaZPeD3i6N
- gkk5ia/pSGwyd0GU9NRR42Pb7OFruTYjqJPHNKY3R+P3G8D0CUe5ewRgsp6Ws/X3tQmb
- 7D3XtGFfySuDHONGvqQ+MsgSaPn4F9r0fLr9XagCWcIzJJrDCxyJiKpChsXZTKIuXSvS
- nfnQ==
-X-Gm-Message-State: AOAM530zCjJ6oP0G8lRfeREJ4K9w7BPmZH40tHTLrFtA7D7+9AoXV/mb
- i4cxGQRKLuXts5mAMcW9FVTt0TcU
-X-Received: by 2002:a1c:e355:: with SMTP id a82mr6997164wmh.1.1592378749441;
- Wed, 17 Jun 2020 00:25:49 -0700 (PDT)
+ bh=gRuYrkZwAIJ2Q2Q4lPg1tjWevvwY/3xzxDc6xxMros0=;
+ b=csLL3J8SZhxckzeF1UAK26Q+AZzvOb01GCJTngOKIcjN8CTmuI26uLo19/G7uwYuev
+ pqcsu5hXowERYM/H7SYmYonCfqyRIYqPIUXFX3X5TxWbXse4FkKz6rl5FI0AQ7NoHh7d
+ h2lhfblkIOgM36S/VDLs6kUcjtFklyopOH0TU7zYs674CHUDHOrDapTKPYNTpyezQlBL
+ wfPoLlO9FzRYgCHBkNSDcUckgJ+1YFHLR4yGkMz0FBa3vCc0QwkRDXIagRxo0hGtNd6l
+ zubvvKoAc3PmJzm+xDT1yGM6Bpy/33On3nWweU1bbaUeLvizLTNi95U2lmBBv+0tnY5A
+ Qh/A==
+X-Gm-Message-State: AOAM533eoCSLXmq18iT0m++1Y1Yyshch1HAHYaWQhH89rCuwBnYquHDY
+ QI6KJRU2bVV5j9zxBwQwcHjNCfXN
+X-Received: by 2002:a1c:4b18:: with SMTP id y24mr7343880wma.102.1592378745104; 
+ Wed, 17 Jun 2020 00:25:45 -0700 (PDT)
 Received: from localhost.localdomain (93.red-83-59-160.dynamicip.rima-tde.net.
  [83.59.160.93])
- by smtp.gmail.com with ESMTPSA id j5sm32894781wrq.39.2020.06.17.00.25.48
+ by smtp.gmail.com with ESMTPSA id j5sm32894781wrq.39.2020.06.17.00.25.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Jun 2020 00:25:48 -0700 (PDT)
+ Wed, 17 Jun 2020 00:25:44 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 07/14] hw/arm/mps2: Rename CMSDK AHB peripheral region
-Date: Wed, 17 Jun 2020 09:25:32 +0200
-Message-Id: <20200617072539.32686-8-f4bug@amsat.org>
+Subject: [PATCH v3 03/14] hw/i2c/versatile_i2c: Add SCL/SDA definitions
+Date: Wed, 17 Jun 2020 09:25:28 +0200
+Message-Id: <20200617072539.32686-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200617072539.32686-1-f4bug@amsat.org>
 References: <20200617072539.32686-1-f4bug@amsat.org>
@@ -124,34 +124,40 @@ Cc: Esteban Bosse <estebanbosse@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OIgzsm29AyHF
+X-TUID: VSkz4kJzSTTd
 
-To differenciate with the CMSDK APB peripheral region,
-rename this region 'CMSDK AHB peripheral region'.
+Use self-explicit definitions instead of magic values.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/mps2.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/i2c/versatile_i2c.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-index ee555f919d..4fe5cc8622 100644
---- a/hw/arm/mps2.c
-+++ b/hw/arm/mps2.c
-@@ -212,10 +212,11 @@ static void mps2_common_init(MachineState *machine)
-      */
-     create_unimplemented_device("CMSDK APB peripheral region @0x40000000",
-                                 0x40000000, 0x00010000);
--    create_unimplemented_device("CMSDK peripheral region @0x40010000",
-+    create_unimplemented_device("CMSDK AHB peripheral region @0x40010000",
-                                 0x40010000, 0x00010000);
-     create_unimplemented_device("Extra peripheral region @0x40020000",
-                                 0x40020000, 0x00010000);
-+
-     create_unimplemented_device("RESERVED 4", 0x40030000, 0x001D0000);
-     create_unimplemented_device("VGA", 0x41000000, 0x0200000);
+diff --git a/hw/i2c/versatile_i2c.c b/hw/i2c/versatile_i2c.c
+index 040139d701..0ce10a1bcc 100644
+--- a/hw/i2c/versatile_i2c.c
++++ b/hw/i2c/versatile_i2c.c
+@@ -45,6 +45,9 @@ REG32(CONTROL_GET, 0)
+ REG32(CONTROL_SET, 0)
+ REG32(CONTROL_CLR, 4)
  
++#define SCL BIT(0)
++#define SDA BIT(1)
++
+ static uint64_t versatile_i2c_read(void *opaque, hwaddr offset,
+                                    unsigned size)
+ {
+@@ -76,8 +79,8 @@ static void versatile_i2c_write(void *opaque, hwaddr offset,
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Bad offset 0x%x\n", __func__, (int)offset);
+     }
+-    bitbang_i2c_set(&s->bitbang, BITBANG_I2C_SCL, (s->out & 1) != 0);
+-    s->in = bitbang_i2c_set(&s->bitbang, BITBANG_I2C_SDA, (s->out & 2) != 0);
++    bitbang_i2c_set(&s->bitbang, BITBANG_I2C_SCL, (s->out & SCL) != 0);
++    s->in = bitbang_i2c_set(&s->bitbang, BITBANG_I2C_SDA, (s->out & SDA) != 0);
+ }
+ 
+ static const MemoryRegionOps versatile_i2c_ops = {
 -- 
 2.21.3
 

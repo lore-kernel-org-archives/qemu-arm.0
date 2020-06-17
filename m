@@ -1,92 +1,91 @@
-Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp517954qvs;
-        Wed, 17 Jun 2020 09:43:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylZtBHRHZuUfU8E8Z6MvJArnow+l3VU8gtvo2whnDXfdVHkrUJwmQjyhVI2lw/v1rKASSr
-X-Received: by 2002:a5b:cc9:: with SMTP id e9mr13278085ybr.287.1592412235094;
-        Wed, 17 Jun 2020 09:43:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592412235; cv=none;
+Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp519307qvs;
+        Wed, 17 Jun 2020 09:45:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwN3nbURO1mbJmM7wHzWR4mdJlxfTSQCcwl8L9hJDgfsNgsh/64AUbXNkJ9pLD3vt0DV6VY
+X-Received: by 2002:a25:d7cc:: with SMTP id o195mr14283142ybg.37.1592412349037;
+        Wed, 17 Jun 2020 09:45:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592412349; cv=none;
         d=google.com; s=arc-20160816;
-        b=u7x9u255rJzWm7Nt86sE2TmG7vh8cf9l8it/NPNrGkc2EuTnpKF+IqhDdf5d7SeDnP
-         YezaSi64WKMzGUGWkNliRMAX4U0DI3avQlYzBuS+7ISl4cWtVG9YRrx42H0c1DVqT0d7
-         C0X+udzchzwUYv3APGMCnTasyWNP1JDHXj1Oz/8dUGtP5wO3yr8bHZvWA0Mc9tWQbonH
-         +A4G8lULRCQLKqnB1JTePqTk/uQosKKlGAQBIm8PHggkcnvgWms7FbcUxTVTECtFuXZh
-         bNd0YK3v8MZr14WU6iTdY4/QOjeIqXq9TlL7jpe9e7oKqPdUdR1y9LROsfla0JKABO60
-         U/bw==
+        b=boBVY3hqY7Q4nHnNI9H6XRY8HuMAA7Hf0k04g1Bzwhb6L6vaiT+/0OashvrAKn7vaG
+         hzqcQTAvFYkeWJgQ+4KYz1TKXa8X1kvjN6viZMhm1fYvWo3RaEBC0bZTRMrgyE1i+u8K
+         3ZgtP3r0GctHbHLOwMC78cCnfR6BYzP36CdtDuXkGwdZc/4UV4QswesiFnlAm7fw/QzO
+         yTT9t/APQSs2mbEwgu/eog4RDwpIv4gNRAPk3Fd2oSwlWWEU6lum0HF1TYaJOeJV1zok
+         lTKdG7yulILmPp1euybY7WTz4jk+G9mAYu2HB+gxXBmlVt+YXjWs3oY6jVrKh/lddnfA
+         TB5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=UuVYLXTTurbVq/lcDVB6+H9+iLvhQnxBvlDNLEN5Q1M=;
-        b=ppWdmv7C5HOTrdWEg0OZHFSK2wiiGzPL4w0YYe00gAyNe9OIlFX2oIdXVTWRMIrjz5
-         jTK7zn5KatGKWZQHAVbLIrxuOY54hQRb4XVJlZ/aOOJk6S0fNbF0YFldCxSgCq/puXo/
-         oyOCir9wtx7QzZIXFk6HiWBpdJiQa3ntzpudzg198ilKwB7Q4g7lT4EgL15VHE3EKp4t
-         TSodhIMwVVUgGCjQYnGnkJJalIaJX1Q9GpJQuGPQvGNl7WaC/5G+3J6V0ljFrzepdtOT
-         0eXvIOcGA01xtYampntDh5Kk9QV37Xfgnae25RfdiRP6kTFENAV5VR7P2jlpEY2OtmGI
-         Kvpw==
+        bh=lCrpIvfi9JfGar0O5LHu+FZ+nK9UgJRMjKrTZ8XfWXQ=;
+        b=PGtIP9cNvzKJwi6cOY1EVUvn9uf3g5ApyH0drn0pMARNVgdyuVnTenINfu3aqg93IH
+         XVsvr7UHSzOC+tddG7dhtQ5U1Q7z+nQXoeoLSCA5uK0k/ifgHZKwPjjbmtjOHw2s5rqS
+         Gl4syWyt/xnPuAMMAMVuj5CWFVVzwWyMwayFluwiDzJ8nsA8z+Mu7IVp96nNaB/LahxS
+         ZCPUn8w1s9t+1xyY72VctSkDUbmecIDfvDoaTQbjW07HaLPMOmcqqyt49meoHz/rtgvr
+         piRquv4G374X51ZXDdtBmY5HqBsFQh39HlqyCj0rdN3JcceYs6khpNO0TSD/LKOyvuTk
+         cZZw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b204si147511ybg.181.2020.06.17.09.43.55
+        by mx.google.com with ESMTPS id o77si137060ybg.332.2020.06.17.09.45.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jun 2020 09:43:55 -0700 (PDT)
+        Wed, 17 Jun 2020 09:45:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46450 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52788 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlbAI-0001zB-IR
-	for alex.bennee@linaro.org; Wed, 17 Jun 2020 12:43:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45356)
+	id 1jlbC8-0004kz-IT
+	for alex.bennee@linaro.org; Wed, 17 Jun 2020 12:45:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45680)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jlb8w-0000Tv-6h
- for qemu-devel@nongnu.org; Wed, 17 Jun 2020 12:42:30 -0400
-Received: from 16.mo7.mail-out.ovh.net ([46.105.72.216]:59223)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jlbA6-00029Z-Op
+ for qemu-devel@nongnu.org; Wed, 17 Jun 2020 12:43:42 -0400
+Received: from 1.mo6.mail-out.ovh.net ([46.105.56.136]:47821)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jlb8s-0005J4-2B
- for qemu-devel@nongnu.org; Wed, 17 Jun 2020 12:42:29 -0400
-Received: from player798.ha.ovh.net (unknown [10.110.171.227])
- by mo7.mail-out.ovh.net (Postfix) with ESMTP id 9F9AA16CB5C
- for <qemu-devel@nongnu.org>; Wed, 17 Jun 2020 18:42:23 +0200 (CEST)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jlbA4-0005PQ-5J
+ for qemu-devel@nongnu.org; Wed, 17 Jun 2020 12:43:42 -0400
+Received: from player779.ha.ovh.net (unknown [10.110.103.118])
+ by mo6.mail-out.ovh.net (Postfix) with ESMTP id 5F554219A67
+ for <qemu-devel@nongnu.org>; Wed, 17 Jun 2020 18:43:38 +0200 (CEST)
 Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
  (Authenticated sender: clg@kaod.org)
- by player798.ha.ovh.net (Postfix) with ESMTPSA id 5C1C5139391D0;
- Wed, 17 Jun 2020 16:42:13 +0000 (UTC)
+ by player779.ha.ovh.net (Postfix) with ESMTPSA id 48A32137231AA;
+ Wed, 17 Jun 2020 16:43:29 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-106R006778cf0ea-3aef-4ffb-9c1b-112d4f892549,ABECD89738EEB0C75E5395B338997A57DB3A3EEE)
+ (GARM-103G005247dbfc7-cd3e-4924-9b56-6fc4f98f6ba9,ABECD89738EEB0C75E5395B338997A57DB3A3EEE)
  smtp.auth=clg@kaod.org
-Subject: Re: [PATCH v2 11/12] hw/arm: Wire up BMC boot flash for npcm750-evb
- and quanta-gsj
+Subject: Re: [PATCH v2 12/12] docs/system: Add Nuvoton machine documentation
 To: Havard Skinnemoen <hskinnemoen@google.com>, peter.maydell@linaro.org,
  joel@jms.id.au
 References: <20200611223016.259837-1-hskinnemoen@google.com>
- <20200611223016.259837-12-hskinnemoen@google.com>
+ <20200611223016.259837-13-hskinnemoen@google.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <69a4b9c8-0ae0-96e2-8b46-cc89c9acbc9a@kaod.org>
-Date: Wed, 17 Jun 2020 18:42:13 +0200
+Message-ID: <ac8dcb91-6c91-3b1c-578d-5f9cb830bea6@kaod.org>
+Date: Wed, 17 Jun 2020 18:43:28 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200611223016.259837-12-hskinnemoen@google.com>
+In-Reply-To: <20200611223016.259837-13-hskinnemoen@google.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 5183361699602271145
+X-Ovh-Tracer-Id: 5204472319721835433
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudejvddguddtgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfeffvddtudegieefudeugffhjefgieegieegleettdehgfeiieevueeihfegfefgnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeelkedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=46.105.72.216; envelope-from=clg@kaod.org;
- helo=16.mo7.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/17 12:42:23
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudejvddguddtgecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheeutdeuueeltdfghfevveeugffgvdfghfejgeejkeeigefhudehvdduledvhfffnecuffhomhgrihhnpehnuhhvohhtohhnrdgtohhmnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeejledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=46.105.56.136; envelope-from=clg@kaod.org;
+ helo=1.mo6.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/17 12:43:38
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -103,93 +102,127 @@ Cc: kfting@nuvoton.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Avi.Fishman@nuvoton.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nTSfagi9k931
+X-TUID: 8H6UarK5ga2R
 
 On 6/12/20 12:30 AM, Havard Skinnemoen wrote:
-> This allows these NPCM7xx-based boards to boot from a flash image, e.g.
-> one built with OpenBMC. For example like this:
-> 
-> IMAGE=${OPENBMC}/build/tmp/deploy/images/gsj/image-bmc
-
-could you put the image on some site when ready ? 
-
-> qemu-system-arm -machine quanta-gsj -nographic \
-> 	-bios ~/qemu/bootrom/npcm7xx_bootrom.bin \
-> 	-drive file=${IMAGE},if=mtd,bus=0,unit=0,format=raw,snapshot=on
-> 
-> Change-Id: I158a4d9952c0e90f2b1b7280443a7305b6ae57cf
-> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> Change-Id: I88e437cb22a8441e0c0e672dfb57568ac81172d8
 > Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
+
 > ---
->  hw/arm/npcm7xx_boards.c | 27 +++++++++++++++++++++++++++
->  1 file changed, 27 insertions(+)
+>  docs/system/arm/nuvoton.rst | 89 +++++++++++++++++++++++++++++++++++++
+>  docs/system/target-arm.rst  |  1 +
+>  2 files changed, 90 insertions(+)
+>  create mode 100644 docs/system/arm/nuvoton.rst
 > 
-> diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-> index 86e18af2d7..1ec772fa59 100644
-> --- a/hw/arm/npcm7xx_boards.c
-> +++ b/hw/arm/npcm7xx_boards.c
-> @@ -18,6 +18,7 @@
->  #include "hw/arm/boot.h"
->  #include "hw/arm/npcm7xx.h"
->  #include "hw/core/cpu.h"
-> +#include "hw/qdev-properties.h"
->  #include "qapi/error.h"
->  #include "qemu/units.h"
->  
-> @@ -40,6 +41,20 @@ static void npcm7xx_load_kernel(MachineState *machine, NPCM7xxState *soc)
->      arm_load_kernel(&soc->cpu[0], machine, &npcm7xx_binfo);
->  }
->  
-> +static void npcm7xx_connect_flash(NPCM7xxFIUState *fiu, int cs_no,
-> +                                  const char *flash_type, DriveInfo *dinfo) {
-> +    DeviceState *flash;
-> +    qemu_irq flash_cs;
+> diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
+> new file mode 100644
+> index 0000000000..1ca34c0051
+> --- /dev/null
+> +++ b/docs/system/arm/nuvoton.rst
+> @@ -0,0 +1,89 @@
+> +Nuvoton iBMC boards (``npcm750-evb``, ``quanta-gsj``)
+> +=====================================================
 > +
-> +    flash = ssi_create_slave_no_init(fiu->spi, flash_type);
-> +    qdev_prop_set_drive(flash, "drive", blk_by_legacy_dinfo(dinfo),
-> +                        &error_abort);
-> +    qdev_init_nofail(flash);
+> +The `Nuvoton iBMC`_ chips (NPCM7xx) are a family of ARM-based SoCs that are
+> +designed to be used as Baseboard Management Controllers (BMCs) in various
+> +servers. They all feature one or two ARM Cortex A9 CPU cores, as well as an
+> +assortment of peripherals targeted for either Enterprise or Data Center /
+> +Hyperscale applications. The former is a superset of the latter, so NPCM750 has
+> +all the peripherals of NPCM730 and more.
 > +
-> +    flash_cs = qdev_get_gpio_in_named(flash, SSI_GPIO_CS, 0);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(fiu), cs_no, flash_cs);
-> +}
+> +.. _Nuvoton iBMC: https://www.nuvoton.com/products/cloud-computing/ibmc/
 > +
->  static NPCM7xxState *npcm7xx_create_soc(MachineState *machine)
->  {
->      NPCM7xxMachineClass *nmc = NPCM7XX_MACHINE_GET_CLASS(machine);
-> @@ -57,18 +72,30 @@ static NPCM7xxState *npcm7xx_create_soc(MachineState *machine)
->  static void npcm750_evb_init(MachineState *machine)
->  {
->      NPCM7xxState *soc;
-> +    DriveInfo *dinfo;
->  
->      soc = npcm7xx_create_soc(machine);
->  
-> +    dinfo = drive_get(IF_MTD, 0, 0);
-> +    if (dinfo) {
-> +        npcm7xx_connect_flash(&soc->fiu[0], 0, "w25q256", dinfo);
-> +    }
+> +The NPCM750 SoC has two Cortex A9 cores and is targeted for the Enterprise
+> +segment. The following machines are based on this chip :
 > +
->      npcm7xx_load_kernel(machine, soc);
->  }
->  
->  static void quanta_gsj_init(MachineState *machine)
->  {
->      NPCM7xxState *soc;
-> +    DriveInfo *dinfo;
->  
->      soc = npcm7xx_create_soc(machine);
->  
-> +    dinfo = drive_get(IF_MTD, 0, 0);
-> +    if (dinfo) {
-> +        npcm7xx_connect_flash(&soc->fiu[0], 0, "mx25l25635e", dinfo);
-> +    }
+> +- ``npcm750-evb``       Nuvoton NPCM750 Evaluation board
 > +
->      npcm7xx_load_kernel(machine, soc);
->  }
->  
+> +The NPCM730 SoC has two Cortex A9 cores and is targeted for Data Center and
+> +Hyperscale applications. The following machines are based on this chip :
+> +
+> +- ``quanta-gsj``        Quanta GSJ server BMC
+> +
+> +There are also two more SoCs, NPCM710 and NPCM705, which are single-core
+> +variants of NPCM750 and NPCM730, respectively. These are currently not
+> +supported by QEMU.
+> +
+> +Supported devices
+> +-----------------
+> +
+> + * SMP (Dual Core Cortex-A9)
+> + * Cortex-A9MPCore built-in peripherals: SCU, GIC, Global Timer, Private Timer
+> +   and Watchdog.
+> + * SRAM, ROM and DRAM mappings
+> + * System Global Control Registers (GCR)
+> + * Clock and reset controller (CLK)
+> + * Timer controller (TIM)
+> + * Serial ports (16550-based)
+> + * DDR4 memory controller (dummy interface indicating memory training is done)
+> + * OTP controllers (no protection features)
+> + * Flash Interface Unit (FIU; no protection features)
+> +
+> +Missing devices
+> +---------------
+> +
+> + * GPIO controller
+> + * LPC/eSPI host-to-BMC interface, including
+> +
+> +   * Keyboard and mouse controller interface (KBCI)
+> +   * Keyboard Controller Style (KCS) channels
+> +   * BIOS POST code FIFO
+> +   * System Wake-up Control (SWC)
+> +   * Shared memory (SHM)
+> +   * eSPI slave interface
+> +
+> + * Ethernet controllers (GMAC and EMC)
+> + * USB host (USBH)
+> + * USB device (USBD)
+> + * SMBus controller (SMBF)
+> + * Peripheral SPI controller (PSPI)
+> + * Analog to Digital Converter (ADC)
+> + * SD/MMC host
+> + * Random Number Generator (RNG)
+> + * PECI interface
+> + * Pulse Width Modulation (PWM)
+> + * Tachometer
+> + * PCI and PCIe root complex and bridges
+> + * VDM and MCTP support
+> + * Serial I/O expansion
+> + * LPC/eSPI host
+> + * Coprocessor
+> + * Graphics
+> + * Video capture
+> + * Encoding compression engine
+> + * Security features
+> +
+> +Boot options
+> +------------
+> +
+> +The Nuvoton machines can boot from an OpenBMC firmware image, or directly into
+> +a kernel using the ``-kernel`` option.
+> +
+> +Booting a full firmware image requires a Boot ROM specified via the ``-bios``
+> +option to QEMU. The firmware image should be attached as an MTD drive. Example :
+> +
+> +.. code-block:: bash
+> +
+> +  $ qemu-system-arm -machine quanta-gsj -nographic \
+> +      -bios npcm7xx_bootrom.bin \
+> +      -drive file=image-bmc,if=mtd,bus=0,unit=0,format=raw
+> diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+> index 1bd477a293..38a9daa9b9 100644
+> --- a/docs/system/target-arm.rst
+> +++ b/docs/system/target-arm.rst
+> @@ -84,6 +84,7 @@ undocumented; you can get a complete list by running
+>     arm/aspeed
+>     arm/musicpal
+>     arm/nseries
+> +   arm/nuvoton
+>     arm/orangepi
+>     arm/palm
+>     arm/xscale
 > 
 

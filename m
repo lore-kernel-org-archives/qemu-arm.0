@@ -1,600 +1,338 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp584060lfm;
-        Wed, 17 Jun 2020 05:55:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyB41RizQ1Sq80ANz4jcxlBbcB8NRzu4n87YW3PK2kF6zLsCnGwmdqB2yxYp6qRAYxpEdnH
-X-Received: by 2002:a25:3586:: with SMTP id c128mr11973262yba.494.1592398516242;
-        Wed, 17 Jun 2020 05:55:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592398516; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp595701lfm;
+        Wed, 17 Jun 2020 06:08:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwc8aUMHi5kJEeFL3lyjk/77r3NWA8V9Mpvh6UWQAsnvvFNVXZAtKbRDivotW6vY/kkia5D
+X-Received: by 2002:a17:906:7746:: with SMTP id o6mr7668665ejn.75.1592399290833;
+        Wed, 17 Jun 2020 06:08:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592399290; cv=none;
         d=google.com; s=arc-20160816;
-        b=TIbNw1/XrEEXBJsBqJlHbEy9dpIZi0bJlanUT+9czFworDbAF+0Gf1QfftHIxKFdCX
-         znkdSuN8DJghAHfY8ILPDku+8RXznLDB+AElR737Zd9EC+mb6mgokEI84ADb2mJhdGmM
-         AbUeZapzWfm3Ko574aLDX0EbJvIBMyUy39JpZkriB1DDLaBgNO/1RP78sy693yn0JaYh
-         0prhpe4/VS1p/002AvmzbdpCXEDgKUVTGKIBGg9a17PVTI8pl3hEDo8HUlQs6t6cxEet
-         Atf+Acc0CgnZOU9fO/y0N97Y5sjslS1TcBqRs7jxnUdxW4MtSxcLG1vPdSmyOCDupdtn
-         jywg==
+        b=YIpdkCJKJZb6bATzXvBfR3uVEhlL0+wzP62zPJ/RX1tI+OmbHn2yL+xeh2fFUyBoUM
+         ObQ4z5nCSPX3q9rF+5LvV2iLJbKoMHwsJm2HgOTLjXwuA7vyWHNkgCEbP9gaU52FEPLK
+         CqxJf6BHPFDdRZpnjyq1kiH2Rt7i+JnzsmrYbOVE6GncCbwOUOgcwvQ0sn+pC6kRCLKf
+         HKQYgHQ51OXyGl2KHBtBEKKRjZnGfzj+EgbypCe7GgRfOYk0Tny17X8UPABsFITQGdC6
+         YZSA52oXtAXlu/fqRITwf2ByM3So6BTK/S8hMQ0YBNd9S+sQlddiST/+yzH+KT3xq7c0
+         e8uw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=yGndKI/ZtJ1jLXkjIdjL6/BnXnGSLaPvJSYmvUf1KCA=;
-        b=yO/roYmG2PuO0s+s2duebtUQ95aq5hRnTqzSbCpZ1sBtndxDV8jcCRxzdqtQX0aCkP
-         AbduNijCYvqfZGcvUiLcfoF6JsEBz8lj2P7wPats1qp6qiglgZNXeOZW00IUfdbZxYD0
-         MMOMyV+vV77F1HhDySryjzLVwNSSn3dyN6u3wIcsjMeDQN2Q4bT5E/xb2KoWe04EdRVO
-         FUP+Fj//5kp7bhJD8YnGLGbyMASaawqUmRdVk+taQgahk5to9G7bzUJvaGsTax3aW3Xz
-         oOF2r0iO2jOHqIOoGL8LdtgKdXTbwb5kY7ZL9CZZwjprpqlyzfvmzyvV/Dj7U4euZw+T
-         ZPUg==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=fCMg1kyMR7N+Ov+rmWJLbOZmzhhnmVRoJdGi9LpTDn0=;
+        b=PJIQ08Vb9AzUyRvHVyzS34cjelaM73eU9846UgmCS9bZ5VzvqBQGI2/Huk+FMkIAQx
+         sIkE1vlw/WwMbJEzg3m+kUd0+Cn6H+ZToA98O+fpjfOUF8dpOz05pHrtSoeA2XQUOROZ
+         IWYfGdAgKe4svFw8NsF1do4MCtjUbKQ58U/5peWhPX7Q1EH9rR8NqyqvUKCqOAeTEfNy
+         EQYd3FU4BL/Mh/zZ6fpVTBss2xXAEG65IbHrj12RO/oiwylIdhO494cdLp3zoJd9hULb
+         b7PMdK72K0Q/QV51hDG3OQP/S/aoe8GApGDitfxAvrH8LrbFtPyqfNlrYOsXK4slcr5x
+         emZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n184si19278102ybc.403.2020.06.17.05.55.16
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jun 2020 05:55:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RVHdz7kw;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id f6si12193887ejr.283.2020.06.17.06.08.10;
+        Wed, 17 Jun 2020 06:08:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40412 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlXb1-00037n-IV
-	for alex.bennee@linaro.org; Wed, 17 Jun 2020 08:55:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39274)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jlXZg-0000q5-08
- for qemu-arm@nongnu.org; Wed, 17 Jun 2020 08:53:52 -0400
-Received: from 20.mo6.mail-out.ovh.net ([178.32.124.17]:38063)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jlXZc-0006Nz-CU
- for qemu-arm@nongnu.org; Wed, 17 Jun 2020 08:53:51 -0400
-Received: from player698.ha.ovh.net (unknown [10.110.171.171])
- by mo6.mail-out.ovh.net (Postfix) with ESMTP id 86C3621A468
- for <qemu-arm@nongnu.org>; Wed, 17 Jun 2020 14:53:45 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player698.ha.ovh.net (Postfix) with ESMTPSA id 4D6FC13705FB6;
- Wed, 17 Jun 2020 12:53:35 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-95G00101998fd0-1f20-4bb9-bc11-82cd07dd816d,ABECD89738EEB0C75E5395B338997A57DB3A3EEE)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH v2 05/12] hw/arm: Add NPCM730 and NPCM750 SoC models
-To: Havard Skinnemoen <hskinnemoen@google.com>, peter.maydell@linaro.org,
- joel@jms.id.au
-References: <20200611223016.259837-1-hskinnemoen@google.com>
- <20200611223016.259837-6-hskinnemoen@google.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <1cd5c285-aa2f-a452-f892-7505d06e5495@kaod.org>
-Date: Wed, 17 Jun 2020 14:53:34 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RVHdz7kw;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726454AbgFQNIJ (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 17 Jun 2020 09:08:09 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:59882 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1726134AbgFQNII (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Wed, 17 Jun 2020 09:08:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1592399286;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:  content-type:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=fCMg1kyMR7N+Ov+rmWJLbOZmzhhnmVRoJdGi9LpTDn0=;
+        b=RVHdz7kwkzymeFnzd9yLewByyDGKGEfpZuH9TCvpMBFqC9zC7/AO/GmZYZlVSRFyg76GsS
+        c9YzNg9tnbw2BRvwFTCXg5WR6x+qjR8g/Kb+e9CXsFRAH6Al47aMbNrIrQwOQtTLziAO8T
+        jES857rfFE0/CSqIyoZXc7TrI4P4Wmc=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-101-1bie_mK8NnK8pZITc4e_Qw-1; Wed, 17 Jun 2020 09:08:04 -0400
+X-MC-Unique: 1bie_mK8NnK8pZITc4e_Qw-1
+Received: by mail-ed1-f71.google.com with SMTP id bs22so844927edb.0
+        for <kvm@vger.kernel.org>; Wed, 17 Jun 2020 06:08:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=fCMg1kyMR7N+Ov+rmWJLbOZmzhhnmVRoJdGi9LpTDn0=;
+        b=IvJgRFncpTEuFm4vkqv87NQvr6muCY0De+w1uYiwphltnilc8gw5xUJwtk28XPI1M5
+         KsZa5kt5X7NQEsL14Bgp1nyl8JAfknP2lv18AZSFoTvIIjSKlqCplP8l9quYSCTSb0eN
+         w+1NgqPD0vC6V9u2x2rVnreEh5UH1rx0D0DEKCIqpcbYz7U4w94702Vkmjm1MW2DKe1p
+         a0t/Joa95XdXKapwJwOoa1KikMnGojCiKPo5Uq0gc3qflAEQHIk3ORu1Lngq/ndGtS+e
+         O49ALrn/RGwH0k4AKv3JQ99rU1CdtlV4xqgCQUwd9cqhfqctBmAQ3Hl6aC2dIY4LLb7h
+         WEXw==
+X-Gm-Message-State: AOAM533L5AT9AVvtRJrVqjRGYdbPYpCHVm4zNObF6/KxbELI3luEB8U1
+        +IW4SXcVAyIv+OL7S1hayOezs7BDhymUOCd65m+lZpd88FttWHLcYOdhTRS3gaNukBdwIpE2cf1
+        VyvvfbdWxDfrY
+X-Received: by 2002:a17:906:55c9:: with SMTP id z9mr7766498ejp.276.1592399283544;
+        Wed, 17 Jun 2020 06:08:03 -0700 (PDT)
+X-Received: by 2002:a17:906:55c9:: with SMTP id z9mr7766472ejp.276.1592399283279;
+        Wed, 17 Jun 2020 06:08:03 -0700 (PDT)
+Received: from x1w.redhat.com (93.red-83-59-160.dynamicip.rima-tde.net. [83.59.160.93])
+        by smtp.gmail.com with ESMTPSA id ce23sm13475432ejc.53.2020.06.17.06.08.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 17 Jun 2020 06:08:02 -0700 (PDT)
+From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To:     qemu-devel@nongnu.org
+Cc:     Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+        kvm@vger.kernel.org, Peter Maydell <peter.maydell@linaro.org>,
+        Andrew Jones <drjones@redhat.com>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+        Haibo Xu <haibo.xu@linaro.org>
+Subject: [PATCH] target/arm/kvm: Check supported feature per accelerator (not per vCPU)
+Date:   Wed, 17 Jun 2020 15:08:00 +0200
+Message-Id: <20200617130800.26355-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <20200611223016.259837-6-hskinnemoen@google.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 1322087965671263145
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudejvddgheejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpefhffegleefjeduveeuvddvieegudetteevfffhffdugefggeelleejueeifeeuvdenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrheileekrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
-Received-SPF: pass client-ip=178.32.124.17; envelope-from=clg@kaod.org;
- helo=20.mo6.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/17 08:53:45
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kfting@nuvoton.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Avi.Fishman@nuvoton.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K548Cci1qZ7H
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 0Eg28R3uGO2f
 
-On 6/12/20 12:30 AM, Havard Skinnemoen wrote:
-> The Nuvoton NPCM7xx SoC family are used to implement Baseboard
-> Management Controllers in servers. While the family includes four SoCs,
-> this patch implements limited support for two of them: NPCM730 (targeted
-> for Data Center applications) and NPCM750 (targeted for Enterprise
-> applications).
-> 
-> This patch includes little more than the bare minimum needed to boot a
-> Linux kernel built with NPCM7xx support in direct-kernel mode:
-> 
->   - Two Cortex-A9 CPU cores with built-in periperhals.
->   - Global Configuration Registers.
->   - Clock Management.
->   - 3 Timer Modules with 5 timers each.
->   - 4 serial ports.
-> 
-> The chips themselves have a lot more features, some of which will be
-> added to the model at a later stage.
-> 
-> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-> Reviewed-by: Joel Stanley <joel@jms.id.au>
-> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
-> ---
->  MAINTAINERS              |   2 +
->  hw/arm/Makefile.objs     |   1 +
->  hw/arm/npcm7xx.c         | 330 +++++++++++++++++++++++++++++++++++++++
->  include/hw/arm/npcm7xx.h |  80 ++++++++++
->  4 files changed, 413 insertions(+)
->  create mode 100644 hw/arm/npcm7xx.c
->  create mode 100644 include/hw/arm/npcm7xx.h
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 97d24b1443..077c86643c 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -726,8 +726,10 @@ M: Havard Skinnemoen <hskinnemoen@google.com>
->  M: Tyrone Ting <kfting@nuvoton.com>
->  L: qemu-arm@nongnu.org
->  S: Supported
-> +F: hw/arm/npcm7xx*
->  F: hw/misc/npcm7xx*
->  F: hw/timer/npcm7xx*
-> +F: include/hw/arm/npcm7xx*
->  F: include/hw/misc/npcm7xx*
->  F: include/hw/timer/npcm7xx*
->  
-> diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-> index 534a6a119e..13d163a599 100644
-> --- a/hw/arm/Makefile.objs
-> +++ b/hw/arm/Makefile.objs
-> @@ -41,6 +41,7 @@ obj-$(CONFIG_STM32F205_SOC) += stm32f205_soc.o
->  obj-$(CONFIG_STM32F405_SOC) += stm32f405_soc.o
->  obj-$(CONFIG_XLNX_ZYNQMP_ARM) += xlnx-zynqmp.o xlnx-zcu102.o
->  obj-$(CONFIG_XLNX_VERSAL) += xlnx-versal.o xlnx-versal-virt.o
-> +obj-$(CONFIG_NPCM7XX) += npcm7xx.o
->  obj-$(CONFIG_FSL_IMX25) += fsl-imx25.o imx25_pdk.o
->  obj-$(CONFIG_FSL_IMX31) += fsl-imx31.o kzm.o
->  obj-$(CONFIG_FSL_IMX6) += fsl-imx6.o
-> diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-> new file mode 100644
-> index 0000000000..a5dbf08c00
-> --- /dev/null
-> +++ b/hw/arm/npcm7xx.c
-> @@ -0,0 +1,330 @@
-> +/*
-> + * Nuvoton NPCM7xx SoC family.
-> + *
-> + * Copyright 2020 Google LLC
-> + *
-> + * This program is free software; you can redistribute it and/or
-> + * modify it under the terms of the GNU General Public License
-> + * version 2 as published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-> + * GNU General Public License for more details.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +
-> +#include "exec/address-spaces.h"
-> +#include "hw/arm/npcm7xx.h"
-> +#include "hw/char/serial.h"
-> +#include "hw/loader.h"
-> +#include "hw/misc/unimp.h"
-> +#include "hw/qdev-properties.h"
-> +#include "qapi/error.h"
-> +#include "qemu/units.h"
-> +#include "sysemu/sysemu.h"
-> +
-> +/* The first half of the address space is reserved for DDR4 DRAM. */
-> +#define NPCM7XX_DRAM_BA         (0x00000000)
-> +#define NPCM7XX_DRAM_SZ         (2 * GiB)
-> +
-> +/*
-> + * This covers the whole MMIO space. We'll use this to catch any MMIO accesses
-> + * that aren't handled by any device.
-> + */
-> +#define NPCM7XX_MMIO_BA         (0x80000000)
-> +#define NPCM7XX_MMIO_SZ         (0x7FFD0000)
-> +
-> +/* Core system modules. */
-> +#define NPCM7XX_L2C_BA          (0xF03FC000)
-> +#define NPCM7XX_CPUP_BA         (0xF03FE000)
-> +#define NPCM7XX_GCR_BA          (0xF0800000)
-> +#define NPCM7XX_CLK_BA          (0xF0801000)
-> +
-> +/* Memory blocks at the end of the address space */
-> +#define NPCM7XX_RAM2_BA         (0xFFFD0000)
-> +#define NPCM7XX_RAM2_SZ         (128 * KiB)
-> +#define NPCM7XX_ROM_BA          (0xFFFF0000)
-> +#define NPCM7XX_ROM_SZ          (64 * KiB)
-> +
-> +/*
-> + * Interrupt lines going into the GIC. This does not include internal Cortex-A9
-> + * interrupts.
-> + */
-> +enum NPCM7xxInterrupt {
-> +    NPCM7XX_UART0_IRQ           = 2,
-> +    NPCM7XX_UART1_IRQ,
-> +    NPCM7XX_UART2_IRQ,
-> +    NPCM7XX_UART3_IRQ,
-> +    NPCM7XX_TIMER0_IRQ          = 32,   /* Timer Module 0 */
-> +    NPCM7XX_TIMER1_IRQ,
-> +    NPCM7XX_TIMER2_IRQ,
-> +    NPCM7XX_TIMER3_IRQ,
-> +    NPCM7XX_TIMER4_IRQ,
-> +    NPCM7XX_TIMER5_IRQ,                 /* Timer Module 1 */
-> +    NPCM7XX_TIMER6_IRQ,
-> +    NPCM7XX_TIMER7_IRQ,
-> +    NPCM7XX_TIMER8_IRQ,
-> +    NPCM7XX_TIMER9_IRQ,
-> +    NPCM7XX_TIMER10_IRQ,                /* Timer Module 2 */
-> +    NPCM7XX_TIMER11_IRQ,
-> +    NPCM7XX_TIMER12_IRQ,
-> +    NPCM7XX_TIMER13_IRQ,
-> +    NPCM7XX_TIMER14_IRQ,
-> +};
-> +
-> +/* Total number of GIC interrupts, including internal Cortex-A9 interrupts. */
-> +#define NPCM7XX_NUM_IRQ         (160)
-> +
-> +/* Register base address for each Timer Module */
-> +static const hwaddr npcm7xx_tim_addr[] = {
-> +    0xF0008000,
-> +    0xF0009000,
-> +    0xF000A000,
-> +};
-> +
-> +/* Register base address for each 16550 UART */
-> +static const hwaddr npcm7xx_uart_addr[] = {
-> +    0xF0001000,
-> +    0xF0002000,
-> +    0xF0003000,
-> +    0xF0004000,
-> +};
-> +
-> +void npcm7xx_write_secondary_boot(ARMCPU *cpu, const struct arm_boot_info *info)
-> +{
-> +    /*
-> +     * The default smpboot stub halts the secondary CPU with a 'wfi'
-> +     * instruction, but the arch/arm/mach-npcm/platsmp.c in the Linux kernel
-> +     * does not send an IPI to wake it up, so the second CPU fails to boot. So
-> +     * we need to provide our own smpboot stub that can not use 'wfi', it has
-> +     * to spin the secondary CPU until the first CPU writes to the SCRPAD reg.
-> +     */
-> +    static const uint8_t smpboot[] = {
-> +        0x18, 0x20, 0x9f, 0xe5,     /* ldr r2, bootreg_addr */
-> +        0x00, 0x00, 0xa0, 0xe3,     /* mov r0, #0 */
-> +        0x00, 0x00, 0x82, 0xe5,     /* str r0, [r2] */
-> +        0x02, 0xf0, 0x20, 0xe3,     /* wfe */
-> +        0x00, 0x10, 0x92, 0xe5,     /* ldr r1, [r2] */
-> +        0x01, 0x00, 0x11, 0xe1,     /* tst r1, r1 */
-> +        0xfb, 0xff, 0xff, 0x0a,     /* beq <wfe> */
-> +        0x11, 0xff, 0x2f, 0xe1,     /* bx r1 */
-> +        (NPCM7XX_SMP_BOOTREG_ADDR >>  0) & 0xff,
-> +        (NPCM7XX_SMP_BOOTREG_ADDR >>  8) & 0xff,
-> +        (NPCM7XX_SMP_BOOTREG_ADDR >> 16) & 0xff,
-> +        (NPCM7XX_SMP_BOOTREG_ADDR >> 24) & 0xff,
-> +    };
-> +
-> +    rom_add_blob_fixed("smpboot", smpboot, sizeof(smpboot),
-> +                       NPCM7XX_SMP_LOADER_START);
-> +}
-> +
-> +static qemu_irq npcm7xx_irq(NPCM7xxState *s, int n)
-> +{
-> +    return qdev_get_gpio_in(DEVICE(&s->a9mpcore), n);
-> +}
-> +
-> +static void npcm7xx_init(Object *obj)
-> +{
-> +    NPCM7xxState *s = NPCM7XX(obj);
-> +    int i;
-> +
-> +    for (i = 0; i < NPCM7XX_MAX_NUM_CPUS; i++) {
-> +        object_initialize_child(obj, "cpu[*]", OBJECT(&s->cpu[i]),
-> +                                sizeof(s->cpu[i]),
-> +                                ARM_CPU_TYPE_NAME("cortex-a9"),
-> +                                &error_abort, NULL);
-> +    }
-> +
-> +    sysbus_init_child_obj(obj, "a9mpcore", &s->a9mpcore,
-> +                          sizeof(s->a9mpcore), TYPE_A9MPCORE_PRIV);
-> +    sysbus_init_child_obj(obj, "gcr", OBJECT(&s->gcr), sizeof(s->gcr),
-> +                          TYPE_NPCM7XX_GCR);
-> +    sysbus_init_child_obj(obj, "clk", OBJECT(&s->clk), sizeof(s->clk),
-> +                          TYPE_NPCM7XX_CLK);
-> +
-> +    for (i = 0; i < ARRAY_SIZE(s->tim); i++) {
-> +        sysbus_init_child_obj(obj, "tim[*]", OBJECT(&s->tim[i]),
-> +                              sizeof(s->tim[i]), TYPE_NPCM7XX_TIMER);
-> +    }
+Since commit d70c996df23f, when enabling the PMU we get:
 
-This needs to use object_initialize_child() now. sysbus_init_child_obj() 
-was deprecated.
+  $ qemu-system-aarch64 -cpu host,pmu=on -M virt,accel=kvm,gic-version=3
+  Segmentation fault (core dumped)
 
-> +}
-> +
-> +static void npcm7xx_realize(DeviceState *dev, Error **errp)
-> +{
-> +    NPCM7xxState *s = NPCM7XX(dev);
-> +    NPCM7xxClass *sc = NPCM7XX_GET_CLASS(s);
+  Thread 1 "qemu-system-aar" received signal SIGSEGV, Segmentation fault.
+  0x0000aaaaaae356d0 in kvm_ioctl (s=0x0, type=44547) at accel/kvm/kvm-all.c:2588
+  2588        ret = ioctl(s->fd, type, arg);
+  (gdb) bt
+  #0  0x0000aaaaaae356d0 in kvm_ioctl (s=0x0, type=44547) at accel/kvm/kvm-all.c:2588
+  #1  0x0000aaaaaae31568 in kvm_check_extension (s=0x0, extension=126) at accel/kvm/kvm-all.c:916
+  #2  0x0000aaaaaafce254 in kvm_arm_pmu_supported (cpu=0xaaaaac214ab0) at target/arm/kvm.c:213
+  #3  0x0000aaaaaafc0f94 in arm_set_pmu (obj=0xaaaaac214ab0, value=true, errp=0xffffffffe438) at target/arm/cpu.c:1111
+  #4  0x0000aaaaab5533ac in property_set_bool (obj=0xaaaaac214ab0, v=0xaaaaac223a80, name=0xaaaaac11a970 "pmu", opaque=0xaaaaac222730, errp=0xffffffffe438) at qom/object.c:2170
+  #5  0x0000aaaaab5512f0 in object_property_set (obj=0xaaaaac214ab0, v=0xaaaaac223a80, name=0xaaaaac11a970 "pmu", errp=0xffffffffe438) at qom/object.c:1328
+  #6  0x0000aaaaab551e10 in object_property_parse (obj=0xaaaaac214ab0, string=0xaaaaac11b4c0 "on", name=0xaaaaac11a970 "pmu", errp=0xffffffffe438) at qom/object.c:1561
+  #7  0x0000aaaaab54ee8c in object_apply_global_props (obj=0xaaaaac214ab0, props=0xaaaaac018e20, errp=0xaaaaabd6fd88 <error_fatal>) at qom/object.c:407
+  #8  0x0000aaaaab1dd5a4 in qdev_prop_set_globals (dev=0xaaaaac214ab0) at hw/core/qdev-properties.c:1218
+  #9  0x0000aaaaab1d9fac in device_post_init (obj=0xaaaaac214ab0) at hw/core/qdev.c:1050
+  ...
+  #15 0x0000aaaaab54f310 in object_initialize_with_type (obj=0xaaaaac214ab0, size=52208, type=0xaaaaabe237f0) at qom/object.c:512
+  #16 0x0000aaaaab54fa24 in object_new_with_type (type=0xaaaaabe237f0) at qom/object.c:687
+  #17 0x0000aaaaab54fa80 in object_new (typename=0xaaaaabe23970 "host-arm-cpu") at qom/object.c:702
+  #18 0x0000aaaaaaf04a74 in machvirt_init (machine=0xaaaaac0a8550) at hw/arm/virt.c:1770
+  #19 0x0000aaaaab1e8720 in machine_run_board_init (machine=0xaaaaac0a8550) at hw/core/machine.c:1138
+  #20 0x0000aaaaaaf95394 in qemu_init (argc=5, argv=0xffffffffea58, envp=0xffffffffea88) at softmmu/vl.c:4348
+  #21 0x0000aaaaaada3f74 in main (argc=<optimized out>, argv=<optimized out>, envp=<optimized out>) at softmmu/main.c:48
 
-'nc' maybe.
+This is because in frame #2, cpu->kvm_state is still NULL
+(the vCPU is not yet realized).
 
-> +    Error *err = NULL;
-> +    int i;
-> +
-> +    /* I/O space -- unimplemented unless overridden below. */
-> +    create_unimplemented_device("npcm7xx.io", NPCM7XX_MMIO_BA, NPCM7XX_MMIO_SZ);
-> +
-> +    /* CPUs */
-> +    for (i = 0; i < sc->num_cpus; i++) {
-> +        object_property_set_int(OBJECT(&s->cpu[i]),
-> +                                arm_cpu_mp_affinity(i, NPCM7XX_MAX_NUM_CPUS),
-> +                                "mp-affinity", &error_abort);
-> +        object_property_set_int(OBJECT(&s->cpu[i]), NPCM7XX_GIC_CPU_IF_ADDR,
-> +                                "reset-cbar", &error_abort);
-> +        object_property_set_bool(OBJECT(&s->cpu[i]), true,
-> +                                 "reset-hivecs", &error_abort);
-> +
-> +        /* Disable security extensions. */
-> +        if (object_property_find(OBJECT(&s->cpu[i]), "has_el3", NULL)) {
-> +            object_property_set_bool(OBJECT(&s->cpu[i]), false, "has_el3",
-> +                                     &error_abort);
-> +        }
-> +
-> +        object_property_set_bool(OBJECT(&s->cpu[i]), true, "realized", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +    }
-> +
-> +    /* A9MPCORE peripherals */
-> +    object_property_set_int(OBJECT(&s->a9mpcore), sc->num_cpus, "num-cpu",
-> +                            &error_abort);
-> +    object_property_set_int(OBJECT(&s->a9mpcore), NPCM7XX_NUM_IRQ, "num-irq",
-> +                            &error_abort);
-> +    object_property_set_bool(OBJECT(&s->a9mpcore), true, "realized",
-> +                             &error_abort);
+KVM has a hard requirement of all cores supporting the same
+feature set. We only need to check if the accelerator supports
+a feature, not each vCPU individually.
 
-you should use sysbus_realize() now and below also.
+Fix by kvm_arm_<FEATURE>_supported() functions take a AccelState
+argument (already realized/valid at this point) instead of a
+CPUState argument.
 
-C.
+Reported-by: Haibo Xu <haibo.xu@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ target/arm/kvm_arm.h | 25 +++++++++++++------------
+ target/arm/cpu.c     |  2 +-
+ target/arm/cpu64.c   | 10 +++++-----
+ target/arm/kvm.c     |  4 ++--
+ target/arm/kvm64.c   | 14 +++++---------
+ 5 files changed, 26 insertions(+), 29 deletions(-)
 
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->a9mpcore), 0, NPCM7XX_CPUP_BA);
-> +
-> +    for (i = 0; i < sc->num_cpus; i++) {
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->a9mpcore), i,
-> +                           qdev_get_gpio_in(DEVICE(&s->cpu[i]), ARM_CPU_IRQ));
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->a9mpcore), i + sc->num_cpus,
-> +                           qdev_get_gpio_in(DEVICE(&s->cpu[i]), ARM_CPU_FIQ));
-> +    }
-> +
-> +    /* L2 cache controller */
-> +    sysbus_create_simple("l2x0", NPCM7XX_L2C_BA, NULL);
-> +
-> +    /* System Global Control Registers (GCR) */
-> +    object_property_set_int(OBJECT(&s->gcr), sc->disabled_modules,
-> +                            "disabled-modules", &err);
-> +    object_property_set_link(OBJECT(&s->gcr), OBJECT(s->dram), "dram", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    object_property_set_bool(OBJECT(&s->gcr), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gcr), 0, NPCM7XX_GCR_BA);
-> +
-> +    /* Clock Control Registers (CLK) */
-> +    object_property_set_bool(OBJECT(&s->clk), true, "realized", &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->clk), 0, NPCM7XX_CLK_BA);
-> +
-> +    /* Timer Modules (TIM) */
-> +    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_tim_addr) != ARRAY_SIZE(s->tim));
-> +    for (i = 0; i < ARRAY_SIZE(s->tim); i++) {
-> +        Object *t = OBJECT(&s->tim[i]);
-> +        int first_irq;
-> +        int j;
-> +
-> +        object_property_set_bool(t, true, "realized", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(t), 0, npcm7xx_tim_addr[i]);
-> +
-> +        first_irq = NPCM7XX_TIMER0_IRQ + i * NPCM7XX_TIMERS_PER_CTRL;
-> +        for (j = 0; j < NPCM7XX_TIMERS_PER_CTRL; j++) {
-> +            qemu_irq irq = npcm7xx_irq(s, first_irq + j);
-> +            sysbus_connect_irq(SYS_BUS_DEVICE(t), j, irq);
-> +        }
-> +    }
-> +
-> +    /* UART0..3 (16550 compatible) */
-> +    for (i = 0; i < ARRAY_SIZE(npcm7xx_uart_addr); i++) {
-> +        serial_mm_init(get_system_memory(), npcm7xx_uart_addr[i], 2,
-> +                       npcm7xx_irq(s, NPCM7XX_UART0_IRQ + i), 115200,
-> +                       serial_hd(i), DEVICE_LITTLE_ENDIAN);
-> +    }
-> +
-> +    /* RAM2 (SRAM) */
-> +    memory_region_init_ram(&s->sram, OBJECT(dev), "ram2",
-> +                           NPCM7XX_RAM2_SZ, &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    memory_region_add_subregion(get_system_memory(), NPCM7XX_RAM2_BA, &s->sram);
-> +
-> +    /* Internal ROM */
-> +    memory_region_init_rom(&s->irom, OBJECT(dev), "irom", NPCM7XX_ROM_SZ, &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    memory_region_add_subregion(get_system_memory(), NPCM7XX_ROM_BA, &s->irom);
-> +
-> +    /* External DDR4 SDRAM */
-> +    memory_region_add_subregion(get_system_memory(), NPCM7XX_DRAM_BA, s->dram);
-> +}
-> +
-> +static Property npcm7xx_properties[] = {
-> +    DEFINE_PROP_LINK("dram", NPCM7xxState, dram, TYPE_MEMORY_REGION,
-> +                     MemoryRegion *),
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-> +
-> +static void npcm7xx_class_init(ObjectClass *oc, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(oc);
-> +
-> +    dc->realize = npcm7xx_realize;
-> +    dc->user_creatable = false;
-> +    device_class_set_props(dc, npcm7xx_properties);
-> +}
-> +
-> +static void npcm730_class_init(ObjectClass *oc, void *data)
-> +{
-> +    NPCM7xxClass *nc = NPCM7XX_CLASS(oc);
-> +
-> +    /* NPCM730 is optimized for data center use, so no graphics, etc. */
-> +    nc->disabled_modules = 0x00300395;
-> +    nc->num_cpus = 2;
-> +}
-> +
-> +static void npcm750_class_init(ObjectClass *oc, void *data)
-> +{
-> +    NPCM7xxClass *nc = NPCM7XX_CLASS(oc);
-> +
-> +    /* NPCM750 has 2 cores and a full set of peripherals */
-> +    nc->disabled_modules = 0x00000000;
-> +    nc->num_cpus = 2;
-> +}
-> +
-> +static const TypeInfo npcm7xx_soc_types[] = {
-> +    {
-> +        .name           = TYPE_NPCM7XX,
-> +        .parent         = TYPE_DEVICE,
-> +        .instance_size  = sizeof(NPCM7xxState),
-> +        .instance_init  = npcm7xx_init,
-> +        .class_size     = sizeof(NPCM7xxClass),
-> +        .class_init     = npcm7xx_class_init,
-> +        .abstract       = true,
-> +    }, {
-> +        .name           = TYPE_NPCM730,
-> +        .parent         = TYPE_NPCM7XX,
-> +        .class_init     = npcm730_class_init,
-> +    }, {
-> +        .name           = TYPE_NPCM750,
-> +        .parent         = TYPE_NPCM7XX,
-> +        .class_init     = npcm750_class_init,
-> +    },
-> +};
-> +
-> +DEFINE_TYPES(npcm7xx_soc_types);
-> diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-> new file mode 100644
-> index 0000000000..38b8c33729
-> --- /dev/null
-> +++ b/include/hw/arm/npcm7xx.h
-> @@ -0,0 +1,80 @@
-> +/*
-> + * Nuvoton NPCM7xx SoC family.
-> + *
-> + * Copyright 2020 Google LLC
-> + *
-> + * This program is free software; you can redistribute it and/or
-> + * modify it under the terms of the GNU General Public License
-> + * version 2 as published by the Free Software Foundation.
-> + *
-> + * This program is distributed in the hope that it will be useful,
-> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
-> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-> + * GNU General Public License for more details.
-> + */
-> +#ifndef NPCM7XX_H
-> +#define NPCM7XX_H
-> +
-> +#include "hw/boards.h"
-> +#include "hw/cpu/a9mpcore.h"
-> +#include "hw/misc/npcm7xx_clk.h"
-> +#include "hw/misc/npcm7xx_gcr.h"
-> +#include "hw/timer/npcm7xx_timer.h"
-> +#include "target/arm/cpu.h"
-> +
-> +#define NPCM7XX_MAX_NUM_CPUS    (2)
-> +
-> +/* Magic addresses for setting up direct kernel booting and SMP boot stubs. */
-> +#define NPCM7XX_LOADER_START            (0x00000000)  /* Start of SDRAM */
-> +#define NPCM7XX_SMP_LOADER_START        (0xFFFF0000)  /* Boot ROM */
-> +#define NPCM7XX_SMP_BOOTREG_ADDR        (0xF080013C)  /* GCR.SCRPAD */
-> +#define NPCM7XX_GIC_CPU_IF_ADDR         (0xF03FE100)  /* GIC within A9 */
-> +
-> +typedef struct NPCM7xxState {
-> +    DeviceState         parent;
-> +
-> +    ARMCPU              cpu[NPCM7XX_MAX_NUM_CPUS];
-> +    A9MPPrivState       a9mpcore;
-> +
-> +    MemoryRegion        sram;
-> +    MemoryRegion        irom;
-> +    MemoryRegion        *dram;
-> +
-> +    NPCM7xxGCRState     gcr;
-> +    NPCM7xxCLKState     clk;
-> +    NPCM7xxTimerCtrlState tim[3];
-> +} NPCM7xxState;
-> +
-> +#define TYPE_NPCM7XX    "npcm7xx"
-> +#define NPCM7XX(obj)    OBJECT_CHECK(NPCM7xxState, (obj), TYPE_NPCM7XX)
-> +
-> +#define TYPE_NPCM730    "npcm730"
-> +#define TYPE_NPCM750    "npcm750"
-> +
-> +typedef struct NPCM7xxClass {
-> +    DeviceClass         parent;
-> +
-> +    /* Bitmask of modules that are permanently disabled on this chip. */
-> +    uint32_t            disabled_modules;
-> +    /* Number of CPU cores enabled in this SoC class (may be 1 or 2). */
-> +    uint32_t            num_cpus;
-> +} NPCM7xxClass;
-> +
-> +#define NPCM7XX_CLASS(klass)                                            \
-> +    OBJECT_CLASS_CHECK(NPCM7xxClass, (klass), TYPE_NPCM7XX)
-> +#define NPCM7XX_GET_CLASS(obj)                                          \
-> +    OBJECT_GET_CLASS(NPCM7xxClass, (obj), TYPE_NPCM7XX)
-> +
-> +/**
-> + * npcm7xx_write_secondary_boot - Write stub for booting secondary CPU.
-> + * @cpu: The CPU to be booted.
-> + * @info: Boot info structure for the board.
-> + *
-> + * This will write a short code stub to the internal ROM that will keep the
-> + * secondary CPU spinning until the primary CPU writes an address to the SCRPAD
-> + * register in the GCR, after which the secondary CPU will jump there.
-> + */
-> +extern void npcm7xx_write_secondary_boot(ARMCPU *cpu,
-> +                                         const struct arm_boot_info *info);
-> +
-> +#endif /* NPCM7XX_H */
-> 
-
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 48bf5e16d5..8209525f20 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -12,6 +12,7 @@
+ #define QEMU_KVM_ARM_H
+ 
+ #include "sysemu/kvm.h"
++#include "sysemu/accel.h"
+ #include "exec/memory.h"
+ #include "qemu/error-report.h"
+ 
+@@ -269,29 +270,29 @@ void kvm_arm_add_vcpu_properties(Object *obj);
+ 
+ /**
+  * kvm_arm_aarch32_supported:
+- * @cs: CPUState
++ * @as: AccelState
+  *
+- * Returns: true if the KVM VCPU can enable AArch32 mode
++ * Returns: true if the KVM accelerator can enable AArch32 mode
+  * and false otherwise.
+  */
+-bool kvm_arm_aarch32_supported(CPUState *cs);
++bool kvm_arm_aarch32_supported(AccelState *as);
+ 
+ /**
+  * kvm_arm_pmu_supported:
+- * @cs: CPUState
++ * @as: AccelState
+  *
+- * Returns: true if the KVM VCPU can enable its PMU
++ * Returns: true if the KVM accelerator can enable its PMU
+  * and false otherwise.
+  */
+-bool kvm_arm_pmu_supported(CPUState *cs);
++bool kvm_arm_pmu_supported(AccelState *as);
+ 
+ /**
+  * kvm_arm_sve_supported:
+- * @cs: CPUState
++ * @as: AccelState
+  *
+- * Returns true if the KVM VCPU can enable SVE and false otherwise.
++ * Returns true if the KVM accelerator can enable SVE and false otherwise.
+  */
+-bool kvm_arm_sve_supported(CPUState *cs);
++bool kvm_arm_sve_supported(AccelState *as);
+ 
+ /**
+  * kvm_arm_get_max_vm_ipa_size:
+@@ -359,17 +360,17 @@ static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+ 
+ static inline void kvm_arm_add_vcpu_properties(Object *obj) {}
+ 
+-static inline bool kvm_arm_aarch32_supported(CPUState *cs)
++static inline bool kvm_arm_aarch32_supported(AccelState *as)
+ {
+     return false;
+ }
+ 
+-static inline bool kvm_arm_pmu_supported(CPUState *cs)
++static inline bool kvm_arm_pmu_supported(AccelState *as)
+ {
+     return false;
+ }
+ 
+-static inline bool kvm_arm_sve_supported(CPUState *cs)
++static inline bool kvm_arm_sve_supported(AccelState *as)
+ {
+     return false;
+ }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 5b7a36b5d7..29b314427c 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1108,7 +1108,7 @@ static void arm_set_pmu(Object *obj, bool value, Error **errp)
+     ARMCPU *cpu = ARM_CPU(obj);
+ 
+     if (value) {
+-        if (kvm_enabled() && !kvm_arm_pmu_supported(CPU(cpu))) {
++        if (kvm_enabled() && !kvm_arm_pmu_supported(current_accel())) {
+             error_setg(errp, "'pmu' feature not supported by KVM on this host");
+             return;
+         }
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 778cecc2e6..13835768ab 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -266,7 +266,7 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+ 
+     /* Collect the set of vector lengths supported by KVM. */
+     bitmap_zero(kvm_supported, ARM_MAX_VQ);
+-    if (kvm_enabled() && kvm_arm_sve_supported(CPU(cpu))) {
++    if (kvm_enabled() && kvm_arm_sve_supported(current_accel())) {
+         kvm_arm_sve_get_vls(CPU(cpu), kvm_supported);
+     } else if (kvm_enabled()) {
+         assert(!cpu_isar_feature(aa64_sve, cpu));
+@@ -473,7 +473,7 @@ static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
+         return;
+     }
+ 
+-    if (kvm_enabled() && !kvm_arm_sve_supported(CPU(cpu))) {
++    if (kvm_enabled() && !kvm_arm_sve_supported(current_accel())) {
+         error_setg(errp, "cannot set sve-max-vq");
+         error_append_hint(errp, "SVE not supported by KVM on this host\n");
+         return;
+@@ -519,7 +519,7 @@ static void cpu_arm_set_sve_vq(Object *obj, Visitor *v, const char *name,
+         return;
+     }
+ 
+-    if (value && kvm_enabled() && !kvm_arm_sve_supported(CPU(cpu))) {
++    if (value && kvm_enabled() && !kvm_arm_sve_supported(current_accel())) {
+         error_setg(errp, "cannot enable %s", name);
+         error_append_hint(errp, "SVE not supported by KVM on this host\n");
+         return;
+@@ -556,7 +556,7 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
+         return;
+     }
+ 
+-    if (value && kvm_enabled() && !kvm_arm_sve_supported(CPU(cpu))) {
++    if (value && kvm_enabled() && !kvm_arm_sve_supported(current_accel())) {
+         error_setg(errp, "'sve' feature not supported by KVM on this host");
+         return;
+     }
+@@ -751,7 +751,7 @@ static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
+      * uniform execution state like do_interrupt.
+      */
+     if (value == false) {
+-        if (!kvm_enabled() || !kvm_arm_aarch32_supported(CPU(cpu))) {
++        if (!kvm_enabled() || !kvm_arm_aarch32_supported(current_accel())) {
+             error_setg(errp, "'aarch64' feature cannot be disabled "
+                              "unless KVM is enabled and 32-bit EL1 "
+                              "is supported");
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index eef3bbd1cc..2247a96757 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -208,9 +208,9 @@ void kvm_arm_add_vcpu_properties(Object *obj)
+     }
+ }
+ 
+-bool kvm_arm_pmu_supported(CPUState *cpu)
++bool kvm_arm_pmu_supported(AccelState *as)
+ {
+-    return kvm_check_extension(cpu->kvm_state, KVM_CAP_ARM_PMU_V3);
++    return kvm_check_extension(KVM_STATE(as), KVM_CAP_ARM_PMU_V3);
+ }
+ 
+ int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index f09ed9f4df..ae4e37ce78 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -652,18 +652,14 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     return true;
+ }
+ 
+-bool kvm_arm_aarch32_supported(CPUState *cpu)
++bool kvm_arm_aarch32_supported(AccelState *as)
+ {
+-    KVMState *s = KVM_STATE(current_accel());
+-
+-    return kvm_check_extension(s, KVM_CAP_ARM_EL1_32BIT);
++    return kvm_check_extension(KVM_STATE(as), KVM_CAP_ARM_EL1_32BIT);
+ }
+ 
+-bool kvm_arm_sve_supported(CPUState *cpu)
++bool kvm_arm_sve_supported(AccelState *as)
+ {
+-    KVMState *s = KVM_STATE(current_accel());
+-
+-    return kvm_check_extension(s, KVM_CAP_ARM_SVE);
++    return kvm_check_extension(KVM_STATE(as), KVM_CAP_ARM_SVE);
+ }
+ 
+ QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
+@@ -798,7 +794,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+         env->features &= ~(1ULL << ARM_FEATURE_PMU);
+     }
+     if (cpu_isar_feature(aa64_sve, cpu)) {
+-        assert(kvm_arm_sve_supported(cs));
++        assert(kvm_arm_sve_supported(ACCEL(cs->kvm_state)));
+         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SVE;
+     }
+ 
+-- 
+2.21.3

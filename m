@@ -1,93 +1,94 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp320478lfm;
-        Tue, 16 Jun 2020 22:59:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy3qDVx/Tim/uNzYNpLK/3LlN3IytAVhYtCEo+i6sX3prcR1idMjibNPQzNz0kOQ1ZeorI2
-X-Received: by 2002:a5b:f4f:: with SMTP id y15mr9970671ybr.184.1592373597273;
-        Tue, 16 Jun 2020 22:59:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592373597; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp320626lfm;
+        Tue, 16 Jun 2020 23:00:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx3hGsnKSHLIBwovgMIun5ChEe1BeSRLjbrKpzSKfzzx49fkve2wVcVL8zYxQ90jWAFFnv8
+X-Received: by 2002:a25:5d04:: with SMTP id r4mr9098064ybb.290.1592373613412;
+        Tue, 16 Jun 2020 23:00:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592373613; cv=none;
         d=google.com; s=arc-20160816;
-        b=H3EzFLCEj/59jDiFYTtvEsYZOq4kR4quDrmYyZjY00kbhLlbaDc7yrc6YXRShDn1Oc
-         wex5WPrqcHypcV/RdhVQAkiBKvaQOJZ0YN1s6VT5hLRVONRKkTvzg+SesiONifseIoVk
-         AROQ9OALafMiilem+jbzijGJ9L3o38s03nFrtcxNaResbd/OV5K7JD/81YHXIpnOCSv3
-         HmguJwfC8g51AsNpFgOgTaTbqQli5zE5jjfjBitZ5tTHJjiuTJenF1kEc70Rwe/zx0m0
-         0jY75ZQFaAgbWwdUIYLZalbYOzdUaVuRyR2y7wpEs/WjuVwc4UH+q0kOypd/qzH3qw0V
-         /dLA==
+        b=ouuuHnNHPAYZ3EWtZLyZCpflkvwtad997Bm6SntlMKN8sXDqoihHuhNKM6fX8O7vx/
+         3C7NzOymWbrfU6M/+bdAZFGCACtu9zn/EOXW41qUUwXibGjlmeuEj3l8a+dPvrTLtw/l
+         Hr2I+wgUINNuzzUfjJEA3jX6aG2pZjcut3NZ55xxXcCmf/iWW8nqZODUqhTWOKDchVQz
+         DoKKQLywAAxj+iJ2hKfZvZvEHwi4Cr0C8t4Nt4HYVzihpakdidxdzabjMmqyqq6EDNLU
+         AtXCJnnNA8DOBFpn3wYQFFPXHPct72ToVLPG03AeIZ+ToiTxne20IxxdPwz/ci1sd2rK
+         65ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=I3W9cifnD7DOZZ455FCgCr8VTTmTQL8v0YMmJYG05f0=;
-        b=rcge/H5DfyHSUZjRNyN/Kwp33XP5nAmiW4tJqauMdly22CH4fXeykoQeDt7afRFWX9
-         +Jz8ZJmNPTZdGRmpvTdfZK9RtALlh6lt4EEnj23bFIUq3UUJgIWI5Ehmr14AD6Rvj1yN
-         vBHz3Lp2qJ6R7L/s3QC6384Tyz5j0p4Tb2GBVuR+qMg0vjTqhpElZlRN7BuXb3Tsjc8h
-         SyZkjDHEWaDpqnEiASoesB/JZzYyo4UEaYqn90q1/6W8H2GeEuCK1bAbMLxD5HkLm8wb
-         iTKwtdclfbU1c83rJvSaD7924mpjYakGXydf5oEMa9VL+PXDvqOfvbLAAYo+XHvyfcVY
-         7/IQ==
+        bh=DU8MPmKR4oqV6/BAgGxIVSvkYzVMETNdD9pP50lGwu4=;
+        b=jR8DCWH4r7WY6wPM6zlw7uQF7T1QmmaxDiokVgpM1cGYw1GG6eP3yhjHnXj5WjaisT
+         t8Dy/BxeNZsc/0JKB6daotU5wYb48Ys6ld23/foNbGnWA6NSpgc4sR51ymaxwRiXr0gU
+         R/Uskgaa2d1k4Jd1bdKuQjsS4T6yEG4UpLbRLWSeJ/KiQIZn3e6Kp8VoBZn54f4T12zL
+         eKV9NGPIjjl1IWhLETrcQZuX5Ljnf0y8buJ6Jif/OYODUlPBi8YsmbykdYHNrgKL1s9o
+         O/L6C7FCIGyW2kCJeAuy7z4Z9gdwUah0ci6/hUAUu+h84RKCizSRi27bNO66/LQ18gba
+         MN3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AnMKUCej;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iXewhp5I;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z11si15357684ybp.361.2020.06.16.22.59.57
+        by mx.google.com with ESMTPS id k21si16294026ybk.116.2020.06.16.23.00.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jun 2020 22:59:57 -0700 (PDT)
+        Tue, 16 Jun 2020 23:00:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AnMKUCej;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iXewhp5I;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:60596 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33212 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlR76-0007Xe-KX
-	for alex.bennee@linaro.org; Wed, 17 Jun 2020 01:59:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49802)
+	id 1jlR7M-0007tB-Lj
+	for alex.bennee@linaro.org; Wed, 17 Jun 2020 02:00:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49850)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jlQzn-0002qt-F2; Wed, 17 Jun 2020 01:52:23 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:52148)
+ id 1jlQzq-000304-VZ; Wed, 17 Jun 2020 01:52:26 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:54197)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jlQzl-0004TM-US; Wed, 17 Jun 2020 01:52:23 -0400
-Received: by mail-wm1-x344.google.com with SMTP id b82so603337wmb.1;
- Tue, 16 Jun 2020 22:52:20 -0700 (PDT)
+ id 1jlQzp-0004U7-Bp; Wed, 17 Jun 2020 01:52:26 -0400
+Received: by mail-wm1-x344.google.com with SMTP id l26so593185wme.3;
+ Tue, 16 Jun 2020 22:52:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=I3W9cifnD7DOZZ455FCgCr8VTTmTQL8v0YMmJYG05f0=;
- b=AnMKUCejKyYOV4Abe+F6mS+gWkYrGV7kuhz3seyz+H6W2Cbj2cfc+RQ0UPjkKLOPWx
- ewXOvGjOzESReAdVCDI6VX++TqhTsClUfuSPXUvefyUWSqlcgohVbhkxgJq3TTF+KitY
- fufWD5P5zI2aVhXQlBjw250HW3ASJMG9hQy3wnzQvvY4q6/CW5AJismwkLMvADDZoFZp
- J3DM2y81CRfZmT+Dt98AIC8koiMns3juwzuVaRjPwHwEYpQD3+YOhaueVO/QoSS8+s2Q
- 9uwwoPVdUKsTdCc4TtX3LgEcu50+xud9O3MtE2UEfCptxRGe7rMN5XMxvNDMHdt3KUg3
- 5WNQ==
+ bh=DU8MPmKR4oqV6/BAgGxIVSvkYzVMETNdD9pP50lGwu4=;
+ b=iXewhp5I22tG5YsVKxC/7jJ3Mgcmh8c9epLwy9rdr99Aaq7CZWeCE9YekBr53OS95b
+ Wxn+y8KofALB+fFm+II0XGtLXtBFd/LsKkI/LrnUQjSSOj7egWJpF6ZRuibvrFocuGGC
+ 2OUr7wh9651CCa4nW07jGzzjHJ5jLDlBuMn539d0gkYgR4M9U6bM7B4dZEEayFX76frY
+ s9Mz2BPhqhZ0MlEbPB9H/12Ij/VdZc03owYMN3GU5itx+nRF4T6rEO54r3HVFSeOKO+h
+ vNI26qEpZtjYP9j7fhMGl1XMR2c3rDj/nII/vlpdCy5u5PDaEVqU2PMx1WP+xtAA+m3H
+ kefg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=I3W9cifnD7DOZZ455FCgCr8VTTmTQL8v0YMmJYG05f0=;
- b=uY6u9mwsVXU0TZykY0e0Sb798s+wRRkmMfkhVIBRYWpOee7ojLBkWSZpn/OC+FKLNg
- BS4wELTISuBiABwHk5auVxV2unnR6YIH3le5qhn4nTYcDN6LdErsIvFi3rMSS6mfGcge
- 8ao6Cb6Q0lbJbH50m68nmGejy2U16t9AA4HPWB8djyhiXwuGPQTuNivE5Rmwtx9TD1B3
- r0j7V5CSdYk9+qblwOJdNWQDKe7y89cr4le9PwIMvt6fCxS/4rLN/rZtvizr3uXx6okE
- lFIRrbT/Rvu7xQQuj6HCGacgNKNgC1AtD6POlP5D/p+Tm8zxNZ5yuRaEMPu1QFk42vPO
- Oncw==
-X-Gm-Message-State: AOAM533dqbj0Nu+kly4sr4OYd0O03f4V4yWWhLIb0S3D8AV+Vt17uYoA
- m/93e/utKDI/TrNP8amHY5B7YuHu
-X-Received: by 2002:a1c:8107:: with SMTP id c7mr6717423wmd.20.1592373139029;
- Tue, 16 Jun 2020 22:52:19 -0700 (PDT)
+ bh=DU8MPmKR4oqV6/BAgGxIVSvkYzVMETNdD9pP50lGwu4=;
+ b=Trc4lxyN9LL88NRU5N3QmZNfuZC5aVz2k861pJ02ilnSudPefUbVgDXEPGzTAfeFbX
+ FdO+SX5uNgbInX2CxX+Qw/13sS27U2XZoUhRn96q4tW4kkXk47epbZwpynmwmyctVOfE
+ J3m8xqqvnN4VuGYiqN24yiJnqHw9AHR/539Ocl7TiSoS9wWaK5PIfTkY9raqWiJg4y3y
+ yhjmO5YDTyw0u1QxhzUYkVQ9BIpCbSAfZjZwQQlusJ50U4itLUYDf/f2ztq0t5nUelvj
+ st0c2F25h58ECUr6oLxcDsAKOGgLkjE6KU4xl12ovAXXM7TXr9sAWDpYhfNv4uMSfKaV
+ DLTA==
+X-Gm-Message-State: AOAM531lYeh00jygU+YwpS/Qx1TLK7H7C++NalcSC7SxSivG3zXokgOZ
+ zQx5Rxn7r0KXi6cKbBHjX87WjIEn
+X-Received: by 2002:a1c:4405:: with SMTP id r5mr6976264wma.72.1592373143458;
+ Tue, 16 Jun 2020 22:52:23 -0700 (PDT)
 Received: from localhost.localdomain (93.red-83-59-160.dynamicip.rima-tde.net.
  [83.59.160.93])
- by smtp.gmail.com with ESMTPSA id d28sm3000809wrc.50.2020.06.16.22.52.18
+ by smtp.gmail.com with ESMTPSA id d28sm3000809wrc.50.2020.06.16.22.52.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Jun 2020 22:52:18 -0700 (PDT)
+ Tue, 16 Jun 2020 22:52:22 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 10/14] hw/arm/mps2: Map the FPGA I/O block
-Date: Wed, 17 Jun 2020 07:52:01 +0200
-Message-Id: <20200617055205.3576-11-f4bug@amsat.org>
+Subject: [PATCH v2 14/14] hw/arm/mps2-tz: Use the ARM SBCon two-wire serial
+ bus interface
+Date: Wed, 17 Jun 2020 07:52:05 +0200
+Message-Id: <20200617055205.3576-15-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200617055205.3576-1-f4bug@amsat.org>
 References: <20200617055205.3576-1-f4bug@amsat.org>
@@ -124,53 +125,78 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Esteban Bosse <estebanbosse@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vCN0kl+EHioS
+X-TUID: cG7oORs1tcrX
+
+From 'Application Note AN521', chapter 4.7:
+
+  The SMM implements four SBCon serial modules:
+
+  One SBCon module for use by the Color LCD touch interface.
+  One SBCon module to configure the audio controller.
+  Two general purpose SBCon modules, that connect to the
+  Expansion headers J7 and J8, are intended for use with the
+  V2C-Shield1 which provide an I2C interface on the headers.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-v2: 25MHz prescale-clk property
----
- hw/arm/mps2.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ hw/arm/mps2-tz.c | 23 ++++++++++++++++++-----
+ 1 file changed, 18 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-index c66c595d4a..e106123225 100644
---- a/hw/arm/mps2.c
-+++ b/hw/arm/mps2.c
-@@ -38,8 +38,10 @@
- #include "hw/timer/cmsdk-apb-timer.h"
- #include "hw/timer/cmsdk-apb-dualtimer.h"
- #include "hw/misc/mps2-scc.h"
-+#include "hw/misc/mps2-fpgaio.h"
+diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+index 8155c35418..a4fd5ddede 100644
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -58,6 +58,7 @@
+ #include "hw/arm/armsse.h"
+ #include "hw/dma/pl080.h"
+ #include "hw/ssi/pl022.h"
++#include "hw/i2c/arm_sbcon_i2c.h"
  #include "hw/net/lan9118.h"
  #include "net/net.h"
-+#include "hw/watchdog/cmsdk-apb-watchdog.h"
+ #include "hw/core/split-irq.h"
+@@ -87,7 +88,7 @@ typedef struct {
+     TZPPC ppc[5];
+     TZMPC ssram_mpc[3];
+     PL022State spi[5];
+-    UnimplementedDeviceState i2c[4];
++    ArmSbconI2CState i2c[4];
+     UnimplementedDeviceState i2s_audio;
+     UnimplementedDeviceState gpio[4];
+     UnimplementedDeviceState gfx;
+@@ -365,6 +366,18 @@ static MemoryRegion *make_spi(MPS2TZMachineState *mms, void *opaque,
+     return sysbus_mmio_get_region(s, 0);
+ }
  
- typedef enum MPS2FPGAType {
-     FPGA_AN385,
-@@ -67,8 +69,10 @@ typedef struct {
-     MemoryRegion sram;
-     /* FPGA APB subsystem */
-     MPS2SCC scc;
-+    MPS2FPGAIO fpgaio;
-     /* CMSDK APB subsystem */
-     CMSDKAPBDualTimer dualtimer;
-+    CMSDKAPBWatchdog watchdog;
- } MPS2MachineState;
- 
- #define TYPE_MPS2_MACHINE "mps2"
-@@ -332,6 +336,11 @@ static void mps2_common_init(MachineState *machine)
-     qdev_prop_set_uint32(sccdev, "scc-id", mmc->scc_id);
-     sysbus_realize(SYS_BUS_DEVICE(&mms->scc), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(sccdev), 0, 0x4002f000);
-+    object_initialize_child(OBJECT(mms), "fpgaio",
-+                            &mms->fpgaio, TYPE_MPS2_FPGAIO);
-+    qdev_prop_set_uint32(DEVICE(&mms->fpgaio), "prescale-clk", 25000000);
-+    sysbus_realize(SYS_BUS_DEVICE(&mms->fpgaio), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&mms->fpgaio), 0, 0x40028000);
- 
-     /* In hardware this is a LAN9220; the LAN9118 is software compatible
-      * except that it doesn't support the checksum-offload feature.
++static MemoryRegion *make_i2c(MPS2TZMachineState *mms, void *opaque,
++                              const char *name, hwaddr size)
++{
++    ArmSbconI2CState *i2c = opaque;
++    SysBusDevice *s;
++
++    object_initialize_child(OBJECT(mms), name, i2c, TYPE_ARM_SBCON_I2C);
++    s = SYS_BUS_DEVICE(i2c);
++    sysbus_realize(s, &error_fatal);
++    return sysbus_mmio_get_region(s, 0);
++}
++
+ static void mps2tz_common_init(MachineState *machine)
+ {
+     MPS2TZMachineState *mms = MPS2TZ_MACHINE(machine);
+@@ -499,10 +512,10 @@ static void mps2tz_common_init(MachineState *machine)
+                 { "uart2", make_uart, &mms->uart[2], 0x40202000, 0x1000 },
+                 { "uart3", make_uart, &mms->uart[3], 0x40203000, 0x1000 },
+                 { "uart4", make_uart, &mms->uart[4], 0x40204000, 0x1000 },
+-                { "i2c0", make_unimp_dev, &mms->i2c[0], 0x40207000, 0x1000 },
+-                { "i2c1", make_unimp_dev, &mms->i2c[1], 0x40208000, 0x1000 },
+-                { "i2c2", make_unimp_dev, &mms->i2c[2], 0x4020c000, 0x1000 },
+-                { "i2c3", make_unimp_dev, &mms->i2c[3], 0x4020d000, 0x1000 },
++                { "i2c0", make_i2c, &mms->i2c[0], 0x40207000, 0x1000 },
++                { "i2c1", make_i2c, &mms->i2c[1], 0x40208000, 0x1000 },
++                { "i2c2", make_i2c, &mms->i2c[2], 0x4020c000, 0x1000 },
++                { "i2c3", make_i2c, &mms->i2c[3], 0x4020d000, 0x1000 },
+             },
+         }, {
+             .name = "apb_ppcexp2",
 -- 
 2.21.3
 

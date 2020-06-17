@@ -1,231 +1,172 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp294210lfm;
-        Tue, 16 Jun 2020 22:11:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxnLaurnouiQpVa5CHvANVyCf+hijJ316NcOi1pFSVB5huxcDhlc22aR6EjrHjzNhcJTKfq
-X-Received: by 2002:a5b:74e:: with SMTP id s14mr9539965ybq.104.1592370690802;
-        Tue, 16 Jun 2020 22:11:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592370690; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp316624lfm;
+        Tue, 16 Jun 2020 22:52:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx42eNYvKZjgHunOrRnoZDeOkUj/ND4I0A+TOfjjU/I8SqKuZacMN2kYP7ImobYG0KDSyMz
+X-Received: by 2002:a25:e911:: with SMTP id n17mr10655582ybd.280.1592373143351;
+        Tue, 16 Jun 2020 22:52:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592373143; cv=none;
         d=google.com; s=arc-20160816;
-        b=y9+0Feq+W8wQTcx8/3mQa9Y9GMXCzi5R5MRxkg6r7Xk2OSe1KAkc2PzRCq3IPLPTPA
-         B6wnaaslrScquaUy0fDRSbEJLS6Od++ey/bgZF5rHrJrfQRv2FrR6zpBQ6nHIMkrwDp5
-         RbUyvkN5AQY7MEu7Xgw1GaR1peJBEYv9Ni2C5C3KM/nNu+tSufPZoyCp3kX1unc2ENuZ
-         YWKmho8VnUaN+3/YsZ+oZytUICofnisQ/kOARlmK7X0ifWRcxZ+P/dsJfVxy/dWa2SKM
-         hjAQZz5AtSmApj5RL/z0gKO0tQ4WQm2sfmbha17Oj9ubpMp7OvhJsO9q6cTnp67ZvcA2
-         YjaA==
+        b=VRlHff0iS4TBu0h29QtnIoPiVs3GN+TkvO8jXwpe1JfjHZztfxhqNz8M8hJnr4lRsV
+         V44Ff4w6uJxXTBz8L8zs1JceSYBNo755WLIktAa65V8MF/Bq0Enyz2EwqHy1dyUvL0Bd
+         /aVyr7P4xC/KEsMvlzg5TGfmykrBt+h1N0jjYzfiYnxu9bw8eD5QvwW1cpIY+eh5txhH
+         dN/7AaFwfde9iw1vOZbkZ3bJcli4avXxuv1xeRryoudBJMSOBaZMslz/h1uGJwpC/e2G
+         i3Dd6L8SBMHRyqjj3Vgt0TiChirDKMOBbVclo8rUOq7wBsdNEnbxgR1j9JYfIZVDCVhX
+         X5BQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=TY+TCrnKhAXTrxyJ4DBE8os3pcJqpUZCHxwgzmqcuBI=;
-        b=ufoeyznORK1XsLbFey2znO9cMocGt/M0WXExd6a5bO39RXkYJd1RGKA5owJFsccmhB
-         h8uV88OlH0flrrHOBB1y0LH/Pdj+Cj2T7Ili12VsmZoJX0s7iCb4jLuKB7+osp4Tyf/D
-         aDZQh6xPP+B5kYLefJnxLwTEgiFQmsCPHZB074jIFx92+h5ervFTXLdzm0tNDw56PR05
-         +T8peitrLp/TwkhuT9N5akB1EcMa9HPUKqx8u5Ibb2LI0yHSuqRBgk9h8wz0rcw8gIg6
-         oT0RuZ4BsTwPvi1BwW5Mbgb7pnHBf34Go1Wih3RV5Yp0xaS8xmBVIA/9qt1miuCmtRTb
-         9vDQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=F4jthcsWCc1LZ6kfAfQ/ELBbOn8lAcaBf32TtFDc06Q=;
+        b=PCQBme+A23Crmrx5HuBxrqxAQN5wIW7vnZpJYirhSIZi7Ao0U5JHT/0oV3BsFwCrid
+         Arbki2LzFGO0nMHmkewr1e1STLu9W/H3QZrAU6W5BxiP7STMCqbDiUKOf+wBuvf/54dE
+         Gbi64VDNaCksmnJCf9IOypZhaPwjPJSHP0HyZGhO2y6irbqaY5WbsthqRUhLkhYaFHX3
+         1Ljlp9sF7oscubdkbTfD3zOEBQIcAOxb7riSycJvS/LgusRxFIZqpxenogj+IOibs/B7
+         LfxMxkQy4+FjFIbg7hn2Dn40n8AvdhA2lSsWxe1IQmZEux+ksrDjjO5RKL/Lk5TdAnj4
+         Ez+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u8ol6Oqa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i23si18675540yba.272.2020.06.16.22.11.30
+        by mx.google.com with ESMTPS id d143si16183730ybh.266.2020.06.16.22.52.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jun 2020 22:11:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Jun 2020 22:52:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48750 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=u8ol6Oqa;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:58780 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlQME-0003UI-6l
-	for alex.bennee@linaro.org; Wed, 17 Jun 2020 01:11:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42592)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jlQzm-0002Tp-MM
+	for alex.bennee@linaro.org; Wed, 17 Jun 2020 01:52:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49654)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jlQLR-0002xM-E2
- for qemu-devel@nongnu.org; Wed, 17 Jun 2020 01:10:43 -0400
-Received: from 10.mo179.mail-out.ovh.net ([46.105.79.46]:37860)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jlQLO-0006Tj-Cb
- for qemu-devel@nongnu.org; Wed, 17 Jun 2020 01:10:41 -0400
-Received: from player698.ha.ovh.net (unknown [10.110.171.5])
- by mo179.mail-out.ovh.net (Postfix) with ESMTP id C3207168878
- for <qemu-devel@nongnu.org>; Wed, 17 Jun 2020 07:10:27 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player698.ha.ovh.net (Postfix) with ESMTPSA id 5B88D136ACACF;
- Wed, 17 Jun 2020 05:10:16 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-98R002cbf81f5b-57a4-4961-9d61-367f63aa2de7,ABECD89738EEB0C75E5395B338997A57DB3A3EEE)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH 2/2] hw/misc/pca9552: Make LEDs 13-15 also GPIOs
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200616094542.25415-1-f4bug@amsat.org>
- <20200616094542.25415-3-f4bug@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <84d0fee0-9711-e066-466a-836274408068@kaod.org>
-Date: Wed, 17 Jun 2020 07:10:14 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jlQzb-0002RU-VL; Wed, 17 Jun 2020 01:52:11 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:37923)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jlQzZ-0004QJ-TK; Wed, 17 Jun 2020 01:52:11 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id f185so623244wmf.3;
+ Tue, 16 Jun 2020 22:52:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=F4jthcsWCc1LZ6kfAfQ/ELBbOn8lAcaBf32TtFDc06Q=;
+ b=u8ol6OqaVITte9oQ0eVUQTo+39E2ZT3Q2LDeraR+ZEU7c7T9o6RoGGZyAJ5bMlB3Uh
+ uMVFQVTAL3SF86rL2C6lb/k4FujU9/+O1dAfiW9wo+s+hS6qECuBPpVJEU4/qCDg4uEp
+ QGjLxLamO28sciwx9CVvoc/ur4J6NiTxIpi+hPXe19oLrIIcdi9mnqkYGtfAJBLRkBdK
+ ApNccln2wMp4lBqGFJ1xOaedxQl++vIebqSUdEj7BYaVzPwZ66bHs2iZkQF0uDgqPsgB
+ U67cHdEAWcZ1f021fmMOUyg9ZqjxieAVbTk5j8CMlfRB8bWpTMNApqKOd4xV/V6B3H0x
+ /Dyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=F4jthcsWCc1LZ6kfAfQ/ELBbOn8lAcaBf32TtFDc06Q=;
+ b=uTU7KemS/Gl7t1Yx8UYxg5/0aSZeHqUITyfm8gKBlx2WjJ3rU4jPpYECBQhQ5LfErQ
+ B45a3irbkG10w8F/akgUmxPx9gDzFZX5eKD3kKDeL3EsafjJfAwmsWcN7lBf3V1P43ng
+ GTmK0iX6it8woYpUAW2rhYkujj2WbCZfmJtEV4hZieUEzwooohZlFjTmts7BecYPNCMy
+ 8ZYiSLU6hAAMvxYh7KB6y4isSW88BAKFZVdW65Ap1oedac3r7RXic41+QHxIvyjnHHIR
+ w8of7I17i6nV3berSw3r/k39O8xah5LLeST6946ZjU6oKQCyspHfISB/OtT+76oV1pfD
+ f82g==
+X-Gm-Message-State: AOAM533DPQq3mEHfrB4DMphaaD9e+AylVY/LsNlf7lPNFJrtt8SenbD3
+ Qqdh8xeJ7AkhI++VT7YsL2gj6SuG
+X-Received: by 2002:a7b:c441:: with SMTP id l1mr6325648wmi.7.1592373128060;
+ Tue, 16 Jun 2020 22:52:08 -0700 (PDT)
+Received: from localhost.localdomain (93.red-83-59-160.dynamicip.rima-tde.net.
+ [83.59.160.93])
+ by smtp.gmail.com with ESMTPSA id d28sm3000809wrc.50.2020.06.16.22.52.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 16 Jun 2020 22:52:07 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 00/14] mps2: Add few more peripherals
+Date: Wed, 17 Jun 2020 07:51:51 +0200
+Message-Id: <20200617055205.3576-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <20200616094542.25415-3-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 11944390639203552014
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudejuddgleegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefffdvtddugeeifeduuefghfejgfeigeeigeeltedthefgieeiveeuiefhgeefgfenucfkpheptddrtddrtddrtddpkedvrdeigedrvdehtddrudejtdenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrheileekrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrgh
-Received-SPF: pass client-ip=46.105.79.46; envelope-from=clg@kaod.org;
- helo=10.mo179.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/17 01:10:28
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joaquin de Andres <me@xcancerberox.com.ar>,
- Esteban Bosse <estebanbosse@gmail.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Guenter Roeck <linux@roeck-us.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TILSLr0LkOKy
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Joaquin de Andres <me@xcancerberox.com.ar>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Esteban Bosse <estebanbosse@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zHKzjXntTo45
 
-On 6/16/20 11:45 AM, Philippe Mathieu-Daudé wrote:
-> The PCA9552 has 3 GPIOs, add them.
+Few patches while playing with Zephyr on the MPS2:
 
-This is an example of an HW configuration. All pins can be used
-as GPIOs. 
- 
-> See 'PCA9552 Product Datasheet Rev. 05 - 9 March 2006',
-> chapter 6.4 'Pins used as GPIOs':
-> 
->   LED pins not used to control LEDs can be used as general
->   purpose I/Os (GPIOs).
->   For use as input, set LEDn to high-impedance (01) and then
->   read the pin state via the input register.
->   For use as output, connect external pull-up resistor to the
->   pin and size it according to the DC recommended operating
->   characteristics. LED output pin is HIGH when the output is
->   programmed as high-impedance, and LOW when the output is
->   programmed LOW through the ‘LED selector’ register. The
->   output can be pulse-width controlled when PWM0 or PWM1 are
->   used.
->
->
-> And chapter 8 'Application design-in information':
-> 
->   LED0 to LED12 are used as LED drivers.
->   LED13 to LED15 are used as regular GPIOs.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  include/hw/misc/pca9552.h |  2 ++
->  hw/misc/pca9552.c         | 18 ++++++++++++++++++
->  2 files changed, 20 insertions(+)
-> 
-> diff --git a/include/hw/misc/pca9552.h b/include/hw/misc/pca9552.h
-> index ebb43c63fe..7e47ea312d 100644
-> --- a/include/hw/misc/pca9552.h
-> +++ b/include/hw/misc/pca9552.h
-> @@ -15,6 +15,7 @@
->  #define PCA9552(obj) OBJECT_CHECK(PCA9552State, (obj), TYPE_PCA9552)
->  
->  #define PCA9552_NR_REGS 10
-> +#define PCA9552_NR_GPIOS 3
->  
->  typedef struct PCA9552State {
->      /*< private >*/
-> @@ -27,6 +28,7 @@ typedef struct PCA9552State {
->      uint8_t regs[PCA9552_NR_REGS];
->      uint8_t max_reg;
->      uint8_t nr_leds;
-> +    qemu_irq gpio[PCA9552_NR_GPIOS];
->  } PCA9552State;
->  
->  #endif
-> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-> index a3d0decbff..6ca6c0dbc2 100644
-> --- a/hw/misc/pca9552.c
-> +++ b/hw/misc/pca9552.c
-> @@ -12,8 +12,10 @@
->  #include "qemu/osdep.h"
->  #include "qemu/log.h"
->  #include "qemu/module.h"
-> +#include "qemu/bitops.h"
->  #include "hw/misc/pca9552.h"
->  #include "hw/misc/pca9552_regs.h"
-> +#include "hw/irq.h"
->  #include "migration/vmstate.h"
->  #include "qapi/error.h"
->  #include "qapi/visitor.h"
-> @@ -48,12 +50,16 @@ static void pca9552_update_pin_input(PCA9552State *s)
->              s->regs[input_reg] |= 1 << input_shift;
->              if (input_shift < s->nr_leds) {
->                  trace_pca9552_led_set(input_shift, true);
-> +            } else {
-> +                qemu_set_irq(s->gpio[input_shift - s->nr_leds], 1);
+- clean 'versatile_i2c' a bit,
+- describe it as 'ARM SBCon two-wire serial bus interface'
+  which is common on the ARM documentation,
+- add watchdog
+- added fpgaio with correct prescale clk
+- added i2c and spi
+- added gpio/i2s as unimp
+- dropped the fpgaio push-button patch
 
-It is simpler to set the irq level in pca9552_gpio_set().
+Zephyr ressources used:
+https://docs.zephyrproject.org/latest/boards/arm/mps2_an385/doc/index.html
 
->              }
->              break;
->          case PCA9552_LED_OFF:
->              s->regs[input_reg] &= ~(1 << input_shift);
->              if (input_shift < s->nr_leds) {
->                  trace_pca9552_led_set(input_shift, false);
-> +            } else {
-> +                qemu_set_irq(s->gpio[input_shift - s->nr_leds], 0);
->              }
->              break;
->          case PCA9552_LED_PWM0:
-> @@ -65,6 +71,16 @@ static void pca9552_update_pin_input(PCA9552State *s)
->      }
->  }
->  
-> +static void pca9552_gpio_set(void *opaque, int n, int enable)
-> +{
-> +    PCA9552State *s = opaque;
-> +
-> +    /* LED13 to LED15 are used as regular GPIOs. */
-> +    s->regs[PCA9552_LS3] = deposit32(s->regs[PCA9552_LS3], n + 1, 1,
-> +                                     enable ? PCA9552_LED_ON : PCA9552_LED_OFF);> +    pca9552_update_pin_input(s);
+Philippe Mathieu-Daudé (14):
+  hw/watchdog/cmsdk-apb-watchdog: Add trace event for lock status
+  hw/i2c/versatile_i2c: Add definitions for register addresses
+  hw/i2c/versatile_i2c: Add SCL/SDA definitions
+  hw/i2c: Add header for ARM SBCon two-wire serial bus interface
+  hw/arm: Use TYPE_VERSATILE_I2C instead of hardcoded string
+  hw/arm/mps2: Document CMSDK/FPGA APB subsystem sections
+  hw/arm/mps2: Rename CMSDK AHB peripheral region
+  hw/arm/mps2: Add CMSDK APB watchdog device
+  hw/arm/mps2: Add CMSDK AHB GPIO peripherals as unimplemented devices
+  hw/arm/mps2: Map the FPGA I/O block
+  hw/arm/mps2: Add SPI devices
+  hw/arm/mps2: Add I2C devices
+  hw/arm/mps2: Add audio I2S interface as unimplemented device
+  hw/arm/mps2-tz: Use the ARM SBCon two-wire serial bus interface
 
-I would introduce a set_pin() helper instead. See pca9552_pin_get_config().
-pca9552_gpio_set() would look like :
+ include/hw/i2c/arm_sbcon_i2c.h   | 35 +++++++++++++++++
+ hw/arm/mps2-tz.c                 | 23 ++++++++---
+ hw/arm/mps2.c                    | 65 ++++++++++++++++++++++++++++++--
+ hw/arm/realview.c                |  3 +-
+ hw/arm/versatilepb.c             |  3 +-
+ hw/arm/vexpress.c                |  3 +-
+ hw/i2c/versatile_i2c.c           | 38 ++++++++++---------
+ hw/watchdog/cmsdk-apb-watchdog.c |  1 +
+ MAINTAINERS                      |  1 +
+ hw/arm/Kconfig                   |  1 +
+ hw/watchdog/trace-events         |  1 +
+ 11 files changed, 144 insertions(+), 30 deletions(-)
+ create mode 100644 include/hw/i2c/arm_sbcon_i2c.h
 
-	pca9552_set_pin(s, n, enable ? PCA9552_LED_ON : PCA9552_LED_OFF);
-	pca9552_update_pin_input(s);
-	qemu_set_irq(s->gpio[n], enable);
-
-> +}
-> +
->  static uint8_t pca9552_read(PCA9552State *s, uint8_t reg)
->  {
->      switch (reg) {
-> @@ -308,6 +324,8 @@ static void pca9552_initfn(Object *obj)
->                              NULL, NULL);
->          g_free(name);
->      }
-> +    qdev_init_gpio_in(DEVICE(obj), pca9552_gpio_set, PCA9552_NR_GPIOS);
-> +    qdev_init_gpio_out(DEVICE(obj), s->gpio, PCA9552_NR_GPIOS);
->  }
->  
->  static void pca9552_class_init(ObjectClass *klass, void *data)
-> 
+-- 
+2.21.3
 

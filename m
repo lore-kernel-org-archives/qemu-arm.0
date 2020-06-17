@@ -1,111 +1,92 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp438890lfm;
-        Wed, 17 Jun 2020 02:19:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyjFfohJiNC/Kgqvxg6o9dOgtaHv/aNZHay2txJoXhJpOANTJ7h3ZODoNblH+vxPZ3dXDoC
-X-Received: by 2002:a25:abd2:: with SMTP id v76mr10625872ybi.463.1592385556994;
-        Wed, 17 Jun 2020 02:19:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592385556; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp522715lfm;
+        Wed, 17 Jun 2020 04:27:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzxVuVmuk2RU3iXOIoZBvg+3lR2a3OLyHnWKpO8l7gHQTNUjdiJRCYry0wzGOXsXkMSlvFJ
+X-Received: by 2002:a25:b901:: with SMTP id x1mr12192283ybj.498.1592393249228;
+        Wed, 17 Jun 2020 04:27:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592393249; cv=none;
         d=google.com; s=arc-20160816;
-        b=q/6WK08nEUDEBCX+S9HVndUYqN+FCgzSb13oW7Zb1IzdhV4FO+2fx2Jm1JwIszuW1L
-         VPxASrcs0JOxStrnsu1J9DUdzOn1ESNyODh5ASBB9/FGc4MICFul6GmS+BpOeC79brB/
-         Wqhl4zEelX0RPsflQXktDyFi+apuhmKL7vvqwMAx0pzHqQWG9IiQldkfBkTOlx781ugO
-         1u3UCaBVk6FWtGpfdCljiHsZ0OpffeiuzILOPwoVL2rydE3sHhwTTow7eiOp1LlKawzc
-         DhvL8biO5EUc+4dgllY56eN9343czbS7QC1Ng8ssdRJCy/uxLmMW/w0nVGck4vQ0PPpy
-         zRtg==
+        b=VL2Q/JKCC+Orx/ie94zCCGt1/S9E6zbzCujtmzOkCuqoJ3ltv1G2T3P9QY2b3prA5v
+         ZtGnosPdNyCMeLJnRmuIvoxl0jAZJqqpLDku/TajH0sWzXuSoiwEQavk9POqJbcJbT/l
+         te7cYApTdrbO3tzbgL3+/yOwWuJfVLBaUMGMNwfyKxN3sqGb03lXCAy80hiM5kCI6WrL
+         PnqKmozSNn6bwgbsVOP3s5N+NCpe/ZCz1t+LIsIEqofZllYX60jlg1ZLGQFLpLyKx2lA
+         huOpZOZ8IdtTefemznR9FDPodm+QbKuxfmhrn97n+uSipdByZcvDNjd7w8uDpRqU+HK6
+         IShw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=av6R9ayZL9WdcrzKT4i7dDrzpzLAavW93Q2B21s9tcY=;
-        b=FTV5PJ4t8fKwIi83xLH0jDHSbuEk2xjdpDhlD5UBYXnwy5xp9TxaFZhFhI9f/uIS4c
-         GX0gTEJnPJatfSG6BGCj84A/gaQNOH1RgEWObr4OePkklqC+y6CQD2mhrxn1+F5wMen9
-         Fo1a5fw3pbhJEtpPkt+P1Vnh8RaUVi74ZBZLgbwLstCk7dqs+QDP1dPwbKgi+G9R64iw
-         onDKIMNCXNp2OFyd6x2dUtI+aFZ7xqd5f+xmHJiMnoY8YlowzJlusVd5zhNM7QGN+WQp
-         +vKWkIVayyLtzB9EZL4o9+EAQR3/gIhFsDkuC8KJNQoLLGhvgZMNtDOBW4EKk3RsO1M0
-         MgAw==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=YSsHg8SiGaP0mMqoKXZ/+aL5lseTF3tN2yVZ3uRjOSg=;
+        b=IQYf2nLN+RXONf4lgJchrlMX7gI09ckbwV1sSjDv41B1HgpoFI/QGwtaLzJ4mBBeGM
+         PbHOMoNoWIzyW38GME0+r7c8EVfZTNS7wSk4qIEtiMJQTVejYrDQFvtl57oaB8YPr6u1
+         HBb8/qMRfW/tUNUS7bwoCI+V4bFFa/QihcXrXhd3Ud1iMU0DTOE4MTfbncbiqn3eVbyx
+         CR7yKTaj+zuXRZbs0IvWjw3WhI2aAeuP6JEXch3g1pKKBWRMTgYhLLlFKwzGoWqQXuop
+         YE2zuJtv4XEY98UIImNweyBVz2UyysNpU24jyGSVi84YtTNWIs2zuzMXQLj9N1gHQhcY
+         hrxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=BfEnXo0d;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f13si19754521ybk.162.2020.06.17.02.19.16
+        by mx.google.com with ESMTPS id 141si19451687ybf.456.2020.06.17.04.27.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jun 2020 02:19:16 -0700 (PDT)
+        Wed, 17 Jun 2020 04:27:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=BfEnXo0d;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33500 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59718 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlUE0-0000fi-AY
-	for alex.bennee@linaro.org; Wed, 17 Jun 2020 05:19:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38380)
+	id 1jlWE4-00006q-J4
+	for alex.bennee@linaro.org; Wed, 17 Jun 2020 07:27:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40172)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1jlUDr-0000fI-KP
- for qemu-arm@nongnu.org; Wed, 17 Jun 2020 05:19:07 -0400
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:43330)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1jlUDp-0004Oy-E4
- for qemu-arm@nongnu.org; Wed, 17 Jun 2020 05:19:07 -0400
-Received: by mail-ed1-x543.google.com with SMTP id d15so1338022edm.10
- for <qemu-arm@nongnu.org>; Wed, 17 Jun 2020 02:19:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=av6R9ayZL9WdcrzKT4i7dDrzpzLAavW93Q2B21s9tcY=;
- b=BfEnXo0d7Z1baF9+oRBKAs9KEof9MHEZ7/y80p6QSuZJu5Zh+BFUgkVoiRNB4EYdib
- p9WaKZI9UZQ+kD38vgsoAEUpza0AcAOkoQJLb5rh1wwcMS1U6wX0tl28IFHSJQpnsgHw
- Gd1p5X11uSIF7L8+d3jG76hY0YgFGzr0E0IcoQ60c16+UGqNeebTvSFczVHMzwlv/dOc
- 6ASJPwHkM5nV8sftH8xosOqwaWqmTHC3KFbJlabqw/3lkKWNMmKj3eMfdhS/S0SDhTEC
- E/q7/bveB0YyXx360Hu1gM/U4e59qYCux50RKkpgCv+4MHQhO+OBSmlXd0rbDI7gf9Zo
- l2Tg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=av6R9ayZL9WdcrzKT4i7dDrzpzLAavW93Q2B21s9tcY=;
- b=Icx2Rm1r+i3eRUfpDCZQWlJ9qdgdcS4gDgti1P0emhkCprsE9hWP2xFQ64r4p2ICIl
- 8uZWjqK5WjLYoRpZxo4EW5iLvSYUk4jl1d0Nho8M6339nbF9NT1cTTC564Gia6melF0a
- sQS4XeQhow4T6nMLXY/+oPj+BNmWczcgpQKLKthKss8Kiy6vVG+rkGf7FfFJWoIcRzrT
- gWUQklbZXxbv+pPspznzWl5ybH+gx26df5R9jpvXbna1tL72H6jn44cP1+7XVebYjrAa
- DXjW6c0SIjj8DJdHVHhzs9F1XVs1EDylVLS786MfruevJjwkxqaJalArUtiYbGjmt6QY
- 9z/Q==
-X-Gm-Message-State: AOAM531YfuJ35TZH6hyjkXh//C7AbDnZA91ve557wdnhoo4mxsBPQZKs
- 5Kk+7SgMgwsSq1KB4TNkgvm9dA==
-X-Received: by 2002:aa7:de08:: with SMTP id h8mr6177790edv.164.1592385543933; 
- Wed, 17 Jun 2020 02:19:03 -0700 (PDT)
-Received: from myrica ([2001:1715:4e26:a7e0:116c:c27a:3e7f:5eaf])
- by smtp.gmail.com with ESMTPSA id o27sm12927210ejc.95.2020.06.17.02.19.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Jun 2020 02:19:03 -0700 (PDT)
-Date: Wed, 17 Jun 2020 11:18:53 +0200
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v3 5/5] hw/arm/virt: Let the virtio-iommu bypass MSIs
-Message-ID: <20200617091853.GC871763@myrica>
-References: <20200611151209.22547-1-eric.auger@redhat.com>
- <20200611151209.22547-6-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jlWDw-00006R-La; Wed, 17 Jun 2020 07:27:20 -0400
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2112 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jlWDu-0000RU-8i; Wed, 17 Jun 2020 07:27:20 -0400
+Received: from lhreml721-chm.china.huawei.com (unknown [172.18.7.108])
+ by Forcepoint Email with ESMTP id 14B5281C6825EAEA97AE;
+ Wed, 17 Jun 2020 12:27:08 +0100 (IST)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ lhreml721-chm.china.huawei.com (10.201.108.72) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1913.5; Wed, 17 Jun 2020 12:27:07 +0100
+Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
+ lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
+ 15.01.1913.007; Wed, 17 Jun 2020 12:27:07 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>
+Subject: RE: [PATCH v2] arm/virt: Add memory hot remove support
+Thread-Topic: [PATCH v2] arm/virt: Add memory hot remove support
+Thread-Index: AQHWLpa0X8e9yg3bs02lkc+XqzxBrKjc1fYQ
+Date: Wed, 17 Jun 2020 11:27:07 +0000
+Message-ID: <4c405e4219b44f9bb9f74baae20f3071@huawei.com>
+References: <20200520110354.14352-1-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20200520110354.14352-1-shameerali.kolothum.thodi@huawei.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.47.87.90]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200611151209.22547-6-eric.auger@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::543;
- envelope-from=jean-philippe@linaro.org; helo=mail-ed1-x543.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.76.210;
+ envelope-from=shameerali.kolothum.thodi@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/17 07:27:08
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-1, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,113 +99,184 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
- peterx@redhat.com, armbru@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
- bbhushan2@marvell.com, eric.auger.pro@gmail.com
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "mst@redhat.com" <mst@redhat.com>, Linuxarm <linuxarm@huawei.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "Zengtao \(B\)" <prime.zeng@hisilicon.com>,
+ "imammedo@redhat.com" <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: em5YYyu8G8C8
+X-TUID: l0jC7ALNMs8Q
 
-On Thu, Jun 11, 2020 at 05:12:09PM +0200, Eric Auger wrote:
-> At the moment the virtio-iommu translates MSI transactions.
-> This behavior is inherited from ARM SMMU. The virt machine
-> code knows where the guest MSI doorbells are so we can easily
-> declare those regions as VIRTIO_IOMMU_RESV_MEM_T_MSI. With that
-> setting the guest will not map MSIs through the IOMMU and those
-> transactions will be simply bypassed.
-> 
-> Depending on which MSI controller is in use (ITS or GICV2M),
-> we declare either:
-> - the ITS interrupt translation space (ITS_base + 0x10000),
->   containing the GITS_TRANSLATOR or
-> - The GICV2M single frame, containing the MSI_SETSP_NS register.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Hi,
 
-Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+A gentle ping on this one.=20
 
+Thanks,
+Shameer
+
+> -----Original Message-----
+> From: Linuxarm [mailto:linuxarm-bounces@huawei.com] On Behalf Of Shameer
+> Kolothum
+> Sent: 20 May 2020 12:04
+> To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
+> Cc: peter.maydell@linaro.org; mst@redhat.com; Linuxarm
+> <linuxarm@huawei.com>; eric.auger@redhat.com; Zengtao (B)
+> <prime.zeng@hisilicon.com>; imammedo@redhat.com
+> Subject: [PATCH v2] arm/virt: Add memory hot remove support
+>=20
+> This adds support for memory hot remove on arm/virt that uses acpi ged
+> device.
+>=20
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > ---
-> v2 -> v3:
-> - Add a new value to VirtMSIControllerType
-> 
-> v1 -> v2:
-> - Test which MSI controller is instantiated
-> - If GICV2M is in use, declare its doorbell as an MSI doorbell too
+> RFC v1 --> v2
+>   -Rebased on top of latest Qemu master.
+>   -Dropped "RFC" and tested with kernel 5.7-rc6
 > ---
->  include/hw/arm/virt.h |  7 +++++++
->  hw/arm/virt.c         | 18 ++++++++++++++++++
->  2 files changed, 25 insertions(+)
-> 
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 31878ddc72..a18b6b397b 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -96,6 +96,12 @@ typedef enum VirtIOMMUType {
->      VIRT_IOMMU_VIRTIO,
->  } VirtIOMMUType;
->  
-> +typedef enum VirtMSIControllerType {
-> +    VIRT_MSI_CTRL_NONE,
-> +    VIRT_MSI_CTRL_GICV2M,
-> +    VIRT_MSI_CTRL_ITS,
-> +} VirtMSIControllerType;
+>  hw/acpi/generic_event_device.c | 28 +++++++++++++++++
+>  hw/arm/virt.c                  | 56
+> ++++++++++++++++++++++++++++++++--
+>  2 files changed, 82 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_devic=
+e.c
+> index b1cbdd86b6..2b3bedcd2f 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -193,6 +193,32 @@ static void acpi_ged_device_plug_cb(HotplugHandler
+> *hotplug_dev,
+>      }
+>  }
+>=20
+> +static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
+> +                                       DeviceState *dev, Error
+> **errp)
+> +{
+> +    AcpiGedState *s =3D ACPI_GED(hotplug_dev);
 > +
->  typedef enum VirtGICType {
->      VIRT_GIC_VERSION_MAX,
->      VIRT_GIC_VERSION_HOST,
-> @@ -136,6 +142,7 @@ typedef struct {
->      OnOffAuto acpi;
->      VirtGICType gic_version;
->      VirtIOMMUType iommu;
-> +    VirtMSIControllerType msi_controller;
->      uint16_t virtio_iommu_bdf;
->      struct arm_boot_info bootinfo;
->      MemMapEntry *memmap;
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 37462a6f78..451b150459 100644
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state,
+> dev, errp);
+> +    } else {
+> +        error_setg(errp, "acpi: device unplug request for unsupported
+> device"
+> +                   " type: %s", object_get_typename(OBJECT(dev)));
+> +    }
+> +}
+> +
+> +static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
+> +                               DeviceState *dev, Error **errp) {
+> +    AcpiGedState *s =3D ACPI_GED(hotplug_dev);
+> +
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
+> +    } else {
+> +        error_setg(errp, "acpi: device unplug for unsupported device"
+> +                   " type: %s", object_get_typename(OBJECT(dev)));
+> +    }
+> +}
+> +
+>  static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits =
+ev)
+> {
+>      AcpiGedState *s =3D ACPI_GED(adev);
+> @@ -318,6 +344,8 @@ static void acpi_ged_class_init(ObjectClass *class,
+> void *data)
+>      dc->vmsd =3D &vmstate_acpi_ged;
+>=20
+>      hc->plug =3D acpi_ged_device_plug_cb;
+> +    hc->unplug_request =3D acpi_ged_unplug_request_cb;
+> +    hc->unplug =3D acpi_ged_unplug_cb;
+>=20
+>      adevc->send_event =3D acpi_ged_send_event;  } diff --git a/hw/arm/vi=
+rt.c
+> b/hw/arm/virt.c index 37462a6f78..110fa73990 100644
 > --- a/hw/arm/virt.c
 > +++ b/hw/arm/virt.c
-> @@ -602,6 +602,7 @@ static void create_its(VirtMachineState *vms)
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_GIC_ITS].base);
->  
->      fdt_add_its_gic_node(vms);
-> +    vms->msi_controller = VIRT_MSI_CTRL_ITS;
->  }
->  
->  static void create_v2m(VirtMachineState *vms)
-> @@ -622,6 +623,7 @@ static void create_v2m(VirtMachineState *vms)
->      }
->  
->      fdt_add_v2m_gic_node(vms);
-> +    vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
->  }
->  
->  static void create_gic(VirtMachineState *vms)
-> @@ -2149,8 +2151,24 @@ out:
->  static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->                                              DeviceState *dev, Error **errp)
->  {
-> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-> +
->      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
->          virt_memory_pre_plug(hotplug_dev, dev, errp);
-> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
-> +        /* we declare a VIRTIO_IOMMU_RESV_MEM_T_MSI region */
-> +
-> +        if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
-> +            /* GITS_TRANSLATER page */
-> +            qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
-> +            qdev_prop_set_string(dev, "reserved-regions[0]",
-> +                                 "0x8090000, 0x809FFFF, 1");
-> +        } else if (vms->msi_controller == VIRT_MSI_CTRL_GICV2M) {
-> +            /* MSI_SETSPI_NS page */
-> +            qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
-> +            qdev_prop_set_string(dev, "reserved-regions[0]",
-> +                                 "0x8020000, 0x8020FFF, 1");
-> +        }
+> @@ -2177,11 +2177,62 @@ static void
+> virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
 >      }
 >  }
->  
-> -- 
-> 2.20.1
-> 
+>=20
+> +static void virt_dimm_unplug_request(HotplugHandler *hotplug_dev,
+> +                                     DeviceState *dev, Error **errp)
+> {
+> +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
+> +    Error *local_err =3D NULL;
+> +
+> +    if (!vms->acpi_dev) {
+> +        error_setg(errp,
+> +                   "memory hotplug is not enabled: missing acpi-ged
+> device");
+> +        goto out;
+> +    }
+> +
+> +    hotplug_handler_unplug_request(HOTPLUG_HANDLER(vms->acpi_dev),
+> dev,
+> +                                   &local_err);
+> +out:
+> +    error_propagate(errp, local_err);
+> +}
+> +
+> +static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
+> +                             DeviceState *dev, Error **errp) {
+> +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
+> +    Error *local_err =3D NULL;
+> +
+> +    hotplug_handler_unplug(HOTPLUG_HANDLER(vms->acpi_dev), dev,
+> &local_err);
+> +    if (local_err) {
+> +        goto out;
+> +    }
+> +
+> +    pc_dimm_unplug(PC_DIMM(dev), MACHINE(vms));
+> +    object_property_set_bool(OBJECT(dev), false, "realized", NULL);
+> +
+> + out:
+> +    error_propagate(errp, local_err);
+> +}
+> +
+>  static void virt_machine_device_unplug_request_cb(HotplugHandler
+> *hotplug_dev,
+>                                            DeviceState *dev, Error
+> **errp)  {
+> -    error_setg(errp, "device unplug request for unsupported device"
+> -               " type: %s", object_get_typename(OBJECT(dev)));
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        virt_dimm_unplug_request(hotplug_dev, dev, errp);
+> +    } else {
+> +        error_setg(errp, "device unplug request for unsupported device"
+> +                   " type: %s", object_get_typename(OBJECT(dev)));
+> +    }
+> +}
+> +
+> +static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
+> +                                          DeviceState *dev, Error
+> +**errp) {
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> +        virt_dimm_unplug(hotplug_dev, dev, errp);
+> +    } else {
+> +        error_setg(errp, "virt: device unplug for unsupported device"
+> +                   " type: %s", object_get_typename(OBJECT(dev)));
+> +    }
+>  }
+>=20
+>  static HotplugHandler *virt_machine_get_hotplug_handler(MachineState
+> *machine, @@ -2262,6 +2313,7 @@ static void
+> virt_machine_class_init(ObjectClass *oc, void *data)
+>      hc->pre_plug =3D virt_machine_device_pre_plug_cb;
+>      hc->plug =3D virt_machine_device_plug_cb;
+>      hc->unplug_request =3D virt_machine_device_unplug_request_cb;
+> +    hc->unplug =3D virt_machine_device_unplug_cb;
+>      mc->numa_mem_supported =3D true;
+>      mc->nvdimm_supported =3D true;
+>      mc->auto_enable_numa_with_memhp =3D true;
+> --
+> 2.17.1
+>=20
+>=20
+> _______________________________________________
+> Linuxarm mailing list
+> Linuxarm@huawei.com
+> http://hulk.huawei.com/mailman/listinfo/linuxarm

@@ -1,69 +1,94 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp920951lfc;
-        Fri, 29 May 2020 15:45:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyh4K1pbOKSrq/5eWTFvYdPRNd1WDf+EiwKmvjH7fp2ssFWY8sLHf7Nw84D32ZofdfsD6QZ
-X-Received: by 2002:a5b:54d:: with SMTP id r13mr14840801ybp.430.1590792308925;
-        Fri, 29 May 2020 15:45:08 -0700 (PDT)
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp709738lfm;
+        Wed, 17 Jun 2020 08:24:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJymw2ze29c4gOfrpVQQ8fpmUVDQ8xCo4/6teOCQiHXL453xgl93jZLIb4MGDsgQvbf3BZTO
+X-Received: by 2002:a9f:24c1:: with SMTP id 59mr6380584uar.91.1592407473335;
+        Wed, 17 Jun 2020 08:24:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592407473; cv=none;
+        d=google.com; s=arc-20160816;
+        b=wo+EPNCKYXldeqdh8AqM18YI6n38v6CBERV12XRnuXV0RBu8KQaid5p0AYZKutL+PD
+         hpEwuckwoCf/QlPYOykaGlp/Val2zMXtEtXV2BIE0zFaXglwkKG53pYhsnV/jDEB5V4S
+         xEhLEbd1ZZWq9HaFrZcPv9G8xshEq51eN/MGLDzfjTVmaO3pLvgYmIhIBKyLBEYi9hPZ
+         y8Q/rgAf7GRte2ghQYAP+8uMr8p5a19tLhh94O3T10ffSJGfydPy94JDkSTwiC/IEEE5
+         l8tIHAbZtwuFvD4RQ8vVF0dI4L7nVu3B4yivQJJ7YJPw+WzkmMAca/ROlXSlxksfNpoL
+         zjjA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=9IARVmxg5tA/Kgmz+1TOEfMR5uUznbQ0y/YoeCsq2E8=;
+        b=bp9DCRYItOPT96Moo55ImZWG8e/I6F371O1XRkNblFBt3MJu5KmRCVBgFeYtuMcCws
+         RrFgLctv22Pe99CebkG1oL30V5V5ufDoYB39sLxc7UsGtklc5JK0U1iCR6B8tqEFCFd0
+         tvvTdbQq+QDVv8O2PhSDbj5h7tuxCeUSxoXXb4MakYmoSqhTEt2kydK5rtyOwX9sJnOk
+         X9QRkE2eISUSwfa1JZYVA9sF5Tv6xlezShNChGkJx/p9Eak8ViYE7Nx28fLQZLtxgbmj
+         4bOCgNJBvPzEVB1KQK1rv5iaWX4ckA9QHx8zkeQMGwuXAhbA7vEJ8cJ2CFw83QfermrX
+         iHDA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o194si8837202yba.128.2020.05.29.15.45.08
+        by mx.google.com with ESMTPS id z131si69427vsz.119.2020.06.17.08.24.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 May 2020 15:45:08 -0700 (PDT)
+        Wed, 17 Jun 2020 08:24:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44066 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54346 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jenkS-0000y7-8m
-	for alex.bennee@linaro.org; Fri, 29 May 2020 18:45:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34836)
+	id 1jlZvU-0004EG-Na
+	for alex.bennee@linaro.org; Wed, 17 Jun 2020 11:24:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54200)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jenkI-0000wh-P9; Fri, 29 May 2020 18:44:58 -0400
-Resent-Date: Fri, 29 May 2020 18:44:58 -0400
-Resent-Message-Id: <E1jenkI-0000wh-P9@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21386)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jenkH-0004Un-1V; Fri, 29 May 2020 18:44:58 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1590792276; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=TUpsQtRehWFdwQ1/A0Tj431xOgmPqwUqeg6+iHYSTSLmMuuRqJpiRJbwkVs9PcFlsZB9vqpSGMDaqSF76nLZ9GpQB719ww/JBDLIJ2dP2VU7enIoP0HIkbKstvsED28SutcgS/SeZm5Ni59ACxC3grn7mohC64LO5yAeHB6FCC8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1590792276;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=q0j8SNUo0gdCPkVPxxoqv6Qyu3MELEoP6bxiZ63u4bo=; 
- b=h7rn75a7Xm8c0Z2xgiExitf1+yGom7DH0uHsE6A9iw6kMo73+D0yDkP2C9nuo6YhujSCFabHo3Du0e1jbx9aaTaSacbVjZlwMmUekzFD3iws1xheiYLLw5D9B6hhfczHD0oeIT/0Ax2gidXL8RalRojvS2wJy1j0uEsc9YJVli8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1590792273562238.71106462006833;
- Fri, 29 May 2020 15:44:33 -0700 (PDT)
-Message-ID: <159079227228.27167.7665611920685671617@45ef0f9c86ae>
-In-Reply-To: <20200529180025.169097-1-jcd@tribudubois.net>
-Subject: Re: [PATCH] hw/net/imx_fec.c: Convert debug fprintf() to trace event
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jlZvM-0004Bm-CF
+ for qemu-arm@nongnu.org; Wed, 17 Jun 2020 11:24:24 -0400
+Received: from 3.mo178.mail-out.ovh.net ([46.105.44.197]:32858)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jlZvG-0000ZF-UF
+ for qemu-arm@nongnu.org; Wed, 17 Jun 2020 11:24:20 -0400
+Received: from player787.ha.ovh.net (unknown [10.108.57.49])
+ by mo178.mail-out.ovh.net (Postfix) with ESMTP id B4F29A32A1
+ for <qemu-arm@nongnu.org>; Wed, 17 Jun 2020 17:24:15 +0200 (CEST)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player787.ha.ovh.net (Postfix) with ESMTPSA id CECBF13A759DF;
+ Wed, 17 Jun 2020 15:24:09 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G005e2e89b5a-4ed4-4133-982c-db340b003c72,ABECD89738EEB0C75E5395B338997A57DB3A3EEE)
+ smtp.auth=clg@kaod.org
+Subject: Re: [PATCH 5/6] hw/arm: Add NPCM730 and NPCM750 SoC models
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200521192133.127559-1-hskinnemoen@google.com>
+ <20200521192133.127559-6-hskinnemoen@google.com>
+ <18fa4025-0a2a-4427-b74f-2b1b678e0661@kaod.org>
+ <CAFQmdRY9f6tV7VoDOFpRJ0x0hr_0EAaGqZwmXnkJpbvmbF4FVQ@mail.gmail.com>
+ <5f0864e4-5e63-4819-1f30-68a5f207e275@kaod.org>
+ <CAFEAcA86vzp7hTYzk54+Qu+WQDzB-gLbUsqbB409f9F3ONdekQ@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <763b7791-c2d8-b9a8-3e2f-1ad6d3ac8c09@kaod.org>
+Date: Wed, 17 Jun 2020 17:24:07 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: jcd@tribudubois.net
-Date: Fri, 29 May 2020 15:44:33 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/29 18:44:54
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+In-Reply-To: <CAFEAcA86vzp7hTYzk54+Qu+WQDzB-gLbUsqbB409f9F3ONdekQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Ovh-Tracer-Id: 3863807006465297321
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -77
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudejvddgkeejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegfrhhlucfvnfffucdlvdefmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhephfevvdehieeftdevfeelleffgfehtdfgvdegteeijeetudejgedutdduudfhteeknecuffhomhgrihhnpehophgvnhhpohifvghrrdighiiinecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeekjedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=46.105.44.197; envelope-from=clg@kaod.org;
+ helo=3.mo178.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/17 11:24:16
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, PDS_OTHER_BAD_TLD=1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,57 +101,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, peter.chubb@nicta.com.au,
- qemu-devel@nongnu.org, jcd@tribudubois.net
+Cc: CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 14w1ZucUNWKQ
+X-TUID: 2R5TeBKx4grN
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDUyOTE4MDAyNS4xNjkw
-OTctMS1qY2RAdHJpYnVkdWJvaXMubmV0LwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhh
-dmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUg
-aW5mb3JtYXRpb246CgpNZXNzYWdlLWlkOiAyMDIwMDUyOTE4MDAyNS4xNjkwOTctMS1qY2RAdHJp
-YnVkdWJvaXMubmV0ClN1YmplY3Q6IFtQQVRDSF0gaHcvbmV0L2lteF9mZWMuYzogQ29udmVydCBk
-ZWJ1ZyBmcHJpbnRmKCkgdG8gdHJhY2UgZXZlbnQKVHlwZTogc2VyaWVzCgo9PT0gVEVTVCBTQ1JJ
-UFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8
-fCBleGl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmln
-IC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3Jp
-dGhtIGhpc3RvZ3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9
-PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1w
-cm9qZWN0L3FlbXUKICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8yMDIwMDUyOTE4MDAyNS4x
-NjkwOTctMS1qY2RAdHJpYnVkdWJvaXMubmV0IC0+IHBhdGNoZXcvMjAyMDA1MjkxODAwMjUuMTY5
-MDk3LTEtamNkQHRyaWJ1ZHVib2lzLm5ldApTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3Qn
-CjdjYmQ0ZGMgaHcvbmV0L2lteF9mZWMuYzogQ29udmVydCBkZWJ1ZyBmcHJpbnRmKCkgdG8gdHJh
-Y2UgZXZlbnQKCj09PSBPVVRQVVQgQkVHSU4gPT09CkVSUk9SOiBjb2RlIGluZGVudCBzaG91bGQg
-bmV2ZXIgdXNlIHRhYnMKIzI2ODogRklMRTogaHcvbmV0L2lteF9mZWMuYzoxMDkxOgorXkl0cmFj
-ZV9pbXhfZmVjX3JlY2VpdmVfbGVuKGFkZHIsIGJkLmxlbmd0aCk7JAoKRVJST1I6IGNvZGUgaW5k
-ZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMjc4OiBGSUxFOiBody9uZXQvaW14X2ZlYy5jOjEx
-MTA6CiteSSAgICB0cmFjZV9pbXhfZmVjX3JlY2VpdmVfbGFzdChiZC5mbGFncyk7JAoKRVJST1I6
-IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMjk3OiBGSUxFOiBody9uZXQvaW14
-X2ZlYy5jOjExOTA6CiteSXRyYWNlX2lteF9lbmV0X3JlY2VpdmVfbGVuKGFkZHIsIGJkLmxlbmd0
-aCk7JAoKRVJST1I6IGNvZGUgaW5kZW50IHNob3VsZCBuZXZlciB1c2UgdGFicwojMzA3OiBGSUxF
-OiBody9uZXQvaW14X2ZlYy5jOjEyMjc6CiteSSAgICB0cmFjZV9pbXhfZW5ldF9yZWNlaXZlX2xh
-c3QoYmQuZmxhZ3MpOyQKCkVSUk9SOiBIZXggbnVtYmVycyBtdXN0IGJlIHByZWZpeGVkIHdpdGgg
-JzB4JwojMzI2OiBGSUxFOiBody9uZXQvdHJhY2UtZXZlbnRzOjQxNzoKK2lteF9mZWNfcmVhZF9i
-ZCh1aW50NjRfdCBhZGRyLCBpbnQgZmxhZ3MsIGludCBsZW4sIGludCBkYXRhKSAidHhfYmQgJWx4
-IGZsYWdzICUwNHggbGVuICVkIGRhdGEgJTA4eCIKCkVSUk9SOiBIZXggbnVtYmVycyBtdXN0IGJl
-IHByZWZpeGVkIHdpdGggJzB4JwojMzI3OiBGSUxFOiBody9uZXQvdHJhY2UtZXZlbnRzOjQxODoK
-K2lteF9lbmV0X3JlYWRfYmQodWludDY0X3QgYWRkciwgaW50IGZsYWdzLCBpbnQgbGVuLCBpbnQg
-ZGF0YSwgaW50IG9wdGlvbnMsIGludCBzdGF0dXMpICJ0eF9iZCAlbHggZmxhZ3MgJTA0eCBsZW4g
-JWQgZGF0YSAlMDh4IG9wdGlvbiAlMDR4IHN0YXR1cyAlMDR4IgoKRVJST1I6IEhleCBudW1iZXJz
-IG11c3QgYmUgcHJlZml4ZWQgd2l0aCAnMHgnCiMzMzQ6IEZJTEU6IGh3L25ldC90cmFjZS1ldmVu
-dHM6NDI1OgoraW14X2ZlY19yZWNlaXZlX2xhc3QoaW50IGxhc3QpICJyeCBmcmFtZSBmbGFncyAl
-MDR4IgoKRVJST1I6IEhleCBudW1iZXJzIG11c3QgYmUgcHJlZml4ZWQgd2l0aCAnMHgnCiMzMzc6
-IEZJTEU6IGh3L25ldC90cmFjZS1ldmVudHM6NDI4OgoraW14X2VuZXRfcmVjZWl2ZV9sYXN0KGlu
-dCBsYXN0KSAicnggZnJhbWUgZmxhZ3MgJTA0eCIKCnRvdGFsOiA4IGVycm9ycywgMCB3YXJuaW5n
-cywgMjk3IGxpbmVzIGNoZWNrZWQKCkNvbW1pdCA3Y2JkNGRjYWRlNWEgKGh3L25ldC9pbXhfZmVj
-LmM6IENvbnZlcnQgZGVidWcgZnByaW50ZigpIHRvIHRyYWNlIGV2ZW50KSBoYXMgc3R5bGUgcHJv
-YmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBw
-b3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGlu
-IE1BSU5UQUlORVJTLgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0
-aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5v
-cmcvbG9ncy8yMDIwMDUyOTE4MDAyNS4xNjkwOTctMS1qY2RAdHJpYnVkdWJvaXMubmV0L3Rlc3Rp
-bmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRp
-Y2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3Vy
-IGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+On 6/11/20 11:38 AM, Peter Maydell wrote:
+> On Thu, 11 Jun 2020 at 07:12, Cédric Le Goater <clg@kaod.org> wrote:
+>> Some don't some do. This is a bit confusing.
+> 
+> Probably the usual thing of people not noticing that they
+> need to do something for big-endian hosts and nobody testing
+> the minor platforms there.
+> 
+>> Peter, should we fix the boards not doing the tswap in the secondary
+>> bootloader ?
+> 
+> Yes, we should -- it's an actual bug as well as just not being
+> very consistent.
+> 
+>> I still have access to a PP64 BE host to test.
+> 
+> In an ideal world the bugs would cause "make check" and/or
+> "make check-acceptance" to fail on BE hosts :-)
+
+I gave it a try manually with an Aspeed machine and the kernel fails to boot.
+
+Download an OpenBMC witherspoon flash image : 
+
+  wget https://openpower.xyz/job/openbmc-build/lastSuccessfulBuild/distro=ubuntu,label=builder,target=witherspoon/artifact/deploy/images/witherspoon/obmc-phosphor-image-witherspoon.ubi.mtd
+
+and run :
+
+  qemu-system-arm -M witherspoon-bmc -nic user -drive file=obmc-phosphor-image-witherspoon.ubi.mtd,format=raw,if=mtd -nographic 
+
+The kernel hangs right after activating the translation :
+
+#ifdef CONFIG_MMU
+ ARM_BE8(	orr	r0, r0, #1 << 25 )	@ big-endian page tables
+		mrcne   p15, 0, r6, c2, c0, 2   @ read ttb control reg
+		orrne	r0, r0, #1		@ MMU enabled
+		movne	r1, #0xfffffffd		@ domain 0 = client
+		bic     r6, r6, #1 << 31        @ 32-bit translation system
+		bic     r6, r6, #(7 << 0) | (1 << 4)	@ use only ttbr0
+		mcrne	p15, 0, r3, c2, c0, 0	@ load page table pointer
+		mcrne	p15, 0, r1, c3, c0, 0	@ load domain access control
+		mcrne   p15, 0, r6, c2, c0, 2   @ load ttb control
+#endif
+		mcr	p15, 0, r0, c7, c5, 4	@ ISB
+ *there* -->	mcr	p15, 0, r0, c1, c0, 0	@ load control register
+		mrc	p15, 0, r0, c1, c0, 0	@ and read it back
+		mov	r0, #0
+		mcr	p15, 0, r0, c7, c5, 4	@ ISB
+		mov	pc, r12
+
+
+C.

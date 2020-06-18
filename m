@@ -1,109 +1,108 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1832663lfm;
-        Thu, 18 Jun 2020 10:04:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyVoAupo84/yHXymuA/Dx5/mHa3W+PC5lS+MXmTNsrTop3N/yXnHBxfFCPKOCX4poenvMAK
-X-Received: by 2002:a25:bb82:: with SMTP id y2mr7496863ybg.392.1592499864548;
-        Thu, 18 Jun 2020 10:04:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592499864; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1837361lfm;
+        Thu, 18 Jun 2020 10:09:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy9jbwFX0pwC8UESgyJWLjz4OHYLqpli5q5BIQytNRwfazYAAa3DCOCKnCfiv/uhHEHSQlW
+X-Received: by 2002:ab0:7715:: with SMTP id z21mr3965436uaq.139.1592500162417;
+        Thu, 18 Jun 2020 10:09:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592500162; cv=none;
         d=google.com; s=arc-20160816;
-        b=rClf2/umzgd7+f8vOxPysbGNKFMO6jAsctCUWZIKM73zkcgQMIFU7fHDJv5T7Nu525
-         Q07AkSZiDXWIqq0x0hD+/p7NLxWZjEwmpKDoKc0Loll+tq+BxELD6Lf8WfDQzNErCmTT
-         gfdsZaSx4IYPJ4cDPJbXwi8YhbDfpmqTDHSAyvIjmUT0isYqRLL2K7VsMBgh2ftzmFeB
-         hzwklQ6R7MEfNFr6AwPkLIpXflABPvRRT1G6wK+F3fERfsjqRKfNRCcTh8ELHgK7gM9R
-         R9DY+J3cHy9nfJTqZa0nVIhghmTrU8ewU2mqFmLJmOLJy3M+a960l4EzpZCiM9H/AMQE
-         FYnA==
+        b=rXQKmAu6KXSSLCxjrfxti55fcaLq8a1wf+xm7xUDBNFZbPqJD9OV5axf4Ko+puCqmE
+         OdWlPBK1D0h3e6xrODcnbFwOli9EYGb8Qbh3nWbSZ81WApPiTcNSvB7taRJhg7MfXbUd
+         xZfp5lZYPzY5zoWWWrAS9QOU4mORJNa+pxF1tAOUiZ3C8kUa1CNTEfDgLosVH2f+JcNy
+         +uOg5KithpQ7hNx150ZldfBqkdbVEPll5S7Yhbyz9s77FfvOFP9oHfIZvedykPZqYyH+
+         HhlOaC4fb+m/2BF31+lcyJWgv5QnduI2EDEXrQNmr/UBKwdJTom+hVTivyrIAXn7fYeb
+         c3Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=XMwdTeh6Ca2SHw0HFj2nt4XoTAl1LE263sOkbWy1azE=;
-        b=GgshHR3St8i4Ua29cYXqKjLUVba7m0mc2l5TE/PdXRRKUftCvgof6mC6ZXoj1xSk3k
-         YPwCOinOzieGBdi/UW9ZCbLw1mLHmD+LSAN4UTc7T5PIqp3ZK1XwiU4zi0KsKnuN78T8
-         gQfhzDPDuWns8z11/Yfqirdx9lQIXBjmMDe1VKhfHVi9WfQ4jKMNX6o9nlAXLL8eLZ7m
-         SdQTn65TlocegOEIjgqyabXZ7NiHZ7w33+BrS2OpZ89A/vAn+5H3ULNofS+XwAkXK8h6
-         cvzjou3/bdMG0mOYk0YJYJ1KDAjYQGTA0Fv54nNlQhzPj6ix2eh86N1FP+VyRQ1CCIMR
-         dIew==
+        bh=C5wKJJ7ax7plxCcuBaWVymDM740l0fpgaLGM+LdnYQo=;
+        b=pPpcW+XQ8rQ3W8GbDhv3rUEOXCBKqiM/ECBYuyBNZJ3ZiAO3LlCkPnbKKa0l1dRUyN
+         PiunjwPUrEFMsBO+z97Qrqs/BTJkZn/YJt+mdrxpe0zyW8KYxlfO8gXHNd/0udhT2/Bh
+         9oTmW8KPfc4UusiPHZr61Pp80UKLmf0BXl3s3FNIKwP1i8tBA2ndkd6cEr2K/hEqMg+A
+         bry9IRwU5GRA9VK3AWI+vqxsVRqOE0J/LUcKQtGAGwcoQbmoRK660q5YjWx9PsJTLqIe
+         ISSAZVnBMAa4+H8M9tWNvyO5EADtaxuxjkWGO9KGm3SjfCrHjD/H3oHAOdwF+DCpwf7R
+         KItQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="x/ZisXDB";
+       dkim=fail header.i=@linaro.org header.s=google header.b=jPRx4Hn5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b5si2798128ybr.281.2020.06.18.10.04.24
+        by mx.google.com with ESMTPS id m22si492246vsk.164.2020.06.18.10.09.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jun 2020 10:04:24 -0700 (PDT)
+        Thu, 18 Jun 2020 10:09:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="x/ZisXDB";
+       dkim=fail header.i=@linaro.org header.s=google header.b=jPRx4Hn5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34260 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44132 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlxxf-0000rs-Uh
-	for alex.bennee@linaro.org; Thu, 18 Jun 2020 13:04:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59642)
+	id 1jly2T-0006IP-Nl
+	for alex.bennee@linaro.org; Thu, 18 Jun 2020 13:09:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32916)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jlxxM-0000bw-8e
- for qemu-arm@nongnu.org; Thu, 18 Jun 2020 13:04:04 -0400
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:37111)
+ id 1jly2N-0006ID-CK
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2020 13:09:15 -0400
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:51580)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jlxxK-0008DP-Fw
- for qemu-arm@nongnu.org; Thu, 18 Jun 2020 13:04:03 -0400
-Received: by mail-pj1-x1041.google.com with SMTP id m2so2954264pjv.2
- for <qemu-arm@nongnu.org>; Thu, 18 Jun 2020 10:04:00 -0700 (PDT)
+ id 1jly2K-0000f1-Gw
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2020 13:09:15 -0400
+Received: by mail-pj1-x1042.google.com with SMTP id ga6so2817207pjb.1
+ for <qemu-arm@nongnu.org>; Thu, 18 Jun 2020 10:09:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=XMwdTeh6Ca2SHw0HFj2nt4XoTAl1LE263sOkbWy1azE=;
- b=x/ZisXDBJavy12M4vBEODGyAJHgUlspLDt3cNcntguwY96iyS+i9V3uMXc8P0Ej1j9
- 79raFaq0FXxJZ7vF9INl5IUhjjTa4PDKQtt9YPWbMGKUiWN9PqOaAXbF5LQ4OrajqbZv
- EoRWMCvZS4X0Dnr1S4N+SxJGtYIi/hT1weQv/cXBl2dzSdEItk4pajKMJWjQusgAeaz4
- z9dUufTVCNszUsQgYwiJjygKc0OKm/3BuRv6exV8fkwbIVBlIXdjV5J7v0+N40htQA3/
- eSirH9s/oWrZTf9iz8EryZOXls9k/mnH9gSpH4ARMvFAuXU5VGipPzYzfPW33kzEYO0c
- Z/Cg==
+ bh=C5wKJJ7ax7plxCcuBaWVymDM740l0fpgaLGM+LdnYQo=;
+ b=jPRx4Hn5ocvCn03H8AGQnUa830kAvSEaWqg6m8il8HgIc3hVebnFaG0Zj9uMXOfp7p
+ M28BzAGVTp2mb16xQHoaNMaA++FV7/m1JGPjaNh65rudasysJGKz/SZNJKcbNcIzzq9p
+ qiFu7EwA+ieupBLgQvBmTX+DLhjZxVRwFKlQpbOc6J6Y9Ckpusj4VHmqerpAVOh/ujE9
+ lw40+qA6uSMdxHu27b0z0x+6QvwBd7CjtLePrlhIlrIek4h6gefdkKvqD3GcOFL8prVZ
+ Abvj8b60bNFKSIduwQT3zpDPdSEp+VaBkHw262eltutYeXtMrnLE+n9Mfd5NMhCARTzt
+ 7uAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=XMwdTeh6Ca2SHw0HFj2nt4XoTAl1LE263sOkbWy1azE=;
- b=c2y8Tgp3f126T6/ymA5JEqRFVNRDcegi2gpKwfYb9j3iwUbOmBpj9qP5yDxlwwGHDf
- Uz0CPoyVQ+Qn1TrpFI15t2VUkjk8MY4+MwUexmbMzquNFlmgP6U9YGX/3LAk0GSDdvry
- WfJNpZ/T9+t2xhS0RbZAQj6c8z39r3dQe3UHqOmonNXL6AgTHiGP5Td5QYfcs8yZ17jx
- oaxI8r4rplNYeX1Jps9HlARfA0AS0A6afmqVPuz3zef4f36RX7W7LuInVVpjtE/M5Hbr
- Hy05D+pe144nvxaiMsomsTDzDq/A7Ly4CGA1hD01h/9Qb/uWQmDFHRn2BhlOGqkIk9oP
- yEOQ==
-X-Gm-Message-State: AOAM530Tr+19878BXMDkreYyTLXnR4gtjhDLEFyk50ZZkncRfnaQ6BX0
- p0uEb6735kUvxqsPzdwx8+24cg==
-X-Received: by 2002:a17:90a:1546:: with SMTP id
- y6mr5443925pja.92.1592499839719; 
- Thu, 18 Jun 2020 10:03:59 -0700 (PDT)
+ bh=C5wKJJ7ax7plxCcuBaWVymDM740l0fpgaLGM+LdnYQo=;
+ b=o131ZInY+gRMNW2olOayJSp6TKaKOcnjtlruGbaDsBCHOi7q25/Eeqquj2pgRZVTZP
+ 3i2YY/TdhPOxIdQ13DIQ+pUNjaC8aMIjzwRZrlbQ5PX3pNXidRSit+AfiygeJkQtzHZ/
+ Qimhdwm6xuYfE0PUyFIIzFQoMHgTMdoYE22VxhPDWjVJfPEfUBnowMKyfwqdnC/r+S1v
+ eHsr64bYdu4zS6Ogh1ryW60jglv6ncewJjXL3QW+A1h2KkYUlQob2NC+2YfBEkvwvRsA
+ 8Vxbvxf1WiSDhi6+NyY8LA7i/Ooe3mTXACkANXk8PQybVJkl4Ygt1CUL6Upuv6CAXdXz
+ hs8A==
+X-Gm-Message-State: AOAM532GwtURLO4eptK1lmKwNyax1MoA8xqJQF7taQrAosZsJPKacx3T
+ oKpXvEkNd8DDUIJxv+AH8iVImA==
+X-Received: by 2002:a17:90a:69c3:: with SMTP id
+ s61mr5295822pjj.212.1592500150949; 
+ Thu, 18 Jun 2020 10:09:10 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id n7sm3040802pjq.22.2020.06.18.10.03.58
+ by smtp.gmail.com with ESMTPSA id 125sm3289713pff.130.2020.06.18.10.09.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 18 Jun 2020 10:03:58 -0700 (PDT)
-Subject: Re: [PATCH v7 13/42] target/arm: Define arm_cpu_do_unaligned_access
- for user-only
+ Thu, 18 Jun 2020 10:09:10 -0700 (PDT)
+Subject: Re: [PATCH v7 15/42] target/arm: Implement LDG, STG, ST2G instructions
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <20200603011317.473934-1-richard.henderson@linaro.org>
- <20200603011317.473934-14-richard.henderson@linaro.org>
- <CAFEAcA86dH_utZzXdbvwhB_67OgVGc249tO6TOBtfw+nWi2-7g@mail.gmail.com>
+ <20200603011317.473934-16-richard.henderson@linaro.org>
+ <CAFEAcA8LEApobASw-D6PMdkR2sAjJfnu5DzBeD29hjdoHtuXJg@mail.gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <bc120bc8-a08a-3b8e-cc31-e7c09e06a3a0@linaro.org>
-Date: Thu, 18 Jun 2020 10:03:56 -0700
+Message-ID: <2e64175f-14b6-4347-df89-866bfcf75a92@linaro.org>
+Date: Thu, 18 Jun 2020 10:09:08 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA86dH_utZzXdbvwhB_67OgVGc249tO6TOBtfw+nWi2-7g@mail.gmail.com>
+In-Reply-To: <CAFEAcA8LEApobASw-D6PMdkR2sAjJfnu5DzBeD29hjdoHtuXJg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1041;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1041.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1042;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1042.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -129,37 +128,14 @@ Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
  Stephen Long <steplong@quicinc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: emvg0OUQLzHx
+X-TUID: eCwtL7TEYQn7
 
-On 6/18/20 6:31 AM, Peter Maydell wrote:
-> On Wed, 3 Jun 2020 at 02:13, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> We need this to raise unaligned exceptions from user mode.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->> v6: Use EXCP_UNALIGNED for user-only and update cpu_loop.c.
-> 
-> Could you update the comment in cpu.h, maybe something like:
-> #define EXCP_UNALIGNED      22   /* v7M UNALIGNED UsageFault; also linux-user */
-> 
-> and also update the string printed by arm_log_exception():
-> #ifdef CONFIG_USER_ONLY
->             [EXCP_UNALIGNED] = "linux-user unaligned access fault",
-> #else
->             [EXCP_UNALIGNED] = "v7M UNALIGNED UsageFault",
-> #endif
-> 
-> Otherwise
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+On 6/18/20 6:56 AM, Peter Maydell wrote:
+> The pseudocode for LDG has an
+>    address = Align(address, TAG_GRANULE);
+> in it. I don't see where in this code is the equivalent; have I missed it?
 
-First, this could definitely be delayed to the follow-on linux-user patch set.
-
-Second, in the linux-user patch set, I decode the syndrome data to determine
-what kind of segv to deliver for MTE synchronous faults.  It would be easy to
-extend that just a little to notice the usual syndrome for unaligned accesses.
- Which may be less confusing than abusing the v7m exception code?
+Nope, I missed it.
 
 
 r~

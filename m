@@ -1,102 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1279156lfm;
-        Wed, 17 Jun 2020 22:01:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxLSw/HNKIhnO9QUcvpnmZ8OgB4OTvkhYf/JZayhSj7oDZtDQYtbcdF8qsAIdkGcpMZNf0I
-X-Received: by 2002:a5b:74e:: with SMTP id s14mr3647681ybq.104.1592456473599;
-        Wed, 17 Jun 2020 22:01:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592456473; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1279332lfm;
+        Wed, 17 Jun 2020 22:01:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwRoHuoGVyFVTvEgDr7atWvhmrX62s56H6UC8ZD/a6MHFpSuAJ5c2yKmdf9Rhb6zIKte5Ek
+X-Received: by 2002:a25:544:: with SMTP id 65mr3682780ybf.309.1592456486668;
+        Wed, 17 Jun 2020 22:01:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592456486; cv=none;
         d=google.com; s=arc-20160816;
-        b=hrwZ6tQkad/+P60SczxJ6fy0bqqw9Rsp1jWkZ4mkTSCwQnBFR0EUXb8ZfJ9OwMfTfM
-         3ddSZ6XGex2cIpmiNraZUkDXNJy4A4UYWnXIY/v95XeVIjm5cthrTOcegJkkeNdvI4CJ
-         pUa0dLo1AvN9O4dMThwFFOF09CWiwAhqEEek1b/V8mlDpyNWJTYXKkj7nvpClcp1SqJ7
-         clN/jMSJ4/FUwUiRljKEB5Oh0jk/SJefAdK7pAq75bdne6Je2DyeHEyLO5fC/GOyukor
-         EIpjL0C/69tdiPo+2DBweBs+JTZ7Rem3952+Prhp+pTtbC4b3kQFMEPRkxURqJ213VfU
-         BjiQ==
+        b=vqB8i456mY+zL2JjhzvptPYqCdzQTGyD8nlMNJnvEmW+16LEneeaF0/KptFZ+jRjmU
+         Tr0OLAUWiNuovc+ShmqltCEyadt/5ECQBHu21ttglghGQQiwFf/aGMUu7Q9f3LfAc9LQ
+         W7nqRC22iwtkH2UaPP7knhiLZmFpoSdL2zQKQDs3uQhdfPge36AwlPDIvg2PW6HdPFCK
+         7l8Zg7VbPChWkbjT0ULp7OU3gDDr+paDrjZDIXax4L3dpD2JcoGBVYrlSbVPGTRatcUr
+         p68K/6MndvM8JR9pzoSmoHEDkXpocWEjxYnR8+GCCb51t9OG7YboAEH7icCz2Mfcqlqu
+         X/vA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=sUjpYX85gvRbXx7OLAC50qSvAFYBPvgDJch2qLP0/gY=;
-        b=vtcQQHQDzt1Ou9sW8SEEA/Kuf8rgjJWs5UpPuvTCfMjd6BSWanW9JpGFeoMt7VZ/Ps
-         LorKDwNAzLeoXFVE2M0q7tRYV+t5pDrFme1k9BQI//HL+gY9fuOoGZ4B5pFuW7+jtjDu
-         fLFyRqq0q6CuBF35VQmJSnM76oTmBMGY8msb3vUIrCPbE32L6oU6PULZSOuL0gtJfevS
-         NjfUgsgI+Oo/JiDXocJ2OKXNFzVYxCpMUL6LMv4VItnm5kvu9LVFRRrB5AYf+WXC2phY
-         dQUvL63pPOg4Hl8/4C9sJzRQISTOXl0HOrkJDmXRDtbbukisQFtqFG/RTjAoNg93mIYE
-         lNMQ==
+        bh=3xtlpb1WwGZiRpO7W3OfThl71V0T/0uQ3DRTvjquBPA=;
+        b=qo6D10MNrYqwz1pi39FK2Ku4/xCfX5yCIymeCIpDYIRqcLDjle9WRgs9hDv/rjdmTb
+         Cf2KrIpBd+Fk7tgRnRXUo9ctLgxK4thmb/L8B1y0RiL+f1mfUO/fpAJz8oDZ4yWLyhGz
+         Mc2bRtl+j8fSz5HIsa4VzM7D2pZGOZZ6GPHYtbO/vDGqy4yFBRfeHks4ElPbFvENRmIc
+         Ab2fSB2aAAeSvCaF6lNBfVAF4/ZR9FJpZpa/F7qtxB0nZ9NuRwxyYmQw0DrVxpR0+4vq
+         HPYxdXGkua8cz/xyDFA70JNs5ba4er6f1ENEpUzbhb9WaB5+hiN24AAAygvaUaVpFCg3
+         kvEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=sGflO3zf;
+       dkim=fail header.i=@linaro.org header.s=google header.b=PEK3WGfk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f83si1620149ybg.22.2020.06.17.22.01.13
+        by mx.google.com with ESMTPS id q66si1635609ybg.144.2020.06.17.22.01.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jun 2020 22:01:13 -0700 (PDT)
+        Wed, 17 Jun 2020 22:01:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=sGflO3zf;
+       dkim=fail header.i=@linaro.org header.s=google header.b=PEK3WGfk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43532 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44492 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlmfp-0005w8-0p
-	for alex.bennee@linaro.org; Thu, 18 Jun 2020 01:01:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33310)
+	id 1jlmg1-0006Ka-Sh
+	for alex.bennee@linaro.org; Thu, 18 Jun 2020 01:01:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33336)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jlmCu-0003KA-4W
+ id 1jlmCu-0003Mi-Ua
  for qemu-arm@nongnu.org; Thu, 18 Jun 2020 00:31:20 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:40538)
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630]:38761)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jlmCs-0003K7-2r
- for qemu-arm@nongnu.org; Thu, 18 Jun 2020 00:31:19 -0400
-Received: by mail-pf1-x443.google.com with SMTP id s23so2193348pfh.7
- for <qemu-arm@nongnu.org>; Wed, 17 Jun 2020 21:31:17 -0700 (PDT)
+ id 1jlmCo-0003JC-EY
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2020 00:31:20 -0400
+Received: by mail-pl1-x630.google.com with SMTP id d10so15117pls.5
+ for <qemu-arm@nongnu.org>; Wed, 17 Jun 2020 21:31:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=sUjpYX85gvRbXx7OLAC50qSvAFYBPvgDJch2qLP0/gY=;
- b=sGflO3zfvBANaU5bLcNPfwo8SNckoZ/9/+VWaJ8Fscf1YHVvFHYtVclMWsvPNuLODv
- MJbi/XSG11GUYaWtC26gkiy+kau9HPW8tYlIUFdCbs2vNweFJ5SYCWwi3Bi7coFi9HLJ
- 1ytid1qMQIfs6b7F+iMfyvFHZRSytMxRW7MbHS3229sDNpfX9DVYqaU5a3555jJTWptZ
- aclXFGQO4zTWQHFQAtEOaIdwamvd5tfo9js6rNLOkafOLl86IYiitZKYzzVwhUcVuXQ1
- Pu/gOcvuUELveiJ/0xyC+D/CsieO3kevhlmJ8MvyHsk9KnKsLQcfS25aa/DFTBMY9eBW
- lCIA==
+ bh=3xtlpb1WwGZiRpO7W3OfThl71V0T/0uQ3DRTvjquBPA=;
+ b=PEK3WGfkzkbk/S+s2T8emApTb2CoyDrPCwYi3Ylt0pGzX0EdkJ3nUeZaM4/d/SbMIt
+ j2FpPOZ3vT3cEXWiIQgtz3UFuYNzUy3WywfYMRiKBkFBr1pYFOUgjolAdMQFD8kpEFVA
+ yzhcnw/YK1dAjRy5YQY1g2PUJ97w8tC4eQK89alD4kFdLSYqrmk++EXwuylFyWDVdCzc
+ J1djcRHGYlK5hUJ+9/fjZekoHXEo3UzEANWwCJBdcEYl+dmSqXJ5a3vNQBnKaCq0to5l
+ 79mvnNrArisa6+0ZOQ/ZuaGXPPghRRbrIH49UZ3vdDjPI81cYS1/Sev+hS5v+KuEIYKr
+ TztA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=sUjpYX85gvRbXx7OLAC50qSvAFYBPvgDJch2qLP0/gY=;
- b=gXdlyoeYFIhgojqQ5jk7RmL+KeKfI2LKYIxEoDRzNqoh12YWCmamrKeedRbJQwfc25
- fSxizPV71avO8wqj7ryNZ+JpDmmDRh/hhqHfyyBJERWJd7kLPUWwd6betqf4McHNitF7
- 4il81qyyA24PIhXVelUNGRAjAFEn2i4nYKs/30BtMtOYWu9XxmVaru9DsJfVrbkZfBal
- 5ZLSR1Pmvy6BUg5guLGlNmiWd7uQi6T2RJOHBNJEywnPzEwtXaWWbWVcYc2vqEYU7eKx
- saNtsNBjuJmSYrChsNLm8ueLOw4vvcZ5gehYRJtOdQGgPrViTfnpjoDkKT/M2MkChinX
- R3/Q==
-X-Gm-Message-State: AOAM533SGx/yzzJ+7TTEd4TIdIE/h2qlgatwWhe/ZeI1MzxIo/PC1ASI
- 7FB5Ujl1yXXUWodR+J5Rbwa7NQ==
-X-Received: by 2002:a63:495c:: with SMTP id y28mr1882590pgk.30.1592454676833; 
- Wed, 17 Jun 2020 21:31:16 -0700 (PDT)
+ bh=3xtlpb1WwGZiRpO7W3OfThl71V0T/0uQ3DRTvjquBPA=;
+ b=ZVJWS/3P2JaLzzHfYmDwnrZO8KoiXkHqAAC4Vw+QrtD6r36HDs6WTEJz4/mPBxx+0Z
+ Qc4z4vlxcX5AohmiSNnaHPRR8s2t6aPmVo/QL5JYjSqPCFsrJlSrHGZD8OSc6tnhQ/xp
+ Op1zNuMc357KT6OQBgS2FWr4GNzyOGVXL1udHPH2aubzBl6Il21+dYJZ53J7QbOLog5/
+ KyxaDcBdOeGk0oDaIOuTDm/0IiuzPqQmC0lqliTUm6HuEqj21JMhakeEppBy6PfjRadj
+ TlvKOCtFoCjisbmSyEqyWXxAIsT/WN7OVakeOP70tqOMLpJx/a8I682CE7KZ9+frgOeX
+ aMzQ==
+X-Gm-Message-State: AOAM530iOSLmQXnpzK+T2F5WjMbhtCQaRABvjbDGvNhwbQn1dJYluOcG
+ u3FHb2KSJ5poWukSs+sBLpQmqg==
+X-Received: by 2002:a17:902:aa42:: with SMTP id
+ c2mr2246393plr.216.1592454673120; 
+ Wed, 17 Jun 2020 21:31:13 -0700 (PDT)
 Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
  [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id o1sm974337pjf.17.2020.06.17.21.31.15
+ by smtp.gmail.com with ESMTPSA id o1sm974337pjf.17.2020.06.17.21.31.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Jun 2020 21:31:16 -0700 (PDT)
+ Wed, 17 Jun 2020 21:31:12 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 064/100] target/arm: Fix sve_uzp_p vs odd vector lengths
-Date: Wed, 17 Jun 2020 21:26:08 -0700
-Message-Id: <20200618042644.1685561-65-richard.henderson@linaro.org>
+Subject: [PATCH v2 061/100] target/arm: Implement SVE2 gather load insns
+Date: Wed, 17 Jun 2020 21:26:05 -0700
+Message-Id: <20200618042644.1685561-62-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200618042644.1685561-1-richard.henderson@linaro.org>
 References: <20200618042644.1685561-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::443;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x443.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -118,89 +119,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Desnogues <laurent.desnogues@gmail.com>, qemu-arm@nongnu.org,
- steplong@quicinc.com
+Cc: qemu-arm@nongnu.org, steplong@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UcIiC//OrglV
+X-TUID: /kYOByoQLJiH
 
-Missed out on compressing the second half of a predicate
-with length vl % 512 > 256.
+From: Stephen Long <steplong@quicinc.com>
 
-Adjust all of the x + (y << s) to x | (y << s) as a
-general style fix.
+Add decoding logic for SVE2 64-bit/32-bit gather non-temporal
+load insns.
 
-Reported-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+64-bit
+* LDNT1SB
+* LDNT1B (vector plus scalar)
+* LDNT1SH
+* LDNT1H (vector plus scalar)
+* LDNT1SW
+* LDNT1W (vector plus scalar)
+* LDNT1D (vector plus scalar)
+
+32-bit
+* LDNT1SB
+* LDNT1B (vector plus scalar)
+* LDNT1SH
+* LDNT1H (vector plus scalar)
+* LDNT1W (vector plus scalar)
+
+Signed-off-by: Stephen Long <steplong@quicinc.com>
+Message-Id: <20200422152343.12493-1-steplong@quicinc.com>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/sve_helper.c | 30 +++++++++++++++++++++---------
- 1 file changed, 21 insertions(+), 9 deletions(-)
+ target/arm/sve.decode      | 11 +++++++++++
+ target/arm/translate-sve.c |  8 ++++++++
+ 2 files changed, 19 insertions(+)
 
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index b1bb2300f8..f0601bf25b 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -2971,7 +2971,7 @@ void HELPER(sve_uzp_p)(void *vd, void *vn, void *vm, uint32_t pred_desc)
-     if (oprsz <= 8) {
-         l = compress_bits(n[0] >> odd, esz);
-         h = compress_bits(m[0] >> odd, esz);
--        d[0] = extract64(l + (h << (4 * oprsz)), 0, 8 * oprsz);
-+        d[0] = l | (h << (4 * oprsz));
-     } else {
-         ARMPredicateReg tmp_m;
-         intptr_t oprsz_16 = oprsz / 16;
-@@ -2985,23 +2985,35 @@ void HELPER(sve_uzp_p)(void *vd, void *vn, void *vm, uint32_t pred_desc)
-             h = n[2 * i + 1];
-             l = compress_bits(l >> odd, esz);
-             h = compress_bits(h >> odd, esz);
--            d[i] = l + (h << 32);
-+            d[i] = l | (h << 32);
-         }
+diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+index dc784dcabe..1b5bd2d193 100644
+--- a/target/arm/sve.decode
++++ b/target/arm/sve.decode
+@@ -1389,6 +1389,17 @@ UMLSLT_zzzw     01000100 .. 0 ..... 010 111 ..... .....  @rda_rn_rm
+ CMLA_zzzz       01000100 esz:2 0 rm:5 0010 rot:2 rn:5 rd:5  ra=%reg_movprfx
+ SQRDCMLAH_zzzz  01000100 esz:2 0 rm:5 0011 rot:2 rn:5 rd:5  ra=%reg_movprfx
  
--        /* For VL which is not a power of 2, the results from M do not
--           align nicely with the uint64_t for D.  Put the aligned results
--           from M into TMP_M and then copy it into place afterward.  */
-+        /*
-+         * For VL which is not a multiple of 512, the results from M do not
-+         * align nicely with the uint64_t for D.  Put the aligned results
-+         * from M into TMP_M and then copy it into place afterward.
-+         */
-         if (oprsz & 15) {
--            d[i] = compress_bits(n[2 * i] >> odd, esz);
-+            int final_shift = (oprsz & 15) * 2;
++### SVE2 Memory Gather Load Group
 +
-+            l = n[2 * i + 0];
-+            h = n[2 * i + 1];
-+            l = compress_bits(l >> odd, esz);
-+            h = compress_bits(h >> odd, esz);
-+            d[i] = l | (h << final_shift);
++# SVE2 64-bit gather non-temporal load
++#   (scalar plus unpacked 32-bit unscaled offsets)
++LDNT1_zprz      1100010 msz:2 00 rm:5 1 u:1 0 pg:3 rn:5 rd:5 \
++                &rprr_gather_load xs=0 esz=3 scale=0 ff=0
++
++# SVE2 32-bit gather non-temporal load (scalar plus 32-bit unscaled offsets)
++LDNT1_zprz      1000010 msz:2 00 rm:5 10 u:1 pg:3 rn:5 rd:5 \
++                &rprr_gather_load xs=0 esz=2 scale=0 ff=0
++
+ ### SVE2 Memory Store Group
  
-             for (i = 0; i < oprsz_16; i++) {
-                 l = m[2 * i + 0];
-                 h = m[2 * i + 1];
-                 l = compress_bits(l >> odd, esz);
-                 h = compress_bits(h >> odd, esz);
--                tmp_m.p[i] = l + (h << 32);
-+                tmp_m.p[i] = l | (h << 32);
-             }
--            tmp_m.p[i] = compress_bits(m[2 * i] >> odd, esz);
-+            l = m[2 * i + 0];
-+            h = m[2 * i + 1];
-+            l = compress_bits(l >> odd, esz);
-+            h = compress_bits(h >> odd, esz);
-+            tmp_m.p[i] = l | (h << final_shift);
+ # SVE2 64-bit scatter non-temporal store (vector plus scalar)
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 7fa1e0d354..77003ee43e 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -5622,6 +5622,14 @@ static bool trans_LD1_zpiz(DisasContext *s, arg_LD1_zpiz *a)
+     return true;
+ }
  
-             swap_memmove(vd + oprsz / 2, &tmp_m, oprsz / 2);
-         } else {
-@@ -3010,7 +3022,7 @@ void HELPER(sve_uzp_p)(void *vd, void *vn, void *vm, uint32_t pred_desc)
-                 h = m[2 * i + 1];
-                 l = compress_bits(l >> odd, esz);
-                 h = compress_bits(h >> odd, esz);
--                d[oprsz_16 + i] = l + (h << 32);
-+                d[oprsz_16 + i] = l | (h << 32);
-             }
-         }
-     }
++static bool trans_LDNT1_zprz(DisasContext *s, arg_LD1_zprz *a)
++{
++    if (!dc_isar_feature(aa64_sve2, s)) {
++        return false;
++    }
++    return trans_LDNT1_zprz(s, a);
++}
++
+ /* Indexed by [be][xs][msz].  */
+ static gen_helper_gvec_mem_scatter * const scatter_store_fn32[2][2][3] = {
+     /* Little-endian */
 -- 
 2.25.1
 

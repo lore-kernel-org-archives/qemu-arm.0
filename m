@@ -1,110 +1,111 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1290379lfm;
-        Wed, 17 Jun 2020 22:19:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzq1xvVXHhhsQgqBq/UmDDuHtmK9qK/yaZ0c0nW86QJVNpLqqWWlmKLVqgA1CnmZBDPyUmG
-X-Received: by 2002:a25:7146:: with SMTP id m67mr3993767ybc.384.1592457540065;
-        Wed, 17 Jun 2020 22:19:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592457540; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1291855lfm;
+        Wed, 17 Jun 2020 22:21:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwlSxO6rnKvZudyeYO91G4yLpZZNRS5ApfIlEOi+dW6QvzFrlP3CCwpcDUUQW8WbXbCcsq1
+X-Received: by 2002:a25:afcd:: with SMTP id d13mr3768428ybj.413.1592457690861;
+        Wed, 17 Jun 2020 22:21:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592457690; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZRuH1bueFW5nckcscTvxI/l/fi7mUD2KUKSmdex0MD72ut6MmAJqdqHig2KPf+T3DJ
-         wp23UtFJbfl4D+vmikqd6f9cEC/wfy7MIQ+ZfYrocKYK2blpI1Trmfd4TOFlOBpCuiRi
-         wWFOf57/n0wHrxvM7JY2Hwcjid1iil+k6zb2JiwlE7x6HyCoZIVCfeD2mP0k/gXYQ3Bp
-         k5ZtHrGsUrv1s0FADwmuqp6G6X8+p9aomEFB2g5FeMKeXzCghQ5sBggkQR50kGicpQ1N
-         seUPHJZR8IndAxwSwlCDv94X38yVIWRrNBMvkQnsF9XcTLjXMOxtNjcbNSWZExreccP8
-         kPIg==
+        b=Mnn/VyxIR6h1Q0fd46QQvwZzHddJkEDmGTOGJ6rxhJbmt+MCJlbpBcFVwo5dVSJFn9
+         SgJn8j5wh3e6SeuJ2KnTT5eAgRX6Py1JXW7xdZwN8OVJPsQTky8UrOmVLATJ4oqaxd7z
+         lbhlAnrkk6poczzT4REFO1ugE47/c3YHu/lW1YXFoeRlYR/YNYqdWu7uZLkjyxotN9B8
+         CSZvNQOct3LyT1OWPbvbSArv8FBGdbdu06RscTQPa12uBM9YHnS9TWcuRJI4diGI0oMD
+         MkOrEtc0FvllLJOtXwIs9mLferN9HOvmOYel1+2QWoQISmGLGSlaPxlNr4YU+XKM0ChA
+         Vc9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=cRkXtAZzmD7NnofcJ9cEx2DKzDMxZP3NojzrQ5SZjF4=;
-        b=IIGQgagiNcq3oX1wglXFti4QTlIp8uXNdg+Vk2nkPXmucO1j0PlXwfZhb7KZxADUJK
-         d+bYH14s2+NwkdaSiRr83sgQcTQiyphxEI7Zjte/r8EXFvnaTR9fbnNv9z05zKLF4nIP
-         hY3XcD8uI8kqw+hD+fYse2s60E9ubgZD3rJJfsvJd0CAituRBW3nmsZtymzdiy3Ahb4u
-         P71QXLY6QaRA6lNK0c7tH5SOqxreTv2qti+hEjT97upiQzQq7ZWggLdOm40w4fSKverv
-         0nIPa+oQgSi0tQUWxieBoBGTNdQVgLkForJp4xlOK//EhATI3/eJk4KPIkw5+a1EvT1p
-         Jr9w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Efm85+zVd1gYFDJl2olxHq63yBCcpM1uls9PwlaZR6I=;
+        b=FQIwQfD3rUyPJ3SNRqtzvTKvxUGhKH+YO8h1etgDdGf3564o/SiHJ8lDoydbRUz0IO
+         UMm6dHT8tjCHWDWXC3GmyMu03WQ6AX0K8zNf2m4/5Y/qs6gu7m/qDPZ06Dcudl6eLpMP
+         /OdpbLr5r/SlqXESHbUJbAAVO2D7Yi5fWpjn8qol4qLTCiObz8lc+VC6NayiJ8igl5P6
+         5e5rlp6m2EL1zBDJwZrg2MAE+tjHMRUr6UnAalTKgRA9b/6n55ZXnQqAD74EyBPwSnL6
+         M8guZgqB2/vZ+oAXbqxL6XR+MYjtw48TKB9d9bJnkTyaoj/E6fTGiY8Q1YjprMXQLV8G
+         nuEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=QhQ5hde1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=wCNOEghX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x124si1633903ybc.82.2020.06.17.22.18.59
+        by mx.google.com with ESMTPS id f76si1792636ybg.468.2020.06.17.22.21.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jun 2020 22:19:00 -0700 (PDT)
+        Wed, 17 Jun 2020 22:21:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=QhQ5hde1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=wCNOEghX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:47600 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56522 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlmx1-0002pK-DB
-	for alex.bennee@linaro.org; Thu, 18 Jun 2020 01:18:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42916)
+	id 1jlmzS-0006Ys-8F
+	for alex.bennee@linaro.org; Thu, 18 Jun 2020 01:21:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34284)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jlmtn-0005o7-Hv
- for qemu-arm@nongnu.org; Thu, 18 Jun 2020 01:15:39 -0400
-Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41]:33807)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jlmEy-00077z-Lf
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2020 00:33:28 -0400
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533]:40349)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jlmtk-0002NB-Q0
- for qemu-arm@nongnu.org; Thu, 18 Jun 2020 01:15:39 -0400
-Received: by mail-vs1-xe41.google.com with SMTP id q2so2804763vsr.1
- for <qemu-arm@nongnu.org>; Wed, 17 Jun 2020 22:15:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cRkXtAZzmD7NnofcJ9cEx2DKzDMxZP3NojzrQ5SZjF4=;
- b=QhQ5hde1wf/YZMVzWZLuY5da6qNVSu4et2a4KCRfXkEx3dIh5dw1oioSl+xO/1dAA1
- F57k4mheWusCAexCzcC/+QbwTpYgrmog6EX6OPnFJBEvkIhCtLUXa4tKUfxIlzdYHhuG
- wFS/rFMkJ4CaZZIt0XMYcsD5BjGXEdhVqg1+8LnpX/sDC1IeQspgZL7IlFz24bQVEISo
- yfOt7nbIWHyOZ8nROmf5JlTvsA45qYn4QUq/NJwcXuPh12uQQeKX3baHDnxjNxD6N4nl
- gHVPOkPwi9EOqJhhVk3z8fJkVs46kxI4A2So6X6seMNSTBekd8xgkHkAGiyI2ulh51Se
- w9CA==
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jlmEw-0003fE-QJ
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2020 00:33:28 -0400
+Received: by mail-pg1-x533.google.com with SMTP id e18so2338020pgn.7
+ for <qemu-arm@nongnu.org>; Wed, 17 Jun 2020 21:33:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Efm85+zVd1gYFDJl2olxHq63yBCcpM1uls9PwlaZR6I=;
+ b=wCNOEghXOFx9BfJbkWbGCXDU9qK69oUaC8HAKTTXi9XhMHioeMjfOhGI3vCfdL9eg0
+ 0sq0+hcRGIvBWQThmw7F6gqFmOyQdEGeCbuSNWpq+HaNI3wrYzozc5iToU1vau7tpazm
+ I7m/Mhl6reg8yyDSV4TQ31Tz6BrFrdXYXh+EVII2rMWODqi6ymVXJ90pMFj5XDOoRKoE
+ g7bl2Bnvypug90okoxlm9xKNbu+VI0jjEVVPdkoscOCRmbNH5fZ32DsG3n1MkdzjG5VR
+ i5KrmOLmx7ks8vlWmfavyMrwbuPb2OunZCZINpC5kr2Iu5xOnfUTMV5oX0x9j86zH9B1
+ /2iQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=cRkXtAZzmD7NnofcJ9cEx2DKzDMxZP3NojzrQ5SZjF4=;
- b=o0qfIgZf18GkWk+ae7BiJJxOZ44j1ZwuDFLU9QUbL6HzTlVYu+HG774VGIfreIlJYg
- tkNQ/iqCYAdq21SLkYjTV849degQEXa5aHM1ShtDXW1YbWasjD5D4hLbAWq/dx2jCNNb
- enLZTZo19XzH28Cdv3jIKP6C6CNmandbGGJLYHPYclsdMqjBMPA+O7EOYY4XgRF6Q2ji
- XPLk705V0e5+sXqByDL9kmvxd/I7+yynxpAI0q/g3C2RdrqOyZo2fm1ixHR/KK4J5EF/
- EgrJJ/qqKnaXJXlXSDOWh5lYM8gcOASBu9ipFpYUUsaPw+3d/+Rvtr5d0VNJ8GhKaLUj
- 2JiA==
-X-Gm-Message-State: AOAM531phLI0haVGJiheRY7a1E0rzU5xJHarFyDWPGfSdpdo750P1V8p
- K90iTxIZwAGkMyecVRvyxJLsa8rNRLylvUsxdFYDFw==
-X-Received: by 2002:a67:ad16:: with SMTP id t22mr1960651vsl.152.1592457332343; 
- Wed, 17 Jun 2020 22:15:32 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Efm85+zVd1gYFDJl2olxHq63yBCcpM1uls9PwlaZR6I=;
+ b=T3gcWACGdydQBHMHIxyCfS73154Y8fpQsk+ZSv2kIRdSFBgNIevIijOwRPZq5HDG0d
+ DKXkGE03HUN5+iwFxOPyvXQ61t4G1ZfBCrJHe0FC4PLOZs7GPv54H6RANgv0cSyOmdhx
+ BP6ZcTL0MsdtmfbTjxR7iu4wm9ajBXm2UnLQbi9XHJFT0pUEkyoZH97/ytws5bxStyAx
+ tEpqiA4ast2N0Z2Pfo6YzPNcTofhEKgUbkgNECspp2E5r3x0vr3gSrKsC4V2tumjLK3h
+ syQ5HCFNFRDuWKa1aOl03ukdutj0uuGBxoXqCYK9CCT9Iat0+NQAO/+F4u/KjCkAkJBv
+ 7TxQ==
+X-Gm-Message-State: AOAM530j9kjLUOba7IxgnQEsoFy4ntYnp18bb31G1visGtXmF/pNELPf
+ Gjkc3OoU3JVgrIn/vdc7D7sfZWRQv/g=
+X-Received: by 2002:aa7:8813:: with SMTP id c19mr2065933pfo.220.1592454805501; 
+ Wed, 17 Jun 2020 21:33:25 -0700 (PDT)
+Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
+ [174.21.143.238])
+ by smtp.gmail.com with ESMTPSA id q22sm1288212pfg.192.2020.06.17.21.33.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 17 Jun 2020 21:33:24 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 092/100] target/arm: Implement SVE2 FCVTXNT, FCVTX
+Date: Wed, 17 Jun 2020 21:26:36 -0700
+Message-Id: <20200618042644.1685561-93-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200618042644.1685561-1-richard.henderson@linaro.org>
+References: <20200618042644.1685561-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-References: <20200611223016.259837-1-hskinnemoen@google.com>
- <49cf918e-7c03-8e51-6080-a136ad25ba0e@kaod.org>
-In-Reply-To: <49cf918e-7c03-8e51-6080-a136ad25ba0e@kaod.org>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Wed, 17 Jun 2020 22:15:20 -0700
-Message-ID: <CAFQmdRbJsAT19QBMiS3BRpiDTWdUL5MocazsvH1FkkPo5eZ7tA@mail.gmail.com>
-Subject: Re: [PATCH v2 00/12] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC
- machines
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>, 
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
- CS20 KFTing <kfting@nuvoton.com>
-Content-Type: multipart/alternative; boundary="0000000000009df81405a854dddd"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e41;
- envelope-from=hskinnemoen@google.com; helo=mail-vs1-xe41.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -185
-X-Spam_score: -18.6
-X-Spam_bar: ------------------
-X-Spam_report: (-18.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001,
- USER_IN_DEF_DKIM_WL=-7.5, USER_IN_DEF_SPF_WL=-7.5 autolearn=_AUTOLEARN
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,172 +118,130 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, steplong@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E0XRdxLn7a5A
+X-TUID: /KyklhAIEQ2W
 
---0000000000009df81405a854dddd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: Stephen Long <steplong@quicinc.com>
 
-On Wed, Jun 17, 2020 at 8:54 AM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+Signed-off-by: Stephen Long <steplong@quicinc.com>
+Message-Id: <20200428174332.17162-4-steplong@quicinc.com>
+[rth: Use do_frint_mode, which avoids a specific runtime helper.]
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/sve.decode      |  2 ++
+ target/arm/translate-sve.c | 49 ++++++++++++++++++++++++++++++--------
+ 2 files changed, 41 insertions(+), 10 deletions(-)
 
-> Hello,
->
-> On 6/12/20 12:30 AM, Havard Skinnemoen wrote:
-> > This patch series models enough of the Nuvoton NPCM730 and NPCM750 SoCs
-> to boot
-> > an OpenBMC image built for quanta-gsj. This includes device models for:
-> >
-> >   - Global Configuration Registers
-> >   - Clock Control
-> >   - Timers
-> >   - Fuses
-> >   - Memory Controller
-> >   - Flash Controller
->
-> Do you have a git tree for this patchset ?
->
+diff --git a/target/arm/sve.decode b/target/arm/sve.decode
+index abe26f2424..6c0e39d553 100644
+--- a/target/arm/sve.decode
++++ b/target/arm/sve.decode
+@@ -1575,6 +1575,8 @@ SM4EKEY         01000101 00 1 ..... 11110 0 ..... .....  @rd_rn_rm_e0
+ RAX1            01000101 00 1 ..... 11110 1 ..... .....  @rd_rn_rm_e0
+ 
+ ### SVE2 floating-point convert precision odd elements
++FCVTXNT_ds      01100100 00 0010 10 101 ... ..... .....  @rd_pg_rn_e0
++FCVTX_ds        01100101 00 0010 10 101 ... ..... .....  @rd_pg_rn_e0
+ FCVTNT_sh       01100100 10 0010 00 101 ... ..... .....  @rd_pg_rn_e0
+ FCVTLT_hs       01100100 10 0010 01 101 ... ..... .....  @rd_pg_rn_e0
+ FCVTNT_ds       01100100 11 0010 10 101 ... ..... .....  @rd_pg_rn_e0
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index 7b20c65778..0232381500 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -4773,11 +4773,9 @@ static bool trans_FRINTX(DisasContext *s, arg_rpr_esz *a)
+     return do_zpz_ptr(s, a->rd, a->rn, a->pg, a->esz == MO_16, fns[a->esz - 1]);
+ }
+ 
+-static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a, int mode)
++static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a,
++                          int mode, gen_helper_gvec_3_ptr *fn)
+ {
+-    if (a->esz == 0) {
+-        return false;
+-    }
+     if (sve_access_check(s)) {
+         unsigned vsz = vec_full_reg_size(s);
+         TCGv_i32 tmode = tcg_const_i32(mode);
+@@ -4788,7 +4786,7 @@ static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a, int mode)
+         tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, a->rd),
+                            vec_full_reg_offset(s, a->rn),
+                            pred_full_reg_offset(s, a->pg),
+-                           status, vsz, vsz, 0, frint_fns[a->esz - 1]);
++                           status, vsz, vsz, 0, fn);
+ 
+         gen_helper_set_rmode(tmode, tmode, status);
+         tcg_temp_free_i32(tmode);
+@@ -4799,27 +4797,42 @@ static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a, int mode)
+ 
+ static bool trans_FRINTN(DisasContext *s, arg_rpr_esz *a)
+ {
+-    return do_frint_mode(s, a, float_round_nearest_even);
++    if (a->esz == 0) {
++        return false;
++    }
++    return do_frint_mode(s, a, float_round_nearest_even, frint_fns[a->esz - 1]);
+ }
+ 
+ static bool trans_FRINTP(DisasContext *s, arg_rpr_esz *a)
+ {
+-    return do_frint_mode(s, a, float_round_up);
++    if (a->esz == 0) {
++        return false;
++    }
++    return do_frint_mode(s, a, float_round_up, frint_fns[a->esz - 1]);
+ }
+ 
+ static bool trans_FRINTM(DisasContext *s, arg_rpr_esz *a)
+ {
+-    return do_frint_mode(s, a, float_round_down);
++    if (a->esz == 0) {
++        return false;
++    }
++    return do_frint_mode(s, a, float_round_down, frint_fns[a->esz - 1]);
+ }
+ 
+ static bool trans_FRINTZ(DisasContext *s, arg_rpr_esz *a)
+ {
+-    return do_frint_mode(s, a, float_round_to_zero);
++    if (a->esz == 0) {
++        return false;
++    }
++    return do_frint_mode(s, a, float_round_to_zero, frint_fns[a->esz - 1]);
+ }
+ 
+ static bool trans_FRINTA(DisasContext *s, arg_rpr_esz *a)
+ {
+-    return do_frint_mode(s, a, float_round_ties_away);
++    if (a->esz == 0) {
++        return false;
++    }
++    return do_frint_mode(s, a, float_round_ties_away, frint_fns[a->esz - 1]);
+ }
+ 
+ static bool trans_FRECPX(DisasContext *s, arg_rpr_esz *a)
+@@ -7812,3 +7825,19 @@ static bool trans_FCVTLT_sd(DisasContext *s, arg_rpr_esz *a)
+     }
+     return do_zpz_ptr(s, a->rd, a->rn, a->pg, false, gen_helper_sve2_fcvtlt_sd);
+ }
++
++static bool trans_FCVTX_ds(DisasContext *s, arg_rpr_esz *a)
++{
++    if (!dc_isar_feature(aa64_sve2, s)) {
++        return false;
++    }
++    return do_frint_mode(s, a, float_round_to_odd, gen_helper_sve_fcvt_ds);
++}
++
++static bool trans_FCVTXNT_ds(DisasContext *s, arg_rpr_esz *a)
++{
++    if (!dc_isar_feature(aa64_sve2, s)) {
++        return false;
++    }
++    return do_frint_mode(s, a, float_round_to_odd, gen_helper_sve2_fcvtnt_ds);
++}
+-- 
+2.25.1
 
-Yes, but nothing public. I can set up a github fork if you want.
-
-
-> > These modules, along with the existing Cortex A9 CPU cores and built-in
-> > peripherals, are integrated into a NPCM730 or NPCM750 SoC, which in tur=
-n
-> form
-> > the foundation for the quanta-gsj and npcm750-evb machines,
-> respectively. The
-> > two SoCs are very similar; the only difference is that NPCM730 is
-> missing some
-> > peripherals that NPCM750 has, and which are not considered essential fo=
-r
-> > datacenter use (e.g. graphics controllers). For more information, see
-> >
-> > https://www.nuvoton.com/products/cloud-computing/ibmc/
-> >
-> > Both quanta-gsj and npcm750-evb correspond to real boards supported by
-> OpenBMC.
-> > While this initial series uses a stripped-down kernel for testing, futu=
-re
-> > series will be tested using OpenBMC images built from public sources. I=
-'m
-> > currently putting the finishing touches on flash controller support,
-> which is
-> > necessary to boot a full OpenBMC image, and will be enabled by the next
-> series.
->
-> ok.
->
-> It would be nice to be able to download the images from some site
-> like we do for Aspeed.
->
-
-It looks like Joel got this covered for gsj. I'll look into
-setting something up for npcm750-evb.
-
-
->
-> > The patches in this series were developed by Google and reviewed by
-> Nuvoton. We
-> > will be maintaining the machine and peripheral support together.
-> >
-> > The data sheet for these SoCs is not generally available. Please let me
-> know if
-> > more comments are needed to understand the device behavior.
-> >
-> > Changes since v1 (requested by reviewers):
-> >
-> >   - Clarify the source of CLK reset values.
-> >   - Made smpboot a constant byte array, eliinated byte swapping.
->
-> I have revived a PPC64 host. We might want to add the swapping back.
->
-
-OK.
-
-Havard
-
---0000000000009df81405a854dddd
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">On Wed, Jun 17, 2020 at 8:54 AM C=C3=A9dr=
-ic Le Goater &lt;<a href=3D"mailto:clg@kaod.org">clg@kaod.org</a>&gt; wrote=
-:<br></div><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" sty=
-le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
-ng-left:1ex">Hello,<br>
-<br>
-On 6/12/20 12:30 AM, Havard Skinnemoen wrote:<br>
-&gt; This patch series models enough of the Nuvoton NPCM730 and NPCM750 SoC=
-s to boot<br>
-&gt; an OpenBMC image built for quanta-gsj. This includes device models for=
-:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0- Global Configuration Registers<br>
-&gt;=C2=A0 =C2=A0- Clock Control<br>
-&gt;=C2=A0 =C2=A0- Timers<br>
-&gt;=C2=A0 =C2=A0- Fuses<br>
-&gt;=C2=A0 =C2=A0- Memory Controller<br>
-&gt;=C2=A0 =C2=A0- Flash Controller<br>
-<br>
-Do you have a git tree for this patchset ? <br></blockquote><div><br></div>=
-<div>Yes, but nothing public. I can set up a github fork if you want.</div>=
-<div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
-0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-&gt; These modules, along with the existing Cortex A9 CPU cores and built-i=
-n<br>
-&gt; peripherals, are integrated into a NPCM730 or NPCM750 SoC, which in tu=
-rn form<br>
-&gt; the foundation for the quanta-gsj and npcm750-evb machines, respective=
-ly. The<br>
-&gt; two SoCs are very similar; the only difference is that NPCM730 is miss=
-ing some<br>
-&gt; peripherals that NPCM750 has, and which are not considered essential f=
-or<br>
-&gt; datacenter use (e.g. graphics controllers). For more information, see<=
-br>
-&gt; <br>
-&gt; <a href=3D"https://www.nuvoton.com/products/cloud-computing/ibmc/" rel=
-=3D"noreferrer" target=3D"_blank" class=3D"cremed">https://www.nuvoton.com/=
-products/cloud-computing/ibmc/</a><br>
-&gt; <br>
-&gt; Both quanta-gsj and npcm750-evb correspond to real boards supported by=
- OpenBMC.<br>
-&gt; While this initial series uses a stripped-down kernel for testing, fut=
-ure<br>
-&gt; series will be tested using OpenBMC images built from public sources. =
-I&#39;m<br>
-&gt; currently putting the finishing touches on flash controller support, w=
-hich is<br>
-&gt; necessary to boot a full OpenBMC image, and will be enabled by the nex=
-t series.<br>
-<br>
-ok. <br>
-<br>
-It would be nice to be able to download the images from some site<br>
-like we do for Aspeed.<br></blockquote><div><br></div><div>It looks like Jo=
-el got this covered for gsj. I&#39;ll look into setting=C2=A0something up f=
-or npcm750-evb.</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" sty=
-le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
-ng-left:1ex">
-<br>
-&gt; The patches in this series were developed by Google and reviewed by Nu=
-voton. We<br>
-&gt; will be maintaining the machine and peripheral support together.<br>
-&gt; <br>
-&gt; The data sheet for these SoCs is not generally available. Please let m=
-e know if<br>
-&gt; more comments are needed to understand the device behavior.<br>
-&gt; <br>
-&gt; Changes since v1 (requested by reviewers):<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0- Clarify the source of CLK reset values.<br>
-&gt;=C2=A0 =C2=A0- Made smpboot a constant byte array, eliinated byte swapp=
-ing.<br>
-<br>
-I have revived a PPC64 host. We might want to add the swapping back.<br></b=
-lockquote><div><br></div><div>OK.</div><div><br></div><div>Havard</div></di=
-v></div>
-
---0000000000009df81405a854dddd--

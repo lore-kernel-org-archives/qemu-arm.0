@@ -1,107 +1,98 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1789444lfm;
-        Thu, 18 Jun 2020 09:13:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxMqw8b0I8HdBA/25Y+BHE5Je6K/ZEr0UV1fZOZmuUoAnfTxVSeDO+Dp/SaYSs/nD6eN0tO
-X-Received: by 2002:a25:388d:: with SMTP id f135mr7504402yba.201.1592496796829;
-        Thu, 18 Jun 2020 09:13:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592496796; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1792945lfm;
+        Thu, 18 Jun 2020 09:16:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzRV3Yw0SjWeJ+j8Jummh1sJ6h+LGs3UxvusIkS0tLvYbz4NphRe5Ldtrf0RdYCqGpv+FIj
+X-Received: by 2002:a25:2582:: with SMTP id l124mr7900728ybl.59.1592497015416;
+        Thu, 18 Jun 2020 09:16:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592497015; cv=none;
         d=google.com; s=arc-20160816;
-        b=HubpozuSz+f4zstuu+IyL0jRa1TEvRPznKerxLsyCpccSftxmyeRaU02q96tuJY+3F
-         l3mOxb+CQwZ/bBwZxOTZGlJVNBaeu9OkM5psgJczCuWO3GUa2RuKoB2nTcDOnJnAigNe
-         OT+0McAZOLNHaeU1PFhbgioEoh1RIgqJpeIAGcXpcFH+x3cri0rrXOXGq1clz1p84Xuv
-         FdSPVqSa8U1tPHrQ345WC082W1tFdX3N6cE6N5KX3nUi+gQL/yIhwOLxJ0N8N86iT/lc
-         6DhyiAaK51v/gaPwhjdB3KeE91+We08vpw8tznRZnkv+pH5JG7KmB6cv/o4p8WY8vWn6
-         zE+Q==
+        b=qFMmT7mf9gGXrGJSv3UTu92bH0ILvEcE/EJCBrr117eXF5FKkv8Dx0pHt8OCKiuw+U
+         Miz3+Y5XgJCe6zo30WxPsypFGims0KFJmpTKXTKTv+rh4ybt0Pq8KktpMsXwQUNuGQ27
+         asZsBR6uZYIfZXsJ6RlWfHU8PX52zDKl+d9gq3p9Lw77/dlFN7m7TkW5sjJUI1xX3N3W
+         JVJ1ApwBDl6AM15Uxh3/B/FX+apBVxGvnDTrLULSwJbaXS3l1eIt6E03v/zZCOYTSWJ/
+         fdx7/7PbTBkod99VQr1ebOQoZ69bbetZubmPw9XwPJF1dQ7EOQ8I18gdfcqQL0TZLfC+
+         p/2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=w8f6R9ASZrt/RtlltLDdWpOWT0IDLH/5n6K11WS2PRg=;
-        b=yx5dXoJOB0kL67x18hImXlmJScr9Li7WVpVRB2ttB9COC++g8KOXP1w6qUuHFjhPYb
-         2xtMz8F62s4NnAEKmzjFc49h8vTCX3i3l4q/UqMWp7KSfwVF9Q39HivDbFr4cpSYGl7h
-         rPkSHB4Gch/Kfl+wvOYRMhlEt2gshEfyhW0ni93VzNEjIoN14i0/ogz8eESZXnhh6m2c
-         WPgnmgt+s9dVqwCrYT/glADpiha4DC38DSCgZiQYKA7j0BZpDoTuO9LROt2aSCju6HOq
-         LsegWRo099CIZiERPY4eFVEnBwog3lgaAVMH2rYH+2pMcJk/xCPACewkkfhyMpJLf7zz
-         PB8A==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=y7u5drJT0mavJGQbNOJVAerHycRJJAKN9jThBgI5L4Y=;
+        b=hc2YZV34hC/fNM7q2+sni2aUk+6dy8prun0j1GDrBauZedNsXX5lpo7uEPwaEpbS33
+         YhgGRMZFVEt1wcjHuWM8EZMKt3M7VFM6toVSUlV3+9V68jKpAu883DZFoGh6Lcprci2E
+         +6Y3qDefzWO0w6nE72pUEnco3+3M8BbvyWZIrBy2RbjjOAOWdu0rWEM0+GEQ1idHqszc
+         IC1lZjCfWiQBI1zTkjYE0LwpDJiZDkruQXGeedJM8GxN5Ms/yqPg0/E2IC0JS1EejXsw
+         V1YjHeeilrRHuOTtkeSNDKG+VbuY9z5AMI9D393/UmCzmt5GyZWiNX8jrYvMdgrT0VQV
+         EVhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=sOpBM3ix;
+       dkim=fail header.i=@linaro.org header.s=google header.b=SS+UD4V0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e81si2888140yba.149.2020.06.18.09.13.16
+        by mx.google.com with ESMTPS id q66si3010479ybg.144.2020.06.18.09.16.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jun 2020 09:13:16 -0700 (PDT)
+        Thu, 18 Jun 2020 09:16:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=sOpBM3ix;
+       dkim=fail header.i=@linaro.org header.s=google header.b=SS+UD4V0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35076 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38386 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlxAC-0000Yx-6T
-	for alex.bennee@linaro.org; Thu, 18 Jun 2020 12:13:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44770)
+	id 1jlxDi-0002yi-RD
+	for alex.bennee@linaro.org; Thu, 18 Jun 2020 12:16:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45948)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jlx9m-0000KV-7y
- for qemu-arm@nongnu.org; Thu, 18 Jun 2020 12:12:50 -0400
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:38862)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jlxDa-0002w3-Nk
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2020 12:16:46 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:46442)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jlx9i-0007Kc-20
- for qemu-arm@nongnu.org; Thu, 18 Jun 2020 12:12:49 -0400
-Received: by mail-pf1-x441.google.com with SMTP id x207so3000075pfc.5
- for <qemu-arm@nongnu.org>; Thu, 18 Jun 2020 09:12:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jlxDX-00082C-B3
+ for qemu-arm@nongnu.org; Thu, 18 Jun 2020 12:16:46 -0400
+Received: by mail-ot1-x343.google.com with SMTP id g7so4937395oti.13
+ for <qemu-arm@nongnu.org>; Thu, 18 Jun 2020 09:16:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=w8f6R9ASZrt/RtlltLDdWpOWT0IDLH/5n6K11WS2PRg=;
- b=sOpBM3ixtF3o+lHqUyO+JOrLGJ59F5P2s1WNYg+o8ozhf4MKWRvQxeOobFUvI+V95q
- u7jb9bLl6u4Zan9DUI17SeT+yy5VAiRRG5Ng/XPGZITfkzaTS+QUAOWGc3LiiEeBPQ22
- I+V28GNMeg3asHNOTG//5+twPY+Ab1QEW5S/TKSBzsICpeuRujK2XiKqnwhvswkeVtQB
- z3Cmd8OoYpK4hkNx5xIqwdM/DFjcjAXo99mF9zmoanbRAOOyZ+j3CgVrJK1WQRrHlgmE
- I1H+jSFePhc9LfmUnXnh3gw7YqUHqjD5notcOe+C1J0/gIVimvZyW+aMnqSj2P8P9Iy9
- 0DdQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=y7u5drJT0mavJGQbNOJVAerHycRJJAKN9jThBgI5L4Y=;
+ b=SS+UD4V0AucHg1TPPK829NYQF6kZmIG3TGIm3UIjuozdJL3Tc3T1IcUHn1sOiy6f6g
+ lzZQbYh3fKiCbNCDQRa22+n01eQPcJ6BH92UybrJFZGdg2Fg0QQuu0pastubdXsRUEBf
+ VPMLYx2A3R+piYqtSxk03yywPShm7fgsMfbeCGvmkQG/Ycy/CJz2R2IBc9LN9wVwpBJs
+ ThC6v/y3LpZoiLeknWhVDCLPRN87LMtVVzdGuZbzoGscWAWqhizemSl/wZUhXQFyWzDV
+ 2y9YEPZBx88JGEmr3nSaMtCNVnJoFsUDixGrRa1QfwWbWLDtTML113WTLzzu4u9HXwxT
+ kGjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=w8f6R9ASZrt/RtlltLDdWpOWT0IDLH/5n6K11WS2PRg=;
- b=TTvS5F/o9vU1vYD8mhSzaonDIyL0Qt3DGYdioZ6RjBEbfSUnxjck4991KtwNMxqI4q
- sroocAGy02HcDKyf107iW8JA1OhZXfgc+96C/h2rdD5MXCWFIdlVlASEDIyy+OubaVDD
- z9qJagXK4mzwsiO82XtX02CLXGp9pyhryQMEbYiJU6zBEAdPaPYD8+K/npZ6PTzbTts7
- Na5rABGLoqQkL8LnLCx/vcVtD7irXndfdwihsOnLXDzAiEKUMHRcq4J7IPnpIHJbH0/t
- kK+xaTkK6XQTLKfVApNX0VHER9d1n7yDXkO6qxmN3PtOH7HKGQ1BrnJu6Ey7fdNf6Ois
- zmYg==
-X-Gm-Message-State: AOAM532o0DmVCxZPa/k3foFJ39ne0TZDH1sSupWqcwHyzBqcuGl9oIn7
- U0CJZbgFzaJtQIPzshLfd0qCHw==
-X-Received: by 2002:a62:7bcd:: with SMTP id w196mr4116737pfc.73.1592496764044; 
- Thu, 18 Jun 2020 09:12:44 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id x77sm3468469pfc.4.2020.06.18.09.12.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 18 Jun 2020 09:12:43 -0700 (PDT)
-Subject: Re: [PATCH v7 10/42] target/arm: Implement the ADDG, SUBG instructions
-To: Peter Maydell <peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=y7u5drJT0mavJGQbNOJVAerHycRJJAKN9jThBgI5L4Y=;
+ b=OQ7e0JTaBIyrbu4RtnJ4rCFWEnOiPXFqMVUZH8SkTKUmorUOIrAY+GebreFz5mZchq
+ kbmlFSVeXpzqTHIhrRV1vKQ0cQarPsNPIgpVlMvA1Zk54PgVcK+4KMLWd9ygdc6Kw5oe
+ N0MLIwETN3a9bWDwWXs12WUZBKedipp3FRYreTeLxztSI2UEgS+sCCV3MZ17Pyp4mwxC
+ 89llPezLDXi7yAgmGIaTw3UHJ+aLkYAR0hpFiOuzQh9McGJW1KtmKfFTVkyi6lgrioig
+ /INSr60ZTMTN/iJxkIYg7qa5LwwndIOLaK8aO+5kA4hPmc0kRkccF69AhymEHDOYYbdK
+ lkuA==
+X-Gm-Message-State: AOAM531MYUbavbswfrERL6BjKOOmK9F/Grx47FDfOWGWyMP4IPkRErVM
+ aLHDBzgR1HkLoLSS0Q9K9NqD+yyqGIR5adIPjnDypw==
+X-Received: by 2002:a05:6830:18da:: with SMTP id
+ v26mr4288713ote.135.1592497002126; 
+ Thu, 18 Jun 2020 09:16:42 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200603011317.473934-1-richard.henderson@linaro.org>
  <20200603011317.473934-11-richard.henderson@linaro.org>
  <CAFEAcA-QZ_D1tQMv785xsxWwcEKmM76dK4Mvgx=y7eyb_mUqEg@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <3b1b50b8-061e-8422-2df0-e8df6f856941@linaro.org>
-Date: Thu, 18 Jun 2020 09:12:40 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-QZ_D1tQMv785xsxWwcEKmM76dK4Mvgx=y7eyb_mUqEg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x441.google.com
+ <3b1b50b8-061e-8422-2df0-e8df6f856941@linaro.org>
+In-Reply-To: <3b1b50b8-061e-8422-2df0-e8df6f856941@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 18 Jun 2020 17:16:31 +0100
+Message-ID: <CAFEAcA_LFC8isWLjUZCXOjDnPcfO+-bS1jRJTEwqMP9CwKS-Tw@mail.gmail.com>
+Subject: Re: [PATCH v7 10/42] target/arm: Implement the ADDG, SUBG instructions
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -127,32 +118,35 @@ Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
  Stephen Long <steplong@quicinc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3nZ/mcWTHCew
+X-TUID: OHlfa2s3maX/
 
-On 6/18/20 6:17 AM, Peter Maydell wrote:
->> +        imm = (imm >> 6) << LOG2_TAG_GRANULE;
-...
->> +            TCGv_i32 tag_offset = tcg_const_i32(imm & 15);
-...
-> Given that we don't really share any of the codegen with the
-> existing disas_add_sub_imm() insns, and the insn format isn't
-> the same (uimm6/op3/uimm4 rather than an imm12), I'm tempted
-> to suggest we should structure this the same way the Arm ARM
-> decode tables do, where "Add/subtract (immediate, with tags)"
-> is a separate subtable from "Add/subtract (immediate)": so
-> instead of disas_data_proc_imm() sending both case
-> 0x22 and 0x23 to disas_add_sub_imm(), it would send 0x23
-> to a new disas_add_sub_tag().
+On Thu, 18 Jun 2020 at 17:12, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 6/18/20 6:17 AM, Peter Maydell wrote:
+> >> +        imm = (imm >> 6) << LOG2_TAG_GRANULE;
+> ...
+> >> +            TCGv_i32 tag_offset = tcg_const_i32(imm & 15);
+> ...
+> > Given that we don't really share any of the codegen with the
+> > existing disas_add_sub_imm() insns, and the insn format isn't
+> > the same (uimm6/op3/uimm4 rather than an imm12), I'm tempted
+> > to suggest we should structure this the same way the Arm ARM
+> > decode tables do, where "Add/subtract (immediate, with tags)"
+> > is a separate subtable from "Add/subtract (immediate)": so
+> > instead of disas_data_proc_imm() sending both case
+> > 0x22 and 0x23 to disas_add_sub_imm(), it would send 0x23
+> > to a new disas_add_sub_tag().
+>
+> I'll do that, because...
+>
+> > But this patch is functionally correct...
+>
+> ... I've just noticed that it isn't correct.
 
-I'll do that, because...
+Heh. I do think it will look nicer this way round.
+Don't forget to tidy up disas_add_sub_imm(): its 'shift'
+field will then be 1 bit, not 2.
 
-> But this patch is functionally correct...
-
-... I've just noticed that it isn't correct.
-
-I drop the low 6 bits of the 12-bit "imm" on the first line, and then try to
-read the low 4 bits on the second line.
-
-Oops.
-
-r~
+thanks
+-- PMM

@@ -1,159 +1,125 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1516737lfm;
-        Thu, 18 Jun 2020 03:52:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHlOfnwQbaUHZmxlLYSn7Iw66GswI4MPNt+MqL479snBWqK+lnGfUiWb1ru86aIL87zUst
-X-Received: by 2002:a25:d08c:: with SMTP id h134mr5514895ybg.513.1592477577623;
-        Thu, 18 Jun 2020 03:52:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592477577; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1520962lfm;
+        Thu, 18 Jun 2020 03:59:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyEqD+YnSKS+a/gXespRpiYN4waN47IGNg5MYJLCzkOd91tgKKEH28X0Lj3RTu0gHbIfmKo
+X-Received: by 2002:a17:907:4096:: with SMTP id nm6mr3399260ejb.4.1592477977352;
+        Thu, 18 Jun 2020 03:59:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592477977; cv=none;
         d=google.com; s=arc-20160816;
-        b=qNQFZ6Wbz2A5NtImWNZKpSJ9AfNBdMu+udaPX7Nf4JvDmzU9JUSWUW/9gxmw/7Lf2K
-         4rnOAnnX5hcIhO2Zrwp6UsxnXvut70IrQzh/ED6z3bjCUcDBiRGWH4qCqG/VuPv9daqr
-         LxiwndoakFyMQf4ht2EM99aGVMz7A6wLvIrp+ex14H5xeqWD9vTWiPhomAz4BKC3Ig5F
-         IhMevLxQf21ZMr2z6vjPPjOh/dXX+/okeD8l2C6T2Ath8y3MNlkzaZLkijZS1+qimjyE
-         QCjZmy4fcaSr1mOXYJ2OroeQbji0kv6EblOW576CDXF1E9jpZAoCqQO5/96HnQrcFvhw
-         xhwQ==
+        b=p0VOPouiqyy+8vP6q9bzxaPmC7w00v3+lzJ4sfVqMl7M+MWRK/0WQYWzKVcwshMnb1
+         epPTc8faHSpMJIPgkJaJXAEfgK5l9rhkHeJ+0p3UHP81Vvh5FTlu+P2ljuTpAQMdb10K
+         xu1nwdHtmscbveRe8m4twfFgR8zXrH0pt4uHfEZWYn7vDQBkamPl72cV4cGvpwivn57R
+         cNQxU2YKyQs2TS2KX+20J4mG6LK4OoLJ1YBNXatp1l0WVc5dlVzZELEa45zrcG+Twwxo
+         2GnYImE5xwXtPBeufBcM53QZR3tmuXm43GvQ/AwsJqZP1imnVg2s/QLzWI/l4R4KaAoS
+         Y4Og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=iVZxlubKdO45F+wI2LxuA9yidpgPj1lhxOvNIiLJ0t0=;
-        b=Do5xPhsCCjzhQCmz8O+Mm2l64QrL+kAMT719r0iAZIXNA4SjkxFFLAyc/VtTXflL0I
-         ToQD6G5Uuome/9CuAFfLyemOSFj+fwfzEDWzeO4HWZWkBrV7C3FwCLVb21s82Jygdl6i
-         77UXOlcSEW/g7afEQ4iw3+dZ4cET/IXlV+vDkMdPfntN1eqba7w+sUPahnTp6FoosC0C
-         1HM1XRcnIR4dMU2EFbDftJCt5WQkHQlMVGEdjGMD2gsL+psm0CXuHjgP4oljZTW23S6H
-         Z9o/kqUqF6/xpyoN26dodO19wSl01Y0t/hwqBv8U2IAOW7mKwRDF0igY+i11M9vyfhMR
-         cgcA==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:dkim-signature;
+        bh=B4ymCPVOrzD26cLd7e7ZxsUEn02gLoqcQg/EGZ48yLQ=;
+        b=0lWfl0R0TywJXGrtTIFZR09t1vCz394kQlhL38J7o3WGCfg+BOgU/6+9wUxLnv6avZ
+         kqDGkXBmPizyxDwC7Y0AZHzTXqkiNYRaC6+LCZN5X9dvqWObHY2pE6ZZUm8Cn/850mbA
+         DswZ+BaJTHRzLgDGW8Oz2aB4yAXdiP8HTugXatpkH2rFoHb0k6OQmoJ9MnRmuOv3sMTV
+         3rLVShNOlDYnxQSa7jcc5xx16FNtutNCspvXNDPv3K/EBHe5VQgo1V+5VrTKftIvu/ib
+         rXyUJupoPq+1MX2gH/2vj8Mxh0vJNVS2FNG76wZLeoZuGQfNopLyUqOV/jzGqt9KUwBC
+         N1NQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CjxqTUDc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l83si2194166ybb.393.2020.06.18.03.52.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jun 2020 03:52:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fC4dHPWz;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id ch25si1616744ejb.62.2020.06.18.03.59.35;
+        Thu, 18 Jun 2020 03:59:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CjxqTUDc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46282 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jlsAC-00064Z-Ui
-	for alex.bennee@linaro.org; Thu, 18 Jun 2020 06:52:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50014)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jlsA1-00064E-4m
- for qemu-arm@nongnu.org; Thu, 18 Jun 2020 06:52:45 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:39907)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jls9y-0002Iw-Ny
- for qemu-arm@nongnu.org; Thu, 18 Jun 2020 06:52:44 -0400
-Received: by mail-ot1-x344.google.com with SMTP id g5so4164214otg.6
- for <qemu-arm@nongnu.org>; Thu, 18 Jun 2020 03:52:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=iVZxlubKdO45F+wI2LxuA9yidpgPj1lhxOvNIiLJ0t0=;
- b=CjxqTUDcf2py6QIIe63ETfCfiIMeSPODgUlaYu/VCq0PZsWNONP1qLp1H/4Ris6XQF
- 5py7vMpjjkQd4dnyMRwDzHYholioMMBsmTxRgTHng/Au6PodOf0otHJCDEQeP3Z3Vydi
- fPngIQS4gB5se/6WlrPqvWfegtXxDr9ItFuGu0KLWKXLT1BlDAbAS7W0R8q3G5EihMIy
- ru+bVAuC4yJ09wIPzrMqI1sVgUOih2GlDe7+KYQDEZ+b/nAzuJUNSuE2KZJFrWNsmIvT
- wqJ7BbgRia0rRki89GD73GrEPn+roojZKdmemp1WDklTZLsQhWvn6vXbgXJflrDJmfrC
- aYRA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fC4dHPWz;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1728496AbgFRK7e (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 18 Jun 2020 06:59:34 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:29479 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1727805AbgFRK7d (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 18 Jun 2020 06:59:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1592477972;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=B4ymCPVOrzD26cLd7e7ZxsUEn02gLoqcQg/EGZ48yLQ=;
+        b=fC4dHPWzXCUt7uUZKyzJkioVtANlzcw/roPKo/2gE+SaPB2FDXnQo6scg4X/ElyzlcLzUy
+        wjlOo6oZAqtIu1d10cplasDOeI/0Nvg7a/ZpIIXpaq/JBcRlRoDb/38fEsKf0PvRUTibjc
+        u027Eat5LOa2tLl6s0vlzmyVvDzCBgw=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-55-bnFDiFS7NYuiMmVJU4c7wA-1; Thu, 18 Jun 2020 06:59:30 -0400
+X-MC-Unique: bnFDiFS7NYuiMmVJU4c7wA-1
+Received: by mail-wr1-f69.google.com with SMTP id a4so2649849wrp.5
+        for <kvm@vger.kernel.org>; Thu, 18 Jun 2020 03:59:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=iVZxlubKdO45F+wI2LxuA9yidpgPj1lhxOvNIiLJ0t0=;
- b=iQDZ8xfMjZ1CB4LqmKEQRmD5WpbcyN0leMeV3sCK25RDVT3GbSq0mUAYg5nii+6jun
- IoSi3zmIBbXzxvuJfo+lvL2KLUn8fTQbT77PRR0mDy15CpigXdek3bU9F3GDH2UmhpDl
- 6oV1Izh6OlceVelz0/0iawY19qO9/TAq4gNsEQUgK/eHO5WPECxFQXH99J1RnMaC9t8Y
- IP4zmxcpoXgbG8kSsiYJBCJ2TGvvZXq36+DgHF6suYuvWMcsjivgM3asO6oxZ4f9zuQJ
- OPey3xMkKX3t/Wk/dlaC2vmlCuectvD55N2DK1k+tXkhpMn3Efw2qByqvWZ3+bxam4jJ
- 606A==
-X-Gm-Message-State: AOAM532jl4uLXtnt01B8cyMG95ZoaMsGgUf7WpykQsHB+TgYpKQB95i3
- th4vk2VNwHzSXCwA8bPU0lldGiX0Pvu3YAksunjjDA==
-X-Received: by 2002:a9d:67d6:: with SMTP id c22mr2736190otn.221.1592477561358; 
- Thu, 18 Jun 2020 03:52:41 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=B4ymCPVOrzD26cLd7e7ZxsUEn02gLoqcQg/EGZ48yLQ=;
+        b=fpNACc7Smy/0s3Iu+hV7rnBgtlv2ZrG6OK6PWT1Z6hefaH+QJS4Hg49i9PFyu4b046
+         DzOw4ULiXe84Y+QuA0ZiQO6XHUHqiWYyFJMr4Lnf0syzB1rWqaKUHt9T80dpcT4M8D22
+         7uHctGB+2Ufx8ROuHPbM8IbznLGnvTy9rvgIqJHdt6rfQ8G1wklWpW4+1iztsrOEXl3F
+         MdElnAKPW8pEH2rAWwzLcqaN44M2bkiYWIiqlR//BE++jilz74j7Of3pPT/qgiYcrsHN
+         7JIkbZg8RhDqgq2jnleH0sYrEpASF+Q3S4XwD+24JFjk4buUS+0B9Mwk06rMFZ9ci/fS
+         Yeow==
+X-Gm-Message-State: AOAM532AiIlXvpOEz1BycWMOzYJPM7axuq4ADH7qgiUtPWZLPV3lk7x+
+        7HsManq1aFwCZpnAIosEF0aaJ/4A6+AcZezjv9sX11dJu0beqXuTROg4coCmEjkdZ2m+FtMeLFW
+        SRnEgFNZcEJPG
+X-Received: by 2002:a1c:7e52:: with SMTP id z79mr3603192wmc.104.1592477969200;
+        Thu, 18 Jun 2020 03:59:29 -0700 (PDT)
+X-Received: by 2002:a1c:7e52:: with SMTP id z79mr3603173wmc.104.1592477969038;
+        Thu, 18 Jun 2020 03:59:29 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:e1d2:138e:4eff:42cb? ([2001:b07:6468:f312:e1d2:138e:4eff:42cb])
+        by smtp.gmail.com with ESMTPSA id e5sm187714wrs.33.2020.06.18.03.59.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 18 Jun 2020 03:59:28 -0700 (PDT)
+Subject: Re: [PATCH] target/arm/kvm: Check supported feature per accelerator
+ (not per vCPU)
+To:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+        Andrew Jones <drjones@redhat.com>
+Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+        kvm@vger.kernel.org, qemu-arm@nongnu.org,
+        Haibo Xu <haibo.xu@linaro.org>
+References: <20200617130800.26355-1-philmd@redhat.com>
+ <20200618092208.nn67fgre4h7yjcnt@kamzik.brq.redhat.com>
+ <8729ee44-77dd-ab25-b400-859e59ced160@redhat.com>
+From:   Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <3b0dd59d-40d1-745a-d083-cfdfc4a246c5@redhat.com>
+Date:   Thu, 18 Jun 2020 12:59:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-References: <20200603011317.473934-1-richard.henderson@linaro.org>
- <20200603011317.473934-4-richard.henderson@linaro.org>
-In-Reply-To: <20200603011317.473934-4-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 18 Jun 2020 11:52:30 +0100
-Message-ID: <CAFEAcA9bAt=cG9nSWP6JaVyx4jf2UGmYLKzvaJ7rVCdLVpw2ig@mail.gmail.com>
-Subject: Re: [PATCH v7 03/42] target/arm: Add support for MTE to SCTLR_ELx
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Stephen Long <steplong@quicinc.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t8DQafLRYNT8
+In-Reply-To: <8729ee44-77dd-ab25-b400-859e59ced160@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: uLNwRNGH9oVt
 
-On Wed, 3 Jun 2020 at 02:13, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> This does not attempt to rectify all of the res0 bits, but does
-> clear the mte bits when not enabled.  Since there is no high-part
-> mapping of SCTLR, aa32 mode cannot write to these bits.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/helper.c | 23 +++++++++++++++++------
->  1 file changed, 17 insertions(+), 6 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 2ec49c1a55..7862bf502d 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -4698,6 +4698,22 @@ static void sctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
->  {
->      ARMCPU *cpu = env_archcpu(env);
->
-> +    if (arm_feature(env, ARM_FEATURE_PMSA) && !cpu->has_mpu) {
-> +        /* M bit is RAZ/WI for PMSA with no MPU implemented */
-> +        value &= ~SCTLR_M;
-> +    }
-> +
-> +    /* ??? Lots of these bits are not implemented.  */
-> +
-> +    if (ri->state == ARM_CP_STATE_AA64 && !cpu_isar_feature(aa64_mte, cpu)) {
-> +        if (ri->opc1 == 6) { /* SCTLR_EL3 */
-> +            value &= ~(SCTLR_ITFSB | SCTLR_TCF | SCTLR_ATA);
-> +        } else {
-> +            value &= ~(SCTLR_ITFSB | SCTLR_TCF0 | SCTLR_TCF |
-> +                       SCTLR_ATA0 | SCTLR_ATA);
-> +        }
+On 18/06/20 12:17, Philippe Mathieu-Daudé wrote:
+>>>          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SVE;
+>>>      }
+>>>  
+>>> -- 
+>>> 2.21.3
+>>>
+>>>
+>> At all callsites we pass current_accel() to the kvm_arm_<feat>_supported()
+>> functions. Is there any reason not to drop their input parameter and just
+>> use current_accel() internally?
+> Clever idea :)
 
-Doesn't SCTLR_EL2 have the same "no ATA0 and no TCF0" that
-SCTLR_EL3 does?
+Or just the kvm_state global.
 
-thanks
--- PMM
+Paolo

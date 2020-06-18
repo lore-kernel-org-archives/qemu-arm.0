@@ -1,125 +1,123 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1520962lfm;
-        Thu, 18 Jun 2020 03:59:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyEqD+YnSKS+a/gXespRpiYN4waN47IGNg5MYJLCzkOd91tgKKEH28X0Lj3RTu0gHbIfmKo
-X-Received: by 2002:a17:907:4096:: with SMTP id nm6mr3399260ejb.4.1592477977352;
-        Thu, 18 Jun 2020 03:59:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592477977; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1520977lfm;
+        Thu, 18 Jun 2020 03:59:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwHW23FTBGYJM2v5Z3WLcpKWgE5jE0BDOsh38meF7mr3lGOoNTSIdTsx2NVTmWJLwMyJkuv
+X-Received: by 2002:a17:906:3154:: with SMTP id e20mr3530459eje.171.1592477979366;
+        Thu, 18 Jun 2020 03:59:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592477979; cv=none;
         d=google.com; s=arc-20160816;
-        b=p0VOPouiqyy+8vP6q9bzxaPmC7w00v3+lzJ4sfVqMl7M+MWRK/0WQYWzKVcwshMnb1
-         epPTc8faHSpMJIPgkJaJXAEfgK5l9rhkHeJ+0p3UHP81Vvh5FTlu+P2ljuTpAQMdb10K
-         xu1nwdHtmscbveRe8m4twfFgR8zXrH0pt4uHfEZWYn7vDQBkamPl72cV4cGvpwivn57R
-         cNQxU2YKyQs2TS2KX+20J4mG6LK4OoLJ1YBNXatp1l0WVc5dlVzZELEa45zrcG+Twwxo
-         2GnYImE5xwXtPBeufBcM53QZR3tmuXm43GvQ/AwsJqZP1imnVg2s/QLzWI/l4R4KaAoS
-         Y4Og==
+        b=fBW8+BIfpYtgahb4OtSefND1BF7fm4iVk8BswRxZmHxXr1qUlENGAr6IkEfxN545by
+         hpnn0G8Ouy+xQeaVvGq/6k3RKCcNX+TEOQ+Xk62uqE1jp7GXP+GrMJ/Xz4nHrq1sAqSE
+         iEF7wt2MPhIFc/KwnCCf11VT4tU/Ps7pw5xJjijSP9io9MaKjeZIIDsHtBj9U13Fbuhm
+         xfZsgEOugZQgbyeLRL8jIhHYOLbvKDDuFcEoz9uw6xqCMG8jU1Ajno+jtvcdnXGHVX/L
+         k4dP/tedp9JJSyVPvRnXARYriN2NPi3AY1jwNn9SwzS9iKOdzMsgWPeKW4TJ3HO/BOeM
+         jQTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=B4ymCPVOrzD26cLd7e7ZxsUEn02gLoqcQg/EGZ48yLQ=;
-        b=0lWfl0R0TywJXGrtTIFZR09t1vCz394kQlhL38J7o3WGCfg+BOgU/6+9wUxLnv6avZ
-         kqDGkXBmPizyxDwC7Y0AZHzTXqkiNYRaC6+LCZN5X9dvqWObHY2pE6ZZUm8Cn/850mbA
-         DswZ+BaJTHRzLgDGW8Oz2aB4yAXdiP8HTugXatpkH2rFoHb0k6OQmoJ9MnRmuOv3sMTV
-         3rLVShNOlDYnxQSa7jcc5xx16FNtutNCspvXNDPv3K/EBHe5VQgo1V+5VrTKftIvu/ib
-         rXyUJupoPq+1MX2gH/2vj8Mxh0vJNVS2FNG76wZLeoZuGQfNopLyUqOV/jzGqt9KUwBC
-         N1NQ==
+        bh=JKYDHbOIwakxAk9gU87oflPaq58X99KzHMMUU7Bumwg=;
+        b=aIskb3HtCfKJTrT4WM7jbaTRiQxjKdbJKriZM3frB/2XtqseMeBQ9cIHa5s1Bs4hgf
+         dvvfmUZUymxCMjURfnBdxgIa6Re1jRUZtaW03mgCVpTbBJqcvdzlhRv6WhcbtEv6s7Np
+         O1w49Ej85PzvSuhvboscE+FjaTbP5c3xILZGW/gITmCMyQHJa3cDUo4lXbgfGBt1lRUK
+         HnkL7h/8fZfWSQhyS1rebvZtpGmnhznBN35kEePJxRtIwqM2IMIXdoWXFkV3wFuFMdd6
+         TFJ2t8xbHhM7M/dkZ0/OBJYSFd0gocHAb5aq4RX+dyASNLm82xrMurSWH8w3cu8Hcvyv
+         xQ5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fC4dHPWz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gTiPlpWo;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id ch25si1616744ejb.62.2020.06.18.03.59.35;
-        Thu, 18 Jun 2020 03:59:37 -0700 (PDT)
+        by mx.google.com with ESMTP id ch25si1616744ejb.62.2020.06.18.03.59.39;
+        Thu, 18 Jun 2020 03:59:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fC4dHPWz;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gTiPlpWo;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1728496AbgFRK7e (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 18 Jun 2020 06:59:34 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:29479 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1727805AbgFRK7d (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 18 Jun 2020 06:59:33 -0400
+        id S1729404AbgFRK7h (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Thu, 18 Jun 2020 06:59:37 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:55398 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1727805AbgFRK7g (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Thu, 18 Jun 2020 06:59:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1592477972;
+        s=mimecast20190719; t=1592477976;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:content-type:content-type:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=B4ymCPVOrzD26cLd7e7ZxsUEn02gLoqcQg/EGZ48yLQ=;
-        b=fC4dHPWzXCUt7uUZKyzJkioVtANlzcw/roPKo/2gE+SaPB2FDXnQo6scg4X/ElyzlcLzUy
-        wjlOo6oZAqtIu1d10cplasDOeI/0Nvg7a/ZpIIXpaq/JBcRlRoDb/38fEsKf0PvRUTibjc
-        u027Eat5LOa2tLl6s0vlzmyVvDzCBgw=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-55-bnFDiFS7NYuiMmVJU4c7wA-1; Thu, 18 Jun 2020 06:59:30 -0400
-X-MC-Unique: bnFDiFS7NYuiMmVJU4c7wA-1
-Received: by mail-wr1-f69.google.com with SMTP id a4so2649849wrp.5
-        for <kvm@vger.kernel.org>; Thu, 18 Jun 2020 03:59:30 -0700 (PDT)
+        bh=JKYDHbOIwakxAk9gU87oflPaq58X99KzHMMUU7Bumwg=;
+        b=gTiPlpWoTkyl4uM3SNdmb99amQ14K7tBgwVzkY+YEJ70VuNSRe5vdojq/w9EDcTAobdfte
+        uSncfYyKav7aMnNgWFnXDCukD5Ilx5rR2/n94Rvm2pNYYcO40MSo1k8Oh9rox+c2hhW46G
+        gpEjjePg/YRZC5UWsFiz81sM+FguMb8=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-187-kPRe5aYPMUeQdCs2Hoip3g-1; Thu, 18 Jun 2020 06:59:34 -0400
+X-MC-Unique: kPRe5aYPMUeQdCs2Hoip3g-1
+Received: by mail-wm1-f71.google.com with SMTP id p24so2435134wmc.1
+        for <kvm@vger.kernel.org>; Thu, 18 Jun 2020 03:59:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=B4ymCPVOrzD26cLd7e7ZxsUEn02gLoqcQg/EGZ48yLQ=;
-        b=fpNACc7Smy/0s3Iu+hV7rnBgtlv2ZrG6OK6PWT1Z6hefaH+QJS4Hg49i9PFyu4b046
-         DzOw4ULiXe84Y+QuA0ZiQO6XHUHqiWYyFJMr4Lnf0syzB1rWqaKUHt9T80dpcT4M8D22
-         7uHctGB+2Ufx8ROuHPbM8IbznLGnvTy9rvgIqJHdt6rfQ8G1wklWpW4+1iztsrOEXl3F
-         MdElnAKPW8pEH2rAWwzLcqaN44M2bkiYWIiqlR//BE++jilz74j7Of3pPT/qgiYcrsHN
-         7JIkbZg8RhDqgq2jnleH0sYrEpASF+Q3S4XwD+24JFjk4buUS+0B9Mwk06rMFZ9ci/fS
-         Yeow==
-X-Gm-Message-State: AOAM532AiIlXvpOEz1BycWMOzYJPM7axuq4ADH7qgiUtPWZLPV3lk7x+
-        7HsManq1aFwCZpnAIosEF0aaJ/4A6+AcZezjv9sX11dJu0beqXuTROg4coCmEjkdZ2m+FtMeLFW
-        SRnEgFNZcEJPG
-X-Received: by 2002:a1c:7e52:: with SMTP id z79mr3603192wmc.104.1592477969200;
-        Thu, 18 Jun 2020 03:59:29 -0700 (PDT)
-X-Received: by 2002:a1c:7e52:: with SMTP id z79mr3603173wmc.104.1592477969038;
-        Thu, 18 Jun 2020 03:59:29 -0700 (PDT)
+        bh=JKYDHbOIwakxAk9gU87oflPaq58X99KzHMMUU7Bumwg=;
+        b=OWl0yglk4mtU/4SZt92qT1pri0gZhnXYCL9XZi6jLz2O/d4iV0fA8gWjfDWyy1LUuU
+         e4IylUCDMnbkSHmQ5BGjBgnt3jvXbDbzqy6rLGWnP375jplQ+rjKakB19m+TB+yRJG+c
+         yFXnTHj+SN8W/8RmsP/j9lfjzeaP6aimBJYYch0foGoefboa98plOZV4cgtQumWOC4F7
+         iAmaXTOd4LBRyh1EZlz9qloEqvsIlOcWuEfE/u60Pr21IjL+eKepfert6SKzNwiYXzGy
+         o1TNwFAh6yVGQDa9AhGEIjkfVFidgDw6zFZ+DIlZr73pTQVNVLZWqGyZzMQvM0mL4JqY
+         vwjQ==
+X-Gm-Message-State: AOAM531u/Bo2VpgAYvmiwOriKhcYC4MBJE6cWx79uS+8Il4HGb1YNngm
+        jTVDXpQozD7thpBPceNSXobdWKtGLrqOo8XT0NRqJehdRaTXryTSk5KUGfw75drCZwmzWMNSs/M
+        +nVmSHMCVb54Y
+X-Received: by 2002:a1c:4189:: with SMTP id o131mr3222177wma.183.1592477973141;
+        Thu, 18 Jun 2020 03:59:33 -0700 (PDT)
+X-Received: by 2002:a1c:4189:: with SMTP id o131mr3222158wma.183.1592477972957;
+        Thu, 18 Jun 2020 03:59:32 -0700 (PDT)
 Received: from ?IPv6:2001:b07:6468:f312:e1d2:138e:4eff:42cb? ([2001:b07:6468:f312:e1d2:138e:4eff:42cb])
-        by smtp.gmail.com with ESMTPSA id e5sm187714wrs.33.2020.06.18.03.59.28
+        by smtp.gmail.com with ESMTPSA id y16sm3081659wro.71.2020.06.18.03.59.32
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 18 Jun 2020 03:59:28 -0700 (PDT)
+        Thu, 18 Jun 2020 03:59:32 -0700 (PDT)
 Subject: Re: [PATCH] target/arm/kvm: Check supported feature per accelerator
  (not per vCPU)
-To:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-        Andrew Jones <drjones@redhat.com>
-Cc:     qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        kvm@vger.kernel.org, qemu-arm@nongnu.org,
-        Haibo Xu <haibo.xu@linaro.org>
+To:     Andrew Jones <drjones@redhat.com>
+Cc:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+        Haibo Xu <haibo.xu@linaro.org>,
+        Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+        qemu-devel@nongnu.org, kvm@vger.kernel.org
 References: <20200617130800.26355-1-philmd@redhat.com>
- <20200618092208.nn67fgre4h7yjcnt@kamzik.brq.redhat.com>
- <8729ee44-77dd-ab25-b400-859e59ced160@redhat.com>
+ <20200617152319.l77b4kdzwcftx7by@kamzik.brq.redhat.com>
+ <69f9adc8-28ec-d949-60aa-ba760ea210a9@redhat.com>
+ <20200618085726.ti2hny6554l4l5kt@kamzik.brq.redhat.com>
 From:   Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <3b0dd59d-40d1-745a-d083-cfdfc4a246c5@redhat.com>
-Date:   Thu, 18 Jun 2020 12:59:27 +0200
+Message-ID: <38dc2adb-d567-cd45-21bd-f68cebbab98a@redhat.com>
+Date:   Thu, 18 Jun 2020 12:59:31 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <8729ee44-77dd-ab25-b400-859e59ced160@redhat.com>
+In-Reply-To: <20200618085726.ti2hny6554l4l5kt@kamzik.brq.redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: uLNwRNGH9oVt
+X-TUID: MoyFLmLT4DE0
 
-On 18/06/20 12:17, Philippe Mathieu-Daudé wrote:
->>>          cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SVE;
->>>      }
->>>  
->>> -- 
->>> 2.21.3
->>>
->>>
->> At all callsites we pass current_accel() to the kvm_arm_<feat>_supported()
->> functions. Is there any reason not to drop their input parameter and just
->> use current_accel() internally?
-> Clever idea :)
+On 18/06/20 10:57, Andrew Jones wrote:
+>> If it's a test that the feature is enabled (e.g. via -cpu) then I agree.  
+>> For something that ends up as a KVM_CHECK_EXTENSION or KVM_ENABLE_CAP on 
+>> the KVM fd, however, I think passing an AccelState is better.
+> I can live with that justification as long as we don't support
+> heterogeneous VCPU configurations. And, if that ever happens, then I
+> guess we'll be reworking a lot more than just the interface of these
+> cpu feature probes.
 
-Or just the kvm_state global.
+Yes, and anyway configuring "what is allowed" would be separate from
+checking "what is supported".
 
-Paolo
+Thanks,

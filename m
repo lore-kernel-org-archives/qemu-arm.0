@@ -1,242 +1,159 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4123273lfc;
-        Tue, 2 Jun 2020 07:24:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwGxoyjXp4/snvGoS1Zz1TbpDIgcAuBEIKaUbHdwkaTmKgLHSZJzonNCT957oo3xJ1vKao2
-X-Received: by 2002:a25:7d42:: with SMTP id y63mr10560707ybc.392.1591107859415;
-        Tue, 02 Jun 2020 07:24:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591107859; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp444692lfm;
+        Fri, 19 Jun 2020 03:23:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwlXIhpHjy9YiU6OXi++r0qhDMQMwXznEC/cOHhi3qkxVG751aWIbQ85a3WaOhVr4h1bMIm
+X-Received: by 2002:a17:907:435f:: with SMTP id oc23mr3043398ejb.426.1592562193889;
+        Fri, 19 Jun 2020 03:23:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592562193; cv=none;
         d=google.com; s=arc-20160816;
-        b=SnS3ctbvETxDXWY5rJhoRmz5qvgwannWPy+FyaGzVCzItA5yLuqxg1/9k56jy9YeCs
-         +MHPOJ60JkbyZk/Bze4QNbpdKcpi9RHHM6tqwrTaZlmUNLYSDjZvFGD0PZzWnXo752w6
-         dpUawVcz0XaZTeE7WKkmrl6MG8MpTNIcekz3JVEh8lOEgG2tA6fXz2LfxTuIsSNBZOTK
-         jvUEA/MM7LwqS5aDftr6LSs9jyzR4EuMvDPrFh840AS443znIEmJzuR6LPr+RVvuorXN
-         glNa8hE4IVVWoSB9FV9SdhkRYjhNLaRyR1X/juHhZDZTVcOcPd7Uc3QiPoJtqhXKbgon
-         rVXw==
+        b=adRr4OtfzLlngG4m/fGZ4SrKHGO12Dapl09N85CcL7bR61xd38EqqIywQECZFWH6yD
+         wyGAtAN9oeMmcaoCPhiTJ02K2GCjEVDmn3hDOd+73i/nlmA4K1csF9EZDe9BNx76DOiV
+         22UAjiHDB4QtXIocrGKR8tHpTXyFDS5dO9VNPdEUsg5kKijzHdm6xMGeLNdpkT8cwNYV
+         rZeTFa9LMSxueu0B9OUIkIRufgyt1gt0vISug7Cnuxjw9qKKJP693Go59pd4SUBd9mdT
+         7OX9Ltk+F3NctZtdKVPlPTkzZ/HJNnTJ6mbkPtTE3PJJl+jHcYpDAKQOZG7J7HvoSZ1K
+         QMCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=Dj3EXNezPUMrIL1WC1M5gUojLPDZ8AtCEMOJsXhnHsc=;
-        b=Y8VY77nGIlLDEEq9hdiLByT/dCLigzC5k1Fnxgmpn33NT3ngi0LflyPfzxRpfyozQ0
-         5tZgRqX88Z1NIM2BvvVdIk+zVeafP+lRNstXfoLyVzUcUHkwqhKPsxSG8E6LXb7XYJ3B
-         JXhGx2QoZEQ9mwGHVpcNfGLtN1yoxl9nI4PF6y3hOj/tWf03NVUqDwqXKfqt41PUpCVP
-         SDqqRiC7gAhhwwthca+n2Fc6hJ6v7SHjIoTDu58yCtxc+xZUbEDq0fcp/SLcSl1DpWv7
-         IHuACn504pmNj2X85SKGessyiEHIPOnGtt/Rm8vSz/4biOw3d5b5Wrui0t4LvaEoG4L4
-         iIQg==
+        h=list-id:precedence:sender:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=uP2JQ6XlvCFhDymr1AOZy3sBbLehN2SUqGDGk45wDCs=;
+        b=wcuEC/2BHyeH+ETma10wPEBgSDSZZo0FVbiGHSc2wuMwcHlfUODHbuC9GW6iNE7sF/
+         SttGM+u8g9K9TIFDbKo9iS2QuJx5wS5eJhKGAwkjzjCTPLINP24Ian6rzr67yQigoRbl
+         KZtVtkYPljAq/8wcJlMBgu5paDyoV31M/W1h40aa39ukacL2u1D73KlmdpB8J6E8/xcN
+         6yJ1ePnAUvE4p91U97AEi6OtNZfYrsOIiTlZxSU+nbdIHUZz8utIOOwh25sYkeBBgZdA
+         mb0fl38SJxYqIZsFSVVxc/WZz1MrL5DdIMwXtVRNrl7HSf9OFba7Q1MkCxO0arihc921
+         5Ilg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m191si1991749ybm.346.2020.06.02.07.24.19
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jun 2020 07:24:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JnV5zh8l;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id i2si3526139ejr.278.2020.06.19.03.23.13;
+        Fri, 19 Jun 2020 03:23:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:50780 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jg7py-0004xI-Oi
-	for alex.bennee@linaro.org; Tue, 02 Jun 2020 10:24:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40288)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jg7pq-0004x8-QY; Tue, 02 Jun 2020 10:24:10 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:24194)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jg7pp-0001Vg-II; Tue, 02 Jun 2020 10:24:10 -0400
-Received: from pps.filterd (m0098410.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 052E4cd4117335; Tue, 2 Jun 2020 10:24:06 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 31dr0h9979-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 02 Jun 2020 10:24:05 -0400
-Received: from m0098410.ppops.net (m0098410.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 052E4f36117594;
- Tue, 2 Jun 2020 10:24:05 -0400
-Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
- [169.47.144.26])
- by mx0a-001b2d01.pphosted.com with ESMTP id 31dr0h996k-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 02 Jun 2020 10:24:05 -0400
-Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
- by ppma04wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 052EA5Aw012293;
- Tue, 2 Jun 2020 14:24:04 GMT
-Received: from b01cxnp22033.gho.pok.ibm.com (b01cxnp22033.gho.pok.ibm.com
- [9.57.198.23]) by ppma04wdc.us.ibm.com with ESMTP id 31bf48tf4v-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 02 Jun 2020 14:24:04 +0000
-Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
- [9.57.199.109])
- by b01cxnp22033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 052EO33E52101522
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 2 Jun 2020 14:24:03 GMT
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id BFE60112067;
- Tue,  2 Jun 2020 14:24:03 +0000 (GMT)
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id AC198112064;
- Tue,  2 Jun 2020 14:24:03 +0000 (GMT)
-Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
- by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTP;
- Tue,  2 Jun 2020 14:24:03 +0000 (GMT)
-Subject: Re: [PATCH v3 1/4] acpi: Convert build_tpm2() to build_append* API
-To: Auger Eric <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
-References: <20200601095737.32671-1-eric.auger@redhat.com>
- <20200601095737.32671-2-eric.auger@redhat.com>
- <46c71777-b588-ce1f-eb8d-de1c5b3e2186@linux.ibm.com>
- <6bd7f3a0-5a40-823e-bf67-309c9995e18e@redhat.com>
-From: Stefan Berger <stefanb@linux.ibm.com>
-Message-ID: <a85cc67e-2d8a-2034-3b85-6e8c8d7dcad6@linux.ibm.com>
-Date: Tue, 2 Jun 2020 10:24:03 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JnV5zh8l;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1732260AbgFSKXM (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 19 Jun 2020 06:23:12 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:60422 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1729195AbgFSKXK (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 19 Jun 2020 06:23:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1592562188;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=uP2JQ6XlvCFhDymr1AOZy3sBbLehN2SUqGDGk45wDCs=;
+        b=JnV5zh8lVbon5qtLeMJ/SX0bOeBsntea1mAz+YsX+Ojn3Sn4qIavLbHbYucNdjFooh1h1t
+        i7mCE7k7KHmwZCfNLMrfFKpBRC9c3rr9WkZwRsSxMKF21mPVtqNP9dL8VgdU4mW35WlQhn
+        cYUpp9ye860pHEhA3fJ06VJ+Co8g8rM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-469-tWFRFku5NPCVIfjPPnq5VQ-1; Fri, 19 Jun 2020 06:23:06 -0400
+X-MC-Unique: tWFRFku5NPCVIfjPPnq5VQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B2C8310059A0;
+        Fri, 19 Jun 2020 10:23:05 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.194.110])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id A05AF5BAD9;
+        Fri, 19 Jun 2020 10:23:03 +0000 (UTC)
+Date:   Fri, 19 Jun 2020 12:23:00 +0200
+From:   Andrew Jones <drjones@redhat.com>
+To:     Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc:     qemu-devel@nongnu.org, kvm@vger.kernel.org,
+        Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+        Haibo Xu <haibo.xu@linaro.org>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        "Dr . David Alan Gilbert" <dgilbert@redhat.com>
+Subject: Re: [PATCH v2] target/arm: Check supported KVM features globally
+ (not per vCPU)
+Message-ID: <20200619102300.2mzawwpj4gkglco3@kamzik.brq.redhat.com>
+References: <20200619095542.2095-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <6bd7f3a0-5a40-823e-bf67-309c9995e18e@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.687
- definitions=2020-06-02_13:2020-06-02,
- 2020-06-02 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 mlxscore=0
- bulkscore=0 adultscore=0 impostorscore=0 cotscore=-2147483648 phishscore=0
- mlxlogscore=999 spamscore=0 priorityscore=1501 suspectscore=0
- lowpriorityscore=0 clxscore=1015 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2004280000 definitions=main-2006020097
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/02 10:08:28
-X-ACL-Warn: Detected OS   = Linux 3.x [generic] [fuzzy]
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, KHOP_DYNAMIC=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
- ardb@kernel.org, philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T2oBfqJo4vk3
+In-Reply-To: <20200619095542.2095-1-philmd@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: abFJ5DLmlYOM
 
-On 6/2/20 9:55 AM, Auger Eric wrote:
-> Hi Stefan,
-> On 6/2/20 3:30 PM, Stefan Berger wrote:
->> On 6/1/20 5:57 AM, Eric Auger wrote:
->>> In preparation of its move to the generic acpi code,
->>> let's convert build_tpm2() to use build_append API. This
->>> latter now is prefered in place of direct ACPI struct field
->>> settings with manual endianness conversion.
->>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>> ---
->>>    hw/i386/acpi-build.c | 28 +++++++++++++++++++---------
->>>    1 file changed, 19 insertions(+), 9 deletions(-)
->>>
->>> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
->>> index b5669d6c65..f0d35d7b17 100644
->>> --- a/hw/i386/acpi-build.c
->>> +++ b/hw/i386/acpi-build.c
->>> @@ -2298,30 +2298,40 @@ build_tpm_tcpa(GArray *table_data, BIOSLinker
->>> *linker, GArray *tcpalog)
->>>    static void
->>>    build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
->>>    {
->>> -    Acpi20TPM2 *tpm2_ptr = acpi_data_push(table_data, sizeof *tpm2_ptr);
->>> +    Acpi20TPM2 *tpm2_ptr = acpi_data_push(table_data,
->>> sizeof(AcpiTableHeader));
->> And now you want to build the data structure by pushing fields? I would
->> definitely NOT do this.
-> If I didn't misinterpret things, this was recommended by Drew and Igor
-> as buid_append* API avoids to take care of endianness and this is the
-> API now used in the generic ACPI code. Besides I also think that in that
-> case it does not simplify things but maybe I did that the wrong way? Or
-> maybe I didn't understand your remark?
+On Fri, Jun 19, 2020 at 11:55:42AM +0200, Philippe Mathieu-Daud� wrote:
+> Since commit d70c996df23f, when enabling the PMU we get:
+> 
+>   $ qemu-system-aarch64 -cpu host,pmu=on -M virt,accel=kvm,gic-version=3
+>   Segmentation fault (core dumped)
+> 
+>   Thread 1 "qemu-system-aar" received signal SIGSEGV, Segmentation fault.
+>   0x0000aaaaaae356d0 in kvm_ioctl (s=0x0, type=44547) at accel/kvm/kvm-all.c:2588
+>   2588        ret = ioctl(s->fd, type, arg);
+>   (gdb) bt
+>   #0  0x0000aaaaaae356d0 in kvm_ioctl (s=0x0, type=44547) at accel/kvm/kvm-all.c:2588
+>   #1  0x0000aaaaaae31568 in kvm_check_extension (s=0x0, extension=126) at accel/kvm/kvm-all.c:916
+>   #2  0x0000aaaaaafce254 in kvm_arm_pmu_supported (cpu=0xaaaaac214ab0) at target/arm/kvm.c:213
+>   #3  0x0000aaaaaafc0f94 in arm_set_pmu (obj=0xaaaaac214ab0, value=true, errp=0xffffffffe438) at target/arm/cpu.c:1111
+>   #4  0x0000aaaaab5533ac in property_set_bool (obj=0xaaaaac214ab0, v=0xaaaaac223a80, name=0xaaaaac11a970 "pmu", opaque=0xaaaaac222730, errp=0xffffffffe438) at qom/object.c:2170
+>   #5  0x0000aaaaab5512f0 in object_property_set (obj=0xaaaaac214ab0, v=0xaaaaac223a80, name=0xaaaaac11a970 "pmu", errp=0xffffffffe438) at qom/object.c:1328
+>   #6  0x0000aaaaab551e10 in object_property_parse (obj=0xaaaaac214ab0, string=0xaaaaac11b4c0 "on", name=0xaaaaac11a970 "pmu", errp=0xffffffffe438) at qom/object.c:1561
+>   #7  0x0000aaaaab54ee8c in object_apply_global_props (obj=0xaaaaac214ab0, props=0xaaaaac018e20, errp=0xaaaaabd6fd88 <error_fatal>) at qom/object.c:407
+>   #8  0x0000aaaaab1dd5a4 in qdev_prop_set_globals (dev=0xaaaaac214ab0) at hw/core/qdev-properties.c:1218
+>   #9  0x0000aaaaab1d9fac in device_post_init (obj=0xaaaaac214ab0) at hw/core/qdev.c:1050
+>   ...
+>   #15 0x0000aaaaab54f310 in object_initialize_with_type (obj=0xaaaaac214ab0, size=52208, type=0xaaaaabe237f0) at qom/object.c:512
+>   #16 0x0000aaaaab54fa24 in object_new_with_type (type=0xaaaaabe237f0) at qom/object.c:687
+>   #17 0x0000aaaaab54fa80 in object_new (typename=0xaaaaabe23970 "host-arm-cpu") at qom/object.c:702
+>   #18 0x0000aaaaaaf04a74 in machvirt_init (machine=0xaaaaac0a8550) at hw/arm/virt.c:1770
+>   #19 0x0000aaaaab1e8720 in machine_run_board_init (machine=0xaaaaac0a8550) at hw/core/machine.c:1138
+>   #20 0x0000aaaaaaf95394 in qemu_init (argc=5, argv=0xffffffffea58, envp=0xffffffffea88) at softmmu/vl.c:4348
+>   #21 0x0000aaaaaada3f74 in main (argc=<optimized out>, argv=<optimized out>, envp=<optimized out>) at softmmu/main.c:48
+> 
+> This is because in frame #2, cpu->kvm_state is still NULL
+> (the vCPU is not yet realized).
+> 
+> KVM has a hard requirement of all cores supporting the same
+> feature set. We only need to check if the accelerator supports
+> a feature, not each vCPU individually.
+> 
+> Fix by kvm_arm_<FEATURE>_supported() functions take a AccelState
+> argument (already realized/valid at this point) instead of a
+> CPUState argument.
 
+This is no longer what's being done.
 
-If that's what they are saying... I would prefer filling out data 
-structures with functions like cpu_to_acpi16() because that seems to be 
-less error prone.
+> 
+> Reported-by: Haibo Xu <haibo.xu@linaro.org>
+> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud� <philmd@redhat.com>
 
+Fixes: d70c996df23f ("target/arm/kvm: Use CPUState::kvm_state in
+kvm_arm_pmu_supported()")
+Analyzed-by: Andrew Jones <drjones@redhat.com>
 
->>
->>>        unsigned log_addr_size = sizeof(tpm2_ptr->log_area_start_address);
->>>        unsigned log_addr_offset =
->>>            (char *)&tpm2_ptr->log_area_start_address - table_data->data;
->>> +    uint8_t start_method_params[12] = {};
->>>    -    tpm2_ptr->platform_class = cpu_to_le16(TPM2_ACPI_CLASS_CLIENT);
->>> +    /* platform class */
->>> +    build_append_int_noprefix(table_data, TPM2_ACPI_CLASS_CLIENT, 2);
->>> +    /* reserved */
->>> +    build_append_int_noprefix(table_data, 0, 2);
->>>        if (TPM_IS_TIS_ISA(tpm_find())) {
->>> -        tpm2_ptr->control_area_address = cpu_to_le64(0);
->>> -        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_MMIO);
->>> +        /* address of control area */
->>> +        build_append_int_noprefix(table_data, 0, 8);
->>> +        /* start method */
->>> +        build_append_int_noprefix(table_data, TPM2_START_METHOD_MMIO,
->>> 4);
->>>        } else if (TPM_IS_CRB(tpm_find())) {
->>> -        tpm2_ptr->control_area_address = cpu_to_le64(TPM_CRB_ADDR_CTRL);
->>> -        tpm2_ptr->start_method = cpu_to_le32(TPM2_START_METHOD_CRB);
->>> +        build_append_int_noprefix(table_data, TPM_CRB_ADDR_CTRL, 8);
->>> +        build_append_int_noprefix(table_data, TPM2_START_METHOD_CRB, 4);
->>>        } else {
->>>            g_warn_if_reached();
->>>        }
->>>    -    tpm2_ptr->log_area_minimum_length =
->>> -        cpu_to_le32(TPM_LOG_AREA_MINIMUM_SIZE);
->>> +    /* platform specific parameters */
->>> +    g_array_append_vals(table_data, &start_method_params, 12);
+> ---
+> v2: Use global kvm_state (bonzini)
+> 
+> Paolo, does this break migration of encrypted memory assumptions?
+> 
+> Cc: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> Supersedes: <20200617130800.26355-1-philmd@redhat.com>
+> ---
+>  target/arm/kvm_arm.h | 21 +++++++++------------
+>  target/arm/cpu.c     |  2 +-
+>  target/arm/cpu64.c   | 10 +++++-----
+>  target/arm/kvm.c     |  4 ++--
+>  target/arm/kvm64.c   | 14 +++++---------
+>  5 files changed, 22 insertions(+), 29 deletions(-)
 
-Maybe this should be wrapped in an inline function like 
-build_append_array() or so.
+With the above
 
-
->>>    -    acpi_data_push(tcpalog,
->>> le32_to_cpu(tpm2_ptr->log_area_minimum_length));
->>> +    /* log area minimum length */
->>> +    build_append_int_noprefix(table_data, TPM_LOG_AREA_MINIMUM_SIZE, 4);
->>> +
->>> +    acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
-
-
-At this point we have a double-allocation of log memory on x86_64. You'd 
-need the patch I posted to create the TCPA table only for TPM 1.2.
-
-
-
->>>        bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE,
->>> tcpalog, 1,
->>>                                 false);
->>>          /* log area start address to be filled by Guest linker */
->>> +    build_append_int_noprefix(table_data, 0, 8);
->>>        bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
->>>                                       log_addr_offset, log_addr_size,
->>>                                       ACPI_BUILD_TPMLOG_FILE, 0);
->>
-
-
+Reviewed-by: Andrew Jones <drjones@redhat.com>

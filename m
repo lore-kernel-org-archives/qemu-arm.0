@@ -1,108 +1,109 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp890650lfm;
-        Fri, 19 Jun 2020 12:40:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzJEvMYhgzTZchDWLEPYXNZoU19fkant/WRhxRkLLzLDe5mJfBWin+bEWiW8jwnKt7SzGCd
-X-Received: by 2002:a25:a2c2:: with SMTP id c2mr8014070ybn.333.1592595630804;
-        Fri, 19 Jun 2020 12:40:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592595630; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp893696lfm;
+        Fri, 19 Jun 2020 12:45:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJypHa4x8gIA9JPynb+P/piIzDFqox8e2PwT4zB1Sx/YvqoPsXrDI60+r/H+kBBsZjE9CNVO
+X-Received: by 2002:a25:d088:: with SMTP id h130mr8701877ybg.451.1592595924014;
+        Fri, 19 Jun 2020 12:45:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592595924; cv=none;
         d=google.com; s=arc-20160816;
-        b=JZuvcpyHOhJUS3LW/XXN2YpJ2QzIzGQfr6qn9OI//u6esHn0gzfpETISustI9+p79a
-         xkTaZ5/OrrQOsJO2D82jmkh6wtwg2pkH7Bum9fYRy3DEVr1rg5Ilf8myanLkuWuBRPXW
-         L7FY7lUcbZrRZgVi+f0/EmhIOHDgpUhI3qSVDa89TE80SR+vixy2eCGrHtS76l1eRP3t
-         75y1PclPM/sSoinm9v+icNE4t3Gg6ekn2a1pX8M47/1rviPKrZ8kPsUSj0oFOlpCdtru
-         jKv9OYXEhUspLR3EptI8S/0vaey5K+/3m1CtOigeVKBv2J3zZVH1ckyvgWfR+Y6K6V40
-         6Emg==
+        b=GfMR/L31BWCVNV8NMPDhUquLbSJT5gzArOISs9BsKontiRngUv5RFgjjGWbGMWQQ1W
+         Ib3a3cQak0jvlPQxKitmM5mwElimLNdSts+GrdtFO6j333LoH0kWvAAjR44p79eIyf7M
+         M0jb6rfORIwHdLbowKTrKqYzYEUaIZb/y+nL0vhfO7p6T1ERBta6qwJp2qZGfWMjidJe
+         Qv5D27eR01QL9v3jm2denXzGWAv5+/YzOLDVuUo7qy4AB+lJhkOawTJPSbBrwONRlIZM
+         UxMvwMgo1rPHtaNXnmnk0hXKJsc5I4/3RmrAu36p0n4QMHPbCpclnI/3soIQKybCBoqn
+         JG2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=AwaDilnOJfQ9zPJlgT5+oqiT0zhl4P+ZEZjGiVPxoUQ=;
-        b=ZrPbQICv7bliObUwa8CtLuzqWsXqwBuoiMsq20YM0ZAt+aCNJ/FotrFCTjg+fBZVFI
-         zF58xW5VLxY60FW0sUU4ucpU7NBTlmFAtnSN787u28siCLwHo41Zh/Rntqq/f5J1Vodp
-         4eaXkF5zRt5+I9heWXZJuqDv8hJFbEM6dL3ZEW6IOIm7SbHa3+idj78bWzgcnySx4jcD
-         dhCYO1g7zAAl7JR34EXjNQlTEq9J/736YvoTWGpYa3/9EKohe/m8ryM7khMnojfKdsDZ
-         wmQsJaaPHmlnzf7+bBx/gG2UfII2xUnLTB7jlq/pHKTOAmUJPBHycC99Lz4muzp2TuFt
-         +u4w==
+        bh=Lo+f81iqbjMelgFVu9zSInVEJjPZTe6mOs11ccnBRuQ=;
+        b=JABndzZbvEROjGoJhDa4F+27KDcNH0Y4sN9q8KhkHR6JMHnT6sN/CBqSa6fOe71kVQ
+         a3gU7qWOWLQjBWS7jWC0HQLgI98+hLB/szSXr51ZrYF9UJA51+tpa4gWk9EDYT4unCsK
+         W9UUhBuID1+0nqARqYU98e1plcp3qwzcCFt98FJV9RHPshMaykSBO0GRs9PclG2i/cVL
+         87Zi9+cXfayl+MPzihSEaWYMCiuvLawPTps3WQsZr707gzPll7YSSQPC+dZmP7FxtJEf
+         ZLyHVfo8LJKJJJ+YVcUHNxokHYrWTCqJm9kcX+wW0LNdhiMm8Gsv0Ys+xaw6yAICHGXl
+         Beew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=G0JBfI0U;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KGzl57pm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f76si6544330ybg.468.2020.06.19.12.40.30
+        by mx.google.com with ESMTPS id c203si5882601yba.431.2020.06.19.12.45.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jun 2020 12:40:30 -0700 (PDT)
+        Fri, 19 Jun 2020 12:45:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=G0JBfI0U;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KGzl57pm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44140 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47186 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jmMsI-0002Eo-5N
-	for alex.bennee@linaro.org; Fri, 19 Jun 2020 15:40:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39832)
+	id 1jmMx1-0005UW-DZ
+	for alex.bennee@linaro.org; Fri, 19 Jun 2020 15:45:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41012)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jmMsB-0002DD-Fr
- for qemu-arm@nongnu.org; Fri, 19 Jun 2020 15:40:23 -0400
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:40149)
+ id 1jmMwu-0005TB-Ce
+ for qemu-arm@nongnu.org; Fri, 19 Jun 2020 15:45:16 -0400
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:40919)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jmMs9-00058K-TN
- for qemu-arm@nongnu.org; Fri, 19 Jun 2020 15:40:23 -0400
-Received: by mail-pj1-x1043.google.com with SMTP id s88so4691267pjb.5
- for <qemu-arm@nongnu.org>; Fri, 19 Jun 2020 12:40:21 -0700 (PDT)
+ id 1jmMws-00066B-Ji
+ for qemu-arm@nongnu.org; Fri, 19 Jun 2020 15:45:16 -0400
+Received: by mail-pl1-x643.google.com with SMTP id x11so4309522plo.7
+ for <qemu-arm@nongnu.org>; Fri, 19 Jun 2020 12:45:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=AwaDilnOJfQ9zPJlgT5+oqiT0zhl4P+ZEZjGiVPxoUQ=;
- b=G0JBfI0U1KFDlR/ppoQl7700gBSeGeX0SVp/RIO6Ag+GqfFkwlkach5cnhL9EcNI67
- zFIGdikbCJT5sMZZq6b+hAHJKWUpHLlYsPN/WllrOTZe5hulTwPoH3B9/+DLjuwXFB5G
- afWcOw0d/0VtsnqGT6rQl3JJjSZjZfyPtjtpFrYsVfJgtlGAB4E116ACOTzOwOtHhuWq
- ib5vAginYI1zNMfciq3Y4ii+vdjvj3E6lJ5lRg19nPAQ1Cvb+7uy/XPLIlkjhc8CPg1U
- iNb3fI7odGQhy18LxAJqJDYT2+Hb1z4kc/kffhnIGDJ/zeEWF+ZGCqtMIkMihXBxHlvS
- A8/g==
+ bh=Lo+f81iqbjMelgFVu9zSInVEJjPZTe6mOs11ccnBRuQ=;
+ b=KGzl57pm2iA6vG3M+8YqVviH4kcpmdfxU/Ipy0sMwMsupdbsdGxfX+WQpWUkf6TaGS
+ GcjPQQrnqYex87M/EQLB+UdWTwOird/C3Qpenbw/jAKlgj4VWQxxD6/U2GXlPJo/EXmp
+ kstK5XOUHau/8CZSZ51RdhXxQqliz8A74Krzv2V8+b7s57v3BfnUtWf9VALOcFWhA8ZH
+ 5sEMgpFeQ3sJUkTcaAe6CjoH1nUFDa3JI56yYPpx9Ev9DwU/f8LDT59623OKFJ4+Frsv
+ SVq2ksHSG9aP2rzAxvZtTWvJlEzltM7lMW3CfRrhk837jGnCwI9lCQHdZzRgED7QxwDj
+ a6CQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=AwaDilnOJfQ9zPJlgT5+oqiT0zhl4P+ZEZjGiVPxoUQ=;
- b=rZU6r1+oeW5iVhd/tLu5X8ZnpRxsVXSlMm9xlk2U93d/njUHYWSlow+R1kPpiKpJ82
- 8fZCcy2iB+vrVyZbykZ+K+pnk9Hcz5ANSG9bJl2LEGQ8tX+kwfciSuV+IPQLIoMUF/wT
- iE0sexXkgQckHfqbYNcP0PH2ro9zCdyd7I3nHNRm914HDCx7hF727IzkJx4kskq/dYlU
- w/LyXmU8KzgWOpjQbrS8hohjuv8ee77qIwqPyiZZxcE9apZMA03a9wVsZI51luqWqBF7
- qID1u8Q5Ta8rtv15mfT/XEY9Tw5xY29cWQbegUAaPE2Cz4/J8ErZ4ZuVPDOwlVrSD17Z
- e33A==
-X-Gm-Message-State: AOAM532H/CLK30oJfajNw6adfrUh6wi1TZHTmAQhPqNMDccqm9MNCA3O
- QJm6cMFNvz6ycGR2W4KVBgtpjw==
-X-Received: by 2002:a17:902:c40c:: with SMTP id
- k12mr9202501plk.11.1592595620349; 
- Fri, 19 Jun 2020 12:40:20 -0700 (PDT)
+ bh=Lo+f81iqbjMelgFVu9zSInVEJjPZTe6mOs11ccnBRuQ=;
+ b=dc1+aqkJZbiHJxBum31ZzoTnGltQYTm5xpVKG27LVoMWTogBAY9EKky0S/ISVVXCq+
+ heqxNmrJ8ygvgBiI0+F4WaE42P5ndAi1qZAo1T33c71xy88UWGgREohHd9GHIjCTqJ1e
+ xF1OWzLvi8ztn5MwZdt/eaiYm61UAFU+KQVrrqAOVQ4UkK1bCCZ02jhXAhrsqXJqdwyo
+ O1dKdxfsVdehQ7A0QMVQDdwfdH19G2BOyaw9mbnoQPQqniEeLnbVVbdi2pPD/hUj4yay
+ p1fdAUeHf1l+7kI+dVfur4g/r1/P10Es/ZczsRvEgrWqjjnWEUlpfNvzBAY4PCrqygp/
+ MC/Q==
+X-Gm-Message-State: AOAM533qVrt3GT0GeITwtck9wS3g/0ymIj14QIcsC7GxuHwtg/zqLgER
+ BAvP0hXj850tNiBPAoLEB5gSjqBV+MU=
+X-Received: by 2002:a17:90b:3d1:: with SMTP id
+ go17mr4869952pjb.114.1592595913123; 
+ Fri, 19 Jun 2020 12:45:13 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id a17sm5763284pjh.31.2020.06.19.12.40.18
+ by smtp.gmail.com with ESMTPSA id o207sm6720190pfd.56.2020.06.19.12.45.12
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 19 Jun 2020 12:40:19 -0700 (PDT)
-Subject: Re: [PATCH v7 30/42] target/arm: Use mte_check1 for sve LD1R
+ Fri, 19 Jun 2020 12:45:12 -0700 (PDT)
+Subject: Re: [PATCH v7 31/42] target/arm: Add mte helpers for sve scalar + int
+ loads
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <20200603011317.473934-1-richard.henderson@linaro.org>
- <20200603011317.473934-31-richard.henderson@linaro.org>
- <CAFEAcA8SgB6j3F6-HEZot_u13WAgu__W77vJq6FakGMGWzGLEw@mail.gmail.com>
+ <20200603011317.473934-32-richard.henderson@linaro.org>
+ <CAFEAcA8870uLGsGW+A5_QC4PPFnwMfywyvF5KV4yCkqbT6==Qw@mail.gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <4e079b2e-15aa-cfed-4ab2-e0a1ec91b068@linaro.org>
-Date: Fri, 19 Jun 2020 12:40:17 -0700
+Message-ID: <0dff6f5e-72a5-8061-2688-fa408cf4b2ef@linaro.org>
+Date: Fri, 19 Jun 2020 12:45:10 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8SgB6j3F6-HEZot_u13WAgu__W77vJq6FakGMGWzGLEw@mail.gmail.com>
+In-Reply-To: <CAFEAcA8870uLGsGW+A5_QC4PPFnwMfywyvF5KV4yCkqbT6==Qw@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1043;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1043.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -128,34 +129,34 @@ Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
  Stephen Long <steplong@quicinc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2mslHl/TTsgS
+X-TUID: yHzqTgdZ9B9X
 
-On 6/19/20 7:03 AM, Peter Maydell wrote:
->>  static bool trans_LD1R_zpri(DisasContext *s, arg_rpri_load *a)
->>  {
->> -    if (!sve_access_check(s)) {
->> -        return true;
->> -    }
->> -
->>      unsigned vsz = vec_full_reg_size(s);
->>      unsigned psz = pred_full_reg_size(s);
->>      unsigned esz = dtype_esz[a->dtype];
->>      unsigned msz = dtype_msz(a->dtype);
->>      TCGLabel *over = gen_new_label();
->> -    TCGv_i64 temp;
->> +    TCGv_i64 temp, clean_addr;
+On 6/19/20 7:06 AM, Peter Maydell wrote:
+> On Wed, 3 Jun 2020 at 02:14, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Because the elements are sequential, we can eliminate many tests all
+>> at once when the tag hits TCMA, or if the page(s) are not Tagged.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> 
+>> +static inline QEMU_ALWAYS_INLINE
+>> +void sve_cont_ldst_mte_check_int(SVEContLdSt *info, CPUARMState *env,
+>> +                                 uint64_t *vg, target_ulong addr, int esize,
+>> +                                 int msize, uint32_t mtedesc, uintptr_t ra,
+>> +                                 mte_check_fn *check)
+>> +{
+>> +    intptr_t mem_off, reg_off, reg_last;
 >> +
->> +    if (!sve_access_check(s)) {
->> +        return true;
->> +    }
+>> +    /* Process the page only if MemAttr == Tagged. */
+>> +    if (info->page[0].attrs.target_tlb_bit1) {
 > 
-> This cleanup should really be its own patch.
-> 
-> We should probably not call gen_new_label() until after
-> the sve_access_check() ?
+> It's a bit odd to use this bit here when you don't define what
+> it is until patch 40. (Similarly for the next few patches.)
 
-
-Done.
+Perhaps.  What do you suggest to resolve this?
+Moving the system patches earlier?
+Just defining some inline functions for self-documentation?
 
 
 r~

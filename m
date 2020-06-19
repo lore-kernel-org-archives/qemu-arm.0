@@ -1,159 +1,249 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp444692lfm;
-        Fri, 19 Jun 2020 03:23:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwlXIhpHjy9YiU6OXi++r0qhDMQMwXznEC/cOHhi3qkxVG751aWIbQ85a3WaOhVr4h1bMIm
-X-Received: by 2002:a17:907:435f:: with SMTP id oc23mr3043398ejb.426.1592562193889;
-        Fri, 19 Jun 2020 03:23:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592562193; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp450171lfm;
+        Fri, 19 Jun 2020 03:31:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOcv/r5+BbI+qZxS5NCSngFYfHmcExOvKqUrTkrvCTCZ6H/mf4WlCqHWbLmoyELWhtK765
+X-Received: by 2002:a25:2e48:: with SMTP id b8mr5090476ybn.521.1592562672666;
+        Fri, 19 Jun 2020 03:31:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592562672; cv=none;
         d=google.com; s=arc-20160816;
-        b=adRr4OtfzLlngG4m/fGZ4SrKHGO12Dapl09N85CcL7bR61xd38EqqIywQECZFWH6yD
-         wyGAtAN9oeMmcaoCPhiTJ02K2GCjEVDmn3hDOd+73i/nlmA4K1csF9EZDe9BNx76DOiV
-         22UAjiHDB4QtXIocrGKR8tHpTXyFDS5dO9VNPdEUsg5kKijzHdm6xMGeLNdpkT8cwNYV
-         rZeTFa9LMSxueu0B9OUIkIRufgyt1gt0vISug7Cnuxjw9qKKJP693Go59pd4SUBd9mdT
-         7OX9Ltk+F3NctZtdKVPlPTkzZ/HJNnTJ6mbkPtTE3PJJl+jHcYpDAKQOZG7J7HvoSZ1K
-         QMCA==
+        b=gEb8CGJ/TqriFeuwdRfAP9GgaHKzmBHrl6r16m3IvcVwFoiXtgkpaLbqk0Acz8S9jI
+         qLiQztKHyc00ITCce9HeCUVk/1lkU17BRcFLbFnLC51lcoAyoS1g/CNp6aVfsrRiwRNu
+         TDDHDKXPgWbpvCAn8cAarApjyaXnjpm72v055EdeXIozr9yxlTokW7mjXSShdRLWBW3U
+         Epmjplmns+0QIM5UtWX+qSP9pRTBMre+PZ+f7LRb8ZjMlO58izZ90g9FG8V6uLMnueqo
+         vh25BDQq7tDKcIujvsBtbZxiY/BuqaRc3dkScBSuYnJ0DRPrADENPrx3XiFhUGVLvP4X
+         aSSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=uP2JQ6XlvCFhDymr1AOZy3sBbLehN2SUqGDGk45wDCs=;
-        b=wcuEC/2BHyeH+ETma10wPEBgSDSZZo0FVbiGHSc2wuMwcHlfUODHbuC9GW6iNE7sF/
-         SttGM+u8g9K9TIFDbKo9iS2QuJx5wS5eJhKGAwkjzjCTPLINP24Ian6rzr67yQigoRbl
-         KZtVtkYPljAq/8wcJlMBgu5paDyoV31M/W1h40aa39ukacL2u1D73KlmdpB8J6E8/xcN
-         6yJ1ePnAUvE4p91U97AEi6OtNZfYrsOIiTlZxSU+nbdIHUZz8utIOOwh25sYkeBBgZdA
-         mb0fl38SJxYqIZsFSVVxc/WZz1MrL5DdIMwXtVRNrl7HSf9OFba7Q1MkCxO0arihc921
-         5Ilg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=HH446XeamB4PUhJUowgPRsGYfN/c1SM+wcKY7W6LDy8=;
+        b=B84PdIXvB6tsoRDllKBjXLCnjmxhGikNN42NdUDMKmTKbwoqZdTWAr0ZsBsG6zYfnC
+         zoy+ejwBwW0djra7v0f65E/OwKpcjUrSiobMXx4SE0qwdN7huFxZXMG6PVdAt6A/TV6F
+         8DPucDuns3FUxQ+BZ+Q/tfXgnZJDpFYey62EU/Ym6BCnpvdfG4EdKby9OJnKSO4FYFQC
+         LZacZQYyZgwjB7dX9LuxVqeAiP8TiQrioswwbXlOOQINIjAHc5YmH2kFhsno/+GBAlxH
+         RtlECzgyM/RjrV/L2r9KhGeB5Xm4eM6p+VbYzThpXT8YbqpQNtKfeXLtu8lYxbBLVN1n
+         gKnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JnV5zh8l;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id i2si3526139ejr.278.2020.06.19.03.23.13;
-        Fri, 19 Jun 2020 03:23:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=W5QFG12d;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x14si5169290ybf.89.2020.06.19.03.31.12
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 19 Jun 2020 03:31:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JnV5zh8l;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1732260AbgFSKXM (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Fri, 19 Jun 2020 06:23:12 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:60422 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1729195AbgFSKXK (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 19 Jun 2020 06:23:10 -0400
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=W5QFG12d;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34750 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jmEIi-0002ar-15
+	for alex.bennee@linaro.org; Fri, 19 Jun 2020 06:31:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56252)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jmEHi-0001Gl-90
+ for qemu-devel@nongnu.org; Fri, 19 Jun 2020 06:30:10 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:27980
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jmEHf-0007kl-Mp
+ for qemu-devel@nongnu.org; Fri, 19 Jun 2020 06:30:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1592562188;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=uP2JQ6XlvCFhDymr1AOZy3sBbLehN2SUqGDGk45wDCs=;
-        b=JnV5zh8lVbon5qtLeMJ/SX0bOeBsntea1mAz+YsX+Ojn3Sn4qIavLbHbYucNdjFooh1h1t
-        i7mCE7k7KHmwZCfNLMrfFKpBRC9c3rr9WkZwRsSxMKF21mPVtqNP9dL8VgdU4mW35WlQhn
-        cYUpp9ye860pHEhA3fJ06VJ+Co8g8rM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-469-tWFRFku5NPCVIfjPPnq5VQ-1; Fri, 19 Jun 2020 06:23:06 -0400
-X-MC-Unique: tWFRFku5NPCVIfjPPnq5VQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B2C8310059A0;
-        Fri, 19 Jun 2020 10:23:05 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.194.110])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id A05AF5BAD9;
-        Fri, 19 Jun 2020 10:23:03 +0000 (UTC)
-Date:   Fri, 19 Jun 2020 12:23:00 +0200
-From:   Andrew Jones <drjones@redhat.com>
-To:     Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc:     qemu-devel@nongnu.org, kvm@vger.kernel.org,
-        Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
-        Haibo Xu <haibo.xu@linaro.org>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        "Dr . David Alan Gilbert" <dgilbert@redhat.com>
-Subject: Re: [PATCH v2] target/arm: Check supported KVM features globally
- (not per vCPU)
-Message-ID: <20200619102300.2mzawwpj4gkglco3@kamzik.brq.redhat.com>
+ s=mimecast20190719; t=1592562606;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=HH446XeamB4PUhJUowgPRsGYfN/c1SM+wcKY7W6LDy8=;
+ b=W5QFG12dbqQ3yGzJV9+MVj0p+SPUKiVSeSg4heuyhpgO2/Ra4KmNxYr29oICnPpzs2ERPj
+ Bsfb73uY9zK7R5KX04Nk9sw8zJLUrKF/44KTdD0fpReS9zEnkGG+UUiApdMPXqavttXm2X
+ 1GXLzeksc714UFTc+0s78l/F6G1xmjU=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-345-0e0O9mbCP5q8_bQ1qTZClA-1; Fri, 19 Jun 2020 06:30:03 -0400
+X-MC-Unique: 0e0O9mbCP5q8_bQ1qTZClA-1
+Received: by mail-wr1-f71.google.com with SMTP id j5so1688076wro.6
+ for <qemu-devel@nongnu.org>; Fri, 19 Jun 2020 03:30:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=HH446XeamB4PUhJUowgPRsGYfN/c1SM+wcKY7W6LDy8=;
+ b=OZvHzfvDGf9rIaMlVXyEorxJP8b8oe0LJp3wJ3Lxihn6hh/IgP3K3XhsUs2BGZWgCQ
+ bUy+W/FUV5Q1Lx/KR2WNBWOH6Ku2bH6DaD+EbaOJkrcZxuhgmQCJXXdVhaEryCG2eZaK
+ lLKD9AtvedZFidIm0Dn0eg5A6/VPJrDP8tdLxnU7MikCc8f+qeISQTU4+fy60mzFWBhL
+ Q9uOsHJWxfQXv3cKF/LrnE8GgK2BL0IrsAFeZqLK1rHarrnGPcLbevnrIleThaLLyaxW
+ 0Q/LG0pfSGIev48MF0AIXUtydXAMn81rhQvHlBLjoGf45W/5p4DHG9PiJ0lhO82vTAVW
+ 242w==
+X-Gm-Message-State: AOAM531X9zJy70A9mWfEZKDW7/J9xXh5fM/Y8prDnppF1qXo7W0JZemc
+ MLbSwuGG9gn9W0MKvlkwNiZVrLV0d0ZGkgxv/kOvCAKpidbSRLs9Y2cVQMEdXRIAnGHRPLMrrlC
+ htSyBuIhfkFC0618=
+X-Received: by 2002:a1c:8048:: with SMTP id b69mr2930406wmd.169.1592562601778; 
+ Fri, 19 Jun 2020 03:30:01 -0700 (PDT)
+X-Received: by 2002:a1c:8048:: with SMTP id b69mr2930372wmd.169.1592562601507; 
+ Fri, 19 Jun 2020 03:30:01 -0700 (PDT)
+Received: from [192.168.1.37] (93.red-83-59-160.dynamicip.rima-tde.net.
+ [83.59.160.93])
+ by smtp.gmail.com with ESMTPSA id j41sm7161703wre.12.2020.06.19.03.30.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 19 Jun 2020 03:30:00 -0700 (PDT)
+Subject: Re: [PATCH v2] target/arm: Check supported KVM features globally (not
+ per vCPU)
+To: Andrew Jones <drjones@redhat.com>
 References: <20200619095542.2095-1-philmd@redhat.com>
+ <20200619102300.2mzawwpj4gkglco3@kamzik.brq.redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <39803018-7406-9ca8-d9e8-ca8219fdd11c@redhat.com>
+Date: Fri, 19 Jun 2020 12:29:59 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <20200619102300.2mzawwpj4gkglco3@kamzik.brq.redhat.com>
+Content-Language: en-US
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200619095542.2095-1-philmd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: abFJ5DLmlYOM
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/19 01:50:04
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
+ qemu-devel@nongnu.org, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ qemu-arm@nongnu.org, Haibo Xu <haibo.xu@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: m0WaalkAxeW+
 
-On Fri, Jun 19, 2020 at 11:55:42AM +0200, Philippe Mathieu-Daud� wrote:
-> Since commit d70c996df23f, when enabling the PMU we get:
+On 6/19/20 12:23 PM, Andrew Jones wrote:
+> On Fri, Jun 19, 2020 at 11:55:42AM +0200, Philippe Mathieu-DaudÃ© wrote:
+>> Since commit d70c996df23f, when enabling the PMU we get:
+>>
+>>   $ qemu-system-aarch64 -cpu host,pmu=on -M virt,accel=kvm,gic-version=3
+>>   Segmentation fault (core dumped)
+>>
+>>   Thread 1 "qemu-system-aar" received signal SIGSEGV, Segmentation fault.
+>>   0x0000aaaaaae356d0 in kvm_ioctl (s=0x0, type=44547) at accel/kvm/kvm-all.c:2588
+>>   2588        ret = ioctl(s->fd, type, arg);
+>>   (gdb) bt
+>>   #0  0x0000aaaaaae356d0 in kvm_ioctl (s=0x0, type=44547) at accel/kvm/kvm-all.c:2588
+>>   #1  0x0000aaaaaae31568 in kvm_check_extension (s=0x0, extension=126) at accel/kvm/kvm-all.c:916
+>>   #2  0x0000aaaaaafce254 in kvm_arm_pmu_supported (cpu=0xaaaaac214ab0) at target/arm/kvm.c:213
+>>   #3  0x0000aaaaaafc0f94 in arm_set_pmu (obj=0xaaaaac214ab0, value=true, errp=0xffffffffe438) at target/arm/cpu.c:1111
+>>   #4  0x0000aaaaab5533ac in property_set_bool (obj=0xaaaaac214ab0, v=0xaaaaac223a80, name=0xaaaaac11a970 "pmu", opaque=0xaaaaac222730, errp=0xffffffffe438) at qom/object.c:2170
+>>   #5  0x0000aaaaab5512f0 in object_property_set (obj=0xaaaaac214ab0, v=0xaaaaac223a80, name=0xaaaaac11a970 "pmu", errp=0xffffffffe438) at qom/object.c:1328
+>>   #6  0x0000aaaaab551e10 in object_property_parse (obj=0xaaaaac214ab0, string=0xaaaaac11b4c0 "on", name=0xaaaaac11a970 "pmu", errp=0xffffffffe438) at qom/object.c:1561
+>>   #7  0x0000aaaaab54ee8c in object_apply_global_props (obj=0xaaaaac214ab0, props=0xaaaaac018e20, errp=0xaaaaabd6fd88 <error_fatal>) at qom/object.c:407
+>>   #8  0x0000aaaaab1dd5a4 in qdev_prop_set_globals (dev=0xaaaaac214ab0) at hw/core/qdev-properties.c:1218
+>>   #9  0x0000aaaaab1d9fac in device_post_init (obj=0xaaaaac214ab0) at hw/core/qdev.c:1050
+>>   ...
+>>   #15 0x0000aaaaab54f310 in object_initialize_with_type (obj=0xaaaaac214ab0, size=52208, type=0xaaaaabe237f0) at qom/object.c:512
+>>   #16 0x0000aaaaab54fa24 in object_new_with_type (type=0xaaaaabe237f0) at qom/object.c:687
+>>   #17 0x0000aaaaab54fa80 in object_new (typename=0xaaaaabe23970 "host-arm-cpu") at qom/object.c:702
+>>   #18 0x0000aaaaaaf04a74 in machvirt_init (machine=0xaaaaac0a8550) at hw/arm/virt.c:1770
+>>   #19 0x0000aaaaab1e8720 in machine_run_board_init (machine=0xaaaaac0a8550) at hw/core/machine.c:1138
+>>   #20 0x0000aaaaaaf95394 in qemu_init (argc=5, argv=0xffffffffea58, envp=0xffffffffea88) at softmmu/vl.c:4348
+>>   #21 0x0000aaaaaada3f74 in main (argc=<optimized out>, argv=<optimized out>, envp=<optimized out>) at softmmu/main.c:48
+>>
+>> This is because in frame #2, cpu->kvm_state is still NULL
+>> (the vCPU is not yet realized).
+>>
+>> KVM has a hard requirement of all cores supporting the same
+>> feature set. We only need to check if the accelerator supports
+>> a feature, not each vCPU individually.
+>>
+>> Fix by kvm_arm_<FEATURE>_supported() functions take a AccelState
+>> argument (already realized/valid at this point) instead of a
+>> CPUState argument.
 > 
->   $ qemu-system-aarch64 -cpu host,pmu=on -M virt,accel=kvm,gic-version=3
->   Segmentation fault (core dumped)
-> 
->   Thread 1 "qemu-system-aar" received signal SIGSEGV, Segmentation fault.
->   0x0000aaaaaae356d0 in kvm_ioctl (s=0x0, type=44547) at accel/kvm/kvm-all.c:2588
->   2588        ret = ioctl(s->fd, type, arg);
->   (gdb) bt
->   #0  0x0000aaaaaae356d0 in kvm_ioctl (s=0x0, type=44547) at accel/kvm/kvm-all.c:2588
->   #1  0x0000aaaaaae31568 in kvm_check_extension (s=0x0, extension=126) at accel/kvm/kvm-all.c:916
->   #2  0x0000aaaaaafce254 in kvm_arm_pmu_supported (cpu=0xaaaaac214ab0) at target/arm/kvm.c:213
->   #3  0x0000aaaaaafc0f94 in arm_set_pmu (obj=0xaaaaac214ab0, value=true, errp=0xffffffffe438) at target/arm/cpu.c:1111
->   #4  0x0000aaaaab5533ac in property_set_bool (obj=0xaaaaac214ab0, v=0xaaaaac223a80, name=0xaaaaac11a970 "pmu", opaque=0xaaaaac222730, errp=0xffffffffe438) at qom/object.c:2170
->   #5  0x0000aaaaab5512f0 in object_property_set (obj=0xaaaaac214ab0, v=0xaaaaac223a80, name=0xaaaaac11a970 "pmu", errp=0xffffffffe438) at qom/object.c:1328
->   #6  0x0000aaaaab551e10 in object_property_parse (obj=0xaaaaac214ab0, string=0xaaaaac11b4c0 "on", name=0xaaaaac11a970 "pmu", errp=0xffffffffe438) at qom/object.c:1561
->   #7  0x0000aaaaab54ee8c in object_apply_global_props (obj=0xaaaaac214ab0, props=0xaaaaac018e20, errp=0xaaaaabd6fd88 <error_fatal>) at qom/object.c:407
->   #8  0x0000aaaaab1dd5a4 in qdev_prop_set_globals (dev=0xaaaaac214ab0) at hw/core/qdev-properties.c:1218
->   #9  0x0000aaaaab1d9fac in device_post_init (obj=0xaaaaac214ab0) at hw/core/qdev.c:1050
->   ...
->   #15 0x0000aaaaab54f310 in object_initialize_with_type (obj=0xaaaaac214ab0, size=52208, type=0xaaaaabe237f0) at qom/object.c:512
->   #16 0x0000aaaaab54fa24 in object_new_with_type (type=0xaaaaabe237f0) at qom/object.c:687
->   #17 0x0000aaaaab54fa80 in object_new (typename=0xaaaaabe23970 "host-arm-cpu") at qom/object.c:702
->   #18 0x0000aaaaaaf04a74 in machvirt_init (machine=0xaaaaac0a8550) at hw/arm/virt.c:1770
->   #19 0x0000aaaaab1e8720 in machine_run_board_init (machine=0xaaaaac0a8550) at hw/core/machine.c:1138
->   #20 0x0000aaaaaaf95394 in qemu_init (argc=5, argv=0xffffffffea58, envp=0xffffffffea88) at softmmu/vl.c:4348
->   #21 0x0000aaaaaada3f74 in main (argc=<optimized out>, argv=<optimized out>, envp=<optimized out>) at softmmu/main.c:48
-> 
-> This is because in frame #2, cpu->kvm_state is still NULL
-> (the vCPU is not yet realized).
-> 
-> KVM has a hard requirement of all cores supporting the same
-> feature set. We only need to check if the accelerator supports
-> a feature, not each vCPU individually.
-> 
-> Fix by kvm_arm_<FEATURE>_supported() functions take a AccelState
-> argument (already realized/valid at this point) instead of a
-> CPUState argument.
+> This is no longer what's being done.
 
-This is no longer what's being done.
+:S
 
 > 
-> Reported-by: Haibo Xu <haibo.xu@linaro.org>
-> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud� <philmd@redhat.com>
-
-Fixes: d70c996df23f ("target/arm/kvm: Use CPUState::kvm_state in
-kvm_arm_pmu_supported()")
-Analyzed-by: Andrew Jones <drjones@redhat.com>
-
-> ---
-> v2: Use global kvm_state (bonzini)
+>>
+>> Reported-by: Haibo Xu <haibo.xu@linaro.org>
+>> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+>> Signed-off-by: Philippe Mathieu-DaudÃ© <philmd@redhat.com>
 > 
-> Paolo, does this break migration of encrypted memory assumptions?
+> Fixes: d70c996df23f ("target/arm/kvm: Use CPUState::kvm_state in
+> kvm_arm_pmu_supported()")
+> Analyzed-by: Andrew Jones <drjones@redhat.com>
+
+Not sure this tag passes checkpatch.pl, else I'll replace by
+a 'Reported-by'.
+
 > 
-> Cc: Dr. David Alan Gilbert <dgilbert@redhat.com>
-> Supersedes: <20200617130800.26355-1-philmd@redhat.com>
-> ---
->  target/arm/kvm_arm.h | 21 +++++++++------------
->  target/arm/cpu.c     |  2 +-
->  target/arm/cpu64.c   | 10 +++++-----
->  target/arm/kvm.c     |  4 ++--
->  target/arm/kvm64.c   | 14 +++++---------
->  5 files changed, 22 insertions(+), 29 deletions(-)
+>> ---
+>> v2: Use global kvm_state (bonzini)
+>>
+>> Paolo, does this break migration of encrypted memory assumptions?
+>>
+>> Cc: Dr. David Alan Gilbert <dgilbert@redhat.com>
+>> Supersedes: <20200617130800.26355-1-philmd@redhat.com>
+>> ---
+>>  target/arm/kvm_arm.h | 21 +++++++++------------
+>>  target/arm/cpu.c     |  2 +-
+>>  target/arm/cpu64.c   | 10 +++++-----
+>>  target/arm/kvm.c     |  4 ++--
+>>  target/arm/kvm64.c   | 14 +++++---------
+>>  5 files changed, 22 insertions(+), 29 deletions(-)
+> 
+> With the above
+> 
+> Reviewed-by: Andrew Jones <drjones@redhat.com>
 
-With the above
+Thanks, I'll wait Paolo/Dave review before respinning.
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+Regards,
+
+Phil.
+

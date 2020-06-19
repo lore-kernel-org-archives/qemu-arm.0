@@ -1,186 +1,254 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp662301lfm;
-        Fri, 19 Jun 2020 07:54:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJydA3XRqPy/zOJEXSW8tY1JxKC4cVdgiDswQAiDAqhjLgZHYmSRxAcvG7YGX3v8XUXBGDei
-X-Received: by 2002:a25:5044:: with SMTP id e65mr6622955ybb.98.1592578497909;
-        Fri, 19 Jun 2020 07:54:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592578497; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp674361lfm;
+        Fri, 19 Jun 2020 08:07:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxwz0Zggn+3NYJds1bNv6QQ4L6d9SO3RL1LOGc51T1Zy0RyOLckSpK5Uzev7uRPJkCmCe9T
+X-Received: by 2002:a25:ca8d:: with SMTP id a135mr6105062ybg.382.1592579253304;
+        Fri, 19 Jun 2020 08:07:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592579253; cv=none;
         d=google.com; s=arc-20160816;
-        b=XJSzREKC/WO/nX6xtNA2Stkn1yCvxbmjZPkHAcbWKe3WSZeFE+Yeir0Li9d9bYrag5
-         xE4QKRMnXT/CbhYtVBkoeFe6eIdHDTb8l7zeK/ufy6UBwpDf+mrpWN5eV3MOXHxd33tz
-         2XWsAZ0T6K8LW9qcxNC4Ba1u/GnD8k31nlzYaDDCDJwxTH3gK7R5M6gaqMXZujT26Qvu
-         XxIxzNK+mCwIZzvqJL+Yy5rIZ+Y5VASJGc51rx93VD3Jd3gFe6VRjBbXK34DdhCp5CSl
-         s+vzimXQQS/AltkNMoocCmWTJ6XzwY4z/6aw7WHtHHJR6WRlqbwf83iPa6VyJsFe6iEU
-         x5IA==
+        b=W/KYyC02JbfZ28B141Tw/yRCP1B03ed4k+shaZTFXWh+jxzaDqmkqN6fZ1/GNBU9LT
+         vPcChKsPZQhMtRlQAFL4Oj1SC/i2pLB6e2iLBKFm5OdLpURVlC5s9kysan5K9vsfG5KB
+         WnfOcjBSQ1zfh5S2qF0L9rJz6aUYgw+R2agYzmnpbUqUyWwqqOJX/Kk/9EadqSmGaBrj
+         fsPE8swQoR01bXRWm/tybPh2uzkTJ5eXB7kMTv1unmo/NF+ru57FhkdtLXHjLye6JEYn
+         5oAg1IUr5ih5zpkn5RQkoEMYbD5x/xNXeTywsu9mY+doElbQqALQiB9t5cqrZB23+VB1
+         jNjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=hlW8G4yJ34f0vynTy4tG90YnknQAoEqpm5MZOqmTBCQ=;
-        b=NIt/mXnTRAnz7lzwo9jJNV4PMfv9+xptQmWmoIMgvtWq3qxF1qVV/zoJI2OgVj/FWc
-         wGajMWs3ZaPB/+u8v124epEaq9DTUmRXgffvDdADN5zQ/W6J26R1pK3RN/MlYinN5Ko5
-         y68FADScVs7IijT4slwWCLTRGam+ZTD0d8RgPDfxQMsSWGsRZPID2hZAWJFFtb7obmX+
-         ZjHTVqb2GzQQ1LQO6OtmwS8HgidF9U3HW8E2/YtFT/zPyvv67KII65+8pUh08xt2sbRN
-         ownM8wxDqKqB+uFfPGIGOeSaDwQIYSjXqz/uKbhPshf/V2mE6+xQ8fsHqdbEJqjwDuEp
-         BVQA==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=C//Y6bbnz23lTvZAwLlIHVPCVeZ3j27xLiCs+tuefJY=;
+        b=tJNC5yBTYft5plsgB/NRJqyvHSBwEawva9T+s5XHDH+szjnxM1/EENxDgKUv+hwNsr
+         hmZ4+ScE/Cy4vZGezKRKzs8lvddo6+gXKBvLWE/1q0P+8h4an4vE7ZWgywTCr1Z//646
+         KNoZnxo53liWMWeNj0J+veDlwvQNWuB6vW1pcUetDQ78aE7qoyerJm9PqEn/SzLj58U5
+         HBOChWmyALOJsxcSctHugFkT0P5OxxoA7Gcj7BfNzfB96GVaglzlbA50OmqdxXs/hHL3
+         87SXNPXg2OOFxZxLQQpQCXWF/B2bYeXfH8b4fMKkx04NjOas4JjkQ2xQzdO5rIiG4VXe
+         ruEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NUqnMPMA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t2si5301308ybl.343.2020.06.19.07.54.57
+        by mx.google.com with ESMTPS id c6si4945665ybq.112.2020.06.19.08.07.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jun 2020 07:54:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 19 Jun 2020 08:07:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NUqnMPMA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:50446 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:45698 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jmIPx-00025I-Aa
-	for alex.bennee@linaro.org; Fri, 19 Jun 2020 10:54:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45628)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jmIc8-0000CI-MI
+	for alex.bennee@linaro.org; Fri, 19 Jun 2020 11:07:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51100)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jmIMO-000441-5h; Fri, 19 Jun 2020 10:51:16 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:33953)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jmIMF-0003fn-JK; Fri, 19 Jun 2020 10:51:12 -0400
-Received: by mail-wr1-x432.google.com with SMTP id v3so2477308wrc.1;
- Fri, 19 Jun 2020 07:51:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=hlW8G4yJ34f0vynTy4tG90YnknQAoEqpm5MZOqmTBCQ=;
- b=NUqnMPMAqDOv5fMbVb6JNPuJiIMTEFmJ5QZ7ywbAd6XpOgCVudatv2rgGyxfIeH0EO
- k191b1SwL4K4t04+L2LyHtlFdQV6cxecV1CooXVH0Mk6QLMK2JLbaDAKdTHF0v/guk1z
- VbFs2E93kbfsNCyv8LugsbOT8PQkLPySMi2MuzOoOtok55x5v4qvDMmTm6AkKOgQmAHZ
- qTSF6kPTTYmU2OEoInlrgmC++46ojn4Rv5KkWNyOwrYDMdcfFMow3X+qrRul9qtVYk4L
- +KW913GINz4kuQpDP5OVnsKYh5p2EGC422pHEYetv35qYSmaVTuhndzvJRQpisO14ox2
- JKtg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=hlW8G4yJ34f0vynTy4tG90YnknQAoEqpm5MZOqmTBCQ=;
- b=QwCTK1P2fOd26f7q0Q6EiwhsS44LT9PaRqxg9VNW/2YqD40oufIei7DdHbOoGFKfwU
- cUiZSKhKWbAAa6F+o9sOXM1MiwXDLJuqL25pgGI75+kFY41EjLRLjP1s3aDhmjMVMvTA
- 5zeDxw96/8UroG3esWK5RSFkhgibsjvlhAMyrRhCw/WXKUgo26eibq59Tx1ckDROr5Ow
- 9wtcd7djpmfYIJDFOV/xMUD7nb/MztuJdvjv5gXAn++TJjFN0RK59HZPcdkPdF1n2gNk
- Zeo10hjHp9gp9sp1Q/uRhlIlM0w76em3amvxZW4cTrs6jJ54chJoZ341wUrfPReAh1XN
- CpPg==
-X-Gm-Message-State: AOAM530yqIBQaqISTOH4We1UDJkgvVeVXKfdalMNa+jYnruStstbphnt
- EAG07TqTHvbQPXygRaPNe2nCCMNx
-X-Received: by 2002:adf:ff8c:: with SMTP id j12mr4472155wrr.230.1592578264046; 
- Fri, 19 Jun 2020 07:51:04 -0700 (PDT)
-Received: from localhost.localdomain (93.red-83-59-160.dynamicip.rima-tde.net.
- [83.59.160.93])
- by smtp.gmail.com with ESMTPSA id e12sm7512548wro.52.2020.06.19.07.51.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Jun 2020 07:51:03 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 0/4] hw/misc/pca9552: Trace LED On/Off events
-Date: Fri, 19 Jun 2020 16:50:57 +0200
-Message-Id: <20200619145101.1637-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1jmIbz-0000A4-Pa; Fri, 19 Jun 2020 11:07:23 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:16256
+ helo=mx0a-001b2d01.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1jmIbx-0007Cb-M5; Fri, 19 Jun 2020 11:07:23 -0400
+Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 05JF2Skb131603; Fri, 19 Jun 2020 11:07:18 -0400
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 31rthaa5w9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 19 Jun 2020 11:07:18 -0400
+Received: from m0098419.ppops.net (m0098419.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 05JF2YIf132218;
+ Fri, 19 Jun 2020 11:07:18 -0400
+Received: from ppma01wdc.us.ibm.com (fd.55.37a9.ip4.static.sl-reverse.com
+ [169.55.85.253])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 31rthaa5vb-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 19 Jun 2020 11:07:18 -0400
+Received: from pps.filterd (ppma01wdc.us.ibm.com [127.0.0.1])
+ by ppma01wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 05JF5Wda012113;
+ Fri, 19 Jun 2020 15:07:16 GMT
+Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com
+ [9.57.198.26]) by ppma01wdc.us.ibm.com with ESMTP id 31q6bdmcwp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 19 Jun 2020 15:07:16 +0000
+Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com
+ [9.57.199.111])
+ by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 05JF7G5Q37880118
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 19 Jun 2020 15:07:16 GMT
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6307CAC05B;
+ Fri, 19 Jun 2020 15:07:16 +0000 (GMT)
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id ADBC9AC059;
+ Fri, 19 Jun 2020 15:07:15 +0000 (GMT)
+Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
+ by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
+ Fri, 19 Jun 2020 15:07:15 +0000 (GMT)
+Subject: Re: [PATCH v6 1/3] acpi: Some build_tpm2() code reshape
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ mst@redhat.com, imammedo@redhat.com
+References: <20200619141851.16272-1-eric.auger@redhat.com>
+ <20200619141851.16272-2-eric.auger@redhat.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+Message-ID: <cd32ba20-a52d-4ff3-6f01-f03241dfc50d@linux.ibm.com>
+Date: Fri, 19 Jun 2020 11:07:15 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200619141851.16272-2-eric.auger@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.687
+ definitions=2020-06-19_16:2020-06-19,
+ 2020-06-19 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0
+ phishscore=0 clxscore=1015 priorityscore=1501 adultscore=0 malwarescore=0
+ mlxscore=0 mlxlogscore=999 spamscore=0 impostorscore=0 suspectscore=0
+ bulkscore=0 cotscore=-2147483648 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2004280000 definitions=main-2006190107
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/19 11:07:20
+X-ACL-Warn: Detected OS   = Linux 3.x [generic]
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joaquin de Andres <me@xcancerberox.com.ar>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Esteban Bosse <estebanbosse@gmail.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZRw/COTiaEOG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: thuth@redhat.com, lersek@redhat.com, drjones@redhat.com,
+ shannon.zhaosl@gmail.com, marcandre.lureau@redhat.com, philmd@redhat.com,
+ ardb@kernel.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: TTr/xp6nFIdk
 
-This series add trace events to better display LEDs changes.
-This helps me to work on a generic LED device, see:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg711917.html
+On 6/19/20 10:18 AM, Eric Auger wrote:
+> Remove any reference to Acpi20TPM2 and adopt an implementation
+> similar to build_ghes_v2().
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+>
+> ---
+>
+> v5 -> v6:
+> - add reference to the spec + comment about LAML and LASA fields
+> - also moved LASA intro comment above build_append_int_noprefix()
+>    as requested by Igor
+> ---
+>   hw/acpi/aml-build.c | 54 +++++++++++++++++++++++++++++----------------
+>   1 file changed, 35 insertions(+), 19 deletions(-)
+>
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index 2cb7b991ef..1cc08a3eb9 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -1878,48 +1878,64 @@ build_hdr:
+>                    "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
+>   }
+>   
+> +/*
+> + * build_tpm2 - Build the TPM2 table as specified in table 7 of
+> + * "TCG ACPI Specification; Family 1.2 and 2.0;
+> + * Level 00 Revision 00.37, December 19, 2014"
+> + * Note: the LASA and LAML fields are optional for TPM-2.0 (the above
+> + * table does not mention them) but are needed at least for SeaBIOS.
+> + * See the Acpi20TPM2 struct for the corresponding layout.
+> + */
+>   void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
+>   {
+> -    Acpi20TPM2 *tpm2_ptr = acpi_data_push(table_data, sizeof(AcpiTableHeader));
+> -    unsigned log_addr_size = sizeof(tpm2_ptr->log_area_start_address);
+> -    unsigned log_addr_offset =
+> -        (char *)&tpm2_ptr->log_area_start_address - table_data->data;
+>       uint8_t start_method_params[12] = {};
+> +    unsigned log_addr_offset, tpm2_start;
+> +    uint64_t control_area_start_address;
+>       TPMIf *tpmif = tpm_find();
+> +    uint32_t start_method;
+> +    void *tpm2_ptr;
+>   
+> -    /* platform class */
+> +    tpm2_start = table_data->len;
+> +    tpm2_ptr = acpi_data_push(table_data, sizeof(AcpiTableHeader));
+> +
+> +    /* Platform Class */
+>       build_append_int_noprefix(table_data, TPM2_ACPI_CLASS_CLIENT, 2);
+> -    /* reserved */
+> +    /* Reserved */
+>       build_append_int_noprefix(table_data, 0, 2);
+>       if (TPM_IS_TIS_ISA(tpmif) || TPM_IS_TIS_SYSBUS(tpmif)) {
+> -        /* address of control area */
+> -        build_append_int_noprefix(table_data, 0, 8);
+> -        /* start method */
+> -        build_append_int_noprefix(table_data, TPM2_START_METHOD_MMIO, 4);
+> +        control_area_start_address = 0;
+> +        start_method = TPM2_START_METHOD_MMIO;
+>       } else if (TPM_IS_CRB(tpmif)) {
+> -        build_append_int_noprefix(table_data, TPM_CRB_ADDR_CTRL, 8);
+> -        build_append_int_noprefix(table_data, TPM2_START_METHOD_CRB, 4);
+> +        control_area_start_address = TPM_CRB_ADDR_CTRL;
+> +        start_method = TPM2_START_METHOD_CRB;
+>       } else {
+> -        g_warn_if_reached();
+> +        g_assert_not_reached();
+>       }
+> +    /* Address of Control Area */
+> +    build_append_int_noprefix(table_data, control_area_start_address, 8);
+> +    /* Start Method */
+> +    build_append_int_noprefix(table_data, start_method, 4);
+>   
+> -    /* platform specific parameters */
+> -    g_array_append_vals(table_data, &start_method_params, 12);
+> +    /* Platform Specific Parameters */
+> +    g_array_append_vals(table_data, &start_method_params,
+> +                        ARRAY_SIZE(start_method_params));
+>   
+> -    /* log area minimum length */
+> +    /* Log Area Minimum Length */
+>       build_append_int_noprefix(table_data, TPM_LOG_AREA_MINIMUM_SIZE, 4);
+>   
+>       acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
+>       bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE, tcpalog, 1,
+>                                false);
+>   
+> -    /* log area start address to be filled by Guest linker */
+> +    log_addr_offset = table_data->len;
+> +
 
-Example when booting an obmc-phosphor-image, we can see the LED #14
-(front-power LED) starting to blink.
+Don't have to subtract tpm2_start from it ?
 
-- ASCII LED bar view:
 
-  $ qemu-system-arm -M witherspoon-bmc -trace pca9552_leds_status
-  19286@1592574170.202791:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [*...............]
-  19286@1592574170.203609:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [**..............]
-  19286@1592574170.204102:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [***.............]
-  19286@1592574170.204415:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [****............]
-  19286@1592574170.204758:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [****.........*..]
-  19286@1592574170.205070:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [****.........**.]
-  19286@1592574170.205380:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [****.........***]
-  19286@1592574235.384845:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [****.........*.*]
-  19286@1592574235.894049:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [****.........***]
-  19286@1592574236.404277:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [****.........*.*]
-  19286@1592574236.914644:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [****.........***]
-  19286@1592574237.424558:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [****.........*.*]
-  19286@1592574237.934580:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [****.........***]
-  19286@1592574238.444688:pca9552_leds_status 0x55dde47807c0 LEDs 0-15 [****.........*.*]
+> +    /* Log Area Start Address to be filled by Guest linker */
+>       build_append_int_noprefix(table_data, 0, 8);
+>       bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
+> -                                   log_addr_offset, log_addr_size,
+> +                                   log_addr_offset, 8,
+>                                      ACPI_BUILD_TPMLOG_FILE, 0);
+>       build_header(linker, table_data,
+> -                 (void *)tpm2_ptr, "TPM2", sizeof(*tpm2_ptr), 4, NULL, NULL);
+> +                 tpm2_ptr, "TPM2", table_data->len - tpm2_start, 4, NULL, NULL);
+>   }
+>   
+>   /* ACPI 5.0: 6.4.3.8.2 Serial Bus Connection Descriptors */
 
-- Only display LEDs which status changes:
-
-  $ qemu-system-arm -M witherspoon-bmc -trace pca9552_led_change
-  23367@1592575218.896117:pca9552_led_change 0x557cb6896d80 LED id:0 status: 0 -> 1
-  23367@1592575218.897072:pca9552_led_change 0x557cb6896d80 LED id:1 status: 0 -> 1
-  23367@1592575218.897487:pca9552_led_change 0x557cb6896d80 LED id:2 status: 0 -> 1
-  23367@1592575218.897855:pca9552_led_change 0x557cb6896d80 LED id:3 status: 0 -> 1
-  23367@1592575218.898256:pca9552_led_change 0x557cb6896d80 LED id:13 status: 0 -> 1
-  23367@1592575218.898663:pca9552_led_change 0x557cb6896d80 LED id:14 status: 0 -> 1
-  23367@1592575218.899138:pca9552_led_change 0x557cb6896d80 LED id:15 status: 0 -> 1
-  23367@1592575281.593379:pca9552_led_change 0x557cb6896d80 LED id:14 status: 1 -> 0
-  23367@1592575282.102994:pca9552_led_change 0x557cb6896d80 LED id:14 status: 0 -> 1
-  23367@1592575282.613558:pca9552_led_change 0x557cb6896d80 LED id:14 status: 1 -> 0
-  23367@1592575283.122774:pca9552_led_change 0x557cb6896d80 LED id:14 status: 0 -> 1
-
-For information about how to test the obmc-phosphor-image, see:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg712911.html
-
-Supersedes: <20200617064734.26956-1-f4bug@amsat.org>
-
-Philippe Mathieu-Daudé (4):
-  hw/misc/pca9552: Replace magic value by PCA9552_LED_COUNT definition
-  hw/misc/pca9552: Add a PCA955X_LED_MAX definition
-  hw/misc/pca9552: Trace LED On/Off events
-  hw/misc/pca9552: Trace LED change events
-
- include/hw/misc/pca9552.h |  2 ++
- hw/misc/pca9552.c         | 60 ++++++++++++++++++++++++++++++++++++++-
- hw/misc/trace-events      |  4 +++
- 3 files changed, 65 insertions(+), 1 deletion(-)
-
--- 
-2.21.3
 

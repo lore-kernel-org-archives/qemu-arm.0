@@ -1,94 +1,93 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1871087lfm;
-        Sat, 20 Jun 2020 15:59:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwm3XZFZ7b0hgmr8dC9C6yiioQXDYyzNtrcm2wz8EjRumhO3lgp7asq0AxOYcnqvtt8V210
-X-Received: by 2002:a05:6902:4b4:: with SMTP id r20mr16260833ybs.389.1592693963576;
-        Sat, 20 Jun 2020 15:59:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592693963; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1871172lfm;
+        Sat, 20 Jun 2020 15:59:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxQ4y4VHypOtfyRvp/NR+LcGarBLijwdOMYJv2SdfCGvZMYUEgOTwngCkssDCyyhrGtn70H
+X-Received: by 2002:a25:cf44:: with SMTP id f65mr16585758ybg.368.1592693976221;
+        Sat, 20 Jun 2020 15:59:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592693976; cv=none;
         d=google.com; s=arc-20160816;
-        b=f2eQbNCxe+/DfrjpwH0FPLQ1oPq57C9F71074RxD6JIMTKjR02dzbI9JPFNMUyuj4o
-         hJvqzw9arWk6jOXllz4FFQdwcDYRgjTXParsuF6u28rbqGGIOrTHA7eivmQBpYXejJUT
-         ylvVk4I3VOX4N/joTcvwxG6/CVmwYezxjpVFMALoxiaNF4U/HEffb1GZwoz6uWcoQfk0
-         R2nqHU7Lrnk1/WnwicOlMczYp4ew4q+pNVF7M20Xe8uSLWMvy1ROJoVm7cR3i3eJD/CR
-         YiptpKYmJ+4U66s1klDmltTb/wDOSY9PRyBmcZ0Mdjjf1ZgykLLVxrop7+R0aLgyMbr0
-         ZeqA==
+        b=pSkV7Cb8bmd7dYz31G6+SwQRsAaZpgalCW9qmTxPQjARQX0z1td1+lWtSYuWiQo+/w
+         W0zFiI+Z2Y8trFuMsOJd/8hflUR2AgaeIr+rfzhQSWactvn3EBjUT5JdFdewtmoErck6
+         0CaGEzw4Zn5DAOrDzQiz4GQ80sx78mvBSlCAxcHtoQam7MIXQeZ8nQg6QWxMKMECwL2a
+         hkJ0DNDq2+5bbmbZjr6h51VzbsLCIO48ECRQD0WvXD1PFDI//UEBdfgaaMQC+Braue1u
+         w6WJYZcyVabcE7ak0bv5jK4tabC4Ji+CZlsIxl3ta0z78P9CiTW+Xn2uTKuX31gq/eoM
+         5l8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=1EmMkDGz40VvlDmmAJ5wSvoG7UtZ6Z1IC3NHjnyHGEo=;
-        b=M1692/bxJ5gK4zw9ls2SOpZf/lZsioL7o03leq0jYVmcmrvR/eVQBt3V3nzu5YVN3A
-         iysHhfJtxaTUNeszwJudedKhRHO1rvENdz/OLXNltskS9ZdbIgkk+eM0ohcPgsDH+kqx
-         glytCkQV0fLc5NmMy1GRDDSlJ8uQHYivm/2pU4yGpUUTQexpBJ6+nBgNIq3heID5o9dC
-         mgI6RnCfgdnS9NOt/PAtHPN1HrP6dnf0uv2sFIVbjf//5p8CBvg13t1q3ME/H6Rfq2Ek
-         IFFgKCMmXld1adBUyZfvAG8LK0+A4GLvkk2s4RJCsJ4L5yHeTihY4KyN/rG8Cu8jKIB6
-         JAzw==
+        bh=ecdWcrYL1Jj227XOQ2qPsZtEv7ne60QEm0iDo/NnAik=;
+        b=DNW/y1Lng+ATUqmLXfUixe9H85S+uSIIbfm93zBhbqi8txxxN3qk8fWsO7oBDkTr46
+         fPlpZZUtPH+qwnxMJtbuF/zVUgI1nmMxqoSkaEVYQXOWsul+K7bvtBtmVEJDjiG+usTD
+         DwVkaQPNrDJZDWTNW2kW4OV1AC+Re8WF+AKLH4Cbda0spSQ88TyMauK2VAD3ISYdtDlx
+         qWlL2w+gaiSHxIWmN0rUzJ8+tU15bi5I9WDvWlRjXKTQbnyVO9sUIYZVm/0/RTxLeo7y
+         vPJV41FVMaAiv+hx+Iuo8JI5oYqCzD8bRsD3kbEIIfe5RLl9A1vTHuYtE1TNmoLqRNX6
+         dc/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ENRdqPba;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IHbmxLsI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z7si8325845ybp.330.2020.06.20.15.59.23
+        by mx.google.com with ESMTPS id e81si9213051ybf.12.2020.06.20.15.59.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 20 Jun 2020 15:59:23 -0700 (PDT)
+        Sat, 20 Jun 2020 15:59:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ENRdqPba;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IHbmxLsI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:60022 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:32888 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jmmSJ-00013L-1F
-	for alex.bennee@linaro.org; Sat, 20 Jun 2020 18:59:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40518)
+	id 1jmmSV-0001Vs-IB
+	for alex.bennee@linaro.org; Sat, 20 Jun 2020 18:59:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40540)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jmmRx-0000cD-Nw; Sat, 20 Jun 2020 18:59:01 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40464)
+ id 1jmmS0-0000iK-7e; Sat, 20 Jun 2020 18:59:04 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:33530)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jmmRw-0000xN-1w; Sat, 20 Jun 2020 18:59:01 -0400
-Received: by mail-wm1-x342.google.com with SMTP id r15so12410857wmh.5;
- Sat, 20 Jun 2020 15:58:59 -0700 (PDT)
+ id 1jmmRy-0000xs-Nx; Sat, 20 Jun 2020 18:59:03 -0400
+Received: by mail-wr1-x441.google.com with SMTP id l11so13166648wru.0;
+ Sat, 20 Jun 2020 15:59:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=1EmMkDGz40VvlDmmAJ5wSvoG7UtZ6Z1IC3NHjnyHGEo=;
- b=ENRdqPbaVtszO5tfxJeAKt6Jq3Y++A+x2/Qj2DHV1wtYqOnJzPUltJwiN5tKKhQhjY
- TLjdEmyQfouGIqnDbAOXb+xfMjIapMHPGBXLBq5KN4eTqreih6xFvMaBBUF8gjcgiaqz
- HMTrWRs4BZDFJh/DO47Dafz7xQXS6BubHG8gTYBWEEoc32tEpSQ0Ar745qq/O2GMlUvf
- fRLLrAGUzMavHYHXL4HT+AvHGCIirHot2xAzbWJN+nYNjO7t5spFE4ivQXlYe2SC8zZf
- QdTw0HOH3KhcweO0MsAlbzVGJEa9hJZlp1ar7mc/3/pDzFRyMD5i8Zc5D8OWqHkDg5J+
- c+CA==
+ bh=ecdWcrYL1Jj227XOQ2qPsZtEv7ne60QEm0iDo/NnAik=;
+ b=IHbmxLsIfA7MSwDPdmBAq5HRVqJCRZlavhomTkv78VVZ/YdjVInwIbO5M5SU2gHXYC
+ TBPTXWD6+h7qAJR7pWmgDfVQtZc235wLIJPby55fo970yf2oKt+zDRfT1P7MvhkXzUDZ
+ MD/+xjngcy7Tip9e8Qrpqy1IUJER4sz806Qc9dK1Ef+1FzHr9aPRfrRi9yksRYZha4Eh
+ P7eQgi4K+geya76tI1aQR0yLfvtAzX4Bi14VRJiDO73zxiCwqRRlttayG7AuQ9MW5VMc
+ 1S+tqpJuhKHZAaos/BdIA+Txx3PPxtNZImzxYLFKxkuXvBn6XwZErJcDFYkCmK0ecRRC
+ Hiqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=1EmMkDGz40VvlDmmAJ5wSvoG7UtZ6Z1IC3NHjnyHGEo=;
- b=q9Hke66ha5Cn8H4GQNMwYRsnpfxSHLe1hUOwIqSk+KGnTIuHTQOQ3Av+h0jxpg3o24
- 2kdq1dLhKcN5pP+dPK6rVNmE92FRDFO3sGvd4iSUvJoiE/1zUCwpWCQFaCVYUgFcj5Hi
- 3yM5mI4F3adv1huBCbONHSRUQaWcqCuXcFZKpj5J+WXr8763DSWaB6zGsKURUYWW2VPB
- MXIY5WoQklQGR/J4z5HwTVINZUP2NxOyi02s8SaezYApMRv73pf3i+CA5n+LuqaZfy88
- hsBxJrzgdmWfweppCUZPg3TSvMH/COQDMPGrmbkJ09QJuTYAP5roHBB2wdwNKZMQwdvK
- dZ/g==
-X-Gm-Message-State: AOAM531d0GGS87T+VWC1a+KZxFWu4LFQSaB7Ik2+KIky3d0t2pz3w3ev
- 3tMTJ6ZBAGZyRBkTpm5XEyJIrSIu
-X-Received: by 2002:a1c:96ce:: with SMTP id y197mr11114667wmd.55.1592693938041; 
- Sat, 20 Jun 2020 15:58:58 -0700 (PDT)
+ bh=ecdWcrYL1Jj227XOQ2qPsZtEv7ne60QEm0iDo/NnAik=;
+ b=lOax4kpvM1uCiyQX20W/EhW2EtidhKw9zMD1uenxnPUFtkljr8dpBo0MsdQ9LBvEoy
+ fOo8qe7GZDABMxw29e15+DA/yE6VAX4RvEVxQDM/yrbxn5+sxR93AY4cxjqhToLemFiG
+ SGpvHHlyFadw0mHqi/ySTeJ7qkoddTIh3kVaa9ytxs0VguXmoPs/8NKJ/hDq5FQwBgzn
+ PaTMx7V1oAyrEM4cSmKzZuM0nDzjqDRnoyb4fsr3ERHZDbyPDklxFZrcNlF3TgCAI042
+ UKYbSppUHJCGs9QgEJ5AjIodZq5c3fDAlrQ204UdxmwKNS+73zH67ZR6vGPhAeLtShOe
+ +Bpg==
+X-Gm-Message-State: AOAM530pGTYWXYxHT3l3IF98LF4UQawNI2P/1sIcNg1qjc+tCnrIJF8t
+ E438ksdaULWJoi28/khTYCOMFH59
+X-Received: by 2002:adf:828b:: with SMTP id 11mr11799979wrc.58.1592693940761; 
+ Sat, 20 Jun 2020 15:59:00 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id x18sm11147127wmi.35.2020.06.20.15.58.57
+ by smtp.gmail.com with ESMTPSA id x18sm11147127wmi.35.2020.06.20.15.58.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 20 Jun 2020 15:58:57 -0700 (PDT)
+ Sat, 20 Jun 2020 15:59:00 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 1/8] hw/i2c/core: Add i2c_try_create_slave() and
- i2c_realize_and_unref()
-Date: Sun, 21 Jun 2020 00:58:47 +0200
-Message-Id: <20200620225854.31160-2-f4bug@amsat.org>
+Subject: [PATCH v4 3/8] hw/misc/pca9552: Use the PCA9552_PIN_COUNT definition
+Date: Sun, 21 Jun 2020 00:58:49 +0200
+Message-Id: <20200620225854.31160-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200620225854.31160-1-f4bug@amsat.org>
 References: <20200620225854.31160-1-f4bug@amsat.org>
@@ -96,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -126,68 +125,51 @@ Cc: Corey Minyard <cminyard@mvista.com>,
  Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n9K2cHZCePk+
+X-TUID: 5c7umE5lboqW
 
-Extract i2c_try_create_slave() and i2c_realize_and_unref()
-from i2c_create_slave().
-We can now set properties on a I2CSlave before it is realized.
-
-This is in line with the recent qdev/QOM changes merged
-in commit 6675a653d2e.
+The current code models the PCA9552, but there are comments
+saying the code could be easily adapted for the rest of the
+PCA955x family.
+Since we assume we have at most 16 pins (for the PCA9552),
+add a definition and check the instance doesn't use more than
+this number. This makes the code a bit safer in case other
+PCA955x devices are added.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/i2c/i2c.h |  2 ++
- hw/i2c/core.c        | 18 ++++++++++++++++--
- 2 files changed, 18 insertions(+), 2 deletions(-)
+ hw/misc/pca9552.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-index 4117211565..d6e3d85faf 100644
---- a/include/hw/i2c/i2c.h
-+++ b/include/hw/i2c/i2c.h
-@@ -80,6 +80,8 @@ int i2c_send(I2CBus *bus, uint8_t data);
- uint8_t i2c_recv(I2CBus *bus);
- 
- DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t addr);
-+DeviceState *i2c_try_create_slave(const char *name, uint8_t addr);
-+bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp);
- 
- /* lm832x.c */
- void lm832x_key_event(DeviceState *dev, int key, int state);
-diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-index 1aac457a2a..acf34a12d6 100644
---- a/hw/i2c/core.c
-+++ b/hw/i2c/core.c
-@@ -267,13 +267,27 @@ const VMStateDescription vmstate_i2c_slave = {
+diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+index cfefb8fce8..b97fc2893c 100644
+--- a/hw/misc/pca9552.c
++++ b/hw/misc/pca9552.c
+@@ -303,6 +303,17 @@ static void pca9552_initfn(Object *obj)
      }
- };
- 
--DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t addr)
-+DeviceState *i2c_try_create_slave(const char *name, uint8_t addr)
- {
-     DeviceState *dev;
- 
-     dev = qdev_new(name);
-     qdev_prop_set_uint8(dev, "address", addr);
--    qdev_realize_and_unref(dev, &bus->qbus, &error_fatal);
-+    return dev;
-+}
-+
-+bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp)
-+{
-+    return qdev_realize_and_unref(dev, &bus->qbus, errp);
-+}
-+
-+DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t addr)
-+{
-+    DeviceState *dev;
-+
-+    dev = i2c_try_create_slave(name, addr);
-+    i2c_realize_and_unref(dev, bus, &error_fatal);
-+
-     return dev;
  }
  
++static void pca9552_realize(DeviceState *dev, Error **errp)
++{
++    PCA9552State *s = PCA9552(dev);
++
++    if (s->nr_leds > PCA9552_PIN_COUNT) {
++        error_setg(errp, "%s invalid led count %u (max: %u)",
++                   __func__, s->nr_leds, PCA9552_PIN_COUNT);
++        return;
++    }
++}
++
+ static void pca9552_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -311,6 +322,7 @@ static void pca9552_class_init(ObjectClass *klass, void *data)
+     k->event = pca9552_event;
+     k->recv = pca9552_recv;
+     k->send = pca9552_send;
++    dc->realize = pca9552_realize;
+     dc->reset = pca9552_reset;
+     dc->vmsd = &pca9552_vmstate;
+ }
 -- 
 2.21.3
 

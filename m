@@ -1,93 +1,93 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1642478lfm;
-        Sat, 20 Jun 2020 09:28:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy36nKzJsthuXvI/nYEtjrSbvKKpOZ6cOusMVsSpuY5XQqbYyUMSO/RR6QISQGUMhwhdUve
-X-Received: by 2002:a25:d4b:: with SMTP id 72mr15956452ybn.22.1592670537051;
-        Sat, 20 Jun 2020 09:28:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592670537; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1643433lfm;
+        Sat, 20 Jun 2020 09:30:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJycrNIdEgMjfI8JUmE9H2kBp/1LhzHdlQvyFwbJemgKu4onsgnXbjSMMNSpxL+GC2UmOZRR
+X-Received: by 2002:a25:cbce:: with SMTP id b197mr14959822ybg.316.1592670619877;
+        Sat, 20 Jun 2020 09:30:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592670619; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vnc3en1+iwUg2PEdJjLmiSacTswTblCuCTHk1+CQIReXlCDa7BKnU9Qvhp5OYZerDp
-         t7d1SPGhNycUzXxlRS+NJLVc87V0MNfboEfmxiiWtEh1r/M2lGNAK/zo7WLsUVpQMmXG
-         NVmHGU2CdJNKnsnBBm3pgxXgAumNypuRz0Wn48KVlB1x1dravanvDwFTJBLai7fIsaJF
-         isUefRdyrv1d0+MOVgrHxR7dUOUqGKJuxIRBNUuIgQviUy+V8alUgA3JF22dh3Ip22CR
-         0NE8xO1lPdERD1x62xgbydxEBeLYPBC5jdWwFYH61mcbTzNdpimOXjKg91qaqT7P38Rg
-         mLZg==
+        b=dxn48z9zf1pcNQH1R2kLPq+42l0WFPV41BOnUoQmT4AH6qoH/6h4bSgu9xA+vK7IWN
+         9QntKep1NZOj3r65gKtcyFrW+/GelXvj7UE70h+LME7+UjoWzGI3FmmvcgoBAtqxpCt7
+         kcvAHSajIX0vYXz5NESVZm+9Q+fnKY/vJDd1qIn96SJZ8eziOS81h5PmL+n3mCHY9yCy
+         AcqvbA8HIZPUch0j1nULb6mm1Vaot6swbj8+H1FaALi+w6U4zib1/vL3MYn9gbSCgkMS
+         HvVxD8IUcQ6/4bOuLKnoxBmREyOG2ulGehOFVD/IKSQhavgUmlW8t3QzDFZqvqu4x+DG
+         0tLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=IdJDaxaaDoVYI8SF19S5iYRVy5MISpN5ZXPUywc1aS0=;
-        b=cCqNBMslpqhfLn/+wRPKfU44TkqsVJn3Mq4q7AZCUCkpSCJMGYz3V1mQ1sjf+XO69M
-         EQwS202wxgEy8GFOwhjgLEk+NaNJLSwDO9RhChWAyiLZrlFdAjpGUbr6w0466umoKrz/
-         kJMR8m6EpuGGvbuCEyqs7gRaLQG4iiGFYYsse7JWLlpqOwI+GDLQi0RIrUO8kQL5PXje
-         wDzvn1pQ6x8AfVylADwiriyXFVY5/DsS7PzU6pn1Ei9/dN0fVre2u5aaqo3K7td/6sqg
-         11JQvY0bZZZP7yQNnKjvj314tGiwZUnSI7BgnC5qqyu7zQBN051uhLFE3NqLgphD+uuz
-         XndA==
+        bh=u4yRFTMIfw8y7sQmFgoqYccYslLAPaFsaIXuAO8HYDQ=;
+        b=x75AEVu6eFM46DQpagqiCNtaEUbqceV+GBXN4Vx0S214YHMmv7CEzDgU53gsEos/Sd
+         9+bruay1N0NcRPLM8YmAHRz3Hih7LdAFjugoaZqhebjPQT+7GrSTQp5z4PN2ttVm9ecK
+         5QA2Xi6GcKvEdg5kM+6EFFtgiWI00R+322adfoTQAXLCK4b6x8mhbhdM21qGYdDjHiHj
+         VfE4Y3J/xnx49v18WLRPwp2kDmORZqBKhLcZXSEb5yGVCQrYqpuNmlrtI9SDMayzp9Yn
+         lX8uPIXdrIrSEjKLMXSxaMUlZPp5GJYznUC6/BAEJKqL8u7/zDLD/6vB3muq3YMrcGis
+         PVWQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Nc3M7l9x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Kwdui5Mb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q66si8896206ybg.144.2020.06.20.09.28.56
+        by mx.google.com with ESMTPS id 1si8362762ybe.134.2020.06.20.09.30.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 20 Jun 2020 09:28:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 20 Jun 2020 09:30:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Nc3M7l9x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Kwdui5Mb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:40626 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44616 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jmgMS-0005bU-FD
-	for alex.bennee@linaro.org; Sat, 20 Jun 2020 12:28:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43948)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jmgNn-0007WN-3u
+	for alex.bennee@linaro.org; Sat, 20 Jun 2020 12:30:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43958)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jmgLx-0005Za-NN; Sat, 20 Jun 2020 12:28:25 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:52856)
+ id 1jmgLy-0005b6-WF; Sat, 20 Jun 2020 12:28:27 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:45273)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jmgLw-0004mo-7M; Sat, 20 Jun 2020 12:28:25 -0400
-Received: by mail-wm1-x343.google.com with SMTP id r9so11063039wmh.2;
- Sat, 20 Jun 2020 09:28:23 -0700 (PDT)
+ id 1jmgLx-0004n3-Fs; Sat, 20 Jun 2020 12:28:26 -0400
+Received: by mail-wr1-x441.google.com with SMTP id c3so12462134wru.12;
+ Sat, 20 Jun 2020 09:28:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=IdJDaxaaDoVYI8SF19S5iYRVy5MISpN5ZXPUywc1aS0=;
- b=Nc3M7l9xFOrVmmB3KrRu5vZDzS0gWFgP5ariHr69mR8iTcRJ93PEwmynFVEV7ZVG/7
- W6WFSgSHJCYbbebBQGPwgX+rnVkaWeKrhEdV+9e+09STacpsq+SkMdNx9MLIovyQhMvP
- ZU8PCwUNUJ6e10a09LfXDKGTFRud7ARqTJQoDyXV0CTu8pCchYU5qjSBI338FY8rLjj7
- iOoNWEAE/3306DZm58GU6/n9pZfkfS+k5XL+pHOkgshfuoGE+JpBt5NOR3jPre1IMs/Y
- +MV+tkxOLSbNuQBTNtfzjnW+Vf20IPMh9SOhb9pPOZmL50Q+fOrCOyncMavip88maXu/
- /5Kg==
+ bh=u4yRFTMIfw8y7sQmFgoqYccYslLAPaFsaIXuAO8HYDQ=;
+ b=Kwdui5MbCtqx5khqlC045H8+moV3fuxP+1MTptHQYxdZguwIXsmR1EZu2RykwImSi8
+ jSOQgTOMx69uUZHaiVXQ+FjU1h97sb1bIykXFKrEGENe0d5o9B9m7xqfyIqS1v4qOQ2c
+ FpSd/5dBUDqJzVgbBU2/eOsA5zDSgvEQ6533Mm825vqF/ouVYn76OqgCf8sPsxTvcy6A
+ arP2IKY7yr3bbvJtC/DqYd95g+AwfKPWXMOL7J5q7s50Nzj9mUOf5adS96EUUjZPG1C+
+ Iv43J3Q0WAiM3mJ1N1EzpWbkVhQ6aYXFVZr+FwXb+m4BoEpGj25aTJFuJuvhf6ZG0lxp
+ 0LCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=IdJDaxaaDoVYI8SF19S5iYRVy5MISpN5ZXPUywc1aS0=;
- b=gJofSdFkm2Uu3um+Kit2ZxQ9ZFF3kYR5wagZNHcv5KmP4hTKd8S0bX6w4YJpApHmkW
- wRrzWmiBnL0Q6rtj0y/+19pk0/ks9DnD8cIKG9Hl7/dHQUpLsdJPgo4IyLfdKXE8uOZF
- HGHThlmtxP0qHhxcJPAvkEej3G4eeTqmVQ4Zvu5mseO1oyQM+joBkypqcdmfoT3lK/MU
- UVefiVK4ku/rHDys+1VCBs1ufTWz/3UZGINRCgCopJOnRSOTIiro+2E/c3yxYlGBazlC
- OwRqTjBo/BCigYyys73+nA/lXZ0quAvBCrb3MToDHB0v8apEnj2MPRVxLARR3/7ZHYSI
- rw2g==
-X-Gm-Message-State: AOAM532oUHoQZld8aQiTvY8D6ixKlOmfNhcBLzcTrZ6nH2C2IOPlvZsh
- fLHSe0mqNEnMteMSnWxBhRBSYAQ4
-X-Received: by 2002:a1c:c357:: with SMTP id t84mr9949149wmf.155.1592670502257; 
- Sat, 20 Jun 2020 09:28:22 -0700 (PDT)
+ bh=u4yRFTMIfw8y7sQmFgoqYccYslLAPaFsaIXuAO8HYDQ=;
+ b=ZBGqyaNk00UgMX1AnHrrN2DO36ih+1KjDIG1qXF49qesKg6VNAyQngdO54KJpCZIjM
+ ssfhh5KzaCL6RHallUUzui54QNTnhUmbZmynHjnnoJYxTsOABq7InXyZh1NkpyBixNZb
+ 36BBi9tUgNhT4vB54B2HodTLWPXEk3DRQvkdVZPb2u1+mu6MFl+7bNG4QD76W6N5Pc8H
+ 3D/USGv1yUklttO3YdDTRV+OyRuvXK1PIALve3ICbbGda84ubrQZ7mUnfbOf6lcSIPHC
+ y3IgNBtBS9UVLSzcLAQroMruOan1MeH9g00WQh9ArnVEyBsCzhp2iMJoSceZ4gaM6YAe
+ gg1g==
+X-Gm-Message-State: AOAM532b9bI/bdNHPxNbYQUhXHY3BTxDAOhRhlBgO0MuHTS47in8Ec60
+ sPhqlOvMPt/scyXR4LfM8KElFB2W
+X-Received: by 2002:adf:edc8:: with SMTP id v8mr8528498wro.125.1592670503521; 
+ Sat, 20 Jun 2020 09:28:23 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id e8sm9240006wrv.24.2020.06.20.09.28.21
+ by smtp.gmail.com with ESMTPSA id e8sm9240006wrv.24.2020.06.20.09.28.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 20 Jun 2020 09:28:21 -0700 (PDT)
+ Sat, 20 Jun 2020 09:28:23 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 1/2] hw/arm/aspeed: Remove extraneous MemoryRegion object owner
-Date: Sat, 20 Jun 2020 18:28:17 +0200
-Message-Id: <20200620162818.22340-2-f4bug@amsat.org>
+Subject: [PATCH 2/2] hw/arm/aspeed: QOM'ify AspeedBoardState
+Date: Sat, 20 Jun 2020 18:28:18 +0200
+Message-Id: <20200620162818.22340-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200620162818.22340-1-f4bug@amsat.org>
 References: <20200620162818.22340-1-f4bug@amsat.org>
@@ -95,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -107,117 +107,105 @@ X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
  Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9cM07EMeeDyU
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1nLs4o7i9BDF
 
-I'm confused by this code, 'bmc' is created as:
-
-  bmc = g_new0(AspeedBoardState, 1);
-
-Then we use it as QOM owner for different MemoryRegion objects.
-But looking at memory_region_init_ram (similarly for ROM):
-
-  void memory_region_init_ram(MemoryRegion *mr,
-                              struct Object *owner,
-                              const char *name,
-                              uint64_t size,
-                              Error **errp)
-  {
-      DeviceState *owner_dev;
-      Error *err = NULL;
-
-      memory_region_init_ram_nomigrate(mr, owner, name, size, &err);
-      if (err) {
-          error_propagate(errp, err);
-          return;
-      }
-      /* This will assert if owner is neither NULL nor a DeviceState.
-       * We only want the owner here for the purposes of defining a
-       * unique name for migration. TODO: Ideally we should implement
-       * a naming scheme for Objects which are not DeviceStates, in
-       * which case we can relax this restriction.
-       */
-      owner_dev = DEVICE(owner);
-      vmstate_register_ram(mr, owner_dev);
-  }
-
-The expected assertion is not triggered ('bmc' is not NULL neither
-a DeviceState).
-
-'bmc' structure is defined as:
-
-  struct AspeedBoardState {
-      AspeedSoCState soc;
-      MemoryRegion ram_container;
-      MemoryRegion max_ram;
-  };
-
-Apparently
-What happens is when using 'OBJECT(bmc)', the QOM macros cast the
-memory pointed by bmc, which first member is 'soc', which is
-initialized ...:
-
-  object_initialize_child(OBJECT(machine), "soc",
-                          &bmc->soc, amc->soc_name);
-
-The 'soc' object is indeed a DeviceState, so the assertion passes.
-
-Since this is fragile and only happens to work by luck, remove the
-dangerous OBJECT(bmc) owner argument.
-
-This probably breaks migration for this machine.
+AspeedBoardState seems crippled. We use incorrectly 2
+different structures to do the same thing. Merge them
+altogether:
+- Move AspeedMachine fields to AspeedBoardState
+- AspeedBoardState is now QOM
+- Remove unused AspeedMachine
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/aspeed.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ include/hw/arm/aspeed.h |  8 +-------
+ hw/arm/aspeed.c         | 11 +++++++----
+ 2 files changed, 8 insertions(+), 11 deletions(-)
 
+diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+index 95b4daece8..9c9bac1263 100644
+--- a/include/hw/arm/aspeed.h
++++ b/include/hw/arm/aspeed.h
+@@ -15,13 +15,7 @@ typedef struct AspeedBoardState AspeedBoardState;
+ 
+ #define TYPE_ASPEED_MACHINE       MACHINE_TYPE_NAME("aspeed")
+ #define ASPEED_MACHINE(obj) \
+-    OBJECT_CHECK(AspeedMachine, (obj), TYPE_ASPEED_MACHINE)
+-
+-typedef struct AspeedMachine {
+-    MachineState parent_obj;
+-
+-    bool mmio_exec;
+-} AspeedMachine;
++    OBJECT_CHECK(AspeedBoardState, (obj), TYPE_ASPEED_MACHINE)
+ 
+ #define ASPEED_MAC0_ON   (1 << 0)
+ #define ASPEED_MAC1_ON   (1 << 1)
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 0ad08a2b4c..31765792a2 100644
+index 31765792a2..6b7533aeee 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -329,12 +329,12 @@ static void aspeed_machine_init(MachineState *machine)
-          * needed by the flash modules of the Aspeed machines.
-          */
-         if (ASPEED_MACHINE(machine)->mmio_exec) {
--            memory_region_init_alias(boot_rom, OBJECT(bmc), "aspeed.boot_rom",
-+            memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
-                                      &fl->mmio, 0, fl->size);
-             memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
-                                         boot_rom);
-         } else {
--            memory_region_init_rom(boot_rom, OBJECT(bmc), "aspeed.boot_rom",
-+            memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
-                                    fl->size, &error_abort);
-             memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
-                                         boot_rom);
-@@ -345,7 +345,7 @@ static void aspeed_machine_init(MachineState *machine)
-     if (machine->kernel_filename && sc->num_cpus > 1) {
-         /* With no u-boot we must set up a boot stub for the secondary CPU */
-         MemoryRegion *smpboot = g_new(MemoryRegion, 1);
--        memory_region_init_ram(smpboot, OBJECT(bmc), "aspeed.smpboot",
-+        memory_region_init_ram(smpboot, NULL, "aspeed.smpboot",
-                                0x80, &error_abort);
-         memory_region_add_subregion(get_system_memory(),
-                                     AST_SMP_MAILBOX_BASE, smpboot);
+@@ -33,9 +33,14 @@ static struct arm_boot_info aspeed_board_binfo = {
+ };
+ 
+ struct AspeedBoardState {
++    /* Private */
++    MachineState parent_obj;
++    /* Public */
++
+     AspeedSoCState soc;
+     MemoryRegion ram_container;
+     MemoryRegion max_ram;
++    bool mmio_exec;
+ };
+ 
+ /* Palmetto hardware value: 0x120CE416 */
+@@ -253,7 +258,7 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo)
+ 
+ static void aspeed_machine_init(MachineState *machine)
+ {
+-    AspeedBoardState *bmc;
++    AspeedBoardState *bmc = ASPEED_MACHINE(machine);
+     AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
+     AspeedSoCClass *sc;
+     DriveInfo *drive0 = drive_get(IF_MTD, 0, 0);
+@@ -261,8 +266,6 @@ static void aspeed_machine_init(MachineState *machine)
+     int i;
+     NICInfo *nd = &nd_table[0];
+ 
+-    bmc = g_new0(AspeedBoardState, 1);
+-
+     memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container",
+                        4 * GiB);
+     memory_region_add_subregion(&bmc->ram_container, 0, machine->ram);
+@@ -751,7 +754,7 @@ static const TypeInfo aspeed_machine_types[] = {
+     }, {
+         .name          = TYPE_ASPEED_MACHINE,
+         .parent        = TYPE_MACHINE,
+-        .instance_size = sizeof(AspeedMachine),
++        .instance_size = sizeof(AspeedBoardState),
+         .instance_init = aspeed_machine_instance_init,
+         .class_size    = sizeof(AspeedMachineClass),
+         .class_init    = aspeed_machine_class_init,
 -- 
 2.21.3
 

@@ -1,118 +1,141 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1070742lfm;
-        Fri, 19 Jun 2020 17:23:06 -0700 (PDT)
-X-Received: by 2002:a17:90a:9d82:: with SMTP id k2mr5972020pjp.224.1592612586645;
-        Fri, 19 Jun 2020 17:23:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592612586; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1642454lfm;
+        Sat, 20 Jun 2020 09:28:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxTE8OL/dUtiKa8xiDNwPaP5TH1elS2PD5aN+FJDHek67Y4JY3pbR3UexwFcohHNg5YKe7N
+X-Received: by 2002:a25:75c6:: with SMTP id q189mr14853560ybc.501.1592670534573;
+        Sat, 20 Jun 2020 09:28:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592670534; cv=none;
         d=google.com; s=arc-20160816;
-        b=QLwhZb8V+Y+//u4De4FFfvQNIKafvCkpjDjNB8aEAHMh3nSWanmhQINafjfSOHikiW
-         kRLs8ugZsbMszdh8YW/sbDlYsjkw1onKHOdrZRodBRPkRnFeYS3Hm7vs8wozguVEFg3m
-         gC++3/JTZoxbx4odlfFH6c+g6Z85G5NCnz9An3XNgAx2CyFPkltyGG4QUdluGIJxDsHQ
-         Bj0i0g9slcFYcdJUPAmpH4lvTnF8QVbgKCN1IBfMKfxpyZFumqmOMbuk8yeJ2cXy9DcX
-         U++UA0Z9VY77JD9vPb2pNfVFFA5YVBy94aB26lrXCurPglAiZMokVX9ZciExeEz8EDxS
-         o40g==
+        b=M52HvUj4qDSNzT5yIOIiS0qlFKoUx0vmEGelxu7PiPBLwEQ76bjNumiiqCkB4kQF06
+         H03NFk2mAAMcGDnNe8e+3dUDUiZrky7ohuSDsaNKRy2OtnZbQ6LzTraSg+qbyXhE6xc3
+         eKKxA6uMbQHuJNk504SgARvw85XU4C+oFhpghzEb8LKKWQqpT6DBhvCuLGTTiIzzhDF2
+         TCK2BP7jIySU4Cm/4IaUgZoO+aWgJr5zC/+nueF1pHaZfcBIu04t8A74Hbq/z6xgidAF
+         tcGeOEDOxYmIT8fKWuRFul7F8DMOGc5kmOBDBQNUyxbRXJjmz5fWTTXf/PIB1Wq55+Wq
+         qG5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=Yf0PnAnGLCLY9g+lvYg57egrjljX44v9bJe37LTyOpc=;
-        b=s7F/OT4OPZBLoGq9TrD5WaS0xgbfPtoJ1XWCbH4hoebQzztkuII/vXV6vneFXTXxDk
-         Yc7Z/ev/9W8Yhc+hor99N5+s9bTTIZFqfMf4QWblyzNHITy5ToiXImWTGa49RzLswNYr
-         GjDmbR6SZLQ8hOFpF3FkBLtWHTN3uTIf+3Hu+Ksm9+ffNr99PZKEVie2igice+1UUktV
-         /mIMC0dT2fGdTLnIXBRga3pOQRyqQg9uasH4X9MeZC4wtRZ7VjGBSiOveEUdktv1voXt
-         PaXjA8C3i7LI8MT97LmH8nbDbBSgBnkJOdEJ7o3cAyq/nOTZHMWVxEtWrSKxZovpIeiJ
-         dwIg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=LD86i6ePSe4PN5iFnsRMbNNgXe4bEQc0BX5nmcZuiH8=;
+        b=j1i3lvH7J1Gn7tom50R33j/wdD9n0GgDYaaMRqygYdKJ9sJsqJY6KhBAGJ2PhkKlOM
+         mpCrDFPdq100RzNHR4s6ptChkAQRruen9aJmxjhMuXFCW//YDQLi4W+Qt7wFMZUJZ4rr
+         5elVmIMv4DG4PT5Y7MMMeZqgkbbEmDZ4YfkjjTRgNAnVOWm8lT8jZV7D4HwSfpZFc7Op
+         pfLr3zJWJ0xk/M1S7iiWvr277CAzu502wYwXiePaXXv2sH/8T4qDE5x3I+7jwzRJFBTa
+         6wqjKZZraWYp92RNR3wKnlGt+3H/pOriwMQl2l1+AaO9F3And4tVAhvuvG9wfiW8BNsQ
+         XAAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gm8NdzWF;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id c7sor10540950plo.18.2020.06.19.17.23.06
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VB58rHbi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 72si8643440ybl.68.2020.06.20.09.28.54
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 19 Jun 2020 17:23:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 20 Jun 2020 09:28:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gm8NdzWF;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=Yf0PnAnGLCLY9g+lvYg57egrjljX44v9bJe37LTyOpc=;
-        b=gm8NdzWF8uAgAT6qSQOHtErIy4CpfvRG7CTA69A3BVK9pWMFDflncmVLoziB+5XeGc
-         xNx/bHQipo5cDuPcGTOgRUXSv3YVoUdGyYoFJzQmMom4CGEya5ikJ9c54FcieqQ5i1G+
-         DEt/FyngjMbNSIk4/9uW0Z4k7dMqSOisyQ5OJBzvjvqBD4p+WRaw14sq0SkvVyYhULHL
-         Lh/0K4VwdhOyKnCydd6mluwVarH/sBK6I6py9mAOZEJ7hRnZDvIPkRCdtaSl8QYmnTZL
-         XJLKBXU5db9HHOCHUN0aQUaA/FcCLMpIPlest0r+qf8RIsIgu60jbouDxOB3djEHf1yX
-         CSEw==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VB58rHbi;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:40584 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jmgMP-0005Zf-Tl
+	for alex.bennee@linaro.org; Sat, 20 Jun 2020 12:28:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43934)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jmgLw-0005ZO-Ku; Sat, 20 Jun 2020 12:28:24 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:55298)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jmgLv-0004me-43; Sat, 20 Jun 2020 12:28:24 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id g75so2963986wme.5;
+ Sat, 20 Jun 2020 09:28:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=LD86i6ePSe4PN5iFnsRMbNNgXe4bEQc0BX5nmcZuiH8=;
+ b=VB58rHbilN8iHXRO6p4547/ir7TCrlzj8csaPS0NPlvowOC+m/HvYRnIclV4o6E0bZ
+ ikSBXQL58RCM1FQdJpSYR28TBIDHO+QOETXBkvn+cekR1xLKjPjorF2Df24ODs0jPsDb
+ IaZ1tyzrBSahVEWeWi/nJsDcVm0QVlVvNcELg3Epg9AOxSBu3Ei3vCougI1GGcjS6D7v
+ qhEU7W39qUv542FzpudfIkN876lVGV2D0gEW3v/SHGNHraFXhPJlDe+1uDLcRuRFDvCX
+ BHl7u9dgU0ufriNvNYM2b/ncaJf0vbax3S64mt2rXJNmOGcSUcT7lzKO8rN9iZeOicqv
+ AxnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=Yf0PnAnGLCLY9g+lvYg57egrjljX44v9bJe37LTyOpc=;
-        b=UmyvdiGUTsD60Fw+MpsNcrjRC8rVt1++ik5OjLPZZtTfwZQSTRlRGoyZFYlr352sn/
-         QucNrklJm1mkN22wUyHiOdzKzI8rc56zd3pGXRsl2tzxW6QCGv0/9FGhqF2/8tqQ2maJ
-         arrD+V8TNRiKw/HcdLLkcnXvLu1pNo19uI74Pfaj+TSYeMx9FoXn+B9Bij3K6Jzw4E53
-         Dwcz7wZ2wU0zEgrDR3etzlNATZTaemFtzdSYVVDP2dLzgMLXedHwKM74d1z6HslSoxoA
-         aKsJjas/r88SUMjOI/pu5ltJBCP0iASN0kqdBebmiFWtFWDhiKgQw8HmzIP1W2m2rdmq
-         N0fg==
-X-Gm-Message-State: AOAM531Lcitlp/mv2iphE/STkZH8YTii6/Yn1PPTdHZRs4KEIKIXVIgR
-	cxlGAA/kIeCI5FMVIHrp6VHwEVf8
-X-Google-Smtp-Source: ABdhPJzWGr6/MT4H0R1a9fZAQ0IPCIco2RmhEir+wDHtARFBcgUuP3qijev1jf53TLmQSlaNRNt1vA==
-X-Received: by 2002:a17:902:8d8d:: with SMTP id v13mr9467117plo.162.1592612586167;
-        Fri, 19 Jun 2020 17:23:06 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
-        by smtp.gmail.com with ESMTPSA id z1sm6157580pjz.10.2020.06.19.17.23.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 19 Jun 2020 17:23:05 -0700 (PDT)
-Subject: Re: [PATCH] target/arm: Remove unnecessary gen_io_end() calls
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Pavel Dovgalyuk <dovgaluk@ispras.ru>
-References: <20200619170324.12093-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <b1dbcfa7-84fa-b5ca-7603-e8251b693f91@linaro.org>
-Date: Fri, 19 Jun 2020 17:23:03 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=LD86i6ePSe4PN5iFnsRMbNNgXe4bEQc0BX5nmcZuiH8=;
+ b=tICJ+qALMqISS5G2HEHvQ2hh6Hh7rXo1I6ma/fUdxjBcwwDHt7do4B7ZfTt/LEEcE9
+ a5fvNiRKhYoY7a0xbWJFNJsV596R7RK70c9/c2iTMXj7ileDTW0d+4GJab/dpMdNQbbI
+ V31HxpcgvtV7ueHZ5IyFKd+KKHyvZvRXdX193O+ViAc/s/0AbC6kt9Km39OqE8nVMJO5
+ hiHHoaM/lfjez/SrsEuFyrlSFdlaFN7iPV8EAQJ/afHy3PV20Y/WSgWiH6koOFa8JBl1
+ 0IaAZ7NToolt4aCbOoAiIu1CBiTZ0hXeMKUMaIseFDAvy+NZkg6SAznx7VEnbW9K/Mpm
+ +J4w==
+X-Gm-Message-State: AOAM532GUXpEkILSw+MMOHvbH1lMmlpzF3YdEvslhvog9j4xs6OyA9q7
+ Cm6sOaVvWb12cVHvb43/i0UjSdps
+X-Received: by 2002:a1c:ab04:: with SMTP id u4mr9945063wme.52.1592670501164;
+ Sat, 20 Jun 2020 09:28:21 -0700 (PDT)
+Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.1])
+ by smtp.gmail.com with ESMTPSA id e8sm9240006wrv.24.2020.06.20.09.28.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 20 Jun 2020 09:28:20 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 0/2] hw/arm/aspeed: Improve QOM usage
+Date: Sat, 20 Jun 2020 18:28:16 +0200
+Message-Id: <20200620162818.22340-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <20200619170324.12093-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: I11sRgha1az9
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32e.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: R7ZoocsYFqkK
 
-On 6/19/20 10:03 AM, Peter Maydell wrote:
-> Since commit ba3e7926691ed3 it has been unnecessary for target code
-> to call gen_io_end() after an IO instruction in icount mode; it is
-> sufficient to call gen_io_start() before it and to force the end of
-> the TB.
-> 
-> Many now-unnecessary calls to gen_io_end() were removed in commit
-> 9e9b10c6491153b, but some were missed or accidentally added later.
-> Remove unneeded calls from the arm target:
-> 
->  * the call in the handling of exception-return-via-LDM is
->    unnecessary, and the code is already forcing end-of-TB
->  * the call in the VFP access check code is more complicated:
->    we weren't ending the TB, so we need to add the code to
->    force that by setting DISAS_UPDATE
->  * the doc comment for ARM_CP_IO doesn't need to mention
->    gen_io_end() any more
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/cpu.h               | 2 +-
->  target/arm/translate-vfp.inc.c | 7 +++----
->  target/arm/translate.c         | 3 ---
->  3 files changed, 4 insertions(+), 8 deletions(-)
+Yet another cleanup.
+Simplify aspeed machine QOM usage.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Philippe Mathieu-Daudé (2):
+  hw/arm/aspeed: Remove extraneous MemoryRegion object owner
+  hw/arm/aspeed: QOM'ify AspeedBoardState
 
+ include/hw/arm/aspeed.h |  8 +-------
+ hw/arm/aspeed.c         | 17 ++++++++++-------
+ 2 files changed, 11 insertions(+), 14 deletions(-)
 
-r~
+-- 
+2.21.3
+

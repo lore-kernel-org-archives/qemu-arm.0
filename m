@@ -1,338 +1,186 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp595701lfm;
-        Wed, 17 Jun 2020 06:08:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwc8aUMHi5kJEeFL3lyjk/77r3NWA8V9Mpvh6UWQAsnvvFNVXZAtKbRDivotW6vY/kkia5D
-X-Received: by 2002:a17:906:7746:: with SMTP id o6mr7668665ejn.75.1592399290833;
-        Wed, 17 Jun 2020 06:08:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592399290; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1876309lfm;
+        Sat, 20 Jun 2020 16:07:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJytvOrMSp0qOZE9sZqR3ErIvioQ+FeQ7qTS7RLoFhc7AfBPgBfCbKOMEx90VWY226jXl6pX
+X-Received: by 2002:a25:9c88:: with SMTP id y8mr16361966ybo.317.1592694456741;
+        Sat, 20 Jun 2020 16:07:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592694456; cv=none;
         d=google.com; s=arc-20160816;
-        b=YIpdkCJKJZb6bATzXvBfR3uVEhlL0+wzP62zPJ/RX1tI+OmbHn2yL+xeh2fFUyBoUM
-         ObQ4z5nCSPX3q9rF+5LvV2iLJbKoMHwsJm2HgOTLjXwuA7vyWHNkgCEbP9gaU52FEPLK
-         CqxJf6BHPFDdRZpnjyq1kiH2Rt7i+JnzsmrYbOVE6GncCbwOUOgcwvQ0sn+pC6kRCLKf
-         HKQYgHQ51OXyGl2KHBtBEKKRjZnGfzj+EgbypCe7GgRfOYk0Tny17X8UPABsFITQGdC6
-         YZSA52oXtAXlu/fqRITwf2ByM3So6BTK/S8hMQ0YBNd9S+sQlddiST/+yzH+KT3xq7c0
-         e8uw==
+        b=zMnYKI3WXepPW8rs7p1jXybLg6GLmV2m/zCa2NhVzA9ITPmFY7wSgUuInKedz5jmLX
+         ZbZduFniS1GdbhjAyUWIVNwGs2Sp48xkC27ZdvAlKmtDJY1R8YQctEAxqh8yYgwlP5Cn
+         1fFHul9MP0i3+xXevFIRo9gSFwH+9emMrrS0irS69K6uhknrhO6xNHV9LcyvvPrgaM8T
+         xctisqKz+EmQ0yEnDBxtZUFqLsAn7ECkQUTMWIPJ0nCq7COf+gipKVm0B5uNO7IzHPjB
+         +q+UknfHCCu8c0sZjBjH/A444h5qTlaa3wB9kT5g4/DfeVh7UPkj4rao7GNEmeeVMW3u
+         zoPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=fCMg1kyMR7N+Ov+rmWJLbOZmzhhnmVRoJdGi9LpTDn0=;
-        b=PJIQ08Vb9AzUyRvHVyzS34cjelaM73eU9846UgmCS9bZ5VzvqBQGI2/Huk+FMkIAQx
-         sIkE1vlw/WwMbJEzg3m+kUd0+Cn6H+ZToA98O+fpjfOUF8dpOz05pHrtSoeA2XQUOROZ
-         IWYfGdAgKe4svFw8NsF1do4MCtjUbKQ58U/5peWhPX7Q1EH9rR8NqyqvUKCqOAeTEfNy
-         EQYd3FU4BL/Mh/zZ6fpVTBss2xXAEG65IbHrj12RO/oiwylIdhO494cdLp3zoJd9hULb
-         b7PMdK72K0Q/QV51hDG3OQP/S/aoe8GApGDitfxAvrH8LrbFtPyqfNlrYOsXK4slcr5x
-         emZw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=VGwkKeB6tl+dGrbm6jHQLUZ5L3WbmR4JBPloevQDRIU=;
+        b=wBBe/F3Ji8KiwYU7Z10AFseJLhcMqca0yCr4uVC8y0HTbJ9OSvsT+hzuCyRebMXXan
+         nM81mTnzCLs2YAdW6PrS5EpAfkToxrp+pauuu47pJ+Bo6h1bpxDibkbebR5/BasTDpI2
+         IV6h7vS9CkzufXYs/GKOScO5ykRzfP3Ub8hySWusGCwD5X3Lxdep1rTUxtEwduGKvpUJ
+         5VUwlKjTgwKk16y4G7yoSWlahPRkkHrOwCYZwjCtbIL7Ph61H636VCnjFe3jSgHba3z1
+         ddNRqSNlxZy/dR7cojRkIX8DZ30FiXN5XCfzj6r0vmyVF2G/7GiY3pU9klxHDRIWPxzQ
+         iYxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RVHdz7kw;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id f6si12193887ejr.283.2020.06.17.06.08.10;
-        Wed, 17 Jun 2020 06:08:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i3bMEs68;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a9si9322501ybo.146.2020.06.20.16.07.36
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 20 Jun 2020 16:07:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RVHdz7kw;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726454AbgFQNIJ (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Wed, 17 Jun 2020 09:08:09 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:59882 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1726134AbgFQNII (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Wed, 17 Jun 2020 09:08:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1592399286;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:  content-type:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding;
-        bh=fCMg1kyMR7N+Ov+rmWJLbOZmzhhnmVRoJdGi9LpTDn0=;
-        b=RVHdz7kwkzymeFnzd9yLewByyDGKGEfpZuH9TCvpMBFqC9zC7/AO/GmZYZlVSRFyg76GsS
-        c9YzNg9tnbw2BRvwFTCXg5WR6x+qjR8g/Kb+e9CXsFRAH6Al47aMbNrIrQwOQtTLziAO8T
-        jES857rfFE0/CSqIyoZXc7TrI4P4Wmc=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-101-1bie_mK8NnK8pZITc4e_Qw-1; Wed, 17 Jun 2020 09:08:04 -0400
-X-MC-Unique: 1bie_mK8NnK8pZITc4e_Qw-1
-Received: by mail-ed1-f71.google.com with SMTP id bs22so844927edb.0
-        for <kvm@vger.kernel.org>; Wed, 17 Jun 2020 06:08:04 -0700 (PDT)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i3bMEs68;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:53486 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jmmaG-0006y6-3T
+	for alex.bennee@linaro.org; Sat, 20 Jun 2020 19:07:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42200)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jmma5-0006x7-BW; Sat, 20 Jun 2020 19:07:25 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:36285)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jmma3-0002Ly-NM; Sat, 20 Jun 2020 19:07:25 -0400
+Received: by mail-wm1-x344.google.com with SMTP id p19so1787390wmg.1;
+ Sat, 20 Jun 2020 16:07:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VGwkKeB6tl+dGrbm6jHQLUZ5L3WbmR4JBPloevQDRIU=;
+ b=i3bMEs68t7hIxPLU8I8EPOyTAYoj+PPKepJA2J7T6EhchaG6BEVyjbhCZDUP9iwh7u
+ tr2GXFH48tr4Xol2F5J4lNhL5NiBOM9ra9PWybEgXKzFCYbnNzVkk2QxfwyBG4tKOR8W
+ SbxMkzP+sgbY1NyWCQtCx5dGniCtxRK8hBruqsuZWuRPo3/qea6W8XaoKkqqmTjdYEsA
+ 9UFXnGw8ah3V5q0Ec4FpDr041NioxAelPTRKqvD7hhNJT4Kr2uTW2R9Dshqb+pyHMkmn
+ HcaWqxhYia518QQzCb9rjKLrXC4C3UVvlrNdz0J2TN/usuGSP8lxYOFoua5nzM/snRlU
+ mqNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=fCMg1kyMR7N+Ov+rmWJLbOZmzhhnmVRoJdGi9LpTDn0=;
-        b=IvJgRFncpTEuFm4vkqv87NQvr6muCY0De+w1uYiwphltnilc8gw5xUJwtk28XPI1M5
-         KsZa5kt5X7NQEsL14Bgp1nyl8JAfknP2lv18AZSFoTvIIjSKlqCplP8l9quYSCTSb0eN
-         w+1NgqPD0vC6V9u2x2rVnreEh5UH1rx0D0DEKCIqpcbYz7U4w94702Vkmjm1MW2DKe1p
-         a0t/Joa95XdXKapwJwOoa1KikMnGojCiKPo5Uq0gc3qflAEQHIk3ORu1Lngq/ndGtS+e
-         O49ALrn/RGwH0k4AKv3JQ99rU1CdtlV4xqgCQUwd9cqhfqctBmAQ3Hl6aC2dIY4LLb7h
-         WEXw==
-X-Gm-Message-State: AOAM533L5AT9AVvtRJrVqjRGYdbPYpCHVm4zNObF6/KxbELI3luEB8U1
-        +IW4SXcVAyIv+OL7S1hayOezs7BDhymUOCd65m+lZpd88FttWHLcYOdhTRS3gaNukBdwIpE2cf1
-        VyvvfbdWxDfrY
-X-Received: by 2002:a17:906:55c9:: with SMTP id z9mr7766498ejp.276.1592399283544;
-        Wed, 17 Jun 2020 06:08:03 -0700 (PDT)
-X-Received: by 2002:a17:906:55c9:: with SMTP id z9mr7766472ejp.276.1592399283279;
-        Wed, 17 Jun 2020 06:08:03 -0700 (PDT)
-Received: from x1w.redhat.com (93.red-83-59-160.dynamicip.rima-tde.net. [83.59.160.93])
-        by smtp.gmail.com with ESMTPSA id ce23sm13475432ejc.53.2020.06.17.06.08.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Jun 2020 06:08:02 -0700 (PDT)
-From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To:     qemu-devel@nongnu.org
-Cc:     Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
-        kvm@vger.kernel.org, Peter Maydell <peter.maydell@linaro.org>,
-        Andrew Jones <drjones@redhat.com>,
-        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-        Haibo Xu <haibo.xu@linaro.org>
-Subject: [PATCH] target/arm/kvm: Check supported feature per accelerator (not per vCPU)
-Date:   Wed, 17 Jun 2020 15:08:00 +0200
-Message-Id: <20200617130800.26355-1-philmd@redhat.com>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=VGwkKeB6tl+dGrbm6jHQLUZ5L3WbmR4JBPloevQDRIU=;
+ b=Hc2bj7/Km5BprXASbV7CXg/bIa7SiRVRhztuUiL0cGdkAenzm0eFuULJJuC6sP1els
+ S665W4E5f2zp4Lgx2NzRutAIOtN6/2Z/Sot7VeUQomLdZ9nc2hSvaeggnK6lpQ+5unZU
+ lu3cUS6U08LjzjH9wauwPYCionk5QASaseCL3eVGJYvKFCKv8m2x4Y1vrQyTSyy93jTB
+ D1LnKv0HBiPSVwBbpl59YZZdZbv6yUNOZwxOConcie4OlwvGh93ti7MRFLUCEGXjvxqY
+ k1aisUTxH/phy+9FXFHO9yyF6Jl84C66B5lMPe1AsLkl/XMgEyk6m9OAcPqOXsyY91Q9
+ pUQg==
+X-Gm-Message-State: AOAM5330K7fMlf/jZk04gLFOcxSNOde/8R8HOlowgMgO/7SuUDh+zQd7
+ 1S9qOlzuvC6PyB5lFNogXX3GAYlv
+X-Received: by 2002:a7b:c441:: with SMTP id l1mr10041426wmi.7.1592694441819;
+ Sat, 20 Jun 2020 16:07:21 -0700 (PDT)
+Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.1])
+ by smtp.gmail.com with ESMTPSA id o82sm11455037wmo.40.2020.06.20.16.07.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 20 Jun 2020 16:07:20 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 0/7] hw/misc: Add LED device
+Date: Sun, 21 Jun 2020 01:07:12 +0200
+Message-Id: <20200620230719.32139-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 0Eg28R3uGO2f
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Andrzej Zaborowski <balrogg@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jtBlalq8u3kh
 
-Since commit d70c996df23f, when enabling the PMU we get:
+Hello,
 
-  $ qemu-system-aarch64 -cpu host,pmu=on -M virt,accel=kvm,gic-version=3
-  Segmentation fault (core dumped)
+These patches are part of the GSoC unselected 'QEMU visualizer'
+project.  As the AVR port is not merged, I switched to microbit
+to keep working on it.
 
-  Thread 1 "qemu-system-aar" received signal SIGSEGV, Segmentation fault.
-  0x0000aaaaaae356d0 in kvm_ioctl (s=0x0, type=44547) at accel/kvm/kvm-all.c:2588
-  2588        ret = ioctl(s->fd, type, arg);
-  (gdb) bt
-  #0  0x0000aaaaaae356d0 in kvm_ioctl (s=0x0, type=44547) at accel/kvm/kvm-all.c:2588
-  #1  0x0000aaaaaae31568 in kvm_check_extension (s=0x0, extension=126) at accel/kvm/kvm-all.c:916
-  #2  0x0000aaaaaafce254 in kvm_arm_pmu_supported (cpu=0xaaaaac214ab0) at target/arm/kvm.c:213
-  #3  0x0000aaaaaafc0f94 in arm_set_pmu (obj=0xaaaaac214ab0, value=true, errp=0xffffffffe438) at target/arm/cpu.c:1111
-  #4  0x0000aaaaab5533ac in property_set_bool (obj=0xaaaaac214ab0, v=0xaaaaac223a80, name=0xaaaaac11a970 "pmu", opaque=0xaaaaac222730, errp=0xffffffffe438) at qom/object.c:2170
-  #5  0x0000aaaaab5512f0 in object_property_set (obj=0xaaaaac214ab0, v=0xaaaaac223a80, name=0xaaaaac11a970 "pmu", errp=0xffffffffe438) at qom/object.c:1328
-  #6  0x0000aaaaab551e10 in object_property_parse (obj=0xaaaaac214ab0, string=0xaaaaac11b4c0 "on", name=0xaaaaac11a970 "pmu", errp=0xffffffffe438) at qom/object.c:1561
-  #7  0x0000aaaaab54ee8c in object_apply_global_props (obj=0xaaaaac214ab0, props=0xaaaaac018e20, errp=0xaaaaabd6fd88 <error_fatal>) at qom/object.c:407
-  #8  0x0000aaaaab1dd5a4 in qdev_prop_set_globals (dev=0xaaaaac214ab0) at hw/core/qdev-properties.c:1218
-  #9  0x0000aaaaab1d9fac in device_post_init (obj=0xaaaaac214ab0) at hw/core/qdev.c:1050
-  ...
-  #15 0x0000aaaaab54f310 in object_initialize_with_type (obj=0xaaaaac214ab0, size=52208, type=0xaaaaabe237f0) at qom/object.c:512
-  #16 0x0000aaaaab54fa24 in object_new_with_type (type=0xaaaaabe237f0) at qom/object.c:687
-  #17 0x0000aaaaab54fa80 in object_new (typename=0xaaaaabe23970 "host-arm-cpu") at qom/object.c:702
-  #18 0x0000aaaaaaf04a74 in machvirt_init (machine=0xaaaaac0a8550) at hw/arm/virt.c:1770
-  #19 0x0000aaaaab1e8720 in machine_run_board_init (machine=0xaaaaac0a8550) at hw/core/machine.c:1138
-  #20 0x0000aaaaaaf95394 in qemu_init (argc=5, argv=0xffffffffea58, envp=0xffffffffea88) at softmmu/vl.c:4348
-  #21 0x0000aaaaaada3f74 in main (argc=<optimized out>, argv=<optimized out>, envp=<optimized out>) at softmmu/main.c:48
+This series presents a proof of concept of LED device that can
+be easily connected to a GPIO.
 
-This is because in frame #2, cpu->kvm_state is still NULL
-(the vCPU is not yet realized).
+Since v2:
+- Rebased on PCA9552
+- Model intensity to be ready for PWM use (Dave)
+- Remove QMP events until we get a UI visualizer (Peter)
+- Remove microbit patch (Peter)
 
-KVM has a hard requirement of all cores supporting the same
-feature set. We only need to check if the accelerator supports
-a feature, not each vCPU individually.
+Since v1: addressed Eric Blake review comments
+- Added QMP rate limit
 
-Fix by kvm_arm_<FEATURE>_supported() functions take a AccelState
-argument (already realized/valid at this point) instead of a
-CPUState argument.
+Next steps planned:
 
-Reported-by: Haibo Xu <haibo.xu@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- target/arm/kvm_arm.h | 25 +++++++++++++------------
- target/arm/cpu.c     |  2 +-
- target/arm/cpu64.c   | 10 +++++-----
- target/arm/kvm.c     |  4 ++--
- target/arm/kvm64.c   | 14 +++++---------
- 5 files changed, 26 insertions(+), 29 deletions(-)
+- PoC visualizer...
+- look at using a dbus backend (elmarco)
+- look at LED array/matrix such 7segments.
 
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 48bf5e16d5..8209525f20 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -12,6 +12,7 @@
- #define QEMU_KVM_ARM_H
- 
- #include "sysemu/kvm.h"
-+#include "sysemu/accel.h"
- #include "exec/memory.h"
- #include "qemu/error-report.h"
- 
-@@ -269,29 +270,29 @@ void kvm_arm_add_vcpu_properties(Object *obj);
- 
- /**
-  * kvm_arm_aarch32_supported:
-- * @cs: CPUState
-+ * @as: AccelState
-  *
-- * Returns: true if the KVM VCPU can enable AArch32 mode
-+ * Returns: true if the KVM accelerator can enable AArch32 mode
-  * and false otherwise.
-  */
--bool kvm_arm_aarch32_supported(CPUState *cs);
-+bool kvm_arm_aarch32_supported(AccelState *as);
- 
- /**
-  * kvm_arm_pmu_supported:
-- * @cs: CPUState
-+ * @as: AccelState
-  *
-- * Returns: true if the KVM VCPU can enable its PMU
-+ * Returns: true if the KVM accelerator can enable its PMU
-  * and false otherwise.
-  */
--bool kvm_arm_pmu_supported(CPUState *cs);
-+bool kvm_arm_pmu_supported(AccelState *as);
- 
- /**
-  * kvm_arm_sve_supported:
-- * @cs: CPUState
-+ * @as: AccelState
-  *
-- * Returns true if the KVM VCPU can enable SVE and false otherwise.
-+ * Returns true if the KVM accelerator can enable SVE and false otherwise.
-  */
--bool kvm_arm_sve_supported(CPUState *cs);
-+bool kvm_arm_sve_supported(AccelState *as);
- 
- /**
-  * kvm_arm_get_max_vm_ipa_size:
-@@ -359,17 +360,17 @@ static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
- 
- static inline void kvm_arm_add_vcpu_properties(Object *obj) {}
- 
--static inline bool kvm_arm_aarch32_supported(CPUState *cs)
-+static inline bool kvm_arm_aarch32_supported(AccelState *as)
- {
-     return false;
- }
- 
--static inline bool kvm_arm_pmu_supported(CPUState *cs)
-+static inline bool kvm_arm_pmu_supported(AccelState *as)
- {
-     return false;
- }
- 
--static inline bool kvm_arm_sve_supported(CPUState *cs)
-+static inline bool kvm_arm_sve_supported(AccelState *as)
- {
-     return false;
- }
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 5b7a36b5d7..29b314427c 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1108,7 +1108,7 @@ static void arm_set_pmu(Object *obj, bool value, Error **errp)
-     ARMCPU *cpu = ARM_CPU(obj);
- 
-     if (value) {
--        if (kvm_enabled() && !kvm_arm_pmu_supported(CPU(cpu))) {
-+        if (kvm_enabled() && !kvm_arm_pmu_supported(current_accel())) {
-             error_setg(errp, "'pmu' feature not supported by KVM on this host");
-             return;
-         }
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 778cecc2e6..13835768ab 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -266,7 +266,7 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
- 
-     /* Collect the set of vector lengths supported by KVM. */
-     bitmap_zero(kvm_supported, ARM_MAX_VQ);
--    if (kvm_enabled() && kvm_arm_sve_supported(CPU(cpu))) {
-+    if (kvm_enabled() && kvm_arm_sve_supported(current_accel())) {
-         kvm_arm_sve_get_vls(CPU(cpu), kvm_supported);
-     } else if (kvm_enabled()) {
-         assert(!cpu_isar_feature(aa64_sve, cpu));
-@@ -473,7 +473,7 @@ static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
-         return;
-     }
- 
--    if (kvm_enabled() && !kvm_arm_sve_supported(CPU(cpu))) {
-+    if (kvm_enabled() && !kvm_arm_sve_supported(current_accel())) {
-         error_setg(errp, "cannot set sve-max-vq");
-         error_append_hint(errp, "SVE not supported by KVM on this host\n");
-         return;
-@@ -519,7 +519,7 @@ static void cpu_arm_set_sve_vq(Object *obj, Visitor *v, const char *name,
-         return;
-     }
- 
--    if (value && kvm_enabled() && !kvm_arm_sve_supported(CPU(cpu))) {
-+    if (value && kvm_enabled() && !kvm_arm_sve_supported(current_accel())) {
-         error_setg(errp, "cannot enable %s", name);
-         error_append_hint(errp, "SVE not supported by KVM on this host\n");
-         return;
-@@ -556,7 +556,7 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
-         return;
-     }
- 
--    if (value && kvm_enabled() && !kvm_arm_sve_supported(CPU(cpu))) {
-+    if (value && kvm_enabled() && !kvm_arm_sve_supported(current_accel())) {
-         error_setg(errp, "'sve' feature not supported by KVM on this host");
-         return;
-     }
-@@ -751,7 +751,7 @@ static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
-      * uniform execution state like do_interrupt.
-      */
-     if (value == false) {
--        if (!kvm_enabled() || !kvm_arm_aarch32_supported(CPU(cpu))) {
-+        if (!kvm_enabled() || !kvm_arm_aarch32_supported(current_accel())) {
-             error_setg(errp, "'aarch64' feature cannot be disabled "
-                              "unless KVM is enabled and 32-bit EL1 "
-                              "is supported");
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index eef3bbd1cc..2247a96757 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -208,9 +208,9 @@ void kvm_arm_add_vcpu_properties(Object *obj)
-     }
- }
- 
--bool kvm_arm_pmu_supported(CPUState *cpu)
-+bool kvm_arm_pmu_supported(AccelState *as)
- {
--    return kvm_check_extension(cpu->kvm_state, KVM_CAP_ARM_PMU_V3);
-+    return kvm_check_extension(KVM_STATE(as), KVM_CAP_ARM_PMU_V3);
- }
- 
- int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index f09ed9f4df..ae4e37ce78 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -652,18 +652,14 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     return true;
- }
- 
--bool kvm_arm_aarch32_supported(CPUState *cpu)
-+bool kvm_arm_aarch32_supported(AccelState *as)
- {
--    KVMState *s = KVM_STATE(current_accel());
--
--    return kvm_check_extension(s, KVM_CAP_ARM_EL1_32BIT);
-+    return kvm_check_extension(KVM_STATE(as), KVM_CAP_ARM_EL1_32BIT);
- }
- 
--bool kvm_arm_sve_supported(CPUState *cpu)
-+bool kvm_arm_sve_supported(AccelState *as)
- {
--    KVMState *s = KVM_STATE(current_accel());
--
--    return kvm_check_extension(s, KVM_CAP_ARM_SVE);
-+    return kvm_check_extension(KVM_STATE(as), KVM_CAP_ARM_SVE);
- }
- 
- QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
-@@ -798,7 +794,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         env->features &= ~(1ULL << ARM_FEATURE_PMU);
-     }
-     if (cpu_isar_feature(aa64_sve, cpu)) {
--        assert(kvm_arm_sve_supported(cs));
-+        assert(kvm_arm_sve_supported(ACCEL(cs->kvm_state)));
-         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SVE;
-     }
- 
+Regards,
+
+Phil.
+
+Based-on: <20200620225854.31160-1-f4bug@amsat.org>
+
+Philippe Mathieu-Daudé (7):
+  hw/misc: Add a LED device
+  hw/misc/led: Add helper to connect LED to GPIO output
+  hw/misc/led: Emit a trace event when LED intensity has changed
+  hw/arm/aspeed: Add the 3 front LEDs drived by the PCA9552 #1
+  hw/misc/mps2-fpgaio: Use the LED device
+  hw/misc/mps2-scc: Use the LED device
+  hw/arm/tosa: Replace fprintf() calls by LED devices
+
+ include/hw/misc/led.h         | 100 ++++++++++++++++++++++
+ include/hw/misc/mps2-fpgaio.h |   1 +
+ include/hw/misc/mps2-scc.h    |   1 +
+ hw/arm/aspeed.c               |  17 ++++
+ hw/arm/tosa.c                 |  40 +++------
+ hw/misc/led.c                 | 151 ++++++++++++++++++++++++++++++++++
+ hw/misc/mps2-fpgaio.c         |  13 +--
+ hw/misc/mps2-scc.c            |  23 +++---
+ MAINTAINERS                   |   6 ++
+ hw/arm/Kconfig                |   2 +
+ hw/misc/Kconfig               |   5 ++
+ hw/misc/Makefile.objs         |   1 +
+ hw/misc/trace-events          |   6 +-
+ 13 files changed, 321 insertions(+), 45 deletions(-)
+ create mode 100644 include/hw/misc/led.h
+ create mode 100644 hw/misc/led.c
+
 -- 
 2.21.3
+

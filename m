@@ -1,214 +1,123 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1878279lfm;
-        Sat, 20 Jun 2020 16:11:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyRnW4RHnCxQ1KO1DY97wknjDd1wx4qOkGwjMSsFnTBg0Z9keh5PBC15jvCloqOPfMlGsZ5
-X-Received: by 2002:a05:6902:4e9:: with SMTP id w9mr11727120ybs.299.1592694661076;
-        Sat, 20 Jun 2020 16:11:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592694661; cv=none;
-        d=google.com; s=arc-20160816;
-        b=oLGw7t78OmRFW+4Onj31uUJPp951T9q8P+bAUy6Lrbkg6dlc/gR6Z0Cj1ma3pCbvQt
-         cP0vK+XJBeXXhGbSGtEZ0dQEd73R5n/+QnZQ/0weLbik27g1amud8lQesRbaLQwm+IOx
-         XyqCVLcGu/Qy/9Ou/kDzeKSrVzDgLrg10f3nEV21aQaWUPBUbQMDbnMNtmnlEbhJXHtY
-         4rVeijxPvQA/iyVZPgZf+3qm59aF41IOPz+BgqVmK624ZR+xyO08vLT3M67sU3N4v/uc
-         RRdW2iln7fmyXqBCT0TNm+KQNb3+Hk3lh92yXhyTo6S7krNgZa/Kp2wEg4RwQfHW4wnT
-         /85Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=L7Y35LMk2Ma+Lon7EzcxgbVJFXZUaFqzrr3RXETrmOQ=;
-        b=tw2vRMyHjufS9YNny7ZZcIoFu0mHd02lTIeOLpc+pRr+bfS8kukBL0dbsHN7128d4n
-         B9WwmJyCSQF54rRkfmIJsN0FkLwt8MXa4nUlq3FzZoy9JFEgp2RTocHRhAHVWoSG4sZ+
-         EZBDOB3Iw7wMIVmkbgNeVPxPXXE+OmkyjujbMg/HfOEX5P/H4czKuDfqqn2ZGuoDShi9
-         qRNe59YcOyckfhnBtPFp84OvfdhfdCsHo0a93Drti5WyvTLQaIcVlV11kj/Gr74ohHRp
-         d7gfZQGY4b17nYTkfmW0Lnmc7Hnlir26UTi7Qj9rjXAJ/lB7YUoauAVrRssBR04tb4fw
-         /dOQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=k6VxCSMD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1900999lfm;
+        Sat, 20 Jun 2020 16:59:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwYyIaXeiM4M2lCDSxLIaIL49nrN1hQjAozuQ0L7BX/Ml+GgRSvQjLZPb7UYIaHzIc0/M/K
+X-Received: by 2002:a25:1941:: with SMTP id 62mr18999771ybz.16.1592697573848;
+        Sat, 20 Jun 2020 16:59:33 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t34si9150830ybt.276.2020.06.20.16.11.00
+        by mx.google.com with ESMTPS id u9si9154046ybu.422.2020.06.20.16.59.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 20 Jun 2020 16:11:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 20 Jun 2020 16:59:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=k6VxCSMD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:37286 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37648 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jmmdY-0004Uz-Ew
-	for alex.bennee@linaro.org; Sat, 20 Jun 2020 19:11:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42250)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jmnOX-0004tA-6P
+	for alex.bennee@linaro.org; Sat, 20 Jun 2020 19:59:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49230)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jmmaB-00076s-88; Sat, 20 Jun 2020 19:07:31 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:41203)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jmma9-0002Md-HF; Sat, 20 Jun 2020 19:07:30 -0400
-Received: by mail-wr1-x444.google.com with SMTP id q2so10719772wrv.8;
- Sat, 20 Jun 2020 16:07:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=L7Y35LMk2Ma+Lon7EzcxgbVJFXZUaFqzrr3RXETrmOQ=;
- b=k6VxCSMDgEdEDsiaM6vtAhIPZymGdRmGefv4UZVGsNQ70nKYIRkUj7i1ujUNc3qc3U
- lS4qrSjXSz1pCIQDQNf7BEDU6sy6ebiVAF9dL9le+LyPMUwcvTzQUf8gXFRokFnbzkcY
- biV6ZIhConz/vN9Sa00siyogwyjSieiNLbow85GAWPswqUgaHMlyfOLj+5VhIhXnJQ+Z
- rv38WmeGXkQqlMgDigry+ZLwYgRSLMmNelq7BXMRHb3jsPLzi3Wc687OKRCIfqw4/h3J
- awmirJWZ8Q7d7B2RTuX8YOLFkA3T+yY2HYS2d5OVZR2gTCW3kyuySTTpxLErWC/kL2oD
- VuDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=L7Y35LMk2Ma+Lon7EzcxgbVJFXZUaFqzrr3RXETrmOQ=;
- b=qYpmd9jCIBWu1s1BzAwBbApHPA/B427sBYP+fid7RABpn4bJa4sxUa1kSniAQSikZX
- e1jH+s5ee8BpuWUsGTOoAsWNLUWV4ttxOvS3i7OuoVsfL7PSVKWPMM0kqRjsQN4LOpPb
- KuDQeCjKbNxE8mFGnT5aVZ45KgKENpaJIAH+L2JO0txWwBRkquMH5v+RVLYkASCg5lNU
- DQzO34wxXdJ9+EppseElbb0XY7Dju0mHSlPoHNOOl/IS3m059wUw1GDjiIr52rTgYbtJ
- 7lf7EEf2yGUIZSrJgndRu8YphG4Gjljcg7wul5kkGdLRtuycwyVaduRdu6N0lucZLsN/
- xwrw==
-X-Gm-Message-State: AOAM533p1XZFtD/W4HAFmVdjehtGyXDpkVtAZ+VYMaPCITgpo15sO2iy
- nnMWiD6a9WZc9oKik4+Ynu8P/bDb
-X-Received: by 2002:adf:ecc2:: with SMTP id s2mr12209614wro.60.1592694447696; 
- Sat, 20 Jun 2020 16:07:27 -0700 (PDT)
-Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id o82sm11455037wmo.40.2020.06.20.16.07.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 20 Jun 2020 16:07:27 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 4/7] hw/arm/aspeed: Add the 3 front LEDs drived by the
- PCA9552 #1
-Date: Sun, 21 Jun 2020 01:07:16 +0200
-Message-Id: <20200620230719.32139-5-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jmnOK-0004qr-7a; Sat, 20 Jun 2020 19:59:20 -0400
+Resent-Date: Sat, 20 Jun 2020 19:59:20 -0400
+Resent-Message-Id: <E1jmnOK-0004qr-7a@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21791)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jmnOH-00015y-Gq; Sat, 20 Jun 2020 19:59:19 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1592697528; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=hps8WbHRMg2VHzJOeBCusuHFDRzM41q5fvYtwaDLYwtaEfLrVkHEEU7ImzlkButtlZU6D7gN+a3clv7FMD3NxAuKVfaB0DbOgsKeaUS+tsN4qzUVfGpCt2Ltwj6XuDDBPLy8fdNSUHeJ3O1pRFqYCWAof2To8WPGzpGO0dCWhyc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1592697528;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=dt3lJQrZ3lri6EhmckJ1D3wYvnNpMOW6AxtmRw4Q6mI=; 
+ b=PkDUFryZv3p9d1mFL180qieCPNpAWyIO6+UsFl+Eog/2Wmz7rqpJu6XGMuDYXpQcRp5iNVFgyTjEozAQMK0IW32iklyo3PxTmf4tbM+Tbi7v3HmgOmOelfbcTHtuF1Ws4vttr9MlykoMuY5dPMak7YuHWbHvEcgtgNtHEoLdwQY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 159269752732183.24782271345964;
+ Sat, 20 Jun 2020 16:58:47 -0700 (PDT)
+Message-ID: <159269752550.8692.10359734241994023212@d1fd068a5071>
+Subject: Re: [PATCH v3 0/7] hw/misc: Add LED device
 In-Reply-To: <20200620230719.32139-1-f4bug@amsat.org>
-References: <20200620230719.32139-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: f4bug@amsat.org
+Date: Sat, 20 Jun 2020 16:58:47 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/20 19:59:13
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bxNv6I9DdNE3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, andrew@aj.id.au, qemu-devel@nongnu.org,
+ f4bug@amsat.org, qemu-arm@nongnu.org, joel@jms.id.au, philmd@redhat.com,
+ clg@kaod.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: e65tI/wpDOmG
 
-The Witherspoon has 3 LEDs connected to a PCA9552. Add them.
-The names and reset values are taken from:
-https://github.com/open-power/witherspoon-xml/blob/master/witherspoon.xml
-
-Example booting obmc-phosphor-image:
-
-  $ qemu-system-arm -M witherspoon-bmc -trace led_change_intensity
-  1592693373.997015:led_change_intensity LED desc:'front-fault-4' color:green intensity 0x0000 -> 0xffff
-  1592693373.997632:led_change_intensity LED desc:'front-power-3' color:green intensity 0x0000 -> 0xffff
-  1592693373.998239:led_change_intensity LED desc:'front-id-5' color:green intensity 0x0000 -> 0xffff
-  1592693500.291805:led_change_intensity LED desc:'front-power-3' color:green intensity 0xffff -> 0x0000
-  1592693500.312041:led_change_intensity LED desc:'front-power-3' color:green intensity 0x0000 -> 0xffff
-  1592693500.821254:led_change_intensity LED desc:'front-power-3' color:green intensity 0xffff -> 0x0000
-  1592693501.331517:led_change_intensity LED desc:'front-power-3' color:green intensity 0x0000 -> 0xffff
-  1592693501.841367:led_change_intensity LED desc:'front-power-3' color:green intensity 0xffff -> 0x0000
-  1592693502.350839:led_change_intensity LED desc:'front-power-3' color:green intensity 0x0000 -> 0xffff
-  1592693502.861134:led_change_intensity LED desc:'front-power-3' color:green intensity 0xffff -> 0x0000
-  1592693503.371090:led_change_intensity LED desc:'front-power-3' color:green intensity 0x0000 -> 0xffff
-
-We notice the front-power LED starts to blink.
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/aspeed.c | 17 +++++++++++++++++
- hw/arm/Kconfig  |  1 +
- 2 files changed, 18 insertions(+)
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 3d5dec4692..217f8ad7d5 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -20,6 +20,7 @@
- #include "hw/i2c/smbus_eeprom.h"
- #include "hw/misc/pca9552.h"
- #include "hw/misc/tmp105.h"
-+#include "hw/misc/led.h"
- #include "hw/qdev-properties.h"
- #include "qemu/log.h"
- #include "sysemu/block-backend.h"
-@@ -506,6 +507,16 @@ static void sonorapass_bmc_i2c_init(AspeedBoardState *bmc)
- 
- static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
- {
-+    static const struct {
-+        unsigned gpio_id;
-+        LEDColor color;
-+        const char *description;
-+        uint16_t reset_intensity;
-+    } pca1_leds[] = {
-+        {13, LED_COLOR_GREEN, "front-fault-4",  LED_RESET_INTENSITY_ACTIVE_LOW},
-+        {14, LED_COLOR_GREEN, "front-power-3",  LED_RESET_INTENSITY_ACTIVE_LOW},
-+        {15, LED_COLOR_GREEN, "front-id-5",     LED_RESET_INTENSITY_ACTIVE_LOW},
-+    };
-     AspeedSoCState *soc = &bmc->soc;
-     uint8_t *eeprom_buf = g_malloc0(8 * 1024);
-     DeviceState *dev;
-@@ -518,6 +529,12 @@ static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
-     i2c_realize_and_unref(dev, aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3),
-                           &error_fatal);
- 
-+    for (size_t i = 0; i < ARRAY_SIZE(pca1_leds); i++) {
-+        create_led_by_gpio_id(OBJECT(bmc), dev,
-+                              pca1_leds[i].gpio_id, pca1_leds[i].color,
-+                              pca1_leds[i].description,
-+                              pca1_leds[i].reset_intensity);
-+    }
-     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "tmp423", 0x4c);
-     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 5), "tmp423", 0x4c);
- 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 9afa6eee79..1a57a861ac 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -393,6 +393,7 @@ config ASPEED_SOC
-     select TMP105
-     select TMP421
-     select UNIMP
-+    select LED
- 
- config MPS2
-     bool
--- 
-2.21.3
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDYyMDIzMDcxOS4zMjEz
+OS0xLWY0YnVnQGFtc2F0Lm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgdGhlIGRvY2tl
+ci1xdWlja0BjZW50b3M3IGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5nIGNvbW1h
+bmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0YWxsZWQs
+IHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBTQ1JJUFQg
+QkVHSU4gPT09CiMhL2Jpbi9iYXNoCm1ha2UgZG9ja2VyLWltYWdlLWNlbnRvczcgVj0xIE5FVFdP
+Uks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNyBTSE9XX0VOVj0xIEo9MTQg
+TkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgogIFRFU1QgICAgaW90ZXN0LXFjb3cy
+OiAxNDMKICBURVNUICAgIGlvdGVzdC1xY293MjogMTUwCioqCkVSUk9SOi90bXAvcWVtdS10ZXN0
+L3NyYy9ody9jb3JlL3FkZXYuYzoxMDc0OmRldmljZV9maW5hbGl6ZTogYXNzZXJ0aW9uIGZhaWxl
+ZDogKGRldi0+Y2Fub25pY2FsX3BhdGgpCkJyb2tlbiBwaXBlCi90bXAvcWVtdS10ZXN0L3NyYy90
+ZXN0cy9xdGVzdC9saWJxdGVzdC5jOjE3NToga2lsbF9xZW11KCkgZGV0ZWN0ZWQgUUVNVSBkZWF0
+aCBmcm9tIHNpZ25hbCA2IChBYm9ydGVkKSAoY29yZSBkdW1wZWQpCkVSUk9SIC0gdG9vIGZldyB0
+ZXN0cyBydW4gKGV4cGVjdGVkIDYsIGdvdCA1KQptYWtlOiAqKiogW2NoZWNrLXF0ZXN0LWFhcmNo
+NjRdIEVycm9yIDEKbWFrZTogKioqIFdhaXRpbmcgZm9yIHVuZmluaXNoZWQgam9icy4uLi4KICBU
+RVNUICAgIGlvdGVzdC1xY293MjogMTU0CiAgVEVTVCAgICBpb3Rlc3QtcWNvdzI6IDE1NgotLS0K
+ICAgIHJhaXNlIENhbGxlZFByb2Nlc3NFcnJvcihyZXRjb2RlLCBjbWQpCnN1YnByb2Nlc3MuQ2Fs
+bGVkUHJvY2Vzc0Vycm9yOiBDb21tYW5kICdbJ3N1ZG8nLCAnLW4nLCAnZG9ja2VyJywgJ3J1bics
+ICctLWxhYmVsJywgJ2NvbS5xZW11Lmluc3RhbmNlLnV1aWQ9MzM1OTBlYjYxNDIyNDFiMjhiMGQz
+MjM3MzdkOTlkYTInLCAnLXUnLCAnMTAwMycsICctLXNlY3VyaXR5LW9wdCcsICdzZWNjb21wPXVu
+Y29uZmluZWQnLCAnLS1ybScsICctZScsICdUQVJHRVRfTElTVD0nLCAnLWUnLCAnRVhUUkFfQ09O
+RklHVVJFX09QVFM9JywgJy1lJywgJ1Y9JywgJy1lJywgJ0o9MTQnLCAnLWUnLCAnREVCVUc9Jywg
+Jy1lJywgJ1NIT1dfRU5WPTEnLCAnLWUnLCAnQ0NBQ0hFX0RJUj0vdmFyL3RtcC9jY2FjaGUnLCAn
+LXYnLCAnL2hvbWUvcGF0Y2hldzIvLmNhY2hlL3FlbXUtZG9ja2VyLWNjYWNoZTovdmFyL3RtcC9j
+Y2FjaGU6eicsICctdicsICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtMHV3cXVkcWkvc3Jj
+L2RvY2tlci1zcmMuMjAyMC0wNi0yMC0xOS40Ni4wNi4yNjEyOTovdmFyL3RtcC9xZW11Onoscm8n
+LCAncWVtdTpjZW50b3M3JywgJy92YXIvdG1wL3FlbXUvcnVuJywgJ3Rlc3QtcXVpY2snXScgcmV0
+dXJuZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4KZmlsdGVyPS0tZmlsdGVyPWxhYmVsPWNvbS5x
+ZW11Lmluc3RhbmNlLnV1aWQ9MzM1OTBlYjYxNDIyNDFiMjhiMGQzMjM3MzdkOTlkYTIKbWFrZVsx
+XTogKioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcgZGlyZWN0b3J5IGAv
+dmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtMHV3cXVkcWkvc3JjJwptYWtlOiAqKiogW2RvY2tl
+ci1ydW4tdGVzdC1xdWlja0BjZW50b3M3XSBFcnJvciAyCgpyZWFsICAgIDEybTM4LjkxOXMKdXNl
+ciAgICAwbTguMTQycwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNo
+ZXcub3JnL2xvZ3MvMjAyMDA2MjAyMzA3MTkuMzIxMzktMS1mNGJ1Z0BhbXNhdC5vcmcvdGVzdGlu
+Zy5kb2NrZXItcXVpY2tAY2VudG9zNy8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVk
+IGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ug
+c2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==

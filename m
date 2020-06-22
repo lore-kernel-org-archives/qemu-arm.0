@@ -1,167 +1,197 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4112036lfc;
-        Tue, 2 Jun 2020 07:10:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwvOCSz/a7sxt3G+KcQHS/EsWdmBI0AClRG9+z5+s/cCQRIAQkNPkT4oh2j/wnDCBYebXtn
-X-Received: by 2002:a25:c904:: with SMTP id z4mr44681890ybf.338.1591107011613;
-        Tue, 02 Jun 2020 07:10:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591107011; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3286217lfm;
+        Mon, 22 Jun 2020 08:24:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwuKKLAuTXhDWZQ4zHnKRFvchU3putPa9wIP6ogGbX0d0r9v+5w/wqmrXPJF1OrA3OfD+IG
+X-Received: by 2002:a25:2f4f:: with SMTP id v76mr30048557ybv.7.1592839468379;
+        Mon, 22 Jun 2020 08:24:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592839468; cv=none;
         d=google.com; s=arc-20160816;
-        b=B1xWdEAmqF4pjKIAc6Po41LLn2fPKfE83wgKPmWTmRgOsfIhSOo+obJ9q79yJDMW0Q
-         XmscOkR6Dp7vYd7dzB58LI/Tc7m9bH+mdclf3RVeamwNzE3pUoA/ER90MZtMpG+BxTFz
-         Ul2Lfjd21TZi0pY0Nwx/hDkwqbeqK13k840zkSMQqzEOmjWSS2xGipw1ghglpgzkdz0d
-         h03udbPik8oA4NavlHnejy5GV5/g7oF8gGHQ7Peyg3dIJywqeISeqpZxveX1VQ66sCAy
-         IG3jUmsCnoW7Am/pn1g9yXKzCkj5spo9UbrzN419VkIqzxJiNPs3n4wqEKRq6pC2h9dK
-         zyYQ==
+        b=HBdumIwcqLznO3bNzoBnlx53Ex95Hp5A8Ia1sYfT+JQ4ARpRIzNfWINtgdmOqxHK6w
+         aSYs2Bduk3976E3h7mNJAKCU2YfEk17+adwvk/kv0P3mr2iXno6wafT4mm9MM490qOsk
+         4FPhiieqhOCEVcSH5itOLJ6iTEI3J8X3Iy9abeNJRt9npdMnyDL6hgLuCm3WYMyoeymG
+         jVi3NvUwJirzJWJ8EcumGSPU//Qnx3Cd7p580Iw31pQTaik7CRiKFsLEs1Ei9jnriz1j
+         NHbqVBhPGwcQ3CV8CyJ5wtUBzOgQjWuq+F5bfTAFg4R31QniY/uDYUluNWzqx0hLry7G
+         1XjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=kFE17XkKysGavietTmW97HPVBqqJim2kc7DdJ7EQYGI=;
-        b=Ys+Lmab9TWUeL1FFoz6AvWbqKYOst3kIZnuwA+PgenvYWeL+V58g58Evu94tp9tLM/
-         oXKdMyXraKCe2d8HXoGyOssKP7xRYIuDZ7cmHYWpmoKPNzoLKFuglcrvE1DMTKd687ey
-         MDHnJxy2LjA47VKxd5ljIkXdO0KdrgnUjnJgqQODEEdgudEA9gkTMh1YWwsT5K6VnpEr
-         27DUtVY1/9MnLSGqouCEPQpj0vHHFJgMnIAaWGpZKTChRt648kQWncVldhs5yWwJAS4P
-         /BenANSipCUp7Vi5nxrts5GlEG12ga55iMxKkrsjrYdnHorp2IeDb5eKZsD4+bsROvq2
-         BNDQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=NwSGq6By9MSPi2qXHNKGSqplQJG/U4nI7CxYriE7iS8=;
+        b=eA7Zn5h7+z4P7Ih0sgYcV0B5UH3Y0TPs4GfJ7GPxMImgvrmFKaxKxrPG8wedGFEvOn
+         +5qTXgywGJCSs0ZXuovBoDyR6QwqNSVnYJl3Cug7l7Cy3E8WbKxY9W1S2qH9SA3nB4Hs
+         JNIEu2+ZeRZ82VB0pmZwaJgNksQMoOcZ1V8/ejsOTD3QZc5F2ymM+N7nx+xsohn0KM/h
+         w4lKNeHjsDTGboDJ0rD1yyvZoIB809VgLUR26PoDoI0cEfcrWK2L+bWP4tis5JpdimIp
+         AQIF3Pw62w2INgCSr8qLEq/ltdIPrWezORMUyqTIL8MuDSmTN89mtjjPmrfvwn5fp7wA
+         Ma4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WQaBBD8Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p68si669367ybc.488.2020.06.02.07.10.11
+        by mx.google.com with ESMTPS id 3si13343342yba.308.2020.06.22.08.24.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jun 2020 07:10:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 Jun 2020 08:24:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:37930 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WQaBBD8Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39038 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jg7cJ-0006Tk-0Z
-	for alex.bennee@linaro.org; Tue, 02 Jun 2020 10:10:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37592)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jnOJ9-0004lJ-Lh
+	for alex.bennee@linaro.org; Mon, 22 Jun 2020 11:24:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52830)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jg7bT-000521-GQ; Tue, 02 Jun 2020 10:09:19 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:41582
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jg7bS-0004f8-Na; Tue, 02 Jun 2020 10:09:19 -0400
-Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 052E4eU2151932; Tue, 2 Jun 2020 10:09:16 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 31d2u23sfh-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 02 Jun 2020 10:09:16 -0400
-Received: from m0098413.ppops.net (m0098413.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 052E4rS9153465;
- Tue, 2 Jun 2020 10:09:15 -0400
-Received: from ppma01dal.us.ibm.com (83.d6.3fa9.ip4.static.sl-reverse.com
- [169.63.214.131])
- by mx0b-001b2d01.pphosted.com with ESMTP id 31d2u23sf3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 02 Jun 2020 10:09:15 -0400
-Received: from pps.filterd (ppma01dal.us.ibm.com [127.0.0.1])
- by ppma01dal.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 052E5iiL024984;
- Tue, 2 Jun 2020 14:09:14 GMT
-Received: from b01cxnp22035.gho.pok.ibm.com (b01cxnp22035.gho.pok.ibm.com
- [9.57.198.25]) by ppma01dal.us.ibm.com with ESMTP id 31bwg2g026-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 02 Jun 2020 14:09:14 +0000
-Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
- [9.57.199.109])
- by b01cxnp22035.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 052E9D6q53477852
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 2 Jun 2020 14:09:13 GMT
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id C58D1112062;
- Tue,  2 Jun 2020 14:09:13 +0000 (GMT)
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id AEC3C112061;
- Tue,  2 Jun 2020 14:09:13 +0000 (GMT)
-Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
- by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTP;
- Tue,  2 Jun 2020 14:09:13 +0000 (GMT)
-Subject: Re: [RFC 3/6] tests/acpi: Ignore TPM2.tis and DSDT.tis
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
-References: <20200601102113.1207-1-eric.auger@redhat.com>
- <20200601102113.1207-4-eric.auger@redhat.com>
-From: Stefan Berger <stefanb@linux.ibm.com>
-Message-ID: <1272cf57-20c6-126e-51a3-8610f7330ee0@linux.ibm.com>
-Date: Tue, 2 Jun 2020 10:09:13 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jnOCI-00036K-7x
+ for qemu-devel@nongnu.org; Mon, 22 Jun 2020 11:17:22 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:34230
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jnOCF-0007CB-IS
+ for qemu-devel@nongnu.org; Mon, 22 Jun 2020 11:17:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592839038;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=NwSGq6By9MSPi2qXHNKGSqplQJG/U4nI7CxYriE7iS8=;
+ b=WQaBBD8Y+91VwE7bu3JrUvPGnKNt9djrLBznNfhA9cp/BHj/Rr15gNTgIjPvB/hvTcAPOm
+ EAJIh4B6AhYv2hSuYGIetWN4AB7Monlni6ShQz/wnwVimwjcCo6vIRXYbqkgBq/9eKZw5L
+ /JDMVpHRn8FdFFc01wVUDvcYnMRG7Rc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-441-osvzhHpFOBu3OFN3g5hZjA-1; Mon, 22 Jun 2020 11:17:16 -0400
+X-MC-Unique: osvzhHpFOBu3OFN3g5hZjA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EF3EB107ACCD;
+ Mon, 22 Jun 2020 15:17:14 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id AF4B871679;
+ Mon, 22 Jun 2020 15:17:13 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 1B5C7113846D; Mon, 22 Jun 2020 17:17:12 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v4 1/8] hw/i2c/core: Add i2c_try_create_slave() and
+ i2c_realize_and_unref()
+References: <20200620225854.31160-1-f4bug@amsat.org>
+ <20200620225854.31160-2-f4bug@amsat.org>
+Date: Mon, 22 Jun 2020 17:17:12 +0200
+In-Reply-To: <20200620225854.31160-2-f4bug@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Sun, 21 Jun 2020 00:58:47
+ +0200")
+Message-ID: <874kr36sg7.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20200601102113.1207-4-eric.auger@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.687
- definitions=2020-06-02_13:2020-06-02,
- 2020-06-02 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0
- cotscore=-2147483648 malwarescore=0 phishscore=0 clxscore=1011 bulkscore=0
- adultscore=0 lowpriorityscore=0 suspectscore=0 spamscore=0 mlxscore=0
- mlxlogscore=999 priorityscore=1501 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2004280000 definitions=main-2006020097
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/02 09:30:21
-X-ACL-Warn: Detected OS   = Linux 3.x [generic]
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, KHOP_DYNAMIC=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 02:57:26
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
- ardb@kernel.org, philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vU1F8XHupn1s
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <cminyard@mvista.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: u92DsS/1Cf13
 
-On 6/1/20 6:21 AM, Eric Auger wrote:
-> Subsequent patches will alter the content of TPM2.tis
-> and DSDT.tis so let's ignore them until the references
-> are generated.
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+
+> Extract i2c_try_create_slave() and i2c_realize_and_unref()
+> from i2c_create_slave().
+> We can now set properties on a I2CSlave before it is realized.
 >
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-
-
+> This is in line with the recent qdev/QOM changes merged
+> in commit 6675a653d2e.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->   tests/qtest/bios-tables-test-allowed-diff.h | 2 ++
->   1 file changed, 2 insertions(+)
+>  include/hw/i2c/i2c.h |  2 ++
+>  hw/i2c/core.c        | 18 ++++++++++++++++--
+>  2 files changed, 18 insertions(+), 2 deletions(-)
 >
-> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> index dfb8523c8b..a2a45d1d31 100644
-> --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> @@ -1 +1,3 @@
->   /* List of comma-separated changed AML files to ignore */
-> +"tests/data/acpi/q35/DSDT.tis",
-> +"tests/data/acpi/q35/TPM2.tis",
+> diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+> index 4117211565..d6e3d85faf 100644
+> --- a/include/hw/i2c/i2c.h
+> +++ b/include/hw/i2c/i2c.h
+> @@ -80,6 +80,8 @@ int i2c_send(I2CBus *bus, uint8_t data);
+>  uint8_t i2c_recv(I2CBus *bus);
+> =20
+>  DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t add=
+r);
+> +DeviceState *i2c_try_create_slave(const char *name, uint8_t addr);
+> +bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp);
+> =20
+>  /* lm832x.c */
+>  void lm832x_key_event(DeviceState *dev, int key, int state);
+> diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+> index 1aac457a2a..acf34a12d6 100644
+> --- a/hw/i2c/core.c
+> +++ b/hw/i2c/core.c
+> @@ -267,13 +267,27 @@ const VMStateDescription vmstate_i2c_slave =3D {
+>      }
+>  };
+> =20
+> -DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t add=
+r)
+> +DeviceState *i2c_try_create_slave(const char *name, uint8_t addr)
+>  {
+>      DeviceState *dev;
+> =20
+>      dev =3D qdev_new(name);
+>      qdev_prop_set_uint8(dev, "address", addr);
+> -    qdev_realize_and_unref(dev, &bus->qbus, &error_fatal);
+> +    return dev;
+> +}
+> +
+> +bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp)
+> +{
+> +    return qdev_realize_and_unref(dev, &bus->qbus, errp);
+> +}
+> +
+> +DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t add=
+r)
+> +{
+> +    DeviceState *dev;
+> +
+> +    dev =3D i2c_try_create_slave(name, addr);
+> +    i2c_realize_and_unref(dev, bus, &error_fatal);
+> +
+>      return dev;
+>  }
 
+No objections, except I want to see actual users.
 

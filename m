@@ -1,123 +1,127 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3441385lfm;
-        Mon, 22 Jun 2020 11:53:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz1X5Dxk7D8JiCVaHS5xcmNVfaoSXj3Lir9f+JCVUgz2QtyAGg7Pek95gwM5i7I6vV+JOOT
-X-Received: by 2002:a25:a2c2:: with SMTP id c2mr27906882ybn.333.1592852006375;
-        Mon, 22 Jun 2020 11:53:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592852006; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3486284lfm;
+        Mon, 22 Jun 2020 12:58:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzspJ5VneVCXOwIQeKXQQXkPPKsgXWmM5EfxTudVMcbspgucQrgng0MTmp1bCatru2/k2TF
+X-Received: by 2002:aa7:c504:: with SMTP id o4mr7902169edq.311.1592855884551;
+        Mon, 22 Jun 2020 12:58:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592855884; cv=none;
         d=google.com; s=arc-20160816;
-        b=SnLiO7NXTimL3OmG4F1r6M9t5fL+rkmKiMXN5kFF6jNRwt9Rq9VycKL1cMFe8MVyNt
-         rUDrQRwhInAeSoKPA0hKZ83rLXT46/N4y5Bmo6WX7HZUTDciPm+bCJWJ+CMwqlM7bDlj
-         jgNBLzvW9zaxxg12O2OH/vPExg0He8hVWzVHkLiuFcK3T+M4Yko2AtmhICKolVwU0zie
-         N6b+BfWnKUIK5qThBbtOefxqi5/iqyWJtld09KLsTeNBDlYdYFuKjvaVKC3tDlNQS6LQ
-         pbjUyHXe3JCiieB8xKkiw7rdhmm8CDQvj96IqD948IaarbxaJ+7Tm9uqcy3Sm8y1ZeRt
-         ZK9A==
+        b=RaIScGo9t2lC1yEZcCjnUWV/n8QkSoYD4w+XJ2zgVKuWqfhDHuydpNlsNLl9HprQ2i
+         gA9Gmwt55JNNvW30Nhu55uUoWXEK88y5fNhEJO9TFQFoxfhO49O7z64N/G0gebZuUnZe
+         xEnwx1SlRTMWpjkwnKtbY9pSV1H4gLoHK7Frn7Jp0YqlrTFY5LTJEUDrKFc09n+/hYDa
+         OorKm4PjYwx5sKeOiEVT6n5LDPnxwyVDNPFOfS3o5ShADDr/hAHHo0uMnaS39ek6rStW
+         tbzDrYxWGaktWBsb8f+nbwQXENPFlrANLr92likENtpCVh2EGm+4J85vi7FtxP/IJ4OG
+         lJ+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=bQAG1tFVjJDgCHdU8xbvkV4BSII3UjjxzdqhUUsLo2M=;
-        b=pRKv5vQpOgo3066CmZc50hgXNCTIv9rnwS1cqoHMpxPJ/MTLib0QIWmBSb7c7QEp8l
-         ySOQU8jevjbWBlvZtLhUGexA8E7198cx5c29EjkOVb2nOvQGVbL38q3/iqZhFy5ee0a8
-         9LKLVprApslw+At4Pu6Ry/oLXaf2CZay5eXgEyPsBKx68ZQ6cZT92GnRUTi/ouIeSaAt
-         GzX48LnuFRNtQ/+Ku2S3XngZLO5atU8b+mOuOwJf2DPY5TOj29N3njLQYz9zsXh+vVTl
-         4KY5p7kp50t6W6XrH8RW7geXzFtjXGBinl4Ho3AVtSYU7HyngzYr/nZEFjk1l3TodyBW
-         hpYw==
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ZHtfmO0X2IMDRr3k87n3VRnRH4Q5pS9Wc8iN4phHSsQ=;
+        b=Hx4+sgTFSz9QJlVixuqaUqwHUm+/KKhJ/Y4CawmzGXwxxr/qsYj7shuHyJ+ExvNgOL
+         sSM7t4FycbrF5zVS9FFj+Q7C5TewTqW0SqdQWNUjCRirS7UjMEBR68obu3iFvjUktU6q
+         M+q/zwFxZquqNC4I3lbRanBhjqqMqfjID2mc6hoa13OMce6g9zJH1LYYZEZc9T8kUe5a
+         +29z9aIHf4NrjSWyD+SoFjYnrZSpMaLulsoP3WVeDuaYRb3Js5SmuVk6NH1D9Q5/RdjE
+         Rv+s65mS3Ib+9uUOBq9vqbceHXlN+GvA17fZD5AfFtnlBiyeXHBWmTfdGSwTxs7PblxF
+         R6sw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="MlNHPmW/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j125si14920422ybc.227.2020.06.22.11.53.26
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jun 2020 11:53:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tBEOMWj2;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id q10si8967695ejp.503.2020.06.22.12.58.04;
+        Mon, 22 Jun 2020 12:58:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="MlNHPmW/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:45884 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnRZN-0007UO-Pz
-	for alex.bennee@linaro.org; Mon, 22 Jun 2020 14:53:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46466)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <derrick.mckee@gmail.com>)
- id 1jnRY9-0005uW-2z
- for qemu-arm@nongnu.org; Mon, 22 Jun 2020 14:52:09 -0400
-Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829]:38916)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <derrick.mckee@gmail.com>)
- id 1jnRY7-0002Y1-56
- for qemu-arm@nongnu.org; Mon, 22 Jun 2020 14:52:08 -0400
-Received: by mail-qt1-x829.google.com with SMTP id o38so4803246qtf.6
- for <qemu-arm@nongnu.org>; Mon, 22 Jun 2020 11:52:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=bQAG1tFVjJDgCHdU8xbvkV4BSII3UjjxzdqhUUsLo2M=;
- b=MlNHPmW/X1wW9wlEkj4MKNVAmXlqxPNeBxz6njg0+S5C/0gnaYAh/iPn3upBk3H08r
- e1lHrwTCY6wwgT/wv0xUmr8Y2/J4OruG8go2joQttsbIOzwjT7Lo00mkqDo+xSUpQKrM
- x8cfOb5J6ScibKkmkfpAq0zqoNaxhKEVaWiP3+vkKwQ0l0IJK6qxCkiuA17kqeCVpY/0
- NVXjVpz614P7a7IbXQ5cyioL0HFprLi+9wagohboHawNYmDyZj5/01NeM3zr7WyInQbP
- gvZ238h8hjJSwzRBa7iyNUSYuSOi3qSfQaLwQJzwel06/lzbuHpFarJcDlcax9B66v4Z
- m/VA==
+       dkim=pass header.i=@linaro.org header.s=google header.b=tBEOMWj2;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1728363AbgFVT6D (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Mon, 22 Jun 2020 15:58:03 -0400
+Received: from lindbergh.monkeyblade.net ([23.128.96.19]:51828 "EHLO
+        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1728222AbgFVT6C (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Mon, 22 Jun 2020 15:58:02 -0400
+Received: from mail-ot1-x342.google.com (mail-ot1-x342.google.com [IPv6:2607:f8b0:4864:20::342])
+        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id BBAA8C0617BB
+        for <kvm@vger.kernel.org>; Mon, 22 Jun 2020 12:58:02 -0700 (PDT)
+Received: by mail-ot1-x342.google.com with SMTP id k15so14184943otp.8
+        for <kvm@vger.kernel.org>; Mon, 22 Jun 2020 12:58:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=ZHtfmO0X2IMDRr3k87n3VRnRH4Q5pS9Wc8iN4phHSsQ=;
+        b=tBEOMWj2zXQPq8sw3gMHdaWJy4rCMk8n3EonoWheEVvyce8pfup0DVXxYJwXBChQry
+         IHwztsKrWh/ANF/YtfBYGCP4MRiU8M6wwwjFMlNTyZLOlxrb5PINk5O/RL6JHrOhVQsu
+         iVn7J44n6pXcUzWyTMWk4RiEagNht1Xf/haBMdg5CLXeSHfcDPp1YlMClSbiSbiHA35M
+         X2KwLho9XmrquLRvwSz+WNAASfQLKUbVH5OJB5w/ISqTuX2GzwB+4p4O4Y6iD38vq8Uh
+         lFQkHhAOwgoNmWEWQnof3ey5Hrg7R5gQDZlNCzmvm6LeNZai9NM7ejD21WZngX6tH7ys
+         4hlw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=bQAG1tFVjJDgCHdU8xbvkV4BSII3UjjxzdqhUUsLo2M=;
- b=MXLI96ZR3Ek/TWvpnXdyCg8zmyqNiCRcfCirQLn5DGaVx5t5xV5fsImv0SzRllcO34
- b/lfn+lGsn83pQSbXUdDTh9HD1p4nWO4Oz8TYqAZKs/W9/CfDjEX7vEwsJLuk2Xy5DHI
- jyccudDC9J7gC9tNzw1QMnF8Pi2F4v9YnKKcLoOTSJrrEIoRNz3rKfcPpEThhdn1wuwJ
- 4tishUqy79Oh2izJLeCee5BZ+ixNAtKqicuubH7MakDHHG0d26wlvn+5NtQSmZogC9wc
- 0vcWeyCDkczAI131rHjaReC3Z2TFaHu++v5e79svXARbWd0eCWGAVQON+Tc9lcV4tWKk
- vpaQ==
-X-Gm-Message-State: AOAM5307OKb/QNiJ32vF7b0+EWcV3HTsCVMb5eTwIyr7irzWiLdjYx6s
- mPsDG5BLty9OE9DG8k6oSxruB2OjaMFS54oKj5D+FM5q
-X-Received: by 2002:ac8:2bba:: with SMTP id m55mr17762168qtm.171.1592851925647; 
- Mon, 22 Jun 2020 11:52:05 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=ZHtfmO0X2IMDRr3k87n3VRnRH4Q5pS9Wc8iN4phHSsQ=;
+        b=G18UqZWdb7+ydSkgsYDg1Vf26rfYBeGjQ1LcMUk3r25M6ctn/IwzQMPHlY/EW4+pqK
+         YPdYatpT8lReeLwtBBdPCv5IEi0ecgymjNwwaWhGGBabVt/ZyzezjK0lSrGIuc9I3j3R
+         DsTJOnA2kWgnHUP3rP0oPCCbcmo90MM1vRgyaVKnfdElu19+qrf6EL0eTyI7kXZORwWY
+         B8TEi2TkRDP1g1ElB3bG9RS8+3N++FipftW5Lv2UMxvZ44RwrjxfTN4SVW8PUNvVC1ze
+         aNKdmjg3QrYu65bpdcAW4gugj6PM+aLmytb8m2mdh1Jg6OmaTjOGl782+FcYY/kSPCN0
+         zA4w==
+X-Gm-Message-State: AOAM531/yv2Y3H8HPpBdzK+xP3PvlffFs0uTIrKfaD22P0NgnW9F6CeU
+        cgvg4QU/6LvgkSdOO/RSis2Zbo4EOiLyUu9OHSCRsg==
+X-Received: by 2002:a9d:67d6:: with SMTP id c22mr14710011otn.221.1592855882151;
+ Mon, 22 Jun 2020 12:58:02 -0700 (PDT)
 MIME-Version: 1.0
-From: Derrick McKee <derrick.mckee@gmail.com>
-Date: Mon, 22 Jun 2020 14:51:54 -0400
-Message-ID: <CAJoBWHxb10S8+DVpQSrKR0kwJd93-fmid1yCGv6k_n3NDWa7cQ@mail.gmail.com>
-Subject: Status of MTE and Pointer Authentication?
-To: qemu-arm@nongnu.org
+References: <20200619095542.2095-1-philmd@redhat.com> <20200619114123.7nhuehm76iwhsw5i@kamzik.brq.redhat.com>
+In-Reply-To: <20200619114123.7nhuehm76iwhsw5i@kamzik.brq.redhat.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Mon, 22 Jun 2020 20:57:51 +0100
+Message-ID: <CAFEAcA-3keThbaWccv+Rzh4dmnLquSwXMyEOmbMMHgQHM=c-8Q@mail.gmail.com>
+Subject: Re: [PATCH v2] target/arm: Check supported KVM features globally (not
+ per vCPU)
+To:     Andrew Jones <drjones@redhat.com>
+Cc:     =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        kvm-devel <kvm@vger.kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+        Haibo Xu <haibo.xu@linaro.org>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        "Dr . David Alan Gilbert" <dgilbert@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::829;
- envelope-from=derrick.mckee@gmail.com; helo=mail-qt1-x829.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZMnFsg99vUgN
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: HOCga92hrC5s
 
-Hi,
+On Fri, 19 Jun 2020 at 12:41, Andrew Jones <drjones@redhat.com> wrote:
+> Can you also post the attached patch with this one (a two patch series)?
 
-What is the status of MTE and PAC extensions for system emulation?  I
-saw that there were some patches submitted, but they don't appear to
-be in the current main branch, and only TODOs in a few files.  Thanks.
+This would be easier to review if you'd just posted it as
+a patch with a Based-on: and a note that it needed to be
+applied after the bugfix patch. Anyway:
 
--- 
-Derrick McKee
-Phone: (703) 957-9362
-Email: derrick.mckee@gmail.com
++    /* Enabling and disabling kvm-no-adjvtime should always work. */
+     assert_has_feature_disabled(qts, "host", "kvm-no-adjvtime");
++    assert_set_feature(qts, "host", "kvm-no-adjvtime", true);
++    assert_set_feature(qts, "host", "kvm-no-adjvtime", false);
+
+     if (g_str_equal(qtest_get_arch(), "aarch64")) {
+         bool kvm_supports_sve;
+@@ -475,7 +497,11 @@ static void
+test_query_cpu_model_expansion_kvm(const void *data)
+         char *error;
+
+         assert_has_feature_enabled(qts, "host", "aarch64");
++
++        /* Enabling and disabling pmu should always work. */
+         assert_has_feature_enabled(qts, "host", "pmu");
++        assert_set_feature(qts, "host", "pmu", true);
++        assert_set_feature(qts, "host", "pmu", false);
+
+It seems a bit odd that we do the same "set true, then
+set false" sequence whether the feature is enabled or not.
+Shouldn't the second one be "set false, then set true" ?
+
+thanks
+-- PMM

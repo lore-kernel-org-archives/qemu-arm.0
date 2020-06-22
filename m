@@ -1,99 +1,99 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3153602lfm;
-        Mon, 22 Jun 2020 05:49:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwhSu+sjJ31fGrTJVu7PK6fxeukO1q5WLtAIQl93C8eKihk5ZvC6X4vj2VS8HxcieAe6IYC
-X-Received: by 2002:a25:aa44:: with SMTP id s62mr25131233ybi.480.1592830151955;
-        Mon, 22 Jun 2020 05:49:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592830151; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3154880lfm;
+        Mon, 22 Jun 2020 05:50:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw0E5OiNQFHDhjrjBS2l3flRFmoDTtXg3UMOG7vRIaAvgeu4872E0FzFZ8W6rxoPdbwhCzt
+X-Received: by 2002:a25:2415:: with SMTP id k21mr28645594ybk.349.1592830254789;
+        Mon, 22 Jun 2020 05:50:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592830254; cv=none;
         d=google.com; s=arc-20160816;
-        b=o9JFzd6aJwQ5/BF0VKJjExQmwyosCuZL2wGFDNdyf1QHYtS7RYE/b+JPV0GcJf1u78
-         1gnBIFBJumPUn55ysoU4D/gfDk46Bx9EiQN6nKzNA6CqA86oxNhNphjO4cchFGIeNlJp
-         VS8rrM2mmRxpWt9A3cjD6LHGWRV7NRlf/tVqwryZmx+UgqH4yHXh9BitmlckjxNYRjdi
-         Iuozik9FOR9fZ3jn26hU65MG9NVZ6aPtNVFM2oYuF7LRUK16P9y9xtigdMvVKrjygf6D
-         AA9Sf3DDOS9yMmJNNRk+EAs8jeRxTdWkoY8DUjOidTUsgNBz1PiPM0Kq5/Cumstzv2Wx
-         yY2g==
+        b=I8ovEb5iOgRVmWChnd7WF8aYhgb1hE0Zk972C6KqY1HvcRMvqCcyUvEXP0SUp8QmNF
+         qTscDbGSCVFjj/20pjeR3RFfJ8jbKxYGstz74k0C0qLjLCt/GqXCSvKnqMhVbRWgHZJm
+         b5szGR4arTEoONapSeCwm0+N2JD4ezTZ2ujdGv+AgproKkFCb/pJ/pxSaHNjU71wThBo
+         Y2Rfous0Mh2BEkWDez9K/r+1Ooh17eEa8nKhIXJSLCSrgwfXGRLMOaYInHh3VMyApNuR
+         //sLNCyt0AyjdvG8h1BI0kwTyXwrDZjaTqKIs9dbZ0c3O169IqNu0xQ5X3sxVOVmyDh9
+         hLOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:to:from:date
          :dkim-signature;
-        bh=s0ZPOfoPHVpQEHMDzpyMK1YzLcvWcDZ/3xuGpHq/8dc=;
-        b=dus+wG/A+aaaHUPZNzmf0Tw3LI5p7J5qNN++NDonNwDvO2IUGZoxO/2BcBekUcIS9m
-         73nIUtHtED84CGd7yXJj32Xv8Osyg5wVDeIInXgbX5dYNoyEAQeMWIBWaDr2AGOEBOUy
-         FLY+EHyS5vW6ZiDgG+rG9DLoiuRhj8168rrFN1dWcicFehiM0EdeMB/4QhrTHZTmFmA0
-         TJy7ZQxGh9lDfzy0oZwlbQ2I6NgVRIOLnq2ULVXvNU89GHbdXe43Ad60TM0J0z/Cq4jy
-         /F0HxsIE9zyvZIgvAJPM/2IT4r5Na+2TMYvoIFZPP8eFIfE8fcT9dWwFLFbzAtLGfHug
-         UJJA==
+        bh=6Goxg7m2zeMx37t4rw4fUt8sIIk2aeu5ecfkP8D9aos=;
+        b=x8SL6kCRN2qDliWiMWJKeqpXWY+k95sR8mRFSk0UTtAIJR2yYnWdir+6LlXQkct37v
+         r10xRmdcQYysE1erAAYQx1FRJFtVlc5YddslGi6wojMR+1QKkZu28Qxq4yVVN3UHCTyb
+         8xLi1nf3I736yzJXNmXnjdWmcLKqbPf43QQd5gV5hAidLDD88/YuAPhmBt1mgUeqv9lC
+         Z5cLrIZ3MR9K8MV+NtILxb4W4oWT9A0m3euLkoF/WC+cq+AsvtFwBm2KOPuXEMZLLDcZ
+         zMJt9l9/mZIJlwsaAZRtteVmecuYCptNBiZT9eAPuhajnH5Kk3ivvdWsWEMee4A9WlDn
+         +EEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cpUlCFmb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VKUbW9xv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l138si2651647ybf.369.2020.06.22.05.49.11
+        by mx.google.com with ESMTPS id n129si14192402ybc.217.2020.06.22.05.50.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jun 2020 05:49:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 Jun 2020 05:50:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cpUlCFmb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VKUbW9xv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52052 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54188 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnLst-00071A-CY
-	for alex.bennee@linaro.org; Mon, 22 Jun 2020 08:49:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38400)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jnLuY-0008BM-2S
+	for alex.bennee@linaro.org; Mon, 22 Jun 2020 08:50:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39000)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jnLrm-0005qE-T3
- for qemu-devel@nongnu.org; Mon, 22 Jun 2020 08:48:02 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:51300
+ id 1jnLu4-00088d-9d
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 08:50:25 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:24500
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jnLrl-0004G6-67
- for qemu-devel@nongnu.org; Mon, 22 Jun 2020 08:48:02 -0400
+ id 1jnLu0-0004Th-Ly
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 08:50:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592830079;
+ s=mimecast20190719; t=1592830219;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=s0ZPOfoPHVpQEHMDzpyMK1YzLcvWcDZ/3xuGpHq/8dc=;
- b=cpUlCFmb8DvW485/gbPDyaYfgn6baQ7oragNJYYhfe4aBdqsQe7k5UjVeCa8le24t+Zu89
- WaRV/k+RF905xnrgXSer9dlVlOqnjpULE4UlxuABwVQ3trUUuij4RBuFcuo+TBVOhbLBr+
- 4tgx1ilgraaMLxoiWKERukHcDz8c9sY=
+ bh=6Goxg7m2zeMx37t4rw4fUt8sIIk2aeu5ecfkP8D9aos=;
+ b=VKUbW9xv1VB0v9G6QEkyaZSo/KBc6H2L0cQtuqsc1G7pYkuK1zPNWYU2rtjRwzsfgyOUVz
+ X51nON5DTvys5v1hl1P/h7aN+lL72Ux5jat4NFbqZAilYbuIYJcG2lUOZwdatrz9si+gp7
+ lCLpBg2fdXaLMiw4OHyFnhKbaSn7Sdg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-256-VAk09nz7M4S7C4yQX1T22w-1; Mon, 22 Jun 2020 08:47:56 -0400
-X-MC-Unique: VAk09nz7M4S7C4yQX1T22w-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-157-HztKiya5PDaLykLIECnRxA-1; Mon, 22 Jun 2020 08:49:00 -0400
+X-MC-Unique: HztKiya5PDaLykLIECnRxA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1582E8014D4;
- Mon, 22 Jun 2020 12:47:55 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0D9DE107ACCD;
+ Mon, 22 Jun 2020 12:48:59 +0000 (UTC)
 Received: from localhost (unknown [10.40.208.85])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D59D05C1BD;
- Mon, 22 Jun 2020 12:47:42 +0000 (UTC)
-Date: Mon, 22 Jun 2020 14:47:41 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id EA21D26DF5;
+ Mon, 22 Jun 2020 12:48:45 +0000 (UTC)
+Date: Mon, 22 Jun 2020 14:48:44 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v6 3/3] docs/specs/tpm: ACPI boot now supported for TPM/ARM
-Message-ID: <20200622144741.7c5e788a@redhat.com>
-In-Reply-To: <20200619141851.16272-4-eric.auger@redhat.com>
+Subject: Re: [PATCH v6 2/3] arm/acpi: Add the TPM2.0 device under the DSDT
+Message-ID: <20200622144844.6f19cac0@redhat.com>
+In-Reply-To: <20200619141851.16272-3-eric.auger@redhat.com>
 References: <20200619141851.16272-1-eric.auger@redhat.com>
- <20200619141851.16272-4-eric.auger@redhat.com>
+ <20200619141851.16272-3-eric.auger@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 03:17:49
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 02:57:26
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -103,51 +103,115 @@ X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, thuth@redhat.com, drjones@redhat.com,
- mst@redhat.com, lersek@redhat.com, qemu-devel@nongnu.org,
+ mst@redhat.com, philmd@redhat.com, qemu-devel@nongnu.org,
  shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, marcandre.lureau@redhat.com,
- eric.auger.pro@gmail.com, philmd@redhat.com, ardb@kernel.org,
+ eric.auger.pro@gmail.com, lersek@redhat.com, ardb@kernel.org,
  stefanb@linux.ibm.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZqCU7qzQXq4k
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: k0V+vte7HVCf
 
-On Fri, 19 Jun 2020 16:18:51 +0200
+On Fri, 19 Jun 2020 16:18:50 +0200
 Eric Auger <eric.auger@redhat.com> wrote:
 
-> ACPI boot now is supported. Let's remove the comment
-> saying it is not.
+> In case it is dynamically instantiated, add the TPM 2.0 device object
+> under the DSDT table in the ACPI namespace. Its HID is MSFT0101
+> while its current resource settings (CRS) property is initialized
+> with the guest physical address and MMIO size of the device.
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-> ---
->  docs/specs/tpm.rst | 2 --
->  1 file changed, 2 deletions(-)
 > 
-> diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
-> index 5e61238bc5..eeeb93730a 100644
-> --- a/docs/specs/tpm.rst
-> +++ b/docs/specs/tpm.rst
-> @@ -346,8 +346,6 @@ In case an Arm virt machine is emulated, use the following command line:
->      -drive if=pflash,format=raw,file=flash0.img,readonly \
->      -drive if=pflash,format=raw,file=flash1.img
+> ---
+> 
+> v3 -> v4:
+> - check the presence of the tpm in acpi_dsdt_add_tpm
+>   as it was done in v2
+> 
+> v2 -> v3:
+> - use SYS_BUS_DEVICE() instead of
+>   (SysBusDevice *)object_dynamic_cast(OBJECT())
+> 
+> v1 -> v2:
+> - use memory_region_size
+> - fix mingw compilation issue by casting to uint32_t
+> - added Stefan's R-b
+> ---
+>  hw/arm/virt-acpi-build.c | 34 ++++++++++++++++++++++++++++++++++
+>  1 file changed, 34 insertions(+)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index ca31f70f7f..1384a2cf2a 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -46,6 +46,7 @@
+>  #include "hw/pci/pci.h"
+>  #include "hw/arm/virt.h"
+>  #include "hw/mem/nvdimm.h"
+> +#include "hw/platform-bus.h"
+>  #include "sysemu/numa.h"
+>  #include "sysemu/reset.h"
+>  #include "sysemu/tpm.h"
+> @@ -364,6 +365,38 @@ static void acpi_dsdt_add_power_button(Aml *scope)
+>      aml_append(scope, dev);
+>  }
 >  
-> -  On Arm, ACPI boot with TPM is not yet supported.
-> -
->  In case SeaBIOS is used as firmware, it should show the TPM menu item
->  after entering the menu with 'ESC'.
+> +static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
+> +{
+> +    PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
+> +    hwaddr pbus_base = vms->memmap[VIRT_PLATFORM_BUS].base;
+> +    SysBusDevice *sbdev = SYS_BUS_DEVICE(tpm_find());
+> +    MemoryRegion *sbdev_mr;
+> +    hwaddr tpm_base;
+> +
+> +    if (!sbdev) {
+> +        return;
+> +    }
+> +
+> +    tpm_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
+> +    assert(tpm_base != -1);
+> +
+> +    tpm_base += pbus_base;
+> +
+> +    sbdev_mr = sysbus_mmio_get_region(sbdev, 0);
+> +
+> +    Aml *dev = aml_device("TPM0");
+> +    aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
+> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+> +
+> +    Aml *crs = aml_resource_template();
+> +    aml_append(crs,
+> +               aml_memory32_fixed(tpm_base,
+> +                                  (uint32_t)memory_region_size(sbdev_mr),
+> +                                  AML_READ_WRITE));
+> +    aml_append(dev, aml_name_decl("_CRS", crs));
+> +    aml_append(scope, dev);
+> +}
+> +
+>  static void
+>  build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>  {
+> @@ -762,6 +795,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      }
+>  
+>      acpi_dsdt_add_power_button(scope);
+> +    acpi_dsdt_add_tpm(scope, vms);
+>  
+>      aml_append(dsdt, scope);
 >  
 

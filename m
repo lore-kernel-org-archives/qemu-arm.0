@@ -1,109 +1,119 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3221111lfm;
-        Mon, 22 Jun 2020 07:08:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHLsokI8a3v1rFJgN3TSG9E3WuLSA8EMFHM8pHQbr7QydG8ZLt7gGGC97rFqmxGxYIR3qL
-X-Received: by 2002:a25:804b:: with SMTP id a11mr29295063ybn.84.1592834931836;
-        Mon, 22 Jun 2020 07:08:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592834931; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3351796lfm;
+        Mon, 22 Jun 2020 09:48:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxZwqpKk2flhqMVlSwAgEUIddmU8guF1sDTVAkIfGoigHpAABVc3ghD06zjQw808wp7/DC9
+X-Received: by 2002:a25:4f08:: with SMTP id d8mr31121576ybb.125.1592844507709;
+        Mon, 22 Jun 2020 09:48:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592844507; cv=none;
         d=google.com; s=arc-20160816;
-        b=GcbwISX7ZPK2MdEY5+A/B7nBoB6eKn2JpYc4FkrIw1kIuQvvJ93fE6/3sv4QqjVd91
-         lX0LKiy2GCqV4UxCmpqnMjO5Guq3DB/0cYUFU74W+/AJacsqJCc/M2wSy94EXd3JthKn
-         jz9TilrjDnOpcC64LOPtTDsxFcpzJ+kBhAbqS5OKs/bpCNE1lsBRmwFNA9BYgzXeOTAI
-         Hi8JnfyJun9jwFaS729l5xM9jVi0hhSUCV2nuShLmWn8U/wqQNTP9HMliujNKoUjTRPv
-         ZP5UHDCnthob+3/1M1xulE9DiPir0JZt0r4RVwZa+OuvwlxUJUAX5/TIStUPonclnUO5
-         QiAA==
+        b=WvI8ByX3vkAjTYmdzD+0+TWiEbfFyefeSvr/TxVnM9h6G9qxW4vkw7nlJ8iKFR/eE+
+         QS/25mGdgm+Gt9HgA7u5M8QOHfYtDud5Iu1G1x5I0940rDwOf/mIufq2aGNOFe9Gs0TC
+         gmbI4NeknOemqy0viNIWDdIt6GYTg5E+Z/bp1ctwgfta8jwmwkuKJqzZuSqyQeVmQZ8s
+         1tbzTarlRN1JpZMxLwl2B0EPA3+xz8tplJYnGfPB+0rgZNJuOcd544qZyPkOamZ5Jher
+         oKGtGMi5+xQzTiHOUqr2BFmfrN4m4Ii24EyzXjdujWw/++Ds+Dg3osgimaBBMF2+uqPb
+         w7bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=AGCYoDDWC27/vDqcwRPzgnEr51neGV9WUERuFPPBHcw=;
-        b=JzzfAkZNtj9sIWmZsPIoW5zQVr0/gy7g2wbt2d2FZwY7hqCSKiLagDiMItSmYSR6j6
-         NQc1jR04t7zXymXTZPvgC7QQNFDb4+QtaFC5IvB4iFFSJ6EaC/YT5CC8EeRhHj4obAw9
-         CGg49Fa4BQbdtPbNFw20v02JFNkSyQKLJs/T7QQTDMbzRNMw1gylV/V7OLX51zbK/LCt
-         vfTrvxEpI5MMeQkSrOB9he3w+aZpfuGmdl72rXoB5KwUpw0FwnfsXNp4WTIJKWJ/BXN4
-         OoZzI+zyApJM5T9eyxb4RTb156cS+uDNP+F4ipZJtt6uI/b1BrX/4HfPQGU5NSfJp8pm
-         3vMA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=chQukggTmBstdzLo3UKBwExa9l0BhvgfjiYmy6JIZfU=;
+        b=RgqgYuRzFwRQMt9Ye1wiNZw7OI9Y8Ns+5ILS8Q0zbnQKlsNRG6rRNC+0DSQdB87a9i
+         Gr3rW0Hni3Vu4aci93Je5R4uhL11FpZnxWU3PQ6R/Vvoj0VlXydmoJBKszeeZSoIeO0N
+         El4wl4HLQnwHjaeW1baVh+FmVkIcgNbI5WL7xQcviPDMmB4ZqCScKPkcYAoG2LtV1Pif
+         LzPz4+mrOcNNxO0FTAQnDxlGy1ITsIqpAyVeQ6cQXdMSRDfdSqxPHkQNKhVB/bdxzjT0
+         obIJOMKtMg0a/vJjoLoBvkQqkfR60YB1l+/thHxOI5b2a9ZEz5yF2dc2I0nraX70Eogi
+         o00Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ami9S5zS;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HaaET52v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f65si13513331ybi.147.2020.06.22.07.08.51
+        by mx.google.com with ESMTPS id t34si14059306ybt.276.2020.06.22.09.48.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jun 2020 07:08:51 -0700 (PDT)
+        Mon, 22 Jun 2020 09:48:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ami9S5zS;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HaaET52v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41208 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36436 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnN7z-0005Fm-7I
-	for alex.bennee@linaro.org; Mon, 22 Jun 2020 10:08:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32828)
+	id 1jnPcR-0004zu-1w
+	for alex.bennee@linaro.org; Mon, 22 Jun 2020 12:48:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48714)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jnN6B-0001jy-LP
- for qemu-arm@nongnu.org; Mon, 22 Jun 2020 10:07:03 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:33018)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jnN6A-0001Nv-2P
- for qemu-arm@nongnu.org; Mon, 22 Jun 2020 10:06:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592834817;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=AGCYoDDWC27/vDqcwRPzgnEr51neGV9WUERuFPPBHcw=;
- b=ami9S5zSs+fDJE/E1UGQS2so2mMFcuHWQugioD12P8Ii6vRREd9B85CH+hF7LrLeyxHMcR
- wUEz1d/Sq2T/AUh7oGVr7+hfeC/eMm5TRsBw1rxF1bkM9toO56ROQFOvWnSkLMhw+b4Z9g
- aJnjwKj1B3cgf6cMm8scj+m/ect9Fu8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-5-6RkE_tS-MCCz0lH8I1ureQ-1; Mon, 22 Jun 2020 10:06:55 -0400
-X-MC-Unique: 6RkE_tS-MCCz0lH8I1ureQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A0211801503;
- Mon, 22 Jun 2020 14:06:53 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 78AE02B4A6;
- Mon, 22 Jun 2020 14:06:42 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, stefanb@linux.ibm.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, imammedo@redhat.com
-Subject: [PATCH v7 3/3] docs/specs/tpm: ACPI boot now supported for TPM/ARM
-Date: Mon, 22 Jun 2020 16:06:20 +0200
-Message-Id: <20200622140620.17229-4-eric.auger@redhat.com>
-In-Reply-To: <20200622140620.17229-1-eric.auger@redhat.com>
-References: <20200622140620.17229-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jnPcG-0004yV-Dq
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 12:48:16 -0400
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:43058)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jnPcE-0000DE-Jh
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 12:48:15 -0400
+Received: by mail-pf1-x442.google.com with SMTP id j12so6428635pfn.10
+ for <qemu-arm@nongnu.org>; Mon, 22 Jun 2020 09:48:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=chQukggTmBstdzLo3UKBwExa9l0BhvgfjiYmy6JIZfU=;
+ b=HaaET52vjWBIDH9iY7y2TUFZYmFNAc5N+TBtCuRqOhVkhiJrVaXojOiTA0HVPhqlUI
+ fCW7Yi02jeGoghDCCwL1WbOX0R9HOK/UsLL8RQ94eURYMzDjb/bes7LMbGZK7yT1xO5T
+ hMuVkX+TQnWpZfqLVYaO8HoNEeDQPsjB3r1KLzXV5a+sTCFfKCvM91n6cQA978u3AJEH
+ zzE2cfD9J0MQZNN+z5yK2QoAUtzU5AeTrgFwZ+x+fAA3hIkayjMHSSRKpDQnSYcVkv2N
+ QzYRAnB0f3d7VuELBEfQiAUINhgfVrjIzCVXjdpcbrEon7krV+ofUQljRYTs/lY8sXv9
+ n+kg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=chQukggTmBstdzLo3UKBwExa9l0BhvgfjiYmy6JIZfU=;
+ b=XgepgNd7hrrgSgZDLpeDHWLxPX5BrowWYtN/3I1c0VWAe79RuQjX+NMkB6A3D1ZQTy
+ Y9ubDgufyX2HEjZC40RErHMiJzKkgfNtAXwFnm9uAzEDehfPa2uwWBtpwzbxG/i5f1fp
+ IitXJCesK3fk+IAS9AoOssDZAWYl21NvMSHNHDk5WynT8ihGAcuqCoBR5ga8EbJvx3Ri
+ Mz0jLx7IugEkKhdsBmCPoeRWbKLf1KqrwG6ASKQuoYoab2+dFSdHTYNU34fOOS5Q/a83
+ 2KbOt6Yl3gGV2UoDoMeR244/OGZhDSB8d03aePZ2r0VQqbiHB8Z3f8qdoKgVyrMpGnJK
+ Do1g==
+X-Gm-Message-State: AOAM530CZWcuqUrrT/Ybud5G4akNxnJJ33JpJAcVnvxsLTgpYrgnky9V
+ jHBT5Ukph8JSIZiGQkJhJNpCFQ==
+X-Received: by 2002:a63:ff54:: with SMTP id s20mr14239378pgk.251.1592844492393; 
+ Mon, 22 Jun 2020 09:48:12 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
+ by smtp.gmail.com with ESMTPSA id f191sm14016103pfa.82.2020.06.22.09.48.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Jun 2020 09:48:11 -0700 (PDT)
+Subject: Re: [PATCH v3 3/7] hw/misc/led: Emit a trace event when LED intensity
+ has changed
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200620230719.32139-1-f4bug@amsat.org>
+ <20200620230719.32139-4-f4bug@amsat.org>
+ <ae4a7411-7042-3530-3faf-e25368080820@linaro.org>
+ <c9e3897b-c711-f59b-d400-0bd01fd320b5@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <191eaa28-7ff4-38f6-9489-612ac984f20f@linaro.org>
+Date: Mon, 22 Jun 2020 09:48:08 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <c9e3897b-c711-f59b-d400-0bd01fd320b5@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 02:57:26
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Received-SPF: pass client-ip=2607:f8b0:4864:20::442;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x442.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,36 +126,19 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: thuth@redhat.com, lersek@redhat.com, drjones@redhat.com,
- shannon.zhaosl@gmail.com, marcandre.lureau@redhat.com, philmd@redhat.com,
- ardb@kernel.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3JQ64cqN234d
+X-TUID: iq7n1JFbH+JT
 
-ACPI boot now is supported. Let's remove the comment
-saying it is not.
+On 6/21/20 3:25 PM, Philippe Mathieu-Daudé wrote:
+> Anyway I switched to a percent value. What is better to hold
+> it, an 'unsigned' or 'uint8_t' type?
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
----
- docs/specs/tpm.rst | 2 --
- 1 file changed, 2 deletions(-)
+Might as well use unsigned; you'll not be saving space with uint8_t.
 
-diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
-index 5e61238bc5..eeeb93730a 100644
---- a/docs/specs/tpm.rst
-+++ b/docs/specs/tpm.rst
-@@ -346,8 +346,6 @@ In case an Arm virt machine is emulated, use the following command line:
-     -drive if=pflash,format=raw,file=flash0.img,readonly \
-     -drive if=pflash,format=raw,file=flash1.img
- 
--  On Arm, ACPI boot with TPM is not yet supported.
--
- In case SeaBIOS is used as firmware, it should show the TPM menu item
- after entering the menu with 'ESC'.
- 
--- 
-2.20.1
 
+r~

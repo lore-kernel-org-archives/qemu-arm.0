@@ -1,99 +1,108 @@
-Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp1681567qvs;
-        Wed, 3 Jun 2020 08:13:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwxTa4AbD3Oqm91dP6Jguiujlex9qu9iewYBpb2AIloNzkCIqxYKe2F161M3jKr08prI2cK
-X-Received: by 2002:a25:258f:: with SMTP id l137mr577811ybl.221.1591197227706;
-        Wed, 03 Jun 2020 08:13:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591197227; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3087020lfm;
+        Mon, 22 Jun 2020 04:23:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJypJUQeH94CUT5gCfhXnsH1QfBSNq5n7wDjyguuJ57oz5HycLDRJX58kZ58nIOv+XuO/elJ
+X-Received: by 2002:a25:e083:: with SMTP id x125mr28270256ybg.338.1592825004269;
+        Mon, 22 Jun 2020 04:23:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592825004; cv=none;
         d=google.com; s=arc-20160816;
-        b=yPpzW1Nqspb1ilR93LX1JSdidtHhWCP9h24f4bkUO451tuGh4ce3DqB+jctMGzbVku
-         BveZc1JssP1/B4FD0elC7sojeo0mrOg1tGrz/2oxLwChYOkqxlmh99Vh2eIMKeVD0Xjd
-         d9bNW3DVQ+RgWf6+oGAih4cGU4vvrIYTvOelhjfTwq2pHM79pT0LW8h2Ou3wY4hgb/xB
-         z2Uy9GTwI9YPm+FE+WjHVCEnp4hhJglM8Jctf0l2odA8PwSz0jRjCmC/t1eLSRbab4c9
-         DXbd9dOvKEAnyVz6mf4MrSPfJQvo8syPRHtSEjjKKjYHja1075pOE8Shox3jxImd4JYA
-         z7kg==
+        b=tOpzX3vICBTJW1/H1lHs4LjnMcc1YVxX1EWRkEN2BFBi8zdgMCqL9G1jC1XIGi+wFu
+         ScMfwt5hYpct32jxAp1zuvfOAKyF8I5ue7ULGAD2bLeh7qrIdynIq0metoIC9xN4rvJn
+         NHfE9YY+6G1SJfRz1TtQi6PVFSuoJaF30vTmQ7hUNEhz2W7L2g7W6r7hiVHnd/hPf/91
+         gBpHftFJzZkQrcOtYSu2NObbXrN7+761vYLt5TF5uv4ADSZbvvBPz45n058RUud1gTVF
+         Ln54t3Z9jbvmVIiEFWgkIywIoqvZFdYp6L8lN7aEl1lOawiOENawTXpzYgTLy/gMg5z2
+         HZRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=NVlo96IxTcALfWYVg+AQEmVgMyM7Smib3TG3LDFOBv0=;
-        b=o9KAaeaVg6lJ1IcgaBGW26jLmjoIrvpJL0om78RJc60nIuEVmP6ipnoHhIybcOU6Pd
-         WIVhIr12cB/1TG6w9pLtIg03gKwSeNXHtFRIYvMGcFCpZ2xPf9gJsrBevCfkP7BLnLKs
-         JZ382aVV1jRHSOKilU/DzGPhhohsm8CsqRZtXkNN3zterzXEwyBNxB8Fw4zK7rcURPlC
-         VoJJwVvjng7qaRWdEVibE2YLgH3xyUKjN69/3aSVx6spt0cGQGEAxYhOXLQuXjFb8joJ
-         53S2fKfsJFuqruIfy3s3MoYskAuB1RfQwf8sYbAHx0l73GTQ21Y0F0K4ioQ4oXhIfCEa
-         jbkQ==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:to:from
+         :dkim-signature;
+        bh=TjN9niWCYIS4eow/uuCs74h2CERnYyO6Wpq+y+Da3P0=;
+        b=PxwtdT+kQEjRgyGpJB2Ss8kRW6vxaadqxyylo+fBz0UsuIzKBmKChaOZ2B/385ruyT
+         DSdGESA6umaMTDl1eV9QKBu/EuGn9E64UJVxIFMkwduBRDXsOIcoOnGkJl0nythbj1qp
+         52M6OCHjAQc/rqb5zn0D3esCC8FT7CSK+v/1aacNS4oit3j3js5Wv62SU00pqcBSggOF
+         s/H+S2CNI15E3k9QWVCl1x6D1RuWIQhf2cl3e4GdK8Qf8bH2K7VbXZrgEBnYRIFujczV
+         Cv01BNb/fAYQIM0iDZN33SvOP3fthzcwuN9ESDaRPCN8NEHraCFlE1HVgI9q9UJlUrwF
+         WE4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JDSh6A3q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b7si1810470ybo.295.2020.06.03.08.13.47
+        by mx.google.com with ESMTPS id o3si13904952ybc.337.2020.06.22.04.23.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jun 2020 08:13:47 -0700 (PDT)
+        Mon, 22 Jun 2020 04:23:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43110 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JDSh6A3q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33668 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgV5P-0002fn-5d
-	for alex.bennee@linaro.org; Wed, 03 Jun 2020 11:13:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38570)
+	id 1jnKXr-0004Xa-LK
+	for alex.bennee@linaro.org; Mon, 22 Jun 2020 07:23:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43370)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jgV5C-0002cy-Cd; Wed, 03 Jun 2020 11:13:34 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2107 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jgV5A-000723-6N; Wed, 03 Jun 2020 11:13:33 -0400
-Received: from lhreml703-chm.china.huawei.com (unknown [172.18.7.108])
- by Forcepoint Email with ESMTP id DCA0DF28C3F27F1FD47F;
- Wed,  3 Jun 2020 16:13:26 +0100 (IST)
-Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
- lhreml703-chm.china.huawei.com (10.201.108.52) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1913.5; Wed, 3 Jun 2020 16:13:26 +0100
-Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
- lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1913.007; 
- Wed, 3 Jun 2020 16:13:26 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Subject: RE: [Question] Regarding containers "unattached/peripheral/anonymous"
- - their relation with hot(un)plug of devices
-Thread-Topic: [Question] Regarding containers
- "unattached/peripheral/anonymous" - their relation with hot(un)plug of
- devices
-Thread-Index: AdXSpuyfn6DVS59zTi+rGkiX0i4oLAAFtBwAAADWJeAAA8wjgAACyCnAAJHlbgAAZ8bfMA==
-Date: Wed, 3 Jun 2020 15:13:26 +0000
-Message-ID: <ab94a6dec7b9435cbb36ca9d488a0daa@huawei.com>
-References: <70446b6cbf5442488a40fe809f38c3c8@huawei.com>
- <20200124145404.1d15209e@redhat.com>
- <77dbc712482545078986adcd72567630@huawei.com>
- <20200124170645.3d794ac6@redhat.com>
- <b8fccc99d7344b2485c0db76886af9c8@huawei.com>
- <20200127160352.54f95875@redhat.com>
-In-Reply-To: <20200127160352.54f95875@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.30.55]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jnKXX-0004XP-CG
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 07:23:03 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:48453
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jnKXT-0007Eq-H8
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 07:23:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592824977;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=TjN9niWCYIS4eow/uuCs74h2CERnYyO6Wpq+y+Da3P0=;
+ b=JDSh6A3q2dRPtlsExH/jqHjbmYHQDTShSqHvnvChmbGva1CGEBNvWpiha/+M4Ulg4ON8IG
+ sg8pW+6Ey4/VerbovChhBLim6r+m08aNnMHFkv46C0W7L+eN9Y1Ist4nFfzWTc/UlChvO1
+ XDLklXfKh4oih2N5VkRT0SUAd1K1sLg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-136-wSm1QWw6MGaKtkYbtY1_xQ-1; Mon, 22 Jun 2020 07:22:55 -0400
+X-MC-Unique: wSm1QWw6MGaKtkYbtY1_xQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7998C8005AD;
+ Mon, 22 Jun 2020 11:22:54 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CA0D31A8F5;
+ Mon, 22 Jun 2020 11:22:47 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 4F733113846D; Mon, 22 Jun 2020 13:22:46 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v3 1/5] qdev: Introduce DEFINE_PROP_RESERVED_REGION
+References: <20200611151209.22547-1-eric.auger@redhat.com>
+ <20200611151209.22547-2-eric.auger@redhat.com>
+Date: Mon, 22 Jun 2020 13:22:46 +0200
+In-Reply-To: <20200611151209.22547-2-eric.auger@redhat.com> (Eric Auger's
+ message of "Thu, 11 Jun 2020 17:12:05 +0200")
+Message-ID: <87k0zzz6nt.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.76.210;
- envelope-from=salil.mehta@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/03 07:45:22
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 01:27:42
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -106,408 +115,267 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jones <drjones@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>,
- "mst@redhat.com" <mst@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, pbonzini <pbonzini@redhat.com>
+Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
+ peterx@redhat.com, jean-philippe@linaro.org, qemu-arm@nongnu.org,
+ pbonzini@redhat.com, bbhushan2@marvell.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4cLZTWzcnsNx
+X-TUID: Xh+wni0st9QN
 
-Hi Igor,
-My sincere Apologies, I just realized that I missed to reply this mail.
-I was distracted to something else in  the month of the February and
-had only resumed working on hotplug in march. But will still reply to
-this mail. Also, I have incorporated most of the below points as in the
-vcpu hotplug patches as per your suggestions.
+Eric Auger <eric.auger@redhat.com> writes:
 
+> Introduce a new property defining a reserved region:
+> <low address>, <high address>, <type>.
+>
+> This will be used to encode reserved IOVA regions.
+>
+> For instance, in virtio-iommu use case, reserved IOVA regions
+> will be passed by the machine code to the virtio-iommu-pci
+> device (an array of those). The type of the reserved region
+> will match the virtio_iommu_probe_resv_mem subtype value:
+> - VIRTIO_IOMMU_RESV_MEM_T_RESERVED (0)
+> - VIRTIO_IOMMU_RESV_MEM_T_MSI (1)
+>
+> on PC/Q35 machine, this will be used to inform the
+> virtio-iommu-pci device it should bypass the MSI region.
+> The reserved region will be: 0xfee00000, 0xfeefffff, 1.
+>
+> On ARM, we can declare the ITS MSI doorbell as an MSI
+> region to prevent MSIs from being mapped on guest side.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>
+> ---
+>
+> v11 -> v12:
+> - rename into DEFINE_PROP_RESERVED_REGION
+> - do not use g_strsplit anymore, use endptr instead
+> - remove 0x references
+> ---
+>  include/exec/memory.h        |  6 +++
+>  include/hw/qdev-properties.h |  3 ++
+>  include/qemu/typedefs.h      |  1 +
+>  hw/core/qdev-properties.c    | 89 ++++++++++++++++++++++++++++++++++++
+>  4 files changed, 99 insertions(+)
+>
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index 3e00cdbbfa..3ee8224fa7 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -57,6 +57,12 @@ struct MemoryRegionMmio {
+>      CPUWriteMemoryFunc *write[3];
+>  };
+>  
+> +struct ReservedRegion {
+> +    hwaddr low;
+> +    hwaddr high;
+> +    unsigned int type;
+> +};
+> +
+>  typedef struct IOMMUTLBEntry IOMMUTLBEntry;
+>  
+>  /* See address_space_translate: bit 0 is read, bit 1 is write.  */
+> diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
+> index f161604fb6..03bf850a7e 100644
+> --- a/include/hw/qdev-properties.h
+> +++ b/include/hw/qdev-properties.h
+> @@ -19,6 +19,7 @@ extern const PropertyInfo qdev_prop_string;
+>  extern const PropertyInfo qdev_prop_chr;
+>  extern const PropertyInfo qdev_prop_tpm;
+>  extern const PropertyInfo qdev_prop_macaddr;
+> +extern const PropertyInfo qdev_prop_reserved_region;
+>  extern const PropertyInfo qdev_prop_on_off_auto;
+>  extern const PropertyInfo qdev_prop_multifd_compression;
+>  extern const PropertyInfo qdev_prop_losttickpolicy;
+> @@ -183,6 +184,8 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
+>      DEFINE_PROP(_n, _s, _f, qdev_prop_drive_iothread, BlockBackend *)
+>  #define DEFINE_PROP_MACADDR(_n, _s, _f)         \
+>      DEFINE_PROP(_n, _s, _f, qdev_prop_macaddr, MACAddr)
+> +#define DEFINE_PROP_RESERVED_REGION(_n, _s, _f)         \
+> +    DEFINE_PROP(_n, _s, _f, qdev_prop_reserved_region, ReservedRegion)
+>  #define DEFINE_PROP_ON_OFF_AUTO(_n, _s, _f, _d) \
+>      DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_on_off_auto, OnOffAuto)
+>  #define DEFINE_PROP_MULTIFD_COMPRESSION(_n, _s, _f, _d) \
+> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+> index ecf3cde26c..85c4f891f4 100644
+> --- a/include/qemu/typedefs.h
+> +++ b/include/qemu/typedefs.h
+> @@ -59,6 +59,7 @@ typedef struct ISABus ISABus;
+>  typedef struct ISADevice ISADevice;
+>  typedef struct IsaDma IsaDma;
+>  typedef struct MACAddr MACAddr;
+> +typedef struct ReservedRegion ReservedRegion;
+>  typedef struct MachineClass MachineClass;
+>  typedef struct MachineState MachineState;
+>  typedef struct MemoryListener MemoryListener;
+> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+> index cc924815da..15b84adbee 100644
+> --- a/hw/core/qdev-properties.c
+> +++ b/hw/core/qdev-properties.c
+> @@ -14,6 +14,7 @@
+>  #include "qapi/visitor.h"
+>  #include "chardev/char.h"
+>  #include "qemu/uuid.h"
+> +#include "qemu/cutils.h"
+>  
+>  void qdev_prop_set_after_realize(DeviceState *dev, const char *name,
+>                                    Error **errp)
+> @@ -577,6 +578,94 @@ const PropertyInfo qdev_prop_macaddr = {
+>      .set   = set_mac,
+>  };
+>  
+> +/* --- Reserved Region --- */
+> +
+> +/*
+> + * accepted syntax version:
+> + *   <low address>,<high address>,<type>
+> + *   where low/high addresses are uint64_t in hexadecimal
+> + *   and type is an unsigned integer in decimal
+> + */
+> +static void get_reserved_region(Object *obj, Visitor *v, const char *name,
+> +                                void *opaque, Error **errp)
+> +{
+> +    DeviceState *dev = DEVICE(obj);
+> +    Property *prop = opaque;
+> +    ReservedRegion *rr = qdev_get_prop_ptr(dev, prop);
+> +    char buffer[64];
+> +    char *p = buffer;
+> +
+> +    snprintf(buffer, sizeof(buffer), "0x%"PRIx64",0x%"PRIx64",%u",
+> +             rr->low, rr->high, rr->type);
 
-> From: Qemu-arm [mailto:qemu-arm-bounces+salil.mehta=3Dhuawei.com@nongnu.o=
-rg]
-> On Behalf Of Igor Mammedov
-> Sent: Monday, January 27, 2020 3:04 PM
-> To: Salil Mehta <salil.mehta@huawei.com>
->=20
-> On Fri, 24 Jan 2020 18:44:16 +0000
-> Salil Mehta <salil.mehta@huawei.com> wrote:
->=20
-> > > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > > Sent: Friday, January 24, 2020 4:07 PM
-> > >
-> > > On Fri, 24 Jan 2020 15:02:10 +0000
-> > > Salil Mehta <salil.mehta@huawei.com> wrote:
-> > >
-> > > > > From: Igor Mammedov [mailto:imammedo@redhat.com]
-> > > > > Sent: Friday, January 24, 2020 1:54 PM
-> > > > > To: Salil Mehta <salil.mehta@huawei.com>
-> > > > >
-> > > > > On Fri, 24 Jan 2020 11:20:15 +0000
-> > > > > Salil Mehta <salil.mehta@huawei.com> wrote:
-> > > > >
-> > > > > > Hello,
-> > > > > > I am working on vCPU Hotplug feature for ARM64 and I am in mid =
-of understanding
-> > > > > > some aspect of device_add/device_del interface of the QEMU.
-> > > > > >
-> > > > > > Observations:
-> > > > > > 1. Any object initialised by qmp_device_add() gets into /machin=
-e/unattached
-> > > > > > container. I traced the flow to code leg inside  device_set_rea=
-lized()
-> > > > > > 2. I could see the reverse qmp_device_del() expects the device =
-to be in
-> > > > > > /machine/peripheral container.
-> > > > > > 3. I could see any object initially added to unattached contain=
-er did not had
-> > > > > > their parents until object_add_property_child() was called furt=
-her in the leg.
-> > > > > > which effectively meant a new property was created and property=
- table
-> > > > > > populated and child was parented.
-> > > > > > 4. Generally, container  /machine/peripheral was being used whe=
-rever
-> > > > > > DEVICE(dev)->id was present and non-null.
-> > > > > >
-> > > > > > Question:
-> > > > > > 1. Wanted to confirm my understanding about the use of having s=
-eparate
-> > > > > > containers like unattached, peripheral and anonymous.
-> > > > >
-> > > > > > 2. At init time all the vcpus goes under *unattached* container=
-. Now,
-> > > > > > qmp_device_del() cannot be used to unplug them. I am wondering
-> > > > >
-> > > > > device is put into 'unattached' in case it wasn't assigned a pare=
-nt.
-> > > > > Usually it happens when board creates device directly.
-> > > >
-> > > >
-> > > > Sure, but if we decide that certain number(N) of vcpus are hotpluga=
-bble
-> > > > and certain subset of N (say 'n' < 'N') should be allowed to be pre=
-sent
-> > > > or cold-plugged at the init time then I wonder which of the followi=
-ng
-> > > > is correct approach:
-> > > >
-> > > > 1. Bring all of N vcpus at boot time under "peripheral" container
-> > > >                                    OR
-> > > > 2. Just bring subset 'n' of 'N' under "peripheral" container and re=
-st
-> > > >     under "unattached" container? And later as and when rest of the
-> > > >     vcpus are hotplugged they should be transferred from "unattache=
-d"
-> > > >     container to "peripheral" container?
-> > >
-> > > issue with that is that to put device into "peripheral" container,
-> > > 'the user' must provide 'id'. (currently QEMU isn't able to do it on =
-its own
-> > > [1])
-> > >
-> > > But it doesn't mean that cold-plugged CPUs can't be unpluged.
-> > > What current users could do is start QEMU like this (simplified versi=
-on):
-> > >
-> > >  $QEMU -smp 1,maxcpus=3DN -device foo-cpu-type,id=3DCPU00 -device
-> > > foo-cpu-type,id=3DCPU01 ...
-> > >
-> > > i.e. 1st CPU is not manageable due to lack if 'id' and is created by =
-board code,
-> > > the rest have 'id' and could be managed.
-> >
-> >
-> > I understand, that we can somehow assign ids from the QMP interface but
-> > above will not push vcpus into "peripheral" container. They will appear
-> > in "unattached" container but with specified names and as-far-as I can
-> > see in the code 'device_del' can only delete objects/devices from the
-> > 'peripheral' container?
->=20
-> qemu-system-x86_64 -monitor stdio \
->     -smp 1,maxcpus=3D3 \
->     -device qemu64-x86_64-cpu,id=3Dfoo,socket-id=3D1,core-id=3D0,thread-i=
-d=3D0 \
->     -device qemu64-x86_64-cpu,socket-id=3D2,core-id=3D0,thread-id=3D0
->=20
-> (qemu) info hotpluggable-cpus
-> Hotpluggable CPUs:
->   type: "qemu64-x86_64-cpu"
->   vcpus_count: "1"
->   qom_path: "/machine/peripheral-anon/device[0]"
->                       ^^^^^^^^^^^^^^^
->   CPUInstance Properties:
->     socket-id: "2"
->     core-id: "0"
->     thread-id: "0"
->   type: "qemu64-x86_64-cpu"
->   vcpus_count: "1"
->   qom_path: "/machine/peripheral/foo"
->                       ^^^^^^^^^^
->=20
-> in gist, if device is created with any variant of device_add,
-> it goes to "peripheral[-anon]" including cold-plugged one.
+Matches existing practice in other getters.  Nevertheless, I'd suggest
+something like
 
+       n = snprintf(buffer, sizeof(buffer), ...);
+       assert(n < sizeof(buffer);
 
-I am not sure why you said "including cold-plugged one"? I hope by
-cold-plug'ging you mean here are the CPUs which already exist at
-the boot time of the Guest VM and plugged using -device?
+> +
+> +    visit_type_str(v, name, &p, errp);
+> +}
+> +
+> +static void set_reserved_region(Object *obj, Visitor *v, const char *name,
+> +                                void *opaque, Error **errp)
+> +{
+> +    DeviceState *dev = DEVICE(obj);
+> +    Property *prop = opaque;
+> +    ReservedRegion *rr = qdev_get_prop_ptr(dev, prop);
+> +    Error *local_err = NULL;
+> +    const char *endptr;
+> +    char *str;
+> +    int ret;
+> +
+> +    if (dev->realized) {
+> +        qdev_prop_set_after_realize(dev, name, errp);
+> +        return;
+> +    }
+> +
+> +    visit_type_str(v, name, &str, &local_err);
+> +    if (local_err) {
+> +        error_propagate(errp, local_err);
+> +        return;
+> +    }
+> +
+> +    ret = qemu_strtou64(str, &endptr, 16, &rr->low);
+> +    if (ret) {
+> +        error_setg(errp, "Failed to decode reserved region low addr");
+> +        error_append_hint(errp,
+> +                          "should be an address in hexadecimal\n");
 
+Comes out like this:
 
->   CPUInstance Properties:
->     socket-id: "1"
->     core-id: "0"
->     thread-id: "0"
->   type: "qemu64-x86_64-cpu"
->   vcpus_count: "1"
->   qom_path: "/machine/unattached/device[0]"
-                          ^^^^^^^^^^^^^
+    qemu-system-x86_64: -device ...: Failed to decode reserved region low addr
+    should be an address in hexadecimal
 
-Unless you have pasted wrongly here, above output also shows qom path
-as 'unattached' for cold-plugged CPUs. Am I missing something? :)
+I'd capitalize the other way, to get
 
+    qemu-system-x86_64: -device ...: failed to decode reserved region low addr
+    Should be an address in hexadecimal
 
->   CPUInstance Properties:
->     socket-id: "0"
->     core-id: "0"
->     thread-id: "0"
+Note: output is made up; I failed at figuring out how to use the new
+property.  An example in PATCH 4's commit message might help.
 
+Since the error message fails to mention @name, the user is left
+guessing unless "-device ..." contains just one reserved region
+parameter.
 
+What about something like this:
 
-> > Plus, having those many ids specified for over large number of vcpus
-> > does not looks very practical solution. We need interface like auto
-> number of IDs is not a problem since it's usually handled by management
-> software just fine (ex: libvirt does it)
->=20
-> > Generation of ids even at the boot time. I could see from the link you
-> > have shared that it is already being used by ID_BLOCK subsystem. Can we
-> > create a new subsystem for cpus under this and do the auto Generation
-> > of vcpu ids as well?
->=20
-> I'm not sure that auto ids was actually merged.
-> (I thought it wasn't)
+           error_setg(errp, "start address of reserved region '%s'"
+                      " must be a hexadecimal integer",
+                      name);
 
+No need to mess around with error_append_hint() then.
 
-Well if you were referring to below then it has been part of qemu for quite
-long now:
+Same for the other error messages.
 
-Patch: util - add automated ID generation utility
-File: https://github.com/qemu/qemu/blob/master/util/id.c
-Commit-id: https://github.com/qemu/qemu/commit/a0f1913637e6
+> +        goto out;
+> +    }
+> +    if (*endptr != ',') {
+> +        goto separator_error;
+> +    }
+> +
+> +    ret = qemu_strtou64(endptr + 1, &endptr, 16, &rr->high);
+> +    if (ret) {
+> +        error_setg(errp, "Failed to decode reserved region high addr");
+> +        error_append_hint(errp,
+> +                          "should be an address in hexadecimal\n");
+> +        goto out;
+> +    }
+> +    if (*endptr != ',') {
+> +        goto separator_error;
+> +    }
+> +
+> +    ret = qemu_strtoui(endptr + 1, &endptr, 10, &rr->type);
+> +    if (ret) {
+> +        error_setg(errp, "Failed to decode reserved region type");
+> +        error_append_hint(errp, "should be an unsigned integer in decimal\n");
+> +    }
 
+I dimly remember discussing the wisdom of numeric type here, dig, dig,
+..., aha:
 
-> Anyway auto IDs are not directly related to enabling CPU hotplug for ARM,
-> if you feel they should be generated you can try to propose patches.
+    Subject: Re: [PATCH for-5.0 v11 12/20] qapi: Introduce DEFINE_PROP_INTERVAL
+    Date: Fri, 13 Dec 2019 11:03:02 +0100
+    Message-ID: <87y2vg4k6h.fsf@dusky.pond.sub.org>
 
-Sure.=20
+    >> So the "label" part of "<low address>,<high address>,label" is a number?
+    > yes it is.
+    >> 
+    >> Is a number appropriate for your use case, or would an enum be better?
+    > I think a number is OK. There might be other types of reserved regions
+    > in the future. Also if we want to allow somebody else to reuse that
+    > property in another context, I would rather leave it open?
 
+    I'd prioritize the user interface over possible reuse (which might never
+    happen).  Mind, I'm not telling you using numbers is a bad user
+    interface.  In general, enums are nicer, but I don't know enough about
+    this particular case.
 
-> > Plus, there is another unique requirement specifically for realizing
-> > vcpu hotplug for ARM64.
-> >
-> > Summary:
-> > Right now ARM architecture does not allows reinitializing the GIC
-> > after VM has booted. Therefore, we are planning to pre-size the GIC
-> > interfaces at init time by initializing all of the possible vcpus
-> > and keep them in 'realized' but 'unavailable' state to the Guest
-> > VM. They shall be made available as-and-when vcpus are hot-plugged
-> > later-on. Therefore, current efforts are to be able to plug and
-> > unplug from the qemu QOM without destroying the existing state of
-> > the devices/objects representing vcpus. These all possible vcpus
-> > shall be created once at the boot time of the VM. The vcpus which
-> > are not available to the Guest VM can be Parked.
-> >
-> > Once the vcpus are hot-(un)plug'ged only the (pre-)plug/unplug(-request=
-)
-> > interfaces are used to convey this even information to the Guest
-> > VM.
-> >
-> > I have tested this solution and it works but I wanted to make sure
-> > that I am not doing anything which breaks any of the existing Qemu
-> > QOM interfaces and basic fundamental idea behind being able to attach
-> > and detach from the Qemu QOM is okay?
-> >
-> > Any suggestion are welcome in this regard?
->=20
-> From discussion with Drew [CCed], I got that kvm/arm isn't designed
-> to support vCPU hotplug (and it would require heavy refactoring to
-> separate GIC and VCPUs, which probably won't be welcomed by maintainers).
+> +    goto out;
+> +
+> +separator_error:
+> +    error_setg(errp, "reserved region fields must be separated with commas");
 
-Agreed. I have pre-sized GIC with possible vcpus. I think Marc did
-mention about this earlier.
+I'm not sure de-duplicating this error message is worth the extra goto.
 
->=20
-> But that's only KVM side of the equation. Assuming that we don't
-> touch KVM much, the only QEMU side is left.
->=20
-> Further lets call
->  * vCPU - a kvm's part of CPU
->  * CPU - QEMU object which is linked to vCPU via file descriptor.
->=20
-> In QEMU we have CPU devices which optionally might create vCPUs
-> during device realize time (if QEMU runs with KVM accelerator).
->=20
-> So from design point of view, I'd suggest to dynamically
-> create/remove CPU devices on demand using existing
->  -device/device_add/device_del interface
-> like we do for other architectures.
->=20
-> But in case of running with KVM accelerator, to accommodate
-> current non dynamic ARM/KVM, I'd move vCPU creation to "kvm_init()"
-> time or board init time, so it would pre-create vCPUs in
-> KVM early in parked state and put them in 'kvm_parked_vcpus' list
-> but won't create CPU devices for them.
+> +out:
+> +    g_free(str);
+> +    return;
+> +}
+> +
+> +const PropertyInfo qdev_prop_reserved_region = {
+> +    .name  = "reserved_region",
+> +    .description = "Reserved Region, example: 0xFEE00000,0xFEEFFFFF,0",
+> +    .get   = get_reserved_region,
+> +    .set   = set_reserved_region,
+> +};
+> +
+>  /* --- on/off/auto --- */
+>  
+>  const PropertyInfo qdev_prop_on_off_auto = {
 
+Can't find anything that's actually wrong, so
 
-Something similar. But I am doing it from virt machine init.
-
-
-> Then later when management adds CPU device either with
-> '-device' or 'device_add', a new CPU device will pick up
-> pre-created parked vCPU file descriptor and re-use it.
->=20
-> Parked vCPU infrastructure is already exists in QEMU as we use it
-> for hot-unplugged CPUs for the same reasons (it needs too much
-> refactoring on KVM side to really remove vCPU).
-
-Agreed with respect to KVM change. I have added some new in qemu/kvm
-layer but some re-factoring might be needed later to extract common
-code. Also, ARM arch specific functions had to be introduced.
-
->=20
-> So when CPU is hot-unplugged, we put linked vCPU file descriptor
-> into kvm_parked_vcpus (see: kvm_destroy_vcpu) and completely delete
-> CPU device on QEMU side. Then when the same CPU is hot-plugged again,
-> we reuse previously parked vCPU file descriptor (see: kvm_get_vcpu).
-
-
-Yes, I have done exactly this and perhaps this approach was discussed
-in earlier mail-chains as well involving you. So taken your suggestion
-and many thanks for this :)
-
-
-> > NOTE: I plan to share the patches with the community which includes
-> > both the changes of the Linux Kernel and the QEMU in near future.
-
-
-Plan to share a RFC within a week for sure.=20
-
-
-> > > 1) here is what I could find on IDs topic
-> > >    https://lists.gnu.org/archive/html/qemu-block/2015-09/msg00011.htm=
-l
-> > >
-> > > > > >    if all the hotplug devices need to go under the *peripheral*=
- container while
-> > > > > > they are hotplugged and during object init time as well?
-> > > > >
-> > > > > theoretically device_del may use QOM path (the later users can ge=
-t with
-> > > > > query-hotpluggable-cpus),
-> > > > > but I think it's mostly debugging feature.
-> > > >
-> > > >
-> > > > Sure.
-> > > >
-> > > >
-> > > > > users are supposed to specify 'id' during -device/device_add if t=
-hey are going
-> > > > > to manage that device.
-> > > > > afterwards (like unplugging it). Then they could use that 'id' in=
- other commands
-> > > > > (including device_del)
-> > > > >
-> > > > > So 'id'-ed devices end up in 'peripheral' container.
-> > > >
-> > > >
-> > > > Sure, what if hotplugged device is removed and then added again? It=
- looks
-> > > > qmp_device_add() interface will again end up calling the device_set=
-_realized()
-> > > > which eventually would put hotplugged devices under "unattached" co=
-ntainer?
-> > >
-> > > it won't, see call chain:
-> > >
-> > >   qmp_device_add()
-> > >       -> qdev_device_add()
-> > >           -> qdev_set_id()
-> >
-> > Ok, sure. I did see the qdev_set_id() interface. Infact, earlier I was =
-actually
-> > trying to play with it by making it more generic and adding even the 'u=
-nattached'
-> > container handling to it(which is missing right now) and calling it ins=
-ide the
-> > device_set_realized()  instead of below code:
-> >
-> >         if (!obj->parent) {
-> >             gchar *name =3D g_strdup_printf("device[%d]", unattached_co=
-unt++);
-> >
-> >             object_property_add_child(container_get(qdev_get_machine(),
-> >                                                     "/unattached"),
-> >                                       name, obj, &error_abort);
-> >             unattached_parent =3D true;
-> >             g_free(name);
-> >         }
-> >
-> > Idea of above dabbling was to have common interface for 'unattached' co=
-ntainer
-> > and call it from virt.c from machvirt_init() where possible vcpus are b=
-eing
-> > created. Force them to be located either inside 'unttached' or 'periphe=
-ral'
-> > container akin to the example you had given.
-> >
-> > If we look at qdev_device_add() function, after setting dev->id using
-> > qdev_set_id() (which would also result in parenting of an object under
-> > 'peripheral' container), it calls the function to 'realize' the device/=
-object
-> > which would end up in hitting above shared code excerpt and now because
-> > it will have the parent already set, the object won't go into 'unattach=
-ed'
-> > container.
-> >
-> > Currently, later cannot be controlled for the cold-lugged vcpus. Theref=
-ore,
-> > before this discussion my initial thought process was to either make
-> > qdev_set_id() universal (i.e. include handling for all type of containe=
-rs
-> > unattached/peripheral/anonymous in qdev_set_id()). Then call it from
-> > machvirt_init() just before the vcpus have been 'realized' so that
-> > cold-plugged cpus could get into 'peripheral' container. This would hel=
-p
-> > in hot-unplugging using the standard 'device_del' interface.
->=20
-> I think we understand cold-plugged vcpus differently.
-> From QEMU point of view there are 2 kinds of cold-plugged CPU devices.
->=20
-> Ones that are currently created by board directly following pattern
->=20
->  object_new()
->  set properties
->  relalize
->=20
-> these are created (lets call them builtin) in amount specified by -smp X
-> and are not manageable by external applications.
->=20
-> The second kind of cold-plugged CPUs are the ones created on command
-> line with help of:
->=20
->  -device cpu-type-foo
->=20
-> these are created by management applications and could be hot-removed
-> if management supplied 'id'. For example libvirt starts qemu with 1
-> built-in cpu in paused mode (-s) QEMU, then it hotplugs via QMP N cpus
-> and lets VM run (it's essentially the same as using -device on CLI).
-> This way it can remove all CPUs except of 1st one which is good enough
-> in almost all the cases.
->=20
-
-Sure, I can see your point. I have tried to incorporate part of it.
-Maybe you would like to check the code which will be sent soon.
-
-
-Many thanks
-Salil
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 

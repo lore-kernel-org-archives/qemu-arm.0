@@ -1,87 +1,87 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3176929lfm;
-        Mon, 22 Jun 2020 06:16:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx4Atp1JId6XRCwf5UQcPG18rcKxGmPOrgWxxrfjZKNZP5aX/CEcc0jPwBxwOrYhoLAqVKo
-X-Received: by 2002:a25:a165:: with SMTP id z92mr27531362ybh.48.1592831774299;
-        Mon, 22 Jun 2020 06:16:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592831774; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3185134lfm;
+        Mon, 22 Jun 2020 06:25:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwyKmp6iqsPJ3EShmxSNADnQmRpYSkEbX1Fya1W/0z7NSoOxSlrLXftBHqIqdxLB/GDVjT4
+X-Received: by 2002:a25:1843:: with SMTP id 64mr7343929yby.89.1592832355703;
+        Mon, 22 Jun 2020 06:25:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592832355; cv=none;
         d=google.com; s=arc-20160816;
-        b=tqLLIMsPEMZF77gjdd2ArK+qPHruSdxOEf7GdMC9Van9lWHtxG6vwGsl68mwjHfzVx
-         PJrBSipL0WKl3R/XdhGbaWsrSuhTLZGHgvZ5NW+iEMFloEJ2QJ4FryjPpyIi8N7CPdXe
-         +wWPyORc1hfvVkBKAqsE01U/ypZmYRB2Fj8dWudyT0CZGVmhItq75IE2tWx1fY/bN4dV
-         ZXlFJF1oGgV0EnaGv2eY6NGXB6rhQNt/t3iOvkfnPoxMQgUqAWWSHhEqtw5ZZ9ykIGkx
-         /S/OlQajpkgXKvAA2EShfYpzqCP/i6NVIOqlqBoXhSjOcEnciFl+E7eY55t3audFZ8jZ
-         SRAg==
+        b=QAjkNRSqQgYdRKhJWXeaKBOkLltFgUAu0OuyKzkeSoq0AR1ZsaekwkGofmIlPdFNdu
+         p25CzBGxCOi+fKEkqzRLFtke+OUENkLHa0MFk3cdu6J7EY0yYNNoF0JSMw0Fd/y2iYl8
+         DJAmBmoVNRaqvKUYtqz9H280ZNsXK1zecqaoTnJxAiq9qfhc+/6w3jU+JY4yd90DmVG8
+         3e9QzyKXsrtsdASpngHpLqa4LFHvRPqAS8F7iuGp0xJUyOMPr+aG8jyBCtBVGv+v6a1t
+         b0dHpLSqPgMQU96pu5q4vLNy/D2/WdCxVaUw2MPxiUe2Pc1smCu5t4BGCJLByGKRFoA9
+         sviA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=dHkrXbSBjKwb6RjY0Jc+11eSVNK1w6yKxzKOzyo/PEw=;
-        b=z8qK2AuI/6o7Qq3MnQsIHK2wYTUSYj5aq5nYpayNrnHwGEyWo1bRIv/+oaDof6gbpW
-         rqh3SeNSvBPQItikzFi1a3qqC3YLQPd8bxAK3kfpvxN9JMC2bUSDYgtsSkbp0y4zoHhJ
-         f6AobmTjaacDFUwHJDabSC4lM47Qzt9YjLVURRWQW0CwTTeZBBUZX/6ukjYeZz1xGiPG
-         XrS1xvYZWaLwRHxklQZwN/fI0S3pUfARRRKk/mp75T0oiZ0vatW5l+usbo06lBsGK8Fb
-         kM82jhBbmtZFZEA38clk+FxEZBOK04F81JkOHUgm6Dko5sCK9PqN9vj4Vc2/XacNLg0Q
-         0V5w==
+        bh=95bLuv9wUwP9NlVJANCC/D0gfR1Eennf2cj6s06nS5Y=;
+        b=bUVG6lwfy8nt8sS9eeCQN93xB2pGTZsRNeoyLWHcw47wQF2VqIqpOzOOeD0B3vyFcW
+         Ww9q4fRLMVY0hkVy80+cTGmhbGUHfqLzYs6XyWhsCXuucVXOYN0k+UwbcZW+qnGgOM2Y
+         Kfm2oAhHAMw13XEWqbOqHvvx7QhY79exZ9CZ4X9wefVdZCLT697woMZebNz1QsWAOM3g
+         dva+w3O1WLORKl4/sVZXL5PO0rsvfAMBmkfhmtE6nyeR6qtnjEXBuMGRxU7aebgTvnca
+         IJFrBC7ZfqrbUpo71LESSquRwB69o/pe511TW52+wHfQ6iXR9MQD+nRDW0zD7Y1mwxMD
+         BJYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i16si14445386ybm.105.2020.06.22.06.16.14
+        by mx.google.com with ESMTPS id 6si12551636ybu.119.2020.06.22.06.25.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jun 2020 06:16:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 Jun 2020 06:25:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55484 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39374 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnMJ3-0008CS-N7
-	for alex.bennee@linaro.org; Mon, 22 Jun 2020 09:16:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47214)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jnMSR-0006ag-3q
+	for alex.bennee@linaro.org; Mon, 22 Jun 2020 09:25:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49896)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jnMIs-00089I-Sb
- for qemu-arm@nongnu.org; Mon, 22 Jun 2020 09:16:02 -0400
-Received: from 18.mo6.mail-out.ovh.net ([46.105.73.110]:51339)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jnMRe-00060i-MD
+ for qemu-devel@nongnu.org; Mon, 22 Jun 2020 09:25:07 -0400
+Received: from 17.mo6.mail-out.ovh.net ([46.105.36.150]:56342)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jnMIq-000187-IC
- for qemu-arm@nongnu.org; Mon, 22 Jun 2020 09:16:02 -0400
-Received: from player799.ha.ovh.net (unknown [10.108.54.97])
- by mo6.mail-out.ovh.net (Postfix) with ESMTP id DD77621B560
- for <qemu-arm@nongnu.org>; Mon, 22 Jun 2020 15:15:57 +0200 (CEST)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jnMRb-0002d1-C8
+ for qemu-devel@nongnu.org; Mon, 22 Jun 2020 09:25:06 -0400
+Received: from player739.ha.ovh.net (unknown [10.108.42.176])
+ by mo6.mail-out.ovh.net (Postfix) with ESMTP id A251F21B491
+ for <qemu-devel@nongnu.org>; Mon, 22 Jun 2020 15:25:00 +0200 (CEST)
 Received: from kaod.org (lfbn-tou-1-921-245.w86-210.abo.wanadoo.fr
  [86.210.152.245]) (Authenticated sender: clg@kaod.org)
- by player799.ha.ovh.net (Postfix) with ESMTPSA id A5463139F20A0;
- Mon, 22 Jun 2020 13:15:48 +0000 (UTC)
+ by player739.ha.ovh.net (Postfix) with ESMTPSA id 5E07CF968D33;
+ Mon, 22 Jun 2020 13:24:52 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005c64ac237-f55f-4f8d-b1ed-e2ff97476e13,D5B34DF2F1998B4AFDB97B5973F1BB92C24DD330)
+ (GARM-99G0035aca5aa9-3126-4c04-8516-1a592f4e1f32,D5B34DF2F1998B4AFDB97B5973F1BB92C24DD330)
  smtp.auth=clg@kaod.org
-Subject: Re: [PATCH v4 3/8] hw/misc/pca9552: Use the PCA9552_PIN_COUNT
- definition
+Subject: Re: [PATCH v4 4/8] hw/misc/pca9552: Add a 'description' property for
+ debugging purpose
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200620225854.31160-1-f4bug@amsat.org>
- <20200620225854.31160-4-f4bug@amsat.org>
- <4628bf30-9b56-a470-afc2-f140690cc002@kaod.org>
- <f5ced6f5-f1fb-bbc2-8f64-d5d55fe8a7df@amsat.org>
+ <20200620225854.31160-5-f4bug@amsat.org>
+ <4d335933-9669-43e1-0966-5f0255142012@kaod.org>
+ <34fe3d2b-6b41-0509-f172-5b45486fdf0c@amsat.org>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <bbd20ac0-ccf6-3bcb-c876-8515c64804a1@kaod.org>
-Date: Mon, 22 Jun 2020 15:15:47 +0200
+Message-ID: <deccf836-48ef-7112-d66e-a8d3cc4a9681@kaod.org>
+Date: Mon, 22 Jun 2020 15:24:50 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <f5ced6f5-f1fb-bbc2-8f64-d5d55fe8a7df@amsat.org>
+In-Reply-To: <34fe3d2b-6b41-0509-f172-5b45486fdf0c@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 12613738132085115665
+X-Ovh-Tracer-Id: 12766579047821970193
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudekvddgieefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefffdvtddugeeifeduuefghfejgfeigeeigeeltedthefgieeiveeuiefhgeefgfenucfkpheptddrtddrtddrtddpkeeirddvuddtrdduhedvrddvgeehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeelledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=46.105.73.110; envelope-from=clg@kaod.org;
- helo=18.mo6.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 09:15:58
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudekvddgieeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefffdvtddugeeifeduuefghfejgfeigeeigeeltedthefgieeiveeuiefhgeefgfenucfkpheptddrtddrtddrtddpkeeirddvuddtrdduhedvrddvgeehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeefledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=46.105.36.150; envelope-from=clg@kaod.org;
+ helo=17.mo6.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 09:25:00
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -90,87 +90,107 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
  RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, Corey Minyard <cminyard@mvista.com>,
  qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
  Peter Maydell <peter.maydell@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: I6n+/DtAYDUS
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EiXU01EFWhXW
 
-On 6/22/20 10:37 AM, Philippe Mathieu-Daudé wrote:
-> On 6/22/20 8:25 AM, Cédric Le Goater wrote:
+On 6/22/20 10:31 AM, Philippe Mathieu-Daudé wrote:
+> On 6/22/20 8:27 AM, Cédric Le Goater wrote:
 >> On 6/21/20 12:58 AM, Philippe Mathieu-Daudé wrote:
->>> The current code models the PCA9552, but there are comments
->>> saying the code could be easily adapted for the rest of the
->>> PCA955x family.
->>> Since we assume we have at most 16 pins (for the PCA9552),
->>> add a definition and check the instance doesn't use more than
->>> this number. This makes the code a bit safer in case other
->>> PCA955x devices are added.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>> Add a description field to distinguish between multiple devices.
 >>
->> I would introduce a PCA9552Class and move nr_leds under the class.
+>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+>>
+>> Could it be a QOM attribute ? 
 > 
-> A bit excessive (for now) for the hobbyist time I can dedicate
-> to this, but I'll try (also renaming nr_leds -> nr_pins).
+> What do you call a 'QOM attribute'?
+> Is it what qdev properties implement?
+> (in this case via DEFINE_PROP_STRING).
 
+I meant a default Object property, which would apply to all Objects. 
 
-It's fine with me if you don't have time.  
+What you did is fine, so :
 
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
+but, may be, a well defined child name is enough for the purpose.
+
+C.
+
 
 > 
 >>
->> C. 
+>> C.
 >>
->>
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 >>> ---
->>>  hw/misc/pca9552.c | 12 ++++++++++++
->>>  1 file changed, 12 insertions(+)
+>>>  include/hw/misc/pca9552.h |  1 +
+>>>  hw/misc/pca9552.c         | 10 ++++++++++
+>>>  2 files changed, 11 insertions(+)
 >>>
+>>> diff --git a/include/hw/misc/pca9552.h b/include/hw/misc/pca9552.h
+>>> index ef6da4988f..c5be7f1c5e 100644
+>>> --- a/include/hw/misc/pca9552.h
+>>> +++ b/include/hw/misc/pca9552.h
+>>> @@ -27,6 +27,7 @@ typedef struct PCA9552State {
+>>>  
+>>>      uint8_t regs[PCA9552_NR_REGS];
+>>>      uint8_t max_reg;
+>>> +    char *description; /* For debugging purpose only */
+>>>      uint8_t nr_leds;
+>>>  } PCA9552State;
+>>>  
 >>> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
->>> index cfefb8fce8..b97fc2893c 100644
+>>> index b97fc2893c..54ccdcf6d4 100644
 >>> --- a/hw/misc/pca9552.c
 >>> +++ b/hw/misc/pca9552.c
->>> @@ -303,6 +303,17 @@ static void pca9552_initfn(Object *obj)
+>>> @@ -12,6 +12,7 @@
+>>>  #include "qemu/osdep.h"
+>>>  #include "qemu/log.h"
+>>>  #include "qemu/module.h"
+>>> +#include "hw/qdev-properties.h"
+>>>  #include "hw/misc/pca9552.h"
+>>>  #include "hw/misc/pca9552_regs.h"
+>>>  #include "migration/vmstate.h"
+>>> @@ -312,8 +313,16 @@ static void pca9552_realize(DeviceState *dev, Error **errp)
+>>>                     __func__, s->nr_leds, PCA9552_PIN_COUNT);
+>>>          return;
 >>>      }
+>>> +    if (!s->description) {
+>>> +        s->description = g_strdup("pca-unspecified");
+>>> +    }
 >>>  }
 >>>  
->>> +static void pca9552_realize(DeviceState *dev, Error **errp)
->>> +{
->>> +    PCA9552State *s = PCA9552(dev);
->>> +
->>> +    if (s->nr_leds > PCA9552_PIN_COUNT) {
->>> +        error_setg(errp, "%s invalid led count %u (max: %u)",
->>> +                   __func__, s->nr_leds, PCA9552_PIN_COUNT);
->>> +        return;
->>> +    }
->>> +}
+>>> +static Property pca9552_properties[] = {
+>>> +    DEFINE_PROP_STRING("description", PCA9552State, description),
+>>> +    DEFINE_PROP_END_OF_LIST(),
+>>> +};
 >>> +
 >>>  static void pca9552_class_init(ObjectClass *klass, void *data)
 >>>  {
 >>>      DeviceClass *dc = DEVICE_CLASS(klass);
->>> @@ -311,6 +322,7 @@ static void pca9552_class_init(ObjectClass *klass, void *data)
->>>      k->event = pca9552_event;
->>>      k->recv = pca9552_recv;
->>>      k->send = pca9552_send;
->>> +    dc->realize = pca9552_realize;
+>>> @@ -325,6 +334,7 @@ static void pca9552_class_init(ObjectClass *klass, void *data)
+>>>      dc->realize = pca9552_realize;
 >>>      dc->reset = pca9552_reset;
 >>>      dc->vmsd = &pca9552_vmstate;
+>>> +    device_class_set_props(dc, pca9552_properties);
 >>>  }
+>>>  
+>>>  static const TypeInfo pca9552_info = {
 >>>
 >>
 >>

@@ -1,88 +1,84 @@
-Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp2043840qvs;
-        Mon, 22 Jun 2020 05:18:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyn9Q/hdJWTu3Ca4PjoLLyZ2qhaSU10v+HC0O/Vuh8nHXn2bD02w6nz8QyGNUyu+duKA0dM
-X-Received: by 2002:a5b:c82:: with SMTP id i2mr25638773ybq.340.1592828306158;
-        Mon, 22 Jun 2020 05:18:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592828306; cv=none;
+Received: by 2002:a0c:fe87:0:0:0:0:0 with SMTP id d7csp2048180qvs;
+        Mon, 22 Jun 2020 05:24:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwSXQjuQ9Q+Cf0SgfSg9A3emTG7diDmoLrHOyTyizM9SEfDYx/5aEqA2S5rAXoBYrdkGFcQ
+X-Received: by 2002:a25:941:: with SMTP id u1mr28848167ybm.274.1592828679930;
+        Mon, 22 Jun 2020 05:24:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592828679; cv=none;
         d=google.com; s=arc-20160816;
-        b=sBm0bWa2AjDlFl6HzZuFdRxfN+YVBwg4qWnR3evKKe5CDajRXecdE2gnzFyg7ZTEP6
-         t82JAyPidYwnqu9SJR477UG3XaIYWdt8NZzPjkpWHBeOcyIWAFCVfMPJ/1t5cBEbS6ws
-         tU1UlpGpKHwk7UC7oDVb9H01hs4ksacUiTQujefwFlCIRuvouzg+7+vSA5U+0ar8AYbi
-         jYyN40slhhNY3nHPDhWcQqLj/Az3xEOqpUQ3OloOuKtdZbp3ks+OZ9YC6vK/CQqS8LXI
-         /RFccIWcjpm/PfxLKoPiJdWy+t97vfKv0Q+jL8GLplAxfbRGb1CKWmHHxCss9OJKYCx5
-         qGTg==
+        b=HtB52nPeSlzyL4Xtl61PTlnnoof2P3UPNBXmEK/4rFtuHlCLfWD17OvlItk7xsUpQ8
+         DKT4YIHU0AetV+CzE9jlQSd1LHfWAnR6ny35HxvyDNS3k55Y5Cn0ZVJ0LmUZhF4T9mw6
+         8BP4p8Sd45MRSSRLug3G10GWU6c5F1co5Hpovb2DDeUxvDPFKqfzixFOVYf0xHcrLe66
+         QtweUzuiKN1KPjguzJXXQxHH1g53Nsa4hw63KwdCRbv7J3Cgf7ZwvyE8OamoEZ8Er3Ld
+         2QdySZ3YBmSU/2k/xFMY0SKVgKdJTSbaPZ81vhWjC2xgURzxoYGbWviDKSxKIFHqC/qt
+         p/iA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=CMLboNu1qxqZPPO8HVB4OJvxdDg36/k2iGV/iQP/PZs=;
-        b=JFOWXakJXdL7C3go4IJsCxShCloB1C3HhlAXKDaIv/5LzhsxjreqGqBmv9MNHwoYyd
-         FKwM9yMKIJfTj1bHo1TRycxv3pKw64aKe43kIKY5XpHkQDWISMARLu7tlCPalfUVYCPm
-         BiEAXPUWebZukntVrnWXpG6c8AGu2THjDM+5GhJr3YkAvULidtVa3oCKByNcei7BuTc/
-         VkfgxdPCza1htY8waTlwPQzvxGf4xrcleAzlWzsNLlJej6nIvo1Iqc0H4engSxkZO90Q
-         86ryqlRZOgUVRf7VpE5hBeCDDnCKalihGAaKnieKmymPmq3HjSN0C5Rl1j5MYjymgT29
-         87ww==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=XctQSOer6J/cqWiZAOXKuu2iqgH7bUnuIb05z5YrR0o=;
+        b=PLGZVVK3vRq63NWiI28C8g6ijxPcOH5blLafcqSZHGnPzx7FtJinPQ4/mwtu9fxBjH
+         vb565orG4z1W5ce6POYnj0tQTANLzNxDKf/RO2wco+qfI15LzmTAjhDr4sq1LYqtS92h
+         U36wV9DirYBrB9li/D8BBFTBZbdOS3R7vusA9ZliCtFHi7nlSM0pM4EcG6cWS0XQPGoT
+         5MlUmFU7fBl46i4Tx+iU/GiCs6/3yr81PDjZqkMKF6OJnZ/WEKEnHSYZIOT9ofYJu2NL
+         lxQYe5sjwp3B8ioY8sznCE0lEEleHu+++j+Pzd/CWBzVVT17yV+cqhxvDy0tY3JrlZyL
+         P52Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="US8QS/IL";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Om8bYzjy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x138si13412396ybg.413.2020.06.22.05.18.26
+        by mx.google.com with ESMTPS id o127si15067161ybc.387.2020.06.22.05.24.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jun 2020 05:18:26 -0700 (PDT)
+        Mon, 22 Jun 2020 05:24:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="US8QS/IL";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Om8bYzjy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45856 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54884 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnLP7-0004Xo-Kg
-	for alex.bennee@linaro.org; Mon, 22 Jun 2020 08:18:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57804)
+	id 1jnLV9-0000lA-Es
+	for alex.bennee@linaro.org; Mon, 22 Jun 2020 08:24:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60468)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jnLLa-0001Tj-29
- for qemu-arm@nongnu.org; Mon, 22 Jun 2020 08:14:46 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55749
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jnLUw-0000gX-R0
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 08:24:26 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:46460
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jnLLY-0007PG-9P
- for qemu-arm@nongnu.org; Mon, 22 Jun 2020 08:14:45 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jnLUu-0000XL-6f
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 08:24:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592828083;
+ s=mimecast20190719; t=1592828663;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CMLboNu1qxqZPPO8HVB4OJvxdDg36/k2iGV/iQP/PZs=;
- b=US8QS/ILSqIkQMzCvTMQCgVo6bUDAL7LxNzkwOaq00+KmXZDT/unL4cet0ltDWXZG6y58x
- X/wBGA8b7SaHZlot+9jOi4nyer0PyynkCQReKCXWC/AVYLdc23j0ATmQX9bOLtpiB4CpQM
- 66LBvQ5r0/U6FnP1VnfFWHrUmZvCB68=
+ bh=XctQSOer6J/cqWiZAOXKuu2iqgH7bUnuIb05z5YrR0o=;
+ b=Om8bYzjyhosYCqmzuhs1uYrV5JRFV9mO1+sIIjRDSftaRMuD0hozX92d9L9yUoxEfNnvrB
+ Rw9YnpHE/avgrQEyn1UAs7Z1n9bAwBXB5fZLBGhsg6Buf7XPhEf3KWzzQZTuwQh/HGY2LA
+ Z3NFviC9TLRORo6Sp0QyhnR2JlgkMpk=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-382-AbU0wt0xMVeCE4069InVug-1; Mon, 22 Jun 2020 08:14:35 -0400
-X-MC-Unique: AbU0wt0xMVeCE4069InVug-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-157-_xfPtL5NM1muFTT6vcjh6g-1; Mon, 22 Jun 2020 08:24:16 -0400
+X-MC-Unique: _xfPtL5NM1muFTT6vcjh6g-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2D219107ACF9;
- Mon, 22 Jun 2020 12:14:34 +0000 (UTC)
-Received: from localhost (unknown [10.40.208.85])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A06A01002396;
- Mon, 22 Jun 2020 12:14:16 +0000 (UTC)
-Date: Mon, 22 Jun 2020 14:14:12 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8219F107ACCD;
+ Mon, 22 Jun 2020 12:24:14 +0000 (UTC)
+Received: from [10.36.114.197] (ovpn-114-197.ams2.redhat.com [10.36.114.197])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 485727C1FE;
+ Mon, 22 Jun 2020 12:24:06 +0000 (UTC)
 Subject: Re: [PATCH v4 1/5] acpi: Convert build_tpm2() to build_append* API
-Message-ID: <20200622141412.0e5640f8@redhat.com>
-In-Reply-To: <d9d263ba-fc1e-d3af-857b-4d77c190bb73@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
 References: <20200611135917.18300-1-eric.auger@redhat.com>
  <20200611135917.18300-2-eric.auger@redhat.com>
  <20200616143327.2ee38a48@redhat.com>
@@ -93,15 +89,23 @@ References: <20200611135917.18300-1-eric.auger@redhat.com>
  <ce60f439-fd2a-a72b-f004-44a01f4c5bdf@linux.ibm.com>
  <20200622113915.1dce2989@redhat.com>
  <d9d263ba-fc1e-d3af-857b-4d77c190bb73@redhat.com>
+ <20200622141412.0e5640f8@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <c90fb01b-cfdf-4538-e256-b5c117da82df@redhat.com>
+Date: Mon, 22 Jun 2020 14:24:04 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <20200622141412.0e5640f8@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=imammedo@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 01:27:42
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 02:57:26
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -129,110 +133,116 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, mst@redhat.com,
  Stefan Berger <stefanb@linux.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9REBpxQX5XjX
+X-TUID: j5ohWSQAxJG2
 
-On Mon, 22 Jun 2020 11:47:26 +0200
-Auger Eric <eric.auger@redhat.com> wrote:
+Hi Igor,
 
-> Hi Igor,
->=20
-> On 6/22/20 11:39 AM, Igor Mammedov wrote:
-> > On Fri, 19 Jun 2020 07:19:51 -0400
-> > Stefan Berger <stefanb@linux.ibm.com> wrote:
-> >  =20
-> >> On 6/19/20 5:43 AM, Auger Eric wrote: =20
-> >>> Hi Laszlo,
-> >>>
-> >>> On 6/19/20 11:38 AM, Laszlo Ersek wrote:   =20
-> >>>> On 06/18/20 09:50, Auger Eric wrote:   =20
-> >>>>> Hi Stefan, Igor,
-> >>>>>
-> >>>>> On 6/16/20 4:11 PM, Stefan Berger wrote:   =20
-> >>>>>> On 6/16/20 8:33 AM, Igor Mammedov wrote:   =20
-> >>>>>>> nevertheless looks like faithfull conversion,
-> >>>>>>> btw why you didn't drop Acpi20TPM2 structure definition?
-> >>>>>>>   =20
-> >>>>>> If we get rid of the table we should keep a reference to this docu=
-ment,
-> >>>>>> table 7: "TCG ACPI Specification; Family 1.2 and 2.0; Level 00 Rev=
-ision
-> >>>>>> 00.37, December 19, 2014"
-> >>>>>>
-> >>>>>> https://trustedcomputinggroup.org/wp-content/uploads/TCG_ACPIGener=
-alSpecification_1-10_0-37-Published.pdf
-> >>>>>>
-> >>>>>>
-> >>>>>>   =20
-> >>>>> Further looking at this spec, the log_area_minimum_length and
-> >>>>> log_area_start_address only are described in
-> >>>>> - Table 2 (TCG Hardware InterfaceDescription Table Format for TPM 1=
-.2
-> >>>>> Clients)
-> >>>>> - Table 4 (TCG Hardware Interface Description Table Format for TPM =
-1.2
-> >>>>> Servers)
-> >>>>> but not in Table 7, ie. not for TPM 2.0.
-> >>>>>
-> >>>>> Are they really needed for TPM2 or what do I miss?   =20
-> >>>> (side comment:
-> >>>>
-> >>>> LASA and LAML are optional with TPM-2.0. From the discussion at
-> >>>> <https://bugzilla.tianocore.org/show_bug.cgi?id=3D978>.   =20
-> >>
-> >>
-> >> They are needed for (x86) BIOS, such as SeaBIOS, not for UEFI, though.=
- I=20
-> >> do not know about ARM.
-> >>
-> >> =20
-> >>> Thank you for the pointer and info. I failed to find this info in the
-> >>> spec. Given the risk of confusion, I would personally keep struct
-> >>> Acpi20TPM2 and maybe add a comment. Stefan?   =20
-> >>
-> >> Either way is fine with me for as long as we know where to find the=20
-> >> layout of the structure. =20
-> > I'd remove Acpi20TPM2 as it hardly documents anything, and add a commen=
-t
-> > pointing to the concrete spec that has these fields.
-> >=20
-> > TCGTCG ACPI SpecificationFamily =E2=80=9C1.2=E2=80=9D and =E2=80=9C2.0=
-=E2=80=9DVersion 1.2,Revision 8 =20
->=20
-> [PATCH v6 0/3] vTPM/aarch64 ACPI support was posted.
->=20
-> As documented in the cover letter (history log), the presence of the
-> LAML and LASA fields in the TPM2 table is not clearly documented in the
-> spec (at least I failed to find it). It is for TPM 1.2. On the other
-> hand, Stefan said it is mandated for some x86 BIOS to work. Given this
-> weirdness I think keeping the  Acpi20TPM2 struct is not too bad. See v6 .=
-..
+On 6/22/20 2:14 PM, Igor Mammedov wrote:
+> On Mon, 22 Jun 2020 11:47:26 +0200
+> Auger Eric <eric.auger@redhat.com> wrote:
+> 
+>> Hi Igor,
+>>
+>> On 6/22/20 11:39 AM, Igor Mammedov wrote:
+>>> On Fri, 19 Jun 2020 07:19:51 -0400
+>>> Stefan Berger <stefanb@linux.ibm.com> wrote:
+>>>   
+>>>> On 6/19/20 5:43 AM, Auger Eric wrote:  
+>>>>> Hi Laszlo,
+>>>>>
+>>>>> On 6/19/20 11:38 AM, Laszlo Ersek wrote:    
+>>>>>> On 06/18/20 09:50, Auger Eric wrote:    
+>>>>>>> Hi Stefan, Igor,
+>>>>>>>
+>>>>>>> On 6/16/20 4:11 PM, Stefan Berger wrote:    
+>>>>>>>> On 6/16/20 8:33 AM, Igor Mammedov wrote:    
+>>>>>>>>> nevertheless looks like faithfull conversion,
+>>>>>>>>> btw why you didn't drop Acpi20TPM2 structure definition?
+>>>>>>>>>    
+>>>>>>>> If we get rid of the table we should keep a reference to this document,
+>>>>>>>> table 7: "TCG ACPI Specification; Family 1.2 and 2.0; Level 00 Revision
+>>>>>>>> 00.37, December 19, 2014"
+>>>>>>>>
+>>>>>>>> https://trustedcomputinggroup.org/wp-content/uploads/TCG_ACPIGeneralSpecification_1-10_0-37-Published.pdf
+>>>>>>>>
+>>>>>>>>
+>>>>>>>>    
+>>>>>>> Further looking at this spec, the log_area_minimum_length and
+>>>>>>> log_area_start_address only are described in
+>>>>>>> - Table 2 (TCG Hardware InterfaceDescription Table Format for TPM 1.2
+>>>>>>> Clients)
+>>>>>>> - Table 4 (TCG Hardware Interface Description Table Format for TPM 1.2
+>>>>>>> Servers)
+>>>>>>> but not in Table 7, ie. not for TPM 2.0.
+>>>>>>>
+>>>>>>> Are they really needed for TPM2 or what do I miss?    
+>>>>>> (side comment:
+>>>>>>
+>>>>>> LASA and LAML are optional with TPM-2.0. From the discussion at
+>>>>>> <https://bugzilla.tianocore.org/show_bug.cgi?id=978>.    
+>>>>
+>>>>
+>>>> They are needed for (x86) BIOS, such as SeaBIOS, not for UEFI, though. I 
+>>>> do not know about ARM.
+>>>>
+>>>>  
+>>>>> Thank you for the pointer and info. I failed to find this info in the
+>>>>> spec. Given the risk of confusion, I would personally keep struct
+>>>>> Acpi20TPM2 and maybe add a comment. Stefan?    
+>>>>
+>>>> Either way is fine with me for as long as we know where to find the 
+>>>> layout of the structure.  
+>>> I'd remove Acpi20TPM2 as it hardly documents anything, and add a comment
+>>> pointing to the concrete spec that has these fields.
+>>>
+>>> TCGTCG ACPI SpecificationFamily “1.2” and “2.0”Version 1.2,Revision 8  
+>>
+>> [PATCH v6 0/3] vTPM/aarch64 ACPI support was posted.
+>>
+>> As documented in the cover letter (history log), the presence of the
+>> LAML and LASA fields in the TPM2 table is not clearly documented in the
+>> spec (at least I failed to find it). It is for TPM 1.2. On the other
+>> hand, Stefan said it is mandated for some x86 BIOS to work. Given this
+>> weirdness I think keeping the  Acpi20TPM2 struct is not too bad. See v6 ...
+> 
+> Laszlo pointed to spec version where LAML/LASA in TPM2 are documented,
+> so I'd just use that as a spec this code is based on.
 
-Laszlo pointed to spec version where LAML/LASA in TPM2 are documented,
-so I'd just use that as a spec this code is based on.
+OK I missed that, indeed in the version the 2 fields are documented.
+https://trustedcomputinggroup.org/wp-content/uploads/TCG_ACPIGeneralSpecification_v1.20_r8.pdf
 
-PS:
-Acpi20TPM2 struct doesn't document anything, it's just another way to do
-the same thing as build_appen_* calls do. Having it just adds to confusion.=
-=20
+in table 7:TCG Hardware Interface Description Table Format for TPM 2.0
 
->=20
-> Thanks
->=20
-> Eric
-> >  =20
-> >>
-> >>  =C2=A0 Stefan
-> >> =20
-> >>>
-> >>> Thanks
-> >>>
-> >>> Eric   =20
-> >>>> )
-> >>>>
-> >>>> Thanks
-> >>>> Laszlo
-> >>>>   =20
-> >> =20
-> >=20
-> >  =20
+I will use that ref and remove the Acpi20TPM2 struct then.
+
+Thanks
+
+Eric
+
+> 
+> PS:
+> Acpi20TPM2 struct doesn't document anything, it's just another way to do
+> the same thing as build_appen_* calls do. Having it just adds to confusion. 
+> 
+>>
+>> Thanks
+>>
+>> Eric
+>>>   
+>>>>
+>>>>    Stefan
+>>>>  
+>>>>>
+>>>>> Thanks
+>>>>>
+>>>>> Eric    
+>>>>>> )
+>>>>>>
+>>>>>> Thanks
+>>>>>> Laszlo
+>>>>>>    
+>>>>  
+>>>
+>>>   
+> 
 

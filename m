@@ -1,197 +1,224 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3286217lfm;
-        Mon, 22 Jun 2020 08:24:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwuKKLAuTXhDWZQ4zHnKRFvchU3putPa9wIP6ogGbX0d0r9v+5w/wqmrXPJF1OrA3OfD+IG
-X-Received: by 2002:a25:2f4f:: with SMTP id v76mr30048557ybv.7.1592839468379;
-        Mon, 22 Jun 2020 08:24:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592839468; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3024040lfm;
+        Mon, 22 Jun 2020 02:52:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyKt48c8xPiK6Ftzw/JHPXqksx6We5w4EdRAhVNBGK1nrpdAuTqjSi9iABSs4WglHZLQS6I
+X-Received: by 2002:a25:348a:: with SMTP id b132mr28213277yba.491.1592819571950;
+        Mon, 22 Jun 2020 02:52:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592819571; cv=none;
         d=google.com; s=arc-20160816;
-        b=HBdumIwcqLznO3bNzoBnlx53Ex95Hp5A8Ia1sYfT+JQ4ARpRIzNfWINtgdmOqxHK6w
-         aSYs2Bduk3976E3h7mNJAKCU2YfEk17+adwvk/kv0P3mr2iXno6wafT4mm9MM490qOsk
-         4FPhiieqhOCEVcSH5itOLJ6iTEI3J8X3Iy9abeNJRt9npdMnyDL6hgLuCm3WYMyoeymG
-         jVi3NvUwJirzJWJ8EcumGSPU//Qnx3Cd7p580Iw31pQTaik7CRiKFsLEs1Ei9jnriz1j
-         NHbqVBhPGwcQ3CV8CyJ5wtUBzOgQjWuq+F5bfTAFg4R31QniY/uDYUluNWzqx0hLry7G
-         1XjQ==
+        b=n1bUyvG5zSiees72ALVsuQt3towOq3Nhlk0zgvVFFq+u27gzUJ6hugu6Wxfjm6X4z6
+         5SeGkIcfA+jSHuBV2vZ5VF4IRHM0Rg80fnLXpQPcExyEy3nYsW9mrQgec7QP+B4HyDae
+         YCgMnPoW8ONvZHIXxsPKlSUOjRsvy3Uey79wUof0qKMGkBemF6upwV/6C4304aoibeII
+         m4l/YzIH2BGe49pjFBHOcga9GWDphpKdTxlNWK+/E4yjQyPbTItPNMI+L0iJWhnELDMy
+         Ev+xkLXtDwAdVzExQTM6iX3AzWaSUBIjMW0PbRbwlrFo6Y55DpVxD+PFrKXH6ZUC5Tja
+         Y0IA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=NwSGq6By9MSPi2qXHNKGSqplQJG/U4nI7CxYriE7iS8=;
-        b=eA7Zn5h7+z4P7Ih0sgYcV0B5UH3Y0TPs4GfJ7GPxMImgvrmFKaxKxrPG8wedGFEvOn
-         +5qTXgywGJCSs0ZXuovBoDyR6QwqNSVnYJl3Cug7l7Cy3E8WbKxY9W1S2qH9SA3nB4Hs
-         JNIEu2+ZeRZ82VB0pmZwaJgNksQMoOcZ1V8/ejsOTD3QZc5F2ymM+N7nx+xsohn0KM/h
-         w4lKNeHjsDTGboDJ0rD1yyvZoIB809VgLUR26PoDoI0cEfcrWK2L+bWP4tis5JpdimIp
-         AQIF3Pw62w2INgCSr8qLEq/ltdIPrWezORMUyqTIL8MuDSmTN89mtjjPmrfvwn5fp7wA
-         Ma4g==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=/Bvc7IsiddAczfGywgS8QiU6znkFI4k8Pw0/SuBT2Ic=;
+        b=wxvv2PcHgP+xSMkMoC2penktdId8Y0+/qDpUX7viZl8VuFuL1vWw8Z7Iq8YMrVhOTU
+         23yX3wrKszgX+2oHO2lGZk0hE+b69XNVKTPsskpyd8gEY3+gD26B/4PnsIsd1i22Ai3N
+         zzW1I+mjesM43SB05BSSY+b1/YKwBH/7H+PXLQNc48MZgKMfEwpu/lI8XQgheZUNjRvi
+         7Fy6v3nsAJ1uagLBwbVQni6//Krjm4evYVpUeSIRZi0YaELhdcoIGyB+VZStPqrk6ksa
+         VJl+g1DPs6m+qwVe+F4fald/oiNMy4z1w6HQWwGndIYLUYjiLm9Nno/SFrHYys887dY6
+         zVbg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WQaBBD8Y;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HMxPLU7C;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 3si13343342yba.308.2020.06.22.08.24.28
+        by mx.google.com with ESMTPS id l2si20626570ybt.63.2020.06.22.02.52.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jun 2020 08:24:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 Jun 2020 02:52:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WQaBBD8Y;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39038 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HMxPLU7C;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:49068 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnOJ9-0004lJ-Lh
-	for alex.bennee@linaro.org; Mon, 22 Jun 2020 11:24:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52830)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jnJ8F-0002hF-C4
+	for alex.bennee@linaro.org; Mon, 22 Jun 2020 05:52:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55950)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jnOCI-00036K-7x
- for qemu-devel@nongnu.org; Mon, 22 Jun 2020 11:17:22 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:34230
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jnOCF-0007CB-IS
- for qemu-devel@nongnu.org; Mon, 22 Jun 2020 11:17:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592839038;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NwSGq6By9MSPi2qXHNKGSqplQJG/U4nI7CxYriE7iS8=;
- b=WQaBBD8Y+91VwE7bu3JrUvPGnKNt9djrLBznNfhA9cp/BHj/Rr15gNTgIjPvB/hvTcAPOm
- EAJIh4B6AhYv2hSuYGIetWN4AB7Monlni6ShQz/wnwVimwjcCo6vIRXYbqkgBq/9eKZw5L
- /JDMVpHRn8FdFFc01wVUDvcYnMRG7Rc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-441-osvzhHpFOBu3OFN3g5hZjA-1; Mon, 22 Jun 2020 11:17:16 -0400
-X-MC-Unique: osvzhHpFOBu3OFN3g5hZjA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EF3EB107ACCD;
- Mon, 22 Jun 2020 15:17:14 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
- [10.36.112.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id AF4B871679;
- Mon, 22 Jun 2020 15:17:13 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 1B5C7113846D; Mon, 22 Jun 2020 17:17:12 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v4 1/8] hw/i2c/core: Add i2c_try_create_slave() and
- i2c_realize_and_unref()
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jnJ86-0002dx-Jt; Mon, 22 Jun 2020 05:52:42 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:38774)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jnJ84-0005NN-Og; Mon, 22 Jun 2020 05:52:42 -0400
+Received: by mail-wr1-x441.google.com with SMTP id z13so4225957wrw.5;
+ Mon, 22 Jun 2020 02:52:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=/Bvc7IsiddAczfGywgS8QiU6znkFI4k8Pw0/SuBT2Ic=;
+ b=HMxPLU7Cu5ZWxof0tuSUzLdixGhDOx3ufZWz5zNqp3yV2UYQSEKJLjn3bdhZz+/3QT
+ GLnnFBL2CLC9xGuhWSHYVrN6v9vVbb9utyEsFtvH/4/FxsthLRdy8hq8JhCXCbhoda0Y
+ YFNq2pVm+JGRZy6AVASoM8NEv36x288pS3sHIa1Up1j50XCVHq+NvMVZCkd3P+Kir1AL
+ vurFUjHfAJpdTCRfN2MbjY+zuoaU70FThWklvO4Lh5A+ZSHSG/xjDgwXZy8HIer+JOZk
+ MhlqdGPgFJXlBlcFC3SYDnda8kD5nX5ttAvSV9j66qhAHrxECKOO/rhq7VtJHp/7odzx
+ Lqtw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=/Bvc7IsiddAczfGywgS8QiU6znkFI4k8Pw0/SuBT2Ic=;
+ b=A61plawTCgnzxhDhyLNqr6eAE5lB7K5GuTFLIHbHh52i6fmaaGO5hZ3r2HF9ipOOoS
+ WBkQSciK5cJlLKGVUSRl1zUmFqOdxI7w/83DU6UBHyjfLfUot/1N3FOiocXHlUPcy/w/
+ 4i2vflgBoHoRkD4ZvTUTfwqspfIPxfGWo3rbMIvScJO9Lbm+0qJptn1MqH4fZ0CZ9KSy
+ mhe6wzPlG8GeZgiEldjO52+/k1cLb8rqHB0TVTQhW3MkgQHbXqeym5eN9mGkHjecQj2M
+ A1Syrd9QqohukFuX3roY/w4/jj4AD9SDmPCIozyADgLUPTkrokWGalb8ZnQ0pdJZ4Rh8
+ /XnA==
+X-Gm-Message-State: AOAM530TqnEP39Ic/a+LZ7WJfXcTT5t4iOjDYinVQneBX3DNUaHOYzAb
+ qAYlYZtHbdLXH3Wwr7AysCo=
+X-Received: by 2002:a05:6000:ce:: with SMTP id
+ q14mr10372311wrx.294.1592819558680; 
+ Mon, 22 Jun 2020 02:52:38 -0700 (PDT)
+Received: from [192.168.1.39] (1.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.1])
+ by smtp.gmail.com with ESMTPSA id c70sm15823500wme.32.2020.06.22.02.52.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Jun 2020 02:52:38 -0700 (PDT)
+Subject: Re: [PATCH v4 7/8] hw/misc/pca9552: Trace GPIO change events
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
 References: <20200620225854.31160-1-f4bug@amsat.org>
- <20200620225854.31160-2-f4bug@amsat.org>
-Date: Mon, 22 Jun 2020 17:17:12 +0200
-In-Reply-To: <20200620225854.31160-2-f4bug@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Sun, 21 Jun 2020 00:58:47
- +0200")
-Message-ID: <874kr36sg7.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ <20200620225854.31160-8-f4bug@amsat.org>
+ <fb024d85-9730-e31d-622c-60601d75c7f3@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <a4ad6480-c2f2-75bc-12d0-71000905a45f@amsat.org>
+Date: Mon, 22 Jun 2020 11:52:37 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <fb024d85-9730-e31d-622c-60601d75c7f3@kaod.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 02:57:26
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u92DsS/1Cf13
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Corey Minyard <cminyard@mvista.com>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ODAwR5LeVpBI
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+On 6/22/20 9:01 AM, Cédric Le Goater wrote:
+> On 6/21/20 12:58 AM, Philippe Mathieu-Daudé wrote:
+>> Emit a trace event when a GPIO change its state.
+> 
+> I understand now why you need 'pin_status'. 
+> 
+> We could compute 'pin_status' and 'pin_changed' in routine 
+> pca9552_update_pin_input() when updating the PCA9552_INPUT0/1 
+> register values and pass them to pca9552_display_pins_status()
+> or something like that.
 
-> Extract i2c_try_create_slave() and i2c_realize_and_unref()
-> from i2c_create_slave().
-> We can now set properties on a I2CSlave before it is realized.
->
-> This is in line with the recent qdev/QOM changes merged
-> in commit 6675a653d2e.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  include/hw/i2c/i2c.h |  2 ++
->  hw/i2c/core.c        | 18 ++++++++++++++++--
->  2 files changed, 18 insertions(+), 2 deletions(-)
->
-> diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-> index 4117211565..d6e3d85faf 100644
-> --- a/include/hw/i2c/i2c.h
-> +++ b/include/hw/i2c/i2c.h
-> @@ -80,6 +80,8 @@ int i2c_send(I2CBus *bus, uint8_t data);
->  uint8_t i2c_recv(I2CBus *bus);
-> =20
->  DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t add=
-r);
-> +DeviceState *i2c_try_create_slave(const char *name, uint8_t addr);
-> +bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp);
-> =20
->  /* lm832x.c */
->  void lm832x_key_event(DeviceState *dev, int key, int state);
-> diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-> index 1aac457a2a..acf34a12d6 100644
-> --- a/hw/i2c/core.c
-> +++ b/hw/i2c/core.c
-> @@ -267,13 +267,27 @@ const VMStateDescription vmstate_i2c_slave =3D {
->      }
->  };
-> =20
-> -DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t add=
-r)
-> +DeviceState *i2c_try_create_slave(const char *name, uint8_t addr)
->  {
->      DeviceState *dev;
-> =20
->      dev =3D qdev_new(name);
->      qdev_prop_set_uint8(dev, "address", addr);
-> -    qdev_realize_and_unref(dev, &bus->qbus, &error_fatal);
-> +    return dev;
-> +}
-> +
-> +bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp)
-> +{
-> +    return qdev_realize_and_unref(dev, &bus->qbus, errp);
-> +}
-> +
-> +DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t add=
-r)
-> +{
-> +    DeviceState *dev;
-> +
-> +    dev =3D i2c_try_create_slave(name, addr);
-> +    i2c_realize_and_unref(dev, bus, &error_fatal);
-> +
->      return dev;
->  }
+Good idea, thanks!
 
-No objections, except I want to see actual users.
-
+> 
+> Maybe add two different display routines also. 
+>  
+>>
+>> Example booting obmc-phosphor-image:
+>>
+>>   $ qemu-system-arm -M witherspoon-bmc -trace pca9552_gpio_change
+>>   1592690552.687372:pca9552_gpio_change pca1 GPIO id:0 status: 0 -> 1
+>>   1592690552.690169:pca9552_gpio_change pca1 GPIO id:1 status: 0 -> 1
+>>   1592690552.691673:pca9552_gpio_change pca1 GPIO id:2 status: 0 -> 1
+>>   1592690552.696886:pca9552_gpio_change pca1 GPIO id:3 status: 0 -> 1
+>>   1592690552.698614:pca9552_gpio_change pca1 GPIO id:13 status: 0 -> 1
+>>   1592690552.699833:pca9552_gpio_change pca1 GPIO id:14 status: 0 -> 1
+>>   1592690552.700842:pca9552_gpio_change pca1 GPIO id:15 status: 0 -> 1
+>>   1592690683.841921:pca9552_gpio_change pca1 GPIO id:14 status: 1 -> 0
+>>   1592690683.861660:pca9552_gpio_change pca1 GPIO id:14 status: 0 -> 1
+>>   1592690684.371460:pca9552_gpio_change pca1 GPIO id:14 status: 1 -> 0
+>>   1592690684.882115:pca9552_gpio_change pca1 GPIO id:14 status: 0 -> 1
+>>   1592690685.391411:pca9552_gpio_change pca1 GPIO id:14 status: 1 -> 0
+>>   1592690685.901391:pca9552_gpio_change pca1 GPIO id:14 status: 0 -> 1
+>>   1592690686.411678:pca9552_gpio_change pca1 GPIO id:14 status: 1 -> 0
+>>   1592690686.921279:pca9552_gpio_change pca1 GPIO id:14 status: 0 -> 1
+>>
+>> We notice the GPIO #14 (front-power LED) starts to blink.
+>>
+>> This LED is described in the witherspoon device-tree [*]:
+>>
+>>   front-power {
+>>       retain-state-shutdown;
+>>       default-state = "keep";
+>>       gpios = <&pca0 14 GPIO_ACTIVE_LOW>;
+>>   };
+>>
+>> [*] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm/boot/dts/aspeed-bmc-opp-witherspoon.dts?id=b1f9be9392f0#n140
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  hw/misc/pca9552.c    | 15 +++++++++++++++
+>>  hw/misc/trace-events |  1 +
+>>  2 files changed, 16 insertions(+)
+>>
+>> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+>> index f0d435e310..85557b78d9 100644
+>> --- a/hw/misc/pca9552.c
+>> +++ b/hw/misc/pca9552.c
+>> @@ -60,6 +60,21 @@ static void pca9552_display_pins_status(PCA9552State *s)
+>>          buf[i] = '\0';
+>>          trace_pca9552_gpio_status(s->description, buf);
+>>      }
+>> +    if (trace_event_get_state_backends(TRACE_PCA9552_GPIO_CHANGE)) {
+>> +        for (i = 0; i < s->nr_leds; i++) {
+>> +            if (extract32(pins_changed, i, 1)) {
+>> +                unsigned new_state = extract32(pins_status, i, 1);
+>> +
+>> +                /*
+>> +                 * We display the state using the PCA logic ("active-high").
+>> +                 * This is not the state of the LED, which signal might be
+>> +                 * wired "active-low" on the board.
+>> +                 */
+>> +                trace_pca9552_gpio_change(s->description, i,
+>> +                                          !new_state, new_state);
+>> +            }
+>> +        }
+>> +    }
+>>  }
+>>  
+>>  static void pca9552_update_pin_input(PCA9552State *s)
+>> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+>> index 7630e59652..805d2110e0 100644
+>> --- a/hw/misc/trace-events
+>> +++ b/hw/misc/trace-events
+>> @@ -209,3 +209,4 @@ grlib_apb_pnp_read(uint64_t addr, uint32_t value) "APB PnP read addr:0x%03"PRIx6
+>>  
+>>  # pca9552.c
+>>  pca9552_gpio_status(const char *description, const char *buf) "%s GPIOs 0-15 [%s]"
+>> +pca9552_gpio_change(const char *description, unsigned id, unsigned prev_state, unsigned current_state) "%s GPIO id:%u status: %u -> %u"
+>>
+> 
+> 

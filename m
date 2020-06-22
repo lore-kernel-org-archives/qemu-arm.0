@@ -1,161 +1,160 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp2666428lfb;
-        Fri, 22 May 2020 08:15:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJySVgJoBBO8qtabORZYCjagqN2X/ZxI4sy5fNUl8PNGUJiQHcyf2aa0pXf/NAtULmOrT8/P
-X-Received: by 2002:aa7:d39a:: with SMTP id x26mr3160153edq.207.1590160539504;
-        Fri, 22 May 2020 08:15:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590160539; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2901088lfm;
+        Sun, 21 Jun 2020 23:25:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwi3wXEOY/XxPWarW1Da1sKbYHPwZl1Zm0kEQOJLxBW60ikoSBZxjb1TG8fAdGdtTMz0C5t
+X-Received: by 2002:a25:54e:: with SMTP id 75mr24893380ybf.222.1592807145199;
+        Sun, 21 Jun 2020 23:25:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592807145; cv=none;
         d=google.com; s=arc-20160816;
-        b=fl1BGI4zZCEsJo7LcW4q65entmt6IJGXrYZI7btUHW8p61H7UPOT6Rlc9+twVLPAqu
-         capFibjeZhtuPxr5+clJZ2OlquGtZedcILUKsps23NOIODJvucnPWIc5oopB1+eY3Gmy
-         cM1OCzdDWRtGqZYwgZPam9R/SXpXmRjsW5P44XTvbLwMYPK7S0UcXZN5V7ck1Q29aGwl
-         8iiUmd/fPfhoXPLM34j4sfTGEBCNhiUEFiqnvETH5UqEDBmn002K2SUTxzyhoS0rjg3k
-         YJCmauR8jlqnxT0tMqhjFADR2v8xyK2dxNSQ+eAcdeAabjVdUGnNRgVlC0tUhj4gYUac
-         3WPw==
+        b=fYJKqLVZMje7UUNjU6zYE/jwlxv6iO5S04qEtGk+rwq6EbFPItEHtkT4ijLhT6lrwn
+         0d8f+h22I3hW7eZz6y6F+5mZc99Qbk6OjkV2UfQzIgX6ZB3fa5kSxrn9oXV1SQPVQ5SD
+         Dohaux8WRbMutnWhEwQnIh01QvN94I24BvTOJxfH+jT5HAf1QukiCpg0KyHoxV3B6/NB
+         X7dsRTQQI1vLqTQgs/SGXJnNEuvkm7JglbQv+QOjT+RgYU9kr+4qzAKQ488iDhRm2/js
+         fz983sr7PXzB7YljiDLaYno50nTky9/vewnunxbq256m+Ksv/7vkD78oAonfq6hcJTK6
+         BH1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:from:references:cc:to:subject
-         :dkim-signature;
-        bh=bgwxBnm8VD+Y/kxKW7/OF/c/OhXh/FcLyD2iTqVqTJ8=;
-        b=y1OD4PDjtLA7Tu1+PfzF6uVtGeTZF0VlvIkMgLitOVQYC29zeyku/enTHIiJFfBZBK
-         EnJ/bqj1QhxzKIXbT2Ft87ScygBRgMHGTZUEmaI0X0gjJ54KsGrLZtGPipOI3OGnCeUi
-         PIZDuIgTbMpp87Y5vr/JUIMSvsTTg0xUsFfmLusZuN++8nd8aAtWXZu6C4K/TumvXL+/
-         4nZoerpvboh/VelmKKO6Lm7uHKafSpoo7j7DdpwXUiCd/jDRNdg7Cr38O2RDX/dZkGA4
-         EaGmDrp52KQLR0LxhZ4GWK37LL/uZKmDHg92db6/E5QPd6Tb2h5VwsTWe0LQZf/HNqwZ
-         1YAg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=BYwo6xJNDrcwL59GMiUQvX5iMHmLMUstLnLT10D2Knk=;
+        b=crro1j1TYyWQNIQOjmCr9cR+siXw3mfxvkQrIDd16zIdeu37I20GH4T5PXKmVWVxPN
+         w0r1540pyZ/WK15imbNf3VjJcoO5h2lW50VY1bSGnZsVG4gmfoMxvYX58JbBtJLvp+Il
+         xCBAvRWW4bo496bl3PJw1C4yUwuiC8SVZfqu5NZZZU7g1eSG2QWI0dUqqKyCQq3bf22G
+         McqyHseg03ojVQHO/0VRE06kN8XZ3qpaVj+SHguOWkIMrAVA9sXDmK8uu4zEdfJ+2gex
+         p8D1U9rncyjAJGX8Fywq2crJQmBPwHlLvZ+dhZMTS/765Qbis+CSdMfIOT375Lbt9n98
+         hfOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YBGni59k;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id c18si910284ejr.84.2020.05.22.08.15.39
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v83si12311672ybv.434.2020.06.21.23.25.45
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 May 2020 08:15:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 21 Jun 2020 23:25:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YBGni59k;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1590160538;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=bgwxBnm8VD+Y/kxKW7/OF/c/OhXh/FcLyD2iTqVqTJ8=;
-	b=YBGni59kksS5yPDeGTejEX+WzWSIddW594ejNWEWxMso3V10M5uYHyPPALDFpS1i7CxbS3
-	PtmMI6bC7wNZOgf0jY2NYxBYePxRQmKhttVXWuEiXSGkZd8Zrgxph2GzCUhI9ynBc7nzQB
-	2FjGe2E1Fd4590szUS6bwoh7nVf2pec=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-241-MijILOt9OXO-tl2v0xxX7A-1; Fri, 22 May 2020 11:15:36 -0400
-X-MC-Unique: MijILOt9OXO-tl2v0xxX7A-1
-Received: by mail-wr1-f72.google.com with SMTP id n17so2349751wrr.22
-        for <alex.bennee@linaro.org>; Fri, 22 May 2020 08:15:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:autocrypt
-         :message-id:date:user-agent:mime-version:in-reply-to
-         :content-language:content-transfer-encoding;
-        bh=bgwxBnm8VD+Y/kxKW7/OF/c/OhXh/FcLyD2iTqVqTJ8=;
-        b=l+/+kDOzrnVLaWr/khTdylpV4NmNmVHlB+5tZXCDp3aZG80tnCe41nHwt+fxUme6U/
-         /A8B0wN+DdjQB9xNOWveQPmzT3geWRf47WwunzLW1bzu8Zh7mmsyz+99zc+TanifyBPT
-         hpZ+XWb5ABTDFRrdO/p1i+yRmux6fkpuZrIueR0+bJViushQMFMeMaKyg6RW0Jev1kvv
-         Mt/CphC8qWHijf0hT4OC2KQ5QQU1WcRpl1Oci94bznw+YWxJ7aLOpImyJWhEsO+OXCPf
-         WDMDH4xgdbWamILBo0FGXBgTY/4bKoiMlkh/0sjxSq+bMIgxM8M8MpQMR6s787LZPtdi
-         ZMGA==
-X-Gm-Message-State: AOAM5332+Ik4Be99sTgdZBTQJXOCq5Z5dwbXoH43UA3uGyGlOknUec7s
-	6VOe72tTgz8vgJKR98qQB9Aoorqk6+9ZkuexNXwQyAkAYqRek0wrJ90+6YIYlgO8uIOAbmejAmL
-	3jDmQMqQZafSRa5va
-X-Received: by 2002:a5d:40d2:: with SMTP id b18mr1546089wrq.131.1590160535594;
-        Fri, 22 May 2020 08:15:35 -0700 (PDT)
-X-Received: by 2002:a5d:40d2:: with SMTP id b18mr1546051wrq.131.1590160535216;
-        Fri, 22 May 2020 08:15:35 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.38] (17.red-88-21-202.staticip.rima-tde.net. [88.21.202.17])
-        by smtp.gmail.com with ESMTPSA id r9sm9719735wmg.47.2020.05.22.08.15.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 22 May 2020 08:15:34 -0700 (PDT)
-Subject: Re: [PATCH v3 09/11] rules.mak: Add base-arch() rule
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Marek Vasut <marex@denx.de>, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>, qemu-riscv@nongnu.org,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Max Filippov <jcmvbkbc@gmail.com>, Michael Walle <michael@walle.cc>,
- qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@rt-rk.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
-References: <20200521195911.19685-1-philmd@redhat.com>
- <20200521195911.19685-10-philmd@redhat.com>
- <ccd78343-795e-8874-e4f3-bb6861ea64f0@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <c96d1032-d702-c957-f85b-82ac4663c859@redhat.com>
-Date: Fri, 22 May 2020 17:15:33 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57782 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jnFto-0001JW-JQ
+	for alex.bennee@linaro.org; Mon, 22 Jun 2020 02:25:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35634)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jnFta-0001It-5O
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 02:25:30 -0400
+Received: from 9.mo179.mail-out.ovh.net ([46.105.76.148]:54814)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jnFtW-0006Xl-FE
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 02:25:29 -0400
+Received: from player761.ha.ovh.net (unknown [10.110.171.215])
+ by mo179.mail-out.ovh.net (Postfix) with ESMTP id A390A16C02E
+ for <qemu-arm@nongnu.org>; Mon, 22 Jun 2020 08:25:15 +0200 (CEST)
+Received: from kaod.org (lfbn-tou-1-921-245.w86-210.abo.wanadoo.fr
+ [86.210.152.245]) (Authenticated sender: clg@kaod.org)
+ by player761.ha.ovh.net (Postfix) with ESMTPSA id 4B3AB13982B4B;
+ Mon, 22 Jun 2020 06:25:07 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-95G00126b615f3-24cf-4752-9ec2-ae0a62459b26,D5B34DF2F1998B4AFDB97B5973F1BB92C24DD330)
+ smtp.auth=clg@kaod.org
+Subject: Re: [PATCH v4 3/8] hw/misc/pca9552: Use the PCA9552_PIN_COUNT
+ definition
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200620225854.31160-1-f4bug@amsat.org>
+ <20200620225854.31160-4-f4bug@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <4628bf30-9b56-a470-afc2-f140690cc002@kaod.org>
+Date: Mon, 22 Jun 2020 08:25:04 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <ccd78343-795e-8874-e4f3-bb6861ea64f0@linaro.org>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200620225854.31160-4-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: Q75pqt8mBNh/
+X-Ovh-Tracer-Id: 5677631757440289707
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudekuddguddttdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfeffvddtudegieefudeugffhjefgieegieegleettdehgfeiieevueeihfegfefgnecukfhppedtrddtrddtrddtpdekiedrvddutddrudehvddrvdegheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejiedurdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+Received-SPF: pass client-ip=46.105.76.148; envelope-from=clg@kaod.org;
+ helo=9.mo179.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 02:25:16
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Corey Minyard <cminyard@mvista.com>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NB0ovJdFpz+K
 
-On 5/22/20 6:24 AM, Richard Henderson wrote:
-> On 5/21/20 12:59 PM, Philippe Mathieu-Daudé wrote:
->> +		$(if $(findstring risc,$1),risc,\
+On 6/21/20 12:58 AM, Philippe Mathieu-Daudé wrote:
+> The current code models the PCA9552, but there are comments
+> saying the code could be easily adapted for the rest of the
+> PCA955x family.
+> Since we assume we have at most 16 pins (for the PCA9552),
+> add a definition and check the instance doesn't use more than
+> this number. This makes the code a bit safer in case other
+> PCA955x devices are added.
 > 
-> Eh?  riscv{32,64} vs openrisc.
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Nice catch, because with this patch openrisc builds with a riscv
-config-devices.h =)
+I would introduce a PCA9552Class and move nr_leds under the class. 
 
-> 
->> +		$(if $(findstring x86,$1),i386,\
-> 
-> Do we really not need an exact match for x86_64?
+C. 
 
-OK.
 
+> ---
+>  hw/misc/pca9552.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
 > 
->> +		$(if $(findstring aarch64,$1),arm,$1)))))))
+> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+> index cfefb8fce8..b97fc2893c 100644
+> --- a/hw/misc/pca9552.c
+> +++ b/hw/misc/pca9552.c
+> @@ -303,6 +303,17 @@ static void pca9552_initfn(Object *obj)
+>      }
+>  }
+>  
+> +static void pca9552_realize(DeviceState *dev, Error **errp)
+> +{
+> +    PCA9552State *s = PCA9552(dev);
+> +
+> +    if (s->nr_leds > PCA9552_PIN_COUNT) {
+> +        error_setg(errp, "%s invalid led count %u (max: %u)",
+> +                   __func__, s->nr_leds, PCA9552_PIN_COUNT);
+> +        return;
+> +    }
+> +}
+> +
+>  static void pca9552_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+> @@ -311,6 +322,7 @@ static void pca9552_class_init(ObjectClass *klass, void *data)
+>      k->event = pca9552_event;
+>      k->recv = pca9552_recv;
+>      k->send = pca9552_send;
+> +    dc->realize = pca9552_realize;
+>      dc->reset = pca9552_reset;
+>      dc->vmsd = &pca9552_vmstate;
+>  }
 > 
-> Exact match?
 
-OK.
-
-> 
-> 
-> r~
-> 

@@ -1,197 +1,114 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3185134lfm;
-        Mon, 22 Jun 2020 06:25:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwyKmp6iqsPJ3EShmxSNADnQmRpYSkEbX1Fya1W/0z7NSoOxSlrLXftBHqIqdxLB/GDVjT4
-X-Received: by 2002:a25:1843:: with SMTP id 64mr7343929yby.89.1592832355703;
-        Mon, 22 Jun 2020 06:25:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592832355; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3200395lfm;
+        Mon, 22 Jun 2020 06:44:01 -0700 (PDT)
+X-Received: by 2002:aca:d60c:: with SMTP id n12mr11771778oig.167.1592833441566;
+        Mon, 22 Jun 2020 06:44:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592833441; cv=none;
         d=google.com; s=arc-20160816;
-        b=QAjkNRSqQgYdRKhJWXeaKBOkLltFgUAu0OuyKzkeSoq0AR1ZsaekwkGofmIlPdFNdu
-         p25CzBGxCOi+fKEkqzRLFtke+OUENkLHa0MFk3cdu6J7EY0yYNNoF0JSMw0Fd/y2iYl8
-         DJAmBmoVNRaqvKUYtqz9H280ZNsXK1zecqaoTnJxAiq9qfhc+/6w3jU+JY4yd90DmVG8
-         3e9QzyKXsrtsdASpngHpLqa4LFHvRPqAS8F7iuGp0xJUyOMPr+aG8jyBCtBVGv+v6a1t
-         b0dHpLSqPgMQU96pu5q4vLNy/D2/WdCxVaUw2MPxiUe2Pc1smCu5t4BGCJLByGKRFoA9
-         sviA==
+        b=utBuFg4y4rXbcvoLGilyNb3EM1Mb+oCIhgu7K1HxhBaq689i75hFdoTh09S8wlRCdL
+         rQ5ak9WkOrs3YJ/0Cswst1lbIHSL5FsmGKFwHut3a7hJGHSo7UKe8vLwcJnQkZMXeMTx
+         VaaG21WKNLJoeKLOZVUA4i71oYN2ylH1mVvhmg+sFCbL0ZfK2ZZGndMFynBew5kxvdDt
+         nRQL6jomJaBBJcjzjvDnd8bZrJobj7D+63tE3soJtM3kEtJPqL/1vh5+g6uLf+Yu9gJi
+         bqm0inVItHTI7MGAobiMSPtxKeZ0lVXCOQchK8eRUqM3F4Raz+TSSmAgpqJwSvypNuMP
+         c8Lg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=95bLuv9wUwP9NlVJANCC/D0gfR1Eennf2cj6s06nS5Y=;
-        b=bUVG6lwfy8nt8sS9eeCQN93xB2pGTZsRNeoyLWHcw47wQF2VqIqpOzOOeD0B3vyFcW
-         Ww9q4fRLMVY0hkVy80+cTGmhbGUHfqLzYs6XyWhsCXuucVXOYN0k+UwbcZW+qnGgOM2Y
-         Kfm2oAhHAMw13XEWqbOqHvvx7QhY79exZ9CZ4X9wefVdZCLT697woMZebNz1QsWAOM3g
-         dva+w3O1WLORKl4/sVZXL5PO0rsvfAMBmkfhmtE6nyeR6qtnjEXBuMGRxU7aebgTvnca
-         IJFrBC7ZfqrbUpo71LESSquRwB69o/pe511TW52+wHfQ6iXR9MQD+nRDW0zD7Y1mwxMD
-         BJYA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=clXht2FD3ZQyJ9fSrZaYDQB0DuTsOzdhCbD5hQGoKXg=;
+        b=Z1NR0CLFAAk2CTvwMaZuo0/dua5IfA1S3rGFIFK/fJK2zXJlArP/61rcmyoKXQ5Rx3
+         eAex+GxLEYSxOzNen5SqKfvJQ4ebi4VWvXASlyqA54roJhUbAtuD6lsBJ0r1rfOcH+UX
+         X0W0UVC7f6jJwgmauCY5v9e24yaw0zOw0xTBODQ/rDfRNYK0qcAf/MAruufM6pra0DVz
+         TIL35F5LyGQDkINkeWlctgUI2uBr06oHRML3nlL335wg7K+FjebGifWfM8ksQggApPRe
+         a0Ba3drozMMTEpNhvqkQd7hUJj6pl3dtLZ0e+LdJuLtKnsoevrBOlH3rRol7CHQbwcYU
+         qEww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6si12551636ybu.119.2020.06.22.06.25.55
+       dkim=pass header.i=@linaro.org header.s=google header.b=dVRdVz4+;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5sor9827719oih.94.2020.06.22.06.44.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jun 2020 06:25:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 22 Jun 2020 06:44:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39374 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnMSR-0006ag-3q
-	for alex.bennee@linaro.org; Mon, 22 Jun 2020 09:25:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49896)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jnMRe-00060i-MD
- for qemu-devel@nongnu.org; Mon, 22 Jun 2020 09:25:07 -0400
-Received: from 17.mo6.mail-out.ovh.net ([46.105.36.150]:56342)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jnMRb-0002d1-C8
- for qemu-devel@nongnu.org; Mon, 22 Jun 2020 09:25:06 -0400
-Received: from player739.ha.ovh.net (unknown [10.108.42.176])
- by mo6.mail-out.ovh.net (Postfix) with ESMTP id A251F21B491
- for <qemu-devel@nongnu.org>; Mon, 22 Jun 2020 15:25:00 +0200 (CEST)
-Received: from kaod.org (lfbn-tou-1-921-245.w86-210.abo.wanadoo.fr
- [86.210.152.245]) (Authenticated sender: clg@kaod.org)
- by player739.ha.ovh.net (Postfix) with ESMTPSA id 5E07CF968D33;
- Mon, 22 Jun 2020 13:24:52 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G0035aca5aa9-3126-4c04-8516-1a592f4e1f32,D5B34DF2F1998B4AFDB97B5973F1BB92C24DD330)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH v4 4/8] hw/misc/pca9552: Add a 'description' property for
- debugging purpose
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200620225854.31160-1-f4bug@amsat.org>
- <20200620225854.31160-5-f4bug@amsat.org>
- <4d335933-9669-43e1-0966-5f0255142012@kaod.org>
- <34fe3d2b-6b41-0509-f172-5b45486fdf0c@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <deccf836-48ef-7112-d66e-a8d3cc4a9681@kaod.org>
-Date: Mon, 22 Jun 2020 15:24:50 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=dVRdVz4+;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=clXht2FD3ZQyJ9fSrZaYDQB0DuTsOzdhCbD5hQGoKXg=;
+        b=dVRdVz4+t7X1btLspPnh01UuB77k91MkpDoW7Do1E7EWx310g+JQfHuMvoNuVFXwm2
+         NmU/TzQyxBejZTrbS1HiC+rnAaJnd5ZLuWiQTaqGnYyfMzWzz7XDSrjzRp4XPGfm2upW
+         3sbyQucRT6t4mOniuEf86xkqrzSRGpa59q3u5REULhht8ddwwp3CrotHQZ9jirZNqXS4
+         6IP7MmL5rKJjeGDjbHK7xR/vc2ugw5T0dKQjwM2pFlQzHeXZYKlURBqbku5TP9BARC8J
+         oVPFcWfmqw3iGE73KiO7Wc4WmJgD0Wg+Bp2C4ZtWiAm7RN1nS7px81kvI+btlPjfTRPE
+         9YYQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=clXht2FD3ZQyJ9fSrZaYDQB0DuTsOzdhCbD5hQGoKXg=;
+        b=h+73YAgYP7xR0Av7zWM2NpABZY++nnfdkwJo+KCkNagaFsiCxL43hV/UIWlP7t0mwa
+         44b0y1/s/JN/fliGE3ytEOwCM9cslYuZocDTUN3PYXaifQKikwcv+SCTaqVvzg5NDVZK
+         f3GNo1gvwku8ybStQePJOwlMesHOrQunpCGzpv6o9k+XmK2Nu5Nn5cBEO4nexVZ1rggq
+         VCMxhOnQ4Osu4L1TurRP6KPCwPBXRaDdfF1TQbkUHHDAKFWXUdwyXp5JZBsY4sc3qeQk
+         VVuPZgiBPYvOanw/brVv9ZADxXbtHbyE3LNm2CclNR5g0OrmQsRSM6vGLNpu2JGruml8
+         sm8g==
+X-Gm-Message-State: AOAM5302bRCsaNp6WF7Z4fHMNaC/m7qBAZYjWtdkON5BDCpqm3Immf5K
+	2lz0XR1r6CW9UUCaCG554anzH95UDx3JA+XRWpPMcHCwuoZONw==
+X-Google-Smtp-Source: ABdhPJywH9aq9zVx+WPuea8lhoCLyMqmyYxMoKK2h3DYQqpIKQZQOx8mNoq0mqieYA+7pK3pcxfcbcfMd7AysjaNrzE=
+X-Received: by 2002:aca:568c:: with SMTP id k134mr11759332oib.48.1592833441119;
+ Mon, 22 Jun 2020 06:44:01 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <34fe3d2b-6b41-0509-f172-5b45486fdf0c@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 12766579047821970193
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudekvddgieeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefffdvtddugeeifeduuefghfejgfeigeeigeeltedthefgieeiveeuiefhgeefgfenucfkpheptddrtddrtddrtddpkeeirddvuddtrdduhedvrddvgeehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeefledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=46.105.36.150; envelope-from=clg@kaod.org;
- helo=17.mo6.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 09:25:00
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Corey Minyard <cminyard@mvista.com>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Peter Maydell <peter.maydell@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EiXU01EFWhXW
+References: <20200619170324.12093-1-peter.maydell@linaro.org>
+ <879e933c-a65c-3706-afa1-5ede1acb062c@ispras.ru> <e0fc64ab-b36e-99d1-90ea-8877c00f8c0f@trusted-objects.com>
+ <87o8pba35w.fsf@linaro.org> <7e057989-56b8-195d-247d-9ab0522ff23a@amsat.org>
+ <56ffc60e-f458-e9d4-d89e-4ca70b1ed4e2@trusted-objects.com>
+ <CAFEAcA8G3ngwUXMSCEN6UVEJ6Na5sBpHqYv1qh7PEn5uMAhGqQ@mail.gmail.com> <e9ad4bb6-e8c9-55f5-565a-01c3f35aea92@trusted-objects.com>
+In-Reply-To: <e9ad4bb6-e8c9-55f5-565a-01c3f35aea92@trusted-objects.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 22 Jun 2020 14:43:49 +0100
+Message-ID: <CAFEAcA9RAXmMeHFWX0La8yLL3M4mjC+mpsW6AvJFfsP8aGnfqQ@mail.gmail.com>
+Subject: Re: Role of qemu-arm
+To: vincent Dupaquis <v.dupaquis@trusted-objects.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: 595KcUF+m0vE
 
-On 6/22/20 10:31 AM, Philippe Mathieu-Daudé wrote:
-> On 6/22/20 8:27 AM, Cédric Le Goater wrote:
->> On 6/21/20 12:58 AM, Philippe Mathieu-Daudé wrote:
->>> Add a description field to distinguish between multiple devices.
->>
->> Reviewed-by: Cédric Le Goater <clg@kaod.org>
->>
->> Could it be a QOM attribute ? 
-> 
-> What do you call a 'QOM attribute'?
-> Is it what qdev properties implement?
-> (in this case via DEFINE_PROP_STRING).
+On Mon, 22 Jun 2020 at 14:03, vincent Dupaquis
+<v.dupaquis@trusted-objects.com> wrote:
+>     It is a shame, so I suppose I'll have to stay with my emulation
+> using netduino2 or so ...
+>
+>     That was the reason why I tried to use qem-arm, which is probably
+> crashing because what you just suggested.
 
-I meant a default Object property, which would apply to all Objects. 
+qemu-arm is for "I'm a linux userspace binary"; if your code is
+a userspace binary then you can use it...
 
-What you did is fine, so :
+>     Is there a way of pointing-out the interest for the feature ?
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+I'm afraid we don't support or have any plan to support
+"just run a CPU, no peripherals". I don't think there's much
+utility in it -- M-profile needs the interrupt controller,
+almost any setup wants to have a UART for I/O, and you need
+some actual RAM, which then leaves you with the question of
+what address to put the RAM at. At that point you're not
+really "just a CPU", you're "a minimalist board that doesn't
+correspond to any real hardware". We've found from experience
+that emulating things which don't correspond to something
+in the real world is not really maintainable and supportable
+in the long term.
 
-but, may be, a well defined child name is enough for the purpose.
+If your code will genuinely run on any M-profile board,
+just pick whichever one seems most useful and ignore
+the devices you don't need to use. (I like the mps2-an385,
+it has a bit more RAM than most.)
 
-C.
-
-
-> 
->>
->> C.
->>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
->>>  include/hw/misc/pca9552.h |  1 +
->>>  hw/misc/pca9552.c         | 10 ++++++++++
->>>  2 files changed, 11 insertions(+)
->>>
->>> diff --git a/include/hw/misc/pca9552.h b/include/hw/misc/pca9552.h
->>> index ef6da4988f..c5be7f1c5e 100644
->>> --- a/include/hw/misc/pca9552.h
->>> +++ b/include/hw/misc/pca9552.h
->>> @@ -27,6 +27,7 @@ typedef struct PCA9552State {
->>>  
->>>      uint8_t regs[PCA9552_NR_REGS];
->>>      uint8_t max_reg;
->>> +    char *description; /* For debugging purpose only */
->>>      uint8_t nr_leds;
->>>  } PCA9552State;
->>>  
->>> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
->>> index b97fc2893c..54ccdcf6d4 100644
->>> --- a/hw/misc/pca9552.c
->>> +++ b/hw/misc/pca9552.c
->>> @@ -12,6 +12,7 @@
->>>  #include "qemu/osdep.h"
->>>  #include "qemu/log.h"
->>>  #include "qemu/module.h"
->>> +#include "hw/qdev-properties.h"
->>>  #include "hw/misc/pca9552.h"
->>>  #include "hw/misc/pca9552_regs.h"
->>>  #include "migration/vmstate.h"
->>> @@ -312,8 +313,16 @@ static void pca9552_realize(DeviceState *dev, Error **errp)
->>>                     __func__, s->nr_leds, PCA9552_PIN_COUNT);
->>>          return;
->>>      }
->>> +    if (!s->description) {
->>> +        s->description = g_strdup("pca-unspecified");
->>> +    }
->>>  }
->>>  
->>> +static Property pca9552_properties[] = {
->>> +    DEFINE_PROP_STRING("description", PCA9552State, description),
->>> +    DEFINE_PROP_END_OF_LIST(),
->>> +};
->>> +
->>>  static void pca9552_class_init(ObjectClass *klass, void *data)
->>>  {
->>>      DeviceClass *dc = DEVICE_CLASS(klass);
->>> @@ -325,6 +334,7 @@ static void pca9552_class_init(ObjectClass *klass, void *data)
->>>      dc->realize = pca9552_realize;
->>>      dc->reset = pca9552_reset;
->>>      dc->vmsd = &pca9552_vmstate;
->>> +    device_class_set_props(dc, pca9552_properties);
->>>  }
->>>  
->>>  static const TypeInfo pca9552_info = {
->>>
->>
->>
-
+thanks
+-- PMM

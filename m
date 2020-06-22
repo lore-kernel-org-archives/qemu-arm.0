@@ -1,101 +1,177 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3164989lfm;
-        Mon, 22 Jun 2020 06:03:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyrwlx/UoButmU1jbADFWUrYGG7i0Po6KGZPTWYZ4F2bzrPW3MBtARS4vNMti2q6BJA7a+R
-X-Received: by 2002:adf:f450:: with SMTP id f16mr19214528wrp.307.1592831006021;
-        Mon, 22 Jun 2020 06:03:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592831006; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3176929lfm;
+        Mon, 22 Jun 2020 06:16:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx4Atp1JId6XRCwf5UQcPG18rcKxGmPOrgWxxrfjZKNZP5aX/CEcc0jPwBxwOrYhoLAqVKo
+X-Received: by 2002:a25:a165:: with SMTP id z92mr27531362ybh.48.1592831774299;
+        Mon, 22 Jun 2020 06:16:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592831774; cv=none;
         d=google.com; s=arc-20160816;
-        b=jcVgcA8PR1/kjalM2OMiBjrdQcYNrLK+eYuipFFnurL9hLUh1a0OJcoWq5Zd5nT2eZ
-         Mn3qq7QeetmUitUSy8uagVU6Ca3tUsphbF/oQ626jSNPVuJkHKqvAbD8JcJ8H1z3ZM2/
-         4yaDxAj3o4L+ymeqdUhL/c+IIn9HRjC+eWCrikfCD5mqfzFLW09bNG1Dej5Dt41Whzpd
-         H+Gqd7jVSLQfPN74+d5nFJrEgKvtRL1DJxTE2If9UzmMdO4rJgwA6pB9vz9ws9i+ytRh
-         gxF2QIe3iwSvs32qJOhWAp8Z+Xj87P3RJWG16CNTndR1WVPRQcLxdBhnnrt9ttbHVbAn
-         I3zQ==
+        b=tqLLIMsPEMZF77gjdd2ArK+qPHruSdxOEf7GdMC9Van9lWHtxG6vwGsl68mwjHfzVx
+         PJrBSipL0WKl3R/XdhGbaWsrSuhTLZGHgvZ5NW+iEMFloEJ2QJ4FryjPpyIi8N7CPdXe
+         +wWPyORc1hfvVkBKAqsE01U/ypZmYRB2Fj8dWudyT0CZGVmhItq75IE2tWx1fY/bN4dV
+         ZXlFJF1oGgV0EnaGv2eY6NGXB6rhQNt/t3iOvkfnPoxMQgUqAWWSHhEqtw5ZZ9ykIGkx
+         /S/OlQajpkgXKvAA2EShfYpzqCP/i6NVIOqlqBoXhSjOcEnciFl+E7eY55t3audFZ8jZ
+         SRAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-language:content-transfer-encoding:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=+UgBs8BZxfOfE9D8Jp30G0wCK7z3IF21oQOCAMBlGGA=;
-        b=BeoktSQ9GUv+QGeE6d19Jbwo3DY4NBbysLtE095QCgIA7y/oU4ReRr/tLR8ggaNb1E
-         lB/YGnLRN1ZDK4IywHF8eGhuHdz1hWURDvX0sfLWkl1SmMQVQATErW2ECQ9d3z/MyIXD
-         yA1eJEonYs+rFWxYdqTx2Zn7WMV24qXh6oMyNo3NXeFcN01znFe4YUpZUd2xlSvFftae
-         bQ/LKpdHGRXd/w0e09ttt0dZJX9AZyyptPQh6WX7xwv+0zr0O0tA3CkgDEAgiTRqKPuq
-         V6I7PThvQKlVdD+3/IZ0xVRga11jnkVhiyXohm3DQuOJ5R9zzB1j6QVuv07z3aqNG/Ov
-         otww==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=dHkrXbSBjKwb6RjY0Jc+11eSVNK1w6yKxzKOzyo/PEw=;
+        b=z8qK2AuI/6o7Qq3MnQsIHK2wYTUSYj5aq5nYpayNrnHwGEyWo1bRIv/+oaDof6gbpW
+         rqh3SeNSvBPQItikzFi1a3qqC3YLQPd8bxAK3kfpvxN9JMC2bUSDYgtsSkbp0y4zoHhJ
+         f6AobmTjaacDFUwHJDabSC4lM47Qzt9YjLVURRWQW0CwTTeZBBUZX/6ukjYeZz1xGiPG
+         XrS1xvYZWaLwRHxklQZwN/fI0S3pUfARRRKk/mp75T0oiZ0vatW5l+usbo06lBsGK8Fb
+         kM82jhBbmtZFZEA38clk+FxEZBOK04F81JkOHUgm6Dko5sCK9PqN9vj4Vc2/XacNLg0Q
+         0V5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of v.dupaquis@trusted-objects.com designates 149.202.244.204 as permitted sender) smtp.mailfrom=v.dupaquis@trusted-objects.com
-Return-Path: <v.dupaquis@trusted-objects.com>
-Received: from mailex.trusted-objects.com (mailex.trusted-objects.com. [149.202.244.204])
-        by mx.google.com with ESMTPS id j25si15825285wre.264.2020.06.22.06.03.25
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Jun 2020 06:03:25 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of v.dupaquis@trusted-objects.com designates 149.202.244.204 as permitted sender) client-ip=149.202.244.204;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i16si14445386ybm.105.2020.06.22.06.16.14
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Jun 2020 06:16:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of v.dupaquis@trusted-objects.com designates 149.202.244.204 as permitted sender) smtp.mailfrom=v.dupaquis@trusted-objects.com
-Received: from [192.170.0.219] (82.233.132.60) by S76918.EX76918.lan
- (2001:41d0:117:dd00::95ca:f4cc) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P521) id 15.1.1913.5; Mon, 22
- Jun 2020 15:03:24 +0200
-Subject: Re: Role of qemu-arm
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
-	=?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm
-	<qemu-arm@nongnu.org>
-References: <20200619170324.12093-1-peter.maydell@linaro.org>
- <879e933c-a65c-3706-afa1-5ede1acb062c@ispras.ru>
- <e0fc64ab-b36e-99d1-90ea-8877c00f8c0f@trusted-objects.com>
- <87o8pba35w.fsf@linaro.org> <7e057989-56b8-195d-247d-9ab0522ff23a@amsat.org>
- <56ffc60e-f458-e9d4-d89e-4ca70b1ed4e2@trusted-objects.com>
- <CAFEAcA8G3ngwUXMSCEN6UVEJ6Na5sBpHqYv1qh7PEn5uMAhGqQ@mail.gmail.com>
-From: vincent Dupaquis <v.dupaquis@trusted-objects.com>
-Message-ID: <e9ad4bb6-e8c9-55f5-565a-01c3f35aea92@trusted-objects.com>
-Date: Mon, 22 Jun 2020 15:03:24 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55484 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jnMJ3-0008CS-N7
+	for alex.bennee@linaro.org; Mon, 22 Jun 2020 09:16:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47214)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jnMIs-00089I-Sb
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 09:16:02 -0400
+Received: from 18.mo6.mail-out.ovh.net ([46.105.73.110]:51339)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jnMIq-000187-IC
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 09:16:02 -0400
+Received: from player799.ha.ovh.net (unknown [10.108.54.97])
+ by mo6.mail-out.ovh.net (Postfix) with ESMTP id DD77621B560
+ for <qemu-arm@nongnu.org>; Mon, 22 Jun 2020 15:15:57 +0200 (CEST)
+Received: from kaod.org (lfbn-tou-1-921-245.w86-210.abo.wanadoo.fr
+ [86.210.152.245]) (Authenticated sender: clg@kaod.org)
+ by player799.ha.ovh.net (Postfix) with ESMTPSA id A5463139F20A0;
+ Mon, 22 Jun 2020 13:15:48 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G005c64ac237-f55f-4f8d-b1ed-e2ff97476e13,D5B34DF2F1998B4AFDB97B5973F1BB92C24DD330)
+ smtp.auth=clg@kaod.org
+Subject: Re: [PATCH v4 3/8] hw/misc/pca9552: Use the PCA9552_PIN_COUNT
+ definition
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200620225854.31160-1-f4bug@amsat.org>
+ <20200620225854.31160-4-f4bug@amsat.org>
+ <4628bf30-9b56-a470-afc2-f140690cc002@kaod.org>
+ <f5ced6f5-f1fb-bbc2-8f64-d5d55fe8a7df@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <bbd20ac0-ccf6-3bcb-c876-8515c64804a1@kaod.org>
+Date: Mon, 22 Jun 2020 15:15:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8G3ngwUXMSCEN6UVEJ6Na5sBpHqYv1qh7PEn5uMAhGqQ@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <f5ced6f5-f1fb-bbc2-8f64-d5d55fe8a7df@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Language: fr-FR
-Return-Path: v.dupaquis@trusted-objects.com
-X-Originating-IP: [82.233.132.60]
-X-ClientProxiedBy: S76918.EX76918.lan (2001:41d0:117:dd00::95ca:f4cc) To
- S76918.EX76918.lan (2001:41d0:117:dd00::95ca:f4cc)
-X-TUID: ErmDNiskOwhm
+X-Ovh-Tracer-Id: 12613738132085115665
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudekvddgieefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefffdvtddugeeifeduuefghfejgfeigeeigeeltedthefgieeiveeuiefhgeefgfenucfkpheptddrtddrtddrtddpkeeirddvuddtrdduhedvrddvgeehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeelledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=46.105.73.110; envelope-from=clg@kaod.org;
+ helo=18.mo6.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 09:15:58
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Corey Minyard <cminyard@mvista.com>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: I6n+/DtAYDUS
 
-Peter,
+On 6/22/20 10:37 AM, Philippe Mathieu-Daudé wrote:
+> On 6/22/20 8:25 AM, Cédric Le Goater wrote:
+>> On 6/21/20 12:58 AM, Philippe Mathieu-Daudé wrote:
+>>> The current code models the PCA9552, but there are comments
+>>> saying the code could be easily adapted for the rest of the
+>>> PCA955x family.
+>>> Since we assume we have at most 16 pins (for the PCA9552),
+>>> add a definition and check the instance doesn't use more than
+>>> this number. This makes the code a bit safer in case other
+>>> PCA955x devices are added.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>
+>> I would introduce a PCA9552Class and move nr_leds under the class.
+> 
+> A bit excessive (for now) for the hobbyist time I can dedicate
+> to this, but I'll try (also renaming nr_leds -> nr_pins).
 
-    It is a shame, so I suppose I'll have to stay with my emulation
-using netduino2 or so ...
 
-    That was the reason why I tried to use qem-arm, which is probably
-crashing because what you just suggested.
+It's fine with me if you don't have time.  
 
-    Is there a way of pointing-out the interest for the feature ?
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-    Best regards,
 
-        Vincent.
+> 
+>>
+>> C. 
+>>
+>>
+>>> ---
+>>>  hw/misc/pca9552.c | 12 ++++++++++++
+>>>  1 file changed, 12 insertions(+)
+>>>
+>>> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+>>> index cfefb8fce8..b97fc2893c 100644
+>>> --- a/hw/misc/pca9552.c
+>>> +++ b/hw/misc/pca9552.c
+>>> @@ -303,6 +303,17 @@ static void pca9552_initfn(Object *obj)
+>>>      }
+>>>  }
+>>>  
+>>> +static void pca9552_realize(DeviceState *dev, Error **errp)
+>>> +{
+>>> +    PCA9552State *s = PCA9552(dev);
+>>> +
+>>> +    if (s->nr_leds > PCA9552_PIN_COUNT) {
+>>> +        error_setg(errp, "%s invalid led count %u (max: %u)",
+>>> +                   __func__, s->nr_leds, PCA9552_PIN_COUNT);
+>>> +        return;
+>>> +    }
+>>> +}
+>>> +
+>>>  static void pca9552_class_init(ObjectClass *klass, void *data)
+>>>  {
+>>>      DeviceClass *dc = DEVICE_CLASS(klass);
+>>> @@ -311,6 +322,7 @@ static void pca9552_class_init(ObjectClass *klass, void *data)
+>>>      k->event = pca9552_event;
+>>>      k->recv = pca9552_recv;
+>>>      k->send = pca9552_send;
+>>> +    dc->realize = pca9552_realize;
+>>>      dc->reset = pca9552_reset;
+>>>      dc->vmsd = &pca9552_vmstate;
+>>>  }
+>>>
+>>
+>>
 
-Le 22/06/2020 à 14:16, Peter Maydell a écrit :
-> On Mon, 22 Jun 2020 at 12:28, vincent Dupaquis
-> <v.dupaquis@trusted-objects.com> wrote:
->>     I essentially work on Cortex-M0+/M3 devices and I will have a try to
->> your proposal !
-> The 'none' machine can't be used with M-profile CPUs, because
-> it doesn't create the NVIC, which is a mandatory device for M-profile.
-> You'll get this error message:
-> qemu-system-arm: This board cannot be used with Cortex-M CPUs
->
-> (or if you're using a really old QEMU, it will crash or misbehave.)
->
-> thanks
-> -- PMM
--- 
-
-*Vincent Dupaquis*
-Software security & Cryptography expert
-06 24 58 17 05
-/Europarc de Pichaury Bâtiment B8 1330 rue Guillibert de la Lauzière
-13290 Aix-en-Provence/
-
-www.trusted-objects.com <http://www.trusted-objects.com>

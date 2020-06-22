@@ -1,115 +1,108 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp4258945lfc;
-        Tue, 2 Jun 2020 10:15:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyI5VNTJq8ZFM09q+mG/jZTveLkkEeG+o+/xnMtEmHWzzcbwrMflh1gMSQ/TqugwNUfNcDG
-X-Received: by 2002:a25:3413:: with SMTP id b19mr47043021yba.473.1591118147893;
-        Tue, 02 Jun 2020 10:15:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591118147; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3058709lfm;
+        Mon, 22 Jun 2020 03:44:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxfDAeOdpE8iFG4Ti/0C1/v8IGZNaQWQ+2TWXshbAglu4yTIZ2Ry3q6kbnAHOh418zuG0jE
+X-Received: by 2002:a25:ae91:: with SMTP id b17mr25928731ybj.324.1592822662566;
+        Mon, 22 Jun 2020 03:44:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592822662; cv=none;
         d=google.com; s=arc-20160816;
-        b=TQ/avhmXfM7SrvVngU96F6/OUCk36774BAyqXsLNvHVXSq27tN2owoH87dwYMT6kb4
-         +iAOMFFUbqD0hnr1/cc5APiu3ps4IU611dbIS50Fej2ji5vwoaOpUbbyJHFMwI7Pk6JE
-         1XN/ftQ+R6cdld1FkwSmSnSzmFhSs5+21WtV8/Y9sP8eX66vUkiwS1jmQrWY3df0G4js
-         sHtjRq5z89NxM/8IXP8MuGm23jSbDatypTZQj2dgQpHO2kPGvA+QkykpaiPt7/Ti5sWu
-         85zRuhsN4Lc8DXaNUJtwDFHDX2wHBaXLak88Nt3SLHqoGzzVRlvw60+xSlj5Y6UuyeCb
-         ZnvA==
+        b=pheKi8QeRpHdxYADc+3HKNGLbCtCSPvX4TL2yEPdJy0vbKbYPAtUr969kUGxo7xo6h
+         Snj0+w4IdDI4am00HeNNGAusDcVWAi0Co+8hniM5/RjD45/GECX6GPEBH2TOvri/jgNU
+         gmPiK7RF6ERlGe/SVRifLeVKB5PAocBbgXYr1lnKv2lkwSnNUFO2fh7Bs2Y4372CXIP9
+         B2GvMSYETUQDRx6+Yj2foOeBco/ouVZhVQMFoB62hobH98xm7Ix1Tt2NLoOz/gC2adhi
+         TlML7E2YQkXOBp4JIggUAkVj/4Vb3ZFX8XAO8gO3i2OHKYgd6PoB8okTu0fW7wwGu4Ac
+         wYUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=qdxT1XeBAqOOh1U0HFez6Rt3sDhklWxp8CC2VcQdQH8=;
-        b=CeLx6VHlHpx9fThMdS1ak0vMXj6rDPY9HHjhXJrEodWVevf64XRgN6dwE+8YcRK3Q1
-         7bMR6o+nur1qHzsXHVzUVKWCdmezRGKl31o5U8sjcMstdhUXA/MsR8O3DERwOfLdbfnV
-         z/vRzgxHfDg1s0PBdLzCq2mHUkMwZjvISMDa5a46U1K7JEKabvtAa9qSUY/nBjrQPkH/
-         TDgjgpYx6/zoIOBva6djGrsv02XDb68QHluaE0xoak3h2OYzuLE7zhBfOOz5TcoeibgK
-         sOs5M8pR89jRRLlxYK6VgNc1pmSeOCrofa5+x2Ijdm5PB8UgYHDFmmOH/It4MRlLP4Yk
-         1HDQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Anw6eNfwwT4QFHzvBoTnJ7slmXYArw8lveXY2DPWAYI=;
+        b=fFU1gI86xV9gl7NI/wdOcX+LMdKduflhfusUGXNtibpxPxlDLOMXuappmJ2Qcu3H3w
+         1Hb99mpt01MQcV1um9rOmz9AR9X3hXJtR7x3mYsKFnRq/6YEnbkUY0KDAIVCIikfRFSh
+         TLe8RZnMUD03z7K3wOy2mqNEpBaHXooVE3RTj+bqedltrWdDijBgobRsKg6aoBQhxeur
+         4sWbBm4f2LbD81ImprGmgMZc0wWEx1nAKVE6IDyPCF2jHUmvSgxMa7dh+SP/CbxKiVKo
+         xkiXM0KYaygFn64/yVB7KBrGCBUS5ma0D/bPRrcDZgcwN5GQV0UyHhUrcF4OqdOoVDxr
+         J7Mw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WEp3uUve;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WP23aa6c;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 139si2549684ybn.306.2020.06.02.10.15.47
+        by mx.google.com with ESMTPS id d3si15458454yba.205.2020.06.22.03.44.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jun 2020 10:15:47 -0700 (PDT)
+        Mon, 22 Jun 2020 03:44:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WEp3uUve;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WP23aa6c;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36400 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50928 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgAVv-0002PY-7U
-	for alex.bennee@linaro.org; Tue, 02 Jun 2020 13:15:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42084)
+	id 1jnJw5-0000h8-Rv
+	for alex.bennee@linaro.org; Mon, 22 Jun 2020 06:44:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jgAVn-0002PF-6X
- for qemu-arm@nongnu.org; Tue, 02 Jun 2020 13:15:39 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:48508
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jnJv8-0007j2-DU
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 06:43:22 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:51093
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jgAVk-0001Qw-Gg
- for qemu-arm@nongnu.org; Tue, 02 Jun 2020 13:15:38 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jnJuw-0005Pa-II
+ for qemu-arm@nongnu.org; Mon, 22 Jun 2020 06:43:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1591118135;
+ s=mimecast20190719; t=1592822588;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qdxT1XeBAqOOh1U0HFez6Rt3sDhklWxp8CC2VcQdQH8=;
- b=WEp3uUve0SH66w/9Mo3TvqPalOT4TtE/Lp9/dlIB2RZ28ijSKajCljmeZcM5KXc3eu0t+G
- WuEUqEGwyJOT4Fzy5mSlu9dfILhyJJs/B7QGxEbwGTaUndjKzOKQc3+8is0NN99m4gbhKE
- OjlKziZW/Z0bKlvivMBjypzTp9pUK2o=
+ bh=Anw6eNfwwT4QFHzvBoTnJ7slmXYArw8lveXY2DPWAYI=;
+ b=WP23aa6cbkNqg8jgC0LTMnXkOmh3qVqcisFI15coVnBhYO3Ai2Tc1dMawPVV1h4V2kTXHJ
+ wCfPVNKJ/zhac1wfuFwTuhkLH4jydrnvuQHM56xPqr8uFwKPq8bJmnyuLql5ciD77a/QT1
+ kh65GOqCCwi3xociYVA0DC8IMK9KElA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-135-RU882uhDP52yPvBWUAuBdg-1; Tue, 02 Jun 2020 13:15:30 -0400
-X-MC-Unique: RU882uhDP52yPvBWUAuBdg-1
+ us-mta-227-jSK6n2K6Oj-BtN6fHpqa6A-1; Mon, 22 Jun 2020 06:43:04 -0400
+X-MC-Unique: jSK6n2K6Oj-BtN6fHpqa6A-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4A9A1800053;
- Tue,  2 Jun 2020 17:15:29 +0000 (UTC)
-Received: from [10.36.113.56] (ovpn-113-56.ams2.redhat.com [10.36.113.56])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5E8435117E;
- Tue,  2 Jun 2020 17:15:20 +0000 (UTC)
-Subject: Re: [RFC 4/6] tests: tpm-emu: Remove assert on TPM2_ST_NO_SESSIONS
-To: Stefan Berger <stefanb@linux.ibm.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
-References: <20200601102113.1207-1-eric.auger@redhat.com>
- <20200601102113.1207-5-eric.auger@redhat.com>
- <50a54958-e9e0-c95f-3893-f7f790186e0e@linux.ibm.com>
- <80ce5833-90ee-cbc5-9822-cca1fabc33e6@redhat.com>
- <b310bcc1-02aa-4948-20d0-2e66de68acb3@linux.ibm.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <0f27abdd-ee72-22be-4a3f-d2129561d09b@redhat.com>
-Date: Tue, 2 Jun 2020 19:15:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 43168EC1A0;
+ Mon, 22 Jun 2020 10:43:02 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 394667167C;
+ Mon, 22 Jun 2020 10:42:56 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 3A84E113847E; Mon, 22 Jun 2020 12:42:51 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 16/22] hw: Fix error API violation around
+ object_property_set_link()
+Date: Mon, 22 Jun 2020 12:42:44 +0200
+Message-Id: <20200622104250.1404835-17-armbru@redhat.com>
+In-Reply-To: <20200622104250.1404835-1-armbru@redhat.com>
+References: <20200622104250.1404835-1-armbru@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <b310bcc1-02aa-4948-20d0-2e66de68acb3@linux.ibm.com>
-Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/01 23:49:17
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 02:57:26
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=0.001,
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,85 +115,231 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
- ardb@kernel.org, philmd@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Eric Auger <eric.auger@redhat.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nW2ZGFhbMSEZ
+X-TUID: +iLdrY+7s7P2
 
-Stefan,
+The Error ** argument must be NULL, &error_abort, &error_fatal, or a
+pointer to a variable containing NULL.  Passing an argument of the
+latter kind twice without clearing it in between is wrong: if the
+first call sets an error, it no longer points to NULL for the second
+call.
 
-On 6/2/20 6:17 PM, Stefan Berger wrote:
-> On 6/2/20 12:13 PM, Auger Eric wrote:
->> Hi Stefan,
->>
->> On 6/2/20 3:39 PM, Stefan Berger wrote:
->>> On 6/1/20 6:21 AM, Eric Auger wrote:
->>>> While writing tests for checking the content of TPM2 and DSDT
->>>> along with TPM-TIS instantiation I attempted to reuse the
->>>> framework used for TPM-TIS tests. However While dumping the
->>>> ACPI tables I get an assert on TPM2_ST_NO_SESSIONS. My assumption
->>>> is maybe the other tests did not execute long enough to encounter
->>>> this. So I tentatively propose to remove the assert as it
->>>> does not seem to break other tests and enable the new ones.
->>>>
->>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>> ---
->>>>    tests/qtest/tpm-emu.c | 1 -
->>>>    1 file changed, 1 deletion(-)
->>>>
->>>> diff --git a/tests/qtest/tpm-emu.c b/tests/qtest/tpm-emu.c
->>>> index c43ac4aef8..298d0eec74 100644
->>>> --- a/tests/qtest/tpm-emu.c
->>>> +++ b/tests/qtest/tpm-emu.c
->>>> @@ -49,7 +49,6 @@ static void *tpm_emu_tpm_thread(void *data)
->>>>            s->tpm_msg->tag = be16_to_cpu(s->tpm_msg->tag);
->>>>            s->tpm_msg->len = be32_to_cpu(s->tpm_msg->len);
->>>>            g_assert_cmpint(s->tpm_msg->len, >=, minhlen);
->>>> -        g_assert_cmpint(s->tpm_msg->tag, ==, TPM2_ST_NO_SESSIONS);
->>> You should not have to remove this. The tests are skipped if swtpm does
->>> not support TPM 2 via --tpm2 option. This would be a very old swtpm
->>> version, though. So, all tests are run with --tpm2 option and any
->>> response received from the TPM would be a TPM 2 response that should
->>> have TPM2_ST_NO_SESSIONS as the tag. I'd be curious what other value you
->>> are seeing there.
->> If I revert this patch I am getting TPM2_ST_SESSIONS on my end.
-> 
-> Is firmware/BIOS active? There's no TPM2_ST_SESSIONS coming out of QEMU.
+virtio_gpu_pci_base_realize(), virtio_vga_base_realize(),
+sparc32_ledma_device_realize(), sparc32_dma_realize(),
+sparc32_dma_realize() xilinx_axidma_realize(), mips_cps_realize(),
+macio_realize_ide(), xilinx_enet_realize(), and
+virtio_iommu_pci_realize() are wrong that way: they reuse the argument
+they pass to object_property_set_link() for another call.
 
-From what I understand
+Harmless, because object_property_set_link() can't actually fail for
+them: it fails when the property doesn't exist, is not settable, or
+its .check() method fails.  Fix by passing &error_abort instead.
 
-QTEST_QEMU_BINARY=x86_64-softmmu/qemu-system-x86_64
-tests/qtest/bios-tables-test
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: Alistair Francis <alistair@alistair23.me>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Cc: Aurelien Jarno <aurelien@aurel32.net>
+Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+Cc: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ hw/display/virtio-gpu-pci.c  |  2 +-
+ hw/display/virtio-vga.c      |  2 +-
+ hw/dma/sparc32_dma.c         |  6 +++---
+ hw/dma/xilinx_axidma.c       | 12 ++----------
+ hw/mips/cps.c                |  6 ++++--
+ hw/misc/macio/macio.c        |  3 ++-
+ hw/net/xilinx_axienet.c      | 12 ++----------
+ hw/virtio/virtio-iommu-pci.c |  2 +-
+ 8 files changed, 16 insertions(+), 29 deletions(-)
 
-launches
-
-x86_64-softmmu/qemu-system-x86_64 \
--qtest unix:/tmp/qtest-20181.sock \
--qtest-log /dev/null -chardev socket,path=/tmp/qtest-20181.qmp,id=char0
--mon chardev=char0,mode=control \
--display none -machine q35,kernel-irqchip=off \
--accel kvm -accel tcg \
--net none -display none \
--chardev socket,id=chr,path=/tmp/qemu-test_acpi_q35_tcg_tpm2.RJJCL0/sock
--tpmdev emulator,id=dev,chardev=chr \
--device tpm-tis,tpmdev=dev \
--drive id=hd0,if=none,file=tests/acpi-test-disk-RAnagW,format=raw
--device ide-hd,drive=hd0 -accel qtest
-
-acpi-test-disk-RAnagW consists in an x86 boot sector code, created by
-boot_sector_init (x86_boot_sector)
-
-Thanks
-
-Eric
-
-
-
-
-> 
->    Stefan
-> 
-> 
-> 
+diff --git a/hw/display/virtio-gpu-pci.c b/hw/display/virtio-gpu-pci.c
+index b532fe8b5f..41b88b878d 100644
+--- a/hw/display/virtio-gpu-pci.c
++++ b/hw/display/virtio-gpu-pci.c
+@@ -44,7 +44,7 @@ static void virtio_gpu_pci_base_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
+     for (i = 0; i < g->conf.max_outputs; i++) {
+         object_property_set_link(OBJECT(g->scanout[i].con),
+                                  OBJECT(vpci_dev),
+-                                 "device", errp);
++                                 "device", &error_abort);
+     }
+ }
+ 
+diff --git a/hw/display/virtio-vga.c b/hw/display/virtio-vga.c
+index 68a062ece6..67f409e106 100644
+--- a/hw/display/virtio-vga.c
++++ b/hw/display/virtio-vga.c
+@@ -154,7 +154,7 @@ static void virtio_vga_base_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
+     for (i = 0; i < g->conf.max_outputs; i++) {
+         object_property_set_link(OBJECT(g->scanout[i].con),
+                                  OBJECT(vpci_dev),
+-                                 "device", errp);
++                                 "device", &error_abort);
+     }
+ }
+ 
+diff --git a/hw/dma/sparc32_dma.c b/hw/dma/sparc32_dma.c
+index f02aca6f40..2d7dbbb92d 100644
+--- a/hw/dma/sparc32_dma.c
++++ b/hw/dma/sparc32_dma.c
+@@ -346,7 +346,7 @@ static void sparc32_ledma_device_realize(DeviceState *dev, Error **errp)
+     d = qdev_new(TYPE_LANCE);
+     object_property_add_child(OBJECT(dev), "lance", OBJECT(d));
+     qdev_set_nic_properties(d, nd);
+-    object_property_set_link(OBJECT(d), OBJECT(dev), "dma", errp);
++    object_property_set_link(OBJECT(d), OBJECT(dev), "dma", &error_abort);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(d), &error_fatal);
+ }
+ 
+@@ -379,7 +379,7 @@ static void sparc32_dma_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     espdma = qdev_new(TYPE_SPARC32_ESPDMA_DEVICE);
+-    object_property_set_link(OBJECT(espdma), iommu, "iommu", errp);
++    object_property_set_link(OBJECT(espdma), iommu, "iommu", &error_abort);
+     object_property_add_child(OBJECT(s), "espdma", OBJECT(espdma));
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(espdma), &error_fatal);
+ 
+@@ -394,7 +394,7 @@ static void sparc32_dma_realize(DeviceState *dev, Error **errp)
+                                 sysbus_mmio_get_region(sbd, 0));
+ 
+     ledma = qdev_new(TYPE_SPARC32_LEDMA_DEVICE);
+-    object_property_set_link(OBJECT(ledma), iommu, "iommu", errp);
++    object_property_set_link(OBJECT(ledma), iommu, "iommu", &error_abort);
+     object_property_add_child(OBJECT(s), "ledma", OBJECT(ledma));
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(ledma), &error_fatal);
+ 
+diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+index 6a9df2c4db..a069637bf2 100644
+--- a/hw/dma/xilinx_axidma.c
++++ b/hw/dma/xilinx_axidma.c
+@@ -537,7 +537,6 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
+     XilinxAXIDMAStreamSlave *ds = XILINX_AXI_DMA_DATA_STREAM(&s->rx_data_dev);
+     XilinxAXIDMAStreamSlave *cs = XILINX_AXI_DMA_CONTROL_STREAM(
+                                                             &s->rx_control_dev);
+-    Error *local_err = NULL;
+     int i;
+ 
+     object_property_add_link(OBJECT(ds), "dma", TYPE_XILINX_AXI_DMA,
+@@ -548,11 +547,8 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
+                              (Object **)&cs->dma,
+                              object_property_allow_set_link,
+                              OBJ_PROP_LINK_STRONG);
+-    object_property_set_link(OBJECT(ds), OBJECT(s), "dma", &local_err);
+-    object_property_set_link(OBJECT(cs), OBJECT(s), "dma", &local_err);
+-    if (local_err) {
+-        goto xilinx_axidma_realize_fail;
+-    }
++    object_property_set_link(OBJECT(ds), OBJECT(s), "dma", &error_abort);
++    object_property_set_link(OBJECT(cs), OBJECT(s), "dma", &error_abort);
+ 
+     for (i = 0; i < 2; i++) {
+         struct Stream *st = &s->streams[i];
+@@ -567,10 +563,6 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
+ 
+     address_space_init(&s->as,
+                        s->dma_mr ? s->dma_mr : get_system_memory(), "dma");
+-    return;
+-
+-xilinx_axidma_realize_fail:
+-    error_propagate(errp, local_err);
+ }
+ 
+ static void xilinx_axidma_init(Object *obj)
+diff --git a/hw/mips/cps.c b/hw/mips/cps.c
+index cdfab19826..5382bc86f7 100644
+--- a/hw/mips/cps.c
++++ b/hw/mips/cps.c
+@@ -150,8 +150,10 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
+     object_property_set_int(OBJECT(&s->gcr), s->num_vp, "num-vp", &err);
+     object_property_set_int(OBJECT(&s->gcr), 0x800, "gcr-rev", &err);
+     object_property_set_int(OBJECT(&s->gcr), gcr_base, "gcr-base", &err);
+-    object_property_set_link(OBJECT(&s->gcr), OBJECT(&s->gic.mr), "gic", &err);
+-    object_property_set_link(OBJECT(&s->gcr), OBJECT(&s->cpc.mr), "cpc", &err);
++    object_property_set_link(OBJECT(&s->gcr), OBJECT(&s->gic.mr), "gic",
++                             &error_abort);
++    object_property_set_link(OBJECT(&s->gcr), OBJECT(&s->cpc.mr), "cpc",
++                             &error_abort);
+     sysbus_realize(SYS_BUS_DEVICE(&s->gcr), &err);
+     if (err != NULL) {
+         error_propagate(errp, err);
+diff --git a/hw/misc/macio/macio.c b/hw/misc/macio/macio.c
+index 8ba7af073c..3251c79f46 100644
+--- a/hw/misc/macio/macio.c
++++ b/hw/misc/macio/macio.c
+@@ -136,7 +136,8 @@ static void macio_realize_ide(MacIOState *s, MACIOIDEState *ide,
+     sysbus_connect_irq(sysbus_dev, 0, irq0);
+     sysbus_connect_irq(sysbus_dev, 1, irq1);
+     qdev_prop_set_uint32(DEVICE(ide), "channel", dmaid);
+-    object_property_set_link(OBJECT(ide), OBJECT(&s->dbdma), "dbdma", errp);
++    object_property_set_link(OBJECT(ide), OBJECT(&s->dbdma), "dbdma",
++                             &error_abort);
+     macio_ide_register_dma(ide);
+ 
+     qdev_realize(DEVICE(ide), BUS(&s->macio_bus), errp);
+diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+index c2f40b8ea9..679a359f9a 100644
+--- a/hw/net/xilinx_axienet.c
++++ b/hw/net/xilinx_axienet.c
+@@ -980,7 +980,6 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
+     XilinxAXIEnetStreamSlave *ds = XILINX_AXI_ENET_DATA_STREAM(&s->rx_data_dev);
+     XilinxAXIEnetStreamSlave *cs = XILINX_AXI_ENET_CONTROL_STREAM(
+                                                             &s->rx_control_dev);
+-    Error *local_err = NULL;
+ 
+     object_property_add_link(OBJECT(ds), "enet", "xlnx.axi-ethernet",
+                              (Object **) &ds->enet,
+@@ -990,11 +989,8 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
+                              (Object **) &cs->enet,
+                              object_property_allow_set_link,
+                              OBJ_PROP_LINK_STRONG);
+-    object_property_set_link(OBJECT(ds), OBJECT(s), "enet", &local_err);
+-    object_property_set_link(OBJECT(cs), OBJECT(s), "enet", &local_err);
+-    if (local_err) {
+-        goto xilinx_enet_realize_fail;
+-    }
++    object_property_set_link(OBJECT(ds), OBJECT(s), "enet", &error_abort);
++    object_property_set_link(OBJECT(cs), OBJECT(s), "enet", &error_abort);
+ 
+     qemu_macaddr_default_if_unset(&s->conf.macaddr);
+     s->nic = qemu_new_nic(&net_xilinx_enet_info, &s->conf,
+@@ -1008,10 +1004,6 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
+ 
+     s->rxmem = g_malloc(s->c_rxmem);
+     s->txmem = g_malloc(s->c_txmem);
+-    return;
+-
+-xilinx_enet_realize_fail:
+-    error_propagate(errp, local_err);
+ }
+ 
+ static void xilinx_enet_init(Object *obj)
+diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
+index 632533abaf..bd61d6e2f8 100644
+--- a/hw/virtio/virtio-iommu-pci.c
++++ b/hw/virtio/virtio-iommu-pci.c
+@@ -56,7 +56,7 @@ static void virtio_iommu_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
+     }
+     object_property_set_link(OBJECT(dev),
+                              OBJECT(pci_get_bus(&vpci_dev->pci_dev)),
+-                             "primary-bus", errp);
++                             "primary-bus", &error_abort);
+     qdev_realize(vdev, BUS(&vpci_dev->bus), errp);
+ }
+ 
+-- 
+2.26.2
 

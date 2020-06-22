@@ -1,162 +1,366 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp427971lfc;
-        Wed, 3 Jun 2020 04:51:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyRWBx+Uk9CHhUVD+7lX6GrHYfMrJmz+6TQeeT0jST7yuZDaKYXIv840D+1nCZQ/u3sQil+
-X-Received: by 2002:a25:f20f:: with SMTP id i15mr49081768ybe.72.1591185064319;
-        Wed, 03 Jun 2020 04:51:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591185064; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3061150lfm;
+        Mon, 22 Jun 2020 03:48:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw3nVsvb62nCVwXmV1j+Mg+dMNlrQVWDXaghkFkF0rxA/Ublz9jnIX7so2MW6pfXHUekV5J
+X-Received: by 2002:a25:d3d0:: with SMTP id e199mr25454232ybf.27.1592822887994;
+        Mon, 22 Jun 2020 03:48:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592822887; cv=none;
         d=google.com; s=arc-20160816;
-        b=vM/rSWseHf/Z9j/gmGYZPXVwMl+YrbMCFD4Bj6FySmORelAsEzMgajQGlgfcKS0Ydu
-         WnAVKgLmd/cszeNveamOmLDFVVo6VmBaE+JTHeXZFlZQkuEYY/aona8bH0jCRGDIdNnV
-         tfn6nNFRAtzHYIC5xEY2nUNr1cGGjZzpw5ohlZgNTDaM1VKdArmTkLMfX1p8sw+Q9M4K
-         DcNjrzEU+q+wCGO2D/CW3qfuW7/rmLQD/C3fPYkwiDgS97nDxPl0/qzioEHO6389yVwC
-         lobhwV1jkovMh4B6rYfgvrI6GVRzPOjGaWc/jTnWTJOK0B61ryuAge7uVChbOOGlfV0g
-         2aog==
+        b=B5lWTcChbOIM6lqaNS1Kh3gH7JA/+wXkkQIov95WzAdEF2mjrDZzfRMDHV/MuZXM9e
+         Naaxb/ssmUCAdMFOep5MW55Q+k4qCzbIRKYfahAYQhH0ftfgRsURVOWf4MPiTOJBgDbu
+         uAsK/QEBx3XhgNtcbxXVprlmMXgnjMyBNMfwLN90MysQwiqYmvagjKwSkghLmWBmmN8O
+         R37w7qxmh1s450cw16toNc2DQ8q6aD06WSTSYmv+jWw0eRY3yJg9L9yQvw6mGPhlEgt7
+         4i3O+Ikch3q4pyDmfMF+alwZZ3fMq2uleMgjzGxPF0fxKd2rsmSSahsmI7GyAAjxVY1p
+         v0qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=rh/VQMslucR9MFxVqRKzePa94ZrLecolIeGWsY0qK5U=;
-        b=jZOp4Mzt5ouaaaVA/1dyYN2ItZSNFUetOLutAjnoRLgFZ/YRGjONQImoaGji35oIS/
-         ih0FdDcAyOHSExmV9OjTTF9uo+r+F56wWsdjiRGPKXRhbAMfyL23NHZzoyUvGs08Gt3d
-         DIg6hiK29tQ2E47Y1r5dj9cID4w2KODFMqHrSqTcy2xSjd906tuNie0IYt3aji4W6ILO
-         Y+D3evDNLCZYepzjVK51C3Q9WeHccpiv9GlpYqZk1uWHj62Tkn9lsl4Y6ZApVUpVgnFx
-         Mqpnx7C1VhWNdry39dzvuaTaIe7kicYgzKJPEVMIf1qWizRho9w9i9dztBfjX8BP4gvj
-         tNGw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=aqNcSWiUGBL30ukh7t0yy4S45t6iBOi443iP0whu0mg=;
+        b=sO+vXNlX5634fKA8+tpmWIym1WWao9Tt7KOgLuvicHzaDGxYXaWFxOr9ZXuLQTcb+v
+         0Uh3S2IGIyxAA8vUw0/RQHYLGUtZJ+3O1oNhqU/pIXcw2PAqcDBAB3+ZrsjkzoBYBa6V
+         MR4FqQC7dsfPSkAxgZfW03SnFKTFios2m0qPQEcsjjhmmfe1hxTbikpR+rTmcriDfaFW
+         NYtIQoreH1iUwNNmnwnhxpQnXY2oiMLMaJSZBDVLfugb6JL+s6MtK6bbWWip+Y2EaSx0
+         F8oGXGyX0cB/DOoQGf7odaqPMAbuTj52d1QcPN4Ec7/Iy3MOk6six21JLd/LrbRuVEAK
+         c8rg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WkjumVMl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e5si1525851ybo.233.2020.06.03.04.51.04
+        by mx.google.com with ESMTPS id x15si13861064ybk.43.2020.06.22.03.48.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jun 2020 04:51:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 Jun 2020 03:48:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52126 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WkjumVMl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36258 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jgRvD-0008RP-Nm
-	for alex.bennee@linaro.org; Wed, 03 Jun 2020 07:51:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39358)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jnJzj-0006qv-5a
+	for alex.bennee@linaro.org; Mon, 22 Jun 2020 06:48:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40256)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jgRv6-0008Qt-H2; Wed, 03 Jun 2020 07:50:56 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2104 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jgRv5-0003qS-Cw; Wed, 03 Jun 2020 07:50:56 -0400
-Received: from lhreml706-chm.china.huawei.com (unknown [172.18.7.108])
- by Forcepoint Email with ESMTP id DF1B79064C5E8DFC0116;
- Wed,  3 Jun 2020 12:50:48 +0100 (IST)
-Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
- lhreml706-chm.china.huawei.com (10.201.108.55) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1913.5; Wed, 3 Jun 2020 12:50:48 +0100
-Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
- lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1913.007; 
- Wed, 3 Jun 2020 12:50:48 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Auger Eric <eric.auger@redhat.com>, Andrew Jones <drjones@redhat.com>
-Subject: RE: [Question] Regarding PMU initialization within the QEMU for ARM
- VCPUs
-Thread-Topic: [Question] Regarding PMU initialization within the QEMU for ARM
- VCPUs
-Thread-Index: AdY3+/mIYt1+TQdDQmymnxAa7PkUWwBhkdKAAADBa4AABaxxMA==
-Date: Wed, 3 Jun 2020 11:50:48 +0000
-Message-ID: <c282b7adf50b4e06bf30d7944c1f0c06@huawei.com>
-References: <b2e401cd17fe49d792d09b31bd726e35@huawei.com>
- <20200603093745.dwfb55ny34az7rez@kamzik.brq.redhat.com>
- <fb9cf73c-e94b-b7f9-1d11-dc0353dd3996@redhat.com>
-In-Reply-To: <fb9cf73c-e94b-b7f9-1d11-dc0353dd3996@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.30.55]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jnJuz-0007aE-Pj
+ for qemu-devel@nongnu.org; Mon, 22 Jun 2020 06:43:14 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:34056
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jnJuo-0005OA-Qb
+ for qemu-devel@nongnu.org; Mon, 22 Jun 2020 06:43:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592822581;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=aqNcSWiUGBL30ukh7t0yy4S45t6iBOi443iP0whu0mg=;
+ b=WkjumVMltw7yEYfDR8G64TA/CEGWOGIsQ/0qhZGnjHRWSUCa5AlrhGf8PcOs3qxAv11Rkf
+ KQmuyTqXMaU1uCHO+gNlSRHI9TuH1JwGwKuC//DJDlSsAJAtKb3ZNBjIFBUcD/tkFOnmsG
+ RO3gvG5Wob6O602dAhvs7CApGQIti5A=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-68-m1p1g_FkOdqNX3F6Ia_ZdQ-1; Mon, 22 Jun 2020 06:42:58 -0400
+X-MC-Unique: m1p1g_FkOdqNX3F6Ia_ZdQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B3907835B44;
+ Mon, 22 Jun 2020 10:42:56 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 270265D9DD;
+ Mon, 22 Jun 2020 10:42:56 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 3E33D113847F; Mon, 22 Jun 2020 12:42:51 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 17/22] hw/arm: Drop useless object_property_set_link() error
+ handling
+Date: Mon, 22 Jun 2020 12:42:45 +0200
+Message-Id: <20200622104250.1404835-18-armbru@redhat.com>
+In-Reply-To: <20200622104250.1404835-1-armbru@redhat.com>
+References: <20200622104250.1404835-1-armbru@redhat.com>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.76.210;
- envelope-from=salil.mehta@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/03 07:45:22
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/22 03:17:49
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Igor Mammedov <imammedo@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /zjoyR/8v7KE
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rvojKRXuEMtN
 
-SGkgRXJpYywNCg0KPiBGcm9tOiBRZW11LWFybSBbbWFpbHRvOnFlbXUtYXJtLWJvdW5jZXMrc2Fs
-aWwubWVodGE9aHVhd2VpLmNvbUBub25nbnUub3JnXQ0KPiBPbiBCZWhhbGYgT2YgQXVnZXIgRXJp
-Yw0KPiBTZW50OiBXZWRuZXNkYXksIEp1bmUgMywgMjAyMCAxMDo1OSBBTQ0KPiBUbzogQW5kcmV3
-IEpvbmVzIDxkcmpvbmVzQHJlZGhhdC5jb20+OyBTYWxpbCBNZWh0YSA8c2FsaWwubWVodGFAaHVh
-d2VpLmNvbT4NCj4gQ2M6IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz47
-IElnb3IgTWFtbWVkb3YNCj4gPGltYW1tZWRvQHJlZGhhdC5jb20+OyBxZW11LWFybUBub25nbnUu
-b3JnOyBxZW11LWRldmVsQG5vbmdudS5vcmc7DQo+IG1zdEByZWRoYXQuY29tDQo+IFN1YmplY3Q6
-IFJlOiBbUXVlc3Rpb25dIFJlZ2FyZGluZyBQTVUgaW5pdGlhbGl6YXRpb24gd2l0aGluIHRoZSBR
-RU1VIGZvciBBUk0NCj4gVkNQVXMNCj4gDQo+IEhpIERyZXcsDQo+IA0KPiBPbiA2LzMvMjAgMTE6
-MzcgQU0sIEFuZHJldyBKb25lcyB3cm90ZToNCj4gPiBPbiBNb24sIEp1biAwMSwgMjAyMCBhdCAw
-MzowNDozM1BNICswMDAwLCBTYWxpbCBNZWh0YSB3cm90ZToNCj4gPj4gSGVsbG8sDQo+ID4+IEkg
-Y291bGQgc2VlIGJlbG93IHdpdGhpbiBmdW5jdGlvbiBmZHRfYWRkX3BtdV9ub2RlcygpIHBhcnQg
-b2YNCj4gPj4gaHcvYXJtL3ZpcnQuYyBkdXJpbmcgdmlydCBtYWNoaW5lIGluaXRpYWxpemF0aW9u
-IHRpbWU6DQo+ID4+DQo+ID4+IE9ic2VydmF0aW9uOg0KPiA+PiBJbiBiZWxvdyBmdW5jdGlvbiwg
-c3VwcG9ydCBvZiBQTVUgZmVhdHVyZSBpcyBiZWluZyBjaGVja2VkIGZvcg0KPiA+PiBlYWNoIHZj
-cHUgYW5kIGlmIHRoZSBQTVUgaXMgZm91bmQgcGFydCBvZiB0aGUgZmVhdHVyZXMgdGhlbiBQTVUN
-Cj4gPj4gaXMgaW5pdGlhbGl6ZWQgd2l0aCBpbiB0aGUgaG9zdC9LVk0uIEJ1dCBpZiB0aGVyZSBp
-cyBldmVuIG9uZQ0KPiA+PiB2Y3B1IHdoaWNoIGlzIGZvdW5kIHRvIG5vdCBzdXBwb3J0IHRoZSBQ
-TVUgdGhlbiBsb29wIGlzIGV4aXRlZA0KPiA+PiBhbmQgUE1VIGlzIG5vdCBpbml0aWFsaXplZCBm
-b3IgdGhlIHJlc3Qgb2YgdGhlIHZjcHVzIGFzIHdlbGwuDQo+ID4+DQo+ID4+IFF1ZXN0aW9uczoN
-Cj4gPj4gUTEuIE5vdCBzdXJlIHdoYXQgaXMgdGhlIGxvZ2ljIG9mIHRoZSBwcmVtYXR1cmUgZXhp
-dCBhbmQgbm90DQo+ID4+ICAgICBjb250aW51aW5nIHdpdGggZnVydGhlciBjaGVja3MgYW5kIGlu
-aXRpYWxpemF0aW9uIG9mIG90aGVyDQo+ID4+ICAgICBWQ1BVIFBNVXM/DQo+ID4NCj4gPiBLVk0g
-cmVxdWlyZXMgYWxsIFZDUFVzIHRvIGhhdmUgYSBQTVUgaWYgb25lIGRvZXMuDQo+IA0KPiBJIGZh
-aWwgdG8gZmluZCB3aGVyZSB0aGlzIGlzIGVuZm9yY2VkPyBEbyB5b3Uga25vdyB0aGUgcGxhY2U/
-DQo+IA0KPiAgSWYgdGhlIEFSTSBBUk0NCj4gPiBzYXlzIGl0J3MgcG9zc2libGUgdG8gaGF2ZSBQ
-TVVzIGZvciBvbmx5IHNvbWUgQ1BVcywgdGhlbiwgZm9yIFRDRywNCj4gPiB0aGUgcmVzdHJpY3Rp
-b24gY291bGQgYmUgcmVsYXhlZC4gSSBleHBlY3QgaXQgd2lsbCB0YWtlIG1vcmUgdGhhbg0KPiA+
-IGp1c3QgcmVtb3ZpbmcgdGhlIGNoZWNrIGZvciB0aGluZ3MgdG8gd29yayB0aG91Z2guPg0KPiA+
-PiBRMi4gRG9lcyBpdCBldmVuIG1ha2VzIHNlbnNlIHRvIGhhdmUgUE1VcyBpbml0aWFsaXplZCBm
-b3Igc29tZQ0KPiA+PiAgICAgdmNwdXMgYW5kIG5vdCBmb3Igb3RoZXJzIHVubGVzcyB3ZSBoYXZl
-IGhldGVyb2dlbmVvdXMgc3lzdGVtPw0KPiA+DQo+ID4gSSBkb24ndCBrbm93LCBidXQgaXQgZG9l
-c24ndCBzb3VuZCBsaWtlIGEgY29uZmlndXJhdGlvbiBJJ2QgbGlrZQ0KPiA+IHRvIHNlZS4NCj4g
-Pg0KPiA+PiBRMy4gQWxzbywgdGhlcmUgaXMgYSBwZXIgdmlydCBtYWNoaW5lIGtub2Igb2YgdmNj
-LT5ub19wbXUuDQo+ID4+ICAgICBUaGlzIGlzIHNvbWV0aGluZyB3aGljaCB1c2VyIGNvdWxkIHNw
-ZWNpZnkgYXQgdGhlIGluaXQgdGltZQ0KPiA+PiAgICAgYW5kIHBlcmhhcHMgb25seSBvbmNlIGJ1
-dCB3ZSBkb24ndCB1c2UgaXQgZm9yIEFSTS4gUGVyaGFwcw0KPiA+PiAgICAgc2hvdWxkIGhhdmUg
-YmVlbiB1c2VkIGV2ZW4gYmVmb3JlIGVudGVyaW5nIHRoaXMgZnVuY3Rpb24NCj4gPj4gICAgIHRv
-IGVuYWJsZSBvciBkaXNhYmxlIHRoZSBzdXBwb3J0IGFzIHBlciB1c2VyIGNvbmZpZz8NCj4gPg0K
-PiA+IEl0J3MgcHVycG9zZSBpcyB0byBrZWVwIHVzZXJzIGZyb20gZG9pbmcgJ3BtdT1vbicgb24g
-Mi42IG1hY2hpbmUNCj4gPiB0eXBlcy4gT24gMi43IGFuZCBsYXRlciBtYWNoaW5lIHR5cGVzIGlm
-IHlvdSBkb24ndCB3YW50IGEgUE1VDQo+ID4geW91IHNob3VsZCB1c2UgJ3BtdT1vZmYnLg0KPiAN
-Cj4gZXh0cmEgbm90ZToNCj4gdGhlIGNwdSBwbXUgcHJvcGVydHkgc2V0cyB0aGUgZmVhdHVyZSBh
-dCB2Y3B1IGxldmVsLiBUaGlzIGlzIHdoYXQgaXMNCj4gcmV0cmlldmVkIHdoZW4gKCFhcm1fZmVh
-dHVyZSgmYXJtY3B1LT5lbnYsIEFSTV9GRUFUVVJFX1BNVSkpIGdldHMgY2FsbGVkLg0KPiANCj4g
-U2VlIHRoZSBjcHUgb3B0aW9uIHNldHRlcjogYXJtX3NldF9wbXUgaW4gdGFyZ2V0L2FybS9jcHUu
-Yw0KDQoNCkluZGVlZC4gSXQgaXMgYmVpbmcgc2V0IG9uIHBlci12Y3B1IGxldmVsIGJ1dCBhY3R1
-YWxseSBhbGwgb2YNCnRoZSB2Y3B1cyB3aWxsIGVpdGhlciBoYXZlIE9OIG9yIE9GRiBQTVUgZmVh
-dHVyZSAtIGF0IGxlYXN0IGZvcg0Kbm93LiBOb3Qgc3VyZSBpZiB3ZSBldmVyIHdhbnQgdG8gY2hh
-bmdlIHRoaXMgaW4gZnV0dXJlPw0KDQpUaGFua3MNClNhbGlsLg0KDQo=
+object_property_set_link() fails when the property doesn't exist, is
+not settable, or its .check() method fails.  These are all programming
+errors here, so passing it &error_abort is appropriate.
+
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: "Cédric Le Goater" <clg@kaod.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>
+Cc: Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ hw/arm/armsse.c         | 53 ++++++++++-------------------------------
+ hw/arm/armv7m.c         |  7 ++----
+ hw/arm/aspeed_ast2600.c | 20 ++++------------
+ hw/arm/aspeed_soc.c     | 14 ++++-------
+ hw/arm/nrf51_soc.c      |  6 +----
+ 5 files changed, 24 insertions(+), 76 deletions(-)
+
+diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+index e8f8f60abc..c73cc6badf 100644
+--- a/hw/arm/armsse.c
++++ b/hw/arm/armsse.c
+@@ -564,16 +564,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+                                                 &s->container, -1);
+         }
+         object_property_set_link(cpuobj, OBJECT(&s->cpu_container[i]),
+-                                 "memory", &err);
+-        if (err) {
+-            error_propagate(errp, err);
+-            return;
+-        }
+-        object_property_set_link(cpuobj, OBJECT(s), "idau", &err);
+-        if (err) {
+-            error_propagate(errp, err);
+-            return;
+-        }
++                                 "memory", &error_abort);
++        object_property_set_link(cpuobj, OBJECT(s), "idau", &error_abort);
+         sysbus_realize(SYS_BUS_DEVICE(cpuobj), &err);
+         if (err) {
+             error_propagate(errp, err);
+@@ -700,11 +692,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+             return;
+         }
+         object_property_set_link(OBJECT(&s->mpc[i]), OBJECT(&s->sram[i]),
+-                                 "downstream", &err);
+-        if (err) {
+-            error_propagate(errp, err);
+-            return;
+-        }
++                                 "downstream", &error_abort);
+         sysbus_realize(SYS_BUS_DEVICE(&s->mpc[i]), &err);
+         if (err) {
+             error_propagate(errp, err);
+@@ -755,11 +743,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer0), 0,
+                        armsse_get_common_irq_in(s, 3));
+     mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->timer0), 0);
+-    object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[0]", &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return;
+-    }
++    object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[0]",
++                             &error_abort);
+ 
+     qdev_prop_set_uint32(DEVICE(&s->timer1), "pclk-frq", s->mainclk_frq);
+     sysbus_realize(SYS_BUS_DEVICE(&s->timer1), &err);
+@@ -770,12 +755,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer1), 0,
+                        armsse_get_common_irq_in(s, 4));
+     mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->timer1), 0);
+-    object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[1]", &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return;
+-    }
+-
++    object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[1]",
++                             &error_abort);
+ 
+     qdev_prop_set_uint32(DEVICE(&s->dualtimer), "pclk-frq", s->mainclk_frq);
+     sysbus_realize(SYS_BUS_DEVICE(&s->dualtimer), &err);
+@@ -786,11 +767,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->dualtimer), 0,
+                        armsse_get_common_irq_in(s, 5));
+     mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->dualtimer), 0);
+-    object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[2]", &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return;
+-    }
++    object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr), "port[2]",
++                             &error_abort);
+ 
+     if (info->has_mhus) {
+         /*
+@@ -815,12 +793,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+             port = g_strdup_printf("port[%d]", i + 3);
+             mr = sysbus_mmio_get_region(mhu_sbd, 0);
+             object_property_set_link(OBJECT(&s->apb_ppc0), OBJECT(mr),
+-                                     port, &err);
++                                     port, &error_abort);
+             g_free(port);
+-            if (err) {
+-                error_propagate(errp, err);
+-                return;
+-            }
+ 
+             /*
+              * Each MHU has an irq line for each CPU:
+@@ -967,11 +941,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->s32ktimer), 0,
+                        armsse_get_common_irq_in(s, 2));
+     mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->s32ktimer), 0);
+-    object_property_set_link(OBJECT(&s->apb_ppc1), OBJECT(mr), "port[0]", &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return;
+-    }
++    object_property_set_link(OBJECT(&s->apb_ppc1), OBJECT(mr), "port[0]",
++                             &error_abort);
+ 
+     sysbus_realize(SYS_BUS_DEVICE(&s->apb_ppc1), &err);
+     if (err) {
+diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
+index ce83586e03..3308211e9c 100644
+--- a/hw/arm/armv7m.c
++++ b/hw/arm/armv7m.c
+@@ -170,11 +170,8 @@ static void armv7m_realize(DeviceState *dev, Error **errp)
+     object_property_set_link(OBJECT(s->cpu), OBJECT(&s->container), "memory",
+                              &error_abort);
+     if (object_property_find(OBJECT(s->cpu), "idau", NULL)) {
+-        object_property_set_link(OBJECT(s->cpu), s->idau, "idau", &err);
+-        if (err != NULL) {
+-            error_propagate(errp, err);
+-            return;
+-        }
++        object_property_set_link(OBJECT(s->cpu), s->idau, "idau",
++                                 &error_abort);
+     }
+     if (object_property_find(OBJECT(s->cpu), "init-svtor", NULL)) {
+         object_property_set_uint(OBJECT(s->cpu), s->init_svtor,
+diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+index 08b3592e36..4efac02e2b 100644
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -341,11 +341,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* I2C */
+-    object_property_set_link(OBJECT(&s->i2c), OBJECT(s->dram_mr), "dram", &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return;
+-    }
++    object_property_set_link(OBJECT(&s->i2c), OBJECT(s->dram_mr), "dram",
++                             &error_abort);
+     sysbus_realize(SYS_BUS_DEVICE(&s->i2c), &err);
+     if (err) {
+         error_propagate(errp, err);
+@@ -363,11 +360,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* FMC, The number of CS is set at the board level */
+-    object_property_set_link(OBJECT(&s->fmc), OBJECT(s->dram_mr), "dram", &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return;
+-    }
++    object_property_set_link(OBJECT(&s->fmc), OBJECT(s->dram_mr), "dram",
++                             &error_abort);
+     object_property_set_int(OBJECT(&s->fmc), sc->memmap[ASPEED_SDRAM],
+                             "sdram-base", &err);
+     if (err) {
+@@ -388,11 +382,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+     /* SPI */
+     for (i = 0; i < sc->spis_num; i++) {
+         object_property_set_link(OBJECT(&s->spi[i]), OBJECT(s->dram_mr),
+-                                 "dram", &err);
+-        if (err) {
+-            error_propagate(errp, err);
+-            return;
+-        }
++                                 "dram", &error_abort);
+         object_property_set_int(OBJECT(&s->spi[i]), 1, "num-cs", &err);
+         sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), &err);
+         if (err) {
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index ec21de50ce..03b91bade6 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -300,11 +300,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     /* I2C */
+-    object_property_set_link(OBJECT(&s->i2c), OBJECT(s->dram_mr), "dram", &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return;
+-    }
++    object_property_set_link(OBJECT(&s->i2c), OBJECT(s->dram_mr), "dram",
++                             &error_abort);
+     sysbus_realize(SYS_BUS_DEVICE(&s->i2c), &err);
+     if (err) {
+         error_propagate(errp, err);
+@@ -315,11 +312,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+                        aspeed_soc_get_irq(s, ASPEED_I2C));
+ 
+     /* FMC, The number of CS is set at the board level */
+-    object_property_set_link(OBJECT(&s->fmc), OBJECT(s->dram_mr), "dram", &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return;
+-    }
++    object_property_set_link(OBJECT(&s->fmc), OBJECT(s->dram_mr), "dram",
++                             &error_abort);
+     object_property_set_int(OBJECT(&s->fmc), sc->memmap[ASPEED_SDRAM],
+                             "sdram-base", &err);
+     if (err) {
+diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
+index 5a8961ddbb..20dd8b5897 100644
+--- a/hw/arm/nrf51_soc.c
++++ b/hw/arm/nrf51_soc.c
+@@ -66,11 +66,7 @@ static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
+     }
+ 
+     object_property_set_link(OBJECT(&s->cpu), OBJECT(&s->container), "memory",
+-            &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return;
+-    }
++                             &error_abort);
+     sysbus_realize(SYS_BUS_DEVICE(&s->cpu), &err);
+     if (err) {
+         error_propagate(errp, err);
+-- 
+2.26.2
+

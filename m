@@ -1,116 +1,125 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2641025lfm;
-        Sun, 21 Jun 2020 15:25:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxRYvxC25r7tZuhUFVicC10OGhnbuJQHZwNONokZBhjs2hytZZDbuy59Zit0j6OX/9cxNW8
-X-Received: by 2002:a5b:cc9:: with SMTP id e9mr22295066ybr.287.1592778318230;
-        Sun, 21 Jun 2020 15:25:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592778318; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2705682lfm;
+        Sun, 21 Jun 2020 17:22:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz1xLzi4twCqyfGiFIee2Khq/Hf5SdZWWcb09kH/Y5S6DJsO1rWPZFofeYmeAKuVQViwhff
+X-Received: by 2002:a25:f204:: with SMTP id i4mr22947679ybe.486.1592785363689;
+        Sun, 21 Jun 2020 17:22:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592785363; cv=none;
         d=google.com; s=arc-20160816;
-        b=BDY1zcFRkAI12ZrPOf3pNgLtxU2KQyjGqg0OL19f1qX8D1VOFYbKWydTwbe98S88/9
-         WXCTVHuz5vzcpHoq4fx6yepUKH9a5SvC4ZUYOf6CSxlBd/bhZ1Z5tJM1fL08AuMMQ2Im
-         tnese2jMfK+glWd9OWGkhvIdpC78Zfdtw8HPRWtw0wgSs8oHz1DhP9TtYnD2+puamgDH
-         HV8wouNdBZQtwBmgC7Mk+MERceqPQvhc6g8x+Xzix8OoCQrvbLQxmkYj8QGii6nyeSKW
-         ZJAQkv6/VRRgf3tNRGkFc6k4Z4FfAPZ1RR6TS4GhBMueTKoCSS77RNT/98nvMCRY1XGC
-         Ie8A==
+        b=SGB6bzW8tXVVF6+ip01Q91xHXCuLqUI1Q/xQ9izoDf7RnerqyEozbYUGZyBawxL+Th
+         tmC5flnTV7gJf7nIgLoL9jngrJ4kXEEwA7qL1YR755s67Q149Xms3WCQnv2j7930o6RS
+         jdvtiDOZT1r4/n6ByWBav8ftkZbmRopOXLh+lP4QDgKhc53icfGvNvWTRsQG4tguxUbS
+         5+dORbXFQLyB0jfU0m5SdAAUklJgrzB+TEa1MEPpEk1MY64NOOrdyd+i3vbnx6nbtT/J
+         +ErQj/H68o/LJ2CxVdeOJ5LnhAngvpCNfr4Fqb4vxDPNRlv6PTSEcK3HU0mMb0j5yo8Z
+         PbcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=0tBjJ+VwwllJR2SSVVAksBM2TNI9ez+XAXtdiVGE5FM=;
-        b=0CVVOd8/T/aj/3tI0slyNmhsP1TqidyDvVKRG2o5332FfjRvfs8l7Swv37lhpvl9Vk
-         tYJcC/G99UPh7zSfYCRalfoja3fDh10WOdcXpfb+hkc7Mff9hO9rWKerFvOWqO6sobcL
-         2YDvbpTfraRMoDOgwF+OTyHX2OhtGB3nkBJWKwZMYtkuzaxPjrhSLn3YDVVd9RHjTVPb
-         swoe74LBTgs7/8UlDcfWMx2//GDZWugsu7TMIJjYYBP1pzH0RanFELQDCBpU1Qod/MMI
-         8Hrd6GUgxUg9J8C2Ofhr0neRfwRgOpeYpTPErkcRsn2wOcAnvhS3JJUy0XimRJR0ttW8
-         ANpA==
+         :subject:to:from:date:references:in-reply-to:message-id:mime-version
+         :user-agent:dkim-signature:dkim-signature;
+        bh=UHjoZVSptmZeW7Iv3wHXv/kUrx8mc/l/hhgIMRlYZwc=;
+        b=X2mRMcRjyK+VVdKxALjNMcPxsJrYXkGol3MIKQld8y/L7FrUh5eC/JpyIWH5BEiZ9Q
+         POiB4bemsbJyGUX+p6++zg4nUndrwmPteWustB2+w6qN/upZcAktQq2dfXiU55Z5fUtj
+         pbPww47scLQYDGsnziE12MEZ3gHI/nOt1OUbdFIxihGkV2gydiMqQGpO/r2KEV1k/W6A
+         SvVU9mAWulcK+DxN+PYfUH7qRpzdI8liDqsijusTN638irnAIjSkvKsgwIh8aCjOeJEG
+         AnqpcUkdosd0B9WZWxI1JUT4fF6M7EqlR4vNWcij513vxAou0q8RQ/+w29FjaALsnHe2
+         yIDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q065E2xV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=m0T1ZftP;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=pt8Ps6kH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x124si11933185ybc.82.2020.06.21.15.25.17
+        by mx.google.com with ESMTPS id h26si12771710ybj.335.2020.06.21.17.22.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Jun 2020 15:25:18 -0700 (PDT)
+        Sun, 21 Jun 2020 17:22:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q065E2xV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:36070 helo=lists1p.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=m0T1ZftP;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=pt8Ps6kH;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54962 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jn8Or-0000Mq-0r
-	for alex.bennee@linaro.org; Sun, 21 Jun 2020 18:25:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49474)
+	id 1jnAEV-00077y-4X
+	for alex.bennee@linaro.org; Sun, 21 Jun 2020 20:22:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41756)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jn8Oh-0000MY-Ak; Sun, 21 Jun 2020 18:25:07 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:44571)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jn8Of-00085Z-O6; Sun, 21 Jun 2020 18:25:07 -0400
-Received: by mail-wr1-x441.google.com with SMTP id b6so14761281wrs.11;
- Sun, 21 Jun 2020 15:25:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=0tBjJ+VwwllJR2SSVVAksBM2TNI9ez+XAXtdiVGE5FM=;
- b=q065E2xVRvbk4eCs0sxhz7PN+Z6nHyHoEHvazBzxQWvfiyDcfoQppu1QNbDXuDFTbw
- HVOBY0Zq9qAANzGjwjaXok8QvOIZH+5JWlUepLtXexI+lXEr3VaqKhIdQ2n2YTK+U5Se
- Q3JXo+uzC94glsz3/8mmcPumUs2TVtnRKRhRci26sDSAZnqfGGk5NJ9v3pYQZWTHXrFP
- jVLl0akC540wUWlDIrdfd5+WD2wujROfAlV3uIWrGLwX3eCYO0/496QGTKVaB+U/5FM4
- 1lWv/YnMoXPsTJwSRj+ncTlcr4becqOv9lKQdmLJCCR9pIy6VZ/H9Po49VdtQxWpIme1
- S12Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=0tBjJ+VwwllJR2SSVVAksBM2TNI9ez+XAXtdiVGE5FM=;
- b=r90b+1kUIQPVWbmkk+OeIafeMX0zttV9CrTb4nrZYJWZr5J5fpAefUDSGu6PH6SY7r
- C18n7uQZ0NqOA6lw0gz/fSqVPE8pkdhOkyIbUu4TEQusQpKIkLfCuUipfKQarHE08Jg7
- 72jn+yMg1B7aw2eeDjohHj9X/GxIxnbkd0nzJtmP2xnYftin6xvwZI4zWg6MHHwLooFt
- YkcE4Np7x4DfFi6CWmw1pslyIiMnHiICqvY5KeiA7by5mdcygi7z0SsQmvDjefAI+HVu
- vDGo/4U8R+9Ni1K7+iZq9Frk1jH14IzC+8db79FNrQp40xTiIx0t6fzZ5lBriaRYKfZ3
- QW3A==
-X-Gm-Message-State: AOAM533wdSNJmPje4UvW3/t1U1F1uQBlvNUKDTqRt/1+sm0MYUZZTwvF
- 9KXP0sPFazG4CKr39ftaAko=
-X-Received: by 2002:a5d:4e45:: with SMTP id r5mr16367045wrt.92.1592778303866; 
- Sun, 21 Jun 2020 15:25:03 -0700 (PDT)
-Received: from [192.168.1.37] (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id j24sm12271043wrd.43.2020.06.21.15.25.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 21 Jun 2020 15:25:02 -0700 (PDT)
-Subject: Re: [PATCH v3 3/7] hw/misc/led: Emit a trace event when LED intensity
- has changed
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-References: <20200620230719.32139-1-f4bug@amsat.org>
- <20200620230719.32139-4-f4bug@amsat.org>
- <ae4a7411-7042-3530-3faf-e25368080820@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <c9e3897b-c711-f59b-d400-0bd01fd320b5@amsat.org>
-Date: Mon, 22 Jun 2020 00:25:01 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
-MIME-Version: 1.0
-In-Reply-To: <ae4a7411-7042-3530-3faf-e25368080820@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1jnAEG-00077d-QP; Sun, 21 Jun 2020 20:22:28 -0400
+Received: from wnew3-smtp.messagingengine.com ([64.147.123.17]:33923)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1jnAED-00086o-Jl; Sun, 21 Jun 2020 20:22:28 -0400
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailnew.west.internal (Postfix) with ESMTP id 216D1EAB;
+ Sun, 21 Jun 2020 20:22:21 -0400 (EDT)
+Received: from imap2 ([10.202.2.52])
+ by compute3.internal (MEProxy); Sun, 21 Jun 2020 20:22:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+ mime-version:message-id:in-reply-to:references:date:from:to:cc
+ :subject:content-type:content-transfer-encoding; s=fm3; bh=UHjoZ
+ VSptmZeW7Iv3wHXv/kUrx8mc/l/hhgIMRlYZwc=; b=m0T1ZftPWC8OkRf0yRToP
+ Cdy7FRqjW0ei00CLFuKaGuOCuMhMbOz+GbZ6YfFETbRBN9PVTpfC6LRerW8t0KYy
+ X6i+QU4ghwOrSCULgyAAfyL9xIy3X203NDc/XuYKCmrHQiZy02VaXSvLvaGFlMCi
+ QxTqMQBZ99HQ7CaEc0pj0XPgJ4hHnSfluNANJTeJFzegk6Hi3CLNo2R7TKSQSIvC
+ mxiG0LBungS0OMpVpjBMQIzOXvJNAZuYThxkwS1ft16VW70tBomYUytJ0k9TQv6M
+ YDK2aRynK+S+/f46JbdUEydU0VlxxkmALWzBhX7r3ARMeTCsJl4v687H84qZORnJ
+ g==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:in-reply-to:message-id:mime-version:references
+ :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm3; bh=UHjoZVSptmZeW7Iv3wHXv/kUrx8mc/l/hhgIMRlYZ
+ wc=; b=pt8Ps6kH8FX5P6kelQrVvP6DfExKjVqbNWEC8D21Ju1MEFGpj0nA1wa+N
+ iYImxggik4Hp5X/Mcxid2qnPSQ+I9yjasQjFyehkV/6fbi4mk8T9YkXAwdJ5LGX7
+ MeDb2L5Xaz2ESJSEqf9EmRj/0QvdpiDQA0nL6E95qMS2Reb4oaqctw2xiTVfDZaG
+ Vbn6Nt090z9R1grlcX8fSHk1HVy5aO5CkSOxRNGe1SPaKS3RKcsloPbn8oaLIt7a
+ Bnco7L3T+oOrpzJi8Yl1geOSuv0DriSu2AHGP26/7PeZygxO3lu8mo32fPZyt0w1
+ tJiWKYDKqjChQ3gaQjSpUREY/FKaA==
+X-ME-Sender: <xms:u_nvXuFM-buPK4PZidbUsn90L2D7M_1AwXn3KTC46EECDPZ2rXvAiw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduhedrudekuddgfeegucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepofgfggfkjghffffhvffutgfgsehtqhertderreejnecuhfhrohhmpedftehn
+ ughrvgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucggtf
+ frrghtthgvrhhnpedvgeekheegfedvhfethefhudetteegueeggfeiieegueehkedugedt
+ kefglefgheenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
+ hmpegrnhgurhgvfiesrghjrdhiugdrrghu
+X-ME-Proxy: <xmx:u_nvXvX9mUmYfq9AQcbKHgrSlvKIITzH_qfG2x5RJp3OG8kUoxV1XA>
+ <xmx:u_nvXoKX9zvlC-Re0sBHdMouW9b7HXzU136u2bxH43KEOYwOV7PrDw>
+ <xmx:u_nvXoG6RaeVwx1IyPLofsVyu6gerikbbheP2i5NpnUYLa82f7r2kQ>
+ <xmx:vPnvXtMARs_FUoJU4upAA_zzHwVKdKtjG7pZtp7CLmLaYin9s7E9ka_bxjg>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id CC33CE00C5; Sun, 21 Jun 2020 20:22:19 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.3.0-dev0-543-gda70334-fm-20200618.004-gda703345
+Mime-Version: 1.0
+Message-Id: <1acc89c9-8a5c-4ba5-9201-2f0124cd7969@www.fastmail.com>
+In-Reply-To: <ad812821-8b06-bb82-d336-ffb1e7c14839@amsat.org>
+References: <20200616075121.12837-1-f4bug@amsat.org>
+ <20200616075121.12837-8-f4bug@amsat.org>
+ <914f089d-e81e-4b01-bd70-4702d8b39724@www.fastmail.com>
+ <ad812821-8b06-bb82-d336-ffb1e7c14839@amsat.org>
+Date: Mon, 22 Jun 2020 09:51:59 +0930
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ "Cameron Esfahani via" <qemu-devel@nongnu.org>
+Subject: =?UTF-8?Q?Re:_[PATCH_7/7]_hw/watchdog/wdt=5Faspeed:_Reduce_timer_precisi?=
+ =?UTF-8?Q?on_to_micro-second?=
+Content-Type: text/plain;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=64.147.123.17; envelope-from=andrew@aj.id.au;
+ helo=wnew3-smtp.messagingengine.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/21 20:22:22
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,52 +132,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, Corey Minyard <minyard@acm.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VCXR5Amy0dEN
+X-TUID: f+R5SDgFN/oc
 
-On 6/21/20 9:23 PM, Richard Henderson wrote:
-> On 6/20/20 4:07 PM, Philippe Mathieu-Daudé wrote:
->> Track the LED intensity, and emit a trace event when it changes.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  include/hw/misc/led.h | 1 +
->>  hw/misc/led.c         | 5 +++++
->>  hw/misc/trace-events  | 1 +
->>  3 files changed, 7 insertions(+)
->>
->> diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
->> index 883006bb8f..df5b32a2db 100644
->> --- a/include/hw/misc/led.h
->> +++ b/include/hw/misc/led.h
->> @@ -35,6 +35,7 @@ typedef struct LEDState {
->>      DeviceState parent_obj;
->>      /* Public */
->>  
->> +    uint16_t current_intensity;
->>      qemu_irq irq;
-> 
-> Why not sort this new field next to the other uint16_t and (partially) fill the
-> hole?
 
-From a reviewer point of view, I prefer to keep the state fields
-separated from the properties fields, wasting few bits of RAM.
 
-Anyway I switched to a percent value. What is better to hold
-it, an 'unsigned' or 'uint8_t' type?
+On Wed, 17 Jun 2020, at 13:11, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi Andrew,
+>=20
+> On 6/17/20 3:18 AM, Andrew Jeffery wrote:
+> > On Tue, 16 Jun 2020, at 17:21, Philippe Mathieu-Daud=C3=A9 wrote:
+> >> The current implementation uses nano-second precision, while
+> >> the watchdog can not be more precise than a micro-second.
+> >=20
+> > What's the basis for this assertion? It's true for the AST2500 and A=
+ST2600, but=20
+> > the AST2400 can run the watchdog from either a 1MHz clock source or =
+the APB=20
+> > clock (which must be at least 16.5MHz on palmetto). The reset state =
+on the
+> > AST2400 configures the watchdog for the APB clock rate.
+> >=20
+> > The Linux driver will eventually configure the watchdog for 1MHz mod=
+e
+> > regardless so perhaps the AST2400 reset state is a bit of a corner c=
+ase, but
+> > I feel the assertion should be watered down a bit?
+>=20
+> What about this description?
+>=20
+> "The current implementation uses nano-second precision, but
+>  is not more precise than micro-second precision.
+>  Simplify by using a micro-second based timer.
+>  Rename the timer 'timer_us' to have the unit explicit."
 
-> 
-> Otherwise,
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+So is this a limitation of QEMUTimer? I was establishing that the hardwa=
+re can=20
+operate at greater than 1 micro-second precision.
 
-Thanks!
-
-> 
-> 
-> r~
-> 
+Andrew

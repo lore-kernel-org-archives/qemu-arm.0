@@ -1,103 +1,102 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4350460lfm;
-        Tue, 23 Jun 2020 12:53:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyQq95PYNyC65TmWRJV8DBbDq07oK3hZLVAdZyDhaUwbLOKF+eSZPfzJxtjhW8zZak3tXCw
-X-Received: by 2002:a25:84cc:: with SMTP id x12mr36316846ybm.454.1592941985178;
-        Tue, 23 Jun 2020 12:53:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592941985; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4350543lfm;
+        Tue, 23 Jun 2020 12:53:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz9vTlxErlhr07GbOqih9cnmfhYhkYxzmvcUQrwGt/BSvNDnY1lIJOSNB1v9r6yN7dzvIQG
+X-Received: by 2002:a05:6902:1006:: with SMTP id w6mr39848438ybt.411.1592941995481;
+        Tue, 23 Jun 2020 12:53:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592941995; cv=none;
         d=google.com; s=arc-20160816;
-        b=rhGdcbwnNRk29zNK1lslKtRILOVEl50CsgM/AuPOYWLj2Tj2cB5E1pGOCEwzpr/kTI
-         s6rGolyEPwYlfGh1c2nIs3jevA/TvNBJj8Fag608HBnyoprKyZ0UxGU4pYqfVXoiYkZk
-         uIuKCUb0zlL0H1lLVNOqS4ZNoBqCO8b2qWEGq4L/Qh7NAXBjpXFeCjYjMZ4mq4Pf29QH
-         oLXWC8CKTb2ja5iA8S7W2weUJQ+n/bcvCANZ8PhfTh7jStSZuGJ1WlsWQWKhfOkdXN7e
-         AucONoBE11Myb+CeCCZplBSF9FQM3Z456L4ONEK1Dc1uK6iTKeRD/uvO3vj5/HjOerEc
-         PArg==
+        b=NfjnBOt8phBxnmprQZCiiNmIFOcqL2/QhEjlbuhfyaPsW8wahUbcmhaxsM4zJEkPeP
+         12pQvzRIGMxeT26j4nleyfzkmgvBLN0K1Ucg0hnSMaX82t6ObV/DOQ/+m3dlFjv2GDmL
+         SiTIGnfM296mo9x0KlGty2U+DmnNcugTkJ3qoMAerPdPFWnEmHsly+Blo1KGtfz/QbDK
+         G709J6OyK6pviGZNJKmkpztSBqWBxXSN1Aie1qDAnLuhTXvqy16zTzSIfGchTULVZZ8u
+         bhiq6Oe0oQMO407tKVN3Gd7pTo5ZmI5FM4fklmbaWl2pPY87ntjHNIAVWfjCSp5yoP05
+         yMeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=WQXYKDBbAkgmCq2txmQfjRI97j0dYv9eb4akQx5Fjp4=;
-        b=yfWOWadRKpYI455IcGiU/6yQBuBMJ3cadIXd4LabS1yD4GD7jjDcWZQFS33d9MEUb4
-         bt0aZY6ytvnQY8CDQRfOuK8Wb5Mv4jVoDEWA82msfiM5s5BteOrNV7QxRVgG/nvrOYo7
-         oEZWaC77gN+MKESM57CVRDnKt/fgAkuRrLzzneH0PuMxs7DajYYqT++rvWb6KqnEP6Dt
-         mdX6+c1HSMhVCHHy0bPLWz+zKqiqTWN6Ltnh75WV1ks+tfkB9BRPapRBw5prxRCXGDBt
-         jBqA0ka+NcbIvRxrKMzXv4/vbw3+zxUEnHghUbx0oZnjp/GKh/senLHeJXfkpSjIPHsz
-         nOPw==
+        bh=JXq//EY41qOxgUUn2iV4AqQzVXGmUlIHXAR8u9hZfo0=;
+        b=V3SYVtZfZoFrzctudn+KHkhRxhLNcdsZwhkH9j+yWQy5e/pjm0K11fyz7utOYVc/eM
+         tYfKjKCP3IwpEX6M1lOaVQIVEM2P0jfMfLLtNtwrgPrNQXhtNlSrM3VxgBsb5pIjTQ8Y
+         NWpp+LznmLsVuibemMqkqB/lP2QfJdQSy81LzLv5RKAlOlaFMO2aIhdZV/iYUnNxf1k8
+         2agaEXMLMNyYlv3W+haL0ozwA/INZuV67kfa6gxP372bwc7YZkDbdzwlD+EKH9JOfR+8
+         wwcd/GlY5egHMHqnsU+mtLlzrXE4ny1zlM1kSVDfzaL17osTvG/vsnYTwkSJSONmWRCk
+         neIA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="JJin/ksi";
+       dkim=fail header.i=@linaro.org header.s=google header.b=M76zOh8g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d69si16609794ybh.331.2020.06.23.12.53.04
+        by mx.google.com with ESMTPS id s46si16660168ybi.263.2020.06.23.12.53.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 12:53:05 -0700 (PDT)
+        Tue, 23 Jun 2020 12:53:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="JJin/ksi";
+       dkim=fail header.i=@linaro.org header.s=google header.b=M76zOh8g;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55346 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56366 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnoye-0008Eh-Ca
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 15:53:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42952)
+	id 1jnoyo-0000Gl-Q6
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 15:53:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42986)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jnok4-0005Dd-LX
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 15:38:00 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:42704)
+ id 1jnok5-0005GX-KH
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 15:38:01 -0400
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:43677)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jnojz-0005uT-HJ
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 15:38:00 -0400
-Received: by mail-pl1-x643.google.com with SMTP id k6so9533392pll.9
- for <qemu-arm@nongnu.org>; Tue, 23 Jun 2020 12:37:55 -0700 (PDT)
+ id 1jnok0-0005v8-QT
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 15:38:01 -0400
+Received: by mail-pf1-x444.google.com with SMTP id j12so8338382pfn.10
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2020 12:37:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=WQXYKDBbAkgmCq2txmQfjRI97j0dYv9eb4akQx5Fjp4=;
- b=JJin/ksifIAF8LFkSVx+4qaa3vkAcfStZ5edNlvEAF64LpDa9JpYYjc8CTXgyMjcrv
- his6Wa4L//Ym1KfRnvJpgj6fOog9UHAZ4uYITNej8Bt2G/EVZPP/DxaZ5BZV2XZvrxbC
- ujoZSrgZVrDZIzYgX5wJx1VkrWaNSodCmAmwlyajcS8B9Nrzq7nQIeI4Gi1wrqD2M4Cc
- 8KX815M1nyYkMNjtSub+xR+teb/usXX+kE1phxT5pLNL5zDZeiFQs6bj3s5Qwts5h3Gx
- kdBW33nu8Ht+Mf8SrZomtgDAwciglrTy25CMHAxFl9q0w+6bo02YSS4Bu62u0aBMDrTv
- EjWA==
+ bh=JXq//EY41qOxgUUn2iV4AqQzVXGmUlIHXAR8u9hZfo0=;
+ b=M76zOh8g1nzD8ykE8027goebeYeai4bA649NaA4G1gHsa5r6jQnT/WM7LW61AJDkfn
+ YekIAyfY5N0U9+9p5gN4MUSqLF1HcpL0afenT+VCJJJWRLV8xVEzgN2GMm95zIRd/jcf
+ X+MwVMQxBUihJAO7k0G/twbFiyNzZlY1Qhs8l1Y/AyAD6zApEk9Yo8QFqPIagK3zvxkO
+ +wAs9tcjkq7cLV+QoCYtX2+IRuesQ2NRRuN0DI5xlqdZXvu0HCZ5yxlILOgUjrNEj8+u
+ yoXpCQTkFMXnO6HEZMxFvLTiqRW8SbT+C5jWWULW13sP7krMCBUwERtNO1RJFcn+Rn1V
+ GLAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=WQXYKDBbAkgmCq2txmQfjRI97j0dYv9eb4akQx5Fjp4=;
- b=Kt3kKJBMcq4Scd2yeLT6xJ+N+uxN0bLF1aWTcBKjnft2ftax5XXK+ZkL/+R4+A/zx7
- yvhZydLFENf4GcF7II5FhcTLi1/HSmgGJoaFRX2kvczGLK9sU4rsRv4FZtjACpC3Al8J
- ZQKMvNHgx0wrXoUqSZ5f6cUgov5DmMs7+oqIgqvMRjlgN3A4MZ3lOTlsYiWgFb1FVNPh
- T3v1KVthE2RsYa2HA2LnrowsbIMvPIWIFBsPP/6kkwGll1dV/o3grB5GWcO6Xzdgz9wp
- ru4bnOdZxNqabijjqA0UeTV74rXK0+pZDCSn2tPb1DUr+CANzPhZSPUhL0v/b5YJgqBr
- I6wA==
-X-Gm-Message-State: AOAM531hri+JJjLil7hIQ5oEJSHoHYSiD8fjFFZP7q2T6g4KOdZUgg+2
- 1dPglgC6fSSogVNpSbXnpH05Cw==
-X-Received: by 2002:a17:902:8b8a:: with SMTP id
- ay10mr12640494plb.236.1592941074281; 
- Tue, 23 Jun 2020 12:37:54 -0700 (PDT)
+ bh=JXq//EY41qOxgUUn2iV4AqQzVXGmUlIHXAR8u9hZfo0=;
+ b=hiPJQ0OR+cBFbXVspCGvk+nX3Pl0K4LEYviMkz4VkdpjtFFcCy0oPNGRiO7MghITg8
+ OqoR2puehjFoHeQdX6dbww8siVgEK7ofVci3eLv5wnW/ig8gDmyRr1aBCQnV6D3VOk0G
+ aJDyDaqHiEB9IJmxUzf7cQXs1txqjFGXg8kY+H3I4xC571qUOQ1AkfdV6r+7h36dAjcC
+ vLrC9vZfrgZ2kxoYk0II5pQDv5nuxn3h7TOTuhe14o395Eln3Gi9lw8LBBwrWpNjwvHj
+ ws3/0HRcnVNZWZvrgffjIzr6aOeblTmrgPXOPeRMD3mSUbCj5sNF3n3VCJm0aaYM3Yq6
+ AUDA==
+X-Gm-Message-State: AOAM532O5hi8lod4b074jCC/q5H9PYkMhkRDUENgViEPgIw++2yeR6Cg
+ 2ozNnN1IOHcmky+pWK/T7rfVKw==
+X-Received: by 2002:a63:b915:: with SMTP id z21mr19384826pge.145.1592941075565; 
+ Tue, 23 Jun 2020 12:37:55 -0700 (PDT)
 Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
  [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id p12sm17927642pfq.69.2020.06.23.12.37.53
+ by smtp.gmail.com with ESMTPSA id p12sm17927642pfq.69.2020.06.23.12.37.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jun 2020 12:37:53 -0700 (PDT)
+ Tue, 23 Jun 2020 12:37:54 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v8 39/45] target/arm: Implement data cache set allocation tags
-Date: Tue, 23 Jun 2020 12:36:52 -0700
-Message-Id: <20200623193658.623279-40-richard.henderson@linaro.org>
+Subject: [PATCH v8 40/45] target/arm: Set PSTATE.TCO on exception entry
+Date: Tue, 23 Jun 2020 12:36:53 -0700
+Message-Id: <20200623193658.623279-41-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200623193658.623279-1-richard.henderson@linaro.org>
 References: <20200623193658.623279-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -123,115 +122,32 @@ Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, david.spickett@linaro.org,
  steplong@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: npym4vRH+Pbl
+X-TUID: +P5HiPxdsI2c
 
-This is DC GVA and DC GZVA, and the tag check for DC ZVA.
+D1.10 specifies that exception handlers begin with tag checks overridden.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v2: Use allocation_tag_mem + memset.
-v3: Require pre-cleaned addresses.
-v6: Move DCZ block size assert to cpu realize.
-    Perform a tag check for DC ZVA.
+v2: Only set if MTE feature present.
 ---
- target/arm/cpu.h           |  4 +++-
- target/arm/helper.c        | 16 ++++++++++++++++
- target/arm/translate-a64.c | 39 ++++++++++++++++++++++++++++++++++++++
- 3 files changed, 58 insertions(+), 1 deletion(-)
+ target/arm/helper.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 76f2287314..10c4d031b1 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2360,7 +2360,9 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
- #define ARM_CP_NZCV              (ARM_CP_SPECIAL | 0x0300)
- #define ARM_CP_CURRENTEL         (ARM_CP_SPECIAL | 0x0400)
- #define ARM_CP_DC_ZVA            (ARM_CP_SPECIAL | 0x0500)
--#define ARM_LAST_SPECIAL         ARM_CP_DC_ZVA
-+#define ARM_CP_DC_GVA            (ARM_CP_SPECIAL | 0x0600)
-+#define ARM_CP_DC_GZVA           (ARM_CP_SPECIAL | 0x0700)
-+#define ARM_LAST_SPECIAL         ARM_CP_DC_GZVA
- #define ARM_CP_FPU               0x1000
- #define ARM_CP_SVE               0x2000
- #define ARM_CP_NO_GDB            0x4000
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 44a3f9fb48..23cf44fcf4 100644
+index 23cf44fcf4..d220612a20 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -6998,6 +6998,22 @@ static const ARMCPRegInfo mte_el0_cacheop_reginfo[] = {
-       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 14, .opc2 = 5,
-       .type = ARM_CP_NOP, .access = PL0_W,
-       .accessfn = aa64_cacheop_poc_access },
-+    { .name = "DC_GVA", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 4, .opc2 = 3,
-+      .access = PL0_W, .type = ARM_CP_DC_GVA,
-+#ifndef CONFIG_USER_ONLY
-+      /* Avoid overhead of an access check that always passes in user-mode */
-+      .accessfn = aa64_zva_access,
-+#endif
-+    },
-+    { .name = "DC_GZVA", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 4, .opc2 = 4,
-+      .access = PL0_W, .type = ARM_CP_DC_GZVA,
-+#ifndef CONFIG_USER_ONLY
-+      /* Avoid overhead of an access check that always passes in user-mode */
-+      .accessfn = aa64_zva_access,
-+#endif
-+    },
-     REGINFO_SENTINEL
- };
- 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index f35b122ded..1041ec29d4 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -1874,6 +1874,45 @@ static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
+@@ -9704,6 +9704,9 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+             break;
          }
-         gen_helper_dc_zva(cpu_env, tcg_rt);
-         return;
-+    case ARM_CP_DC_GVA:
-+        {
-+            TCGv_i64 clean_addr, tag;
-+
-+            /*
-+             * DC_GVA, like DC_ZVA, requires that we supply the original
-+             * pointer for an invalid page.  Probe that address first.
-+             */
-+            tcg_rt = cpu_reg(s, rt);
-+            clean_addr = clean_data_tbi(s, tcg_rt);
-+            gen_probe_access(s, clean_addr, MMU_DATA_STORE, MO_8);
-+
-+            if (s->ata) {
-+                /* Extract the tag from the register to match STZGM.  */
-+                tag = tcg_temp_new_i64();
-+                tcg_gen_shri_i64(tag, tcg_rt, 56);
-+                gen_helper_stzgm_tags(cpu_env, clean_addr, tag);
-+                tcg_temp_free_i64(tag);
-+            }
-+        }
-+        return;
-+    case ARM_CP_DC_GZVA:
-+        {
-+            TCGv_i64 clean_addr, tag;
-+
-+            /* For DC_GZVA, we can rely on DC_ZVA for the proper fault. */
-+            tcg_rt = cpu_reg(s, rt);
-+            clean_addr = clean_data_tbi(s, tcg_rt);
-+            gen_helper_dc_zva(cpu_env, clean_addr);
-+
-+            if (s->ata) {
-+                /* Extract the tag from the register to match STZGM.  */
-+                tag = tcg_temp_new_i64();
-+                tcg_gen_shri_i64(tag, tcg_rt, 56);
-+                gen_helper_stzgm_tags(cpu_env, clean_addr, tag);
-+                tcg_temp_free_i64(tag);
-+            }
-+        }
-+        return;
-     default:
-         break;
      }
++    if (cpu_isar_feature(aa64_mte, cpu)) {
++        new_mode |= PSTATE_TCO;
++    }
+ 
+     pstate_write(env, PSTATE_DAIF | new_mode);
+     env->aarch64 = 1;
 -- 
 2.25.1
 

@@ -1,106 +1,101 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3869273lfm;
-        Tue, 23 Jun 2020 00:26:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyca2BblnO0GQhXBTw4XqUu00hP/01I7J4QvpNP5jgCajXQ3go1VD0JVme1ykS6ihPM5GKy
-X-Received: by 2002:a25:23d6:: with SMTP id j205mr34285634ybj.60.1592897182769;
-        Tue, 23 Jun 2020 00:26:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592897182; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3912987lfm;
+        Tue, 23 Jun 2020 01:47:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJydxXwCNgmMzKKd1EJpMMbkLDZRSa0ajthwLtyvfH+KZIQMR3gk+ds8m7B1v4QB7I6z/AIa
+X-Received: by 2002:a25:afcd:: with SMTP id d13mr34084440ybj.413.1592902036881;
+        Tue, 23 Jun 2020 01:47:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592902036; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q8z3loWZS0bdWKOkaBBIX2wMd7UYvnVf5Jp2J+oeS717m/TNksRGvGUznTQv3fU9dZ
-         zGaNIIqwXEAAcnnsfHhunT42OYNUAR0e4T2DuKM2wKzCkBY6FeMdCz0lk/aRAIwMTJWp
-         Ejq15oGP38ijfscCS9AC0nelcT/3g4sSF23uBD/viS+UhpKPgh9LIUEajUXJochXYgJp
-         OCoauNiETpmnnx67bLIlF3k+l90cgV4SjTT2BZlGjPCPyXvzVtUVcOvAugw4Ffis12Ya
-         z/Y+q9hSE7pMTH4dfHz+vGBHvPHV2nvZSqoscqQ2yNeORrC2PiGIlr7y1xHmwWDxTyD+
-         xcMQ==
+        b=lU+2A45rbfgcoWdkgEePHYkznXHSgm31lWBeurLUMWjZtZQODcUrMwMknuTa0Ycq9x
+         U4xjo3bLY3HeTTnuETbKm1/WxG84LXz2wIhXYz5oDpDzANibD6MsMydd1tzBHLlhI0dF
+         2mI2w3Ob3xnVPjOx4GiiXFsK/Xm56LMf/XXu3dPJCOQX0D9pT8B6b8JOSAltfktddT+n
+         9F2zGgm0GhopbidTJpKdBrr1YbbjgUjScgrdXQ0Z1nyzV+4iBtX/0veuR3NJvPmVCe4E
+         8jPYoaAj/NaCXyi+rvgpn9sawhKvSJYY/HVPhQDDivmMMjNbWISVrxCK0vOmf+RrD4YV
+         VNGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=zoRef+Xi6yejA1qip3hZU4Pj/YqgSSKoAIu+yvs6QVo=;
-        b=m5COnRpLI59QdgdhFyJP60NFkucG0kTrTkCrA+MRdgDzuQFt6HlK57bLErKJUiEACu
-         HfM5N2+worUhFx2xNkrhqYmNaVLqsue7ZIswVPDsHY4++XWRt537hgDwF/4IdJQkDOS4
-         zmaTFxivZ0AOGsQaKVxVt0hm0qVSyT289viDxZ2g2CdmBQmHHVBrN7eEz53wM32ijsW3
-         /Uoe/ZIJVTp3yBNFHnl/MkR0G3KcfHHwPpZs7eAbk2cXstQ7xGBCa/H80Nnl9wx2Z2my
-         djamGYfPbtB5Z2skL352TE8I+9BEYr/fRBmdOEQ5OHD+cK5aYhSUdw+h++z2RtGOUeui
-         S2/w==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=r7tVgCxLEVKIKPPk/JELCpOA5FPdEYgvnSl+jolOanA=;
+        b=u1on/AdejpaErVWqO3YCobp9AnNJCB446G4auwoQW4F4JXF56qfFR/hzFXIGE0Hg25
+         GRWz0EsWgWReqN/Gq3SKl+zWQpX5YZUqZM6BEyfP8UvaKF5R/V/2hH3a129ksvS8vB1Z
+         agNHW9O5VaxKwY0eLqI/3N+e6a2Ht9IkGu6rCdhEHlWSCSflj4lz7jsv7hXtNJ1sCFyv
+         kecMgq7d7T1o7I4uajdbJtr4DI8sCF+EtvA4UzJTgtwwbQ3VGhvR00qi8UkH2bCgKCcQ
+         X6lZNiQIuuWYvk5XsbSD+y/jYvUCzvouPFb1Lsew/tmGdvt5SPvZKv82JOaWUyQnYBdr
+         ZRnw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NiZURkzv;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=B2A8wLkM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n4si15611393yba.245.2020.06.23.00.26.22
+        by mx.google.com with ESMTPS id v69si16438888ybe.351.2020.06.23.01.47.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 00:26:22 -0700 (PDT)
+        Tue, 23 Jun 2020 01:47:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NiZURkzv;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=B2A8wLkM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36022 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55908 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jndK2-0005i1-6y
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 03:26:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34116)
+	id 1jneaK-0007Bp-99
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 04:47:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36124)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jndJt-0005hq-31
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 03:26:13 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:56553
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1jneZa-0006DC-Ew
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 04:46:30 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:33790
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jndJq-0004fr-No
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 03:26:12 -0400
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1jneZY-0006R3-Ps
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 04:46:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592897169;
+ s=mimecast20190719; t=1592901988;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zoRef+Xi6yejA1qip3hZU4Pj/YqgSSKoAIu+yvs6QVo=;
- b=NiZURkzvC/07PBe2jiqFmn3chwr8dLHHIcBkb0M8jfgbFnAjW8bSI5kBbpx7lncyEebG0z
- DFczK3V/Fj8V5TIklaN06VP/NU8Gg5hAh8gjKpLJ0mXrQp/BP1lSdcvUS4XsJty8YpHtM3
- +oSRQXoLETfANxB9EBoHPJajfZcNdA8=
+ bh=r7tVgCxLEVKIKPPk/JELCpOA5FPdEYgvnSl+jolOanA=;
+ b=B2A8wLkMm+Vqke0MFiXRzubwvLEQcCJCR9JpSFEIH4RjR/6cxi/tDw4QcbM961okzhv/Je
+ o1+dchFw2JDuEswkxpc08l7Yhcv8V1ExlkR+0qQQa6KEtJGgk/Gbn5Ca1/PK9YOAoYYybe
+ kry9jSDs4+flOZkY+saPD3fUjB1XS0o=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-448-OUbIblnpODCmRFF3GBGX6Q-1; Tue, 23 Jun 2020 03:26:05 -0400
-X-MC-Unique: OUbIblnpODCmRFF3GBGX6Q-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-49-mVTjF9WZPz-C8pwhTkP4ow-1; Tue, 23 Jun 2020 04:46:24 -0400
+X-MC-Unique: mVTjF9WZPz-C8pwhTkP4ow-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 567A38005AD;
- Tue, 23 Jun 2020 07:26:04 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
- [10.36.112.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6B9E05C1D4;
- Tue, 23 Jun 2020 07:26:03 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id C8D86113846D; Tue, 23 Jun 2020 09:26:01 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v4 1/8] hw/i2c/core: Add i2c_try_create_slave() and
- i2c_realize_and_unref()
-References: <20200620225854.31160-1-f4bug@amsat.org>
- <20200620225854.31160-2-f4bug@amsat.org>
- <874kr36sg7.fsf@dusky.pond.sub.org>
- <e28de977-4e29-901f-58df-74095bcd2c91@amsat.org>
-Date: Tue, 23 Jun 2020 09:26:01 +0200
-In-Reply-To: <e28de977-4e29-901f-58df-74095bcd2c91@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 22 Jun 2020 17:41:37
- +0200")
-Message-ID: <87lfkemeeu.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 975F318A0739;
+ Tue, 23 Jun 2020 08:46:21 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.193.84])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id AD48119D61;
+ Tue, 23 Jun 2020 08:46:06 +0000 (UTC)
+Date: Tue, 23 Jun 2020 10:46:03 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Subject: Re: [PATCH RFC 01/22] arm/cpuhp: Add QMP vcpu params validation
+ support
+Message-ID: <20200623084603.i4kv3udz3dlcxlak@kamzik.brq.redhat.com>
+References: <20200613213629.21984-1-salil.mehta@huawei.com>
+ <20200613213629.21984-2-salil.mehta@huawei.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <20200613213629.21984-2-salil.mehta@huawei.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=drjones@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 01:53:54
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 02:55:19
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -108,7 +103,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,25 +116,113 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
+Cc: peter.maydell@linaro.org, mehta.salil.lnk@gmail.com, gshan@redhat.com,
+ pbonzini@redhat.com, mst@redhat.com, jiakernel2@gmail.com, maz@kernel.org,
+ david@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ linuxarm@huawei.com, eric.auger@redhat.com, will@kernel.org,
+ qemu-arm@nongnu.org, james.morse@arm.com, catalin.marinas@arm.com,
+ sudeep.holla@arm.com, imammedo@redhat.com, maran.wilson@oracle.com,
+ zhukeqian1@huawei.com, wangxiongfeng2@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l39n1QVqFs5H
+X-TUID: gEP0uLS7w98a
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
-
-> On 6/22/20 5:17 PM, Markus Armbruster wrote:
->>=20
->> No objections, except I want to see actual users.
+On Sat, Jun 13, 2020 at 10:36:08PM +0100, Salil Mehta wrote:
+> For now, vcpu hotplug is only supported with single socket single thread,
+> single die. NUMA is not supported either and everthing falls into single
+> node. Work to properly support these could be taken later once community
+> agrees with the base framework changes being presented to support ARM vcpu
+> hotplug in QEMU. Hence, these checks.
+> 
+> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> ---
+>  hw/arm/virt.c | 41 +++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 41 insertions(+)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 37462a6f78..5d1afdd031 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2201,6 +2201,46 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
+>      return NULL;
+>  }
+>  
+> +static void virt_smp_parse(MachineState *ms, QemuOpts *opts)
+> +{
+> +    if (opts) {
+> +        unsigned cpus    = qemu_opt_get_number(opts, "cpus", 1);
+> +        unsigned sockets = qemu_opt_get_number(opts, "sockets", 1);
+> +        unsigned cores   = qemu_opt_get_number(opts, "cores", cpus);
+> +        unsigned threads = qemu_opt_get_number(opts, "threads", 1);
+> +        unsigned int max_cpus;
+> +
+> +        if (sockets > 1 || threads > 1) {
+> +            error_report("does not support more than one socket or thread");
+> +            exit(1);
+> +        }
+> +
+> +        if (cores != cpus) {
+> +            error_report("cpu topology: "
+> +                         "sockets (%u) * cores (%u) * threads (%u) < "
+> +                         "smp_cpus (%u)",
+> +                         sockets, cores, threads, cpus);
+> +            exit(1);
+> +        }
+> +
+> +        max_cpus = qemu_opt_get_number(opts, "maxcpus", cpus);
+> +        if (sockets * cores * threads > max_cpus) {
+> +            error_report("cpu topology: "
+> +                         "sockets (%u) * cores (%u) * threads (%u) > "
+> +                         "maxcpus (%u)",
+> +                         sockets, cores, threads,
+> +                         max_cpus);
+> +            exit(1);
+> +        }
+> +
+> +        ms->smp.max_cpus = max_cpus;
+> +        ms->smp.sockets = sockets;
+> +        ms->smp.cpus = cpus;
+> +        ms->smp.cores = cores;
+> +        ms->smp.threads = threads;
+> +    }
+> +}
+> +
+>  /*
+>   * for arm64 kvm_type [7-0] encodes the requested number of bits
+>   * in the IPA address space
+> @@ -2266,6 +2306,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>      mc->nvdimm_supported = true;
+>      mc->auto_enable_numa_with_memhp = true;
+>      mc->default_ram_id = "mach-virt.ram";
+> +    mc->smp_parse = virt_smp_parse;
+>  
+>      object_class_property_add(oc, "acpi", "OnOffAuto",
+>          virt_get_acpi, virt_set_acpi,
+> -- 
+> 2.17.1
+> 
+> 
 >
-> You weren't Cc'ed on the whole series.
->
-> User is patch #6/8 "hw/arm/aspeed: Describe each PCA9552 device":
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg714658.html
 
-Fat-fingered my grep, sorry for the noise.
+Hi Salil,
+
+This patch and the whole series has inspired me to pick up the vcpu
+topology work again. In fact, I think it may be necessary in order
+to properly describe a cpu when hot[un]plugging. I'll try to pull
+together an RFC soon, at least for TCG. For KVM, we may need to
+change KVM in order to allow user-controlled MPIDR. Although I'm
+not sure about that anymore, because, as you stated somewhere else,
+we already have user-controlled MPIDR to some degree, since KVM simply
+transforms the cpu index.
+
+Regarding this patch specifically, I would change this to allow
+sockets, but prefer cores (i.e. when only '-smp N' is given, then
+N is the number of cores, not sockets). Also I would allow threads,
+but only for !kvm_enabled(). Then the function would be similar to
+something I think I once posted long ago, or at least wrote and maybe
+never posted...
+
+Thanks,
+drew
 

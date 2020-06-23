@@ -1,155 +1,123 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3920814lfm;
-        Tue, 23 Jun 2020 02:03:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyX/5KYYmzON5AaR6pRaRfSwz4SCt2n9+AbrIlwUgoTBXOtaoMmkNIK9jeHP8YZJ6vx+wHn
-X-Received: by 2002:a25:850b:: with SMTP id w11mr22454247ybk.291.1592902985581;
-        Tue, 23 Jun 2020 02:03:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592902985; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3923169lfm;
+        Tue, 23 Jun 2020 02:06:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyt4keHywuHQVLGmNlCSqreN/XCLV+fM/qAQq/zgLFwWvt74sEtcfVX6mZAgoYmriZYYgH1
+X-Received: by 2002:a50:cc8a:: with SMTP id q10mr15467881edi.257.1592903193030;
+        Tue, 23 Jun 2020 02:06:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592903193; cv=none;
         d=google.com; s=arc-20160816;
-        b=uHVpqqNiGFv7H7tsAwM9N14GC4SNHd1ZXeWhbBnTvJwdQwUlS8JzIkgeHjVcxBJ9I4
-         AcQHEUZsVNUCmCiZ6p958mwM9NNwBYMjSLN6ladLjAZ3cHSAsohoHfyG+vhQnsFZ0qvo
-         8k3e/VRCmg03Kxg7p7E1ShiH+QeAgCE+6L7b4Wi7id7lCWJ0Dl0sslGyoha/YKQEzxM+
-         0Df6CgO5VXgvA1G/ydvQgSQGcp1i0j4JzTT8+XD/oGvo/UDpiuaayxY40yzG3t/UkQmM
-         rF5gPQKVTEmpgo6W47luxVH3TK6TfhOEaUZZTYZzJF53aYLcPp6WGMUO4Ac6LnkDs366
-         Kl8w==
+        b=mMCfh7HVeTVW0YHxTuBgSA2XAHmgYs0f5Oa/LHKzFNZRNsRNXw0B/L0xrWTefTpdIc
+         Rnot674b5NqEdPH78mgbR2ADJ1XApj4LMPdMQoBMvB6YydZ9nFIidX9w1gPGuNTL130v
+         dkiLYMC0GfLV246oc9Xi8qBrHnPIMjofvvYc3LAfpBUm+q1p0ERGgn2te2DgBOHXW9Aj
+         nGfEUg8wMCmx7xiRcsDINS6YGu3oxyYG0HeWmUBuG1gUz40Lhi2tOH3Xec0lmN+PgxcO
+         HM6uMqe7JFv3AeXueqsNI1UsQmZokMMSat5IvfTy5KzjdVVLXO/iB49LCL+1NmIdeWyF
+         sTXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=DWqDZq0v4LXkIn+biD2SU+252DF5UrweAVupAlT/kV4=;
-        b=bUgzDPfqUes+W8XQUoHuROl28qT605UrqwM27Hsah2WJ4/B30pfos5q4ybjWVOYvyG
-         3+tVZZRb5vghq2RYhlTjmrxm2rhtnFwfKsVk+4EyLoLUDXFM+WzDNFMiGirJ1S7bpg9R
-         F/XQPAF+/HEVy6RqG7iZORWN4U1Hfy/fpFS59E5vbyP8GR/bZTqCAiQFkcP6uK9lMzYn
-         n7UFByUdk6T9L5RcCu9A7/yrATr94aKPJCIEz/NJiERsFO4ihDsLX6gKpcqwG1WeOtRr
-         WoMWTE1pwGFlOjLLKUBnmuYkXPdv+qck5tLqZRY9ih49z3O18L+qYhejLyYp7wpr87zd
-         +mCA==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=2m2t021fPmocAk1w7rK7jsWgzV0rCiGfOdB2/ye3op0=;
+        b=hR8z7blhEp0bZmArde1zcC/NnQUdX2vrK8KKDsaxb+AEk41LCxh8gNJZEYnOV0+8kB
+         uWCqs7tOpBXDfIqfwKywYSUW1tjomM/K8YtjqevzFcTQgcpdG/34Q4N6wfZYRAMVXh47
+         CJ7FRGkjDtkbMhlX+cBpemJwgvFNI711rX637Wantd2PJtQRCrRBsRCeN9qN3TRnR/mx
+         ed7F4hOvcs/O5dERuSyvBZsGhWwtEeuiA7xzPFTKYxW6+5vrKbyxafXYjvnCnVVlZlgm
+         t7Oq0fNvvB663aQPyqRzurazjTqgWDeLdyIFQEoe2dvkkICcepypkf3T9GJ3KLhpJMF7
+         wN9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TB9FNvCN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k14si15235329ybh.221.2020.06.23.02.03.05
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 02:03:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z3WPbkWa;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id sa14si10616674ejb.297.2020.06.23.02.06.32;
+        Tue, 23 Jun 2020 02:06:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TB9FNvCN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54140 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnepc-0004kb-Tq
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 05:03:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42502)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1jnenv-0003V3-3N
- for qemu-devel@nongnu.org; Tue, 23 Jun 2020 05:01:19 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:42395
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1jnens-0008BR-Hu
- for qemu-devel@nongnu.org; Tue, 23 Jun 2020 05:01:18 -0400
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z3WPbkWa;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1731887AbgFWJGb (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 23 Jun 2020 05:06:31 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:41875 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1731853AbgFWJGb (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 23 Jun 2020 05:06:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592902875;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=DWqDZq0v4LXkIn+biD2SU+252DF5UrweAVupAlT/kV4=;
- b=TB9FNvCN2yjVx4v+Fpkc5LsVkjKtTObq/dl1YaXAN9wA3Hce68iVrOnB4kmVQuy/4ivk3B
- a355R+cOEu+h9ddB8RXjHQgxee0eHVh1MFkLcvuQLnH/2F9xNkhNV3FUaBTOfeMDlt/iDq
- DqY445wTWYB1WgTufTdKlU4xAAMxVY8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-304-bg8d4tNyNRqauV5cnE7Veg-1; Tue, 23 Jun 2020 05:01:02 -0400
-X-MC-Unique: bg8d4tNyNRqauV5cnE7Veg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AC5AF804001;
- Tue, 23 Jun 2020 09:00:59 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.193.84])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0D5B019D7F;
- Tue, 23 Jun 2020 09:00:45 +0000 (UTC)
-Date: Tue, 23 Jun 2020 11:00:43 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Subject: Re: [PATCH RFC 07/22] arm/cpuhp: Init PMU at host for all possible
- vcpus
-Message-ID: <20200623090043.fwf7h6zmprc3oug4@kamzik.brq.redhat.com>
-References: <20200613213629.21984-1-salil.mehta@huawei.com>
- <20200613213629.21984-8-salil.mehta@huawei.com>
+        s=mimecast20190719; t=1592903190;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:  content-type:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=2m2t021fPmocAk1w7rK7jsWgzV0rCiGfOdB2/ye3op0=;
+        b=Z3WPbkWa0GYOkXZrKU+fTLtQfh/G+LQZweUSyTp/qomHywbrBC5UrxLh2cqApqwAMBV/3h
+        NyYKDvU2mcQeuj1RzKHmqeSw6vaYrclqUcSyTs07KeiAgsUXso55j+Cyhe1hIZOes5kByT
+        y/Gfy5npXwqTLlG0m+Dz//8YqcwOVuE=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-333-T0zFWbBlPtu4sQnB7G7MKA-1; Tue, 23 Jun 2020 05:06:26 -0400
+X-MC-Unique: T0zFWbBlPtu4sQnB7G7MKA-1
+Received: by mail-wr1-f71.google.com with SMTP id y13so1388798wrp.13
+        for <kvm@vger.kernel.org>; Tue, 23 Jun 2020 02:06:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=2m2t021fPmocAk1w7rK7jsWgzV0rCiGfOdB2/ye3op0=;
+        b=Kxzq9TFWi9lUTNr8UdZE58C02WmGuerKUur6+ncKHZIa6nYNBDL7pOYOT0iFH2qm4Z
+         ZGwZC4HWKuQgsSBM1OHHHulXNgFNNKSdR1DuL8+WUUd7wb/Z9RXdZhxARb3JfYYBzVMj
+         qTE/XzxRCL3F9JKj/RNFyZcbBzzzGbD6KAwutDltAzhnjx3OOEYxUULFfxozK8jWEdn1
+         0Qp+w9MxZBVNPzrg9ZEqS8qPZcG2QKKkCWud+vASlYIZAY4yFHUtHlREATHQky7RPqCA
+         6iHpqTEXt6OJJ/oP0gx6HBpQ5FpWSQXo0RP37mRnjNqGgS0aInMxvp5v2eUgIzrhOFjN
+         BpMw==
+X-Gm-Message-State: AOAM532ykM8i+dRaJ623t7FOFphSyBOLT2Ubkhfchou7zT+N1HGPZ2eB
+        W/Wkn6iVtCXYd/ux6kBYCPZk8cgxvDccMxgDN/X9/D44+YN2A0Yc5ikJXPwj7WbPPXW2MjS/rFs
+        cpNNpb8D1WX4y
+X-Received: by 2002:a05:6000:100c:: with SMTP id a12mr11437348wrx.81.1592903185144;
+        Tue, 23 Jun 2020 02:06:25 -0700 (PDT)
+X-Received: by 2002:a05:6000:100c:: with SMTP id a12mr11437320wrx.81.1592903184970;
+        Tue, 23 Jun 2020 02:06:24 -0700 (PDT)
+Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net. [83.51.162.1])
+        by smtp.gmail.com with ESMTPSA id b19sm2951554wmj.0.2020.06.23.02.06.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 23 Jun 2020 02:06:24 -0700 (PDT)
+From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To:     qemu-devel@nongnu.org
+Cc:     qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
+        Andrew Jones <drjones@redhat.com>,
+        Laurent Vivier <lvivier@redhat.com>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v3 0/2] target/arm: Fix using pmu=on on KVM
+Date:   Tue, 23 Jun 2020 11:06:20 +0200
+Message-Id: <20200623090622.30365-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <20200613213629.21984-8-salil.mehta@huawei.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 01:55:08
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mehta.salil.lnk@gmail.com, gshan@redhat.com,
- pbonzini@redhat.com, mst@redhat.com, jiakernel2@gmail.com, maz@kernel.org,
- david@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
- linuxarm@huawei.com, eric.auger@redhat.com, will@kernel.org,
- qemu-arm@nongnu.org, james.morse@arm.com, catalin.marinas@arm.com,
- sudeep.holla@arm.com, imammedo@redhat.com, maran.wilson@oracle.com,
- zhukeqian1@huawei.com, wangxiongfeng2@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JXgj5ePjElE3
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: +gfPuS9W0aZR
 
-On Sat, Jun 13, 2020 at 10:36:14PM +0100, Salil Mehta wrote:
-> PMU for all possible vcpus must be initialized at the virt machine
-> initialization time. This patch refactors existing code to accomodate possible
-> vcpus. This also assumes that all processor being used are identical at least
-> for now but does not affect the normal scanarios where they might not be in
-> future. This assumption only affects the future hotplug scenarios if ever there
-> exists any hetergenous processors. In such a case PMU might not be enabled on
-> some vcpus. Is it acceptable and doable tradeoff for now?
-> 
-> This perhaps needs more discussion. please check below link,
-> Link: https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg00131.html
-> 
-> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> ---
->  hw/arm/virt.c         | 51 ++++++++++++++++++++++++++++++-------------
->  include/hw/arm/virt.h |  1 +
->  2 files changed, 37 insertions(+), 15 deletions(-)
->
+Since v2:
+- include Drew test fix (addressed Peter review comments)
+- addressed Drew review comments
+- collected R-b/A-b
 
-I have a similar patch to this one in my steal-time dev branch that I just
-started last week. I'm creating a new function that must be called after
-cpu realization and gic creation that completes cpu setup. There's a few
-things that will end up there (including steal-time stuff).
+Andrew Jones (1):
+  tests/qtest/arm-cpu-features: Add feature setting tests
 
-Thanks,
-drew
+Philippe Mathieu-Daudé (1):
+  target/arm: Check supported KVM features globally (not per vCPU)
 
+ target/arm/kvm_arm.h           | 21 ++++++++-----------
+ target/arm/cpu.c               |  2 +-
+ target/arm/cpu64.c             | 10 ++++-----
+ target/arm/kvm.c               |  4 ++--
+ target/arm/kvm64.c             | 14 +++++--------
+ tests/qtest/arm-cpu-features.c | 38 ++++++++++++++++++++++++++++++----
+ 6 files changed, 56 insertions(+), 33 deletions(-)
+
+-- 
+2.21.3

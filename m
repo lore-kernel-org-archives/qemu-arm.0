@@ -1,102 +1,99 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3918001lfm;
-        Tue, 23 Jun 2020 01:58:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw71ft/qAZGeXv/oDhjKSCMCF/WLFKuBBfqr5C8VYeWyPcnxnZvEMUPSKGg9uW99hqjxBS9
-X-Received: by 2002:a25:4901:: with SMTP id w1mr35339575yba.31.1592902717199;
-        Tue, 23 Jun 2020 01:58:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592902717; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3920814lfm;
+        Tue, 23 Jun 2020 02:03:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyX/5KYYmzON5AaR6pRaRfSwz4SCt2n9+AbrIlwUgoTBXOtaoMmkNIK9jeHP8YZJ6vx+wHn
+X-Received: by 2002:a25:850b:: with SMTP id w11mr22454247ybk.291.1592902985581;
+        Tue, 23 Jun 2020 02:03:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592902985; cv=none;
         d=google.com; s=arc-20160816;
-        b=jnejIulyH24UwdhorWzrBs9o0r8P6A6mwNlPyPCNL9GfZl0vXDzeucCP7koapYFfuJ
-         zraaDSzwMXwgpsXFgGjvh6rpLY9iL1h39fpXiLtXdmz2p7x1YFvOjd+6hWlNvY6EjpWO
-         QnAHNZ20vuR/OdXo3mvLqExy94TunrH0E6b3AQ3JFoCyzzhVDIodvYV3co9mTcYn6XUj
-         5ds0QeCL+p14f9ndquqrEU6mNMO6Dbn4EgqJRKwpPiwgiyhVTXD4u/FzvuuypYNSShAM
-         uQycNBaN6loYzbn/Tfar8VvxWS3pjLKFpyXoKemwJRwVPbLalJEh/xfmRd4gm/IPl4Qj
-         UUJQ==
+        b=uHVpqqNiGFv7H7tsAwM9N14GC4SNHd1ZXeWhbBnTvJwdQwUlS8JzIkgeHjVcxBJ9I4
+         AcQHEUZsVNUCmCiZ6p958mwM9NNwBYMjSLN6ladLjAZ3cHSAsohoHfyG+vhQnsFZ0qvo
+         8k3e/VRCmg03Kxg7p7E1ShiH+QeAgCE+6L7b4Wi7id7lCWJ0Dl0sslGyoha/YKQEzxM+
+         0Df6CgO5VXgvA1G/ydvQgSQGcp1i0j4JzTT8+XD/oGvo/UDpiuaayxY40yzG3t/UkQmM
+         rF5gPQKVTEmpgo6W47luxVH3TK6TfhOEaUZZTYZzJF53aYLcPp6WGMUO4Ac6LnkDs366
+         Kl8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:in-reply-to:date:references:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=PwnNkSSLNm21MzqVaxdTINJqwXdipq/VGsfWclkg5wk=;
-        b=zrWKiKRjJoXbaGPzI/XZDzS1JvaaToArQWL/t8xZRqgMEiQhYOb0VwfuZbkBSIeFcQ
-         yy9+5xUoc9ERZz9Sy7OFJRDjQR+wX+RwxY3fy5s73UNCwms9L09z61pPrM92zd/YFrDA
-         kDMkpk4dcYAx4ykSaNoE3+BBNJivJU4Yblz+dpPRdMUs8T5wB2sxvq0TBgJ68JtUAYgb
-         OpeYf3qARR80MNy5g/wm5rZtcqphj8NdEJB6++/Os6KkODgoPwXyzPillKda/u9FmXf3
-         Qnk4yaG+mrACq9B0fQuQ2r4+d+9X94HxIqPHypth6JnlozHGpDAGF3KUewq3iULSTOmu
-         Lv2w==
+        bh=DWqDZq0v4LXkIn+biD2SU+252DF5UrweAVupAlT/kV4=;
+        b=bUgzDPfqUes+W8XQUoHuROl28qT605UrqwM27Hsah2WJ4/B30pfos5q4ybjWVOYvyG
+         3+tVZZRb5vghq2RYhlTjmrxm2rhtnFwfKsVk+4EyLoLUDXFM+WzDNFMiGirJ1S7bpg9R
+         F/XQPAF+/HEVy6RqG7iZORWN4U1Hfy/fpFS59E5vbyP8GR/bZTqCAiQFkcP6uK9lMzYn
+         n7UFByUdk6T9L5RcCu9A7/yrATr94aKPJCIEz/NJiERsFO4ihDsLX6gKpcqwG1WeOtRr
+         WoMWTE1pwGFlOjLLKUBnmuYkXPdv+qck5tLqZRY9ih49z3O18L+qYhejLyYp7wpr87zd
+         +mCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sq+Hygix;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TB9FNvCN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n8si16372973ybk.265.2020.06.23.01.58.37
+        by mx.google.com with ESMTPS id k14si15235329ybh.221.2020.06.23.02.03.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 01:58:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 Jun 2020 02:03:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sq+Hygix;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TB9FNvCN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46652 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54140 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnelI-000182-KW
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 04:58:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40686)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jnepc-0004kb-Tq
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 05:03:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42502)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jnekK-0008KW-Lm
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 04:57:36 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:22868
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1jnenv-0003V3-3N
+ for qemu-devel@nongnu.org; Tue, 23 Jun 2020 05:01:19 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:42395
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jnekI-0006YQ-Sn
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 04:57:36 -0400
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1jnens-0008BR-Hu
+ for qemu-devel@nongnu.org; Tue, 23 Jun 2020 05:01:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592902653;
+ s=mimecast20190719; t=1592902875;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=PwnNkSSLNm21MzqVaxdTINJqwXdipq/VGsfWclkg5wk=;
- b=Sq+HygixVJslHBb8G+/9p4qi+BXls+LFXkgMBlKYKitLKBg7urjScC2bmMkOMcb5KDqSZg
- 02114mc/OOs0JsMiESjffLx4qNIFZvMlGWErphVjncO5yBs5+UpB+UDazLoOR+de/V/TIM
- TqMuFg6icEtl3ZnFzVaKWcX2PW99DoI=
+ bh=DWqDZq0v4LXkIn+biD2SU+252DF5UrweAVupAlT/kV4=;
+ b=TB9FNvCN2yjVx4v+Fpkc5LsVkjKtTObq/dl1YaXAN9wA3Hce68iVrOnB4kmVQuy/4ivk3B
+ a355R+cOEu+h9ddB8RXjHQgxee0eHVh1MFkLcvuQLnH/2F9xNkhNV3FUaBTOfeMDlt/iDq
+ DqY445wTWYB1WgTufTdKlU4xAAMxVY8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-355-QzDdPiAAP_eByibKIpzufA-1; Tue, 23 Jun 2020 04:57:31 -0400
-X-MC-Unique: QzDdPiAAP_eByibKIpzufA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-304-bg8d4tNyNRqauV5cnE7Veg-1; Tue, 23 Jun 2020 05:01:02 -0400
+X-MC-Unique: bg8d4tNyNRqauV5cnE7Veg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 644C11005512;
- Tue, 23 Jun 2020 08:57:25 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
- [10.36.112.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id CF18E5C660;
- Tue, 23 Jun 2020 08:57:16 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 4E699113846D; Tue, 23 Jun 2020 10:57:15 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Subject: Re: [PATCH v3 1/5] qdev: Introduce DEFINE_PROP_RESERVED_REGION
-References: <20200611151209.22547-1-eric.auger@redhat.com>
- <20200611151209.22547-2-eric.auger@redhat.com>
- <87k0zzz6nt.fsf@dusky.pond.sub.org>
- <f0ec7470-d683-1bfd-103d-54c57ebd3863@redhat.com>
-Date: Tue, 23 Jun 2020 10:57:15 +0200
-In-Reply-To: <f0ec7470-d683-1bfd-103d-54c57ebd3863@redhat.com> (Auger Eric's
- message of "Tue, 23 Jun 2020 10:22:47 +0200")
-Message-ID: <87r1u6jh1w.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AC5AF804001;
+ Tue, 23 Jun 2020 09:00:59 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.193.84])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0D5B019D7F;
+ Tue, 23 Jun 2020 09:00:45 +0000 (UTC)
+Date: Tue, 23 Jun 2020 11:00:43 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Subject: Re: [PATCH RFC 07/22] arm/cpuhp: Init PMU at host for all possible
+ vcpus
+Message-ID: <20200623090043.fwf7h6zmprc3oug4@kamzik.brq.redhat.com>
+References: <20200613213629.21984-1-salil.mehta@huawei.com>
+ <20200613213629.21984-8-salil.mehta@huawei.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <20200613213629.21984-8-salil.mehta@huawei.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=drjones@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 02:54:39
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 01:55:08
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -106,105 +103,53 @@ X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, jean-philippe@linaro.org, mst@redhat.com,
- qemu-devel@nongnu.org, peterx@redhat.com, qemu-arm@nongnu.org,
- pbonzini@redhat.com, bbhushan2@marvell.com, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XMI/vLmIk73U
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, mehta.salil.lnk@gmail.com, gshan@redhat.com,
+ pbonzini@redhat.com, mst@redhat.com, jiakernel2@gmail.com, maz@kernel.org,
+ david@redhat.com, richard.henderson@linaro.org, qemu-devel@nongnu.org,
+ linuxarm@huawei.com, eric.auger@redhat.com, will@kernel.org,
+ qemu-arm@nongnu.org, james.morse@arm.com, catalin.marinas@arm.com,
+ sudeep.holla@arm.com, imammedo@redhat.com, maran.wilson@oracle.com,
+ zhukeqian1@huawei.com, wangxiongfeng2@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JXgj5ePjElE3
 
-Auger Eric <eric.auger@redhat.com> writes:
-
-> Hi Markus,
+On Sat, Jun 13, 2020 at 10:36:14PM +0100, Salil Mehta wrote:
+> PMU for all possible vcpus must be initialized at the virt machine
+> initialization time. This patch refactors existing code to accomodate possible
+> vcpus. This also assumes that all processor being used are identical at least
+> for now but does not affect the normal scanarios where they might not be in
+> future. This assumption only affects the future hotplug scenarios if ever there
+> exists any hetergenous processors. In such a case PMU might not be enabled on
+> some vcpus. Is it acceptable and doable tradeoff for now?
+> 
+> This perhaps needs more discussion. please check below link,
+> Link: https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg00131.html
+> 
+> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> ---
+>  hw/arm/virt.c         | 51 ++++++++++++++++++++++++++++++-------------
+>  include/hw/arm/virt.h |  1 +
+>  2 files changed, 37 insertions(+), 15 deletions(-)
 >
-> On 6/22/20 1:22 PM, Markus Armbruster wrote:
->> Eric Auger <eric.auger@redhat.com> writes:
->> 
->>> Introduce a new property defining a reserved region:
->>> <low address>, <high address>, <type>.
->>>
->>> This will be used to encode reserved IOVA regions.
->>>
->>> For instance, in virtio-iommu use case, reserved IOVA regions
->>> will be passed by the machine code to the virtio-iommu-pci
->>> device (an array of those). The type of the reserved region
->>> will match the virtio_iommu_probe_resv_mem subtype value:
->>> - VIRTIO_IOMMU_RESV_MEM_T_RESERVED (0)
->>> - VIRTIO_IOMMU_RESV_MEM_T_MSI (1)
->>>
->>> on PC/Q35 machine, this will be used to inform the
->>> virtio-iommu-pci device it should bypass the MSI region.
->>> The reserved region will be: 0xfee00000, 0xfeefffff, 1.
->>>
->>> On ARM, we can declare the ITS MSI doorbell as an MSI
->>> region to prevent MSIs from being mapped on guest side.
->>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-[...]
->>> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
->>> index cc924815da..15b84adbee 100644
->>> --- a/hw/core/qdev-properties.c
->>> +++ b/hw/core/qdev-properties.c
-[...]
->>> +static void set_reserved_region(Object *obj, Visitor *v, const char *name,
->>> +                                void *opaque, Error **errp)
->>> +{
->>> +    DeviceState *dev = DEVICE(obj);
->>> +    Property *prop = opaque;
->>> +    ReservedRegion *rr = qdev_get_prop_ptr(dev, prop);
->>> +    Error *local_err = NULL;
->>> +    const char *endptr;
->>> +    char *str;
->>> +    int ret;
->>> +
->>> +    if (dev->realized) {
->>> +        qdev_prop_set_after_realize(dev, name, errp);
->>> +        return;
->>> +    }
->>> +
->>> +    visit_type_str(v, name, &str, &local_err);
->>> +    if (local_err) {
->>> +        error_propagate(errp, local_err);
->>> +        return;
->>> +    }
->>> +
->>> +    ret = qemu_strtou64(str, &endptr, 16, &rr->low);
->>> +    if (ret) {
->>> +        error_setg(errp, "Failed to decode reserved region low addr");
->>> +        error_append_hint(errp,
->>> +                          "should be an address in hexadecimal\n");
->> 
->> Comes out like this:
->> 
->>     qemu-system-x86_64: -device ...: Failed to decode reserved region low addr
->>     should be an address in hexadecimal
->> 
->> I'd capitalize the other way, to get
->> 
->>     qemu-system-x86_64: -device ...: failed to decode reserved region low addr
->>     Should be an address in hexadecimal
->> 
->> Note: output is made up; I failed at figuring out how to use the new
->> property.  An example in PATCH 4's commit message might help.
-> OK I will add one example. In practice in the virtio-iommu case the
-> property is not really meant to be passed by the end-user but should be
-> set by the machine code. However I have just tested from the cmd line
-> and it looks using commas as separators is a bad idea because it
-> collides with ',' separating properties. So if you're OK I will change
-> the comma into ':'.
 
-Please do.
+I have a similar patch to this one in my steal-time dev branch that I just
+started last week. I'm creating a new function that must be called after
+cpu realization and gic creation that completes cpu setup. There's a few
+things that will end up there (including steal-time stuff).
 
-[...]
+Thanks,
+drew
 

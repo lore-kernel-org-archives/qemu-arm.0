@@ -1,94 +1,93 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3867725lfm;
-        Tue, 23 Jun 2020 00:23:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxwW2cAMN+Kzvpi/p/vjswi4vbhqQUMOaGliv6HxeeL9v3zjk6KAmZm7UOxdvL1DqI00Lwc
-X-Received: by 2002:a25:7386:: with SMTP id o128mr33453948ybc.266.1592896989007;
-        Tue, 23 Jun 2020 00:23:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592896989; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3867930lfm;
+        Tue, 23 Jun 2020 00:23:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyCSus/Ww4mIkenvgYf1zDRk3ureO0J7wcb5WnDhbRtO+bLfcmXal286KNS2/j0SiK4nmin
+X-Received: by 2002:a25:694d:: with SMTP id e74mr34129145ybc.195.1592897012278;
+        Tue, 23 Jun 2020 00:23:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592897012; cv=none;
         d=google.com; s=arc-20160816;
-        b=fSLwq+lN4/Zb6tBbBnyBUo6RlNY9nEQdHnCD/xOg85d4BJwL6XpfuQwZcp6Z08gNpq
-         m8+6sG5WDW8EdRJrt1UwgcRqE/BJgitC3t9fWSdq0ocOO9vj19WMbxQiwGw7Jh4aCbxN
-         qz2R8FTvR8oqj9q5J+XJHJydqdEEnqxWficYfje77L4ySAKzf4yLMqRggQp4yJD7OeA1
-         6nEvsAzsVFpPRk1CFVNWIvOiAS4ndv6qbwuWDKdVqz7Z2YZFAfkzCtOxc9iZP1mXUkxB
-         IbNSc31TH0Mu5OJhhp8cI7n45e3QRE4VVVO6NMJgKM0s9TrMtkP6Swhu3EsA+oG+VJjk
-         7cWg==
+        b=wW3eQcu+2OINEY5HVJXv/otQh9F5LQrBB3m/oq6UDlHsTeZb5Kt1Pw282Dfr9B+TK0
+         TSuoGMqR92qMZm6/wR/lQ3V++otn9QuYDTIClcg2xbpnwVITFxWA2gi3mYsqJjBBLaKm
+         ptP8WZS3EBYifhkZsFUWrRPlG66yYQrICxD4onjKsBiTQO6e5j9Q8viWiJLJHhsNXixO
+         T2ypjPNscgv97nJlfWj3eM9jZq0VSDqQ/xwlIRiz+4PxdAln2cbQYttKaFRzvk6z9njD
+         7Bm2Zmg6kTOrbnETLyIgKHFB+fHsXLfHAtCNJMLWqKuf6XKIHjzq0+NrYKc+qD1mC7FQ
+         b95A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=dd/Qy10e7uzdwPtNIyee34OCbZGBAytVsTY9nRrII0k=;
-        b=Kp7haLFu971i60v1UMFPhFJHELVglcl/uIocZd57mNeWlFZPchAHxpJViMsFo78Qgx
-         9qo0MjSEnS4dixOwgRCpxpZWsgHOOFcA0ae7I5fhg7+xOyfI5fREMQR1HeN1jvi0Dfgj
-         1OwRrlEsg7Eac8YXDPTcAHENw0ZgOSj/wf+XIiuYgGr0fs/4/MyKAbmuiYlZZ0Bvp2uA
-         p+Yi69IJ6kQaXaclwQy8yxqpEssBshT0u564ifMD3kPhQ7e/gOmO6//kMCjwq9k6f7ZZ
-         J1Yqyrhf8jneBZos6EXA/KMFBd5vLPsRUH9NZB8IXoQG3XfPURRIa09KxhSJuwC660/r
-         EIVw==
+        bh=ZzgsyFKQ+0jPZU1EMlN0VKvlb6aohKF8k/McGbTdz6k=;
+        b=YsFlQ25w9qN0wkHVTzvecqpUj0JyCY2CbifXWzgWlfdyAIC7jsaqSFEmc/Ol3f6+B9
+         DYvVkGtr4aZ14Y3CHP/ENPpmUqdPZ0bMFovMo8rvAitw5rWulk+xSIMOWTZFkLY1HcKA
+         n13B/H4a3ryIsqzHTJ3okdNGGwJoKH4lgy7WBycQa+uPOO3+VMqkzYrzsAlGkfCbmgsu
+         U1ozq4czHb9g/vG/st3f6pPctNT65BDJMEVG2efPB2pXdBh9KxnO1Y0zage/Mp61oT+x
+         byiP6/drn7ISvA5odaapCNlIh/6/8lbtWqnd2VjzG2StA1bQ5BLRUGuuDvjgbZ8mSLL1
+         WiDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nlbodbLn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c9oXLHvC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v132si16727209ybv.252.2020.06.23.00.23.08
+        by mx.google.com with ESMTPS id a17si5474425ybc.326.2020.06.23.00.23.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 00:23:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 Jun 2020 00:23:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nlbodbLn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c9oXLHvC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:55430 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58362 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jndGu-0001pI-9o
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 03:23:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60918)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jndHH-0002yT-Kz
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 03:23:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60932)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jndFU-0007ao-Hk; Tue, 23 Jun 2020 03:21:40 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:42086)
+ id 1jndFV-0007eL-V4; Tue, 23 Jun 2020 03:21:41 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:52183)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jndFT-0003En-0G; Tue, 23 Jun 2020 03:21:40 -0400
-Received: by mail-wr1-x429.google.com with SMTP id o11so11634922wrv.9;
- Tue, 23 Jun 2020 00:21:38 -0700 (PDT)
+ id 1jndFU-0003FN-Cm; Tue, 23 Jun 2020 03:21:41 -0400
+Received: by mail-wm1-x341.google.com with SMTP id 22so1090837wmg.1;
+ Tue, 23 Jun 2020 00:21:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=dd/Qy10e7uzdwPtNIyee34OCbZGBAytVsTY9nRrII0k=;
- b=nlbodbLnP0O6rZ1E7sjQ0qNOyOHkjOCfihgu7mKNTIJVKymgaPIwIpBqqX5fw1ZLTb
- 04B4jNwsbSYdqlD1iEvZU+yaCZtHQpHGC6UGH2bXO9KMOAfc+WgCtl9SOJct2hl6dnOA
- nsoUKE0f+akX5N5aTStNqcX45WsFYhBmoawq3w2YyBwwQfAYcTieuB7oC8g19atiyBuc
- pNWT1FD81QzrJA0onU6qIMEBkQF+pqiDFT98RmS1s1Ktj7tj+A6+u1RRHLKqh9gzPzDH
- Xb+ZfMIj3yojD7tceC3nmKg+hYYiuoQQttCFgZDnXuLWKW6XJvua/qCPBC3Rut2+545t
- W9Jw==
+ bh=ZzgsyFKQ+0jPZU1EMlN0VKvlb6aohKF8k/McGbTdz6k=;
+ b=c9oXLHvCoSj113SCvh5uXN7SSau0tvSh07arZdET1KzoCQbd2YzZhIxFT08WYYeGQV
+ +OfHKjt5FDQWJ4zVBm/1jyqzxBzV1HitH/1g8UM+wbIHtOb2WnHo32t9e4dh/o60I83F
+ R4lWMzoLFbEtCdwkLjle7jUa+zbjCDXsxI6Y/20vqHumm3ecc6QGEajEQy3eaxmzSPSz
+ WU10r5sahqBFWlgS+6sYtEsyVMd/E9BoItLiS0yz2yqgYgMRxqLFm8CKnwg2G8MnK/fG
+ TAv4sbNpsMAMwMSRV6ULP20Kh16sq12ki+giB/wlqqQsZIUYZee55ieGqyJS/wnwx8mB
+ IzvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=dd/Qy10e7uzdwPtNIyee34OCbZGBAytVsTY9nRrII0k=;
- b=unydSbgt7br++zXtx1+dSR+y95mfjVdb0YmBjpf1ud2NGa8asfHCi2Sr+/OeUUnXag
- 2M9pm67jyD7ziDN+oSYM/A5gVB1l71G77ouB+tlftu3Q74RmYLTBBLy2Nz7DPEhYafq3
- a9CYGCdDa6D6wl8p1cv8OSSMnHfIeP9zA2vgMnr0e6/1CxY7yN1HiOrLr1uYgYuFj4Fy
- nbRmq3QC9V9NjYmVkC1n17EOe3Axoh8D+eU407yWAB6UZJWu5YvGwn7CM8HXwfiAhtf3
- d5BN5YHUv296uBa3cbhgZsQcNjOt0ctpm2B49y/FPmGmAfxu53a4U7PcF2ncOvUmTa3S
- O1Yw==
-X-Gm-Message-State: AOAM533o6y7LC6raLGOHq5hX5Tq/kCVqlwoQhBTkliAp9G2ibNTu1JXm
- QxAiF6nzscgu5I1aTCQXw9mZFVbi
-X-Received: by 2002:a5d:40cb:: with SMTP id b11mr11854640wrq.263.1592896897105; 
- Tue, 23 Jun 2020 00:21:37 -0700 (PDT)
+ bh=ZzgsyFKQ+0jPZU1EMlN0VKvlb6aohKF8k/McGbTdz6k=;
+ b=ogANjFFWBNwaq+mlVzNYxb8S/If0ws1Eb1aSKqUp5KjSWCxORTF6eTctezwIZBRqy7
+ j5XjIGWexFSS1JX5Dw645WUY8t8PVsiCDnhz2NC2BATK28xxs5XjmttyizKJSxjg5ns/
+ MdrrGOzxM7NB3xmF0cLJ3bIzBAD4B/qAjNVOG2BGLGCyl1KASCxs03+nb0DAORccgPwW
+ BrdN2dfboPVUeVF3Unt1EvQFSq+IpoKMLsVI4XinYdauJCQHwp0ewk3qDRmTHGofSR3m
+ jNfqe6VnJ3mhPViMLA3zVlsBHIuBPuAQwGiWhb9tLS2+reP/8qtokaAfMbexC5UXfOWE
+ zjtg==
+X-Gm-Message-State: AOAM531ckaQKyNscWaDSItGIQwWkBtPvmke3bASV/9X8Z6EzsJcBbYby
+ gvuyV8QOVAILhg792vtfWDrn2BSL
+X-Received: by 2002:a1c:9687:: with SMTP id y129mr22520132wmd.30.1592896898479; 
+ Tue, 23 Jun 2020 00:21:38 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id x13sm21877236wre.83.2020.06.23.00.21.36
+ by smtp.gmail.com with ESMTPSA id x13sm21877236wre.83.2020.06.23.00.21.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jun 2020 00:21:36 -0700 (PDT)
+ Tue, 23 Jun 2020 00:21:37 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 2/3] hw/arm/aspeed: Rename AspeedBoardState as
- AspeedMachineState
-Date: Tue, 23 Jun 2020 09:21:31 +0200
-Message-Id: <20200623072132.2868-3-f4bug@amsat.org>
+Subject: [PATCH v2 3/3] hw/arm/aspeed: QOM'ify AspeedMachineState
+Date: Tue, 23 Jun 2020 09:21:32 +0200
+Message-Id: <20200623072132.2868-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200623072132.2868-1-f4bug@amsat.org>
 References: <20200623072132.2868-1-f4bug@amsat.org>
@@ -96,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -108,149 +107,103 @@ X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oMDBL9ot6/me
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hWF6jlC+kIOp
 
-To have a more consistent naming, rename AspeedBoardState
-as AspeedMachineState.
+AspeedMachineState seems crippled. We use incorrectly 2
+different structures to do the same thing. Merge them
+altogether:
+- Move AspeedMachine fields to AspeedMachineState
+- AspeedMachineState is now QOM
+- Remove unused AspeedMachine structure
 
-Suggested-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/arm/aspeed.h |  4 ++--
- hw/arm/aspeed.c         | 20 ++++++++++----------
- 2 files changed, 12 insertions(+), 12 deletions(-)
+ include/hw/arm/aspeed.h |  8 +-------
+ hw/arm/aspeed.c         | 11 +++++++----
+ 2 files changed, 8 insertions(+), 11 deletions(-)
 
 diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index 95b4daece8..5114ba0bd4 100644
+index 5114ba0bd4..09da9d9acc 100644
 --- a/include/hw/arm/aspeed.h
 +++ b/include/hw/arm/aspeed.h
-@@ -11,7 +11,7 @@
- 
- #include "hw/boards.h"
- 
--typedef struct AspeedBoardState AspeedBoardState;
-+typedef struct AspeedMachineState AspeedMachineState;
+@@ -15,13 +15,7 @@ typedef struct AspeedMachineState AspeedMachineState;
  
  #define TYPE_ASPEED_MACHINE       MACHINE_TYPE_NAME("aspeed")
  #define ASPEED_MACHINE(obj) \
-@@ -45,7 +45,7 @@ typedef struct AspeedMachineClass {
-     const char *spi_model;
-     uint32_t num_cs;
-     uint32_t macs_mask;
--    void (*i2c_init)(AspeedBoardState *bmc);
-+    void (*i2c_init)(AspeedMachineState *bmc);
- } AspeedMachineClass;
+-    OBJECT_CHECK(AspeedMachine, (obj), TYPE_ASPEED_MACHINE)
+-
+-typedef struct AspeedMachine {
+-    MachineState parent_obj;
+-
+-    bool mmio_exec;
+-} AspeedMachine;
++    OBJECT_CHECK(AspeedMachineState, (obj), TYPE_ASPEED_MACHINE)
  
- 
+ #define ASPEED_MAC0_ON   (1 << 0)
+ #define ASPEED_MAC1_ON   (1 << 1)
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 31765792a2..680345beca 100644
+index 680345beca..ccf127b328 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -32,7 +32,7 @@ static struct arm_boot_info aspeed_board_binfo = {
-     .board_id = -1, /* device-tree-only board */
+@@ -33,9 +33,14 @@ static struct arm_boot_info aspeed_board_binfo = {
  };
  
--struct AspeedBoardState {
-+struct AspeedMachineState {
+ struct AspeedMachineState {
++    /* Private */
++    MachineState parent_obj;
++    /* Public */
++
      AspeedSoCState soc;
      MemoryRegion ram_container;
      MemoryRegion max_ram;
-@@ -253,7 +253,7 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo)
++    bool mmio_exec;
+ };
+ 
+ /* Palmetto hardware value: 0x120CE416 */
+@@ -253,7 +258,7 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo)
  
  static void aspeed_machine_init(MachineState *machine)
  {
--    AspeedBoardState *bmc;
-+    AspeedMachineState *bmc;
+-    AspeedMachineState *bmc;
++    AspeedMachineState *bmc = ASPEED_MACHINE(machine);
      AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
      AspeedSoCClass *sc;
      DriveInfo *drive0 = drive_get(IF_MTD, 0, 0);
-@@ -261,7 +261,7 @@ static void aspeed_machine_init(MachineState *machine)
+@@ -261,8 +266,6 @@ static void aspeed_machine_init(MachineState *machine)
      int i;
      NICInfo *nd = &nd_table[0];
  
--    bmc = g_new0(AspeedBoardState, 1);
-+    bmc = g_new0(AspeedMachineState, 1);
- 
+-    bmc = g_new0(AspeedMachineState, 1);
+-
      memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container",
                         4 * GiB);
-@@ -374,7 +374,7 @@ static void aspeed_machine_init(MachineState *machine)
-     arm_load_kernel(ARM_CPU(first_cpu), machine, &aspeed_board_binfo);
- }
- 
--static void palmetto_bmc_i2c_init(AspeedBoardState *bmc)
-+static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
-     DeviceState *dev;
-@@ -396,7 +396,7 @@ static void palmetto_bmc_i2c_init(AspeedBoardState *bmc)
-     object_property_set_int(OBJECT(dev), 110000, "temperature3", &error_abort);
- }
- 
--static void ast2500_evb_i2c_init(AspeedBoardState *bmc)
-+static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
-     uint8_t *eeprom_buf = g_malloc0(8 * 1024);
-@@ -413,13 +413,13 @@ static void ast2500_evb_i2c_init(AspeedBoardState *bmc)
-     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338", 0x32);
- }
- 
--static void ast2600_evb_i2c_init(AspeedBoardState *bmc)
-+static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
- {
-     /* Start with some devices on our I2C busses */
-     ast2500_evb_i2c_init(bmc);
- }
- 
--static void romulus_bmc_i2c_init(AspeedBoardState *bmc)
-+static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
- 
-@@ -428,7 +428,7 @@ static void romulus_bmc_i2c_init(AspeedBoardState *bmc)
-     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338", 0x32);
- }
- 
--static void swift_bmc_i2c_init(AspeedBoardState *bmc)
-+static void swift_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
- 
-@@ -457,7 +457,7 @@ static void swift_bmc_i2c_init(AspeedBoardState *bmc)
-     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 12), "tmp105", 0x4a);
- }
- 
--static void sonorapass_bmc_i2c_init(AspeedBoardState *bmc)
-+static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
- 
-@@ -501,7 +501,7 @@ static void sonorapass_bmc_i2c_init(AspeedBoardState *bmc)
- 
- }
- 
--static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
-+static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = &bmc->soc;
-     uint8_t *eeprom_buf = g_malloc0(8 * 1024);
+     memory_region_add_subregion(&bmc->ram_container, 0, machine->ram);
+@@ -751,7 +754,7 @@ static const TypeInfo aspeed_machine_types[] = {
+     }, {
+         .name          = TYPE_ASPEED_MACHINE,
+         .parent        = TYPE_MACHINE,
+-        .instance_size = sizeof(AspeedMachine),
++        .instance_size = sizeof(AspeedMachineState),
+         .instance_init = aspeed_machine_instance_init,
+         .class_size    = sizeof(AspeedMachineClass),
+         .class_init    = aspeed_machine_class_init,
 -- 
 2.21.3
 

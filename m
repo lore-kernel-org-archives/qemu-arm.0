@@ -1,103 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4346324lfm;
-        Tue, 23 Jun 2020 12:46:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxstHYbMuxRDjUa14SFWSn68QBJAdSvQ+jk9U4a9xJLIUZpNf18O3Yhn096t4FKB51F9RWK
-X-Received: by 2002:a25:9904:: with SMTP id z4mr24971322ybn.146.1592941578645;
-        Tue, 23 Jun 2020 12:46:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592941578; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4346935lfm;
+        Tue, 23 Jun 2020 12:47:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxkaZ3z80/+zL+/hdt9FPAG163+RPxLaebJJo1El90lzk5Tk8ijRIaPtoW94RUaIga9hrLg
+X-Received: by 2002:a25:c74b:: with SMTP id w72mr41875655ybe.191.1592941637322;
+        Tue, 23 Jun 2020 12:47:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592941637; cv=none;
         d=google.com; s=arc-20160816;
-        b=HtdXSqj1ORVJ3+nHhInghPst2mHJkTf+0YO5F0Im2gQVApeYBac49gFL9eEV43/UPX
-         HimYMs8MbnYlW/PuAtt0Z/JgLl1Ax7hHD1OpaACKn5Ttv9UpJ8GJpre0Y02Nk7PAY5bk
-         NQj3UliCapkoQ3BROoc20RFewCbhg2NSqwgnclsvdaHjXoJqRV3s6OPJT+UWs44omh35
-         9Cz/YOAobk0fYE3F0FOLNiClC4gXCOHr5nQdCei7d+Vtfwy2gjHXxkkAL6TCNUOrb81h
-         J4T7/jVM2AUIqe2B4r5XCsvydiTKX7U66dLDnUk0FdqmFAs/orJZT06/z7o2aKZIn/+3
-         iasA==
+        b=Y2Kd6X3n+qjbo6hwcjgQVtPSSGafHl7vg2zIq6wcfF/nwVq8hfq2NHT9/Pb4smQFUS
+         TS89WrNu76L6UvvxGU9451Ae2CAV2M46PU2Durg/Ln41AKN6O1y384OPpiCoNECQlvTc
+         kih3Qz27++M9O5qOk5H2glpebfPDnAgms3v2tpoICRCoQmUxY95KAO2EeFGUS9lCMQqS
+         y1W0POv5Kb2zStajXIRdPvVFcTJeuJfxq75y275p9Qw++PD4/Or91XJ/vfpNli8XLlcG
+         tVcHh2e8qG02c4sxfS16TLqJ/4RzolxtPyuqfgqBhIed7W2zCf+yNLh4d3vCJl/QzBVa
+         KeEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=VWCfhpPjC9HZpvnmujdODA6E8eobxjj0+we1IYK09vU=;
-        b=JE4V4tPe8UImxjtvATU44dyPlv47poBOT50CQeUvH9IEHkJzzhNBv1Ci7VRd4RNEhu
-         wHITW0ZuRuGMlZjJwSBdRMhx3jBa2P1H8Qse6oA5P2THC244/og7XBtEh/3g5ON5koff
-         IHzbe2/O1yff2D6AgOFO8myDEw1wtbZ5Dc+M1xMmjEriMN0WSIrGpXkQSmLZwZlBNYbW
-         CJEnBcxbhU7N3bCk8f0dogqtVct0a8kGJdRAXsUDM4giJRcjWToJh98G9YpqKdhj4kY8
-         ekYtiSKNw9/JatTmDktNtk0ADAV3QtX/Dx6sPZJ8Z5+EjY6EMxekjZnLPJ6yCPpF90r1
-         p7Lg==
+        bh=i/c4TiFBXGswGdsE1RQ1XA7vTBF/TaJqHJ3ycBdltpU=;
+        b=RhX+J+JwW7NRRj3ZIU0rPlx9CgEOL3zSaHNnjObVIYvDUZI22cvuNUqBpR0PTNzMm2
+         JnxgkesgkkhpmKQIk0PoxiMVuSegIijiub+I4/s7kCnCSY7TyKrYhFqKO4n2BiD1TT1O
+         +xO0wVxBXeZ90vsk3EQStLmRlgTsMRWTnVpPZhPcCC+t6/ayWQUhB3+iludbBHdSXPvg
+         9L2NWhIbKWVoy/CjRtwWCaZqMSBz5+HVN4heDHCKqkrlaNn+3ApbciN824U2Ku3ijBJA
+         rp9fk6wGvPU4XhN0gQ7pd3dMo1f9j5Ow/1G4jiflzhnQ8rbFbTYsec1wwFRFnaZ8OH+7
+         QZlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YyAn4ASn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=oIYa3XAd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y6si15463384ybm.401.2020.06.23.12.46.18
+        by mx.google.com with ESMTPS id j81si16943084ybg.136.2020.06.23.12.47.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 12:46:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 Jun 2020 12:47:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YyAn4ASn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=oIYa3XAd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54196 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58700 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnos5-0003Dd-Vl
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 15:46:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42332)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jnot2-0005QX-Je
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 15:47:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42396)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jnojh-0004J7-2E
- for qemu-devel@nongnu.org; Tue, 23 Jun 2020 15:37:37 -0400
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:33789)
+ id 1jnojj-0004Oh-6N
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 15:37:39 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:45743)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jnoje-0005lI-VC
- for qemu-devel@nongnu.org; Tue, 23 Jun 2020 15:37:36 -0400
-Received: by mail-pl1-x641.google.com with SMTP id 35so9562668ple.0
- for <qemu-devel@nongnu.org>; Tue, 23 Jun 2020 12:37:34 -0700 (PDT)
+ id 1jnojh-0005n7-62
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 15:37:38 -0400
+Received: by mail-pl1-x642.google.com with SMTP id g17so357568plq.12
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2020 12:37:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=VWCfhpPjC9HZpvnmujdODA6E8eobxjj0+we1IYK09vU=;
- b=YyAn4ASnqIimTtl+NCejYEnntciySK+kByabIqzDeS9vIML4TgLF5r70Q3SAzHCiDL
- E5z9jq3L8nTf0gi2FLk6BXAJ2lYNCnniGlo5mnWrgCnijPhl86c7aLyjPoAywRXlSyB7
- fKqAdgwK8EzHr0lkO1i89O9pKAx6H8FAgUOCoVu0UWP2Czt5W9dV0CNg0DPFJOzKbOef
- Ilb8bTYOqpCRvvkhGg3xc/GY/8ukZF6N+TSco4gPGk/6yWfuxlPy1w2uDxNcLw/v2ptn
- ZAZePpStWdbk5+HEwDaVXxYnx4y2+fu8dxKyQk9R8Fx1tVf7HoQ0mhln37RQbgnhQjk9
- tiMg==
+ bh=i/c4TiFBXGswGdsE1RQ1XA7vTBF/TaJqHJ3ycBdltpU=;
+ b=oIYa3XAdUNOg8arrXvvFzlFCq3PyzgXXyeAP7dof+CyVnImUD9jK47gTir4jg+KC8K
+ sCMS+nur4jRL2n1NohDZF775cyU39oVf8Xt6dfjVKbQ/+Yc8pJc75LvVU5n8dRpE6Egy
+ TxmFWdpmLxlOVXI1OulBAfITD+Avn/44XkVV5chQAtSI9IMtpvTM//3hDcKpt+/oCk5a
+ mla5NaEwQGaA5TwE6l/sjDyKh5EdVP1WQhOJGWZIbz3vBrVd7IQ+Ylsxfke2pMBLPwHu
+ nQ5QZxEjl36Nguc3bR0HDpc4jugyvR00IkHh9QycSL+SXso84ns3lrQS0vnr6vwIYZ9I
+ 4U4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=VWCfhpPjC9HZpvnmujdODA6E8eobxjj0+we1IYK09vU=;
- b=G4NapwxW55A3FEuLcfcjtleDD96dl8FNwLsNIvkmrAECmA4k/AXgbUYnPQsbtwVbaL
- 7KiIF1UcCgJRFzwjdaHkPAWQZvJOxJpVHbOGNdQqT6TYLWfJ9CsLIt5yJX2Y6A1arKyC
- iYyJHCiq3a4+HVdLRJWqC4AbwffDAx/JBPohx67t2P0bmNHDDEs9DKSNSd2CUvcm7J/p
- w7yxeB4claIWIDJwi/SHDY0GudbOCknZnrRv1xx1lY054rVrh6OCwNgTI6B8H0sje0IC
- stM5/yyGTqTbTUjzMbC1p1k5+OU65ulqOw6hOkXm0h9f4XW/owWGjwrlkMfGLuUy0P5y
- Lxtw==
-X-Gm-Message-State: AOAM533iroMErT1l40NEPi0g7t9qF7etuFG9Uq+0fEeQ1j6ppfkJzGIv
- XxNJ71QmY7t+COO7jhjZJnkjTW7g9Ak=
-X-Received: by 2002:a17:902:8690:: with SMTP id
- g16mr25484832plo.257.1592941053005; 
- Tue, 23 Jun 2020 12:37:33 -0700 (PDT)
+ bh=i/c4TiFBXGswGdsE1RQ1XA7vTBF/TaJqHJ3ycBdltpU=;
+ b=hyrPGWgsx7RsKz3yFTkicmzLeMF0/ca5/x6tOJ+TNRybLDdhSksQzcyg4IXj4NJgb6
+ ZMI9GbIn9AOOjH/ccNyIcirt/b/F1QnabIcJ4I4YqTZmEGZ5MtHI+maKYyE9DxTxM6z/
+ DeBRKOQAVmGyxr2z2ErQDyhDT3QqeXxKI+TUxIusvkvPSLRNAD/G4F3/P306dGOnv7rO
+ 59ut5atieG3ekSErDcbL7En6Xpeh+5bQQIdZBFcqQzOqgA+blMOo2jEbmWijxem+e5+J
+ 4a3YK4CMXHeAJmigucGaUM2WjM0p8zKe15XdBtOwkkgsrTFoQcdYiDCxbwExCzJibWYQ
+ S7XA==
+X-Gm-Message-State: AOAM5313vDA05QHA2HUd9hkGZXU9CzzrM0KeZT4CMgge1Y88AakSe0v0
+ GcQcvJjncS2E+XhaSrdJE5o6yQ==
+X-Received: by 2002:a17:902:d902:: with SMTP id
+ c2mr26792589plz.194.1592941055713; 
+ Tue, 23 Jun 2020 12:37:35 -0700 (PDT)
 Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
  [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id p12sm17927642pfq.69.2020.06.23.12.37.31
+ by smtp.gmail.com with ESMTPSA id p12sm17927642pfq.69.2020.06.23.12.37.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jun 2020 12:37:32 -0700 (PDT)
+ Tue, 23 Jun 2020 12:37:34 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v8 23/45] target/arm: Add gen_mte_check1
-Date: Tue, 23 Jun 2020 12:36:36 -0700
-Message-Id: <20200623193658.623279-24-richard.henderson@linaro.org>
+Subject: [PATCH v8 25/45] target/arm: Implement helper_mte_check1
+Date: Tue, 23 Jun 2020 12:36:38 -0700
+Message-Id: <20200623193658.623279-26-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200623193658.623279-1-richard.henderson@linaro.org>
 References: <20200623193658.623279-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x641.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -108,324 +108,245 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, david.spickett@linaro.org,
  steplong@quicinc.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JkzTLmeNF4yS
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 16rQ5raHXnAW
 
-Replace existing uses of check_data_tbi in translate-a64.c that
-perform a single logical memory access.  Leave the helper blank
-for now to reduce the patch size.
+Fill out the stub that was added earlier.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-a64.h    |   1 +
- target/arm/internals.h     |   8 +++
- target/arm/translate-a64.h |   2 +
- target/arm/mte_helper.c    |   8 +++
- target/arm/translate-a64.c | 100 ++++++++++++++++++++++++++++---------
- 5 files changed, 95 insertions(+), 24 deletions(-)
+v8: Remove ra argument to mte_probe1 (pmm).
+---
+ target/arm/internals.h  |  48 +++++++++++++++
+ target/arm/mte_helper.c | 132 +++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 179 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-index 7b628d100e..2faa49d0a3 100644
---- a/target/arm/helper-a64.h
-+++ b/target/arm/helper-a64.h
-@@ -104,6 +104,7 @@ DEF_HELPER_FLAGS_3(autdb, TCG_CALL_NO_WG, i64, env, i64, i64)
- DEF_HELPER_FLAGS_2(xpaci, TCG_CALL_NO_RWG_SE, i64, env, i64)
- DEF_HELPER_FLAGS_2(xpacd, TCG_CALL_NO_RWG_SE, i64, env, i64)
- 
-+DEF_HELPER_FLAGS_3(mte_check1, TCG_CALL_NO_WG, i64, env, i32, i64)
- DEF_HELPER_FLAGS_3(irg, TCG_CALL_NO_RWG, i64, env, i64, i64)
- DEF_HELPER_FLAGS_4(addsubg, TCG_CALL_NO_RWG_SE, i64, env, i64, s32, i32)
- DEF_HELPER_FLAGS_3(ldg, TCG_CALL_NO_WG, i64, env, i64, i64)
 diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 7c9abbabc9..fb92ef6b84 100644
+index fb92ef6b84..807830cc40 100644
 --- a/target/arm/internals.h
 +++ b/target/arm/internals.h
-@@ -1310,6 +1310,14 @@ void arm_log_exception(int idx);
- #define LOG2_TAG_GRANULE 4
- #define TAG_GRANULE      (1 << LOG2_TAG_GRANULE)
+@@ -1318,6 +1318,10 @@ FIELD(MTEDESC, WRITE, 8, 1)
+ FIELD(MTEDESC, ESIZE, 9, 5)
+ FIELD(MTEDESC, TSIZE, 14, 10)  /* mte_checkN only */
  
-+/* Bits within a descriptor passed to the helper_mte_check* functions. */
-+FIELD(MTEDESC, MIDX,  0, 4)
-+FIELD(MTEDESC, TBI,   4, 2)
-+FIELD(MTEDESC, TCMA,  6, 2)
-+FIELD(MTEDESC, WRITE, 8, 1)
-+FIELD(MTEDESC, ESIZE, 9, 5)
-+FIELD(MTEDESC, TSIZE, 14, 10)  /* mte_checkN only */
++bool mte_probe1(CPUARMState *env, uint32_t desc, uint64_t ptr);
++uint64_t mte_check1(CPUARMState *env, uint32_t desc,
++                    uint64_t ptr, uintptr_t ra);
 +
  static inline int allocation_tag_from_addr(uint64_t ptr)
  {
      return extract64(ptr, 56, 4);
-diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
-index da0f59a2ce..daab6a9666 100644
---- a/target/arm/translate-a64.h
-+++ b/target/arm/translate-a64.h
-@@ -40,6 +40,8 @@ TCGv_ptr get_fpstatus_ptr(bool);
- bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
-                             unsigned int imms, unsigned int immr);
- bool sve_access_check(DisasContext *s);
-+TCGv_i64 gen_mte_check1(DisasContext *s, TCGv_i64 addr, bool is_write,
-+                        bool tag_checked, int log2_size);
- 
- /* We should have at some point before trying to access an FP register
-  * done the necessary access check, so assert that
-diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-index 27d4b4536c..ec12768dfc 100644
---- a/target/arm/mte_helper.c
-+++ b/target/arm/mte_helper.c
-@@ -358,3 +358,11 @@ void HELPER(stzgm_tags)(CPUARMState *env, uint64_t ptr, uint64_t val)
-         memset(mem, tag_pair, tag_bytes);
-     }
+@@ -1328,4 +1332,48 @@ static inline uint64_t address_with_allocation_tag(uint64_t ptr, int rtag)
+     return deposit64(ptr, 56, 4, rtag);
  }
+ 
++/* Return true if tbi bits mean that the access is checked.  */
++static inline bool tbi_check(uint32_t desc, int bit55)
++{
++    return (desc >> (R_MTEDESC_TBI_SHIFT + bit55)) & 1;
++}
++
++/* Return true if tcma bits mean that the access is unchecked.  */
++static inline bool tcma_check(uint32_t desc, int bit55, int ptr_tag)
++{
++    /*
++     * We had extracted bit55 and ptr_tag for other reasons, so fold
++     * (ptr<59:55> == 00000 || ptr<59:55> == 11111) into a single test.
++     */
++    bool match = ((ptr_tag + bit55) & 0xf) == 0;
++    bool tcma = (desc >> (R_MTEDESC_TCMA_SHIFT + bit55)) & 1;
++    return tcma && match;
++}
 +
 +/*
-+ * Perform an MTE checked access for a single logical or atomic access.
++ * For TBI, ideally, we would do nothing.  Proper behaviour on fault is
++ * for the tag to be present in the FAR_ELx register.  But for user-only
++ * mode, we do not have a TLB with which to implement this, so we must
++ * remove the top byte.
 + */
-+uint64_t HELPER(mte_check1)(CPUARMState *env, uint32_t desc, uint64_t ptr)
++static inline uint64_t useronly_clean_ptr(uint64_t ptr)
 +{
++    /* TBI is known to be enabled. */
++#ifdef CONFIG_USER_ONLY
++    ptr = sextract64(ptr, 0, 56);
++#endif
 +    return ptr;
 +}
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index b7b2331ccc..0720c39e89 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -204,20 +204,20 @@ static void gen_a64_set_pc(DisasContext *s, TCGv_i64 src)
++
++static inline uint64_t useronly_maybe_clean_ptr(uint32_t desc, uint64_t ptr)
++{
++#ifdef CONFIG_USER_ONLY
++    int64_t clean_ptr = sextract64(ptr, 0, 56);
++    if (tbi_check(desc, clean_ptr < 0)) {
++        ptr = clean_ptr;
++    }
++#endif
++    return ptr;
++}
++
+ #endif
+diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+index 907a12b366..c8a5e7c0ed 100644
+--- a/target/arm/mte_helper.c
++++ b/target/arm/mte_helper.c
+@@ -359,12 +359,142 @@ void HELPER(stzgm_tags)(CPUARMState *env, uint64_t ptr, uint64_t val)
+     }
+ }
+ 
++/* Record a tag check failure.  */
++static void mte_check_fail(CPUARMState *env, int mmu_idx,
++                           uint64_t dirty_ptr, uintptr_t ra)
++{
++    ARMMMUIdx arm_mmu_idx = core_to_aa64_mmu_idx(mmu_idx);
++    int el, reg_el, tcf, select;
++    uint64_t sctlr;
++
++    reg_el = regime_el(env, arm_mmu_idx);
++    sctlr = env->cp15.sctlr_el[reg_el];
++
++    switch (arm_mmu_idx) {
++    case ARMMMUIdx_E10_0:
++    case ARMMMUIdx_E20_0:
++        el = 0;
++        tcf = extract64(sctlr, 38, 2);
++        break;
++    default:
++        el = reg_el;
++        tcf = extract64(sctlr, 40, 2);
++    }
++
++    switch (tcf) {
++    case 1:
++        /*
++         * Tag check fail causes a synchronous exception.
++         *
++         * In restore_state_to_opc, we set the exception syndrome
++         * for the load or store operation.  Unwind first so we
++         * may overwrite that with the syndrome for the tag check.
++         */
++        cpu_restore_state(env_cpu(env), ra, true);
++        env->exception.vaddress = dirty_ptr;
++        raise_exception(env, EXCP_DATA_ABORT,
++                        syn_data_abort_no_iss(el != 0, 0, 0, 0, 0, 0, 0x11),
++                        exception_target_el(env));
++        /* noreturn, but fall through to the assert anyway */
++
++    case 0:
++        /*
++         * Tag check fail does not affect the PE.
++         * We eliminate this case by not setting MTE_ACTIVE
++         * in tb_flags, so that we never make this runtime call.
++         */
++        g_assert_not_reached();
++
++    case 2:
++        /* Tag check fail causes asynchronous flag set.  */
++        mmu_idx = arm_mmu_idx_el(env, el);
++        if (regime_has_2_ranges(mmu_idx)) {
++            select = extract64(dirty_ptr, 55, 1);
++        } else {
++            select = 0;
++        }
++        env->cp15.tfsr_el[el] |= 1 << select;
++        break;
++
++    default:
++        /* Case 3: Reserved. */
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "Tag check failure with SCTLR_EL%d.TCF%s "
++                      "set to reserved value %d\n",
++                      reg_el, el ? "" : "0", tcf);
++        break;
++    }
++}
++
+ /*
+  * Perform an MTE checked access for a single logical or atomic access.
+  */
++static bool mte_probe1_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
++                           uintptr_t ra, int bit55)
++{
++    int mem_tag, mmu_idx, ptr_tag, size;
++    MMUAccessType type;
++    uint8_t *mem;
++
++    ptr_tag = allocation_tag_from_addr(ptr);
++
++    if (tcma_check(desc, bit55, ptr_tag)) {
++        return true;
++    }
++
++    mmu_idx = FIELD_EX32(desc, MTEDESC, MIDX);
++    type = FIELD_EX32(desc, MTEDESC, WRITE) ? MMU_DATA_STORE : MMU_DATA_LOAD;
++    size = FIELD_EX32(desc, MTEDESC, ESIZE);
++
++    mem = allocation_tag_mem(env, mmu_idx, ptr, type, size,
++                             MMU_DATA_LOAD, 1, ra);
++    if (!mem) {
++        return true;
++    }
++
++    mem_tag = load_tag1(ptr, mem);
++    return ptr_tag == mem_tag;
++}
++
++/*
++ * No-fault version of mte_check1, to be used by SVE for MemSingleNF.
++ * Returns false if the access is Checked and the check failed.  This
++ * is only intended to probe the tag -- the validity of the page must
++ * be checked beforehand.
++ */
++bool mte_probe1(CPUARMState *env, uint32_t desc, uint64_t ptr)
++{
++    int bit55 = extract64(ptr, 55, 1);
++
++    /* If TBI is disabled, the access is unchecked. */
++    if (unlikely(!tbi_check(desc, bit55))) {
++        return true;
++    }
++
++    return mte_probe1_int(env, desc, ptr, 0, bit55);
++}
++
++uint64_t mte_check1(CPUARMState *env, uint32_t desc,
++                    uint64_t ptr, uintptr_t ra)
++{
++    int bit55 = extract64(ptr, 55, 1);
++
++    /* If TBI is disabled, the access is unchecked, and ptr is not dirty. */
++    if (unlikely(!tbi_check(desc, bit55))) {
++        return ptr;
++    }
++
++    if (unlikely(!mte_probe1_int(env, desc, ptr, ra, bit55))) {
++        int mmu_idx = FIELD_EX32(desc, MTEDESC, MIDX);
++        mte_check_fail(env, mmu_idx, ptr, ra);
++    }
++
++    return useronly_clean_ptr(ptr);
++}
++
+ uint64_t HELPER(mte_check1)(CPUARMState *env, uint32_t desc, uint64_t ptr)
+ {
+-    return ptr;
++    return mte_check1(env, desc, ptr, GETPC());
  }
  
  /*
-- * Return a "clean" address for ADDR according to TBID.
-- * This is always a fresh temporary, as we need to be able to
-- * increment this independently of a dirty write-back address.
-+ * Handle MTE and/or TBI.
-+ *
-+ * For TBI, ideally, we would do nothing.  Proper behaviour on fault is
-+ * for the tag to be present in the FAR_ELx register.  But for user-only
-+ * mode we do not have a TLB with which to implement this, so we must
-+ * remove the top byte now.
-+ *
-+ * Always return a fresh temporary that we can increment independently
-+ * of the write-back address.
-  */
-+
- static TCGv_i64 clean_data_tbi(DisasContext *s, TCGv_i64 addr)
- {
-     TCGv_i64 clean = new_tmp_a64(s);
--    /*
--     * In order to get the correct value in the FAR_ELx register,
--     * we must present the memory subsystem with the "dirty" address
--     * including the TBI.  In system mode we can make this work via
--     * the TLB, dropping the TBI during translation.  But for user-only
--     * mode we don't have that option, and must remove the top byte now.
--     */
- #ifdef CONFIG_USER_ONLY
-     gen_top_byte_ignore(s, clean, addr, s->tbid);
- #else
-@@ -245,6 +245,45 @@ static void gen_probe_access(DisasContext *s, TCGv_i64 ptr,
-     tcg_temp_free_i32(t_size);
- }
- 
-+/*
-+ * For MTE, check a single logical or atomic access.  This probes a single
-+ * address, the exact one specified.  The size and alignment of the access
-+ * is not relevant to MTE, per se, but watchpoints do require the size,
-+ * and we want to recognize those before making any other changes to state.
-+ */
-+static TCGv_i64 gen_mte_check1_mmuidx(DisasContext *s, TCGv_i64 addr,
-+                                      bool is_write, bool tag_checked,
-+                                      int log2_size, bool is_unpriv,
-+                                      int core_idx)
-+{
-+    if (tag_checked && s->mte_active[is_unpriv]) {
-+        TCGv_i32 tcg_desc;
-+        TCGv_i64 ret;
-+        int desc = 0;
-+
-+        desc = FIELD_DP32(desc, MTEDESC, MIDX, core_idx);
-+        desc = FIELD_DP32(desc, MTEDESC, TBI, s->tbid);
-+        desc = FIELD_DP32(desc, MTEDESC, TCMA, s->tcma);
-+        desc = FIELD_DP32(desc, MTEDESC, WRITE, is_write);
-+        desc = FIELD_DP32(desc, MTEDESC, ESIZE, 1 << log2_size);
-+        tcg_desc = tcg_const_i32(desc);
-+
-+        ret = new_tmp_a64(s);
-+        gen_helper_mte_check1(ret, cpu_env, tcg_desc, addr);
-+        tcg_temp_free_i32(tcg_desc);
-+
-+        return ret;
-+    }
-+    return clean_data_tbi(s, addr);
-+}
-+
-+TCGv_i64 gen_mte_check1(DisasContext *s, TCGv_i64 addr, bool is_write,
-+                        bool tag_checked, int log2_size)
-+{
-+    return gen_mte_check1_mmuidx(s, addr, is_write, tag_checked, log2_size,
-+                                 false, get_mem_index(s));
-+}
-+
- typedef struct DisasCompare64 {
-     TCGCond cond;
-     TCGv_i64 value;
-@@ -2367,7 +2406,7 @@ static void gen_compare_and_swap(DisasContext *s, int rs, int rt,
-     if (rn == 31) {
-         gen_check_sp_alignment(s);
-     }
--    clean_addr = clean_data_tbi(s, cpu_reg_sp(s, rn));
-+    clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn), true, rn != 31, size);
-     tcg_gen_atomic_cmpxchg_i64(tcg_rs, clean_addr, tcg_rs, tcg_rt, memidx,
-                                size | MO_ALIGN | s->be_data);
- }
-@@ -2385,7 +2424,9 @@ static void gen_compare_and_swap_pair(DisasContext *s, int rs, int rt,
-     if (rn == 31) {
-         gen_check_sp_alignment(s);
-     }
--    clean_addr = clean_data_tbi(s, cpu_reg_sp(s, rn));
-+
-+    /* This is a single atomic access, despite the "pair". */
-+    clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn), true, rn != 31, size + 1);
- 
-     if (size == 2) {
-         TCGv_i64 cmp = tcg_temp_new_i64();
-@@ -2510,7 +2551,8 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
-         if (is_lasr) {
-             tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
-         }
--        clean_addr = clean_data_tbi(s, cpu_reg_sp(s, rn));
-+        clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn),
-+                                    true, rn != 31, size);
-         gen_store_exclusive(s, rs, rt, rt2, clean_addr, size, false);
-         return;
- 
-@@ -2519,7 +2561,8 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
-         if (rn == 31) {
-             gen_check_sp_alignment(s);
-         }
--        clean_addr = clean_data_tbi(s, cpu_reg_sp(s, rn));
-+        clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn),
-+                                    false, rn != 31, size);
-         s->is_ldex = true;
-         gen_load_exclusive(s, rt, rt2, clean_addr, size, false);
-         if (is_lasr) {
-@@ -2539,7 +2582,8 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
-             gen_check_sp_alignment(s);
-         }
-         tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
--        clean_addr = clean_data_tbi(s, cpu_reg_sp(s, rn));
-+        clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn),
-+                                    true, rn != 31, size);
-         do_gpr_st(s, cpu_reg(s, rt), clean_addr, size, true, rt,
-                   disas_ldst_compute_iss_sf(size, false, 0), is_lasr);
-         return;
-@@ -2555,7 +2599,8 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
-         if (rn == 31) {
-             gen_check_sp_alignment(s);
-         }
--        clean_addr = clean_data_tbi(s, cpu_reg_sp(s, rn));
-+        clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn),
-+                                    false, rn != 31, size);
-         do_gpr_ld(s, cpu_reg(s, rt), clean_addr, size, false, false, true, rt,
-                   disas_ldst_compute_iss_sf(size, false, 0), is_lasr);
-         tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
-@@ -2569,7 +2614,8 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
-             if (is_lasr) {
-                 tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
-             }
--            clean_addr = clean_data_tbi(s, cpu_reg_sp(s, rn));
-+            clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn),
-+                                        true, rn != 31, size);
-             gen_store_exclusive(s, rs, rt, rt2, clean_addr, size, true);
-             return;
-         }
-@@ -2587,7 +2633,8 @@ static void disas_ldst_excl(DisasContext *s, uint32_t insn)
-             if (rn == 31) {
-                 gen_check_sp_alignment(s);
-             }
--            clean_addr = clean_data_tbi(s, cpu_reg_sp(s, rn));
-+            clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn),
-+                                        false, rn != 31, size);
-             s->is_ldex = true;
-             gen_load_exclusive(s, rt, rt2, clean_addr, size, true);
-             if (is_lasr) {
-@@ -2881,6 +2928,7 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
-     bool iss_valid = !is_vector;
-     bool post_index;
-     bool writeback;
-+    int memidx;
- 
-     TCGv_i64 clean_addr, dirty_addr;
- 
-@@ -2938,7 +2986,11 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
-     if (!post_index) {
-         tcg_gen_addi_i64(dirty_addr, dirty_addr, imm9);
-     }
--    clean_addr = clean_data_tbi(s, dirty_addr);
-+
-+    memidx = is_unpriv ? get_a64_user_mem_index(s) : get_mem_index(s);
-+    clean_addr = gen_mte_check1_mmuidx(s, dirty_addr, is_store,
-+                                       writeback || rn != 31,
-+                                       size, is_unpriv, memidx);
- 
-     if (is_vector) {
-         if (is_store) {
-@@ -2948,7 +3000,6 @@ static void disas_ldst_reg_imm9(DisasContext *s, uint32_t insn,
-         }
-     } else {
-         TCGv_i64 tcg_rt = cpu_reg(s, rt);
--        int memidx = is_unpriv ? get_a64_user_mem_index(s) : get_mem_index(s);
-         bool iss_sf = disas_ldst_compute_iss_sf(size, is_signed, opc);
- 
-         if (is_store) {
-@@ -3045,7 +3096,7 @@ static void disas_ldst_reg_roffset(DisasContext *s, uint32_t insn,
-     ext_and_shift_reg(tcg_rm, tcg_rm, opt, shift ? size : 0);
- 
-     tcg_gen_add_i64(dirty_addr, dirty_addr, tcg_rm);
--    clean_addr = clean_data_tbi(s, dirty_addr);
-+    clean_addr = gen_mte_check1(s, dirty_addr, is_store, true, size);
- 
-     if (is_vector) {
-         if (is_store) {
-@@ -3130,7 +3181,7 @@ static void disas_ldst_reg_unsigned_imm(DisasContext *s, uint32_t insn,
-     dirty_addr = read_cpu_reg_sp(s, rn, 1);
-     offset = imm12 << size;
-     tcg_gen_addi_i64(dirty_addr, dirty_addr, offset);
--    clean_addr = clean_data_tbi(s, dirty_addr);
-+    clean_addr = gen_mte_check1(s, dirty_addr, is_store, rn != 31, size);
- 
-     if (is_vector) {
-         if (is_store) {
-@@ -3223,7 +3274,7 @@ static void disas_ldst_atomic(DisasContext *s, uint32_t insn,
-     if (rn == 31) {
-         gen_check_sp_alignment(s);
-     }
--    clean_addr = clean_data_tbi(s, cpu_reg_sp(s, rn));
-+    clean_addr = gen_mte_check1(s, cpu_reg_sp(s, rn), false, rn != 31, size);
- 
-     if (o3_opc == 014) {
-         /*
-@@ -3300,7 +3351,8 @@ static void disas_ldst_pac(DisasContext *s, uint32_t insn,
-     tcg_gen_addi_i64(dirty_addr, dirty_addr, offset);
- 
-     /* Note that "clean" and "dirty" here refer to TBI not PAC.  */
--    clean_addr = clean_data_tbi(s, dirty_addr);
-+    clean_addr = gen_mte_check1(s, dirty_addr, false,
-+                                is_wback || rn != 31, size);
- 
-     tcg_rt = cpu_reg(s, rt);
-     do_gpr_ld(s, tcg_rt, clean_addr, size, /* is_signed */ false,
 -- 
 2.25.1
 

@@ -1,90 +1,91 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3939743lfm;
-        Tue, 23 Jun 2020 02:35:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJysOQfKFeUaNtmgXuhOk4MAQSQTO6SUIVFublJ+crf5pT799LAIZP5ilh1Q+GAUvCSSf8+B
-X-Received: by 2002:a25:dcb:: with SMTP id 194mr36569624ybn.226.1592904935138;
-        Tue, 23 Jun 2020 02:35:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592904935; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3940067lfm;
+        Tue, 23 Jun 2020 02:36:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzdRKJCvct0f9mxw0EjWAdu1sunENthN3GarxtvGvpw7NCStc/A+flpRYIkvjXQlCPfEX0h
+X-Received: by 2002:a25:d753:: with SMTP id o80mr33231801ybg.423.1592904967831;
+        Tue, 23 Jun 2020 02:36:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592904967; cv=none;
         d=google.com; s=arc-20160816;
-        b=l1tHyXytGUXnGSHUIVL0Fa9/zK3BeOifviSJq3UCiuo6kB7I+gsCwQakJ9KyXpagqv
-         +bsbayZzBPX7oKuEHn6KhnuUwPXi8uxm2IdXWCGz+e6DE6jdB96hdXC7st0iCWkF2voC
-         y0fOYfxvJeFUJGcxlbRpJN9fucZRBwl4vfq6biJzDYXfiIq2ez0xSBUEMaJ71Ley7dOt
-         WYND4G016zcPGnX87rrm9na2S5JVQS0d61RKstWx3Ta9hay+bbJe1QmNlxQQfnOOsZ5H
-         uZkJL/RsY5WKK/0KgMdUBv0gef1a/t2LDcPiN6ar0wOqbUfAz0ItFZNoBoDC1uyD5jq+
-         g9mg==
+        b=HuPf/7ATAjCAV7Jgi5sRdKTndYXsEncQYG9xjm0qrUV+hyyMIScIUrbhQqR1mNR2P9
+         y76OQ1ML3J8dEpamcmwQkwwrV9WryL/x9wjvbxg7ha/5fhAznHATG/5eqZGrc4JEE6uL
+         HVOt/JVTqHe60ES0s+11j8BX+9/wh6QwDBq8fjbPye+QbbQopeIHgfGmoqXcRurXUeKn
+         Rz/Mc8COVLZfIDk5TzraJ3rtudUG8n9EPSQ8V2OfLcMKFKH1yw21YEsgUXw+IfQtPBug
+         jBHweuN75PmxBgl/LnV8UZ3fimVk9Cae0MQCqSOXkOC4G4sP8XoN2xh2gK/AP1lLDHRh
+         XztA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Ur/TZ7dOsFj/b8nCmja09u29BIV1C/ZTZvFHuuwTNKk=;
-        b=OuoCkmS4HD2lOUMZqj3OAKytO2B+1s/fXexI7WxUzBqdNKKpVb0WY+OJmIs8WLgZNM
-         n1lFaJ2FGcao1bB1sCXxfMypVOpvjLmUoBPajeRIeiHn4rnKSoQGV1dgFSlnejttVFzy
-         gntGtsfsU/qpWOM869iHqG1wO/gxZr0KHl9RLmy+ZxVrTqLQyrbSjYN+9VJraKiJujUF
-         g0TBB+4KzO6DqQkxGsVl5KQSQjPQkR4s1I/iMe8BTEIVLkkRI9V/J6pMMgoaX8MgGfDD
-         2rsHuTgdGV1R2JzvMZu4MSbrv8QiY6SydH2mGUzhw2JhVQxU1S2BsQnDaAAFUAAMoZVV
-         9jcw==
+        bh=0xuyIauuoPrh72o/rX2s/HE00+PKmuKbiuFEJaL2zig=;
+        b=HcTzW9VxAat8GL+7wK8Pu5c21KUJVQXtHzTMQzs28KpbhUw+NS/kfkDAHB2NEVnXuj
+         Ar58UoTt/iJ07d/PYhXGbiMQ2IEIEIFM98xYqboyuLTteuDC47Uyx7Ym6HL3gG+z1gUX
+         ahRRAlmmuPplMxLFqBFaTV7whDeidSipBMdV1qQt53Rj+Yh6oERRgTdEOKCbVPDLnj8+
+         UlL6t9vt8OLb3BxkkUM7jC80jEdOIkWQoXYoJxkQu7k3MgvMOFUTpXAbD/314tF/5ab1
+         HAiOl1Uzpw4Vez+v3wRzYsTaTPoYH+NN52GrT5aEcefyun41JOf9/1iTWFnkpwTK1X16
+         4BHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C0+BYNaT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xf9preIm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k12si23931810ybt.3.2020.06.23.02.35.34
+        by mx.google.com with ESMTPS id l124si16617444ybb.154.2020.06.23.02.36.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 02:35:35 -0700 (PDT)
+        Tue, 23 Jun 2020 02:36:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C0+BYNaT;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xf9preIm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47688 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50000 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnfL4-0006b2-Ez
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 05:35:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60108)
+	id 1jnfLb-0007ar-6A
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 05:36:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60164)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jnfIt-0002mX-6g
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 05:33:19 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:37137
- helo=us-smtp-delivery-1.mimecast.com)
+ id 1jnfIw-0002v2-SU
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 05:33:22 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:22704
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jnfIr-0001Wp-3m
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 05:33:18 -0400
+ id 1jnfIt-0001XK-RO
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 05:33:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592904796;
+ s=mimecast20190719; t=1592904799;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Ur/TZ7dOsFj/b8nCmja09u29BIV1C/ZTZvFHuuwTNKk=;
- b=C0+BYNaTGvevdq6O2XaHvMB+Jny7AF8RYdTQyeQJ4gwGXDP8c81my8MkJ6RZ3ssRluyvDk
- ZlkZGd9vptQ14izdbZQkNTmQo1rOvZ2plvmQOszAl8iI2gQv67hpL5sG8Sz3d/IFyHeSLn
- jGaDBQMfRf6dEImXxPkEtrhNxASowe4=
+ bh=0xuyIauuoPrh72o/rX2s/HE00+PKmuKbiuFEJaL2zig=;
+ b=Xf9preImrkSL+KzYjPENTEvj0Zwg7VriNQE9uKZNjSQGMBVSwaiOpHRD54FRBzF8Z4j4NJ
+ 5ZoYpilSWqFD7SpanGWCsCgq1eB84Kn+Ok+npyDAwwR7PXVK/WvP04w6xKQ8muZ5iBh9JE
+ Xpi/1bjOiVwumR4NyOZVAQAXf+xnviI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-168-FYsDny_WPVeZBXv4s_3vQw-1; Tue, 23 Jun 2020 05:33:14 -0400
-X-MC-Unique: FYsDny_WPVeZBXv4s_3vQw-1
+ us-mta-330-r52wq-HmPYu9cWnZxvaxCA-1; Tue, 23 Jun 2020 05:33:17 -0400
+X-MC-Unique: r52wq-HmPYu9cWnZxvaxCA-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8832319057AA;
- Tue, 23 Jun 2020 09:33:13 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 708C18005AD;
+ Tue, 23 Jun 2020 09:33:16 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0D4A619D7F;
- Tue, 23 Jun 2020 09:33:10 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E3F3C19930;
+ Tue, 23 Jun 2020 09:33:13 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  armbru@redhat.com, pbonzini@redhat.com, jean-philippe@linaro.org,
  bbhushan2@marvell.com, peterx@redhat.com
-Subject: [PATCH v4 2/5] virtio-iommu: Implement RESV_MEM probe request
-Date: Tue, 23 Jun 2020 11:32:41 +0200
-Message-Id: <20200623093244.24931-3-eric.auger@redhat.com>
+Subject: [PATCH v4 3/5] virtio-iommu: Handle reserved regions in the
+ translation process
+Date: Tue, 23 Jun 2020 11:32:42 +0200
+Message-Id: <20200623093244.24931-4-eric.auger@redhat.com>
 In-Reply-To: <20200623093244.24931-1-eric.auger@redhat.com>
 References: <20200623093244.24931-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -93,9 +94,9 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 01:55:08
+Received-SPF: pass client-ip=205.139.110.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 01:53:54
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -118,220 +119,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: atWUaJEFez0o
+X-TUID: wve0b/leFVil
 
-This patch implements the PROBE request. At the moment,
-only THE RESV_MEM property is handled. The first goal is
-to report iommu wide reserved regions such as the MSI regions
-set by the machine code. On x86 this will be the IOAPIC MSI
-region, [0xFEE00000 - 0xFEEFFFFF], on ARM this may be the ITS
-doorbell.
+When translating an address we need to check if it belongs to
+a reserved virtual address range. If it does, there are 2 cases:
 
-In the future we may introduce per device reserved regions.
-This will be useful when protecting host assigned devices
-which may expose their own reserved regions
+- it belongs to a RESERVED region: the guest should neither use
+  this address in a MAP not instruct the end-point to DMA on
+  them. We report an error
+
+- It belongs to an MSI region: we bypass the translation.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Peter Xu <peterx@redhat.com>
 Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
 ---
 
-v3 -> v4:
-- removed any reference to the NONE property that does not
-  exist anymore.
-
-v2 -> v3:
-- on probe, do not fill the reminder of the buffer with zeroes
-  as the buffer was already zero initialized (Bharat)
-
 v1 -> v2:
-- move the unlock back to the same place
-- remove the push label and factorize the code after the out label
-- fix a bunch of cpu_to_leX according to the latest spec revision
-- do not remove sizeof(last) from free space
-- check the ep exists
+- use addr when testing addr belongs to the reserved region
+  and use a block local variable
 ---
- include/hw/virtio/virtio-iommu.h |  2 +
- hw/virtio/virtio-iommu.c         | 90 ++++++++++++++++++++++++++++++--
- hw/virtio/trace-events           |  1 +
- 3 files changed, 89 insertions(+), 4 deletions(-)
+ hw/virtio/virtio-iommu.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
-index e653004d7c..49eb105cd8 100644
---- a/include/hw/virtio/virtio-iommu.h
-+++ b/include/hw/virtio/virtio-iommu.h
-@@ -53,6 +53,8 @@ typedef struct VirtIOIOMMU {
-     GHashTable *as_by_busptr;
-     IOMMUPciBus *iommu_pcibus_by_bus_num[PCI_BUS_MAX];
-     PCIBus *primary_bus;
-+    ReservedRegion *reserved_regions;
-+    uint32_t nb_reserved_regions;
-     GTree *domains;
-     QemuMutex mutex;
-     GTree *endpoints;
 diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index 483883ec1d..5e72fd53a1 100644
+index 5e72fd53a1..4a50e24d21 100644
 --- a/hw/virtio/virtio-iommu.c
 +++ b/hw/virtio/virtio-iommu.c
-@@ -38,6 +38,7 @@
- 
- /* Max size */
- #define VIOMMU_DEFAULT_QUEUE_SIZE 256
-+#define VIOMMU_PROBE_SIZE 512
- 
- typedef struct VirtIOIOMMUDomain {
-     uint32_t id;
-@@ -378,6 +379,61 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
-     return ret;
- }
- 
-+static ssize_t virtio_iommu_fill_resv_mem_prop(VirtIOIOMMU *s, uint32_t ep,
-+                                               uint8_t *buf, size_t free)
-+{
-+    struct virtio_iommu_probe_resv_mem prop = {};
-+    size_t size = sizeof(prop), length = size - sizeof(prop.head), total;
+@@ -603,6 +603,7 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+     uint32_t sid, flags;
+     bool bypass_allowed;
+     bool found;
 +    int i;
-+
-+    total = size * s->nb_reserved_regions;
-+
-+    if (total > free) {
-+        return -ENOSPC;
-+    }
-+
-+    for (i = 0; i < s->nb_reserved_regions; i++) {
-+        prop.head.type = cpu_to_le16(VIRTIO_IOMMU_PROBE_T_RESV_MEM);
-+        prop.head.length = cpu_to_le16(length);
-+        prop.subtype = s->reserved_regions[i].type;
-+        prop.start = cpu_to_le64(s->reserved_regions[i].low);
-+        prop.end = cpu_to_le64(s->reserved_regions[i].high);
-+
-+        memcpy(buf, &prop, size);
-+
-+        trace_virtio_iommu_fill_resv_property(ep, prop.subtype,
-+                                              prop.start, prop.end);
-+        buf += size;
-+    }
-+    return total;
-+}
-+
-+/**
-+ * virtio_iommu_probe - Fill the probe request buffer with
-+ * the properties the device is able to return
-+ */
-+static int virtio_iommu_probe(VirtIOIOMMU *s,
-+                              struct virtio_iommu_req_probe *req,
-+                              uint8_t *buf)
-+{
-+    uint32_t ep_id = le32_to_cpu(req->endpoint);
-+    size_t free = VIOMMU_PROBE_SIZE;
-+    ssize_t count;
-+
-+    if (!virtio_iommu_mr(s, ep_id)) {
-+        return VIRTIO_IOMMU_S_NOENT;
-+    }
-+
-+    count = virtio_iommu_fill_resv_mem_prop(s, ep_id, buf, free);
-+    if (count < 0) {
-+        return VIRTIO_IOMMU_S_INVAL;
-+    }
-+    buf += count;
-+    free -= count;
-+
-+    return VIRTIO_IOMMU_S_OK;
-+}
-+
- static int virtio_iommu_iov_to_req(struct iovec *iov,
-                                    unsigned int iov_cnt,
-                                    void *req, size_t req_sz)
-@@ -407,15 +463,27 @@ virtio_iommu_handle_req(detach)
- virtio_iommu_handle_req(map)
- virtio_iommu_handle_req(unmap)
  
-+static int virtio_iommu_handle_probe(VirtIOIOMMU *s,
-+                                     struct iovec *iov,
-+                                     unsigned int iov_cnt,
-+                                     uint8_t *buf)
-+{
-+    struct virtio_iommu_req_probe req;
-+    int ret = virtio_iommu_iov_to_req(iov, iov_cnt, &req, sizeof(req));
-+
-+    return ret ? ret : virtio_iommu_probe(s, &req, buf);
-+}
-+
- static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
- {
-     VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
-     struct virtio_iommu_req_head head;
-     struct virtio_iommu_req_tail tail = {};
-+    size_t output_size = sizeof(tail), sz;
-     VirtQueueElement *elem;
-     unsigned int iov_cnt;
-     struct iovec *iov;
--    size_t sz;
-+    void *buf = NULL;
- 
-     for (;;) {
-         elem = virtqueue_pop(vq, sizeof(VirtQueueElement));
-@@ -452,6 +520,17 @@ static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
-         case VIRTIO_IOMMU_T_UNMAP:
-             tail.status = virtio_iommu_handle_unmap(s, iov, iov_cnt);
-             break;
-+        case VIRTIO_IOMMU_T_PROBE:
-+        {
-+            struct virtio_iommu_req_tail *ptail;
-+
-+            output_size = s->config.probe_size + sizeof(tail);
-+            buf = g_malloc0(output_size);
-+
-+            ptail = (struct virtio_iommu_req_tail *)
-+                        (buf + s->config.probe_size);
-+            ptail->status = virtio_iommu_handle_probe(s, iov, iov_cnt, buf);
-+        }
-         default:
-             tail.status = VIRTIO_IOMMU_S_UNSUPP;
-         }
-@@ -459,12 +538,13 @@ static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
- 
- out:
-         sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
--                          &tail, sizeof(tail));
--        assert(sz == sizeof(tail));
-+                          buf ? buf : &tail, output_size);
-+        assert(sz == output_size);
- 
--        virtqueue_push(vq, elem, sizeof(tail));
-+        virtqueue_push(vq, elem, sz);
-         virtio_notify(vdev, vq);
-         g_free(elem);
-+        g_free(buf);
+     interval.low = addr;
+     interval.high = addr + 1;
+@@ -636,6 +637,25 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+         goto unlock;
      }
- }
  
-@@ -667,6 +747,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
-     s->config.page_size_mask = TARGET_PAGE_MASK;
-     s->config.input_range.end = -1UL;
-     s->config.domain_range.end = 32;
-+    s->config.probe_size = VIOMMU_PROBE_SIZE;
- 
-     virtio_add_feature(&s->features, VIRTIO_RING_F_EVENT_IDX);
-     virtio_add_feature(&s->features, VIRTIO_RING_F_INDIRECT_DESC);
-@@ -676,6 +757,7 @@ static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
-     virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MAP_UNMAP);
-     virtio_add_feature(&s->features, VIRTIO_IOMMU_F_BYPASS);
-     virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MMIO);
-+    virtio_add_feature(&s->features, VIRTIO_IOMMU_F_PROBE);
- 
-     qemu_mutex_init(&s->mutex);
- 
-diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
-index 6427a0047d..23109f69bb 100644
---- a/hw/virtio/trace-events
-+++ b/hw/virtio/trace-events
-@@ -74,3 +74,4 @@ virtio_iommu_get_domain(uint32_t domain_id) "Alloc domain=%d"
- virtio_iommu_put_domain(uint32_t domain_id) "Free domain=%d"
- virtio_iommu_translate_out(uint64_t virt_addr, uint64_t phys_addr, uint32_t sid) "0x%"PRIx64" -> 0x%"PRIx64 " for sid=%d"
- virtio_iommu_report_fault(uint8_t reason, uint32_t flags, uint32_t endpoint, uint64_t addr) "FAULT reason=%d flags=%d endpoint=%d address =0x%"PRIx64
-+virtio_iommu_fill_resv_property(uint32_t devid, uint8_t subtype, uint64_t start, uint64_t end) "dev= %d, type=%d start=0x%"PRIx64" end=0x%"PRIx64
++    for (i = 0; i < s->nb_reserved_regions; i++) {
++        ReservedRegion *reg = &s->reserved_regions[i];
++
++        if (addr >= reg->low && addr <= reg->high) {
++            switch (reg->type) {
++            case VIRTIO_IOMMU_RESV_MEM_T_MSI:
++                entry.perm = flag;
++                break;
++            case VIRTIO_IOMMU_RESV_MEM_T_RESERVED:
++            default:
++                virtio_iommu_report_fault(s, VIRTIO_IOMMU_FAULT_R_MAPPING,
++                                          VIRTIO_IOMMU_FAULT_F_ADDRESS,
++                                          sid, addr);
++                break;
++            }
++            goto unlock;
++        }
++    }
++
+     if (!ep->domain) {
+         if (!bypass_allowed) {
+             error_report_once("%s %02x:%02x.%01x not attached to any domain",
 -- 
 2.20.1
 

@@ -1,109 +1,100 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2545055lfm;
-        Sun, 21 Jun 2020 12:23:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwRs6AwFfoApAzBr2E7WmWib6YNgUR11OoNaBH4UyzWQuuA9eYAIlaj7JeKq3/79sNmCguX
-X-Received: by 2002:a25:3295:: with SMTP id y143mr21807635yby.321.1592767400621;
-        Sun, 21 Jun 2020 12:23:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592767400; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4340915lfm;
+        Tue, 23 Jun 2020 12:37:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzF+w3H/Y53aV5gzc3dZ8qyznJHwy4xLElZhUBQrom6Jh6gL9nmV9dpIABqkBbcOIMJAtxO
+X-Received: by 2002:a25:1344:: with SMTP id 65mr37556863ybt.183.1592941037401;
+        Tue, 23 Jun 2020 12:37:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592941037; cv=none;
         d=google.com; s=arc-20160816;
-        b=g0jhmF4+SkjTUy2VuzKTLfHuf2/9apso5n79GQqNWdWUVbXekiywztQAWL/ZNq7WO6
-         mBfafoZRgvwRKc9KtvbVWdnGr9lxOF9peuoZ/7SRKA8vM/rzlHuzWBD4x5fyyxbBp3Wm
-         fW+HsT1OWrydYWUHtMjd6X4dfiKpmLvcu/s7JlgupT970Hrifqlol8XAR/0hyno2ZnB+
-         cV8zcbFzCgmTe1X1g7+oq53Z473s3v2FuivmPEjN1Yx92vcEvyhJqZmY1Y83ArsTrDqb
-         Ax2fa8rZCf4MC5ekt88yvk/DQ5T7p0R9paQxpiCs+3Al6A+jFCzofY7G172Jv39smUsU
-         HD6Q==
+        b=owxRoJQEH3a+FjjKsM4yXWgNvccMB7ez3NCQexCLhlPm6rZ+NRHUmPXHuqh1oxoKC+
+         AbwxtvVyBzFnOmYPsVw/jXwvunDGNXGBXeHFZO2GSYGqB3mym1QdvKDZaN7vFMzou/xk
+         OleU7qAkex8XbU48pB/xs5P+Qvck07cirwWLElhCOhe+acM40TgLM3n+ufTfacD3zdHY
+         61XlllPer52PaJseKttJcPWQ5R+VnegDKSrFkwcZ3w4ayTTQb3H5mL//y3udE+y7sRrD
+         kgO3b94rGgHLttRmR6cMtMby0rX+ZsAOCFNHsHC1kY7dSYA5HcZPidPp7wRbjjrhPtIg
+         MVjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=YHE/jaU21Fb5bQ7ZfHntr+xzvvFVHxN+La52awWcvb0=;
-        b=fZjS8M3zufeaZvnbfJLuP0qHe3pB+9h5G/BuDyuHloVsr9FoH5D4yt2TDcicY6iuTi
-         Q3guoGULbzIblQ6tf1fhkRqwuyckOu4IF0+UppglZ969eeYWosmFtTmoF4dseRh5DGoT
-         xW2KH4JyadxZST0zmwm5HAS9kGR1AmEzB9L4wWUr+TlSOyjU7dEui10psnv+5zQf4COY
-         ZG5KbU4GkcyJYlDh6b603/Tr+aZVvJAzNVfG78uR6lvGg1be7FqWZmfj16GWIsKOCRZF
-         O6sq4j3+i1WGVrOGUaqSoCv8OEc+T1WH2fFlep9P4bEsdozPOnEl10whNtEkmG4VAnsL
-         6Ujg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=5g+LfVWBF+3Lekw1EiZ6vk0vC87Y80r54VLd03wJ0CQ=;
+        b=I8ml7ipHCkYfXZz7efc/T/lICUxBydEQ3Bb8DY9F9OciAXRrghVjSpmtJY2XlN+6Qe
+         c8lKCIE9EjQoCzjuMw/8q1kXAN8uwmipEf/osyq5Cr7+dxMzK78ybHQQhhqKCYsQVwSy
+         7zKOCHd8X8FQsrGKnLROCqqIRU8FTJHBAzP6NmZmirC+PCYytXSGJ/40Gp5o5GQkFgNd
+         shvKWC2lustlQp2gvAkKONKhvdp+w0a+IpuT7L/kIaWgy2hXas7JEzaUMWfNHqUcWwGP
+         S2P8ISxrz7ojRmtksVnMj4w5ik6ZdY6jScQ8WiUzaR0s4P+zSmWmAhzq2oKVXTEpwF1R
+         5+Ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=M3oMXUJI;
+       dkim=fail header.i=@linaro.org header.s=google header.b="O4vb/QF6";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w15si14247168ybt.55.2020.06.21.12.23.20
+        by mx.google.com with ESMTPS id o72si18030687yba.186.2020.06.23.12.37.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Jun 2020 12:23:20 -0700 (PDT)
+        Tue, 23 Jun 2020 12:37:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=M3oMXUJI;
+       dkim=fail header.i=@linaro.org header.s=google header.b="O4vb/QF6";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40350 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44670 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jn5Ym-0007na-14
-	for alex.bennee@linaro.org; Sun, 21 Jun 2020 15:23:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52770)
+	id 1jnojM-0003A6-N4
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 15:37:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41394)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jn5Yb-0007m3-Eh
- for qemu-arm@nongnu.org; Sun, 21 Jun 2020 15:23:09 -0400
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:51225)
+ id 1jnojB-00039c-13
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 15:37:05 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a]:32884)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jn5YZ-0007jL-34
- for qemu-arm@nongnu.org; Sun, 21 Jun 2020 15:23:09 -0400
-Received: by mail-pj1-x1043.google.com with SMTP id ga6so6993196pjb.1
- for <qemu-arm@nongnu.org>; Sun, 21 Jun 2020 12:23:06 -0700 (PDT)
+ id 1jnoj9-0005Th-1I
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 15:37:04 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id 35so9562023ple.0
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2020 12:37:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=YHE/jaU21Fb5bQ7ZfHntr+xzvvFVHxN+La52awWcvb0=;
- b=M3oMXUJIIJ5RFy7fn4LaUm4tdpow4Jd3fTDcQuMlCm9xXBvZsoPIJsegrFTXscnUtP
- 9JUCz7483vJPGOLlSG7x4xL79GF6+QNCRPToHO1OSUz4kcjLW/hOggXZ7XT5bJwruiUq
- bFuldQTzMe+SFE0xEezCTrRp5o6dXO6tO2vUgbv5ckp/q0AH+preNuSMX8rMvUG58A7X
- 3rgZ1Ut6Vp0wJNB4/Qw9d1SUHQ42HZG4mxH1npco0KX0MguLwImOOCkyVjUlEFOqv/PA
- ekUzRyOr5J1KsIxqlXo6AJ+wTGsS3eoFNnuGufPWsivyBj71UJm9fAlov1+OTmd/obp3
- yKfA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=5g+LfVWBF+3Lekw1EiZ6vk0vC87Y80r54VLd03wJ0CQ=;
+ b=O4vb/QF6Z8AKNIq16OGaYOQW9y4vJSge6ZjNtaJNWKh1eSQAadWK2iLG8VEkU0OFeA
+ owkTcCPey56/TnbUWZ3+1Gv9CHEcsbULMEdCXAJ2FIOPN4FZs+pP9ntSGoXqlaIYcde3
+ jfJuQ8kBsDideJBmGhRJxdTh++aDgXyypRN8y1yhDvy8xjUBF3RQQGctmg/PqUm2LzS6
+ KDxbGxFg6mY23RELGwMRstBSpWRBlRdEu+w1nw4knPkB4krbAcnkfQVLx/htp+ZhjeAl
+ 4/bcT1KD4qxvglcd0oim7lyiGTdjK8BjcoMQGy6WqFerJME2GKaUuB6KdPveYEQZqgJD
+ L5zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=YHE/jaU21Fb5bQ7ZfHntr+xzvvFVHxN+La52awWcvb0=;
- b=KkMiL47ozSIvva4k6oDaitkbAHkYJjjhcgwFmuIVJ7mOVg/qrvru8zx06Y9ycfG8qN
- 2vnR4K7y2s/LepqmyOjmWJpCh/KelT2FnOmugYdgtpPhuhl8WOMa2ql6vx2P38Zk09MD
- m4GyRv+vdu0YbK+eCxkz1chPMxfEAelWmh9ENRPeD0fFU/nW8GlJSmdSFuZRqHurxW4d
- Z/e+Bj3XDdc1z2cvCqQnHIBnDMMy7SY0zDZPsr2ERxn+x6fsAKfi8jGLZD3vtzCoYUHt
- 7HfyoyySdSZugyc6twGTl3f3JrfXAIlMUqCqysTLbmkHkIm309Z9IkAX1r+UuPlDVzhZ
- mTsQ==
-X-Gm-Message-State: AOAM532d9YuVMWTCUWdi4UtD89yqcIy7itw8V4s5GAicTEPUNzOrVvbK
- OgfPG4cVw0PuUosM39PTykpiPg==
-X-Received: by 2002:a17:90a:cf17:: with SMTP id
- h23mr14806026pju.139.1592767385285; 
- Sun, 21 Jun 2020 12:23:05 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id p16sm9219770pgj.53.2020.06.21.12.23.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 21 Jun 2020 12:23:04 -0700 (PDT)
-Subject: Re: [PATCH v3 3/7] hw/misc/led: Emit a trace event when LED intensity
- has changed
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200620230719.32139-1-f4bug@amsat.org>
- <20200620230719.32139-4-f4bug@amsat.org>
+ bh=5g+LfVWBF+3Lekw1EiZ6vk0vC87Y80r54VLd03wJ0CQ=;
+ b=ZL79nsJcDHwaLBM8Z9iHcUttPt9qJ+FHpQ8vam3Tpy26W2gQxv7hb+tB2k6sEAPgRU
+ 5o3HI27jH+agYTXejTxp/XReIUpq9TcG9jjgQCv4TVXYROPbtNB10nDbavulX4WIH3mQ
+ 8eNvBtMLLMl96KFvlFRfLvTh/uFwFTAiYnxDkYivekIDNkQjpmEnMRl/fxOmOFGco+qP
+ UVldS+ElzWE2Mg7mLoe5aklV7QvwzkTYy1t5C99pmvUFDKDlE5oDvc/0Xxrsr0XatwlV
+ FVT7TS9/jsTnMsJdGI9rIzyukO/tLPbeiIs4Zii4wNJXRvGJVh80Mb0Q3hDfOcZUs+7e
+ X4ig==
+X-Gm-Message-State: AOAM533/jqlXFbIrg+h85+E9cgzdfIWBxGIXyG4f9VbqmDi4B4biWMdL
+ Ebi6+CAchXGoxusGTWvmbs5n7A==
+X-Received: by 2002:a17:90a:f282:: with SMTP id
+ fs2mr2356994pjb.132.1592941020803; 
+ Tue, 23 Jun 2020 12:37:00 -0700 (PDT)
+Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
+ [174.21.143.238])
+ by smtp.gmail.com with ESMTPSA id p12sm17927642pfq.69.2020.06.23.12.36.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 23 Jun 2020 12:36:59 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <ae4a7411-7042-3530-3faf-e25368080820@linaro.org>
-Date: Sun, 21 Jun 2020 12:23:02 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+To: qemu-devel@nongnu.org
+Subject: [PATCH v8 00/45] target/arm: Implement ARMv8.5-MemTag, system mode
+Date: Tue, 23 Jun 2020 12:36:13 -0700
+Message-Id: <20200623193658.623279-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20200620230719.32139-4-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1043;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1043.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -111,8 +102,8 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,40 +116,127 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, david.spickett@linaro.org,
+ steplong@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZwvGbPy0Rdop
+X-TUID: iTJnGh8we7i3
 
-On 6/20/20 4:07 PM, Philippe Mathieu-Daudé wrote:
-> Track the LED intensity, and emit a trace event when it changes.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  include/hw/misc/led.h | 1 +
->  hw/misc/led.c         | 5 +++++
->  hw/misc/trace-events  | 1 +
->  3 files changed, 7 insertions(+)
-> 
-> diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
-> index 883006bb8f..df5b32a2db 100644
-> --- a/include/hw/misc/led.h
-> +++ b/include/hw/misc/led.h
-> @@ -35,6 +35,7 @@ typedef struct LEDState {
->      DeviceState parent_obj;
->      /* Public */
->  
-> +    uint16_t current_intensity;
->      qemu_irq irq;
+Version 8 incorporates quite a bit of review (thanks, PMM):
 
-Why not sort this new field next to the other uint16_t and (partially) fill the
-hole?
+ * Include HCR_DCT in the HCR_EL2 update.
+ * Use a separate decode function for ADDG/SUBG.
+ * Use the system arm_cpu_do_unaligned_access for user-only as well.
+ * Fix alignment for LDG.
+ * Fix no-fault for mte_probe1.
+ * Rearrage how tagged pages are recorded.
 
-Otherwise,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+and perhaps most visibly, for those tracking the kernel patches:
+
+ * Add arm,armv8.5-memtag to the dtb.
 
 
 r~
+
+
+In need of review:
+0010-target-arm-Revise-decoding-for-disas_add_sub_imm.patch
+0011-target-arm-Implement-the-ADDG-SUBG-instructions.patch
+0014-target-arm-Define-arm_cpu_do_unaligned_access-for.patch
+0015-target-arm-Implement-LDG-STG-ST2G-instructions.patch
+0025-target-arm-Implement-helper_mte_check1.patch
+0028-target-arm-Use-mte_checkN-for-sve-unpredicated-lo.patch
+0029-target-arm-Use-mte_checkN-for-sve-unpredicated-st.patch
+0030-target-arm-Use-mte_check1-for-sve-LD1R.patch
+0031-target-arm-Tidy-trans_LD1R_zpri.patch
+0032-target-arm-Add-arm_tlb_bti_gp.patch
+0033-target-arm-Add-mte-helpers-for-sve-scalar-int-loa.patch
+0034-target-arm-Add-mte-helpers-for-sve-scalar-int-sto.patch
+0035-target-arm-Add-mte-helpers-for-sve-scalar-int-ff-.patch
+0036-target-arm-Handle-TBI-for-sve-scalar-int-memory-o.patch
+0037-target-arm-Add-mte-helpers-for-sve-scatter-gather.patch
+0038-target-arm-Complete-TBI-clearing-for-user-only-fo.patch
+0041-target-arm-Always-pass-cacheattr-to-get_phys_addr.patch
+0042-target-arm-Cache-the-Tagged-bit-for-a-page-in-Mem.patch
+0043-target-arm-Create-tagged-ram-when-MTE-is-enabled.patch
+0044-target-arm-Add-allocation-tag-storage-for-system-.patch
+0045-target-arm-Enable-MTE.patch
+
+
+Richard Henderson (45):
+  target/arm: Add isar tests for mte
+  target/arm: Improve masking of SCR RES0 bits
+  target/arm: Add support for MTE to SCTLR_ELx
+  target/arm: Add support for MTE to HCR_EL2 and SCR_EL3
+  target/arm: Rename DISAS_UPDATE to DISAS_UPDATE_EXIT
+  target/arm: Add DISAS_UPDATE_NOCHAIN
+  target/arm: Add MTE system registers
+  target/arm: Add MTE bits to tb_flags
+  target/arm: Implement the IRG instruction
+  target/arm: Revise decoding for disas_add_sub_imm
+  target/arm: Implement the ADDG, SUBG instructions
+  target/arm: Implement the GMI instruction
+  target/arm: Implement the SUBP instruction
+  target/arm: Define arm_cpu_do_unaligned_access for user-only
+  target/arm: Implement LDG, STG, ST2G instructions
+  target/arm: Implement the STGP instruction
+  target/arm: Restrict the values of DCZID.BS under TCG
+  target/arm: Simplify DC_ZVA
+  target/arm: Implement the LDGM, STGM, STZGM instructions
+  target/arm: Implement the access tag cache flushes
+  target/arm: Move regime_el to internals.h
+  target/arm: Move regime_tcr to internals.h
+  target/arm: Add gen_mte_check1
+  target/arm: Add gen_mte_checkN
+  target/arm: Implement helper_mte_check1
+  target/arm: Implement helper_mte_checkN
+  target/arm: Add helper_mte_check_zva
+  target/arm: Use mte_checkN for sve unpredicated loads
+  target/arm: Use mte_checkN for sve unpredicated stores
+  target/arm: Use mte_check1 for sve LD1R
+  target/arm: Tidy trans_LD1R_zpri
+  target/arm: Add arm_tlb_bti_gp
+  target/arm: Add mte helpers for sve scalar + int loads
+  target/arm: Add mte helpers for sve scalar + int stores
+  target/arm: Add mte helpers for sve scalar + int ff/nf loads
+  target/arm: Handle TBI for sve scalar + int memory ops
+  target/arm: Add mte helpers for sve scatter/gather memory ops
+  target/arm: Complete TBI clearing for user-only for SVE
+  target/arm: Implement data cache set allocation tags
+  target/arm: Set PSTATE.TCO on exception entry
+  target/arm: Always pass cacheattr to get_phys_addr
+  target/arm: Cache the Tagged bit for a page in MemTxAttrs
+  target/arm: Create tagged ram when MTE is enabled
+  target/arm: Add allocation tag storage for system mode
+  target/arm: Enable MTE
+
+ include/hw/arm/boot.h          |    3 +
+ target/arm/cpu.h               |   50 +-
+ target/arm/helper-a64.h        |   16 +
+ target/arm/helper-sve.h        |  488 ++++++++++++
+ target/arm/helper.h            |    2 +
+ target/arm/internals.h         |  153 +++-
+ target/arm/translate-a64.h     |    5 +
+ target/arm/translate.h         |   23 +-
+ hw/arm/boot.c                  |   12 +-
+ hw/arm/virt.c                  |   57 +-
+ target/arm/cpu.c               |   77 +-
+ target/arm/cpu64.c             |    1 +
+ target/arm/helper-a64.c        |   94 +--
+ target/arm/helper.c            |  423 +++++++---
+ target/arm/m_helper.c          |   11 +-
+ target/arm/mte_helper.c        |  901 +++++++++++++++++++++
+ target/arm/op_helper.c         |   16 +
+ target/arm/sve_helper.c        |  616 +++++++++++---
+ target/arm/tlb_helper.c        |   13 +-
+ target/arm/translate-a64.c     |  652 +++++++++++++--
+ target/arm/translate-sve.c     | 1366 +++++++++++++++++++++-----------
+ target/arm/translate-vfp.inc.c |    2 +-
+ target/arm/translate.c         |   16 +-
+ target/arm/Makefile.objs       |    1 +
+ 24 files changed, 4164 insertions(+), 834 deletions(-)
+ create mode 100644 target/arm/mte_helper.c
+
+-- 
+2.25.1
+

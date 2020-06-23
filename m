@@ -1,352 +1,190 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4210430lfm;
-        Tue, 23 Jun 2020 09:13:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwdRQkgaKnb9J/JEP2B4pgrZaoJ1wVp6OWQO86I7lSCNA70xwz9Ud4Kt7vV/4TGK/omh3WI
-X-Received: by 2002:a25:dcce:: with SMTP id y197mr34873331ybe.288.1592928824618;
-        Tue, 23 Jun 2020 09:13:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592928824; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4222371lfm;
+        Tue, 23 Jun 2020 09:30:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzi1PYx4xmQK1sRVa1/Xpei/aE//PNtZxpiygWy1tLP7xpFkh9QLCHQGmotFAJAuPE7zVBW
+X-Received: by 2002:a25:75c6:: with SMTP id q189mr37085934ybc.501.1592929851988;
+        Tue, 23 Jun 2020 09:30:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592929851; cv=none;
         d=google.com; s=arc-20160816;
-        b=mYwuBIhpjC6PL7S3R6fbeZaLjx04M7hUIjaPwDvv2fO1vn1ObHwRNYr5fdCtB5L5rq
-         1ACYMwf/QIouuKgkDv3jVnOsf82uH6tOW+tBwvsGpmnatlWVvDEHwn3dHCuUMptx/WUF
-         HIoXLLKakEP6zl1lamt1Pa73eAfeT72lYL8AD3OKGgrRf/3TzdMF34UHBNNsQQzYQMvV
-         9BG6gqzwg7aJhZUw05MtaXosLOdg0Gaa6M0Q9QeRLJQENLAHPQP5HhVHqpnxx31laYYf
-         yQn1cPvI9id7uInTfRdkWLaf2Folg9ue2/vU3rDs3mteqpP8hRbBzsiQ21O/LakVVT8Q
-         OqbA==
+        b=EY2vE3qFHXUaAebpfiG9bCTBkSa9+8f+71SP/eTqWibrJ7s86cY4O5xK6zfwc9PUI2
+         v4QXJgACY1l6w9it23TREiVrnSiNEHV/xjUzU1hX6OOnqNyAh7CKrL92a0Us82qLMof8
+         dU++0TbRFK4mazZLdO2WeJeVNjvBzKCbXy/qxsLtM3VAEdlzB5OFPMgKfxaW8dXpICZ8
+         +amuAkn4YM2bBX8yGq5ee7c0ZRAWRmye1CuDU4RRkjh9n9fwWOADr4JjZ6y+1Ft4y4+7
+         OMoSClzQ3cdNr2MFFkiK1fayq6wuP9ivCak47RT52dzcF50ZGTI1uyYROmmNKN96RKOh
+         +YqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=NL8eZXdAMuU++GdJcAm8uQFDTgr2NCc51N9WURycMcA=;
-        b=MUOFj8I+5esb5PH1xVxhI6JnSJbG7SlA+uD8U6rF2B/Md1k6v8ruG8a5M00VsEpzqZ
-         gLU005grlqp2sthaE1Z4pnKjCpFrRCzrFzQ+nB9jfzPY2IoX5yirbo2PWmDb8u64Jv93
-         zNmIoVK6NSTRRuKFhxBFRng6uQe5ELU5y8puBA0knihpbL7F/+P/0cpsaEaK6RRurV+X
-         Luw8ewDpouOHSPBtCWuW2Z3idY5HQbBpMpmB0tArsZ9of6gQjY4KsKsb8kKkBttE6L3m
-         1BXrgWpP7U1oxuIPt5fn6DKje51JfWuu2dL/Mr5huPVWoid8O5AYJ4plm9jf09m0DW6H
-         kJEg==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=4MdvmBlCOD1q+E+aQO45jyj+IdzVQKgYnKAanEBNUMc=;
+        b=zYGsk4uLEu5eeTYAVbHyeTuwKCa8fy0eTqCo0IBF9GM08Bwf4X8qgGMJ4SUU2if2Eh
+         lsP9f2hqprXULjdOGtHp3KughTgjkw+8VL5ndNsdpBsN/4ACbeLicw9Rre4pQ9WW1iMV
+         fI4myBuptghTEVewIl0nyCtIuPELuuWu88AOchX+u27pQoNYCbUugsGnpoXB7n8buM4V
+         iKDX9uH4xbgkpnLiRqsBj0nryrdq3jMgG3tGmAGC9H5wHyxDIZR1MALIB0tOCdxUUJ4K
+         NSwgTeOajTzHYcLI2SM9sktVs7lMEhAOgpuS6Yx3/cUrcJ7+KphufMzq3yUeLUURleYQ
+         rTEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SsX6tXWL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=WR+Z9TqK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u15si16189154ybc.446.2020.06.23.09.13.44
+        by mx.google.com with ESMTPS id r4si16586425ybk.325.2020.06.23.09.30.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 09:13:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 Jun 2020 09:30:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SsX6tXWL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40274 helo=lists1p.gnu.org)
+       dkim=fail header.i=@mvista-com.20150623.gappssmtp.com header.s=20150623 header.b=WR+Z9TqK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38234 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnlYO-0006lu-0C
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 12:13:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34760)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jnlox-0004ou-Af
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 12:30:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41030)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jnlXU-0006Lf-Jh
- for qemu-devel@nongnu.org; Tue, 23 Jun 2020 12:12:48 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:49387
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jnlXR-0007te-Tz
- for qemu-devel@nongnu.org; Tue, 23 Jun 2020 12:12:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592928764;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NL8eZXdAMuU++GdJcAm8uQFDTgr2NCc51N9WURycMcA=;
- b=SsX6tXWLCi96YAkJ9ctB03T9SMdZI393chAsXrfa9unBWtjlJcQJ2Bc+mzLjhUecXPrZH3
- siwKFHCbStZj0QZgbmGFZn7r9H6zq4G5tJBIjF1G15gmcr6Q8g1NQKw3uZNqFrlecT3+n0
- KaeWBJN2/zVrRZmyTNH+AYpfXvzJMO4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-451-tlMbGE7uPqCSBOMwI8yoVg-1; Tue, 23 Jun 2020 12:12:39 -0400
-X-MC-Unique: tlMbGE7uPqCSBOMwI8yoVg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A35DB464;
- Tue, 23 Jun 2020 16:12:37 +0000 (UTC)
-Received: from [10.36.114.197] (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7B0DF5C298;
- Tue, 23 Jun 2020 16:12:29 +0000 (UTC)
-Subject: Re: [PATCH v4 1/5] qdev: Introduce DEFINE_PROP_RESERVED_REGION
-To: Markus Armbruster <armbru@redhat.com>
-References: <20200623093244.24931-1-eric.auger@redhat.com>
- <20200623093244.24931-2-eric.auger@redhat.com>
- <87mu4thl2a.fsf@dusky.pond.sub.org>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <8f5bf2be-96bd-5cd0-d60c-7123e83cb264@redhat.com>
-Date: Tue, 23 Jun 2020 18:12:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
+ id 1jnlom-0004n7-Vg
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 12:30:41 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:33988)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <cminyard@mvista.com>)
+ id 1jnlok-0005qL-1Q
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 12:30:40 -0400
+Received: by mail-ot1-x342.google.com with SMTP id n5so17252729otj.1
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2020 09:30:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mvista-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=4MdvmBlCOD1q+E+aQO45jyj+IdzVQKgYnKAanEBNUMc=;
+ b=WR+Z9TqKD6autEJYzBkeOsxy0p9LoOWALngfxl/pfSeLYX1fz8GfOKcOSOv0MVf0Uy
+ o5OCV4h0jwXkev+1CMNeZ5Cv/lq8EgdbDtrJks+0cNNb0SNJfZDc9pxZihTPKgX/RDCW
+ DBCNhlzkHlQuF5Z0Oo4vWVwbCbhMlxMDZ1cG92kzRLbPiWMAoZIy0Jl0mOOprd2vL77D
+ TT/Aa53vuHeUrVxSEkce4q0FRoYPOo4kdyjMy9t3gGQiOYrRGBrmOmGALePVrLcLfy80
+ NBuZFhP+6MGa8hdsoKqmV7qKYTuu8okCLb2ijsfI3mZFKJrQO+gndpRKQ91TpL5SwlnE
+ 87xA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+ :references:mime-version:content-disposition
+ :content-transfer-encoding:in-reply-to:user-agent;
+ bh=4MdvmBlCOD1q+E+aQO45jyj+IdzVQKgYnKAanEBNUMc=;
+ b=LxUeDb2Bdoaoa+c5b+AUVrPe8B8R0U3QF+Q1gGUh5o7pu31H1J+jpssj9S0hsPPWCn
+ nAAabYjAilC+s2cjeyFcU94pUns7pS8WyLQQRn7Pf147XVCii/+ruduyvG9hFDagpmit
+ buWEnHC5zXQsIfCRHG28CtZvb8XWA7qeDsQU/tCYIWwyXDH0oOvnq5M/qzTymVA9wiT3
+ 4zErJSHR50xcRKu8vyxZXqZ6xqLllvcoYLJOh56UAoTPTuJvzqX0zBJ+11h5K9kzI2F7
+ 4SewecQ0krxzHrcenFhX71g4i5bGeNKMMwWag8ljHFhDc4eXdpOKjcsMdje7unmoViBI
+ rnrA==
+X-Gm-Message-State: AOAM531gIobATccqj2F9iPtGh1OzthB2aAnc0ZoW2kdAC8it5o8Ad+fw
+ 6x1UiAtSCNNdGz5qoJX4ExSUqw==
+X-Received: by 2002:a9d:1b6a:: with SMTP id l97mr17240814otl.325.1592929835108; 
+ Tue, 23 Jun 2020 09:30:35 -0700 (PDT)
+Received: from minyard.net ([2001:470:b8f6:1b:6d79:306:b4b0:35c1])
+ by smtp.gmail.com with ESMTPSA id z7sm4144236oto.2.2020.06.23.09.30.33
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Tue, 23 Jun 2020 09:30:34 -0700 (PDT)
+Date: Tue, 23 Jun 2020 11:30:32 -0500
+From: Corey Minyard <cminyard@mvista.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v6 7/9] hw/arm/aspeed: Describe each PCA9552 device
+Message-ID: <20200623163032.GE3258@minyard.net>
+References: <20200623072723.6324-1-f4bug@amsat.org>
+ <20200623072723.6324-8-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <87mu4thl2a.fsf@dusky.pond.sub.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 02:54:39
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20200623072723.6324-8-f4bug@amsat.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+Received-SPF: permerror client-ip=2607:f8b0:4864:20::342;
+ envelope-from=cminyard@mvista.com; helo=mail-ot1-x342.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
- peterx@redhat.com, jean-philippe@linaro.org, qemu-arm@nongnu.org,
- pbonzini@redhat.com, bbhushan2@marvell.com, eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NQYN4elAt7al
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: cminyard@mvista.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OP4RpLnMqmqk
 
-Hi Markus,
+On Tue, Jun 23, 2020 at 09:27:21AM +0200, Philippe Mathieu-Daudé wrote:
+> We have 2 distinct PCA9552 devices. Set their description
+> to distinguish them when looking at the trace events.
+> 
+> Description name taken from:
+> https://github.com/open-power/witherspoon-xml/blob/master/witherspoon.xml
 
-On 6/23/20 5:13 PM, Markus Armbruster wrote:
-> Eric Auger <eric.auger@redhat.com> writes:
-> 
->> Introduce a new property defining a reserved region:
->> <low address>:<high address>:<type>.
->>
->> This will be used to encode reserved IOVA regions.
->>
->> For instance, in virtio-iommu use case, reserved IOVA regions
->> will be passed by the machine code to the virtio-iommu-pci
->> device (an array of those). The type of the reserved region
->> will match the virtio_iommu_probe_resv_mem subtype value:
->> - VIRTIO_IOMMU_RESV_MEM_T_RESERVED (0)
->> - VIRTIO_IOMMU_RESV_MEM_T_MSI (1)
->>
->> on PC/Q35 machine, this will be used to inform the
->> virtio-iommu-pci device it should bypass the MSI region.
->> The reserved region will be: 0xfee00000:0xfeefffff:1.
->>
->> On ARM, we can declare the ITS MSI doorbell as an MSI
->> region to prevent MSIs from being mapped on guest side.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Reviewed-by: Markus Armbruster <armbru@redhat.com>
->>
->> ---
->>
->> v3 -> v4:
->> - use ':' instead of commas as separators.
->> - rearrange error messages
->> - check snprintf returned value
->> - dared to keep Markus' R-b despite those changes
->> ---
->>  include/exec/memory.h        |  6 +++
->>  include/hw/qdev-properties.h |  3 ++
->>  include/qemu/typedefs.h      |  1 +
->>  hw/core/qdev-properties.c    | 89 ++++++++++++++++++++++++++++++++++++
->>  4 files changed, 99 insertions(+)
->>
->> diff --git a/include/exec/memory.h b/include/exec/memory.h
->> index 7207025bd4..d7a53b96cc 100644
->> --- a/include/exec/memory.h
->> +++ b/include/exec/memory.h
->> @@ -51,6 +51,12 @@ extern bool global_dirty_log;
->>  
->>  typedef struct MemoryRegionOps MemoryRegionOps;
->>  
->> +struct ReservedRegion {
->> +    hwaddr low;
->> +    hwaddr high;
->> +    unsigned int type;
-> 
-> Suggest to s/unsigned int/unsigned/.
-> 
->> +};
->> +
->>  typedef struct IOMMUTLBEntry IOMMUTLBEntry;
->>  
->>  /* See address_space_translate: bit 0 is read, bit 1 is write.  */
->> diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
->> index 5252bb6b1a..95d0e7201d 100644
->> --- a/include/hw/qdev-properties.h
->> +++ b/include/hw/qdev-properties.h
->> @@ -19,6 +19,7 @@ extern const PropertyInfo qdev_prop_string;
->>  extern const PropertyInfo qdev_prop_chr;
->>  extern const PropertyInfo qdev_prop_tpm;
->>  extern const PropertyInfo qdev_prop_macaddr;
->> +extern const PropertyInfo qdev_prop_reserved_region;
->>  extern const PropertyInfo qdev_prop_on_off_auto;
->>  extern const PropertyInfo qdev_prop_multifd_compression;
->>  extern const PropertyInfo qdev_prop_losttickpolicy;
->> @@ -184,6 +185,8 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
->>      DEFINE_PROP(_n, _s, _f, qdev_prop_drive_iothread, BlockBackend *)
->>  #define DEFINE_PROP_MACADDR(_n, _s, _f)         \
->>      DEFINE_PROP(_n, _s, _f, qdev_prop_macaddr, MACAddr)
->> +#define DEFINE_PROP_RESERVED_REGION(_n, _s, _f)         \
->> +    DEFINE_PROP(_n, _s, _f, qdev_prop_reserved_region, ReservedRegion)
->>  #define DEFINE_PROP_ON_OFF_AUTO(_n, _s, _f, _d) \
->>      DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_on_off_auto, OnOffAuto)
->>  #define DEFINE_PROP_MULTIFD_COMPRESSION(_n, _s, _f, _d) \
->> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
->> index ce4a78b687..15f5047bf1 100644
->> --- a/include/qemu/typedefs.h
->> +++ b/include/qemu/typedefs.h
->> @@ -58,6 +58,7 @@ typedef struct ISABus ISABus;
->>  typedef struct ISADevice ISADevice;
->>  typedef struct IsaDma IsaDma;
->>  typedef struct MACAddr MACAddr;
->> +typedef struct ReservedRegion ReservedRegion;
->>  typedef struct MachineClass MachineClass;
->>  typedef struct MachineState MachineState;
->>  typedef struct MemoryListener MemoryListener;
->> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
->> index ead35d7ffd..193d0d95f9 100644
->> --- a/hw/core/qdev-properties.c
->> +++ b/hw/core/qdev-properties.c
->> @@ -15,6 +15,7 @@
->>  #include "chardev/char.h"
->>  #include "qemu/uuid.h"
->>  #include "qemu/units.h"
->> +#include "qemu/cutils.h"
->>  
->>  void qdev_prop_set_after_realize(DeviceState *dev, const char *name,
->>                                    Error **errp)
->> @@ -578,6 +579,94 @@ const PropertyInfo qdev_prop_macaddr = {
->>      .set   = set_mac,
->>  };
->>  
->> +/* --- Reserved Region --- */
->> +
->> +/*
->> + * accepted syntax version:
-> 
-> "version" feels redundant.  Suggest to capitalize "Accepted".
-> 
->> + *   <low address>:<high address>:<type>
->> + *   where low/high addresses are uint64_t in hexadecimal
->> + *   and type is an unsigned integer in decimal
->> + */
->> +static void get_reserved_region(Object *obj, Visitor *v, const char *name,
->> +                                void *opaque, Error **errp)
->> +{
->> +    DeviceState *dev = DEVICE(obj);
->> +    Property *prop = opaque;
->> +    ReservedRegion *rr = qdev_get_prop_ptr(dev, prop);
->> +    char buffer[64];
->> +    char *p = buffer;
->> +    int rc;
->> +
->> +    rc = snprintf(buffer, sizeof(buffer), "0x%"PRIx64":0x%"PRIx64":%u",
->> +                  rr->low, rr->high, rr->type);
->> +    assert(rc < sizeof(buffer));
->> +
->> +    visit_type_str(v, name, &p, errp);
->> +}
->> +
->> +static void set_reserved_region(Object *obj, Visitor *v, const char *name,
->> +                                void *opaque, Error **errp)
->> +{
->> +    DeviceState *dev = DEVICE(obj);
->> +    Property *prop = opaque;
->> +    ReservedRegion *rr = qdev_get_prop_ptr(dev, prop);
->> +    Error *local_err = NULL;
->> +    const char *endptr;
->> +    char *str;
->> +    int ret;
->> +
->> +    if (dev->realized) {
->> +        qdev_prop_set_after_realize(dev, name, errp);
->> +        return;
->> +    }
->> +
->> +    visit_type_str(v, name, &str, &local_err);
->> +    if (local_err) {
->> +        error_propagate(errp, local_err);
->> +        return;
->> +    }
->> +
->> +    ret = qemu_strtou64(str, &endptr, 16, &rr->low);
->> +    if (ret) {
->> +        error_setg(errp, "start address of '%s'"
->> +                   " must be a hexadecimal integer", name);
->> +        goto out;
->> +    }
->> +    if (*endptr != ':') {
->> +        goto separator_error;
->> +    }
->> +
->> +    ret = qemu_strtou64(endptr + 1, &endptr, 16, &rr->high);
->> +    if (ret) {
->> +        error_setg(errp, "end address of '%s'"
->> +                   " must be a hexadecimal integer", name);
->> +        goto out;
->> +    }
->> +    if (*endptr != ':') {
->> +        goto separator_error;
->> +    }
->> +
->> +    ret = qemu_strtoui(endptr + 1, &endptr, 10, &rr->type);
->> +    if (ret) {
->> +        error_setg(errp, "type of '%s'"
->> +                   " must be an unsigned integer in decimal", name);
-> 
-> Suggest "must be a non-negative decimal integer".
-> 
-> Whatever uses the property needs a range check.  I can't see that the
-> patches that follow.  What am I missing?
-Do you mean, you would expect the virtio-iommu-pci device to abort in
-case a wrong VIRTIO reserved region type has been registered?
-Effectively I could do that.
+I forgot to respond to this earlier.
 
-For the time being, unexpected types are considered as RESERVED type.
-Also reserved regions are set by the machinesa nd we don't expect users
-to set them directly so I thought it was sufficient.
+Reviewed-by: Corey Minyard <cminyard@mvista.com>
 
-Thanks
-
-Eric
 > 
->> +    }
->> +    goto out;
->> +
->> +separator_error:
->> +    error_setg(errp, "reserved region fields must be separated with ':'");
->> +out:
->> +    g_free(str);
->> +    return;
->> +}
->> +
->> +const PropertyInfo qdev_prop_reserved_region = {
->> +    .name  = "reserved_region",
->> +    .description = "Reserved Region, example: 0xFEE00000:0xFEEFFFFF:0",
->> +    .get   = get_reserved_region,
->> +    .set   = set_reserved_region,
->> +};
->> +
->>  /* --- on/off/auto --- */
->>  
->>  const PropertyInfo qdev_prop_on_off_auto = {
+> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+> Cc: Markus Armbruster <armbru@redhat.com>
+> Cc: Corey Minyard <cminyard@mvista.com>
+> ---
+>  hw/arm/aspeed.c | 13 +++++++++----
+>  1 file changed, 9 insertions(+), 4 deletions(-)
 > 
-> R-by for this patch stands.
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index ccf127b328..307dba5065 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -508,12 +508,15 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+>  {
+>      AspeedSoCState *soc = &bmc->soc;
+>      uint8_t *eeprom_buf = g_malloc0(8 * 1024);
+> +    DeviceState *dev;
+>  
+>      /* Bus 3: TODO bmp280@77 */
+>      /* Bus 3: TODO max31785@52 */
+>      /* Bus 3: TODO dps310@76 */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3), TYPE_PCA9552,
+> -                     0x60);
+> +    dev = i2c_try_create_slave(TYPE_PCA9552, 0x60);
+> +    qdev_prop_set_string(dev, "description", "pca1");
+> +    i2c_realize_and_unref(dev, aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3),
+> +                          &error_fatal);
+>  
+>      i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "tmp423", 0x4c);
+>      i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 5), "tmp423", 0x4c);
+> @@ -528,8 +531,10 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+>  
+>      smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), 0x51,
+>                            eeprom_buf);
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), TYPE_PCA9552,
+> -                     0x60);
+> +    dev = i2c_try_create_slave(TYPE_PCA9552, 0x60);
+> +    qdev_prop_set_string(dev, "description", "pca0");
+> +    i2c_realize_and_unref(dev, aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11),
+> +                          &error_fatal);
+>      /* Bus 11: TODO ucd90160@64 */
+>  }
+>  
+> -- 
+> 2.21.3
 > 
-

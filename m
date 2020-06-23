@@ -1,144 +1,150 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3976408lfm;
-        Tue, 23 Jun 2020 03:37:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzIRUtwoKe74t1PdBtY3hlipDrBU1LErNQsh/mnLR8yC0z61JwjdL3zGr0x9V3K9Q4O3qH1
-X-Received: by 2002:a25:c08a:: with SMTP id c132mr35140737ybf.118.1592908657299;
-        Tue, 23 Jun 2020 03:37:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592908657; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3983813lfm;
+        Tue, 23 Jun 2020 03:51:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwWP+SK+WBIcGtP9039iZdUfiuuxY0M89KeKJyfTh65FWlKXce++unFL43PJqaW79YvdM2I
+X-Received: by 2002:a50:8143:: with SMTP id 61mr5352937edc.202.1592909465647;
+        Tue, 23 Jun 2020 03:51:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592909465; cv=none;
         d=google.com; s=arc-20160816;
-        b=DRt6ybHOK4yWDw4sZbi9zFVNHYD+UB6rkqpty93Xhgow4ySqlt8XtZ3ziuJvnmD+Ji
-         6P2Jy7CoRZT8v+L5LyHGLyibJc95YDDo6xq7Y8oUWPFNEF4sG1aLHHDpl9rsDReDOfts
-         61J9ogplXZScOhRGL1fIw9EAgEJHDL6LxmwKzXciY3NfdgLRj064+t12Ml00kse1wzVE
-         qAsji5U/IHs6sep4gAIfcYIIc6u8C5GA77rMsa9IOE1Hu7D1A9Z0Z2bpwcvuDYUt8BAE
-         r8esMtUYjkiBhlWTEfXxwS3eKtXGunQ+Z/eTZnhJtHlr3tRRb0sCa3t7ip1KXoaV0ow2
-         iIEg==
+        b=YcPOXY/91fJjjfyrbkR+hOVU6o5NY3GxqsDkhkO387UxAA+ob8Scbzm6GnTI4iWUZA
+         iNIFk/SOQGSEIheSC78rXXN9PSOwEJlmF/paxmxQ0s0qvByt7sArLP2PjOXwKVH6d2jJ
+         whg2fsBBy349jTF/Og2u2+kHJ4OrtAZu1TgjqfGabBusuBqdAhHxAiau/5KT0a9rogiy
+         MHrLhBd+lSXuOAU5t95zhWt7C5NndhF4OhRtnQWc2NgS6dvzcFf+NyLhY2jH6uH419lo
+         OAWPHo32aosbZ8zdAblsIZZB5UMd7qdXWczxsrRWoU2HJjaAvANqu27Porq0pFF/9JFo
+         FhaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=GNpCe9Xf5Z5FWvCiL4N3Vt3CrcsQ8Z3kIRn68Z5fG9k=;
-        b=OZmB0nz9kz4/vh6igt2svGKnfFABtSr/hFOciBrYgwROPSdOz8dBDDEVgx4roH4d8v
-         2tEwJd6HbcCdMlCRNmyfjpOF8/IQO4O1T4sWliMIliz+bhOywWUxGQqzRahvHdw7/Ddi
-         5GzXazUyDs6YdLEBYTNoqHVY+1Wmps5V6BthS7s/yRTGf/EOUxwvjIMh5zHo8O8Otzvm
-         SRSS1PuzV1kCigrAT+6LeZtIBxzrSXGfrO0IfOlqoAQM2p0DcZh2N+kuQ2ZZBZIOpDKH
-         PKfGcWFIvH1GPXWjQmRYjHOw0VqMkRlLawdKkmd2Ahv/OybrOsIyYmi9QXlLEp/+aGHC
-         4CYg==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Q94CucqHN1D7KKGTyBIU8O5tt3pd+XQigNdMLEupMvs=;
+        b=HA+D4sFhF2BIBEdZUDpniIQui3mLrIMhMCF/20mJb6ZoRB3hntfUYQGifLnF7dJDWl
+         Mapo3lsJQNiZPBtJ51m+OEQ+h0y1vieZMaYSRPCsGYLuBmcVzZpGx2lmxEhiOAlw5Owy
+         bjdIRlG5n7rKLyr+8T+pM5dxWtQb+YnRruFRZ3YSbF6k2iiA3oUmMLR97uHBB00/PlDe
+         L7aMpuTxM/J/qcwTvoUEDe8mPeRnRQw7H0ABH2OAs1qYbCMd+/BPEOir3R4s4OuKl93s
+         s0oezMBzyHn6Q5Oq0ucZ7UQgUt9hdDvq+VWHKAasRYBaceoj7cYX+8SF7KDCRV1bsUxj
+         riFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="VjHF/AuU";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 194si15124016ybn.352.2020.06.23.03.37.37
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 03:37:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cRetiDK3;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id k25si12401072ejk.678.2020.06.23.03.51.05;
+        Tue, 23 Jun 2020 03:51:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="VjHF/AuU";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52732 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jngJ6-0006bc-Ns
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 06:37:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38832)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jngIz-0006bP-Ny
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 06:37:29 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:36383)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jngIy-000070-9I
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 06:37:29 -0400
-Received: by mail-ot1-x342.google.com with SMTP id 72so2521255otc.3
- for <qemu-arm@nongnu.org>; Tue, 23 Jun 2020 03:37:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GNpCe9Xf5Z5FWvCiL4N3Vt3CrcsQ8Z3kIRn68Z5fG9k=;
- b=VjHF/AuUJs6qCVCVzKDfaDuwyNRhxExM3TUfmvc/v9+NeTVg+d51oGnzayhD2JEPZq
- sdMynLo2KvwyeqPxUYsTBo+cEKKD3fOogLV8WRflAu6+oJkE+zofDUHzGi4UA9ZsZpev
- +e9qcano7Yqs0RL8yMxd/2Iuz8Cy2TCk5tzbbf+xhzdnF8vWnuJKDqBHIXBS2E2gCAn6
- S2mDg2pAHrpLDjOiTRbyOjO3sjy4eDai6U8NAD9qsT2ZDsF98wguGXaVpFGGOaU8z8GQ
- MTifx3kYAufiYcoaq5QcIyUw4j1Pt9X8Q7DwGEEJJmuWtg1Wbwn4bwPSM/0vSEl0jCP1
- no0Q==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cRetiDK3;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1732259AbgFWKvD (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 23 Jun 2020 06:51:03 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:25507 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1732254AbgFWKvC (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 23 Jun 2020 06:51:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1592909460;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:  content-type:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=Q94CucqHN1D7KKGTyBIU8O5tt3pd+XQigNdMLEupMvs=;
+        b=cRetiDK3/WA9O9IwNSfKC0Xe2NsNkYeaxAgqDPF2u0izGgMVqNNKxczv/3fa6q1/3ZX4Sx
+        OA9yZ4Ci4xYx6lwmUcZki9AV5tQjim3UFEa+W6laYL89nv/vxHvPhrvAopDEg6PJ7bIjQL
+        wjrcwF3q0F7sv4Lek6l5yfgp3x6CDW4=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-193-761Z8lZHOdKBOFTVQBq1kg-1; Tue, 23 Jun 2020 06:50:57 -0400
+X-MC-Unique: 761Z8lZHOdKBOFTVQBq1kg-1
+Received: by mail-wr1-f70.google.com with SMTP id f5so14795876wrv.22
+        for <kvm@vger.kernel.org>; Tue, 23 Jun 2020 03:50:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=GNpCe9Xf5Z5FWvCiL4N3Vt3CrcsQ8Z3kIRn68Z5fG9k=;
- b=WOikyVZq/Davs9XXSB0SlO3q1fjWDHSP7vysXVITjk0z/+27hWXYtvn724P3z0ugHl
- m/De9l95Me16iSFJM0SyuhkcnMrrFdJn4O7cezlvmGyjSk5XWuiETB5ax6MGt5Z4OHWp
- k7FglCa/zjO4tczTDdFl4c6unpIChtq0HyakoYvOVzeNz8lT8zR0A9pKgx+RX9TpI+wT
- fl5fuCajhDh7W2ZR3draqxtu8W7mY9N70fXzP3qX0Fr0JAAcMQopITMapyl+o6JW6imz
- k7XpBpTTjLC8GRaKbKnyLT7HlG46R8womqFRiQqZ5k+ffscH8jdeOEBzrvRKu2F7YmWv
- g83w==
-X-Gm-Message-State: AOAM5329QTAtP//QcFZKLhPRmf7ToRRVKwvBOgKhbXz2IUJ2uqHfRgoL
- V7clF+cDvoDwZlSUduJvY2t1rM8xM+AJaGaAjpnYQA==
-X-Received: by 2002:a9d:5786:: with SMTP id q6mr3586650oth.135.1592908647266; 
- Tue, 23 Jun 2020 03:37:27 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Q94CucqHN1D7KKGTyBIU8O5tt3pd+XQigNdMLEupMvs=;
+        b=HOinm9Qbl0QHBc8QmJFZGeYnCxQva2PDukwnxitiSj/sCGW+kaZgsptSlLn8GgLoaS
+         B0K/2W8ANtwVDQAeH+Hpz6Ykvx4/ZXsR4tPBeueAKr3cHTXXIp0KTBJ4L/o/E12MDpIW
+         nLP6b1skNMiflP5ndeRAPxdm6b18/7qsYGVOfIQYTqNgCQDlCXPA2h6gLIVK/Usc3MIW
+         E9Dv4zRVPXFqGWyiT+TeTqay+zgPFXb5Pdj+q8zyxm1Ju7wnGY51phNi3yJD+YRQaZCE
+         f1ZYIxaxsJsR87I2ACHqnUXW0wcHthhhgQAj/rvFZXIBJJYt75Fz/Q2+Y1BTfx4Md5MP
+         Z8yQ==
+X-Gm-Message-State: AOAM533LHZIdoHGF4Y99ln+4fJgYS+NmGokguJxYAwAdTDzlewWxzRm6
+        IGfATTudUKHj85g0dvvdEgxvWb5luVNLUQlkG8lDmwvMFzUS8XjWgLQIgpYbZMoTZ08olJKVLXw
+        1mfhezs8ps1iR
+X-Received: by 2002:adf:f70e:: with SMTP id r14mr25942423wrp.150.1592909456037;
+        Tue, 23 Jun 2020 03:50:56 -0700 (PDT)
+X-Received: by 2002:adf:f70e:: with SMTP id r14mr25942396wrp.150.1592909455858;
+        Tue, 23 Jun 2020 03:50:55 -0700 (PDT)
+Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net. [83.51.162.1])
+        by smtp.gmail.com with ESMTPSA id r7sm3069566wmh.46.2020.06.23.03.50.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 23 Jun 2020 03:50:55 -0700 (PDT)
+From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To:     qemu-devel@nongnu.org
+Cc:     Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        David Hildenbrand <david@redhat.com>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        Richard Henderson <rth@twiddle.net>, qemu-s390x@nongnu.org,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Halil Pasic <pasic@linux.ibm.com>, qemu-arm@nongnu.org,
+        Cornelia Huck <cohuck@redhat.com>, qemu-ppc@nongnu.org,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Thomas Huth <thuth@redhat.com>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH 0/7] accel/kvm: Simplify few functions that can use global kvm_state
+Date:   Tue, 23 Jun 2020 12:50:45 +0200
+Message-Id: <20200623105052.1700-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-References: <20200622124157.20360-1-shameerali.kolothum.thodi@huawei.com>
- <b4d4a654-3d45-f7d7-1009-8e9f055f88d4@redhat.com>
-In-Reply-To: <b4d4a654-3d45-f7d7-1009-8e9f055f88d4@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 23 Jun 2020 11:37:16 +0100
-Message-ID: <CAFEAcA88dn8M5DSjr7WwTVEJGvN5-dKe8kiFCX06M6nruPJvQw@mail.gmail.com>
-Subject: Re: [PATCH v4] arm/virt: Add memory hot remove support
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Xu Wei <xuwei5@hisilicon.com>,
- Linuxarm <linuxarm@huawei.com>, qemu-arm <qemu-arm@nongnu.org>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- prime.zeng@hisilicon.com, Igor Mammedov <imammedo@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lFrkvnO3B5L9
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: ZS3uh66ap0yH
 
-On Tue, 23 Jun 2020 at 11:15, Auger Eric <eric.auger@redhat.com> wrote:
->
-> Hi Shameer,
->
-> On 6/22/20 2:41 PM, Shameer Kolothum wrote:
-> > This adds support for memory(pc-dimm) hot remove on arm/virt that
-> > uses acpi ged device.
-> >
-> > NVDIMM hot removal is not yet supported.
-> >
-> > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> Works fine for me when passing "movable_node" in the guest kernel
-> params. I am able to hotplug and hotremove PCDIMM slots several times
->
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Tested-by: Eric Auger <eric.auger@redhat.com>
+Following Paolo's idea on kvm_check_extension():
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg713794.html
 
-Thanks for the review, Eric.
+CI:
+https://travis-ci.org/github/philmd/qemu/builds/701213438
 
-Applied to target-arm.next, thanks.
+Philippe Mathieu-Daudé (7):
+  accel/kvm: Let kvm_check_extension use global KVM state
+  accel/kvm: Simplify kvm_check_extension()
+  accel/kvm: Simplify kvm_check_extension_list()
+  accel/kvm: Simplify kvm_set_sigmask_len()
+  target/i386/kvm: Simplify get_para_features()
+  target/i386/kvm: Simplify kvm_get_mce_cap_supported()
+  target/i386/kvm: Simplify kvm_get_supported_[feature]_msrs()
 
--- PMM
+ include/sysemu/kvm.h         |  4 +-
+ accel/kvm/kvm-all.c          | 76 +++++++++++++++----------------
+ hw/hyperv/hyperv.c           |  2 +-
+ hw/i386/kvm/clock.c          |  2 +-
+ hw/i386/kvm/i8254.c          |  4 +-
+ hw/i386/kvm/ioapic.c         |  2 +-
+ hw/intc/arm_gic_kvm.c        |  2 +-
+ hw/intc/openpic_kvm.c        |  2 +-
+ hw/intc/xics_kvm.c           |  2 +-
+ hw/s390x/s390-stattrib-kvm.c |  2 +-
+ target/arm/kvm.c             | 13 +++---
+ target/arm/kvm32.c           |  2 +-
+ target/arm/kvm64.c           | 15 +++---
+ target/i386/kvm.c            | 88 +++++++++++++++++-------------------
+ target/mips/kvm.c            |  6 +--
+ target/ppc/kvm.c             | 34 +++++++-------
+ target/s390x/cpu_models.c    |  3 +-
+ target/s390x/kvm.c           | 30 ++++++------
+ 18 files changed, 141 insertions(+), 148 deletions(-)
+
+-- 
+2.21.3

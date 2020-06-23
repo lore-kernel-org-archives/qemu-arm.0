@@ -1,114 +1,114 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3995481lfm;
-        Tue, 23 Jun 2020 04:09:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyG6DVwMkr9WpeLggOXtxUsTqYb5co5ciLDYbN29/LQDk8ViAIBUDHUJ8hEwxYkxLGx6VwS
-X-Received: by 2002:a25:400e:: with SMTP id n14mr31731994yba.424.1592910595618;
-        Tue, 23 Jun 2020 04:09:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592910595; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4087465lfm;
+        Tue, 23 Jun 2020 06:28:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxChwtrs4ScrBXD67Y4ph2ybtVVrVPT7Yy2YkeswmQoOFSeSFtC4kOa3pBbh6eMENJc3evb
+X-Received: by 2002:a25:90b:: with SMTP id 11mr33577038ybj.479.1592918936351;
+        Tue, 23 Jun 2020 06:28:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592918936; cv=none;
         d=google.com; s=arc-20160816;
-        b=cCWIy7GaP9RIeHmZD8aARw7qPTzLB2vwTRfAD2pkefMYFzTZdQbqfJ6EU0O1DZZN4H
-         i9nTxdXz8+mENJ2i86zXizUF8UVM95nKAbK6WBTdcfQGEEzVkEeA336epb2R+Eu12vaM
-         ccD8q0lW4dLJPHdHorLJBtZdwZBxCNKj21SL1J3RQqWUzIPV8A3dMkGuInMlVHb6aupX
-         yRi1Y6Hqcp1ooIHrdilY47iPoX4RH+6ou4Ai3W5j4DgxuXMEVfxvf2V3JCLk+7Pquj/V
-         lhmZXmmTNHmWN28WTRcfxbaKS9stjq/jsJzc8v8yfvEjxLl1x23fpcR6qt7oru0E1ItB
-         iKjA==
+        b=b8ZYoB9pKpTLXXpko8+NXryXtUNUfIYcC9vvUn6IxDEF6MuiC56vEk+W9sbFY7dcB3
+         bnfpMKLJDaYTsA59s6JXoRuQwPqtz6G4lIPsY2k0TmCbWpBkkvDJNPybvF6AboduV2y+
+         jJKHbMZxNLDKjpjak+sNuQaQTRKJQdC4ERckxXgXVqSFJdRpwxwnjUuF08gHoNm9OnCF
+         WDFU9NyO7LrBlCJD//bjwdDFWLW+8kbFdn2wvB8m0jOs37f9ubDLd3fXTAO8a4gFfKDZ
+         0GfWuc7iQbjOnczAiVFWP2spMjdurytoECWNF4WkjOEOjIcSt6tQBuB0rL3TYuu0RF3s
+         Dxqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=TDoajOIlS82D3/OcmN3QGNYpw1qwl/7n0rtfalMpxik=;
-        b=dLpmKLOq7gNO4NXmcR1kPZkYFhnukjS0RJIUiyDDjurTPW8tBIyUGxFCGE9jdxRVbY
-         ruIAFfJ8DNG9ZC7f2QQ5fQeCM1P+/OI6ftU0D3hq+8tIhJJtDBZ2tLiDTRuEKkh1JEpG
-         cXJwV2oyEfXBlaBUtE4QGqXd7krMdHPfe2874+k7wyXuwHV5LSr/BTWkFXoj9ckt7fKN
-         QJFaBex/haOrxLM/T3yQVQUrFXJQESrwFpBKet7zgJAieCZ/+FAVcy2X11bD+cl1uUwm
-         hzaY6jYvDFw0HVJ8/iEwyO34itgYuqh4Q5kuAti637XApxdc4DoUwain2bUqFm7V+u+x
-         Zc6Q==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=RGQWqgWoOQlufCkCqFDIDGfscfu9THnVrjZrrs/v3wQ=;
+        b=nid22Kkezr9CrNnBrDSkjnJ0AvT7Tiy1OEirz9+csc+NcmOtQtjutXLuQFl3sSkHWY
+         0IBNlkZM8G+4XKQ1CtG/RU1j9dHev/Ny2vZbknzRczdITqgi6ngVtxLg/pyiutd2Crlh
+         7dCnBV2EdPzYeNy+cfgu22Jd4XIVtZ0T1ZZLU+81EMUHEcBg4vsI64Y0ptrr1vOrUSBv
+         U3yxJzag42Qo4Hm+85l8S2zjcKfNBhMlKwb3STSM5fmbg/9lUOuWa/5xuDpzBP11TbKP
+         3oK5fCzSRItMwyE6iqOln4MOzhLMIKmQS4S24tLup3ql0nvH4EkyYMRzssqdLQjuZEZE
+         CgDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="E+5S/TJ/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fdXQlDaD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v13si15843682ybs.299.2020.06.23.04.09.55
+        by mx.google.com with ESMTPS id k6si24268479ybt.52.2020.06.23.06.28.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 04:09:55 -0700 (PDT)
+        Tue, 23 Jun 2020 06:28:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="E+5S/TJ/";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fdXQlDaD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:47176 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35674 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jngoN-0000Dh-2K
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 07:09:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56596)
+	id 1jniyt-0003GC-Nv
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 09:28:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59368)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jngo9-0008WP-Th; Tue, 23 Jun 2020 07:09:41 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:42358)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jngo8-0001mO-2w; Tue, 23 Jun 2020 07:09:41 -0400
-Received: by mail-wr1-x442.google.com with SMTP id o11so12357074wrv.9;
- Tue, 23 Jun 2020 04:09:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=TDoajOIlS82D3/OcmN3QGNYpw1qwl/7n0rtfalMpxik=;
- b=E+5S/TJ/+4bZ7E1MRayuQ5N0N9qiEsZ4q3VENhvYYBOnmJEocxmN5Vc8DGMUa27WxV
- +s0PNcKBjXOv8NEebHtjwu2S5wM1yMgOEpRN1S2HD3LtE1tp+EhjkxKMTus9Ut4C/+/o
- vrXuLGtl17JOHodpRTqlWKmHEzIMbuTqSkyYqyThAFASWVoYV07K2enHU1ihGJJ+MCHC
- S20Pr1VyQ6bDPQVA5ujHFspuywyWixEA5qv6RBCvIb2Ba1u/vgJg0t0PAUjaLdbw12XI
- pVPm5pH8ykWZfPC3y8dm8NbAFzmKncmy/AgyolBucFbMZi0jU0zmnYSMy/NtvHK+POAf
- bgcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=TDoajOIlS82D3/OcmN3QGNYpw1qwl/7n0rtfalMpxik=;
- b=brONRC7fKsgbMxjlPMEYhEg6BN0eDs3Qo/O00k4XMbZrKGrMMYigUOPk1muXiUAiMg
- Ogb37klbGyqijQV//ns8dd+eFPUnr1FjboR3zzOaooxKK3n1L7VccxXKwcVAJwCZe13+
- UvB6lw29Yt6xmeF6DjlZa0Qvb3xaxGqECB2E7JMU/RCpz72+v2TtKJaiXWNdEm4QrHId
- /GYCMqNJMeIGyE7haZvZ3EZaKdrgr46zKCzwVr7mewuAtZ/YTa9VKbgSrBK/vWDu+oZ6
- YAnF4gnPi97phM6C9ti1ayStfmCL8qJYpw5qTBb2WU69pNRTdPUXvnu9LdI8F1dbNTVk
- L3ug==
-X-Gm-Message-State: AOAM533afLaPMl4AB7DG/xIXwJLSaAAW7P0JU690JDV5HWtGhsZxW4mT
- F6toIawuWBXEu3NpC6dN1RI=
-X-Received: by 2002:adf:e948:: with SMTP id m8mr20886346wrn.398.1592910577593; 
- Tue, 23 Jun 2020 04:09:37 -0700 (PDT)
-Received: from [192.168.1.41] (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id s18sm24167923wra.85.2020.06.23.04.09.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 23 Jun 2020 04:09:37 -0700 (PDT)
-Subject: Re: [PATCH v6 0/9] hw/misc/pca9552: Trace GPIO change events
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
-References: <20200623072723.6324-1-f4bug@amsat.org>
- <ff9aec64-419c-330c-bbd3-3b04be70eadd@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <a1013609-914c-3843-4aba-a5eaa911e59f@amsat.org>
-Date: Tue, 23 Jun 2020 13:09:36 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jniyk-0003Fu-8E
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 09:28:46 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27908
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jniyh-00054j-1G
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 09:28:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1592918921;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=RGQWqgWoOQlufCkCqFDIDGfscfu9THnVrjZrrs/v3wQ=;
+ b=fdXQlDaDjWC21puX7qv3X9n+dMp0bsrEpeTnFSvcT+3Crn6TtsUd67OnF6kqO+t498I6hM
+ jjw7bmSbMYRaJtr3MWYHWEubpPpEikcHYVZBWWs6m554zzHLzOJOvzNGKwP+nzpr4UqMdA
+ YOFiHQFsuYG4aMXO21oEmxzfdzdr/wY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-494-gReocY9CNRGHVeZ0AGwQpg-1; Tue, 23 Jun 2020 09:28:39 -0400
+X-MC-Unique: gReocY9CNRGHVeZ0AGwQpg-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E3131805EE3;
+ Tue, 23 Jun 2020 13:28:34 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A005219934;
+ Tue, 23 Jun 2020 13:28:33 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 157E2113846D; Tue, 23 Jun 2020 15:28:32 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v5 1/9] hw/i2c/core: Add i2c_try_create_slave() and
+ i2c_realize_and_unref()
+References: <20200622183428.12255-1-f4bug@amsat.org>
+ <20200622183428.12255-2-f4bug@amsat.org>
+ <875zbimcs6.fsf@dusky.pond.sub.org>
+ <fbecc71b-3f1d-0c6f-83eb-e10b408c85e2@amsat.org>
+Date: Tue, 23 Jun 2020 15:28:32 +0200
+In-Reply-To: <fbecc71b-3f1d-0c6f-83eb-e10b408c85e2@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 23 Jun 2020 13:04:07
+ +0200")
+Message-ID: <87wo3xhpxb.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <ff9aec64-419c-330c-bbd3-3b04be70eadd@kaod.org>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 01:53:54
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,47 +121,23 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Corey Minyard <cminyard@mvista.com>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SBSXKbjQcbdQ
+X-TUID: KGUf6Y184hKF
 
-On 6/23/20 10:14 AM, Cédric Le Goater wrote:
-> On 6/23/20 9:27 AM, Philippe Mathieu-Daudé wrote:
->> This series add trace events to better display GPIO changes.
->> We'll continue in the following series by connecting LEDs to
->> these GPIOs.
->>
->> This helps me to work on a generic LED device, see:
->> https://www.mail-archive.com/qemu-devel@nongnu.org/msg711917.html
-> 
-> 
-> Tested-by: Cédric Le Goater <clg@kaod.org>
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-Thanks :)
+> On 6/23/20 10:01 AM, Markus Armbruster wrote:
+[...]
+>> Ideally with my naming suggestions considered:
+>> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>
+> If you don't mind, as this series is already fully reviewed,
+> I'll correct/improve on top of it.
 
-Note to the maintainer, this series is now fully reviewed/tested.
+Up to you!
 
->>
->> Based-on: <20200623072132.2868-1-f4bug@amsat.org>
->>
->> Philippe Mathieu-Daudé (9):
->>   hw/i2c/core: Add i2c_try_create_slave() and i2c_realize_and_unref()
->>   hw/misc/pca9552: Rename 'nr_leds' as 'pin_count'
->>   hw/misc/pca9552: Rename generic code as pca955x
->>   hw/misc/pca9552: Add generic PCA955xClass, parent of TYPE_PCA9552
->>   hw/misc/pca9552: Add a 'description' property for debugging purpose
->>   hw/misc/pca9552: Trace GPIO High/Low events
->>   hw/arm/aspeed: Describe each PCA9552 device
->>   hw/misc/pca9552: Trace GPIO change events
->>   hw/misc/pca9552: Model qdev output GPIOs
->>
->>  include/hw/i2c/i2c.h      |   2 +
->>  include/hw/misc/pca9552.h |  16 +--
->>  hw/arm/aspeed.c           |  13 ++-
->>  hw/i2c/core.c             |  18 +++-
->>  hw/misc/pca9552.c         | 216 ++++++++++++++++++++++++++++----------
->>  hw/misc/trace-events      |   4 +
->>  6 files changed, 202 insertions(+), 67 deletions(-)

@@ -1,96 +1,96 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3867930lfm;
-        Tue, 23 Jun 2020 00:23:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCSus/Ww4mIkenvgYf1zDRk3ureO0J7wcb5WnDhbRtO+bLfcmXal286KNS2/j0SiK4nmin
-X-Received: by 2002:a25:694d:: with SMTP id e74mr34129145ybc.195.1592897012278;
-        Tue, 23 Jun 2020 00:23:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592897012; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3869965lfm;
+        Tue, 23 Jun 2020 00:27:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzegSGRDOz5lXy6jDBdbAfYAfwpScSfkDvEH8/K05jKPbb1OzjjKBIXUaQjQE43lO7dI37b
+X-Received: by 2002:a25:ef42:: with SMTP id w2mr36108024ybm.50.1592897261503;
+        Tue, 23 Jun 2020 00:27:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592897261; cv=none;
         d=google.com; s=arc-20160816;
-        b=wW3eQcu+2OINEY5HVJXv/otQh9F5LQrBB3m/oq6UDlHsTeZb5Kt1Pw282Dfr9B+TK0
-         TSuoGMqR92qMZm6/wR/lQ3V++otn9QuYDTIClcg2xbpnwVITFxWA2gi3mYsqJjBBLaKm
-         ptP8WZS3EBYifhkZsFUWrRPlG66yYQrICxD4onjKsBiTQO6e5j9Q8viWiJLJHhsNXixO
-         T2ypjPNscgv97nJlfWj3eM9jZq0VSDqQ/xwlIRiz+4PxdAln2cbQYttKaFRzvk6z9njD
-         7Bm2Zmg6kTOrbnETLyIgKHFB+fHsXLfHAtCNJMLWqKuf6XKIHjzq0+NrYKc+qD1mC7FQ
-         b95A==
+        b=Za/ndvcFbqpTbLyXLqC4qBF2DAMok3lg6m5c2u/0GamDLYRpRWztV8+OsP5Lhp6Tzw
+         Tj+Tk74EdLh27u+mQAc8RKu9bNiaVMdiY2gwLaSmt0beQ99lxnJsvR896bXeKi0AYRRO
+         u4eb4WpL/46N5odC4XsB/ywqWdVIqCmGMrUG59q6bX6gFzWGU/Nf7GnW3TPZVa4pJkfu
+         /yGA367z7hLJgqRt6VPPY0TVL+kyhOE3F39gOi32D56wkcy2ualWqR/SIYKIq4TTVuIr
+         q6vxxUPD8OqwH4IU9X6YbHvpCMpTsBMIOB9zV8bGvjLrn2xT6M9sHOHsw0xLZ1zG2dYD
+         ZY6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ZzgsyFKQ+0jPZU1EMlN0VKvlb6aohKF8k/McGbTdz6k=;
-        b=YsFlQ25w9qN0wkHVTzvecqpUj0JyCY2CbifXWzgWlfdyAIC7jsaqSFEmc/Ol3f6+B9
-         DYvVkGtr4aZ14Y3CHP/ENPpmUqdPZ0bMFovMo8rvAitw5rWulk+xSIMOWTZFkLY1HcKA
-         n13B/H4a3ryIsqzHTJ3okdNGGwJoKH4lgy7WBycQa+uPOO3+VMqkzYrzsAlGkfCbmgsu
-         U1ozq4czHb9g/vG/st3f6pPctNT65BDJMEVG2efPB2pXdBh9KxnO1Y0zage/Mp61oT+x
-         byiP6/drn7ISvA5odaapCNlIh/6/8lbtWqnd2VjzG2StA1bQ5BLRUGuuDvjgbZ8mSLL1
-         WiDQ==
+        bh=Sd994PF98g37kBZeJeMNMVNRQ9Le/d7u2/DGlesu4Nw=;
+        b=idUqt5FfMQhn8vE5NTEJXj/Xr3CjpRryGxzQl0k87lSrcw0hbDppuwJD7+ipTJvYSY
+         0idPWxt+ddPuWKVFvg5p7aRDq739R2XisdFPrsKXJdAPalapziCOu5Y4mxMLfFh/w6l1
+         fgZFTIU6qkY4guw4lJ0tBd1FuRdPpZVzmcOYKJaZS22A0liUZ+JuO0Msm0bqyJ0Pvx01
+         lb3qQaceSBtgMjo2bgUTpdqB6sp10X9Z9tnCqUvBgJATg/QHPlg2VrgfH6AFTeQQBJZE
+         iMA6AgMA3XpxSPAHNRWRFs64QTSwvOipbhfNApd8I1+KwnBYv2bhfkLMVTqh6I+MRW7M
+         9Qlg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c9oXLHvC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ffm6A4U6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a17si5474425ybc.326.2020.06.23.00.23.32
+        by mx.google.com with ESMTPS id p1si14910932ybm.466.2020.06.23.00.27.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 00:23:32 -0700 (PDT)
+        Tue, 23 Jun 2020 00:27:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c9oXLHvC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ffm6A4U6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:58362 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38434 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jndHH-0002yT-Kz
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 03:23:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60932)
+	id 1jndLI-00077Y-T4
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 03:27:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34580)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jndFV-0007eL-V4; Tue, 23 Jun 2020 03:21:41 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:52183)
+ id 1jndL9-000757-AC; Tue, 23 Jun 2020 03:27:31 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:34617)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jndFU-0003FN-Cm; Tue, 23 Jun 2020 03:21:41 -0400
-Received: by mail-wm1-x341.google.com with SMTP id 22so1090837wmg.1;
- Tue, 23 Jun 2020 00:21:39 -0700 (PDT)
+ id 1jndL7-0004yn-Ko; Tue, 23 Jun 2020 03:27:31 -0400
+Received: by mail-wm1-x341.google.com with SMTP id u26so1570588wmn.1;
+ Tue, 23 Jun 2020 00:27:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ZzgsyFKQ+0jPZU1EMlN0VKvlb6aohKF8k/McGbTdz6k=;
- b=c9oXLHvCoSj113SCvh5uXN7SSau0tvSh07arZdET1KzoCQbd2YzZhIxFT08WYYeGQV
- +OfHKjt5FDQWJ4zVBm/1jyqzxBzV1HitH/1g8UM+wbIHtOb2WnHo32t9e4dh/o60I83F
- R4lWMzoLFbEtCdwkLjle7jUa+zbjCDXsxI6Y/20vqHumm3ecc6QGEajEQy3eaxmzSPSz
- WU10r5sahqBFWlgS+6sYtEsyVMd/E9BoItLiS0yz2yqgYgMRxqLFm8CKnwg2G8MnK/fG
- TAv4sbNpsMAMwMSRV6ULP20Kh16sq12ki+giB/wlqqQsZIUYZee55ieGqyJS/wnwx8mB
- IzvA==
+ bh=Sd994PF98g37kBZeJeMNMVNRQ9Le/d7u2/DGlesu4Nw=;
+ b=Ffm6A4U6hXk+hbMR2gCs4/ho/eF/qxeDDoMM9JgMiTUhE1mda8ObSB2V5VcSKazH6c
+ noXZJS7QWWG42LhRQGPjb7n6XAgmvixg2vJ07FuQeRHQFgoBHANl2bpxl86mN9g9iRM9
+ hNwftjgq5m4d7zewr1gGAEqD4Gf0cwYvzeNQURzq4jGolhz737v9jo+lTb8D57wDGsnG
+ KOjrJ3aFAON9cko+hqQYVEbm44uQLczBVH/K+Yl4wlem62mE/MIdKgg96BWS921iS31g
+ tlTGUm2n+FcGnUetA5fZZs/sp2ORUY86w2GvqvcTlkyXNNigtrYLoTnKwOOJjAiMp8xB
+ Mr5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=ZzgsyFKQ+0jPZU1EMlN0VKvlb6aohKF8k/McGbTdz6k=;
- b=ogANjFFWBNwaq+mlVzNYxb8S/If0ws1Eb1aSKqUp5KjSWCxORTF6eTctezwIZBRqy7
- j5XjIGWexFSS1JX5Dw645WUY8t8PVsiCDnhz2NC2BATK28xxs5XjmttyizKJSxjg5ns/
- MdrrGOzxM7NB3xmF0cLJ3bIzBAD4B/qAjNVOG2BGLGCyl1KASCxs03+nb0DAORccgPwW
- BrdN2dfboPVUeVF3Unt1EvQFSq+IpoKMLsVI4XinYdauJCQHwp0ewk3qDRmTHGofSR3m
- jNfqe6VnJ3mhPViMLA3zVlsBHIuBPuAQwGiWhb9tLS2+reP/8qtokaAfMbexC5UXfOWE
- zjtg==
-X-Gm-Message-State: AOAM531ckaQKyNscWaDSItGIQwWkBtPvmke3bASV/9X8Z6EzsJcBbYby
- gvuyV8QOVAILhg792vtfWDrn2BSL
-X-Received: by 2002:a1c:9687:: with SMTP id y129mr22520132wmd.30.1592896898479; 
- Tue, 23 Jun 2020 00:21:38 -0700 (PDT)
+ bh=Sd994PF98g37kBZeJeMNMVNRQ9Le/d7u2/DGlesu4Nw=;
+ b=j/NDJMeixNaf2J1WioeTj/YjUYRnYziduNcfiRJBaxHTRzpPEfUM5QHL07vXMRxUCc
+ LgGmYrWYPiOEPOcted50ep1lAakGhNRT/qZcAIvKIEL7cOu329w706RuFsEqxAOZd+Cb
+ TgQoM4W2r2V6J7pZxOigb6vODzgvqMi3bcAriWg4cfkgycd+FhHqF4VSkeSFqBAm1Oy2
+ s1YbyGzbi4ZKKEu/E5Ih1KN4TQomzM1iB8ztUdAZh1arf4Ej9oSy2NUo8GAHLwLhc+0J
+ +yZ8/laJIxjV68YBaKCWxRJcdeyHZkFRfujsh0LjAKZgraNW07yXIhi8lvEa1BTzKLfi
+ bsfQ==
+X-Gm-Message-State: AOAM530+2w4FOk0xXekH7igyFezHNhctv5127uY+a01Lem4U2KCqZNg8
+ GFtzxuKZ5vHW4/m9ARg2JlVnzV7P
+X-Received: by 2002:a7b:c5c1:: with SMTP id n1mr21827141wmk.21.1592897247888; 
+ Tue, 23 Jun 2020 00:27:27 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id x13sm21877236wre.83.2020.06.23.00.21.37
+ by smtp.gmail.com with ESMTPSA id l14sm4200059wrn.18.2020.06.23.00.27.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jun 2020 00:21:37 -0700 (PDT)
+ Tue, 23 Jun 2020 00:27:27 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 3/3] hw/arm/aspeed: QOM'ify AspeedMachineState
-Date: Tue, 23 Jun 2020 09:21:32 +0200
-Message-Id: <20200623072132.2868-4-f4bug@amsat.org>
+Subject: [PATCH v6 2/9] hw/misc/pca9552: Rename 'nr_leds' as 'pin_count'
+Date: Tue, 23 Jun 2020 09:27:16 +0200
+Message-Id: <20200623072723.6324-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200623072132.2868-1-f4bug@amsat.org>
-References: <20200623072132.2868-1-f4bug@amsat.org>
+In-Reply-To: <20200623072723.6324-1-f4bug@amsat.org>
+References: <20200623072723.6324-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
@@ -118,92 +118,82 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hWF6jlC+kIOp
+X-TUID: jQnfZMYLJxWr
 
-AspeedMachineState seems crippled. We use incorrectly 2
-different structures to do the same thing. Merge them
-altogether:
-- Move AspeedMachine fields to AspeedMachineState
-- AspeedMachineState is now QOM
-- Remove unused AspeedMachine structure
+The PCA9552 device does not expose LEDs, but simple pins
+to connnect LEDs to. To be clearer with the device model,
+rename 'nr_leds' as 'pin_count'.
 
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/arm/aspeed.h |  8 +-------
- hw/arm/aspeed.c         | 11 +++++++----
- 2 files changed, 8 insertions(+), 11 deletions(-)
+ include/hw/misc/pca9552.h |  2 +-
+ hw/misc/pca9552.c         | 10 +++++-----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index 5114ba0bd4..09da9d9acc 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -15,13 +15,7 @@ typedef struct AspeedMachineState AspeedMachineState;
+diff --git a/include/hw/misc/pca9552.h b/include/hw/misc/pca9552.h
+index ebb43c63fe..bc5ed31087 100644
+--- a/include/hw/misc/pca9552.h
++++ b/include/hw/misc/pca9552.h
+@@ -26,7 +26,7 @@ typedef struct PCA9552State {
  
- #define TYPE_ASPEED_MACHINE       MACHINE_TYPE_NAME("aspeed")
- #define ASPEED_MACHINE(obj) \
--    OBJECT_CHECK(AspeedMachine, (obj), TYPE_ASPEED_MACHINE)
--
--typedef struct AspeedMachine {
--    MachineState parent_obj;
--
--    bool mmio_exec;
--} AspeedMachine;
-+    OBJECT_CHECK(AspeedMachineState, (obj), TYPE_ASPEED_MACHINE)
+     uint8_t regs[PCA9552_NR_REGS];
+     uint8_t max_reg;
+-    uint8_t nr_leds;
++    uint8_t pin_count;
+ } PCA9552State;
  
- #define ASPEED_MAC0_ON   (1 << 0)
- #define ASPEED_MAC1_ON   (1 << 1)
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 680345beca..ccf127b328 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -33,9 +33,14 @@ static struct arm_boot_info aspeed_board_binfo = {
- };
- 
- struct AspeedMachineState {
-+    /* Private */
-+    MachineState parent_obj;
-+    /* Public */
-+
-     AspeedSoCState soc;
-     MemoryRegion ram_container;
-     MemoryRegion max_ram;
-+    bool mmio_exec;
- };
- 
- /* Palmetto hardware value: 0x120CE416 */
-@@ -253,7 +258,7 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo)
- 
- static void aspeed_machine_init(MachineState *machine)
+ #endif
+diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
+index cac729e35a..81da757a7e 100644
+--- a/hw/misc/pca9552.c
++++ b/hw/misc/pca9552.c
+@@ -37,7 +37,7 @@ static void pca9552_update_pin_input(PCA9552State *s)
  {
--    AspeedMachineState *bmc;
-+    AspeedMachineState *bmc = ASPEED_MACHINE(machine);
-     AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
-     AspeedSoCClass *sc;
-     DriveInfo *drive0 = drive_get(IF_MTD, 0, 0);
-@@ -261,8 +266,6 @@ static void aspeed_machine_init(MachineState *machine)
      int i;
-     NICInfo *nd = &nd_table[0];
  
--    bmc = g_new0(AspeedMachineState, 1);
--
-     memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container",
-                        4 * GiB);
-     memory_region_add_subregion(&bmc->ram_container, 0, machine->ram);
-@@ -751,7 +754,7 @@ static const TypeInfo aspeed_machine_types[] = {
-     }, {
-         .name          = TYPE_ASPEED_MACHINE,
-         .parent        = TYPE_MACHINE,
--        .instance_size = sizeof(AspeedMachine),
-+        .instance_size = sizeof(AspeedMachineState),
-         .instance_init = aspeed_machine_instance_init,
-         .class_size    = sizeof(AspeedMachineClass),
-         .class_init    = aspeed_machine_class_init,
+-    for (i = 0; i < s->nr_leds; i++) {
++    for (i = 0; i < s->pin_count; i++) {
+         uint8_t input_reg = PCA9552_INPUT0 + (i / 8);
+         uint8_t input_shift = (i % 8);
+         uint8_t config = pca9552_pin_get_config(s, i);
+@@ -185,7 +185,7 @@ static void pca9552_get_led(Object *obj, Visitor *v, const char *name,
+         error_setg(errp, "%s: error reading %s", __func__, name);
+         return;
+     }
+-    if (led < 0 || led > s->nr_leds) {
++    if (led < 0 || led > s->pin_count) {
+         error_setg(errp, "%s invalid led %s", __func__, name);
+         return;
+     }
+@@ -228,7 +228,7 @@ static void pca9552_set_led(Object *obj, Visitor *v, const char *name,
+         error_setg(errp, "%s: error reading %s", __func__, name);
+         return;
+     }
+-    if (led < 0 || led > s->nr_leds) {
++    if (led < 0 || led > s->pin_count) {
+         error_setg(errp, "%s invalid led %s", __func__, name);
+         return;
+     }
+@@ -291,9 +291,9 @@ static void pca9552_initfn(Object *obj)
+      * PCA955X device
+      */
+     s->max_reg = PCA9552_LS3;
+-    s->nr_leds = 16;
++    s->pin_count = 16;
+ 
+-    for (led = 0; led < s->nr_leds; led++) {
++    for (led = 0; led < s->pin_count; led++) {
+         char *name;
+ 
+         name = g_strdup_printf("led%d", led);
 -- 
 2.21.3
 

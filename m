@@ -1,103 +1,102 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4351189lfm;
-        Tue, 23 Jun 2020 12:54:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxnDyQf0FeoJ0zkgrTNp3bXOJGnmjPN4FkBgYXjO9DlrtfBhF4uIfa3RjBif8uwXXR8dCDT
-X-Received: by 2002:a25:3a07:: with SMTP id h7mr1873148yba.432.1592942058373;
-        Tue, 23 Jun 2020 12:54:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592942058; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4352701lfm;
+        Tue, 23 Jun 2020 12:56:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxakGth52Z/C7xGiLyWQTYWQVlC2RHbdO2yA6BptgetfVubGBm0mF/7ygpFPfxPnWTgllV4
+X-Received: by 2002:a25:3755:: with SMTP id e82mr35570755yba.99.1592942174818;
+        Tue, 23 Jun 2020 12:56:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592942174; cv=none;
         d=google.com; s=arc-20160816;
-        b=kLoaAbLwpRZ2srKQOZ43TchRDoyUBWAn12nXiGqnV6L8kvfPz9Se7iRk8dpoaqivr+
-         ilWILaEeevKOPO/k5Mpq/TN5XbH8qJizdW7aMBJBXRcqQHz9ghDbRB5jppdRsvur18tx
-         iOJmF9xQAP12H10Vab3AUMXz1wJMgXqxh5a5FXfDsO2hnK8rsP+/mBadcSa3PBmaF7WC
-         wU8HpLHZBpzDTm5VZqtF9vEWC/kViE7BFVWIU3F350KCzrIXEpqmzKWSHRBQdZ2fk2sc
-         +JTiAThru/4/FpSlQka0CCA9ZmdV++ddNOZmseBbOL0uyDUEx9krvHKo9MOpBs+6y4Tp
-         Wcjw==
+        b=I/c4vKjIjuzYOu06QAAmwqMlZRTopyiUGMMK46L1xm0MF5kocVsSl2Ly5cvX2Ieu0G
+         QMfwX5LG7IMQ+rVRxXLrmpAhn0WXlXhH3Y+Ug2dsg7+Lbwg3NyAn5qQPs5ljAzkkfqos
+         GXtihZuNmQN1dMTZ50PLmfNzapCkv+m50vqT04tapbg3W7JZba1Ql3UnnL7eS1qHe4zp
+         QBpQG9AB4KS9oJcLQ7HulZMlqAKuDevjSbuW332I0RsRiN4pfXnNUKio7FiZk8XlvjmB
+         EkgUb5ikLgIxsdbhyWlf++dEPxejsQhjDEN1a/T5NgupHSXfBtlyzpzrqBLgiywO7z2h
+         q9+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=8SoCe9AuCUcKtfQ8ICpVOHtRn9cbfe46b8zjqnRa9W4=;
-        b=ITrhhTpaAOp1OTTpmrvNerI9SA5q6ZxUQzuxauyNz3F+kNmprCHUJYbgRvfhdgNXV+
-         4JF57hbhyqyhpHMco1IdcxlCxc4AdllrN1HZLfAvBkhAjhEsdRLO0wkhZQbNKhP9y8/W
-         xhifS5RCtUxc51oKIu4S+OsLHRrkCwZJ08txjEAoPQBJMbD7Vyv1RJ2mPxSC2fVd2q8R
-         Ml/qdZ1nARN2K+yOkj44iMXj3u9pEAy9pKqokjtKOxKlg24O/dT65gKri8p11Cf5T4+t
-         ce9jsHQaXpfdiv3wnvLUFnTVPg+Sohqxsr4SSXVDpR2i1nj9Iw4WF4h1o0aP9RtwQ+k+
-         hjUQ==
+        bh=nL2kyRVH8ygeGDwLvE8wrTxZ759kebOYodYM0UV+KNw=;
+        b=xAUsddUWkI22HBEkN41JOuVxPElwYaM0dgP33iILe7V8T1ig/dHSl5aTXKesmYOJMZ
+         SuEn8Ik5e+aKz+ruQTpvJzhGKojXOKa5vfJeZ3gavXKpJHFfq/Tw23W52PwiIpWlvH+D
+         ANNLrmjvKcd1Xqkhwg6E4Fj9Ckxif7ISjIJYWIcbqFU4Ai55e666bfAGl5i5ywzZ2ymp
+         1xq/cHb7NusU8+f9/kZSs39EGBxMD1aHZgObrYhAUY0YSDSLKDzmsbzmF9NAAv6m8CTt
+         g4RSdSsp+jetYbW6JRzmJSzm66EeIgq68+guMuEnuvSFQO9WPo5gJ8GGqwhTr3iFCeXE
+         H7lg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iqblgLlq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=aAzfWpsK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j190si9178022ybg.208.2020.06.23.12.54.18
+        by mx.google.com with ESMTPS id k74si17261389ybk.384.2020.06.23.12.56.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 12:54:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 Jun 2020 12:56:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iqblgLlq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=aAzfWpsK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59898 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40918 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnozp-00020t-JM
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 15:54:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43100)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jnp1i-0006Dg-2m
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 15:56:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42378)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jnok9-0005SZ-Hc
- for qemu-devel@nongnu.org; Tue, 23 Jun 2020 15:38:05 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630]:35388)
+ id 1jnoji-0004N7-Jc
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 15:37:38 -0400
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a]:34867)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jnok2-0005w5-DZ
- for qemu-devel@nongnu.org; Tue, 23 Jun 2020 15:38:05 -0400
-Received: by mail-pl1-x630.google.com with SMTP id k1so9547651pls.2
- for <qemu-devel@nongnu.org>; Tue, 23 Jun 2020 12:37:57 -0700 (PDT)
+ id 1jnojf-0005mi-Rq
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 15:37:38 -0400
+Received: by mail-pg1-x52a.google.com with SMTP id f3so27878pgr.2
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2020 12:37:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=8SoCe9AuCUcKtfQ8ICpVOHtRn9cbfe46b8zjqnRa9W4=;
- b=iqblgLlqDa27N6Zu7DbDC85EtHsTYtxbYiOvj5KpRxazgECQs0hhbv3qg4alZlfVSU
- rjR9nBAThw1lbeFxbEg+fCUoZNwOra4pzyxvwbDhy8sfvF4EgSWKjhQEVs7Za4pZzg+V
- u+i9VBNhxKvsjTrimTMxsk2tFkpvIoDG4LUqDygYGFLRGAOXIog60J34ujKdJANHivdo
- O7/hJHJFlrXyP3/ba7t4EJLV8R2Ulev7NCeco1WyHaJzHl1YrLHEgn8NnN+8C3Kqj6l3
- yAAcbn10Uc2xRoxXXZAASJ3iAyCHyoKPbpudlnlgKvmjEVMmXdbovnLRN86l0WDDm2OY
- F/cw==
+ bh=nL2kyRVH8ygeGDwLvE8wrTxZ759kebOYodYM0UV+KNw=;
+ b=aAzfWpsKyzzrBdrHtKmHXhtKqZB7ZqY2RVXulbu+Ni+U4nDLx3ZowUPghysfSe5hbY
+ K7j8xy7BwOM7bnl+3yxMIYeW2liL65DKMqsercB2SvJLBLmU/7/nmvYnMvS//7fPnr9r
+ +aKoH0HMk3i/12Vm9zYU4pgqjzJTzNvYUA7kTOSxuoD/eI8dxReHY7mqR/wvBxjfLOKm
+ IxbgEUlkElMsNLxhM8YJPtjWZ0Q7ttMrfTwqHEN/sSc8re6qH0fLH0YJ74G6hlOxVCQM
+ GOdMcCpSYzmZGTIAuWjSCrrf0FuFgb+Jm2yB2OBKDje4KV2bzDi6LRQ5rH6goRVLz4B8
+ 9liA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=8SoCe9AuCUcKtfQ8ICpVOHtRn9cbfe46b8zjqnRa9W4=;
- b=Pmdel+hxP7g4o/eFjWk1VsKKz2SKCpXvQmVFYix8lLRXlGMOVn8NbOMYmr7jkWPa8v
- m7h72eKp6XxrBWntH4VNstFd/bOzvSIy5mLbW9D5kYY297T+ipns4J2sxlmLISvSjCGj
- n3Okx72FPbKbJGirt+JTSnk+E5Mr9maVY3ovoLp7lixPdO+6On/8Yhy0aqYjbBZF3lTW
- yAIb3hRnsecQmdaq3BfIszP7rBnPTfiVesYTS9w1sUwOkckRiFN9GeqQVJ11CucK6AdH
- YzOU/a1a2i67glMUVrFXYsfCYKNMVfTSOKOliPMGXrjX4zIP39wEO8wN8qF1wvawzQ0g
- /njg==
-X-Gm-Message-State: AOAM532hhzM7fl0h6zTq5rVKGKunmoi8cJpqLV39Q2cv6v623oUzIPbg
- E6MnAuY47hvMIrC5pSYqoW2Ipn9kdjc=
-X-Received: by 2002:a17:90a:f282:: with SMTP id
- fs2mr2360295pjb.132.1592941076571; 
- Tue, 23 Jun 2020 12:37:56 -0700 (PDT)
+ bh=nL2kyRVH8ygeGDwLvE8wrTxZ759kebOYodYM0UV+KNw=;
+ b=gVFxxVigXwoERIc3pYL0yVHAM2JxEV06nvTmm5UvgHZ1u4TgZU9CGf4LOBdGMvCQ8y
+ w69rz2RIYPchJD+Qa1iuwfUaFGv7X+Zc6pGcIFsY+P6HOOv7jH4q2z/P+qtAflvVeE8f
+ tmA1uqwqkvT+NS4sZVYCcqRYg1Phf6S+lRScoCQv7IxXUdtmZEp69SJtBhUaFPh9QkiC
+ 8z7TNOUKOMQ3ZOmFcFCSXXw3Pud8AB6KYES9Ei7mYu/VqptzZ/kmM50/ZMiR4LgnentZ
+ bOnyNYpw2ms7bQAN/kGanXGOBihInnGkG1CJWmBiVncH03LGu/edqoLuteuXQcXDuKdz
+ tyNg==
+X-Gm-Message-State: AOAM533UOh5QJXpDrFSWjPnicAIQ8c69j/L8VI/h6vkIPYTWDZ3u4qTw
+ OYCAVGj9EcmYL8BNTv/73/NyVQ==
+X-Received: by 2002:a63:925a:: with SMTP id s26mr18491757pgn.21.1592941054400; 
+ Tue, 23 Jun 2020 12:37:34 -0700 (PDT)
 Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
  [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id p12sm17927642pfq.69.2020.06.23.12.37.55
+ by smtp.gmail.com with ESMTPSA id p12sm17927642pfq.69.2020.06.23.12.37.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jun 2020 12:37:55 -0700 (PDT)
+ Tue, 23 Jun 2020 12:37:33 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v8 41/45] target/arm: Always pass cacheattr to get_phys_addr
-Date: Tue, 23 Jun 2020 12:36:54 -0700
-Message-Id: <20200623193658.623279-42-richard.henderson@linaro.org>
+Subject: [PATCH v8 24/45] target/arm: Add gen_mte_checkN
+Date: Tue, 23 Jun 2020 12:36:37 -0700
+Message-Id: <20200623193658.623279-25-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200623193658.623279-1-richard.henderson@linaro.org>
 References: <20200623193658.623279-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -105,235 +104,223 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, david.spickett@linaro.org,
  steplong@quicinc.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Cbqpq9EBuEW3
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mvE6oiyxx3X8
 
-We need to check the memattr of a page in order to determine
-whether it is Tagged for MTE.  Between Stage1 and Stage2,
-this becomes simpler if we always collect this data, instead
-of occasionally being presented with NULL.
+Replace existing uses of check_data_tbi in translate-a64.c that
+perform multiple logical memory access.  Leave the helper blank
+for now to reduce the patch size.
 
-Use the nonnull attribute to allow the compiler to check that
-all pointer arguments are non-null.
-
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h  |  3 ++-
- target/arm/helper.c     | 60 ++++++++++++++++++++---------------------
- target/arm/m_helper.c   | 11 +++++---
- target/arm/tlb_helper.c |  4 ++-
- 4 files changed, 42 insertions(+), 36 deletions(-)
+ target/arm/helper-a64.h    |  1 +
+ target/arm/translate-a64.h |  2 ++
+ target/arm/mte_helper.c    |  8 +++++
+ target/arm/translate-a64.c | 71 +++++++++++++++++++++++++++++---------
+ 4 files changed, 66 insertions(+), 16 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 3306c4f829..ae99725d2b 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1294,7 +1294,8 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
-                    MMUAccessType access_type, ARMMMUIdx mmu_idx,
-                    hwaddr *phys_ptr, MemTxAttrs *attrs, int *prot,
-                    target_ulong *page_size,
--                   ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs);
-+                   ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs)
-+    __attribute__((nonnull));
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index 2faa49d0a3..005af678c7 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -105,6 +105,7 @@ DEF_HELPER_FLAGS_2(xpaci, TCG_CALL_NO_RWG_SE, i64, env, i64)
+ DEF_HELPER_FLAGS_2(xpacd, TCG_CALL_NO_RWG_SE, i64, env, i64)
  
- void arm_log_exception(int idx);
+ DEF_HELPER_FLAGS_3(mte_check1, TCG_CALL_NO_WG, i64, env, i32, i64)
++DEF_HELPER_FLAGS_3(mte_checkN, TCG_CALL_NO_WG, i64, env, i32, i64)
+ DEF_HELPER_FLAGS_3(irg, TCG_CALL_NO_RWG, i64, env, i64, i64)
+ DEF_HELPER_FLAGS_4(addsubg, TCG_CALL_NO_RWG_SE, i64, env, i64, s32, i32)
+ DEF_HELPER_FLAGS_3(ldg, TCG_CALL_NO_WG, i64, env, i64, i64)
+diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
+index daab6a9666..781c441399 100644
+--- a/target/arm/translate-a64.h
++++ b/target/arm/translate-a64.h
+@@ -42,6 +42,8 @@ bool logic_imm_decode_wmask(uint64_t *result, unsigned int immn,
+ bool sve_access_check(DisasContext *s);
+ TCGv_i64 gen_mte_check1(DisasContext *s, TCGv_i64 addr, bool is_write,
+                         bool tag_checked, int log2_size);
++TCGv_i64 gen_mte_checkN(DisasContext *s, TCGv_i64 addr, bool is_write,
++                        bool tag_checked, int count, int log2_esize);
  
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index d220612a20..2072db2f92 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -44,7 +44,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-                                bool s1_is_el0,
-                                hwaddr *phys_ptr, MemTxAttrs *txattrs, int *prot,
-                                target_ulong *page_size_ptr,
--                               ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs);
-+                               ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs)
-+    __attribute__((nonnull));
- #endif
+ /* We should have at some point before trying to access an FP register
+  * done the necessary access check, so assert that
+diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+index ec12768dfc..907a12b366 100644
+--- a/target/arm/mte_helper.c
++++ b/target/arm/mte_helper.c
+@@ -366,3 +366,11 @@ uint64_t HELPER(mte_check1)(CPUARMState *env, uint32_t desc, uint64_t ptr)
+ {
+     return ptr;
+ }
++
++/*
++ * Perform an MTE checked access for multiple logical accesses.
++ */
++uint64_t HELPER(mte_checkN)(CPUARMState *env, uint32_t desc, uint64_t ptr)
++{
++    return ptr;
++}
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 0720c39e89..5d62aff5d6 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -284,6 +284,34 @@ TCGv_i64 gen_mte_check1(DisasContext *s, TCGv_i64 addr, bool is_write,
+                                  false, get_mem_index(s));
+ }
  
- static void switch_mode(CPUARMState *env, int mode);
-@@ -11101,19 +11102,16 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-         arm_tlb_bti_gp(txattrs) = true;
++/*
++ * For MTE, check multiple logical sequential accesses.
++ */
++TCGv_i64 gen_mte_checkN(DisasContext *s, TCGv_i64 addr, bool is_write,
++                        bool tag_checked, int log2_esize, int total_size)
++{
++    if (tag_checked && s->mte_active[0] && total_size != (1 << log2_esize)) {
++        TCGv_i32 tcg_desc;
++        TCGv_i64 ret;
++        int desc = 0;
++
++        desc = FIELD_DP32(desc, MTEDESC, MIDX, get_mem_index(s));
++        desc = FIELD_DP32(desc, MTEDESC, TBI, s->tbid);
++        desc = FIELD_DP32(desc, MTEDESC, TCMA, s->tcma);
++        desc = FIELD_DP32(desc, MTEDESC, WRITE, is_write);
++        desc = FIELD_DP32(desc, MTEDESC, ESIZE, 1 << log2_esize);
++        desc = FIELD_DP32(desc, MTEDESC, TSIZE, total_size);
++        tcg_desc = tcg_const_i32(desc);
++
++        ret = new_tmp_a64(s);
++        gen_helper_mte_checkN(ret, cpu_env, tcg_desc, addr);
++        tcg_temp_free_i32(tcg_desc);
++
++        return ret;
++    }
++    return gen_mte_check1(s, addr, is_write, tag_checked, log2_esize);
++}
++
+ typedef struct DisasCompare64 {
+     TCGCond cond;
+     TCGv_i64 value;
+@@ -2848,7 +2876,10 @@ static void disas_ldst_pair(DisasContext *s, uint32_t insn)
+         }
      }
  
--    if (cacheattrs != NULL) {
--        if (mmu_idx == ARMMMUIdx_Stage2) {
--            cacheattrs->attrs = convert_stage2_attrs(env,
--                                                     extract32(attrs, 0, 4));
--        } else {
--            /* Index into MAIR registers for cache attributes */
--            uint8_t attrindx = extract32(attrs, 0, 3);
--            uint64_t mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
--            assert(attrindx <= 7);
--            cacheattrs->attrs = extract64(mair, attrindx * 8, 8);
--        }
--        cacheattrs->shareability = extract32(attrs, 6, 2);
-+    if (mmu_idx == ARMMMUIdx_Stage2) {
-+        cacheattrs->attrs = convert_stage2_attrs(env, extract32(attrs, 0, 4));
-+    } else {
-+        /* Index into MAIR registers for cache attributes */
-+        uint8_t attrindx = extract32(attrs, 0, 3);
-+        uint64_t mair = env->cp15.mair_el[regime_el(env, mmu_idx)];
-+        assert(attrindx <= 7);
-+        cacheattrs->attrs = extract64(mair, attrindx * 8, 8);
+-    clean_addr = clean_data_tbi(s, dirty_addr);
++    clean_addr = gen_mte_checkN(s, dirty_addr, !is_load,
++                                (wback || rn != 31) && !set_tag,
++                                size, 2 << size);
++
+     if (is_vector) {
+         if (is_load) {
+             do_fp_ld(s, rt, clean_addr, size);
+@@ -3514,7 +3545,7 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
+     TCGv_i64 clean_addr, tcg_rn, tcg_ebytes;
+     MemOp endian = s->be_data;
+ 
+-    int ebytes;   /* bytes per element */
++    int total;    /* total bytes */
+     int elements; /* elements per vector */
+     int rpt;    /* num iterations */
+     int selem;  /* structure elements */
+@@ -3584,19 +3615,26 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
+         endian = MO_LE;
      }
-+    cacheattrs->shareability = extract32(attrs, 6, 2);
  
-     *phys_ptr = descaddr;
-     *page_size_ptr = page_size;
-@@ -11948,28 +11946,29 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
-             ret = get_phys_addr_lpae(env, ipa, access_type, ARMMMUIdx_Stage2,
-                                      mmu_idx == ARMMMUIdx_E10_0,
-                                      phys_ptr, attrs, &s2_prot,
--                                     page_size, fi,
--                                     cacheattrs != NULL ? &cacheattrs2 : NULL);
-+                                     page_size, fi, &cacheattrs2);
-             fi->s2addr = ipa;
-             /* Combine the S1 and S2 perms.  */
-             *prot &= s2_prot;
- 
--            /* Combine the S1 and S2 cache attributes, if needed */
--            if (!ret && cacheattrs != NULL) {
--                if (env->cp15.hcr_el2 & HCR_DC) {
--                    /*
--                     * HCR.DC forces the first stage attributes to
--                     *  Normal Non-Shareable,
--                     *  Inner Write-Back Read-Allocate Write-Allocate,
--                     *  Outer Write-Back Read-Allocate Write-Allocate.
--                     */
--                    cacheattrs->attrs = 0xff;
--                    cacheattrs->shareability = 0;
--                }
--                *cacheattrs = combine_cacheattrs(*cacheattrs, cacheattrs2);
-+            /* If S2 fails, return early.  */
-+            if (ret) {
-+                return ret;
-             }
- 
--            return ret;
-+            /* Combine the S1 and S2 cache attributes. */
-+            if (env->cp15.hcr_el2 & HCR_DC) {
-+                /*
-+                 * HCR.DC forces the first stage attributes to
-+                 *  Normal Non-Shareable,
-+                 *  Inner Write-Back Read-Allocate Write-Allocate,
-+                 *  Outer Write-Back Read-Allocate Write-Allocate.
-+                 */
-+                cacheattrs->attrs = 0xff;
-+                cacheattrs->shareability = 0;
-+            }
-+            *cacheattrs = combine_cacheattrs(*cacheattrs, cacheattrs2);
-+            return 0;
-         } else {
-             /*
-              * For non-EL2 CPUs a stage1+stage2 translation is just stage 1.
-@@ -12094,11 +12093,12 @@ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
-     bool ret;
-     ARMMMUFaultInfo fi = {};
-     ARMMMUIdx mmu_idx = arm_mmu_idx(env);
-+    ARMCacheAttrs cacheattrs = {};
- 
-     *attrs = (MemTxAttrs) {};
- 
-     ret = get_phys_addr(env, addr, 0, mmu_idx, &phys_addr,
--                        attrs, &prot, &page_size, &fi, NULL);
-+                        attrs, &prot, &page_size, &fi, &cacheattrs);
- 
-     if (ret) {
-         return -1;
-diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index 5e8a795d20..036454234c 100644
---- a/target/arm/m_helper.c
-+++ b/target/arm/m_helper.c
-@@ -187,12 +187,13 @@ static bool v7m_stack_write(ARMCPU *cpu, uint32_t addr, uint32_t value,
-     hwaddr physaddr;
-     int prot;
-     ARMMMUFaultInfo fi = {};
-+    ARMCacheAttrs cacheattrs = {};
-     bool secure = mmu_idx & ARM_MMU_IDX_M_S;
-     int exc;
-     bool exc_secure;
- 
-     if (get_phys_addr(env, addr, MMU_DATA_STORE, mmu_idx, &physaddr,
--                      &attrs, &prot, &page_size, &fi, NULL)) {
-+                      &attrs, &prot, &page_size, &fi, &cacheattrs)) {
-         /* MPU/SAU lookup failed */
-         if (fi.type == ARMFault_QEMU_SFault) {
-             if (mode == STACK_LAZYFP) {
-@@ -279,13 +280,14 @@ static bool v7m_stack_read(ARMCPU *cpu, uint32_t *dest, uint32_t addr,
-     hwaddr physaddr;
-     int prot;
-     ARMMMUFaultInfo fi = {};
-+    ARMCacheAttrs cacheattrs = {};
-     bool secure = mmu_idx & ARM_MMU_IDX_M_S;
-     int exc;
-     bool exc_secure;
-     uint32_t value;
- 
-     if (get_phys_addr(env, addr, MMU_DATA_LOAD, mmu_idx, &physaddr,
--                      &attrs, &prot, &page_size, &fi, NULL)) {
-+                      &attrs, &prot, &page_size, &fi, &cacheattrs)) {
-         /* MPU/SAU lookup failed */
-         if (fi.type == ARMFault_QEMU_SFault) {
-             qemu_log_mask(CPU_LOG_INT,
-@@ -1928,6 +1930,7 @@ static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMUIdx mmu_idx,
-     V8M_SAttributes sattrs = {};
-     MemTxAttrs attrs = {};
-     ARMMMUFaultInfo fi = {};
-+    ARMCacheAttrs cacheattrs = {};
-     MemTxResult txres;
-     target_ulong page_size;
-     hwaddr physaddr;
-@@ -1945,8 +1948,8 @@ static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMUIdx mmu_idx,
-                       "...really SecureFault with SFSR.INVEP\n");
-         return false;
-     }
--    if (get_phys_addr(env, addr, MMU_INST_FETCH, mmu_idx,
--                      &physaddr, &attrs, &prot, &page_size, &fi, NULL)) {
-+    if (get_phys_addr(env, addr, MMU_INST_FETCH, mmu_idx, &physaddr,
-+                      &attrs, &prot, &page_size, &fi, &cacheattrs)) {
-         /* the MPU lookup failed */
-         env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_IACCVIOL_MASK;
-         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_MEM, env->v7m.secure);
-diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-index 522a6442a4..89d90465a3 100644
---- a/target/arm/tlb_helper.c
-+++ b/target/arm/tlb_helper.c
-@@ -166,6 +166,7 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-     int prot, ret;
-     MemTxAttrs attrs = {};
-     ARMMMUFaultInfo fi = {};
-+    ARMCacheAttrs cacheattrs = {};
- 
-     /*
-      * Walk the page table and (if the mapping exists) add the page
-@@ -175,7 +176,8 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+-    /* Consecutive little-endian elements from a single register
++    total = rpt * selem * (is_q ? 16 : 8);
++    tcg_rn = cpu_reg_sp(s, rn);
++
++    /*
++     * Issue the MTE check vs the logical repeat count, before we
++     * promote consecutive little-endian elements below.
++     */
++    clean_addr = gen_mte_checkN(s, tcg_rn, is_store, is_postidx || rn != 31,
++                                size, total);
++
++    /*
++     * Consecutive little-endian elements from a single register
+      * can be promoted to a larger little-endian operation.
       */
-     ret = get_phys_addr(&cpu->env, address, access_type,
-                         core_to_arm_mmu_idx(&cpu->env, mmu_idx),
--                        &phys_addr, &attrs, &prot, &page_size, &fi, NULL);
-+                        &phys_addr, &attrs, &prot, &page_size,
-+                        &fi, &cacheattrs);
-     if (likely(!ret)) {
-         /*
-          * Map a single [sub]page. Regions smaller than our declared
+     if (selem == 1 && endian == MO_LE) {
+         size = 3;
+     }
+-    ebytes = 1 << size;
+-    elements = (is_q ? 16 : 8) / ebytes;
+-
+-    tcg_rn = cpu_reg_sp(s, rn);
+-    clean_addr = clean_data_tbi(s, tcg_rn);
+-    tcg_ebytes = tcg_const_i64(ebytes);
++    elements = (is_q ? 16 : 8) >> size;
+ 
++    tcg_ebytes = tcg_const_i64(1 << size);
+     for (r = 0; r < rpt; r++) {
+         int e;
+         for (e = 0; e < elements; e++) {
+@@ -3630,7 +3668,7 @@ static void disas_ldst_multiple_struct(DisasContext *s, uint32_t insn)
+ 
+     if (is_postidx) {
+         if (rm == 31) {
+-            tcg_gen_addi_i64(tcg_rn, tcg_rn, rpt * elements * selem * ebytes);
++            tcg_gen_addi_i64(tcg_rn, tcg_rn, total);
+         } else {
+             tcg_gen_add_i64(tcg_rn, tcg_rn, cpu_reg(s, rm));
+         }
+@@ -3676,7 +3714,7 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
+     int selem = (extract32(opc, 0, 1) << 1 | R) + 1;
+     bool replicate = false;
+     int index = is_q << 3 | S << 2 | size;
+-    int ebytes, xs;
++    int xs, total;
+     TCGv_i64 clean_addr, tcg_rn, tcg_ebytes;
+ 
+     if (extract32(insn, 31, 1)) {
+@@ -3730,16 +3768,17 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
+         return;
+     }
+ 
+-    ebytes = 1 << scale;
+-
+     if (rn == 31) {
+         gen_check_sp_alignment(s);
+     }
+ 
++    total = selem << scale;
+     tcg_rn = cpu_reg_sp(s, rn);
+-    clean_addr = clean_data_tbi(s, tcg_rn);
+-    tcg_ebytes = tcg_const_i64(ebytes);
+ 
++    clean_addr = gen_mte_checkN(s, tcg_rn, !is_load, is_postidx || rn != 31,
++                                scale, total);
++
++    tcg_ebytes = tcg_const_i64(1 << scale);
+     for (xs = 0; xs < selem; xs++) {
+         if (replicate) {
+             /* Load and replicate to all elements */
+@@ -3766,7 +3805,7 @@ static void disas_ldst_single_struct(DisasContext *s, uint32_t insn)
+ 
+     if (is_postidx) {
+         if (rm == 31) {
+-            tcg_gen_addi_i64(tcg_rn, tcg_rn, selem * ebytes);
++            tcg_gen_addi_i64(tcg_rn, tcg_rn, total);
+         } else {
+             tcg_gen_add_i64(tcg_rn, tcg_rn, cpu_reg(s, rm));
+         }
 -- 
 2.25.1
 

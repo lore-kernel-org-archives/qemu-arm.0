@@ -1,103 +1,99 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3866960lfm;
-        Tue, 23 Jun 2020 00:21:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxijQ4yA4evKWKMTsmgm4ju1UtsJvCukDLIEhWQNRq1EnPQsBSgqenSUCTP2wqEJmNw6Zt7
-X-Received: by 2002:a25:3755:: with SMTP id e82mr31231993yba.99.1592896916798;
-        Tue, 23 Jun 2020 00:21:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592896916; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3867450lfm;
+        Tue, 23 Jun 2020 00:22:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx7xW8z5zIUI/hGXa2+3cF/LcGlspRVdtOj38isoasedQ7C3FWTbJ0BLNrWIIJmY9yRw4KD
+X-Received: by 2002:a25:7003:: with SMTP id l3mr32962490ybc.380.1592896962225;
+        Tue, 23 Jun 2020 00:22:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592896962; cv=none;
         d=google.com; s=arc-20160816;
-        b=DRvNmfRUL11jqI9SmlcR3V/aGJN83zZqc0HOs/nvKJCpvBcZVW/ntVf813dbqq9Mxm
-         xrnTXxzRDDY+yoQah5baedCi1vVSo4L0RzTNuyWSQJD7IUPs4duLRgQvpH0YTPomfz+U
-         opR5Iup/aanwnjr9yEjeEsy0zBGoroCAqRqxm61b5zza3ZNez/2He004zOR4z/ZTFT9R
-         JYBpJfa+Uc3xNvLMawY1WKDeop/DarqJWX8qnAloL6QR9uDi0RDMzbpqVWdSXEPBGkP7
-         S/cU0z+HRco2gZsBXQeKBxopvrupPWgpHdO+nz/xrWi/8A4AV/I4JFpLbhD+fTccKh2c
-         Tf+Q==
+        b=HtpQ1pQDpp99NcumAFKIdB18ZJdVvZYiJgW6pvPOiIgfHvIukjoNPLzhtuJAVM1Mj0
+         Wt9n4gGqmRtSWMLubO0gX/nMx6q2Y6CVwpwtMs3a2zZYFHtkSK+W7Jhyj8ljDD/RZrgf
+         g9A7M547SIJ3bcW8VhkyWXtrA7f1xjzIrJjcATdTk0qMTjunCNc8p7z9JRQR5/DZD/by
+         8ZcP6PQtaj9CC/Z4wnwolETrhNAOsIFrj86jZ3Nh17xANEj1j9P2V4ojUnvwzN9mbmyX
+         Jts4dRfjoH2lTloAKrcK3cqU3Fo0BFsoNmsXeBJFz1eGTtpn7/XiqS8yqqcJFM6KWE2E
+         HPCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=RMpBNhc9DgLKSQexvXdiyWq7znNYqzLKh6dEFIwERf0=;
-        b=VJpI3HW/8pdAs/GbZqfVdMamEt6xS0+aL2Ykl5K4nW1a48YrT3gu9Txgg7aJ6O89wg
-         ThQXQ4gt2GvplOsjgbH16CjySI5sOs2fAMCPFUryWxXv9eKoN7tHnxnzCRT/Jq2UcMCv
-         1ZwEZSlGJL5aJyJoVQeGIm3Nw/LoItv2qo4Jr92A9NiHiujiri7HOyiNDuhfg7VaxH/T
-         0CuwHCB+PwBjWYx+mJNM0515w1sr6AAfx8UpWa2UEnaMHfYPIPHGn8ntUxMiEeT5/+Kq
-         TCLIob+gLlI4KIWDVW17J3tmLuHmXHw9pY0EElg0ZyxOpDcPCQaUAZ748jagroBrZ2vb
-         dtLw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=PC262lDbsM+izIS4gIzIDS7tjH2mSBnNq8vbqL9Ixqk=;
+        b=DswRRVfYccsgn7SFqO8gNHBsuZ4wCto1EqpdXKJv1ReshXY6UDLpOHDrkTTrSkFzAm
+         VkOy1Be7P1XfYig1SW2do/zKJJHXHeyKG9Xs5kDq9MMGu8nmmZvOV4M2E40fd9M8HiKl
+         O0d4qw8LNTsgYumL9NawF2fO40ToVCS6Ymjz61CmWJ8QuyPE92vdSwftogJ1i80xXh+t
+         inoMoQi/5EsePllPg/KrUNLsxxAnQyy3nxukiH6WRNkkFWtGDL9Dkk5Nig+F6D2j2a9G
+         LojaFCXJEs+rWGnDPBOeZT3Hy6VCRbx5f9DVOBDiStnTX7EGpvbyiGHyAQIt1Emfbfw2
+         3SNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ibDcSytH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sq5S938J;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k74si15861726ybk.384.2020.06.23.00.21.56
+        by mx.google.com with ESMTPS id p123si15958455ybg.360.2020.06.23.00.22.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 00:21:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 Jun 2020 00:22:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ibDcSytH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sq5S938J;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:50406 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53656 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jndFk-0007we-1O
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 03:21:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60902)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jndGT-00016O-HP
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 03:22:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60886)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jndFT-0007Xu-9m; Tue, 23 Jun 2020 03:21:39 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:54798)
+ id 1jndFS-0007Vx-1k; Tue, 23 Jun 2020 03:21:38 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:32822)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jndFR-0003E6-OU; Tue, 23 Jun 2020 03:21:39 -0400
-Received: by mail-wm1-x342.google.com with SMTP id o8so199764wmh.4;
- Tue, 23 Jun 2020 00:21:37 -0700 (PDT)
+ id 1jndFQ-0003Di-FO; Tue, 23 Jun 2020 03:21:37 -0400
+Received: by mail-wr1-x432.google.com with SMTP id l11so19369537wru.0;
+ Tue, 23 Jun 2020 00:21:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=RMpBNhc9DgLKSQexvXdiyWq7znNYqzLKh6dEFIwERf0=;
- b=ibDcSytHesvRHcej6SkOn0MRHhZjM0DrQHKLAZ0pywqwKj6jUh04vK0uygLi2ZHgpe
- pZQMphv5aTWUpo2gdYGoURXyJzhg4HJ2ulGDgdFClvoFS/2+BIAgnbb+smkEh04rkqSf
- 4phyGxd9W914t5X8RBcOr17qdOcsK2OuQC5A/y55U9U8G1odoQZ8WK/k28pd7YiT7jgB
- kZmmfBDgqXBrPp9INDHOWOnIcZPsGZbKj8/+901ZS+pZKDLf93WJ+pg+PT9/l7oSiEUA
- iO2m1ubh92MOsfwvG1kfBRieB/0dWbvkLTGQSQBBRQPDf+e2U0y4Ha8tRsyh3BkXVbc9
- 2JLA==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=PC262lDbsM+izIS4gIzIDS7tjH2mSBnNq8vbqL9Ixqk=;
+ b=sq5S938JWBN4musCRKNxKfdYUuGua+ni9IENCVr5LybQAO5ZgDwqIU/cvZCpNfp7zp
+ k8jDZNRmrinRak/Q7Y/sRhchZbZ5gtyUmz/TLAR4xgrT90Tj15anWZKUdLoR8IcuMgqp
+ NCJZT9MHKptyvGv3GbfsE0TBN3r1vxRxenyLGp8is1jmFR5pPjEs6W3amUHogkv559YC
+ Ch2PB+i1lpExV2Rq6W8VhZg+r5ormpCUAVPRJfMSMbMq0kR+Yzuu+e5cCDlkcT0EKmGK
+ SZ1QBy3ooqlFYAgh9cHvC6tpg6Qu3WMKrWdVvCO2+ugBOHhWIPbl/lWw/XnsC54jD/BL
+ wxLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=RMpBNhc9DgLKSQexvXdiyWq7znNYqzLKh6dEFIwERf0=;
- b=QTQnTT1muwcGuv3G4sV2VIMplEyvxCpxQVaBULeswnO+i90WdC3z40AmWVpr39/RYX
- 3Tpuk5Vs3T1ecfcoqI0kV3chFS31+tmOvALM7pvAbSKKOmLv5HL5molpjdw9KDnKMug4
- T77xNb13PNfNyg1Pq/flyfh/ShHPW0p2RlyAfcC9X7WrYzm/xv4tfHNnYMCOMTiinDy4
- kT8Q33cGWJOhNHi8/SLQfJ/h7cCXVPE1IM0S7SnZCJloHuDdh+YRIbkvW2vH1lp9vocS
- uGu636Q0zzJU83EhUNne8t8Tz/G62HD4XWbarfDNUDVcS9WPi2FyVaLrpNKRfLPv8deK
- ZvCw==
-X-Gm-Message-State: AOAM532bcrdI0YQZi1vy82knv8nzEpuJl+qrLBBXc2ZqfA0LznM0aBnh
- vj/mscJp1/m7QqZDN8SfR4pGm5zm
-X-Received: by 2002:a1c:e914:: with SMTP id q20mr21877978wmc.145.1592896895769; 
- Tue, 23 Jun 2020 00:21:35 -0700 (PDT)
+ :mime-version:content-transfer-encoding;
+ bh=PC262lDbsM+izIS4gIzIDS7tjH2mSBnNq8vbqL9Ixqk=;
+ b=RrbmvjyrfU6mmspBzA9QUIOCXRT5UJpCRAs+1Cqi990+mwc2hcokppEfZ4z8soDXPy
+ eS7DZ9TEq47upqsaSyuE1F6ax+zTY7so/yHboX7dk5YsRqpQ5qydji4awEjPdfgurWb6
+ oQtL0bneSlrzCGYdchC6S7NpCCplu2yL925n13PojjhWjiYkpMIto+51kauU7YBPxE2O
+ CVj74LXPIHbqTdNLRKIgzFwVhf0FFcyrp7ib72aIKFdJaXe2qTUzSs61B2yQo8AJK7bU
+ RArZHemAPWpBLK6gQz0BskfoSaBKb7DbvouqgCrfNbphW4J36F0aGieroCuO1MNXeylg
+ jA8w==
+X-Gm-Message-State: AOAM532mH0Xm1QhWT4FMwjA1ulvqo5ASFMMC2s22wUhvlHtZVaf5d8+Y
+ ctnPssNYRNir6CbQcsKCyjIwB1PM
+X-Received: by 2002:adf:f707:: with SMTP id r7mr11331412wrp.70.1592896893875; 
+ Tue, 23 Jun 2020 00:21:33 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id x13sm21877236wre.83.2020.06.23.00.21.34
+ by smtp.gmail.com with ESMTPSA id x13sm21877236wre.83.2020.06.23.00.21.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jun 2020 00:21:35 -0700 (PDT)
+ Tue, 23 Jun 2020 00:21:33 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 1/3] hw/arm/aspeed: Remove extraneous MemoryRegion object
- owner
-Date: Tue, 23 Jun 2020 09:21:30 +0200
-Message-Id: <20200623072132.2868-2-f4bug@amsat.org>
+Subject: [PATCH v2 0/3] hw/arm/aspeed: Improve QOM usage
+Date: Tue, 23 Jun 2020 09:21:29 +0200
+Message-Id: <20200623072132.2868-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200623072132.2868-1-f4bug@amsat.org>
-References: <20200623072132.2868-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -108,115 +104,40 @@ X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dWGf+wQOcK0t
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7QskUjr9tAjH
 
-I'm confused by this code, 'bmc' is created as:
+Yet another cleanup.
+Simplify aspeed machine QOM usage.
 
-  bmc = g_new0(AspeedBoardState, 1);
+Since v1, addressed Cédric review comments:
+- Rename AspeedBoardState -> AspeedMachineState
 
-Then we use it as QOM owner for different MemoryRegion objects.
-But looking at memory_region_init_ram (similarly for ROM):
+Philippe Mathieu-Daudé (3):
+  hw/arm/aspeed: Remove extraneous MemoryRegion object owner
+  hw/arm/aspeed: Rename AspeedBoardState as AspeedMachineState
+  hw/arm/aspeed: QOM'ify AspeedMachineState
 
-  void memory_region_init_ram(MemoryRegion *mr,
-                              struct Object *owner,
-                              const char *name,
-                              uint64_t size,
-                              Error **errp)
-  {
-      DeviceState *owner_dev;
-      Error *err = NULL;
+ include/hw/arm/aspeed.h | 12 +++---------
+ hw/arm/aspeed.c         | 33 ++++++++++++++++++---------------
+ 2 files changed, 21 insertions(+), 24 deletions(-)
 
-      memory_region_init_ram_nomigrate(mr, owner, name, size, &err);
-      if (err) {
-          error_propagate(errp, err);
-          return;
-      }
-      /* This will assert if owner is neither NULL nor a DeviceState.
-       * We only want the owner here for the purposes of defining a
-       * unique name for migration. TODO: Ideally we should implement
-       * a naming scheme for Objects which are not DeviceStates, in
-       * which case we can relax this restriction.
-       */
-      owner_dev = DEVICE(owner);
-      vmstate_register_ram(mr, owner_dev);
-  }
-
-The expected assertion is not triggered ('bmc' is not NULL neither
-a DeviceState).
-
-'bmc' structure is defined as:
-
-  struct AspeedBoardState {
-      AspeedSoCState soc;
-      MemoryRegion ram_container;
-      MemoryRegion max_ram;
-  };
-
-What happens is when using 'OBJECT(bmc)', the QOM macros cast the
-memory pointed by bmc, which first member is 'soc', which is
-initialized ...:
-
-  object_initialize_child(OBJECT(machine), "soc",
-                          &bmc->soc, amc->soc_name);
-
-The 'soc' object is indeed a DeviceState, so the assertion passes.
-
-Since this is fragile and only happens to work by luck, remove the
-dangerous OBJECT(bmc) owner argument.
-
-Note, this probably breaks migration for this machine.
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/aspeed.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 0ad08a2b4c..31765792a2 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -329,12 +329,12 @@ static void aspeed_machine_init(MachineState *machine)
-          * needed by the flash modules of the Aspeed machines.
-          */
-         if (ASPEED_MACHINE(machine)->mmio_exec) {
--            memory_region_init_alias(boot_rom, OBJECT(bmc), "aspeed.boot_rom",
-+            memory_region_init_alias(boot_rom, NULL, "aspeed.boot_rom",
-                                      &fl->mmio, 0, fl->size);
-             memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
-                                         boot_rom);
-         } else {
--            memory_region_init_rom(boot_rom, OBJECT(bmc), "aspeed.boot_rom",
-+            memory_region_init_rom(boot_rom, NULL, "aspeed.boot_rom",
-                                    fl->size, &error_abort);
-             memory_region_add_subregion(get_system_memory(), FIRMWARE_ADDR,
-                                         boot_rom);
-@@ -345,7 +345,7 @@ static void aspeed_machine_init(MachineState *machine)
-     if (machine->kernel_filename && sc->num_cpus > 1) {
-         /* With no u-boot we must set up a boot stub for the secondary CPU */
-         MemoryRegion *smpboot = g_new(MemoryRegion, 1);
--        memory_region_init_ram(smpboot, OBJECT(bmc), "aspeed.smpboot",
-+        memory_region_init_ram(smpboot, NULL, "aspeed.smpboot",
-                                0x80, &error_abort);
-         memory_region_add_subregion(get_system_memory(),
-                                     AST_SMP_MAILBOX_BASE, smpboot);
 -- 
 2.21.3
 

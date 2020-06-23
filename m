@@ -1,175 +1,188 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3936255lfm;
-        Tue, 23 Jun 2020 02:29:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx70bntqopVNWH/uxewO4fG018kUs+sSkH79mJWWUn+Q1tYK7azi5oCj/nXZ3oke9br271g
-X-Received: by 2002:a17:906:c187:: with SMTP id g7mr19278375ejz.446.1592904598783;
-        Tue, 23 Jun 2020 02:29:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592904598; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3938514lfm;
+        Tue, 23 Jun 2020 02:33:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJydyc6BEUadTu+JapOASbTiAPg2+5ctYlynfDmM/+IIxbJagAZur/yrz+zY5ylYapxsVub7
+X-Received: by 2002:a25:e481:: with SMTP id b123mr30072244ybh.126.1592904806292;
+        Tue, 23 Jun 2020 02:33:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592904806; cv=none;
         d=google.com; s=arc-20160816;
-        b=eymJpdKa5Hro1E8K6ivaklI9puQKKu2+pHZLi6o3d5c/8ywY2h/pTDBiCMkZQjbD63
-         xzr0wAMGdl7Kux1itB08qcsNnz0fKCVUHURk0u6IJR43jT+8kFwafwOgq/66mQViJfFF
-         yIoG5htq/JpabtA2hgVIO5yDmMcgP+rzwQ1/chKorC83e59vxE3ZDob7KEy9ePwBGfaF
-         ET6vuI7sU/MRxHwvrXJ2R35UBG5iH4ZCaPNP38WVmkYng36pyJfEdow3TkBXabSlm4Hg
-         jCeMZXrGwa0hQcYLxy1qE+hARxmc2iasi1Qc+kOPOuCrlv1GehFHZH6xHm74zw87xYya
-         xKtA==
+        b=q1XGDyIwU5frXYrzsL6xnHeRZ3uA4FPsLYiC6Lp1tCxK8oCjU1p2TxRsYwdZp/sV7u
+         /FFv4CKWKuhTYplLEykBE+w899WzoiVKVYnIpj08NJj5nw5aON7LVe5TlUGWqEf+Msv6
+         4BwdpvtN0whvwoxz1KxjFX+db9cHDJc/E2uLcT2xqMkWsrcwzazFiKeFzO5V8RIzdUMR
+         T1xTeRlB3SAN+HovJPWAa5jeCqHdsqiyq+CC6/P8Vc2n4z91MYENAsusf2S+m+T60+2d
+         hpNtAPo9Hfc4zbdINzD48Hy377Jn921sq4ubj2EN3lH5rpJ1dACzSq7w7ZrQECdL0oNS
+         WZmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:cc:to:subject:dkim-signature;
-        bh=yuYLlLgvyrJeXUSy4NWBnp41zSw2A25KjBbHFWApQ5E=;
-        b=asGmcginvvn4LgqvTJGWhX+B2sdr0G2nICZgZCFTNIzbG+lf3DCIipIsXVa7L4LKNS
-         nZW9mwJ1BKqwcBzBpD0zlLU3Cc0yXbZVPoAAgPqpWJT82eU4YQ5LfYf/1azO15ckq4Dq
-         DK2j4aNEhe5dlUpYyzG9UgFWqF5IROl5CqYPLQqhEj9KpWVLG/pofsMzdchmx7P1PdDm
-         WLI618YUM/iVmjziHlrO9dG+dwpUvSoiILVgO2PI2DHSAeNMnEvPw8cbh+caNZAv8Kid
-         rmm6aTLp0g/5q9Yf4yB5hUfxMCSZKU5c5wY7COXgJR6cIEA5VHO/HfHJfDPJoo2oROqU
-         TMNw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=H/OOYivHtK1EqqOCmpNUBH4sDbP3d0GHSHFNyxUxWwc=;
+        b=rnnb6v4XWrinlbLRaj+cJNGeSE6MCMk4S1Nb1q9jykikMX01HGePne5uG3DTDDeplm
+         4CIje0DSHoQmChbtB1GfMuA7Q1nzVdYJqcVInDs7B7bKL5BhUAZIogBNYkhoWSd+ddgD
+         swCqkwHBK2YdnR9o5pZEm+EF2NvGlgXBOYXFoSnoB9DXr4/7oBdCKrQvNd34fgSRANaZ
+         Z9F7vNVUWPShVxUIjB1L//2a0AQqPdAJBTpXr63msEB8Wslw/RB5S3xHZeZ+08rX2tXP
+         7Rvxbr7GS19828wwG8jFIRH78XBFb1jGr+aMOsufxZu9hG9Xl6USzJGUjRsHIcaNXa5c
+         e7ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dWSuVi2M;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LUsANNOT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id eb14si3797436edb.11.2020.06.23.02.29.58;
-        Tue, 23 Jun 2020 02:29:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 138si16207153ybl.366.2020.06.23.02.33.26
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 23 Jun 2020 02:33:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dWSuVi2M;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LUsANNOT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1732041AbgFWJ35 (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 23 Jun 2020 05:29:57 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:28091 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1731952AbgFWJ35 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 23 Jun 2020 05:29:57 -0400
+Received: from localhost ([::1]:38304 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jnfIz-0002hS-IR
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 05:33:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60056)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jnfIo-0002g2-VA
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 05:33:14 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33582
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jnfIn-0001V7-AD
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 05:33:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1592904595;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-        bh=yuYLlLgvyrJeXUSy4NWBnp41zSw2A25KjBbHFWApQ5E=;
-        b=dWSuVi2McwbXYaMRtboIlFtw+MAs3L5EV53cneC12EBLtXBFe+BrSVnwdaEwHAjeAdLSXb
-        DKnoCClG8yMqBv8kSWpRDOSs9IOLrfrFIqh689PwdjFA9Yf6stQhhZ/E041iHSjo5MCKbw
-        qCbK1DlE6a/wVj2Wj/qSczWQw8BuVsY=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-95-Kqh4woSsMXW83MKKh4o1Ug-1; Tue, 23 Jun 2020 05:29:53 -0400
-X-MC-Unique: Kqh4woSsMXW83MKKh4o1Ug-1
-Received: by mail-wm1-f72.google.com with SMTP id 23so3348368wmi.4
-        for <kvm@vger.kernel.org>; Tue, 23 Jun 2020 02:29:53 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:autocrypt
-         :message-id:date:user-agent:mime-version:in-reply-to
-         :content-language:content-transfer-encoding;
-        bh=yuYLlLgvyrJeXUSy4NWBnp41zSw2A25KjBbHFWApQ5E=;
-        b=Mm5a0wqG238VS0gRCqFSU8i1bLTOunPwpnBOHBLe51GV0ANyfiBLFVYegJLKQ8OwZ3
-         menjbjTSUPnEfCCFB28AQezb5hoSjgd4UaMZgIkMfwgnnInoE+kOr+jTABPT9+J476XD
-         1kPevhzcpRGPbE6p5ZOjAQNzY1eJFsIooldZ57BmjLMllrVpAJeJT8h2VIEfyBneNQO7
-         FDUp37s5uYdeolXpYFFKUAHmtLsWlMzwQ6vgBm/NzBW6rvpTQGSvZKOWha2Hi30TVjDJ
-         3vj70DIrPXCk9EmXHar1i0nGVZVT0MyrlXgqEHmQF7Q+XaNwoD+/BG8QYZVPqLPUNwfJ
-         kIJg==
-X-Gm-Message-State: AOAM530EvRs5JnTXzr0NHqMUfur80sLBOnnhglwG8c83w/6idildMYQg
-        MFBes3nC6sapd4f58YAb2MXxT4bZAUFTjljo9w9gmL1uAfttEKcZa0trpgujJShgnrl5kL1Bwe8
-        qAYvUBy8JkBWC
-X-Received: by 2002:a1c:9c49:: with SMTP id f70mr22539756wme.74.1592904592750;
-        Tue, 23 Jun 2020 02:29:52 -0700 (PDT)
-X-Received: by 2002:a1c:9c49:: with SMTP id f70mr22539735wme.74.1592904592564;
-        Tue, 23 Jun 2020 02:29:52 -0700 (PDT)
-Received: from [192.168.1.41] (1.red-83-51-162.dynamicip.rima-tde.net. [83.51.162.1])
-        by smtp.gmail.com with ESMTPSA id g25sm2802178wmh.18.2020.06.23.02.29.51
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 23 Jun 2020 02:29:52 -0700 (PDT)
-Subject: Re: [PATCH v3 0/2] target/arm: Fix using pmu=on on KVM
-To:     Peter Maydell <peter.maydell@linaro.org>,
-        Andrew Jones <drjones@redhat.com>
-Cc:     QEMU Developers <qemu-devel@nongnu.org>,
-        Laurent Vivier <lvivier@redhat.com>,
-        Thomas Huth <thuth@redhat.com>,
-        kvm-devel <kvm@vger.kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
-        Paolo Bonzini <pbonzini@redhat.com>
-References: <20200623090622.30365-1-philmd@redhat.com>
- <20200623091807.vlqy53ckagcrhoah@kamzik.brq.redhat.com>
- <CAFEAcA-2-g=ZMMRkxoT-ncxqbdjc5vV1WbFzGXw7R8o7QOb6hQ@mail.gmail.com>
-From:   =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <1ec46d92-ae37-0d78-0a5e-7615d91d36b6@redhat.com>
-Date:   Tue, 23 Jun 2020 11:29:50 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ s=mimecast20190719; t=1592904792;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=H/OOYivHtK1EqqOCmpNUBH4sDbP3d0GHSHFNyxUxWwc=;
+ b=LUsANNOT5uTe7f2fhKDL6ok5ASoSMbfaqHGja8bHAxOKBvnFOuIUPdHrnObhzBa+CR5FN3
+ p7JTW3VvRVeSsRPX9UGIty/OT0bUUBBT9zWaQN0Ct05fN+tkU78Isk2Uv+rs8IzLj6WoJn
+ H8sFpx5RX1ElzuosIQY1cRO4uNbpIVI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-418--VGKtiyzMt2epouh41bAEw-1; Tue, 23 Jun 2020 05:33:09 -0400
+X-MC-Unique: -VGKtiyzMt2epouh41bAEw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C4893107ACF4;
+ Tue, 23 Jun 2020 09:33:07 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-114-197.ams2.redhat.com [10.36.114.197])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 02A4719D7F;
+ Tue, 23 Jun 2020 09:32:56 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
+ armbru@redhat.com, pbonzini@redhat.com, jean-philippe@linaro.org,
+ bbhushan2@marvell.com, peterx@redhat.com
+Subject: [PATCH v4 0/5] VIRTIO-IOMMU probe request support and MSI bypass on
+ ARM
+Date: Tue, 23 Jun 2020 11:32:39 +0200
+Message-Id: <20200623093244.24931-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-2-g=ZMMRkxoT-ncxqbdjc5vV1WbFzGXw7R8o7QOb6hQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: aPddszDsqnHq
+Received-SPF: pass client-ip=205.139.110.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 01:53:54
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: e2T8DGzZPfpy
 
-On 6/23/20 11:19 AM, Peter Maydell wrote:
-> On Tue, 23 Jun 2020 at 10:18, Andrew Jones <drjones@redhat.com> wrote:
->>
->> On Tue, Jun 23, 2020 at 11:06:20AM +0200, Philippe Mathieu-Daudé wrote:
->>> Since v2:
->>> - include Drew test fix (addressed Peter review comments)
->>> - addressed Drew review comments
->>> - collected R-b/A-b
->>>
->>> Andrew Jones (1):
->>>   tests/qtest/arm-cpu-features: Add feature setting tests
->>>
->>> Philippe Mathieu-Daudé (1):
->>>   target/arm: Check supported KVM features globally (not per vCPU)
->>>
->>>  target/arm/kvm_arm.h           | 21 ++++++++-----------
->>>  target/arm/cpu.c               |  2 +-
->>>  target/arm/cpu64.c             | 10 ++++-----
->>>  target/arm/kvm.c               |  4 ++--
->>>  target/arm/kvm64.c             | 14 +++++--------
->>>  tests/qtest/arm-cpu-features.c | 38 ++++++++++++++++++++++++++++++----
->>>  6 files changed, 56 insertions(+), 33 deletions(-)
->>>
->>> --
->>> 2.21.3
->>>
->>>
->>
->> Hi Phil,
->>
->> Thanks for including the test patch. To avoid breaking bisection, if one
->> were to use qtest to bisect something, then the order of patches should
->> be reversed.
+By default the virtio-iommu translates MSI transactions. This
+behavior is inherited from ARM SMMU. However the virt machine
+code knows where the MSI doorbells are, so we can easily
+declare those regions as VIRTIO_IOMMU_RESV_MEM_T_MSI. With that
+setting the guest iommu subsystem will not need to map MSIs.
+This setup will simplify the VFIO integration.
 
-Oops :)
+In this series, the ITS or GICV2M doorbells are declared as
+HW MSI regions to be bypassed by the VIRTIO-IOMMU.
 
->> I guess Peter can apply them that way without a repost
->> though.
-> 
-> Yeah, I can just flip the order.
+This also paves the way to the x86 integration where the MSI
+region, [0xFEE00000,0xFEEFFFFF], will be exposed by the q35
+machine.  However this will be handled in a separate series
+when not-DT support gets resolved.
 
-Thanks both!
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v5.0.0-virtio-iommu-msi-bypass-v4
+
+History:
+
+v3 -> v4:
+- collected Jean and markus's R-bs
+- tool into account all Markus' comments in [1/5] (except removal of
+  goto)
+- use ':' as delimitor instead of commas
+- add example in 4/5 commit message as suggested by Markus
+
+v2 -> v3:
+- Introduce VIRT_MSI_CTRL_NONE in VirtMSIControllerType
+- do not fill the remainder of the probe buffer
+
+v1 -> v2:
+- check which MSI controller is in use and advertise the
+  corresponding MSI doorbell
+- managed for both ITS and GICv2M
+- various fixes spotted by Peter and Jean-Philippe, see
+  individual logs
+
+v1: Most of those patches were respinned from
+  [PATCH for-5.0 v11 00/20] VIRTIO-IOMMU device
+  except the last one which is new
+
+
+Eric Auger (5):
+  qdev: Introduce DEFINE_PROP_RESERVED_REGION
+  virtio-iommu: Implement RESV_MEM probe request
+  virtio-iommu: Handle reserved regions in the translation process
+  virtio-iommu-pci: Add array of Interval properties
+  hw/arm/virt: Let the virtio-iommu bypass MSIs
+
+ include/exec/memory.h            |   6 ++
+ include/hw/arm/virt.h            |   7 ++
+ include/hw/qdev-properties.h     |   3 +
+ include/hw/virtio/virtio-iommu.h |   2 +
+ include/qemu/typedefs.h          |   1 +
+ hw/arm/virt.c                    |  18 +++++
+ hw/core/qdev-properties.c        |  89 +++++++++++++++++++++++++
+ hw/virtio/virtio-iommu-pci.c     |   3 +
+ hw/virtio/virtio-iommu.c         | 110 +++++++++++++++++++++++++++++--
+ hw/virtio/trace-events           |   1 +
+ 10 files changed, 236 insertions(+), 4 deletions(-)
+
+-- 
+2.20.1
+

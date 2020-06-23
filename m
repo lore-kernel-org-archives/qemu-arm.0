@@ -1,76 +1,73 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3943793lfm;
-        Tue, 23 Jun 2020 02:42:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwnzBvYuWJ3chX5ubiZUGu/GOnv/UYsXaGBiTV9aA3mlAv6vBrOYYvjEOFeqlLsk3qoTT8/
-X-Received: by 2002:a25:a165:: with SMTP id z92mr34129092ybh.48.1592905372015;
-        Tue, 23 Jun 2020 02:42:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592905372; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3951446lfm;
+        Tue, 23 Jun 2020 02:57:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwpKX5k8wpJkHzCH0CD6o4bcwJ1D0hU1DFk91HJz8YANFws66vG/ZX/ZAGX8CW2fIyuvkFF
+X-Received: by 2002:a25:cc90:: with SMTP id l138mr9790043ybf.377.1592906227740;
+        Tue, 23 Jun 2020 02:57:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592906227; cv=none;
         d=google.com; s=arc-20160816;
-        b=c1kP2m87R4xOQsDaejT2FGMI+1pwwR20ai8CRK8T1Y7h9CNmOTQm/80Baaf82Ouxid
-         NYvI+njCLrKkHax5V88iAE/tMMGNg/6jKXPDsSQL3X42xbBM9WqGFNqxEzcIIG/vJUy/
-         F/XHEILatpm6sK7zgvQE6pVSDSJwxCRzAOEdIgGzKSBE6Abuc/510b6pasOAEy8CLcba
-         c4NQ1bS1Ce/Oa4OvrJFH0Qavyp512Abm63ZYQb7EyQRvOcclcqhhItpH0KOrLuVRrGwP
-         Nyz69WZy38VIP8Nbo/eyDJgKHBAWzWffV25nTqll6q3MLwIH7UlplGfQXnDybQbugABj
-         fGYg==
+        b=FNw5b5IfN5FZ+p0PJtu8VIefSAmozRForrftgUCGR0jrdiPz9kFFSEYTlMD4tN4LK7
+         ODwhIDbsTC1z7NOQ2i1IJo7V2GwF7K5N6qfqtnefIvEEMcWxd/8M1dkY73f19IMa9tgm
+         Ud3o5mSrqd8hR9tADy3XgvhsSAyjoWM+yq+W91GjaERTWqPtslk5w62kHTS85KOvHQ6/
+         l+J703m+eNnLOgBZsjj2/XJPfvI4UNZ1JiKyyYER02fk6CTHmqLXLPFdCF672X35Yrg2
+         PK6AVsU70KY4WFm9DdP0wsmlZZsrkjoPvkGrQgLWxDKF5Y/UW9RmsHTP4zu8cXqmpfZi
+         DmsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:content-language:accept-language
          :in-reply-to:references:message-id:date:thread-index:thread-topic
          :subject:to:from;
-        bh=zDXVse8le4usjB+k3h1czDpCPyI/t9tBaVuUs67bLjM=;
-        b=M+ie2c3GMD26ouAZ3XNJOXmaJVfk1bX95+56wHl2yXaTuSW5IWRABA+yHNjFEvkR6o
-         mNe/OHs+r7kGCscSBfDOeviJ7g8QJF93vh89nIwfkVZ8ZJB1ENy9eghhJh1saIqkj6q8
-         7X5cvCHDL6AuHe4hSdviqJBqleIJ4CLxonYSFWb4Tc7ZWlTdGCbPnRwTbm+WWT1+MXkU
-         ItLvns7dH91z2r+Ikb253uGPgPv6Q/q1b38XIdONXorkl86L1/w80+kQf7JOPXDgvxI0
-         001bSVNWTPn150fGgH/WV3DgIpDnVFB13NMKZdbnDZixmIyspxaYzh/09kAKjfdBdwp0
-         UwSA==
+        bh=Wn87VWmEhcOLQPLlvNjY5QnfoNSu18l1hu2JcCBkowA=;
+        b=lWKdWsuMaLzj6enbpLQo/HeDU6EMNavsZQaZjsmOZwAuxT/0tSUSZYLi+t2Umlrnhb
+         3L0E1DyJE8EqrzPv1VNUIEM2zA9h0LSr2w043aUY4oqG/4Dwe8u+sNQaNJPGGp321e1/
+         rLBmrX1/3hXqmRHtOGotOc1EIUQlhIEqexEL/Fnog/puyR+keU/rxC6dE15ZRnf4tFNc
+         f5QbqK/jD6lIvLNJSvctIT8qzPR9TkW/7E6kjLXXUL+B/Jk5eFCvd8Kj1HSjzDF84Kr4
+         SN0/eJs/vjJVoRmX4QoCsB+pgfwF9SZ6Y3ypKMqPZIuOIbzMRkCezNBPyrAQXqFrHziB
+         4j8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d34si17951655ybe.472.2020.06.23.02.42.51
+        by mx.google.com with ESMTPS id a14si16297303ybp.184.2020.06.23.02.57.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 02:42:52 -0700 (PDT)
+        Tue, 23 Jun 2020 02:57:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49082 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35056 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnfS7-0003B2-Dq
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 05:42:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35668)
+	id 1jnffv-0003dd-3m
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 05:57:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44970)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jnfQW-00089V-Es; Tue, 23 Jun 2020 05:41:12 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2115 helo=huawei.com)
+ id 1jnffo-0003dR-98; Tue, 23 Jun 2020 05:57:00 -0400
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2117 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1jnfQP-0005T6-Op; Tue, 23 Jun 2020 05:41:12 -0400
-Received: from lhreml707-chm.china.huawei.com (unknown [172.18.7.106])
- by Forcepoint Email with ESMTP id 639625B962EF103F83A1;
- Tue, 23 Jun 2020 10:40:59 +0100 (IST)
+ id 1jnffl-0005VA-N4; Tue, 23 Jun 2020 05:57:00 -0400
+Received: from lhreml708-chm.china.huawei.com (unknown [172.18.7.107])
+ by Forcepoint Email with ESMTP id D015DC1205F14913C897;
+ Tue, 23 Jun 2020 10:56:54 +0100 (IST)
 Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
- lhreml707-chm.china.huawei.com (10.201.108.56) with Microsoft SMTP Server
+ lhreml708-chm.china.huawei.com (10.201.108.57) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1913.5; Tue, 23 Jun 2020 10:40:58 +0100
+ 15.1.1913.5; Tue, 23 Jun 2020 10:56:54 +0100
 Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
  lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1913.007; 
- Tue, 23 Jun 2020 10:40:59 +0100
+ Tue, 23 Jun 2020 10:56:54 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: Andrew Jones <drjones@redhat.com>
-Subject: RE: [PATCH RFC 01/22] arm/cpuhp: Add QMP vcpu params validation
- support
-Thread-Topic: [PATCH RFC 01/22] arm/cpuhp: Add QMP vcpu params validation
- support
-Thread-Index: AQHWQcvP5xOa2jCJCEaicIhkNVfTfKjl4RiAgAAP/MA=
-Date: Tue, 23 Jun 2020 09:40:58 +0000
-Message-ID: <0126fb3d008d4690950cf843d6ece70b@huawei.com>
+Subject: RE: [PATCH RFC 00/22] Support of Virtual CPU Hotplug for ARMv8 Arch
+Thread-Topic: [PATCH RFC 00/22] Support of Virtual CPU Hotplug for ARMv8 Arch
+Thread-Index: AQHWQcvNstQMr4/nnU2Xs7zxVVwVQKjl6FsAgAAbB4A=
+Date: Tue, 23 Jun 2020 09:56:54 +0000
+Message-ID: <ae90783d37454d8b9f5a189098e6bbb7@huawei.com>
 References: <20200613213629.21984-1-salil.mehta@huawei.com>
- <20200613213629.21984-2-salil.mehta@huawei.com>
- <20200623084603.i4kv3udz3dlcxlak@kamzik.brq.redhat.com>
-In-Reply-To: <20200623084603.i4kv3udz3dlcxlak@kamzik.brq.redhat.com>
+ <20200623091202.pbcbvwnk3pdvwyyy@kamzik.brq.redhat.com>
+In-Reply-To: <20200623091202.pbcbvwnk3pdvwyyy@kamzik.brq.redhat.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -123,12 +120,10 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
  "wangxiongfeng \(C\)" <wangxiongfeng2@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: syYvAkk99zMb
-
-Hi Andrew,
+X-TUID: E1MBzpfg5HPK
 
 > From: Andrew Jones [mailto:drjones@redhat.com]
-> Sent: Tuesday, June 23, 2020 9:46 AM
+> Sent: Tuesday, June 23, 2020 10:12 AM
 > To: Salil Mehta <salil.mehta@huawei.com>
 > Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org; peter.maydell@linaro.org;
 > sudeep.holla@arm.com; gshan@redhat.com; mst@redhat.com; jiakernel2@gmail.=
@@ -139,167 +134,317 @@ com;
 > imammedo@redhat.com; pbonzini@redhat.com; mehta.salil.lnk@gmail.com;
 > maran.wilson@oracle.com; will@kernel.org; wangxiongfeng (C)
 > <wangxiongfeng2@huawei.com>
-> Subject: Re: [PATCH RFC 01/22] arm/cpuhp: Add QMP vcpu params validation =
-support
+> Subject: Re: [PATCH RFC 00/22] Support of Virtual CPU Hotplug for ARMv8 A=
+rch
 >=20
-> On Sat, Jun 13, 2020 at 10:36:08PM +0100, Salil Mehta wrote:
-> > For now, vcpu hotplug is only supported with single socket single threa=
-d,
-> > single die. NUMA is not supported either and everthing falls into singl=
-e
-> > node. Work to properly support these could be taken later once communit=
-y
-> > agrees with the base framework changes being presented to support ARM v=
-cpu
-> > hotplug in QEMU. Hence, these checks.
+> On Sat, Jun 13, 2020 at 10:36:07PM +0100, Salil Mehta wrote:
+> > This patch-set introduces the virtual cpu hotplug support for ARMv8
+> > architecture in QEMU. Idea is to be able to hotplug and hot-unplug the =
+vcpus
+> > while guest VM is running and no reboot is required. This does *not* ma=
+kes
+> any
+> > assumption of the physical cpu hotplug availability within the host sys=
+tem
+> but
+> > rather tries to solve the problem at virtualizer/QEMU layer and by intr=
+oducing
+> > cpu hotplug hooks and event handling within the guest kernel. No change=
+s are
+> > required within the host kernel/KVM.
 > >
-> > Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-> > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> > ---
-> >  hw/arm/virt.c | 41 +++++++++++++++++++++++++++++++++++++++++
-> >  1 file changed, 41 insertions(+)
+> > Motivation:
+> > This allows scaling the guest VM compute capacity on-demand which would=
+ be
+> > useful for the following example scenarios,
+> > 1. Vertical Pod Autoscaling[3][4] in the cloud: Part of the orchestrati=
+on
+> >    framework which could adjust resource requests (CPU and Mem requests=
+) for
+> >    the containers in a pod, based on usage.
+> > 2. Pay-as-you-grow Business Model: Infrastructure provider could alloca=
+te and
+> >    restrict the total number of compute resources available to the gues=
+t VM
+> >    according to the SLA(Service Level Agreement). VM owner could reques=
+t for
+> >    more compute to be hot-plugged for some cost.
 > >
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 37462a6f78..5d1afdd031 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -2201,6 +2201,46 @@ static HotplugHandler
-> *virt_machine_get_hotplug_handler(MachineState *machine,
-> >      return NULL;
-> >  }
+> > Terminology:
 > >
-> > +static void virt_smp_parse(MachineState *ms, QemuOpts *opts)
-> > +{
-> > +    if (opts) {
-> > +        unsigned cpus    =3D qemu_opt_get_number(opts, "cpus", 1);
-> > +        unsigned sockets =3D qemu_opt_get_number(opts, "sockets", 1);
-> > +        unsigned cores   =3D qemu_opt_get_number(opts, "cores", cpus);
-> > +        unsigned threads =3D qemu_opt_get_number(opts, "threads", 1);
-> > +        unsigned int max_cpus;
-> > +
-> > +        if (sockets > 1 || threads > 1) {
-> > +            error_report("does not support more than one socket or thr=
-ead");
-> > +            exit(1);
-> > +        }
-> > +
-> > +        if (cores !=3D cpus) {
-> > +            error_report("cpu topology: "
-> > +                         "sockets (%u) * cores (%u) * threads (%u) < "
-> > +                         "smp_cpus (%u)",
-> > +                         sockets, cores, threads, cpus);
-> > +            exit(1);
-> > +        }
-> > +
-> > +        max_cpus =3D qemu_opt_get_number(opts, "maxcpus", cpus);
-> > +        if (sockets * cores * threads > max_cpus) {
-> > +            error_report("cpu topology: "
-> > +                         "sockets (%u) * cores (%u) * threads (%u) > "
-> > +                         "maxcpus (%u)",
-> > +                         sockets, cores, threads,
-> > +                         max_cpus);
-> > +            exit(1);
-> > +        }
-> > +
-> > +        ms->smp.max_cpus =3D max_cpus;
-> > +        ms->smp.sockets =3D sockets;
-> > +        ms->smp.cpus =3D cpus;
-> > +        ms->smp.cores =3D cores;
-> > +        ms->smp.threads =3D threads;
-> > +    }
-> > +}
-> > +
-> >  /*
-> >   * for arm64 kvm_type [7-0] encodes the requested number of bits
-> >   * in the IPA address space
-> > @@ -2266,6 +2306,7 @@ static void virt_machine_class_init(ObjectClass *=
-oc,
-> void *data)
-> >      mc->nvdimm_supported =3D true;
-> >      mc->auto_enable_numa_with_memhp =3D true;
-> >      mc->default_ram_id =3D "mach-virt.ram";
-> > +    mc->smp_parse =3D virt_smp_parse;
+> > (*) Present cpus: Total cpus with which guest has/will boot and are ava=
+ilable
+> >                   to guest for use and can be onlined. Qemu parameter(-=
+smp)
+> > (*) Disabled cpus: Possible cpus which will not be available for the gu=
+est
+> to
+> >                    use. These can be hotplugged and made present. These=
+ can be
+> > 		   thought of as un-plugged vcpus. These will be included as
+> > 		   part of sizing.
+> > (*) Posssible cpus: Total vcpus which could ever exist in VM. This incl=
+udes
+> >                     booted cpus plus any cpus which could be later plug=
+ged.
+> > 		    - Qemu parameter(-maxcpus)
+> > 	            - Possible vcpus =3D Present vcpus (+) Disabled vcpus
 > >
-> >      object_class_property_add(oc, "acpi", "OnOffAuto",
-> >          virt_get_acpi, virt_set_acpi,
-> > --
-> > 2.17.1
 > >
+> > Limitations of ARMv8 Architecture:
+> >
+> > A. Physical Limitation to CPU Hotplug:
+> > 1. ARMv8 architecture does not support the concept of the physical cpu =
+hotplug.
+> >    The closest thing which is recomended to achieve the cpu hotplug on =
+ARM
+> is
+> >    to bring down power state of the cpu using PSCI.
+> > 2. Other ARM components like GIC etc. have not been designed to realize
+> >    physical cpu hotplug capability as of now.
+> >
+> > B. Limitations of GIC to Support Virtual CPU Hotplug:
+> > 1. GIC requires various resources(related to GICR/redistributor, GICC/c=
+pu
+> >    interface etc) like memory regions to be fixed at the VM init time a=
+nd these
+> >    could not be changed later on after VM has inited.
+> > 2. Associations between GICC(GIC cpu interface) and vcpu get fixed at t=
+he VM
+> >    init time and GIC does not allows to change this association once GI=
+C has
+> >    initialized.
+> >
+> > C. Known Limitation of the KVM:
+> > 1. As of now KVM allows to create VCPUs but does not allows to delete t=
+he
+> >    already created vcpus. QEMU already provides an interface to manage =
+created
+> >    vcpus at KVM level and then to re-use them.
+> > 2. Inconsistency in interpretation of the MPIDR generated by KVM for vc=
+pus
+> >    vis-a-vis SMT/threads. This does not looks to be compliant to the MP=
+IDR
+> >    format(SMT is present) as mentioned in the ARMv8 spec. (Please corre=
+ct my
+> >    understanding if I am wrong here?)
+> >
+> >
+> > Workaround to the problems mentioned in Section B & C1:
+> > 1. We pre-size the GIC with possible vcpus at VM init time
+> > 2. Pre-create all possible vcpus at KVM and associate them with GICC
+> > 3. Park the unplugged vcpus (similar to x86)
+> >
+> >
+> > (*) For all of above please refer to Marc's suggestion here[1]
+> >
+> >
+> > Overview of the Approach:
+> > At the time of machvirt_init() we pre-create all of the possible ARMCPU
+> > objects along with the corresponding KVM vcpus at the host. Disabled KV=
+M vcpu
+> > (which are *not* "present" vcpus but are part of "possible" vcpu list) =
+are
+> > parked at per VM list "kvm_parked_vcpus" after their initialization.
+> >
+> > We create the ARMCPU objects(but these are not *realized* in QOM sense)=
+ even
+> > for the disabled vcpus to facilitate the GIC initialization (pre-sized =
+with
+> > possible vcpus). After Initialization of the machine is complete we rel=
+ease
+> > the ARMCPU Objects for the disabled vcpus. These ARMCPU object shall be
+> > re-created at the time when vcpu is hot plugged. This new object is the=
+n
+> > re-attached with the earlier parked KVM vcpu which also gets unparked. =
+The
+> > ARMCPU object gets now "realized" in QEMU, which means creation of the
+> > corresponding threads, pre_plug/plug phases, and event notification to =
+the
+> > guest using ACPI GED etc. Similarly, hot-unplug leg will lead to the
+> > "unrealization" of the vcpus and will lead to similar ACPI GED events t=
+o the
+> > guest for unplug and cleanup and eventually ARMCPU object shall be rele=
+ased
+> and
+> > KVM vcpus shall be parked again.
+> >
+> > During machine init, ACPI MADT Table is sized with *possible* vcpus GIC=
+C
+> > entries. The unplugged/disabled vcpus are presented as MADT GICC DISABL=
+ED
+> > entries to the guest. This means the guest will have its resources pre-=
+sized
+> > with possible vcpus(=3Dpresent+disabled)
+> >
+> > Other approaches to deal with ARMCPU object release(after machine init)=
+:
+> > 1. The ARMCPU objects for the disabled vcpus are released in context to=
+ the
+> >    virt_machine_done() notifier(approach adopted in this patch-set).
+> > 2. Defer the release of current ARMCPU object till the new vcpu object =
+is
+> >    hot plugged.
+> > 3. Never release and keep on reusing them and release once at VM exit. =
+This
+> >    solves many problems with above 2 approaches but requires change in =
+the
+> way
+> >    qdev_device_add() fetches/creates the ARMCPU object for the new vcpu=
+s being
+> >    hotplugged. For the arm cpu hotplug case we need to figure out way h=
+ow to
+> >    get access to old object and use it to "re-realize" instead of the n=
+ew
+> >    ARMCPU object.
+> >
+> > Concerns/Questions:
+> > 1. In ARM arch a cpu is uniquely represented in hierarchy using various
+> >    affinity levels which could represent thread, core, cluster, package=
+. This
+> >    is generally represented by a value in MPIDR register as per the for=
+mat
+> >    mentioned in specification. Now, the way MPIDR value is derived for =
+vcpus
+> is
+> >    done using vcpu-index. The concept of thread is not quite as same an=
+d rather
+> >    gets lost in the derivation of MPIDR for vcpus.
+> > 2. The topology info used to specify the vcpu while hot-plugging might =
+not
+> >    match with the MPIDR value given back by the KVM for the vcpu at the=
+ time
+> of
+> >    init. Concept of SMT bit in MPIDR gets lost as per the derivation be=
+ing
+> done
+> >    in the KVM. Hence, concept of thread-id, core-id, socket-id if used =
+as a
+> >    topology info to derive MPIDR value as per ARM specification will no=
+t match
+> >    with MPIDR actually assigned by the KVM?
+> >    Perhaps need to carry forward work of Andrew? please check here[2]
+> > 3. Further if this info is supplied to the guest using PPTT(once introd=
+uced
+> in
+> >    QEMU) or even derived using MPIDR shall be inconsistent with the hos=
+t vcpu.
+> > 4. Any possibilities of interrupts(SGI/PPI/LPI/SPI) always remaining in
+> >    *pending* state for the cpus which have been hot-unplugged? IMHO it =
+looks
+> >    okay but will need Marc's confirmation on this.
+> > 5. If the ARMCPU object is released after the machine init, UEFI could =
+call
+> >    back virt_update_table() to re-build the ACPI tables which might nee=
+d an
+> >    ARMCPU object. Please check the discussion here[5]
+> >
+> >
+> > Commands Used:
+> >
+> > A. Qemu launch commands to init the machine
+> >
+> > $ qemu-system-aarch64 --enable-kvm -machine virt,gic-version=3D3 \
+> > -cpu host -smp cpus=3D4,maxcpus=3D6 \
+> > -m 300M \
+> > -kernel Image \
+> > -initrd rootfs.cpio.gz \
+> > -append "console=3DttyAMA0 root=3D/dev/ram rdinit=3D/init maxcpus=3D2 a=
+cpi=3Dforce" \
+> > -nographic \
+> > -bios  QEMU_EFI.fd \
+> >
+> > B. Hot-(un)plug related commands
+> >
+> > # Hotplug a host vcpu(accel=3Dkvm)
+> > $ device_add host-arm-cpu,id=3Dcore4,core-id=3D4
+> >
+> > # Hotplug a vcpu(accel=3Dtcg)
+> > $ device_add cortex-a57-arm-cpu,id=3Dcore4,core-id=3D4
+> >
+> > # Delete the vcpu
+> > $ device_del core4
+> >
+> > NOTE: I have not tested the current solution with '-device' interface. =
+The
+> use
+> >       is suggested by Igor here[6]. I will test this in coming times bu=
+t looks
+> >       it should work with existing changes.
+> >
+> >
+> > Sample output on guest after boot:
+> >
+> > $ cat /sys/devices/system/cpu/possible
+> > 0-5
+> > $ cat /sys/devices/system/cpu/present
+> > 0-3
+> > $ cat /sys/devices/system/cpu/online
+> > 0-1
+> > $ cat /sys/devices/system/cpu/offline
+> > 2-5
+> >
+> >
+> > Sample output on guest after hotplug of vcpu=3D4:
+> >
+> > $ cat /sys/devices/system/cpu/possible
+> > 0-5
+> > $ cat /sys/devices/system/cpu/present
+> > 0-4
+> > $ cat /sys/devices/system/cpu/online
+> > 0-1,4
+> > $ cat /sys/devices/system/cpu/offline
+> > 2-3,5
+> >
+> > Note: vcpu=3D4 was explicitly 'onlined' after hot-plug
+> > $ echo 1 > /sys/devices/system/cpu/cpu4/online
+> >
+> >
+> > Repository:
+> >  (*) QEMU changes for vcpu hotplug could be cloned from below site,
+> >      https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v1
+> >
+> >  (*) Guest Kernel changes required to co-work with the QEMU shall be po=
+sted
+> soon
+> >      and repo made available at above site.
+> >
+> >
+> > THINGS TO DO:
+> >  (*) Migration support
+> >  (*) TCG/Emulation support is not proper right now. Works to a certain =
+extent
+> >      but is not complete. especially the unrealize part in which there =
+is a
+> >      overflow of tcg contexts. The last is due to the fact tcg maintain=
+s a
+> >      count on number of context(per thread instance) so as we hotplug t=
+he vcpus
+> >      this counter keeps on incrementing. But during hot-unplug the coun=
+ter
+> is
+> >      not decremented.
+> >  (*) Support of hotplug with NUMA is not proper
+> >  (*) CPU Topology right now is not specified using thread/core/socket b=
+ut
+> >      rather flatly indexed using core-id. This needs consideration[2].
+> >  (*) Do we need PPTT Support for to specify right topology info to gues=
+t about
+> >      hot-plugged or unplugged vcpus?
+> >  (*) Test cases
+> >  (*) Docs need to be updated.
 > >
 > >
 >=20
 > Hi Salil,
 >=20
-> This patch and the whole series has inspired me to pick up the vcpu
-> topology work again.=20
+> I realize this is just a preliminary posting and the approach hasn't been
+> finalized, but maybe in a future posting we can put a lot of this
+> information into a doc patch. I think we'll need good documentation for
+> this feature to ensure we get it right and keep in maintained correctly.
 
 
-Thanks for looking into this QEMU series. I am glad to hear that this
-work looks sensible at least :)
+Sure, let us do it once we converge on the concept.
 
-
-> In fact, I think it may be necessary in order
-> to properly describe a cpu when hot[un]plugging.
-
-
-Agreed. it is required. Since, MPIDR derived using topo specified by
-the user should match that assigned by the KVM/Host(which derives it
-using vcpu-id).=20
-
-
-? I'll try to pull
-> together an RFC soon, at least for TCG. For KVM, we may need to
-> change KVM in order to allow user-controlled MPIDR. Although I'm
-> not sure about that anymore, because, as you stated somewhere else,
-> we already have user-controlled MPIDR to some degree, since KVM simply
-> transforms the cpu index.
-
-
-Yes, kind-of, if you actually see the KVM logic and how it derives the
-MPIDR for vcpu in reset_mpidr() you will know that the only variable
-it is using is vcpu-id which is specified by QEMU during the vcpu
-creation time. This clearly means end MPIDR value is actually dependent
-on QEMU and KVM/host just programs it. Of course user of the QEMU does
-not have any direct interface and this is as of now done implicitly
-at QEMU level.=20
-
-But the thing which concerned me was the idea of threads. Marc recently
-clarified about that aspect as well, that KVM always(with some exception
-of thunderX) uses MT=3D0(a bit in MPIDR register) even for the hardware
-which support threads. IMHO there has to be some way to distinguish
-between threads and cores at the QEMU level whether QEMU fetches this
-info using sysfs interface like lscpu etc does or devise some other way.
-But QEMU should ensure that right thread/core info is being facilitated
-to the guest kernel. This could either be done wrapped as part of the
-MPIDR or PPTT Table.
-
-
->=20
-> Regarding this patch specifically, I would change this to allow
-> sockets, but prefer cores (i.e. when only '-smp N' is given, then
-> N is the number of cores, not sockets). Also I would allow threads,
-> but only for !kvm_enabled(). Then the function would be similar to
-> something I think I once posted long ago, or at least wrote and maybe
-> never posted...
-
-
-Ok. We need to modify the logic to derive the arch-id/MPIDR using the
-topology info instead of just vcpu-id. Hope you will be doing that
-as well for TCG? and this will require check to distinguish the KVM and
-TCG part there as well. I am specifically talking about {pre|post}_plug
-functions. BTW, can 'N' (in -smp N) ever be sockets?
-
-
-In case you require my help for anything like testing on real ARM64
-server hardware or anything else please give a nudge and we can co-work
-from here :)
-
-
-Regarding kernel part, I will be posting the guest kernel changes
-today to the community. If you have time please have a look at them
-as well.
-
-
-Many thanks
+Thanks
 Salil.
-

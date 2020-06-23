@@ -1,177 +1,131 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4174945lfm;
-        Tue, 23 Jun 2020 08:24:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwXz+f57gcBhDcOs2tSntdT4WfNwfRdYeMEZ1RIKH94orCBXKkEAN9J20f4bmwfrImM4p8S
-X-Received: by 2002:a05:6902:4b4:: with SMTP id r20mr35553632ybs.389.1592925843193;
-        Tue, 23 Jun 2020 08:24:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592925843; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4176164lfm;
+        Tue, 23 Jun 2020 08:25:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyw1wrNVGmZ0uRdvTlJc5U6q3P2CkBgRZM6FbcdDp5HxGg7uQPfi/HzpPn3KF5Sci8BPGQ9
+X-Received: by 2002:aa7:d0c5:: with SMTP id u5mr21884685edo.51.1592925952387;
+        Tue, 23 Jun 2020 08:25:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592925952; cv=none;
         d=google.com; s=arc-20160816;
-        b=pTdrNoMTFX6KHx5I+TTS3yAw0xfyCVxX0/1GN49W4ZHhUQeWv7si3FI5YeCcWNmNeG
-         kEajI/5eWbXk2HEYBMzphFbG8aYDcHzgaP4eLULOvcWX2g9Gu+e0h7w3sG6G/o3cfQeu
-         KGrHYz/fKGCkdqSOZUZXqMxAuyyyp775b7/QM/wVturN3U1WINFZ9a5JIttxd2CTTkvK
-         KCd3Av7eb5s3TbBHgEVoIasshU+qbsMj1D2pvub+AEx6jsv2UURUB9QuTt58Pt5rkMl2
-         eu0Mly9KJxeOkMty5JLXY/K1ZIZA4IQPw+cUdVfJvnMU0zF3O4G9ud6wpTS8u4JmFrTg
-         7BGw==
+        b=MiZpypMpQ2x73dWnrvixNJtFT5bhqdaCvEl2ej/NHurJu3ybjHxJDnjgnNBHvjivuw
+         jMZYZe61bTFBvAQH9NMBwqoMatQ8gbBWFfQcYJrD1+kqgpmwSekEYwSL7Suq9F6fUd34
+         E5K9nglTUIUeoQxCfJErgCDA18O4pixno3QXVnol6PCBo+Am67fTCjvmqKR7iJMv6nRO
+         /GOiBaXGBMSQi7tYoprUI9pel/yvtGxpCOJFt/A9c2aT4eRGxu9yqsqSK60dyBlOyApM
+         cMc5xB++SSn0bHcx9zyfyCZleesZmoTtzxeUelN+kQtldyixNBTNtxbYymCLHkeCW0Eb
+         JmmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=yurOEOR3+8OV7Dyuj+11/b4vu7uceWZ/I62bnyA8Ua4=;
-        b=GfIXBwxa5yQWn+25LoE5ifSghYPKEy/lk1xR5BUbxC8wFVK5bU+R99dmsZXWwbcvQA
-         /9NPIevj+UCqT8p4ol0OjRT4jb/fEnpUL46Vv6YMg1nl3tE7w90JQ6lcz4S/8A3rWvtI
-         r0cZOEVC2SAmlpDMnMjgxBM19NhP2Nr6Yvn6E7BdMCV21Sgr8FwcVv0wlIKuPeQCZ36R
-         dlcgblETqyjZsxZ2JGSbm3XyKERsRMIgJzeJrcXAGNEEp6SDx0YDDfgNLgjW2X2R0p6f
-         X4XTk/1mZcjOsqbesvEJPENzMkB6f8pvwP1esk4ynNZCGU69q429U4KAbDZI1JHLGGc+
-         3oMA==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :organization:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=jBAXVsoXXh0/I2Sku0Zs4vjlE275yD39tzwQsaS7Dok=;
+        b=CjFev1yrh/lBNFJ19Hb5d4IT0nwoCizPJ5Xb1m6qQ2FePUc9ThQ5Ki+TzcL7i0j40l
+         YdWuRtbqKrdO1VUtpE+cW9DXW5Lls7XSZoW85OpdBsydh8JFQ+aPzTBndZlXqW5JD239
+         Y5PsRVE02V7JOhMLt+kOS9X9OJmtEOCSdkL+2yEDentiaC6sIDiyQXyoXuOJoL30MtX2
+         iYRGbez4fUt0uZzqOsPrPcG6W78S7qGS0fhaASjHdQhqTnSIEuBtJzP7bmUqZz5x7B45
+         xRVmV13pU5ukheSk8qJuSR3Pg4vOHCwh7NbhIuJSkaRTKdjj/npWhlNBOMWU3RS40hBD
+         0otQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=B3fUD4x9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w83si16791961ybw.473.2020.06.23.08.24.03
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 08:24:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a3nZagn7;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id c3si10824437edw.365.2020.06.23.08.25.52;
+        Tue, 23 Jun 2020 08:25:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=B3fUD4x9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52418 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnkmI-0005RE-IE
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 11:24:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45576)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jnkl6-0004XM-HM
- for qemu-devel@nongnu.org; Tue, 23 Jun 2020 11:22:48 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:48580
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jnkl3-0007o5-RG
- for qemu-devel@nongnu.org; Tue, 23 Jun 2020 11:22:48 -0400
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a3nZagn7;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1732982AbgFWPZv (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 23 Jun 2020 11:25:51 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40140 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1732781AbgFWPZv (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 23 Jun 2020 11:25:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592925764;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=yurOEOR3+8OV7Dyuj+11/b4vu7uceWZ/I62bnyA8Ua4=;
- b=B3fUD4x9SovfERfu9uIvfGsYKaQoqXjTjXo76VCxc1dfnJmD7iTDXY80XCCgGR/NSa3Jmq
- p9abv9oW5uQjcF+yaQOqXOXPXfopTxnemaO4akODixXt7Y0Cf0iGpM1rUJYfDfSex6T3OQ
- hCCk4XwNiKidtPJko+JZVihLzhJMH2g=
+        s=mimecast20190719; t=1592925949;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=jBAXVsoXXh0/I2Sku0Zs4vjlE275yD39tzwQsaS7Dok=;
+        b=a3nZagn72f6P0zZqZoYWCPnFrl8K8Mk4LQ/za22lPCLjpGpvAwBgRdTp6CMZiZ4JrVHsYx
+        6c+24Pzv/wNvGsz3N+ARTsZhttq/1q341+dw65t793/4leg08wTxMBl8SPSgNTEAVrrmzx
+        ZAYcclAMLb+Ew57Dw2VgKhiK5bNmWTo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-28-K_kaor1YPV62cLTXSoxDUw-1; Tue, 23 Jun 2020 11:22:38 -0400
-X-MC-Unique: K_kaor1YPV62cLTXSoxDUw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5636E1005512;
- Tue, 23 Jun 2020 15:22:37 +0000 (UTC)
-Received: from [10.36.114.197] (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D685D7166A;
- Tue, 23 Jun 2020 15:22:34 +0000 (UTC)
-Subject: Re: [PATCH v3 1/5] qdev: Introduce DEFINE_PROP_RESERVED_REGION
-To: Markus Armbruster <armbru@redhat.com>
-References: <20200611151209.22547-1-eric.auger@redhat.com>
- <20200611151209.22547-2-eric.auger@redhat.com>
- <87k0zzz6nt.fsf@dusky.pond.sub.org>
- <f0ec7470-d683-1bfd-103d-54c57ebd3863@redhat.com>
- <87imfhhkyz.fsf@dusky.pond.sub.org>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <e5964e6e-2ee2-577d-775a-b02d63bca651@redhat.com>
-Date: Tue, 23 Jun 2020 17:22:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ us-mta-267-A9yNL1DHOtOBrK8pOcq0nA-1; Tue, 23 Jun 2020 11:25:47 -0400
+X-MC-Unique: A9yNL1DHOtOBrK8pOcq0nA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A0FBF107ACF2;
+        Tue, 23 Jun 2020 15:25:45 +0000 (UTC)
+Received: from gondolin (ovpn-112-222.ams2.redhat.com [10.36.112.222])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id B3CDB60F8D;
+        Tue, 23 Jun 2020 15:25:31 +0000 (UTC)
+Date:   Tue, 23 Jun 2020 17:25:29 +0200
+From:   Cornelia Huck <cohuck@redhat.com>
+To:     Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Cc:     qemu-devel@nongnu.org,
+        Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        David Hildenbrand <david@redhat.com>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        Richard Henderson <rth@twiddle.net>, qemu-s390x@nongnu.org,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Halil Pasic <pasic@linux.ibm.com>, qemu-arm@nongnu.org,
+        qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH 1/7] accel/kvm: Let kvm_check_extension use global KVM
+ state
+Message-ID: <20200623172529.4ebe956c.cohuck@redhat.com>
+In-Reply-To: <20200623105052.1700-2-philmd@redhat.com>
+References: <20200623105052.1700-1-philmd@redhat.com>
+        <20200623105052.1700-2-philmd@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-In-Reply-To: <87imfhhkyz.fsf@dusky.pond.sub.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.120;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 01:53:54
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
- peterx@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
- jean-philippe@linaro.org, bbhushan2@marvell.com, eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4TMFC4ojerev
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: lt9qq7jKsYdL
 
-Hi Markus,
+On Tue, 23 Jun 2020 12:50:46 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
 
-On 6/23/20 5:15 PM, Markus Armbruster wrote:
-> Auger Eric <eric.auger@redhat.com> writes:
-> 
->> Hi Markus,
->>
->> On 6/22/20 1:22 PM, Markus Armbruster wrote:
->>> Eric Auger <eric.auger@redhat.com> writes:
->>>
->>>> Introduce a new property defining a reserved region:
->>>> <low address>, <high address>, <type>.
-> [...]
->>> I dimly remember discussing the wisdom of numeric type here, dig, dig,
->>> ..., aha:
->>>
->>>     Subject: Re: [PATCH for-5.0 v11 12/20] qapi: Introduce DEFINE_PROP_INTERVAL
->>>     Date: Fri, 13 Dec 2019 11:03:02 +0100
->>>     Message-ID: <87y2vg4k6h.fsf@dusky.pond.sub.org>
->>>
->>>     >> So the "label" part of "<low address>,<high address>,label" is a number?
->>>     > yes it is.
->>>     >> 
->>>     >> Is a number appropriate for your use case, or would an enum be better?
->>>     > I think a number is OK. There might be other types of reserved regions
->>>     > in the future. Also if we want to allow somebody else to reuse that
->>>     > property in another context, I would rather leave it open?
->>>
->>>     I'd prioritize the user interface over possible reuse (which might never
->>>     happen).  Mind, I'm not telling you using numbers is a bad user
->>>     interface.  In general, enums are nicer, but I don't know enough about
->>>     this particular case.
->> Yep I remember too ;-) I left as it was because I think this property
->> could be used for other use cases.
-> 
-> YAGNI :)
-> 
-> A string would work, too, wouldn't it?
-:-)
+> As KVM supported extentions those should be the same for
+> all VMs, it is safe to directly use the global kvm_state
+> in kvm_check_extension().
+>=20
+> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  accel/kvm/kvm-all.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index f24d7da783..934a7d6b24 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -913,7 +913,7 @@ int kvm_check_extension(KVMState *s, unsigned int ext=
+ension)
+>  {
+>      int ret;
+> =20
+> -    ret =3D kvm_ioctl(s, KVM_CHECK_EXTENSION, extension);
+> +    ret =3D kvm_ioctl(kvm_state, KVM_CHECK_EXTENSION, extension);
+>      if (ret < 0) {
+>          ret =3D 0;
+>      }
 
-Eric
-> 
-> [...]
-> 
-> 
-
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>

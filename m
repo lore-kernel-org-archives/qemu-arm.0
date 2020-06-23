@@ -1,94 +1,93 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3870792lfm;
-        Tue, 23 Jun 2020 00:29:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxjd5QB333xcR1sm3rQkCTzUm3+BJ159z0HxMAsKNl5JdcKH5j5UHAkxmeZjfkUP2R+/vie
-X-Received: by 2002:a25:b3c9:: with SMTP id x9mr35023163ybf.203.1592897367044;
-        Tue, 23 Jun 2020 00:29:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592897367; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3870893lfm;
+        Tue, 23 Jun 2020 00:29:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy5W84p2sNGSXcwZY9FkEOuRfrVt6bT9OEb/C+Iv9O+r6DD1zetbaGlq6EwOBzXCUdIRJms
+X-Received: by 2002:a25:bd0e:: with SMTP id f14mr31971425ybk.427.1592897377477;
+        Tue, 23 Jun 2020 00:29:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592897377; cv=none;
         d=google.com; s=arc-20160816;
-        b=PuuDqRvXeRDf57L0VSJZd42fU/FMXoJ96REeFrF/4H4k2K1Zewd36gaTLL+l+JZn2c
-         CKP/Vk0NKahTjMCYuVEuO6k/84lV31DxTHrYBgJWEWtWoxPshnk0rTcXFVPr7hEy9NMd
-         vGuZ4msWhFqpLg/a+ibQa/IBO+QcOvTxbuHh69SMejPa/hyHF/icA3hWiYveoB5/llgs
-         pern/GUNig7Lr0V05682u8oxkeAXC9izDgYndOndSkI+7hYAtvzo9cbeCx85lNyD+0or
-         xi74VgyBlVxVgBMz0edI7guGZM1f3IxfTO5p2YZoi2s7+4SNofircxMJnpjLkZAo5U2M
-         gN6w==
+        b=EnfP+do2A/F042GvpjEW0goXV3iUOfw5WhKEYst7Ww29ZtdyAgvLGfCLvcSDEMVOEK
+         GRhIg98NQIMyGCKa573M/xrPGno/ahcb2js2hlcIZpND6uSA7yqz7V2ZyionhieBpTu9
+         +KmvOYNbyq9o0ksP67YnLcYYQQpiOkkhgil3e1IF53nq8Y2MF62zC/1TtCtRDM5GX8X7
+         jpLJwek8Id7VZc0ir+dY+X31ohvmLIE9/sFsqLbPE2P0ql01w4JR8ESfKlRqXdDMNhLe
+         PUnw3Wu/jpM9iAwmPH2IVjhzW6Ozvza48ffpluOkCu5xoo8AE35qP/EQVaBgi2P2YIPP
+         S1Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=NpyG7hZJw/+4UIPOBhAz0178NGmLQwbmVGrN4QqVZFU=;
-        b=QeShqIQ61jR0rgV7IaqF6oEU/+ydO8zINLfMs7RwXQtL1BEWRd7BEQLfyT5Zh6VyHB
-         YHYuVG3mZxsWiLZUMx1NGpBqLB1HE8FT1Nfq2l3cHI35JWHo6PjS/DGFeHCPjAQyaXZ1
-         6PrL2XImV7QG9DsqL6M/U3/nBrAStHvHmrJ1ExofvumGpWEQfHXsJFfzla4w2dIBVLsF
-         EeEHEVGfbk6gFkEEFTxn3JWG7+Ktv13FYmBNqRNghi7GYlhVp881H0P5t6xWK/D9nDFR
-         cL2LJfI1NkgRv/PAGZcmZfI1xoAfMR1yf+2gzCTMAJ2mqxbCuNbEL+9KAKhB8c9kO4Dp
-         iZ/Q==
+        bh=EfIWMq/jwSu0ov0fWyq/TXv7CGF0k6WKQfwq7MURXHw=;
+        b=yuBuoG2702LuCLG/ZSDFRyzeFPbSP2Z3mJ+B07oG0x776uyRM9ZiNfu/Lfue14hUXd
+         IhzUI3bShSSMqoszreFL8jbcmLPWQJjjCKMQ8oB0NUTezf5dBy6dMlmj2VoeLW5OA21W
+         icmaqft2QLLXMrlc0KPN8Ei3nv7PWLtaUzybQflMU1M1vmFS0daXSsX4X3CyP+MlIWy/
+         SlNjxhSNXfGqXrDd4wyxvZfcDbNsH5IaoXWkE4R42kLXleMblHnMVrUYQ1dSCvsrPNn0
+         sAnPBlgAFLwnsCylqPVRb78vpL2PE4J4xIdmD6GG9ew7GEimcZBgNCb3gY7BgS5qf4h6
+         mbNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Oyo6uM2p;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=B4Urszc0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o9si17791652ybe.224.2020.06.23.00.29.26
+        by mx.google.com with ESMTPS id v11si15486676ybm.450.2020.06.23.00.29.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 00:29:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 Jun 2020 00:29:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Oyo6uM2p;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=B4Urszc0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:46776 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46492 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jndN0-000293-CT
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 03:29:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34606)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jndNA-00022B-Ra
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 03:29:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jndLB-0007C2-P3; Tue, 23 Jun 2020 03:27:33 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:39645)
+ id 1jndLI-0007VI-Gr; Tue, 23 Jun 2020 03:27:40 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40911)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jndL9-0004zl-TX; Tue, 23 Jun 2020 03:27:33 -0400
-Received: by mail-wm1-x341.google.com with SMTP id t194so2059097wmt.4;
- Tue, 23 Jun 2020 00:27:31 -0700 (PDT)
+ id 1jndLH-00054S-0V; Tue, 23 Jun 2020 03:27:40 -0400
+Received: by mail-wm1-x342.google.com with SMTP id f139so649936wmf.5;
+ Tue, 23 Jun 2020 00:27:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=NpyG7hZJw/+4UIPOBhAz0178NGmLQwbmVGrN4QqVZFU=;
- b=Oyo6uM2pc/TKyMHQ+OeOmsgQxA41aLeKDMRq2f1rCNNjzLU4CBhPlRbcXbAHZ2PAxk
- LneLB69NaArLxr7+molzKwcloPOvrNY7Vjc33KJi1CqZf1bWl+k0VVwqNc2HqKTVi8LC
- 7XZH13CR0X0iaZ331Lf/ayKiaALAOu1yiaQ7LQfBAeCeb29xFfy1PRp9F7QB3LRByE1q
- fwgvLc5mdRau6MmnMJ8Bbtckh4osm9w/y1d3klhWSHB28Oj52Y/gg3kEkTQ3XqWnMMKF
- MtZEQMvvQtq7Vy0DorJBhVk4abj2EO2luGty6PTzTDZIey3P7Dqd4DRmwsjF+o9wLw/R
- 39gg==
+ bh=EfIWMq/jwSu0ov0fWyq/TXv7CGF0k6WKQfwq7MURXHw=;
+ b=B4Urszc06LkH/dpR6ZPVZt7rmvQRjUMcQuaUfflRnSwlLwHiwkv43i9tp2mtYr6C6f
+ NETNSUmeI3ORJGFM/ccHYCgI3kPEH81mTCFZ8z9bJ5zrczn8zZF3VCqdxIYCPOccwtp/
+ eUytKZNLmwd1kJrrRciX99PHtH3JaRrow0bShiyNY8LYoXswCfHkUi1Ms+oMwwjHlDWN
+ EJEro4jP3+c1lKJaVeuxs5XTkiuscGh/mfBRE7+cPYlobx8LbnZzc7J157+qEmITxWxv
+ IvAa/RUB5kUwusOkAOz0RMt982rIbFTkiizc91414dK3FuOaXgfWXm+0CWjuB84DGL4X
+ KdpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=NpyG7hZJw/+4UIPOBhAz0178NGmLQwbmVGrN4QqVZFU=;
- b=qMRTBBtI/ZNXMWE/uw3hCz++BXIKWj8HMShK3qiLpp2F1LKfsDWw/rVv+K8JZrWzW8
- eWSz9KsON+iIwXzSXp8ZoZobu2Ox8j0i2qq20DTsj3o62DNNGUYXfwxzv6vAPJA0MylV
- 4emki2zsshJqhI++ejNUNnjFizEAinvs/ioIu0A2ALQLJR9gtU2pKIC3Ky+9yfqZukxy
- aNlhn6liny4eKiTHjzLBd+W+y6vp0W+/pNmLoIjdY/VGK/zStgwFQDqlPyR4zrCECji9
- +T3NfenuqBVu/WVLdX7urj3nbq6VzfL177Nd15DnYhSRovJc/CLr9nepD/0LjQ71csup
- 8oUw==
-X-Gm-Message-State: AOAM532KgmAtGTeoQi1xNjS88aNkLN9MSDE6YyHyJxaa83i/OrJxcPFH
- SoBsVf0gOvXPpX4M+wN5Z3EEVU8d
-X-Received: by 2002:a05:600c:22c9:: with SMTP id
- 9mr24349932wmg.68.1592897249227; 
- Tue, 23 Jun 2020 00:27:29 -0700 (PDT)
+ bh=EfIWMq/jwSu0ov0fWyq/TXv7CGF0k6WKQfwq7MURXHw=;
+ b=KY02Si5vfbN2waHpA/fzAeWSD6UTLAvn7KOOUD8eiPjcv0GuJsSSSmkcq0SFhTFKRT
+ 8s0WMF7ZdBhsZQoiW6yJnxTtGUtkgVieiCSKdVidoICiPv1qIZAAW9hatH3mhzoSB1ya
+ ZYEr65dW5p0B4wr0R993cv1byrVT0LC7K23BLtUC1jy+4k13wOQJvP/u2oTeIblTAj6o
+ 1gRyUvdJtBYM00/gLLmkdMtXGY1ucymiB0L9/DnwIAYn+mv+9AvjmOnqL53CmJBntZwi
+ t/mGtO7mH1yr8pH2dz8MhXjn0npBkzxK2lLv9xs2PA6QNLWvMgAubN9ImLGrhcocVlDq
+ zSVA==
+X-Gm-Message-State: AOAM531z3qznxLjebuti5Tzit+UM4R2hwgKKFET+9bZxI22y0WCw7Yjt
+ 7GcBhibgacqnVZt/1vt7L75At4Cm
+X-Received: by 2002:a7b:c043:: with SMTP id u3mr23777494wmc.185.1592897257247; 
+ Tue, 23 Jun 2020 00:27:37 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id l14sm4200059wrn.18.2020.06.23.00.27.28
+ by smtp.gmail.com with ESMTPSA id l14sm4200059wrn.18.2020.06.23.00.27.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jun 2020 00:27:28 -0700 (PDT)
+ Tue, 23 Jun 2020 00:27:36 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v6 3/9] hw/misc/pca9552: Rename generic code as pca955x
-Date: Tue, 23 Jun 2020 09:27:17 +0200
-Message-Id: <20200623072723.6324-4-f4bug@amsat.org>
+Subject: [PATCH v6 9/9] hw/misc/pca9552: Model qdev output GPIOs
+Date: Tue, 23 Jun 2020 09:27:23 +0200
+Message-Id: <20200623072723.6324-10-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200623072723.6324-1-f4bug@amsat.org>
 References: <20200623072723.6324-1-f4bug@amsat.org>
@@ -96,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -108,317 +107,89 @@ X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TMy4rgtBOYZt
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: z1zFeRZVPFfY
 
-Various code from the PCA9552 device model is generic to the
-PCA955X family. We'll split the generic code in a base class
-in the next commit. To ease review, first do a dumb renaming.
+The PCA9552 has 16 GPIOs which can be used as input,
+output or PWM mode. QEMU models the output GPIO with
+the qemu_irq type. Let the device expose the 16 GPIOs
+to allow us to later connect LEDs to these outputs.
 
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/misc/pca9552.h | 10 ++---
- hw/misc/pca9552.c         | 80 +++++++++++++++++++--------------------
- 2 files changed, 45 insertions(+), 45 deletions(-)
+ include/hw/misc/pca9552.h | 1 +
+ hw/misc/pca9552.c         | 6 ++++++
+ 2 files changed, 7 insertions(+)
 
 diff --git a/include/hw/misc/pca9552.h b/include/hw/misc/pca9552.h
-index bc5ed31087..db527595a3 100644
+index bf1a589137..600356fbf9 100644
 --- a/include/hw/misc/pca9552.h
 +++ b/include/hw/misc/pca9552.h
-@@ -12,11 +12,11 @@
- #include "hw/i2c/i2c.h"
- 
- #define TYPE_PCA9552 "pca9552"
--#define PCA9552(obj) OBJECT_CHECK(PCA9552State, (obj), TYPE_PCA9552)
-+#define PCA955X(obj) OBJECT_CHECK(PCA955xState, (obj), TYPE_PCA9552)
- 
--#define PCA9552_NR_REGS 10
-+#define PCA955X_NR_REGS 10
- 
--typedef struct PCA9552State {
-+typedef struct PCA955xState {
-     /*< private >*/
-     I2CSlave i2c;
-     /*< public >*/
-@@ -24,9 +24,9 @@ typedef struct PCA9552State {
-     uint8_t len;
+@@ -27,6 +27,7 @@ typedef struct PCA955xState {
      uint8_t pointer;
  
--    uint8_t regs[PCA9552_NR_REGS];
-+    uint8_t regs[PCA955X_NR_REGS];
-     uint8_t max_reg;
-     uint8_t pin_count;
--} PCA9552State;
-+} PCA955xState;
+     uint8_t regs[PCA955X_NR_REGS];
++    qemu_irq gpio[PCA955X_PIN_COUNT_MAX];
+     char *description; /* For debugging purpose only */
+ } PCA955xState;
  
- #endif
 diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-index 81da757a7e..5681ff3b22 100644
+index 1c3ad57432..80caa9ec8f 100644
 --- a/hw/misc/pca9552.c
 +++ b/hw/misc/pca9552.c
-@@ -25,7 +25,7 @@
- 
- static const char *led_state[] = {"on", "off", "pwm0", "pwm1"};
- 
--static uint8_t pca9552_pin_get_config(PCA9552State *s, int pin)
-+static uint8_t pca955x_pin_get_config(PCA955xState *s, int pin)
- {
-     uint8_t reg   = PCA9552_LS0 + (pin / 4);
-     uint8_t shift = (pin % 4) << 1;
-@@ -33,14 +33,14 @@ static uint8_t pca9552_pin_get_config(PCA9552State *s, int pin)
-     return extract32(s->regs[reg], shift, 2);
- }
- 
--static void pca9552_update_pin_input(PCA9552State *s)
-+static void pca955x_update_pin_input(PCA955xState *s)
- {
-     int i;
- 
-     for (i = 0; i < s->pin_count; i++) {
-         uint8_t input_reg = PCA9552_INPUT0 + (i / 8);
-         uint8_t input_shift = (i % 8);
--        uint8_t config = pca9552_pin_get_config(s, i);
-+        uint8_t config = pca955x_pin_get_config(s, i);
+@@ -17,6 +17,7 @@
+ #include "hw/qdev-properties.h"
+ #include "hw/misc/pca9552.h"
+ #include "hw/misc/pca9552_regs.h"
++#include "hw/irq.h"
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
+ #include "qapi/visitor.h"
+@@ -111,9 +112,11 @@ static void pca955x_update_pin_input(PCA955xState *s)
  
          switch (config) {
          case PCA9552_LED_ON:
-@@ -58,7 +58,7 @@ static void pca9552_update_pin_input(PCA9552State *s)
++            qemu_set_irq(s->gpio[i], 1);
+             s->regs[input_reg] |= 1 << input_shift;
+             break;
+         case PCA9552_LED_OFF:
++            qemu_set_irq(s->gpio[i], 0);
+             s->regs[input_reg] &= ~(1 << input_shift);
+             break;
+         case PCA9552_LED_PWM0:
+@@ -374,11 +377,14 @@ static void pca955x_initfn(Object *obj)
+ 
+ static void pca955x_realize(DeviceState *dev, Error **errp)
+ {
++    PCA955xClass *k = PCA955X_GET_CLASS(dev);
+     PCA955xState *s = PCA955X(dev);
+ 
+     if (!s->description) {
+         s->description = g_strdup("pca-unspecified");
      }
++
++    qdev_init_gpio_out(dev, s->gpio, k->pin_count);
  }
  
--static uint8_t pca9552_read(PCA9552State *s, uint8_t reg)
-+static uint8_t pca955x_read(PCA955xState *s, uint8_t reg)
- {
-     switch (reg) {
-     case PCA9552_INPUT0:
-@@ -79,7 +79,7 @@ static uint8_t pca9552_read(PCA9552State *s, uint8_t reg)
-     }
- }
- 
--static void pca9552_write(PCA9552State *s, uint8_t reg, uint8_t data)
-+static void pca955x_write(PCA955xState *s, uint8_t reg, uint8_t data)
- {
-     switch (reg) {
-     case PCA9552_PSC0:
-@@ -94,7 +94,7 @@ static void pca9552_write(PCA9552State *s, uint8_t reg, uint8_t data)
-     case PCA9552_LS2:
-     case PCA9552_LS3:
-         s->regs[reg] = data;
--        pca9552_update_pin_input(s);
-+        pca955x_update_pin_input(s);
-         break;
- 
-     case PCA9552_INPUT0:
-@@ -110,7 +110,7 @@ static void pca9552_write(PCA9552State *s, uint8_t reg, uint8_t data)
-  * after each byte is sent to or received by the device. The index
-  * rollovers to 0 when the maximum register address is reached.
-  */
--static void pca9552_autoinc(PCA9552State *s)
-+static void pca955x_autoinc(PCA955xState *s)
- {
-     if (s->pointer != 0xFF && s->pointer & PCA9552_AUTOINC) {
-         uint8_t reg = s->pointer & 0xf;
-@@ -120,12 +120,12 @@ static void pca9552_autoinc(PCA9552State *s)
-     }
- }
- 
--static uint8_t pca9552_recv(I2CSlave *i2c)
-+static uint8_t pca955x_recv(I2CSlave *i2c)
- {
--    PCA9552State *s = PCA9552(i2c);
-+    PCA955xState *s = PCA955X(i2c);
-     uint8_t ret;
- 
--    ret = pca9552_read(s, s->pointer & 0xf);
-+    ret = pca955x_read(s, s->pointer & 0xf);
- 
-     /*
-      * From the Specs:
-@@ -143,40 +143,40 @@ static uint8_t pca9552_recv(I2CSlave *i2c)
-                       __func__);
-     }
- 
--    pca9552_autoinc(s);
-+    pca955x_autoinc(s);
- 
-     return ret;
- }
- 
--static int pca9552_send(I2CSlave *i2c, uint8_t data)
-+static int pca955x_send(I2CSlave *i2c, uint8_t data)
- {
--    PCA9552State *s = PCA9552(i2c);
-+    PCA955xState *s = PCA955X(i2c);
- 
-     /* First byte sent by is the register address */
-     if (s->len == 0) {
-         s->pointer = data;
-         s->len++;
-     } else {
--        pca9552_write(s, s->pointer & 0xf, data);
-+        pca955x_write(s, s->pointer & 0xf, data);
- 
--        pca9552_autoinc(s);
-+        pca955x_autoinc(s);
-     }
- 
-     return 0;
- }
- 
--static int pca9552_event(I2CSlave *i2c, enum i2c_event event)
-+static int pca955x_event(I2CSlave *i2c, enum i2c_event event)
- {
--    PCA9552State *s = PCA9552(i2c);
-+    PCA955xState *s = PCA955X(i2c);
- 
-     s->len = 0;
-     return 0;
- }
- 
--static void pca9552_get_led(Object *obj, Visitor *v, const char *name,
-+static void pca955x_get_led(Object *obj, Visitor *v, const char *name,
-                             void *opaque, Error **errp)
- {
--    PCA9552State *s = PCA9552(obj);
-+    PCA955xState *s = PCA955X(obj);
-     int led, rc, reg;
-     uint8_t state;
- 
-@@ -195,7 +195,7 @@ static void pca9552_get_led(Object *obj, Visitor *v, const char *name,
-      * reading the INPUTx reg
-      */
-     reg = PCA9552_LS0 + led / 4;
--    state = (pca9552_read(s, reg) >> (led % 8)) & 0x3;
-+    state = (pca955x_read(s, reg) >> (led % 8)) & 0x3;
-     visit_type_str(v, name, (char **)&led_state[state], errp);
- }
- 
-@@ -209,10 +209,10 @@ static inline uint8_t pca955x_ledsel(uint8_t oldval, int led_num, int state)
-                 ((state & 0x3) << (led_num << 1));
- }
- 
--static void pca9552_set_led(Object *obj, Visitor *v, const char *name,
-+static void pca955x_set_led(Object *obj, Visitor *v, const char *name,
-                             void *opaque, Error **errp)
- {
--    PCA9552State *s = PCA9552(obj);
-+    PCA955xState *s = PCA955X(obj);
-     Error *local_err = NULL;
-     int led, rc, reg, val;
-     uint8_t state;
-@@ -244,9 +244,9 @@ static void pca9552_set_led(Object *obj, Visitor *v, const char *name,
-     }
- 
-     reg = PCA9552_LS0 + led / 4;
--    val = pca9552_read(s, reg);
-+    val = pca955x_read(s, reg);
-     val = pca955x_ledsel(val, led % 4, state);
--    pca9552_write(s, reg, val);
-+    pca955x_write(s, reg, val);
- }
- 
- static const VMStateDescription pca9552_vmstate = {
-@@ -254,17 +254,17 @@ static const VMStateDescription pca9552_vmstate = {
-     .version_id = 0,
-     .minimum_version_id = 0,
-     .fields = (VMStateField[]) {
--        VMSTATE_UINT8(len, PCA9552State),
--        VMSTATE_UINT8(pointer, PCA9552State),
--        VMSTATE_UINT8_ARRAY(regs, PCA9552State, PCA9552_NR_REGS),
--        VMSTATE_I2C_SLAVE(i2c, PCA9552State),
-+        VMSTATE_UINT8(len, PCA955xState),
-+        VMSTATE_UINT8(pointer, PCA955xState),
-+        VMSTATE_UINT8_ARRAY(regs, PCA955xState, PCA955X_NR_REGS),
-+        VMSTATE_I2C_SLAVE(i2c, PCA955xState),
-         VMSTATE_END_OF_LIST()
-     }
- };
- 
- static void pca9552_reset(DeviceState *dev)
- {
--    PCA9552State *s = PCA9552(dev);
-+    PCA955xState *s = PCA955X(dev);
- 
-     s->regs[PCA9552_PSC0] = 0xFF;
-     s->regs[PCA9552_PWM0] = 0x80;
-@@ -275,15 +275,15 @@ static void pca9552_reset(DeviceState *dev)
-     s->regs[PCA9552_LS2] = 0x55;
-     s->regs[PCA9552_LS3] = 0x55;
- 
--    pca9552_update_pin_input(s);
-+    pca955x_update_pin_input(s);
- 
-     s->pointer = 0xFF;
-     s->len = 0;
- }
- 
--static void pca9552_initfn(Object *obj)
-+static void pca955x_initfn(Object *obj)
- {
--    PCA9552State *s = PCA9552(obj);
-+    PCA955xState *s = PCA955X(obj);
-     int led;
- 
-     /* If support for the other PCA955X devices are implemented, these
-@@ -297,7 +297,7 @@ static void pca9552_initfn(Object *obj)
-         char *name;
- 
-         name = g_strdup_printf("led%d", led);
--        object_property_add(obj, name, "bool", pca9552_get_led, pca9552_set_led,
-+        object_property_add(obj, name, "bool", pca955x_get_led, pca955x_set_led,
-                             NULL, NULL);
-         g_free(name);
-     }
-@@ -308,9 +308,9 @@ static void pca9552_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
- 
--    k->event = pca9552_event;
--    k->recv = pca9552_recv;
--    k->send = pca9552_send;
-+    k->event = pca955x_event;
-+    k->recv = pca955x_recv;
-+    k->send = pca955x_send;
-     dc->reset = pca9552_reset;
-     dc->vmsd = &pca9552_vmstate;
- }
-@@ -318,14 +318,14 @@ static void pca9552_class_init(ObjectClass *klass, void *data)
- static const TypeInfo pca9552_info = {
-     .name          = TYPE_PCA9552,
-     .parent        = TYPE_I2C_SLAVE,
--    .instance_init = pca9552_initfn,
--    .instance_size = sizeof(PCA9552State),
-+    .instance_init = pca955x_initfn,
-+    .instance_size = sizeof(PCA955xState),
-     .class_init    = pca9552_class_init,
- };
- 
--static void pca9552_register_types(void)
-+static void pca955x_register_types(void)
- {
-     type_register_static(&pca9552_info);
- }
- 
--type_init(pca9552_register_types)
-+type_init(pca955x_register_types)
+ static Property pca955x_properties[] = {
 -- 
 2.21.3
 

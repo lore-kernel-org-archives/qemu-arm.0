@@ -1,85 +1,85 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3983844lfm;
-        Tue, 23 Jun 2020 03:51:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxstrsEgjAdiu6zaWmOzGOWvi2qsHAnjrXOOsMHQcELViZpv+oo4HTLCCnhUH2HzCGZoGl8
-X-Received: by 2002:a17:906:e298:: with SMTP id gg24mr19353338ejb.120.1592909468803;
-        Tue, 23 Jun 2020 03:51:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592909468; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3983999lfm;
+        Tue, 23 Jun 2020 03:51:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwZwe2g3ErlX2raWclUnHMuHKM8VdgE33P+XkbxWcSwAyKqjhoX4iPrLXR2qYfiy2+zzqtY
+X-Received: by 2002:a17:906:b6d1:: with SMTP id ec17mr15914662ejb.486.1592909482978;
+        Tue, 23 Jun 2020 03:51:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592909482; cv=none;
         d=google.com; s=arc-20160816;
-        b=FkbTVpzfVTWZU0mq4fxYvvG/EK0imky5Cr1MmaYVi0UsnxTKI6dvbfMcHGAKaKIpG5
-         q4X4yEbK1bcNRByTmybkrIdDDyojtJ7SzqUbh7+M4lCNsX/2H32WQeF7p6W66hwXZMlm
-         nAX5I+rzqZn9KjLxwl7ZWMzdyr/zFsMjSdRllu8c2EXEOMzD20AF6C/Y7pC6KudFdzpN
-         TqazcDAJ7fcst4dHkOWe+0FaHPznemuyOyLiaD5Q2/wHJnliCNhml8sO1UEmsXgyZcME
-         bNkRoutjoTQ6HKDurA6BY5m/ePSIMCPdkpNnIXH4wI2Oe9jAt6SoofnmPu9fT5VEh31e
-         6jbA==
+        b=k0hwWVDWIHJfrlarmx2sj37fAEE9BPCGB7sE3FCKULArU18uJZ39wT3lSUgk1J893k
+         tdcVmjKkIeXGVcYQCDRcCsMNzQYbdAvj+rQspYwrO8cziRjFQX7Gez6hug8F1tJ2yNiW
+         P35ruQi2KZHbgkn7mXIunimGvFDyFDq3VgbdDwpKT2gaDeTn3F+ysnuF17U9/XTeMNwB
+         lXXqE7VND5NzGDnkwJZpxT2W/rfVurCu2YauEw9tpebySOmtDdhiMv9oZ+hHNHUIHqJ2
+         H2NCH/akR3GDq5sjxwi51Zjdog2/+S16llIwbYB7NE13tfoZdWoRwgHvh1RkmISqCmPB
+         886Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding:mime-version
          :references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=1BS0abpdiPuVnJZzNFn28vzuVgg/Ij6oTCIsBYhyt1Y=;
-        b=sPt5awUcETDGdIbqWRtQlBFGj4uHYqszJqitfRNb/wTmH/nn4GJ9GZsxhVTAdINEqF
-         K0W1pvoL5LEAZwDJs/uu29IB9XE7NHm/coHH1/D+Hc5q2a2fY/19Z8zX6S8EGNRYViDA
-         02SVbaHTNZ8WFBo33qDJXHUxqnOJTftm/LT1g0FR5bkbpqK6NYNE5YF9u1+zNiYyjKSH
-         jTi4sZS/t7C2n09oNulyCqHDNyihxvlcYgqdQKc3X/kIEeEof2IRNyTT36FPoeI8qd3D
-         ot1oV1T37INWyiM+5Gwvyj99Fcv9W2dVmPS9vjuiOCvywXCkwrKlDIS7z3aOu1RdBRW3
-         dGSw==
+        bh=HfdDklJm7xq7V0EjioTwWRWt93bUpNOFzkHuwwNGVEE=;
+        b=GJ4k5jnw864LluDgEa8h/d7M6KMt9emXL/bKC3jyBkH8Cw8kml173+3ryicVuXENnm
+         +LyTQkDCW+ZGzhogdHC48y9YqvWxF21/CMN5n0+tbNqFecxpqoWO/FVVvyo1o/RpDMAh
+         EuffRS0Ldg7D/geR6/7BlTpwy/Teusowk2vAIMVlUQdmX6sfP2u37R71czbGGnN5vjqP
+         H10NWmfZD7TirLWiGGOpRLh+djdnp71RwTKtXswY+4rP6AoMKDuXzbfNBt0n4eyrxpOd
+         lajZgvgOeYufpvvgldn04bAYHlI4n7f6ps+MpWfVXK+89JjCQi1zQG+/UXd45/YeTQRU
+         3s3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XrCKsBD+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WoTyA9r7;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id k25si12401072ejk.678.2020.06.23.03.51.08;
-        Tue, 23 Jun 2020 03:51:08 -0700 (PDT)
+        by mx.google.com with ESMTP id nh7si10369109ejb.155.2020.06.23.03.51.22;
+        Tue, 23 Jun 2020 03:51:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XrCKsBD+;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WoTyA9r7;
        spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1732280AbgFWKvH (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 23 Jun 2020 06:51:07 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:32571 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1732254AbgFWKvF (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 23 Jun 2020 06:51:05 -0400
+        id S1732274AbgFWKvW (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 23 Jun 2020 06:51:22 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:21698 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1732254AbgFWKvQ (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Tue, 23 Jun 2020 06:51:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1592909464;
+        s=mimecast20190719; t=1592909475;
         h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
          to:to:cc:cc:mime-version:mime-version:  content-type:content-type:content-type:
          content-transfer-encoding:content-transfer-encoding:
          in-reply-to:in-reply-to:references:references;
-        bh=1BS0abpdiPuVnJZzNFn28vzuVgg/Ij6oTCIsBYhyt1Y=;
-        b=XrCKsBD+LoDsTLJRbqvQuZYl1EYwHPPLce51hEAIXLLa+mXwATtJvVq1naf5yfGu9PItPe
-        yp3a4C8EQ9NwVQrCrJ3Nc8FldUhjj770YueN44AjuE+6iIMkyoSqV+LZPG0mkCJw/eHKn2
-        jxHznudgGUZGfaVpxyPDrr2NUyr5S0E=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-43-zzMZoXWTPB-iakWkIFsJrw-1; Tue, 23 Jun 2020 06:51:02 -0400
-X-MC-Unique: zzMZoXWTPB-iakWkIFsJrw-1
-Received: by mail-wr1-f70.google.com with SMTP id o12so12890972wrj.23
-        for <kvm@vger.kernel.org>; Tue, 23 Jun 2020 03:51:02 -0700 (PDT)
+        bh=HfdDklJm7xq7V0EjioTwWRWt93bUpNOFzkHuwwNGVEE=;
+        b=WoTyA9r7uLfEilHBz+fpdwN8EH7vzxqrL0d+Mv67D7e58sZhUE0HFft2uT9E+q5VAKtIb+
+        mNO/yX1xODK89ExmnGM0rRd44Plgb0S7gkD4h4g0mk242VkJ2pkKEcWjGgAZLtyem5GSNf
+        8c59iLPMSfJW2c2vlUk0tYc0LqhnQoE=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-482-6PE5JuuAObWiCp-9pq954A-1; Tue, 23 Jun 2020 06:51:13 -0400
+X-MC-Unique: 6PE5JuuAObWiCp-9pq954A-1
+Received: by mail-wm1-f72.google.com with SMTP id l2so3486737wmi.2
+        for <kvm@vger.kernel.org>; Tue, 23 Jun 2020 03:51:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=1BS0abpdiPuVnJZzNFn28vzuVgg/Ij6oTCIsBYhyt1Y=;
-        b=DInpBgyoL2TMelunCIzlM/VyEM+5TMGz24NYkIKudpi6uUGc05Thek+qm0qppi99z6
-         wZpxj+rzg5YQ67tolhgs8y7fwWNyd6MoSlG+lorxc4Q5G3vRK5v/96Q1Cys35EGYmrio
-         U2Vhyujp2J3x6WyDdOkwh67iL2rTa83NdU1DvVsxZrAW/kMMKGtGxqIjGMK3FTjHW4gN
-         x8X6f5Ts4mqe5eZExc0yl5QQpMdV3k/5+5crY+3JnxC70ZXKL3GQlpUyoHSKVVJd5i1O
-         JDg98i5jeft08zjciCuAUhN4VmK2dFntVkoBMq3Dvs/iNkkBIuuw8Y7Lsbt/oDrMCTBr
-         k+Cw==
-X-Gm-Message-State: AOAM533v2gzxyvdcMtzMUzDIMHqbsMFs+bT5ZoCOmNleejIsc6cMIFuI
-        yqNGyVMbMK/woUDdjDFVbCz256fKDnqtfoPH/1Is2W8XUT3uiJ13thiofPHJ8tQlwlwjJJscBr8
-        B70dLPXKhPBXm
-X-Received: by 2002:adf:9205:: with SMTP id 5mr23264884wrj.232.1592909461398;
-        Tue, 23 Jun 2020 03:51:01 -0700 (PDT)
-X-Received: by 2002:adf:9205:: with SMTP id 5mr23264860wrj.232.1592909461243;
-        Tue, 23 Jun 2020 03:51:01 -0700 (PDT)
+        bh=HfdDklJm7xq7V0EjioTwWRWt93bUpNOFzkHuwwNGVEE=;
+        b=dmpUGaTJYjX4SkKff0eBXeVM3rTvQtIVILd2qBlx0KT9UfwZShuXiaUFyM6X9MTxFW
+         GpjKJChtaat/ZnQqdeH+tT+O+Zb4hg+Rf1WpSJ4VPZ9xYtSUO0i+YUD4zkIC6Xobnk/x
+         aIg5GovXEkkJTzGZPAIHtn1e+8TQX4VTHCrphSvvfBeQ5UEYn9wuGeQ2Acv9KbteD10m
+         iijUyz0wRwaAq8IXv/nbQi7tEvyUgu3GWe5Ct3Waz76tqJ8kq2q/BrEOtPlGXOb4HXBU
+         XDFYz7lBwwuugLlYfzkh7ZEUa3u7O97T7R9kE2nNIfZz9npjRB7fhoOfwkBp5ymKbcEX
+         bZ1w==
+X-Gm-Message-State: AOAM532JHERPH1/a6lE2g324r8Xf+YhsHR8yKaU4gzwSuYoQBfo2gXQP
+        3KAaHaF3gpBTcceyro91rc8oEGL16tmMyiujClkbDZmPm7X7dac+1//v7slUaX7mlRtEATC75KG
+        k2qDXKzONkfn9
+X-Received: by 2002:adf:f889:: with SMTP id u9mr26631714wrp.149.1592909472558;
+        Tue, 23 Jun 2020 03:51:12 -0700 (PDT)
+X-Received: by 2002:adf:f889:: with SMTP id u9mr26631685wrp.149.1592909472348;
+        Tue, 23 Jun 2020 03:51:12 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net. [83.51.162.1])
-        by smtp.gmail.com with ESMTPSA id 104sm22641857wrl.25.2020.06.23.03.50.59
+        by smtp.gmail.com with ESMTPSA id p13sm11583726wrn.0.2020.06.23.03.51.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 Jun 2020 03:51:00 -0700 (PDT)
+        Tue, 23 Jun 2020 03:51:11 -0700 (PDT)
 From:   =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To:     qemu-devel@nongnu.org
 Cc:     Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
@@ -99,9 +99,9 @@ Cc:     Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
         Marcelo Tosatti <mtosatti@redhat.com>,
         Thomas Huth <thuth@redhat.com>,
         =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH 1/7] accel/kvm: Let kvm_check_extension use global KVM state
-Date:   Tue, 23 Jun 2020 12:50:46 +0200
-Message-Id: <20200623105052.1700-2-philmd@redhat.com>
+Subject: [PATCH 3/7] accel/kvm: Simplify kvm_check_extension_list()
+Date:   Tue, 23 Jun 2020 12:50:48 +0200
+Message-Id: <20200623105052.1700-4-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200623105052.1700-1-philmd@redhat.com>
 References: <20200623105052.1700-1-philmd@redhat.com>
@@ -113,30 +113,40 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: aqWTgECshgqA
+X-TUID: cKEv2vwly4AY
 
-As KVM supported extentions those should be the same for
-all VMs, it is safe to directly use the global kvm_state
-in kvm_check_extension().
+The KVMState* argument is now unused, drop it.
 
-Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- accel/kvm/kvm-all.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ accel/kvm/kvm-all.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index f24d7da783..934a7d6b24 100644
+index b6b39b0e92..afd14492a0 100644
 --- a/accel/kvm/kvm-all.c
 +++ b/accel/kvm/kvm-all.c
-@@ -913,7 +913,7 @@ int kvm_check_extension(KVMState *s, unsigned int extension)
- {
-     int ret;
+@@ -1088,7 +1088,7 @@ static int kvm_check_many_ioeventfds(void)
+ }
  
--    ret = kvm_ioctl(s, KVM_CHECK_EXTENSION, extension);
-+    ret = kvm_ioctl(kvm_state, KVM_CHECK_EXTENSION, extension);
-     if (ret < 0) {
-         ret = 0;
+ static const KVMCapabilityInfo *
+-kvm_check_extension_list(KVMState *s, const KVMCapabilityInfo *list)
++kvm_check_extension_list(const KVMCapabilityInfo *list)
+ {
+     while (list->name) {
+         if (!kvm_check_extension(list->value)) {
+@@ -2104,10 +2104,10 @@ static int kvm_init(MachineState *ms)
+         nc++;
      }
+ 
+-    missing_cap = kvm_check_extension_list(s, kvm_required_capabilites);
++    missing_cap = kvm_check_extension_list(kvm_required_capabilites);
+     if (!missing_cap) {
+         missing_cap =
+-            kvm_check_extension_list(s, kvm_arch_required_capabilities);
++            kvm_check_extension_list(kvm_arch_required_capabilities);
+     }
+     if (missing_cap) {
+         ret = -EINVAL;
 -- 
 2.21.3

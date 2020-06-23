@@ -1,103 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4350377lfm;
-        Tue, 23 Jun 2020 12:52:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzICOBjbDvmaU/967iayy/hWlIYpBwyyY4Lx2XAPDWVvckOqhyKdX1nhOQjTVX7RL+wd/CO
-X-Received: by 2002:a25:4e0a:: with SMTP id c10mr12378912ybb.281.1592941975332;
-        Tue, 23 Jun 2020 12:52:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592941975; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4350460lfm;
+        Tue, 23 Jun 2020 12:53:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyQq95PYNyC65TmWRJV8DBbDq07oK3hZLVAdZyDhaUwbLOKF+eSZPfzJxtjhW8zZak3tXCw
+X-Received: by 2002:a25:84cc:: with SMTP id x12mr36316846ybm.454.1592941985178;
+        Tue, 23 Jun 2020 12:53:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592941985; cv=none;
         d=google.com; s=arc-20160816;
-        b=jmJYq1RBT+pIt0vbfo779paQ9YQCYZGglcmhJ9qTss3kuwGdSNPehLSzbv/rwhFu2t
-         fLcrgNsXenYPOgzVwONchGx2tTs2sIoQ90pHv/CZFkKQDfz9SLgwF2lNYfcff54mz8o2
-         ZrbqcHqdaiKoF/e0WUio5jawkYAW8Cd9uZcRaclg/E6D5ZymRUC+rse/mu92ibPEbsU4
-         cRTmSeOY4rbwwXfeAoWde5U2C8DMmvyRmPaCx5Vwf3HKo6b/P7qsw2FLbhZDXqI6o199
-         dPYkRO35sH3G9VS38G+2FLkP84z2U7jvwzt1Asf18ykfu2LS+3yCIstOM4ZFioKQg6wT
-         9/Dw==
+        b=rhGdcbwnNRk29zNK1lslKtRILOVEl50CsgM/AuPOYWLj2Tj2cB5E1pGOCEwzpr/kTI
+         s6rGolyEPwYlfGh1c2nIs3jevA/TvNBJj8Fag608HBnyoprKyZ0UxGU4pYqfVXoiYkZk
+         uIuKCUb0zlL0H1lLVNOqS4ZNoBqCO8b2qWEGq4L/Qh7NAXBjpXFeCjYjMZ4mq4Pf29QH
+         oLXWC8CKTb2ja5iA8S7W2weUJQ+n/bcvCANZ8PhfTh7jStSZuGJ1WlsWQWKhfOkdXN7e
+         AucONoBE11Myb+CeCCZplBSF9FQM3Z456L4ONEK1Dc1uK6iTKeRD/uvO3vj5/HjOerEc
+         PArg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=MnEUEMcwR7Hj9uVrJfk+ZDRL7t8v7euyweuMLwQ7BsE=;
-        b=E64l7VRO5n2VDJ5ohShFbMqW8rYWUyiKvusFoPIbm58lA1H9R+4b1kwfRgXYdnOhlR
-         vrYWioWVDcsqkQ9RiThkmuGm5KPCTn+d2Uxo2tQj2ckn8Kl2oDm5m7q0v4uCB8xutJrq
-         bDhcihzOqRNw6Q1wh5DtPy2scSqKYeaGAsvCJ26KSAsR5FEqCx8mnaIURi1VZUKAg+7I
-         OsFnxSOJDkA6f358wf7R388eFWYZQ8sAzvxtInJkCOcNdIEq4495SGZor40ftFwfX/Ti
-         KDZb8jYWLpfcdZKTOI1Fbh52a2s4i2K3AeBOg0orWzEmjvEoH9uUAalBwU134+ofug6g
-         /I8A==
+        bh=WQXYKDBbAkgmCq2txmQfjRI97j0dYv9eb4akQx5Fjp4=;
+        b=yfWOWadRKpYI455IcGiU/6yQBuBMJ3cadIXd4LabS1yD4GD7jjDcWZQFS33d9MEUb4
+         bt0aZY6ytvnQY8CDQRfOuK8Wb5Mv4jVoDEWA82msfiM5s5BteOrNV7QxRVgG/nvrOYo7
+         oEZWaC77gN+MKESM57CVRDnKt/fgAkuRrLzzneH0PuMxs7DajYYqT++rvWb6KqnEP6Dt
+         mdX6+c1HSMhVCHHy0bPLWz+zKqiqTWN6Ltnh75WV1ks+tfkB9BRPapRBw5prxRCXGDBt
+         jBqA0ka+NcbIvRxrKMzXv4/vbw3+zxUEnHghUbx0oZnjp/GKh/senLHeJXfkpSjIPHsz
+         nOPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=t8l+Zsp5;
+       dkim=fail header.i=@linaro.org header.s=google header.b="JJin/ksi";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r63si19248704ybc.159.2020.06.23.12.52.55
+        by mx.google.com with ESMTPS id d69si16609794ybh.331.2020.06.23.12.53.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 12:52:55 -0700 (PDT)
+        Tue, 23 Jun 2020 12:53:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=t8l+Zsp5;
+       dkim=fail header.i=@linaro.org header.s=google header.b="JJin/ksi";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54348 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55346 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnoyU-0007n0-Ft
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 15:52:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42942)
+	id 1jnoye-0008Eh-Ca
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 15:53:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42952)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jnok4-0005Cw-DT
+ id 1jnok4-0005Dd-LX
  for qemu-arm@nongnu.org; Tue, 23 Jun 2020 15:38:00 -0400
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432]:33123)
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:42704)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jnojx-0005tp-Pa
+ id 1jnojz-0005uT-HJ
  for qemu-arm@nongnu.org; Tue, 23 Jun 2020 15:38:00 -0400
-Received: by mail-pf1-x432.google.com with SMTP id f9so1732503pfn.0
- for <qemu-arm@nongnu.org>; Tue, 23 Jun 2020 12:37:52 -0700 (PDT)
+Received: by mail-pl1-x643.google.com with SMTP id k6so9533392pll.9
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2020 12:37:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=MnEUEMcwR7Hj9uVrJfk+ZDRL7t8v7euyweuMLwQ7BsE=;
- b=t8l+Zsp5Gtr4lkgZouMBEqTQ1Kp4AM3WCrc7fI/FFlFsbMbt4aNdnRsS6mmlWgWer5
- 8YMOGYJMvCKSUj0y3q2WrG7mCBwP/TrNkMIlkzKhlLGeJ354B6te7QwTbKGNFknI2Tyz
- GJpAXrkgjqVCoPj9LIKIlxUbNwu23pRLUO+uHeWwzAgAeluHOAypvYZnhho6Eu2i1ma2
- gifI61NubRlwc39Nvac9RTZImhv01Wg2HPYF0b2LgZ7pTGb+hnWGY8KKA+q0MdFXMIn4
- +R2fyuJ7p4XtO+mYPqQ2547PuKtF+QPyFaWG4Iox6o/aXdP6x5ETUJT1Bae4Yfbgd/Oe
- 6P5A==
+ bh=WQXYKDBbAkgmCq2txmQfjRI97j0dYv9eb4akQx5Fjp4=;
+ b=JJin/ksifIAF8LFkSVx+4qaa3vkAcfStZ5edNlvEAF64LpDa9JpYYjc8CTXgyMjcrv
+ his6Wa4L//Ym1KfRnvJpgj6fOog9UHAZ4uYITNej8Bt2G/EVZPP/DxaZ5BZV2XZvrxbC
+ ujoZSrgZVrDZIzYgX5wJx1VkrWaNSodCmAmwlyajcS8B9Nrzq7nQIeI4Gi1wrqD2M4Cc
+ 8KX815M1nyYkMNjtSub+xR+teb/usXX+kE1phxT5pLNL5zDZeiFQs6bj3s5Qwts5h3Gx
+ kdBW33nu8Ht+Mf8SrZomtgDAwciglrTy25CMHAxFl9q0w+6bo02YSS4Bu62u0aBMDrTv
+ EjWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=MnEUEMcwR7Hj9uVrJfk+ZDRL7t8v7euyweuMLwQ7BsE=;
- b=eoyMpUiwu2c3W8ukYO6eTMFVMmcCIOgkQlVGceG7Z7HpRP9Fv1yxh4KG0YLSMadXPL
- D/HzD5YXGQD5Ov8YJRsKz+aT37nd3h0S9MIPvL1YHRsHbgFQtClbHxKBgrPTBOtX0cRG
- 4jH8lh2FVFLgZslXMUJ5cYL7NOEnSns8kqe4r+4HezPcqL2k1WAaCqOtYeu9j/xgDuRn
- C/1JzV4mziE8YvVFcjP7Ymg/rgY/xp+MzFtuqs18+4KvrPXK7h1ud5SLPJmQW9osyreH
- alWAToCQMkHw279EbkilH0M6fo1B+Fr26b8As62pFIIdqyY7MEI0hqne20xe3yjQofx0
- zlTA==
-X-Gm-Message-State: AOAM532Lp9kHqM090PFXCYWtB4hzB1dUstpSynnlJE9Doq72qEcIG8T9
- bxLMoKFCAHZfX0kt0/znH7F6lQ==
-X-Received: by 2002:a65:62ce:: with SMTP id m14mr19042969pgv.410.1592941071534; 
- Tue, 23 Jun 2020 12:37:51 -0700 (PDT)
+ bh=WQXYKDBbAkgmCq2txmQfjRI97j0dYv9eb4akQx5Fjp4=;
+ b=Kt3kKJBMcq4Scd2yeLT6xJ+N+uxN0bLF1aWTcBKjnft2ftax5XXK+ZkL/+R4+A/zx7
+ yvhZydLFENf4GcF7II5FhcTLi1/HSmgGJoaFRX2kvczGLK9sU4rsRv4FZtjACpC3Al8J
+ ZQKMvNHgx0wrXoUqSZ5f6cUgov5DmMs7+oqIgqvMRjlgN3A4MZ3lOTlsYiWgFb1FVNPh
+ T3v1KVthE2RsYa2HA2LnrowsbIMvPIWIFBsPP/6kkwGll1dV/o3grB5GWcO6Xzdgz9wp
+ ru4bnOdZxNqabijjqA0UeTV74rXK0+pZDCSn2tPb1DUr+CANzPhZSPUhL0v/b5YJgqBr
+ I6wA==
+X-Gm-Message-State: AOAM531hri+JJjLil7hIQ5oEJSHoHYSiD8fjFFZP7q2T6g4KOdZUgg+2
+ 1dPglgC6fSSogVNpSbXnpH05Cw==
+X-Received: by 2002:a17:902:8b8a:: with SMTP id
+ ay10mr12640494plb.236.1592941074281; 
+ Tue, 23 Jun 2020 12:37:54 -0700 (PDT)
 Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
  [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id p12sm17927642pfq.69.2020.06.23.12.37.50
+ by smtp.gmail.com with ESMTPSA id p12sm17927642pfq.69.2020.06.23.12.37.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jun 2020 12:37:50 -0700 (PDT)
+ Tue, 23 Jun 2020 12:37:53 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v8 37/45] target/arm: Add mte helpers for sve scatter/gather
- memory ops
-Date: Tue, 23 Jun 2020 12:36:50 -0700
-Message-Id: <20200623193658.623279-38-richard.henderson@linaro.org>
+Subject: [PATCH v8 39/45] target/arm: Implement data cache set allocation tags
+Date: Tue, 23 Jun 2020 12:36:52 -0700
+Message-Id: <20200623193658.623279-40-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200623193658.623279-1-richard.henderson@linaro.org>
 References: <20200623193658.623279-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -123,1384 +123,115 @@ Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, david.spickett@linaro.org,
  steplong@quicinc.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wu4/HtsK6Wj6
+X-TUID: npym4vRH+Pbl
 
-Because the elements are non-sequential, we cannot eliminate many
-tests straight away like we can for sequential operations.  But
-we often have the PTE details handy, so we can test for Tagged.
+This is DC GVA and DC GZVA, and the tag check for DC ZVA.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-sve.h    | 285 ++++++++++++++++
- target/arm/sve_helper.c    | 185 +++++++++--
- target/arm/translate-sve.c | 650 +++++++++++++++++++++++++------------
- 3 files changed, 872 insertions(+), 248 deletions(-)
+v2: Use allocation_tag_mem + memset.
+v3: Require pre-cleaned addresses.
+v6: Move DCZ block size assert to cpu realize.
+    Perform a tag check for DC ZVA.
+---
+ target/arm/cpu.h           |  4 +++-
+ target/arm/helper.c        | 16 ++++++++++++++++
+ target/arm/translate-a64.c | 39 ++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 58 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index f48752eb42..63c4a087ca 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -1617,6 +1617,115 @@ DEF_HELPER_FLAGS_6(sve_ldsds_le_zd, TCG_CALL_NO_WG,
- DEF_HELPER_FLAGS_6(sve_ldsds_be_zd, TCG_CALL_NO_WG,
-                    void, env, ptr, ptr, ptr, tl, i32)
- 
-+DEF_HELPER_FLAGS_6(sve_ldbsu_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhsu_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhsu_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldss_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldss_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldbss_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhss_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhss_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_6(sve_ldbsu_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhsu_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhsu_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldss_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldss_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldbss_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhss_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhss_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_6(sve_ldbdu_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhdu_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhdu_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldsdu_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldsdu_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_lddd_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_lddd_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldbds_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhds_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhds_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldsds_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldsds_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_6(sve_ldbdu_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhdu_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhdu_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldsdu_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldsdu_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_lddd_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_lddd_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldbds_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhds_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhds_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldsds_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldsds_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_6(sve_ldbdu_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhdu_le_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhdu_be_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldsdu_le_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldsdu_be_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_lddd_le_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_lddd_be_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldbds_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhds_le_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldhds_be_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldsds_le_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldsds_be_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
- DEF_HELPER_FLAGS_6(sve_ldffbsu_zsu, TCG_CALL_NO_WG,
-                    void, env, ptr, ptr, ptr, tl, i32)
- DEF_HELPER_FLAGS_6(sve_ldffhsu_le_zsu, TCG_CALL_NO_WG,
-@@ -1726,6 +1835,115 @@ DEF_HELPER_FLAGS_6(sve_ldffsds_le_zd, TCG_CALL_NO_WG,
- DEF_HELPER_FLAGS_6(sve_ldffsds_be_zd, TCG_CALL_NO_WG,
-                    void, env, ptr, ptr, ptr, tl, i32)
- 
-+DEF_HELPER_FLAGS_6(sve_ldffbsu_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhsu_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhsu_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffss_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffss_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffbss_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhss_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhss_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_6(sve_ldffbsu_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhsu_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhsu_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffss_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffss_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffbss_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhss_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhss_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_6(sve_ldffbdu_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhdu_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhdu_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffsdu_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffsdu_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffdd_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffdd_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffbds_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhds_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhds_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffsds_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffsds_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_6(sve_ldffbdu_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhdu_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhdu_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffsdu_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffsdu_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffdd_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffdd_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffbds_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhds_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhds_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffsds_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffsds_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_6(sve_ldffbdu_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhdu_le_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhdu_be_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffsdu_le_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffsdu_be_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffdd_le_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffdd_be_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffbds_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhds_le_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffhds_be_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffsds_le_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_ldffsds_be_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
- DEF_HELPER_FLAGS_6(sve_stbs_zsu, TCG_CALL_NO_WG,
-                    void, env, ptr, ptr, ptr, tl, i32)
- DEF_HELPER_FLAGS_6(sve_sths_le_zsu, TCG_CALL_NO_WG,
-@@ -1793,4 +2011,71 @@ DEF_HELPER_FLAGS_6(sve_stdd_le_zd, TCG_CALL_NO_WG,
- DEF_HELPER_FLAGS_6(sve_stdd_be_zd, TCG_CALL_NO_WG,
-                    void, env, ptr, ptr, ptr, tl, i32)
- 
-+DEF_HELPER_FLAGS_6(sve_stbs_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_sths_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_sths_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stss_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stss_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_6(sve_stbs_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_sths_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_sths_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stss_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stss_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_6(sve_stbd_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_sthd_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_sthd_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stsd_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stsd_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stdd_le_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stdd_be_zsu_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_6(sve_stbd_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_sthd_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_sthd_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stsd_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stsd_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stdd_le_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stdd_be_zss_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_6(sve_stbd_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_sthd_le_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_sthd_be_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stsd_le_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stsd_be_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stdd_le_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+DEF_HELPER_FLAGS_6(sve_stdd_be_zd_mte, TCG_CALL_NO_WG,
-+                   void, env, ptr, ptr, ptr, tl, i32)
-+
- DEF_HELPER_FLAGS_4(sve2_pmull_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 7aca4ad384..ad974c2cc5 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -5354,7 +5354,8 @@ static target_ulong off_zd_d(void *reg, intptr_t reg_ofs)
- static inline QEMU_ALWAYS_INLINE
- void sve_ld1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-                target_ulong base, uint32_t desc, uintptr_t retaddr,
--               int esize, int msize, zreg_off_fn *off_fn,
-+               uint32_t mtedesc, int esize, int msize,
-+               zreg_off_fn *off_fn,
-                sve_ldst1_host_fn *host_fn,
-                sve_ldst1_tlb_fn *tlb_fn)
- {
-@@ -5382,7 +5383,9 @@ void sve_ld1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-                         cpu_check_watchpoint(env_cpu(env), addr, msize,
-                                              info.attrs, BP_MEM_READ, retaddr);
-                     }
--                    /* TODO: MTE check */
-+                    if (mtedesc && arm_tlb_mte_tagged(&info.attrs)) {
-+                        mte_check1(env, mtedesc, addr, retaddr);
-+                    }
-                     host_fn(&scratch, reg_off, info.host);
-                 } else {
-                     /* Element crosses the page boundary. */
-@@ -5393,7 +5396,9 @@ void sve_ld1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-                                              msize, info.attrs,
-                                              BP_MEM_READ, retaddr);
-                     }
--                    /* TODO: MTE check */
-+                    if (mtedesc && arm_tlb_mte_tagged(&info.attrs)) {
-+                        mte_check1(env, mtedesc, addr, retaddr);
-+                    }
-                     tlb_fn(env, &scratch, reg_off, addr, retaddr);
-                 }
-             }
-@@ -5406,20 +5411,53 @@ void sve_ld1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-     memcpy(vd, &scratch, reg_max);
- }
- 
-+static inline QEMU_ALWAYS_INLINE
-+void sve_ld1_z_mte(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-+                   target_ulong base, uint32_t desc, uintptr_t retaddr,
-+                   int esize, int msize, zreg_off_fn *off_fn,
-+                   sve_ldst1_host_fn *host_fn,
-+                   sve_ldst1_tlb_fn *tlb_fn)
-+{
-+    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
-+    /* Remove mtedesc from the normal sve descriptor. */
-+    desc = extract32(desc, 0, SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
-+
-+    /*
-+     * ??? TODO: For the 32-bit offset extractions, base + ofs cannot
-+     * offset base entirely over the address space hole to change the
-+     * pointer tag, or change the bit55 selector.  So we could here
-+     * examine TBI + TCMA like we do for sve_ldN_r_mte().
-+     */
-+    sve_ld1_z(env, vd, vg, vm, base, desc, retaddr, mtedesc,
-+              esize, msize, off_fn, host_fn, tlb_fn);
-+}
-+
- #define DO_LD1_ZPZ_S(MEM, OFS, MSZ) \
- void HELPER(sve_ld##MEM##_##OFS)(CPUARMState *env, void *vd, void *vg,       \
-                                  void *vm, target_ulong base, uint32_t desc) \
- {                                                                            \
--    sve_ld1_z(env, vd, vg, vm, base, desc, GETPC(), 4, 1 << MSZ,             \
-+    sve_ld1_z(env, vd, vg, vm, base, desc, GETPC(), 0, 4, 1 << MSZ,          \
-               off_##OFS##_s, sve_ld1##MEM##_host, sve_ld1##MEM##_tlb);       \
-+}                                                                            \
-+void HELPER(sve_ld##MEM##_##OFS##_mte)(CPUARMState *env, void *vd, void *vg, \
-+     void *vm, target_ulong base, uint32_t desc)                             \
-+{                                                                            \
-+    sve_ld1_z_mte(env, vd, vg, vm, base, desc, GETPC(), 4, 1 << MSZ,         \
-+                  off_##OFS##_s, sve_ld1##MEM##_host, sve_ld1##MEM##_tlb);   \
- }
- 
- #define DO_LD1_ZPZ_D(MEM, OFS, MSZ) \
- void HELPER(sve_ld##MEM##_##OFS)(CPUARMState *env, void *vd, void *vg,       \
-                                  void *vm, target_ulong base, uint32_t desc) \
- {                                                                            \
--    sve_ld1_z(env, vd, vg, vm, base, desc, GETPC(), 8, 1 << MSZ,             \
-+    sve_ld1_z(env, vd, vg, vm, base, desc, GETPC(), 0, 8, 1 << MSZ,          \
-               off_##OFS##_d, sve_ld1##MEM##_host, sve_ld1##MEM##_tlb);       \
-+}                                                                            \
-+void HELPER(sve_ld##MEM##_##OFS##_mte)(CPUARMState *env, void *vd, void *vg, \
-+    void *vm, target_ulong base, uint32_t desc)                              \
-+{                                                                            \
-+    sve_ld1_z_mte(env, vd, vg, vm, base, desc, GETPC(), 8, 1 << MSZ,         \
-+                  off_##OFS##_d, sve_ld1##MEM##_host, sve_ld1##MEM##_tlb);   \
- }
- 
- DO_LD1_ZPZ_S(bsu, zsu, MO_8)
-@@ -5498,7 +5536,8 @@ DO_LD1_ZPZ_D(dd_be, zd, MO_64)
- static inline QEMU_ALWAYS_INLINE
- void sve_ldff1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-                  target_ulong base, uint32_t desc, uintptr_t retaddr,
--                 const int esz, const int msz, zreg_off_fn *off_fn,
-+                 uint32_t mtedesc, const int esz, const int msz,
-+                 zreg_off_fn *off_fn,
-                  sve_ldst1_host_fn *host_fn,
-                  sve_ldst1_tlb_fn *tlb_fn)
- {
-@@ -5523,6 +5562,9 @@ void sve_ldff1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-      * Probe the first element, allowing faults.
-      */
-     addr = base + (off_fn(vm, reg_off) << scale);
-+    if (mtedesc) {
-+        mte_check1(env, mtedesc, addr, retaddr);
-+    }
-     tlb_fn(env, vd, reg_off, addr, retaddr);
- 
-     /* After any fault, zero the other elements. */
-@@ -5555,7 +5597,11 @@ void sve_ldff1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-                      (env_cpu(env), addr, msize) & BP_MEM_READ)) {
-                     goto fault;
-                 }
--                /* TODO: MTE check. */
-+                if (mtedesc &&
-+                    arm_tlb_mte_tagged(&info.attrs) &&
-+                    !mte_probe1(env, mtedesc, addr)) {
-+                    goto fault;
-+                }
- 
-                 host_fn(vd, reg_off, info.host);
-             }
-@@ -5568,20 +5614,58 @@ void sve_ldff1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-     record_fault(env, reg_off, reg_max);
- }
- 
--#define DO_LDFF1_ZPZ_S(MEM, OFS, MSZ) \
--void HELPER(sve_ldff##MEM##_##OFS)(CPUARMState *env, void *vd, void *vg,       \
--                                   void *vm, target_ulong base, uint32_t desc) \
--{                                                                              \
--    sve_ldff1_z(env, vd, vg, vm, base, desc, GETPC(), MO_32, MSZ,              \
--                off_##OFS##_s, sve_ld1##MEM##_host, sve_ld1##MEM##_tlb);       \
-+static inline QEMU_ALWAYS_INLINE
-+void sve_ldff1_z_mte(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-+                     target_ulong base, uint32_t desc, uintptr_t retaddr,
-+                     const int esz, const int msz,
-+                     zreg_off_fn *off_fn,
-+                     sve_ldst1_host_fn *host_fn,
-+                     sve_ldst1_tlb_fn *tlb_fn)
-+{
-+    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
-+    /* Remove mtedesc from the normal sve descriptor. */
-+    desc = extract32(desc, 0, SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
-+
-+    /*
-+     * ??? TODO: For the 32-bit offset extractions, base + ofs cannot
-+     * offset base entirely over the address space hole to change the
-+     * pointer tag, or change the bit55 selector.  So we could here
-+     * examine TBI + TCMA like we do for sve_ldN_r_mte().
-+     */
-+    sve_ldff1_z(env, vd, vg, vm, base, desc, retaddr, mtedesc,
-+                esz, msz, off_fn, host_fn, tlb_fn);
- }
- 
--#define DO_LDFF1_ZPZ_D(MEM, OFS, MSZ) \
--void HELPER(sve_ldff##MEM##_##OFS)(CPUARMState *env, void *vd, void *vg,       \
--                                   void *vm, target_ulong base, uint32_t desc) \
--{                                                                              \
--    sve_ldff1_z(env, vd, vg, vm, base, desc, GETPC(), MO_64, MSZ,              \
--                off_##OFS##_d, sve_ld1##MEM##_host, sve_ld1##MEM##_tlb);       \
-+#define DO_LDFF1_ZPZ_S(MEM, OFS, MSZ)                                   \
-+void HELPER(sve_ldff##MEM##_##OFS)                                      \
-+    (CPUARMState *env, void *vd, void *vg,                              \
-+     void *vm, target_ulong base, uint32_t desc)                        \
-+{                                                                       \
-+    sve_ldff1_z(env, vd, vg, vm, base, desc, GETPC(), 0, MO_32, MSZ,    \
-+                off_##OFS##_s, sve_ld1##MEM##_host, sve_ld1##MEM##_tlb); \
-+}                                                                       \
-+void HELPER(sve_ldff##MEM##_##OFS##_mte)                                \
-+    (CPUARMState *env, void *vd, void *vg,                              \
-+     void *vm, target_ulong base, uint32_t desc)                        \
-+{                                                                       \
-+    sve_ldff1_z_mte(env, vd, vg, vm, base, desc, GETPC(), MO_32, MSZ,   \
-+                    off_##OFS##_s, sve_ld1##MEM##_host, sve_ld1##MEM##_tlb); \
-+}
-+
-+#define DO_LDFF1_ZPZ_D(MEM, OFS, MSZ)                                   \
-+void HELPER(sve_ldff##MEM##_##OFS)                                      \
-+    (CPUARMState *env, void *vd, void *vg,                              \
-+     void *vm, target_ulong base, uint32_t desc)                        \
-+{                                                                       \
-+    sve_ldff1_z(env, vd, vg, vm, base, desc, GETPC(), 0, MO_64, MSZ,    \
-+                off_##OFS##_d, sve_ld1##MEM##_host, sve_ld1##MEM##_tlb); \
-+}                                                                       \
-+void HELPER(sve_ldff##MEM##_##OFS##_mte)                                \
-+    (CPUARMState *env, void *vd, void *vg,                              \
-+     void *vm, target_ulong base, uint32_t desc)                        \
-+{                                                                       \
-+    sve_ldff1_z_mte(env, vd, vg, vm, base, desc, GETPC(), MO_64, MSZ,   \
-+                    off_##OFS##_d, sve_ld1##MEM##_host, sve_ld1##MEM##_tlb); \
- }
- 
- DO_LDFF1_ZPZ_S(bsu, zsu, MO_8)
-@@ -5653,7 +5737,8 @@ DO_LDFF1_ZPZ_D(dd_be, zd, MO_64)
- static inline QEMU_ALWAYS_INLINE
- void sve_st1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-                target_ulong base, uint32_t desc, uintptr_t retaddr,
--               int esize, int msize, zreg_off_fn *off_fn,
-+               uint32_t mtedesc, int esize, int msize,
-+               zreg_off_fn *off_fn,
-                sve_ldst1_host_fn *host_fn,
-                sve_ldst1_tlb_fn *tlb_fn)
- {
-@@ -5697,7 +5782,10 @@ void sve_st1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-                     cpu_check_watchpoint(env_cpu(env), addr, msize,
-                                          info.attrs, BP_MEM_WRITE, retaddr);
-                 }
--                /* TODO: MTE check. */
-+
-+                if (mtedesc && arm_tlb_mte_tagged(&info.attrs)) {
-+                    mte_check1(env, mtedesc, addr, retaddr);
-+                }
-             }
-             i += 1;
-             reg_off += esize;
-@@ -5727,20 +5815,53 @@ void sve_st1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-     } while (reg_off < reg_max);
- }
- 
--#define DO_ST1_ZPZ_S(MEM, OFS, MSZ) \
--void HELPER(sve_st##MEM##_##OFS)(CPUARMState *env, void *vd, void *vg,       \
--                                 void *vm, target_ulong base, uint32_t desc) \
--{                                                                            \
--    sve_st1_z(env, vd, vg, vm, base, desc, GETPC(), 4, 1 << MSZ,             \
--              off_##OFS##_s, sve_st1##MEM##_host, sve_st1##MEM##_tlb);       \
-+static inline QEMU_ALWAYS_INLINE
-+void sve_st1_z_mte(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-+                   target_ulong base, uint32_t desc, uintptr_t retaddr,
-+                   int esize, int msize, zreg_off_fn *off_fn,
-+                   sve_ldst1_host_fn *host_fn,
-+                   sve_ldst1_tlb_fn *tlb_fn)
-+{
-+    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
-+    /* Remove mtedesc from the normal sve descriptor. */
-+    desc = extract32(desc, 0, SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
-+
-+    /*
-+     * ??? TODO: For the 32-bit offset extractions, base + ofs cannot
-+     * offset base entirely over the address space hole to change the
-+     * pointer tag, or change the bit55 selector.  So we could here
-+     * examine TBI + TCMA like we do for sve_ldN_r_mte().
-+     */
-+    sve_st1_z(env, vd, vg, vm, base, desc, retaddr, mtedesc,
-+              esize, msize, off_fn, host_fn, tlb_fn);
- }
- 
--#define DO_ST1_ZPZ_D(MEM, OFS, MSZ) \
--void HELPER(sve_st##MEM##_##OFS)(CPUARMState *env, void *vd, void *vg,       \
-+#define DO_ST1_ZPZ_S(MEM, OFS, MSZ)                                     \
-+void HELPER(sve_st##MEM##_##OFS)(CPUARMState *env, void *vd, void *vg,  \
-                                  void *vm, target_ulong base, uint32_t desc) \
--{                                                                            \
--    sve_st1_z(env, vd, vg, vm, base, desc, GETPC(), 8, 1 << MSZ,             \
--              off_##OFS##_d, sve_st1##MEM##_host, sve_st1##MEM##_tlb);       \
-+{                                                                       \
-+    sve_st1_z(env, vd, vg, vm, base, desc, GETPC(), 0, 4, 1 << MSZ,     \
-+              off_##OFS##_s, sve_st1##MEM##_host, sve_st1##MEM##_tlb);  \
-+}                                                                       \
-+void HELPER(sve_st##MEM##_##OFS##_mte)(CPUARMState *env, void *vd, void *vg, \
-+    void *vm, target_ulong base, uint32_t desc)                         \
-+{                                                                       \
-+    sve_st1_z_mte(env, vd, vg, vm, base, desc, GETPC(), 4, 1 << MSZ,    \
-+                  off_##OFS##_s, sve_st1##MEM##_host, sve_st1##MEM##_tlb); \
-+}
-+
-+#define DO_ST1_ZPZ_D(MEM, OFS, MSZ)                                     \
-+void HELPER(sve_st##MEM##_##OFS)(CPUARMState *env, void *vd, void *vg,  \
-+                                 void *vm, target_ulong base, uint32_t desc) \
-+{                                                                       \
-+    sve_st1_z(env, vd, vg, vm, base, desc, GETPC(), 0, 8, 1 << MSZ,     \
-+              off_##OFS##_d, sve_st1##MEM##_host, sve_st1##MEM##_tlb);  \
-+}                                                                       \
-+void HELPER(sve_st##MEM##_##OFS##_mte)(CPUARMState *env, void *vd, void *vg, \
-+    void *vm, target_ulong base, uint32_t desc)                         \
-+{                                                                       \
-+    sve_st1_z_mte(env, vd, vg, vm, base, desc, GETPC(), 8, 1 << MSZ,    \
-+                  off_##OFS##_d, sve_st1##MEM##_host, sve_st1##MEM##_tlb); \
- }
- 
- DO_ST1_ZPZ_S(bs, zsu, MO_8)
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 04eda9a126..f318ca265f 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -5261,7 +5261,7 @@ static bool trans_ST_zpri(DisasContext *s, arg_rpri_store *a)
-  */
- 
- static void do_mem_zpz(DisasContext *s, int zt, int pg, int zm,
--                       int scale, TCGv_i64 scalar, int msz,
-+                       int scale, TCGv_i64 scalar, int msz, bool is_write,
-                        gen_helper_gvec_mem_scatter *fn)
- {
-     unsigned vsz = vec_full_reg_size(s);
-@@ -5269,8 +5269,16 @@ static void do_mem_zpz(DisasContext *s, int zt, int pg, int zm,
-     TCGv_ptr t_pg = tcg_temp_new_ptr();
-     TCGv_ptr t_zt = tcg_temp_new_ptr();
-     TCGv_i32 t_desc;
--    int desc;
-+    int desc = 0;
- 
-+    if (s->mte_active[0]) {
-+        desc = FIELD_DP32(desc, MTEDESC, MIDX, get_mem_index(s));
-+        desc = FIELD_DP32(desc, MTEDESC, TBI, s->tbid);
-+        desc = FIELD_DP32(desc, MTEDESC, TCMA, s->tcma);
-+        desc = FIELD_DP32(desc, MTEDESC, WRITE, is_write);
-+        desc = FIELD_DP32(desc, MTEDESC, ESIZE, 1 << msz);
-+        desc <<= SVE_MTEDESC_SHIFT;
-+    }
-     desc = simd_desc(vsz, vsz, scale);
-     t_desc = tcg_const_i32(desc);
- 
-@@ -5285,176 +5293,339 @@ static void do_mem_zpz(DisasContext *s, int zt, int pg, int zm,
-     tcg_temp_free_i32(t_desc);
- }
- 
--/* Indexed by [be][ff][xs][u][msz].  */
--static gen_helper_gvec_mem_scatter * const gather_load_fn32[2][2][2][2][3] = {
--    /* Little-endian */
--    { { { { gen_helper_sve_ldbss_zsu,
--            gen_helper_sve_ldhss_le_zsu,
--            NULL, },
--          { gen_helper_sve_ldbsu_zsu,
--            gen_helper_sve_ldhsu_le_zsu,
--            gen_helper_sve_ldss_le_zsu, } },
--        { { gen_helper_sve_ldbss_zss,
--            gen_helper_sve_ldhss_le_zss,
--            NULL, },
--          { gen_helper_sve_ldbsu_zss,
--            gen_helper_sve_ldhsu_le_zss,
--            gen_helper_sve_ldss_le_zss, } } },
-+/* Indexed by [mte][be][ff][xs][u][msz].  */
-+static gen_helper_gvec_mem_scatter * const
-+gather_load_fn32[2][2][2][2][2][3] = {
-+    { /* MTE Inactive */
-+        { /* Little-endian */
-+            { { { gen_helper_sve_ldbss_zsu,
-+                  gen_helper_sve_ldhss_le_zsu,
-+                  NULL, },
-+                { gen_helper_sve_ldbsu_zsu,
-+                  gen_helper_sve_ldhsu_le_zsu,
-+                  gen_helper_sve_ldss_le_zsu, } },
-+              { { gen_helper_sve_ldbss_zss,
-+                  gen_helper_sve_ldhss_le_zss,
-+                  NULL, },
-+                { gen_helper_sve_ldbsu_zss,
-+                  gen_helper_sve_ldhsu_le_zss,
-+                  gen_helper_sve_ldss_le_zss, } } },
- 
--      /* First-fault */
--      { { { gen_helper_sve_ldffbss_zsu,
--            gen_helper_sve_ldffhss_le_zsu,
--            NULL, },
--          { gen_helper_sve_ldffbsu_zsu,
--            gen_helper_sve_ldffhsu_le_zsu,
--            gen_helper_sve_ldffss_le_zsu, } },
--        { { gen_helper_sve_ldffbss_zss,
--            gen_helper_sve_ldffhss_le_zss,
--            NULL, },
--          { gen_helper_sve_ldffbsu_zss,
--            gen_helper_sve_ldffhsu_le_zss,
--            gen_helper_sve_ldffss_le_zss, } } } },
-+            /* First-fault */
-+            { { { gen_helper_sve_ldffbss_zsu,
-+                  gen_helper_sve_ldffhss_le_zsu,
-+                  NULL, },
-+                { gen_helper_sve_ldffbsu_zsu,
-+                  gen_helper_sve_ldffhsu_le_zsu,
-+                  gen_helper_sve_ldffss_le_zsu, } },
-+              { { gen_helper_sve_ldffbss_zss,
-+                  gen_helper_sve_ldffhss_le_zss,
-+                  NULL, },
-+                { gen_helper_sve_ldffbsu_zss,
-+                  gen_helper_sve_ldffhsu_le_zss,
-+                  gen_helper_sve_ldffss_le_zss, } } } },
- 
--    /* Big-endian */
--    { { { { gen_helper_sve_ldbss_zsu,
--            gen_helper_sve_ldhss_be_zsu,
--            NULL, },
--          { gen_helper_sve_ldbsu_zsu,
--            gen_helper_sve_ldhsu_be_zsu,
--            gen_helper_sve_ldss_be_zsu, } },
--        { { gen_helper_sve_ldbss_zss,
--            gen_helper_sve_ldhss_be_zss,
--            NULL, },
--          { gen_helper_sve_ldbsu_zss,
--            gen_helper_sve_ldhsu_be_zss,
--            gen_helper_sve_ldss_be_zss, } } },
-+        { /* Big-endian */
-+            { { { gen_helper_sve_ldbss_zsu,
-+                  gen_helper_sve_ldhss_be_zsu,
-+                  NULL, },
-+                { gen_helper_sve_ldbsu_zsu,
-+                  gen_helper_sve_ldhsu_be_zsu,
-+                  gen_helper_sve_ldss_be_zsu, } },
-+              { { gen_helper_sve_ldbss_zss,
-+                  gen_helper_sve_ldhss_be_zss,
-+                  NULL, },
-+                { gen_helper_sve_ldbsu_zss,
-+                  gen_helper_sve_ldhsu_be_zss,
-+                  gen_helper_sve_ldss_be_zss, } } },
- 
--      /* First-fault */
--      { { { gen_helper_sve_ldffbss_zsu,
--            gen_helper_sve_ldffhss_be_zsu,
--            NULL, },
--          { gen_helper_sve_ldffbsu_zsu,
--            gen_helper_sve_ldffhsu_be_zsu,
--            gen_helper_sve_ldffss_be_zsu, } },
--        { { gen_helper_sve_ldffbss_zss,
--            gen_helper_sve_ldffhss_be_zss,
--            NULL, },
--          { gen_helper_sve_ldffbsu_zss,
--            gen_helper_sve_ldffhsu_be_zss,
--            gen_helper_sve_ldffss_be_zss, } } } },
-+            /* First-fault */
-+            { { { gen_helper_sve_ldffbss_zsu,
-+                  gen_helper_sve_ldffhss_be_zsu,
-+                  NULL, },
-+                { gen_helper_sve_ldffbsu_zsu,
-+                  gen_helper_sve_ldffhsu_be_zsu,
-+                  gen_helper_sve_ldffss_be_zsu, } },
-+              { { gen_helper_sve_ldffbss_zss,
-+                  gen_helper_sve_ldffhss_be_zss,
-+                  NULL, },
-+                { gen_helper_sve_ldffbsu_zss,
-+                  gen_helper_sve_ldffhsu_be_zss,
-+                  gen_helper_sve_ldffss_be_zss, } } } } },
-+    { /* MTE Active */
-+        { /* Little-endian */
-+            { { { gen_helper_sve_ldbss_zsu_mte,
-+                  gen_helper_sve_ldhss_le_zsu_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldbsu_zsu_mte,
-+                  gen_helper_sve_ldhsu_le_zsu_mte,
-+                  gen_helper_sve_ldss_le_zsu_mte, } },
-+              { { gen_helper_sve_ldbss_zss_mte,
-+                  gen_helper_sve_ldhss_le_zss_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldbsu_zss_mte,
-+                  gen_helper_sve_ldhsu_le_zss_mte,
-+                  gen_helper_sve_ldss_le_zss_mte, } } },
-+
-+            /* First-fault */
-+            { { { gen_helper_sve_ldffbss_zsu_mte,
-+                  gen_helper_sve_ldffhss_le_zsu_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldffbsu_zsu_mte,
-+                  gen_helper_sve_ldffhsu_le_zsu_mte,
-+                  gen_helper_sve_ldffss_le_zsu_mte, } },
-+              { { gen_helper_sve_ldffbss_zss_mte,
-+                  gen_helper_sve_ldffhss_le_zss_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldffbsu_zss_mte,
-+                  gen_helper_sve_ldffhsu_le_zss_mte,
-+                  gen_helper_sve_ldffss_le_zss_mte, } } } },
-+
-+        { /* Big-endian */
-+            { { { gen_helper_sve_ldbss_zsu_mte,
-+                  gen_helper_sve_ldhss_be_zsu_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldbsu_zsu_mte,
-+                  gen_helper_sve_ldhsu_be_zsu_mte,
-+                  gen_helper_sve_ldss_be_zsu_mte, } },
-+              { { gen_helper_sve_ldbss_zss_mte,
-+                  gen_helper_sve_ldhss_be_zss_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldbsu_zss_mte,
-+                  gen_helper_sve_ldhsu_be_zss_mte,
-+                  gen_helper_sve_ldss_be_zss_mte, } } },
-+
-+            /* First-fault */
-+            { { { gen_helper_sve_ldffbss_zsu_mte,
-+                  gen_helper_sve_ldffhss_be_zsu_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldffbsu_zsu_mte,
-+                  gen_helper_sve_ldffhsu_be_zsu_mte,
-+                  gen_helper_sve_ldffss_be_zsu_mte, } },
-+              { { gen_helper_sve_ldffbss_zss_mte,
-+                  gen_helper_sve_ldffhss_be_zss_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldffbsu_zss_mte,
-+                  gen_helper_sve_ldffhsu_be_zss_mte,
-+                  gen_helper_sve_ldffss_be_zss_mte, } } } } },
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 76f2287314..10c4d031b1 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2360,7 +2360,9 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
+ #define ARM_CP_NZCV              (ARM_CP_SPECIAL | 0x0300)
+ #define ARM_CP_CURRENTEL         (ARM_CP_SPECIAL | 0x0400)
+ #define ARM_CP_DC_ZVA            (ARM_CP_SPECIAL | 0x0500)
+-#define ARM_LAST_SPECIAL         ARM_CP_DC_ZVA
++#define ARM_CP_DC_GVA            (ARM_CP_SPECIAL | 0x0600)
++#define ARM_CP_DC_GZVA           (ARM_CP_SPECIAL | 0x0700)
++#define ARM_LAST_SPECIAL         ARM_CP_DC_GZVA
+ #define ARM_CP_FPU               0x1000
+ #define ARM_CP_SVE               0x2000
+ #define ARM_CP_NO_GDB            0x4000
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 44a3f9fb48..23cf44fcf4 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6998,6 +6998,22 @@ static const ARMCPRegInfo mte_el0_cacheop_reginfo[] = {
+       .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 14, .opc2 = 5,
+       .type = ARM_CP_NOP, .access = PL0_W,
+       .accessfn = aa64_cacheop_poc_access },
++    { .name = "DC_GVA", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 4, .opc2 = 3,
++      .access = PL0_W, .type = ARM_CP_DC_GVA,
++#ifndef CONFIG_USER_ONLY
++      /* Avoid overhead of an access check that always passes in user-mode */
++      .accessfn = aa64_zva_access,
++#endif
++    },
++    { .name = "DC_GZVA", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 4, .opc2 = 4,
++      .access = PL0_W, .type = ARM_CP_DC_GZVA,
++#ifndef CONFIG_USER_ONLY
++      /* Avoid overhead of an access check that always passes in user-mode */
++      .accessfn = aa64_zva_access,
++#endif
++    },
+     REGINFO_SENTINEL
  };
  
- /* Note that we overload xs=2 to indicate 64-bit offset.  */
--static gen_helper_gvec_mem_scatter * const gather_load_fn64[2][2][3][2][4] = {
--    /* Little-endian */
--    { { { { gen_helper_sve_ldbds_zsu,
--            gen_helper_sve_ldhds_le_zsu,
--            gen_helper_sve_ldsds_le_zsu,
--            NULL, },
--          { gen_helper_sve_ldbdu_zsu,
--            gen_helper_sve_ldhdu_le_zsu,
--            gen_helper_sve_ldsdu_le_zsu,
--            gen_helper_sve_lddd_le_zsu, } },
--        { { gen_helper_sve_ldbds_zss,
--            gen_helper_sve_ldhds_le_zss,
--            gen_helper_sve_ldsds_le_zss,
--            NULL, },
--          { gen_helper_sve_ldbdu_zss,
--            gen_helper_sve_ldhdu_le_zss,
--            gen_helper_sve_ldsdu_le_zss,
--            gen_helper_sve_lddd_le_zss, } },
--        { { gen_helper_sve_ldbds_zd,
--            gen_helper_sve_ldhds_le_zd,
--            gen_helper_sve_ldsds_le_zd,
--            NULL, },
--          { gen_helper_sve_ldbdu_zd,
--            gen_helper_sve_ldhdu_le_zd,
--            gen_helper_sve_ldsdu_le_zd,
--            gen_helper_sve_lddd_le_zd, } } },
-+static gen_helper_gvec_mem_scatter * const
-+gather_load_fn64[2][2][2][3][2][4] = {
-+    { /* MTE Inactive */
-+        { /* Little-endian */
-+            { { { gen_helper_sve_ldbds_zsu,
-+                  gen_helper_sve_ldhds_le_zsu,
-+                  gen_helper_sve_ldsds_le_zsu,
-+                  NULL, },
-+                { gen_helper_sve_ldbdu_zsu,
-+                  gen_helper_sve_ldhdu_le_zsu,
-+                  gen_helper_sve_ldsdu_le_zsu,
-+                  gen_helper_sve_lddd_le_zsu, } },
-+              { { gen_helper_sve_ldbds_zss,
-+                  gen_helper_sve_ldhds_le_zss,
-+                  gen_helper_sve_ldsds_le_zss,
-+                  NULL, },
-+                { gen_helper_sve_ldbdu_zss,
-+                  gen_helper_sve_ldhdu_le_zss,
-+                  gen_helper_sve_ldsdu_le_zss,
-+                  gen_helper_sve_lddd_le_zss, } },
-+              { { gen_helper_sve_ldbds_zd,
-+                  gen_helper_sve_ldhds_le_zd,
-+                  gen_helper_sve_ldsds_le_zd,
-+                  NULL, },
-+                { gen_helper_sve_ldbdu_zd,
-+                  gen_helper_sve_ldhdu_le_zd,
-+                  gen_helper_sve_ldsdu_le_zd,
-+                  gen_helper_sve_lddd_le_zd, } } },
- 
--      /* First-fault */
--      { { { gen_helper_sve_ldffbds_zsu,
--            gen_helper_sve_ldffhds_le_zsu,
--            gen_helper_sve_ldffsds_le_zsu,
--            NULL, },
--          { gen_helper_sve_ldffbdu_zsu,
--            gen_helper_sve_ldffhdu_le_zsu,
--            gen_helper_sve_ldffsdu_le_zsu,
--            gen_helper_sve_ldffdd_le_zsu, } },
--        { { gen_helper_sve_ldffbds_zss,
--            gen_helper_sve_ldffhds_le_zss,
--            gen_helper_sve_ldffsds_le_zss,
--            NULL, },
--          { gen_helper_sve_ldffbdu_zss,
--            gen_helper_sve_ldffhdu_le_zss,
--            gen_helper_sve_ldffsdu_le_zss,
--            gen_helper_sve_ldffdd_le_zss, } },
--        { { gen_helper_sve_ldffbds_zd,
--            gen_helper_sve_ldffhds_le_zd,
--            gen_helper_sve_ldffsds_le_zd,
--            NULL, },
--          { gen_helper_sve_ldffbdu_zd,
--            gen_helper_sve_ldffhdu_le_zd,
--            gen_helper_sve_ldffsdu_le_zd,
--            gen_helper_sve_ldffdd_le_zd, } } } },
-+            /* First-fault */
-+            { { { gen_helper_sve_ldffbds_zsu,
-+                  gen_helper_sve_ldffhds_le_zsu,
-+                  gen_helper_sve_ldffsds_le_zsu,
-+                  NULL, },
-+                { gen_helper_sve_ldffbdu_zsu,
-+                  gen_helper_sve_ldffhdu_le_zsu,
-+                  gen_helper_sve_ldffsdu_le_zsu,
-+                  gen_helper_sve_ldffdd_le_zsu, } },
-+              { { gen_helper_sve_ldffbds_zss,
-+                  gen_helper_sve_ldffhds_le_zss,
-+                  gen_helper_sve_ldffsds_le_zss,
-+                  NULL, },
-+                { gen_helper_sve_ldffbdu_zss,
-+                  gen_helper_sve_ldffhdu_le_zss,
-+                  gen_helper_sve_ldffsdu_le_zss,
-+                  gen_helper_sve_ldffdd_le_zss, } },
-+              { { gen_helper_sve_ldffbds_zd,
-+                  gen_helper_sve_ldffhds_le_zd,
-+                  gen_helper_sve_ldffsds_le_zd,
-+                  NULL, },
-+                { gen_helper_sve_ldffbdu_zd,
-+                  gen_helper_sve_ldffhdu_le_zd,
-+                  gen_helper_sve_ldffsdu_le_zd,
-+                  gen_helper_sve_ldffdd_le_zd, } } } },
-+        { /* Big-endian */
-+            { { { gen_helper_sve_ldbds_zsu,
-+                  gen_helper_sve_ldhds_be_zsu,
-+                  gen_helper_sve_ldsds_be_zsu,
-+                  NULL, },
-+                { gen_helper_sve_ldbdu_zsu,
-+                  gen_helper_sve_ldhdu_be_zsu,
-+                  gen_helper_sve_ldsdu_be_zsu,
-+                  gen_helper_sve_lddd_be_zsu, } },
-+              { { gen_helper_sve_ldbds_zss,
-+                  gen_helper_sve_ldhds_be_zss,
-+                  gen_helper_sve_ldsds_be_zss,
-+                  NULL, },
-+                { gen_helper_sve_ldbdu_zss,
-+                  gen_helper_sve_ldhdu_be_zss,
-+                  gen_helper_sve_ldsdu_be_zss,
-+                  gen_helper_sve_lddd_be_zss, } },
-+              { { gen_helper_sve_ldbds_zd,
-+                  gen_helper_sve_ldhds_be_zd,
-+                  gen_helper_sve_ldsds_be_zd,
-+                  NULL, },
-+                { gen_helper_sve_ldbdu_zd,
-+                  gen_helper_sve_ldhdu_be_zd,
-+                  gen_helper_sve_ldsdu_be_zd,
-+                  gen_helper_sve_lddd_be_zd, } } },
- 
--    /* Big-endian */
--    { { { { gen_helper_sve_ldbds_zsu,
--            gen_helper_sve_ldhds_be_zsu,
--            gen_helper_sve_ldsds_be_zsu,
--            NULL, },
--          { gen_helper_sve_ldbdu_zsu,
--            gen_helper_sve_ldhdu_be_zsu,
--            gen_helper_sve_ldsdu_be_zsu,
--            gen_helper_sve_lddd_be_zsu, } },
--        { { gen_helper_sve_ldbds_zss,
--            gen_helper_sve_ldhds_be_zss,
--            gen_helper_sve_ldsds_be_zss,
--            NULL, },
--          { gen_helper_sve_ldbdu_zss,
--            gen_helper_sve_ldhdu_be_zss,
--            gen_helper_sve_ldsdu_be_zss,
--            gen_helper_sve_lddd_be_zss, } },
--        { { gen_helper_sve_ldbds_zd,
--            gen_helper_sve_ldhds_be_zd,
--            gen_helper_sve_ldsds_be_zd,
--            NULL, },
--          { gen_helper_sve_ldbdu_zd,
--            gen_helper_sve_ldhdu_be_zd,
--            gen_helper_sve_ldsdu_be_zd,
--            gen_helper_sve_lddd_be_zd, } } },
-+            /* First-fault */
-+            { { { gen_helper_sve_ldffbds_zsu,
-+                  gen_helper_sve_ldffhds_be_zsu,
-+                  gen_helper_sve_ldffsds_be_zsu,
-+                  NULL, },
-+                { gen_helper_sve_ldffbdu_zsu,
-+                  gen_helper_sve_ldffhdu_be_zsu,
-+                  gen_helper_sve_ldffsdu_be_zsu,
-+                  gen_helper_sve_ldffdd_be_zsu, } },
-+              { { gen_helper_sve_ldffbds_zss,
-+                  gen_helper_sve_ldffhds_be_zss,
-+                  gen_helper_sve_ldffsds_be_zss,
-+                  NULL, },
-+                { gen_helper_sve_ldffbdu_zss,
-+                  gen_helper_sve_ldffhdu_be_zss,
-+                  gen_helper_sve_ldffsdu_be_zss,
-+                  gen_helper_sve_ldffdd_be_zss, } },
-+              { { gen_helper_sve_ldffbds_zd,
-+                  gen_helper_sve_ldffhds_be_zd,
-+                  gen_helper_sve_ldffsds_be_zd,
-+                  NULL, },
-+                { gen_helper_sve_ldffbdu_zd,
-+                  gen_helper_sve_ldffhdu_be_zd,
-+                  gen_helper_sve_ldffsdu_be_zd,
-+                  gen_helper_sve_ldffdd_be_zd, } } } } },
-+    { /* MTE Active */
-+        { /* Little-endian */
-+            { { { gen_helper_sve_ldbds_zsu_mte,
-+                  gen_helper_sve_ldhds_le_zsu_mte,
-+                  gen_helper_sve_ldsds_le_zsu_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldbdu_zsu_mte,
-+                  gen_helper_sve_ldhdu_le_zsu_mte,
-+                  gen_helper_sve_ldsdu_le_zsu_mte,
-+                  gen_helper_sve_lddd_le_zsu_mte, } },
-+              { { gen_helper_sve_ldbds_zss_mte,
-+                  gen_helper_sve_ldhds_le_zss_mte,
-+                  gen_helper_sve_ldsds_le_zss_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldbdu_zss_mte,
-+                  gen_helper_sve_ldhdu_le_zss_mte,
-+                  gen_helper_sve_ldsdu_le_zss_mte,
-+                  gen_helper_sve_lddd_le_zss_mte, } },
-+              { { gen_helper_sve_ldbds_zd_mte,
-+                  gen_helper_sve_ldhds_le_zd_mte,
-+                  gen_helper_sve_ldsds_le_zd_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldbdu_zd_mte,
-+                  gen_helper_sve_ldhdu_le_zd_mte,
-+                  gen_helper_sve_ldsdu_le_zd_mte,
-+                  gen_helper_sve_lddd_le_zd_mte, } } },
- 
--      /* First-fault */
--      { { { gen_helper_sve_ldffbds_zsu,
--            gen_helper_sve_ldffhds_be_zsu,
--            gen_helper_sve_ldffsds_be_zsu,
--            NULL, },
--          { gen_helper_sve_ldffbdu_zsu,
--            gen_helper_sve_ldffhdu_be_zsu,
--            gen_helper_sve_ldffsdu_be_zsu,
--            gen_helper_sve_ldffdd_be_zsu, } },
--        { { gen_helper_sve_ldffbds_zss,
--            gen_helper_sve_ldffhds_be_zss,
--            gen_helper_sve_ldffsds_be_zss,
--            NULL, },
--          { gen_helper_sve_ldffbdu_zss,
--            gen_helper_sve_ldffhdu_be_zss,
--            gen_helper_sve_ldffsdu_be_zss,
--            gen_helper_sve_ldffdd_be_zss, } },
--        { { gen_helper_sve_ldffbds_zd,
--            gen_helper_sve_ldffhds_be_zd,
--            gen_helper_sve_ldffsds_be_zd,
--            NULL, },
--          { gen_helper_sve_ldffbdu_zd,
--            gen_helper_sve_ldffhdu_be_zd,
--            gen_helper_sve_ldffsdu_be_zd,
--            gen_helper_sve_ldffdd_be_zd, } } } },
-+            /* First-fault */
-+            { { { gen_helper_sve_ldffbds_zsu_mte,
-+                  gen_helper_sve_ldffhds_le_zsu_mte,
-+                  gen_helper_sve_ldffsds_le_zsu_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldffbdu_zsu_mte,
-+                  gen_helper_sve_ldffhdu_le_zsu_mte,
-+                  gen_helper_sve_ldffsdu_le_zsu_mte,
-+                  gen_helper_sve_ldffdd_le_zsu_mte, } },
-+              { { gen_helper_sve_ldffbds_zss_mte,
-+                  gen_helper_sve_ldffhds_le_zss_mte,
-+                  gen_helper_sve_ldffsds_le_zss_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldffbdu_zss_mte,
-+                  gen_helper_sve_ldffhdu_le_zss_mte,
-+                  gen_helper_sve_ldffsdu_le_zss_mte,
-+                  gen_helper_sve_ldffdd_le_zss_mte, } },
-+              { { gen_helper_sve_ldffbds_zd_mte,
-+                  gen_helper_sve_ldffhds_le_zd_mte,
-+                  gen_helper_sve_ldffsds_le_zd_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldffbdu_zd_mte,
-+                  gen_helper_sve_ldffhdu_le_zd_mte,
-+                  gen_helper_sve_ldffsdu_le_zd_mte,
-+                  gen_helper_sve_ldffdd_le_zd_mte, } } } },
-+        { /* Big-endian */
-+            { { { gen_helper_sve_ldbds_zsu_mte,
-+                  gen_helper_sve_ldhds_be_zsu_mte,
-+                  gen_helper_sve_ldsds_be_zsu_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldbdu_zsu_mte,
-+                  gen_helper_sve_ldhdu_be_zsu_mte,
-+                  gen_helper_sve_ldsdu_be_zsu_mte,
-+                  gen_helper_sve_lddd_be_zsu_mte, } },
-+              { { gen_helper_sve_ldbds_zss_mte,
-+                  gen_helper_sve_ldhds_be_zss_mte,
-+                  gen_helper_sve_ldsds_be_zss_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldbdu_zss_mte,
-+                  gen_helper_sve_ldhdu_be_zss_mte,
-+                  gen_helper_sve_ldsdu_be_zss_mte,
-+                  gen_helper_sve_lddd_be_zss_mte, } },
-+              { { gen_helper_sve_ldbds_zd_mte,
-+                  gen_helper_sve_ldhds_be_zd_mte,
-+                  gen_helper_sve_ldsds_be_zd_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldbdu_zd_mte,
-+                  gen_helper_sve_ldhdu_be_zd_mte,
-+                  gen_helper_sve_ldsdu_be_zd_mte,
-+                  gen_helper_sve_lddd_be_zd_mte, } } },
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index f35b122ded..1041ec29d4 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -1874,6 +1874,45 @@ static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
+         }
+         gen_helper_dc_zva(cpu_env, tcg_rt);
+         return;
++    case ARM_CP_DC_GVA:
++        {
++            TCGv_i64 clean_addr, tag;
 +
-+            /* First-fault */
-+            { { { gen_helper_sve_ldffbds_zsu_mte,
-+                  gen_helper_sve_ldffhds_be_zsu_mte,
-+                  gen_helper_sve_ldffsds_be_zsu_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldffbdu_zsu_mte,
-+                  gen_helper_sve_ldffhdu_be_zsu_mte,
-+                  gen_helper_sve_ldffsdu_be_zsu_mte,
-+                  gen_helper_sve_ldffdd_be_zsu_mte, } },
-+              { { gen_helper_sve_ldffbds_zss_mte,
-+                  gen_helper_sve_ldffhds_be_zss_mte,
-+                  gen_helper_sve_ldffsds_be_zss_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldffbdu_zss_mte,
-+                  gen_helper_sve_ldffhdu_be_zss_mte,
-+                  gen_helper_sve_ldffsdu_be_zss_mte,
-+                  gen_helper_sve_ldffdd_be_zss_mte, } },
-+              { { gen_helper_sve_ldffbds_zd_mte,
-+                  gen_helper_sve_ldffhds_be_zd_mte,
-+                  gen_helper_sve_ldffsds_be_zd_mte,
-+                  NULL, },
-+                { gen_helper_sve_ldffbdu_zd_mte,
-+                  gen_helper_sve_ldffhdu_be_zd_mte,
-+                  gen_helper_sve_ldffsdu_be_zd_mte,
-+                  gen_helper_sve_ldffdd_be_zd_mte, } } } } },
- };
- 
- static bool trans_LD1_zprz(DisasContext *s, arg_LD1_zprz *a)
- {
-     gen_helper_gvec_mem_scatter *fn = NULL;
--    int be = s->be_data == MO_BE;
-+    bool be = s->be_data == MO_BE;
-+    bool mte = s->mte_active[0];
- 
-     if (!sve_access_check(s)) {
-         return true;
-@@ -5462,23 +5633,24 @@ static bool trans_LD1_zprz(DisasContext *s, arg_LD1_zprz *a)
- 
-     switch (a->esz) {
-     case MO_32:
--        fn = gather_load_fn32[be][a->ff][a->xs][a->u][a->msz];
-+        fn = gather_load_fn32[mte][be][a->ff][a->xs][a->u][a->msz];
-         break;
-     case MO_64:
--        fn = gather_load_fn64[be][a->ff][a->xs][a->u][a->msz];
-+        fn = gather_load_fn64[mte][be][a->ff][a->xs][a->u][a->msz];
-         break;
-     }
-     assert(fn != NULL);
- 
-     do_mem_zpz(s, a->rd, a->pg, a->rm, a->scale * a->msz,
--               cpu_reg_sp(s, a->rn), a->msz, fn);
-+               cpu_reg_sp(s, a->rn), a->msz, false, fn);
-     return true;
- }
- 
- static bool trans_LD1_zpiz(DisasContext *s, arg_LD1_zpiz *a)
- {
-     gen_helper_gvec_mem_scatter *fn = NULL;
--    int be = s->be_data == MO_BE;
-+    bool be = s->be_data == MO_BE;
-+    bool mte = s->mte_active[0];
-     TCGv_i64 imm;
- 
-     if (a->esz < a->msz || (a->esz == a->msz && !a->u)) {
-@@ -5490,10 +5662,10 @@ static bool trans_LD1_zpiz(DisasContext *s, arg_LD1_zpiz *a)
- 
-     switch (a->esz) {
-     case MO_32:
--        fn = gather_load_fn32[be][a->ff][0][a->u][a->msz];
-+        fn = gather_load_fn32[mte][be][a->ff][0][a->u][a->msz];
-         break;
-     case MO_64:
--        fn = gather_load_fn64[be][a->ff][2][a->u][a->msz];
-+        fn = gather_load_fn64[mte][be][a->ff][2][a->u][a->msz];
-         break;
-     }
-     assert(fn != NULL);
-@@ -5502,63 +5674,108 @@ static bool trans_LD1_zpiz(DisasContext *s, arg_LD1_zpiz *a)
-      * by loading the immediate into the scalar parameter.
-      */
-     imm = tcg_const_i64(a->imm << a->msz);
--    do_mem_zpz(s, a->rd, a->pg, a->rn, 0, imm, a->msz, fn);
-+    do_mem_zpz(s, a->rd, a->pg, a->rn, 0, imm, a->msz, false, fn);
-     tcg_temp_free_i64(imm);
-     return true;
- }
- 
--/* Indexed by [be][xs][msz].  */
--static gen_helper_gvec_mem_scatter * const scatter_store_fn32[2][2][3] = {
--    /* Little-endian */
--    { { gen_helper_sve_stbs_zsu,
--        gen_helper_sve_sths_le_zsu,
--        gen_helper_sve_stss_le_zsu, },
--      { gen_helper_sve_stbs_zss,
--        gen_helper_sve_sths_le_zss,
--        gen_helper_sve_stss_le_zss, } },
--    /* Big-endian */
--    { { gen_helper_sve_stbs_zsu,
--        gen_helper_sve_sths_be_zsu,
--        gen_helper_sve_stss_be_zsu, },
--      { gen_helper_sve_stbs_zss,
--        gen_helper_sve_sths_be_zss,
--        gen_helper_sve_stss_be_zss, } },
-+/* Indexed by [mte][be][xs][msz].  */
-+static gen_helper_gvec_mem_scatter * const scatter_store_fn32[2][2][2][3] = {
-+    { /* MTE Inactive */
-+        { /* Little-endian */
-+            { gen_helper_sve_stbs_zsu,
-+              gen_helper_sve_sths_le_zsu,
-+              gen_helper_sve_stss_le_zsu, },
-+            { gen_helper_sve_stbs_zss,
-+              gen_helper_sve_sths_le_zss,
-+              gen_helper_sve_stss_le_zss, } },
-+        { /* Big-endian */
-+            { gen_helper_sve_stbs_zsu,
-+              gen_helper_sve_sths_be_zsu,
-+              gen_helper_sve_stss_be_zsu, },
-+            { gen_helper_sve_stbs_zss,
-+              gen_helper_sve_sths_be_zss,
-+              gen_helper_sve_stss_be_zss, } } },
-+    { /* MTE Active */
-+        { /* Little-endian */
-+            { gen_helper_sve_stbs_zsu_mte,
-+              gen_helper_sve_sths_le_zsu_mte,
-+              gen_helper_sve_stss_le_zsu_mte, },
-+            { gen_helper_sve_stbs_zss_mte,
-+              gen_helper_sve_sths_le_zss_mte,
-+              gen_helper_sve_stss_le_zss_mte, } },
-+        { /* Big-endian */
-+            { gen_helper_sve_stbs_zsu_mte,
-+              gen_helper_sve_sths_be_zsu_mte,
-+              gen_helper_sve_stss_be_zsu_mte, },
-+            { gen_helper_sve_stbs_zss_mte,
-+              gen_helper_sve_sths_be_zss_mte,
-+              gen_helper_sve_stss_be_zss_mte, } } },
- };
- 
- /* Note that we overload xs=2 to indicate 64-bit offset.  */
--static gen_helper_gvec_mem_scatter * const scatter_store_fn64[2][3][4] = {
--    /* Little-endian */
--    { { gen_helper_sve_stbd_zsu,
--        gen_helper_sve_sthd_le_zsu,
--        gen_helper_sve_stsd_le_zsu,
--        gen_helper_sve_stdd_le_zsu, },
--      { gen_helper_sve_stbd_zss,
--        gen_helper_sve_sthd_le_zss,
--        gen_helper_sve_stsd_le_zss,
--        gen_helper_sve_stdd_le_zss, },
--      { gen_helper_sve_stbd_zd,
--        gen_helper_sve_sthd_le_zd,
--        gen_helper_sve_stsd_le_zd,
--        gen_helper_sve_stdd_le_zd, } },
--    /* Big-endian */
--    { { gen_helper_sve_stbd_zsu,
--        gen_helper_sve_sthd_be_zsu,
--        gen_helper_sve_stsd_be_zsu,
--        gen_helper_sve_stdd_be_zsu, },
--      { gen_helper_sve_stbd_zss,
--        gen_helper_sve_sthd_be_zss,
--        gen_helper_sve_stsd_be_zss,
--        gen_helper_sve_stdd_be_zss, },
--      { gen_helper_sve_stbd_zd,
--        gen_helper_sve_sthd_be_zd,
--        gen_helper_sve_stsd_be_zd,
--        gen_helper_sve_stdd_be_zd, } },
-+static gen_helper_gvec_mem_scatter * const scatter_store_fn64[2][2][3][4] = {
-+    { /* MTE Inactive */
-+         { /* Little-endian */
-+             { gen_helper_sve_stbd_zsu,
-+               gen_helper_sve_sthd_le_zsu,
-+               gen_helper_sve_stsd_le_zsu,
-+               gen_helper_sve_stdd_le_zsu, },
-+             { gen_helper_sve_stbd_zss,
-+               gen_helper_sve_sthd_le_zss,
-+               gen_helper_sve_stsd_le_zss,
-+               gen_helper_sve_stdd_le_zss, },
-+             { gen_helper_sve_stbd_zd,
-+               gen_helper_sve_sthd_le_zd,
-+               gen_helper_sve_stsd_le_zd,
-+               gen_helper_sve_stdd_le_zd, } },
-+         { /* Big-endian */
-+             { gen_helper_sve_stbd_zsu,
-+               gen_helper_sve_sthd_be_zsu,
-+               gen_helper_sve_stsd_be_zsu,
-+               gen_helper_sve_stdd_be_zsu, },
-+             { gen_helper_sve_stbd_zss,
-+               gen_helper_sve_sthd_be_zss,
-+               gen_helper_sve_stsd_be_zss,
-+               gen_helper_sve_stdd_be_zss, },
-+             { gen_helper_sve_stbd_zd,
-+               gen_helper_sve_sthd_be_zd,
-+               gen_helper_sve_stsd_be_zd,
-+               gen_helper_sve_stdd_be_zd, } } },
-+    { /* MTE Inactive */
-+         { /* Little-endian */
-+             { gen_helper_sve_stbd_zsu_mte,
-+               gen_helper_sve_sthd_le_zsu_mte,
-+               gen_helper_sve_stsd_le_zsu_mte,
-+               gen_helper_sve_stdd_le_zsu_mte, },
-+             { gen_helper_sve_stbd_zss_mte,
-+               gen_helper_sve_sthd_le_zss_mte,
-+               gen_helper_sve_stsd_le_zss_mte,
-+               gen_helper_sve_stdd_le_zss_mte, },
-+             { gen_helper_sve_stbd_zd_mte,
-+               gen_helper_sve_sthd_le_zd_mte,
-+               gen_helper_sve_stsd_le_zd_mte,
-+               gen_helper_sve_stdd_le_zd_mte, } },
-+         { /* Big-endian */
-+             { gen_helper_sve_stbd_zsu_mte,
-+               gen_helper_sve_sthd_be_zsu_mte,
-+               gen_helper_sve_stsd_be_zsu_mte,
-+               gen_helper_sve_stdd_be_zsu_mte, },
-+             { gen_helper_sve_stbd_zss_mte,
-+               gen_helper_sve_sthd_be_zss_mte,
-+               gen_helper_sve_stsd_be_zss_mte,
-+               gen_helper_sve_stdd_be_zss_mte, },
-+             { gen_helper_sve_stbd_zd_mte,
-+               gen_helper_sve_sthd_be_zd_mte,
-+               gen_helper_sve_stsd_be_zd_mte,
-+               gen_helper_sve_stdd_be_zd_mte, } } },
- };
- 
- static bool trans_ST1_zprz(DisasContext *s, arg_ST1_zprz *a)
- {
-     gen_helper_gvec_mem_scatter *fn;
--    int be = s->be_data == MO_BE;
-+    bool be = s->be_data == MO_BE;
-+    bool mte = s->mte_active[0];
- 
-     if (a->esz < a->msz || (a->msz == 0 && a->scale)) {
-         return false;
-@@ -5568,23 +5785,24 @@ static bool trans_ST1_zprz(DisasContext *s, arg_ST1_zprz *a)
-     }
-     switch (a->esz) {
-     case MO_32:
--        fn = scatter_store_fn32[be][a->xs][a->msz];
-+        fn = scatter_store_fn32[mte][be][a->xs][a->msz];
-         break;
-     case MO_64:
--        fn = scatter_store_fn64[be][a->xs][a->msz];
-+        fn = scatter_store_fn64[mte][be][a->xs][a->msz];
-         break;
++            /*
++             * DC_GVA, like DC_ZVA, requires that we supply the original
++             * pointer for an invalid page.  Probe that address first.
++             */
++            tcg_rt = cpu_reg(s, rt);
++            clean_addr = clean_data_tbi(s, tcg_rt);
++            gen_probe_access(s, clean_addr, MMU_DATA_STORE, MO_8);
++
++            if (s->ata) {
++                /* Extract the tag from the register to match STZGM.  */
++                tag = tcg_temp_new_i64();
++                tcg_gen_shri_i64(tag, tcg_rt, 56);
++                gen_helper_stzgm_tags(cpu_env, clean_addr, tag);
++                tcg_temp_free_i64(tag);
++            }
++        }
++        return;
++    case ARM_CP_DC_GZVA:
++        {
++            TCGv_i64 clean_addr, tag;
++
++            /* For DC_GZVA, we can rely on DC_ZVA for the proper fault. */
++            tcg_rt = cpu_reg(s, rt);
++            clean_addr = clean_data_tbi(s, tcg_rt);
++            gen_helper_dc_zva(cpu_env, clean_addr);
++
++            if (s->ata) {
++                /* Extract the tag from the register to match STZGM.  */
++                tag = tcg_temp_new_i64();
++                tcg_gen_shri_i64(tag, tcg_rt, 56);
++                gen_helper_stzgm_tags(cpu_env, clean_addr, tag);
++                tcg_temp_free_i64(tag);
++            }
++        }
++        return;
      default:
-         g_assert_not_reached();
-     }
-     do_mem_zpz(s, a->rd, a->pg, a->rm, a->scale * a->msz,
--               cpu_reg_sp(s, a->rn), a->msz, fn);
-+               cpu_reg_sp(s, a->rn), a->msz, true, fn);
-     return true;
- }
- 
- static bool trans_ST1_zpiz(DisasContext *s, arg_ST1_zpiz *a)
- {
-     gen_helper_gvec_mem_scatter *fn = NULL;
--    int be = s->be_data == MO_BE;
-+    bool be = s->be_data == MO_BE;
-+    bool mte = s->mte_active[0];
-     TCGv_i64 imm;
- 
-     if (a->esz < a->msz) {
-@@ -5596,10 +5814,10 @@ static bool trans_ST1_zpiz(DisasContext *s, arg_ST1_zpiz *a)
- 
-     switch (a->esz) {
-     case MO_32:
--        fn = scatter_store_fn32[be][0][a->msz];
-+        fn = scatter_store_fn32[mte][be][0][a->msz];
-         break;
-     case MO_64:
--        fn = scatter_store_fn64[be][2][a->msz];
-+        fn = scatter_store_fn64[mte][be][2][a->msz];
          break;
      }
-     assert(fn != NULL);
-@@ -5608,7 +5826,7 @@ static bool trans_ST1_zpiz(DisasContext *s, arg_ST1_zpiz *a)
-      * by loading the immediate into the scalar parameter.
-      */
-     imm = tcg_const_i64(a->imm << a->msz);
--    do_mem_zpz(s, a->rd, a->pg, a->rn, 0, imm, a->msz, fn);
-+    do_mem_zpz(s, a->rd, a->pg, a->rn, 0, imm, a->msz, true, fn);
-     tcg_temp_free_i64(imm);
-     return true;
- }
 -- 
 2.25.1
 

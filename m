@@ -1,103 +1,95 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3900322lfm;
-        Tue, 23 Jun 2020 01:23:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzIq33ZtIeacmlujPc9WafxDCJRTxFO7pZS5EFtOxQZcNPshQlMvHzNvlD9iO3rdO328Zvg
-X-Received: by 2002:a25:941:: with SMTP id u1mr35919201ybm.274.1592900594935;
-        Tue, 23 Jun 2020 01:23:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592900594; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3900832lfm;
+        Tue, 23 Jun 2020 01:24:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyWBMhL+jKfo1Ber8N6ljpWiyKWQ/cLO7UHeUL97fz+A0JJvAf4PXQF0jMXke9r7fDkKiR5
+X-Received: by 2002:a25:df09:: with SMTP id w9mr36213882ybg.67.1592900661555;
+        Tue, 23 Jun 2020 01:24:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592900661; cv=none;
         d=google.com; s=arc-20160816;
-        b=NBO9VNpirH97P1OMT59jqoPriA9nV7st9SgFdwmYxNodhfY/m6s2gb6mETM3AVyuEo
-         BCOC0wH17I/AoX8MntrJ4aDCLzdZvXmsMJ1eWdW6Ztfm7r45eB/a8dLLCC/1YQYocHhG
-         nF+lxj+8X9M+Qa+A6/8UUM2lPiX2JPlstxbN2RaEZX1fO2Kq7uzUoHAEM95400LUirq5
-         VnHlw/cCYfICsQm2KD9+GSdqdjqK0/KgZ1F11LbT7hNWrEeJJafKcDVkO6wGHeLil9FM
-         ZVMw7/WuPYk8PS+hGG6NqPb5midD5u2vcQUUrzhGNJTQI7I7h6jbJGl5OVJsONWD4vBW
-         XC6A==
+        b=afNnzLhWPfuliCj3GL3ZalL5vHsNPRem+crjn/8l5FJcIpdF4T8j/gBzGDRolY5SA7
+         0se1FCH5mZlIQWrjjg8pE4J9g04xACkOWPvqX1CgI9KCTQHo+K3OlrDuzO4Uk9J7tzX1
+         BQzp8DthCcDnRCN7Qm4fYt3MYQYZSswZTtt4uH5eAG2qy+i6BCbsHYl6YbSwKqfe0sDn
+         LAMOMc4hF67X2XGPp8+sMV4Y7aQmW6P1HPORh6bBYl968Ssee8v7fzcg2UNlrBr7hne0
+         6SMU/VQaA/w6LwB1rIJ1EMRolRujiVZ4K40oUsaMzdPHt2XjhCT9NaRNFFiDwNOwY1jL
+         gB0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=/WBocIYEs3qc/YC/LoNZO5dWSeB0pAgII+eW6V4vfEc=;
-        b=aW3Pi28qnPIMpGPRJKSZyvUjgHBPJcBINa8VSFAjCAPFPAwIChk70cUsD7Y2CQb/BG
-         4Ss4PPjA5jimVLhn0XhMECQardXSDpFLPmW9CxIzAVZHrY6pWO+N9vHmAhtSofZ/b2+L
-         RQcmIZR0QKxvsce6VPCTD7tNC3cr/7irm9dVh2EsiR/S8mWTvLlPFzivgFTnjQa+Q9Ye
-         DBH+OCIutnm3e/79amUM2gKz0hMIZC1tc8pVuyOpQh6eN20wKyyqMVilFvFCEH9oJG74
-         vNlMKebQS/yPJWtnky6jiNpnf7sZLLhAnOVh22CI8t/O0w/lCJSd2qulhAyCT+D2uPhx
-         HLzA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=yVXF9LcaZskJ0tGfBcpzB27fYjUyPcnJagV17aQzJH8=;
+        b=SR0O3XAGwNF05rDFYaygm0q92cdcY+ke5Xv7kMRY4WkudnRSwdH5liOUkU9lOPgxzM
+         KmwR8VeTG+2Bxgq5vqwOUsv5myIBQOSIPkD2FyhbB6j1urgcdZ3orp5Pm/Vg1LVMWD9G
+         l0t4X8tGIjc1kQOuRyQxabZpH3mG1Fc8uAABmOyCaHXWDg0pk8MWweamIVbd2TGXA0FN
+         LNJRTO2kfhaONRvCJTBCEwHMIujuoeiuAr6ZX8UquLoBTVSf0lMdN+3ecja3cd2KXD/g
+         P2z/oMtCFTzclIzzYs+kX6d/l89Z2NQKYKXwrbanPwYtcZgbuK1W7+lgsDmNQN3x/urH
+         M65A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dEqq+XQ2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VgH3Ei7Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j82si15746978ybj.1.2020.06.23.01.23.14
+        by mx.google.com with ESMTPS id h2si18021547ybj.207.2020.06.23.01.24.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 01:23:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 Jun 2020 01:24:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dEqq+XQ2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52468 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VgH3Ei7Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55134 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jneD4-0005HL-5C
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 04:23:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54524)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jneE8-0006O8-Tl
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 04:24:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54636)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jneCw-0005Gt-Nr
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 04:23:06 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:29586
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1jneD9-0005XY-3s
+ for qemu-devel@nongnu.org; Tue, 23 Jun 2020 04:23:19 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:38793
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jneCu-0002Rf-II
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 04:23:06 -0400
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1jneD7-0002cS-Ai
+ for qemu-devel@nongnu.org; Tue, 23 Jun 2020 04:23:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592900583;
+ s=mimecast20190719; t=1592900596;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/WBocIYEs3qc/YC/LoNZO5dWSeB0pAgII+eW6V4vfEc=;
- b=dEqq+XQ2nzcNhZuK9FGR6rLSpHvnMQQkoxVjmpavrCX80aCdafg6Tc09RO5PEuvHbJEde7
- wURNaDy5mSHEl2KQVUR8XFCSkChoyynBRVttcWJt0UC5q/jct5hjcBbd/yKrk09Q/WtB3q
- qsuct28dEZHwcuyx0+1V7+rUQD3lEyA=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=yVXF9LcaZskJ0tGfBcpzB27fYjUyPcnJagV17aQzJH8=;
+ b=VgH3Ei7YLfqpxEgfTm6Zcb3tj3U3Ob0lI6uXtRNJxCoTEOhrw1rKiT0DsaHaoLkNBY6Vy1
+ zF5y0HS5xLALpwNQ7IA83BYNF97joB8FtxkpY9FxKkgoJBhuzVM50DAyHIokyC3eylmr3p
+ NwfyVrGdaLLLA5k1k7VOHgljmPXUKPc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-486-OEZaExvkMdSwplWLZ8zDzA-1; Tue, 23 Jun 2020 04:22:59 -0400
-X-MC-Unique: OEZaExvkMdSwplWLZ8zDzA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-414--Uf7Py9UNvq2JXEoR2LXIQ-1; Tue, 23 Jun 2020 04:23:14 -0400
+X-MC-Unique: -Uf7Py9UNvq2JXEoR2LXIQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0518C100CCC4;
- Tue, 23 Jun 2020 08:22:58 +0000 (UTC)
-Received: from [10.36.114.197] (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9F92C5D9DA;
- Tue, 23 Jun 2020 08:22:49 +0000 (UTC)
-Subject: Re: [PATCH v3 1/5] qdev: Introduce DEFINE_PROP_RESERVED_REGION
-To: Markus Armbruster <armbru@redhat.com>
-References: <20200611151209.22547-1-eric.auger@redhat.com>
- <20200611151209.22547-2-eric.auger@redhat.com>
- <87k0zzz6nt.fsf@dusky.pond.sub.org>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <f0ec7470-d683-1bfd-103d-54c57ebd3863@redhat.com>
-Date: Tue, 23 Jun 2020 10:22:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BEA36100CCC0;
+ Tue, 23 Jun 2020 08:23:13 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.193.84])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4E69910013D7;
+ Tue, 23 Jun 2020 08:23:12 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH v2] tests/qtest/arm-cpu-features: Add feature setting tests
+Date: Tue, 23 Jun 2020 10:23:10 +0200
+Message-Id: <20200623082310.17577-1-drjones@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <87k0zzz6nt.fsf@dusky.pond.sub.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.61;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 01:55:08
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=drjones@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 01:53:54
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -107,301 +99,126 @@ X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
- peterx@redhat.com, jean-philippe@linaro.org, qemu-arm@nongnu.org,
- pbonzini@redhat.com, bbhushan2@marvell.com, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zCWflL2M+ULf
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, philmd@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: s6tP3kAxtY1V
 
-Hi Markus,
+Some cpu features may be enabled and disabled for all configurations
+that support the feature. Let's test that.
 
-On 6/22/20 1:22 PM, Markus Armbruster wrote:
-> Eric Auger <eric.auger@redhat.com> writes:
-> 
->> Introduce a new property defining a reserved region:
->> <low address>, <high address>, <type>.
->>
->> This will be used to encode reserved IOVA regions.
->>
->> For instance, in virtio-iommu use case, reserved IOVA regions
->> will be passed by the machine code to the virtio-iommu-pci
->> device (an array of those). The type of the reserved region
->> will match the virtio_iommu_probe_resv_mem subtype value:
->> - VIRTIO_IOMMU_RESV_MEM_T_RESERVED (0)
->> - VIRTIO_IOMMU_RESV_MEM_T_MSI (1)
->>
->> on PC/Q35 machine, this will be used to inform the
->> virtio-iommu-pci device it should bypass the MSI region.
->> The reserved region will be: 0xfee00000, 0xfeefffff, 1.
->>
->> On ARM, we can declare the ITS MSI doorbell as an MSI
->> region to prevent MSIs from being mapped on guest side.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> v11 -> v12:
->> - rename into DEFINE_PROP_RESERVED_REGION
->> - do not use g_strsplit anymore, use endptr instead
->> - remove 0x references
->> ---
->>  include/exec/memory.h        |  6 +++
->>  include/hw/qdev-properties.h |  3 ++
->>  include/qemu/typedefs.h      |  1 +
->>  hw/core/qdev-properties.c    | 89 ++++++++++++++++++++++++++++++++++++
->>  4 files changed, 99 insertions(+)
->>
->> diff --git a/include/exec/memory.h b/include/exec/memory.h
->> index 3e00cdbbfa..3ee8224fa7 100644
->> --- a/include/exec/memory.h
->> +++ b/include/exec/memory.h
->> @@ -57,6 +57,12 @@ struct MemoryRegionMmio {
->>      CPUWriteMemoryFunc *write[3];
->>  };
->>  
->> +struct ReservedRegion {
->> +    hwaddr low;
->> +    hwaddr high;
->> +    unsigned int type;
->> +};
->> +
->>  typedef struct IOMMUTLBEntry IOMMUTLBEntry;
->>  
->>  /* See address_space_translate: bit 0 is read, bit 1 is write.  */
->> diff --git a/include/hw/qdev-properties.h b/include/hw/qdev-properties.h
->> index f161604fb6..03bf850a7e 100644
->> --- a/include/hw/qdev-properties.h
->> +++ b/include/hw/qdev-properties.h
->> @@ -19,6 +19,7 @@ extern const PropertyInfo qdev_prop_string;
->>  extern const PropertyInfo qdev_prop_chr;
->>  extern const PropertyInfo qdev_prop_tpm;
->>  extern const PropertyInfo qdev_prop_macaddr;
->> +extern const PropertyInfo qdev_prop_reserved_region;
->>  extern const PropertyInfo qdev_prop_on_off_auto;
->>  extern const PropertyInfo qdev_prop_multifd_compression;
->>  extern const PropertyInfo qdev_prop_losttickpolicy;
->> @@ -183,6 +184,8 @@ extern const PropertyInfo qdev_prop_pcie_link_width;
->>      DEFINE_PROP(_n, _s, _f, qdev_prop_drive_iothread, BlockBackend *)
->>  #define DEFINE_PROP_MACADDR(_n, _s, _f)         \
->>      DEFINE_PROP(_n, _s, _f, qdev_prop_macaddr, MACAddr)
->> +#define DEFINE_PROP_RESERVED_REGION(_n, _s, _f)         \
->> +    DEFINE_PROP(_n, _s, _f, qdev_prop_reserved_region, ReservedRegion)
->>  #define DEFINE_PROP_ON_OFF_AUTO(_n, _s, _f, _d) \
->>      DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_on_off_auto, OnOffAuto)
->>  #define DEFINE_PROP_MULTIFD_COMPRESSION(_n, _s, _f, _d) \
->> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
->> index ecf3cde26c..85c4f891f4 100644
->> --- a/include/qemu/typedefs.h
->> +++ b/include/qemu/typedefs.h
->> @@ -59,6 +59,7 @@ typedef struct ISABus ISABus;
->>  typedef struct ISADevice ISADevice;
->>  typedef struct IsaDma IsaDma;
->>  typedef struct MACAddr MACAddr;
->> +typedef struct ReservedRegion ReservedRegion;
->>  typedef struct MachineClass MachineClass;
->>  typedef struct MachineState MachineState;
->>  typedef struct MemoryListener MemoryListener;
->> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
->> index cc924815da..15b84adbee 100644
->> --- a/hw/core/qdev-properties.c
->> +++ b/hw/core/qdev-properties.c
->> @@ -14,6 +14,7 @@
->>  #include "qapi/visitor.h"
->>  #include "chardev/char.h"
->>  #include "qemu/uuid.h"
->> +#include "qemu/cutils.h"
->>  
->>  void qdev_prop_set_after_realize(DeviceState *dev, const char *name,
->>                                    Error **errp)
->> @@ -577,6 +578,94 @@ const PropertyInfo qdev_prop_macaddr = {
->>      .set   = set_mac,
->>  };
->>  
->> +/* --- Reserved Region --- */
->> +
->> +/*
->> + * accepted syntax version:
->> + *   <low address>,<high address>,<type>
->> + *   where low/high addresses are uint64_t in hexadecimal
->> + *   and type is an unsigned integer in decimal
->> + */
->> +static void get_reserved_region(Object *obj, Visitor *v, const char *name,
->> +                                void *opaque, Error **errp)
->> +{
->> +    DeviceState *dev = DEVICE(obj);
->> +    Property *prop = opaque;
->> +    ReservedRegion *rr = qdev_get_prop_ptr(dev, prop);
->> +    char buffer[64];
->> +    char *p = buffer;
->> +
->> +    snprintf(buffer, sizeof(buffer), "0x%"PRIx64",0x%"PRIx64",%u",
->> +             rr->low, rr->high, rr->type);
-> 
-> Matches existing practice in other getters.  Nevertheless, I'd suggest
-> something like
-> 
->        n = snprintf(buffer, sizeof(buffer), ...);
->        assert(n < sizeof(buffer);
-OK
-> 
->> +
->> +    visit_type_str(v, name, &p, errp);
->> +}
->> +
->> +static void set_reserved_region(Object *obj, Visitor *v, const char *name,
->> +                                void *opaque, Error **errp)
->> +{
->> +    DeviceState *dev = DEVICE(obj);
->> +    Property *prop = opaque;
->> +    ReservedRegion *rr = qdev_get_prop_ptr(dev, prop);
->> +    Error *local_err = NULL;
->> +    const char *endptr;
->> +    char *str;
->> +    int ret;
->> +
->> +    if (dev->realized) {
->> +        qdev_prop_set_after_realize(dev, name, errp);
->> +        return;
->> +    }
->> +
->> +    visit_type_str(v, name, &str, &local_err);
->> +    if (local_err) {
->> +        error_propagate(errp, local_err);
->> +        return;
->> +    }
->> +
->> +    ret = qemu_strtou64(str, &endptr, 16, &rr->low);
->> +    if (ret) {
->> +        error_setg(errp, "Failed to decode reserved region low addr");
->> +        error_append_hint(errp,
->> +                          "should be an address in hexadecimal\n");
-> 
-> Comes out like this:
-> 
->     qemu-system-x86_64: -device ...: Failed to decode reserved region low addr
->     should be an address in hexadecimal
-> 
-> I'd capitalize the other way, to get
-> 
->     qemu-system-x86_64: -device ...: failed to decode reserved region low addr
->     Should be an address in hexadecimal
-> 
-> Note: output is made up; I failed at figuring out how to use the new
-> property.  An example in PATCH 4's commit message might help.
-OK I will add one example. In practice in the virtio-iommu case the
-property is not really meant to be passed by the end-user but should be
-set by the machine code. However I have just tested from the cmd line
-and it looks using commas as separators is a bad idea because it
-collides with ',' separating properties. So if you're OK I will change
-the comma into ':'.
+A recent regression[*] inspired adding these tests.
 
-> 
-> Since the error message fails to mention @name, the user is left
-> guessing unless "-device ..." contains just one reserved region
-> parameter.
-> 
-> What about something like this:
-> 
->            error_setg(errp, "start address of reserved region '%s'"
->                       " must be a hexadecimal integer",
->                       name);
-Sure. Given the fact the property is named reserved-region[n], this may
-be simplified into
-            error_setg(errp, "start address of '%s'"
-                       " must be a hexadecimal integer",
->                      name);
-> 
-> No need to mess around with error_append_hint() then.
-OK
-> 
-> Same for the other error messages.
-> 
->> +        goto out;
->> +    }
->> +    if (*endptr != ',') {
->> +        goto separator_error;
->> +    }
->> +
->> +    ret = qemu_strtou64(endptr + 1, &endptr, 16, &rr->high);
->> +    if (ret) {
->> +        error_setg(errp, "Failed to decode reserved region high addr");
->> +        error_append_hint(errp,
->> +                          "should be an address in hexadecimal\n");
->> +        goto out;
->> +    }
->> +    if (*endptr != ',') {
->> +        goto separator_error;
->> +    }
->> +
->> +    ret = qemu_strtoui(endptr + 1, &endptr, 10, &rr->type);
->> +    if (ret) {
->> +        error_setg(errp, "Failed to decode reserved region type");
->> +        error_append_hint(errp, "should be an unsigned integer in decimal\n");
->> +    }
-> 
-> I dimly remember discussing the wisdom of numeric type here, dig, dig,
-> ..., aha:
-> 
->     Subject: Re: [PATCH for-5.0 v11 12/20] qapi: Introduce DEFINE_PROP_INTERVAL
->     Date: Fri, 13 Dec 2019 11:03:02 +0100
->     Message-ID: <87y2vg4k6h.fsf@dusky.pond.sub.org>
-> 
->     >> So the "label" part of "<low address>,<high address>,label" is a number?
->     > yes it is.
->     >> 
->     >> Is a number appropriate for your use case, or would an enum be better?
->     > I think a number is OK. There might be other types of reserved regions
->     > in the future. Also if we want to allow somebody else to reuse that
->     > property in another context, I would rather leave it open?
-> 
->     I'd prioritize the user interface over possible reuse (which might never
->     happen).  Mind, I'm not telling you using numbers is a bad user
->     interface.  In general, enums are nicer, but I don't know enough about
->     this particular case.
-Yep I remember too ;-) I left as it was because I think this property
-could be used for other use cases.
-> 
->> +    goto out;
->> +
->> +separator_error:
->> +    error_setg(errp, "reserved region fields must be separated with commas");
-> 
-> I'm not sure de-duplicating this error message is worth the extra goto.
-> 
->> +out:
->> +    g_free(str);
->> +    return;
->> +}
->> +
->> +const PropertyInfo qdev_prop_reserved_region = {
->> +    .name  = "reserved_region",
->> +    .description = "Reserved Region, example: 0xFEE00000,0xFEEFFFFF,0",
->> +    .get   = get_reserved_region,
->> +    .set   = set_reserved_region,
->> +};
->> +
->>  /* --- on/off/auto --- */
->>  
->>  const PropertyInfo qdev_prop_on_off_auto = {
-> 
-> Can't find anything that's actually wrong, so
-> 
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Thanks
+[*] '-cpu host,pmu=on' caused a segfault
 
-Eric
-> 
+Based-on: "target/arm: Check supported KVM features globally (not per vCPU)"
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+---
+Note: We need to apply this test change after the Based-on patch is
+      applied in order to avoid breaking CI with segfaults.
+
+v2:
+  - When a feature is enabled by default set false first [Peter]
+  - Add Based-on tag [Peter]
+  - Also do the PMU setting test with TCG [drew]
+  - Improve commit message [drew]
+---
+ tests/qtest/arm-cpu-features.c | 38 ++++++++++++++++++++++++++++++----
+ 1 file changed, 34 insertions(+), 4 deletions(-)
+
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index 469217367661..f7e062c1891e 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -159,16 +159,35 @@ static bool resp_get_feature(QDict *resp, const char *feature)
+     qobject_unref(_resp);                                              \
+ })
+ 
+-#define assert_feature(qts, cpu_type, feature, expected_value)         \
++#define resp_assert_feature(resp, feature, expected_value)             \
+ ({                                                                     \
+-    QDict *_resp, *_props;                                             \
++    QDict *_props;                                                     \
+                                                                        \
+-    _resp = do_query_no_props(qts, cpu_type);                          \
+     g_assert(_resp);                                                   \
+     g_assert(resp_has_props(_resp));                                   \
+     _props = resp_get_props(_resp);                                    \
+     g_assert(qdict_get(_props, feature));                              \
+     g_assert(qdict_get_bool(_props, feature) == (expected_value));     \
++})
++
++#define assert_feature(qts, cpu_type, feature, expected_value)         \
++({                                                                     \
++    QDict *_resp;                                                      \
++                                                                       \
++    _resp = do_query_no_props(qts, cpu_type);                          \
++    g_assert(_resp);                                                   \
++    resp_assert_feature(_resp, feature, expected_value);               \
++    qobject_unref(_resp);                                              \
++})
++
++#define assert_set_feature(qts, cpu_type, feature, value)              \
++({                                                                     \
++    const char *_fmt = (value) ? "{ %s: true }" : "{ %s: false }";     \
++    QDict *_resp;                                                      \
++                                                                       \
++    _resp = do_query(qts, cpu_type, _fmt, feature);                    \
++    g_assert(_resp);                                                   \
++    resp_assert_feature(_resp, feature, value);                        \
+     qobject_unref(_resp);                                              \
+ })
+ 
+@@ -424,10 +443,14 @@ static void test_query_cpu_model_expansion(const void *data)
+     assert_error(qts, "host", "The CPU type 'host' requires KVM", NULL);
+ 
+     /* Test expected feature presence/absence for some cpu types */
+-    assert_has_feature_enabled(qts, "max", "pmu");
+     assert_has_feature_enabled(qts, "cortex-a15", "pmu");
+     assert_has_not_feature(qts, "cortex-a15", "aarch64");
+ 
++    /* Enabling and disabling pmu should always work. */
++    assert_has_feature_enabled(qts, "max", "pmu");
++    assert_set_feature(qts, "max", "pmu", false);
++    assert_set_feature(qts, "max", "pmu", true);
++
+     assert_has_not_feature(qts, "max", "kvm-no-adjvtime");
+ 
+     if (g_str_equal(qtest_get_arch(), "aarch64")) {
+@@ -464,7 +487,10 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+         return;
+     }
+ 
++    /* Enabling and disabling kvm-no-adjvtime should always work. */
+     assert_has_feature_disabled(qts, "host", "kvm-no-adjvtime");
++    assert_set_feature(qts, "host", "kvm-no-adjvtime", true);
++    assert_set_feature(qts, "host", "kvm-no-adjvtime", false);
+ 
+     if (g_str_equal(qtest_get_arch(), "aarch64")) {
+         bool kvm_supports_sve;
+@@ -475,7 +501,11 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+         char *error;
+ 
+         assert_has_feature_enabled(qts, "host", "aarch64");
++
++        /* Enabling and disabling pmu should always work. */
+         assert_has_feature_enabled(qts, "host", "pmu");
++        assert_set_feature(qts, "host", "pmu", false);
++        assert_set_feature(qts, "host", "pmu", true);
+ 
+         assert_error(qts, "cortex-a15",
+             "We cannot guarantee the CPU type 'cortex-a15' works "
+-- 
+2.25.4
 

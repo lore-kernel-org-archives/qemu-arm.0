@@ -1,114 +1,92 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3888220lfm;
-        Tue, 23 Jun 2020 01:01:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxe/kxieDK/u1MZxghtqVTcmschPTW7VBFLKQ3p/z0br+d8bFIZ/WUEE4/+Y700Q4xZSBVy
-X-Received: by 2002:a25:9c88:: with SMTP id y8mr32784021ybo.317.1592899296596;
-        Tue, 23 Jun 2020 01:01:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592899296; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3894921lfm;
+        Tue, 23 Jun 2020 01:12:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZwcogfitZftHa5Oy1AE5h+6PHkROecgIDQeC3PkT9e8fjdFuF18YlW09H+GGVe/nXxY06
+X-Received: by 2002:a5b:581:: with SMTP id l1mr34598780ybp.478.1592899975993;
+        Tue, 23 Jun 2020 01:12:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592899975; cv=none;
         d=google.com; s=arc-20160816;
-        b=wtLa2NcLylnLA4AhZlEzJ1auHcxBWjb+o8zEGi+XtqJ+Drzj5bwr+t3FoWccrGrrjB
-         vnm4T+TJtajJWrswGPYuP/AtBY3FdQxjoOS0UJEttY8WhCnrC+7izMHrKtNsyUKeURgZ
-         oOjftGtk0JjSpmnVJ6YczDGezbyo2ZwBvl1iHxwWSNTXjw4cTsunEyWXjt1g+/vLfM34
-         FIO5QoUP/70RQxhN0Nrldgmqdbc02bR+ZJW0vvglWz3yzuo+g/nkTUdMtuN1iioHWcYm
-         6RTo0FYETWf7Y1zu4hVWqVnI0/RDYJ4R9B3Eb3FgB9Qjbj3W5REUG//7Bx84cWoghml4
-         uUVA==
+        b=WxrKPp0bWpmYe+LSo4wOq+f1T9gyLXNlb/0zOHSovV4lSgy4e7k2fgvoy7CsmPaeGg
+         IpONdHDw6t9KEsPK7n0McPJgNjKeEynphmdKNzMEdYpNsb8yydvNtkLYUNE9FkFHhxtJ
+         kjhjBKiAyFKt30cTpLf71vglfzvhBv1sz6lXjjlgBflzc6ver3jlInLgfOQnDS259Wke
+         E6kn5CFuz2gKwHo1ikkP6c/yqqxRALj24hQhsJYdyHSEFFMVQeouR16BAYtaAamplO6N
+         XxT42CUNB5VEKTouL1XkAmzTB5Zb4jAt+RDZKBRgEgRFBIZJAoB8X0aNN7aijDg6f96L
+         R7Hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=g9A41gXSHBekuAZBKlyRF1tjqiShsTmNHyInAZGqj70=;
-        b=EUfC6okuLlAjieQpza3EBMTZgEQ8Drwm3mHHLcSxTkZNMKPdXv3iN6SOaruQYblZED
-         pZgBX4LtH8ZVWeg4AWU/t4/ylZ1jW/5tIP3pqh/UkS0jp0pRzqUqYDsly3XRRCU5K0WE
-         s0OMvZ0HxiCrRGSfDp6IzKHVDULUiuTRmAINM0eOk+WnFnhJQj5N7/q83RGqLcHKdcIN
-         8F5HFqunp3YR20Pc9E3LSUggtztyrzX8R0DPRloOtbvDVYKOROOlwr8BgabjD0VumMCQ
-         2vectut2ok/odrtcLfDVOcGnccBc4zubCOYmLWFpfqRIuOjLsxvDlo36/xKi5/g2Acki
-         4LzQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=9Xz9gBhwFGkRM92dFfMl2wL6U66qG4bnoXR6EGl/zCk=;
+        b=obucri621W/Tgg1v1IKnZsQOPCvbm/hAiIIQ9obWOWaPUYBLq8X2qBKCLbaje1wO40
+         QFgrRx3YbNERQE0EzE0SBmWmAX+hkgMPMLVH0tbdcsOGvdiwTPT4KmNMpEbgIcTQhI2t
+         tBLj/DtsL1IPeX6/uSe82Xcz4bb4pHwnvrlizwDBE/6bmSzbDyAtLaOMKNlIB/sh7zTH
+         ILzvurvXk3v9MOrwo6g6YvsKjR04ZIm63/b5qH27SK/jHehYDodbdqgcJoK4ICE9UE0u
+         ewPiMHtKyGxOJB3tF64QpyjFwroz+8YXGaZxBx3G/Dr1bsNSBY5kzaf9JfKvA5lqpNeX
+         wC/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JyqtOn4Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t106si14949975ybi.421.2020.06.23.01.01.36
+        by mx.google.com with ESMTPS id 196si15648527ybd.439.2020.06.23.01.12.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jun 2020 01:01:36 -0700 (PDT)
+        Tue, 23 Jun 2020 01:12:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JyqtOn4Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55844 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40278 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jnds7-0007tC-Td
-	for alex.bennee@linaro.org; Tue, 23 Jun 2020 04:01:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47502)
+	id 1jne35-0007LC-8N
+	for alex.bennee@linaro.org; Tue, 23 Jun 2020 04:12:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jndrw-0007r8-DI
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 04:01:24 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:38547
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jndru-0007hz-P8
- for qemu-arm@nongnu.org; Tue, 23 Jun 2020 04:01:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592899281;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=g9A41gXSHBekuAZBKlyRF1tjqiShsTmNHyInAZGqj70=;
- b=JyqtOn4YcBBdiGYYUIuHr36hhM/h8N7skehda2r503T+0hXA/E8g5YfOgzWel9Kf3M7wd2
- qPguK+v0Aqan1FVxndR3KPpNQPDJSSiUMFDT0tGgG5kdGzO/BQplCbIzM0sPHMJJj7EwbT
- 4tj4LIncuLGqmzHaBHW04IOk9W/6V38=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-13-VWgkAppnNQib4u2upeGNOA-1; Tue, 23 Jun 2020 04:01:17 -0400
-X-MC-Unique: VWgkAppnNQib4u2upeGNOA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E5B7A8031CB;
- Tue, 23 Jun 2020 08:01:15 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
- [10.36.112.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 61CD67CAA3;
- Tue, 23 Jun 2020 08:01:15 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id D1A00113846D; Tue, 23 Jun 2020 10:01:13 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v5 1/9] hw/i2c/core: Add i2c_try_create_slave() and
- i2c_realize_and_unref()
-References: <20200622183428.12255-1-f4bug@amsat.org>
- <20200622183428.12255-2-f4bug@amsat.org>
-Date: Tue, 23 Jun 2020 10:01:13 +0200
-In-Reply-To: <20200622183428.12255-2-f4bug@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 22 Jun 2020 20:34:20
- +0200")
-Message-ID: <875zbimcs6.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jne2y-0007Kz-AQ
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 04:12:48 -0400
+Received: from 3.mo69.mail-out.ovh.net ([188.165.52.203]:49904)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jne2v-0004rw-Qa
+ for qemu-arm@nongnu.org; Tue, 23 Jun 2020 04:12:48 -0400
+Received: from player798.ha.ovh.net (unknown [10.110.115.231])
+ by mo69.mail-out.ovh.net (Postfix) with ESMTP id 3165D96AD5
+ for <qemu-arm@nongnu.org>; Tue, 23 Jun 2020 10:12:35 +0200 (CEST)
+Received: from kaod.org (lfbn-tou-1-921-245.w86-210.abo.wanadoo.fr
+ [86.210.152.245]) (Authenticated sender: clg@kaod.org)
+ by player798.ha.ovh.net (Postfix) with ESMTPSA id 2A1C313BD8F79;
+ Tue, 23 Jun 2020 08:12:26 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G002dd50692f-5cec-4588-ab1e-0a843df684a3,EED1DA90FC9B795DFFB5AB62ED4F19E3D36D96F8)
+ smtp.auth=clg@kaod.org
+Subject: Re: [PATCH v2 2/3] hw/arm/aspeed: Rename AspeedBoardState as
+ AspeedMachineState
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200623072132.2868-1-f4bug@amsat.org>
+ <20200623072132.2868-3-f4bug@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <64e627fb-3044-d13a-717f-5a5fb854f200@kaod.org>
+Date: Tue, 23 Jun 2020 10:12:26 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200623072132.2868-3-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 02:54:39
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Ovh-Tracer-Id: 13362743045705206739
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudekgedgtdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefffdvtddugeeifeduuefghfejgfeigeeigeeltedthefgieeiveeuiefhgeefgfenucfkpheptddrtddrtddrtddpkeeirddvuddtrdduhedvrddvgeehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeelkedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=188.165.52.203; envelope-from=clg@kaod.org;
+ helo=3.mo69.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/23 04:12:35
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,98 +99,139 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- =?utf-8?Q?C=C3=A9d?= =?utf-8?Q?ric?= Le Goater <clg@kaod.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V9HAz4vYtpHL
+X-TUID: l4SP6o44eCW6
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+On 6/23/20 9:21 AM, Philippe Mathieu-Daudé wrote:
+> To have a more consistent naming, rename AspeedBoardState
+> as AspeedMachineState.
+> 
+> Suggested-by: Cédric Le Goater <clg@kaod.org>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-> Extract i2c_try_create_slave() and i2c_realize_and_unref()
-> from i2c_create_slave().
-> We can now set properties on a I2CSlave before it is realized.
->
-> This is in line with the recent qdev/QOM changes merged
-> in commit 6675a653d2e.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
 > ---
-> Cc: Markus Armbruster <armbru@redhat.com>
-> ---
->  include/hw/i2c/i2c.h |  2 ++
->  hw/i2c/core.c        | 18 ++++++++++++++++--
->  2 files changed, 18 insertions(+), 2 deletions(-)
->
-> diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-> index 4117211565..d6e3d85faf 100644
-> --- a/include/hw/i2c/i2c.h
-> +++ b/include/hw/i2c/i2c.h
-> @@ -80,6 +80,8 @@ int i2c_send(I2CBus *bus, uint8_t data);
->  uint8_t i2c_recv(I2CBus *bus);
-> =20
->  DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t add=
-r);
-> +DeviceState *i2c_try_create_slave(const char *name, uint8_t addr);
-> +bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp);
-> =20
->  /* lm832x.c */
->  void lm832x_key_event(DeviceState *dev, int key, int state);
-> diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-> index 1aac457a2a..acf34a12d6 100644
-> --- a/hw/i2c/core.c
-> +++ b/hw/i2c/core.c
-> @@ -267,13 +267,27 @@ const VMStateDescription vmstate_i2c_slave =3D {
->      }
+>  include/hw/arm/aspeed.h |  4 ++--
+>  hw/arm/aspeed.c         | 20 ++++++++++----------
+>  2 files changed, 12 insertions(+), 12 deletions(-)
+> 
+> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+> index 95b4daece8..5114ba0bd4 100644
+> --- a/include/hw/arm/aspeed.h
+> +++ b/include/hw/arm/aspeed.h
+> @@ -11,7 +11,7 @@
+>  
+>  #include "hw/boards.h"
+>  
+> -typedef struct AspeedBoardState AspeedBoardState;
+> +typedef struct AspeedMachineState AspeedMachineState;
+>  
+>  #define TYPE_ASPEED_MACHINE       MACHINE_TYPE_NAME("aspeed")
+>  #define ASPEED_MACHINE(obj) \
+> @@ -45,7 +45,7 @@ typedef struct AspeedMachineClass {
+>      const char *spi_model;
+>      uint32_t num_cs;
+>      uint32_t macs_mask;
+> -    void (*i2c_init)(AspeedBoardState *bmc);
+> +    void (*i2c_init)(AspeedMachineState *bmc);
+>  } AspeedMachineClass;
+>  
+>  
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 31765792a2..680345beca 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -32,7 +32,7 @@ static struct arm_boot_info aspeed_board_binfo = {
+>      .board_id = -1, /* device-tree-only board */
 >  };
-> =20
-> -DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t add=
-r)
-> +DeviceState *i2c_try_create_slave(const char *name, uint8_t addr)
+>  
+> -struct AspeedBoardState {
+> +struct AspeedMachineState {
+>      AspeedSoCState soc;
+>      MemoryRegion ram_container;
+>      MemoryRegion max_ram;
+> @@ -253,7 +253,7 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo)
+>  
+>  static void aspeed_machine_init(MachineState *machine)
 >  {
->      DeviceState *dev;
-> =20
->      dev =3D qdev_new(name);
->      qdev_prop_set_uint8(dev, "address", addr);
-> -    qdev_realize_and_unref(dev, &bus->qbus, &error_fatal);
-> +    return dev;
-> +}
-> +
-> +bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp)
-> +{
-> +    return qdev_realize_and_unref(dev, &bus->qbus, errp);
-> +}
-> +
-> +DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t add=
-r)
-> +{
-> +    DeviceState *dev;
-> +
-> +    dev =3D i2c_try_create_slave(name, addr);
-> +    i2c_realize_and_unref(dev, bus, &error_fatal);
-> +
->      return dev;
+> -    AspeedBoardState *bmc;
+> +    AspeedMachineState *bmc;
+>      AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
+>      AspeedSoCClass *sc;
+>      DriveInfo *drive0 = drive_get(IF_MTD, 0, 0);
+> @@ -261,7 +261,7 @@ static void aspeed_machine_init(MachineState *machine)
+>      int i;
+>      NICInfo *nd = &nd_table[0];
+>  
+> -    bmc = g_new0(AspeedBoardState, 1);
+> +    bmc = g_new0(AspeedMachineState, 1);
+>  
+>      memory_region_init(&bmc->ram_container, NULL, "aspeed-ram-container",
+>                         4 * GiB);
+> @@ -374,7 +374,7 @@ static void aspeed_machine_init(MachineState *machine)
+>      arm_load_kernel(ARM_CPU(first_cpu), machine, &aspeed_board_binfo);
 >  }
-
-We use "create_simple" names for functions that allocate, initialize,
-configure and realize device objects: pci_create_simple(),
-isa_create_simple(), usb_create_simple().  Calling this one
-i2c_create_slave() is okay with me.  I'd prefer
-i2c_slave_create_simple(), though.
-
-We use "new" names for functions that allocate and initialize device
-objects: pci_new(), isa_new(), usb_new().  Let's call this one
-i2c_slave_new().
-
-Your use of "realize_and_unref" matches existing names elsewhere:
-pci_realize_and_unref(), isa_realize_and_unref(),
-usb_realize_and_unref().  However, the other two i2c functions are
-called i2c_slave_FOO(), not i2c_FOO().  You could name this one
-i2c_slave_realize_and_unref().  Another path to consistency: drop the
-slave_ from all three names.
-
-Ideally with my naming suggestions considered:
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>  
+> -static void palmetto_bmc_i2c_init(AspeedBoardState *bmc)
+> +static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
+>  {
+>      AspeedSoCState *soc = &bmc->soc;
+>      DeviceState *dev;
+> @@ -396,7 +396,7 @@ static void palmetto_bmc_i2c_init(AspeedBoardState *bmc)
+>      object_property_set_int(OBJECT(dev), 110000, "temperature3", &error_abort);
+>  }
+>  
+> -static void ast2500_evb_i2c_init(AspeedBoardState *bmc)
+> +static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
+>  {
+>      AspeedSoCState *soc = &bmc->soc;
+>      uint8_t *eeprom_buf = g_malloc0(8 * 1024);
+> @@ -413,13 +413,13 @@ static void ast2500_evb_i2c_init(AspeedBoardState *bmc)
+>      i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338", 0x32);
+>  }
+>  
+> -static void ast2600_evb_i2c_init(AspeedBoardState *bmc)
+> +static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
+>  {
+>      /* Start with some devices on our I2C busses */
+>      ast2500_evb_i2c_init(bmc);
+>  }
+>  
+> -static void romulus_bmc_i2c_init(AspeedBoardState *bmc)
+> +static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+>  {
+>      AspeedSoCState *soc = &bmc->soc;
+>  
+> @@ -428,7 +428,7 @@ static void romulus_bmc_i2c_init(AspeedBoardState *bmc)
+>      i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338", 0x32);
+>  }
+>  
+> -static void swift_bmc_i2c_init(AspeedBoardState *bmc)
+> +static void swift_bmc_i2c_init(AspeedMachineState *bmc)
+>  {
+>      AspeedSoCState *soc = &bmc->soc;
+>  
+> @@ -457,7 +457,7 @@ static void swift_bmc_i2c_init(AspeedBoardState *bmc)
+>      i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 12), "tmp105", 0x4a);
+>  }
+>  
+> -static void sonorapass_bmc_i2c_init(AspeedBoardState *bmc)
+> +static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+>  {
+>      AspeedSoCState *soc = &bmc->soc;
+>  
+> @@ -501,7 +501,7 @@ static void sonorapass_bmc_i2c_init(AspeedBoardState *bmc)
+>  
+>  }
+>  
+> -static void witherspoon_bmc_i2c_init(AspeedBoardState *bmc)
+> +static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+>  {
+>      AspeedSoCState *soc = &bmc->soc;
+>      uint8_t *eeprom_buf = g_malloc0(8 * 1024);
+> 
 

@@ -1,94 +1,109 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp394594lfm;
-        Wed, 24 Jun 2020 05:54:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw4Oa9sgdGz62hhy68xstU3gq1/lIeIXDx99X4YhfiJ8xlRDllnmpj74+Cei/vsBZIm0lic
-X-Received: by 2002:a25:5d04:: with SMTP id r4mr40350872ybb.290.1593003253758;
-        Wed, 24 Jun 2020 05:54:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593003253; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp419296lfm;
+        Wed, 24 Jun 2020 06:27:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwfoWplXTJ4efPzaCoyLTmPGV4b3EKHSJ5KnfS9O6Rp2ahtdGWIHzUIOgXbY/KPeBfPyaiu
+X-Received: by 2002:a25:61d3:: with SMTP id v202mr48321799ybb.457.1593005248967;
+        Wed, 24 Jun 2020 06:27:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593005248; cv=none;
         d=google.com; s=arc-20160816;
-        b=b4BoZs4jIHDrhthK7DvyHcUz9tc5LBKUQGvNFEEyZoKtjIscHCRShG39Y3yri6eGw/
-         jpEL1gKkClDzPTxWq+VooVLLirrFUfQYM0BlpyNUHuESr+UtcyWJi3ewro8IlcacSgoO
-         dZ1XIxIbDTXKqg/aTO6lEXU444vy2OTmU9814TnGGKLYfDciOaoocLK/+p2anoDs1IE+
-         BNM2thpiPBMFSjKSBWgQkURW8xOJ6XhVl+682F/7CoGSNT2VvSYRkG3yJWzQMLyRO7fA
-         lsfh8B12HYbTLS+fmkTZqzf5+8/nOXkiYXoX7q7WgwllCT9FwOSLJLewgaiNjbS8Zagx
-         u2KQ==
+        b=I1bqhwYZxbL9nbq9VUmDM6+Li68DfEOlW76sM/ztEJ2/72o1ibCUlbrkBEpqje4xkt
+         AV6UNJedb4o+hslI4NMTUoe/JOGegp6hPKeBXHzFUyf1EVwSIHK15tpwFw1N9yat8exx
+         pU6anzc+N58p6W8dR4IZhMVQP+Jd62wHjeOE1CJIfB0SaJqN+yEPSo79wb7oFGIipPXu
+         Hb0jl+TKg1+dwqD858IJzVo6JCSj+qltX+sWin3j1OPs+XVxaNf4fQSo4+nAP4E+Rrsr
+         j+9zz/JcvOamaIGJVGVKz92TgsCZH4jqGEJux7x1565aGhhsBAcWNV6kUx0S0bbRv/YE
+         NLvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=VqmSyxYTl2pFn+/+ekFlke/dYFRZHr/dqIajwo21zHE=;
-        b=dP3GQLQnbjXgwRFwvR+xfEgp5ohN6xsVKW/VzU6tAA6U/1lKN6TXxgoZnVag73K2uq
-         eJYtgBmqHtqIrrmZAQUP4w1tFmGaUWCnkBpGZUyUoYTAz6JmobpGRgLXFqQMsIMWtXrc
-         ysvtgLgPgAsNFuGR4nJWaw7JFhdMd7LB2/xQNVSd7Z8g9zP8b2vNyjMS49wBtOAuwjQ5
-         AOSR6uCcjFDNE0CmzNmwDFQ7LZJZJ5ZRl2OtNKObtMUeQT4SwNBzpHpn0PA2WCXUJ7+q
-         czooWuNI3GnUjQ9r8aDKIfTh2R34qzwwqvEtTskj/ewghYEl/d3uODX3iLS/D6PqnJ87
-         /9NA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=EEJC5V3lK/VQAM8iH0Zn+wfUIgAwt0asMzG0ygzjCmQ=;
+        b=aJkDWEZFlQjHV8cvMVf5RTq/tZuYYRLuvlwJBB5z7WMWiKJv9S6o89/5U0mfbV+nW3
+         bjL1e6bnq0Rp1bsn+KSTLQ3uXp7Neoe5lbqS1ZyUdjDP5aYnU4fyU+EHcpiqU21eQRvR
+         52eDVeqKIKnLPVKBXDCUZ3OIMVXtSDUamjHmkvhDAPtUl2EGaORWwORpGiaOL//mC8my
+         Rm0oOZM0cJrYhoMsf5YFZU56nU8GIHKFjNmaZzQTU6FNkKJXECLP5X/0Dq2/BJ0wyvej
+         r5ZYFx8+vtPIyd9eMbAHFwNSX0nVg3USO7erD0siQ4HT1iCUms+ag6ECOK6agbAEo3aT
+         V9WQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@kernel.org header.s=default header.b=n2RHXJ5R;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Uqv8Mysi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i12si20134265ybm.26.2020.06.24.05.54.13
+        by mx.google.com with ESMTPS id y3si19121860ybq.160.2020.06.24.06.27.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jun 2020 05:54:13 -0700 (PDT)
+        Wed, 24 Jun 2020 06:27:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@kernel.org header.s=default header.b=n2RHXJ5R;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Uqv8Mysi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1]:57732 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36664 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jo4ur-0005AO-3w
-	for alex.bennee@linaro.org; Wed, 24 Jun 2020 08:54:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35514)
+	id 1jo5R2-0007lO-AH
+	for alex.bennee@linaro.org; Wed, 24 Jun 2020 09:27:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
- id 1jo4uZ-0004it-Oz; Wed, 24 Jun 2020 08:53:55 -0400
-Received: from mail.kernel.org ([198.145.29.99]:60036)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
- id 1jo4uX-0006gE-Me; Wed, 24 Jun 2020 08:53:55 -0400
-Received: from mail-oi1-f175.google.com (mail-oi1-f175.google.com
- [209.85.167.175])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jo5Qs-0007ju-PX
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2020 09:27:18 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:42085
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jo5Qc-0001p1-FH
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2020 09:27:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593005221;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=EEJC5V3lK/VQAM8iH0Zn+wfUIgAwt0asMzG0ygzjCmQ=;
+ b=Uqv8Mysix2WI9bS7ymL3RddzfBT1T5CG1embfC6P4xnwHSuIIXYijJ1XzUkEM0cigCfMQD
+ BqhEBez4wYpNF2WWCtZyqwAEjM1IDEhHO65cCCqo1CliBZVAJCCXPiCTyg8b/wgyjsTOrc
+ KjbII0Q3ZPNMm0XpmiYOTwHwgofDh9M=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-231-ewigfKSKPZWFU_XPLYyxlw-1; Wed, 24 Jun 2020 09:27:00 -0400
+X-MC-Unique: ewigfKSKPZWFU_XPLYyxlw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0D6EE20663;
- Wed, 24 Jun 2020 12:53:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1593003231;
- bh=koLxx148mbpqdiW2kEPWmz5wBKOteWXDRyclRZ9Cn7A=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=n2RHXJ5RH8EpmJl4uNmdvecGrK7uTgbqWu8OTD9jtzP7MEr58ufQP4HdpkCzi6w/A
- g78XcWi3R/tBRWbKOqYY8XXCSxc0Y/zlTTxc8JtGnhlaHnDhrvPWQKd5cxbDw7KTXs
- vz9dehsBsYENYTElsdJ8cLGsTYHisVF3jdd+55S8=
-Received: by mail-oi1-f175.google.com with SMTP id s10so1479180oih.10;
- Wed, 24 Jun 2020 05:53:51 -0700 (PDT)
-X-Gm-Message-State: AOAM532QaMzon3jioRtwbECWgioyDPifiMaJk2EWk+OtvKO3VfaEzdzc
- t19c9bLPJS6FgzGGOWp5LT3aBYlVOR0yNwTEoyY=
-X-Received: by 2002:aca:b241:: with SMTP id b62mr19014806oif.47.1593003230431; 
- Wed, 24 Jun 2020 05:53:50 -0700 (PDT)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EEE6F800C60;
+ Wed, 24 Jun 2020 13:26:58 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-114-197.ams2.redhat.com [10.36.114.197])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A4132100239F;
+ Wed, 24 Jun 2020 13:26:47 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
+ armbru@redhat.com, pbonzini@redhat.com, jean-philippe@linaro.org,
+ bbhushan2@marvell.com, peterx@redhat.com
+Subject: [PATCH v5 4/5] virtio-iommu-pci: Add array of Interval properties
+Date: Wed, 24 Jun 2020 15:26:24 +0200
+Message-Id: <20200624132625.27453-5-eric.auger@redhat.com>
+In-Reply-To: <20200624132625.27453-1-eric.auger@redhat.com>
+References: <20200624132625.27453-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20200622140620.17229-1-eric.auger@redhat.com>
-In-Reply-To: <20200622140620.17229-1-eric.auger@redhat.com>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Wed, 24 Jun 2020 14:53:39 +0200
-X-Gmail-Original-Message-ID: <CAMj1kXFkms+fRm9=HM0zTtsG+77ajzHv95rVqMgXLsdougG0Kw@mail.gmail.com>
-Message-ID: <CAMj1kXFkms+fRm9=HM0zTtsG+77ajzHv95rVqMgXLsdougG0Kw@mail.gmail.com>
-Subject: Re: [PATCH v7 0/3] vTPM/aarch64 ACPI support
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=198.145.29.99; envelope-from=ardb@kernel.org;
- helo=mail.kernel.org
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/24 08:53:51
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -80
-X-Spam_score: -8.1
-X-Spam_bar: --------
-X-Spam_report: (-8.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/24 01:59:40
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -101,89 +116,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, thuth@redhat.com,
- Andrew Jones <drjones@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Laszlo Ersek <lersek@redhat.com>, qemu-devel@nongnu.org,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- marcandre.lureau@redhat.com, imammedo@redhat.com, eric.auger.pro@gmail.com,
- philmd@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YRXJEmMuj3kh
+X-TUID: UyyFD21xHnGJ
 
-On Mon, 22 Jun 2020 at 16:06, Eric Auger <eric.auger@redhat.com> wrote:
->
-> Those patches bring MMIO TPM TIS ACPI support in machvirt.
->
-> On ARM, the TPM2 table is added when the TPM TIS sysbus
-> device is dynamically instantiated in machvirt.
->
-> Also the TPM2 device object is described in the DSDT.
->
-> Many thanks to Ard for his support.
->
-> Tested with LUKS partition automatic decryption. Also
-> tested with new bios-tables-test dedicated tests,
-> sent separately.
->
-> Best Regards
->
-> Eric
->
-> This series can be found at:
-> https://github.com/eauger/qemu/tree/v5.0-tpm-acpi-v7
->
-> History:
->
-> v6 -> v7:
-> - Collected Stefan and Igor's R-bs
-> - Eventually removed Acpi20TPM2 struct
-> - Updated the reference to the spec v1.2 rev8
->
-> v5 -> v6:
-> - added reference to the spec
-> - add some comments about LAML and LASA fields which are
->   strangely undocumented in the spec for TPM2.0. So I kept
->   the decision to keep the Acpi20TPM2 struct for documentation
->   purpose.
->
-> v4 -> v5:
-> - Move of build_tpm2() in the generic acpi code was upstreamed
->   but this does not correspond to latest proposed version.
-> - Rebase on top of edfcb1f21a
->
-> v3 -> v4:
-> - some rework in build_tpm2() as suggested by Igor
-> - Restored tpm presence check in acpi_dsdt_add_tpm()
-> - add the doc related patch
->
-> v2 -> v3:
-> - Rebase on top of Stefan's
->   "acpi: tpm: Do not build TCPA table for TPM 2"
-> - brings conversion to build_append
->
-> v1 -> v2:
-> - move build_tpm2() in the generic code (Michael)
-> - collect Stefan's R-b on 3/3
->
-> Eric Auger (3):
->   acpi: Some build_tpm2() code reshape
->   arm/acpi: Add the TPM2.0 device under the DSDT
->   docs/specs/tpm: ACPI boot now supported for TPM/ARM
->
+The machine may need to pass reserved regions to the
+virtio-iommu-pci device (such as the MSI window on x86
+or the MSI doorbells on ARM).
 
-For the series
+So let's add an array of Interval properties.
 
-Tested-by: Ard Biesheuvel <ardb@kernel.org>
+Note: if some reserved regions are already set by the
+machine code - which should be the case in general -,
+the length of the property array is already set and
+prevents the end-user from modifying them. For example,
+attempting to use:
 
-Thanks!
+-device virtio-iommu-pci,\
+ len-reserved-regions=1,reserved-regions[0]=0xfee00000:0xfeefffff:1
 
->  docs/specs/tpm.rst          |  2 --
->  include/hw/acpi/acpi-defs.h | 18 -------------
->  hw/acpi/aml-build.c         | 51 +++++++++++++++++++++++--------------
->  hw/arm/virt-acpi-build.c    | 34 +++++++++++++++++++++++++
->  4 files changed, 66 insertions(+), 39 deletions(-)
->
-> --
-> 2.20.1
->
+would result in the following error message:
+
+-device virtio-iommu-pci,len-reserved-regions=1,len-reserved-regions=1,
+ reserved-regions[0]=0xfee00000:0xfeefffff:1: array size property
+ len-reserved-regions may not be set more than once
+
+Otherwise, for example, adding two reserved regions is achieved
+using the following options:
+
+-device virtio-iommu-pci,addr=0xa,len-reserved-regions=2,\
+ reserved-regions[0]=0xfee00000:0xfeefffff:1,\
+ reserved-regions[1]=0x1000000:100ffff:1
+
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+
+---
+
+v3 -> v4:
+- added examples in the commit message as suggested by Markus
+- added Jean's R-b
+---
+ hw/virtio/virtio-iommu-pci.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
+index 632533abaf..d0746fa93c 100644
+--- a/hw/virtio/virtio-iommu-pci.c
++++ b/hw/virtio/virtio-iommu-pci.c
+@@ -33,6 +33,9 @@ struct VirtIOIOMMUPCI {
+ 
+ static Property virtio_iommu_pci_properties[] = {
+     DEFINE_PROP_UINT32("class", VirtIOPCIProxy, class_code, 0),
++    DEFINE_PROP_ARRAY("reserved-regions", VirtIOIOMMUPCI,
++                      vdev.nb_reserved_regions, vdev.reserved_regions,
++                      qdev_prop_reserved_region, ReservedRegion),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+-- 
+2.20.1
+

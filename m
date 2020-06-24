@@ -1,102 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp665180lfm;
-        Wed, 24 Jun 2020 12:27:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwxic2uVXWXW0/8EiTnC6ya4IEUEyLsIfeCIl+Ib4qlXaPmTUqoYKyrqOEkt5b81krALoKa
-X-Received: by 2002:a25:bd47:: with SMTP id p7mr45963774ybm.39.1593026852375;
-        Wed, 24 Jun 2020 12:27:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593026852; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp689585lfm;
+        Wed, 24 Jun 2020 13:05:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxVNzkAnhqCQSI9BzSTCZNS91qqXxjMeAnNUn8qJzvpz+e8DvkL9Waj5Ty86OHfHMomNbNd
+X-Received: by 2002:a25:dfcc:: with SMTP id w195mr48772805ybg.372.1593029139526;
+        Wed, 24 Jun 2020 13:05:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593029139; cv=none;
         d=google.com; s=arc-20160816;
-        b=YG1UUzmMHUk+p3BS72x8hYZilo9DjbiF46NWVD3cBux7Ph3lx9xmwGbSlPeKRMViJ/
-         tKHy//1aVBnPzifmmnHRsS8LgnQe9UB0mvl+dDt0SpzbHYAq/aDsLm8ELbORVLMDUxRv
-         Tg1jz7WKuTLEVxW36/EQZTKRh6ko9fQpWBlWes1Ig3M72IRF8Xt5TSUfLvG1fMDWgKLr
-         Ja3h0MREVUyADy41b2rAEP0kK9C+/caX3xBnigpITj2Aqtifnz/dK6Why49hwOatgALB
-         F+VyrfHre6ViMlOlApoX7lmtZfS9PoV6eFpR2iFiAN7bkYGy/8dMfTQ0H0n6/ZKOEDBy
-         bD/g==
+        b=X0ryyFuMcfFfwLJ2l8EY+TsowPb+flvclvHBvqsBc0pqABxo07mEVPe4rnj6B5NYkw
+         Qd0xRJe9We7SmQNpEDM9DsiHZeKPQXx5+6+qEAdx1svgklszbp813YU18epaAJ+6LEEN
+         5DlA0vtu9Y5i3JwOFhBmy3+KwQnLY9KHrnZNmyfyK0zDpcNUX+bTgq0U3cp07/QIZYi/
+         zop9SHoWB/Dt8+cc5of3wvg2FCIPD3Oe03LKFChlEhf9XMW30erxcuw1evxvnRmok01D
+         mAhqO0BFCMoMImhiWoUjWpVzqczsNQsubA99u4JzLy2D1OHssYLa6bCPd5eDjgPYKyXW
+         RdXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=ohkushfWbAuiWBiaAz2fJBB4ZNpndH0Xh8mSGqUQD/o=;
-        b=P5TKOjMPpKsWkKnNUcZZ8qWUF7obcsU2wTomcVMiJcQQWhcm0rLWaxzrocIbDP9pJJ
-         PeXg3EaXPq+YQMPCrTcMrb/MzNKDgDY2KC9uIdo1xkDNL5SY3gIwfI72ChuQQmqzXo0v
-         ASzxtkhEby/VW9zbPdYxJsZneLdTerJj/TpagxkqN5guHVjZnm+aJHBJT+lsoks5gyr2
-         xX4hgfYh/gEcDuoDKIh/rAB+FlPmQAFSBi2gzq7DwLz4TBdXRabXQPGAVzD2ldBPv1ie
-         w//USdjxp1Axa6oeNgwYbqT0ZYOZPZcXiG7o3NmlhPJ4aiDNxFqcauxIw6BaA+OCYaCl
-         +6Hw==
+        bh=u7yKdx+/jzRdIIBTYmDiCxsyYpVaZsMbKZqKsTdmFxo=;
+        b=iGIk3jgvnMcLJptTlqVXWzqdcJurbXiHl+cKNTa2wJbafukESwvjsqkSK48whxFfdo
+         nJ1gjUppQeQzdHyP4fQaz+6dJLrgauI4/rYFKYWbRnyR/05LIktXSrjaEH1YumRxaKMt
+         tA6h9dcFc9ZYEms5/Uz7oKSjOuxpXP4FABdjJmZGbNfV7fBOZf9vbZNXLMzxHyUIa96/
+         +u135Vy7ikrelkiNMoZkiT6SvoOCNVp8PeU71mfRoPOnvlYabwpOKtKM73L0WVDc87AA
+         OskryCzmrxnwwFL+aNDUQy7lqeT9Rk82hKatLxpjtlkIGHfZvJ0VyuzibMYql3QVMOXk
+         QGDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xislj71X;
+       dkim=fail header.i=@linaro.org header.s=google header.b="AP/flQm4";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o126si21878090ybb.83.2020.06.24.12.27.32
+        by mx.google.com with ESMTPS id o72si21008523yba.186.2020.06.24.13.05.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jun 2020 12:27:32 -0700 (PDT)
+        Wed, 24 Jun 2020 13:05:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xislj71X;
+       dkim=fail header.i=@linaro.org header.s=google header.b="AP/flQm4";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52672 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46628 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1joB3T-0000Nv-QC
-	for alex.bennee@linaro.org; Wed, 24 Jun 2020 15:27:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41196)
+	id 1joBeM-00080C-SK
+	for alex.bennee@linaro.org; Wed, 24 Jun 2020 16:05:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1joB3N-0000NK-Oy; Wed, 24 Jun 2020 15:27:25 -0400
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:35003)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1joBeC-0007z2-Kn
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2020 16:05:28 -0400
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335]:38816)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1joB3M-0008EU-6X; Wed, 24 Jun 2020 15:27:25 -0400
-Received: by mail-il1-x141.google.com with SMTP id k1so2001686ils.2;
- Wed, 24 Jun 2020 12:27:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1joBeA-0001fN-RD
+ for qemu-arm@nongnu.org; Wed, 24 Jun 2020 16:05:28 -0400
+Received: by mail-ot1-x335.google.com with SMTP id 64so3133863oti.5
+ for <qemu-arm@nongnu.org>; Wed, 24 Jun 2020 13:05:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ohkushfWbAuiWBiaAz2fJBB4ZNpndH0Xh8mSGqUQD/o=;
- b=Xislj71XtENi8gXBf8LocTywmQUbhmBXsc9sfM1wtzdlrABb0aTl0JZpaOC5yYSLeQ
- G/e0s3UZKlCWQ3TF5EJobgEGe11Jd1afKrW7iJMyU3Bl6K5hhO6ep3GoZfneY+uCkUGC
- nmF9ckOok+tFp1coEsZ4NyINDaHckcK5uQaym+fEiTO+GTwrcRgYq0f9Z0Uyn+Qzh+E0
- GPiWmzI4MoybV51GPwjkoFkpMnGk8qfObfUTX1y3ry+eJspPeLw5ObEaU14+SCwVOgaw
- 5vmDcEJ+AuX1RBcyWYrx2L2M9Gs7/ZR5HLknhNsfVoxt15sBVT6KMgicoPdxMg45OeCS
- 0I4w==
+ :cc; bh=u7yKdx+/jzRdIIBTYmDiCxsyYpVaZsMbKZqKsTdmFxo=;
+ b=AP/flQm4Q2A/5We7PqTb22ZyWPQ+4vfp4RH4jH51aeFkoYZ4DNtVWEaZYR/kTYEcNN
+ 5eYmRe6dNydYk3fjzlkyyuv1OOztsoQlZRkgiilfyfB5gdp+7A1XW+bDY98UOE4KVPA9
+ Ptziaho9FU12SO7ZVf5gqgRqulQwAaYn86tS/FYAm3xRymeErQWQpHskdQwuRECSs2b+
+ j9F2TbsgsQXtoZRyygokdrSkp/0ts/HnQKWgN85IKdpHpGkhQ4hLL0AZZHWbTbkpjbA5
+ jPwRaBcifqoZUn+pSf6ohXjCiotiXOvZ3DUarUSban4vfJPUBT7b0INua71IzWv9PNvK
+ 6nKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=ohkushfWbAuiWBiaAz2fJBB4ZNpndH0Xh8mSGqUQD/o=;
- b=k6GlzoKc+LlO25R5iYTZ1b2cgC8t5DFISD+rcvFd5F17ijUb51gjMOfuSxKm1JtK4u
- gnedtVTOsHx1Fdz+JmE0p2LPcC60cuH64a+JfIuUHy3az4r6gejdedJY91FlF9s3uIoa
- OT8NEPWznAdwYOfbmGWJrL+x9uzCNBLSGdDThwcRIgVNhp4yFx2KiLWcPwbOyYr2ZVVU
- QoCjIXQGD+brZiN0tEqFVBxNtfGbQVFRl1xHXI+ttR28e/wQLEDa1bAuOgMmfYZrxdFP
- LjLs69z59WxA7sR3n9m49al9U23i1dLmMQ8sY9wIV21EtlM7TMglp3Iwr0qlDwM47y7k
- ZMgQ==
-X-Gm-Message-State: AOAM533zEbuzNmGGJLshTiij/vgedaqP1eZ5LnYWYxdtYXOQ4JQY8sqb
- CnmwVknQbV7cayX/avfdHozaBd7LabeWCZ+XDX8=
-X-Received: by 2002:a92:c213:: with SMTP id j19mr23471978ilo.40.1593026842827; 
- Wed, 24 Jun 2020 12:27:22 -0700 (PDT)
+ bh=u7yKdx+/jzRdIIBTYmDiCxsyYpVaZsMbKZqKsTdmFxo=;
+ b=uZQgfFdSceVRgzpJTylkOWYu4eQvRFKn0IeDwfbCKar11ymw0PmiljBYTSmCr7MPIp
+ fWDdixcNuuQr5z0Md7l3sN66UofSv9iky+Rao+4qDu+7H3LPci6J+liQcWoOdgOOSFDT
+ xizsDSMn0De2BJ8ro35qk1YHlqtBUIfXpAxfpJYIgxNHS6ot79NepDw5TUwxMiF9wadS
+ NBAnU4cg4tW8QKCWYjSr17GVv2cIgpkUaAcenqHuGZmcK+UCa0WJ7RwjTuK9wnbjqdVm
+ Q5LX4ziKbP+raeB+9DzX1Bd+tD4xDGJJMxWcKNcqMl9VM7MoFfauFUT15sq8u3+pJjny
+ JYsw==
+X-Gm-Message-State: AOAM5336LlbiCECtVidYLcHcmuhY9/9YcZzMEUWDmXQOghqdQuoXFvkB
+ LkKBRCgXIsvJz8rcOQpOt93IzgqI/E8WEr5PXPlX4A==
+X-Received: by 2002:a9d:5786:: with SMTP id q6mr10088280oth.135.1593029125173; 
+ Wed, 24 Jun 2020 13:05:25 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200624083737.3086768-1-armbru@redhat.com>
- <20200624083737.3086768-23-armbru@redhat.com>
-In-Reply-To: <20200624083737.3086768-23-armbru@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 24 Jun 2020 12:17:48 -0700
-Message-ID: <CAKmqyKMrWj9BJ_ANP-wjoO4qB_dLJkPV7q9bw8565THB+yRsdw@mail.gmail.com>
-Subject: Re: [PATCH v2 22/25] arm/stm32f205 arm/stm32f405: Fix realize error
- API violation
-To: Markus Armbruster <armbru@redhat.com>
+References: <20200622124157.20360-1-shameerali.kolothum.thodi@huawei.com>
+ <20200624160834.5191b73e@redhat.com>
+ <3375d8e35d3a481d8298ce3e6a4ce531@huawei.com>
+In-Reply-To: <3375d8e35d3a481d8298ce3e6a4ce531@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 24 Jun 2020 21:05:13 +0100
+Message-ID: <CAFEAcA86O0fWFR05TZ2bpdTNWW8q5PFanujMiCejfLS+HF1qNQ@mail.gmail.com>
+Subject: Re: [PATCH v4] arm/virt: Add memory hot remove support
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x141.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x335.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -111,70 +112,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>
+Cc: "Zengtao \(B\)" <prime.zeng@hisilicon.com>,
+ "mst@redhat.com" <mst@redhat.com>, Linuxarm <linuxarm@huawei.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ap7lYtYxej6C
+X-TUID: TYc6F7dsOhVm
 
-On Wed, Jun 24, 2020 at 1:44 AM Markus Armbruster <armbru@redhat.com> wrote:
+On Wed, 24 Jun 2020 at 17:50, Shameerali Kolothum Thodi
+<shameerali.kolothum.thodi@huawei.com> wrote:
 >
-> The Error ** argument must be NULL, &error_abort, &error_fatal, or a
-> pointer to a variable containing NULL.  Passing an argument of the
-> latter kind twice without clearing it in between is wrong: if the
-> first call sets an error, it no longer points to NULL for the second
-> call.
 >
-> stm32f205_soc_realize() and stm32f405_soc_realize() are wrong that
-> way: they pass &err to object_property_set_int() without checking it,
-> and then to qdev_realize().  Harmless, because the former can't
-> actually fail here.
 >
-> Fix by passing &error_abort instead.
+> > -----Original Message-----
+> > From: Igor Mammedov [mailto:imammedo@redhat.com]
+> > doesn't pc_dimm_unplug() do unrealize already?
+> > (/me wonders why it doesn't explode here,
+> > are we leaking a refference somewhere so dimm is still alive?)
 >
-> Cc: Alistair Francis <alistair@alistair23.me>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> Does it? From a quick look at the code it is not obvious.
+>
+> pc_dimm_unplug()
+>   memory_device_unplug()
+>     memory_region_del_subregion()
+>   vmstate_unregister_ram()
+>     qemu_ram_unset_idstr()
+>     qemu_ram_unset_migratable()
+>
+> If it does, then we may need to fix x86/ppc as well.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+In any case this patch is now in master, so if you determine
+that it needs a fix please send that as a followup patch.
 
-Alistair
-
-> ---
->  hw/arm/stm32f205_soc.c | 2 +-
->  hw/arm/stm32f405_soc.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
-> index 19487544f0..56aef686c9 100644
-> --- a/hw/arm/stm32f205_soc.c
-> +++ b/hw/arm/stm32f205_soc.c
-> @@ -154,7 +154,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
->
->      /* ADC 1 to 3 */
->      object_property_set_int(OBJECT(s->adc_irqs), STM_NUM_ADCS,
-> -                            "num-lines", &err);
-> +                            "num-lines", &error_abort);
->      qdev_realize(DEVICE(s->adc_irqs), NULL, &err);
->      if (err != NULL) {
->          error_propagate(errp, err);
-> diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
-> index c12d9f999d..cf9228d8e7 100644
-> --- a/hw/arm/stm32f405_soc.c
-> +++ b/hw/arm/stm32f405_soc.c
-> @@ -172,7 +172,7 @@ static void stm32f405_soc_realize(DeviceState *dev_soc, Error **errp)
->          return;
->      }
->      object_property_set_int(OBJECT(&s->adc_irqs), STM_NUM_ADCS,
-> -                            "num-lines", &err);
-> +                            "num-lines", &error_abort);
->      qdev_realize(DEVICE(&s->adc_irqs), NULL, &err);
->      if (err != NULL) {
->          error_propagate(errp, err);
-> --
-> 2.26.2
->
->
+thanks
+-- PMM

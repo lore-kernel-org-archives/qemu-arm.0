@@ -1,187 +1,236 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp515368lfm;
-        Wed, 24 Jun 2020 08:40:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxOn1A3zjFW/kZdOp6Q+thzYCDgW65Uuqh0ldb/BktnEDhQH8vhgBxLnAuUQGuGmaBpJQiC
-X-Received: by 2002:a17:906:3154:: with SMTP id e20mr26508684eje.171.1593013242979;
-        Wed, 24 Jun 2020 08:40:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593013242; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp582704lfm;
+        Wed, 24 Jun 2020 10:17:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx5xo9tSJk1A1gpAPgVqaj3TKNKU2NKjLqEN7reemVM0ALaufRgC0xZpLdhB2XwDxJ2l/lL
+X-Received: by 2002:a05:6902:68b:: with SMTP id i11mr45554169ybt.396.1593019022919;
+        Wed, 24 Jun 2020 10:17:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593019022; cv=none;
         d=google.com; s=arc-20160816;
-        b=QqH2FM/aLmLPorwLqS8smkGyZYUKcnvJlClOpIKOZIckstWZcX7QfK3GDLdZpHEjuy
-         POObCUBzY8005lYL+pgwq568UuSxPc1Zmv8o6vBhrsh7O9s/ZkACk4nJXxB5AW5T8rn3
-         dx0kdALF0S8xDlzH769i90vjfOFs0OXKyOgWVgylkJsvUY8qM6p0CG5fllMJf7+NqX4T
-         fe0yGBFGz06QqT0Uj9wRk7Qwa4i2rbSOdRO0K9D7A8pI5ysqk6qVAe107vNERAM3b0ys
-         j62Q53LP1H5Cf2lkjYjpOqku6HVGTKxuxaD+v25wVSOAP/IPgiNB7Oj77ubztdIdciZT
-         YB5A==
+        b=0ocW9opyPtgbgxppnxYffsrcE6fnLD75AIIqBNLIpXaqUQyoygluBygdGgIX6NDIh7
+         nkk5I5wX25mJqDpUI6bFaYgI6OevR8ZRquvmuOycp4n00JBonvDZ4zTjcXjx5bdIPsBu
+         408njIcNFEFXPUmwNB1AMQqYHYY0Xd05cVGYTGwj/fRb9esI6y+Z3KnjX1P5iGD2b7SN
+         jEZchxu+2GSr3JR7BoaThMo1kieKMM7YNxK7kZmugBQq7/yX2nw50ryND45HS+KafysI
+         8drzb9YB/GxrBDluBe3EY7epRT9eIAahGXKCLb43BewyKPqLYV0+cC94u0zUVK6x+QrA
+         5Xsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:from:references:cc:to:subject
-         :dkim-signature;
-        bh=Kf7M+Oex0RfW9kqk+x/Os8ToO8Ye/Q/MXZNq+RHcqj8=;
-        b=pgRN6mkqtoZQxDH3RsbGZRCT/RpQDe/JrmdkPScFQ2OPO7/dLkB0ZgqUulXFFrio/G
-         qSZCpGsvmLMKqGxRgsuP9CvV//T60vmPiJDI9ZK4dpL6duOUQmMV44nFMUQ8WjSS/lJG
-         UG99fcQc8bxUTZNv2Sqh7XdvruwqgsO86hx/08i35F2n9n77OWO8UqK1QQYdBjZ86S/w
-         SUyoVHxSQfgbRQvkDYr5idNyTv7vVgLZIReNYyR+A9BBV0Je+m/iW7b48q3khF4PWesy
-         BsjnClwYJVapM2GAUAONyI5XVOOsMflXm3MU/gABNGxjYMd/uSs3bZC7xSqLiFlCHCj6
-         8kTQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=uLbQodzyVNj7BWhmu+ntDad6c9IDNCSFaWVZXTcnWTU=;
+        b=Jm24Nw6amnsiplfP7x+kfZWyAj87vDeJEyhWxaqn4yzmP7m5ueP1MVOfZGLCH4UfWu
+         QKHEJ4G5sipsEbQxJRCU7Lm5bOPusaWgZr1vcGFvwGFT+cZvl+oGAvCGaAxIcut0vqfC
+         AEGJ0P8UYYSzty6zKHb89y4ffH+/b7v6tYLM4QxQycQEG0cQMTan2JRjPZvAstYDQt9D
+         ZvbDwDMTs9OYjL+buyfWGIc7DHGO+EQ7A7HkVZxzuMwgw7RGVdscqnoRw1EZ2ZAuiqsu
+         oIYKTG70MRK3C1ACgC5psdrH1fbgMtWlollLHZ85E/8MH1vpD8r5g41GdH/JKEUtA5sB
+         HTiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="R/fHL/5W";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id cy20si2806573edb.344.2020.06.24.08.40.42;
-        Wed, 24 Jun 2020 08:40:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o138si21040648ybc.223.2020.06.24.10.17.02
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 24 Jun 2020 10:17:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="R/fHL/5W";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S2404381AbgFXPkl (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Wed, 24 Jun 2020 11:40:41 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:28541 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S2404146AbgFXPkl (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Wed, 24 Jun 2020 11:40:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1593013239;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-        bh=Kf7M+Oex0RfW9kqk+x/Os8ToO8Ye/Q/MXZNq+RHcqj8=;
-        b=R/fHL/5WjR9vnI1f/OFdm9v0S/LRNo5nbxadAVQNLUEO3b4Tx8O8+TxfvQZ2YbXvvd2CXM
-        dn83FeVFGkrDnsR6EspyjURLJZGagaiIqwYd84xH5WQCx1L0YRTi5bpVYWGnLGWuzCSFcn
-        y9d6+cRlIKAANQXSbr6f1bXRHHy07Jc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-122-4l99331SNIa_nFE_-8d4_A-1; Wed, 24 Jun 2020 11:40:35 -0400
-X-MC-Unique: 4l99331SNIa_nFE_-8d4_A-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 816E4800C60;
-        Wed, 24 Jun 2020 15:40:32 +0000 (UTC)
-Received: from [10.36.113.65] (ovpn-113-65.ams2.redhat.com [10.36.113.65])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 9650C19D7D;
-        Wed, 24 Jun 2020 15:40:17 +0000 (UTC)
-Subject: Re: [PATCH v4 00/21] virtio-mem: Paravirtualized memory hot(un)plug
-To:     "Michael S. Tsirkin" <mst@redhat.com>
-Cc:     qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-s390x@nongnu.org,
-        Richard Henderson <rth@twiddle.net>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        teawater <teawaterz@linux.alibaba.com>,
-        Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
-        Alex Shi <alex.shi@linux.alibaba.com>,
-        Alex Williamson <alex.williamson@redhat.com>,
-        Christian Borntraeger <borntraeger@de.ibm.com>,
-        Cornelia Huck <cohuck@redhat.com>,
-        Eric Blake <eblake@redhat.com>,
-        Eric Farman <farman@linux.ibm.com>,
-        Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
-        Halil Pasic <pasic@linux.ibm.com>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Janosch Frank <frankja@linux.ibm.com>,
-        Juan Quintela <quintela@redhat.com>,
-        Keith Busch <kbusch@kernel.org>,
-        Lukas Straub <lukasstraub2@web.de>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        Markus Armbruster <armbru@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Pierre Morel <pmorel@linux.ibm.com>,
-        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-        Sergio Lopez <slp@redhat.com>,
-        Tony Krowiak <akrowiak@linux.ibm.com>
-References: <20200610115419.51688-1-david@redhat.com>
- <20200624113157-mutt-send-email-mst@kernel.org>
-From:   David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat GmbH
-Message-ID: <53fbc30a-fead-2da6-9215-2aae9c3027d5@redhat.com>
-Date:   Wed, 24 Jun 2020 17:40:16 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
-MIME-Version: 1.0
-In-Reply-To: <20200624113157-mutt-send-email-mst@kernel.org>
-Content-Type: text/plain; charset=utf-8
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50322 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jo91C-0001ks-9x
+	for alex.bennee@linaro.org; Wed, 24 Jun 2020 13:17:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54118)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jo8bU-0006Ki-F4; Wed, 24 Jun 2020 12:50:28 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2469 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1jo8bR-0008GI-PM; Wed, 24 Jun 2020 12:50:28 -0400
+Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.54])
+ by Forcepoint Email with ESMTP id C9C521E31A9177A3C4B5;
+ Thu, 25 Jun 2020 00:50:15 +0800 (CST)
+Received: from dggeme708-chm.china.huawei.com (10.1.199.104) by
+ DGGEMM405-HUB.china.huawei.com (10.3.20.213) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Thu, 25 Jun 2020 00:50:15 +0800
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ dggeme708-chm.china.huawei.com (10.1.199.104) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1913.5; Thu, 25 Jun 2020 00:50:14 +0800
+Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
+ lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
+ 15.01.1913.007; Wed, 24 Jun 2020 17:50:11 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Subject: RE: [PATCH v4] arm/virt: Add memory hot remove support
+Thread-Topic: [PATCH v4] arm/virt: Add memory hot remove support
+Thread-Index: AQHWSJL/AMH+suS+ZUe4HdNJbU8iyqjnv/sAgAA6PMA=
+Date: Wed, 24 Jun 2020 16:50:11 +0000
+Message-ID: <3375d8e35d3a481d8298ce3e6a4ce531@huawei.com>
+References: <20200622124157.20360-1-shameerali.kolothum.thodi@huawei.com>
+ <20200624160834.5191b73e@redhat.com>
+In-Reply-To: <20200624160834.5191b73e@redhat.com>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: j0tYA2+1sJql
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.47.88.9]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=shameerali.kolothum.thodi@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/24 12:50:16
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "Zengtao \(B\)" <prime.zeng@hisilicon.com>, "mst@redhat.com" <mst@redhat.com>,
+ Linuxarm <linuxarm@huawei.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei
+ \(O\)" <xuwei5@huawei.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Vpzw70kBMpjh
 
-On 24.06.20 17:33, Michael S. Tsirkin wrote:
-> On Wed, Jun 10, 2020 at 01:53:58PM +0200, David Hildenbrand wrote:
->> This is the very basic, initial version of virtio-mem. More info on
->> virtio-mem in general can be found in the Linux kernel driver v2 posting
->> [1] and in patch #10. The Linux driver is currently on its way upstream.
->>
->> This series is based on [3]:
->>     "[PATCH v1] pc: Support coldplugging of virtio-pmem-pci devices on all
->>      buses"
->> And [4]:
->>     "[PATCH v2] hmp: Make json format optional for qom-set"
->>
->> The patches can be found at:
->>     https://github.com/davidhildenbrand/qemu.git virtio-mem-v4
-> 
-> 
-> OK so looks sane to me.
-> IIUC there are a couple of minor tweaks still so I'm expecting v5
-> of this.
-> You want me to merge this, right?
-
-Yes, I am planning to send (rebased) v5 most probably tomorrow. Thanks!
 
 
--- 
+> -----Original Message-----
+> From: Igor Mammedov [mailto:imammedo@redhat.com]
+> Sent: 24 June 2020 15:09
+> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
+> peter.maydell@linaro.org; mst@redhat.com; Linuxarm
+> <linuxarm@huawei.com>; xuwei (O) <xuwei5@huawei.com>;
+> eric.auger@redhat.com; Zengtao (B) <prime.zeng@hisilicon.com>
+> Subject: Re: [PATCH v4] arm/virt: Add memory hot remove support
+>=20
+> On Mon, 22 Jun 2020 13:41:57 +0100
+> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+>=20
+> > This adds support for memory(pc-dimm) hot remove on arm/virt that
+> > uses acpi ged device.
+> >
+> > NVDIMM hot removal is not yet supported.
+> >
+> > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> > ---
+> > v2 --> v3
+> >   -Addressed Eric's comments on v3.
+> > v2 --> v3
+> >   -Addressed Eric's review comment and added check for NVDIMM.
+> > RFC v1 --> v2
+> >   -Rebased on top of latest Qemu master.
+> >   -Dropped "RFC" and tested with kernel 5.7-rc6
+> > ---
+> >  hw/acpi/generic_event_device.c | 29 ++++++++++++++++
+> >  hw/arm/virt.c                  | 62
+> ++++++++++++++++++++++++++++++++--
+> >  2 files changed, 89 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/hw/acpi/generic_event_device.c
+> b/hw/acpi/generic_event_device.c
+> > index 1cb34111e5..b8abdefa1c 100644
+> > --- a/hw/acpi/generic_event_device.c
+> > +++ b/hw/acpi/generic_event_device.c
+> > @@ -193,6 +193,33 @@ static void
+
+[...]
+
+> > +static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
+> > +                             DeviceState *dev, Error **errp)
+> > +{
+> > +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
+> > +    Error *local_err =3D NULL;
+> > +
+> > +    hotplug_handler_unplug(HOTPLUG_HANDLER(vms->acpi_dev), dev,
+> &local_err);
+> > +    if (local_err) {
+> > +        goto out;
+> > +    }
+> > +
+> > +    pc_dimm_unplug(PC_DIMM(dev), MACHINE(vms));
+> > +    qdev_unrealize(dev);
+>=20
+> doesn't pc_dimm_unplug() do unrealize already?
+> (/me wonders why it doesn't explode here,
+> are we leaking a refference somewhere so dimm is still alive?)
+
+Does it? From a quick look at the code it is not obvious.
+
+pc_dimm_unplug()
+  memory_device_unplug()
+    memory_region_del_subregion()
+  vmstate_unregister_ram()
+    qemu_ram_unset_idstr()
+    qemu_ram_unset_migratable()
+
+If it does, then we may need to fix x86/ppc as well.
+
 Thanks,
+Shameer
 
-David / dhildenb
+> > +
+> > +out:
+> > +    error_propagate(errp, local_err);
+> > +}
+> > +
+> >  static void virt_machine_device_unplug_request_cb(HotplugHandler
+> *hotplug_dev,
+> >                                            DeviceState *dev, Error
+> **errp)
+> >  {
+> > -    error_setg(errp, "device unplug request for unsupported device"
+> > -               " type: %s", object_get_typename(OBJECT(dev)));
+> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> > +        virt_dimm_unplug_request(hotplug_dev, dev, errp);
+> > +    } else {
+> > +        error_setg(errp, "device unplug request for unsupported device=
+"
+> > +                   " type: %s", object_get_typename(OBJECT(dev)));
+> > +    }
+> > +}
+> > +
+> > +static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
+> > +                                          DeviceState *dev, Error
+> **errp)
+> > +{
+> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> > +        virt_dimm_unplug(hotplug_dev, dev, errp);
+> > +    } else {
+> > +        error_setg(errp, "virt: device unplug for unsupported device"
+> > +                   " type: %s", object_get_typename(OBJECT(dev)));
+> > +    }
+> >  }
+> >
+> >  static HotplugHandler *virt_machine_get_hotplug_handler(MachineState
+> *machine,
+> > @@ -2262,6 +2319,7 @@ static void virt_machine_class_init(ObjectClass
+> *oc, void *data)
+> >      hc->pre_plug =3D virt_machine_device_pre_plug_cb;
+> >      hc->plug =3D virt_machine_device_plug_cb;
+> >      hc->unplug_request =3D virt_machine_device_unplug_request_cb;
+> > +    hc->unplug =3D virt_machine_device_unplug_cb;
+> >      mc->numa_mem_supported =3D true;
+> >      mc->nvdimm_supported =3D true;
+> >      mc->auto_enable_numa_with_memhp =3D true;
+

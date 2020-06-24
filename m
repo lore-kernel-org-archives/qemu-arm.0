@@ -1,236 +1,180 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp582704lfm;
-        Wed, 24 Jun 2020 10:17:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx5xo9tSJk1A1gpAPgVqaj3TKNKU2NKjLqEN7reemVM0ALaufRgC0xZpLdhB2XwDxJ2l/lL
-X-Received: by 2002:a05:6902:68b:: with SMTP id i11mr45554169ybt.396.1593019022919;
-        Wed, 24 Jun 2020 10:17:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593019022; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp665180lfm;
+        Wed, 24 Jun 2020 12:27:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwxic2uVXWXW0/8EiTnC6ya4IEUEyLsIfeCIl+Ib4qlXaPmTUqoYKyrqOEkt5b81krALoKa
+X-Received: by 2002:a25:bd47:: with SMTP id p7mr45963774ybm.39.1593026852375;
+        Wed, 24 Jun 2020 12:27:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593026852; cv=none;
         d=google.com; s=arc-20160816;
-        b=0ocW9opyPtgbgxppnxYffsrcE6fnLD75AIIqBNLIpXaqUQyoygluBygdGgIX6NDIh7
-         nkk5I5wX25mJqDpUI6bFaYgI6OevR8ZRquvmuOycp4n00JBonvDZ4zTjcXjx5bdIPsBu
-         408njIcNFEFXPUmwNB1AMQqYHYY0Xd05cVGYTGwj/fRb9esI6y+Z3KnjX1P5iGD2b7SN
-         jEZchxu+2GSr3JR7BoaThMo1kieKMM7YNxK7kZmugBQq7/yX2nw50ryND45HS+KafysI
-         8drzb9YB/GxrBDluBe3EY7epRT9eIAahGXKCLb43BewyKPqLYV0+cC94u0zUVK6x+QrA
-         5Xsw==
+        b=YG1UUzmMHUk+p3BS72x8hYZilo9DjbiF46NWVD3cBux7Ph3lx9xmwGbSlPeKRMViJ/
+         tKHy//1aVBnPzifmmnHRsS8LgnQe9UB0mvl+dDt0SpzbHYAq/aDsLm8ELbORVLMDUxRv
+         Tg1jz7WKuTLEVxW36/EQZTKRh6ko9fQpWBlWes1Ig3M72IRF8Xt5TSUfLvG1fMDWgKLr
+         Ja3h0MREVUyADy41b2rAEP0kK9C+/caX3xBnigpITj2Aqtifnz/dK6Why49hwOatgALB
+         F+VyrfHre6ViMlOlApoX7lmtZfS9PoV6eFpR2iFiAN7bkYGy/8dMfTQ0H0n6/ZKOEDBy
+         bD/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=uLbQodzyVNj7BWhmu+ntDad6c9IDNCSFaWVZXTcnWTU=;
-        b=Jm24Nw6amnsiplfP7x+kfZWyAj87vDeJEyhWxaqn4yzmP7m5ueP1MVOfZGLCH4UfWu
-         QKHEJ4G5sipsEbQxJRCU7Lm5bOPusaWgZr1vcGFvwGFT+cZvl+oGAvCGaAxIcut0vqfC
-         AEGJ0P8UYYSzty6zKHb89y4ffH+/b7v6tYLM4QxQycQEG0cQMTan2JRjPZvAstYDQt9D
-         ZvbDwDMTs9OYjL+buyfWGIc7DHGO+EQ7A7HkVZxzuMwgw7RGVdscqnoRw1EZ2ZAuiqsu
-         oIYKTG70MRK3C1ACgC5psdrH1fbgMtWlollLHZ85E/8MH1vpD8r5g41GdH/JKEUtA5sB
-         HTiw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ohkushfWbAuiWBiaAz2fJBB4ZNpndH0Xh8mSGqUQD/o=;
+        b=P5TKOjMPpKsWkKnNUcZZ8qWUF7obcsU2wTomcVMiJcQQWhcm0rLWaxzrocIbDP9pJJ
+         PeXg3EaXPq+YQMPCrTcMrb/MzNKDgDY2KC9uIdo1xkDNL5SY3gIwfI72ChuQQmqzXo0v
+         ASzxtkhEby/VW9zbPdYxJsZneLdTerJj/TpagxkqN5guHVjZnm+aJHBJT+lsoks5gyr2
+         xX4hgfYh/gEcDuoDKIh/rAB+FlPmQAFSBi2gzq7DwLz4TBdXRabXQPGAVzD2ldBPv1ie
+         w//USdjxp1Axa6oeNgwYbqT0ZYOZPZcXiG7o3NmlhPJ4aiDNxFqcauxIw6BaA+OCYaCl
+         +6Hw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xislj71X;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o138si21040648ybc.223.2020.06.24.10.17.02
+        by mx.google.com with ESMTPS id o126si21878090ybb.83.2020.06.24.12.27.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jun 2020 10:17:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 24 Jun 2020 12:27:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50322 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Xislj71X;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52672 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jo91C-0001ks-9x
-	for alex.bennee@linaro.org; Wed, 24 Jun 2020 13:17:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54118)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1joB3T-0000Nv-QC
+	for alex.bennee@linaro.org; Wed, 24 Jun 2020 15:27:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41196)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jo8bU-0006Ki-F4; Wed, 24 Jun 2020 12:50:28 -0400
-Received: from szxga01-in.huawei.com ([45.249.212.187]:2469 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1jo8bR-0008GI-PM; Wed, 24 Jun 2020 12:50:28 -0400
-Received: from DGGEMM405-HUB.china.huawei.com (unknown [172.30.72.54])
- by Forcepoint Email with ESMTP id C9C521E31A9177A3C4B5;
- Thu, 25 Jun 2020 00:50:15 +0800 (CST)
-Received: from dggeme708-chm.china.huawei.com (10.1.199.104) by
- DGGEMM405-HUB.china.huawei.com (10.3.20.213) with Microsoft SMTP Server (TLS)
- id 14.3.487.0; Thu, 25 Jun 2020 00:50:15 +0800
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- dggeme708-chm.china.huawei.com (10.1.199.104) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1913.5; Thu, 25 Jun 2020 00:50:14 +0800
-Received: from lhreml710-chm.china.huawei.com ([169.254.81.184]) by
- lhreml710-chm.china.huawei.com ([169.254.81.184]) with mapi id
- 15.01.1913.007; Wed, 24 Jun 2020 17:50:11 +0100
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Subject: RE: [PATCH v4] arm/virt: Add memory hot remove support
-Thread-Topic: [PATCH v4] arm/virt: Add memory hot remove support
-Thread-Index: AQHWSJL/AMH+suS+ZUe4HdNJbU8iyqjnv/sAgAA6PMA=
-Date: Wed, 24 Jun 2020 16:50:11 +0000
-Message-ID: <3375d8e35d3a481d8298ce3e6a4ce531@huawei.com>
-References: <20200622124157.20360-1-shameerali.kolothum.thodi@huawei.com>
- <20200624160834.5191b73e@redhat.com>
-In-Reply-To: <20200624160834.5191b73e@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.88.9]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1joB3N-0000NK-Oy; Wed, 24 Jun 2020 15:27:25 -0400
+Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:35003)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1joB3M-0008EU-6X; Wed, 24 Jun 2020 15:27:25 -0400
+Received: by mail-il1-x141.google.com with SMTP id k1so2001686ils.2;
+ Wed, 24 Jun 2020 12:27:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ohkushfWbAuiWBiaAz2fJBB4ZNpndH0Xh8mSGqUQD/o=;
+ b=Xislj71XtENi8gXBf8LocTywmQUbhmBXsc9sfM1wtzdlrABb0aTl0JZpaOC5yYSLeQ
+ G/e0s3UZKlCWQ3TF5EJobgEGe11Jd1afKrW7iJMyU3Bl6K5hhO6ep3GoZfneY+uCkUGC
+ nmF9ckOok+tFp1coEsZ4NyINDaHckcK5uQaym+fEiTO+GTwrcRgYq0f9Z0Uyn+Qzh+E0
+ GPiWmzI4MoybV51GPwjkoFkpMnGk8qfObfUTX1y3ry+eJspPeLw5ObEaU14+SCwVOgaw
+ 5vmDcEJ+AuX1RBcyWYrx2L2M9Gs7/ZR5HLknhNsfVoxt15sBVT6KMgicoPdxMg45OeCS
+ 0I4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ohkushfWbAuiWBiaAz2fJBB4ZNpndH0Xh8mSGqUQD/o=;
+ b=k6GlzoKc+LlO25R5iYTZ1b2cgC8t5DFISD+rcvFd5F17ijUb51gjMOfuSxKm1JtK4u
+ gnedtVTOsHx1Fdz+JmE0p2LPcC60cuH64a+JfIuUHy3az4r6gejdedJY91FlF9s3uIoa
+ OT8NEPWznAdwYOfbmGWJrL+x9uzCNBLSGdDThwcRIgVNhp4yFx2KiLWcPwbOyYr2ZVVU
+ QoCjIXQGD+brZiN0tEqFVBxNtfGbQVFRl1xHXI+ttR28e/wQLEDa1bAuOgMmfYZrxdFP
+ LjLs69z59WxA7sR3n9m49al9U23i1dLmMQ8sY9wIV21EtlM7TMglp3Iwr0qlDwM47y7k
+ ZMgQ==
+X-Gm-Message-State: AOAM533zEbuzNmGGJLshTiij/vgedaqP1eZ5LnYWYxdtYXOQ4JQY8sqb
+ CnmwVknQbV7cayX/avfdHozaBd7LabeWCZ+XDX8=
+X-Received: by 2002:a92:c213:: with SMTP id j19mr23471978ilo.40.1593026842827; 
+ Wed, 24 Jun 2020 12:27:22 -0700 (PDT)
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.187;
- envelope-from=shameerali.kolothum.thodi@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/24 12:50:16
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+References: <20200624083737.3086768-1-armbru@redhat.com>
+ <20200624083737.3086768-23-armbru@redhat.com>
+In-Reply-To: <20200624083737.3086768-23-armbru@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 24 Jun 2020 12:17:48 -0700
+Message-ID: <CAKmqyKMrWj9BJ_ANP-wjoO4qB_dLJkPV7q9bw8565THB+yRsdw@mail.gmail.com>
+Subject: Re: [PATCH v2 22/25] arm/stm32f205 arm/stm32f405: Fix realize error
+ API violation
+To: Markus Armbruster <armbru@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x141.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "Zengtao \(B\)" <prime.zeng@hisilicon.com>, "mst@redhat.com" <mst@redhat.com>,
- Linuxarm <linuxarm@huawei.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei
- \(O\)" <xuwei5@huawei.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vpzw70kBMpjh
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ap7lYtYxej6C
 
+On Wed, Jun 24, 2020 at 1:44 AM Markus Armbruster <armbru@redhat.com> wrote:
+>
+> The Error ** argument must be NULL, &error_abort, &error_fatal, or a
+> pointer to a variable containing NULL.  Passing an argument of the
+> latter kind twice without clearing it in between is wrong: if the
+> first call sets an error, it no longer points to NULL for the second
+> call.
+>
+> stm32f205_soc_realize() and stm32f405_soc_realize() are wrong that
+> way: they pass &err to object_property_set_int() without checking it,
+> and then to qdev_realize().  Harmless, because the former can't
+> actually fail here.
+>
+> Fix by passing &error_abort instead.
+>
+> Cc: Alistair Francis <alistair@alistair23.me>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-> -----Original Message-----
-> From: Igor Mammedov [mailto:imammedo@redhat.com]
-> Sent: 24 June 2020 15:09
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
-> peter.maydell@linaro.org; mst@redhat.com; Linuxarm
-> <linuxarm@huawei.com>; xuwei (O) <xuwei5@huawei.com>;
-> eric.auger@redhat.com; Zengtao (B) <prime.zeng@hisilicon.com>
-> Subject: Re: [PATCH v4] arm/virt: Add memory hot remove support
->=20
-> On Mon, 22 Jun 2020 13:41:57 +0100
-> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
->=20
-> > This adds support for memory(pc-dimm) hot remove on arm/virt that
-> > uses acpi ged device.
-> >
-> > NVDIMM hot removal is not yet supported.
-> >
-> > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> > ---
-> > v2 --> v3
-> >   -Addressed Eric's comments on v3.
-> > v2 --> v3
-> >   -Addressed Eric's review comment and added check for NVDIMM.
-> > RFC v1 --> v2
-> >   -Rebased on top of latest Qemu master.
-> >   -Dropped "RFC" and tested with kernel 5.7-rc6
-> > ---
-> >  hw/acpi/generic_event_device.c | 29 ++++++++++++++++
-> >  hw/arm/virt.c                  | 62
-> ++++++++++++++++++++++++++++++++--
-> >  2 files changed, 89 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/hw/acpi/generic_event_device.c
-> b/hw/acpi/generic_event_device.c
-> > index 1cb34111e5..b8abdefa1c 100644
-> > --- a/hw/acpi/generic_event_device.c
-> > +++ b/hw/acpi/generic_event_device.c
-> > @@ -193,6 +193,33 @@ static void
+Alistair
 
-[...]
-
-> > +static void virt_dimm_unplug(HotplugHandler *hotplug_dev,
-> > +                             DeviceState *dev, Error **errp)
-> > +{
-> > +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
-> > +    Error *local_err =3D NULL;
-> > +
-> > +    hotplug_handler_unplug(HOTPLUG_HANDLER(vms->acpi_dev), dev,
-> &local_err);
-> > +    if (local_err) {
-> > +        goto out;
-> > +    }
-> > +
-> > +    pc_dimm_unplug(PC_DIMM(dev), MACHINE(vms));
-> > +    qdev_unrealize(dev);
->=20
-> doesn't pc_dimm_unplug() do unrealize already?
-> (/me wonders why it doesn't explode here,
-> are we leaking a refference somewhere so dimm is still alive?)
-
-Does it? From a quick look at the code it is not obvious.
-
-pc_dimm_unplug()
-  memory_device_unplug()
-    memory_region_del_subregion()
-  vmstate_unregister_ram()
-    qemu_ram_unset_idstr()
-    qemu_ram_unset_migratable()
-
-If it does, then we may need to fix x86/ppc as well.
-
-Thanks,
-Shameer
-
-> > +
-> > +out:
-> > +    error_propagate(errp, local_err);
-> > +}
-> > +
-> >  static void virt_machine_device_unplug_request_cb(HotplugHandler
-> *hotplug_dev,
-> >                                            DeviceState *dev, Error
-> **errp)
-> >  {
-> > -    error_setg(errp, "device unplug request for unsupported device"
-> > -               " type: %s", object_get_typename(OBJECT(dev)));
-> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> > +        virt_dimm_unplug_request(hotplug_dev, dev, errp);
-> > +    } else {
-> > +        error_setg(errp, "device unplug request for unsupported device=
-"
-> > +                   " type: %s", object_get_typename(OBJECT(dev)));
-> > +    }
-> > +}
-> > +
-> > +static void virt_machine_device_unplug_cb(HotplugHandler *hotplug_dev,
-> > +                                          DeviceState *dev, Error
-> **errp)
-> > +{
-> > +    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> > +        virt_dimm_unplug(hotplug_dev, dev, errp);
-> > +    } else {
-> > +        error_setg(errp, "virt: device unplug for unsupported device"
-> > +                   " type: %s", object_get_typename(OBJECT(dev)));
-> > +    }
-> >  }
-> >
-> >  static HotplugHandler *virt_machine_get_hotplug_handler(MachineState
-> *machine,
-> > @@ -2262,6 +2319,7 @@ static void virt_machine_class_init(ObjectClass
-> *oc, void *data)
-> >      hc->pre_plug =3D virt_machine_device_pre_plug_cb;
-> >      hc->plug =3D virt_machine_device_plug_cb;
-> >      hc->unplug_request =3D virt_machine_device_unplug_request_cb;
-> > +    hc->unplug =3D virt_machine_device_unplug_cb;
-> >      mc->numa_mem_supported =3D true;
-> >      mc->nvdimm_supported =3D true;
-> >      mc->auto_enable_numa_with_memhp =3D true;
-
+> ---
+>  hw/arm/stm32f205_soc.c | 2 +-
+>  hw/arm/stm32f405_soc.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
+> index 19487544f0..56aef686c9 100644
+> --- a/hw/arm/stm32f205_soc.c
+> +++ b/hw/arm/stm32f205_soc.c
+> @@ -154,7 +154,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+>
+>      /* ADC 1 to 3 */
+>      object_property_set_int(OBJECT(s->adc_irqs), STM_NUM_ADCS,
+> -                            "num-lines", &err);
+> +                            "num-lines", &error_abort);
+>      qdev_realize(DEVICE(s->adc_irqs), NULL, &err);
+>      if (err != NULL) {
+>          error_propagate(errp, err);
+> diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
+> index c12d9f999d..cf9228d8e7 100644
+> --- a/hw/arm/stm32f405_soc.c
+> +++ b/hw/arm/stm32f405_soc.c
+> @@ -172,7 +172,7 @@ static void stm32f405_soc_realize(DeviceState *dev_soc, Error **errp)
+>          return;
+>      }
+>      object_property_set_int(OBJECT(&s->adc_irqs), STM_NUM_ADCS,
+> -                            "num-lines", &err);
+> +                            "num-lines", &error_abort);
+>      qdev_realize(DEVICE(&s->adc_irqs), NULL, &err);
+>      if (err != NULL) {
+>          error_propagate(errp, err);
+> --
+> 2.26.2
+>
+>

@@ -1,48 +1,48 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1308970lfm;
-        Thu, 25 Jun 2020 06:44:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw9yt69FeJIffmnes59619Kxl4sOTk5FxgeiBWPjZ0UOJuUzxMez7m8UUoFlpzS67TdBC/Z
-X-Received: by 2002:a05:6402:888:: with SMTP id e8mr26573490edy.210.1593092665587;
-        Thu, 25 Jun 2020 06:44:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593092665; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1308554lfm;
+        Thu, 25 Jun 2020 06:43:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzCuASl9Zet0FaVEgkQzbBtN6tkTZdCe9eq2F66ZfuT09BwuM6jsxk034kaSpP/9j5cPl71
+X-Received: by 2002:aa7:df08:: with SMTP id c8mr22249902edy.372.1593092639095;
+        Thu, 25 Jun 2020 06:43:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593092639; cv=none;
         d=google.com; s=arc-20160816;
-        b=h4sEzoYaLhC4wS2qvSRz0+lhMwo/zR4eM74+cCXSfECd2DfNrK/m4X5v+lQ29vepYs
-         rqGNbs0wyJVmFVv3RALVDHy+9fnp5zijjoLCpHHaZ4GmEG1wxPVIeGtAcli0O1FheSAt
-         FD3m5Nsi6yurXf3qfIpMxwm5Ke07rHD68HLr/vLIZAdeumoKp/xeLg7/qv4z/Y2Eh4C6
-         ZVlmH/u4XKfs6PKsqHe5QURImwILPDgLB8cTf7Mm9yCLcaaMjlMc+fAjOMCWHsImS+H6
-         oE8au4oxnT35JvXHKr3+yGgOsM0OKQFQmDnmlzQYKpxIBzUFD55u0sgoJjlU0vyzJdNW
-         5AEA==
+        b=jiNpPhzJcIZtEfbgBaJ8bj22u2dUSHe/TY0Wp/2wOxL0uwQw8lzFmK6pgwzvmBeiJg
+         CNOssCA77+LLgWOxJqH7KcZAzA1NTRdwlcYAFS3gyAHXUPZDt1Co3NZZShEdOxPdMRhQ
+         nLSAHSHaS63hAurK4ykO9HfGUY0A+yV02B4mvNQ75hna7nfuPnzVy5V3pnjWxsCWy2nH
+         6URFU3wH9Gbjzlvfq3UHuN5vcz81t7otWnhwg8KV0vmxEdKbMmrDo2YlG6WwnfgBTp/2
+         7DrspvjZQV70B46YUg07YNk84F7DldpE/DoaYp8nAmWJX41k7X2ofzLD7TaOiivwKmKD
+         diIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=pG4PJ6hRa+5fcj+98icys7RpWeESiSCpUAu5Ng5h/3Q=;
-        b=IAjnJ265nUfZ5HMt5my1CD3UET6zhx3k9iu107H7pFgKQXQYe4pomzhWOlLOUPGp/G
-         PPhr8ajbWU6M0u6k7wq0JTYcomdLc1QQr0aA3rZ27zOdLZ1l2VgT5GSC77ZRH8wIldnO
-         0/9CzY1Kl9DIaKfDxZCSSpZJ3+5cM2AIR3rkV7pGg5l/ZnuVq4h+1DfQcDyGYfQT5bgt
-         VEpgO6uS0HO+mB6uUKCDB8/lLpCwkl77UM0mapnBb0sPR3cRs7MZ9gxL3MPmiQbnd92Q
-         hitsJp3a1wCw20dGdI3bJYoo80xmh14HccJYmUvDffYs65+IoIHn155ey/t5no0vndkB
-         3tdA==
+        h=list-id:precedence:sender:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=q83tapiGBbbqZoX7CIlNw2hQYSBVRYLU+uhkbgZOBeY=;
+        b=GVOJ3vIUJIGKAwXlqb2N4V7+/z9MzBnhkpP+gpyyDunk72Ke9H+9+VmfUs8O/ps7tS
+         XOIfejPOc9kX9b1Fsin2CgIDw0YM/pI077IQfgiNJPM4ErmzA6awjVUNTEKJoMO/qKeV
+         pzMtHWLu3U1BrXsTFjhcz4ghOwsAnYdi5+0ugJi02A2oky7+N/29Zi4hddIY+zEIkCXV
+         pg5Uji9kFzD3t+hV8fKqsgjizYrnWzXoLrhahbwiPCmJiIQuN66UoJcbCK2u+aC+WEMa
+         AGvyGSWGAz1gFfn5aSWWbjJXg0h7osZ/LnFEkWOnySFewhAHeVcwlmU5jYh5YMTaOMET
+         Ee9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
+       spf=pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
+Return-Path: <linux-kernel-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id y60si640810edy.505.2020.06.25.06.44.25;
-        Thu, 25 Jun 2020 06:44:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+        by mx.google.com with ESMTP id b22si10259972edt.334.2020.06.25.06.43.58;
+        Thu, 25 Jun 2020 06:43:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       spf=pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S2405250AbgFYNoW (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 25 Jun 2020 09:44:22 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:49622 "EHLO huawei.com"
+        id S2405213AbgFYNnx (ORCPT <rfc822;peter.puhov@linaro.org>
+        + 27 others); Thu, 25 Jun 2020 09:43:53 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:60012 "EHLO huawei.com"
         rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S2405247AbgFYNoU (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 25 Jun 2020 09:44:20 -0400
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 991E3A2CC515FC3F8A23;
-        Thu, 25 Jun 2020 21:44:15 +0800 (CST)
+        id S2404890AbgFYNnx (ORCPT <rfc822;linux-kernel@vger.kernel.org>);
+        Thu, 25 Jun 2020 09:43:53 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 429DA41853EE28F8554D;
+        Thu, 25 Jun 2020 21:43:50 +0800 (CST)
 Received: from A190218597.china.huawei.com (10.47.76.118) by
  DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 25 Jun 2020 21:44:07 +0800
+ 14.3.487.0; Thu, 25 Jun 2020 21:43:41 +0800
 From:   Salil Mehta <salil.mehta@huawei.com>
 To:     <linux-arm-kernel@lists.infradead.org>
 CC:     <maz@kernel.org>, <will@kernel.org>, <catalin.marinas@arm.com>,
@@ -55,140 +55,86 @@ CC:     <maz@kernel.org>, <will@kernel.org>, <catalin.marinas@arm.com>,
         <eric.auger@redhat.com>, <gshan@redhat.com>, <david@redhat.com>,
         <kvm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linuxarm@huawei.com>, <mehta.salil.lnk@gmail.com>,
-        Salil Mehta <salil.mehta@huawei.com>,
-        "Xiongfeng Wang" <wangxiongfeng2@huawei.com>
-Subject: [PATCH RFC 4/4] arm64: kernel: Arch specific ACPI hooks(like logical cpuid<->hwid etc.)
-Date:   Thu, 25 Jun 2020 14:37:57 +0100
-Message-ID: <20200625133757.22332-5-salil.mehta@huawei.com>
+        Salil Mehta <salil.mehta@huawei.com>
+Subject: [PATCH RFC 0/4] Changes to Support *Virtual* CPU Hotplug for ARM64
+Date:   Thu, 25 Jun 2020 14:37:53 +0100
+Message-ID: <20200625133757.22332-1-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.8.3
-In-Reply-To: <20200625133757.22332-1-salil.mehta@huawei.com>
-References: <20200625133757.22332-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Originating-IP: [10.47.76.118]
 X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
+Sender: linux-kernel-owner@vger.kernel.org
 Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 2c/G2DKcc2jr
+List-ID: <linux-kernel.vger.kernel.org>
+X-Mailing-List: linux-kernel@vger.kernel.org
+X-TUID: lOzW3X4Wgk8X
 
-To support virtual cpu hotplug, some arch specifc hooks must be
-facilitated. These hooks are called by the generic ACPI cpu hotplug
-framework during a vcpu hot-(un)plug event handling. The changes
-required involve:
+Changes to support virtual cpu hotplug in QEMU[1] have been introduced to the
+community as RFC. These are under review.
 
-1. Allocation of the logical cpuid corresponding to the hwid/mpidr
-2. Mapping of logical cpuid to hwid/mpidr and marking present
-3. Removing vcpu from present mask during hot-unplug
-4. For arm64, all possible cpus are registered within topology_init()
-   Hence, we need to override the weak ACPI call of arch_register_cpu()
-   (which returns -ENODEV) and return success.
-5. NUMA node mapping set for this vcpu using SRAT Table info during init
-   time will be discarded as the logical cpu-ids used at that time
-   might not be correct. This mapping will be set again using the
-   proximity/node info obtained by evaluating _PXM ACPI method.
+To support virtual cpu hotplug guest kernel must:
+1. Identify disabled/present vcpus and set/unset the present mask of the vcpu
+   during initialization and hotplug event. It must also set the possible mask
+   (which includes disabled vcpus) during init of guest kernel.
+2. Provide architecture specific ACPI hooks, for example to map/unmap the
+   logical cpuid to hwids/MPIDR. Linux kernel already has generic ACPI cpu
+   hotplug framework support.
 
-Note, during hot unplug of vcpu, we do not unmap the association between
-the logical cpuid and hwid/mpidr. This remains persistent.
+Changes introduced in this patch-set also ensures that initialization of the
+cpus when virtual cpu hotplug is not supported remains un-affected.
 
-Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-Signed-off-by: Xiongfeng Wang <wangxiongfeng2@huawei.com>
----
- arch/arm64/kernel/smp.c | 80 +++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 80 insertions(+)
+Repository:
+(*) Kernel changes are at,
+     https://github.com/salil-mehta/linux.git virt-cpuhp-arm64/rfc-v1
+(*) QEMU changes for vcpu hotplug could be cloned from below site,
+     https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v1
 
-diff --git a/arch/arm64/kernel/smp.c b/arch/arm64/kernel/smp.c
-index 63f31ea23e55..f3315840e829 100644
---- a/arch/arm64/kernel/smp.c
-+++ b/arch/arm64/kernel/smp.c
-@@ -528,6 +528,86 @@ struct acpi_madt_generic_interrupt *acpi_cpu_get_madt_gicc(int cpu)
- 	return &cpu_madt_gicc[cpu];
- }
- 
-+#ifdef CONFIG_ACPI_HOTPLUG_CPU
-+int arch_register_cpu(int num)
-+{
-+	return 0;
-+}
-+
-+static int set_numa_node_for_cpu(acpi_handle handle, int cpu)
-+{
-+#ifdef CONFIG_ACPI_NUMA
-+	int node_id;
-+
-+	/* will evaluate _PXM */
-+	node_id = acpi_get_node(handle);
-+	if (node_id != NUMA_NO_NODE)
-+		set_cpu_numa_node(cpu, node_id);
-+#endif
-+	return 0;
-+}
-+
-+static void unset_numa_node_for_cpu(int cpu)
-+{
-+#ifdef CONFIG_ACPI_NUMA
-+	set_cpu_numa_node(cpu, NUMA_NO_NODE);
-+#endif
-+}
-+
-+static int allocate_logical_cpuid(u64 physid)
-+{
-+	int first_invalid_idx = -1;
-+	bool first = true;
-+	int i;
-+
-+	for_each_possible_cpu(i) {
-+		/*
-+		 * logical cpuid<->hwid association remains persistent once
-+		 * established
-+		 */
-+		if (cpu_logical_map(i) == physid)
-+			return i;
-+
-+		if ((cpu_logical_map(i) == INVALID_HWID) && first) {
-+			first_invalid_idx = i;
-+			first = false;
-+		}
-+	}
-+
-+	return first_invalid_idx;
-+}
-+
-+int acpi_unmap_cpu(int cpu)
-+{
-+	set_cpu_present(cpu, false);
-+	unset_numa_node_for_cpu(cpu);
-+
-+	return 0;
-+}
-+
-+int acpi_map_cpu(acpi_handle handle, phys_cpuid_t physid, u32 acpi_id,
-+		 int *cpuid)
-+{
-+	int cpu;
-+
-+	cpu = allocate_logical_cpuid(physid);
-+	if (cpu < 0) {
-+		pr_warn("Unable to map logical cpuid to physid 0x%llx\n",
-+			physid);
-+		return -ENOSPC;
-+	}
-+
-+	/* map the logical cpu id to cpu MPIDR */
-+	cpu_logical_map(cpu) = physid;
-+	set_numa_node_for_cpu(handle, cpu);
-+
-+	set_cpu_present(cpu, true);
-+	*cpuid = cpu;
-+
-+	return 0;
-+}
-+#endif
-+
- /*
-  * acpi_map_gic_cpu_interface - parse processor MADT entry
-  *
+
+THINGS TO DO:
+1. Handling of per-cpu variables especially the first-chunk allocations
+   (which are NUMA aware) when the vcpu is hotplugged needs further attention
+   and review.
+2. NUMA related stuff has not been fully tested both in QEMU and kernel.
+3. Comprehensive Testing including when cpu hotplug is not supported.
+4. Docs
+
+DISCLAIMER:
+This is not a complete work but an effort to present the arm vcpu hotplug
+implementation to the community. This RFC is being used as a way to verify
+the idea mentioned above and to support changes presented for QEMU[1] to
+support vcpu hotplug. As of now this is *not* a production level code and might
+have bugs. Only a basic testing has been done on HiSilicon Kunpeng920 ARM64
+based SoC for Servers to verify the proof-of-concept that has been found working!
+
+Best regards
+Salil.
+
+REFERENCES:
+[1] https://www.mail-archive.com/qemu-devel@nongnu.org/msg712010.html
+[2] https://lkml.org/lkml/2019/6/28/1157
+[3] https://lists.cs.columbia.edu/pipermail/kvmarm/2018-July/032316.html
+
+Organization of Patches:
+[Patch 1-3]
+(*) Changes required during guest boot time to support vcpu hotplug 
+(*) Max cpu overflow checks
+(*) Changes required to pre-setup cpu-operations even for disabled cpus
+[Patch 4]
+(*) Arch changes required by guest kernel ACPI CPU Hotplug framework.
+
+
+Salil Mehta (4):
+  arm64: kernel: Handle disabled[(+)present] cpus in MADT/GICC during
+    init
+  arm64: kernel: Bound the total(present+disabled) cpus with nr_cpu_ids
+  arm64: kernel: Init cpu operations for all possible vcpus
+  arm64: kernel: Arch specific ACPI hooks(like logical cpuid<->hwid
+    etc.)
+
+ arch/arm64/kernel/smp.c | 153 ++++++++++++++++++++++++++++++++--------
+ 1 file changed, 123 insertions(+), 30 deletions(-)
+
 -- 
 2.17.1
 

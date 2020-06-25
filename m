@@ -1,137 +1,168 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp578452lfm;
-        Wed, 24 Jun 2020 10:10:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy7aZ6GI3nWHSVMjAUgC8mo/LKRbCcq4FwdVW1YbIyW+5rZEjkHnVQIFkNDtXgbRMoC1OIg
-X-Received: by 2002:a25:1f55:: with SMTP id f82mr45996647ybf.103.1593018632225;
-        Wed, 24 Jun 2020 10:10:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593018632; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1012559lfm;
+        Wed, 24 Jun 2020 23:39:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyZZMfNpJrawyP/0niEVB3YOyxfOlMrlJdtM2MWHpOpxFmrECUnRS3RePk3eWGXBhymaLBZ
+X-Received: by 2002:a25:7351:: with SMTP id o78mr48410060ybc.437.1593067146501;
+        Wed, 24 Jun 2020 23:39:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593067146; cv=none;
         d=google.com; s=arc-20160816;
-        b=IF/UBDetM6o7Bfz1J0QR73OSWbid9VzsM2xmyl85paLfaJk1KTJnsrTZD2ESb1fVTm
-         yPqzL0azNksRDclALZhjPaQh5jyh5L0EKEV1pxI3g6fZQlDU2igToMWJ3EmeMxplNIcX
-         BTdXIjaG80zCaYfsQEQ1pIK+4LKzOWFx99HDJuEVNrO24vjf85w1s9a1wMbjig4Mb3cO
-         C2mOg7qvNZ68bBHbnrlv+DjvwVsWkSWoZbNGN5ruOBKbxGz/PGewz1dOScuw3QJH+nsS
-         QDAGEu9UylekUrw4FtlPdpM5sAwynKhY+2DdvE/0qJYUFEWpJ4xRvrdvI17FTWrJqtYo
-         skzw==
+        b=zHB3z958WX4UNQZCp5DF+i+qvYixfP7ga8Uvtbf/pTrHOCAKjlpfEsN72aiVMiEoPX
+         30e3iiYAvWWb0YEGLzlVvToxvF5cohQVcocZGVtpoMcwgdGv/muH4RGAs/uIMXFE7lj2
+         ZbwDvaT+Zeg4Jm/PsnuT5w2QocMHvjmBBnve/DV2Hc+jIg6JxJSC7fSSpsok+5Haj2GT
+         Kj8/xV+gOqal5/mrrIu+Hafr3emVLXwqNMNPsUPLRLbWzIVNDGu+B/7B780ZSOKyHXlK
+         kUp7C9OWlgQ1PZ503+XWwhqRtKNvehGAlxJz7o0mWPn5elDUPwVjQZHVJkmtzlIcAq31
+         JjfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=qEjxyoT37F86eFes4Av6MMaft6Ye9guPcUpYcE4iSWA=;
-        b=HqjzLVdOAn3GOsR+v6H6TJcPgFTbVEufAo7SWWzvQ2mMYELg8gDMWjnR5edSmFOu+n
-         PPXB3IC+K+2SjbB3c8L/mFBFKtcr/SbJehgP2bmBFat/NAoG4aWsjRPo1NdLHuPS4GJr
-         jM5OUFP3YkTR9/dqetiu6UCajRdoEmSLE1ZIYDSL6ax7YoarCAkMh87x3h5ZiYkXvrza
-         OTw5LRyEQPfOScGX1IoTqLlrnc5p/zVfF4WTgBEeewz2lh2ZCMd9Ca//bv/gvL/1rr9H
-         w/zH/tNPOGRRXZlfGPsTbMjl8bW4Kvj6JbY99QLbX7ktzMNu4cG4EFRVsyfcDYJS1mS3
-         uo7w==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=HymxzkekFH6JguRLqQNclhKOAHUnbMVMPoKNI5hr4YQ=;
+        b=PfIAswMrAUx8N+7tsLfdboa8eLWMo7h/ji/O1BNKJvVmbe4jTCGhMqW6ngZEfXqBpS
+         I5UTZp2cIbNELevuHG/IPUGunGPTPv8S35ZQUgRs1Geh0VgDz1DFeRzZ4sDeX8GuYh2a
+         n/9d8/WgSHXgCrqppheEBCwbgjjOCrEU3TYk+DDwyMJq4qN45KKrXSkO+8wNuBc+3xM+
+         m3N+4EHAAz4EMVOuItLGrrD4f1tqvi6JqnizCvWLj0JE8o1l9XH99oMT1gqPn4oGCOCq
+         cPFaxsCnwTO5hyHfnT+7FjAVR6wYT9vhX8+MQOddfPbita3ZXB9Og3H8zApfgWN7nWOT
+         0JEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jV+2Zi+z;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a5si18753521ybq.296.2020.06.24.10.10.32
+        by mx.google.com with ESMTPS id s46si20942866ybi.263.2020.06.24.23.39.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jun 2020 10:10:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 24 Jun 2020 23:39:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58872 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jV+2Zi+z;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34930 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jo8ut-0007Qn-Hi
-	for alex.bennee@linaro.org; Wed, 24 Jun 2020 13:10:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58278)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1joLXN-0004A7-US
+	for alex.bennee@linaro.org; Thu, 25 Jun 2020 02:39:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43568)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jo8o2-0003ag-51
- for qemu-arm@nongnu.org; Wed, 24 Jun 2020 13:03:26 -0400
-Received: from 8.mo178.mail-out.ovh.net ([46.105.74.227]:37983)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jo8nz-0005JL-AL
- for qemu-arm@nongnu.org; Wed, 24 Jun 2020 13:03:25 -0400
-Received: from player795.ha.ovh.net (unknown [10.110.115.173])
- by mo178.mail-out.ovh.net (Postfix) with ESMTP id 6A553A42C3
- for <qemu-arm@nongnu.org>; Wed, 24 Jun 2020 19:03:13 +0200 (CEST)
-Received: from kaod.org (lfbn-tou-1-921-245.w86-210.abo.wanadoo.fr
- [86.210.152.245]) (Authenticated sender: clg@kaod.org)
- by player795.ha.ovh.net (Postfix) with ESMTPSA id 2C49213950807;
- Wed, 24 Jun 2020 17:03:01 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-103G00569df303c-7093-4f3f-af98-080a0189bc4b,E10FFB909967CDEE565F5962A97A61CD472B7760)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH v4 6/8] hw/arm/aspeed: Describe each PCA9552 device
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Markus Armbruster <armbru@redhat.com>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1joLWS-0003MK-V2
+ for qemu-devel@nongnu.org; Thu, 25 Jun 2020 02:38:08 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:25656
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1joLWQ-0007pr-BZ
+ for qemu-devel@nongnu.org; Thu, 25 Jun 2020 02:38:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593067085;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HymxzkekFH6JguRLqQNclhKOAHUnbMVMPoKNI5hr4YQ=;
+ b=jV+2Zi+zx+x1mh8lz2ohKC4jBaD4SPim+gUbVD26ZlpUc6ecDD6hIr7kOCbsvZAMGDB2BV
+ 42yDZGIlgp0HSJx9L12hYOB5X8OGK/KbI+nrLeZb98bJ4ubIBCIky7dBcIA+qWDQ4X7nlE
+ cEH43FCfQi9asG40TyY8adrX4tczZno=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-440-DDLDEzJoPtWYJB0x_81XKg-1; Thu, 25 Jun 2020 02:38:02 -0400
+X-MC-Unique: DDLDEzJoPtWYJB0x_81XKg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4B357107ACCA;
+ Thu, 25 Jun 2020 06:38:01 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DA0D260C87;
+ Thu, 25 Jun 2020 06:38:00 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 5672211384D4; Thu, 25 Jun 2020 08:37:59 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Subject: Re: [PATCH v4 4/8] hw/misc/pca9552: Add a 'description' property for
+ debugging purpose
 References: <20200620225854.31160-1-f4bug@amsat.org>
- <20200620225854.31160-7-f4bug@amsat.org>
- <38918d0a-272f-c05c-6a03-c6ddd8cc592e@kaod.org>
- <a046bcd2-1937-d971-8a1c-23fae0dfc9b1@amsat.org>
- <CAAdtpL4vFQaD_7uUvVAOy34ySXrZCQWnALM9=FOfVZo3750ufg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <c33ab0f8-e0b9-9b98-5fb2-24ac6aef67b7@kaod.org>
-Date: Wed, 24 Jun 2020 19:02:58 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ <20200620225854.31160-5-f4bug@amsat.org>
+ <4d335933-9669-43e1-0966-5f0255142012@kaod.org>
+ <34fe3d2b-6b41-0509-f172-5b45486fdf0c@amsat.org>
+ <deccf836-48ef-7112-d66e-a8d3cc4a9681@kaod.org>
+Date: Thu, 25 Jun 2020 08:37:59 +0200
+In-Reply-To: <deccf836-48ef-7112-d66e-a8d3cc4a9681@kaod.org>
+ (=?utf-8?Q?=22C=C3=A9dric?= Le
+ Goater"'s message of "Mon, 22 Jun 2020 15:24:50 +0200")
+Message-ID: <877dvv4pmg.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <CAAdtpL4vFQaD_7uUvVAOy34ySXrZCQWnALM9=FOfVZo3750ufg@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 9750574671788542737
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedrudekjedguddtvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieefheetueejvdduudevvddvvdefieefkeeitdejleeuffdthffhteelveevheeknecuffhomhgrihhnpehosghsvghrvhgrsghlvghhqhdrtghomhenucfkpheptddrtddrtddrtddpkeeirddvuddtrdduhedvrddvgeehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeelhedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=46.105.74.227; envelope-from=clg@kaod.org;
- helo=8.mo178.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/24 13:03:13
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/25 00:45:15
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Corey Minyard <cminyard@mvista.com>,
- qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- Peter Maydell <peter.maydell@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0jhNpz8QgpfL
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <cminyard@mvista.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: B81EICscOFYH
 
-On 6/24/20 6:54 PM, Philippe Mathieu-Daudé wrote:
-> Hi Cédric,
-> 
-> On Mon, Jun 22, 2020 at 10:35 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->> On 6/22/20 8:49 AM, Cédric Le Goater wrote:
->>> On 6/21/20 12:58 AM, Philippe Mathieu-Daudé wrote:
->>>> We have 2 distinct PCA9552 devices. Set their description
->>>> to distinguish them when looking at the trace events.
+C=C3=A9dric Le Goater <clg@kaod.org> writes:
+
+> On 6/22/20 10:31 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>> On 6/22/20 8:27 AM, C=C3=A9dric Le Goater wrote:
+>>> On 6/21/20 12:58 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>> Add a description field to distinguish between multiple devices.
+
+Pardon my lack of imagination: how does this help you with debugging?
+
+>>> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 >>>
->>> It's nice and usefull but couldn't we do the same with a QOM object name ?
->>
->> qdev inherits QOM and overloads it with the qdev_ API.
->> Since we have a qdev object, isn't it better to use the qdev_ API?
->>
->> I'd keep the QOM API for bare QOM objects.(I find confusing to use
->> different APIs).
-> 
-> FYI you can get an idea of the QOM -> qdev -> sysbus -> ... tree here:
-> https://observablehq.com/@philmd/qemu-aarch64-softmmu-qom-tree
-> 
+>>> Could it be a QOM attribute ?=20
+>>=20
+>> What do you call a 'QOM attribute'?
+>> Is it what qdev properties implement?
+>> (in this case via DEFINE_PROP_STRING).
+>
+> I meant a default Object property, which would apply to all Objects.=20
 
-nice ! 
+Good point.  Many devices have multiple component objects of the same
+type.
 
-Thanks,
+> What you did is fine, so :
+>
+> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>
+> but, may be, a well defined child name is enough for the purpose.
 
-C.
+object_get_canonical_path() returns a distinct path for each (component)
+object.  The path components are the child property names.
+
+Properties can have descriptions: object_property_set_description().
+
+Sufficient?
+

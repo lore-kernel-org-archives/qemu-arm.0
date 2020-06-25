@@ -1,203 +1,155 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6872170wrv;
-        Mon, 22 Jul 2019 05:56:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyzlakYipzfAZjo2v6fOyAYEEfYUE2KkIJCKu4bMzRrGrOMz7vci2sHE8WPGF4QekNcQeCr
-X-Received: by 2002:a37:7ec1:: with SMTP id z184mr47070490qkc.491.1563800209699;
-        Mon, 22 Jul 2019 05:56:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563800209; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1308815lfm;
+        Thu, 25 Jun 2020 06:44:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJznbLqSeKUzzIgWXu4yA/JO1rbhrJug/LHkNWbxGtneNHkCnQd5R0ZWmcDkcRFc5+G/7Db2
+X-Received: by 2002:a17:906:a112:: with SMTP id t18mr3362934ejy.350.1593092655480;
+        Thu, 25 Jun 2020 06:44:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593092655; cv=none;
         d=google.com; s=arc-20160816;
-        b=JvnxMFmqr6wF11LPWSvdHUmafsEhvpK6rKgE6Q5DxdLvDsPALzLR6BMD0044nG5gSw
-         zt1AefewOpVX4Zz0XYVCkHC9bRASP5+eXvIlrbZzHAME0XpkfT4xMER4Oopl36BA1jVs
-         ZXpHKqTOgAssIwT0mqBD2zIyae0B6FEzq1GfR9tmt/sooesOsmuZBlX0hUNlJpvHzVQv
-         XlvoRXsnstZCiDkuqw+03gs9J2I7SBtKJ2qhPCbNT9eDz62RvDuqsYQy85EtYddn+nNx
-         RKC3PUTETN8AEU05QuS2np6xPVfuTYyD+a6W4Vv+8gNcw6/8I5MadW5LskFIhPHDhCar
-         vd8Q==
+        b=qKgtX6hqBf+XZB+dAXG6anJ0gGbHyfdIxsjMB8Qf9KyWOBJG6hHD69DbKi+7IxBWVu
+         kBWq8oXbvVElOqNJW5dWiEF0cEAgmhdA8sO3F4HtnM3yFu1BBfWxwO60zGco9QIkeFDu
+         uWMcRKyowNabQjQHoFF4HZjVGX/m0yRBwdY7hDd07Qmy48jLFM+Vgr74Rin4vVL+NwJ2
+         CVLKnSCbsoH2RlRFRCGzI6iJmjTcoEKI9qloEo69GW8805zqKF6Z7nff1FKfqFUAjzl/
+         d3EFprWzF4Ai7gQI089K5GvoIqMGsPqlfpZK1wAFqf4R5dNjLBvlWI3N8XLwiHDhdCMv
+         Xk4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=zAC4N4OaVOBZR9AGAHZp84F1efBpQyF6k2myfjK2s5c=;
-        b=zVP/rymQKwi4VGY8QTjeH+wRMT1rowDQFBwxRuuuIk/DYKzCn7en9xcIKQHbQ5WudC
-         y7oGJWjfmzvINgQjj9xndWkEFf0eSyNSYuqlqcvGWfgIkpILjehMobehv5oWogQs+Tac
-         R4AYX9ngLUfSFUFU8Puc8dejfpr60Yw51qePD6p8WWATkY2nedGEdQPQRzZBmWgkgNti
-         ZU+gPxHKO/gtzec7hdsZWoesu1AL5cHPaWoIVCx0EeeAY59eDDwAFsGvtOY4eFHuK/Tr
-         jnnsIGqBT9OttQA3eslI/RZZxwz6CkKz1hJlByo+ctTIlY2FlaBADT3R7OYfXkqURMnm
-         j9/w==
+        h=list-id:precedence:sender:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=hLJtOA63tkCBep41IUSdE9tjJTaMek1ZUxbXih8UeLM=;
+        b=003SPuR187e/EcuE/VPf1pGnbsqX3PLsQCNFJOgZvqhOGTe9YWmJkNKj+Vpcumaeyi
+         3ovktWDOiw2jUrJK/AhrD8UpQCQrA/rnsWw27xlUk4lhx/OwNbzrj3wvT+96WXQSXe73
+         KkXuLch4IZHxpwwlYkzg6CRuphsGUWHg31e/za4wj/0+T/Obu04FT7qclySFN6aTMVbx
+         hMlB/Xs55q73RE7ly/LkKgmcWLZfW2p0pboANCFhjmaha6yYFkCb2KGSrZS/5rn/pTT5
+         8pHrLXwH5fCh8MBQk8v5yckONpi5i94sb8PBl4JybZhQ5josFdb05ZP9YMCskbQw6uJL
+         v2EA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y3si24756418qke.60.2019.07.22.05.56.49
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jul 2019 05:56:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
+Return-Path: <linux-kernel-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id f8si9757476edv.497.2020.06.25.06.44.15;
+        Thu, 25 Jun 2020 06:44:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33274 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hpXs1-0001oe-28
-	for alex.bennee@linaro.org; Mon, 22 Jul 2019 08:56:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42449)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <mark.rutland@arm.com>) id 1hpXrw-0001oK-QK
- for qemu-arm@nongnu.org; Mon, 22 Jul 2019 08:56:46 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mark.rutland@arm.com>) id 1hpXrv-0002XM-HZ
- for qemu-arm@nongnu.org; Mon, 22 Jul 2019 08:56:44 -0400
-Received: from foss.arm.com ([217.140.110.172]:35738)
- by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <mark.rutland@arm.com>)
- id 1hpXrv-0002WL-9c; Mon, 22 Jul 2019 08:56:43 -0400
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7C7B1344;
- Mon, 22 Jul 2019 05:56:41 -0700 (PDT)
-Received: from lakrids.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
- [10.121.207.14])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id CA3133F71A;
- Mon, 22 Jul 2019 05:56:40 -0700 (PDT)
-Date: Mon, 22 Jul 2019 13:56:33 +0100
-From: Mark Rutland <mark.rutland@arm.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20190722125633.GA35035@lakrids.cambridge.arm.com>
-References: <20190516144733.32399-1-peter.maydell@linaro.org>
- <20190516144733.32399-4-peter.maydell@linaro.org>
- <20190719164729.GA22520@lakrids.cambridge.arm.com>
- <CAFEAcA_i_0=xAp86RJVSpurAdWfT5KDfgoh6Y51-mwBJa=_QTQ@mail.gmail.com>
+       spf=pass (google.com: domain of linux-kernel-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S2405230AbgFYNoL (ORCPT <rfc822;peter.puhov@linaro.org>
+        + 27 others); Thu, 25 Jun 2020 09:44:11 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:49350 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S2405190AbgFYNoK (ORCPT <rfc822;linux-kernel@vger.kernel.org>);
+        Thu, 25 Jun 2020 09:44:10 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 6F308B2C6D69505DCE5A;
+        Thu, 25 Jun 2020 21:44:05 +0800 (CST)
+Received: from A190218597.china.huawei.com (10.47.76.118) by
+ DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 25 Jun 2020 21:43:54 +0800
+From:   Salil Mehta <salil.mehta@huawei.com>
+To:     <linux-arm-kernel@lists.infradead.org>
+CC:     <maz@kernel.org>, <will@kernel.org>, <catalin.marinas@arm.com>,
+        <christoffer.dall@arm.com>, <andre.przywara@arm.com>,
+        <james.morse@arm.com>, <mark.rutland@arm.com>,
+        <lorenzo.pieralisi@arm.com>, <sudeep.holla@arm.com>,
+        <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>,
+        <richard.henderson@linaro.org>, <imammedo@redhat.com>,
+        <mst@redhat.com>, <drjones@redhat.com>, <pbonzini@redhat.com>,
+        <eric.auger@redhat.com>, <gshan@redhat.com>, <david@redhat.com>,
+        <kvm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <linuxarm@huawei.com>, <mehta.salil.lnk@gmail.com>,
+        Salil Mehta <salil.mehta@huawei.com>,
+        "Xiongfeng Wang" <wangxiongfeng2@huawei.com>
+Subject: [PATCH RFC 2/4] arm64: kernel: Bound the total(present+disabled) cpus with nr_cpu_ids
+Date:   Thu, 25 Jun 2020 14:37:55 +0100
+Message-ID: <20200625133757.22332-3-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.8.3
+In-Reply-To: <20200625133757.22332-1-salil.mehta@huawei.com>
+References: <20200625133757.22332-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_i_0=xAp86RJVSpurAdWfT5KDfgoh6Y51-mwBJa=_QTQ@mail.gmail.com>
-User-Agent: Mutt/1.11.1+11 (2f07cb52) (2018-12-01)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.140.110.172
-Subject: Re: [Qemu-arm] [PATCH v2 3/4] hw/arm/boot: Avoid placing the initrd
- on top of the kernel
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fNSiMU52Zopz
+Content-Type: text/plain
+X-Originating-IP: [10.47.76.118]
+X-CFilter-Loop: Reflected
+Sender: linux-kernel-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <linux-kernel.vger.kernel.org>
+X-Mailing-List: linux-kernel@vger.kernel.org
+X-TUID: K9VvS9mP0DOt
 
-On Mon, Jul 22, 2019 at 12:59:01PM +0100, Peter Maydell wrote:
-> On Fri, 19 Jul 2019 at 17:47, Mark Rutland <mark.rutland@arm.com> wrote:
-> >
-> > Hi Peter,
-> >
-> > I've just been testing on QEMU v4.1.0-rc1, and found a case where the
-> > DTB overlapped the end of the kernel, and I think there's a bug in this
-> > patch -- explanation below.
-> >
-> > On Thu, May 16, 2019 at 03:47:32PM +0100, Peter Maydell wrote:
-> > > We currently put the initrd at the smaller of:
-> > >  * 128MB into RAM
-> > >  * halfway into the RAM
-> > > (with the dtb following it).
-> > >
-> > > However for large kernels this might mean that the kernel
-> > > overlaps the initrd. For some kinds of kernel (self-decompressing
-> > > 32-bit kernels, and ELF images with a BSS section at the end)
-> > > we don't know the exact size, but even there we have a
-> > > minimum size. Put the initrd at least further into RAM than
-> > > that. For image formats that can give us an exact kernel size, this
-> > > will mean that we definitely avoid overlaying kernel and initrd.
-> > >
-> > > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > > ---
-> > >  hw/arm/boot.c | 34 ++++++++++++++++++++--------------
-> > >  1 file changed, 20 insertions(+), 14 deletions(-)
-> > >
-> > > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> > > index 935be3b92a5..e441393fdf5 100644
-> > > --- a/hw/arm/boot.c
-> > > +++ b/hw/arm/boot.c
-> > > @@ -999,20 +999,6 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
-> > >      if (info->nb_cpus == 0)
-> > >          info->nb_cpus = 1;
-> > >
-> > > -    /*
-> > > -     * We want to put the initrd far enough into RAM that when the
-> > > -     * kernel is uncompressed it will not clobber the initrd. However
-> > > -     * on boards without much RAM we must ensure that we still leave
-> > > -     * enough room for a decent sized initrd, and on boards with large
-> > > -     * amounts of RAM we must avoid the initrd being so far up in RAM
-> > > -     * that it is outside lowmem and inaccessible to the kernel.
-> > > -     * So for boards with less  than 256MB of RAM we put the initrd
-> > > -     * halfway into RAM, and for boards with 256MB of RAM or more we put
-> > > -     * the initrd at 128MB.
-> > > -     */
-> > > -    info->initrd_start = info->loader_start +
-> > > -        MIN(info->ram_size / 2, 128 * 1024 * 1024);
-> > > -
-> > >      /* Assume that raw images are linux kernels, and ELF images are not.  */
-> > >      kernel_size = arm_load_elf(info, &elf_entry, &elf_low_addr,
-> > >                                 &elf_high_addr, elf_machine, as);
-> > > @@ -1064,6 +1050,26 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
-> > >      }
-> > >
-> > >      info->entry = entry;
-> >
-> > Note: this is the start of the kernel image...
-> 
-> It's the entry point, which isn't quite the same thing as
-> the start of the image (if we just loaded an ELF file then
-> 'entry' is whatever the ELF file said the entrypoint is, which
-> could be a long way into the image).
+Bound the total number of identified cpus(including disabled cpus) by
+maximum allowed limit by the kernel. Max value is either specified as
+part of the kernel parameters 'nr_cpus' or specified during compile
+time using CONFIG_NR_CPUS.
 
-Ah, I see; thanks for correcting me!
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+Signed-off-by: Xiongfeng Wang <wangxiongfeng2@huawei.com>
+---
+ arch/arm64/kernel/smp.c | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
 
-> > > +    /*
-> > > +     * We want to put the initrd far enough into RAM that when the
-> > > +     * kernel is uncompressed it will not clobber the initrd. However
-> > > +     * on boards without much RAM we must ensure that we still leave
-> > > +     * enough room for a decent sized initrd, and on boards with large
-> > > +     * amounts of RAM we must avoid the initrd being so far up in RAM
-> > > +     * that it is outside lowmem and inaccessible to the kernel.
-> > > +     * So for boards with less  than 256MB of RAM we put the initrd
-> > > +     * halfway into RAM, and for boards with 256MB of RAM or more we put
-> > > +     * the initrd at 128MB.
-> > > +     * We also refuse to put the initrd somewhere that will definitely
-> > > +     * overlay the kernel we just loaded, though for kernel formats which
-> > > +     * don't tell us their exact size (eg self-decompressing 32-bit kernels)
-> > > +     * we might still make a bad choice here.
-> > > +     */
-> > > +    info->initrd_start = info->loader_start +
-> > > +        MAX(MIN(info->ram_size / 2, 128 * 1024 * 1024), kernel_size);
-> >
-> > ... but here we add kernel_size to the start of the loader, which is
-> > below the kernel. Should that be info->entry?
-> 
-> loader_start here really means "base of RAM". I think what
-> we want here is something like
-> 
->   info->initrd_start = info->loader_start + MIN(info->ram_size / 2,
-> 128 * 1024 * 1024);
->   info->initrd_start = MAX(info->initrd_start, kernel_end);
+diff --git a/arch/arm64/kernel/smp.c b/arch/arm64/kernel/smp.c
+index 51a707928302..864ccd3da419 100644
+--- a/arch/arm64/kernel/smp.c
++++ b/arch/arm64/kernel/smp.c
+@@ -513,6 +513,7 @@ static int __init smp_cpu_setup(int cpu)
+ }
+ 
+ static bool bootcpu_valid __initdata;
++static bool cpus_clipped __initdata = false;
+ static unsigned int cpu_count = 1;
+ static unsigned int disabled_cpu_count;
+ 
+@@ -536,6 +537,11 @@ acpi_map_gic_cpu_interface(struct acpi_madt_generic_interrupt *processor)
+ 	unsigned int total_cpu_count = disabled_cpu_count + cpu_count;
+ 	u64 hwid = processor->arm_mpidr;
+ 
++	if (total_cpu_count > nr_cpu_ids) {
++		cpus_clipped = true;
++		return;
++	}
++
+ 	if (!(processor->flags & ACPI_MADT_ENABLED)) {
+ #ifndef CONFIG_ACPI_HOTPLUG_CPU
+ 		pr_debug("skipping disabled CPU entry with 0x%llx MPIDR\n", hwid);
+@@ -569,9 +575,6 @@ acpi_map_gic_cpu_interface(struct acpi_madt_generic_interrupt *processor)
+ 		return;
+ 	}
+ 
+-	if (cpu_count >= NR_CPUS)
+-		return;
+-
+ 	/* map the logical cpu id to cpu MPIDR */
+ 	cpu_logical_map(total_cpu_count) = hwid;
+ 
+@@ -688,8 +691,10 @@ static void __init of_parse_and_init_cpus(void)
+ 			continue;
+ 		}
+ 
+-		if (cpu_count >= NR_CPUS)
++		if (cpu_count >= NR_CPUS) {
++			cpus_clipped = true;
+ 			goto next;
++		}
+ 
+ 		pr_debug("cpu logical map 0x%llx\n", hwid);
+ 		cpu_logical_map(cpu_count) = hwid;
+@@ -710,6 +715,7 @@ static void __init of_parse_and_init_cpus(void)
+  */
+ void __init smp_init_cpus(void)
+ {
++	unsigned int total_cpu_count = disabled_cpu_count + cpu_count;
+ 	int i;
+ 
+ 	if (acpi_disabled)
+@@ -717,9 +723,9 @@ void __init smp_init_cpus(void)
+ 	else
+ 		acpi_parse_and_init_cpus();
+ 
+-	if (cpu_count > nr_cpu_ids)
++	if (cpus_clipped)
+ 		pr_warn("Number of cores (%d) exceeds configured maximum of %u - clipping\n",
+-			cpu_count, nr_cpu_ids);
++			total_cpu_count, nr_cpu_ids);
+ 
+ 	if (!bootcpu_valid) {
+ 		pr_err("missing boot CPU MPIDR, not enabling secondaries\n");
+-- 
+2.17.1
 
-From what I understand, I can't see a way of breaking that, so it looks
-good to me.
-
-> where kernel_end is just past whatever the highest addr of the kernel
-> is, which is not something that's totally trivial to calculate
-> with the variables we have to hand at this point.
-
-Sure; I assume you might need to drop that into arm_boot_info.
-
-As previously, I'm happy to test patches for this. At the moment I have
-a local hack relying on info->entry, and I understand this isn't
-correct.
-
-Thanks,
-Mark.

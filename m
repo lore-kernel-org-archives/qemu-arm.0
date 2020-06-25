@@ -1,96 +1,96 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1454562lfm;
-        Thu, 25 Jun 2020 09:21:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxOTwEu0d8y1CupPMubXg7Pp2m5hu2EOvqc5J0Z8hgDQORpfb8intIU3IAIfU1hZoGRodTM
-X-Received: by 2002:a25:da88:: with SMTP id n130mr52357059ybf.220.1593102067427;
-        Thu, 25 Jun 2020 09:21:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593102067; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1394032lfm;
+        Thu, 25 Jun 2020 08:14:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyHiGIvCnW7m11QxXFD5F2tIsva333UlrzOmcaMeKsxXNcKZZmYKoDU1MTMGwR4IsSMFYcD
+X-Received: by 2002:a25:d8d5:: with SMTP id p204mr52444124ybg.28.1593098044339;
+        Thu, 25 Jun 2020 08:14:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593098044; cv=none;
         d=google.com; s=arc-20160816;
-        b=PW2pLxQ1MkN3bvcPB2C67oKlYTN4GLrZh9BQfliYevhaCLgX7akzkbjmf/Hg8qxdYy
-         EiWpR+zIlIMiWHMAIc/ajwEy5lQYKfegTQPJdX9dh1aI3a2nScD6X19irck3QMkhWCC7
-         CT+MjubJux78QVjhTnNB3srRgDL34BS7adZG0eyJq8LlkgxtbNcdE6JRN35ZU91m9rmd
-         jXuPxpumYpYBcboC//hCFaXVm4GoPR3R2NGVGwAzB/IGOPi79GB3zCtkx+tvgi5mzdz7
-         uFMHp027zxQfFYSerk6xuWhkiEwpc4IVwF3z2PCzSuM+ILX7dDOAHcE/pftxYcEY8jOx
-         xRWw==
+        b=eawVVRU9lxwzOIkToMu8xpjrVybdRPPU7uQzUt0k5rXlTifzVjgIe5sBhw4XC+Imyw
+         /KZMDH9AZm4Y/TlA0z5RZIhRXtbwr1iUTpcT1e7XyVFZ4v0ii4RA1FEmqlU4hvQ5iXsq
+         3pcRVTv8J5wGBubsbMBfr7d9ZhHO+WrDjGBw5k49/pg7T/tOyVgr5fG5gT0LHMa8+I49
+         /zFlRh43YWKd0tNnPuDiPsFnXYw0lfLC5vZfgPRFigT0yPk+rMi/a50H7Z4N8GUakjB0
+         tF/9W4+/+zOUMntPVUvX2KEivdZXJFAKQvBMDHqothYE/SaY+i10c5cPQxEoTbT8G/oy
+         LO2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=Bzt76snm4wLfHzG59xDB4yLCkSvVzZD1EmKyQz6jLA4=;
-        b=bf5bp2JeKDDhUYq7wNAEYZ1zVQIFWIC1rXT9bFQMTkckBPKhEgBhCy9ODHtfcrz9mJ
-         IS9HDyan4qFclL9VJfOlX/yyJ5aU8xDsyrkXvkP0dWX4KoGkWsaWvCe/tylMDqNuN8vn
-         5oBqXM47vTShXodCdKrdC2yTkCKFsu/RkMAIpvaqNOI5gfaxM5UgGC/JsiISWopJNiPk
-         YaKnpPAkhfeFAd5uv4iFYs/JEVhJR6UIGUProOA2EUPI/6XX4Pwh/wKBn1lpLcp+ZYgM
-         x8BPzt4PZvzxq6kUcHuIprkZ0tJGnctf233f64N/mPj1qYlgd1oqy1nNnlWU0b6BptBv
-         OPWA==
+        bh=4tnlDch3t3FkKDJqfHzh2a/y8QHemcuTIVsbVvfOu3o=;
+        b=U9yN6CQOjgubMF7TxdldQDu/Abtl1d3Ca/ABAntl3sfyYGaZOtU0KqheIvvtmHdcP/
+         s6JZUqi+TC/yY0q2pBOQGsBkynVaZHdqxvWeDlAEEvOv/J5I//YY/VmpyM3FSvknGuHN
+         9DZwTTdWTS60qddKHMaBGemgIg4v7pxD1OFp7Rg9gWMKpFyXUAxrrpn77PCG7J5FUTrL
+         SCPZbxTgEzLOdRNMtJgruZVauL8Xk73euM9IiSt0REvaH23DPb3b94OK1QrSIyYCDZqy
+         kzHaEul11PG+TMgoEhBLuZ9+eCgl4IBuqlgwtfpdhZwgPvbzEmiFTohQPW821HfAEfy2
+         Ri6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fZvlxEeG;
+       dkim=fail header.i=@linaro.org header.s=google header.b=F8NVeYDY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8si21086824ybj.14.2020.06.25.09.21.07
+        by mx.google.com with ESMTPS id n4si21936155yba.245.2020.06.25.08.14.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jun 2020 09:21:07 -0700 (PDT)
+        Thu, 25 Jun 2020 08:14:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fZvlxEeG;
+       dkim=fail header.i=@linaro.org header.s=google header.b=F8NVeYDY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51676 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59722 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1joUcc-0004ad-Qb
-	for alex.bennee@linaro.org; Thu, 25 Jun 2020 12:21:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54724)
+	id 1joTZj-0003YM-Ou
+	for alex.bennee@linaro.org; Thu, 25 Jun 2020 11:14:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34428)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1joUcP-0004Ye-Hz
- for qemu-arm@nongnu.org; Thu, 25 Jun 2020 12:20:53 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:38786)
+ id 1joTZT-0003Xi-VJ
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2020 11:13:47 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:40588)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1joUcL-0000Zv-SP
- for qemu-arm@nongnu.org; Thu, 25 Jun 2020 12:20:53 -0400
-Received: by mail-oi1-x243.google.com with SMTP id r8so5467718oij.5
- for <qemu-arm@nongnu.org>; Thu, 25 Jun 2020 09:20:49 -0700 (PDT)
+ id 1joTZS-0005BU-39
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2020 11:13:47 -0400
+Received: by mail-ot1-x344.google.com with SMTP id k4so2408753otr.7
+ for <qemu-arm@nongnu.org>; Thu, 25 Jun 2020 08:13:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Bzt76snm4wLfHzG59xDB4yLCkSvVzZD1EmKyQz6jLA4=;
- b=fZvlxEeG8pVDlXg3MgK2RQYACHlb/LcU0CPXHwBsMrLrqBXjxmqDV2/47XaR8FSeH6
- oNWQjRzjobrqKp6rqIzjgZQUAEtidnvIzdkJlB4ZSFjART6VdYSI4VATpcX48Qm3f3zs
- LqcuWVxpBPJ1D7FAWJ1wBHoGEkn8d2H/OZscUOoxpluD+2P8fcHk9/SQFg9xRxSHRIyn
- RRXM0jhSxY56pUZH8TObN7Tc+SH/tJVlkqM5YazBQICE3O1pYDYYnPF5NOQSOzSxZt3O
- YQOniM1VlAmw1E6QMHKx4xIA5eCU2OkPEDpT6ADnTHP0DeLL+GEkpJim1eUwJjPjtLgX
- iY8A==
+ :cc; bh=4tnlDch3t3FkKDJqfHzh2a/y8QHemcuTIVsbVvfOu3o=;
+ b=F8NVeYDYFll5ZT42l6nY8loyX5Tno4wZrb4Iws076gYRrEhW9oztZMV0a8Gtv3RpZA
+ mN4X4tKotjM0nxJk/jBwXZzlJHkpuPWGmaXuiqbLqFNuG5pztu8fGsUpJDI+OB+7gK5d
+ yf8W0Css/ETIaUV90FDLTCXELDfEuklQa1TMQ3crpE3mCVLgx1IyT7tI0N6K+g6AgZT/
+ pz9ZMxJyJSQ5Kzfgn16qh68wvXTT410iDTYheKjFbZWezdJyAgCoxkYlWhM0khwaCuef
+ CCG1VHN7cWbP6WbgWKjqyAv3D+YHRQIPNUvAg//e9LXEviDAPvztdWeNsETDwtfT4Vh1
+ 4BPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Bzt76snm4wLfHzG59xDB4yLCkSvVzZD1EmKyQz6jLA4=;
- b=DxXiZOo888gd0jov14jo89Yzr5P906hykslT6i6v3FvXrLrUzW14ePMQmnXElAQ5/u
- fL4M5S0kzOBynB1u0c8K8G53b24QDJ6KyBrLq8nNO19gq7frkbTIpI6u/nRZbLc57ZgM
- Xp2MlCGKWiIHxpY8StIrUGVnJuYsvGDhMxfp3eS7ANWa1RTz2AL1z18Jlz5Gn68cL2qB
- BJeCsnqbOs/s4m6dUFMemB9CeZgDIQ7H8ktr3SUZhYuTiWsT8P8Bh6mOREioBdyb4tLb
- 9vBqwmvOoZn3uI1DfHLruMG1HqxuZAIC4ARHpZ9RBD8l1CFcxzjs6RGMBZ1rcqkm6Kk+
- U2TQ==
-X-Gm-Message-State: AOAM532eDKfB+GZJfgcx/q3E46jMWwt1hgvSU/NHu5XLbELQ+KZ/ZHtQ
- 5XvRZEcz8Z6A0zhLd7IK4jBaz88p+Ykdq0CYnJFKmw==
-X-Received: by 2002:aca:1a07:: with SMTP id a7mr2927182oia.163.1593102048093; 
- Thu, 25 Jun 2020 09:20:48 -0700 (PDT)
+ bh=4tnlDch3t3FkKDJqfHzh2a/y8QHemcuTIVsbVvfOu3o=;
+ b=gqBRqmU0LtAo0EUO02qWHCJYILCWumo7jY38d+1JdJkPKSZsrihobFN1HTtZY2nzZC
+ Cljs7NKBAJ0ux8XMq1OaYj2WaZdhBo6FUj7DdcMcULgxBX2LcDUKhi/mo7/lJpzs9+cf
+ Ep2i2Ysfa53TC4tQQgYhVUNtrrP3xBLAkxWZXFIZsqXLqh3mQABCLX7EzKnzndbgUaxt
+ IV4X4CT5ZrzwXtuG2t3NjJosjdi6YysP1gpxhXGEHjwV7T8lvA09TBIbvx1zDQBffPmx
+ +z+tN575eKrayubkQoYThx+GZjC1I/q+rdMq/gp4mqp2oaK+QVUpjYGU6C6RSn9zQHGm
+ 8llw==
+X-Gm-Message-State: AOAM531WxV1coWE7RVsMugcHYQy25KMKnNSexLedUokWZTShQvEaq/c/
+ gGAYV5FaztDz0fkYq30FhOZy4fJ15di4/o8tVBdVTg==
+X-Received: by 2002:a4a:9528:: with SMTP id m37mr27956501ooi.85.1593098023221; 
+ Thu, 25 Jun 2020 08:13:43 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200605041733.415188-1-richard.henderson@linaro.org>
- <20200605041733.415188-2-richard.henderson@linaro.org>
-In-Reply-To: <20200605041733.415188-2-richard.henderson@linaro.org>
+References: <20200611161500.23580-1-eric.auger@redhat.com>
+ <20200611161500.23580-5-eric.auger@redhat.com>
+In-Reply-To: <20200611161500.23580-5-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Jun 2020 17:20:37 +0100
-Message-ID: <CAFEAcA-qybDD6GWYPFB6tMfTb9Kj+_bCKCxPyDYMZBr8EwbDmQ@mail.gmail.com>
-Subject: Re: [PATCH v2 01/17] tcg: Introduce target-specific page data for
- user-only
-To: Richard Henderson <richard.henderson@linaro.org>
+Date: Thu, 25 Jun 2020 16:13:32 +0100
+Message-ID: <CAFEAcA9BR4KJQP-M5QswYkWAmTy5OsAdOa6wF3oPMa_EbeBXPg@mail.gmail.com>
+Subject: Re: [PATCH RESEND 4/9] hw/arm/smmu: Introduce SMMUTLBEntry for PTW
+ and IOTLB value
+To: Eric Auger <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x243.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -112,75 +112,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Stephen Long <steplong@quicinc.com>
+Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Robin Murphy <robin.murphy@arm.com>,
+ zhangfei.gao@foxmail.com, QEMU Developers <qemu-devel@nongnu.org>,
+ Peter Xu <peterx@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
+ Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A6q2pTOCxnSm
+X-TUID: 7r5rAIOvdBG9
 
-On Fri, 5 Jun 2020 at 05:17, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Thu, 11 Jun 2020 at 17:15, Eric Auger <eric.auger@redhat.com> wrote:
 >
-> This data can be allocated by page_alloc_target_data() and
-> released by page_set_flags(start, end, prot | PAGE_RESET).
+> Introduce a specialized SMMUTLBEntry to store the result of
+> the PTW and cache in the IOTLB. This structure extends the
+> generic IOMMUTLBEntry struct with the level of the entry and
+> the granule size.
 >
-> This data will be used to hold tag memory for AArch64 MTE.
+> Those latter will be useful when implementing range invalidation.
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
-
-> @@ -289,6 +295,8 @@ int walk_memory_regions(void *, walk_memory_regions_fn);
->  int page_get_flags(target_ulong address);
->  void page_set_flags(target_ulong start, target_ulong end, int flags);
->  int page_check_range(target_ulong start, target_ulong len, int flags);
-> +void *page_get_target_data(target_ulong address);
-> +void *page_alloc_target_data(target_ulong address, size_t size);
-
-Could we have a doc comment for any new function that's got
-global scope, please?
-
->  #endif
+>  include/hw/arm/smmu-common.h | 14 +++++++++++---
+>  hw/arm/smmu-common.c         | 30 ++++++++++++++++--------------
+>  hw/arm/smmuv3.c              | 10 +++++-----
+>  3 files changed, 32 insertions(+), 22 deletions(-)
 >
->  CPUArchState *cpu_copy(CPUArchState *env);
-
-> +void *page_alloc_target_data(target_ulong address, size_t size)
-> +{
-> +    PageDesc *p = page_find(address >> TARGET_PAGE_BITS);
-> +    void *ret = NULL;
+> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+> index 7b9d2f0eb7..f6ee78e16c 100644
+> --- a/include/hw/arm/smmu-common.h
+> +++ b/include/hw/arm/smmu-common.h
+> @@ -52,6 +52,14 @@ typedef struct SMMUTransTableInfo {
+>      uint8_t granule_sz;        /* granule page shift */
+>  } SMMUTransTableInfo;
+>
+> +struct SMMUTLBEntry {
+> +    IOMMUTLBEntry entry;
+> +    uint8_t level;
+> +    uint8_t granule;
+> +};
 > +
-> +    if (p) {
-> +        ret = p->target_data;
-> +        if (!ret && (p->flags & PAGE_VALID)) {
-> +            p->target_data = ret = g_malloc0(size);
-> +        }
-> +    }
-> +    return ret;
+> +typedef struct SMMUTLBEntry SMMUTLBEntry;
 
-Can a PageDesc validly have p->target_data != NULL but
-p->flags with PAGE_VALID not set ?
+Every other typedef in this header uses
+  typedef struct Foo {
+      ...
+  } Foo;
 
-It's not clear to me why for a !PAGE_VALID page which
-has target_data already we return that pointer but
-if it doesn't have any we don't allocate: either
-"always allocate" or "always return NULL for non-valid pages"
-would seem more self-consistent.
+rather than a separate typedef line; could we be consistent with that?
 
-> @@ -787,9 +788,11 @@ abi_long target_mremap(abi_ulong old_addr, abi_ulong old_size,
->          new_addr = -1;
->      } else {
->          new_addr = h2g(host_addr);
-> +        /* FIXME: Move page flags and target_data for each page.  */
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 3101043540..aa88b62efb 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -47,11 +47,11 @@ uint64_t smmu_get_iotlb_key(uint16_t asid, uint64_t iova)
+>      return iova >> 12 | (uint64_t)(asid) << SMMU_IOTLB_ASID_SHIFT;
+>  }
+>
+> -IOMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+> +SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+>                                   hwaddr iova)
 
-Is this something we're going to address later in the patchset?
+Indent on this second line needs to move in one space now.
 
->          prot = page_get_flags(old_addr);
->          page_set_flags(old_addr, old_addr + old_size, 0);
-> -        page_set_flags(new_addr, new_addr + new_size, prot | PAGE_VALID);
-> +        page_set_flags(new_addr, new_addr + new_size,
-> +                       prot | PAGE_VALID | PAGE_RESET);
->      }
->      tb_invalidate_phys_range(new_addr, new_addr + new_size);
->      mmap_unlock();
+>  {
+>      uint64_t key = smmu_get_iotlb_key(cfg->asid, iova);
+> -    IOMMUTLBEntry *entry = g_hash_table_lookup(bs->iotlb, &key);
+> +    SMMUTLBEntry *entry = g_hash_table_lookup(bs->iotlb, &key);
+>
+>      if (entry) {
+>          cfg->iotlb_hits++;
+
+> @@ -303,7 +305,7 @@ error:
+>   * return 0 on success
+>   */
+>  inline int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
+> -             IOMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
+> +             SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
+
+might as well fix this indent while we're editing the line...
+
+
+>  {
+>      if (!cfg->aa64) {
+>          /*
+
+otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

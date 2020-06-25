@@ -1,168 +1,150 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1012559lfm;
-        Wed, 24 Jun 2020 23:39:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyZZMfNpJrawyP/0niEVB3YOyxfOlMrlJdtM2MWHpOpxFmrECUnRS3RePk3eWGXBhymaLBZ
-X-Received: by 2002:a25:7351:: with SMTP id o78mr48410060ybc.437.1593067146501;
-        Wed, 24 Jun 2020 23:39:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593067146; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1019171lfm;
+        Wed, 24 Jun 2020 23:52:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzD3eMQIuaHjO/kyOGvU4z99YsY2ZwoR/1YgzHWgMjMGof2Z5tntXzZgk8olVGJ4pwEQoVs
+X-Received: by 2002:adf:e884:: with SMTP id d4mr851571wrm.176.1593067953524;
+        Wed, 24 Jun 2020 23:52:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593067953; cv=none;
         d=google.com; s=arc-20160816;
-        b=zHB3z958WX4UNQZCp5DF+i+qvYixfP7ga8Uvtbf/pTrHOCAKjlpfEsN72aiVMiEoPX
-         30e3iiYAvWWb0YEGLzlVvToxvF5cohQVcocZGVtpoMcwgdGv/muH4RGAs/uIMXFE7lj2
-         ZbwDvaT+Zeg4Jm/PsnuT5w2QocMHvjmBBnve/DV2Hc+jIg6JxJSC7fSSpsok+5Haj2GT
-         Kj8/xV+gOqal5/mrrIu+Hafr3emVLXwqNMNPsUPLRLbWzIVNDGu+B/7B780ZSOKyHXlK
-         kUp7C9OWlgQ1PZ503+XWwhqRtKNvehGAlxJz7o0mWPn5elDUPwVjQZHVJkmtzlIcAq31
-         JjfA==
+        b=wqK9guP1lgw2GRqrN5YXS/JZha6KmYbDSEHsx+xj08bMgx8a3a8AR4fdhmpDmxLt09
+         g21k9xSzQw4oV/VjGwFcIVnNag3SPCSyARwjUFUHSZF6Ugj/Wmwisc5Ke+v4umDglzpJ
+         d5COvMbcYS/o30bMsEzC7C2BCKe/FEY8DguGBnOLJVT1yzMZeaC7lQLYe3/9zIhWHC78
+         ERExyrDEBZB1E6VOjRM4r3bY/zUgJfzsyivRslFBaWu3iuFquHg804f8bsntTIbb565I
+         R1c0y0VorUk4BakZI0ld97dtAbmauDUY5Ys4r4aszgO/4VCVnDw/kq9j78hB/vTaA2UE
+         Q8sg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=HymxzkekFH6JguRLqQNclhKOAHUnbMVMPoKNI5hr4YQ=;
-        b=PfIAswMrAUx8N+7tsLfdboa8eLWMo7h/ji/O1BNKJvVmbe4jTCGhMqW6ngZEfXqBpS
-         I5UTZp2cIbNELevuHG/IPUGunGPTPv8S35ZQUgRs1Geh0VgDz1DFeRzZ4sDeX8GuYh2a
-         n/9d8/WgSHXgCrqppheEBCwbgjjOCrEU3TYk+DDwyMJq4qN45KKrXSkO+8wNuBc+3xM+
-         m3N+4EHAAz4EMVOuItLGrrD4f1tqvi6JqnizCvWLj0JE8o1l9XH99oMT1gqPn4oGCOCq
-         cPFaxsCnwTO5hyHfnT+7FjAVR6wYT9vhX8+MQOddfPbita3ZXB9Og3H8zApfgWN7nWOT
-         0JEA==
+        h=content-language:content-transfer-encoding:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=j/tHyiX8nIgYd5aeuvvcmFG0aka/hELVngao0zkF2zk=;
+        b=aJQ3x8et51bqOP1qem9rTvSIi9nEqtb/7cFUFpkkJpz0okmqEnpwBLHTsx7UJK07so
+         ZiSjxnxVDpRN/saooN+QjpNF4zK3zxwA5pvWOUHE6uiZolpVZGs+2JxziPZtEJBjNC+s
+         7rqzjCyjImLABEvxIlHsnn8fYPJ7+aRUjCAt+PUwIVZ9BKSqsy8Jm/w6coTeacxtJXwF
+         3gmNwuxpZ1sOX8vWIxRdJtgtT1eBa34h4nrF7XsSSFhVyrEqum7AVxEddbtClYBE4aKT
+         jl7CxHPKEqEO9S1iz3FIgO4j0sgOmP1noYPJ698v2RtpN44yIPt6S1NNhsFuXq6z0osQ
+         KBNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jV+2Zi+z;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s46si20942866ybi.263.2020.06.24.23.39.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jun 2020 23:39:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of v.dupaquis@trusted-objects.com designates 149.202.244.204 as permitted sender) smtp.mailfrom=v.dupaquis@trusted-objects.com
+Return-Path: <v.dupaquis@trusted-objects.com>
+Received: from mailex.trusted-objects.com (mailex.trusted-objects.com. [149.202.244.204])
+        by mx.google.com with ESMTPS id b6si24219646wrs.38.2020.06.24.23.52.32
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 24 Jun 2020 23:52:33 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of v.dupaquis@trusted-objects.com designates 149.202.244.204 as permitted sender) client-ip=149.202.244.204;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jV+2Zi+z;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34930 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1joLXN-0004A7-US
-	for alex.bennee@linaro.org; Thu, 25 Jun 2020 02:39:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43568)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1joLWS-0003MK-V2
- for qemu-devel@nongnu.org; Thu, 25 Jun 2020 02:38:08 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:25656
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1joLWQ-0007pr-BZ
- for qemu-devel@nongnu.org; Thu, 25 Jun 2020 02:38:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593067085;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HymxzkekFH6JguRLqQNclhKOAHUnbMVMPoKNI5hr4YQ=;
- b=jV+2Zi+zx+x1mh8lz2ohKC4jBaD4SPim+gUbVD26ZlpUc6ecDD6hIr7kOCbsvZAMGDB2BV
- 42yDZGIlgp0HSJx9L12hYOB5X8OGK/KbI+nrLeZb98bJ4ubIBCIky7dBcIA+qWDQ4X7nlE
- cEH43FCfQi9asG40TyY8adrX4tczZno=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-440-DDLDEzJoPtWYJB0x_81XKg-1; Thu, 25 Jun 2020 02:38:02 -0400
-X-MC-Unique: DDLDEzJoPtWYJB0x_81XKg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4B357107ACCA;
- Thu, 25 Jun 2020 06:38:01 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
- [10.36.112.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DA0D260C87;
- Thu, 25 Jun 2020 06:38:00 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 5672211384D4; Thu, 25 Jun 2020 08:37:59 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH v4 4/8] hw/misc/pca9552: Add a 'description' property for
- debugging purpose
-References: <20200620225854.31160-1-f4bug@amsat.org>
- <20200620225854.31160-5-f4bug@amsat.org>
- <4d335933-9669-43e1-0966-5f0255142012@kaod.org>
- <34fe3d2b-6b41-0509-f172-5b45486fdf0c@amsat.org>
- <deccf836-48ef-7112-d66e-a8d3cc4a9681@kaod.org>
-Date: Thu, 25 Jun 2020 08:37:59 +0200
-In-Reply-To: <deccf836-48ef-7112-d66e-a8d3cc4a9681@kaod.org>
- (=?utf-8?Q?=22C=C3=A9dric?= Le
- Goater"'s message of "Mon, 22 Jun 2020 15:24:50 +0200")
-Message-ID: <877dvv4pmg.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+       spf=pass (google.com: best guess record for domain of v.dupaquis@trusted-objects.com designates 149.202.244.204 as permitted sender) smtp.mailfrom=v.dupaquis@trusted-objects.com
+Received: from [IPv6:2a01:e35:2e98:43c0:22dc:968f:2590:9879]
+ (2a01:e35:2e98:43c0:22dc:968f:2590:9879) by S76918.EX76918.lan
+ (2001:41d0:117:dd00::95ca:f4cc) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P521) id 15.1.1913.5; Thu, 25
+ Jun 2020 08:52:31 +0200
+Subject: Re: Role of qemu-arm
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+CC: Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, qemu-arm
+	<qemu-arm@nongnu.org>
+References: <20200619170324.12093-1-peter.maydell@linaro.org>
+ <879e933c-a65c-3706-afa1-5ede1acb062c@ispras.ru>
+ <e0fc64ab-b36e-99d1-90ea-8877c00f8c0f@trusted-objects.com>
+ <87o8pba35w.fsf@linaro.org> <7e057989-56b8-195d-247d-9ab0522ff23a@amsat.org>
+ <56ffc60e-f458-e9d4-d89e-4ca70b1ed4e2@trusted-objects.com>
+ <CAFEAcA8G3ngwUXMSCEN6UVEJ6Na5sBpHqYv1qh7PEn5uMAhGqQ@mail.gmail.com>
+ <e9ad4bb6-e8c9-55f5-565a-01c3f35aea92@trusted-objects.com>
+ <CAFEAcA9RAXmMeHFWX0La8yLL3M4mjC+mpsW6AvJFfsP8aGnfqQ@mail.gmail.com>
+ <be9893b6-f3c2-2e6c-d00e-9d8ce803b946@trusted-objects.com>
+ <87mu4s7oth.fsf@linaro.org>
+From: vincent Dupaquis <v.dupaquis@trusted-objects.com>
+Message-ID: <bee6e254-6f69-109e-2571-4e4370768930@trusted-objects.com>
+Date: Thu, 25 Jun 2020 08:52:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/25 00:45:15
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B81EICscOFYH
+In-Reply-To: <87mu4s7oth.fsf@linaro.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Content-Language: fr-FR
+Return-Path: v.dupaquis@trusted-objects.com
+X-Originating-IP: [2a01:e35:2e98:43c0:22dc:968f:2590:9879]
+X-ClientProxiedBy: S76918.EX76918.lan (2001:41d0:117:dd00::95ca:f4cc) To
+ S76918.EX76918.lan (2001:41d0:117:dd00::95ca:f4cc)
+X-TUID: rxb2GyxYYHvH
 
-C=C3=A9dric Le Goater <clg@kaod.org> writes:
+The libraries in this case do not make any interaction with I/O. We take
+control over them through GDB to be able to run them & test them.
 
-> On 6/22/20 10:31 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->> On 6/22/20 8:27 AM, C=C3=A9dric Le Goater wrote:
->>> On 6/21/20 12:58 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->>>> Add a description field to distinguish between multiple devices.
+They can be linked into a ELF binary (indeed this is how we test them,
+we link them with a dummy binary and take control over it using the
+debug interface).
 
-Pardon my lack of imagination: how does this help you with debugging?
+Regading the priviledged instructions, I do not understand the question,
+we only use available core instructions (I do not remember about
+priviledged instructions in Cortex-Mx.
 
->>> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Le 24/06/2020 à 12:14, Alex Bennée a écrit :
+> vincent Dupaquis <v.dupaquis@trusted-objects.com> writes:
+>
+>> Indeed, for us it has an interest, as we do libraries running on
+>> cortex-Mx cores. We are not linked to any specific board and can run
+>> on any.
+> Do the libraries use any privileged instructions?
+> How do they interact with I/O?
+> Can they be linked into an ELF binary?
+>
+>> Currently, we are using a basic board (the netduino2), and do not make
+>> use of any peripherals (that's the goal of our project, being able to be
+>> used on any board, with the right core). We do not even use the IT
+>> controller.
+>>
+>> You are right to say that there is no need of having 'plain cpu'
+>> emulation, as long as you can use any existing simulated board model.
+>> So, as long as there is
+>>
+>> By the way, my original question was on the usage of qemu-arm, and I
+>> have my response now :) It has no interest for cortex-Mx devices.
+> So I believe some of the gcc m-profile test suite runs under qemu-arm
+> with semihosting for this reason. You may need to wrap a little test
+> harness around your libraries to get this to work though.
+>
+>> Best regards,
+>>
+>> Vincent.
+>>
+>> Le 22/06/2020 à 15:43, Peter Maydell a écrit :
+>>> On Mon, 22 Jun 2020 at 14:03, vincent Dupaquis
+>>> <v.dupaquis@trusted-objects.com> wrote:
+>>>>     It is a shame, so I suppose I'll have to stay with my emulation
+>>>> using netduino2 or so ...
+>>>>
+>>>>     That was the reason why I tried to use qem-arm, which is probably
+>>>> crashing because what you just suggested.
+>>> qemu-arm is for "I'm a linux userspace binary"; if your code is
+>>> a userspace binary then you can use it...
 >>>
->>> Could it be a QOM attribute ?=20
->>=20
->> What do you call a 'QOM attribute'?
->> Is it what qdev properties implement?
->> (in this case via DEFINE_PROP_STRING).
+>>>>     Is there a way of pointing-out the interest for the feature ?
+>>> I'm afraid we don't support or have any plan to support
+>>> "just run a CPU, no peripherals". I don't think there's much
+>>> utility in it -- M-profile needs the interrupt controller,
+>>> almost any setup wants to have a UART for I/O, and you need
+>>> some actual RAM, which then leaves you with the question of
+>>> what address to put the RAM at. At that point you're not
+>>> really "just a CPU", you're "a minimalist board that doesn't
+>>> correspond to any real hardware". We've found from experience
+>>> that emulating things which don't correspond to something
+>>> in the real world is not really maintainable and supportable
+>>> in the long term.
+>>>
+>>> If your code will genuinely run on any M-profile board,
+>>> just pick whichever one seems most useful and ignore
+>>> the devices you don't need to use. (I like the mps2-an385,
+>>> it has a bit more RAM than most.)
+>>>
+>>> thanks
+>>> -- PMM
 >
-> I meant a default Object property, which would apply to all Objects.=20
+-- 
 
-Good point.  Many devices have multiple component objects of the same
-type.
+*Vincent Dupaquis*
+Software security & Cryptography expert
+06 24 58 17 05
+/Europarc de Pichaury Bâtiment B8 1330 rue Guillibert de la Lauzière
+13290 Aix-en-Provence/
 
-> What you did is fine, so :
->
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
->
-> but, may be, a well defined child name is enough for the purpose.
-
-object_get_canonical_path() returns a distinct path for each (component)
-object.  The path components are the child property names.
-
-Properties can have descriptions: object_property_set_description().
-
-Sufficient?
-
+www.trusted-objects.com <http://www.trusted-objects.com>

@@ -1,108 +1,95 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1483355lfm;
-        Thu, 25 Jun 2020 09:55:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyL98nOcst7LAHa1zis02SPrxt7n2deTr0q/6jYelrPn5hLF6p8gKb6yDlYvDFNMhg32lTG
-X-Received: by 2002:a25:bf8c:: with SMTP id l12mr57414795ybk.447.1593104110792;
-        Thu, 25 Jun 2020 09:55:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593104110; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1493043lfm;
+        Thu, 25 Jun 2020 10:06:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzq4bdhA/9oNvY3kC0xWRcElw77ug6hYoTJH9lMP8C0pN94lTNX4BgN+7Ri6BuDKbTmwRJx
+X-Received: by 2002:a67:ed41:: with SMTP id m1mr28733443vsp.189.1593104765428;
+        Thu, 25 Jun 2020 10:06:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593104765; cv=none;
         d=google.com; s=arc-20160816;
-        b=sVTSv2ypjaZ/0Bm04gbLDeijd9YIPWQUYrhGGcQEJ/8TlUejBPHQKajyJCBFhl3qv+
-         srYZvMkwlF9uenLN2EuDlnxrnalj/xkSJOoRtZCzJ4c09kveZUu/Y9eUKzBnRj/SKJxw
-         NgSNs94iBsSLsdz9ASRZp/9x7vhS9BEP7SDLpPhOJSChHJ3+fsCkbl5iEx+lREf4kDH7
-         YQBl2Vs5VVSL0a/Kc/uhWG9mVA+T8+kud+57j6epCRga3boqFtdeIjP1X/PCFdSPe1cR
-         UiFTz0mPLEr0OvFZTVSbj60HvlDslVVfgsG+n01IPy03Mfl9LRxPSGhkjeTU0O+lByvd
-         keWg==
+        b=AwwTCqpkKInut7Ko5I2HOlkabXD8oEDUedVkaIDcfYnp23r9riOUoZvrRebbldykgt
+         EV8A5OGwIOyNpNLymsZmk46rFpzTRJoAn5SgDnuk+d6FuZZVDtfsPWqoGfrzwB8Ni0ZV
+         KneD8hly+9sPVB+u9ULgxFJboyMaM5BCV0H+Zg06rdxFwU2wVxQMx6/4Ltd9ZhzqvQyk
+         Eih1QcXYuhsYSa93mbaWzJ1yAJD5ELolHSu06jxhCANcBamFoKmpQfobHxseHDO0vBZ9
+         S3JFEbVl5PxK7RbN4eiKY5nWo+gKZo0/3fr+Q5HQHicTJYgnd6Mr+qQnrSPbyZ2eABZo
+         KMGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=wYC5IYJjTNZDnMPFwIwmpQTVqAlfDoQB96PN41pXC3o=;
-        b=SGYLGIxWIkYKDUQILLHUqqBJm3t3efH4Xj3SODaYRJyNQlQJTmwTVw2CmP2DgB1PpF
-         FW9OZ8XyQb9JVprzbgv7HWgay7VQYRrsWFaq8LxMz5k/HqYTsTm/o84Jr+qr9UvzS51P
-         GPqfftVhny5TRB5wZo7NMz6pZM3d4QmnLJ5z7osMqdIazVw9jcGol13h1kCvDHhExMsr
-         6X5ocjubipTlxeGBJ8plnhAaSWus/EqauFUVy71UW93rpnRsNzzCOrxVM9brEWIg8pv8
-         hydy3NFcZhks/28nhG6V2QnDNWU1NnMERBJmHDBM2EUszPWqsASbZffOLwt8vUpGFAKY
-         oA8Q==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=lrqlGZt4EkhYEMniyWQVDT1ReAV9Lo0Pau+2CI+Xzdc=;
+        b=T4t7PtZ/0RLmssED2+BfpQNhDCCafCE2Q8N44FyejaOT4w2mfAzDycTlKe2HwJTYSq
+         bf1lbu2TcC5FvJ3MA6+czEAoDhjWmNGoiD6S/bY+mUT4Vp7ZYC86HaIFVg6EBaOCkUau
+         CC9wWu1lRx+RWdjb4koUXE/Zmbg28atspvC33B/EgJk+FjeDtVpYMIc8HU5398HOjIfc
+         ALuJ72vT2rDnSjMA/o5Ec2eEEsEdalWlMk/EVdrIT1j4O6HiXQTcGHq8+GsG14B+Dkmh
+         mX062EqEyRvWqEzg0QwTKC/1VSVsZIR0gEI9Yotrv7Fv9n1B+jZfWWyhAuPz/FYxhvt7
+         KkDA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ljSt4YTY;
+       dkim=fail header.i=@linaro.org header.s=google header.b=jRaPe2T1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d33si7504866ybe.4.2020.06.25.09.55.10
+        by mx.google.com with ESMTPS id f3si3136783uan.113.2020.06.25.10.06.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jun 2020 09:55:10 -0700 (PDT)
+        Thu, 25 Jun 2020 10:06:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ljSt4YTY;
+       dkim=fail header.i=@linaro.org header.s=google header.b=jRaPe2T1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54022 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50762 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1joV9a-0006Ik-63
-	for alex.bennee@linaro.org; Thu, 25 Jun 2020 12:55:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35874)
+	id 1joVK8-0000kc-Ca
+	for alex.bennee@linaro.org; Thu, 25 Jun 2020 13:06:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1joV9R-0006HV-6L
- for qemu-arm@nongnu.org; Thu, 25 Jun 2020 12:55:01 -0400
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:38948)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1joVFC-0001ih-KD
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2020 13:00:58 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:37266)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1joV9P-0004gS-Hi
- for qemu-arm@nongnu.org; Thu, 25 Jun 2020 12:55:00 -0400
-Received: by mail-pf1-x444.google.com with SMTP id d66so3285912pfd.6
- for <qemu-arm@nongnu.org>; Thu, 25 Jun 2020 09:54:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1joVFA-0007j2-2x
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2020 13:00:58 -0400
+Received: by mail-oi1-x243.google.com with SMTP id a3so5591087oid.4
+ for <qemu-arm@nongnu.org>; Thu, 25 Jun 2020 10:00:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=wYC5IYJjTNZDnMPFwIwmpQTVqAlfDoQB96PN41pXC3o=;
- b=ljSt4YTYFmDenRtOhyt1jOLd5Msq/g33Yh1MuYOe7IqGDnfjrZh6bNS3kVNFgTslXl
- oedZK6pQsPj2HjFYw9jsuqD8OPcf4FyMlsIXnNcgV7IStTHnEdJPR/wbmDtHZwZxYOGN
- ebHvflNtkV7vTpuH1mvTDvyGSdgKvLGVxAg1q5p+UFgwbqhmmw3LOnVL4bePvW/+cdsV
- vLttuB18a4W1jfXFc6FknngT9U9YM/1i43dtzWveGKSOF90rYDB3kWlCjClpj+wey0gj
- E7Q0z/1vUwrdGEcLKE6f4lkHJ3PNxS0iLWSJqDqQ4mikgPOkEGJASU0U/4FzKsuiSZ+k
- nArA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=lrqlGZt4EkhYEMniyWQVDT1ReAV9Lo0Pau+2CI+Xzdc=;
+ b=jRaPe2T18oNPp1c8vmDWcQ0lkkeu7AuDWlzigmJUQPKh/BKLiKop/zrh1V8Lrb1xLz
+ VXwO0/h2atoK4O3iOqPjFrU0ioWqgTrUXvgPKOhu8XbxV56jPLS9F4cxEXeAK45BHzZw
+ bb6YBdOXu03L4vB5pv1lJw9ahMamTHcy6P3jVHjlVSLAmyubdSrnpgG+eXq5Efp9aeDb
+ 9885IwUaw8TCH9BAOBNVcJrVj372tLKg4S+N5L931/ub9wj8yv6+p5fPRA3raMyDMHKP
+ nHje7h5j/4ZazC6jxsSQapmVY2iUQ3h53I/Hd7hhfvXnXMIwvaRK0YOVrp0J/LfERABC
+ LHdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=wYC5IYJjTNZDnMPFwIwmpQTVqAlfDoQB96PN41pXC3o=;
- b=Lw/uYl3Gm9WBxAAxsWPWsP2PuGT2JbgHrwH70N4E6UMiUTII4eYNtXM/yz1LSKXyn9
- +zB9JZ0bhHloZViGsuTHxEpBhziCLA0KLkxqJeZcPNZ/RFYJSKpmfyBDFVkCgY9ovPP9
- 6FrCZUWjSh85m63MAkq/UxapvspVrYm0nKFOIjXhcUsFnfDiq0wnm1Vnti8A5De+aiPD
- 9he7tu9isefkJ6lMX4yZ33QxmHJ2/Q5mCg+bMnvaLBEag5UCw+6c9b7s/hELhNjw4NRK
- FMjj+aTg0UmQ8tqk28MHNkNFGZqeb6CoK7tV82HdtlWsGbW2pqTNRlTn7zS3cgkAJJKx
- JdrA==
-X-Gm-Message-State: AOAM532hSETds9Lui40WBxfIryVhmFxtAZnxLckaKwnKZDAyPnAeX0EA
- 40hsAGPVsFpmKD4JTXB1c5ERlw==
-X-Received: by 2002:a63:1e60:: with SMTP id p32mr26285770pgm.172.1593104097711; 
- Thu, 25 Jun 2020 09:54:57 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id y7sm8697823pgk.93.2020.06.25.09.54.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 25 Jun 2020 09:54:57 -0700 (PDT)
-Subject: Re: [PATCH v8 38/45] target/arm: Complete TBI clearing for user-only
- for SVE
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200623193658.623279-1-richard.henderson@linaro.org>
- <20200623193658.623279-39-richard.henderson@linaro.org>
- <CAFEAcA8xy_Q-6zXexBEHLR=WSYTXVvttL9V4HqiMPmtRm__TEw@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <9e80eb42-655f-9ffa-264a-f72627efdf42@linaro.org>
-Date: Thu, 25 Jun 2020 09:54:55 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=lrqlGZt4EkhYEMniyWQVDT1ReAV9Lo0Pau+2CI+Xzdc=;
+ b=p39HN8yA6quXzdTpfj2fYgf+Ch07YbvbNC8mIdvxlzk4S8qqomjvVvKjIiO660ABbu
+ mrsIQpMG/ByZm5eOASVvnkE9T4tzqmwkfLz5stotcculMxpXseFt3P/XRgH4lxwVN1+D
+ i0Kvh67vTa0/RUEzH2jSa9/cy6HWAAEo/xM6cgBp3MkAR5PTbYZfxDCY5XZL3oVdaJQM
+ KCwUgUrgNbOu9zXnJNxaEo9cGFm6YWwZpW+BhUhN22DttY5+w4wp6bMLl7rt1vWUPT9A
+ kP77RcSpfUJImK706QZI/g5EIPGHWi4nDQMdSYZcXfi/DdxgxJZJ4sOVqm130ghUX6Zx
+ UPgQ==
+X-Gm-Message-State: AOAM532R8G2FQb0UG9jKnbrpaDBvvpQossr6yfzS7C37+xsen1i0u/f2
+ CVKLCZOZ7fEYIphfv6SK6TC9/juEUhW/oCFcIC8uxQ==
+X-Received: by 2002:aca:1a07:: with SMTP id a7mr3080411oia.163.1593104454423; 
+ Thu, 25 Jun 2020 10:00:54 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8xy_Q-6zXexBEHLR=WSYTXVvttL9V4HqiMPmtRm__TEw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x444.google.com
+References: <20200605041733.415188-1-richard.henderson@linaro.org>
+ <20200605041733.415188-13-richard.henderson@linaro.org>
+In-Reply-To: <20200605041733.415188-13-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 25 Jun 2020 18:00:43 +0100
+Message-ID: <CAFEAcA9uUSmg1zwz3-nXW6VQ2inc_mwGXzm+uqaxG1vr=zn2pA@mail.gmail.com>
+Subject: Re: [PATCH v2 12/17] linux-user/aarch64: Pass syndrome to EXC_*_ABORT
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x243.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -124,43 +111,130 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: david.spickett@linaro.org, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Stephen Long <steplong@quicinc.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Stephen Long <steplong@quicinc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gjf/GiY+K82o
+X-TUID: /NIQvHLJEWFG
 
-On 6/25/20 5:52 AM, Peter Maydell wrote:
-> On Tue, 23 Jun 2020 at 20:37, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> There are a number of paths by which the TBI is still intact
->> for user-only in the SVE helpers.
->>
->> Because we currently always set TBI for user-only, we do not
->> need to pass down the actual TBI setting from above, and we
->> can remove the top byte in the inner-most primitives, so that
->> none are forgotten.  Moreover, this keeps the "dirty" pointer
->> around at the higher levels, where we need it for any MTE checking.
->>
->> Since the normal case, especially for user-only, goes through
->> RAM, this clearing merely adds two insns per page lookup, which
->> will be completely in the noise.
-> 
-> Can we have an assert() somewhere suitable that TBI is set?
-> That way if we ever do have an SVE-capable linux-user which
-> doesn't set TBI for some reason we'll get a useful reminder
-> that we need to fix something.
+On Fri, 5 Jun 2020 at 05:17, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> A proper syndrome is required to fill in the proper si_code.
+> Use page_get_flags to determine permission vs translation
+> for user-only.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  linux-user/aarch64/cpu_loop.c | 23 ++++++++++++++++++++---
+>  target/arm/tlb_helper.c       | 27 +++++++++++++++++++++------
+>  2 files changed, 41 insertions(+), 9 deletions(-)
+>
+> diff --git a/linux-user/aarch64/cpu_loop.c b/linux-user/aarch64/cpu_loop.c
+> index 3cca637bb9..ce56e15be2 100644
+> --- a/linux-user/aarch64/cpu_loop.c
+> +++ b/linux-user/aarch64/cpu_loop.c
+> @@ -75,7 +75,7 @@
+>  void cpu_loop(CPUARMState *env)
+>  {
+>      CPUState *cs = env_cpu(env);
+> -    int trapnr;
+> +    int trapnr, ec, fsc;
+>      abi_long ret;
+>      target_siginfo_t info;
+>
+> @@ -116,9 +116,26 @@ void cpu_loop(CPUARMState *env)
+>          case EXCP_DATA_ABORT:
+>              info.si_signo = TARGET_SIGSEGV;
+>              info.si_errno = 0;
+> -            /* XXX: check env->error_code */
+> -            info.si_code = TARGET_SEGV_MAPERR;
+>              info._sifields._sigfault._addr = env->exception.vaddress;
+> +
+> +            /* We should only arrive here with EC in {DATAABORT, INSNABORT}. */
+> +            ec = extract32(env->exception.syndrome, 26, 6);
 
-At what level would you like such an assert?
-At present we have, in arm_cpu_reset,
+ ec = syn_get_ec(env->exception.syndrome);
 
-      /*
-       * Enable TBI0 and TBI1.  While the real kernel only enables TBI0,
-       * turning on both here will produce smaller code and otherwise
-       * make no difference to the user-level emulation.
-       */
-      env->cp15.tcr_el[1].raw_tcr = (3ULL << 37);
+(though it's in internals.h which implies moving it I guess).
 
+> +            assert(ec == 0x24 || ec == 0x20);
 
-r~
+assert(ec == EC_DATAABORT || ec == EC_INSNABORT);
+
+> +
+> +            /* Both EC have the same format for FSC, or close enough. */
+> +            fsc = extract32(env->exception.syndrome, 0, 6);
+> +            switch (fsc) {
+> +            case 0x04 ... 0x07: /* Translation fault, level {0-3} */
+> +                info.si_code = TARGET_SEGV_MAPERR;
+> +                break;
+> +            case 0x09 ... 0x0b: /* Access flag fault, level {1-3} */
+> +            case 0x0d ... 0x0f: /* Permission fault, level {1-3} */
+> +                info.si_code = TARGET_SEGV_ACCERR;
+> +                break;
+> +            default:
+> +                g_assert_not_reached();
+> +            }
+> +
+>              queue_signal(env, info.si_signo, QEMU_SI_FAULT, &info);
+>              break;
+>          case EXCP_UNALIGNED:
+> diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
+> index d4e6d37f4f..35d84ac24f 100644
+> --- a/target/arm/tlb_helper.c
+> +++ b/target/arm/tlb_helper.c
+> @@ -10,8 +10,6 @@
+>  #include "internals.h"
+>  #include "exec/exec-all.h"
+>
+> -#if !defined(CONFIG_USER_ONLY)
+> -
+>  static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+>                                              unsigned int target_el,
+>                                              bool same_el, bool ea,
+> @@ -51,6 +49,8 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
+>      return syn;
+>  }
+>
+> +#if !defined(CONFIG_USER_ONLY)
+> +
+>  static void QEMU_NORETURN arm_deliver_fault(ARMCPU *cpu, vaddr addr,
+>                                              MMUAccessType access_type,
+>                                              int mmu_idx, ARMMMUFaultInfo *fi)
+> @@ -138,13 +138,28 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+>      ARMCPU *cpu = ARM_CPU(cs);
+>
+>  #ifdef CONFIG_USER_ONLY
+> +    int flags, fsc, exc;
+> +    unsigned syn;
+> +
+>      cpu->env.exception.vaddress = address;
+> -    if (access_type == MMU_INST_FETCH) {
+> -        cs->exception_index = EXCP_PREFETCH_ABORT;
+> +
+> +    flags = page_get_flags(useronly_clean_ptr(address));
+> +    if (flags & PAGE_VALID) {
+> +        fsc = 0xf; /* permission fault, level 3 */
+>      } else {
+> -        cs->exception_index = EXCP_DATA_ABORT;
+> +        fsc = 0x7; /* translation fault, level 3 */
+>      }
+> -    cpu_loop_exit_restore(cs, retaddr);
+> +
+> +    cpu_restore_state(cs, retaddr, true);
+> +    if (access_type == MMU_INST_FETCH) {
+> +        exc = EXCP_PREFETCH_ABORT;
+> +        syn = syn_insn_abort(0, 0, 0, fsc);
+> +    } else {
+> +        exc = EXCP_DATA_ABORT;
+> +        syn = merge_syn_data_abort(cpu->env.exception.syndrome, 1, 0, 0, 0,
+> +                                   access_type == MMU_DATA_STORE, fsc);
+> +    }
+> +    raise_exception(&cpu->env, exc, syn, 1);
+
+Should we call arm_deliver_fault() the way the other series
+does for linux-user alignment faults ?
+
+thanks
+-- PMM

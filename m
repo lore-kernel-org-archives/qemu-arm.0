@@ -1,114 +1,100 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp797732lfm;
-        Wed, 24 Jun 2020 16:14:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzn1vUlPzExcnSr7XdJkl0vpKhyLUcsI1ADgKMCGrVwHwH5BY0qO1Tp/qRSm1i6wMao6Lr3
-X-Received: by 2002:a25:bb0d:: with SMTP id z13mr47478774ybg.417.1593040445242;
-        Wed, 24 Jun 2020 16:14:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593040445; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1026690lfm;
+        Thu, 25 Jun 2020 00:06:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwTrQ+xfTgvxzLXeoneomUsW04hN+jVdWzfRSfXWD+/+MTLC114sth5ag4NoaGKnH+hsqZ4
+X-Received: by 2002:a05:6902:1006:: with SMTP id w6mr52415126ybt.411.1593068789852;
+        Thu, 25 Jun 2020 00:06:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593068789; cv=none;
         d=google.com; s=arc-20160816;
-        b=cjpUodKpkUPMbD6DMhpp26Hkgs7bHdUfT/CqwM6MOW/hGmvlmpgMZYt1e6C1mQZtTL
-         N2x8PRD52gZjrWU9Jpzvhoy81+1P9zqry1fywYniVt5zPuOk8zEEMRzMnmUp7PzkTzLj
-         s3PiHiu2l1keEeGO7RAgkbG12I/uyB14F6cOEroMhXkPzSzDvXwVqPswjjk14QetlWOz
-         IdSNuSeHCd3lEjfq8AEHupFL3D4jPl32IOG/T3NrCvy1rqRyy9b+uzoZlWbV+jHW3liJ
-         QQoCQrQ09K37kjsTvRq00R7ZZ3KeGc7/xc7iNcfEdzPdYOlIAXxgyrhydJjMkPzQLPpe
-         uf5A==
+        b=YVx/QQpAhBA064ICZuX6t/1WbFvIRp5WUTv2epiyNsSmL6CYkNQkf43iszKNcpMCqF
+         ekYkyW16Y9CB7fYV/LPh7Gv6i6AJ9Z2e4SJReyITTRCfZacSL6dA56HziNElfhMaqEUr
+         3EZyoHlm7/QFQlmYDprjX3qWNEE+4KZtMzHsTaRbNNurc5zjk/yeH9d8B0hY8LjQ9WzD
+         qgOFKoznjZe5u9e+GTFI0ClEqh9fFCkTjVF9EpN8/u/hZ4A1N6tEE+KL42TE6Yy6KwkP
+         JvEmKWzFT+zz4xgCRC2XrPPKzQwZqwyJS7nkWZwFFiuDjcsQFsEbXdn99mgYCuCSM3+c
+         HitQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:to:from
          :dkim-signature;
-        bh=SQTJT5wD23Ewuir8n5bTPAK5U6CWsgr7NunGte4p7ow=;
-        b=ACbfWric4iN7x409f454vB0zp81G9qhs8PgaqGJ55xYj05wn82YH+ZtXmxJNZutRDc
-         QvJBCqGrWE7VO1y+vNPGQywe8kEwz1I2o2QSEYhhkwVe6H336VlFF5cL1Ws0iDHb8xJF
-         jwwt6LQiOoR98ruRQ9JgZGTQyxSuovFRi1TvUnyMJ1Eodl+Lvvq1569nyuaJlpbW8Bwv
-         X3h44ynhKpF7QWXl+GQ6JVxIvdYRTajIfBGrVlvYl/r2T2UWTr8OsNsVctF3LBiw1GB3
-         8JGjbFVoJiv2hRyOnRp1qTlhf8Cll4PKfPf+8IZ8Onky1R7e9vhNMBLvVwfe4UhmN8+Q
-         dlsg==
+        bh=urI8ZLuI8gYgxBNeoCT+usNMkwKZVyHbyyy82nxrsIY=;
+        b=S7qPYDpsJF7C6gA9XuaD1LgB+0XGzz/jNwbz1hMwb0/xem+Vdg/5jYtFhfXtNGPB33
+         VnYuxXLnA2c+aTHejLt1tDobDPKgDYxSTrRZPAKsV5++zCyD7zbR5R/cnmzWjtpyAGE9
+         7k+U5UHBBrnQ5ys/r05m9FOu5suyk/DL7yhb2G73vr4D7xqOkQwm07vDP/wPHb/Shfsq
+         s/y+IqYOIuXqWSHdgpCtlV+II+Pg3NqcEqVqjgmMZqadUxdbV3jk0RRdqp2Wsb0XIALx
+         atRQc9+8q7SMqzlY9vdo8bNXq2/TS2CZDEXh2wh5DHvw/69O9dSNysRi/RzH2Kq69rCy
+         mcVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DFPfw0Kl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DZ9q4hMa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y185si19416555yby.124.2020.06.24.16.14.05
+        by mx.google.com with ESMTPS id h10si1123059ybg.116.2020.06.25.00.06.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jun 2020 16:14:05 -0700 (PDT)
+        Thu, 25 Jun 2020 00:06:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DFPfw0Kl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DZ9q4hMa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41206 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52930 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1joEai-0004ju-IF
-	for alex.bennee@linaro.org; Wed, 24 Jun 2020 19:14:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42306)
+	id 1joLxt-0005CH-6b
+	for alex.bennee@linaro.org; Thu, 25 Jun 2020 03:06:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49612)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1joEU5-0000fL-TU
- for qemu-arm@nongnu.org; Wed, 24 Jun 2020 19:07:13 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:20824
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1joLxe-0005CA-23
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2020 03:06:14 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:23915
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1joEU4-0001cv-3B
- for qemu-arm@nongnu.org; Wed, 24 Jun 2020 19:07:13 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1joLxa-0003iR-9L
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2020 03:06:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593040031;
+ s=mimecast20190719; t=1593068769;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=SQTJT5wD23Ewuir8n5bTPAK5U6CWsgr7NunGte4p7ow=;
- b=DFPfw0Kln6KVlHOKwac8WIS1w1YnB0UJLty4EKO2Z7dC3rFurBHS6PggQf/aHNq0sQF5+/
- eJRfYB7I8JV6wFis6MPI3HIPJ5ScYKKh/aaM/R+VpxKN6CeLcDTSI288Z0tV7ag6Q9chTn
- Mqvk4q9rqUKunhQ6c6rs9NXAbrfpRXQ=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-88-zsDNUknZOgSoyRa6h2_CGQ-1; Wed, 24 Jun 2020 19:07:09 -0400
-X-MC-Unique: zsDNUknZOgSoyRa6h2_CGQ-1
-Received: by mail-wm1-f71.google.com with SMTP id a18so4647179wmm.3
- for <qemu-arm@nongnu.org>; Wed, 24 Jun 2020 16:07:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=SQTJT5wD23Ewuir8n5bTPAK5U6CWsgr7NunGte4p7ow=;
- b=aKyoPZJKCcTMql4C6247b1wwsAAxEuuI7n3JSJaJxz7GTqB5+coRHhuZWoGoLi29tn
- Am6HfmyYdIVGDF7kASbyX8Vl3hQnKTvaii7Tfpb7QnMReRNFITE44bDRy9/my+mSVb6c
- uvv7GOUAOKxisj5zUY56d74gAgr/3Vgk1wQhqpRZ32ODW4rANb49lZkTfJFcEehoHU3p
- B7d33X3hLk7R8m19nXrihFcY/vTGPbAavKBnZ56lwoiEUJDUyWPWJeVV9uRGCbKLe3Z9
- ZHn0/C/MoLRLwrLJsZJlLBJv9PqMl2DZyYgVIsYdBQgoOnoTJcscQC6Uy4+BcSwJP8Ky
- 0Spw==
-X-Gm-Message-State: AOAM530654oSYERwMfkkSPDFaBa3xodkdDK41k7Q0niSdi+hyw3omuX1
- S6bcKY+RHLLLmhlU8cxUPonqDye61MHAZNUKp7ZPM1sot7mY4OEyLntAyqklW67RNjbxRb32oZh
- O5P31n5cuqUBb
-X-Received: by 2002:a5d:5549:: with SMTP id g9mr30907632wrw.419.1593040027795; 
- Wed, 24 Jun 2020 16:07:07 -0700 (PDT)
-X-Received: by 2002:a5d:5549:: with SMTP id g9mr30907620wrw.419.1593040027627; 
- Wed, 24 Jun 2020 16:07:07 -0700 (PDT)
-Received: from redhat.com (bzq-79-182-31-92.red.bezeqint.net. [79.182.31.92])
- by smtp.gmail.com with ESMTPSA id
- x5sm10239713wmg.2.2020.06.24.16.07.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Jun 2020 16:07:07 -0700 (PDT)
-Date: Wed, 24 Jun 2020 19:07:05 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PULL 14/19] arm/acpi: Add the TPM2.0 device under the DSDT
-Message-ID: <20200624230609.703104-15-mst@redhat.com>
-References: <20200624230609.703104-1-mst@redhat.com>
+ bh=urI8ZLuI8gYgxBNeoCT+usNMkwKZVyHbyyy82nxrsIY=;
+ b=DZ9q4hMa88Gw2VIFYJdaTvHNbQcBMPbtxO7RfWTGxFy+UIOBoc3SV5hjDN+MTgGyZWVYI7
+ MCg5c1KOzylVFXIdOtU+y+0MsPPPeVVuLIZiR7VnEdHSHSN7h80uMnJsniOUhUeO6E3VhV
+ cGBSqACDUhnb7g20tQGuc7X18RqDk2k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-440-ODPLS9yHM4e0pwgupt9CCQ-1; Thu, 25 Jun 2020 03:06:07 -0400
+X-MC-Unique: ODPLS9yHM4e0pwgupt9CCQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6C4B91883608;
+ Thu, 25 Jun 2020 07:06:06 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id F3AB579325;
+ Thu, 25 Jun 2020 07:05:57 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 80EC711384D4; Thu, 25 Jun 2020 09:05:56 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v5 2/5] virtio-iommu: Implement RESV_MEM probe request
+References: <20200624132625.27453-1-eric.auger@redhat.com>
+ <20200624132625.27453-3-eric.auger@redhat.com>
+Date: Thu, 25 Jun 2020 09:05:56 +0200
+In-Reply-To: <20200624132625.27453-3-eric.auger@redhat.com> (Eric Auger's
+ message of "Wed, 24 Jun 2020 15:26:22 +0200")
+Message-ID: <87zh8r1v6z.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20200624230609.703104-1-mst@redhat.com>
-X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
-X-Mutt-Fcc: =sent
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=mst@redhat.com;
+Content-Type: text/plain
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/24 03:27:53
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/25 00:45:15
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -129,92 +115,121 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eric Auger <eric.auger@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- Ard Biesheuvel <ardb@kernel.org>, Stefan Berger <stefanb@linux.ibm.com>
+Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
+ peterx@redhat.com, jean-philippe@linaro.org, qemu-arm@nongnu.org,
+ pbonzini@redhat.com, bbhushan2@marvell.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: njaPLddXfpC3
+X-TUID: Drl6IsABDtpw
 
-From: Eric Auger <eric.auger@redhat.com>
+Eric Auger <eric.auger@redhat.com> writes:
 
-In case it is dynamically instantiated, add the TPM 2.0 device object
-under the DSDT table in the ACPI namespace. Its HID is MSFT0101
-while its current resource settings (CRS) property is initialized
-with the guest physical address and MMIO size of the device.
+> This patch implements the PROBE request. At the moment,
+> only THE RESV_MEM property is handled. The first goal is
+> to report iommu wide reserved regions such as the MSI regions
+> set by the machine code. On x86 this will be the IOAPIC MSI
+> region, [0xFEE00000 - 0xFEEFFFFF], on ARM this may be the ITS
+> doorbell.
+>
+> In the future we may introduce per device reserved regions.
+> This will be useful when protecting host assigned devices
+> which may expose their own reserved regions
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+>
+> ---
+>
+> v4 -> v5:
+> - assert if reserved region type is different from RESERVED or
+>   MSI
+>
+> v3 -> v4:
+> - removed any reference to the NONE property that does not
+>   exist anymore.
+>
+> v2 -> v3:
+> - on probe, do not fill the reminder of the buffer with zeroes
+>   as the buffer was already zero initialized (Bharat)
+>
+> v1 -> v2:
+> - move the unlock back to the same place
+> - remove the push label and factorize the code after the out label
+> - fix a bunch of cpu_to_leX according to the latest spec revision
+> - do not remove sizeof(last) from free space
+> - check the ep exists
+> ---
+>  include/hw/virtio/virtio-iommu.h |  2 +
+>  hw/virtio/virtio-iommu.c         | 92 ++++++++++++++++++++++++++++++--
+>  hw/virtio/trace-events           |  1 +
+>  3 files changed, 91 insertions(+), 4 deletions(-)
+>
+> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
+> index e653004d7c..49eb105cd8 100644
+> --- a/include/hw/virtio/virtio-iommu.h
+> +++ b/include/hw/virtio/virtio-iommu.h
+> @@ -53,6 +53,8 @@ typedef struct VirtIOIOMMU {
+>      GHashTable *as_by_busptr;
+>      IOMMUPciBus *iommu_pcibus_by_bus_num[PCI_BUS_MAX];
+>      PCIBus *primary_bus;
+> +    ReservedRegion *reserved_regions;
+> +    uint32_t nb_reserved_regions;
+>      GTree *domains;
+>      QemuMutex mutex;
+>      GTree *endpoints;
+> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+> index 483883ec1d..aabc3e36b1 100644
+> --- a/hw/virtio/virtio-iommu.c
+> +++ b/hw/virtio/virtio-iommu.c
+> @@ -38,6 +38,7 @@
+>  
+>  /* Max size */
+>  #define VIOMMU_DEFAULT_QUEUE_SIZE 256
+> +#define VIOMMU_PROBE_SIZE 512
+>  
+>  typedef struct VirtIOIOMMUDomain {
+>      uint32_t id;
+> @@ -378,6 +379,63 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+>      return ret;
+>  }
+>  
+> +static ssize_t virtio_iommu_fill_resv_mem_prop(VirtIOIOMMU *s, uint32_t ep,
+> +                                               uint8_t *buf, size_t free)
+> +{
+> +    struct virtio_iommu_probe_resv_mem prop = {};
+> +    size_t size = sizeof(prop), length = size - sizeof(prop.head), total;
+> +    int i;
+> +
+> +    total = size * s->nb_reserved_regions;
+> +
+> +    if (total > free) {
+> +        return -ENOSPC;
+> +    }
+> +
+> +    for (i = 0; i < s->nb_reserved_regions; i++) {
+> +        prop.head.type = cpu_to_le16(VIRTIO_IOMMU_PROBE_T_RESV_MEM);
+> +        prop.head.length = cpu_to_le16(length);
+> +        prop.subtype = s->reserved_regions[i].type;
+> +        assert(prop.subtype == VIRTIO_IOMMU_RESV_MEM_T_RESERVED ||
+> +               prop.subtype == VIRTIO_IOMMU_RESV_MEM_T_MSI);
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+The assertion makes sense here: we're mapping from the generic
+ReservedRegion type (which is unsigned) to the specific
+virtio_iommu_probe_resv_mem subtype (which is uint8_t, but only these
+two values are valid).
 
-Message-Id: <20200622140620.17229-3-eric.auger@redhat.com>
-Tested-by: Ard Biesheuvel <ardb@kernel.org>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- hw/arm/virt-acpi-build.c | 34 ++++++++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+Howver, the assertion should test s->reserved_regions[i].type and go
+before the assignment, to ensure it doesn't truncate!
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index ca31f70f7f..1384a2cf2a 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -46,6 +46,7 @@
- #include "hw/pci/pci.h"
- #include "hw/arm/virt.h"
- #include "hw/mem/nvdimm.h"
-+#include "hw/platform-bus.h"
- #include "sysemu/numa.h"
- #include "sysemu/reset.h"
- #include "sysemu/tpm.h"
-@@ -364,6 +365,38 @@ static void acpi_dsdt_add_power_button(Aml *scope)
-     aml_append(scope, dev);
- }
- 
-+static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
-+{
-+    PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
-+    hwaddr pbus_base = vms->memmap[VIRT_PLATFORM_BUS].base;
-+    SysBusDevice *sbdev = SYS_BUS_DEVICE(tpm_find());
-+    MemoryRegion *sbdev_mr;
-+    hwaddr tpm_base;
-+
-+    if (!sbdev) {
-+        return;
-+    }
-+
-+    tpm_base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-+    assert(tpm_base != -1);
-+
-+    tpm_base += pbus_base;
-+
-+    sbdev_mr = sysbus_mmio_get_region(sbdev, 0);
-+
-+    Aml *dev = aml_device("TPM0");
-+    aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
-+    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-+
-+    Aml *crs = aml_resource_template();
-+    aml_append(crs,
-+               aml_memory32_fixed(tpm_base,
-+                                  (uint32_t)memory_region_size(sbdev_mr),
-+                                  AML_READ_WRITE));
-+    aml_append(dev, aml_name_decl("_CRS", crs));
-+    aml_append(scope, dev);
-+}
-+
- static void
- build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
- {
-@@ -762,6 +795,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     }
- 
-     acpi_dsdt_add_power_button(scope);
-+    acpi_dsdt_add_tpm(scope, vms);
- 
-     aml_append(dsdt, scope);
- 
--- 
-MST
+Can I trigger the assertion with -device?  My try to find the answer
+myself failed:
+
+    $ qemu-system-x86_64 -nodefaults -S -display none -device virtio-iommu-pci,len-reserved-regions=1,reserved-regions[0]=0xfee00000:0xfeefffff:99
+    qemu-system-x86_64: -device virtio-iommu-pci,len-reserved-regions=1,reserved-regions[0]=0xfee00000:0xfeefffff:99: pc-i440fx-5.1 machine fails to create iommu-map device tree bindings
+    Check you machine implements a hotplug handler for the virtio-iommu-pci device
+    Check the guest is booted without FW or with -no-acpi
+
+By the way: s/Check you machine/Check your machine/.
+
+[...]
 

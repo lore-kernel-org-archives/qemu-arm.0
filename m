@@ -1,112 +1,110 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp471888lfm;
-        Fri, 26 Jun 2020 06:58:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxf4TwT+fRbTmYfDLpb/WDhMVQf3iIQam69hqS0FX1HLcHiw5bj46RtRTwZI4vN/G4xoE1k
-X-Received: by 2002:a25:384f:: with SMTP id f76mr5163586yba.170.1593179922221;
-        Fri, 26 Jun 2020 06:58:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593179922; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp515167lfm;
+        Fri, 26 Jun 2020 07:46:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzofBCNrTU+2S2oWaPAEId+3OtLZO0ytM8lx3Zs4FdjWhtaNVdINQQDZZGZx9yl2c+m/d5w
+X-Received: by 2002:a25:6b42:: with SMTP id o2mr6128146ybm.269.1593182788123;
+        Fri, 26 Jun 2020 07:46:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593182788; cv=none;
         d=google.com; s=arc-20160816;
-        b=cgqgWnf9SmmI5agg1SkkHveEgyz4BA5sIp9QeixDcIIfdjhhapxEw4E30iWSV0Q1zC
-         6kgSwSToFl9yoo9YiBMvlc2LOcJxJfVHHdmR9qOnzWgUTEPbHl8R8gDEazqVruoQuwca
-         Qig7ldwCYmbmYx4azye3VO7vTqVBhJU3T9L7Zg6X4KeFMSfdabA64dstV8wZZPip3cBx
-         czN5/2JiSofz9chw+p7f2H5TTNl3zT+PAq5B+BQKhBzu1uOjLEcjbduKb4N7pbJGkBlL
-         tiHhAov/tZqYMqgGyCK9v6e6L2gkW+V1+GLVQ0p24I7if6iogHwaoxUYC8yy6zXSwK89
-         HFBA==
+        b=bbOGXUGcVeBBTqKQa71lbsJA7mf/pp6+PPPk7sX/2WJv2EtifFiiFBPpkqyclLNn2H
+         qk/yuX8clszbmXdEMozyLEyNFXIu+CXR/PCWUX+nRhnjBTcAezrYns3/BnbfZtpAg0H6
+         6p6pDOwzM9s0fWog7cyq05mnUL4FzIravum848dN+4+jqiUHkHCQtTX0q/kgyWWShqFH
+         nZsdzPm/aIUsdTPwMHNKGr/71EkWiE0+h5WFEIusRvGW3iOjy3nUu8hbtKsZLMylwUCR
+         /52XG37MM/triGBhKelwQfEI78JQ2JFP9LmYfSd57yrC04Ec0C3cebWEM3iiXpQFx/yi
+         BcaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=IjJiU0asDsiS4+YeM32QII+MWPGHCHjVHIn0rqv5pgI=;
-        b=qSuTXbMvqAos8x/bdZzA2oSg2GvbSTmX11Vy5Keze7nWLj+mDg4HfoJr8OwzXI27By
-         It+zlfmfgsf267Q0m4j1W/ZffeaFtlvpRJnZnPS9tfEPypEMj+UWJhBTSgvQH1pid1LH
-         QrpYuZyKtvy24OKZ9dKENX8yxgS2FokSJRtue1KQekbSYxqCiYXjxThpHO4R8KQxcJoZ
-         qJmkK9NDlh8xAo8VgO7d7jar16av4QCTkCXPEdo2XmG9G2mq3Yex5RsWh/KyoohnnkWY
-         gatSSauRFgVLOQqGCF+EPgiYw1itp1H5HQXyNMXO3eFm5mEsj00P7o2WRAzgSoC3SdXm
-         nlIg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=lylTJONNiF+05lqI3v4IFl6XREX96gJa5ntCGs3wMhg=;
+        b=kSkinhAr2CELgUmighPb74knjRU2gTkYwbVJ5/wdur/j/yW1f3exb7muQUEORyK3+z
+         lNVJMbnK9q/zkZ201mpb+sycqmz4ENaWeaPnhrcqMbQos43xPGo52FBLFW+Dj58y2hRF
+         1GCcqK+84hn7wc9PhZBTkXL+9c6rSaxhO633w/1DeZyRnqDmD2/kXFT3UAzV2mIxPuGu
+         6y3OOa2RGXFiDQTLCKHVNhriagoOViLoNyXT1IyUsCexxA9dCtiFqeqE5LQeIHNIdAfK
+         hd+nhWVAfvJAujLBmQDRFyZmCGuAwqlgwKHFq/8alaD1O1NmtIHOv+/8v5Az/zvpln8z
+         LE5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CYRVolJc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ml8qn6Qg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g4si26082331ybh.219.2020.06.26.06.58.42
+        by mx.google.com with ESMTPS id l7si25480448ybb.38.2020.06.26.07.46.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jun 2020 06:58:42 -0700 (PDT)
+        Fri, 26 Jun 2020 07:46:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CYRVolJc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ml8qn6Qg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43588 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57604 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1joosL-00080O-CV
-	for alex.bennee@linaro.org; Fri, 26 Jun 2020 09:58:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41354)
+	id 1jopcZ-0001Jb-Id
+	for alex.bennee@linaro.org; Fri, 26 Jun 2020 10:46:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56014)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1joos2-0007lO-61
- for qemu-arm@nongnu.org; Fri, 26 Jun 2020 09:58:22 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:59362
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1joos0-0001Jm-Fh
- for qemu-arm@nongnu.org; Fri, 26 Jun 2020 09:58:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593179899;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=IjJiU0asDsiS4+YeM32QII+MWPGHCHjVHIn0rqv5pgI=;
- b=CYRVolJcOOFzJr5gfPNKOHw2JU7M91Z2gi8wASwAG7Ij9nUxSRyw237QbysK5sf0dhIE/C
- aWx38EE2cmc7VGMsKmMofbZm46BoHVvitux3ZTmuD7f39qsN7T3xvMMwyBJ5px/D5NDqix
- NpGPAb6rfVU/cNhP24rBPNnvkkgMJ3g=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-451--cpZ1g-uP8e-1vqU-4A8ig-1; Fri, 26 Jun 2020 09:58:16 -0400
-X-MC-Unique: -cpZ1g-uP8e-1vqU-4A8ig-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 188FE800D5C;
- Fri, 26 Jun 2020 13:58:14 +0000 (UTC)
-Received: from [10.36.114.197] (ovpn-114-197.ams2.redhat.com [10.36.114.197])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 01BF360BF4;
- Fri, 26 Jun 2020 13:58:02 +0000 (UTC)
-Subject: Re: [PATCH RESEND 5/9] hw/arm/smmuv3: Store the starting level in
- SMMUTransTableInfo
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200611161500.23580-1-eric.auger@redhat.com>
- <20200611161500.23580-6-eric.auger@redhat.com>
- <CAFEAcA9vMXtj-fiEB_FRHnau+K-XFf--i=3-KYTjNncc_9dgPg@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <0ff6e8e6-0213-13ac-9541-f7353dd1178f@redhat.com>
-Date: Fri, 26 Jun 2020 15:58:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jopcS-0001J0-NS
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 10:46:20 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:40549)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jopcQ-0002Sd-Uu
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 10:46:20 -0400
+Received: by mail-ot1-x341.google.com with SMTP id q21so1297691otc.7
+ for <qemu-arm@nongnu.org>; Fri, 26 Jun 2020 07:46:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=lylTJONNiF+05lqI3v4IFl6XREX96gJa5ntCGs3wMhg=;
+ b=ml8qn6QgjyIEG7aKySM17/4U2F/msKUdBWoyCerSkwyU6dN7PqfB0T/c3RnoFP7v+r
+ Puyy5hvmdWLFjZNlFg/6ebnwRZVExwFLJvr3Ho6pgbRSI3ZqkqS87hyNDT6AFaCUej3L
+ zWvDf9jkrUaI+pgVfaw2SHy3XmLX8SnOP3qWVv1OYtps8MP4/p2qp+J4rRBYISolPADk
+ /R3z6CXF4RSIehyM8vYkaZgV+vY0TpTVkNtq/Ly6NewEnM1AKH/82avV8voZdMK75TAF
+ Y0i6QOKgOpdePlKOeiiYVxso8h0OcFDfxWk1fsvMOLS+UbXR1vtYTw6m0303uLiNioLG
+ UojA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=lylTJONNiF+05lqI3v4IFl6XREX96gJa5ntCGs3wMhg=;
+ b=FqfYjmAQX86KkNnmJDB7GikToMSHkH7A9XQ3bQLMqM3xbWIwsa5Qlq/3LsVl/p22qv
+ 9+RQ0yFk924vhk2QTxLKckJ0JLnlSTZ9YsNy7nxvOMOj2s4SsfCJtfLl6oFzAiFlA/eo
+ M+Ndy3B/KQ/GUz6qiXS1gaFQ3fuaFugf4ehVtuOBfLqrC7DNdzdeDLDK64tgYk05+T70
+ kRMlyWugru1Nm1udbpIoAzUhvtNfd0ABCHTjXNi0GxCiLXzI60ypyVHDsBGKP7HP5yFR
+ fEaAQaf4He1/Yii0gBzDu1hI2T9CR0NXjeEmSsf1hlFwjWTMVNoyMuD7YZLLlPNI2Mfj
+ H0vw==
+X-Gm-Message-State: AOAM5309tGfpagEBvisPb+t6K9ZmwIbA9/YHtfeIWgzhQexorq+xkMvQ
+ PKvDjE+wRkE3v0pUCz555CEV4ARlh7Q5EXI9RprK4w==
+X-Received: by 2002:a05:6830:1bd3:: with SMTP id
+ v19mr83072ota.91.1593182777472; 
+ Fri, 26 Jun 2020 07:46:17 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9vMXtj-fiEB_FRHnau+K-XFf--i=3-KYTjNncc_9dgPg@mail.gmail.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 03:23:21
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+References: <20200610084551.28222-1-vav@sysgo.com>
+ <CAFEAcA9uF01LnFy6o4Yy=aeuy9ixyGWZFVGtR66ah3w1458O5g@mail.gmail.com>
+ <583c6e8e-fe52-881d-1a61-f02ce7b16d23@sysgo.com>
+In-Reply-To: <583c6e8e-fe52-881d-1a61-f02ce7b16d23@sysgo.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Jun 2020 15:46:06 +0100
+Message-ID: <CAFEAcA8XLnUWQP9BgYfN_Q5Kg8nEMfEynFiRMx8NOS2roE+V1A@mail.gmail.com>
+Subject: Re: [PATCH] hw/timer/a9gtimer: Clear pending interrupt, after the
+ clear of Event flag
+To: =?UTF-8?B?VsOhY2xhdiBWYW5j?= <vav@sysgo.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,54 +117,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Robin Murphy <robin.murphy@arm.com>,
- zhangfei.gao@foxmail.com, QEMU Developers <qemu-devel@nongnu.org>,
- Peter Xu <peterx@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
- Eric Auger <eric.auger.pro@gmail.com>
+Cc: "open list:ARM cores" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3VdT4UzWJhUC
+X-TUID: QEhRO0QJwjN6
 
-Hi Peter,
+On Tue, 16 Jun 2020 at 08:04, V=C3=A1clav Vanc <vav@sysgo.com> wrote:
+>
+> On 6/15/20 1:04 PM, Peter Maydell wrote:
+> We must distinguish between two cases:
+> 1, Auto-increment is disabled.
+> I just run some test on SABRE Lite (i.MX6) board.
+> I had auto-increment disabled, I verified, that GIC is configured for
+> Edge interrupts. Once count went past the compare value I got the
+> interrupt. I did not touch Timer registers, just signal EOI to GIC and
+> surprisingly, I got a another interrupt. If I stopped the timer
+> interrupts stopped coming (Status was still set to 1).
+>
+>  From this behavior I assume, that every time the Timer is incremented
+> (and Timer value is past the compare value) an EDGE interrupt (that
+> means actual X->0->1 transition) is asserted. This is really interesting
+> from HW point of view. This would mean, that a9_gtimer_update function
+> should generate the pulse and not level on compare event.
 
-On 6/25/20 5:15 PM, Peter Maydell wrote:
-> On Thu, 11 Jun 2020 at 17:15, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> Compute the starting level on CD decoding and store it
->> into SMMUTransTableInfo. We will need this information
->> on IOTLB lookup so let's avoid to recompute it each time.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> 
->> --- a/hw/arm/smmu-common.c
->> +++ b/hw/arm/smmu-common.c
->> @@ -224,7 +224,7 @@ static int smmu_ptw_64(SMMUTransCfg *cfg,
->>      granule_sz = tt->granule_sz;
->>      stride = granule_sz - 3;
->>      inputsize = 64 - tt->tsz;
->> -    level = 4 - (inputsize - 4) / stride;
->> +    level = tt->starting_level;
-> 
-> "4 - (x - 4) / y" doesn't really seem like it's complicated
-> enough to be worth caching given everything else we do on
-> a page table walk. Do you have perf figures to indicate that
-> this change is worthwhile?
+That's interesting. Which version of the Cortex-A9 does this
+board have? The TRM documents that the comparator behaviour
+changed in r2p0...
 
-no I don't have any figure or any setup at the moment to perform that
-bench.
-
-I thought it could only help, was not complicated to store and was of
-the same kind as the granule size, the input range, ... already stored
-in SMMUTransTableInfo.
-
-Thanks
-
-Eric
-> 
-> thanks
-> -- PMM
-> 
-
+thanks
+-- PMM

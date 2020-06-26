@@ -1,102 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp52191lfm;
-        Thu, 25 Jun 2020 20:40:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyMmN/r3tPnaYLpy2nQjaVCbP5eVS17EbAuf2fVlLksmRGkguJf5+L+pxOudP5zjpK1p/mR
-X-Received: by 2002:a25:cb4c:: with SMTP id b73mr1840422ybg.477.1593142854550;
-        Thu, 25 Jun 2020 20:40:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593142854; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp52487lfm;
+        Thu, 25 Jun 2020 20:41:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw0XTgBBanSnemlLyH/paoYq1rtQvb8L8xq5AaAk5wX93bP0vklAwZHEYJkLGfaavsGXWJp
+X-Received: by 2002:a25:c6c2:: with SMTP id k185mr1849233ybf.94.1593142888449;
+        Thu, 25 Jun 2020 20:41:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593142888; cv=none;
         d=google.com; s=arc-20160816;
-        b=LAofnshWOI67sZwAf6mTotyA4E0bfrCzTP2b/dyJKOXr0QstsK6pAD5OwY48pAh4V4
-         LY5CwMbQCq3TJeSd1+9PWfB9lv2YpyzRT23pYPHEjjqpM+QIvDzTY7AfE0ZKf/RUjnjb
-         2JMxNaH/AxPmdV3itIJrnaOIeuGehdNdGnmCwEZItRC7VM10chcSITPogxW7SbSuv5iY
-         UeR1IjMA1cCSTkmf57Xm4WDND+/SdYcdaEDhNW8xDfbX3R+Z7TjXAm2Ty0OtoD7XG59p
-         N86L43Zm3IBIUIF7jZsuG4AzzrUdzzTYSvKBpaGWiP8t0QnffG2D0gMxY6gA8cXxzTNu
-         7Itw==
+        b=MpD8L4389YJfJwRhmu0ke7wbyHDOtIMwz2JttQlu52s0P5vtu/lfeGvWoUOr+wT9V4
+         6u4Gi8SofgRkUeBfHgQZoTXK74mbWkpd66cQ4g8Gm1kCb5s5qJjFREBFZSC0P2FvA0jm
+         DPa45tu6c0iVpZx1uWMQ/srlp4Q2BO1H0G1Uy7lJTFIVsKesyItsT7mQBedNFnt0qwDB
+         dwN7luaAJFapYOclIbWvtCnuR4rE5NZQoQjY+AN7Dtf+JdhXwqpya3k+XZiXeZfSD+EU
+         mOQLXQtI4BVhjOf90GwpNauXthn3EjaPMJ3h/nhSUuruGTb4WIK3lrFm8ZX9799JLXyZ
+         iFhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=dIqElI8pgPAgNw6hNXIr8iL0uUccdVm5AQSZ4FugxDc=;
-        b=iN/FYqqaOAN1BJ8cxWC+DgXagpiBqiqLL5sOXAaIZwwb1xPY1B4SMnB5h6NwrslKxL
-         Ey6PqSr/vyt5kCXmUHYC8VsXRJrxeTojBIhAaYIAgffLIhJbZH+DQOyGl0LXFYLZkJkG
-         P+25ytIxBbGzGBiLlU6sf7lhHHZXH2WXlBV2TRlRfZfZVLAxP8uc5EiodoH6am0vTCwK
-         k0PMfj620WevCAmUSMyUtvlM9cPR0yf0rtEOjJuf8j+sEdgp2aC4gETnk1pdXf8u/hqk
-         E40VsLNaLPb1XXMkxMTDXtMQ2opFzGvYfX8sfrl8+SNtqc6kbOig3fLRbHP9UttuYJQc
-         +QnA==
+        bh=HSjBCHwavjNr37NIxaEpavJpEI8ou/nda9kEqEE9VlM=;
+        b=L7Zvl+H7VZFmdbDF1nubWWrs6BOVrJ+eL/rGpiSm9KY2VzWkfZev1s7AlKst2SZzjl
+         zXXqe+UP+OTTRUwlNdQUl+qydxK97Y8/AfsZB99V8PLOBQ4bxMEkGjjwDBDeXFEiRgYZ
+         VD2HK96lz3wA+wu6xaujqQ8RRLbT0ZE3jk5/Ne/f5QZnXwccNHoTr0TEbagdB0knPcIL
+         z1n6cb0ci1s5L+D+aFuozw0GufdTXokBI4msHT6BkGulkpjO4KMCoXkd3bPi/5/eH76r
+         tvk3LNkM1nr+MwuLCw/9HL0ny6rlbrwWKD3mzfoIQtwBft62+q5sTAvQ6z/O++P5EZ4c
+         gUOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=wiA1w3oH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=miWWnPz5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y185si22512234yby.124.2020.06.25.20.40.54
+        by mx.google.com with ESMTPS id k186si24643860ybf.383.2020.06.25.20.41.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jun 2020 20:40:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Jun 2020 20:41:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=wiA1w3oH;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=miWWnPz5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33340 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37838 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jofET-0006ZI-Qu
-	for alex.bennee@linaro.org; Thu, 25 Jun 2020 23:40:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42546)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jofF1-0008W4-NZ
+	for alex.bennee@linaro.org; Thu, 25 Jun 2020 23:41:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42354)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jof6I-0000aQ-SX
- for qemu-devel@nongnu.org; Thu, 25 Jun 2020 23:32:26 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:46315)
+ id 1jof69-0000EW-Ux
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2020 23:32:18 -0400
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:36480)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jof6H-0001zQ-7V
- for qemu-devel@nongnu.org; Thu, 25 Jun 2020 23:32:26 -0400
-Received: by mail-pg1-x542.google.com with SMTP id d194so985166pga.13
- for <qemu-devel@nongnu.org>; Thu, 25 Jun 2020 20:32:24 -0700 (PDT)
+ id 1jof66-0001uF-5d
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2020 23:32:17 -0400
+Received: by mail-pj1-x1041.google.com with SMTP id h22so4367944pjf.1
+ for <qemu-arm@nongnu.org>; Thu, 25 Jun 2020 20:32:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=dIqElI8pgPAgNw6hNXIr8iL0uUccdVm5AQSZ4FugxDc=;
- b=wiA1w3oHCKdr/EwT5MwK589bXXIHHaRM1KXHruh7MewTSBfuMLfMsMHAHGJKfhkyQi
- 8RNfVQkJPzX5lST5KqvN+F7U90HBqWQdeQ9cENOPq6nxYitN3aUhAv8iD+KDaNh5LPWM
- rG2eV9LqGdyifaYmmL3Be2fI+IT8UmQ5qbZ5Di68eI4/Ttq7ftLTvIukpMhHUT4r/oKt
- Hfv4qIw6+WivxR1o0GAdcsKNbXLSiCgUhc0FQXX8hrP399w5NAW+Z7NEdRti3DaH8XSp
- pny6GS5Nia0kOqFQA9stXW/RKXaK2DNQI3A6dfXbLnednz06H2/K6K9kVrj+VHMSe24Y
- 5TJQ==
+ bh=HSjBCHwavjNr37NIxaEpavJpEI8ou/nda9kEqEE9VlM=;
+ b=miWWnPz5TKHVh/oD5UPi0M1GOkbPbVTeLTbRbcTS8bgzkBgBZs7w3Sg1qvqA0ZdhyO
+ 7Zp4rEDoATiAm6kLy33kZjmLKYpUdvi4tdJFIf3Lq1o46Y4uGUhSUx+M1SMNjIUOXw0j
+ MA8JsPxyhFAkWWG4Am/Wn0LPvlNrWHna4lZPDNGzu3kkIrF4/cRo9yiDJq7IsMFCsLGl
+ 9BYrZi3Psr4vGiOHK7h7lmbXXr1HVC5IoJ9SVu9KD9WFr0YaMoyYr1eTxhtf/7UR8UDx
+ 8UCkyk4ISQoakvFzDc7/PQa4YhGI2DIG67v4xKqBVDLoohHjfNMgr27yv156yZUMfw6y
+ eFLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=dIqElI8pgPAgNw6hNXIr8iL0uUccdVm5AQSZ4FugxDc=;
- b=ljjWy+Q7JzQZsgv3CDTd14nJHnmqdzVyNIRdiaS8fGGJ5zCMiPKaZ0dEb5X6QncujT
- jJMwV1MHYl2M6gOsHrFxp8twS9PxuOA2S5jRwPPUyMgBWoLQycGerZX02vKo8+vvm1Hm
- Ne3aiypyaQrRauc66fSxHlqohh8cNMluBFjtjcbjprDf4XX5Jn72jfFxKtgyIV0xL835
- SErv8C1nbQfXjGJdK1bA436St2o7UUDxb4160sHoX0q5+oJLrNfnzdR0lttWzouc/MYa
- ZcYVcFFGpWvLOoV4rcy3aqEpbDbIKdDl3rGG9lpieBYwkr3buBPCxFDy8pUvIux+Wp5/
- dkhQ==
-X-Gm-Message-State: AOAM530UsWjVock+91aGhEyjNSrI5p9z5oxgFkKpf6FDNXFWJUqr4/Qe
- QUS9FutRFSSS3FzrhbORgyx2DvYoOI4=
-X-Received: by 2002:a63:6d48:: with SMTP id i69mr930225pgc.354.1593142343557; 
- Thu, 25 Jun 2020 20:32:23 -0700 (PDT)
+ bh=HSjBCHwavjNr37NIxaEpavJpEI8ou/nda9kEqEE9VlM=;
+ b=tvLbAy+K7iVni1R1IyDlsovQAz8bU84Y1ljYafZR1vmTWnLf3q3ojIymCqFoQFoqls
+ 0G9ul+6PnXNr8XZlvcrRP5myXEiTKEQk4HDYAKsvTUESExyoLxruSy//H80BH9BRJlyv
+ yf8gcQ7CshrBSPZiC3Eu0EIdob/BDdex1jkmwPt/8jP728+LyVt4e6FZVIS1+rA+9CuK
+ qOAnTIm7UtpNVnh2kfGXyRHRMqOvQTd5Ip4+Bzja1/uXSXMR/dhYSu3Rfl2VkqlQMYzu
+ CX65fWHnCmFlyWQ5ffIdiULGe2uAk3NR3QrutwsNxfPtKSn8GbjX5W2v6OsTuXn1N4s0
+ ltaw==
+X-Gm-Message-State: AOAM53298PxZMEoNN3jNTH90rRoOy+DeKNDWtjUDo6coEses/na3vwjA
+ xgtMiJNMM2Ztu0cNmfqkoNfjs/RBuZk=
+X-Received: by 2002:a17:90a:a62:: with SMTP id
+ o89mr1093458pjo.188.1593142332856; 
+ Thu, 25 Jun 2020 20:32:12 -0700 (PDT)
 Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
  [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id y27sm1605256pgc.56.2020.06.25.20.32.22
+ by smtp.gmail.com with ESMTPSA id y27sm1605256pgc.56.2020.06.25.20.32.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jun 2020 20:32:22 -0700 (PDT)
+ Thu, 25 Jun 2020 20:32:12 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v9 28/46] target/arm: Use mte_checkN for sve unpredicated loads
-Date: Thu, 25 Jun 2020 20:31:26 -0700
-Message-Id: <20200626033144.790098-29-richard.henderson@linaro.org>
+Subject: [PATCH v9 20/46] target/arm: Implement the access tag cache flushes
+Date: Thu, 25 Jun 2020 20:31:18 -0700
+Message-Id: <20200626033144.790098-21-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200626033144.790098-1-richard.henderson@linaro.org>
 References: <20200626033144.790098-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x542.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1041;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1041.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -107,150 +108,125 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, david.spickett@linaro.org,
  steplong@quicinc.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7A2/JhBW4ewD
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RJVJ9sM+rTE5
+
+Like the regular data cache flushes, these are nops within qemu.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v8: Drop the out-of-line helper (pmm).
+v6: Split out and handle el0 cache ops properly.
 ---
- target/arm/translate-sve.c | 61 +++++++++++++++++++++-----------------
- 1 file changed, 33 insertions(+), 28 deletions(-)
+ target/arm/helper.c | 65 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 65 insertions(+)
 
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index ac7b3119e5..11e0dfc210 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -4342,71 +4342,76 @@ static void do_ldr(DisasContext *s, uint32_t vofs, int len, int rn, int imm)
-     int len_remain = len % 8;
-     int nparts = len / 8 + ctpop8(len_remain);
-     int midx = get_mem_index(s);
--    TCGv_i64 addr, t0, t1;
-+    TCGv_i64 dirty_addr, clean_addr, t0, t1;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 2c6ec244af..d8c31d03da 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6929,6 +6929,32 @@ static const ARMCPRegInfo mte_reginfo[] = {
+       .opc0 = 3, .opc1 = 3, .crn = 4, .crm = 2, .opc2 = 7,
+       .type = ARM_CP_NO_RAW,
+       .access = PL0_RW, .readfn = tco_read, .writefn = tco_write },
++    { .name = "DC_IGVAC", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 3,
++      .type = ARM_CP_NOP, .access = PL1_W,
++      .accessfn = aa64_cacheop_poc_access },
++    { .name = "DC_IGSW", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 4,
++      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
++    { .name = "DC_IGDVAC", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 5,
++      .type = ARM_CP_NOP, .access = PL1_W,
++      .accessfn = aa64_cacheop_poc_access },
++    { .name = "DC_IGDSW", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 6, .opc2 = 6,
++      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
++    { .name = "DC_CGSW", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 10, .opc2 = 4,
++      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
++    { .name = "DC_CGDSW", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 10, .opc2 = 6,
++      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
++    { .name = "DC_CIGSW", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 4,
++      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
++    { .name = "DC_CIGDSW", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 14, .opc2 = 6,
++      .type = ARM_CP_NOP, .access = PL1_W, .accessfn = access_tsw },
+     REGINFO_SENTINEL
+ };
  
--    addr = tcg_temp_new_i64();
--    t0 = tcg_temp_new_i64();
-+    dirty_addr = tcg_temp_new_i64();
-+    tcg_gen_addi_i64(dirty_addr, cpu_reg_sp(s, rn), imm);
-+    clean_addr = gen_mte_checkN(s, dirty_addr, false, rn != 31, len, MO_8);
-+    tcg_temp_free_i64(dirty_addr);
- 
--    /* Note that unpredicated load/store of vector/predicate registers
-+    /*
-+     * Note that unpredicated load/store of vector/predicate registers
-      * are defined as a stream of bytes, which equates to little-endian
--     * operations on larger quantities.  There is no nice way to force
--     * a little-endian load for aarch64_be-linux-user out of line.
--     *
-+     * operations on larger quantities.
-      * Attempt to keep code expansion to a minimum by limiting the
-      * amount of unrolling done.
-      */
-     if (nparts <= 4) {
-         int i;
- 
-+        t0 = tcg_temp_new_i64();
-         for (i = 0; i < len_align; i += 8) {
--            tcg_gen_addi_i64(addr, cpu_reg_sp(s, rn), imm + i);
--            tcg_gen_qemu_ld_i64(t0, addr, midx, MO_LEQ);
-+            tcg_gen_qemu_ld_i64(t0, clean_addr, midx, MO_LEQ);
-             tcg_gen_st_i64(t0, cpu_env, vofs + i);
-+            tcg_gen_addi_i64(clean_addr, cpu_reg_sp(s, rn), 8);
-         }
-+        tcg_temp_free_i64(t0);
-     } else {
-         TCGLabel *loop = gen_new_label();
-         TCGv_ptr tp, i = tcg_const_local_ptr(0);
- 
-+        /* Copy the clean address into a local temp, live across the loop. */
-+        t0 = clean_addr;
-+        clean_addr = tcg_temp_local_new_i64();
-+        tcg_gen_mov_i64(clean_addr, t0);
-+        tcg_temp_free_i64(t0);
+@@ -6938,6 +6964,43 @@ static const ARMCPRegInfo mte_tco_ro_reginfo[] = {
+       .type = ARM_CP_CONST, .access = PL0_RW, },
+     REGINFO_SENTINEL
+ };
 +
-         gen_set_label(loop);
- 
--        /* Minimize the number of local temps that must be re-read from
--         * the stack each iteration.  Instead, re-compute values other
--         * than the loop counter.
--         */
-+        t0 = tcg_temp_new_i64();
-+        tcg_gen_qemu_ld_i64(t0, clean_addr, midx, MO_LEQ);
-+        tcg_gen_addi_i64(clean_addr, clean_addr, 8);
++static const ARMCPRegInfo mte_el0_cacheop_reginfo[] = {
++    { .name = "DC_CGVAC", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 10, .opc2 = 3,
++      .type = ARM_CP_NOP, .access = PL0_W,
++      .accessfn = aa64_cacheop_poc_access },
++    { .name = "DC_CGDVAC", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 10, .opc2 = 5,
++      .type = ARM_CP_NOP, .access = PL0_W,
++      .accessfn = aa64_cacheop_poc_access },
++    { .name = "DC_CGVAP", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 12, .opc2 = 3,
++      .type = ARM_CP_NOP, .access = PL0_W,
++      .accessfn = aa64_cacheop_poc_access },
++    { .name = "DC_CGDVAP", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 12, .opc2 = 5,
++      .type = ARM_CP_NOP, .access = PL0_W,
++      .accessfn = aa64_cacheop_poc_access },
++    { .name = "DC_CGVADP", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 13, .opc2 = 3,
++      .type = ARM_CP_NOP, .access = PL0_W,
++      .accessfn = aa64_cacheop_poc_access },
++    { .name = "DC_CGDVADP", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 13, .opc2 = 5,
++      .type = ARM_CP_NOP, .access = PL0_W,
++      .accessfn = aa64_cacheop_poc_access },
++    { .name = "DC_CIGVAC", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 14, .opc2 = 3,
++      .type = ARM_CP_NOP, .access = PL0_W,
++      .accessfn = aa64_cacheop_poc_access },
++    { .name = "DC_CIGDVAC", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 14, .opc2 = 5,
++      .type = ARM_CP_NOP, .access = PL0_W,
++      .accessfn = aa64_cacheop_poc_access },
++    REGINFO_SENTINEL
++};
 +
-         tp = tcg_temp_new_ptr();
--        tcg_gen_addi_ptr(tp, i, imm);
--        tcg_gen_extu_ptr_i64(addr, tp);
--        tcg_gen_add_i64(addr, addr, cpu_reg_sp(s, rn));
--
--        tcg_gen_qemu_ld_i64(t0, addr, midx, MO_LEQ);
--
-         tcg_gen_add_ptr(tp, cpu_env, i);
-         tcg_gen_addi_ptr(i, i, 8);
-         tcg_gen_st_i64(t0, tp, vofs);
-         tcg_temp_free_ptr(tp);
-+        tcg_temp_free_i64(t0);
+ #endif
  
-         tcg_gen_brcondi_ptr(TCG_COND_LTU, i, len_align, loop);
-         tcg_temp_free_ptr(i);
-     }
- 
--    /* Predicate register loads can be any multiple of 2.
-+    /*
-+     * Predicate register loads can be any multiple of 2.
-      * Note that we still store the entire 64-bit unit into cpu_env.
+ static CPAccessResult access_predinv(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -8071,8 +8134,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
       */
-     if (len_remain) {
--        tcg_gen_addi_i64(addr, cpu_reg_sp(s, rn), imm + len_align);
--
-+        t0 = tcg_temp_new_i64();
-         switch (len_remain) {
-         case 2:
-         case 4:
-         case 8:
--            tcg_gen_qemu_ld_i64(t0, addr, midx, MO_LE | ctz32(len_remain));
-+            tcg_gen_qemu_ld_i64(t0, clean_addr, midx,
-+                                MO_LE | ctz32(len_remain));
-             break;
- 
-         case 6:
-             t1 = tcg_temp_new_i64();
--            tcg_gen_qemu_ld_i64(t0, addr, midx, MO_LEUL);
--            tcg_gen_addi_i64(addr, addr, 4);
--            tcg_gen_qemu_ld_i64(t1, addr, midx, MO_LEUW);
-+            tcg_gen_qemu_ld_i64(t0, clean_addr, midx, MO_LEUL);
-+            tcg_gen_addi_i64(clean_addr, clean_addr, 4);
-+            tcg_gen_qemu_ld_i64(t1, clean_addr, midx, MO_LEUW);
-             tcg_gen_deposit_i64(t0, t0, t1, 32, 32);
-             tcg_temp_free_i64(t1);
-             break;
-@@ -4415,9 +4420,9 @@ static void do_ldr(DisasContext *s, uint32_t vofs, int len, int rn, int imm)
-             g_assert_not_reached();
-         }
-         tcg_gen_st_i64(t0, cpu_env, vofs + len_align);
-+        tcg_temp_free_i64(t0);
+     if (cpu_isar_feature(aa64_mte, cpu)) {
+         define_arm_cp_regs(cpu, mte_reginfo);
++        define_arm_cp_regs(cpu, mte_el0_cacheop_reginfo);
+     } else if (cpu_isar_feature(aa64_mte_insn_reg, cpu)) {
+         define_arm_cp_regs(cpu, mte_tco_ro_reginfo);
++        define_arm_cp_regs(cpu, mte_el0_cacheop_reginfo);
      }
--    tcg_temp_free_i64(addr);
--    tcg_temp_free_i64(t0);
-+    tcg_temp_free_i64(clean_addr);
- }
+ #endif
  
- /* Similarly for stores.  */
 -- 
 2.25.1
 

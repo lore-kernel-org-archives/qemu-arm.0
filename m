@@ -1,84 +1,85 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp774539lfm;
-        Fri, 26 Jun 2020 13:13:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzWVsGDQClVIuGuUfuuCha1+gi+C2mnTjgShFP3cJ7N4IS8p/Wtck1vYQwh7gLiAxt05cp0
-X-Received: by 2002:a25:7450:: with SMTP id p77mr7105469ybc.155.1593202393455;
-        Fri, 26 Jun 2020 13:13:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593202393; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp775741lfm;
+        Fri, 26 Jun 2020 13:14:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzJb5fZQWXnSYY9pxr6JYmwom98JaJffH8P5XkMeYP9ZNE0fJNd3XLNoTLmlKLd1Wu4DCg4
+X-Received: by 2002:a25:c052:: with SMTP id c79mr7783020ybf.23.1593202483682;
+        Fri, 26 Jun 2020 13:14:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593202483; cv=none;
         d=google.com; s=arc-20160816;
-        b=VQHG58eIx2q0JcGMA61WczaESQiE6Gfzt/aMzWtNZ/CezbJI+2uI2ZZJ2BM3qNKK3X
-         VqHllgQY80qi69uW41eB0FEgQ7gi93srL9aZI8UIf5DQHV66A8DaCWfBYUUmOBJI86Dr
-         IwcOzQSIOxkKRfxTmpQd+f6Wlww7rLBs/AW3XkqDgZ2JNpzNqe7gL3tGfSeddKH8An3T
-         6hdhSC91izwmd48AaSN/lEY/dPAfrdEghqdCNr/VRhk5iISvQ+7vKYvFuq6LJfb5WN8G
-         pvGhHUVMacOK0rF15xHePcix0XvmmnAfMpawyJUcF5pRirhHtY0XOAKGhqmGi0IH3zs8
-         dvyw==
+        b=i2uMIFs9wH6inrvSagE+8ykwY2aZSDDazw0VChYcNaW3H+EATfeaKfv+3DQ0WpdHv6
+         hxLOvRGTWFoc2UJMlpt5vYnzOU9qZFr0LFtBr1eD4QwiUx6Z/QrNoeZYcrVqH84K6VKe
+         KKok+WIOFr3S6TKt26R0Q34htGGOQMdYvsE8lc6gR+9HM+ON17O20yG0wrTFo/ZhWnat
+         31TXKpZB5untN8ESj1dMEai+eEE4xF/v61RZt/8bUKmSr9opEGBG+XoyYv6+0gAsEaNT
+         RI7tUUygl1FcZBOkjwotOR7mjUqyhppvv73M8Dr6Crbdc8VsIzynXREM+Dyy4oBgWibz
+         kC8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
          :message-id:date:references:in-reply-to:subject:cc:to:dkim-signature;
-        bh=oYtEsauZuorfVnhgAC4L9NLhapb/Gm12K/+8bw+hy20=;
-        b=ofSmB3xkCCPNYv3eRaanwNrHGRnlzpuOvAa74iBpHD4+TSp9BllwDfofKo6i39d9gm
-         2YiUD8dug7xJIe7kJw20iPPJbv5UgON2IKV+r5ge8G4Eg/6x6oCiCO8SUw4dnoGU4+MN
-         GYfMU7Hj5II7OKhB9Ys2vkvcNAmEXLn1v97hMeKB4b0jWOOt44dCKGsWSULawmBsnCMv
-         r6N2t7wXPb83TNXxCyslheBQWmbeJMh7qcdx+LHUNilzbnDkDfTYP9cXZPhQKV29iZby
-         AprIKqQEBi2M6dbdql2RC9GNRtdQ/AB40HoWIFvtk6RjwBHUwQe5F+Gzx13BainhRa2b
-         hqoA==
+        bh=msWDRdQRNxC30MFl3LwnTsr1ZyE7PDGQXo/A0w72/14=;
+        b=o3iNgDLlw2bwAleoEjru1XHO+hKa5L2l+PokpQRnJ+cqMko7EO8G9a32XJxP+xHA7M
+         sKA2nl2xnmeUQ/vM3LMHhrqJcJfPNWuY96W8pEsqL6D12MHC7m5j9Ggb4ZRPt+/Yyjli
+         JwlW7brohqDqyBx96OYnhn/00ckebmb/mDpNOuaS1GVXPhkewHtzA+tHuP2uoP/xxVUM
+         HOZw0lpQfhzUHUrhTpPklEYLnzdhymgjwZVJOIY0VER1HWesZ8S6y9HzApbpQd0QlT0t
+         yDRnDYVMQAFGIBcqj/Oo6Y9fAiPTItq9plaTVNA0yOMew5U5TtZ8iNyFYIKttnQ2wk2+
+         XbHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@keithp.com header.s=mail header.b=ReEC9Gqg;
+       dkim=fail header.i=@keithp.com header.s=mail header.b=Z5FcMgF6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w15si35962237ybt.55.2020.06.26.13.13.13
+        by mx.google.com with ESMTPS id 145si17998933ybf.80.2020.06.26.13.14.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jun 2020 13:13:13 -0700 (PDT)
+        Fri, 26 Jun 2020 13:14:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@keithp.com header.s=mail header.b=ReEC9Gqg;
+       dkim=fail header.i=@keithp.com header.s=mail header.b=Z5FcMgF6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51088 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53528 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jouim-0007uA-SP
-	for alex.bennee@linaro.org; Fri, 26 Jun 2020 16:13:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55334)
+	id 1joukF-0000TX-1f
+	for alex.bennee@linaro.org; Fri, 26 Jun 2020 16:14:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55646)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <keithp@keithp.com>)
- id 1jouib-0007tj-T3; Fri, 26 Jun 2020 16:13:02 -0400
-Received: from home.keithp.com ([63.227.221.253]:46114 helo=elaine.keithp.com)
+ id 1jouk7-0000TL-5F; Fri, 26 Jun 2020 16:14:35 -0400
+Received: from home.keithp.com ([63.227.221.253]:46130 helo=elaine.keithp.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <keithp@keithp.com>)
- id 1jouiX-000581-EO; Fri, 26 Jun 2020 16:13:01 -0400
+ id 1jouk5-0005TO-Me; Fri, 26 Jun 2020 16:14:34 -0400
 Received: from localhost (localhost [127.0.0.1])
- by elaine.keithp.com (Postfix) with ESMTP id 2AF9E3F2CB96;
- Fri, 26 Jun 2020 13:12:53 -0700 (PDT)
+ by elaine.keithp.com (Postfix) with ESMTP id AD1023F2CB96;
+ Fri, 26 Jun 2020 13:14:31 -0700 (PDT)
 X-Virus-Scanned: Debian amavisd-new at keithp.com
 Received: from elaine.keithp.com ([127.0.0.1])
  by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
- with LMTP id Q-I34M2iVTzj; Fri, 26 Jun 2020 13:12:52 -0700 (PDT)
+ with LMTP id BkigoMvGP13E; Fri, 26 Jun 2020 13:14:31 -0700 (PDT)
 Received: from keithp.com (168-103-152-72.tukw.qwest.net [168.103.152.72])
- by elaine.keithp.com (Postfix) with ESMTPSA id B593D3F2CA82;
- Fri, 26 Jun 2020 13:12:52 -0700 (PDT)
+ by elaine.keithp.com (Postfix) with ESMTPSA id 569373F2CA82;
+ Fri, 26 Jun 2020 13:14:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
- t=1593202372; bh=oYtEsauZuorfVnhgAC4L9NLhapb/Gm12K/+8bw+hy20=;
+ t=1593202471; bh=msWDRdQRNxC30MFl3LwnTsr1ZyE7PDGQXo/A0w72/14=;
  h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
- b=ReEC9GqgRxiOiahQIoQGkcLdKjTCMBw3zvUsTHacAKZ3WWwU47KPF+86SZOIQu1Cj
- vr2YGBAlK8vdF8zwybgBK4I5lKUhJGXOyMbKlWB5Fvk4HZnEhuWQyRlsKhhEXGggkv
- Vlfa1fMBfYMUu+ERRIiwwruPhyti2gYIL4i85vTfEqrh4/Pi5vTdM4/F6rxD7LhEzE
- 4tD9GqibFgFVIeBaoqcfJpcFFYbp6zj20JK+D1gP/JaO2EfFNff/m7jhcPAvchgDQb
- McpmDsVzmdzEBdYOJdTw1JcDBprCJiRQH6EBx5VJ+v4Vxt+XITcNX7OqrimsjKRPX8
- 9CCopwn1uXVmg==
+ b=Z5FcMgF6n+uG4v4yqhQogyuyKXfN63xj99pp4NCbpDHTrMDrDndbT4XPCiOlHHLtY
+ X3LExSWhUw5hfpytQTek30eKJGT1UmHAb1E/WWP5DrkTc30hDzhxo5Ey16PhAQ65y9
+ autN/xNXgX5PcCqhd0qN4zJnG7gm+O+mbG0QVnBqlvX25dgpRcfkyexgfh0TQQErjZ
+ vDaaBrP9eNtXjIYfCPbrv+X+zkvNj0hFZ3agzt7IFif580ltBWvpqSzJf/VU+CG1Y3
+ u7wWjhdU98M4cOYTLVGh3n9lPlhDJ76CRk/M+yqxqbVq/das4fK3WpARFm9vS+Ym/t
+ 1rd5ZbSpHlC+w==
 Received: by keithp.com (Postfix, from userid 1000)
- id 1D5FC1582167; Fri, 26 Jun 2020 13:12:47 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+ id CEAB61582167; Fri, 26 Jun 2020 13:14:30 -0700 (PDT)
+To: Max Filippov <jcmvbkbc@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Subject: Re: [PATCH] hw/arm: Add 'virtm' hardware
-In-Reply-To: <CAFEAcA_ZRMpqAhR7BL05a+O_C54fhXZn8-+kC_KUU5n3BpzoCw@mail.gmail.com>
+In-Reply-To: <CAMo8Bf+57b=u12nMp4EWaza3WdOQpx_L_O=HvdouM99wW-Xe=A@mail.gmail.com>
 References: <20200625230740.549114-1-keithp@keithp.com>
  <CAFEAcA9ut5CVAgRTP-_BK3WpiDSmitFowZMe549TvgSAjj+Kfg@mail.gmail.com>
  <87imfdixv9.fsf@keithp.com>
  <CAFEAcA_ZRMpqAhR7BL05a+O_C54fhXZn8-+kC_KUU5n3BpzoCw@mail.gmail.com>
-Date: Fri, 26 Jun 2020 13:12:46 -0700
-Message-ID: <87a70pio1t.fsf@keithp.com>
+ <CAMo8Bf+57b=u12nMp4EWaza3WdOQpx_L_O=HvdouM99wW-Xe=A@mail.gmail.com>
+Date: Fri, 26 Jun 2020 13:14:30 -0700
+Message-ID: <877dvtinyx.fsf@keithp.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; boundary="=-=-=";
  micalg=pgp-sha256; protocol="application/pgp-signature"
@@ -108,72 +109,20 @@ Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to: "Keith Packard" <keithp@keithp.com>
 From: "Keith Packard" via <qemu-arm@nongnu.org>
-X-TUID: XbIFtxVW8+xi
+X-TUID: BmHHZPHvkW98
 
 --=-=-=
 Content-Type: text/plain
 Content-Transfer-Encoding: quoted-printable
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Max Filippov <jcmvbkbc@gmail.com> writes:
 
-> You might find the user-mode qemu-arm sufficient for that
-> kind of thing. I know some gcc tests run that way. You
-> get a processor, semihosting, and whatever memory your
-> ELF file's data segment says you have (plus anything
-> you care to mmap()).
+> Most of them are due to unsupported/differently implemented
+> syscalls.
 
-Thanks for the pointer; I've spent a bit of time checking out whether
-that might work, and it looks like I could get some testing done there,
-but I couldn't get the chip startup code tested (things like enabling
-the FPU, setting up the stack, data and bss segments).
-
-I had always assumed that qemu-arm was designed to run user-mode Linux
-applications on top of another Linux system (given that it's called
-'arm-linux-user' in the qemu configuration code). That's why I hadn't
-even tried using it for this work.
-
-> Sure, but "machine-that-works-for-keith-packard" isn't really
-> a very clearly-defined concept :-)
-
-It seems well defined to me at least? An ARM core plus memory. That's
-sufficient to run tests with semihosting to validate compilers,
-libraries and the like. It would also serve as a model for people
-developing new QEMU boards to start from; here's a processor and memory,
-now you add peripherals and you've got a complete system.
-
-This is all in service of a pretty easily explained goal -- a free
-software C library designed for embedded systems that gets tested on the
-target processors.
-
-With QEMU, I'm able to incorporate all of the code necessary right in
-the library to execute tests on simulated hardware that starts from the
-reset vector. That same code can run on native hardware, allowing
-developers to get past the usual embedded development startup hurdle of
-creating a linker script, writing NVIC interrupt vector table and
-initializing RAM.
-
-I'd like to make the memory parameters configurable so that a developer
-could set qemu to match their particular SoC. Then they'd be able to run
-their application under QEMU and at least ensure that it gets to main()
-before flashing it on the target hardware.
-
-> I think that trying to weld M-profile into the A-profile virt
-> board is likely to be more confusing than having a separate board.
-> But I remain unhappy about defining a virtual board at all
-> if I can avoid it.
-
-Ok, that was my thinking for doing this as a separate board; the
-existing virt board seems complex enough without attempting to wedge
-something very different into it.
-
-I'll experiment with the arm-linux-user mode of QEMU a bit more to see
-how much testing that would enable; it should at least allow testing of
-the libc and libm functions, although not the crt0 implementation and
-sample linker scripts.
-
-I'd love help in creating a better definition of what the 'virtm' board
-should be, and figure out a way to explain it so that you appreciate the
-value it brings to the ARM ecosystem.
+Yeah, I think that was the basis of my confusion -- qemu-arm is not a
+bare metal environment, and my work is focused on enabling application
+development in that environment.
 
 =2D-=20
 =2Dkeith
@@ -183,18 +132,18 @@ Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl72Vr4ACgkQ2yIaaQAA
-ABEiGBAAq6FY6vbywXCZbiXJRhkvv0zCSYngGFKXK5DsJ4YtioppPMllypv6o97q
-GZnMDU0WUcX8m/TIU9ikZL/zh8xqUIOtkzDKUQqADk23+uCFH2CAVYNyGHgg+vMO
-gQa2lf4TYjgv2gvPIB2nrV36akvHcGucNpfgf2wBsoIdacjtKtiGCo6/PF2pTp8F
-IEftpv9OzPsKBqugJLNzmLhNYsiEOs5fiku59ERgBMB+tk5bJJghtFzA2Gqd533i
-UJXqh4xAYZsuY97ENTG2EZ21xqIbeZLU0Ff1V6f9jWctxQYGFnq1w5G1KxYcH1J6
-LuGqDZlCUwrLSXQAa+GUjaNgVMoJ7TN2qD3oXwE2GI7ksyED+JjOR3w8dedZYJWr
-CRkDG5w6cE1ExDA+JnvtDKoD8ff071HIg3RevpU5iink0tztedAAqc+gkN8A8g11
-1bMk/m/YO/x3x6nVM8qdfyDvzgFdchqvt2TDkzJQ3G1zsNvCnl7kykZW8hnw+F7s
-7xRtXpN+7KD6bcdc3XrR470sN/0E2sSDLlQwLkCjEFu/ncYZ04rIPbqGvUCGrokI
-Q8hGTJuefiGwuQ2znAbHRiTJ8CT+NhamKu11z1jmGINp42eg7QCumx4pMlhmdbk2
-0A0ocbwBwr+6v28T3oT9QDxDIhiA3ysKYZITrIIexjGgqQ0oczQ=
-=c4U7
+iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl72VyYACgkQ2yIaaQAA
+ABEXpw/+ME0hsqDba1gmQY54wODhKE5wQn6I1AkSPsNmDN0rJ6sxM3EdesLlQOEh
+qLWQzBD9cSbcbkZrk8s9/jxjkrSnjbq+lPObGOrLTLbSgr9+AAerrozOrjDq4sKm
+W3DzWgFPxhj55IdSLrJhfLh2kgYPGLh+3cbhcfMaCDTULm2PD/KzfcL+6k8YAP+3
+DV7KFFKKbAzGAplZFVpifIpES6I0aCUkdcYypHlN2gPy7Ifh26du3DiEE4FdwGHe
+cunoK4rvlPHCiAyJusnetMb+OWzOx7utSSiUvB6naVHj4fBqaX46sZih6i8cGt5Y
+ONx7Pq2vwdVzd3I9yCRhIZmkG9wUvDapSl48kx7ZkNQPX5oQ903U9GUzeO5dR3QB
+8cZ6gurgIW59JMBhehpRDeljW+PMeBW/YFv2vWNvKNzcf0RQwzslPjXLG3Tm/Prd
+4xxPy8hYk4CZew5ssyKM87eNnxkA1eoVomR/IIiBWmZVvOuLDj2oF+ZqKYmx9Zjc
+/dtT7WttVUYkeF50V5Cy+GeeYbh66CA3LLUQVepmaDIGjw1DASQcOV2ZE0msXpiS
+kFI3OwCZf6JTachLNl0xAiLb10S00Rxf7WywdGkh7yc0TosxZc2GsTBdfqYeErAV
+YsFO1bOjiywNl7vJ8xrw8th8JACk5+xbXnCBRAcxaU6Jtv0F9XE=
+=3Bbs
 -----END PGP SIGNATURE-----
 --=-=-=--

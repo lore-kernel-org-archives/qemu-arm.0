@@ -1,112 +1,69 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp63270lfm;
-        Thu, 25 Jun 2020 21:02:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzqM9VpSE0H9wkBfg1uUSd8q1FJvMSSeXPk4wddWK16kFDoIkqc/rdplg4R7FHi2/wUf1Q9
-X-Received: by 2002:a05:6902:6cd:: with SMTP id m13mr1825773ybt.29.1593144150081;
-        Thu, 25 Jun 2020 21:02:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593144150; cv=none;
-        d=google.com; s=arc-20160816;
-        b=oyenZisy0moEcrFlZr5NkitA6rm0CGClM9cpz2+ErywJUkF6j/x6OEcrUkIORmokSZ
-         cbulbUyPjuJnOmaaxsgNgoBe4hYUStlLnajS9iHHMxVu6Uo5fZPxEXllJW8euJ/lX4B3
-         /9cdB2wBgUEawJu5uwR8LoL2jsZGE5/8tcAN2eiIPhVOKxb+rJcbXhm9L/h0IZRTZgS0
-         w0yxbVUhBVuGuwqPIgewceY+yVPe8+fJ3RmF+p6yv+G3zU9VJhfUngytH1foUXE41bDa
-         Oa58by9t6hqmZIlDQHL6rEnrtbk5+99+pC4FNTN8wNp7XAtSDmfzFYuHj7pWAhWemGEE
-         ORfQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=UjqghZMppldJJQFCz4puY4NIT8Id2WOfJG93PywKQl8=;
-        b=IIC187lAIigqB6Iuvtdo7ffrf2gW+24UAgAvlTFzLk759/0EWb+Lu6da2iNBpy3kjf
-         pDD792wgAm20duRrXZmULPaQqXEAemZ3gIqHL0vnhKwC2AXwzIe7TXfA2fks40PneaZh
-         Ve6k6/WhmwXY4x/hz7TKu7phuFVRNaBuOqlhQXSlpLTh5m6ewmZnSZjsWowmyZN+MOFN
-         QAWqFM6aKUzQZiq2QQHG1P0PI5PuF6khBPFtrxmZbPuJ9CKBq04jQeAOoOTg97GeDq6+
-         WyzVhYa20JEYEfnTbO7u+l04PzHdBpU2D5Q8TX88/7YLE5aIrrqiNB6EaK0icjENjzMi
-         Rqwg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=oJQGPQmi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp100306lfm;
+        Thu, 25 Jun 2020 22:07:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz0GGvEia5e6z/xDfW+bNUgUeN/sSL2AaZ2Zjp0yciVz/1Yuilfk+XaP5lR/q7lKEe9lwtb
+X-Received: by 2002:a25:d416:: with SMTP id m22mr2049340ybf.53.1593148055891;
+        Thu, 25 Jun 2020 22:07:35 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h2si27421165ybj.207.2020.06.25.21.02.29
+        by mx.google.com with ESMTPS id o2si22719101ybq.107.2020.06.25.22.07.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jun 2020 21:02:30 -0700 (PDT)
+        Thu, 25 Jun 2020 22:07:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=oJQGPQmi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59790 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47068 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jofZN-0006pC-GU
-	for alex.bennee@linaro.org; Fri, 26 Jun 2020 00:02:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43020)
+	id 1jogaN-0000yO-9O
+	for alex.bennee@linaro.org; Fri, 26 Jun 2020 01:07:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32984)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jof6e-0001Vb-LC
- for qemu-arm@nongnu.org; Thu, 25 Jun 2020 23:32:48 -0400
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:44798)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jof6c-00028g-KM
- for qemu-arm@nongnu.org; Thu, 25 Jun 2020 23:32:48 -0400
-Received: by mail-pg1-x541.google.com with SMTP id r18so4349399pgk.11
- for <qemu-arm@nongnu.org>; Thu, 25 Jun 2020 20:32:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=UjqghZMppldJJQFCz4puY4NIT8Id2WOfJG93PywKQl8=;
- b=oJQGPQmitKNtnEQOFZ7B040mdDpGJ4Li5laWEnkKtf4RvSCQFyKw0/0WtYXvQ+tEWj
- WL15tT6BTSX2t0WQrhuDua1AoJaFnP1G/EwcMaFeqZ0tOxjSsHjBMtvVoudjjhVBVzuE
- dJK8onjFX64H1rs9laiu29nKXDqi7eWGy10kQh0Hq6aly7cl6dkEChZjOe38xPST5v7f
- vx5A4xkrxN+6JPVGh2DAcBALWxV96xIpS7NaumWhe4HjaVoyPNRTRwdRLSxHU6mbgloK
- 0NZfMHGumE5oOKMUfGymHUoqr4VvK5jr7w0f1ny7bfE7tYis6I4XnJhq6oarJuFQm3t4
- krSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=UjqghZMppldJJQFCz4puY4NIT8Id2WOfJG93PywKQl8=;
- b=Bvj+LSC8vWUnSz1apE0bbkZOCw7IpQ8IczmP7A/nVFq6/RQcEDROQ7a3pMiVQapEzO
- j39LcBHFGNNAaLBn/+XDvSg6XrqHkK19pe2Kef7bui0VDNVZ60T4trT8ZK+PMCDLoWQe
- f5nl1DNBT80XXuLxBdmMpWiJ9yO1s3xvdckNTFe6iniVolI4y6XJFU0muiv0lU596HEU
- VTihNcI0fhameni5O4vd/j8SGAYC5mrnmLM5TSGCDE2l9RXFtxu846wfzQFD85/zm9pL
- Sgfzg6dqCUcxG5FoZkk6KFxbSWByw7Xz3EwMBa/nOjm5e5s3X05DMAXjud/P2VbZw0lv
- 4HZA==
-X-Gm-Message-State: AOAM532mTAsdr6U7eVVWVfoWmeNkOx+ozqOxw+08mV1L9sN3VeoZj1GW
- 7DlsnPInvmj1W8Ta2FJLecDmWQ==
-X-Received: by 2002:a63:cf03:: with SMTP id j3mr947773pgg.24.1593142365268;
- Thu, 25 Jun 2020 20:32:45 -0700 (PDT)
-Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
- [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id y27sm1605256pgc.56.2020.06.25.20.32.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jun 2020 20:32:44 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v9 44/46] target/arm: Add allocation tag storage for system
- mode
-Date: Thu, 25 Jun 2020 20:31:42 -0700
-Message-Id: <20200626033144.790098-45-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jogaG-0000yC-66; Fri, 26 Jun 2020 01:07:28 -0400
+Resent-Date: Fri, 26 Jun 2020 01:07:28 -0400
+Resent-Message-Id: <E1jogaG-0000yC-66@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21756)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jogaC-0004ik-QD; Fri, 26 Jun 2020 01:07:27 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1593148030; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=GSZvYIO3yc/PKmi8CwOgYJ21MvGt80LHnMgUZ9XiMJuKwNWA6oGMEiAppZPqXDjo8tORglFMJXgwAsW43b2R8vuIu6+7MBkWXTS0cNmTPQNjfOttkabkpcn/egbifFGTKJwgwvSOgqboeZnohWRn97gd0NlVZMxOh+K6IZ0QcbE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1593148030;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=DK/6nPKVj0susuLfy5VBL0lpi0rTMcQw5YvSOvjO9gc=; 
+ b=nQTMRWkKo5mTIW/B2yyQl+1zTqWDR+G8BTil2u9Uh5p+uuw1xrr8uLp1zochfGAzQ32nODIIQw6+kW0oIIWxD9bHmgYJnMIdDTUzEzKpG1siJNhbMW6BwYhOYoohNUYFM3PJkXvCxFRVyYbF3v0N6sHySjXIKL+sB4vHOE/KbrQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1593148029216495.4778339918846;
+ Thu, 25 Jun 2020 22:07:09 -0700 (PDT)
+Message-ID: <159314802798.25974.16186524032767450252@d1fd068a5071>
+Subject: Re: [PATCH v9 00/46] target/arm: Implement ARMv8.5-MemTag, system mode
 In-Reply-To: <20200626033144.790098-1-richard.henderson@linaro.org>
-References: <20200626033144.790098-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::541;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x541.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: richard.henderson@linaro.org
+Date: Thu, 25 Jun 2020 22:07:09 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 00:50:26
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,172 +76,154 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, david.spickett@linaro.org,
- steplong@quicinc.com
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, steplong@quicinc.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, david.spickett@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tqbk/VcZYSAO
+X-TUID: xIzMziezpHrs
 
-Look up the physical address for the given virtual address,
-convert that to a tag physical address, and finally return
-the host address that backs it.
-
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/mte_helper.c | 131 ++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 131 insertions(+)
-
-diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-index 4f9bd3add3..5ea57d487a 100644
---- a/target/arm/mte_helper.c
-+++ b/target/arm/mte_helper.c
-@@ -21,6 +21,7 @@
- #include "cpu.h"
- #include "internals.h"
- #include "exec/exec-all.h"
-+#include "exec/ram_addr.h"
- #include "exec/cpu_ldst.h"
- #include "exec/helper-proto.h"
- 
-@@ -74,8 +75,138 @@ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-                                    int ptr_size, MMUAccessType tag_access,
-                                    int tag_size, uintptr_t ra)
- {
-+#ifdef CONFIG_USER_ONLY
-     /* Tag storage not implemented.  */
-     return NULL;
-+#else
-+    uintptr_t index;
-+    CPUIOTLBEntry *iotlbentry;
-+    int in_page, flags;
-+    ram_addr_t ptr_ra;
-+    hwaddr ptr_paddr, tag_paddr, xlat;
-+    MemoryRegion *mr;
-+    ARMASIdx tag_asi;
-+    AddressSpace *tag_as;
-+    void *host;
-+
-+    /*
-+     * Probe the first byte of the virtual address.  This raises an
-+     * exception for inaccessible pages, and resolves the virtual address
-+     * into the softmmu tlb.
-+     *
-+     * When RA == 0, this is for mte_probe1.  The page is expected to be
-+     * valid.  Indicate to probe_access_flags no-fault, then assert that
-+     * we received a valid page.
-+     */
-+    flags = probe_access_flags(env, ptr, ptr_access, ptr_mmu_idx,
-+                               ra == 0, &host, ra);
-+    assert(!(flags & TLB_INVALID_MASK));
-+
-+    /*
-+     * Find the iotlbentry for ptr.  This *must* be present in the TLB
-+     * because we just found the mapping.
-+     * TODO: Perhaps there should be a cputlb helper that returns a
-+     * matching tlb entry + iotlb entry.
-+     */
-+    index = tlb_index(env, ptr_mmu_idx, ptr);
-+# ifdef CONFIG_DEBUG_TCG
-+    {
-+        CPUTLBEntry *entry = tlb_entry(env, ptr_mmu_idx, ptr);
-+        target_ulong comparator = (ptr_access == MMU_DATA_LOAD
-+                                   ? entry->addr_read
-+                                   : tlb_addr_write(entry));
-+        g_assert(tlb_hit(comparator, ptr));
-+    }
-+# endif
-+    iotlbentry = &env_tlb(env)->d[ptr_mmu_idx].iotlb[index];
-+
-+    /* If the virtual page MemAttr != Tagged, access unchecked. */
-+    if (!arm_tlb_mte_tagged(&iotlbentry->attrs)) {
-+        return NULL;
-+    }
-+
-+    /*
-+     * If not backed by host ram, there is no tag storage: access unchecked.
-+     * This is probably a guest os bug though, so log it.
-+     */
-+    if (unlikely(flags & TLB_MMIO)) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "Page @ 0x%" PRIx64 " indicates Tagged Normal memory "
-+                      "but is not backed by host ram\n", ptr);
-+        return NULL;
-+    }
-+
-+    /*
-+     * The Normal memory access can extend to the next page.  E.g. a single
-+     * 8-byte access to the last byte of a page will check only the last
-+     * tag on the first page.
-+     * Any page access exception has priority over tag check exception.
-+     */
-+    in_page = -(ptr | TARGET_PAGE_MASK);
-+    if (unlikely(ptr_size > in_page)) {
-+        void *ignore;
-+        flags |= probe_access_flags(env, ptr + in_page, ptr_access,
-+                                    ptr_mmu_idx, ra == 0, &ignore, ra);
-+        assert(!(flags & TLB_INVALID_MASK));
-+    }
-+
-+    /* Any debug exception has priority over a tag check exception. */
-+    if (unlikely(flags & TLB_WATCHPOINT)) {
-+        int wp = ptr_access == MMU_DATA_LOAD ? BP_MEM_READ : BP_MEM_WRITE;
-+        assert(ra != 0);
-+        cpu_check_watchpoint(env_cpu(env), ptr, ptr_size,
-+                             iotlbentry->attrs, wp, ra);
-+    }
-+
-+    /*
-+     * Find the physical address within the normal mem space.
-+     * The memory region lookup must succeed because TLB_MMIO was
-+     * not set in the cputlb lookup above.
-+     */
-+    mr = memory_region_from_host(host, &ptr_ra);
-+    tcg_debug_assert(mr != NULL);
-+    tcg_debug_assert(memory_region_is_ram(mr));
-+    ptr_paddr = ptr_ra;
-+    do {
-+        ptr_paddr += mr->addr;
-+        mr = mr->container;
-+    } while (mr);
-+
-+    /* Convert to the physical address in tag space.  */
-+    tag_paddr = ptr_paddr >> (LOG2_TAG_GRANULE + 1);
-+
-+    /* Look up the address in tag space. */
-+    tag_asi = iotlbentry->attrs.secure ? ARMASIdx_TagS : ARMASIdx_TagNS;
-+    tag_as = cpu_get_address_space(env_cpu(env), tag_asi);
-+    mr = address_space_translate(tag_as, tag_paddr, &xlat, NULL,
-+                                 tag_access == MMU_DATA_STORE,
-+                                 iotlbentry->attrs);
-+
-+    /*
-+     * Note that @mr will never be NULL.  If there is nothing in the address
-+     * space at @tag_paddr, the translation will return the unallocated memory
-+     * region.  For our purposes, the result must be ram.
-+     */
-+    if (unlikely(!memory_region_is_ram(mr))) {
-+        /* ??? Failure is a board configuration error. */
-+        qemu_log_mask(LOG_UNIMP,
-+                      "Tag Memory @ 0x%" HWADDR_PRIx " not found for "
-+                      "Normal Memory @ 0x%" HWADDR_PRIx "\n",
-+                      tag_paddr, ptr_paddr);
-+        return NULL;
-+    }
-+
-+    /*
-+     * Ensure the tag memory is dirty on write, for migration.
-+     * Tag memory can never contain code or display memory (vga).
-+     */
-+    if (tag_access == MMU_DATA_STORE) {
-+        ram_addr_t tag_ra = memory_region_get_ram_addr(mr) + xlat;
-+        cpu_physical_memory_set_dirty_flag(tag_ra, DIRTY_MEMORY_MIGRATION);
-+    }
-+
-+    return memory_region_get_ram_ptr(mr) + xlat;
-+#endif
- }
- 
- uint64_t HELPER(irg)(CPUARMState *env, uint64_t rn, uint64_t rm)
--- 
-2.25.1
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDYyNjAzMzE0NC43OTAw
+OTgtMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNl
+ZW1zIHRvIGhhdmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cg
+Zm9yCm1vcmUgaW5mb3JtYXRpb246CgpTdWJqZWN0OiBbUEFUQ0ggdjkgMDAvNDZdIHRhcmdldC9h
+cm06IEltcGxlbWVudCBBUk12OC41LU1lbVRhZywgc3lzdGVtIG1vZGUKVHlwZTogc2VyaWVzCk1l
+c3NhZ2UtaWQ6IDIwMjAwNjI2MDMzMTQ0Ljc5MDA5OC0xLXJpY2hhcmQuaGVuZGVyc29uQGxpbmFy
+by5vcmcKCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJz
+ZSBiYXNlID4gL2Rldi9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5h
+bWVsaW1pdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmln
+IC0tbG9jYWwgZGlmZi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBs
+IC0tbWFpbGJhY2sgYmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpGcm9tIGh0dHBzOi8v
+Z2l0aHViLmNvbS9wYXRjaGV3LXByb2plY3QvcWVtdQogLSBbdGFnIHVwZGF0ZV0gICAgICBwYXRj
+aGV3LzIwMjAwNjI2MDMzMTQ0Ljc5MDA5OC0xLXJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmcg
+LT4gcGF0Y2hldy8yMDIwMDYyNjAzMzE0NC43OTAwOTgtMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5h
+cm8ub3JnClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKZjljNTMzOCB0YXJnZXQvYXJt
+OiBBZGQgYXJtLGFybXY4LjUtbWVtdGFnIHRvIGR0Ygo1MDM3M2NlIHRhcmdldC9hcm06IEVuYWJs
+ZSBNVEUKNWU0Mzk4MSB0YXJnZXQvYXJtOiBBZGQgYWxsb2NhdGlvbiB0YWcgc3RvcmFnZSBmb3Ig
+c3lzdGVtIG1vZGUKYjcxNjAxOSB0YXJnZXQvYXJtOiBDcmVhdGUgdGFnZ2VkIHJhbSB3aGVuIE1U
+RSBpcyBlbmFibGVkCjU0ZGZmZGQgdGFyZ2V0L2FybTogQ2FjaGUgdGhlIFRhZ2dlZCBiaXQgZm9y
+IGEgcGFnZSBpbiBNZW1UeEF0dHJzCmU5ZDdjMGMgdGFyZ2V0L2FybTogQWx3YXlzIHBhc3MgY2Fj
+aGVhdHRyIHRvIGdldF9waHlzX2FkZHIKNWI0YmIwOCB0YXJnZXQvYXJtOiBTZXQgUFNUQVRFLlRD
+TyBvbiBleGNlcHRpb24gZW50cnkKMjM3NDEwNSB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgZGF0YSBj
+YWNoZSBzZXQgYWxsb2NhdGlvbiB0YWdzCmQwMGViNTggdGFyZ2V0L2FybTogQ29tcGxldGUgVEJJ
+IGNsZWFyaW5nIGZvciB1c2VyLW9ubHkgZm9yIFNWRQphMjU5YWU0IHRhcmdldC9hcm06IEFkZCBt
+dGUgaGVscGVycyBmb3Igc3ZlIHNjYXR0ZXIvZ2F0aGVyIG1lbW9yeSBvcHMKYTQyYjY0OCB0YXJn
+ZXQvYXJtOiBIYW5kbGUgVEJJIGZvciBzdmUgc2NhbGFyICsgaW50IG1lbW9yeSBvcHMKNGI0MTJj
+NSB0YXJnZXQvYXJtOiBBZGQgbXRlIGhlbHBlcnMgZm9yIHN2ZSBzY2FsYXIgKyBpbnQgZmYvbmYg
+bG9hZHMKZTAxODZmOSB0YXJnZXQvYXJtOiBBZGQgbXRlIGhlbHBlcnMgZm9yIHN2ZSBzY2FsYXIg
+KyBpbnQgc3RvcmVzCmM1NzZlNDkgdGFyZ2V0L2FybTogQWRkIG10ZSBoZWxwZXJzIGZvciBzdmUg
+c2NhbGFyICsgaW50IGxvYWRzCmVkMjQyNjQgdGFyZ2V0L2FybTogQWRkIGFybV90bGJfYnRpX2dw
+CmZmNGU1MjMgdGFyZ2V0L2FybTogVGlkeSB0cmFuc19MRDFSX3pwcmkKNDRkYWY5ZSB0YXJnZXQv
+YXJtOiBVc2UgbXRlX2NoZWNrMSBmb3Igc3ZlIExEMVIKNGM5ZThkYiB0YXJnZXQvYXJtOiBVc2Ug
+bXRlX2NoZWNrTiBmb3Igc3ZlIHVucHJlZGljYXRlZCBzdG9yZXMKZDQ0ZmYyNCB0YXJnZXQvYXJt
+OiBVc2UgbXRlX2NoZWNrTiBmb3Igc3ZlIHVucHJlZGljYXRlZCBsb2FkcwpmOTk4ZDQ2IHRhcmdl
+dC9hcm06IEFkZCBoZWxwZXJfbXRlX2NoZWNrX3p2YQo3MTc5NTRmIHRhcmdldC9hcm06IEltcGxl
+bWVudCBoZWxwZXJfbXRlX2NoZWNrTgo2NTE3M2IzIHRhcmdldC9hcm06IEltcGxlbWVudCBoZWxw
+ZXJfbXRlX2NoZWNrMQpjM2M2YjZlIHRhcmdldC9hcm06IEFkZCBnZW5fbXRlX2NoZWNrTgo0Yzc4
+NDhmIHRhcmdldC9hcm06IEFkZCBnZW5fbXRlX2NoZWNrMQpmMmE4NWQzIHRhcmdldC9hcm06IE1v
+dmUgcmVnaW1lX3RjciB0byBpbnRlcm5hbHMuaAoyOGNjNmVlIHRhcmdldC9hcm06IE1vdmUgcmVn
+aW1lX2VsIHRvIGludGVybmFscy5oCjJmNDY4YTEgdGFyZ2V0L2FybTogSW1wbGVtZW50IHRoZSBh
+Y2Nlc3MgdGFnIGNhY2hlIGZsdXNoZXMKZmJkY2YyOCB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgdGhl
+IExER00sIFNUR00sIFNUWkdNIGluc3RydWN0aW9ucwphZjQ3YzYxIHRhcmdldC9hcm06IFNpbXBs
+aWZ5IERDX1pWQQoyNDYyY2MwIHRhcmdldC9hcm06IFJlc3RyaWN0IHRoZSB2YWx1ZXMgb2YgRENa
+SUQuQlMgdW5kZXIgVENHCjEwZjNhOTUgdGFyZ2V0L2FybTogSW1wbGVtZW50IHRoZSBTVEdQIGlu
+c3RydWN0aW9uCmNmMTYxZWQgdGFyZ2V0L2FybTogSW1wbGVtZW50IExERywgU1RHLCBTVDJHIGlu
+c3RydWN0aW9ucwphODcxNDc4IHRhcmdldC9hcm06IERlZmluZSBhcm1fY3B1X2RvX3VuYWxpZ25l
+ZF9hY2Nlc3MgZm9yIHVzZXItb25seQplNWU2OGQyIHRhcmdldC9hcm06IEltcGxlbWVudCB0aGUg
+U1VCUCBpbnN0cnVjdGlvbgo1OWU0MDE1IHRhcmdldC9hcm06IEltcGxlbWVudCB0aGUgR01JIGlu
+c3RydWN0aW9uCjQxZTM3YTYgdGFyZ2V0L2FybTogSW1wbGVtZW50IHRoZSBBRERHLCBTVUJHIGlu
+c3RydWN0aW9ucwplMTZkYWNmIHRhcmdldC9hcm06IFJldmlzZSBkZWNvZGluZyBmb3IgZGlzYXNf
+YWRkX3N1Yl9pbW0KMzBlOTA3ZSB0YXJnZXQvYXJtOiBJbXBsZW1lbnQgdGhlIElSRyBpbnN0cnVj
+dGlvbgo4OGJmNWVjIHRhcmdldC9hcm06IEFkZCBNVEUgYml0cyB0byB0Yl9mbGFncwo0MmE5MGUy
+IHRhcmdldC9hcm06IEFkZCBNVEUgc3lzdGVtIHJlZ2lzdGVycwo0ZWViYWY5IHRhcmdldC9hcm06
+IEFkZCBESVNBU19VUERBVEVfTk9DSEFJTgozODAzYTVhIHRhcmdldC9hcm06IFJlbmFtZSBESVNB
+U19VUERBVEUgdG8gRElTQVNfVVBEQVRFX0VYSVQKNmRjYzA4NyB0YXJnZXQvYXJtOiBBZGQgc3Vw
+cG9ydCBmb3IgTVRFIHRvIEhDUl9FTDIgYW5kIFNDUl9FTDMKMWZmYmFiZiB0YXJnZXQvYXJtOiBB
+ZGQgc3VwcG9ydCBmb3IgTVRFIHRvIFNDVExSX0VMeApmNWRiNmQ4IHRhcmdldC9hcm06IEltcHJv
+dmUgbWFza2luZyBvZiBTQ1IgUkVTMCBiaXRzCjA1Mjk4MTIgdGFyZ2V0L2FybTogQWRkIGlzYXIg
+dGVzdHMgZm9yIG10ZQoKPT09IE9VVFBVVCBCRUdJTiA9PT0KMS80NiBDaGVja2luZyBjb21taXQg
+MDUyOTgxMmJhMDBjICh0YXJnZXQvYXJtOiBBZGQgaXNhciB0ZXN0cyBmb3IgbXRlKQoyLzQ2IENo
+ZWNraW5nIGNvbW1pdCBmNWRiNmQ4YjA1NjEgKHRhcmdldC9hcm06IEltcHJvdmUgbWFza2luZyBv
+ZiBTQ1IgUkVTMCBiaXRzKQozLzQ2IENoZWNraW5nIGNvbW1pdCAxZmZiYWJmOTQ0ZTIgKHRhcmdl
+dC9hcm06IEFkZCBzdXBwb3J0IGZvciBNVEUgdG8gU0NUTFJfRUx4KQo0LzQ2IENoZWNraW5nIGNv
+bW1pdCA2ZGNjMDg3NjE3MmIgKHRhcmdldC9hcm06IEFkZCBzdXBwb3J0IGZvciBNVEUgdG8gSENS
+X0VMMiBhbmQgU0NSX0VMMykKNS80NiBDaGVja2luZyBjb21taXQgMzgwM2E1YThmNTU2ICh0YXJn
+ZXQvYXJtOiBSZW5hbWUgRElTQVNfVVBEQVRFIHRvIERJU0FTX1VQREFURV9FWElUKQo2LzQ2IENo
+ZWNraW5nIGNvbW1pdCA0ZWViYWY5MjlmMTUgKHRhcmdldC9hcm06IEFkZCBESVNBU19VUERBVEVf
+Tk9DSEFJTikKNy80NiBDaGVja2luZyBjb21taXQgNDJhOTBlMmRjN2E3ICh0YXJnZXQvYXJtOiBB
+ZGQgTVRFIHN5c3RlbSByZWdpc3RlcnMpCjgvNDYgQ2hlY2tpbmcgY29tbWl0IDg4YmY1ZWMyMjY0
+YyAodGFyZ2V0L2FybTogQWRkIE1URSBiaXRzIHRvIHRiX2ZsYWdzKQo5LzQ2IENoZWNraW5nIGNv
+bW1pdCAzMGU5MDdlNmNiZDcgKHRhcmdldC9hcm06IEltcGxlbWVudCB0aGUgSVJHIGluc3RydWN0
+aW9uKQpXQVJOSU5HOiBhZGRlZCwgbW92ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5U
+QUlORVJTIG5lZWQgdXBkYXRpbmc/CiM0NTogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0Cgp0b3RhbDog
+MCBlcnJvcnMsIDEgd2FybmluZ3MsIDEyMCBsaW5lcyBjaGVja2VkCgpQYXRjaCA5LzQ2IGhhcyBz
+dHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJl
+IGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNL
+UEFUQ0ggaW4gTUFJTlRBSU5FUlMuCjEwLzQ2IENoZWNraW5nIGNvbW1pdCBlMTZkYWNmN2RlN2Qg
+KHRhcmdldC9hcm06IFJldmlzZSBkZWNvZGluZyBmb3IgZGlzYXNfYWRkX3N1Yl9pbW0pCjExLzQ2
+IENoZWNraW5nIGNvbW1pdCA0MWUzN2E2MDljZTAgKHRhcmdldC9hcm06IEltcGxlbWVudCB0aGUg
+QURERywgU1VCRyBpbnN0cnVjdGlvbnMpCjEyLzQ2IENoZWNraW5nIGNvbW1pdCA1OWU0MDE1ZjM3
+MmEgKHRhcmdldC9hcm06IEltcGxlbWVudCB0aGUgR01JIGluc3RydWN0aW9uKQoxMy80NiBDaGVj
+a2luZyBjb21taXQgZTVlNjhkMjY3Nzg4ICh0YXJnZXQvYXJtOiBJbXBsZW1lbnQgdGhlIFNVQlAg
+aW5zdHJ1Y3Rpb24pCjE0LzQ2IENoZWNraW5nIGNvbW1pdCBhODcxNDc4NTFkOTAgKHRhcmdldC9h
+cm06IERlZmluZSBhcm1fY3B1X2RvX3VuYWxpZ25lZF9hY2Nlc3MgZm9yIHVzZXItb25seSkKMTUv
+NDYgQ2hlY2tpbmcgY29tbWl0IGNmMTYxZWQzYTdlMSAodGFyZ2V0L2FybTogSW1wbGVtZW50IExE
+RywgU1RHLCBTVDJHIGluc3RydWN0aW9ucykKMTYvNDYgQ2hlY2tpbmcgY29tbWl0IDEwZjNhOTUz
+MzM1MyAodGFyZ2V0L2FybTogSW1wbGVtZW50IHRoZSBTVEdQIGluc3RydWN0aW9uKQoxNy80NiBD
+aGVja2luZyBjb21taXQgMjQ2MmNjMDJhMzUxICh0YXJnZXQvYXJtOiBSZXN0cmljdCB0aGUgdmFs
+dWVzIG9mIERDWklELkJTIHVuZGVyIFRDRykKMTgvNDYgQ2hlY2tpbmcgY29tbWl0IGFmNDdjNjE1
+NGJhMiAodGFyZ2V0L2FybTogU2ltcGxpZnkgRENfWlZBKQoxOS80NiBDaGVja2luZyBjb21taXQg
+ZmJkY2YyOGJkN2MzICh0YXJnZXQvYXJtOiBJbXBsZW1lbnQgdGhlIExER00sIFNUR00sIFNUWkdN
+IGluc3RydWN0aW9ucykKMjAvNDYgQ2hlY2tpbmcgY29tbWl0IDJmNDY4YTE0N2FkMiAodGFyZ2V0
+L2FybTogSW1wbGVtZW50IHRoZSBhY2Nlc3MgdGFnIGNhY2hlIGZsdXNoZXMpCjIxLzQ2IENoZWNr
+aW5nIGNvbW1pdCAyOGNjNmVlMWU0MDAgKHRhcmdldC9hcm06IE1vdmUgcmVnaW1lX2VsIHRvIGlu
+dGVybmFscy5oKQoyMi80NiBDaGVja2luZyBjb21taXQgZjJhODVkMzE4YjMyICh0YXJnZXQvYXJt
+OiBNb3ZlIHJlZ2ltZV90Y3IgdG8gaW50ZXJuYWxzLmgpCjIzLzQ2IENoZWNraW5nIGNvbW1pdCA0
+Yzc4NDhmODY3YmUgKHRhcmdldC9hcm06IEFkZCBnZW5fbXRlX2NoZWNrMSkKMjQvNDYgQ2hlY2tp
+bmcgY29tbWl0IGMzYzZiNmU5MWZlOCAodGFyZ2V0L2FybTogQWRkIGdlbl9tdGVfY2hlY2tOKQoy
+NS80NiBDaGVja2luZyBjb21taXQgNjUxNzNiM2YyYjU0ICh0YXJnZXQvYXJtOiBJbXBsZW1lbnQg
+aGVscGVyX210ZV9jaGVjazEpCjI2LzQ2IENoZWNraW5nIGNvbW1pdCA3MTc5NTRmYTgyY2MgKHRh
+cmdldC9hcm06IEltcGxlbWVudCBoZWxwZXJfbXRlX2NoZWNrTikKMjcvNDYgQ2hlY2tpbmcgY29t
+bWl0IGY5OThkNDZiMmJjNCAodGFyZ2V0L2FybTogQWRkIGhlbHBlcl9tdGVfY2hlY2tfenZhKQoy
+OC80NiBDaGVja2luZyBjb21taXQgZDQ0ZmYyNDQxNDRkICh0YXJnZXQvYXJtOiBVc2UgbXRlX2No
+ZWNrTiBmb3Igc3ZlIHVucHJlZGljYXRlZCBsb2FkcykKMjkvNDYgQ2hlY2tpbmcgY29tbWl0IDRj
+OWU4ZGJiMGY4ZCAodGFyZ2V0L2FybTogVXNlIG10ZV9jaGVja04gZm9yIHN2ZSB1bnByZWRpY2F0
+ZWQgc3RvcmVzKQozMC80NiBDaGVja2luZyBjb21taXQgNDRkYWY5ZTkyYTQ5ICh0YXJnZXQvYXJt
+OiBVc2UgbXRlX2NoZWNrMSBmb3Igc3ZlIExEMVIpCjMxLzQ2IENoZWNraW5nIGNvbW1pdCBmZjRl
+NTIzOWE4MTcgKHRhcmdldC9hcm06IFRpZHkgdHJhbnNfTEQxUl96cHJpKQozMi80NiBDaGVja2lu
+ZyBjb21taXQgZWQyNDI2NDU3MDBiICh0YXJnZXQvYXJtOiBBZGQgYXJtX3RsYl9idGlfZ3ApCjMz
+LzQ2IENoZWNraW5nIGNvbW1pdCBjNTc2ZTQ5YWJlZTAgKHRhcmdldC9hcm06IEFkZCBtdGUgaGVs
+cGVycyBmb3Igc3ZlIHNjYWxhciArIGludCBsb2FkcykKMzQvNDYgQ2hlY2tpbmcgY29tbWl0IGUw
+MTg2ZjllZmQ0NiAodGFyZ2V0L2FybTogQWRkIG10ZSBoZWxwZXJzIGZvciBzdmUgc2NhbGFyICsg
+aW50IHN0b3JlcykKMzUvNDYgQ2hlY2tpbmcgY29tbWl0IDRiNDEyYzU1Mjk5MSAodGFyZ2V0L2Fy
+bTogQWRkIG10ZSBoZWxwZXJzIGZvciBzdmUgc2NhbGFyICsgaW50IGZmL25mIGxvYWRzKQozNi80
+NiBDaGVja2luZyBjb21taXQgYTQyYjY0OGM1NjFlICh0YXJnZXQvYXJtOiBIYW5kbGUgVEJJIGZv
+ciBzdmUgc2NhbGFyICsgaW50IG1lbW9yeSBvcHMpCjM3LzQ2IENoZWNraW5nIGNvbW1pdCBhMjU5
+YWU0OTFjZWUgKHRhcmdldC9hcm06IEFkZCBtdGUgaGVscGVycyBmb3Igc3ZlIHNjYXR0ZXIvZ2F0
+aGVyIG1lbW9yeSBvcHMpCjM4LzQ2IENoZWNraW5nIGNvbW1pdCBkMDBlYjU4ZjQ2ODYgKHRhcmdl
+dC9hcm06IENvbXBsZXRlIFRCSSBjbGVhcmluZyBmb3IgdXNlci1vbmx5IGZvciBTVkUpCkVSUk9S
+OiBzcGFjZXMgcmVxdWlyZWQgYXJvdW5kIHRoYXQgJyonIChjdHg6VnhWKQojNTc6IEZJTEU6IHRh
+cmdldC9hcm0vc3ZlX2hlbHBlci5jOjM5Nzg6CisgICAgICAgIChUWVBFTSkqKFRZUEVFICopKHZk
+ICsgSChyZWdfb2ZmKSksIHJhKTsgICAgICAgICAgICAgICAgICAgICAgICAgICAgXAogICAgICAg
+ICAgICAgICAgXgoKdG90YWw6IDEgZXJyb3JzLCAwIHdhcm5pbmdzLCA1NyBsaW5lcyBjaGVja2Vk
+CgpQYXRjaCAzOC80NiBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkg
+b2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1h
+aW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoKMzkvNDYgQ2hlY2tpbmcg
+Y29tbWl0IDIzNzQxMDVhNDZlOCAodGFyZ2V0L2FybTogSW1wbGVtZW50IGRhdGEgY2FjaGUgc2V0
+IGFsbG9jYXRpb24gdGFncykKNDAvNDYgQ2hlY2tpbmcgY29tbWl0IDViNGJiMDg1NjEzNSAodGFy
+Z2V0L2FybTogU2V0IFBTVEFURS5UQ08gb24gZXhjZXB0aW9uIGVudHJ5KQo0MS80NiBDaGVja2lu
+ZyBjb21taXQgZTlkN2MwY2UyMGE4ICh0YXJnZXQvYXJtOiBBbHdheXMgcGFzcyBjYWNoZWF0dHIg
+dG8gZ2V0X3BoeXNfYWRkcikKNDIvNDYgQ2hlY2tpbmcgY29tbWl0IDU0ZGZmZGRjNWIxNyAodGFy
+Z2V0L2FybTogQ2FjaGUgdGhlIFRhZ2dlZCBiaXQgZm9yIGEgcGFnZSBpbiBNZW1UeEF0dHJzKQo0
+My80NiBDaGVja2luZyBjb21taXQgYjcxNjAxOWE0OGY5ICh0YXJnZXQvYXJtOiBDcmVhdGUgdGFn
+Z2VkIHJhbSB3aGVuIE1URSBpcyBlbmFibGVkKQo0NC80NiBDaGVja2luZyBjb21taXQgNWU0Mzk4
+MWUzZDYwICh0YXJnZXQvYXJtOiBBZGQgYWxsb2NhdGlvbiB0YWcgc3RvcmFnZSBmb3Igc3lzdGVt
+IG1vZGUpCjQ1LzQ2IENoZWNraW5nIGNvbW1pdCA1MDM3M2NlOThiM2EgKHRhcmdldC9hcm06IEVu
+YWJsZSBNVEUpCjQ2LzQ2IENoZWNraW5nIGNvbW1pdCBmOWM1MzM4M2FiMTggKHRhcmdldC9hcm06
+IEFkZCBhcm0sYXJtdjguNS1tZW10YWcgdG8gZHRiKQo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3Qg
+Y29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBh
+dApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDIwMDYyNjAzMzE0NC43OTAwOTgtMS1yaWNoYXJk
+LmhlbmRlcnNvbkBsaW5hcm8ub3JnL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgot
+LS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRj
+aGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVk
+aGF0LmNvbQ==

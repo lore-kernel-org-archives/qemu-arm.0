@@ -1,137 +1,135 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp419341lfm;
-        Fri, 26 Jun 2020 06:00:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzqzzXnYKWij9mfqaNF0KfLh6KAgPFoVEMS8hpHQ3SG0lFafNtty/1jyT3YKX2IKAPEEx+q
-X-Received: by 2002:a0c:d444:: with SMTP id r4mr2985761qvh.67.1593176403405;
-        Fri, 26 Jun 2020 06:00:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593176403; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp433562lfm;
+        Fri, 26 Jun 2020 06:13:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxN5wrp/HdFpGQwrr0PYxenrbFjWcigOqZUSGDydxJnq6BhENV/rGQW8w5WGGo4r3u6vyCb
+X-Received: by 2002:a37:b342:: with SMTP id c63mr2747524qkf.436.1593177221751;
+        Fri, 26 Jun 2020 06:13:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593177221; cv=none;
         d=google.com; s=arc-20160816;
-        b=vkmt8vlVIH2603Ox5bgPrH0hiYaFW+48XvviPWcPVtvx2fCAspC6o3/nDE1WmLGCdu
-         9H86cBfPc1QKvbIv3/0hYd38n1nJHArVrumSWxt6bO2LQvHhdf2ccfAlJfm+FogKOFgs
-         fRsnbWx76RNs8crbW4XaHkG81EJnoMXWW/PzVywhingsN90Tf2dJyRQazT5B0q8b48BI
-         9lMaGwtAPixOa5difCiWj9aya4mI/EkW20tc4T9I/PR/5q9tuW+gZqNwrSNXQSJMqfAv
-         +9uKDWmeju4qjgEbx7KRObuIkAoJHMV8TvlRFq4FkZYlpoWJ+ddoNQowIxlvDC2EWRHx
-         sPFg==
+        b=WO1odJ0YJ0sNqYL4smNDT/U6akr4EaY8Ol2+N2FHUU602uh8nM8c1aqVQwStf0eIVz
+         oKya6vom0pRi8JLiJVgmv3TnihYEm3xTOpHyyHEtMOGtrsRpY5gm4mXgh1tzLSt9ACFg
+         iIqKWHW4ql0J1LginFVZf6fMYcKWJ9/1IyXampeReRw4uuVTnjTYTd+RbAzv/xhnyCdv
+         uwDqWwTFef7q1oXKfL/Jqe4eADTID7tem7GfFomAdrRdSZkEZ/yYyKHpmk/8FGgb7eCF
+         Y+w4AhGT68PxRyqHMfN4vtrzRr07H4wEcSKhBxT/aTkGHtmFS2yHjSfyR8OYFpz5d6jD
+         KcRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=MbjOfvUhk3JHZJQI4+QZtqfzsY724TpWCAh9bXBzgB4=;
-        b=b3d/kRdkMJ2a8jFh+m6uuhbvAFuHMs/W3Qpf8JUt0FpMarjrwMTGeILLZnIKLPrBkE
-         HpUUpQse6C2WAbw9x7CECEwjEMsOUSmqB+K1jvH1tT0enEjB1HaQ7B/i32IdIksUew39
-         rPGsIapvRlWupy6bSJUaT2DjMcY17FVYS1Yl9m5wu/ZipZTykmoqmmqQBSYj4QA3JPla
-         SaaKKPIppWPAxGJnPY4GaGdEiF3SseYHSFvc8JFrgwKtcxZo3aW1tKXepnNbJbs+oK1L
-         7zbXUHIBB1BG+ZOn44ITXkS6V+XJaPl3PcNip9Dsd7y3u2NpH1Q2L181rNvVLHS6r66G
-         eZVQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=oWb36J35ESUuY1ww7E7WCjpK0nAWhNMKLe/D7pe5g4E=;
+        b=CbagD7iYHUZs3hx+FlMORBbJ3NVkERJiE9z58eh+iWjSlORMqK2GgRCNLFgtcuUKxX
+         BEEpGttff99iEiXUa50HCZIzk2YUvU3WR3eS0cFBEHLTg/eD76Fzm1kyS6P6gWsCi/pb
+         XJeyt2sM4JN9OXkoQIItX2RbBNPLvjzF/ZzhsSR+tC+vA2dPTGo78VlzCehfyj6+ERKO
+         LGthRzmCqs3xn62+VZD9nwP4PA5be82+s5RMvYKHZX3Yy0sBw3lfWADrSy6LcRcxOmKO
+         mEInwapsLDiyWReVTfXjffBfICoMDixt1wuM+7iVaXptM5A+/hL4kYcFsDK+IcaoEHhe
+         9hAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b="Vfzaao/u";
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dkim=fail header.i=@linaro.org header.s=google header.b=tiZgY9Ba;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id j9si14141876qtb.304.2020.06.26.06.00.03;
-        Fri, 26 Jun 2020 06:00:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d16si16752950qtb.268.2020.06.26.06.13.40
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 26 Jun 2020 06:13:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b="Vfzaao/u";
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dkim=fail header.i=@linaro.org header.s=google header.b=tiZgY9Ba;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 0856A4B1D8;
-	Fri, 26 Jun 2020 09:00:03 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@linaro.org
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cLhYe+bKCtKf; Fri, 26 Jun 2020 09:00:02 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id F1A084B1D3;
-	Fri, 26 Jun 2020 09:00:01 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id B918B4B135
- for <kvmarm@lists.cs.columbia.edu>; Fri, 26 Jun 2020 09:00:00 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YaYZC75I9X2c for <kvmarm@lists.cs.columbia.edu>;
- Fri, 26 Jun 2020 08:59:59 -0400 (EDT)
-Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com
- [209.85.167.196])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id D70214B114
- for <kvmarm@lists.cs.columbia.edu>; Fri, 26 Jun 2020 08:59:59 -0400 (EDT)
-Received: by mail-oi1-f196.google.com with SMTP id k4so7984603oik.2
- for <kvmarm@lists.cs.columbia.edu>; Fri, 26 Jun 2020 05:59:59 -0700 (PDT)
+Received: from localhost ([::1]:40668 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jooAm-0002yK-1T
+	for alex.bennee@linaro.org; Fri, 26 Jun 2020 09:13:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55708)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jooAe-0002wZ-40
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 09:13:32 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:34401)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jooAc-0007JV-BL
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 09:13:31 -0400
+Received: by mail-oi1-x243.google.com with SMTP id p82so8035253oif.1
+ for <qemu-arm@nongnu.org>; Fri, 26 Jun 2020 06:13:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Ka0oIQYu+5hhSwRJltqEXo4HJnZK2e5WXM5WZG7JEZ8=;
- b=Vfzaao/uT44wP7JQQ1HUEopzlxRDTsfA/lgWLklhGJ1EzSieoOZtrUPBWpBjgq0kjZ
- b5uU/DPsWjuToJCs20CyFJG/L4J5jBmhrKnjx4wDaRkY1wQY1uMvyDlPF6qOUjyu9LGr
- qwiALLpWJyKSUtkO0dzU0Ki9rQ4C27pxFnM7RzjkjJZ9bCj5CLb3xv5eiqpCEpbbHU3y
- DKo9ruGYHTTgT8lDKfUhG2AOyPG8TzqLlL9yKJ5BLCM3pqK1I/xVTlaFBZgF66bkhywR
- YvZc89NGEHdM/mFeI8ZCih87d18NxW7UXRS6zYvJESqQbIof+436h2+U04vi/YJj6HMN
- OrNA==
+ :cc; bh=oWb36J35ESUuY1ww7E7WCjpK0nAWhNMKLe/D7pe5g4E=;
+ b=tiZgY9BaFwGXcokju6PMWjDbmDbWraMlp/gx+bmcZmkfCCr1qa1JQNkcVVkBfpJICj
+ SlsMORXuIIW3Y70ddeACmA51SzhHDEYlKcVctxrkobykLQv5U4QO4KjEyYQnTBan1yLB
+ w5zx9Shm/SS7Vr1tgYFyMXNlotIBd+76xTXX8YhVVFUAXH2eMirdeRdqv7bxP7I9Gdqy
+ kDjD4QrdIJt3zkjVaoEn7GCKqmWZiRhe1lcP3gLpZme4Y2YzlSbLMZYKe+jnxlYrKGpc
+ vWlfQ31plvREZD/Gq9xcpjL4rK9QpAHMvZv/pHNU8k18R+7GI7Rxkfal2yYopXQccmVK
+ LXJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Ka0oIQYu+5hhSwRJltqEXo4HJnZK2e5WXM5WZG7JEZ8=;
- b=W20K4wRXP3Ac8bT5X9iZysQJOAKeWbdKUtkKEVx4BZmMwYMzviaILO9XVNRHTZodk2
- 7w7y7NRpRip2PSMzaEUXeSP3ZRF06H6Ja2mR9EAlwH5bZYS1S1Xb4XzOp3qw10/TVk3w
- q4sW0lLmjRjJpy0DYKF7eFR+irnjBGShw540TRp+Vgk8/vDC8uUvTDr8q4eneNvVylPs
- m+h81wIJ9gA2GKP9WAmrTikEL/XinMsxx8omIJSaJ+vjkMu7M4FdKjhoeNLc1NUJGRO8
- tsTzSycVoa5x8bFbfKKgM58CJ6ca+cygmf8NcuxOZR/ZTV3iNpHHN0AsfpPauSs5TOUa
- +gUQ==
-X-Gm-Message-State: AOAM533ZqJP5ndREWiAW5sCOQHCxOXMjryzTy4IOGLfsQaQkNwYQ0fdf
- VIr8kJOIgUCy7sgVoGE7j3kxbt7D4XbQUUHli/2KOw==
-X-Received: by 2002:a54:4694:: with SMTP id k20mr2186547oic.146.1593176399314; 
- Fri, 26 Jun 2020 05:59:59 -0700 (PDT)
+ bh=oWb36J35ESUuY1ww7E7WCjpK0nAWhNMKLe/D7pe5g4E=;
+ b=jU7WnWcRAP2t2/0dtc7vEWCvwswFMeFRbTjsoWCl4E3m+t94jSw8ZN6FfSuEaIM3/S
+ C/bEdnpMXPz5s8wNL5B2zLbwqpUuW/wjE84JzhOzvfl9FmJiVd5M2lKVyINOEVqHkkTk
+ GKYRZ+zHbYGwhl7LiI5Tti1PYfh0Cs3HWqXQrtkqTFMXzrDESFhjPW9QDfwT/ZEgcBqP
+ TwgnV+srtH5eedAr78nWKThYBBhickQe77BFs8jYPsmb3B58MtUiugjdM6Bb2kurhadD
+ yZQ03XRf75wfJ+rprlr3zLD+v/iTSh3jtDbKdRcO0iZlT0XES2JCbKuQMSmOJTMcALCR
+ 6BTQ==
+X-Gm-Message-State: AOAM53080SyCfFIR2z552X9p64v95GAJaweZqk65saBB/BGCqtqvr6PJ
+ 8iZUwKhHWhr3H3705BQfdmTS35d3q4Mzxqx/Dz7QUQ==
+X-Received: by 2002:a54:4694:: with SMTP id k20mr2249559oic.146.1593177208881; 
+ Fri, 26 Jun 2020 06:13:28 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200625220336.10186-1-beata.michalska@linaro.org>
- <20200625220336.10186-2-beata.michalska@linaro.org>
- <20200626090050.3sqsukopwydv43od@kamzik.brq.redhat.com>
-In-Reply-To: <20200626090050.3sqsukopwydv43od@kamzik.brq.redhat.com>
+References: <20200626033144.790098-1-richard.henderson@linaro.org>
+ <20200626033144.790098-44-richard.henderson@linaro.org>
+In-Reply-To: <20200626033144.790098-44-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 26 Jun 2020 13:59:48 +0100
-Message-ID: <CAFEAcA_pKMkwAGAAdkCXk3dOqJQnX+qRsZuLMWA0qfMsw+aF1Q@mail.gmail.com>
-Subject: Re: [PATCH v6 1/2] target/arm: kvm: Handle DABT with no valid ISS
-To: Andrew Jones <drjones@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+Date: Fri, 26 Jun 2020 14:13:18 +0100
+Message-ID: <CAFEAcA8=UGStxFYhVw3_YPd_7FD6bTnETW=OMn=ZDrtGqXq8jw@mail.gmail.com>
+Subject: Re: [PATCH v9 43/46] target/arm: Create tagged ram when MTE is enabled
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x243.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: AVVEKvG6ClQI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: David Spickett <david.spickett@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Stephen Long <steplong@quicinc.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: I2lRMRGy54cO
 
-On Fri, 26 Jun 2020 at 10:01, Andrew Jones <drjones@redhat.com> wrote:
-> nit: How about using '= {0}' when declaring the variable, rather than this
-> memset?
+On Fri, 26 Jun 2020 at 04:32, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+> v5: Assign cs->num_ases to the final value first.
+>     Downgrade to ID_AA64PFR1.MTE=1 if tag memory is not available.
+> v6: Add secure tag memory for EL3.
+> v8: Add arm,armv8.5-memtag.
+> v9: Split arm,armv8.5-memtag to another patch;
+>     adjust how address spaces are allocated.
 
-We prefer "= {}" -- although "= {0}" is the C standard approved
-version, some compiler versions produce spurious warnings for
-it in some situations. (cf commit 039d4e3df0049bdd8f9).
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

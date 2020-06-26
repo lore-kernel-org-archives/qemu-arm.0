@@ -1,252 +1,268 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp123731lfm;
-        Thu, 25 Jun 2020 22:49:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyTP77YZt/Diuslf9XKaqKCtI7HCf8vrcFC6MZRGueGRr0nw5jgE+RYBwAofFCxne1TnKNr
-X-Received: by 2002:a25:be05:: with SMTP id h5mr2346354ybk.131.1593150597210;
-        Thu, 25 Jun 2020 22:49:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593150597; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp181077lfm;
+        Fri, 26 Jun 2020 00:23:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz0jcZP5QoTqCifh7lyUk0eWx0rrTb9dXMqp5g9t3R23kAFm1+bEplizoq/ReFhJwQbTRgp
+X-Received: by 2002:a17:906:e299:: with SMTP id gg25mr1359061ejb.160.1593156197973;
+        Fri, 26 Jun 2020 00:23:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593156197; cv=none;
         d=google.com; s=arc-20160816;
-        b=FMjTDv6AD1u5RRVlMAEfDQiiYs/FE8eF3MQdVB5e0EO+UWhES/mBPbOCVQ9qGoTsRS
-         KUzx1dKt6C5Qm6krUZVfO8OMYL7mypZ4vX3nGI9BN8lxPeDqUs7w3J6Rv21xEnTaO+7C
-         P+UIVbO43yy4mLWY8jbQhq3VQikaamlg9JfP41VkRuOAMWXKUg7yJeZm1+9NHAeRDRo4
-         BBZ4aDKzl1Srv88gCTXJTw1zbCw31J17edPjhgjhJnZHCwQt71kJoWKv1S7nq2AlKGFt
-         IjcYBEjVrXNSBMpajf6edjkqRJRzyiP8UIapLkHo7qiX7Xvka6L/gQpwSht+rxA1616G
-         pATg==
+        b=rErjiYOR/E0/M+zWaXk5Mh7vTPVNVY3yu06D0yMTrWBaP6aVmMNc5ILwXB74Hvjgpz
+         HGztVv5vKhvdyW3SaUtg08pvgDW3C0rasXtx9nx241Joj+vRXnU/tztLFZyRNnXaujsL
+         Ann7rPF0+J2vtNPdf2+1m+o5aWTuiJNj4ux+QCA2BFpES00TYZ24wt6lVqo2SHe2kHuZ
+         3ZfMTEgapH4PBuyS69C5ER3ZZVbUIfTin7Xcxhw7ROwbCReWTGbeb8KKevbdCavuBhrC
+         HDZq+FGpi4z/oqOydWMqsd9RLj2lD8DqqXL9FvSzGxZKQHPnzxyOIWQLT4ukdyU1/qtf
+         mgwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=zBB5Kc01AV5iMpHBiKmtIDqnoeqJ0UIzbRx2RkA+DDE=;
-        b=CrA6bkUX4AiuND2FRE1Iy2dncNvVVwmxOEgTHf5nJ7TNyHUkejQqLRn2pIV1UCwG9S
-         u+KmKjX/ZnmY4z9i55T/qOTltBKmwrmZ270rrAIPd9oBHO09TKEjBJ6Xu1GVBr/Yorze
-         s3NzPbdEuwwZ9wnm21eWPmQctvywOTRKsHj5DgwCIfhx8ar6q/nm5Bl7327H2HrtFVp9
-         v91qCM7kUGPspv1FRPg/bpE5V2g9NX3lMGsHFckVD/hdeQnLV1RLZXpE3zwi8h3ZV14D
-         81lnBFSK97+NCxSLvpYxyV6Zo22Y5uMwRxJjt6xyPWNR/0Ty3aAsNsT6DUbmCT7hDnmL
-         4YpQ==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=qhGaneoHx5il05o01jW1hDOadm2bPogSKu/DKrsEmAc=;
+        b=FijD3zarvN2DJ6U7VFMM+w6YY/iNDSEgGqGXpB3RZpMvdDudaGzArgwBPSB1YbkIdW
+         b6jeoPlEUniMtjv/pTY6Un/4AUFfWF3lka8LtAFC9GHpp7AtSnAKOU0+j1WSaEn41XSJ
+         DTarBu1SjYz/Fem2hu4iHybhn9jF6P4v/DEgpAXbSwEDReyk4x0xPr+Z3M8erbwFYzbE
+         E51JQMNc/bADeTzz8/b9q46uD6yEeyQ09LQB/TAkKii/7C6gCvqUlyZRDQgIjR+J5OAz
+         YPlv7pz6PNDUjDoi+VVZ6dwLVos4bIP7Z7y0jCkFNtLsu5XGxmZqgQY1UMbPOuir0qnE
+         C+xQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=I5r9K3M5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x6si23060172ybn.76.2020.06.25.22.49.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jun 2020 22:49:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZxCUnmJJ;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id qu2si15599998ejb.89.2020.06.26.00.23.17;
+        Fri, 26 Jun 2020 00:23:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=I5r9K3M5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56840 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1johFM-0008K8-IV
-	for alex.bennee@linaro.org; Fri, 26 Jun 2020 01:49:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40210)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1johFD-0008J3-Qj
- for qemu-arm@nongnu.org; Fri, 26 Jun 2020 01:49:47 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:44729
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1johFA-0006Jn-UM
- for qemu-arm@nongnu.org; Fri, 26 Jun 2020 01:49:47 -0400
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZxCUnmJJ;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726422AbgFZHXQ (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 26 Jun 2020 03:23:16 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:30886 "EHLO
+        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
+        with ESMTP id S1725855AbgFZHXQ (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 26 Jun 2020 03:23:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593150582;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zBB5Kc01AV5iMpHBiKmtIDqnoeqJ0UIzbRx2RkA+DDE=;
- b=I5r9K3M5ZeFoCHoqoRacGnbff65apfdftJOrwGzUWK7SBIXwmQrJotTzRg5CCOa4Y+/qJZ
- TIXhsZ3xJhu64LQIfzuxFgRwEmRHOsRtztyI02kpV5lt3y/CgqvQiCrcwRQmij9DNDZpZl
- 8KRB4c2EgBygFWc/3jhPVjE3CnJ2EOg=
+        s=mimecast20190719; t=1593156194;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:
+         content-transfer-encoding:content-transfer-encoding;
+        bh=qhGaneoHx5il05o01jW1hDOadm2bPogSKu/DKrsEmAc=;
+        b=ZxCUnmJJXgQGtfivfxp8avEOxzRpa8gh7BXpiqPM7iImYajxXT6VDoZ+gmtQgNRtkZFGuz
+        kkkYk7F8pNAuFnbcqnAjIeGzE2qSonfU1NvID5yBwR6pm0sFWVgRu4EzH/GEh9dG1XhHAX
+        3+Py6FJrR0fCRyPViuvs4bn4dhPuP3Q=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-451-iwNn_NUaO0-6x3-DFWqX6w-1; Fri, 26 Jun 2020 01:49:38 -0400
-X-MC-Unique: iwNn_NUaO0-6x3-DFWqX6w-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B33681800D4A;
- Fri, 26 Jun 2020 05:49:36 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
- [10.36.112.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2206571671;
- Fri, 26 Jun 2020 05:49:36 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 810D311384D4; Fri, 26 Jun 2020 07:49:34 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v4 4/8] hw/misc/pca9552: Add a 'description' property for
- debugging purpose
-References: <20200620225854.31160-1-f4bug@amsat.org>
- <20200620225854.31160-5-f4bug@amsat.org>
- <4d335933-9669-43e1-0966-5f0255142012@kaod.org>
- <34fe3d2b-6b41-0509-f172-5b45486fdf0c@amsat.org>
- <deccf836-48ef-7112-d66e-a8d3cc4a9681@kaod.org>
- <877dvv4pmg.fsf@dusky.pond.sub.org>
- <2d1b8b24-3b2c-d84e-8026-e369f6531247@amsat.org>
- <03da95ed-399d-53e2-c946-a45f1a771701@amsat.org>
-Date: Fri, 26 Jun 2020 07:49:34 +0200
-In-Reply-To: <03da95ed-399d-53e2-c946-a45f1a771701@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 25 Jun 2020 16:23:44
- +0200")
-Message-ID: <87bll6tlzl.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ us-mta-168-rL45roI1OLesF9PxZX_jrQ-1; Fri, 26 Jun 2020 03:23:11 -0400
+X-MC-Unique: rL45roI1OLesF9PxZX_jrQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 81D1E1009441;
+        Fri, 26 Jun 2020 07:23:08 +0000 (UTC)
+Received: from t480s.redhat.com (ovpn-113-35.ams2.redhat.com [10.36.113.35])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id 7C6C560C1D;
+        Fri, 26 Jun 2020 07:22:49 +0000 (UTC)
+From:   David Hildenbrand <david@redhat.com>
+To:     qemu-devel@nongnu.org
+Cc:     kvm@vger.kernel.org, qemu-s390x@nongnu.org,
+        Richard Henderson <rth@twiddle.net>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        "Michael S . Tsirkin" <mst@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        teawater <teawaterz@linux.alibaba.com>,
+        Pankaj Gupta <pankaj.gupta.linux@gmail.com>,
+        Alex Shi <alex.shi@linux.alibaba.com>,
+        Alex Williamson <alex.williamson@redhat.com>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Cornelia Huck <cohuck@redhat.com>,
+        Eric Blake <eblake@redhat.com>,
+        Eric Farman <farman@linux.ibm.com>,
+        Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
+        Halil Pasic <pasic@linux.ibm.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Janosch Frank <frankja@linux.ibm.com>,
+        Juan Quintela <quintela@redhat.com>,
+        Keith Busch <kbusch@kernel.org>,
+        Lukas Straub <lukasstraub2@web.de>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Markus Armbruster <armbru@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Pierre Morel <pmorel@linux.ibm.com>,
+        "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+        Sergio Lopez <slp@redhat.com>,
+        Tony Krowiak <akrowiak@linux.ibm.com>,
+        Vivek Goyal <vgoyal@redhat.com>
+Subject: [PATCH v5 00/21] virtio-mem: Paravirtualized memory hot(un)plug
+Date:   Fri, 26 Jun 2020 09:22:27 +0200
+Message-Id: <20200626072248.78761-1-david@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 01:49:42
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- qemu-arm@nongnu.org, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1OWeKngPnI35
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: Jzo3wL3T2QEj
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+This is the very basic, initial version of virtio-mem. More info on
+virtio-mem in general can be found in the Linux kernel driver v2 posting
+[1] and in patch #10. The Linux driver is now upstream.
 
-> On 6/25/20 10:12 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->> On 6/25/20 8:37 AM, Markus Armbruster wrote:
->>> C=C3=A9dric Le Goater <clg@kaod.org> writes:
->>>
->>>> On 6/22/20 10:31 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->>>>> On 6/22/20 8:27 AM, C=C3=A9dric Le Goater wrote:
->>>>>> On 6/21/20 12:58 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->>>>>>> Add a description field to distinguish between multiple devices.
->>>
->>> Pardon my lack of imagination: how does this help you with debugging?
->>=20
->> Ah, the patch subject is indeed incorrect, this should be:
->> "... for *tracing* purpose" (I use tracing when debugging).
->>=20
->> In the next patch, we use the 'description' property:
->>=20
->> +# pca9552.c
->> +pca9552_gpio_status(const char *description, const char *buf) "%s GPIOs
->> 0-15 [%s]"
->>=20
->> So when the machine has multiple PCA9552 and guest accesses both,
->> we can distinct which one is used. For me having "pca1" / "pca0"
->> is easier to follow than the address of the QOM object.
->>=20
->>>
->>>>>> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
->>>>>>
->>>>>> Could it be a QOM attribute ?=20
->>>>>
->>>>> What do you call a 'QOM attribute'?
->>>>> Is it what qdev properties implement?
->>>>> (in this case via DEFINE_PROP_STRING).
->>>>
->>>> I meant a default Object property, which would apply to all Objects.=
-=20
->>>
->>> Good point.  Many devices have multiple component objects of the same
->>> type.
->>>
->>>> What you did is fine, so :
->>>>
->>>> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
->>>>
->>>> but, may be, a well defined child name is enough for the purpose.
->>>
->>> object_get_canonical_path() returns a distinct path for each (component=
-)
->>> object.  The path components are the child property names.
->>>
->>> Properties can have descriptions: object_property_set_description().
->>=20
->> TIL object_property_set_description :>
->>=20
->> Ah, there is no equivalent object_property_get_description(),
->> we have to use object_get_canonical_path(). Hmm, not obvious.
->>=20
->>>
->>> Sufficient?
->>=20
->> I don't know... This seems a complex way to do something simple...
->> This is already a QDEV. Having to use QOM API seems going
->> backward, since we have the DEFINE_PROP_STRING() macros available
->> in "hw/qdev-properties.h".
->>=20
->> Maybe I'm not seeing the advantages clearly. I'll try later.
->
-> The canonical path is not very helpful in trace log...
+This series now contains a resend of [3]:
+    "[PATCH v1] pc: Support coldplugging of virtio-pmem-pci devices on all
+     buses"
 
-Why?
+The patches can be found at:
+    https://github.com/davidhildenbrand/qemu.git virtio-mem-v5
 
-Okay, I checked the code.  Since the devices in question don't get a
-composition tree parent assigned, realize puts them in the
-/machine/unattached orphanage.  The canonical path is something like
-"/machine/unattached/device[6]", which is less than clear.
+"The basic idea of virtio-mem is to provide a flexible,
+cross-architecture memory hot(un)plug solution that avoids many limitations
+imposed by existing technologies, architectures, and interfaces."
 
-The components of the canonical path are the names of the QOM child
-properties.  object_get_canonical_path_component() returns the last one,
-in this case "device[6]".
+There are a lot of addons in the works (esp. protection of unplugged
+memory, better hugepage support (esp. when reading unplugged memory),
+resizeable memory backends, support for more architectures, ...), this is
+the very basic version to get the ball rolling.
 
-If we made the devices QOM children of some other device, we could name
-the child properties "pca0" and "pca1".
-object_get_canonical_path_component() would then return the strings you
-want to see.
+The first patch is a resend. Patches #2-#9 make sure we don't have any
+sudden surprises e.g., if somebody tries to pin all memory in RAM blocks,
+resulting in a higher memory consumption than desired. The remaining
+patches add basic virtio-mem along with support for x86-64. The last patch
+indicates to the guest OS the maximum possible PFN using ACPI SRAT, such
+that Linux can properly enable the swiotlb when booting only with DMA
+memory.
 
-We make a device a QOM child of some QOM parent device only if the child
-is a component device of the parent (hence the name "composition
-tree").
+[1] https://lkml.kernel.org/r/20200311171422.10484-1-david@redhat.com
+[2] https://lkml.kernel.org/r/20200507140139.17083-1-david@redhat.com
+[3] https://lkml.kernel.org/r/20200525084511.51379-1-david@redhat.com
+[3] https://lkml.kernel.org/r/20200610075153.33892-1-david@redhat.com
 
-Are these devices integral components of something else, or are they
-separate chips?
+Cc: teawater <teawaterz@linux.alibaba.com>
+Cc: Pankaj Gupta <pankaj.gupta.linux@gmail.com>
 
-> The description I set matches the hardware definitions
-> and is easier to follow, see patch #6 (where it is set)
-> where the description comes from:
->
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg714658.html
->
->   Description name taken from:
->   https://github.com/open-power/witherspoon-xml/blob/master/witherspoon.x=
-ml
->
-> So in this particular case I don't find the canonical pathname
-> practical (from an hardware debugging perspective).
+v4 -> v5:
+- Rebased, added acks/rb's
+- "pc: Support coldplugging of virtio-pmem-pci devices on all buses"
+-- Included it now, for simplicity
+- "linux-headers: update to contain virtio-mem"
+-- Dropped, because header changes are already upstream now
+- "MAINTAINERS: Add myself as virtio-mem maintainer"
+-- Reference status page
 
-Personally, I'd be content with i2c bus and address for debugging
-purposes.
+v3 -> v4
+- Adapt to virtio-mem config layout change (block size now is 64bit)
+- Added "numa: Auto-enable NUMA when any memory devices are possible"
 
-The i2c buses *are* components: canonical paths look like
-"/machine/soc/i2c/aspeed.i2c.3".  The combination of
-object_get_canonical_path_component(dev) and
-object_property_get_uint(dev, "address", &error_abort) identifies any
-i2c device on this machine, not just the two you decorate with a
-description string.
+v2 -> v3:
+- Rebased on upstream/[3]
+- "virtio-mem: Exclude unplugged memory during migration"
+-- Added
+- "virtio-mem: Paravirtualized memory hot(un)plug"
+-- Simplify bitmap operations, find consecutive areas
+-- Tweak error messages
+-- Reshuffle some checks
+-- Minor cleanups
+- "accel/kvm: Convert to ram_block_discard_disable()"
+- "target/i386: sev: Use ram_block_discard_disable()"
+-- Keep asserts clean of functional things
 
+v1 -> v2:
+- Rebased to object_property_*() changes
+- "exec: Introduce ram_block_discard_(disable|require)()"
+-- Change the function names and rephrase/add comments
+- "virtio-balloon: Rip out qemu_balloon_inhibit()"
+-- Add and use "migration_in_incoming_postcopy()"
+- "migration/rdma: Use ram_block_discard_disable()"
+-- Add a comment regarding pin_all vs. !pin_all
+- "virtio-mem: Paravirtualized memory hot(un)plug"
+-- Replace virtio_mem_discard_inhibited() by
+   migration_in_incoming_postcopy()
+-- Drop some asserts
+-- Drop virtio_mem_bad_request(), use virtio_error() directly, printing
+   more information
+-- Replace "Note: Discarding should never fail ..." comments by
+   error_report()
+-- Replace virtio_stw_p() by cpu_to_le16()
+-- Drop migration_addr and migration_block_size
+-- Minor cleanups
+- "linux-headers: update to contain virtio-mem"
+-- Updated to latest v4 in Linux
+- General changes
+-- Fixup the users of the renamed ram_block_discard_(disable|require)
+-- Use "X: cannot disable RAM discard"-styled error messages
+- Added
+-- "virtio-mem: Migration sanity checks"
+-- "virtio-mem: Add trace events"
+
+David Hildenbrand (21):
+  pc: Support coldplugging of virtio-pmem-pci devices on all buses
+  exec: Introduce ram_block_discard_(disable|require)()
+  vfio: Convert to ram_block_discard_disable()
+  accel/kvm: Convert to ram_block_discard_disable()
+  s390x/pv: Convert to ram_block_discard_disable()
+  virtio-balloon: Rip out qemu_balloon_inhibit()
+  target/i386: sev: Use ram_block_discard_disable()
+  migration/rdma: Use ram_block_discard_disable()
+  migration/colo: Use ram_block_discard_disable()
+  virtio-mem: Paravirtualized memory hot(un)plug
+  virtio-pci: Proxy for virtio-mem
+  MAINTAINERS: Add myself as virtio-mem maintainer
+  hmp: Handle virtio-mem when printing memory device info
+  numa: Handle virtio-mem in NUMA stats
+  pc: Support for virtio-mem-pci
+  virtio-mem: Allow notifiers for size changes
+  virtio-pci: Send qapi events when the virtio-mem size changes
+  virtio-mem: Migration sanity checks
+  virtio-mem: Add trace events
+  virtio-mem: Exclude unplugged memory during migration
+  numa: Auto-enable NUMA when any memory devices are possible
+
+ MAINTAINERS                    |   9 +
+ accel/kvm/kvm-all.c            |   4 +-
+ balloon.c                      |  17 -
+ exec.c                         |  52 ++
+ hw/arm/virt.c                  |   2 +
+ hw/core/numa.c                 |  17 +-
+ hw/i386/Kconfig                |   1 +
+ hw/i386/microvm.c              |   1 +
+ hw/i386/pc.c                   |  66 +--
+ hw/i386/pc_piix.c              |   1 +
+ hw/i386/pc_q35.c               |   1 +
+ hw/s390x/s390-virtio-ccw.c     |  22 +-
+ hw/vfio/ap.c                   |   8 +-
+ hw/vfio/ccw.c                  |  11 +-
+ hw/vfio/common.c               |  53 +-
+ hw/vfio/pci.c                  |   6 +-
+ hw/virtio/Kconfig              |  11 +
+ hw/virtio/Makefile.objs        |   2 +
+ hw/virtio/trace-events         |  10 +
+ hw/virtio/virtio-balloon.c     |  10 +-
+ hw/virtio/virtio-mem-pci.c     | 157 ++++++
+ hw/virtio/virtio-mem-pci.h     |  34 ++
+ hw/virtio/virtio-mem.c         | 873 +++++++++++++++++++++++++++++++++
+ include/exec/memory.h          |  41 ++
+ include/hw/boards.h            |   1 +
+ include/hw/pci/pci.h           |   1 +
+ include/hw/vfio/vfio-common.h  |   4 +-
+ include/hw/virtio/virtio-mem.h |  86 ++++
+ include/migration/colo.h       |   2 +-
+ include/migration/misc.h       |   2 +
+ include/sysemu/balloon.h       |   2 -
+ migration/migration.c          |  15 +-
+ migration/postcopy-ram.c       |  23 -
+ migration/rdma.c               |  18 +-
+ migration/savevm.c             |  11 +-
+ monitor/hmp-cmds.c             |  16 +
+ monitor/monitor.c              |   1 +
+ qapi/misc.json                 |  64 ++-
+ target/i386/sev.c              |   7 +
+ 39 files changed, 1529 insertions(+), 133 deletions(-)
+ create mode 100644 hw/virtio/virtio-mem-pci.c
+ create mode 100644 hw/virtio/virtio-mem-pci.h
+ create mode 100644 hw/virtio/virtio-mem.c
+ create mode 100644 include/hw/virtio/virtio-mem.h
+
+-- 
+2.26.2

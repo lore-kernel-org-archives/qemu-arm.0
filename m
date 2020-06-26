@@ -1,98 +1,108 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp775741lfm;
-        Fri, 26 Jun 2020 13:14:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzJb5fZQWXnSYY9pxr6JYmwom98JaJffH8P5XkMeYP9ZNE0fJNd3XLNoTLmlKLd1Wu4DCg4
-X-Received: by 2002:a25:c052:: with SMTP id c79mr7783020ybf.23.1593202483682;
-        Fri, 26 Jun 2020 13:14:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593202483; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp836986lfm;
+        Fri, 26 Jun 2020 14:41:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZHtTTG6MuNm7+DFlUbn93L79JaAfiKR4rh6c3lY4jzQW6rUhPTMTSwdkZM86TPmvYbNaz
+X-Received: by 2002:a25:504d:: with SMTP id e74mr7697331ybb.47.1593207671804;
+        Fri, 26 Jun 2020 14:41:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593207671; cv=none;
         d=google.com; s=arc-20160816;
-        b=i2uMIFs9wH6inrvSagE+8ykwY2aZSDDazw0VChYcNaW3H+EATfeaKfv+3DQ0WpdHv6
-         hxLOvRGTWFoc2UJMlpt5vYnzOU9qZFr0LFtBr1eD4QwiUx6Z/QrNoeZYcrVqH84K6VKe
-         KKok+WIOFr3S6TKt26R0Q34htGGOQMdYvsE8lc6gR+9HM+ON17O20yG0wrTFo/ZhWnat
-         31TXKpZB5untN8ESj1dMEai+eEE4xF/v61RZt/8bUKmSr9opEGBG+XoyYv6+0gAsEaNT
-         RI7tUUygl1FcZBOkjwotOR7mjUqyhppvv73M8Dr6Crbdc8VsIzynXREM+Dyy4oBgWibz
-         kC8Q==
+        b=pHnpk9VnBtvr5pgsLcuXlQk//jt1Oq3Udf6WHfVj9xvdQty9ajh//qS406d1DvskQi
+         8LF1Y58G0pcYDGQGhDu1ZdIX8Hp5ya8AkkatdezVfE9tkt3P5LUKa35AdJV5Fw2zaA5z
+         tZpKEdlTFs3mTsmfvYE049o0HQJcMOL/qF0sYHKfOL/ErdkConMTd0aBIY9WMSn05c82
+         Uo9SMoi46EADPqB4DfVu4Z8p01e4rUCnEQwTOaquyNCrqzPRWCA0nhVSe/7vEEgySeJz
+         R3f47fgdHB5Jdbbf6Ui2/qEVX57Hl3zy2KLKMmwiAYh6A+UrVlpkThzMuFi4lqalD7zC
+         cKKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :message-id:date:references:in-reply-to:subject:cc:to:dkim-signature;
-        bh=msWDRdQRNxC30MFl3LwnTsr1ZyE7PDGQXo/A0w72/14=;
-        b=o3iNgDLlw2bwAleoEjru1XHO+hKa5L2l+PokpQRnJ+cqMko7EO8G9a32XJxP+xHA7M
-         sKA2nl2xnmeUQ/vM3LMHhrqJcJfPNWuY96W8pEsqL6D12MHC7m5j9Ggb4ZRPt+/Yyjli
-         JwlW7brohqDqyBx96OYnhn/00ckebmb/mDpNOuaS1GVXPhkewHtzA+tHuP2uoP/xxVUM
-         HOZw0lpQfhzUHUrhTpPklEYLnzdhymgjwZVJOIY0VER1HWesZ8S6y9HzApbpQd0QlT0t
-         yDRnDYVMQAFGIBcqj/Oo6Y9fAiPTItq9plaTVNA0yOMew5U5TtZ8iNyFYIKttnQ2wk2+
-         XbHA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=OonjJjqVdhCWklfLRYzsIcJOt3ledBb4lvdwgj9eqcw=;
+        b=BNYAxxINTaIHft0GfZhNJLh3ydO173LAHZ97C3J4XyAwacudFFsDojzBY+5ZRqTDoK
+         Zw4vJE7H0U43sG4B+oIAPFNhRp+bfbzag3c/neVwi+WVmmYKkO/gFFH6FwvKXH+U2lCr
+         i4ZBQhVCZ8Nnq9xSXIYLYMXlMjJssGooHEOZu4Mrg4HQ8XRvg4fOB+gYD2G89VjqznGD
+         pVmGYxHENhZFLhLSYcO55KmVJUi7+B75gtXxHxM2KTUNeF2xtkx16M7ctes2Cc8m4247
+         56TSTIfnA75X8/IWetH6i7JG74BoZObZRpurGxuAxnuN2IwdyUtgngiV/mOTM5lV0WPB
+         bX7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@keithp.com header.s=mail header.b=Z5FcMgF6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=V+G+LAqI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 145si17998933ybf.80.2020.06.26.13.14.43
+        by mx.google.com with ESMTPS id q16si26593098ybk.13.2020.06.26.14.41.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jun 2020 13:14:43 -0700 (PDT)
+        Fri, 26 Jun 2020 14:41:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@keithp.com header.s=mail header.b=Z5FcMgF6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53528 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=V+G+LAqI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46516 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1joukF-0000TX-1f
-	for alex.bennee@linaro.org; Fri, 26 Jun 2020 16:14:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55646)
+	id 1jow5v-0007Nn-5i
+	for alex.bennee@linaro.org; Fri, 26 Jun 2020 17:41:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <keithp@keithp.com>)
- id 1jouk7-0000TL-5F; Fri, 26 Jun 2020 16:14:35 -0400
-Received: from home.keithp.com ([63.227.221.253]:46130 helo=elaine.keithp.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <keithp@keithp.com>)
- id 1jouk5-0005TO-Me; Fri, 26 Jun 2020 16:14:34 -0400
-Received: from localhost (localhost [127.0.0.1])
- by elaine.keithp.com (Postfix) with ESMTP id AD1023F2CB96;
- Fri, 26 Jun 2020 13:14:31 -0700 (PDT)
-X-Virus-Scanned: Debian amavisd-new at keithp.com
-Received: from elaine.keithp.com ([127.0.0.1])
- by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
- with LMTP id BkigoMvGP13E; Fri, 26 Jun 2020 13:14:31 -0700 (PDT)
-Received: from keithp.com (168-103-152-72.tukw.qwest.net [168.103.152.72])
- by elaine.keithp.com (Postfix) with ESMTPSA id 569373F2CA82;
- Fri, 26 Jun 2020 13:14:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
- t=1593202471; bh=msWDRdQRNxC30MFl3LwnTsr1ZyE7PDGQXo/A0w72/14=;
- h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
- b=Z5FcMgF6n+uG4v4yqhQogyuyKXfN63xj99pp4NCbpDHTrMDrDndbT4XPCiOlHHLtY
- X3LExSWhUw5hfpytQTek30eKJGT1UmHAb1E/WWP5DrkTc30hDzhxo5Ey16PhAQ65y9
- autN/xNXgX5PcCqhd0qN4zJnG7gm+O+mbG0QVnBqlvX25dgpRcfkyexgfh0TQQErjZ
- vDaaBrP9eNtXjIYfCPbrv+X+zkvNj0hFZ3agzt7IFif580ltBWvpqSzJf/VU+CG1Y3
- u7wWjhdU98M4cOYTLVGh3n9lPlhDJ76CRk/M+yqxqbVq/das4fK3WpARFm9vS+Ym/t
- 1rd5ZbSpHlC+w==
-Received: by keithp.com (Postfix, from userid 1000)
- id CEAB61582167; Fri, 26 Jun 2020 13:14:30 -0700 (PDT)
-To: Max Filippov <jcmvbkbc@gmail.com>, Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Subject: Re: [PATCH] hw/arm: Add 'virtm' hardware
-In-Reply-To: <CAMo8Bf+57b=u12nMp4EWaza3WdOQpx_L_O=HvdouM99wW-Xe=A@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jow5k-0007KM-Oz
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 17:41:00 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:39500)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jow5h-0004OV-TT
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 17:41:00 -0400
+Received: by mail-oi1-x241.google.com with SMTP id w17so8573138oie.6
+ for <qemu-arm@nongnu.org>; Fri, 26 Jun 2020 14:40:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=OonjJjqVdhCWklfLRYzsIcJOt3ledBb4lvdwgj9eqcw=;
+ b=V+G+LAqIsRzSpKX8lle4D/FSD88mCl63QC0y9bFvci6sUi1svc/izahcTdfM5DwXfK
+ h4QWFA9HzuwEvbY1CaENtGJAmsQVtQmztFEeRtMuEzr02MqnJf2e5SKVDHJcxyRYAmXN
+ 1uq16Es2Ip9zKsplVg6/4/+m4x0+AcsdoBM3ztW2/x1o1JGqeKA9TtOsFnSz9NPKfxlv
+ ue+VDRw2QfvLfv0unPT12JcOGOkrhv1eDiDtGTOoG1fbEKxptiT1O50w4hUfxAIgs7YT
+ gHPEOYlo8qREL7/uOXpCtIgolvsPuzjGNqw6iVdsj0FDh013fxpMXDgl9S91vB4eFh0Q
+ vSpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=OonjJjqVdhCWklfLRYzsIcJOt3ledBb4lvdwgj9eqcw=;
+ b=fc4Eu32sYh3FqKWGSB2jCStUaxuwOq1GpWXpaqUD/UwNRke7fyE9o1YxLByM0sle2a
+ SkMN2R/4TSVsbPjCX28hM1usi/4Ut2FkIuS9+oI9MN5KvGGnJa/9biKdPk3fu1qV8PoJ
+ QnUJCiuGLQHjYdC8verbT1iewvTE2M1HebCjsoyL4jJRl4grTr4oHajEsLeTB3wBikRO
+ yGGpcb8OjC954BF0ZKlNyGg1lRNm41ZIvBRPWWFZHDkMLO1vcSQBW1IBt9v+TmIahykv
+ 5rtaNpiY/Ovv4nZp0BWX0WVA6KMjC+z+w0CAkZ89EBqgfNQvI08iIAF/rZQNhaC6kWMv
+ cFyg==
+X-Gm-Message-State: AOAM53034NLVFGcPyi8XHrbaPxyLy9hIURcd6CilHW7rapQiCR/AJrWu
+ FwNKs/I4pauihKEoPIqhcSYBuyUqM9M4+RTCRVRUMQ==
+X-Received: by 2002:aca:1a07:: with SMTP id a7mr4092816oia.163.1593207656006; 
+ Fri, 26 Jun 2020 14:40:56 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200625230740.549114-1-keithp@keithp.com>
  <CAFEAcA9ut5CVAgRTP-_BK3WpiDSmitFowZMe549TvgSAjj+Kfg@mail.gmail.com>
  <87imfdixv9.fsf@keithp.com>
  <CAFEAcA_ZRMpqAhR7BL05a+O_C54fhXZn8-+kC_KUU5n3BpzoCw@mail.gmail.com>
  <CAMo8Bf+57b=u12nMp4EWaza3WdOQpx_L_O=HvdouM99wW-Xe=A@mail.gmail.com>
-Date: Fri, 26 Jun 2020 13:14:30 -0700
-Message-ID: <877dvtinyx.fsf@keithp.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha256; protocol="application/pgp-signature"
-Received-SPF: pass client-ip=63.227.221.253; envelope-from=keithp@keithp.com;
- helo=elaine.keithp.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 16:12:53
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+ <877dvtinyx.fsf@keithp.com>
+In-Reply-To: <877dvtinyx.fsf@keithp.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Jun 2020 22:40:44 +0100
+Message-ID: <CAFEAcA_E3MUbfgf11j=FdpeNbCr622g3WoNhWdMD0ONUAynM-w@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: Add 'virtm' hardware
+To: Keith Packard <keithp@keithp.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::241;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x241.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -105,45 +115,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Max Filippov <jcmvbkbc@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to: "Keith Packard" <keithp@keithp.com>
-From: "Keith Packard" via <qemu-arm@nongnu.org>
-X-TUID: BmHHZPHvkW98
+X-TUID: +pDHTkefHCow
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+On Fri, 26 Jun 2020 at 21:14, Keith Packard <keithp@keithp.com> wrote:
+>
+> Max Filippov <jcmvbkbc@gmail.com> writes:
+>
+> > Most of them are due to unsupported/differently implemented
+> > syscalls.
+>
+> Yeah, I think that was the basis of my confusion -- qemu-arm is not a
+> bare metal environment, and my work is focused on enabling application
+> development in that environment.
 
-Max Filippov <jcmvbkbc@gmail.com> writes:
+Yes, but for certain cases of bare-metal code that doesn't need to
+touch devices or use any privileged-only instructions it may be
+a usable environment. (This is more side-effect than intentional:
+as you say the primary use case is Linux userspace binaries.)
 
-> Most of them are due to unsupported/differently implemented
-> syscalls.
-
-Yeah, I think that was the basis of my confusion -- qemu-arm is not a
-bare metal environment, and my work is focused on enabling application
-development in that environment.
-
-=2D-=20
-=2Dkeith
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl72VyYACgkQ2yIaaQAA
-ABEXpw/+ME0hsqDba1gmQY54wODhKE5wQn6I1AkSPsNmDN0rJ6sxM3EdesLlQOEh
-qLWQzBD9cSbcbkZrk8s9/jxjkrSnjbq+lPObGOrLTLbSgr9+AAerrozOrjDq4sKm
-W3DzWgFPxhj55IdSLrJhfLh2kgYPGLh+3cbhcfMaCDTULm2PD/KzfcL+6k8YAP+3
-DV7KFFKKbAzGAplZFVpifIpES6I0aCUkdcYypHlN2gPy7Ifh26du3DiEE4FdwGHe
-cunoK4rvlPHCiAyJusnetMb+OWzOx7utSSiUvB6naVHj4fBqaX46sZih6i8cGt5Y
-ONx7Pq2vwdVzd3I9yCRhIZmkG9wUvDapSl48kx7ZkNQPX5oQ903U9GUzeO5dR3QB
-8cZ6gurgIW59JMBhehpRDeljW+PMeBW/YFv2vWNvKNzcf0RQwzslPjXLG3Tm/Prd
-4xxPy8hYk4CZew5ssyKM87eNnxkA1eoVomR/IIiBWmZVvOuLDj2oF+ZqKYmx9Zjc
-/dtT7WttVUYkeF50V5Cy+GeeYbh66CA3LLUQVepmaDIGjw1DASQcOV2ZE0msXpiS
-kFI3OwCZf6JTachLNl0xAiLb10S00Rxf7WywdGkh7yc0TosxZc2GsTBdfqYeErAV
-YsFO1bOjiywNl7vJ8xrw8th8JACk5+xbXnCBRAcxaU6Jtv0F9XE=
-=3Bbs
------END PGP SIGNATURE-----
---=-=-=--
+thanks
+-- PMM

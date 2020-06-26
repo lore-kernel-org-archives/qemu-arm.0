@@ -1,95 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1767309lfm;
-        Thu, 25 Jun 2020 16:08:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyXOTqxdAZTYxjDonsvwYOM5Y9647EXL1ql0wr780KOkDXyDbovUNtKHx1XLCueHqZa6jdd
-X-Received: by 2002:a25:512:: with SMTP id 18mr370147ybf.432.1593126489892;
-        Thu, 25 Jun 2020 16:08:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593126489; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp230155lfm;
+        Fri, 26 Jun 2020 01:39:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyxG7+xLFeUvWkX7tJTdkP3FDHcX32kDZu7lSjSlVXX79w6Mc+P6f3IQsr2bBSbKIaASNhV
+X-Received: by 2002:a5b:290:: with SMTP id x16mr3120152ybl.75.1593160751163;
+        Fri, 26 Jun 2020 01:39:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593160751; cv=none;
         d=google.com; s=arc-20160816;
-        b=NWkDJBm3hZuRGltMQkAJHeviH3psrFVDVpeO7HYF8iM/FG+SByyuDP90B5xoJ3+y9s
-         T0kfZjHtJYygHGNilUltsEcYq87R2KPZJuQMaPKofXbRSAER9aSRZ1FVU2BcHkiqdOFp
-         8d+HvGqOVdQZ9Tb/m8Gasvz72BoRCtlnkUqForflUKWw926IgJ+j07VJuPSSN2Yzsqz3
-         syMO9Ytjp7FHMa+3f2MotT2YcxBtx45uHR7ciNAFxkGXcjdNe9JpO4zzJ3IneUISpZr1
-         gQfo8oucOD2ruAdwKk43yXyS2VXcFRlHXEe+EH5ddVt/ksfGy9qvcdC4EB67akExk9+0
-         r3XA==
+        b=Tw2fh26iKLUTJhtRalVGUNsJoiYKTQqXdzH/av3rT5yTJF6L7NVA1X+ao5AymL97sQ
+         U72Rp4XOMQyiEDm+VE+Tu/HdSSLblBcT+SI+2Tv6rdveR1FP+90SHhv78d/kya5COCHx
+         NPQIae5Q4vB8nSqk9ZZ7PK/1glrvhEGNXuwQnV0qpQYPa9pxUrslbRi733Rqhq/YKKlz
+         Q/d2kf76CljQ+J1ZXHgMkkrnRd6Hn67EBqf513DuKLa7HW29kQhdyD3Z6Ut5bnejbUTq
+         FbTLC1n2zIgUQJ5ombIPb8/dfRHZjtBFFC98Q2ZonEoSQQc/eJmDqActYKNdhCnsjSYI
+         QMBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:dkim-signature;
-        bh=cOX8QAJ3EPQgAxK4L57mFLJ7cJPIOa+r1yhM+kxSWCM=;
-        b=Muya2ptU7p1QJ6CCiOoRnKAL8wp2VyTH20cIIeGe6UvH1HZIwG/Zsa4tz7HIvPGMUj
-         kbSAoPwV5GbHV9XDMenpVVqJTmF0uv0Zsqvw2j7RlBuveR+J5EC2jE4RVNMO94VuAKJE
-         6h7aMuMOUH9c8MTTJe5+jUcGTuDUkYe93gMhmaK0TSUp99NMzbdIKr4BKir22A1NNsfD
-         21E/SDs1Y7nuzkXJ6x388Mr88cffnikj79j7SED4YkIyDSOCKBZCXLWzWXoIFMiK2ntt
-         oLg4oohEQte3S59V3h73Kd87tcjs1FRVQa3ocFCkLgvAcMVQG8OKtgyN0vq6UAeR61Bg
-         eRSw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=aDuYo2EkjliuBpm8C4Ix6MoXdbPblOzQha1faW5jl/8=;
+        b=WwavXnOXUfLH7y7q27W4zAnKhbfmjY19V9LrvvPhgYIjqUxmCJCx6L8yzk+ZamSmWq
+         392EhNOMVTCqO9gv7Q7nYRSyjvsHAMlu2QRVS+Ge6uHFauDx4+bZY4NPB0u16LoQ6wbA
+         D5rUA0++cGcTc32FxOuic/2esV9zECHLIUw1wfHtS2CKwJMJ2kmHODdEt20r3Xn/yMQ7
+         7m+6LfPPjASTzunEkyMrJCVkltrvj0urwUdfKqtmbTNVcIOK2A/4pbs9zadlNs6UfqZY
+         tPCFQuYMus3Zn6nHm7fGBbi2ErgoRFbNmRyu8uhPw9Kc0dZ9fmfCX5ex9fnkNE5ZPT/+
+         C+Lg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@keithp.com header.s=mail header.b=kibJPPa7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=g3J6QXkd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y6si24860492ybk.106.2020.06.25.16.08.09
+        by mx.google.com with ESMTPS id e7si13477511ybp.191.2020.06.26.01.39.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jun 2020 16:08:09 -0700 (PDT)
+        Fri, 26 Jun 2020 01:39:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@keithp.com header.s=mail header.b=kibJPPa7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55052 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=g3J6QXkd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58166 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1joayX-0000NL-8X
-	for alex.bennee@linaro.org; Thu, 25 Jun 2020 19:08:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45398)
+	id 1jojt8-0002Q8-HV
+	for alex.bennee@linaro.org; Fri, 26 Jun 2020 04:39:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46074)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <keithp@keithp.com>)
- id 1joayQ-0000N7-4J; Thu, 25 Jun 2020 19:08:02 -0400
-Received: from home.keithp.com ([63.227.221.253]:39444 helo=elaine.keithp.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <keithp@keithp.com>)
- id 1joayN-0007Gf-Hi; Thu, 25 Jun 2020 19:08:01 -0400
-Received: from localhost (localhost [127.0.0.1])
- by elaine.keithp.com (Postfix) with ESMTP id 9C59A3F2CB6C;
- Thu, 25 Jun 2020 16:07:54 -0700 (PDT)
-X-Virus-Scanned: Debian amavisd-new at keithp.com
-Received: from elaine.keithp.com ([127.0.0.1])
- by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
- with LMTP id pSeNJChwUhd4; Thu, 25 Jun 2020 16:07:53 -0700 (PDT)
-Received: from keithp.com (168-103-152-72.tukw.qwest.net [168.103.152.72])
- by elaine.keithp.com (Postfix) with ESMTPSA id 676063F2CB6A;
- Thu, 25 Jun 2020 16:07:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
- t=1593126473; bh=B3D6iPyP1jH0LIZnd+CMsCai+RzYgkvxsG4oF0ueQG4=;
- h=From:To:Cc:Subject:Date:From;
- b=kibJPPa7u0FAux5UhvOQG0Hnpcb7xk5P0TzQXlAvZcS6PKDFWOAAz8Alf3xP8VUVD
- JWqWPp8MJh+nPTO4ts4Q3Yero2R797rOUp6YsFbt6zEep3RvFqYEKUBuEF/dTMo1z5
- kCR5jvdFwmrrPZiTo/jWQuXLVDVCpFNnPN0ItbZE5jjOrzyWBaHJK3gokwKi+Aj9Vs
- m/WZtbKzemytEMV/WseZBFVda4d5HOOjSFgsZeBv0gQ87ytb4T+XR1cOeW1HPvVJJm
- xkaHCNfdnAITkEu7S/e53q80oYcJDEiFRGXOInBpnebK4ifHFnqMYE7w/cRdckCoEt
- iHn4hrkb3ZFag==
-Received: by keithp.com (Postfix, from userid 1000)
- id 633851582167; Thu, 25 Jun 2020 16:07:51 -0700 (PDT)
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Keith Packard <keithp@keithp.com>, qemu-arm@nongnu.org
-Subject: [PATCH] hw/arm: Add 'virtm' hardware
-Date: Thu, 25 Jun 2020 16:07:40 -0700
-Message-Id: <20200625230740.549114-1-keithp@keithp.com>
-X-Mailer: git-send-email 2.27.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jojt1-0002Ps-IA
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 04:39:03 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:40350)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jojsz-0001bg-RP
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 04:39:03 -0400
+Received: by mail-ot1-x342.google.com with SMTP id q21so362844otc.7
+ for <qemu-arm@nongnu.org>; Fri, 26 Jun 2020 01:39:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=aDuYo2EkjliuBpm8C4Ix6MoXdbPblOzQha1faW5jl/8=;
+ b=g3J6QXkdwi0EwnTS4hyInYwAbkyTQRtYTNrpez0mxfpBINWMg9BxUPNi0HuiSzfiH4
+ TQnnFfptS2JrtWYmnGcr2kE7JDTMnbaIUzCEpcOw1Bijd4RJ30IP2tPtGW3hJJ9VuKbR
+ jUy5B+zu6+5sHaBNW4vuNZW8dUWk3WirTXH5dk3I2U0zM6GSWlUlOxUMth8mg8WnhhIP
+ 7MCYmeaXXsPjjiNmoKZsiT6se0FJG5Fo2IJ8DQ6wRSArs5FWJ8O3fGjXa+2ADJ8NEesS
+ itk8jG9F1MDwXSLJ0MEWrYRhLepy1jTeTTrd4HSelK5GSumMcQdMwEIbtG6n+viU3HR3
+ 1qhQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=aDuYo2EkjliuBpm8C4Ix6MoXdbPblOzQha1faW5jl/8=;
+ b=BmPzBjTxOBcUS5fzaWNfVpRBu2USUMWIUBgtK3bguXvOhftFDBjOgjutbwfliivWw9
+ xOnNxMDMMDDMTPhMP7aNQRotdXzDXXw7stuc5azelI08KXGP9YlVJ3iCCtxhOJFi/D8v
+ VOCiTOCtP8jTXbd2Km457HE04lYepuzK8VSG8WysVjpbeeq4PEEkiJbeizDEQEk5f/lt
+ rkUgUxQe6BFxw6kTPCUkdM2fLDvQ2blMQ/zeYhB8EzCERe2v4WuTiYm4/dywzWucKJk9
+ oAc/mgD1heIOqnn9sALVvttqdJDynLbLAaf0qjursPARld7E/qdVNc0nORVc5CPs+cUN
+ 7zLw==
+X-Gm-Message-State: AOAM532xw4348wdceSacKJNEakCO7oiRZvlZ7+56tSGzD5H0IHEQVcXu
+ APUNh1s8/83MdjoyWcIWBX/Z+UI74mBLU9oEaunpIA==
+X-Received: by 2002:a9d:5786:: with SMTP id q6mr1527643oth.135.1593160740404; 
+ Fri, 26 Jun 2020 01:39:00 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.227.221.253; envelope-from=keithp@keithp.com;
- helo=elaine.keithp.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/25 19:07:55
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+References: <20200625230740.549114-1-keithp@keithp.com>
+In-Reply-To: <20200625230740.549114-1-keithp@keithp.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Jun 2020 09:38:49 +0100
+Message-ID: <CAFEAcA9ut5CVAgRTP-_BK3WpiDSmitFowZMe549TvgSAjj+Kfg@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: Add 'virtm' hardware
+To: Keith Packard <keithp@keithp.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -102,177 +110,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to: Keith Packard <keithp@keithp.com>
-From: Keith Packard via <qemu-arm@nongnu.org>
-X-TUID: ZPFl4Cc4QPGL
+X-TUID: IvJrhIw5lvcl
 
-'virtm' is a hardware target that is designed to be used for compiler
-and library testing on Cortex-M processors. It supports all cortex-m
-processors and includes sufficient memory to run even large test
-cases.
+On Fri, 26 Jun 2020 at 00:07, Keith Packard <keithp@keithp.com> wrote:
+>
+> 'virtm' is a hardware target that is designed to be used for compiler
+> and library testing on Cortex-M processors. It supports all cortex-m
+> processors and includes sufficient memory to run even large test
+> cases.
+>
+> Signed-off-by: Keith Packard <keithp@keithp.com>
 
-Signed-off-by: Keith Packard <keithp@keithp.com>
----
- MAINTAINERS          |   9 +++-
- hw/arm/Makefile.objs |   2 +-
- hw/arm/virtm.c       | 112 +++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 121 insertions(+), 2 deletions(-)
- create mode 100644 hw/arm/virtm.c
+So, I'm really dubious about adding more "virtual"
+not-real-hardware boards. We have "virt" because we
+absolutely have to have it for KVM purposes; but otherwise
+"emulate real hardware" gives us a concrete specification
+of what we're trying to do and tends to lead us into fewer
+messy swamps than making up virtual platforms does.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 1b40446c73..4c7e394dd6 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -850,9 +850,16 @@ Virt
- M: Peter Maydell <peter.maydell@linaro.org>
- L: qemu-arm@nongnu.org
- S: Maintained
--F: hw/arm/virt*
-+F: hw/arm/virt.c
-+F: hw/arm/virt-acpi-build.c
- F: include/hw/arm/virt.h
- 
-+Virt M
-+M: Keith Packard <keithp@keithp.com>
-+L: qemu-arm@nongnu.org
-+S: Maintained
-+F: hw/arm/virtm.c
-+
- Xilinx Zynq
- M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
- M: Alistair Francis <alistair@alistair23.me>
-diff --git a/hw/arm/Makefile.objs b/hw/arm/Makefile.objs
-index 534a6a119e..54be15b40a 100644
---- a/hw/arm/Makefile.objs
-+++ b/hw/arm/Makefile.objs
-@@ -1,6 +1,6 @@
- obj-y += boot.o
- obj-$(CONFIG_PLATFORM_BUS) += sysbus-fdt.o
--obj-$(CONFIG_ARM_VIRT) += virt.o
-+obj-$(CONFIG_ARM_VIRT) += virt.o virtm.o
- obj-$(CONFIG_ACPI) += virt-acpi-build.o
- obj-$(CONFIG_DIGIC) += digic_boards.o
- obj-$(CONFIG_EXYNOS4) += exynos4_boards.o
-diff --git a/hw/arm/virtm.c b/hw/arm/virtm.c
-new file mode 100644
-index 0000000000..beda3644f5
---- /dev/null
-+++ b/hw/arm/virtm.c
-@@ -0,0 +1,112 @@
-+/*
-+ * Virtual ARM Cortex M
-+ *
-+ * Copyright © 2020, Keith Packard <keithp@keithp.com>
-+ *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License as published by
-+ * the Free Software Foundation, either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but
-+ * WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, write to the Free Software Foundation, Inc.,
-+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/arm/boot.h"
-+#include "hw/boards.h"
-+#include "exec/address-spaces.h"
-+#include "hw/arm/armv7m.h"
-+#include "hw/misc/unimp.h"
-+#include "cpu.h"
-+
-+#define NUM_IRQ_LINES 32
-+#define ROM_BASE  0x00000000
-+#define ROM_SIZE  0x20000000
-+#define RAM_BASE    0x20000000
-+#define RAM_SIZE    0x20000000
-+
-+static const char *valid_cpus[] = {
-+    ARM_CPU_TYPE_NAME("cortex-m0"),
-+    ARM_CPU_TYPE_NAME("cortex-m3"),
-+    ARM_CPU_TYPE_NAME("cortex-m33"),
-+    ARM_CPU_TYPE_NAME("cortex-m4"),
-+    ARM_CPU_TYPE_NAME("cortex-m7"),
-+};
-+
-+static bool cpu_type_valid(const char *cpu)
-+{
-+    int i;
-+
-+    return true;
-+    for (i = 0; i < ARRAY_SIZE(valid_cpus); i++) {
-+        if (strcmp(cpu, valid_cpus[i]) == 0) {
-+            return true;
-+        }
-+    }
-+    return false;
-+}
-+
-+static void machvirtm_init(MachineState *ms)
-+{
-+    DeviceState *nvic;
-+
-+    if (!cpu_type_valid(ms->cpu_type)) {
-+        error_report("virtm: CPU type %s not supported", ms->cpu_type);
-+        exit(1);
-+    }
-+
-+    MemoryRegion *ram = g_new(MemoryRegion, 1);
-+    MemoryRegion *rom = g_new(MemoryRegion, 1);
-+    MemoryRegion *system_memory = get_system_memory();
-+
-+    /* Flash programming is done via the SCU, so pretend it is ROM.  */
-+    memory_region_init_rom(rom, NULL, "virtm.rom", ROM_SIZE,
-+                           &error_fatal);
-+    memory_region_add_subregion(system_memory, ROM_BASE, rom);
-+
-+    memory_region_init_ram(ram, NULL, "virtm.ram", RAM_SIZE,
-+                           &error_fatal);
-+    memory_region_add_subregion(system_memory, RAM_BASE, ram);
-+
-+    nvic = qdev_new(TYPE_ARMV7M);
-+    qdev_prop_set_uint32(nvic, "num-irq", NUM_IRQ_LINES);
-+    qdev_prop_set_string(nvic, "cpu-type", ms->cpu_type);
-+    qdev_prop_set_bit(nvic, "enable-bitband", true);
-+    object_property_set_link(OBJECT(nvic), OBJECT(get_system_memory()),
-+                                     "memory", &error_abort);
-+    /* This will exit with an error if the user passed us a bad cpu_type */
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(nvic), &error_fatal);
-+
-+    armv7m_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename, ROM_SIZE);
-+}
-+
-+static void virtm_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-+    mc->desc = "Virtual Cortex-M";
-+    mc->init = machvirtm_init;
-+    mc->ignore_memory_transaction_failures = true;
-+    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m3");
-+}
-+
-+static const TypeInfo virtm_type = {
-+    .name = MACHINE_TYPE_NAME("virtm"),
-+    .parent = TYPE_MACHINE,
-+    .class_init = virtm_class_init,
-+};
-+
-+static void virtm_machine_init(void)
-+{
-+    type_register_static(&virtm_type);
-+}
-+
-+type_init(virtm_machine_init)
--- 
-2.27.0
+For instance, this board model claims to handle the M33
+but makes no attempt to set up any of the TrustZone
+related components like the IDAU, so it isn't really
+a useful platform for that CPU. You also enable bitband,
+which is maybe plausible for Cortex-M3/M4 but not for the
+others. This is the kind of area where having a real
+hardware system to check against means we make the
+right choices about what does or doesn't need to be
+present.
 
+thanks
+-- PMM

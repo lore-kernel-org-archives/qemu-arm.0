@@ -1,103 +1,102 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp57301lfm;
-        Thu, 25 Jun 2020 20:51:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzB5Ri4pArpxeFPZbe6WO0M7p+bRBREl0i98S4SaBjgtfMD6N17k3stmdNPKw9rNOS0wkW9
-X-Received: by 2002:a25:ac5e:: with SMTP id r30mr2030621ybd.68.1593143498063;
-        Thu, 25 Jun 2020 20:51:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593143498; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp57601lfm;
+        Thu, 25 Jun 2020 20:52:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxXKZ6NY53l07Mr5K6oVtZvHu78vL0glH9ym6eZCTjN6By9pNcb5TxvrR/yB8jP2Ck8gnu/
+X-Received: by 2002:a5b:610:: with SMTP id d16mr1676654ybq.289.1593143537050;
+        Thu, 25 Jun 2020 20:52:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593143537; cv=none;
         d=google.com; s=arc-20160816;
-        b=ucB4i0MrUp/j6ttdE/13YyIj1rCzzx0laq4fjXwqW4Md01vcL7T2Rxj/vCgd9+e1sq
-         PFWOWUePUl3Veu+J/OSh90/pPJzwdOFSS0WuHQZD7PV3WAWMiFkRemIG1BWa0aEMA7OU
-         kAR6prjDsiiabmTbFn4dQyQDx6ifjV5NCtlsu6uzp4Y0lc+qNUry8hijnjGpytZu3EtW
-         WLlgAHawp8I7hvWbWN8iswLtfEQvzO4mr5zjL3wGUTThMp7b/r242isa4+1YBkQkVt3d
-         HCYfEaBgO2xfQrXuyuo+FEheLuJ2SMl1jcmPVoknoJDTBeFfUQVSRZZzynyqV646tT89
-         NDaA==
+        b=sFcCHlCLx4Z0rXR8ZarMvxDswJRECREMTlicwI0Rc3NAbUj6Cz+pRR2V1lETIoJA3z
+         uuMRgqeJI+pT+opzHA3SLl7hhw2dt8dwvU8W1XzouLW3O/g3axmYzxNgFpJmvtws99cF
+         +XKMuLa0qt+03HrNbvZI0J810A3cd5eZAyBAwVJLoH2CpJ1RPMt3tthgCfuNlNiJVnDN
+         ZMIuzaqTmFSUHfQDdD7taZl3qt0cPyJMSndO9v/9cU6ZWx+AEUdyLDP76fhZ2UiqbSAY
+         +FXsjXd1EmDabWWlv6AsESs8qTlYo5CJKiaS0Q7o8G71c+LtXM+W4IP0Jiy3kYDHFIBI
+         jXoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=OULdj6XcEdTR1qymq8JQYyzbOQeCar6lhcO2Vrh5aX4=;
-        b=T6Tqr+BkRUEjOUd1kgy4ZPAD3RfRra63rRkLBODaxF6vgk5VVj8a3RVjA65xhnB/3D
-         Rm/IRMOGnNoyrf8sUYRHtveaySxOcizopWtJV0ZG+gb/JQZhkg7kNbaGjAwhvBEt72jI
-         /fg/WMO0F1t/01yJkTfHI7f9LCzMS/6mxBE4MXIfbQGmdgNjakpn/MB0NslyR6K1isij
-         RO0CGULUiwD8lCx1kUPy8ZDUAMbR7TtmkrcTDk8shEabzv1p0bQwWVF5XTGDOJvEAXll
-         1o+imGknexzbG7QGFCkfle551h28RgaVt7OVsqOQ4CpubeNR9CvDeOyqA5U87KHblNOB
-         0aqw==
+        bh=kQSqn3JWW0nPzEv9XJciec7vJguWWK+m8v2+R9Ynme4=;
+        b=o0X8J2nhwEWZp0ITbB1XeajT1CkaxbQJ9NVNlyrXgitJuKDDMQlYopbIzFz9mWi/Ih
+         ZnfUxqVo42nfdl3xtnkH7W9djzVBVyHRUq04yWqXCMrpb6LHW3uXqZWbymQ53x2n0sfa
+         e9iMqktnM3l0beglj3bGeRJjntife6BiG4nS7CyEHarIHI3uWDGn7SQYyIrOM1f9W7AH
+         5WxxvG3dcgi3RE+IJDVKVzJ3Tz+I9R+nxQRgoEEkoxzXC5c4Q4+//MlbIcRCLM5TBclM
+         zi1lskZkFad0FafcHYNI4HbEWh8s8Mh17E+obrwmTSMFBvuMtnKDiUgPygYp3IcO2IaG
+         rbLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="mU1fP/xo";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=OS7hXIP8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c83si25386113ybb.261.2020.06.25.20.51.37
+        by mx.google.com with ESMTPS id k17si384487ybh.54.2020.06.25.20.52.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jun 2020 20:51:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Jun 2020 20:52:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="mU1fP/xo";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=OS7hXIP8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50880 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54282 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jofOr-0008PU-DO
-	for alex.bennee@linaro.org; Thu, 25 Jun 2020 23:51:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42754)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jofPU-0001MA-DV
+	for alex.bennee@linaro.org; Thu, 25 Jun 2020 23:52:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42490)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jof6T-00011r-7C
- for qemu-devel@nongnu.org; Thu, 25 Jun 2020 23:32:37 -0400
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:38706)
+ id 1jof6G-0000Tz-9D
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2020 23:32:24 -0400
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:42031)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jof6Q-00023L-14
- for qemu-devel@nongnu.org; Thu, 25 Jun 2020 23:32:36 -0400
-Received: by mail-pf1-x442.google.com with SMTP id x207so4060644pfc.5
- for <qemu-devel@nongnu.org>; Thu, 25 Jun 2020 20:32:33 -0700 (PDT)
+ id 1jof6E-0001yD-8s
+ for qemu-arm@nongnu.org; Thu, 25 Jun 2020 23:32:23 -0400
+Received: by mail-pf1-x444.google.com with SMTP id b5so4050032pfp.9
+ for <qemu-arm@nongnu.org>; Thu, 25 Jun 2020 20:32:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=OULdj6XcEdTR1qymq8JQYyzbOQeCar6lhcO2Vrh5aX4=;
- b=mU1fP/xosNHr89QcfnZ9jQqGiNnOLZUcafWPvTxghUJv6xLf+3+oZ6o5MACjJzyR2x
- DpDKHH6WqP/vuKfeWFPmhVSP3p4zwFTa9M5TbVE2Gf9jb7JjFyvmEUD0MhnaG1UixJ32
- vTsU5Si9u/tPlNOFDEVX4Hp/oB5zh46K4lAxQtzTIsh1DgVeVW9qXPvOvK10LqSM3/nJ
- UT5nwkZkt6umYPfGikxlOxFnlOa2IfGQ+lCoe6eBQxKWkivOkW3fDNbYWVhC5Kw4Y95A
- ryUBg4+/H2P1qkbK4dbMsqCpBZT3fhCrd7xhRdOI8m/LnJRI+yUmHMkxBBAraxWql9DH
- 5nog==
+ bh=kQSqn3JWW0nPzEv9XJciec7vJguWWK+m8v2+R9Ynme4=;
+ b=OS7hXIP86ZriGqazjBHgFj0bcB69c8Xd8AjKm1vIPr0Q7d/KzC3jJbjD2YPpukiBiG
+ 8R8SNC/beA5+p7m8XWY/Veuh9K+AbfNpUu8z8yjgjWcVRPo8tvVavmOh+v/xxXByu57I
+ eeH/4NBROLy8xXlYQ6pH9ZfEKgUzgfaNHp6m35EqHMk+yFNLJqCutIPXjiTOgak1KY/j
+ e0PS20+R7aIy8QfEVvtD8fSMgDJ3aBzuu8NOD6acEQ0Q2XIfAeAuhoaDQmWngxScXUtB
+ aWHy8COT7DzKAjqiLOIhNivbn+6mX9iDWkISYerBgKd1BBcvQt1AreboZ5MjgtP3S5Yo
+ f3mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=OULdj6XcEdTR1qymq8JQYyzbOQeCar6lhcO2Vrh5aX4=;
- b=Rq8dG6WxaqWqrhyNYmA/GgsV2W0YhXRqtaaiVoWZzRAVo+n1e7iLDPFNyD6dj+cTYp
- BqQwqSAuNYU3cDq85tOheuiReF/ap3vTC6FqMyisvKmup7bK8SNnzV1vin+FytfikyN6
- ykvG5yE7JVsDR8xlRHTnLbZ4erJTZ2G3By8xdciHSwASESU2HeDuIuxzNbIWWrHAmA7P
- n4MVdHepAZJ5jpIjj/00aQz54V1VLn9Wz3GAWRe8AtqfknoI8iBGrQKwSReTee+6+n4i
- EELHDuXt8R5AXeF/8fVjkGGtwx8I0RJLg8fdPR0HlbnY76MWylfplDH4K79k6knUW268
- rfwQ==
-X-Gm-Message-State: AOAM531/dXEo/IOLw2+DGx0fI1t59SG4I2vvrPaDj7OtQJWNdscB7qoY
- pnnAic4AuwNEbfyZsLg8dHHq0sIhXOQ=
-X-Received: by 2002:aa7:8dc1:: with SMTP id j1mr834412pfr.194.1593142352227;
- Thu, 25 Jun 2020 20:32:32 -0700 (PDT)
+ bh=kQSqn3JWW0nPzEv9XJciec7vJguWWK+m8v2+R9Ynme4=;
+ b=M0RqlAYL7hC78C6jhXI6Ud7rDlIxPhpyhsIO/QSv88mJj1fu3roL6AzYSFWJXm7Sl1
+ Ys8tmu7ofXLSEfCme9eoo2Vu3D56T9ebLIra0PqYOiYzBOEXOCcNznkgbIDgz6sjTmT+
+ eaUiI7Sz9drWUbyreXU6KHMduSclrz+A1Hwp5F3iwhOruPTjcTRHZsxSPQndQQYE4UUN
+ 9rk2mzsUpXMNinPaJ+TY/PiKIyeKE8TVwfOu9NoUG5Dn7dAVHowcSmDA3L3xUdCL4mq9
+ pjJSNDS/S2QS+IbzCf4hL9Yy78wIiwMrcY/xwT53xPZG41EVXAKkbGQQjcRMiKo5CmXe
+ pi4g==
+X-Gm-Message-State: AOAM531Uj2yYJGDHAw8aoZ7ZTo7jW9PpkGyXBV2EAUomDRvpxbm+oqJt
+ EHcq9BqhvFl4GuMPkvZ2x0GM0Q==
+X-Received: by 2002:a63:8f18:: with SMTP id n24mr905429pgd.432.1593142340912; 
+ Thu, 25 Jun 2020 20:32:20 -0700 (PDT)
 Received: from localhost.localdomain (174-21-143-238.tukw.qwest.net.
  [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id y27sm1605256pgc.56.2020.06.25.20.32.30
+ by smtp.gmail.com with ESMTPSA id y27sm1605256pgc.56.2020.06.25.20.32.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jun 2020 20:32:31 -0700 (PDT)
+ Thu, 25 Jun 2020 20:32:20 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v9 34/46] target/arm: Add mte helpers for sve scalar + int
- stores
-Date: Thu, 25 Jun 2020 20:31:32 -0700
-Message-Id: <20200626033144.790098-35-richard.henderson@linaro.org>
+Subject: [PATCH v9 26/46] target/arm: Implement helper_mte_checkN
+Date: Thu, 25 Jun 2020 20:31:24 -0700
+Message-Id: <20200626033144.790098-27-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200626033144.790098-1-richard.henderson@linaro.org>
 References: <20200626033144.790098-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::442;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x442.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -105,403 +104,226 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, david.spickett@linaro.org,
  steplong@quicinc.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6wxnaSj7x1ea
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EpB9zXGyyFJz
 
-Because the elements are sequential, we can eliminate many tests all
-at once when the tag hits TCMA, or if the page(s) are not Tagged.
+Fill out the stub that was added earlier.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper-sve.h    |  47 +++++++++++
- target/arm/sve_helper.c    |  95 ++++++++++++++++------
- target/arm/translate-sve.c | 162 ++++++++++++++++++++++++-------------
- 3 files changed, 226 insertions(+), 78 deletions(-)
+v7: Fix page crossing test (szabolcs nagy).
+---
+ target/arm/internals.h  |   2 +
+ target/arm/mte_helper.c | 165 +++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 166 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 1bc1974fc2..1425f33c92 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -1363,6 +1363,53 @@ DEF_HELPER_FLAGS_4(sve_st1hd_be_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
- DEF_HELPER_FLAGS_4(sve_st1sd_le_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
- DEF_HELPER_FLAGS_4(sve_st1sd_be_r, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 807830cc40..c763a23dfb 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1321,6 +1321,8 @@ FIELD(MTEDESC, TSIZE, 14, 10)  /* mte_checkN only */
+ bool mte_probe1(CPUARMState *env, uint32_t desc, uint64_t ptr);
+ uint64_t mte_check1(CPUARMState *env, uint32_t desc,
+                     uint64_t ptr, uintptr_t ra);
++uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
++                    uint64_t ptr, uintptr_t ra);
  
-+DEF_HELPER_FLAGS_4(sve_st1bb_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st2bb_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st3bb_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st4bb_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1hh_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st2hh_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st3hh_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st4hh_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1hh_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st2hh_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st3hh_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st4hh_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1ss_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st2ss_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st3ss_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st4ss_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1ss_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st2ss_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st3ss_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st4ss_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1dd_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st2dd_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st3dd_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st4dd_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1dd_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st2dd_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st3dd_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st4dd_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1bh_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st1bs_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st1bd_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1hs_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st1hd_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st1hs_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st1hd_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve_st1sd_le_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+DEF_HELPER_FLAGS_4(sve_st1sd_be_r_mte, TCG_CALL_NO_WG, void, env, ptr, tl, i32)
-+
- DEF_HELPER_FLAGS_6(sve_ldbsu_zsu, TCG_CALL_NO_WG,
-                    void, env, ptr, ptr, ptr, tl, i32)
- DEF_HELPER_FLAGS_6(sve_ldhsu_le_zsu, TCG_CALL_NO_WG,
-diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-index 767ecb399f..ded9cedd18 100644
---- a/target/arm/sve_helper.c
-+++ b/target/arm/sve_helper.c
-@@ -5022,11 +5022,12 @@ DO_LDFF1_LDNF1_2(dd,  MO_64, MO_64)
-  */
- 
- static inline QEMU_ALWAYS_INLINE
--void sve_stN_r(CPUARMState *env, uint64_t *vg, target_ulong addr, uint32_t desc,
--               const uintptr_t retaddr, const int esz,
--               const int msz, const int N,
-+void sve_stN_r(CPUARMState *env, uint64_t *vg, target_ulong addr,
-+               uint32_t desc, const uintptr_t retaddr,
-+               const int esz, const int msz, const int N, uint32_t mtedesc,
-                sve_ldst1_host_fn *host_fn,
--               sve_ldst1_tlb_fn *tlb_fn)
-+               sve_ldst1_tlb_fn *tlb_fn,
-+               sve_cont_ldst_mte_check_fn *mte_check_fn)
+ static inline int allocation_tag_from_addr(uint64_t ptr)
  {
-     const unsigned rd = simd_data(desc);
-     const intptr_t reg_max = simd_oprsz(desc);
-@@ -5048,7 +5049,14 @@ void sve_stN_r(CPUARMState *env, uint64_t *vg, target_ulong addr, uint32_t desc,
-     sve_cont_ldst_watchpoints(&info, env, vg, addr, 1 << esz, N << msz,
-                               BP_MEM_WRITE, retaddr);
- 
--    /* TODO: MTE check. */
-+    /*
-+     * Handle mte checks for all active elements.
-+     * Since TBI must be set for MTE, !mtedesc => !mte_active.
-+     */
-+    if (mte_check_fn && mtedesc) {
-+        mte_check_fn(&info, env, vg, addr, 1 << esz, N << msz,
-+                     mtedesc, retaddr);
-+    }
- 
-     flags = info.page[0].flags | info.page[1].flags;
-     if (unlikely(flags != 0)) {
-@@ -5142,26 +5150,67 @@ void sve_stN_r(CPUARMState *env, uint64_t *vg, target_ulong addr, uint32_t desc,
-     }
- }
- 
--#define DO_STN_1(N, NAME, ESZ) \
--void HELPER(sve_st##N##NAME##_r)(CPUARMState *env, void *vg,        \
--                                 target_ulong addr, uint32_t desc)  \
--{                                                                   \
--    sve_stN_r(env, vg, addr, desc, GETPC(), ESZ, MO_8, N,           \
--              sve_st1##NAME##_host, sve_st1##NAME##_tlb);           \
-+static inline QEMU_ALWAYS_INLINE
-+void sve_stN_r_mte(CPUARMState *env, uint64_t *vg, target_ulong addr,
-+                   uint32_t desc, const uintptr_t ra,
-+                   const int esz, const int msz, const int N,
-+                   sve_ldst1_host_fn *host_fn,
-+                   sve_ldst1_tlb_fn *tlb_fn)
+diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+index c8a5e7c0ed..abe6af6b79 100644
+--- a/target/arm/mte_helper.c
++++ b/target/arm/mte_helper.c
+@@ -500,7 +500,170 @@ uint64_t HELPER(mte_check1)(CPUARMState *env, uint32_t desc, uint64_t ptr)
+ /*
+  * Perform an MTE checked access for multiple logical accesses.
+  */
++
++/**
++ * checkN:
++ * @tag: tag memory to test
++ * @odd: true to begin testing at tags at odd nibble
++ * @cmp: the tag to compare against
++ * @count: number of tags to test
++ *
++ * Return the number of successful tests.
++ * Thus a return value < @count indicates a failure.
++ *
++ * A note about sizes: count is expected to be small.
++ *
++ * The most common use will be LDP/STP of two integer registers,
++ * which means 16 bytes of memory touching at most 2 tags, but
++ * often the access is aligned and thus just 1 tag.
++ *
++ * Using AdvSIMD LD/ST (multiple), one can access 64 bytes of memory,
++ * touching at most 5 tags.  SVE LDR/STR (vector) with the default
++ * vector length is also 64 bytes; the maximum architectural length
++ * is 256 bytes touching at most 9 tags.
++ *
++ * The loop below uses 7 logical operations and 1 memory operation
++ * per tag pair.  An implementation that loads an aligned word and
++ * uses masking to ignore adjacent tags requires 18 logical operations
++ * and thus does not begin to pay off until 6 tags.
++ * Which, according to the survey above, is unlikely to be common.
++ */
++static int checkN(uint8_t *mem, int odd, int cmp, int count)
 +{
-+    uint32_t mtedesc = desc >> (SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
-+    int bit55 = extract64(addr, 55, 1);
++    int n = 0, diff;
 +
-+    /* Remove mtedesc from the normal sve descriptor. */
-+    desc = extract32(desc, 0, SIMD_DATA_SHIFT + SVE_MTEDESC_SHIFT);
++    /* Replicate the test tag and compare.  */
++    cmp *= 0x11;
++    diff = *mem++ ^ cmp;
 +
-+    /* Perform gross MTE suppression early. */
-+    if (!tbi_check(desc, bit55) ||
-+        tcma_check(desc, bit55, allocation_tag_from_addr(addr))) {
-+        mtedesc = 0;
++    if (odd) {
++        goto start_odd;
 +    }
 +
-+    sve_stN_r(env, vg, addr, desc, ra, esz, msz, N, mtedesc, host_fn, tlb_fn,
-+              N == 1 ? sve_cont_ldst_mte_check1 : sve_cont_ldst_mte_checkN);
- }
- 
--#define DO_STN_2(N, NAME, ESZ, MSZ) \
--void HELPER(sve_st##N##NAME##_le_r)(CPUARMState *env, void *vg,       \
--                                    target_ulong addr, uint32_t desc) \
--{                                                                     \
--    sve_stN_r(env, vg, addr, desc, GETPC(), ESZ, MSZ, N,              \
--              sve_st1##NAME##_le_host, sve_st1##NAME##_le_tlb);       \
--}                                                                     \
--void HELPER(sve_st##N##NAME##_be_r)(CPUARMState *env, void *vg,       \
--                                    target_ulong addr, uint32_t desc) \
--{                                                                     \
--    sve_stN_r(env, vg, addr, desc, GETPC(), ESZ, MSZ, N,              \
--              sve_st1##NAME##_be_host, sve_st1##NAME##_be_tlb);       \
-+#define DO_STN_1(N, NAME, ESZ)                                          \
-+void HELPER(sve_st##N##NAME##_r)(CPUARMState *env, void *vg,            \
-+                                 target_ulong addr, uint32_t desc)      \
-+{                                                                       \
-+    sve_stN_r(env, vg, addr, desc, GETPC(), ESZ, MO_8, N, 0,            \
-+              sve_st1##NAME##_host, sve_st1##NAME##_tlb, NULL);         \
-+}                                                                       \
-+void HELPER(sve_st##N##NAME##_r_mte)(CPUARMState *env, void *vg,        \
-+                                     target_ulong addr, uint32_t desc)  \
-+{                                                                       \
-+    sve_stN_r_mte(env, vg, addr, desc, GETPC(), ESZ, MO_8, N,           \
-+                  sve_st1##NAME##_host, sve_st1##NAME##_tlb);           \
++    while (1) {
++        /* Test even tag. */
++        if (unlikely((diff) & 0x0f)) {
++            break;
++        }
++        if (++n == count) {
++            break;
++        }
++
++    start_odd:
++        /* Test odd tag. */
++        if (unlikely((diff) & 0xf0)) {
++            break;
++        }
++        if (++n == count) {
++            break;
++        }
++
++        diff = *mem++ ^ cmp;
++    }
++    return n;
 +}
 +
-+#define DO_STN_2(N, NAME, ESZ, MSZ)                                     \
-+void HELPER(sve_st##N##NAME##_le_r)(CPUARMState *env, void *vg,         \
-+                                    target_ulong addr, uint32_t desc)   \
-+{                                                                       \
-+    sve_stN_r(env, vg, addr, desc, GETPC(), ESZ, MSZ, N, 0,             \
-+              sve_st1##NAME##_le_host, sve_st1##NAME##_le_tlb, NULL);   \
-+}                                                                       \
-+void HELPER(sve_st##N##NAME##_be_r)(CPUARMState *env, void *vg,         \
-+                                    target_ulong addr, uint32_t desc)   \
-+{                                                                       \
-+    sve_stN_r(env, vg, addr, desc, GETPC(), ESZ, MSZ, N, 0,             \
-+              sve_st1##NAME##_be_host, sve_st1##NAME##_be_tlb, NULL);   \
-+}                                                                       \
-+void HELPER(sve_st##N##NAME##_le_r_mte)(CPUARMState *env, void *vg,     \
-+                                        target_ulong addr, uint32_t desc) \
-+{                                                                       \
-+    sve_stN_r_mte(env, vg, addr, desc, GETPC(), ESZ, MSZ, N,            \
-+                  sve_st1##NAME##_le_host, sve_st1##NAME##_le_tlb);     \
-+}                                                                       \
-+void HELPER(sve_st##N##NAME##_be_r_mte)(CPUARMState *env, void *vg,     \
-+                                        target_ulong addr, uint32_t desc) \
-+{                                                                       \
-+    sve_stN_r_mte(env, vg, addr, desc, GETPC(), ESZ, MSZ, N,            \
-+                  sve_st1##NAME##_be_host, sve_st1##NAME##_be_tlb);     \
- }
- 
- DO_STN_1(1, bb, MO_8)
-diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
-index 2620c965f0..daac8589f3 100644
---- a/target/arm/translate-sve.c
-+++ b/target/arm/translate-sve.c
-@@ -5018,73 +5018,125 @@ static bool trans_LD1R_zpri(DisasContext *s, arg_rpri_load *a)
- static void do_st_zpa(DisasContext *s, int zt, int pg, TCGv_i64 addr,
-                       int msz, int esz, int nreg)
- {
--    static gen_helper_gvec_mem * const fn_single[2][4][4] = {
--        { { gen_helper_sve_st1bb_r,
--            gen_helper_sve_st1bh_r,
--            gen_helper_sve_st1bs_r,
--            gen_helper_sve_st1bd_r },
--          { NULL,
--            gen_helper_sve_st1hh_le_r,
--            gen_helper_sve_st1hs_le_r,
--            gen_helper_sve_st1hd_le_r },
--          { NULL, NULL,
--            gen_helper_sve_st1ss_le_r,
--            gen_helper_sve_st1sd_le_r },
--          { NULL, NULL, NULL,
--            gen_helper_sve_st1dd_le_r } },
--        { { gen_helper_sve_st1bb_r,
--            gen_helper_sve_st1bh_r,
--            gen_helper_sve_st1bs_r,
--            gen_helper_sve_st1bd_r },
--          { NULL,
--            gen_helper_sve_st1hh_be_r,
--            gen_helper_sve_st1hs_be_r,
--            gen_helper_sve_st1hd_be_r },
--          { NULL, NULL,
--            gen_helper_sve_st1ss_be_r,
--            gen_helper_sve_st1sd_be_r },
--          { NULL, NULL, NULL,
--            gen_helper_sve_st1dd_be_r } },
-+    static gen_helper_gvec_mem * const fn_single[2][2][4][4] = {
-+        { { { gen_helper_sve_st1bb_r,
-+              gen_helper_sve_st1bh_r,
-+              gen_helper_sve_st1bs_r,
-+              gen_helper_sve_st1bd_r },
-+            { NULL,
-+              gen_helper_sve_st1hh_le_r,
-+              gen_helper_sve_st1hs_le_r,
-+              gen_helper_sve_st1hd_le_r },
-+            { NULL, NULL,
-+              gen_helper_sve_st1ss_le_r,
-+              gen_helper_sve_st1sd_le_r },
-+            { NULL, NULL, NULL,
-+              gen_helper_sve_st1dd_le_r } },
-+          { { gen_helper_sve_st1bb_r,
-+              gen_helper_sve_st1bh_r,
-+              gen_helper_sve_st1bs_r,
-+              gen_helper_sve_st1bd_r },
-+            { NULL,
-+              gen_helper_sve_st1hh_be_r,
-+              gen_helper_sve_st1hs_be_r,
-+              gen_helper_sve_st1hd_be_r },
-+            { NULL, NULL,
-+              gen_helper_sve_st1ss_be_r,
-+              gen_helper_sve_st1sd_be_r },
-+            { NULL, NULL, NULL,
-+              gen_helper_sve_st1dd_be_r } } },
++uint64_t mte_checkN(CPUARMState *env, uint32_t desc,
++                    uint64_t ptr, uintptr_t ra)
++{
++    int mmu_idx, ptr_tag, bit55;
++    uint64_t ptr_last, ptr_end, prev_page, next_page;
++    uint64_t tag_first, tag_end;
++    uint64_t tag_byte_first, tag_byte_end;
++    uint32_t esize, total, tag_count, tag_size, n, c;
++    uint8_t *mem1, *mem2;
++    MMUAccessType type;
 +
-+        { { { gen_helper_sve_st1bb_r_mte,
-+              gen_helper_sve_st1bh_r_mte,
-+              gen_helper_sve_st1bs_r_mte,
-+              gen_helper_sve_st1bd_r_mte },
-+            { NULL,
-+              gen_helper_sve_st1hh_le_r_mte,
-+              gen_helper_sve_st1hs_le_r_mte,
-+              gen_helper_sve_st1hd_le_r_mte },
-+            { NULL, NULL,
-+              gen_helper_sve_st1ss_le_r_mte,
-+              gen_helper_sve_st1sd_le_r_mte },
-+            { NULL, NULL, NULL,
-+              gen_helper_sve_st1dd_le_r_mte } },
-+          { { gen_helper_sve_st1bb_r_mte,
-+              gen_helper_sve_st1bh_r_mte,
-+              gen_helper_sve_st1bs_r_mte,
-+              gen_helper_sve_st1bd_r_mte },
-+            { NULL,
-+              gen_helper_sve_st1hh_be_r_mte,
-+              gen_helper_sve_st1hs_be_r_mte,
-+              gen_helper_sve_st1hd_be_r_mte },
-+            { NULL, NULL,
-+              gen_helper_sve_st1ss_be_r_mte,
-+              gen_helper_sve_st1sd_be_r_mte },
-+            { NULL, NULL, NULL,
-+              gen_helper_sve_st1dd_be_r_mte } } },
-     };
--    static gen_helper_gvec_mem * const fn_multiple[2][3][4] = {
--        { { gen_helper_sve_st2bb_r,
--            gen_helper_sve_st2hh_le_r,
--            gen_helper_sve_st2ss_le_r,
--            gen_helper_sve_st2dd_le_r },
--          { gen_helper_sve_st3bb_r,
--            gen_helper_sve_st3hh_le_r,
--            gen_helper_sve_st3ss_le_r,
--            gen_helper_sve_st3dd_le_r },
--          { gen_helper_sve_st4bb_r,
--            gen_helper_sve_st4hh_le_r,
--            gen_helper_sve_st4ss_le_r,
--            gen_helper_sve_st4dd_le_r } },
--        { { gen_helper_sve_st2bb_r,
--            gen_helper_sve_st2hh_be_r,
--            gen_helper_sve_st2ss_be_r,
--            gen_helper_sve_st2dd_be_r },
--          { gen_helper_sve_st3bb_r,
--            gen_helper_sve_st3hh_be_r,
--            gen_helper_sve_st3ss_be_r,
--            gen_helper_sve_st3dd_be_r },
--          { gen_helper_sve_st4bb_r,
--            gen_helper_sve_st4hh_be_r,
--            gen_helper_sve_st4ss_be_r,
--            gen_helper_sve_st4dd_be_r } },
-+    static gen_helper_gvec_mem * const fn_multiple[2][2][3][4] = {
-+        { { { gen_helper_sve_st2bb_r,
-+              gen_helper_sve_st2hh_le_r,
-+              gen_helper_sve_st2ss_le_r,
-+              gen_helper_sve_st2dd_le_r },
-+            { gen_helper_sve_st3bb_r,
-+              gen_helper_sve_st3hh_le_r,
-+              gen_helper_sve_st3ss_le_r,
-+              gen_helper_sve_st3dd_le_r },
-+            { gen_helper_sve_st4bb_r,
-+              gen_helper_sve_st4hh_le_r,
-+              gen_helper_sve_st4ss_le_r,
-+              gen_helper_sve_st4dd_le_r } },
-+          { { gen_helper_sve_st2bb_r,
-+              gen_helper_sve_st2hh_be_r,
-+              gen_helper_sve_st2ss_be_r,
-+              gen_helper_sve_st2dd_be_r },
-+            { gen_helper_sve_st3bb_r,
-+              gen_helper_sve_st3hh_be_r,
-+              gen_helper_sve_st3ss_be_r,
-+              gen_helper_sve_st3dd_be_r },
-+            { gen_helper_sve_st4bb_r,
-+              gen_helper_sve_st4hh_be_r,
-+              gen_helper_sve_st4ss_be_r,
-+              gen_helper_sve_st4dd_be_r } } },
-+        { { { gen_helper_sve_st2bb_r_mte,
-+              gen_helper_sve_st2hh_le_r_mte,
-+              gen_helper_sve_st2ss_le_r_mte,
-+              gen_helper_sve_st2dd_le_r_mte },
-+            { gen_helper_sve_st3bb_r_mte,
-+              gen_helper_sve_st3hh_le_r_mte,
-+              gen_helper_sve_st3ss_le_r_mte,
-+              gen_helper_sve_st3dd_le_r_mte },
-+            { gen_helper_sve_st4bb_r_mte,
-+              gen_helper_sve_st4hh_le_r_mte,
-+              gen_helper_sve_st4ss_le_r_mte,
-+              gen_helper_sve_st4dd_le_r_mte } },
-+          { { gen_helper_sve_st2bb_r_mte,
-+              gen_helper_sve_st2hh_be_r_mte,
-+              gen_helper_sve_st2ss_be_r_mte,
-+              gen_helper_sve_st2dd_be_r_mte },
-+            { gen_helper_sve_st3bb_r_mte,
-+              gen_helper_sve_st3hh_be_r_mte,
-+              gen_helper_sve_st3ss_be_r_mte,
-+              gen_helper_sve_st3dd_be_r_mte },
-+            { gen_helper_sve_st4bb_r_mte,
-+              gen_helper_sve_st4hh_be_r_mte,
-+              gen_helper_sve_st4ss_be_r_mte,
-+              gen_helper_sve_st4dd_be_r_mte } } },
-     };
-     gen_helper_gvec_mem *fn;
-     int be = s->be_data == MO_BE;
- 
-     if (nreg == 0) {
-         /* ST1 */
--        fn = fn_single[be][msz][esz];
-+        fn = fn_single[s->mte_active[0]][be][msz][esz];
-+        nreg = 1;
-     } else {
-         /* ST2, ST3, ST4 -- msz == esz, enforced by encoding */
-         assert(msz == esz);
--        fn = fn_multiple[be][nreg - 1][msz];
-+        fn = fn_multiple[s->mte_active[0]][be][nreg - 1][msz];
-     }
-     assert(fn != NULL);
--    do_mem_zpa(s, zt, pg, addr, msz_dtype(s, msz), 0, true, fn);
-+    do_mem_zpa(s, zt, pg, addr, msz_dtype(s, msz), nreg, true, fn);
++    bit55 = extract64(ptr, 55, 1);
++
++    /* If TBI is disabled, the access is unchecked, and ptr is not dirty. */
++    if (unlikely(!tbi_check(desc, bit55))) {
++        return ptr;
++    }
++
++    ptr_tag = allocation_tag_from_addr(ptr);
++
++    if (tcma_check(desc, bit55, ptr_tag)) {
++        goto done;
++    }
++
++    mmu_idx = FIELD_EX32(desc, MTEDESC, MIDX);
++    type = FIELD_EX32(desc, MTEDESC, WRITE) ? MMU_DATA_STORE : MMU_DATA_LOAD;
++    esize = FIELD_EX32(desc, MTEDESC, ESIZE);
++    total = FIELD_EX32(desc, MTEDESC, TSIZE);
++
++    /* Find the addr of the end of the access, and of the last element. */
++    ptr_end = ptr + total;
++    ptr_last = ptr_end - esize;
++
++    /* Round the bounds to the tag granule, and compute the number of tags. */
++    tag_first = QEMU_ALIGN_DOWN(ptr, TAG_GRANULE);
++    tag_end = QEMU_ALIGN_UP(ptr_last, TAG_GRANULE);
++    tag_count = (tag_end - tag_first) / TAG_GRANULE;
++
++    /* Round the bounds to twice the tag granule, and compute the bytes. */
++    tag_byte_first = QEMU_ALIGN_DOWN(ptr, 2 * TAG_GRANULE);
++    tag_byte_end = QEMU_ALIGN_UP(ptr_last, 2 * TAG_GRANULE);
++
++    /* Locate the page boundaries. */
++    prev_page = ptr & TARGET_PAGE_MASK;
++    next_page = prev_page + TARGET_PAGE_SIZE;
++
++    if (likely(tag_end - prev_page <= TARGET_PAGE_SIZE)) {
++        /* Memory access stays on one page. */
++        tag_size = (tag_byte_end - tag_byte_first) / (2 * TAG_GRANULE);
++        mem1 = allocation_tag_mem(env, mmu_idx, ptr, type, total,
++                                  MMU_DATA_LOAD, tag_size, ra);
++        if (!mem1) {
++            goto done;
++        }
++        /* Perform all of the comparisons. */
++        n = checkN(mem1, ptr & TAG_GRANULE, ptr_tag, tag_count);
++    } else {
++        /* Memory access crosses to next page. */
++        tag_size = (next_page - tag_byte_first) / (2 * TAG_GRANULE);
++        mem1 = allocation_tag_mem(env, mmu_idx, ptr, type, next_page - ptr,
++                                  MMU_DATA_LOAD, tag_size, ra);
++
++        tag_size = (tag_byte_end - next_page) / (2 * TAG_GRANULE);
++        mem2 = allocation_tag_mem(env, mmu_idx, next_page, type,
++                                  ptr_end - next_page,
++                                  MMU_DATA_LOAD, tag_size, ra);
++
++        /*
++         * Perform all of the comparisons.
++         * Note the possible but unlikely case of the operation spanning
++         * two pages that do not both have tagging enabled.
++         */
++        n = c = (next_page - tag_first) / TAG_GRANULE;
++        if (mem1) {
++            n = checkN(mem1, ptr & TAG_GRANULE, ptr_tag, c);
++        }
++        if (n == c) {
++            if (!mem2) {
++                goto done;
++            }
++            n += checkN(mem2, 0, ptr_tag, tag_count - c);
++        }
++    }
++
++    /*
++     * If we failed, we know which granule.  Compute the element that
++     * is first in that granule, and signal failure on that element.
++     */
++    if (unlikely(n < tag_count)) {
++        uint64_t fail_ofs;
++
++        fail_ofs = tag_first + n * TAG_GRANULE - ptr;
++        fail_ofs = ROUND_UP(fail_ofs, esize);
++        mte_check_fail(env, mmu_idx, ptr + fail_ofs, ra);
++    }
++
++ done:
++    return useronly_clean_ptr(ptr);
++}
++
+ uint64_t HELPER(mte_checkN)(CPUARMState *env, uint32_t desc, uint64_t ptr)
+ {
+-    return ptr;
++    return mte_checkN(env, desc, ptr, GETPC());
  }
- 
- static bool trans_ST_zprr(DisasContext *s, arg_rprr_store *a)
 -- 
 2.25.1
 

@@ -1,69 +1,95 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1873485lfc;
-        Thu, 11 Jun 2020 16:42:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyV0BYt9rA1GqaeWPBzAZL4W3ojW6i2RGhtZR1ARibqVWfxgNOUIL8wD5crhOCM5igDXpJh
-X-Received: by 2002:a25:2515:: with SMTP id l21mr19284393ybl.177.1591918975035;
-        Thu, 11 Jun 2020 16:42:55 -0700 (PDT)
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp828584lfm;
+        Fri, 26 Jun 2020 14:28:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy9LjfO7YGbEP1DJ6EHHrhmiSw1k92AGrCB7CUaFmElx5u55sVti7ZlDryK/66ie74cwh0x
+X-Received: by 2002:a25:4cc8:: with SMTP id z191mr7813438yba.211.1593206911727;
+        Fri, 26 Jun 2020 14:28:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593206911; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Z3D4VGeER3bnwVrXCGjNFY/ARHqX0oZrSe9+F+4j0Fa5rJaS1j1s9TpOgX4FhZCv4l
+         1se07l77mKNYwDnBOe+MHS85XTjkS/T7Mv/Z10YpROOL6dalsQLcAMmec8+DYVwu/tJu
+         Q+ZAbyu6jIw2m6FWpykSJ/JQY2vNMGr7j6dCB6/TqMZmRiPnmUKRGpe5wcppUAyr4oLo
+         SsmXjH+C9Put9nTv9SdrF4D6EkEzvH7GErcv2ZvtgsPnke2c53T8h6JDYKNGuky1RWRq
+         8/sLcnL4eAsPkOwkix8muE4pp4Vj/8+fxL0Kh6t/yqCNsfAP+9p06YfWq4dnevIWP5Lc
+         dLzA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version;
+        bh=0YBLVGKVflLEOwLhiklGG4a/eSP0ykqicWEX2Ka3r48=;
+        b=OPSupsGDVRYiNp7VnsDGiV0uCf/t+yfK5o8a/i96oE7W5x2ASiVLKetCE8TVuQ5KL/
+         k+zZfVm+BXFmIuSfAV3oSv1IH1gWOoQ013z8VhjjK3PSPdo/bqkuHUgXA2NkoL8Evgq8
+         ACIg77gsAD05zNVEnC676sVn9/Q0M+Acu2Ircr0UYftSSHOIerUhenLaa3f1mf3+v0bP
+         qb+1m0iOac3q/+5D7iFE/6ELoAl626LBwjaTQhISY7hVr8qQBIIWeguL7S3Z/AX1bE7O
+         6/Ge6N2icMxztyti9b9zmg6hnhiTxXPvrBYEOUfEyUZ7nj1TPpD664NV0Zd/djZTvKZT
+         qJ1w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f144si85093yba.174.2020.06.11.16.42.54
+        by mx.google.com with ESMTPS id 125si3419335ybo.327.2020.06.26.14.28.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jun 2020 16:42:55 -0700 (PDT)
+        Fri, 26 Jun 2020 14:28:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50186 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:39860 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjWqU-0005Zn-DL
-	for alex.bennee@linaro.org; Thu, 11 Jun 2020 19:42:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45642)
+	id 1jovtf-0003nt-4r
+	for alex.bennee@linaro.org; Fri, 26 Jun 2020 17:28:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46420)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jjWqK-0005ZU-HJ; Thu, 11 Jun 2020 19:42:46 -0400
-Resent-Date: Thu, 11 Jun 2020 19:42:44 -0400
-Resent-Message-Id: <E1jjWqK-0005ZU-HJ@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21323)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jjWqH-00027T-R3; Thu, 11 Jun 2020 19:42:44 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1591918952; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=OgKc9yucQ+jkw7Rj6qyRZRSS+Tn2R1LqYSR1UwLXca2vBb9yQIQfY3KQ29f8h1h26ro+SEGXxg0Iusni72veezLZW9Ip0yXdsUoq8XksGSsvG4Sak1hzlQYCJd9Mt+tluIHfczZYO0xibMKO0EGa4JE6p8lkTQy25gzku/2V3Rs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1591918952;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=u78j+K4GTAbT5wfUVcL6FfLeUABnhpsk7YqZbMqopDI=; 
- b=FyxyTW3D323YLiFp1mfqbMUTSKkIrp7Mn0MFBcd5XqKKjG2wFFkRUrOCBNC1qr/e0zrgN0HWlssdbyZ2oca/8YPkTgTbVt3fLElnHNgkmeNCB19Ziez8qxwXyStV2oD1CZAJIF6PpH5s8D/cMlNcWLtIU/D6wkRSOIhQXb/Lo88=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1591918950734690.2872725876653;
- Thu, 11 Jun 2020 16:42:30 -0700 (PDT)
-Message-ID: <159191894950.1247.1566107495715577757@45ef0f9c86ae>
-In-Reply-To: <20200611144529.8873-1-peter.maydell@linaro.org>
-Subject: Re: [PATCH 00/10] target/arm: Convert 2-reg-scalar to decodetree
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jovtY-0003ni-Id; Fri, 26 Jun 2020 17:28:24 -0400
+Received: from mail-ej1-f66.google.com ([209.85.218.66]:36482)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jovtX-00016D-0a; Fri, 26 Jun 2020 17:28:24 -0400
+Received: by mail-ej1-f66.google.com with SMTP id dr13so10696105ejc.3;
+ Fri, 26 Jun 2020 14:28:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=0YBLVGKVflLEOwLhiklGG4a/eSP0ykqicWEX2Ka3r48=;
+ b=gOfydeb4Piv/fG57QgLQkSVW5MUmM8lOoVsBuJiJB9XgCBG0QmQ/3ootySjE1aMgRH
+ ZDBwWL/6lIbG10PaAjsvT1kHcdjoRAidikD1d54mUraacy6ifDMR6gwjLS6XRr2gmpMN
+ 8bRP+lfijdbS6gxeIxNrigtoC49rIehHYiM/NLrJBToc2CagQFIhrG0UPQeaTCfQnC0e
+ Rf1ErucfUpI0ocesw3yTn7EyLJ2NoLDjEGRms0/gJB896yp2TW5IHsIgOv6vBzUKTMr8
+ NgrP18BWmeQA3vRhqVc5W0br0uINHW9lpbJSuOsKt6gMBbvO2sXSbpZv2Y+okIHnL7qr
+ njUA==
+X-Gm-Message-State: AOAM532RhZCgSBSxjpWjrsBEwRNECDBOIZVUHxEGzMXgFkW8eSx3QgDY
+ vvmy14N0D37NLJLiBd3JnubhWtrH2Z/NJfzpDMA=
+X-Received: by 2002:a17:906:f155:: with SMTP id
+ gw21mr4270582ejb.388.1593206901256; 
+ Fri, 26 Jun 2020 14:28:21 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: peter.maydell@linaro.org
-Date: Thu, 11 Jun 2020 16:42:30 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/11 19:16:13
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+References: <20200623072723.6324-1-f4bug@amsat.org>
+ <20200623072723.6324-2-f4bug@amsat.org>
+ <CAFEAcA9-Vjh-hkB9i9fvp9yEHuKW7cGeEDQ-kKmiiao2WogQDQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA9-Vjh-hkB9i9fvp9yEHuKW7cGeEDQ-kKmiiao2WogQDQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Fri, 26 Jun 2020 23:28:09 +0200
+Message-ID: <CAAdtpL4zXbwZuTPVQUbXyDftMCpw+Yx_cZXU3yZvB+EUXZBrhg@mail.gmail.com>
+Subject: Re: [PATCH v6 1/9] hw/i2c/core: Add i2c_try_create_slave() and
+ i2c_realize_and_unref()
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=209.85.218.66;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-f66.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 17:28:21
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: 1
+X-Spam_score: 0.1
+X-Spam_bar: /
+X-Spam_report: (0.1 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=1,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,50 +102,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, richard.henderson@linaro.org, qemu-devel@nongnu.org
+Cc: Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
+ QEMU Developers <qemu-devel@nongnu.org>, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nmANOmuPZLt2
+X-TUID: ctLAQrxCAP32
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDYxMTE0NDUyOS44ODcz
-LTEtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0
-aGUgZG9ja2VyLW1pbmd3QGZlZG9yYSBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGlu
-ZyBjb21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5z
-dGFsbGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1Qg
-U0NSSVBUIEJFR0lOID09PQojISAvYmluL2Jhc2gKZXhwb3J0IEFSQ0g9eDg2XzY0Cm1ha2UgZG9j
-a2VyLWltYWdlLWZlZG9yYSBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1taW5n
-d0BmZWRvcmEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCiAgQ0MgICAg
-ICBhYXJjaDY0LXNvZnRtbXUvdGFyZ2V0L2FybS9wc2NpLm8KICBDQyAgICAgIGFhcmNoNjQtc29m
-dG1tdS90YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQubwogIENDICAgICAgYWFyY2g2NC1zb2Z0bW11
-L3RhcmdldC9hcm0vaGVscGVyLWE2NC5vCi90bXAvcWVtdS10ZXN0L3NyYy90YXJnZXQvYXJtL25l
-b24tZHAuZGVjb2RlOjQxNjogZXJyb3I6ICgnZGVmaW5pdGlvbiBoYXMgMCBiaXRzJywpCm1ha2Vb
-MV06ICoqKiBbL3RtcC9xZW11LXRlc3Qvc3JjL3RhcmdldC9hcm0vTWFrZWZpbGUub2JqczoyNzog
-dGFyZ2V0L2FybS9kZWNvZGUtbmVvbi1kcC5pbmMuY10gRXJyb3IgMQptYWtlWzFdOiAqKiogV2Fp
-dGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgogIEdFTiAgICAgYWFyY2g2NC1zb2Z0bW11L3Rh
-cmdldC9hcm0vZGVjb2RlLXN2ZS5pbmMuYwogIEdFTiAgICAgeDg2XzY0LXNvZnRtbXUvcWVtdS1z
-eXN0ZW0teDg2XzY0LmV4ZQptYWtlOiAqKiogW01ha2VmaWxlOjUyNzogYWFyY2g2NC1zb2Z0bW11
-L2FsbF0gRXJyb3IgMgpUcmFjZWJhY2sgKG1vc3QgcmVjZW50IGNhbGwgbGFzdCk6CiAgRmlsZSAi
-Li90ZXN0cy9kb2NrZXIvZG9ja2VyLnB5IiwgbGluZSA2NjUsIGluIDxtb2R1bGU+CiAgICBzeXMu
-ZXhpdChtYWluKCkpCi0tLQogICAgcmFpc2UgQ2FsbGVkUHJvY2Vzc0Vycm9yKHJldGNvZGUsIGNt
-ZCkKc3VicHJvY2Vzcy5DYWxsZWRQcm9jZXNzRXJyb3I6IENvbW1hbmQgJ1snc3VkbycsICctbics
-ICdkb2NrZXInLCAncnVuJywgJy0tbGFiZWwnLCAnY29tLnFlbXUuaW5zdGFuY2UudXVpZD1hMDkz
-ODQwY2Y3YzA0ZWU0YmY4ZGZjYTYwNzNiMmFlYScsICctdScsICcxMDAxJywgJy0tc2VjdXJpdHkt
-b3B0JywgJ3NlY2NvbXA9dW5jb25maW5lZCcsICctLXJtJywgJy1lJywgJ1RBUkdFVF9MSVNUPScs
-ICctZScsICdFWFRSQV9DT05GSUdVUkVfT1BUUz0nLCAnLWUnLCAnVj0nLCAnLWUnLCAnSj0xNCcs
-ICctZScsICdERUJVRz0nLCAnLWUnLCAnU0hPV19FTlY9JywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zh
-ci90bXAvY2NhY2hlJywgJy12JywgJy9ob21lL3BhdGNoZXcvLmNhY2hlL3FlbXUtZG9ja2VyLWNj
-YWNoZTovdmFyL3RtcC9jY2FjaGU6eicsICctdicsICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10
-bXAtYXNhaTV3NGQvc3JjL2RvY2tlci1zcmMuMjAyMC0wNi0xMS0xOS4zOS4wNy4yNDkwODovdmFy
-L3RtcC9xZW11Onoscm8nLCAncWVtdTpmZWRvcmEnLCAnL3Zhci90bXAvcWVtdS9ydW4nLCAndGVz
-dC1taW5ndyddJyByZXR1cm5lZCBub24temVybyBleGl0IHN0YXR1cyAyLgpmaWx0ZXI9LS1maWx0
-ZXI9bGFiZWw9Y29tLnFlbXUuaW5zdGFuY2UudXVpZD1hMDkzODQwY2Y3YzA0ZWU0YmY4ZGZjYTYw
-NzNiMmFlYQptYWtlWzFdOiAqKiogW2RvY2tlci1ydW5dIEVycm9yIDEKbWFrZVsxXTogTGVhdmlu
-ZyBkaXJlY3RvcnkgYC92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1hc2FpNXc0ZC9zcmMnCm1h
-a2U6ICoqKiBbZG9ja2VyLXJ1bi10ZXN0LW1pbmd3QGZlZG9yYV0gRXJyb3IgMgoKcmVhbCAgICAz
-bTIyLjQ4NHMKdXNlciAgICAwbTguNzU4cwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQK
-aHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDA2MTExNDQ1MjkuODg3My0xLXBldGVyLm1heWRl
-bGxAbGluYXJvLm9yZy90ZXN0aW5nLmRvY2tlci1taW5nd0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4K
-LS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0
-Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJl
-ZGhhdC5jb20=
+On Fri, Jun 26, 2020 at 8:27 PM Peter Maydell <peter.maydell@linaro.org> wr=
+ote:
+> On Tue, 23 Jun 2020 at 08:27, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+> > Extract i2c_try_create_slave() and i2c_realize_and_unref()
+> > from i2c_create_slave().
+> > We can now set properties on a I2CSlave before it is realized.
+> >
+> > This is in line with the recent qdev/QOM changes merged
+> > in commit 6675a653d2e.
+> >
+> > Reviewed-by: Corey Minyard <cminyard@mvista.com>
+> > Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>
+> Couple of things I belatedly noticed on this patch, which I don't
+> think are important enough for me to drop it from my pullreq,
+> but which I think it would be nice to address in a followup:
+>
+> > diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+> > index 4117211565..d6e3d85faf 100644
+> > --- a/include/hw/i2c/i2c.h
+> > +++ b/include/hw/i2c/i2c.h
+> > @@ -80,6 +80,8 @@ int i2c_send(I2CBus *bus, uint8_t data);
+> >  uint8_t i2c_recv(I2CBus *bus);
+> >
+> >  DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t a=
+ddr);
+> > +DeviceState *i2c_try_create_slave(const char *name, uint8_t addr);
+> > +bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp=
+);
+>
+> Can we have doc-comments for new global-scope functions, please ?
+
+Sure.
+
+>
+> > --- a/hw/i2c/core.c
+> > +++ b/hw/i2c/core.c
+> > @@ -267,13 +267,27 @@ const VMStateDescription vmstate_i2c_slave =3D {
+> >      }
+> >  };
+> >
+> > -DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t a=
+ddr)
+> > +DeviceState *i2c_try_create_slave(const char *name, uint8_t addr)
+> >  {
+> >      DeviceState *dev;
+> >
+> >      dev =3D qdev_new(name);
+> >      qdev_prop_set_uint8(dev, "address", addr);
+> > -    qdev_realize_and_unref(dev, &bus->qbus, &error_fatal);
+> > +    return dev;
+> > +}
+> > +
+> > +bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp=
+)
+> > +{
+> > +    return qdev_realize_and_unref(dev, &bus->qbus, errp);
+> > +}
+> > +
+> > +DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t a=
+ddr)
+> > +{
+> > +    DeviceState *dev;
+> > +
+> > +    dev =3D i2c_try_create_slave(name, addr);
+> > +    i2c_realize_and_unref(dev, bus, &error_fatal);
+> > +
+>
+> We now have a _try_ function which isn't "same behaviour as
+> the non-try function, but give me back an error status rather
+> than just killing QEMU". That seems confusing -- is there a
+> better name we can use ?
+
+Yes, Markus asked me to change that, but as it could be done on top,
+he didn't block the series.
+
+I'll address that next week.
+
+> thanks
+> -- PMM

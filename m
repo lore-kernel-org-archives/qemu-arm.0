@@ -1,181 +1,200 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp1640805wrg;
-        Sun, 12 May 2019 01:36:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwbBI4TAdu1FyvUgjl6eAxXzRTfRHURp/UnPKqGZ8/ABWWvFwJtXDFTbSFjCRLpB7pvqtaY
-X-Received: by 2002:a0c:b04f:: with SMTP id l15mr4249795qvc.191.1557650194942;
-        Sun, 12 May 2019 01:36:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557650194; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp774539lfm;
+        Fri, 26 Jun 2020 13:13:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzWVsGDQClVIuGuUfuuCha1+gi+C2mnTjgShFP3cJ7N4IS8p/Wtck1vYQwh7gLiAxt05cp0
+X-Received: by 2002:a25:7450:: with SMTP id p77mr7105469ybc.155.1593202393455;
+        Fri, 26 Jun 2020 13:13:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593202393; cv=none;
         d=google.com; s=arc-20160816;
-        b=ew7j3rSIIzsWytWVx15yibMjeNWasL9KL1FrLKMaQ3U2I0wkAyDJLIvPGQd9QGNzWY
-         jAK6AWAszszZ2uf+AF72XNLFvXuIPzkFGgaHSv7Q+osATP6ZSymzPNd4zf2O4ykdLw9q
-         bpjoRMpaDoMe1G5zNSfq1qgG+fWCBuEPpyAzr9U60tI3TURIUXP/tRkvDT2vUFTpLZLI
-         q8YsjDkA0xRmqwZqsIMmEt1tmjmcX0jAqUK05iwCxRK8ev60P9D5KqICAkSYuDAnV4+U
-         fnqG1nD2Z7X0RrZ2ECJgR4YZchtheRJml5c5RoO5Km9RWZD+NoDTVddcElSUbt0dfpLo
-         /5hQ==
+        b=VQHG58eIx2q0JcGMA61WczaESQiE6Gfzt/aMzWtNZ/CezbJI+2uI2ZZJ2BM3qNKK3X
+         VqHllgQY80qi69uW41eB0FEgQ7gi93srL9aZI8UIf5DQHV66A8DaCWfBYUUmOBJI86Dr
+         IwcOzQSIOxkKRfxTmpQd+f6Wlww7rLBs/AW3XkqDgZ2JNpzNqe7gL3tGfSeddKH8An3T
+         6hdhSC91izwmd48AaSN/lEY/dPAfrdEghqdCNr/VRhk5iISvQ+7vKYvFuq6LJfb5WN8G
+         pvGhHUVMacOK0rF15xHePcix0XvmmnAfMpawyJUcF5pRirhHtY0XOAKGhqmGi0IH3zs8
+         dvyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=GhRCARSVWtxtXo9+pHWFAwkIsoX0csWFlyvOLkk3MPw=;
-        b=MEBZvllRFNmtpkdoQpSv/Hm9EooCAU0cexNGbbljDuswnW50Xa43PpG9gf5AWdT7Wj
-         HBS0Yw2TEE1MshMPXM9uRPbeSb/OQibqB392rBi37P+cPDs3+rZGxzMOnY1KDRcLBXrn
-         JQVuPggRIjA6UJrZRHKjE3pd5yeUgOwETuohPCisrQ4/BLK6Y60VBz8/FlNHeAX6vVnK
-         7fnIQo049Fmv0V7uROoXr+bu86dL2XPPL+LESz9gJTsLOxbQIwJNMkYvWWLM/yQj59gQ
-         MB2hPn55V2NdPd1mv7VUi+AHrS5eIca2IuCDWMb6CivAkukhMt5fYyK2nBrjmCQCLbvt
-         zWRg==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:mime-version
+         :message-id:date:references:in-reply-to:subject:cc:to:dkim-signature;
+        bh=oYtEsauZuorfVnhgAC4L9NLhapb/Gm12K/+8bw+hy20=;
+        b=ofSmB3xkCCPNYv3eRaanwNrHGRnlzpuOvAa74iBpHD4+TSp9BllwDfofKo6i39d9gm
+         2YiUD8dug7xJIe7kJw20iPPJbv5UgON2IKV+r5ge8G4Eg/6x6oCiCO8SUw4dnoGU4+MN
+         GYfMU7Hj5II7OKhB9Ys2vkvcNAmEXLn1v97hMeKB4b0jWOOt44dCKGsWSULawmBsnCMv
+         r6N2t7wXPb83TNXxCyslheBQWmbeJMh7qcdx+LHUNilzbnDkDfTYP9cXZPhQKV29iZby
+         AprIKqQEBi2M6dbdql2RC9GNRtdQ/AB40HoWIFvtk6RjwBHUwQe5F+Gzx13BainhRa2b
+         hqoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id z58si267923qtj.225.2019.05.12.01.36.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 12 May 2019 01:36:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=fail header.i=@keithp.com header.s=mail header.b=ReEC9Gqg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w15si35962237ybt.55.2020.06.26.13.13.13
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 26 Jun 2020 13:13:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 70DE93086201;
-	Sun, 12 May 2019 08:36:33 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (ovpn-116-87.ams2.redhat.com [10.36.116.87])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EEBF25D706;
-	Sun, 12 May 2019 08:36:28 +0000 (UTC)
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org,
-	richard.henderson@linaro.org,
-	alex.bennee@linaro.org,
-	armbru@redhat.com,
-	eblake@redhat.com,
-	Dave.Martin@arm.com,
-	abologna@redhat.com
-Subject: [PATCH 00/13] target/arm/kvm: enable SVE in guests
-Date: Sun, 12 May 2019 10:36:11 +0200
-Message-Id: <20190512083624.8916-1-drjones@redhat.com>
+       dkim=fail header.i=@keithp.com header.s=mail header.b=ReEC9Gqg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51088 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jouim-0007uA-SP
+	for alex.bennee@linaro.org; Fri, 26 Jun 2020 16:13:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55334)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <keithp@keithp.com>)
+ id 1jouib-0007tj-T3; Fri, 26 Jun 2020 16:13:02 -0400
+Received: from home.keithp.com ([63.227.221.253]:46114 helo=elaine.keithp.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <keithp@keithp.com>)
+ id 1jouiX-000581-EO; Fri, 26 Jun 2020 16:13:01 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by elaine.keithp.com (Postfix) with ESMTP id 2AF9E3F2CB96;
+ Fri, 26 Jun 2020 13:12:53 -0700 (PDT)
+X-Virus-Scanned: Debian amavisd-new at keithp.com
+Received: from elaine.keithp.com ([127.0.0.1])
+ by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
+ with LMTP id Q-I34M2iVTzj; Fri, 26 Jun 2020 13:12:52 -0700 (PDT)
+Received: from keithp.com (168-103-152-72.tukw.qwest.net [168.103.152.72])
+ by elaine.keithp.com (Postfix) with ESMTPSA id B593D3F2CA82;
+ Fri, 26 Jun 2020 13:12:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
+ t=1593202372; bh=oYtEsauZuorfVnhgAC4L9NLhapb/Gm12K/+8bw+hy20=;
+ h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+ b=ReEC9GqgRxiOiahQIoQGkcLdKjTCMBw3zvUsTHacAKZ3WWwU47KPF+86SZOIQu1Cj
+ vr2YGBAlK8vdF8zwybgBK4I5lKUhJGXOyMbKlWB5Fvk4HZnEhuWQyRlsKhhEXGggkv
+ Vlfa1fMBfYMUu+ERRIiwwruPhyti2gYIL4i85vTfEqrh4/Pi5vTdM4/F6rxD7LhEzE
+ 4tD9GqibFgFVIeBaoqcfJpcFFYbp6zj20JK+D1gP/JaO2EfFNff/m7jhcPAvchgDQb
+ McpmDsVzmdzEBdYOJdTw1JcDBprCJiRQH6EBx5VJ+v4Vxt+XITcNX7OqrimsjKRPX8
+ 9CCopwn1uXVmg==
+Received: by keithp.com (Postfix, from userid 1000)
+ id 1D5FC1582167; Fri, 26 Jun 2020 13:12:47 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Subject: Re: [PATCH] hw/arm: Add 'virtm' hardware
+In-Reply-To: <CAFEAcA_ZRMpqAhR7BL05a+O_C54fhXZn8-+kC_KUU5n3BpzoCw@mail.gmail.com>
+References: <20200625230740.549114-1-keithp@keithp.com>
+ <CAFEAcA9ut5CVAgRTP-_BK3WpiDSmitFowZMe549TvgSAjj+Kfg@mail.gmail.com>
+ <87imfdixv9.fsf@keithp.com>
+ <CAFEAcA_ZRMpqAhR7BL05a+O_C54fhXZn8-+kC_KUU5n3BpzoCw@mail.gmail.com>
+Date: Fri, 26 Jun 2020 13:12:46 -0700
+Message-ID: <87a70pio1t.fsf@keithp.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.42]); Sun, 12 May 2019 08:36:33 +0000 (UTC)
-X-TUID: 5ZkbeDY1CxiO
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha256; protocol="application/pgp-signature"
+Received-SPF: pass client-ip=63.227.221.253; envelope-from=keithp@keithp.com;
+ helo=elaine.keithp.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 16:12:53
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to: "Keith Packard" <keithp@keithp.com>
+From: "Keith Packard" via <qemu-arm@nongnu.org>
+X-TUID: XbIFtxVW8+xi
 
-With the recent KVM guest SVE support pull request [1] KVM will be
-ready for guests with SVE. This series provides the QEMU bits for
-that enablement. The series starts with the bits needed for the KVM
-SVE ioctls. Then it enables the arm 'max'cpu type, which with TCG
-already supports SVE, to also support SVE when using KVM. Next
-a new QMP query is added that allows users to ask which vector
-lengths are supported by the host, allowing them to select a valid
-set of vectors for the guest. In order to select those vectors a
-new property 'sve-vls-map' is added to the 'max' cpu type, and then
-also to the 'host' cpu type. The table below shows the resulting user
-interfaces.
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-   CPU type | accel | sve-max-vq | sve-vls-map
-   -------------------------------------------
- 1)     max | tcg   |  $MAX_VQ   |  $VLS_MAP
- 2)     max | kvm   |  $MAX_VQ   |  $VLS_MAP
- 3)    host | kvm   |  N/A       |  $VLS_MAP
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Where for (1) $MAX_VQ sets the maximum vq and smaller vqs are
-all supported when $VLS_MAP is zero, or when the vqs are selected
-in $VLS_MAP.
+> You might find the user-mode qemu-arm sufficient for that
+> kind of thing. I know some gcc tests run that way. You
+> get a processor, semihosting, and whatever memory your
+> ELF file's data segment says you have (plus anything
+> you care to mmap()).
 
-(2) is the same as (1) except KVM has the final say on what
-vqs are valid.
+Thanks for the pointer; I've spent a bit of time checking out whether
+that might work, and it looks like I could get some testing done there,
+but I couldn't get the chip startup code tested (things like enabling
+the FPU, setting up the stack, data and bss segments).
 
-(3) doesn't accept sve-max-vq because a guest that uses this
-property without sve-vls-map cannot be safely migrated.
+I had always assumed that qemu-arm was designed to run user-mode Linux
+applications on top of another Linux system (given that it's called
+'arm-linux-user' in the qemu configuration code). That's why I hadn't
+even tried using it for this work.
 
-There is never any need to provide both properties, but if both
-are provided then they are checked for consistency.
+> Sure, but "machine-that-works-for-keith-packard" isn't really
+> a very clearly-defined concept :-)
 
-The QMP query returns a list of valid vq lists. For example, if
-a guest can use vqs 1, 2, 3, and 4, then the following list will
-be returned
+It seems well defined to me at least? An ARM core plus memory. That's
+sufficient to run tests with semihosting to validate compilers,
+libraries and the like. It would also serve as a model for people
+developing new QEMU boards to start from; here's a processor and memory,
+now you add peripherals and you've got a complete system.
 
- [ [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 2, 3, 4 ] ]
+This is all in service of a pretty easily explained goal -- a free
+software C library designed for embedded systems that gets tested on the
+target processors.
 
-Another example might be 1, 2, 4, as the architecture states 3
-is optional. In that case the list would be
+With QEMU, I'm able to incorporate all of the code necessary right in
+the library to execute tests on simulated hardware that starts from the
+reset vector. That same code can run on native hardware, allowing
+developers to get past the usual embedded development startup hurdle of
+creating a linker script, writing NVIC interrupt vector table and
+initializing RAM.
 
- [ [ 1 ], [ 1, 2 ], [ 1, 2, 4 ] ]
+I'd like to make the memory parameters configurable so that a developer
+could set qemu to match their particular SoC. Then they'd be able to run
+their application under QEMU and at least ensure that it gets to main()
+before flashing it on the target hardware.
 
-This may look redundant, but it's necessary to provide a future-
-proof query, because while KVM currently requires vector sets to
-be strict truncations of the full valid vector set, that may change
-at some point. Additionally, TCG doesn't have this restriction so
-more vector sets can be returned that aren't so easily derived from
-the full set already. (Note, this series doesn't do that yet. See
-the TODO below.)
+> I think that trying to weld M-profile into the A-profile virt
+> board is likely to be more confusing than having a separate board.
+> But I remain unhappy about defining a virtual board at all
+> if I can avoid it.
 
-And now for what might be a bit more controversial; how we input
-the valid vector set with sve-vls-map. Well, sve-vls-map is a
-64-bit bitmap, which is admittedly not user friendly and also not
-the same size as KVM's vls bitmap (which is 8 64-bit words). Here's
-the justification:
+Ok, that was my thinking for doing this as a separate board; the
+existing virt board seems complex enough without attempting to wedge
+something very different into it.
 
- 1) We want to use the QEMU command line in order for the information
-    to be migrated without needing to add more VM state.
- 2) It's not easy/pretty to input arrays on the QEMU command line.
- 3) We already need to use the QMP query to get a valid set, which
-    isn't user friendly either, meaning we're already in libvirt
-    territory.
- 4) A 64-bit map (supporting up to 8192-bit vectors) is likely big
-    enough for quite some time (currently KVM and TCG only support
-    2048-bit vectors).
- 5) If user friendliness is needed more than migratability then
-    the 'max' cpu type can be used with the sve-max-vq property.
- 6) It's possible to probe the full valid vector set from the
-    command line by using something like sve-vls-map=0xffff and
-    then, when it fails, the error message will state the correct
-    map, e.g. 0xb.
+I'll experiment with the arm-linux-user mode of QEMU a bit more to see
+how much testing that would enable; it should at least allow testing of
+the libc and libm functions, although not the crt0 implementation and
+sample linker scripts.
 
-TODO:
- 1) More testing. Initial testing looks good, and I'm doing more
-    now, but wanted to get the series out for review in parallel.
- 2) Extension to target/arm/arch_dump.c for SVE state. I'll try
-    to get to this early next week.
- 3) Modify the QMP query to output all valid vector sets for
-    TCG, rather than just the ones derived by truncation as
-    is required by KVM.
+I'd love help in creating a better definition of what the 'virtm' board
+should be, and figure out a way to explain it so that you appreciate the
+value it brings to the ARM ecosystem.
 
-[1] https://www.spinics.net/lists/kvm-arm/msg35844.html
+=2D-=20
+=2Dkeith
 
-Thanks!
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Andrew Jones (13):
-  target/arm/kvm64: fix error returns
-  update-linux-headers: Add sve_context.h to asm-arm64
-  HACK: linux header update
-  target/arm/kvm: Move the get/put of fpsimd registers out
-  target/arm/kvm: Add kvm_arch_get/put_sve
-  target/arm/kvm: max cpu: Enable SVE when available
-  target/arm/kvm: max cpu: Allow sve max vector length setting
-  target/arm/monitor: Add query-sve-vector-lengths
-  target/arm/kvm: Export kvm_arm_get_sve_vls
-  target/arm/monitor: kvm: only return valid sve vector sets
-  target/arm/cpu64: max cpu: Introduce sve-vls-map
-  target/arm/kvm: max cpu: Add support for sve-vls-map
-  target/arm/kvm: host cpu: Add support for sve-vls-map
+-----BEGIN PGP SIGNATURE-----
 
- linux-headers/asm-arm64/kvm.h         |  41 +++
- linux-headers/asm-arm64/sve_context.h |  53 ++++
- linux-headers/linux/kvm.h             |   5 +
- qapi/target.json                      |  34 +++
- scripts/update-linux-headers.sh       |   3 +
- target/arm/cpu.c                      |   5 +
- target/arm/cpu.h                      |   9 +
- target/arm/cpu64.c                    |  81 ++++-
- target/arm/helper.c                   |  10 +-
- target/arm/kvm.c                      |   5 +
- target/arm/kvm64.c                    | 418 ++++++++++++++++++++++----
- target/arm/kvm_arm.h                  |  32 ++
- target/arm/monitor.c                  | 106 +++++++
- tests/qmp-cmd-test.c                  |   1 +
- 14 files changed, 732 insertions(+), 71 deletions(-)
- create mode 100644 linux-headers/asm-arm64/sve_context.h
-
--- 
-2.20.1
+iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl72Vr4ACgkQ2yIaaQAA
+ABEiGBAAq6FY6vbywXCZbiXJRhkvv0zCSYngGFKXK5DsJ4YtioppPMllypv6o97q
+GZnMDU0WUcX8m/TIU9ikZL/zh8xqUIOtkzDKUQqADk23+uCFH2CAVYNyGHgg+vMO
+gQa2lf4TYjgv2gvPIB2nrV36akvHcGucNpfgf2wBsoIdacjtKtiGCo6/PF2pTp8F
+IEftpv9OzPsKBqugJLNzmLhNYsiEOs5fiku59ERgBMB+tk5bJJghtFzA2Gqd533i
+UJXqh4xAYZsuY97ENTG2EZ21xqIbeZLU0Ff1V6f9jWctxQYGFnq1w5G1KxYcH1J6
+LuGqDZlCUwrLSXQAa+GUjaNgVMoJ7TN2qD3oXwE2GI7ksyED+JjOR3w8dedZYJWr
+CRkDG5w6cE1ExDA+JnvtDKoD8ff071HIg3RevpU5iink0tztedAAqc+gkN8A8g11
+1bMk/m/YO/x3x6nVM8qdfyDvzgFdchqvt2TDkzJQ3G1zsNvCnl7kykZW8hnw+F7s
+7xRtXpN+7KD6bcdc3XrR470sN/0E2sSDLlQwLkCjEFu/ncYZ04rIPbqGvUCGrokI
+Q8hGTJuefiGwuQ2znAbHRiTJ8CT+NhamKu11z1jmGINp42eg7QCumx4pMlhmdbk2
+0A0ocbwBwr+6v28T3oT9QDxDIhiA3ysKYZITrIIexjGgqQ0oczQ=
+=c4U7
+-----END PGP SIGNATURE-----
+--=-=-=--

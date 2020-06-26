@@ -1,103 +1,113 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3279648lfm;
-        Mon, 29 Jun 2020 12:40:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxGtE6BvahISgoki/Jwu9FExYqpvvltjhkXB6+p8LRxuLYSaScJvPJTl54BY+wSnQb56EOs
-X-Received: by 2002:a25:bc13:: with SMTP id i19mr27520041ybh.391.1593459636236;
-        Mon, 29 Jun 2020 12:40:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593459636; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp919386lfm;
+        Fri, 26 Jun 2020 16:56:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyDGELCp7SaR/gBZM2PG/nWflfwjRh+MJ+Ba9C5ao/RqnGdFXpgHTCKmC3fCa/GVhiqdD+N
+X-Received: by 2002:a25:24d1:: with SMTP id k200mr9000303ybk.247.1593215762651;
+        Fri, 26 Jun 2020 16:56:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593215762; cv=none;
         d=google.com; s=arc-20160816;
-        b=ahXWWO16+CPuaKXkjI6e+0ELTEBa10aO2sKydRKmUxEurSbhgZ38bDkmv5cGXRQV0Y
-         Dz7daWE938kUpJ2UbDx1BVZZE3yQ12hYFn2T/eedOJhf26mKy8hjfcQ5JGhmrEGVAmdH
-         NLTujn3+03XNaiVgKfBslv0ohTnIGE3Du3JxSgjbfioiXp1ke8+/ttXw1QzMsbZIvnYr
-         qR7sEN2CQcQowZkCnwr1BE+3CTTKH5B7aLw5Pn6r5Y9EXHheK+kjsl0h5hKv/QsbbKgR
-         bnbG+oB5a/wVmt03/7GHSaCQ64afDyB8vKCl8Zs09tRuYRCWu12DySyOCrm8Hnnsl3DR
-         aW7Q==
+        b=ViK4BjMZ0JuYPqxGhFW8J/m5SXuSg+P+Aj0A2HDUR5cB4/yzmt8Mwrp4qfA9WDAYQe
+         5gnQFmhRyeZ6LzHFap4TmSJRUDTSyp38tbbym9KFLng+bMHA0zzrYP/yPj0UBCZmqFZS
+         0NlyU3jwBWHhx+NKWUQrwUDSCB8YaNC9kY3WV+ELJY03LGMQc8SPkSfZWpQw7Gjz9Zhx
+         Vner1eRhJbQud4lSEBbqsIPXJiyltRF5AgcCwmdSUX4zPUAFb2nFXKyCWJ7gRI95agL0
+         ch27gKfRBDfiIVlqr5HCDrnwtnNZmUawFxca5Egc2jNkCG3sni8VGNSCgLJs4wrTfReT
+         IJbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=xVLkDBAxHKQ4WkrpzyWFfHBf9M/cVOYEpiXFAVNde/8=;
-        b=lW17rCClGeR0nh3UPcLLQDxkRM4WFQcTUmJIPu+/nLctPkTIH/ex/Du7cbDJl+C5Hc
-         C99pLUewe12B6ZTprJTNd8NhsgHYtsLkeKK259VZ7qLvXGwUxJJIlpseqZ9vc8ECk9hr
-         fTr4eZvrHR6odKkkCZC7Rb0r+NKmgrPduwa33xv7k8moItuebGSf5HPC+tMM/QQ5lN/+
-         lxbgY7ZZEDFCwB/NcP3XlYlSWkqVFfBBwkDhurLSYWHraVqaQVgZx71xyMzbQMoXNNR3
-         jNLX0xr2jddfLQ1yUWxROtklcdQWlzIRZu+XVZ44iVHpFLW+JAnuch7OrGendXTG9aYM
-         /ipA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :from:subject:references:mime-version:message-id:in-reply-to:date
+         :dkim-signature;
+        bh=3c0Z/maxlGm3gwo7kY6JH2oDYdmRisgLI9+17Te1NUw=;
+        b=tK39FCYcMotxC1EErOIsH1ABtgQwe+UHf56iGd46v9KpgCnyBPWWhoHfUvfWIt1pzu
+         3HrYTXN5SyRNPIVH0eLte90+TCDJwtiQoXMxwywFzXbR7MtJPkt245UCSUWiIk/Up0nU
+         B8+FspxfJF3F6yaNCr9kkURXBSwiMLCC/zRIW3d+85Q1teB7u+donf0kX1OK63dNVnJN
+         3TwB4UNuir2hDCNVstSQcgLl4bKRxA0TKFTbo5thRpSIkXhNW+h3IJqDvpjT78yiEqx6
+         VfDALq6m7hWQ/XEqV1sUJA7gYnZgLrk72eab/kL9/yGDsG5M9bh0UglMETFogk1Rz6OC
+         rpKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pEO8acix;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=vvdxPasb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j188si436908ybg.202.2020.06.29.12.40.36
+        by mx.google.com with ESMTPS id t128si27714826ybf.135.2020.06.26.16.56.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jun 2020 12:40:36 -0700 (PDT)
+        Fri, 26 Jun 2020 16:56:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pEO8acix;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=vvdxPasb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44418 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:34992 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jpzdr-0000bG-Ij
-	for alex.bennee@linaro.org; Mon, 29 Jun 2020 15:40:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54662)
+	id 1joyCP-0007Z1-Sk
+	for alex.bennee@linaro.org; Fri, 26 Jun 2020 19:56:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53012)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jpzdd-0000ZV-O3; Mon, 29 Jun 2020 15:40:21 -0400
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:33462)
+ (Exim 4.90_1) (envelope-from
+ <3_4r2XgsKCOwVgYWbbSacSbUccUZS.QcaeSai-OfabcbUbi.cfU@flex--hskinnemoen.bounces.google.com>)
+ id 1joyCB-0007Xh-7w
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 19:55:47 -0400
+Received: from mail-qk1-x74a.google.com ([2607:f8b0:4864:20::74a]:45785)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jpzda-0004Ek-TP; Mon, 29 Jun 2020 15:40:21 -0400
-Received: by mail-io1-xd44.google.com with SMTP id i25so18531012iog.0;
- Mon, 29 Jun 2020 12:40:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=xVLkDBAxHKQ4WkrpzyWFfHBf9M/cVOYEpiXFAVNde/8=;
- b=pEO8acix/qds0v5tl1c7pj5G4dghFFDHB2UOAiGN+iWXJn9kEcmu8cpBXG5NKtUDf5
- 440QgHaliWmsr3zFmtx93qhLBgxPDp/6/huIX9G08su6L+fUvmrZ9CkDSxQBpyA7TFFX
- ay4qm54BOhCyUoBD3Ex4R17wdKiGxA+l/yXOldF8U5wInz867rkcUTEleyEToOaW9QbZ
- pJ6aAfAlTeBFeuUP8jwGwSJSGwSqq/DFivHO1iUf3mlMHWAnMhZy3Qi+v6eFs8EgLacT
- sFyBQCB6pPTHHNCI6U0Vm/om2Yi9J3zbvWAiwgYehgltQQpGF7SZrBpSBT33MdCQFSBi
- 02NQ==
+ (Exim 4.90_1) (envelope-from
+ <3_4r2XgsKCOwVgYWbbSacSbUccUZS.QcaeSai-OfabcbUbi.cfU@flex--hskinnemoen.bounces.google.com>)
+ id 1joyC8-000200-T4
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 19:55:46 -0400
+Received: by mail-qk1-x74a.google.com with SMTP id e185so7794355qkd.12
+ for <qemu-arm@nongnu.org>; Fri, 26 Jun 2020 16:55:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc:content-transfer-encoding;
+ bh=3c0Z/maxlGm3gwo7kY6JH2oDYdmRisgLI9+17Te1NUw=;
+ b=vvdxPasbRk5cgCkBotCorzCs2OihK73yLlgw8Y/3caIkKxIMCXcXF6aw9Gt8KvsQpX
+ 0stjbSiOcXs8XJMB8cKwDDUXqpY76hwBpC4fjZhR2c4GSUTw+BDJBkbUksprhGIOG9+1
+ Z0BfVlUCcBGFJjTRLrg3nrObfn9no/gmlWRd3PJrrTtM9H2Q6+DPzhUy2GWTLvBsmeNG
+ PPZrWnob5ahG8HQbkoKg1Fezo3+Xme5Vy5cp5cCjNTLBR1urjixFicF7yESxooarHeEL
+ 9Y2PsLFAMUF/hbsFSVqU2/HbhuMZKrXoECDcY7OgdSolvfqtM4UDZ/aoqndnQH/5vvYH
+ Hgzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=xVLkDBAxHKQ4WkrpzyWFfHBf9M/cVOYEpiXFAVNde/8=;
- b=E9iiDkY7ZazYOeDv53hrpT5KvG88Whz0c70KuQGjranBBDxX5SMgZfRi+LGvD5Dxve
- MxFyBRacsTVv07NbPtjBnpLecrDVTKV5fM+tIzdCjMPx+wyLjLHc4LK8ZrIvDwoxROIW
- dJtGgbGdhybJYNxt+Nub6rtJduyoAGgHwoiyeAKg7Ahfl4BFuzdbgm+pS8LhDVu6y2Ig
- ENm6cwHhpKcoM4XAqAwh2BqTLycRgqybqGOCw6hK2UQ9UaM6qkEuP/OLb+MG6hE6w5GW
- 2vhExNhd9ooN6CHpjIo4ycR1GB8qADVW41ii7ZAY5Qmz9463UWbTTq04FEEYRAxhen2P
- hh2w==
-X-Gm-Message-State: AOAM533Id3cQqviKmkI6P2MYDGJYlGUu3JHqugp1thw9phpz2dzDgOCP
- p7XLofT1VSyuIteRjyD4wYj+MyLbV58X4HtLDCQ=
-X-Received: by 2002:a5d:9306:: with SMTP id l6mr7475970ion.105.1593459616288; 
- Mon, 29 Jun 2020 12:40:16 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200628142429.17111-1-peter.maydell@linaro.org>
- <20200628142429.17111-2-peter.maydell@linaro.org>
-In-Reply-To: <20200628142429.17111-2-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 29 Jun 2020 12:30:33 -0700
-Message-ID: <CAKmqyKMeOv4bhtXNN+7CswYUaC+7go6dwoZUm-71dFfOKLP96g@mail.gmail.com>
-Subject: Re: [PATCH 01/17] hw/arm/spitz: Detabify
-To: Peter Maydell <peter.maydell@linaro.org>
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc:content-transfer-encoding;
+ bh=3c0Z/maxlGm3gwo7kY6JH2oDYdmRisgLI9+17Te1NUw=;
+ b=c8huQhggit/DDPw1jPerj//QJJqKAnJnU0/dDAH/CkACjRryAo+Tk1BLalaAQ1/mwR
+ dv/bEW5m/4Yaq4y4kEDqoTffjRchOYgb3u/5ZLJAPm1Ll6lgDcNNhFUELoQ2seMEE+RN
+ 1XtkxX+qRYTIIvLkl6wEDCTVgtrktxbcW6QUd9zWpeI7g9bOEQip/hBPwCpAEi4kbZ+W
+ CLxqXxNBUYBrseCqKDMbZyuOty4EGWZD8zVy1IQG3PvhwBOZueFft3HITdkIHJHI0mwh
+ +f5565eHVyvUty7ZNXF01T9ohgsVslibX9Cr0zpjuyzxyMQYpWBT8/bNJmUTg/OvEXLP
+ QAKA==
+X-Gm-Message-State: AOAM532zkqPbnQva0UxFmEiO7DV+Hack/7tE2ZDYEzeWjqVrPGQ34w7d
+ hJjaJij5Etozk/HTtIb0g0vXiea4s7BsvcA59A==
+X-Received: by 2002:a0c:fdc5:: with SMTP id g5mr5694977qvs.125.1593215743451; 
+ Fri, 26 Jun 2020 16:55:43 -0700 (PDT)
+Date: Fri, 26 Jun 2020 16:55:09 -0700
+In-Reply-To: <20200626235519.591734-1-hskinnemoen@google.com>
+Message-Id: <20200626235519.591734-3-hskinnemoen@google.com>
+Mime-Version: 1.0
+References: <20200626235519.591734-1-hskinnemoen@google.com>
+X-Mailer: git-send-email 2.27.0.212.ge8ba1cc988-goog
+Subject: [PATCH v3 02/12] hw/misc: Add NPCM7xx System Global Control Registers
+ device model
+From: Havard Skinnemoen <hskinnemoen@google.com>
+To: peter.maydell@linaro.org, clg@kaod.org, joel@jms.id.au
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
+ kfting@nuvoton.com, Havard Skinnemoen <hskinnemoen@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd44.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::74a;
+ envelope-from=3_4r2XgsKCOwVgYWbbSacSbUccUZS.QcaeSai-OfabcbUbi.cfU@flex--hskinnemoen.bounces.google.com;
+ helo=mail-qk1-x74a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -105
+X-Spam_score: -10.6
+X-Spam_bar: ----------
+X-Spam_report: (-10.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,312 +120,392 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FIKmL+JdQxCm
+X-TUID: ldf+sZeQFmu2
 
-On Sun, Jun 28, 2020 at 7:24 AM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> The spitz board has been around a long time, and still has a fair number
-> of hard-coded tab characters in it. We're about to do some work on
-> this source file, so start out by expanding out the tabs.
->
-> This commit is a pure whitespace only change.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Implement a device model for the System Global Control Registers in the
+NPCM730 and NPCM750 BMC SoCs.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+This is primarily used to enable SMP boot (the boot ROM spins reading
+the SCRPAD register) and DDR memory initialization; other registers are
+best effort for now.
 
-Alistair
+The reset values of the MDLR and PWRON registers are determined by the
+SoC variant (730 vs 750) and board straps respectively.
 
-> ---
-> Couple of checkpatch errors due to the QUEUE_KEY macro which can
-> be ignored as this is just a detabify.
-> ---
->  hw/arm/spitz.c | 156 ++++++++++++++++++++++++-------------------------
->  1 file changed, 78 insertions(+), 78 deletions(-)
->
-> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-> index fc18212e686..9eaedab79b5 100644
-> --- a/hw/arm/spitz.c
-> +++ b/hw/arm/spitz.c
-> @@ -34,25 +34,25 @@
->  #include "cpu.h"
->
->  #undef REG_FMT
-> -#define REG_FMT                        "0x%02lx"
-> +#define REG_FMT                         "0x%02lx"
->
->  /* Spitz Flash */
-> -#define FLASH_BASE             0x0c000000
-> -#define FLASH_ECCLPLB          0x00    /* Line parity 7 - 0 bit */
-> -#define FLASH_ECCLPUB          0x04    /* Line parity 15 - 8 bit */
-> -#define FLASH_ECCCP            0x08    /* Column parity 5 - 0 bit */
-> -#define FLASH_ECCCNTR          0x0c    /* ECC byte counter */
-> -#define FLASH_ECCCLRR          0x10    /* Clear ECC */
-> -#define FLASH_FLASHIO          0x14    /* Flash I/O */
-> -#define FLASH_FLASHCTL         0x18    /* Flash Control */
-> +#define FLASH_BASE              0x0c000000
-> +#define FLASH_ECCLPLB           0x00    /* Line parity 7 - 0 bit */
-> +#define FLASH_ECCLPUB           0x04    /* Line parity 15 - 8 bit */
-> +#define FLASH_ECCCP             0x08    /* Column parity 5 - 0 bit */
-> +#define FLASH_ECCCNTR           0x0c    /* ECC byte counter */
-> +#define FLASH_ECCCLRR           0x10    /* Clear ECC */
-> +#define FLASH_FLASHIO           0x14    /* Flash I/O */
-> +#define FLASH_FLASHCTL          0x18    /* Flash Control */
->
-> -#define FLASHCTL_CE0           (1 << 0)
-> -#define FLASHCTL_CLE           (1 << 1)
-> -#define FLASHCTL_ALE           (1 << 2)
-> -#define FLASHCTL_WP            (1 << 3)
-> -#define FLASHCTL_CE1           (1 << 4)
-> -#define FLASHCTL_RYBY          (1 << 5)
-> -#define FLASHCTL_NCE           (FLASHCTL_CE0 | FLASHCTL_CE1)
-> +#define FLASHCTL_CE0            (1 << 0)
-> +#define FLASHCTL_CLE            (1 << 1)
-> +#define FLASHCTL_ALE            (1 << 2)
-> +#define FLASHCTL_WP             (1 << 3)
-> +#define FLASHCTL_CE1            (1 << 4)
-> +#define FLASHCTL_RYBY           (1 << 5)
-> +#define FLASHCTL_NCE            (FLASHCTL_CE0 | FLASHCTL_CE1)
->
->  #define TYPE_SL_NAND "sl-nand"
->  #define SL_NAND(obj) OBJECT_CHECK(SLNANDState, (obj), TYPE_SL_NAND)
-> @@ -74,12 +74,12 @@ static uint64_t sl_read(void *opaque, hwaddr addr, unsigned size)
->      int ryby;
->
->      switch (addr) {
-> -#define BSHR(byte, from, to)   ((s->ecc.lp[byte] >> (from - to)) & (1 << to))
-> +#define BSHR(byte, from, to)    ((s->ecc.lp[byte] >> (from - to)) & (1 << to))
->      case FLASH_ECCLPLB:
->          return BSHR(0, 4, 0) | BSHR(0, 5, 2) | BSHR(0, 6, 4) | BSHR(0, 7, 6) |
->                  BSHR(1, 4, 1) | BSHR(1, 5, 3) | BSHR(1, 6, 5) | BSHR(1, 7, 7);
->
-> -#define BSHL(byte, from, to)   ((s->ecc.lp[byte] << (to - from)) & (1 << to))
-> +#define BSHL(byte, from, to)    ((s->ecc.lp[byte] << (to - from)) & (1 << to))
->      case FLASH_ECCLPUB:
->          return BSHL(0, 0, 0) | BSHL(0, 1, 2) | BSHL(0, 2, 4) | BSHL(0, 3, 6) |
->                  BSHL(1, 0, 1) | BSHL(1, 1, 3) | BSHL(1, 2, 5) | BSHL(1, 3, 7);
-> @@ -191,8 +191,8 @@ static void sl_nand_realize(DeviceState *dev, Error **errp)
->
->  /* Spitz Keyboard */
->
-> -#define SPITZ_KEY_STROBE_NUM   11
-> -#define SPITZ_KEY_SENSE_NUM    7
-> +#define SPITZ_KEY_STROBE_NUM    11
-> +#define SPITZ_KEY_SENSE_NUM     7
->
->  static const int spitz_gpio_key_sense[SPITZ_KEY_SENSE_NUM] = {
->      12, 17, 91, 34, 36, 38, 39
-> @@ -214,11 +214,11 @@ static int spitz_keymap[SPITZ_KEY_SENSE_NUM + 1][SPITZ_KEY_STROBE_NUM] = {
->      { 0x52, 0x43, 0x01, 0x47, 0x49,  -1 ,  -1 ,  -1 ,  -1 ,  -1 ,  -1  },
->  };
->
-> -#define SPITZ_GPIO_AK_INT      13      /* Remote control */
-> -#define SPITZ_GPIO_SYNC                16      /* Sync button */
-> -#define SPITZ_GPIO_ON_KEY      95      /* Power button */
-> -#define SPITZ_GPIO_SWA         97      /* Lid */
-> -#define SPITZ_GPIO_SWB         96      /* Tablet mode */
-> +#define SPITZ_GPIO_AK_INT       13      /* Remote control */
-> +#define SPITZ_GPIO_SYNC                 16      /* Sync button */
-> +#define SPITZ_GPIO_ON_KEY       95      /* Power button */
-> +#define SPITZ_GPIO_SWA          97      /* Lid */
-> +#define SPITZ_GPIO_SWB          96      /* Tablet mode */
->
->  /* The special buttons are mapped to unused keys */
->  static const int spitz_gpiomap[5] = {
-> @@ -300,7 +300,7 @@ static void spitz_keyboard_keydown(SpitzKeyboardState *s, int keycode)
->  #define SPITZ_MOD_CTRL    (1 << 8)
->  #define SPITZ_MOD_FN      (1 << 9)
->
-> -#define QUEUE_KEY(c)   s->fifo[(s->fifopos + s->fifolen ++) & 0xf] = c
-> +#define QUEUE_KEY(c)    s->fifo[(s->fifopos + s->fifolen ++) & 0xf] = c
->
->  static void spitz_keyboard_handler(void *opaque, int keycode)
->  {
-> @@ -308,25 +308,25 @@ static void spitz_keyboard_handler(void *opaque, int keycode)
->      uint16_t code;
->      int mapcode;
->      switch (keycode) {
-> -    case 0x2a: /* Left Shift */
-> +    case 0x2a:  /* Left Shift */
->          s->modifiers |= 1;
->          break;
->      case 0xaa:
->          s->modifiers &= ~1;
->          break;
-> -    case 0x36: /* Right Shift */
-> +    case 0x36:  /* Right Shift */
->          s->modifiers |= 2;
->          break;
->      case 0xb6:
->          s->modifiers &= ~2;
->          break;
-> -    case 0x1d: /* Control */
-> +    case 0x1d:  /* Control */
->          s->modifiers |= 4;
->          break;
->      case 0x9d:
->          s->modifiers &= ~4;
->          break;
-> -    case 0x38: /* Alt */
-> +    case 0x38:  /* Alt */
->          s->modifiers |= 8;
->          break;
->      case 0xb8:
-> @@ -536,14 +536,14 @@ static void spitz_keyboard_realize(DeviceState *dev, Error **errp)
->
->  /* LCD backlight controller */
->
-> -#define LCDTG_RESCTL   0x00
-> -#define LCDTG_PHACTRL  0x01
-> -#define LCDTG_DUTYCTRL 0x02
-> -#define LCDTG_POWERREG0        0x03
-> -#define LCDTG_POWERREG1        0x04
-> -#define LCDTG_GPOR3    0x05
-> -#define LCDTG_PICTRL   0x06
-> -#define LCDTG_POLCTRL  0x07
-> +#define LCDTG_RESCTL    0x00
-> +#define LCDTG_PHACTRL   0x01
-> +#define LCDTG_DUTYCTRL  0x02
-> +#define LCDTG_POWERREG0         0x03
-> +#define LCDTG_POWERREG1         0x04
-> +#define LCDTG_GPOR3     0x05
-> +#define LCDTG_PICTRL    0x06
-> +#define LCDTG_POLCTRL   0x07
->
->  typedef struct {
->      SSISlave ssidev;
-> @@ -623,12 +623,12 @@ static void spitz_lcdtg_realize(SSISlave *dev, Error **errp)
->
->  /* SSP devices */
->
-> -#define CORGI_SSP_PORT         2
-> +#define CORGI_SSP_PORT          2
->
-> -#define SPITZ_GPIO_LCDCON_CS   53
-> -#define SPITZ_GPIO_ADS7846_CS  14
-> -#define SPITZ_GPIO_MAX1111_CS  20
-> -#define SPITZ_GPIO_TP_INT      11
-> +#define SPITZ_GPIO_LCDCON_CS    53
-> +#define SPITZ_GPIO_ADS7846_CS   14
-> +#define SPITZ_GPIO_MAX1111_CS   20
-> +#define SPITZ_GPIO_TP_INT       11
->
->  static DeviceState *max1111;
->
-> @@ -659,13 +659,13 @@ static void corgi_ssp_gpio_cs(void *opaque, int line, int level)
->      s->enable[line] = !level;
->  }
->
-> -#define MAX1111_BATT_VOLT      1
-> -#define MAX1111_BATT_TEMP      2
-> -#define MAX1111_ACIN_VOLT      3
-> +#define MAX1111_BATT_VOLT       1
-> +#define MAX1111_BATT_TEMP       2
-> +#define MAX1111_ACIN_VOLT       3
->
-> -#define SPITZ_BATTERY_TEMP     0xe0    /* About 2.9V */
-> -#define SPITZ_BATTERY_VOLT     0xd0    /* About 4.0V */
-> -#define SPITZ_CHARGEON_ACIN    0x80    /* About 5.0V */
-> +#define SPITZ_BATTERY_TEMP      0xe0    /* About 2.9V */
-> +#define SPITZ_BATTERY_VOLT      0xd0    /* About 4.0V */
-> +#define SPITZ_CHARGEON_ACIN     0x80    /* About 5.0V */
->
->  static void spitz_adc_temp_on(void *opaque, int line, int level)
->  {
-> @@ -735,11 +735,11 @@ static void spitz_microdrive_attach(PXA2xxState *cpu, int slot)
->
->  /* Wm8750 and Max7310 on I2C */
->
-> -#define AKITA_MAX_ADDR 0x18
-> -#define SPITZ_WM_ADDRL 0x1b
-> -#define SPITZ_WM_ADDRH 0x1a
-> +#define AKITA_MAX_ADDR  0x18
-> +#define SPITZ_WM_ADDRL  0x1b
-> +#define SPITZ_WM_ADDRH  0x1a
->
-> -#define SPITZ_GPIO_WM  5
-> +#define SPITZ_GPIO_WM   5
->
->  static void spitz_wm8750_addr(void *opaque, int line, int level)
->  {
-> @@ -806,20 +806,20 @@ static void spitz_out_switch(void *opaque, int line, int level)
->      }
->  }
->
-> -#define SPITZ_SCP_LED_GREEN            1
-> -#define SPITZ_SCP_JK_B                 2
-> -#define SPITZ_SCP_CHRG_ON              3
-> -#define SPITZ_SCP_MUTE_L               4
-> -#define SPITZ_SCP_MUTE_R               5
-> -#define SPITZ_SCP_CF_POWER             6
-> -#define SPITZ_SCP_LED_ORANGE           7
-> -#define SPITZ_SCP_JK_A                 8
-> -#define SPITZ_SCP_ADC_TEMP_ON          9
-> -#define SPITZ_SCP2_IR_ON               1
-> -#define SPITZ_SCP2_AKIN_PULLUP         2
-> -#define SPITZ_SCP2_BACKLIGHT_CONT      7
-> -#define SPITZ_SCP2_BACKLIGHT_ON                8
-> -#define SPITZ_SCP2_MIC_BIAS            9
-> +#define SPITZ_SCP_LED_GREEN             1
-> +#define SPITZ_SCP_JK_B                  2
-> +#define SPITZ_SCP_CHRG_ON               3
-> +#define SPITZ_SCP_MUTE_L                4
-> +#define SPITZ_SCP_MUTE_R                5
-> +#define SPITZ_SCP_CF_POWER              6
-> +#define SPITZ_SCP_LED_ORANGE            7
-> +#define SPITZ_SCP_JK_A                  8
-> +#define SPITZ_SCP_ADC_TEMP_ON           9
-> +#define SPITZ_SCP2_IR_ON                1
-> +#define SPITZ_SCP2_AKIN_PULLUP          2
-> +#define SPITZ_SCP2_BACKLIGHT_CONT       7
-> +#define SPITZ_SCP2_BACKLIGHT_ON                 8
-> +#define SPITZ_SCP2_MIC_BIAS             9
->
->  static void spitz_scoop_gpio_setup(PXA2xxState *cpu,
->                  DeviceState *scp0, DeviceState *scp1)
-> @@ -839,15 +839,15 @@ static void spitz_scoop_gpio_setup(PXA2xxState *cpu,
->      qdev_connect_gpio_out(scp0, SPITZ_SCP_ADC_TEMP_ON, outsignals[6]);
->  }
->
-> -#define SPITZ_GPIO_HSYNC               22
-> -#define SPITZ_GPIO_SD_DETECT           9
-> -#define SPITZ_GPIO_SD_WP               81
-> -#define SPITZ_GPIO_ON_RESET            89
-> -#define SPITZ_GPIO_BAT_COVER           90
-> -#define SPITZ_GPIO_CF1_IRQ             105
-> -#define SPITZ_GPIO_CF1_CD              94
-> -#define SPITZ_GPIO_CF2_IRQ             106
-> -#define SPITZ_GPIO_CF2_CD              93
-> +#define SPITZ_GPIO_HSYNC                22
-> +#define SPITZ_GPIO_SD_DETECT            9
-> +#define SPITZ_GPIO_SD_WP                81
-> +#define SPITZ_GPIO_ON_RESET             89
-> +#define SPITZ_GPIO_BAT_COVER            90
-> +#define SPITZ_GPIO_CF1_IRQ              105
-> +#define SPITZ_GPIO_CF1_CD               94
-> +#define SPITZ_GPIO_CF2_IRQ              106
-> +#define SPITZ_GPIO_CF2_CD               93
->
->  static int spitz_hsync;
->
-> @@ -907,8 +907,8 @@ static void spitz_gpio_setup(PXA2xxState *cpu, int slots)
->  /* Board init.  */
->  enum spitz_model_e { spitz, akita, borzoi, terrier };
->
-> -#define SPITZ_RAM      0x04000000
-> -#define SPITZ_ROM      0x00800000
-> +#define SPITZ_RAM       0x04000000
-> +#define SPITZ_ROM       0x00800000
->
->  static struct arm_boot_info spitz_binfo = {
->      .loader_start = PXA2XX_SDRAM_BASE,
-> --
-> 2.20.1
->
->
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+---
+ MAINTAINERS                   |   8 ++
+ hw/misc/Makefile.objs         |   1 +
+ hw/misc/npcm7xx_gcr.c         | 211 ++++++++++++++++++++++++++++++++++
+ hw/misc/trace-events          |   4 +
+ include/hw/misc/npcm7xx_gcr.h |  76 ++++++++++++
+ 5 files changed, 300 insertions(+)
+ create mode 100644 hw/misc/npcm7xx_gcr.c
+ create mode 100644 include/hw/misc/npcm7xx_gcr.h
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1b40446c73..f6f19f778b 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -723,6 +723,14 @@ S: Odd Fixes
+ F: hw/arm/musicpal.c
+ F: docs/system/arm/musicpal.rst
+=20
++Nuvoton NPCM7xx
++M: Havard Skinnemoen <hskinnemoen@google.com>
++M: Tyrone Ting <kfting@nuvoton.com>
++L: qemu-arm@nongnu.org
++S: Supported
++F: hw/*/npcm7xx*
++F: include/hw/*/npcm7xx*
++
+ nSeries
+ M: Andrzej Zaborowski <balrogg@gmail.com>
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index 5aaca8a039..40a9d1c01e 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -51,6 +51,7 @@ common-obj-$(CONFIG_IMX) +=3D imx_rngc.o
+ common-obj-$(CONFIG_MILKYMIST) +=3D milkymist-hpdmc.o
+ common-obj-$(CONFIG_MILKYMIST) +=3D milkymist-pfpu.o
+ common-obj-$(CONFIG_MAINSTONE) +=3D mst_fpga.o
++common-obj-$(CONFIG_NPCM7XX) +=3D npcm7xx_gcr.o
+ common-obj-$(CONFIG_OMAP) +=3D omap_clk.o
+ common-obj-$(CONFIG_OMAP) +=3D omap_gpmc.o
+ common-obj-$(CONFIG_OMAP) +=3D omap_l4.o
+diff --git a/hw/misc/npcm7xx_gcr.c b/hw/misc/npcm7xx_gcr.c
+new file mode 100644
+index 0000000000..af03bf4a01
+--- /dev/null
++++ b/hw/misc/npcm7xx_gcr.c
+@@ -0,0 +1,211 @@
++/*
++ * Nuvoton NPCM7xx System Global Control Registers.
++ *
++ * Copyright 2020 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * version 2 as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ * GNU General Public License for more details.
++ */
++
++#include "qemu/osdep.h"
++
++#include "hw/misc/npcm7xx_gcr.h"
++#include "hw/qdev-properties.h"
++#include "qapi/error.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qemu/units.h"
++
++#include "trace.h"
++
++static const uint32_t cold_reset_values[NPCM7XX_GCR_NR_REGS] =3D {
++    [NPCM7XX_GCR_PDID]          =3D 0x04A92750,   /* Poleg A1 */
++    [NPCM7XX_GCR_MISCPE]        =3D 0x0000FFFF,
++    [NPCM7XX_GCR_SPSWC]         =3D 0x00000003,
++    [NPCM7XX_GCR_INTCR]         =3D 0x0000035E,
++    [NPCM7XX_GCR_HIFCR]         =3D 0x0000004E,
++    [NPCM7XX_GCR_INTCR2]        =3D (1U << 19),   /* DDR initialized */
++    [NPCM7XX_GCR_RESSR]         =3D 0x80000000,
++    [NPCM7XX_GCR_DSCNT]         =3D 0x000000c0,
++    [NPCM7XX_GCR_DAVCLVLR]      =3D 0x5A00F3CF,
++    [NPCM7XX_GCR_SCRPAD]        =3D 0x00000008,
++    [NPCM7XX_GCR_USB1PHYCTL]    =3D 0x034730E4,
++    [NPCM7XX_GCR_USB2PHYCTL]    =3D 0x034730E4,
++};
++
++static uint64_t npcm7xx_gcr_read(void *opaque, hwaddr offset, unsigned siz=
+e)
++{
++    uint32_t reg =3D offset / sizeof(uint32_t);
++    NPCM7xxGCRState *s =3D opaque;
++
++    if (reg >=3D NPCM7XX_GCR_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: offset 0x%04x out of range\n",
++                      __func__, (unsigned int)offset);
++        return 0;
++    }
++
++    trace_npcm7xx_gcr_read(offset, s->regs[reg]);
++
++    return s->regs[reg];
++}
++
++static void npcm7xx_gcr_write(void *opaque, hwaddr offset,
++                              uint64_t v, unsigned size)
++{
++    uint32_t reg =3D offset / sizeof(uint32_t);
++    NPCM7xxGCRState *s =3D opaque;
++    uint32_t value =3D v;
++
++    trace_npcm7xx_gcr_write(offset, value);
++
++    if (reg >=3D NPCM7XX_GCR_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: offset 0x%04x out of range\n",
++                      __func__, (unsigned int)offset);
++        return;
++    }
++
++    switch (reg) {
++    case NPCM7XX_GCR_PDID:
++    case NPCM7XX_GCR_PWRON:
++    case NPCM7XX_GCR_INTSR:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: register @ 0x%04x is read-only=
+\n",
++                      __func__, (unsigned int)offset);
++        return;
++
++    case NPCM7XX_GCR_RESSR:
++    case NPCM7XX_GCR_CP2BST:
++        /* Write 1 to clear */
++        value =3D s->regs[reg] & ~value;
++        break;
++
++    case NPCM7XX_GCR_RLOCKR1:
++    case NPCM7XX_GCR_MDLR:
++        /* Write 1 to set */
++        value |=3D s->regs[reg];
++        break;
++    };
++
++    s->regs[reg] =3D value;
++}
++
++static const struct MemoryRegionOps npcm7xx_gcr_ops =3D {
++    .read       =3D npcm7xx_gcr_read,
++    .write      =3D npcm7xx_gcr_write,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
++    .valid      =3D {
++        .min_access_size        =3D 4,
++        .max_access_size        =3D 4,
++        .unaligned              =3D false,
++    },
++};
++
++static void npcm7xx_gcr_enter_reset(Object *obj, ResetType type)
++{
++    NPCM7xxGCRState *s =3D NPCM7XX_GCR(obj);
++
++    QEMU_BUILD_BUG_ON(sizeof(s->regs) !=3D sizeof(cold_reset_values));
++
++    switch (type) {
++    case RESET_TYPE_COLD:
++        memcpy(s->regs, cold_reset_values, sizeof(s->regs));
++        s->regs[NPCM7XX_GCR_PWRON] =3D s->reset_pwron;
++        s->regs[NPCM7XX_GCR_MDLR] =3D s->reset_mdlr;
++        s->regs[NPCM7XX_GCR_INTCR3] =3D s->reset_intcr3;
++        break;
++    }
++}
++
++static void npcm7xx_gcr_realize(DeviceState *dev, Error **errp)
++{
++    NPCM7xxGCRState *s =3D NPCM7XX_GCR(dev);
++    uint64_t dram_size;
++
++    if (!s->dram) {
++        error_setg(errp, "npcm7xx_gcr: 'dram' link not set");
++        return;
++    }
++
++    /* Power-on reset value */
++    s->reset_intcr3 =3D 0x00001002;
++
++    /*
++     * The GMMAP (Graphics Memory Map) field is used by u-boot to detect t=
+he
++     * DRAM size, and is normally initialized by the boot block as part of=
+ DRAM
++     * training. However, since we don't have a complete emulation of the
++     * memory controller and try to make it look like it has already been
++     * initialized, the boot block will skip this initialization, and we n=
+eed
++     * to make sure this field is set correctly up front.
++     *
++     * WARNING: some versions of u-boot only looks at bits 8 and 9, so 2 G=
+iB or
++     * more of DRAM will be interpreted as 128 MiB.
++     *
++     * https://github.com/Nuvoton-Israel/u-boot/blob/2aef993bd2aafeb5408db=
+aad0f3ce099ee40c4aa/board/nuvoton/poleg/poleg.c#L244
++     */
++    dram_size =3D int128_get64(s->dram->size);
++    if (dram_size >=3D 2 * GiB) {
++        s->reset_intcr3 |=3D 4 << 8;
++    } else if (dram_size >=3D 1 * GiB) {
++        s->reset_intcr3 |=3D 3 << 8;
++    } else if (dram_size >=3D 512 * MiB) {
++        s->reset_intcr3 |=3D 2 << 8;
++    } else if (dram_size >=3D 256 * MiB) {
++        s->reset_intcr3 |=3D 1 << 8;
++    } else if (dram_size >=3D 128 * MiB) {
++        s->reset_intcr3 |=3D 0 << 8;
++    } else {
++        error_setg(errp,
++                   "npcm7xx_gcr: DRAM size %" PRIu64
++                   " is too small (need 128 MiB minimum)",
++                   dram_size);
++        return;
++    }
++}
++
++static void npcm7xx_gcr_init(Object *obj)
++{
++    NPCM7xxGCRState *s =3D NPCM7XX_GCR(obj);
++
++    memory_region_init_io(&s->iomem, obj, &npcm7xx_gcr_ops, s,
++                          TYPE_NPCM7XX_GCR, 4 * KiB);
++    sysbus_init_mmio(&s->parent, &s->iomem);
++}
++
++static Property npcm7xx_gcr_properties[] =3D {
++    DEFINE_PROP_UINT32("disabled-modules", NPCM7xxGCRState, reset_mdlr, 0)=
+,
++    DEFINE_PROP_UINT32("power-on-straps", NPCM7xxGCRState, reset_pwron, 0)=
+,
++    DEFINE_PROP_LINK("dram", NPCM7xxGCRState, dram, TYPE_MEMORY_REGION,
++                     MemoryRegion *),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void npcm7xx_gcr_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->desc =3D "NPCM7xx System Global Control Registers";
++    dc->realize =3D npcm7xx_gcr_realize;
++    rc->phases.enter =3D npcm7xx_gcr_enter_reset;
++
++    device_class_set_props(dc, npcm7xx_gcr_properties);
++}
++
++static const TypeInfo npcm7xx_gcr_info =3D {
++    .name               =3D TYPE_NPCM7XX_GCR,
++    .parent             =3D TYPE_SYS_BUS_DEVICE,
++    .instance_size      =3D sizeof(NPCM7xxGCRState),
++    .instance_init      =3D npcm7xx_gcr_init,
++    .class_init         =3D npcm7xx_gcr_class_init,
++};
++
++static void npcm7xx_gcr_register_type(void)
++{
++    type_register_static(&npcm7xx_gcr_info);
++}
++type_init(npcm7xx_gcr_register_type);
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 5561746866..1a20ce659a 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -107,6 +107,10 @@ mos6522_set_sr_int(void) "set sr_int"
+ mos6522_write(uint64_t addr, uint64_t val) "reg=3D0x%"PRIx64 " val=3D0x%"P=
+RIx64
+ mos6522_read(uint64_t addr, unsigned val) "reg=3D0x%"PRIx64 " val=3D0x%x"
+=20
++# npcm7xx_gcr.c
++npcm7xx_gcr_read(uint64_t offset, uint32_t value) " offset: 0x%04" PRIx64 =
+" value: 0x%08" PRIx32
++npcm7xx_gcr_write(uint64_t offset, uint32_t value) "offset: 0x%04" PRIx64 =
+" value: 0x%08" PRIx32
++
+ # stm32f4xx_syscfg
+ stm32f4xx_syscfg_set_irq(int gpio, int line, int level) "Interupt: GPIO: %=
+d, Line: %d; Level: %d"
+ stm32f4xx_pulse_exti(int irq) "Pulse EXTI: %d"
+diff --git a/include/hw/misc/npcm7xx_gcr.h b/include/hw/misc/npcm7xx_gcr.h
+new file mode 100644
+index 0000000000..a881ac41a3
+--- /dev/null
++++ b/include/hw/misc/npcm7xx_gcr.h
+@@ -0,0 +1,76 @@
++/*
++ * Nuvoton NPCM7xx System Global Control Registers.
++ *
++ * Copyright 2020 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * version 2 as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ * GNU General Public License for more details.
++ */
++#ifndef NPCM7XX_GCR_H
++#define NPCM7XX_GCR_H
++
++#include "exec/memory.h"
++#include "hw/sysbus.h"
++
++enum NPCM7xxGCRRegisters {
++    NPCM7XX_GCR_PDID,
++    NPCM7XX_GCR_PWRON,
++    NPCM7XX_GCR_MFSEL1          =3D 0x0C / sizeof(uint32_t),
++    NPCM7XX_GCR_MFSEL2,
++    NPCM7XX_GCR_MISCPE,
++    NPCM7XX_GCR_SPSWC           =3D 0x038 / sizeof(uint32_t),
++    NPCM7XX_GCR_INTCR,
++    NPCM7XX_GCR_INTSR,
++    NPCM7XX_GCR_HIFCR           =3D 0x050 / sizeof(uint32_t),
++    NPCM7XX_GCR_INTCR2          =3D 0x060 / sizeof(uint32_t),
++    NPCM7XX_GCR_MFSEL3,
++    NPCM7XX_GCR_SRCNT,
++    NPCM7XX_GCR_RESSR,
++    NPCM7XX_GCR_RLOCKR1,
++    NPCM7XX_GCR_FLOCKR1,
++    NPCM7XX_GCR_DSCNT,
++    NPCM7XX_GCR_MDLR,
++    NPCM7XX_GCR_SCRPAD3,
++    NPCM7XX_GCR_SCRPAD2,
++    NPCM7XX_GCR_DAVCLVLR        =3D 0x098 / sizeof(uint32_t),
++    NPCM7XX_GCR_INTCR3,
++    NPCM7XX_GCR_VSINTR          =3D 0x0AC / sizeof(uint32_t),
++    NPCM7XX_GCR_MFSEL4,
++    NPCM7XX_GCR_CPBPNTR         =3D 0x0C4 / sizeof(uint32_t),
++    NPCM7XX_GCR_CPCTL           =3D 0x0D0 / sizeof(uint32_t),
++    NPCM7XX_GCR_CP2BST,
++    NPCM7XX_GCR_B2CPNT,
++    NPCM7XX_GCR_CPPCTL,
++    NPCM7XX_GCR_I2CSEGSEL,
++    NPCM7XX_GCR_I2CSEGCTL,
++    NPCM7XX_GCR_VSRCR,
++    NPCM7XX_GCR_MLOCKR,
++    NPCM7XX_GCR_SCRPAD          =3D 0x013C / sizeof(uint32_t),
++    NPCM7XX_GCR_USB1PHYCTL,
++    NPCM7XX_GCR_USB2PHYCTL,
++    NPCM7XX_GCR_NR_REGS,
++};
++
++typedef struct NPCM7xxGCRState {
++    SysBusDevice parent;
++
++    MemoryRegion iomem;
++
++    uint32_t regs[NPCM7XX_GCR_NR_REGS];
++
++    uint32_t reset_pwron;
++    uint32_t reset_mdlr;
++    uint32_t reset_intcr3;
++    MemoryRegion *dram;
++} NPCM7xxGCRState;
++
++#define TYPE_NPCM7XX_GCR "npcm7xx-gcr"
++#define NPCM7XX_GCR(obj) OBJECT_CHECK(NPCM7xxGCRState, (obj), TYPE_NPCM7XX=
+_GCR)
++
++#endif /* NPCM7XX_GCR_H */
+--=20
+2.27.0.212.ge8ba1cc988-goog
+

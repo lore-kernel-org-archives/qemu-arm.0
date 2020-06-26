@@ -1,221 +1,244 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp200883lfm;
-        Fri, 26 Jun 2020 00:56:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzoDPkBNEDfMotgzTzD6vBX58vcK43lgCZTstHIHzp8+B44dVgmdtOe7xQRK9ei6g1M7hL7
-X-Received: by 2002:a25:44e:: with SMTP id 75mr3194721ybe.388.1593158202211;
-        Fri, 26 Jun 2020 00:56:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593158202; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp239039lfm;
+        Fri, 26 Jun 2020 01:55:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJycoqdFNmo73O2ajgIfYnW3oevcUCfobUHIKf6X1iHuPSEmGv9zRX0yxOSb6OaxcIUn9VaW
+X-Received: by 2002:a25:d684:: with SMTP id n126mr3623727ybg.476.1593161703207;
+        Fri, 26 Jun 2020 01:55:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593161703; cv=none;
         d=google.com; s=arc-20160816;
-        b=f+71W/fvAEOA7gvLPUqFQhi65G3w3oFxzFxr7Qeqj7tmuuSQHn5iH12WUlwn4aRKGj
-         HhJ8uRs9E3uFHzKL7k31niUA1cYEbc9+QPYd12iXbbKPHryb7gv/PBqMVd/+VZ/rJ3sn
-         YrsE7aIESOvu6yCFl495yBR+lDfT/Bh8/2GzqP209Mo7R4maofGj4Ls7G0mxVlP9TM6U
-         oMRfh0+q+UrIYhZaDcgLPWJ7C5uwod8j/94hDP0YA9yIsScgLvENnQQjpQt0KuXMHwmJ
-         7Ajpe8ujyuB0rAufAXu1niKU84NZzIiQnaKYwItvNXgMUKsZis70a9Yvj2C2kRy3Hcwh
-         xLeQ==
+        b=OY+7AfM7eUfU9bmsAG3mR4j/aqX7/XQd0lIEAJ5dJPLJWZZtzoCdyxycJFPuaYxgps
+         t9vVTRynFGDkd7o6oyr/83bzZokJOvpERyuKSjGzYeaHe/1XYqhcVQeAJlBQH5QM59Fv
+         QuW0dKrFMMt/xiPxHwyWjRoIZI/bjP+jtFjGEJb0V0zac7oX96v9gV6CcnE96O1b1+Qx
+         5gb7EmBRc0mCqGriRn/RuYXhblWGW3ogWsFyUHmjpvJY9eLFeBnFCBtCfCFvzt+25hA+
+         iJUZXNwmR6gyTGlsms4WFX3NB/3lTjDRnfax+lBX4xcnAKmYVPEOkd+s4zvjL2N4Z7Cr
+         p3nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:to:from
          :dkim-signature;
-        bh=5u38E07NF7bGvPjr2vXllrKTrw+iDRsVFyrwFK7ZHfU=;
-        b=ZDLHmnJp5lrcedE0g8tVDYE5O53oeSUkD38DldQwWbi5QvCDa0VBKM328xhbNuMC6H
-         MXkJEU/1EHnOE1OFJeZXzh74q2dEGX6iq/V1P3K4y/BojxF0FjURg+6NyUqVmfVA+YL1
-         clxJjaP8eaW0Bgev8nADMiDYVvfBAqv1YpzH0HbQsYTNI3DvMjBpuFS89Bn1WVQp2DCa
-         CgMjKL1txvDYK7Y+f8kFj2VbprgnpgWq1SjkQhGWFxFzK1SpZkhGhBX1RkAVpA9bw3PG
-         drPves/JN483KO6L2D6riBP7SH1pFADofP/88z0v4xUJV4zFhpzrXFsBH1O47oDDsVYp
-         jo0Q==
+        bh=pTpWvBCKu8Qg6Ct0C2kD/5C/MiqsERUJ3ec+f60MM1s=;
+        b=ELg5ZM++6Hp6EuPmJ5NNkPrsc/VAeipGNDOQI+QItk8O2HY596cf6+dQZqRfO+H/1h
+         kagINaNzae7kkXfdfaBlTyrBgmtP5+ggSmJB2++uKl7c+eJC0j1wLDS/7S6wJ3SM/0gs
+         lPwcFH28xphuPLm4j0XW/20ThH5acAYxbDgPo19ku1kZgOfoYadmvjByCBd4JSPOTdNu
+         VHSojR5786PTjVLYotU1sMnUkY0ZoxxT7x1oM+Hce6RMAhhcDEJkeJe/4902D3IgmdnF
+         mnt/rAlw1rVzz927+JQaG/fvPghWMbWEQ85O5MzIXP0S7MRLNs8KHVYmNdkVGQYTivGR
+         qUhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rnCmcQBh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=G2rUPWsI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s74si24536977ybc.74.2020.06.26.00.56.42
+        by mx.google.com with ESMTPS id e4si25487885ybp.143.2020.06.26.01.55.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jun 2020 00:56:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 26 Jun 2020 01:55:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rnCmcQBh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59012 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=G2rUPWsI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38176 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jojE1-0004NF-HB
-	for alex.bennee@linaro.org; Fri, 26 Jun 2020 03:56:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37014)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jok8U-00071R-Id
+	for alex.bennee@linaro.org; Fri, 26 Jun 2020 04:55:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48878)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1jojDu-0004Mr-Nv
- for qemu-arm@nongnu.org; Fri, 26 Jun 2020 03:56:34 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:45092)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1jojDs-0002y3-KT
- for qemu-arm@nongnu.org; Fri, 26 Jun 2020 03:56:34 -0400
-Received: by mail-ed1-x542.google.com with SMTP id t21so6181185edr.12
- for <qemu-arm@nongnu.org>; Fri, 26 Jun 2020 00:56:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=5u38E07NF7bGvPjr2vXllrKTrw+iDRsVFyrwFK7ZHfU=;
- b=rnCmcQBhVXmVjtSg3Ol6m05Ay4NgC77nXEUFVFrBudysDaL+3hjFO5X2aDSnoLCIfh
- JA0sETdJLDkpPGqvB1Nq4M25ztBBjgQwWrKVtnkNrkZ4MbqGhz3XUtqAJXdNAza9x3/a
- vSkZS8ZCenUR0Wx8+qDC7hf9PkCRh5de/ne1/ftpVkQ8crYonp3nAbkj/zwtzn1Z95Et
- Tbf3UGWmw9zssQmdIonQoWFQ5GbwNsPJAEopRmTj6nt+TZacFrCV4oUxEEyhVAZVV1HH
- PywqS+q06O5cx5cK590K3+mNqe4LWnEsSB0gTZNK+0y3n/Y17MgsUMMy0fIGYMfz8T39
- l+lw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=5u38E07NF7bGvPjr2vXllrKTrw+iDRsVFyrwFK7ZHfU=;
- b=ZqtxNVKAV/vufDP4Tap9NcYEbJW1yTQiA9yddKiug9TlGxpI6xK2Y1akkxiRsbC2qE
- 1ayxz0lBcKKhoQFCEsjYZjESGxdl0kNZFktcYaafCEXxypWtlD8MnaUDkgPgtIivrZb6
- zaka8FqZ0fnTeNpoL/eGfeTKU6yscaMew8L9EEMT6BQ6BTQn91Sqrui57l2NpiyONyRa
- 948iQQENAFD2O80vKB5Wr8u1hSDSNeyIXcf1gQLzKUpWgKZ3mwR/wR/iBXR66OKgKNrg
- VEUzx3NXwB0ZB1MDrO71dFjRnARnwsjOx42bPYrRquuVhRGXf+x+/VRj6N8VuivGuAd2
- gKEA==
-X-Gm-Message-State: AOAM532/fsdhPrGpGG5x7vRnIJlKaKCUdWmrF8eORpjEDYBQgLxOfeoE
- JaE1vv1Mx6APUAr+mpM1Rt+HCA==
-X-Received: by 2002:a50:ee84:: with SMTP id f4mr2016506edr.183.1593158190313; 
- Fri, 26 Jun 2020 00:56:30 -0700 (PDT)
-Received: from myrica ([2001:1715:4e26:a7e0:116c:c27a:3e7f:5eaf])
- by smtp.gmail.com with ESMTPSA id n16sm9714204ejo.54.2020.06.26.00.56.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Jun 2020 00:56:29 -0700 (PDT)
-Date: Fri, 26 Jun 2020 09:56:17 +0200
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [PATCH v5 0/5] VIRTIO-IOMMU probe request support and MSI bypass
- on ARM
-Message-ID: <20200626075617.GB2107508@myrica>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jok7i-0006a2-Gc
+ for qemu-devel@nongnu.org; Fri, 26 Jun 2020 04:54:14 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:50716
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jok7g-00011L-7k
+ for qemu-devel@nongnu.org; Fri, 26 Jun 2020 04:54:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593161650;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=pTpWvBCKu8Qg6Ct0C2kD/5C/MiqsERUJ3ec+f60MM1s=;
+ b=G2rUPWsIA6hoMlZAfhjw2v1V67mTz09+6p2Nm4iijs7lO6vaxTup7RUn3qhtIKTP2p9Uwt
+ +jW+8RsdJZv6F+1nqVZGmgyqo2v4DDRA0YURhINPs2QnDHOKrmFzlH5zUKyAtpKUc+Imso
+ 7M3biNAXaU4ZIqFUSKYM7k45/qWTutw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-209-xeeG4C_LNXa6WKPV8k3ZQw-1; Fri, 26 Jun 2020 04:54:03 -0400
+X-MC-Unique: xeeG4C_LNXa6WKPV8k3ZQw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 81C9C87951A;
+ Fri, 26 Jun 2020 08:54:02 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id F0EE75D9D3;
+ Fri, 26 Jun 2020 08:53:53 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 6346111384D4; Fri, 26 Jun 2020 10:53:52 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Subject: Re: [PATCH v5 2/5] virtio-iommu: Implement RESV_MEM probe request
 References: <20200624132625.27453-1-eric.auger@redhat.com>
- <20200624094510-mutt-send-email-mst@kernel.org>
+ <20200624132625.27453-3-eric.auger@redhat.com>
+ <87zh8r1v6z.fsf@dusky.pond.sub.org>
+ <5cf11295-b762-9246-8b4b-9d5d1c83749a@redhat.com>
+Date: Fri, 26 Jun 2020 10:53:52 +0200
+In-Reply-To: <5cf11295-b762-9246-8b4b-9d5d1c83749a@redhat.com> (Auger Eric's
+ message of "Fri, 26 Jun 2020 09:41:37 +0200")
+Message-ID: <878sgaw6lb.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20200624094510-mutt-send-email-mst@kernel.org>
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=jean-philippe@linaro.org; helo=mail-ed1-x542.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 01:49:42
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, peterx@redhat.com,
- armbru@redhat.com, Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, jean-philippe@linaro.org, mst@redhat.com,
+ qemu-devel@nongnu.org, peterx@redhat.com, qemu-arm@nongnu.org,
  pbonzini@redhat.com, bbhushan2@marvell.com, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kXg9suv88d3I
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gTX1aUReQHVt
 
-On Wed, Jun 24, 2020 at 09:47:59AM -0400, Michael S. Tsirkin wrote:
-> On Wed, Jun 24, 2020 at 03:26:20PM +0200, Eric Auger wrote:
-> > By default the virtio-iommu translates MSI transactions. This
-> > behavior is inherited from ARM SMMU. However the virt machine
-> > code knows where the MSI doorbells are, so we can easily
-> > declare those regions as VIRTIO_IOMMU_RESV_MEM_T_MSI. With that
-> > setting the guest iommu subsystem will not need to map MSIs.
-> > This setup will simplify the VFIO integration.
-> > 
-> > In this series, the ITS or GICV2M doorbells are declared as
-> > HW MSI regions to be bypassed by the VIRTIO-IOMMU.
-> 
-> 
-> > This also paves the way to the x86 integration where the MSI
-> > region, [0xFEE00000,0xFEEFFFFF], will be exposed by the q35
-> > machine.  However this will be handled in a separate series
-> > when not-DT support gets resolved.
-> 
-> What's going on with that btw?
-> I think the next step is to put the spec up for virtio tc vote,
-> then we can merge that, right? acpi parts will need to be
-> ratified by the acpi sig.
+Auger Eric <eric.auger@redhat.com> writes:
 
-Yes I'm being unreasonably slow on this. I'll look at both the virtio spec
-and ACPI after coming back from Holiday in July. I'm afraid the situation
-for the built-in description will be the same on the Linux side (asked to
-use ACPI instead), but it's worth retrying as we have some progress on
-ACPI support.
+> Hi Markus,
+> On 6/25/20 9:05 AM, Markus Armbruster wrote:
+>> Eric Auger <eric.auger@redhat.com> writes:
+>> 
+>>> This patch implements the PROBE request. At the moment,
+>>> only THE RESV_MEM property is handled. The first goal is
+>>> to report iommu wide reserved regions such as the MSI regions
+>>> set by the machine code. On x86 this will be the IOAPIC MSI
+>>> region, [0xFEE00000 - 0xFEEFFFFF], on ARM this may be the ITS
+>>> doorbell.
+>>>
+>>> In the future we may introduce per device reserved regions.
+>>> This will be useful when protecting host assigned devices
+>>> which may expose their own reserved regions
+>>>
+>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>> Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+>>>
+>>> ---
+>>>
+>>> v4 -> v5:
+>>> - assert if reserved region type is different from RESERVED or
+>>>   MSI
+>>>
+>>> v3 -> v4:
+>>> - removed any reference to the NONE property that does not
+>>>   exist anymore.
+>>>
+>>> v2 -> v3:
+>>> - on probe, do not fill the reminder of the buffer with zeroes
+>>>   as the buffer was already zero initialized (Bharat)
+>>>
+>>> v1 -> v2:
+>>> - move the unlock back to the same place
+>>> - remove the push label and factorize the code after the out label
+>>> - fix a bunch of cpu_to_leX according to the latest spec revision
+>>> - do not remove sizeof(last) from free space
+>>> - check the ep exists
+>>> ---
+>>>  include/hw/virtio/virtio-iommu.h |  2 +
+>>>  hw/virtio/virtio-iommu.c         | 92 ++++++++++++++++++++++++++++++--
+>>>  hw/virtio/trace-events           |  1 +
+>>>  3 files changed, 91 insertions(+), 4 deletions(-)
+>>>
+>>> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
+>>> index e653004d7c..49eb105cd8 100644
+>>> --- a/include/hw/virtio/virtio-iommu.h
+>>> +++ b/include/hw/virtio/virtio-iommu.h
+>>> @@ -53,6 +53,8 @@ typedef struct VirtIOIOMMU {
+>>>      GHashTable *as_by_busptr;
+>>>      IOMMUPciBus *iommu_pcibus_by_bus_num[PCI_BUS_MAX];
+>>>      PCIBus *primary_bus;
+>>> +    ReservedRegion *reserved_regions;
+>>> +    uint32_t nb_reserved_regions;
+>>>      GTree *domains;
+>>>      QemuMutex mutex;
+>>>      GTree *endpoints;
+>>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+>>> index 483883ec1d..aabc3e36b1 100644
+>>> --- a/hw/virtio/virtio-iommu.c
+>>> +++ b/hw/virtio/virtio-iommu.c
+>>> @@ -38,6 +38,7 @@
+>>>  
+>>>  /* Max size */
+>>>  #define VIOMMU_DEFAULT_QUEUE_SIZE 256
+>>> +#define VIOMMU_PROBE_SIZE 512
+>>>  
+>>>  typedef struct VirtIOIOMMUDomain {
+>>>      uint32_t id;
+>>> @@ -378,6 +379,63 @@ static int virtio_iommu_unmap(VirtIOIOMMU *s,
+>>>      return ret;
+>>>  }
+>>>  
+>>> +static ssize_t virtio_iommu_fill_resv_mem_prop(VirtIOIOMMU *s, uint32_t ep,
+>>> +                                               uint8_t *buf, size_t free)
+>>> +{
+>>> +    struct virtio_iommu_probe_resv_mem prop = {};
+>>> +    size_t size = sizeof(prop), length = size - sizeof(prop.head), total;
+>>> +    int i;
+>>> +
+>>> +    total = size * s->nb_reserved_regions;
+>>> +
+>>> +    if (total > free) {
+>>> +        return -ENOSPC;
+>>> +    }
+>>> +
+>>> +    for (i = 0; i < s->nb_reserved_regions; i++) {
+>>> +        prop.head.type = cpu_to_le16(VIRTIO_IOMMU_PROBE_T_RESV_MEM);
+>>> +        prop.head.length = cpu_to_le16(length);
+>>> +        prop.subtype = s->reserved_regions[i].type;
+>>> +        assert(prop.subtype == VIRTIO_IOMMU_RESV_MEM_T_RESERVED ||
+>>> +               prop.subtype == VIRTIO_IOMMU_RESV_MEM_T_MSI);
+>> 
+>> The assertion makes sense here: we're mapping from the generic
+>> ReservedRegion type (which is unsigned) to the specific
+>> virtio_iommu_probe_resv_mem subtype (which is uint8_t, but only these
+>> two values are valid).
+>> 
+>> Howver, the assertion should test s->reserved_regions[i].type and go
+>> before the assignment, to ensure it doesn't truncate!
+> OK I will do.
+>> 
+>> Can I trigger the assertion with -device?  My try to find the answer
+>> myself failed:
+> At the moment the virtio-iommu-pci device only can be instantiated with
+> machvirt, booting in dt mode.
 
-Thanks,
-Jean
+I asked because if I can, then invalid types need to be rejected
+cleanly.
 
-> 
-> > Best Regards
-> > 
-> > Eric
-> > 
-> > This series can be found at:
-> > https://github.com/eauger/qemu/tree/v5.0.0-virtio-iommu-msi-bypass-v5
-> > 
-> > History:
-> > 
-> > v4 -> v5:
-> > - Take into account some additional comments from Markus:
-> >   - reserved region type becomes an unsigned + some comment/desc
-> >     rewording
-> >   - assert if the type is not RESERVED or MSI
-> > 
-> > v3 -> v4:
-> > - collected Jean and markus's R-bs
-> > - tool into account all Markus' comments in [1/5] (except removal of
-> >   goto)
-> > - use ':' as delimitor instead of commas
-> > - add example in 4/5 commit message as suggested by Markus
-> > 
-> > v2 -> v3:
-> > - Introduce VIRT_MSI_CTRL_NONE in VirtMSIControllerType
-> > - do not fill the remainder of the probe buffer
-> > 
-> > v1 -> v2:
-> > - check which MSI controller is in use and advertise the
-> >   corresponding MSI doorbell
-> > - managed for both ITS and GICv2M
-> > - various fixes spotted by Peter and Jean-Philippe, see
-> >   individual logs
-> > 
-> > v1: Most of those patches were respinned from
-> >   [PATCH for-5.0 v11 00/20] VIRTIO-IOMMU device
-> >   except the last one which is new
-> > 
-> > 
-> > Eric Auger (5):
-> >   qdev: Introduce DEFINE_PROP_RESERVED_REGION
-> >   virtio-iommu: Implement RESV_MEM probe request
-> >   virtio-iommu: Handle reserved regions in the translation process
-> >   virtio-iommu-pci: Add array of Interval properties
-> >   hw/arm/virt: Let the virtio-iommu bypass MSIs
-> > 
-> >  include/exec/memory.h            |   6 ++
-> >  include/hw/arm/virt.h            |   7 ++
-> >  include/hw/qdev-properties.h     |   3 +
-> >  include/hw/virtio/virtio-iommu.h |   2 +
-> >  include/qemu/typedefs.h          |   1 +
-> >  hw/arm/virt.c                    |  18 +++++
-> >  hw/core/qdev-properties.c        |  89 ++++++++++++++++++++++++
-> >  hw/virtio/virtio-iommu-pci.c     |   3 +
-> >  hw/virtio/virtio-iommu.c         | 112 +++++++++++++++++++++++++++++--
-> >  hw/virtio/trace-events           |   1 +
-> >  10 files changed, 238 insertions(+), 4 deletions(-)
-> > 
-> > -- 
-> > 2.20.1
-> 
+Invalid property values can be rejected by the setter, or by the realize
+method.  Since this setter by design accepts anything that fits into
+unsigned, it's realize.
+
+[...]
+

@@ -1,104 +1,113 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp446535lfm;
-        Fri, 26 Jun 2020 06:28:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzpmuZY5DdHLWv46zBuGB6CNj71iL9s/5qv18JfeyCiCa0fGBtdFd6+UVIrYpvDtg6j62u4
-X-Received: by 2002:a25:bd47:: with SMTP id p7mr5057735ybm.39.1593178129610;
-        Fri, 26 Jun 2020 06:28:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593178129; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp468120lfm;
+        Fri, 26 Jun 2020 06:53:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzRfrQB0fSuVuqLC7qz13bZRhAre6tOhf/fJA+ZmErGPyiu2PT+x73Myz4esBnmcj8Oxb3i
+X-Received: by 2002:a25:be02:: with SMTP id h2mr5172200ybk.315.1593179632894;
+        Fri, 26 Jun 2020 06:53:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593179632; cv=none;
         d=google.com; s=arc-20160816;
-        b=0mRM488R8x+PtXw+dQLl2MQv1IIk8nXNYCkXEZR4BZUolV/Dn3+g59Whr9wXFCW6N4
-         5c0x8UwCcWQUHtj64t1Kzgmeiv2SA871QfFJYwgEZ0uh5B37ZuK9M5217/V3J2UeG6HE
-         xY4XoP8kizQTll7WeMSzrZY8g1q3XGf9KVxVpbzU7th7uWlvhD9HJ43AT0TMsb+o/FUq
-         1Ryc7B/oJ/CCqHrxT8L/TlTGaSfj1tXolCCkB3g5xhpsOGtYFiut+B2Xe26dUFqyb809
-         vVS4JRZmlmIqgtz+pP1i9z/y7WnHOypjFOztYjmFXlwe5GmIrfH7HMz20ebFsdkp/gjJ
-         IDgQ==
+        b=axB55v5vmtAe+AwNn+nvBUYB5QGLJH4+fS7FgFkSGgntBusgQZ+9pA/VI7IUwMAVOT
+         aMnI0eCPfoZxEeNO5kGwEUKzGR8alVzyzwNisx6DzZMrVBIce3B2kAqhrVSd9HUXMyud
+         Lhc7KBXQxUdfNjo5USpOLOdFvAAEhjE67BQ61lfASGyVqljILAFwhoxiO6rw0josxqsu
+         NjlRSlkYnxb6jRy0T37MzH5UlQEiGl3i8fS85cT3tv+HzkymD/JgX5GWR2qZJ/T/Jgc2
+         5t40cGW6Kc6xhJW7rdVuCIqk2jGbqlJYsjmud15m9MkARmws459dHEIYNtcZ1OoFjdZZ
+         X6Mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=H2QHeSHD9C3n4Syy5xXTjoAoH2PcRolR/kv/jb7C4q8=;
-        b=XiXTO3L/fIFpTa1AvreLo2I6zO8n2mueIah+/Aw2s1C4us4KqadAsKT5ZEpR6JcdgS
-         orxlwZ/MvQJozzRNo79jdWNRL5q0mTsFimpXZWGWpkpHZGZl/ddHz02a2oGPv6y60E0b
-         vD+2gAJvMqX2b2mxAz0Sj6y97/iM/5pTcpc51XvvkLGbGdpjouuHieYRJD3/kFVVTC+4
-         WtZIPh8opBvr3FKh62KOBDon+07Acq+SFYbM07uoOXTJCv2Ac/WBxxuLg5cW79eCNGQ2
-         jL0yVZ7Ss5/c9eKCCweS/zQHXJzvTM4VHoHUzAsbeD+DUraIZaWDeXU0KQMX1WjaE9K9
-         sZ3w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=rwUZaNvroZripnZh67EbJIWuW7cvT996Qglx/6JLTMk=;
+        b=ui1oxQu2ZVnRAK+gzETy6ZCFx8eQVRgck9OA6IHq2YITcW1kgXDnuHGgUwp2Dj8Zye
+         tvd0Pg1Mqdqcxxgc8lTUT6T4Lmmph/U85vbPsSthA0W+5XWqdhzTXDIwEjIRj45oUIYn
+         lPKcbvMavGWAmpSlSApbsDCIX2lwdQLpjQppRg2rIHLPo4JFDuL5+yDa0WlzapPxcmgk
+         rGUbFCOHF/Qz2QQNw7RqLMhnt0hv3OCIYZtHcoXpnT+cDM4q6pumpOChdEhVNXC5D6iP
+         EjYSDePHR22PlUGHZbEHlzDc2mEeYVKk+g6PEpWC06pzgwWFFqFdZ3+3e2i81LvtSrwj
+         NQcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=T6jJtroT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g1NIkfZ6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g204si24525609ybg.404.2020.06.26.06.28.49
+        by mx.google.com with ESMTPS id 130si22967816ybv.66.2020.06.26.06.53.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jun 2020 06:28:49 -0700 (PDT)
+        Fri, 26 Jun 2020 06:53:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=T6jJtroT;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g1NIkfZ6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57602 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58062 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jooPR-0002bV-0q
-	for alex.bennee@linaro.org; Fri, 26 Jun 2020 09:28:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60078)
+	id 1joong-0001yv-Aq
+	for alex.bennee@linaro.org; Fri, 26 Jun 2020 09:53:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39806)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jooPH-0002bG-CU
- for qemu-arm@nongnu.org; Fri, 26 Jun 2020 09:28:39 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:41987)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jooPF-0005NO-Mx
- for qemu-arm@nongnu.org; Fri, 26 Jun 2020 09:28:39 -0400
-Received: by mail-ot1-x341.google.com with SMTP id t6so8571404otk.9
- for <qemu-arm@nongnu.org>; Fri, 26 Jun 2020 06:28:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=H2QHeSHD9C3n4Syy5xXTjoAoH2PcRolR/kv/jb7C4q8=;
- b=T6jJtroThTGfyQoRuN/FV73LPe3SVv7GUJ5B18yy1KaFKswDOiChXWliVXUDdlhR2N
- OBJcusyPML2j9g5xB2ge8szbaI7i3FCr0+TzxuStPNW1S2xy+gWDcyqTotyX8IwczRvj
- 3r6Cg52h/bcayxtgznmHTqt+77ppriwerlVXp1q1XtrkmgoVx58f6wcQWqFGL9LFyCjz
- iTNwXPz1EffPtp71kJQBLq4f9/oQM2Yt5APljK7hacn8a51YYPJnzjwEVh78x2PEek02
- h4uLA1gOP5h7rl46BGL5aylYm6v3/rlXRLSXn2lu2UQ2Oc6rrE/VqblS6QhmGexGIpMm
- ZXXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=H2QHeSHD9C3n4Syy5xXTjoAoH2PcRolR/kv/jb7C4q8=;
- b=MxBcTf1Wd5i0b4RN4HYAikNrUdxag/F0kVO28/I2VS4khkz2OE7SMqvkUfdI8PTZUV
- S0igdcnQ7DoD/AEKGHz1PqWlxwTrL05aChAHwJqcnZ4FP7+/RJCttmTMlaJrbjI5MWv8
- 1uv0elVdvRoSOI8Mff08hZNOqkZ6bXv38seXmMoth/EyOe9VERWI48k4EpJ3+Lbp3M85
- Tq3ZL+2Ast9G//+Rh5IyMGd5ywW++5hdl2reXlM6Y4MmolCkOb2c706cbiDIoXzTcD1t
- CFNoGmt68lJIy/LeiV5m3yXlQl+JqQbFTaaJ5Y5s2bzqi/sYCHQ+xkrrSbRED1Gq/Iz7
- T+tw==
-X-Gm-Message-State: AOAM533JpGZA4dXw0Jyvb0shJzbn1XWzrSlT2fRkl9fwLaHGD6UtrQH7
- RP3ay81Rz2I1Q/d3OxSCcgjTaojaEiiU9ep8viZZNw==
-X-Received: by 2002:a9d:67d6:: with SMTP id c22mr2251363otn.221.1593178116317; 
- Fri, 26 Jun 2020 06:28:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1joonZ-0001yY-AP
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 09:53:45 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:55560
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1joonW-0007Ge-RT
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 09:53:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593179620;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=rwUZaNvroZripnZh67EbJIWuW7cvT996Qglx/6JLTMk=;
+ b=g1NIkfZ6+au2UzbGloi4CM4BWROxpzLogpi0DmCOBDP07DrF9mioB6zuqI8tPSYNOM03X+
+ VBHkJBVKXocecliyZ2WW2SgxmeEz7rkLc7NWFTtaaRAVKCX0n1RjqtenxXfy/xR1qxNr4H
+ dnXr35vLdi51CSYdsVCzGt3tLr7okrw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-101-blJYXWKgNzOx4D7C1GLkyg-1; Fri, 26 Jun 2020 09:53:39 -0400
+X-MC-Unique: blJYXWKgNzOx4D7C1GLkyg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D0ADB108C303;
+ Fri, 26 Jun 2020 13:53:36 +0000 (UTC)
+Received: from [10.36.114.197] (ovpn-114-197.ams2.redhat.com [10.36.114.197])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id EAA2160BF4;
+ Fri, 26 Jun 2020 13:53:27 +0000 (UTC)
+Subject: Re: [PATCH RESEND 6/9] hw/arm/smmu-common: Manage IOTLB block entries
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200611161500.23580-1-eric.auger@redhat.com>
+ <20200611161500.23580-7-eric.auger@redhat.com>
+ <CAFEAcA9FZV=jSk_9aJ_tHy=KLy+YrTFNoiqvCv7BMs0dWrHWFA@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <db6d92ba-2716-40df-54d3-84fb51ab3ad3@redhat.com>
+Date: Fri, 26 Jun 2020 15:53:26 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-References: <20200626033144.790098-1-richard.henderson@linaro.org>
- <20200626033144.790098-47-richard.henderson@linaro.org>
-In-Reply-To: <20200626033144.790098-47-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 26 Jun 2020 14:28:25 +0100
-Message-ID: <CAFEAcA92JB5oV02qjdq-T4B3czfXAQw6HORX2V+jUFn4AMFbsw@mail.gmail.com>
-Subject: Re: [PATCH v9 46/46] target/arm: Add arm,armv8.5-memtag to dtb
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+In-Reply-To: <CAFEAcA9FZV=jSk_9aJ_tHy=KLy+YrTFNoiqvCv7BMs0dWrHWFA@mail.gmail.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 03:23:21
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,26 +120,101 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: David Spickett <david.spickett@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Stephen Long <steplong@quicinc.com>
+Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Robin Murphy <robin.murphy@arm.com>,
+ zhangfei.gao@foxmail.com, QEMU Developers <qemu-devel@nongnu.org>,
+ Peter Xu <peterx@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
+ Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ef/iODE8xPL9
+X-TUID: 9suzdD0DAI8f
 
-On Fri, 26 Jun 2020 at 04:32, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> The mte-v4 linux arm kernel development branch requires these tags.
-> It is still an open question as to whether they will be required
-> for the final commit.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
-> v9: Split from patch creating the tag memory; sort to the end
->     since it's not yet certain that it's a requirement.
+Hi Peter,
 
-Not going to bother reviewing this one for now since I'm pretty
-sure it's moot :-)
+On 6/25/20 5:30 PM, Peter Maydell wrote:
+> On Thu, 11 Jun 2020 at 17:16, Eric Auger <eric.auger@redhat.com> wrote:
+>>
+>> At the moment each entry in the IOTLB corresponds to a page sized
+>> mapping (4K, 16K or 64K), even if the page belongs to a mapped
+>> block. In case of block mapping this unefficiently consume IOTLB
+>> entries.
+>>
+>> Change the value of the entry so that it reflects the actual
+>> mapping it belongs to (block or page start address and size).
+>>
+>> Also the level/tg of the entry is encoded in the key. In subsequent
+>> patches we will enable range invalidation. This latter is able
+>> to provide the level/tg of the entry.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> 
+> 
+>> -uint64_t smmu_get_iotlb_key(uint16_t asid, uint64_t iova)
+>> +uint64_t smmu_get_iotlb_key(uint16_t asid, uint64_t iova,
+>> +                            uint8_t tg, uint8_t level)
+>>  {
+>> -    return iova >> 12 | (uint64_t)(asid) << SMMU_IOTLB_ASID_SHIFT;
+>> +    return iova >> 12 | (uint64_t)(asid) << SMMU_IOTLB_ASID_SHIFT |
+>> +           (uint64_t)(level) << SMMU_IOTLB_LEVEL_SHIFT |
+>> +           (uint64_t)(tg) << SMMU_IOTLB_TG_SHIFT;
+>>  }
+> 
+>>  SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+>> -                                 hwaddr iova)
+>> +                                SMMUTransTableInfo *tt, hwaddr iova)
+>>  {
+>> -    uint64_t key = smmu_get_iotlb_key(cfg->asid, iova);
+>> -    SMMUTLBEntry *entry = g_hash_table_lookup(bs->iotlb, &key);
+>> +    uint8_t tg = (tt->granule_sz - 10) / 2;
+>> +    int level = tt->starting_level;
+>> +    SMMUTLBEntry *entry = NULL;
+>> +
+>> +    while (level <= 3) {
+>> +        uint64_t subpage_size = 1ULL << level_shift(level, tt->granule_sz);
+>> +        uint64_t mask = subpage_size - 1;
+>> +        uint64_t key;
+>> +
+>> +        key = smmu_get_iotlb_key(cfg->asid, iova & ~mask, tg, level);
+>> +        entry = g_hash_table_lookup(bs->iotlb, &key);
+>> +        if (entry) {
+>> +            break;
+>> +        }
+>> +        level++;
+> 
+> Rather than looping around doing multiple hash table lookups like
+> this, why not just avoid including the tg and level in the
+> key equality test?
+> 
+> If I understand the range-based-invalidation feature correctly,
+> the only time we care about the TG/LVL is if we're processing
+> an invalidate-range command that specifies them. But in that
+> case there should never be multiple entries in the bs->iotlb
+> with the same iova, so we can just check whether the entry
+> matches the requested TG/LVL once we've pulled it out of the
+> hash table. (Or we could architecturally validly just blow
+> it away regardless of requested TG/LVL -- they are only hints,
+> not required-to-match.)
 
-thanks
--- PMM
+This change could have been done independently on the RIL feature. As we
+now put block entries in the IOTLB , when we look for an iova
+translation, the IOVA can be mapped using different block sizes or using
+page entries. So we start looking at blocks of the bigger size (entry
+level) downto the page, for instance 4TB/512MB/64KB. We cannot know
+which block and size the address belongs to. I do not know if we can
+make any hypothesis on whether the driver is forbidden to invalidate an
+address that is not the starting address of an initial mapping.
+
+Not a justification but an info, this is implemented the same way on x86
+(except they don't have variable TG), see vtd_lookup_iotlb in
+hw/i386/intel_iommu.c
+
+Thanks
+
+Eric
+> 
+> thanks
+> -- PMM
+> 
+

@@ -1,126 +1,107 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1526528lfc;
-        Thu, 11 Jun 2020 08:22:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJytteXC5xegmWJb7ZDmul34HpI/+ynrTndM1XLxYpVpn4g1UK+Srv2r55WqR65FkHKqQYES
-X-Received: by 2002:a25:b948:: with SMTP id s8mr14115265ybm.487.1591888921178;
-        Thu, 11 Jun 2020 08:22:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591888921; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp700066lfm;
+        Fri, 26 Jun 2020 11:33:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxwRzQlak33eYrLksKZHifYwaYMEm4RcoY0TNiPs7pUYa5fr1eAuJWMavX/zqiIsv0GkmVJ
+X-Received: by 2002:a25:c141:: with SMTP id r62mr7104977ybf.52.1593196425920;
+        Fri, 26 Jun 2020 11:33:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593196425; cv=none;
         d=google.com; s=arc-20160816;
-        b=ey+sC9bO54ySrxuQOuYlZrNrxdToMmJkV5610Mn1uCXmU1YdrFTLDEte26PQ0a3GWh
-         q3aec8Jp1uwkkr2zcRlS+8ssU2/VJTQ0ypIBlnI0v5v3Aht2gpOT+/TYyyqED0YGL2T4
-         QSy8J+ErcBasO9ky/ft5iBGRUyn8NHWMaiswP//F3yegUHwnEp0Kfj1wcRzb467f1wE7
-         lK8h2mcYBJGNCdApSqz0LFc6dNhXNF16D6WgYSb+X3Py6LlMQrpU5jvWvenpXe9C8ytD
-         miQ2Cpu09iPCSJnZI8mahcvFQTKQkYC3GfKVisxC4NvbsySnjOe6GXV6iQaM9b4JTj7P
-         qRsA==
+        b=BgQFP8G6Iet2FPb3v7MjMlgHcSmrJXa5IGMXlFuFpdhfoayInfFLkgATxPip6KQJy6
+         ICR51eG1Ps5FNhtVTUwgsZ+haneFm9+B2W/yulJxbicDOlq72+vkdGv0VMx/Cbuovd3I
+         3mGs3ywMs4sgjlRqzNF63Q174F1kgk7pQErvMhn4m6nXAemOSutrYOoo/+S+lDkmndAy
+         aLf0kmnNfmyRVkvlRPvw+UOp8Ih0ahDqj2ixNW6BXKi5CBvPDwv5g3PM0j5mc+V0nQ3B
+         lCIxe9Upp6wqtzKJLm8hnnRIsFZA/Z5HfeSJbNxaMnFixlpYbk8pRQvz+eDqofP1Nt2K
+         ev3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=mwQwUB0ursRbDXpCNmOEUCpz8FUa9P8HJWHI1kzsbQc=;
-        b=A7roDTaMwdgMOr5mG+3TLFxBUJ8MmkFK8B0S5fZE889KdCNpqP40h49iyvwAAS5L3e
-         dzZBpyDRi0ehfREwOTgfP0dssiM3v8JY6c2diG2GtndxEPmV4/cGTMmIkFiV3K6ybOXs
-         la4enPlvR0W1G771ej6oDJTl53UIj1r8tP5hLBpgh0Xmnsb4DEQzfmOePgSAFOL1Bv3I
-         RKcZgkPbJ6O+fLGLKuX8lG2/B520IeHfI0dVIMauapxaEXyj6Hto3BaZm/wIpjwORT2x
-         HGqLHtRhJUS5+qiOfR55K+26TCEu0F6qdOqlkYx019/n1HjFCTBNsuIQCwKuuIfSyEwL
-         nW4w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=LvgLLhBtWl2z+FXtxz/Ed4ovyKj4GMS7TWSgOgCVmF8=;
+        b=Uw/iHtFw36tk9J1K2N/ybpAYSG3HjXuXM9bHC83XHrrurk7lTiGfmGy0v2NKjqfc7R
+         19wY1HGKcXkJoSQBQkapLOV3Tq+qAiDDXb0omMvmQCWsP4S31zs4tUcXmTd2GUELTph+
+         bAy4y+2ZYi/MvU9NzbfPVA9m6KWIQNsTQy7vDct2Xv+a9dLVMR3zv6E7MQpNWEukksKn
+         AGSsWe8UnCX7izu0rssUR9OvBkytilBsGt8Kd6g/c1soIRZWrOwnJRMbGlUQyFsFXKGC
+         YLaXAlYcMl0ACEhelQfaOnnMO6H7zdP+8o5ko50kQNiKdX8rgp2lZ2x8o9AO+PaH2afa
+         /TtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=EPqpTzj1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j7si2820425ybc.321.2020.06.11.08.22.00
+        by mx.google.com with ESMTPS id l14si40010191ybt.495.2020.06.26.11.33.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jun 2020 08:22:01 -0700 (PDT)
+        Fri, 26 Jun 2020 11:33:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=EPqpTzj1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:37812 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56284 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjP1k-00060a-I4
-	for alex.bennee@linaro.org; Thu, 11 Jun 2020 11:22:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51880)
+	id 1jotAX-0003wD-AP
+	for alex.bennee@linaro.org; Fri, 26 Jun 2020 14:33:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58510)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jjOuN-0006KA-M4; Thu, 11 Jun 2020 11:14:23 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:60158)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1jjOuL-0003if-PQ; Thu, 11 Jun 2020 11:14:23 -0400
-Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 05BF41jN149616; Thu, 11 Jun 2020 11:14:18 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 31kdn6spaf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 11 Jun 2020 11:14:17 -0400
-Received: from m0098396.ppops.net (m0098396.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 05BF4Ewc150462;
- Thu, 11 Jun 2020 11:14:16 -0400
-Received: from ppma02wdc.us.ibm.com (aa.5b.37a9.ip4.static.sl-reverse.com
- [169.55.91.170])
- by mx0a-001b2d01.pphosted.com with ESMTP id 31kdn6sp9t-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 11 Jun 2020 11:14:16 -0400
-Received: from pps.filterd (ppma02wdc.us.ibm.com [127.0.0.1])
- by ppma02wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 05BFAt3O006648;
- Thu, 11 Jun 2020 15:14:15 GMT
-Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com
- [9.57.198.29]) by ppma02wdc.us.ibm.com with ESMTP id 31g2s8w2j4-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 11 Jun 2020 15:14:15 +0000
-Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com
- [9.57.199.109])
- by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 05BFEE6v49807814
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 11 Jun 2020 15:14:15 GMT
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id DF35B112061;
- Thu, 11 Jun 2020 15:14:14 +0000 (GMT)
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id CC52E112066;
- Thu, 11 Jun 2020 15:14:14 +0000 (GMT)
-Received: from sbct-3.pok.ibm.com (unknown [9.47.158.153])
- by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTP;
- Thu, 11 Jun 2020 15:14:14 +0000 (GMT)
-Subject: Re: [PATCH v4 2/5] acpi: Move build_tpm2() in the generic part
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, shannon.zhaosl@gmail.com, imammedo@redhat.com
-References: <20200611135917.18300-1-eric.auger@redhat.com>
- <20200611135917.18300-3-eric.auger@redhat.com>
-From: Stefan Berger <stefanb@linux.ibm.com>
-Message-ID: <0c34a3c3-a5b0-15a1-e8e9-418d611a26f3@linux.ibm.com>
-Date: Thu, 11 Jun 2020 11:14:14 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jot0P-0004Ec-1P
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 14:23:17 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:40547)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jot0M-0005Br-RL
+ for qemu-arm@nongnu.org; Fri, 26 Jun 2020 14:23:16 -0400
+Received: by mail-ot1-x343.google.com with SMTP id q21so1941876otc.7
+ for <qemu-arm@nongnu.org>; Fri, 26 Jun 2020 11:23:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=LvgLLhBtWl2z+FXtxz/Ed4ovyKj4GMS7TWSgOgCVmF8=;
+ b=EPqpTzj1cd2Znrz+bTU7dU0M7aac5eS2BXa/IBOhXQR2XQh0lrwsQpMbvygPWOPXqV
+ IED5DHDcC0EvfEAHqsSO+pIuQMdzxt0rfzHCbv0735VwSWJ29q8A199giaXN4KrV7Lub
+ XPKY2IsFPCen0C4kll4IGDTzo72ctLkS7hIndKbXJe1aN+BaavBIhFiwF9pbwt+EYPxF
+ wwSVVwR0UphTRQtaPYyw1qwUlnc7LX9aOnmNoN47ofnjQy3E2TQXIY9MZswZZ1q4LADK
+ aGxWHheXXvrAhuYaR9UgdlXYY8l6In/nRQTf8X6d8+m4KI5RY9KdoKNcKQPCrUEw2XKt
+ ZoWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=LvgLLhBtWl2z+FXtxz/Ed4ovyKj4GMS7TWSgOgCVmF8=;
+ b=NNIPvVw4EbBRvM3+FaPiik3nr5TFhzB+JDvy2+qpujCZImMh1ZhnAitALgI/VQZTbo
+ 4MbtdKnHPa8cwOLD310Kz7R8GkvaWtOuVs8HXp8zi2tPMDFo1uBAPMZDa3BqmGnCxl7w
+ GktBNlgAQQ0f+J/nKu+tFXubeeBWkB22+zw9rV/UcDBudPBo49SpohBX7yL+t13IByC0
+ uGG4x6vSUY0u5Lc5M9SY2vElqNK9vTs51R/yX6NoZcL+JoJ+uTd9fn+E0WqFM3doH/iB
+ HPULbdAau3IFB0ZnIop75G1zaeA8zN7sKEuV4y9HZCzHQydDJaI9XIiefHNbeYo1Muqd
+ J2Ug==
+X-Gm-Message-State: AOAM532FQpKGWsyOFxYwmx0P/xG+0nEuQSS2B9heQ4/kks55FbRg+1ob
+ 64RVYvaBIHpj3Stle5KPJG4D5mYCKtzA7qPfaBcAoQ==
+X-Received: by 2002:a4a:2f15:: with SMTP id p21mr3558948oop.20.1593195793213; 
+ Fri, 26 Jun 2020 11:23:13 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200611135917.18300-3-eric.auger@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.216, 18.0.687
- definitions=2020-06-11_15:2020-06-11,
- 2020-06-11 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 spamscore=0
- clxscore=1015 cotscore=-2147483648 malwarescore=0 mlxlogscore=999
- suspectscore=0 bulkscore=0 adultscore=0 mlxscore=0 priorityscore=1501
- lowpriorityscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2004280000 definitions=main-2006110115
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/11 10:26:43
-X-ACL-Warn: Detected OS   = Linux 3.x [generic] [fuzzy]
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+References: <20200623072723.6324-1-f4bug@amsat.org>
+ <20200623072723.6324-2-f4bug@amsat.org>
+In-Reply-To: <20200623072723.6324-2-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 26 Jun 2020 19:23:02 +0100
+Message-ID: <CAFEAcA9-Vjh-hkB9i9fvp9yEHuKW7cGeEDQ-kKmiiao2WogQDQ@mail.gmail.com>
+Subject: Re: [PATCH v6 1/9] hw/i2c/core: Add i2c_try_create_slave() and
+ i2c_realize_and_unref()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -134,172 +115,82 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: marcandre.lureau@redhat.com, drjones@redhat.com, lersek@redhat.com,
- ardb@kernel.org, philmd@redhat.com
+Cc: Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
+ QEMU Developers <qemu-devel@nongnu.org>, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XQAQKwfoTUGs
+X-TUID: VbCczJVUOcCD
 
-On 6/11/20 9:59 AM, Eric Auger wrote:
-> We plan to build the TPM2 table on ARM too. In order to reuse the
-> generation code, let's move build_tpm2() to aml-build.c.
+On Tue, 23 Jun 2020 at 08:27, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
 >
-> No change in the implementation.
+> Extract i2c_try_create_slave() and i2c_realize_and_unref()
+> from i2c_create_slave().
+> We can now set properties on a I2CSlave before it is realized.
 >
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
-
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-
-
-> ---
->   include/hw/acpi/aml-build.h |  2 ++
->   hw/acpi/aml-build.c         | 51 +++++++++++++++++++++++++++++++++++++
->   hw/i386/acpi-build.c        | 51 -------------------------------------
->   3 files changed, 53 insertions(+), 51 deletions(-)
+> This is in line with the recent qdev/QOM changes merged
+> in commit 6675a653d2e.
 >
-> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-> index ed7c89309e..d27da03d64 100644
-> --- a/include/hw/acpi/aml-build.h
-> +++ b/include/hw/acpi/aml-build.h
-> @@ -437,4 +437,6 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms);
->   
->   void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
->                   const char *oem_id, const char *oem_table_id);
-> +
-> +void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog);
->   #endif
-> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> index 3681ec6e3d..2a1d9fc839 100644
-> --- a/hw/acpi/aml-build.c
-> +++ b/hw/acpi/aml-build.c
-> @@ -26,6 +26,7 @@
->   #include "qemu/bitops.h"
->   #include "sysemu/numa.h"
->   #include "hw/boards.h"
-> +#include "hw/acpi/tpm.h"
->   
->   static GArray *build_alloc_array(void)
->   {
-> @@ -1877,6 +1878,56 @@ build_hdr:
->                    "FACP", tbl->len - fadt_start, f->rev, oem_id, oem_table_id);
->   }
->   
-> +void build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
-> +{
-> +    uint8_t start_method_params[12] = {};
-> +    unsigned log_addr_offset, tpm2_start;
-> +    uint64_t control_area_start_address;
-> +    uint32_t start_method;
-> +    void *tpm2_ptr;
-> +
-> +    tpm2_start = table_data->len;
-> +    tpm2_ptr = acpi_data_push(table_data, sizeof(AcpiTableHeader));
-> +
-> +    /* Platform Class */
-> +    build_append_int_noprefix(table_data, TPM2_ACPI_CLASS_CLIENT, 2);
-> +    /* Reserved */
-> +    build_append_int_noprefix(table_data, 0, 2);
-> +    if (TPM_IS_TIS_ISA(tpm_find())) {
-> +        control_area_start_address = 0;
-> +        start_method = TPM2_START_METHOD_MMIO;
-> +    } else if (TPM_IS_CRB(tpm_find())) {
-> +        control_area_start_address = TPM_CRB_ADDR_CTRL;
-> +        start_method = TPM2_START_METHOD_CRB;
-> +    } else {
-> +        g_assert_not_reached();
-> +    }
-> +    /* Address of Control Area */
-> +    build_append_int_noprefix(table_data, control_area_start_address, 8);
-> +    /* Start Method */
-> +    build_append_int_noprefix(table_data, start_method, 4);
-> +
-> +    /* Platform Specific Parameters */
-> +    g_array_append_vals(table_data, &start_method_params,
-> +                        ARRAY_SIZE(start_method_params));
-> +
-> +    /* Log Area Minimum Length */
-> +    build_append_int_noprefix(table_data, TPM_LOG_AREA_MINIMUM_SIZE, 4);
-> +
-> +    acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
-> +    bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE, tcpalog, 1,
-> +                             false);
-> +
-> +    log_addr_offset = table_data->len;
-> +    build_append_int_noprefix(table_data, 0, 8);
-> +    /* Log Area Start Address to be filled by Guest linker */
-> +    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-> +                                   log_addr_offset, 8,
-> +                                   ACPI_BUILD_TPMLOG_FILE, 0);
-> +    build_header(linker, table_data,
-> +                 tpm2_ptr, "TPM2", table_data->len - tpm2_start, 4, NULL, NULL);
+> Reviewed-by: Corey Minyard <cminyard@mvista.com>
+> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+Couple of things I belatedly noticed on this patch, which I don't
+think are important enough for me to drop it from my pullreq,
+but which I think it would be nice to address in a followup:
+
+> diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+> index 4117211565..d6e3d85faf 100644
+> --- a/include/hw/i2c/i2c.h
+> +++ b/include/hw/i2c/i2c.h
+> @@ -80,6 +80,8 @@ int i2c_send(I2CBus *bus, uint8_t data);
+>  uint8_t i2c_recv(I2CBus *bus);
+>
+>  DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t add=
+r);
+> +DeviceState *i2c_try_create_slave(const char *name, uint8_t addr);
+> +bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp);
+
+Can we have doc-comments for new global-scope functions, please ?
+
+> --- a/hw/i2c/core.c
+> +++ b/hw/i2c/core.c
+> @@ -267,13 +267,27 @@ const VMStateDescription vmstate_i2c_slave =3D {
+>      }
+>  };
+>
+> -DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t add=
+r)
+> +DeviceState *i2c_try_create_slave(const char *name, uint8_t addr)
+>  {
+>      DeviceState *dev;
+>
+>      dev =3D qdev_new(name);
+>      qdev_prop_set_uint8(dev, "address", addr);
+> -    qdev_realize_and_unref(dev, &bus->qbus, &error_fatal);
+> +    return dev;
 > +}
 > +
->   /* ACPI 5.0: 6.4.3.8.2 Serial Bus Connection Descriptors */
->   static Aml *aml_serial_bus_device(uint8_t serial_bus_type, uint8_t flags,
->                                     uint16_t type_flags,
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index f150d95ecc..b7c7583b5f 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -2295,57 +2295,6 @@ build_tpm_tcpa(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
->                    (void *)tcpa, "TCPA", sizeof(*tcpa), 2, NULL, NULL);
->   }
->   
-> -static void
-> -build_tpm2(GArray *table_data, BIOSLinker *linker, GArray *tcpalog)
-> -{
-> -    uint8_t start_method_params[12] = {};
-> -    unsigned log_addr_offset, tpm2_start;
-> -    uint64_t control_area_start_address;
-> -    uint32_t start_method;
-> -    void *tpm2_ptr;
-> -
-> -    tpm2_start = table_data->len;
-> -    tpm2_ptr = acpi_data_push(table_data, sizeof(AcpiTableHeader));
-> -
-> -    /* Platform Class */
-> -    build_append_int_noprefix(table_data, TPM2_ACPI_CLASS_CLIENT, 2);
-> -    /* Reserved */
-> -    build_append_int_noprefix(table_data, 0, 2);
-> -    if (TPM_IS_TIS_ISA(tpm_find())) {
-> -        control_area_start_address = 0;
-> -        start_method = TPM2_START_METHOD_MMIO;
-> -    } else if (TPM_IS_CRB(tpm_find())) {
-> -        control_area_start_address = TPM_CRB_ADDR_CTRL;
-> -        start_method = TPM2_START_METHOD_CRB;
-> -    } else {
-> -        g_assert_not_reached();
-> -    }
-> -    /* Address of Control Area */
-> -    build_append_int_noprefix(table_data, control_area_start_address, 8);
-> -    /* Start Method */
-> -    build_append_int_noprefix(table_data, start_method, 4);
-> -
-> -    /* Platform Specific Parameters */
-> -    g_array_append_vals(table_data, &start_method_params,
-> -                        ARRAY_SIZE(start_method_params));
-> -
-> -    /* Log Area Minimum Length */
-> -    build_append_int_noprefix(table_data, TPM_LOG_AREA_MINIMUM_SIZE, 4);
-> -
-> -    acpi_data_push(tcpalog, TPM_LOG_AREA_MINIMUM_SIZE);
-> -    bios_linker_loader_alloc(linker, ACPI_BUILD_TPMLOG_FILE, tcpalog, 1,
-> -                             false);
-> -
-> -    log_addr_offset = table_data->len;
-> -    build_append_int_noprefix(table_data, 0, 8);
-> -    /* Log Area Start Address to be filled by Guest linker */
-> -    bios_linker_loader_add_pointer(linker, ACPI_BUILD_TABLE_FILE,
-> -                                   log_addr_offset, 8,
-> -                                   ACPI_BUILD_TPMLOG_FILE, 0);
-> -    build_header(linker, table_data,
-> -                 tpm2_ptr, "TPM2", table_data->len - tpm2_start, 4, NULL, NULL);
-> -}
-> -
->   #define HOLE_640K_START  (640 * KiB)
->   #define HOLE_640K_END   (1 * MiB)
->   
+> +bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp)
+> +{
+> +    return qdev_realize_and_unref(dev, &bus->qbus, errp);
+> +}
+> +
+> +DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t add=
+r)
+> +{
+> +    DeviceState *dev;
+> +
+> +    dev =3D i2c_try_create_slave(name, addr);
+> +    i2c_realize_and_unref(dev, bus, &error_fatal);
+> +
 
+We now have a _try_ function which isn't "same behaviour as
+the non-try function, but give me back an error status rather
+than just killing QEMU". That seems confusing -- is there a
+better name we can use ?
 
-
+thanks
+-- PMM

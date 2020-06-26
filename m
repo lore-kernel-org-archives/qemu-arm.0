@@ -1,354 +1,274 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp252063lfm;
-        Fri, 26 Jun 2020 02:12:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzKBNeZ3QW/1hEBt3A4h6X8PPirdRp4SEVV3gcIGiADigXBf9qm1sPI7C9dy2NtJJm02IAA
-X-Received: by 2002:ac8:2236:: with SMTP id o51mr1702758qto.87.1593162771030;
-        Fri, 26 Jun 2020 02:12:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593162771; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp272763lfm;
+        Fri, 26 Jun 2020 02:44:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxM33DOcrmXD9N9+4/+uZrmxSZha71AOhILlHYfFS93rmOxGp6k4ztJROdDHf8bnL6LVKss
+X-Received: by 2002:a25:ed10:: with SMTP id k16mr3449780ybh.189.1593164646099;
+        Fri, 26 Jun 2020 02:44:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593164646; cv=none;
         d=google.com; s=arc-20160816;
-        b=DMgUV5nVutuEcdDNhudhccYGa2puLGUkPFzeyKbBlcld17WP/lMs9IdTsLFvvWl4S0
-         Najgkrca65OBrE1jbs282Vk2RQpo3n8Fzt8/V8vggJnu/XW0fx9Dj4JX2zfVfv+YTmIE
-         9rfwuBkbPw4RjdNQxbBR18QVaCRAXGlTiMbVPCASdRQzO5Rb6g2C1mCZa4PHq+rUpKQF
-         eEovWOWK4UtUegjvpC5N0ui5s4Qo1b4mRXpYOX0B268Q9MTyXuN0HrHm4hfuv9RDfDcL
-         GR+SNU3x8f2Sjq+88hQ4juYUT3UvvoiQPb/Rqdu+etZm/IFIet4t8xHAYyn4b2/Coxw+
-         pWkw==
+        b=acouwzWT+FRKGS0sJOhXJouRlKE7HKT6KAuuE7LpLxaoRryC17JbxDzlXdFHgJhA0S
+         IG0A2KDFnhtGQj8L5FwOj5HgAsr7PoZsDQUXnCT9kjXUGo9AioKG44Pj3STi24rJqCUB
+         hGEtaupGM4tyOYW/7qJbsGKfLNvg/e0/P0wL/QQ73++9/ZUYzZjkKcJkQdTb37RYo1qt
+         iba1Y4JgcVyq27txcQ9/IeHSTqIc8B8iqU1Y7oH4tcLoGmftj9Tsf36gnsmEAr2Y2qUy
+         Ov6+6sVqY8ll46QJAbKIwK9WJV9NWxtdhqJOBMnsx+BxOnG+150XBX0eUmLcKci8Ph5J
+         tgqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=Qb0qSnd7oHPUIXeBGpSL4b8ZwgEb3Ct9UV2LAMhg5lQ=;
-        b=U6FbAZ6VrrUjEzQjXLXBPq2J4rM78UgHFNXcbKiUfgqfbPS4GpK28xTWqNHv4eGK7I
-         LULTEbeE9pVGX8sHiJ6zcDrh1qiYWLNWg20D80HpnZP8yvDFK/DPdU8ZtEez5Dg2X+S9
-         6CqcYPHt08X3xxH7ju88/D1gxmFtoDLzLCfXw6ofu8Fvd8az+H1WcLBNPpVpjV+7V9v2
-         TQQQk46GVEgniqoh3M4AfyMNghjYWP3bdNotcYy79tdUiuuc3cGTGmCpPY+6XLDHk0Em
-         1iLSnx+rvlV4J1+nLmYL+1BtvROnHIcZnSPBxiMiMNCUoGSjwm+GmqF0HUNlgY5PKVpg
-         /E+A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=epw7Ya6mrSaGCZp6nWlwRKSneX+jRfVGp7MULgc8HsY=;
+        b=L+9NmcE9Ps0WRJsGGBKTykZ8CYxBzKF26AJ2i+AuR/bbtCfMDqSAI894RriTM5STc8
+         MVxyefa0lZPPjgCYyfopb20/LpBsvEdop9VPspwIJBMy91ywnSbrXbfljiUq3NbBWyQk
+         i9LD/8BWdYdfroreTnF0wmPvmiZ8l1pdsicBtd2gZaZgdf6e2TRNYTsK5/vDtQamq13e
+         OeTYbCxI55DmnTVp6RNHPiBIrW8AQktwIDWk2jjmLv0Ug/y1mBsTQRRFBXtEhwziVpA3
+         rG0yWeK88TWdFvan4QBJIGV2QNLiiuOG/XsEKeafZFCElDFaui3yTTfTWhM18/+p4ylS
+         xqYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="e9/wlt0r";
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id a25si9071260qtm.1.2020.06.26.02.12.50;
-        Fri, 26 Jun 2020 02:12:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vDmo5m+w;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y16si24624377yby.400.2020.06.26.02.44.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 26 Jun 2020 02:44:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b="e9/wlt0r";
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id B30484B15D;
-	Fri, 26 Jun 2020 05:12:50 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@redhat.com
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Vht7yQ7KeY5w; Fri, 26 Jun 2020 05:12:49 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 6B22A4B151;
-	Fri, 26 Jun 2020 05:12:49 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 77A5D4B13E
- for <kvmarm@lists.cs.columbia.edu>; Fri, 26 Jun 2020 05:12:47 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G2xWJOipFim6 for <kvmarm@lists.cs.columbia.edu>;
- Fri, 26 Jun 2020 05:12:46 -0400 (EDT)
-Received: from us-smtp-delivery-1.mimecast.com
- (us-smtp-delivery-1.mimecast.com [205.139.110.120])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 1C3AD4B0E7
- for <kvmarm@lists.cs.columbia.edu>; Fri, 26 Jun 2020 05:12:46 -0400 (EDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593162765;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=7GW55amjyBmxVBVEYFyP6NXXU1860Jsa3d+2sKVvSRw=;
- b=e9/wlt0rctKoad7jp9ZXRZUp/1K7+n4FmCJDUREOg/xoudv3agDsHShxRj6n/KpsRWTeHG
- j4bhd27swZjXBSeIY4fkn+jrxs8L4avn3G0vlS8+NC2kyhTDcqAs/p9gNC6tepquFhX4qI
- 3py76bRmux4q4pTqKtIYc1/a2XomTOY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-402-ZjoLR9f9N8OKR8w5bhGJRg-1; Fri, 26 Jun 2020 05:12:44 -0400
-X-MC-Unique: ZjoLR9f9N8OKR8w5bhGJRg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B27A818585A4;
- Fri, 26 Jun 2020 09:12:42 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.194.20])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B0D0510246E1;
- Fri, 26 Jun 2020 09:12:40 +0000 (UTC)
-Date: Fri, 26 Jun 2020 11:12:38 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Beata Michalska <beata.michalska@linaro.org>
-Subject: Re: [PATCH v6 2/2] target/arm: kvm: Handle misconfigured dabt
- injection
-Message-ID: <20200626091238.xvpi5qtqummcl7qt@kamzik.brq.redhat.com>
-References: <20200625220336.10186-1-beata.michalska@linaro.org>
- <20200625220336.10186-3-beata.michalska@linaro.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vDmo5m+w;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:43846 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1joktx-0005gH-Fb
+	for alex.bennee@linaro.org; Fri, 26 Jun 2020 05:44:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59266)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1joktp-0005fL-HG; Fri, 26 Jun 2020 05:43:57 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:40448)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1joktn-0007ZR-Sl; Fri, 26 Jun 2020 05:43:57 -0400
+Received: by mail-wr1-x443.google.com with SMTP id h5so8837162wrc.7;
+ Fri, 26 Jun 2020 02:43:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=epw7Ya6mrSaGCZp6nWlwRKSneX+jRfVGp7MULgc8HsY=;
+ b=vDmo5m+w1Mca2MdXfsczqoN8j7EfGlJY3KNbkhXGS8Q344cVp5EewVfJoTJMG27GBz
+ P5u+8nlabbc8Al7OuGrTO8vdC7RKl4sTqQCTLMZIL0QucovmUlBgId5GalrfrMyO5h0Z
+ q6zmoD679/N0xyr5EoPqjSCu/SE7k1XJncxhVIua8mqC6jAVl3Zkjq11GHfL04UdzjIb
+ Yptq2omhMeuSfMqdd6MCbOKrH0F7scYhq0GJ5wFzMzZt2nZozwUpFT9tXMDzEK83meYH
+ zSvtX2nkMW59VLswJNpBgY7Soia8tMsaqS/JGqoihCKdzkIFwCLu+y0XrxWJx7Qb3yB8
+ dz+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=epw7Ya6mrSaGCZp6nWlwRKSneX+jRfVGp7MULgc8HsY=;
+ b=RcxiKyKSqVBTIq0tuBpgQmyK6Jx/trKCb0Be3I3rj6IG48eBaRGPJFZzEpFORw2Q/I
+ P0bu0/s/4D3uBnVhb7CtASiKXSQ7QY5wyzoC6tLF9w0HXwgADJaxVVkLSmrHfrOUrVWL
+ FgjVglUN/tExYRxewCioqxYW1O26+c/7WF/cSOSlkgHQER0L/OBriNo+8/P7vpoOolgQ
+ lppCwDs/HuMaywrrGB1qmQWWnW2id06qKuts22GkEKw9iXHpAchhk+G4aleOsfrjfDWQ
+ VYXAkbSp6CPGQtIMYhPhzPSMxny6dry08y8FoiRMw8T7GvVCXkciYgDohI8Yn80lugbx
+ 690w==
+X-Gm-Message-State: AOAM530ukfs8oZmoUemCLGGcllMT99VA1ZAXHuy+WXOKF9MiC1JGrFc9
+ 3k8dBT8OWvZaqyE4B6q8iqI=
+X-Received: by 2002:a05:6000:128e:: with SMTP id
+ f14mr3020663wrx.276.1593164633724; 
+ Fri, 26 Jun 2020 02:43:53 -0700 (PDT)
+Received: from [192.168.1.37] (1.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.1])
+ by smtp.gmail.com with ESMTPSA id p17sm16020070wma.47.2020.06.26.02.43.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 26 Jun 2020 02:43:52 -0700 (PDT)
+Subject: Re: [PATCH v4 4/8] hw/misc/pca9552: Add a 'description' property for
+ debugging purpose
+To: Markus Armbruster <armbru@redhat.com>
+References: <20200620225854.31160-1-f4bug@amsat.org>
+ <20200620225854.31160-5-f4bug@amsat.org>
+ <4d335933-9669-43e1-0966-5f0255142012@kaod.org>
+ <34fe3d2b-6b41-0509-f172-5b45486fdf0c@amsat.org>
+ <deccf836-48ef-7112-d66e-a8d3cc4a9681@kaod.org>
+ <877dvv4pmg.fsf@dusky.pond.sub.org>
+ <2d1b8b24-3b2c-d84e-8026-e369f6531247@amsat.org>
+ <03da95ed-399d-53e2-c946-a45f1a771701@amsat.org>
+ <87bll6tlzl.fsf@dusky.pond.sub.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <61d1f904-0d4f-4ae6-2d4e-3d8e87a9b77c@amsat.org>
+Date: Fri, 26 Jun 2020 11:43:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200625220336.10186-3-beata.michalska@linaro.org>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
- kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+In-Reply-To: <87bll6tlzl.fsf@dusky.pond.sub.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 6j1t9fqJwfnf
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jdWDHO8GNdP8
 
-On Thu, Jun 25, 2020 at 11:03:36PM +0100, Beata Michalska wrote:
-> Injecting external data abort through KVM might trigger
-> an issue on kernels that do not get updated to include the KVM fix.
-> For those and aarch32 guests, the injected abort gets misconfigured
-> to be an implementation defined exception. This leads to the guest
-> repeatedly re-running the faulting instruction.
+On 6/26/20 7:49 AM, Markus Armbruster wrote:
+> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
 > 
-> Add support for handling that case.
+>> On 6/25/20 10:12 AM, Philippe Mathieu-Daudé wrote:
+>>> On 6/25/20 8:37 AM, Markus Armbruster wrote:
+>>>> Cédric Le Goater <clg@kaod.org> writes:
+>>>>
+>>>>> On 6/22/20 10:31 AM, Philippe Mathieu-Daudé wrote:
+>>>>>> On 6/22/20 8:27 AM, Cédric Le Goater wrote:
+>>>>>>> On 6/21/20 12:58 AM, Philippe Mathieu-Daudé wrote:
+>>>>>>>> Add a description field to distinguish between multiple devices.
+>>>>
+>>>> Pardon my lack of imagination: how does this help you with debugging?
+>>>
+>>> Ah, the patch subject is indeed incorrect, this should be:
+>>> "... for *tracing* purpose" (I use tracing when debugging).
+>>>
+>>> In the next patch, we use the 'description' property:
+>>>
+>>> +# pca9552.c
+>>> +pca9552_gpio_status(const char *description, const char *buf) "%s GPIOs
+>>> 0-15 [%s]"
+>>>
+>>> So when the machine has multiple PCA9552 and guest accesses both,
+>>> we can distinct which one is used. For me having "pca1" / "pca0"
+>>> is easier to follow than the address of the QOM object.
+>>>
+>>>>
+>>>>>>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+>>>>>>>
+>>>>>>> Could it be a QOM attribute ? 
+>>>>>>
+>>>>>> What do you call a 'QOM attribute'?
+>>>>>> Is it what qdev properties implement?
+>>>>>> (in this case via DEFINE_PROP_STRING).
+>>>>>
+>>>>> I meant a default Object property, which would apply to all Objects. 
+>>>>
+>>>> Good point.  Many devices have multiple component objects of the same
+>>>> type.
+>>>>
+>>>>> What you did is fine, so :
+>>>>>
+>>>>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+>>>>>
+>>>>> but, may be, a well defined child name is enough for the purpose.
+>>>>
+>>>> object_get_canonical_path() returns a distinct path for each (component)
+>>>> object.  The path components are the child property names.
+>>>>
+>>>> Properties can have descriptions: object_property_set_description().
+>>>
+>>> TIL object_property_set_description :>
+>>>
+>>> Ah, there is no equivalent object_property_get_description(),
+>>> we have to use object_get_canonical_path(). Hmm, not obvious.
+>>>
+>>>>
+>>>> Sufficient?
+>>>
+>>> I don't know... This seems a complex way to do something simple...
+>>> This is already a QDEV. Having to use QOM API seems going
+>>> backward, since we have the DEFINE_PROP_STRING() macros available
+>>> in "hw/qdev-properties.h".
+>>>
+>>> Maybe I'm not seeing the advantages clearly. I'll try later.
+>>
+>> The canonical path is not very helpful in trace log...
 > 
-> [
->   Fixed-by: 018f22f95e8a
-> 	('KVM: arm: Fix DFSR setting for non-LPAE aarch32 guests')
->   Fixed-by: 21aecdbd7f3a
-> 	('KVM: arm: Make inject_abt32() inject an external abort instead')
-> ]
+> Why?
 > 
-> Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
-> ---
->  target/arm/cpu.h     |  2 ++
->  target/arm/kvm.c     | 30 +++++++++++++++++++++++++++++-
->  target/arm/kvm32.c   | 34 ++++++++++++++++++++++++++++++++++
->  target/arm/kvm64.c   | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
->  target/arm/kvm_arm.h | 10 ++++++++++
->  5 files changed, 124 insertions(+), 1 deletion(-)
+> Okay, I checked the code.  Since the devices in question don't get a
+> composition tree parent assigned, realize puts them in the
+> /machine/unattached orphanage.  The canonical path is something like
+> "/machine/unattached/device[6]", which is less than clear.
 > 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 677584e..ed0ff09 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -570,6 +570,8 @@ typedef struct CPUARMState {
->          uint64_t esr;
->      } serror;
->  
-> +    uint8_t ext_dabt_raised; /* Tracking/verifying injection of ext DABT */
-> +
->      /* State of our input IRQ/FIQ/VIRQ/VFIQ lines */
->      uint32_t irq_line_state;
->  
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 265c4b8..85a09ea 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -749,6 +749,29 @@ int kvm_get_vcpu_events(ARMCPU *cpu)
->  
->  void kvm_arch_pre_run(CPUState *cs, struct kvm_run *run)
->  {
-> +    ARMCPU *cpu = ARM_CPU(cs);
-> +    CPUARMState *env = &cpu->env;
-> +
-> +    if (unlikely(env->ext_dabt_raised)) {
-> +        /*
-> +         * Verifying that the ext DABT has been properly injected,
-> +         * otherwise risking indefinitely re-running the faulting instruction
-> +         * Covering a very narrow case for kernels 5.5..5.5.4
-> +         * when injected abort was misconfigured to be
-> +         * an IMPLEMENTATION DEFINED exception (for 32-bit EL1)
-> +         */
-> +        if (!arm_feature(env, ARM_FEATURE_AARCH64) &&
-> +            unlikely(!kvm_arm_verify_ext_dabt_pending(cs))) {
-> +
-> +            error_report("Data abort exception with no valid ISS generated by "
-> +                   "guest memory access. KVM unable to emulate faulting "
-> +                   "instruction. Failed to inject an external data abort "
-> +                   "into the guest.");
-> +            abort();
-> +       }
-> +       /* Clear the status */
-> +       env->ext_dabt_raised = 0;
-> +    }
->  }
->  
->  MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
-> @@ -833,6 +856,8 @@ void kvm_arm_vm_state_change(void *opaque, int running, RunState state)
->  static int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
->                               uint64_t fault_ipa)
->  {
-> +    ARMCPU *cpu = ARM_CPU(cs);
-> +    CPUARMState *env = &cpu->env;
->      /*
->       * Request KVM to inject the external data abort into the guest
->       */
-> @@ -852,7 +877,10 @@ static int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
->           */
->          events.exception.ext_dabt_pending = 1;
->  
-> -        return kvm_vcpu_ioctl(cs, KVM_SET_VCPU_EVENTS, &events);
-> +        if (!kvm_vcpu_ioctl(cs, KVM_SET_VCPU_EVENTS, &events)) {
-> +            env->ext_dabt_raised = 1;
-> +            return 0;
-> +        }
->      } else {
->          error_report("Data abort exception triggered by guest memory access "
->                       "at physical address: 0x"  TARGET_FMT_lx,
-> diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
-> index 7b3a19e..0af46b4 100644
-> --- a/target/arm/kvm32.c
-> +++ b/target/arm/kvm32.c
-> @@ -559,3 +559,37 @@ void kvm_arm_pmu_init(CPUState *cs)
->  {
->      qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
->  }
-> +
-> +#define ARM_REG_DFSR  ARM_CP15_REG32(0, 5, 0, 0)
-> +#define ARM_REG_TTBCR ARM_CP15_REG32(0, 2, 0, 2)
-> +/*
-> + *DFSR:
-> + *      TTBCR.EAE == 0
-> + *          FS[4]   - DFSR[10]
-> + *          FS[3:0] - DFSR[3:0]
-> + *      TTBCR.EAE == 1
-> + *          FS, bits [5:0]
-> + */
-> +#define DFSR_FSC(lpae, v) \
-> +    ((lpae) ? ((v) & 0x3F) : (((v) >> 6) | ((v) & 0x1F)))
-> +
-> +#define DFSC_EXTABT(lpae) ((lpae) ? 0x10 : 0x08)
-> +
-> +bool kvm_arm_verify_ext_dabt_pending(CPUState *cs)
-> +{
-> +    uint32_t dfsr_val;
-> +
-> +    if (!kvm_get_one_reg(cs, ARM_REG_DFSR, &dfsr_val)) {
-> +        ARMCPU *cpu = ARM_CPU(cs);
-> +        CPUARMState *env = &cpu->env;
-> +        uint32_t ttbcr;
-> +        int lpae = 0;
-> +
-> +        if (!kvm_get_one_reg(cs, ARM_REG_TTBCR, &ttbcr)) {
-> +            lpae = arm_feature(env, ARM_FEATURE_LPAE) && (ttbcr & TTBCR_EAE);
-> +        }
-> +        /* The verification is based on FS filed of the DFSR reg only*/
-> +        return (DFSR_FSC(lpae, dfsr_val) == DFSC_EXTABT(lpae));
-> +    }
-> +    return false;
-> +}
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index f09ed9f..88cf10c 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -1497,3 +1497,52 @@ bool kvm_arm_handle_debug(CPUState *cs, struct kvm_debug_exit_arch *debug_exit)
->  
->      return false;
->  }
-> +
-> +#define ARM64_REG_ESR_EL1 ARM64_SYS_REG(3, 0, 5, 2, 0)
-> +#define ARM64_REG_TCR_EL1 ARM64_SYS_REG(3, 0, 2, 0, 2)
-> +
-> +/*
-> + * ESR_EL1
-> + * ISS encoding
-> + * AARCH64: DFSC,   bits [5:0]
-> + * AARCH32:
-> + *      TTBCR.EAE == 0
-> + *          FS[4]   - DFSR[10]
-> + *          FS[3:0] - DFSR[3:0]
-> + *      TTBCR.EAE == 1
-> + *          FS, bits [5:0]
-> + */
-> +#define ESR_DFSC(aarch64, lpae, v)        \
-> +    ((aarch64 || (lpae)) ? ((v) & 0x3F)   \
-> +               : (((v) >> 6) | ((v) & 0x1F)))
-> +
-> +#define ESR_DFSC_EXTABT(aarch64, lpae) \
-> +    ((aarch64) ? 0x10 : (lpae) ? 0x10 : 0x8)
-> +
-> +bool kvm_arm_verify_ext_dabt_pending(CPUState *cs)
-> +{
-> +    uint64_t dfsr_val;
-> +
-> +    if (!kvm_get_one_reg(cs, ARM64_REG_ESR_EL1, &dfsr_val)) {
-> +        ARMCPU *cpu = ARM_CPU(cs);
-> +        CPUARMState *env = &cpu->env;
-> +        int aarch64_mode = arm_feature(env, ARM_FEATURE_AARCH64);
-> +        int lpae = 0;
-> +
-> +        if (!aarch64_mode) {
-> +            uint64_t ttbcr;
-> +
-> +            if (!kvm_get_one_reg(cs, ARM64_REG_TCR_EL1, &ttbcr)) {
-> +                lpae = arm_feature(env, ARM_FEATURE_LPAE)
-> +                        && (ttbcr & TTBCR_EAE);
-> +            }
-> +        }
-> +        /*
-> +         * The verification here is based on the DFSC bits
-> +         * of the ESR_EL1 reg only
-> +         */
-> +         return (ESR_DFSC(aarch64_mode, lpae, dfsr_val) ==
-> +                ESR_DFSC_EXTABT(aarch64_mode, lpae));
-> +    }
-> +    return false;
-> +}
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index 48bf5e1..471ddd1 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -453,6 +453,16 @@ struct kvm_guest_debug_arch;
->  void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr);
->  
->  /**
-> + * kvm_arm_verify_ext_dabt_pending:
-> + * @cs: CPUState
-> + *
-> + * Verify the fault status code wrt the Ext DABT injection
-> + *
-> + * Returns: true if the fault status code is as expected, false otherwise
-> + */
-> +bool kvm_arm_verify_ext_dabt_pending(CPUState *cs);
-> +
-> +/**
->   * its_class_name:
->   *
->   * Return the ITS class name to use depending on whether KVM acceleration
-> -- 
-> 2.7.4
+> The components of the canonical path are the names of the QOM child
+> properties.  object_get_canonical_path_component() returns the last one,
+> in this case "device[6]".
 > 
->
+> If we made the devices QOM children of some other device, we could name
+> the child properties "pca0" and "pca1".
+> object_get_canonical_path_component() would then return the strings you
+> want to see.
+> 
+> We make a device a QOM child of some QOM parent device only if the child
+> is a component device of the parent (hence the name "composition
+> tree").
+> 
+> Are these devices integral components of something else, or are they
+> separate chips?
 
-I didn't try to review kvm_arm_verify_ext_dabt_pending() to be sure it's
-doing what it says it's doing, but the approach to the code looks good to
-me, so
+Separate chips in the machine (actually not even on the machine mother
+board where is the CPU, but on a daughter board card).
 
-Acked-by: Andrew Jones <drjones@redhat.com>
+So in the composition tree I expect to see them as
 
-Thanks,
-drew
+  /machine/pca0
+  /machine/pca1
 
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+>> The description I set matches the hardware definitions
+>> and is easier to follow, see patch #6 (where it is set)
+>> where the description comes from:
+>>
+>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg714658.html
+>>
+>>   Description name taken from:
+>>   https://github.com/open-power/witherspoon-xml/blob/master/witherspoon.xml
+>>
+>> So in this particular case I don't find the canonical pathname
+>> practical (from an hardware debugging perspective).
+> 
+> Personally, I'd be content with i2c bus and address for debugging
+> purposes.
+> 
+> The i2c buses *are* components: canonical paths look like
+> "/machine/soc/i2c/aspeed.i2c.3".  The combination of
+> object_get_canonical_path_component(dev) and
+> object_property_get_uint(dev, "address", &error_abort) identifies any
+> i2c device on this machine, not just the two you decorate with a
+> description string.
+
+The I2C busses is provided by Aspeed peripherals. I counted 19 different
+I2C busses on this machine.
+
+"pca0" is connected to i2c bus #11, "pca1" to bus #3.
+
+I still don't think this will be practical, but I'll try your
+suggestion.
+
+Regards,
+
+Phil.

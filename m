@@ -1,116 +1,296 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp932760lfm;
-        Fri, 26 Jun 2020 17:15:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzql7DQEE+b+PEhVfVN/BlMZfuPdlUjQT5UKw2AXxqSGs/qa7ImCBObk4pmcqBqWmT2WEEU
-X-Received: by 2002:a25:4f44:: with SMTP id d65mr9451879ybb.175.1593216954707;
-        Fri, 26 Jun 2020 17:15:54 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1144245lfm;
+        Fri, 26 Jun 2020 23:58:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyHQIqzzNLxwhLizAV9GDTdNU0KK/d65aN7japzoIr+CF+MKbIM+ApjtOtw20zOJSzI+dN5
+X-Received: by 2002:a5b:942:: with SMTP id x2mr11208546ybq.273.1593241109388;
+        Fri, 26 Jun 2020 23:58:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593241109; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Tn210AkG1Fn2E3fRQaRJaiijQDWhnXz8RTOdNXvD6absrEmgR1yfJmjx0O8XkjHWGS
+         v4566/WjEeYD6pGWj7DgWFjOlHkAWnmZ5VNKGq4VR3bPvc/5HmSfaP7Rfed+aQub1ybi
+         ZK3m6aInAFOAAB1DzRGCkmcCJ3K0M1rtnVFVS3Rf8tpWhcE9tyhlZdIpEzpGNk3jY9kv
+         GSIXso2i0C5RQQuQOGglLnjZBJIyXy1932kp6jDN5s4qF7RLcOXTKUBhUMQ93I8vD5D9
+         Wd4lfFsuR2zY1KpGfVc0G2hRUvAVMEqkUfza2xmEopC1fJZBp6tX8Fhreau0Yu5UjSNp
+         d+yg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=JRw1XvFbyw7RYLExym52hvANw+t5h1XtZYg/kYYiWRk=;
+        b=fcmWkOyQAwWCnASGdQJufH07GULbUdX1oU/ma4Hjws+5ULoaP7TAJpmMHiKjZLQzIt
+         LgUY3GNnMtcMYa5GoyBcTDXxTaH4Gw/WyN777pKWe6ESs+0WCVUJTaWPC6VUxY2DZ3uK
+         G3fpYWtTjZi44QvlHbSBWy+JKrPjFM7B+sUBXJYDYJ/unDUhYTZo3SuSpo0r3GtFfvbD
+         e9/pOW2zaaagqGYS572W8pwkEr1t4hsGfYDfqIXF8S1Yw1XpoKGSQkpIwOJTt0+Yt6DB
+         JqfVtDUWy4/DEVzQfphMlFU13VMzCuOqxH/HT4tJA9FLtLQ6vuXikSFT/zZbPqH4QkeQ
+         pP4w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hEMeOwLt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k17si4174973ybk.289.2020.06.26.17.15.54
+        by mx.google.com with ESMTPS id f142si26905170yba.230.2020.06.26.23.58.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jun 2020 17:15:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 26 Jun 2020 23:58:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39218 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hEMeOwLt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47394 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1joyVe-0005Zp-1l
-	for alex.bennee@linaro.org; Fri, 26 Jun 2020 20:15:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57828)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jp4nE-0002Ea-PC
+	for alex.bennee@linaro.org; Sat, 27 Jun 2020 02:58:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50430)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1joyVV-0005Xy-9C; Fri, 26 Jun 2020 20:15:45 -0400
-Resent-Date: Fri, 26 Jun 2020 20:15:45 -0400
-Resent-Message-Id: <E1joyVV-0005Xy-9C@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21717)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jp4i1-0007JD-7r
+ for qemu-devel@nongnu.org; Sat, 27 Jun 2020 02:53:09 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:39708
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1joyVS-0007ya-Q1; Fri, 26 Jun 2020 20:15:45 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1593216922; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=PO2X9gNBASUXCoOex2HrMAKiNP19Ulc1ujz1i/GKDUNQTlNEMPGH/h6uKMy9B4iTpyBR7sdVYR8UFnIImRHyr4X2T1gkxbNj55aRtj7swF3CT4Bdsh9a/eGD80LilUCD40mHtHwe8zhbDbGpiPBzVcuj7uxm9HquS8mmKyxZ4MI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1593216922;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=0d/k0A4SpoN+T2oFcRa0n/XWfcKz03ezQZ1uFcAy3+Y=; 
- b=g1mfddDBkmu+T9BjSHJ5Ey6P4Ovw8y+YI0hL6A8G06CpYFT5sP5BQJkl+mYoKjWmQsvPB6nBjTaSGQZKhlWZ930DcTDLk0pbOQLm2PhfueSH01GAXg9fpFCuW/ypeBxUNCITGKLh6sPaqqeG/ekAlFLH8yK8L5uloF9/GkkwDzA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1593216921046365.80413883175106;
- Fri, 26 Jun 2020 17:15:21 -0700 (PDT)
-Message-ID: <159321691954.31217.5343564721050843276@d1fd068a5071>
-Subject: Re: [PATCH v3 00/12] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC
- machines
-In-Reply-To: <20200626235519.591734-1-hskinnemoen@google.com>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jp4hy-0002UM-Ls
+ for qemu-devel@nongnu.org; Sat, 27 Jun 2020 02:53:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593240780;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JRw1XvFbyw7RYLExym52hvANw+t5h1XtZYg/kYYiWRk=;
+ b=hEMeOwLt82A0+DJtz4AgUk0oSjJe5r8Il+jUA4gG5+sbUDsNo1v/RDnykB3cD8Xjg3TsuN
+ gDvlLY1JJPol9F+qK3PpJekAn/HUt8fzfCmDd9vaPNFoOFYt9mwMKF0JslinWokN7EUQi5
+ FPBDbZm15ge25/4TF4w4uvU2522+3ts=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-418-TWH-M3A-MhCVxykOqmMoPA-1; Sat, 27 Jun 2020 02:52:56 -0400
+X-MC-Unique: TWH-M3A-MhCVxykOqmMoPA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DE2C6A0BE9;
+ Sat, 27 Jun 2020 06:52:53 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1B4792B4A6;
+ Sat, 27 Jun 2020 06:52:52 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 7B14411384A6; Sat, 27 Jun 2020 08:52:51 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v4 4/8] hw/misc/pca9552: Add a 'description' property for
+ debugging purpose
+References: <20200620225854.31160-1-f4bug@amsat.org>
+ <20200620225854.31160-5-f4bug@amsat.org>
+ <4d335933-9669-43e1-0966-5f0255142012@kaod.org>
+ <34fe3d2b-6b41-0509-f172-5b45486fdf0c@amsat.org>
+ <deccf836-48ef-7112-d66e-a8d3cc4a9681@kaod.org>
+ <877dvv4pmg.fsf@dusky.pond.sub.org>
+ <2d1b8b24-3b2c-d84e-8026-e369f6531247@amsat.org>
+ <03da95ed-399d-53e2-c946-a45f1a771701@amsat.org>
+ <87bll6tlzl.fsf@dusky.pond.sub.org>
+ <61d1f904-0d4f-4ae6-2d4e-3d8e87a9b77c@amsat.org>
+Date: Sat, 27 Jun 2020 08:52:51 +0200
+In-Reply-To: <61d1f904-0d4f-4ae6-2d4e-3d8e87a9b77c@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 26 Jun 2020 11:43:51
+ +0200")
+Message-ID: <877dvtt2yk.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: hskinnemoen@google.com
-Date: Fri, 26 Jun 2020 17:15:21 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/26 20:15:40
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/27 02:53:00
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, joel@jms.id.au,
- kfting@nuvoton.com, qemu-arm@nongnu.org, clg@kaod.org, hskinnemoen@google.com,
- Avi.Fishman@nuvoton.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tSMnu11sjh5p
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fn0c32ShcVxz
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDYyNjIzNTUxOS41OTE3
-MzQtMS1oc2tpbm5lbW9lbkBnb29nbGUuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0
-aGUgZG9ja2VyLW1pbmd3QGZlZG9yYSBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGlu
-ZyBjb21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5z
-dGFsbGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1Qg
-U0NSSVBUIEJFR0lOID09PQojISAvYmluL2Jhc2gKZXhwb3J0IEFSQ0g9eDg2XzY0Cm1ha2UgZG9j
-a2VyLWltYWdlLWZlZG9yYSBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1taW5n
-d0BmZWRvcmEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCiAgICByYWlz
-ZSBDYWxsZWRQcm9jZXNzRXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9jZXNzLkNhbGxlZFByb2Nl
-c3NFcnJvcjogQ29tbWFuZCAnWydzdWRvJywgJy1uJywgJ2RvY2tlcicsICdydW4nLCAnLS1sYWJl
-bCcsICdjb20ucWVtdS5pbnN0YW5jZS51dWlkPWEyMzBlNGJkMTE2NzQ5YTA4NzhhNzU4YjQ5N2Vl
-NjdlJywgJy11JywgJzEwMDMnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2VjY29tcD11bmNvbmZpbmVk
-JywgJy0tcm0nLCAnLWUnLCAnVEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VYVFJBX0NPTkZJR1VSRV9P
-UFRTPScsICctZScsICdWPScsICctZScsICdKPTE0JywgJy1lJywgJ0RFQlVHPScsICctZScsICdT
-SE9XX0VOVj0nLCAnLWUnLCAnQ0NBQ0hFX0RJUj0vdmFyL3RtcC9jY2FjaGUnLCAnLXYnLCAnL2hv
-bWUvcGF0Y2hldzIvLmNhY2hlL3FlbXUtZG9ja2VyLWNjYWNoZTovdmFyL3RtcC9jY2FjaGU6eics
-ICctdicsICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtdmc2YXVmdnYvc3JjL2RvY2tlci1z
-cmMuMjAyMC0wNi0yNi0yMC4wOS40Mi4yMTcwNzovdmFyL3RtcC9xZW11Onoscm8nLCAncWVtdTpm
-ZWRvcmEnLCAnL3Zhci90bXAvcWVtdS9ydW4nLCAndGVzdC1taW5ndyddJyByZXR1cm5lZCBub24t
-emVybyBleGl0IHN0YXR1cyAyLgpmaWx0ZXI9LS1maWx0ZXI9bGFiZWw9Y29tLnFlbXUuaW5zdGFu
-Y2UudXVpZD1hMjMwZTRiZDExNjc0OWEwODc4YTc1OGI0OTdlZTY3ZQptYWtlWzFdOiAqKiogW2Rv
-Y2tlci1ydW5dIEVycm9yIDEKbWFrZVsxXTogTGVhdmluZyBkaXJlY3RvcnkgYC92YXIvdG1wL3Bh
-dGNoZXctdGVzdGVyLXRtcC12ZzZhdWZ2di9zcmMnCm1ha2U6ICoqKiBbZG9ja2VyLXJ1bi10ZXN0
-LW1pbmd3QGZlZG9yYV0gRXJyb3IgMgoKcmVhbCAgICA1bTM4LjY2MnMKdXNlciAgICAwbTkuMTI5
-cwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3Mv
-MjAyMDA2MjYyMzU1MTkuNTkxNzM0LTEtaHNraW5uZW1vZW5AZ29vZ2xlLmNvbS90ZXN0aW5nLmRv
-Y2tlci1taW5nd0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRv
-bWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQg
-eW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+
+> On 6/26/20 7:49 AM, Markus Armbruster wrote:
+>> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+>>=20
+>>> On 6/25/20 10:12 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>> On 6/25/20 8:37 AM, Markus Armbruster wrote:
+>>>>> C=C3=A9dric Le Goater <clg@kaod.org> writes:
+>>>>>
+>>>>>> On 6/22/20 10:31 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>>>>> On 6/22/20 8:27 AM, C=C3=A9dric Le Goater wrote:
+>>>>>>>> On 6/21/20 12:58 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>>>>>>> Add a description field to distinguish between multiple devices.
+>>>>>
+>>>>> Pardon my lack of imagination: how does this help you with debugging?
+>>>>
+>>>> Ah, the patch subject is indeed incorrect, this should be:
+>>>> "... for *tracing* purpose" (I use tracing when debugging).
+>>>>
+>>>> In the next patch, we use the 'description' property:
+>>>>
+>>>> +# pca9552.c
+>>>> +pca9552_gpio_status(const char *description, const char *buf) "%s GPI=
+Os
+>>>> 0-15 [%s]"
+>>>>
+>>>> So when the machine has multiple PCA9552 and guest accesses both,
+>>>> we can distinct which one is used. For me having "pca1" / "pca0"
+>>>> is easier to follow than the address of the QOM object.
+>>>>
+>>>>>
+>>>>>>>> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>>>>>>>>
+>>>>>>>> Could it be a QOM attribute ?=20
+>>>>>>>
+>>>>>>> What do you call a 'QOM attribute'?
+>>>>>>> Is it what qdev properties implement?
+>>>>>>> (in this case via DEFINE_PROP_STRING).
+>>>>>>
+>>>>>> I meant a default Object property, which would apply to all Objects.=
+=20
+>>>>>
+>>>>> Good point.  Many devices have multiple component objects of the same
+>>>>> type.
+>>>>>
+>>>>>> What you did is fine, so :
+>>>>>>
+>>>>>> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>>>>>>
+>>>>>> but, may be, a well defined child name is enough for the purpose.
+>>>>>
+>>>>> object_get_canonical_path() returns a distinct path for each (compone=
+nt)
+>>>>> object.  The path components are the child property names.
+>>>>>
+>>>>> Properties can have descriptions: object_property_set_description().
+>>>>
+>>>> TIL object_property_set_description :>
+>>>>
+>>>> Ah, there is no equivalent object_property_get_description(),
+>>>> we have to use object_get_canonical_path(). Hmm, not obvious.
+>>>>
+>>>>>
+>>>>> Sufficient?
+>>>>
+>>>> I don't know... This seems a complex way to do something simple...
+>>>> This is already a QDEV. Having to use QOM API seems going
+>>>> backward, since we have the DEFINE_PROP_STRING() macros available
+>>>> in "hw/qdev-properties.h".
+>>>>
+>>>> Maybe I'm not seeing the advantages clearly. I'll try later.
+>>>
+>>> The canonical path is not very helpful in trace log...
+>>=20
+>> Why?
+>>=20
+>> Okay, I checked the code.  Since the devices in question don't get a
+>> composition tree parent assigned, realize puts them in the
+>> /machine/unattached orphanage.  The canonical path is something like
+>> "/machine/unattached/device[6]", which is less than clear.
+
+This is common for onboard devices.  I hate it.
+
+Some boards do better than others.  For instance, ast2600-evb has 33
+sensibly named entries under /machine/soc/, and only 9 entries in the
+/machine/unattached/ orphanage.  i440fx has two sensible named ones
+under /machine/, and 26 in the orphanage.
+
+>> The components of the canonical path are the names of the QOM child
+>> properties.  object_get_canonical_path_component() returns the last one,
+>> in this case "device[6]".
+>>=20
+>> If we made the devices QOM children of some other device, we could name
+>> the child properties "pca0" and "pca1".
+>> object_get_canonical_path_component() would then return the strings you
+>> want to see.
+>>=20
+>> We make a device a QOM child of some QOM parent device only if the child
+>> is a component device of the parent (hence the name "composition
+>> tree").
+>>=20
+>> Are these devices integral components of something else, or are they
+>> separate chips?
+>
+> Separate chips in the machine (actually not even on the machine mother
+> board where is the CPU, but on a daughter board card).
+>
+> So in the composition tree I expect to see them as
+>
+>   /machine/pca0
+>   /machine/pca1
+
+As long as the final canonical path component is something readable
+rather than auto-generated crap like "device[6]",
+object_get_canonical_path_component() is usable for tracing.
+
+>>> The description I set matches the hardware definitions
+>>> and is easier to follow, see patch #6 (where it is set)
+>>> where the description comes from:
+>>>
+>>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg714658.html
+>>>
+>>>   Description name taken from:
+>>>   https://github.com/open-power/witherspoon-xml/blob/master/witherspoon=
+.xml
+>>>
+>>> So in this particular case I don't find the canonical pathname
+>>> practical (from an hardware debugging perspective).
+>>=20
+>> Personally, I'd be content with i2c bus and address for debugging
+>> purposes.
+>>=20
+>> The i2c buses *are* components: canonical paths look like
+>> "/machine/soc/i2c/aspeed.i2c.3".  The combination of
+>> object_get_canonical_path_component(dev) and
+>> object_property_get_uint(dev, "address", &error_abort) identifies any
+>> i2c device on this machine, not just the two you decorate with a
+>> description string.
+>
+> The I2C busses is provided by Aspeed peripherals. I counted 19 different
+> I2C busses on this machine.
+>
+> "pca0" is connected to i2c bus #11, "pca1" to bus #3.
+>
+> I still don't think this will be practical, but I'll try your
+> suggestion.
+
+"bus=3D11 addr=3D0x60" isn't exactly wonderful, but it seems practical
+enough for me.  Even "device[6]" seems workable, just bothersome,
+because it's needlessly hard to remember, and prone to change.
+
+Mind, I'm not recommending any particular solution for "want a more
+useful device ID in traces", I'm just throwing out ideas on how to solve
+the problem in a more general way.
+
+Working towards a a neater QOM composition tree might help with more
+than tracing.
+

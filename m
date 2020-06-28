@@ -1,102 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2193995lfm;
-        Sun, 28 Jun 2020 07:28:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxPu6Rgt/2BO4oUKdqd+zF+Nf/8lKAOouXr+qY6//ZA+7UhXHLlfGh5zfbMbTGXd7iJ47G/
-X-Received: by 2002:a25:8b05:: with SMTP id i5mr18795546ybl.301.1593354528445;
-        Sun, 28 Jun 2020 07:28:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593354528; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2194304lfm;
+        Sun, 28 Jun 2020 07:29:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxAHqD9ueVqflB5IjjCA9aHoApUY8AjepyA2T5xo+ejrI9PhO2rghkYxN/0vPxoJEfksujM
+X-Received: by 2002:a25:d28e:: with SMTP id j136mr20209991ybg.408.1593354558525;
+        Sun, 28 Jun 2020 07:29:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593354558; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZsDOCPwo2orITuTLJc2joB/gQHcpAMBuqk27m9Fr55ZQiEeJPry5ZaV3weeWs08aX3
-         UUoQwnh+tqg+GypWQsMQVQPGwLbD7jc3o8p9NmBqNyToqBe/6H36rzKSG7XDHqUr7Cy7
-         CX3JllJvJqEsCsmjq2+zF70mGCrvqxAbyVnTCyJmzY8inHKDmnLiscQipvymQbFpJdJY
-         xPx37+E37F85qEGAS+B2HlctZJPAJxaVrz3LYzt45U/YTeBgF+CrlnTMgrq1GA8Nt/aF
-         avxQYvrvNt30rZA87d/T5svc2NKSo8oOWgyhRLPM0TZy91yfMUpVmYcBGzuV6iJfOpTX
-         8BWw==
+        b=mrBG8Zs9wEzsZYlLSK8rzCeAMOy7ivMmLYSmJsx9jjGk76+7WWO1DvCRsVv43F1Qls
+         4fP0lSaJvlcai2kX6c03TrVw4zyQ9CM0yLKuEE42Q47cisAuq4ZRrWf94oMq9tWUZ87u
+         on1IlZwrMc0hiuWModf5XDOWGzBxKd2dSb67fMxQfCBLvO7JDC+A9hswSCPksrSQskrK
+         Dd4ds3L5pFuIP+HTo0zAANR/o/czEl2nbUW4gykjBRZqwhSyt/+ySIPE1XmldAU4M3by
+         dHar3V+W6+qbPodvMQKZEfMeU0EWfRIUAQndsq7aAnmGItKuYlWP+tQvkMW6mtQ9G2fq
+         HA6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=QBXoGJBUT/9dmeWjNdX79gBYw0pAnLWbE1PUY4IQSc0=;
-        b=KnBvyY3JnBb1GWSGGmtHX/kOyPlBIsQRdJ3Lr/C6V+REkE7r6HbfRKRrgZyDPHaZRG
-         nhd9JMSKrrMo1g2JVO8qgyV7MB/8cHIr2puTx//q0tGND0YNznWln64sUK+a4uFvUqB+
-         Uu6KqK8H+lXpwMfpvGOKY73hR/98qklrQUt2hNWF9Gurd22FkmbPwsXbJZ5v5Ot5w4bP
-         Cb594wg2mxQQqBjTbBR5XjcBFSYBZe0aAnadMfisQzD3jjkeO4o89CK+K3EpWdBkXo6e
-         bEYIuJwfYbTRJolAx6Q4S00G+6Oht77jbNdqgbty1vxKtgkLRrP2k17/OG3pVqJV+ELR
-         HlOg==
+        bh=SgwIMScr/FIQnW8BnMJTzdrdEBtyQPvg038hPjzvKgw=;
+        b=t3kBW/Uv33BvjX4qL0LpiuKvQD8F9cex2yS/ErBjDnrf66Yw7nQEAl6LvLpuvbjst7
+         8EO32vgYDPaYtrI2HCwlpu79zf2ObYaDEBdyGmfWO7Bi6qbbhljBIDJYGyrH1w/XHibz
+         KtIL0Ykd7wpsF0yqqYA6YnCrEzJES15DSx+moaDkX5S1EUyORoaGLrab1Qw2B3uqatqi
+         I7pnCvoxEmsu2dXeXyUEvG0U9TC8FayXh+R5jtMb0nWZ5YMDttQk8ZxcWq3wb5+PiIkx
+         qX+RhoVcSDqRZXzBvRxMVTN/MTwZEp6HVNO+qkDM3OCStICEczK8KC75eMGxxkHz9+GF
+         9QVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iMo5t55+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=DmLjHksG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t4si6929304ybc.434.2020.06.28.07.28.48
+        by mx.google.com with ESMTPS id u76si5938449ybi.283.2020.06.28.07.29.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 28 Jun 2020 07:28:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 28 Jun 2020 07:29:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=iMo5t55+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=DmLjHksG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57280 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33570 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jpYIZ-0003iQ-Qj
-	for alex.bennee@linaro.org; Sun, 28 Jun 2020 10:28:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38372)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jpYJ3-0005Z6-R0
+	for alex.bennee@linaro.org; Sun, 28 Jun 2020 10:29:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38412)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jpYEf-0006Cc-8p
- for qemu-devel@nongnu.org; Sun, 28 Jun 2020 10:24:45 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:40693)
+ id 1jpYEg-0006Fv-HT
+ for qemu-arm@nongnu.org; Sun, 28 Jun 2020 10:24:46 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:46104)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jpYEc-0004iT-UX
- for qemu-devel@nongnu.org; Sun, 28 Jun 2020 10:24:44 -0400
-Received: by mail-wr1-x443.google.com with SMTP id h5so14036496wrc.7
- for <qemu-devel@nongnu.org>; Sun, 28 Jun 2020 07:24:42 -0700 (PDT)
+ id 1jpYEe-0004jK-Aj
+ for qemu-arm@nongnu.org; Sun, 28 Jun 2020 10:24:46 -0400
+Received: by mail-wr1-x442.google.com with SMTP id r12so13991387wrj.13
+ for <qemu-arm@nongnu.org>; Sun, 28 Jun 2020 07:24:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=QBXoGJBUT/9dmeWjNdX79gBYw0pAnLWbE1PUY4IQSc0=;
- b=iMo5t55+4F4OvsAwf+NZr4I3HQ5EJT+4mTkRLhlg4vMhwksCp2gMDFQehcZGVEuNwL
- Tf78xRpUoouBIk23RzaTJ+8A7qrKo/FG/qOGHHPYac7/6tHXFZ3GejUV4r6ws5H/doeC
- V5r62HrDaXHhZYS9iCkV/2EQXPLvnlzhdeEUYxDiSNv4MovoDl2MPTqsaoND1UUFbIG2
- T2BVecRmILD7rbfgR39gED96juHnqhMMXTAy2Bj+GBaziDokOsqIPTsqVbrbE+E4Z1sR
- KgznzNhR5RqRJnAYZrJuqKX8Fz0Tr3n9pLHVYo9nJ8mO92BuiaaqbcY/ztHZc1i2/SZC
- PxpQ==
+ bh=SgwIMScr/FIQnW8BnMJTzdrdEBtyQPvg038hPjzvKgw=;
+ b=DmLjHksG4vO/ptD6HFqYBPrTo4WYlILaUNvZcw+idizCY/oRkwwWVZ4RghhTBfHnW2
+ fo6lP9TJ7mBzXlJJNYGAdW/r+ZmxDJ02iASOvfUy+tZ0DixaAc9afnqGMU+3KzDu+klk
+ kYNr0hbinaRIvohzRWrJRSY4cZDKjv07YsE/Qi/GZLE4mlgj2Gz3Q0ZHtPgnXqTbhyyZ
+ nietcuGRTi9bo37Ts98fdLL2fp5BKm25s9NLS8RxLPHjykAfjCs6N3YrMhKcKTPwplI3
+ gPFtHbCGHX1MW9XRZ9QAN0L3wIBFtMTd413vNabXYI5pOZuEdc0B+rxWz8NraEooGYwL
+ 7k5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=QBXoGJBUT/9dmeWjNdX79gBYw0pAnLWbE1PUY4IQSc0=;
- b=TBxiZ42iP4EpLz+aAxKemGEFICWvlflhwuI7zKCbLSzOF2u0xy+Mc3cDzS6v5VrWgq
- RKxgt+U47rXHc4iodszv2QxI0VCHteHvXBx/zghSDHlFF+OX+LzXc/FCubmeJXlK52mm
- L9LdQ5qxyZfBUWQNjAXzIrm1ky4b7Vbp0EqohXa98NDLP7C+SKGj5bvxWlhpO069VWHm
- eKyZE9NwMdh6CUwLvnKIW0G+Op0sNoIr0SdB5AMpfYSeC/e7fyT6iWKdVI3Dqsc46KVm
- bJofyY2eU3bR219+bwI9tAtAmAyE/RYmtxvPzo/mo6fFAv5DxsZhJVupAxr98D9eQjY3
- /Sxw==
-X-Gm-Message-State: AOAM5303gxuFbb+8ARtlYnhBWfR0mdxSSZnZP2h0RXd4A4rXMnu8V6fl
- HYgvM2Sz+1f77iA0VHS9URmOnw==
-X-Received: by 2002:a5d:5549:: with SMTP id g9mr13803422wrw.419.1593354281655; 
- Sun, 28 Jun 2020 07:24:41 -0700 (PDT)
+ bh=SgwIMScr/FIQnW8BnMJTzdrdEBtyQPvg038hPjzvKgw=;
+ b=k3t9FHQaTr8zx8CIwRXEee8cUwSMUsd74ggR0jQm5A4aFVxHVR/fpJjoVSpily7GtL
+ /0gl6TmcFYa6wBPKRzfWWSNZzJjDcMlifwjYvSB8D3rq52oVcQpWl8laIka5nbWjjlsT
+ +Ly1oEutBgVIQJ261bwWlRHwHxZyUmQZ74H4isM0yspbd8FplfQE5+rsA9m9vXPvoLOo
+ DOjtACmxSze8Cwqfm2rXUA3Kc2YqiZbfJRHxRifwUktbdG8iGcdSw6omDwlMf5VIia10
+ PmYU2wTxnMtma5MXaQHwEot3rcRq83SvjlcsfiOWaNgXOK2XLuaYp4gSFg2F5X7okkXz
+ 8PXg==
+X-Gm-Message-State: AOAM530OlYRN3+vr6koKA6bibBiIxe2hO5WscJjHwrwzubzIpHl2lf23
+ 0K+Yn6fuEXT1FxIk00mu5wLUNWerHy5nog==
+X-Received: by 2002:adf:f38f:: with SMTP id m15mr11548083wro.173.1593354282790; 
+ Sun, 28 Jun 2020 07:24:42 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id h13sm5321555wml.42.2020.06.28.07.24.40
+ by smtp.gmail.com with ESMTPSA id h13sm5321555wml.42.2020.06.28.07.24.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 28 Jun 2020 07:24:40 -0700 (PDT)
+ Sun, 28 Jun 2020 07:24:42 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 08/17] ssi: Add ssi_realize_and_unref()
-Date: Sun, 28 Jun 2020 15:24:20 +0100
-Message-Id: <20200628142429.17111-9-peter.maydell@linaro.org>
+Subject: [PATCH 09/17] hw/arm/spitz: Use max111x properties to set initial
+ values
+Date: Sun, 28 Jun 2020 15:24:21 +0100
+Message-Id: <20200628142429.17111-10-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200628142429.17111-1-peter.maydell@linaro.org>
 References: <20200628142429.17111-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x443.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -107,95 +108,57 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Alistair Francis <alistair@alistair23.me>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hsPr4gHapIDZ
+ Alistair Francis <alistair@alistair23.me>,
+ Andrzej Zaborowski <balrogg@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wTUMcUuGxipn
 
-Add an ssi_realize_and_unref(), for the benefit of callers
-who want to be able to create an SSI device, set QOM properties
-on it, and then do the realize-and-unref afterwards.
-
-The API works on the same principle as the recently added
-qdev_realize_and_undef(), sysbus_realize_and_undef(), etc.
+Use the new max111x qdev properties to set the initial input
+values rather than calling max111x_set_input(); this means that
+on system reset the inputs will correctly return to their initial
+values.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/ssi/ssi.h | 26 ++++++++++++++++++++++++++
- hw/ssi/ssi.c         |  7 ++++++-
- 2 files changed, 32 insertions(+), 1 deletion(-)
+ hw/arm/spitz.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
-index 93f2b8b0beb..4be5325e654 100644
---- a/include/hw/ssi/ssi.h
-+++ b/include/hw/ssi/ssi.h
-@@ -79,6 +79,32 @@ extern const VMStateDescription vmstate_ssi_slave;
- }
+diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+index 11e413723f4..93a25edcb5b 100644
+--- a/hw/arm/spitz.c
++++ b/hw/arm/spitz.c
+@@ -731,11 +731,14 @@ static void spitz_ssp_attach(SpitzMachineState *sms)
+                           qdev_get_gpio_in(sms->mpu->gpio, SPITZ_GPIO_TP_INT));
  
- DeviceState *ssi_create_slave(SSIBus *bus, const char *name);
-+/**
-+ * ssi_realize_and_unref: realize and unref an SSI slave device
-+ * @dev: SSI slave device to realize
-+ * @bus: SSI bus to put it on
-+ * @errp: error pointer
-+ *
-+ * Call 'realize' on @dev, put it on the specified @bus, and drop the
-+ * reference to it. Errors are reported via @errp and by returning
-+ * false.
-+ *
-+ * This function is useful if you have created @dev via qdev_new()
-+ * (which takes a reference to the device it returns to you), so that
-+ * you can set properties on it before realizing it. If you don't need
-+ * to set properties then ssi_create_slave() is probably better (as it
-+ * does the create, init and realize in one step).
-+ *
-+ * If you are embedding the SSI slave into another QOM device and
-+ * initialized it via some variant on object_initialize_child() then
-+ * do not use this function, because that family of functions arrange
-+ * for the only reference to the child device to be held by the parent
-+ * via the child<> property, and so the reference-count-drop done here
-+ * would be incorrect.  (Instead you would want ssi_realize(), which
-+ * doesn't currently exist but would be trivial to create if we had
-+ * any code that wanted it.)
-+ */
-+bool ssi_realize_and_unref(DeviceState *dev, SSIBus *bus, Error **errp);
+     bus = qdev_get_child_bus(sms->mux, "ssi2");
+-    sms->max1111 = ssi_create_slave(bus, "max1111");
++    sms->max1111 = qdev_new("max1111");
+     max1111 = sms->max1111;
+-    max111x_set_input(sms->max1111, MAX1111_BATT_VOLT, SPITZ_BATTERY_VOLT);
+-    max111x_set_input(sms->max1111, MAX1111_BATT_TEMP, 0);
+-    max111x_set_input(sms->max1111, MAX1111_ACIN_VOLT, SPITZ_CHARGEON_ACIN);
++    qdev_prop_set_uint8(sms->max1111, "input1" /* BATT_VOLT */,
++                        SPITZ_BATTERY_VOLT);
++    qdev_prop_set_uint8(sms->max1111, "input2" /* BATT_TEMP */, 0);
++    qdev_prop_set_uint8(sms->max1111, "input3" /* ACIN_VOLT */,
++                        SPITZ_CHARGEON_ACIN);
++    ssi_realize_and_unref(sms->max1111, bus, &error_fatal);
  
- /* Master interface.  */
- SSIBus *ssi_create_bus(DeviceState *parent, const char *name);
-diff --git a/hw/ssi/ssi.c b/hw/ssi/ssi.c
-index 67b48c31cd6..a35d7ebb266 100644
---- a/hw/ssi/ssi.c
-+++ b/hw/ssi/ssi.c
-@@ -90,11 +90,16 @@ static const TypeInfo ssi_slave_info = {
-     .abstract = true,
- };
- 
-+bool ssi_realize_and_unref(DeviceState *dev, SSIBus *bus, Error **errp)
-+{
-+    return qdev_realize_and_unref(dev, &bus->parent_obj, errp);
-+}
-+
- DeviceState *ssi_create_slave(SSIBus *bus, const char *name)
- {
-     DeviceState *dev = qdev_new(name);
- 
--    qdev_realize_and_unref(dev, &bus->parent_obj, &error_fatal);
-+    ssi_realize_and_unref(dev, bus, &error_fatal);
-     return dev;
- }
- 
+     qdev_connect_gpio_out(sms->mpu->gpio, SPITZ_GPIO_LCDCON_CS,
+                         qdev_get_gpio_in(sms->mux, 0));
 -- 
 2.20.1
 

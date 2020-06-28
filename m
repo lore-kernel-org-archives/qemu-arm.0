@@ -1,99 +1,99 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2383848lfm;
-        Sun, 28 Jun 2020 12:55:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzC1pzkCHmrb9ShOrDwS8+6LQ5khiNU+49j+nxwkgBndixJ/s3NsEp7go9xHUtoA7stPlcO
-X-Received: by 2002:a25:c606:: with SMTP id k6mr20592940ybf.10.1593374136528;
-        Sun, 28 Jun 2020 12:55:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593374136; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2409988lfm;
+        Sun, 28 Jun 2020 13:38:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxUAmwLRjG1yyzMr1iS0Hqk1XpS41FEPv/P/jgzVk6UdTEkJpX/TJTaqTCUOB0KT3Q0BbrZ
+X-Received: by 2002:a25:d2c4:: with SMTP id j187mr23734973ybg.33.1593376687083;
+        Sun, 28 Jun 2020 13:38:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593376687; cv=none;
         d=google.com; s=arc-20160816;
-        b=evues5N90Zy9QFD4c4PedeVNhn4i+sZ1yiB9TY8CSUoD8UbDPIosdpDWEU5y+TW0Vs
-         ERmSBw0OsLVEAs9oW6aVyrpIrZyiQ/on6zej8zmy0QueWYv3EAxWhkEZPSL/NjzrSMgl
-         kXa0wlYh3fujQcfNV+E+ip7TDI3L2LAPhAom/r4wVlmiE2Bcp/V0NufDAm/Gg6Nn37If
-         zlZi8RRaDZgdBGGerCQX0xxAIloAF4c0eccSW01ymlz3iGt0Bp1bsqMMB68yDookl/Wb
-         MwGbl7YwtKeQNB6RAFrx9cvaT+HyZSVWBGca0dyVBc+mAW+u/QpIGmlSRQjfm7/cufda
-         CWJw==
+        b=rP6emX4sEKLdR6Rq8tgz7hR1wZ/JSSC1qNtZ2nSfp+gcAvEcrc3LhNkqagOTOL17rL
+         jTEkx8nD8QMojdi5W0IALyqHz/vbJcYCPPQ8+T5macZYE76//1voIqfMp4BHUHmiy+As
+         hrhxwllpaMUB3YjVGutsbjULWHvWKGCa4E+VXUPMDBcmMfQW4U66XPP8brGIgdEpgn+5
+         bdbrqTYsEuuhxTMmRnryveeoA0z1wBpisDEfziMerNBMSZKXTGk5vp6oCFhyydQqOfXW
+         zTNezjFqt5vpLOXOWeRyBkhNWr6x0m3xuEXnQ+H3M/MefVF8BIBh4WBrRBO28FAUnIWq
+         Zbbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=dd6UT/sJQhVQoU/A5etTLisFLDqNewMQfmLXJ1m4wic=;
-        b=yNvjUJWqkL8L9UkcZBNDPw5hp35S0+IS1jMWNUKI/kuSGkvL5OTCwZVlfhmhp+Ssdv
-         Gh0C2VA1dyUxEEixnEFIKjkntFRM68MXso2v6Y5thmrdh8xuT8fUHLO7NHn5Z6P5IHMa
-         SHry67GLHW9gXJN5kfUwNXakkY2tWJyKxmLWz4f8cBFFZsgMKGnkKSpNidgeN8AbHfWD
-         Nt4eeVfuwxE6soLN/Y/rpyVCDHdb0CmfatZp0yZHmNiwuUkw137kNtNCBkbb7q6p/3Lm
-         SWPVQxo2BumC7BhDdGVCPRcnrpPWNblqagTT2WssSGDpI8u0Y5SB1tjPqcHsBH4yVquA
-         WguQ==
+        bh=dnio0De21POelvllvqksyjy+SMPI9o8bFPvLcCpu5ds=;
+        b=X/llQc0BUMI0XBd/ncPVu+JiY7OyjZOOnIqNlJIToEy/OtMY+JVgKbqPyWFVXFzMHK
+         OPZM/yn+9x9lmigqC8wmAoS+Un3h1Y7VQhWE6l/1YGc4lOFponYCf+nRDzKuVqgTHWQi
+         WZ1xXTK3CtRd+M5MQOJ/9G6YuaU7OEdztwwoPiOW5sY9SW4FLC4pGl6UjIpuTMjs+lkB
+         GF7JWzTUcJYVp9WbGzNGN1FCyTK0Pgn10P+9VXzT/4isvixsABN9RCNoC5mYcT0FlKXN
+         t93+omLDBsj677fHu3lr3K/GNuAyMQvCpSwEZwoJinZKPw/PLdjZY15uxwEv5YC/x0xc
+         DMVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dDftPtHL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=LoYUReKu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n66si33011357yba.117.2020.06.28.12.55.36
+        by mx.google.com with ESMTPS id j11si29841594ybt.84.2020.06.28.13.38.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 28 Jun 2020 12:55:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 28 Jun 2020 13:38:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dDftPtHL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46080 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=LoYUReKu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47128 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jpdOp-0005oJ-Vm
-	for alex.bennee@linaro.org; Sun, 28 Jun 2020 15:55:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38606)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jpe3y-0004Uo-Fq
+	for alex.bennee@linaro.org; Sun, 28 Jun 2020 16:38:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46388)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jpdNz-0005NR-LD
- for qemu-devel@nongnu.org; Sun, 28 Jun 2020 15:54:43 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:50471)
+ id 1jpe3m-0004ST-Qn
+ for qemu-arm@nongnu.org; Sun, 28 Jun 2020 16:37:54 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:40810)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jpdNx-0000fx-Vb
- for qemu-devel@nongnu.org; Sun, 28 Jun 2020 15:54:43 -0400
-Received: by mail-wm1-x341.google.com with SMTP id l17so13488283wmj.0
- for <qemu-devel@nongnu.org>; Sun, 28 Jun 2020 12:54:41 -0700 (PDT)
+ id 1jpe3l-0006T4-68
+ for qemu-arm@nongnu.org; Sun, 28 Jun 2020 16:37:54 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id h5so14573321wrc.7
+ for <qemu-arm@nongnu.org>; Sun, 28 Jun 2020 13:37:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=dd6UT/sJQhVQoU/A5etTLisFLDqNewMQfmLXJ1m4wic=;
- b=dDftPtHL3EHzIGBd6Ggh8DtUVevwB8J7NDSbey/OM/MCSGCGNqC4UTTj6/bDle4yvt
- 7hAvz6iLo6EVpHY5U8OWLF3t4cXBm6pQS9uFMycPsVx/VKn6dBxBULqXPD3D2kPnjo2x
- dSvl05dKFMn6zxiSi/py+ckqO0Yektw+6f+ZSxB2SzreIBgB9hx95zgBa7f8/q1+fOF7
- a1u7LotW8GZ3/vKa/dfj8ca/jPelwEi9zYVNVIdGbzRkiIaDRtz4eCWfpiks/Cj5ITJJ
- +r7rqupQyH1HCyoHA65LwCfv3K2I12w0kj56U00DdjSWy7scD4O7CgqC+oCT4I3S0wbo
- THmA==
+ bh=dnio0De21POelvllvqksyjy+SMPI9o8bFPvLcCpu5ds=;
+ b=LoYUReKuPBBhh50+a5IguzVq+r/I83IUCW3vmf9iHNpl7awgxs7d1eCsTvEsraF0yH
+ SKjC8/DKy29FdUqQocYTiBOyYFsz2vDst/dWQ5EmibRE0N6h4nClf0ZBGlfDpw20KzUO
+ TBk5SOzrli/LAJ1Yn/ObMVNwqR9ojsmNkAaPBaP5fK+D+OYJx4Z6N8CPuYjnANJPNzTC
+ yCIhxGNtfd9SIWTbr/TMYnsNqWbZtLLF5sofT7+XDEoZPRQ/zGbCsGzvIqMCg8dOyFu4
+ N9ZC82uzQPwgTyGLiMiu/0gqtkIv7t3cFZ33qcR5yDbFP3xFfk7heu3khKafmxIj38/y
+ BDMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=dd6UT/sJQhVQoU/A5etTLisFLDqNewMQfmLXJ1m4wic=;
- b=Abr6JBKYgOJ+MKL/BNV+VQZk6pEgsp6nJAticKMSg639F3ppVxGkI5vL/TCvi2Wf9R
- OjDI5mnR7Nvc+TVMjnELtyK0MGdeh4bZKZoLdcpaY7m++zGk31obuuziibxmfFr/o24K
- MmNwnkyM9Ur8OlY9tczK0IZnv76xlA8KY+L2M4rPulYMGz6AMuNQY+IcwbaKdiUhz4iE
- SdEv/qWogmxSXqUuKUrjtkd0xK7UlEgDZGL9GrJLp7rYvdYWAf8QZ3roWkES1pq2K08u
- VFKv2AEhZU+/HCxSUeJQC9t74xgGgDGQEOkarOjYw8geeF/N/ma361/dA8/UbNn0L06e
- xAfg==
-X-Gm-Message-State: AOAM531l19z1aqNYXW+XDC8VkwrVPKALtvX3QR81Q5WLrr/OKKS49hqb
- lfb68pt8O+IiPIBX4/OErxVMSw==
-X-Received: by 2002:a1c:de07:: with SMTP id v7mr13871715wmg.56.1593374078893; 
- Sun, 28 Jun 2020 12:54:38 -0700 (PDT)
+ bh=dnio0De21POelvllvqksyjy+SMPI9o8bFPvLcCpu5ds=;
+ b=tMstuU5AG2DyP1rJZwNNmng8sR6iwF+h9H6o2jtBYASNi3TRjbWrzaMpXYN5m4eQ/5
+ o/ybtFOX2P7/G9vJZ2FxB5h7K87vmpe58i3ThlFGx65YLCbmSCa2HLYUYPHOULiNWoqI
+ YDEnIhuIPsm6JMhEXQZO43RrfAS5/WWgNTCBFgJB5+BN3u5AtgKwZ/1f59YifjVqyfhE
+ cfWYu+Es/2RPY6vogKzHfsVexQ5+ipzogE7mJEmqwCnw8rjKfSEuULvvr3Pss2jf+zCW
+ dlTvN/CV9sQixe3+r+OrQ3SzTBdbnElRiPgCxdCA1ahWhYP44tJ5xNlIyEwjouYA35Pa
+ bSNg==
+X-Gm-Message-State: AOAM5325bgX1dyg8BEzOFDg19nKs8SCQk3yScg7OK5FI/MhUSIj+d9nj
+ JW4Y7GtqKIl8vUKuiwCSESm5nBoPZ0+4iA==
+X-Received: by 2002:adf:f104:: with SMTP id r4mr14587232wro.90.1593376671386; 
+ Sun, 28 Jun 2020 13:37:51 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id t4sm20609177wmf.4.2020.06.28.12.54.37
+ by smtp.gmail.com with ESMTPSA id r11sm8402884wmh.1.2020.06.28.13.37.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 28 Jun 2020 12:54:37 -0700 (PDT)
+ Sun, 28 Jun 2020 13:37:50 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH] hw/display/bcm2835_fb.c: Initialize all fields of struct
-Date: Sun, 28 Jun 2020 20:54:36 +0100
-Message-Id: <20200628195436.27582-1-peter.maydell@linaro.org>
+Subject: [PATCH 0/2] tosa: fix Coverity CID 1421929
+Date: Sun, 28 Jun 2020 21:37:46 +0100
+Message-Id: <20200628203748.14250-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x341.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -104,58 +104,43 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rJbXrnnUb3sZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gL6L9lJDVwig
 
-In bcm2835_fb_mbox_push(), Coverity complains (CID 1429989) that we
-pass a pointer to a local struct to another function without
-initializing all its fields.  This is a real bug:
-bcm2835_fb_reconfigure() copies the whole of our new BCM2385FBConfig
-struct into s->config, so any fields we don't initialize will corrupt
-the state of the device.
+This series fixes Coverity issue CID 1421929, which pointed out that
+the 'outsignals' in tosa_gpio_setup() were leaked, in the same way
+that the equivalent bug for spitz was fixed in the series I posted
+earlier: instead of using qemu_allocate_irqs() we create a device
+to encapsulate the handling of the misc GPIO lines on this board.
+This is simpler than the spitz case because for tosa we don't need
+to work with any of the other devices on the board, so the misc-gpio
+device can be simple and self-contained.
 
-Copy the two fields which we don't want to update (pixo and alpha)
-from the existing config so we don't accidentally change them.
+As with spitz, I started out by tidying up some stray hard-tabs.
 
-Fixes: cfb7ba983857e40e88
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Not sure why this wasn't a visible bug -- alpha isn't used,
-but if pixo changes from zero to non-zero we flip from
-RGB to BGR...
----
- hw/display/bcm2835_fb.c | 4 ++++
- 1 file changed, 4 insertions(+)
+thanks
+-- PMM
 
-diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
-index c6263808a27..7c0e5eef2d5 100644
---- a/hw/display/bcm2835_fb.c
-+++ b/hw/display/bcm2835_fb.c
-@@ -282,6 +282,10 @@ static void bcm2835_fb_mbox_push(BCM2835FBState *s, uint32_t value)
-     newconf.base = s->vcram_base | (value & 0xc0000000);
-     newconf.base += BCM2835_FB_OFFSET;
- 
-+    /* Copy fields which we don't want to change from the existing config */
-+    newconf.pixo = s->config.pixo;
-+    newconf.alpha = s->config.alpha;
-+
-     bcm2835_fb_validate_config(&newconf);
- 
-     pitch = bcm2835_fb_get_pitch(&newconf);
+Peter Maydell (2):
+  hw/arm/tosa.c: Detabify
+  hw/arm/tosa: Encapsulate misc GPIO handling in a device
+
+ hw/arm/tosa.c | 132 ++++++++++++++++++++++++++++++++------------------
+ 1 file changed, 86 insertions(+), 46 deletions(-)
+
 -- 
 2.20.1
 

@@ -1,103 +1,102 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2196026lfm;
-        Sun, 28 Jun 2020 07:31:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzKcHhYSTJfnDtWOFqnQTXSNiF1pt5sdQHUy16z2k1e1CQnSTID55n4ZI+ekqZ3kvMU+ubp
-X-Received: by 2002:a05:6902:6c9:: with SMTP id m9mr19855787ybt.372.1593354708965;
-        Sun, 28 Jun 2020 07:31:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593354708; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2196182lfm;
+        Sun, 28 Jun 2020 07:32:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzaVt5YgW8Tud5GCXxWDHPXMu/DPwRjmalIhnJCGSiHf7KOP/dichmop9/wgSXrjTWPThkd
+X-Received: by 2002:a25:e087:: with SMTP id x129mr19025260ybg.73.1593354723035;
+        Sun, 28 Jun 2020 07:32:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593354723; cv=none;
         d=google.com; s=arc-20160816;
-        b=PnXw9EdRCx5jWBrqilLfpk7NVReBWSCIqfBCE0Ry/CS7AAszn8CvFRioOJXwwZnl8S
-         9qgLQf21Y0ai312RHUQf29BQc7Z7s7CQ0UvhjZ0rATRZCcDGL7NPMnXHlEt5cswhggGK
-         5448Ig8zcUlA/Xu9JdsxLHD2RiXU4xybJB1UFMl9jY2ymcnenVykDvCb16evX2MSM44s
-         VeQkEqpv8oTuWH+/QuLXIfrudYVbO100cYgBGt9CmUhOnH9+RVjrKqwKp0T0mhIcQzMT
-         Ppj48x5ECVomjpd+i57VCOFYLDJDrf5yd5L4MS/75umgqlyNHbH9cDp6xBmOoU+FzEs2
-         jPkg==
+        b=mO4zmFYGvZ9cZgr4jhAsPc0mpQigkMlQ4QoctktiIIXgGaPgyURrQ00N1KKMNFO0AN
+         kGuVJsnxCvKc2Uum+Oa8QnPvATpoj8tiuWchRBLUd3bGCIafRbNPui/Kt9cDdhQYsWsZ
+         5xsb9ImeDZKNUpDYzwLCz7fgRTiT1wPuVM3LQ2n9qhC4vQVbu2K8L5Bn15BGWJldVpzm
+         R8RLefuMGjgABI+m25XB2/sEUPzTYDnfdRbtfmgw6fm7iXA7IUKhh1RjhtvmVGjjlcEl
+         dK8UVqHrX8Y5vTYDQyIeyUdhDZ9FxEPi0lzuv4569O9JRbGz53+jX6fzADQG/7lDJNpo
+         WyEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=fwBSY0MsI6h8FbtVujLNC6mJpu8V4peKWaK9z7XDiI0=;
-        b=pNl0/tINajajebWK+2YmbhuFWC5yt1qziFIVByCUOkxvia2+UPgVyCftTo0ft7+vh5
-         OCfoS2SV783ypG4CJeNwswLaZAZDCWGNIeHxyq2asZUZSH4sNrDbOP32ZkQDxyEKbLcH
-         BUARXcgwQsAqN3tuHKrMbrisNb9HpmU+sdYh2Hh93PLjtyKUV42kPmuTQdAxZ6HlVkfB
-         FP88wWVyaZromm61NoRXAnOzffJizsq+lRwnnjksqIp5RWDY4nRLiyX+0+HpjGvf6eSk
-         tN9vhoVbIWLXWJWnEM45ixrmGkZB4ynLYeW0FWgFiXN6pEvCkqXfnnTJgd1bhYGW+C3H
-         8hbQ==
+        bh=PpVXQd412XMkJh1QeNoqsNlD9XCB50I4FpVy/sO+nw8=;
+        b=r4s39GIraQbQJcyJtltCBSAj7Tozv925TtEtzxvZZYXCx0FQhOgD9MDSnSrks0Z7rh
+         6py07NDVV04bWSqVUiG6hk1HYArv1a5kd44EoOeWm6nNypMRp70Fla/AAqdIODNsN+Ik
+         +zpPDBfZ9Fn3jVnR6x3CgSmCYsLzuXHKFg1777DiPBy91J8W5oVjpuV/SqfFx02orITv
+         JimYjltai0mjXC0N0EEw8VoJaBMMizwtalZVPY1/6dxygLEWjGpK827u/CtWjCSWFE1Y
+         gS4VriEIvFlSOLR9GAi0n0KGj7gaUixniNQGJEm3Q3tcQlXQ255UTGuNxCsD/SpkGpjd
+         r9dA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rg7325tu;
+       dkim=fail header.i=@linaro.org header.s=google header.b=PVimSI+V;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o23si29214873yba.275.2020.06.28.07.31.48
+        by mx.google.com with ESMTPS id e63si5748070yba.164.2020.06.28.07.32.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 28 Jun 2020 07:31:48 -0700 (PDT)
+        Sun, 28 Jun 2020 07:32:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=rg7325tu;
+       dkim=fail header.i=@linaro.org header.s=google header.b=PVimSI+V;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43090 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44212 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jpYLU-00015F-Ah
-	for alex.bennee@linaro.org; Sun, 28 Jun 2020 10:31:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38530)
+	id 1jpYLi-0001Z3-D5
+	for alex.bennee@linaro.org; Sun, 28 Jun 2020 10:32:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38666)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jpYEk-0006TK-TP
- for qemu-arm@nongnu.org; Sun, 28 Jun 2020 10:24:50 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:46104)
+ id 1jpYEq-0006jp-S3
+ for qemu-arm@nongnu.org; Sun, 28 Jun 2020 10:24:56 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:33150)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jpYEj-0004le-8e
- for qemu-arm@nongnu.org; Sun, 28 Jun 2020 10:24:50 -0400
-Received: by mail-wr1-x441.google.com with SMTP id r12so13991500wrj.13
- for <qemu-arm@nongnu.org>; Sun, 28 Jun 2020 07:24:48 -0700 (PDT)
+ id 1jpYEn-0004nW-Vt
+ for qemu-arm@nongnu.org; Sun, 28 Jun 2020 10:24:56 -0400
+Received: by mail-wm1-x343.google.com with SMTP id a6so12019170wmm.0
+ for <qemu-arm@nongnu.org>; Sun, 28 Jun 2020 07:24:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=fwBSY0MsI6h8FbtVujLNC6mJpu8V4peKWaK9z7XDiI0=;
- b=rg7325tuDYm4hUluuyLxFpyBeffHXylA4vO7YVE+nBUruGnnIL7GDbNPBPROrBMHDq
- SZwkDsEWqsPO0Nh8foIzHvMmvUEt5rXLSW/C1FOkdXGoxJILdMd3gXAtuH068iC3vvOT
- w8wbeCN1qWkFmSWVzrcTAN0xgOYcZRIt0TmS4OaGwTW3Z7x0p+GdLzfHJ+ileI1FJuOy
- JeQKmiW0uC1KKQadVkcMS5tVticI3PDxrrjUz17cHupg05Ri8nPN37aI6dgoUW8GVXrG
- PFBxUNdrf5YRB7wd1O3kOJhTY3Qko9ODCBsnBMeA7MWKjHROYUzcww7omiMmCipT3ie4
- SIRA==
+ bh=PpVXQd412XMkJh1QeNoqsNlD9XCB50I4FpVy/sO+nw8=;
+ b=PVimSI+V6NHxsMVKvZ16PbRoMTrDaQkdmJb+90akfB+IzTZPgivHKxUy42q4PyWbWh
+ /pju7SYN/napeBkdvA/vA+f76jd0+bWHlw26pyf7BQcN2EtGoMgvL5LXrqlDbP1v6GU8
+ 9y5JMBU4xQtYw/P1iYYXVMSJmKIhP/fqUWxqROwfv8dN0WO1uWq9CLFDz1o4HZMXUDGG
+ CBhpD1/uSREmXLHcFxd9x8Ddb9VZznbB+tLbXrWXG/XJCTSqVJDU1s+x78nnaG+SWYR8
+ Y7gD0iFQZ02TuefNp+9imqcPt8BJyPHludlTlhlDJUI2bNH2y6jIHpvsSUdBeimpS4OH
+ x7OQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=fwBSY0MsI6h8FbtVujLNC6mJpu8V4peKWaK9z7XDiI0=;
- b=SogmMTRy4uI62fY4pnb8QWTpVRrrARUfX7gqx1Y9GzhBYw2+WaEirDcluQh8sXLBN1
- c1+f/2ZcYylpPT+kiHswG6M31C1djwyAZkK3G/58Cv/RAohb8Ub1ock69cfM0NFRTEEM
- HHDE8HcH2sHhSOvA7eCcZVap7x0agJPHohrD74Vs3Ibo6gxSFrG1hv+3FWa5voog4A5i
- h3niktl5jU2s4aHc+11pP9+XSnzYzkddPJ02MvdL9fvA44Fje7JqKdYN1sQ/sMFwpfaD
- YA2eaKiHWQ6aLvif+bBZsA6HjZmQ8PrePqN8N2AKC1rIZq0jXmv+hhrqQ4CpaNJDk5g0
- GgBg==
-X-Gm-Message-State: AOAM532QQEYMwzCSRe44KuK/qWm9fxhRS3aOxlr3CEf5p2OWIcScMF4Z
- AzmqemIkxViYPf1k1lqQAPF2d10mA40mXA==
-X-Received: by 2002:a5d:6912:: with SMTP id t18mr12770328wru.411.1593354287667; 
- Sun, 28 Jun 2020 07:24:47 -0700 (PDT)
+ bh=PpVXQd412XMkJh1QeNoqsNlD9XCB50I4FpVy/sO+nw8=;
+ b=HPQvNro6JiHA6+GlhxSMyQLso1wO4SZ1nZczBWVKJwA5JJN1lReh1Ih+vJlJqxBRpe
+ VC+XkeP3Ez82/R71aLVpwgrYATFnmGQel4YCtRAfCX9fjbVE08ac+UTCjZRyWEqwmRHV
+ YyGz41P3c8WGKP39Kz9upqCpv3w7Vq4nlnGuXm656pSQC7tfVSTb9Yq7A2IQtyS0OdmB
+ YT+DzU/D5/XcGy63sMInH3uSsjd6T88YYAYXpYqN0a0k76M5lmHYG9kBCs4yzs2tEzyK
+ nW5sZ30aqL4VCSy6y58u9oXIuWC8/wf6tlvEmdFtSZz2Je7ev9PAsBFUCCJvvlVmdOkH
+ lesw==
+X-Gm-Message-State: AOAM5335g6FTrulc9CVkABU4Mc62UZH9WR4zkLsQUHB4fEFsJYd2XnxE
+ of782t1HJwaHbBZzbN5Kcf9ssFB05mKvkQ==
+X-Received: by 2002:a1c:2906:: with SMTP id p6mr11101557wmp.68.1593354292332; 
+ Sun, 28 Jun 2020 07:24:52 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id h13sm5321555wml.42.2020.06.28.07.24.46
+ by smtp.gmail.com with ESMTPSA id h13sm5321555wml.42.2020.06.28.07.24.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 28 Jun 2020 07:24:47 -0700 (PDT)
+ Sun, 28 Jun 2020 07:24:51 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 13/17] hw/gpio/zaurus.c: Use LOG_GUEST_ERROR for bad guest
- register accesses
-Date: Sun, 28 Jun 2020 15:24:25 +0100
-Message-Id: <20200628142429.17111-14-peter.maydell@linaro.org>
+Subject: [PATCH 17/17] Replace uses of FROM_SSI_SLAVE() macro with QOM casts
+Date: Sun, 28 Jun 2020 15:24:29 +0100
+Message-Id: <20200628142429.17111-18-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200628142429.17111-1-peter.maydell@linaro.org>
 References: <20200628142429.17111-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x441.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -124,88 +123,189 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yPAPxJqpAQLB
+X-TUID: pOf7BxnKzrsY
 
-Instead of logging guest accesses to invalid register offsets in this
-device using zaurus_printf() (which just prints to stderr), use the
-usual qemu_log_mask(LOG_GUEST_ERROR,...).
+The FROM_SSI_SLAVE() macro predates QOM and is used as a typesafe way
+to cast from an SSISlave* to the instance struct of a subtype of
+TYPE_SSI_SLAVE.  Switch to using the QOM cast macros instead, which
+have the same effect (by writing the QOM macros if the types were
+previously missing them.)
 
-Since this was the only use of the zaurus_printf() macro outside
-spitz.c, we can move the definition of that macro from sharpsl.h
-to spitz.c.
+(The FROM_SSI_SLAVE() macro allows the SSISlave member of the
+subtype's struct to be anywhere as long as it is named "ssidev",
+whereas a QOM cast macro insists that it is the first thing in the
+subtype's struct.  This is true for all the types we convert here.)
+
+This removes all the uses of FROM_SSI_SLAVE() so we can delete the
+definition.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/arm/sharpsl.h |  3 ---
- hw/arm/spitz.c           |  3 +++
- hw/gpio/zaurus.c         | 12 +++++++-----
- 3 files changed, 10 insertions(+), 8 deletions(-)
+ include/hw/ssi/ssi.h |  2 --
+ hw/arm/z2.c          | 11 +++++++----
+ hw/display/ads7846.c |  9 ++++++---
+ hw/display/ssd0323.c | 10 +++++++---
+ hw/sd/ssi-sd.c       |  4 ++--
+ 5 files changed, 22 insertions(+), 14 deletions(-)
 
-diff --git a/include/hw/arm/sharpsl.h b/include/hw/arm/sharpsl.h
-index 89e168fbff3..e986b28c527 100644
---- a/include/hw/arm/sharpsl.h
-+++ b/include/hw/arm/sharpsl.h
-@@ -9,9 +9,6 @@
+diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
+index 5fd411f2e4e..eac168aa1db 100644
+--- a/include/hw/ssi/ssi.h
++++ b/include/hw/ssi/ssi.h
+@@ -66,8 +66,6 @@ struct SSISlave {
+     bool cs;
+ };
  
- #include "exec/hwaddr.h"
- 
--#define zaurus_printf(format, ...)	\
--    fprintf(stderr, "%s: " format, __func__, ##__VA_ARGS__)
+-#define FROM_SSI_SLAVE(type, dev) DO_UPCAST(type, ssidev, dev)
 -
- /* zaurus.c */
+ extern const VMStateDescription vmstate_ssi_slave;
  
- #define SL_PXA_PARAM_BASE	0xa0000a00
-diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-index bab9968ccee..6eb46869157 100644
---- a/hw/arm/spitz.c
-+++ b/hw/arm/spitz.c
-@@ -62,6 +62,9 @@ typedef struct {
- #define SPITZ_MACHINE_CLASS(klass) \
-     OBJECT_CLASS_CHECK(SpitzMachineClass, klass, TYPE_SPITZ_MACHINE)
+ #define VMSTATE_SSI_SLAVE(_field, _state) {                          \
+diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+index a0f40959904..e1f22f58681 100644
+--- a/hw/arm/z2.c
++++ b/hw/arm/z2.c
+@@ -111,9 +111,12 @@ typedef struct {
+     int pos;
+ } ZipitLCD;
  
-+#define zaurus_printf(format, ...)                              \
-+    fprintf(stderr, "%s: " format, __func__, ##__VA_ARGS__)
++#define TYPE_ZIPIT_LCD "zipit-lcd"
++#define ZIPIT_LCD(obj) OBJECT_CHECK(ZipitLCD, (obj), TYPE_ZIPIT_LCD)
 +
- #undef REG_FMT
- #define REG_FMT                         "0x%02lx"
+ static uint32_t zipit_lcd_transfer(SSISlave *dev, uint32_t value)
+ {
+-    ZipitLCD *z = FROM_SSI_SLAVE(ZipitLCD, dev);
++    ZipitLCD *z = ZIPIT_LCD(dev);
+     uint16_t val;
+     if (z->selected) {
+         z->buf[z->pos] = value & 0xff;
+@@ -153,7 +156,7 @@ static void z2_lcd_cs(void *opaque, int line, int level)
  
-diff --git a/hw/gpio/zaurus.c b/hw/gpio/zaurus.c
-index 9a12c683420..258e9264930 100644
---- a/hw/gpio/zaurus.c
-+++ b/hw/gpio/zaurus.c
-@@ -22,9 +22,7 @@
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
- #include "qemu/module.h"
--
--#undef REG_FMT
--#define REG_FMT			"0x%02lx"
-+#include "qemu/log.h"
- 
- /* SCOOP devices */
- 
-@@ -104,7 +102,9 @@ static uint64_t scoop_read(void *opaque, hwaddr addr,
-     case SCOOP_GPRR:
-         return s->gpio_level;
-     default:
--        zaurus_printf("Bad register offset " REG_FMT "\n", (unsigned long)addr);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "scoop_read: bad register offset 0x%02" HWADDR_PRIx "\n",
-+                      addr);
-     }
- 
-     return 0;
-@@ -150,7 +150,9 @@ static void scoop_write(void *opaque, hwaddr addr,
-         scoop_gpio_handler_update(s);
-         break;
-     default:
--        zaurus_printf("Bad register offset " REG_FMT "\n", (unsigned long)addr);
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "scoop_write: bad register offset 0x%02" HWADDR_PRIx "\n",
-+                      addr);
-     }
+ static void zipit_lcd_realize(SSISlave *dev, Error **errp)
+ {
+-    ZipitLCD *z = FROM_SSI_SLAVE(ZipitLCD, dev);
++    ZipitLCD *z = ZIPIT_LCD(dev);
+     z->selected = 0;
+     z->enabled = 0;
+     z->pos = 0;
+@@ -185,7 +188,7 @@ static void zipit_lcd_class_init(ObjectClass *klass, void *data)
  }
  
+ static const TypeInfo zipit_lcd_info = {
+-    .name          = "zipit-lcd",
++    .name          = TYPE_ZIPIT_LCD,
+     .parent        = TYPE_SSI_SLAVE,
+     .instance_size = sizeof(ZipitLCD),
+     .class_init    = zipit_lcd_class_init,
+@@ -325,7 +328,7 @@ static void z2_init(MachineState *machine)
+ 
+     type_register_static(&zipit_lcd_info);
+     type_register_static(&aer915_info);
+-    z2_lcd = ssi_create_slave(mpu->ssp[1], "zipit-lcd");
++    z2_lcd = ssi_create_slave(mpu->ssp[1], TYPE_ZIPIT_LCD);
+     bus = pxa2xx_i2c_bus(mpu->i2c[0]);
+     i2c_create_slave(bus, TYPE_AER915, 0x55);
+     wm = i2c_create_slave(bus, TYPE_WM8750, 0x1b);
+diff --git a/hw/display/ads7846.c b/hw/display/ads7846.c
+index 9228b40b1af..56bf82fe079 100644
+--- a/hw/display/ads7846.c
++++ b/hw/display/ads7846.c
+@@ -29,6 +29,9 @@ typedef struct {
+     int output;
+ } ADS7846State;
+ 
++#define TYPE_ADS7846 "ads7846"
++#define ADS7846(obj) OBJECT_CHECK(ADS7846State, (obj), TYPE_ADS7846)
++
+ /* Control-byte bitfields */
+ #define CB_PD0		(1 << 0)
+ #define CB_PD1		(1 << 1)
+@@ -61,7 +64,7 @@ static void ads7846_int_update(ADS7846State *s)
+ 
+ static uint32_t ads7846_transfer(SSISlave *dev, uint32_t value)
+ {
+-    ADS7846State *s = FROM_SSI_SLAVE(ADS7846State, dev);
++    ADS7846State *s = ADS7846(dev);
+ 
+     switch (s->cycle ++) {
+     case 0:
+@@ -139,7 +142,7 @@ static const VMStateDescription vmstate_ads7846 = {
+ static void ads7846_realize(SSISlave *d, Error **errp)
+ {
+     DeviceState *dev = DEVICE(d);
+-    ADS7846State *s = FROM_SSI_SLAVE(ADS7846State, d);
++    ADS7846State *s = ADS7846(d);
+ 
+     qdev_init_gpio_out(dev, &s->interrupt, 1);
+ 
+@@ -166,7 +169,7 @@ static void ads7846_class_init(ObjectClass *klass, void *data)
+ }
+ 
+ static const TypeInfo ads7846_info = {
+-    .name          = "ads7846",
++    .name          = TYPE_ADS7846,
+     .parent        = TYPE_SSI_SLAVE,
+     .instance_size = sizeof(ADS7846State),
+     .class_init    = ads7846_class_init,
+diff --git a/hw/display/ssd0323.c b/hw/display/ssd0323.c
+index c3bdb18742c..32d27f008ae 100644
+--- a/hw/display/ssd0323.c
++++ b/hw/display/ssd0323.c
+@@ -66,9 +66,13 @@ typedef struct {
+     uint8_t framebuffer[128 * 80 / 2];
+ } ssd0323_state;
+ 
++#define TYPE_SSD0323 "ssd0323"
++#define SSD0323(obj) OBJECT_CHECK(ssd0323_state, (obj), TYPE_SSD0323)
++
++
+ static uint32_t ssd0323_transfer(SSISlave *dev, uint32_t data)
+ {
+-    ssd0323_state *s = FROM_SSI_SLAVE(ssd0323_state, dev);
++    ssd0323_state *s = SSD0323(dev);
+ 
+     switch (s->mode) {
+     case SSD0323_DATA:
+@@ -346,7 +350,7 @@ static const GraphicHwOps ssd0323_ops = {
+ static void ssd0323_realize(SSISlave *d, Error **errp)
+ {
+     DeviceState *dev = DEVICE(d);
+-    ssd0323_state *s = FROM_SSI_SLAVE(ssd0323_state, d);
++    ssd0323_state *s = SSD0323(d);
+ 
+     s->col_end = 63;
+     s->row_end = 79;
+@@ -368,7 +372,7 @@ static void ssd0323_class_init(ObjectClass *klass, void *data)
+ }
+ 
+ static const TypeInfo ssd0323_info = {
+-    .name          = "ssd0323",
++    .name          = TYPE_SSD0323,
+     .parent        = TYPE_SSI_SLAVE,
+     .instance_size = sizeof(ssd0323_state),
+     .class_init    = ssd0323_class_init,
+diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
+index 25cec2ddeaa..25cdf4c966d 100644
+--- a/hw/sd/ssi-sd.c
++++ b/hw/sd/ssi-sd.c
+@@ -74,7 +74,7 @@ typedef struct {
+ 
+ static uint32_t ssi_sd_transfer(SSISlave *dev, uint32_t val)
+ {
+-    ssi_sd_state *s = FROM_SSI_SLAVE(ssi_sd_state, dev);
++    ssi_sd_state *s = SSI_SD(dev);
+ 
+     /* Special case: allow CMD12 (STOP TRANSMISSION) while reading data.  */
+     if (s->mode == SSI_SD_DATA_READ && val == 0x4d) {
+@@ -241,7 +241,7 @@ static const VMStateDescription vmstate_ssi_sd = {
+ 
+ static void ssi_sd_realize(SSISlave *d, Error **errp)
+ {
+-    ssi_sd_state *s = FROM_SSI_SLAVE(ssi_sd_state, d);
++    ssi_sd_state *s = SSI_SD(d);
+     DeviceState *carddev;
+     DriveInfo *dinfo;
+     Error *err = NULL;
 -- 
 2.20.1
 

@@ -1,344 +1,161 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2217000lfm;
-        Sun, 28 Jun 2020 08:05:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJygH1bitrtR4J8DsxG1xENx0zmjVv0LDDOeHjuecNSFz0BG1RsLc0IGYlClWKcRIEzPzcmd
-X-Received: by 2002:a0c:b5d8:: with SMTP id o24mr11453737qvf.214.1593356739720;
-        Sun, 28 Jun 2020 08:05:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593356739; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2383848lfm;
+        Sun, 28 Jun 2020 12:55:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzC1pzkCHmrb9ShOrDwS8+6LQ5khiNU+49j+nxwkgBndixJ/s3NsEp7go9xHUtoA7stPlcO
+X-Received: by 2002:a25:c606:: with SMTP id k6mr20592940ybf.10.1593374136528;
+        Sun, 28 Jun 2020 12:55:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593374136; cv=none;
         d=google.com; s=arc-20160816;
-        b=zj+JUCyLnadtEbrsamNilAIaFWz2a0QntO14Jhp+C5mhp61D5gzhxhT6JVGd0N7TGK
-         DFczQgtQYNyRviSPVJ79TREC+TUbCiyV5etoZaZUts+G9+rdk5GvedM9Tru/1w7AYsd9
-         UIXc+WOqp5dJjjB4XLKYdRZrUzRIsp7T+2yw+YVdliZGV4BIz4meK1zGjCtpeEHL2kuB
-         F2/BhTivXp9Zoi+M1Yg2Vk99fqjYMaJ8qS/PX9dmiFe62D83OQ/HtpncVp4OO6ycqzXU
-         aAHAa+VIjQIJPqNbzdVuClw4hp1yC/cJjkfC2kqAy4EU/cx0zNXP3jb6UIkRqSQloME+
-         Pxxw==
+        b=evues5N90Zy9QFD4c4PedeVNhn4i+sZ1yiB9TY8CSUoD8UbDPIosdpDWEU5y+TW0Vs
+         ERmSBw0OsLVEAs9oW6aVyrpIrZyiQ/on6zej8zmy0QueWYv3EAxWhkEZPSL/NjzrSMgl
+         kXa0wlYh3fujQcfNV+E+ip7TDI3L2LAPhAom/r4wVlmiE2Bcp/V0NufDAm/Gg6Nn37If
+         zlZi8RRaDZgdBGGerCQX0xxAIloAF4c0eccSW01ymlz3iGt0Bp1bsqMMB68yDookl/Wb
+         MwGbl7YwtKeQNB6RAFrx9cvaT+HyZSVWBGca0dyVBc+mAW+u/QpIGmlSRQjfm7/cufda
+         CWJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:mime-version
-         :list-subscribe:list-help:list-post:list-archive:list-unsubscribe
-         :list-id:precedence:cc:references:in-reply-to:message-id:date
-         :subject:to:from:dkim-signature;
-        bh=6OAkXI7lWK29qRnbBpuUCEkZ6UL/7V+/+ndDuFLxDHk=;
-        b=lIDU6XNJplBJI+GibRnEIvgWTC6MGAlB+NoLquOGgKynsXLZ1iG9pOGMx0LVPlGEgq
-         fWNGWxypj1Oy7/Y78gc/Aa0irnkCx61X+zew1eWf/DT1Cr2k1+9wkuBlIVRjj5e8YbeP
-         S9v7R+D0xFklIA+3y6fhVJSs9t5kkVA/5rmqdhSOewciQdK+l0rRtd1B67X5qYtwgHmL
-         UdecLC0byS7nuSOnLL8DdMv4neiLMy9gr0jzI3g+d7G3tvZuN52+0epFC+nrkIOzQ8FE
-         9lMZCsat21brIA081ibJZucnSI3Xn1uYaSnY15/UOGhA+c92lZskhkBWwSjd6RI1yD3w
-         cD5A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=dd6UT/sJQhVQoU/A5etTLisFLDqNewMQfmLXJ1m4wic=;
+        b=yNvjUJWqkL8L9UkcZBNDPw5hp35S0+IS1jMWNUKI/kuSGkvL5OTCwZVlfhmhp+Ssdv
+         Gh0C2VA1dyUxEEixnEFIKjkntFRM68MXso2v6Y5thmrdh8xuT8fUHLO7NHn5Z6P5IHMa
+         SHry67GLHW9gXJN5kfUwNXakkY2tWJyKxmLWz4f8cBFFZsgMKGnkKSpNidgeN8AbHfWD
+         Nt4eeVfuwxE6soLN/Y/rpyVCDHdb0CmfatZp0yZHmNiwuUkw137kNtNCBkbb7q6p/3Lm
+         SWPVQxo2BumC7BhDdGVCPRcnrpPWNblqagTT2WssSGDpI8u0Y5SB1tjPqcHsBH4yVquA
+         WguQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=oYx2xcVo;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dDftPtHL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id ct2si7840296qvb.98.2020.06.28.08.05.39;
-        Sun, 28 Jun 2020 08:05:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n66si33011357yba.117.2020.06.28.12.55.36
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 28 Jun 2020 12:55:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=oYx2xcVo;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dDftPtHL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 7058C4B1EA;
-	Sun, 28 Jun 2020 11:05:39 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@linaro.org
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 48Imvf-EEobh; Sun, 28 Jun 2020 11:05:38 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 2B9274B1B6;
-	Sun, 28 Jun 2020 11:05:38 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 360ED4B1E4
- for <kvmarm@lists.cs.columbia.edu>; Sun, 28 Jun 2020 11:05:37 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VBCHtB26U8kK for <kvmarm@lists.cs.columbia.edu>;
- Sun, 28 Jun 2020 11:05:36 -0400 (EDT)
-Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
- [209.85.221.66])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id ECC494B1B6
- for <kvmarm@lists.cs.columbia.edu>; Sun, 28 Jun 2020 11:05:35 -0400 (EDT)
-Received: by mail-wr1-f66.google.com with SMTP id h5so14093684wrc.7
- for <kvmarm@lists.cs.columbia.edu>; Sun, 28 Jun 2020 08:05:35 -0700 (PDT)
+Received: from localhost ([::1]:46080 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jpdOp-0005oJ-Vm
+	for alex.bennee@linaro.org; Sun, 28 Jun 2020 15:55:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38606)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jpdNz-0005NR-LD
+ for qemu-devel@nongnu.org; Sun, 28 Jun 2020 15:54:43 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:50471)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jpdNx-0000fx-Vb
+ for qemu-devel@nongnu.org; Sun, 28 Jun 2020 15:54:43 -0400
+Received: by mail-wm1-x341.google.com with SMTP id l17so13488283wmj.0
+ for <qemu-devel@nongnu.org>; Sun, 28 Jun 2020 12:54:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=IAdL6rs2RsEi/C8KZHQkFKLpRqgRmEAxdzTHZ0C3T7w=;
- b=oYx2xcVoq6p191dEaSAH+Hk2EDe0kdsubZ5ijFMKxy4m4O4+95e9ll33cBNidpmYYp
- 6KXxhAqhP2Kc1oVETTZ7AUBZp/sfzVREztd6vgoabgbZAYuxQJZVdIu+GgD1lGRbbwWb
- LPmuIIh4DydBVmFWLGsB+32doE6f/QRof8hCd+ZuWJbfFiiT+vBdRMPaQNZY/BF9nUZw
- 5Xwf41LVzP04I0yNF0pXbdlqC9b6EXOdq/0PbQZUX8vVkf96nH1lNDbCLccr32Ai3+2d
- a0vAd283kJZzodHqXocAgVqoHeZXooh6OmQCZD/KJ5AgaZrYCYMiQV8/huj5z3AEGSE/
- HIlw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dd6UT/sJQhVQoU/A5etTLisFLDqNewMQfmLXJ1m4wic=;
+ b=dDftPtHL3EHzIGBd6Ggh8DtUVevwB8J7NDSbey/OM/MCSGCGNqC4UTTj6/bDle4yvt
+ 7hAvz6iLo6EVpHY5U8OWLF3t4cXBm6pQS9uFMycPsVx/VKn6dBxBULqXPD3D2kPnjo2x
+ dSvl05dKFMn6zxiSi/py+ckqO0Yektw+6f+ZSxB2SzreIBgB9hx95zgBa7f8/q1+fOF7
+ a1u7LotW8GZ3/vKa/dfj8ca/jPelwEi9zYVNVIdGbzRkiIaDRtz4eCWfpiks/Cj5ITJJ
+ +r7rqupQyH1HCyoHA65LwCfv3K2I12w0kj56U00DdjSWy7scD4O7CgqC+oCT4I3S0wbo
+ THmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=IAdL6rs2RsEi/C8KZHQkFKLpRqgRmEAxdzTHZ0C3T7w=;
- b=Nf9YoWuYfcN57W8K6klq7kpRifik8op/8Gnq09GmukMXA9PYxXh60ve+V2Ul0o44op
- TuEGebQNptKNCvnETeA5X6nc9gD41HH3No3UG1wpXaVs2ISAFrNu/EqW1zqbWLkgAQG2
- lemE/G/Oo4IWT8711sCPoT3opZvL4aQhpqN/T+ngnSNaMghWJ+N9a7CqqKrcYtRM1lFf
- itMOMplhoxu97bdq1lcu4Sl8yvgCUNeoeG6zDkVsIhuXjck16xLW9vYnRvlnm78Uk716
- qbdxGtsu0iyGVkwkK0Bn6XXn02SOdysGiSeznIa16RiHgIRKIMS3yhRxOlGQIC1iVaTM
- ub6Q==
-X-Gm-Message-State: AOAM532NZB9AhvGmW1EKI6KhW9cIoh5c1/k8p8e2pfc93RX6H6Qsjvn8
- RDzyw5pu+dcIdqMZwVUpZxoueA==
-X-Received: by 2002:adf:de0a:: with SMTP id b10mr12928894wrm.72.1593356735022; 
- Sun, 28 Jun 2020 08:05:35 -0700 (PDT)
-Received: from moi-limbo-9350.home
- (host86-139-146-71.range86-139.btcentralplus.com. [86.139.146.71])
- by smtp.gmail.com with ESMTPSA id n5sm21309350wmi.34.2020.06.28.08.05.34
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dd6UT/sJQhVQoU/A5etTLisFLDqNewMQfmLXJ1m4wic=;
+ b=Abr6JBKYgOJ+MKL/BNV+VQZk6pEgsp6nJAticKMSg639F3ppVxGkI5vL/TCvi2Wf9R
+ OjDI5mnR7Nvc+TVMjnELtyK0MGdeh4bZKZoLdcpaY7m++zGk31obuuziibxmfFr/o24K
+ MmNwnkyM9Ur8OlY9tczK0IZnv76xlA8KY+L2M4rPulYMGz6AMuNQY+IcwbaKdiUhz4iE
+ SdEv/qWogmxSXqUuKUrjtkd0xK7UlEgDZGL9GrJLp7rYvdYWAf8QZ3roWkES1pq2K08u
+ VFKv2AEhZU+/HCxSUeJQC9t74xgGgDGQEOkarOjYw8geeF/N/ma361/dA8/UbNn0L06e
+ xAfg==
+X-Gm-Message-State: AOAM531l19z1aqNYXW+XDC8VkwrVPKALtvX3QR81Q5WLrr/OKKS49hqb
+ lfb68pt8O+IiPIBX4/OErxVMSw==
+X-Received: by 2002:a1c:de07:: with SMTP id v7mr13871715wmg.56.1593374078893; 
+ Sun, 28 Jun 2020 12:54:38 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id t4sm20609177wmf.4.2020.06.28.12.54.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 28 Jun 2020 08:05:34 -0700 (PDT)
-From: Beata Michalska <beata.michalska@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v8 2/2] target/arm: kvm: Handle misconfigured dabt injection
-Date: Sun, 28 Jun 2020 16:04:59 +0100
-Message-Id: <20200628150459.18566-3-beata.michalska@linaro.org>
-In-Reply-To: <20200628150459.18566-1-beata.michalska@linaro.org>
-References: <20200628150459.18566-1-beata.michalska@linaro.org>
-Cc: qemu-arm@nongnu.org, pbonzini@redhat.com, kvmarm@lists.cs.columbia.edu
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+ Sun, 28 Jun 2020 12:54:37 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] hw/display/bcm2835_fb.c: Initialize all fields of struct
+Date: Sun, 28 Jun 2020 20:54:36 +0100
+Message-Id: <20200628195436.27582-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: MESAHTOKeufk
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rJbXrnnUb3sZ
 
-Injecting external data abort through KVM might trigger
-an issue on kernels that do not get updated to include the KVM fix.
-For those and aarch32 guests, the injected abort gets misconfigured
-to be an implementation defined exception. This leads to the guest
-repeatedly re-running the faulting instruction.
+In bcm2835_fb_mbox_push(), Coverity complains (CID 1429989) that we
+pass a pointer to a local struct to another function without
+initializing all its fields.  This is a real bug:
+bcm2835_fb_reconfigure() copies the whole of our new BCM2385FBConfig
+struct into s->config, so any fields we don't initialize will corrupt
+the state of the device.
 
-Add support for handling that case.
+Copy the two fields which we don't want to update (pixo and alpha)
+from the existing config so we don't accidentally change them.
 
-[
-  Fixed-by: 018f22f95e8a
-	('KVM: arm: Fix DFSR setting for non-LPAE aarch32 guests')
-  Fixed-by: 21aecdbd7f3a
-	('KVM: arm: Make inject_abt32() inject an external abort instead')
-]
-
-Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+Fixes: cfb7ba983857e40e88
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.h     |  2 ++
- target/arm/kvm.c     | 30 +++++++++++++++++++++++++++++-
- target/arm/kvm32.c   | 34 ++++++++++++++++++++++++++++++++++
- target/arm/kvm64.c   | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
- target/arm/kvm_arm.h | 10 ++++++++++
- 5 files changed, 124 insertions(+), 1 deletion(-)
+Not sure why this wasn't a visible bug -- alpha isn't used,
+but if pixo changes from zero to non-zero we flip from
+RGB to BGR...
+---
+ hw/display/bcm2835_fb.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 677584e..ed0ff09 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -570,6 +570,8 @@ typedef struct CPUARMState {
-         uint64_t esr;
-     } serror;
+diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
+index c6263808a27..7c0e5eef2d5 100644
+--- a/hw/display/bcm2835_fb.c
++++ b/hw/display/bcm2835_fb.c
+@@ -282,6 +282,10 @@ static void bcm2835_fb_mbox_push(BCM2835FBState *s, uint32_t value)
+     newconf.base = s->vcram_base | (value & 0xc0000000);
+     newconf.base += BCM2835_FB_OFFSET;
  
-+    uint8_t ext_dabt_raised; /* Tracking/verifying injection of ext DABT */
++    /* Copy fields which we don't want to change from the existing config */
++    newconf.pixo = s->config.pixo;
++    newconf.alpha = s->config.alpha;
 +
-     /* State of our input IRQ/FIQ/VIRQ/VFIQ lines */
-     uint32_t irq_line_state;
+     bcm2835_fb_validate_config(&newconf);
  
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 2dd8a9a..e7a596e 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -749,6 +749,29 @@ int kvm_get_vcpu_events(ARMCPU *cpu)
- 
- void kvm_arch_pre_run(CPUState *cs, struct kvm_run *run)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    if (unlikely(env->ext_dabt_raised)) {
-+        /*
-+         * Verifying that the ext DABT has been properly injected,
-+         * otherwise risking indefinitely re-running the faulting instruction
-+         * Covering a very narrow case for kernels 5.5..5.5.4
-+         * when injected abort was misconfigured to be
-+         * an IMPLEMENTATION DEFINED exception (for 32-bit EL1)
-+         */
-+        if (!arm_feature(env, ARM_FEATURE_AARCH64) &&
-+            unlikely(!kvm_arm_verify_ext_dabt_pending(cs))) {
-+
-+            error_report("Data abort exception with no valid ISS generated by "
-+                   "guest memory access. KVM unable to emulate faulting "
-+                   "instruction. Failed to inject an external data abort "
-+                   "into the guest.");
-+            abort();
-+       }
-+       /* Clear the status */
-+       env->ext_dabt_raised = 0;
-+    }
- }
- 
- MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
-@@ -833,6 +856,8 @@ void kvm_arm_vm_state_change(void *opaque, int running, RunState state)
- static int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
-                              uint64_t fault_ipa)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-     /*
-      * Request KVM to inject the external data abort into the guest
-      */
-@@ -849,7 +874,10 @@ static int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
-         /*
-          * KVM_CAP_ARM_INJECT_EXT_DABT implies KVM_CAP_VCPU_EVENTS
-          */
--        return kvm_vcpu_ioctl(cs, KVM_SET_VCPU_EVENTS, &events);
-+        if (!kvm_vcpu_ioctl(cs, KVM_SET_VCPU_EVENTS, &events)) {
-+            env->ext_dabt_raised = 1;
-+            return 0;
-+        }
- 
-     } else {
-         error_report("Data abort exception triggered by guest memory access "
-diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
-index 7b3a19e..0af46b4 100644
---- a/target/arm/kvm32.c
-+++ b/target/arm/kvm32.c
-@@ -559,3 +559,37 @@ void kvm_arm_pmu_init(CPUState *cs)
- {
-     qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
- }
-+
-+#define ARM_REG_DFSR  ARM_CP15_REG32(0, 5, 0, 0)
-+#define ARM_REG_TTBCR ARM_CP15_REG32(0, 2, 0, 2)
-+/*
-+ *DFSR:
-+ *      TTBCR.EAE == 0
-+ *          FS[4]   - DFSR[10]
-+ *          FS[3:0] - DFSR[3:0]
-+ *      TTBCR.EAE == 1
-+ *          FS, bits [5:0]
-+ */
-+#define DFSR_FSC(lpae, v) \
-+    ((lpae) ? ((v) & 0x3F) : (((v) >> 6) | ((v) & 0x1F)))
-+
-+#define DFSC_EXTABT(lpae) ((lpae) ? 0x10 : 0x08)
-+
-+bool kvm_arm_verify_ext_dabt_pending(CPUState *cs)
-+{
-+    uint32_t dfsr_val;
-+
-+    if (!kvm_get_one_reg(cs, ARM_REG_DFSR, &dfsr_val)) {
-+        ARMCPU *cpu = ARM_CPU(cs);
-+        CPUARMState *env = &cpu->env;
-+        uint32_t ttbcr;
-+        int lpae = 0;
-+
-+        if (!kvm_get_one_reg(cs, ARM_REG_TTBCR, &ttbcr)) {
-+            lpae = arm_feature(env, ARM_FEATURE_LPAE) && (ttbcr & TTBCR_EAE);
-+        }
-+        /* The verification is based on FS filed of the DFSR reg only*/
-+        return (DFSR_FSC(lpae, dfsr_val) == DFSC_EXTABT(lpae));
-+    }
-+    return false;
-+}
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index f09ed9f..88cf10c 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -1497,3 +1497,52 @@ bool kvm_arm_handle_debug(CPUState *cs, struct kvm_debug_exit_arch *debug_exit)
- 
-     return false;
- }
-+
-+#define ARM64_REG_ESR_EL1 ARM64_SYS_REG(3, 0, 5, 2, 0)
-+#define ARM64_REG_TCR_EL1 ARM64_SYS_REG(3, 0, 2, 0, 2)
-+
-+/*
-+ * ESR_EL1
-+ * ISS encoding
-+ * AARCH64: DFSC,   bits [5:0]
-+ * AARCH32:
-+ *      TTBCR.EAE == 0
-+ *          FS[4]   - DFSR[10]
-+ *          FS[3:0] - DFSR[3:0]
-+ *      TTBCR.EAE == 1
-+ *          FS, bits [5:0]
-+ */
-+#define ESR_DFSC(aarch64, lpae, v)        \
-+    ((aarch64 || (lpae)) ? ((v) & 0x3F)   \
-+               : (((v) >> 6) | ((v) & 0x1F)))
-+
-+#define ESR_DFSC_EXTABT(aarch64, lpae) \
-+    ((aarch64) ? 0x10 : (lpae) ? 0x10 : 0x8)
-+
-+bool kvm_arm_verify_ext_dabt_pending(CPUState *cs)
-+{
-+    uint64_t dfsr_val;
-+
-+    if (!kvm_get_one_reg(cs, ARM64_REG_ESR_EL1, &dfsr_val)) {
-+        ARMCPU *cpu = ARM_CPU(cs);
-+        CPUARMState *env = &cpu->env;
-+        int aarch64_mode = arm_feature(env, ARM_FEATURE_AARCH64);
-+        int lpae = 0;
-+
-+        if (!aarch64_mode) {
-+            uint64_t ttbcr;
-+
-+            if (!kvm_get_one_reg(cs, ARM64_REG_TCR_EL1, &ttbcr)) {
-+                lpae = arm_feature(env, ARM_FEATURE_LPAE)
-+                        && (ttbcr & TTBCR_EAE);
-+            }
-+        }
-+        /*
-+         * The verification here is based on the DFSC bits
-+         * of the ESR_EL1 reg only
-+         */
-+         return (ESR_DFSC(aarch64_mode, lpae, dfsr_val) ==
-+                ESR_DFSC_EXTABT(aarch64_mode, lpae));
-+    }
-+    return false;
-+}
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 48bf5e1..471ddd1 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -453,6 +453,16 @@ struct kvm_guest_debug_arch;
- void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr);
- 
- /**
-+ * kvm_arm_verify_ext_dabt_pending:
-+ * @cs: CPUState
-+ *
-+ * Verify the fault status code wrt the Ext DABT injection
-+ *
-+ * Returns: true if the fault status code is as expected, false otherwise
-+ */
-+bool kvm_arm_verify_ext_dabt_pending(CPUState *cs);
-+
-+/**
-  * its_class_name:
-  *
-  * Return the ITS class name to use depending on whether KVM acceleration
+     pitch = bcm2835_fb_get_pitch(&newconf);
 -- 
-2.7.4
+2.20.1
 
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

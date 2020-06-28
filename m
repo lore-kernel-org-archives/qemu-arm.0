@@ -1,103 +1,99 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2410696lfm;
-        Sun, 28 Jun 2020 13:39:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwtZd8N9ANikToGLnibsSifkGARd55Z1DWPbQqWYMWZl8LvTb0pqf6q4zZqqWdsd7WLK1yW
-X-Received: by 2002:a25:83d1:: with SMTP id v17mr20367539ybm.48.1593376768368;
-        Sun, 28 Jun 2020 13:39:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593376768; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2441225lfm;
+        Sun, 28 Jun 2020 14:42:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwoSgSYEsXeL6+nV840+Hofobmbr4CaUpbZ28N2rzv7gJYcoYH1N6HomZy3ONS1u5k7cHBy
+X-Received: by 2002:a5b:90d:: with SMTP id a13mr22165046ybq.336.1593380566427;
+        Sun, 28 Jun 2020 14:42:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593380566; cv=none;
         d=google.com; s=arc-20160816;
-        b=XvnuV7bDAsVIXHZNigIq9rJniaR37VK8saXE43sfoOOp9uUjiRAMSQBsWoVZJsBbBp
-         icE97zFp00U0+0fzVYzp6eIst3YUA65uEUAOCw3rCfjaJ/g5qA2SORBumr0xnJqxVY9G
-         1bs3NzsrRuyRa1kvmQBQlTwqZWQWeHDl9kw5XAf30dla4cQ6gA03C+KBA053ZJfNSuUR
-         3l/wAJLFeR33gEjVNDJ8CL2Ye6LKyru5rQK52jE2kASILXAdQYQkqzEvvq8L3nquhbmy
-         bQbrCYKZy0MaZYvmsNmXRBtQpnazwFy2v16L3g4mhf/tqN2Rf09UtdU1Cyts6JhGyz3g
-         8GQg==
+        b=hSJGsSuoa+Rbn7BSkM0a3QL64OF9WrKyFBK4bhfFPcVgsSiPdU4kMOk4ZBTni/7i73
+         4DV3C9BbI3/z1egcfwkKeIeqs14VPlzxYTJ7lxiDQ+wwkRj+efsBKm5oPyDtwxkkp8x8
+         DNybfe3EsM3kuMzcy+lAf7NPchmrWFbsZpL3pYEnt+9Nw6P2B4WbsWpoKsPbfUjZD8YF
+         8iF+N8MWJEUAyl7+cpMFBRIRnCkN7rgYQ33AKlgVQi5zVK1SVox16j8GrbZJkfthP+B6
+         0xtfPptBmUJyfKm8v0H1KZnpzZT8McZRbEpaIRVgWs48i9Tw+MVTOPCeZt2ljJXpI3HT
+         MGbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=9WB0821wCgZMHTZ36aCK0ZT0ZEbBpWrgPt5kmPCgRK8=;
-        b=d9xu80xDJTy5G21qsddx8Zap+g37J0FaBnj+CjNDlzoVdr1iNqIjlzN1BGqaGItG/o
-         7/7pB3UUZbuzDqHWAY5C+KBOGqRHQctnjf/Mlz7p5kFgYnOClSEoGjCxLo3+3Zi6b3dY
-         60W+kpAv54MuUEiRjtQ3Wa3Q+jSNJbCBz/V2qJvd+cAwSeIIq7BcIjU9RKBAXb8jCFct
-         LVeJ/+XWDSt9LRfWUcNZOMEJhRN6QGl+YUmss55fTHQ76QgZGMY7kxLXGIzHT1CTWAQ4
-         fEbedGydYthySPGjXObohaPQ1voQMZjPMS5suLAUgAZqEFB6cQT6De3N0TZOjn+0jcW1
-         eBGw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=0L5wQryvAxZg2uQOIJc+wY6esS/MPxiWmAjOVxgL35o=;
+        b=DeFtc+Ra+iaEpn0hhcwCJqvdO1dp6+MkIAH0TOtgOHUY4COP6fyQswo7z7zIM0WvTv
+         tHS+0+ZnA8KYA/RulMIC58c16Abp0/62TsMMaiXX6uWSKGPEssIBZf0r9ouSz38w8OTg
+         t7j5jrNv8MeymMZLcXamls0tMcNdeoqdl8aq/Q1drnPoVfYJ1+7O+jCiw7lBNeT2K49H
+         9Nfa3aCk0k3l2mbNtYmPknoCi8Mw84seTqOqfORRuYRZYFfsUQaAphvAfGo7HQOPcDHP
+         9wsgFSe99wTk12CgCZDjO86VZ5e1NTNxIowLEqPcYym5QKVru7emgutmEq3PeRq8gwD+
+         WVFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BiKGJoy2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VdGIgsvZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l130si32410455ybc.0.2020.06.28.13.39.28
+        by mx.google.com with ESMTPS id c16si7235065ybq.491.2020.06.28.14.42.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 28 Jun 2020 13:39:28 -0700 (PDT)
+        Sun, 28 Jun 2020 14:42:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BiKGJoy2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VdGIgsvZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52354 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58258 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jpe5H-0006aZ-P1
-	for alex.bennee@linaro.org; Sun, 28 Jun 2020 16:39:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46442)
+	id 1jpf4X-0008Du-NM
+	for alex.bennee@linaro.org; Sun, 28 Jun 2020 17:42:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57728)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jpe3p-0004Vs-Lr
- for qemu-arm@nongnu.org; Sun, 28 Jun 2020 16:37:57 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:37675)
+ id 1jpf4O-0008De-FH
+ for qemu-arm@nongnu.org; Sun, 28 Jun 2020 17:42:36 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:40323)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jpe3n-0006TR-Il
- for qemu-arm@nongnu.org; Sun, 28 Jun 2020 16:37:57 -0400
-Received: by mail-wr1-x441.google.com with SMTP id a6so14592589wrm.4
- for <qemu-arm@nongnu.org>; Sun, 28 Jun 2020 13:37:55 -0700 (PDT)
+ id 1jpf4M-000728-In
+ for qemu-arm@nongnu.org; Sun, 28 Jun 2020 17:42:36 -0400
+Received: by mail-wr1-x442.google.com with SMTP id h5so14648789wrc.7
+ for <qemu-arm@nongnu.org>; Sun, 28 Jun 2020 14:42:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=9WB0821wCgZMHTZ36aCK0ZT0ZEbBpWrgPt5kmPCgRK8=;
- b=BiKGJoy2Btx7daLQq43OO/Xp0Br5US3M879E+npz2Lln/IWJGuvXBm3BG0+kvjz08K
- aZNBZM4h/fLTpfs++xyJESVG8tC81pvCoF2Vm5d1IOw8b8hq8upLCJ7LisJMaxwWGcpu
- yV2Ft0Y7h/0naprjsiS9whwpU0gs6VGcqLpTxaa+3UkRsA2R76y4D5Xl5GKJDVPsoMFA
- oN1Zjb21f1ZeqJDEqRB490Dh/KJf5UVy1Gaqjq1z30sK9kRgipxUsYf0cMuNP56FrNOi
- Lh0n1irMzj6UdypXGu05oGY5PkbL7hdYmEr8EW4eWuxJKdcnBcxeH7IDJnT0BQHvDFGe
- /p2g==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=0L5wQryvAxZg2uQOIJc+wY6esS/MPxiWmAjOVxgL35o=;
+ b=VdGIgsvZYEvdI6unwaENYbt63e2u2rDQs9AQP4C8wCtXuc9jPhE1KEidMfb7tGsJsV
+ cdY6pMoU1Q1WsDyVXnJUGiuj+lRhlDUW8C/C7u7ZjiY1jez/naScgBn+gWxqYYEfOUDp
+ PULu9t8zZajuRG+KMdTcyF2TW9uiKLOgOnh7RE9acXp04bcCvAB2P/UDnmziDcodMpC4
+ xXsgm/WA+A1rhJKFrXzj3KqMxQ6ZChnTgycWlGQLgoA5DQG3vDFUZcWjENo2vxE0aN5I
+ jHQ2cMhJAxkgD+SKEvtXIkUS5ingtloY9KfKLuwOk+919/14SRDH0loP42HCx2gcbOka
+ WtAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=9WB0821wCgZMHTZ36aCK0ZT0ZEbBpWrgPt5kmPCgRK8=;
- b=d+tBqX8W1VkoCpc8SrSgNGDTDIINvRTd+kDu9fVeXq6dBvY4ewYmZimYAYGQq3OlFB
- 006SJAJu29q8bn0pDyJAgbOBDVjJyHJki7RBa0AOajhzdTggzXbhORAnU645yjHkkqcJ
- NQC2PqTqtnldoEDrPTOjSzYMlZcyBnKCooCWwtO2B/uLYA0/c5kWZNPZa8OkHYpCd/5m
- CUMzJ0zsPhFWGY9KvmpiT/MfbV+2OdJUWs80sjo6yUq1+6IuKEbe481ZK+C2vJ1rwGVI
- xPf3n4XL5rMoQBk5oLtOS/61JODY5Ym/8EWyN9OF3Zgictq9TJ016/H8wMHg5zVMvU13
- 9csg==
-X-Gm-Message-State: AOAM531m0193Y7lvkdcysJftpyCKh+A4clBu9NuGHzjJiTUjXkDHZO5L
- wc9H2qmxEjRm5QwQC0lMQ2IMPSr9kHApYw==
-X-Received: by 2002:a05:6000:1c8:: with SMTP id
- t8mr15010678wrx.73.1593376673749; 
- Sun, 28 Jun 2020 13:37:53 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=0L5wQryvAxZg2uQOIJc+wY6esS/MPxiWmAjOVxgL35o=;
+ b=L3xc7b8AwfkVMhfMFidLbnu8OEqfJghwOPBb6F2d3bctnNC5a5elcIT/orJbpfNMz0
+ zdhBHdvOhn+cF/QELyK7C68mW7hQoZt4X2r8h/gOdLK3AFJBZPae2MY0zIW66Tq4fFxg
+ Kj2VoTkQ/v6t4OC8nMlLgDUBl1zFRYOxSCKVBr82B+WCKb7BW7evZOulFXsjkRLcnSCm
+ Ek9JLAThEEEJcL4b8ifFK3vzyw5WnGGLGCiLsIaA8DMbKm7G9iWXywPxNcgmRks3nBMi
+ q4U+uTJLWBF/AgYtT9vffYzG7kYETJMDe5Wjugan9+vC4/gRdi4HqeWxM5SYE/hp+bdH
+ vcsw==
+X-Gm-Message-State: AOAM5324gVITC9d9AEzStBFPE3Savw3UQu09wpuFe7z0PKmXhpbZpPfQ
+ vlzCvfE6BNYlA7hcMgVnh9j8cz+rhcOYIw==
+X-Received: by 2002:adf:f984:: with SMTP id f4mr14088274wrr.221.1593380552472; 
+ Sun, 28 Jun 2020 14:42:32 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id r11sm8402884wmh.1.2020.06.28.13.37.52
+ by smtp.gmail.com with ESMTPSA id t16sm26300948wru.9.2020.06.28.14.42.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 28 Jun 2020 13:37:53 -0700 (PDT)
+ Sun, 28 Jun 2020 14:42:31 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 2/2] hw/arm/tosa: Encapsulate misc GPIO handling in a device
-Date: Sun, 28 Jun 2020 21:37:48 +0100
-Message-Id: <20200628203748.14250-3-peter.maydell@linaro.org>
+Subject: [PATCH 0/2] hw/arm/palm.c: Fix Coverity issue CID 1421944
+Date: Sun, 28 Jun 2020 22:42:28 +0100
+Message-Id: <20200628214230.2592-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200628203748.14250-1-peter.maydell@linaro.org>
-References: <20200628203748.14250-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x441.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -122,165 +118,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RV45uCBMg3Th
+X-TUID: +L9z9ANzPD8d
 
-Currently we have a free-floating set of IRQs and a function
-tosa_out_switch() which handle the GPIO lines on the tosa board which
-connect to LEDs, and another free-floating IRQ and tosa_reset()
-function to handle the GPIO line that resets the system.  Encapsulate
-this behaviour in a simple QOM device.
+As for spitz and tosa, fix the Coverity issue CID 1421944 which
+points out that memory returned from qemu_allocate_irqs() is leaked
+by encapsulating the GPIO handling into a simple device.
+As with the other series, detabify the file first.
 
-This commit fixes Coverity issue CID 1421929 (which pointed out that
-the 'outsignals' in tosa_gpio_setup() were leaked), because it
-removes the use of the qemu_allocate_irqs() API from this code
-entirely.
+thanks
+-- PMM
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-This is simpler than the spitz changes because the new device
-doesn't need to refer to any of the other devices on the board.
----
- hw/arm/tosa.c | 88 +++++++++++++++++++++++++++++++++++++--------------
- 1 file changed, 64 insertions(+), 24 deletions(-)
+Peter Maydell (2):
+  hw/arm/palm.c: Detabify
+  hw/arm/palm.c: Encapsulate misc GPIO handling in a device
 
-diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-index 06ecf1e7824..383b3b22e24 100644
---- a/hw/arm/tosa.c
-+++ b/hw/arm/tosa.c
-@@ -65,24 +65,39 @@ static void tosa_microdrive_attach(PXA2xxState *cpu)
-     pxa2xx_pcmcia_attach(cpu->pcmcia[0], md);
- }
- 
--static void tosa_out_switch(void *opaque, int line, int level)
-+/*
-+ * Encapsulation of some GPIO line behaviour for the Tosa board
-+ *
-+ * QEMU interface:
-+ *  + named GPIO inputs "leds[0..3]": assert to light LEDs
-+ *  + named GPIO input "reset": when asserted, resets the system
-+ */
-+
-+#define TYPE_TOSA_MISC_GPIO "tosa-misc-gpio"
-+#define TOSA_MISC_GPIO(obj) \
-+    OBJECT_CHECK(TosaMiscGPIOState, (obj), TYPE_TOSA_MISC_GPIO)
-+
-+typedef struct TosaMiscGPIOState {
-+    SysBusDevice parent_obj;
-+} TosaMiscGPIOState;
-+
-+static void tosa_gpio_leds(void *opaque, int line, int level)
- {
-     switch (line) {
--        case 0:
--            fprintf(stderr, "blue LED %s.\n", level ? "on" : "off");
--            break;
--        case 1:
--            fprintf(stderr, "green LED %s.\n", level ? "on" : "off");
--            break;
--        case 2:
--            fprintf(stderr, "amber LED %s.\n", level ? "on" : "off");
--            break;
--        case 3:
--            fprintf(stderr, "wlan LED %s.\n", level ? "on" : "off");
--            break;
--        default:
--            fprintf(stderr, "Uhandled out event: %d = %d\n", line, level);
--            break;
-+    case 0:
-+        fprintf(stderr, "blue LED %s.\n", level ? "on" : "off");
-+        break;
-+    case 1:
-+        fprintf(stderr, "green LED %s.\n", level ? "on" : "off");
-+        break;
-+    case 2:
-+        fprintf(stderr, "amber LED %s.\n", level ? "on" : "off");
-+        break;
-+    case 3:
-+        fprintf(stderr, "wlan LED %s.\n", level ? "on" : "off");
-+        break;
-+    default:
-+        g_assert_not_reached();
-     }
- }
- 
-@@ -93,13 +108,22 @@ static void tosa_reset(void *opaque, int line, int level)
-     }
- }
- 
-+static void tosa_misc_gpio_init(Object *obj)
-+{
-+    DeviceState *dev = DEVICE(obj);
-+
-+    qdev_init_gpio_in_named(dev, tosa_gpio_leds, "leds", 4);
-+    qdev_init_gpio_in_named(dev, tosa_reset, "reset", 1);
-+}
-+
- static void tosa_gpio_setup(PXA2xxState *cpu,
-                 DeviceState *scp0,
-                 DeviceState *scp1,
-                 TC6393xbState *tmio)
- {
--    qemu_irq *outsignals = qemu_allocate_irqs(tosa_out_switch, cpu, 4);
--    qemu_irq reset;
-+    DeviceState *misc_gpio;
-+
-+    misc_gpio = sysbus_create_simple(TYPE_TOSA_MISC_GPIO, -1, NULL);
- 
-     /* MMC/SD host */
-     pxa2xx_mmci_handlers(cpu->mmc,
-@@ -107,8 +131,8 @@ static void tosa_gpio_setup(PXA2xxState *cpu,
-                     qemu_irq_invert(qdev_get_gpio_in(cpu->gpio, TOSA_GPIO_nSD_DETECT)));
- 
-     /* Handle reset */
--    reset = qemu_allocate_irq(tosa_reset, cpu, 0);
--    qdev_connect_gpio_out(cpu->gpio, TOSA_GPIO_ON_RESET, reset);
-+    qdev_connect_gpio_out(cpu->gpio, TOSA_GPIO_ON_RESET,
-+                          qdev_get_gpio_in_named(misc_gpio, "reset", 0));
- 
-     /* PCMCIA signals: card's IRQ and Card-Detect */
-     pxa2xx_pcmcia_set_irq_cb(cpu->pcmcia[0],
-@@ -119,10 +143,14 @@ static void tosa_gpio_setup(PXA2xxState *cpu,
-                         qdev_get_gpio_in(cpu->gpio, TOSA_GPIO_JC_CF_IRQ),
-                         NULL);
- 
--    qdev_connect_gpio_out(scp1, TOSA_GPIO_BT_LED, outsignals[0]);
--    qdev_connect_gpio_out(scp1, TOSA_GPIO_NOTE_LED, outsignals[1]);
--    qdev_connect_gpio_out(scp1, TOSA_GPIO_CHRG_ERR_LED, outsignals[2]);
--    qdev_connect_gpio_out(scp1, TOSA_GPIO_WLAN_LED, outsignals[3]);
-+    qdev_connect_gpio_out(scp1, TOSA_GPIO_BT_LED,
-+                          qdev_get_gpio_in_named(misc_gpio, "leds", 0));
-+    qdev_connect_gpio_out(scp1, TOSA_GPIO_NOTE_LED,
-+                          qdev_get_gpio_in_named(misc_gpio, "leds", 1));
-+    qdev_connect_gpio_out(scp1, TOSA_GPIO_CHRG_ERR_LED,
-+                          qdev_get_gpio_in_named(misc_gpio, "leds", 2));
-+    qdev_connect_gpio_out(scp1, TOSA_GPIO_WLAN_LED,
-+                          qdev_get_gpio_in_named(misc_gpio, "leds", 3));
- 
-     qdev_connect_gpio_out(scp1, TOSA_GPIO_TC6393XB_L3V_ON, tc6393xb_l3v_get(tmio));
- 
-@@ -287,10 +315,22 @@ static const TypeInfo tosa_ssp_info = {
-     .class_init    = tosa_ssp_class_init,
- };
- 
-+static const TypeInfo tosa_misc_gpio_info = {
-+    .name          = "tosa-misc-gpio",
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(TosaMiscGPIOState),
-+    .instance_init = tosa_misc_gpio_init,
-+    /*
-+     * No class init required: device has no internal state so does not
-+     * need to set up reset or vmstate, and has no realize method.
-+     */
-+};
-+
- static void tosa_register_types(void)
- {
-     type_register_static(&tosa_dac_info);
-     type_register_static(&tosa_ssp_info);
-+    type_register_static(&tosa_misc_gpio_info);
- }
- 
- type_init(tosa_register_types)
+ hw/arm/palm.c | 111 ++++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 77 insertions(+), 34 deletions(-)
+
 -- 
 2.20.1
 

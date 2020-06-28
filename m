@@ -1,196 +1,196 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2203951lfm;
-        Sun, 28 Jun 2020 07:43:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwbX/aN8/2pT9Y0+K//95lH2Q9uupwus/k++1mePMZNJ6MCjPR9n2Yio5jd86t5MYjGwckN
-X-Received: by 2002:a25:14d5:: with SMTP id 204mr20924634ybu.446.1593355419949;
-        Sun, 28 Jun 2020 07:43:39 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w138si598561ybg.94.2020.06.28.07.43.39
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 28 Jun 2020 07:43:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2216798lfm;
+        Sun, 28 Jun 2020 08:05:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzQG3rI+A+/Y2aCxCQY6+tEliluiWwQUZ8XSf4EG1DgZfCFYUFgP2GraoGiQLmGng8FhyRo
+X-Received: by 2002:ac8:7512:: with SMTP id u18mr11170929qtq.85.1593356722781;
+        Sun, 28 Jun 2020 08:05:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593356722; cv=none;
+        d=google.com; s=arc-20160816;
+        b=uI4GtIxML/F6JK+QW1n5hgcuX1FBQ5hVgKO9sYm4J7O24QPYRrU3Bm5cgvSyT3YJsr
+         IChiSFXXuULePxUon8WK8NZcnU5sleyr3S9oL2vEN+A6U0+UdJwQdo4p6qB+vihGJOuW
+         cLUyIioIzi0MtmF/NwQb9UmBFurb3QteIc737UC5yxljMEw3X9iDn52KkXNO9qa7rPCw
+         NrKDY4Yi6hdDAYuRgx43qfxkiwS1TzFPoBNAKnHDQAc2sgROgcwO8nuh9NJXQj6db470
+         olHL07euPVvzQUbYv3JdQCtc3zWMaE7aHhWU1fXhdaigYc5/dTJJqin0gDi0AtWMcP/5
+         WsTw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:content-transfer-encoding:mime-version
+         :list-subscribe:list-help:list-post:list-archive:list-unsubscribe
+         :list-id:precedence:cc:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=Al4ezgBJsv85Vamn4mMTHcfViqJYerSnCfpr9GHfsmo=;
+        b=ZMqfSppkglrMlWtEGpjB0NiwtyUQDidU4CLw9m9Zown/z+xCRxgih22EaHcW/8a1uc
+         Ry7lqeccWXs3jCzU6TzB5gz8x+VaofpGRtjvgwKKxi5F89pWwCJtwwx0N5eRKmgm/VZW
+         U6jm42c0jPgJnSMoe+qQW2rGGkV3/KKKjYd49EcJYxNOB3tQPppWR/OQtNo6AYvAsQZe
+         MRvhJ4sYUeeCJA4uKtCJFDh3TGSMpUBGe7tcJY2zFWg8OVgm+8g7em/al5uZL5n1neS2
+         bNtrrXZT9X9h28NiArlDiSJ0NbqNvcCsCYwDdd7LkNHry8S1tb7w9a8wvoXnq+V3N6qY
+         p0ng==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=YvSTJVRa;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id l6si7671919qkf.183.2020.06.28.08.05.21;
+        Sun, 28 Jun 2020 08:05:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44206 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jpYWx-0005It-BX
-	for alex.bennee@linaro.org; Sun, 28 Jun 2020 10:43:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41894)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jpYWo-0005Ia-Hm; Sun, 28 Jun 2020 10:43:30 -0400
-Resent-Date: Sun, 28 Jun 2020 10:43:30 -0400
-Resent-Message-Id: <E1jpYWo-0005Ia-Hm@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21394)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jpYWl-0007Ps-Mk; Sun, 28 Jun 2020 10:43:30 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1593355395; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=bM+YpyjTGDOTDRXwhEIbdJqjCRNBCwYNkxKAjoXZZvfiyMAVN8EOt1JGybRITcX9ci75EYEjkb/PNS4p75AEgO0UMQe05iyemptVPpB3JOwdFgo8bdQuUbn5Odbj+rcvdrLVi7VEtgqzbgYv/arQPZlmL4gS+W2QufFltBconcc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1593355395;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=oGvVxiWliicep+kYzTCvbBL0jhSyH2ZorS+JYdwkxtI=; 
- b=AEW7EEQesh0Zb1G8OvmGCNmiej7YiCzaR96cMl9LoqFPcX2Fnm43zalFKzbqYaIHXGW8gFqfOc6U1ZJZ3AdmAeEEBmuNePk5Xh2alApfzLzvOXHGF7+i5l91xaladBcO9GA3/jHrBu2pizolsFNBytgsldTEY3Y2+bYByN9ntZQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 159335539272367.90602810672954;
- Sun, 28 Jun 2020 07:43:12 -0700 (PDT)
-Message-ID: <159335539152.3056.383493602648245419@d1fd068a5071>
-Subject: Re: [PATCH 00/17] spitz: fix hacks, fix CID 1421913, various cleanups
-In-Reply-To: <20200628142429.17111-1-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: peter.maydell@linaro.org
-Date: Sun, 28 Jun 2020 07:43:12 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/28 10:43:23
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=YvSTJVRa;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id CAA6D4B1AD;
+	Sun, 28 Jun 2020 11:05:21 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@linaro.org
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id I6rlgpNNLlxL; Sun, 28 Jun 2020 11:05:20 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id BF29F4B1B6;
+	Sun, 28 Jun 2020 11:05:20 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 45F304B1AD
+ for <kvmarm@lists.cs.columbia.edu>; Sun, 28 Jun 2020 11:05:20 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZCrVkjgvV9+8 for <kvmarm@lists.cs.columbia.edu>;
+ Sun, 28 Jun 2020 11:05:19 -0400 (EDT)
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 292824B1B4
+ for <kvmarm@lists.cs.columbia.edu>; Sun, 28 Jun 2020 11:05:19 -0400 (EDT)
+Received: by mail-wm1-f65.google.com with SMTP id f139so13727546wmf.5
+ for <kvmarm@lists.cs.columbia.edu>; Sun, 28 Jun 2020 08:05:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=M6lp14IRbaOYrvmLjY8eliseHrIjO9Towkcno1Q8BrA=;
+ b=YvSTJVRalRDDGXlsYOHyPxnWwxcQFXkN5DHNaL2qGMoIPd4zz+zmeVnYxeUn7erObx
+ gXKVbVqaIYCqc3FsERWsRFah4su85ekRkxN3/WyrJAB50ZXR8GeVcLzUMIJ8wVBSXAMz
+ r5izzj5euItsTra4QqYq8Q2nL1mEX/jei7xTvmj1B21rs3m0Z39upmwWf42zMJbQk7Iu
+ hNqMJrbVsfcGCtSXvP8atdbT4psq99RrTBHpl1M2ChrViJu8ZQ28gqY30ttaGRq3q5+n
+ UBeJIkMPTJ8U7tdcdw6Rgv2QgnWKhnf18p1sL6r8AhEWjAnan41HHYav8uKAnGgyj+q8
+ SBWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=M6lp14IRbaOYrvmLjY8eliseHrIjO9Towkcno1Q8BrA=;
+ b=a+gHYsz5VgD/y8uYSBepEN2XfPGXNpfbcVA5bfbie5vjkQ0xiJw36SXvwefn76BtFI
+ yKrOW20WDgs5s6lJz2dugnOvpAozmymHdG9tbHSi1S98wRvPusRhQYHhA9V42rUykzvH
+ LTVtj5FX+HuvJDQ29wUF56l6t1OT0tD5P4S74javGaqYjNJ5x0l4tRu8Z7sW+FLT/vQ7
+ EcCY9muDydzNBfUI/qfXkOSgQcpkDkgEwrBtXRvd9PG5A6xuOcb05hXmCw8mmJ8g5AtE
+ ILbFKUjbqwW6eNyVV2BaDyqLIRyIewSQcYiXYz/m8hBI3BSLB+qhBPSHSRwBa1E03wNb
+ GB0w==
+X-Gm-Message-State: AOAM532V0UvpsKHrH17p2Y4rE7NNENxIgRL0jm2xRooPFiOf1asoIEqu
+ gXrErbn8VOWFFvVkADOlpUhmag==
+X-Received: by 2002:a7b:c403:: with SMTP id k3mr8973715wmi.35.1593356718070;
+ Sun, 28 Jun 2020 08:05:18 -0700 (PDT)
+Received: from moi-limbo-9350.home
+ (host86-139-146-71.range86-139.btcentralplus.com. [86.139.146.71])
+ by smtp.gmail.com with ESMTPSA id n5sm21309350wmi.34.2020.06.28.08.05.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 28 Jun 2020 08:05:17 -0700 (PDT)
+From: Beata Michalska <beata.michalska@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v8 0/2] target/arm: kvm: Support for KVM DABT with no valid ISS
+Date: Sun, 28 Jun 2020 16:04:57 +0100
+Message-Id: <20200628150459.18566-1-beata.michalska@linaro.org>
+Cc: qemu-arm@nongnu.org, pbonzini@redhat.com, kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, philmd@redhat.com, qemu-devel@nongnu.org,
- alistair@alistair23.me
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tw7po9pCPJWQ
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: v/n64R4rWgOV
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDYyODE0MjQyOS4xNzEx
-MS0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0
-byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgpt
-b3JlIGluZm9ybWF0aW9uOgoKU3ViamVjdDogW1BBVENIIDAwLzE3XSBzcGl0ejogZml4IGhhY2tz
-LCBmaXggQ0lEIDE0MjE5MTMsIHZhcmlvdXMgY2xlYW51cHMKVHlwZTogc2VyaWVzCk1lc3NhZ2Ut
-aWQ6IDIwMjAwNjI4MTQyNDI5LjE3MTExLTEtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnCgo9PT0g
-VEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9k
-ZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApn
-aXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRp
-ZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNr
-IGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKRnJvbSBodHRwczovL2dpdGh1Yi5jb20v
-cGF0Y2hldy1wcm9qZWN0L3FlbXUKICAgNTUzY2Y1ZC4uZTc2NTExNSAgbWFzdGVyICAgICAtPiBt
-YXN0ZXIKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKICogW25l
-dyB0YWddICAgICAgICAgcGF0Y2hldy8yMDIwMDYyODE0MjQyOS4xNzExMS0xLXBldGVyLm1heWRl
-bGxAbGluYXJvLm9yZyAtPiBwYXRjaGV3LzIwMjAwNjI4MTQyNDI5LjE3MTExLTEtcGV0ZXIubWF5
-ZGVsbEBsaW5hcm8ub3JnClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKMTA4NjY1YyBS
-ZXBsYWNlIHVzZXMgb2YgRlJPTV9TU0lfU0xBVkUoKSBtYWNybyB3aXRoIFFPTSBjYXN0cwo2Yzk5
-NzU3IGh3L2FybS9zcGl0ejogUHJvdmlkZSB1c3VhbCBRT00gbWFjcm9zIGZvciBjb3JnaS1zc3Ag
-YW5kIHNwaXR6LWxjZHRnCjk4MzQ4ZTUgaHcvYXJtL3B4YTJ4eF9waWM6IFVzZSBMT0dfR1VFU1Rf
-RVJST1IgZm9yIGJhZCBndWVzdCByZWdpc3RlciBhY2Nlc3NlcwowYzVlMmEyIGh3L2FybS9zcGl0
-ejogVXNlIExPR19HVUVTVF9FUlJPUiBmb3IgYmFkIGd1ZXN0IHJlZ2lzdGVyIGFjY2Vzc2VzCjc4
-NTZjNTIgaHcvZ3Bpby96YXVydXMuYzogVXNlIExPR19HVUVTVF9FUlJPUiBmb3IgYmFkIGd1ZXN0
-IHJlZ2lzdGVyIGFjY2Vzc2VzCjQ1YjU3NjYgaHcvYXJtL3NwaXR6OiBFbmNhcHN1bGF0ZSBtaXNj
-IEdQSU8gaGFuZGxpbmcgaW4gYSBkZXZpY2UKN2M2NzkyMiBody9taXNjL21heDExMXg6IENyZWF0
-ZSBoZWFkZXIgZmlsZSBmb3IgZG9jdW1lbnRhdGlvbiwgVFlQRV8gbWFjcm9zCjk1MmM2MTAgaHcv
-bWlzYy9tYXgxMTF4OiBVc2UgR1BJTyBsaW5lcyByYXRoZXIgdGhhbiBtYXgxMTF4X3NldF9pbnB1
-dCgpCjhmZWJkZmYgaHcvYXJtL3NwaXR6OiBVc2UgbWF4MTExeCBwcm9wZXJ0aWVzIHRvIHNldCBp
-bml0aWFsIHZhbHVlcwo5YTFlZDNjIHNzaTogQWRkIHNzaV9yZWFsaXplX2FuZF91bnJlZigpCmVm
-YTQ5MTggaHcvbWlzYy9tYXgxMTF4OiBEb24ndCB1c2Ugdm1zdGF0ZV9yZWdpc3RlcigpCmNjYzgz
-NWQgaHcvbWlzYy9tYXgxMTF4OiBwcm92aWRlIFFPTSBwcm9wZXJ0aWVzIGZvciBzZXR0aW5nIGlu
-aXRpYWwgdmFsdWVzCjllNWM4NTIgaHcvYXJtL3NwaXR6OiBJbXBsZW1lbnQgaW5ib3VuZCBHUElP
-IGxpbmVzIGZvciBiaXQ1IGFuZCBwb3dlciBzaWduYWxzCjBlYzNlZjcgaHcvYXJtL3NwaXR6OiBL
-ZWVwIHBvaW50ZXJzIHRvIHNjcDAsIHNjcDEgaW4gU3BpdHpNYWNoaW5lU3RhdGUKN2JlNjM3OSBo
-dy9hcm0vc3BpdHo6IEtlZXAgcG9pbnRlcnMgdG8gTVBVIGFuZCBTU0kgZGV2aWNlcyBpbiBTcGl0
-ek1hY2hpbmVTdGF0ZQo4MDU5YTRlIGh3L2FybS9zcGl0ejogQ3JlYXRlIFNwaXR6TWFjaGluZUNs
-YXNzIGFic3RyYWN0IGJhc2UgY2xhc3MKNzM2ZDk3ZiBody9hcm0vc3BpdHo6IERldGFiaWZ5Cgo9
-PT0gT1VUUFVUIEJFR0lOID09PQoxLzE3IENoZWNraW5nIGNvbW1pdCA3MzZkOTdmZDg0ZmIgKGh3
-L2FybS9zcGl0ejogRGV0YWJpZnkpCkVSUk9SOiBzcGFjZSBwcm9oaWJpdGVkIGJlZm9yZSB0aGF0
-ICcrKycgKGN0eDpXeEIpCiMxMTA6IEZJTEU6IGh3L2FybS9zcGl0ei5jOjMwMzoKKyNkZWZpbmUg
-UVVFVUVfS0VZKGMpICAgIHMtPmZpZm9bKHMtPmZpZm9wb3MgKyBzLT5maWZvbGVuICsrKSAmIDB4
-Zl0gPSBjCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBeCgpFUlJPUjogTWFjcm9zIHdpdGggY29tcGxleCB2YWx1ZXMgc2hvdWxkIGJlIGVu
-Y2xvc2VkIGluIHBhcmVudGhlc2lzCiMxMTA6IEZJTEU6IGh3L2FybS9zcGl0ei5jOjMwMzoKKyNk
-ZWZpbmUgUVVFVUVfS0VZKGMpICAgIHMtPmZpZm9bKHMtPmZpZm9wb3MgKyBzLT5maWZvbGVuICsr
-KSAmIDB4Zl0gPSBjCgp0b3RhbDogMiBlcnJvcnMsIDAgd2FybmluZ3MsIDI1OSBsaW5lcyBjaGVj
-a2VkCgpQYXRjaCAxLzE3IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFu
-eSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUg
-bWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgoyLzE3IENoZWNraW5n
-IGNvbW1pdCA4MDU5YTRlNTRkMmIgKGh3L2FybS9zcGl0ejogQ3JlYXRlIFNwaXR6TWFjaGluZUNs
-YXNzIGFic3RyYWN0IGJhc2UgY2xhc3MpCjMvMTcgQ2hlY2tpbmcgY29tbWl0IDdiZTYzNzljOGY0
-NSAoaHcvYXJtL3NwaXR6OiBLZWVwIHBvaW50ZXJzIHRvIE1QVSBhbmQgU1NJIGRldmljZXMgaW4g
-U3BpdHpNYWNoaW5lU3RhdGUpCjQvMTcgQ2hlY2tpbmcgY29tbWl0IDBlYzNlZjdhODcwMSAoaHcv
-YXJtL3NwaXR6OiBLZWVwIHBvaW50ZXJzIHRvIHNjcDAsIHNjcDEgaW4gU3BpdHpNYWNoaW5lU3Rh
-dGUpCjUvMTcgQ2hlY2tpbmcgY29tbWl0IDllNWM4NTJmZjlhZCAoaHcvYXJtL3NwaXR6OiBJbXBs
-ZW1lbnQgaW5ib3VuZCBHUElPIGxpbmVzIGZvciBiaXQ1IGFuZCBwb3dlciBzaWduYWxzKQpXQVJO
-SU5HOiBsaW5lIG92ZXIgODAgY2hhcmFjdGVycwojOTQ6IEZJTEU6IGh3L2FybS9zcGl0ei5jOjg1
-OToKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHFkZXZfZ2V0X2dwaW9faW5fbmFtZWQo
-c21zLT5sY2R0ZywgImJsX3Bvd2VyIiwgMCkpOwoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5pbmdz
-LCA2OCBsaW5lcyBjaGVja2VkCgpQYXRjaCA1LzE3IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNl
-IHJldmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBv
-cnQgdGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMu
-CjYvMTcgQ2hlY2tpbmcgY29tbWl0IGNjYzgzNWRhOGI5ZSAoaHcvbWlzYy9tYXgxMTF4OiBwcm92
-aWRlIFFPTSBwcm9wZXJ0aWVzIGZvciBzZXR0aW5nIGluaXRpYWwgdmFsdWVzKQo3LzE3IENoZWNr
-aW5nIGNvbW1pdCBlZmE0OTE4NDgwZjggKGh3L21pc2MvbWF4MTExeDogRG9uJ3QgdXNlIHZtc3Rh
-dGVfcmVnaXN0ZXIoKSkKOC8xNyBDaGVja2luZyBjb21taXQgOWExZWQzYzRhNjM0IChzc2k6IEFk
-ZCBzc2lfcmVhbGl6ZV9hbmRfdW5yZWYoKSkKOS8xNyBDaGVja2luZyBjb21taXQgOGZlYmRmZmMz
-YzQyIChody9hcm0vc3BpdHo6IFVzZSBtYXgxMTF4IHByb3BlcnRpZXMgdG8gc2V0IGluaXRpYWwg
-dmFsdWVzKQpXQVJOSU5HOiBCbG9jayBjb21tZW50cyB1c2UgYSBsZWFkaW5nIC8qIG9uIGEgc2Vw
-YXJhdGUgbGluZQojMjk6IEZJTEU6IGh3L2FybS9zcGl0ei5jOjczNjoKKyAgICBxZGV2X3Byb3Bf
-c2V0X3VpbnQ4KHNtcy0+bWF4MTExMSwgImlucHV0MSIgLyogQkFUVF9WT0xUICovLAoKV0FSTklO
-RzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRlIGxpbmUKIzMx
-OiBGSUxFOiBody9hcm0vc3BpdHouYzo3Mzg6CisgICAgcWRldl9wcm9wX3NldF91aW50OChzbXMt
-Pm1heDExMTEsICJpbnB1dDIiIC8qIEJBVFRfVEVNUCAqLywgMCk7CgpXQVJOSU5HOiBCbG9jayBj
-b21tZW50cyB1c2UgYSBsZWFkaW5nIC8qIG9uIGEgc2VwYXJhdGUgbGluZQojMzI6IEZJTEU6IGh3
-L2FybS9zcGl0ei5jOjczOToKKyAgICBxZGV2X3Byb3Bfc2V0X3VpbnQ4KHNtcy0+bWF4MTExMSwg
-ImlucHV0MyIgLyogQUNJTl9WT0xUICovLAoKdG90YWw6IDAgZXJyb3JzLCAzIHdhcm5pbmdzLCAx
-OCBsaW5lcyBjaGVja2VkCgpQYXRjaCA5LzE3IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJl
-dmlldy4gIElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQg
-dGhlbSB0byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCjEw
-LzE3IENoZWNraW5nIGNvbW1pdCA5NTJjNjEwMjQ4ZGEgKGh3L21pc2MvbWF4MTExeDogVXNlIEdQ
-SU8gbGluZXMgcmF0aGVyIHRoYW4gbWF4MTExeF9zZXRfaW5wdXQoKSkKMTEvMTcgQ2hlY2tpbmcg
-Y29tbWl0IDdjNjc5MjIwN2FkZCAoaHcvbWlzYy9tYXgxMTF4OiBDcmVhdGUgaGVhZGVyIGZpbGUg
-Zm9yIGRvY3VtZW50YXRpb24sIFRZUEVfIG1hY3JvcykKV0FSTklORzogYWRkZWQsIG1vdmVkIG9y
-IGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBNQUlOVEFJTkVSUyBuZWVkIHVwZGF0aW5nPwojOTQ6IApu
-ZXcgZmlsZSBtb2RlIDEwMDY0NAoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5pbmdzLCAxMTQgbGlu
-ZXMgY2hlY2tlZAoKUGF0Y2ggMTEvMTcgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3
-LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVt
-IHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KMTIvMTcg
-Q2hlY2tpbmcgY29tbWl0IDQ1YjU3NjY5ZGNlNSAoaHcvYXJtL3NwaXR6OiBFbmNhcHN1bGF0ZSBt
-aXNjIEdQSU8gaGFuZGxpbmcgaW4gYSBkZXZpY2UpCldBUk5JTkc6IGxpbmUgb3ZlciA4MCBjaGFy
-YWN0ZXJzCiMxODM6IEZJTEU6IGh3L2FybS9zcGl0ei5jOjg5MzoKKyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgcWRldl9nZXRfZ3Bpb19pbihzbXMtPm1heDExMTEsIE1BWDExMTFfQkFU
-VF9URU1QKSk7Cgp0b3RhbDogMCBlcnJvcnMsIDEgd2FybmluZ3MsIDE4NSBsaW5lcyBjaGVja2Vk
-CgpQYXRjaCAxMi8xNyBoYXMgc3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkg
-b2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1h
-aW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGluIE1BSU5UQUlORVJTLgoxMy8xNyBDaGVja2luZyBj
-b21taXQgNzg1NmM1MmM0ZjllIChody9ncGlvL3phdXJ1cy5jOiBVc2UgTE9HX0dVRVNUX0VSUk9S
-IGZvciBiYWQgZ3Vlc3QgcmVnaXN0ZXIgYWNjZXNzZXMpCjE0LzE3IENoZWNraW5nIGNvbW1pdCAw
-YzVlMmEyNWQ3Y2UgKGh3L2FybS9zcGl0ejogVXNlIExPR19HVUVTVF9FUlJPUiBmb3IgYmFkIGd1
-ZXN0IHJlZ2lzdGVyIGFjY2Vzc2VzKQoxNS8xNyBDaGVja2luZyBjb21taXQgOTgzNDhlNTE0ODA0
-IChody9hcm0vcHhhMnh4X3BpYzogVXNlIExPR19HVUVTVF9FUlJPUiBmb3IgYmFkIGd1ZXN0IHJl
-Z2lzdGVyIGFjY2Vzc2VzKQoxNi8xNyBDaGVja2luZyBjb21taXQgNmM5OTc1Nzc0YmI3IChody9h
-cm0vc3BpdHo6IFByb3ZpZGUgdXN1YWwgUU9NIG1hY3JvcyBmb3IgY29yZ2ktc3NwIGFuZCBzcGl0
-ei1sY2R0ZykKMTcvMTcgQ2hlY2tpbmcgY29tbWl0IDEwODY2NWMzN2M2ZCAoUmVwbGFjZSB1c2Vz
-IG9mIEZST01fU1NJX1NMQVZFKCkgbWFjcm8gd2l0aCBRT00gY2FzdHMpCj09PSBPVVRQVVQgRU5E
-ID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpUaGUgZnVsbCBsb2cgaXMg
-YXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwNjI4MTQyNDI5LjE3MTEx
-LTEtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNz
-YWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6
-Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2
-ZWxAcmVkaGF0LmNvbQ==
+Some of the ARMv7 & ARMv8 load/store instructions might trigger a data abort
+exception with no valid ISS info to be decoded. The lack of decode info
+makes it at least tricky to emulate the instruction which is one of the
+(many) reasons why KVM will not even try to do so.
+
+So far, if a guest made an attempt to access memory outside the memory slot,
+KVM reported vague ENOSYS. As a result QEMU exited with no useful information
+being provided or even a clue on what has just happened.
+
+ARM KVM introduced support for notifying of an attempt to execute
+an instruction that resulted in dabt with no valid ISS decoding info.
+This still leaves QEMU to handle the case, but at least now it gives more
+control and a start point for more meaningful handling of such cases.
+
+This patchset relies on KVM to insert the external data abort into the guest.
+
+
+----------------------
+v8:
+ - moving the comment re support for VCPU events - missed in previous patchset
+
+v7:
+ - Rephrasing the comment regarding abort injection and vcpu synchronization
+ - switching to struct initialization instead of memset
+
+v6:
+ - replacing calling kvm_put_vcpu_events with an actual ioctl call
+ - making the handler function static
+
+v5:
+ - Drop syncing vcpu regs in favour of calling kvm_put_vcpu_events directly
+ - Fix decoding DFSC for LPAE case
+ - Add/clarify comments
+ - Switch to reporting error case failure when enabling the cap
+
+v4:
+ - Removing one of the patches as it is being picked-up separately
+     target/arm: kvm: Inject events at the last stage of sync
+ - Moving handling KVM issue to a separate patch
+ - Minor changes wrt the review comments
+
+v3:
+ - Fix setting KVM cap per vm not per vcpu
+ - Simplifying the handler to bare minimum with no default logging to address
+   the potential risk of overflooding the host (adding support for rate
+   limiting the logs turned out to be bit too invasive to justify the little
+   add-on value from logs in this particular case)
+ - Adding handling KVM bug (for small range of affected kernels):
+   little bit of trade-off between what's reasonable and what's effective:
+   aborting qemu when running on buggy host kernel
+
+v2:
+- Improving/re-phrasing messaging
+- Dropping messing around with forced sync (@see [PATCH v2 1/2])
+  and PC alignment
+
+Beata Michalska (2):
+  target/arm: kvm: Handle DABT with no valid ISS
+  target/arm: kvm: Handle misconfigured dabt injection
+
+ target/arm/cpu.h     |  2 ++
+ target/arm/kvm.c     | 85 +++++++++++++++++++++++++++++++++++++++++++++++++++-
+ target/arm/kvm32.c   | 34 +++++++++++++++++++++
+ target/arm/kvm64.c   | 49 ++++++++++++++++++++++++++++++
+ target/arm/kvm_arm.h | 10 +++++++
+ 5 files changed, 179 insertions(+), 1 deletion(-)
+
+-- 
+2.7.4
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

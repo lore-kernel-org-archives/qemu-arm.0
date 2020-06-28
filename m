@@ -1,69 +1,108 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2097223lfm;
-        Sun, 28 Jun 2020 04:50:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw+5ljymhqTB5pkIppDEjyGcaDh7yfUOoVL5a9lKLjJdxU7A23SJ1g92Ka4cyM2zET2aCJQ
-X-Received: by 2002:a25:df05:: with SMTP id w5mr3589964ybg.354.1593345055708;
-        Sun, 28 Jun 2020 04:50:55 -0700 (PDT)
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2191582lfm;
+        Sun, 28 Jun 2020 07:24:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwWfwxld1RltcNzGgC5FEdGZaAe0QMVzOHEEN0fnccpABCTBnrufAcGJSPszQGJ4Y7QEag0
+X-Received: by 2002:a25:e797:: with SMTP id e145mr18194091ybh.107.1593354285895;
+        Sun, 28 Jun 2020 07:24:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593354285; cv=none;
+        d=google.com; s=arc-20160816;
+        b=xI6wVpoHowJqBQot7oQmExQdXGFFX4RF6L54JTxXNV8dsZ3+CizCtUFLm04I7Ws1EY
+         01q56V1uYZfNoWw+xw0BA2lIBPC0xA+ySExHd14sjBpJDokT1QQs9oZnhkABQKBvtkSF
+         Lr2a1sfmIjjcsvmDSqnMV/PctHvBe1cDZbOCS3yExNCaLoO9JmbLFF+ziBfAIpqrMTDf
+         8xgOPuTUX+NFPeA4hAuWQGt+FmOiOTBdTjSukx6AXxISagtSBRAWzZOvTHV/gFSuHzlI
+         A9oVnO8VW8Q2gXb36EnYjqR5qJnlcVmTSfC9/wIdpQZN85Lf9qvdm5fYhRbFRtkFxy6K
+         1SZQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=yXrx6SW8zqKj/mn32mzyhphYQKvlH+oGrD+d4c8vj0g=;
+        b=ishrq7TsEyjzWfyMEDrwd/9Xy+X0PYdGq4op6B+LP058SDvEaFYBI+hMkPXrSqUhbL
+         SMWNi7k+WKwnEa/1P0VcbVOSY9t+/aQPqsBp1F3epBulqlZtPmVEvCqT0RDGZZY0gIwz
+         HrNgbPlix3pQJaI9B4jEpi+UXs1QqjPk9SmZRYx5N4lTHmaR7b1GjtChWZOBILCOxFLr
+         9gA6naSXZWuqxHoYCptJ3EIsN5EoebUuGSr/dKP1HSrQLzbPyZjdatGv5neY3tWb7BC0
+         q02nYQLddouG+oyu7cSdnQbmjPDnPjBui4SyQo/iKRENpJDcjAP8WgGmleZraVm1mfU3
+         gJ2A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZzoFlmRp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1si29632893ybs.64.2020.06.28.04.50.55
+        by mx.google.com with ESMTPS id u18si31292314ybu.365.2020.06.28.07.24.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 28 Jun 2020 04:50:55 -0700 (PDT)
+        Sun, 28 Jun 2020 07:24:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56330 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZzoFlmRp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42186 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jpVpn-0000vE-1B
-	for alex.bennee@linaro.org; Sun, 28 Jun 2020 07:50:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41112)
+	id 1jpYEf-0005tR-6H
+	for alex.bennee@linaro.org; Sun, 28 Jun 2020 10:24:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38054)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jpVpe-0000sV-M5; Sun, 28 Jun 2020 07:50:46 -0400
-Resent-Date: Sun, 28 Jun 2020 07:50:46 -0400
-Resent-Message-Id: <E1jpVpe-0000sV-M5@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21775)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1jpVpc-0001US-Eb; Sun, 28 Jun 2020 07:50:46 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1593345010; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=eZgRvXZ2E5z5zNCL6yX1SFYlRYa02pcFCcQmwZ1Y++1d0myD5eO8PefnBghsJGG1U4d1AROUWWLMCJIj0787rGXnawXWSxZVZxSuc5aOTXJ6Ij0uslP91K84thOAkOf8XMFcjp268ampsrwy+Sxncc+7ohC80Xo90qLbFvOUuv0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1593345010;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=TUgZg1GIz6Fdi7kl+PZSvAwZYzmNNO76a/FaCQsAdjs=; 
- b=LTNN13fk3ws44MX+FdWq9sXhqsquGQAgFFjRk8sc/1YcALsVN7glGdRNJWu1Ut/jos83MbGqFfmWjCZ0TkQ5+Sl7lnmc43JSJnKvlkq9dIbA0TKEysnVcBnNhXHcoi/CAYg8l8se+NGD32P6UdiApVcyjXuN5kNar52bQQ29IEA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1593345008257600.7650374699741;
- Sun, 28 Jun 2020 04:50:08 -0700 (PDT)
-Message-ID: <159334500651.3056.152792702009140286@d1fd068a5071>
-Subject: Re: [PATCH] ftgmac100: fix dblac write test
-In-Reply-To: <20200628114057.6666-1-erik.lucas.smit@gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jpYEW-0005t1-6H
+ for qemu-arm@nongnu.org; Sun, 28 Jun 2020 10:24:36 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:40362)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jpYEU-0004dj-5m
+ for qemu-arm@nongnu.org; Sun, 28 Jun 2020 10:24:35 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id h5so14036296wrc.7
+ for <qemu-arm@nongnu.org>; Sun, 28 Jun 2020 07:24:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=yXrx6SW8zqKj/mn32mzyhphYQKvlH+oGrD+d4c8vj0g=;
+ b=ZzoFlmRpbFUQJRDfBTohtiDu6p0UdmU29K1sfmee3gZMwdsjoCa9ehwVWje+5InaB8
+ HBZx5Of1KiLtLB+bGUV81w08aj0rz3hoy+L5QyRBHd/KvfgDgvqGuroaCtd98KBcsMHy
+ 3B0eKA9j2C3piPgCt9gw8vf8UbAyYTA2IVhgcchIKHTP7xzzgOPFBYFF1EvvfmEeiiOj
+ vJMuNlFdH5hAwBWwHjJPEViKR/tGOivbzV1m9uWCbKFSQgHE6je9YIedeMNzWHUkPxkf
+ FdCXx3zlouOfme1sTX7fLlsLAxiX3Nk2FxkW1SmjUFKVDzdAd4P15oTmdfRyN7D04eBl
+ MZog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=yXrx6SW8zqKj/mn32mzyhphYQKvlH+oGrD+d4c8vj0g=;
+ b=ay0wQHo/KhBZP7W4YPbjLy89yb4fB8dAGwN2Mh0W2B91TrLxdAKkJKNoLfmTFb4vMe
+ JaLX+I1UlWndiSNFKiK/pGYlEzZFvqNmtMa3+dYi4N+msM+uv1c9bzMCsnYlqKjxKSYA
+ fhjiLPkHiZM0ZmWtqHiceRKz6tCkN2rZiqcGZTM/cbv7A//5ws4f90XmJook+0KcZ06z
+ jjnrG+qbYADZ0PfL2FTyrZNxOFgBpsIb9bXHp6iY9m5yhwpsLPr3yOtGgFQslnLqmOr+
+ KM1zISGdQCaO9QWYwgiRf0e42OjrjeqoAmcvnFfO3HMm722fm3dVXCI+KsftYRFDbFeM
+ XHxw==
+X-Gm-Message-State: AOAM532qFyYrzZbj09nRANN1PYJFsvNHO91HLX5unM722+uWztG3oB1H
+ Wy2n3Ft/hDtvQVFOgf+a+gsXgyrbYj54Sg==
+X-Received: by 2002:adf:eb86:: with SMTP id t6mr13888580wrn.166.1593354272269; 
+ Sun, 28 Jun 2020 07:24:32 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id h13sm5321555wml.42.2020.06.28.07.24.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 28 Jun 2020 07:24:31 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 00/17] spitz: fix hacks, fix CID 1421913, various cleanups
+Date: Sun, 28 Jun 2020 15:24:12 +0100
+Message-Id: <20200628142429.17111-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: erik.lucas.smit@gmail.com
-Date: Sun, 28 Jun 2020 04:50:08 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/28 07:50:39
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -76,70 +115,87 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, andrew@aj.id.au, jasowang@redhat.com,
- qemu-devel@nongnu.org, erik.lucas.smit@gmail.com, qemu-arm@nongnu.org,
- clg@kaod.org, joel@jms.id.au
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qngPhqBJwM0i
+X-TUID: 5gKvLkHvYSEd
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDYyODExNDA1Ny42NjY2
-LTEtZXJpay5sdWNhcy5zbWl0QGdtYWlsLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQg
-dGhlIGRvY2tlci1taW5nd0BmZWRvcmEgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3Rp
-bmcgY29tbWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGlu
-c3RhbGxlZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNU
-IFNDUklQVCBCRUdJTiA9PT0KIyEgL2Jpbi9iYXNoCmV4cG9ydCBBUkNIPXg4Nl82NAptYWtlIGRv
-Y2tlci1pbWFnZS1mZWRvcmEgVj0xIE5FVFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtbWlu
-Z3dAZmVkb3JhIEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgogIEJVSUxE
-ICAgcGMtYmlvcy9vcHRpb25yb20vbGludXhib290LnJhdwpJbiBmaWxlIGluY2x1ZGVkIGZyb20g
-L3RtcC9xZW11LXRlc3Qvc3JjL2h3L25ldC9mdGdtYWMxMDAuYzoxOToKL3RtcC9xZW11LXRlc3Qv
-c3JjL2h3L25ldC9mdGdtYWMxMDAuYzogSW4gZnVuY3Rpb24gJ2Z0Z21hYzEwMF93cml0ZSc6Ci90
-bXAvcWVtdS10ZXN0L3NyYy9ody9uZXQvZnRnbWFjMTAwLmM6ODE1OjI3OiBlcnJvcjogZm9ybWF0
-ICclbGQnIGV4cGVjdHMgYXJndW1lbnQgb2YgdHlwZSAnbG9uZyBpbnQnLCBidXQgYXJndW1lbnQg
-MyBoYXMgdHlwZSAndWludDY0X3QnIHtha2EgJ2xvbmcgbG9uZyB1bnNpZ25lZCBpbnQnfSBbLVdl
-cnJvcj1mb3JtYXQ9XQogIDgxNSB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgIiVzOiB0cmFu
-c21pdCBkZXNjcmlwdG9yIHRvbyBzbWFsbCA6ICVsZCBieXRlc1xuIiwKICAgICAgfCAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn4KL3RtcC9xZW11LXRlc3Qvc3JjL2luY2x1ZGUvcWVtdS9sb2cuaDoxMjA6MjI6
-IG5vdGU6IGluIGRlZmluaXRpb24gb2YgbWFjcm8gJ3FlbXVfbG9nX21hc2snCi0tLQogICAgICB8
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgbG9uZyBpbnQKICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAlbGxkCkluIGZpbGUgaW5jbHVkZWQgZnJv
-bSAvdG1wL3FlbXUtdGVzdC9zcmMvaHcvbmV0L2Z0Z21hYzEwMC5jOjE5OgovdG1wL3FlbXUtdGVz
-dC9zcmMvaHcvbmV0L2Z0Z21hYzEwMC5jOjgyMToyNzogZXJyb3I6IGZvcm1hdCAnJWxkJyBleHBl
-Y3RzIGFyZ3VtZW50IG9mIHR5cGUgJ2xvbmcgaW50JywgYnV0IGFyZ3VtZW50IDMgaGFzIHR5cGUg
-J3VpbnQ2NF90JyB7YWthICdsb25nIGxvbmcgdW5zaWduZWQgaW50J30gWy1XZXJyb3I9Zm9ybWF0
-PV0KICA4MjEgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICIlczogcmVjZWl2ZSBkZXNjcmlw
-dG9yIHRvbyBzbWFsbCA6ICVsZCBieXRlc1xuIiwKICAgICAgfCAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fgov
-dG1wL3FlbXUtdGVzdC9zcmMvaW5jbHVkZS9xZW11L2xvZy5oOjEyMDoyMjogbm90ZTogaW4gZGVm
-aW5pdGlvbiBvZiBtYWNybyAncWVtdV9sb2dfbWFzaycKLS0tCiAgICAgIHwgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxvbmcg
-aW50CiAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAlbGxkCmNjMTogYWxsIHdhcm5pbmdzIGJlaW5nIHRyZWF0ZWQgYXMg
-ZXJyb3JzCm1ha2U6ICoqKiBbL3RtcC9xZW11LXRlc3Qvc3JjL3J1bGVzLm1hazo2OTogaHcvbmV0
-L2Z0Z21hYzEwMC5vXSBFcnJvciAxCm1ha2U6ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVkIGpv
-YnMuLi4uCiAgQlVJTEQgICBwYy1iaW9zL29wdGlvbnJvbS9saW51eGJvb3RfZG1hLnJhdwogIEJV
-SUxEICAgcGMtYmlvcy9vcHRpb25yb20va3ZtdmFwaWMucmF3Ci0tLQogICAgcmFpc2UgQ2FsbGVk
-UHJvY2Vzc0Vycm9yKHJldGNvZGUsIGNtZCkKc3VicHJvY2Vzcy5DYWxsZWRQcm9jZXNzRXJyb3I6
-IENvbW1hbmQgJ1snc3VkbycsICctbicsICdkb2NrZXInLCAncnVuJywgJy0tbGFiZWwnLCAnY29t
-LnFlbXUuaW5zdGFuY2UudXVpZD0yZGQwM2ExMDY4Zjc0ZGEwOGM3YWJkNDI2NzlmMGYyNycsICct
-dScsICcxMDAxJywgJy0tc2VjdXJpdHktb3B0JywgJ3NlY2NvbXA9dW5jb25maW5lZCcsICctLXJt
-JywgJy1lJywgJ1RBUkdFVF9MSVNUPScsICctZScsICdFWFRSQV9DT05GSUdVUkVfT1BUUz0nLCAn
-LWUnLCAnVj0nLCAnLWUnLCAnSj0xNCcsICctZScsICdERUJVRz0nLCAnLWUnLCAnU0hPV19FTlY9
-JywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90bXAvY2NhY2hlJywgJy12JywgJy9ob21lL3BhdGNo
-ZXcvLmNhY2hlL3FlbXUtZG9ja2VyLWNjYWNoZTovdmFyL3RtcC9jY2FjaGU6eicsICctdicsICcv
-dmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtamdid2Y3d3ovc3JjL2RvY2tlci1zcmMuMjAyMC0w
-Ni0yOC0wNy40Ni4xNi4yMTAyNjovdmFyL3RtcC9xZW11Onoscm8nLCAncWVtdTpmZWRvcmEnLCAn
-L3Zhci90bXAvcWVtdS9ydW4nLCAndGVzdC1taW5ndyddJyByZXR1cm5lZCBub24temVybyBleGl0
-IHN0YXR1cyAyLgpmaWx0ZXI9LS1maWx0ZXI9bGFiZWw9Y29tLnFlbXUuaW5zdGFuY2UudXVpZD0y
-ZGQwM2ExMDY4Zjc0ZGEwOGM3YWJkNDI2NzlmMGYyNwptYWtlWzFdOiAqKiogW2RvY2tlci1ydW5d
-IEVycm9yIDEKbWFrZVsxXTogTGVhdmluZyBkaXJlY3RvcnkgYC92YXIvdG1wL3BhdGNoZXctdGVz
-dGVyLXRtcC1qZ2J3Zjd3ei9zcmMnCm1ha2U6ICoqKiBbZG9ja2VyLXJ1bi10ZXN0LW1pbmd3QGZl
-ZG9yYV0gRXJyb3IgMgoKcmVhbCAgICAzbTUxLjM1MXMKdXNlciAgICAwbTguODM2cwoKClRoZSBm
-dWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDA2Mjgx
-MTQwNTcuNjY2Ni0xLWVyaWsubHVjYXMuc21pdEBnbWFpbC5jb20vdGVzdGluZy5kb2NrZXItbWlu
-Z3dAZmVkb3JhLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxs
-eSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVl
-ZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
+This series of patches makes various cleanups to the spitz board
+family code; the main driver here was fixing the minor Coverity
+nit CID 1421913, which is a complaint that the call to
+qemu_allocate_irqs() creates memory that is leaked.
+
+We fix this by replacing the free-standing irq array and
+callback function with a proper QOM device TYPE_SPITZ_MISC_GPIO,
+which can have its own GPIO inputs and outputs which we can wire
+up as appropriate. This also allows us to remove the ugly
+file-scope variables that pointed to some of the devices on the
+board so that the old callback function could prod them.
+
+For this to work we need to add QOM properties and input GPIOs
+to the max111x ADC devices so that we can control them that
+way rather than by direct calls to max111x_set_input().
+While we're in that bit of old code we take the opportunity to
+get rid of its call to vmstate_register() and to give it a reset
+method and a header file so we can document it a bit better.
+
+The last few patches are unrelated cleanup that I noticed in
+passing: we reduce the use of the zaurus_printf() macro in favour
+of LOG_GUEST_ERROR logging for bad register accesess, and we
+get rid of the old FROM_SSI_SLAVE which can be replaced with
+QOM cast macros.
+
+Patch 1 removes the hardcoded tabs in spitz.c, because they've
+escaped our usual "fix as we touch a file" policy long enough,
+and it's easier to do a wholesale detabify of the file before
+starting.
+
+As you review this series you might notice some other things in the
+code that could also be cleaned up; so did I, but I felt that
+17 patches was quite enough to be going on with :-)
+
+thanks
+-- PMM
+
+Peter Maydell (17):
+  hw/arm/spitz: Detabify
+  hw/arm/spitz: Create SpitzMachineClass abstract base class
+  hw/arm/spitz: Keep pointers to MPU and SSI devices in
+    SpitzMachineState
+  hw/arm/spitz: Keep pointers to scp0, scp1 in SpitzMachineState
+  hw/arm/spitz: Implement inbound GPIO lines for bit5 and power signals
+  hw/misc/max111x: provide QOM properties for setting initial values
+  hw/misc/max111x: Don't use vmstate_register()
+  ssi: Add ssi_realize_and_unref()
+  hw/arm/spitz: Use max111x properties to set initial values
+  hw/misc/max111x: Use GPIO lines rather than max111x_set_input()
+  hw/misc/max111x: Create header file for documentation, TYPE_ macros
+  hw/arm/spitz: Encapsulate misc GPIO handling in a device
+  hw/gpio/zaurus.c: Use LOG_GUEST_ERROR for bad guest register accesses
+  hw/arm/spitz: Use LOG_GUEST_ERROR for bad guest register accesses
+  hw/arm/pxa2xx_pic: Use LOG_GUEST_ERROR for bad guest register accesses
+  hw/arm/spitz: Provide usual QOM macros for corgi-ssp and spitz-lcdtg
+  Replace uses of FROM_SSI_SLAVE() macro with QOM casts
+
+ include/hw/arm/pxa.h      |   1 -
+ include/hw/arm/sharpsl.h  |   3 -
+ include/hw/misc/max111x.h |  57 +++++
+ include/hw/ssi/ssi.h      |  31 ++-
+ hw/arm/pxa2xx_pic.c       |   9 +-
+ hw/arm/spitz.c            | 507 ++++++++++++++++++++++----------------
+ hw/arm/z2.c               |  11 +-
+ hw/display/ads7846.c      |   9 +-
+ hw/display/ssd0323.c      |  10 +-
+ hw/gpio/zaurus.c          |  12 +-
+ hw/misc/max111x.c         |  87 ++++---
+ hw/sd/ssi-sd.c            |   4 +-
+ hw/ssi/ssi.c              |   7 +-
+ MAINTAINERS               |   1 +
+ 14 files changed, 474 insertions(+), 275 deletions(-)
+ create mode 100644 include/hw/misc/max111x.h
+
+-- 
+2.20.1
+

@@ -1,149 +1,117 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1460721lfm;
-        Sat, 27 Jun 2020 08:29:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz816+ts02I5fpUJDAk8lIVv1dyiByDHJt2ggWtUbrE8cEU8jxoNzy0qDUpBfL7cSRREg6B
-X-Received: by 2002:ac8:2601:: with SMTP id u1mr8231883qtu.170.1593271787222;
-        Sat, 27 Jun 2020 08:29:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593271787; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1940690lfm;
+        Sat, 27 Jun 2020 23:50:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwBnIrOxFUjgNch23gmNVdT6sHneyCoEJrA6TLmWlTrG12QCq37S0UlbtjZrXca/l1CSbru
+X-Received: by 2002:a25:c089:: with SMTP id c131mr17534151ybf.504.1593327011009;
+        Sat, 27 Jun 2020 23:50:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593327011; cv=none;
         d=google.com; s=arc-20160816;
-        b=XOuPivB3QZ2XgJ/SCaUlsRaQf2UfC7vxa0x7niynwHz0qb0/YoZNIepdAG8a+7u73t
-         ZQDYkElVEoh7ofDKx2Sv1BGWV4OGuyrtTHajeayfJQFMJ7JYsfbUD4qEtHN2omuj1KoA
-         Tz07+Ztat9/7f+r6xFBVgMCfXE/1iZWYy6v8AotCg26d0GMlgNi1RgWH1PWv0lPjDe5d
-         RygaNcf9QyvhEdUirl7Q3Nb6FjQNkLSHIEvw+Ywl3oV97//pNewKuzY9FGBk03jJQZI7
-         ZRs4Q+LvQtGemj7tNvdEAmdW3yqPe9OWkLMoqQPiYZ65ijy1s9nsojUvl3DLXz2qc3ps
-         Ik5Q==
+        b=r2XHdkEAdiE21/41I2S9bZKIQEEyOX/UUd73Z6zFSoECMSYLzkb9o2/9r/Ovps9/Cx
+         l3uEUWCIkE0b/kSvdGrgHq4DnOAKYqbceiWbHiQTvmQdtmfjowohzFmOwozOfU8Ckd+L
+         j9vrfh9btDF1GwjjEbJtjn12eSlcRdhHo0pHJkGiMSYBIc0UR6XJ8LJqMJi92AfzEotE
+         KrrY4mj+GGn81Nbj3qmBXurSDspyUlAxW/Ec2qRZDKO/zu+hVoDzqu/O8CV9/azHPtD+
+         Lq+GruFBJpOGeeZyxUaJ9xIRHUS4dJ+u/zLxfCpKXEUuJjUvZrTk7t+qIi5LEJNc+Pz+
+         Ho7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=wx8+C8mZr3Ise0KnC6UaPr9gtQFLWhCQO5hhtsyhHdk=;
-        b=f0qhrb7rmIhyeTC7VIyB5P0akuogoBzl2s7BgyilVPwsXiv9AggJYQ+MkH6RZjpRXY
-         9NwiqbslLoSsRc2a/PAVDBAzd/U5xtXfXrhO0/TzsJZQnBcRDkmhZcWZ7vzb1Mi3gDmr
-         TIIDe1tngJ6jcZAI+/KmB2IDLACaZskKLZQ2wilUPOaUOc1wOiT8jgEGFVk1N3OQPYTE
-         /KFK1Gj/xfzctk2aDLZYEq3wL9tfGIjRbla/ARjzpy8Mz0+rusBr7TISRMbukv0+YeWK
-         G65C+6nJWxF0PaRPSVJt/5I85Xxpb7SsC0uUhj7zv1k6b7oUL3G6dCpH5JDD2+RSMnIw
-         Ndaw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from;
+        bh=/HlRsjVf7T2AQ13Zj1+IwCHgaASqBjKPrEIy/qJXwRg=;
+        b=o+JCCJBfVluJoL2vU11FYNEy0J04E8hEFbY3nRgiz+J3Acl4F7j0k3aMkXNo0/dvd8
+         tzVq1KDwvZ3AeroFhhlOqKuHlcK+TjEiRHfsqJ9+0ks4wyHBwFbZvbVrVampsyD6XYYC
+         sTeKZy7xHHHMhB3POKf42Y9cC0XMYE81M3VggBk/qU1vkKCPqHKL5WHImf2w5H/1aN80
+         mGxwDaB/94ZsTOfhvWu5VTmXmVY0jejLIULsIRFHzUBSSKxO2jZgIHqg0PsxzQQTxZ4U
+         ux7+wwDDBbZoz2goQrSPhgjZGcwzw0mrB/2ijCQzVCwUrk0KS56D4UMMLkYAxnkcsNie
+         U5EQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=xcJMPM5P;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id j3si5014962qte.31.2020.06.27.08.29.47;
-        Sat, 27 Jun 2020 08:29:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g15si34050373ybe.188.2020.06.27.23.50.10
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 27 Jun 2020 23:50:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=xcJMPM5P;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id DE3214B397;
-	Sat, 27 Jun 2020 11:29:46 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@linaro.org
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RBHXwzif67co; Sat, 27 Jun 2020 11:29:46 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 014D14B30F;
-	Sat, 27 Jun 2020 11:29:46 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 7274F4B20F
- for <kvmarm@lists.cs.columbia.edu>; Sat, 27 Jun 2020 11:29:44 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CkqWjp-sMqsP for <kvmarm@lists.cs.columbia.edu>;
- Sat, 27 Jun 2020 11:29:43 -0400 (EDT)
-Received: from mail-io1-f66.google.com (mail-io1-f66.google.com
- [209.85.166.66])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 66F544B204
- for <kvmarm@lists.cs.columbia.edu>; Sat, 27 Jun 2020 11:29:43 -0400 (EDT)
-Received: by mail-io1-f66.google.com with SMTP id o5so12811416iow.8
- for <kvmarm@lists.cs.columbia.edu>; Sat, 27 Jun 2020 08:29:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=252szu6XzUhLi/t7tMEXBw3LKBY2LFN/dKLgnNNeVDc=;
- b=xcJMPM5PtUwGdXF9WpgyMhzmmJM0m3UHhhPYiE/atwnTB9/zZ4lb+t++t9NgjGeDmU
- 5hXuE3tVim9ssRjcrCQAGA0oScWWBUfNsTPz4gVKPtLWaYDWWsVJDbll3KeyaC+YYhw6
- SJN/7UResDGSf1nutm59YvtUqCz45zgipGvtqw/RSijiyjJ9dDU87x9dWREFWuF0ofpf
- 5ogi8TcSuDnOWTbScnGM3z/KjrJv40Jvj0Y7frJXud4kHvy34KYq5OkoDiR4IBQW26Qq
- 2vExnP6/plwzmZO2s3NdJLJloW4H5yF0qrmdRY78LQ5I3tE/4uAXLeG7pgHXHcJ72orU
- SAkw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=252szu6XzUhLi/t7tMEXBw3LKBY2LFN/dKLgnNNeVDc=;
- b=YKeBgvOAqVzA23c1wbGPnPXxP/0kRBVkEX906YhkQTlXRAmjINthIbR4kHSQ3WZjup
- QPGO80f5umlfIyyffcz22sZQXP6iRYRVaxNRxyEsE1AI7ypAzbWEehlC+2FOd2suefqD
- Msx/2WIkoOzlozlrY2Q67g1SDpnQmwWECUZWM+h0oHNt4Xpx7B05bai39SH3RWXBIGTM
- qReA3TDZ2D/5uoPdpUmtyeUs6RGZEJgFpKvX7C5/1/b4zxq5X/CYg9p4160VjyOJW2w2
- TFjlWpxAubWHF2YJu9iic4GY1EPkGyLz6UOvkC4qUj4hKbu2DC7hBskTZcKXcVFCWAVC
- QzzA==
-X-Gm-Message-State: AOAM532VsJ3+roaUEN7P7ZU+iPp6O8h76tPbW+3VtXhRYti//9CpzWPs
- HOjlx1ZyyxMRJmXggf9bjkvOsJEFDoGfCnLAeGvSMQ==
-X-Received: by 2002:a6b:3bc6:: with SMTP id i189mr8826577ioa.180.1593271782692; 
- Sat, 27 Jun 2020 08:29:42 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:56100 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jpR8k-0006wX-Dz
+	for alex.bennee@linaro.org; Sun, 28 Jun 2020 02:50:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39498)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1jpR8a-0006w4-PB; Sun, 28 Jun 2020 02:50:00 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3715 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1jpR8Y-0000oX-KP; Sun, 28 Jun 2020 02:50:00 -0400
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 235214851E26FC420DB6;
+ Sun, 28 Jun 2020 14:49:43 +0800 (CST)
+Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.22) by
+ DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
+ 14.3.487.0; Sun, 28 Jun 2020 14:49:33 +0800
+From: Keqian Zhu <zhukeqian1@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: [PATCH] migration: Assign current_migration as NULL after migration
+Date: Sun, 28 Jun 2020 14:49:23 +0800
+Message-ID: <20200628064923.13192-1-zhukeqian1@huawei.com>
+X-Mailer: git-send-email 2.8.4.windows.1
 MIME-Version: 1.0
-References: <20200625220336.10186-1-beata.michalska@linaro.org>
- <20200625220336.10186-2-beata.michalska@linaro.org>
- <20200626090050.3sqsukopwydv43od@kamzik.brq.redhat.com>
- <CAFEAcA_pKMkwAGAAdkCXk3dOqJQnX+qRsZuLMWA0qfMsw+aF1Q@mail.gmail.com>
-In-Reply-To: <CAFEAcA_pKMkwAGAAdkCXk3dOqJQnX+qRsZuLMWA0qfMsw+aF1Q@mail.gmail.com>
-From: Beata Michalska <beata.michalska@linaro.org>
-Date: Sat, 27 Jun 2020 16:29:31 +0100
-Message-ID: <CADSWDzvW3v0bVaEjaPLSk_N4c8nA_ZcReerh2dd3Lg2jgDRiHQ@mail.gmail.com>
-Subject: Re: [PATCH v6 1/2] target/arm: kvm: Handle DABT with no valid ISS
-To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- kvmarm@lists.cs.columbia.edu, QEMU Developers <qemu-devel@nongnu.org>
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+Content-Type: text/plain
+X-Originating-IP: [10.174.187.22]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=zhukeqian1@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/28 02:49:45
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: dWt2tVcaPVPW
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: wanghaibin.wang@huawei.com, Keqian Zhu <zhukeqian1@huawei.com>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Juan Quintela <quintela@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zsTc21bSLFUV
 
-Hi Peter,
-Hi Andrew
+In migration_shutdown, global var current_migration is freed but not
+assigned to NULL, which may cause heap-use-after-free problem if the
+following code logic is abnormal.
 
-Thanks for quick review.
-I have pushed the updated version.
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+---
+ migration/migration.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-BR
-Beata
+diff --git a/migration/migration.c b/migration/migration.c
+index 481a590f72..effffd7332 100644
+--- a/migration/migration.c
++++ b/migration/migration.c
+@@ -189,6 +189,7 @@ void migration_shutdown(void)
+      */
+     migrate_fd_cancel(current_migration);
+     object_unref(OBJECT(current_migration));
++    current_migration = NULL;
+ }
+ 
+ /* For outgoing */
+-- 
+2.19.1
 
-On Fri, 26 Jun 2020 at 13:59, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Fri, 26 Jun 2020 at 10:01, Andrew Jones <drjones@redhat.com> wrote:
-> > nit: How about using '= {0}' when declaring the variable, rather than this
-> > memset?
->
-> We prefer "= {}" -- although "= {0}" is the C standard approved
-> version, some compiler versions produce spurious warnings for
-> it in some situations. (cf commit 039d4e3df0049bdd8f9).
->
-> thanks
-> -- PMM
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

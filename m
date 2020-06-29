@@ -1,114 +1,81 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3359088lfm;
-        Mon, 29 Jun 2020 14:32:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz1G5ajIMBFkgYkU6qqFKUXUvdLCHsLDeZCXuyc0L+s/WQvmePfQp+dXmbnbLPyZWbZr3/4
-X-Received: by 2002:a25:2bc9:: with SMTP id r192mr28131699ybr.329.1593466343719;
-        Mon, 29 Jun 2020 14:32:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593466343; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3362236lfm;
+        Mon, 29 Jun 2020 14:37:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy6dnTTfNc3NUbX+aoZPCDVjKW7+XawryFXC0EVLluSRCQrSktTFJNFN3RAAcbAjuqTwWfq
+X-Received: by 2002:a25:5186:: with SMTP id f128mr30355355ybb.293.1593466651348;
+        Mon, 29 Jun 2020 14:37:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593466651; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZTKwnNLfoOsbsUOH3QtOTfGN8wd4pB6rZDvEkCl/UOfTzOKHnwxwVrXSBzQfpN5uCf
-         29SR6P02VqfkWhIgQJ8YX0fAdvtngC9RVwNkNBFWgda972XrTAPCDU8Hs714iTeyc2wu
-         EDHHUY2BP3BZEbQ1eo/uTVCecQ7g+4KDWXHdyKjANu4sDhYF4PY8jMBZE7WV+KtO2xJn
-         N+2ReaGdNjA1zBj38ooE75TCb6qwtyr00yTxKEclZywtSxHXa2mXRF69PGzLImfbrKSa
-         9sipU/YtDPx0qd5qovlp/BFj2ErJSAk16yWKElmB1dOF0Jngcj+LYBgE5abIka7sYZJE
-         +UBg==
+        b=0+VaUClMIUCtXZ9htMTZ21jIUdIgC/jMKlYHfML7UsXKJe9p8lPIIa48hl9YQme1fa
+         tVLpApM0Tq87woFpTj8FLAj37siXGYiweyZyWhYudlnjbhwX12OKoEy8hbp/zoVqwztl
+         tVFFwbgaqkGb1snwtUBVTUeVUGm9RBii6dnuA2q5GZCSxR6405XzDRIE4ah//Qx1Ktyl
+         R07lwjZnuj9KATr8FuqXvHMaGTvKkBJtOcnuIHvFc7dvNDR89lf4iyo7jfF0fr9SE6SD
+         M4Ou0WiFwq6N4NzKdCTe6Y8z00MxkrEuc9VykLZqX9FkLi9YR2DrAwi1Bv6SpbMSxg8N
+         D/7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=B66j+rKnQarXai1h5Y0W9zZJrWfgDomU4kabiLcDpkk=;
-        b=w/J1qH3RxyyPO5WkP17MBfLNIDzC45TewsUlyp9ZXwoMxe6+rnwSdf+g2+c0Gt7fwO
-         +kq5VRRddXxvLTwdFefGpFG7/2IkjxxDvYAULXuPaz/rukrnFrDsY07188PeDTnmqdyT
-         C+zskLqb2CdcUA7t0yJ/nmUHANq5lgWaC/RhFwNTgl5hk+bTGnKWDg+VJ/xI51B/F5bb
-         9d/e9eUQ5bGIvA3NjeoKyhMLk9KYTg+qcEuzQxH69Y3R5vHhYFCpRE2rpdUEgdyrp4Pg
-         A8MS4fdbU08u4Qa8bJK3PgxfjmZ81sbqGJJL2x9aqIbxuIwkNNaIojp2U7YIu4Jcn0wf
-         1nvQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :references:message-id:in-reply-to:subject:to:from:date;
+        bh=bvra1OQqXKKgyAkSDvBuDEeAeNiNjGUxoO366aOXIcA=;
+        b=bNqmxmtZ2U6EEVjBQmmw54ldFs/Bvx9aBGcrxzOzKfbm1JQfiW7XNsj2qlhhP9rqDw
+         6bzP21AahzWgqyKC5EQ0lmeP4bNlRWpTv1TlFBubjLfD5cgeWm+36lLfdN/BOdVqUXzZ
+         JatFI7TinB8/aQGLbEma5DNjNbhDAhEbinjb77FtE42OObK4zhZNBlOBSbZ0tZyZ810Q
+         k2/Zxk5jJMN+XU0OU5Vwcda8aYfJi4MOaaUOIfOD4Hx2wboSZeB/bYCoDndyza3HndQz
+         TD/UDhDWzGzRG1CFzJZae0R9NiknwrF1WHkzR2QGID0b1NNyNUa8zJrAn68RfsyUPl43
+         h5Pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kpi61gGh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i2si776578ybh.9.2020.06.29.14.32.23
+        by mx.google.com with ESMTPS id f13si830823ybk.105.2020.06.29.14.37.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jun 2020 14:32:23 -0700 (PDT)
+        Mon, 29 Jun 2020 14:37:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kpi61gGh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56574 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36178 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jq1O3-00061q-0z
-	for alex.bennee@linaro.org; Mon, 29 Jun 2020 17:32:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55402)
+	id 1jq1T0-00016a-OC
+	for alex.bennee@linaro.org; Mon, 29 Jun 2020 17:37:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56920)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1jq1MA-0003tW-Np; Mon, 29 Jun 2020 17:30:26 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:46956)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1jq1M9-000567-0x; Mon, 29 Jun 2020 17:30:26 -0400
-Received: by mail-ot1-x342.google.com with SMTP id n24so14558054otr.13;
- Mon, 29 Jun 2020 14:30:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:reply-to:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=B66j+rKnQarXai1h5Y0W9zZJrWfgDomU4kabiLcDpkk=;
- b=kpi61gGhHEf+wZ+vfBqmClkBZzbsp33FxYtHd580uZ9xdYSOSRh1y048pz0dz0OsXn
- i8u3UOWRYo4HMo84EiF4rNn68KJV3AEuxO3SrgROlECcujhKtXZO6Gf1h2OIDcEZeUoD
- TeKt3kksykvurWQtHi3oYRkW/NhWyllEXkIjwR6RZXM7sNhE0dRS9eA6TJQ+3Wod2GLs
- TmBtT+5gUFYSsN1XAX7aUbGtwIm/Bh7azabY+j3wNWZ5eLsK0ULGkZdGh2YqIeYIHi3R
- /8Q8f6lTbh/8P/+RfIetJbyoeV58i43EK739nEY3gyFjMPMEf8g+/PMYxFxBJky33NrQ
- ERDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :reply-to:references:mime-version:content-disposition
- :content-transfer-encoding:in-reply-to:user-agent;
- bh=B66j+rKnQarXai1h5Y0W9zZJrWfgDomU4kabiLcDpkk=;
- b=fyF/gExJ8oOUuklWgizSErOCq8rG82qYAJXqowA6fJIBPv1MQrPOtVHnLaW9oE43He
- fNvYr3orOUmfpQdNORpU+hIVY9PhdNAxlpO1ujXm39op+DGX4n2/D6+2rSlCVOUP7hkV
- IY8XxEuCSRDYHynitWbpbmRbe2pZeaJ+NDnbOUrMJBHsSHpN0SUYFvNEhIp+jNp3Pt4h
- N2x2R4A8X2+xcnQmbEvT5SeUaMsOJCbZ0bEoypw0he1cGD2WeDvCAuA7k2bOVmn9fhvB
- YPY1sRgZlWwHKjxOCPP8Ll/HT1KrXFTV3RjU7+iBTIuaWcujwNeo4F93xupFd8xQjwRf
- L3FQ==
-X-Gm-Message-State: AOAM531FvrqYCzhXMkn3KOMEIRySC79kDeLchvTR54ErWWkOJRgVJx/G
- /bRupjGTglIz/hoFJtb29Q==
-X-Received: by 2002:a9d:7f8d:: with SMTP id t13mr2821489otp.67.1593466223114; 
- Mon, 29 Jun 2020 14:30:23 -0700 (PDT)
-Received: from serve.minyard.net (serve.minyard.net. [2001:470:b8f6:1b::1])
- by smtp.gmail.com with ESMTPSA id y7sm261637oov.26.2020.06.29.14.30.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Jun 2020 14:30:22 -0700 (PDT)
-Received: from minyard.net (unknown [IPv6:2001:470:b8f6:1b:9993:aaf8:7c5:309c])
- by serve.minyard.net (Postfix) with ESMTPSA id B433C18003B;
- Mon, 29 Jun 2020 21:30:21 +0000 (UTC)
-Date: Mon, 29 Jun 2020 16:30:20 -0500
-From: Corey Minyard <minyard@acm.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 5/5] hw/i2c: Document the I2C qdev helpers
-Message-ID: <20200629213020.GU3235@minyard.net>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1jq1Sf-00015a-OK; Mon, 29 Jun 2020 17:37:09 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2]:48090)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1jq1Sd-0006Ke-BS; Mon, 29 Jun 2020 17:37:09 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 4E3A47475F9;
+ Mon, 29 Jun 2020 23:37:05 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 24760746335; Mon, 29 Jun 2020 23:37:05 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 22EE2746331;
+ Mon, 29 Jun 2020 23:37:05 +0200 (CEST)
+Date: Mon, 29 Jun 2020 23:37:05 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH 2/5] hw/i2c: Rename i2c_try_create_slave() as
+ i2c_slave_new()
+In-Reply-To: <20200629173821.22037-3-f4bug@amsat.org>
+Message-ID: <alpine.BSF.2.22.395.2006292333540.63145@zero.eik.bme.hu>
 References: <20200629173821.22037-1-f4bug@amsat.org>
- <20200629173821.22037-6-f4bug@amsat.org>
+ <20200629173821.22037-3-f4bug@amsat.org>
+User-Agent: Alpine 2.22 (BSF 395 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200629173821.22037-6-f4bug@amsat.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
- envelope-from=tcminyard@gmail.com; helo=mail-ot1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+Content-Type: multipart/mixed;
+ boundary="3866299591-715433422-1593466625=:63145"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/29 17:31:52
+X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -122,93 +89,116 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: minyard@acm.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
  qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
  Jan Kiszka <jan.kiszka@web.de>, David Gibson <david@gibson.dropbear.id.au>,
- Joel Stanley <joel@jms.id.au>
+ Andrzej Zaborowski <balrogg@gmail.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZyWhzdUe7wwQ
+X-TUID: t3x0HZ2O9207
 
-On Mon, Jun 29, 2020 at 07:38:21PM +0200, Philippe Mathieu-Daudé wrote:
-> In commit d88c42ff2c we added new prototype but neglected to
-> add their documentation. Fix that.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Reviewed-by: Corey Minyard <cminyard@mvista.com>
+--3866299591-715433422-1593466625=:63145
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-> 
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+On Mon, 29 Jun 2020, Philippe Mathieu-Daudé wrote:
+> We use "new" names for functions that allocate and initialize
+> device objects: pci_new(), isa_new(), usb_new().
+> Let's call this one i2c_slave_new(). Since we have to update
+> all the callers, also let it return a I2CSlave object.
+
+All the callers now need a cast due to change to I2CSlave * instead of 
+what they expect. Does that really worth it? Also this introduces 
+inconsistency between i2c_create_slave and i2c_new so not sure about that 
+part but I don't really mind either way. Maybe return what most callers 
+expect so the calls are simple and don't need an additional cast in most 
+of the cases?
+
+Regards,
+BALATON Zoltan
+
+> Suggested-by: Markus Armbruster <armbru@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  include/hw/i2c/i2c.h | 48 ++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 48 insertions(+)
-> 
+> include/hw/i2c/i2c.h | 2 +-
+> hw/arm/aspeed.c      | 4 ++--
+> hw/i2c/core.c        | 9 ++++-----
+> 3 files changed, 7 insertions(+), 8 deletions(-)
+>
 > diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
-> index c533058998..fcc61e509b 100644
+> index d6e3d85faf..18efc668f1 100644
 > --- a/include/hw/i2c/i2c.h
 > +++ b/include/hw/i2c/i2c.h
-> @@ -79,8 +79,56 @@ int i2c_send_recv(I2CBus *bus, uint8_t *data, bool send);
->  int i2c_send(I2CBus *bus, uint8_t data);
->  uint8_t i2c_recv(I2CBus *bus);
->  
-> +/**
-> + * Create an I2C slave device on the heap.
-> + * @name: a device type name
-> + * @addr: I2C address of the slave when put on a bus
-> + *
-> + * This only initializes the device state structure and allows
-> + * properties to be set. Type @name must exist. The device still
-> + * needs to be realized. See qdev-core.h.
-> + */
->  I2CSlave *i2c_slave_new(const char *name, uint8_t addr);
-> +
-> +/**
-> + * Create an I2C slave device on the heap.
-> + * @bus: I2C bus to put it on
-> + * @name: I2C slave device type name
-> + * @addr: I2C address of the slave when put on a bus
-> + *
-> + * Create the device state structure, initialize it, put it on the
-> + * specified @bus, and drop the reference to it (the device is realized).
-> + * Any error aborts the process.
-> + */
->  I2CSlave *i2c_slave_create_simple(I2CBus *bus, const char *name, uint8_t addr);
-> +
-> +/**
-> + * i2c_slave_realize_and_unref: realize and unref an I2C slave device
-> + * @dev: I2C slave device to realize
-> + * @bus: I2C bus to put it on
-> + * @addr: I2C address of the slave on the bus
-> + * @errp: error pointer
-> + *
-> + * Call 'realize' on @dev, put it on the specified @bus, and drop the
-> + * reference to it. Errors are reported via @errp and by returning
-> + * false.
-> + *
-> + * This function is useful if you have created @dev via qdev_new(),
-> + * i2c_slave_new() or i2c_slave_try_new() (which take a reference to
-> + * the device it returns to you), so that you can set properties on it
-> + * before realizing it. If you don't need to set properties then
-> + * i2c_slave_create_simple() is probably better (as it does the create,
-> + * init and realize in one step).
-> + *
-> + * If you are embedding the I2C slave into another QOM device and
-> + * initialized it via some variant on object_initialize_child() then
-> + * do not use this function, because that family of functions arrange
-> + * for the only reference to the child device to be held by the parent
-> + * via the child<> property, and so the reference-count-drop done here
-> + * would be incorrect.  (Instead you would want i2c_slave_realize(),
-> + * which doesn't currently exist but would be trivial to create if we
-> + * had any code that wanted it.)
-> + */
->  bool i2c_slave_realize_and_unref(I2CSlave *dev, I2CBus *bus, Error **errp);
->  
->  /* lm832x.c */
-> -- 
-> 2.21.3
-> 
-> 
+> @@ -79,8 +79,8 @@ int i2c_send_recv(I2CBus *bus, uint8_t *data, bool send);
+> int i2c_send(I2CBus *bus, uint8_t data);
+> uint8_t i2c_recv(I2CBus *bus);
+>
+> +I2CSlave *i2c_slave_new(const char *name, uint8_t addr);
+> DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t addr);
+> -DeviceState *i2c_try_create_slave(const char *name, uint8_t addr);
+> bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp);
+>
+> /* lm832x.c */
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 1285bf82c0..54ca36e0b6 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -513,7 +513,7 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+>     /* Bus 3: TODO bmp280@77 */
+>     /* Bus 3: TODO max31785@52 */
+>     /* Bus 3: TODO dps310@76 */
+> -    dev = i2c_try_create_slave(TYPE_PCA9552, 0x60);
+> +    dev = DEVICE(i2c_slave_new(TYPE_PCA9552, 0x60));
+>     qdev_prop_set_string(dev, "description", "pca1");
+>     i2c_realize_and_unref(dev, aspeed_i2c_get_bus(&soc->i2c, 3),
+>                           &error_fatal);
+> @@ -531,7 +531,7 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+>
+>     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 11), 0x51,
+>                           eeprom_buf);
+> -    dev = i2c_try_create_slave(TYPE_PCA9552, 0x60);
+> +    dev = DEVICE(i2c_slave_new(TYPE_PCA9552, 0x60));
+>     qdev_prop_set_string(dev, "description", "pca0");
+>     i2c_realize_and_unref(dev, aspeed_i2c_get_bus(&soc->i2c, 11),
+>                           &error_fatal);
+> diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+> index acf34a12d6..6eacb4a463 100644
+> --- a/hw/i2c/core.c
+> +++ b/hw/i2c/core.c
+> @@ -267,13 +267,13 @@ const VMStateDescription vmstate_i2c_slave = {
+>     }
+> };
+>
+> -DeviceState *i2c_try_create_slave(const char *name, uint8_t addr)
+> +I2CSlave *i2c_slave_new(const char *name, uint8_t addr)
+> {
+>     DeviceState *dev;
+>
+>     dev = qdev_new(name);
+>     qdev_prop_set_uint8(dev, "address", addr);
+> -    return dev;
+> +    return I2C_SLAVE(dev);
+> }
+>
+> bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp)
+> @@ -283,10 +283,9 @@ bool i2c_realize_and_unref(DeviceState *dev, I2CBus *bus, Error **errp)
+>
+> DeviceState *i2c_create_slave(I2CBus *bus, const char *name, uint8_t addr)
+> {
+> -    DeviceState *dev;
+> +    DeviceState *dev = DEVICE(i2c_slave_new(name, addr));
+>
+> -    dev = i2c_try_create_slave(name, addr);
+> -    i2c_realize_and_unref(dev, bus, &error_fatal);
+> +    i2c_realize_and_unref(I2C_SLAVE(dev), bus, &error_fatal);
+>
+>     return dev;
+> }
+>
+--3866299591-715433422-1593466625=:63145--

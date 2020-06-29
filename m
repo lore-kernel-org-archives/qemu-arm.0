@@ -1,44 +1,44 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2904193lfm;
-        Mon, 29 Jun 2020 04:42:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyZgKyqc+KmRY/CwEGaj5c8YksgazGrbBi0U2mkXsMQVZpNcQ/yRZXB8YaHC08IfK85B5Vq
-X-Received: by 2002:a37:a94f:: with SMTP id s76mr14830878qke.297.1593430920082;
-        Mon, 29 Jun 2020 04:42:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593430920; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2912867lfm;
+        Mon, 29 Jun 2020 04:55:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx/XxwjZDGFpgHkaDr7gUJTH03o9bSaeohg6AO14BUbx89O3tTOtY3yp6RKso5/wNfcKNW7
+X-Received: by 2002:a37:9a08:: with SMTP id c8mr14270976qke.411.1593431711037;
+        Mon, 29 Jun 2020 04:55:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593431711; cv=none;
         d=google.com; s=arc-20160816;
-        b=EmruYPTzcfc0qtMfkzB752evSW+yq7Rj1KeXHywVQvvzU1SwM8l0M9WTn+wg7N5qTL
-         srVI4ovTGtrEoCvZBSiR5+1ULTx3YULuLAWsfJa4VkQuZEe4zXXbC488WkbJWAT1ta/F
-         8eHs27OXFQrKj1x34LYmxgFh12UvGgwNhFfU+BO2U/FZWUG++KgUD/Fe580pOV6qIrk0
-         lWGJp2dNGwGojMje97X0Mfwdt5pBVQRmH7iaX+kHY9pEhJjzivUr7Nry83byo3FbFiaw
-         Kb+/gUm9ssFaVR65ovJwb+DZZm2yuSlaEb6e8STFKsm5wIgFrwtYNnhe9sNDrPz0nsyz
-         FBog==
+        b=T6J8ubbgml3y74pqE1CSUtPSgUGuf09syPpW7kOYTROowdhZurft6UjwZx27xhqToI
+         IsC4aQS2A08EddNbqpbT20BXs2tgEsXmzInENc8xnikZAUBHPgdc5Hy/hCM8tHPriN2m
+         kFs1IgZXjQR32NvRxl8VCfJ/JIETsVR3tMhrnt8x6a4W9kMMkghoB7R6NIHbDk+coLZl
+         YQSzXHlh3rRmVLe+BHokf364ekUGRjtSthcMSLK/KR+9RcEJKbADVz/8bYvgNfTLB5D+
+         wiAp8q6Bb5mwBJshXNnoAkZqzxTV7p8VkfdpqwH3v0St0g9NserORiDzaHKUVKnxY01G
+         Mr+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:mime-version
-         :list-subscribe:list-help:list-post:list-archive:list-unsubscribe
-         :list-id:precedence:cc:references:in-reply-to:message-id:date
-         :subject:to:from:dkim-signature;
-        bh=dakVYhsCtcI3S3TrcLE5ihriov/MOgMIEeN+zKPOty4=;
-        b=xchSHrLgOZWaX1YijKrGsUB9UYiCASOY/8J0fovDhdkUHAQFGsDXppaWV3VhwI6CmM
-         ofwM/181zs85bME65LJ/x/8NBM77Lv4yQwNw6slDrn6dy7cQ/HR5DnZt7dKPV6fKw3x2
-         iRYa9fiJruWtxceFKxn4hh9ns4r7Il7dXDuLeLUsjcEHf39x1ebVskd3b8IYugSbtbE2
-         4vJ3N8dq4MXvF3hYBD0zRx5FdsymVvpJ7ZhlkH+18QDtKO6qemScB2E35OfUyV0oYWN0
-         /OLAVpONfphMEHQCkTGPESwo5x6eGS8JEBaxZZ6FII9C7oEaSknr5jfxSGjzwwt24M73
-         EWbA==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=XJb7AJE/XFB6j0Na8KMMbbGcGtwcGepXv+631g5l5m0=;
+        b=siqf0vBV9LzhVD51BVcdDOzgz9/tL3GXhyGyIyuKa7TyKMDTbmf+CDgY/VxjjP2ySS
+         HvAjr3czhnLKu35Cpg7JQF+6bqMeEGaVEvQk4umyEJ1tFYtRwlTEvoO0Ra6qLmytVtRT
+         3GTazfXj7MdpDiiLJc8fnOix0ZyiSFPPYIk5T/7CQAKiMfRX2BOx1gYMn3NOxXiZyVvg
+         ft14nC8AiAu+RWL9oAyQDZnQ81juf2fmCqUXREPZZNg1LVyzUqZhuW/rSZzEA3D4oGmo
+         lRwl2rtS6qhMa8u08vkmiZWul27o6CWJqNno0Xr3A5QMi4OfYFnq+saMTnEqAoF0D4XJ
+         5mEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=SZnZJRa0;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=Tei1JmJF;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id l39si15343350qta.305.2020.06.29.04.41.59;
-        Mon, 29 Jun 2020 04:42:00 -0700 (PDT)
+        by mx.google.com with ESMTP id 126si18309797qkm.150.2020.06.29.04.55.10;
+        Mon, 29 Jun 2020 04:55:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=SZnZJRa0;
+       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b=Tei1JmJF;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id C5A974B385;
-	Mon, 29 Jun 2020 07:41:59 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id B41B14B3B8;
+	Mon, 29 Jun 2020 07:55:10 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: 0.909
@@ -50,61 +50,60 @@ Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
 	(fail, message has been altered) header.i=@linaro.org
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NYRcIw76-TiB; Mon, 29 Jun 2020 07:41:58 -0400 (EDT)
+	with ESMTP id yeaxE6o3-Bla; Mon, 29 Jun 2020 07:55:09 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 72AAD4B3EC;
-	Mon, 29 Jun 2020 07:41:58 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 7E2364B3C4;
+	Mon, 29 Jun 2020 07:55:09 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 0D8BC4B37D
- for <kvmarm@lists.cs.columbia.edu>; Mon, 29 Jun 2020 07:41:57 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 98D0E4B3B5
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 29 Jun 2020 07:55:08 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5v0Rh+c1j56l for <kvmarm@lists.cs.columbia.edu>;
- Mon, 29 Jun 2020 07:41:55 -0400 (EDT)
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id BD7214B3B7
- for <kvmarm@lists.cs.columbia.edu>; Mon, 29 Jun 2020 07:41:55 -0400 (EDT)
-Received: by mail-wm1-f65.google.com with SMTP id j18so15061779wmi.3
- for <kvmarm@lists.cs.columbia.edu>; Mon, 29 Jun 2020 04:41:55 -0700 (PDT)
+ with ESMTP id G0l7RNnykSmz for <kvmarm@lists.cs.columbia.edu>;
+ Mon, 29 Jun 2020 07:55:07 -0400 (EDT)
+Received: from mail-io1-f68.google.com (mail-io1-f68.google.com
+ [209.85.166.68])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 6B5C54B332
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 29 Jun 2020 07:55:07 -0400 (EDT)
+Received: by mail-io1-f68.google.com with SMTP id y2so16834352ioy.3
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 29 Jun 2020 04:55:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=CpJVMKujpf1bwPJQRhxOFxuwnII8DRhX/r1WrrvSY3Q=;
- b=SZnZJRa0+YD59ZxkC60+VuLLZBnmDiISn5LpCBs+C3QHLPMwLxjooBlw6/OrTJ0n3h
- YrRRObHCKiSbnTTszzB/DuGnNAnQpDacs+RTZSXCOImbFDQ7UZTqO6xTlhB3OrPofCRq
- sVsZKthZfrGkrCCCWnAfLK3iX2D8MkkNHtMY1esky+40zL7/czfwQaHuW61ziheCvPF6
- cGQPAtv4q0+mWmC5feVaoVyf2JoHp+0PC6fSwfnwOqUeArOx6lUrG8/FJGds8ZKO3/6G
- 5P7UWneIZBxiDl+LRKtcWbawcu9bf8zgMyElaRUqbUGXBQEHoxY8qtv0ie1f3uMUig9m
- UeKg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=fEJFWBnpsD1Fzxq+UGFqbCNX3W+nZoqUk4DjhMHNxrc=;
+ b=Tei1JmJFXM/uRL0vORJ6QdAtj+XiwqDwDInAPjjzy7erYQ2SGnDGFUqn8USuLbD/9R
+ 7EBZpHhfgdWUVBAR9BUeL7X+iRwSUbefOJRulJ3qKPH5DMqLCuJQjJ0ebLuvK0BDzvIC
+ l6nKSIfU+smq3AMIOrjooYCcUCqhhZZbWS8CHQm0gpGp8SxNDSJcCDud1EVYjy772IC8
+ PQ1D7fxPecfDC8J7XR8iS/sXTtqly3B9Aj+cGiQyyhtJfZ/1ZVgveKK5YdACUeuZz9Ps
+ OFavMcU1tdlU17aJKgLQ28fYiM6N2TFL+4ZYQ8kl137rrszFZ4xTDiBisLVD+Pybhmlt
+ fLeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=CpJVMKujpf1bwPJQRhxOFxuwnII8DRhX/r1WrrvSY3Q=;
- b=Cq0rNXU4Ss0NVMmTI24U+VHKN/6I6ihdfDU9p8z4hXFtLSxS5FQkrN0vX9uzLA2Fy3
- AC9xrtY8GK5wiTVxOHfoo5oqGxwAsSlw2UJ2iRTxhW0WNTVwPsh7CXAhi5YlnpQc8XIh
- nQxP2KqGo8bUD7cdozKOHwWhUQnVKhRS5m+oiUNtaQZr2lfSb7+dG4Cu6KgIViHsWg57
- Hvrn1V6f9EwVg9gMS7N2+VrCz2m/SKmUxz0C5bEjsAssPyXqWTkJMPtO4bebAld7NIJY
- GFOLeqIGXj5dhCWm0Sp0yAFnAS0r80VcZKh3bnzrKv4bXgLvEepOpcv5Zmr3UJ8ZFy3k
- LUXA==
-X-Gm-Message-State: AOAM531S+3U/3pmm22RGgodOigpmkwBVb840YgSWUyozMv6ameqQde1g
- Rarn9VR4E3mV8+FTzM9+Dybptw==
-X-Received: by 2002:a7b:c18f:: with SMTP id y15mr16620956wmi.85.1593430914844; 
- Mon, 29 Jun 2020 04:41:54 -0700 (PDT)
-Received: from moi-limbo-9350.home
- (host86-139-146-71.range86-139.btcentralplus.com. [86.139.146.71])
- by smtp.gmail.com with ESMTPSA id c2sm49486357wrv.47.2020.06.29.04.41.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Jun 2020 04:41:54 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=fEJFWBnpsD1Fzxq+UGFqbCNX3W+nZoqUk4DjhMHNxrc=;
+ b=pCEWvhchP/u4SGGjj2bgrUyVnhtPTXKMk5VWbvLJFb+UL8ez54rN4KzAZbGEJGSgYM
+ 01wwwgNbZPUNk4LsAkTohz31FnXXHLPYfXWFiAwbCIdo2HCX0cgZ4XVpxwBEAuMxI1qI
+ ryb+jj5MOllb5JKVbgkazKd1e5lu/TFPNOpg/T5hbx6TyOvfBZWsM8CXBdOyO4cVxPk4
+ dH9cl78Rk1AiJZ7Px51lIhREGymNj9WmcgI7muE6FM1LAvn+k9HRTHCA/mpoIFf1zNW6
+ q3eiyFlA5D48x/oB4XwqC9tHEr8XghRRGU9MnGUqSLq5e208xO9B5VKMOSSodY5si5Eh
+ jNCA==
+X-Gm-Message-State: AOAM533eWatHeCvxMn8KRV5PFtIeLrdkMhKBO6an+Rr4afCa2kPvUOJL
+ sqrQ727FWDnQjMKEgqDzRTw8I7SowI8foGp2kJcPmA==
+X-Received: by 2002:a5d:849a:: with SMTP id t26mr16661198iom.22.1593431706751; 
+ Mon, 29 Jun 2020 04:55:06 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200628150459.18566-1-beata.michalska@linaro.org>
+ <20200628150459.18566-2-beata.michalska@linaro.org>
+ <20200629081510.ochvmmmikhe62bsm@kamzik.brq.redhat.com>
+In-Reply-To: <20200629081510.ochvmmmikhe62bsm@kamzik.brq.redhat.com>
 From: Beata Michalska <beata.michalska@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v9 2/2] target/arm: kvm: Handle misconfigured dabt injection
-Date: Mon, 29 Jun 2020 12:41:10 +0100
-Message-Id: <20200629114110.30723-3-beata.michalska@linaro.org>
-In-Reply-To: <20200629114110.30723-1-beata.michalska@linaro.org>
-References: <20200629114110.30723-1-beata.michalska@linaro.org>
-Cc: qemu-arm@nongnu.org, pbonzini@redhat.com, kvmarm@lists.cs.columbia.edu
+Date: Mon, 29 Jun 2020 12:54:55 +0100
+Message-ID: <CADSWDzvdX6iDgd8YuZ3aGnz6qDzjzs7=a7A0MB2k4KAcRG6s9Q@mail.gmail.com>
+Subject: Re: [PATCH v8 1/2] target/arm: kvm: Handle DABT with no valid ISS
+To: Andrew Jones <drjones@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, kvmarm@lists.cs.columbia.edu
 X-BeenThere: kvmarm@lists.cs.columbia.edu
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -116,229 +115,143 @@ List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
 List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
 List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
  <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 6tnyy0EtWFYi
+X-TUID: zh7xKmfLZvow
 
-Injecting external data abort through KVM might trigger
-an issue on kernels that do not get updated to include the KVM fix.
-For those and aarch32 guests, the injected abort gets misconfigured
-to be an implementation defined exception. This leads to the guest
-repeatedly re-running the faulting instruction.
+On Mon, 29 Jun 2020 at 09:15, Andrew Jones <drjones@redhat.com> wrote:
+>
+> On Sun, Jun 28, 2020 at 04:04:58PM +0100, Beata Michalska wrote:
+> > On ARMv7 & ARMv8 some load/store instructions might trigger a data abort
+> > exception with no valid ISS info to be decoded. The lack of decode info
+> > makes it at least tricky to emulate those instruction which is one of the
+> > (many) reasons why KVM will not even try to do so.
+> >
+> > Add support for handling those by requesting KVM to inject external
+> > dabt into the quest.
+> >
+> > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+> > ---
+> >  target/arm/kvm.c | 57 +++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+> >  1 file changed, 56 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> > index eef3bbd..2dd8a9a 100644
+> > --- a/target/arm/kvm.c
+> > +++ b/target/arm/kvm.c
+> > @@ -39,6 +39,7 @@ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+> >
+> >  static bool cap_has_mp_state;
+> >  static bool cap_has_inject_serror_esr;
+> > +static bool cap_has_inject_ext_dabt;
+> >
+> >  static ARMHostCPUFeatures arm_host_cpu_features;
+> >
+> > @@ -245,6 +246,16 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+> >          ret = -EINVAL;
+> >      }
+> >
+> > +    if (kvm_check_extension(s, KVM_CAP_ARM_NISV_TO_USER)) {
+> > +        if (kvm_vm_enable_cap(s, KVM_CAP_ARM_NISV_TO_USER, 0)) {
+> > +            error_report("Failed to enable KVM_CAP_ARM_NISV_TO_USER cap");
+> > +        } else {
+> > +            /* Set status for supporting the external dabt injection */
+> > +            cap_has_inject_ext_dabt = kvm_check_extension(s,
+> > +                                    KVM_CAP_ARM_INJECT_EXT_DABT);
+> > +        }
+> > +    }
+> > +
+> >      return ret;
+> >  }
+> >
+> > @@ -810,6 +821,45 @@ void kvm_arm_vm_state_change(void *opaque, int running, RunState state)
+> >      }
+> >  }
+> >
+> > +/**
+> > + * kvm_arm_handle_dabt_nisv:
+> > + * @cs: CPUState
+> > + * @esr_iss: ISS encoding (limited) for the exception from Data Abort
+> > + *           ISV bit set to '0b0' -> no valid instruction syndrome
+> > + * @fault_ipa: faulting address for the synchronous data abort
+> > + *
+> > + * Returns: 0 if the exception has been handled, < 0 otherwise
+> > + */
+> > +static int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
+> > +                             uint64_t fault_ipa)
+>
+> The indent of 'uint64_t fault_ipa' is off. Should be under CPUState.
+>
+> > +{
+> > +    /*
+> > +     * Request KVM to inject the external data abort into the guest
+> > +     */
+> > +    if (cap_has_inject_ext_dabt) {
+> > +        struct kvm_vcpu_events events = { };
+> > +        /*
+> > +         * The external data abort event will be handled immediately by KVM
+> > +         * using the address fault that triggered the exit on given VCPU.
+> > +         * Requesting injection of the external data abort does not rely
+> > +         * on any other VCPU state. Therefore, in this particular case, the VCPU
+> > +         * synchronization can be exceptionally skipped.
+> > +         */
+> > +        events.exception.ext_dabt_pending = 1;
+> > +        /*
+> > +         * KVM_CAP_ARM_INJECT_EXT_DABT implies KVM_CAP_VCPU_EVENTS
+> > +         */
+>
+> Single line comments may be done with /* ... */
+>
+> > +        return kvm_vcpu_ioctl(cs, KVM_SET_VCPU_EVENTS, &events);
+> > +
+>
+> Extra blank line here.
+>
+> > +    } else {
+> > +        error_report("Data abort exception triggered by guest memory access "
+> > +                     "at physical address: 0x"  TARGET_FMT_lx,
+> > +                     (target_ulong)fault_ipa);
+> > +        error_printf("KVM unable to emulate faulting instruction.\n");
+> > +    }
+> > +    return -1;
+> > +}
+> > +
+> >  int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+> >  {
+> >      int ret = 0;
+> > @@ -820,7 +870,12 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+> >              ret = EXCP_DEBUG;
+> >          } /* otherwise return to guest */
+> >          break;
+> > -    default:
+> > +    case KVM_EXIT_ARM_NISV:
+> > +        /* External DABT with no valid iss to decode */
+> > +        ret = kvm_arm_handle_dabt_nisv(cs, run->arm_nisv.esr_iss,
+> > +                                       run->arm_nisv.fault_ipa);
+> > +        break;
+> > +     default:
+>
+> An extra space got added in front of 'default:'
+>
+> >          qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
+> >                        __func__, run->exit_reason);
+> >          break;
+> > --
+> > 2.7.4
+> >
+> >
+>
+> Besides the format changes
+>
+> Reviewed-by: Andrew Jones <drjones@redhat.com>
+>
+Done.
+Thanks a lot for the reviews!
 
-Add support for handling that case.
-
-[
-  Fixed-by: 018f22f95e8a
-	('KVM: arm: Fix DFSR setting for non-LPAE aarch32 guests')
-  Fixed-by: 21aecdbd7f3a
-	('KVM: arm: Make inject_abt32() inject an external abort instead')
-]
-
-Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
-Acked-by: Andrew Jones <drjones@redhat.com>
----
- target/arm/cpu.h     |  2 ++
- target/arm/kvm.c     | 30 +++++++++++++++++++++++++++++-
- target/arm/kvm32.c   | 34 ++++++++++++++++++++++++++++++++++
- target/arm/kvm64.c   | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
- target/arm/kvm_arm.h | 10 ++++++++++
- 5 files changed, 124 insertions(+), 1 deletion(-)
-
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 677584e..ed0ff09 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -570,6 +570,8 @@ typedef struct CPUARMState {
-         uint64_t esr;
-     } serror;
- 
-+    uint8_t ext_dabt_raised; /* Tracking/verifying injection of ext DABT */
-+
-     /* State of our input IRQ/FIQ/VIRQ/VFIQ lines */
-     uint32_t irq_line_state;
- 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 545d2ba..603d431 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -749,6 +749,29 @@ int kvm_get_vcpu_events(ARMCPU *cpu)
- 
- void kvm_arch_pre_run(CPUState *cs, struct kvm_run *run)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    if (unlikely(env->ext_dabt_raised)) {
-+        /*
-+         * Verifying that the ext DABT has been properly injected,
-+         * otherwise risking indefinitely re-running the faulting instruction
-+         * Covering a very narrow case for kernels 5.5..5.5.4
-+         * when injected abort was misconfigured to be
-+         * an IMPLEMENTATION DEFINED exception (for 32-bit EL1)
-+         */
-+        if (!arm_feature(env, ARM_FEATURE_AARCH64) &&
-+            unlikely(!kvm_arm_verify_ext_dabt_pending(cs))) {
-+
-+            error_report("Data abort exception with no valid ISS generated by "
-+                   "guest memory access. KVM unable to emulate faulting "
-+                   "instruction. Failed to inject an external data abort "
-+                   "into the guest.");
-+            abort();
-+       }
-+       /* Clear the status */
-+       env->ext_dabt_raised = 0;
-+    }
- }
- 
- MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
-@@ -833,6 +856,8 @@ void kvm_arm_vm_state_change(void *opaque, int running, RunState state)
- static int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
-                                     uint64_t fault_ipa)
- {
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-     /*
-      * Request KVM to inject the external data abort into the guest
-      */
-@@ -847,7 +872,10 @@ static int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
-          */
-         events.exception.ext_dabt_pending = 1;
-         /* KVM_CAP_ARM_INJECT_EXT_DABT implies KVM_CAP_VCPU_EVENTS */
--        return kvm_vcpu_ioctl(cs, KVM_SET_VCPU_EVENTS, &events);
-+        if (!kvm_vcpu_ioctl(cs, KVM_SET_VCPU_EVENTS, &events)) {
-+            env->ext_dabt_raised = 1;
-+            return 0;
-+        }
-     } else {
-         error_report("Data abort exception triggered by guest memory access "
-                      "at physical address: 0x"  TARGET_FMT_lx,
-diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
-index 7b3a19e..0af46b4 100644
---- a/target/arm/kvm32.c
-+++ b/target/arm/kvm32.c
-@@ -559,3 +559,37 @@ void kvm_arm_pmu_init(CPUState *cs)
- {
-     qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
- }
-+
-+#define ARM_REG_DFSR  ARM_CP15_REG32(0, 5, 0, 0)
-+#define ARM_REG_TTBCR ARM_CP15_REG32(0, 2, 0, 2)
-+/*
-+ *DFSR:
-+ *      TTBCR.EAE == 0
-+ *          FS[4]   - DFSR[10]
-+ *          FS[3:0] - DFSR[3:0]
-+ *      TTBCR.EAE == 1
-+ *          FS, bits [5:0]
-+ */
-+#define DFSR_FSC(lpae, v) \
-+    ((lpae) ? ((v) & 0x3F) : (((v) >> 6) | ((v) & 0x1F)))
-+
-+#define DFSC_EXTABT(lpae) ((lpae) ? 0x10 : 0x08)
-+
-+bool kvm_arm_verify_ext_dabt_pending(CPUState *cs)
-+{
-+    uint32_t dfsr_val;
-+
-+    if (!kvm_get_one_reg(cs, ARM_REG_DFSR, &dfsr_val)) {
-+        ARMCPU *cpu = ARM_CPU(cs);
-+        CPUARMState *env = &cpu->env;
-+        uint32_t ttbcr;
-+        int lpae = 0;
-+
-+        if (!kvm_get_one_reg(cs, ARM_REG_TTBCR, &ttbcr)) {
-+            lpae = arm_feature(env, ARM_FEATURE_LPAE) && (ttbcr & TTBCR_EAE);
-+        }
-+        /* The verification is based on FS filed of the DFSR reg only*/
-+        return (DFSR_FSC(lpae, dfsr_val) == DFSC_EXTABT(lpae));
-+    }
-+    return false;
-+}
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index f09ed9f..88cf10c 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -1497,3 +1497,52 @@ bool kvm_arm_handle_debug(CPUState *cs, struct kvm_debug_exit_arch *debug_exit)
- 
-     return false;
- }
-+
-+#define ARM64_REG_ESR_EL1 ARM64_SYS_REG(3, 0, 5, 2, 0)
-+#define ARM64_REG_TCR_EL1 ARM64_SYS_REG(3, 0, 2, 0, 2)
-+
-+/*
-+ * ESR_EL1
-+ * ISS encoding
-+ * AARCH64: DFSC,   bits [5:0]
-+ * AARCH32:
-+ *      TTBCR.EAE == 0
-+ *          FS[4]   - DFSR[10]
-+ *          FS[3:0] - DFSR[3:0]
-+ *      TTBCR.EAE == 1
-+ *          FS, bits [5:0]
-+ */
-+#define ESR_DFSC(aarch64, lpae, v)        \
-+    ((aarch64 || (lpae)) ? ((v) & 0x3F)   \
-+               : (((v) >> 6) | ((v) & 0x1F)))
-+
-+#define ESR_DFSC_EXTABT(aarch64, lpae) \
-+    ((aarch64) ? 0x10 : (lpae) ? 0x10 : 0x8)
-+
-+bool kvm_arm_verify_ext_dabt_pending(CPUState *cs)
-+{
-+    uint64_t dfsr_val;
-+
-+    if (!kvm_get_one_reg(cs, ARM64_REG_ESR_EL1, &dfsr_val)) {
-+        ARMCPU *cpu = ARM_CPU(cs);
-+        CPUARMState *env = &cpu->env;
-+        int aarch64_mode = arm_feature(env, ARM_FEATURE_AARCH64);
-+        int lpae = 0;
-+
-+        if (!aarch64_mode) {
-+            uint64_t ttbcr;
-+
-+            if (!kvm_get_one_reg(cs, ARM64_REG_TCR_EL1, &ttbcr)) {
-+                lpae = arm_feature(env, ARM_FEATURE_LPAE)
-+                        && (ttbcr & TTBCR_EAE);
-+            }
-+        }
-+        /*
-+         * The verification here is based on the DFSC bits
-+         * of the ESR_EL1 reg only
-+         */
-+         return (ESR_DFSC(aarch64_mode, lpae, dfsr_val) ==
-+                ESR_DFSC_EXTABT(aarch64_mode, lpae));
-+    }
-+    return false;
-+}
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 48bf5e1..471ddd1 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -453,6 +453,16 @@ struct kvm_guest_debug_arch;
- void kvm_arm_copy_hw_debug_data(struct kvm_guest_debug_arch *ptr);
- 
- /**
-+ * kvm_arm_verify_ext_dabt_pending:
-+ * @cs: CPUState
-+ *
-+ * Verify the fault status code wrt the Ext DABT injection
-+ *
-+ * Returns: true if the fault status code is as expected, false otherwise
-+ */
-+bool kvm_arm_verify_ext_dabt_pending(CPUState *cs);
-+
-+/**
-  * its_class_name:
-  *
-  * Return the ITS class name to use depending on whether KVM acceleration
--- 
-2.7.4
-
+BR
+Beata
 _______________________________________________
 kvmarm mailing list
 kvmarm@lists.cs.columbia.edu

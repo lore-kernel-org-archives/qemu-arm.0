@@ -1,161 +1,109 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2955598lfm;
-        Mon, 29 Jun 2020 05:50:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxaivSclWfEzBjcU9mJiVryF8EsmOtYxQFzlc66G6twRaI4bBN0YQc1rcFlDepS752tlwPx
-X-Received: by 2002:a25:f509:: with SMTP id a9mr26913494ybe.227.1593435031070;
-        Mon, 29 Jun 2020 05:50:31 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1593435031; cv=pass;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3015717lfm;
+        Mon, 29 Jun 2020 07:03:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzhcQPBsSY7J984lLJlFA6LTZxHmeCpjZbjUlGcCcR5NOrMPIhElhMAD6MKEGQPCSqiYf4i
+X-Received: by 2002:a25:c646:: with SMTP id k67mr27364412ybf.110.1593439426650;
+        Mon, 29 Jun 2020 07:03:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593439426; cv=none;
         d=google.com; s=arc-20160816;
-        b=R2QTfe8lL4gk1OFny3hLeSF4nwuXn372d1XOl1Bif7Cwe2/Sc2OeL88KJfq/Ru0aQD
-         Dojgv34Dlzi/3Fpm4oouqpgPgG7rZ3vwABhqoj+LL5XUB2BtghbSWOUIgynhCvFe1iyS
-         Dzf9J95EN0sA45wBeHLrk8m0ybP99N5CAfdeErBDh/Lo9ZlTtKQm8TD1N3PuJmFAU9BK
-         AV9nLZ+Hknt14RrYz4EVJkCFCcbcIcMTxx2cGXM9hTD+bQg9LKh5Hatsy6vudiFbL+/n
-         l1JHApFGSczCZaSyDX0XXasdIa+qppjyBIJgO7Xo+KRiU/yQ3lJ+Pe2oZ+n+ZOirRpUh
-         dl7g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=nk7MtUEmTYMgdEQ3iuUF8EHpbzCKbrveR19HNFHrQNB7B7NBh7rmijPf8QOovZDaQp
+         XJyRYq7Tc21ImpvvIU6lLETDNu9ULlTSz5C0L5cLh74zlLKP2xbhmQ0jX2cLwjgoFKKd
+         ySHvyMWTGNbQ0EiwrPNcRX7enTVVbnNCO6pHbhxSaiuwzIkWHvJULKr5B6Aomuc0ZNKL
+         UNk0Z9Nei6t8eWTpdZzFDRi+3WgRT+Pc8/G4zwuPQEeuEmFGusTR6S0dCv1VsEDbynzn
+         kwT7/P+eyZlxXTRhBkYmf5s3pd2+rfBKvJcrs9egWeacYKD9dniTtHexYZdfat0unODU
+         98kQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=AuuOnrXe2Ol13EKBQonTMB+y8UVB7RBL558rtFVOvM8=;
-        b=fq8ohdduuFsl7VvksMTVE+I9tHdYXr9nZK+reldgDbAcnoGPwQKoeNbcxMXBrPZ6rW
-         OGLaYnoBnLKFbtwR/NFI1qaDqs705gcwTpMKq/Up0B+VnZ83ZG8aHQU6n/pDiEwGbx0y
-         qaggsFfhGtGdhqoArDeHYNtMoryCzj9wus/0rUDch27fR5A5To4mwA5ZqVbwxmSdt5g4
-         PKg+IFBz3saBeKrz7n8O5Mwz2T/25kzEkwbzcdjGtaUfvGkeQ/eyHSkZiBMd89oQrjMF
-         YR5f5sb7pA0cLcFVYzIisoG3+NnsWBUpSeDClKvQpWRaepcRxNWW+uW0o4caec/wcEAh
-         MSHA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=S6BV6dBX;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=MIJJlagxHPmOgfuISOsEBqz+aj54Iz3tGWYgmF5TVnU=;
+        b=Qs0LZQC+vEupTLbpA5lom1LrWv/wxcBUjh3d3b6GoWEK30wP3SLbWoUcwk20FG6mra
+         1zRkVxm5oG8mLmH8yobm9eqhnxaraO+52KyRCpdVMvK9My+e104uP4RibVy76BAXWd8R
+         9ldbNMsD1cf+oWRneWzZ5NWjUMxNg1EoVLox1FZDwK8l/7WgkxvUgOdKFaWwj9++Q5p4
+         HVuwT1IX59Vww1sI05wFKO6iZdrhBI/YfgMwGQdLFNKprC91tQQTO+p6jAggYKhnwWHc
+         B7OrW26auO73Cgl9ZrumS1c8x7D7+VN/Py4A2SCBgUUIK9szBluEUb2JqcbHBuNMz0Ky
+         PnGA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=rfeWayyp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x1si32378778ybs.237.2020.06.29.05.50.30
+        by mx.google.com with ESMTPS id n7si32397948ybo.264.2020.06.29.07.03.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jun 2020 05:50:31 -0700 (PDT)
+        Mon, 29 Jun 2020 07:03:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=S6BV6dBX;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58100 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=rfeWayyp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53286 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jptF0-0003Wb-EX
-	for alex.bennee@linaro.org; Mon, 29 Jun 2020 08:50:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46522)
+	id 1jpuNu-0002Fa-1X
+	for alex.bennee@linaro.org; Mon, 29 Jun 2020 10:03:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37896)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <figlesia@xilinx.com>)
- id 1jptEq-0003VR-6D; Mon, 29 Jun 2020 08:50:20 -0400
-Received: from mail-mw2nam12on2074.outbound.protection.outlook.com
- ([40.107.244.74]:6132 helo=NAM12-MW2-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <figlesia@xilinx.com>)
- id 1jptEj-0000j9-9y; Mon, 29 Jun 2020 08:50:19 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BEY47C1rMnGqCN4z2zMJgCTGRPuEQrz9/3U8oCzf1WV00Do5pE4KrRGrENwAh1AwtLfryT+vh7fj6Rj6DEDa+bx8j1gTDlApvhJg3D/xffMFUb6yNb4xQ7Bjm7h6tirb+dsWkDziM2vfsO+jy4dP00gSqKeDsP27p6EM/ZoVTXJ7PgTNpgmfM3KtwJNjZAj0t9g5zUz81aRh9o2nmQKfoUKqMkmMYTquzQ2968VpZWPaATYqO96fDN/pgoYZmD8JHA99tOX7uR4ZTu+ZB2tGhRf8B9GrNq1e9oOzDXuRXdB2kE+wwm44xslDSuUNtbb+A6WVCN3lBgbI8J5t92RJnA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=AuuOnrXe2Ol13EKBQonTMB+y8UVB7RBL558rtFVOvM8=;
- b=NEe90IhbsXvjN8fSoyM7G+PYp8jSopKh1/J6PMHijfZEGAy8zcexv3mAVt8a3URqo7VXvqLiY2fg38HHfNlhwSQGaR5smEcfGET3BXeAnVZQBGgS2NuiWP604hWI4S11xUNul2Y71CGjYI2lsh91bRNYb7+bZ84EEf5wCHP3ca/tE7IgQUUfvArsYZWN22QFiouQPYDIcmNPuI+U65V6qpMgkOgbCtCnwcESukljhJQwyh0oTgBTRDL9if5toS4LFetLLX34u5vvcdLv2lv8yiwjdRffhSF456iWcm4r4jwyP9pOxfVhZVKHksUTSTZEF77Zw4hOvbX+MQBJCEZEmQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.60.83) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
- dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=AuuOnrXe2Ol13EKBQonTMB+y8UVB7RBL558rtFVOvM8=;
- b=S6BV6dBXitzjsCCzx75RsIKLwleUIrOTfSb3dpB65DQSHx7zHjFnItDXXwOIs+K7qynRpLVuqHqWVkBj+JtkbKs/Uo7r7FCniWfATXk1JTOHYI7nwlknjoWpBc1P27U4FCrYZnNryOe4VY8uf2WoS05zBaoCmOjhyh8Wr7WNdQ0=
-Received: from SN6PR04CA0085.namprd04.prod.outlook.com (2603:10b6:805:f2::26)
- by CY4PR02MB2326.namprd02.prod.outlook.com (2603:10b6:903:b::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3131.24; Mon, 29 Jun
- 2020 12:50:07 +0000
-Received: from SN1NAM02FT011.eop-nam02.prod.protection.outlook.com
- (2603:10b6:805:f2:cafe::a1) by SN6PR04CA0085.outlook.office365.com
- (2603:10b6:805:f2::26) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3131.24 via Frontend
- Transport; Mon, 29 Jun 2020 12:50:07 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
- smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
- header.d=none;nongnu.org; dmarc=bestguesspass action=none
- header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
-Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
- SN1NAM02FT011.mail.protection.outlook.com (10.152.72.82) with Microsoft SMTP
- Server id 15.20.3131.20 via Frontend Transport; Mon, 29 Jun 2020 12:50:07
- +0000
-Received: from [149.199.38.66] (port=59598 helo=xsj-pvapsmtp01)
- by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
- (envelope-from <francisco.iglesias@xilinx.com>)
- id 1jptDK-0002Vy-4o; Mon, 29 Jun 2020 05:48:46 -0700
-Received: from [127.0.0.1] (helo=localhost)
- by xsj-pvapsmtp01 with smtp (Exim 4.63)
- (envelope-from <francisco.iglesias@xilinx.com>)
- id 1jptEc-0002sG-UC; Mon, 29 Jun 2020 05:50:06 -0700
-Received: from xsj-pvapsmtp01 (mailhost.xilinx.com [149.199.38.66])
- by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id 05TCo0WB030568; 
- Mon, 29 Jun 2020 05:50:00 -0700
-Received: from [10.23.120.126] (helo=debian)
- by xsj-pvapsmtp01 with esmtp (Exim 4.63)
- (envelope-from <francisco.iglesias@xilinx.com>)
- id 1jptEW-0002aj-FT; Mon, 29 Jun 2020 05:50:00 -0700
-Date: Mon, 29 Jun 2020 13:49:58 +0100
-From: Francisco Iglesias <francisco.iglesias@xilinx.com>
-To: Vikram Garhwal <fnu.vikram@xilinx.com>
-Subject: Re: [PATCH v7 2/4] xlnx-zynqmp: Connect Xilinx ZynqMP CAN controllers
-Message-ID: <20200629124956.ykebklynrx5vdyha@debian>
-References: <1593113607-321118-1-git-send-email-fnu.vikram@xilinx.com>
- <1593113607-321118-3-git-send-email-fnu.vikram@xilinx.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jpuNl-0002FJ-QR
+ for qemu-arm@nongnu.org; Mon, 29 Jun 2020 10:03:37 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:41254)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jpuNk-0003he-3j
+ for qemu-arm@nongnu.org; Mon, 29 Jun 2020 10:03:37 -0400
+Received: by mail-ot1-x343.google.com with SMTP id k15so15553667otp.8
+ for <qemu-arm@nongnu.org>; Mon, 29 Jun 2020 07:03:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=MIJJlagxHPmOgfuISOsEBqz+aj54Iz3tGWYgmF5TVnU=;
+ b=rfeWayypfFKzvw8ffYQ3rszSXtsjiKBvvarrdvhJJgrgRFty3bBVt6G1IZLVTyE21Z
+ XolgXYv/OPQylx3nBXwjf2LB4i7llCJpwt7ktlDJFeR7mmB5MOd5Hf1/FKHt4g+JcdRL
+ DXWH1yFBOsvQIln/haDrkLZn5XnjZ32LNcbwu5GeCzbcEaQ3l0UVXSNiupqoiI8bAloU
+ y2cIAO0XDdEuxSn1FJt8OLrqrlUqy9ziKr/pla2mctHsVJM+5YTi60JcQdzSjJRYWvzm
+ Mh/8uPKf1YZW3Yw0P4Febj+EcdGPMcz9iiLoWZvO6LBQPQvrRTwnjYKBFZJGEqvOe3E5
+ ZTvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=MIJJlagxHPmOgfuISOsEBqz+aj54Iz3tGWYgmF5TVnU=;
+ b=G/54WlK6ZCKbhASoTvDdTdbiLI2OrcyXFUD9MVm2Cnvq+7XWwxNxeuJMDQT1zCWjA4
+ DVVeVI5EdA0163g/PzypXY3b78acrRvjJd7xIfFCQavGO1zN4nELhjxjoaifBtGaBCcE
+ WXt6Kf7Qxmdn/LYF89rVwy5kD2e5shcMRitoWq/ZAj/zbEyTfgsB2yflau54Q9EelNAN
+ 6erf/yzUvS8Gr0zsBuijKuCZgQ4pBMyC8OnX3Ot/9yBgefZh1NBy8AOX2LlEThvrRzf+
+ tKJrMWO+7GXJtjmMqqMQ2q1Cm1oG3ImDL7senLKxDyErAMutXh1ugdBzt7QD8e7aZaW/
+ /i7w==
+X-Gm-Message-State: AOAM530yISuhdvbCTl3d2qribtn3oDjKA41ni/vh5mfvYx/G9aGXeAeD
+ wFCPKhtWAy3sGjXc0rJkEu+HdiogTAlMthp2bKYmsPdvH1s=
+X-Received: by 2002:a9d:7303:: with SMTP id e3mr7681518otk.221.1593439402966; 
+ Mon, 29 Jun 2020 07:03:22 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <1593113607-321118-3-git-send-email-fnu.vikram@xilinx.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-RCIS-Action: ALLOW
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.83; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapsmtpgw01; PTR:unknown-60-83.xilinx.com; CAT:NONE;
- SFTY:;
- SFS:(39860400002)(346002)(376002)(396003)(136003)(46966005)(44832011)(9576002)(336012)(426003)(9686003)(33716001)(54906003)(5660300002)(47076004)(356005)(8936002)(478600001)(8676002)(82740400003)(81166007)(9786002)(82310400002)(26005)(1076003)(6636002)(316002)(70206006)(6862004)(70586007)(2906002)(4326008)(186003);
- DIR:OUT; SFP:1101; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: b3893ba4-b053-4de5-c1f3-08d81c2af381
-X-MS-TrafficTypeDiagnostic: CY4PR02MB2326:
-X-Microsoft-Antispam-PRVS: <CY4PR02MB23267B45E60C99D8CEF408E6AD6E0@CY4PR02MB2326.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:219;
-X-Forefront-PRVS: 044968D9E1
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: +voBL7RMe2OaCswx0K+FLh/0yPDSzAW2hLoRWFK12aKruHVsRZrsTmJb906hDRVM9Aq8wnAmeGscWl2WNKuCTQwvMMEpu12yvm6CuVPfV+I2cGP92co77B6lJRH5B4b6uWIdliEhkT4jBm24htAQMampw/Cyvoml8czbGYfuosdzdXLmz3z9r/EwRc9UsMtDVjHTXeyA2GSqBQ5bpu7wAq5n52H59hNFaQ9bjQyg6TcclwJTjk8DH3KEUZR7+V2kVEhdFNRxO3CSxMVZ9m3IVJwszS6SHYUJiTcYAQGqxKsk7I/vXcKeSBSckb2wgEGG3mbhZbJDXNPN7W/FdXqn+WAcEiVoid+koL3hrOgbvW5ryYyHD2eutzcLphcGO4QqlmHPLAWgr2vdnQLN2DDZhQ==
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Jun 2020 12:50:07.2426 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: b3893ba4-b053-4de5-c1f3-08d81c2af381
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
- Helo=[xsj-pvapsmtpgw01]
-X-MS-Exchange-CrossTenant-AuthSource: SN1NAM02FT011.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR02MB2326
-Received-SPF: pass client-ip=40.107.244.74; envelope-from=figlesia@xilinx.com;
- helo=NAM12-MW2-obe.outbound.protection.outlook.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/29 08:50:09
-X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+References: <20200628142429.17111-1-peter.maydell@linaro.org>
+ <20200628142429.17111-3-peter.maydell@linaro.org>
+ <115c9299-8694-469d-e787-d03f12dc417c@amsat.org>
+In-Reply-To: <115c9299-8694-469d-e787-d03f12dc417c@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 29 Jun 2020 15:03:12 +0100
+Message-ID: <CAFEAcA9sC6QgidJ833X6-5cp5mCNkTyBcwxQPbAk0csJatMKiA@mail.gmail.com>
+Subject: Re: [PATCH 02/17] hw/arm/spitz: Create SpitzMachineClass abstract
+ base class
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -168,116 +116,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- "open list:Xilinx ZynqMP" <qemu-arm@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Andrzej Zaborowski <balrogg@gmail.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0A6D7tMulTQt
+X-TUID: X8YLO/3t80ab
 
-Hi Vikram,
+On Mon, 29 Jun 2020 at 09:55, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+>
+> On 6/28/20 4:24 PM, Peter Maydell wrote:
+> > For the four Spitz-family machines (akita, borzoi, spitz, terrier)
+> > create a proper abstract class SpitzMachineClass which encapsulates
+> > the common behaviour, rather than having them all derive directly
+> > from TYPE_MACHINE:
+> >  * instead of each machine class setting mc->init to a wrapper
+> >    function which calls spitz_common_init() with parameters,
+> >    put that data in the SpitzMachineClass and make spitz_common_init
+> >    the SpitzMachineClass machine-init function
+> >  * move the settings of mc->block_default_type and
+> >    mc->ignore_memory_transaction_failures into the SpitzMachineClass
+> >    class init rather than repeating them in each machine's class init
+> >
+> > (The motivation is that we're going to want to keep some state in
+> > the SpitzMachineState so we can connect GPIOs between devices created
+> > in one sub-function of the machine init to devices created in a
+> > different sub-function.)
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> >  hw/arm/spitz.c | 91 ++++++++++++++++++++++++++++++--------------------
+> >  1 file changed, 55 insertions(+), 36 deletions(-)
+> >
+> > diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+> > index 9eaedab79b5..c70e912a33d 100644
+> > --- a/hw/arm/spitz.c
+> > +++ b/hw/arm/spitz.c
+> > @@ -33,6 +33,26 @@
+> >  #include "exec/address-spaces.h"
+> >  #include "cpu.h"
+> >
+> > +enum spitz_model_e { spitz, akita, borzoi, terrier };
+> > +
+> > +typedef struct {
+> > +    MachineClass parent;
+> > +    enum spitz_model_e model;
+>
+> Nitpick, I'd drop the not very useful typedef and use
+> directly ...:
+>
+>        enum { spitz, akita, borzoi, terrier } model
 
-On Thu, Jun 25, 2020 at 12:33:25PM -0700, Vikram Garhwal wrote:
-> Connect CAN0 and CAN1 on the ZynqMP.
-> 
-> Acked-by: Alistair Francis <alistair.francis@wdc.com>
-> Signed-off-by: Vikram Garhwal <fnu.vikram@xilinx.com>
-> ---
->  hw/arm/xlnx-zynqmp.c         | 28 ++++++++++++++++++++++++++++
->  include/hw/arm/xlnx-zynqmp.h |  4 ++++
->  2 files changed, 32 insertions(+)
-> 
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index 1de9d4a..3f93524 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -81,6 +81,14 @@ static const int uart_intr[XLNX_ZYNQMP_NUM_UARTS] = {
->      21, 22,
->  };
->  
-> +static const uint64_t can_addr[XLNX_ZYNQMP_NUM_CAN] = {
-> +    0xFF060000, 0xFF070000,
-> +};
-> +
-> +static const int can_intr[XLNX_ZYNQMP_NUM_CAN] = {
-> +    23, 24,
-> +};
-> +
->  static const uint64_t sdhci_addr[XLNX_ZYNQMP_NUM_SDHCI] = {
->      0xFF160000, 0xFF170000,
->  };
-> @@ -247,6 +255,11 @@ static void xlnx_zynqmp_init(Object *obj)
->                                  TYPE_CADENCE_UART);
->      }
->  
-> +    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
-> +        object_initialize_child(obj, "can[*]", &s->can[i],
-> +                              TYPE_XLNX_ZYNQMP_CAN);
+This is just code motion, I didn't want to mess with the
+existing way this enum was defined.
 
-Above line needs a minor indentation fix (a couple of extra whitespaces),
-after adding those:
 
-Reviewed-by: Francisco Iglesias <francisco.iglesias@xilinx.com>
+> > -static void spitz_common_init(MachineState *machine,
+> > -                              enum spitz_model_e model, int arm_id)
+> > +static void spitz_common_init(MachineState *machine)
+> >  {
+> > +    SpitzMachineClass *smc =3D SPITZ_MACHINE_GET_CLASS(machine);
+> > +    enum spitz_model_e model =3D smc->model;
+>
+> ... and use 'smc->model' in place.
 
-Best regards,
-Francisco Iglesias
+Similarly here I used smc->arm_id in-place because there
+was only one user, but went for model =3D smc->model because
+there were multiple users and it would have put extra
+changed lines into the patch that I didn't think were
+necessary.
 
-> +    }
-> +
->      object_initialize_child(obj, "sata", &s->sata, TYPE_SYSBUS_AHCI);
->  
->      for (i = 0; i < XLNX_ZYNQMP_NUM_SDHCI; i++) {
-> @@ -492,6 +505,21 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->                             gic_spi[uart_intr[i]]);
->      }
->  
-> +    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
-> +        object_property_set_int(OBJECT(&s->can[i]), i, "ctrl-idx",
-> +                                &error_abort);
-> +        object_property_set_int(OBJECT(&s->can[i]), XLNX_ZYNQMP_CAN_REF_CLK,
-> +                                "ext_clk_freq", &error_abort);
-> +        sysbus_realize(SYS_BUS_DEVICE(&s->can[i]), &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->can[i]), 0, can_addr[i]);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->can[i]), 0,
-> +                           gic_spi[can_intr[i]]);
-> +    }
-> +
->      object_property_set_int(OBJECT(&s->sata), SATA_NUM_PORTS, "num-ports",
->                              &error_abort);
->      sysbus_realize(SYS_BUS_DEVICE(&s->sata), &err);
-> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-> index 53076fa..dcb88e0 100644
-> --- a/include/hw/arm/xlnx-zynqmp.h
-> +++ b/include/hw/arm/xlnx-zynqmp.h
-> @@ -22,6 +22,7 @@
->  #include "hw/intc/arm_gic.h"
->  #include "hw/net/cadence_gem.h"
->  #include "hw/char/cadence_uart.h"
-> +#include "hw/net/xlnx-zynqmp-can.h"
->  #include "hw/ide/ahci.h"
->  #include "hw/sd/sdhci.h"
->  #include "hw/ssi/xilinx_spips.h"
-> @@ -41,6 +42,8 @@
->  #define XLNX_ZYNQMP_NUM_RPU_CPUS 2
->  #define XLNX_ZYNQMP_NUM_GEMS 4
->  #define XLNX_ZYNQMP_NUM_UARTS 2
-> +#define XLNX_ZYNQMP_NUM_CAN 2
-> +#define XLNX_ZYNQMP_CAN_REF_CLK (24 * 1000 * 1000)
->  #define XLNX_ZYNQMP_NUM_SDHCI 2
->  #define XLNX_ZYNQMP_NUM_SPIS 2
->  #define XLNX_ZYNQMP_NUM_GDMA_CH 8
-> @@ -92,6 +95,7 @@ typedef struct XlnxZynqMPState {
->  
->      CadenceGEMState gem[XLNX_ZYNQMP_NUM_GEMS];
->      CadenceUARTState uart[XLNX_ZYNQMP_NUM_UARTS];
-> +    XlnxZynqMPCANState can[XLNX_ZYNQMP_NUM_CAN];
->      SysbusAHCIState sata;
->      SDHCIState sdhci[XLNX_ZYNQMP_NUM_SDHCI];
->      XilinxSPIPS spi[XLNX_ZYNQMP_NUM_SPIS];
-> -- 
-> 2.7.4
-> 
+thanks
+-- PMM

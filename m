@@ -1,196 +1,250 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2805744lfm;
-        Mon, 29 Jun 2020 02:15:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyJZuY7mGeVSB7i4KChnTrJxKta9VCotT4PdHAxEQ926v+/zWSUbUZw6cTQy+5kL/GL7k43
-X-Received: by 2002:a25:dc4f:: with SMTP id y76mr17920364ybe.462.1593422110213;
-        Mon, 29 Jun 2020 02:15:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593422110; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2770557lfm;
+        Mon, 29 Jun 2020 01:15:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw2tQnU594M45Pv0VCbRj4gRkRfbdw8dMKWtdqbozD6Tl/9lDc7PkyVhzUFRpeSn7Jc66ft
+X-Received: by 2002:a05:620a:22cc:: with SMTP id o12mr1262020qki.230.1593418537959;
+        Mon, 29 Jun 2020 01:15:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593418537; cv=none;
         d=google.com; s=arc-20160816;
-        b=NL2oHSqYEX8IGAXJ3X/PDbQQmWE9sMrXOXuAY5tQadn/3Z0Pru2vWXQQPQIVFxDDzg
-         64umpa9D+MRe4pipMvMwBYx/tlLayVPneMZC/doDRBX87YblXC7Da8xUIDcKlDnbZQTi
-         Z0LXyRq1og/PbHzq2TdiZ62RhrrlQ9ouc87MTw5x8tsM9+QaYC12P1DF9ZhqUD15YBJ3
-         qBtIaS+amfCVg/X6yAqz1MRRpbNf51bNNdHRLtHBEGeSVx8UvwUE73p63osOle0qQp3a
-         rthjNpF1ogGj0oxo7frEQ1pCuHs6g/ylFJWarCwYp/xhoA0V3/TDkxqzQpw75PKV1hIH
-         XhUQ==
+        b=nGPH+hJs6ZvH13p0owVvVJusCv6wc66IUe69iFi2zfr99bkERjOvvMrz+Gf827OTnq
+         Ewb+SNl22zBOBqdruoAkhkZKkWZSsK/B4iJMelrLP0QWqT0djah49BkcwDeyVpmxjZGB
+         uhPDQHaVVCdGHd8lHR8au6VPIeqEPItiez3ceMSDtlVT26ZsYVngdOsAoLtHN3wys3Mg
+         3R0z4T/sa/zUDp/uJhFpMsoWsFMCeptX5cM4NFNnkRLmadka1NXu0/CtBjpJUard51S7
+         1W2Q9yDLfycVQM2jw2jaN+L/lf8GBkyV0jQ/92jYhZC/dVVhOZLwweobuPWCtrlYlxFG
+         G2sA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=j6/T5YgWZ6vOd2dvMBWSe9xG+C7qb+4lDmG/H9meMPM=;
-        b=oQioyNhYyZUDybCMDmFMh7vK73uPhuNsvn0qjDjPXkiFClx7I/EzHa9Y8H54Stmyiy
-         uDQbf0AP8W6IlLZv/lWII0QZcW3Pi2htEXjUCLePvArwFhSWGkZ8r5RC8c5+ayyL+IlT
-         +Zxktw/6/ijbFEvuAU7kpOX8uvqh9xutoxR3pmUV9QX79iEXHsuZrXgEnJiIFOa8ZMoX
-         W2UMkGKyQfhdELvlVsuHk2m89OImeSJitFakQBvenPJetU4mNUEKQAHlDUrfe90tSS6S
-         CxPBVXEy6R+s98i4MgMJjR88rQeiHGHusjAA1d3fNL+zTLO5V+jw7Rrr7olplv5cQU2j
-         1M/A==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=Con7Fb05NlDN9LiACl+t/SFnSSzNeGeoT9Lz11PL4Mk=;
+        b=0v3kBKj8WqEnr94XKWj23vGLLbI4ksXsFFakvX/9dxKA/Xfdv4uIXpCYLboxbo5KQU
+         qs1+jUumPLHRtNOJBXNkcyi2v8onSDoW4CRBFqEBEXldzUKZA0HeQs2f1vBfE/f/hT6H
+         9F/uu3Tuq0BbsYP2tIr0BQl/TWr0rsVRQzOGjXY18MwmJu5EjobOMqnCB6VoQyXLwdnY
+         roIYyFSDPOKLFCoE1Zz5VfuNYFh2vb/osWfFnx73ZBYLt/ikzb/+o4sLdd8xbb7D5UQN
+         Gar3QAALhN0myIwg9IGrwGB8zAQO4SOH9dlTYY99iQAgORh0CSy/glpH19n1RpdktgbW
+         eCUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VtxMjxrm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n7si39838540ybn.229.2020.06.29.02.15.10
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jun 2020 02:15:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=D93GV8OQ;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id i9si15317653qtp.138.2020.06.29.01.15.37;
+        Mon, 29 Jun 2020 01:15:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VtxMjxrm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:34998 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jppsb-0003d5-IS
-	for alex.bennee@linaro.org; Mon, 29 Jun 2020 05:15:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42710)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jppsN-0003ao-HX; Mon, 29 Jun 2020 05:14:55 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:39159)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jppsL-0004xw-Ta; Mon, 29 Jun 2020 05:14:55 -0400
-Received: by mail-wm1-x341.google.com with SMTP id w3so2904544wmi.4;
- Mon, 29 Jun 2020 02:14:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=j6/T5YgWZ6vOd2dvMBWSe9xG+C7qb+4lDmG/H9meMPM=;
- b=VtxMjxrmY4cx+3YMcq4E9euYUPhoJf7lfAMvBtBwYAoqIUMXf3u+0pKlHdVDaJxAnQ
- rerTsbyx5M28Vl24shWrJx/bUiUL/EX61P9LZQsixh67ZxnYNSoZIgLodvsQnx19AqoQ
- CBFn7aCRIvOa+6Atmiotp/++lqwv3TheyYWUvvJJrGYJnKTOpc+mWU/4ddJzN2X+OnRa
- TACzo0YGww8Ou86ZcnjYyc3RXiQZPf5eMjl78yabEw3TtU4UKp8ULibT0T//hzdjTf8G
- evAqQd6A15IcI2eMram9gBv0zfaQo0YQLIERghmTEThMx+EEYg6ZeZyt8fl1YeQWFGKg
- t9ow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=j6/T5YgWZ6vOd2dvMBWSe9xG+C7qb+4lDmG/H9meMPM=;
- b=Q/T5NIaR77ERH7YMF1/asBRE6UcV5WGikPje/n9s29sbO14AJ/yJm1RUfWMhhEnLYj
- aiRHcAlIZMxUGEg3UOCctHK+TDVB+mp67sQxo8GcrM5+sn+xRtcHwTZsWHRYNc/BL6PJ
- yK+GD+py1wVlxamlShWekRmnNNVIymHVfWY9YCMWpvC8TAWuNoquZ5vgrVlVDzvt1/s5
- KjQr1zPOmnSKGcj4yK27yEO+PSHInglwsq5a3VobvWAUZfh6PpcWlQ7Gp6vmpH4NRacH
- J/YRIlMKLe7r+GKGfdNnFOCGECOOgjaheS7x1IlJiBpGcCyCLgyn//WocFAgloa4dLI1
- ybLA==
-X-Gm-Message-State: AOAM530v801FDKzTfGcdPXoOj5GLaZvCSpkwlF7crYAP9P64F1A3AMQn
- b9A4ihXtAGltVQq7rsD4mE4=
-X-Received: by 2002:a1c:6408:: with SMTP id y8mr15391204wmb.122.1593422092096; 
- Mon, 29 Jun 2020 02:14:52 -0700 (PDT)
-Received: from [192.168.1.37] (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id z132sm22099612wmb.21.2020.06.29.02.14.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Jun 2020 02:14:51 -0700 (PDT)
-Subject: Re: [PATCH 15/17] hw/arm/pxa2xx_pic: Use LOG_GUEST_ERROR for bad
- guest register accesses
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20200628142429.17111-1-peter.maydell@linaro.org>
- <20200628142429.17111-16-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <1fa30b47-f7df-21b6-0616-debfb7220607@amsat.org>
-Date: Mon, 29 Jun 2020 11:14:50 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+       dkim=neutral (body hash did not verify) header.i=@redhat.com header.s=mimecast20190719 header.b=D93GV8OQ;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id A546F4B3DA;
+	Mon, 29 Jun 2020 04:15:37 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.909
+X-Spam-Level: 
+X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
+	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
+	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
+Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
+	(fail, message has been altered) header.i=@redhat.com
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OGNcd5h0zPAD; Mon, 29 Jun 2020 04:15:36 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 237BA4B3D5;
+	Mon, 29 Jun 2020 04:15:36 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 95E8F4B3D2
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 29 Jun 2020 04:15:35 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 39BrvIj2rWkR for <kvmarm@lists.cs.columbia.edu>;
+ Mon, 29 Jun 2020 04:15:33 -0400 (EDT)
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [207.211.31.120])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id A99FA4B3D1
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 29 Jun 2020 04:15:33 -0400 (EDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593418533;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=YeWPv4LwNFbOE8U+vD3kd+cE46oiG3QsCgfJx5ZNa3E=;
+ b=D93GV8OQb1Kr31ANLLsvW8u8GrlEI2Wv3qOoviipMRDeUb4wHxarJF8WmnS3HEy+L80b7t
+ ydyoWXD7wDHBWHRNCbE1sPMlBbEkhQrWhT/PS6Ne+UtPLNoDTWzutS6Py5IAaBeIkQAy2s
+ 9XuTockkEor9V94fvfXT48i9wgTXgiY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-513-T--9kbTgNmax7a29LikzDQ-1; Mon, 29 Jun 2020 04:15:17 -0400
+X-MC-Unique: T--9kbTgNmax7a29LikzDQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A8C90A0BDA;
+ Mon, 29 Jun 2020 08:15:15 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.194.151])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B702D10016EB;
+ Mon, 29 Jun 2020 08:15:13 +0000 (UTC)
+Date: Mon, 29 Jun 2020 10:15:10 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Beata Michalska <beata.michalska@linaro.org>
+Subject: Re: [PATCH v8 1/2] target/arm: kvm: Handle DABT with no valid ISS
+Message-ID: <20200629081510.ochvmmmikhe62bsm@kamzik.brq.redhat.com>
+References: <20200628150459.18566-1-beata.michalska@linaro.org>
+ <20200628150459.18566-2-beata.michalska@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20200628142429.17111-16-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+In-Reply-To: <20200628150459.18566-2-beata.michalska@linaro.org>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, pbonzini@redhat.com,
+ kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>,
- Andrzej Zaborowski <balrogg@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mn7ayhmPSbdL
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: Ca25/MG4Ju+5
 
-On 6/28/20 4:24 PM, Peter Maydell wrote:
-> Instead of using printf() for logging guest accesses to invalid
-> register offsets in the pxa2xx PIC device, use the usual
-> qemu_log_mask(LOG_GUEST_ERROR,...).
+On Sun, Jun 28, 2020 at 04:04:58PM +0100, Beata Michalska wrote:
+> On ARMv7 & ARMv8 some load/store instructions might trigger a data abort
+> exception with no valid ISS info to be decoded. The lack of decode info
+> makes it at least tricky to emulate those instruction which is one of the
+> (many) reasons why KVM will not even try to do so.
 > 
-> This was the only user of the REG_FMT macro in pxa.h, so we can
-> remove that.
+> Add support for handling those by requesting KVM to inject external
+> dabt into the quest.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
+> Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
 > ---
->  include/hw/arm/pxa.h | 1 -
->  hw/arm/pxa2xx_pic.c  | 9 +++++++--
->  2 files changed, 7 insertions(+), 3 deletions(-)
+>  target/arm/kvm.c | 57 +++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 56 insertions(+), 1 deletion(-)
 > 
-> diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
-> index f6dfb5c0cf0..8843e5f9107 100644
-> --- a/include/hw/arm/pxa.h
-> +++ b/include/hw/arm/pxa.h
-> @@ -184,7 +184,6 @@ struct PXA2xxI2SState {
->  };
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index eef3bbd..2dd8a9a 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -39,6 +39,7 @@ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
 >  
->  # define PA_FMT			"0x%08lx"
-> -# define REG_FMT		"0x" TARGET_FMT_plx
+>  static bool cap_has_mp_state;
+>  static bool cap_has_inject_serror_esr;
+> +static bool cap_has_inject_ext_dabt;
 >  
->  PXA2xxState *pxa270_init(MemoryRegion *address_space, unsigned int sdram_size,
->                           const char *revision);
-> diff --git a/hw/arm/pxa2xx_pic.c b/hw/arm/pxa2xx_pic.c
-> index 105c5e63f2f..ceee6aa48db 100644
-> --- a/hw/arm/pxa2xx_pic.c
-> +++ b/hw/arm/pxa2xx_pic.c
-> @@ -11,6 +11,7 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "qemu/module.h"
-> +#include "qemu/log.h"
->  #include "cpu.h"
->  #include "hw/arm/pxa.h"
->  #include "hw/sysbus.h"
-> @@ -166,7 +167,9 @@ static uint64_t pxa2xx_pic_mem_read(void *opaque, hwaddr offset,
->      case ICHP:	/* Highest Priority register */
->          return pxa2xx_pic_highest(s);
->      default:
-> -        printf("%s: Bad register offset " REG_FMT "\n", __func__, offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "pxa2xx_pic_mem_read: bad register offset 0x%" HWADDR_PRIx
-> +                      "\n", offset);
->          return 0;
+>  static ARMHostCPUFeatures arm_host_cpu_features;
+>  
+> @@ -245,6 +246,16 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>          ret = -EINVAL;
+>      }
+>  
+> +    if (kvm_check_extension(s, KVM_CAP_ARM_NISV_TO_USER)) {
+> +        if (kvm_vm_enable_cap(s, KVM_CAP_ARM_NISV_TO_USER, 0)) {
+> +            error_report("Failed to enable KVM_CAP_ARM_NISV_TO_USER cap");
+> +        } else {
+> +            /* Set status for supporting the external dabt injection */
+> +            cap_has_inject_ext_dabt = kvm_check_extension(s,
+> +                                    KVM_CAP_ARM_INJECT_EXT_DABT);
+> +        }
+> +    }
+> +
+>      return ret;
+>  }
+>  
+> @@ -810,6 +821,45 @@ void kvm_arm_vm_state_change(void *opaque, int running, RunState state)
 >      }
 >  }
-> @@ -199,7 +202,9 @@ static void pxa2xx_pic_mem_write(void *opaque, hwaddr offset,
->          s->priority[32 + ((offset - IPR32) >> 2)] = value & 0x8000003f;
+>  
+> +/**
+> + * kvm_arm_handle_dabt_nisv:
+> + * @cs: CPUState
+> + * @esr_iss: ISS encoding (limited) for the exception from Data Abort
+> + *           ISV bit set to '0b0' -> no valid instruction syndrome
+> + * @fault_ipa: faulting address for the synchronous data abort
+> + *
+> + * Returns: 0 if the exception has been handled, < 0 otherwise
+> + */
+> +static int kvm_arm_handle_dabt_nisv(CPUState *cs, uint64_t esr_iss,
+> +                             uint64_t fault_ipa)
+
+The indent of 'uint64_t fault_ipa' is off. Should be under CPUState.
+
+> +{
+> +    /*
+> +     * Request KVM to inject the external data abort into the guest
+> +     */
+> +    if (cap_has_inject_ext_dabt) {
+> +        struct kvm_vcpu_events events = { };
+> +        /*
+> +         * The external data abort event will be handled immediately by KVM
+> +         * using the address fault that triggered the exit on given VCPU.
+> +         * Requesting injection of the external data abort does not rely
+> +         * on any other VCPU state. Therefore, in this particular case, the VCPU
+> +         * synchronization can be exceptionally skipped.
+> +         */
+> +        events.exception.ext_dabt_pending = 1;
+> +        /*
+> +         * KVM_CAP_ARM_INJECT_EXT_DABT implies KVM_CAP_VCPU_EVENTS
+> +         */
+
+Single line comments may be done with /* ... */ 
+
+> +        return kvm_vcpu_ioctl(cs, KVM_SET_VCPU_EVENTS, &events);
+> +
+
+Extra blank line here.
+
+> +    } else {
+> +        error_report("Data abort exception triggered by guest memory access "
+> +                     "at physical address: 0x"  TARGET_FMT_lx,
+> +                     (target_ulong)fault_ipa);
+> +        error_printf("KVM unable to emulate faulting instruction.\n");
+> +    }
+> +    return -1;
+> +}
+> +
+>  int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+>  {
+>      int ret = 0;
+> @@ -820,7 +870,12 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+>              ret = EXCP_DEBUG;
+>          } /* otherwise return to guest */
 >          break;
->      default:
-> -        printf("%s: Bad register offset " REG_FMT "\n", __func__, offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "pxa2xx_pic_mem_write: bad register offset 0x%"
-> +                      HWADDR_PRIx "\n", offset);
->          return;
->      }
->      pxa2xx_pic_update(opaque);
+> -    default:
+> +    case KVM_EXIT_ARM_NISV:
+> +        /* External DABT with no valid iss to decode */
+> +        ret = kvm_arm_handle_dabt_nisv(cs, run->arm_nisv.esr_iss,
+> +                                       run->arm_nisv.fault_ipa);
+> +        break;
+> +     default:
+
+An extra space got added in front of 'default:'
+
+>          qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
+>                        __func__, run->exit_reason);
+>          break;
+> -- 
+> 2.7.4
+> 
 > 
 
+Besides the format changes
+
+Reviewed-by: Andrew Jones <drjones@redhat.com>
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

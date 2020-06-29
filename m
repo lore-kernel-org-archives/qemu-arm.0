@@ -1,148 +1,117 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3029693lfm;
-        Mon, 29 Jun 2020 07:18:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwHMCtcOzdhwiVviTdMOiev9Fpwk2dDgPUxDghikhaBfEvtUfA5kNrY7cC6o3jaIO7hLQ7Y
-X-Received: by 2002:a25:2d57:: with SMTP id s23mr28539382ybe.11.1593440325837;
-        Mon, 29 Jun 2020 07:18:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593440325; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3060507lfm;
+        Mon, 29 Jun 2020 07:57:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyqhv1f6J4ISCAwJc7qzhmNI8X7zZ9/yY1Px9lLfM2p9FdWtd6nzNcw16Ic/tpDvRkkck87
+X-Received: by 2002:a25:d489:: with SMTP id m131mr27659796ybf.204.1593442653919;
+        Mon, 29 Jun 2020 07:57:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593442653; cv=none;
         d=google.com; s=arc-20160816;
-        b=qhk6uo5eJaWc1csNQsZ/xxzA2v2p3fQoky3RsjK7b1DEuiwaHaUlSdgnLPJgsfd3jc
-         cyZaYoel85vxuJej6upODkCPj2TnwDmddw9PqAmB5CnYcBv1dcu4WEhs3FalCawI5Fto
-         GVNgkMemiNrKOVgA+LXAVbjLbSWR4GszUHKEF2QRi3quMctx3Gmop0zR/r8sW1mv74Ji
-         B8zac/cQYa14zHG1L9tvqPY75gPoqlg1TqNVT5Up3N+PrHazv1gAFSe6btie1S6LgaUY
-         l1I3RwN2RmuEP4YZ6CUXboKOovKRMQHsoXkDqWDCrAMjg++I//f+BlGpRHXgQl24nkSE
-         gKwA==
+        b=M6y+rrhuuNwq9A3pVwoLvOC1pM7Uz7I24rc9rLo7EuLRzpQy9afNlDuf0v4T/gONax
+         KoZn8NZPLoEZyHYfyHIJnjJsb01jd3OsnE5aiyKIwd1MqblOLgBIho2eqaNuHRyQsYXZ
+         uCNTD0suULgY89kLTPvMNCHKqQqsPKPYfMYod4YgJF5CO1DpFY1YbnjloYo7O2zjeYW9
+         2IL8QRUIsP/ECRBBJ1PrjFZDuyg8yu5YnlhQsm3obBFo4S0a61tkmu3k6MeYaWmvxTI5
+         2VGPGarztFoafLPkFIZcai7pwMyVcUBXzwiCxJQuPwhiuY0sxXB/owf3mVbfndZq89Mz
+         uY1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=wheRM/SSsdNvONw5lhy+729M8lShBDgLLRoerkCT+ds=;
-        b=jNuiLdd9X7BnYZbwdHSeegL9rfSdkNqkbAwL+OcO5BJPGEuh4DFpcov+4z8kqsI+er
-         UmhCe++plnlwgbp2vl62V0XEZ8mS+dHd7H95kvlPVg80RalKWs43x3cHEbMVzTjMXzkE
-         ojiTELq47T/G57V5TrjwOa8uEmjvLsl+ciKzNRVAa5NKM58Sf+/67XRvD1WSYyZ8oXzS
-         mRQriE/b5JfRNKUbSuB9Fl23lc+wWpbodZAtBJSAOfYi3RJdNfD6A0o2OYdV+Gvu5yiz
-         AIJ+j9QIm7XiUVh3BTc07ojoFtchfsIkT/PZseu/zEAaZdcDdH/FK3cfMsvzZ9BISpkW
-         sX9w==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=JSy1xaQbw0L8ARiM5VBYS1D7X0v2qiWg8jPvKnzhMt0=;
+        b=BBbdns4Gl5iP0vdo+eri8WrHGMCRI7ArhJ3i0JMKrurZ/tZeCStaOyc2LvgfL1u9kA
+         r1PtiLPR+QCdzmRKWZMLAG7f6N+7s+SlZ4/U//vwv7vvblBjuta3t0dxl2iU2BkF7kpl
+         MZlR7tIj8b3VNgN9tECKsDdyci0svN/VDV6Fdy3FsbTmW3Srw38OXWrVHDotvrvIsA7H
+         wqUTR6t0axeVdcuwgcm7+PioZ6THwKqIJ0lQzjmdu2puy5Z9Jruigxcm/oiA8z+EfWpt
+         RFotlCTpamGN1UZuGWpwjtsqxlS3yrZP0pDzWBGaVWSzp0JPhRWV3i8YcYWeUU6lln11
+         NSJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LgRSuGC8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="sggrn/cE";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t5si13039350ybp.39.2020.06.29.07.18.45
+        by mx.google.com with ESMTPS id u76si8935421ybi.283.2020.06.29.07.57.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jun 2020 07:18:45 -0700 (PDT)
+        Mon, 29 Jun 2020 07:57:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LgRSuGC8;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="sggrn/cE";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51464 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:46452 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jpucP-0005rm-6W
-	for alex.bennee@linaro.org; Mon, 29 Jun 2020 10:18:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41642)
+	id 1jpvDx-0005l0-4x
+	for alex.bennee@linaro.org; Mon, 29 Jun 2020 10:57:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jpubu-0005ra-Hh
- for qemu-arm@nongnu.org; Mon, 29 Jun 2020 10:18:14 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35714
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jpubs-0005jj-6L
- for qemu-arm@nongnu.org; Mon, 29 Jun 2020 10:18:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593440291;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=wheRM/SSsdNvONw5lhy+729M8lShBDgLLRoerkCT+ds=;
- b=LgRSuGC8TpXxmaLrZaS+mvd0w6ySteC+psZHv487fxrSBwuLvbnXeNFXjC0/wjUxvFE25v
- DC/AMrQ0dic2q3e+a5RKUY+A6JWSB5N5T807i++jJaWfmYM1esMFi5WJzjAPT/JWGn8z8g
- OqorIbCgJ6UzYWVojsHG8rTTi2GZs1g=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-138-umLTHLt8NZyCJqMdy2ajuA-1; Mon, 29 Jun 2020 10:18:09 -0400
-X-MC-Unique: umLTHLt8NZyCJqMdy2ajuA-1
-Received: by mail-ej1-f70.google.com with SMTP id h26so11038427ejb.5
- for <qemu-arm@nongnu.org>; Mon, 29 Jun 2020 07:18:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jpvDg-0005kR-PA; Mon, 29 Jun 2020 10:57:16 -0400
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:43905)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jpvDf-00040a-Ai; Mon, 29 Jun 2020 10:57:16 -0400
+Received: by mail-ej1-x643.google.com with SMTP id l12so16851284ejn.10;
+ Mon, 29 Jun 2020 07:57:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=JSy1xaQbw0L8ARiM5VBYS1D7X0v2qiWg8jPvKnzhMt0=;
+ b=sggrn/cElpuSF011BeOT6VQrdxmVewce/xmQ6+4CpPKYEczOeGfQFVEx53hydi6w/H
+ TKZwshd6rcRwinsJ7TwYx78umu6y7z+Eib8uVnN0G5DcKmCnCSVKKfzFqHfuf2eRCESQ
+ KWMe1QNgCP97/aA157nDouH3yyxnrCeyhl4DGneqgDfaknjN2moZNOzPMJN9YyhB2QBo
+ g9+PxTC3i8QsahdR4x5vTt+JgtCswA2/wJHl5b2juYwwDORYXgZOTVWfpYt3h3PUxKDg
+ ZIPrge4TKXlHoUGfSLf6+59W/BKAj0FEvIYIroPq4ZDGtwkJFUlKxxVg1wjqt7st/vGn
+ Rn/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=wheRM/SSsdNvONw5lhy+729M8lShBDgLLRoerkCT+ds=;
- b=Os003DMXsspVpWkcEnCM5teBNQ50Aw6Dn0MLvz6tHb0KrKSygG/yVc8t0DsIQGaWcE
- O69ju8WVB6AQfnhTt26bj6Tkj/69wVgJEgPCRePCBziWwAD3CKct9mcOEn4kfYjSttSq
- BZnfmPfT0cGhya/vPKaX542gsa4e57p0AN+7ONpUZRGdQ2E44xz+XqqJduzid2iQKecp
- uULYilgu/55z7d6QROl4HX8mnusIGGkAf4DHhWaGzOJY2mlhiTIUPL/c1OUujPJ7SCH2
- CwXdpLPiUOBYD2E1nOgsntBv70z/Kg5gdIOveXQYIkgQ+Dw2yUX0IK20k26hlVkoQVfz
- h9bg==
-X-Gm-Message-State: AOAM531Uu2ssVQtaMAs9DJpR70eDBQ9K919Q2a9Gnj9QCVu3SKJeNSAW
- 67m18iRkRJPfLWV1ZzkRbpup/lH8NuW/hXKYCb2cTJLA90wV9srsue5CKZKNk39jx9ON6ezcE2d
- b2drugLcFSbYk
-X-Received: by 2002:a50:e3c9:: with SMTP id c9mr18490896edm.90.1593440288542; 
- Mon, 29 Jun 2020 07:18:08 -0700 (PDT)
-X-Received: by 2002:a50:e3c9:: with SMTP id c9mr18490870edm.90.1593440288277; 
- Mon, 29 Jun 2020 07:18:08 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=JSy1xaQbw0L8ARiM5VBYS1D7X0v2qiWg8jPvKnzhMt0=;
+ b=EfaddoGPZrCOHuEypZHYEm7BYkP14Rbq33xRBVHVvuS5IxCG/PiqK5eYLsDhHCe/VY
+ tYPXtjPCPsXiURDwpk54+xtBTs2OUm3EGyhOIHxFPbrRjkwMnMYM1p034xYX/XzVtIC8
+ QPmwQAOnlT8PQ2ii7Gr2jh+LWZrbe1g+thn7t6mEusBb+zyCa3vSvZNn8mGkt3eiY8uD
+ meKp0GpiyDm4Us1dS5dfsNpfYWct0O6vrVJENC0WSP4yXTunBxb6bOgUUZL1QxZd4U08
+ cSSVIrSR3cIHBp3balrl9tgp48qdMPSPTR+mFttOzbzaGf8y6nBcWYORWWkSJ2YMtGfu
+ 8W8w==
+X-Gm-Message-State: AOAM533mE1g5IZImZDdISeQ3V0wY1fq5dE3SkVUoqJojzA8K9rd2rAE7
+ DjR8dHu7fXyyikKhxBoB/XTEXAeOHvg=
+X-Received: by 2002:a17:907:395:: with SMTP id
+ ss21mr14203042ejb.181.1593442633574; 
+ Mon, 29 Jun 2020 07:57:13 -0700 (PDT)
 Received: from [192.168.1.37] (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id o8sm16274943ejj.102.2020.06.29.07.18.06
+ by smtp.gmail.com with ESMTPSA id d13sm98900edv.12.2020.06.29.07.57.12
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Jun 2020 07:18:07 -0700 (PDT)
-Subject: Re: [PATCH 3/4] hw/arm/virt-acpi-build: Only expose flash on older
- machine types
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-References: <20200629140938.17566-1-drjones@redhat.com>
- <20200629140938.17566-4-drjones@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <053462ec-0299-99fb-001b-93f31d668b0d@redhat.com>
-Date: Mon, 29 Jun 2020 16:18:05 +0200
+ Mon, 29 Jun 2020 07:57:12 -0700 (PDT)
+Subject: Re: [PATCH 11/17] hw/misc/max111x: Create header file for
+ documentation, TYPE_ macros
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200628142429.17111-1-peter.maydell@linaro.org>
+ <20200628142429.17111-12-peter.maydell@linaro.org>
+ <b1a56ac5-f2a7-ec88-0191-5324821f4916@amsat.org>
+ <CAFEAcA83LqH0dUZfk-yjmdEX_o4VNuDqAgSxe2hj9nGmAxs9Xw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <128760db-266b-092b-297c-d7c766174ced@amsat.org>
+Date: Mon, 29 Jun 2020 16:57:12 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200629140938.17566-4-drjones@redhat.com>
-Content-Language: en-US
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <CAFEAcA83LqH0dUZfk-yjmdEX_o4VNuDqAgSxe2hj9nGmAxs9Xw@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/29 01:10:03
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+Received-SPF: pass client-ip=2a00:1450:4864:20::643;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x643.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -156,91 +125,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, shannon.zhaosl@gmail.com,
- ard.biesheuvel@arm.com, imammedo@redhat.com, lersek@redhat.com,
- eric.auger@redhat.com
+Cc: qemu-arm <qemu-arm@nongnu.org>, Andrzej Zaborowski <balrogg@gmail.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9Iv57vpSS0eG
+X-TUID: GDjKutnN936K
 
-On 6/29/20 4:09 PM, Andrew Jones wrote:
-> The flash device is exclusively for the host-controlled firmware, so
-> we should not expose it to the OS. Exposing it risks the OS messing
-> with it, which could break firmware runtime services and surprise the
-> OS when all its changes disappear after reboot.
-> 
-> As firmware needs the device and uses DT, we leave the device exposed
-> there. It's up to firmware to remove the nodes from DT before sending
-> it on to the OS. However, there's no need to force firmware to remove
-> tables from ACPI (which it doesn't know how to do anyway), so we
-> simply don't add the tables in the first place. But, as we've been
-> adding the tables for quite some time and don't want to change the
-> default hardware exposed to versioned machines, then we only stop
-> exposing the flash device tables for 5.1 and later machine types.
-> 
-> Suggested-by: Ard Biesheuvel <ard.biesheuvel@arm.com>
-> Suggested-by: Laszlo Ersek <lersek@redhat.com>
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
+On 6/29/20 2:07 PM, Peter Maydell wrote:
+> On Mon, 29 Jun 2020 at 09:29, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> On 6/28/20 4:24 PM, Peter Maydell wrote:
+>>> Create a header file for the hw/misc/max111x device, in the
+>>> usual modern style for QOM devices:
+>>>  * definition of the TYPE_ constants and macros
+>>>  * definition of the device's state struct so that it can
+>>>    be embedded in other structs if desired
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Ah, fine.
 
-> ---
->  hw/arm/virt-acpi-build.c | 5 ++++-
->  hw/arm/virt.c            | 3 +++
->  include/hw/arm/virt.h    | 1 +
->  3 files changed, 8 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 1384a2cf2ab4..91f0df7b13a3 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -749,6 +749,7 @@ static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
->  static void
->  build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->      Aml *scope, *dsdt;
->      MachineState *ms = MACHINE(vms);
->      const MemMapEntry *memmap = vms->memmap;
-> @@ -767,7 +768,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      acpi_dsdt_add_cpus(scope, vms->smp_cpus);
->      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
->                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
-> -    acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
-> +    if (vmc->acpi_expose_flash) {
-> +        acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
-> +    }
->      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
->      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
->                      (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index cd0834ce7faf..5adc9ff799ef 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2482,9 +2482,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
->  
->  static void virt_machine_5_0_options(MachineClass *mc)
->  {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-> +
->      virt_machine_5_1_options(mc);
->      compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
->      mc->numa_mem_supported = true;
-> +    vmc->acpi_expose_flash = true;
->  }
->  DEFINE_VIRT_MACHINE(5, 0)
->  
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 31878ddc7223..c65be5fe0bb6 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -119,6 +119,7 @@ typedef struct {
->      bool no_highmem_ecam;
->      bool no_ged;   /* Machines < 4.2 has no support for ACPI GED device */
->      bool kvm_no_adjvtime;
-> +    bool acpi_expose_flash;
->  } VirtMachineClass;
->  
->  typedef struct {
-> 
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+>>>  * documentation of the interface
+>>>
+>>> This allows us to use TYPE_MAX_1111 in the spitz.c code rather
+>>> than the string "max1111".
+>>>
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>>> ---
+> 
+>> Nitpick, we can keep MAX_111X() + MAX111xState in "hw/misc/max111x.c"
+>> until we get a consumer.
+> 
+> This is deliberate, as noted in the commit message.
+> 
+> thanks
+> -- PMM
+> 

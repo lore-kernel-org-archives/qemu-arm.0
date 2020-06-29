@@ -1,103 +1,104 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3285405lfm;
-        Mon, 29 Jun 2020 12:48:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxnA5GwujsX7XXeoz0T0l8i1/zolD7ichayWxDWZBX/sNum1HzdAWTCKdcRiBnCDJ58V7kG
-X-Received: by 2002:a25:34cb:: with SMTP id b194mr5924921yba.168.1593460115427;
-        Mon, 29 Jun 2020 12:48:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593460115; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3343309lfm;
+        Mon, 29 Jun 2020 14:08:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw4+7CZOnAKDltYpzqOuTVs71aRc0qYW8cnZydck9ExDLZ9m05g3KyniCFHi3j/Vpy+4Zuz
+X-Received: by 2002:a25:7cc4:: with SMTP id x187mr29678058ybc.245.1593464887745;
+        Mon, 29 Jun 2020 14:08:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593464887; cv=none;
         d=google.com; s=arc-20160816;
-        b=ckh5ZrX09qGL1PBISggNKj8M0vSeDQRU1TpkJT7X2rnpZcten0z/bq5YWz4EHPdjWd
-         hIghNZAn2OHJ0x3Z0LuR6tgYUw9sox+0V64wTyIdldUVFCpQGrVokDWs4eo/j3y34s0R
-         YeGcTsToSDifAysaac3p3HVppO3QOyKvYN4snhnmrT3PUB3r7U+aXPEut+jOG6kQk20N
-         MTtobdkIIkDm0KE83TGScQOSS+FAlkeVZcBl1DC76Hmjf3GNYuqcUH5mZe/ASqKGmGOE
-         bn4lYHnR/BdQ9CTgMdJ74vxQ+qFe90TQEf8GGtJptmGsrFvZGlYjHHLHb/9bzarWycbJ
-         4juw==
+        b=E2SXXkCurEVCNXPe0735UlOIz071LEP8v/MJUYuHflIhNN7wj/5lvTSxANEvMg2a4p
+         6UC0T4WNWmpaxqmDdr3ueesNBPca/wkKf/HnqGhsalC9Zv/SsSS85chaUnfUzR3XZ9oc
+         mXqECOsJ6beEmfzhv2NE0wC4AQKAdFc+j9Vty7R6CsvlieUsiKOSYeXeYPmicGCej5x9
+         H76vRnLIHbbZj8qIo6hpA+Kaw9pslRGkaZiWoBHXQN4ndfd5kNA2/orkHgpFxcLMTw5F
+         wF4swjSKRPH8C/cRPfol8955M2sE/4LmU+u/hbRASpdVQVf2d/SJmiGuALZ1PM6bkkIm
+         mLCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ZO8nlt67qGajT8gumgRqcgytwuiKZm5Fzjlpx3nwyVw=;
-        b=rkwJZdPMRLzpFL9xctwuK025ORmFMFDbkklnf0Mq/LB0vxnWhPYYbc2IruecOebi9x
-         lWuDZ8PrWHlNpr9buKIU1tyc5j6XTpvV10ScFydpyMOWqfiAEOTEx7aEXZbFq8Fs1VN0
-         y1L4DwOJnzax3D2Orf1Gjejti2BzGjr9ZDsGxwi45Y75WiraalTDE553fQ+j+xYkzXqd
-         IJE8thmYw/QKwbEC1OLlX6xqTLam/npF3dIx5dCaaNIZM1Q8g7bHsFwJQAxQBQwYEIE0
-         RifdAD8XvflHTGiGmL8YoeSjGyKLi8KGN+IChwV3bmCFm5wc5aI9hd7rnW7cHtlN0H9V
-         u+pg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=P0sC1303DHIgqwmSuo2kDjh0PYJIAmblyh0uELq49Ls=;
+        b=cosiiP1H5o0oOGZh53GH0j4empGqDk2wrWKdQm1gnSAo0Scz1m9tbBziWTl83ug4gk
+         ZMjuJYWAculNElFhu8UGRbsMbIZ0ro+Mox1oEbhAbd2vEk+lVrt+Ku+RJjvcxU8+mhJr
+         CoLIwhFSfRcxZZu8/LsPoDzDCnkD1l2tdg3BZ4YNx0x363zooKLyz/Wq3MMgIhsUBQwM
+         776AcMCn1jikeC2ZzD89QmrIKaq+84UGN+TgU8a77CazsDRm+1p9XEBXVMtyFjEps6tl
+         Q+CSIfbh6x+Q1VYtpJqoJ/Zcj6ywEESGsQH45z5vzfx+2/WCF65JuV5G9lRtJ2mK1LXn
+         7D9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b3qRhvLN;
+       dkim=fail header.i=@linaro.org header.s=google header.b=m1xnXIzF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z6si514576ybf.10.2020.06.29.12.48.35
+        by mx.google.com with ESMTPS id v9si673926ybm.380.2020.06.29.14.08.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jun 2020 12:48:35 -0700 (PDT)
+        Mon, 29 Jun 2020 14:08:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b3qRhvLN;
+       dkim=fail header.i=@linaro.org header.s=google header.b=m1xnXIzF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55080 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33396 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jpzla-0005hV-Ob
-	for alex.bennee@linaro.org; Mon, 29 Jun 2020 15:48:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56888)
+	id 1jq10Y-0003Bo-V4
+	for alex.bennee@linaro.org; Mon, 29 Jun 2020 17:08:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49612)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jpzlN-0005hD-0D; Mon, 29 Jun 2020 15:48:21 -0400
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:32782)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jq10R-0003BY-IU
+ for qemu-arm@nongnu.org; Mon, 29 Jun 2020 17:07:59 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:45045)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jpzlL-0005gw-Bs; Mon, 29 Jun 2020 15:48:20 -0400
-Received: by mail-il1-x142.google.com with SMTP id a11so7308697ilk.0;
- Mon, 29 Jun 2020 12:48:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jq10Q-0001aD-0X
+ for qemu-arm@nongnu.org; Mon, 29 Jun 2020 17:07:59 -0400
+Received: by mail-oi1-x242.google.com with SMTP id k6so11728472oij.11
+ for <qemu-arm@nongnu.org>; Mon, 29 Jun 2020 14:07:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ZO8nlt67qGajT8gumgRqcgytwuiKZm5Fzjlpx3nwyVw=;
- b=b3qRhvLNOmiWz4o9mQfWGddS51+oa/lkT6r/6VaWzfjzZrosWP1/AqyX7jgQykOvux
- mhyLb1aRFFgMINFnG/pQgHZIzqiU4tvqs9omaJ94DG8qbQa+smbnUJRw+LqnuQZlPyi1
- yvSFGMvTCzF8WS9uZN97hdTm/UdBI7/dizl2WNLh1hN7eTP3U3aiTFSkHKiwlQEPdlgK
- V6BX8onU2aBK8QutbfteK66iHru2cyNw+9fhEH6DxEWMHgJrUix+hrK/IJSg0qH6IZHl
- z0IlG77fcpLA9Ubu43/H1xEiM18m/etKmNsIt20QVU1G57yD5C4vZiBuGLDlOwWltccV
- 78hA==
+ :cc:content-transfer-encoding;
+ bh=P0sC1303DHIgqwmSuo2kDjh0PYJIAmblyh0uELq49Ls=;
+ b=m1xnXIzFEfNO3XnhH4rzYQFRmXS4kn4ilZ7d/2XaTk0UMtVfdiltD2yaqjEq5GeFda
+ jFVe4ADCstF5Pnnp3eQ0wxCao3yx4MK3plOQIXU5MxwXXzmzFbceeaGH0XYjooFeqHlh
+ F9SWSccmGJYsPhDOMfvn71qXREYn2kpImM7AoaMQRB7HSvFSorCblj0BLk+u/xOcxVrL
+ agchxgK3iXTNXDsKA7dfhTu9xPtOS2gbixMVfM7CNCC8HG203vo86NpMvHIrnvvj1abW
+ gN/lmrslk0NQetaUX5P7+OP/NzbtsRdN3wMR4XlQEVPkDNcvSS2Wx9M2grTTRNEFQW5G
+ 2ZtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ZO8nlt67qGajT8gumgRqcgytwuiKZm5Fzjlpx3nwyVw=;
- b=hzqirFsf+MixvlxYzdvNSYhMzhpiqqT54TEXKz9bXjKRTBtsKBAV4wsC3vn0UtU8RR
- fKKwrCqlW7asj3UJ2qZW944YKCYNaadmJALZvjvgu+nxTtXs6Yf2kksT+Jo0YYJw1TQt
- W1dbE3qrNn2hidebF+Dw96214n2clkr8H7i7FIOiXVP9MhqeOw1ndj+m/1eU7wXBINk1
- KpnCKpR3h6HBC5YwZEOpjWErxP4uohFKJLWb6wTYzwdOnQRTqpK/bf0o3aqwmFb4/btz
- Pfuh209pXEUi+lQDorPzsYtCHSU19PaAyXX8mKoNWwrBbHhLhZ/YF+0c3yIK9zxLbd9E
- 5QrQ==
-X-Gm-Message-State: AOAM533UBtGUrrk9lR/VE6cPUYC3YVXc0YDrXx48BAkhf45s18L78Hus
- 4/D2q6RSidMle7R+Mleh7jeZ0AxT2gHzExjqlVw=
-X-Received: by 2002:a05:6e02:d51:: with SMTP id
- h17mr9211439ilj.131.1593460098111; 
- Mon, 29 Jun 2020 12:48:18 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=P0sC1303DHIgqwmSuo2kDjh0PYJIAmblyh0uELq49Ls=;
+ b=COjV0fGA3BrdC/ZjzGzh2M6TTMsc9xXTWlMZTe7G98t6IAGWT102uWJdeC/xrqKOry
+ 6XeH9gehL4DQ6+T1ytKgjqD0PJAqwlX0VKIjhHy5nZlGxJ6RH9T2GCNhS1VUM6ymP6CO
+ fPVII/7BbnZtRkzbKOO+3EnNjw5v2AF3QhKE6RsRXRHkh+CIE0Vy3gQuDz6KgrwlLLcx
+ QpYDFRu7Om2G2H8M2q7fHUOoDlWluUzIPBFpGgYev6acZra7+Jj62EwcdmgNTyWtt/4y
+ Y6mcX3yOrIrS/f4/1h9ns1CgL4W1KL2DkzZSp8ksdJglGDyLqOPkv5CGuF42Ux2ylBTr
+ dvZg==
+X-Gm-Message-State: AOAM533lmjHbVmBSLCZ4kkQLqreyQSyWi/9obWuXIEOoC47CgL/anXPc
+ VRWXNtON8GHLWff12O4NdnshZVmd7zPud8KUPJi6FQ==
+X-Received: by 2002:aca:2819:: with SMTP id 25mr7850835oix.48.1593464876587;
+ Mon, 29 Jun 2020 14:07:56 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200628142429.17111-1-peter.maydell@linaro.org>
- <20200628142429.17111-5-peter.maydell@linaro.org>
-In-Reply-To: <20200628142429.17111-5-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 29 Jun 2020 12:38:35 -0700
-Message-ID: <CAKmqyKPm2PzjPXxGb9p2_k-mD3MEYtHkT_owEhg+8+hM=_y1-g@mail.gmail.com>
-Subject: Re: [PATCH 04/17] hw/arm/spitz: Keep pointers to scp0,
- scp1 in SpitzMachineState
-To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200629074704.23028-1-f4bug@amsat.org>
+In-Reply-To: <20200629074704.23028-1-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 29 Jun 2020 22:07:45 +0100
+Message-ID: <CAFEAcA_uAJzddqVfttgZ9PjNfbrjt3q1=HaTwRNPs+=smrDkjg@mail.gmail.com>
+Subject: Re: [PATCH] hw/misc/pca9552: Add missing TypeInfo::class_size field
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x142.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -112,107 +113,22 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>
+Cc: Andrew Jeffery <andrew@aj.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
+ Jean-Christophe DUBOIS <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CvO5xoqPq/Jm
+X-TUID: N2scrk40iW+B
 
-On Sun, Jun 28, 2020 at 7:27 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+On Mon, 29 Jun 2020 at 08:47, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
 >
-> Keep pointers to scp0, scp1 in SpitzMachineState, and just pass
-> that to spitz_scoop_gpio_setup().
->
-> (We'll want to use some of the other fields in SpitzMachineState
-> in that function in the next commit.)
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> When adding the generic PCA955xClass in commit 736132e455, we
+> forgot to set the class_size field. Fill it now to avoid:
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Thanks; I've applied this to master since it fixes a memory
+corruption that affects all arm targets and I'm not otherwise
+planning an arm pullreq for a bit.
 
-Alistair
-
-> ---
->  hw/arm/spitz.c | 34 +++++++++++++++++++---------------
->  1 file changed, 19 insertions(+), 15 deletions(-)
->
-> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-> index f48e966c047..69bc2b3fa10 100644
-> --- a/hw/arm/spitz.c
-> +++ b/hw/arm/spitz.c
-> @@ -48,6 +48,8 @@ typedef struct {
->      DeviceState *lcdtg;
->      DeviceState *ads7846;
->      DeviceState *max1111;
-> +    DeviceState *scp0;
-> +    DeviceState *scp1;
->  } SpitzMachineState;
->
->  #define TYPE_SPITZ_MACHINE "spitz-common"
-> @@ -845,22 +847,23 @@ static void spitz_out_switch(void *opaque, int line, int level)
->  #define SPITZ_SCP2_BACKLIGHT_ON                 8
->  #define SPITZ_SCP2_MIC_BIAS             9
->
-> -static void spitz_scoop_gpio_setup(PXA2xxState *cpu,
-> -                DeviceState *scp0, DeviceState *scp1)
-> +static void spitz_scoop_gpio_setup(SpitzMachineState *sms)
->  {
-> -    qemu_irq *outsignals = qemu_allocate_irqs(spitz_out_switch, cpu, 8);
-> +    qemu_irq *outsignals = qemu_allocate_irqs(spitz_out_switch, sms->mpu, 8);
->
-> -    qdev_connect_gpio_out(scp0, SPITZ_SCP_CHRG_ON, outsignals[0]);
-> -    qdev_connect_gpio_out(scp0, SPITZ_SCP_JK_B, outsignals[1]);
-> -    qdev_connect_gpio_out(scp0, SPITZ_SCP_LED_GREEN, outsignals[2]);
-> -    qdev_connect_gpio_out(scp0, SPITZ_SCP_LED_ORANGE, outsignals[3]);
-> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_CHRG_ON, outsignals[0]);
-> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_JK_B, outsignals[1]);
-> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_LED_GREEN, outsignals[2]);
-> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_LED_ORANGE, outsignals[3]);
->
-> -    if (scp1) {
-> -        qdev_connect_gpio_out(scp1, SPITZ_SCP2_BACKLIGHT_CONT, outsignals[4]);
-> -        qdev_connect_gpio_out(scp1, SPITZ_SCP2_BACKLIGHT_ON, outsignals[5]);
-> +    if (sms->scp1) {
-> +        qdev_connect_gpio_out(sms->scp1, SPITZ_SCP2_BACKLIGHT_CONT,
-> +                              outsignals[4]);
-> +        qdev_connect_gpio_out(sms->scp1, SPITZ_SCP2_BACKLIGHT_ON,
-> +                              outsignals[5]);
->      }
->
-> -    qdev_connect_gpio_out(scp0, SPITZ_SCP_ADC_TEMP_ON, outsignals[6]);
-> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_ADC_TEMP_ON, outsignals[6]);
->  }
->
->  #define SPITZ_GPIO_HSYNC                22
-> @@ -943,7 +946,6 @@ static void spitz_common_init(MachineState *machine)
->      SpitzMachineState *sms = SPITZ_MACHINE(machine);
->      enum spitz_model_e model = smc->model;
->      PXA2xxState *mpu;
-> -    DeviceState *scp0, *scp1 = NULL;
->      MemoryRegion *address_space_mem = get_system_memory();
->      MemoryRegion *rom = g_new(MemoryRegion, 1);
->
-> @@ -962,12 +964,14 @@ static void spitz_common_init(MachineState *machine)
->
->      spitz_ssp_attach(sms);
->
-> -    scp0 = sysbus_create_simple("scoop", 0x10800000, NULL);
-> +    sms->scp0 = sysbus_create_simple("scoop", 0x10800000, NULL);
->      if (model != akita) {
-> -        scp1 = sysbus_create_simple("scoop", 0x08800040, NULL);
-> +        sms->scp1 = sysbus_create_simple("scoop", 0x08800040, NULL);
-> +    } else {
-> +        sms->scp1 = NULL;
->      }
->
-> -    spitz_scoop_gpio_setup(mpu, scp0, scp1);
-> +    spitz_scoop_gpio_setup(sms);
->
->      spitz_gpio_setup(mpu, (model == akita) ? 1 : 2);
->
-> --
-> 2.20.1
->
->
+-- PMM

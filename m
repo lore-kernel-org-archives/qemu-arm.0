@@ -1,90 +1,91 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3284283lfm;
-        Mon, 29 Jun 2020 12:46:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyUnMtOSoLGRAGPPJPa27wMisMOBiYGMn3D7V/3e1msa5BxPHRwd1KLVglXv72tRYf7wNVZ
-X-Received: by 2002:a25:7542:: with SMTP id q63mr6146581ybc.19.1593460014485;
-        Mon, 29 Jun 2020 12:46:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593460014; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3285405lfm;
+        Mon, 29 Jun 2020 12:48:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxnA5GwujsX7XXeoz0T0l8i1/zolD7ichayWxDWZBX/sNum1HzdAWTCKdcRiBnCDJ58V7kG
+X-Received: by 2002:a25:34cb:: with SMTP id b194mr5924921yba.168.1593460115427;
+        Mon, 29 Jun 2020 12:48:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593460115; cv=none;
         d=google.com; s=arc-20160816;
-        b=tBn6M5rSYD3s7s5XnOmvZGkBVGk2oxUAqWc/0B1v7sVdEJu7mtvhBYmLlnVErlb6rt
-         MN6cFG14uRVkUKDoGbm6kag6wpiGNsDIsxadCIoWlwdKJ2xqOaN1nPcl4PZPqkyjrMPA
-         eEfSiyyamSuuofNvWjrK1hQWkK0KfesXht5tQeBK7RHzxRO2cQHsmsnr5GOfI29If/Hk
-         CkLFQGAIyYZqIDevMUvYbzSUiaHm/0BNSh/3TaPNAX7r73iLHW6QuQs5CsrFLoOBNnAt
-         86R1tHAE/g0r8U1YpETDjD2kvnEQ7Xisd7KbTOId1+HVADkshTicXwErtqYO8CCp4yXL
-         0CoQ==
+        b=ckh5ZrX09qGL1PBISggNKj8M0vSeDQRU1TpkJT7X2rnpZcten0z/bq5YWz4EHPdjWd
+         hIghNZAn2OHJ0x3Z0LuR6tgYUw9sox+0V64wTyIdldUVFCpQGrVokDWs4eo/j3y34s0R
+         YeGcTsToSDifAysaac3p3HVppO3QOyKvYN4snhnmrT3PUB3r7U+aXPEut+jOG6kQk20N
+         MTtobdkIIkDm0KE83TGScQOSS+FAlkeVZcBl1DC76Hmjf3GNYuqcUH5mZe/ASqKGmGOE
+         bn4lYHnR/BdQ9CTgMdJ74vxQ+qFe90TQEf8GGtJptmGsrFvZGlYjHHLHb/9bzarWycbJ
+         4juw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=JflIh2KC82RAfGb+J90gvtsop7+kSncUYkSw2aEPVOM=;
-        b=xYsmXHbWa0IpS0kB+l/D/8DUaoF/ya+4GVByqeelggdhyE2+6IE/+cgDPWqXi2Hst9
-         DpfsxxAf/lhtLFjMxonUQll/QwSZNkyFOXFpsmOctrew4+lqL7vQva/XWk//xNsuc/ig
-         SzYkfcM6x/+B4fNuoiQO7lpvsyLgvKAWZ0enBBJVZogpJWhrVrn0z/KCVANJQrOXeCG4
-         6GbumzcArMFC8Zsk2M9pKM3DFuRCyAkDC/Zn/mN9iuYvesIsyu7Of1MEhhmeB8kQsLzE
-         WbE66XTDnz8pN1o75Kuqu3NViX/KmqaOOxkmGgLbpw1Xo9muFuVIriYyLk1AsmNcQrVW
-         JH6w==
+        bh=ZO8nlt67qGajT8gumgRqcgytwuiKZm5Fzjlpx3nwyVw=;
+        b=rkwJZdPMRLzpFL9xctwuK025ORmFMFDbkklnf0Mq/LB0vxnWhPYYbc2IruecOebi9x
+         lWuDZ8PrWHlNpr9buKIU1tyc5j6XTpvV10ScFydpyMOWqfiAEOTEx7aEXZbFq8Fs1VN0
+         y1L4DwOJnzax3D2Orf1Gjejti2BzGjr9ZDsGxwi45Y75WiraalTDE553fQ+j+xYkzXqd
+         IJE8thmYw/QKwbEC1OLlX6xqTLam/npF3dIx5dCaaNIZM1Q8g7bHsFwJQAxQBQwYEIE0
+         RifdAD8XvflHTGiGmL8YoeSjGyKLi8KGN+IChwV3bmCFm5wc5aI9hd7rnW7cHtlN0H9V
+         u+pg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="K49Jf/Xo";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b3qRhvLN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e30si545814ybi.449.2020.06.29.12.46.54
+        by mx.google.com with ESMTPS id z6si514576ybf.10.2020.06.29.12.48.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jun 2020 12:46:54 -0700 (PDT)
+        Mon, 29 Jun 2020 12:48:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="K49Jf/Xo";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b3qRhvLN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52202 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55080 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jpzjx-0004Gr-QX
-	for alex.bennee@linaro.org; Mon, 29 Jun 2020 15:46:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56400)
+	id 1jpzla-0005hV-Ob
+	for alex.bennee@linaro.org; Mon, 29 Jun 2020 15:48:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56888)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jpzjq-0004GR-9p; Mon, 29 Jun 2020 15:46:46 -0400
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:39002)
+ id 1jpzlN-0005hD-0D; Mon, 29 Jun 2020 15:48:21 -0400
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:32782)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jpzjo-0005NM-BK; Mon, 29 Jun 2020 15:46:45 -0400
-Received: by mail-il1-x142.google.com with SMTP id k6so15543734ili.6;
- Mon, 29 Jun 2020 12:46:43 -0700 (PDT)
+ id 1jpzlL-0005gw-Bs; Mon, 29 Jun 2020 15:48:20 -0400
+Received: by mail-il1-x142.google.com with SMTP id a11so7308697ilk.0;
+ Mon, 29 Jun 2020 12:48:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=JflIh2KC82RAfGb+J90gvtsop7+kSncUYkSw2aEPVOM=;
- b=K49Jf/XoaUyuhoC9RJt9JAJWFPoprPZjh7lMqW0ZebeTiVNRiXFsXI83pwIlVBNvIL
- 2uuMCTCiO+yVxJPoEqmPJoq17zFljsNsMfoU+xgTWuT7R3ySfkOd7OALtsm3RFmoZoEs
- WpNsmIFbU6vMCVQ1MTIfrRZsJsQKmOSzw0M49sce3Nh92o/3aRW34axIbYtVbvG0AI13
- TMFPUD2+arHDoThD1LgCl/YL8hUoYinDs8Cdo8z8HrlmQ7V1j6DLJmyNevhjEvbYH+l1
- UI+J8JHqn6jISNoq7PDGnAP8E7pM8IECYnIoxX9Je/sfs1rmXMuDqkVovwGNAd6V29Ex
- 7b+A==
+ :cc; bh=ZO8nlt67qGajT8gumgRqcgytwuiKZm5Fzjlpx3nwyVw=;
+ b=b3qRhvLNOmiWz4o9mQfWGddS51+oa/lkT6r/6VaWzfjzZrosWP1/AqyX7jgQykOvux
+ mhyLb1aRFFgMINFnG/pQgHZIzqiU4tvqs9omaJ94DG8qbQa+smbnUJRw+LqnuQZlPyi1
+ yvSFGMvTCzF8WS9uZN97hdTm/UdBI7/dizl2WNLh1hN7eTP3U3aiTFSkHKiwlQEPdlgK
+ V6BX8onU2aBK8QutbfteK66iHru2cyNw+9fhEH6DxEWMHgJrUix+hrK/IJSg0qH6IZHl
+ z0IlG77fcpLA9Ubu43/H1xEiM18m/etKmNsIt20QVU1G57yD5C4vZiBuGLDlOwWltccV
+ 78hA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=JflIh2KC82RAfGb+J90gvtsop7+kSncUYkSw2aEPVOM=;
- b=lPP/DaWC9vlzhMaF/AvoOy/R0NqHhQTK7+3rVOszDHJQXNolrhQ/JOjOD2xl/KtjT7
- sNYx/Uf6a0YONPuTqjCFL4aJgYhRNMfe1r4juuP9zaJxiPLK/rhCKWdPZk/0jDpvRByf
- 4uKi2nAx3M1KQv59/Dbyy5H/CM56g/F3FnDBah6LSZJuQN1kf/4gYhdiJApZBqvpUj7B
- LN7AvY3rM1TogReWY3J6pOKBgsf+BB2yK/2SaAR88RdbQkq7V41wDplAEGNQjjTRnvYX
- JQcD0A+fkLxoaavvL2kP61lm+Ctbe+l9v8vf1vj4JKeAsx9YKo/et2W40mP9Q4VSU0Nw
- +VOA==
-X-Gm-Message-State: AOAM531x2mP/4SQEgNVjF1GYnCLyOjiMUzdhJ4JLxGdKHd+uP8Eg4bQ1
- ZG4NkX7iOMBAlsv8rBlC4vfznKJ8B8pZzF2i8+g=
-X-Received: by 2002:a92:d186:: with SMTP id z6mr18518815ilz.227.1593460002831; 
- Mon, 29 Jun 2020 12:46:42 -0700 (PDT)
+ bh=ZO8nlt67qGajT8gumgRqcgytwuiKZm5Fzjlpx3nwyVw=;
+ b=hzqirFsf+MixvlxYzdvNSYhMzhpiqqT54TEXKz9bXjKRTBtsKBAV4wsC3vn0UtU8RR
+ fKKwrCqlW7asj3UJ2qZW944YKCYNaadmJALZvjvgu+nxTtXs6Yf2kksT+Jo0YYJw1TQt
+ W1dbE3qrNn2hidebF+Dw96214n2clkr8H7i7FIOiXVP9MhqeOw1ndj+m/1eU7wXBINk1
+ KpnCKpR3h6HBC5YwZEOpjWErxP4uohFKJLWb6wTYzwdOnQRTqpK/bf0o3aqwmFb4/btz
+ Pfuh209pXEUi+lQDorPzsYtCHSU19PaAyXX8mKoNWwrBbHhLhZ/YF+0c3yIK9zxLbd9E
+ 5QrQ==
+X-Gm-Message-State: AOAM533UBtGUrrk9lR/VE6cPUYC3YVXc0YDrXx48BAkhf45s18L78Hus
+ 4/D2q6RSidMle7R+Mleh7jeZ0AxT2gHzExjqlVw=
+X-Received: by 2002:a05:6e02:d51:: with SMTP id
+ h17mr9211439ilj.131.1593460098111; 
+ Mon, 29 Jun 2020 12:48:18 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200628142429.17111-1-peter.maydell@linaro.org>
- <20200628142429.17111-4-peter.maydell@linaro.org>
-In-Reply-To: <20200628142429.17111-4-peter.maydell@linaro.org>
+ <20200628142429.17111-5-peter.maydell@linaro.org>
+In-Reply-To: <20200628142429.17111-5-peter.maydell@linaro.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 29 Jun 2020 12:36:59 -0700
-Message-ID: <CAKmqyKPDvjXoS_mrBv3MUwtVPbzHA7sHu2+W2D7Ak8Fh0Bzpdg@mail.gmail.com>
-Subject: Re: [PATCH 03/17] hw/arm/spitz: Keep pointers to MPU and SSI devices
- in SpitzMachineState
+Date: Mon, 29 Jun 2020 12:38:35 -0700
+Message-ID: <CAKmqyKPm2PzjPXxGb9p2_k-mD3MEYtHkT_owEhg+8+hM=_y1-g@mail.gmail.com>
+Subject: Re: [PATCH 04/17] hw/arm/spitz: Keep pointers to scp0,
+ scp1 in SpitzMachineState
 To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
@@ -117,19 +118,15 @@ Cc: qemu-arm <qemu-arm@nongnu.org>,
  Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 24NYJFw16mpR
+X-TUID: CvO5xoqPq/Jm
 
-On Sun, Jun 28, 2020 at 7:24 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+On Sun, Jun 28, 2020 at 7:27 AM Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Keep pointers to the MPU and the SSI devices in SpitzMachineState.
-> We're going to want to make GPIO connections between some of the
-> SSI devices and the SCPs, so we want to keep hold of a pointer to
-> those; putting the MPU into the struct allows us to pass just
-> one thing to spitz_ssp_attach() rather than two.
+> Keep pointers to scp0, scp1 in SpitzMachineState, and just pass
+> that to spitz_scoop_gpio_setup().
 >
-> We have to retain the setting of the global "max1111" variable
-> for the moment as it is used in spitz_adc_temp_on(); later in
-> this series of commits we will be able to remove it.
+> (We'll want to use some of the other fields in SpitzMachineState
+> in that function in the next commit.)
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
@@ -138,105 +135,83 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/arm/spitz.c | 50 ++++++++++++++++++++++++++++----------------------
->  1 file changed, 28 insertions(+), 22 deletions(-)
+>  hw/arm/spitz.c | 34 +++++++++++++++++++---------------
+>  1 file changed, 19 insertions(+), 15 deletions(-)
 >
 > diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-> index c70e912a33d..f48e966c047 100644
+> index f48e966c047..69bc2b3fa10 100644
 > --- a/hw/arm/spitz.c
 > +++ b/hw/arm/spitz.c
-> @@ -43,6 +43,11 @@ typedef struct {
->
->  typedef struct {
->      MachineState parent;
-> +    PXA2xxState *mpu;
-> +    DeviceState *mux;
-> +    DeviceState *lcdtg;
-> +    DeviceState *ads7846;
-> +    DeviceState *max1111;
+> @@ -48,6 +48,8 @@ typedef struct {
+>      DeviceState *lcdtg;
+>      DeviceState *ads7846;
+>      DeviceState *max1111;
+> +    DeviceState *scp0;
+> +    DeviceState *scp1;
 >  } SpitzMachineState;
 >
 >  #define TYPE_SPITZ_MACHINE "spitz-common"
-> @@ -709,34 +714,33 @@ static void corgi_ssp_realize(SSISlave *d, Error **errp)
->      s->bus[2] = ssi_create_bus(dev, "ssi2");
+> @@ -845,22 +847,23 @@ static void spitz_out_switch(void *opaque, int line, int level)
+>  #define SPITZ_SCP2_BACKLIGHT_ON                 8
+>  #define SPITZ_SCP2_MIC_BIAS             9
+>
+> -static void spitz_scoop_gpio_setup(PXA2xxState *cpu,
+> -                DeviceState *scp0, DeviceState *scp1)
+> +static void spitz_scoop_gpio_setup(SpitzMachineState *sms)
+>  {
+> -    qemu_irq *outsignals = qemu_allocate_irqs(spitz_out_switch, cpu, 8);
+> +    qemu_irq *outsignals = qemu_allocate_irqs(spitz_out_switch, sms->mpu, 8);
+>
+> -    qdev_connect_gpio_out(scp0, SPITZ_SCP_CHRG_ON, outsignals[0]);
+> -    qdev_connect_gpio_out(scp0, SPITZ_SCP_JK_B, outsignals[1]);
+> -    qdev_connect_gpio_out(scp0, SPITZ_SCP_LED_GREEN, outsignals[2]);
+> -    qdev_connect_gpio_out(scp0, SPITZ_SCP_LED_ORANGE, outsignals[3]);
+> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_CHRG_ON, outsignals[0]);
+> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_JK_B, outsignals[1]);
+> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_LED_GREEN, outsignals[2]);
+> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_LED_ORANGE, outsignals[3]);
+>
+> -    if (scp1) {
+> -        qdev_connect_gpio_out(scp1, SPITZ_SCP2_BACKLIGHT_CONT, outsignals[4]);
+> -        qdev_connect_gpio_out(scp1, SPITZ_SCP2_BACKLIGHT_ON, outsignals[5]);
+> +    if (sms->scp1) {
+> +        qdev_connect_gpio_out(sms->scp1, SPITZ_SCP2_BACKLIGHT_CONT,
+> +                              outsignals[4]);
+> +        qdev_connect_gpio_out(sms->scp1, SPITZ_SCP2_BACKLIGHT_ON,
+> +                              outsignals[5]);
+>      }
+>
+> -    qdev_connect_gpio_out(scp0, SPITZ_SCP_ADC_TEMP_ON, outsignals[6]);
+> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_ADC_TEMP_ON, outsignals[6]);
 >  }
 >
-> -static void spitz_ssp_attach(PXA2xxState *cpu)
-> +static void spitz_ssp_attach(SpitzMachineState *sms)
->  {
-> -    DeviceState *mux;
-> -    DeviceState *dev;
->      void *bus;
->
-> -    mux = ssi_create_slave(cpu->ssp[CORGI_SSP_PORT - 1], "corgi-ssp");
-> +    sms->mux = ssi_create_slave(sms->mpu->ssp[CORGI_SSP_PORT - 1], "corgi-ssp");
->
-> -    bus = qdev_get_child_bus(mux, "ssi0");
-> -    ssi_create_slave(bus, "spitz-lcdtg");
-> +    bus = qdev_get_child_bus(sms->mux, "ssi0");
-> +    sms->lcdtg = ssi_create_slave(bus, "spitz-lcdtg");
->
-> -    bus = qdev_get_child_bus(mux, "ssi1");
-> -    dev = ssi_create_slave(bus, "ads7846");
-> -    qdev_connect_gpio_out(dev, 0,
-> -                          qdev_get_gpio_in(cpu->gpio, SPITZ_GPIO_TP_INT));
-> +    bus = qdev_get_child_bus(sms->mux, "ssi1");
-> +    sms->ads7846 = ssi_create_slave(bus, "ads7846");
-> +    qdev_connect_gpio_out(sms->ads7846, 0,
-> +                          qdev_get_gpio_in(sms->mpu->gpio, SPITZ_GPIO_TP_INT));
->
-> -    bus = qdev_get_child_bus(mux, "ssi2");
-> -    max1111 = ssi_create_slave(bus, "max1111");
-> -    max111x_set_input(max1111, MAX1111_BATT_VOLT, SPITZ_BATTERY_VOLT);
-> -    max111x_set_input(max1111, MAX1111_BATT_TEMP, 0);
-> -    max111x_set_input(max1111, MAX1111_ACIN_VOLT, SPITZ_CHARGEON_ACIN);
-> +    bus = qdev_get_child_bus(sms->mux, "ssi2");
-> +    sms->max1111 = ssi_create_slave(bus, "max1111");
-> +    max1111 = sms->max1111;
-> +    max111x_set_input(sms->max1111, MAX1111_BATT_VOLT, SPITZ_BATTERY_VOLT);
-> +    max111x_set_input(sms->max1111, MAX1111_BATT_TEMP, 0);
-> +    max111x_set_input(sms->max1111, MAX1111_ACIN_VOLT, SPITZ_CHARGEON_ACIN);
->
-> -    qdev_connect_gpio_out(cpu->gpio, SPITZ_GPIO_LCDCON_CS,
-> -                        qdev_get_gpio_in(mux, 0));
-> -    qdev_connect_gpio_out(cpu->gpio, SPITZ_GPIO_ADS7846_CS,
-> -                        qdev_get_gpio_in(mux, 1));
-> -    qdev_connect_gpio_out(cpu->gpio, SPITZ_GPIO_MAX1111_CS,
-> -                        qdev_get_gpio_in(mux, 2));
-> +    qdev_connect_gpio_out(sms->mpu->gpio, SPITZ_GPIO_LCDCON_CS,
-> +                        qdev_get_gpio_in(sms->mux, 0));
-> +    qdev_connect_gpio_out(sms->mpu->gpio, SPITZ_GPIO_ADS7846_CS,
-> +                        qdev_get_gpio_in(sms->mux, 1));
-> +    qdev_connect_gpio_out(sms->mpu->gpio, SPITZ_GPIO_MAX1111_CS,
-> +                        qdev_get_gpio_in(sms->mux, 2));
->  }
->
->  /* CF Microdrive */
-> @@ -936,6 +940,7 @@ static struct arm_boot_info spitz_binfo = {
->  static void spitz_common_init(MachineState *machine)
->  {
->      SpitzMachineClass *smc = SPITZ_MACHINE_GET_CLASS(machine);
-> +    SpitzMachineState *sms = SPITZ_MACHINE(machine);
+>  #define SPITZ_GPIO_HSYNC                22
+> @@ -943,7 +946,6 @@ static void spitz_common_init(MachineState *machine)
+>      SpitzMachineState *sms = SPITZ_MACHINE(machine);
 >      enum spitz_model_e model = smc->model;
 >      PXA2xxState *mpu;
->      DeviceState *scp0, *scp1 = NULL;
-> @@ -945,6 +950,7 @@ static void spitz_common_init(MachineState *machine)
->      /* Setup CPU & memory */
->      mpu = pxa270_init(address_space_mem, spitz_binfo.ram_size,
->                        machine->cpu_type);
-> +    sms->mpu = mpu;
+> -    DeviceState *scp0, *scp1 = NULL;
+>      MemoryRegion *address_space_mem = get_system_memory();
+>      MemoryRegion *rom = g_new(MemoryRegion, 1);
 >
->      sl_flash_register(mpu, (model == spitz) ? FLASH_128M : FLASH_1024M);
+> @@ -962,12 +964,14 @@ static void spitz_common_init(MachineState *machine)
 >
-> @@ -954,7 +960,7 @@ static void spitz_common_init(MachineState *machine)
->      /* Setup peripherals */
->      spitz_keyboard_register(mpu);
+>      spitz_ssp_attach(sms);
 >
-> -    spitz_ssp_attach(mpu);
-> +    spitz_ssp_attach(sms);
->
->      scp0 = sysbus_create_simple("scoop", 0x10800000, NULL);
+> -    scp0 = sysbus_create_simple("scoop", 0x10800000, NULL);
+> +    sms->scp0 = sysbus_create_simple("scoop", 0x10800000, NULL);
 >      if (model != akita) {
+> -        scp1 = sysbus_create_simple("scoop", 0x08800040, NULL);
+> +        sms->scp1 = sysbus_create_simple("scoop", 0x08800040, NULL);
+> +    } else {
+> +        sms->scp1 = NULL;
+>      }
+>
+> -    spitz_scoop_gpio_setup(mpu, scp0, scp1);
+> +    spitz_scoop_gpio_setup(sms);
+>
+>      spitz_gpio_setup(mpu, (model == akita) ? 1 : 2);
+>
 > --
 > 2.20.1
 >

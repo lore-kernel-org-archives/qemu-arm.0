@@ -1,80 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3221582lfm;
-        Mon, 29 Jun 2020 11:19:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwjoxB4xhc/s1rIwLbNWMJGRC+MwXh5oksfpwNmW357yULHJxIg3/R2zgSqEaPIifpP6m7d
-X-Received: by 2002:a25:cb41:: with SMTP id b62mr25186226ybg.382.1593454779866;
-        Mon, 29 Jun 2020 11:19:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593454779; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3284283lfm;
+        Mon, 29 Jun 2020 12:46:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyUnMtOSoLGRAGPPJPa27wMisMOBiYGMn3D7V/3e1msa5BxPHRwd1KLVglXv72tRYf7wNVZ
+X-Received: by 2002:a25:7542:: with SMTP id q63mr6146581ybc.19.1593460014485;
+        Mon, 29 Jun 2020 12:46:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593460014; cv=none;
         d=google.com; s=arc-20160816;
-        b=P7FVSW+GZNBbSLrPGddUPsqo9pwcMYAQBaYjzS5+u7+lybtgrOiluEzMGMtvcDAZBF
-         c3uN6P+XNYcTPZ3aaphSVZ0yI54uQ0OC0SLO4u7GTLg4/hv1pwYoUl+nZg4kJBGrliUb
-         RW1HnCKIC4iGIGuAjl5Vh1TGpWgr0EGqo98uGR/53yz6gzzxowcEujD+QvUDHzOpfBDl
-         e4vLc8NhQZZtVQK8c2npiW+pY8ZvOZSqyCnnELHwSUr9gMtjghXu4RKFo3xPSOs8ZPMT
-         QfLZKoaegy3Q5IEA86NKpQrJX1bMvGFsCZYq8LAAoDA1pQ/6QVbBWt3Dze+WCwYCO8YQ
-         eCCw==
+        b=tBn6M5rSYD3s7s5XnOmvZGkBVGk2oxUAqWc/0B1v7sVdEJu7mtvhBYmLlnVErlb6rt
+         MN6cFG14uRVkUKDoGbm6kag6wpiGNsDIsxadCIoWlwdKJ2xqOaN1nPcl4PZPqkyjrMPA
+         eEfSiyyamSuuofNvWjrK1hQWkK0KfesXht5tQeBK7RHzxRO2cQHsmsnr5GOfI29If/Hk
+         CkLFQGAIyYZqIDevMUvYbzSUiaHm/0BNSh/3TaPNAX7r73iLHW6QuQs5CsrFLoOBNnAt
+         86R1tHAE/g0r8U1YpETDjD2kvnEQ7Xisd7KbTOId1+HVADkshTicXwErtqYO8CCp4yXL
+         0CoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=9chH3ooRkoiK7UDhyJ9b83iFQjWUqVTI9jHzQUON/qs=;
-        b=UWB1epOuWEAp85IQroaWx9YZGJ7B6uBIDS+qbH+lsoQ23RJJiXlwy45bubdNoXMSKl
-         2CzCpeoD4FjZOdPjEnjj/nGV+ZWYuZ+ME/z/Rj3EqkwS7zb0qF7MjiFdtMkiYoKeQx36
-         XUJyQaGP3qbDQtYKdvSKqSIfnCVNDrRSK9Q+IKu6klStfSZZOHNUEeeoRFNdDCYCxmkr
-         Le7S36FAaI0zEPmeLBXYqwa/W7Fv1KzuqEBRe+jZfcwNwC2/yX7L4gnF0SupgcqBQWj7
-         0jPtVgkDkvZTt2jRtvDYUxpC3U81nF8XIS0usKSLlJFfWI8pcaouAh6AvlkoGEoKJs+K
-         Ki2w==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=JflIh2KC82RAfGb+J90gvtsop7+kSncUYkSw2aEPVOM=;
+        b=xYsmXHbWa0IpS0kB+l/D/8DUaoF/ya+4GVByqeelggdhyE2+6IE/+cgDPWqXi2Hst9
+         DpfsxxAf/lhtLFjMxonUQll/QwSZNkyFOXFpsmOctrew4+lqL7vQva/XWk//xNsuc/ig
+         SzYkfcM6x/+B4fNuoiQO7lpvsyLgvKAWZ0enBBJVZogpJWhrVrn0z/KCVANJQrOXeCG4
+         6GbumzcArMFC8Zsk2M9pKM3DFuRCyAkDC/Zn/mN9iuYvesIsyu7Of1MEhhmeB8kQsLzE
+         WbE66XTDnz8pN1o75Kuqu3NViX/KmqaOOxkmGgLbpw1Xo9muFuVIriYyLk1AsmNcQrVW
+         JH6w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="K49Jf/Xo";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l5si310549ybo.454.2020.06.29.11.19.39
+        by mx.google.com with ESMTPS id e30si545814ybi.449.2020.06.29.12.46.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jun 2020 11:19:39 -0700 (PDT)
+        Mon, 29 Jun 2020 12:46:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44368 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="K49Jf/Xo";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52202 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jpyNX-00052b-AG
-	for alex.bennee@linaro.org; Mon, 29 Jun 2020 14:19:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32892)
+	id 1jpzjx-0004Gr-QX
+	for alex.bennee@linaro.org; Mon, 29 Jun 2020 15:46:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56400)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jpyNP-00052P-PT; Mon, 29 Jun 2020 14:19:31 -0400
-Received: from relay3-d.mail.gandi.net ([217.70.183.195]:60615)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jpyNN-0007bg-58; Mon, 29 Jun 2020 14:19:31 -0400
-X-Originating-IP: 82.252.130.88
-Received: from [192.168.1.155] (lns-bzn-59-82-252-130-88.adsl.proxad.net
- [82.252.130.88]) (Authenticated sender: jcd@tribudubois.net)
- by relay3-d.mail.gandi.net (Postfix) with ESMTPSA id 8F17A6000A;
- Mon, 29 Jun 2020 18:19:19 +0000 (UTC)
-Subject: Re: [PATCH] hw/misc/pca9552: Add missing TypeInfo::class_size field
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200629074704.23028-1-f4bug@amsat.org>
-From: Jean-Christophe DUBOIS <jcd@tribudubois.net>
-Message-ID: <302e63b8-6bd4-00c0-d7e1-7d938902bb7e@tribudubois.net>
-Date: Mon, 29 Jun 2020 20:19:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jpzjq-0004GR-9p; Mon, 29 Jun 2020 15:46:46 -0400
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:39002)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jpzjo-0005NM-BK; Mon, 29 Jun 2020 15:46:45 -0400
+Received: by mail-il1-x142.google.com with SMTP id k6so15543734ili.6;
+ Mon, 29 Jun 2020 12:46:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JflIh2KC82RAfGb+J90gvtsop7+kSncUYkSw2aEPVOM=;
+ b=K49Jf/XoaUyuhoC9RJt9JAJWFPoprPZjh7lMqW0ZebeTiVNRiXFsXI83pwIlVBNvIL
+ 2uuMCTCiO+yVxJPoEqmPJoq17zFljsNsMfoU+xgTWuT7R3ySfkOd7OALtsm3RFmoZoEs
+ WpNsmIFbU6vMCVQ1MTIfrRZsJsQKmOSzw0M49sce3Nh92o/3aRW34axIbYtVbvG0AI13
+ TMFPUD2+arHDoThD1LgCl/YL8hUoYinDs8Cdo8z8HrlmQ7V1j6DLJmyNevhjEvbYH+l1
+ UI+J8JHqn6jISNoq7PDGnAP8E7pM8IECYnIoxX9Je/sfs1rmXMuDqkVovwGNAd6V29Ex
+ 7b+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JflIh2KC82RAfGb+J90gvtsop7+kSncUYkSw2aEPVOM=;
+ b=lPP/DaWC9vlzhMaF/AvoOy/R0NqHhQTK7+3rVOszDHJQXNolrhQ/JOjOD2xl/KtjT7
+ sNYx/Uf6a0YONPuTqjCFL4aJgYhRNMfe1r4juuP9zaJxiPLK/rhCKWdPZk/0jDpvRByf
+ 4uKi2nAx3M1KQv59/Dbyy5H/CM56g/F3FnDBah6LSZJuQN1kf/4gYhdiJApZBqvpUj7B
+ LN7AvY3rM1TogReWY3J6pOKBgsf+BB2yK/2SaAR88RdbQkq7V41wDplAEGNQjjTRnvYX
+ JQcD0A+fkLxoaavvL2kP61lm+Ctbe+l9v8vf1vj4JKeAsx9YKo/et2W40mP9Q4VSU0Nw
+ +VOA==
+X-Gm-Message-State: AOAM531x2mP/4SQEgNVjF1GYnCLyOjiMUzdhJ4JLxGdKHd+uP8Eg4bQ1
+ ZG4NkX7iOMBAlsv8rBlC4vfznKJ8B8pZzF2i8+g=
+X-Received: by 2002:a92:d186:: with SMTP id z6mr18518815ilz.227.1593460002831; 
+ Mon, 29 Jun 2020 12:46:42 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200629074704.23028-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=217.70.183.195; envelope-from=jcd@tribudubois.net;
- helo=relay3-d.mail.gandi.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/29 14:19:23
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+References: <20200628142429.17111-1-peter.maydell@linaro.org>
+ <20200628142429.17111-4-peter.maydell@linaro.org>
+In-Reply-To: <20200628142429.17111-4-peter.maydell@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 29 Jun 2020 12:36:59 -0700
+Message-ID: <CAKmqyKPDvjXoS_mrBv3MUwtVPbzHA7sHu2+W2D7Ak8Fh0Bzpdg@mail.gmail.com>
+Subject: Re: [PATCH 03/17] hw/arm/spitz: Keep pointers to MPU and SSI devices
+ in SpitzMachineState
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x142.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -88,90 +111,133 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1e7mbkrXR3Zc
+X-TUID: 24NYJFw16mpR
 
-Le 29/06/2020 à 09:47, Philippe Mathieu-Daudé a écrit :
-> When adding the generic PCA955xClass in commit 736132e455, we
-> forgot to set the class_size field. Fill it now to avoid:
+On Sun, Jun 28, 2020 at 7:24 AM Peter Maydell <peter.maydell@linaro.org> wrote:
 >
->    (gdb) run -machine mcimx6ul-evk -m 128M -display none -serial stdio -kernel ./OS.elf
->    Starting program: ../../qemu/qemu/arm-softmmu/qemu-system-arm -machine mcimx6ul-evk -m 128M -display none -serial stdio -kernel ./OS.elf
->    double free or corruption (!prev)
->    Thread 1 "qemu-system-arm" received signal SIGABRT, Aborted.
->    __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:50
->    (gdb) where
->    #0  __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:50
->    #1  0x00007ffff75d8859 in __GI_abort () at abort.c:79
->    #2  0x00007ffff76433ee in __libc_message
->        (action=action@entry=do_abort, fmt=fmt@entry=0x7ffff776d285 "%s\n")
->        at ../sysdeps/posix/libc_fatal.c:155
->    #3  0x00007ffff764b47c in malloc_printerr
->        (str=str@entry=0x7ffff776f690 "double free or corruption (!prev)")
->        at malloc.c:5347
->    #4  0x00007ffff764d12c in _int_free
->        (av=0x7ffff779eb80 <main_arena>, p=0x5555567a3990, have_lock=<optimized out>) at malloc.c:4317
->    #5  0x0000555555c906c3 in type_initialize_interface
->        (ti=ti@entry=0x5555565b8f40, interface_type=0x555556597ad0, parent_type=0x55555662ca10) at qom/object.c:259
->    #6  0x0000555555c902da in type_initialize (ti=ti@entry=0x5555565b8f40)
->        at qom/object.c:323
->    #7  0x0000555555c90d20 in type_initialize (ti=0x5555565b8f40)
->        at qom/object.c:1028
+> Keep pointers to the MPU and the SSI devices in SpitzMachineState.
+> We're going to want to make GPIO connections between some of the
+> SSI devices and the SCPs, so we want to keep hold of a pointer to
+> those; putting the MPU into the struct allows us to pass just
+> one thing to spitz_ssp_attach() rather than two.
 >
->    $ valgrind --track-origins=yes qemu-system-arm -M mcimx6ul-evk -m 128M -display none -serial stdio -kernel ./OS.elf
->    ==77479== Memcheck, a memory error detector
->    ==77479== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
->    ==77479== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
->    ==77479== Command: qemu-system-arm -M mcimx6ul-evk -m 128M -display none -serial stdio -kernel ./OS.elf
->    ==77479==
->    ==77479== Invalid write of size 2
->    ==77479==    at 0x6D8322: pca9552_class_init (pca9552.c:424)
->    ==77479==    by 0x844D1F: type_initialize (object.c:1029)
->    ==77479==    by 0x844D1F: object_class_foreach_tramp (object.c:1016)
->    ==77479==    by 0x4AE1057: g_hash_table_foreach (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.2)
->    ==77479==    by 0x8453A4: object_class_foreach (object.c:1038)
->    ==77479==    by 0x8453A4: object_class_get_list (object.c:1095)
->    ==77479==    by 0x556194: select_machine (vl.c:2416)
->    ==77479==    by 0x556194: qemu_init (vl.c:3828)
->    ==77479==    by 0x40AF9C: main (main.c:48)
->    ==77479==  Address 0x583f108 is 0 bytes after a block of size 200 alloc'd
->    ==77479==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
->    ==77479==    by 0x4AF8D30: g_malloc0 (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.2)
->    ==77479==    by 0x844258: type_initialize.part.0 (object.c:306)
->    ==77479==    by 0x844D1F: type_initialize (object.c:1029)
->    ==77479==    by 0x844D1F: object_class_foreach_tramp (object.c:1016)
->    ==77479==    by 0x4AE1057: g_hash_table_foreach (in /usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.6400.2)
->    ==77479==    by 0x8453A4: object_class_foreach (object.c:1038)
->    ==77479==    by 0x8453A4: object_class_get_list (object.c:1095)
->    ==77479==    by 0x556194: select_machine (vl.c:2416)
->    ==77479==    by 0x556194: qemu_init (vl.c:3828)
->    ==77479==    by 0x40AF9C: main (main.c:48)
+> We have to retain the setting of the global "max1111" variable
+> for the moment as it is used in spitz_adc_temp_on(); later in
+> this series of commits we will be able to remove it.
 >
-> Fixes: 736132e455 ("hw/misc/pca9552: Add generic PCA955xClass")
-> Reported-by: Jean-Christophe DUBOIS <jcd@tribudubois.net>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Tested-by: Jean-Christophe DUBOIS <jcd@tribudubois.net>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Alistair
+
 > ---
->   hw/misc/pca9552.c | 1 +
->   1 file changed, 1 insertion(+)
+>  hw/arm/spitz.c | 50 ++++++++++++++++++++++++++++----------------------
+>  1 file changed, 28 insertions(+), 22 deletions(-)
 >
-> diff --git a/hw/misc/pca9552.c b/hw/misc/pca9552.c
-> index 80caa9ec8f..68b574d084 100644
-> --- a/hw/misc/pca9552.c
-> +++ b/hw/misc/pca9552.c
-> @@ -410,6 +410,7 @@ static const TypeInfo pca955x_info = {
->       .instance_init = pca955x_initfn,
->       .instance_size = sizeof(PCA955xState),
->       .class_init    = pca955x_class_init,
-> +    .class_size    = sizeof(PCA955xClass),
->       .abstract      = true,
->   };
->   
-
-
+> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+> index c70e912a33d..f48e966c047 100644
+> --- a/hw/arm/spitz.c
+> +++ b/hw/arm/spitz.c
+> @@ -43,6 +43,11 @@ typedef struct {
+>
+>  typedef struct {
+>      MachineState parent;
+> +    PXA2xxState *mpu;
+> +    DeviceState *mux;
+> +    DeviceState *lcdtg;
+> +    DeviceState *ads7846;
+> +    DeviceState *max1111;
+>  } SpitzMachineState;
+>
+>  #define TYPE_SPITZ_MACHINE "spitz-common"
+> @@ -709,34 +714,33 @@ static void corgi_ssp_realize(SSISlave *d, Error **errp)
+>      s->bus[2] = ssi_create_bus(dev, "ssi2");
+>  }
+>
+> -static void spitz_ssp_attach(PXA2xxState *cpu)
+> +static void spitz_ssp_attach(SpitzMachineState *sms)
+>  {
+> -    DeviceState *mux;
+> -    DeviceState *dev;
+>      void *bus;
+>
+> -    mux = ssi_create_slave(cpu->ssp[CORGI_SSP_PORT - 1], "corgi-ssp");
+> +    sms->mux = ssi_create_slave(sms->mpu->ssp[CORGI_SSP_PORT - 1], "corgi-ssp");
+>
+> -    bus = qdev_get_child_bus(mux, "ssi0");
+> -    ssi_create_slave(bus, "spitz-lcdtg");
+> +    bus = qdev_get_child_bus(sms->mux, "ssi0");
+> +    sms->lcdtg = ssi_create_slave(bus, "spitz-lcdtg");
+>
+> -    bus = qdev_get_child_bus(mux, "ssi1");
+> -    dev = ssi_create_slave(bus, "ads7846");
+> -    qdev_connect_gpio_out(dev, 0,
+> -                          qdev_get_gpio_in(cpu->gpio, SPITZ_GPIO_TP_INT));
+> +    bus = qdev_get_child_bus(sms->mux, "ssi1");
+> +    sms->ads7846 = ssi_create_slave(bus, "ads7846");
+> +    qdev_connect_gpio_out(sms->ads7846, 0,
+> +                          qdev_get_gpio_in(sms->mpu->gpio, SPITZ_GPIO_TP_INT));
+>
+> -    bus = qdev_get_child_bus(mux, "ssi2");
+> -    max1111 = ssi_create_slave(bus, "max1111");
+> -    max111x_set_input(max1111, MAX1111_BATT_VOLT, SPITZ_BATTERY_VOLT);
+> -    max111x_set_input(max1111, MAX1111_BATT_TEMP, 0);
+> -    max111x_set_input(max1111, MAX1111_ACIN_VOLT, SPITZ_CHARGEON_ACIN);
+> +    bus = qdev_get_child_bus(sms->mux, "ssi2");
+> +    sms->max1111 = ssi_create_slave(bus, "max1111");
+> +    max1111 = sms->max1111;
+> +    max111x_set_input(sms->max1111, MAX1111_BATT_VOLT, SPITZ_BATTERY_VOLT);
+> +    max111x_set_input(sms->max1111, MAX1111_BATT_TEMP, 0);
+> +    max111x_set_input(sms->max1111, MAX1111_ACIN_VOLT, SPITZ_CHARGEON_ACIN);
+>
+> -    qdev_connect_gpio_out(cpu->gpio, SPITZ_GPIO_LCDCON_CS,
+> -                        qdev_get_gpio_in(mux, 0));
+> -    qdev_connect_gpio_out(cpu->gpio, SPITZ_GPIO_ADS7846_CS,
+> -                        qdev_get_gpio_in(mux, 1));
+> -    qdev_connect_gpio_out(cpu->gpio, SPITZ_GPIO_MAX1111_CS,
+> -                        qdev_get_gpio_in(mux, 2));
+> +    qdev_connect_gpio_out(sms->mpu->gpio, SPITZ_GPIO_LCDCON_CS,
+> +                        qdev_get_gpio_in(sms->mux, 0));
+> +    qdev_connect_gpio_out(sms->mpu->gpio, SPITZ_GPIO_ADS7846_CS,
+> +                        qdev_get_gpio_in(sms->mux, 1));
+> +    qdev_connect_gpio_out(sms->mpu->gpio, SPITZ_GPIO_MAX1111_CS,
+> +                        qdev_get_gpio_in(sms->mux, 2));
+>  }
+>
+>  /* CF Microdrive */
+> @@ -936,6 +940,7 @@ static struct arm_boot_info spitz_binfo = {
+>  static void spitz_common_init(MachineState *machine)
+>  {
+>      SpitzMachineClass *smc = SPITZ_MACHINE_GET_CLASS(machine);
+> +    SpitzMachineState *sms = SPITZ_MACHINE(machine);
+>      enum spitz_model_e model = smc->model;
+>      PXA2xxState *mpu;
+>      DeviceState *scp0, *scp1 = NULL;
+> @@ -945,6 +950,7 @@ static void spitz_common_init(MachineState *machine)
+>      /* Setup CPU & memory */
+>      mpu = pxa270_init(address_space_mem, spitz_binfo.ram_size,
+>                        machine->cpu_type);
+> +    sms->mpu = mpu;
+>
+>      sl_flash_register(mpu, (model == spitz) ? FLASH_128M : FLASH_1024M);
+>
+> @@ -954,7 +960,7 @@ static void spitz_common_init(MachineState *machine)
+>      /* Setup peripherals */
+>      spitz_keyboard_register(mpu);
+>
+> -    spitz_ssp_attach(mpu);
+> +    spitz_ssp_attach(sms);
+>
+>      scp0 = sysbus_create_simple("scoop", 0x10800000, NULL);
+>      if (model != akita) {
+> --
+> 2.20.1
+>
+>

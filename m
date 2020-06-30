@@ -1,107 +1,105 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3773776lfm;
-        Tue, 30 Jun 2020 02:18:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXhd1kuLD0fKvLhH9wuqdIYhuBJElE4ajAHtuX9wqusg9eM7abU2aF+7Xgt81+nLLdGixo
-X-Received: by 2002:a5b:5:: with SMTP id a5mr31639763ybp.514.1593508732652;
-        Tue, 30 Jun 2020 02:18:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593508732; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3774950lfm;
+        Tue, 30 Jun 2020 02:20:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwL4l5ijbgOt3pGdtAbXUaHUTDZH+WlXfR1TfpticVA4lqG4gkktnYQKUGyD9pHnmWGWZA0
+X-Received: by 2002:a25:d68a:: with SMTP id n132mr31358911ybg.255.1593508846114;
+        Tue, 30 Jun 2020 02:20:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593508846; cv=none;
         d=google.com; s=arc-20160816;
-        b=V4TWAvillgowsTFv0ZRwrqu8FRvEImr/BeO8wTryARGzGTa6dHXM4LeFn5sNwXHKrF
-         CtxzFNpMpeSNoz7CdQDD89puVadWY+SJq8xaBhSiYR4VYnuf8MfZ3XEIcsNeryydEwXa
-         4sQl4VgoRlhmHG8qxFrf18jyOrhi4levLhwPZ2eX+QvpVehNSQbsPq0qeLEvzmJxj47+
-         F1DGM1v8Fe8okhIDMndj5WVFDffz6IZIGUG96ZlT94stgbDmHRrITDNDY9JCOzeuCSqx
-         RJnKlrNt5W8o+ISvxXbgVQOKjEivYgehNUMCr7d6mBKhvxvR7jnP6Tc+gALILV+E/5Mj
-         Gw6Q==
+        b=x/Bb9TAkZN0PCY6q+bECbawWX0uG6nOBCUvxzpau63xru4zguKhdJBHskKXR1r+YZo
+         j5j+0gYkkDGKp3c71l+FuIaAwU61VD61T+b2QqQufmlsAdpHmtWfUF048WiCPaf6C2zR
+         guKDmnVz946aoz4CYU6lZhksklc/Gu5Bl00irdFWRtilu3C9PI7onoamtCoAnhZQsRhE
+         35I1zbqkyA4f7APvzZmN1Q6QliUf9eMneHCo0FzIUXt6gaAc4TH7G+74BEkiG6vh8qda
+         1+oLmsDkMM6uFzzGAitL6ueOYtUvNsrwr5Yayi44O2el4bHpr94wwDhaUez96LffNqMn
+         oAcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=8iQDYWLq2u9U5xO0oyhVLNoOu7M5Iw5Mjo3XfjJvw3w=;
-        b=OBJ+Smvhl8wbwIaT9ZltK5Dtoxhu+TgOcTNbkOXWHyj2Xp+oXYm0UzOdv6rWVyCFng
-         GZbd++6cNT7YcngmcV8l8ud/r//VcsJ1P1UmnwDkkFXxHwtqXKilGnXgKHL++uxcGmji
-         hfBvnf3PhqBQF+zjEVBI1HWNGGZW75qI00B2Vyz4iFsCKx1ta+m1VMh1B+tm/QdwBK44
-         QJtAV9TH/j8j22CN6BWc8yu3YZgYjgQX9xDA2LgOVmut+qjRJC2VVMi7tf1kyP7vzwax
-         Ltx8Yxx43KJGbwafcRDmwwtLUW3IA+3N5Z/WRlRDYYP+6A8c+kKRN62dpHs3MMcA/k2r
-         NEjw==
+        bh=6JbCfXsajHq0Efp+J6rZF45pw9jK838vKk6cgYEmk/g=;
+        b=HtgvO5zf+1TeDVSNUmowz6aiYyZuYjWR5KKP8xGQbMlnDaTXZ1K+3XuLxarLc8FUK6
+         wC6eeMuTWaDGNmKBE73rEW9kfiEIHdfolHuUzwcCaUnxjaKlQecidculPoS0ojWgAdF+
+         qwLwWm+bGERQAiVH11mWu7SYGkrIGrL9cxgY/OrjB1RSovdarIQb+vNHCyJ8dTJpTwAy
+         mDqyLqfiZdeNTDmkT2vJVSMMIqRiryCf/9z0piS+4r7khHavLby7piKnTDfZwMLulh/b
+         0ouXxynfR4enBujaY+Y+nd951QBJmNZGkutdfTA++pPzqPfT57wTqq9EQLn0Ml/ipyLL
+         D8fw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KADdr3Wi;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Tz0Oa1JS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p16si2445471yba.199.2020.06.30.02.18.52
+        by mx.google.com with ESMTPS id k63si2278046ybf.16.2020.06.30.02.20.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jun 2020 02:18:52 -0700 (PDT)
+        Tue, 30 Jun 2020 02:20:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KADdr3Wi;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Tz0Oa1JS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:53892 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58944 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jqCPk-00042m-1O
-	for alex.bennee@linaro.org; Tue, 30 Jun 2020 05:18:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42414)
+	id 1jqCRZ-0006JG-DS
+	for alex.bennee@linaro.org; Tue, 30 Jun 2020 05:20:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jqCJy-0003Md-13; Tue, 30 Jun 2020 05:12:54 -0400
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:35892)
+ id 1jqCMV-0000H7-V1; Tue, 30 Jun 2020 05:15:31 -0400
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:36958)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jqCJw-0004Ge-BB; Tue, 30 Jun 2020 05:12:53 -0400
-Received: by mail-ej1-x644.google.com with SMTP id dr13so19765150ejc.3;
- Tue, 30 Jun 2020 02:12:51 -0700 (PDT)
+ id 1jqCMU-0004fa-8N; Tue, 30 Jun 2020 05:15:31 -0400
+Received: by mail-ed1-x544.google.com with SMTP id g20so15254378edm.4;
+ Tue, 30 Jun 2020 02:15:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=8iQDYWLq2u9U5xO0oyhVLNoOu7M5Iw5Mjo3XfjJvw3w=;
- b=KADdr3WiMXnyneFk9ij8RDw7BELQ2bahsWBFtEZ9jAClAAB6YK+QGRo9WDvUQac0Lv
- bALAdqdnuI5WUDwXHjCrgL46+ojD8//TBcuiA8+DHgibK5DKjz9iBkF14+W53I7xbLpV
- P3umzuKu0wUDSwQ6Y+e5hTLZTbk++ZRcTc0Fhlg0DP+ehxABLuo4ugIu0DBMwlvIblDE
- 5DRkGPYskILZL+CzEnPf7O+tLhQ4+hXMNbYAP08Bn9CFdo0p+jttLfzBB4ZxaXLsdttr
- g1GMY4qLuiIYCv2hPdXvwW8wptb28Lz2tXeXWyPASdu/FnY+JxVz0XtyMNAnEnOywQ43
- LcoQ==
+ bh=6JbCfXsajHq0Efp+J6rZF45pw9jK838vKk6cgYEmk/g=;
+ b=Tz0Oa1JS25sDsUBQD12Qc4XPobkRStBU9mT925AHEdbtheS4yRPpwYGKCSuhHmXLAU
+ wxyt89YTzK5ORJESJs4ra2c0XtxzIYjHgR4Q7DNDYVZlHZM/9psTHLUCzRmP5Yw6MKUI
+ laj3zGOrL8jqtGGNljpPq9cXk7X2x/AFNkHWPYeZwaGh56aJ5Vu6trRFpdxrP7ZYxtHe
+ kNmNTyMBcnqDXcjesebmkMlHeX2MjxB4MahNehg2lCyiZnZBPaVQFrC2nKYieBLh7pFV
+ J8Rhk9qz9A/Qd5HTo+1Q+vD6I9GSLFOU2YufLn7t5S9M920s1Gp52Tbjb+9/qdQXCvpn
+ UFGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=8iQDYWLq2u9U5xO0oyhVLNoOu7M5Iw5Mjo3XfjJvw3w=;
- b=rHlt9wNU4eXiDXHNd7XiQVPah4ShjtNwvSy12x8GKIMMFiScvDzW3PyyK4poJBUe2C
- OnA3I5XxU5z8TpeOWW7j/ERlG/GUh7CynFCqgxRjq6vWyrtPYbM2Lwk/N7mOiN6dhHnZ
- CjBeBGRcVj+DFGMniIJqN64RbGvIAVSzbj8gv6/bFRMFTyL0+8q9fIZgntJPnz1O6Klk
- LgHZdhlEO8e1MssjWsJ49iGEnZ7WIwTXqGJl8WsgQri1rpnaTRx0iGU7dA4N2V6ok4+I
- K/+MPCOS1hOUE/E3Eld40Oaq2UtTd4FDAJW+K0UsLo4rzXWQIZoRuxBVXBS5aFCLx736
- HYkg==
-X-Gm-Message-State: AOAM5322m5XCT4zUrtXEfYrdNfmzXdLy8zQN7+kSlQXUdPz0WR0Cg1W0
- G0gIuJmsZyIwN0oTjzeSYUJXEhLdZqg=
-X-Received: by 2002:a17:906:3b83:: with SMTP id
- u3mr16947370ejf.207.1593508370579; 
- Tue, 30 Jun 2020 02:12:50 -0700 (PDT)
+ bh=6JbCfXsajHq0Efp+J6rZF45pw9jK838vKk6cgYEmk/g=;
+ b=DOjGR8FeEYe3nR4RWyYggZGH9RjPZ4KsKzZWPmWTicOnmcmkPHpP1URUGucV1xfUcu
+ HGWKWeW5GuR1/KZ+VVXlclYbAAsZduRSiS5Feb/OkgyzOYJBxqqs3EqEwBe7hhYzPTrO
+ bZkoRrKbbGkR3pT3RjMU7jhyE/7UWP5ltJB112fY6lJb+Og7cFYvYVdWZmFUHsILjpUe
+ GoUwbAlYmhjQnwqfFfHeHl3A3sI4uWptGx6rn/VXXPHAa78pneoacz7ZOwZ63phMI+5A
+ IBTRPthgtRY9UflQvQGQHwBtSk3aUnTP8gNzkAfJUgxi6Cp9cj143yvMRGO0e4Qwyflt
+ d7mA==
+X-Gm-Message-State: AOAM532IAl2qR2k3TJXqlxbz/eIgvHZyK4W36yYZO4bvUzghQUUJhyTR
+ PgSCkFIO1sQdkflK4Xk0DjM=
+X-Received: by 2002:a50:da44:: with SMTP id a4mr15781466edk.379.1593508528525; 
+ Tue, 30 Jun 2020 02:15:28 -0700 (PDT)
 Received: from [192.168.1.40] (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id x9sm1548419ejw.28.2020.06.30.02.12.49
+ by smtp.gmail.com with ESMTPSA id u13sm1560626ejx.3.2020.06.30.02.15.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Jun 2020 02:12:49 -0700 (PDT)
-Subject: Re: [PATCH v3 25/26] arm/{bcm2835,fsl-imx25,fsl-imx6}: Fix realize
- error API violations
+ Tue, 30 Jun 2020 02:15:27 -0700 (PDT)
+Subject: Re: [PATCH v3 23/26] aspeed: Fix realize error API violation
 To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
 References: <20200630090351.1247703-1-armbru@redhat.com>
- <20200630090351.1247703-26-armbru@redhat.com>
+ <20200630090351.1247703-24-armbru@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <205a9997-be98-50d3-050d-54e5a461cb0a@amsat.org>
-Date: Tue, 30 Jun 2020 11:12:49 +0200
+Message-ID: <ebd856ff-1df0-09db-21a8-886c79c8647e@amsat.org>
+Date: Tue, 30 Jun 2020 11:15:27 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200630090351.1247703-26-armbru@redhat.com>
+In-Reply-To: <20200630090351.1247703-24-armbru@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x644.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::544;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x544.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -123,12 +121,12 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RFpu0UJNxbod
+X-TUID: tWXqoQibI4x5
 
 On 6/30/20 11:03 AM, Markus Armbruster wrote:
 > The Error ** argument must be NULL, &error_abort, &error_fatal, or a
@@ -137,102 +135,72 @@ On 6/30/20 11:03 AM, Markus Armbruster wrote:
 > first call sets an error, it no longer points to NULL for the second
 > call.
 > 
-> bcm2835_peripherals_realize(), fsl_imx25_realize() and
-> fsl_imx6_realize() are wrong that way: they pass &err to
-> object_property_set_uint() and object_property_set_bool() without
-> checking it, and then to sysbus_realize().  Harmless, because the
-> former can't actually fail here.
+> aspeed_soc_ast2600_realize() and aspeed_soc_realize() are wrong that
+> way: they pass &err to object_property_set_int() and
+> object_property_set_bool() without checking it, and then to
+> sysbus_realize().  Harmless, because the former can't actually fail
+> here.
 > 
 > Fix by passing &error_abort instead.
 > 
+> Cc: "Cédric Le Goater" <clg@kaod.org>
 > Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
-> Cc: "Philippe Mathieu-Daudé" <philmd@redhat.com>
-> Cc: Jean-Christophe Dubois <jcd@tribudubois.net>
+> Cc: Andrew Jeffery <andrew@aj.id.au>
+> Cc: Joel Stanley <joel@jms.id.au>
 > Cc: qemu-arm@nongnu.org
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 > ---
->  hw/arm/bcm2835_peripherals.c | 12 ++++--------
->  hw/arm/fsl-imx25.c           | 12 +++++-------
->  hw/arm/fsl-imx6.c            | 12 +++++-------
->  3 files changed, 14 insertions(+), 22 deletions(-)
+>  hw/arm/aspeed_ast2600.c | 5 +++--
+>  hw/arm/aspeed_soc.c     | 5 +++--
+>  2 files changed, 6 insertions(+), 4 deletions(-)
 > 
-> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-> index 1e975d7eec..7ffdf62067 100644
-> --- a/hw/arm/bcm2835_peripherals.c
-> +++ b/hw/arm/bcm2835_peripherals.c
-> @@ -283,16 +283,12 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
->       * For the exact details please refer to the Arasan documentation:
->       *   SD3.0_Host_AHB_eMMC4.4_Usersguide_ver5.9_jan11_10.pdf
->       */
-> -    object_property_set_uint(OBJECT(&s->sdhci), 3, "sd-spec-version", &err);
-> +    object_property_set_uint(OBJECT(&s->sdhci), 3, "sd-spec-version",
-> +                             &error_abort);
->      object_property_set_uint(OBJECT(&s->sdhci), BCM2835_SDHC_CAPAREG, "capareg",
-> -                             &err);
-> +                             &error_abort);
->      object_property_set_bool(OBJECT(&s->sdhci), true, "pending-insert-quirk",
-> -                             &err);
-> -    if (err) {
-> -        error_propagate(errp, err);
-> -        return;
-> -    }
-> -
-> +                             &error_abort);
->      sysbus_realize(SYS_BUS_DEVICE(&s->sdhci), &err);
->      if (err) {
->          error_propagate(errp, err);
-> diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-> index f32f9bce0f..7ab5c98fbe 100644
-> --- a/hw/arm/fsl-imx25.c
-> +++ b/hw/arm/fsl-imx25.c
-> @@ -260,15 +260,13 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
->          };
->  
->          object_property_set_uint(OBJECT(&s->esdhc[i]), 2, "sd-spec-version",
-> -                                 &err);
-> +                                 &error_abort);
->          object_property_set_uint(OBJECT(&s->esdhc[i]), IMX25_ESDHC_CAPABILITIES,
-> -                                 "capareg", &err);
-> +                                 "capareg",
-> +                                 &error_abort);
->          object_property_set_uint(OBJECT(&s->esdhc[i]), SDHCI_VENDOR_IMX,
-> -                                 "vendor", &err);
-> -        if (err) {
-> -            error_propagate(errp, err);
-> -            return;
-> -        }
-> +                                 "vendor",
-> +                                 &error_abort);
->          sysbus_realize(SYS_BUS_DEVICE(&s->esdhc[i]), &err);
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index 4efac02e2b..59a7a1370b 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -383,7 +383,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>      for (i = 0; i < sc->spis_num; i++) {
+>          object_property_set_link(OBJECT(&s->spi[i]), OBJECT(s->dram_mr),
+>                                   "dram", &error_abort);
+> -        object_property_set_int(OBJECT(&s->spi[i]), 1, "num-cs", &err);
+> +        object_property_set_int(OBJECT(&s->spi[i]), 1, "num-cs",
+> +                                &error_abort);
+>          sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), &err);
 >          if (err) {
 >              error_propagate(errp, err);
-> diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-> index d4bc4fae93..4ae3c3efc2 100644
-> --- a/hw/arm/fsl-imx6.c
-> +++ b/hw/arm/fsl-imx6.c
-> @@ -336,15 +336,13 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
->  
->          /* UHS-I SDIO3.0 SDR104 1.8V ADMA */
->          object_property_set_uint(OBJECT(&s->esdhc[i]), 3, "sd-spec-version",
+> @@ -434,7 +435,7 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>      /* Net */
+>      for (i = 0; i < sc->macs_num; i++) {
+>          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed",
 > -                                 &err);
 > +                                 &error_abort);
->          object_property_set_uint(OBJECT(&s->esdhc[i]), IMX6_ESDHC_CAPABILITIES,
-> -                                 "capareg", &err);
-> +                                 "capareg",
+>          sysbus_realize(SYS_BUS_DEVICE(&s->ftgmac100[i]), &err);
+>          if (err) {
+>              error_propagate(errp, err);
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index 03b91bade6..311458aa76 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -333,7 +333,8 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>  
+>      /* SPI */
+>      for (i = 0; i < sc->spis_num; i++) {
+> -        object_property_set_int(OBJECT(&s->spi[i]), 1, "num-cs", &err);
+> +        object_property_set_int(OBJECT(&s->spi[i]), 1, "num-cs",
+> +                                &error_abort);
+>          sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), &err);
+>          if (err) {
+>              error_propagate(errp, err);
+> @@ -384,7 +385,7 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>      /* Net */
+>      for (i = 0; i < sc->macs_num; i++) {
+>          object_property_set_bool(OBJECT(&s->ftgmac100[i]), true, "aspeed",
+> -                                 &err);
 > +                                 &error_abort);
->          object_property_set_uint(OBJECT(&s->esdhc[i]), SDHCI_VENDOR_IMX,
-> -                                 "vendor", &err);
-> -        if (err) {
-> -            error_propagate(errp, err);
-> -            return;
-> -        }
-> +                                 "vendor",
-> +                                 &error_abort);
->          sysbus_realize(SYS_BUS_DEVICE(&s->esdhc[i]), &err);
+>          sysbus_realize(SYS_BUS_DEVICE(&s->ftgmac100[i]), &err);
 >          if (err) {
 >              error_propagate(errp, err);
 > 

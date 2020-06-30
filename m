@@ -1,250 +1,291 @@
-Received: by 2002:a19:711a:0:0:0:0:0 with SMTP id m26csp1497254lfc;
-        Thu, 11 Jun 2020 07:46:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw3ESWDM8M1JKKYAamRJyq3MZ8UvExfPknG+wZmw1J7fJmTxAaaTftxa870WpYNGJIma8n1
-X-Received: by 2002:a5b:942:: with SMTP id x2mr6318765ybq.273.1591886783329;
-        Thu, 11 Jun 2020 07:46:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591886783; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3814149lfm;
+        Tue, 30 Jun 2020 03:17:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxPQrFkzafhGbozkq0wgOnRbQbwJtg3ghygjWYEnDfH7WQsM58sAmRwJ9M8WuIr66M/iUQz
+X-Received: by 2002:a25:69c3:: with SMTP id e186mr35123983ybc.445.1593512239231;
+        Tue, 30 Jun 2020 03:17:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593512239; cv=none;
         d=google.com; s=arc-20160816;
-        b=oPOpT52ONIJa7s+sNQMAjWBhgqUp/ise+k6bRGi08WRg0HhPTsbhjG7Gf2Xp0qQd1Y
-         KBtEaLS/+pTb4YLEEBy1VikFUY1ikYy0eO145gahkQnpYtd2ZBRL8+tKaQGLdGMW2CzJ
-         /ITG2JTbHfQR2/0ksOjbhbOpyiOJxF5Ai1gUnJi+u39c7yX1bi0P9Ruta8kvGsGyLMdS
-         jkA3ZAvHNnafKK1r6trIy3bprtxXbmvhllwAdC9o4FDFz0FlRYT2cyhr3+NzbV7/PVwK
-         NjC8ew8gcci0MacGl3gFX1YpRqjvsdxeuRsjf+uBVlmmOD+0G3Tv5wwDEm4VVDdkxj1o
-         xCvQ==
+        b=VaB9AyVw2FsXDpgaV0j2ytwwtDtsHvAh9cXgCxywCNr844rHalGDyr6EdJ2atm5uST
+         7LpbHbyuTwRnVdrhSs+r2FKxPUaU9CiM39F7Vpb2zSrbxHSL57AZSW/daUtmH1/nnTui
+         NHZ4JzFIxb874hcSaoRf8zXcFBRLWvTURB+ycjCX5Ruf0s3OYopkfdjFP2BZAa+ll+/g
+         Cv/1t9E/7gclk08X90Euc5+noJvO+Lct1xfAaBuzPDYL+p8e1lHy7LpMkYcMLy9wwxCQ
+         uxss1mC3qtAjpDCXWlfR4dlwjtI70VERmw9DS97Vb2TWLm/YMeJ+cmZoZ5YmIn/oL1lC
+         CAuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=wXS6Jvw/GsSQRzbLxX/W7xj1FrkzmEuqqbzjBJFsOR0=;
-        b=mzXFz8s+q2y70XrkkVNgbB+u3bawpmbkQPtEWTi0UWM3qFxc/XWPQ/fpN65HeW2RIM
-         i+dSo6qATlI2MCDcXIFPg7C0zA8ql2M0Z55FBGnjAeKG8j77wDNvMI0C/N3kxR1SPIOd
-         zp76JcERixq9Z2jpdYB7LUnLeU8ajAfQKjvYPI4mdPvJEAo1gQ2N8+e91Y2PafgCFevw
-         Tj1oCyuRTQuVbEMu1xhYLZXRzUh1phHB1KiDOXP/vsYoSmEcs5QT9F+17W6Dz4WLufR4
-         w1GiX0T69GiAhpWc1SbCUs4LSoSFljDAdaohCmWzb1rwPZB22CqMX1qBJbA+MsU6nLI0
-         VyCg==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=Vb7ygvRPmN2ygKpfVgGaW2RA5jYgFDz5aKuaFqPb4KE=;
+        b=M7PyVMb1CZGW6P1TDOn74m7zDuGfC5pt5NXRl34swobo6+cE5P+NvAtWu0qTL6Xkb+
+         ljITa1FS+NSDMs5RCcOhz+2irgmYgTjlPOOuo7+xEO42nz+x+lSK+gCGH/fRLX0E0Auf
+         +PoR+DkOMD0F7MHRVgZEvEzbMluyI6FNsJYHgHBP77EyQ7IaXr1LBpG3/mkg8IcwhggU
+         5U5NO3tANHRQ0A7goceHXmf9hjzlO2ck3jFg//1VJags2GQCH37t7yPnrkm6ElvFpjvH
+         ugPnk+/dMq1wFbNn5/JEwqYAfX9aNJ5vzqFqzBp7vO6GPdDp3Wl1b2Jd9pBRdr6lOrkc
+         2lGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wFoCLSAg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a0gDTy1l;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i2si2809220ybh.9.2020.06.11.07.46.22
+        by mx.google.com with ESMTPS id 145si2427684ybf.80.2020.06.30.03.17.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jun 2020 07:46:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 30 Jun 2020 03:17:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wFoCLSAg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53178 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a0gDTy1l;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56204 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jjOTF-00021o-OS
-	for alex.bennee@linaro.org; Thu, 11 Jun 2020 10:46:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41396)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jqDKI-0007rT-I1
+	for alex.bennee@linaro.org; Tue, 30 Jun 2020 06:17:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33436)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jjOSn-0001WH-0T
- for qemu-arm@nongnu.org; Thu, 11 Jun 2020 10:45:53 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37019)
- by eggs.gnu.org with esmtps (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jjOSh-0003q7-Kk
- for qemu-arm@nongnu.org; Thu, 11 Jun 2020 10:45:51 -0400
-Received: by mail-wm1-x343.google.com with SMTP id y20so5318045wmi.2
- for <qemu-arm@nongnu.org>; Thu, 11 Jun 2020 07:45:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=wXS6Jvw/GsSQRzbLxX/W7xj1FrkzmEuqqbzjBJFsOR0=;
- b=wFoCLSAgc5g40uPU2llbxpOqxSM74OV2GVb1HeAEKcEx8PJioV6K8MVDjTXak/sLgk
- x2CpBpbJach8FfpbBcyNmOzVP0K2mkXtkb9qK+OaphKHdknCdIj21V1gG5HB3eg7NS+8
- ndcG+e3JC7CqptrRbryF2Ldx96IbJHgdxwe5pjxwKsLbE4G3+R7k16aB2cJib2hmJ6JE
- R5AFO+m260tprgWtXj6TUwI2Kyjqs71SUg6sesg7SUOYYqgKqNBXbyU5MUxUAnImpAHK
- R+zM13Br/M+vGoc3pfmxPkp/pEG1Ma4e8ATGVOp0lSviIuq+eVAAy3mW/NZiMDXyokT5
- VbwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=wXS6Jvw/GsSQRzbLxX/W7xj1FrkzmEuqqbzjBJFsOR0=;
- b=AqXpkShL0AEnVTOJDEE60Ta/H1G29osX5vncK8d7zzRuE01vyowgEJ2Yn2CCHAiIuS
- aZ6+ltRC1Kw6R3cqVRRXNfOnAaN9kR/UUSsik+2yybTa3GDgitjIxpCKdPi/klWOD4To
- HKfTyVzro8ymnLPy+aaNdqYdqDtXuzvF/twDTUsUhjjcXedDIxFeUPR09tAhRCbeiuFw
- XEXv9R8ysB6pnW49ZHGrLIbqss9bErLe9NpdtTGqnNyUmMpAKBzOc9bu+ZxN7CRRxDFH
- d5xgMxIxrenNRRJiz35LxUz2oDd1cmvRnPfqBImxrMXg3fAsoUi3aDsasyaTSPlOsl1z
- tRfA==
-X-Gm-Message-State: AOAM531oLI7oCrltSXbKh0d7PrwgQjYmtfznQcHDfAKCTjHeKZD8tirj
- thFudzqh1W9avmvb9WtJZHuc7qL9Brt/cA==
-X-Received: by 2002:a7b:cc82:: with SMTP id p2mr8448712wma.101.1591886739090; 
- Thu, 11 Jun 2020 07:45:39 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id h18sm5271658wru.7.2020.06.11.07.45.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Jun 2020 07:45:38 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 05/10] target/arm: Convert Neon 2-reg-scalar VQDMULH,
- VQRDMULH to decodetree
-Date: Thu, 11 Jun 2020 15:45:24 +0100
-Message-Id: <20200611144529.8873-6-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200611144529.8873-1-peter.maydell@linaro.org>
-References: <20200611144529.8873-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jqDIf-0006Re-OW
+ for qemu-devel@nongnu.org; Tue, 30 Jun 2020 06:15:37 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:24994
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jqDId-0006kV-3Z
+ for qemu-devel@nongnu.org; Tue, 30 Jun 2020 06:15:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593512134;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Vb7ygvRPmN2ygKpfVgGaW2RA5jYgFDz5aKuaFqPb4KE=;
+ b=a0gDTy1lm1z2nClfh99GSQPO0EKxRZxcybuJuj+l+Y3HB3VgOWBQqVWSfI0U4td8QcXu+x
+ QYSakpId5jQEL1BVNaqirCIvdD2eFAxu6ruOX8IItQHmQo6Ax0vzbIQD49dVRjhHlLWfso
+ EJVE3BQIwM/zqru4myvbXUQslRhOjjU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-458-GNd4VPA0NWuH1jzlPqmYFQ-1; Tue, 30 Jun 2020 06:15:30 -0400
+X-MC-Unique: GNd4VPA0NWuH1jzlPqmYFQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C7A0BEC1A9;
+ Tue, 30 Jun 2020 10:15:28 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
+ [10.36.112.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 09FE061981;
+ Tue, 30 Jun 2020 10:15:27 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 702F811384A6; Tue, 30 Jun 2020 12:15:21 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH 5/5] hw/i2c: Document the I2C qdev helpers
+References: <20200629173821.22037-1-f4bug@amsat.org>
+ <20200629173821.22037-6-f4bug@amsat.org>
+Date: Tue, 30 Jun 2020 12:15:21 +0200
+In-Reply-To: <20200629173821.22037-6-f4bug@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 29 Jun 2020 19:38:21
+ +0200")
+Message-ID: <87zh8kg8qu.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 01:11:03
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PJ4ajb4tyyos
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Jan Kiszka <jan.kiszka@web.de>, David Gibson <david@gibson.dropbear.id.au>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9wSdwC9SWlqk
 
-Convert the VQDMULH and VQRDMULH insns in the 2-reg-scalar group
-to decodetree.
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/neon-dp.decode       |  3 +++
- target/arm/translate-neon.inc.c | 29 +++++++++++++++++++++++
- target/arm/translate.c          | 42 ++-------------------------------
- 3 files changed, 34 insertions(+), 40 deletions(-)
+> In commit d88c42ff2c we added new prototype but neglected to
+> add their documentation. Fix that.
+>
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  include/hw/i2c/i2c.h | 48 ++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 48 insertions(+)
+>
+> diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+> index c533058998..fcc61e509b 100644
+> --- a/include/hw/i2c/i2c.h
+> +++ b/include/hw/i2c/i2c.h
+> @@ -79,8 +79,56 @@ int i2c_send_recv(I2CBus *bus, uint8_t *data, bool sen=
+d);
+>  int i2c_send(I2CBus *bus, uint8_t data);
+>  uint8_t i2c_recv(I2CBus *bus);
+> =20
+> +/**
+> + * Create an I2C slave device on the heap.
+> + * @name: a device type name
+> + * @addr: I2C address of the slave when put on a bus
+> + *
+> + * This only initializes the device state structure and allows
+> + * properties to be set. Type @name must exist. The device still
+> + * needs to be realized. See qdev-core.h.
+> + */
+>  I2CSlave *i2c_slave_new(const char *name, uint8_t addr);
+> +
+> +/**
+> + * Create an I2C slave device on the heap.
 
-diff --git a/target/arm/neon-dp.decode b/target/arm/neon-dp.decode
-index cc2ee9641d6..105cf2b2db3 100644
---- a/target/arm/neon-dp.decode
-+++ b/target/arm/neon-dp.decode
-@@ -485,5 +485,8 @@ Vimm_1r          1111 001 . 1 . 000 ... .... cmode:4 0 . op:1 1 .... @1reg_imm
- 
-     VMUL_2sc     1111 001 . 1 . .. .... .... 1000 . 1 . 0 .... @2scalar
-     VMUL_F_2sc   1111 001 . 1 . .. .... .... 1001 . 1 . 0 .... @2scalar
-+
-+    VQDMULH_2sc  1111 001 . 1 . .. .... .... 1100 . 1 . 0 .... @2scalar
-+    VQRDMULH_2sc 1111 001 . 1 . .. .... .... 1101 . 1 . 0 .... @2scalar
-   ]
- }
-diff --git a/target/arm/translate-neon.inc.c b/target/arm/translate-neon.inc.c
-index a5c7d60bdac..6301016d5cf 100644
---- a/target/arm/translate-neon.inc.c
-+++ b/target/arm/translate-neon.inc.c
-@@ -2546,3 +2546,32 @@ static bool trans_VMLS_F_2sc(DisasContext *s, arg_2scalar *a)
- 
-     return do_2scalar(s, a, opfn[a->size], accfn[a->size]);
- }
-+
-+WRAP_ENV_FN(gen_VQDMULH_16, gen_helper_neon_qdmulh_s16)
-+WRAP_ENV_FN(gen_VQDMULH_32, gen_helper_neon_qdmulh_s32)
-+WRAP_ENV_FN(gen_VQRDMULH_16, gen_helper_neon_qrdmulh_s16)
-+WRAP_ENV_FN(gen_VQRDMULH_32, gen_helper_neon_qrdmulh_s32)
-+
-+static bool trans_VQDMULH_2sc(DisasContext *s, arg_2scalar *a)
-+{
-+    static NeonGenTwoOpFn * const opfn[] = {
-+        NULL,
-+        gen_VQDMULH_16,
-+        gen_VQDMULH_32,
-+        NULL,
-+    };
-+
-+    return do_2scalar(s, a, opfn[a->size], NULL);
-+}
-+
-+static bool trans_VQRDMULH_2sc(DisasContext *s, arg_2scalar *a)
-+{
-+    static NeonGenTwoOpFn * const opfn[] = {
-+        NULL,
-+        gen_VQRDMULH_16,
-+        gen_VQRDMULH_32,
-+        NULL,
-+    };
-+
-+    return do_2scalar(s, a, opfn[a->size], NULL);
-+}
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index e4a6a38c782..5d0e00f92e0 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -2973,19 +2973,6 @@ static void gen_exception_return(DisasContext *s, TCGv_i32 pc)
- 
- #define CPU_V001 cpu_V0, cpu_V0, cpu_V1
- 
--static TCGv_i32 neon_load_scratch(int scratch)
--{
--    TCGv_i32 tmp = tcg_temp_new_i32();
--    tcg_gen_ld_i32(tmp, cpu_env, offsetof(CPUARMState, vfp.scratch[scratch]));
--    return tmp;
--}
--
--static void neon_store_scratch(int scratch, TCGv_i32 var)
--{
--    tcg_gen_st_i32(var, cpu_env, offsetof(CPUARMState, vfp.scratch[scratch]));
--    tcg_temp_free_i32(var);
--}
--
- static int gen_neon_unzip(int rd, int rm, int size, int q)
- {
-     TCGv_ptr pd, pm;
-@@ -5190,35 +5177,10 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
-                 case 1: /* Float VMLA scalar */
-                 case 5: /* Floating point VMLS scalar */
-                 case 9: /* Floating point VMUL scalar */
--                    return 1; /* handled by decodetree */
--
-                 case 12: /* VQDMULH scalar */
-                 case 13: /* VQRDMULH scalar */
--                    if (u && ((rd | rn) & 1)) {
--                        return 1;
--                    }
--                    tmp = neon_get_scalar(size, rm);
--                    neon_store_scratch(0, tmp);
--                    for (pass = 0; pass < (u ? 4 : 2); pass++) {
--                        tmp = neon_load_scratch(0);
--                        tmp2 = neon_load_reg(rn, pass);
--                        if (op == 12) {
--                            if (size == 1) {
--                                gen_helper_neon_qdmulh_s16(tmp, cpu_env, tmp, tmp2);
--                            } else {
--                                gen_helper_neon_qdmulh_s32(tmp, cpu_env, tmp, tmp2);
--                            }
--                        } else {
--                            if (size == 1) {
--                                gen_helper_neon_qrdmulh_s16(tmp, cpu_env, tmp, tmp2);
--                            } else {
--                                gen_helper_neon_qrdmulh_s32(tmp, cpu_env, tmp, tmp2);
--                            }
--                        }
--                        tcg_temp_free_i32(tmp2);
--                        neon_store_reg(rd, pass, tmp);
--                    }
--                    break;
-+                    return 1; /* handled by decodetree */
-+
-                 case 3: /* VQDMLAL scalar */
-                 case 7: /* VQDMLSL scalar */
-                 case 11: /* VQDMULL scalar */
--- 
-2.20.1
+Suggest "Create and realize ..."
+
+> + * @bus: I2C bus to put it on
+> + * @name: I2C slave device type name
+> + * @addr: I2C address of the slave when put on a bus
+> + *
+> + * Create the device state structure, initialize it, put it on the
+> + * specified @bus, and drop the reference to it (the device is realized)=
+.
+> + * Any error aborts the process.
+
+Stick to imperative mood: Abort on error.
+
+Do we need the sentence?  Doc comments of object_new(), qdev_new() and
+i2c_slave_new() don't have it, they document *preconditions* instead,
+using "must", and rely on the tacit understanding that a function may
+abort or crash when its documented preconditions aren't met.  Matter of
+taste, I guess.
+
+> + */
+>  I2CSlave *i2c_slave_create_simple(I2CBus *bus, const char *name, uint8_t=
+ addr);
+> +
+> +/**
+> + * i2c_slave_realize_and_unref: realize and unref an I2C slave device
+
+Either consistently waste space for repeating the function name at the
+beginning of its doc comment, or consistently don't :)
+
+qdev_realize_and_unref()'s doc comment says "and drop a reference"
+instead of "unref", because "unref" is not a word.
+
+> + * @dev: I2C slave device to realize
+> + * @bus: I2C bus to put it on
+> + * @addr: I2C address of the slave on the bus
+> + * @errp: error pointer
+
+$ git-grep -h "@errp:" | sort -u
+ *  @errp: pointer to Error*, to store an error if it happens
+ * @errp:   error object
+ * @errp: Error object
+ * @errp: Error object which may be set by job_complete(); this is not
+ * @errp: Error object.
+ * @errp: If an error occurs, a pointer to an area to store the error
+ * @errp: Output pointer for error information. Can be NULL.
+ * @errp: Pointer for reporting an #Error.
+ * @errp: Populated with an error in failure cases
+ * @errp: a pointer to an Error that is filled if getting/setting fails.
+ * @errp: a pointer to return the #Error object if an error occurs.
+ * @errp: an error indicator
+ * @errp: error
+ * @errp: error object
+ * @errp: error object handle
+ * @errp: handle to an error object
+ * @errp: if an error occurs, a pointer to an area to store the error
+ * @errp: indirect pointer to Error to be set
+ * @errp: location to store error
+ * @errp: location to store error information
+ * @errp: location to store error information.
+ * @errp: location to store error, will be set only for exception
+ * @errp: pointer to Error*, to store an error if it happens.
+ * @errp: pointer to NULL initialized error object
+ * @errp: pointer to a NULL initialized error object
+ * @errp: pointer to a NULL-initialized error object
+ * @errp: pointer to an error
+ * @errp: pointer to error object
+ * @errp: pointer to initialized error object
+ * @errp: pointer to uninitialized error object
+
+Aside: gotta love these two.
+
+ * @errp: returns an error if this function fails
+ * @errp: set *errp if the check failed, with reason
+ * @errp: set in case of an error
+ * @errp: set on error
+ * @errp: unused
+ * @errp: where to put errors
+
+Plenty of choice, recommend not to invent another one :)
+
+> + *
+> + * Call 'realize' on @dev, put it on the specified @bus, and drop the
+> + * reference to it. Errors are reported via @errp and by returning
+> + * false.
+
+Recommend to use a separate paragraph for the return value.  Since your
+comment style resembles GTK-Doc style[*], you may just as well use it
+for the return value, like this:
+
+      Returns: %true on success, %false on failure.
+
+By convention, it goes after the function description.
+
+> + *
+> + * This function is useful if you have created @dev via qdev_new(),
+> + * i2c_slave_new() or i2c_slave_try_new() (which take a reference to
+> + * the device it returns to you), so that you can set properties on it
+> + * before realizing it. If you don't need to set properties then
+> + * i2c_slave_create_simple() is probably better (as it does the create,
+> + * init and realize in one step).
+> + *
+> + * If you are embedding the I2C slave into another QOM device and
+> + * initialized it via some variant on object_initialize_child() then
+> + * do not use this function, because that family of functions arrange
+> + * for the only reference to the child device to be held by the parent
+> + * via the child<> property, and so the reference-count-drop done here
+> + * would be incorrect.  (Instead you would want i2c_slave_realize(),
+> + * which doesn't currently exist but would be trivial to create if we
+> + * had any code that wanted it.)
+> + */
+
+The advice on use is more elaborate qdev_realize_and_unref()'s.  That
+one simply shows intended use.  I doubt we need more.  But as the person
+who wrote qdev_realize_and_unref(), I'm singularly unqualified judging
+the need ;)
+
+>  bool i2c_slave_realize_and_unref(I2CSlave *dev, I2CBus *bus, Error **err=
+p);
+> =20
+>  /* lm832x.c */
+
+
+[*] A style I dislike, but it's common in QEMU, so you're certainly
+entitled to use it.
 

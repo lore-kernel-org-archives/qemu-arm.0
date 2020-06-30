@@ -1,102 +1,102 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3767536lfm;
-        Tue, 30 Jun 2020 02:09:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCl6OJo8v/6usnTGERUZXjG50RjJkh0UAI79FY2wrqa8xy8Zw1kNelXjzYJfCZo473j1JK
-X-Received: by 2002:a25:6c05:: with SMTP id h5mr32632388ybc.14.1593508179153;
-        Tue, 30 Jun 2020 02:09:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593508179; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3768322lfm;
+        Tue, 30 Jun 2020 02:10:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyJSMKo8TZpC0Grake6iYBWZHXg6/NiJyJRjYv+OUaJW6DcIlBfinkfHuhhPyCc1IGnKI16
+X-Received: by 2002:a5b:d0a:: with SMTP id y10mr32297103ybp.32.1593508243255;
+        Tue, 30 Jun 2020 02:10:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593508243; cv=none;
         d=google.com; s=arc-20160816;
-        b=eASLPs4c5U1B+I/FcyDFCGOttrAQn2lrqxvjgOeT2vayYuhXgc5MSkrbHv7nLn0IZq
-         JL8BqrmKkcRlPjmu5gyIlTWsUcv/yK4mclg2VJDj5DOGRQlgSTnEVpFYilGtcIDqyEWR
-         3fPffE3JElcsXLMillXg+28SGwRYe0WlWomxyX7VMx2yIC7Q8LK3LZoR4iGrsfI+KZqY
-         G+XK9ucPkvMXB69tda005mq+kEnSCTY8KDX5fMHbUB9Q9QtODfXfupH8WnBnE/CznoJh
-         k4YLSR47EIlCDXMI+qPTXpWRFMRDQDmOuBJ9MRGs26SertzzCxTnKqs/12Li4l5Jw4QP
-         eWNQ==
+        b=YZnQPM6OtOLYPRQfeatDjXApHVt1JhnFpamqPQEPuB9jPGoaL2Z4Ond/A7C2ZtIFiX
+         rHlYtiu4CdJwykggHJmjjWUxEcBtUV5NJy596fFbPr9P/RmqnXTCsWYZsV6Bzl5TUJTW
+         m3uWdVfkJDHDHS59gfyprT3o+n8Hlwj+6N5U2at+fLuOVauRpFmoZWFcMDtZL/7+J9FQ
+         TnwcgUXKEaEJKcFN1dFnCSVKuZsTOTaS+++FqQqYyr++6jD+m2MkC5uHXZvOYPUjUQDF
+         t5rc8c89OEeX3RkQyqHDBJfIcLFchzdUhOj9ot5oqfij7G6eUS2QgfysK3MeY12mKI+r
+         QT1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=fVaX+kfFOHRwl0WoAp/A4G8JRon0FKmPtj1xd19zGAI=;
-        b=dTU6EWzcwhts3OG2n2rxB4hjuvKAHF6crJyB4JyrWKyFrEDY2+C5AZClmoQpns2hqs
-         azZMCRxKHGmNcDZsNZTMnAYmv1SQf0CZsIP1LP9Ge7E7zKNjDtaMOobY2wiozJj7nmvf
-         xXcX1tv3AaSYPjeGNmqQJjBBjsClE3KjgKD4Q45LSjxVYLdXPIhPRRma3S94Uwd/o6YN
-         lXxRTmrSeRPyAnEh4fbrWgeBymPjtJyq8AbkNh5tlTTIRF5XAnxj8oWwp+IdvQgCb5aC
-         jVBlQAi9ojIKpqFKhEsbABqeWO5yUzel0CoMG57mY5EvlGR3rjcK6GfcdTGIDTOKSYEQ
-         nBng==
+        bh=v8RoWBaFDHIWifW7sr94ccs74UGdVOjvHbolf2g5ag4=;
+        b=elUAMmF1h2vdijYXis6uml/p7kRFyEejzhxmF1dghNgyGEhtRr19ZrZmD6dXuOHzWG
+         o9vNqqgS3YP1pxH5p6b8oG3vKhA9CkkVLqGx8U3tscpuJZ4UHQWbDX/fMheC95tjvfJW
+         59iPT1fcoN2LqYPWPooe6HvCgW5Kk6H35MKwq3U0NT1ctuCI5KAwznIwAUqfYbjHLbSq
+         8Y/TrVmICfbjBczdxFedpsbi9n3ppiPsaeFKhWg+Bb/MmBB6p1HKIm/Ahi7+s4DXPL6i
+         Vrw6OP+zEjWD6w4EySw6QLIVpLODEW5J8+zKExHjv21it/JzhHHGbAcVekD1KMxsH+QP
+         u6vw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=B4TvmPoo;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=imLumfuA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q5si2382672ybc.290.2020.06.30.02.09.38
+        by mx.google.com with ESMTPS id f83si2286855ybg.22.2020.06.30.02.10.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jun 2020 02:09:39 -0700 (PDT)
+        Tue, 30 Jun 2020 02:10:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=B4TvmPoo;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=imLumfuA;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42120 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47582 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jqCGo-0004U3-HU
-	for alex.bennee@linaro.org; Tue, 30 Jun 2020 05:09:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40002)
+	id 1jqCHq-0006gY-Ip
+	for alex.bennee@linaro.org; Tue, 30 Jun 2020 05:10:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40112)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jqCBV-0002hU-62
- for qemu-devel@nongnu.org; Tue, 30 Jun 2020 05:04:09 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:29370
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jqCBZ-0002sE-RH
+ for qemu-devel@nongnu.org; Tue, 30 Jun 2020 05:04:13 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:31234
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jqCBN-0002vl-KU
- for qemu-devel@nongnu.org; Tue, 30 Jun 2020 05:04:08 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jqCBO-0002wq-Hw
+ for qemu-devel@nongnu.org; Tue, 30 Jun 2020 05:04:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593507840;
+ s=mimecast20190719; t=1593507841;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=fVaX+kfFOHRwl0WoAp/A4G8JRon0FKmPtj1xd19zGAI=;
- b=B4TvmPooO1rTHMbG5hPAH9tnRe1VaA4lfXIUd61I6jnrRqEiRAsVZSCXsMTT2BLPMTnA9o
- 5AqoObU+3Mgr8XutLLp35mb2kbgMpenU0TVsN5ORnn+Mx+8EFZM5H3OTOUpO7dmEWrIQzV
- /GjPh5+ScFXOzbid05Vc9lvF6xbneHY=
+ bh=v8RoWBaFDHIWifW7sr94ccs74UGdVOjvHbolf2g5ag4=;
+ b=imLumfuA5MkxwWRpBt7V/Bod8hzpPO5V+k4YtvOKYRO7WW5S/AQFWT7qGkJWkOQ7ImrR6K
+ ls926ev5tXZjb5znDCZ3DeFE7IEn6Yuy/wZTVne5IolfA64j3UST4QseG2oQebLG2oADd5
+ ldqdX6145rRqiKzWhGqvgvzP1MlIsSE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-462-87IUr_bONmKWVbb5kqWAYA-1; Tue, 30 Jun 2020 05:03:59 -0400
-X-MC-Unique: 87IUr_bONmKWVbb5kqWAYA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-512-6IJJzEoOPTiN9xUDhoHp_Q-1; Tue, 30 Jun 2020 05:04:00 -0400
+X-MC-Unique: 6IJJzEoOPTiN9xUDhoHp_Q-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1C4DE800D5C;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D57B5BFCC;
  Tue, 30 Jun 2020 09:03:58 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
  [10.36.112.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E251D5D9DC;
- Tue, 30 Jun 2020 09:03:57 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4468A7C1E0;
+ Tue, 30 Jun 2020 09:03:58 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 2BB2D1138482; Tue, 30 Jun 2020 11:03:52 +0200 (CEST)
+ id 3EB691138485; Tue, 30 Jun 2020 11:03:52 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 22/26] arm/stm32f205 arm/stm32f405: Fix realize error API
- violation
-Date: Tue, 30 Jun 2020 11:03:47 +0200
-Message-Id: <20200630090351.1247703-23-armbru@redhat.com>
+Subject: [PATCH v3 25/26] arm/{bcm2835, fsl-imx25,
+ fsl-imx6}: Fix realize error API violations
+Date: Tue, 30 Jun 2020 11:03:50 +0200
+Message-Id: <20200630090351.1247703-26-armbru@redhat.com>
 In-Reply-To: <20200630090351.1247703-1-armbru@redhat.com>
 References: <20200630090351.1247703-1-armbru@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 01:11:03
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 03:55:26
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -117,12 +117,13 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- Alistair Francis <alistair.francis@wdc.com>, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UL+CsfFfkqdS
+X-TUID: GHRR2Q9NJsPO
 
 The Error ** argument must be NULL, &error_abort, &error_fatal, or a
 pointer to a variable containing NULL.  Passing an argument of the
@@ -130,49 +131,101 @@ latter kind twice without clearing it in between is wrong: if the
 first call sets an error, it no longer points to NULL for the second
 call.
 
-stm32f205_soc_realize() and stm32f405_soc_realize() are wrong that
-way: they pass &err to object_property_set_int() without checking it,
-and then to qdev_realize().  Harmless, because the former can't
-actually fail here.
+bcm2835_peripherals_realize(), fsl_imx25_realize() and
+fsl_imx6_realize() are wrong that way: they pass &err to
+object_property_set_uint() and object_property_set_bool() without
+checking it, and then to sysbus_realize().  Harmless, because the
+former can't actually fail here.
 
 Fix by passing &error_abort instead.
 
-Cc: Alistair Francis <alistair@alistair23.me>
 Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: "Philippe Mathieu-Daudé" <philmd@redhat.com>
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>
 Cc: qemu-arm@nongnu.org
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- hw/arm/stm32f205_soc.c | 2 +-
- hw/arm/stm32f405_soc.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ hw/arm/bcm2835_peripherals.c | 12 ++++--------
+ hw/arm/fsl-imx25.c           | 12 +++++-------
+ hw/arm/fsl-imx6.c            | 12 +++++-------
+ 3 files changed, 14 insertions(+), 22 deletions(-)
 
-diff --git a/hw/arm/stm32f205_soc.c b/hw/arm/stm32f205_soc.c
-index 19487544f0..56aef686c9 100644
---- a/hw/arm/stm32f205_soc.c
-+++ b/hw/arm/stm32f205_soc.c
-@@ -154,7 +154,7 @@ static void stm32f205_soc_realize(DeviceState *dev_soc, Error **errp)
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 1e975d7eec..7ffdf62067 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -283,16 +283,12 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+      * For the exact details please refer to the Arasan documentation:
+      *   SD3.0_Host_AHB_eMMC4.4_Usersguide_ver5.9_jan11_10.pdf
+      */
+-    object_property_set_uint(OBJECT(&s->sdhci), 3, "sd-spec-version", &err);
++    object_property_set_uint(OBJECT(&s->sdhci), 3, "sd-spec-version",
++                             &error_abort);
+     object_property_set_uint(OBJECT(&s->sdhci), BCM2835_SDHC_CAPAREG, "capareg",
+-                             &err);
++                             &error_abort);
+     object_property_set_bool(OBJECT(&s->sdhci), true, "pending-insert-quirk",
+-                             &err);
+-    if (err) {
+-        error_propagate(errp, err);
+-        return;
+-    }
+-
++                             &error_abort);
+     sysbus_realize(SYS_BUS_DEVICE(&s->sdhci), &err);
+     if (err) {
+         error_propagate(errp, err);
+diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+index f32f9bce0f..7ab5c98fbe 100644
+--- a/hw/arm/fsl-imx25.c
++++ b/hw/arm/fsl-imx25.c
+@@ -260,15 +260,13 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+         };
  
-     /* ADC 1 to 3 */
-     object_property_set_int(OBJECT(s->adc_irqs), STM_NUM_ADCS,
--                            "num-lines", &err);
-+                            "num-lines", &error_abort);
-     qdev_realize(DEVICE(s->adc_irqs), NULL, &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
-diff --git a/hw/arm/stm32f405_soc.c b/hw/arm/stm32f405_soc.c
-index c12d9f999d..cf9228d8e7 100644
---- a/hw/arm/stm32f405_soc.c
-+++ b/hw/arm/stm32f405_soc.c
-@@ -172,7 +172,7 @@ static void stm32f405_soc_realize(DeviceState *dev_soc, Error **errp)
-         return;
-     }
-     object_property_set_int(OBJECT(&s->adc_irqs), STM_NUM_ADCS,
--                            "num-lines", &err);
-+                            "num-lines", &error_abort);
-     qdev_realize(DEVICE(&s->adc_irqs), NULL, &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
+         object_property_set_uint(OBJECT(&s->esdhc[i]), 2, "sd-spec-version",
+-                                 &err);
++                                 &error_abort);
+         object_property_set_uint(OBJECT(&s->esdhc[i]), IMX25_ESDHC_CAPABILITIES,
+-                                 "capareg", &err);
++                                 "capareg",
++                                 &error_abort);
+         object_property_set_uint(OBJECT(&s->esdhc[i]), SDHCI_VENDOR_IMX,
+-                                 "vendor", &err);
+-        if (err) {
+-            error_propagate(errp, err);
+-            return;
+-        }
++                                 "vendor",
++                                 &error_abort);
+         sysbus_realize(SYS_BUS_DEVICE(&s->esdhc[i]), &err);
+         if (err) {
+             error_propagate(errp, err);
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index d4bc4fae93..4ae3c3efc2 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -336,15 +336,13 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+ 
+         /* UHS-I SDIO3.0 SDR104 1.8V ADMA */
+         object_property_set_uint(OBJECT(&s->esdhc[i]), 3, "sd-spec-version",
+-                                 &err);
++                                 &error_abort);
+         object_property_set_uint(OBJECT(&s->esdhc[i]), IMX6_ESDHC_CAPABILITIES,
+-                                 "capareg", &err);
++                                 "capareg",
++                                 &error_abort);
+         object_property_set_uint(OBJECT(&s->esdhc[i]), SDHCI_VENDOR_IMX,
+-                                 "vendor", &err);
+-        if (err) {
+-            error_propagate(errp, err);
+-            return;
+-        }
++                                 "vendor",
++                                 &error_abort);
+         sysbus_realize(SYS_BUS_DEVICE(&s->esdhc[i]), &err);
+         if (err) {
+             error_propagate(errp, err);
 -- 
 2.26.2
 

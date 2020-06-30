@@ -1,350 +1,178 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3771145lfm;
-        Tue, 30 Jun 2020 02:14:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJworEqXI4x38OIuM6VOZZeVqOYAOirQz45psdaryCEtv4+KV4avPvNivByFJV0zq4qe8M4M
-X-Received: by 2002:a5b:b89:: with SMTP id l9mr31716852ybq.82.1593508490370;
-        Tue, 30 Jun 2020 02:14:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593508490; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3771520lfm;
+        Tue, 30 Jun 2020 02:15:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwCF1ndIVKtUG8h1evFybJrGA3A67a+5vp0yGOgOp6PgOjRBMjDtKYU/L75bOF9HrP8wn9P
+X-Received: by 2002:a25:3b0a:: with SMTP id i10mr33746276yba.193.1593508522969;
+        Tue, 30 Jun 2020 02:15:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593508522; cv=none;
         d=google.com; s=arc-20160816;
-        b=1A06OdAM9rIM5bED+md5CZ3NLmXmkbRUfddra8FCOxd6g3meK9zP/xH8a7Sg/Fk7aI
-         12PC3SRDdTlPlAqDrYyFT9Vr7k/B0MYkY46ntnQngXnjf2gWMlRJhBZ8VBejtF+GS78a
-         sihQ7HElh92FhHoaaIdWivxLWalGMs1kL8S9LFC1qfGlAco7k+I27XVrDnh3ctpOcm4P
-         OLEjGMk3CEaJArkUbckynr6yHUq2QGW6CPLTEnnfeV99zxn2Bt+YI7AYAY7TFYVvamif
-         cL9cXcfOTzlW19z8ZIarFl4QI3gyhyeEfCZQUaP5JpALRlzHCrOMqLOs2dL820L9+8F4
-         3Abg==
+        b=q+8YFk+UnqmakX6Ey54cIXxdr5qcK1Za2eIt+QdVQopOMKPVM2J0HpKK+7IDKytFNz
+         cF/tXjp1OsYv14FqiFUqhXsmnvOOxls3zR1I+mNtiq8WVgxIi8nJ5A3Uc/5FYZl2oIN+
+         P3OYoSDwaGDbE5wVwtRN5FFEfUIVzm3+Xgnj+GGPdazdcAr9FsimyO8KvgpKsA6vJ04m
+         DYy4mATIzTEMIVYhBnLQkQjEdFNfXq0dht98EU5LSqLyAenTNRsqlWeHAtwutkI6jxV0
+         2ueNeaN5bx1lpRFTs4XhEPzPLs8GpBwP6w4vx+XtSx/xFDALsZl+YE14k/H2L99n2jXr
+         CDbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=Pvkd+DbTpBkgjojQjUvYaambnvkbymp7NZDTQOVrCnE=;
-        b=GbZdtx119TKPuYp7lqM63jXyhUhs0lgtLpbXZE6sFokbhN+qVfACeaLJN+wxNvFP5W
-         RmASxSxZjo4nrhBMHp9Y/ndR+T15p0MBJsq+QIQSk3b0SvpTclsoH1q6lH8yzvBpt9et
-         bF6hGavzcMN9bybsOiUbw0VnG9xNd9NfmlXvLGhHXsS0WhAZ1A6CmT/GStWTE4TYZxBQ
-         3AX1iccvamK5a4eIY1P7z2KyW7bL4YdhuBmdNoOfDky1Ur3IkJFBdPdMiMZcJ7U9SG2n
-         /efX4+efO8LBWjo+SfUbAXiafLYNCbvqbNovQgcMTHkkeZL2Tl4wDwzFS8iN1n6LZyMR
-         Z0aA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=D9mdRQwdC5EeawapV6J9Zhfd1oXOQ1bzYAweYGrslB0=;
+        b=evLOzsxZgnsXhKRJwtioiIw3TgW4orQ9QVU9OB+Kd7gMy5ORgFsXsvC3B0oRaBxReV
+         uDoTN+Fw9oqW9VhDvNwUqHCOLy8tJqE5Tpbo+v4r8MHUtyEQ//WPpr5Dx/3D1m3XVPb6
+         dgfmueiI7NU4aSBpUzADSTAgsNkYo3aUe5c+2THEUd7rPLJGtrCwpatWqQWa9POQVhOv
+         uFBkHW3VwDxqn71jduahZzgK+rUoWNMG4f4JeBLZ/PbsuvhWUZEEYiQmUaHkDRX9IGEl
+         eBvpCup6DmZlM8ee3Z+Dld40gS6cDS7EwKj1OswCDnpkgUei5ULEH6G6inYhkTqnFvcC
+         hZPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bBNS4s4A;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mPjmTkFG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h21si2427603ybj.392.2020.06.30.02.14.50
+        by mx.google.com with ESMTPS id f80si2146398yba.451.2020.06.30.02.15.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jun 2020 02:14:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 30 Jun 2020 02:15:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bBNS4s4A;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41544 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mPjmTkFG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:41690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jqCLp-0007Kn-Ny
-	for alex.bennee@linaro.org; Tue, 30 Jun 2020 05:14:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40334)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jqCMM-0007OA-6f
+	for alex.bennee@linaro.org; Tue, 30 Jun 2020 05:15:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42242)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jqCBk-0002yH-58
- for qemu-arm@nongnu.org; Tue, 30 Jun 2020 05:04:24 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:29758
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jqCBW-00031x-G3
- for qemu-arm@nongnu.org; Tue, 30 Jun 2020 05:04:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593507849;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Pvkd+DbTpBkgjojQjUvYaambnvkbymp7NZDTQOVrCnE=;
- b=bBNS4s4Aj/lb7swP01tVkwYzRAVDBXfsqORTScyaI4wbRNoqwr4b4f5/O0NdWTTn8Jlqxl
- RqC6nmLfIW0y4CruMXc2pL7ng6s9mLtBfRHp5itiQZ50qTlJDgJY1oM4S0+6+JBlAGVca5
- tsQgBLF2rkQjx7XIbcbpXsGyY3V8owI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-285-LZDDCbsZMyuBihkX0ooeVQ-1; Tue, 30 Jun 2020 05:04:04 -0400
-X-MC-Unique: LZDDCbsZMyuBihkX0ooeVQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 815BD10059AD;
- Tue, 30 Jun 2020 09:04:01 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-121.ams2.redhat.com
- [10.36.112.121])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 934E27BEBE;
- Tue, 30 Jun 2020 09:03:56 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id F1151113847B; Tue, 30 Jun 2020 11:03:51 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 15/26] hw: Fix error API violation around
- object_property_set_link()
-Date: Tue, 30 Jun 2020 11:03:40 +0200
-Message-Id: <20200630090351.1247703-16-armbru@redhat.com>
-In-Reply-To: <20200630090351.1247703-1-armbru@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jqCJ1-0001Tt-Ne; Tue, 30 Jun 2020 05:11:56 -0400
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:46890)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jqCIz-0004CX-Q2; Tue, 30 Jun 2020 05:11:55 -0400
+Received: by mail-ej1-x644.google.com with SMTP id p20so19705681ejd.13;
+ Tue, 30 Jun 2020 02:11:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=D9mdRQwdC5EeawapV6J9Zhfd1oXOQ1bzYAweYGrslB0=;
+ b=mPjmTkFGyKcqjBGHNQL/ybRic2qOU7jfupN2hoPT6OiXntJtBmGobch5q6ddaofksM
+ 0S8ov06nGUcdaVb49fwF2BaKpQU6hjwMI6ARFyfE5ajPIRK7AHG+GgZOydThtAQJlWgK
+ nOKxVft8dYCzDbA1ttNazCXSZ/jlSkcWBsTSFYu+wHFol+b/hS05A+FnFiD2lejG9UN3
+ 49BLFBhozBbhxpdfe/wI94YLsgWi8r+8SeaXLDKfN3WBhfWlJmIBYpLhbINR3xVfgbep
+ kEooP91hGH37d9PptFdxsd3Yt7E+VEhD1Yflk+1IOMCPADLL+Q4UOhOdGCkxdqqzqH4L
+ zZBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=D9mdRQwdC5EeawapV6J9Zhfd1oXOQ1bzYAweYGrslB0=;
+ b=s8aVdO+0SVGTczEOaqDqDh1m/r1+89XEouaTwOlWyHQX9zBFCk/NxmbsJHvz8oIHOo
+ iM7frlM9z+bmhvn6NYcRsoelM4gUnKJgyRTIWtJaKICXChBzhtpIc1uWqer6wVatYn1o
+ EPhOgw8AURagnaWZ9MLTC0NegcySGucDpLHwLEYsY5WvGgehWdFMo2kL4JvJ0u4+/kLY
+ seomwCpL6TbvGf4jC0t43zhrwt1XZGwNSCYwVZzKmVhMTSsknjkEMNs0VYUX6rJKPqvz
+ iJQupfYAhlOooRfV2awngVV7bflRiJcIpNYEnnq8gmyDR2bMCKeIc+4094+vuw5oGAav
+ L8tw==
+X-Gm-Message-State: AOAM533MkiQsx/zYP8xyOQQqLvjTdiDVjCAVjKrwIu8I71MZP0Kk2O2q
+ T8tOzKW+y2WKZFcVb3LOk/cyrpouy+M=
+X-Received: by 2002:a17:906:1499:: with SMTP id
+ x25mr17153476ejc.406.1593508311814; 
+ Tue, 30 Jun 2020 02:11:51 -0700 (PDT)
+Received: from [192.168.1.40] (1.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.1])
+ by smtp.gmail.com with ESMTPSA id v5sm1562164eje.88.2020.06.30.02.11.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 30 Jun 2020 02:11:51 -0700 (PDT)
+Subject: Re: [PATCH v3 24/26] hw/arm/armsse: Fix armsse_realize() error API
+ violation
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
 References: <20200630090351.1247703-1-armbru@redhat.com>
+ <20200630090351.1247703-25-armbru@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <943dbf9e-71fd-c53d-46d6-c19e7e4a000b@amsat.org>
+Date: Tue, 30 Jun 2020 11:11:50 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <20200630090351.1247703-25-armbru@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 02:00:02
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x644.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Alistair Francis <alistair@alistair23.me>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Eric Auger <eric.auger@redhat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
- Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E1e+HQ9M/Hp4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /uCkwRJzrv19
 
-The Error ** argument must be NULL, &error_abort, &error_fatal, or a
-pointer to a variable containing NULL.  Passing an argument of the
-latter kind twice without clearing it in between is wrong: if the
-first call sets an error, it no longer points to NULL for the second
-call.
+On 6/30/20 11:03 AM, Markus Armbruster wrote:
+> The Error ** argument must be NULL, &error_abort, &error_fatal, or a
+> pointer to a variable containing NULL.  Passing an argument of the
+> latter kind twice without clearing it in between is wrong: if the
+> first call sets an error, it no longer points to NULL for the second
+> call.
+> 
+> armsse_realize() is wrong that way: it passes &err to
+> object_property_set_int() multiple times without checking it, and then
+> to sysbus_realize().  Harmless, because the former can't actually fail
+> here.
+> 
+> Fix by passing &error_abort instead.
+> 
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 
-virtio_gpu_pci_base_realize(), virtio_vga_base_realize(),
-sparc32_ledma_device_realize(), sparc32_dma_realize(),
-sparc32_dma_realize() xilinx_axidma_realize(), mips_cps_realize(),
-macio_realize_ide(), xilinx_enet_realize(), and
-virtio_iommu_pci_realize() are wrong that way: they reuse the argument
-they pass to object_property_set_link() for another call.
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Harmless, because object_property_set_link() can't actually fail for
-them: it fails when the property doesn't exist, is not settable, or
-its .check() method fails.  Fix by passing &error_abort instead.
-
-Cc: Gerd Hoffmann <kraxel@redhat.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Cc: Alistair Francis <alistair@alistair23.me>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
-Cc: Aurelien Jarno <aurelien@aurel32.net>
-Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
-Cc: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
----
- hw/display/virtio-gpu-pci.c  |  2 +-
- hw/display/virtio-vga.c      |  2 +-
- hw/dma/sparc32_dma.c         |  6 +++---
- hw/dma/xilinx_axidma.c       | 12 ++----------
- hw/mips/cps.c                |  6 ++++--
- hw/misc/macio/macio.c        |  3 ++-
- hw/net/xilinx_axienet.c      | 12 ++----------
- hw/virtio/virtio-iommu-pci.c |  2 +-
- 8 files changed, 16 insertions(+), 29 deletions(-)
-
-diff --git a/hw/display/virtio-gpu-pci.c b/hw/display/virtio-gpu-pci.c
-index b532fe8b5f..41b88b878d 100644
---- a/hw/display/virtio-gpu-pci.c
-+++ b/hw/display/virtio-gpu-pci.c
-@@ -44,7 +44,7 @@ static void virtio_gpu_pci_base_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
-     for (i = 0; i < g->conf.max_outputs; i++) {
-         object_property_set_link(OBJECT(g->scanout[i].con),
-                                  OBJECT(vpci_dev),
--                                 "device", errp);
-+                                 "device", &error_abort);
-     }
- }
- 
-diff --git a/hw/display/virtio-vga.c b/hw/display/virtio-vga.c
-index 68a062ece6..67f409e106 100644
---- a/hw/display/virtio-vga.c
-+++ b/hw/display/virtio-vga.c
-@@ -154,7 +154,7 @@ static void virtio_vga_base_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
-     for (i = 0; i < g->conf.max_outputs; i++) {
-         object_property_set_link(OBJECT(g->scanout[i].con),
-                                  OBJECT(vpci_dev),
--                                 "device", errp);
-+                                 "device", &error_abort);
-     }
- }
- 
-diff --git a/hw/dma/sparc32_dma.c b/hw/dma/sparc32_dma.c
-index f02aca6f40..2d7dbbb92d 100644
---- a/hw/dma/sparc32_dma.c
-+++ b/hw/dma/sparc32_dma.c
-@@ -346,7 +346,7 @@ static void sparc32_ledma_device_realize(DeviceState *dev, Error **errp)
-     d = qdev_new(TYPE_LANCE);
-     object_property_add_child(OBJECT(dev), "lance", OBJECT(d));
-     qdev_set_nic_properties(d, nd);
--    object_property_set_link(OBJECT(d), OBJECT(dev), "dma", errp);
-+    object_property_set_link(OBJECT(d), OBJECT(dev), "dma", &error_abort);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(d), &error_fatal);
- }
- 
-@@ -379,7 +379,7 @@ static void sparc32_dma_realize(DeviceState *dev, Error **errp)
-     }
- 
-     espdma = qdev_new(TYPE_SPARC32_ESPDMA_DEVICE);
--    object_property_set_link(OBJECT(espdma), iommu, "iommu", errp);
-+    object_property_set_link(OBJECT(espdma), iommu, "iommu", &error_abort);
-     object_property_add_child(OBJECT(s), "espdma", OBJECT(espdma));
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(espdma), &error_fatal);
- 
-@@ -394,7 +394,7 @@ static void sparc32_dma_realize(DeviceState *dev, Error **errp)
-                                 sysbus_mmio_get_region(sbd, 0));
- 
-     ledma = qdev_new(TYPE_SPARC32_LEDMA_DEVICE);
--    object_property_set_link(OBJECT(ledma), iommu, "iommu", errp);
-+    object_property_set_link(OBJECT(ledma), iommu, "iommu", &error_abort);
-     object_property_add_child(OBJECT(s), "ledma", OBJECT(ledma));
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(ledma), &error_fatal);
- 
-diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-index 6a9df2c4db..a069637bf2 100644
---- a/hw/dma/xilinx_axidma.c
-+++ b/hw/dma/xilinx_axidma.c
-@@ -537,7 +537,6 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
-     XilinxAXIDMAStreamSlave *ds = XILINX_AXI_DMA_DATA_STREAM(&s->rx_data_dev);
-     XilinxAXIDMAStreamSlave *cs = XILINX_AXI_DMA_CONTROL_STREAM(
-                                                             &s->rx_control_dev);
--    Error *local_err = NULL;
-     int i;
- 
-     object_property_add_link(OBJECT(ds), "dma", TYPE_XILINX_AXI_DMA,
-@@ -548,11 +547,8 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
-                              (Object **)&cs->dma,
-                              object_property_allow_set_link,
-                              OBJ_PROP_LINK_STRONG);
--    object_property_set_link(OBJECT(ds), OBJECT(s), "dma", &local_err);
--    object_property_set_link(OBJECT(cs), OBJECT(s), "dma", &local_err);
--    if (local_err) {
--        goto xilinx_axidma_realize_fail;
--    }
-+    object_property_set_link(OBJECT(ds), OBJECT(s), "dma", &error_abort);
-+    object_property_set_link(OBJECT(cs), OBJECT(s), "dma", &error_abort);
- 
-     for (i = 0; i < 2; i++) {
-         struct Stream *st = &s->streams[i];
-@@ -567,10 +563,6 @@ static void xilinx_axidma_realize(DeviceState *dev, Error **errp)
- 
-     address_space_init(&s->as,
-                        s->dma_mr ? s->dma_mr : get_system_memory(), "dma");
--    return;
--
--xilinx_axidma_realize_fail:
--    error_propagate(errp, local_err);
- }
- 
- static void xilinx_axidma_init(Object *obj)
-diff --git a/hw/mips/cps.c b/hw/mips/cps.c
-index cdfab19826..5382bc86f7 100644
---- a/hw/mips/cps.c
-+++ b/hw/mips/cps.c
-@@ -150,8 +150,10 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
-     object_property_set_int(OBJECT(&s->gcr), s->num_vp, "num-vp", &err);
-     object_property_set_int(OBJECT(&s->gcr), 0x800, "gcr-rev", &err);
-     object_property_set_int(OBJECT(&s->gcr), gcr_base, "gcr-base", &err);
--    object_property_set_link(OBJECT(&s->gcr), OBJECT(&s->gic.mr), "gic", &err);
--    object_property_set_link(OBJECT(&s->gcr), OBJECT(&s->cpc.mr), "cpc", &err);
-+    object_property_set_link(OBJECT(&s->gcr), OBJECT(&s->gic.mr), "gic",
-+                             &error_abort);
-+    object_property_set_link(OBJECT(&s->gcr), OBJECT(&s->cpc.mr), "cpc",
-+                             &error_abort);
-     sysbus_realize(SYS_BUS_DEVICE(&s->gcr), &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
-diff --git a/hw/misc/macio/macio.c b/hw/misc/macio/macio.c
-index 8ba7af073c..3251c79f46 100644
---- a/hw/misc/macio/macio.c
-+++ b/hw/misc/macio/macio.c
-@@ -136,7 +136,8 @@ static void macio_realize_ide(MacIOState *s, MACIOIDEState *ide,
-     sysbus_connect_irq(sysbus_dev, 0, irq0);
-     sysbus_connect_irq(sysbus_dev, 1, irq1);
-     qdev_prop_set_uint32(DEVICE(ide), "channel", dmaid);
--    object_property_set_link(OBJECT(ide), OBJECT(&s->dbdma), "dbdma", errp);
-+    object_property_set_link(OBJECT(ide), OBJECT(&s->dbdma), "dbdma",
-+                             &error_abort);
-     macio_ide_register_dma(ide);
- 
-     qdev_realize(DEVICE(ide), BUS(&s->macio_bus), errp);
-diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-index c2f40b8ea9..679a359f9a 100644
---- a/hw/net/xilinx_axienet.c
-+++ b/hw/net/xilinx_axienet.c
-@@ -980,7 +980,6 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
-     XilinxAXIEnetStreamSlave *ds = XILINX_AXI_ENET_DATA_STREAM(&s->rx_data_dev);
-     XilinxAXIEnetStreamSlave *cs = XILINX_AXI_ENET_CONTROL_STREAM(
-                                                             &s->rx_control_dev);
--    Error *local_err = NULL;
- 
-     object_property_add_link(OBJECT(ds), "enet", "xlnx.axi-ethernet",
-                              (Object **) &ds->enet,
-@@ -990,11 +989,8 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
-                              (Object **) &cs->enet,
-                              object_property_allow_set_link,
-                              OBJ_PROP_LINK_STRONG);
--    object_property_set_link(OBJECT(ds), OBJECT(s), "enet", &local_err);
--    object_property_set_link(OBJECT(cs), OBJECT(s), "enet", &local_err);
--    if (local_err) {
--        goto xilinx_enet_realize_fail;
--    }
-+    object_property_set_link(OBJECT(ds), OBJECT(s), "enet", &error_abort);
-+    object_property_set_link(OBJECT(cs), OBJECT(s), "enet", &error_abort);
- 
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     s->nic = qemu_new_nic(&net_xilinx_enet_info, &s->conf,
-@@ -1008,10 +1004,6 @@ static void xilinx_enet_realize(DeviceState *dev, Error **errp)
- 
-     s->rxmem = g_malloc(s->c_rxmem);
-     s->txmem = g_malloc(s->c_txmem);
--    return;
--
--xilinx_enet_realize_fail:
--    error_propagate(errp, local_err);
- }
- 
- static void xilinx_enet_init(Object *obj)
-diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
-index 632533abaf..bd61d6e2f8 100644
---- a/hw/virtio/virtio-iommu-pci.c
-+++ b/hw/virtio/virtio-iommu-pci.c
-@@ -56,7 +56,7 @@ static void virtio_iommu_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
-     }
-     object_property_set_link(OBJECT(dev),
-                              OBJECT(pci_get_bus(&vpci_dev->pci_dev)),
--                             "primary-bus", errp);
-+                             "primary-bus", &error_abort);
-     qdev_realize(vdev, BUS(&vpci_dev->bus), errp);
- }
- 
--- 
-2.26.2
+> ---
+>  hw/arm/armsse.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+> index c73cc6badf..e2cf43ee0b 100644
+> --- a/hw/arm/armsse.c
+> +++ b/hw/arm/armsse.c
+> @@ -991,13 +991,13 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->sysinfo), 0, 0x40020000);
+>      /* System control registers */
+>      object_property_set_int(OBJECT(&s->sysctl), info->sys_version,
+> -                            "SYS_VERSION", &err);
+> +                            "SYS_VERSION", &error_abort);
+>      object_property_set_int(OBJECT(&s->sysctl), info->cpuwait_rst,
+> -                            "CPUWAIT_RST", &err);
+> +                            "CPUWAIT_RST", &error_abort);
+>      object_property_set_int(OBJECT(&s->sysctl), s->init_svtor,
+> -                            "INITSVTOR0_RST", &err);
+> +                            "INITSVTOR0_RST", &error_abort);
+>      object_property_set_int(OBJECT(&s->sysctl), s->init_svtor,
+> -                            "INITSVTOR1_RST", &err);
+> +                            "INITSVTOR1_RST", &error_abort);
+>      sysbus_realize(SYS_BUS_DEVICE(&s->sysctl), &err);
+>      if (err) {
+>          error_propagate(errp, err);
+> 
 

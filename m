@@ -1,90 +1,90 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4385047lfm;
-        Tue, 30 Jun 2020 14:05:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxw4TGx/sjjq4el2KovnWfb6TqIlefLHEZ7oAcAaT8fkjv/0xlN+AGHrMZjkCl4BtHjHh8b
-X-Received: by 2002:a5b:5:: with SMTP id a5mr35986124ybp.514.1593551150955;
-        Tue, 30 Jun 2020 14:05:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593551150; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4564305lfm;
+        Tue, 30 Jun 2020 17:47:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxj/YK1C7ODhk2FtLGMsdfvSmwqsnYsRuKlcDbs1pTYkb6TQZDN6aUoEf9iBHFE9gH9YwdO
+X-Received: by 2002:a25:3bd8:: with SMTP id i207mr37047323yba.167.1593564442176;
+        Tue, 30 Jun 2020 17:47:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593564442; cv=none;
         d=google.com; s=arc-20160816;
-        b=JaUrThDAHlN7zCjNRTC8zuo60Donmz+e0RwFhTtRp9OMbWHxSc5pl0235ni1UxJdvc
-         eIMnm78AecxqbhURtgymqYRqPoe1r6NRtIEhBoyJQO2DsLaKV4AEuwjn+sFNYxM6LlD9
-         9uYD6kcUywQ6JkLHF51/5NEvl5d5iq2oe5pSr0mPdG7NadX6kxMv4BaBYPOikkuS5tIo
-         DnBGi5ixILPduXtr4qi/zhqSqGw/595zZw34QaRhAs7RrWDNW9jHMnYG2++c56PhKI4x
-         OHdcFSpDnaUeqjQBqADMwNLsT7I6XVSe2n+6XMLoV8FSQRmIlpn/DSu1YI4hUwoXEVN6
-         booQ==
+        b=QIuO7AQabiZE6Zc9YpIeUS2CHFKrkm8z8249ugDL2cISCPTCWj6FEss/zfK/M0aj7Q
+         xaF+MmervoLJiNXEtF9l/XtavTyYHR2rYLoh43z+dDMN4qDRH0fPIDTUz4NhielAkmXN
+         WVUUxuWNu6YlJc5v22eL9jM/x1pfvy1BGlY6LJIQggmp8TRbQx3j1gb3V/1P1GKQz76P
+         XA/qBnJyv9eB+BQl3hkN5afsdHjaXYu8Cw78rez6Zz9WVcLAKXQVbg279W0RaOJI8fRQ
+         QmZjeU8PRBEPwv/GMpZM0F4IkL0zM9kdSOol6RXOJ7tEBcQHOeo89N6vxBPzvPkFVM0O
+         lpJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=AkVgbj2SVV7S0xqA22+uHgxrGpa6j1wryT4d5Xv/0w0=;
-        b=y8KoTNnpstLeXhnjF3K7+vPQXp2i1/f2Psc8GYOwvlizYw3BUxG/iUWYzIc14PXpfy
-         KKfdp2hWyiUNN35C8d5fDT5Pd2hmWemDEsjY2rI87BO4EiUF5/xfC6+2M/7TRaaPw3zg
-         tzb5JBUAhpDPAkD4u+y6TuGBcV7u/3pG5vnA99WoWqdgVgmcVA+8zD8LmTA8fON9s9Pe
-         Nkf9sGcD/jpEOPVBp7kkNr3EEpWpqmZl6mchKwR2ZyleEqLo7N7FM1yPvlQxJMx+aeUl
-         UqNrT7zYlCeJVMVhnDKNdqyvzDDXf1t3RKgLh0Pr0VMY9Z2M3i/Lb83xuiCyEkNvDP2N
-         gsmQ==
+        bh=w79Sev6iTPoIOV0GqrC3mMTBsITLTWDWM1QrF03kCnU=;
+        b=B064wtkp9c1gGbfKmQ7dJs6MZt8rezhLykaXapTOPyj5sBky+/0r8rCS/8u/Un5LDo
+         /u+EGaIFZ1qoA5gYlQKt7CjPotBl0cVgwSNrznSL36eE0LSEWW7r/FrtCjeUBajMSJ06
+         GqH5x79TfdgEhFZ2AgIWKvwD7CNvltyaty5sm1fv+SW3iSe4h+Oec97H1orq2A8hN3Hg
+         BSg+76q4neMVeMQeP4OvWkAB79AeDlNaZ9VW3WWgVtAPVUhxa6OeDN0ZhhT+L8MH87zP
+         kHCvKPXY6LXKV1FEhuxL58QZEBi+ZaIVtIOv0gEXOAtgVIxy+wiZPxQUG6JawAo5Kgi0
+         S/RQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="O5LbJGU/";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V+vg65ag;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p3si3812431ybl.18.2020.06.30.14.05.50
+        by mx.google.com with ESMTPS id e7si4096054ybp.191.2020.06.30.17.47.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jun 2020 14:05:50 -0700 (PDT)
+        Tue, 30 Jun 2020 17:47:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="O5LbJGU/";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=V+vg65ag;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49076 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52134 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jqNRu-00050i-8f
-	for alex.bennee@linaro.org; Tue, 30 Jun 2020 17:05:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42178)
+	id 1jqQuH-00088Y-6F
+	for alex.bennee@linaro.org; Tue, 30 Jun 2020 20:47:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38618)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jqNRl-0004zo-Bd; Tue, 30 Jun 2020 17:05:41 -0400
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:36865)
+ id 1jqQu5-00088A-W6; Tue, 30 Jun 2020 20:47:10 -0400
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:35118)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jqNRj-00064q-La; Tue, 30 Jun 2020 17:05:41 -0400
-Received: by mail-io1-xd44.google.com with SMTP id v6so8909318iob.4;
- Tue, 30 Jun 2020 14:05:38 -0700 (PDT)
+ id 1jqQu3-0008Ki-VR; Tue, 30 Jun 2020 20:47:09 -0400
+Received: by mail-io1-xd44.google.com with SMTP id v8so23046570iox.2;
+ Tue, 30 Jun 2020 17:47:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=AkVgbj2SVV7S0xqA22+uHgxrGpa6j1wryT4d5Xv/0w0=;
- b=O5LbJGU/0Rujb38vqhTNoXlukQgTsfjnH2M7cJR+kmEKgecsjQMnyYcKTDbh/ahrrx
- ND0pjXrkYvQZCzZv0Az9On1z7PNrLrVJJ8+RvuiTttL38/Ji8js/tbX3tVPvvAneaSbp
- wP9dI3UQJVggs7JOozIEyh/aZ5MiEkicYjBSCR0ei/B6fRrS6/HHWLDyr12YYo5hEjZ8
- XvsQ/2G2zSf6+CMPkoXttylngojyEe3mFlN0jOElKnewy+x3ZHoTXO8d8de5n+mYG/ba
- FypSvY01mHR3CcCpgVF8Xuf0FWCjKEa2kS8lKPdkVVKxyt2I+DWmJOdD9yB/eqSylTMS
- y83Q==
+ :cc; bh=w79Sev6iTPoIOV0GqrC3mMTBsITLTWDWM1QrF03kCnU=;
+ b=V+vg65agCcRBWOEnLhaWpod5rTq5zfGGQK2FKF/YKTAThl2UVFnmT819lGBcGvJQzv
+ EuwlKrCZJsDqeR2L6MBrg+oSVN+A/+D0qtaIcYsUDrn+aGltpUA+nYj2QSRxVWMrkbXv
+ 8PuC6bVbo/Gunu0Gi50fWmWVl/LnBMnsVOjVBh+lnWy7CTNk4RaWQZu2m9cqX3J7cUl7
+ RV63uF3erSIC8wk2O/53h63G9Gprau5E3kW6HGMv8wQ8/k9OxkU0Mqdx5d7PlDx2jyfH
+ ikP6WFODeu52ewSmfl1nkn7UfN4jyY1gYTslVZHgBTLmRWykMMZ3Jwda2f3sY+1835/K
+ DliQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=AkVgbj2SVV7S0xqA22+uHgxrGpa6j1wryT4d5Xv/0w0=;
- b=shWcB5Oi/bUwdgrmMCdQy/tkzQi71vhbH/PX9xv26qG4tiNGkWUae9yhw7xXgn1UUV
- e/42v1XuRSzWW8mhQKIBUiOh2lPHYTVETJTNBtEXRKcA5CYRH6KqnWek+8MYGpALER0H
- 2mOcHj1Jy6mgB7ovzUUcTmDJ/3Uiyw6rVLe9X21/p6uzVDo4omucpSdqyHgJ8eIo7wbh
- AUaTSzgLvt4wBXv/RpSAtpEdqMoW+oxj6niC+j9BobvBq28qA01nhSW8r5RR0rFMe9Ag
- /FJedV5U5xvCrXKIOzOjSV3qQ6UqYnkbolnkPIB5415FTpbpRM78vz41536qFygvSCjw
- ZggA==
-X-Gm-Message-State: AOAM532qiXuNPvyy6Eg8MMCSSKFIfwX+U+1qG38vpgAyFsLO64xzfcPu
- LdW5L04S0ew4bquveg7DWMUURM3yJYV6Acya6Dc=
-X-Received: by 2002:a05:6638:dd3:: with SMTP id
- m19mr25753448jaj.106.1593551138063; 
- Tue, 30 Jun 2020 14:05:38 -0700 (PDT)
+ bh=w79Sev6iTPoIOV0GqrC3mMTBsITLTWDWM1QrF03kCnU=;
+ b=r3CGfJkPqdoYxYq3Efw4tS3iovdGt6WwyIxrvDO58ZtmFQjcB/t6ScxuxVD3iFm37i
+ KEvXFMN38UVYLjyigEI89KCN5IbnnQSXlXrZKctwXmu254I5l/S1kGn8Z46tFA/etESF
+ 7frP3FYiuGWfxnRb7x1wEsO11aO3FonLaWC0VVHUqVuW2RAI80PDNbqUfAqT9JrB3kLR
+ sl9cjLMrSE3B8jTIIhY7Fzm57ojTQmnCHGpJ+u9PpZ2I2RysDdP2nAb46FBgkXOG8Q4b
+ 2Oo+SsGLeh8QHqu3vF35Py9be23NHDiGMckdoKxekMFdiOaEYWVLR43cfXcDceIgAD9M
+ 3s5Q==
+X-Gm-Message-State: AOAM532qdwjyLWb0R9MfsSSXL8YVIijTUvw0Gj/+3+zgYkparTMQ+19H
+ Tsxbwg7y4ZJMKuoIb6mBD1JEA2Ef0vkgwZiLNYQ=
+X-Received: by 2002:a02:5b83:: with SMTP id g125mr25886800jab.91.1593564426509; 
+ Tue, 30 Jun 2020 17:47:06 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200628142429.17111-1-peter.maydell@linaro.org>
- <20200628142429.17111-9-peter.maydell@linaro.org>
-In-Reply-To: <20200628142429.17111-9-peter.maydell@linaro.org>
+ <20200628142429.17111-11-peter.maydell@linaro.org>
+In-Reply-To: <20200628142429.17111-11-peter.maydell@linaro.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 30 Jun 2020 13:55:54 -0700
-Message-ID: <CAKmqyKNfBsG3k=ryC954D5Q6g3Ese86rODr23iRmc70MCBAJiQ@mail.gmail.com>
-Subject: Re: [PATCH 08/17] ssi: Add ssi_realize_and_unref()
+Date: Tue, 30 Jun 2020 17:37:22 -0700
+Message-ID: <CAKmqyKO5DiM=cNU8Y5kYuCVG4MhDwHS_2c=wuSTCnNExGCQfxA@mail.gmail.com>
+Subject: Re: [PATCH 10/17] hw/misc/max111x: Use GPIO lines rather than
+ max111x_set_input()
 To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
@@ -117,16 +117,20 @@ Cc: qemu-arm <qemu-arm@nongnu.org>,
  Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B8gFC4i5L24p
+X-TUID: JOmM6tRZn9Jo
 
-On Sun, Jun 28, 2020 at 7:27 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+On Sun, Jun 28, 2020 at 7:28 AM Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Add an ssi_realize_and_unref(), for the benefit of callers
-> who want to be able to create an SSI device, set QOM properties
-> on it, and then do the realize-and-unref afterwards.
+> The max111x ADC device model allows other code to set the level on
+> the 8 ADC inputs using the max111x_set_input() function.  Replace
+> this with generic qdev GPIO inputs, which also allow inputs to be set
+> to arbitrary values.
 >
-> The API works on the same principle as the recently added
-> qdev_realize_and_undef(), sysbus_realize_and_undef(), etc.
+> Using GPIO lines will make it easier for board code to wire things
+> up, so that if device A wants to set the ADC input it doesn't need to
+> have a direct pointer to the max111x but can just set that value on
+> its output GPIO, which is then wired up by the board to the
+> appropriate max111x input.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
@@ -135,69 +139,86 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  include/hw/ssi/ssi.h | 26 ++++++++++++++++++++++++++
->  hw/ssi/ssi.c         |  7 ++++++-
->  2 files changed, 32 insertions(+), 1 deletion(-)
+>  include/hw/ssi/ssi.h |  3 ---
+>  hw/arm/spitz.c       |  9 +++++----
+>  hw/misc/max111x.c    | 16 +++++++++-------
+>  3 files changed, 14 insertions(+), 14 deletions(-)
 >
 > diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
-> index 93f2b8b0beb..4be5325e654 100644
+> index 4be5325e654..5fd411f2e4e 100644
 > --- a/include/hw/ssi/ssi.h
 > +++ b/include/hw/ssi/ssi.h
-> @@ -79,6 +79,32 @@ extern const VMStateDescription vmstate_ssi_slave;
+> @@ -111,7 +111,4 @@ SSIBus *ssi_create_bus(DeviceState *parent, const char *name);
+>
+>  uint32_t ssi_transfer(SSIBus *bus, uint32_t val);
+>
+> -/* max111x.c */
+> -void max111x_set_input(DeviceState *dev, int line, uint8_t value);
+> -
+>  #endif
+> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
+> index 93a25edcb5b..fa592aad6d6 100644
+> --- a/hw/arm/spitz.c
+> +++ b/hw/arm/spitz.c
+> @@ -696,13 +696,14 @@ static void corgi_ssp_gpio_cs(void *opaque, int line, int level)
+>
+>  static void spitz_adc_temp_on(void *opaque, int line, int level)
+>  {
+> +    int batt_temp;
+> +
+>      if (!max1111)
+>          return;
+>
+> -    if (level)
+> -        max111x_set_input(max1111, MAX1111_BATT_TEMP, SPITZ_BATTERY_TEMP);
+> -    else
+> -        max111x_set_input(max1111, MAX1111_BATT_TEMP, 0);
+> +    batt_temp = level ? SPITZ_BATTERY_TEMP : 0;
+> +
+> +    qemu_set_irq(qdev_get_gpio_in(max1111, MAX1111_BATT_TEMP), batt_temp);
 >  }
 >
->  DeviceState *ssi_create_slave(SSIBus *bus, const char *name);
-> +/**
-> + * ssi_realize_and_unref: realize and unref an SSI slave device
-> + * @dev: SSI slave device to realize
-> + * @bus: SSI bus to put it on
-> + * @errp: error pointer
-> + *
-> + * Call 'realize' on @dev, put it on the specified @bus, and drop the
-> + * reference to it. Errors are reported via @errp and by returning
-> + * false.
-> + *
-> + * This function is useful if you have created @dev via qdev_new()
-> + * (which takes a reference to the device it returns to you), so that
-> + * you can set properties on it before realizing it. If you don't need
-> + * to set properties then ssi_create_slave() is probably better (as it
-> + * does the create, init and realize in one step).
-> + *
-> + * If you are embedding the SSI slave into another QOM device and
-> + * initialized it via some variant on object_initialize_child() then
-> + * do not use this function, because that family of functions arrange
-> + * for the only reference to the child device to be held by the parent
-> + * via the child<> property, and so the reference-count-drop done here
-> + * would be incorrect.  (Instead you would want ssi_realize(), which
-> + * doesn't currently exist but would be trivial to create if we had
-> + * any code that wanted it.)
-> + */
-> +bool ssi_realize_and_unref(DeviceState *dev, SSIBus *bus, Error **errp);
->
->  /* Master interface.  */
->  SSIBus *ssi_create_bus(DeviceState *parent, const char *name);
-> diff --git a/hw/ssi/ssi.c b/hw/ssi/ssi.c
-> index 67b48c31cd6..a35d7ebb266 100644
-> --- a/hw/ssi/ssi.c
-> +++ b/hw/ssi/ssi.c
-> @@ -90,11 +90,16 @@ static const TypeInfo ssi_slave_info = {
->      .abstract = true,
+>  static void corgi_ssp_realize(SSISlave *d, Error **errp)
+> diff --git a/hw/misc/max111x.c b/hw/misc/max111x.c
+> index abddfa3c660..3a5cb838445 100644
+> --- a/hw/misc/max111x.c
+> +++ b/hw/misc/max111x.c
+> @@ -131,12 +131,21 @@ static const VMStateDescription vmstate_max111x = {
+>      }
 >  };
 >
-> +bool ssi_realize_and_unref(DeviceState *dev, SSIBus *bus, Error **errp)
+> +static void max111x_input_set(void *opaque, int line, int value)
 > +{
-> +    return qdev_realize_and_unref(dev, &bus->parent_obj, errp);
+> +    MAX111xState *s = MAX_111X(opaque);
+> +
+> +    assert(line >= 0 && line < s->inputs);
+> +    s->input[line] = value;
 > +}
 > +
->  DeviceState *ssi_create_slave(SSIBus *bus, const char *name)
+>  static int max111x_init(SSISlave *d, int inputs)
 >  {
->      DeviceState *dev = qdev_new(name);
+>      DeviceState *dev = DEVICE(d);
+>      MAX111xState *s = MAX_111X(dev);
 >
-> -    qdev_realize_and_unref(dev, &bus->parent_obj, &error_fatal);
-> +    ssi_realize_and_unref(dev, bus, &error_fatal);
->      return dev;
+>      qdev_init_gpio_out(dev, &s->interrupt, 1);
+> +    qdev_init_gpio_in(dev, max111x_input_set, inputs);
+>
+>      s->inputs = inputs;
+>
+> @@ -153,13 +162,6 @@ static void max1111_realize(SSISlave *dev, Error **errp)
+>      max111x_init(dev, 4);
 >  }
 >
+> -void max111x_set_input(DeviceState *dev, int line, uint8_t value)
+> -{
+> -    MAX111xState *s = MAX_111X(dev);
+> -    assert(line >= 0 && line < s->inputs);
+> -    s->input[line] = value;
+> -}
+> -
+>  static void max111x_reset(DeviceState *dev)
+>  {
+>      MAX111xState *s = MAX_111X(dev);
 > --
 > 2.20.1
 >

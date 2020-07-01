@@ -1,104 +1,104 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4565277lfm;
-        Tue, 30 Jun 2020 17:48:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyXK09j3xtI7DJwb3wJd8zdi5g2BC1tui5KnE7YY77otHIreadywiaAxUWlw4ABsT8ZCwzL
-X-Received: by 2002:a25:9909:: with SMTP id z9mr37138403ybn.174.1593564538713;
-        Tue, 30 Jun 2020 17:48:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593564538; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4568859lfm;
+        Tue, 30 Jun 2020 17:54:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwpcUrMUDdBGEmZuUp4a8jgcVf/W07JayIJFXwgRqTKOyI3f0Oakb/pwKVjfmyBcezmRtgT
+X-Received: by 2002:a5b:808:: with SMTP id x8mr37614170ybp.134.1593564868425;
+        Tue, 30 Jun 2020 17:54:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593564868; cv=none;
         d=google.com; s=arc-20160816;
-        b=zhnWC7uupGAxn9uZhYVj98RGtok+4eC2qN2Keg6hd/kgwq+bVU+IBiTFmzKDcyPqga
-         hF3+/pdvCzKJ2GJtBXBmOld7809Z+PQ2uIjmB2pMA0CdJG4LuDFg3vYOcyWNk7YKwOwi
-         sg0kacXIpdptvnQ+/t6EI1nLwx0OwUHFdAcb4t/HkACPw0uvWixYCgUX3AAH08t08U4j
-         NxRtVOryQOBFvDL/vpgkiwcPuLhk9ODfKuxp1qVNpgWtbVBrAQGeP+HsDkPa/x/ibAlS
-         urYOJYVChJfL2LMTEytl7gfSHziHdtxVZ13podViU4tAxpHTGd3ZBZsfVy5Nb9KcL06U
-         9SYQ==
+        b=sKxuwQn9/jsJaokTahnt61bjMpy2Ktox9p1yXDkgwLwoc2bufyTqCkVNCpmuZU2g82
+         +l4V0nGI3Z+V8y1k6AecXTvshnzg5+rKp9ZlDbzE17BzheRQiXae70YEH+2TMGSjVQq/
+         S9xbsslLsjCwfUFW6sOQoJzMTgq/vptN69jVk3BfnsABkZlqf/7pUyZFXbc9L56x4ZKW
+         iTEUiePUB09+/lXcYCuR1UlnMEt1HhWVVR29Bzf+seiSzfLoo6V81QIPVSxAuRcE5pYy
+         5AkzGwoFtGLwPIe3HN/R8URaXo6GofJOau+2tjrEFAUEPZIGvr3IRw8AaRHF2DRfVgrG
+         Ih7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=7CtOIRE6zq79/FIIwJKTayfmxdvbxzV7oSi57qtRis8=;
-        b=0glDxY7ZF3biapaAX3IP4pKqD+UJm6BnokZqEmhYzgmO0LFllKGCt3weU6NbtLDaFu
-         rZ5vbilf8L4rtj9ut9lffB6k9uALudF3KeXhhrJ1Y82iG3A6OIEdTyPef2A1Qq7kxhxt
-         JCWNFumCORA4c+S0dqPz1R2KxQMFsv/b8t5NYRLDwAXyxLC15b4JySsl+CrLozk5ynLA
-         /1LGmdagWtVLiy/KYLsgmHkDP9zpa9XFaIG6376kjfZSA88R6VZcGglMDXHvnbawx9au
-         CYlLtLgyCpjVRswg15BttA1OtT4OxvFcIgh4ljGb7iwXEqsckdBXlkhSUkh8PHiHfvCm
-         OU1w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=WEYO5wqn1hXkoO2dj67hwg0f8xHFhIY0ohSiXoO5dTI=;
+        b=Prgsu5DYx/LlxhQBYwacTnfCn8pKf2wc4xWPu8BsmP6jDzPBDlKbhCpvCHySTTpof4
+         L3PBsYOknbQVOhU5qHmDnZvTOA3WvG6G3qvu5x58hbBGiE7kIhtmRIFJr9SPhTXtSHyk
+         eoWF9HmYJOe1vmGsGsc+2kMUoJBTwCmJ6bjvyWPV85ycPqVkzPWX9hEH0/HDb0y/zrh4
+         ksSY1JsKY0S/ewygEDNm6v29JPUJsio1dPeBTcFpRSXy+UB6C01UydeZgZ6iB9yhy4mx
+         kfPGndSqnfsiA7M1n2f83OV7pJ3fir1q+UVIawjlcYN5YinYMi8PF6rD0EOea4iGKJfA
+         Uj6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="VxbYef/k";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@jms.id.au header.s=google header.b=Iruk2cWr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a16si4079872ybs.181.2020.06.30.17.48.58
+        by mx.google.com with ESMTPS id j81si4033549ybg.136.2020.06.30.17.54.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jun 2020 17:48:58 -0700 (PDT)
+        Tue, 30 Jun 2020 17:54:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="VxbYef/k";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54496 helo=lists1p.gnu.org)
+       dkim=fail header.i=@jms.id.au header.s=google header.b=Iruk2cWr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57094 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jqQvq-0000qd-4Z
-	for alex.bennee@linaro.org; Tue, 30 Jun 2020 20:48:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38918)
+	id 1jqR19-0002KC-Mw
+	for alex.bennee@linaro.org; Tue, 30 Jun 2020 20:54:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39864)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jqQvf-0000qP-BP; Tue, 30 Jun 2020 20:48:47 -0400
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:40064)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1jqR0n-0002K5-Rj
+ for qemu-arm@nongnu.org; Tue, 30 Jun 2020 20:54:05 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:39698)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jqQvd-0000Ae-E2; Tue, 30 Jun 2020 20:48:47 -0400
-Received: by mail-il1-x144.google.com with SMTP id e18so8850232ilr.7;
- Tue, 30 Jun 2020 17:48:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1jqR0l-0000s1-8q
+ for qemu-arm@nongnu.org; Tue, 30 Jun 2020 20:54:05 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id w6so22649727ejq.6
+ for <qemu-arm@nongnu.org>; Tue, 30 Jun 2020 17:54:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7CtOIRE6zq79/FIIwJKTayfmxdvbxzV7oSi57qtRis8=;
- b=VxbYef/kJ2tJ5t14pImF0Geizlro4tBgORk0W5Nh0Xz0WglCvaYEnDAO92h+7GsFho
- TuI6zXcE7gtBL6Xe4QPoNqyDJx3m+7nS0mYlmkCm0dqGje6pqnLxdwbEYG3zdV0id3/i
- Gr06dqQ5Roau0ct++kSDZL8l7JchFDeZ+FXYW+aN9Z0EHMkoueVvoLDOr8hXJBVwwXHK
- 2Zfkeg+cLzKXsWgWGThWMykIZ1kGmSqJNNxYPcfIKvSZm1AkdazrUeTsF9eIBl9o060/
- GpX2wDGRQrYRW07zTdru8ZNUjlgHHAPOknBOv0cpG2WDPfYuL7LnI/zBi9dDqvzqvI9W
- pZEQ==
+ :cc:content-transfer-encoding;
+ bh=WEYO5wqn1hXkoO2dj67hwg0f8xHFhIY0ohSiXoO5dTI=;
+ b=Iruk2cWrCV/eC/+WQurV4xxjv/GV1hFswHQC9qHBRLZUQeK8mhaQ1Y4U+Fv6oqLGNQ
+ HFdMfitm6MaI7uKxoVJlCaZrc2k829el5VCnUcHB09rWPndY+QBGgD6Aj5i+PWmNn1/O
+ +tyMvD/bLUEf4kXRYs8tCA//1QBGVw/9JDa1M=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=7CtOIRE6zq79/FIIwJKTayfmxdvbxzV7oSi57qtRis8=;
- b=UNQ+5kzxJ4my/qiqlUwgmxQFuSVUu82HpXQw8T7AWYGKv+bIq/PjemUBuguWc1vbEt
- z13y4y59mePi6WFjR6ARTKyCj+uE8nWqsU2C9GO791uxsJufT0455pZZJ4dzPgkk2UYJ
- MmDqwxFt+XJzxmWVjdzAV8du5nklSplWxa4RILGxrLm7useK6LSqVc9u52oK2hiVeejk
- hdj0Hf6q2I11GpO/mAVRMrp+hD6HiPAyx5bxwVp5IkJQdz0s9p7Qub50Sr8Pb0mc6PEU
- 6aQAciSkIk5MxjE6S8c0SCTz2ByTU59cwqZvTsi43mAPjsMQwiz7dFzckZGOCeTqjBP0
- uTPw==
-X-Gm-Message-State: AOAM532qD1+9o2s8510kU/fwRi2mFQMt8TVPeKbaKyjwuSwtcjRTfJ/m
- EMfdKVa3j/zu5go0a0HFGRg/LEbPaasPNSvXnAkPVvVg
-X-Received: by 2002:a92:5f12:: with SMTP id t18mr5480177ilb.267.1593564523750; 
- Tue, 30 Jun 2020 17:48:43 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=WEYO5wqn1hXkoO2dj67hwg0f8xHFhIY0ohSiXoO5dTI=;
+ b=DLNoHBMAspwoMOlJmj2fjLD8JIQzIrR6sFurSWsCENIJqGSIiQ6+L/yd8AmDr3Ni7r
+ 1RUB47s7VORUEZ8WkOh9UxhoguCkHrXI7R4C1RJKfVvV0FlpxWZ9o6IGl/zJx3QP2Y55
+ 8ASFWFY3iFysieKXF/GhR+7R4Ysl6NooeYnhzVWIGfpj/69aMnhO/2sqewRxE4JBwhsj
+ oVEYIlvSrRQkJ2R6Nn8COTV+rhUv100Pmfr3yjfyhcgv8a4qT9PNYIFXoX2JdbT9WVDl
+ wOihMGlbV8Ejxnf7J/hZHf3f7xxqe4jVi3E5K8NUqmqKd2vS0UJtLh1BTVQoeRZa8cC5
+ tjOQ==
+X-Gm-Message-State: AOAM533+UkmmnEVHz926nj3Nq/u6xk0briAZXZ+KuE2Vz5e9kG7jt+zT
+ 0IgMwU2R7nGfzyhsIAtAhdubLHrOAcpe7meJQc0=
+X-Received: by 2002:a17:906:1455:: with SMTP id
+ q21mr4187769ejc.139.1593564841019; 
+ Tue, 30 Jun 2020 17:54:01 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200628142429.17111-1-peter.maydell@linaro.org>
- <20200628142429.17111-14-peter.maydell@linaro.org>
-In-Reply-To: <20200628142429.17111-14-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 30 Jun 2020 17:38:59 -0700
-Message-ID: <CAKmqyKMuG31E4ij_w=3U55N_0EsH=deDBEsqtaLxKFx=BNEe-g@mail.gmail.com>
-Subject: Re: [PATCH 13/17] hw/gpio/zaurus.c: Use LOG_GUEST_ERROR for bad guest
- register accesses
-To: Peter Maydell <peter.maydell@linaro.org>
+References: <CA+MHfoubt1g2FzcjTw3a0vNr7X2T8Jb+nYoc4_x=Z2TP51afKg@mail.gmail.com>
+ <a7acba46-5a9a-5dd2-71c6-7e4586485823@amsat.org>
+ <CA+MHfot6FdS2yT0mEsCW36bCfwy-WY-1KPQ-KDfYBKzTy=Gd7w@mail.gmail.com>
+In-Reply-To: <CA+MHfot6FdS2yT0mEsCW36bCfwy-WY-1KPQ-KDfYBKzTy=Gd7w@mail.gmail.com>
+From: Joel Stanley <joel@jms.id.au>
+Date: Wed, 1 Jul 2020 00:53:49 +0000
+Message-ID: <CACPK8Xdqr+EufMgooCY=D+Vt98qu11YTHE5Fzi5+xqX=wKReeQ@mail.gmail.com>
+Subject: Re: hw/misc/aspeed_scu: 5d971f9e breaks Supermicro AST2400
+To: Erik Smit <erik.lucas.smit@gmail.com>, Ryan Chen <ryan_chen@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x144.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=joel.stan@gmail.com; helo=mail-ej1-x62d.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,102 +111,55 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wviBLwjEGwpn
+X-TUID: nk75Znxzt0mx
 
-On Sun, Jun 28, 2020 at 7:35 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+On Tue, 30 Jun 2020 at 15:32, Erik Smit <erik.lucas.smit@gmail.com> wrote:
 >
-> Instead of logging guest accesses to invalid register offsets in this
-> device using zaurus_printf() (which just prints to stderr), use the
-> usual qemu_log_mask(LOG_GUEST_ERROR,...).
+> Hi Philippe,
 >
-> Since this was the only use of the zaurus_printf() macro outside
-> spitz.c, we can move the definition of that macro from sharpsl.h
-> to spitz.c.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> On Tue, 30 Jun 2020 at 17:29, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+> >
+> > Hi Erik,
+> >
+> > On 6/30/20 5:11 PM, Erik Smit wrote:
+> > > Hello,
+> > >
+> > > 5d971f9e memory: Revert "memory: accept mismatching sizes in
+> > > memory_region_access_valid" breaks Supermicro AST2400 u-boot.
+> > > Supermicro AST2500 u-boot is fine.
+> > >
+> > > The u-boot tries to make a 2-byte read from address 0x84, but
+> > > aspeed_ast2400_scu_ops has min_access =3D 4. When I change min_access=
+ to
+> > > 2 or revert above commit, u-boot boots again.
+> > >
+> > > Is changing min_access to 2 the right way to fix this?
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Ryan, do all addresses on the AST2400's APB respond to single byte accesses=
+?
 
-Alistair
+> >
+> > If you have access to the datasheet and can verify, then yes.
+> > Else I suppose C=C3=A9dric, Andrew or Joel can check for you.
+>
+> I do not have a datasheet. Aspeed seems quite picky about sharing this
+> and I'm just a random researcher.
 
-> ---
->  include/hw/arm/sharpsl.h |  3 ---
->  hw/arm/spitz.c           |  3 +++
->  hw/gpio/zaurus.c         | 12 +++++++-----
->  3 files changed, 10 insertions(+), 8 deletions(-)
+Erik, can you point us to the image you're using?
+
+What is the command line are you testing with?
+
+Happy to fix the model to support random firmwares, as long as the fix
+is correct for other (open source) firmwares.
+
 >
-> diff --git a/include/hw/arm/sharpsl.h b/include/hw/arm/sharpsl.h
-> index 89e168fbff3..e986b28c527 100644
-> --- a/include/hw/arm/sharpsl.h
-> +++ b/include/hw/arm/sharpsl.h
-> @@ -9,9 +9,6 @@
+> Best regards,
 >
->  #include "exec/hwaddr.h"
->
-> -#define zaurus_printf(format, ...)     \
-> -    fprintf(stderr, "%s: " format, __func__, ##__VA_ARGS__)
-> -
->  /* zaurus.c */
->
->  #define SL_PXA_PARAM_BASE      0xa0000a00
-> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-> index bab9968ccee..6eb46869157 100644
-> --- a/hw/arm/spitz.c
-> +++ b/hw/arm/spitz.c
-> @@ -62,6 +62,9 @@ typedef struct {
->  #define SPITZ_MACHINE_CLASS(klass) \
->      OBJECT_CLASS_CHECK(SpitzMachineClass, klass, TYPE_SPITZ_MACHINE)
->
-> +#define zaurus_printf(format, ...)                              \
-> +    fprintf(stderr, "%s: " format, __func__, ##__VA_ARGS__)
-> +
->  #undef REG_FMT
->  #define REG_FMT                         "0x%02lx"
->
-> diff --git a/hw/gpio/zaurus.c b/hw/gpio/zaurus.c
-> index 9a12c683420..258e9264930 100644
-> --- a/hw/gpio/zaurus.c
-> +++ b/hw/gpio/zaurus.c
-> @@ -22,9 +22,7 @@
->  #include "hw/sysbus.h"
->  #include "migration/vmstate.h"
->  #include "qemu/module.h"
-> -
-> -#undef REG_FMT
-> -#define REG_FMT                        "0x%02lx"
-> +#include "qemu/log.h"
->
->  /* SCOOP devices */
->
-> @@ -104,7 +102,9 @@ static uint64_t scoop_read(void *opaque, hwaddr addr,
->      case SCOOP_GPRR:
->          return s->gpio_level;
->      default:
-> -        zaurus_printf("Bad register offset " REG_FMT "\n", (unsigned long)addr);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "scoop_read: bad register offset 0x%02" HWADDR_PRIx "\n",
-> +                      addr);
->      }
->
->      return 0;
-> @@ -150,7 +150,9 @@ static void scoop_write(void *opaque, hwaddr addr,
->          scoop_gpio_handler_update(s);
->          break;
->      default:
-> -        zaurus_printf("Bad register offset " REG_FMT "\n", (unsigned long)addr);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "scoop_write: bad register offset 0x%02" HWADDR_PRIx "\n",
-> +                      addr);
->      }
->  }
->
-> --
-> 2.20.1
->
->
+> Erik Smit

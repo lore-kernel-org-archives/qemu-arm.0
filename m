@@ -1,154 +1,273 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3033220lfb;
-        Mon, 18 May 2020 06:23:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwN2mncStO+PjW8tO+2KE6zzy/Eiuo/vow+SH2iGW691RpN6Ko9GpE3ss42+SEZtU7EAGpx
-X-Received: by 2002:ac8:4a88:: with SMTP id l8mr15768264qtq.337.1589808219576;
-        Mon, 18 May 2020 06:23:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589808219; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp935695lfm;
+        Wed, 1 Jul 2020 16:07:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw8Hb1LdbvBwNJFFeI0y15qZRw/D0JGMUOKvJ/twlhqZDsNdz2gvC04LEvdc5kwqIJgelsu
+X-Received: by 2002:a25:c7d3:: with SMTP id w202mr29977122ybe.84.1593644834369;
+        Wed, 01 Jul 2020 16:07:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593644834; cv=none;
         d=google.com; s=arc-20160816;
-        b=e/t1wVQuZLnlAibHZE+xL8traTvBOi7mgW9LI/8lVXCcpMciC+93klgadfJPp/UiA2
-         E01MXBtazcx2QOzBE6qCYpEEgIWtuyHhtWJRBz3/Zd7rdircxlPVgRKvFTZiBA4XOYh6
-         lYdL7o+4lkFBJSwmY6s6PYeAMqIITyWizolsC3D5XFJckBYv6tTDr02+QXeJSqtjLFHy
-         pMiHgoT8LNi/hy8FJ7rRNfRyTj+MK3dlCQWupGicvKRuQk0hqr16SEnMt+bi3Br+HbWA
-         bAMCOqh9Vnr7DepSCldvHEvxNkcZx8gzKpvYVnu3106o6YfPHldQJyPLSqQGOMqBxo9+
-         2xzg==
+        b=SuNUS6RafydHT9s3AJ+23U9xN1/MOA5/8A7+rYTQu93UKwwVuRj9bqDWQrWiiDJzb0
+         qsCV7D9wXWpYvgMmfLseUgKFNmnchzoq97HZkdaxI0uj6m3HELAgfpXm6nNfeNb7KKvn
+         cfE4BwZbuA3yuKB2JqkfZEwT7d5bdGnuyJ1FJ2waoPMczjHRFvZAchnIA39K/7+WT0r0
+         WQz1/EqVsRXoG1tzg1qo8J48qK8wEkmS2RUbnLe1TU4Bu/jOvsPVg1m9lgiN3F1X9cy8
+         pJ3wLFnMwhcg4qCMEHKa6UHszMoCt80kKrbx5yUd9a321bcAZgEUtJqlYqL/tbfLFqCy
+         bPTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=UMgVSi6dDNK72M34wxxIYPx+wupwuSXKlObAf9CJqas=;
-        b=S6CtTjGyI6e7I24s2taRB7ds7juRnbWeA5ITUkITxraHhF5suRv8tAWoPTdqfWU2WM
-         /Q/MdhA3ZrCjq4QS5RLf3W8eSkP/xUou7z3IDy22xCIYWZOlc5LRF7ue5/lAo2+u85xF
-         MUVqu2VaAdk4HLDT5aU0keM+LBbAHM5kzC2WI5rFOlO1S0H3GkX9mktj3LhMXbc9EREc
-         AClortS8DnSLEZwVK7ZvLpFJzI3lSX61OHrxFxBGX0wVKpy8y0Hhg6J86wvltpffr1bL
-         7UwTqo4ekaGJBvX2MLBl8FrD4fiZfeDCxPWWUlHSsxxKL2dWmIC8ozGZETPKQUrj62qI
-         lwXQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=+SBC+1bi7YP30ifabfY7Lj/c0eUxzfyQUx9HqZ1HkWs=;
+        b=C+SDK1nM2hhnDlb4ccLQoqh3Q6odCK48+2f4+aAmMgtORS6klI+xqwpn92lkCmnwDN
+         6u3ktutAwB60cDCKedH6hPTC998LXYfEySo1p/6sW+Dgw+g0+ibdHsIoya5bRjDvKxh7
+         pntAduG7clVF3hITiEp/cZX5zxr1LIxYO+IVoe3p4zDXcZNnZ3QNZS2Jr3CtWlBrFRNq
+         nPbF4Dbvp+8U932WHu07q8pq/RAp2CXAiGf3XQSkUkRDlyB+kEk0nAVZBnu4zbMCtLfW
+         /Az+LNuvP113gRCM7hJphA+agK7EKjArcvtIb+DFzm2Fz5oA9VEzYPtf8JSIihUSH3dY
+         LXuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@jms.id.au header.s=google header.b=CUT2ytIq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a22si6069533qtb.164.2020.05.18.06.23.39
+        by mx.google.com with ESMTPS id f123si7563612ybg.424.2020.07.01.16.07.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 May 2020 06:23:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 01 Jul 2020 16:07:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46854 helo=lists1p.gnu.org)
+       dkim=fail header.i=@jms.id.au header.s=google header.b=CUT2ytIq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53786 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jafk3-0004G2-25
-	for alex.bennee@linaro.org; Mon, 18 May 2020 09:23:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59872)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jqlov-0001Ep-Iz
+	for alex.bennee@linaro.org; Wed, 01 Jul 2020 19:07:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47234)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jafj4-0003I8-2s
- for qemu-devel@nongnu.org; Mon, 18 May 2020 09:22:38 -0400
-Received: from 3.mo69.mail-out.ovh.net ([188.165.52.203]:43668)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jafj2-0007YF-Hp
- for qemu-devel@nongnu.org; Mon, 18 May 2020 09:22:37 -0400
-Received: from player732.ha.ovh.net (unknown [10.108.54.59])
- by mo69.mail-out.ovh.net (Postfix) with ESMTP id 024018EAFB
- for <qemu-devel@nongnu.org>; Mon, 18 May 2020 15:22:33 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player732.ha.ovh.net (Postfix) with ESMTPSA id D7420125CCEDC;
- Mon, 18 May 2020 13:21:52 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G003b3c596e5-fc65-4a7f-a892-87f5b49a92ea,2E2A9519E3FAC9D985F861812C9F86F7BE89492F)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH v3 0/3] various: Remove unnecessary casts
-To: Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20200512070020.22782-1-f4bug@amsat.org>
- <871rnlsps6.fsf@dusky.pond.sub.org>
- <8791b385-8493-f81d-5ee3-cca5b8559c27@redhat.com>
- <87imgt9ycp.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <2f4607cf-90a9-ca9a-4ef6-a8358631cdf0@kaod.org>
-Date: Mon, 18 May 2020 15:21:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1jqloY-0001Dx-IG
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2020 19:06:50 -0400
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:35444)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1jqloV-0001Jv-Il
+ for qemu-arm@nongnu.org; Wed, 01 Jul 2020 19:06:50 -0400
+Received: by mail-ej1-x642.google.com with SMTP id rk21so26799327ejb.2
+ for <qemu-arm@nongnu.org>; Wed, 01 Jul 2020 16:06:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=+SBC+1bi7YP30ifabfY7Lj/c0eUxzfyQUx9HqZ1HkWs=;
+ b=CUT2ytIqZZhmeZrHGRoCxKAgJNfEHkXf7qigPD+31/1aqGULywvsF8kt4LxShOsiH6
+ tWC/RFBywPUa3tHysfv/xDeAxNol//Px/lbhsOSnt8As5J4C1LwTUykk2LlcYEj62ZO+
+ BugrC7xzt5QIvvk9Tw+TYYxyP7JlH/x5rOWJE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=+SBC+1bi7YP30ifabfY7Lj/c0eUxzfyQUx9HqZ1HkWs=;
+ b=tbmp+Gjba6iR8Yw2tJCabiQM8TtFOIKLNnMOWwMSqzVlVnOA1O0DuXziNCNZGVssHu
+ LUPKCJbtkhBcIpOGITEvN6xWZTRvB8JoucA1HuN+u2+IoQ4tCeoe/XXcqRYWcq2ZAf3b
+ 23AZeXyZOaB4LG//zOlEoxmd8wYT1mcqqy/AxerJDFdyJF6FmO3gNUGxqEPtGPK3IrQh
+ xTYKTRvu/qjKa1h9xLaHvmzwpDY1oWllMDynR1ofkSN/eE2OyDjXLCc4QdPey0UofaRb
+ aeXwEkIUOCDC94at6lLYUlHaHFVyhZrtGvTcyg03STM0QJPAHwgKV2NtcOc2pom2272f
+ GnTg==
+X-Gm-Message-State: AOAM530NMNyqAMpRzTmj9M2Ph+45fKI3DQVaMlOwJxyLE4qe3FCPVem3
+ TFj/7eT+kSKvbGUeOqYfXT2H+5zx08vg1LQj0YU=
+X-Received: by 2002:a17:906:1c0d:: with SMTP id
+ k13mr26074950ejg.477.1593644805912; 
+ Wed, 01 Jul 2020 16:06:45 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <87imgt9ycp.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 10095100040702757704
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduhedruddthedgieefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeffhfffudegjeeggedugeefgeeifffhueethefhfeekkedvkefggfelteefuddvteenucffohhmrghinhepohiilhgrsghsrdhorhhgnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeefvddrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=188.165.52.203; envelope-from=clg@kaod.org;
- helo=3.mo69.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/05/18 09:22:34
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+References: <CA+MHfoubt1g2FzcjTw3a0vNr7X2T8Jb+nYoc4_x=Z2TP51afKg@mail.gmail.com>
+ <a7acba46-5a9a-5dd2-71c6-7e4586485823@amsat.org>
+ <CA+MHfot6FdS2yT0mEsCW36bCfwy-WY-1KPQ-KDfYBKzTy=Gd7w@mail.gmail.com>
+ <CACPK8Xdqr+EufMgooCY=D+Vt98qu11YTHE5Fzi5+xqX=wKReeQ@mail.gmail.com>
+ <b3480de1dece41ed80091feba584c500@TWMBX02.aspeed.com>
+ <CACPK8Xd=zz5oAXxu0Hd_szVQ5btQCMPPP7K7OrvAcoYr7zdpPQ@mail.gmail.com>
+ <7bd34a68-b851-ce8a-b9d7-14ec169f345f@amsat.org>
+In-Reply-To: <7bd34a68-b851-ce8a-b9d7-14ec169f345f@amsat.org>
+From: Joel Stanley <joel@jms.id.au>
+Date: Wed, 1 Jul 2020 23:06:34 +0000
+Message-ID: <CACPK8Xd+RscVYwUmgeV4oHLfcMXjPLobegQ7q_aziLYea5a2fQ@mail.gmail.com>
+Subject: Re: hw/misc/aspeed_scu: 5d971f9e breaks Supermicro AST2400
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::642;
+ envelope-from=joel.stan@gmail.com; helo=mail-ej1-x642.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Joel Stanley <joel@jms.id.au>, Anthony Perard <anthony.perard@citrix.com>,
- xen-devel@lists.xenproject.org, David Gibson <david@gibson.dropbear.id.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Corey Minyard <minyard@acm.org>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Cornelia Huck <cohuck@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, qemu-ppc@nongnu.org,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JkwIr6LVUr8i
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Erik Smit <erik.lucas.smit@gmail.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ Ryan Chen <ryan_chen@aspeedtech.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 42YOOqvR/gYj
 
-On 5/18/20 3:17 PM, Markus Armbruster wrote:
-> Paolo Bonzini <pbonzini@redhat.com> writes:
-> 
->> On 15/05/20 07:58, Markus Armbruster wrote:
->>> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
->>>
->>>> Remove unnecessary casts using coccinelle scripts.
->>>>
->>>> The CPU()/OBJECT() patches don't introduce logical change,
->>>> The DEVICE() one removes various OBJECT_CHECK() calls.
->>> Queued, thanks!
->>>
->>> Managing expecations: I'm not a QOM maintainer, I don't want to become
->>> one, and I don't normally queue QOM patches :)
->>>
->>
->> I want to be again a QOM maintainer, but it's not the best time for me
->> to be one.  So thanks for picking up my slack.
-> 
-> You're welcome :)
+On Wed, 1 Jul 2020 at 07:16, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
+>
+> Hi Joel,
+>
+> On 7/1/20 4:32 AM, Joel Stanley wrote:
+> > On Wed, 1 Jul 2020 at 01:23, Ryan Chen <ryan_chen@aspeedtech.com> wrote=
+:
+> >
+> >> On Tue, 30 Jun 2020 at 15:32, Erik Smit <erik.lucas.smit@gmail.com> wr=
+ote:
+> >>>
+> >>> Hi Philippe,
+> >>>
+> >>> On Tue, 30 Jun 2020 at 17:29, Philippe Mathieu-Daud=C3=A9 <f4bug@amsa=
+t.org> wrote:
+> >>>>
+> >>>> Hi Erik,
+> >>>>
+> >>>> On 6/30/20 5:11 PM, Erik Smit wrote:
+> >>>>> Hello,
+> >>>>>
+> >>>>> 5d971f9e memory: Revert "memory: accept mismatching sizes in
+> >>>>> memory_region_access_valid" breaks Supermicro AST2400 u-boot.
+> >>>>> Supermicro AST2500 u-boot is fine.
+> >>>>>
+> >>>>> The u-boot tries to make a 2-byte read from address 0x84, but
+> >>>>> aspeed_ast2400_scu_ops has min_access =3D 4. When I change
+> >>>>> min_access to
+> >>>>> 2 or revert above commit, u-boot boots again.
+> >>>>>
+> >>>>> Is changing min_access to 2 the right way to fix this?
+> >>
+> >> Ryan, do all addresses on the AST2400's APB respond to single byte acc=
+esses?
+> >
+> >>         Most register is not support byte access, it need to refer the=
+ datasheet descript each area. [chapter : ARM Address Space Mapping]
+> >
+> > Thanks Ryan.
+> >
+> > Summarising that table:
+> >
+> >  - most addresses are 4 byte write accesses.
+> >  - all addresses support 1/2/4 byte reads.
+> >
+> > The regions that accept 1/2/4 byte access are the SDRAM, SRAM,
+> > ethernet MACs, video engine, the flash controller regions (2000_0000
+> > -> 2FFF_FFFF and 3000_0000 -> 3FFF_FFFF), and the AHB to LPC bridges
+> > (6000_0000 -> 6FFF_FFFF and 7000_0000 -> 7FFF_FFFF).
+>
+> Useful info. We have:
+>
+> static const hwaddr aspeed_soc_ast2400_memmap[] =3D {
+>
+>     /* AHB ??? */
+>
+>     [ASPEED_IOMEM]  =3D 0x1E600000,
+>     [ASPEED_FMC]    =3D 0x1E620000,
+>     [ASPEED_SPI1]   =3D 0x1E630000,
+>     [ASPEED_ETH1]   =3D 0x1E660000,
+>     [ASPEED_ETH2]   =3D 0x1E680000,
+>     [ASPEED_EHCI1]  =3D 0x1E6A1000,
+>     [ASPEED_VIC]    =3D 0x1E6C0000,
+>     [ASPEED_SDMC]   =3D 0x1E6E0000,
+>     [ASPEED_SCU]    =3D 0x1E6E2000,
+>     [ASPEED_XDMA]   =3D 0x1E6E7000,
+>     [ASPEED_ADC]    =3D 0x1E6E9000,
+>     [ASPEED_VIDEO]  =3D 0x1E700000,
+>     [ASPEED_SRAM]   =3D 0x1E720000,
+>     [ASPEED_SDHCI]  =3D 0x1E740000,
+>
+> This block ^ contains "SRAM, ethernet MACs, video engine
+> that accept 1/2/4 byte access". Can we assume all peripherals
+> in [0x1E60.0000-0x1E7F.FFFF] accept 1/2/4 byte access?
 
-Could you help me getting this patch merged ? :)
+According to the datasheet, just the SRAM, VIDEO, and ETH{1,2} regions.
 
-http://patchwork.ozlabs.org/project/qemu-devel/patch/20200404153340.164861-1-clg@kaod.org/
+1E66_0000-1E67_FFFF (ETH1)
+1E68_0000-1E69_FFFF (ETH2)
+1E70_0000-1E71_FFFF (VIDEO)
+1E72_0000-1E73_FFFF (SRAM)
 
-Thanks,
+Confusingly, the SRAM region is documented as a 128KB memory region
+but the SRAM itself is only 32KB long.
 
-C. 
+The other regions are not MMIO regions, but bridges to SPI flash or
+over the LPC bus:
+
+0000_0000-0FFF_FFFF (alias for BMC Flash or SDRAM)
+1000_0000-15FF_FFFF (legacy BMC Flash)
+2000_0000-2FFF_FFFF (BMC Flash)
+3000_0000-3FFF_FFFF (Flash: "BIOS" for x86 or "PNOR" for POWER)
+4000_0000-5FFF_FFFF (SDRAM)
+6000_0000-6FFF_FFFF (AHB2LPC bridge)
+7000_0000-7FFF_FFFF (AHB2LPC+ bridge)
+
+This is the full list of regions that are documented as accepting
+1/2/4 byte writes. All other regions are documented as only accepting
+4 byte writes.
+
+>
+>     /* APB ??? */
+>
+>     [ASPEED_GPIO]   =3D 0x1E780000,
+>     [ASPEED_RTC]    =3D 0x1E781000,
+>     [ASPEED_TIMER1] =3D 0x1E782000,
+>     [ASPEED_UART1]  =3D 0x1E783000,
+>     [ASPEED_UART5]  =3D 0x1E784000,
+>     [ASPEED_WDT]    =3D 0x1E785000,
+>     [ASPEED_PWM]    =3D 0x1E786000,
+>     [ASPEED_VUART]  =3D 0x1E787000,
+>     [ASPEED_LPC]    =3D 0x1E789000,
+>     [ASPEED_IBT]    =3D 0x1E789140,
+>     [ASPEED_I2C]    =3D 0x1E78A000,
+>
+>     [ASPEED_SDRAM]  =3D 0x40000000,
+> };
+>
+> The best description I could find is
+> http://i.cloud.opensystemsmedia.com/i__srcfa3ad69f86b70417ba72d4fcbbef08c=
+d_paraf0d99c20bd457d46a92c72841873c47.jpeg
+> But the buses are not mentioned.
+>
+> >
+> > We don't model the AHB to LPC bridges in qemu, nor the legacy flash
+> > controller region at 1000_0000 -> 15FF_FFFF.
+> >
+> >>>>
+> >>>> If you have access to the datasheet and can verify, then yes.
+> >>>> Else I suppose C=C3=A9dric, Andrew or Joel can check for you.
+> >>>
+> >>> I do not have a datasheet. Aspeed seems quite picky about sharing thi=
+s
+> >>> and I'm just a random researcher.
+> >>
+> >> Erik, can you point us to the image you're using?
+> >>
+> >> What is the command line are you testing with?
+> >>
+> >> Happy to fix the model to support random firmwares, as long as the fix=
+ is correct for other (open source) firmwares.
+> >>
+> >>>
+> >>> Best regards,
+> >>>
+> >>> Erik Smit
+> >

@@ -1,104 +1,96 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4574585lfm;
-        Tue, 30 Jun 2020 18:02:46 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzIO/E8ffJdAB3dSMwBO3GVVEoeaLnNnyfVDPqxRLK9IFw2BhU1CO8u97z0xMQL+zl1BReY
-X-Received: by 2002:a25:3189:: with SMTP id x131mr35747630ybx.25.1593565366761;
-        Tue, 30 Jun 2020 18:02:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593565366; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4589517lfm;
+        Tue, 30 Jun 2020 18:23:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzqbUlyAihNWSBfylnC2sXMl3zlgy2oqXU7nzkFtWIlc3RUNUbDWFOqM5i6s7xg6jDceCHl
+X-Received: by 2002:a25:aaa9:: with SMTP id t38mr37278640ybi.312.1593566625628;
+        Tue, 30 Jun 2020 18:23:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593566625; cv=none;
         d=google.com; s=arc-20160816;
-        b=WxLEtULbvNHWO2bxUcXjYDIAy8cMs50Y74wN+lCQDQNjaKES8N1nCpBL0QhsPgBty+
-         zomRPxp6upFHH+RuaRcNDB9bzoYXg3KXFjxHswsYurNW+awBj7XBiSSyXsRyZodRAo0X
-         XYPn11DBnIOESNMjU5PVojrwcKGxAnwEHilPZyYlZKot/GSPtAji62JzvzBNotzkfw7Z
-         Pj2awHvyox+p0Ct9xsAH5KBy/Kz/0MU01oet9iMt04nz4Pgiv5edNuwUhzn1PJduK4sN
-         5ipM4yV+b0tXnT0Vt9LTSZGmC5HFKjeRRCKzeCtz7OIonBHkqMHEYW3g6egQeTlJ/oaO
-         F9Pw==
+        b=qMTckEoRmHQWv6O5JoaxQ0xvOPFw0qV/3JwzgcSGt8aloFVPphPEi1SgSCJjjAn0HO
+         thp43xcFBx7zlHh7ukDzE7tzDnbSumBmqdU9ttb9nt62ie1cUlb2VMIyURqTss3HQdfy
+         x83E9JGtgTvix5qyW5RIkesF/+VoF09LMiOxHSZ/qesDASJGhTYHG6jLvdD1ovpiKuT0
+         Hdw3YLLH4twlyKKGBqy9bVMz0f+/7jPhMdNV7cpAmW9uW+QflVluyuHlxHaiGobE9sfm
+         FAhk05WMtoiTYqIlrMQMkaI7SD6Sh19sYDfZVhQTitqPsYn1NXEIjebkhDFZHLlZ6O4e
+         EwIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Vq3Ye6+ixYUl8G3eozsMz28+mjGSZgqXYVHucg7p8xc=;
-        b=CXBObY0QAytz2a9nNs23XyhzAXxsyPBeLgC3KQ2f1jdoXypBx+FtfS+7o0BoB1XLHD
-         7C5IAuk08pBoMBU0FXu/yCcxyyVnQts5CsqiATHWiOAM2R0JeaUg47i1ry87H8DTUwgb
-         61tGCM63Vk+Zri840Mo6F8u6MYFmdRlaEUthaqoNKzrny+ZJAJUnDxV3YjdSlogsLS6I
-         Gvm/XtKjBV0zj4P/ynGzeGNOu0NNBjdX3FJbKdyjAFIYrzPhUHt/QMlGgTg4E6WfuUO8
-         rVB1SdMKRou+FrVdPPm/9e8oFAxEbvDfpA9rIydrtsmiAQJMQ9Xa6RU3+fg5St8wNG3q
-         zfPw==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:to:from;
+        bh=v1bclBmCGavRMcxT4zRgjgdaDdAfVzXVJcSo7FlxGoY=;
+        b=gULHFgghZvmt90uZTALMQLHOLpXYxpbGX7EoakUxue7IeT2xjyec/7HtGAv5bgC7hk
+         800tsNAAXMZ9oEOgHxLxJmDTqiywuANQRBhSSOLh5/iH82GSgdivXfW9PD6aK/UK0RPd
+         pybxECiaFhMLaHxU0ONYpLvn6Q6fuRH+2H7knf+v1KwyYdYtrvpyoGcbQyiqmGpow3LJ
+         60clLpalD5nsZBuHFTb9nIQ56F3gOkMiQtBjGfYHfpNqMfuGLaAw5uXRdQtFXDahZHvO
+         FBlaZ800vXzJxu976O5WlFsT+aXaODYGWRIiKIlWMsVwvsbsphY/VCd4LtutsOyM3Y6y
+         pWtg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZAao25qz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h36si4584458ybi.294.2020.06.30.18.02.46
+        by mx.google.com with ESMTPS id k186si4481891ybf.383.2020.06.30.18.23.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jun 2020 18:02:46 -0700 (PDT)
+        Tue, 30 Jun 2020 18:23:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZAao25qz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58640 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41780 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jqR9C-0003s6-5i
-	for alex.bennee@linaro.org; Tue, 30 Jun 2020 21:02:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41548)
+	id 1jqRTV-0002G2-34
+	for alex.bennee@linaro.org; Tue, 30 Jun 2020 21:23:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jqR94-0003rU-Ns; Tue, 30 Jun 2020 21:02:38 -0400
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:46159)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jqR93-0002AX-2G; Tue, 30 Jun 2020 21:02:38 -0400
-Received: by mail-il1-x143.google.com with SMTP id a6so2830991ilq.13;
- Tue, 30 Jun 2020 18:02:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Vq3Ye6+ixYUl8G3eozsMz28+mjGSZgqXYVHucg7p8xc=;
- b=ZAao25qzlJWaXpBfhZPDSMQ3inFcB0D/0Aqma5geioJfMVZ3T/NUMdl/QRYo//3E9N
- JE/NGFiYyhgdfegDxwJ2KYsYgBdsSzKiBG+YYxyp7yiV3uEnnN53CQiU2Ru6vUh0zQBm
- AYztqqpTcvWTXtSZAyyPkGOcK1L1IS9wwMdLvHD3LTGkCS3QP1I1T5EfnRbfU6KxYO5m
- 4wCCcmgqy4+zaQC3n9Ce1ko0iovzGQdUaP8bu8hA+23UgB5Uhz4ENW0sDa2wuxVoTD+G
- 6cfGmm+rkoM35GsUVBJHbrSi8Ctj4OsJIXlD/uB6bFVDpAgogPRLNhP00fwHN76l1Hkn
- eldg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Vq3Ye6+ixYUl8G3eozsMz28+mjGSZgqXYVHucg7p8xc=;
- b=M4iZGFUpcv4hKRQu/7pDfQoy8hfT92JretOgImuwEWTsLE4KQ7ftsuv64dJ0VRa7I3
- KuaXdrn+oviXkaUHxeAxMPTw8eQ5t6wrHmbUPX7skNZVtzW5sl5srrEzgc8hqyoTNHom
- hTfCXrPezP7qr5aXdWyoX4/c5y/VcKhrpd7NHxtHe0Vqiya1xGsn5pKFLoNihD2wbEx0
- xaPboe/muAdcBF/5tb8r/MiAIMZZeqDyCcp4RiKBgW6t6J1CRL6D5ZCO0skE2+pI2w/N
- L+9Kf0cZjgJhsgZKsrPFThi1j+M2DtKbKJLvkt3n6SHW74JN9jobDiB3Z1AofgFadXl1
- JU4w==
-X-Gm-Message-State: AOAM531levdP6Z7rUA6uEF6nk+hCig2+/J5PZ6LsgtSjdrKtrmToi8y4
- 3SPGQWCRWx2zcHBR4NlauRxhgWJrTcAQIX/NwK4=
-X-Received: by 2002:a92:bb84:: with SMTP id x4mr5593365ilk.177.1593565355778; 
- Tue, 30 Jun 2020 18:02:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ryan_chen@aspeedtech.com>)
+ id 1jqRTM-0002Fo-7t
+ for qemu-arm@nongnu.org; Tue, 30 Jun 2020 21:23:36 -0400
+Received: from twspam01.aspeedtech.com ([211.20.114.71]:64418)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ryan_chen@aspeedtech.com>)
+ id 1jqRTJ-0005NJ-9n
+ for qemu-arm@nongnu.org; Tue, 30 Jun 2020 21:23:35 -0400
+Received: from mail.aspeedtech.com (twmbx02.aspeed.com [192.168.0.24])
+ by twspam01.aspeedtech.com with ESMTP id 06119450070585;
+ Wed, 1 Jul 2020 09:09:04 +0800 (GMT-8)
+ (envelope-from ryan_chen@aspeedtech.com)
+Received: from TWMBX02.aspeed.com (192.168.0.24) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.620.29; Wed, 1 Jul
+ 2020 09:22:49 +0800
+Received: from TWMBX02.aspeed.com ([fe80::997d:c0a7:f01f:e1a7]) by
+ TWMBX02.aspeed.com ([fe80::997d:c0a7:f01f:e1a7%12]) with mapi id
+ 15.00.0620.020; Wed, 1 Jul 2020 09:22:49 +0800
+From: Ryan Chen <ryan_chen@aspeedtech.com>
+To: Joel Stanley <joel@jms.id.au>, Erik Smit <erik.lucas.smit@gmail.com>
+Subject: RE: hw/misc/aspeed_scu: 5d971f9e breaks Supermicro AST2400
+Thread-Topic: hw/misc/aspeed_scu: 5d971f9e breaks Supermicro AST2400
+Thread-Index: AQHWT0IluBL17ijHoESHjeZzLp9Qxajx7Vfw
+Date: Wed, 1 Jul 2020 01:22:49 +0000
+Message-ID: <b3480de1dece41ed80091feba584c500@TWMBX02.aspeed.com>
+References: <CA+MHfoubt1g2FzcjTw3a0vNr7X2T8Jb+nYoc4_x=Z2TP51afKg@mail.gmail.com>
+ <a7acba46-5a9a-5dd2-71c6-7e4586485823@amsat.org>
+ <CA+MHfot6FdS2yT0mEsCW36bCfwy-WY-1KPQ-KDfYBKzTy=Gd7w@mail.gmail.com>
+ <CACPK8Xdqr+EufMgooCY=D+Vt98qu11YTHE5Fzi5+xqX=wKReeQ@mail.gmail.com>
+In-Reply-To: <CACPK8Xdqr+EufMgooCY=D+Vt98qu11YTHE5Fzi5+xqX=wKReeQ@mail.gmail.com>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [192.168.2.87]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20200628142429.17111-1-peter.maydell@linaro.org>
- <20200628142429.17111-16-peter.maydell@linaro.org>
-In-Reply-To: <20200628142429.17111-16-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 30 Jun 2020 17:52:51 -0700
-Message-ID: <CAKmqyKPESaqQGAHJ4bPMapgm_nKQUujrcR7nXCYpaG8sERTxkA@mail.gmail.com>
-Subject: Re: [PATCH 15/17] hw/arm/pxa2xx_pic: Use LOG_GUEST_ERROR for bad
- guest register accesses
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x143.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+X-DNSRBL: 
+X-MAIL: twspam01.aspeedtech.com 06119450070585
+Received-SPF: none client-ip=211.20.114.71;
+ envelope-from=ryan_chen@aspeedtech.com; helo=twspam01.aspeedtech.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/06/30 21:23:21
+X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,81 +103,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>
+Cc: Andrew Jeffery <andrew@aj.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>,
+ =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZqG8gLZHm9MN
+X-TUID: 2FlAvmAZmts3
 
-On Sun, Jun 28, 2020 at 7:29 AM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> Instead of using printf() for logging guest accesses to invalid
-> register offsets in the pxa2xx PIC device, use the usual
-> qemu_log_mask(LOG_GUEST_ERROR,...).
->
-> This was the only user of the REG_FMT macro in pxa.h, so we can
-> remove that.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
-> ---
->  include/hw/arm/pxa.h | 1 -
->  hw/arm/pxa2xx_pic.c  | 9 +++++++--
->  2 files changed, 7 insertions(+), 3 deletions(-)
->
-> diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
-> index f6dfb5c0cf0..8843e5f9107 100644
-> --- a/include/hw/arm/pxa.h
-> +++ b/include/hw/arm/pxa.h
-> @@ -184,7 +184,6 @@ struct PXA2xxI2SState {
->  };
->
->  # define PA_FMT                        "0x%08lx"
-> -# define REG_FMT               "0x" TARGET_FMT_plx
->
->  PXA2xxState *pxa270_init(MemoryRegion *address_space, unsigned int sdram_size,
->                           const char *revision);
-> diff --git a/hw/arm/pxa2xx_pic.c b/hw/arm/pxa2xx_pic.c
-> index 105c5e63f2f..ceee6aa48db 100644
-> --- a/hw/arm/pxa2xx_pic.c
-> +++ b/hw/arm/pxa2xx_pic.c
-> @@ -11,6 +11,7 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "qemu/module.h"
-> +#include "qemu/log.h"
->  #include "cpu.h"
->  #include "hw/arm/pxa.h"
->  #include "hw/sysbus.h"
-> @@ -166,7 +167,9 @@ static uint64_t pxa2xx_pic_mem_read(void *opaque, hwaddr offset,
->      case ICHP: /* Highest Priority register */
->          return pxa2xx_pic_highest(s);
->      default:
-> -        printf("%s: Bad register offset " REG_FMT "\n", __func__, offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "pxa2xx_pic_mem_read: bad register offset 0x%" HWADDR_PRIx
-> +                      "\n", offset);
->          return 0;
->      }
->  }
-> @@ -199,7 +202,9 @@ static void pxa2xx_pic_mem_write(void *opaque, hwaddr offset,
->          s->priority[32 + ((offset - IPR32) >> 2)] = value & 0x8000003f;
->          break;
->      default:
-> -        printf("%s: Bad register offset " REG_FMT "\n", __func__, offset);
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "pxa2xx_pic_mem_write: bad register offset 0x%"
-> +                      HWADDR_PRIx "\n", offset);
->          return;
->      }
->      pxa2xx_pic_update(opaque);
-> --
-> 2.20.1
->
->
+SGVsbG8gSm9lbCwNCglNb3N0IHJlZ2lzdGVyIGlzIG5vdCBzdXBwb3J0IGJ5dGUgYWNjZXNzLCBp
+dCBuZWVkIHRvIHJlZmVyIHRoZSBkYXRhc2hlZXQgZGVzY3JpcHQgZWFjaCBhcmVhLiBbY2hhcHRl
+ciA6IEFSTSBBZGRyZXNzIFNwYWNlIE1hcHBpbmddDQoNClJ5YW4gQ2hlbg0KDQpUZWwgOiA4ODYt
+My01NzUxMTg1IGV4dDo4ODU3DQoNCioqKioqKioqKioqKiogRW1haWwgQ29uZmlkZW50aWFsaXR5
+IE5vdGljZSAqKioqKioqKioqKioqKioqKioqKg0K5YWN6LKs6IGy5piOOg0K5Zug5oeJ5YCL5Lq6
+6LOH5paZ5L+d6K235rOV5pa96KGMLOacrOS/oeS7tijmiJblhbbpmYTku7Yp5Y+v6IO95YyF5ZCr
+5qmf5a+G6LOH6KiK77yM5Lim5Y+X5rOV5b6L5L+d6K2344CC5aaCIOWPsOerr+mdnuaMh+WumuS5
+i+aUtuS7tuiAhe+8jOiri+S7pembu+WtkOmDteS7tumAmuefpeacrOmbu+WtkOmDteS7tuS5i+eZ
+vOmAgeiAhSwg5Lim6KuL56uL5Y2z5Yiq6Zmk5pys6Zu75a2Q6YO15Lu25Y+K5YW26ZmE5Lu25ZKM
+6Yq35q+A5omA5pyJ6KSH5Y2w5Lu244CC6Kyd6Kyd5oKo55qE5ZCI5L2cIQ0KDQpESVNDTEFJTUVS
+Og0KVGhpcyBtZXNzYWdlIChhbmQgYW55IGF0dGFjaG1lbnRzKSBtYXkgY29udGFpbiBsZWdhbGx5
+IHByaXZpbGVnZWQgYW5kL29yIG90aGVyIGNvbmZpZGVudGlhbCBpbmZvcm1hdGlvbi4gSWYgeW91
+IGhhdmUgcmVjZWl2ZWQgaXQgaW4gZXJyb3IsIHBsZWFzZSBub3RpZnkgdGhlIHNlbmRlciBieSBy
+ZXBseSBlLW1haWwgYW5kIGltbWVkaWF0ZWx5IGRlbGV0ZSB0aGUgZS1tYWlsIGFuZCBhbnkgYXR0
+YWNobWVudHMgd2l0aG91dCBjb3B5aW5nIG9yIGRpc2Nsb3NpbmcgdGhlIGNvbnRlbnRzLiBUaGFu
+ayB5b3UuDQoNCi0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQpGcm9tOiBKb2VsIFN0YW5sZXkg
+W21haWx0bzpqb2VsQGptcy5pZC5hdV0gDQpTZW50OiBXZWRuZXNkYXksIEp1bHkgMSwgMjAyMCA4
+OjU0IEFNDQpUbzogRXJpayBTbWl0IDxlcmlrLmx1Y2FzLnNtaXRAZ21haWwuY29tPjsgUnlhbiBD
+aGVuIDxyeWFuX2NoZW5AYXNwZWVkdGVjaC5jb20+DQpDYzogUGhpbGlwcGUgTWF0aGlldS1EYXVk
+w6kgPGY0YnVnQGFtc2F0Lm9yZz47IG9wZW4gbGlzdDpBU1BFRUQgQk1DcyA8cWVtdS1hcm1Abm9u
+Z251Lm9yZz47IEPDqWRyaWMgTGUgR29hdGVyIDxjbGdAa2FvZC5vcmc+OyBBbmRyZXcgSmVmZmVy
+eSA8YW5kcmV3QGFqLmlkLmF1Pg0KU3ViamVjdDogUmU6IGh3L21pc2MvYXNwZWVkX3NjdTogNWQ5
+NzFmOWUgYnJlYWtzIFN1cGVybWljcm8gQVNUMjQwMA0KDQpPbiBUdWUsIDMwIEp1biAyMDIwIGF0
+IDE1OjMyLCBFcmlrIFNtaXQgPGVyaWsubHVjYXMuc21pdEBnbWFpbC5jb20+IHdyb3RlOg0KPg0K
+PiBIaSBQaGlsaXBwZSwNCj4NCj4gT24gVHVlLCAzMCBKdW4gMjAyMCBhdCAxNzoyOSwgUGhpbGlw
+cGUgTWF0aGlldS1EYXVkw6kgPGY0YnVnQGFtc2F0Lm9yZz4gd3JvdGU6DQo+ID4NCj4gPiBIaSBF
+cmlrLA0KPiA+DQo+ID4gT24gNi8zMC8yMCA1OjExIFBNLCBFcmlrIFNtaXQgd3JvdGU6DQo+ID4g
+PiBIZWxsbywNCj4gPiA+DQo+ID4gPiA1ZDk3MWY5ZSBtZW1vcnk6IFJldmVydCAibWVtb3J5OiBh
+Y2NlcHQgbWlzbWF0Y2hpbmcgc2l6ZXMgaW4gDQo+ID4gPiBtZW1vcnlfcmVnaW9uX2FjY2Vzc192
+YWxpZCIgYnJlYWtzIFN1cGVybWljcm8gQVNUMjQwMCB1LWJvb3QuDQo+ID4gPiBTdXBlcm1pY3Jv
+IEFTVDI1MDAgdS1ib290IGlzIGZpbmUuDQo+ID4gPg0KPiA+ID4gVGhlIHUtYm9vdCB0cmllcyB0
+byBtYWtlIGEgMi1ieXRlIHJlYWQgZnJvbSBhZGRyZXNzIDB4ODQsIGJ1dCANCj4gPiA+IGFzcGVl
+ZF9hc3QyNDAwX3NjdV9vcHMgaGFzIG1pbl9hY2Nlc3MgPSA0LiBXaGVuIEkgY2hhbmdlIA0KPiA+
+ID4gbWluX2FjY2VzcyB0bw0KPiA+ID4gMiBvciByZXZlcnQgYWJvdmUgY29tbWl0LCB1LWJvb3Qg
+Ym9vdHMgYWdhaW4uDQo+ID4gPg0KPiA+ID4gSXMgY2hhbmdpbmcgbWluX2FjY2VzcyB0byAyIHRo
+ZSByaWdodCB3YXkgdG8gZml4IHRoaXM/DQoNClJ5YW4sIGRvIGFsbCBhZGRyZXNzZXMgb24gdGhl
+IEFTVDI0MDAncyBBUEIgcmVzcG9uZCB0byBzaW5nbGUgYnl0ZSBhY2Nlc3Nlcz8NCg0KPiA+DQo+
+ID4gSWYgeW91IGhhdmUgYWNjZXNzIHRvIHRoZSBkYXRhc2hlZXQgYW5kIGNhbiB2ZXJpZnksIHRo
+ZW4geWVzLg0KPiA+IEVsc2UgSSBzdXBwb3NlIEPDqWRyaWMsIEFuZHJldyBvciBKb2VsIGNhbiBj
+aGVjayBmb3IgeW91Lg0KPg0KPiBJIGRvIG5vdCBoYXZlIGEgZGF0YXNoZWV0LiBBc3BlZWQgc2Vl
+bXMgcXVpdGUgcGlja3kgYWJvdXQgc2hhcmluZyB0aGlzIA0KPiBhbmQgSSdtIGp1c3QgYSByYW5k
+b20gcmVzZWFyY2hlci4NCg0KRXJpaywgY2FuIHlvdSBwb2ludCB1cyB0byB0aGUgaW1hZ2UgeW91
+J3JlIHVzaW5nPw0KDQpXaGF0IGlzIHRoZSBjb21tYW5kIGxpbmUgYXJlIHlvdSB0ZXN0aW5nIHdp
+dGg/DQoNCkhhcHB5IHRvIGZpeCB0aGUgbW9kZWwgdG8gc3VwcG9ydCByYW5kb20gZmlybXdhcmVz
+LCBhcyBsb25nIGFzIHRoZSBmaXggaXMgY29ycmVjdCBmb3Igb3RoZXIgKG9wZW4gc291cmNlKSBm
+aXJtd2FyZXMuDQoNCj4NCj4gQmVzdCByZWdhcmRzLA0KPg0KPiBFcmlrIFNtaXQNCg==

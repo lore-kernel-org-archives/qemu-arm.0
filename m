@@ -1,115 +1,83 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp202345lfm;
-        Wed, 1 Jul 2020 00:24:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHgI81jQcZepfFQEqQbfZBJqcW0DWPcMmPGO3SolC53JFjjwzCabpCd00zyG0ekSs83F3e
-X-Received: by 2002:a25:af93:: with SMTP id g19mr43987368ybh.109.1593588282575;
-        Wed, 01 Jul 2020 00:24:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593588282; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp219476lfm;
+        Wed, 1 Jul 2020 00:50:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxgUl7OYKI9+DK3Eq/COmYuPqKZNsaeXt1D+PooxpJvLWxHv4gRgiqMEIcFcOEF0Ky+cSKn
+X-Received: by 2002:a25:5094:: with SMTP id e142mr39202824ybb.30.1593589843127;
+        Wed, 01 Jul 2020 00:50:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593589843; cv=none;
         d=google.com; s=arc-20160816;
-        b=NBb/asOHwGJjsk6Io2a0gX8u2Nb6C5Q179zR04g5egO6Trx9grAx0TnL5ZgT4WJJR4
-         H01C1wmDUNnvhTTZy0OAvFiSAREy7wA0xqecoA4SHDQ1xp49W4b6CwdgVNKxmg2dQBcw
-         PGos6o01Jy5ejtJ7X2rKw13du3dweywNjdS6xmmn+QJlAhgfPMmwg7hoBDVaAue/R/Ep
-         h1gD0u9N5YcCYbFF+0rKD2ZD0I9d06rRD25SO9Hcmde6darzsx6Dd7rTqiCzOzNHkZLm
-         ad1lxhxvaZFxOueKiA3P4JCxX5+MrYpuZUUldxdvXMgBb571tbkkSCumBnjKAptubGAH
-         N5Iw==
+        b=L+QEu3QD6ydzS90MgLb2M0j4Xh+rxVEknOdAqV5W4wqmJVxUCr9eDNnrpG2BwEChQl
+         KyIhMStnr5JpBPGWwzu4tGhM2heAzaZwwBVOYmR1ZeT0IFTVS3gJLfPGT2Lonf+gkJdq
+         Wqbi1qCTFwOBRR5pE7z4N1eJgnvWE6BdVFfsYJA3grx50/Q9CtvhU1QXFN8jghd/IJZK
+         rqg3RM+T8+Uv8LInqdL41pnDbTEa7DBrstaV37KJJmCxPhMhU9xNEmETsQVB3BDjWU3C
+         Lfxiz/pte0PoVDfanoLYYf8/ngTx8ktgDFJg/BWOhA9ZJMLBSzJBzYfQnLKf72ruyIU6
+         IEZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Fc27ecj4wFvNWGxNWTtSOqkPM1LpRGm0EPEbU+wgQCQ=;
-        b=f84XLzgq5IjYjtpQhhCME9ChRlWVQBH8ZhWRBiFCwZ4k4nna/Gy6HRhJjDKVQTpFAX
-         4VgNeBdaD+NQYNi20J08RH4HFLq2YBfYQHarTJhOpvjWwgjO7D78mga/lWs65x3cGC9R
-         ho4SJVtQNgGNllbgbtp3qv3cxTLfr+ImVB82DCNBD5itrX3yE/NfYWvfsETXzsFufhu2
-         4CKp1HR+H6imEoa4rxQFwTnhEvFGNefQoMxuM6IFRDBfyNybja/eiK420QpdRX5+rb/R
-         XFwdfO1jWUyjrHyLqF6Vb7129wKY1kGTcyoY/r5y+U5lcbB98RF/8NTA+BRolIAShZCG
-         xtbg==
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=b6Q7ymScFlE5LfeO6Iz2BuxjLMnGY1Z/5ga0UysDrUA=;
+        b=j4YtOmpUgQ2hkCMtBYV054ds1cU562V6INYOR2T48PdUBLSNYKL5WHaUZmqVuOLpWV
+         UuLGoSEala+rUbxJr7ggn1j6gnH/KKTmMeZAgydz1cHcLvVVwzDB1KZkmkezQ7Pk86A3
+         D2gwVQcgyNdqOkwde/bGUBZhthpzhI6km3f8JQmfxjQyXSyH/IHYBieNmoWPDVUx4iiJ
+         4rLfXni7NJcPk2b+k3XAzrQkq7t8lmXPQBSMuAcQanm742+nqTqaWQQ7aB8WodBM846K
+         w+PZTCHwh79uu8vkAPVDKP9MDzOuQ4bz4bK8OEgWpofRO/5UOfJBippaNyOAVrk3phPK
+         SqOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jTw+4OZt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 132si5173123yba.45.2020.07.01.00.24.42
+        by mx.google.com with ESMTPS id 2si5280987ybn.417.2020.07.01.00.50.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Jul 2020 00:24:42 -0700 (PDT)
+        Wed, 01 Jul 2020 00:50:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jTw+4OZt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:37860 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48150 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jqX6n-00047X-VN
-	for alex.bennee@linaro.org; Wed, 01 Jul 2020 03:24:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50668)
+	id 1jqXVy-0002Nw-He
+	for alex.bennee@linaro.org; Wed, 01 Jul 2020 03:50:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56560)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jqX6d-00047H-C1; Wed, 01 Jul 2020 03:24:31 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40781)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jqX6b-0001iC-Q5; Wed, 01 Jul 2020 03:24:31 -0400
-Received: by mail-wm1-x342.google.com with SMTP id f139so22085539wmf.5;
- Wed, 01 Jul 2020 00:24:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Fc27ecj4wFvNWGxNWTtSOqkPM1LpRGm0EPEbU+wgQCQ=;
- b=jTw+4OZtzI6euG0iEVRH94bvZJp8IHt+1vz8QUO+0ZnVU/mPafJTwSiv8HAVr4be19
- 2xCc7o8yW6It95T3PicGMitSsNyjDAPBWktVFRUKqKNWOyrVqSn9De/jDNh6G0q/yT0A
- TZk9XoHRyDBfOL7ehEDfgVGegcYrwk4+7+l1UwIL0YZgkMJQzof/GeZAc5WircBLH9wO
- sAZxVX/PVL5349i2Q7Kbspby3FJmU9+mSBqlw2jjsbb5Kn80u3YNF7MnfU94DZnbj0sf
- pdxfdcsfiEaqcD/KCq1KcZA8pi3sEnXDGW9wTy9Hhjw60md+uUQbooWbXePE4a6uR3YB
- rjNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Fc27ecj4wFvNWGxNWTtSOqkPM1LpRGm0EPEbU+wgQCQ=;
- b=CYv1e5+zXYD+45FQUNIBiuyLOkGgvhuc/Vk9xV9872KkOkE+UDlySJMTjAC+XN9p25
- R79jW9TFHNEyc71eMNtFrZdyr/PNjsYeCb/GZIY4pvEVQJBuTCoeA4NslzDm+SfQGdlG
- ZfcSf3DPkGEc1aVnny/cE+D3ILCafhVd+NlC1KVXawdG+gMzayIhBpYvPBxLsG7rFP31
- MtP3NN/FoQcxwkFqSKWYHYvE6XRmHMnL9md+BbuES5/XMMXkgMZkYWu0qkZ7SognQ3SC
- CcxS4pLR6qPYCn5bsclwFEaRPZ3p2kJQ0hXViBsgI8RbzWTO1bRqzZnZXkuiQnhVZH2i
- +TkA==
-X-Gm-Message-State: AOAM532IqMnsmOE3JvpgDCRKEaGwgERrvjTvmv0UoNNC+eHi9IFqtArs
- Lq381B1D4sl7VUx9jOf1bjOxKX2t4uQ=
-X-Received: by 2002:a7b:ce87:: with SMTP id q7mr26453139wmj.39.1593588267758; 
- Wed, 01 Jul 2020 00:24:27 -0700 (PDT)
-Received: from [192.168.1.40] (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id g16sm6877629wrh.91.2020.07.01.00.24.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 01 Jul 2020 00:24:26 -0700 (PDT)
-Subject: Re: [PATCH 1/2] hw/arm/tosa.c: Detabify
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20200628203748.14250-1-peter.maydell@linaro.org>
- <20200628203748.14250-2-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <85f66e82-8d71-1070-2a54-6567c394ed94@amsat.org>
-Date: Wed, 1 Jul 2020 09:24:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1jqXVr-0002LO-Qt; Wed, 01 Jul 2020 03:50:35 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:3716 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
+ id 1jqXVp-0005j7-OW; Wed, 01 Jul 2020 03:50:35 -0400
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id D67D87E94BD4F4535196;
+ Wed,  1 Jul 2020 15:50:20 +0800 (CST)
+Received: from [10.174.187.22] (10.174.187.22) by
+ DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
+ 14.3.487.0; Wed, 1 Jul 2020 15:50:11 +0800
+Subject: Re: [PATCH] migration: Assign current_migration as NULL after
+ migration
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+References: <20200628064923.13192-1-zhukeqian1@huawei.com>
+From: zhukeqian <zhukeqian1@huawei.com>
+Message-ID: <6db15144-ad79-0e25-deb1-7566fcbbf2e8@huawei.com>
+Date: Wed, 1 Jul 2020 15:50:11 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <20200628203748.14250-2-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200628064923.13192-1-zhukeqian1@huawei.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.187.22]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=zhukeqian1@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/01 03:50:22
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,84 +90,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: wanghaibin.wang@huawei.com, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Juan Quintela <quintela@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gZLk+XvE87dg
+X-TUID: t1UMBkdu2B/8
 
-On 6/28/20 10:37 PM, Peter Maydell wrote:
-> Remove the hardcoded tabs from hw/arm/tosa.c. There aren't
-> many, but since they're all in constant #defines they're not
-> going to go away with our usual "only when we touch a function"
-> policy on reformatting.
+Please ignore this patch :-)
+
+If we shutdown VM during migration, the migration thread may still
+ref current_migration at this point.
+
+On 2020/6/28 14:49, Keqian Zhu wrote:
+> In migration_shutdown, global var current_migration is freed but not
+> assigned to NULL, which may cause heap-use-after-free problem if the
+> following code logic is abnormal.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-No change using 'git-diff -w'.
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 > ---
->  hw/arm/tosa.c | 44 ++++++++++++++++++++++----------------------
->  1 file changed, 22 insertions(+), 22 deletions(-)
+>  migration/migration.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-> index 5dee2d76c61..06ecf1e7824 100644
-> --- a/hw/arm/tosa.c
-> +++ b/hw/arm/tosa.c
-> @@ -26,32 +26,32 @@
->  #include "hw/sysbus.h"
->  #include "exec/address-spaces.h"
+> diff --git a/migration/migration.c b/migration/migration.c
+> index 481a590f72..effffd7332 100644
+> --- a/migration/migration.c
+> +++ b/migration/migration.c
+> @@ -189,6 +189,7 @@ void migration_shutdown(void)
+>       */
+>      migrate_fd_cancel(current_migration);
+>      object_unref(OBJECT(current_migration));
+> +    current_migration = NULL;
+>  }
 >  
-> -#define TOSA_RAM    0x04000000
-> -#define TOSA_ROM	0x00800000
-> +#define TOSA_RAM 0x04000000
-> +#define TOSA_ROM 0x00800000
->  
-> -#define TOSA_GPIO_USB_IN		(5)
-> -#define TOSA_GPIO_nSD_DETECT	(9)
-> -#define TOSA_GPIO_ON_RESET		(19)
-> -#define TOSA_GPIO_CF_IRQ		(21)	/* CF slot0 Ready */
-> -#define TOSA_GPIO_CF_CD			(13)
-> -#define TOSA_GPIO_TC6393XB_INT  (15)
-> -#define TOSA_GPIO_JC_CF_IRQ		(36)	/* CF slot1 Ready */
-> +#define TOSA_GPIO_USB_IN                (5)
-> +#define TOSA_GPIO_nSD_DETECT            (9)
-> +#define TOSA_GPIO_ON_RESET              (19)
-> +#define TOSA_GPIO_CF_IRQ                (21)    /* CF slot0 Ready */
-> +#define TOSA_GPIO_CF_CD                 (13)
-> +#define TOSA_GPIO_TC6393XB_INT          (15)
-> +#define TOSA_GPIO_JC_CF_IRQ             (36)    /* CF slot1 Ready */
->  
-> -#define TOSA_SCOOP_GPIO_BASE	1
-> -#define TOSA_GPIO_IR_POWERDWN	(TOSA_SCOOP_GPIO_BASE + 2)
-> -#define TOSA_GPIO_SD_WP			(TOSA_SCOOP_GPIO_BASE + 3)
-> -#define TOSA_GPIO_PWR_ON		(TOSA_SCOOP_GPIO_BASE + 4)
-> +#define TOSA_SCOOP_GPIO_BASE            1
-> +#define TOSA_GPIO_IR_POWERDWN           (TOSA_SCOOP_GPIO_BASE + 2)
-> +#define TOSA_GPIO_SD_WP                 (TOSA_SCOOP_GPIO_BASE + 3)
-> +#define TOSA_GPIO_PWR_ON                (TOSA_SCOOP_GPIO_BASE + 4)
->  
-> -#define TOSA_SCOOP_JC_GPIO_BASE		1
-> -#define TOSA_GPIO_BT_LED		(TOSA_SCOOP_JC_GPIO_BASE + 0)
-> -#define TOSA_GPIO_NOTE_LED		(TOSA_SCOOP_JC_GPIO_BASE + 1)
-> -#define TOSA_GPIO_CHRG_ERR_LED		(TOSA_SCOOP_JC_GPIO_BASE + 2)
-> -#define TOSA_GPIO_TC6393XB_L3V_ON	(TOSA_SCOOP_JC_GPIO_BASE + 5)
-> -#define TOSA_GPIO_WLAN_LED		(TOSA_SCOOP_JC_GPIO_BASE + 7)
-> +#define TOSA_SCOOP_JC_GPIO_BASE         1
-> +#define TOSA_GPIO_BT_LED                (TOSA_SCOOP_JC_GPIO_BASE + 0)
-> +#define TOSA_GPIO_NOTE_LED              (TOSA_SCOOP_JC_GPIO_BASE + 1)
-> +#define TOSA_GPIO_CHRG_ERR_LED          (TOSA_SCOOP_JC_GPIO_BASE + 2)
-> +#define TOSA_GPIO_TC6393XB_L3V_ON       (TOSA_SCOOP_JC_GPIO_BASE + 5)
-> +#define TOSA_GPIO_WLAN_LED              (TOSA_SCOOP_JC_GPIO_BASE + 7)
->  
-> -#define	DAC_BASE	0x4e
-> -#define DAC_CH1		0
-> -#define DAC_CH2		1
-> +#define DAC_BASE 0x4e
-> +#define DAC_CH1 0
-> +#define DAC_CH2 1
->  
->  static void tosa_microdrive_attach(PXA2xxState *cpu)
->  {
+>  /* For outgoing */
 > 
-

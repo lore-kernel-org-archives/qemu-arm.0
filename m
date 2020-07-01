@@ -1,94 +1,94 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4574355lfm;
-        Tue, 30 Jun 2020 18:02:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVA3t3kBj8aVds+RjPxFvXqZDkhxGzasCf4Pc5Zwi0UwrD92zHv2jjtF9hlKZRG2y0T6t9
-X-Received: by 2002:a25:c5c3:: with SMTP id v186mr36659490ybe.233.1593565351386;
-        Tue, 30 Jun 2020 18:02:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593565351; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4574585lfm;
+        Tue, 30 Jun 2020 18:02:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzIO/E8ffJdAB3dSMwBO3GVVEoeaLnNnyfVDPqxRLK9IFw2BhU1CO8u97z0xMQL+zl1BReY
+X-Received: by 2002:a25:3189:: with SMTP id x131mr35747630ybx.25.1593565366761;
+        Tue, 30 Jun 2020 18:02:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593565366; cv=none;
         d=google.com; s=arc-20160816;
-        b=HOxRk1RDlHqyv/+fb+uJjYZM0EEU8g8NRAfPag4l81QsqwfcKS3TS2oryE7PyoKzH/
-         k5xsFwYVodvdoJeRoHvh0wXsNTOC/P2WBjeJDujQuAY2YAUDXd/GTdAwYgZjijqtuEQx
-         uf10DV5iQ6N2sK5e5vGsX0rTAv2j/CX0vXdw9h1vI1+AL/qjwgznvHLV/gJLA8QBi1+U
-         /uWP5PkD9CpoJWCxI9dYqdcmnIkzWYcmHEybYSA+Yb/T78dBKDfFM3VCVWreKBiOAqzP
-         1RrOwbS5d+pzHigcZmM9lstZIGzvCVtF5ZXjklFnr/yurJbE7/1CGBooO7VlIydSk3S3
-         yX8w==
+        b=WxLEtULbvNHWO2bxUcXjYDIAy8cMs50Y74wN+lCQDQNjaKES8N1nCpBL0QhsPgBty+
+         zomRPxp6upFHH+RuaRcNDB9bzoYXg3KXFjxHswsYurNW+awBj7XBiSSyXsRyZodRAo0X
+         XYPn11DBnIOESNMjU5PVojrwcKGxAnwEHilPZyYlZKot/GSPtAji62JzvzBNotzkfw7Z
+         Pj2awHvyox+p0Ct9xsAH5KBy/Kz/0MU01oet9iMt04nz4Pgiv5edNuwUhzn1PJduK4sN
+         5ipM4yV+b0tXnT0Vt9LTSZGmC5HFKjeRRCKzeCtz7OIonBHkqMHEYW3g6egQeTlJ/oaO
+         F9Pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=Q+ANy+tmYn8jGdx2J/ZJza45S2FkoMYyR2K9DYPm68s=;
-        b=ThCH/Uv5+WbyZQxCPRPRWtiKDvlliUvbISXX1IQ6PLYswQHaAzCkJqLVANPWTx0VNe
-         AM2PlcWY4ZohprjZCZE6euo2b1QREsWNZ0X/jE0mpZ54BKk6w7RpDu4wuz+YXuYcT58/
-         9k/YTrku93qAiYAiG+oSOAPRBi9Rz/B5bhmDJ1AdkPLTH0q2CLxr7KXJ8flwWzn1W3vy
-         hbPNdIsSkOj0bCYkbLqfvXjZYJf58h0vzgKnz7dilkUemDH/s/LAEQg++2b3afwnD1No
-         IMG0Rc1ut5gf+09UoSy179Xh5K7irw6oVr9laNxlvWvnmHgZp0DwWFodYPbx1ux8lwlB
-         rmHg==
+        bh=Vq3Ye6+ixYUl8G3eozsMz28+mjGSZgqXYVHucg7p8xc=;
+        b=CXBObY0QAytz2a9nNs23XyhzAXxsyPBeLgC3KQ2f1jdoXypBx+FtfS+7o0BoB1XLHD
+         7C5IAuk08pBoMBU0FXu/yCcxyyVnQts5CsqiATHWiOAM2R0JeaUg47i1ry87H8DTUwgb
+         61tGCM63Vk+Zri840Mo6F8u6MYFmdRlaEUthaqoNKzrny+ZJAJUnDxV3YjdSlogsLS6I
+         Gvm/XtKjBV0zj4P/ynGzeGNOu0NNBjdX3FJbKdyjAFIYrzPhUHt/QMlGgTg4E6WfuUO8
+         rVB1SdMKRou+FrVdPPm/9e8oFAxEbvDfpA9rIydrtsmiAQJMQ9Xa6RU3+fg5St8wNG3q
+         zfPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=I7kFGLGR;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZAao25qz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d7si4021950ybk.453.2020.06.30.18.02.31
+        by mx.google.com with ESMTPS id h36si4584458ybi.294.2020.06.30.18.02.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jun 2020 18:02:31 -0700 (PDT)
+        Tue, 30 Jun 2020 18:02:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=I7kFGLGR;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ZAao25qz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57912 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58640 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jqR8w-0003Yd-Ly
-	for alex.bennee@linaro.org; Tue, 30 Jun 2020 21:02:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41450)
+	id 1jqR9C-0003s6-5i
+	for alex.bennee@linaro.org; Tue, 30 Jun 2020 21:02:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41548)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jqR8c-0003YS-LY; Tue, 30 Jun 2020 21:02:10 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:36272)
+ id 1jqR94-0003rU-Ns; Tue, 30 Jun 2020 21:02:38 -0400
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:46159)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jqR8b-00028G-0D; Tue, 30 Jun 2020 21:02:10 -0400
-Received: by mail-io1-xd42.google.com with SMTP id y2so23174099ioy.3;
- Tue, 30 Jun 2020 18:02:08 -0700 (PDT)
+ id 1jqR93-0002AX-2G; Tue, 30 Jun 2020 21:02:38 -0400
+Received: by mail-il1-x143.google.com with SMTP id a6so2830991ilq.13;
+ Tue, 30 Jun 2020 18:02:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Q+ANy+tmYn8jGdx2J/ZJza45S2FkoMYyR2K9DYPm68s=;
- b=I7kFGLGRN5mXupkJOQSw0Dn8DW+LrztFQYk6ZqOeh/GFg++gwQkJXnP4ZbCzzoX0eT
- IYmWMeft8sJWHcMYHelb5SmBeMKR8DjlVIcyC/0uTI9e+Qx0VCsObNUIYxvs6xqwfctR
- CR8fxFORHu7bw/LkxyMddSUbJyzx77FbaOXHvxKfvPMpQU9VlD3YF2JK9Ta4oT3A5uU8
- 98S723BpzEoDnWivFeDXaRFKLPp1FSvpnk50jmmJ9s3KHqwojz44+6wfEYwpX5OJrAa8
- cfGnAiDsOvhWDIceuEJ393cCBpNezD9uaswaycmymVC6Ov0xLjitUFdQA2em2tmBQ5+P
- 3YcQ==
+ :cc; bh=Vq3Ye6+ixYUl8G3eozsMz28+mjGSZgqXYVHucg7p8xc=;
+ b=ZAao25qzlJWaXpBfhZPDSMQ3inFcB0D/0Aqma5geioJfMVZ3T/NUMdl/QRYo//3E9N
+ JE/NGFiYyhgdfegDxwJ2KYsYgBdsSzKiBG+YYxyp7yiV3uEnnN53CQiU2Ru6vUh0zQBm
+ AYztqqpTcvWTXtSZAyyPkGOcK1L1IS9wwMdLvHD3LTGkCS3QP1I1T5EfnRbfU6KxYO5m
+ 4wCCcmgqy4+zaQC3n9Ce1ko0iovzGQdUaP8bu8hA+23UgB5Uhz4ENW0sDa2wuxVoTD+G
+ 6cfGmm+rkoM35GsUVBJHbrSi8Ctj4OsJIXlD/uB6bFVDpAgogPRLNhP00fwHN76l1Hkn
+ eldg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Q+ANy+tmYn8jGdx2J/ZJza45S2FkoMYyR2K9DYPm68s=;
- b=KVIrA7EQzK/+jgqBSvZHN6kFWL04OhPecgyK8bWSZkj8xXCjWLOWndGQfbKwTGDzMv
- aesmSFFgHMtp9eUDS634y2t6lxcfwb4fFcHgaTjX2/PrDBk+RDp+oUjREHo6bWrJo3N8
- i3OKOW9I1uWrVe9hStC0aunHVz7OWaAvOAXOwfHwsOCocNVMOmrDLFZD0EyHLwb7jDVD
- PIq/4pjp6xiJNPyHpGQ/KSF0/xnjTbpcpjAazP24xkxoZTbAjzpeByrsAOT36EkyyB/W
- IvztBkNt0FiW0P3iddX/qyEsRkR8Xk/6d7hCesirZPnzGMyTiapQRtBKvk6SvEzI8ap0
- kZSg==
-X-Gm-Message-State: AOAM530LFHJHr/gfwrAqExLGOH4vIXVmL2MSj8N5Jh2LJw4As+kC2We8
- uHgmhMIWtQNpWOB+aoELCVLWhGVcZIqYvrZz13Q=
-X-Received: by 2002:a5d:97d9:: with SMTP id k25mr8934457ios.42.1593565327691; 
- Tue, 30 Jun 2020 18:02:07 -0700 (PDT)
+ bh=Vq3Ye6+ixYUl8G3eozsMz28+mjGSZgqXYVHucg7p8xc=;
+ b=M4iZGFUpcv4hKRQu/7pDfQoy8hfT92JretOgImuwEWTsLE4KQ7ftsuv64dJ0VRa7I3
+ KuaXdrn+oviXkaUHxeAxMPTw8eQ5t6wrHmbUPX7skNZVtzW5sl5srrEzgc8hqyoTNHom
+ hTfCXrPezP7qr5aXdWyoX4/c5y/VcKhrpd7NHxtHe0Vqiya1xGsn5pKFLoNihD2wbEx0
+ xaPboe/muAdcBF/5tb8r/MiAIMZZeqDyCcp4RiKBgW6t6J1CRL6D5ZCO0skE2+pI2w/N
+ L+9Kf0cZjgJhsgZKsrPFThi1j+M2DtKbKJLvkt3n6SHW74JN9jobDiB3Z1AofgFadXl1
+ JU4w==
+X-Gm-Message-State: AOAM531levdP6Z7rUA6uEF6nk+hCig2+/J5PZ6LsgtSjdrKtrmToi8y4
+ 3SPGQWCRWx2zcHBR4NlauRxhgWJrTcAQIX/NwK4=
+X-Received: by 2002:a92:bb84:: with SMTP id x4mr5593365ilk.177.1593565355778; 
+ Tue, 30 Jun 2020 18:02:35 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200628142429.17111-1-peter.maydell@linaro.org>
- <20200628142429.17111-15-peter.maydell@linaro.org>
-In-Reply-To: <20200628142429.17111-15-peter.maydell@linaro.org>
+ <20200628142429.17111-16-peter.maydell@linaro.org>
+In-Reply-To: <20200628142429.17111-16-peter.maydell@linaro.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 30 Jun 2020 17:52:23 -0700
-Message-ID: <CAKmqyKNgg20MHE_qo+49b67gR-3NncWHntH+kWXHqsqEKK81dw@mail.gmail.com>
-Subject: Re: [PATCH 14/17] hw/arm/spitz: Use LOG_GUEST_ERROR for bad guest
- register accesses
+Date: Tue, 30 Jun 2020 17:52:51 -0700
+Message-ID: <CAKmqyKPESaqQGAHJ4bPMapgm_nKQUujrcR7nXCYpaG8sERTxkA@mail.gmail.com>
+Subject: Re: [PATCH 15/17] hw/arm/pxa2xx_pic: Use LOG_GUEST_ERROR for bad
+ guest register accesses
 To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x143.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -117,13 +117,16 @@ Cc: qemu-arm <qemu-arm@nongnu.org>,
  Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qBXKcXf4N5nX
+X-TUID: ZqG8gLZHm9MN
 
-On Sun, Jun 28, 2020 at 7:33 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+On Sun, Jun 28, 2020 at 7:29 AM Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Instead of logging guest accesses to invalid register offsets in the
-> Spitz flash device with zaurus_printf() (which just prints to stderr),
-> use the usual qemu_log_mask(LOG_GUEST_ERROR,...).
+> Instead of using printf() for logging guest accesses to invalid
+> register offsets in the pxa2xx PIC device, use the usual
+> qemu_log_mask(LOG_GUEST_ERROR,...).
+>
+> This was the only user of the REG_FMT macro in pxa.h, so we can
+> remove that.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
@@ -132,53 +135,56 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/arm/spitz.c | 12 +++++++-----
->  1 file changed, 7 insertions(+), 5 deletions(-)
+>  include/hw/arm/pxa.h | 1 -
+>  hw/arm/pxa2xx_pic.c  | 9 +++++++--
+>  2 files changed, 7 insertions(+), 3 deletions(-)
 >
-> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-> index 6eb46869157..49eae3fce4e 100644
-> --- a/hw/arm/spitz.c
-> +++ b/hw/arm/spitz.c
-> @@ -23,6 +23,7 @@
->  #include "hw/ssi/ssi.h"
->  #include "hw/block/flash.h"
->  #include "qemu/timer.h"
+> diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
+> index f6dfb5c0cf0..8843e5f9107 100644
+> --- a/include/hw/arm/pxa.h
+> +++ b/include/hw/arm/pxa.h
+> @@ -184,7 +184,6 @@ struct PXA2xxI2SState {
+>  };
+>
+>  # define PA_FMT                        "0x%08lx"
+> -# define REG_FMT               "0x" TARGET_FMT_plx
+>
+>  PXA2xxState *pxa270_init(MemoryRegion *address_space, unsigned int sdram_size,
+>                           const char *revision);
+> diff --git a/hw/arm/pxa2xx_pic.c b/hw/arm/pxa2xx_pic.c
+> index 105c5e63f2f..ceee6aa48db 100644
+> --- a/hw/arm/pxa2xx_pic.c
+> +++ b/hw/arm/pxa2xx_pic.c
+> @@ -11,6 +11,7 @@
+>  #include "qemu/osdep.h"
+>  #include "qapi/error.h"
+>  #include "qemu/module.h"
 > +#include "qemu/log.h"
->  #include "hw/arm/sharpsl.h"
->  #include "ui/console.h"
->  #include "hw/audio/wm8750.h"
-> @@ -65,9 +66,6 @@ typedef struct {
->  #define zaurus_printf(format, ...)                              \
->      fprintf(stderr, "%s: " format, __func__, ##__VA_ARGS__)
->
-> -#undef REG_FMT
-> -#define REG_FMT                         "0x%02lx"
-> -
->  /* Spitz Flash */
->  #define FLASH_BASE              0x0c000000
->  #define FLASH_ECCLPLB           0x00    /* Line parity 7 - 0 bit */
-> @@ -137,7 +135,9 @@ static uint64_t sl_read(void *opaque, hwaddr addr, unsigned size)
->          return ecc_digest(&s->ecc, nand_getio(s->nand));
->
+>  #include "cpu.h"
+>  #include "hw/arm/pxa.h"
+>  #include "hw/sysbus.h"
+> @@ -166,7 +167,9 @@ static uint64_t pxa2xx_pic_mem_read(void *opaque, hwaddr offset,
+>      case ICHP: /* Highest Priority register */
+>          return pxa2xx_pic_highest(s);
 >      default:
-> -        zaurus_printf("Bad register offset " REG_FMT "\n", (unsigned long)addr);
+> -        printf("%s: Bad register offset " REG_FMT "\n", __func__, offset);
 > +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "sl_read: bad register offset 0x%02" HWADDR_PRIx "\n",
-> +                      addr);
+> +                      "pxa2xx_pic_mem_read: bad register offset 0x%" HWADDR_PRIx
+> +                      "\n", offset);
+>          return 0;
 >      }
->      return 0;
 >  }
-> @@ -168,7 +168,9 @@ static void sl_write(void *opaque, hwaddr addr,
+> @@ -199,7 +202,9 @@ static void pxa2xx_pic_mem_write(void *opaque, hwaddr offset,
+>          s->priority[32 + ((offset - IPR32) >> 2)] = value & 0x8000003f;
 >          break;
->
 >      default:
-> -        zaurus_printf("Bad register offset " REG_FMT "\n", (unsigned long)addr);
+> -        printf("%s: Bad register offset " REG_FMT "\n", __func__, offset);
 > +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "sl_write: bad register offset 0x%02" HWADDR_PRIx "\n",
-> +                      addr);
+> +                      "pxa2xx_pic_mem_write: bad register offset 0x%"
+> +                      HWADDR_PRIx "\n", offset);
+>          return;
 >      }
->  }
->
+>      pxa2xx_pic_update(opaque);
 > --
 > 2.20.1
 >

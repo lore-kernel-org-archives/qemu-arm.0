@@ -1,111 +1,112 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1387020lfm;
-        Thu, 2 Jul 2020 04:30:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwSr79dQ7spGE7EGGdzXJS405XRwMZeQ46hu4I7lqFhtAYKhugPT0kSE9xExzBUVjLQ/U28
-X-Received: by 2002:a25:8b05:: with SMTP id i5mr48136800ybl.301.1593689405340;
-        Thu, 02 Jul 2020 04:30:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593689405; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1387421lfm;
+        Thu, 2 Jul 2020 04:30:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxeDxYMFrG0h09UUNmfTbg2PSvVW05tIez4I10BZFZ7Mv5CWWB9VscrUL9oJ1pj47eiBblP
+X-Received: by 2002:a25:fc26:: with SMTP id v38mr48147541ybd.314.1593689436658;
+        Thu, 02 Jul 2020 04:30:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593689436; cv=none;
         d=google.com; s=arc-20160816;
-        b=NiDoenZmKtuTVw3NY1pFeId01k3rmRAXS54D+INwKK/EH0a4UgAFIW3rPJh/PmLxLS
-         RWQGR5l2/xlS/vF3+4W6OJ6dJanfI3w8OrNLKJWqNrCWOwGSiJhg4fI9ivFIqFNrNFSV
-         2aoMR0dRa+32wFSCy2YVgonV2vSJjjiYpLNYyO3jyT6dCEbcmowAKYj2txFUVLmMGweM
-         Y2Z1ZPpSn4sxeuTcxkk9AAvtiRENwllublfOgsO+Zzg3fdRkrgfry8slgR9QqbrCMuPo
-         flqwUyAEf+7kRsyZN+IbLhjLTqRT49c/klV6RLQIGmTFZbiT2BsZPW5SmyDeeG8m/cMc
-         uGwA==
+        b=pArCX5z+NYJuoQv7hrJ/NUKP4fE5a2eqrhcbc8rq9mqXTW+khXUitgL7LF9pAgXqd8
+         TVTf5oe0cuXBScbFl7dJrfiuPQD4YVz7K7baALdKKD31ubV9tA62gZ97/ZbEKD/DD0Kv
+         HRdj7/4A1v0cxxORTb7wQLg2JWwOSjN9YRgG358HZv2N5Eunbg4eIvmSi2cWMtu0r2EE
+         kIUtMkKTIMT73RxcXMSa6tr4VVwxyffFeHEwQ2YWoqdjOg9xq9kuIw4BJnCEQ21ea++d
+         n3ANQc3zO8PJwipmh217UE4VDYkizHDnfAdYj2krmsZRv7MmcGgsmGPifl+v7SS5ClzI
+         vhZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=JfM6OLCt1Oz7J160Bs1Wy7L5auM7Ow31HfnQNnRNMNo=;
-        b=VaZE+Xz8Zo8mQWrsPLTQTrRZk01bj5ncTIMSBVYAUYwT01PC3mEnI+ryXis3aHnuSm
-         yWO+LnXUcFoAbQLPCS/DLuUDQSof3hhtlPd/CVr1SoUkwYsgM6Qe7p5etaRcZq+W8z4n
-         WRRKypp6bKMAZNIsyPbGXFyOISj9SwO1Z6L1soalLtdUMb4WajZIbNaVCWdLWPWXc4UH
-         9g17V486rSo3Qt0pmO7puFWe0AIShDOCI7fJls97nJ05upr9h76SjDhUw4eO09dgs6y2
-         59TELKXSs9X5s81xIob+vBvXsIN8ldBtc3imIDnnXtmil8TFONoBQotL2NohWNnNy9WI
-         3tew==
+        bh=7/TrKNlxOU6seaS4tH1CrUjegFyYhUFRccpA01OeEqw=;
+        b=Tjb1/zXMfNWRLziRnSG/3bPD57I/+LGI0UsCabTQDuY3xQVTEpKxjCIQ/CuH5d6NT+
+         nCNqImR5j6liNuDmxiC2H76D1KfuoJT4vf03ZGp7M7n0EN/Nh5vqPmAVwh8vSQS5gOlI
+         i1hALgQDpFZqSw7sugtN3knzGIZFywNlIWkY7QY4wZN7m6C2y7JKAFsoHYrhBe7weybL
+         z8UI+AsL1HQgoDwAKnILD8K0sbA2agTjwQ+oo1cGf3ohGIAZ6GCOk1z6ywDvNadb+srm
+         I6+l/xRjd2tpzpCTjteTVcUY/1mJUyAEL3Nmsw24JY7t48YsKLQ4yQ4+31JNXROXm3Mx
+         5CYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AtrPRx+w;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=I13p8uw0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n184si9657097ybc.403.2020.07.02.04.30.05
+        by mx.google.com with ESMTPS id o2si8124492ybq.107.2020.07.02.04.30.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jul 2020 04:30:05 -0700 (PDT)
+        Thu, 02 Jul 2020 04:30:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AtrPRx+w;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=I13p8uw0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56846 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58290 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jqxPo-0001bd-Iu
-	for alex.bennee@linaro.org; Thu, 02 Jul 2020 07:30:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57488)
+	id 1jqxQJ-0002An-Pz
+	for alex.bennee@linaro.org; Thu, 02 Jul 2020 07:30:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57786)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jqxMX-0003eU-L2
- for qemu-devel@nongnu.org; Thu, 02 Jul 2020 07:26:41 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:47387)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jqxO1-0006d7-Lo
+ for qemu-devel@nongnu.org; Thu, 02 Jul 2020 07:28:13 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:42705
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jqxMW-0007b4-1X
- for qemu-devel@nongnu.org; Thu, 02 Jul 2020 07:26:41 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jqxNz-0007oX-SU
+ for qemu-devel@nongnu.org; Thu, 02 Jul 2020 07:28:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593689199;
+ s=mimecast20190719; t=1593689290;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=JfM6OLCt1Oz7J160Bs1Wy7L5auM7Ow31HfnQNnRNMNo=;
- b=AtrPRx+wCQmH/hp2rK8z1f/W39/lDn09YX3ySCsmXnNZJvwxCQHJ4zCNm6nFWQ4le886fy
- Aff3vKoEFemSvcsR/DhdJ6onUFZNfU+JJtrhNK9QIgPbURPmGhP5xQv+8WJUjX7jeyoA+z
- 5KepjCtW338ol78dp4ydlECA2Yk3KsY=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-9-BOhwQo22MA-5zl4PhhLA2A-1; Thu, 02 Jul 2020 07:26:37 -0400
-X-MC-Unique: BOhwQo22MA-5zl4PhhLA2A-1
-Received: by mail-wm1-f72.google.com with SMTP id g187so28342765wme.0
- for <qemu-devel@nongnu.org>; Thu, 02 Jul 2020 04:26:37 -0700 (PDT)
+ bh=7/TrKNlxOU6seaS4tH1CrUjegFyYhUFRccpA01OeEqw=;
+ b=I13p8uw0nPtRpm6MxwoKBQS3LvPWzmbtT2XAs7D7dQCZl11ZR/TkkXwT5jBPpiuIHzOUAn
+ zjTKpb1hii8rR+9gCUXvehEDzNFQhcNEBs7IuOSmMlG0yq4dolXBT086UinaQ/FPdQjTTe
+ v4Ule3CD3gBL5As0beJKTbbfoZBzhec=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-181-NOrBtrYWMne29H4lRDKWkQ-1; Thu, 02 Jul 2020 07:28:09 -0400
+X-MC-Unique: NOrBtrYWMne29H4lRDKWkQ-1
+Received: by mail-wr1-f71.google.com with SMTP id j16so19850491wrw.3
+ for <qemu-devel@nongnu.org>; Thu, 02 Jul 2020 04:28:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=JfM6OLCt1Oz7J160Bs1Wy7L5auM7Ow31HfnQNnRNMNo=;
- b=cwXN7qRQgVRV7+jHONrpwttTXEwiUgrqskj3pqi+hHMDPXB+8YhlGsyUYCRyZm/CeL
- OfqnjZEj6lpzXUueMK4cbMqd2QHo3+kmeojcYcd/alGrxOs56y0WKxpfWq8/t2tJJ99Q
- i1jLjpoxK078magrc9qsDPoAwLkFJ5wFpR6f7G9fSUYQcR/I/J8QTkWzd9+ka5oVpMDN
- /PaVJ61ViX4DQUfEAizCB9FIjuveCdoB/j1nFFbDuxrPfR4UeBavaIWxm44Bu5us/d+C
- Zwp3XstTdFrb6KRlh7rqlRQMKkCLsAFBrVTfP9Te1dGqWwOT65D0A1n/zN2kNP0S/F1G
- M1dA==
-X-Gm-Message-State: AOAM532XK44Y/aqFxAcuZ/XZx1tnrHEo5mKiVAJBNBp+F25tNAmnH43d
- X6l1q/1i+xH9N07mFWDCBmmcFBNjhjmhDZHoKeXAH3JJA1lfENBKjf85xupPDuGLdl1qmb5oMv5
- JwfWYJmJXcyUO/Gk=
-X-Received: by 2002:adf:e88b:: with SMTP id d11mr21403384wrm.378.1593689196627; 
- Thu, 02 Jul 2020 04:26:36 -0700 (PDT)
-X-Received: by 2002:adf:e88b:: with SMTP id d11mr21403375wrm.378.1593689196434; 
- Thu, 02 Jul 2020 04:26:36 -0700 (PDT)
+ bh=7/TrKNlxOU6seaS4tH1CrUjegFyYhUFRccpA01OeEqw=;
+ b=IdK9yaMKpl+yQmBlIB3rpT7jGL/FLlhzfpBmjv61s48wuEIAslMPPAyFM/KeBM5H9D
+ dX1/h6qw9ILmMWn7OUF0qOmHrBVL+hlKmYE5/eLBzjB1iO3d2D5ZbRgcdV+wRMdrxIt7
+ ZdR/Jt5yKQlyy2y2b+M7dfttP6uOvG+5iFFLkgFCHLiI3uxLAJ354osnFBrIwOYII4aM
+ rv0uyoqIdhWbGfs3Oq5eMIne3jWwxvw+uHzR32K8zakiEQI7pxy4hU3MNTCcwS1lzFXB
+ 8vwul9aonk8ik0ra6PVXJi2GOyBc+wof3ZGu9pHKCvD2GNugJwNWiDe64DFWhsI8mZwb
+ 3D5g==
+X-Gm-Message-State: AOAM530RwoFqq5xmheS3SAOWXchTKtk7nuashYtXBCqnRrKomEmoNZgf
+ 6tlKJh8786XSZ7AcqoU9ER/LmTJ/zL58Ei8W0Iw5ldeeXCLCfQTKZAWlpfW7PLjVBjDSmLciGXW
+ f/Ivlbec2mJfhQLc=
+X-Received: by 2002:a5d:4dc2:: with SMTP id f2mr31730524wru.399.1593689288250; 
+ Thu, 02 Jul 2020 04:28:08 -0700 (PDT)
+X-Received: by 2002:a5d:4dc2:: with SMTP id f2mr31730501wru.399.1593689288029; 
+ Thu, 02 Jul 2020 04:28:08 -0700 (PDT)
 Received: from redhat.com ([93.157.82.4])
- by smtp.gmail.com with ESMTPSA id c25sm9890047wml.46.2020.07.02.04.26.34
+ by smtp.gmail.com with ESMTPSA id p4sm11072565wrx.63.2020.07.02.04.28.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Jul 2020 04:26:35 -0700 (PDT)
-Date: Thu, 2 Jul 2020 07:26:32 -0400
+ Thu, 02 Jul 2020 04:28:07 -0700 (PDT)
+Date: Thu, 2 Jul 2020 07:28:04 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v7 5/5] hw/arm/virt: Let the virtio-iommu bypass MSIs
-Message-ID: <20200702072623-mutt-send-email-mst@kernel.org>
+Subject: Re: [PATCH v7 0/5] VIRTIO-IOMMU probe request support and MSI bypass
+ on ARM
+Message-ID: <20200702072655-mutt-send-email-mst@kernel.org>
 References: <20200629070404.10969-1-eric.auger@redhat.com>
- <20200629070404.10969-6-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200629070404.10969-6-eric.auger@redhat.com>
+In-Reply-To: <20200629070404.10969-1-eric.auger@redhat.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=mst@redhat.com;
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=mst@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 04:18:28
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 03:23:40
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: 2
 X-Spam_score: 0.2
@@ -132,127 +133,98 @@ Cc: peter.maydell@linaro.org, jean-philippe@linaro.org, qemu-devel@nongnu.org,
  bbhushan2@marvell.com, eric.auger.pro@gmail.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aQbdYV3f/lop
+X-TUID: jD26g+NuH/Jh
 
-On Mon, Jun 29, 2020 at 09:04:04AM +0200, Eric Auger wrote:
-> At the moment the virtio-iommu translates MSI transactions.
-> This behavior is inherited from ARM SMMU. The virt machine
-> code knows where the guest MSI doorbells are so we can easily
+On Mon, Jun 29, 2020 at 09:03:59AM +0200, Eric Auger wrote:
+> By default the virtio-iommu translates MSI transactions. This
+> behavior is inherited from ARM SMMU. However the virt machine
+> code knows where the MSI doorbells are, so we can easily
 > declare those regions as VIRTIO_IOMMU_RESV_MEM_T_MSI. With that
-> setting the guest will not map MSIs through the IOMMU and those
-> transactions will be simply bypassed.
+> setting the guest iommu subsystem will not need to map MSIs.
+> This setup will simplify the VFIO integration.
 > 
-> Depending on which MSI controller is in use (ITS or GICV2M),
-> we declare either:
-> - the ITS interrupt translation space (ITS_base + 0x10000),
->   containing the GITS_TRANSLATOR or
-> - The GICV2M single frame, containing the MSI_SETSP_NS register.
+> In this series, the ITS or GICV2M doorbells are declared as
+> HW MSI regions to be bypassed by the VIRTIO-IOMMU.
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> This also paves the way to the x86 integration where the MSI
+> region, [0xFEE00000,0xFEEFFFFF], will be exposed by the q35
+> machine.  However this will be handled in a separate series
+> when not-DT support gets resolved.
 
-This needs ARM ACK.
 
-> ---
+virtio things:
+
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+
+
+ARM tree makes sense for this, right?
+
+
+> Best Regards
+> 
+> Eric
+> 
+> This series can be found at:
+> https://github.com/eauger/qemu/tree/v5.0.0-virtio-iommu-msi-bypass-v7
+> 
+> History:
+> 
+> v6 -> v7:
+> - fix the hint message
+> - put the assert again on probe request
+> 
 > v5 -> v6:
-> - do not hardcode doorbell base and size
-> - removed Jean's R-b
+> - do not hardcode start/end addresses of doorbells
+> - check reserved region type on realize()
+> 
+> v4 -> v5:
+> - Take into account some additional comments from Markus:
+>   - reserved region type becomes an unsigned + some comment/desc
+>     rewording
+>   - assert if the type is not RESERVED or MSI
 > 
 > v3 -> v4:
-> - use ':' as separators
+> - collected Jean and markus's R-bs
+> - tool into account all Markus' comments in [1/5] (except removal of
+>   goto)
+> - use ':' as delimitor instead of commas
+> - add example in 4/5 commit message as suggested by Markus
 > 
 > v2 -> v3:
-> - Add a new value to VirtMSIControllerType
+> - Introduce VIRT_MSI_CTRL_NONE in VirtMSIControllerType
+> - do not fill the remainder of the probe buffer
 > 
 > v1 -> v2:
-> - Test which MSI controller is instantiated
-> - If GICV2M is in use, declare its doorbell as an MSI doorbell too
-> ---
->  include/hw/arm/virt.h |  7 +++++++
->  hw/arm/virt.c         | 30 ++++++++++++++++++++++++++++++
->  2 files changed, 37 insertions(+)
+> - check which MSI controller is in use and advertise the
+>   corresponding MSI doorbell
+> - managed for both ITS and GICv2M
+> - various fixes spotted by Peter and Jean-Philippe, see
+>   individual logs
 > 
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 31878ddc72..a18b6b397b 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -96,6 +96,12 @@ typedef enum VirtIOMMUType {
->      VIRT_IOMMU_VIRTIO,
->  } VirtIOMMUType;
->  
-> +typedef enum VirtMSIControllerType {
-> +    VIRT_MSI_CTRL_NONE,
-> +    VIRT_MSI_CTRL_GICV2M,
-> +    VIRT_MSI_CTRL_ITS,
-> +} VirtMSIControllerType;
-> +
->  typedef enum VirtGICType {
->      VIRT_GIC_VERSION_MAX,
->      VIRT_GIC_VERSION_HOST,
-> @@ -136,6 +142,7 @@ typedef struct {
->      OnOffAuto acpi;
->      VirtGICType gic_version;
->      VirtIOMMUType iommu;
-> +    VirtMSIControllerType msi_controller;
->      uint16_t virtio_iommu_bdf;
->      struct arm_boot_info bootinfo;
->      MemMapEntry *memmap;
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index cd0834ce7f..eb4344cf6e 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -602,6 +602,7 @@ static void create_its(VirtMachineState *vms)
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_GIC_ITS].base);
->  
->      fdt_add_its_gic_node(vms);
-> +    vms->msi_controller = VIRT_MSI_CTRL_ITS;
->  }
->  
->  static void create_v2m(VirtMachineState *vms)
-> @@ -622,6 +623,7 @@ static void create_v2m(VirtMachineState *vms)
->      }
->  
->      fdt_add_v2m_gic_node(vms);
-> +    vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
->  }
->  
->  static void create_gic(VirtMachineState *vms)
-> @@ -2200,8 +2202,36 @@ out:
->  static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->                                              DeviceState *dev, Error **errp)
->  {
-> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-> +
->      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
->          virt_memory_pre_plug(hotplug_dev, dev, errp);
-> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
-> +        hwaddr db_start = 0, db_end = 0;
-> +        char *resv_prop_str;
-> +
-> +        switch (vms->msi_controller) {
-> +        case VIRT_MSI_CTRL_NONE:
-> +            return;
-> +        case VIRT_MSI_CTRL_ITS:
-> +            /* GITS_TRANSLATER page */
-> +            db_start = base_memmap[VIRT_GIC_ITS].base + 0x10000;
-> +            db_end = base_memmap[VIRT_GIC_ITS].base +
-> +                     base_memmap[VIRT_GIC_ITS].size - 1;
-> +            break;
-> +        case VIRT_MSI_CTRL_GICV2M:
-> +            /* MSI_SETSPI_NS page */
-> +            db_start = base_memmap[VIRT_GIC_V2M].base;
-> +            db_end = db_start + base_memmap[VIRT_GIC_V2M].size - 1;
-> +            break;
-> +        }
-> +        resv_prop_str = g_strdup_printf("0x%"PRIx64":0x%"PRIx64":%u",
-> +                                        db_start, db_end,
-> +                                        VIRTIO_IOMMU_RESV_MEM_T_MSI);
-> +
-> +        qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
-> +        qdev_prop_set_string(dev, "reserved-regions[0]", resv_prop_str);
-> +        g_free(resv_prop_str);
->      }
->  }
->  
+> v1: Most of those patches were respinned from
+>   [PATCH for-5.0 v11 00/20] VIRTIO-IOMMU device
+>   except the last one which is new
+> 
+> 
+> Eric Auger (5):
+>   qdev: Introduce DEFINE_PROP_RESERVED_REGION
+>   virtio-iommu: Implement RESV_MEM probe request
+>   virtio-iommu: Handle reserved regions in the translation process
+>   virtio-iommu-pci: Add array of Interval properties
+>   hw/arm/virt: Let the virtio-iommu bypass MSIs
+> 
+>  include/exec/memory.h            |   6 ++
+>  include/hw/arm/virt.h            |   7 ++
+>  include/hw/qdev-properties.h     |   3 +
+>  include/hw/virtio/virtio-iommu.h |   2 +
+>  include/qemu/typedefs.h          |   1 +
+>  hw/arm/virt.c                    |  30 ++++++++
+>  hw/core/qdev-properties.c        |  89 ++++++++++++++++++++++++
+>  hw/virtio/virtio-iommu-pci.c     |  11 +++
+>  hw/virtio/virtio-iommu.c         | 114 +++++++++++++++++++++++++++++--
+>  hw/virtio/trace-events           |   1 +
+>  10 files changed, 260 insertions(+), 4 deletions(-)
+> 
 > -- 
 > 2.20.1
 

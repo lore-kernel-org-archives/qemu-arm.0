@@ -1,126 +1,258 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp219476lfm;
-        Wed, 1 Jul 2020 00:50:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxgUl7OYKI9+DK3Eq/COmYuPqKZNsaeXt1D+PooxpJvLWxHv4gRgiqMEIcFcOEF0Ky+cSKn
-X-Received: by 2002:a25:5094:: with SMTP id e142mr39202824ybb.30.1593589843127;
-        Wed, 01 Jul 2020 00:50:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593589843; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1387020lfm;
+        Thu, 2 Jul 2020 04:30:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwSr79dQ7spGE7EGGdzXJS405XRwMZeQ46hu4I7lqFhtAYKhugPT0kSE9xExzBUVjLQ/U28
+X-Received: by 2002:a25:8b05:: with SMTP id i5mr48136800ybl.301.1593689405340;
+        Thu, 02 Jul 2020 04:30:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593689405; cv=none;
         d=google.com; s=arc-20160816;
-        b=L+QEu3QD6ydzS90MgLb2M0j4Xh+rxVEknOdAqV5W4wqmJVxUCr9eDNnrpG2BwEChQl
-         KyIhMStnr5JpBPGWwzu4tGhM2heAzaZwwBVOYmR1ZeT0IFTVS3gJLfPGT2Lonf+gkJdq
-         Wqbi1qCTFwOBRR5pE7z4N1eJgnvWE6BdVFfsYJA3grx50/Q9CtvhU1QXFN8jghd/IJZK
-         rqg3RM+T8+Uv8LInqdL41pnDbTEa7DBrstaV37KJJmCxPhMhU9xNEmETsQVB3BDjWU3C
-         Lfxiz/pte0PoVDfanoLYYf8/ngTx8ktgDFJg/BWOhA9ZJMLBSzJBzYfQnLKf72ruyIU6
-         IEZQ==
+        b=NiDoenZmKtuTVw3NY1pFeId01k3rmRAXS54D+INwKK/EH0a4UgAFIW3rPJh/PmLxLS
+         RWQGR5l2/xlS/vF3+4W6OJ6dJanfI3w8OrNLKJWqNrCWOwGSiJhg4fI9ivFIqFNrNFSV
+         2aoMR0dRa+32wFSCy2YVgonV2vSJjjiYpLNYyO3jyT6dCEbcmowAKYj2txFUVLmMGweM
+         Y2Z1ZPpSn4sxeuTcxkk9AAvtiRENwllublfOgsO+Zzg3fdRkrgfry8slgR9QqbrCMuPo
+         flqwUyAEf+7kRsyZN+IbLhjLTqRT49c/klV6RLQIGmTFZbiT2BsZPW5SmyDeeG8m/cMc
+         uGwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=b6Q7ymScFlE5LfeO6Iz2BuxjLMnGY1Z/5ga0UysDrUA=;
-        b=j4YtOmpUgQ2hkCMtBYV054ds1cU562V6INYOR2T48PdUBLSNYKL5WHaUZmqVuOLpWV
-         UuLGoSEala+rUbxJr7ggn1j6gnH/KKTmMeZAgydz1cHcLvVVwzDB1KZkmkezQ7Pk86A3
-         D2gwVQcgyNdqOkwde/bGUBZhthpzhI6km3f8JQmfxjQyXSyH/IHYBieNmoWPDVUx4iiJ
-         4rLfXni7NJcPk2b+k3XAzrQkq7t8lmXPQBSMuAcQanm742+nqTqaWQQ7aB8WodBM846K
-         w+PZTCHwh79uu8vkAPVDKP9MDzOuQ4bz4bK8OEgWpofRO/5UOfJBippaNyOAVrk3phPK
-         SqOw==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=JfM6OLCt1Oz7J160Bs1Wy7L5auM7Ow31HfnQNnRNMNo=;
+        b=VaZE+Xz8Zo8mQWrsPLTQTrRZk01bj5ncTIMSBVYAUYwT01PC3mEnI+ryXis3aHnuSm
+         yWO+LnXUcFoAbQLPCS/DLuUDQSof3hhtlPd/CVr1SoUkwYsgM6Qe7p5etaRcZq+W8z4n
+         WRRKypp6bKMAZNIsyPbGXFyOISj9SwO1Z6L1soalLtdUMb4WajZIbNaVCWdLWPWXc4UH
+         9g17V486rSo3Qt0pmO7puFWe0AIShDOCI7fJls97nJ05upr9h76SjDhUw4eO09dgs6y2
+         59TELKXSs9X5s81xIob+vBvXsIN8ldBtc3imIDnnXtmil8TFONoBQotL2NohWNnNy9WI
+         3tew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AtrPRx+w;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 2si5280987ybn.417.2020.07.01.00.50.42
+        by mx.google.com with ESMTPS id n184si9657097ybc.403.2020.07.02.04.30.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 Jul 2020 00:50:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Jul 2020 04:30:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48150 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AtrPRx+w;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56846 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jqXVy-0002Nw-He
-	for alex.bennee@linaro.org; Wed, 01 Jul 2020 03:50:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56560)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jqxPo-0001bd-Iu
+	for alex.bennee@linaro.org; Thu, 02 Jul 2020 07:30:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57488)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1jqXVr-0002LO-Qt; Wed, 01 Jul 2020 03:50:35 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3716 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1jqXVp-0005j7-OW; Wed, 01 Jul 2020 03:50:35 -0400
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id D67D87E94BD4F4535196;
- Wed,  1 Jul 2020 15:50:20 +0800 (CST)
-Received: from [10.174.187.22] (10.174.187.22) by
- DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
- 14.3.487.0; Wed, 1 Jul 2020 15:50:11 +0800
-Subject: Re: [PATCH] migration: Assign current_migration as NULL after
- migration
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-References: <20200628064923.13192-1-zhukeqian1@huawei.com>
-From: zhukeqian <zhukeqian1@huawei.com>
-Message-ID: <6db15144-ad79-0e25-deb1-7566fcbbf2e8@huawei.com>
-Date: Wed, 1 Jul 2020 15:50:11 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jqxMX-0003eU-L2
+ for qemu-devel@nongnu.org; Thu, 02 Jul 2020 07:26:41 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:47387)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jqxMW-0007b4-1X
+ for qemu-devel@nongnu.org; Thu, 02 Jul 2020 07:26:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593689199;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=JfM6OLCt1Oz7J160Bs1Wy7L5auM7Ow31HfnQNnRNMNo=;
+ b=AtrPRx+wCQmH/hp2rK8z1f/W39/lDn09YX3ySCsmXnNZJvwxCQHJ4zCNm6nFWQ4le886fy
+ Aff3vKoEFemSvcsR/DhdJ6onUFZNfU+JJtrhNK9QIgPbURPmGhP5xQv+8WJUjX7jeyoA+z
+ 5KepjCtW338ol78dp4ydlECA2Yk3KsY=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-9-BOhwQo22MA-5zl4PhhLA2A-1; Thu, 02 Jul 2020 07:26:37 -0400
+X-MC-Unique: BOhwQo22MA-5zl4PhhLA2A-1
+Received: by mail-wm1-f72.google.com with SMTP id g187so28342765wme.0
+ for <qemu-devel@nongnu.org>; Thu, 02 Jul 2020 04:26:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=JfM6OLCt1Oz7J160Bs1Wy7L5auM7Ow31HfnQNnRNMNo=;
+ b=cwXN7qRQgVRV7+jHONrpwttTXEwiUgrqskj3pqi+hHMDPXB+8YhlGsyUYCRyZm/CeL
+ OfqnjZEj6lpzXUueMK4cbMqd2QHo3+kmeojcYcd/alGrxOs56y0WKxpfWq8/t2tJJ99Q
+ i1jLjpoxK078magrc9qsDPoAwLkFJ5wFpR6f7G9fSUYQcR/I/J8QTkWzd9+ka5oVpMDN
+ /PaVJ61ViX4DQUfEAizCB9FIjuveCdoB/j1nFFbDuxrPfR4UeBavaIWxm44Bu5us/d+C
+ Zwp3XstTdFrb6KRlh7rqlRQMKkCLsAFBrVTfP9Te1dGqWwOT65D0A1n/zN2kNP0S/F1G
+ M1dA==
+X-Gm-Message-State: AOAM532XK44Y/aqFxAcuZ/XZx1tnrHEo5mKiVAJBNBp+F25tNAmnH43d
+ X6l1q/1i+xH9N07mFWDCBmmcFBNjhjmhDZHoKeXAH3JJA1lfENBKjf85xupPDuGLdl1qmb5oMv5
+ JwfWYJmJXcyUO/Gk=
+X-Received: by 2002:adf:e88b:: with SMTP id d11mr21403384wrm.378.1593689196627; 
+ Thu, 02 Jul 2020 04:26:36 -0700 (PDT)
+X-Received: by 2002:adf:e88b:: with SMTP id d11mr21403375wrm.378.1593689196434; 
+ Thu, 02 Jul 2020 04:26:36 -0700 (PDT)
+Received: from redhat.com ([93.157.82.4])
+ by smtp.gmail.com with ESMTPSA id c25sm9890047wml.46.2020.07.02.04.26.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 02 Jul 2020 04:26:35 -0700 (PDT)
+Date: Thu, 2 Jul 2020 07:26:32 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v7 5/5] hw/arm/virt: Let the virtio-iommu bypass MSIs
+Message-ID: <20200702072623-mutt-send-email-mst@kernel.org>
+References: <20200629070404.10969-1-eric.auger@redhat.com>
+ <20200629070404.10969-6-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200628064923.13192-1-zhukeqian1@huawei.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.187.22]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=zhukeqian1@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/01 03:50:22
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
+In-Reply-To: <20200629070404.10969-6-eric.auger@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=mst@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 04:18:28
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: 2
+X-Spam_score: 0.2
+X-Spam_bar: /
+X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin.wang@huawei.com, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Juan Quintela <quintela@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t1UMBkdu2B/8
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, jean-philippe@linaro.org, qemu-devel@nongnu.org,
+ peterx@redhat.com, armbru@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
+ bbhushan2@marvell.com, eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: aQbdYV3f/lop
 
-Please ignore this patch :-)
-
-If we shutdown VM during migration, the migration thread may still
-ref current_migration at this point.
-
-On 2020/6/28 14:49, Keqian Zhu wrote:
-> In migration_shutdown, global var current_migration is freed but not
-> assigned to NULL, which may cause heap-use-after-free problem if the
-> following code logic is abnormal.
+On Mon, Jun 29, 2020 at 09:04:04AM +0200, Eric Auger wrote:
+> At the moment the virtio-iommu translates MSI transactions.
+> This behavior is inherited from ARM SMMU. The virt machine
+> code knows where the guest MSI doorbells are so we can easily
+> declare those regions as VIRTIO_IOMMU_RESV_MEM_T_MSI. With that
+> setting the guest will not map MSIs through the IOMMU and those
+> transactions will be simply bypassed.
 > 
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Depending on which MSI controller is in use (ITS or GICV2M),
+> we declare either:
+> - the ITS interrupt translation space (ITS_base + 0x10000),
+>   containing the GITS_TRANSLATOR or
+> - The GICV2M single frame, containing the MSI_SETSP_NS register.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
+This needs ARM ACK.
+
 > ---
->  migration/migration.c | 1 +
->  1 file changed, 1 insertion(+)
+> v5 -> v6:
+> - do not hardcode doorbell base and size
+> - removed Jean's R-b
 > 
-> diff --git a/migration/migration.c b/migration/migration.c
-> index 481a590f72..effffd7332 100644
-> --- a/migration/migration.c
-> +++ b/migration/migration.c
-> @@ -189,6 +189,7 @@ void migration_shutdown(void)
->       */
->      migrate_fd_cancel(current_migration);
->      object_unref(OBJECT(current_migration));
-> +    current_migration = NULL;
+> v3 -> v4:
+> - use ':' as separators
+> 
+> v2 -> v3:
+> - Add a new value to VirtMSIControllerType
+> 
+> v1 -> v2:
+> - Test which MSI controller is instantiated
+> - If GICV2M is in use, declare its doorbell as an MSI doorbell too
+> ---
+>  include/hw/arm/virt.h |  7 +++++++
+>  hw/arm/virt.c         | 30 ++++++++++++++++++++++++++++++
+>  2 files changed, 37 insertions(+)
+> 
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 31878ddc72..a18b6b397b 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -96,6 +96,12 @@ typedef enum VirtIOMMUType {
+>      VIRT_IOMMU_VIRTIO,
+>  } VirtIOMMUType;
+>  
+> +typedef enum VirtMSIControllerType {
+> +    VIRT_MSI_CTRL_NONE,
+> +    VIRT_MSI_CTRL_GICV2M,
+> +    VIRT_MSI_CTRL_ITS,
+> +} VirtMSIControllerType;
+> +
+>  typedef enum VirtGICType {
+>      VIRT_GIC_VERSION_MAX,
+>      VIRT_GIC_VERSION_HOST,
+> @@ -136,6 +142,7 @@ typedef struct {
+>      OnOffAuto acpi;
+>      VirtGICType gic_version;
+>      VirtIOMMUType iommu;
+> +    VirtMSIControllerType msi_controller;
+>      uint16_t virtio_iommu_bdf;
+>      struct arm_boot_info bootinfo;
+>      MemMapEntry *memmap;
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index cd0834ce7f..eb4344cf6e 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -602,6 +602,7 @@ static void create_its(VirtMachineState *vms)
+>      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_GIC_ITS].base);
+>  
+>      fdt_add_its_gic_node(vms);
+> +    vms->msi_controller = VIRT_MSI_CTRL_ITS;
 >  }
 >  
->  /* For outgoing */
-> 
+>  static void create_v2m(VirtMachineState *vms)
+> @@ -622,6 +623,7 @@ static void create_v2m(VirtMachineState *vms)
+>      }
+>  
+>      fdt_add_v2m_gic_node(vms);
+> +    vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
+>  }
+>  
+>  static void create_gic(VirtMachineState *vms)
+> @@ -2200,8 +2202,36 @@ out:
+>  static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+>                                              DeviceState *dev, Error **errp)
+>  {
+> +    VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +
+>      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>          virt_memory_pre_plug(hotplug_dev, dev, errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
+> +        hwaddr db_start = 0, db_end = 0;
+> +        char *resv_prop_str;
+> +
+> +        switch (vms->msi_controller) {
+> +        case VIRT_MSI_CTRL_NONE:
+> +            return;
+> +        case VIRT_MSI_CTRL_ITS:
+> +            /* GITS_TRANSLATER page */
+> +            db_start = base_memmap[VIRT_GIC_ITS].base + 0x10000;
+> +            db_end = base_memmap[VIRT_GIC_ITS].base +
+> +                     base_memmap[VIRT_GIC_ITS].size - 1;
+> +            break;
+> +        case VIRT_MSI_CTRL_GICV2M:
+> +            /* MSI_SETSPI_NS page */
+> +            db_start = base_memmap[VIRT_GIC_V2M].base;
+> +            db_end = db_start + base_memmap[VIRT_GIC_V2M].size - 1;
+> +            break;
+> +        }
+> +        resv_prop_str = g_strdup_printf("0x%"PRIx64":0x%"PRIx64":%u",
+> +                                        db_start, db_end,
+> +                                        VIRTIO_IOMMU_RESV_MEM_T_MSI);
+> +
+> +        qdev_prop_set_uint32(dev, "len-reserved-regions", 1);
+> +        qdev_prop_set_string(dev, "reserved-regions[0]", resv_prop_str);
+> +        g_free(resv_prop_str);
+>      }
+>  }
+>  
+> -- 
+> 2.20.1
+

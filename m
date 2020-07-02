@@ -1,89 +1,88 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1587998lfm;
-        Thu, 2 Jul 2020 08:29:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzLNtPOYyDQ+RJg+Dmwy9SoW5pRyDmuLHAy+E43QBZ8yq0sAH+7414ae+x45lA9yYZOXnIv
-X-Received: by 2002:a05:6902:68b:: with SMTP id i11mr50900028ybt.396.1593703798706;
-        Thu, 02 Jul 2020 08:29:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593703798; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1589789lfm;
+        Thu, 2 Jul 2020 08:31:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwe+ZJ5aIdKt1X6/HWTXiZPcUKmgUI8H8CUWO4jMdn2s8tFBFbhLXJc7NY7Mir/zINK6But
+X-Received: by 2002:a67:8a4a:: with SMTP id m71mr16780529vsd.59.1593703912891;
+        Thu, 02 Jul 2020 08:31:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593703912; cv=none;
         d=google.com; s=arc-20160816;
-        b=PK+N8UXKvxrqj+86jKMYMES5Jlc9AaKNPImQPOBnOuiVoYJm4tHc+uvGMZIwemr9aR
-         075KaZCBHaLNsSsRfYseQdnKf/5ZSvRp+LrcaOcgA89p7NaLJiVTBmOXS0lvQXabQugk
-         jNG26mKzHVPsTLraxbMqVKf0fEOzmX4/MunruXU0CY4oZSDDHbswHn7KC+U3BiX5pTDZ
-         8wbkY1PoJd8JfbH5SXi5LjdSva/4myeROd81yEedpo6R+qRRwJD+GxFasRGyOvCgoTqm
-         /xk5UmhfieFSOtcw8GPLBbk+S4lEIcxnVyY8n5f2DaPQE0FiMWyg6XPqYVw1whnb7Rd0
-         Wu3w==
+        b=qSoudvkhyVOGn5ZWKiyj/T2UBrYPb8mnzGed4xuBefX4orpQdqe0kUTCYBzQNbzjH3
+         aUidrRPRxM+q6E5JX8I42WB0dl5Ka3eNs2RfNjXHDxAaU/XCyI1bKewMRMdPCZKZKRQq
+         EypngOSqQoX+/6H0caW/8MIyhApuq0iMWQJSFY7Q29r2ccukfwOO7XfrmugKxEbWdNMe
+         ikneoJ0fBUoTS/ynRnQ+a0WnRUJ3q5XNBn0SzrjYYaY2FfLgG+eMcQ3zr2Hy+MjWnDme
+         S1XEk6CliA4wllGDEJd5tCjS0msT8IJbeRcI+BRCrrHtBxKnMT5OnNUF2DK5axULASIt
+         Yo7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=LDpaYhPZ/FHMcFEBo2iduOx48Ch9dqf1Z0IyUm32XR4=;
-        b=md8bFIajRB3Lvd4Lyu6utsuD0G+0ShuU2Pc3TWvaK9Ncsapj38BzSLfLYbNdjS1fv8
-         KuP4LYK1yuXbVh+DoHPFApEkQ8ooPTbyw2mfdJPgXwAoPHWvXzCPBqKnAvKEfRqOwWhT
-         cewfiWwBGDeVIN8QkPqMbDtE3Qeo38KUrevNfc07aZ5HUMBlOMeWpYlOSrNx22z9R8Ap
-         sYv9Vci2HgeTgi8tLWVGw2QGGDzpSaESjThv3AxV3l8XWhkUX0VYlBaemJ+X6kmb1yZv
-         R3leyKMM376pDjdTOeISrePwSoe0xsvgjc7+KygGjsLdFVjJhdTgAyGh3rmHgN0vZ9oM
-         6bgw==
+        bh=C4qLqUFnjHc7wzCPN/LQ1XBPh1dVzrlm59KIf9UKpNI=;
+        b=vTq+uzLCJvwSoPn7FAVD2aeuyTqM+PSz5gth1fVLTbMgdbkFleQLMHFZ1kw35s14xg
+         KvWMfmlKW/ajNRc1PFKHrP6G1Xn08B8ITjCktFLks5ClSSu89qyCmbXoSzNv51o9rLNe
+         cT1nBtYhQF/ILyPw5ccSL/Mm2GlvIjhVmmzNvYfZlfMPkNitYc/vLBquEW3qLLUzpP0F
+         exPC0GIKUx9bhsb77xMbeF65zGOEe5zYCn6n9sgemv6GWs7OAKQ3NE8jw4bAybbW++b7
+         jKZ3u0n/qwYi22otVzpqxtp4PHbNJmtnnNTEOkEgutnFcf3Nlgt2R0rwMxIE8tGvEqrk
+         W5UA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KAbszJhx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SDrJineX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t14si9062099ybl.37.2020.07.02.08.29.58
+        by mx.google.com with ESMTPS id d23si1330809vsj.390.2020.07.02.08.31.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jul 2020 08:29:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Jul 2020 08:31:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KAbszJhx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SDrJineX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52182 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57394 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jr19y-0004Wb-1X
-	for alex.bennee@linaro.org; Thu, 02 Jul 2020 11:29:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43358)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jr1Bo-0006rB-5v
+	for alex.bennee@linaro.org; Thu, 02 Jul 2020 11:31:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43466)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jr17d-0000hw-1i
- for qemu-arm@nongnu.org; Thu, 02 Jul 2020 11:27:33 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:27668
- helo=us-smtp-delivery-1.mimecast.com)
+ id 1jr17r-0001Md-R9
+ for qemu-devel@nongnu.org; Thu, 02 Jul 2020 11:27:47 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:42060
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jr17Z-0006K1-BI
- for qemu-arm@nongnu.org; Thu, 02 Jul 2020 11:27:32 -0400
+ id 1jr17q-0006QX-8U
+ for qemu-devel@nongnu.org; Thu, 02 Jul 2020 11:27:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593703648;
+ s=mimecast20190719; t=1593703665;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=LDpaYhPZ/FHMcFEBo2iduOx48Ch9dqf1Z0IyUm32XR4=;
- b=KAbszJhx8UjpAOBcmHSpCBoZ5w871Z3g63ht1wIW/Q5WDEcnwiyIc06cYJzBxt9+2UGsuP
- atC+AC31XTQXWs3O5PW1Rc0lBDLVsjOqq6CoL7GE4AyvzpxIML1j4Zn30EcdkQxNM9GFFs
- oaYQUV8LWWBWUPxGLV+1Yz0zBgaRaqY=
+ bh=C4qLqUFnjHc7wzCPN/LQ1XBPh1dVzrlm59KIf9UKpNI=;
+ b=SDrJineXFohaQ+QDJKOmPCqatbLBhI1sOIjZR0s6geUTq8Pnkp8s83Wg1Ld+o34+yBiY+M
+ CLBz1cMj1C3Qj42KV0BScTJTFokS/PXlot+PVHV6D4UoC5/O7guK/GJPfsXbB3TsgulBJ2
+ 3q907M7XPZS/5BX4pFXDJBg1+NmWljw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-290-oLbRihpdMoCt7vFd8brXeA-1; Thu, 02 Jul 2020 11:27:24 -0400
-X-MC-Unique: oLbRihpdMoCt7vFd8brXeA-1
+ us-mta-429-SOYhJYvxPsO4tZsivXU2sw-1; Thu, 02 Jul 2020 11:27:42 -0400
+X-MC-Unique: SOYhJYvxPsO4tZsivXU2sw-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9E925107ACF2;
- Thu,  2 Jul 2020 15:27:21 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2127A8CA88B;
+ Thu,  2 Jul 2020 15:27:40 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-70.ams2.redhat.com [10.36.112.70])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CB37C5DC1E;
- Thu,  2 Jul 2020 15:27:18 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 394B15DC1E;
+ Thu,  2 Jul 2020 15:27:37 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, peterx@redhat.com
-Subject: [PATCH v2 1/9] hw/arm/smmu-common: Factorize some code in
- smmu_ptw_64()
-Date: Thu,  2 Jul 2020 17:26:51 +0200
-Message-Id: <20200702152659.8522-2-eric.auger@redhat.com>
+Subject: [PATCH v2 4/9] hw/arm/smmu: Simplify the IOTLB key format
+Date: Thu,  2 Jul 2020 17:26:54 +0200
+Message-Id: <20200702152659.8522-5-eric.auger@redhat.com>
 In-Reply-To: <20200702152659.8522-1-eric.auger@redhat.com>
 References: <20200702152659.8522-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -94,9 +93,9 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 03:42:59
+Received-SPF: pass client-ip=207.211.31.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 03:23:40
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -106,124 +105,115 @@ X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: jean-philippe@linaro.org, robh@kernel.org, robin.murphy@arm.com,
  mst@redhat.com, zhangfei.gao@foxmail.com, shameerali.kolothum.thodi@huawei.com,
  will@kernel.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j4UXUq7KSIxc
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: j2u9EEI6MLo3
 
-Page and block PTE decoding can share some code. Let's
-first handle table PTE and factorize some code shared by
-page and block PTEs.
+Instead of using a Jenkins hash function to generate
+the key let's just use a 64 bit unsigned integer that
+contains the asid and the 40 upper bits of the iova.
+A maximum of 52-bit IOVA is supported. This change in the
+key format also prepares for the addition of new fields
+in subsequent patches (granule and level).
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
 
 v1 -> v2:
-- restore goto error in case get_pte() fails
+- split the inital patch into 2 patches and keep SMMUIOTLBKey type
 ---
- hw/arm/smmu-common.c | 48 ++++++++++++++++----------------------------
- 1 file changed, 17 insertions(+), 31 deletions(-)
+ hw/arm/smmu-internal.h       |  5 ++++-
+ include/hw/arm/smmu-common.h |  5 +----
+ hw/arm/smmu-common.c         | 23 +++--------------------
+ 3 files changed, 8 insertions(+), 25 deletions(-)
 
+diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
+index 3104f768cd..2ecb6f1dc6 100644
+--- a/hw/arm/smmu-internal.h
++++ b/hw/arm/smmu-internal.h
+@@ -96,5 +96,8 @@ uint64_t iova_level_offset(uint64_t iova, int inputsize,
+             MAKE_64BIT_MASK(0, gsz - 3);
+ }
+ 
+-#define SMMU_IOTLB_ASID(key) ((key).asid)
++#define SMMU_IOTLB_ASID_SHIFT  40
++
++#define SMMU_IOTLB_ASID(key) (((key) >> SMMU_IOTLB_ASID_SHIFT) & 0xFFFF)
++#define SMMU_IOTLB_IOVA(key) (((key) & MAKE_64BIT_MASK(0, 40)) << 12)
+ #endif
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+index 5f9f3535d2..455d7855b2 100644
+--- a/include/hw/arm/smmu-common.h
++++ b/include/hw/arm/smmu-common.h
+@@ -88,10 +88,7 @@ typedef struct SMMUPciBus {
+     SMMUDevice   *pbdev[]; /* Parent array is sparse, so dynamically alloc */
+ } SMMUPciBus;
+ 
+-typedef struct SMMUIOTLBKey {
+-    uint64_t iova;
+-    uint16_t asid;
+-} SMMUIOTLBKey;
++ typedef uint64_t SMMUIOTLBKey;
+ 
+ typedef struct SMMUState {
+     /* <private> */
 diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index e13a5f4a7c..a3f9e47398 100644
+index 7dc8541e8b..5e85e30bdf 100644
 --- a/hw/arm/smmu-common.c
 +++ b/hw/arm/smmu-common.c
-@@ -186,7 +186,7 @@ static int smmu_ptw_64(SMMUTransCfg *cfg,
-         uint64_t subpage_size = 1ULL << level_shift(level, granule_sz);
-         uint64_t mask = subpage_size - 1;
-         uint32_t offset = iova_level_offset(iova, inputsize, level, granule_sz);
--        uint64_t pte;
-+        uint64_t pte, gpa;
-         dma_addr_t pte_addr = baseaddr + offset * sizeof(pte);
-         uint8_t ap;
+@@ -34,34 +34,17 @@
  
-@@ -199,56 +199,42 @@ static int smmu_ptw_64(SMMUTransCfg *cfg,
-         if (is_invalid_pte(pte) || is_reserved_pte(pte, level)) {
-             trace_smmu_ptw_invalid_pte(stage, level, baseaddr,
-                                        pte_addr, offset, pte);
--            info->type = SMMU_PTW_ERR_TRANSLATION;
--            goto error;
-+            break;
-         }
- 
--        if (is_page_pte(pte, level)) {
--            uint64_t gpa = get_page_pte_address(pte, granule_sz);
-+        if (is_table_pte(pte, level)) {
-+            ap = PTE_APTABLE(pte);
- 
--            ap = PTE_AP(pte);
-             if (is_permission_fault(ap, perm)) {
-                 info->type = SMMU_PTW_ERR_PERMISSION;
-                 goto error;
-             }
+ static guint smmu_iotlb_key_hash(gconstpointer v)
+ {
+-    SMMUIOTLBKey *key = (SMMUIOTLBKey *)v;
+-    uint32_t a, b, c;
 -
--            tlbe->translated_addr = gpa + (iova & mask);
--            tlbe->perm = PTE_AP_TO_PERM(ap);
-+            baseaddr = get_table_pte_address(pte, granule_sz);
-+            level++;
-+            continue;
-+        } else if (is_page_pte(pte, level)) {
-+            gpa = get_page_pte_address(pte, granule_sz);
-             trace_smmu_ptw_page_pte(stage, level, iova,
-                                     baseaddr, pte_addr, pte, gpa);
--            return 0;
--        }
--        if (is_block_pte(pte, level)) {
-+        } else {
-             uint64_t block_size;
--            hwaddr gpa = get_block_pte_address(pte, level, granule_sz,
--                                               &block_size);
+-    /* Jenkins hash */
+-    a = b = c = JHASH_INITVAL + sizeof(*key);
+-    a += key->asid;
+-    b += extract64(key->iova, 0, 32);
+-    c += extract64(key->iova, 32, 32);
 -
--            ap = PTE_AP(pte);
--            if (is_permission_fault(ap, perm)) {
--                info->type = SMMU_PTW_ERR_PERMISSION;
--                goto error;
--            }
+-    __jhash_mix(a, b, c);
+-    __jhash_final(a, b, c);
+-
+-    return c;
++    return (guint)*(const uint64_t *)v;
+ }
  
-+            gpa = get_block_pte_address(pte, level, granule_sz,
-+                                        &block_size);
-             trace_smmu_ptw_block_pte(stage, level, baseaddr,
-                                      pte_addr, pte, iova, gpa,
-                                      block_size >> 20);
+ static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
+ {
+-    const SMMUIOTLBKey *k1 = v1;
+-    const SMMUIOTLBKey *k2 = v2;
 -
--            tlbe->translated_addr = gpa + (iova & mask);
--            tlbe->perm = PTE_AP_TO_PERM(ap);
--            return 0;
-         }
--
--        /* table pte */
--        ap = PTE_APTABLE(pte);
--
-+        ap = PTE_AP(pte);
-         if (is_permission_fault(ap, perm)) {
-             info->type = SMMU_PTW_ERR_PERMISSION;
-             goto error;
-         }
--        baseaddr = get_table_pte_address(pte, granule_sz);
--        level++;
--    }
+-    return (k1->asid == k2->asid) && (k1->iova == k2->iova);
++    return *((const uint64_t *)v1) == *((const uint64_t *)v2);
+ }
  
-+        tlbe->translated_addr = gpa + (iova & mask);
-+        tlbe->perm = PTE_AP_TO_PERM(ap);
-+        return 0;
-+    }
-     info->type = SMMU_PTW_ERR_TRANSLATION;
+ SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint64_t iova)
+ {
+-    SMMUIOTLBKey key = {.asid = asid, .iova = iova};
+-
+-    return key;
++    return iova >> 12 | (uint64_t)(asid) << SMMU_IOTLB_ASID_SHIFT;
+ }
  
- error:
+ IOMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
 -- 
 2.21.3
 

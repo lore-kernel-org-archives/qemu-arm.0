@@ -1,114 +1,113 @@
-Received: by 2002:a0c:eda5:0:0:0:0:0 with SMTP id h5csp5680014qvr;
-        Tue, 27 Oct 2020 11:54:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxwTC8p/a6RrAgWyDUxZmwssPTGBZY0PmKplrRvykDeGkHJq+jFX8IcScAOnZREPjdqHuHw
-X-Received: by 2002:a05:620a:14b5:: with SMTP id x21mr3797413qkj.300.1603824859894;
-        Tue, 27 Oct 2020 11:54:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603824859; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1313754lfm;
+        Thu, 2 Jul 2020 02:48:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxdGnQiZphBp/JXX7JMeXuwPjcy9JStwMFB2vVb0BJnnfj/odQAA5UhPNlHg6YlPOcbp8Hf
+X-Received: by 2002:a25:24cb:: with SMTP id k194mr49022261ybk.81.1593683328692;
+        Thu, 02 Jul 2020 02:48:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593683328; cv=none;
         d=google.com; s=arc-20160816;
-        b=LrFSfrrb25WaT64AvlNjGp+lMM1MQPNdmOl217qMepiYAsmrDGTfOyCRMZI57Tmskw
-         bCIie8kcd21elTr7f/SScGgMImsKm32mwlTdy5W0A7QJZTBHUnLJl4pVld/MG9cJSV1p
-         5jojxkIyMrND4vte+scUQlw0q3TvnmEEOwjMAFUg5KXlcOpw3kiTgmZXM8Gsh85u72fH
-         SIDykO1etHIXE0xbMNxCCZeaXw4dndV60YrYqHoTZqZO2i+sBfLnluCJ8KKgQpQhqC59
-         hVh2TRLjWYAOSNG+PhpTNro+yYVa35e8WW2GNs3UxLWYklbgfvQpPNY2b6wAzyxuSLTN
-         Zbyg==
+        b=Fi1Rns/YfYRG5iC2MXGhhGzEchJhv4Kc1UmZWQFc2lrFU9Dh5hlhEM9csP+9GTaVLJ
+         BViMO3EsGlhXomzr/7sGcPoWRtGotF6lsZhYan5P2TcAJDusvg7yFX09i/Hh7sMrmc0D
+         NkwwcNHiNqBRw46dhe+fzjvctJArdM8WKMlgwXkSafBariMHNJSAVqud7BqBVseuCIGk
+         857w5kTpcfpbQgjHVDvTMYk7h5m/KA9MBgUTXrtHhRwrqm2k5mFbrLb4zjv9v1U3NGG1
+         0UN1QYTMdn02EUor79kC+qf6LSBvxLlkJ2WOBBcBu1Smmh1DVB1enLvIsX+3aiwuuZFW
+         EQqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:from:references:to:subject:dkim-signature;
-        bh=ZryAnamgoYu55ZEggUKNyRi7qSTAnJ9xlJ3QRoHz0lI=;
-        b=RpGyow9e7AnkY5cbqyVksKiVPBnTJQj87yvKCjNxfMBqsl6qpiSRKF8ffzDzUdGDvq
-         n2OV7fsexbpcPEm8FKk2g6x4mjZMEgb+G3RlVbe//XRExOsPA9fWQm2xktehxrHeLSTo
-         pG0KrhTg5pvm/2nVRwBVOF88nqg7jtj5NStL4bBKx7YdwKzLiwHbKYlNvxNKY2Zar8B+
-         Y6XYXXFdr6mc+9lEy0rPmvQF1bzhFkpShoafIxbW1vrIwk+0/tuoxJhs9UdgEOnqLdE7
-         j43BIhOqHJbqPQs+CBIGIsbBcZXUTqHW966c4Rh+ADA+MPpiewdnGGT5xlM9hk9Yh+qz
-         JFlg==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=T5T7NPiOXTzUYlomcbdpzB2I/7gq9yWNbNCKQyRpZwA=;
+        b=QOpd/R0oA/LDyd0Snp1j5kSDPs9dM3NZeFFDsyEv+Ai5goSO8GnAriotKkuLs+BgHU
+         TVoiE4TaHDBpeVYVISATeqpsb0eLQZez/SSf/BPZ3vVPCC+POQ8PPGckzQdtJ3jT7i1w
+         2xymWQEaykBispTyDXnIUcIrfXQyhqjOW+elmCrcRQgB1ezym/oBwXz8kKYLHvNfleOL
+         Tu40+GbvFhANPh38nkNFOmZVrro6k4O6mkejWSdD4Fld/1HZlSnwx2dkiB3k4kH7kIyp
+         qGaImxgzdqXq5V8GzQRoFoLKNlQ7+X+9A4tTBL/7Ip2TPUKMJK8n3vTBdmJ8/cJTanc1
+         NgeA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=d08zkDQk;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OxupsoC2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a12si1208278qvo.6.2020.10.27.11.54.19
+        by mx.google.com with ESMTPS id m9si7843515ybo.98.2020.07.02.02.48.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Oct 2020 11:54:19 -0700 (PDT)
+        Thu, 02 Jul 2020 02:48:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=d08zkDQk;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OxupsoC2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53278 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45080 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kXU6t-0008Ey-EW
-	for alex.bennee@linaro.org; Tue, 27 Oct 2020 14:54:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35078)
+	id 1jqvpo-00065N-23
+	for alex.bennee@linaro.org; Thu, 02 Jul 2020 05:48:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58468)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kXTy1-0008VW-Vf
- for qemu-arm@nongnu.org; Tue, 27 Oct 2020 14:45:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:47169)
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1jqvpg-000656-DO
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 05:48:40 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33805
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kXTxw-000672-Io
- for qemu-arm@nongnu.org; Tue, 27 Oct 2020 14:45:08 -0400
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1jqvpe-0004Mu-LA
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 05:48:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603824303;
+ s=mimecast20190719; t=1593683317;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZryAnamgoYu55ZEggUKNyRi7qSTAnJ9xlJ3QRoHz0lI=;
- b=d08zkDQkLeYI/dJjCLfA75vkKAktPXzW/lcRG8gUefoFIH0vLLH84RutneZKlWYvv7THaZ
- nF/NDFDf7S7fY2ngaX+L0r4d4cQt7vGbFyxASwjqWzxqFmI4cBtoAd0JK6os3Rj9ytdYTD
- Tk+/K1PLyvZh1He7Mi70j5G0ood5+5A=
+ bh=T5T7NPiOXTzUYlomcbdpzB2I/7gq9yWNbNCKQyRpZwA=;
+ b=OxupsoC2m6Elh0gEIY69dB+ZNd29nHp7jC+q7F+JB4OdudpweWon2VITKDLe0Mi/pJo68K
+ /Z/Bzb8yT0qx6SNGfqnJSAegylwsMq1EIlQMuIxMPYosZ8iDh1NGF7Z4FckbbExT26P/o+
+ yAn0E+GCsJ4qFgMQBXLsbmvTr244I8I=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-387-voIATndjN1akTHjPflgleA-1; Tue, 27 Oct 2020 14:44:57 -0400
-X-MC-Unique: voIATndjN1akTHjPflgleA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-506-pfqnrJPINkqfm4EHzvD9wg-1; Thu, 02 Jul 2020 05:48:32 -0400
+X-MC-Unique: pfqnrJPINkqfm4EHzvD9wg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 02CD964ACA;
- Tue, 27 Oct 2020 18:44:51 +0000 (UTC)
-Received: from [10.3.112.145] (ovpn-112-145.phx2.redhat.com [10.3.112.145])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4414B5B4BB;
- Tue, 27 Oct 2020 18:44:33 +0000 (UTC)
-Subject: Re: [PATCH v6 11/11] qapi: Use QAPI_LIST_ADD() where possible
-To: Markus Armbruster <armbru@redhat.com>
-References: <20201027050556.269064-1-eblake@redhat.com>
- <20201027050556.269064-12-eblake@redhat.com>
- <873620vv3i.fsf@dusky.pond.sub.org>
- <677f78ec-4897-558c-1f51-35b6215caf64@redhat.com>
- <87r1pj65pz.fsf@dusky.pond.sub.org>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <38da85cd-83db-ea6d-9ebc-5838d776467a@redhat.com>
-Date: Tue, 27 Oct 2020 13:44:32 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 92565800C60;
+ Thu,  2 Jul 2020 09:48:31 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-113-177.ams2.redhat.com
+ [10.36.113.177])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AF9C673FDE;
+ Thu,  2 Jul 2020 09:48:21 +0000 (UTC)
+Subject: Re: [PATCH 3/4] hw/arm/virt-acpi-build: Only expose flash on older
+ machine types
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20200629140938.17566-1-drjones@redhat.com>
+ <20200629140938.17566-4-drjones@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <fe34bfe5-a209-6dad-fd98-72729dbb64c6@redhat.com>
+Date: Thu, 2 Jul 2020 11:48:21 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Firefox/52.0 Thunderbird/52.9.1
 MIME-Version: 1.0
-In-Reply-To: <87r1pj65pz.fsf@dusky.pond.sub.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+In-Reply-To: <20200629140938.17566-4-drjones@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lersek@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/27 01:06:06
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=lersek@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 04:00:43
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.167, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,131 +120,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, pkrempa@redhat.com,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- rjones@redhat.com, Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
- Juan Quintela <quintela@redhat.com>, David Hildenbrand <david@redhat.com>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
- Jiri Pirko <jiri@resnulli.us>, Eduardo Habkost <ehabkost@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- "open list:S390 KVM CPUs" <qemu-s390x@nongnu.org>,
- "open list:GLUSTER" <integration@gluster.org>, stefanha@redhat.com,
- Richard Henderson <rth@twiddle.net>, kwolf@redhat.com,
- vsementsov@virtuozzo.com,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Max Reitz <mreitz@redhat.com>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>
+Cc: peter.maydell@linaro.org, mst@redhat.com, shannon.zhaosl@gmail.com,
+ ard.biesheuvel@arm.com, imammedo@redhat.com, philmd@redhat.com,
+ eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MZu0cMhvgd//
+X-TUID: OtX2qbvboJpP
 
-On 10/27/20 10:36 AM, Markus Armbruster wrote:
-> Eric Blake <eblake@redhat.com> writes:
+On 06/29/20 16:09, Andrew Jones wrote:
+> The flash device is exclusively for the host-controlled firmware, so
+> we should not expose it to the OS. Exposing it risks the OS messing
+> with it, which could break firmware runtime services and surprise the
+> OS when all its changes disappear after reboot.
 > 
->> On 10/27/20 5:09 AM, Markus Armbruster wrote:
->>> Eric Blake <eblake@redhat.com> writes:
->>>
->>>> Anywhere we create a list of just one item or by prepending items
->>>> (typically because order doesn't matter), we can use the now-public
->>>> macro.  But places where we must keep the list in order by appending
->>>> remain open-coded.
->>>
->>> Should we rename the macro to QAPI_LIST_PREPEND()?
->>
->> That would make sense if we add a counterpart QAPI_LIST_APPEND.
+> As firmware needs the device and uses DT, we leave the device exposed
+> there. It's up to firmware to remove the nodes from DT before sending
+> it on to the OS. However, there's no need to force firmware to remove
+> tables from ACPI (which it doesn't know how to do anyway), so we
+> simply don't add the tables in the first place. But, as we've been
+> adding the tables for quite some time and don't want to change the
+> default hardware exposed to versioned machines, then we only stop
+> exposing the flash device tables for 5.1 and later machine types.
 > 
-> It may make sense even if we don't.  QAPI_LIST_ADD() leaves the reader
-> guessing whether we prepend or append.
+> Suggested-by: Ard Biesheuvel <ard.biesheuvel@arm.com>
+> Suggested-by: Laszlo Ersek <lersek@redhat.com>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  hw/arm/virt-acpi-build.c | 5 ++++-
+>  hw/arm/virt.c            | 3 +++
+>  include/hw/arm/virt.h    | 1 +
+>  3 files changed, 8 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 1384a2cf2ab4..91f0df7b13a3 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -749,6 +749,7 @@ static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
+>  static void
+>  build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>  {
+> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>      Aml *scope, *dsdt;
+>      MachineState *ms = MACHINE(vms);
+>      const MemMapEntry *memmap = vms->memmap;
+> @@ -767,7 +768,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      acpi_dsdt_add_cpus(scope, vms->smp_cpus);
+>      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+>                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
+> -    acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+> +    if (vmc->acpi_expose_flash) {
+> +        acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+> +    }
+>      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
+>      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+>                      (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index cd0834ce7faf..5adc9ff799ef 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2482,9 +2482,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
+>  
+>  static void virt_machine_5_0_options(MachineClass *mc)
+>  {
+> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> +
+>      virt_machine_5_1_options(mc);
+>      compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+>      mc->numa_mem_supported = true;
+> +    vmc->acpi_expose_flash = true;
+>  }
+>  DEFINE_VIRT_MACHINE(5, 0)
+>  
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 31878ddc7223..c65be5fe0bb6 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -119,6 +119,7 @@ typedef struct {
+>      bool no_highmem_ecam;
+>      bool no_ged;   /* Machines < 4.2 has no support for ACPI GED device */
+>      bool kvm_no_adjvtime;
+> +    bool acpi_expose_flash;
+>  } VirtMachineClass;
+>  
+>  typedef struct {
+> 
 
-That's a strong enough argument for me to make the rename in patch 2/11,
-with minor rebase fallout in the rest of the series, and then this patch
-gets a major rewrite (but I'm already not trying to get this patch into
-5.2).
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
 
-
->>>> @@ -1224,10 +1224,7 @@ GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
->>>>      QTAILQ_FOREACH(mount, &mounts, next) {
->>>>          g_debug("Building guest fsinfo for '%s'", mount->dirname);
->>>>
->>>> -        new = g_malloc0(sizeof(*ret));
->>>
->>> Ugh!  Glad you get rid of this.
->>
->> Yep, C++ reserved words as a C variable name is always awkward.  It was
->> fun cleaning that up (several places in this patch).
-> 
-> I don't give a rat's ass about C++, actually.  I'm glad you got rid of
-> the tacit "@new points to the same type as @ret does".
-> 
-> Clean:
-> 
->              new = g_malloc0(sizeof(*new));
->              new = g_new0(GuestFilesystemInfoList, 1);
-> 
-> Clean (but I'd use g_new0() instead):
-> 
->              new = g_malloc0(sizeof(GuestFilesystemInfoList));
-> 
-> Dirty:
-> 
->              new = g_malloc0(sizeof(X));
-> 
-> where X is anything else.
-
-Ah, I hadn't even spotted what you disliked, but yes, it makes total
-sense that allocating for assignment to one variable by utilizing the
-type from another puts unnecessary linkage that the two variables must
-have the same type.
-
-
->>> Did you miss the spot where we add to this list?
->>>
->>>        /* Go through each extent */
->>>        for (i = 0; i < extents->NumberOfDiskExtents; i++) {
->>>            disk = g_malloc0(sizeof(GuestDiskAddress));
->>>
->>>            /* Disk numbers directly correspond to numbers used in UNCs
->>>             *
->>>             * See documentation for DISK_EXTENT:
->>>             * https://docs.microsoft.com/en-us/windows/desktop/api/winioctl/ns-winioctl-_disk_extent
->>>             *
->>>             * See also Naming Files, Paths and Namespaces:
->>>             * https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#win32-device-namespaces
->>>             */
->>>            disk->has_dev = true;
->>>            disk->dev = g_strdup_printf("\\\\.\\PhysicalDrive%lu",
->>>                                        extents->Extents[i].DiskNumber);
->>>
->>>            get_single_disk_info(extents->Extents[i].DiskNumber, disk, &local_err);
->>>            if (local_err) {
->>>                error_propagate(errp, local_err);
->>>                goto out;
->>>            }
->>>            cur_item = g_malloc0(sizeof(*list));
->>>            cur_item->value = disk;
->>>            disk = NULL;
->>>            cur_item->next = list;
->>> --->       list = cur_item;
->>>        }
->>
->> This is appending, not prepending.
-> 
-> One of us is blind, and it might be me :)
-
-Oh, I indeed misread this.  Yes, this is prepending after all, so I'll
-use the macro here.
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+Thank you!
+Laszlo
 

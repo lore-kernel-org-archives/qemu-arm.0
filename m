@@ -1,104 +1,113 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1736570lfm;
-        Thu, 2 Jul 2020 11:33:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzYFC4aOOwqTgw+YkY/zhhcCFQlQ1C1p17TaFktONXChH24jWzgNHw2vxZ1Vl7NEsqMKvaO
-X-Received: by 2002:a25:ce84:: with SMTP id x126mr51824695ybe.15.1593714809805;
-        Thu, 02 Jul 2020 11:33:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593714809; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1774983lfm;
+        Thu, 2 Jul 2020 12:26:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwROYGVHhsJkD+R2koR2WIgeIB4yipm+N5Yj0WgfNmQ2UR0cDqu1WbmrATQod1GkTaetkF/
+X-Received: by 2002:a25:a08c:: with SMTP id y12mr50261272ybh.259.1593717997998;
+        Thu, 02 Jul 2020 12:26:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593717997; cv=none;
         d=google.com; s=arc-20160816;
-        b=TmxiwRYjjfH0CjAY0ECH83lVGbeJsOXBnQ411vfP/mx6CxkerzL+4NNKfvhr48x++U
-         dV2upcGd5PsfDxpMKUcEhsRJaaoP1c/PgiScMrNA2TbrSa1/WmzU5V/GbmfaT93lWlvD
-         XtXLOiiSYIFHkPHdl9wKu82C62lto13veFG/zd17++AdrQRqxIDJvPQ5kfMpDjmnr20x
-         /QRpYUOvh9uF45kjtjS/ODHds8AfpHQNOIoSbwg971X0h0Ks/i1mIi7Bve+ALGWQlFJY
-         /TrdEQ8fi+Eq68F5ua8cBvLo/az7h/bGWOUY5UwNceSjY27jZevGCYZ0lIcqwcIVo/m0
-         FtAA==
+        b=KnUAyQN1yW4LGMWWq3IdXo3LuiiFoOspFI6tFBb686wk9DFByrkQ5NWo6ZRm0V346G
+         nzplPF3rEoV1+bV4aPzMuMvNRbs0XDZ/luTcECTzOzBYQGSIaNFQDCmgpKvuHZSh2Q3c
+         fmz5IYGYK1UxIXnKb1liowFrQA+dx4QbWnIbSjH2JPp+nHgWNmWjCiTeXUZJax+a/BI8
+         rp8k+CtD1JztBX+09qShmsaY3A3tZKfFi8NDSZ1L5Ta3QzKf3OrS1Z0pYYeJeqK3RSpA
+         Ih54rhtJZOyM/bViGQc1ca1FE9SW40mNtkjANA4F77L1WVUYrFU1Si9X3I6JmMRbvmjd
+         c7IQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=5PbbYiGUx96C2AMbgbMNNHkDvfL6IWZj4OuocjIjTN8=;
-        b=q8ez+Zl1EnCn77LOLI8ADMqoF0pF/4VghRoOHgJUF1R8uQ9H7dDZkY1N4V5NalxPJH
-         1EHR56OX9+VkZndegzg9YH0uHhO96RzGlijqnku7tJmgeYEHU0Wh0ARD4Gm74Us5rmuv
-         U1rL7BVAFhKybtewFWJPJe0MHdFxNHScqWnPwIH517OHSvPmOJhN1rB3QoO1vAGqcwOX
-         qqt7q5Lia5bUkuwtgJoieZJP1hG4tLg0HarnAiv7/6ZvuMZYq9Tqjed516IpWhXAEOJZ
-         c9SSbSY519xG+eeqs/I8a8fJ5aEKznp57BKm4p9Va6C6n0+Z6FlNnnoaU71vh3EJW91H
-         BReA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=h+kkp0glMQKAXMJ6/bC36ZxkMzJectPPpL5LAdpf9ms=;
+        b=mi0Uyf0FDu5Ri51aXr8z3KNE2ZsD0CyFK5fjeu+O5mKQfTPx7GlAdzlxh1EnCgeY/l
+         A+59XCFAM8CKfadGPORAUrkhROxKp5wcrAEsYZ9OBNfvw4duaogm7DbsCnros0PyEvz8
+         4j6mGzYnw54qsbHMBdX06D98DlY46BDtZV4PtbKUzfC7kRQ8cRholZ+x1xVOAtF/G7aV
+         eINUpsAVOWDINLzXKtWlrmXMTCXoIPu8k0sx5kXLUafuik7dVBMlnTogATGDv/fCK/NL
+         d01TteJUkR99cV5H2816J5pvXTkYze0keLyL4kjgAyqy8SLpWC+4XUUiBhimZNAwJv1S
+         se6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XWl2GiIk;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="G21kdh9/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r128si9034646ybc.354.2020.07.02.11.33.29
+        by mx.google.com with ESMTPS id t15si9521318ybi.228.2020.07.02.12.26.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jul 2020 11:33:29 -0700 (PDT)
+        Thu, 02 Jul 2020 12:26:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XWl2GiIk;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="G21kdh9/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37858 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39672 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jr41Z-0002xQ-6I
-	for alex.bennee@linaro.org; Thu, 02 Jul 2020 14:33:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36424)
+	id 1jr4qz-0001VD-Do
+	for alex.bennee@linaro.org; Thu, 02 Jul 2020 15:26:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jr41Q-0002wI-Nm; Thu, 02 Jul 2020 14:33:20 -0400
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:44494)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jr41O-00034Y-My; Thu, 02 Jul 2020 14:33:20 -0400
-Received: by mail-il1-x144.google.com with SMTP id h16so1772864ilj.11;
- Thu, 02 Jul 2020 11:33:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=5PbbYiGUx96C2AMbgbMNNHkDvfL6IWZj4OuocjIjTN8=;
- b=XWl2GiIkSSnCyTfIts6sAuVeeGlCgW5Cublcv3Rjlo6/I2cnz/BmEH+TwmBzVBmrgs
- 3VsXI63s8V1xviq05w5sCdTCYW24zNbl/ubvWnTE2fuG8S2dGEL3a1RYhP4KGZHK5YfX
- OeOAJYKkumsGjTot1o0JQGbDqrTmcwv+DZfh2qVWcD1fUFts4j3Pbtnd+rTLsiLSY+ow
- luuhG6aDJW5pEAxGu+S5nUqj4QpoGrMuySL9jJORkx+7cr36Jx5BlpRE/I6xoCDOzRSg
- zPHroKnzgGswmcDaXvnCFoyTcjBwexFVz/8K5bXEqlRC8uJMuF9a1VVdfRUuD1oPfcwl
- 3x7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=5PbbYiGUx96C2AMbgbMNNHkDvfL6IWZj4OuocjIjTN8=;
- b=HxAM+qH7AlEeWdA3gHWlqtfEw2O/0aKsvzzWpGMNdn5A3sPuyZlRH5QhfLO6fPbeY8
- 7LAVwGWH2ldE3xDJ5I6Xen9nGO+Kp6vUx7fBshwA0JRPHj1AK7Aqz4uqTuepsycxTG0I
- Vt7BxhKgFKhsbJmhAXljyD4KeRi1cmaEO84ZtgSTPa8EZL98FvSC7FGPqLzC9xkCOpAc
- lGX5QbaTpsp18uobO+cserPwnWr/16wQhR/Y4T/hZ7/Jd5jIrkF2cvX3HW20w46DzYkc
- daU9NJboC2SPC4xBknYhSedJWNJ//hLCNw7CXPPx3/NrTcxu5xAUd2PNLldq4NZU8ecg
- bSNA==
-X-Gm-Message-State: AOAM533Xi7prcCn01KWhxUE5dJPEMt4RscJQfqfKD1U9AdIFz4zwWlOn
- c9bJffWDfyducvdlSMIgoWrPjPg3e24RG+9M6CI=
-X-Received: by 2002:a92:d186:: with SMTP id z6mr14929667ilz.227.1593714796758; 
- Thu, 02 Jul 2020 11:33:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jr4qq-0001Tb-JO
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 15:26:28 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55038
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jr4qo-0006BZ-8Y
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 15:26:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593717980;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=h+kkp0glMQKAXMJ6/bC36ZxkMzJectPPpL5LAdpf9ms=;
+ b=G21kdh9//s4wHpvkWrOdnm8ElCpYhoi/I1ySqiUZbAKy5sFDVJz8tV3d0IfChN/E6aILvb
+ OeclF17NDHhJnawDTkONRfIt95/bmRUOoM495xhDz0lDhQprLOeXqjvHncQW1JMrrGE8Vh
+ gskpWRuHPmdjmGgkIigyYMQEmMZfiEE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-160-cS6ilCO-OF-CB6j5O0CnyA-1; Thu, 02 Jul 2020 15:26:18 -0400
+X-MC-Unique: cS6ilCO-OF-CB6j5O0CnyA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 45D84804001;
+ Thu,  2 Jul 2020 19:26:17 +0000 (UTC)
+Received: from [10.36.112.70] (ovpn-112-70.ams2.redhat.com [10.36.112.70])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 85918100164D;
+ Thu,  2 Jul 2020 19:26:08 +0000 (UTC)
+Subject: Re: [PATCH 0/4] hw/arm/virt-acpi-build: Only expose flash on older
+ machine types
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20200629140938.17566-1-drjones@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <c31ed07d-33e3-2233-43ec-e320cc2180b3@redhat.com>
+Date: Thu, 2 Jul 2020 21:26:06 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <20200628142429.17111-1-peter.maydell@linaro.org>
- <20200628142429.17111-18-peter.maydell@linaro.org>
-In-Reply-To: <20200628142429.17111-18-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 2 Jul 2020 11:23:29 -0700
-Message-ID: <CAKmqyKMSSYZCLT95xur5V3eyz25oX_hMFynifzQrurqTPMUniQ@mail.gmail.com>
-Subject: Re: [PATCH 17/17] Replace uses of FROM_SSI_SLAVE() macro with QOM
- casts
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x144.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200629140938.17566-1-drjones@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 04:00:43
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,203 +120,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>
+Cc: peter.maydell@linaro.org, mst@redhat.com, philmd@redhat.com,
+ shannon.zhaosl@gmail.com, ard.biesheuvel@arm.com, imammedo@redhat.com,
+ lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MbUa9/a+02Cf
+X-TUID: epSPtKuiCT74
 
-On Sun, Jun 28, 2020 at 7:37 AM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> The FROM_SSI_SLAVE() macro predates QOM and is used as a typesafe way
-> to cast from an SSISlave* to the instance struct of a subtype of
-> TYPE_SSI_SLAVE.  Switch to using the QOM cast macros instead, which
-> have the same effect (by writing the QOM macros if the types were
-> previously missing them.)
->
-> (The FROM_SSI_SLAVE() macro allows the SSISlave member of the
-> subtype's struct to be anywhere as long as it is named "ssidev",
-> whereas a QOM cast macro insists that it is the first thing in the
-> subtype's struct.  This is true for all the types we convert here.)
->
-> This removes all the uses of FROM_SSI_SLAVE() so we can delete the
-> definition.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Hi Drew,
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+On 6/29/20 4:09 PM, Andrew Jones wrote:
+> The flash device is exclusively for the host-controlled firmware, so
+> we should not expose it to the OS. Exposing it risks the OS messing
+> with it, which could break firmware runtime services and surprise the
+> OS when all its changes disappear after reboot.
+> 
+> This change was suggested by Ard and Laszlo.
+> 
+> Patch 3/4 is the meat. The other patches deal with updating qtest.
+> 
+> Thanks,
+> drew
+> 
+> Andrew Jones (4):
+>   tests/acpi: remove stale allowed tables
+>   tests/acpi: virt: allow DSDT acpi table changes
+>   hw/arm/virt-acpi-build: Only expose flash on older machine types
+>   tests/acpi: virt: update golden masters for DSDT
 
-Alistair
+SERIES:
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-> ---
->  include/hw/ssi/ssi.h |  2 --
->  hw/arm/z2.c          | 11 +++++++----
->  hw/display/ads7846.c |  9 ++++++---
->  hw/display/ssd0323.c | 10 +++++++---
->  hw/sd/ssi-sd.c       |  4 ++--
->  5 files changed, 22 insertions(+), 14 deletions(-)
->
-> diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
-> index 5fd411f2e4e..eac168aa1db 100644
-> --- a/include/hw/ssi/ssi.h
-> +++ b/include/hw/ssi/ssi.h
-> @@ -66,8 +66,6 @@ struct SSISlave {
->      bool cs;
->  };
->
-> -#define FROM_SSI_SLAVE(type, dev) DO_UPCAST(type, ssidev, dev)
-> -
->  extern const VMStateDescription vmstate_ssi_slave;
->
->  #define VMSTATE_SSI_SLAVE(_field, _state) {                          \
-> diff --git a/hw/arm/z2.c b/hw/arm/z2.c
-> index a0f40959904..e1f22f58681 100644
-> --- a/hw/arm/z2.c
-> +++ b/hw/arm/z2.c
-> @@ -111,9 +111,12 @@ typedef struct {
->      int pos;
->  } ZipitLCD;
->
-> +#define TYPE_ZIPIT_LCD "zipit-lcd"
-> +#define ZIPIT_LCD(obj) OBJECT_CHECK(ZipitLCD, (obj), TYPE_ZIPIT_LCD)
-> +
->  static uint32_t zipit_lcd_transfer(SSISlave *dev, uint32_t value)
->  {
-> -    ZipitLCD *z = FROM_SSI_SLAVE(ZipitLCD, dev);
-> +    ZipitLCD *z = ZIPIT_LCD(dev);
->      uint16_t val;
->      if (z->selected) {
->          z->buf[z->pos] = value & 0xff;
-> @@ -153,7 +156,7 @@ static void z2_lcd_cs(void *opaque, int line, int level)
->
->  static void zipit_lcd_realize(SSISlave *dev, Error **errp)
->  {
-> -    ZipitLCD *z = FROM_SSI_SLAVE(ZipitLCD, dev);
-> +    ZipitLCD *z = ZIPIT_LCD(dev);
->      z->selected = 0;
->      z->enabled = 0;
->      z->pos = 0;
-> @@ -185,7 +188,7 @@ static void zipit_lcd_class_init(ObjectClass *klass, void *data)
->  }
->
->  static const TypeInfo zipit_lcd_info = {
-> -    .name          = "zipit-lcd",
-> +    .name          = TYPE_ZIPIT_LCD,
->      .parent        = TYPE_SSI_SLAVE,
->      .instance_size = sizeof(ZipitLCD),
->      .class_init    = zipit_lcd_class_init,
-> @@ -325,7 +328,7 @@ static void z2_init(MachineState *machine)
->
->      type_register_static(&zipit_lcd_info);
->      type_register_static(&aer915_info);
-> -    z2_lcd = ssi_create_slave(mpu->ssp[1], "zipit-lcd");
-> +    z2_lcd = ssi_create_slave(mpu->ssp[1], TYPE_ZIPIT_LCD);
->      bus = pxa2xx_i2c_bus(mpu->i2c[0]);
->      i2c_create_slave(bus, TYPE_AER915, 0x55);
->      wm = i2c_create_slave(bus, TYPE_WM8750, 0x1b);
-> diff --git a/hw/display/ads7846.c b/hw/display/ads7846.c
-> index 9228b40b1af..56bf82fe079 100644
-> --- a/hw/display/ads7846.c
-> +++ b/hw/display/ads7846.c
-> @@ -29,6 +29,9 @@ typedef struct {
->      int output;
->  } ADS7846State;
->
-> +#define TYPE_ADS7846 "ads7846"
-> +#define ADS7846(obj) OBJECT_CHECK(ADS7846State, (obj), TYPE_ADS7846)
-> +
->  /* Control-byte bitfields */
->  #define CB_PD0         (1 << 0)
->  #define CB_PD1         (1 << 1)
-> @@ -61,7 +64,7 @@ static void ads7846_int_update(ADS7846State *s)
->
->  static uint32_t ads7846_transfer(SSISlave *dev, uint32_t value)
->  {
-> -    ADS7846State *s = FROM_SSI_SLAVE(ADS7846State, dev);
-> +    ADS7846State *s = ADS7846(dev);
->
->      switch (s->cycle ++) {
->      case 0:
-> @@ -139,7 +142,7 @@ static const VMStateDescription vmstate_ads7846 = {
->  static void ads7846_realize(SSISlave *d, Error **errp)
->  {
->      DeviceState *dev = DEVICE(d);
-> -    ADS7846State *s = FROM_SSI_SLAVE(ADS7846State, d);
-> +    ADS7846State *s = ADS7846(d);
->
->      qdev_init_gpio_out(dev, &s->interrupt, 1);
->
-> @@ -166,7 +169,7 @@ static void ads7846_class_init(ObjectClass *klass, void *data)
->  }
->
->  static const TypeInfo ads7846_info = {
-> -    .name          = "ads7846",
-> +    .name          = TYPE_ADS7846,
->      .parent        = TYPE_SSI_SLAVE,
->      .instance_size = sizeof(ADS7846State),
->      .class_init    = ads7846_class_init,
-> diff --git a/hw/display/ssd0323.c b/hw/display/ssd0323.c
-> index c3bdb18742c..32d27f008ae 100644
-> --- a/hw/display/ssd0323.c
-> +++ b/hw/display/ssd0323.c
-> @@ -66,9 +66,13 @@ typedef struct {
->      uint8_t framebuffer[128 * 80 / 2];
->  } ssd0323_state;
->
-> +#define TYPE_SSD0323 "ssd0323"
-> +#define SSD0323(obj) OBJECT_CHECK(ssd0323_state, (obj), TYPE_SSD0323)
-> +
-> +
->  static uint32_t ssd0323_transfer(SSISlave *dev, uint32_t data)
->  {
-> -    ssd0323_state *s = FROM_SSI_SLAVE(ssd0323_state, dev);
-> +    ssd0323_state *s = SSD0323(dev);
->
->      switch (s->mode) {
->      case SSD0323_DATA:
-> @@ -346,7 +350,7 @@ static const GraphicHwOps ssd0323_ops = {
->  static void ssd0323_realize(SSISlave *d, Error **errp)
->  {
->      DeviceState *dev = DEVICE(d);
-> -    ssd0323_state *s = FROM_SSI_SLAVE(ssd0323_state, d);
-> +    ssd0323_state *s = SSD0323(d);
->
->      s->col_end = 63;
->      s->row_end = 79;
-> @@ -368,7 +372,7 @@ static void ssd0323_class_init(ObjectClass *klass, void *data)
->  }
->
->  static const TypeInfo ssd0323_info = {
-> -    .name          = "ssd0323",
-> +    .name          = TYPE_SSD0323,
->      .parent        = TYPE_SSI_SLAVE,
->      .instance_size = sizeof(ssd0323_state),
->      .class_init    = ssd0323_class_init,
-> diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
-> index 25cec2ddeaa..25cdf4c966d 100644
-> --- a/hw/sd/ssi-sd.c
-> +++ b/hw/sd/ssi-sd.c
-> @@ -74,7 +74,7 @@ typedef struct {
->
->  static uint32_t ssi_sd_transfer(SSISlave *dev, uint32_t val)
->  {
-> -    ssi_sd_state *s = FROM_SSI_SLAVE(ssi_sd_state, dev);
-> +    ssi_sd_state *s = SSI_SD(dev);
->
->      /* Special case: allow CMD12 (STOP TRANSMISSION) while reading data.  */
->      if (s->mode == SSI_SD_DATA_READ && val == 0x4d) {
-> @@ -241,7 +241,7 @@ static const VMStateDescription vmstate_ssi_sd = {
->
->  static void ssi_sd_realize(SSISlave *d, Error **errp)
->  {
-> -    ssi_sd_state *s = FROM_SSI_SLAVE(ssi_sd_state, d);
-> +    ssi_sd_state *s = SSI_SD(d);
->      DeviceState *carddev;
->      DriveInfo *dinfo;
->      Error *err = NULL;
-> --
-> 2.20.1
->
->
+Thanks
+
+Eric
+
+> 
+>  hw/arm/virt-acpi-build.c                    |   5 ++++-
+>  hw/arm/virt.c                               |   3 +++
+>  include/hw/arm/virt.h                       |   1 +
+>  tests/data/acpi/virt/DSDT                   | Bin 5307 -> 5205 bytes
+>  tests/data/acpi/virt/DSDT.memhp             | Bin 6668 -> 6566 bytes
+>  tests/data/acpi/virt/DSDT.numamem           | Bin 5307 -> 5205 bytes
+>  tests/qtest/bios-tables-test-allowed-diff.h |  18 ------------------
+>  7 files changed, 8 insertions(+), 19 deletions(-)
+> 
+

@@ -1,105 +1,96 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1774983lfm;
-        Thu, 2 Jul 2020 12:26:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwROYGVHhsJkD+R2koR2WIgeIB4yipm+N5Yj0WgfNmQ2UR0cDqu1WbmrATQod1GkTaetkF/
-X-Received: by 2002:a25:a08c:: with SMTP id y12mr50261272ybh.259.1593717997998;
-        Thu, 02 Jul 2020 12:26:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593717997; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1836033lfm;
+        Thu, 2 Jul 2020 13:49:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwO4liuEt8Lifpn9+ZwO+8A1QPDLqK0UbICokcLdDWP4WFy6LmCsqBBJ4A4bW5Npif96+ie
+X-Received: by 2002:a25:73d7:: with SMTP id o206mr46324194ybc.99.1593722972312;
+        Thu, 02 Jul 2020 13:49:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593722972; cv=none;
         d=google.com; s=arc-20160816;
-        b=KnUAyQN1yW4LGMWWq3IdXo3LuiiFoOspFI6tFBb686wk9DFByrkQ5NWo6ZRm0V346G
-         nzplPF3rEoV1+bV4aPzMuMvNRbs0XDZ/luTcECTzOzBYQGSIaNFQDCmgpKvuHZSh2Q3c
-         fmz5IYGYK1UxIXnKb1liowFrQA+dx4QbWnIbSjH2JPp+nHgWNmWjCiTeXUZJax+a/BI8
-         rp8k+CtD1JztBX+09qShmsaY3A3tZKfFi8NDSZ1L5Ta3QzKf3OrS1Z0pYYeJeqK3RSpA
-         Ih54rhtJZOyM/bViGQc1ca1FE9SW40mNtkjANA4F77L1WVUYrFU1Si9X3I6JmMRbvmjd
-         c7IQ==
+        b=RVk1ZabQ8ARYIsGm6ie05NdWDi5UUsUeb4FA9NWmyX2xORnI57gHDtZejFjNaQvikf
+         OItPOJS2f5oTQhzi6w4yTkk9wZw7mFe4Hj7vauxxa56Tan4ZGT4XzN+XpLup3mM/nGh0
+         cux6mfJJNKHyWIehpeVLFKTL2zFKj6E+84mjboGJqs4Em9QaF/iYmYdwPVR2JMMGEbBd
+         PM0a4x9XMBxSeQMV5+5b0JITCFjACr8mDPEJkLYTItvpOxlSZir/atwTOwDf5ohKyPMF
+         DAen0L7WaFTylBkmMHRn6u7VKGI5TwnU4NTzYh+/l6UllxgaArcLcZVqSeKawp+MPQuU
+         UO+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=h+kkp0glMQKAXMJ6/bC36ZxkMzJectPPpL5LAdpf9ms=;
-        b=mi0Uyf0FDu5Ri51aXr8z3KNE2ZsD0CyFK5fjeu+O5mKQfTPx7GlAdzlxh1EnCgeY/l
-         A+59XCFAM8CKfadGPORAUrkhROxKp5wcrAEsYZ9OBNfvw4duaogm7DbsCnros0PyEvz8
-         4j6mGzYnw54qsbHMBdX06D98DlY46BDtZV4PtbKUzfC7kRQ8cRholZ+x1xVOAtF/G7aV
-         eINUpsAVOWDINLzXKtWlrmXMTCXoIPu8k0sx5kXLUafuik7dVBMlnTogATGDv/fCK/NL
-         d01TteJUkR99cV5H2816J5pvXTkYze0keLyL4kjgAyqy8SLpWC+4XUUiBhimZNAwJv1S
-         se6g==
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=d/4SzrO51wLCoiHfnRNqtnLD968Kuwi1FHNsO/et+5g=;
+        b=bPh1AKDJR7oSrA+MekShvRuQRISpAGfjPbGYIJCEBvCp20qD/L8hLi22HmjG5NVHTV
+         GJ1SuEjT2FZIulrVHpvsiqj+69uJDFInXuFqIGdv4gWCyTWtwCnpm86xUrJot5baWVVn
+         4vWdwO/SVFPv1/WqoALOzjEW4Im2Cp6qbaT9k98iglu2Is6ashIjPDcc/xqd9RWfUegq
+         kRJ/8TQhymrcfXis7sDVzNUZtBg4mz1Okh5flfI7PRBwHqqjtkBgbON/V0CT7FXmxkKo
+         p+N30KNf50hFpUTgrWs178mdBfbYafJVFtHYEcUcd9EriiyYuvbHht5BSxYGt2Rok3rz
+         i3qg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="G21kdh9/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ApG6gQjj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t15si9521318ybi.228.2020.07.02.12.26.37
+        by mx.google.com with ESMTPS id v11si9669104ybm.450.2020.07.02.13.49.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jul 2020 12:26:37 -0700 (PDT)
+        Thu, 02 Jul 2020 13:49:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="G21kdh9/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ApG6gQjj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39672 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58214 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jr4qz-0001VD-Do
-	for alex.bennee@linaro.org; Thu, 02 Jul 2020 15:26:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47868)
+	id 1jr69D-0004Do-GA
+	for alex.bennee@linaro.org; Thu, 02 Jul 2020 16:49:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54522)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jr4qq-0001Tb-JO
- for qemu-arm@nongnu.org; Thu, 02 Jul 2020 15:26:28 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:55038
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jr692-0004CF-Ru
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 16:49:20 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:46808
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jr4qo-0006BZ-8Y
- for qemu-arm@nongnu.org; Thu, 02 Jul 2020 15:26:28 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jr690-0003X1-1g
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 16:49:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593717980;
+ s=mimecast20190719; t=1593722957;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=h+kkp0glMQKAXMJ6/bC36ZxkMzJectPPpL5LAdpf9ms=;
- b=G21kdh9//s4wHpvkWrOdnm8ElCpYhoi/I1ySqiUZbAKy5sFDVJz8tV3d0IfChN/E6aILvb
- OeclF17NDHhJnawDTkONRfIt95/bmRUOoM495xhDz0lDhQprLOeXqjvHncQW1JMrrGE8Vh
- gskpWRuHPmdjmGgkIigyYMQEmMZfiEE=
+ to:to:cc:cc:content-type:content-type:in-reply-to:in-reply-to:
+ references:references; bh=d/4SzrO51wLCoiHfnRNqtnLD968Kuwi1FHNsO/et+5g=;
+ b=ApG6gQjj/EKZfgn3m7MmdnanCqhTogtwg1U63FmC/dMZqG0zGDFV14Y3V0oY15UF2gy87k
+ hLUEZ7OKuCY6QyVk4dn7zg47LZhpV6syOeutjW8yoYS8WLcqS9Jeok1GaHKmf+ZGzp8O8Z
+ y2+cSCiZfj/fpXTyYaAcCQZf/EJmtPY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-160-cS6ilCO-OF-CB6j5O0CnyA-1; Thu, 02 Jul 2020 15:26:18 -0400
-X-MC-Unique: cS6ilCO-OF-CB6j5O0CnyA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-291-wwrqCUHTP7Wol-GABUN_bg-1; Thu, 02 Jul 2020 16:49:13 -0400
+X-MC-Unique: wwrqCUHTP7Wol-GABUN_bg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 45D84804001;
- Thu,  2 Jul 2020 19:26:17 +0000 (UTC)
-Received: from [10.36.112.70] (ovpn-112-70.ams2.redhat.com [10.36.112.70])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 85918100164D;
- Thu,  2 Jul 2020 19:26:08 +0000 (UTC)
-Subject: Re: [PATCH 0/4] hw/arm/virt-acpi-build: Only expose flash on older
- machine types
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-References: <20200629140938.17566-1-drjones@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <c31ed07d-33e3-2233-43ec-e320cc2180b3@redhat.com>
-Date: Thu, 2 Jul 2020 21:26:06 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
-MIME-Version: 1.0
-In-Reply-To: <20200629140938.17566-1-drjones@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5395A800402;
+ Thu,  2 Jul 2020 20:49:12 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-112-62.ams2.redhat.com
+ [10.36.112.62])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B33DB5C1D0;
+ Thu,  2 Jul 2020 20:49:05 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id C8E83204AE; Thu,  2 Jul 2020 22:48:59 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v4 01/21] microvm: name qboot binary qboot.rom
+Date: Thu,  2 Jul 2020 22:48:39 +0200
+Message-Id: <20200702204859.9876-2-kraxel@redhat.com>
+In-Reply-To: <20200702204859.9876-1-kraxel@redhat.com>
+References: <20200702204859.9876-1-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.120;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 04:00:43
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 04:18:28
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -120,49 +111,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, philmd@redhat.com,
- shannon.zhaosl@gmail.com, ard.biesheuvel@arm.com, imammedo@redhat.com,
- lersek@redhat.com
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: epSPtKuiCT74
+X-TUID: SMQEqEwmQ+T9
 
-Hi Drew,
+qboot isn't a bios and shouldnt be named that way.
 
-On 6/29/20 4:09 PM, Andrew Jones wrote:
-> The flash device is exclusively for the host-controlled firmware, so
-> we should not expose it to the OS. Exposing it risks the OS messing
-> with it, which could break firmware runtime services and surprise the
-> OS when all its changes disappear after reboot.
-> 
-> This change was suggested by Ard and Laszlo.
-> 
-> Patch 3/4 is the meat. The other patches deal with updating qtest.
-> 
-> Thanks,
-> drew
-> 
-> Andrew Jones (4):
->   tests/acpi: remove stale allowed tables
->   tests/acpi: virt: allow DSDT acpi table changes
->   hw/arm/virt-acpi-build: Only expose flash on older machine types
->   tests/acpi: virt: update golden masters for DSDT
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ hw/i386/microvm.c                       |   4 ++--
+ pc-bios/{bios-microvm.bin => qboot.rom} | Bin
+ roms/Makefile                           |   6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+ rename pc-bios/{bios-microvm.bin => qboot.rom} (100%)
 
-SERIES:
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Thanks
-
-Eric
-
-> 
->  hw/arm/virt-acpi-build.c                    |   5 ++++-
->  hw/arm/virt.c                               |   3 +++
->  include/hw/arm/virt.h                       |   1 +
->  tests/data/acpi/virt/DSDT                   | Bin 5307 -> 5205 bytes
->  tests/data/acpi/virt/DSDT.memhp             | Bin 6668 -> 6566 bytes
->  tests/data/acpi/virt/DSDT.numamem           | Bin 5307 -> 5205 bytes
->  tests/qtest/bios-tables-test-allowed-diff.h |  18 ------------------
->  7 files changed, 8 insertions(+), 19 deletions(-)
-> 
+diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
+index 5e931975a06d..1300c396947b 100644
+--- a/hw/i386/microvm.c
++++ b/hw/i386/microvm.c
+@@ -47,7 +47,7 @@
+ #include "kvm_i386.h"
+ #include "hw/xen/start_info.h"
+ 
+-#define MICROVM_BIOS_FILENAME "bios-microvm.bin"
++#define MICROVM_QBOOT_FILENAME "qboot.rom"
+ 
+ static void microvm_set_rtc(MicrovmMachineState *mms, ISADevice *s)
+ {
+@@ -158,7 +158,7 @@ static void microvm_devices_init(MicrovmMachineState *mms)
+     }
+ 
+     if (bios_name == NULL) {
+-        bios_name = MICROVM_BIOS_FILENAME;
++        bios_name = MICROVM_QBOOT_FILENAME;
+     }
+     x86_bios_rom_init(get_system_memory(), true);
+ }
+diff --git a/pc-bios/bios-microvm.bin b/pc-bios/qboot.rom
+similarity index 100%
+rename from pc-bios/bios-microvm.bin
+rename to pc-bios/qboot.rom
+diff --git a/roms/Makefile b/roms/Makefile
+index f9acf39954dc..b185c880541c 100644
+--- a/roms/Makefile
++++ b/roms/Makefile
+@@ -68,7 +68,7 @@ default help:
+ 	@echo "  opensbi64-virt     -- update OpenSBI for 64-bit virt machine"
+ 	@echo "  opensbi32-sifive_u -- update OpenSBI for 32-bit sifive_u machine"
+ 	@echo "  opensbi64-sifive_u -- update OpenSBI for 64-bit sifive_u machine"
+-	@echo "  bios-microvm       -- update bios-microvm.bin (qboot)"
++	@echo "  qboot              -- update qboot"
+ 	@echo "  clean              -- delete the files generated by the previous" \
+ 	                              "build targets"
+ 
+@@ -194,9 +194,9 @@ opensbi64-sifive_u:
+ 		PLATFORM="sifive/fu540"
+ 	cp opensbi/build/platform/sifive/fu540/firmware/fw_jump.bin ../pc-bios/opensbi-riscv64-sifive_u-fw_jump.bin
+ 
+-bios-microvm:
++qboot:
+ 	$(MAKE) -C qboot
+-	cp qboot/bios.bin ../pc-bios/bios-microvm.bin
++	cp qboot/bios.bin ../pc-bios/qboot.rom
+ 
+ clean:
+ 	rm -rf seabios/.config seabios/out seabios/builds
+-- 
+2.18.4
 

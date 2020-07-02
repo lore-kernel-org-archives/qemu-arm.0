@@ -1,88 +1,88 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1589789lfm;
-        Thu, 2 Jul 2020 08:31:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwe+ZJ5aIdKt1X6/HWTXiZPcUKmgUI8H8CUWO4jMdn2s8tFBFbhLXJc7NY7Mir/zINK6But
-X-Received: by 2002:a67:8a4a:: with SMTP id m71mr16780529vsd.59.1593703912891;
-        Thu, 02 Jul 2020 08:31:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593703912; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1590866lfm;
+        Thu, 2 Jul 2020 08:33:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzheUL1L6eVDNs/GxlX+/f/2kxt/h+1CFMiJUNEG8xVAcDxrgm8/2mjWv//p5C/4RpNntGY
+X-Received: by 2002:ac8:44d6:: with SMTP id b22mr31635990qto.391.1593703984170;
+        Thu, 02 Jul 2020 08:33:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593703984; cv=none;
         d=google.com; s=arc-20160816;
-        b=qSoudvkhyVOGn5ZWKiyj/T2UBrYPb8mnzGed4xuBefX4orpQdqe0kUTCYBzQNbzjH3
-         aUidrRPRxM+q6E5JX8I42WB0dl5Ka3eNs2RfNjXHDxAaU/XCyI1bKewMRMdPCZKZKRQq
-         EypngOSqQoX+/6H0caW/8MIyhApuq0iMWQJSFY7Q29r2ccukfwOO7XfrmugKxEbWdNMe
-         ikneoJ0fBUoTS/ynRnQ+a0WnRUJ3q5XNBn0SzrjYYaY2FfLgG+eMcQ3zr2Hy+MjWnDme
-         S1XEk6CliA4wllGDEJd5tCjS0msT8IJbeRcI+BRCrrHtBxKnMT5OnNUF2DK5axULASIt
-         Yo7g==
+        b=AA5NI+8hyimuMB/IEy4v+il3dXHNJioP5Z5uQODQSDYi+msuqmwubWk205Qoe1v2H2
+         WpY/8tKch2oo162cf95UOxuzrS5/UbKMA6StpKJWQ+KcZu3BFigdIC56npLDkoPe3+ij
+         IyH9kvwMDf2yE9sqm8W56J0G9KLWHBfxh6pYHBmQ5SvwFyaM90bkiaDMx/I6T0v2we7r
+         7rgaxtDEUCoK0wFUwjNMiu/VRxwEEtFxD0NeQSjZn3qWbgaRVHTUvGGAEj+ldxSIdFLS
+         cy1FnDHDuByGP8tlSmWe/8Smh1ceq+GHXN+TgE06gEMRCgvtqaS9nWAzUm1SheVT5iDD
+         ZWWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=C4qLqUFnjHc7wzCPN/LQ1XBPh1dVzrlm59KIf9UKpNI=;
-        b=vTq+uzLCJvwSoPn7FAVD2aeuyTqM+PSz5gth1fVLTbMgdbkFleQLMHFZ1kw35s14xg
-         KvWMfmlKW/ajNRc1PFKHrP6G1Xn08B8ITjCktFLks5ClSSu89qyCmbXoSzNv51o9rLNe
-         cT1nBtYhQF/ILyPw5ccSL/Mm2GlvIjhVmmzNvYfZlfMPkNitYc/vLBquEW3qLLUzpP0F
-         exPC0GIKUx9bhsb77xMbeF65zGOEe5zYCn6n9sgemv6GWs7OAKQ3NE8jw4bAybbW++b7
-         jKZ3u0n/qwYi22otVzpqxtp4PHbNJmtnnNTEOkEgutnFcf3Nlgt2R0rwMxIE8tGvEqrk
-         W5UA==
+        bh=S3NFNYSrX7syMo104tWcXIgZ34cLFK5JYwxiQJRSUHU=;
+        b=GROIVA1bSx3R980HX331WmOLcTBD0A/Km4q+jA4/k1uh2amrtBh/+emsrB3w76zhIC
+         +zMRAEcWfU4j4wBU0VKY+eKUbZZeH+8RPDfV7pEz16QqqSONSQ/goWJmu1GPkTfcWgYF
+         uI7eXQ/cMZjep8vnKS7BPqNC2K9XHbxgYUP8SWfS8tQ2ouL1NbnSINEGHvtTGr10ikwP
+         QHrUJek8bSr8orX4/v3JXgE9oAzzKmmkzQVsRFH85OmhGCufhJPgMUaOSQMEXa1D07j4
+         GPyyKZ0sfCkZvEigQqJMRsdDfJY3HyCwy2d/3BoK1cNhanxtZFZcdQ1Hm8YCSKzeH1uD
+         FP0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SDrJineX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b+lRJs8A;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d23si1330809vsj.390.2020.07.02.08.31.52
+        by mx.google.com with ESMTPS id m50si4591891qtk.218.2020.07.02.08.33.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jul 2020 08:31:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Jul 2020 08:33:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SDrJineX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=b+lRJs8A;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57394 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35732 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jr1Bo-0006rB-5v
-	for alex.bennee@linaro.org; Thu, 02 Jul 2020 11:31:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43466)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jr1Cx-0001Id-Bh
+	for alex.bennee@linaro.org; Thu, 02 Jul 2020 11:33:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43424)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jr17r-0001Md-R9
- for qemu-devel@nongnu.org; Thu, 02 Jul 2020 11:27:47 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:42060
+ id 1jr17o-0001EH-N2
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 11:27:44 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:27213
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jr17q-0006QX-8U
- for qemu-devel@nongnu.org; Thu, 02 Jul 2020 11:27:47 -0400
+ id 1jr17m-0006OX-SX
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 11:27:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593703665;
+ s=mimecast20190719; t=1593703662;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=C4qLqUFnjHc7wzCPN/LQ1XBPh1dVzrlm59KIf9UKpNI=;
- b=SDrJineXFohaQ+QDJKOmPCqatbLBhI1sOIjZR0s6geUTq8Pnkp8s83Wg1Ld+o34+yBiY+M
- CLBz1cMj1C3Qj42KV0BScTJTFokS/PXlot+PVHV6D4UoC5/O7guK/GJPfsXbB3TsgulBJ2
- 3q907M7XPZS/5BX4pFXDJBg1+NmWljw=
+ bh=S3NFNYSrX7syMo104tWcXIgZ34cLFK5JYwxiQJRSUHU=;
+ b=b+lRJs8A7L0QFNZLab0v7olaqFPPNv0UWuEg6DfEU1GEKAfHQd7/E1xg2KdK+dg31j3mcz
+ hep0ZmHMNKfQ+xBj0ApW5a8L/gUhRjIIESgk4UP/oePVuzXnN9ECvaMUjz1fLGI5RTqkKi
+ +stRuw/hattmbtwKaj0ETC/YrJYi//I=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-429-SOYhJYvxPsO4tZsivXU2sw-1; Thu, 02 Jul 2020 11:27:42 -0400
-X-MC-Unique: SOYhJYvxPsO4tZsivXU2sw-1
+ us-mta-295-XpmiJm--NoWvDCE3vSfOoA-1; Thu, 02 Jul 2020 11:27:38 -0400
+X-MC-Unique: XpmiJm--NoWvDCE3vSfOoA-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2127A8CA88B;
- Thu,  2 Jul 2020 15:27:40 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D7C1C10059B4;
+ Thu,  2 Jul 2020 15:27:36 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-70.ams2.redhat.com [10.36.112.70])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 394B15DC1E;
- Thu,  2 Jul 2020 15:27:37 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2070F5DD61;
+ Thu,  2 Jul 2020 15:27:24 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, peterx@redhat.com
-Subject: [PATCH v2 4/9] hw/arm/smmu: Simplify the IOTLB key format
-Date: Thu,  2 Jul 2020 17:26:54 +0200
-Message-Id: <20200702152659.8522-5-eric.auger@redhat.com>
+Subject: [PATCH v2 3/9] hw/arm/smmu: Introduce smmu_get_iotlb_key()
+Date: Thu,  2 Jul 2020 17:26:53 +0200
+Message-Id: <20200702152659.8522-4-eric.auger@redhat.com>
 In-Reply-To: <20200702152659.8522-1-eric.auger@redhat.com>
 References: <20200702152659.8522-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -105,81 +105,141 @@ X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: jean-philippe@linaro.org, robh@kernel.org, robin.murphy@arm.com,
  mst@redhat.com, zhangfei.gao@foxmail.com, shameerali.kolothum.thodi@huawei.com,
  will@kernel.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j2u9EEI6MLo3
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: b/HmOGUiG181
 
-Instead of using a Jenkins hash function to generate
-the key let's just use a 64 bit unsigned integer that
-contains the asid and the 40 upper bits of the iova.
-A maximum of 52-bit IOVA is supported. This change in the
-key format also prepares for the addition of new fields
-in subsequent patches (granule and level).
+Introduce the smmu_get_iotlb_key() helper and the
+SMMU_IOTLB_ASID() macro. Also move smmu_get_iotlb_key and
+smmu_iotlb_key_hash in the IOTLB related code section.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
 
 v1 -> v2:
-- split the inital patch into 2 patches and keep SMMUIOTLBKey type
+- creation
 ---
- hw/arm/smmu-internal.h       |  5 ++++-
- include/hw/arm/smmu-common.h |  5 +----
- hw/arm/smmu-common.c         | 23 +++--------------------
- 3 files changed, 8 insertions(+), 25 deletions(-)
+ hw/arm/smmu-internal.h       |  1 +
+ include/hw/arm/smmu-common.h |  1 +
+ hw/arm/smmu-common.c         | 66 ++++++++++++++++++++----------------
+ 3 files changed, 38 insertions(+), 30 deletions(-)
 
 diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
-index 3104f768cd..2ecb6f1dc6 100644
+index 7794d6d394..3104f768cd 100644
 --- a/hw/arm/smmu-internal.h
 +++ b/hw/arm/smmu-internal.h
-@@ -96,5 +96,8 @@ uint64_t iova_level_offset(uint64_t iova, int inputsize,
+@@ -96,4 +96,5 @@ uint64_t iova_level_offset(uint64_t iova, int inputsize,
              MAKE_64BIT_MASK(0, gsz - 3);
  }
  
--#define SMMU_IOTLB_ASID(key) ((key).asid)
-+#define SMMU_IOTLB_ASID_SHIFT  40
-+
-+#define SMMU_IOTLB_ASID(key) (((key) >> SMMU_IOTLB_ASID_SHIFT) & 0xFFFF)
-+#define SMMU_IOTLB_IOVA(key) (((key) & MAKE_64BIT_MASK(0, 40)) << 12)
++#define SMMU_IOTLB_ASID(key) ((key).asid)
  #endif
 diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index 5f9f3535d2..455d7855b2 100644
+index 1dceec5cb1..5f9f3535d2 100644
 --- a/include/hw/arm/smmu-common.h
 +++ b/include/hw/arm/smmu-common.h
-@@ -88,10 +88,7 @@ typedef struct SMMUPciBus {
-     SMMUDevice   *pbdev[]; /* Parent array is sparse, so dynamically alloc */
- } SMMUPciBus;
+@@ -155,6 +155,7 @@ IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid);
  
--typedef struct SMMUIOTLBKey {
--    uint64_t iova;
--    uint16_t asid;
--} SMMUIOTLBKey;
-+ typedef uint64_t SMMUIOTLBKey;
- 
- typedef struct SMMUState {
-     /* <private> */
+ IOMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg, hwaddr iova);
+ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, IOMMUTLBEntry *entry);
++SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint64_t iova);
+ void smmu_iotlb_inv_all(SMMUState *s);
+ void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid);
+ void smmu_iotlb_inv_iova(SMMUState *s, uint16_t asid, dma_addr_t iova);
 diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 7dc8541e8b..5e85e30bdf 100644
+index f3aa581f80..7dc8541e8b 100644
 --- a/hw/arm/smmu-common.c
 +++ b/hw/arm/smmu-common.c
-@@ -34,34 +34,17 @@
+@@ -32,10 +32,42 @@
  
- static guint smmu_iotlb_key_hash(gconstpointer v)
+ /* IOTLB Management */
+ 
++static guint smmu_iotlb_key_hash(gconstpointer v)
++{
++    SMMUIOTLBKey *key = (SMMUIOTLBKey *)v;
++    uint32_t a, b, c;
++
++    /* Jenkins hash */
++    a = b = c = JHASH_INITVAL + sizeof(*key);
++    a += key->asid;
++    b += extract64(key->iova, 0, 32);
++    c += extract64(key->iova, 32, 32);
++
++    __jhash_mix(a, b, c);
++    __jhash_final(a, b, c);
++
++    return c;
++}
++
++static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
++{
++    const SMMUIOTLBKey *k1 = v1;
++    const SMMUIOTLBKey *k2 = v2;
++
++    return (k1->asid == k2->asid) && (k1->iova == k2->iova);
++}
++
++SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint64_t iova)
++{
++    SMMUIOTLBKey key = {.asid = asid, .iova = iova};
++
++    return key;
++}
++
+ IOMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+                                  hwaddr iova)
  {
+-    SMMUIOTLBKey key = {.asid = cfg->asid, .iova = iova};
++    SMMUIOTLBKey key = smmu_get_iotlb_key(cfg->asid, iova);
+     IOMMUTLBEntry *entry = g_hash_table_lookup(bs->iotlb, &key);
+ 
+     if (entry) {
+@@ -62,8 +94,7 @@ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, IOMMUTLBEntry *entry)
+         smmu_iotlb_inv_all(bs);
+     }
+ 
+-    key->asid = cfg->asid;
+-    key->iova = entry->iova;
++    *key = smmu_get_iotlb_key(cfg->asid, entry->iova);
+     trace_smmu_iotlb_insert(cfg->asid, entry->iova);
+     g_hash_table_insert(bs->iotlb, key, entry);
+ }
+@@ -80,12 +111,12 @@ static gboolean smmu_hash_remove_by_asid(gpointer key, gpointer value,
+     uint16_t asid = *(uint16_t *)user_data;
+     SMMUIOTLBKey *iotlb_key = (SMMUIOTLBKey *)key;
+ 
+-    return iotlb_key->asid == asid;
++    return SMMU_IOTLB_ASID(*iotlb_key) == asid;
+ }
+ 
+ inline void smmu_iotlb_inv_iova(SMMUState *s, uint16_t asid, dma_addr_t iova)
+ {
+-    SMMUIOTLBKey key = {.asid = asid, .iova = iova};
++    SMMUIOTLBKey key = smmu_get_iotlb_key(asid, iova);
+ 
+     trace_smmu_iotlb_inv_iova(asid, iova);
+     g_hash_table_remove(s->iotlb, &key);
+@@ -383,31 +414,6 @@ IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid)
+     return NULL;
+ }
+ 
+-static guint smmu_iotlb_key_hash(gconstpointer v)
+-{
 -    SMMUIOTLBKey *key = (SMMUIOTLBKey *)v;
 -    uint32_t a, b, c;
 -
@@ -193,27 +253,19 @@ index 7dc8541e8b..5e85e30bdf 100644
 -    __jhash_final(a, b, c);
 -
 -    return c;
-+    return (guint)*(const uint64_t *)v;
- }
- 
- static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
- {
+-}
+-
+-static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
+-{
 -    const SMMUIOTLBKey *k1 = v1;
 -    const SMMUIOTLBKey *k2 = v2;
 -
 -    return (k1->asid == k2->asid) && (k1->iova == k2->iova);
-+    return *((const uint64_t *)v1) == *((const uint64_t *)v2);
- }
- 
- SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint64_t iova)
- {
--    SMMUIOTLBKey key = {.asid = asid, .iova = iova};
+-}
 -
--    return key;
-+    return iova >> 12 | (uint64_t)(asid) << SMMU_IOTLB_ASID_SHIFT;
- }
- 
- IOMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+ /* Unmap the whole notifier's range */
+ static void smmu_unmap_notifier_range(IOMMUNotifier *n)
+ {
 -- 
 2.21.3
 

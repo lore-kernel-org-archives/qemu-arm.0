@@ -1,101 +1,96 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1838303lfm;
-        Thu, 2 Jul 2020 13:53:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzCgacqCOQJ687PrHWkjcymryZRZURhhXv3a5Mycrsc5u9/B+rCAJsWd/yAHJc1Sg9/G1YL
-X-Received: by 2002:a25:c7d3:: with SMTP id w202mr37566181ybe.84.1593723187414;
-        Thu, 02 Jul 2020 13:53:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593723187; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1839238lfm;
+        Thu, 2 Jul 2020 13:54:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz4P3mzQxH3XSyEekHvcHh6XfpK5Vb+C00jsR4GcEKoDwjGWKtRSjiV0c6GRrmdx4bO+01T
+X-Received: by 2002:a25:df09:: with SMTP id w9mr39615580ybg.189.1593723286830;
+        Thu, 02 Jul 2020 13:54:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593723286; cv=none;
         d=google.com; s=arc-20160816;
-        b=orq01IgWa7LPeZhlLu/oIPzjdQ2BKPkpHW8aItakyJE+Yoym+4g0mAUU4FrAtPd5dO
-         IMfrg/vhAMoDhtBMmAgkOW+5SAUevdwvHMCqw9i34a2iCwE1zVY4piGPwhH0Dv5H1aP/
-         GQGXMvNBG41vItLT0r2w63VaJWSnwSMf3qOJXMjVa98JufARIAWTPnEjyJj7VNc5km/v
-         /czVrBLhwCeODyJWcb1dfYwwzGKk5TsYgfOicUqdeoNR4o3GoLdH8BJJ5NSfBW1re/Nm
-         gKnlrFWP0BOOzsguFLG9cC1MdMy6/SOsXUxXbYUVPe1IY1nFQVfysULysUYKALJr2jIY
-         EVsA==
+        b=iHw2O+TJnwPKZqvcIFfsT8kDHzQm1Mr8mcZ3bINx7YvQRvAiSI4FfSLZ6ElNSpHZ81
+         WzZe+jE4MRs1aITcwv9HfVR+uKJE5hL9fFNBcebhkUrGJ2fLRCa0vJMT0nVJ9cO281hd
+         nw6i8JtwNsNaCJMdK9NxdwKWTN38lyf1lh0fHyaWsicrxEJKHSoS5AOP+eD95dGzxaDL
+         jCjS1OnKLFBNamiHMezLuI4a1BwtOgMWYuF9feAC0HTtKmWvrHvcMyK1kp9zwUqkHFrO
+         tAs57EQ7zR0ObtXnpcHgwJyXaSfbjXpdePnS6sWj1n/UlB/EJVM3DEv0eDJt35io1qgx
+         m4eQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=7hw25PI/Oaktt4jt4bTRsaghMdLJdGNuxNjT6APB1vw=;
-        b=Q05fxybOfYkn7tBxX78kRXWnJrqmShv6+QiAHLBD7owTIcYCOuF/ArPk31oyhybbGs
-         UXVQq/9nOv8lMoOY3biV6Z+/XO5L2ZDEJs49edJtSb/tj6Lxx1mzuzrIHkgI2q8G1ddI
-         Jf22DQ22RC8WPLFBpiwk2Mn7yDYHvdNNUCNoqoJXxkV4RVsCm4AdJ1RHj1nce7MoKFRT
-         BDdueGrm1AwcFUWtZm798UiIlL6rpUQwZtZK/Bv2ZpY1tE65URCW6cUi8CkfzHdFrmSM
-         /ZmhnIgdBRgYTux+Hyas936UYFFx5aOl9F85nQ2n1bB8Yrw59nCUDdeL6SfGve17ALZr
-         T40g==
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=Jc3CkjMTS6eJgOpPYjcQtTYta9twaD8HtlqKoRcWa3g=;
+        b=Yb12lFZrblLl+V1dkTj2t9PB0qHhlFL2kvnnw//0Y2kJ4718213ALsOEHO5CflzDyL
+         iP10cKEchaSTkcakLDzUj7AOPyl/WdIO9vMYwSjadybp9YEA60z0F9oBhFSZKF6pi10X
+         EvFx1M6boP38R1W2wTaxU/x7y/aUfyujjYMro/puPPT+Hj6VXwjdbpmFkYUOccdPD8zH
+         mpvkxkUrKEYJcUKMDoOPB/TBV89WR8AR/+IGndJS30GZgGHJnu+/sFf2Qw+kRA8hOrnM
+         EkxAPaylPe40wegh9gkznyL+jZdHFXgD9+gmbl9PFFHqpf19G7uu2OuDoeKYfLIIbVuT
+         ThWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DzwIk+0R;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JvIugqFG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i188si9407633ybg.67.2020.07.02.13.53.07
+        by mx.google.com with ESMTPS id h29si2749576ybj.301.2020.07.02.13.54.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jul 2020 13:53:07 -0700 (PDT)
+        Thu, 02 Jul 2020 13:54:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DzwIk+0R;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JvIugqFG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44978 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49896 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jr6Cg-0002XP-OF
-	for alex.bennee@linaro.org; Thu, 02 Jul 2020 16:53:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54870)
+	id 1jr6EI-0004ff-56
+	for alex.bennee@linaro.org; Thu, 02 Jul 2020 16:54:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54708)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jr69G-0004kb-6N
- for qemu-arm@nongnu.org; Thu, 02 Jul 2020 16:49:34 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:40562
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jr69B-0004XG-PR
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 16:49:29 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:53402
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jr69B-0003a5-CT
- for qemu-arm@nongnu.org; Thu, 02 Jul 2020 16:49:33 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jr695-0003Yo-LU
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 16:49:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593722968;
+ s=mimecast20190719; t=1593722963;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7hw25PI/Oaktt4jt4bTRsaghMdLJdGNuxNjT6APB1vw=;
- b=DzwIk+0RWp85d8E1bfjVn3DrdP/fGcP1fYofQApsYsR4QaON+uSCR40E/v49hF4hSNrpDK
- iN56/Q3xVJQHcryu0JHsstkZlP8MiiemnxNn4JM+RWVsTWD8drR0aIrsF0piNNuEL9dlQA
- usMOZq0XBJCapiqyDRA/q68N/Uvyqcw=
+ to:to:cc:cc:content-type:content-type:in-reply-to:in-reply-to:
+ references:references; bh=Jc3CkjMTS6eJgOpPYjcQtTYta9twaD8HtlqKoRcWa3g=;
+ b=JvIugqFGHXbxpRAoq0asALCIX2XNUcCBgfzZMy/F+HnxZkr5rxBCdS61efGZteatfZ+sL4
+ Si/aGKFViNtD2i/TBOxSv4GVi2DhqY3Pmf0z7JYnKLCQI7lwH7296YoU+MW1ur6U40Bn04
+ I2INYePjgYeqlessSJThwrCe7ZafVxI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-180-xV_s93goMHWI71uvvIEKeA-1; Thu, 02 Jul 2020 16:49:26 -0400
-X-MC-Unique: xV_s93goMHWI71uvvIEKeA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-141-uJKbw7bFPWmuxLNoM8rbQA-1; Thu, 02 Jul 2020 16:49:19 -0400
+X-MC-Unique: uJKbw7bFPWmuxLNoM8rbQA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 849E6106B245;
- Thu,  2 Jul 2020 20:49:25 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1C693107ACF2;
+ Thu,  2 Jul 2020 20:49:18 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-62.ams2.redhat.com
  [10.36.112.62])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 825F8779EB;
- Thu,  2 Jul 2020 20:49:15 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A81361A928;
+ Thu,  2 Jul 2020 20:49:17 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 0C98531E87; Thu,  2 Jul 2020 22:49:00 +0200 (CEST)
+ id A9D4131F0A; Thu,  2 Jul 2020 22:49:00 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 06/21] acpi: move acpi_dsdt_add_power_button() to ged
-Date: Thu,  2 Jul 2020 22:48:44 +0200
-Message-Id: <20200702204859.9876-7-kraxel@redhat.com>
+Subject: [PATCH v4 20/21] tests/acpi: add microvm test
+Date: Thu,  2 Jul 2020 22:48:58 +0200
+Message-Id: <20200702204859.9876-21-kraxel@redhat.com>
 In-Reply-To: <20200702204859.9876-1-kraxel@redhat.com>
 References: <20200702204859.9876-1-kraxel@redhat.com>
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=kraxel@redhat.com;
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 03:42:59
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 04:18:28
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -126,68 +121,46 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8ne7S4BVEKX0
-
-Allow reuse for microvm.
+X-TUID: U/xXip0q28Rg
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- include/hw/acpi/generic_event_device.h | 1 +
- hw/acpi/generic_event_device.c         | 8 ++++++++
- hw/arm/virt-acpi-build.c               | 8 --------
- 3 files changed, 9 insertions(+), 8 deletions(-)
+ tests/qtest/bios-tables-test.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-index 9687cb524258..ebed1ffe4231 100644
---- a/include/hw/acpi/generic_event_device.h
-+++ b/include/hw/acpi/generic_event_device.h
-@@ -113,5 +113,6 @@ typedef struct AcpiGedState {
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index 24b715dce780..b5b98d5c0742 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -1007,6 +1007,20 @@ static void test_acpi_virt_tcg_memhp(void)
  
- void build_ged_aml(Aml *table, const char* name, HotplugHandler *hotplug_dev,
-                    uint32_t ged_irq, AmlRegionSpace rs, hwaddr ged_base);
-+void acpi_dsdt_add_power_button(Aml *scope);
- 
- #endif
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 491df80a5cc7..6df400e1ee16 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -142,6 +142,14 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
-     aml_append(table, dev);
  }
  
-+void acpi_dsdt_add_power_button(Aml *scope)
++static void test_acpi_microvm_tcg(void)
 +{
-+    Aml *dev = aml_device(ACPI_POWER_BUTTON_DEVICE);
-+    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0C0C")));
-+    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-+    aml_append(scope, dev);
++    test_data data;
++
++    memset(&data, 0, sizeof(data));
++    data.machine = "microvm";
++    data.required_struct_types = base_required_struct_types;
++    data.required_struct_types_len = ARRAY_SIZE(base_required_struct_types);
++    data.blkdev = "virtio-blk-device";
++    test_acpi_one(" -machine microvm,acpi=on,rtc=off",
++                  &data);
++    free_test_data(&data);
 +}
 +
- /* Memory read by the GED _EVT AML dynamic method */
- static uint64_t ged_evt_read(void *opaque, hwaddr addr, unsigned size)
+ static void test_acpi_virt_tcg_numamem(void)
  {
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 1384a2cf2ab4..852eb6484b0e 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -357,14 +357,6 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
-     aml_append(scope, dev);
- }
- 
--static void acpi_dsdt_add_power_button(Aml *scope)
--{
--    Aml *dev = aml_device(ACPI_POWER_BUTTON_DEVICE);
--    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0C0C")));
--    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
--    aml_append(scope, dev);
--}
--
- static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
- {
-     PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
+     test_data data = {
+@@ -1118,6 +1132,7 @@ int main(int argc, char *argv[])
+         qtest_add_func("acpi/q35/dimmpxm", test_acpi_q35_tcg_dimm_pxm);
+         qtest_add_func("acpi/piix4/acpihmat", test_acpi_piix4_tcg_acpi_hmat);
+         qtest_add_func("acpi/q35/acpihmat", test_acpi_q35_tcg_acpi_hmat);
++        qtest_add_func("acpi/microvm", test_acpi_microvm_tcg);
+     } else if (strcmp(arch, "aarch64") == 0) {
+         qtest_add_func("acpi/virt", test_acpi_virt_tcg);
+         qtest_add_func("acpi/virt/numamem", test_acpi_virt_tcg_numamem);
 -- 
 2.18.4
 

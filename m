@@ -1,80 +1,105 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp135849lfa;
-        Tue, 27 Oct 2020 21:22:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwddUuU+pwy4sv4MIgMJvED3zrD0Y6rFsMn3m57vkwStHRifCCZXRLfPE8usTWKdB8ZWHGH
-X-Received: by 2002:a37:e0e:: with SMTP id 14mr5501828qko.455.1603858961024;
-        Tue, 27 Oct 2020 21:22:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603858961; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1586026lfm;
+        Thu, 2 Jul 2020 08:27:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzGwmAxirJMVMj1uol9kfCya6JnnqVxMvfdym+PeYtuDV0p/HvH9NgSnbSlV/LB+uX/AniY
+X-Received: by 2002:a25:850b:: with SMTP id w11mr48984560ybk.291.1593703658685;
+        Thu, 02 Jul 2020 08:27:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593703658; cv=none;
         d=google.com; s=arc-20160816;
-        b=HyHJ7UOcrhuVOdEsMmLo7XY6XmPsjwSffhBQ+2Ipw82UCMsR9nmHblTHYsOP+Bt1nT
-         o8FSh8vIT6+Sy5aWpVCL7NIXCBX2+eB0U5ILz6lRjPuCXkuAC0/mplT+WVAZQgTJbXyv
-         +NQO+yRpGdbuP5/BIeP32URrHlIQ5CeHLlL/PFgCs65Uz+QH9YWCekwkszHBUPH55x0n
-         f5WWcA/e6R4lvPQER0TA7sGYMpI7yFIwYEEEyPb0vPTPMZxoFhCV3J0W6T9RK0UbHC4N
-         M1rZJ7nc9xWce7fZDio71QqbQOIc8V8O9XlMoURz78amvV86g4pb5sQc1NlKPBdT3GYe
-         Nz8A==
+        b=eQA/SdL3WLaHBKIm2pVP3Wbei6DPnBDKMWzEdGQSm+BI6n8mez0kTORRtQ1+bZyIBh
+         tDskGdprOgXJtRWVVsJxuQzibJC9DS+60szXryM/1J1+4cgSodtuPCa635GcSeJKi9CK
+         q5mhHknF5141AmdzqIQWxAstYgmu+NwMcQQKEhBvBruDR64H+Nj3iMOb6S1gubCkqTZB
+         SbTQBQ9k/dKfhd+wrNIM1sHKHSpEvgrnr4PxWUB/FE6yu6C/krsVAqtPmhgO9AxnRsJx
+         OJDPwXrYc6LscufPnupmLOZ0ysrtkQgvxk1a9L09aGdA9yK+GlQSaNwK2tT9lk1NyrEI
+         7owA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=iJ19WOixeyToGv4q8r6mviloAXq0ecBl+9C25Nrpi90=;
-        b=A2boc9zA0ZqLA/NA+M6NuIvG4zKNvomPrJOuPzhwmloWt6Feq21v7ECNXzp9kVmWPc
-         PZqSXHFIYilCXdVtGmst3J5WxxXufUgtiRrL0KFw3lKs8F0cF4FOC5B6yVxKTKanpW0d
-         HIv6mjoX+gdtKiBdJAFxg2doKeU9AcnSOCI84tB+wm3mDl1LVzpEI3mfsy9KhJ9G3vsS
-         4Hn2/9KU9fkG9zcWCvhjL1ty58p9MK7Skf3i+46eakhn9lll0C1yVZIbs9Zq1qjtR7jp
-         lME6u6RAJk2YN/sRmqZuD44K1J2JHIy5nQtcfqD6TaFLddI+tVJHyToCCSUb01B8TvM2
-         gHQw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=pNH4rf3+4G6SG1/frQNPuCp7RTYauZbpUm977EG7OfM=;
+        b=ysaA+we/mmcyGimoPaB6YdS5FtrOWH30RCsZsuqhGmfvOzLI2HoMUOybCH+r5pHScR
+         9/obC/uUKtqSFo4oOc1sOPLG6BM6wRZLbwDGGY/AFH179/R3s55vGHE3QMl4msRjUgEX
+         T9t7aTPzu3ifvu+ffoM6HmhwZOSPGMLlLVNf4+gLKDPIIWysrrLJut7zupCm3Mv7OOPj
+         Zhsva4haTY5pOg/V2HiBhJ/3SKwzu63NBJUDHa+SflOwGIZvGd2QAvFrZ+Sx2wbeXxL7
+         sJ5+CjNCcsq/NAsvsbPeVLOg5YPActRRfSELtniG+M0CrSLafA36tcjxF2FQj/eF/ziI
+         /M7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="cnxd/4wr";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h22si2295254qkn.270.2020.10.27.21.22.40
+        by mx.google.com with ESMTPS id h4si8544342ybm.156.2020.07.02.08.27.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Oct 2020 21:22:41 -0700 (PDT)
+        Thu, 02 Jul 2020 08:27:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45792 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="cnxd/4wr";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42654 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kXcyu-00059u-FH
-	for alex.bennee@linaro.org; Wed, 28 Oct 2020 00:22:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43488)
+	id 1jr17i-0000XY-03
+	for alex.bennee@linaro.org; Thu, 02 Jul 2020 11:27:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43228)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kXcvX-0001hy-05; Wed, 28 Oct 2020 00:19:11 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2302)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kXcvU-0007aI-El; Wed, 28 Oct 2020 00:19:10 -0400
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CLb1R3ZNDzkXyB;
- Wed, 28 Oct 2020 12:19:07 +0800 (CST)
-Received: from huawei.com (10.175.104.175) by DGGEMS401-HUB.china.huawei.com
- (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Wed, 28 Oct 2020
- 12:18:56 +0800
-From: Chen Qun <kuhn.chenqun@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-Subject: [PATCH 2/9] hw/intc/arm_gicv3_kvm: silence the compiler warnings
-Date: Wed, 28 Oct 2020 12:18:12 +0800
-Message-ID: <20201028041819.2169003-3-kuhn.chenqun@huawei.com>
-X-Mailer: git-send-email 2.23.0
-In-Reply-To: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
-References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jr17Y-0000Vx-Le
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 11:27:28 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:30926
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jr17U-0006J2-SD
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 11:27:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593703644;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=pNH4rf3+4G6SG1/frQNPuCp7RTYauZbpUm977EG7OfM=;
+ b=cnxd/4wrq92zGmotkTZdfcrRgT+a2hynH6iOOXODmtQSh9yZ3YXxNcM4lRvZX76Poahoud
+ wfyleWnjuqOnOvHMYQSyr/FPRNILDD/JsUYNdrKVISECTgkosjNcN+PAAzZ4BQr/TCEOWO
+ uSg2lTB1CTsvSIcGb8Q0J4vQdJ1Ji5U=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-219-X6EwhBTuN1m5OzDMNo2GIg-1; Thu, 02 Jul 2020 11:27:20 -0400
+X-MC-Unique: X6EwhBTuN1m5OzDMNo2GIg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 76297A0BD8;
+ Thu,  2 Jul 2020 15:27:18 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-112-70.ams2.redhat.com [10.36.112.70])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0A4EE5DD61;
+ Thu,  2 Jul 2020 15:27:05 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, peterx@redhat.com
+Subject: [PATCH v2 0/9] SMMUv3.2 Range-based TLB Invalidation Support
+Date: Thu,  2 Jul 2020 17:26:50 +0200
+Message-Id: <20200702152659.8522-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.175.104.175]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=kuhn.chenqun@huawei.com; helo=szxga04-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 00:18:54
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=207.211.31.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 03:23:40
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -87,121 +112,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, zhang.zhanghailiang@huawei.com,
- qemu-arm@nongnu.org, ganqixin@huawei.com, Euler Robot <euler.robot@huawei.com>,
- Chen Qun <kuhn.chenqun@huawei.com>
+Cc: jean-philippe@linaro.org, robh@kernel.org, robin.murphy@arm.com,
+ mst@redhat.com, zhangfei.gao@foxmail.com, shameerali.kolothum.thodi@huawei.com,
+ will@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l93RhL7HMpjS
+X-TUID: 6GcFhpMxv2Yo
 
-When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
-hw/intc/arm_gicv3_kvm.c: In function ‘kvm_arm_gicv3_put’:
-hw/intc/arm_gicv3_kvm.c:484:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
-             kvm_gicc_access(s, ICC_AP0R_EL1(1), ncpu, &reg64, true);
-             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-hw/intc/arm_gicv3_kvm.c:485:9: note: here
-         default:
-         ^~~~~~~
-hw/intc/arm_gicv3_kvm.c:495:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
-             kvm_gicc_access(s, ICC_AP1R_EL1(2), ncpu, &reg64, true);
-             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-hw/intc/arm_gicv3_kvm.c:496:9: note: here
-         case 6:
-         ^~~~
-hw/intc/arm_gicv3_kvm.c:498:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
-             kvm_gicc_access(s, ICC_AP1R_EL1(1), ncpu, &reg64, true);
-             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-hw/intc/arm_gicv3_kvm.c:499:9: note: here
-         default:
-         ^~~~~~~
+SMMU3.2 brings the support of range-based TLB invalidation and
+level hint. When this feature is supported, the SMMUv3 driver
+is allowed to send TLB invalidations for a range of IOVAs instead
+of using page based invalidation.
 
-hw/intc/arm_gicv3_kvm.c: In function ‘kvm_arm_gicv3_get’:
-hw/intc/arm_gicv3_kvm.c:634:37: warning: this statement may fall through [-Wimplicit-fallthrough=]
-             c->icc_apr[GICV3_G0][2] = reg64;
-             ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
-hw/intc/arm_gicv3_kvm.c:635:9: note: here
-         case 6:
-         ^~~~
-hw/intc/arm_gicv3_kvm.c:637:37: warning: this statement may fall through [-Wimplicit-fallthrough=]
-             c->icc_apr[GICV3_G0][1] = reg64;
-             ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
-hw/intc/arm_gicv3_kvm.c:638:9: note: here
-         default:
-         ^~~~~~~
-hw/intc/arm_gicv3_kvm.c:648:39: warning: this statement may fall through [-Wimplicit-fallthrough=]
-             c->icc_apr[GICV3_G1NS][2] = reg64;
-             ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
-hw/intc/arm_gicv3_kvm.c:649:9: note: here
-         case 6:
-         ^~~~
-hw/intc/arm_gicv3_kvm.c:651:39: warning: this statement may fall through [-Wimplicit-fallthrough=]
-             c->icc_apr[GICV3_G1NS][1] = reg64;
-             ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
-hw/intc/arm_gicv3_kvm.c:652:9: note: here
-         default:
-         ^~~~~~~
+Implementing this feature in the virtual SMMUv3 device is
+mandated for DPDK on guest use case: DPDK uses hugepage
+buffers and guest sends invalidations for blocks. Without
+this feature, a guest invalidation of a block of 1GB for instance
+translates into a storm of page invalidations. Each of them
+is trapped by the VMM and cascaded downto the physical IOMMU.
+This completely stalls the execution. This integration issue
+was initially reported in [1].
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
----
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
----
- hw/intc/arm_gicv3_kvm.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Now SMMUv3.2 specifies additional parameters to NH_VA and NH_VAA
+stage 1 invalidation commands so we can support those extensions.
 
-diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
-index 187eb054e0..d040a5d1e9 100644
---- a/hw/intc/arm_gicv3_kvm.c
-+++ b/hw/intc/arm_gicv3_kvm.c
-@@ -478,9 +478,11 @@ static void kvm_arm_gicv3_put(GICv3State *s)
-             kvm_gicc_access(s, ICC_AP0R_EL1(3), ncpu, &reg64, true);
-             reg64 = c->icc_apr[GICV3_G0][2];
-             kvm_gicc_access(s, ICC_AP0R_EL1(2), ncpu, &reg64, true);
-+            /* fall through */
-         case 6:
-             reg64 = c->icc_apr[GICV3_G0][1];
-             kvm_gicc_access(s, ICC_AP0R_EL1(1), ncpu, &reg64, true);
-+            /* fall through */
-         default:
-             reg64 = c->icc_apr[GICV3_G0][0];
-             kvm_gicc_access(s, ICC_AP0R_EL1(0), ncpu, &reg64, true);
-@@ -492,9 +494,11 @@ static void kvm_arm_gicv3_put(GICv3State *s)
-             kvm_gicc_access(s, ICC_AP1R_EL1(3), ncpu, &reg64, true);
-             reg64 = c->icc_apr[GICV3_G1NS][2];
-             kvm_gicc_access(s, ICC_AP1R_EL1(2), ncpu, &reg64, true);
-+            /* fall through */
-         case 6:
-             reg64 = c->icc_apr[GICV3_G1NS][1];
-             kvm_gicc_access(s, ICC_AP1R_EL1(1), ncpu, &reg64, true);
-+            /* fall through */
-         default:
-             reg64 = c->icc_apr[GICV3_G1NS][0];
-             kvm_gicc_access(s, ICC_AP1R_EL1(0), ncpu, &reg64, true);
-@@ -631,9 +635,11 @@ static void kvm_arm_gicv3_get(GICv3State *s)
-             c->icc_apr[GICV3_G0][3] = reg64;
-             kvm_gicc_access(s, ICC_AP0R_EL1(2), ncpu, &reg64, false);
-             c->icc_apr[GICV3_G0][2] = reg64;
-+            /* fall through */
-         case 6:
-             kvm_gicc_access(s, ICC_AP0R_EL1(1), ncpu, &reg64, false);
-             c->icc_apr[GICV3_G0][1] = reg64;
-+            /* fall through */
-         default:
-             kvm_gicc_access(s, ICC_AP0R_EL1(0), ncpu, &reg64, false);
-             c->icc_apr[GICV3_G0][0] = reg64;
-@@ -645,9 +651,11 @@ static void kvm_arm_gicv3_get(GICv3State *s)
-             c->icc_apr[GICV3_G1NS][3] = reg64;
-             kvm_gicc_access(s, ICC_AP1R_EL1(2), ncpu, &reg64, false);
-             c->icc_apr[GICV3_G1NS][2] = reg64;
-+            /* fall through */
-         case 6:
-             kvm_gicc_access(s, ICC_AP1R_EL1(1), ncpu, &reg64, false);
-             c->icc_apr[GICV3_G1NS][1] = reg64;
-+            /* fall through */
-         default:
-             kvm_gicc_access(s, ICC_AP1R_EL1(0), ncpu, &reg64, false);
-             c->icc_apr[GICV3_G1NS][0] = reg64;
+patches [1, 5] are cleanup patches.
+patches [6] changes the implementation of the VSMMUV3 IOTLB
+   This IOTLB is a minimalist IOTLB implementation that avoids to
+   do the page table walk in case we have an entry in the TLB.
+   Previously entries were page mappings only. Now they can be
+   blocks.
+patches [7, 9] bring support for range invalidation.
+
+Supporting block mappings in the IOTLB look sensible in terms of
+TLB entry consumption. However looking at virtio/vhost device usage,
+without block mapping and without range invalidation (< 5.7 kernels
+it may be less performant. However for recent guest kernels
+supporting range invalidations [2], the performance should be similar.
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu.git
+branch: v5.0.0-smmuv3-ril-v2
+
+References:
+[1] [RFC v2 4/4] iommu/arm-smmu-v3: add CMD_TLBI_NH_VA_AM command
+for iova range invalidation
+(https://lists.linuxfoundation.org/pipermail/iommu/2017-August/023679.html
+
+[2] 5.7+ kernels featuring
+6a481a95d4c1 iommu/arm-smmu-v3: Add SMMUv3.2 range invalidation support
+
+History:
+v1 -> v2:
+- added "hw/arm/smmu: Introduce smmu_get_iotlb_key()"
+- removed "[PATCH 5/9] hw/arm/smmuv3: Store the starting level in
+  SMMUTransTableInfo"
+- Collected Peter's R-b
+- In this version the key still features TG/LVL.
+- More details in individual history logs
+
+
+Eric Auger (9):
+  hw/arm/smmu-common: Factorize some code in smmu_ptw_64()
+  hw/arm/smmu-common: Add IOTLB helpers
+  hw/arm/smmu: Introduce smmu_get_iotlb_key()
+  hw/arm/smmu: Simplify the IOTLB key format
+  hw/arm/smmu: Introduce SMMUTLBEntry for PTW and IOTLB value
+  hw/arm/smmu-common: Manage IOTLB block entries
+  hw/arm/smmuv3: Introduce smmuv3_s1_range_inval() helper
+  hw/arm/smmuv3: Get prepared for range invalidation
+  hw/arm/smmuv3: Advertise SMMUv3.2 range invalidation
+
+ hw/arm/smmu-internal.h       |  13 +++
+ hw/arm/smmuv3-internal.h     |   5 +
+ include/hw/arm/smmu-common.h |  21 ++--
+ hw/arm/smmu-common.c         | 200 +++++++++++++++++++++++------------
+ hw/arm/smmuv3.c              | 134 ++++++++++++-----------
+ hw/arm/trace-events          |  10 +-
+ 6 files changed, 235 insertions(+), 148 deletions(-)
+
 -- 
-2.27.0
+2.21.3
 

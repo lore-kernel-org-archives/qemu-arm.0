@@ -1,95 +1,94 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1703697lfm;
-        Thu, 2 Jul 2020 10:51:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyjE70xMKnM3AkOhzwZiPg3yPSd73BfFUbPI2bDgnoPE2Z3dGmts3qJPGMhK/dWT+LNeIpx
-X-Received: by 2002:a25:68d0:: with SMTP id d199mr806045ybc.496.1593712319715;
-        Thu, 02 Jul 2020 10:51:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593712319; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1736570lfm;
+        Thu, 2 Jul 2020 11:33:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzYFC4aOOwqTgw+YkY/zhhcCFQlQ1C1p17TaFktONXChH24jWzgNHw2vxZ1Vl7NEsqMKvaO
+X-Received: by 2002:a25:ce84:: with SMTP id x126mr51824695ybe.15.1593714809805;
+        Thu, 02 Jul 2020 11:33:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593714809; cv=none;
         d=google.com; s=arc-20160816;
-        b=CCVqnE6UH5+TGw01mgAGOGYugN/A8MaCtwj9S6aIEX0SrHmV4lNizXdqoeXGKYgfrF
-         v14nGPMKcvppGxqOIKFxC3pHIZT+MlIaRO9VbFASGckznLil1+OF0jh8l/Qcin/NDqkc
-         sIPr8I+mLH9URu6AuSv9XoL2tLbl/hC8GefAndv7CRKy2crj6lWngYEGhItl3X5sX8gc
-         G8aBtBye9XssgQSzmABfxoD4S5DueCsya6PPrOwEmoBH/Fc4UBuJ4IqnRQYT+KHSuaem
-         Lg2NDrCwzh1NddTFrgoNxOcggHmnFJOFSjUllExBPSird7mzn2pYSeYRDZqPqsa85o2v
-         1HxQ==
+        b=TmxiwRYjjfH0CjAY0ECH83lVGbeJsOXBnQ411vfP/mx6CxkerzL+4NNKfvhr48x++U
+         dV2upcGd5PsfDxpMKUcEhsRJaaoP1c/PgiScMrNA2TbrSa1/WmzU5V/GbmfaT93lWlvD
+         XtXLOiiSYIFHkPHdl9wKu82C62lto13veFG/zd17++AdrQRqxIDJvPQ5kfMpDjmnr20x
+         /QRpYUOvh9uF45kjtjS/ODHds8AfpHQNOIoSbwg971X0h0Ks/i1mIi7Bve+ALGWQlFJY
+         /TrdEQ8fi+Eq68F5ua8cBvLo/az7h/bGWOUY5UwNceSjY27jZevGCYZ0lIcqwcIVo/m0
+         FtAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=kNMd4oet0VDFPxEzSrfmsRw93s33vgMbDXGptEoKZ3E=;
-        b=JAPH9t5uXTTTRS3X42u/xxz1JUoBTQmd5XPgrV36PNt0+EqNngk+YrzZBl7K0NUPA0
-         NhlBP+yWPY/uG8tbttkbeGD3TY/q83Pt8CmLhRCBkRfn5lga2tTGKXr6zLqwsbizzIl2
-         jULmiQ/pHC55qF19yUlvDz0TsbWneVBeh62qfBv0Xino/QW8i3O8P6kLhtOs+4v/TXPU
-         EI83XD6FWc1M4oYXhVwtObOAq6xpBVxffxVsY683Sew9bAZGkIw3QM4QI6GXvAMhjNO6
-         KTLDihqCGSpXLubx9eHFKuCqCIwvz86HDlN7W+ghUpq920KNiubwNeFE+OoJbIZ5FAiR
-         fTcw==
+        bh=5PbbYiGUx96C2AMbgbMNNHkDvfL6IWZj4OuocjIjTN8=;
+        b=q8ez+Zl1EnCn77LOLI8ADMqoF0pF/4VghRoOHgJUF1R8uQ9H7dDZkY1N4V5NalxPJH
+         1EHR56OX9+VkZndegzg9YH0uHhO96RzGlijqnku7tJmgeYEHU0Wh0ARD4Gm74Us5rmuv
+         U1rL7BVAFhKybtewFWJPJe0MHdFxNHScqWnPwIH517OHSvPmOJhN1rB3QoO1vAGqcwOX
+         qqt7q5Lia5bUkuwtgJoieZJP1hG4tLg0HarnAiv7/6ZvuMZYq9Tqjed516IpWhXAEOJZ
+         c9SSbSY519xG+eeqs/I8a8fJ5aEKznp57BKm4p9Va6C6n0+Z6FlNnnoaU71vh3EJW91H
+         BReA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BchfWjuc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XWl2GiIk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k6si12325366ybt.52.2020.07.02.10.51.59
+        by mx.google.com with ESMTPS id r128si9034646ybc.354.2020.07.02.11.33.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jul 2020 10:51:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Jul 2020 11:33:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BchfWjuc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XWl2GiIk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60836 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37858 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jr3NP-0002fn-26
-	for alex.bennee@linaro.org; Thu, 02 Jul 2020 13:51:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52018)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jr41Z-0002xQ-6I
+	for alex.bennee@linaro.org; Thu, 02 Jul 2020 14:33:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36424)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jr3Kd-00069r-WE; Thu, 02 Jul 2020 13:49:08 -0400
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:43939)
+ id 1jr41Q-0002wI-Nm; Thu, 02 Jul 2020 14:33:20 -0400
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:44494)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jr3Kb-0001Md-Tb; Thu, 02 Jul 2020 13:49:07 -0400
-Received: by mail-il1-x143.google.com with SMTP id i18so24995645ilk.10;
- Thu, 02 Jul 2020 10:49:04 -0700 (PDT)
+ id 1jr41O-00034Y-My; Thu, 02 Jul 2020 14:33:20 -0400
+Received: by mail-il1-x144.google.com with SMTP id h16so1772864ilj.11;
+ Thu, 02 Jul 2020 11:33:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kNMd4oet0VDFPxEzSrfmsRw93s33vgMbDXGptEoKZ3E=;
- b=BchfWjucRP4CKU6YxgVblRq9XTPL/sqY+ThCDE9nq2WCKoiri4EFbyJ/7LiSHYYLWq
- 94I4NXdJ11fhtwNPP2Jy6Hw7H7e30jUAWjg3orm5DwAboWPfuMR6PZnhj/uYjz9IxMCH
- kOPEE3g5VPySEb263Vi5/MuQcFCB6o91XnCRdob7qYvGPszcxrLVWY25G8zzCklE71EN
- 4vTjv+dfqkWoYpKYCBAxP6hXpap/lujuQYnFDCBFR03LZEEVXUhhnGtyOeXJYTH5+PVT
- DjrsyBKW/E5op8BuQnnPGCda+TPzHSc3a2Z57k7k8cxgUEl3rFjVoHwRyhxWUuvTzdK8
- Fwdg==
+ :cc; bh=5PbbYiGUx96C2AMbgbMNNHkDvfL6IWZj4OuocjIjTN8=;
+ b=XWl2GiIkSSnCyTfIts6sAuVeeGlCgW5Cublcv3Rjlo6/I2cnz/BmEH+TwmBzVBmrgs
+ 3VsXI63s8V1xviq05w5sCdTCYW24zNbl/ubvWnTE2fuG8S2dGEL3a1RYhP4KGZHK5YfX
+ OeOAJYKkumsGjTot1o0JQGbDqrTmcwv+DZfh2qVWcD1fUFts4j3Pbtnd+rTLsiLSY+ow
+ luuhG6aDJW5pEAxGu+S5nUqj4QpoGrMuySL9jJORkx+7cr36Jx5BlpRE/I6xoCDOzRSg
+ zPHroKnzgGswmcDaXvnCFoyTcjBwexFVz/8K5bXEqlRC8uJMuF9a1VVdfRUuD1oPfcwl
+ 3x7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=kNMd4oet0VDFPxEzSrfmsRw93s33vgMbDXGptEoKZ3E=;
- b=tvBT7YDFZgbFzWCZhgBRYmZPIiVnil855XGZph43nQJ4+X0FXeT+tygSbGEpkbyT/G
- zw14ZO68Db7mLAGAcWlAnlcOJnwYjvdhJINlO54uzuIpFuJxXNsGEwYOdbzlTbaQFa9m
- 23Ia254IopaCoJ2PmmY/wNFmRBx8Thhu0SWJMuSs3FKXq1lVpnWBJC8rtsKEAw/C6PAj
- RZ0BVzzRE8IjNLpCSeFdeaRi4FAZ5ypcaKG3PqwpqQ5PfEZrMhwH38VryyCwgeFAGdLy
- GufLgXQTkohatFF5zwWklSZ03cbVlgp+gqskErjhnU9QuSGnsOj2FHwz7QYkPfdf2woj
- 84DA==
-X-Gm-Message-State: AOAM530laYN7xcIXk3E7cabAJat+nxpwrOg8bScoK5QXJbcOsBkCL2gy
- nXkPsr2NVivNPY/ipSo1aINcGGzEYoXh92omG0M=
-X-Received: by 2002:a05:6e02:d51:: with SMTP id
- h17mr14045195ilj.131.1593712143967; 
- Thu, 02 Jul 2020 10:49:03 -0700 (PDT)
+ bh=5PbbYiGUx96C2AMbgbMNNHkDvfL6IWZj4OuocjIjTN8=;
+ b=HxAM+qH7AlEeWdA3gHWlqtfEw2O/0aKsvzzWpGMNdn5A3sPuyZlRH5QhfLO6fPbeY8
+ 7LAVwGWH2ldE3xDJ5I6Xen9nGO+Kp6vUx7fBshwA0JRPHj1AK7Aqz4uqTuepsycxTG0I
+ Vt7BxhKgFKhsbJmhAXljyD4KeRi1cmaEO84ZtgSTPa8EZL98FvSC7FGPqLzC9xkCOpAc
+ lGX5QbaTpsp18uobO+cserPwnWr/16wQhR/Y4T/hZ7/Jd5jIrkF2cvX3HW20w46DzYkc
+ daU9NJboC2SPC4xBknYhSedJWNJ//hLCNw7CXPPx3/NrTcxu5xAUd2PNLldq4NZU8ecg
+ bSNA==
+X-Gm-Message-State: AOAM533Xi7prcCn01KWhxUE5dJPEMt4RscJQfqfKD1U9AdIFz4zwWlOn
+ c9bJffWDfyducvdlSMIgoWrPjPg3e24RG+9M6CI=
+X-Received: by 2002:a92:d186:: with SMTP id z6mr14929667ilz.227.1593714796758; 
+ Thu, 02 Jul 2020 11:33:16 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200628142429.17111-1-peter.maydell@linaro.org>
- <20200628142429.17111-13-peter.maydell@linaro.org>
-In-Reply-To: <20200628142429.17111-13-peter.maydell@linaro.org>
+ <20200628142429.17111-18-peter.maydell@linaro.org>
+In-Reply-To: <20200628142429.17111-18-peter.maydell@linaro.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 2 Jul 2020 10:39:17 -0700
-Message-ID: <CAKmqyKPHB4Sbx1pjbp7UFHcNgwwFjBy299Otx=6UL2ZUHx5m-g@mail.gmail.com>
-Subject: Re: [PATCH 12/17] hw/arm/spitz: Encapsulate misc GPIO handling in a
- device
+Date: Thu, 2 Jul 2020 11:23:29 -0700
+Message-ID: <CAKmqyKMSSYZCLT95xur5V3eyz25oX_hMFynifzQrurqTPMUniQ@mail.gmail.com>
+Subject: Re: [PATCH 17/17] Replace uses of FROM_SSI_SLAVE() macro with QOM
+ casts
 To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x143.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x144.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -101,40 +100,40 @@ X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
  Alistair Francis <alistair@alistair23.me>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aRyga8Bn8+4T
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MbUa9/a+02Cf
 
-On Sun, Jun 28, 2020 at 7:33 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+On Sun, Jun 28, 2020 at 7:37 AM Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Currently we have a free-floating set of IRQs and a function
-> spitz_out_switch() which handle some miscellaneous GPIO lines for the
-> spitz board.  Encapsulate this behaviour in a simple QOM device.
+> The FROM_SSI_SLAVE() macro predates QOM and is used as a typesafe way
+> to cast from an SSISlave* to the instance struct of a subtype of
+> TYPE_SSI_SLAVE.  Switch to using the QOM cast macros instead, which
+> have the same effect (by writing the QOM macros if the types were
+> previously missing them.)
 >
-> At this point we can finally remove the 'max1111' global, because the
-> ADC battery-temperature value is now handled by the misc-gpio device
-> writing the value to its outbound "adc-temp" GPIO, which the board
-> code wires up to the appropriate inbound GPIO line on the max1111.
+> (The FROM_SSI_SLAVE() macro allows the SSISlave member of the
+> subtype's struct to be anywhere as long as it is named "ssidev",
+> whereas a QOM cast macro insists that it is the first thing in the
+> subtype's struct.  This is true for all the types we convert here.)
 >
-> This commit also fixes Coverity issue CID 1421913 (which pointed out
-> that the 'outsignals' in spitz_scoop_gpio_setup() were leaked),
-> because it removes the use of the qemu_allocate_irqs() API from this
-> code entirely.
+> This removes all the uses of FROM_SSI_SLAVE() so we can delete the
+> definition.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
@@ -143,206 +142,171 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/arm/spitz.c | 129 +++++++++++++++++++++++++++++++++----------------
->  1 file changed, 87 insertions(+), 42 deletions(-)
+>  include/hw/ssi/ssi.h |  2 --
+>  hw/arm/z2.c          | 11 +++++++----
+>  hw/display/ads7846.c |  9 ++++++---
+>  hw/display/ssd0323.c | 10 +++++++---
+>  hw/sd/ssi-sd.c       |  4 ++--
+>  5 files changed, 22 insertions(+), 14 deletions(-)
 >
-> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-> index 1400a56729d..bab9968ccee 100644
-> --- a/hw/arm/spitz.c
-> +++ b/hw/arm/spitz.c
-> @@ -51,6 +51,7 @@ typedef struct {
->      DeviceState *max1111;
->      DeviceState *scp0;
->      DeviceState *scp1;
-> +    DeviceState *misc_gpio;
->  } SpitzMachineState;
->
->  #define TYPE_SPITZ_MACHINE "spitz-common"
-> @@ -658,8 +659,6 @@ static void spitz_lcdtg_realize(SSISlave *ssi, Error **errp)
->  #define SPITZ_GPIO_MAX1111_CS   20
->  #define SPITZ_GPIO_TP_INT       11
->
-> -static DeviceState *max1111;
-> -
->  /* "Demux" the signal based on current chipselect */
->  typedef struct {
->      SSISlave ssidev;
-> @@ -695,18 +694,6 @@ static void corgi_ssp_gpio_cs(void *opaque, int line, int level)
->  #define SPITZ_BATTERY_VOLT      0xd0    /* About 4.0V */
->  #define SPITZ_CHARGEON_ACIN     0x80    /* About 5.0V */
->
-> -static void spitz_adc_temp_on(void *opaque, int line, int level)
-> -{
-> -    int batt_temp;
-> -
-> -    if (!max1111)
-> -        return;
-> -
-> -    batt_temp = level ? SPITZ_BATTERY_TEMP : 0;
-> -
-> -    qemu_set_irq(qdev_get_gpio_in(max1111, MAX1111_BATT_TEMP), batt_temp);
-> -}
-> -
->  static void corgi_ssp_realize(SSISlave *d, Error **errp)
->  {
->      DeviceState *dev = DEVICE(d);
-> @@ -734,7 +721,6 @@ static void spitz_ssp_attach(SpitzMachineState *sms)
->
->      bus = qdev_get_child_bus(sms->mux, "ssi2");
->      sms->max1111 = qdev_new(TYPE_MAX_1111);
-> -    max1111 = sms->max1111;
->      qdev_prop_set_uint8(sms->max1111, "input1" /* BATT_VOLT */,
->                          SPITZ_BATTERY_VOLT);
->      qdev_prop_set_uint8(sms->max1111, "input2" /* BATT_TEMP */, 0);
-> @@ -810,27 +796,66 @@ static void spitz_akita_i2c_setup(PXA2xxState *cpu)
->
->  /* Other peripherals */
->
-> -static void spitz_out_switch(void *opaque, int line, int level)
-> +/*
-> + * Encapsulation of some miscellaneous GPIO line behaviour for the Spitz boards.
-> + *
-> + * QEMU interface:
-> + *  + named GPIO inputs "green-led", "orange-led", "charging", "discharging":
-> + *    these currently just print messages that the line has been signalled
-> + *  + named GPIO input "adc-temp-on": set to cause the battery-temperature
-> + *    value to be passed to the max111x ADC
-> + *  + named GPIO output "adc-temp": the ADC value, to be wired up to the max111x
-> + */
-> +#define TYPE_SPITZ_MISC_GPIO "spitz-misc-gpio"
-> +#define SPITZ_MISC_GPIO(obj) \
-> +    OBJECT_CHECK(SpitzMiscGPIOState, (obj), TYPE_SPITZ_MISC_GPIO)
-> +
-> +typedef struct SpitzMiscGPIOState {
-> +    SysBusDevice parent_obj;
-> +
-> +    qemu_irq adc_value;
-> +} SpitzMiscGPIOState;
-> +
-> +static void spitz_misc_charging(void *opaque, int n, int level)
->  {
-> -    switch (line) {
-> -    case 0:
-> -        zaurus_printf("Charging %s.\n", level ? "off" : "on");
-> -        break;
-> -    case 1:
-> -        zaurus_printf("Discharging %s.\n", level ? "on" : "off");
-> -        break;
-> -    case 2:
-> -        zaurus_printf("Green LED %s.\n", level ? "on" : "off");
-> -        break;
-> -    case 3:
-> -        zaurus_printf("Orange LED %s.\n", level ? "on" : "off");
-> -        break;
-> -    case 6:
-> -        spitz_adc_temp_on(opaque, line, level);
-> -        break;
-> -    default:
-> -        g_assert_not_reached();
-> -    }
-> +    zaurus_printf("Charging %s.\n", level ? "off" : "on");
-> +}
-> +
-> +static void spitz_misc_discharging(void *opaque, int n, int level)
-> +{
-> +    zaurus_printf("Discharging %s.\n", level ? "off" : "on");
-> +}
-> +
-> +static void spitz_misc_green_led(void *opaque, int n, int level)
-> +{
-> +    zaurus_printf("Green LED %s.\n", level ? "off" : "on");
-> +}
-> +
-> +static void spitz_misc_orange_led(void *opaque, int n, int level)
-> +{
-> +    zaurus_printf("Orange LED %s.\n", level ? "off" : "on");
-> +}
-> +
-> +static void spitz_misc_adc_temp(void *opaque, int n, int level)
-> +{
-> +    SpitzMiscGPIOState *s = SPITZ_MISC_GPIO(opaque);
-> +    int batt_temp = level ? SPITZ_BATTERY_TEMP : 0;
-> +
-> +    qemu_set_irq(s->adc_value, batt_temp);
-> +}
-> +
-> +static void spitz_misc_gpio_init(Object *obj)
-> +{
-> +    SpitzMiscGPIOState *s = SPITZ_MISC_GPIO(obj);
-> +    DeviceState *dev = DEVICE(obj);
-> +
-> +    qdev_init_gpio_in_named(dev, spitz_misc_charging, "charging", 1);
-> +    qdev_init_gpio_in_named(dev, spitz_misc_discharging, "discharging", 1);
-> +    qdev_init_gpio_in_named(dev, spitz_misc_green_led, "green-led", 1);
-> +    qdev_init_gpio_in_named(dev, spitz_misc_orange_led, "orange-led", 1);
-> +    qdev_init_gpio_in_named(dev, spitz_misc_adc_temp, "adc-temp-on", 1);
-> +
-> +    qdev_init_gpio_out_named(dev, &s->adc_value, "adc-temp", 1);
->  }
->
->  #define SPITZ_SCP_LED_GREEN             1
-> @@ -850,12 +875,22 @@ static void spitz_out_switch(void *opaque, int line, int level)
->
->  static void spitz_scoop_gpio_setup(SpitzMachineState *sms)
->  {
-> -    qemu_irq *outsignals = qemu_allocate_irqs(spitz_out_switch, sms->mpu, 8);
-> +    DeviceState *miscdev = sysbus_create_simple(TYPE_SPITZ_MISC_GPIO, -1, NULL);
->
-> -    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_CHRG_ON, outsignals[0]);
-> -    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_JK_B, outsignals[1]);
-> -    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_LED_GREEN, outsignals[2]);
-> -    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_LED_ORANGE, outsignals[3]);
-> +    sms->misc_gpio = miscdev;
-> +
-> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_CHRG_ON,
-> +                          qdev_get_gpio_in_named(miscdev, "charging", 0));
-> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_JK_B,
-> +                          qdev_get_gpio_in_named(miscdev, "discharging", 0));
-> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_LED_GREEN,
-> +                          qdev_get_gpio_in_named(miscdev, "green-led", 0));
-> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_LED_ORANGE,
-> +                          qdev_get_gpio_in_named(miscdev, "orange-led", 0));
-> +    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_ADC_TEMP_ON,
-> +                          qdev_get_gpio_in_named(miscdev, "adc-temp-on", 0));
-> +    qdev_connect_gpio_out_named(miscdev, "adc-temp", 0,
-> +                                qdev_get_gpio_in(sms->max1111, MAX1111_BATT_TEMP));
->
->      if (sms->scp1) {
->          qdev_connect_gpio_out(sms->scp1, SPITZ_SCP2_BACKLIGHT_CONT,
-> @@ -863,8 +898,6 @@ static void spitz_scoop_gpio_setup(SpitzMachineState *sms)
->          qdev_connect_gpio_out(sms->scp1, SPITZ_SCP2_BACKLIGHT_ON,
->                                qdev_get_gpio_in_named(sms->lcdtg, "bl_power", 0));
->      }
-> -
-> -    qdev_connect_gpio_out(sms->scp0, SPITZ_SCP_ADC_TEMP_ON, outsignals[6]);
->  }
->
->  #define SPITZ_GPIO_HSYNC                22
-> @@ -1217,12 +1250,24 @@ static const TypeInfo spitz_lcdtg_info = {
->      .class_init    = spitz_lcdtg_class_init,
+> diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
+> index 5fd411f2e4e..eac168aa1db 100644
+> --- a/include/hw/ssi/ssi.h
+> +++ b/include/hw/ssi/ssi.h
+> @@ -66,8 +66,6 @@ struct SSISlave {
+>      bool cs;
 >  };
 >
-> +static const TypeInfo spitz_misc_gpio_info = {
-> +    .name = TYPE_SPITZ_MISC_GPIO,
-> +    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(SpitzMiscGPIOState),
-> +    .instance_init = spitz_misc_gpio_init,
-> +    /*
-> +     * No class_init required: device has no internal state so does not
-> +     * need to set up reset or vmstate, and does not have a realize method.
-> +     */
-> +};
+> -#define FROM_SSI_SLAVE(type, dev) DO_UPCAST(type, ssidev, dev)
+> -
+>  extern const VMStateDescription vmstate_ssi_slave;
+>
+>  #define VMSTATE_SSI_SLAVE(_field, _state) {                          \
+> diff --git a/hw/arm/z2.c b/hw/arm/z2.c
+> index a0f40959904..e1f22f58681 100644
+> --- a/hw/arm/z2.c
+> +++ b/hw/arm/z2.c
+> @@ -111,9 +111,12 @@ typedef struct {
+>      int pos;
+>  } ZipitLCD;
+>
+> +#define TYPE_ZIPIT_LCD "zipit-lcd"
+> +#define ZIPIT_LCD(obj) OBJECT_CHECK(ZipitLCD, (obj), TYPE_ZIPIT_LCD)
 > +
->  static void spitz_register_types(void)
+>  static uint32_t zipit_lcd_transfer(SSISlave *dev, uint32_t value)
 >  {
->      type_register_static(&corgi_ssp_info);
->      type_register_static(&spitz_lcdtg_info);
->      type_register_static(&spitz_keyboard_info);
->      type_register_static(&sl_nand_info);
-> +    type_register_static(&spitz_misc_gpio_info);
+> -    ZipitLCD *z = FROM_SSI_SLAVE(ZipitLCD, dev);
+> +    ZipitLCD *z = ZIPIT_LCD(dev);
+>      uint16_t val;
+>      if (z->selected) {
+>          z->buf[z->pos] = value & 0xff;
+> @@ -153,7 +156,7 @@ static void z2_lcd_cs(void *opaque, int line, int level)
+>
+>  static void zipit_lcd_realize(SSISlave *dev, Error **errp)
+>  {
+> -    ZipitLCD *z = FROM_SSI_SLAVE(ZipitLCD, dev);
+> +    ZipitLCD *z = ZIPIT_LCD(dev);
+>      z->selected = 0;
+>      z->enabled = 0;
+>      z->pos = 0;
+> @@ -185,7 +188,7 @@ static void zipit_lcd_class_init(ObjectClass *klass, void *data)
 >  }
 >
->  type_init(spitz_register_types)
+>  static const TypeInfo zipit_lcd_info = {
+> -    .name          = "zipit-lcd",
+> +    .name          = TYPE_ZIPIT_LCD,
+>      .parent        = TYPE_SSI_SLAVE,
+>      .instance_size = sizeof(ZipitLCD),
+>      .class_init    = zipit_lcd_class_init,
+> @@ -325,7 +328,7 @@ static void z2_init(MachineState *machine)
+>
+>      type_register_static(&zipit_lcd_info);
+>      type_register_static(&aer915_info);
+> -    z2_lcd = ssi_create_slave(mpu->ssp[1], "zipit-lcd");
+> +    z2_lcd = ssi_create_slave(mpu->ssp[1], TYPE_ZIPIT_LCD);
+>      bus = pxa2xx_i2c_bus(mpu->i2c[0]);
+>      i2c_create_slave(bus, TYPE_AER915, 0x55);
+>      wm = i2c_create_slave(bus, TYPE_WM8750, 0x1b);
+> diff --git a/hw/display/ads7846.c b/hw/display/ads7846.c
+> index 9228b40b1af..56bf82fe079 100644
+> --- a/hw/display/ads7846.c
+> +++ b/hw/display/ads7846.c
+> @@ -29,6 +29,9 @@ typedef struct {
+>      int output;
+>  } ADS7846State;
+>
+> +#define TYPE_ADS7846 "ads7846"
+> +#define ADS7846(obj) OBJECT_CHECK(ADS7846State, (obj), TYPE_ADS7846)
+> +
+>  /* Control-byte bitfields */
+>  #define CB_PD0         (1 << 0)
+>  #define CB_PD1         (1 << 1)
+> @@ -61,7 +64,7 @@ static void ads7846_int_update(ADS7846State *s)
+>
+>  static uint32_t ads7846_transfer(SSISlave *dev, uint32_t value)
+>  {
+> -    ADS7846State *s = FROM_SSI_SLAVE(ADS7846State, dev);
+> +    ADS7846State *s = ADS7846(dev);
+>
+>      switch (s->cycle ++) {
+>      case 0:
+> @@ -139,7 +142,7 @@ static const VMStateDescription vmstate_ads7846 = {
+>  static void ads7846_realize(SSISlave *d, Error **errp)
+>  {
+>      DeviceState *dev = DEVICE(d);
+> -    ADS7846State *s = FROM_SSI_SLAVE(ADS7846State, d);
+> +    ADS7846State *s = ADS7846(d);
+>
+>      qdev_init_gpio_out(dev, &s->interrupt, 1);
+>
+> @@ -166,7 +169,7 @@ static void ads7846_class_init(ObjectClass *klass, void *data)
+>  }
+>
+>  static const TypeInfo ads7846_info = {
+> -    .name          = "ads7846",
+> +    .name          = TYPE_ADS7846,
+>      .parent        = TYPE_SSI_SLAVE,
+>      .instance_size = sizeof(ADS7846State),
+>      .class_init    = ads7846_class_init,
+> diff --git a/hw/display/ssd0323.c b/hw/display/ssd0323.c
+> index c3bdb18742c..32d27f008ae 100644
+> --- a/hw/display/ssd0323.c
+> +++ b/hw/display/ssd0323.c
+> @@ -66,9 +66,13 @@ typedef struct {
+>      uint8_t framebuffer[128 * 80 / 2];
+>  } ssd0323_state;
+>
+> +#define TYPE_SSD0323 "ssd0323"
+> +#define SSD0323(obj) OBJECT_CHECK(ssd0323_state, (obj), TYPE_SSD0323)
+> +
+> +
+>  static uint32_t ssd0323_transfer(SSISlave *dev, uint32_t data)
+>  {
+> -    ssd0323_state *s = FROM_SSI_SLAVE(ssd0323_state, dev);
+> +    ssd0323_state *s = SSD0323(dev);
+>
+>      switch (s->mode) {
+>      case SSD0323_DATA:
+> @@ -346,7 +350,7 @@ static const GraphicHwOps ssd0323_ops = {
+>  static void ssd0323_realize(SSISlave *d, Error **errp)
+>  {
+>      DeviceState *dev = DEVICE(d);
+> -    ssd0323_state *s = FROM_SSI_SLAVE(ssd0323_state, d);
+> +    ssd0323_state *s = SSD0323(d);
+>
+>      s->col_end = 63;
+>      s->row_end = 79;
+> @@ -368,7 +372,7 @@ static void ssd0323_class_init(ObjectClass *klass, void *data)
+>  }
+>
+>  static const TypeInfo ssd0323_info = {
+> -    .name          = "ssd0323",
+> +    .name          = TYPE_SSD0323,
+>      .parent        = TYPE_SSI_SLAVE,
+>      .instance_size = sizeof(ssd0323_state),
+>      .class_init    = ssd0323_class_init,
+> diff --git a/hw/sd/ssi-sd.c b/hw/sd/ssi-sd.c
+> index 25cec2ddeaa..25cdf4c966d 100644
+> --- a/hw/sd/ssi-sd.c
+> +++ b/hw/sd/ssi-sd.c
+> @@ -74,7 +74,7 @@ typedef struct {
+>
+>  static uint32_t ssi_sd_transfer(SSISlave *dev, uint32_t val)
+>  {
+> -    ssi_sd_state *s = FROM_SSI_SLAVE(ssi_sd_state, dev);
+> +    ssi_sd_state *s = SSI_SD(dev);
+>
+>      /* Special case: allow CMD12 (STOP TRANSMISSION) while reading data.  */
+>      if (s->mode == SSI_SD_DATA_READ && val == 0x4d) {
+> @@ -241,7 +241,7 @@ static const VMStateDescription vmstate_ssi_sd = {
+>
+>  static void ssi_sd_realize(SSISlave *d, Error **errp)
+>  {
+> -    ssi_sd_state *s = FROM_SSI_SLAVE(ssi_sd_state, d);
+> +    ssi_sd_state *s = SSI_SD(d);
+>      DeviceState *carddev;
+>      DriveInfo *dinfo;
+>      Error *err = NULL;
 > --
 > 2.20.1
 >

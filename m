@@ -1,114 +1,112 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3832789lfm;
-        Tue, 30 Jun 2020 03:45:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzYRmKl0bMoyj9Lv9eHFqYiAt9+OqJZrzBENbJ2JtB3PXlBzXSzCjk/+Yu75LYBRCSkK92s
-X-Received: by 2002:a25:ad8c:: with SMTP id z12mr31685164ybi.362.1593513942399;
-        Tue, 30 Jun 2020 03:45:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593513942; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1409565lfm;
+        Thu, 2 Jul 2020 05:02:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx/hJ6C6cK9oGZUAWRWRThlJSVbHqjr4WktQqoeAfVm+iDmLH0FqrLXOGzIbzt0ZkLAzGv3
+X-Received: by 2002:a0c:e5cc:: with SMTP id u12mr27782256qvm.54.1593691332283;
+        Thu, 02 Jul 2020 05:02:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593691332; cv=none;
         d=google.com; s=arc-20160816;
-        b=LWrDzTzmz2Hn0n577YrnfQIlvezVzMk17APVSe009JG6yT09foG23KTlVYW6KFH+sq
-         bYMShjKu7hIdGnLKovQVcqyuhQx49BKquBhMwF5SHopNY5b7Dca4xrvZyPVgpNNmrcdF
-         LYo7VzniILtAmC4aTmvExdSk1mU/71OxC77jQPUClyPhzlMReKSrioOII3t0mr9jpBhO
-         gyOpF8xwUyNKZ1CGx+4DLuNKRPaUZ5YlmUwrPLRT14Dteg5riHQrh56dgMltvQt/szPj
-         sEHgw2/BA/JFfsv3Hb2HlpnL0nfn+POViT72w2JjU3hLRkrt3wtn50B+cW55EuXdvCZw
-         aF5Q==
+        b=ZMpdmQHy7fJ80VnrQeIP2N3wJIWgrg341DpLRRMqF61L3J0QeFJtfO6/dApzOdzzMQ
+         7JaDUoLv5fqZ7tWOqkSI8hwZhM3v2eVhb6kFoE/I0ZUZr5BZACrjFvayCIKt4XmunUjX
+         OtRjJkE5dmU4A9jWIoLtNyL4HoJB1J+g74+l3M6rxdM8i4ahLoEVrlednrJUTA8+Uy/o
+         xdvdBjQIVRD2hD00wuEKNFVo2NXB0tpK8Ayf3mVmsouWQ91Rx2Dvq7ThHYfg8P4XC/wN
+         JFdzjqTS7viQz/ClMCbO0uwaYT+a0Fl3cgq+yh71oBJT9MTA4wN7bDZkClI8BHbDXx7/
+         YmfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=xWW3S9JbFqbF/WDaHtuTcZJtixpKk+BO6FbGx3kUnLI=;
-        b=m5uHTnm+1lOonJteKm96bLUkPVeknK1AFI0rSEzVluEgwd0/1rY0m5dQUj4Ydol2Wf
-         /d5whWaEJRjWTpB3t8TzokvlfmOQLIn5+zVCOLH56XhxyUBrouzkoNq58Fp8IV6uTOGI
-         fzGOyuqDuQPtQ8jQuMnTSkVhm5EDiS+j4+0bI/fOod56zKIRMOorP26uXRyv7xPy4vL8
-         J3uRZyNX9FPkwzakdR4MGZTbLymBPz/Wtkf0gDbRdJMjYkvZafqVGDHUmNQG2QBz1W+8
-         vCVn8sYHoUv2Ce9Oj5iS5v6RKa7JW6Sm5VWMMSLMHCJw8k4QxtnuV1Ea+mn+mj56eYOO
-         w7jw==
+        bh=S7+M1JaNvLwiUtKlmgwjnyZQXXDI9XLEyA276AzEKUk=;
+        b=R3HhLzLYqmS/dcCFs30dyZFw5Xp/rfvHpV62KE/uEZFNX3EGNWyD9QXJ6UqylC93oZ
+         +20dCavCuq6yPqDMObqoTJFcrpU0PCxw2jT2HJrNPIzdRzCOS5Jk3Er0qxd5Wo+ei6wc
+         Sb5GRvzkN1DUfRdrArsjnLuFfXeCcu98RkqwrsF89xKeeL37iCv5flY89O5riECfmd63
+         wq6sDoa2LJx7jbdPuoYxhNZ/QdawF4NkAo3FGb4zp8SJb6H94LjJLtwQrjnQD58mGllF
+         T/MPqHniO3yuOOdWg/2dX1nGUqPVS2rIsviuMOFihRNwlF6VOx/NQMdRwGn7mXkJkn2H
+         Rrhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bm3psvMN;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mlxd90l7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m7si2608897ybo.49.2020.06.30.03.45.42
+        by mx.google.com with ESMTPS id b7si4939460qvw.200.2020.07.02.05.02.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jun 2020 03:45:42 -0700 (PDT)
+        Thu, 02 Jul 2020 05:02:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bm3psvMN;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mlxd90l7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:47638 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60966 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jqDll-00076v-MX
-	for alex.bennee@linaro.org; Tue, 30 Jun 2020 06:45:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42108)
+	id 1jqxut-0005xR-KA
+	for alex.bennee@linaro.org; Thu, 02 Jul 2020 08:02:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39668)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jqDla-00072z-2t; Tue, 30 Jun 2020 06:45:30 -0400
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:35437)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jqDlY-0003WD-8k; Tue, 30 Jun 2020 06:45:29 -0400
-Received: by mail-ej1-x641.google.com with SMTP id rk21so20036687ejb.2;
- Tue, 30 Jun 2020 03:45:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=xWW3S9JbFqbF/WDaHtuTcZJtixpKk+BO6FbGx3kUnLI=;
- b=bm3psvMNTmSW0Z7/1cNLpn0EuURvc/8NPcxoCdaUGoXNP10ktMucUNEqt3B3y6kz3C
- qjBa+dpAaRCIAW4JFA+93MxzpuAdfS07sVUKSCu00oT738sXXiRVFcnal/jt+TT/y6cK
- J+P7XiW5LdwH91zydtHNTp2Gji065P0UaheiDG9/lSdhsxmaUrPHJ4xtwtdOehjVEgP5
- cQe0dJ7GscTjtANEneCFD+v3tT4uOarMU8ITomH8BkLTn6Rp14/P6EGNHFe/afRDs2gn
- 7gMY8VYR29jVHpZoIHV1MAEm0nk/Vs/MOar22lTiZ0VUjq5L5IOL2P7jrW2fuNPzHqs0
- WXqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=xWW3S9JbFqbF/WDaHtuTcZJtixpKk+BO6FbGx3kUnLI=;
- b=uapuoc4chheN8dIoEWKXxM32DXaomHrXkex0ToCzcxujPAjKWhs5G+R5al1/YHhLHm
- o0MADJ6xfhmAw5mh+lSLCxbg7Vj9hW2YeDgj5HqjLlxf8+iIVzfkNGUtTZG522ad236b
- rDzPKInRMAohO6mAIQPZclDEwwGRhV7PYeaoqTSWphPlccFKLNeOza+5IBcFodLyPL5l
- LrI/5MbuInRMHAUVIuZj8Dt6oauIX2ukyY2OKnXW3mY9anVPfTzod/CK0BuSuVCsROuk
- iO81I24PN4osiMT7rkJbkT1napb5jfvLwmneDNPseEYU1+36InEjrK+61fg3jjFDxku/
- bZwA==
-X-Gm-Message-State: AOAM530hLQLaAfLtXCjvypfIund6WhO3siTYGcuY3+UrolJWxhVcwDK5
- M6kGUV61gh7xRfksGQ28RVA=
-X-Received: by 2002:a17:906:538a:: with SMTP id
- g10mr18685060ejo.354.1593513925420; 
- Tue, 30 Jun 2020 03:45:25 -0700 (PDT)
-Received: from [192.168.1.40] (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id r19sm2388690edp.79.2020.06.30.03.45.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Jun 2020 03:45:24 -0700 (PDT)
-Subject: Re: [PATCH 5/5] hw/i2c: Document the I2C qdev helpers
-To: Markus Armbruster <armbru@redhat.com>
-References: <20200629173821.22037-1-f4bug@amsat.org>
- <20200629173821.22037-6-f4bug@amsat.org> <87zh8kg8qu.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <4f3eff51-57b0-f1c9-9d1d-f7d6eddcec80@amsat.org>
-Date: Tue, 30 Jun 2020 12:45:23 +0200
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jqxui-0005tg-2N
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 08:02:00 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:21874
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jqxue-0002cH-Sa
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 08:01:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593691315;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=S7+M1JaNvLwiUtKlmgwjnyZQXXDI9XLEyA276AzEKUk=;
+ b=Mlxd90l7/b00oyBfWqzNEvJ37xoTQx5pBXF+vkok5b/k1UMwkZhlv+o5Ha+fF8v4FMps9A
+ /isyZzAvIViXBE4ils6lL2vuhnovEkRMr46RS28+lzZkoLPVfFKC6mIEDih3NCGPhlRV4h
+ 510i2oOJws7vd2nYwun7Jj+NCQsW80k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-213-RHnWG7gDPMugbd1rp_Boog-1; Thu, 02 Jul 2020 08:01:51 -0400
+X-MC-Unique: RHnWG7gDPMugbd1rp_Boog-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 299CA107B768;
+ Thu,  2 Jul 2020 12:01:50 +0000 (UTC)
+Received: from [10.36.112.70] (ovpn-112-70.ams2.redhat.com [10.36.112.70])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E683E741AF;
+ Thu,  2 Jul 2020 12:01:47 +0000 (UTC)
+Subject: Re: [PATCH v7 0/5] VIRTIO-IOMMU probe request support and MSI bypass
+ on ARM
+To: "Michael S. Tsirkin" <mst@redhat.com>
+References: <20200629070404.10969-1-eric.auger@redhat.com>
+ <20200702072655-mutt-send-email-mst@kernel.org>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <e514c6d7-280f-6e18-659a-94854779451f@redhat.com>
+Date: Thu, 2 Jul 2020 14:01:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <87zh8kg8qu.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20200702072655-mutt-send-email-mst@kernel.org>
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x641.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 04:18:28
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -122,178 +120,114 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Jan Kiszka <jan.kiszka@web.de>, David Gibson <david@gibson.dropbear.id.au>
+Cc: peter.maydell@linaro.org, jean-philippe@linaro.org, armbru@redhat.com,
+ peterx@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ pbonzini@redhat.com, bbhushan2@marvell.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +d9dHGjhY3Fd
+X-TUID: u00NR+NdhoZ+
 
-On 6/30/20 12:15 PM, Markus Armbruster wrote:
-> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
-> 
->> In commit d88c42ff2c we added new prototype but neglected to
->> add their documentation. Fix that.
+Hi Michael,
+
+On 7/2/20 1:28 PM, Michael S. Tsirkin wrote:
+> On Mon, Jun 29, 2020 at 09:03:59AM +0200, Eric Auger wrote:
+>> By default the virtio-iommu translates MSI transactions. This
+>> behavior is inherited from ARM SMMU. However the virt machine
+>> code knows where the MSI doorbells are, so we can easily
+>> declare those regions as VIRTIO_IOMMU_RESV_MEM_T_MSI. With that
+>> setting the guest iommu subsystem will not need to map MSIs.
+>> This setup will simplify the VFIO integration.
 >>
->> Reported-by: Peter Maydell <peter.maydell@linaro.org>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  include/hw/i2c/i2c.h | 48 ++++++++++++++++++++++++++++++++++++++++++++
->>  1 file changed, 48 insertions(+)
+>> In this series, the ITS or GICV2M doorbells are declared as
+>> HW MSI regions to be bypassed by the VIRTIO-IOMMU.
 >>
->> diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
->> index c533058998..fcc61e509b 100644
->> --- a/include/hw/i2c/i2c.h
->> +++ b/include/hw/i2c/i2c.h
->> @@ -79,8 +79,56 @@ int i2c_send_recv(I2CBus *bus, uint8_t *data, bool send);
->>  int i2c_send(I2CBus *bus, uint8_t data);
->>  uint8_t i2c_recv(I2CBus *bus);
->>  
->> +/**
->> + * Create an I2C slave device on the heap.
->> + * @name: a device type name
->> + * @addr: I2C address of the slave when put on a bus
->> + *
->> + * This only initializes the device state structure and allows
->> + * properties to be set. Type @name must exist. The device still
->> + * needs to be realized. See qdev-core.h.
->> + */
->>  I2CSlave *i2c_slave_new(const char *name, uint8_t addr);
->> +
->> +/**
->> + * Create an I2C slave device on the heap.
+>> This also paves the way to the x86 integration where the MSI
+>> region, [0xFEE00000,0xFEEFFFFF], will be exposed by the q35
+>> machine.  However this will be handled in a separate series
+>> when not-DT support gets resolved.
 > 
-> Suggest "Create and realize ..."
 > 
->> + * @bus: I2C bus to put it on
->> + * @name: I2C slave device type name
->> + * @addr: I2C address of the slave when put on a bus
->> + *
->> + * Create the device state structure, initialize it, put it on the
->> + * specified @bus, and drop the reference to it (the device is realized).
->> + * Any error aborts the process.
+> virtio things:
 > 
-> Stick to imperative mood: Abort on error.
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 > 
-> Do we need the sentence?  Doc comments of object_new(), qdev_new() and
-> i2c_slave_new() don't have it, they document *preconditions* instead,
-> using "must", and rely on the tacit understanding that a function may
-> abort or crash when its documented preconditions aren't met.  Matter of
-> taste, I guess.
 > 
->> + */
->>  I2CSlave *i2c_slave_create_simple(I2CBus *bus, const char *name, uint8_t addr);
->> +
->> +/**
->> + * i2c_slave_realize_and_unref: realize and unref an I2C slave device
-> 
-> Either consistently waste space for repeating the function name at the
-> beginning of its doc comment, or consistently don't :)
-> 
-> qdev_realize_and_unref()'s doc comment says "and drop a reference"
-> instead of "unref", because "unref" is not a word.
-> 
->> + * @dev: I2C slave device to realize
->> + * @bus: I2C bus to put it on
->> + * @addr: I2C address of the slave on the bus
->> + * @errp: error pointer
-> 
-> $ git-grep -h "@errp:" | sort -u
->  *  @errp: pointer to Error*, to store an error if it happens
->  * @errp:   error object
->  * @errp: Error object
->  * @errp: Error object which may be set by job_complete(); this is not
->  * @errp: Error object.
->  * @errp: If an error occurs, a pointer to an area to store the error
->  * @errp: Output pointer for error information. Can be NULL.
->  * @errp: Pointer for reporting an #Error.
->  * @errp: Populated with an error in failure cases
->  * @errp: a pointer to an Error that is filled if getting/setting fails.
->  * @errp: a pointer to return the #Error object if an error occurs.
->  * @errp: an error indicator
->  * @errp: error
->  * @errp: error object
->  * @errp: error object handle
->  * @errp: handle to an error object
->  * @errp: if an error occurs, a pointer to an area to store the error
->  * @errp: indirect pointer to Error to be set
->  * @errp: location to store error
->  * @errp: location to store error information
->  * @errp: location to store error information.
->  * @errp: location to store error, will be set only for exception
->  * @errp: pointer to Error*, to store an error if it happens.
->  * @errp: pointer to NULL initialized error object
->  * @errp: pointer to a NULL initialized error object
->  * @errp: pointer to a NULL-initialized error object
->  * @errp: pointer to an error
->  * @errp: pointer to error object
->  * @errp: pointer to initialized error object
->  * @errp: pointer to uninitialized error object
-> 
-> Aside: gotta love these two.
-> 
->  * @errp: returns an error if this function fails
->  * @errp: set *errp if the check failed, with reason
->  * @errp: set in case of an error
->  * @errp: set on error
->  * @errp: unused
->  * @errp: where to put errors
-> 
-> Plenty of choice, recommend not to invent another one :)
-> 
->> + *
->> + * Call 'realize' on @dev, put it on the specified @bus, and drop the
->> + * reference to it. Errors are reported via @errp and by returning
->> + * false.
-> 
-> Recommend to use a separate paragraph for the return value.  Since your
-> comment style resembles GTK-Doc style[*], you may just as well use it
-> for the return value, like this:
-> 
->       Returns: %true on success, %false on failure.
-> 
-> By convention, it goes after the function description.
+> ARM tree makes sense for this, right?
 
-OK, I'll use whatever you prefer. Maybe the shorter the easier.
+Yes I think so.
 
-I will see if I can find to spend more time on this during the
-week-end, but I can't promise anything. Anyway since it is
-documentation it can be integrated during soft freeze.
+Thanks
 
-Thanks for your detailed review.
+Eric
+> 
+> 
+>> Best Regards
+>>
+>> Eric
+>>
+>> This series can be found at:
+>> https://github.com/eauger/qemu/tree/v5.0.0-virtio-iommu-msi-bypass-v7
+>>
+>> History:
+>>
+>> v6 -> v7:
+>> - fix the hint message
+>> - put the assert again on probe request
+>>
+>> v5 -> v6:
+>> - do not hardcode start/end addresses of doorbells
+>> - check reserved region type on realize()
+>>
+>> v4 -> v5:
+>> - Take into account some additional comments from Markus:
+>>   - reserved region type becomes an unsigned + some comment/desc
+>>     rewording
+>>   - assert if the type is not RESERVED or MSI
+>>
+>> v3 -> v4:
+>> - collected Jean and markus's R-bs
+>> - tool into account all Markus' comments in [1/5] (except removal of
+>>   goto)
+>> - use ':' as delimitor instead of commas
+>> - add example in 4/5 commit message as suggested by Markus
+>>
+>> v2 -> v3:
+>> - Introduce VIRT_MSI_CTRL_NONE in VirtMSIControllerType
+>> - do not fill the remainder of the probe buffer
+>>
+>> v1 -> v2:
+>> - check which MSI controller is in use and advertise the
+>>   corresponding MSI doorbell
+>> - managed for both ITS and GICv2M
+>> - various fixes spotted by Peter and Jean-Philippe, see
+>>   individual logs
+>>
+>> v1: Most of those patches were respinned from
+>>   [PATCH for-5.0 v11 00/20] VIRTIO-IOMMU device
+>>   except the last one which is new
+>>
+>>
+>> Eric Auger (5):
+>>   qdev: Introduce DEFINE_PROP_RESERVED_REGION
+>>   virtio-iommu: Implement RESV_MEM probe request
+>>   virtio-iommu: Handle reserved regions in the translation process
+>>   virtio-iommu-pci: Add array of Interval properties
+>>   hw/arm/virt: Let the virtio-iommu bypass MSIs
+>>
+>>  include/exec/memory.h            |   6 ++
+>>  include/hw/arm/virt.h            |   7 ++
+>>  include/hw/qdev-properties.h     |   3 +
+>>  include/hw/virtio/virtio-iommu.h |   2 +
+>>  include/qemu/typedefs.h          |   1 +
+>>  hw/arm/virt.c                    |  30 ++++++++
+>>  hw/core/qdev-properties.c        |  89 ++++++++++++++++++++++++
+>>  hw/virtio/virtio-iommu-pci.c     |  11 +++
+>>  hw/virtio/virtio-iommu.c         | 114 +++++++++++++++++++++++++++++--
+>>  hw/virtio/trace-events           |   1 +
+>>  10 files changed, 260 insertions(+), 4 deletions(-)
+>>
+>> -- 
+>> 2.20.1
+> 
+> 
 
-> 
->> + *
->> + * This function is useful if you have created @dev via qdev_new(),
->> + * i2c_slave_new() or i2c_slave_try_new() (which take a reference to
->> + * the device it returns to you), so that you can set properties on it
->> + * before realizing it. If you don't need to set properties then
->> + * i2c_slave_create_simple() is probably better (as it does the create,
->> + * init and realize in one step).
->> + *
->> + * If you are embedding the I2C slave into another QOM device and
->> + * initialized it via some variant on object_initialize_child() then
->> + * do not use this function, because that family of functions arrange
->> + * for the only reference to the child device to be held by the parent
->> + * via the child<> property, and so the reference-count-drop done here
->> + * would be incorrect.  (Instead you would want i2c_slave_realize(),
->> + * which doesn't currently exist but would be trivial to create if we
->> + * had any code that wanted it.)
->> + */
-> 
-> The advice on use is more elaborate qdev_realize_and_unref()'s.  That
-> one simply shows intended use.  I doubt we need more.  But as the person
-> who wrote qdev_realize_and_unref(), I'm singularly unqualified judging
-> the need ;)
-> 
->>  bool i2c_slave_realize_and_unref(I2CSlave *dev, I2CBus *bus, Error **errp);
->>  
->>  /* lm832x.c */
-> 
-> 
-> [*] A style I dislike, but it's common in QEMU, so you're certainly
-> entitled to use it.
-> 
-> 

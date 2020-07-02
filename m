@@ -1,104 +1,115 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1710782lfm;
-        Thu, 2 Jul 2020 11:01:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwbgLLpe6WhGEXjIB/NfYutV1SXw2ZoViRHG0+Rt6XmhmKj5LlSKEOXnKZaw1NkofVb8Nx7
-X-Received: by 2002:ab0:747:: with SMTP id h65mr18266992uah.42.1593712897861;
-        Thu, 02 Jul 2020 11:01:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593712897; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1386064lfm;
+        Thu, 2 Jul 2020 04:28:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzF3+LUwy18rFold2nEtA9iC9wv5Svtp0iCWqYpSBOou0lviMfg5ZDllDnn19f2X9q4XXtI
+X-Received: by 2002:a25:d6c1:: with SMTP id n184mr48724824ybg.303.1593689322378;
+        Thu, 02 Jul 2020 04:28:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593689322; cv=none;
         d=google.com; s=arc-20160816;
-        b=IBgG6cAym3ATWK+7e4e2jBYgu8QYlJja1i3z9w1u4Ch4FtqNtC7iNmkByibMt+44I0
-         OuDpFal194egu9xlW9suEgTh0m8XK59WxE5Y8VDGdl/Ki2w0+HRhuCj6b215eMe4nWAo
-         Lt20YlPejNS/yY8CHgD+eF73zIyDyOVFeJdFfqJkap+uFGCdzbmeJYwAyJbSli1vGzzU
-         Q+P6e1Bi4IirrEkP2X5ROHV2FVIU//1eFMMKjAtGfnqdMkECZZXmGMw2UVm5jvrElUpy
-         jll/1C1dbEyytPAUtad9GhDSJkV6HNVxeyaRGSt+n3DjVU7t8FA/iPgzBhSSsrDYbeuS
-         xWjg==
+        b=Db3zIEnfWl9uodc+EJM+uX0LMK1sPvm0Slb5zbx17yhCsNyCxjQ6mvg9qTOsdSXWE1
+         /dK/L3EJ4TEK0IcOA9/HGQ2RPpBYsa/TQAr1p6dO4X5YEFUickU6YEgUpiLMoWfWSDTN
+         oTEsTAUcs+FWKi+4ntKDBBt7FZnrOR4pZR3Cvn7t7aKvDySJ6ykmY6AMXqRBwdx0M95l
+         duxvP4KT+gw43LtV6CHdvszXU1xu/m1ryjKr4Myh4NJQ0YcYUG5iWaOzH6n7+CGPgV+E
+         3ZcESR8jBSo9Kaiwb8kNlO1moByjVv4J0NgOj+bow5id6bO5/+h2EGuYjLfY8atI59Kh
+         xxYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=87WrOvEx5pd5NM4gdmI4p9RF2+xCH4REdZ3M16qx6Pw=;
-        b=Urn56gToyCqng3EBqj3lOj4flj2LIMMJJsPV3TETUUkN5YAGkp6oRLMaM2jYqgIBl9
-         Ep7Gto0VoVjnG4MrOc/XYdXjJHVvVFonAby2+ugki21IqNkZ7FVllQraHQJ9JyK9lRVC
-         Aw7JOP6aLhdxOnDqyDWEF3Xcy7hv6lq8efrnAuhridXcJM9ULQxuxeMqmi40lVgwnoz2
-         rsmqRabkNLBYsL+ILWjd4XNyK4N281p5SXhR+OA4Z6M/oTarMuVDe7t0D+OjXlFKU6cC
-         KT5XsVT4f19gFPWwqwMdibkDDZj3NYw4NoBiETJCeMsO/bHklubHw+F6ZKR2UOdvbHa9
-         A6bA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=1GGrre2I4L7gxuhQn9Ve3HFQ9FQ6Kly7mSNdn0HGAPs=;
+        b=TROyi2TOBh0bDAX+/EAi632FZUWCi3Jr3+kzVzkMN7FXV9V+VV6viP8xHuBr7hXaOs
+         WdvxJaICP3wydI/8hHEe51JcvPtTp91KcRT2sc0qmXLQV1z7IUEeP4Z3hB1EUBhqNfW4
+         v/gishzo0JS4bkA0GcgBiUmN0Vq9BmM6FmEKX8RDoVQVu2Bc/3EinTtLR+vqYAnBiMM4
+         fL+wgBMzeHNAnhvkFXZdocCT5+Pt2HS5IYYYf/n9lKSm03CL9srDw6IYRv9MsOPp/tix
+         Bn8LVdG9ES0+1aroWecgjZS1NvasiGC/cEMZgufANwEmbm1uKFJTeCn3m4qpRGg/Y/Rh
+         FqYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aBzP1p01;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=flsQU3al;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l1si1403371vsn.358.2020.07.02.11.01.37
+        by mx.google.com with ESMTPS id f65si8843578ybi.147.2020.07.02.04.28.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jul 2020 11:01:37 -0700 (PDT)
+        Thu, 02 Jul 2020 04:28:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aBzP1p01;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=flsQU3al;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56696 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49898 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jr3Wj-0006J1-4I
-	for alex.bennee@linaro.org; Thu, 02 Jul 2020 14:01:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55254)
+	id 1jqxOT-0007CG-LG
+	for alex.bennee@linaro.org; Thu, 02 Jul 2020 07:28:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55746)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jr3W2-0005Ff-BG; Thu, 02 Jul 2020 14:00:54 -0400
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:45647)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jr3Vz-0004bb-Me; Thu, 02 Jul 2020 14:00:53 -0400
-Received: by mail-il1-x142.google.com with SMTP id o3so7625675ilo.12;
- Thu, 02 Jul 2020 11:00:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=87WrOvEx5pd5NM4gdmI4p9RF2+xCH4REdZ3M16qx6Pw=;
- b=aBzP1p014gIuxPp/7BqDGvOkOP/q5jWuyHcFW79WdBIAsPS0hGW7pV/BxWPBrvNLDY
- +HTYStVA1/QyWa3PkjE6bXIqs1oBX+KizGm57t8ihDYlujV98eb3oAR56Obg0gacPwkd
- gLxsBCgNV6I3TZ1JkMh1pKuO4RPO1gGm4ikQB79rP2l25fj2ZaeS5X3nvYa70Hlw67iL
- nQ+8+cRJpqNf2+K8Xuk4WK3XxEiq9g+8pe7nf0LN6eQx/nZN3OevQ0xGWE+86z9xo47u
- e2fdn9CXllCOl1PZYRaWfzrFWgCCxTBM0NV29E+WO0JxaP3WWO5f2psE26ibsh85vNJL
- AU9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=87WrOvEx5pd5NM4gdmI4p9RF2+xCH4REdZ3M16qx6Pw=;
- b=sDR8ra9GgCkcWLbkaDuOJsze4S5gvdifvsYniFIXifpPxIObJ0ETxQ2tauphXqWfsy
- 9R6BEbIz9RTZcEkWk7M7JxTguQr/taRFiWej9q5CWxZN8MYSgK9Rd9dIeI4BZOCt/Hx5
- olUnS0Zpw5bxaGAjwJZeSfSVZzl/Kv0KLzj0WLm0ZzXcHZDa2zq0yiyt+GIRuo1ezCP9
- gSQhBhH1Tg8Qpb1UEanMIHPG84JMV/j/Z//tVP/oTazNMBIcUuF6UEjlDzkojoy2vBAZ
- Dw9WYDvPGb6LPgciebrpaL21DfcIa3MTm9Uhmw1nJQrC2vZXM7BMVtFHyITDI77XT4t7
- RVbg==
-X-Gm-Message-State: AOAM533rTtchrVpRcrv0bjqVxLreW+tBTwHV5eWYxTO4SU8/lcUnS9dZ
- lqGUFZqGflGdJO2QwabDxxd2aHxyUc0nyyTAjB8=
-X-Received: by 2002:a92:d186:: with SMTP id z6mr14784980ilz.227.1593712849883; 
- Thu, 02 Jul 2020 11:00:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jqxFq-0006u9-MX
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 07:19:46 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:30481
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jqxFn-00053J-NE
+ for qemu-arm@nongnu.org; Thu, 02 Jul 2020 07:19:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593688782;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=1GGrre2I4L7gxuhQn9Ve3HFQ9FQ6Kly7mSNdn0HGAPs=;
+ b=flsQU3al2IsbfDz6DLlDwlkGuvT58TRY2FxsCKx7qN+YRtl/iQ9XXNkw9AY/YRZfMEt1cx
+ 2Lz5zrZpd74TsiX8xoxSAqUsoeooEbQsUtdyXljzr4Bkg7f3RVDj/jgP3HGtSKp4grHNVn
+ pT+35vgGCtvKU1VDkUeSLiZQjZj0AkU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-228-Xx6HiP5UN4C-zZTbuSLWwQ-1; Thu, 02 Jul 2020 07:19:38 -0400
+X-MC-Unique: Xx6HiP5UN4C-zZTbuSLWwQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 91707100CCC2;
+ Thu,  2 Jul 2020 11:19:37 +0000 (UTC)
+Received: from [10.36.112.70] (ovpn-112-70.ams2.redhat.com [10.36.112.70])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9E76619C66;
+ Thu,  2 Jul 2020 11:19:29 +0000 (UTC)
+Subject: Re: [PATCH v7 0/5] VIRTIO-IOMMU probe request support and MSI bypass
+ on ARM
+To: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, mst@redhat.com, armbru@redhat.com,
+ pbonzini@redhat.com, jean-philippe@linaro.org, bbhushan2@marvell.com,
+ peterx@redhat.com
+References: <20200629070404.10969-1-eric.auger@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <98ffd178-6240-2703-e305-730b288c791c@redhat.com>
+Date: Thu, 2 Jul 2020 13:19:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <20200628142429.17111-1-peter.maydell@linaro.org>
- <20200628142429.17111-17-peter.maydell@linaro.org>
-In-Reply-To: <20200628142429.17111-17-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 2 Jul 2020 10:51:03 -0700
-Message-ID: <CAKmqyKNa4ebaben_0eLBjR0C2f-LtCVXQk3LV4mPVPVm5+JQCg@mail.gmail.com>
-Subject: Re: [PATCH 16/17] hw/arm/spitz: Provide usual QOM macros for
- corgi-ssp and spitz-lcdtg
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x142.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+In-Reply-To: <20200629070404.10969-1-eric.auger@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.61;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/02 03:42:59
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,126 +122,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m3PJcD1B+ETu
+X-TUID: lqjynCqkI+cR
 
-On Sun, Jun 28, 2020 at 7:35 AM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> The QOM types "spitz-lcdtg" and "corgi-ssp" are missing the
-> usual QOM TYPE and casting macros; provide and use them.
->
-> In particular, we can safely use the QOM cast macros instead of
-> FROM_SSI_SLAVE() because in both cases the 'ssidev' field of
-> the instance state struct is the first field in it.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Hi,
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+On 6/29/20 9:03 AM, Eric Auger wrote:
+> By default the virtio-iommu translates MSI transactions. This
+> behavior is inherited from ARM SMMU. However the virt machine
+> code knows where the MSI doorbells are, so we can easily
+> declare those regions as VIRTIO_IOMMU_RESV_MEM_T_MSI. With that
+> setting the guest iommu subsystem will not need to map MSIs.
+> This setup will simplify the VFIO integration.
+> 
+> In this series, the ITS or GICV2M doorbells are declared as
+> HW MSI regions to be bypassed by the VIRTIO-IOMMU.
+> 
+> This also paves the way to the x86 integration where the MSI
+> region, [0xFEE00000,0xFEEFFFFF], will be exposed by the q35
+> machine.  However this will be handled in a separate series
+> when not-DT support gets resolved.
+> 
+> Best Regards
+> 
+> Eric
+> 
+> This series can be found at:
+> https://github.com/eauger/qemu/tree/v5.0.0-virtio-iommu-msi-bypass-v7
 
-Alistair
+A gentle reminder to make sure this series does not get forgotten before
+the freeze.
 
-> ---
->  hw/arm/spitz.c | 23 +++++++++++++++--------
->  1 file changed, 15 insertions(+), 8 deletions(-)
->
-> diff --git a/hw/arm/spitz.c b/hw/arm/spitz.c
-> index 49eae3fce4e..f020aff9747 100644
-> --- a/hw/arm/spitz.c
-> +++ b/hw/arm/spitz.c
-> @@ -579,6 +579,9 @@ static void spitz_keyboard_realize(DeviceState *dev, Error **errp)
->  #define LCDTG_PICTRL    0x06
->  #define LCDTG_POLCTRL   0x07
->
-> +#define TYPE_SPITZ_LCDTG "spitz-lcdtg"
-> +#define SPITZ_LCDTG(obj) OBJECT_CHECK(SpitzLCDTG, (obj), TYPE_SPITZ_LCDTG)
-> +
->  typedef struct {
->      SSISlave ssidev;
->      uint32_t bl_intensity;
-> @@ -616,7 +619,7 @@ static inline void spitz_bl_power(void *opaque, int line, int level)
->
->  static uint32_t spitz_lcdtg_transfer(SSISlave *dev, uint32_t value)
->  {
-> -    SpitzLCDTG *s = FROM_SSI_SLAVE(SpitzLCDTG, dev);
-> +    SpitzLCDTG *s = SPITZ_LCDTG(dev);
->      int addr;
->      addr = value >> 5;
->      value &= 0x1f;
-> @@ -645,7 +648,7 @@ static uint32_t spitz_lcdtg_transfer(SSISlave *dev, uint32_t value)
->
->  static void spitz_lcdtg_realize(SSISlave *ssi, Error **errp)
->  {
-> -    SpitzLCDTG *s = FROM_SSI_SLAVE(SpitzLCDTG, ssi);
-> +    SpitzLCDTG *s = SPITZ_LCDTG(ssi);
->      DeviceState *dev = DEVICE(s);
->
->      s->bl_power = 0;
-> @@ -664,6 +667,9 @@ static void spitz_lcdtg_realize(SSISlave *ssi, Error **errp)
->  #define SPITZ_GPIO_MAX1111_CS   20
->  #define SPITZ_GPIO_TP_INT       11
->
-> +#define TYPE_CORGI_SSP "corgi-ssp"
-> +#define CORGI_SSP(obj) OBJECT_CHECK(CorgiSSPState, (obj), TYPE_CORGI_SSP)
-> +
->  /* "Demux" the signal based on current chipselect */
->  typedef struct {
->      SSISlave ssidev;
-> @@ -673,7 +679,7 @@ typedef struct {
->
->  static uint32_t corgi_ssp_transfer(SSISlave *dev, uint32_t value)
->  {
-> -    CorgiSSPState *s = FROM_SSI_SLAVE(CorgiSSPState, dev);
-> +    CorgiSSPState *s = CORGI_SSP(dev);
->      int i;
->
->      for (i = 0; i < 3; i++) {
-> @@ -702,7 +708,7 @@ static void corgi_ssp_gpio_cs(void *opaque, int line, int level)
->  static void corgi_ssp_realize(SSISlave *d, Error **errp)
->  {
->      DeviceState *dev = DEVICE(d);
-> -    CorgiSSPState *s = FROM_SSI_SLAVE(CorgiSSPState, d);
-> +    CorgiSSPState *s = CORGI_SSP(d);
->
->      qdev_init_gpio_in(dev, corgi_ssp_gpio_cs, 3);
->      s->bus[0] = ssi_create_bus(dev, "ssi0");
-> @@ -714,10 +720,11 @@ static void spitz_ssp_attach(SpitzMachineState *sms)
->  {
->      void *bus;
->
-> -    sms->mux = ssi_create_slave(sms->mpu->ssp[CORGI_SSP_PORT - 1], "corgi-ssp");
-> +    sms->mux = ssi_create_slave(sms->mpu->ssp[CORGI_SSP_PORT - 1],
-> +                                TYPE_CORGI_SSP);
->
->      bus = qdev_get_child_bus(sms->mux, "ssi0");
-> -    sms->lcdtg = ssi_create_slave(bus, "spitz-lcdtg");
-> +    sms->lcdtg = ssi_create_slave(bus, TYPE_SPITZ_LCDTG);
->
->      bus = qdev_get_child_bus(sms->mux, "ssi1");
->      sms->ads7846 = ssi_create_slave(bus, "ads7846");
-> @@ -1220,7 +1227,7 @@ static void corgi_ssp_class_init(ObjectClass *klass, void *data)
->  }
->
->  static const TypeInfo corgi_ssp_info = {
-> -    .name          = "corgi-ssp",
-> +    .name          = TYPE_CORGI_SSP,
->      .parent        = TYPE_SSI_SLAVE,
->      .instance_size = sizeof(CorgiSSPState),
->      .class_init    = corgi_ssp_class_init,
-> @@ -1249,7 +1256,7 @@ static void spitz_lcdtg_class_init(ObjectClass *klass, void *data)
->  }
->
->  static const TypeInfo spitz_lcdtg_info = {
-> -    .name          = "spitz-lcdtg",
-> +    .name          = TYPE_SPITZ_LCDTG,
->      .parent        = TYPE_SSI_SLAVE,
->      .instance_size = sizeof(SpitzLCDTG),
->      .class_init    = spitz_lcdtg_class_init,
-> --
-> 2.20.1
->
->
+Best Regards
+
+Eric
+> 
+> History:
+> 
+> v6 -> v7:
+> - fix the hint message
+> - put the assert again on probe request
+> 
+> v5 -> v6:
+> - do not hardcode start/end addresses of doorbells
+> - check reserved region type on realize()
+> 
+> v4 -> v5:
+> - Take into account some additional comments from Markus:
+>   - reserved region type becomes an unsigned + some comment/desc
+>     rewording
+>   - assert if the type is not RESERVED or MSI
+> 
+> v3 -> v4:
+> - collected Jean and markus's R-bs
+> - tool into account all Markus' comments in [1/5] (except removal of
+>   goto)
+> - use ':' as delimitor instead of commas
+> - add example in 4/5 commit message as suggested by Markus
+> 
+> v2 -> v3:
+> - Introduce VIRT_MSI_CTRL_NONE in VirtMSIControllerType
+> - do not fill the remainder of the probe buffer
+> 
+> v1 -> v2:
+> - check which MSI controller is in use and advertise the
+>   corresponding MSI doorbell
+> - managed for both ITS and GICv2M
+> - various fixes spotted by Peter and Jean-Philippe, see
+>   individual logs
+> 
+> v1: Most of those patches were respinned from
+>   [PATCH for-5.0 v11 00/20] VIRTIO-IOMMU device
+>   except the last one which is new
+> 
+> 
+> Eric Auger (5):
+>   qdev: Introduce DEFINE_PROP_RESERVED_REGION
+>   virtio-iommu: Implement RESV_MEM probe request
+>   virtio-iommu: Handle reserved regions in the translation process
+>   virtio-iommu-pci: Add array of Interval properties
+>   hw/arm/virt: Let the virtio-iommu bypass MSIs
+> 
+>  include/exec/memory.h            |   6 ++
+>  include/hw/arm/virt.h            |   7 ++
+>  include/hw/qdev-properties.h     |   3 +
+>  include/hw/virtio/virtio-iommu.h |   2 +
+>  include/qemu/typedefs.h          |   1 +
+>  hw/arm/virt.c                    |  30 ++++++++
+>  hw/core/qdev-properties.c        |  89 ++++++++++++++++++++++++
+>  hw/virtio/virtio-iommu-pci.c     |  11 +++
+>  hw/virtio/virtio-iommu.c         | 114 +++++++++++++++++++++++++++++--
+>  hw/virtio/trace-events           |   1 +
+>  10 files changed, 260 insertions(+), 4 deletions(-)
+> 
+

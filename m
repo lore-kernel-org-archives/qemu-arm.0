@@ -1,116 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2814886lfm;
-        Fri, 3 Jul 2020 14:16:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwStMPc5QpWU0Z727r3lSuWwqns32Kvt07RZRGReA/bOViTMKq2+wjmiAgONwF5dTq5WVGe
-X-Received: by 2002:a25:808a:: with SMTP id n10mr44772691ybk.434.1593810961384;
-        Fri, 03 Jul 2020 14:16:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593810961; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2822980lfm;
+        Fri, 3 Jul 2020 14:30:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwUUO7pMsgPoABKnatVo2JumrBdtHV5opS7ImkPZY2BzFO6a+W6s3EANiqVmTg17JwEfSBR
+X-Received: by 2002:a5b:a89:: with SMTP id h9mr63995895ybq.93.1593811820540;
+        Fri, 03 Jul 2020 14:30:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593811820; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kzfe18MU5SJSBzyjv6p2dpGenhrLzO05xoSyJjka6eb4kS7uaPWaJoLwvumQnPE3mM
-         n5uVJfhSwPUhLPtqGa8cDi3TVkoVVF5lsC6wDJFXTtejlTcqipDHA9ePdyEJGZ+yrHze
-         74WTz9dY3SmBnmU2P4NBR457+zJ9bQxzCSwDu/93yaD2bs+4nksaK9Gjca0LT0+GrFKL
-         M8p2iOgxOlgPDyHO7hi+l2D4SJFHeV1JBHUvfaWMThtslpTfCyVw93n4sJmgL6kFIU/r
-         87RLGLT97O6CKBmmrv1k41KB5u061nugs+4QKRj4qpRaCRpTpZDH6X9MuERIWN3czNfG
-         J8fQ==
+        b=GUbcxPy1W4fmMoV2+C217swJfbuXNH5L0hIoZqhRfvLRkPBac6MNDzPkCL1LmPwvC/
+         9lB6OXAzb5zQwCfa+TBnWU/QYMYQ7aty4R1DE7IBl8slg85MAIdWuX0GqNir6HAAe43J
+         KWjBDfh2w9flYWRB/Q2CzGPxseVgs3KEBjasQwxBKA0I8NOCXqXcjUs002veLan8h+vx
+         biE1qkDoZggT7BjthcnIAIpY7M2Wxpw7rIFdtH3u5xMFMWyy3wrbRoP7F8AAazsSHr+U
+         SFJmBvxv67sO2ImLqgn7tqefTnhNhmozUVHLnjoFhh5gHNoy8UQa78KRjXQmVTEaAxcu
+         OyWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=QVYdKW8LXPkxZL2KE6aWM7nk/9iW09YPv1n3yc1coT4=;
-        b=eRtDgIr4SBlMq4sHRWtmwDckvcJYJbuvGxvrcwP2FN4DRYHAjfEd8M1GNUr7R3ABYO
-         dkz7R4+bCsO1LiWY+H8LRXkESlEqg9tZI1lFyuWenU+j1rBTrXtLx4UeQjzlzAu4egfe
-         9TS9IHwD2OBXQHyCU0qFplFT7GElMFADChYrvPnlDcVY3icGlmtLW8zpQuZ5ippUBR7w
-         cuSr8ohtD6CHN2kVj3zZa5Iz2B7Jq9KX0OLeR8ue1LBSs2Xyh3bT1oM2kafv04Gv0YBf
-         yk9YirJN2WHQsAKJ3jXdqpVSdTdlJIiZId+ye3itf4Qve9KlHGWeVHgPYYqO5JVWTF/n
-         bNdg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=bdqHm/d9bNw1faKINqMqSO1MowwyG968EE2fYGr009k=;
+        b=awmoGq4dy4OlWJ08AXZ3UxSS3s5uxi9rHrZImClp0y0iXW1CGJx9M1wmf5h7xTtfe7
+         ESosEtzlSyHINWKZC1bYOqaO39fv4bsGc6ZUQDFtMJwoEA+yg7EGvSQGeuEZiKV2V+jw
+         lJvaJgr5y3Km7T1he4U5xM2AFjlUIZrSZDup+ZeV5ukS2jT/oIbCnAFxCprKoYXkZZ9Y
+         /8VwQVwsvNmjOTCTcUByDSCOlJfbJ7Z3TYBHB7qP2XdTzMRoAgboc/Gq27Kz2V4ByNm1
+         DJr2780sWzPHWllk9wMjVqr5Urf+p/rzISFFKUQakPBMOiLatM//YR93YMvwA70PeXCV
+         4/aQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=vUUsb1n0;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pltvqIHp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i140si1459375yba.71.2020.07.03.14.16.01
+        by mx.google.com with ESMTPS id l5si12198725ybo.454.2020.07.03.14.30.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jul 2020 14:16:01 -0700 (PDT)
+        Fri, 03 Jul 2020 14:30:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=vUUsb1n0;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pltvqIHp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:59910 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39360 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrT2O-0000fA-JI
-	for alex.bennee@linaro.org; Fri, 03 Jul 2020 17:16:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48746)
+	id 1jrTGF-00070j-Tq
+	for alex.bennee@linaro.org; Fri, 03 Jul 2020 17:30:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51368)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jrT2G-0000f0-MO
- for qemu-arm@nongnu.org; Fri, 03 Jul 2020 17:15:52 -0400
-Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943]:44726)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1jrTG2-0006zb-Us; Fri, 03 Jul 2020 17:30:06 -0400
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:36780)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jrT2E-0005FR-DZ
- for qemu-arm@nongnu.org; Fri, 03 Jul 2020 17:15:52 -0400
-Received: by mail-ua1-x943.google.com with SMTP id g14so10406984ual.11
- for <qemu-arm@nongnu.org>; Fri, 03 Jul 2020 14:15:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1jrTG1-0000GO-27; Fri, 03 Jul 2020 17:30:06 -0400
+Received: by mail-il1-x143.google.com with SMTP id x9so28326720ila.3;
+ Fri, 03 Jul 2020 14:30:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=QVYdKW8LXPkxZL2KE6aWM7nk/9iW09YPv1n3yc1coT4=;
- b=vUUsb1n0lSWcmNOf5Sk8UNiBFR7zj+Tq3t/aivM9P/JCaywIHf6M/Wt3aBMh3J/4Od
- rjmi7Iy2+8ZvK+M0SGrw02QWfToeMS5/vy4NY0kSvl6pxIOZ8JkCQ8OKiArdZsaIj7gs
- RAaMXFouUeLktaz1SNz7nDkECWvUyi9rGBcSYOuZi/xa+rh/zDKJ0LGvpkgMCOFgg9yN
- nKVPEtbI9v21jH0CB2Ksg6+iQWoYDboWpviRTqcBzzVcfF7bivsUOr1mvwWYB9SwCUmC
- YOAtMIwObUqZ13JH70/roTVb82/3VQK9nS46T+ZrqC+XpH+42pZWsajOslhMDjZWeNIw
- DvyA==
+ :cc; bh=bdqHm/d9bNw1faKINqMqSO1MowwyG968EE2fYGr009k=;
+ b=pltvqIHprwCGI4PrrrhBWZqMZdr4PpogIM+IzNcQtX/88RlkNdcO+Fvvq5NW9wIllU
+ jK8z0iCE3/dZpp6nkoh68RoI39Zybqv1Qkq6k9lXcL2+cB6bKgg/vIj6c5+0S5/2Que2
+ U6+tNv+6Hr5c4U2RyAG8n2c804z6lK3Tvs6qYx6wPeB9rYyglQOV6k/BsA75SjHF/gb8
+ 1+8cYLIYQzXjn5GzqHtD8ZF6OKmfI01ZmVNRPDQKxGLUZg5+j4IKirQGDiQEcU+OXLei
+ hnJ8i4H86y3TVSmS9/KK0YOQgfoaWajCTnCTz/S9FGipe/oDN1izRuebYLhYxFq0hmHb
+ C7xA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=QVYdKW8LXPkxZL2KE6aWM7nk/9iW09YPv1n3yc1coT4=;
- b=EfDK3i1G+OD4HxRF4fGQ0FmGV5P7cua385gk7whdkC+RqPszM+jBv2bK9pypnUAW23
- eawHHEfkJpDarDKI2AYQdyNBDWgA3ZZL9Y4IQRHz8MYsjEfNEz633XjwQTlcxoE+KZIM
- xMobmsdFRq8ALOLfGS4MrUcxfhYumQsotzHwmixyIBP5946AnhOgEG4AMF3MmF/p0wQW
- GMwdTnuAcorzrBG1HppKzAzn3qc1CB//MAPRGhqzQ0jGdD3f+5VCfoQ0+S1Zwb45w0pN
- w9aX/YqbzKBEP2WSiDK2aobAP3/zQqzMYV2K/2DwD/pJ91CwNhs5Xq4eHns1IP8wZXHp
- LGfg==
-X-Gm-Message-State: AOAM5331YGb0yE1viyvg6vkQedlp2QP59J/3riB4UVWJWWxCXM4ySdAY
- N1D0PJiZ3pu1mOgk2pUNfLi0J9Q0NoLSrzD75GVrAQ==
-X-Received: by 2002:ab0:2b08:: with SMTP id e8mr17248847uar.119.1593810949038; 
- Fri, 03 Jul 2020 14:15:49 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=bdqHm/d9bNw1faKINqMqSO1MowwyG968EE2fYGr009k=;
+ b=WfKyRvHvGS18bR7JaGAMd+S73OKtOMDfDq2yZKToZuLohQtVXoEw0Oq7ED8/iUugXC
+ 0ge1vDNYvu45M5Xnyp8e9N9H3sVzpOP4d0+OZoHs+V3sqeAWRDcxGnGfZHPuy1XwOakT
+ k/PZDsNQvTV7QJr1ill5vagmq/W9wfiK0BptiuUld2rEAZ0C+2iMfTz+Yjptaf2jGZWd
+ hhcB5oeKU9AlQEK61SZ4+VRsEoUDRvFLyT64dbLQBX3P9IKlVs//J9yy0cGHVB9ALVPe
+ OwR2C/reGYGFPuYcpxhYwE4AJI1P+HSa5OEm5hWOLgIA7KskTCWNEBI+VRepiwi53ECW
+ qOZg==
+X-Gm-Message-State: AOAM5322ux4NpjkvsjgmcTrVlklAOu95ndegJ/ZRExYNUdncuyLGHQRh
+ zPk9H/RNDu0tEuwNd6NvDgSgydlaz27S2BEw6/M=
+X-Received: by 2002:a92:794f:: with SMTP id u76mr18066005ilc.215.1593811802541; 
+ Fri, 03 Jul 2020 14:30:02 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200626235519.591734-1-hskinnemoen@google.com>
- <CAFEAcA_3y3XoF6BsYUt19f2CvyseahSEZWfY0iQxByJKaMA29w@mail.gmail.com>
- <296f281f-e045-e794-1a1b-4e311b6408b2@redhat.com>
-In-Reply-To: <296f281f-e045-e794-1a1b-4e311b6408b2@redhat.com>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Fri, 3 Jul 2020 14:15:37 -0700
-Message-ID: <CAFQmdRbOKFxxxgR0hqcnABxn+jSBr349159m45TJLawVmnhR3Q@mail.gmail.com>
-Subject: Re: [PATCH v3 00/12] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC
- machines
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, 
- QEMU Developers <qemu-devel@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::943;
- envelope-from=hskinnemoen@google.com; helo=mail-ua1-x943.google.com
+References: <20200703184952.4918-1-f4bug@amsat.org>
+ <20200703184952.4918-2-f4bug@amsat.org>
+In-Reply-To: <20200703184952.4918-2-f4bug@amsat.org>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Fri, 3 Jul 2020 23:29:52 +0200
+Message-ID: <CAPan3WqP1g3Cje99soKHpq_qVo-iWJ3VFwG7+6mt3=S2W8VBjA@mail.gmail.com>
+Subject: Re: [PATCH 1/2] hw/arm: Use TYPE_SYSBUS_OHCI instead of hardcoded
+ string
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="00000000000054547105a9903aa4"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-il1-x143.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -185
-X-Spam_score: -18.6
-X-Spam_bar: ------------------
-X-Spam_report: (-18.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=_AUTOLEARN
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,44 +110,207 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ QEMU Developers <qemu-devel@nongnu.org>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c1cdq2LWNKEl
+X-TUID: eCLeDVAoSSJU
 
-On Fri, Jul 3, 2020 at 6:35 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om> wrote:
+--00000000000054547105a9903aa4
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Jul 3, 2020, 20:49 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wr=
+ote:
+
+> By using the TYPE_* definitions for devices, we can:
+> - quickly find where devices are used with 'git-grep'
+> - easily rename a non-user-creatable device (one-line change).
 >
-> On 7/3/20 2:27 PM, Peter Maydell wrote:
-> > On Sat, 27 Jun 2020 at 00:55, Havard Skinnemoen <hskinnemoen@google.com=
-> wrote:
-> >>
-> >> Time for another refresh of this patchset. Sorry it took so long -- I'=
-ve been
-> >> trying to figure out why the Winbond flash model isn't working with
-> >> npcm750-evb, and I'm fairly convinced the number of dummy cycles in DI=
-O mode
-> >> should be 4, not 1. Unfortunately, I don't see any other machines usin=
-g Winbond
-> >> flash in DIO mode, so it's hard to prove that it's correct. I'm planni=
-ng to
-> >> post a libqos-based test suite separately.
-> >>
-> >> I'm also planning to add the vbootrom to qemu as a submodule, similar =
-to the
-> >> other roms, but not in this pathset (let me know if you do want me to =
-include
-> >> this in the series).
-> >
-> > Hi; it looks like codewise this patchset is ready to go in
-> > and it's all been reviewed. I see however that all the
-> > new files are GPL-v2-only. We usually prefer GPL-v2-or-later
-> > for new code: is it possible to use that license instead ?
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 >
-> This series has been posted before Markus qdev & error cleanups.
-> Maybe some newer error patterns should be used now instead?
+Reviewed-By: Niek Linnenbank <nieklinnenbank@gmail.com>
 
-I'm not sure if I understand exactly what you're referring to, but
-I'll do 'git log origin/master --author=3Darmbru@redhat.com' to see if I
-can apply any similar fixes or cleanups to this series.
+---
+>  hw/arm/allwinner-h3.c | 9 +++++----
+>  hw/arm/pxa2xx.c       | 3 ++-
+>  2 files changed, 7 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+> index 8e09468e86..231d9ad647 100644
+> --- a/hw/arm/allwinner-h3.c
+> +++ b/hw/arm/allwinner-h3.c
+> @@ -28,6 +28,7 @@
+>  #include "hw/sysbus.h"
+>  #include "hw/char/serial.h"
+>  #include "hw/misc/unimp.h"
+> +#include "hw/usb/hcd-ohci.h"
+>  #include "hw/usb/hcd-ehci.h"
+>  #include "hw/loader.h"
+>  #include "sysemu/sysemu.h"
+> @@ -381,16 +382,16 @@ static void allwinner_h3_realize(DeviceState *dev,
+> Error **errp)
+>                           qdev_get_gpio_in(DEVICE(&s->gic),
+>                                            AW_H3_GIC_SPI_EHCI3));
+>
+> -    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI0],
+> +    sysbus_create_simple(TYPE_SYSBUS_OHCI, s->memmap[AW_H3_OHCI0],
+>                           qdev_get_gpio_in(DEVICE(&s->gic),
+>                                            AW_H3_GIC_SPI_OHCI0));
+> -    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI1],
+> +    sysbus_create_simple(TYPE_SYSBUS_OHCI, s->memmap[AW_H3_OHCI1],
+>                           qdev_get_gpio_in(DEVICE(&s->gic),
+>                                            AW_H3_GIC_SPI_OHCI1));
+> -    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI2],
+> +    sysbus_create_simple(TYPE_SYSBUS_OHCI, s->memmap[AW_H3_OHCI2],
+>                           qdev_get_gpio_in(DEVICE(&s->gic),
+>                                            AW_H3_GIC_SPI_OHCI2));
+> -    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI3],
+> +    sysbus_create_simple(TYPE_SYSBUS_OHCI, s->memmap[AW_H3_OHCI3],
+>                           qdev_get_gpio_in(DEVICE(&s->gic),
+>                                            AW_H3_GIC_SPI_OHCI3));
+>
+> diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+> index f104a33463..1e8a1cbc24 100644
+> --- a/hw/arm/pxa2xx.c
+> +++ b/hw/arm/pxa2xx.c
+> @@ -22,6 +22,7 @@
+>  #include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/ssi/ssi.h"
+> +#include "hw/usb/hcd-ohci.h"
+>  #include "chardev/char-fe.h"
+>  #include "sysemu/blockdev.h"
+>  #include "sysemu/qtest.h"
+> @@ -2196,7 +2197,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_spac=
+e,
+>          s->ssp[i] =3D (SSIBus *)qdev_get_child_bus(dev, "ssi");
+>      }
+>
+> -    sysbus_create_simple("sysbus-ohci", 0x4c000000,
+> +    sysbus_create_simple(TYPE_SYSBUS_OHCI, 0x4c000000,
+>                           qdev_get_gpio_in(s->pic, PXA2XX_PIC_USBH1));
+>
+>      s->pcmcia[0] =3D pxa2xx_pcmcia_init(address_space, 0x20000000);
+> --
+> 2.21.3
+>
+>
 
-Havard
+--00000000000054547105a9903aa4
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Fri, Jul 3, 2020, 20:49 Philippe Mathieu-Daud=C3=A9=
+ &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt; wrote:<br><=
+/div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-le=
+ft:1px #ccc solid;padding-left:1ex">By using the TYPE_* definitions for dev=
+ices, we can:<br>
+- quickly find where devices are used with &#39;git-grep&#39;<br>
+- easily rename a non-user-creatable device (one-line change).<br>
+<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
+t.org" target=3D"_blank" rel=3D"noreferrer">f4bug@amsat.org</a>&gt;<br></bl=
+ockquote></div></div><div dir=3D"auto">Reviewed-By: Niek Linnenbank &lt;<a =
+href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;</=
+div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quote=
+"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:=
+1px #ccc solid;padding-left:1ex">
+---<br>
+=C2=A0hw/arm/allwinner-h3.c | 9 +++++----<br>
+=C2=A0hw/arm/pxa2xx.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 3 ++-<br>
+=C2=A02 files changed, 7 insertions(+), 5 deletions(-)<br>
+<br>
+diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c<br>
+index 8e09468e86..231d9ad647 100644<br>
+--- a/hw/arm/allwinner-h3.c<br>
++++ b/hw/arm/allwinner-h3.c<br>
+@@ -28,6 +28,7 @@<br>
+=C2=A0#include &quot;hw/sysbus.h&quot;<br>
+=C2=A0#include &quot;hw/char/serial.h&quot;<br>
+=C2=A0#include &quot;hw/misc/unimp.h&quot;<br>
++#include &quot;hw/usb/hcd-ohci.h&quot;<br>
+=C2=A0#include &quot;hw/usb/hcd-ehci.h&quot;<br>
+=C2=A0#include &quot;hw/loader.h&quot;<br>
+=C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
+@@ -381,16 +382,16 @@ static void allwinner_h3_realize(DeviceState *dev, Er=
+ror **errp)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0AW_H3_GIC_SPI_EHCI3));<br>
+<br>
+-=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;memmap[A=
+W_H3_OHCI0],<br>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_SYSBUS_OHCI, s-&gt;memmap[AW_H3_OH=
+CI0],<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0AW_H3_GIC_SPI_OHCI0));<br>
+-=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;memmap[A=
+W_H3_OHCI1],<br>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_SYSBUS_OHCI, s-&gt;memmap[AW_H3_OH=
+CI1],<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0AW_H3_GIC_SPI_OHCI1));<br>
+-=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;memmap[A=
+W_H3_OHCI2],<br>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_SYSBUS_OHCI, s-&gt;memmap[AW_H3_OH=
+CI2],<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0AW_H3_GIC_SPI_OHCI2));<br>
+-=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;memmap[A=
+W_H3_OHCI3],<br>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_SYSBUS_OHCI, s-&gt;memmap[AW_H3_OH=
+CI3],<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0AW_H3_GIC_SPI_OHCI3));<br>
+<br>
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c<br>
+index f104a33463..1e8a1cbc24 100644<br>
+--- a/hw/arm/pxa2xx.c<br>
++++ b/hw/arm/pxa2xx.c<br>
+@@ -22,6 +22,7 @@<br>
+=C2=A0#include &quot;hw/irq.h&quot;<br>
+=C2=A0#include &quot;hw/qdev-properties.h&quot;<br>
+=C2=A0#include &quot;hw/ssi/ssi.h&quot;<br>
++#include &quot;hw/usb/hcd-ohci.h&quot;<br>
+=C2=A0#include &quot;chardev/char-fe.h&quot;<br>
+=C2=A0#include &quot;sysemu/blockdev.h&quot;<br>
+=C2=A0#include &quot;sysemu/qtest.h&quot;<br>
+@@ -2196,7 +2197,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_space,=
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;ssp[i] =3D (SSIBus *)qdev_get_child=
+_bus(dev, &quot;ssi&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+-=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, 0x4c000000,<br=
+>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_SYSBUS_OHCI, 0x4c000000,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(s-&gt;pic, PXA2XX_PIC_USBH1));<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0s-&gt;pcmcia[0] =3D pxa2xx_pcmcia_init(address_space, 0=
+x20000000);<br>
+-- <br>
+2.21.3<br>
+<br>
+</blockquote></div></div></div>
+
+--00000000000054547105a9903aa4--

@@ -1,94 +1,95 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2784210lfm;
-        Fri, 3 Jul 2020 13:27:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxLJN5LQeWYSJcA2aJaYt5kDLPEAiJoVeoKnK0ULuWyNaJQtFDtccDLk2l54rQuQVRZ3nsa
-X-Received: by 2002:a25:bfc5:: with SMTP id q5mr52153153ybm.475.1593808036389;
-        Fri, 03 Jul 2020 13:27:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593808036; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2784542lfm;
+        Fri, 3 Jul 2020 13:27:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyy05z2L/MthQn001wm6561FQvEhPpzA6FlW0ewwPIMExhbbnFp3Xy6jAfRhHodud3abSbc
+X-Received: by 2002:a25:ab10:: with SMTP id u16mr51848538ybi.377.1593808065586;
+        Fri, 03 Jul 2020 13:27:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593808065; cv=none;
         d=google.com; s=arc-20160816;
-        b=cWmpHq3aiGTtjvf7uUFSfzrR/2ZFbcCnhAzgOXt5o/AzBjyNdXrr4dhfhwYNd0MK6u
-         PjRDJGrGpy9mJMk6qnvTQNgzSFJsC0hDuw1UeFlfMHkZ3Lj49MnTTkFglV33PF8nfzKv
-         c/W5q7HDIkavlEqWPikzZgi1AtsI5mDZWUnbhUM0CNoiZTXwJfdfR+VRhcHxePcRwF75
-         DkrGh6URM1R39JzHVSbrCKEIjVParFAjOazhq28V2unkQhrfFMKZlH48ekUCDBghCdky
-         slO7wv0QGwEn4Qui67izASXU2+icEwGu9Ni8SKUDiNJITdmYevgzOXDJ0tqiQ3nymvD/
-         U30A==
+        b=ziLw2xpyT1csBvkY/4+8z7kdIj+L0eRkgWt4+bTDlnkOsAov3mzijMxBFsv+i59Vfh
+         4kRuC3LnPwq5h2OyZgeyGQlYn+Wa3WdrBp21kFrMFOLXuBtu94AoJSi5sAaz1DNXH6/X
+         772g3UwCcMTYJU7ay3dLYJ0wv8rQmAkQxWMAE4zbbyohZDWofybP6taGkPvT7S+KU47y
+         DTXLFvv/C3IT7eAaaa3AcJlBqDDBB8dJSzJAEGLQa8XBAJ58VGmwagTt8nNpOHNBlCyy
+         TjKy4KOf6UbqVMIEfO3uYMtkuWNKCHbDifs5ZATDxQbp+qpzL4d/lZy6A8iZufpW4xLm
+         VKtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=T5nJI2LUTbVg1rYYlvNxvcvN3Wxzp57Pf4RjUCFDYTw=;
-        b=DOaEVDhJCcxUA8t23D4I0q0dUm86dLyultnr+5xCo/vdBUcjiyI2/xeoE59jGobzcS
-         t99lRJM1DJ1VkIxejG4WmkZRVZ835lsSKmrLgkAhzxTdB2YXahv4E0TWZ7V+nQOq9Nfu
-         vJbUKKbZDBwZiUPBMCejfQ/LNiYGzE7AbaBRM+BVVV6H/8wfHgmjdwPeFeW5zDzPr1Nr
-         RlVN7JLmuJc4sbRL0V6tfrq/3zRnO0GTFlSoL+CqFSni0GpJdC5f1PuJmbcxQFPLf+rV
-         SjLEwhbzFHjvxOx4LwgVPMIIxqv5OL1ujnQdmUs8bguaXyUiQ5Hug0Ezjsu4GpMJ9IDf
-         I00w==
+        bh=kJoG6XnRiQVGgmRb/J8imecGQI2+tmstpB8uqDWyxdQ=;
+        b=jOc9fTPLLCQaHYJqXhwSZ6+IvxM8vvzJUjo2SQxILtQXAvPTlBSTNZF6FY1WYGuxp/
+         fLgBAWQUsKoRYiYJdgnPFYfBcz+2xX33aKpTIy3dCCoes346OJpOqnunbGKRrFsRRdW+
+         V0e26IM/bvNVeC1kVuqDXvDjSg34/PSdm3I6amBk3A5o0YnMkhv5AxXmlBSGCev2bkF6
+         QvrNs/GlR2u9eJWo7njQbXBPJS2A6MixPXJuewt0AQCeJ27V1rr9qYXy+2p5LFXjDBk8
+         1W/MfRoZUsEf5nvmPomnPxV4I7kwCJepZ0oIXVu8irKrfB/aLkLgeP9qyN63MQy6kgpH
+         NSeQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hCS1tXol;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jjyJRfP1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d7si11711393ybk.453.2020.07.03.13.27.16
+        by mx.google.com with ESMTPS id y4si13968093ybk.397.2020.07.03.13.27.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jul 2020 13:27:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Jul 2020 13:27:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hCS1tXol;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jjyJRfP1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49346 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50982 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrSHD-0007EK-Nx
-	for alex.bennee@linaro.org; Fri, 03 Jul 2020 16:27:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35406)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jrSHg-0007s8-VO
+	for alex.bennee@linaro.org; Fri, 03 Jul 2020 16:27:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35458)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrS9q-00008I-JZ; Fri, 03 Jul 2020 16:19:38 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51691)
+ id 1jrS9u-0000JS-KI; Fri, 03 Jul 2020 16:19:42 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:44276)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrS9p-0001X5-2G; Fri, 03 Jul 2020 16:19:38 -0400
-Received: by mail-wm1-x344.google.com with SMTP id 22so33117264wmg.1;
- Fri, 03 Jul 2020 13:19:36 -0700 (PDT)
+ id 1jrS9t-0001Ys-5D; Fri, 03 Jul 2020 16:19:42 -0400
+Received: by mail-wr1-x442.google.com with SMTP id b6so33931185wrs.11;
+ Fri, 03 Jul 2020 13:19:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=T5nJI2LUTbVg1rYYlvNxvcvN3Wxzp57Pf4RjUCFDYTw=;
- b=hCS1tXol16rSXoExw49au2z42P2i8sMa9LCJuDoYnvB9NPrR09uWTPhNhrWZEi7B+C
- AeDSbaNQbIHOMjtUtsjVSwSa0nxOsnXh3HP7ufPkyN0D3sNWSXCSDtte5yfC5elh0MOc
- Pj5Gl8t+Dv9VNIXc8e/e36hjJXHYJXuy/T3h0DN59nvSV4WAm6NWECP1ZJqI1utLkj7I
- zNiiCVRPxFeGWIOwHbBWU4rXG8bpR8L2kATfJkQC2p/dfuHKEY7BpFWq/oash/kByRV+
- RHgO6o7LtZenaqJeFmQvlYVE7IPzo5DyBNwXsGm/JMA+4MXxhr+VvhI0IiPgWFgM8Eca
- Daow==
+ bh=kJoG6XnRiQVGgmRb/J8imecGQI2+tmstpB8uqDWyxdQ=;
+ b=jjyJRfP100XodI7htnK3FQVzapwwPo39D5cQ/hYYosaqtKyRU7MxSxvJpZhTvdCldc
+ lqlFhOUEpScfxNRs1CteN0vgeah8ciRNWTi1L3Rb6bFaGImQAa2J9yBiZJSr+lCtqJn2
+ DKAzSBm+5B/hscTuUs+wc070Qdw5kdNokHU5A+oMslXfG6PhKc5YZPFxSJ0vQ+QiiMVq
+ xrWSD6T1wZQXFFgHAyKkEoBUpJDnf0iaSCsAS1an3Dw2dPMobEKLHd4PNjpLml9WayKF
+ b3Z9YTRXlUXp3m8BbT4eZuIE5klIl480oRfgfGhbWi5NVHhf0ZPdl57uopmWzvof5ZKl
+ YvpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=T5nJI2LUTbVg1rYYlvNxvcvN3Wxzp57Pf4RjUCFDYTw=;
- b=S7HHGdCxCfHA+JIKq9McWyrqJOV4aCQna1IUA4/D0/KqMhKSKV04fIg0QlxbI6FawQ
- TzbjrlEoxFxcatH+SAqFfReHu8lihqxSgYzY2pB9WiYi96qvBB00ppe8vyKxfwhdANhV
- XHP+H6JIvsbipxjXE3eUnXVoqv7Sfjkfq9+j+8d1WGxcDszc7B8PA9MbQUvQTzfvSr1E
- 9MUCcoHuS8DjiRdKkFfWXJjP/X4jOgcTkY8Yiw5oUirOcx2R5vDmRW9zYivzmpv0DqYn
- lscJScVEqxJ9RZU6inzXkSd3U/JSzclJq4jJre4iGlp3o67GjJR3gbApO9poRq8ka4B0
- 7dAg==
-X-Gm-Message-State: AOAM5304a/C3aHJlmzyBucZ1jpXq6yKMmB4XgttZ95JKbGPTzmTHk8+E
- 9ggw0QuZYjie3GoEy0bLnZUTdL8lnSc=
-X-Received: by 2002:a1c:f007:: with SMTP id a7mr38215884wmb.103.1593807575224; 
- Fri, 03 Jul 2020 13:19:35 -0700 (PDT)
+ bh=kJoG6XnRiQVGgmRb/J8imecGQI2+tmstpB8uqDWyxdQ=;
+ b=XxQ8s+ELNMcwJ2ajxZYbfKnkzwX/zrQ78thAvOnc1DGLStV1EEVaPYNcGJT1eDGnN2
+ W2FAg3X084+EJn+rK+nwIE9m8vuUm8A4Etx5r8KeNRRJiG3A03cAZFk556xDmbigu2CU
+ 4wxFNdFQ6Tb5afVzpf3cvydifraHB94m88mIYzTDYHX9N6W4tEA3l+EXcIhZLGS7QSbx
+ v0f6id4LMgkJuHhkMy7p614gkOfHj4+9rk7ASkxni6whj8sOUpgKtqN1V8SAdHsVai5h
+ RqxYX987Khwf/Xs359Ybznn+3GYp0itR7nCRAjPw0ollYY4OMeRZ8j6X/6wZ+0nhigXK
+ NSUw==
+X-Gm-Message-State: AOAM531+OTFE0rqMwoFviw8HBq16ZLcC2xB1MI5M/7a06CfsWVp5c+2e
+ eOmK25KKvrImJRZcCzm/keadTfQATL4=
+X-Received: by 2002:adf:ecc8:: with SMTP id s8mr38884277wro.317.1593807579413; 
+ Fri, 03 Jul 2020 13:19:39 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id u65sm14229625wmg.5.2020.07.03.13.19.33
+ by smtp.gmail.com with ESMTPSA id u65sm14229625wmg.5.2020.07.03.13.19.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Jul 2020 13:19:34 -0700 (PDT)
+ Fri, 03 Jul 2020 13:19:38 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 15/18] hw/misc/unimp: Mark the device with no migratable fields
-Date: Fri,  3 Jul 2020 22:19:08 +0200
-Message-Id: <20200703201911.26573-16-f4bug@amsat.org>
+Subject: [RFC PATCH 18/18] hw/core/qdev: Display warning for devices missing
+ migration state
+Date: Fri,  3 Jul 2020 22:19:11 +0200
+Message-Id: <20200703201911.26573-19-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200703201911.26573-1-f4bug@amsat.org>
 References: <20200703201911.26573-1-f4bug@amsat.org>
@@ -96,8 +97,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -108,17 +109,17 @@ X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
@@ -129,34 +130,91 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vuew0nfeOzMr
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6nIU7RmcCY9d
 
-This device doesn't have fields to migrate. Be explicit
-by using vmstate_qdev_no_state_to_migrate.
+When built with --enable-qdev-debug, QEMU displays warnings
+listing devices missing migration state:
+
+  $ qemu-system-arm -S -M spitz
+  qemu-system-arm: warning: missing migration state for type: 'pxa270-c0-arm-cpu'
+  qemu-system-arm: warning: missing migration state for type: 'serial'
+  qemu-system-arm: warning: missing migration state for type: 'pxa2xx-pcmcia'
+  qemu-system-arm: warning: missing migration state for type: 'pxa2xx-pcmcia'
+  qemu-system-arm: warning: missing migration state for type: 'pxa2xx-i2c-slave'
+  qemu-system-arm: warning: missing migration state for type: 'pxa2xx-i2c-slave'
+  qemu-system-arm: warning: missing migration state for type: 'ads7846'
+  qemu-system-arm: warning: missing migration state for type: 'max1111'
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/misc/unimp.c | 1 +
- 1 file changed, 1 insertion(+)
+RFC because there might be something simpler than --enable-qdev-debug.
 
-diff --git a/hw/misc/unimp.c b/hw/misc/unimp.c
-index bc4084d344..8a0db25a77 100644
---- a/hw/misc/unimp.c
-+++ b/hw/misc/unimp.c
-@@ -79,6 +79,7 @@ static void unimp_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
+ configure      | 9 +++++++++
+ hw/core/qdev.c | 5 +++++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/configure b/configure
+index 8a65240d4a..d38efd5605 100755
+--- a/configure
++++ b/configure
+@@ -441,6 +441,7 @@ edk2_blobs="no"
+ pkgversion=""
+ pie=""
+ qom_cast_debug="yes"
++qdev_debug="no"
+ trace_backends="log"
+ trace_file="trace"
+ spice=""
+@@ -1124,6 +1125,10 @@ for opt do
+   ;;
+   --enable-qom-cast-debug) qom_cast_debug="yes"
+   ;;
++  --disable-qdev-debug) qdev_debug="no"
++  ;;
++  --enable-qdev-debug) qdev_debug="yes"
++  ;;
+   --disable-virtfs) virtfs="no"
+   ;;
+   --enable-virtfs) virtfs="yes"
+@@ -6966,6 +6971,7 @@ echo "gcov enabled      $gcov"
+ echo "TPM support       $tpm"
+ echo "libssh support    $libssh"
+ echo "QOM debugging     $qom_cast_debug"
++echo "QDEV debugging    $qdev_debug"
+ echo "Live block migration $live_block_migration"
+ echo "lzo support       $lzo"
+ echo "snappy support    $snappy"
+@@ -7594,6 +7600,9 @@ fi
+ if test "$qom_cast_debug" = "yes" ; then
+   echo "CONFIG_QOM_CAST_DEBUG=y" >> $config_host_mak
+ fi
++if test "$qdev_debug" = "yes" ; then
++  echo "CONFIG_QDEV_DEBUG=y" >> $config_host_mak
++fi
+ if test "$rbd" = "yes" ; then
+   echo "CONFIG_RBD=m" >> $config_host_mak
+   echo "RBD_CFLAGS=$rbd_cflags" >> $config_host_mak
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index 0d18bc6d93..c2da1e0509 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -932,6 +932,11 @@ static void device_set_realized(Object *obj, bool value, Error **errp)
+                                                &local_err) < 0) {
+                 goto post_realize_fail;
+             }
++        } else {
++#ifdef CONFIG_QDEV_DEBUG
++            warn_report("missing migration state for type: '%s'",
++                        object_get_typename(OBJECT(dev)));
++#endif
+         }
  
-     dc->realize = unimp_realize;
-+    dc->vmsd = vmstate_qdev_no_state_to_migrate;
-     device_class_set_props(dc, unimp_properties);
- }
- 
+         /*
 -- 
 2.21.3
 

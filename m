@@ -1,110 +1,109 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2721777lfm;
-        Fri, 3 Jul 2020 11:50:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxO0uafCV2F4mTXuG3vl8CISvcUbBsnFFxKYarEZUO3L1LSS1TEgugcox8mJH18iYgNdYOF
-X-Received: by 2002:a25:3586:: with SMTP id c128mr60066596yba.494.1593802233335;
-        Fri, 03 Jul 2020 11:50:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593802233; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2743334lfm;
+        Fri, 3 Jul 2020 12:25:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw9aGBnDdTgRqg3F9laE/z7O6KQg8zDkKYnrhk6MhYGvnq2Vqlhy3f1MM/IwRMhWbvtFWqX
+X-Received: by 2002:a25:a128:: with SMTP id z37mr62302734ybh.218.1593804335511;
+        Fri, 03 Jul 2020 12:25:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593804335; cv=none;
         d=google.com; s=arc-20160816;
-        b=rjUlxY0F9dwBbRnRrDS2PEm795ow1szcYAEKk+K0NMaKmbtg4kqL4GYVvJQBYd3b26
-         UbT3w91SqSdyQiQ+amXyXOjQDCaKoYog+tA6GaPyoUgS1AKCvLi/G3X6Vdlye0EjWclr
-         B39S8XM8nGC2PphPhLQP0IHowYQn2tfthecTehe3nnFcXprg0KG1ZwQVllZGZk4mVmke
-         BTiqVG7qwwdz8vRQ+o3VISy0yjBHD+zImgACn7YOzHFFmV1DHRuVKkB5G8qGpjJpX5Bl
-         dJKRgY00ZFnGihLwdyE1Eui72fQwQ4EdBn7MUWBZq5jEJKAJbYRF+/pwZlh5x1oAkoaw
-         zOkA==
+        b=BmJIy3Z1kHoauG1iRDmUdB18Efx3pvOGCog9OCf1C7XE+Sk2A77imG0UzQHUsV+Oql
+         7v8eoSKxGWcGgYevBXZOvziSKe6TWA13/df8Sdz79NBAIH6JOp3NbhsAzl8WuMdrLRbU
+         kUfHHTfoxiCVZWO/Oti/j+dO/vfjZRhe6bwISsSesK7y1Q02TNVz6mpFUEQ5IKIhuRk0
+         zS1LIfm0L3JYsE8wPBNUoPJ1aOcXKdurnN+eAHQSQzBEyhdB3gH+ZWXbQEEbRVdJuFh3
+         BOOcFh3elb4DGEfiI0nPAM1MePhM1KI2tLvRJxTHshiRiECyhCqJf3sRODCZH0PRe+Nu
+         TPcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=85Vo85dlXi5Qq6BqTnHvgMMBtF9WwINamq1bSkdTN/o=;
-        b=0sUlGSNPXNQSZNCXIesR8SxVzyJ7Bq/sOPX3dic00/EAGo3ADv12yg3UCRSpv8JA6F
-         veLBAXygoUr/qytisyIdwYVFMyu/0zSfJUVzFCNT5ePp4oB5dcUv2JvPw4YxBxvPNB9X
-         dSPXrsXWchXoZBYuymh1THXfwOM1ZxCma8DVnHtp6Um4WFjhSNxWADlia1d7XIVNaQJn
-         UMqf7UjZ1iSH664ueRQ9VDQarrychoF1NxKEqk/wX1XhQYppD4ncUJ0F32JlUOTUXBca
-         TXvGzYRYuLWo3QfQrPBrhT6QMYi6g6D1h9XnOUAEOsXCK3v2lMzayh4CgEtrYm5bqtP5
-         sryA==
+        bh=/5uO1WiFS166xvwRhC+E9Vyt4bSa1BWtDulyrqCToaE=;
+        b=AhRpEJXBpp66F1/93mSkDdUxHpc+RQO0Jfri6+NnzypMMVDSRNoOW2SVzRzTfX9Iu1
+         wYDJQxlMXB7OqVwxfkOwW8gLX3GWdpX6JjAgTWz6XXlSY8T6K1ebv5Umi+0GyYujz8j2
+         3WerypFq/Uqdgcljmh59cpc5qVoyk029Lxkb0vLMoIwe0TzGSEsJHbwrUTg6bCOBKejh
+         JfeOhji+DUYgZB1lQn7puQurKUf66XpFvOX+CUtHL8SbiwvzJc1Wbqm9iq0fe00zoGmi
+         H6srp+Rkwd9TvN5n0wUAj2NuBfi8wYJG4X5wqGtGsDqU6UzGeUXuHsXAH/6DZ4V0q/Gs
+         k8jA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qvWHrrSB;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i09fEgXP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s11si1392953ybi.140.2020.07.03.11.50.33
+        by mx.google.com with ESMTPS id c13si11401229ybp.86.2020.07.03.12.25.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jul 2020 11:50:33 -0700 (PDT)
+        Fri, 03 Jul 2020 12:25:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qvWHrrSB;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i09fEgXP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:44274 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35520 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrQlc-0003eB-ME
-	for alex.bennee@linaro.org; Fri, 03 Jul 2020 14:50:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47944)
+	id 1jrRJW-00018d-Sd
+	for alex.bennee@linaro.org; Fri, 03 Jul 2020 15:25:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53790)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrQl5-0002o5-PD; Fri, 03 Jul 2020 14:50:00 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:53640)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrQl4-0007c4-6D; Fri, 03 Jul 2020 14:49:59 -0400
-Received: by mail-wm1-x344.google.com with SMTP id j18so32911120wmi.3;
- Fri, 03 Jul 2020 11:49:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=85Vo85dlXi5Qq6BqTnHvgMMBtF9WwINamq1bSkdTN/o=;
- b=qvWHrrSBEjI0szTwAGsuBfDnN5w1Nse0l5ehuFDZdFQfJRYRI0PgZJA/fsSIgoctYD
- e+sJb0mKPOcA8GhC/HMYV6oxRip7B6LUfsaFg61Lk3j2vOTe9xTRbo9Fjb0ch2J4SQpg
- IBfigSyHpx7JLUZ3vCgXRWFSqKuqGPL3vQp6LSHQ5aC/JTQWtPhm7K2Qtkj8UQbg8j70
- pYal8PtpM7AY2eZgbjPebSMMlD7GIRO/rZc3DpocIMPpG1hpoK5qfREpOm2C55BTVFA4
- qkPRoVlqaDtH+NScAn+XrA1ucKb5T+pDznCHq2gA1ni3B9P0kcn0PI2N64/B7YsHq9/j
- O5Pg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=85Vo85dlXi5Qq6BqTnHvgMMBtF9WwINamq1bSkdTN/o=;
- b=ATwiilYgDMQ3aKWJb8InLcvItv+NAAOhWdtIkgywLZtSL2xi1U4q1tngDPN5zfZIfI
- 2gvtukgqHFawfbstnUGDgpSR/NHt1cSiyDuveUxyNjOCKv5/gFzsQoxO0mbzl0MqtQea
- oE07izKQbQhrNJHUv2GnzzMeoBDt4OjF+bvyCUWKJNDXsDAP01tTU2nbb9KhoSWU56UE
- 33q9G96OslsA8Qq1mDLDbmCtnJGwPn38tIsl7Ti+XU0v8ZxgqPlPoy7ZSZobeoAXwyHm
- P8irhgiKX6so0EOfEBjJvo1vmZmU1UdCp5rCsGqZ6db24OXIIXXloWkY9ii1Wugft3UF
- iJLw==
-X-Gm-Message-State: AOAM532lbsTyzFXiqgHACNAF/7w6cZH2aoG4HBlZMVZDvsfvt+Y+QRFH
- hYCt+6OpFn2/SWjuQQg3W6F7WH6cWT0=
-X-Received: by 2002:a7b:c099:: with SMTP id r25mr40274554wmh.159.1593802195659; 
- Fri, 03 Jul 2020 11:49:55 -0700 (PDT)
-Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id x11sm13778369wmc.26.2020.07.03.11.49.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Jul 2020 11:49:55 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 1/2] hw/arm: Use TYPE_SYSBUS_OHCI instead of hardcoded string
-Date: Fri,  3 Jul 2020 20:49:51 +0200
-Message-Id: <20200703184952.4918-2-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200703184952.4918-1-f4bug@amsat.org>
-References: <20200703184952.4918-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jrRJP-00018P-42
+ for qemu-arm@nongnu.org; Fri, 03 Jul 2020 15:25:27 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:23396
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jrRJM-000762-FZ
+ for qemu-arm@nongnu.org; Fri, 03 Jul 2020 15:25:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593804322;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=/5uO1WiFS166xvwRhC+E9Vyt4bSa1BWtDulyrqCToaE=;
+ b=i09fEgXPD6Q9XIs4y8I8O8nO7687IKkBIHl4zrT34Xoj+YjqS6VYOBDxVTVIASG+tgKV1j
+ 276fqUPwVu23OlsZJoyMgi833I0hAVzCuZWvKDkVJyocjc3T9xJwaEvItZ6q8Hvn3jDKEO
+ AfhKO5D1BXfgPefB2sCZUTPo/5hvbFo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-96-fYZ2kzhyNgmxwC9ma97Wtw-1; Fri, 03 Jul 2020 15:25:21 -0400
+X-MC-Unique: fYZ2kzhyNgmxwC9ma97Wtw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 94093800C64;
+ Fri,  3 Jul 2020 19:25:18 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-112-62.ams2.redhat.com
+ [10.36.112.62])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E1D615DD63;
+ Fri,  3 Jul 2020 19:25:11 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id B282616E16; Fri,  3 Jul 2020 21:25:10 +0200 (CEST)
+Date: Fri, 3 Jul 2020 21:25:10 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [PATCH v4 08/21] microvm/acpi: add minimal acpi support
+Message-ID: <20200703192510.laaeku6kvudcs4g2@sirius.home.kraxel.org>
+References: <20200702204859.9876-1-kraxel@redhat.com>
+ <20200702204859.9876-9-kraxel@redhat.com>
+ <20200703084039-mutt-send-email-mst@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+In-Reply-To: <20200703084039-mutt-send-email-mst@kernel.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/03 15:25:22
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,80 +117,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- BALATON Zoltan <balaton@eik.bme.hu>, Beniamino Galvani <b.galvani@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yjJiQaq1hIRG
+X-TUID: ZTsELe9DGaMo
 
-By using the TYPE_* definitions for devices, we can:
-- quickly find where devices are used with 'git-grep'
-- easily rename a non-user-creatable device (one-line change).
+On Fri, Jul 03, 2020 at 09:09:43AM -0400, Michael S. Tsirkin wrote:
+> On Thu, Jul 02, 2020 at 10:48:46PM +0200, Gerd Hoffmann wrote:
+> > +    /* copy AML table into ACPI tables blob and patch header there */
+> > +    g_array_append_vals(table_data, dsdt->buf->data, dsdt->buf->len);
+> > +    build_header(linker, table_data,
+> > +        (void *)(table_data->data + table_data->len - dsdt->buf->len),
+> > +        "DSDT", dsdt->buf->len, 5, NULL, NULL);
+> 
+> Why 5? Just curious ...
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/allwinner-h3.c | 9 +++++----
- hw/arm/pxa2xx.c       | 3 ++-
- 2 files changed, 7 insertions(+), 5 deletions(-)
+IIRC because the hw reduced hardware profile needs acpi 5+ ...
 
-diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index 8e09468e86..231d9ad647 100644
---- a/hw/arm/allwinner-h3.c
-+++ b/hw/arm/allwinner-h3.c
-@@ -28,6 +28,7 @@
- #include "hw/sysbus.h"
- #include "hw/char/serial.h"
- #include "hw/misc/unimp.h"
-+#include "hw/usb/hcd-ohci.h"
- #include "hw/usb/hcd-ehci.h"
- #include "hw/loader.h"
- #include "sysemu/sysemu.h"
-@@ -381,16 +382,16 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-                                           AW_H3_GIC_SPI_EHCI3));
- 
--    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI0],
-+    sysbus_create_simple(TYPE_SYSBUS_OHCI, s->memmap[AW_H3_OHCI0],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-                                           AW_H3_GIC_SPI_OHCI0));
--    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI1],
-+    sysbus_create_simple(TYPE_SYSBUS_OHCI, s->memmap[AW_H3_OHCI1],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-                                           AW_H3_GIC_SPI_OHCI1));
--    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI2],
-+    sysbus_create_simple(TYPE_SYSBUS_OHCI, s->memmap[AW_H3_OHCI2],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-                                           AW_H3_GIC_SPI_OHCI2));
--    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI3],
-+    sysbus_create_simple(TYPE_SYSBUS_OHCI, s->memmap[AW_H3_OHCI3],
-                          qdev_get_gpio_in(DEVICE(&s->gic),
-                                           AW_H3_GIC_SPI_OHCI3));
- 
-diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-index f104a33463..1e8a1cbc24 100644
---- a/hw/arm/pxa2xx.c
-+++ b/hw/arm/pxa2xx.c
-@@ -22,6 +22,7 @@
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
- #include "hw/ssi/ssi.h"
-+#include "hw/usb/hcd-ohci.h"
- #include "chardev/char-fe.h"
- #include "sysemu/blockdev.h"
- #include "sysemu/qtest.h"
-@@ -2196,7 +2197,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_space,
-         s->ssp[i] = (SSIBus *)qdev_get_child_bus(dev, "ssi");
-     }
- 
--    sysbus_create_simple("sysbus-ohci", 0x4c000000,
-+    sysbus_create_simple(TYPE_SYSBUS_OHCI, 0x4c000000,
-                          qdev_get_gpio_in(s->pic, PXA2XX_PIC_USBH1));
- 
-     s->pcmcia[0] = pxa2xx_pcmcia_init(address_space, 0x20000000);
--- 
-2.21.3
+take care,
+  Gerd
 

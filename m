@@ -1,206 +1,181 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2793317lfm;
-        Fri, 3 Jul 2020 13:41:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwLrNLA6JMIaPqcGPgFioVjRxsQQ0AYh09nq17mAgqtBWyHuUFRLvduPCgHvUOy7FamwEjg
-X-Received: by 2002:a25:cf43:: with SMTP id f64mr61098326ybg.456.1593808903213;
-        Fri, 03 Jul 2020 13:41:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593808903; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2779554lfm;
+        Fri, 3 Jul 2020 13:20:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJysMFTbKjUbLqkGkFxoal4WiN8ZiMmECD3//PeC/1aYRfPN/yUGAYx0o/DNcgFyNcMRozpr
+X-Received: by 2002:a05:6902:6a9:: with SMTP id j9mr3192247ybt.52.1593807631021;
+        Fri, 03 Jul 2020 13:20:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593807631; cv=none;
         d=google.com; s=arc-20160816;
-        b=I83IXbSoRRMKE544btihdd2aGhcqXLniSWXqOH80lXuQHdpx1mUetxQB7yjNk1utgs
-         MpGCFSge1DZGYsiGL6gi9evQ+omvb+Ch2kEmMO1Ln3Q8y/WLij4iFBI5mwM3JDwj8q6X
-         VniFaOinJ1yZkzqlT/iod6ljO2d+eTWyxOJvct0ZPmFpFVj+BX3ba3U2HAS00rWRm/+2
-         Bwr6WDJdspRDDAsTCajSKYWGIwzSZYysTR/fBdyfsjKG1LgW2EhTVd984zMT0BQWZViF
-         qL8Oal5cODvx3m1UnMfhzekeFO0u20pqM9r2bXNMAma2hLdqSNODJiftAQDja6LQaW6J
-         qQoA==
+        b=g5dRRV4esrMEo+jK4ivbnzFg473t5o109DxyRjBQKEPoVZzCUjfWDPP/YsbXr6DFmc
+         PDoEEM5NlKRLkEM9C00Qme7flBc3uuagM+KyunG92S9zwRik1Su0G2+E9D+PKkJqDVHD
+         iaHQe9dWJE50m0clf1wTcwTUDUe+OVFYnJ4i/YgjwgsB6rZfYGp+1R2aujOODsTPTTaQ
+         3DqCRcgznt2njcSTTwKoGcnUc2o5MQtsEFOlDO1jLVH3pBYUo7i8LC52flia2NYq53Kz
+         BPxxhWgt9S8zHcmsAo8MsuKAKHATIUiZNSLE6wD185pbYHfVZxTmB4lBibqYZGAUC0Bx
+         qVXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=cKBz1OF/qMRx6//rmFlziZ4XnepphOoCK4gWS2boX0U=;
-        b=PxqNWYYE+W5LspVxK+CIUWfSW6XP1K8J1+fqYYugWg904kU0k0BnHxNLxiY65j/j3u
-         B/LHcpZInF7Wokq7cVSltBvbhaT7RjW5Lhty5kNLBDEBxUxBTLmreq/0LTFhXpB1KccY
-         K761StQeA2+mTMolpnA3TLlpuyK1jrYMXVioz8SeoR015D+iRwQSK03cQANU+u9+BQn7
-         ORsO/5R6btXruKpBks2gLCxJjkehn+8R2KMNxhoCEPpjbLbVis5Jg9GqeGW3ZeHpKIzr
-         oBBylH8Z5a6begbs9khG6jgOBoIJhtN84z+dTCuJvImzkFAfJJxwndYcQQ35l0ggwRO9
-         ZlOw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=2GuBHKsHLzYgL44H3B48TCEkY6HTfH/2zhKpEv9Zqyg=;
+        b=ENnX+8fA+eazWQ7Pg14EYBI6EvdgZv9y0km2m6KLAIJ4wWDCpsveg4P4/0Fy08pXTF
+         poCN5pRhsQMj7z9kMMuAvY5OHP4023uOhTqmqx2La0AzcRg4kC9oX+7mfLa2rQvu9YH9
+         RcsutmVf+7kvoLnS9eNvitan4zQSnpLl/gVvtLlfMkTkFGd9PY9KIvEVzV829n/XWm8V
+         2zPskd29BE5jYJomA6KdU9WyGJCxWJQWslIly4AwyMy4wLpbbkussKleS1bJEoLSCJo5
+         iF7y+80aIGyLS0Bd9k4SVdUtiPHVFiMN5m246OpQsd4ETVeSS2CCdXs0kfURIhNfifsI
+         50PQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=HwP+Dtzi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="a5/7931z";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n8si4386697ybb.6.2020.07.03.13.41.43
+        by mx.google.com with ESMTPS id i127si15085483ybb.475.2020.07.03.13.20.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jul 2020 13:41:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Jul 2020 13:20:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=HwP+Dtzi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:36702 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="a5/7931z";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:43576 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrSVC-0000Mb-In
-	for alex.bennee@linaro.org; Fri, 03 Jul 2020 16:41:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41904)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jrSAg-0001O8-AF
+	for alex.bennee@linaro.org; Fri, 03 Jul 2020 16:20:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35228)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jrSV3-0000Ly-QJ
- for qemu-arm@nongnu.org; Fri, 03 Jul 2020 16:41:33 -0400
-Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d]:36051)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jrS9Y-0007s3-Ir; Fri, 03 Jul 2020 16:19:20 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:51687)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jrSV1-0007O3-V6
- for qemu-arm@nongnu.org; Fri, 03 Jul 2020 16:41:33 -0400
-Received: by mail-vs1-xe2d.google.com with SMTP id 64so11454575vsl.3
- for <qemu-arm@nongnu.org>; Fri, 03 Jul 2020 13:41:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cKBz1OF/qMRx6//rmFlziZ4XnepphOoCK4gWS2boX0U=;
- b=HwP+DtziY9gB7I68z/qr3u8GCqrksK3eZqV6gpQ7tgdxpSAjNkCOfcIbMXwVE2x4yy
- u/wXLW0o1fqQ8qXNErsxw6XEmS/+7c6Xk459k5AIxVtHJdig8PEZN3PDOQiOfIAA3hpT
- w3XmBaueZzx/w5Z2zLOGm2cQCFakX7w7W1WkemU0hr5u7lU8YU0B+VzErfUDeXXH8tFX
- Il66o5hPh+QX9UpOzGDiD2kvP84niQUcetDJJzGqdWxG6T890rgOXmGdA0I84Ega+ADQ
- QGI2MPuDNpKmzrhjn93ZZeTeQeYrfKvuxqnSqsGdtQ9NHSdBmftO8JT12tyrIK94u03m
- R0BA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jrS9X-0001UV-2z; Fri, 03 Jul 2020 16:19:20 -0400
+Received: by mail-wm1-x343.google.com with SMTP id 22so33116638wmg.1;
+ Fri, 03 Jul 2020 13:19:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=2GuBHKsHLzYgL44H3B48TCEkY6HTfH/2zhKpEv9Zqyg=;
+ b=a5/7931zoLIOmejcnQSbCxJ/FV/6F847W8EVKWF2xwspp1yytJMzwEU/ZOi7Dj3ZpJ
+ UzejGkMwd8671ivvZwvAdASsQIfphrm8Ht76svE2LI/SlRlE4RMleueh4Krs0u7IEzk1
+ UJCXBTxdSMpAUKqC/JgQ7TOoxyNWpLhWwy55DCxIFaZDOitKh18UTAMDsi8LtNS/DOyB
+ qb8vf9/LVk6AR4vWuJ6UQI74VSG1GhhWAKweceiN3vU6Rlnm4/DGp7BWe9KPOzhQpCGR
+ tQ+SlpuxPtyYnIzL31biUYuMnRXJFk7u64RsbqPCJ3nhl9Vypzx5huGwm9re/sUfiuL+
+ V6Tg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=cKBz1OF/qMRx6//rmFlziZ4XnepphOoCK4gWS2boX0U=;
- b=aQyRB3xLnwJDYFaR0aGEt6UtrBwPGSbWl2puzCZkqONqlsqqqxo+j2Jg6aSGHq24t7
- u53T3787zDT2iIjiDfRdEF9D/c+3TwPQcsW2eB43JZpTnKnOtHIUXsCQWLfV9Unu4jWt
- TdcII+cjPimuRrhmT0fv/yTGI/5MwikBy6p2aGL6Ia8aHOvesKOndJ+oh/JA9yDSBtJC
- KVzSNvg5yflRXLX/ARxzUN6qRjEOlYw4cW6VOldeNw0QU1V50C1ZTNbKNU0OgdUFEEj2
- oyJwfJrFyQo0DOVN2uRW6qvv3aN4gX/b/k4O4RfkFhMOIa6U9gApGWEI0igAblcLMZK3
- oUMA==
-X-Gm-Message-State: AOAM5311Q5YHRT1WMpLkopn8fnzK/o3xAzAo7/XoP6X9qTzffO5Irvbk
- VvmWWg5KYT4zU8oVKCbYA4IXutjvWhFbWPCXKAXPWQ==
-X-Received: by 2002:a67:d88c:: with SMTP id f12mr26472087vsj.92.1593808889304; 
- Fri, 03 Jul 2020 13:41:29 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=2GuBHKsHLzYgL44H3B48TCEkY6HTfH/2zhKpEv9Zqyg=;
+ b=nDMqNHG6VoRixLsu1YyAPU0zO3V6QlXo2yABYQMoGzppG1RmyA8RbxUbfHzl2dfXY6
+ xfwogfugkxEtR2psontzVJflMBoVz1KpMpDaHTeaw9jRDuF7kiI8FLn05pt2R0Jfdval
+ f1AH3Jqu23hEpLurbVhlgmCx8gJHRx0mY+FZyvCyzt6/9iAIL/1EB6xE1m5tZ9N3emyA
+ +RK+eTg9pNc/lpmOdd5PLZXwa86/dHpj90RX4PfHTN2Dl1PQbRkbXQokXxuBQ8LtOAAG
+ 3diUV8GRIDcQr5Mv6xoZe0RqZnTQlw1d2I2JcrDfedDzYKMN/DU2IrvtHlv1ILMVb9gJ
+ fP5w==
+X-Gm-Message-State: AOAM533vfV/uOzJVFxfx6ixwYgeoqmZAu0Zyj8I1rYEBCbXmqXlKlK9N
+ X1u/k1Vnx71BSl7MuV71YNi4IZHOWF8=
+X-Received: by 2002:a1c:3bc2:: with SMTP id i185mr38854306wma.33.1593807556772; 
+ Fri, 03 Jul 2020 13:19:16 -0700 (PDT)
+Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.1])
+ by smtp.gmail.com with ESMTPSA id u65sm14229625wmg.5.2020.07.03.13.19.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 03 Jul 2020 13:19:16 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 02/18] migration/vmstate: Introduce vmstate_no_state_to_migrate
+Date: Fri,  3 Jul 2020 22:18:55 +0200
+Message-Id: <20200703201911.26573-3-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200703201911.26573-1-f4bug@amsat.org>
+References: <20200703201911.26573-1-f4bug@amsat.org>
 MIME-Version: 1.0
-References: <20200626235519.591734-1-hskinnemoen@google.com>
- <CAFEAcA_3y3XoF6BsYUt19f2CvyseahSEZWfY0iQxByJKaMA29w@mail.gmail.com>
-In-Reply-To: <CAFEAcA_3y3XoF6BsYUt19f2CvyseahSEZWfY0iQxByJKaMA29w@mail.gmail.com>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Fri, 3 Jul 2020 13:41:17 -0700
-Message-ID: <CAFQmdRa2isDEFDWiQcKut63RkOjsoa8Fxw-Z0bB19kEd41euaQ@mail.gmail.com>
-Subject: Re: [PATCH v3 00/12] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC
- machines
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Joel Stanley <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
- CS20 KFTing <kfting@nuvoton.com>
-Content-Type: multipart/alternative; boundary="000000000000b0436b05a98f8c4c"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e2d;
- envelope-from=hskinnemoen@google.com; helo=mail-vs1-xe2d.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -185
-X-Spam_score: -18.6
-X-Spam_bar: ------------------
-X-Spam_report: (-18.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=_AUTOLEARN
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: es/rnAlXY3jo
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: i8oR+qd+Boj1
 
---000000000000b0436b05a98f8c4c
-Content-Type: text/plain; charset="UTF-8"
+Introduce a special state to indicate when an object doesn't
+have anything in its state to migrate.
 
-On Fri, Jul 3, 2020 at 5:27 AM Peter Maydell <peter.maydell@linaro.org>
-wrote:
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ include/migration/vmstate.h | 1 +
+ migration/vmstate.c         | 7 +++++++
+ 2 files changed, 8 insertions(+)
 
-> On Sat, 27 Jun 2020 at 00:55, Havard Skinnemoen <hskinnemoen@google.com>
-> wrote:
-> >
-> > Time for another refresh of this patchset. Sorry it took so long -- I've
-> been
-> > trying to figure out why the Winbond flash model isn't working with
-> > npcm750-evb, and I'm fairly convinced the number of dummy cycles in DIO
-> mode
-> > should be 4, not 1. Unfortunately, I don't see any other machines using
-> Winbond
-> > flash in DIO mode, so it's hard to prove that it's correct. I'm planning
-> to
-> > post a libqos-based test suite separately.
-> >
-> > I'm also planning to add the vbootrom to qemu as a submodule, similar to
-> the
-> > other roms, but not in this pathset (let me know if you do want me to
-> include
-> > this in the series).
->
-> Hi; it looks like codewise this patchset is ready to go in
-> and it's all been reviewed. I see however that all the
-> new files are GPL-v2-only. We usually prefer GPL-v2-or-later
-> for new code: is it possible to use that license instead ?
->
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index af7d80cd4e..0922bc8efa 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -195,6 +195,7 @@ struct VMStateDescription {
+ };
+ 
+ extern const VMStateDescription vmstate_dummy; /* Exclusively for linux-user */
++extern const VMStateDescription vmstate_no_state_to_migrate;
+ 
+ extern const VMStateInfo vmstate_info_bool;
+ 
+diff --git a/migration/vmstate.c b/migration/vmstate.c
+index bafa890384..d640cafad3 100644
+--- a/migration/vmstate.c
++++ b/migration/vmstate.c
+@@ -20,6 +20,13 @@
+ #include "trace.h"
+ #include "qjson.h"
+ 
++const VMStateDescription vmstate_no_state_to_migrate = {
++    .name = "empty-state",
++    .fields = (VMStateField[]) {
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static int vmstate_subsection_save(QEMUFile *f, const VMStateDescription *vmsd,
+                                    void *opaque, QJSON *vmdesc);
+ static int vmstate_subsection_load(QEMUFile *f, const VMStateDescription *vmsd,
+-- 
+2.21.3
 
-I sent an e-mail to our licensing team to see if there are any issues with
-doing that. I don't expect a response until next week though, since this is
-a long weekend.
-
-I'll send out a v4 with updated headers if they approve.
-
-Thanks,
-Havard
-
---000000000000b0436b05a98f8c4c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">On Fri, Jul 3, 2020 at 5:27 AM Peter Mayd=
-ell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.or=
-g</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=3D"g=
-mail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
-,204,204);padding-left:1ex">On Sat, 27 Jun 2020 at 00:55, Havard Skinnemoen=
- &lt;<a href=3D"mailto:hskinnemoen@google.com" target=3D"_blank" class=3D"c=
-remed">hskinnemoen@google.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Time for another refresh of this patchset. Sorry it took so long -- I&=
-#39;ve been<br>
-&gt; trying to figure out why the Winbond flash model isn&#39;t working wit=
-h<br>
-&gt; npcm750-evb, and I&#39;m fairly convinced the number of dummy cycles i=
-n DIO mode<br>
-&gt; should be 4, not 1. Unfortunately, I don&#39;t see any other machines =
-using Winbond<br>
-&gt; flash in DIO mode, so it&#39;s hard to prove that it&#39;s correct. I&=
-#39;m planning to<br>
-&gt; post a libqos-based test suite separately.<br>
-&gt;<br>
-&gt; I&#39;m also planning to add the vbootrom to qemu as a submodule, simi=
-lar to the<br>
-&gt; other roms, but not in this pathset (let me know if you do want me to =
-include<br>
-&gt; this in the series).<br>
-<br>
-Hi; it looks like codewise this patchset is ready to go in<br>
-and it&#39;s all been reviewed. I see however that all the<br>
-new files are GPL-v2-only. We usually prefer GPL-v2-or-later<br>
-for new code: is it possible to use that license instead ?<br></blockquote>=
-<div><br></div><div>I sent an e-mail=C2=A0to our licensing team to see if t=
-here are any issues with doing that. I don&#39;t expect a response until ne=
-xt week though, since this is a long weekend.</div><div><br></div><div>I&#3=
-9;ll send out a v4 with updated headers if they approve.</div><div><br></di=
-v><div>Thanks,</div><div>Havard=C2=A0</div></div></div>
-
---000000000000b0436b05a98f8c4c--

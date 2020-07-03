@@ -1,105 +1,106 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2809854lfm;
-        Fri, 3 Jul 2020 14:08:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJznZPjkiwt9K8WSboLBqAc2HVwIOaxdrchiXRVFFd6b4ITAhB2XZotrUcBFw2hx4wTLrWSn
-X-Received: by 2002:a05:6902:6c9:: with SMTP id m9mr62605983ybt.372.1593810489539;
-        Fri, 03 Jul 2020 14:08:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593810489; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2814886lfm;
+        Fri, 3 Jul 2020 14:16:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwStMPc5QpWU0Z727r3lSuWwqns32Kvt07RZRGReA/bOViTMKq2+wjmiAgONwF5dTq5WVGe
+X-Received: by 2002:a25:808a:: with SMTP id n10mr44772691ybk.434.1593810961384;
+        Fri, 03 Jul 2020 14:16:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593810961; cv=none;
         d=google.com; s=arc-20160816;
-        b=kPfJ0wg0h4Cardj24YQnx167jhhFV/kW0oIvKAUPmNLnSdH/n02KRGaHDjIdRSPEVu
-         wBhFIeHQUSJQgk8Vfi0oyEdhY2Mwe/PMnMbthGO5a8BCufJzfysenVKI+ZEEAbRzb6Qu
-         o0zYrtT/QRItVzBZxhR+2JBDSteanMHt0FE1by/cO1uHf+Z1Y3rSuYY1eY0Xtq8eSZ2F
-         Lf+SpufDKKptTjHzzrG5QySwciMmgz2yHMDqQbAc8ITPfKja2XGR0gujAXeogoCA2Klx
-         oTvqROVWnRo4XwxlrlT6xUcyPPEKZUdSCnXUdSAUlIkRKysZApfMR1nosei24gSlRSbc
-         TLNg==
+        b=Kzfe18MU5SJSBzyjv6p2dpGenhrLzO05xoSyJjka6eb4kS7uaPWaJoLwvumQnPE3mM
+         n5uVJfhSwPUhLPtqGa8cDi3TVkoVVF5lsC6wDJFXTtejlTcqipDHA9ePdyEJGZ+yrHze
+         74WTz9dY3SmBnmU2P4NBR457+zJ9bQxzCSwDu/93yaD2bs+4nksaK9Gjca0LT0+GrFKL
+         M8p2iOgxOlgPDyHO7hi+l2D4SJFHeV1JBHUvfaWMThtslpTfCyVw93n4sJmgL6kFIU/r
+         87RLGLT97O6CKBmmrv1k41KB5u061nugs+4QKRj4qpRaCRpTpZDH6X9MuERIWN3czNfG
+         J8fQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=itS6dSrCgMMyMc53eXZOLlFFRtRNAyIJ+G+nB3RGmlo=;
-        b=k3EAc7CreGvHDpQlBFMmDwJ/GC+2Wcr61lfsYTGzfb56zyhFD1+62rMho1Cyzxyzyb
-         Alzo3gnbqOjnUHd3jzdrWcN0gh+/N0FMChuOmkQbH+8MK4/pYkFEojHxZE7CrSFkT5fo
-         0uei/oyZLSbe+CnC4TUVbrK5onhDmUyrweXICoz7TbRo7ey71B4cMcNnKFEek6LmgFSa
-         nNRxUJSIXJd7EVjujEqQjj9SFf2Ocmn384YX3OgYBhQc3JLH0w+DHjGKqj8X9Tqy2eEA
-         XVZ299kafPM/no55+Drz0h3PsRla/jCdsagJ4WilcQaYGsHd5ZZ2ZhI2jI1QTGr/h5HJ
-         LZ7A==
+        bh=QVYdKW8LXPkxZL2KE6aWM7nk/9iW09YPv1n3yc1coT4=;
+        b=eRtDgIr4SBlMq4sHRWtmwDckvcJYJbuvGxvrcwP2FN4DRYHAjfEd8M1GNUr7R3ABYO
+         dkz7R4+bCsO1LiWY+H8LRXkESlEqg9tZI1lFyuWenU+j1rBTrXtLx4UeQjzlzAu4egfe
+         9TS9IHwD2OBXQHyCU0qFplFT7GElMFADChYrvPnlDcVY3icGlmtLW8zpQuZ5ippUBR7w
+         cuSr8ohtD6CHN2kVj3zZa5Iz2B7Jq9KX0OLeR8ue1LBSs2Xyh3bT1oM2kafv04Gv0YBf
+         yk9YirJN2WHQsAKJ3jXdqpVSdTdlJIiZId+ye3itf4Qve9KlHGWeVHgPYYqO5JVWTF/n
+         bNdg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=HSDVH1Wc;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=vUUsb1n0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w75si12204163ybe.5.2020.07.03.14.08.09
+        by mx.google.com with ESMTPS id i140si1459375yba.71.2020.07.03.14.16.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jul 2020 14:08:09 -0700 (PDT)
+        Fri, 03 Jul 2020 14:16:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=HSDVH1Wc;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=vUUsb1n0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:55568 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59910 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrSum-0004BB-Tc
-	for alex.bennee@linaro.org; Fri, 03 Jul 2020 17:08:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47456)
+	id 1jrT2O-0000fA-JI
+	for alex.bennee@linaro.org; Fri, 03 Jul 2020 17:16:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48746)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jrSue-0004AU-94
- for qemu-arm@nongnu.org; Fri, 03 Jul 2020 17:08:00 -0400
-Received: from mail-vk1-xa42.google.com ([2607:f8b0:4864:20::a42]:32846)
+ id 1jrT2G-0000f0-MO
+ for qemu-arm@nongnu.org; Fri, 03 Jul 2020 17:15:52 -0400
+Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943]:44726)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jrSub-00044e-LR
- for qemu-arm@nongnu.org; Fri, 03 Jul 2020 17:08:00 -0400
-Received: by mail-vk1-xa42.google.com with SMTP id r7so7367243vkf.0
- for <qemu-arm@nongnu.org>; Fri, 03 Jul 2020 14:07:57 -0700 (PDT)
+ id 1jrT2E-0005FR-DZ
+ for qemu-arm@nongnu.org; Fri, 03 Jul 2020 17:15:52 -0400
+Received: by mail-ua1-x943.google.com with SMTP id g14so10406984ual.11
+ for <qemu-arm@nongnu.org>; Fri, 03 Jul 2020 14:15:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=itS6dSrCgMMyMc53eXZOLlFFRtRNAyIJ+G+nB3RGmlo=;
- b=HSDVH1Wc257Dy5QhL4tIi+ih069CMZ/oItKyM4ZuLtCz2eWUB9p11m0DlABvhd19R+
- 9D0nbIJL5RYtJmCu08KRsmzDC9EDo696UuuYD8gCaepWXIxT5oc1eDaQzihZyjAJYluo
- wlhfxsnP7AHAjvlZQQqhKjjBfEZFzoyjPa9Zr8zWRzhypBRiX2S82+QjeLsAyYUDefsh
- zlNJ1UHvj4yPA3yzlbkNR7hZomAPy7QTbqptasG41RQCaCcvvL6lgGW+zzLnWBYjP1LE
- x+81ONuGsVoCeAUZY5OhQzmmuY1kn4Dr2SspwhHn8/Yh+gHgGvzE++FV6Il2oWyugvnT
- HfDA==
+ bh=QVYdKW8LXPkxZL2KE6aWM7nk/9iW09YPv1n3yc1coT4=;
+ b=vUUsb1n0lSWcmNOf5Sk8UNiBFR7zj+Tq3t/aivM9P/JCaywIHf6M/Wt3aBMh3J/4Od
+ rjmi7Iy2+8ZvK+M0SGrw02QWfToeMS5/vy4NY0kSvl6pxIOZ8JkCQ8OKiArdZsaIj7gs
+ RAaMXFouUeLktaz1SNz7nDkECWvUyi9rGBcSYOuZi/xa+rh/zDKJ0LGvpkgMCOFgg9yN
+ nKVPEtbI9v21jH0CB2Ksg6+iQWoYDboWpviRTqcBzzVcfF7bivsUOr1mvwWYB9SwCUmC
+ YOAtMIwObUqZ13JH70/roTVb82/3VQK9nS46T+ZrqC+XpH+42pZWsajOslhMDjZWeNIw
+ DvyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=itS6dSrCgMMyMc53eXZOLlFFRtRNAyIJ+G+nB3RGmlo=;
- b=YPrPS1ATEM4ZfXjC7TzJ+uM+IGVPmtBr3oGNQnRVYl9ITycpT5teqp5qKUk5jO40hc
- lSq3NGeUJeRADMMD6tWqm+Vdt/HWo4BBwtqUODUrHRHjGrT6BlxOM07xp8iYbzY8bzga
- kiXQMUIK3idwsiLWJ1n/PqjXtmFziZlLxH5pHho0VVMYOxa/OW/kslPnfp3AXb/yRrvD
- 8BuLuX4iBVUaXKcxZ/wWN0JgClkehGKjXLqlzVqvc4K3HqzYwQM9iGvRvWn5RgBvHbQp
- NSm4xzYFzaeNg3UqUM3NtnnV3BFrFCCpD+37FK21cgfZMzfMVr6Dd3Ui3FDN9ZYRPuSm
- x5wg==
-X-Gm-Message-State: AOAM530InQY7IH2afBDIgWNtxYG/mSrsDE9pLADWXvMHWAc04jVlgSOk
- mjidGZsfwjkKHjoGJTFFRA+Nlafz9DF5sIBsZDCIfA==
-X-Received: by 2002:a1f:3113:: with SMTP id x19mr27110586vkx.91.1593810476317; 
- Fri, 03 Jul 2020 14:07:56 -0700 (PDT)
+ bh=QVYdKW8LXPkxZL2KE6aWM7nk/9iW09YPv1n3yc1coT4=;
+ b=EfDK3i1G+OD4HxRF4fGQ0FmGV5P7cua385gk7whdkC+RqPszM+jBv2bK9pypnUAW23
+ eawHHEfkJpDarDKI2AYQdyNBDWgA3ZZL9Y4IQRHz8MYsjEfNEz633XjwQTlcxoE+KZIM
+ xMobmsdFRq8ALOLfGS4MrUcxfhYumQsotzHwmixyIBP5946AnhOgEG4AMF3MmF/p0wQW
+ GMwdTnuAcorzrBG1HppKzAzn3qc1CB//MAPRGhqzQ0jGdD3f+5VCfoQ0+S1Zwb45w0pN
+ w9aX/YqbzKBEP2WSiDK2aobAP3/zQqzMYV2K/2DwD/pJ91CwNhs5Xq4eHns1IP8wZXHp
+ LGfg==
+X-Gm-Message-State: AOAM5331YGb0yE1viyvg6vkQedlp2QP59J/3riB4UVWJWWxCXM4ySdAY
+ N1D0PJiZ3pu1mOgk2pUNfLi0J9Q0NoLSrzD75GVrAQ==
+X-Received: by 2002:ab0:2b08:: with SMTP id e8mr17248847uar.119.1593810949038; 
+ Fri, 03 Jul 2020 14:15:49 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200626235519.591734-1-hskinnemoen@google.com>
- <20200626235519.591734-9-hskinnemoen@google.com>
- <abdb209d-7268-7997-2caa-95cb984269da@amsat.org>
-In-Reply-To: <abdb209d-7268-7997-2caa-95cb984269da@amsat.org>
+ <CAFEAcA_3y3XoF6BsYUt19f2CvyseahSEZWfY0iQxByJKaMA29w@mail.gmail.com>
+ <296f281f-e045-e794-1a1b-4e311b6408b2@redhat.com>
+In-Reply-To: <296f281f-e045-e794-1a1b-4e311b6408b2@redhat.com>
 From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Fri, 3 Jul 2020 14:07:44 -0700
-Message-ID: <CAFQmdRYZWhA-957jRHfiRHfYoOk-c2TJVtqoz6LMOhDgJwMiCg@mail.gmail.com>
-Subject: Re: [PATCH v3 08/12] hw/nvram: NPCM7xx OTP device model
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Fri, 3 Jul 2020 14:15:37 -0700
+Message-ID: <CAFQmdRbOKFxxxgR0hqcnABxn+jSBr349159m45TJLawVmnhR3Q@mail.gmail.com>
+Subject: Re: [PATCH v3 00/12] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC
+ machines
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>, 
+ QEMU Developers <qemu-devel@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Joel Stanley <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
- CS20 KFTing <kfting@nuvoton.com>
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a42;
- envelope-from=hskinnemoen@google.com; helo=mail-vk1-xa42.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::943;
+ envelope-from=hskinnemoen@google.com; helo=mail-ua1-x943.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -185
@@ -124,48 +125,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zdmIAvg8vr8r
+X-TUID: c1cdq2LWNKEl
 
-On Fri, Jul 3, 2020 at 6:46 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+On Fri, Jul 3, 2020 at 6:35 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+om> wrote:
+>
+> On 7/3/20 2:27 PM, Peter Maydell wrote:
+> > On Sat, 27 Jun 2020 at 00:55, Havard Skinnemoen <hskinnemoen@google.com=
 > wrote:
+> >>
+> >> Time for another refresh of this patchset. Sorry it took so long -- I'=
+ve been
+> >> trying to figure out why the Winbond flash model isn't working with
+> >> npcm750-evb, and I'm fairly convinced the number of dummy cycles in DI=
+O mode
+> >> should be 4, not 1. Unfortunately, I don't see any other machines usin=
+g Winbond
+> >> flash in DIO mode, so it's hard to prove that it's correct. I'm planni=
+ng to
+> >> post a libqos-based test suite separately.
+> >>
+> >> I'm also planning to add the vbootrom to qemu as a submodule, similar =
+to the
+> >> other roms, but not in this pathset (let me know if you do want me to =
+include
+> >> this in the series).
+> >
+> > Hi; it looks like codewise this patchset is ready to go in
+> > and it's all been reviewed. I see however that all the
+> > new files are GPL-v2-only. We usually prefer GPL-v2-or-later
+> > for new code: is it possible to use that license instead ?
 >
-> On 6/27/20 1:55 AM, Havard Skinnemoen wrote:
-> > +static void npcm7xx_otp_realize(DeviceState *dev, Error **errp)
-> > +{
-> > +    NPCM7xxOTPClass *oc =3D NPCM7XX_OTP_GET_CLASS(dev);
-> > +    NPCM7xxOTPState *s =3D NPCM7XX_OTP(dev);
-> > +    SysBusDevice *sbd =3D &s->parent;
-> > +
-> > +    s->array =3D g_malloc0(NPCM7XX_OTP_ARRAY_BYTES);
->
-> The possibility to reuse persistent OTP seems important.
-> This can be added later of course.
+> This series has been posted before Markus qdev & error cleanups.
+> Maybe some newer error patterns should be used now instead?
 
-Agree, it's an important part of the behavior of the module. But it's
-not essential to be able to boot a BMC firmware image, so I left it
-out initially.
+I'm not sure if I understand exactly what you're referring to, but
+I'll do 'git log origin/master --author=3Darmbru@redhat.com' to see if I
+can apply any similar fixes or cleanups to this series.
 
-> See simple example in hw/nvram/eeprom_at24c.c which use
-> a BlockBackend so the OTP content is not lost after reset
-> or migration.
-
-I'll take a look at that, thanks!
-
-> > +
-> > +    memory_region_init_io(&s->mmio, OBJECT(s), oc->mmio_ops, s, "regs"=
-,
-> > +                          NPCM7XX_OTP_REGS_SIZE);
-> > +    sysbus_init_mmio(sbd, &s->mmio);
-> > +}
-> > +
-> > +static void npcm7xx_otp_class_init(ObjectClass *klass, void *data)
-> > +{
-> > +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-> > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> > +
->
-> Missing migration vmstate for NPCM7xxOTPState::regs[].
-
-Ah, you're right. This is probably true for most of the peripherals in
-this series. I'll see if I can get it sorted out for the next
-iteration.
+Havard

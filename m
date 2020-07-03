@@ -1,94 +1,95 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2779979lfm;
-        Fri, 3 Jul 2020 13:21:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxW7/GZxZp+YMkPwrbqFaFhCxvW41IqTboF6pjXsMy9HS2epAJanFBS/KCodztXx+mLutmg
-X-Received: by 2002:a25:808a:: with SMTP id n10mr44478144ybk.434.1593807674515;
-        Fri, 03 Jul 2020 13:21:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593807674; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2780108lfm;
+        Fri, 3 Jul 2020 13:21:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwDXsL1WNTRNsKJSGChkMqaUVR54JszCTjIcUxKufP02Ou/lMXNwPWvVFhUDDHKndfnprRT
+X-Received: by 2002:a25:d104:: with SMTP id i4mr9652726ybg.80.1593807685887;
+        Fri, 03 Jul 2020 13:21:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593807685; cv=none;
         d=google.com; s=arc-20160816;
-        b=ReAIMQZkImTkxZdAoUsgcW8JQ+wiWjZAAB+ss6Uet7bocsJDTKhIXl1TzPfxicOBbN
-         3C3vI+K0rXOfzcUWzU0ff9VbbNsZmBOLz3cpIdB+ToDe65FHTtqTT2/KnAQx03Hv2+1i
-         kpDc5ENolSGHck8DyBcYDkEB2ro7xSfrgNEct8zkrxZRGxj13Trg88Su6UlclKjBJP/O
-         dJey232TtwzKD/k2Lt8LvXbIyErwi2qqmtWZmWenmpol0SncdXMzuUMMrnHtj8osHsjy
-         CUcktO2ohEAJtRYPSPtYyNsgObMVT6S3g0y9g1gpEn/nBxbiISbXnOmxGPBueZqWKy3N
-         wDEw==
+        b=y0eobJTcwQzMy50iTARJ0sd7NCNVerWf4RmihW3BZmXVrOBv2/736DFABz37JGv+3G
+         8lL6kTJtGNKkcQpQ2yp62Y7DKIaWZ1FWbM+1aJaSA/8l8gp5R8cx+nppNkrZPHxercj1
+         oYzw79yCxvHdB0NETWqOaO00z6WLX29qZpdEx4eVrkBW77+BKl8h2cjlpH0ArqztEA5e
+         HtuI+cs5EdpBAia1Up5e0WHHZljhW/PA/EJP+2yqbm+4VlkyHj0UegzAQAFvDwjqKUpf
+         kIvbR+QGe7fgSRzHss4QVYKSyKb0zD5bJTha6fCkZsCMYTmoekvI9wHKwwEejZoo/LF3
+         Vh4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=4dCqkHJumkeBEkkock7OzqH4CRnyFrOofj4WDwKTygk=;
-        b=Phum32/aK9Nf1p4ZrwU5SIwcNwY+6vO9MlRaOz5QyRpHcc/AcrwOKpUZy4aB1Eqsei
-         MW9rjZn3vKOL5ifSif0qmEeu1lxMo8haKvHEmhSyOHRAEfkvDUUD0O9jUKTolyFqO2X0
-         /J+S+vNiWtEnPLU8xWraX1rGNjq8EQmPHb8hhXFlq8cVNJw7xkEeFDEJzFn4cXcnC89u
-         KokFVU2EKz5ifzaqQMkfLk7UhoHuSLDtGFhuxjk+W+DyK1ekuciL40d4B6f8eJm9bK/K
-         Wy34YL/9TKhtS5uhTEPPsmCDWCro1VWyiW0Dfg097e28z0P36K/YHDU37ZR7eFIYt5ff
-         uBvA==
+        bh=my+2I7oEcIoGWnbLn8sq/+Zy6t716yBT3j4+w3PES+4=;
+        b=axgQG86KjjJxzEZRjeErPjJXBeLXqv/DJMgcLQSa9T6iU1+V6lnmEtL+JTLgsetv5r
+         LOqYDHUdZbmpd+eSS2KM4E/fzbVSNYT8HROlGIW201daWcaBDT998g5u05DTx0gEwWnu
+         dPydaip23xym9ud/hK55ovza3SqbDbzp+PuGwCzc7NL1sb/HfvvjcXOx7HSocSA8L4GN
+         A2HRONUVpcGufr3ajDiUVWckx23nlfmmLjy3DqBoMbcECmJ2oQDnabj5/Su7rOzMvGSS
+         tRuGv7jlX+xho1kY9x1dYfXm5CgkHqpiCNnr0xm+akOPWfFKeMGoIFd17zO5Z04qlUcU
+         n9jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TPwyELxk;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jMsdntsC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r14si12630548ybd.85.2020.07.03.13.21.14
+        by mx.google.com with ESMTPS id w6si12279814ybc.441.2020.07.03.13.21.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jul 2020 13:21:14 -0700 (PDT)
+        Fri, 03 Jul 2020 13:21:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TPwyELxk;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jMsdntsC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:47952 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48980 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrSBN-0003Ce-Qk
-	for alex.bennee@linaro.org; Fri, 03 Jul 2020 16:21:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35274)
+	id 1jrSBZ-0003dW-9F
+	for alex.bennee@linaro.org; Fri, 03 Jul 2020 16:21:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35298)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrS9d-00084W-Mq; Fri, 03 Jul 2020 16:19:25 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:39807)
+ id 1jrS9g-0008Au-IW; Fri, 03 Jul 2020 16:19:28 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:55106)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrS9c-0001VG-79; Fri, 03 Jul 2020 16:19:25 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id q5so33921631wru.6;
- Fri, 03 Jul 2020 13:19:23 -0700 (PDT)
+ id 1jrS9f-0001Vd-4I; Fri, 03 Jul 2020 16:19:28 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id o8so33101691wmh.4;
+ Fri, 03 Jul 2020 13:19:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=4dCqkHJumkeBEkkock7OzqH4CRnyFrOofj4WDwKTygk=;
- b=TPwyELxkzqXteWDD8dRjWlY3Fcmpax+cDByBHyaXGNbLhSvmbO8oTDMp8juaPo/cLG
- m6pIB6b/Kc9dOvxA4TSCgWhlW67yyuGPg4baH/unRGPohy3ujHyX9GwYA1GM1mvBMle4
- 224InrZ1erE6XWKnb2/+hWUo7pk7kP0sYrtKhVzFH8dSrbGCTSEGBwS0qlFGIr9S/g9d
- pCoJmxIsgwR4qUTrQCdo18WDw8fhoN8Ja+hAbUovRGaU/Z2zIL6cB4pwsBZ2tOA+q2NH
- gRLt5byYfm4lwVerYB5D4AcOVwQEP7mRKNrzi3ArA6+8KV4Rsql5hyNm0G/tvV2R1E4c
- ZSzg==
+ bh=my+2I7oEcIoGWnbLn8sq/+Zy6t716yBT3j4+w3PES+4=;
+ b=jMsdntsCkNXisGBb8CWMLEwcMT5w5vt3Sf5OaNZ9pzAtgCTTUxi5pfTcmNNtU+aeYs
+ wEr4QCmswYd+71G3yezbvj1mMfMVZtHHeGtkyC7UuxeJ+LKj/cLVHMXAN+003sXUtWBh
+ dimsIGOni4BsEQsiwyDzR8GGjEo8g261ygPJxPmfelMqA2wJiLXJ+F+IYolgMxNeL0s8
+ h2savXhtsNvan343BBx6k+lcOig6zXVV+7g4WTtLu/ukI0NgwbTRzYkod3gpbONdd15q
+ CvKcbi3VOuRytEWpLnBhrTu+RR5WFS8hZDz2nwrs8bce3NicYV7C7OHlhYuxEPjQVe+u
+ 1bQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=4dCqkHJumkeBEkkock7OzqH4CRnyFrOofj4WDwKTygk=;
- b=CGn1IPgewilDjuM/XioyHDP1UDuRAH6umZKbTyfKKi2onF1L8HfzYmatDTfZpGE/NY
- XiK+mtnPw4JYX6MqW3ShEogchC4Q8jK6eZTwEiUSpPTHr0axNz71GHq926jlJ5BGToP9
- wpjZT9eKgq0ddi3H4sUrXJTLCLyhLrDJuIvmRxP5qIIIMjdVvmMKXELAK0B4mVV0r6O4
- GHxeppefgQOzTE55g8iNlqnhefffRk3vmf1nBXlCiYSOVcOyDdLk1vblQr8W3hhPgKfM
- YYRKfcjDoxKPX6eympY5NRXTdjloAE0KsI/86GV0nbEcpmipqQ0NODtpac1G4g9GxWmJ
- 6mVA==
-X-Gm-Message-State: AOAM5335UbajCzu1TEhwF0RY8lDJWBg+55h2LHeXBX7oHxaffuanUNpT
- Bw23e+Kp8LaQI0xpc37EvtXoDM4T2Tk=
-X-Received: by 2002:a5d:6b8c:: with SMTP id n12mr38589422wrx.352.1593807562362; 
- Fri, 03 Jul 2020 13:19:22 -0700 (PDT)
+ bh=my+2I7oEcIoGWnbLn8sq/+Zy6t716yBT3j4+w3PES+4=;
+ b=Rjg0Zo1APAbGgM9xgSTeSD0x8LuPXVqY0osVlRozTJn1FceAb3w5RFowJpmzQmSBMl
+ rySILM2A/3emOI2cSlGtAy5CsrmMD7eHu8OURZiCn/nIZPn1WsPgxPgvjkCwDVsd6bwp
+ eYNLUoNLlsg3vYu3RIMpFxUBSalRoOtn1akUaMJOJYLGgTV8+CDEE7pefo2COrkNFV5F
+ kVcyQD/68j6sUqrBK0SBli2+Rek3kSyHfYrbfbq7ylZtf4VMjWZzLuzd9+M5ylYRvGMe
+ RF3O5VKfAbP+GVHDYsLZsocL2ENsqSppGraqax6I5JuZLB4o+9jS3BHETN1mudAQdOzm
+ 1MbQ==
+X-Gm-Message-State: AOAM5309oHwLAMQAdJ9CsufvzuvsiJV1TTLjToDb51sM0YI0Axf9JAKT
+ 2aff12JttUQkxBnEh+6nRsqIw4Xrfp8=
+X-Received: by 2002:a1c:7209:: with SMTP id n9mr10149730wmc.150.1593807565301; 
+ Fri, 03 Jul 2020 13:19:25 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id u65sm14229625wmg.5.2020.07.03.13.19.21
+ by smtp.gmail.com with ESMTPSA id u65sm14229625wmg.5.2020.07.03.13.19.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Jul 2020 13:19:21 -0700 (PDT)
+ Fri, 03 Jul 2020 13:19:24 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 06/18] hw/arm/bcm283x: Mark devices with no migratable fields
-Date: Fri,  3 Jul 2020 22:18:59 +0200
-Message-Id: <20200703201911.26573-7-f4bug@amsat.org>
+Subject: [PATCH 08/18] hw/core/split-irq: Mark the device with no migratable
+ fields
+Date: Fri,  3 Jul 2020 22:19:01 +0200
+Message-Id: <20200703201911.26573-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200703201911.26573-1-f4bug@amsat.org>
 References: <20200703201911.26573-1-f4bug@amsat.org>
@@ -96,8 +97,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -135,68 +136,28 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SjZH0hzojKKa
+X-TUID: 36soCEScSPfj
 
-These devices don't have fields to migrate. Be explicit
+This device doesn't have fields to migrate. Be explicit
 by using vmstate_qdev_no_state_to_migrate.
-
-Add a more descriptive comment to keep a clear separation
-between static property vs runtime changeable.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/arm/bcm2836.h     | 7 ++++---
- hw/arm/bcm2835_peripherals.c | 1 +
- hw/arm/bcm2836.c             | 1 +
- 3 files changed, 6 insertions(+), 3 deletions(-)
+ hw/core/split-irq.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
-index 024af8aae4..66e3621bb9 100644
---- a/include/hw/arm/bcm2836.h
-+++ b/include/hw/arm/bcm2836.h
-@@ -33,14 +33,15 @@ typedef struct BCM283XState {
-     DeviceState parent_obj;
-     /*< public >*/
- 
--    char *cpu_type;
--    uint32_t enabled_cpus;
--
-     struct {
-         ARMCPU core;
-     } cpu[BCM283X_NCPUS];
-     BCM2836ControlState control;
-     BCM2835PeripheralState peripherals;
-+
-+    /* Properties */
-+    char *cpu_type;
-+    uint32_t enabled_cpus;
- } BCM283XState;
- 
- typedef struct BCM283XInfo BCM283XInfo;
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 7ffdf62067..f33500dc27 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -401,6 +401,7 @@ static void bcm2835_peripherals_class_init(ObjectClass *oc, void *data)
-     DeviceClass *dc = DEVICE_CLASS(oc);
- 
-     dc->realize = bcm2835_peripherals_realize;
+diff --git a/hw/core/split-irq.c b/hw/core/split-irq.c
+index 3b90af2e8f..a7072f922c 100644
+--- a/hw/core/split-irq.c
++++ b/hw/core/split-irq.c
+@@ -71,6 +71,7 @@ static void split_irq_class_init(ObjectClass *klass, void *data)
+     /* No state to reset or migrate */
+     device_class_set_props(dc, split_irq_properties);
+     dc->realize = split_irq_realize;
 +    dc->vmsd = vmstate_qdev_no_state_to_migrate;
- }
  
- static const TypeInfo bcm2835_peripherals_type_info = {
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index ed1793f7b7..5fc67b6777 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -173,6 +173,7 @@ static void bcm283x_class_init(ObjectClass *oc, void *data)
-     device_class_set_props(dc, bcm2836_props);
-     /* Reason: Must be wired up in code (see raspi_init() function) */
+     /* Reason: Needs to be wired up to work */
      dc->user_creatable = false;
-+    dc->vmsd = vmstate_qdev_no_state_to_migrate;
- }
- 
- static const TypeInfo bcm283x_type_info = {
 -- 
 2.21.3
 

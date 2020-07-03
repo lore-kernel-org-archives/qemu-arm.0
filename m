@@ -1,103 +1,84 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2335071lfm;
-        Fri, 3 Jul 2020 03:37:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwRH7jvxvLTOz4om0QumElZOmsAeHJur6PAvaHgrj81dol8P+hg900feXfHthYeIpIp4wa7
-X-Received: by 2002:a25:aaa9:: with SMTP id t38mr55897233ybi.312.1593772647114;
-        Fri, 03 Jul 2020 03:37:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593772647; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2531191lfm;
+        Fri, 3 Jul 2020 07:36:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyv5V/jvy5i2NGv+Px1FaVvRwc/ImQ37Zp1FyBz6NKnHPDuUh0O1+B8fnXlQzM5DuHiW6H/
+X-Received: by 2002:a5b:182:: with SMTP id r2mr23451682ybl.50.1593787006171;
+        Fri, 03 Jul 2020 07:36:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593787006; cv=none;
         d=google.com; s=arc-20160816;
-        b=GjaYJb7PNFXBYO7a/WxAd7TrrfKiSmjtuTQ9A+8+JcG9xDbNlIh97AHCM+O9d6UhCF
-         R23gtBo7+Ei57JrFVOvldbTE/LHnWof5JQk42pyzY3v1ey2VDBSQ2U9C+H6813+TRCAA
-         L5f5H8jJ+V95niyXbGYFLjmjhJuy35f6wBd3ZzJ3ALIHAdzOxwVkCkB3JbpwLadcunwk
-         7IIFnlu93x4TPWPzWkduguzC9ND0qiPgTAv/G54PJYHZkby84Uy91tLluLBsRTghG8Nd
-         LZ+T5kM6kBCaT+XhhmU/M+I/rHK5lOFRhfABLIG92buvafLava+gSLCL9RcyB+LCVguk
-         Hqkw==
+        b=Nq2sXtlKzIcje2qRAS9ckvhYVNdCL7l4OPEWwkSsJvfxbLIcmXcIQlxqEa2+YIbypL
+         N74k/NfrBxE/Q3BwuTtnWJ9lKGpCYujg04nKlsWlRDcLabk2UgAngQ9dSj//mFteHknC
+         IT6xuerfnLcCKXs5oO00MD//8Ox2Qm+/IrhLZuu8mWtTjHqvGvtRtZMgEVad0vMBumG6
+         nmjoTPCYYl9yWkDXqi9as06UF92t5A234qNTNv5UxBtei757fTAFJqh0W5Fljh2lkvKY
+         xFDZQSPQfu91RFBbvVzb93WLFLvT4vgQcDVgWnbhvPFKFOEzZaOLDOfmtTmK99p+jEnu
+         Yotg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ZcX3ndpVQgJvadTxo6qh2NP64rCXUcYtfO0TglJILvQ=;
-        b=eQBx+mhEuv3xbae3V6MnXy+Ej2R6ww18dh5+7Itrf4XhekoinR0xmKf1iAGWuDus1S
-         eqzmsk9IviY0CLsTVsLFiRnDRIGjttAMQFGunxXGVmmUB/l2yo1kIi/P0Ujmdd8g9CrV
-         qwsMFw3AARSRGiMGodJtQmnhp/Z9pY4o2hpc5rh2FqaE7K4y3e7KG9FMEf6To9q7mnIp
-         DkmTUwlFP1GhtgfEToeNb6rC4kv1kprpCCdJUx7V4/MkJX5Zdku2k9NVSXE8TlDgOduF
-         t88EUNQ0uyJ2HnSazM6RY3QtcQuiqD/piuJm12YwAammAGl3rjXfCML1OlejvA0MDFdt
-         8S4w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=8qsnbi5rM5ctASbvnoKTpOS53O6NbyHwOzGj8NwuFds=;
+        b=BTKmyuizbsS27+isytSepfgmfz3/7Zh7ow9X2Xb5exo8BWIgxvguZOldjdGWrgQLBm
+         OC91Ds7Wv0bYXnVG0niOzGDFFzGUksT32K/8MECVEXYV7wBASOPT3+28pC8QSyYhDQTr
+         WUAhlxcMCaPiefCcNulu77GgkvQ+JNFW8ixwrxMJ2MF0JCHEPiEMX2LslIO4CxEgupEC
+         lZmf+XjuOgZPyzqXnzEvPG05Gvp7B2IHcJHiHQDwz57hGFwQyyLMx2bqACvo8ntegTnT
+         qgeU/reO0I74Db4dhlKjU44nC9FdEgxWyP17g329Y5ou3v3E0176qFpMP9E+jlHMsfPD
+         KXiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CFzXIDMf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=alibaba.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r128si11019334ybc.354.2020.07.03.03.37.26
+        by mx.google.com with ESMTPS id q188si11654330ybg.429.2020.07.03.07.36.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jul 2020 03:37:27 -0700 (PDT)
+        Fri, 03 Jul 2020 07:36:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CFzXIDMf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43298 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=alibaba.com
+Received: from localhost ([::1]:39634 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrJ4Q-0000Uu-Er
-	for alex.bennee@linaro.org; Fri, 03 Jul 2020 06:37:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35942)
+	id 1jrMo1-00029t-JS
+	for alex.bennee@linaro.org; Fri, 03 Jul 2020 10:36:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37636)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jrJ4G-0000SI-J6
- for qemu-arm@nongnu.org; Fri, 03 Jul 2020 06:37:16 -0400
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c]:37816)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jrJ4E-000553-O1
- for qemu-arm@nongnu.org; Fri, 03 Jul 2020 06:37:16 -0400
-Received: by mail-ot1-x32c.google.com with SMTP id w17so18508952otl.4
- for <qemu-arm@nongnu.org>; Fri, 03 Jul 2020 03:37:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ZcX3ndpVQgJvadTxo6qh2NP64rCXUcYtfO0TglJILvQ=;
- b=CFzXIDMfsOOAKs+cwvSq+CPlYoAJLrTRh6O9z8t4eQ0NvP+Je4IBz3IPJNfpn3cxAG
- DkhhQ/3groUsjTWuvniWxubiSqN2+vqyvaJoCSEMABBTgyH4x5q0i8Rin5R6PPoilyk2
- 9Uw/kWA/Ny+IJ34Ztyo4FfMvaYYrSFaHFWxe89LXITqJ9Lolp2MpArr91z7UsFChdwMu
- V8glk8m73//yOnFON+MbHNBFSnjrMzYuGmuVYN1TaSonpE6pcKDcp83tP/qKGELpQhyX
- lF2HTEVMoOW2Nbh5hqqPmoolLU7nq9cPtzsNBUQCYzywLXTtIiEMLBpoA+GUATOvBTu/
- g69g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ZcX3ndpVQgJvadTxo6qh2NP64rCXUcYtfO0TglJILvQ=;
- b=aPYwERL2ar89sBfltV8usQTpl6E43WbZMQSgydEcd4AztFswXNrInckp9RqtNYOEna
- s0jQ2cGdnOOxy/TMZMA6D5KbBJfwJCbde716554PZkmMpFcMczyPz8HYYT950p+2Uxl0
- oaqcZ6MmrEWhr5W3BNYROWTROI07ImuAo5RJ8CFq6HTGVSyLJawmkiTp8fdAwirrSTKC
- gshQ2/LUwGgR7uGZLULqAL19IY/U685WyR52qeLsI5+bwQIiz6EpczrRbeJyeAMtmNXg
- 748r+mTsO47kk7yPVmDaK9IsQV1FPCMlqabS48Iw+Ct/b0roWMYNrsiHTnMfn1VuEa1o
- dGOA==
-X-Gm-Message-State: AOAM530DR0D1r/V87Qoq4WgH20MYizPZT35GfnvfHBRSzOSRAP61YqwG
- xzhqYA+WPadbbN0bT4sqG9xEgREsJehLhWvISGiJoQ==
-X-Received: by 2002:a9d:7303:: with SMTP id e3mr23952809otk.221.1593772633484; 
- Fri, 03 Jul 2020 03:37:13 -0700 (PDT)
-MIME-Version: 1.0
-References: <1593769409-13534-1-git-send-email-guoheyi@linux.alibaba.com>
-In-Reply-To: <1593769409-13534-1-git-send-email-guoheyi@linux.alibaba.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 3 Jul 2020 11:37:02 +0100
-Message-ID: <CAFEAcA8RU6fS8PX7LMhn4U33nKoRvcO_mnyBFcmW3iOpA40sCQ@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <guoheyi@linux.alibaba.com>)
+ id 1jrMns-00027H-Bu; Fri, 03 Jul 2020 10:36:36 -0400
+Received: from out4436.biz.mail.alibaba.com ([47.88.44.36]:9443)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <guoheyi@linux.alibaba.com>)
+ id 1jrMnk-00020m-VD; Fri, 03 Jul 2020 10:36:32 -0400
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R821e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01f04427; MF=guoheyi@linux.alibaba.com;
+ NM=1; PH=DS; RN=7; SR=0; TI=SMTPD_---0U1av7be_1593786962; 
+Received: from B-G4TALVDL-1650.local(mailfrom:guoheyi@linux.alibaba.com
+ fp:SMTPD_---0U1av7be_1593786962) by smtp.aliyun-inc.com(127.0.0.1);
+ Fri, 03 Jul 2020 22:36:02 +0800
 Subject: Re: [RFC] virt/acpi: set PSCI flag even when psci_conduit is disabled
-To: Heyi Guo <guoheyi@linux.alibaba.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x32c.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1593769409-13534-1-git-send-email-guoheyi@linux.alibaba.com>
+ <CAFEAcA8RU6fS8PX7LMhn4U33nKoRvcO_mnyBFcmW3iOpA40sCQ@mail.gmail.com>
+From: Heyi Guo <guoheyi@linux.alibaba.com>
+Message-ID: <00016872-f1ca-5989-8ad6-28cf05ea0c57@linux.alibaba.com>
+Date: Fri, 3 Jul 2020 22:36:02 +0800
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:68.0)
+ Gecko/20100101 Thunderbird/68.9.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8RU6fS8PX7LMhn4U33nKoRvcO_mnyBFcmW3iOpA40sCQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=47.88.44.36;
+ envelope-from=guoheyi@linux.alibaba.com; helo=out4436.biz.mail.alibaba.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/03 10:36:16
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10
+X-Spam_score_int: -105
+X-Spam_score: -10.6
+X-Spam_bar: ----------
+X-Spam_report: (-10.6 / 5.0 requ) BAYES_00=-1.9, ENV_AND_HDR_SPF_MATCH=-0.5,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, UNPARSEABLE_RELAY=0.001,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,24 +97,30 @@ Cc: yitian.ly@alibaba-inc.com, "Michael S. Tsirkin" <mst@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RjD7eKSql4Pp
+X-TUID: nhVmDICBxV0v
 
-On Fri, 3 Jul 2020 at 10:44, Heyi Guo <guoheyi@linux.alibaba.com> wrote:
+
+在 2020/7/3 下午6:37, Peter Maydell 写道:
+> On Fri, 3 Jul 2020 at 10:44, Heyi Guo <guoheyi@linux.alibaba.com> wrote:
+>> vms->psci_conduit being disabled only means PSCI is not implemented by
+>> qemu; it doesn't mean PSCI is not supported on this virtual machine.
+>> Actually vms->psci_conduit is set to disabled when vms->secure and
+>> firmware_loaded are both set, which means we will run ARM trusted
+>> firmware, which will definitely provide PSCI.
+>>
+>> The issue can be reproduced when running qemu in TCG mode with secure
+>> enabled, while using ARM trusted firmware + qemu virt UEFI as firmware
+>> binaries, and we can see secondary cores will not be waken up.
+> If you're using a real EL3 guest firmware then it's the job of
+> the guest firmware to provide a DTB to the guest EL2/EL1 that says
+> "and I support PSCI" if it supports PSCI, surely? QEMU can't tell
+> whether the EL3 code does or doesn't do that...
+
+Thanks, Peter. Does that mean the ACPI tables generated in qemu are only 
+templates and firmware should update them if necessary?
+
+Heyi
+
 >
-> vms->psci_conduit being disabled only means PSCI is not implemented by
-> qemu; it doesn't mean PSCI is not supported on this virtual machine.
-> Actually vms->psci_conduit is set to disabled when vms->secure and
-> firmware_loaded are both set, which means we will run ARM trusted
-> firmware, which will definitely provide PSCI.
->
-> The issue can be reproduced when running qemu in TCG mode with secure
-> enabled, while using ARM trusted firmware + qemu virt UEFI as firmware
-> binaries, and we can see secondary cores will not be waken up.
-
-If you're using a real EL3 guest firmware then it's the job of
-the guest firmware to provide a DTB to the guest EL2/EL1 that says
-"and I support PSCI" if it supports PSCI, surely? QEMU can't tell
-whether the EL3 code does or doesn't do that...
-
-thanks
--- PMM
+> thanks
+> -- PMM

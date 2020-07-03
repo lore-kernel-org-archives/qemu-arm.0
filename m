@@ -1,107 +1,107 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2836621lfm;
-        Fri, 3 Jul 2020 14:57:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwSexk3VqwDuXdvAfcybqQ4orspo8c+sxoiH6KRYePun3JxR62covxdYJeiZzQQe0Mn1m1V
-X-Received: by 2002:a5b:152:: with SMTP id c18mr22242555ybp.393.1593813434639;
-        Fri, 03 Jul 2020 14:57:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593813434; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2855172lfm;
+        Fri, 3 Jul 2020 15:25:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzb2syeTTsS2WslShUL1E03lAdWzilM38OK31KROv4T8wQr/JH1xd1R/7cJGJKzFx8fGrM7
+X-Received: by 2002:a25:4289:: with SMTP id p131mr16894336yba.477.1593815117778;
+        Fri, 03 Jul 2020 15:25:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593815117; cv=none;
         d=google.com; s=arc-20160816;
-        b=g3YN+EY9+k8INaSx1PqZyAGyY35cLpD6/68Qojbw0SzSDDeO65k6rwvt840EZ8du+X
-         iJL27oZ7t6PlXjuTZhoalHm9ruUan5L8qfBcmkQnrQ/uwuWLIrJ7CsMjA5gfncSh9hSv
-         BvaZ8DopHNzvHCRI6dzwzxmCyAPwpHRR2vzU7HGsuq0Ft/RK3p5dUiU9Ro9y69+v1aUc
-         Kjx7K78lJVSdALmbmhKs3+KdW84L5o+scbdZ8wkt3PIzxIpb1ArWFGdfdViOfsSj/cbk
-         E0XeSesdHQURc4WjYPq8JMRnVAgVUiINZZpNiB1h0mB2LkD3jHCNXDuAY9VMwY8VUpON
-         2EzA==
+        b=ZoM52EVJP0xnm0jb5IfaMGewZnzGVCtPJcfh6c0/jhilGiQvy1nGbwS7ffbPCPk8q1
+         +pbG8KI09ZfK/zSV6kDUMajzJ272Cj4d94ANlSy+oSWAvMU3hZWGW5A1Eutem4qsh07z
+         PP6Kd5feYIxVcT6sOIRgllge2nFtGhY9EmrzVCjiKMY5/NpBAMWn/mWJVgEVyclNxmXG
+         9R7BfqZh5YMHXdXgTYkMbVprrTGXebnZu/8+gYe7om4BF5Qhz9h+0+xwodqy7QV1Y6x7
+         dy5eqmvn/PWrIIR+KS/gVLodJI1vI+Z8M5cLOUeIEkurGAQjC//t9qjXtDBI9NPLQ+Hk
+         Iq7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=w5Z+RGfsNAIQU/SV50WWMd1/XgW5h3QosAeHkGRArwk=;
-        b=OXPUlAfYZDFwiIuEFa4vFIb2Yi6eIovpaE2qwTCbsI7j/T4EnkOzyY8lgSGEdJ2SsX
-         YizA2t4bG5SpjKSeKMRwI0RRO7HCdnqR3VX9lE4fT9UZ1WdVoirPHiuiRbg1F3N5Y2Mw
-         FIB4d5KQDH5M0KpVgZ4zZR5BbtV6cHcblUtuN3Ic9di9H+I9lVdRaeu4ryPXLO2i5Qii
-         5c6om6PR5u0rlPRrev5zuRpWiAiQJtyRwPYuOROJAHSjrBpgk+825BOFobidEA6BDRYH
-         Kp7cbj13+J0UOvrGFqzQEBlNmfoPdhcBKORGJKw4OAvKReqo8bV/llYpwosw/MRGmZQO
-         TSTQ==
+        bh=oszZoWc56c+kYMZlHZs7E7RjeVrLR+NPiJRZfpObgCg=;
+        b=wlzAFK3YosA+L1AlWvGL4ChZMHHI/j3Ihz0SVLPCVAHejcNEHY9lKR+kpT9jqNs8yh
+         v7+8rj8DLsDvZ416zGc9pQa1P23tkOLoK4UxoC1TILa0Mea2RVRa5i+qIkbEJBJlWNaT
+         +MhruPDRVySip0Sy/yUZDYdaX7FFZzqUYmSKb5jJcwa2v3y2cZPYq3xylc4drfeu9Sbt
+         Xi7sYMLJa4PHdMi5NXsWSXTeYRIGwaqspyP74hffx7Uzk5xFYdtFijYXqJjdzuSiW3Or
+         TlFbZHpkHRtm259RXuqam/Dn2v4UoIU4FgY4GKd4QAAR3E5jvEW8PAlT+SVPLen1tNq3
+         Jk2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BXHdplBW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q6DsHzwB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m7si12990908ybo.49.2020.07.03.14.57.14
+        by mx.google.com with ESMTPS id s3si987654ybe.124.2020.07.03.15.25.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jul 2020 14:57:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 Jul 2020 15:25:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BXHdplBW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q6DsHzwB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:57398 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43328 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrTgI-0002aX-1D
-	for alex.bennee@linaro.org; Fri, 03 Jul 2020 17:57:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56368)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jrU7R-0005lI-5k
+	for alex.bennee@linaro.org; Fri, 03 Jul 2020 18:25:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60382)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrTg9-0002aE-S9; Fri, 03 Jul 2020 17:57:05 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43639)
+ id 1jrU6j-0005IM-Pz; Fri, 03 Jul 2020 18:24:33 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:54556)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrTg8-0005UA-7F; Fri, 03 Jul 2020 17:57:05 -0400
-Received: by mail-wr1-x442.google.com with SMTP id j4so31714075wrp.10;
- Fri, 03 Jul 2020 14:57:02 -0700 (PDT)
+ id 1jrU6i-0003SR-6F; Fri, 03 Jul 2020 18:24:33 -0400
+Received: by mail-wm1-x342.google.com with SMTP id o8so33344432wmh.4;
+ Fri, 03 Jul 2020 15:24:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=w5Z+RGfsNAIQU/SV50WWMd1/XgW5h3QosAeHkGRArwk=;
- b=BXHdplBWHzhd2cXouSDX4i/S+I85q9/Y8VmTUnzRTiG7S1hsyAI/GscTaHWgJ0UIWE
- Sd4Zo9JJ/bmINPLtlGl/8PAMyVOaJG7lY+eVjhkGI6iw2lNv7fgkRzHzT2KUp/T2jOvk
- qzBgRbLw5HsYi/5kZ06housEN6Wlbs4MN79G37/9n8P0hIDD0zBmDGAT8TatFFT0FZgA
- HNoTS0fjeeI63TLnGxiClzQCZz+ESdvPaj4PWaIqq4fHE886aqkMpWY9o50qV0lcLyMP
- rfjcmQ8tPsMQxI3/Bdtu5Nzyg31gSVSZLSIW5IYfC0y2/9Xu6qzzc3z7cXdwHAD8dvBg
- n14A==
+ bh=oszZoWc56c+kYMZlHZs7E7RjeVrLR+NPiJRZfpObgCg=;
+ b=q6DsHzwBO7IPICp3pW4MtVZ4lJPvs1K1IRpOSkCbHIY6TQh4Kb3pdFqVoCpdSC/qOu
+ ZKA9jokXPAfuSLRXGY3U5hi/Zgv1xTQEPMfp2A+NuToDCjUVIFxLljdviDXZGWAjBVup
+ +tr2Ja3w8wLCD8TCYPsejfldUx02YbDP9gqa4Ew6E0vNtm0tuGcOkbpKTKwWe1Spw5ZU
+ e9LeWNCNymhRby3hbNFeSZl81IJRSZC3l57awAN/Ax0HvYOMIK583aPj2+5t59iBukJ5
+ pZmp6+8LOqDCNvEKjWPvvJApNz2VNEikfiG+p1m8ymbRSLAlsofz7X0+5BWRSTOiCKL5
+ zlJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=w5Z+RGfsNAIQU/SV50WWMd1/XgW5h3QosAeHkGRArwk=;
- b=esJtWEoTQh+y8EJcnGHurqqRhYPfvbB0mYc6zTGnT7h/6+4I9xFNQUy8oozyuXBc6Y
- R6X7u/EoZOPJOjm2bowM+UR3oz6vSeoh1NFvOI0s7KSfPrMR9/7jakMsdXMJz4t7zH6G
- yhM4l3tQX3nW3EAnlbVka07aYKLwU4yeQShPujuwNmUleyGGZjiJUOJiW9WWq8MYkFIl
- 6Cov/B1ZDGjkH4dX47PY+55kgTaJrooj3amquLtOiCpOlbqDH0MMtPuSZMe6DGWu7rDS
- kYXjpgEMyI3l42I9kh6nJf2B1Xhadr3ybNZzZuCtvAHp8UzO2bTPDho0oXYHvmvbD1wJ
- Wo3Q==
-X-Gm-Message-State: AOAM532OQrHs4Z+aFBS0W3TSU1Ulm9SxLzRXeGB02Oc4BHNc5jnxxODs
- Gox+uqKQ15CeYRfKWDgN+zU=
-X-Received: by 2002:adf:ef46:: with SMTP id c6mr38554782wrp.34.1593813421457; 
- Fri, 03 Jul 2020 14:57:01 -0700 (PDT)
+ bh=oszZoWc56c+kYMZlHZs7E7RjeVrLR+NPiJRZfpObgCg=;
+ b=CWHfN9thGkjL7sTt+B2EIFsznv7Jz9SY/h0ksdz1sFBJLPvQVsoQCn3avyWEQhG/sM
+ 2nxQNjuCaA5gq8Ppa35nrd6ySIeusMED3b8EnQYW2slVNi6Twc9wOjKQiINMka53uBli
+ VZu0J91YVBiV3fEcWTX6qBVPCNYAni9alnZRNF0kM/5hhsWFET21Xd4cLzTjOOkJQZmb
+ 86HYMpkJwO5PC3ADKxcGFvowsu6t3CIoCqmTVygkbIXy5XZbCp/aPVm3O+zeUF1hlXVL
+ 5oU1S7/LiNVoodZOeitWMAesEpVXTLYExw298KO0P1+OzHBLeDy6Nlz+53VqDZE+SOhD
+ yAQQ==
+X-Gm-Message-State: AOAM530B3TIFK0cs5WBtKo/pjofb5HqMq4XyLC3QGCx9HbYfZAZsKLLY
+ Aziuv85Pohohnflh3j2HjZY=
+X-Received: by 2002:a1c:7c19:: with SMTP id x25mr28377459wmc.176.1593815070488; 
+ Fri, 03 Jul 2020 15:24:30 -0700 (PDT)
 Received: from [192.168.1.39] (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id k14sm15025159wrn.76.2020.07.03.14.57.00
+ by smtp.gmail.com with ESMTPSA id u84sm14461689wmg.7.2020.07.03.15.24.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 03 Jul 2020 14:57:00 -0700 (PDT)
-Subject: Re: [PATCH 2/2] hw/ppc: Use TYPE_SYSBUS_OHCI instead of hardcoded
- string
-To: BALATON Zoltan <balaton@eik.bme.hu>
-References: <20200703184952.4918-1-f4bug@amsat.org>
- <20200703184952.4918-3-f4bug@amsat.org>
- <alpine.BSF.2.22.395.2007032149250.12670@zero.eik.bme.hu>
+ Fri, 03 Jul 2020 15:24:29 -0700 (PDT)
+Subject: Re: [PATCH v3 08/12] hw/nvram: NPCM7xx OTP device model
+To: Havard Skinnemoen <hskinnemoen@google.com>
+References: <20200626235519.591734-1-hskinnemoen@google.com>
+ <20200626235519.591734-9-hskinnemoen@google.com>
+ <abdb209d-7268-7997-2caa-95cb984269da@amsat.org>
+ <CAFQmdRYZWhA-957jRHfiRHfYoOk-c2TJVtqoz6LMOhDgJwMiCg@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <fabe84fc-af53-a945-8b43-e2893853da6c@amsat.org>
-Date: Fri, 3 Jul 2020 23:57:00 +0200
+Message-ID: <9f8c6cb0-cac3-2afe-a98a-c627cb04bd4b@amsat.org>
+Date: Sat, 4 Jul 2020 00:24:28 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <alpine.BSF.2.22.395.2007032149250.12670@zero.eik.bme.hu>
+In-Reply-To: <CAFQmdRYZWhA-957jRHfiRHfYoOk-c2TJVtqoz6LMOhDgJwMiCg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -110,103 +110,94 @@ X-Spam_bar: /
 X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
  HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wj1/4v92Dmnx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goate?= =?UTF-8?Q?r?= <clg@kaod.org>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7j+HHKxIkVOQ
 
-On 7/3/20 9:58 PM, BALATON Zoltan wrote:
-> On Fri, 3 Jul 2020, Philippe Mathieu-Daudé wrote:
->> By using the TYPE_* definitions for devices, we can:
->> - quickly find where devices are used with 'git-grep'
+On 7/3/20 11:07 PM, Havard Skinnemoen wrote:
+> On Fri, Jul 3, 2020 at 6:46 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> On 6/27/20 1:55 AM, Havard Skinnemoen wrote:
+>>> +static void npcm7xx_otp_realize(DeviceState *dev, Error **errp)
+>>> +{
+>>> +    NPCM7xxOTPClass *oc = NPCM7XX_OTP_GET_CLASS(dev);
+>>> +    NPCM7xxOTPState *s = NPCM7XX_OTP(dev);
+>>> +    SysBusDevice *sbd = &s->parent;
+>>> +
+>>> +    s->array = g_malloc0(NPCM7XX_OTP_ARRAY_BYTES);
+>>
+>> The possibility to reuse persistent OTP seems important.
+>> This can be added later of course.
 > 
-> You could just as well grep for the type name but it's true if some
-> files use name and others the constant then you need to grep for both.
-> 
->> - easily rename a non-user-creatable device (one-line change).
-> 
-> But most devices are user creatable and thus their name is part of the
-> CLI so inlikely to change due to preserving backward compatibility of
-> command lines. So usefulness of this change seems limited to me.
-> 
-> But my problem with it is not the above. It's that hcd-ohci.h is not in
-> include but in hw/usb so it's internal to the implementation of the
-> device model and defines things that users of the device should not
-> need, therefore they should not include this header. So if you want to
-> use the defined constant then that should be split off to some public
-> header instead of including hw/usb/hcd-ohci.h. Maybe we need a new
-> header for these TYPE_* constants similar to qemu/typedefs.h?
+> Agree, it's an important part of the behavior of the module. But it's
+> not essential to be able to boot a BMC firmware image, so I left it
+> out initially.
 
-Indeed you are right. Thanks for noticing the bad effect of my patch.
+This is not a problem until someone else try to use it. And OTP/NVRAM
+are devices currently in hype. Meanwhile we have another technical debt.
+I am just giving generic review comments.
+
+What bugs me particularly is the OTP content zeroed at reset without
+any warning. Maybe you can add something like:
+
+  qemu_log_mask(LOG_UNIMP,
+                "Persistence not supported, OTP content erased!\n");
+
+in npcm7xx_otp_enter_reset().
 
 > 
-> Regards,
-> BALATON Zoltan
+>> See simple example in hw/nvram/eeprom_at24c.c which use
+>> a BlockBackend so the OTP content is not lost after reset
+>> or migration.
 > 
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->> hw/display/sm501.c | 3 ++-
->> hw/ppc/sam460ex.c  | 3 ++-
->> 2 files changed, 4 insertions(+), 2 deletions(-)
+> I'll take a look at that, thanks!
+> 
+>>> +
+>>> +    memory_region_init_io(&s->mmio, OBJECT(s), oc->mmio_ops, s, "regs",
+>>> +                          NPCM7XX_OTP_REGS_SIZE);
+>>> +    sysbus_init_mmio(sbd, &s->mmio);
+>>> +}
+>>> +
+>>> +static void npcm7xx_otp_class_init(ObjectClass *klass, void *data)
+>>> +{
+>>> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
+>>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>>> +
 >>
->> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
->> index 9cccc68c35..c122a4eca5 100644
->> --- a/hw/display/sm501.c
->> +++ b/hw/display/sm501.c
->> @@ -36,6 +36,7 @@
->> #include "hw/qdev-properties.h"
->> #include "hw/i2c/i2c.h"
->> #include "hw/display/i2c-ddc.h"
->> +#include "hw/usb/hcd-ohci.h"
->> #include "qemu/range.h"
->> #include "ui/pixel_ops.h"
->> #include "qemu/bswap.h"
->> @@ -1961,7 +1962,7 @@ static void sm501_realize_sysbus(DeviceState
->> *dev, Error **errp)
->>     sysbus_init_mmio(sbd, &s->state.mmio_region);
->>
->>     /* bridge to usb host emulation module */
->> -    usb_dev = qdev_new("sysbus-ohci");
->> +    usb_dev = qdev_new(TYPE_SYSBUS_OHCI);
->>     qdev_prop_set_uint32(usb_dev, "num-ports", 2);
->>     qdev_prop_set_uint64(usb_dev, "dma-offset", s->base);
->>     sysbus_realize_and_unref(SYS_BUS_DEVICE(usb_dev), &error_fatal);
->> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
->> index 1a106a68de..593436937a 100644
->> --- a/hw/ppc/sam460ex.c
->> +++ b/hw/ppc/sam460ex.c
->> @@ -35,6 +35,7 @@
->> #include "hw/char/serial.h"
->> #include "hw/i2c/ppc4xx_i2c.h"
->> #include "hw/i2c/smbus_eeprom.h"
->> +#include "hw/usb/hcd-ohci.h"
->> #include "hw/usb/hcd-ehci.h"
->> #include "hw/ppc/fdt.h"
->> #include "hw/qdev-properties.h"
->> @@ -370,7 +371,7 @@ static void sam460ex_init(MachineState *machine)
->>
->>     /* USB */
->>     sysbus_create_simple(TYPE_PPC4xx_EHCI, 0x4bffd0400, uic[2][29]);
->> -    dev = qdev_new("sysbus-ohci");
->> +    dev = qdev_new(TYPE_SYSBUS_OHCI);
->>     qdev_prop_set_string(dev, "masterbus", "usb-bus.0");
->>     qdev_prop_set_uint32(dev, "num-ports", 6);
->>     sbdev = SYS_BUS_DEVICE(dev);
->>
+>> Missing migration vmstate for NPCM7xxOTPState::regs[].
+> 
+> Ah, you're right. This is probably true for most of the peripherals in
+> this series. I'll see if I can get it sorted out for the next
+> iteration.
+
+IIUC Peter is ready to queue your series on Monday if you fix the
+license, but he usually doesn't accept devices without vmstate via
+his tree, you got lucky ;) See:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg643089.html
+
+Adding the vmstate is not a hard task. If you need to respin,
+I strongly recommend you to consider adding them.
+
+Excellent work btw :)
+
+Regards,
+
+Phil.

@@ -1,117 +1,116 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2817277lfm;
-        Fri, 3 Jul 2020 14:19:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyVNiJZ7E4k5D3ynuUfvPkHqCmhNAxIHn+ABfaaEkLafJ7vsf9rztJeDaguxM2QIirhqDIg
-X-Received: by 2002:a5b:804:: with SMTP id x4mr2130082ybp.499.1593811189919;
-        Fri, 03 Jul 2020 14:19:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593811189; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2836621lfm;
+        Fri, 3 Jul 2020 14:57:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwSexk3VqwDuXdvAfcybqQ4orspo8c+sxoiH6KRYePun3JxR62covxdYJeiZzQQe0Mn1m1V
+X-Received: by 2002:a5b:152:: with SMTP id c18mr22242555ybp.393.1593813434639;
+        Fri, 03 Jul 2020 14:57:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593813434; cv=none;
         d=google.com; s=arc-20160816;
-        b=qdB+vvwTpK8HOY465rgQRPreioV2jO+lvLZtQQvOIx/c7ZLapOuvUB+18k/gUIqZAq
-         eVLvHEJBxjVCDnchHXVnp8c/DICgSeUzDyqT8BVIjO4WaLM/nm0snRH5/ktZzCUwA2ul
-         3KzSDTIlu+fcm++oQ9NxsVoKGp3QeZ4jiCb6RR9H0zmVcUAgLHcTQU/gOdTKqZMfhrTQ
-         vihVtyLblG3e8794ZleJgU9ZsLC3eYC4xQ1sViy7QwallSwodxspybdsG1y/DlCJwlok
-         LH3r4FqWkidzPNqhQPIc5a1NAp89m7xPd961YhpQeg9mowkt2YEjRHFEIaK1zvMnWAHU
-         0upw==
+        b=g3YN+EY9+k8INaSx1PqZyAGyY35cLpD6/68Qojbw0SzSDDeO65k6rwvt840EZ8du+X
+         iJL27oZ7t6PlXjuTZhoalHm9ruUan5L8qfBcmkQnrQ/uwuWLIrJ7CsMjA5gfncSh9hSv
+         BvaZ8DopHNzvHCRI6dzwzxmCyAPwpHRR2vzU7HGsuq0Ft/RK3p5dUiU9Ro9y69+v1aUc
+         Kjx7K78lJVSdALmbmhKs3+KdW84L5o+scbdZ8wkt3PIzxIpb1ArWFGdfdViOfsSj/cbk
+         E0XeSesdHQURc4WjYPq8JMRnVAgVUiINZZpNiB1h0mB2LkD3jHCNXDuAY9VMwY8VUpON
+         2EzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=yuU30o8g/Px0gTd4YpwqhPl9ilWvzec7vcR3IpaT5GI=;
-        b=bGDh8FJTA3iIMRglyp5oprT5LWz9r71b33cVepah6IGGVonSm5ORA3DdWwKuQh82tH
-         jBl86bM8einq0c55FzmLQuFdjCOw5c4ohjRNlEb3nqiKedsP5YtdjzThJtpEqJ0DjgcJ
-         BGhXuzGqJs30Fa5aKRA/Vr7zURg4tPsLs43TWLPpVbGOTpgxudSmzwWBafqC24DU5x00
-         fA893THjGClGnmJJaWvg7+qqnYI1L3w703X3GKkWlCBap2LHuVsDE8D8ZiXYJxLPEeoa
-         HlPHEdgJ1khos9BVcXfUSCh4DZHblF3DxPt6765y4r1lxs6aFCN6YCQkrx3N42Oct/hw
-         cydA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=w5Z+RGfsNAIQU/SV50WWMd1/XgW5h3QosAeHkGRArwk=;
+        b=OXPUlAfYZDFwiIuEFa4vFIb2Yi6eIovpaE2qwTCbsI7j/T4EnkOzyY8lgSGEdJ2SsX
+         YizA2t4bG5SpjKSeKMRwI0RRO7HCdnqR3VX9lE4fT9UZ1WdVoirPHiuiRbg1F3N5Y2Mw
+         FIB4d5KQDH5M0KpVgZ4zZR5BbtV6cHcblUtuN3Ic9di9H+I9lVdRaeu4ryPXLO2i5Qii
+         5c6om6PR5u0rlPRrev5zuRpWiAiQJtyRwPYuOROJAHSjrBpgk+825BOFobidEA6BDRYH
+         Kp7cbj13+J0UOvrGFqzQEBlNmfoPdhcBKORGJKw4OAvKReqo8bV/llYpwosw/MRGmZQO
+         TSTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=lveCnJ2q;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BXHdplBW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r10si12754170ybb.250.2020.07.03.14.19.49
+        by mx.google.com with ESMTPS id m7si12990908ybo.49.2020.07.03.14.57.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jul 2020 14:19:49 -0700 (PDT)
+        Fri, 03 Jul 2020 14:57:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=lveCnJ2q;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BXHdplBW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:36398 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:57398 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrT65-0002tX-63
-	for alex.bennee@linaro.org; Fri, 03 Jul 2020 17:19:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49570)
+	id 1jrTgI-0002aX-1D
+	for alex.bennee@linaro.org; Fri, 03 Jul 2020 17:57:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56368)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jrT5v-0002sr-7l
- for qemu-arm@nongnu.org; Fri, 03 Jul 2020 17:19:39 -0400
-Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41]:34431)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jrTg9-0002aE-S9; Fri, 03 Jul 2020 17:57:05 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43639)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jrT5s-00066P-S2
- for qemu-arm@nongnu.org; Fri, 03 Jul 2020 17:19:38 -0400
-Received: by mail-vs1-xe41.google.com with SMTP id f24so17742591vsg.1
- for <qemu-arm@nongnu.org>; Fri, 03 Jul 2020 14:19:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=yuU30o8g/Px0gTd4YpwqhPl9ilWvzec7vcR3IpaT5GI=;
- b=lveCnJ2qb+2pH/IgJxdWNP+4kCWv2gmPtPVCtDlqiXKcjFu4WT4QDuSvdqhM9hDKpg
- AsFH4IqKnh21pQjWmvjjRAEVlh2I7QFUrLE3Y7iwmiZI4GpkD0lxfFfUKJqrho8roh/O
- bVcsUF2D2tM4e6cjKIul8+ZsT66Y8qEbDeJve6L+xfEARJDiKrF/xwS+Xx56/A1gj9Bv
- 8IUoAp1+8shUjQbG/Sdy3xBK/seEfyopRub0WfUfvixAvZlbe8BDzgdQKvcBJhNmV+zH
- 74+mEzzUpAVK3h9fMCGQnHhjKad6Osfo9eAvIT4kWsephRCfdXMOVV+tSKUJqsidHIXa
- fqbA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jrTg8-0005UA-7F; Fri, 03 Jul 2020 17:57:05 -0400
+Received: by mail-wr1-x442.google.com with SMTP id j4so31714075wrp.10;
+ Fri, 03 Jul 2020 14:57:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=w5Z+RGfsNAIQU/SV50WWMd1/XgW5h3QosAeHkGRArwk=;
+ b=BXHdplBWHzhd2cXouSDX4i/S+I85q9/Y8VmTUnzRTiG7S1hsyAI/GscTaHWgJ0UIWE
+ Sd4Zo9JJ/bmINPLtlGl/8PAMyVOaJG7lY+eVjhkGI6iw2lNv7fgkRzHzT2KUp/T2jOvk
+ qzBgRbLw5HsYi/5kZ06housEN6Wlbs4MN79G37/9n8P0hIDD0zBmDGAT8TatFFT0FZgA
+ HNoTS0fjeeI63TLnGxiClzQCZz+ESdvPaj4PWaIqq4fHE886aqkMpWY9o50qV0lcLyMP
+ rfjcmQ8tPsMQxI3/Bdtu5Nzyg31gSVSZLSIW5IYfC0y2/9Xu6qzzc3z7cXdwHAD8dvBg
+ n14A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=yuU30o8g/Px0gTd4YpwqhPl9ilWvzec7vcR3IpaT5GI=;
- b=FtmdvD9dbpnP0MeU5Tvof0q3z8XcaNNBOleA7NE5HvODo56Gk45bOstE0an2MG9+KQ
- iUR8k584C3vYBDHiL6iUIs3Z4FfsUrStwxMTPR8S/mUFJAZuqJgZjVOx7pV8eQv3DC3q
- 5W4mbajJzkiKVWyj7FiwU6v/U0fUgPhJ39THH4yQGWmAim1bI1StS3IjJFNAvN5Q1A+h
- 1NK+Wf1Fpp1aOvn9plYbcdj5rK1aD74NqkbVgba7R2zaK8sGOE7xI/04/AsxLQldF4Qy
- 7TVz02BGRKt8bJcoO0PtDRbvyd0P+syDmNcL/tj+iMZftw6z2Na4Tl7MVDhD1xDSMaU/
- PBAg==
-X-Gm-Message-State: AOAM531xqkMm+hkVvRh9ov8qIsRXMuNR9uCPGkoFSYLI8QUwiHO7kRmr
- qn62x5Co2Y3vC60UDDHrYpQXd2NQrdzl/A8fP1Xz/Q==
-X-Received: by 2002:a67:7f8e:: with SMTP id
- a136mr23106995vsd.232.1593811175040; 
- Fri, 03 Jul 2020 14:19:35 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=w5Z+RGfsNAIQU/SV50WWMd1/XgW5h3QosAeHkGRArwk=;
+ b=esJtWEoTQh+y8EJcnGHurqqRhYPfvbB0mYc6zTGnT7h/6+4I9xFNQUy8oozyuXBc6Y
+ R6X7u/EoZOPJOjm2bowM+UR3oz6vSeoh1NFvOI0s7KSfPrMR9/7jakMsdXMJz4t7zH6G
+ yhM4l3tQX3nW3EAnlbVka07aYKLwU4yeQShPujuwNmUleyGGZjiJUOJiW9WWq8MYkFIl
+ 6Cov/B1ZDGjkH4dX47PY+55kgTaJrooj3amquLtOiCpOlbqDH0MMtPuSZMe6DGWu7rDS
+ kYXjpgEMyI3l42I9kh6nJf2B1Xhadr3ybNZzZuCtvAHp8UzO2bTPDho0oXYHvmvbD1wJ
+ Wo3Q==
+X-Gm-Message-State: AOAM532OQrHs4Z+aFBS0W3TSU1Ulm9SxLzRXeGB02Oc4BHNc5jnxxODs
+ Gox+uqKQ15CeYRfKWDgN+zU=
+X-Received: by 2002:adf:ef46:: with SMTP id c6mr38554782wrp.34.1593813421457; 
+ Fri, 03 Jul 2020 14:57:01 -0700 (PDT)
+Received: from [192.168.1.39] (1.red-83-51-162.dynamicip.rima-tde.net.
+ [83.51.162.1])
+ by smtp.gmail.com with ESMTPSA id k14sm15025159wrn.76.2020.07.03.14.57.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 03 Jul 2020 14:57:00 -0700 (PDT)
+Subject: Re: [PATCH 2/2] hw/ppc: Use TYPE_SYSBUS_OHCI instead of hardcoded
+ string
+To: BALATON Zoltan <balaton@eik.bme.hu>
+References: <20200703184952.4918-1-f4bug@amsat.org>
+ <20200703184952.4918-3-f4bug@amsat.org>
+ <alpine.BSF.2.22.395.2007032149250.12670@zero.eik.bme.hu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <fabe84fc-af53-a945-8b43-e2893853da6c@amsat.org>
+Date: Fri, 3 Jul 2020 23:57:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <20200626235519.591734-1-hskinnemoen@google.com>
- <20200626235519.591734-9-hskinnemoen@google.com>
- <abdb209d-7268-7997-2caa-95cb984269da@amsat.org>
- <CAFQmdRYZWhA-957jRHfiRHfYoOk-c2TJVtqoz6LMOhDgJwMiCg@mail.gmail.com>
-In-Reply-To: <CAFQmdRYZWhA-957jRHfiRHfYoOk-c2TJVtqoz6LMOhDgJwMiCg@mail.gmail.com>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Fri, 3 Jul 2020 14:19:23 -0700
-Message-ID: <CAFQmdRYxzf7LrtsrNUSNpyN-Ve6fSFGJhyRBPMNL=nFCf+zHgg@mail.gmail.com>
-Subject: Re: [PATCH v3 08/12] hw/nvram: NPCM7xx OTP device model
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Joel Stanley <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
- CS20 KFTing <kfting@nuvoton.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e41;
- envelope-from=hskinnemoen@google.com; helo=mail-vs1-xe41.google.com
+In-Reply-To: <alpine.BSF.2.22.395.2007032149250.12670@zero.eik.bme.hu>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -185
-X-Spam_score: -18.6
-X-Spam_bar: ------------------
-X-Spam_report: (-18.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=_AUTOLEARN
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -124,57 +123,90 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oAJMcgCULS43
+X-TUID: wj1/4v92Dmnx
 
-On Fri, Jul 3, 2020 at 2:07 PM Havard Skinnemoen <hskinnemoen@google.com> w=
-rote:
->
-> On Fri, Jul 3, 2020 at 6:46 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
-> >
-> > On 6/27/20 1:55 AM, Havard Skinnemoen wrote:
-> > > +static void npcm7xx_otp_realize(DeviceState *dev, Error **errp)
-> > > +{
-> > > +    NPCM7xxOTPClass *oc =3D NPCM7XX_OTP_GET_CLASS(dev);
-> > > +    NPCM7xxOTPState *s =3D NPCM7XX_OTP(dev);
-> > > +    SysBusDevice *sbd =3D &s->parent;
-> > > +
-> > > +    s->array =3D g_malloc0(NPCM7XX_OTP_ARRAY_BYTES);
-> >
-> > The possibility to reuse persistent OTP seems important.
-> > This can be added later of course.
->
-> Agree, it's an important part of the behavior of the module. But it's
-> not essential to be able to boot a BMC firmware image, so I left it
-> out initially.
->
-> > See simple example in hw/nvram/eeprom_at24c.c which use
-> > a BlockBackend so the OTP content is not lost after reset
-> > or migration.
->
-> I'll take a look at that, thanks!
->
-> > > +
-> > > +    memory_region_init_io(&s->mmio, OBJECT(s), oc->mmio_ops, s, "reg=
-s",
-> > > +                          NPCM7XX_OTP_REGS_SIZE);
-> > > +    sysbus_init_mmio(sbd, &s->mmio);
-> > > +}
-> > > +
-> > > +static void npcm7xx_otp_class_init(ObjectClass *klass, void *data)
-> > > +{
-> > > +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-> > > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> > > +
-> >
-> > Missing migration vmstate for NPCM7xxOTPState::regs[].
->
-> Ah, you're right. This is probably true for most of the peripherals in
-> this series. I'll see if I can get it sorted out for the next
-> iteration.
+On 7/3/20 9:58 PM, BALATON Zoltan wrote:
+> On Fri, 3 Jul 2020, Philippe Mathieu-Daudé wrote:
+>> By using the TYPE_* definitions for devices, we can:
+>> - quickly find where devices are used with 'git-grep'
+> 
+> You could just as well grep for the type name but it's true if some
+> files use name and others the constant then you need to grep for both.
+> 
+>> - easily rename a non-user-creatable device (one-line change).
+> 
+> But most devices are user creatable and thus their name is part of the
+> CLI so inlikely to change due to preserving backward compatibility of
+> command lines. So usefulness of this change seems limited to me.
+> 
+> But my problem with it is not the above. It's that hcd-ohci.h is not in
+> include but in hw/usb so it's internal to the implementation of the
+> device model and defines things that users of the device should not
+> need, therefore they should not include this header. So if you want to
+> use the defined constant then that should be split off to some public
+> header instead of including hw/usb/hcd-ohci.h. Maybe we need a new
+> header for these TYPE_* constants similar to qemu/typedefs.h?
 
-Btw, do you have any advice on how to test device migration? I'm not
-planning to do actual migration of BMCs in the near future, so I'm not
-sure if I'd notice if I get it wrong.
+Indeed you are right. Thanks for noticing the bad effect of my patch.
+
+> 
+> Regards,
+> BALATON Zoltan
+> 
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>> hw/display/sm501.c | 3 ++-
+>> hw/ppc/sam460ex.c  | 3 ++-
+>> 2 files changed, 4 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+>> index 9cccc68c35..c122a4eca5 100644
+>> --- a/hw/display/sm501.c
+>> +++ b/hw/display/sm501.c
+>> @@ -36,6 +36,7 @@
+>> #include "hw/qdev-properties.h"
+>> #include "hw/i2c/i2c.h"
+>> #include "hw/display/i2c-ddc.h"
+>> +#include "hw/usb/hcd-ohci.h"
+>> #include "qemu/range.h"
+>> #include "ui/pixel_ops.h"
+>> #include "qemu/bswap.h"
+>> @@ -1961,7 +1962,7 @@ static void sm501_realize_sysbus(DeviceState
+>> *dev, Error **errp)
+>>     sysbus_init_mmio(sbd, &s->state.mmio_region);
+>>
+>>     /* bridge to usb host emulation module */
+>> -    usb_dev = qdev_new("sysbus-ohci");
+>> +    usb_dev = qdev_new(TYPE_SYSBUS_OHCI);
+>>     qdev_prop_set_uint32(usb_dev, "num-ports", 2);
+>>     qdev_prop_set_uint64(usb_dev, "dma-offset", s->base);
+>>     sysbus_realize_and_unref(SYS_BUS_DEVICE(usb_dev), &error_fatal);
+>> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+>> index 1a106a68de..593436937a 100644
+>> --- a/hw/ppc/sam460ex.c
+>> +++ b/hw/ppc/sam460ex.c
+>> @@ -35,6 +35,7 @@
+>> #include "hw/char/serial.h"
+>> #include "hw/i2c/ppc4xx_i2c.h"
+>> #include "hw/i2c/smbus_eeprom.h"
+>> +#include "hw/usb/hcd-ohci.h"
+>> #include "hw/usb/hcd-ehci.h"
+>> #include "hw/ppc/fdt.h"
+>> #include "hw/qdev-properties.h"
+>> @@ -370,7 +371,7 @@ static void sam460ex_init(MachineState *machine)
+>>
+>>     /* USB */
+>>     sysbus_create_simple(TYPE_PPC4xx_EHCI, 0x4bffd0400, uic[2][29]);
+>> -    dev = qdev_new("sysbus-ohci");
+>> +    dev = qdev_new(TYPE_SYSBUS_OHCI);
+>>     qdev_prop_set_string(dev, "masterbus", "usb-bus.0");
+>>     qdev_prop_set_uint32(dev, "num-ports", 6);
+>>     sbdev = SYS_BUS_DEVICE(dev);
+>>

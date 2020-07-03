@@ -1,95 +1,95 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2784735lfm;
-        Fri, 3 Jul 2020 13:28:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw5TRta3fiqhPJHAWnjQsLIYD0tgEAKBLlOiAjmBvtSRFtmRnPuYviGBAocGwZDdyOcT823
-X-Received: by 2002:a25:b219:: with SMTP id i25mr59398607ybj.1.1593808087162;
-        Fri, 03 Jul 2020 13:28:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593808087; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2784911lfm;
+        Fri, 3 Jul 2020 13:28:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyzQD5WCLet3tNM+6sEQRTO4FCWFQVZI2mveLFJ3NjDBh9lzC9DavW6VH0UIOHuFxaVQKnP
+X-Received: by 2002:a25:ab2e:: with SMTP id u43mr1715484ybi.359.1593808103226;
+        Fri, 03 Jul 2020 13:28:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593808103; cv=none;
         d=google.com; s=arc-20160816;
-        b=yZAoYc++qzDz3ui1jdfoFEq5CqnUf0lPzIVfgHOUpouukT7l/hlnzt5lSCH2u+KJEA
-         2TM3fIAj++OuZhkUGWRZs3yKEbiaKY/eXUfmJWaV1mKdwzAbMmjLTVznKD/nFHbqsH2E
-         lZWpS5Bo7jWEeySjLhH2xifZkH15WcrFNFJytqYgPdpQqvMZwIVTXLpaWC+4J9EoJRf7
-         fzbcpwM4eoKLdqAVxaCBby4/3pNISpqUNyXpnXVKMddFlw5uPkF4NEsPZirF6pyDDwwG
-         06vMcSwRQqOScP8qxDQZdaY7G4BAa3qnKpl6wGq28Cu4cfCGdbRWj5NG0bai03MDVLMT
-         8Stw==
+        b=uwYQe3ohFV8sjtpXq7zpSlPGYeinCYpvAWsO9vu6NnESjCGDGPTFddlA6+qV0cYMqg
+         YpPMeY77OxIWbkoxr5u9cAzDk2RVdX0TZ8XNiJE/6JOF9kr7HPZ6pkPefnpz9Zqo9GRb
+         ZbYfMOFDkps82OCeUmSxwec9oZLdjYOhJx0aifVVrfsrnLcqmsX6H7T4AC8qvqXxILL9
+         rts8eEZGtOSoo3mqplZuen93n5cQayz1YDYGQNjqPKGOG4tFSS/C7S4uSpxeGPYz+N+C
+         kKv4EbBxPaaTDE0fFzQZWIUqgL85T8sHsGwgFhM6b3M7Br/XyEBvvLu+qSP7eFfkGV0R
+         9UGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=UXJvzBp5XXWV6ZmNLki/P3wnGb416mLql6yjwQiSGLo=;
-        b=TlgmaTaumRehP+7HYApIuEU27UZfVLFhCz1ne5dBzU4EDJYJbmSY3G2SUYdK/Q86VW
-         rEN21FbILKAKmGK9vw+OqNE6X4CdjjTBwXPqIOc4Si0A5j3oLMS+ZnDlJsez8hMcP/9B
-         r3r7jGD2E1tMw3vdqNHfjGbb4mCYfK0VlZbzgzLly5OoLbhmOdo2A+kDdwInLLXV//Q+
-         SMeeXZdltteLLvAFb7XzD5uifQDI7dVeE/wHqXqBVIYDvisqh6q9eewNoZbjImo2FuqC
-         XhIA40TF2miXbGulizjRFvmpqywNyOsfkcgwweMwjHeHQt+INxnUY78yewHXQdQnyX3b
-         mPNA==
+        bh=0Pfe0OziCwEN/zelbtovrsLHghLzfvQjekbFJCfSsxs=;
+        b=LCrqBPEuxgC0rQZaDEeO0n4QhFUpWZ6FKBd0Zf0xNQIgZ2jVYBh8UNHsdvgkgHch+J
+         7/kHKYLIw35RgZAfLvEiYoqMPlxdy7Z89dvRVaI9X2/+ymTmz6pvY0sbhnVoSKubso1V
+         XYL7k0IDv01K36tyXQw7rRsCUWaZHTL3oWTLtBMTUcBmBmiewcBf2whwL5CHY//4Db5/
+         BPOrxLoubaPaftVN7zTxHMpzp+QbgAZyKizOFBR+qnDkiTw3VKvbqI2uNbQ/Uojm3Z8L
+         b5q72WZWZMLGHH+3K9tz5leu4bWg5duHQYoNh36kAVTJtBNRP0nkiSZ0ndxSBsMwcqZs
+         kd4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dk96nhEs;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jGOsJZ5g;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s14si14180337ybc.129.2020.07.03.13.28.07
+        by mx.google.com with ESMTPS id s127si13132517ybc.279.2020.07.03.13.28.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jul 2020 13:28:07 -0700 (PDT)
+        Fri, 03 Jul 2020 13:28:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dk96nhEs;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jGOsJZ5g;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:52604 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54402 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrSI2-000076-GT
-	for alex.bennee@linaro.org; Fri, 03 Jul 2020 16:28:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35440)
+	id 1jrSII-0000y7-K4
+	for alex.bennee@linaro.org; Fri, 03 Jul 2020 16:28:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrS9t-0000FW-9K; Fri, 03 Jul 2020 16:19:41 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:51691)
+ id 1jrS9r-0000Bf-QU; Fri, 03 Jul 2020 16:19:39 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:34538)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrS9r-0001Ye-P1; Fri, 03 Jul 2020 16:19:40 -0400
-Received: by mail-wm1-x343.google.com with SMTP id 22so33117352wmg.1;
- Fri, 03 Jul 2020 13:19:39 -0700 (PDT)
+ id 1jrS9q-0001XL-DU; Fri, 03 Jul 2020 16:19:39 -0400
+Received: by mail-wm1-x342.google.com with SMTP id g10so11555776wmc.1;
+ Fri, 03 Jul 2020 13:19:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=UXJvzBp5XXWV6ZmNLki/P3wnGb416mLql6yjwQiSGLo=;
- b=dk96nhEsndhNP4xeuzSzx4n20E7xj1RWaS7XVjFRRTT6rSCabTEvtrC97OcWbc0bDG
- AshQzlE6ysirgPlO51z/UM4EDuT+D/gX7H/bk3H6HF0+kPSK8L9itcSB1ZPPWcTsq4m3
- jjCtrviGIPzoGStubB44BZAq7MdLn6VExBjuNwcDlTEXpTGgedklSYjwIAA8NmgcDkRx
- HnzhWaDz3GRecXJlcIe/4uG9n6Suxd19pAGszUM9CQz3zIK0YxuK3bwjwky6UbblGS6C
- OsV0cB2ky6OAAi8UPN49+z1ODjzSLTZTiZ7Mjr2WrHBivOFreYGrhxrLfg8YWomWmG9V
- LDwg==
+ bh=0Pfe0OziCwEN/zelbtovrsLHghLzfvQjekbFJCfSsxs=;
+ b=jGOsJZ5gUezMX7n2P/N1nMtvqU0P451lscnCVy4IhOxkOx48vC12J0ePLu8ewJVeO5
+ BY03gHWhpLarWYdxkoYy8Jvxukkb5M1MjwA47TqPeMMSJnaesWxF92OW6jvf9AxRTrQs
+ n7UVzB41+D7eoj4xGbsByMSggqJJTbOggTSbowETE2g4WMYLCXLISR28uxliQwmkCj+a
+ NAdmxTOuyvm4H1uv3nxpdxbMoIOTqOcLD5Sw5p0yDotTJ0H/EfsaffgDMDTAsuir6d1w
+ O+mxBwfLRu8OMOe8tKWfWr0kMG+gvPmQmBKaRgBmLw/5PXQUQAVLFM8R07i18DgsBUR3
+ k+rA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=UXJvzBp5XXWV6ZmNLki/P3wnGb416mLql6yjwQiSGLo=;
- b=H/o5TJmK0n2Yvuryde9GZ68wUkGxr+mbx9eMHsS9aP6/WULdMgwzShm1iFHeufvS9W
- UK9MJ/tFP2ryu3OtMNHwEyuXULU9Sp4JGFfNH9rG0XtbZ3oIZ0SQHyzDvQXgyBDD+CUY
- 2G5v2tSH2ZaG3MFh1qKGLUhs4oY1/aFkmgT/Y0otl5RyTySYZj6e0BbhsGkctK4r1y2o
- I3FsF0z9P5BKoC/lcEnhgDXRbr6UOB3Ad3DjoO4cvru1yDBqbO5lGECPWLEWdO3hHX+f
- fOo3TpRUdJ9ljpCxGsErN0GmkqDmIxbFX8LRvvQpUsPhm5DevUCWhQJ+/EvZI8mnscaB
- B5TA==
-X-Gm-Message-State: AOAM532NXWoHa4EFI8x5ZL9Ke1lU8i/tbOfrNGj0O+qEDCs4mUDjDlVW
- LffpI3FLhwmLRnRTYP8Jk4QTq3Ub1Mw=
-X-Received: by 2002:a05:600c:21ca:: with SMTP id
- x10mr37960285wmj.63.1593807578015; 
- Fri, 03 Jul 2020 13:19:38 -0700 (PDT)
+ bh=0Pfe0OziCwEN/zelbtovrsLHghLzfvQjekbFJCfSsxs=;
+ b=hY5I6i912aXBceENXmb8vy5/fM/bLUcTsNN606prHBqann244UDMwdUAiFhzUYdlCK
+ 7hsMwxpkbq+fRlbEqoRLWAnMWqqjzB3unWSpcUM/UsyquYUtAKxBDikBK3o69dwIIou2
+ gj1XW3Zot2PiyxP23AzdCBt5UKc9l+DT7tbYgKVyE19rdb6kg34DnZasRoQDRkiZ5+tM
+ f3JSJiiDCcuxhAmhg9abGUJvSWUEypw8Xl0irXD6J1kLtKgtGO7IeeFTbJftdN9i8Gzr
+ tJnjmHMbUohpONebY3vKXsW+agL6B11uBVVYfUh7AD7AHtkDou0p5gfKNAW43KI4HrZq
+ VDyg==
+X-Gm-Message-State: AOAM531ciVfdg/w3+5tnXVoQJgyOe2vVnQ3WHhN8e8w6M50vfbclPrKO
+ HgXahs7Nyc2pLC6j32QkXvUwAzZmf4U=
+X-Received: by 2002:a1c:63c2:: with SMTP id x185mr38688445wmb.68.1593807576612; 
+ Fri, 03 Jul 2020 13:19:36 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id u65sm14229625wmg.5.2020.07.03.13.19.36
+ by smtp.gmail.com with ESMTPSA id u65sm14229625wmg.5.2020.07.03.13.19.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Jul 2020 13:19:37 -0700 (PDT)
+ Fri, 03 Jul 2020 13:19:36 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 17/18] hw/sparc64/sun4u: Mark devices with no migratable fields
-Date: Fri,  3 Jul 2020 22:19:10 +0200
-Message-Id: <20200703201911.26573-18-f4bug@amsat.org>
+Subject: [PATCH 16/18] hw/nubus/mac-nubus-bridge: Mark the device with no
+ migratable fields
+Date: Fri,  3 Jul 2020 22:19:09 +0200
+Message-Id: <20200703201911.26573-17-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200703201911.26573-1-f4bug@amsat.org>
 References: <20200703201911.26573-1-f4bug@amsat.org>
@@ -97,8 +97,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -135,56 +135,28 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BraK4vGVsLER
+X-TUID: 4EIwP8bnbYjN
 
-These devices don't have fields to migrate. Be explicit
+This device doesn't have fields to migrate. Be explicit
 by using vmstate_qdev_no_state_to_migrate.
-
-Add a more descriptive comment to keep a clear separation
-between static property vs runtime changeable.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/sparc64/sun4u.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ hw/nubus/mac-nubus-bridge.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-index 9c8655cffc..2653893625 100644
---- a/hw/sparc64/sun4u.c
-+++ b/hw/sparc64/sun4u.c
-@@ -82,12 +82,15 @@ struct hwdef {
- typedef struct EbusState {
-     /*< private >*/
-     PCIDevice parent_obj;
-+    /*< public >*/
+diff --git a/hw/nubus/mac-nubus-bridge.c b/hw/nubus/mac-nubus-bridge.c
+index 7c329300b8..ede36ccc5d 100644
+--- a/hw/nubus/mac-nubus-bridge.c
++++ b/hw/nubus/mac-nubus-bridge.c
+@@ -27,6 +27,7 @@ static void mac_nubus_bridge_class_init(ObjectClass *klass, void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
  
-     ISABus *isa_bus;
-     qemu_irq isa_bus_irqs[ISA_NUM_IRQS];
--    uint64_t console_serial_base;
-     MemoryRegion bar0;
-     MemoryRegion bar1;
-+
-+    /* Properties */
-+    uint64_t console_serial_base;
- } EbusState;
- 
- #define TYPE_EBUS "ebus"
-@@ -384,6 +387,7 @@ static void ebus_class_init(ObjectClass *klass, void *data)
-     k->device_id = PCI_DEVICE_ID_SUN_EBUS;
-     k->revision = 0x01;
-     k->class_id = PCI_CLASS_BRIDGE_OTHER;
-+    dc->vmsd = vmstate_qdev_no_state_to_migrate;
-     device_class_set_props(dc, ebus_properties);
- }
- 
-@@ -476,6 +480,7 @@ static void prom_class_init(ObjectClass *klass, void *data)
- 
-     device_class_set_props(dc, prom_properties);
-     dc->realize = prom_realize;
+     dc->desc = "Nubus bridge";
 +    dc->vmsd = vmstate_qdev_no_state_to_migrate;
  }
  
- static const TypeInfo prom_info = {
+ static const TypeInfo mac_nubus_bridge_info = {
 -- 
 2.21.3
 

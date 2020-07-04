@@ -1,101 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3390371lfm;
-        Sat, 4 Jul 2020 07:50:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzeB7tABueS9AsNHC8GXMJl8LUvhfUWz1nwPeR4cMTyZ7FIMr/TGtXNLmV0S0wVdZNftNYf
-X-Received: by 2002:a25:8008:: with SMTP id m8mr10058117ybk.104.1593874203383;
-        Sat, 04 Jul 2020 07:50:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593874203; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3391121lfm;
+        Sat, 4 Jul 2020 07:51:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwmQJkptoKMKlgRAUKcfhdLHMhcnXlI6nB6fPzSBd2be8UuISznDZs+7VEC/Icud9KyIMD9
+X-Received: by 2002:a25:b511:: with SMTP id p17mr70442699ybj.86.1593874273340;
+        Sat, 04 Jul 2020 07:51:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593874273; cv=none;
         d=google.com; s=arc-20160816;
-        b=PPDT0JIih5dhL+UKU56d17Q+p8KOPH75g8jiscM9vTzusypvmDyCDbaOl6PIYBC+yo
-         hh3JnjMadDraOFawy26lwD6PLgQWu4fP6CZqn5BtL5e4ggZKS++/F1UEAN4WChLqt/Xi
-         /Haq2uR9+Yn9WWfHRXG5feOilaO+Drlk4Bkod2xAEDYTp0QVlb7Qjkm75aal4p+U1AKR
-         jac42F/wQBFQNXRljxvc2RE3TpkoDRA5PeZwR464bPC0St9RTmr0c5TwyNhmVY3x+zRH
-         uIXs4ocSNNZ/JRC2KSobL1QeX6vE6U269fZ1dnH00E2Omg6ZaR5JHKbXMWEeY/GkaWCC
-         M84Q==
+        b=mS6G8l0pd10NunKI8BnpFnYWm2xyTXhl34uPGdMnq2tID/uOtBuAIomrF9XYyeNKU2
+         1kErD+CduF5R568qnDyIWAWinzP6OBNycegoKoiHHyC0KOEYFqr/B3wed8RrRZNYMD2h
+         nRlYEfzHk48MsSRfsSb9lcWclmB5oM7QQO+UhSryPQ2BBL2uGwgoFtS7YvlEDZW49ZbL
+         Elj7fiVWn0L1aCpX8dI40IoVayg2DBCxPqbiOEdmFHeLfSQszxU2/nhOXbyYSdOj3Z6B
+         se6IUgJe9sEoOPa6wDc9uu5gd3rQaHATCWIX/W8dkExJZ8EXniiAFUGdofHLw7yaWV98
+         Q26Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=8Sd8UrNpAT6Q827DPYJ71GYz3qN5ijhu3T6adNwNx58=;
-        b=bgY4dZiwqn1zv285cFPidgK9IK5ei5lW4l4Lrh8w/UKIQnJtfyWRhGh1kIf1BDPUaG
-         KjAe8tYMyW7+2kwQV7Um6ZHG8A0zbDMXeoT1W/+QP3tzYR+Qe43yPQeVEd9jTD8baIJi
-         QKoVNsyUbsCCsgWu8GkrRMeXfgX3qNYgz5fmf/r5PqEdIRrhgA6yJNa41Y5yvALCJ99O
-         LRLuFTzuhf9uPZ4N09dpYFGA2GHc2UQupPuZ+7ZSkfs3drIgOD571zNeWmtfj4745+r8
-         dQmaVUURkm0LMnpJFregQU0SOK+y23VorCwo0k0ZZiD/6x8RMmNTVqd//EYt+E9w7DIz
-         NkeQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=TYD3rdWUPlT0NII6NR282LsOncN84HigXsBo5vZptIs=;
+        b=phCHfHDnu4UofDxKKuTIvAgdarxOyYFdcWQEKVPMQ3vfwz+9Sx2A7yrS2qPmLZRkZH
+         5EfcXumsVB8oKbturwKp6+yGOFMC9I2qFUjKdGYKie1cEbOIr8USaVuZT0kmwCSh1MqP
+         p5aARMo2LI2pIRxEk/7x840w0+YeUws5ysv7DBk8eINpRsvcAdwIPiMJzO39s3mc4tQA
+         wD0J+f2Y8/L8kEy675tG00scUgHTwCzeVDTj3jglCYgSBwWQYEJ7kpZEp6D+bbSO6t1+
+         t8SxIXjxDHDhQ8+1SWmwnmSeLIwixpJaVVhZg/TzTpfy3lv0Q5qT0cV+BM6PENjhnKVU
+         Hc5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VfCW80ig;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mOBuD8AY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j13si1085874ybh.337.2020.07.04.07.50.03
+        by mx.google.com with ESMTPS id p20si1950727ybc.305.2020.07.04.07.51.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 04 Jul 2020 07:50:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 04 Jul 2020 07:51:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VfCW80ig;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mOBuD8AY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:54194 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58478 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrjUQ-00011P-OS
-	for alex.bennee@linaro.org; Sat, 04 Jul 2020 10:50:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57608)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jrjVY-0003Gv-Ky
+	for alex.bennee@linaro.org; Sat, 04 Jul 2020 10:51:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57628)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrjUG-0000zf-HW; Sat, 04 Jul 2020 10:49:52 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:40885)
+ id 1jrjUJ-00013o-FS; Sat, 04 Jul 2020 10:49:55 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:44232)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrjUE-0003cw-UA; Sat, 04 Jul 2020 10:49:52 -0400
-Received: by mail-wm1-x335.google.com with SMTP id f139so37072009wmf.5;
- Sat, 04 Jul 2020 07:49:49 -0700 (PDT)
+ id 1jrjUI-0003dc-0U; Sat, 04 Jul 2020 10:49:55 -0400
+Received: by mail-wr1-x442.google.com with SMTP id b6so35747136wrs.11;
+ Sat, 04 Jul 2020 07:49:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=8Sd8UrNpAT6Q827DPYJ71GYz3qN5ijhu3T6adNwNx58=;
- b=VfCW80igCu05TRu6Kp/hRp0wwLcO25D00t+NwoIV0c8ix6mcQko2qSVKfN1H7cmL4H
- Vxhy0na0A3ZdoSWK98SpIoSITxwO50uXAKNvBj0H9USSoEJkOYekcVtX7qA8oey7Zq0C
- 1gT9pIxDTb1SouD3jSFCjmRxh176pRqgb9NK+POT5ThziR0p2IFJM7o0Quc2x81CpA+g
- ifW/7fKRhTgTGZolZ71YooHseLeyWaonfI/a9QW1+3iYMgESDtL3KwrJ6MbXAJJc5tVN
- WBh2g+7GmdCH0HZbUKAJrDSTZ0YLZDtsbFuAgkRinU6RkXxKmgHpBNku6nt5HiABtxt8
- vQ8A==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=TYD3rdWUPlT0NII6NR282LsOncN84HigXsBo5vZptIs=;
+ b=mOBuD8AYvWgD1eKqLpIBdjXVQ5Pph/+FmMaPRcgW2zETZQyqX8+ELNIs1My9xotg49
+ yl9bERPQPS4BhKGyeBRx4Qd+uQFLZYRklMZbvqAuJXZY6sEyWYouhWOjPYTFIPLsN1nA
+ GHwtlofg4fOkSOvAn8jYj6oYYhDGjGPP34trt8rdNRv6PvCFLzPAjucb8srw71EOzwXj
+ tqxRmbVb81GwGMeF/lodyUfzMseIwejEvsc32wNWsbTHQldJGTBhlLiCfR5UelU3S8dR
+ pT9OEuZPV2fjo7gKaYA+MWXkGAIMr5hn5Xs7KOlPZHvMRGlwOazCfo5B65rotWknhZhj
+ 6mPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=8Sd8UrNpAT6Q827DPYJ71GYz3qN5ijhu3T6adNwNx58=;
- b=fVhEkql0OMZdkVyzDA24feP3bCM3SUAmbXJTPU3P04P/xaaNIHrTOfId5od8E7AhL1
- W8Dse8qVIt9dteynmcJubk0+lgwDimCp4UDXtJJptjvIK/wlewInBCZ7d2HWDnqeOflI
- sU445mBjb59g46wjtQFLY+fXviGjLrl2vRPDuB382xLCO3/Ct5r/hZxrMdyPL41SmJMs
- zIzq2U2SOAdjsErKRlqVf5Ns8mPzhaPUBOOoooDwz8+JPYp9iFOdld0A80ojAWc+3hyv
- WUL4reNBAbd4GplOteSD2AkMRT5uGMHG6yoN1b+UjwEHuuwMSHwhhf1OsdWwCPg44+Zk
- Z/IA==
-X-Gm-Message-State: AOAM533cwv7kpPfOGm4vxHuiUj+9pVW8bOC0kn3iN3fezr/NSInJ+C+b
- YhF5ekiiuGUqpb30UwperAp4cMgGCaI=
-X-Received: by 2002:a1c:28c4:: with SMTP id o187mr27108566wmo.62.1593874187874; 
- Sat, 04 Jul 2020 07:49:47 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=TYD3rdWUPlT0NII6NR282LsOncN84HigXsBo5vZptIs=;
+ b=gA6p1L3KGSrAnSvliSW5Qb8tGn1IL34SCkJ1Rkp4cSNrwj3j/8O1AFqa/HWQ9I3pj8
+ KDOetpaIZLMKw6t75AW8ZBHsMgTttIUMri/O9J/xDC7Y+QxgmxQFt4u6PlAsRNQBVcDE
+ N7pJYFQqw2QvD1qEkJIjNtQnhDxwmuHUGGSqV9E3gLQtwA3FCmD46lHSvTQ34cW2E2FQ
+ WNuABvahzwYIOAcJgV2LnBbrIHwRWb60R8lXkZzmeIgj8BrLKOH7mMUJsWd5Ypkkx8pi
+ U1eTAkNRWt52rNYLEewTZRPvv0EY+PiXxkdw8bii49cGLyBd8klGQr2K9RUl2zHLHA8C
+ oqxA==
+X-Gm-Message-State: AOAM531rLgbdC9qvZX32zIc+SGphXI7yPoXzn0ggbwk2EclYU1LYJigi
+ fs33RrAnellrquA7qG1XX5MPXBJEq9E=
+X-Received: by 2002:adf:d0d0:: with SMTP id z16mr43245870wrh.95.1593874191948; 
+ Sat, 04 Jul 2020 07:49:51 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id r10sm17135019wrm.17.2020.07.04.07.49.44
+ by smtp.gmail.com with ESMTPSA id r10sm17135019wrm.17.2020.07.04.07.49.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Jul 2020 07:49:46 -0700 (PDT)
+ Sat, 04 Jul 2020 07:49:51 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	BALATON Zoltan <balaton@eik.bme.hu>
-Subject: [PATCH 00/26] hw/usb: Give it love,
- reduce 'hw/usb.h' inclusion out of hw/usb/
-Date: Sat,  4 Jul 2020 16:49:17 +0200
-Message-Id: <20200704144943.18292-1-f4bug@amsat.org>
+Subject: [PATCH 02/26] hw/ppc/sam460ex: Add missing 'hw/pci/pci.h' header
+Date: Sat,  4 Jul 2020 16:49:19 +0200
+Message-Id: <20200704144943.18292-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
+In-Reply-To: <20200704144943.18292-1-f4bug@amsat.org>
+References: <20200704144943.18292-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -106,30 +108,30 @@ X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
  xen-devel@lists.xenproject.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
  Paul Durrant <paul@xen.org>, Magnus Damm <magnus.damm@gmail.com>,
  Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Anthony Perard <anthony.perard@citrix.com>,
  Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Leif Lindholm <leif@nuviainc.com>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Leif Lindholm <leif@nuviainc.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
@@ -145,139 +147,42 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paul Zimmerman <pauldzim@gmail.com>, qemu-ppc@nongnu.org,
  David Gibson <david@gibson.dropbear.id.au>,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JvktMdD0Finq
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: es1lj183kdR7
 
-Hi,
+This file uses pci_create_simple() and PCI_DEVFN() which are both
+declared in "hw/pci/pci.h". This include is indirectly included
+by an USB header. As we want to reduce the USB header inclusions
+later, include the PCI header now, to avoid later:
 
-This is the second time I try to replace a magic typename string
-by a constant, and Zoltan warns me this is counter productive as
-"hw/usb.h" pulls in an insane amount of code.
+  hw/ppc/sam460ex.c:397:5: error: implicit declaration of function ‘pci_create_simple’; did you mean ‘sysbus_create_simple’? [-Werror=implicit-function-declaration]
+    397 |     pci_create_simple(pci_bus, PCI_DEVFN(6, 0), "sm501");
+        |     ^~~~~~~~~~~~~~~~~
+        |     sysbus_create_simple
+  hw/ppc/sam460ex.c:397:5: error: nested extern declaration of ‘pci_create_simple’ [-Werror=nested-externs]
+  hw/ppc/sam460ex.c:397:32: error: implicit declaration of function ‘PCI_DEVFN’ [-Werror=implicit-function-declaration]
+    397 |     pci_create_simple(pci_bus, PCI_DEVFN(6, 0), "sm501");
+        |                                ^~~~~~~~~
+  hw/ppc/sam460ex.c:397:32: error: nested extern declaration of ‘PCI_DEVFN’ [-Werror=nested-externs]
 
-Time to give the usb subsystem some love and move forward.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/ppc/sam460ex.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-This series can be decomposed as follow:
-
- 1-2:    preliminary machine cleanups (arm/ppc)
- 3-13:   usb related headers cleanups
- 14-15:  usb quirks cleanup
- 16-18:  refactor usb_get_dev_path() to add usb_get_port_path()
- 19:     let spapr use usb_get_port_path() to make USBDevice opaque
- 20:     extract the public USB API (for machine/board/soc)
- 21:     make the older "usb.h" internal to hw/usb/
- 22-25:  use TYPENAME definitions
- 26:     cover dwc2 in MAINTAINERS
-
-Please review.
-
-Phil.
-
-Philippe Mathieu-Daudé (26):
-  hw/arm/sbsa-ref: Remove unused 'hw/usb.h' header
-  hw/ppc/sam460ex: Add missing 'hw/pci/pci.h' header
-  hw/usb: Remove unused VM_USB_HUB_SIZE definition
-  hw/usb: Reduce 'exec/memory.h' inclusion
-  hw/usb/desc: Add missing header
-  hw/usb/hcd-dwc2: Remove unnecessary includes
-  hw/usb/hcd-dwc2: Restrict some headers to source
-  hw/usb/hcd-dwc2: Restrict 'dwc2-regs.h' scope
-  hw/usb/hcd-ehci: Remove unnecessary include
-  hw/usb/hcd-ehci: Move few definitions from header to source
-  hw/usb/hcd-xhci: Add missing header
-  hw/usb/hcd-musb: Restrict header scope
-  hw/usb/desc: Reduce some declarations scope
-  hw/usb/quirks: Rename included source with '.inc.c' suffix
-  hw/usb: Add new 'usb-quirks.h' local header
-  hw/usb/bus: Simplify usb_get_dev_path()
-  hw/usb/bus: Rename usb_get_dev_path() as usb_get_full_dev_path()
-  hw/usb/bus: Add usb_get_port_path()
-  hw/ppc/spapr: Use usb_get_port_path()
-  hw/usb: Introduce "hw/usb/usb.h" public API
-  hw/usb: Move internal API to local 'usb-internal.h' header
-  hw/usb/usb-hcd: Use OHCI type definitions
-  hw/usb/usb-hcd: Use EHCI type definitions
-  hw/usb/usb-hcd: Use UHCI type definitions
-  hw/usb/usb-hcd: Use XHCI type definitions
-  MAINTAINERS: Cover dwc-hsotg (dwc2) USB host controller emulation
-
- hw/usb/desc.h                             | 11 +++++
- {include/hw => hw}/usb/dwc2-regs.h        |  0
- hw/usb/hcd-dwc2.h                         |  5 +-
- hw/usb/hcd-ehci.h                         | 24 +---------
- {include/hw => hw}/usb/hcd-musb.h         |  2 +
- hw/usb/hcd-ohci.h                         |  4 +-
- hw/usb/hcd-xhci.h                         |  4 +-
- include/hw/usb.h => hw/usb/usb-internal.h | 50 ++-----------------
- hw/usb/usb-quirks.h                       | 27 +++++++++++
- include/hw/usb/chipidea.h                 |  2 +-
- include/hw/usb/usb-hcd.h                  | 36 ++++++++++++++
- include/hw/usb/usb.h                      | 58 +++++++++++++++++++++++
- chardev/baum.c                            |  2 +-
- hw/arm/allwinner-a10.c                    |  2 +-
- hw/arm/allwinner-h3.c                     | 10 ++--
- hw/arm/exynos4210.c                       |  2 +-
- hw/arm/pxa2xx.c                           |  3 +-
- hw/arm/realview.c                         |  3 +-
- hw/arm/sbsa-ref.c                         |  4 +-
- hw/arm/versatilepb.c                      |  3 +-
- hw/arm/xilinx_zynq.c                      |  2 +-
- hw/display/sm501.c                        |  3 +-
- hw/i386/pc.c                              |  2 +-
- hw/i386/pc_piix.c                         |  5 +-
- hw/i386/pc_q35.c                          | 15 +++---
- hw/isa/piix4.c                            |  3 +-
- hw/mips/fuloong2e.c                       |  5 +-
- hw/ppc/mac_newworld.c                     |  5 +-
- hw/ppc/mac_oldworld.c                     |  3 +-
- hw/ppc/sam460ex.c                         |  6 ++-
- hw/ppc/spapr.c                            | 13 +++--
- hw/sh4/r2d.c                              |  2 +-
- hw/usb/bus.c                              | 40 +++++++++-------
- hw/usb/chipidea.c                         |  1 +
- hw/usb/combined-packet.c                  |  2 +-
- hw/usb/core.c                             |  2 +-
- hw/usb/desc-msos.c                        |  2 +-
- hw/usb/desc.c                             |  3 +-
- hw/usb/dev-audio.c                        |  2 +-
- hw/usb/dev-hid.c                          |  2 +-
- hw/usb/dev-hub.c                          |  2 +-
- hw/usb/dev-mtp.c                          |  2 +-
- hw/usb/dev-network.c                      |  2 +-
- hw/usb/dev-serial.c                       |  2 +-
- hw/usb/dev-smartcard-reader.c             |  2 +-
- hw/usb/dev-storage.c                      |  2 +-
- hw/usb/dev-uas.c                          |  2 +-
- hw/usb/dev-wacom.c                        |  2 +-
- hw/usb/hcd-dwc2.c                         |  8 ++--
- hw/usb/hcd-ehci-sysbus.c                  |  1 +
- hw/usb/hcd-ehci.c                         | 13 ++++-
- hw/usb/hcd-musb.c                         |  4 +-
- hw/usb/hcd-ohci-pci.c                     |  4 +-
- hw/usb/hcd-ohci.c                         |  1 -
- hw/usb/hcd-uhci.c                         | 21 ++++----
- hw/usb/hcd-xhci-nec.c                     |  3 +-
- hw/usb/hcd-xhci.c                         |  2 +-
- hw/usb/host-libusb.c                      |  2 +-
- hw/usb/host-stub.c                        |  2 +-
- hw/usb/libhw.c                            |  2 +-
- hw/usb/quirks.c                           |  5 +-
- hw/usb/{quirks.h => quirks.inc.c}         |  5 --
- hw/usb/redirect.c                         |  3 +-
- hw/usb/tusb6010.c                         |  4 +-
- hw/usb/xen-usb.c                          |  2 +-
- monitor/misc.c                            |  2 +-
- softmmu/vl.c                              |  2 +-
- MAINTAINERS                               |  7 ++-
- 68 files changed, 294 insertions(+), 185 deletions(-)
- rename {include/hw => hw}/usb/dwc2-regs.h (100%)
- rename {include/hw => hw}/usb/hcd-musb.h (98%)
- rename include/hw/usb.h => hw/usb/usb-internal.h (92%)
- create mode 100644 hw/usb/usb-quirks.h
- create mode 100644 include/hw/usb/usb-hcd.h
- create mode 100644 include/hw/usb/usb.h
- rename hw/usb/{quirks.h => quirks.inc.c} (99%)
-
+diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+index 1a106a68de..fae970b142 100644
+--- a/hw/ppc/sam460ex.c
++++ b/hw/ppc/sam460ex.c
+@@ -38,6 +38,7 @@
+ #include "hw/usb/hcd-ehci.h"
+ #include "hw/ppc/fdt.h"
+ #include "hw/qdev-properties.h"
++#include "hw/pci/pci.h"
+ 
+ #include <libfdt.h>
+ 
 -- 
 2.21.3
 

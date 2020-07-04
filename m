@@ -1,94 +1,95 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3391121lfm;
-        Sat, 4 Jul 2020 07:51:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwmQJkptoKMKlgRAUKcfhdLHMhcnXlI6nB6fPzSBd2be8UuISznDZs+7VEC/Icud9KyIMD9
-X-Received: by 2002:a25:b511:: with SMTP id p17mr70442699ybj.86.1593874273340;
-        Sat, 04 Jul 2020 07:51:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593874273; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3398738lfm;
+        Sat, 4 Jul 2020 08:03:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyRnWlK83lP1L0jt2sX6aE546uakmEUZyKZs3Ypb1WvGehUbb5Yv7j1870zZKn00zejIEb+
+X-Received: by 2002:ab0:6ec6:: with SMTP id c6mr36283673uav.7.1593874991553;
+        Sat, 04 Jul 2020 08:03:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593874991; cv=none;
         d=google.com; s=arc-20160816;
-        b=mS6G8l0pd10NunKI8BnpFnYWm2xyTXhl34uPGdMnq2tID/uOtBuAIomrF9XYyeNKU2
-         1kErD+CduF5R568qnDyIWAWinzP6OBNycegoKoiHHyC0KOEYFqr/B3wed8RrRZNYMD2h
-         nRlYEfzHk48MsSRfsSb9lcWclmB5oM7QQO+UhSryPQ2BBL2uGwgoFtS7YvlEDZW49ZbL
-         Elj7fiVWn0L1aCpX8dI40IoVayg2DBCxPqbiOEdmFHeLfSQszxU2/nhOXbyYSdOj3Z6B
-         se6IUgJe9sEoOPa6wDc9uu5gd3rQaHATCWIX/W8dkExJZ8EXniiAFUGdofHLw7yaWV98
-         Q26Q==
+        b=uejL609PmapwpFfudyMvbkziGC5xUw0LwYM0JpAlJopo2VyU905n7QOzJRFVFQVPoO
+         R/eDwfxy9aBFGFP/Wh+i0i0HAXn5Kmn6MPgmTplSbfHwcTw9yb2hBUyLQ1ifEaaPHhfh
+         bSklMCxGJKa58DdteG/htjFL7xYS/MfCQAAdoTYvLcJAUEwNBgnRIeTmeQBupk/DlCDb
+         I+mvsFZI3CNRzxRyavvfO/qb8GfKQuvhpnLAhZA/eptJbwhq2QfDrO9GuR9AJmG39YdE
+         EmZgHYKXGBm+NNMpWGI9wp1bWjbzJgVUXSlTp26JU42AV/cW+Zc+07Ls2wNPuqlzN9oR
+         d1+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=TYD3rdWUPlT0NII6NR282LsOncN84HigXsBo5vZptIs=;
-        b=phCHfHDnu4UofDxKKuTIvAgdarxOyYFdcWQEKVPMQ3vfwz+9Sx2A7yrS2qPmLZRkZH
-         5EfcXumsVB8oKbturwKp6+yGOFMC9I2qFUjKdGYKie1cEbOIr8USaVuZT0kmwCSh1MqP
-         p5aARMo2LI2pIRxEk/7x840w0+YeUws5ysv7DBk8eINpRsvcAdwIPiMJzO39s3mc4tQA
-         wD0J+f2Y8/L8kEy675tG00scUgHTwCzeVDTj3jglCYgSBwWQYEJ7kpZEp6D+bbSO6t1+
-         t8SxIXjxDHDhQ8+1SWmwnmSeLIwixpJaVVhZg/TzTpfy3lv0Q5qT0cV+BM6PENjhnKVU
-         Hc5A==
+        bh=uE7YqG+qACaG8Uud6yeGxAsfWVnV3rkTeBq37HQj1qo=;
+        b=WQmKPG9IjNAsdj5kQ+/u5x3XEb4u+VncT28azRIZK4nRoPUtP91uvcU6CyX65iDc+S
+         La2astH4lb2S8QDEYFbXZnIwtIGyjqCai9yaGXaM4AMMbiGGrJqLQXkAyna7woWhGBWN
+         3lGdIwcoymTu+uPMmBTS41jc+bmBdQnvM8UANzc36x7Dsq9d+SWdQHCqwP3CF0zcDJHv
+         kPqKFs0xB9MCdd8LFtWQZTnGNyvRQEbwEJZtQ9ToRUtLoTU2AtZ0CaqG4eCxlL+Ns0qF
+         bUwGCVwD3W6aWAiI2iNB6HvfWN49Be/+4fGcmd34JHfq16Ix/nu01JoV/ewkFlYkGPlL
+         d32w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mOBuD8AY;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sIhGHE4Q;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p20si1950727ybc.305.2020.07.04.07.51.13
+        by mx.google.com with ESMTPS id 4si2301694uae.105.2020.07.04.08.03.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 04 Jul 2020 07:51:13 -0700 (PDT)
+        Sat, 04 Jul 2020 08:03:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mOBuD8AY;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sIhGHE4Q;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:58478 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53392 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrjVY-0003Gv-Ky
-	for alex.bennee@linaro.org; Sat, 04 Jul 2020 10:51:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57628)
+	id 1jrjh8-0007i8-MT
+	for alex.bennee@linaro.org; Sat, 04 Jul 2020 11:03:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58044)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrjUJ-00013o-FS; Sat, 04 Jul 2020 10:49:55 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:44232)
+ id 1jrjV7-0002tg-A5; Sat, 04 Jul 2020 10:50:45 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:36114)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrjUI-0003dc-0U; Sat, 04 Jul 2020 10:49:55 -0400
-Received: by mail-wr1-x442.google.com with SMTP id b6so35747136wrs.11;
- Sat, 04 Jul 2020 07:49:52 -0700 (PDT)
+ id 1jrjV5-0003xI-Pb; Sat, 04 Jul 2020 10:50:44 -0400
+Received: by mail-wr1-x443.google.com with SMTP id k6so35784575wrn.3;
+ Sat, 04 Jul 2020 07:50:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=TYD3rdWUPlT0NII6NR282LsOncN84HigXsBo5vZptIs=;
- b=mOBuD8AYvWgD1eKqLpIBdjXVQ5Pph/+FmMaPRcgW2zETZQyqX8+ELNIs1My9xotg49
- yl9bERPQPS4BhKGyeBRx4Qd+uQFLZYRklMZbvqAuJXZY6sEyWYouhWOjPYTFIPLsN1nA
- GHwtlofg4fOkSOvAn8jYj6oYYhDGjGPP34trt8rdNRv6PvCFLzPAjucb8srw71EOzwXj
- tqxRmbVb81GwGMeF/lodyUfzMseIwejEvsc32wNWsbTHQldJGTBhlLiCfR5UelU3S8dR
- pT9OEuZPV2fjo7gKaYA+MWXkGAIMr5hn5Xs7KOlPZHvMRGlwOazCfo5B65rotWknhZhj
- 6mPQ==
+ bh=uE7YqG+qACaG8Uud6yeGxAsfWVnV3rkTeBq37HQj1qo=;
+ b=sIhGHE4QN5ORR+3/Mgnoaxt2dRH9Duka3DMpiaQTVgS1lpSJEJ8KEB4VjCSKQqSlfc
+ HwpmkE15woH+abTAT5VLKiyhb0Zq+u1XvalFXiALNHpXyYLuDGhlcjr3PJjaoEf3+FY7
+ 4UjhgJzhzYvcqHRKWwR/aqKYvEyqZ1yrs8FGt1f9ohuKcUlxQe/dtogbIP9H2gOPTdM+
+ X1mnhOjui1Vk5B+Xa4Ju6b+X93HolCAPQsIP0PCVa5noiOK0+NH5/fSK60TLZZ4znABy
+ cKKta1I+QCL7DFqQUZxr5qs5kGd/t289lAxS+UdQKR8b+NnivhadaJIHkJJVNpWJ4AOo
+ xV1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=TYD3rdWUPlT0NII6NR282LsOncN84HigXsBo5vZptIs=;
- b=gA6p1L3KGSrAnSvliSW5Qb8tGn1IL34SCkJ1Rkp4cSNrwj3j/8O1AFqa/HWQ9I3pj8
- KDOetpaIZLMKw6t75AW8ZBHsMgTttIUMri/O9J/xDC7Y+QxgmxQFt4u6PlAsRNQBVcDE
- N7pJYFQqw2QvD1qEkJIjNtQnhDxwmuHUGGSqV9E3gLQtwA3FCmD46lHSvTQ34cW2E2FQ
- WNuABvahzwYIOAcJgV2LnBbrIHwRWb60R8lXkZzmeIgj8BrLKOH7mMUJsWd5Ypkkx8pi
- U1eTAkNRWt52rNYLEewTZRPvv0EY+PiXxkdw8bii49cGLyBd8klGQr2K9RUl2zHLHA8C
- oqxA==
-X-Gm-Message-State: AOAM531rLgbdC9qvZX32zIc+SGphXI7yPoXzn0ggbwk2EclYU1LYJigi
- fs33RrAnellrquA7qG1XX5MPXBJEq9E=
-X-Received: by 2002:adf:d0d0:: with SMTP id z16mr43245870wrh.95.1593874191948; 
- Sat, 04 Jul 2020 07:49:51 -0700 (PDT)
+ bh=uE7YqG+qACaG8Uud6yeGxAsfWVnV3rkTeBq37HQj1qo=;
+ b=iEilyWCOzbCQ+yGmY4aIeEvnwcGhx4VVL9JGJSuRJMfU9GZO8p5m41Z/lyQIFdIrU1
+ SFS3DwwCpTFnxFxe5f2VL5XxNslSdMJNJms8xUK06HwaUUNuH3HOEfoZMcnwqKQ3lSID
+ AdAmpOqf5L3ZVSpSdnbNuTAsYeSVlVoqBdIQCWFGW719Sw5/gkvrls8M9jUIAfcfE5tv
+ J767Ldd+hmd9pji9fEnjSnyNIoirFTlZZ8aTrsIrfXHJUzXRH8ul6sNLJHgTVcGUw2dt
+ YoEiQ5/07IjwlUnTZxvfcz4XlKaUrFhe7J76jmgrzWS8y8TSKA/qpolghPo6H9KUZkeA
+ +NLg==
+X-Gm-Message-State: AOAM532SGS6delwp1vh9wnsCESGPi+1A56rVv5ecEJIPXacnjjRkt5s8
+ V7A+a98sRuv4+MuhJy6nA3/NaZ6AXL4=
+X-Received: by 2002:adf:9561:: with SMTP id 88mr11043924wrs.240.1593874241665; 
+ Sat, 04 Jul 2020 07:50:41 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id r10sm17135019wrm.17.2020.07.04.07.49.50
+ by smtp.gmail.com with ESMTPSA id r10sm17135019wrm.17.2020.07.04.07.50.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Jul 2020 07:49:51 -0700 (PDT)
+ Sat, 04 Jul 2020 07:50:41 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	BALATON Zoltan <balaton@eik.bme.hu>
-Subject: [PATCH 02/26] hw/ppc/sam460ex: Add missing 'hw/pci/pci.h' header
-Date: Sat,  4 Jul 2020 16:49:19 +0200
-Message-Id: <20200704144943.18292-3-f4bug@amsat.org>
+Subject: [PATCH 26/26] MAINTAINERS: Cover dwc-hsotg (dwc2) USB host controller
+ emulation
+Date: Sat,  4 Jul 2020 16:49:43 +0200
+Message-Id: <20200704144943.18292-27-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200704144943.18292-1-f4bug@amsat.org>
 References: <20200704144943.18292-1-f4bug@amsat.org>
@@ -96,8 +97,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -149,40 +150,34 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: es1lj183kdR7
+X-TUID: KxCrZ85KCxqP
 
-This file uses pci_create_simple() and PCI_DEVFN() which are both
-declared in "hw/pci/pci.h". This include is indirectly included
-by an USB header. As we want to reduce the USB header inclusions
-later, include the PCI header now, to avoid later:
+Add an section for the dwc2 host controller emulation
+introduced in commit 153ef1662c.
 
-  hw/ppc/sam460ex.c:397:5: error: implicit declaration of function ‘pci_create_simple’; did you mean ‘sysbus_create_simple’? [-Werror=implicit-function-declaration]
-    397 |     pci_create_simple(pci_bus, PCI_DEVFN(6, 0), "sm501");
-        |     ^~~~~~~~~~~~~~~~~
-        |     sysbus_create_simple
-  hw/ppc/sam460ex.c:397:5: error: nested extern declaration of ‘pci_create_simple’ [-Werror=nested-externs]
-  hw/ppc/sam460ex.c:397:32: error: implicit declaration of function ‘PCI_DEVFN’ [-Werror=implicit-function-declaration]
-    397 |     pci_create_simple(pci_bus, PCI_DEVFN(6, 0), "sm501");
-        |                                ^~~~~~~~~
-  hw/ppc/sam460ex.c:397:32: error: nested extern declaration of ‘PCI_DEVFN’ [-Werror=nested-externs]
-
+Cc: Paul Zimmerman <pauldzim@gmail.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/ppc/sam460ex.c | 1 +
- 1 file changed, 1 insertion(+)
+ MAINTAINERS | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
-index 1a106a68de..fae970b142 100644
---- a/hw/ppc/sam460ex.c
-+++ b/hw/ppc/sam460ex.c
-@@ -38,6 +38,7 @@
- #include "hw/usb/hcd-ehci.h"
- #include "hw/ppc/fdt.h"
- #include "hw/qdev-properties.h"
-+#include "hw/pci/pci.h"
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 2566566d72..e3f895bc6e 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1651,6 +1651,12 @@ M: Samuel Thibault <samuel.thibault@ens-lyon.org>
+ S: Maintained
+ F: hw/usb/dev-serial.c
  
- #include <libfdt.h>
- 
++USB dwc-hsotg (dwc2)
++M: Gerd Hoffmann <kraxel@redhat.com>
++R: Paul Zimmerman <pauldzim@gmail.com>
++S: Maintained
++F: hw/usb/*dwc2*
++
+ VFIO
+ M: Alex Williamson <alex.williamson@redhat.com>
+ S: Supported
 -- 
 2.21.3
 

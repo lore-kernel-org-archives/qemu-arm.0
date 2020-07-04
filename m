@@ -1,95 +1,94 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3396438lfm;
-        Sat, 4 Jul 2020 08:00:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz7E4J9oNAEBsjFe1orZeBBe6VbmreJtoyNFew+RLUeUy+L1evWTdP27bl7Kjii6PzZWLGZ
-X-Received: by 2002:a25:d08c:: with SMTP id h134mr68783839ybg.513.1593874828714;
-        Sat, 04 Jul 2020 08:00:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593874828; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3396501lfm;
+        Sat, 4 Jul 2020 08:00:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxbA4BKV8NB/ofdCxbYsFNfenEWXCpdhfGlqRsU0WeghPvoeKs6eF2p8E42Y0tiZqSVvjsL
+X-Received: by 2002:a25:d9c2:: with SMTP id q185mr68768516ybg.5.1593874832062;
+        Sat, 04 Jul 2020 08:00:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593874832; cv=none;
         d=google.com; s=arc-20160816;
-        b=P/DcM2pm/FpTeUH3OY2hlHGtA4reES3NwUhPjMIKsHK+Qz41EDID3qVW1SSGvbCz02
-         6Tpi9tPomvtwuzfiPtvIAm3dBmcN/aefXgWLeS0CW0CfIRa3R9H/krRrbz6Ry/oTQYc+
-         SA/uG9PqyUlv/wOC9E6b8eooprHrpl6xlYbogoOBK0S7RR0iBzCJ+WTjCGiGodQVjeEV
-         0x7nLKp9hgtsDdswCLKZeyXJwjr+F3Q6h1jN/7VJQlVHR7DNVjZxerhRVOPzH6mwUhIc
-         dpvJFQzxf7TnbYx+ZkOmj49eOIOca+JPzHT5fs3Y6iNgIFL/EuOLSKmk+9w4c29+mJC6
-         w9Ag==
+        b=CyRrJta5ckSOYW54POYL6PkSYKQrT8Y5xiRzNt1yLbp21KPiwZYEwh7x4QlEDSoiEG
+         94ib5Tzgb7a+6OXszMjnjIC9g7ODgKB8lQtx8HG06FeuYl7wREGl3yH+h6LUzefW0cW7
+         W91woaOHDFGun0tW21ml9ffJ/ZEpvds7woxUMYJRF0AK9A+4ALivraXAAGK7Vl8G4RXf
+         HnVcYXux39KWCdbIOKZZIu0zyX4iAcgbQzpa4TmgUOd0HurALABpK0QNdQrTXxClMS9p
+         22dXDDi5rMJ5wjIIMIkPoSmMAFydrxS1Mm/eNetj91e65xjmeMxFEbKM3NAa9r4267iS
+         DUFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=LwCcRU3ITBZcN/p8m4Tvly+Gfq57t4rX34Kk3Uzziqs=;
-        b=Vtlkrt0HVBRV/ObofMD2n75jzt8G9FyOTjluCXLeKtXey7AtVfIBj7O3xS6fQlTm74
-         GE0LDrsTo0rs0wvsgBslh0uJ/np51jR3MT/uBph55tN32DDccu8CIPqqSNngBT8SKcJE
-         6DEGx4tPA0GPDr0JXhteI0wZ0YeQUpnB/oE+XVlHAxM3cyLIPn5tONYKHJVE7WnX9qFg
-         fsqXEeumBaxAn2ba0Xd5lDmCC2nGxmzJqVbFTrjbY1yKah3fFCfDY4EuBURClNg73ERu
-         tyvhLLkj21a2jLXVX8i1uGv+DxyLN/quC2qgOh3pjlU3CT6FQ9cke9zmYDJ/jJIOcDLD
-         weaw==
+        bh=lYK2LCkkm8mXjPosH/dQ8dVGr7IbLAxEMo5hKyX8gDM=;
+        b=tYXIAZjy+xDJWAQyYVuxfOMVW6nps02Ejt7+4mS3CaVvNbj8AOYCAbqbrRA+Gxvlta
+         DinJ7a/WvnMwaRp6yirRYPxjzU/T7h8uy8CBTGa/k63WgDGj1F8pd/id0LR71jpm+zxE
+         vn91Qh5tr5Ac63f9ffmYNl4kFlWKTKP3lqAn1Lw7Yd15+McUeKhgKIjsrzlX0KPfsSvt
+         bbdkT5VJfDAzYy1Ul47is6FbzW1jYpMQJWrtsat7W6GF9SuiZIAlZG8qPN1N3cz0LO1B
+         vuXdVHhRT3GHb/iuVoprttmpIjc6IrKvH5ve6UA3b1JmpFX1NeiphDXXrSF+fDbvtD46
+         0gMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oKjMAbLQ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aXPSXSTX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e79si14288367yba.493.2020.07.04.08.00.28
+        by mx.google.com with ESMTPS id o65si2654311ybo.428.2020.07.04.08.00.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 04 Jul 2020 08:00:28 -0700 (PDT)
+        Sat, 04 Jul 2020 08:00:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oKjMAbLQ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aXPSXSTX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:45750 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46060 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrjeV-0004IR-Tq
-	for alex.bennee@linaro.org; Sat, 04 Jul 2020 11:00:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57866)
+	id 1jrjeZ-0004R8-Da
+	for alex.bennee@linaro.org; Sat, 04 Jul 2020 11:00:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57912)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrjUm-00028B-4p; Sat, 04 Jul 2020 10:50:25 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38203)
+ id 1jrjUs-0002Fj-IS; Sat, 04 Jul 2020 10:50:30 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:37038)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrjUk-0003q0-NQ; Sat, 04 Jul 2020 10:50:23 -0400
-Received: by mail-wm1-x341.google.com with SMTP id f18so37074414wml.3;
- Sat, 04 Jul 2020 07:50:21 -0700 (PDT)
+ id 1jrjUr-0003uQ-0J; Sat, 04 Jul 2020 10:50:30 -0400
+Received: by mail-wm1-x344.google.com with SMTP id o2so37045184wmh.2;
+ Sat, 04 Jul 2020 07:50:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=LwCcRU3ITBZcN/p8m4Tvly+Gfq57t4rX34Kk3Uzziqs=;
- b=oKjMAbLQ2Nbdo7AVZTEMo5rKzXNXebbxS2YHgA5kZDA2Z2+DxgsuBaop4Nf7YP0t9g
- 825K7Sz5l6DRKW2FWV64F6Y8PFEbfBZ/8mNGGq8q8I/v/XzgiVoT/c6cLtJ4Wq4+y8s/
- ZyQu3ZX70MOw0YMf2jRU84FoSuY8lwe6rfsONGi0EvhvcQH4agyx8WdTlthVPz7oUMLd
- 7gZ2JkRsngTeq9VmBw6iuSdlXJYxQF7UzAOPFbD80qjvobuW2TUKX0fMm3Fjk3Rm4noB
- rWoSeUrHYZkkLtcx+JFqgKhA77mwlMll57o/tAzzPnbS9XSESKlGwrsNVmP1tPkGSkA/
- JlFg==
+ bh=lYK2LCkkm8mXjPosH/dQ8dVGr7IbLAxEMo5hKyX8gDM=;
+ b=aXPSXSTXJgMKootuaitVYmZBSggQZgK5/msZtoZcg7I8jA8LHFIiATkIx5WCEZldCp
+ SeaQ7H/JOLUc20KVhGcA7f0xl4oHCgEjVr98O8j746wh6K6hdXVhWWXSpum0kkLIE1Ll
+ o0sWptvhIkbblNoImRzF3l09dCL3iVxJ0WW2ZeILMYy+tYCo1N5He53EBz1ZPY1YrT9P
+ UVjDzzudJa9wnQi7oNvmU0XMFcjt7H4ZMvL4fKtFw3JleIBzE+YVCgrp2ICVwl2encpY
+ Qq0n9vh6n8s2ZQnJVc4oUaSLVKsimpACr35vRSlpJj6uci1zi0CBBOOmhbGsI86MbzSm
+ uOAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=LwCcRU3ITBZcN/p8m4Tvly+Gfq57t4rX34Kk3Uzziqs=;
- b=JU9ZGLfp+IKrelXi+y+CRQ0VhaCkexDDJ7h1rbIyzRzUjdSBXxOfdOMn1aPNFfxIe/
- FaV9ttEf13z26+sqbf5OYyZWewdtgXynir+BwxjDB4ieKWyOud2IaGh+Skqn8YP/Lp5F
- RFbYQvvK0xf/ceyCnS28d5B1SesKuwMh7IorXu4yorCgQF4uYYIo7ZTLc4zAa4Txv+vR
- YvRsjqITjj2iDe2s/zA9RWrvnRL5PCjt/jc31k9mn6ZdWqP4tymOowqtKM7fmKvwovlj
- 3QQXbjLsQGG3UJKMXMnq44i/NPqC37hZlKOxpkKmLuWCuvfuk3Q225EwgL6DktBdWTH7
- +MwA==
-X-Gm-Message-State: AOAM533khQ0XpLCK8Osqv+UkveTMFGDCStAjJ3Wo62U6dJtZH4lZwGlF
- L0Wg19e3BCQ7CpkJlOCDnInCimklmTo=
-X-Received: by 2002:a1c:b686:: with SMTP id
- g128mr43033346wmf.145.1593874220071; 
- Sat, 04 Jul 2020 07:50:20 -0700 (PDT)
+ bh=lYK2LCkkm8mXjPosH/dQ8dVGr7IbLAxEMo5hKyX8gDM=;
+ b=Mel234CDzzz6R1Wp7X1tht0MOGNHwC4PgcwrAytIwwiOgP8W8YPQuTJ//rHoMdAtU1
+ CVqJKHGLfVHARNXPslAcrPvMcykV6Wtw/BKKJkg358Bgc8uIqoacTW7R2xCbw+Ep6Aph
+ uBJcBlr8uKcvq2Jy/VJ4Nel9IMddPhHhYJwFczgb2j8qqFFc0SYa11tVD+hN/oLoNF1i
+ MFfN1fRpr59+/Knd6hHZkyeP1nmMeFJFWeIc9Se2+2a6BB/qd+hTmLWGBBCQ7wUR0Iur
+ ZK4zGAuAYXH0ZmQ827zo1uEJiJi/KbTVm7fE2tVMF8Rx+HsuGDLdMFmWwOoDqNrhRJBQ
+ 4xRQ==
+X-Gm-Message-State: AOAM533By9LMonBd+dsDog9xyPaxtecnjz+r49VgLtXZFysrO7in6Cry
+ NWv24IG9CyUq/htRSgSC9o8ksnAP+R4=
+X-Received: by 2002:a1c:f301:: with SMTP id q1mr41171773wmq.110.1593874226397; 
+ Sat, 04 Jul 2020 07:50:26 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id r10sm17135019wrm.17.2020.07.04.07.50.18
+ by smtp.gmail.com with ESMTPSA id r10sm17135019wrm.17.2020.07.04.07.50.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Jul 2020 07:50:19 -0700 (PDT)
+ Sat, 04 Jul 2020 07:50:25 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	BALATON Zoltan <balaton@eik.bme.hu>
-Subject: [PATCH 16/26] hw/usb/bus: Simplify usb_get_dev_path()
-Date: Sat,  4 Jul 2020 16:49:33 +0200
-Message-Id: <20200704144943.18292-17-f4bug@amsat.org>
+Subject: [PATCH 19/26] hw/ppc/spapr: Use usb_get_port_path()
+Date: Sat,  4 Jul 2020 16:49:36 +0200
+Message-Id: <20200704144943.18292-20-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200704144943.18292-1-f4bug@amsat.org>
 References: <20200704144943.18292-1-f4bug@amsat.org>
@@ -97,8 +96,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -150,48 +149,40 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IN+S7tEoGFXq
+X-TUID: 4cZlSNjF5wDi
 
-Simplify usb_get_dev_path() a bit.
+To avoid to access the USBDevice internals, and use the
+recently added usb_get_port_path() helper instead.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/usb/bus.c | 19 +++++++++----------
- 1 file changed, 9 insertions(+), 10 deletions(-)
+ hw/ppc/spapr.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/hw/usb/bus.c b/hw/usb/bus.c
-index 111c3af7c1..f8901e822c 100644
---- a/hw/usb/bus.c
-+++ b/hw/usb/bus.c
-@@ -580,19 +580,18 @@ static void usb_bus_dev_print(Monitor *mon, DeviceState *qdev, int indent)
- static char *usb_get_dev_path(DeviceState *qdev)
- {
-     USBDevice *dev = USB_DEVICE(qdev);
--    DeviceState *hcd = qdev->parent_bus->parent;
--    char *id = NULL;
- 
-     if (dev->flags & (1 << USB_DEV_FLAG_FULL_PATH)) {
--        id = qdev_get_dev_path(hcd);
--    }
--    if (id) {
--        char *ret = g_strdup_printf("%s/%s", id, dev->port->path);
--        g_free(id);
--        return ret;
--    } else {
--        return g_strdup(dev->port->path);
-+        DeviceState *hcd = qdev->parent_bus->parent;
-+        char *id = qdev_get_dev_path(hcd);
-+
-+        if (id) {
-+            char *ret = g_strdup_printf("%s/%s", id, dev->port->path);
-+            g_free(id);
-+            return ret;
-+        }
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index f6f034d039..221d3e7a8c 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -3121,7 +3121,8 @@ static char *spapr_get_fw_dev_path(FWPathProvider *p, BusState *bus,
+              * We use SRP luns of the form 01000000 | (usb-port << 16) | lun
+              * in the top 32 bits of the 64-bit LUN
+              */
+-            unsigned usb_port = atoi(usb->port->path);
++            g_autofree char *usb_port_path = usb_get_port_path(usb);
++            unsigned usb_port = atoi(usb_port_path);
+             unsigned id = 0x1000000 | (usb_port << 16) | d->lun;
+             return g_strdup_printf("%s@%"PRIX64, qdev_fw_name(dev),
+                                    (uint64_t)id << 32);
+@@ -3137,7 +3138,8 @@ static char *spapr_get_fw_dev_path(FWPathProvider *p, BusState *bus,
+     if (strcmp("usb-host", qdev_fw_name(dev)) == 0) {
+         USBDevice *usbdev = CAST(USBDevice, dev, TYPE_USB_DEVICE);
+         if (usb_host_dev_is_scsi_storage(usbdev)) {
+-            return g_strdup_printf("storage@%s/disk", usbdev->port->path);
++            g_autofree char *usb_port_path = usb_get_port_path(usbdev);
++            return g_strdup_printf("storage@%s/disk", usb_port_path);
+         }
      }
-+    return g_strdup(dev->port->path);
- }
  
- static char *usb_get_fw_dev_path(DeviceState *qdev)
 -- 
 2.21.3
 

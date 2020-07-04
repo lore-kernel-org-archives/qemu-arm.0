@@ -1,94 +1,94 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3391201lfm;
-        Sat, 4 Jul 2020 07:51:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy4dLfOZOyzNYC3Lju7K7Fqyfc/hp/U5Oeq8e6Mae1QX3Wu5mR3bGAcGPPuGsqXevw3KQdl
-X-Received: by 2002:a25:5b57:: with SMTP id p84mr19437506ybb.37.1593874280043;
-        Sat, 04 Jul 2020 07:51:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593874280; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3391976lfm;
+        Sat, 4 Jul 2020 07:52:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxCDAPg3yMM77nAzPXF/11S7SWEuX3bbMtraAtyP3rZCzVuJCSCuDsHOxeJWEgsrG1KrPCh
+X-Received: by 2002:a25:b19e:: with SMTP id h30mr69705336ybj.70.1593874363013;
+        Sat, 04 Jul 2020 07:52:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593874363; cv=none;
         d=google.com; s=arc-20160816;
-        b=jVZrsamP2/QldAR9NoNoZGfulI+Gu5bEGuYrTOytJOVjlNMWb8yY0/05q3cYsMvknU
-         +oBIOEKxaWrWbmXiMDF+CNC9MWeCz/dD6KRYti373iBbQhhghzHbO15XAu5dh5vSXvt4
-         BPWjQYhGnKuQSA1jpr5IPfsbvpsW6lKmQ0ZrAROheEOGX2DYBX0Lb/zYX+eGp+iJsYzg
-         dHf85D5WUpgbiF6u9oeLfhGlYJxU28m9VXY0PxLcxa0+Q/FxgqML3qAx4W5swvc5vCl1
-         i7Zh0IkKnMx7q8jCuvDC6krVG75C0HU6Ks26rnwnTSioW9FVbZYCe2RHW3S76wPm8kLh
-         eg1Q==
+        b=CKxLG10MzFs6TGVpxwdj7vTrBS5ffK3mTvom5Q+u+zM9Y6wuiuQ0pzyePaT3ZabqwD
+         47FaJ1F/zPASmoAnW0Pe3sJeF9vrY/5Y3julr8NqFoW8qLOYMZ1U/bnK1Ot7vwPP3+4D
+         WTjXRPIJUJVoZwe/9c7I/WXo+Z4bj0OfJRiY7C+dJPSds+rw9shhh5LO9j1Xr5gspy18
+         25B0TY98/C1p0mEN/3dYrcUpGAAPL+XlI2OEUsZFDWhW5r7N3VoeYx3RFzytqza3LIY7
+         x94HKp6GzUK58n7pwiSaK9CNaKJviDupF2ey9LT8rrLYVSJQCUxAqz7j036YospyvICE
+         NKWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=1LONYHTd7jeNrmu8RfEJNRKaqa+4/OTfMiA08MmDC4w=;
-        b=UTQ+LFrzC9dGONTyC556RuRcOY0GVOVetjGIfr9ryqUdirPI2uO7OSTEqsppP/qzDs
-         HdeODqJ6H3kHny1yn2aDbtECR1byCAmNuyyhnL04bYpqiJ9L0/2ntuB+a7tzVUuv8z0u
-         Q6MuqCxA3vah14lvjh6LGeY+z3it5RCRm3QjYzE34P7Kd8pgYrzN2o7ranOPSimwDOU4
-         Or+Eshx/tGFOsNgzcyNDmNSqAHwj/037l4zRYg9RfL0hnljGq/88FphBBEAbbMCO/Hq6
-         vxwkwmaVDVYhgUWsA/iaFxUtghsWyGEIS4L4MtQw2Htk5dOeBrAaKUmv9MJdOIrBdgj4
-         LItQ==
+        bh=Oswm/m1DAWqBYNXr2uTrm9A1MHSMTs1YgVZvoQJC8bI=;
+        b=JxtBk7deC9cUlHSwk6txPUwCnlSJBPAsyhndnH7Y1wFnFhhDpydkzkpdW/V91yXv3g
+         M+YZoAoRsTB/KHicNsPonVSFwib5RExdiH6LUqepKGP6SRuLK28Y9YziV8vwQ922w/+w
+         nUSZEtsesZwLAALWSPsYNvZST5M4lu3WYBa8uXhyEOhhEqIAcDZp7Ceue8L0zHYVLdeH
+         hwi//8BwMRAdIb3Eb8wJryJc1jicf3ro71TDO42ut7H7iLwXFBxU7uOzKZB7cQ/oxCOv
+         rtfAM0+4ZpsBm7+rzfhU6h4FZyoJh+1lFDTBep9FA4NKpEJLNQ1/D0DTxPn0Zd9BOzgW
+         v9lw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LCSMbVvH;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gQJg1+Wh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 128si6496228ybq.226.2020.07.04.07.51.19
+        by mx.google.com with ESMTPS id o18si15173036yba.318.2020.07.04.07.52.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 04 Jul 2020 07:51:20 -0700 (PDT)
+        Sat, 04 Jul 2020 07:52:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LCSMbVvH;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gQJg1+Wh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:59068 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38724 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrjVf-0003VA-Cx
-	for alex.bennee@linaro.org; Sat, 04 Jul 2020 10:51:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57616)
+	id 1jrjX0-0006bx-BO
+	for alex.bennee@linaro.org; Sat, 04 Jul 2020 10:52:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57656)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrjUH-0000zx-Dc; Sat, 04 Jul 2020 10:49:53 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:33682)
+ id 1jrjUN-0001DL-HT; Sat, 04 Jul 2020 10:49:59 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:33683)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrjUG-0003d6-2b; Sat, 04 Jul 2020 10:49:53 -0400
-Received: by mail-wr1-x442.google.com with SMTP id f18so27701619wrs.0;
- Sat, 04 Jul 2020 07:49:51 -0700 (PDT)
+ id 1jrjUM-0003e7-2g; Sat, 04 Jul 2020 10:49:59 -0400
+Received: by mail-wr1-x442.google.com with SMTP id f18so27701779wrs.0;
+ Sat, 04 Jul 2020 07:49:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=1LONYHTd7jeNrmu8RfEJNRKaqa+4/OTfMiA08MmDC4w=;
- b=LCSMbVvH8N0ZbcZUYZvlwl0/LtuSzor2alX6qtutU+9ODMj8+C2lynOKjaqj8fXnEI
- Up7WQjLdb8bh14eYdbzmWq0pniHymCkqwLxs7uZhzz+SQeCK8ybk5MN0Zyhj8Eee+SQj
- wRrntXxiS8ThEJ3VSHHvZJ08OGnA1vj0opel3/dZthPvXbGAIhhQVqi63UTc46zKMF8g
- WrVDYhnL59CSHsALtHCZR8uG2+fDNJPpG55w+1h1DIiM4zmD5wiPD6EKOmnxiehzG+GO
- tiIAW62Y9YFjeqMNBorgEysK6Wv7zhm124e0UVH2qXSktIEDr+5rtVe5ZIRMCgW9yetf
- 3gAA==
+ bh=Oswm/m1DAWqBYNXr2uTrm9A1MHSMTs1YgVZvoQJC8bI=;
+ b=gQJg1+Wh58x4r1H2OG452+zx84IaV+E1T+M1C2BaKGGeGjGLijbGT/5fa47rZbH8+0
+ wx3oFF6OQ4YShJqliLGLwkPIB5oJdoms+e1FUh9KOzyP0OaQJPWoQRUIivVmvk/OIni+
+ pIzj1GiWmXLxj18zi7ZWsi1d3bC0/vHZhYuKuqhtZGYCTA6vwHL3QyRfwCu4wrFZiM4w
+ nFj0qm+tx7V6fzx/zRQcGItYIzadZOv9ExIOm820D40RuWqtW4US5zoVgHElBrDFWXJU
+ AbeBG/uIbXymxcCdns7Thwq8fUZU4bxlC2yWqkCy++/qfZTE6Jfr1HmDinGWpjPF9fWy
+ Rs2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=1LONYHTd7jeNrmu8RfEJNRKaqa+4/OTfMiA08MmDC4w=;
- b=WjFSHpQCbi0hgVyl2+PCPXyBespUMq6EmjfHHuxf8MOuqCV3iQcZuCIVxVPR7pTqVA
- KHpStFcIYuJKa1rorFP5Qrz53FHhnQ/fiVlrLdMSlU1WCpuErTtYtrsgz4XObbPhdSjR
- 3XrnnMLfMug1dKSvlMPDgI5/JSdSGcJbZQjHKmKJ+ulxp/Jk0+sNG8UiZH1DS4GtIO6v
- WHHO4rtjeAH7xP0SrmjD3eE32Y2IuDIQUyEtQDHW940/s48bdyb14TRT6O0TFKoRqGHo
- pMVOC1DK4D7Ixo7DBOC1c9LERFoZbBamL9yVdg6Gutfki5j59SMR9EAyEAIObFRkjEe6
- 0C8w==
-X-Gm-Message-State: AOAM530ZZh5ofHfGQP2RAkubTPEJsM8lOsUKyU0mhnSkIkcHDdYRi6eu
- +cX9Nt1C9L5SziVePa8mnI5PDuBnIE4=
-X-Received: by 2002:adf:f54b:: with SMTP id j11mr41454017wrp.206.1593874189885; 
- Sat, 04 Jul 2020 07:49:49 -0700 (PDT)
+ bh=Oswm/m1DAWqBYNXr2uTrm9A1MHSMTs1YgVZvoQJC8bI=;
+ b=Gv8fiPiykCWNZIbv3RETfbZ3UModcW8+HsOh/FMYRvR5/TPaqEDIQ2orBy5V/BqeIY
+ V64I2yjDS0FrdGMfwQW5cTKMw+3KYBv1KN/5iD2R33BR2QT4j9bjCX04o+3AoXsBBRQF
+ SYbQRmvc5uM8aqv+fxmojeTMbpcvf9JOKiW24y9kc4WvP6VLUTLqMVS5iRthAN5ebRM/
+ Dr5tQvc/VYIAU1+O6Ngkc8IjWZdyjBXvGTFuUGvXgp1HHKTIMivny2S7YL3j2LdJNsH/
+ aWfnsTNtDNhOqwj4ts205637u6U9Qkc4YKyCWWHgnLH/u2Q7JeiysCis+IgIs2Ej9Sj2
+ 45Pw==
+X-Gm-Message-State: AOAM531K0xUGZeDAEWjGOXUefsnDWCIPjjodPlIPmGKXlhnYqmLJCtzB
+ F+0yz52yBSxBXudKb15/tTkUjsIbXH4=
+X-Received: by 2002:adf:9561:: with SMTP id 88mr11042389wrs.240.1593874195987; 
+ Sat, 04 Jul 2020 07:49:55 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id r10sm17135019wrm.17.2020.07.04.07.49.48
+ by smtp.gmail.com with ESMTPSA id r10sm17135019wrm.17.2020.07.04.07.49.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Jul 2020 07:49:49 -0700 (PDT)
+ Sat, 04 Jul 2020 07:49:55 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	BALATON Zoltan <balaton@eik.bme.hu>
-Subject: [PATCH 01/26] hw/arm/sbsa-ref: Remove unused 'hw/usb.h' header
-Date: Sat,  4 Jul 2020 16:49:18 +0200
-Message-Id: <20200704144943.18292-2-f4bug@amsat.org>
+Subject: [PATCH 04/26] hw/usb: Reduce 'exec/memory.h' inclusion
+Date: Sat,  4 Jul 2020 16:49:21 +0200
+Message-Id: <20200704144943.18292-5-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200704144943.18292-1-f4bug@amsat.org>
 References: <20200704144943.18292-1-f4bug@amsat.org>
@@ -149,28 +149,42 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qOjsJKFyAhiD
+X-TUID: d0oMEdKWAUL9
 
-This file doesn't access anything from "hw/usb.h", remove its
-inclusion.
+"exec/memory.h" is only required by "hw/usb/hcd-musb.h".
+Include it there directly.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/sbsa-ref.c | 1 -
- 1 file changed, 1 deletion(-)
+ include/hw/usb.h          | 1 -
+ include/hw/usb/hcd-musb.h | 2 ++
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index e40c868a82..021e7c1b8b 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -38,7 +38,6 @@
- #include "hw/loader.h"
- #include "hw/pci-host/gpex.h"
- #include "hw/qdev-properties.h"
--#include "hw/usb.h"
- #include "hw/char/pl011.h"
- #include "net/net.h"
+diff --git a/include/hw/usb.h b/include/hw/usb.h
+index 4f04a1a879..15b2ef300a 100644
+--- a/include/hw/usb.h
++++ b/include/hw/usb.h
+@@ -25,7 +25,6 @@
+  * THE SOFTWARE.
+  */
  
+-#include "exec/memory.h"
+ #include "hw/qdev-core.h"
+ #include "qemu/iov.h"
+ #include "qemu/queue.h"
+diff --git a/include/hw/usb/hcd-musb.h b/include/hw/usb/hcd-musb.h
+index c874b9f292..ec3ee5c4b0 100644
+--- a/include/hw/usb/hcd-musb.h
++++ b/include/hw/usb/hcd-musb.h
+@@ -13,6 +13,8 @@
+ #ifndef HW_USB_MUSB_H
+ #define HW_USB_MUSB_H
+ 
++#include "exec/memory.h"
++
+ enum musb_irq_source_e {
+     musb_irq_suspend = 0,
+     musb_irq_resume,
 -- 
 2.21.3
 

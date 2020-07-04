@@ -1,95 +1,94 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3399132lfm;
-        Sat, 4 Jul 2020 08:03:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwn4uRnicQbzQ7qtILRaGjk6SCgG4cMopoA63ddl71QrlXNIz5RlZU+zYCRLRMbVjXhV5aC
-X-Received: by 2002:a25:2e43:: with SMTP id b3mr66739861ybn.190.1593875018387;
-        Sat, 04 Jul 2020 08:03:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593875018; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3400601lfm;
+        Sat, 4 Jul 2020 08:05:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyHEoWsR2RlUAChy1F8VBAAQGWDqfgShsig4kwLNFxcAcfAaaRH9VA3lw9IPqHu574ovx0b
+X-Received: by 2002:ab0:45d7:: with SMTP id u81mr15396587uau.120.1593875135913;
+        Sat, 04 Jul 2020 08:05:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593875135; cv=none;
         d=google.com; s=arc-20160816;
-        b=AQsBYhuPNSoTIZk5mAPoOZLm5LBz1JfWI9cLCqdLGtMu+OOflqzB7/xpaz7c8gn9/l
-         D/qiXcQ7UzNK7jk1h7JyBdBvhCpl+LCTB9OGStKpY4DukYSRHqlr5WsN8bFCaEyyAyhq
-         hbYuq6yV7/xAohMqf7NHtuqlQF1mV87ciMITGc7YZK0uq4Psnqxdg14BidL07S5X9hC2
-         3I0UuBaclZenjUawR8Rx6QFNA8kXskLSivv2LCuhKFEPa/ZH1CsAxMpQtq8oL1IbZBFC
-         c6r1RK3V23z/sRoIrIT3To8LL0sfxUNrlCtDES2XwakDrfiLiC60MsTSlHfC9RxwKltr
-         0EDA==
+        b=QeSJENAEpY5rhm/yTrGNca13EDFTcsSWCJoKtyfRDmN3G8PxFLCLyzg4ESEeJAxCRR
+         oNg/r6DoNJ1j0cPLHP8REPw7DxRxIQ6e2FnZV9bUZMqd7bpnyTxsCZozC0eV38BAID05
+         07VSG99SgPdzurpoU5/BRrLKcJcsbGUIGQKZiqlGRuRlLivKlS9W/DFywZeqj4szJoVD
+         xYoSxH+JKSkeU6PoJNj0uuCt3wJELjNmcUhhvrfJvUeGXi2Y+vtxPJzOvdoE8D/5JaUi
+         5yOBHbXulFiza6A3js1chFhM/fft3NP5IGb8VpW31FtLUOI2mZPegKFGvyaWA6hAk8Sy
+         DYnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=BVN2tL6FsOSYOSZ1Rnc/AWNY9pAl08p/yTnmHBA4/lE=;
-        b=zj2qrEjrdnUjy0iLU0UKIt9AtgFHW4W9TQ8pKGfdMF1ZRT+1Xver+h6hwPQlTvL+Zd
-         YORYDyJEYe7OqDaM+GQKICXgpuzWWm1fYdK1O1Moo0t8ZcVxQpAryXp4/51lb2Q2dj+T
-         p+KCn1yg4ukZgL7ggXixpY9+NNMX1Y+uQf80v0/CI/FuPJdfstw9nu85yO8oXECyd/Ca
-         yWh9/t70FNkuhQFPBdj01ta590rUR1ECABTbF33liidi2ls19mwfl5g1zkqg8jcpF10q
-         jM5UQITbLd8LiE43+PlAHu51anLJpOz8C7QlMJuQVp5PIqLfLSjbOSWMTsDlaex0tBgI
-         LAMw==
+        bh=f29/MIGKjiVCXNbXb7QXhmc4KA4eor+Mhn/A2jA2iWs=;
+        b=mU/kVOOK3pwT90rG6hkt+sC17J2q2fl38LN8ihpB+qoJQ2oc7oZK4RXF+S0D2f2YGm
+         Ps7UmtFflv4zo7ReTN8VBhDWrv32272M6hN07KMDqEyh7JpZylgl/cAxxoDk3WJNek29
+         ryfXWPY1CZzRNMEqWll6yDStzjk1sgfcya2AZBShrwvMc95HVARyuNRRWhdf7bhRQuCK
+         yURDZwrvAFxEb6g15dM7gmSFxDQdX/YCGZ4kHgDtOC9j4iACbHPaslVuDYFh0QT5OTIu
+         /wEWg/mWndKbbGdUEf98oXTw52yNdg5zSGT4KF6qkh+gXWFMtUtKvbSUybzgKGGSHRAN
+         /cqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pCckQw2f;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aB1S25DG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i5si13269179ybt.353.2020.07.04.08.03.38
+        by mx.google.com with ESMTPS id l8si2081073vsp.255.2020.07.04.08.05.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 04 Jul 2020 08:03:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 04 Jul 2020 08:05:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pCckQw2f;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aB1S25DG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:56186 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33962 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrjhZ-0000VL-OD
-	for alex.bennee@linaro.org; Sat, 04 Jul 2020 11:03:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57966)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jrjjT-0003JC-5k
+	for alex.bennee@linaro.org; Sat, 04 Jul 2020 11:05:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58002)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrjUy-0002SH-GZ; Sat, 04 Jul 2020 10:50:36 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:53820)
+ id 1jrjV1-0002aA-N6; Sat, 04 Jul 2020 10:50:39 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:37037)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrjUv-0003v4-WC; Sat, 04 Jul 2020 10:50:36 -0400
-Received: by mail-wm1-x344.google.com with SMTP id j18so34715877wmi.3;
- Sat, 04 Jul 2020 07:50:32 -0700 (PDT)
+ id 1jrjUz-0003vy-QK; Sat, 04 Jul 2020 10:50:39 -0400
+Received: by mail-wm1-x341.google.com with SMTP id o2so37045435wmh.2;
+ Sat, 04 Jul 2020 07:50:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=BVN2tL6FsOSYOSZ1Rnc/AWNY9pAl08p/yTnmHBA4/lE=;
- b=pCckQw2fpxMWuUrRXy5Fj3fHnP1lNxTV/c5641pZ9JVVlE/7SDn5Q+r8sSpmGeHEtX
- DQ82DdmBJfjkp7u54KKO9Ay1CQm1OqoeBDjN4toemHPaBd5JcfQL3QaYsoKMSYnMcZ86
- cZkSflzpX4ea7A2bLQiMRirFJDw5g/vdSSr9sfwJoCmDfKl2BVC60kE20D3yzbnZa1ls
- bJh1WPioULkSM6b3/MugK1q0os9mcW2PgGSAqfRiQY3jHTvkj9TCGs9ygvVJCLAyMiEa
- nPCSpr4C+N0nVyXsOtCts8cDGKX+c88yfVcUQmPePkBlul0t7jTng4E9ABkXxABaOIFb
- KvpQ==
+ bh=f29/MIGKjiVCXNbXb7QXhmc4KA4eor+Mhn/A2jA2iWs=;
+ b=aB1S25DGnSIIYyLepd0/DAdWudVgoTXK9tCwzyeK195D7VcOpmizNyVX6hZ+Hw2qEs
+ azVFVrdxwL3VuODlB4q4QqZfMjPTxFOKhd3QaNoTlI3BCwrwaIJCdaN/9hDuogPt7S1W
+ uMkSVz50tiyCDufVzR9ruwvMAD7Cy57YADj/X/TkNbbAOo6IdzPigDU6+Qt9UnoF1S0U
+ 2gQlMm3UZYz9RaiNodxR9aWaZAJ7LbmPd+BGW5Mh8hxVh31zMr93bGQmvMf+wmWascsB
+ JSWvSnk5sXCB2K4BvDiMtrGexuQVS2ZsqDG1irobpKigzLZqPl++eLsBBaNhhanPYtWu
+ xagQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=BVN2tL6FsOSYOSZ1Rnc/AWNY9pAl08p/yTnmHBA4/lE=;
- b=hVeXbWqRh247wjSBodhxfK13UP+/GmGdmiB8ouCeckizgdrNZ4O5Ygw6CxRyvCtKGA
- h8SDL5R5hydwjjxplPnwOFozKh7YOmBHGJEauQprGRx8QkKqc3YrsBhbSaMbglPxYSbM
- QTe0bZMA1V7Yk0XJHs7Ic6cn8ML8NChsI02JmJsiIBiZd3xQrRsGtpkXGXNb4shQ4Elv
- XmxxjtgUBc+c0MxCGOPugXlJdexnlmGpmcT2OB6TZhsdXM/dXXbcRGpqQA0JVVXFH8+0
- AbcEHImWnjNn5Q5u5T4JHszNAXS9Xyfddo4wI675V9sg1kinXey3JS/Fr0+t58nw5OJy
- 6kdQ==
-X-Gm-Message-State: AOAM532wo2A3y/UIWKZglTdyhM736pTIfwiSL96AZoth3+cpVKRLGU5y
- j7aS1x0WHL9v0jUNJ+nQr0FTw9T7LVc=
-X-Received: by 2002:a7b:cc08:: with SMTP id f8mr43795677wmh.106.1593874230724; 
- Sat, 04 Jul 2020 07:50:30 -0700 (PDT)
+ bh=f29/MIGKjiVCXNbXb7QXhmc4KA4eor+Mhn/A2jA2iWs=;
+ b=VQdZIEv+p4ZpHVb5XdDzXtdWPxM263cdPLtPsx/IcDJXpcNnGEJWBEGVBg+vRNkHgx
+ PKWFqcar4d6mRXjhv02+DEh3nHDoH+UohKLayCD3KhnzPcnhE0m1CvEOSCpIEgQg4zT8
+ uhGe2pWsQdKCrgoAoVoWwAyoZEEw0qbmcmy5i6N6kJA8AOa30TMh1vO+cxEcZjkKXGvG
+ rJABx+cdglWWSwnDe5bEuQGfYoy03cyBEe2fCjw6nOOB3cRflTLOglE5maQx7nhFNmlP
+ rmtcroWlNaPY5X32sNBZVo81zTp/9mpfM4o0wVoDeuhI5l6MU8qLmJy4sBd7F9j++uFL
+ Ph2Q==
+X-Gm-Message-State: AOAM531fCUMLVvyPDZvGQ/0NX/+J1p+wNy5OKRwF5lp55i39iKtVLnHf
+ uVBGgbEYiffBItpG29AIGowNpsIbfjM=
+X-Received: by 2002:a1c:2183:: with SMTP id h125mr43989795wmh.83.1593874235357; 
+ Sat, 04 Jul 2020 07:50:35 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id r10sm17135019wrm.17.2020.07.04.07.50.28
+ by smtp.gmail.com with ESMTPSA id r10sm17135019wrm.17.2020.07.04.07.50.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Jul 2020 07:50:30 -0700 (PDT)
+ Sat, 04 Jul 2020 07:50:34 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org,
 	BALATON Zoltan <balaton@eik.bme.hu>
-Subject: [PATCH 21/26] hw/usb: Move internal API to local 'usb-internal.h'
- header
-Date: Sat,  4 Jul 2020 16:49:38 +0200
-Message-Id: <20200704144943.18292-22-f4bug@amsat.org>
+Subject: [PATCH 23/26] hw/usb/usb-hcd: Use EHCI type definitions
+Date: Sat,  4 Jul 2020 16:49:40 +0200
+Message-Id: <20200704144943.18292-24-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200704144943.18292-1-f4bug@amsat.org>
 References: <20200704144943.18292-1-f4bug@amsat.org>
@@ -97,8 +96,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -109,30 +108,30 @@ X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
  xen-devel@lists.xenproject.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
  Paul Durrant <paul@xen.org>, Magnus Damm <magnus.damm@gmail.com>,
  Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Anthony Perard <anthony.perard@citrix.com>,
  Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Leif Lindholm <leif@nuviainc.com>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Leif Lindholm <leif@nuviainc.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
@@ -148,617 +147,201 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paul Zimmerman <pauldzim@gmail.com>, qemu-ppc@nongnu.org,
  David Gibson <david@gibson.dropbear.id.au>,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PKIK9YwrlLJt
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E0uBuo6iCRnW
 
-Only the files under hw/usb/ require access to the USB internal
-API. Move include/hw/usb.h to hw/usb/usb-internal.h to reduce
-its scope.
+Various machine/board/soc models create EHCI device instances
+with the generic QDEV API, and don't need to access USB internals.
 
+Simplify header inclusions by moving the QOM type names into a
+simple header, with no need to include other "hw/usb" headers.
+
+Suggested-by: BALATON Zoltan <balaton@eik.bme.hu>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/usb/desc.h                             | 2 +-
- hw/usb/hcd-dwc2.h                         | 2 +-
- hw/usb/hcd-ehci.h                         | 2 +-
- hw/usb/hcd-ohci.h                         | 2 +-
- hw/usb/hcd-xhci.h                         | 2 +-
- include/hw/usb.h => hw/usb/usb-internal.h | 7 +++----
- hw/usb/bus.c                              | 2 +-
- hw/usb/combined-packet.c                  | 2 +-
- hw/usb/core.c                             | 2 +-
- hw/usb/desc-msos.c                        | 2 +-
- hw/usb/desc.c                             | 3 +--
- hw/usb/dev-audio.c                        | 2 +-
- hw/usb/dev-hid.c                          | 2 +-
- hw/usb/dev-hub.c                          | 2 +-
- hw/usb/dev-mtp.c                          | 2 +-
- hw/usb/dev-network.c                      | 2 +-
- hw/usb/dev-serial.c                       | 2 +-
- hw/usb/dev-smartcard-reader.c             | 2 +-
- hw/usb/dev-storage.c                      | 2 +-
- hw/usb/dev-uas.c                          | 2 +-
- hw/usb/dev-wacom.c                        | 2 +-
- hw/usb/hcd-dwc2.c                         | 1 +
- hw/usb/hcd-musb.c                         | 2 +-
- hw/usb/hcd-ohci-pci.c                     | 2 +-
- hw/usb/hcd-ohci.c                         | 1 -
- hw/usb/hcd-uhci.c                         | 2 +-
- hw/usb/hcd-xhci-nec.c                     | 3 +--
- hw/usb/hcd-xhci.c                         | 2 +-
- hw/usb/host-libusb.c                      | 2 +-
- hw/usb/libhw.c                            | 2 +-
- hw/usb/quirks.c                           | 2 +-
- hw/usb/redirect.c                         | 2 +-
- hw/usb/tusb6010.c                         | 2 +-
- hw/usb/xen-usb.c                          | 2 +-
- MAINTAINERS                               | 1 -
- 35 files changed, 35 insertions(+), 39 deletions(-)
- rename include/hw/usb.h => hw/usb/usb-internal.h (99%)
+ hw/usb/hcd-ehci.h         | 11 +----------
+ include/hw/usb/chipidea.h |  2 +-
+ include/hw/usb/usb-hcd.h  | 11 +++++++++++
+ hw/arm/allwinner-h3.c     |  1 -
+ hw/arm/exynos4210.c       |  2 +-
+ hw/arm/sbsa-ref.c         |  3 ++-
+ hw/arm/xilinx_zynq.c      |  2 +-
+ hw/ppc/sam460ex.c         |  1 -
+ hw/usb/chipidea.c         |  1 +
+ hw/usb/hcd-ehci-sysbus.c  |  1 +
+ 10 files changed, 19 insertions(+), 16 deletions(-)
 
-diff --git a/hw/usb/desc.h b/hw/usb/desc.h
-index 4bf6966c4b..ee4f042602 100644
---- a/hw/usb/desc.h
-+++ b/hw/usb/desc.h
-@@ -2,7 +2,7 @@
- #define QEMU_HW_USB_DESC_H
- 
- #include <wchar.h>
--#include "hw/usb.h"
-+#include "usb-internal.h"
- 
- /* binary representation */
- typedef struct USBDescriptor {
-diff --git a/hw/usb/hcd-dwc2.h b/hw/usb/hcd-dwc2.h
-index 2adf0f53c7..2dfb3f3bc5 100644
---- a/hw/usb/hcd-dwc2.h
-+++ b/hw/usb/hcd-dwc2.h
-@@ -20,7 +20,7 @@
- #define HW_USB_DWC2_H
- 
- #include "hw/sysbus.h"
--#include "hw/usb.h"
-+#include "usb-internal.h"
- 
- #define DWC2_MMIO_SIZE      0x11000
- 
 diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
-index 4577f5e31d..337b3ad05c 100644
+index 337b3ad05c..da70767409 100644
 --- a/hw/usb/hcd-ehci.h
 +++ b/hw/usb/hcd-ehci.h
-@@ -19,10 +19,10 @@
- #define HW_USB_HCD_EHCI_H
- 
- #include "qemu/timer.h"
--#include "hw/usb.h"
- #include "sysemu/dma.h"
+@@ -23,6 +23,7 @@
  #include "hw/pci/pci.h"
  #include "hw/sysbus.h"
-+#include "usb-internal.h"
+ #include "usb-internal.h"
++#include "hw/usb/usb-hcd.h"
  
  #define CAPA_SIZE        0x10
  
-diff --git a/hw/usb/hcd-ohci.h b/hw/usb/hcd-ohci.h
-index 5c8819aedf..771927ea17 100644
---- a/hw/usb/hcd-ohci.h
-+++ b/hw/usb/hcd-ohci.h
-@@ -22,7 +22,7 @@
- #define HCD_OHCI_H
+@@ -316,7 +317,6 @@ void usb_ehci_realize(EHCIState *s, DeviceState *dev, Error **errp);
+ void usb_ehci_unrealize(EHCIState *s, DeviceState *dev);
+ void ehci_reset(void *opaque);
  
- #include "sysemu/dma.h"
--#include "hw/usb.h"
-+#include "usb-internal.h"
+-#define TYPE_PCI_EHCI "pci-ehci-usb"
+ #define PCI_EHCI(obj) OBJECT_CHECK(EHCIPCIState, (obj), TYPE_PCI_EHCI)
  
- /* Number of Downstream Ports on the root hub: */
- #define OHCI_MAX_PORTS 15
-diff --git a/hw/usb/hcd-xhci.h b/hw/usb/hcd-xhci.h
-index 8edbdc2c3e..f9a3aaceec 100644
---- a/hw/usb/hcd-xhci.h
-+++ b/hw/usb/hcd-xhci.h
-@@ -22,7 +22,7 @@
- #ifndef HW_USB_HCD_XHCI_H
- #define HW_USB_HCD_XHCI_H
+ typedef struct EHCIPCIState {
+@@ -327,15 +327,6 @@ typedef struct EHCIPCIState {
+     EHCIState ehci;
+ } EHCIPCIState;
  
--#include "hw/usb.h"
-+#include "usb-internal.h"
- 
- #define TYPE_XHCI "base-xhci"
- #define TYPE_NEC_XHCI "nec-usb-xhci"
-diff --git a/include/hw/usb.h b/hw/usb/usb-internal.h
-similarity index 99%
-rename from include/hw/usb.h
-rename to hw/usb/usb-internal.h
-index 2ea5186ea5..ceafb65936 100644
---- a/include/hw/usb.h
-+++ b/hw/usb/usb-internal.h
-@@ -1,8 +1,5 @@
--#ifndef QEMU_USB_H
--#define QEMU_USB_H
 -
- /*
-- * QEMU USB API
-+ * QEMU USB internal API
-  *
-  * Copyright (c) 2005 Fabrice Bellard
-  *
-@@ -24,6 +21,8 @@
-  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  * THE SOFTWARE.
-  */
-+#ifndef QEMU_USB_INTERNAL_H
-+#define QEMU_USB_INTERNAL_H
- 
- #include "hw/qdev-core.h"
- #include "hw/usb/usb.h"
-diff --git a/hw/usb/bus.c b/hw/usb/bus.c
-index 518e5b94ed..ba6c48e800 100644
---- a/hw/usb/bus.c
-+++ b/hw/usb/bus.c
-@@ -1,6 +1,5 @@
- #include "qemu/osdep.h"
- #include "hw/qdev-properties.h"
--#include "hw/usb.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "qemu/module.h"
-@@ -9,6 +8,7 @@
- #include "monitor/monitor.h"
- #include "trace.h"
- #include "qemu/cutils.h"
-+#include "usb-internal.h"
- #include "desc.h"
- 
- static void usb_bus_dev_print(Monitor *mon, DeviceState *qdev, int indent);
-diff --git a/hw/usb/combined-packet.c b/hw/usb/combined-packet.c
-index 5d57e883dc..28e19aad12 100644
---- a/hw/usb/combined-packet.c
-+++ b/hw/usb/combined-packet.c
-@@ -21,9 +21,9 @@
-  */
- #include "qemu/osdep.h"
- #include "qemu/units.h"
--#include "hw/usb.h"
- #include "qemu/iov.h"
- #include "trace.h"
-+#include "usb-internal.h"
- 
- static void usb_combined_packet_add(USBCombinedPacket *combined, USBPacket *p)
- {
-diff --git a/hw/usb/core.c b/hw/usb/core.c
-index 5abd128b6b..6fed698d20 100644
---- a/hw/usb/core.c
-+++ b/hw/usb/core.c
-@@ -24,9 +24,9 @@
-  * THE SOFTWARE.
-  */
- #include "qemu/osdep.h"
--#include "hw/usb.h"
- #include "qemu/iov.h"
- #include "trace.h"
-+#include "usb-internal.h"
- 
- void usb_pick_speed(USBPort *port)
- {
-diff --git a/hw/usb/desc-msos.c b/hw/usb/desc-msos.c
-index 3a5ad7c8d0..79a8093f3f 100644
---- a/hw/usb/desc-msos.c
-+++ b/hw/usb/desc-msos.c
-@@ -1,6 +1,6 @@
- #include "qemu/osdep.h"
--#include "hw/usb.h"
- #include "desc.h"
-+#include "usb-internal.h"
- 
- /*
-  * Microsoft OS Descriptors
-diff --git a/hw/usb/desc.c b/hw/usb/desc.c
-index 8b6eaea407..defb344014 100644
---- a/hw/usb/desc.c
-+++ b/hw/usb/desc.c
-@@ -1,8 +1,7 @@
- #include "qemu/osdep.h"
+-#define TYPE_SYS_BUS_EHCI "sysbus-ehci-usb"
+-#define TYPE_PLATFORM_EHCI "platform-ehci-usb"
+-#define TYPE_EXYNOS4210_EHCI "exynos4210-ehci-usb"
+-#define TYPE_AW_H3_EHCI "aw-h3-ehci-usb"
+-#define TYPE_TEGRA2_EHCI "tegra2-ehci-usb"
+-#define TYPE_PPC4xx_EHCI "ppc4xx-ehci-usb"
+-#define TYPE_FUSBH200_EHCI "fusbh200-ehci-usb"
 -
--#include "hw/usb.h"
- #include "desc.h"
- #include "trace.h"
-+#include "usb-internal.h"
+ #define SYS_BUS_EHCI(obj) \
+     OBJECT_CHECK(EHCISysBusState, (obj), TYPE_SYS_BUS_EHCI)
+ #define SYS_BUS_EHCI_CLASS(class) \
+diff --git a/include/hw/usb/chipidea.h b/include/hw/usb/chipidea.h
+index 1ec2e9dbda..28f46291de 100644
+--- a/include/hw/usb/chipidea.h
++++ b/include/hw/usb/chipidea.h
+@@ -2,6 +2,7 @@
+ #define CHIPIDEA_H
  
- /* ------------------------------------------------------------------ */
+ #include "hw/usb/hcd-ehci.h"
++#include "hw/usb/usb-hcd.h"
  
-diff --git a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
-index 1371c44f48..1e4d1051f3 100644
---- a/hw/usb/dev-audio.c
-+++ b/hw/usb/dev-audio.c
-@@ -32,10 +32,10 @@
- #include "qemu/osdep.h"
- #include "qemu/module.h"
+ typedef struct ChipideaState {
+     /*< private >*/
+@@ -10,7 +11,6 @@ typedef struct ChipideaState {
+     MemoryRegion iomem[3];
+ } ChipideaState;
+ 
+-#define TYPE_CHIPIDEA "usb-chipidea"
+ #define CHIPIDEA(obj) OBJECT_CHECK(ChipideaState, (obj), TYPE_CHIPIDEA)
+ 
+ #endif /* CHIPIDEA_H */
+diff --git a/include/hw/usb/usb-hcd.h b/include/hw/usb/usb-hcd.h
+index 21fdfaf22d..74af3a4533 100644
+--- a/include/hw/usb/usb-hcd.h
++++ b/include/hw/usb/usb-hcd.h
+@@ -13,4 +13,15 @@
+ #define TYPE_SYSBUS_OHCI            "sysbus-ohci"
+ #define TYPE_PCI_OHCI               "pci-ohci"
+ 
++/* EHCI */
++#define TYPE_SYS_BUS_EHCI           "sysbus-ehci-usb"
++#define TYPE_PCI_EHCI               "pci-ehci-usb"
++#define TYPE_PLATFORM_EHCI          "platform-ehci-usb"
++#define TYPE_EXYNOS4210_EHCI        "exynos4210-ehci-usb"
++#define TYPE_AW_H3_EHCI             "aw-h3-ehci-usb"
++#define TYPE_TEGRA2_EHCI            "tegra2-ehci-usb"
++#define TYPE_PPC4xx_EHCI            "ppc4xx-ehci-usb"
++#define TYPE_FUSBH200_EHCI          "fusbh200-ehci-usb"
++#define TYPE_CHIPIDEA               "usb-chipidea"
++
+ #endif
+diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+index d1d90ffa79..8b7adddc27 100644
+--- a/hw/arm/allwinner-h3.c
++++ b/hw/arm/allwinner-h3.c
+@@ -29,7 +29,6 @@
+ #include "hw/char/serial.h"
+ #include "hw/misc/unimp.h"
+ #include "hw/usb/usb-hcd.h"
+-#include "hw/usb/hcd-ehci.h"
+ #include "hw/loader.h"
+ #include "sysemu/sysemu.h"
+ #include "hw/arm/allwinner-h3.h"
+diff --git a/hw/arm/exynos4210.c b/hw/arm/exynos4210.c
+index fa639806ec..692fb02159 100644
+--- a/hw/arm/exynos4210.c
++++ b/hw/arm/exynos4210.c
+@@ -35,7 +35,7 @@
  #include "hw/qdev-properties.h"
--#include "hw/usb.h"
- #include "migration/vmstate.h"
- #include "desc.h"
- #include "audio/audio.h"
-+#include "usb-internal.h"
+ #include "hw/arm/exynos4210.h"
+ #include "hw/sd/sdhci.h"
+-#include "hw/usb/hcd-ehci.h"
++#include "hw/usb/usb-hcd.h"
  
- static void usb_audio_reinit(USBDevice *dev, unsigned channels);
+ #define EXYNOS4210_CHIPID_ADDR         0x10000000
  
-diff --git a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c
-index 89f63b698b..59b47272ba 100644
---- a/hw/usb/dev-hid.c
-+++ b/hw/usb/dev-hid.c
-@@ -25,7 +25,6 @@
- 
- #include "qemu/osdep.h"
- #include "ui/console.h"
--#include "hw/usb.h"
- #include "migration/vmstate.h"
- #include "desc.h"
- #include "qapi/error.h"
-@@ -33,6 +32,7 @@
- #include "qemu/timer.h"
- #include "hw/input/hid.h"
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 021e7c1b8b..4e4c338ae9 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -38,6 +38,7 @@
+ #include "hw/loader.h"
+ #include "hw/pci-host/gpex.h"
  #include "hw/qdev-properties.h"
-+#include "usb-internal.h"
- 
- /* HID interface requests */
- #define GET_REPORT   0xa101
-diff --git a/hw/usb/dev-hub.c b/hw/usb/dev-hub.c
-index 5f19dd9fb5..b394ae9983 100644
---- a/hw/usb/dev-hub.c
-+++ b/hw/usb/dev-hub.c
-@@ -27,11 +27,11 @@
- #include "qemu/timer.h"
- #include "trace.h"
- #include "hw/qdev-properties.h"
--#include "hw/usb.h"
- #include "migration/vmstate.h"
- #include "desc.h"
- #include "qemu/error-report.h"
- #include "qemu/module.h"
-+#include "usb-internal.h"
- 
- #define MAX_PORTS 8
- 
-diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
-index 15a2243101..147e564bea 100644
---- a/hw/usb/dev-mtp.c
-+++ b/hw/usb/dev-mtp.c
-@@ -24,10 +24,10 @@
- #include "qemu/filemonitor.h"
- #include "trace.h"
- #include "hw/qdev-properties.h"
--#include "hw/usb.h"
- #include "migration/vmstate.h"
- #include "desc.h"
- #include "qemu/units.h"
-+#include "usb-internal.h"
- 
- /* ----------------------------------------------------------------------- */
- 
-diff --git a/hw/usb/dev-network.c b/hw/usb/dev-network.c
-index c69756709b..2e06d74f69 100644
---- a/hw/usb/dev-network.c
-+++ b/hw/usb/dev-network.c
-@@ -26,7 +26,6 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "hw/qdev-properties.h"
--#include "hw/usb.h"
- #include "migration/vmstate.h"
- #include "desc.h"
++#include "hw/usb/usb-hcd.h"
+ #include "hw/char/pl011.h"
  #include "net/net.h"
-@@ -37,6 +36,7 @@
- #include "qemu/iov.h"
- #include "qemu/module.h"
- #include "qemu/cutils.h"
-+#include "usb-internal.h"
  
- /*#define TRAFFIC_DEBUG*/
- /* Thanks to NetChip Technologies for donating this product ID.
-diff --git a/hw/usb/dev-serial.c b/hw/usb/dev-serial.c
-index 7e50e3ba47..4d3f91a85a 100644
---- a/hw/usb/dev-serial.c
-+++ b/hw/usb/dev-serial.c
-@@ -14,11 +14,11 @@
+@@ -485,7 +486,7 @@ static void create_ehci(const SBSAMachineState *sms)
+     hwaddr base = sbsa_ref_memmap[SBSA_EHCI].base;
+     int irq = sbsa_ref_irqmap[SBSA_EHCI];
+ 
+-    sysbus_create_simple("platform-ehci-usb", base,
++    sysbus_create_simple(TYPE_PLATFORM_EHCI, base,
+                          qdev_get_gpio_in(sms->gic, irq));
+ }
+ 
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+index ed970273f3..9ccdc03095 100644
+--- a/hw/arm/xilinx_zynq.c
++++ b/hw/arm/xilinx_zynq.c
+@@ -29,7 +29,7 @@
+ #include "hw/loader.h"
+ #include "hw/misc/zynq-xadc.h"
+ #include "hw/ssi/ssi.h"
+-#include "hw/usb/chipidea.h"
++#include "hw/usb/usb-hcd.h"
  #include "qemu/error-report.h"
- #include "qemu/module.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/char/cadence_uart.h"
+diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+index ac60d17a86..3f7cf0d1ae 100644
+--- a/hw/ppc/sam460ex.c
++++ b/hw/ppc/sam460ex.c
+@@ -37,7 +37,6 @@
+ #include "hw/i2c/smbus_eeprom.h"
+ #include "hw/usb/usb.h"
+ #include "hw/usb/usb-hcd.h"
+-#include "hw/usb/hcd-ehci.h"
+ #include "hw/ppc/fdt.h"
  #include "hw/qdev-properties.h"
--#include "hw/usb.h"
- #include "migration/vmstate.h"
- #include "desc.h"
- #include "chardev/char-serial.h"
- #include "chardev/char-fe.h"
-+#include "usb-internal.h"
- 
- //#define DEBUG_Serial
- 
-diff --git a/hw/usb/dev-smartcard-reader.c b/hw/usb/dev-smartcard-reader.c
-index fcfe216594..9602b25a10 100644
---- a/hw/usb/dev-smartcard-reader.c
-+++ b/hw/usb/dev-smartcard-reader.c
-@@ -41,9 +41,9 @@
- #include "qemu/error-report.h"
- #include "qemu/module.h"
- #include "hw/qdev-properties.h"
--#include "hw/usb.h"
- #include "migration/vmstate.h"
- #include "desc.h"
-+#include "usb-internal.h"
- 
- #include "ccid.h"
- 
-diff --git a/hw/usb/dev-storage.c b/hw/usb/dev-storage.c
-index f5977eb72e..a58c84dffa 100644
---- a/hw/usb/dev-storage.c
-+++ b/hw/usb/dev-storage.c
-@@ -13,7 +13,6 @@
- #include "qemu/module.h"
- #include "qemu/option.h"
- #include "qemu/config-file.h"
--#include "hw/usb.h"
- #include "desc.h"
- #include "hw/qdev-properties.h"
- #include "hw/scsi/scsi.h"
-@@ -22,6 +21,7 @@
- #include "sysemu/block-backend.h"
- #include "qapi/visitor.h"
- #include "qemu/cutils.h"
-+#include "usb-internal.h"
- 
- //#define DEBUG_MSD
- 
-diff --git a/hw/usb/dev-uas.c b/hw/usb/dev-uas.c
-index a3a4d41c07..9dc39f98a2 100644
---- a/hw/usb/dev-uas.c
-+++ b/hw/usb/dev-uas.c
-@@ -17,12 +17,12 @@
- #include "qemu/main-loop.h"
- #include "qemu/module.h"
- 
--#include "hw/usb.h"
- #include "migration/vmstate.h"
- #include "desc.h"
- #include "hw/qdev-properties.h"
- #include "hw/scsi/scsi.h"
- #include "scsi/constants.h"
-+#include "usb-internal.h"
- 
- /* --------------------------------------------------------------------- */
- 
-diff --git a/hw/usb/dev-wacom.c b/hw/usb/dev-wacom.c
-index 8aba44b8bc..7c162b7f85 100644
---- a/hw/usb/dev-wacom.c
-+++ b/hw/usb/dev-wacom.c
-@@ -28,10 +28,10 @@
+ #include "hw/pci/pci.h"
+diff --git a/hw/usb/chipidea.c b/hw/usb/chipidea.c
+index 3dcd22ccba..e81f63295e 100644
+--- a/hw/usb/chipidea.c
++++ b/hw/usb/chipidea.c
+@@ -11,6 +11,7 @@
  
  #include "qemu/osdep.h"
- #include "ui/console.h"
--#include "hw/usb.h"
- #include "migration/vmstate.h"
- #include "qemu/module.h"
- #include "desc.h"
-+#include "usb-internal.h"
- 
- /* Interface requests */
- #define WACOM_GET_REPORT	0x2101
-diff --git a/hw/usb/hcd-dwc2.c b/hw/usb/hcd-dwc2.c
-index 252b60ef65..47ae18d510 100644
---- a/hw/usb/hcd-dwc2.c
-+++ b/hw/usb/hcd-dwc2.c
-@@ -43,6 +43,7 @@
+ #include "hw/usb/hcd-ehci.h"
++#include "hw/usb/usb-hcd.h"
+ #include "hw/usb/chipidea.h"
  #include "qemu/log.h"
- #include "hw/qdev-properties.h"
- #include "dwc2-regs.h"
-+#include "usb-internal.h"
- 
- #define USB_HZ_FS       12000000
- #define USB_HZ_HS       96000000
-diff --git a/hw/usb/hcd-musb.c b/hw/usb/hcd-musb.c
-index b8d8766a4a..bc3efcce65 100644
---- a/hw/usb/hcd-musb.c
-+++ b/hw/usb/hcd-musb.c
-@@ -22,10 +22,10 @@
-  */
- #include "qemu/osdep.h"
- #include "qemu/timer.h"
--#include "hw/usb.h"
- #include "hw/irq.h"
- #include "hw/hw.h"
- #include "hcd-musb.h"
-+#include "usb-internal.h"
- 
- /* Common USB registers */
- #define MUSB_HDRC_FADDR		0x00	/* 8-bit */
-diff --git a/hw/usb/hcd-ohci-pci.c b/hw/usb/hcd-ohci-pci.c
-index a7fb1666af..cb6bc55f59 100644
---- a/hw/usb/hcd-ohci-pci.c
-+++ b/hw/usb/hcd-ohci-pci.c
-@@ -21,7 +21,6 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "qemu/timer.h"
--#include "hw/usb.h"
- #include "migration/vmstate.h"
- #include "hw/pci/pci.h"
- #include "hw/sysbus.h"
-@@ -29,6 +28,7 @@
- #include "hw/qdev-properties.h"
- #include "trace.h"
- #include "hcd-ohci.h"
-+#include "usb-internal.h"
- 
- #define TYPE_PCI_OHCI "pci-ohci"
- #define PCI_OHCI(obj) OBJECT_CHECK(OHCIPCIState, (obj), TYPE_PCI_OHCI)
-diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
-index 1e6e85e86a..f4a85a8774 100644
---- a/hw/usb/hcd-ohci.c
-+++ b/hw/usb/hcd-ohci.c
-@@ -30,7 +30,6 @@
- #include "qapi/error.h"
  #include "qemu/module.h"
- #include "qemu/timer.h"
--#include "hw/usb.h"
- #include "migration/vmstate.h"
- #include "hw/sysbus.h"
- #include "hw/qdev-dma.h"
-diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
-index 37f7beb3fa..1d4dd33b6c 100644
---- a/hw/usb/hcd-uhci.c
-+++ b/hw/usb/hcd-uhci.c
-@@ -27,7 +27,6 @@
-  */
- 
+diff --git a/hw/usb/hcd-ehci-sysbus.c b/hw/usb/hcd-ehci-sysbus.c
+index 3730736540..b7debc1934 100644
+--- a/hw/usb/hcd-ehci-sysbus.c
++++ b/hw/usb/hcd-ehci-sysbus.c
+@@ -18,6 +18,7 @@
  #include "qemu/osdep.h"
--#include "hw/usb.h"
- #include "hw/usb/uhci-regs.h"
- #include "migration/vmstate.h"
- #include "hw/pci/pci.h"
-@@ -39,6 +38,7 @@
- #include "trace.h"
- #include "qemu/main-loop.h"
- #include "qemu/module.h"
-+#include "usb-internal.h"
- 
- #define FRAME_TIMER_FREQ 1000
- 
-diff --git a/hw/usb/hcd-xhci-nec.c b/hw/usb/hcd-xhci-nec.c
-index e6a5a22b6d..24c59fa4b0 100644
---- a/hw/usb/hcd-xhci-nec.c
-+++ b/hw/usb/hcd-xhci-nec.c
-@@ -20,11 +20,10 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "hw/usb.h"
- #include "qemu/module.h"
- #include "hw/pci/pci.h"
  #include "hw/qdev-properties.h"
--
-+#include "usb-internal.h"
- #include "hcd-xhci.h"
- 
- static Property nec_xhci_properties[] = {
-diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
-index b330e36fe6..a3f6b14681 100644
---- a/hw/usb/hcd-xhci.c
-+++ b/hw/usb/hcd-xhci.c
-@@ -23,7 +23,6 @@
- #include "qemu/timer.h"
- #include "qemu/module.h"
- #include "qemu/queue.h"
--#include "hw/usb.h"
+ #include "hw/usb/hcd-ehci.h"
++#include "hw/usb/usb-hcd.h"
  #include "migration/vmstate.h"
- #include "hw/pci/pci.h"
- #include "hw/qdev-properties.h"
-@@ -33,6 +32,7 @@
- #include "qapi/error.h"
- 
- #include "hcd-xhci.h"
-+#include "usb-internal.h"
- 
- //#define DEBUG_XHCI
- //#define DEBUG_DATA
-diff --git a/hw/usb/host-libusb.c b/hw/usb/host-libusb.c
-index ad7ed8fb0c..615655f2f5 100644
---- a/hw/usb/host-libusb.c
-+++ b/hw/usb/host-libusb.c
-@@ -50,7 +50,7 @@
- #include "trace.h"
- 
- #include "hw/qdev-properties.h"
--#include "hw/usb.h"
-+#include "usb-internal.h"
- 
- /* ------------------------------------------------------------------------ */
- 
-diff --git a/hw/usb/libhw.c b/hw/usb/libhw.c
-index 9c33a1640f..a8d7f994df 100644
---- a/hw/usb/libhw.c
-+++ b/hw/usb/libhw.c
-@@ -20,8 +20,8 @@
-  * THE SOFTWARE.
-  */
- #include "qemu/osdep.h"
--#include "hw/usb.h"
- #include "sysemu/dma.h"
-+#include "usb-internal.h"
- 
- int usb_packet_map(USBPacket *p, QEMUSGList *sgl)
- {
-diff --git a/hw/usb/quirks.c b/hw/usb/quirks.c
-index b0d0f87e35..c427d45f1e 100644
---- a/hw/usb/quirks.c
-+++ b/hw/usb/quirks.c
-@@ -14,7 +14,7 @@
- 
- #include "qemu/osdep.h"
- #include "quirks.inc.c"
--#include "hw/usb.h"
-+#include "usb-internal.h"
- #include "usb-quirks.h"
- 
- static bool usb_id_match(const struct usb_device_id *ids,
-diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
-index 4c5925a039..a0c55de7f8 100644
---- a/hw/usb/redirect.c
-+++ b/hw/usb/redirect.c
-@@ -42,9 +42,9 @@
- #include <usbredirfilter.h>
- 
- #include "hw/qdev-properties.h"
--#include "hw/usb.h"
- #include "migration/qemu-file-types.h"
- #include "migration/vmstate.h"
-+#include "usb-internal.h"
- #include "usb-quirks.h"
- 
- /* ERROR is defined below. Remove any previous definition. */
-diff --git a/hw/usb/tusb6010.c b/hw/usb/tusb6010.c
-index 9f9b81b09d..191df38356 100644
---- a/hw/usb/tusb6010.c
-+++ b/hw/usb/tusb6010.c
-@@ -22,12 +22,12 @@
- #include "qemu/osdep.h"
  #include "qemu/module.h"
- #include "qemu/timer.h"
--#include "hw/usb.h"
- #include "hw/arm/omap.h"
- #include "hw/hw.h"
- #include "hw/irq.h"
- #include "hw/sysbus.h"
- #include "hcd-musb.h"
-+#include "usb-internal.h"
- 
- #define TYPE_TUSB6010 "tusb6010"
- #define TUSB(obj) OBJECT_CHECK(TUSBState, (obj), TYPE_TUSB6010)
-diff --git a/hw/usb/xen-usb.c b/hw/usb/xen-usb.c
-index 4d266d7bb4..a6a0b466f9 100644
---- a/hw/usb/xen-usb.c
-+++ b/hw/usb/xen-usb.c
-@@ -27,12 +27,12 @@
- #include "qemu/main-loop.h"
- #include "qemu/option.h"
- #include "hw/sysbus.h"
--#include "hw/usb.h"
- #include "hw/xen/xen-legacy-backend.h"
- #include "monitor/qdev.h"
- #include "qapi/error.h"
- #include "qapi/qmp/qdict.h"
- #include "qapi/qmp/qstring.h"
-+#include "usb-internal.h"
- 
- #include "hw/xen/interface/io/usbif.h"
- 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index dec252f38b..2566566d72 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1642,7 +1642,6 @@ F: hw/usb/*
- F: tests/qtest/usb-*-test.c
- F: docs/usb2.txt
- F: docs/usb-storage.txt
--F: include/hw/usb.h
- F: include/hw/usb/
- F: default-configs/usb.mak
  
 -- 
 2.21.3

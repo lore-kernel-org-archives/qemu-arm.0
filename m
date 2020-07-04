@@ -1,373 +1,183 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3403133lfm;
-        Sat, 4 Jul 2020 08:09:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwFgAS6NHCI738/ING5Rtq8fkkjkomY9FQOJ6qPKr/D1KhtW1Q/8p5Vs8oMFp879BRvvTCq
-X-Received: by 2002:a25:cd83:: with SMTP id d125mr62951879ybf.38.1593875339964;
-        Sat, 04 Jul 2020 08:08:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593875339; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3425142lfm;
+        Sat, 4 Jul 2020 08:43:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy9ImFO830pGi0HddJTKs7jIMo4IKpqXb+1NHbJCjL2QOxkFfS5uZJ/PMgGhMzVQbfry7lb
+X-Received: by 2002:a25:2a81:: with SMTP id q123mr19797182ybq.514.1593877411648;
+        Sat, 04 Jul 2020 08:43:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593877411; cv=none;
         d=google.com; s=arc-20160816;
-        b=jAWRavZhw/o2P70y3reE6bGbsFSreLMqQUFFpOqv6hhhbSydZRgf2HYQ8JCdVGG3Su
-         Y4PdjZO9n1xDHCDe5eM/e0cSAgfbKdFdCqeRrjnTCvSk8huzb9oGLIC5LTj8ZHBDxkb6
-         aopLBgilLXVKX7/A4bZwTpq4ucgrd9hz87cYTbvBLwpfXXETnClf5LmrI5Y+QgKVONq2
-         f16+i9jgSSfhI4htmbTN2FlUpIQ8+Hk82bbAuKfM7Hr8aCWGw6Fg/MvngAf4DFOjr8Dm
-         tjLn7eaSBtUU2nuptKxbH6X6cTKk9ltGBDfIigOeKjHYHQLgP4fTGC0Mskwpz6Yho9N+
-         77aw==
+        b=IknyzKOVCTvwWFQxlA9RN07vnXi067Hty5i1hNTWC0QVx30sHXESDjN+HpRJirsGWi
+         IGzpXiJ+gE0URj7J5DguuUQyAJC+ccbRU0ngxdoID00Rxw5WWLS+I+NHOX8V9A/t3no8
+         MJ8oKpx1jn94RFnEZM8mcNLniHdZqWsa/1hWVSB/+GXAEzEiLu/mWD61eqSaEwYoijH0
+         cfY/vAS52VUDxu1JdUpFPYiWq21lISjFr1W4oClxzY22k4fo1z/FydI/xyiXq5c4jXxj
+         /J5XI+eu68+9abWj7SaYhxFaXvoNxJlBhTRoFnVQTKUR2NNz7S9IgngapBxnWtIfwim9
+         SruA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ELz2xQrwO3as8Wxs/Kn8jW0b/kVDPOkqqjBqSxetIoY=;
-        b=sjKYMpkSB90yPUydxbE+bW2CqSFM/ppmb3Bm2KTIbf3bwvvJxQ1i7nr59Gw6e0vs/o
-         czZ11x7Fw74a1EkrxoVY2pRfIErNhnOupdT307IU62TYjw0hAmQ7a9vaHaobU/wvfHcX
-         R7FW6AeV5icV2ALzJrtnzFU0On4MHAfqCWKz1V411XmuGachXtrAErFgT3G4p1MKl1Sh
-         MD3pQHw4I6vgIoilWY6dz87SfeN7aFMt2KwMdEbsQbEUdb5/C39H0cadDI+1WMedTX9V
-         i97z7YjIUx58Uder/uxk3ozGcc8OwdiyZJ1Eutk9KZbznS7nlssIzGYA/XMINFaUInjB
-         85LQ==
+        bh=2ORhV1sd4nU6DWHF34s88hmmcxuNYxVDeCG6mbf27fE=;
+        b=m7OY7a7wtKqJDKw/LKDdj/ppPxMmqHepxhomgieT2FmGwnIP9YrI7bpztySh7KaR3M
+         Vh1WRO875MSftuRWbO/756cMMTWbUJbmtL1mO43XX57no2Wb6kndYZRrLOKG7qOUVwGv
+         /6MZ9EOYPXAar+oxwyJUEqp6NwkgmzwINcXMjZqMJAI7s2qnAYZzTkD+u4hUSOxy6s1X
+         ANwmjfWEnSo2j/vNDxYvBxk0swwZJDKWS9KuZkIgvUm/Z/XoGtFqmdiTOFuD/IbnOg0v
+         H8N9ScP5z6uWlNAFFhAY3IOCpvJhplQyzef873D4ao8Boie9Cg0crzZlxgHn3LdyW9It
+         FITw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lEaSbT81;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PdxxxNSj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v71si15098813ybe.73.2020.07.04.08.08.59
+        by mx.google.com with ESMTPS id p16si14464225yba.199.2020.07.04.08.43.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 04 Jul 2020 08:08:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 04 Jul 2020 08:43:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lEaSbT81;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:47272 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PdxxxNSj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56086 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrjml-0000gk-AA
-	for alex.bennee@linaro.org; Sat, 04 Jul 2020 11:08:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58020)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jrkK9-00071I-Ux
+	for alex.bennee@linaro.org; Sat, 04 Jul 2020 11:43:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40384)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrjV3-0002ga-Rq; Sat, 04 Jul 2020 10:50:41 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38207)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jrjV1-0003wU-V3; Sat, 04 Jul 2020 10:50:41 -0400
-Received: by mail-wm1-x341.google.com with SMTP id f18so37074846wml.3;
- Sat, 04 Jul 2020 07:50:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=ELz2xQrwO3as8Wxs/Kn8jW0b/kVDPOkqqjBqSxetIoY=;
- b=lEaSbT813203f5Q/sN2DPPZEN+/cTb3ulD0Tsc1K7UiiJmuIHRljgZA5E6zal6HQzd
- SJ1xW7NtSAKTID6CskQvsrLb7LQCq+tEKlaGrkyTbnWVNZv0iqk/rWKNzeml32LvPYt7
- wgIMupaZdxlJI/+kIl0Ql/RW5EIXIoUpP0EIn+bP7T+ouYR5fkNExvJnsPSciKAgerQW
- WrzFOrM8q18cFGilFsVCB9yObwLMcIHNnP0LEH05SNx5uCwKd2r1O7S/Hqo/VTdOad/w
- ZbUVITTYcFraCPIbBmWczqxqNUrrLd09DJk+rTPqpM+lJ6rRdSpbb8Vxn63LhDrjM5CZ
- kfxw==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrkGj-0001UZ-1E
+ for qemu-arm@nongnu.org; Sat, 04 Jul 2020 11:39:57 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:37388
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrkGh-0007Z1-0U
+ for qemu-arm@nongnu.org; Sat, 04 Jul 2020 11:39:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1593877193;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2ORhV1sd4nU6DWHF34s88hmmcxuNYxVDeCG6mbf27fE=;
+ b=PdxxxNSjW+X5GSf+ZRYLkeBTC+K3lufMSY7VUcnM3NA/4o65E1ESbePtGGQFeHZKgYe22A
+ 4WUNB/sdTbzJyR/5ceQzl+gQkBuKLpO4XUFowAzbAiybUYPvXlV4EspgrVRf2uQDj44MJu
+ LP+B8STb+qqqmq0pzwHWciJlbrptI94=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-206-WMW-Tk59Nl60c6zC_97Hiw-1; Sat, 04 Jul 2020 11:39:51 -0400
+X-MC-Unique: WMW-Tk59Nl60c6zC_97Hiw-1
+Received: by mail-wm1-f72.google.com with SMTP id g138so30935663wme.7
+ for <qemu-arm@nongnu.org>; Sat, 04 Jul 2020 08:39:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=ELz2xQrwO3as8Wxs/Kn8jW0b/kVDPOkqqjBqSxetIoY=;
- b=jgvxbrMzF2V27+9Fd7qaxjQRZhCLDKcauk32dymdQ//Dzn/XK6hnPMymf5mTbwqJR3
- vp4EhnhYMRGahCALwGY8gbguRlERkhFg3fSEw6jFhWrC2f1Oe2220ypP9xUz3+g2a70a
- gp3nkm3sBw2/D+KdGd8/EDYHfJJ5lGT1upg7wFidxEBxaFeNlXjobq7f8KrMEvF8gI2L
- UvBEJPK8IhQtmPwhMK+N2J6uFencKqGPWMUNZJSfSTbgYX5l27QaNF30ZSideoifQLqS
- IpWm8NRAqIRED2GmZfKsEWFIntkh46ruXzct/ZMBT3kNbJc5xEXFEFOJDdQ8Tj9XSNzz
- Qw4g==
-X-Gm-Message-State: AOAM532+N9oAvWVIfy0lj/yRK/bWVUikWzghOBxV+Q+BPSPPdZ2glV5g
- I/EPNdG3XWxWkJk9fS2NunXHmTw3ssc=
-X-Received: by 2002:a1c:e355:: with SMTP id a82mr42855621wmh.165.1593874237478; 
- Sat, 04 Jul 2020 07:50:37 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=2ORhV1sd4nU6DWHF34s88hmmcxuNYxVDeCG6mbf27fE=;
+ b=WjN787TsZw0MNczOdv9qLj23aEAOiHEaP2FnT2svAB6gK1VIygryrKQrPzvLEjSWip
+ fefVmtN+U0hOgMoJNRsf4u5qcIABvL/VOsrc7xnzoqCbL6nbhnzlTV2I6Ucgx0JoEG+a
+ NJ2mTf160C6UWhqohbVWP5lXrkx5ExsRTUWURadsJlcRLy/4ZT6AH7J1DqrKoeYTY6hb
+ 63u1z6APJADuF2Sp3xp3fMAh7h3EynBlv4ZUDxJZtf6+GdLzM4dtNsyoGVM5SAa+neH6
+ 122elfqwuS1DsmRFc6Iy9YmmpUas6w+oBJp7SA3w0vTN1+9Rq8VGAQ4cib3QMHcXyeRh
+ gG0g==
+X-Gm-Message-State: AOAM530N7/Oe/Bj2oRT+KM6fgrPPtMJ/PlwZyhWH0AePCPBtK0t/cSw+
+ 2UuBgnKW/RQglVLzzebZwa6P6sBJc8/RdRAW3D7L4WMiM6qN7XZsMCptaTiZXg4udnkobLEW/sZ
+ 9pZLa1W5a3Gyl
+X-Received: by 2002:adf:e74e:: with SMTP id c14mr43648128wrn.143.1593877190109; 
+ Sat, 04 Jul 2020 08:39:50 -0700 (PDT)
+X-Received: by 2002:adf:e74e:: with SMTP id c14mr43648104wrn.143.1593877189914; 
+ Sat, 04 Jul 2020 08:39:49 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id r10sm17135019wrm.17.2020.07.04.07.50.35
+ by smtp.gmail.com with ESMTPSA id f16sm16575426wmf.17.2020.07.04.08.39.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Jul 2020 07:50:36 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org,
-	BALATON Zoltan <balaton@eik.bme.hu>
-Subject: [PATCH 24/26] hw/usb/usb-hcd: Use UHCI type definitions
-Date: Sat,  4 Jul 2020 16:49:41 +0200
-Message-Id: <20200704144943.18292-25-f4bug@amsat.org>
+ Sat, 04 Jul 2020 08:39:49 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [RFC PATCH v2 07/23] hw/display/blizzard: Emit warning when old code
+ is used
+Date: Sat,  4 Jul 2020 17:38:52 +0200
+Message-Id: <20200704153908.12118-8-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200704144943.18292-1-f4bug@amsat.org>
-References: <20200704144943.18292-1-f4bug@amsat.org>
+In-Reply-To: <20200704153908.12118-1-philmd@redhat.com>
+References: <20200704153908.12118-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8;
+	text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=philmd@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/04 11:39:15
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
- xen-devel@lists.xenproject.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Paul Durrant <paul@xen.org>, Magnus Damm <magnus.damm@gmail.com>,
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Anthony Perard <anthony.perard@citrix.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Leif Lindholm <leif@nuviainc.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Magnus Damm <magnus.damm@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-riscv@nongnu.org, Thomas Huth <huth@tuxfamily.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Paul Zimmerman <pauldzim@gmail.com>, qemu-ppc@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fDbD090i+pIq
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GOV5DHdy1c4Z
 
-Various machine/board/soc models create UHCI device instances
-with the generic QDEV API, and don't need to access USB internals.
+This code hasn't been QOM'ified yet. Warn the user.
 
-Simplify header inclusions by moving the QOM type names into a
-simple header, with no need to include other "hw/usb" headers.
-
-Suggested-by: BALATON Zoltan <balaton@eik.bme.hu>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- include/hw/usb/usb-hcd.h |  6 ++++++
- hw/i386/pc_piix.c        |  3 ++-
- hw/i386/pc_q35.c         | 13 +++++++------
- hw/isa/piix4.c           |  3 ++-
- hw/mips/fuloong2e.c      |  5 +++--
- hw/usb/hcd-uhci.c        | 19 ++++++++++---------
- 6 files changed, 30 insertions(+), 19 deletions(-)
+ hw/display/blizzard.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/include/hw/usb/usb-hcd.h b/include/hw/usb/usb-hcd.h
-index 74af3a4533..c9d0a88984 100644
---- a/include/hw/usb/usb-hcd.h
-+++ b/include/hw/usb/usb-hcd.h
-@@ -24,4 +24,10 @@
- #define TYPE_FUSBH200_EHCI          "fusbh200-ehci-usb"
- #define TYPE_CHIPIDEA               "usb-chipidea"
+diff --git a/hw/display/blizzard.c b/hw/display/blizzard.c
+index 105241577d..74557b152b 100644
+--- a/hw/display/blizzard.c
++++ b/hw/display/blizzard.c
+@@ -23,6 +23,7 @@
+ #include "ui/console.h"
+ #include "hw/display/blizzard.h"
+ #include "ui/pixel_ops.h"
++#include "hw/qdev-deprecated.h"
  
-+/* UHCI */
-+#define TYPE_PIIX3_USB_UHCI         "piix3-usb-uhci"
-+#define TYPE_PIIX4_USB_UHCI         "piix4-usb-uhci"
-+#define TYPE_VT82C686B_USB_UHCI     "vt82c686b-usb-uhci"
-+#define TYPE_ICH9_USB_UHCI(n)       "ich9-usb-uhci" #n
+ typedef void (*blizzard_fn_t)(uint8_t *, const uint8_t *, unsigned int);
+ 
+@@ -1010,6 +1011,8 @@ void *s1d13745_init(qemu_irq gpio_int)
+     BlizzardState *s = (BlizzardState *) g_malloc0(sizeof(*s));
+     DisplaySurface *surface;
+ 
++    qdev_warn_deprecated_function_used();
 +
- #endif
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 4d1de7cfab..0024c346c6 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -37,6 +37,7 @@
- #include "hw/pci/pci.h"
- #include "hw/pci/pci_ids.h"
- #include "hw/usb/usb.h"
-+#include "hw/usb/usb-hcd.h"
- #include "net/net.h"
- #include "hw/ide/pci.h"
- #include "hw/irq.h"
-@@ -275,7 +276,7 @@ static void pc_init1(MachineState *machine,
- #endif
+     s->fb = g_malloc(0x180000);
  
-     if (pcmc->pci_enabled && machine_usb(machine)) {
--        pci_create_simple(pci_bus, piix3_devfn + 2, "piix3-usb-uhci");
-+        pci_create_simple(pci_bus, piix3_devfn + 2, TYPE_PIIX3_USB_UHCI);
-     }
- 
-     if (pcmc->pci_enabled && x86_machine_is_acpi_enabled(X86_MACHINE(pcms))) {
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index b985f5bea1..a80527e6ed 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -51,6 +51,7 @@
- #include "hw/ide/pci.h"
- #include "hw/ide/ahci.h"
- #include "hw/usb/usb.h"
-+#include "hw/usb/usb-hcd.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
- #include "sysemu/numa.h"
-@@ -68,15 +69,15 @@ struct ehci_companions {
- };
- 
- static const struct ehci_companions ich9_1d[] = {
--    { .name = "ich9-usb-uhci1", .func = 0, .port = 0 },
--    { .name = "ich9-usb-uhci2", .func = 1, .port = 2 },
--    { .name = "ich9-usb-uhci3", .func = 2, .port = 4 },
-+    { .name = TYPE_ICH9_USB_UHCI(1), .func = 0, .port = 0 },
-+    { .name = TYPE_ICH9_USB_UHCI(2), .func = 1, .port = 2 },
-+    { .name = TYPE_ICH9_USB_UHCI(3), .func = 2, .port = 4 },
- };
- 
- static const struct ehci_companions ich9_1a[] = {
--    { .name = "ich9-usb-uhci4", .func = 0, .port = 0 },
--    { .name = "ich9-usb-uhci5", .func = 1, .port = 2 },
--    { .name = "ich9-usb-uhci6", .func = 2, .port = 4 },
-+    { .name = TYPE_ICH9_USB_UHCI(4), .func = 0, .port = 0 },
-+    { .name = TYPE_ICH9_USB_UHCI(5), .func = 1, .port = 2 },
-+    { .name = TYPE_ICH9_USB_UHCI(6), .func = 2, .port = 4 },
- };
- 
- static int ehci_create_ich9_with_companions(PCIBus *bus, int slot)
-diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
-index f634bcb2d1..e11e5fae21 100644
---- a/hw/isa/piix4.c
-+++ b/hw/isa/piix4.c
-@@ -29,6 +29,7 @@
- #include "hw/southbridge/piix.h"
- #include "hw/pci/pci.h"
- #include "hw/isa/isa.h"
-+#include "hw/usb/usb-hcd.h"
- #include "hw/sysbus.h"
- #include "hw/intc/i8259.h"
- #include "hw/dma/i8257.h"
-@@ -255,7 +256,7 @@ DeviceState *piix4_create(PCIBus *pci_bus, ISABus **isa_bus, I2CBus **smbus)
-     pci = pci_create_simple(pci_bus, devfn + 1, "piix4-ide");
-     pci_ide_create_devs(pci);
- 
--    pci_create_simple(pci_bus, devfn + 2, "piix4-usb-uhci");
-+    pci_create_simple(pci_bus, devfn + 2, TYPE_PIIX4_USB_UHCI);
-     if (smbus) {
-         *smbus = piix4_pm_init(pci_bus, devfn + 3, 0x1100,
-                                isa_get_irq(NULL, 9), NULL, 0, NULL);
-diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
-index 8ca31e5162..b6d33dd2cd 100644
---- a/hw/mips/fuloong2e.c
-+++ b/hw/mips/fuloong2e.c
-@@ -33,6 +33,7 @@
- #include "hw/mips/mips.h"
- #include "hw/mips/cpudevs.h"
- #include "hw/pci/pci.h"
-+#include "hw/usb/usb-hcd.h"
- #include "qemu/log.h"
- #include "hw/loader.h"
- #include "hw/ide/pci.h"
-@@ -258,8 +259,8 @@ static void vt82c686b_southbridge_init(PCIBus *pci_bus, int slot, qemu_irq intc,
-     dev = pci_create_simple(pci_bus, PCI_DEVFN(slot, 1), "via-ide");
-     pci_ide_create_devs(dev);
- 
--    pci_create_simple(pci_bus, PCI_DEVFN(slot, 2), "vt82c686b-usb-uhci");
--    pci_create_simple(pci_bus, PCI_DEVFN(slot, 3), "vt82c686b-usb-uhci");
-+    pci_create_simple(pci_bus, PCI_DEVFN(slot, 2), TYPE_VT82C686B_USB_UHCI);
-+    pci_create_simple(pci_bus, PCI_DEVFN(slot, 3), TYPE_VT82C686B_USB_UHCI);
- 
-     *i2c_bus = vt82c686b_pm_init(pci_bus, PCI_DEVFN(slot, 4), 0xeee1, NULL);
- 
-diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
-index 1d4dd33b6c..da078dc3fa 100644
---- a/hw/usb/hcd-uhci.c
-+++ b/hw/usb/hcd-uhci.c
-@@ -39,6 +39,7 @@
- #include "qemu/main-loop.h"
- #include "qemu/module.h"
- #include "usb-internal.h"
-+#include "hw/usb/usb-hcd.h"
- 
- #define FRAME_TIMER_FREQ 1000
- 
-@@ -1358,21 +1359,21 @@ static void uhci_data_class_init(ObjectClass *klass, void *data)
- 
- static UHCIInfo uhci_info[] = {
-     {
--        .name       = "piix3-usb-uhci",
-+        .name      = TYPE_PIIX3_USB_UHCI,
-         .vendor_id = PCI_VENDOR_ID_INTEL,
-         .device_id = PCI_DEVICE_ID_INTEL_82371SB_2,
-         .revision  = 0x01,
-         .irq_pin   = 3,
-         .unplug    = true,
-     },{
--        .name      = "piix4-usb-uhci",
-+        .name      = TYPE_PIIX4_USB_UHCI,
-         .vendor_id = PCI_VENDOR_ID_INTEL,
-         .device_id = PCI_DEVICE_ID_INTEL_82371AB_2,
-         .revision  = 0x01,
-         .irq_pin   = 3,
-         .unplug    = true,
-     },{
--        .name      = "vt82c686b-usb-uhci",
-+        .name      = TYPE_VT82C686B_USB_UHCI,
-         .vendor_id = PCI_VENDOR_ID_VIA,
-         .device_id = PCI_DEVICE_ID_VIA_UHCI,
-         .revision  = 0x01,
-@@ -1380,42 +1381,42 @@ static UHCIInfo uhci_info[] = {
-         .realize   = usb_uhci_vt82c686b_realize,
-         .unplug    = true,
-     },{
--        .name      = "ich9-usb-uhci1", /* 00:1d.0 */
-+        .name      = TYPE_ICH9_USB_UHCI(1), /* 00:1d.0 */
-         .vendor_id = PCI_VENDOR_ID_INTEL,
-         .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI1,
-         .revision  = 0x03,
-         .irq_pin   = 0,
-         .unplug    = false,
-     },{
--        .name      = "ich9-usb-uhci2", /* 00:1d.1 */
-+        .name      = TYPE_ICH9_USB_UHCI(2), /* 00:1d.1 */
-         .vendor_id = PCI_VENDOR_ID_INTEL,
-         .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI2,
-         .revision  = 0x03,
-         .irq_pin   = 1,
-         .unplug    = false,
-     },{
--        .name      = "ich9-usb-uhci3", /* 00:1d.2 */
-+        .name      = TYPE_ICH9_USB_UHCI(3), /* 00:1d.2 */
-         .vendor_id = PCI_VENDOR_ID_INTEL,
-         .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI3,
-         .revision  = 0x03,
-         .irq_pin   = 2,
-         .unplug    = false,
-     },{
--        .name      = "ich9-usb-uhci4", /* 00:1a.0 */
-+        .name      = TYPE_ICH9_USB_UHCI(4), /* 00:1a.0 */
-         .vendor_id = PCI_VENDOR_ID_INTEL,
-         .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI4,
-         .revision  = 0x03,
-         .irq_pin   = 0,
-         .unplug    = false,
-     },{
--        .name      = "ich9-usb-uhci5", /* 00:1a.1 */
-+        .name      = TYPE_ICH9_USB_UHCI(5), /* 00:1a.1 */
-         .vendor_id = PCI_VENDOR_ID_INTEL,
-         .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI5,
-         .revision  = 0x03,
-         .irq_pin   = 1,
-         .unplug    = false,
-     },{
--        .name      = "ich9-usb-uhci6", /* 00:1a.2 */
-+        .name      = TYPE_ICH9_USB_UHCI(6), /* 00:1a.2 */
-         .vendor_id = PCI_VENDOR_ID_INTEL,
-         .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI6,
-         .revision  = 0x03,
+     s->con = graphic_console_init(NULL, 0, &blizzard_ops, s);
 -- 
 2.21.3
 

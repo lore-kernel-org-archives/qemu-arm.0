@@ -1,335 +1,238 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3434050lfm;
-        Sat, 4 Jul 2020 08:57:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxko7QTP2lNEYh1jRl/RyKUZ5TGAQWsuYtZrdH/UCrg5s+Sno61u23OxMGynBlluqUR+1ZE
-X-Received: by 2002:a25:234a:: with SMTP id j71mr10834390ybj.345.1593878274802;
-        Sat, 04 Jul 2020 08:57:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593878274; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3453188lfm;
+        Sat, 4 Jul 2020 09:25:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzz/MZO57zDuzgodfqnB51jcgqTqP2olGtNhzYawgWZ+hwPnl4fabUibaDZLng/1kpaMfGP
+X-Received: by 2002:a05:6902:4b4:: with SMTP id r20mr65328020ybs.389.1593879955138;
+        Sat, 04 Jul 2020 09:25:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593879955; cv=none;
         d=google.com; s=arc-20160816;
-        b=oMQpIK/Dajtv36uKE0aHuGCgy5Vki4TppTUFQoDPl8SeVc5H2Jex+7Rh2IQK31mhpP
-         h8Lih9SoHhay5xJGb5titT2aFMWLGN9s9/Jmw9uZuhWmU/N2yOPCVuEJcG0/ezsCU12p
-         9TT3tftMhST7FXylLAnsRCdu9ZDhxuL8Wm31nvrxpggSg0xbcriFFmdsMRtDvUM+0dM2
-         MQOQIAvXIMsewh9qkU1BVLTLGKCve+8goHPvV9xtoEY24BPZPIiLJztaAjC6imS7aMra
-         ssJzWzIsOlpUmUMF2CjM+G2uDmIm1PBHpPRX8Xj3T/vrOpegNR3qyK3mSevLmCu9vEpl
-         SvNw==
+        b=UcAAeEpKDCuS2+gSvReHToLVyjzSdcUufuq7f0KlOuUEZfZ03JnUP2rIi/V5Se2Ben
+         UyQhoHSJ7UqKX/O8ez7AxvVibUKVgrT/U9DyvWneiPIGEb2/NPRy2SZ+7AJf/EmVDaDN
+         h4CeOLBCkGXS8ypnEpOcY91ak6/AqlZ0B75CcObxIIWzSNfBUcQQJv+8E2T/5NldrK1r
+         fThgqCltR6cPUI+SP1Ctl7Lkz9jH5kbD8IyvD7i3O5uz7Mx8RzHY3YhCZR7uUo8CHKwD
+         FWWRhuUWLysSe+lNRQMZ0c8Ux+lDq+A+G48JyQSmzG7e82bx4UrjwohUyhYCBS/52HXU
+         DZ2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=nCf98bap8NX9iIcnvvB/aw+3vfPbNUjO6+kAZbeXlU0=;
-        b=F/ES1mlYj6FrgcnM/FX86PHtGwLBUlkSMwn/u09ADIqLWZGS+g3zZYNwtZ+v90OjtX
-         k+Wl2WBuGvaLsz7/7Y17eTLRUDePQ3/EosygXA9vpMsxUHEJhx13QrveMiLquMwhN68j
-         IAJ/fTZzo6dYD4/JsLep2y9jJIZfb3GsyBSKIitgvDta45qZ2vJonG52Mk+JNoxDmXyn
-         0KYq7/D/+VHu/Lr1Lffz9QjZcOLtBdQIWi+2884ZDrY++mDqNTWy96AjkhNzCdcAkPfH
-         iFA5D1fc9NL3znrsJQ0pcdPZJ28wt0vP35XL3sZI6PgnjArAizwhstu5RTLYjrSnSWYE
-         YGJQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=siYZvVhE9VeBBvLQIX/nnAed+rLIHn4bVXcuyvDsWaw=;
+        b=zIru0ZQ2nmTjnJEpjjv9f/RSHMYmc2zWkMmS0CHFs541stHeJArSVhJ0D7xXLJ6KdX
+         SCSXYMoQROURq44V+zGwrpPDwT4EISwAzYqNlcjyKhyqR7cDu2MCyMaRAADzP9jGQoyC
+         2bwFoj1zHG7gAiBgw3Npo+wAIzsOCUrM3yUq8YxRoW97Lnlj7RrvCGMWwkrjo15/8cQJ
+         i0woOdjgfEkhHeWFq1sDuf9bdF4fC2JLiNZdRzy/JkQlqxjKt8a3dTVYrZxgzQ7lRFfl
+         fhUO/+MZZB63ieASAuF5kx7PWD2rqlIJS782ehmfjjdYQ4YLxxDjnMPRjfeZTPh6NqzU
+         43xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=B4jxX4cx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pjF0PMXk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p6si9918092ybm.376.2020.07.04.08.57.54
+        by mx.google.com with ESMTPS id l5si14392338ybo.454.2020.07.04.09.25.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 04 Jul 2020 08:57:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 04 Jul 2020 09:25:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=B4jxX4cx;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50076 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pjF0PMXk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39570 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrkY6-0006h2-5U
-	for alex.bennee@linaro.org; Sat, 04 Jul 2020 11:57:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41178)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jrkzC-0004az-Ev
+	for alex.bennee@linaro.org; Sat, 04 Jul 2020 12:25:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49978)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrkHl-00030i-7b
- for qemu-devel@nongnu.org; Sat, 04 Jul 2020 11:41:01 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59616
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrkHi-0008Mc-13
- for qemu-devel@nongnu.org; Sat, 04 Jul 2020 11:41:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593877257;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nCf98bap8NX9iIcnvvB/aw+3vfPbNUjO6+kAZbeXlU0=;
- b=B4jxX4cxpTV8McV+q2CCieOT4GXuZIeyIC0tK8nFmHOlwDbeUVsxIH1qxUXv8lBHCstWx4
- Nun8o53aVG8bGdMo1S27FL6BDfRUNOexQ167PNlIsZS/uwbBTtESlcT5f4dev/KTdhV4gM
- DBEHkDSsnGf58ivj5k0uU9TiORPECe8=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-381-UyxLMv0tNjy0kdoy4Tm2QQ-1; Sat, 04 Jul 2020 11:40:56 -0400
-X-MC-Unique: UyxLMv0tNjy0kdoy4Tm2QQ-1
-Received: by mail-wm1-f71.google.com with SMTP id v24so39801439wmh.3
- for <qemu-devel@nongnu.org>; Sat, 04 Jul 2020 08:40:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pauldzim@gmail.com>)
+ id 1jrkys-0004Y2-V6; Sat, 04 Jul 2020 12:25:34 -0400
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:35354)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pauldzim@gmail.com>)
+ id 1jrkyr-0002DO-62; Sat, 04 Jul 2020 12:25:34 -0400
+Received: by mail-io1-xd43.google.com with SMTP id v8so35175238iox.2;
+ Sat, 04 Jul 2020 09:25:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=siYZvVhE9VeBBvLQIX/nnAed+rLIHn4bVXcuyvDsWaw=;
+ b=pjF0PMXkE9pbfyA44NA0kCnTofn8BML3M2OwLhH+Sqsxxe1sGclQdp8aRABF6oUm7p
+ jl3jluIF8Iod+vAQYD9a9T9hizpvwz6WnAjoWUqHG6YxzqwkxwFtal6rAmecurpCeu63
+ HodGkRhRHtWuT2Pe9TYLrfl5xbRYOk9LLYdPHTMPdK0DhgKFqlWb+OJKfZYFsG/Mgude
+ iMrzKgB1Y747nHlXa24vTJmzsISKSK+ZiOvur0XiEJN8zeFh9UgKrjT9VXbPu7hZm6iB
+ 4IkItqkdEv9WRqjf/co0WnxmfLXBQ+uTU17T3TFxcuXcGW+OlroDBON4fZDJU7C+YvxT
+ s7rA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=nCf98bap8NX9iIcnvvB/aw+3vfPbNUjO6+kAZbeXlU0=;
- b=jmYPNmH07OntXolaBSjaYFPhsxu4uug0D3X1hKsx4ggUbrCVakRZHcHCsoIA5xkAVI
- ucfy7RIOJAfqkna40efjWmigjOi7REM1/FlBbJYbYiu9ziW16UkgqhDu+XWn6Gv3SJxM
- dWNklxvj9jdUgDi2y4Rz1HoQAk/sUUvFiyIwO7PC2gKx9G50lTQucN4i0bKNbpf61ZsI
- gtewTzrxiiKusT2nI8BTFaDgaQL9Wx4bQxsxuDZUlguC8gexGGzqmbQOTri/+NQ2ZsOh
- TH66Qj8+j8TY0SJ9JuJBPIrADXNnx3MBfdJArDquLGr6QfsLPZUZQt34gEKhEPc0+BoJ
- ngmQ==
-X-Gm-Message-State: AOAM531qjcFBKjPtEvAw1H5HX0FbI56tgjgi3Nijv+EDhNKkA1xI5cqD
- beKjeBXzNMAgo9oxaVCMxNYWtxz8juZy/GF+05QF+mt+4SyxlmF6IrT3EpvLNDHqcF07w5Z/ZWG
- Hrrm8hjZdkXLJLwc=
-X-Received: by 2002:adf:ee4d:: with SMTP id w13mr12447101wro.245.1593877254706; 
- Sat, 04 Jul 2020 08:40:54 -0700 (PDT)
-X-Received: by 2002:adf:ee4d:: with SMTP id w13mr12447059wro.245.1593877254354; 
- Sat, 04 Jul 2020 08:40:54 -0700 (PDT)
-Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
- [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id u16sm16549090wmn.11.2020.07.04.08.40.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Jul 2020 08:40:53 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [RFC PATCH v2 19/23] hw/ppc/ppc4xx: Emit warning when old code is used
-Date: Sat,  4 Jul 2020 17:39:04 +0200
-Message-Id: <20200704153908.12118-20-philmd@redhat.com>
-X-Mailer: git-send-email 2.21.3
-In-Reply-To: <20200704153908.12118-1-philmd@redhat.com>
-References: <20200704153908.12118-1-philmd@redhat.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=siYZvVhE9VeBBvLQIX/nnAed+rLIHn4bVXcuyvDsWaw=;
+ b=Ur1TxrUvsEojZNOW1oH3y523YTzrUAodO1m2GD8Yk2/NVggs7/CEtFMzqMnCsEzl28
+ xXtbf0OddWquERw7B03dj0cfY9+CQQ1+hxtJi9neg2RYijQAeuiezQr48KkJYxBpg1Jt
+ PsWdlrcjZ8k3GQkftK5IEvxdx0sYVFkL+sCQolLWYj4Mj/gAaxFeou9JFnogszvD8HCY
+ eoxXqdBQAKFbj2oluxLngQ/WjULyfJK7YqEsWRLoXPVp2ASBCNta3VZ7stNsddQ/jXAg
+ snnkzgh9aIsDdh9nZ3nqo9MXO8gc9cQNDw5zA+9gke+IQnSEx5G2rE+PLXoD1QiNb44U
+ 4rsA==
+X-Gm-Message-State: AOAM531gkq379GngljReOhM3QtxZXrqfCCiyfjwmBGVOuRYlt8HqUxO1
+ JxnI5ppPm0Xp0hRcMk2+4nIvXuiJmTHMzQqnA90=
+X-Received: by 2002:a6b:8e56:: with SMTP id q83mr17709001iod.61.1593879930979; 
+ Sat, 04 Jul 2020 09:25:30 -0700 (PDT)
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/04 11:39:14
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+References: <20200704144943.18292-1-f4bug@amsat.org>
+ <20200704144943.18292-27-f4bug@amsat.org>
+In-Reply-To: <20200704144943.18292-27-f4bug@amsat.org>
+From: Paul Zimmerman <pauldzim@gmail.com>
+Date: Sat, 4 Jul 2020 09:25:20 -0700
+Message-ID: <CADBGO7832C0Rw+RbZBRuDAGGtwhk9RV+bHVBHe+EXxLupbqfig@mail.gmail.com>
+Subject: Re: [PATCH 26/26] MAINTAINERS: Cover dwc-hsotg (dwc2) USB host
+ controller emulation
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="00000000000019cac205a9a017dd"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d43;
+ envelope-from=pauldzim@gmail.com; helo=mail-io1-xd43.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Gerd Hoffmann <kraxel@redhat.com>, Huacai Chen <chenhc@lemote.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org,
  Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Richard Henderson <rth@twiddle.net>, Paul Durrant <paul@xen.org>,
+ Magnus Damm <magnus.damm@gmail.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Leif Lindholm <leif@nuviainc.com>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Stafford Horne <shorne@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-riscv@nongnu.org, Thomas Huth <huth@tuxfamily.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Y4r/+eWNfggP
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gkSE59LZI1g8
 
-This code hasn't been QOM'ified yet. Warn the user.
+--00000000000019cac205a9a017dd
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- hw/ppc/ppc405_boards.c |  5 +++++
- hw/ppc/ppc405_uc.c     | 21 +++++++++++++++++++++
- hw/ppc/ppc4xx_devs.c   |  7 +++++++
- 3 files changed, 33 insertions(+)
+On Sat, Jul 4, 2020 at 7:50 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+>
+wrote:
 
-diff --git a/hw/ppc/ppc405_boards.c b/hw/ppc/ppc405_boards.c
-index 6198ec1035..eb1216b5f0 100644
---- a/hw/ppc/ppc405_boards.c
-+++ b/hw/ppc/ppc405_boards.c
-@@ -41,6 +41,7 @@
- #include "hw/loader.h"
- #include "exec/address-spaces.h"
- #include "qemu/cutils.h"
-+#include "hw/qdev-deprecated.h"
- 
- #define BIOS_FILENAME "ppc405_rom.bin"
- #define BIOS_SIZE (2 * MiB)
-@@ -129,6 +130,8 @@ static void ref405ep_fpga_init(MemoryRegion *sysmem, uint32_t base)
-     ref405ep_fpga_t *fpga;
-     MemoryRegion *fpga_memory = g_new(MemoryRegion, 1);
- 
-+    qdev_warn_deprecated_function_used();
-+
-     fpga = g_malloc0(sizeof(ref405ep_fpga_t));
-     memory_region_init_io(fpga_memory, NULL, &ref405ep_fpga_ops, fpga,
-                           "fpga", 0x00000100);
-@@ -408,6 +411,8 @@ static void taihu_cpld_init(MemoryRegion *sysmem, uint32_t base)
-     taihu_cpld_t *cpld;
-     MemoryRegion *cpld_memory = g_new(MemoryRegion, 1);
- 
-+    qdev_warn_deprecated_function_used();
-+
-     cpld = g_malloc0(sizeof(taihu_cpld_t));
-     memory_region_init_io(cpld_memory, NULL, &taihu_cpld_ops, cpld, "cpld", 0x100);
-     memory_region_add_subregion(sysmem, base, cpld_memory);
-diff --git a/hw/ppc/ppc405_uc.c b/hw/ppc/ppc405_uc.c
-index 381720aced..160604c62e 100644
---- a/hw/ppc/ppc405_uc.c
-+++ b/hw/ppc/ppc405_uc.c
-@@ -36,6 +36,7 @@
- #include "sysemu/sysemu.h"
- #include "qemu/log.h"
- #include "exec/address-spaces.h"
-+#include "hw/qdev-deprecated.h"
- 
- //#define DEBUG_OPBA
- //#define DEBUG_SDRAM
-@@ -182,6 +183,8 @@ void ppc4xx_plb_init(CPUPPCState *env)
- {
-     ppc4xx_plb_t *plb;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     plb = g_malloc0(sizeof(ppc4xx_plb_t));
-     ppc_dcr_register(env, PLB3A0_ACR, plb, &dcr_read_plb, &dcr_write_plb);
-     ppc_dcr_register(env, PLB4A0_ACR, plb, &dcr_read_plb, &dcr_write_plb);
-@@ -267,6 +270,8 @@ static void ppc4xx_pob_init(CPUPPCState *env)
- {
-     ppc4xx_pob_t *pob;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     pob = g_malloc0(sizeof(ppc4xx_pob_t));
-     ppc_dcr_register(env, POB0_BEAR, pob, &dcr_read_pob, &dcr_write_pob);
-     ppc_dcr_register(env, POB0_BESR0, pob, &dcr_read_pob, &dcr_write_pob);
-@@ -351,6 +356,8 @@ static void ppc4xx_opba_init(hwaddr base)
- {
-     ppc4xx_opba_t *opba;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     opba = g_malloc0(sizeof(ppc4xx_opba_t));
- #ifdef DEBUG_OPBA
-     printf("%s: offset " TARGET_FMT_plx "\n", __func__, base);
-@@ -549,6 +556,8 @@ void ppc405_ebc_init(CPUPPCState *env)
- {
-     ppc4xx_ebc_t *ebc;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     ebc = g_malloc0(sizeof(ppc4xx_ebc_t));
-     qemu_register_reset(&ebc_reset, ebc);
-     ppc_dcr_register(env, EBC0_CFGADDR,
-@@ -632,6 +641,8 @@ static void ppc405_dma_init(CPUPPCState *env, qemu_irq irqs[4])
- {
-     ppc405_dma_t *dma;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     dma = g_malloc0(sizeof(ppc405_dma_t));
-     memcpy(dma->irqs, irqs, 4 * sizeof(qemu_irq));
-     qemu_register_reset(&ppc405_dma_reset, dma);
-@@ -735,6 +746,8 @@ static void ppc405_gpio_init(hwaddr base)
- {
-     ppc405_gpio_t *gpio;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     gpio = g_malloc0(sizeof(ppc405_gpio_t));
- #ifdef DEBUG_GPIO
-     printf("%s: offset " TARGET_FMT_plx "\n", __func__, base);
-@@ -897,6 +910,8 @@ static void ppc405_ocm_init(CPUPPCState *env)
- {
-     ppc405_ocm_t *ocm;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     ocm = g_malloc0(sizeof(ppc405_ocm_t));
-     /* XXX: Size is 4096 or 0x04000000 */
-     memory_region_init_ram(&ocm->isarc_ram, NULL, "ppc405.ocm", 4 * KiB,
-@@ -1142,6 +1157,8 @@ static void ppc4xx_gpt_init(hwaddr base, qemu_irq irqs[5])
-     ppc4xx_gpt_t *gpt;
-     int i;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     gpt = g_malloc0(sizeof(ppc4xx_gpt_t));
-     for (i = 0; i < 5; i++) {
-         gpt->irqs[i] = irqs[i];
-@@ -1410,6 +1427,8 @@ static void ppc405cr_cpc_init (CPUPPCState *env, clk_setup_t clk_setup[7],
- {
-     ppc405cr_cpc_t *cpc;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     cpc = g_malloc0(sizeof(ppc405cr_cpc_t));
-     memcpy(cpc->clk_setup, clk_setup,
-            PPC405CR_CLK_NB * sizeof(clk_setup_t));
-@@ -1755,6 +1774,8 @@ static void ppc405ep_cpc_init (CPUPPCState *env, clk_setup_t clk_setup[8],
- {
-     ppc405ep_cpc_t *cpc;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     cpc = g_malloc0(sizeof(ppc405ep_cpc_t));
-     memcpy(cpc->clk_setup, clk_setup,
-            PPC405EP_CLK_NB * sizeof(clk_setup_t));
-diff --git a/hw/ppc/ppc4xx_devs.c b/hw/ppc/ppc4xx_devs.c
-index f1651e04d9..b09d7ab5c6 100644
---- a/hw/ppc/ppc4xx_devs.c
-+++ b/hw/ppc/ppc4xx_devs.c
-@@ -33,6 +33,7 @@
- #include "qemu/log.h"
- #include "exec/address-spaces.h"
- #include "qemu/error-report.h"
-+#include "hw/qdev-deprecated.h"
- 
- /*#define DEBUG_UIC*/
- 
-@@ -303,6 +304,8 @@ qemu_irq *ppcuic_init (CPUPPCState *env, qemu_irq *irqs,
-     ppcuic_t *uic;
-     int i;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     uic = g_malloc0(sizeof(ppcuic_t));
-     uic->dcr_base = dcr_base;
-     uic->irqs = irqs;
-@@ -647,6 +650,8 @@ void ppc4xx_sdram_init (CPUPPCState *env, qemu_irq irq, int nbanks,
- {
-     ppc4xx_sdram_t *sdram;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     sdram = g_malloc0(sizeof(ppc4xx_sdram_t));
-     sdram->irq = irq;
-     sdram->nbanks = nbanks;
-@@ -908,6 +913,8 @@ void ppc4xx_mal_init(CPUPPCState *env, uint8_t txcnum, uint8_t rxcnum,
-     ppc4xx_mal_t *mal;
-     int i;
- 
-+    qdev_warn_deprecated_function_used();
-+
-     assert(txcnum <= 32 && rxcnum <= 32);
-     mal = g_malloc0(sizeof(*mal));
-     mal->txcnum = txcnum;
--- 
-2.21.3
+> Add an section for the dwc2 host controller emulation
+> introduced in commit 153ef1662c.
+>
+> Cc: Paul Zimmerman <pauldzim@gmail.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  MAINTAINERS | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 2566566d72..e3f895bc6e 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1651,6 +1651,12 @@ M: Samuel Thibault <samuel.thibault@ens-lyon.org>
+>  S: Maintained
+>  F: hw/usb/dev-serial.c
+>
+> +USB dwc-hsotg (dwc2)
+> +M: Gerd Hoffmann <kraxel@redhat.com>
+> +R: Paul Zimmerman <pauldzim@gmail.com>
+> +S: Maintained
+> +F: hw/usb/*dwc2*
+> +
+>  VFIO
+>  M: Alex Williamson <alex.williamson@redhat.com>
+>  S: Supported
 
+
+Acked-by: Paul Zimmerman <pauldzim@gmail.com>
+
+
+> --
+> 2.21.3
+>
+>
+
+--00000000000019cac205a9a017dd
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div><br></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">On Sat, Jul 4, 2020 at 7:50 AM Philippe Mathieu-Daud=C3=A9 =
+&lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt; wrote:<br></=
+div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-lef=
+t:1px #ccc solid;padding-left:1ex">Add an section for the dwc2 host control=
+ler emulation<br>
+introduced in commit 153ef1662c.<br>
+<br>
+Cc: Paul Zimmerman &lt;<a href=3D"mailto:pauldzim@gmail.com" target=3D"_bla=
+nk">pauldzim@gmail.com</a>&gt;<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
+t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
+---<br>
+=C2=A0MAINTAINERS | 6 ++++++<br>
+=C2=A01 file changed, 6 insertions(+)<br>
+<br>
+diff --git a/MAINTAINERS b/MAINTAINERS<br>
+index 2566566d72..e3f895bc6e 100644<br>
+--- a/MAINTAINERS<br>
++++ b/MAINTAINERS<br>
+@@ -1651,6 +1651,12 @@ M: Samuel Thibault &lt;<a href=3D"mailto:samuel.thib=
+ault@ens-lyon.org" target=3D"_blank">samuel.thibault@ens-lyon.org</a>&gt;<b=
+r>
+=C2=A0S: Maintained<br>
+=C2=A0F: hw/usb/dev-serial.c<br>
+<br>
++USB dwc-hsotg (dwc2)<br>
++M: Gerd Hoffmann &lt;<a href=3D"mailto:kraxel@redhat.com" target=3D"_blank=
+">kraxel@redhat.com</a>&gt;<br>
++R: Paul Zimmerman &lt;<a href=3D"mailto:pauldzim@gmail.com" target=3D"_bla=
+nk">pauldzim@gmail.com</a>&gt;<br>
++S: Maintained<br>
++F: hw/usb/*dwc2*<br>
++<br>
+=C2=A0VFIO<br>
+=C2=A0M: Alex Williamson &lt;<a href=3D"mailto:alex.williamson@redhat.com" =
+target=3D"_blank">alex.williamson@redhat.com</a>&gt;<br>
+=C2=A0S: Supported</blockquote><div dir=3D"auto"><br></div><div dir=3D"auto=
+">Acked-by: Paul Zimmerman &lt;<a href=3D"mailto:pauldzim@gmail.com">pauldz=
+im@gmail.com</a>&gt;</div><div dir=3D"auto"><br></div><blockquote class=3D"=
+gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-=
+left:1ex"><br>
+-- <br>
+2.21.3<br>
+<br>
+</blockquote></div></div>
+
+--00000000000019cac205a9a017dd--

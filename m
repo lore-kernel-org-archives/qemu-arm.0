@@ -1,102 +1,102 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3427329lfm;
-        Sat, 4 Jul 2020 08:46:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxTGevorTS3b1M26/rsMwXneFa19C0ihYDbY3B03L4iHhyfH6eUQOho81rNI813qeMURXOP
-X-Received: by 2002:a25:b94f:: with SMTP id s15mr62776906ybm.326.1593877617242;
-        Sat, 04 Jul 2020 08:46:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593877617; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3427606lfm;
+        Sat, 4 Jul 2020 08:47:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxfemXM5oO0ZkYUTSVGl59Htp8HWAnwRhH/Uo7kTwZOHl3PEZ4rhpCZ0MrpNNmL4+/ZVJkm
+X-Received: by 2002:a25:570b:: with SMTP id l11mr67777531ybb.246.1593877637487;
+        Sat, 04 Jul 2020 08:47:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593877637; cv=none;
         d=google.com; s=arc-20160816;
-        b=E80sl0KeDJFqJDQmgvQ111q8pq2P+DC5B9L012OgZca7X73q9P7VOBBOX1sYhCpAiY
-         JNe9cB23UACVVGKWD2mTYotYs2myhzb6w/iedK4sTTeS12f9AXhRtk+cFpyDZgrPhIsQ
-         2AhpU+aAfyeT0a5xkgKY6tXWZNav/aSuWD1YXvS++3nKDpGB7ZCGL0+7gmM/WoV2fiYG
-         tdS2UtTZ6b8Lju6/40wa94f+8m+w4TkwSZg23Ft2fk95kSJG0ioPHDpQ8qG+fLV2m8vo
-         jXzA5rs6VBNxEPTbS7bWeOAa2VazwnpcDYF1/Ar0mizncT8yIutlLVrvSTYBlCVsoQ6Z
-         rCWQ==
+        b=yqWA+uOlU6dTLZaqR1QjF+eYhEYyTSKZ/MkZ0yRGJbsIVzOjmFdJrbldgdB1lHuQE8
+         T/fb2lhVynGyhciw3wFeHay90qxSoiSkoudq77AKVX0Jpm3wTHUl1p8mhK3UQIUR/Mpb
+         xXAr0lO4BNdhFWO7IY8RX6v1lu0vkHJDNXbBefQ6VyV1C2A17Pmpt9rG4nIJxxO8XLga
+         ElwNNn0kinGVzRchNrgUX3vdMfGjbc6Fm94ysIqQwPXFYvGBfb/me8rFGX0Du36aOFCB
+         03TVSRr8so3LOrOGJJflSL121YupvweJBoUhl924vSjVbgVaN714WM6xLuOK42PGYUmX
+         30jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ApDhe32brtQ+Y5RdcPhQgtj2PJElzW6fZw0WZlKaDdE=;
-        b=Ey7IevjboMqaucyYPW8kFVbQE8IFnteklkF1Eav4nzAk19KaVWFzVnvEND0ncplUaS
-         A1xHhfias6o1NgqymskXVH+nKCA3IzXbBGA3+Ho/Y4CW5yzenXyFBp7pEuLNcDqaWTIG
-         jS2dTwiEbi0DDryJ3A5n+Wt3Icepv6U+s6HWXtZtsrYj99dQPdBgfuNOt61Ez/zQn2LL
-         2YZfysdSFZDREgh7Lqnk5//BJ8EHuURjlM+m9OQ7iC6vEVfw4gFWwHMwNmYAJ5BLcBZO
-         O79pChainY1uazr+BUthdYp3xbWtY9BqXunRMgonyJ2LJRH47aRvR+kxE8r9qtllzol7
-         VoSw==
+        bh=faJPKsgnKj1MSj1B3bxzpLa01+W3HhU/7Hynie77jqI=;
+        b=yFjaZBJoe+8ZxAQ1tJ6qtaMsU9n7FE6fnfORJnkT5Hk+FACyN6kqgoBFr7GqjtS1TO
+         ZeGz2GD4u53ZC7Ed/C5RnYY+fuBgPsku9X+xUkZSc1Zxz75F3sGZJTV7yfReckE8GrR+
+         ish63WAzeq9Yjzvnr+bgYKeeoBTQVEGIMTQ1VV3pKpc5Px2sbZTP1/KpWupUAafhBh9z
+         ZR/nff0FW4SmTh8+niQonZ0W7c52mUDix0TXx5ehSTinLwEaxWC915A7jzwyX/X1EpVR
+         LgUPd+tHUsXjsnFJODyL/6VX9HM7OlXSIihWW2zLkf5lTsKQutxC4XQhCw+MYv+ZBeci
+         ga9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=as7CJOD2;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QTvGTbU0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y12si14315728ybr.282.2020.07.04.08.46.57
+        by mx.google.com with ESMTPS id f96si15638250ybi.131.2020.07.04.08.47.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 04 Jul 2020 08:46:57 -0700 (PDT)
+        Sat, 04 Jul 2020 08:47:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=as7CJOD2;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=QTvGTbU0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42158 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43952 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrkNU-0005ON-GU
-	for alex.bennee@linaro.org; Sat, 04 Jul 2020 11:46:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40914)
+	id 1jrkNo-0006Gz-Pd
+	for alex.bennee@linaro.org; Sat, 04 Jul 2020 11:47:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40570)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrkHP-0002ef-K4
- for qemu-arm@nongnu.org; Sat, 04 Jul 2020 11:40:39 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:59681
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrkGx-0001ve-2b
+ for qemu-arm@nongnu.org; Sat, 04 Jul 2020 11:40:11 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:49294
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrkHM-00082o-QJ
- for qemu-arm@nongnu.org; Sat, 04 Jul 2020 11:40:39 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jrkGv-0007j2-6H
+ for qemu-arm@nongnu.org; Sat, 04 Jul 2020 11:40:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593877235;
+ s=mimecast20190719; t=1593877208;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ApDhe32brtQ+Y5RdcPhQgtj2PJElzW6fZw0WZlKaDdE=;
- b=as7CJOD20YxTc+nDPRBn/YnLnAfzGa/ErN08t4H7js1TqfDwrJW9dnh9HPtWX+MTf9QMvG
- krP2k0eNVyLn4wJIedVVnIZUEZy38x+2QOovieZUfcuHWbI5ICzQtwqroVE4gf2NfFUiIB
- K4c+DXpsgl0jseYEMOxBtz5HPu32k18=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-260-yf-xsyZ6Nx-Gil92-oL26w-1; Sat, 04 Jul 2020 11:40:33 -0400
-X-MC-Unique: yf-xsyZ6Nx-Gil92-oL26w-1
-Received: by mail-wr1-f70.google.com with SMTP id i14so35798766wru.17
- for <qemu-arm@nongnu.org>; Sat, 04 Jul 2020 08:40:33 -0700 (PDT)
+ bh=faJPKsgnKj1MSj1B3bxzpLa01+W3HhU/7Hynie77jqI=;
+ b=QTvGTbU0FsA594nbpizQXCxVMsQeofTLwepRpExoxQp+2hOdJNxMbsl5+Pbnzo1hhKbvei
+ Yu1EAO+1isTSs0V/IjI9WJ2Pedg/K0nuNny9adg1fWWrvxSkw20QAUYKzAiMtFttXk8RFB
+ DtCUNIiOIGkqAayZJyKsSoZLx363CoQ=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-110-dRvXVh-IPHOgLYMzWClmvQ-1; Sat, 04 Jul 2020 11:40:07 -0400
+X-MC-Unique: dRvXVh-IPHOgLYMzWClmvQ-1
+Received: by mail-wr1-f71.google.com with SMTP id i10so35923998wrn.21
+ for <qemu-arm@nongnu.org>; Sat, 04 Jul 2020 08:40:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ApDhe32brtQ+Y5RdcPhQgtj2PJElzW6fZw0WZlKaDdE=;
- b=bGYW2nmEbR39VBwjxX2CtpBIhCbTB4hzDnCAXV/VEKOoS9/DfYXF2L9AMns1gKcz5Z
- jbfc9JhFqdMhW2/c2EUGFnDaL2ix3MebmbSHMTNGtyJFuuXZTDuABEzOK3uLIjmdfcUF
- Eus54Xq7JhE8ynqLqNj27y5QXf4XlzEjppUVezFblJuLhdpBb2CoEaIqWc4Ejb53WxPx
- xFKiXOKvuTX85NnhrWeLF4BZJMOK80mdlTejQxj2elFn0bEj8P9My/apAM/CqKNU/fMx
- U/RfNwFHgzX2qBq8Gxy4y9cAmGrLT451OrVovLg0gzPJPLtEyI5TMpZ6S/A27W043Vie
- nN6A==
-X-Gm-Message-State: AOAM530eGjZ2RLyl7SEgd7xsgXnvii8zfcrQRS72uAde5GUaaQCd0GC0
- WqTDWRgwf36WZjNwtg5UkMPhgUG0y/yH+AMbyipOP17Y+GzTERnQc+0KCc6Hw+NMzu8lt6mJk19
- LwFislCguXeKs
-X-Received: by 2002:a5d:65cd:: with SMTP id e13mr45174007wrw.213.1593877232724; 
- Sat, 04 Jul 2020 08:40:32 -0700 (PDT)
-X-Received: by 2002:a5d:65cd:: with SMTP id e13mr45173991wrw.213.1593877232580; 
- Sat, 04 Jul 2020 08:40:32 -0700 (PDT)
+ bh=faJPKsgnKj1MSj1B3bxzpLa01+W3HhU/7Hynie77jqI=;
+ b=oVnbm3YjzrSPOUEUfNy3Mhl9wPjYyGq/S2f87rNip9DYd7jHoroYqFW3Z7ND3fOhSq
+ 18jLTh0v69ZVbMA6V85VimfBzD+bHEzcJBv5PXKqehGQ35zL99T7oLOhgkCM1Ef2CXRd
+ 5A/MFpE/8kFRm8OaqTOWvSrJUirrnG80S5Y4jAXIxd6cRGEMYVWzluZofF3uolHwYnBs
+ LAKrUAfUR/RDcH2MF1Tmc4wVlfbTKEnFnfio2X8gs1fp2B40ck8nO45vOwLuECHfAENS
+ oq7fmxZ0GzQa7qIC2wff+BP7IVENICKmu0PmaKUoSDcdiiX+U8jMc0vE1UCmhmyMF8p0
+ JFeA==
+X-Gm-Message-State: AOAM5327SED4Qv53uRelppmewd97RzTWM0nZqoBbrlv5UwuU7vlDHyKQ
+ trDQNNte0fNVaTpIoGzuvH9+Ew5bB+QqGNAFmIUQ7icjGzzAP2p9hI8MUTANAEmAXnmpFPtEdr2
+ gAEOQAvQ/cP2Z
+X-Received: by 2002:adf:e44c:: with SMTP id t12mr13768460wrm.103.1593877205940; 
+ Sat, 04 Jul 2020 08:40:05 -0700 (PDT)
+X-Received: by 2002:adf:e44c:: with SMTP id t12mr13768451wrm.103.1593877205790; 
+ Sat, 04 Jul 2020 08:40:05 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id m16sm12754853wro.0.2020.07.04.08.40.31
+ by smtp.gmail.com with ESMTPSA id f186sm16650455wmf.29.2020.07.04.08.40.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 04 Jul 2020 08:40:32 -0700 (PDT)
+ Sat, 04 Jul 2020 08:40:05 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [RFC PATCH v2 15/23] hw/m68k/mcf520x: Emit warning when old code is
- used
-Date: Sat,  4 Jul 2020 17:39:00 +0200
-Message-Id: <20200704153908.12118-16-philmd@redhat.com>
+Subject: [RFC PATCH v2 10/23] hw/display/vga-isa-mm: Emit warning when old
+ code is used
+Date: Sat,  4 Jul 2020 17:38:55 +0200
+Message-Id: <20200704153908.12118-11-philmd@redhat.com>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200704153908.12118-1-philmd@redhat.com>
 References: <20200704153908.12118-1-philmd@redhat.com>
@@ -148,70 +148,67 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BbLtnPXLWP7T
+X-TUID: ogrpwGCJCjii
 
 This code hasn't been QOM'ified yet. Warn the user.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
-v2: Add comment (thuth)
----
- hw/m68k/mcf5206.c | 5 +++++
- hw/m68k/mcf5208.c | 3 +++
+ hw/display/vga-isa-mm.c | 5 +++++
+ hw/display/vga.c        | 3 +++
  2 files changed, 8 insertions(+)
 
-diff --git a/hw/m68k/mcf5206.c b/hw/m68k/mcf5206.c
-index a2fef04f8e..ec0d176674 100644
---- a/hw/m68k/mcf5206.c
-+++ b/hw/m68k/mcf5206.c
-@@ -16,6 +16,7 @@
- #include "qemu/timer.h"
- #include "hw/ptimer.h"
- #include "sysemu/sysemu.h"
+diff --git a/hw/display/vga-isa-mm.c b/hw/display/vga-isa-mm.c
+index 7321b7a06d..3e62389b63 100644
+--- a/hw/display/vga-isa-mm.c
++++ b/hw/display/vga-isa-mm.c
+@@ -29,6 +29,7 @@
+ #include "hw/display/vga.h"
+ #include "vga_int.h"
+ #include "ui/pixel_ops.h"
 +#include "hw/qdev-deprecated.h"
  
- /* General purpose timer module.  */
- typedef struct {
-@@ -144,6 +145,8 @@ static m5206_timer_state *m5206_timer_init(qemu_irq irq)
+ #define VGA_RAM_SIZE (8 * MiB)
+ 
+@@ -71,6 +72,8 @@ static void vga_mm_init(ISAVGAMMState *s, hwaddr vram_base,
  {
-     m5206_timer_state *s;
+     MemoryRegion *s_ioport_ctrl, *vga_io_memory;
  
 +    qdev_warn_deprecated_function_used();
 +
-     s = g_new0(m5206_timer_state, 1);
-     s->timer = ptimer_init(m5206_timer_trigger, s, PTIMER_POLICY_DEFAULT);
-     s->irq = irq;
-@@ -566,6 +569,8 @@ qemu_irq *mcf5206_init(MemoryRegion *sysmem, uint32_t base, M68kCPU *cpu)
-     m5206_mbar_state *s;
-     qemu_irq *pic;
+     s->it_shift = it_shift;
+     s_ioport_ctrl = g_malloc(sizeof(*s_ioport_ctrl));
+     memory_region_init_io(s_ioport_ctrl, NULL, &vga_mm_ctrl_ops, s,
+@@ -99,6 +102,8 @@ int isa_vga_mm_init(hwaddr vram_base,
+ 
+     s = g_malloc0(sizeof(*s));
  
 +    qdev_warn_deprecated_function_used();
 +
-     s = g_new0(m5206_mbar_state, 1);
- 
-     memory_region_init_io(&s->iomem, NULL, &m5206_mbar_ops, s,
-diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
-index d310a98e7b..0bfcbb6332 100644
---- a/hw/m68k/mcf5208.c
-+++ b/hw/m68k/mcf5208.c
-@@ -26,6 +26,7 @@
- #include "hw/sysbus.h"
- #include "elf.h"
- #include "exec/address-spaces.h"
+     s->vga.vram_size_mb = VGA_RAM_SIZE / MiB;
+     s->vga.global_vmstate = true;
+     vga_common_init(&s->vga, NULL);
+diff --git a/hw/display/vga.c b/hw/display/vga.c
+index 061fd9ab8f..d59a9c896b 100644
+--- a/hw/display/vga.c
++++ b/hw/display/vga.c
+@@ -35,6 +35,7 @@
+ #include "hw/xen/xen.h"
+ #include "migration/vmstate.h"
+ #include "trace.h"
 +#include "hw/qdev-deprecated.h"
  
- #define SYS_FREQ 166666666
+ //#define DEBUG_VGA_MEM
+ //#define DEBUG_VGA_REG
+@@ -2262,6 +2263,8 @@ MemoryRegion *vga_init_io(VGACommonState *s, Object *obj,
+ {
+     MemoryRegion *vga_mem;
  
-@@ -194,7 +195,9 @@ static void mcf5208_sys_init(MemoryRegion *address_space, qemu_irq *pic)
-     /* SDRAMC.  */
-     memory_region_init_io(iomem, NULL, &m5208_sys_ops, NULL, "m5208-sys", 0x00004000);
-     memory_region_add_subregion(address_space, 0xfc0a8000, iomem);
++    qdev_warn_deprecated_function_used();
 +
-     /* Timers.  */
-+    qdev_warn_deprecated_function_used(); /* m5208_timer_state is not QOM */
-     for (i = 0; i < 2; i++) {
-         s = g_new0(m5208_timer_state, 1);
-         s->timer = ptimer_init(m5208_timer_trigger, s, PTIMER_POLICY_DEFAULT);
+     *vga_ports = vga_portio_list;
+     *vbe_ports = vbe_portio_list;
+ 
 -- 
 2.21.3
 

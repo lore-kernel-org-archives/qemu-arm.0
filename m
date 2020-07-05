@@ -1,94 +1,94 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4335056lfm;
-        Sun, 5 Jul 2020 13:50:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyvbYfiS9VRW9I5RM1abTLSIsFwrfg6QhtqwOfcmXMAnQwlzYK0QHx8OIeiTiPJcVmFK81S
-X-Received: by 2002:a05:6902:4ef:: with SMTP id w15mr9626679ybs.342.1593982207010;
-        Sun, 05 Jul 2020 13:50:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593982207; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4335909lfm;
+        Sun, 5 Jul 2020 13:52:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJys8Ie6vAExaCTrujloE8Y5SvFw8OkbTgk4FhK9QHObh/lD7pE1BHiVFmUQxvjCjg0hUUpe
+X-Received: by 2002:a5b:707:: with SMTP id g7mr73106081ybq.79.1593982330714;
+        Sun, 05 Jul 2020 13:52:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593982330; cv=none;
         d=google.com; s=arc-20160816;
-        b=ItxyiF5YsfA2Mav2YDnN4k7gN7YWG0NQHiBe3AkQTWazd4xDMedUP71Xh2xhpRARhW
-         WDWbr3nzBeKaVO46nxKSkz0aqe8pr5asTwlCCL8mTwVvX+w7fwKf7lMCv2xItwdboirC
-         0TUcHukywnWS1ebhdvwC6NpyPYDJ0cKery+oKvqyOD5/DwZtrx+GXzKq2qtAGywf5Som
-         Pkx0UQ/uXJWP6qp8mtN0eSp4/Mz/5QCi9HY6dl3V8ZGu7nEszLqfZWRFSDJRfIFpFEBW
-         Ti7JqZvVs3Mx8FV0OSFxy/p1X2IIZ1waLJAOVvk2vY+2JH/NKPWyL62CLbZV2jImuj4J
-         HB8Q==
+        b=hKJeVfk48O2bC6a3R3HcgqDBc43wCUsatSTx3pPtPisvDRGpdJHnUTpPfxHFYombZB
+         X6xHv24D+yoOD4omqkYE12zSp8y1pYfzsd7oRxRdFcIKIm3C75JrOAmhGTH12f+tYQn7
+         qdK1APs/Fau/e56WcbsEc5m+1g2XWY38xTBgOFiqPcUgUGudE6tU49/k8KEQii/h4ugN
+         3N+GM4IY+cz6Y41LyEOHHe172b9nag3csPA15fMZH1Ve+wbmozsFsKJDYQJWfL4EjWzG
+         e/9LB/xBM9/TQ2Cl6nkogkH7esC/RqW/PJMdUSqRIFD/D2BXIpBCbPIHHLLG9c5CJHCL
+         BwPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=WxPjkbT1Cf+fTJhIz6EA4Q+a6g7EtjSauXqyKUUtqbs=;
-        b=wlrfVYkzM7KKk735k8O6V4UzqFUAbvhJFMMlgJOifRrXeQfWTJH3G/6p1STidCxjYV
-         MK0lefHby1LOsyqNIfflRBmW+ATfFIg+otlDTaE7bq34+R61kL6Sc7la7TJ5qfX2pE+s
-         Adj0/ptMFjIa5bXgezcTfXdiwlrrj59V2O80rR0N0GloFR9y+JsC8dc0o9/nEYsjXuAT
-         pP24f7mtBWrDszXP6Lbt9t4o+nmADKXJiRsxBbiDwd3u5qDfUD/wvpOO/StEwXqBNXlm
-         by3aQQF2h8heZY2LjuZnpgVj6UF/2xi2867cwiNdu4HRxzDvndE4NsPuVxaYcQDW7Glk
-         /F3Q==
+        bh=9r/UuMNriotkB9gXNJa6dykrAj3Jm9YA/tEThvkByFI=;
+        b=dLyAaIub8AomeLYZSp7DzK+bDarkb5H421/StF18jd6oQbZTfH2f6gps9fpzP8eaIk
+         O5h08yWKT9YqP/CwZ5cHuAGUXRIaflG5+bs4kadojXcXybAFYFHw24OQK18owkt8PsBg
+         WaaQqoCs/NYT/BKlNmki7y6mbfWSIYxyMgvHGyfdrPItIz+wxFx7iidwEad/JbnZjyP5
+         7/99AgKWRExT+8A6d4JJa7LFiCldCQBTiKuI0rhbuV3oCXfzUohBiQWE7mnwbIjeGpUv
+         OV4uyU6iSQxlU72OczCz/aghkzbWrzIC8ye3mi2OUUKm9r4k2cSfMXS/WEkYnZXeBelV
+         idPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mc2aaxRi;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="XCFxlx/+";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r128si17577433ybc.354.2020.07.05.13.50.06
+        by mx.google.com with ESMTPS id j126si17015928ybb.172.2020.07.05.13.52.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 Jul 2020 13:50:07 -0700 (PDT)
+        Sun, 05 Jul 2020 13:52:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mc2aaxRi;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="XCFxlx/+";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:47048 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52448 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsBaQ-0001Hf-FA
-	for alex.bennee@linaro.org; Sun, 05 Jul 2020 16:50:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50672)
+	id 1jsBcQ-0003dO-2x
+	for alex.bennee@linaro.org; Sun, 05 Jul 2020 16:52:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jsBX6-0004Wa-Vg; Sun, 05 Jul 2020 16:46:40 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:40836)
+ id 1jsBXB-0004kj-Tc; Sun, 05 Jul 2020 16:46:45 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329]:40515)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jsBX5-0000pR-F5; Sun, 05 Jul 2020 16:46:40 -0400
-Received: by mail-wr1-x441.google.com with SMTP id f2so10762416wrp.7;
- Sun, 05 Jul 2020 13:46:38 -0700 (PDT)
+ id 1jsBXA-0000q9-6d; Sun, 05 Jul 2020 16:46:45 -0400
+Received: by mail-wm1-x329.google.com with SMTP id f139so39591232wmf.5;
+ Sun, 05 Jul 2020 13:46:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=WxPjkbT1Cf+fTJhIz6EA4Q+a6g7EtjSauXqyKUUtqbs=;
- b=mc2aaxRiAz5Y+OEAGL+ybYmW+l0Bz0R2Ha60762Wtp6AqE1nSMUAWgkSgzcfZOUWBE
- or23TPDUpHb4t/cC+k8K7o+tDy8stfHAWygt+CpZ/ExKqIJIkaBGTY1xn5sgytoBFG/U
- refyFb9/5P+yQK0JEBuTckvRtmyo4dgBOKxPvza5YMh6HSgq+ZrMjs3UNOxWjxYRdsDj
- fXEX72oVKjWAqGDVEHEtk5Sqg6QOfFj4BXql57UdkBq0Kq8qzalcG4JFXFSPsclNEuI+
- HOu49jQHSFE93+ITlUirQHQbGh4w+jzeLOmnQhLZLQqd6pI5a9JLh0oOd/jfg2U2v3H0
- 0hLg==
+ bh=9r/UuMNriotkB9gXNJa6dykrAj3Jm9YA/tEThvkByFI=;
+ b=XCFxlx/+OKFUTT9H1bSYw9a34DB2DnStTMlRHTeJX+STyC3PCjjO6V4LueXAeuWddy
+ mgVcF+yjl91IJSQbwjl4ibglXO73LXhtdpsigv8VrUe+ksLjdaP0EC+TJgRTS0kFAONO
+ tsW9hgiuz/pZVTGJox/JHUXsbzuyuvOZVO9B1PEINypJs+r3m/X2rOVju6cXQ0ddn5Po
+ ArWyos2HTJ2ZBkrqZIhHYfpvOdiLNQeSSuyvwSkYP+Qa0yCpMVZej4R/0iyLUKQ2wknS
+ 8d6zLwLsVS1NS/XtpDx9ROCM8uhYGuO56ymKVHDafSMsHk1vLYYfUXuHuk8ochExs8+z
+ kfxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=WxPjkbT1Cf+fTJhIz6EA4Q+a6g7EtjSauXqyKUUtqbs=;
- b=TIkKK/Tc9lloLNORhMAugF9dYWsFvMYQRV9RJKHgf0016KstBMDbH5gkm8kEd+ma1x
- 2xi+4K9jrYSwACd1Ika43PFmUFsN/Vtxy5O91hk45DCSHbiYpFtZIpSKi0pM0GXsk9/J
- Vi3Lp2tO108/TUO8yr1hlcf/dv6DZwe4pHDpE1+Xiod4fz4uqwf+v+hjomsrz2QDz245
- oxHnsDGM6CIgb/34jyohzBMJSYX1ZfZNWd1ogkOJ0Vs3OfhpOnFpm2skhgN7hjoJRGwd
- x/G4bPA1C8u7euadBK9OVzVpY2MQvIxiMoSNEH6a5sSMrDDHwwM1vYLutdyVSPRSVagM
- fEcA==
-X-Gm-Message-State: AOAM530q1qIrKl9U8USm+m8twdBPYZm3kTbHRxbJPk0YJ8qDypho1F1a
- 0VYxCIjJ345du2yYCVqj7RW1zmv4YeM=
-X-Received: by 2002:adf:e6c8:: with SMTP id y8mr48495990wrm.40.1593981997457; 
- Sun, 05 Jul 2020 13:46:37 -0700 (PDT)
+ bh=9r/UuMNriotkB9gXNJa6dykrAj3Jm9YA/tEThvkByFI=;
+ b=KAHsc0I3tNmPElpY/MQRvpdfjdB1Kbksx/95jOWRV+/qVyyjsvoGXABddwMcD0sYv7
+ 4X1zxL6DNg6MyXz4w8utfSGQ3T8PwxMrwoBAsHd4iSo2hS4PqLKmevniTH8VZXdU6wmq
+ jZMlsap+uKDDakewP2FK8qXEcCIULHE/nOIBkHvvZm+bMsbVfUW16uS4w78qHiFYnHkI
+ gfDdba2jBj8VmqsYsbwyTUTUN+FC0YvppWYDaTeccQ5frPHsczVi/0PQegBV9t9OR0EE
+ c/oFu4/9l3e0qwTtdOxo7di02megZzv/Tp3UcJAFJXjmWCFAxKmMrRK8RZ3+pjoBAMOg
+ QFIQ==
+X-Gm-Message-State: AOAM530Q1r846H1F28sV7mM5DJVfmomqx9QiD4FV/feQvoGUg+iTrt8+
+ i678xVWAdsuDRDiJ+VeCYjDpCEBC5nI=
+X-Received: by 2002:a7b:c956:: with SMTP id i22mr47109373wml.95.1593982002099; 
+ Sun, 05 Jul 2020 13:46:42 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id g144sm51397817wme.2.2020.07.05.13.46.36
+ by smtp.gmail.com with ESMTPSA id g144sm51397817wme.2.2020.07.05.13.46.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Jul 2020 13:46:36 -0700 (PDT)
+ Sun, 05 Jul 2020 13:46:41 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 04/10] hw/arm/versatilepb: Comment to remember some IRQs
- lines are left unwired
-Date: Sun,  5 Jul 2020 22:46:24 +0200
-Message-Id: <20200705204630.4133-5-f4bug@amsat.org>
+Subject: [PATCH v4 08/10] hw/sd/pl181: Replace disabled fprintf()s by trace
+ events
+Date: Sun,  5 Jul 2020 22:46:28 +0200
+Message-Id: <20200705204630.4133-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200705204630.4133-1-f4bug@amsat.org>
 References: <20200705204630.4133-1-f4bug@amsat.org>
@@ -96,8 +96,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x329.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -124,30 +124,116 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cNP9X0GNcYMs
+X-TUID: NYOBbUlhdqwW
 
-The 'card is readonly' and 'card inserted' IRQs are not wired.
-Add a comment in case someone know where to wire them.
+Convert disabled DPRINTF() to trace events and remove ifdef'ry.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/versatilepb.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/sd/pl181.c      | 26 +++++++++-----------------
+ hw/sd/trace-events | 10 ++++++++++
+ 2 files changed, 19 insertions(+), 17 deletions(-)
 
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index e596b8170f..45a13ae2b9 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -310,7 +310,9 @@ static void versatile_init(MachineState *machine, int board_id)
-     qdev_connect_gpio_out(sysctl, 0, qdev_get_gpio_in(dev, 0));
+diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
+index f69488ebac..574500ce60 100644
+--- a/hw/sd/pl181.c
++++ b/hw/sd/pl181.c
+@@ -17,15 +17,7 @@
+ #include "qemu/module.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+-
+-//#define DEBUG_PL181 1
+-
+-#ifdef DEBUG_PL181
+-#define DPRINTF(fmt, ...) \
+-do { printf("pl181: " fmt , ## __VA_ARGS__); } while (0)
+-#else
+-#define DPRINTF(fmt, ...) do {} while(0)
+-#endif
++#include "trace.h"
  
-     sysbus_create_varargs("pl181", 0x10005000, sic[22], sic[1], NULL);
-+    /* FIXME wire 'card is readonly' and 'card inserted' IRQs? */
-     sysbus_create_varargs("pl181", 0x1000b000, sic[23], sic[2], NULL);
-+    /* FIXME wire 'card is readonly' and 'card inserted' IRQs? */
+ #define PL181_FIFO_LEN 16
  
-     /* Add PL031 Real Time Clock. */
-     sysbus_create_simple("pl031", 0x101e8000, pic[10]);
+@@ -158,7 +150,7 @@ static void pl181_fifo_push(PL181State *s, uint32_t value)
+     n = (s->fifo_pos + s->fifo_len) & (PL181_FIFO_LEN - 1);
+     s->fifo_len++;
+     s->fifo[n] = value;
+-    DPRINTF("FIFO push %08x\n", (int)value);
++    trace_pl181_fifo_push(value);
+ }
+ 
+ static uint32_t pl181_fifo_pop(PL181State *s)
+@@ -172,7 +164,7 @@ static uint32_t pl181_fifo_pop(PL181State *s)
+     value = s->fifo[s->fifo_pos];
+     s->fifo_len--;
+     s->fifo_pos = (s->fifo_pos + 1) & (PL181_FIFO_LEN - 1);
+-    DPRINTF("FIFO pop %08x\n", (int)value);
++    trace_pl181_fifo_pop(value);
+     return value;
+ }
+ 
+@@ -184,7 +176,7 @@ static void pl181_do_command(PL181State *s)
+ 
+     request.cmd = s->cmd & PL181_CMD_INDEX;
+     request.arg = s->cmdarg;
+-    DPRINTF("Command %d %08x\n", request.cmd, request.arg);
++    trace_pl181_command_send(request.cmd, request.arg);
+     rlen = sdbus_do_command(&s->sdbus, &request, response);
+     if (rlen < 0)
+         goto error;
+@@ -201,16 +193,16 @@ static void pl181_do_command(PL181State *s)
+             s->response[2] = ldl_be_p(&response[8]);
+             s->response[3] = ldl_be_p(&response[12]) & ~1;
+         }
+-        DPRINTF("Response received\n");
++        trace_pl181_command_response_pending();
+         s->status |= PL181_STATUS_CMDRESPEND;
+     } else {
+-        DPRINTF("Command sent\n");
++        trace_pl181_command_sent();
+         s->status |= PL181_STATUS_CMDSENT;
+     }
+     return;
+ 
+ error:
+-    DPRINTF("Timeout\n");
++    trace_pl181_command_timeout();
+     s->status |= PL181_STATUS_CMDTIMEOUT;
+ }
+ 
+@@ -262,11 +254,11 @@ static void pl181_fifo_run(PL181State *s)
+         s->status |= PL181_STATUS_DATAEND;
+         /* HACK: */
+         s->status |= PL181_STATUS_DATABLOCKEND;
+-        DPRINTF("Transfer Complete\n");
++        trace_pl181_fifo_transfer_complete();
+     }
+     if (s->datacnt == 0 && s->fifo_len == 0) {
+         s->datactrl &= ~PL181_DATA_ENABLE;
+-        DPRINTF("Data engine idle\n");
++        trace_pl181_data_engine_idle();
+     } else {
+         /* Update FIFO bits.  */
+         bits = PL181_STATUS_TXACTIVE | PL181_STATUS_RXACTIVE;
+diff --git a/hw/sd/trace-events b/hw/sd/trace-events
+index 5f09d32eb2..a87d7355fb 100644
+--- a/hw/sd/trace-events
++++ b/hw/sd/trace-events
+@@ -62,3 +62,13 @@ milkymist_memcard_memory_write(uint32_t addr, uint32_t value) "addr 0x%08x value
+ # pxa2xx_mmci.c
+ pxa2xx_mmci_read(uint8_t size, uint32_t addr, uint32_t value) "size %d addr 0x%02x value 0x%08x"
+ pxa2xx_mmci_write(uint8_t size, uint32_t addr, uint32_t value) "size %d addr 0x%02x value 0x%08x"
++
++# pl181.c
++pl181_command_send(uint8_t cmd, uint32_t arg) "sending CMD%02d arg 0x%08" PRIx32
++pl181_command_sent(void) "command sent"
++pl181_command_response_pending(void) "response received"
++pl181_command_timeout(void) "command timeouted"
++pl181_fifo_push(uint32_t data) "FIFO push 0x%08" PRIx32
++pl181_fifo_pop(uint32_t data) "FIFO pop 0x%08" PRIx32
++pl181_fifo_transfer_complete(void) "FIFO transfer complete"
++pl181_data_engine_idle(void) "data engine idle"
 -- 
 2.21.3
 

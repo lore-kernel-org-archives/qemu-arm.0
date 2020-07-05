@@ -1,93 +1,95 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4334815lfm;
-        Sun, 5 Jul 2020 13:49:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxwNlguqqnfpS3UEisQPqd36sgFJQCBXgv1CAXINtuqTkY8v8WTFQQKOvM73gagePcCow57
-X-Received: by 2002:a25:3b4e:: with SMTP id i75mr25575126yba.231.1593982172478;
-        Sun, 05 Jul 2020 13:49:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593982172; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4334985lfm;
+        Sun, 5 Jul 2020 13:49:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxTc8I/Le1cEGiixDNirwcd0FFwBgMkChFIdhqU9lXDevRCLS3qbFmSYsO0bobDjnkUUWji
+X-Received: by 2002:a25:4289:: with SMTP id p131mr30847030yba.477.1593982197002;
+        Sun, 05 Jul 2020 13:49:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593982196; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ht8cax+JquDpBc/5F6I1Yn7MIS09Vqpr6QTkERk0GB3dayfUv26WCRLU9SZdzN1bz3
-         CKp3WRIj2LPIt0zBDV67K92+9RM5jLKmu4BJXXXsl/z9AGO1y9t54tmvVKjyoT2g1rKl
-         PuePce0aTflec1SM4A9ta2eYyRsnVxJV5V+PkIDROq2TE5oII/fa4BQJLC6j4ibrPAlN
-         UvsysBk22TobzbB4dIr/AMWLzZoMnBt1J3Xfp11JcL2YzxnuYjxBBJinmsl9XUhrICWC
-         yj+rvec5d9/bwvHzBn8jSbdZYWth5wfNWlg3SnsTIICmI8MXmS55W2nrC82UJrKuO1vz
-         1Xog==
+        b=vfJyBPZ3WQsZ/rextkQmHeCdlGCX532zYOs+tWJg2Fch5aUhn9RVFU47Eeup2DoBTG
+         X6DZLVj03YAxHx/y8jyzchtMOSFWtU5ct4JRvKeVPxs4wUYZIgmq7ORT1B6I3lcd+OCg
+         9F5dsmL5io4ffjqSW0vSBxOmrbNNyPsLH2fLVsaZ2MVpMgS+4PZU4C9zWbxdLQ2V7SAl
+         9RdKINNPrmMxhKKtpVxRTf89QIqEhJIJSH2XFBQ3X0QDooiPPKCSyWJylZJXnRP1U007
+         EeiQw9nkR4hwLRpXjSjva/KUVbJVv60D2PqPVY/SwxddDv2uip+He6BK4ZhR24IOS+SV
+         c9wQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=kNwib0BMo1+5Iu5sjaNj7HGTV7ZxsjSjKRCMexInxyg=;
-        b=jUXiJxSRaW8EO9tW7p31pPOgyv4TZ3OzHuuXBxRazFdGT0BlEJQmwkynp7BuSXxkO8
-         oXOjUa2c8/fhJIa3WOwbB87uAbJbW4vpVu4udxLGFDp+7hWNtCmcfp2/olg1j5aZDp1p
-         iWEGPmrnENdnXpN5iDXiZt/8eNphjzECwN1iHJgvq43QU0NP4ux4p7gn7dHcM3pWxj5t
-         9WXRUNufoSeLYIHVsXJGDZ1aHMxcaJjawDFY5/Q4e7vAKMa+gNRJoGyEoP9UsDrUnjoi
-         7fvDh0sKPfigBHn+llOW2d+jpWNViiUAT6woqaRf6ulX3/PTunx4HVoV77XYdLweNLUk
-         WcoQ==
+        bh=G37x8W0rCVo00GrhnCpy9+AXL7M1+3sgu4vRFcZInrU=;
+        b=d9tETJXdQ0Fqe3lZvovVGcGquthi9b+Z+rwUm+Qif8AHn2xe85oRpQbytEkpvkW9aL
+         jOt+1jG2lxclBSvp99Twsdm62BJ7ijs/g+UbbT36HveTqvXMZfyHEB/b7odGFlTtAFM8
+         p7ZIOqgHcFLc48EKQpX7Ga2RDPH7dYNCNm8mONM73xlUc79qfVF6YnLh9zclCBSy0cMi
+         d2cMzIY1fw2VIKY1dsOlJ7hfh3kQ6dRF0Yag5CcngUlguGtSCP0ctivRanvJ+TXgeJ92
+         wOQMl1l7n8I2N5KE0lB4QG25T5Kk5PriwlY6wSNQuE9plMeYYCiJPPdqAxKpX5wa5dt8
+         NMYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uLt8axL5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JJczDjML;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n141si17882456ybg.410.2020.07.05.13.49.32
+        by mx.google.com with ESMTPS id e30si19681619ybi.449.2020.07.05.13.49.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 Jul 2020 13:49:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 05 Jul 2020 13:49:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uLt8axL5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JJczDjML;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:45272 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46476 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsBZr-0000ag-S2
-	for alex.bennee@linaro.org; Sun, 05 Jul 2020 16:49:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50732)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jsBaG-00013r-Dp
+	for alex.bennee@linaro.org; Sun, 05 Jul 2020 16:49:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jsBXC-0004oI-Uz; Sun, 05 Jul 2020 16:46:46 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432]:39212)
+ id 1jsBX3-0004Mm-4Z; Sun, 05 Jul 2020 16:46:37 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:38675)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jsBXB-0000qM-Bm; Sun, 05 Jul 2020 16:46:46 -0400
-Received: by mail-wr1-x432.google.com with SMTP id q5so38718653wru.6;
- Sun, 05 Jul 2020 13:46:44 -0700 (PDT)
+ id 1jsBX1-0000oo-J7; Sun, 05 Jul 2020 16:46:36 -0400
+Received: by mail-wm1-x342.google.com with SMTP id f18so39594667wml.3;
+ Sun, 05 Jul 2020 13:46:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=kNwib0BMo1+5Iu5sjaNj7HGTV7ZxsjSjKRCMexInxyg=;
- b=uLt8axL5DGUbglnhirInKZ6wy5zC9Rf5Nde7P2D3eB7Jtr8YcQDVOqywS9poHF1n8U
- jRwbs1GKuJne8DuQRWv5+EkIynR2wuywL5jY89HjKj+NukpaenXkttWWNu4F+PQtfJDU
- A3wtGiDRIy7p7jTSEwL0kLOlGM9/lDdB5famGENHUDmQu2HuNcxV4+0zJmHxkH08/5J5
- dtkI8jLYK2ALuf9Q3KhttqtvFGmB0+rw7NDzBcOw/N3PuE9SqbiY3edia3UiG67twD0O
- 5tXAj01dPnDyYSr+rCcT8+wpfwUmCgP1BWHYaCoYqWB0w7upiOQmXnVNYSpOo156FrOU
- bNuA==
+ bh=G37x8W0rCVo00GrhnCpy9+AXL7M1+3sgu4vRFcZInrU=;
+ b=JJczDjMLwMoXPKH+0R+2mc8M0V5x0fBL5XvAeVmEQu99CdurZAJztHO9STsOU0vEaJ
+ SG8DAY7+LTfanaJkzCZYR2+Uu04pzvSRxkXws5SK3fCFwTMsAMgZNtOSxAnSUaFSThpO
+ H/RupYVTFwisJoa/9TeF9VKdcGHkYJzhtfeK/E80ty0B2dwHu6f4YHG8qOhBIzzg1iZ3
+ mx4XApkCKKLDh0lp9zeSJ1A7riNMTCuU0afNGRSPGg0uiY/psA6krnUvXDYIJ9RZPO6f
+ F59inMBbDlQ5jFbVJ6KyZLmkVNS3HXTHsbOZxC4L3Baqj7hmq6igKphPPAy6rnBjm9Ws
+ oJlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=kNwib0BMo1+5Iu5sjaNj7HGTV7ZxsjSjKRCMexInxyg=;
- b=oTioSonD69o6BiFKtRs8ZyakOwIfauD8UEhgMCA3h9HAtW5fHbx9HmxRVOPN6AUZLl
- wOamKrZVZCBJAWzxk5B34b+1WgQS1QmhrTMb33qvn2Azp5bNF8gGeblurOeEzr1/BI+X
- 051nK8XIeGEqxTx4G+Sl5tX4Xy7BIuHzJT2/dEKRDEfBZQ4NYEOK7s6TG+LxZETxq2u7
- vsK9STh91dWXw+5VXsKO20HARmpmjGxfOsqsSNO8KmbG6dzCOnrNwXfOcYGTBuZhJHW6
- dc9x7oluzwRVKvzQ4V9OK33vcAGygGST6vsCbDo5kEl4RW8xSC3NGW3TfEPiekBPQqiU
- 7xng==
-X-Gm-Message-State: AOAM531ve90X6IU61F6yBjP+i92X3e6MgsVbkTuPH/BcrUm16EFtr/Aq
- 644I70GciISVql7ZlKvYHtf66rB3cT4=
-X-Received: by 2002:adf:82a1:: with SMTP id 30mr48880977wrc.210.1593982003494; 
- Sun, 05 Jul 2020 13:46:43 -0700 (PDT)
+ bh=G37x8W0rCVo00GrhnCpy9+AXL7M1+3sgu4vRFcZInrU=;
+ b=Y0xytoydmUnImSWShUs78XfcAgT4MQWNOLJr3wkNqud7yCK4Ix8dzQ4Pw2uk1MnyW8
+ w0POVcfz4ut2WuNdPBYiwDw3orUqFxO3zOSd9fzRdDGrNN6AaQwWxuWnr9C6pwKiKH0x
+ kHL5R41jv98A7dW4OjV5rfh9jrh1AP7xQ3IUwlq54sfBG+Nw3MvZdo8S1lGin+T617Bk
+ JzyRhmh5s8qn9taDhAYGKEGYLZTxNZUiUDA70EjdW8d1c9XmoWrrnlvNm3X5jVMvToWu
+ 8SY4YFI7yS+xu9Cf1hVpn4e8iEbq71d/BG4iaGgZ+wm2b+c7X5YJoJjNKYVqlS+fGuV5
+ o/0Q==
+X-Gm-Message-State: AOAM530zZ0orWjrpX+Nn9vdzLPqNPXLS3c7AayTiGfhmTdA3xjk0DpFK
+ PHiIoQMIQY/wxu9wfDUHhnvmvcbKt2w=
+X-Received: by 2002:a05:600c:258:: with SMTP id
+ 24mr7340640wmj.126.1593981993901; 
+ Sun, 05 Jul 2020 13:46:33 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id g144sm51397817wme.2.2020.07.05.13.46.42
+ by smtp.gmail.com with ESMTPSA id g144sm51397817wme.2.2020.07.05.13.46.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Jul 2020 13:46:42 -0700 (PDT)
+ Sun, 05 Jul 2020 13:46:33 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 09/10] hw/sd/sdcard: make sd_data_ready() static
-Date: Sun,  5 Jul 2020 22:46:29 +0200
-Message-Id: <20200705204630.4133-10-f4bug@amsat.org>
+Subject: [PATCH v4 01/10] hw/sd/pl181: Replace fprintf(stderr,
+ "*\n") with error_report()
+Date: Sun,  5 Jul 2020 22:46:21 +0200
+Message-Id: <20200705204630.4133-2-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200705204630.4133-1-f4bug@amsat.org>
 References: <20200705204630.4133-1-f4bug@amsat.org>
@@ -95,8 +97,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -107,62 +109,105 @@ X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Alistair Francis <alistair.francis@xilinx.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: URgJWDNoJMMh
+ Alistair Francis <alistair@alistair23.me>,
+ Alistair Francis <alistair.francis@xilinx.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 428Inf7YnhpK
 
-sd_data_ready() belongs to the legacy API. As its last user has
-been converted to the SDBus API, make it static.
+From: Alistair Francis <alistair.francis@xilinx.com>
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
-Message-Id: <20180216022933.10945-7-f4bug@amsat.org>
+Replace a large number of the fprintf(stderr, "*\n" calls with
+error_report(). The functions were renamed with these commands and then
+compiler issues where manually fixed.
+
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N;N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+find ./* -type f -exec sed -i \
+    'N; {s|fprintf(stderr, "\(.*\)\\n"\(.*\));|error_report("\1"\2);|Ig}' \
+    {} +
+
+Some lines where then manually tweaked to pass checkpatch.
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Alistair Francis <alistair.francis@xilinx.com>
+Message-Id: <488ba8d4c562ea44119de8ea0f385a898bd8fa1e.1513790495.git.alistair.francis@xilinx.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/sd/sd.h | 1 -
- hw/sd/sd.c         | 2 +-
- 2 files changed, 1 insertion(+), 2 deletions(-)
+ hw/sd/pl181.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/sd/sd.h b/include/hw/sd/sd.h
-index a84b8e274a..ace350e0e8 100644
---- a/include/hw/sd/sd.h
-+++ b/include/hw/sd/sd.h
-@@ -143,7 +143,6 @@ int sd_do_command(SDState *sd, SDRequest *req,
- void sd_write_data(SDState *sd, uint8_t value);
- uint8_t sd_read_data(SDState *sd);
- void sd_set_cb(SDState *sd, qemu_irq readonly, qemu_irq insert);
--bool sd_data_ready(SDState *sd);
- /* sd_enable should not be used -- it is only used on the nseries boards,
-  * where it is part of a broken implementation of the MMC card slot switch
-  * (there should be two card slots which are multiplexed to a single MMC
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 97a9d32964..54b1414131 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -2059,7 +2059,7 @@ uint8_t sd_read_data(SDState *sd)
-     return ret;
- }
+diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
+index 2b3776a6a0..649386ec3d 100644
+--- a/hw/sd/pl181.c
++++ b/hw/sd/pl181.c
+@@ -15,6 +15,7 @@
+ #include "hw/sd/sd.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "qemu/error-report.h"
+ #include "qapi/error.h"
  
--bool sd_data_ready(SDState *sd)
-+static bool sd_data_ready(SDState *sd)
- {
-     return sd->state == sd_sendingdata_state;
- }
+ //#define DEBUG_PL181 1
+@@ -148,7 +149,7 @@ static void pl181_fifo_push(PL181State *s, uint32_t value)
+     int n;
+ 
+     if (s->fifo_len == PL181_FIFO_LEN) {
+-        fprintf(stderr, "pl181: FIFO overflow\n");
++        error_report("%s: FIFO overflow", __func__);
+         return;
+     }
+     n = (s->fifo_pos + s->fifo_len) & (PL181_FIFO_LEN - 1);
+@@ -162,7 +163,7 @@ static uint32_t pl181_fifo_pop(PL181State *s)
+     uint32_t value;
+ 
+     if (s->fifo_len == 0) {
+-        fprintf(stderr, "pl181: FIFO underflow\n");
++        error_report("%s: FIFO underflow", __func__);
+         return 0;
+     }
+     value = s->fifo[s->fifo_pos];
 -- 
 2.21.3
 

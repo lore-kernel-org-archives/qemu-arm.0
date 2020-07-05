@@ -1,196 +1,179 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3881159lfm;
-        Sun, 5 Jul 2020 00:09:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxQ+SJPIUt/E5Y1CK+RrbXkxQm/DwfujN4p9JHZ7Yw/aKZSKhCKzrftQM6ta+RosWKViKcz
-X-Received: by 2002:a25:6c09:: with SMTP id h9mr70949185ybc.252.1593932962331;
-        Sun, 05 Jul 2020 00:09:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593932962; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3882998lfm;
+        Sun, 5 Jul 2020 00:12:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw5jEoqvoAs1ZxZ/kymmMw8jBJLL0fIX93+AQe4JoeZ+zqbZ+PEKq1GI16tFCuIKnMpXAM7
+X-Received: by 2002:a17:906:3c56:: with SMTP id i22mr27578283ejg.12.1593933175075;
+        Sun, 05 Jul 2020 00:12:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593933175; cv=none;
         d=google.com; s=arc-20160816;
-        b=jn5WfKyOSQYnndU7Oc6B+oeF8QqbGx6vEKniFIMWEa1LjjDg0JRG+QYZpQt39tBqZv
-         daW/Bm6RrGo0t+zrMwA0mvsQYjmVVtPxdIpkW+ETqGFKfpRm2CRO6hQ0kzfEg8Zy2JYA
-         xJWh27nfhQEAtr+JI1W50ivxudjc6evWnB1jcI1xWmmlctq6tJU6vGp2jQPSKbxbDB2b
-         HULwZZzRzb/Rl2614lMWOS/Z1bX/NcMyYgZJKMHgGpW37ajOb+1WCe9VX7D8iOMZiB9r
-         x1lF0tjWUPF3ql9AkHLflVaVGl1mxPJGt7QYVMCqgH+jz5w8HancWmRPKlII2icX5fLT
-         zFBw==
+        b=q03uj+WHcob6LcGxiw9QDWeO1h8MYia0BkXHnbLmKJSNGk+EkvNsIMjNEOwJJQ+823
+         Vi+zKgqlsT+75EMEQqmNUjIWi5wH4fLkEiqwqTymwNdbv97P0PiBOmdpILnU2vez2ALp
+         dxkhfo232j+Q5YcY0JQSUyAdc66qT0KUVVTYi+pisdwbknX+GXYkUau841qRvB3PZTHg
+         w5NKtzX+Is4rV7efjQUuIUX3gj+SPR9FSSte3rB1LRkN61NJEFvjJmo6oG3gzTDdMhCE
+         VI9bP/X9qjxmGIbDmmWyIhSVLIMK+KKxD1eZx5KTzQwhAVfEZanGSXgiAsH7Rcb2Aa9U
+         l9/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=Uii3wV7w/cvRpKlh3I5P+8SIQoLxU63edxAIpm+V+zA=;
-        b=lirmZkJkp9lo67Wj50MYbuWVx2Jrl069qHffKhG768Fx1BLLEyo2wD1MV5k6u/8gVm
-         rPj0PQPpzCYBoy35jeFmC0LKZbpEht2aRgN7RpQFCx26HYdPRJvsE1fFx1eZgpvuUPSJ
-         kCHHStXLR4mZtxtBA/4lQarxsMVfIEcI9et37/cgkSJ35jaAYkHiC1x9VXimF0snY2PA
-         qlxnLJ3ZPyUQ/B7YpTAVBuVuFZgng6sQyL6Jf02Mwkbk2MzdO29nvoeneTaMjUhjTA/I
-         PHZWDHqoYYSzlbaHW9m4rL1U3OYmCvuJNsjuBNPwkCsq1GSnRfeawE4NIAjbjWwI1aB5
-         /u2g==
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:dkim-signature;
+        bh=LvIwUW+HT9nLceqRk75QgxghUvMJ3y0FU0XGr+ELl2E=;
+        b=k5i4pLehsrUzHF2cOphKK4bvSRszXE5uXUiA1D5nvpOo85gR7pECelFysLUT0T9rrj
+         KXDA1acm50XHNKGrpHhmuV1Uk0fxffMEHLAzec9VLZ8yWOsl6v95EOZmCMa564IMZLI8
+         5eczJtBnmWYVoRvhMpSPbteT02pqVJ2QOfHPK4BIURAxFhm2N8iXr5hw65J+qOU7PvQG
+         f1PxWM34TjzTw1qetU0WV8qZaEo450H4EGahpaNixY6j2N6HMpKrx2b989b5j9E8P/9s
+         K7YSV6mlC5wLzBadjwnn4Pu5VvL8o+YLthfb5EG6Fuy8Rh7pKLGWVUKbYKwsyxGKOwdD
+         lBoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=dGkXUBfT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i204si15807926ybc.254.2020.07.05.00.09.22
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 Jul 2020 00:09:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i7tXcZXy;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id v12si11024772eja.379.2020.07.05.00.12.54;
+        Sun, 05 Jul 2020 00:12:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=dGkXUBfT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39336 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrym9-000791-LT
-	for alex.bennee@linaro.org; Sun, 05 Jul 2020 03:09:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52734)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1jrym1-00078h-Au; Sun, 05 Jul 2020 03:09:13 -0400
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:51421 helo=ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1jrylx-0005xZ-Jz; Sun, 05 Jul 2020 03:09:13 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4B00DP1Qk5z9sSJ; Sun,  5 Jul 2020 17:08:53 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1593932933;
- bh=ywo6b+L+5gcEpl2+eSCOs43OV+chUDGZ62wu+OU3o6k=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=dGkXUBfTm6RXDtJnVowC+IE88Ig0MKFkg8I/GHBUiErx6atEpyTBuwEkpb6qOW+1e
- jcyJYgJ7hs5/7YpN8CadKXGzFm2zFSLVTadyvwaK30CN5ed7gTzfxO3JIshfVG0f5N
- HocfpoP85Q9lpS1dqt0a7DhD4CVWfk/ieic6UPgo=
-Date: Sun, 5 Jul 2020 15:34:13 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 2/2] hw/ppc: Use TYPE_SYSBUS_OHCI instead of hardcoded
- string
-Message-ID: <20200705053413.GA6626@umbus.fritz.box>
-References: <20200703184952.4918-1-f4bug@amsat.org>
- <20200703184952.4918-3-f4bug@amsat.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i7tXcZXy;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726369AbgGEHMv (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Sun, 5 Jul 2020 03:12:51 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:38236 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1725901AbgGEHMu (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Sun, 5 Jul 2020 03:12:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1593933168;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=LvIwUW+HT9nLceqRk75QgxghUvMJ3y0FU0XGr+ELl2E=;
+        b=i7tXcZXyxdmN6dYm5WCWo9rSRjTtxc2FJjZazpv0ho2NUw5tG/2Gl9MYrRsclfPSWPJUIs
+        CDXeG+zL9HB/i0heJ13YoDHkjRseolTReWD1QJKOe3Hkm8HUhztn7m6V6fH0/ivqwZzOa2
+        btdctVtjb5md+xihQY/k7/3wcpKkmZg=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-147-Rub8kqyPNBivwLXQ4bnpvA-1; Sun, 05 Jul 2020 03:12:47 -0400
+X-MC-Unique: Rub8kqyPNBivwLXQ4bnpvA-1
+Received: by mail-wm1-f69.google.com with SMTP id c124so9026430wme.0
+        for <kvm@vger.kernel.org>; Sun, 05 Jul 2020 00:12:47 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=LvIwUW+HT9nLceqRk75QgxghUvMJ3y0FU0XGr+ELl2E=;
+        b=hGD3cVUv9xp6+MPRtapmT7iyiyVQhlq/wK7/D6AdevBiqCi4bD4WgBpLWVolO0Ai7j
+         2ohCyPx+g4aEHLsmCe5etOUauSiO04UKKqp6D3QheVSQgcfmsLF0z3jZyjyP/VNqJvxP
+         SdRcVylvP4mwRmQeu10atyJAxi6cvY8viY4VXuvz6r6oYlKokfUtqXScsGuRFxj5M5lF
+         TH6tq26aM/59/bM3WRxWkd0JhPvBANcRKcFhZTEiJoiWcUfadpiuMduEfRz2RoCWYjmT
+         zly1w0SZBGItn9+Kjhfb3+luNNCwLOKXCHgTTlbQM+Wa81Frtk2+jxa0c32PlNbEDQwU
+         w+gw==
+X-Gm-Message-State: AOAM532ltFnL1S242CK35ktrPL90rO8b6Ib/dhbt4GHI29yLudr/QnzK
+        4eohZ9ia8KW/ZFxjon6WbSLU6Ox5nf1jX/aEFqJcwuAX5IO1xnfZwZ+I+2aAM6XEko9bFVbMQ6R
+        A3msSNeAz72G0
+X-Received: by 2002:a7b:c3d0:: with SMTP id t16mr47478460wmj.117.1593933166436;
+        Sun, 05 Jul 2020 00:12:46 -0700 (PDT)
+X-Received: by 2002:a7b:c3d0:: with SMTP id t16mr47478437wmj.117.1593933166172;
+        Sun, 05 Jul 2020 00:12:46 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:adf2:29a0:7689:d40c? ([2001:b07:6468:f312:adf2:29a0:7689:d40c])
+        by smtp.gmail.com with ESMTPSA id 59sm19816795wrj.37.2020.07.05.00.12.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 05 Jul 2020 00:12:45 -0700 (PDT)
+Subject: Re: [RFC PATCH 4/7] accel/kvm: Simplify kvm_set_sigmask_len()
+To:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+        qemu-devel@nongnu.org
+Cc:     Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        David Hildenbrand <david@redhat.com>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        Richard Henderson <rth@twiddle.net>, qemu-s390x@nongnu.org,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Halil Pasic <pasic@linux.ibm.com>, qemu-arm@nongnu.org,
+        Cornelia Huck <cohuck@redhat.com>, qemu-ppc@nongnu.org,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Thomas Huth <thuth@redhat.com>
+References: <20200623105052.1700-1-philmd@redhat.com>
+ <20200623105052.1700-5-philmd@redhat.com>
+From:   Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <cc7b7da2-fcf8-5c5c-5c3c-9e96368ddd22@redhat.com>
+Date:   Sun, 5 Jul 2020 09:12:44 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="lrZ03NoBR/3+SXJZ"
-Content-Disposition: inline
-In-Reply-To: <20200703184952.4918-3-f4bug@amsat.org>
-Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -9
-X-Spam_score: -1.0
-X-Spam_bar: -
-X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XCqI7jXChEpY
+In-Reply-To: <20200623105052.1700-5-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: a4q6JBZHyjg1
 
+On 23/06/20 12:50, Philippe Mathieu-Daudé wrote:
+> The sigmask_len is a property of the accelerator, not the VM.
+> Simplify by directly using the global kvm_state, remove the
+> unnecessary KVMState* argument.
 
---lrZ03NoBR/3+SXJZ
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This is not entirely true, if there were multiple KVMStates how would
+you know which one to read from?  So it would have to be a global variable.
 
-On Fri, Jul 03, 2020 at 08:49:52PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> By using the TYPE_* definitions for devices, we can:
-> - quickly find where devices are used with 'git-grep'
-> - easily rename a non-user-creatable device (one-line change).
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+Paolo
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  hw/display/sm501.c | 3 ++-
->  hw/ppc/sam460ex.c  | 3 ++-
->  2 files changed, 4 insertions(+), 2 deletions(-)
->=20
-> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
-> index 9cccc68c35..c122a4eca5 100644
-> --- a/hw/display/sm501.c
-> +++ b/hw/display/sm501.c
-> @@ -36,6 +36,7 @@
->  #include "hw/qdev-properties.h"
->  #include "hw/i2c/i2c.h"
->  #include "hw/display/i2c-ddc.h"
-> +#include "hw/usb/hcd-ohci.h"
->  #include "qemu/range.h"
->  #include "ui/pixel_ops.h"
->  #include "qemu/bswap.h"
-> @@ -1961,7 +1962,7 @@ static void sm501_realize_sysbus(DeviceState *dev, =
-Error **errp)
->      sysbus_init_mmio(sbd, &s->state.mmio_region);
-> =20
->      /* bridge to usb host emulation module */
-> -    usb_dev =3D qdev_new("sysbus-ohci");
-> +    usb_dev =3D qdev_new(TYPE_SYSBUS_OHCI);
->      qdev_prop_set_uint32(usb_dev, "num-ports", 2);
->      qdev_prop_set_uint64(usb_dev, "dma-offset", s->base);
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(usb_dev), &error_fatal);
-> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
-> index 1a106a68de..593436937a 100644
-> --- a/hw/ppc/sam460ex.c
-> +++ b/hw/ppc/sam460ex.c
-> @@ -35,6 +35,7 @@
->  #include "hw/char/serial.h"
->  #include "hw/i2c/ppc4xx_i2c.h"
->  #include "hw/i2c/smbus_eeprom.h"
-> +#include "hw/usb/hcd-ohci.h"
->  #include "hw/usb/hcd-ehci.h"
->  #include "hw/ppc/fdt.h"
->  #include "hw/qdev-properties.h"
-> @@ -370,7 +371,7 @@ static void sam460ex_init(MachineState *machine)
-> =20
->      /* USB */
->      sysbus_create_simple(TYPE_PPC4xx_EHCI, 0x4bffd0400, uic[2][29]);
-> -    dev =3D qdev_new("sysbus-ohci");
-> +    dev =3D qdev_new(TYPE_SYSBUS_OHCI);
->      qdev_prop_set_string(dev, "masterbus", "usb-bus.0");
->      qdev_prop_set_uint32(dev, "num-ports", 6);
->      sbdev =3D SYS_BUS_DEVICE(dev);
-
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---lrZ03NoBR/3+SXJZ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl8BZlIACgkQbDjKyiDZ
-s5KS4Q/+JirVTbyghqt28vjm/cQzO7HW040SKRBB9iVctieCN4laJvYA3VvUxERH
-pujjHh2xnKbDyduzQlKfxO7EPENysPkvMbPxLidKgS/CeD0xNy7+2PWHDmrx2Zm8
-36whg9WlJw0BCleIIzBPpztKLB44owOZzpoKkEymGoFQeANE3ExRt8/TUzsIXCp1
-Q6lo5h6sr7FvFRnJnJpLupOGlzUn0t1ZeE9Wip/xgivmeTnWU405lfXugKZsblRt
-tk0pAYYbI4C8t/xTn3rckQ1ouiuJVYJaI+FAw0cb6RtFaj4L+/20NmAc/CgBSfXK
-NQVzAuKIqqjc4UjeCMsEyjGq1i3fmRDewOKJgh9iNMEeP9sZIHTYvgc5Ma1FuYOG
-/vNmhzCRxRasLarSO5s7AQNZsO/P1Yw+5pkSUHkHYPazafT8nsOqogH95HKiufRG
-eTw6RrwhZTq2QgUgtM/hWfCselfK3Bedg6kWaYkYLcNyQXVlZTzTJhkXEO9wzmg7
-YuIbJZuUAnHuW2NwogYwGUi200nhZ3VhdHRJNXl/kY+yHSrIx7ZlJmuS8M+iYbT0
-Svlp6AwtJGJJ0S/qrvPJlj71+5/GL5VGUlSLOOPig5qMfSxVFb14CcHp+cYTXclO
-yLmzCiVMcsjB5RrhZ8JPq1H0U5Cx9rnOiJVjmFnlqVt2DXdtXr4=
-=ah6p
------END PGP SIGNATURE-----
-
---lrZ03NoBR/3+SXJZ--
+>  include/sysemu/kvm.h | 2 +-
+>  accel/kvm/kvm-all.c  | 4 ++--
+>  target/mips/kvm.c    | 2 +-
+>  3 files changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+> index 3662641c99..44c1767a7f 100644
+> --- a/include/sysemu/kvm.h
+> +++ b/include/sysemu/kvm.h
+> @@ -469,7 +469,7 @@ uint32_t kvm_arch_get_supported_cpuid(KVMState *env, uint32_t function,
+>  uint64_t kvm_arch_get_supported_msr_feature(KVMState *s, uint32_t index);
+>  
+>  
+> -void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len);
+> +void kvm_set_sigmask_len(unsigned int sigmask_len);
+>  
+>  #if !defined(CONFIG_USER_ONLY)
+>  int kvm_physical_memory_addr_from_host(KVMState *s, void *ram_addr,
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index afd14492a0..7b3f76f23d 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -2240,9 +2240,9 @@ err:
+>      return ret;
+>  }
+>  
+> -void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len)
+> +void kvm_set_sigmask_len(unsigned int sigmask_len)
+>  {
+> -    s->sigmask_len = sigmask_len;
+> +    kvm_state->sigmask_len = sigmask_len;
+>  }
+>  
+>  static void kvm_handle_io(uint16_t port, MemTxAttrs attrs, void *data, int direction,
+> diff --git a/target/mips/kvm.c b/target/mips/kvm.c
+> index 0adfa70210..cc3e09bdef 100644
+> --- a/target/mips/kvm.c
+> +++ b/target/mips/kvm.c
+> @@ -48,7 +48,7 @@ unsigned long kvm_arch_vcpu_id(CPUState *cs)
+>  int kvm_arch_init(MachineState *ms, KVMState *s)
+>  {
+>      /* MIPS has 128 signals */
+> -    kvm_set_sigmask_len(s, 16);
+> +    kvm_set_sigmask_len(16);
+>  
+>      kvm_mips_fpu_cap = kvm_check_extension(KVM_CAP_MIPS_FPU);
+>      kvm_mips_msa_cap = kvm_check_extension(KVM_CAP_MIPS_MSA);
+> 

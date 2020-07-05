@@ -1,164 +1,139 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3856202lfm;
-        Sat, 4 Jul 2020 23:16:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx74ky5v+VKDLEjBTuBorpgqe/oiGR8aaTY3oUCOnHPAxxPJOnhzMoumPNqzRzW14+b/wsD
-X-Received: by 2002:aa7:d4d2:: with SMTP id t18mr22662152edr.166.1593929813981;
-        Sat, 04 Jul 2020 23:16:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593929813; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3862654lfm;
+        Sat, 4 Jul 2020 23:31:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxuKQQAQehTEKsiBQBMtVKSzS+ZnmiV2rbxdSToUUbDPQM/ndUZQ+5LnkVisCKFID7eXdcn
+X-Received: by 2002:a25:b211:: with SMTP id i17mr59836603ybj.241.1593930685930;
+        Sat, 04 Jul 2020 23:31:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593930685; cv=none;
         d=google.com; s=arc-20160816;
-        b=XKt9/3JrVxV2WyJ2mNAA1GT0CjGEl+Prber5OinSlZjbJxnuV8kQ7ib2kgyeaOQrdH
-         iKI/O27vDSTnPZPWwN+OjcLGmqCXixZPQq1hw5+LsYPyDVFSYGtfOIcwnTyc+mLdM1MM
-         SzKX7mSa0Bx9ECsaCkbq7uTf75TOpERDXIS7Knpf3KEfXKBT76vdWQ/lyCrLJpn50lGj
-         CztQvOHFoRo3yh+J8u/PxyweWQTozoSueFZDV8uTICVmw9PBgN9UQL2zbGKQfKJZwnw8
-         3TQtZyyT1t6OuXaua8KY8A01doVgRHzNhad62b8nxBXH9VPAVkRSqPEVjRIopzR7mt7+
-         pVoQ==
+        b=g5go2GtKBf83ujWI09kWTY5cGYxUHJ3b8/j6LEIVQ8NwWThVw5H7WeDz5+06C8jj4u
+         A/xIF33d/yc4Nj7AEpqknSyTup8NO01xd2thXXKklseK4sikjTuSVA91/Jdx8HaMqIaJ
+         +s/soonJE4ZQq3JqmJMtrRrh84l6JtPLBGfOMaBsrL1dJ/+MxuWyxFp9Uggr4lJ6Wiko
+         xMbKcRTN6ytL8RiBZQKsNz+HoxXPCgmexWRxfmcphHZbSlzrBsgYq2NIDIlsDcdoxEhv
+         gWUJaqqcfGV09oc4d7sK8F8Ed22tAoDF4ZHjjWDJYXfngIBC7FqNl5cFB0H1a7Kk7jXH
+         5gpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=3VADVZ6Ej0tDqIflCyu2IGJa04QpD6Nw95M1AmRUqy0=;
-        b=oQQDifsFUsT63euKvdYRKGHT8PAT2XeCpKaYMZ/VPm1sM5IJlAXHxGGWUtIARyQLDa
-         doD1sCgtwLKNABeAVVbrJJ3wKVnWQg9hLQjatzb/0qBEvixHqNluV/irrZlhIwJTYqHR
-         4jaADmRq4p+pGdDmWlK//1OALfCteLmCAruesRGdxbeg8L6rcB0x+bNQ1kd3U2s9xjvz
-         OwNOBYb23YW9Qwk3KWQAVje01/apJd7g0jlFlQ+W5QdWn70CuyiOo9dXid0ZO7UW83l5
-         +nowPzl2oEub+nAUQF72l2QULeDpA53UqDrMH/W+jmX0MI6tCjRLqP5bAubb3MQzSxOS
-         dDdw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date;
+        bh=AC0bKtFkufkyNwdJUNbQrXinwDiu3+IvdQQi3k0ExBk=;
+        b=XH5qwmI6RtCS8IMKkdwCrPjrIwN2U/aEs83ry1ibLsasQF0JGykws9zxASWDwS2VOn
+         9Ob4sYSCnOwRqnwJuyCRbmy2fNNOtoOWJZU8vIpj+AUjMhKYp8xMTLLn4cDavmDd5VbA
+         rlD/gmFWIJG3KHV5J4gttN27uq4uCYbVH3i3I1CKj61ZOotKugGMklG8RMIps1K9EEtY
+         JjCl1qEvS7P6XNdDlNFpG/5ivT8zjTR/zLfXJr7UMR0vY545PkBlbgZQLngN7KSQmr0y
+         mFXHoxi0pEeTF/88XkqeErMWp3zGJKTpQCF4mO0N2LRlafxDjr1O89wV2S8OXiZ8otTy
+         JCFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G7qAeS2m;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id x5si12798476edl.596.2020.07.04.23.16.53;
-        Sat, 04 Jul 2020 23:16:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t13si15963728ybl.25.2020.07.04.23.31.25
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 04 Jul 2020 23:31:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=G7qAeS2m;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1725964AbgGEGQw (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Sun, 5 Jul 2020 02:16:52 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35885 "EHLO
-        us-smtp-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org
-        with ESMTP id S1725873AbgGEGQw (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sun, 5 Jul 2020 02:16:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1593929810;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=3VADVZ6Ej0tDqIflCyu2IGJa04QpD6Nw95M1AmRUqy0=;
-        b=G7qAeS2myoTUTH1ULpx+FehAkbZc3PBZXN+azjMSkuFNYeZnz3dUx7ey3GzjTauUYfi5uf
-        v1qNuyw8UFIAXB9gwmYnelnFXMIx1WFoynr3d9g8UvnQKk+HCr0mxMDI8i8ER4aVsCLiMD
-        4AStgZfRcpsztkVzvdq+ytyMdxQ5NGU=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-408-vKC1CGMgMqe4rdICUKEzUg-1; Sun, 05 Jul 2020 02:16:46 -0400
-X-MC-Unique: vKC1CGMgMqe4rdICUKEzUg-1
-Received: by mail-wm1-f71.google.com with SMTP id z11so41318338wmg.5
-        for <kvm@vger.kernel.org>; Sat, 04 Jul 2020 23:16:46 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34590 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jryBR-0006pv-8y
+	for alex.bennee@linaro.org; Sun, 05 Jul 2020 02:31:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48590)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
+ id 1jryBD-0006oB-Nq; Sun, 05 Jul 2020 02:31:11 -0400
+Received: from mail-ej1-f68.google.com ([209.85.218.68]:38612)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <th.huth@gmail.com>)
+ id 1jryB9-0007r8-A0; Sun, 05 Jul 2020 02:31:10 -0400
+Received: by mail-ej1-f68.google.com with SMTP id w16so39185042ejj.5;
+ Sat, 04 Jul 2020 23:31:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=3VADVZ6Ej0tDqIflCyu2IGJa04QpD6Nw95M1AmRUqy0=;
-        b=OaVPJNgrPOT3aMxb8qFGVM6syh2dJ6nZ4f2HPjF2QXzbEjVM4GkbietWNWHqn2fgZB
-         Cqb4UtU23CCYe24Isi2boVJCmufMpl2hFiYrS9wFv2QV7+aJ8nOBeBRz6vbrXRYh5xji
-         kB73JfvSWlMaCju1/gs2DAuJOED4YyffF8wvfj9bz8BQMpy8TS11r1m6EI0ysjuPqisO
-         PgWWa6kjNYTKHnaxAtugGlyKvjh1VS6IDUOFgLQoZ3SArV1UrqVAOLN85EXEHJJaJICm
-         1QayNvX5OPTvU8Y1RKLSGYcKOCs5xFgrQcCTVOPp7VGkRZBKQayltbeXTrJ0Kk4edSVb
-         y/RA==
-X-Gm-Message-State: AOAM533FeWGNft54PNOBqB3Hgu7tBtx22FRK5qHFrbl7I/bq4t1sYKyM
-        XP4mTKnLfEMoxQ66DwPOxJ6zpN0VcIUfq1kjxErfwZWLDKbLpSlT575CY/oyrAAkPYUlCA/fw+i
-        z2jVPuckrGG6X
-X-Received: by 2002:adf:80e6:: with SMTP id 93mr42026010wrl.17.1593929805301;
-        Sat, 04 Jul 2020 23:16:45 -0700 (PDT)
-X-Received: by 2002:adf:80e6:: with SMTP id 93mr42025995wrl.17.1593929805116;
-        Sat, 04 Jul 2020 23:16:45 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:adf2:29a0:7689:d40c? ([2001:b07:6468:f312:adf2:29a0:7689:d40c])
-        by smtp.gmail.com with ESMTPSA id w7sm19014289wmc.32.2020.07.04.23.16.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 04 Jul 2020 23:16:44 -0700 (PDT)
-Subject: Re: [PATCH 0/7] accel/kvm: Simplify few functions that can use global
- kvm_state
-To:     =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-        qemu-devel@nongnu.org
-Cc:     Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        David Hildenbrand <david@redhat.com>,
-        Christian Borntraeger <borntraeger@de.ibm.com>,
-        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-        Richard Henderson <rth@twiddle.net>, qemu-s390x@nongnu.org,
-        David Gibson <david@gibson.dropbear.id.au>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Halil Pasic <pasic@linux.ibm.com>, qemu-arm@nongnu.org,
-        Cornelia Huck <cohuck@redhat.com>, qemu-ppc@nongnu.org,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Thomas Huth <thuth@redhat.com>
-References: <20200623105052.1700-1-philmd@redhat.com>
- <a36faa0a-6aa9-463d-03a0-b862141a427d@redhat.com>
-From:   Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <ad581a87-03dd-17d3-6ad2-cd6c90170f97@redhat.com>
-Date:   Sun, 5 Jul 2020 08:16:43 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=AC0bKtFkufkyNwdJUNbQrXinwDiu3+IvdQQi3k0ExBk=;
+ b=QPvPgAWMdZVws2Kp5/L9ptW0zp+5ro97UW9GZu+7aPRQTElCI0FpL+qD5pYA9Q1sTf
+ IWeIy5rxIPjFzjC4/aDDVSSCcCdRw72YeZzzmDf+6K9ATN4iDmOwsZkqGhvmIjAz1KDk
+ Tw5ntoRc9nVI1yAFhAGeon/KyrrKbliL5MM6Bh6qhmj//gE3PCFpV9KWVsuo+JKAxR5J
+ 1OpD2EYRjIlD/D4J1tN8N6hyVxmszp7HsYRBmPaptcsH7d3IxAQ+0wbQZ7GfQC3imOnO
+ 2f5YcLc8rCYjF8Gi2BXWVZTUhm8V641j253RLLNPz5QLPf+UMfKx+Nt4jZ9C9w6MdV+u
+ td6Q==
+X-Gm-Message-State: AOAM532BjjrlBLTqHEftg6ht14PL6Us7wBTiM5LMAFARMuKKa39hXYW4
+ pJiT3HepUby1nDNySM/Xebw=
+X-Received: by 2002:a17:906:1751:: with SMTP id
+ d17mr22130319eje.140.1593930664580; 
+ Sat, 04 Jul 2020 23:31:04 -0700 (PDT)
+Received: from thl530.multi.box (pd9e83654.dip0.t-ipconnect.de.
+ [217.232.54.84])
+ by smtp.gmail.com with ESMTPSA id by20sm14519161ejc.119.2020.07.04.23.31.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 04 Jul 2020 23:31:04 -0700 (PDT)
+Date: Sun, 5 Jul 2020 08:31:00 +0200
+From: Thomas Huth <huth@tuxfamily.org>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
+Subject: Re: [RFC PATCH v2 15/23] hw/m68k/mcf520x: Emit warning when old
+ code is used
+Message-ID: <20200705083100.19e74e4a@thl530.multi.box>
+In-Reply-To: <20200704153908.12118-16-philmd@redhat.com>
+References: <20200704153908.12118-1-philmd@redhat.com>
+ <20200704153908.12118-16-philmd@redhat.com>
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <a36faa0a-6aa9-463d-03a0-b862141a427d@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: vTfqzCr0SfOD
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=209.85.218.68; envelope-from=th.huth@gmail.com;
+ helo=mail-ej1-f68.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/05 02:31:04
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: 1
+X-Spam_score: 0.1
+X-Spam_bar: /
+X-Spam_report: (0.1 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=1,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Magnus Damm <magnus.damm@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ =?UTF-8?B?TWFyYy1BbmRy?= =?UTF-8?B?w6k=?= Lureau <marcandre.lureau@redhat.com>,
+ qemu-riscv@nongnu.org, Stafford Horne <shorne@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>, "Daniel
+ P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rYQEK+3U3QI0
 
-On 04/07/20 18:50, Philippe Mathieu-Daudé wrote:
-> kind ping :)
+Am Sat,  4 Jul 2020 17:39:00 +0200
+schrieb Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>:
 
-Queued all except 4.
+> This code hasn't been QOM'ified yet. Warn the user.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> v2: Add comment (thuth)
+> ---
+>  hw/m68k/mcf5206.c | 5 +++++
+>  hw/m68k/mcf5208.c | 3 +++
+>  2 files changed, 8 insertions(+)
 
-Paolo
-
-> On 6/23/20 12:50 PM, Philippe Mathieu-Daudé wrote:
->> Following Paolo's idea on kvm_check_extension():
->> https://www.mail-archive.com/qemu-devel@nongnu.org/msg713794.html
->>
->> CI:
->> https://travis-ci.org/github/philmd/qemu/builds/701213438
->>
->> Philippe Mathieu-Daudé (7):
->>   accel/kvm: Let kvm_check_extension use global KVM state
->>   accel/kvm: Simplify kvm_check_extension()
->>   accel/kvm: Simplify kvm_check_extension_list()
->>   accel/kvm: Simplify kvm_set_sigmask_len()
->>   target/i386/kvm: Simplify get_para_features()
->>   target/i386/kvm: Simplify kvm_get_mce_cap_supported()
->>   target/i386/kvm: Simplify kvm_get_supported_[feature]_msrs()
->>
->>  include/sysemu/kvm.h         |  4 +-
->>  accel/kvm/kvm-all.c          | 76 +++++++++++++++----------------
->>  hw/hyperv/hyperv.c           |  2 +-
->>  hw/i386/kvm/clock.c          |  2 +-
->>  hw/i386/kvm/i8254.c          |  4 +-
->>  hw/i386/kvm/ioapic.c         |  2 +-
->>  hw/intc/arm_gic_kvm.c        |  2 +-
->>  hw/intc/openpic_kvm.c        |  2 +-
->>  hw/intc/xics_kvm.c           |  2 +-
->>  hw/s390x/s390-stattrib-kvm.c |  2 +-
->>  target/arm/kvm.c             | 13 +++---
->>  target/arm/kvm32.c           |  2 +-
->>  target/arm/kvm64.c           | 15 +++---
->>  target/i386/kvm.c            | 88 +++++++++++++++++-------------------
->>  target/mips/kvm.c            |  6 +--
->>  target/ppc/kvm.c             | 34 +++++++-------
->>  target/s390x/cpu_models.c    |  3 +-
->>  target/s390x/kvm.c           | 30 ++++++------
->>  18 files changed, 141 insertions(+), 148 deletions(-)
->>
-> 
+Acked-by: Thomas Huth <huth@tuxfamily.org>

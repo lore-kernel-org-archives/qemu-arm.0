@@ -1,214 +1,840 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2518078lfm;
-        Fri, 3 Jul 2020 07:20:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJybH2U+im+hZlKAmWyWNSo8e3mK4sOtfOGQvqZ78+gwRJHL29kIBYPDnPejPpKnMHPOEBLP
-X-Received: by 2002:a67:c18c:: with SMTP id h12mr1166172vsj.131.1593786040286;
-        Fri, 03 Jul 2020 07:20:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593786040; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4306045lfm;
+        Sun, 5 Jul 2020 12:57:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzrVB9Kg0aMknX1ur9+Hp9KQucuBIyHPxPnuQOnDpAXPBXDLZNu0XDzGWNhPLEVtcxImq0i
+X-Received: by 2002:a25:80cd:: with SMTP id c13mr20358601ybm.253.1593979029063;
+        Sun, 05 Jul 2020 12:57:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593979029; cv=none;
         d=google.com; s=arc-20160816;
-        b=BoCOv4qdoPi90nfVwiNzxuT5UHSIID9JrRoKIRrN+erHIzw4ldxMWnhFVPF7ICSPER
-         i+WJPivqapFvThT8hj8uPrjq2cULmO1evDD8m6XKVQn05JoLF1id4v+RJYB978PdWqq9
-         qWlxARALqM15r3OmioCRv1RuNhvlfNd4R0F4MHPtBlIXVrgNkYnt5VFbhAcTZiJWRdpi
-         h+OL7Bdn0YT5nkRlBN+q6NnXLdxKSykR4pvMDu6z+3peg2jMIKPnNJdifYGn4a/ZlYB5
-         7z1EixWic4TRKsyeKWPL1kSVETrcHCnSjxt58zPjWoyuy5NjHkOSiRYWiOFaFBOT/+Pf
-         j2qg==
+        b=tKQ7tF2mB4GY2N6tLNmprsjjQmhgWTk4gG8uxtwF6NmfeOo6UyHg805D3/D7Ucr251
+         M9P3sTFwBuMvOSdK8y6Jn+i9Qp0x/DwLlMwpyqwoV2nMkcvrYwo04bDtkBp7MimnQ/3q
+         t/a/XuaXxGt8f7Bva4BcuEmR3hyir5bbIT43j9pFr91h7s1IW4YKHFWPFBj3f+DwpoRK
+         LhiaTXvAGGq4xe+NzjCGoHoSSSVBKcmvntPki19e8NyCR2hHh6s0ApgMZ+IDSa9Z6fBg
+         Uk+0N/dGmQhymuOjrg2QsmYr4ZMsPvetdwX6u0xmqVa5XTgHxTY+68Mx1c+ZHH/IQsEr
+         WDRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:user-agent
-         :in-reply-to:mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=PVTzsTheAmn9jl3yypvrWQaZhVAP5++U24xp6ZqKoTM=;
-        b=VyltZDUmulFifdhw7o0Q7ko9ZkAG0yorbANFehJKFQ0AcbSjr2yANTmbjy2ARvZzQc
-         pWCr2gbfQsCo+Yb2R/x8c7F1ZzK1TuEb3Wk5aK2iXqrIY24iKLFCZ+apHTTmEFxjHqiP
-         m67/+AsYkrur8CfuQzyUq+o6uGPlUzq/2Od66VaxqVCht7J70JS6N1p/ElJ8A+7tccBH
-         YwaA98NKdZ2egayMAI+53LhUFOHoGlKrVAJ0DaIfB2IqD4x8ldN+4wOlmWENaaw89eY4
-         PeQBSXbnVBo58qrqskB4v4tz5yswsfGsxwLlabbXxtsyFFBHgnyVd/ww/hDTHcI9bAs3
-         hGow==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=kQ6l8az03kehxbkrP0p2iddBUqHaPLMKVPPFuTfHu9U=;
+        b=mNJzCyOzoTqLkKoDWfH50UKb8wi2Ti2s2vLBY02/Z3BelSZRltIGf3/yVQiPLbPxOA
+         ERQgmivOjjjx//Hzexgap90mcAJMOXdwYVpRD8Djx/6jbyfD85DrlTQwIpKjy/PwTQ/n
+         /mkkLg+yMkY2Q3Yi7bLxQtZ4ccA1nTG0Q8vQ87Wvp2rcjgnhfh4QnszYjzvpuq4JK5DB
+         Mo6SeeomuIJTmqJxpTmXC9J4f8O+SLbzEjJ6ycZTM4LtTya5ETa2+JixYOaJcx+6iO4f
+         OvoTN5bnU9OOdOYaf60mQLpMd/C7fhMnuxPZdSjCaYqH1ePvYCJNgdzB5yC0zcFvdbJB
+         31JQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=B0YegNiO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kWtw4Dby;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 74si1536151uaq.119.2020.07.03.07.20.40
+        by mx.google.com with ESMTPS id l6si16478496ybk.260.2020.07.05.12.57.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jul 2020 07:20:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 05 Jul 2020 12:57:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=B0YegNiO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58576 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kWtw4Dby;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:46444 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrMYR-0003sh-IX
-	for alex.bennee@linaro.org; Fri, 03 Jul 2020 10:20:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34028)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jsAlA-0007Dg-EQ
+	for alex.bennee@linaro.org; Sun, 05 Jul 2020 15:57:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41578)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1jrMYG-0003ki-1Q
- for qemu-arm@nongnu.org; Fri, 03 Jul 2020 10:20:29 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:33420
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1jrMYC-0006T1-Eu
- for qemu-arm@nongnu.org; Fri, 03 Jul 2020 10:20:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1593786023;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=PVTzsTheAmn9jl3yypvrWQaZhVAP5++U24xp6ZqKoTM=;
- b=B0YegNiOeta373i3NLTw8IfRNRaIz2Hg9t6Hj4qRzbqafzDWcrLmR/r1TPXWKu0ZwhE4Yu
- bQWlSRhhKhf1h80mgck7wxJigb8UvfBkhRv+GGpHrs1/w9dqfXwNWJU1cmtIWJuWismfXs
- my2EhR0Al7lplz57RmbqE7MlL+OIa5A=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-186-5Z7nsEoAMau7dVzQ6wlZUg-1; Fri, 03 Jul 2020 10:20:20 -0400
-X-MC-Unique: 5Z7nsEoAMau7dVzQ6wlZUg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E4D18107ACCA;
- Fri,  3 Jul 2020 14:20:17 +0000 (UTC)
-Received: from work-vm (ovpn-114-207.ams2.redhat.com [10.36.114.207])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 28BB971682;
- Fri,  3 Jul 2020 14:20:16 +0000 (UTC)
-Date: Fri, 3 Jul 2020 15:20:13 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Keqian Zhu <zhukeqian1@huawei.com>
-Subject: Re: [PATCH v3] migration: Count new_dirty instead of real_dirty
-Message-ID: <20200703142013.GC36813@work-vm>
-References: <20200622032037.31112-1-zhukeqian1@huawei.com>
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1jsAkF-00066W-A0; Sun, 05 Jul 2020 15:56:11 -0400
+Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:33676)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1jsAkC-0007O4-Fr; Sun, 05 Jul 2020 15:56:11 -0400
+Received: by mail-il1-x141.google.com with SMTP id a11so22957968ilk.0;
+ Sun, 05 Jul 2020 12:56:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=kQ6l8az03kehxbkrP0p2iddBUqHaPLMKVPPFuTfHu9U=;
+ b=kWtw4Dby/XYYuLXEnjh8R367jJFb2MdhvmUNhliOCOidwjq5kztJFVOEv4/R6vhWeC
+ RY7gAm4KacL28+mwTTN5KpjoSdAo8vAjWE3civZNTdkbNc1OwRWFgI58VkcmUBPnwTeg
+ VhVjkU+933Xy3DQPz37vhwqc6XpqR4/JEPHHwOiCcGP6IQ4b5r/zWA+E0QCxmgfpfKAP
+ FjHH57TQKb3R/k2etDT0LHHlvwT02H37/vDecDoLgw7NpwRbhqCnns2Zh2ZdMB9ml7Cj
+ epxlcJkXBVkK5YxWhnLxJGl3M8QLz5pFd//ugEQWgu7LWVPk9KIhC/8yCC1piehUBCVP
+ 7tQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=kQ6l8az03kehxbkrP0p2iddBUqHaPLMKVPPFuTfHu9U=;
+ b=MAny0xrvsUTst07X1FVT8G3KYl7PrEsoGpWOMkC+/PzGNco6ETLhTZvrCK9dIM6Oau
+ K+7djy4i+y9L+qOxLcdattNnLsUyjhmRO9Za7QDm5pnCTU+2LqNxcjuyh5X31xJixrkH
+ krdikOLRay3M/lBxxdwy7YvV8iOAMrsJpCmG/M68ERV5kYc48IEAoHiPkn6jEzKfqDEd
+ HAkYeuMTIyAl+rb8vEnRwxzF5TsPddavIdTNVSjFBL7EJgrY3C1h9p1pwmk5Synvjyoo
+ 4ooRf0sEUmNW8a0vrOzI/lqGbkPrjy6WiVJhmKxeLHEnr0qCFczpn6LXNXY4npSRLqPL
+ 8MHg==
+X-Gm-Message-State: AOAM531xKgzUubcZEy3clRS3LmsHdFRK0U10888rdQtItwJ7+Xpewvx5
+ pBQV8JMEPvlySbhhHH6hIZn3WUAh41ma58z3XVo=
+X-Received: by 2002:a92:844b:: with SMTP id l72mr28524731ild.19.1593978966003; 
+ Sun, 05 Jul 2020 12:56:06 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200622032037.31112-1-zhukeqian1@huawei.com>
-User-Agent: Mutt/1.14.5 (2020-06-23)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/03 03:17:33
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+References: <20200704144943.18292-1-f4bug@amsat.org>
+ <20200704144943.18292-23-f4bug@amsat.org>
+In-Reply-To: <20200704144943.18292-23-f4bug@amsat.org>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Sun, 5 Jul 2020 21:55:57 +0200
+Message-ID: <CAPan3WpZ_SCGws05S2sH9jf4MYjciE0kgpeqrDSviGTpcaj_+Q@mail.gmail.com>
+Subject: Re: [PATCH 22/26] hw/usb/usb-hcd: Use OHCI type definitions
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="0000000000000c5dca05a9b726c6"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-il1-x141.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: zhang.zhanghailiang@huawei.com, Juan Quintela <quintela@redhat.com>,
- wanghaibin.wang@huawei.com, Chao Fan <fanc.fnst@cn.fujitsu.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, jianjay.zhou@huawei.com,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ xen-devel@lists.xenproject.org, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Paul Durrant <paul@xen.org>, Magnus Damm <magnus.damm@gmail.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Leif Lindholm <leif@nuviainc.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <rth@twiddle.net>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Paul Zimmerman <pauldzim@gmail.com>, qemu-ppc@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ke+LmdZ2HP3M
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LOdEOZC7do32
 
-* Keqian Zhu (zhukeqian1@huawei.com) wrote:
-> real_dirty_pages becomes equal to total ram size after dirty log sync
-> in ram_init_bitmaps, the reason is that the bitmap of ramblock is
-> initialized to be all set, so old path counts them as "real dirty" at
-> beginning.
-> 
-> This causes wrong dirty rate and false positive throttling.
-> 
-> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+--0000000000000c5dca05a9b726c6
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-OK, 
+On Sat, Jul 4, 2020, 16:50 Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wr=
+ote:
 
-Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
+> Various machine/board/soc models create OHCI device instances
+> with the generic QDEV API, and don't need to access USB internals.
+>
+> Simplify header inclusions by moving the QOM type names into a
+> simple header, with no need to include other "hw/usb" headers.
+>
+> Suggested-by: BALATON Zoltan <balaton@eik.bme.hu>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
-and queued.
-
-you might still want to look at migration_trigger_thrtottle and see if
-you can stop the throttling if in the RAM bulk stage.
-
-> ---
-> Changelog:
-> 
-> v3:
->  - Address Dave's comments.
-> 
-> v2:
->  - Use new_dirty_pages instead of accu_dirty_pages.
->  - Adjust commit messages.
-> ---
->  include/exec/ram_addr.h | 5 +----
->  migration/ram.c         | 8 +++++---
->  2 files changed, 6 insertions(+), 7 deletions(-)
-> 
-> diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
-> index 7b5c24e928..3ef729a23c 100644
-> --- a/include/exec/ram_addr.h
-> +++ b/include/exec/ram_addr.h
-> @@ -442,8 +442,7 @@ static inline void cpu_physical_memory_clear_dirty_range(ram_addr_t start,
->  static inline
->  uint64_t cpu_physical_memory_sync_dirty_bitmap(RAMBlock *rb,
->                                                 ram_addr_t start,
-> -                                               ram_addr_t length,
-> -                                               uint64_t *real_dirty_pages)
-> +                                               ram_addr_t length)
->  {
->      ram_addr_t addr;
->      unsigned long word = BIT_WORD((start + rb->offset) >> TARGET_PAGE_BITS);
-> @@ -469,7 +468,6 @@ uint64_t cpu_physical_memory_sync_dirty_bitmap(RAMBlock *rb,
->              if (src[idx][offset]) {
->                  unsigned long bits = atomic_xchg(&src[idx][offset], 0);
->                  unsigned long new_dirty;
-> -                *real_dirty_pages += ctpopl(bits);
->                  new_dirty = ~dest[k];
->                  dest[k] |= bits;
->                  new_dirty &= bits;
-> @@ -502,7 +500,6 @@ uint64_t cpu_physical_memory_sync_dirty_bitmap(RAMBlock *rb,
->                          start + addr + offset,
->                          TARGET_PAGE_SIZE,
->                          DIRTY_MEMORY_MIGRATION)) {
-> -                *real_dirty_pages += 1;
->                  long k = (start + addr) >> TARGET_PAGE_BITS;
->                  if (!test_and_set_bit(k, dest)) {
->                      num_dirty++;
-> diff --git a/migration/ram.c b/migration/ram.c
-> index 069b6e30bc..5554a7d2d8 100644
-> --- a/migration/ram.c
-> +++ b/migration/ram.c
-> @@ -859,9 +859,11 @@ static inline bool migration_bitmap_clear_dirty(RAMState *rs,
->  /* Called with RCU critical section */
->  static void ramblock_sync_dirty_bitmap(RAMState *rs, RAMBlock *rb)
->  {
-> -    rs->migration_dirty_pages +=
-> -        cpu_physical_memory_sync_dirty_bitmap(rb, 0, rb->used_length,
-> -                                              &rs->num_dirty_pages_period);
-> +    uint64_t new_dirty_pages =
-> +        cpu_physical_memory_sync_dirty_bitmap(rb, 0, rb->used_length);
+---
+>  hw/usb/hcd-ohci.h        |  2 +-
+>  include/hw/usb/usb-hcd.h | 16 ++++++++++++++++
+>  hw/arm/allwinner-a10.c   |  2 +-
+>  hw/arm/allwinner-h3.c    |  9 +++++----
+>  hw/arm/pxa2xx.c          |  3 ++-
+>  hw/arm/realview.c        |  3 ++-
+>  hw/arm/versatilepb.c     |  3 ++-
+>  hw/display/sm501.c       |  3 ++-
+>  hw/ppc/mac_newworld.c    |  3 ++-
+>  hw/ppc/mac_oldworld.c    |  3 ++-
+>  hw/ppc/sam460ex.c        |  3 ++-
+>  hw/ppc/spapr.c           |  3 ++-
+>  hw/usb/hcd-ohci-pci.c    |  2 +-
+>  13 files changed, 40 insertions(+), 15 deletions(-)
+>  create mode 100644 include/hw/usb/usb-hcd.h
+>
+> diff --git a/hw/usb/hcd-ohci.h b/hw/usb/hcd-ohci.h
+> index 771927ea17..6949cf0dab 100644
+> --- a/hw/usb/hcd-ohci.h
+> +++ b/hw/usb/hcd-ohci.h
+> @@ -21,6 +21,7 @@
+>  #ifndef HCD_OHCI_H
+>  #define HCD_OHCI_H
+>
+> +#include "hw/usb/usb-hcd.h"
+>  #include "sysemu/dma.h"
+>  #include "usb-internal.h"
+>
+> @@ -91,7 +92,6 @@ typedef struct OHCIState {
+>      void (*ohci_die)(struct OHCIState *ohci);
+>  } OHCIState;
+>
+> -#define TYPE_SYSBUS_OHCI "sysbus-ohci"
+>  #define SYSBUS_OHCI(obj) OBJECT_CHECK(OHCISysBusState, (obj),
+> TYPE_SYSBUS_OHCI)
+>
+>  typedef struct {
+> diff --git a/include/hw/usb/usb-hcd.h b/include/hw/usb/usb-hcd.h
+> new file mode 100644
+> index 0000000000..21fdfaf22d
+> --- /dev/null
+> +++ b/include/hw/usb/usb-hcd.h
+> @@ -0,0 +1,16 @@
+> +/*
+> + * QEMU USB HCD types
+> + *
+> + * Copyright (c) 2020  Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
 > +
-> +    rs->migration_dirty_pages += new_dirty_pages;
-> +    rs->num_dirty_pages_period += new_dirty_pages;
->  }
->  
->  /**
-> -- 
-> 2.19.1
-> 
-> 
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+> +#ifndef HW_USB_HCD_TYPES_H
+> +#define HW_USB_HCD_TYPES_H
+> +
+> +/* OHCI */
+> +#define TYPE_SYSBUS_OHCI            "sysbus-ohci"
+> +#define TYPE_PCI_OHCI               "pci-ohci"
+> +
+> +#endif
+> diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+> index 52e0d83760..53c24ff602 100644
+> --- a/hw/arm/allwinner-a10.c
+> +++ b/hw/arm/allwinner-a10.c
+> @@ -25,7 +25,7 @@
+>  #include "hw/misc/unimp.h"
+>  #include "sysemu/sysemu.h"
+>  #include "hw/boards.h"
+> -#include "hw/usb/hcd-ohci.h"
+> +#include "hw/usb/usb-hcd.h"
+>
+>  #define AW_A10_MMC0_BASE        0x01c0f000
+>  #define AW_A10_PIC_REG_BASE     0x01c20400
+> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+> index 8e09468e86..d1d90ffa79 100644
+> --- a/hw/arm/allwinner-h3.c
+> +++ b/hw/arm/allwinner-h3.c
+> @@ -28,6 +28,7 @@
+>  #include "hw/sysbus.h"
+>  #include "hw/char/serial.h"
+>  #include "hw/misc/unimp.h"
+> +#include "hw/usb/usb-hcd.h"
+>  #include "hw/usb/hcd-ehci.h"
+>  #include "hw/loader.h"
+>  #include "sysemu/sysemu.h"
+> @@ -381,16 +382,16 @@ static void allwinner_h3_realize(DeviceState *dev,
+> Error **errp)
+>                           qdev_get_gpio_in(DEVICE(&s->gic),
+>                                            AW_H3_GIC_SPI_EHCI3));
+>
+> -    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI0],
+> +    sysbus_create_simple(TYPE_SYSBUS_OHCI, s->memmap[AW_H3_OHCI0],
+>                           qdev_get_gpio_in(DEVICE(&s->gic),
+>                                            AW_H3_GIC_SPI_OHCI0));
+> -    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI1],
+> +    sysbus_create_simple(TYPE_SYSBUS_OHCI, s->memmap[AW_H3_OHCI1],
+>                           qdev_get_gpio_in(DEVICE(&s->gic),
+>                                            AW_H3_GIC_SPI_OHCI1));
+> -    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI2],
+> +    sysbus_create_simple(TYPE_SYSBUS_OHCI, s->memmap[AW_H3_OHCI2],
+>                           qdev_get_gpio_in(DEVICE(&s->gic),
+>                                            AW_H3_GIC_SPI_OHCI2));
+> -    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI3],
+> +    sysbus_create_simple(TYPE_SYSBUS_OHCI, s->memmap[AW_H3_OHCI3],
+>                           qdev_get_gpio_in(DEVICE(&s->gic),
+>                                            AW_H3_GIC_SPI_OHCI3));
+>
+> diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+> index f104a33463..27196170f5 100644
+> --- a/hw/arm/pxa2xx.c
+> +++ b/hw/arm/pxa2xx.c
+> @@ -18,6 +18,7 @@
+>  #include "hw/arm/pxa.h"
+>  #include "sysemu/sysemu.h"
+>  #include "hw/char/serial.h"
+> +#include "hw/usb/usb-hcd.h"
+>  #include "hw/i2c/i2c.h"
+>  #include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+> @@ -2196,7 +2197,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_spac=
+e,
+>          s->ssp[i] =3D (SSIBus *)qdev_get_child_bus(dev, "ssi");
+>      }
+>
+> -    sysbus_create_simple("sysbus-ohci", 0x4c000000,
+> +    sysbus_create_simple(TYPE_SYSBUS_OHCI, 0x4c000000,
+>                           qdev_get_gpio_in(s->pic, PXA2XX_PIC_USBH1));
+>
+>      s->pcmcia[0] =3D pxa2xx_pcmcia_init(address_space, 0x20000000);
+> diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+> index b6c0a1adb9..0aa34bd4c2 100644
+> --- a/hw/arm/realview.c
+> +++ b/hw/arm/realview.c
+> @@ -16,6 +16,7 @@
+>  #include "hw/net/lan9118.h"
+>  #include "hw/net/smc91c111.h"
+>  #include "hw/pci/pci.h"
+> +#include "hw/usb/usb-hcd.h"
+>  #include "net/net.h"
+>  #include "sysemu/sysemu.h"
+>  #include "hw/boards.h"
+> @@ -256,7 +257,7 @@ static void realview_init(MachineState *machine,
+>          sysbus_connect_irq(busdev, 3, pic[51]);
+>          pci_bus =3D (PCIBus *)qdev_get_child_bus(dev, "pci");
+>          if (machine_usb(machine)) {
+> -            pci_create_simple(pci_bus, -1, "pci-ohci");
+> +            pci_create_simple(pci_bus, -1, TYPE_PCI_OHCI);
+>          }
+>          n =3D drive_get_max_bus(IF_SCSI);
+>          while (n >=3D 0) {
+> diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
+> index e596b8170f..3e6224dc96 100644
+> --- a/hw/arm/versatilepb.c
+> +++ b/hw/arm/versatilepb.c
+> @@ -17,6 +17,7 @@
+>  #include "net/net.h"
+>  #include "sysemu/sysemu.h"
+>  #include "hw/pci/pci.h"
+> +#include "hw/usb/usb-hcd.h"
+>  #include "hw/i2c/i2c.h"
+>  #include "hw/i2c/arm_sbcon_i2c.h"
+>  #include "hw/irq.h"
+> @@ -273,7 +274,7 @@ static void versatile_init(MachineState *machine, int
+> board_id)
+>          }
+>      }
+>      if (machine_usb(machine)) {
+> -        pci_create_simple(pci_bus, -1, "pci-ohci");
+> +        pci_create_simple(pci_bus, -1, TYPE_PCI_OHCI);
+>      }
+>      n =3D drive_get_max_bus(IF_SCSI);
+>      while (n >=3D 0) {
+> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+> index 9cccc68c35..5f076c841f 100644
+> --- a/hw/display/sm501.c
+> +++ b/hw/display/sm501.c
+> @@ -33,6 +33,7 @@
+>  #include "hw/sysbus.h"
+>  #include "migration/vmstate.h"
+>  #include "hw/pci/pci.h"
+> +#include "hw/usb/usb-hcd.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/i2c/i2c.h"
+>  #include "hw/display/i2c-ddc.h"
+> @@ -1961,7 +1962,7 @@ static void sm501_realize_sysbus(DeviceState *dev,
+> Error **errp)
+>      sysbus_init_mmio(sbd, &s->state.mmio_region);
+>
+>      /* bridge to usb host emulation module */
+> -    usb_dev =3D qdev_new("sysbus-ohci");
+> +    usb_dev =3D qdev_new(TYPE_SYSBUS_OHCI);
+>      qdev_prop_set_uint32(usb_dev, "num-ports", 2);
+>      qdev_prop_set_uint64(usb_dev, "dma-offset", s->base);
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(usb_dev), &error_fatal);
+> diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+> index 7bf69f4a1f..3c32c1831b 100644
+> --- a/hw/ppc/mac_newworld.c
+> +++ b/hw/ppc/mac_newworld.c
+> @@ -55,6 +55,7 @@
+>  #include "hw/input/adb.h"
+>  #include "hw/ppc/mac_dbdma.h"
+>  #include "hw/pci/pci.h"
+> +#include "hw/usb/usb-hcd.h"
+>  #include "net/net.h"
+>  #include "sysemu/sysemu.h"
+>  #include "hw/boards.h"
+> @@ -411,7 +412,7 @@ static void ppc_core99_init(MachineState *machine)
+>      }
+>
+>      if (machine->usb) {
+> -        pci_create_simple(pci_bus, -1, "pci-ohci");
+> +        pci_create_simple(pci_bus, -1, TYPE_PCI_OHCI);
+>
+>          /* U3 needs to use USB for input because Linux doesn't support
+> via-cuda
+>          on PPC64 */
+> diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+> index f8c204ead7..a429a3e1df 100644
+> --- a/hw/ppc/mac_oldworld.c
+> +++ b/hw/ppc/mac_oldworld.c
+> @@ -37,6 +37,7 @@
+>  #include "hw/isa/isa.h"
+>  #include "hw/pci/pci.h"
+>  #include "hw/pci/pci_host.h"
+> +#include "hw/usb/usb-hcd.h"
+>  #include "hw/boards.h"
+>  #include "hw/nvram/fw_cfg.h"
+>  #include "hw/char/escc.h"
+> @@ -301,7 +302,7 @@ static void ppc_heathrow_init(MachineState *machine)
+>      qdev_realize_and_unref(dev, adb_bus, &error_fatal);
+>
+>      if (machine_usb(machine)) {
+> -        pci_create_simple(pci_bus, -1, "pci-ohci");
+> +        pci_create_simple(pci_bus, -1, TYPE_PCI_OHCI);
+>      }
+>
+>      if (graphic_depth !=3D 15 && graphic_depth !=3D 32 && graphic_depth =
+!=3D 8)
+> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+> index 781b45e14b..ac60d17a86 100644
+> --- a/hw/ppc/sam460ex.c
+> +++ b/hw/ppc/sam460ex.c
+> @@ -36,6 +36,7 @@
+>  #include "hw/i2c/ppc4xx_i2c.h"
+>  #include "hw/i2c/smbus_eeprom.h"
+>  #include "hw/usb/usb.h"
+> +#include "hw/usb/usb-hcd.h"
+>  #include "hw/usb/hcd-ehci.h"
+>  #include "hw/ppc/fdt.h"
+>  #include "hw/qdev-properties.h"
+> @@ -372,7 +373,7 @@ static void sam460ex_init(MachineState *machine)
+>
+>      /* USB */
+>      sysbus_create_simple(TYPE_PPC4xx_EHCI, 0x4bffd0400, uic[2][29]);
+> -    dev =3D qdev_new("sysbus-ohci");
+> +    dev =3D qdev_new(TYPE_SYSBUS_OHCI);
+>      qdev_prop_set_string(dev, "masterbus", "usb-bus.0");
+>      qdev_prop_set_uint32(dev, "num-ports", 6);
+>      sbdev =3D SYS_BUS_DEVICE(dev);
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 0c0409077f..db1706a66c 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -71,6 +71,7 @@
+>  #include "exec/address-spaces.h"
+>  #include "exec/ram_addr.h"
+>  #include "hw/usb/usb.h"
+> +#include "hw/usb/usb-hcd.h"
+>  #include "qemu/config-file.h"
+>  #include "qemu/error-report.h"
+>  #include "trace.h"
+> @@ -2958,7 +2959,7 @@ static void spapr_machine_init(MachineState *machin=
+e)
+>
+>      if (machine->usb) {
+>          if (smc->use_ohci_by_default) {
+> -            pci_create_simple(phb->bus, -1, "pci-ohci");
+> +            pci_create_simple(phb->bus, -1, TYPE_PCI_OHCI);
+>          } else {
+>              pci_create_simple(phb->bus, -1, "nec-usb-xhci");
+>          }
+> diff --git a/hw/usb/hcd-ohci-pci.c b/hw/usb/hcd-ohci-pci.c
+> index cb6bc55f59..14df83ec2e 100644
+> --- a/hw/usb/hcd-ohci-pci.c
+> +++ b/hw/usb/hcd-ohci-pci.c
+> @@ -29,8 +29,8 @@
+>  #include "trace.h"
+>  #include "hcd-ohci.h"
+>  #include "usb-internal.h"
+> +#include "hw/usb/usb-hcd.h"
+>
+> -#define TYPE_PCI_OHCI "pci-ohci"
+>  #define PCI_OHCI(obj) OBJECT_CHECK(OHCIPCIState, (obj), TYPE_PCI_OHCI)
+>
+>  typedef struct {
+> --
+> 2.21.3
+>
+>
 
+--0000000000000c5dca05a9b726c6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Sat, Jul 4, 2020, 16:50 Philippe Mathieu-Daud=C3=A9=
+ &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt; wrote:<br><=
+/div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-le=
+ft:1px #ccc solid;padding-left:1ex">Various machine/board/soc models create=
+ OHCI device instances<br>
+with the generic QDEV API, and don&#39;t need to access USB internals.<br>
+<br>
+Simplify header inclusions by moving the QOM type names into a<br>
+simple header, with no need to include other &quot;hw/usb&quot; headers.<br=
+>
+<br>
+Suggested-by: BALATON Zoltan &lt;<a href=3D"mailto:balaton@eik.bme.hu" targ=
+et=3D"_blank" rel=3D"noreferrer">balaton@eik.bme.hu</a>&gt;<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
+t.org" target=3D"_blank" rel=3D"noreferrer">f4bug@amsat.org</a>&gt;<br></bl=
+ockquote></div></div><div dir=3D"auto">Reviewed-by: Niek Linnenbank &lt;<a =
+href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;</=
+div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_quote=
+"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:=
+1px #ccc solid;padding-left:1ex">
+---<br>
+=C2=A0hw/usb/hcd-ohci.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 2 +-<br>
+=C2=A0include/hw/usb/usb-hcd.h | 16 ++++++++++++++++<br>
+=C2=A0hw/arm/allwinner-a10.c=C2=A0 =C2=A0|=C2=A0 2 +-<br>
+=C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 |=C2=A0 9 +++++----<br>
+=C2=A0hw/arm/pxa2xx.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 3 ++-<br>
+=C2=A0hw/arm/realview.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 3 ++-<br>
+=C2=A0hw/arm/versatilepb.c=C2=A0 =C2=A0 =C2=A0|=C2=A0 3 ++-<br>
+=C2=A0hw/display/sm501.c=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 3 ++-<br>
+=C2=A0hw/ppc/mac_newworld.c=C2=A0 =C2=A0 |=C2=A0 3 ++-<br>
+=C2=A0hw/ppc/mac_oldworld.c=C2=A0 =C2=A0 |=C2=A0 3 ++-<br>
+=C2=A0hw/ppc/sam460ex.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 3 ++-<br>
+=C2=A0hw/ppc/spapr.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 3 ++-<=
+br>
+=C2=A0hw/usb/hcd-ohci-pci.c=C2=A0 =C2=A0 |=C2=A0 2 +-<br>
+=C2=A013 files changed, 40 insertions(+), 15 deletions(-)<br>
+=C2=A0create mode 100644 include/hw/usb/usb-hcd.h<br>
+<br>
+diff --git a/hw/usb/hcd-ohci.h b/hw/usb/hcd-ohci.h<br>
+index 771927ea17..6949cf0dab 100644<br>
+--- a/hw/usb/hcd-ohci.h<br>
++++ b/hw/usb/hcd-ohci.h<br>
+@@ -21,6 +21,7 @@<br>
+=C2=A0#ifndef HCD_OHCI_H<br>
+=C2=A0#define HCD_OHCI_H<br>
+<br>
++#include &quot;hw/usb/usb-hcd.h&quot;<br>
+=C2=A0#include &quot;sysemu/dma.h&quot;<br>
+=C2=A0#include &quot;usb-internal.h&quot;<br>
+<br>
+@@ -91,7 +92,6 @@ typedef struct OHCIState {<br>
+=C2=A0 =C2=A0 =C2=A0void (*ohci_die)(struct OHCIState *ohci);<br>
+=C2=A0} OHCIState;<br>
+<br>
+-#define TYPE_SYSBUS_OHCI &quot;sysbus-ohci&quot;<br>
+=C2=A0#define SYSBUS_OHCI(obj) OBJECT_CHECK(OHCISysBusState, (obj), TYPE_SY=
+SBUS_OHCI)<br>
+<br>
+=C2=A0typedef struct {<br>
+diff --git a/include/hw/usb/usb-hcd.h b/include/hw/usb/usb-hcd.h<br>
+new file mode 100644<br>
+index 0000000000..21fdfaf22d<br>
+--- /dev/null<br>
++++ b/include/hw/usb/usb-hcd.h<br>
+@@ -0,0 +1,16 @@<br>
++/*<br>
++ * QEMU USB HCD types<br>
++ *<br>
++ * Copyright (c) 2020=C2=A0 Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mai=
+lto:f4bug@amsat.org" target=3D"_blank" rel=3D"noreferrer">f4bug@amsat.org</=
+a>&gt;<br>
++ *<br>
++ * SPDX-License-Identifier: GPL-2.0-or-later<br>
++ */<br>
++<br>
++#ifndef HW_USB_HCD_TYPES_H<br>
++#define HW_USB_HCD_TYPES_H<br>
++<br>
++/* OHCI */<br>
++#define TYPE_SYSBUS_OHCI=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;sy=
+sbus-ohci&quot;<br>
++#define TYPE_PCI_OHCI=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0&quot;pci-ohci&quot;<br>
++<br>
++#endif<br>
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c<br>
+index 52e0d83760..53c24ff602 100644<br>
+--- a/hw/arm/allwinner-a10.c<br>
++++ b/hw/arm/allwinner-a10.c<br>
+@@ -25,7 +25,7 @@<br>
+=C2=A0#include &quot;hw/misc/unimp.h&quot;<br>
+=C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
+=C2=A0#include &quot;hw/boards.h&quot;<br>
+-#include &quot;hw/usb/hcd-ohci.h&quot;<br>
++#include &quot;hw/usb/usb-hcd.h&quot;<br>
+<br>
+=C2=A0#define AW_A10_MMC0_BASE=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x01c0f000<br>
+=C2=A0#define AW_A10_PIC_REG_BASE=C2=A0 =C2=A0 =C2=A00x01c20400<br>
+diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c<br>
+index 8e09468e86..d1d90ffa79 100644<br>
+--- a/hw/arm/allwinner-h3.c<br>
++++ b/hw/arm/allwinner-h3.c<br>
+@@ -28,6 +28,7 @@<br>
+=C2=A0#include &quot;hw/sysbus.h&quot;<br>
+=C2=A0#include &quot;hw/char/serial.h&quot;<br>
+=C2=A0#include &quot;hw/misc/unimp.h&quot;<br>
++#include &quot;hw/usb/usb-hcd.h&quot;<br>
+=C2=A0#include &quot;hw/usb/hcd-ehci.h&quot;<br>
+=C2=A0#include &quot;hw/loader.h&quot;<br>
+=C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
+@@ -381,16 +382,16 @@ static void allwinner_h3_realize(DeviceState *dev, Er=
+ror **errp)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0AW_H3_GIC_SPI_EHCI3));<br>
+<br>
+-=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;memmap[A=
+W_H3_OHCI0],<br>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_SYSBUS_OHCI, s-&gt;memmap[AW_H3_OH=
+CI0],<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0AW_H3_GIC_SPI_OHCI0));<br>
+-=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;memmap[A=
+W_H3_OHCI1],<br>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_SYSBUS_OHCI, s-&gt;memmap[AW_H3_OH=
+CI1],<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0AW_H3_GIC_SPI_OHCI1));<br>
+-=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;memmap[A=
+W_H3_OHCI2],<br>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_SYSBUS_OHCI, s-&gt;memmap[AW_H3_OH=
+CI2],<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0AW_H3_GIC_SPI_OHCI2));<br>
+-=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;memmap[A=
+W_H3_OHCI3],<br>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_SYSBUS_OHCI, s-&gt;memmap[AW_H3_OH=
+CI3],<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0AW_H3_GIC_SPI_OHCI3));<br>
+<br>
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c<br>
+index f104a33463..27196170f5 100644<br>
+--- a/hw/arm/pxa2xx.c<br>
++++ b/hw/arm/pxa2xx.c<br>
+@@ -18,6 +18,7 @@<br>
+=C2=A0#include &quot;hw/arm/pxa.h&quot;<br>
+=C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
+=C2=A0#include &quot;hw/char/serial.h&quot;<br>
++#include &quot;hw/usb/usb-hcd.h&quot;<br>
+=C2=A0#include &quot;hw/i2c/i2c.h&quot;<br>
+=C2=A0#include &quot;hw/irq.h&quot;<br>
+=C2=A0#include &quot;hw/qdev-properties.h&quot;<br>
+@@ -2196,7 +2197,7 @@ PXA2xxState *pxa270_init(MemoryRegion *address_space,=
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;ssp[i] =3D (SSIBus *)qdev_get_child=
+_bus(dev, &quot;ssi&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+-=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, 0x4c000000,<br=
+>
++=C2=A0 =C2=A0 sysbus_create_simple(TYPE_SYSBUS_OHCI, 0x4c000000,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 qdev_get_gpio_in(s-&gt;pic, PXA2XX_PIC_USBH1));<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0s-&gt;pcmcia[0] =3D pxa2xx_pcmcia_init(address_space, 0=
+x20000000);<br>
+diff --git a/hw/arm/realview.c b/hw/arm/realview.c<br>
+index b6c0a1adb9..0aa34bd4c2 100644<br>
+--- a/hw/arm/realview.c<br>
++++ b/hw/arm/realview.c<br>
+@@ -16,6 +16,7 @@<br>
+=C2=A0#include &quot;hw/net/lan9118.h&quot;<br>
+=C2=A0#include &quot;hw/net/smc91c111.h&quot;<br>
+=C2=A0#include &quot;hw/pci/pci.h&quot;<br>
++#include &quot;hw/usb/usb-hcd.h&quot;<br>
+=C2=A0#include &quot;net/net.h&quot;<br>
+=C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
+=C2=A0#include &quot;hw/boards.h&quot;<br>
+@@ -256,7 +257,7 @@ static void realview_init(MachineState *machine,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0sysbus_connect_irq(busdev, 3, pic[51]);<b=
+r>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0pci_bus =3D (PCIBus *)qdev_get_child_bus(=
+dev, &quot;pci&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (machine_usb(machine)) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 pci_create_simple(pci_bus, -1, &=
+quot;pci-ohci&quot;);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 pci_create_simple(pci_bus, -1, T=
+YPE_PCI_OHCI);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0n =3D drive_get_max_bus(IF_SCSI);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0while (n &gt;=3D 0) {<br>
+diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c<br>
+index e596b8170f..3e6224dc96 100644<br>
+--- a/hw/arm/versatilepb.c<br>
++++ b/hw/arm/versatilepb.c<br>
+@@ -17,6 +17,7 @@<br>
+=C2=A0#include &quot;net/net.h&quot;<br>
+=C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
+=C2=A0#include &quot;hw/pci/pci.h&quot;<br>
++#include &quot;hw/usb/usb-hcd.h&quot;<br>
+=C2=A0#include &quot;hw/i2c/i2c.h&quot;<br>
+=C2=A0#include &quot;hw/i2c/arm_sbcon_i2c.h&quot;<br>
+=C2=A0#include &quot;hw/irq.h&quot;<br>
+@@ -273,7 +274,7 @@ static void versatile_init(MachineState *machine, int b=
+oard_id)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0if (machine_usb(machine)) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 pci_create_simple(pci_bus, -1, &quot;pci-ohci&=
+quot;);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 pci_create_simple(pci_bus, -1, TYPE_PCI_OHCI);=
+<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0n =3D drive_get_max_bus(IF_SCSI);<br>
+=C2=A0 =C2=A0 =C2=A0while (n &gt;=3D 0) {<br>
+diff --git a/hw/display/sm501.c b/hw/display/sm501.c<br>
+index 9cccc68c35..5f076c841f 100644<br>
+--- a/hw/display/sm501.c<br>
++++ b/hw/display/sm501.c<br>
+@@ -33,6 +33,7 @@<br>
+=C2=A0#include &quot;hw/sysbus.h&quot;<br>
+=C2=A0#include &quot;migration/vmstate.h&quot;<br>
+=C2=A0#include &quot;hw/pci/pci.h&quot;<br>
++#include &quot;hw/usb/usb-hcd.h&quot;<br>
+=C2=A0#include &quot;hw/qdev-properties.h&quot;<br>
+=C2=A0#include &quot;hw/i2c/i2c.h&quot;<br>
+=C2=A0#include &quot;hw/display/i2c-ddc.h&quot;<br>
+@@ -1961,7 +1962,7 @@ static void sm501_realize_sysbus(DeviceState *dev, Er=
+ror **errp)<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_init_mmio(sbd, &amp;s-&gt;state.mmio_region);<br=
+>
+<br>
+=C2=A0 =C2=A0 =C2=A0/* bridge to usb host emulation module */<br>
+-=C2=A0 =C2=A0 usb_dev =3D qdev_new(&quot;sysbus-ohci&quot;);<br>
++=C2=A0 =C2=A0 usb_dev =3D qdev_new(TYPE_SYSBUS_OHCI);<br>
+=C2=A0 =C2=A0 =C2=A0qdev_prop_set_uint32(usb_dev, &quot;num-ports&quot;, 2)=
+;<br>
+=C2=A0 =C2=A0 =C2=A0qdev_prop_set_uint64(usb_dev, &quot;dma-offset&quot;, s=
+-&gt;base);<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_realize_and_unref(SYS_BUS_DEVICE(usb_dev), &amp;=
+error_fatal);<br>
+diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c<br>
+index 7bf69f4a1f..3c32c1831b 100644<br>
+--- a/hw/ppc/mac_newworld.c<br>
++++ b/hw/ppc/mac_newworld.c<br>
+@@ -55,6 +55,7 @@<br>
+=C2=A0#include &quot;hw/input/adb.h&quot;<br>
+=C2=A0#include &quot;hw/ppc/mac_dbdma.h&quot;<br>
+=C2=A0#include &quot;hw/pci/pci.h&quot;<br>
++#include &quot;hw/usb/usb-hcd.h&quot;<br>
+=C2=A0#include &quot;net/net.h&quot;<br>
+=C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
+=C2=A0#include &quot;hw/boards.h&quot;<br>
+@@ -411,7 +412,7 @@ static void ppc_core99_init(MachineState *machine)<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0if (machine-&gt;usb) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 pci_create_simple(pci_bus, -1, &quot;pci-ohci&=
+quot;);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 pci_create_simple(pci_bus, -1, TYPE_PCI_OHCI);=
+<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* U3 needs to use USB for input because =
+Linux doesn&#39;t support via-cuda<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0on PPC64 */<br>
+diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c<br>
+index f8c204ead7..a429a3e1df 100644<br>
+--- a/hw/ppc/mac_oldworld.c<br>
++++ b/hw/ppc/mac_oldworld.c<br>
+@@ -37,6 +37,7 @@<br>
+=C2=A0#include &quot;hw/isa/isa.h&quot;<br>
+=C2=A0#include &quot;hw/pci/pci.h&quot;<br>
+=C2=A0#include &quot;hw/pci/pci_host.h&quot;<br>
++#include &quot;hw/usb/usb-hcd.h&quot;<br>
+=C2=A0#include &quot;hw/boards.h&quot;<br>
+=C2=A0#include &quot;hw/nvram/fw_cfg.h&quot;<br>
+=C2=A0#include &quot;hw/char/escc.h&quot;<br>
+@@ -301,7 +302,7 @@ static void ppc_heathrow_init(MachineState *machine)<br=
+>
+=C2=A0 =C2=A0 =C2=A0qdev_realize_and_unref(dev, adb_bus, &amp;error_fatal);=
+<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0if (machine_usb(machine)) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 pci_create_simple(pci_bus, -1, &quot;pci-ohci&=
+quot;);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 pci_create_simple(pci_bus, -1, TYPE_PCI_OHCI);=
+<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0if (graphic_depth !=3D 15 &amp;&amp; graphic_depth !=3D=
+ 32 &amp;&amp; graphic_depth !=3D 8)<br>
+diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c<br>
+index 781b45e14b..ac60d17a86 100644<br>
+--- a/hw/ppc/sam460ex.c<br>
++++ b/hw/ppc/sam460ex.c<br>
+@@ -36,6 +36,7 @@<br>
+=C2=A0#include &quot;hw/i2c/ppc4xx_i2c.h&quot;<br>
+=C2=A0#include &quot;hw/i2c/smbus_eeprom.h&quot;<br>
+=C2=A0#include &quot;hw/usb/usb.h&quot;<br>
++#include &quot;hw/usb/usb-hcd.h&quot;<br>
+=C2=A0#include &quot;hw/usb/hcd-ehci.h&quot;<br>
+=C2=A0#include &quot;hw/ppc/fdt.h&quot;<br>
+=C2=A0#include &quot;hw/qdev-properties.h&quot;<br>
+@@ -372,7 +373,7 @@ static void sam460ex_init(MachineState *machine)<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0/* USB */<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_create_simple(TYPE_PPC4xx_EHCI, 0x4bffd0400, uic=
+[2][29]);<br>
+-=C2=A0 =C2=A0 dev =3D qdev_new(&quot;sysbus-ohci&quot;);<br>
++=C2=A0 =C2=A0 dev =3D qdev_new(TYPE_SYSBUS_OHCI);<br>
+=C2=A0 =C2=A0 =C2=A0qdev_prop_set_string(dev, &quot;masterbus&quot;, &quot;=
+usb-bus.0&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0qdev_prop_set_uint32(dev, &quot;num-ports&quot;, 6);<br=
+>
+=C2=A0 =C2=A0 =C2=A0sbdev =3D SYS_BUS_DEVICE(dev);<br>
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c<br>
+index 0c0409077f..db1706a66c 100644<br>
+--- a/hw/ppc/spapr.c<br>
++++ b/hw/ppc/spapr.c<br>
+@@ -71,6 +71,7 @@<br>
+=C2=A0#include &quot;exec/address-spaces.h&quot;<br>
+=C2=A0#include &quot;exec/ram_addr.h&quot;<br>
+=C2=A0#include &quot;hw/usb/usb.h&quot;<br>
++#include &quot;hw/usb/usb-hcd.h&quot;<br>
+=C2=A0#include &quot;qemu/config-file.h&quot;<br>
+=C2=A0#include &quot;qemu/error-report.h&quot;<br>
+=C2=A0#include &quot;trace.h&quot;<br>
+@@ -2958,7 +2959,7 @@ static void spapr_machine_init(MachineState *machine)=
+<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0if (machine-&gt;usb) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (smc-&gt;use_ohci_by_default) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 pci_create_simple(phb-&gt;bus, -=
+1, &quot;pci-ohci&quot;);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 pci_create_simple(phb-&gt;bus, -=
+1, TYPE_PCI_OHCI);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0} else {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0pci_create_simple(phb-&gt;b=
+us, -1, &quot;nec-usb-xhci&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+diff --git a/hw/usb/hcd-ohci-pci.c b/hw/usb/hcd-ohci-pci.c<br>
+index cb6bc55f59..14df83ec2e 100644<br>
+--- a/hw/usb/hcd-ohci-pci.c<br>
++++ b/hw/usb/hcd-ohci-pci.c<br>
+@@ -29,8 +29,8 @@<br>
+=C2=A0#include &quot;trace.h&quot;<br>
+=C2=A0#include &quot;hcd-ohci.h&quot;<br>
+=C2=A0#include &quot;usb-internal.h&quot;<br>
++#include &quot;hw/usb/usb-hcd.h&quot;<br>
+<br>
+-#define TYPE_PCI_OHCI &quot;pci-ohci&quot;<br>
+=C2=A0#define PCI_OHCI(obj) OBJECT_CHECK(OHCIPCIState, (obj), TYPE_PCI_OHCI=
+)<br>
+<br>
+=C2=A0typedef struct {<br>
+-- <br>
+2.21.3<br>
+<br>
+</blockquote></div></div></div>
+
+--0000000000000c5dca05a9b726c6--

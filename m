@@ -1,94 +1,94 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4334699lfm;
-        Sun, 5 Jul 2020 13:49:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzuxKEctbDZEkq3je2Jo35WTmETlYBrCg2Fe4GZGKvNOnaM2k26US1EXgSSQuvh5+AGr2DL
-X-Received: by 2002:a25:61ce:: with SMTP id v197mr64841158ybb.459.1593982155950;
-        Sun, 05 Jul 2020 13:49:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593982155; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4334721lfm;
+        Sun, 5 Jul 2020 13:49:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyHhxu6wbO2FrKrUHGg3MqnuwgCS72Qj81E/dV3BWTTNXbACSrxvmafRqn7UL98zXARV4uQ
+X-Received: by 2002:a25:bc13:: with SMTP id i19mr71743412ybh.391.1593982159062;
+        Sun, 05 Jul 2020 13:49:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593982159; cv=none;
         d=google.com; s=arc-20160816;
-        b=jt11tvXx1rW62bhLwMUkR3sffdUfmjsfV/7KqCxfQ99WB1SzNGZJ/HxiN2KmstIZpk
-         CdMqyoH6GCuzRN+I9nWXO2Fr8Dfic4jC7BJmoTAmVSl8fuh9B+Q1pgyYDk3bHxFQ5TYn
-         bEUdOl125+EXOooxZVmn68PeuIWhcDLnLYu0WUaix+tLjVOpj+DxDkoJiwChel7ZA6v+
-         n4bl80+6c4FHMPMiCYbTITZrmSt4unv0C5fRE5ojceOwQxla4Td6r+BHDSKYFj2RIQxj
-         Tio3i7XgigEG0gf0uZ62gFqp4IH95iTXMimXHKzHt4bf91dvIlop89RGMp6cvN+kf5Kx
-         /mJw==
+        b=JjgpWgJ+g288/gBhFft6munssJPcNH7gboZSpyMXRy5Y9gO+NJ1aLJYAllp7D+aExE
+         ni8UTPMe1gD9AjSNEuzfczZAe+Q9pW2oonE/4cpKoquMh8qS+GsIhZmeDX18zJ84V5iG
+         OoTQsikK92PLB6ZCwr3gFuQcnEVTd4n7yxLbEydPbLs5d82PGNMbuNYn61LNM7OTF3Dq
+         56qmU/x4QDHGwf187ohGl60Mrl1HQbRjDfy45U0W67olAYw8qy6iwd9EWIRoEqtTHuhO
+         p1nkXjSlb7X8704QsS7IzPhrMJ5xyDAbotcOQROlzxSPz4h6pEgHmIbtP7N1vflUEL7/
+         a/tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ixcXKWbf6cfHfw1IyV/7F3PpTUGdIgNQjxeIJDW6DDw=;
-        b=wgRAF9IagJlmRLqFG4mYbBPwytqs9PQ+y1TjnoDTKJlGRaPTNb+auYEdtZgrWx20ea
-         2m7cnZynb/mLiidVcu1ZWX9opDQgwVx5gbdvv1t2CfCWDaG71qvaN1xTq+qBR6f9hPAC
-         lYygNm8jPgglQ2zZJBF0dybEktHA0p87ye9/Krqpu/17u9gTIjutf3BY8H7XQZuHpIOq
-         rLOYCE95RPpPrjyVM3u+K9i0tfiPOrid9hV9OKqXaq+E4VsXqutPPI0tfCmj4uz+GkGc
-         inGmnDl44TmQc7oJWHoytIx4lp3Ay8Jkz5iTX13foSMKWpgfk/m5XWuxHhNh/qHz10Qe
-         fMaw==
+        bh=v1NlZalUn9sYtpkkGM3q4r5EBxdvP894Z098G1hnWP4=;
+        b=TJdc5DMaK9D4y0ig47iuKVe1xDBIK+D7AqHeALo3XWW/7bsmZ6PafyQZQCnQr0mbxY
+         qVC/wWJHly5MzWsRplN8/lDunve14BqEArn4HdElRVBS0DbVgDlS87+sV8hwUKNsptKy
+         aH3y1bz0h3Qer8v+uGAZuexftsRq1duM1krnRZiISulLaoQGwv9n+UiKnFSsEeJkqth9
+         AukCsIZ9+LUn60/bcrjZjUOHi9q0X+3lWzT0vqyCLpdO33VsY7wq7+dMXF+BeJt+z8+g
+         AoIb936cA5+cezCzT2ad3r2bUnGY8syY5aByeJTDgKGvjCHb7P7JXZL90P7N2+nZBdUM
+         y58g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dX9X87CI;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RNSj7tMK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c12si15730703ybj.225.2020.07.05.13.49.15
+        by mx.google.com with ESMTPS id n66si17684146yba.117.2020.07.05.13.49.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 Jul 2020 13:49:15 -0700 (PDT)
+        Sun, 05 Jul 2020 13:49:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dX9X87CI;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RNSj7tMK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43992 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44320 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsBZb-0008WA-9y
-	for alex.bennee@linaro.org; Sun, 05 Jul 2020 16:49:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50742)
+	id 1jsBZe-0000D4-DB
+	for alex.bennee@linaro.org; Sun, 05 Jul 2020 16:49:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50708)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jsBXE-0004sY-Eo; Sun, 05 Jul 2020 16:46:48 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:37439)
+ id 1jsBXA-0004hS-KI; Sun, 05 Jul 2020 16:46:44 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:52596)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jsBXC-0000qW-No; Sun, 05 Jul 2020 16:46:48 -0400
-Received: by mail-wm1-x330.google.com with SMTP id o2so39569814wmh.2;
- Sun, 05 Jul 2020 13:46:45 -0700 (PDT)
+ id 1jsBX8-0000py-Rw; Sun, 05 Jul 2020 16:46:44 -0400
+Received: by mail-wm1-x344.google.com with SMTP id q15so37072259wmj.2;
+ Sun, 05 Jul 2020 13:46:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ixcXKWbf6cfHfw1IyV/7F3PpTUGdIgNQjxeIJDW6DDw=;
- b=dX9X87CICh83fMLpy1imMTodQaq6w4CS+Qa/L4TVpg8B8IE3gJ7frwcEVhcIRfaVvV
- wVIMR22gHAOpnivn6uI9WT7Ngq4Nbz6X0H5s6hS15PWwErB3AXNMYoTQW9RtPQcaJGdc
- 8Oyu2LP/7YkDCGJcI1siFDU3mIcsrmmuuSjk7+5v1bNVBGyrxp/mkxM2Wxftb4aWUJlr
- hXaGZnRE17OjSBfmF1v0DviKNeXSttdh8UACH5SRshLFm5OSYTnY13NsyVwUsrJgWFuZ
- 2xRYWcr62P6+Cy1kaJQCqswNP5r/FulYvUd02Qu9woFqg6M8gL9GIBRnj99W/lhmwmSE
- FVNQ==
+ bh=v1NlZalUn9sYtpkkGM3q4r5EBxdvP894Z098G1hnWP4=;
+ b=RNSj7tMK0/nBt4fFGPLqNk+LrrXz1yQyjt56PsKMq6D3C1QDpdObXzPb6r8a6rbhoV
+ AtImB+Io9PTAfVLs+4livWbCY3jDyqoJXgyt2bAT8Qc5gLnPh6jzs62bCB9fbTdnWx1z
+ e61c1nmN+Uho/HE8bHhNkSGfxOLoPByMwi2A5/mJorMtn0hNUsP2A7fd5NJ1/ECLtcZL
+ KZEnl+YlotqTyOtTnD4310L7cyRFVhnbO5frKWCqKmRoR+5oXa/vK4/ns7OXHqjf9Zxr
+ pwJl8PEkWwWEb9hyEkJEuqtw9XQw/B1SbA3GTYvPrWPfieU3hhwYW+wziqtl4uztDQlE
+ 6FJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=ixcXKWbf6cfHfw1IyV/7F3PpTUGdIgNQjxeIJDW6DDw=;
- b=B1LZUWG3s3mPmsw3sT+rf+J07koIsb3ejVXyNswxUrp6ux91+Ch7RBdq3OfmXOiBj2
- um0D7Hldg9mz5JiqXIrl+eNVaBlvBfczbpk6fO6e8u07ohkuM+XiFwj3PtTUYjBfqlqw
- wkcT8Ygc1v/yqrZP+9aLmcxsDu/SPJ+lfdgRJelzD9mUpgUANCn+mY3a/FU+Dx6rvkNH
- tzrJfdXgRT5BnDBMXGMjgigXjEAJkKDcqwscBP8m+X7tbQtumDiaqxQOJQhQgQFfhSGb
- HYm4i4og/xSaJTircfC7CMXs74IjOk6cgm4GzXyYafeDybMwbNdS+fPp/m59Bghimn+g
- zVoQ==
-X-Gm-Message-State: AOAM531DGIvqZ44IF3jCWN5nL7xBGVx8JRJ5HdGaCCJonK7c7T79hI8n
- T/yIFPK/Uu3jNN/xB7rAcleDLBmYgLA=
-X-Received: by 2002:a1c:e4d4:: with SMTP id b203mr17343330wmh.49.1593982004659; 
- Sun, 05 Jul 2020 13:46:44 -0700 (PDT)
+ bh=v1NlZalUn9sYtpkkGM3q4r5EBxdvP894Z098G1hnWP4=;
+ b=Xx4G/8h+desEWaqEuE6y901DNYj7MKndPoC8D0rGGCOvWs26SUYlDzKoxTT8Sywl5R
+ zjUOcQN9JoTykSF+Nkp7nwVFeHFlHQbF41d8sYzLMeS19kWH1I7S2CddgdyQT1cse85Y
+ pnpC3sszgFsMVCI/qDwlmtFFARZ5AocwcDn6b2lpgVr7oKIBpUVrM+y9y8wODEm148vT
+ 4J9UyrcPFLf5k4JNfbGba5NhmOTnBm3wJhFpcwBXAWD8MkKEEyU6xudVQmfy65hRvDab
+ +dw95x0Qe2yG0LY+izi49WK4sUpTdzOW96gTLhmjob55W2wL6BCSdH8O0O2dtPKhVadQ
+ +Kqw==
+X-Gm-Message-State: AOAM530ngNLvbgbAPjAYM5KUVByTdcvU+Ut7GuQ6YnOOdZN896Q98pDO
+ yGNy+Gj++MNU5AI1/AKGItk+aGJbS/c=
+X-Received: by 2002:a1c:7f87:: with SMTP id a129mr48288069wmd.10.1593982000914; 
+ Sun, 05 Jul 2020 13:46:40 -0700 (PDT)
 Received: from localhost.localdomain (1.red-83-51-162.dynamicip.rima-tde.net.
  [83.51.162.1])
- by smtp.gmail.com with ESMTPSA id g144sm51397817wme.2.2020.07.05.13.46.43
+ by smtp.gmail.com with ESMTPSA id g144sm51397817wme.2.2020.07.05.13.46.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Jul 2020 13:46:44 -0700 (PDT)
+ Sun, 05 Jul 2020 13:46:40 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 10/10] hw/sd: move sdcard legacy API to
- 'hw/sd/sdcard_legacy.h'
-Date: Sun,  5 Jul 2020 22:46:30 +0200
-Message-Id: <20200705204630.4133-11-f4bug@amsat.org>
+Subject: [PATCH v4 07/10] hw/sd/pl181: Do not create SD card within the SDHCI
+ controller
+Date: Sun,  5 Jul 2020 22:46:27 +0200
+Message-Id: <20200705204630.4133-8-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200705204630.4133-1-f4bug@amsat.org>
 References: <20200705204630.4133-1-f4bug@amsat.org>
@@ -96,8 +96,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -119,138 +119,220 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Alistair Francis <alistair.francis@xilinx.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+ Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T8e2M6Dffseh
+X-TUID: otfba7EF30ex
 
-omap_mmc.c is the last device left using the legacy sdcard API.
-Move the prototype declarations into a separate header, to
-make it clear this is a legacy API.
+SDHCI controllers provide a SD Bus to plug SD cards, but don't
+come with SD card plugged in :) Let the machine/board object
+create and plug the SD cards when required.
 
-Reviewed-by: Alistair Francis <alistair.francis@xilinx.com>
-Message-Id: <20180216022933.10945-8-f4bug@amsat.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- include/hw/sd/sd.h            | 16 -----------
- include/hw/sd/sdcard_legacy.h | 50 +++++++++++++++++++++++++++++++++++
- hw/sd/omap_mmc.c              |  2 +-
- hw/sd/sd.c                    |  1 +
- 4 files changed, 52 insertions(+), 17 deletions(-)
- create mode 100644 include/hw/sd/sdcard_legacy.h
+ hw/arm/integratorcp.c | 13 +++++++++++++
+ hw/arm/realview.c     | 12 ++++++++++++
+ hw/arm/versatilepb.c  | 26 ++++++++++++++++++++++++--
+ hw/arm/vexpress.c     | 11 +++++++++++
+ hw/sd/pl181.c         | 19 +------------------
+ 5 files changed, 61 insertions(+), 20 deletions(-)
 
-diff --git a/include/hw/sd/sd.h b/include/hw/sd/sd.h
-index ace350e0e8..8767ab817c 100644
---- a/include/hw/sd/sd.h
-+++ b/include/hw/sd/sd.h
-@@ -136,22 +136,6 @@ typedef struct {
-     void (*set_readonly)(DeviceState *dev, bool readonly);
- } SDBusClass;
- 
--/* Legacy functions to be used only by non-qdevified callers */
--SDState *sd_init(BlockBackend *bs, bool is_spi);
--int sd_do_command(SDState *sd, SDRequest *req,
--                  uint8_t *response);
--void sd_write_data(SDState *sd, uint8_t value);
--uint8_t sd_read_data(SDState *sd);
--void sd_set_cb(SDState *sd, qemu_irq readonly, qemu_irq insert);
--/* sd_enable should not be used -- it is only used on the nseries boards,
-- * where it is part of a broken implementation of the MMC card slot switch
-- * (there should be two card slots which are multiplexed to a single MMC
-- * controller, but instead we model it with one card and controller and
-- * disable the card when the second slot is selected, so it looks like the
-- * second slot is always empty).
-- */
--void sd_enable(SDState *sd, bool enable);
--
- /* Functions to be used by qdevified callers (working via
-  * an SDBus rather than directly with SDState)
-  */
-diff --git a/include/hw/sd/sdcard_legacy.h b/include/hw/sd/sdcard_legacy.h
-new file mode 100644
-index 0000000000..8681f8089b
---- /dev/null
-+++ b/include/hw/sd/sdcard_legacy.h
-@@ -0,0 +1,50 @@
-+/*
-+ * SD Memory Card emulation (deprecated legacy API)
-+ *
-+ * Copyright (c) 2006 Andrzej Zaborowski  <balrog@zabor.org>
-+ *
-+ * Redistribution and use in source and binary forms, with or without
-+ * modification, are permitted provided that the following conditions
-+ * are met:
-+ *
-+ * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer.
-+ * 2. Redistributions in binary form must reproduce the above copyright
-+ *    notice, this list of conditions and the following disclaimer in
-+ *    the documentation and/or other materials provided with the
-+ *    distribution.
-+ *
-+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS''
-+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-+ * PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR
-+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
-+ * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-+ */
-+#ifndef HW_SDCARD_LEGACY_H
-+#define HW_SDCARD_LEGACY_H
-+
-+#include "hw/sd/sd.h"
-+
-+/* Legacy functions to be used only by non-qdevified callers */
-+SDState *sd_init(BlockBackend *blk, bool is_spi);
-+int sd_do_command(SDState *card, SDRequest *request, uint8_t *response);
-+void sd_write_data(SDState *card, uint8_t value);
-+uint8_t sd_read_data(SDState *card);
-+void sd_set_cb(SDState *card, qemu_irq readonly, qemu_irq insert);
-+
-+/* sd_enable should not be used -- it is only used on the nseries boards,
-+ * where it is part of a broken implementation of the MMC card slot switch
-+ * (there should be two card slots which are multiplexed to a single MMC
-+ * controller, but instead we model it with one card and controller and
-+ * disable the card when the second slot is selected, so it looks like the
-+ * second slot is always empty).
-+ */
-+void sd_enable(SDState *card, bool enable);
-+
-+#endif /* HW_SDCARD_LEGACY_H */
-diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
-index 4088a8a80b..7d33c59226 100644
---- a/hw/sd/omap_mmc.c
-+++ b/hw/sd/omap_mmc.c
-@@ -23,7 +23,7 @@
- #include "qemu/log.h"
+diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
+index 2595e4d052..9bf25945d2 100644
+--- a/hw/arm/integratorcp.c
++++ b/hw/arm/integratorcp.c
+@@ -25,6 +25,7 @@
+ #include "hw/char/pl011.h"
+ #include "hw/hw.h"
  #include "hw/irq.h"
- #include "hw/arm/omap.h"
--#include "hw/sd/sd.h"
-+#include "hw/sd/sdcard_legacy.h"
++#include "hw/sd/sd.h"
  
- struct omap_mmc_s {
-     qemu_irq irq;
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 54b1414131..6bd7ed59e7 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -36,6 +36,7 @@
- #include "hw/registerfields.h"
- #include "sysemu/block-backend.h"
- #include "hw/sd/sd.h"
-+#include "hw/sd/sdcard_legacy.h"
- #include "migration/vmstate.h"
+ #define TYPE_INTEGRATOR_CM "integrator_core"
+ #define INTEGRATOR_CM(obj) \
+@@ -595,6 +596,7 @@ static void integratorcp_init(MachineState *machine)
+     MemoryRegion *ram_alias = g_new(MemoryRegion, 1);
+     qemu_irq pic[32];
+     DeviceState *dev, *sic, *icp;
++    DriveInfo *dinfo;
+     int i;
+ 
+     cpuobj = object_new(machine->cpu_type);
+@@ -649,6 +651,17 @@ static void integratorcp_init(MachineState *machine)
+                           qdev_get_gpio_in_named(icp, ICP_GPIO_MMC_WPROT, 0));
+     qdev_connect_gpio_out_named(dev, "card-inserted", 0,
+                           qdev_get_gpio_in_named(icp, ICP_GPIO_MMC_CARDIN, 0));
++    dinfo = drive_get_next(IF_SD);
++    if (dinfo) {
++        DeviceState *card;
++
++        card = qdev_new(TYPE_SD_CARD);
++        qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
++                                &error_fatal);
++        qdev_realize_and_unref(card, qdev_get_child_bus(dev, "sd-bus"),
++                               &error_fatal);
++    }
++
+     sysbus_create_varargs("pl041", 0x1d000000, pic[25], NULL);
+ 
+     if (nd_table[0].used)
+diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+index 8dc5f77139..4df8ea4fce 100644
+--- a/hw/arm/realview.c
++++ b/hw/arm/realview.c
+@@ -27,6 +27,7 @@
+ #include "hw/intc/realview_gic.h"
+ #include "hw/irq.h"
+ #include "hw/i2c/arm_sbcon_i2c.h"
++#include "hw/sd/sd.h"
+ 
+ #define SMP_BOOT_ADDR 0xe0000000
+ #define SMP_BOOTREG_ADDR 0x10000030
+@@ -69,6 +70,7 @@ static void realview_init(MachineState *machine,
+     qemu_irq mmc_irq[2];
+     PCIBus *pci_bus = NULL;
+     NICInfo *nd;
++    DriveInfo *dinfo;
+     I2CBus *i2c;
+     int n;
+     unsigned int smp_cpus = machine->smp.cpus;
+@@ -236,6 +238,16 @@ static void realview_init(MachineState *machine,
+         qemu_irq_invert(qdev_get_gpio_in(gpio2, 0)));
+     qdev_connect_gpio_out_named(dev, "card-read-only", 0, mmc_irq[0]);
+     qdev_connect_gpio_out_named(dev, "card-inserted", 0, mmc_irq[1]);
++    dinfo = drive_get_next(IF_SD);
++    if (dinfo) {
++        DeviceState *card;
++
++        card = qdev_new(TYPE_SD_CARD);
++        qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
++                                &error_fatal);
++        qdev_realize_and_unref(card, qdev_get_child_bus(dev, "sd-bus"),
++                               &error_fatal);
++    }
+ 
+     sysbus_create_simple("pl031", 0x10017000, pic[10]);
+ 
+diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
+index 45a13ae2b9..7fb9da5a47 100644
+--- a/hw/arm/versatilepb.c
++++ b/hw/arm/versatilepb.c
+@@ -25,6 +25,7 @@
+ #include "hw/block/flash.h"
+ #include "qemu/error-report.h"
+ #include "hw/char/pl011.h"
++#include "hw/sd/sd.h"
+ 
+ #define VERSATILE_FLASH_ADDR 0x34000000
+ #define VERSATILE_FLASH_SIZE (64 * 1024 * 1024)
+@@ -309,10 +310,31 @@ static void versatile_init(MachineState *machine, int board_id)
+     /* Wire up the mux control signals from the SYS_CLCD register */
+     qdev_connect_gpio_out(sysctl, 0, qdev_get_gpio_in(dev, 0));
+ 
+-    sysbus_create_varargs("pl181", 0x10005000, sic[22], sic[1], NULL);
++    dev = sysbus_create_varargs("pl181", 0x10005000, sic[22], sic[1], NULL);
+     /* FIXME wire 'card is readonly' and 'card inserted' IRQs? */
+-    sysbus_create_varargs("pl181", 0x1000b000, sic[23], sic[2], NULL);
++    dinfo = drive_get_next(IF_SD);
++    if (dinfo) {
++        DeviceState *card;
++
++        card = qdev_new(TYPE_SD_CARD);
++        qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
++                                &error_fatal);
++        qdev_realize_and_unref(card, qdev_get_child_bus(dev, "sd-bus"),
++                               &error_fatal);
++    }
++
++    dev = sysbus_create_varargs("pl181", 0x1000b000, sic[23], sic[2], NULL);
+     /* FIXME wire 'card is readonly' and 'card inserted' IRQs? */
++    dinfo = drive_get_next(IF_SD);
++    if (dinfo) {
++        DeviceState *card;
++
++        card = qdev_new(TYPE_SD_CARD);
++        qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
++                                &error_fatal);
++        qdev_realize_and_unref(card, qdev_get_child_bus(dev, "sd-bus"),
++                               &error_fatal);
++    }
+ 
+     /* Add PL031 Real Time Clock. */
+     sysbus_create_simple("pl031", 0x101e8000, pic[10]);
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index 16629d6599..a2f70588bd 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -43,6 +43,7 @@
+ #include "hw/cpu/a9mpcore.h"
+ #include "hw/cpu/a15mpcore.h"
+ #include "hw/i2c/arm_sbcon_i2c.h"
++#include "hw/sd/sd.h"
+ 
+ #define VEXPRESS_BOARD_ID 0x8e0
+ #define VEXPRESS_FLASH_SIZE (64 * 1024 * 1024)
+@@ -628,6 +629,16 @@ static void vexpress_common_init(MachineState *machine)
+                           qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_WPROT));
+     qdev_connect_gpio_out_named(dev, "card-inserted", 0,
+                           qdev_get_gpio_in(sysctl, ARM_SYSCTL_GPIO_MMC_CARDIN));
++    dinfo = drive_get_next(IF_SD);
++    if (dinfo) {
++        DeviceState *card;
++
++        card = qdev_new(TYPE_SD_CARD);
++        qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
++                                &error_fatal);
++        qdev_realize_and_unref(card, qdev_get_child_bus(dev, "sd-bus"),
++                               &error_fatal);
++    }
+ 
+     sysbus_create_simple("pl050_keyboard", map[VE_KMI0], pic[12]);
+     sysbus_create_simple("pl050_mouse", map[VE_KMI1], pic[13]);
+diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
+index f6de06ece8..f69488ebac 100644
+--- a/hw/sd/pl181.c
++++ b/hw/sd/pl181.c
+@@ -17,7 +17,6 @@
+ #include "qemu/module.h"
+ #include "qemu/error-report.h"
  #include "qapi/error.h"
- #include "qemu/bitmap.h"
+-#include "hw/qdev-properties.h"
+ 
+ //#define DEBUG_PL181 1
+ 
+@@ -518,30 +517,14 @@ static void pl181_init(Object *obj)
+                         TYPE_PL181_BUS, dev, "sd-bus");
+ }
+ 
+-static void pl181_realize(DeviceState *dev, Error **errp)
+-{
+-    DeviceState *card;
+-    DriveInfo *dinfo;
+-
+-    /* FIXME use a qdev drive property instead of drive_get_next() */
+-    card = qdev_new(TYPE_SD_CARD);
+-    dinfo = drive_get_next(IF_SD);
+-    qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
+-                            &error_fatal);
+-    qdev_realize_and_unref(card,
+-                           qdev_get_child_bus(dev, "sd-bus"),
+-                           &error_fatal);
+-}
+-
+ static void pl181_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *k = DEVICE_CLASS(klass);
+ 
+     k->vmsd = &vmstate_pl181;
+     k->reset = pl181_reset;
+-    /* Reason: init() method uses drive_get_next() */
++    /* Reason: output IRQs should be wired up */
+     k->user_creatable = false;
+-    k->realize = pl181_realize;
+ }
+ 
+ static const TypeInfo pl181_info = {
 -- 
 2.21.3
 

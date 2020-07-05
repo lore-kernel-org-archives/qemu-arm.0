@@ -1,84 +1,87 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3877733lfm;
-        Sun, 5 Jul 2020 00:03:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwPuep+YTrURXnC9GbqoN6NX1E9tWrHYrh1kJbGsmrwrORRXSUB6jNJCBsVJ+tnCJYj1wvY
-X-Received: by 2002:a25:e481:: with SMTP id b123mr63168913ybh.126.1593932600417;
-        Sun, 05 Jul 2020 00:03:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593932600; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3881159lfm;
+        Sun, 5 Jul 2020 00:09:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxQ+SJPIUt/E5Y1CK+RrbXkxQm/DwfujN4p9JHZ7Yw/aKZSKhCKzrftQM6ta+RosWKViKcz
+X-Received: by 2002:a25:6c09:: with SMTP id h9mr70949185ybc.252.1593932962331;
+        Sun, 05 Jul 2020 00:09:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593932962; cv=none;
         d=google.com; s=arc-20160816;
-        b=QyK7fHH6YEzUU/KkuYdPVPpPUFZ5Tz05WQcf9PqnVjjU8kqA5owjnG4GerfOf+TSiL
-         KKdkmrtDsGdfmCz7/SVDZ4WTm/QHZJFqK242CQB/aMeSno4Ff6RTayxSW7Nx4ZrTGSrg
-         y9dk1Q6lmTzIhU/Rz8slAEQycgw1h2034jt2G/ugLTt37CjjNiwiWGUY024lpiZ7iBTG
-         ygiBL1A2IvVJ/K781ObnIeXap2CmKlWoEC9HOPZHhMQgeeguJl+g5wDoB1OywdwhWrc9
-         +OUMvK+PIeGv680hMhgpSm5lwWRRiRG6YfY+wBXFLpUFjcEkI18A1Xd8HIb+GgM8kFXI
-         rwbA==
+        b=jn5WfKyOSQYnndU7Oc6B+oeF8QqbGx6vEKniFIMWEa1LjjDg0JRG+QYZpQt39tBqZv
+         daW/Bm6RrGo0t+zrMwA0mvsQYjmVVtPxdIpkW+ETqGFKfpRm2CRO6hQ0kzfEg8Zy2JYA
+         xJWh27nfhQEAtr+JI1W50ivxudjc6evWnB1jcI1xWmmlctq6tJU6vGp2jQPSKbxbDB2b
+         HULwZZzRzb/Rl2614lMWOS/Z1bX/NcMyYgZJKMHgGpW37ajOb+1WCe9VX7D8iOMZiB9r
+         x1lF0tjWUPF3ql9AkHLflVaVGl1mxPJGt7QYVMCqgH+jz5w8HancWmRPKlII2icX5fLT
+         zFBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=Nd98/0448OCEvtksUd1nWO4tJORRLBqwarrbd9MnWQ4=;
-        b=igHkZEsgX3YaBHiXhm7Mk6GnLzIP+essAnDTO9oqwx2tnQBi2wbbA0lOBHH6or2JvX
-         rCqd9j93P1X9koEyrtQA2G1bPngmMmcHCI0cE/coZFKnCPXl7hsz7DROFKSbOb2sFo3k
-         cM5cEuJ1kc+qgZjNl9/ewWy+MIg9CM17W6P9R3rgV7LCz1LiwyPNdW+Wlfs4zLYIZwIi
-         ytMEkj8HF2YDnSTzXYLAQFepuq87kJcVm+SJ3eU6E2Fvphoi/icQjXF4ubQgcP+Gc9nY
-         LuDSI9uWtMew9gw8JKpfzlRmg+jIexs/INEI8EiVNKI7LcYngF3ryrcnXvclFaJp8YZ0
-         kzqg==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=Uii3wV7w/cvRpKlh3I5P+8SIQoLxU63edxAIpm+V+zA=;
+        b=lirmZkJkp9lo67Wj50MYbuWVx2Jrl069qHffKhG768Fx1BLLEyo2wD1MV5k6u/8gVm
+         rPj0PQPpzCYBoy35jeFmC0LKZbpEht2aRgN7RpQFCx26HYdPRJvsE1fFx1eZgpvuUPSJ
+         kCHHStXLR4mZtxtBA/4lQarxsMVfIEcI9et37/cgkSJ35jaAYkHiC1x9VXimF0snY2PA
+         qlxnLJ3ZPyUQ/B7YpTAVBuVuFZgng6sQyL6Jf02Mwkbk2MzdO29nvoeneTaMjUhjTA/I
+         PHZWDHqoYYSzlbaHW9m4rL1U3OYmCvuJNsjuBNPwkCsq1GSnRfeawE4NIAjbjWwI1aB5
+         /u2g==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=dGkXUBfT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e10si17472032ybm.14.2020.07.05.00.03.20
+        by mx.google.com with ESMTPS id i204si15807926ybc.254.2020.07.05.00.09.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 Jul 2020 00:03:20 -0700 (PDT)
+        Sun, 05 Jul 2020 00:09:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=dGkXUBfT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38956 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39336 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrygJ-0005H3-S1
-	for alex.bennee@linaro.org; Sun, 05 Jul 2020 03:03:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51824)
+	id 1jrym9-000791-LT
+	for alex.bennee@linaro.org; Sun, 05 Jul 2020 03:09:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52734)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jryg2-0005Gr-3s
- for qemu-arm@nongnu.org; Sun, 05 Jul 2020 03:03:02 -0400
-Received: from relay5-d.mail.gandi.net ([217.70.183.197]:52685)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1jrym1-00078h-Au; Sun, 05 Jul 2020 03:09:13 -0400
+Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:51421 helo=ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcd@tribudubois.net>)
- id 1jryfz-0004Sf-0i
- for qemu-arm@nongnu.org; Sun, 05 Jul 2020 03:03:01 -0400
-X-Originating-IP: 90.127.194.69
-Received: from [192.168.1.42] (lfbn-idf1-1-2027-69.w90-127.abo.wanadoo.fr
- [90.127.194.69]) (Authenticated sender: jcd@tribudubois.net)
- by relay5-d.mail.gandi.net (Postfix) with ESMTPSA id 556501C0003;
- Sun,  5 Jul 2020 07:02:54 +0000 (UTC)
-Subject: Re: How to force EL2 mode when booting ELF32 file as kernel on
- CortexA7 or CortexA15
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <b7f00d84-bb8c-78e6-3fe1-54507c872ebd@tribudubois.net>
- <CAFEAcA-5Rj_2oP2eYemy=saChKa5g0RZLNFhqML7zZVabpgxvQ@mail.gmail.com>
-From: Jean-Christophe DUBOIS <jcd@tribudubois.net>
-Message-ID: <351c2b73-ae4a-76d7-7a46-f760c401d1de@tribudubois.net>
-Date: Sun, 5 Jul 2020 09:02:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1jrylx-0005xZ-Jz; Sun, 05 Jul 2020 03:09:13 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4B00DP1Qk5z9sSJ; Sun,  5 Jul 2020 17:08:53 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1593932933;
+ bh=ywo6b+L+5gcEpl2+eSCOs43OV+chUDGZ62wu+OU3o6k=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=dGkXUBfTm6RXDtJnVowC+IE88Ig0MKFkg8I/GHBUiErx6atEpyTBuwEkpb6qOW+1e
+ jcyJYgJ7hs5/7YpN8CadKXGzFm2zFSLVTadyvwaK30CN5ed7gTzfxO3JIshfVG0f5N
+ HocfpoP85Q9lpS1dqt0a7DhD4CVWfk/ieic6UPgo=
+Date: Sun, 5 Jul 2020 15:34:13 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH 2/2] hw/ppc: Use TYPE_SYSBUS_OHCI instead of hardcoded
+ string
+Message-ID: <20200705053413.GA6626@umbus.fritz.box>
+References: <20200703184952.4918-1-f4bug@amsat.org>
+ <20200703184952.4918-3-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-5Rj_2oP2eYemy=saChKa5g0RZLNFhqML7zZVabpgxvQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=217.70.183.197; envelope-from=jcd@tribudubois.net;
- helo=relay5-d.mail.gandi.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/05 03:02:55
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="lrZ03NoBR/3+SXJZ"
+Content-Disposition: inline
+In-Reply-To: <20200703184952.4918-3-f4bug@amsat.org>
+Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -9
+X-Spam_score: -1.0
+X-Spam_bar: -
+X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -91,44 +94,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XYSydid7PSHk
-
-Thanks Peter.
-
-JC
-
-Le 05/07/2020 à 00:08, Peter Maydell a écrit :
-> On Sat, 4 Jul 2020 at 21:27, Jean-Christophe DUBOIS <jcd@tribudubois.net> wrote:
->> When booting an ELF32 file as "kernel" then Qemu seems to always start
->> in SVC (EL1) mode.
->>
->> When booting a "non ELF32" file (a bzimage or any other binary image) as
->> "kernel" then Qemu seems to start in HYP (EL2) mode if the processor
->> supports this mode (it seems to then emulate the uboot behavior)
->>
->> Is there a way to tell Qemu to start in HYP (EL2) mode (or even EL3
->> mode) when booting an ELF file as kernel (assuming the processor
->> supports it)?
-> QEMU basically supports two booting types for Arm:
->
-> (1) "I am a Linux kernel, boot me the way the Linux kernel booting
-> ABI specifies". This is what you get for -kernel for non-ELF files:
-> it does a bunch of things, including starting in Hyp if available,
-> handling secondary CPUs appropriately, and so on.
->
-> (2) "I am a bare metal binary, boot me with the CPU the way it
-> starts up for bare metal". This is what you get for -kernel
-> for ELF files. A real AArch32 CPU always starts in the highest
-> available privilege level, so that's Secure SVC if the CPU
-> has TrustZone, Hyp if it has virtualization but not trustzone,
-> and (NS) SVC if it has neither: QEMU does the same.
-> Guest code can always move itself from S-SVC to NS-Hyp if that's
-> where it would prefer to be.
->
-> thanks
-> -- PMM
+X-TUID: XCqI7jXChEpY
 
 
+--lrZ03NoBR/3+SXJZ
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Jul 03, 2020 at 08:49:52PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> By using the TYPE_* definitions for devices, we can:
+> - quickly find where devices are used with 'git-grep'
+> - easily rename a non-user-creatable device (one-line change).
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
+> ---
+>  hw/display/sm501.c | 3 ++-
+>  hw/ppc/sam460ex.c  | 3 ++-
+>  2 files changed, 4 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/hw/display/sm501.c b/hw/display/sm501.c
+> index 9cccc68c35..c122a4eca5 100644
+> --- a/hw/display/sm501.c
+> +++ b/hw/display/sm501.c
+> @@ -36,6 +36,7 @@
+>  #include "hw/qdev-properties.h"
+>  #include "hw/i2c/i2c.h"
+>  #include "hw/display/i2c-ddc.h"
+> +#include "hw/usb/hcd-ohci.h"
+>  #include "qemu/range.h"
+>  #include "ui/pixel_ops.h"
+>  #include "qemu/bswap.h"
+> @@ -1961,7 +1962,7 @@ static void sm501_realize_sysbus(DeviceState *dev, =
+Error **errp)
+>      sysbus_init_mmio(sbd, &s->state.mmio_region);
+> =20
+>      /* bridge to usb host emulation module */
+> -    usb_dev =3D qdev_new("sysbus-ohci");
+> +    usb_dev =3D qdev_new(TYPE_SYSBUS_OHCI);
+>      qdev_prop_set_uint32(usb_dev, "num-ports", 2);
+>      qdev_prop_set_uint64(usb_dev, "dma-offset", s->base);
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(usb_dev), &error_fatal);
+> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+> index 1a106a68de..593436937a 100644
+> --- a/hw/ppc/sam460ex.c
+> +++ b/hw/ppc/sam460ex.c
+> @@ -35,6 +35,7 @@
+>  #include "hw/char/serial.h"
+>  #include "hw/i2c/ppc4xx_i2c.h"
+>  #include "hw/i2c/smbus_eeprom.h"
+> +#include "hw/usb/hcd-ohci.h"
+>  #include "hw/usb/hcd-ehci.h"
+>  #include "hw/ppc/fdt.h"
+>  #include "hw/qdev-properties.h"
+> @@ -370,7 +371,7 @@ static void sam460ex_init(MachineState *machine)
+> =20
+>      /* USB */
+>      sysbus_create_simple(TYPE_PPC4xx_EHCI, 0x4bffd0400, uic[2][29]);
+> -    dev =3D qdev_new("sysbus-ohci");
+> +    dev =3D qdev_new(TYPE_SYSBUS_OHCI);
+>      qdev_prop_set_string(dev, "masterbus", "usb-bus.0");
+>      qdev_prop_set_uint32(dev, "num-ports", 6);
+>      sbdev =3D SYS_BUS_DEVICE(dev);
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--lrZ03NoBR/3+SXJZ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl8BZlIACgkQbDjKyiDZ
+s5KS4Q/+JirVTbyghqt28vjm/cQzO7HW040SKRBB9iVctieCN4laJvYA3VvUxERH
+pujjHh2xnKbDyduzQlKfxO7EPENysPkvMbPxLidKgS/CeD0xNy7+2PWHDmrx2Zm8
+36whg9WlJw0BCleIIzBPpztKLB44owOZzpoKkEymGoFQeANE3ExRt8/TUzsIXCp1
+Q6lo5h6sr7FvFRnJnJpLupOGlzUn0t1ZeE9Wip/xgivmeTnWU405lfXugKZsblRt
+tk0pAYYbI4C8t/xTn3rckQ1ouiuJVYJaI+FAw0cb6RtFaj4L+/20NmAc/CgBSfXK
+NQVzAuKIqqjc4UjeCMsEyjGq1i3fmRDewOKJgh9iNMEeP9sZIHTYvgc5Ma1FuYOG
+/vNmhzCRxRasLarSO5s7AQNZsO/P1Yw+5pkSUHkHYPazafT8nsOqogH95HKiufRG
+eTw6RrwhZTq2QgUgtM/hWfCselfK3Bedg6kWaYkYLcNyQXVlZTzTJhkXEO9wzmg7
+YuIbJZuUAnHuW2NwogYwGUi200nhZ3VhdHRJNXl/kY+yHSrIx7ZlJmuS8M+iYbT0
+Svlp6AwtJGJJ0S/qrvPJlj71+5/GL5VGUlSLOOPig5qMfSxVFb14CcHp+cYTXclO
+yLmzCiVMcsjB5RrhZ8JPq1H0U5Cx9rnOiJVjmFnlqVt2DXdtXr4=
+=ah6p
+-----END PGP SIGNATURE-----
+
+--lrZ03NoBR/3+SXJZ--

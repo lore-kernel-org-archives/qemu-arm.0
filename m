@@ -1,121 +1,117 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4478636lfm;
-        Sun, 5 Jul 2020 18:40:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzaVO1l6P5ScuosPQ4sYKIW4RsDHgOirzanlhUWemSPIOj4ieCJu0P616ikg+IxNz/NYWea
-X-Received: by 2002:a25:e481:: with SMTP id b123mr68001720ybh.126.1593999642904;
-        Sun, 05 Jul 2020 18:40:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593999642; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4487412lfm;
+        Sun, 5 Jul 2020 18:59:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyIQdiqABv/sroxoNkTSw3PQFSYmbpc/UrKdjypbEh5lGQx650OxDiZsbRmbnrm+FVC6FbS
+X-Received: by 2002:a25:bb82:: with SMTP id y2mr70972122ybg.392.1594000797773;
+        Sun, 05 Jul 2020 18:59:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594000797; cv=none;
         d=google.com; s=arc-20160816;
-        b=CbhDocQjRZiqRip0nfDdsob/2tY9uMXKJqgWfZvf5mPw6JKfSAxD4pM0CZSqZuJfWl
-         jyv4vyQnTS8dZUgMSblC08YizS/0m6uvaQKgs35Qcnksl1GBBaa6lXQzkAC3ECGTspki
-         745FpWU3tHqSgCsctEmBomV9QpiRNNBGj1WqF609XfNBhz/Nd6dEJT3U08R3ASQxf2bD
-         Ewc6/pwuRVj5mbwUWxhLIpcvSWRIPbV2h4PyiTlCqSpTAi+6a+UDYn7U0ZER0cCqBOFd
-         3z8QCXMORxcbwfQ6ZVOx1TWWqaUhgAdZfgqYOy0vsw6EUuliWgiedf2UvpIfvvCu8oOm
-         Q89Q==
+        b=ccS3mN5J3d5+VBXKwAo80O2/xBamwP/MppmD70bNavZjka6M+filVuLcSXFsFHoohE
+         EkSecYNsAYvYtlZRC83HCnIXNaDiyvFhjIR/YsIt1zohn4idJsLOLoSGTJb9voQeP45W
+         IeePTIwcdz/nW8+FiVTel9qEnYKme0CkU7tUUdgjeOmvcRTgCQhzPT6IsFhh+UPqo5of
+         xVD0YoCCdkaPRnEA/sWWQdEsoxS1HrcY6hARdxCuvKMW3fgyo3Tm5FVeySmQca1BEA4L
+         Drs1M7Wn1qVYuQCppsBu28YSMRp/NlhzBhKPH3PA7tkQDwViM6Y7QRj4euFqBZpJ/579
+         DueA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :subject:to:from:date:references:in-reply-to:message-id:mime-version
-         :user-agent:dkim-signature:dkim-signature;
-        bh=u/8AVK8DC7AMWjmPg9ogvUOkyYedusJsI0qnRfcaQIw=;
-        b=Uj6ehHhr3iCyGVfjDzutOrR7TxHU1w+YnIQ6EXhjDksKGa8BE/hQkhpRnfHgGqbEOr
-         A421JLsrGvH+k67LzbZvzbzPAk8f+43ge1yD72J5xNj/9lgJ37clVnTubTGDHJnMK+TO
-         RuqJMaHcYBHM7lQr69FKw5pd4int7YBe+ybZZEMVr1cZJUcJ9PJKiW16uemJbQFmFivM
-         nNkufdfCK838cMMSda4SGI9dz0yvNstYUSwsSjtwf4Wd3/8aoX4xdYokqznNBpPJgJvC
-         gHVs83W7XoZaYbjg0tNVENJ/czw1KqoWrlShcBvjPZQ7S0XefP99HA/II5Mpxsweerhy
-         TdVw==
+         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
+         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
+         :dkim-signature;
+        bh=rir9q1V4XSPi8pCPlUzHKUaVsOAm/gih4cY+mHrLsao=;
+        b=fq4Cm7dZSyYTDjOe/EhbYParJBbm1N30XQFuSHySsYwEtLrJT9peOOR9mQTBKsanks
+         R5lw65jm52Q28Lw0RCKwOoim9JNI/1LuViNSStsUe6o7JiVV1PQFTw9xTv8pqVeFVpiL
+         F8PD5OlIrI2Zcs5oF/Q8qRctYOAV+c4M4RncnIJGuRIa2hpFIwSHDMPkpEiBBjD8Eo8e
+         4Lqm3tP2ibVGT3PpRzuJu8hTwP5wUtuuqKRZn6TQs6KpRmbSkwUhfYnKVNrl520QCQNi
+         TiPyrUduW24KI45gY1xf0An5UBfGvpqhjNKPgt+/5hup/ely+tRplz8baQbiuB3JSPk2
+         8OEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=bfrOQxTf;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=GhCUFqHH;
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=isduqsbV;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b="U/U3uzef";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n8si17365347yba.270.2020.07.05.18.40.42
+        by mx.google.com with ESMTPS id j190si18382945ybg.386.2020.07.05.18.59.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 Jul 2020 18:40:42 -0700 (PDT)
+        Sun, 05 Jul 2020 18:59:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=bfrOQxTf;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=GhCUFqHH;
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=isduqsbV;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b="U/U3uzef";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44952 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56796 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsG7e-0007gO-8r
-	for alex.bennee@linaro.org; Sun, 05 Jul 2020 21:40:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38788)
+	id 1jsGQH-0007Ee-6v
+	for alex.bennee@linaro.org; Sun, 05 Jul 2020 21:59:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46330)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1jsG7A-00074o-Io; Sun, 05 Jul 2020 21:40:12 -0400
-Received: from new3-smtp.messagingengine.com ([66.111.4.229]:37461)
+ id 1jsGQ9-0007Dv-A3; Sun, 05 Jul 2020 21:59:49 -0400
+Received: from out1-smtp.messagingengine.com ([66.111.4.25]:51531)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
- id 1jsG78-0001Pb-Lr; Sun, 05 Jul 2020 21:40:12 -0400
+ id 1jsGQ7-0004qS-Ij; Sun, 05 Jul 2020 21:59:49 -0400
 Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailnew.nyi.internal (Postfix) with ESMTP id 0EA8E5804BA;
- Sun,  5 Jul 2020 21:40:08 -0400 (EDT)
+ by mailout.nyi.internal (Postfix) with ESMTP id 1C8065C00CE;
+ Sun,  5 Jul 2020 21:59:46 -0400 (EDT)
 Received: from imap2 ([10.202.2.52])
- by compute3.internal (MEProxy); Sun, 05 Jul 2020 21:40:08 -0400
+ by compute3.internal (MEProxy); Sun, 05 Jul 2020 21:59:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
  mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type:content-transfer-encoding; s=fm3; bh=u/8AV
- K8DC7AMWjmPg9ogvUOkyYedusJsI0qnRfcaQIw=; b=bfrOQxTfhZby5Gv712QnY
- Xnu6I51Hn4ZHxPjJ2D+emDNTfcrARp/wfWUzfXg1lRcmp0yhwtaknq8K5+matxhN
- RTC01VPJCysHDHBjWWw6XH/F1QDlvBCLv3SUDOxj7I/9laQvyG3bFlpYE5z/qV+F
- 9akxL8u7Eqdsdphj/lLEgdyObManB7JgMqehJGfT82kyDetA43wJHs073f+NQPrZ
- 8LJC4z/RNhfC/Es15Vq12tJ9ta5/YqKNvrJKFDjt6pyqEtGN0LskFgRzAwmERxJe
- irgOo5LKpx9BPF/Zi/qGV1WVDhxKPbx7qOGgt0gLUTZVYrmQvY4heYbCwH/vwiPz
- g==
+ :subject:content-type; s=fm3; bh=rir9q1V4XSPi8pCPlUzHKUaVsOAm/gi
+ h4cY+mHrLsao=; b=isduqsbVfFbh+Z0YLZL2+C9zPdRGGQU2MvWqOBRzm7vbgXE
+ 0zG1ZyB7Xt5586K7pCBjgujrb7S20VKuwA1MLgT01KqGX1xeczyrooLEftWILC7S
+ fM0BXEGTqRQ/fZiU6ejX9xVY/ifM1pwbbEGQcG9XduvRww9dFpzNtcRFzAA5i16s
+ S3fCywCRR/3wZpZQm9r2qN9IIKfpkJ+2VfYAoSPxrK6yL0hqfBesw21QmA/Qnkvx
+ dmOpzhtHUt3c19854Q2guGsf52/qmmy8h75AhWo6QLsa+C0WMiA6wk94fjtlzXVh
+ +hD1Nd8yD+tg+mWgQp23J2RqxS/Bj5sYXsnjPHA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm3; bh=u/8AVK8DC7AMWjmPg9ogvUOkyYedusJsI0qnRfcaQ
- Iw=; b=GhCUFqHHZLwRwNueqAeKfWYQG6EusFbEl0MqTuAGdothU6ySyFHlrstiT
- qZPVyhpF/7LGDeuqz6rR9Behznqlcvz6dMmwas0fohA/p8lebzWFAAniILDbNTok
- FIl7qPfA9r/AjfS4V6F2Oc0XbhlMcKpUvTeXC1mN+dNuZyH0EqJWbI7LPglytrV9
- SF3oiUVnqMIQuUqBvDF7rb45Kw6nJczz8UuI8vPY0VKpJQA4YIVoseARznkwvrIi
- Iz0ljFR8p8PHmvTf8r6/e5qYezbkOJhQvnUsR9+JZriowS9CiiHUJ//29d1PflzZ
- bO7qDYme9HooxJxEABC1ZR97YN92g==
-X-ME-Sender: <xms:84ACX0-JEqLe6ZhfBQULT8p-tcHY8lVylpEF0bu43HWHxAdLECh8tA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduiedruddvgdegjecutefuodetggdotefrodftvf
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=rir9q1
+ V4XSPi8pCPlUzHKUaVsOAm/gih4cY+mHrLsao=; b=U/U3uzefh+pL8+08CxZ/u/
+ KAvNWp8Ani6KJDIq9si0noDsFP1OkviNhawfRWcH0g6orUnNQB4S2dAgIV9K2QgQ
+ 19sSFLNEvLy2CNUgz2CYqSsErCRvHH/9Cq2iGBYXytr2jrmKrmG14tok4JNkGoGg
+ fI21lxVbPe2KLnbcW6d7vopB2nIJGj5YxUKIXerEPLEjUL/APETVCG8w63ddaa6Q
+ 9ba1IiSyrPL7WbNfbFIoQhxCm/um5uG0qhQtusb12rrs0//uWnrHlrauEkj+6SN1
+ /OcZ9O56aa4pCrJfdpYLHlVDN35QIQca35M4NLdktS7DDa3tC1MXTYG9kIqkz5sg
+ ==
+X-ME-Sender: <xms:kYUCX6fAxgiGrb_swiIarlXbhrc3ap0L1BkBX7niFpDILTLU_hYWXA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduiedruddvgdehtdcutefuodetggdotefrodftvf
  curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
  uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpefofgggkfgjfhffhffvufgtgfesthhqredtreerjeenucfhrhhomhepfdetnhgu
- rhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecuggftrf
- grthhtvghrnhepvdegkeehgeefvdfhteehhfduteetgeeugefgieeigeeuheekudegtdek
- gfelgfehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomh
- eprghnughrvgifsegrjhdrihgurdgruh
-X-ME-Proxy: <xmx:9IACX8uMCwj291F7pkVWTTkMAS9nhmfyVuWDFvQK6X9XBb4-J0XxOg>
- <xmx:9IACX6Cs7ZkOq_aJ4_6v0xVE6NHqkz_gcGTwuFp4c0WEkchU-CXCeA>
- <xmx:9IACX0esrTt2pWY0zxvL0rEJ6UO_Um4AF4q44SrCgrFIcDtvUTFxlQ>
- <xmx:-IACX8pssk9Vbel3bbisSPnt1nbibKGTw5LQ1xv8QN0zc0p5WaWxmQ>
+ fjughrpefofgggkfgjfhffhffvufgtsehttdertderredtnecuhfhrohhmpedftehnughr
+ vgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucggtffrrg
+ htthgvrhhnpeehhfefkefgkeduveehffehieehudejfeejveejfedugfefuedtuedvhefh
+ veeuffenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ grnhgurhgvfiesrghjrdhiugdrrghu
+X-ME-Proxy: <xmx:kYUCX0MtoAEeK7npK_jMDfN5s9dwCXJh1vKgdc2FBm55gjq8OtWyxg>
+ <xmx:kYUCX7jPAWWnyu-sbFA4jiuvNPp67o0FoIfyZDH5HqIfULZTb-rIHw>
+ <xmx:kYUCX38t6PT_kZIEruiz1pGwTVtmc1jXS_YKInGKZhTXooOGFFeScg>
+ <xmx:koUCX6Kle_lxgrJIJwzE7J12Qe9mRmUp0gr4ZiTF-19U_8xaqYIlfw>
 Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id E2DA9E00AA; Sun,  5 Jul 2020 21:40:03 -0400 (EDT)
+ id 0C925E00AA; Sun,  5 Jul 2020 21:59:45 -0400 (EDT)
 X-Mailer: MessagingEngine.com Webmail Interface
 User-Agent: Cyrus-JMAP/3.3.0-dev0-576-gfe2cd66-fm-20200629.001-gfe2cd668
 Mime-Version: 1.0
-Message-Id: <b4a2748d-efbd-4fb9-b6f4-93d172b2cc9f@www.fastmail.com>
-In-Reply-To: <20200705224154.16917-2-f4bug@amsat.org>
-References: <20200705224154.16917-1-f4bug@amsat.org>
- <20200705224154.16917-2-f4bug@amsat.org>
-Date: Mon, 06 Jul 2020 11:09:42 +0930
+Message-Id: <df64d8de-9d7f-474b-8b72-5d2e6c7df1f4@www.fastmail.com>
+In-Reply-To: <20200628142658.29264-1-erik.lucas.smit@gmail.com>
+References: <20200628142658.29264-1-erik.lucas.smit@gmail.com>
+Date: Mon, 06 Jul 2020 11:29:24 +0930
 From: "Andrew Jeffery" <andrew@aj.id.au>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- "Cameron Esfahani via" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v2 1/5] hw/i2c/aspeed_i2c: Simplify aspeed_i2c_get_bus()
-Content-Type: text/plain;charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=66.111.4.229; envelope-from=andrew@aj.id.au;
- helo=new3-smtp.messagingengine.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/05 21:40:08
+To: erik-smit <erik.lucas.smit@gmail.com>
+Subject: Re: [PATCH v2] ftgmac100: fix dblac write test
+Content-Type: text/plain
+Received-SPF: pass client-ip=66.111.4.25; envelope-from=andrew@aj.id.au;
+ helo=out1-smtp.messagingengine.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/05 21:59:46
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
@@ -130,28 +126,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Jan Kiszka <jan.kiszka@web.de>, David Gibson <david@gibson.dropbear.id.au>,
- Andrzej Zaborowski <balrogg@gmail.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Cameron Esfahani via <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WDoQZf1POZ0b
+X-TUID: ScCwv736io31
 
 
 
-On Mon, 6 Jul 2020, at 08:11, Philippe Mathieu-Daud=C3=A9 wrote:
-> All the callers of aspeed_i2c_get_bus() have a AspeedI2CState and
-> cast it to a DeviceState with DEVICE(), then aspeed_i2c_get_bus()
-> cast the DeviceState to an AspeedI2CState with ASPEED_I2C()...
->=20
-> Simplify aspeed_i2c_get_bus() callers by using AspeedI2CState
-> argument.
->=20
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On Sun, 28 Jun 2020, at 23:56, erik-smit wrote:
+> The test of the write of the dblac register was testing the old value
+> instead of the new value. This would accept the write of an invalid value
+> but subsequently refuse any following valid writes.
+> 
+> Signed-off-by: erik-smit <erik.lucas.smit@gmail.com>
+> ---
+> Changes since v1:
+> 
+> Changed %ld to HWADDR_PRIx to fix building on mingw
+
+Bit of a nitpick, but the type of the value argument is uint64_t, so shouldn't 
+the result of the expression captured by FTGMAC100_DBLAC_TXDES_SIZE() and 
+FTGMAC100_DBLAC_RXDES_SIZE() be printed with a straight PRIx64 rather than 
+HWADDR_PRIx?
+
+Otherwise the change seems sensible, so:
 
 Reviewed-by: Andrew Jeffery <andrew@aj.id.au>

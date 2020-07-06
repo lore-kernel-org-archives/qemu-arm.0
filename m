@@ -1,115 +1,106 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp186914lfm;
-        Mon, 6 Jul 2020 10:37:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy1bhkzwbRCXRNdhISdoQsZ5JUdfpu2Hdq/zErQwh2WdtrFM0Z37WXowzF4HoCP5dHSGits
-X-Received: by 2002:a25:abf1:: with SMTP id v104mr81500657ybi.214.1594057070619;
-        Mon, 06 Jul 2020 10:37:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594057070; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp198249lfm;
+        Mon, 6 Jul 2020 10:55:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyM290js3YkzTTezbC6Y3ot2zPno2NH5oTz44vJuOalMDKakTZjXE7+HQdx/hLks9UD4eZU
+X-Received: by 2002:a25:cf0b:: with SMTP id f11mr72578993ybg.7.1594058120963;
+        Mon, 06 Jul 2020 10:55:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594058120; cv=none;
         d=google.com; s=arc-20160816;
-        b=xlAI6lXyWngqJS+R+TR/ZCIdlcRtA8JWrdECY5my/wqA4hEvr2TJx8r6hyuX6Hn/Ua
-         OS+J3w9XPuQEQyD5VjvoF9LIOx+6bgqRAPXhLIDLxskXk2/0PWQX9qTCwc+0Gf0t8Ecw
-         Qe2hViuf+WSFq6VaZwH0P/IqONsMXB50H3swyfBjBgaK3KxSGjfSsEbtwjd0moDaI3kI
-         C9jb/eFdH6vB11lHOA1/v7QFw6LlDKZFHs2/Q/CSGyiTFM5QL+5cgiYt2ejKsGMhg6Fw
-         qekNkgGO78gaMIJcR2TDnhQ1PMW0IRp2eiI2F1oNpw36W2xbu/fBSz9LwPY8ef4b0W1d
-         1Gnw==
+        b=eSirs8OJA+rwdyb5y3cRUGs/rvV3cxJIyhI68Xd9Zx06bEULJjHl5KT5aec2WtagzL
+         Y8k7vk9YNRt/3Z4hrM9gSPTK3oI2/R427AJorrGs/uf/KCCk3utQVpkFevH4rwAGAS0s
+         QM7gWDT681J8acaVLx8ZLStpfODqlef1+cxjqPJ00iQECbbVjF03tAaA0o85OdSlM4qn
+         OUaJ8pv8lnyQSRGJi0znKKxzExeRubKsy0p7Gpv551J8y/NrInIULpv+5gngU9lKMCBh
+         Kiqh6zST/4h+h9+DOBkdFZ5Z1+zGX258fqxTX/WDQA3Cn4s09ORAqwGwpD9W/u2l+uEY
+         3Wjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=IN1EoJ1z7gM6HRbBuDTCnQ/pgYx5LdPsdp2Sj7LcVwc=;
-        b=ALcbvEUVXMZs5ZGGT0iKP77umR0vJC0Ea4kcnPRjQVVWyogj71F5kx/QKRwxfeaYWX
-         sFHEr4kSffL9nXUY/GddWZwho3OW3TrH8GcUG7XjsgIJ9/wWaNl7rPZGNX3U7frfQJhw
-         7I8EH34bO2lWh9WvSzCNVJt8z4h25/JfyTlv6E9K0b3Mk3TeW21hCWwjCfc8zKNrWtnT
-         eLPWIEOneCd4ocwvdQFdprmnb+3notFfKmVSjjjs1YL1MFncZDqixTXdcZWzanCvPoPl
-         BSIFCMTkWYpAUv3YzcFPMQXU5+Gu6BYkdzXFhzr+JokixT2bN3kCqWz4DTHhdgkOOldT
-         51uA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=ZmQuG2AsZpbcelM7uL4uy958NUT2KgddZYhFWXtMNSA=;
+        b=F3tdBMchiIsDXHEKYgFZqNMuE9whuQCqHVLuSIVncjG+Uwq8q+3VFtJ6IpXBxf65ce
+         fPvXNa1ogzeuN2qKJeBYx1Pp6ABodyPAbOHxRwTLkgc2g049V0/PafwqgcCfU5ihNcYm
+         nBPhEiq7y/9Z8tskUPRrBo1+2nbvZcM6Lcrwf3+gnwUtUgO/CjnD1TA6eSyI1sCevYcI
+         AY00F9YrMd908RNBf91lxXhkm29cOJyjUyywN/8sRTQRMdutAYMWG+aGxJ2riWyb9CYH
+         JRukVUP9wUg3VmiV0gtKw89ioQESPlVoFFQ4vsX2fArOHPL94mgefcUUS4T5YHIt38hf
+         HCpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qtmEcpTs;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sw3EFcVv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k26si21312502ybj.32.2020.07.06.10.37.50
+        by mx.google.com with ESMTPS id f77si21370404yba.56.2020.07.06.10.55.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jul 2020 10:37:50 -0700 (PDT)
+        Mon, 06 Jul 2020 10:55:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qtmEcpTs;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sw3EFcVv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49124 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsV3u-0000pT-0f
-	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:37:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42988)
+	id 1jsVKq-000752-9G
+	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:55:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46540)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jsV3m-0000pI-AU; Mon, 06 Jul 2020 13:37:42 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:36122)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jsVKh-000746-J4; Mon, 06 Jul 2020 13:55:11 -0400
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:35860)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jsV3k-000541-LY; Mon, 06 Jul 2020 13:37:42 -0400
-Received: by mail-wr1-x442.google.com with SMTP id k6so42075234wrn.3;
- Mon, 06 Jul 2020 10:37:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jsVKf-00089r-PW; Mon, 06 Jul 2020 13:55:11 -0400
+Received: by mail-il1-x144.google.com with SMTP id x9so33709723ila.3;
+ Mon, 06 Jul 2020 10:55:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=IN1EoJ1z7gM6HRbBuDTCnQ/pgYx5LdPsdp2Sj7LcVwc=;
- b=qtmEcpTsJpxm1OHn2yMbQeYWs1H3o4azNaeBSDmW/L602jzJL9b4hjMfNqXTQchHWd
- AwxP59r20GEncAK5doJwlCjKxbkMT423/fmDYXDeUsjAe25Yt4M1ynDQxko84rTAIFKc
- Y/kFGu1x919VtabQQRh0ECV20RTtn0pFYwLl4zHjxLl5APTN4gnGyZnGcgTXN/4TPKnH
- mA8LF32KEmynHDE2umVybba7pGhofRkD63Rhhd30jxW7SXRDZTGtevP64TNAwfi9WqPn
- l0IOr1PkL6jy2DmEb1tfhJuI2+7i1l+4ACpS09X5WlkobI+jRzkO5FTBB5lAgDQEtpx3
- CnTA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=ZmQuG2AsZpbcelM7uL4uy958NUT2KgddZYhFWXtMNSA=;
+ b=sw3EFcVvNcwfVu/7C/5MKee4SfHxGIkTeN62Bpx/IWWA6WEjBoEsPgTFuyYd6ZY1Gr
+ Qwm/uOcoKwEe7yPYLDyX6FKsDnnjIKYbDfhXcIVJoaIWO51pxpebtQvXo1r77bVQsIV2
+ snUKierNhFsvQkA+r4nhTOEPGaPvgQucQE7v1hXTNwuO6Bflgp9C4akbtRkZFD2Bn56i
+ Va703Rt1blJoaKzcsdzSBGIjNvCPgsv8s+J8CuUiWFaVS09XY83K4ePMKOa2uI/x5fBF
+ ilYijGKucyyL6AqRX03DPpw8PttqRUK+wW2UNv+aMLPfL/FGkxT/vFWlOeK6Jh5ql4cc
+ xxFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=IN1EoJ1z7gM6HRbBuDTCnQ/pgYx5LdPsdp2Sj7LcVwc=;
- b=nFpfpO/LvOcqEjCMhd6n2ypkDFYjvoV/t82rF/AMg3U1smBrbCGbV73Rqwr5B5pkMl
- pP1+/Wdge0qnckUm3D1CIrw2tfefbVDU8SNU/VJduMv2shwV8VfR30+PnC/N2wEAOk2I
- M0V/6CSiZyr5YIRbjGsE0ncVZFIstA7Ni8ogGddgR768c38ip4qy/SYHWU1wFiddRHuJ
- B+p5yazZhNlucIH4+SO6/MuODCwGxrFIOVuFT42Xco9+7o6DQbCzrH15nGFfRMbcQg7m
- YykgXI3qITNsDS3o5R4q0JULZltDHKm3tyrzDojZhpwuTkQlEfhweSDYGEfITkXoWeXF
- prvw==
-X-Gm-Message-State: AOAM530WHAJ5w3aokL1rxV2ehmy8RyunA1Wl06xE/81IhGZ9K0gbzPBj
- 2+DPM/em5wqthfRnZPikdYlxgiZM
-X-Received: by 2002:adf:ea4f:: with SMTP id j15mr16128394wrn.253.1594057057972; 
- Mon, 06 Jul 2020 10:37:37 -0700 (PDT)
-Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id f197sm180582wme.33.2020.07.06.10.37.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Jul 2020 10:37:37 -0700 (PDT)
-Subject: Re: [RFC PATCH 0/2] hw/sd: Deprecate the SPI mode and the SPI to SD
- adapter
-To: Alistair Francis <alistair23@gmail.com>
-References: <20200705220731.28101-1-f4bug@amsat.org>
- <CAKmqyKOR80ORZEdzDzi5YJX7+=fsyL+9_OJwUf-_O_nP9wZ6mA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <23f49280-4055-763b-1721-bcb8d132fb72@amsat.org>
-Date: Mon, 6 Jul 2020 19:37:36 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=ZmQuG2AsZpbcelM7uL4uy958NUT2KgddZYhFWXtMNSA=;
+ b=cRzknMfI6zfbIFQu5Gu36u+SH/CL5gMm/R1GWeHvu7eHOuRe35GfQgziw6ftb5sEWX
+ nLwFTfN3qVpyxzc3gkCC5tkJ+V1/7mOZIUZUHqwUDxKoNZd6gUfEVjWsWr+4iJdnU3VA
+ cfKLWf67IwuryWbKn12gvhHGHAdvxkAYKmHVhHzzeri+p9l/imIQvtWyYp1QCVB3EIPr
+ 5jER+Ys5aa0wn9eBN0fAloOEHLmS0nskzkntPgp41FXKfHBSUdvtSnDRx4qmDVxL+NJ9
+ 3GYvQ1D/icNFEhoJp5AlO4OSNbwr3VaqjL4JdYxPr79XJ0zenuQwRY/cZEo5VTKhuMGz
+ +SQQ==
+X-Gm-Message-State: AOAM532g47bRd7YzbbHfq+QVMSVva1a2h4C6jKaWBHaNTqoD9JkS2f/C
+ 5kWTn32UsvPAWMyAktqQmZD9ghPzXM8kM948/js=
+X-Received: by 2002:a92:d186:: with SMTP id z6mr33477001ilz.227.1594058108088; 
+ Mon, 06 Jul 2020 10:55:08 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAKmqyKOR80ORZEdzDzi5YJX7+=fsyL+9_OJwUf-_O_nP9wZ6mA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+References: <20200704144943.18292-1-f4bug@amsat.org>
+ <20200704144943.18292-16-f4bug@amsat.org>
+In-Reply-To: <20200704144943.18292-16-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 6 Jul 2020 10:45:21 -0700
+Message-ID: <CAKmqyKMk1b28i9xh_w1tp2hUcbxWNPUxWthy9VbRbnMtkrVpcQ@mail.gmail.com>
+Subject: Re: [PATCH 15/26] hw/usb: Add new 'usb-quirks.h' local header
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x144.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,49 +113,142 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <huth@tuxfamily.org>,
- Alistair Francis <alistair@alistair23.me>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- libvir-list@redhat.com, qemu-arm <qemu-arm@nongnu.org>
+ BALATON Zoltan <balaton@eik.bme.hu>, Gerd Hoffmann <kraxel@redhat.com>,
+ Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Paul Durrant <paul@xen.org>,
+ Magnus Damm <magnus.damm@gmail.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ "open list:X86" <xen-devel@lists.xenproject.org>,
+ Leif Lindholm <leif@nuviainc.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Richard Henderson <rth@twiddle.net>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Paul Zimmerman <pauldzim@gmail.com>,
+ "open list:New World" <qemu-ppc@nongnu.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lUjiSrXVxqyB
+X-TUID: uziAfPd/GfQu
 
-On 7/6/20 6:41 PM, Alistair Francis wrote:
-> On Sun, Jul 5, 2020 at 3:08 PM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>
->> I tried to maintain the SPI mode because it is useful in
->> tiny embedded devices, and thought it would be helpful for
->> the AVR MCUs.
->> As AVR was blocked, I thought it was wise to deprecate the
->> SPI mode as users are interested in the faster MMC mode.
->> Today Thomas surprised me by posting an update of it!
->> https://www.mail-archive.com/qemu-devel@nongnu.org/msg720089.html
->>
->> I'm still posting this as RFC to discuss, but I'm reconsiderating
->> keeping this mode a bit more.
-> 
-> I think it's worth keeping.
-> 
-> I'm pretty sure the HiFive Unleashed (sifive_u in QEMU) uses SD over
-> SPI. There isn't an upstream model but I think there are out of tree
-> patches that hopefully one day will make it upstream.
+On Sat, Jul 4, 2020 at 7:56 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+> wrote:
+>
+> Only redirect.c consumes the quirks API. Reduce the big "hw/usb.h"
+> header by moving the quirks related declaration into their own
+> header. As nothing out of hw/usb/ requires it, keep it local.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Glad to hear that! :)
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-> 
-> Alistair
-> 
->>
->> Philippe Mathieu-Daudé (2):
->>   hw/sd/ssi-sd: Deprecate the SPI to SD card 'adapter'
->>   hw/sd/sdcard: Deprecate the SPI mode
->>
->>  docs/system/deprecated.rst | 10 ++++++++++
->>  1 file changed, 10 insertions(+)
->>
->> --
->> 2.21.3
->>
->>
-> 
+Alistair
+
+> ---
+>  hw/usb/usb-quirks.h | 27 +++++++++++++++++++++++++++
+>  include/hw/usb.h    | 11 -----------
+>  hw/usb/quirks.c     |  1 +
+>  hw/usb/redirect.c   |  1 +
+>  4 files changed, 29 insertions(+), 11 deletions(-)
+>  create mode 100644 hw/usb/usb-quirks.h
+>
+> diff --git a/hw/usb/usb-quirks.h b/hw/usb/usb-quirks.h
+> new file mode 100644
+> index 0000000000..542889efc4
+> --- /dev/null
+> +++ b/hw/usb/usb-quirks.h
+> @@ -0,0 +1,27 @@
+> +/*
+> + * USB quirk handling
+> + *
+> + * Copyright (c) 2012 Red Hat, Inc.
+> + *
+> + * Red Hat Authors:
+> + * Hans de Goede <hdegoede@redhat.com>
+> + *
+> + * This program is free software; you can redistribute it and/or modify
+> + * it under the terms of the GNU General Public License as published by
+> + * the Free Software Foundation; either version 2 of the License, or
+> + * (at your option) any later version.
+> + */
+> +
+> +#ifndef HW_USB_QUIRKS_H
+> +#define HW_USB_QUIRKS_H
+> +
+> +/* In bulk endpoints are streaming data sources (iow behave like isoc ep=
+s) */
+> +#define USB_QUIRK_BUFFER_BULK_IN        0x01
+> +/* Bulk pkts in FTDI format, need special handling when combining packet=
+s */
+> +#define USB_QUIRK_IS_FTDI               0x02
+> +
+> +int usb_get_quirks(uint16_t vendor_id, uint16_t product_id,
+> +                   uint8_t interface_class, uint8_t interface_subclass,
+> +                   uint8_t interface_protocol);
+> +
+> +#endif
+> diff --git a/include/hw/usb.h b/include/hw/usb.h
+> index 18f1349bdc..8c3bc920ff 100644
+> --- a/include/hw/usb.h
+> +++ b/include/hw/usb.h
+> @@ -549,15 +549,4 @@ int usb_device_alloc_streams(USBDevice *dev, USBEndp=
+oint **eps, int nr_eps,
+>                               int streams);
+>  void usb_device_free_streams(USBDevice *dev, USBEndpoint **eps, int nr_e=
+ps);
+>
+> -/* quirks.c */
+> -
+> -/* In bulk endpoints are streaming data sources (iow behave like isoc ep=
+s) */
+> -#define USB_QUIRK_BUFFER_BULK_IN       0x01
+> -/* Bulk pkts in FTDI format, need special handling when combining packet=
+s */
+> -#define USB_QUIRK_IS_FTDI              0x02
+> -
+> -int usb_get_quirks(uint16_t vendor_id, uint16_t product_id,
+> -                   uint8_t interface_class, uint8_t interface_subclass,
+> -                   uint8_t interface_protocol);
+> -
+>  #endif
+> diff --git a/hw/usb/quirks.c b/hw/usb/quirks.c
+> index 655b36f2d5..b0d0f87e35 100644
+> --- a/hw/usb/quirks.c
+> +++ b/hw/usb/quirks.c
+> @@ -15,6 +15,7 @@
+>  #include "qemu/osdep.h"
+>  #include "quirks.inc.c"
+>  #include "hw/usb.h"
+> +#include "usb-quirks.h"
+>
+>  static bool usb_id_match(const struct usb_device_id *ids,
+>                           uint16_t vendor_id, uint16_t product_id,
+> diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+> index 417a60a2e6..4c5925a039 100644
+> --- a/hw/usb/redirect.c
+> +++ b/hw/usb/redirect.c
+> @@ -45,6 +45,7 @@
+>  #include "hw/usb.h"
+>  #include "migration/qemu-file-types.h"
+>  #include "migration/vmstate.h"
+> +#include "usb-quirks.h"
+>
+>  /* ERROR is defined below. Remove any previous definition. */
+>  #undef ERROR
+> --
+> 2.21.3
+>
+>

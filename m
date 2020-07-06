@@ -1,190 +1,178 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp168274lfm;
-        Mon, 6 Jul 2020 10:12:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwZdtFwV/4R3eINindz4gcmp/t5LbUlwB8K1edk0H4TxCCuoZWFhJZSzTbohfu7/SBAuyQ9
-X-Received: by 2002:a25:d104:: with SMTP id i4mr29639824ybg.80.1594055531282;
-        Mon, 06 Jul 2020 10:12:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594055531; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp169883lfm;
+        Mon, 6 Jul 2020 10:14:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxze/E2hx5Da6oxe6adM+CP6gWXKCG4qg08DYH06jkHbw4Y+CwlWL46+9Y2ex9hzrEaxjiS
+X-Received: by 2002:a25:c4c4:: with SMTP id u187mr83095237ybf.374.1594055658116;
+        Mon, 06 Jul 2020 10:14:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594055658; cv=none;
         d=google.com; s=arc-20160816;
-        b=xPPq7EKctQLVHI56X6/q3JP77/sdUMCMH5uHnnKBsXnEfQUwz0hnvBlqULd2+a+LfK
-         yYae1nM8KUxv2BCKmCPwveUUA73rzNEpmRrGAIzAgaPVoxS74R+0HNPM984x50uMPj2t
-         iQV7t9xPwpmGph1XNkRHJcC9Iq3mRjq/51vbigDEPmEiGFgevRhQDYhVspjpwzfncO/1
-         dVNt+Fi7VjH0YSLXLTDw+OMm9/ZH7coOFCLWXoWj0uP1I78JW/glIPWjZvXZDC0Yznp+
-         NSKanlEdT9l7PoyKxDFOA4GtIvr8NvPvPSO0ph9lyJJTbReTYQ0AFiru+wrBx+3uDWI/
-         Lx/w==
+        b=hbTjuVKrNQpgWDm9EcIMhbz3XNrwjaydlYZjE+8NtZCte8H09GDJU5PueqRe5M3SCC
+         r9OG+vJboxDuBAJ33yioBRbPqk54EbUGUkz8aoxBP1fahJrkuFn0y59lPCYrdWND+InR
+         /ZQsuvmPMYxYVRRMEOrB5Ej9lcXT9NQyW14COmGUVaNrx4FXoHkNQpM1R88mKbX6/V/+
+         4KCkYseOOTmBs8/ZUIrqAIEIGVTgv2FOXm8Xy7uCOWHysVUUnBEcO8V3WyB0GvfRDRPm
+         VFu10dBuZAffUpkhX82qw7gHf37g07iWnHMRIRqDqGSKwYe6rvJQVvpqpqX3o92PxRCl
+         CILw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject;
-        bh=7HyR/4CpCvNEDGo6IZzAu8elYJUqXNGr76FA1yWKb7g=;
-        b=YH4Mt0LKebxxKbebefmAUu6gHbcOk1E9ee2e4/11RK2p6bFkPDhwnuR1XSGsHSqrLA
-         RUiL5Wm0XemM201JVJmTZMR43R1TKRLRPQ7vfgsx6c4586xmja948WeSS/mAZZPXo5ZX
-         l4V4r8HNJ+G/qKDqpJ/gRkHULgOr5ZuSkXD1Ncz2DDycNKchl17xfEQ8lnxuzVrsjNlS
-         vZlzqaMqSOd7SWovPlvL2ov5TOqfW59URMGw5XX59QyVn7LkMn9G00xRuw9tTc7iShf2
-         JJXLFLKqCTEItVJgMnk552Hk13v8UNwogNtPVgKKwGGB1EovK5gtzXBgn6bJiwQ7bb7B
-         KwnA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=B6iU2F4D68kBs4rXCTy4j6Bd4sjgaDyabwwjvi+hW5Q=;
+        b=OoS9imDkMkeJPmeSC0f/09d7QGlyzKywM5/aIRzoycE2+kY2mpTjKuXl41J6e5LdKo
+         uSh1rLOWDGaSPbyfBs45sj8bPU20oDHmWMjaAj96z+OoZc27jYlBBjlxnYiM/R+SbyKv
+         CpLFL9iI2rW9yYdD0AxYQuPCeYsUvHUhT75ewFTb9sKlQuhcmE3FXhjncz9Wv+LMY9/7
+         BHVZpOV58lX6e3qK4STgeyVTmkbSwJGkp/mblV6xHNkXVBcHlBOPt3Hv/nQXBY98EuPQ
+         Vq0KizdDyIbY7K9cvBvLhUWCK8iiDnDNiSw5Cierw+7U8ic/9eSNqNkUdAbruuaBk7/1
+         nFmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AbJ0ON1q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r4si20041896ybo.358.2020.07.06.10.12.11
+        by mx.google.com with ESMTPS id e131si21202151ybb.379.2020.07.06.10.14.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jul 2020 10:12:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Jul 2020 10:14:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53208 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AbJ0ON1q;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:58056 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsUf4-00069m-GC
-	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:12:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34614)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jsUh7-0003CL-FI
+	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:14:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34180)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jsUbv-0000Se-LO; Mon, 06 Jul 2020 13:08:55 -0400
-Received: from mout.kundenserver.de ([212.227.126.130]:43935)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1jsUbt-0007Wq-Ph; Mon, 06 Jul 2020 13:08:55 -0400
-Received: from [192.168.100.1] ([82.252.135.106]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MVrXh-1kJgfw17YL-00RppO; Mon, 06 Jul 2020 19:08:45 +0200
-Subject: Re: [PATCH 2/2] hw/sd/pxa2xx_mmci: Trivial simplification
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200705213350.24725-1-f4bug@amsat.org>
- <20200705213350.24725-3-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <c711e521-9810-051c-685a-4dc9ebb0e762@vivier.eu>
-Date: Mon, 6 Jul 2020 19:08:43 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jsUZX-0003BM-Ed; Mon, 06 Jul 2020 13:06:27 -0400
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:35227)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jsUZR-0007H8-Uj; Mon, 06 Jul 2020 13:06:27 -0400
+Received: by mail-il1-x143.google.com with SMTP id t18so13609047ilh.2;
+ Mon, 06 Jul 2020 10:06:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=B6iU2F4D68kBs4rXCTy4j6Bd4sjgaDyabwwjvi+hW5Q=;
+ b=AbJ0ON1qWA3F4Bki8vxBgNFCAj9bKw6GWMHnwjy0BHevGWNnPoRZOMJ0S+D6de1dhl
+ 0hNekgR0AHtFq5mG7yzL9shawGAV2AmKUgYcpgmrhjZljtKHOBACxfNrtufx07HwKaMW
+ qPASD8vFzMlW++21+2uuY8a4B3cYDOiH2vcQJdGo42bfb58doT5aEhXx2+lGYg2TladZ
+ Ss8z+SOazk9trK61OW/m2u2TWhD4ewrvaWAJWYnZPzMWA25uCSGGgRXWR8mns1NG9zn/
+ Ja/0keDaRQdPfssAe8FscZ3h1S+YYXW9ePYnlkmdrTyY7zU1cCrI9V7RI3HBRPxlyq11
+ C4uA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=B6iU2F4D68kBs4rXCTy4j6Bd4sjgaDyabwwjvi+hW5Q=;
+ b=awroqvqC+8c+SUV3KI3qgH/baWahgLHt5OEb5HzMxX8ZAbdweZzsCbtfGgxsxNusRW
+ l0ibkXe4s+mc4WifPdXBKRX4dXw8lzEOD5HKSkGePV6NYqI/jt1sHJlbi5DTKLiILIHS
+ jc+r8KRmkDAMEbL3WZlLhrRdZRT+eNTppoliuxDdG1sUMCK37MT4O1iiXctBo/9kDLTG
+ 8+vgiyUahRb2dpleG50CoR8CuwI6w8enSWok98gfLmAAuuWS3Xya8w+ajMAfYcpIV0ql
+ BAZtqWrAOhzMhipv7Tt3ocZEyL1+UXDBCqTM/MLcUIPGtZZdYOuuLO5sVGv39N7BgyGp
+ W2NQ==
+X-Gm-Message-State: AOAM5310al3ivSS7vve7Xyra669jMLqAYccMEgbg3Bek58Zsq4NRZTAH
+ mtkn/vvwmvBBjgEbe7FPM7QcuoxWmMs3lJstCmU=
+X-Received: by 2002:a92:5f12:: with SMTP id t18mr31713705ilb.267.1594055180052; 
+ Mon, 06 Jul 2020 10:06:20 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200705213350.24725-3-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:LN1cSYce+q3esnVBtfcXPwIY85FVC+jrhwOLtVmGU7ZVe8rZUzF
- wntzhU38qx54l6bXjk/munWVe1bF+Xfpy73dSerAR3eRaLa3YDDvDny6a1EuoWHra5HGKLj
- rkO4PfY4P5DiEfgFH67V1zPJSG+6Seidko7auLQFHeEhwkg8NAKeO+Ayss+Prrgi925bxl8
- ExOX5LNcG2Fph5c8q+LCA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:1kQ3JPU3D8k=:Mf05seMfgZbAUswsuo745s
- RF1q5dqWQ214116pe/5QHCeJbss2hFmn8NkKtiA6KkDpnOy7x5Pq7qQ6WWjCc5lL0nkA9zZQt
- y7RC/Z3nyrST1UbkhgYSAOTpxI4XLkrKI802iuWrmlVfWgXeQhOP5R/1Y0r/RhSx8bK1Yv3kO
- SMyetxRCqf9h6WeT2NcXcAKnkQGwhIlZx77p1chaSuf7UiEBz2qZCv026uNNB5qQn7orzZEv2
- cdr4H8i1c8DjGYgxW/woQZgm/mJTYB1bou7exjsQXuriF5ewfJzR3Kkw+BItqyQONbPWMn7xt
- 5xp8QtoGSwppwd4X8yplHrBCowXYkBq+lAuVShvUMvyyT0YiLIxP1splb1IWp3AtGcrLi+ZCr
- i345hKRBq4kBtVjsUMjTo+tu0cUTmrz82mFOBLgls7QEDE0PFVLSSJOlaADWC7wcoMTBf/M0J
- 1BvAPtiC6GstKq6Sc/rxXvyLBbyU+WMo0jUFnAWz0lSrHgasrb1qg6kyCuyQK7cUL2WDVSj5V
- isNND3urkZXZtz3vpJBMtJLaxcu1DEImpSifgaw2oq7iGmtGHD5rj15cZcnzIli3tG6DvHPD8
- F41Z6/ybEzw3+RelD990+lLQfMWyKdyDptLms4/wjYEib2Pu9I3cHZiYpAzCuSEh0+a4dCKiP
- I7/Tdfr/0xLdVPAPvnbiPKJ8O+zmI4oC5Wp6IbxfdccwY8x9Ab32Vt0wZhl0458Y3iD3e2Wl5
- idfu2tlglil3pPDY1y0Wbi9qt2n4o7xhSnkvcSOjug6UysiQ2/yabgYN79oasYZe96brS9rur
- +ZmaqNiBI5LUX2HJLh/x+2TgSLbTuKLUdlaYwkr552ssjZ+CDmgoVIALy0V3gOVqVeOqwvA
-Received-SPF: none client-ip=212.227.126.130; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/06 12:31:15
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=_AUTOLEARN
+References: <20200704144943.18292-1-f4bug@amsat.org>
+ <20200704144943.18292-10-f4bug@amsat.org>
+In-Reply-To: <20200704144943.18292-10-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 6 Jul 2020 09:56:33 -0700
+Message-ID: <CAKmqyKMivQ6HxaB9DmJ1EgWcpC0sD1VBOC=V_09if_kkcvEwcA@mail.gmail.com>
+Subject: Re: [PATCH 09/26] hw/usb/hcd-ehci: Remove unnecessary include
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x143.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:Trivial patches" <qemu-trivial@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mCncZV7x6Knm
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Paul Durrant <paul@xen.org>,
+ Magnus Damm <magnus.damm@gmail.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ "open list:X86" <xen-devel@lists.xenproject.org>,
+ Leif Lindholm <leif@nuviainc.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Richard Henderson <rth@twiddle.net>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Paul Zimmerman <pauldzim@gmail.com>,
+ "open list:New World" <qemu-ppc@nongnu.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZDS6sN5zwBo6
 
-Le 05/07/2020 à 23:33, Philippe Mathieu-Daudé a écrit :
-> Avoid declaring PXA2xxMMCIState local variable, return it directly.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+On Sat, Jul 4, 2020 at 7:55 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+> wrote:
+>
+> As "qemu/main-loop.h" is not used, remove it.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
 > ---
->  hw/sd/pxa2xx_mmci.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
-> index 9482b9212d..2996a2ef17 100644
-> --- a/hw/sd/pxa2xx_mmci.c
-> +++ b/hw/sd/pxa2xx_mmci.c
-> @@ -480,10 +480,8 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
->  {
->      DeviceState *dev;
->      SysBusDevice *sbd;
-> -    PXA2xxMMCIState *s;
->  
->      dev = qdev_new(TYPE_PXA2XX_MMCI);
-> -    s = PXA2XX_MMCI(dev);
->      sbd = SYS_BUS_DEVICE(dev);
->      sysbus_mmio_map(sbd, 0, base);
->      sysbus_connect_irq(sbd, 0, irq);
-> @@ -491,7 +489,7 @@ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
->      qdev_connect_gpio_out_named(dev, "tx-dma", 0, tx_dma);
->      sysbus_realize_and_unref(sbd, &error_fatal);
->  
-> -    return s;
-> +    return PXA2XX_MMCI(dev);
->  }
->  
->  static void pxa2xx_mmci_set_inserted(DeviceState *dev, bool inserted)
-> 
-
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+>  hw/usb/hcd-ehci.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+> index 1495e8f7fa..256fb91e0c 100644
+> --- a/hw/usb/hcd-ehci.c
+> +++ b/hw/usb/hcd-ehci.c
+> @@ -34,7 +34,6 @@
+>  #include "migration/vmstate.h"
+>  #include "trace.h"
+>  #include "qemu/error-report.h"
+> -#include "qemu/main-loop.h"
+>  #include "sysemu/runstate.h"
+>
+>  #define FRAME_TIMER_FREQ 1000
+> --
+> 2.21.3
+>
+>

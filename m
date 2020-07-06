@@ -1,96 +1,96 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp176274lfm;
-        Mon, 6 Jul 2020 10:22:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwvU2YAR58GeccpJS8ilJYZ43880Mjbil6JaEhjSTcgbF8pNvYWpDXVbQrh5Ctzv6D6im9C
-X-Received: by 2002:a25:6981:: with SMTP id e123mr21228729ybc.287.1594056153817;
-        Mon, 06 Jul 2020 10:22:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594056153; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp177395lfm;
+        Mon, 6 Jul 2020 10:24:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyciF0OFuOmKgZok3tADxhXqTUiOwzY8gpX8uZtglEv4BaPwFu3PnRRu0Xt/qxiIgPUKbUM
+X-Received: by 2002:a25:908d:: with SMTP id t13mr77475045ybl.450.1594056244730;
+        Mon, 06 Jul 2020 10:24:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594056244; cv=none;
         d=google.com; s=arc-20160816;
-        b=X3Au7eceStIy+actRuFAeHr215ZmGyAJvfuoJKUIWOq65dhHuPMkoUh6q8fEETgkqT
-         dCGNY2T4q0uEna0Va5DAE3kQSrudcg874f54tOvEVO0M4IiQkd5KnEtoOVZgg2VBFyXJ
-         BjzBZAB/wcdsfOciOjqntOiM6LAcFZGoy+zHOi+2ALis1n452hTwckfBb7ZCFuzaIX96
-         CIejWI2bLBUeftgOOBwCiaZOCJg21KJ5K+/5uYPO4kkjY7k2P/ZR6xBqSqby+29x+00i
-         wMkj2VlzyNljyPfck/ewydRxlIEI2GgPXvHmLA7LBxDuc8Lnl7DUULVgKdPI/9pcUI/1
-         Hpiw==
+        b=tGJAQj91WnsuE9ze0YG7TiYP/VNzNqAoCUQN/ZSJ3AQKrZb8A1LGQAPMl9CYquzd6n
+         xxGhc4wePjKG0KdQAvoIkwZsXpHilnIikpkC4+S5afQMJ2+MYVlaTbFH+VmpB+qCwgc4
+         4Y30XGPxbpCKML0Ld77qIbph8EZSVO9GR8tZ1dRreiDJzZSt0mdidmd7vu5mQmfhBXvO
+         SbqxDNYpYLAyYSbjxpTxk3SvaPpIYrtH50NOLQuizWQngStDikwin+xNPGnaUUauth8r
+         51cF6AQuRHD/adi1K4x5aQmEDtwV3nAqXhfSfFiRTGpn46/d0CKQ8cacx1b4oBLyEOqR
+         KPUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=L1yDIvA88vi1SgltVFMfPCZczTxmxTH0/nCyzEY2sLM=;
-        b=Yl26WB532R+Z3CLLzDG1wrUYAAZ9ignDum0na7xoc1Kgw8eB1hLcaFWWja2ousuaQ+
-         tzNbks8nfgQGvWor8WwjEw7udqJmVewBuPPiABKaNM+QAP8BzPGPEtLtyxeqZAku/zVV
-         dAS7q1Rz/mLqmpuH8YX06cRsjERALoSISOC8m+ZCKwZjLf/2QDnZg+aCFhEL6F/fL32p
-         HHxpOdTGWlFXId0mzOrgy2fv+0Z6stFkKMfFRUZxQHFulkoKaMq1w3iYC/M9DvNOv7w7
-         fGa/O6V9P1kW/6lcrvo+CCEKj62OmkA07uLM8abSj5mC3KcNVUcR3P1Hm7Koy+8If/bB
-         +WSQ==
+        bh=FXnnv73L5WipvrjnAQ/ZRDtg+5iLp60OiInY9J0Zsfs=;
+        b=SCsJ7tH+7H3PyKG6If6eFD5l2l7P+QuxXRZ+uFcFzLpFHQkkbJCkdYexIl5IcoZwcz
+         n9k3pOrfNP9QrHYW/pmIKaMkAYZpjUG/wT8uFtquXqyHXedTVp+54dBDe1CD/X6+i+Wp
+         ThIdw1fUwjWvRqSmRCtMyLRErr1Efq4Fi6xuiWomXS3ml+NhL1XeKKRkwvmGyEc/ZqhU
+         ARIxHJn7M6e/FVb0Afvo6NwV6jfIRuZV+TD8dce4W2oOxxGVCPWk6WBXETjbOtmpFbpz
+         i+kWxgjjP8YBzyXdezRWQaTF3gG2KY+pM0y6BmmnjC9jDiW0sa8vR5V28omE4LLQpQIP
+         WK+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Aqh+O/Xy";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fK2rUb2M;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a197si6312306ybg.181.2020.07.06.10.22.33
+        by mx.google.com with ESMTPS id o23si18935811yba.275.2020.07.06.10.24.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jul 2020 10:22:33 -0700 (PDT)
+        Mon, 06 Jul 2020 10:24:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Aqh+O/Xy";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fK2rUb2M;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35620 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41200 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsUp7-0002y6-3P
-	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:22:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60302)
+	id 1jsUqa-0005DL-2R
+	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:24:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60732)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsUPw-0000yu-T2; Mon, 06 Jul 2020 12:56:33 -0400
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:44731)
+ id 1jsUSR-0005r4-M2; Mon, 06 Jul 2020 12:59:07 -0400
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:43288)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsUPu-0005XS-Nw; Mon, 06 Jul 2020 12:56:32 -0400
-Received: by mail-il1-x141.google.com with SMTP id h16so10172002ilj.11;
- Mon, 06 Jul 2020 09:56:29 -0700 (PDT)
+ id 1jsUSM-0005oU-8T; Mon, 06 Jul 2020 12:59:07 -0400
+Received: by mail-io1-xd41.google.com with SMTP id k23so40040661iom.10;
+ Mon, 06 Jul 2020 09:59:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=L1yDIvA88vi1SgltVFMfPCZczTxmxTH0/nCyzEY2sLM=;
- b=Aqh+O/XyfP+h5qtevBYxfA2ozEfP3E38+RL+UpEl8kroHP77+5qRgTCik/GCicN+6S
- +rKRRRmasE1xQxg7houBPEQLk9fZyBXJz3Gd/aPzGeHbLPJuiwUR93vNoKORGH/3K0Zj
- XRraX/qVHeyon7mx5KjL5ftajYCyy9590ZCI69XiiWA4AGIBJ4VbVlu1dtlogNRIbVJt
- F/SzwCM4CTBlLS9Oep876d3Zo5skaH7N0kJ19Jgqacx7q5n4pHOby1h3rfdbcX+JUkMW
- O2JhjisLiDRQJM5Yl4Ax2ACke9kc9WWwEsAtkjrYOqkjVofEl6bD2uRyP5YVPuBA9oaO
- XQmQ==
+ bh=FXnnv73L5WipvrjnAQ/ZRDtg+5iLp60OiInY9J0Zsfs=;
+ b=fK2rUb2MdciYU4Z+vy8DaVGveUMlo9HFcBrc2ZvwhMG/OTSUYi16woJ2geJIOeCHf+
+ s/tu4UZiATsSlkJBZD2mo3pornyf9G2RKM8kkgfjb7neQY+BTo9GGZ9L3v3UwKSUzApe
+ 89qSSXu30fk4x/9gPjbYtny2dhJQctl8b9Lrmn4gsXAE9hmlLHVRcYlZiDw+zMWXKhiT
+ WJsFHIKj5Bhm1NoNyZFlGdsqEUXmX9z2x7FAgTnWrhAmBppFMg16jLsf48EcsdQ3N9Ln
+ BfooAlKZ7UjPxtmAAZt8fESX0cQByDrugScyx/bxh9+zbshTBMAtPKfqON37hfLVY3Rb
+ eq2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=L1yDIvA88vi1SgltVFMfPCZczTxmxTH0/nCyzEY2sLM=;
- b=MP2+ZBbNMf6i2ZIIbwaJ+Nw+j4Nwvll9qmTWdFgg2p0DNt4ktoBfb1dj+Yb0tH3pej
- yzyzi4KsfdhtsYXLfT7j1Ih1aIoaYZv6hU/POyGUdbm/r+66ASg+lQxYs5O2KFyPKX+/
- lkzb8Rw/Kbj38SNrezeXiluecIo4slo01O/V78rK6C44D9fK95r604mqADH/QigWlXvw
- 2fmsBNxTdfEh/cfUAfTF1UXcqgL19zwCsqpobvATF1kdCw3DMefFDUWHRj9edY6PQ4DL
- AOmFmDpoIhCHic7A4rHvgABwTgeNu41ZoVDRdPDPUjObwxkhavPfi9m2obKAw0SxWvUP
- P5KQ==
-X-Gm-Message-State: AOAM530ugJZ7xrFMO6mRkEzSRRopG3jFKdIjViEljS04tC9x+BLFSpcK
- VsN8Ml/hEeg3L2GqH1VagejXMxGuGfDsjn9hKo4=
-X-Received: by 2002:a92:c213:: with SMTP id j19mr31576589ilo.40.1594054588655; 
- Mon, 06 Jul 2020 09:56:28 -0700 (PDT)
+ bh=FXnnv73L5WipvrjnAQ/ZRDtg+5iLp60OiInY9J0Zsfs=;
+ b=Ac9ShVJVVUD8rxlndKw6nz9LNuM1pkLp2aHpLlNBTPKbOgIvyPMiV3zGaw8QV7/OLS
+ lfWeEAAXtxppY46AgAPYDTvyoF76XQliPmrQWdV3AqqtmpvNLP4tYTSTj9wzm/mIizoX
+ wDZvcV3dNZ00OQbDlVxPqJdEwlzUq1ZrmHMLsBzDfdwfHtgyJIFd2KFCMJ3tiNhD+vm3
+ 6aR37ziv6qnitVTEgb/NvXGgQAMc8oREo4LNCbtFWGNMsLvtOdhpkrTpapsWgDDh46lT
+ EjZKHpj0H2/bT1/SKOk0vLMwfZqFKJM+ahrSMxUS1EM+vzVzFxPr47jpPG626xuwLXYK
+ 8TXw==
+X-Gm-Message-State: AOAM5334vMkdoSjBaPMqvnn/m2P8OaKj5hULhhqG85+vU4A3N6rLHaFJ
+ MzQD0PgdEkCtdjKs+K1HidlHuH99mRhqHSGFiEU=
+X-Received: by 2002:a02:10c1:: with SMTP id 184mr52996773jay.135.1594054740444; 
+ Mon, 06 Jul 2020 09:59:00 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200704153908.12118-1-philmd@redhat.com>
- <20200704153908.12118-22-philmd@redhat.com>
-In-Reply-To: <20200704153908.12118-22-philmd@redhat.com>
+References: <20200704144943.18292-1-f4bug@amsat.org>
+ <20200704144943.18292-2-f4bug@amsat.org>
+In-Reply-To: <20200704144943.18292-2-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 6 Jul 2020 09:46:42 -0700
-Message-ID: <CAKmqyKNaTK+CSDvy-C0_go0EeggGYvWP4sjFmGkEF1cJSnBXUQ@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 21/23] hw/riscv: Emit warning when old code is used
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Date: Mon, 6 Jul 2020 09:49:12 -0700
+Message-ID: <CAKmqyKNd3qyB33TCamM_zXPFahfvdpmCirouODOy_QFotz55EQ@mail.gmail.com>
+Subject: Re: [PATCH 01/26] hw/arm/sbsa-ref: Remove unused 'hw/usb.h' header
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x141.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d41;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd41.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -114,93 +114,65 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
  "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Max Filippov <jcmvbkbc@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
  Gerd Hoffmann <kraxel@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Paul Durrant <paul@xen.org>,
+ Magnus Damm <magnus.damm@gmail.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ "open list:X86" <xen-devel@lists.xenproject.org>,
+ Leif Lindholm <leif@nuviainc.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>, Stafford Horne <shorne@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Thomas Huth <huth@tuxfamily.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Richard Henderson <rth@twiddle.net>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Paul Zimmerman <pauldzim@gmail.com>,
  "open list:New World" <qemu-ppc@nongnu.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xkPNYBzacgkn
+X-TUID: +ESl4h+nXTkg
 
-On Sat, Jul 4, 2020 at 8:48 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om> wrote:
+On Sat, Jul 4, 2020 at 7:51 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+> wrote:
 >
-> This code hasn't been QOM'ified yet. Warn the user.
+> This file doesn't access anything from "hw/usb.h", remove its
+> inclusion.
 >
-> Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
 > ---
->  hw/riscv/riscv_htif.c  | 4 ++++
->  hw/riscv/sifive_uart.c | 4 ++++
->  2 files changed, 8 insertions(+)
+>  hw/arm/sbsa-ref.c | 1 -
+>  1 file changed, 1 deletion(-)
 >
-> diff --git a/hw/riscv/riscv_htif.c b/hw/riscv/riscv_htif.c
-> index ca87a5cf9f..bd080dbefb 100644
-> --- a/hw/riscv/riscv_htif.c
-> +++ b/hw/riscv/riscv_htif.c
-> @@ -30,6 +30,7 @@
->  #include "hw/riscv/riscv_htif.h"
->  #include "qemu/timer.h"
->  #include "qemu/error-report.h"
-> +#include "hw/qdev-deprecated.h"
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index e40c868a82..021e7c1b8b 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -38,7 +38,6 @@
+>  #include "hw/loader.h"
+>  #include "hw/pci-host/gpex.h"
+>  #include "hw/qdev-properties.h"
+> -#include "hw/usb.h"
+>  #include "hw/char/pl011.h"
+>  #include "net/net.h"
 >
->  #define RISCV_DEBUG_HTIF 0
->  #define HTIF_DEBUG(fmt, ...)                                            =
-       \
-> @@ -238,6 +239,9 @@ HTIFState *htif_mm_init(MemoryRegion *address_space, =
-MemoryRegion *main_mem,
->      uint64_t fromhost_offset =3D fromhost_addr - base;
->
->      HTIFState *s =3D g_malloc0(sizeof(HTIFState));
-> +
-> +    qdev_warn_deprecated_function_used();
-> +
->      s->address_space =3D address_space;
->      s->main_mem =3D main_mem;
->      s->main_mem_ram_ptr =3D memory_region_get_ram_ptr(main_mem);
-> diff --git a/hw/riscv/sifive_uart.c b/hw/riscv/sifive_uart.c
-> index 9350482662..1a5890d5f7 100644
-> --- a/hw/riscv/sifive_uart.c
-> +++ b/hw/riscv/sifive_uart.c
-> @@ -25,6 +25,7 @@
->  #include "hw/hw.h"
->  #include "hw/irq.h"
->  #include "hw/riscv/sifive_uart.h"
-> +#include "hw/qdev-deprecated.h"
->
->  /*
->   * Not yet implemented:
-> @@ -183,6 +184,9 @@ SiFiveUARTState *sifive_uart_create(MemoryRegion *add=
-ress_space, hwaddr base,
->      Chardev *chr, qemu_irq irq)
->  {
->      SiFiveUARTState *s =3D g_malloc0(sizeof(SiFiveUARTState));
-> +
-> +    qdev_warn_deprecated_function_used();
-> +
->      s->irq =3D irq;
->      qemu_chr_fe_init(&s->chr, chr, &error_abort);
->      qemu_chr_fe_set_handlers(&s->chr, uart_can_rx, uart_rx, uart_event,
 > --
 > 2.21.3
 >

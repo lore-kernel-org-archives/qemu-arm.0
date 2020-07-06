@@ -1,96 +1,97 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp179202lfm;
-        Mon, 6 Jul 2020 10:26:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxloH2NLX0DAD0TftO1Ntw7SE8zzhJeDk23Witqr6edB81lQZvdCnbWPRTooFiq9+WcWlfl
-X-Received: by 2002:a25:9cc6:: with SMTP id z6mr77695ybo.425.1594056404392;
-        Mon, 06 Jul 2020 10:26:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594056404; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp179761lfm;
+        Mon, 6 Jul 2020 10:27:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwFAomv7cNr2i9TCZneu4P2jruFJz9t7F+W4HMO35N+n8tJQVD7r8IVcjpRmeU0+PE3OtFS
+X-Received: by 2002:a25:84cf:: with SMTP id x15mr72174658ybm.2.1594056452870;
+        Mon, 06 Jul 2020 10:27:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594056452; cv=none;
         d=google.com; s=arc-20160816;
-        b=uHnUGIbpOGRSXQu6RVc6smHFvZwAS67djPDr7pdCUNSAWLJrvfae2tIk/obi2H0Ar7
-         UpE3r5E/vsOSHPd79o9JfcUFaN5iYbPLDqBPar7xNexIFdJxfi92JAXfjeRZk0T8ZFip
-         yN+ZtO5XfTNXUgGfeV3lcLa0bRpMrOl9qC91VoeT9cwDDtc5l2Rr/UDF7ZvAqCzs/zyW
-         ik5d18PUK6dM3uifb0t6tyfhHAQ0pFHDDEka2o6k3JH6R12SSmoclSP7h3yJSm4D8N9t
-         A9fYaWeODe7IDFGJ3UKRILvMM/dVnib1ORgKyQUrKYaDfqAduBJHCzku9qCHk17Eevth
-         25yg==
+        b=mzECavFlIJGl+q0DQYOeoSenNYIPZYVQBcANNlUZ3Tpdh1RSToYaone1RAXWTg9wNl
+         ZFFTd+P6LI3fyznCPAE+UOPfYcOgC5XrYaNY3fGN1Q9xJUYXfl773As187ja3g74ZkNA
+         a38+NQOyt0nCrbOqP5bwNnqJnSxiiYjPTop1UybroiMD5p1sxZAzHBDka8mBCJVhSXOr
+         CGo3gY4c3SvNUlkTK46RxIa0xm7+huhHrslq62JYnPuT1bwPFrXjFHRMKPwAvTIQ69c+
+         csGCzZm9ISIgd7XVOZxuXVeTL1Z2bY+bl7XTaE6Cz2g0e+ITZATeRidfCsjiq6LR2fZ8
+         4uiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=X20uXtdA36wJdFmnL5kXE6ANkGPKNtErzQUg9fO43F0=;
-        b=n7CB34ABJSE5PUpIziaI7bOhkYU8KCm/0bPSvdPdYtLOO6kCagFcyDcuZSiFewsKu4
-         XrPQRisH1MkbSM7I6v9G3ke1zw4d5+KTTuvWttKBjlHHgIEYqcDnk3BgTqKaOW6NRXp8
-         IEKL4rhdrSwFKQQOCxJMr5mN+Zs97HjVFn4CBqDG0JCUuC0ok+sMUa8EsRZNpRVVe8jK
-         tVfAvOrDCDzl7AtH4hNWNhOGPeM7tNgrzLflimzVgslwp4HXlXDUoV+k/SV0D06V5iRS
-         9HjjrF6h9DZhKAf9uoWGEma+cZIlpFA/tSrmt3cVmt88TAyW5PHheVNf4TWrQzQBhjg1
-         FLwA==
+        bh=7ctzFV2wTSbf5LJWwfLFnbYaCCE17qTbQd0y6awEpBc=;
+        b=PkUNbROIOSRxfyz93drGFQZ8oxVuZm76WGJNrzLpI3kTcV4v43UpayBaxNERtMArUi
+         XkWzvH6JjI3WUB0Xd57wOxZvZkDUU6yjHVbbXtXdf/GgOPiD/ZChkZQCSkSXK1mWsWhY
+         LApEo1r0cl2wc5LK8o2GFFkkUNaIPEPsdnCu/uiLdCmO/dKMMaVH01kCqHXVwcfRbIo8
+         QIrTa4VuZdBHj5+/SipltDOyDBlnMc0btAbp1wh/bz1++zvOfjzVnO9LWcyWtQbCQx06
+         4Lx352CjgX129r21fR/k3faTTGVHwmjt8CzWczFFkMtQFsvvf+lv9ehA8SXVVfzwlEkH
+         zF+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="WKa0Lnp/";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ThO12PL7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s15si22048603ybk.132.2020.07.06.10.26.44
+        by mx.google.com with ESMTPS id b15si19548048ybn.58.2020.07.06.10.27.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jul 2020 10:26:44 -0700 (PDT)
+        Mon, 06 Jul 2020 10:27:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="WKa0Lnp/";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ThO12PL7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51230 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53480 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsUt9-0000yf-R8
-	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:26:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33682)
+	id 1jsUtw-0001sU-4E
+	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:27:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33020)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsUX7-0005s6-Ih; Mon, 06 Jul 2020 13:03:57 -0400
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:46099)
+ id 1jsUUX-0000Mn-AE; Mon, 06 Jul 2020 13:01:17 -0400
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:42232)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsUX5-0006iM-Ti; Mon, 06 Jul 2020 13:03:57 -0400
-Received: by mail-io1-xd41.google.com with SMTP id a12so40146728ion.13;
- Mon, 06 Jul 2020 10:03:54 -0700 (PDT)
+ id 1jsUUV-0006Rt-JJ; Mon, 06 Jul 2020 13:01:16 -0400
+Received: by mail-il1-x144.google.com with SMTP id t27so28559432ill.9;
+ Mon, 06 Jul 2020 10:01:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=X20uXtdA36wJdFmnL5kXE6ANkGPKNtErzQUg9fO43F0=;
- b=WKa0Lnp/4ENw4KYTm55Jp0CBKAAjECKb63/NLtirFrXqJWtjy9YARPnCGw4sN1rNjC
- xj+uAS77lFX7Pw53RhXebWVJDzr039uCYSZgLleFMvlnZrE5XzIgVJuamrvJYBrcM/gQ
- OgQk5oxwJFsQp3xnl3IN5pjJdSv5RpRJknYyuIngvcAGV+aEd3GH78GbDWbSR4txus0n
- OjkePAGPpMQG0Jj3txMJqRtyrJ1n41/fNix/mk8Dgmq6xf+CrzKD4xaDg7J5pIzH5G8L
- K1zDdXydsLx9rQ7CiCTvJ1PTLelBs97/0EipVuw22nVvFXmvZtr9fBmOY3leWsb+Ctmx
- sPXw==
+ bh=7ctzFV2wTSbf5LJWwfLFnbYaCCE17qTbQd0y6awEpBc=;
+ b=ThO12PL7aDHTt6y75GpT9dyrfdUt5rmmp4Txh+Dd0WmdKFnGjk/r9Dm6MWbmdmKR2f
+ gOl0EW560gWgAJC7KKPMPgy4RIOmmwIgVNkZadxV2u9D/dIfPdqotN2IpqAS9ycNQYHr
+ hJ9dyDKYM4nPXV77ZHg3NPuffoCiRMGhmOByeH/avHgJv72C6g/CaXRvi9GUJfH3XClO
+ jPo8NpRGszmVDXb43aPBUiVyM1/rwXiSMxzSVdmimKA5ZzWoLBOmJH+tqoSpPtKZ+8bh
+ T2k+MkLuNEDO3YFDdNOzo/NtrgfOqqzzZgI1tkCp+0f10xp8ZpF+n8HFKOdAoTs7T00N
+ VhyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=X20uXtdA36wJdFmnL5kXE6ANkGPKNtErzQUg9fO43F0=;
- b=AdfbaQSHXJcsccvB+bt2xV5o3S/dq4qrlFkDSKEGZ0XVlyLaUcixYFnChvRM/jAkAQ
- kKYT2HYez7PxrpgTiC7zc0ZkjkHehf9H7CfvvgORlyX2eGii794X5BfGjIz5dPN2cxTX
- oUEUhLmhJSCoW1MoznH4vlV3fs9duYoQTbwwY21tz9IAvNJZF2XiloN1anODPLIFUkSZ
- 1bgoI6DMja6xABsFJ5Aq70Q7tggZuhNNwe4d+T8xwsXpjWcPnI0KKMDnxRbeii+Oj3uE
- cVWRQBbTTGsKKDUonMV5ic+egzrgLK6WAZhV3gI4qKJNBU7cGOnn13p1DlpARoOzPCow
- DFww==
-X-Gm-Message-State: AOAM5328Y4qRiSj5vXOagw5F+1eRQvsbBBZyZWzRFrupNoN/beajsmyh
- Ac1xcY9LEqzXWz74EkCjZvYZOk2jR5z8Jp/w0Do=
-X-Received: by 2002:a5d:9ed0:: with SMTP id a16mr26245576ioe.176.1594055034056; 
- Mon, 06 Jul 2020 10:03:54 -0700 (PDT)
+ bh=7ctzFV2wTSbf5LJWwfLFnbYaCCE17qTbQd0y6awEpBc=;
+ b=GC+iYabkjjhtiURT1WKlPhDK84DXtPDSJ1SUb7X07NSN7ICnfFrgwd7Ee5J1kh/o+S
+ h5eLIiH9yP97QNxOUq2qVoigIS8qVzdI89XroBMxx1cnaTKubP2rJ/BDPnP8XblThRFl
+ zOVZqdxCHr3qwTYuNRhlBaJRa6QPS2ZdP7gBPMZ4GGlDPiMP2eBvZgDYiPJsO+WTZbr5
+ fAOOEknIcJvhMQiRavAaJ76IHQvTyyQ5AlKHHF7eMx4PZRh15n3bR4ePvcjNK0jxBIN9
+ zo7/eiNhzkLEZjCEY4N1a7Ll4fhYWZQQd/stn3WuUmFf9DNNQaR9ICGH7s8YtGImfWXk
+ SdBg==
+X-Gm-Message-State: AOAM531hR+m89Y3CLgPJyG+uzjaoM9LCpz+MU9w4gLIKJACw7JZv9Vf+
+ s4GvX/vI1/G7BhwPE8XSjIo2ORHbmxVHF6QfZT0=
+X-Received: by 2002:a05:6e02:d51:: with SMTP id
+ h17mr31745866ilj.131.1594054872136; 
+ Mon, 06 Jul 2020 10:01:12 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200704144943.18292-1-f4bug@amsat.org>
- <20200704144943.18292-7-f4bug@amsat.org>
-In-Reply-To: <20200704144943.18292-7-f4bug@amsat.org>
+ <20200704144943.18292-4-f4bug@amsat.org>
+In-Reply-To: <20200704144943.18292-4-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 6 Jul 2020 09:54:07 -0700
-Message-ID: <CAKmqyKOexZ602pCtmO03FW5x=NzawWSzfHq3puQOgpLbdXnUbg@mail.gmail.com>
-Subject: Re: [PATCH 06/26] hw/usb/hcd-dwc2: Remove unnecessary includes
+Date: Mon, 6 Jul 2020 09:51:17 -0700
+Message-ID: <CAKmqyKOXnBzRC6-FQ664k-g8gQkByLEGq1MxBJ97eddL+OcH1A@mail.gmail.com>
+Subject: Re: [PATCH 03/26] hw/usb: Remove unused VM_USB_HUB_SIZE definition
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d41;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd41.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x144.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -143,13 +144,14 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cxlujnWjQqCo
+X-TUID: z6pwpYmv+cAy
 
-On Sat, Jul 4, 2020 at 7:53 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+On Sat, Jul 4, 2020 at 7:50 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
 > wrote:
 >
-> "qemu/error-report.h" and "qemu/main-loop.h" are not used.
-> Remove them.
+> Commit a5d2f7273c ("qdev/usb: make qemu aware of usb busses")
+> removed the last use of VM_USB_HUB_SIZE, 11 years ago. Time
+> to drop it.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
@@ -158,22 +160,25 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/usb/hcd-dwc2.c | 2 --
->  1 file changed, 2 deletions(-)
+>  include/hw/usb.h | 4 ----
+>  1 file changed, 4 deletions(-)
 >
-> diff --git a/hw/usb/hcd-dwc2.c b/hw/usb/hcd-dwc2.c
-> index 72cbd051f3..590e75b455 100644
-> --- a/hw/usb/hcd-dwc2.c
-> +++ b/hw/usb/hcd-dwc2.c
-> @@ -39,8 +39,6 @@
->  #include "migration/vmstate.h"
->  #include "trace.h"
->  #include "qemu/log.h"
-> -#include "qemu/error-report.h"
-> -#include "qemu/main-loop.h"
->  #include "hw/qdev-properties.h"
+> diff --git a/include/hw/usb.h b/include/hw/usb.h
+> index e29a37635b..4f04a1a879 100644
+> --- a/include/hw/usb.h
+> +++ b/include/hw/usb.h
+> @@ -470,10 +470,6 @@ void usb_generic_async_ctrl_complete(USBDevice *s, U=
+SBPacket *p);
+>  void hmp_info_usbhost(Monitor *mon, const QDict *qdict);
+>  bool usb_host_dev_is_scsi_storage(USBDevice *usbdev);
 >
->  #define USB_HZ_FS       12000000
+> -/* usb ports of the VM */
+> -
+> -#define VM_USB_HUB_SIZE 8
+> -
+>  /* usb-bus.c */
+>
+>  #define TYPE_USB_BUS "usb-bus"
 > --
 > 2.21.3
 >

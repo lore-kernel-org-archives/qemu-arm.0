@@ -1,202 +1,175 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp199959lfm;
-        Mon, 6 Jul 2020 10:57:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwrTuF9WV6o5dG4Pu5UIRFNbslNqXDtC8wrNNnCRAdPkY7uCiYlKNlJ6Hsqe2qknfJwcOVy
-X-Received: by 2002:a25:a226:: with SMTP id b35mr79383693ybi.356.1594058277392;
-        Mon, 06 Jul 2020 10:57:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594058277; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp202324lfm;
+        Mon, 6 Jul 2020 11:01:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwwhvETawVjmVTTt3+nRFf2BfQNOKi+bIDrtF7v+BtuRM1jau/qffXuIdOkBmamzqY/yXFo
+X-Received: by 2002:a25:ba4f:: with SMTP id z15mr81691604ybj.113.1594058479104;
+        Mon, 06 Jul 2020 11:01:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594058479; cv=none;
         d=google.com; s=arc-20160816;
-        b=qe4kXBn9u3Kyg4mwLTkrbtOCFXNGzm1I0Asi/kGdPEMcazD8RCmlmCr7V53PZiX3K6
-         aXdp42tLDR5MR1CPUV3ss3fSwdzyN+1QYeg+p8Ibdjay4FBRU4/Ct5hJq5TgDW3mLDQA
-         tb9gZyKRSTmhj6ZAHWCK7CoohvSM82x8gsHkqQ+3ohbPEnc1Wqi07lFdU5DrmbmDzidv
-         Zbne8Tc6/MXKJc2b6qlIH5HodyXF7hg7LBTSlv187XUkSIfnlJVIa/mDEHhDVSNLDOKl
-         VAZL2u5Cq6KnBtD39uRAyn7fxGa6KyvmbuQogDfQD7UC5P23jS4lbarB9ctd+rScYa80
-         OFKA==
+        b=0iWyTjgsrby0JZgPIG5NdtOMVutpevDYT94m54FRJODaiML648aZmq3Gt4Zek8vHHu
+         jEncXmEIobO+DZyzd4HLdeRsCgVk0EpCRETLHF+CzwHzr+Rdm1XgHv6A+3qgGLLOt5uG
+         EXsrRLSAeVDzH0VPlrD+4N4D3KcpLPpwEPVGmPtFfc359QX2aesLAQB1J5ksbnqVH2h9
+         VIotCRCQxktoqGEHpFiHiKJaJ4d06WQU88VRq3SuChiBAHpxnYSnPV16XXSJWVUSA9is
+         +SAmCv6G9knop5INOwC9D0o8XHdWSYjjMLtcmJButWygjVijcIQdc2L0P0fSaKht71wh
+         U/jg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=/6i6SzUyP91tXZAmPR05xH5j33bfBUucUM0URzPP61A=;
-        b=qWqakyogNfeS9ujUFyOPhkx7Ic3mELd/TGnuzoQknPXBCybjWYYYow+JgRDtlrDDNy
-         WYL79X15elE/cn7OUe0dedvGkbetHy+gF/ql1HkhMUYAnbI27EYE7ZMGDAJSbtTMMg8f
-         w0l8HIO5NmHY51Ym+ploWsxoouyTF+2qVx0WVRsdzTYL1w0fmlbuALbdlm296PhEwCjC
-         hbMFGtwQigUmk9PSDkcOYcvEhkeQm4KYnnJEZ8l9lm0E5Q0Wzy+6Pkys+G+K0WNK9RGY
-         bdRwFP8mQLghhtvEmtBpbTRGVycW+3o9FCXZzGOkanhE63lXOrHXHB8gtMkPBoEhOMxK
-         EgPA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=tNykd+kQQq+eNUlSrefBThQO4x6gegzICOk9XXdP+lU=;
+        b=Jt+ajp4v5l/PQ3SCS37wtYT2NN8eG4d0g60jBF1KdEuYr1KuN2XubzfT5RURCjJsmS
+         RlB5B1dfOZFDSant5sQA7NJlPws4rY7nAvZILwSxU+nvN4I9maALv5F4g2GZkJ0zdKp6
+         lx6mq6rZlbh0a0qxf6r/87LQ6TCNooIyONgtV1GEW0Pk6DgIXfAQNidGnYzI/9HzmRBk
+         0TNyxGuOgf7rno/zm3pfMn5XUdCWYWBabm/kVo2eNqP819u9xYvW50eZsAquN07v+bkA
+         uMs/WhUoRL+wyrmqy81xD4yu9BP1nv1auTmmgeqdXKat7+z/R62sb+FqZVY1+DNKceJw
+         XTmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=boamkXe9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uXlbKBix;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z6si19008687ybf.10.2020.07.06.10.57.57
+        by mx.google.com with ESMTPS id y125si1691666yba.353.2020.07.06.11.01.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jul 2020 10:57:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Jul 2020 11:01:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=boamkXe9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39086 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uXlbKBix;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:42784 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsVNM-0002qe-Pp
-	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:57:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47166)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jsVQc-0005B3-FX
+	for alex.bennee@linaro.org; Mon, 06 Jul 2020 14:01:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48356)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsVM8-0000lI-L8; Mon, 06 Jul 2020 13:56:40 -0400
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:37287)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jsVQR-0005AR-4H; Mon, 06 Jul 2020 14:01:07 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331]:37138)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsVM6-0000ED-Rm; Mon, 06 Jul 2020 13:56:40 -0400
-Received: by mail-io1-xd41.google.com with SMTP id v6so26634570iob.4;
- Mon, 06 Jul 2020 10:56:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jsVQO-00011d-ID; Mon, 06 Jul 2020 14:01:06 -0400
+Received: by mail-wm1-x331.google.com with SMTP id o2so43036973wmh.2;
+ Mon, 06 Jul 2020 11:01:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=/6i6SzUyP91tXZAmPR05xH5j33bfBUucUM0URzPP61A=;
- b=boamkXe9J4H35VxNzJVu2sKkuqZ5atZU6A1A5XhvxgFGrzuqn6g5Q7BEAyZTMpUh8n
- XRbR8Zv3k0pfntdT7a07EFE6ygQpqlJVA3b21L/ZK7KeNdytEnvSULDnEbDknQCWxcgX
- 8bbfye39D1BUQ1BAcIRGiuZaAl7MvRJXkFgyzJlB0nYJGuCrTzE1/V8GyGEUUtzXB8lM
- +2k1yGzCz+XgJBwBT+e0m0Q+bF9LqSXCkqqxeQqvPuvyliNqKuOjs+oMEntue55kn1mj
- 5tVcq8YkluSFwe7RLw7lEjbqMwpHKUCokr6yZ39bWVzbROv/rIppb5UyQ6xsvhdvU64B
- V1ZQ==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=tNykd+kQQq+eNUlSrefBThQO4x6gegzICOk9XXdP+lU=;
+ b=uXlbKBixUJbg3te0S56MJc5CiF/YwLkYoxzKb/5ti9liaFNZjAVuqxZkp49T8DLTyV
+ SbalIvgTKjfDKY6cm2AoNkD/+OnK1KQk3pS9eW4Xdy0/n3iVUZfu8EeZecAn3ePBju41
+ GU2YgTjm/H/gO2bJVV4BV8BkI7Rb7Xt/lBz6vdVVQv5JVIXBR2/pj23cRc8OCycBmRxs
+ J5u7eLBuibTV/OY9gmlYkQnwRwCxQOlODhYCX8OIJT/KK9mqNBBarRmGZ/flhBpGCz5W
+ mdZOQBY0rxHne/QjHxO54NzeENKDBKpLjNfclo9zuY+axz6/5OvM2BBLURq/3S3lPwuI
+ FLgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=/6i6SzUyP91tXZAmPR05xH5j33bfBUucUM0URzPP61A=;
- b=XOIVeHjXdE3T0VgRWeJSD/IrVP1qXiTFt+dsSjNzRTGt/6g9d314uhg3I8J3lYzCNA
- 2rSjLByy8+GF7vSLkHnjOY1ByZWAnVTaMEqDrrVLnSpcW2hhJsN3TVYtZo5I/QqCMlCb
- 9bhBnD7fllGxZf7nlBnOO8D57rudmpJF6LwQD/AHBy4qCYPyh4HVNPyG6NEhV4sR7PI3
- kHHGws3yo+c/vLlvTrN9eI9rNCqkKB5wxq6cC+tIaHUp9/2FSA8w0Gv+ULzNweep9Xk/
- oSkdXb7+J4Msnz+NnSt/OqvNh9B7x5g5TBC0dPO+xHIz48OeVXWi7DQ2cAEpD19UD936
- ySrA==
-X-Gm-Message-State: AOAM5317OiZWPuIyvic05lheNbGb7ohTD0l114qAZRix4VdL3Qx0NZod
- 5j72jsuh5Ajbl6TBQuZQDcfJaVKw7E6dEA90Ufo=
-X-Received: by 2002:a5d:9306:: with SMTP id l6mr27140837ion.105.1594058197170; 
- Mon, 06 Jul 2020 10:56:37 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=tNykd+kQQq+eNUlSrefBThQO4x6gegzICOk9XXdP+lU=;
+ b=DnIeowCx+7ncfNiW5jnfIoz/b5Bh0Zi0Mwb26CtpeDXaPoLYpvWAC5VlSZGZQ3zggm
+ c3mUsccdFSyitYzvTGqCNNVhJPSlPZChcSlSG+f4AJPJdyp5SGxdM8aboSdhQKCbBoLX
+ 8R4IR5HDovMMGyi9tF8MUKBoOnYifdolH8uvDbgwH5IX3XQxb/Y+5/KENbmLn/dFQVbD
+ WNr5NUy8uHZOkx7G+DtMYTUc9iYznZ4amd5EKpsjPyJD4kJGPIMFd/t5BDhwo4JH3h0u
+ aBhObQWuNBhDoodbB4hLsrkoV4/UJGAAb8cf1LhOSgeWmBmeMN0n7Hj+9zUiAAxazV1e
+ OE5Q==
+X-Gm-Message-State: AOAM5301pU838ohbozYvEoxH79Db6RVcw3uyMx+QRwGCsP4cK17BELa7
+ /H1/Plr+kMC9eNpPdCEInBGUhi/2
+X-Received: by 2002:a7b:c09a:: with SMTP id r26mr361972wmh.176.1594058461729; 
+ Mon, 06 Jul 2020 11:01:01 -0700 (PDT)
+Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id u8sm24232241wrt.28.2020.07.06.11.01.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 Jul 2020 11:01:00 -0700 (PDT)
+Subject: Re: [PATCH v3 00/11] hw/sd/sdcard: Fix CVE-2020-13253 & cleanups
+To: Alistair Francis <alistair23@gmail.com>
+References: <20200605102230.21493-1-philmd@redhat.com>
+ <7a456fdc-eb53-063b-1d5e-24472b4057d5@redhat.com>
+ <CAKmqyKPaQxw4Gw-Fi5X3PT2kBed+Z+iAAuobSAnfCd9hjZ_3QA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <19b9d0ef-bc61-277c-b8c9-05ffa9cefb8a@amsat.org>
+Date: Mon, 6 Jul 2020 20:01:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <20200704144943.18292-1-f4bug@amsat.org>
- <20200704144943.18292-18-f4bug@amsat.org>
-In-Reply-To: <20200704144943.18292-18-f4bug@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 6 Jul 2020 10:46:50 -0700
-Message-ID: <CAKmqyKMk==4rbi4iqEuH1aYcUNE+zTbBst5gKp8NkePz6OmDNg@mail.gmail.com>
-Subject: Re: [PATCH 17/26] hw/usb/bus: Rename usb_get_dev_path() as
- usb_get_full_dev_path()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d41;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd41.google.com
+In-Reply-To: <CAKmqyKPaQxw4Gw-Fi5X3PT2kBed+Z+iAAuobSAnfCd9hjZ_3QA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x331.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=_AUTOLEARN
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Paul Durrant <paul@xen.org>,
- Magnus Damm <magnus.damm@gmail.com>, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Anthony Perard <anthony.perard@citrix.com>,
- "open list:X86" <xen-devel@lists.xenproject.org>,
- Leif Lindholm <leif@nuviainc.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Richard Henderson <rth@twiddle.net>,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Paul Zimmerman <pauldzim@gmail.com>,
- "open list:New World" <qemu-ppc@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /rsPOvM1zl6/
+ Qemu-block <qemu-block@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QDr+3bqklzNt
 
-On Sat, Jul 4, 2020 at 7:58 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
-> wrote:
->
-> If the device has USB_DEV_FLAG_FULL_PATH set, usb_get_dev_path()
-> returns the full port path. Rename the function accordingly.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On 7/6/20 6:31 PM, Alistair Francis wrote:
+> On Mon, Jun 8, 2020 at 10:48 AM Philippe Mathieu-Daudé
+> <philmd@redhat.com> wrote:
+>>
+>> Hi Alistair,
+>>
+>> On 6/5/20 12:22 PM, Philippe Mathieu-Daudé wrote:
+>>> Patches 2 & 3 fix CVE-2020-13253.
+>>> The rest are (accumulated) cleanups.
+>>>
+>>> Supersedes: <20200604182502.24228-1-f4bug@amsat.org>
+>>>
+>>> Philippe Mathieu-Daudé (11):
+>>>   MAINTAINERS: Cc qemu-block mailing list
+>>>   hw/sd/sdcard: Update coding style to make checkpatch.pl happy
+>>>   hw/sd/sdcard: Do not switch to ReceivingData if address is invalid
+>>>   hw/sd/sdcard: Restrict Class 6 commands to SCSD cards
+>>>   hw/sd/sdcard: Update the SDState documentation
+>>>   hw/sd/sdcard: Simplify cmd_valid_while_locked()
+>>>   hw/sd/sdcard: Constify sd_crc*()'s message argument
+>>>   hw/sd/sdcard: Make iolen unsigned
+>>>   hw/sd/sdcard: Correctly display the command name in trace events
+>>>   hw/sd/sdcard: Display offset in read/write_data() trace events
+>>>   hw/sd/sdcard: Simplify realize() a bit
+>>
+>> I forgot to Cc you.
+>>
+>> Since you already reviewed a bunch of SD patches in the
+>> past, do you mind having a look a this series? It should
+>> be quite trivial.
+> 
+> Hey,
+> 
+> Sorry I took so long but I have reviewed a few. Let me know if there
+> are anymore you want reviewed.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+No problem, just in time :)
 
-Alistair
+Thank you a lot for all your reviews!
 
-> ---
->  hw/usb/bus.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/usb/bus.c b/hw/usb/bus.c
-> index f8901e822c..fad8194bf5 100644
-> --- a/hw/usb/bus.c
-> +++ b/hw/usb/bus.c
-> @@ -13,7 +13,7 @@
->
->  static void usb_bus_dev_print(Monitor *mon, DeviceState *qdev, int inden=
-t);
->
-> -static char *usb_get_dev_path(DeviceState *dev);
-> +static char *usb_get_full_dev_path(DeviceState *dev);
->  static char *usb_get_fw_dev_path(DeviceState *qdev);
->  static void usb_qdev_unrealize(DeviceState *qdev);
->
-> @@ -33,7 +33,7 @@ static void usb_bus_class_init(ObjectClass *klass, void=
- *data)
->      HotplugHandlerClass *hc =3D HOTPLUG_HANDLER_CLASS(klass);
->
->      k->print_dev =3D usb_bus_dev_print;
-> -    k->get_dev_path =3D usb_get_dev_path;
-> +    k->get_dev_path =3D usb_get_full_dev_path;
->      k->get_fw_dev_path =3D usb_get_fw_dev_path;
->      hc->unplug =3D qdev_simple_device_unplug_cb;
->  }
-> @@ -577,7 +577,7 @@ static void usb_bus_dev_print(Monitor *mon, DeviceSta=
-te *qdev, int indent)
->                     dev->attached ? ", attached" : "");
->  }
->
-> -static char *usb_get_dev_path(DeviceState *qdev)
-> +static char *usb_get_full_dev_path(DeviceState *qdev)
->  {
->      USBDevice *dev =3D USB_DEVICE(qdev);
->
-> --
-> 2.21.3
->
->
+Phil.
+
+> 
+> Alistair

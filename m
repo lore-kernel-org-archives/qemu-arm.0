@@ -1,97 +1,97 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp130178lfm;
-        Mon, 6 Jul 2020 09:22:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwo8tvujPLPf3fOZ8HYy3gZ2Augd7hCvTlYsOYIYulKbf36wN5Ocns3sBX+jSL7mm1QcbWs
-X-Received: by 2002:a25:a026:: with SMTP id x35mr83134759ybh.114.1594052530150;
-        Mon, 06 Jul 2020 09:22:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594052530; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp131528lfm;
+        Mon, 6 Jul 2020 09:23:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwElCA4KbsiY3I54LkiR7/Z95+GtF7f+E0M33JR1s46uio8kf8uWqdgGdWci0S9qhh4x8RK
+X-Received: by 2002:a5b:707:: with SMTP id g7mr77853984ybq.136.1594052638754;
+        Mon, 06 Jul 2020 09:23:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594052638; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZPOV8JRV7/2t6fMJ1nF//aHJS9vpvrSan+dFBQ36YqIPH2cn7M92CDnWiDmVXEp4na
-         ZDd/Av7SLBKg9YxdQ90fhkmI0dlOeQNkQtVAbgWoxAniE5KLXCucK7WXU1bT2RszfWPq
-         dsS3fNKBXz9Oe06wEw6eZdVuDgqAgS7WKHowHj8jY93YILF3dJQOoq5OEvF8fUCRVLt4
-         1VCUmSdAV3ZhAJu7eIW3SSNX9jUS0Q2Tsm8DjP9QIPNMvpqswuJ/WEgtlGlnUY6tAG5M
-         E02gnS7UcCbFrnrmEUHRZp1MUt/8bmACHbEaGaOqXEiUCtixMZuyFG24OgKtnKBItksw
-         pMFg==
+        b=VlxGkQFOfd4TvqWMpPgM9GGbgI4MdvPPMiEY+PBfuXl1ggWpjCRxUL0hY5nSHvJ8Bq
+         lzDedSVsWZxbmSNKECl7aJ9dib6jtcXUfGl9Dlek7hiK6pF9cBkZ06qZvGjc6w/X0dEC
+         autlQklnu2B9V0NBLtaB0LphNkq5+beDZZSH/iVE8ELmYrIZQVIht5mbPabTnxEQ7u4A
+         wA5YcMTmjP56/FBtC7Dk8xUzhhJXn+JMbmrmylHr2dcASyO13YHdArbcbhNbx8gOX/mP
+         i1nESfjnxDWQxJP0bprilTbVB1nNRI35qAG9imbaZKrfXpnS50A5rf2o8u4gBSI+INpk
+         v9Og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=70rUnE0Ok1T2f4tPI27RMNYzIsTxi9ncAbkowQsv0Xc=;
-        b=XMZOPNg5QSXRd0A5Ck6kNUWjBZw7PBZ1WI9NURHIiUD/37zgsjVN4UB0yuOYda6JU3
-         JAi+8meE6HcgG8fmMr/FIGC2JjIztNS1tKmZQCKIRu0ZWBNzqcamRlunm5n2hU93nfOi
-         acvGFrTEgtd1PtjDqNP6U2oU/1cRZIVr5pBlhqRAFvsqsTPTkAC70Pg244SLXE33Espd
-         xp1J9oWJDwHeJaRYm00TLclI/5bk1HFysT137P1bivX0aQhMtFwS2VDgMtxHLcZY4ODT
-         uxrzjKOrZWjJ3AUy9JRj6u9VRfsijVgiGo9VyxPEKQyjkkWfWF+aCRXQ/JT33DRM71TR
-         lGAA==
+        bh=ZCFsUgKWMHvjDffglxEwENbngV4NS85ssCNLB+uyOKU=;
+        b=dkOB8vMWg2xZW9OUvqSXHar+k62iBHqcQswGzKd0dAL4fy9LJMb8DtFMHr/4m2g9RW
+         ENQoS4qxBJr7xgZq/YZGIfEUoohG5yFxmQdCh1+NLHnKDY+izo4Yv3QldBLY1Mi0I6AZ
+         VeN0cCz+QOke0NrNKEpNJQgXI7bLwU/lKxtP2DZ08yt3ystqQ0/lUjbW4O2mLfKtTq79
+         FZAHzZPtlxHHhvp4BYIeC+rYi+RdDkb34v7ycmn46wACGJWAJnmEcIJIL+i8pfY4pSRX
+         D83KmjaSqZKzx3+zdQQVFGMS3Ga6ufN9YkToaphyFbBvGpKDb6SC8aSR/yVBv1p7tUzI
+         RcYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="P/z7EPlo";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SJswZLFv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i2si21179145ybh.9.2020.07.06.09.22.09
+        by mx.google.com with ESMTPS id g7si16455172ybb.178.2020.07.06.09.23.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jul 2020 09:22:10 -0700 (PDT)
+        Mon, 06 Jul 2020 09:23:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="P/z7EPlo";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SJswZLFv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57994 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36098 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsTsf-0002qG-Hc
-	for alex.bennee@linaro.org; Mon, 06 Jul 2020 12:22:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51666)
+	id 1jsTuQ-0005rF-36
+	for alex.bennee@linaro.org; Mon, 06 Jul 2020 12:23:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52172)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsTsT-0002oJ-CA; Mon, 06 Jul 2020 12:21:58 -0400
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:43941)
+ id 1jsTta-0004Yw-PZ; Mon, 06 Jul 2020 12:23:06 -0400
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:43949)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsTsR-0007I1-5u; Mon, 06 Jul 2020 12:21:57 -0400
-Received: by mail-io1-xd43.google.com with SMTP id k23so39908078iom.10;
- Mon, 06 Jul 2020 09:21:54 -0700 (PDT)
+ id 1jsTtY-0007W6-L4; Mon, 06 Jul 2020 12:23:06 -0400
+Received: by mail-io1-xd41.google.com with SMTP id k23so39912206iom.10;
+ Mon, 06 Jul 2020 09:23:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=70rUnE0Ok1T2f4tPI27RMNYzIsTxi9ncAbkowQsv0Xc=;
- b=P/z7EPloUgGOm6kjwlWy6t2O8v1mZtuEOaXPtChfiGJsxoi95hnFOJT6KAfKFg4Ohg
- y6r6dCt8y0i9/AHEjCNU07UFT2YMJDrR4+QXmgd+I6P9cxqU9WaOfQHkR2/Ru4dQm21o
- ReVnlOIu4W/IXybsjWkM82Py+MzW9PCRevrzQXEj2FACBulHoyf+eHFdjW5Kp7zRq4Tk
- 6NrDRwRJU2qhQ/UcVUvf7bmC6bM6VGnDp8d9ZlnKp4I/Bg1GrZVSpMeUYAdk4Aa7h36N
- Qs4hPDzZUgOwf0FHws0WenZc5bBV0n54J5R81b6wtVgLKWHg1Oc3KZu1+ZMdQOYHcv9x
- wq6A==
+ bh=ZCFsUgKWMHvjDffglxEwENbngV4NS85ssCNLB+uyOKU=;
+ b=SJswZLFvxKUNl19tgpP9pnlvN/y2gsQha2ge8zsRL4LRd9lwtCWSkt0+RF1hAxJlRZ
+ wvxy8wmDphGoq5KWwitWEDh5DN2Dyblo+9gqxtz4TFCXfRaNBH5BJ2q8WA7rFd8t2GSW
+ wkVwZVVkuCjFoF+W+um5hWmkJAWLN7DkVzpIWc4wqoKm1bYRquQSt+wOKHXHSwhuba1h
+ +fWv/8RPzK+nv5GiHl707mQ/IRX4ffMGOl46MDAtjiJ3sQ31lJ/BDxhWgigopIdDdkOl
+ I6bS882r/k+WVtZ/bU5i5wcB2OxEe85eNm7j9YCPyjy+k/QA8eBb+BwygpQdIcMDkzyn
+ N7YQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=70rUnE0Ok1T2f4tPI27RMNYzIsTxi9ncAbkowQsv0Xc=;
- b=YTLWqDN7ITK1RgZgotxiXdvm1kjKvZXAKWSAaaIVHc5J8C1pq8mhu15JbVQcKoN4rk
- NvJVApg3+/fy6ulwQdxIfG8kUtu167rOzZFSTyuCyTdogSkYVSfnDmeXG9sm25fQ6l8g
- 6YaOJQYy//vti9NacF4vuwEC7MOxqnPW00Df6v3isT7sXmF6eNffFODVNe/3m4FbOuDy
- dAL2UxIeR7EjirVprF3mgruSowEyjeqwNUoMgpYR4SBVf4r8YasIyBvAdR/v5u3I+5CJ
- yHsczS/zkrcjOUnoWi5otpc8hoWAfoq7bKmv1iKv/0cAri40S/rgK9smxFmrUTuv/4DT
- xP+A==
-X-Gm-Message-State: AOAM531hzpOCvywmZUsXJVYgldcZo7mGd9ZTq/i910/djm+WpZKjXkyg
- dQkuuPJR7kXayQQ4TsC6yyJDuNQeZ5q2/xnyZDc=
-X-Received: by 2002:a5d:97d9:: with SMTP id k25mr26314087ios.42.1594052513572; 
- Mon, 06 Jul 2020 09:21:53 -0700 (PDT)
+ bh=ZCFsUgKWMHvjDffglxEwENbngV4NS85ssCNLB+uyOKU=;
+ b=QP2yLM9PlxGXDiQo2WKVvQGyZpPcC1V6RMoJ29SA4I3sN5KBAc27B2l8kyNvhFf/6A
+ K3H/uCJe888QNj8Gb3i5sCvcuR3G36Kg7mmT3w2Lv/V6GmnjRH4U7WzVOR24SGbxNtS8
+ GTFnXP4Z4qmF/Zrf81PrUlwGVE0aPGr2xKeWMCyDw9Yi0W/yKQMcG/Xtbi0MtIZt/b/o
+ 83obBOvh9B/0tbnl+w/x2baoKjWmqmtZUNv1ER1AQCAikkr/pcSClDEBiy9htTkj3L9M
+ l2fcAhGRYYHGOXfqYU9EIEttAT3EytjeVq0JGbBqtcjjPFxvHvazovnMlZ7pGDTNoKcM
+ lNXQ==
+X-Gm-Message-State: AOAM532l6f+bfvBM5OLfcGjpp0TUlXvzY+hN1QcoIl3aifeFF/AeV747
+ T/f+BfqAWOP2z6ZsN/KXAXvwQ6aFIVOELPAN89g=
+X-Received: by 2002:a02:6c4c:: with SMTP id w73mr55307238jab.26.1594052582475; 
+ Mon, 06 Jul 2020 09:23:02 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200705204630.4133-1-f4bug@amsat.org>
- <20200705204630.4133-7-f4bug@amsat.org>
-In-Reply-To: <20200705204630.4133-7-f4bug@amsat.org>
+ <20200705204630.4133-9-f4bug@amsat.org>
+In-Reply-To: <20200705204630.4133-9-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 6 Jul 2020 09:12:05 -0700
-Message-ID: <CAKmqyKNJXGfDQL=_+yiahsUVW5D6Spx-Cq+KxrQw=aFTk9PhAw@mail.gmail.com>
-Subject: Re: [PATCH v4 06/10] hw/sd/pl181: Expose a SDBus and connect the
- SDCard to it
+Date: Mon, 6 Jul 2020 09:13:15 -0700
+Message-ID: <CAKmqyKOu9Wpu-9pZLCxdMZUHW2Ku=8BazzuTSpUba8=rRqDUWQ@mail.gmail.com>
+Subject: Re: [PATCH v4 08/10] hw/sd/pl181: Replace disabled fprintf()s by
+ trace events
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d43;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd43.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d41;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd41.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -100,8 +100,8 @@ X-Spam_bar: -
 X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,16 +119,12 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
  Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lnqDeKoWKoCJ
+X-TUID: jLA+MHvIjmYD
 
-On Sun, Jul 5, 2020 at 1:47 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+On Sun, Jul 5, 2020 at 1:51 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
 > wrote:
 >
-> Convert the controller to the SDBus API:
-> - add the a TYPE_PL181_BUS object of type TYPE_SD_BUS,
-> - adapt the SDBusClass set_inserted/set_readonly handlers
-> - create the bus in the PL181 controller
-> - switch legacy sd_*() API to the sdbus_*() API.
+> Convert disabled DPRINTF() to trace events and remove ifdef'ry.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
@@ -137,172 +133,115 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
-> Since v3:
-> Addressed Peter comment, adding TYPE_PL181_BUS:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg515866.html
-> ---
->  hw/sd/pl181.c | 67 +++++++++++++++++++++++++++++++++++++++------------
->  1 file changed, 51 insertions(+), 16 deletions(-)
+>  hw/sd/pl181.c      | 26 +++++++++-----------------
+>  hw/sd/trace-events | 10 ++++++++++
+>  2 files changed, 19 insertions(+), 17 deletions(-)
 >
 > diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
-> index ab4cd733a4..f6de06ece8 100644
+> index f69488ebac..574500ce60 100644
 > --- a/hw/sd/pl181.c
 > +++ b/hw/sd/pl181.c
-> @@ -17,6 +17,7 @@
+> @@ -17,15 +17,7 @@
 >  #include "qemu/module.h"
 >  #include "qemu/error-report.h"
 >  #include "qapi/error.h"
-> +#include "hw/qdev-properties.h"
+> -
+> -//#define DEBUG_PL181 1
+> -
+> -#ifdef DEBUG_PL181
+> -#define DPRINTF(fmt, ...) \
+> -do { printf("pl181: " fmt , ## __VA_ARGS__); } while (0)
+> -#else
+> -#define DPRINTF(fmt, ...) do {} while(0)
+> -#endif
+> +#include "trace.h"
 >
->  //#define DEBUG_PL181 1
+>  #define PL181_FIFO_LEN 16
 >
-> @@ -32,11 +33,13 @@ do { printf("pl181: " fmt , ## __VA_ARGS__); } while =
-(0)
->  #define TYPE_PL181 "pl181"
->  #define PL181(obj) OBJECT_CHECK(PL181State, (obj), TYPE_PL181)
+> @@ -158,7 +150,7 @@ static void pl181_fifo_push(PL181State *s, uint32_t v=
+alue)
+>      n =3D (s->fifo_pos + s->fifo_len) & (PL181_FIFO_LEN - 1);
+>      s->fifo_len++;
+>      s->fifo[n] =3D value;
+> -    DPRINTF("FIFO push %08x\n", (int)value);
+> +    trace_pl181_fifo_push(value);
+>  }
 >
-> +#define TYPE_PL181_BUS "pl181-bus"
-> +
->  typedef struct PL181State {
->      SysBusDevice parent_obj;
+>  static uint32_t pl181_fifo_pop(PL181State *s)
+> @@ -172,7 +164,7 @@ static uint32_t pl181_fifo_pop(PL181State *s)
+>      value =3D s->fifo[s->fifo_pos];
+>      s->fifo_len--;
+>      s->fifo_pos =3D (s->fifo_pos + 1) & (PL181_FIFO_LEN - 1);
+> -    DPRINTF("FIFO pop %08x\n", (int)value);
+> +    trace_pl181_fifo_pop(value);
+>      return value;
+>  }
 >
->      MemoryRegion iomem;
-> -    SDState *card;
-> +    SDBus sdbus;
->      uint32_t clock;
->      uint32_t power;
->      uint32_t cmdarg;
-> @@ -183,7 +186,7 @@ static void pl181_do_command(PL181State *s)
+> @@ -184,7 +176,7 @@ static void pl181_do_command(PL181State *s)
+>
 >      request.cmd =3D s->cmd & PL181_CMD_INDEX;
 >      request.arg =3D s->cmdarg;
->      DPRINTF("Command %d %08x\n", request.cmd, request.arg);
-> -    rlen =3D sd_do_command(s->card, &request, response);
-> +    rlen =3D sdbus_do_command(&s->sdbus, &request, response);
+> -    DPRINTF("Command %d %08x\n", request.cmd, request.arg);
+> +    trace_pl181_command_send(request.cmd, request.arg);
+>      rlen =3D sdbus_do_command(&s->sdbus, &request, response);
 >      if (rlen < 0)
 >          goto error;
->      if (s->cmd & PL181_CMD_RESPONSE) {
-> @@ -224,12 +227,12 @@ static void pl181_fifo_run(PL181State *s)
->      int is_read;
->
->      is_read =3D (s->datactrl & PL181_DATA_DIRECTION) !=3D 0;
-> -    if (s->datacnt !=3D 0 && (!is_read || sd_data_ready(s->card))
-> +    if (s->datacnt !=3D 0 && (!is_read || sdbus_data_ready(&s->sdbus))
->              && !s->linux_hack) {
->          if (is_read) {
->              n =3D 0;
->              while (s->datacnt && s->fifo_len < PL181_FIFO_LEN) {
-> -                value |=3D (uint32_t)sd_read_data(s->card) << (n * 8);
-> +                value |=3D (uint32_t)sdbus_read_data(&s->sdbus) << (n * =
-8);
->                  s->datacnt--;
->                  n++;
->                  if (n =3D=3D 4) {
-> @@ -250,7 +253,7 @@ static void pl181_fifo_run(PL181State *s)
->                  }
->                  n--;
->                  s->datacnt--;
-> -                sd_write_data(s->card, value & 0xff);
-> +                sdbus_write_data(&s->sdbus, value & 0xff);
->                  value >>=3D 8;
->              }
+> @@ -201,16 +193,16 @@ static void pl181_do_command(PL181State *s)
+>              s->response[2] =3D ldl_be_p(&response[8]);
+>              s->response[3] =3D ldl_be_p(&response[12]) & ~1;
 >          }
-> @@ -456,6 +459,20 @@ static const MemoryRegionOps pl181_ops =3D {
->      .endianness =3D DEVICE_NATIVE_ENDIAN,
->  };
+> -        DPRINTF("Response received\n");
+> +        trace_pl181_command_response_pending();
+>          s->status |=3D PL181_STATUS_CMDRESPEND;
+>      } else {
+> -        DPRINTF("Command sent\n");
+> +        trace_pl181_command_sent();
+>          s->status |=3D PL181_STATUS_CMDSENT;
+>      }
+>      return;
 >
-> +static void pl181_set_readonly(DeviceState *dev, bool level)
-> +{
-> +    PL181State *s =3D (PL181State *)dev;
-> +
-> +    qemu_set_irq(s->card_readonly, level);
-> +}
-> +
-> +static void pl181_set_inserted(DeviceState *dev, bool level)
-> +{
-> +    PL181State *s =3D (PL181State *)dev;
-> +
-> +    qemu_set_irq(s->card_inserted, level);
-> +}
-> +
->  static void pl181_reset(DeviceState *d)
->  {
->      PL181State *s =3D PL181(d);
-> @@ -479,12 +496,9 @@ static void pl181_reset(DeviceState *d)
->      s->mask[0] =3D 0;
->      s->mask[1] =3D 0;
->
-> -    /* We can assume our GPIO outputs have been wired up now */
-> -    sd_set_cb(s->card, s->card_readonly, s->card_inserted);
-> -    /* Since we're still using the legacy SD API the card is not plugged
-> -     * into any bus, and we must reset it manually.
-> -     */
-> -    device_legacy_reset(DEVICE(s->card));
-> +    /* Reset other state based on current card insertion/readonly status=
- */
-> +    pl181_set_inserted(DEVICE(s), sdbus_get_inserted(&s->sdbus));
-> +    pl181_set_readonly(DEVICE(s), sdbus_get_readonly(&s->sdbus));
+>  error:
+> -    DPRINTF("Timeout\n");
+> +    trace_pl181_command_timeout();
+>      s->status |=3D PL181_STATUS_CMDTIMEOUT;
 >  }
 >
->  static void pl181_init(Object *obj)
-> @@ -499,19 +513,24 @@ static void pl181_init(Object *obj)
->      sysbus_init_irq(sbd, &s->irq[1]);
->      qdev_init_gpio_out_named(dev, &s->card_readonly, "card-read-only", 1=
-);
->      qdev_init_gpio_out_named(dev, &s->card_inserted, "card-inserted", 1)=
-;
+> @@ -262,11 +254,11 @@ static void pl181_fifo_run(PL181State *s)
+>          s->status |=3D PL181_STATUS_DATAEND;
+>          /* HACK: */
+>          s->status |=3D PL181_STATUS_DATABLOCKEND;
+> -        DPRINTF("Transfer Complete\n");
+> +        trace_pl181_fifo_transfer_complete();
+>      }
+>      if (s->datacnt =3D=3D 0 && s->fifo_len =3D=3D 0) {
+>          s->datactrl &=3D ~PL181_DATA_ENABLE;
+> -        DPRINTF("Data engine idle\n");
+> +        trace_pl181_data_engine_idle();
+>      } else {
+>          /* Update FIFO bits.  */
+>          bits =3D PL181_STATUS_TXACTIVE | PL181_STATUS_RXACTIVE;
+> diff --git a/hw/sd/trace-events b/hw/sd/trace-events
+> index 5f09d32eb2..a87d7355fb 100644
+> --- a/hw/sd/trace-events
+> +++ b/hw/sd/trace-events
+> @@ -62,3 +62,13 @@ milkymist_memcard_memory_write(uint32_t addr, uint32_t=
+ value) "addr 0x%08x value
+>  # pxa2xx_mmci.c
+>  pxa2xx_mmci_read(uint8_t size, uint32_t addr, uint32_t value) "size %d a=
+ddr 0x%02x value 0x%08x"
+>  pxa2xx_mmci_write(uint8_t size, uint32_t addr, uint32_t value) "size %d =
+addr 0x%02x value 0x%08x"
 > +
-> +    qbus_create_inplace(&s->sdbus, sizeof(s->sdbus),
-> +                        TYPE_PL181_BUS, dev, "sd-bus");
->  }
->
->  static void pl181_realize(DeviceState *dev, Error **errp)
->  {
-> -    PL181State *s =3D PL181(dev);
-> +    DeviceState *card;
->      DriveInfo *dinfo;
->
->      /* FIXME use a qdev drive property instead of drive_get_next() */
-> +    card =3D qdev_new(TYPE_SD_CARD);
->      dinfo =3D drive_get_next(IF_SD);
-> -    s->card =3D sd_init(dinfo ? blk_by_legacy_dinfo(dinfo) : NULL, false=
-);
-> -    if (s->card =3D=3D NULL) {
-> -        error_setg(errp, "sd_init failed");
-> -    }
-> +    qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
-> +                            &error_fatal);
-> +    qdev_realize_and_unref(card,
-> +                           qdev_get_child_bus(dev, "sd-bus"),
-> +                           &error_fatal);
->  }
->
->  static void pl181_class_init(ObjectClass *klass, void *data)
-> @@ -533,9 +552,25 @@ static const TypeInfo pl181_info =3D {
->      .class_init    =3D pl181_class_init,
->  };
->
-> +static void pl181_bus_class_init(ObjectClass *klass, void *data)
-> +{
-> +    SDBusClass *sbc =3D SD_BUS_CLASS(klass);
-> +
-> +    sbc->set_inserted =3D pl181_set_inserted;
-> +    sbc->set_readonly =3D pl181_set_readonly;
-> +}
-> +
-> +static const TypeInfo pl181_bus_info =3D {
-> +    .name =3D TYPE_PL181_BUS,
-> +    .parent =3D TYPE_SD_BUS,
-> +    .instance_size =3D sizeof(SDBus),
-> +    .class_init =3D pl181_bus_class_init,
-> +};
-> +
->  static void pl181_register_types(void)
->  {
->      type_register_static(&pl181_info);
-> +    type_register_static(&pl181_bus_info);
->  }
->
->  type_init(pl181_register_types)
+> +# pl181.c
+> +pl181_command_send(uint8_t cmd, uint32_t arg) "sending CMD%02d arg 0x%08=
+" PRIx32
+> +pl181_command_sent(void) "command sent"
+> +pl181_command_response_pending(void) "response received"
+> +pl181_command_timeout(void) "command timeouted"
+> +pl181_fifo_push(uint32_t data) "FIFO push 0x%08" PRIx32
+> +pl181_fifo_pop(uint32_t data) "FIFO pop 0x%08" PRIx32
+> +pl181_fifo_transfer_complete(void) "FIFO transfer complete"
+> +pl181_data_engine_idle(void) "data engine idle"
 > --
 > 2.21.3
 >

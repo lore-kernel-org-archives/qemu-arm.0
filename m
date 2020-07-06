@@ -1,97 +1,96 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp145036lfm;
-        Mon, 6 Jul 2020 09:41:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxXVhMs54Dc74FqWXcQxTZrBVu4fzLEiN39JSST4RSbHTL0sflLdn4w8zlvoAZqvegeLBu8
-X-Received: by 2002:a25:77cb:: with SMTP id s194mr68437319ybc.216.1594053696488;
-        Mon, 06 Jul 2020 09:41:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594053696; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp161783lfm;
+        Mon, 6 Jul 2020 10:04:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz0AgErgpnqHGTfjrxO0KB87C3OQLlnDzGVkC3Ipv/JxtMdzxelGm7Culjc1GiYtr+KkpBy
+X-Received: by 2002:a25:5806:: with SMTP id m6mr52796651ybb.152.1594055050340;
+        Mon, 06 Jul 2020 10:04:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594055050; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jrl9Pnt7ogTk1nT/9ROSzlVpD6zIF2On0wOAfGyyP+yoOWT/dxL/PHSjD1SdVOa6MT
-         qrRIM1RoarA+E9e0JJiM3l2pWUaD2SA18aqDOnRBayykIQ/wmuIw90lajXNi+BK2OleA
-         UcNyXc+rOBYz4pdioO9VoftJfAjVDvHmzMKedctPQ+UFmveBLUVqjvb3Zt3iBCy8Si0d
-         ncvh5vObXekEJqjQ9RiGUrxUscRdGct0fP4mJ37YxUyyEci0F8CKi27sj4uG1dxcVbsb
-         XvG573wr8BDoSeHk8JigTeuOETKtyWLwOrDLCnOUpBa7G1GPPULhqPNeLbLABDHzDPwO
-         oTSg==
+        b=Glxr2BOKlGqirSmz0CJyL4ANu71MgmxONSTBu8ddCfdLf3eUmrQd0tKxdEdsX3kkMX
+         MJTj5nt19I57mRFTWHt3LdphAFuG6Kk6SHSvAuQ3eaYS96Zc1wHp2jjX/LofV8jSgns+
+         af4dlFLhHi6U1BJx0xe//i0RJKM+HQMaJEBZxDuTs8tFkyFmRF0LB+6IlisEU0+Xvg0p
+         iH1rJm6mc4YmwVXHEtmw3mcM5LOLitPjNTO7PN3N3r91YhworlUpLZGVGz2xz9YM/j9y
+         A3TrJhj9nvwi1w9r3jjuN5ob5wSUQYxE9U2UzZ7r8+40ridVfIU6ahkcFmbeHmhLUsky
+         aMnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=Hte3oKrs3+MNLJi/r32ZEuHwrtV7cBrw01VPyRYeXCc=;
-        b=ENV91PvYpKGyY8+8JJE7E1DwzQsywoLSF/ma3ly98/Ejjb6g4jzoOAYyBlFWZ0CJVV
-         7AIcfPzxn3dZtQ6anjnzHDmKEdcCO6gddLquz/JoZkLsJ/r2JauH3eOcBE76KiQD9fzD
-         QAcOy1213wKVc02ztoA+Wa4kpDsBSgEvHk1oSAAp0HSQnipAslgFMdJign9ujZR5HerL
-         tgXy92Oh3JnlZOKLgxiwrQsmvf+80PIPSw/2Mypb2xEhwaHwC5rUwrFhszUn4JArGlnz
-         X3Ka+A5h/sCLsEsyLwYzLRkXIhIIIPD5T5BRD6WOdXcOydptEM57m2PyQvEykwzSQ1VV
-         ZIug==
+        bh=jbu76fBiXNYavUN7hJcbgVnTcX2cRFUs4aT7tEW/KCU=;
+        b=NYHZqF5CDTTi9xk3teUqwA9144msGEJRlUom71itYX3s8bU3WLEmebLuRkly56z1Et
+         Gno/O/cJ9pp7RchiN7LhCLZswZyIMpSiUBNNU12uydh4MZgVU5nvIS5ZKcOjZHa2DbJg
+         S4p/qNMTwXbL0IrwmYPhDYY6+ooyGkez96cEMpbdvEwrZHPQ7UlEKq6EhCrsnAYdiG/f
+         yIjzb/FcZQEQUNGgwZe41tiQfECXwwEeXos2MqD4Wv6JlP8PdAqYqSqPut05EoJbm2Lz
+         xMmKVwjOn2wp1eH3mtOMHC3rgzmC4rQdMux4IZspUZhbpJhklVYaErKCUDbEAczc4UnD
+         RY3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ge2BVElF;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ubHpKe3N;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c12si18745396ybj.225.2020.07.06.09.41.36
+        by mx.google.com with ESMTPS id e30si22443259ybi.449.2020.07.06.10.04.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jul 2020 09:41:36 -0700 (PDT)
+        Mon, 06 Jul 2020 10:04:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ge2BVElF;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ubHpKe3N;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53098 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41054 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsUBT-0001zv-KU
-	for alex.bennee@linaro.org; Mon, 06 Jul 2020 12:41:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56556)
+	id 1jsUXJ-00064H-KV
+	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:04:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60478)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsUBB-0001xZ-Gc; Mon, 06 Jul 2020 12:41:17 -0400
-Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32]:37461)
+ id 1jsUR9-00038J-Gy; Mon, 06 Jul 2020 12:57:47 -0400
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:33209)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsUB7-0002yZ-Pl; Mon, 06 Jul 2020 12:41:16 -0400
-Received: by mail-io1-xd32.google.com with SMTP id v6so26373667iob.4;
- Mon, 06 Jul 2020 09:41:12 -0700 (PDT)
+ id 1jsUR7-0005hA-Kt; Mon, 06 Jul 2020 12:57:47 -0400
+Received: by mail-io1-xd44.google.com with SMTP id i25so40215363iog.0;
+ Mon, 06 Jul 2020 09:57:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=Hte3oKrs3+MNLJi/r32ZEuHwrtV7cBrw01VPyRYeXCc=;
- b=ge2BVElF87zWZYhmdWxLDXCBVH+Rp4TQc6AMLbrFWz9uoFsdbBhB1qdu/AgFMt58Z1
- RYr7dDYaluNposp7Hl4enVaIqOMAX1Lu2T0KgdXXSK0WP6TBIhtSiS07usoi/UGaNvBQ
- qfQljiVIT10zdpPBk5e20oBaxIDdVucvjf+WRIlo7C2MKkf3/nPXxKQc9abuxEGEyopc
- hkfVNp33lxKGEGzFx9+PXXInzglBc4vyKaiQS92KIilPEdCDk5+zFV4S4WzE/Gc3mEc4
- elKSOr1yTqiZBnTaD0vcLw15dg4hgw2rCW6O+UcLqhTjLd25ZQtyJM+1b/x34DmB7Yjv
- BU+Q==
+ bh=jbu76fBiXNYavUN7hJcbgVnTcX2cRFUs4aT7tEW/KCU=;
+ b=ubHpKe3Nm/Sr5j6MorIaPojzmsRHj5+fmcltESNG2gAbWTvX1yCj86i/BloyiAH3SL
+ xWhHSfxANC145Do+ytU9h3x6gUWXXpxoJbax6p8l+3hblfd3vf/ZAPYv7trfCqGSSgM7
+ ULfQdyQJbfWa7bnl+6S/qg9ngCL58WTQ9YsqfvGxRjz48ApcTCue/jtHA4PiCxoPwZhs
+ CTGRtaolavDk8YuMP5fi1gXkm8RHoEKlXhKjVg2jvZnxY6lwWUiXLwfdbEuPrlbjmpfN
+ ZYZ+D4DfO4FNsz/Cko3Rugg6gv4hh5P11TwOjAfiM1LmFxrBE++T4JSXMs2EiDcjqq0I
+ iI4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=Hte3oKrs3+MNLJi/r32ZEuHwrtV7cBrw01VPyRYeXCc=;
- b=sPY9a30V3ugexROAE1BFevtH7kxpltz5jm5lFNBuvqzpZ3ho5SeJSTQzgYe9NuQ1b4
- pSxZPXXBY05qrnSTLs8oc/R5A1zDu5RbWFU8p/xfxHbRKUxNLpEmoNbOXDuay8b3TFy8
- DOXQFQtscG47obpJVsh6YnrVCJyR0V9YSW9H5s8BlBr9hpKF/02N3uJxmh+37lKklzeC
- HnBdVISQH/DWu3L2GOo+fYloLzV/1h/GTYg/fztaxF7ITkBNbawpuY1u/8p4AabJDma6
- t1Rz/sG2AVR9G5PKciFftd0LdVL+H+wP1B3jim31COwL5ueYTLpngwx5K9eIj8wCrHju
- GFow==
-X-Gm-Message-State: AOAM530rOLBHUOfMaL+XTFlgbm1k7+wyM1O3nazSykYDHWtfmbpYRVPo
- R6WxY9YnecBPiuK16l5PaKqbJ0yafCMe58Kg+90=
-X-Received: by 2002:a6b:8dd1:: with SMTP id
- p200mr26312703iod.118.1594053672235; 
- Mon, 06 Jul 2020 09:41:12 -0700 (PDT)
+ bh=jbu76fBiXNYavUN7hJcbgVnTcX2cRFUs4aT7tEW/KCU=;
+ b=QaKAeFSsD93f34FOGlmeH65kaYNubpLpjaO55X2xgiROq6nTSrjmh2yCQ6NsphbW6F
+ FvN9e4Lntqfb4mhZjVW+/l5uInc+NOgCeHrT4rbrA0e/JU94XBbXPU2xEqg3SgDlBZgA
+ H8Qsh7oq27ZFwGorRYX3jBAvNPf+4p5+hKYFeWC87OoqXF9QSjIGnO81tyCYtkBn5jo4
+ GgmpD7caHFFQT2N89XAsnNGbHJLH88EA8MT2G5pG8o1BZUCjrtwOlRwrxW+gtP7+Qi3G
+ fAInqkkBcbgYsioPenN8s7026gUyNIUCLyXZ421q1myWsriwZEaS3XzlNrCiN4fg9AQD
+ WIIg==
+X-Gm-Message-State: AOAM5321+3tdRa0+J02ShkdNUUIkArsQr2f3v3iB4yJkF2oxlz22O/Hk
+ 4Bj/yQoIm2r0Ceg6H7qgNjFpGVHGGak38brcU/Q=
+X-Received: by 2002:a02:1a06:: with SMTP id 6mr55748921jai.8.1594054664021;
+ Mon, 06 Jul 2020 09:57:44 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200605102230.21493-1-philmd@redhat.com>
- <7a456fdc-eb53-063b-1d5e-24472b4057d5@redhat.com>
-In-Reply-To: <7a456fdc-eb53-063b-1d5e-24472b4057d5@redhat.com>
+References: <20200704144943.18292-1-f4bug@amsat.org>
+ <20200704144943.18292-9-f4bug@amsat.org>
+In-Reply-To: <20200704144943.18292-9-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 6 Jul 2020 09:31:25 -0700
-Message-ID: <CAKmqyKPaQxw4Gw-Fi5X3PT2kBed+Z+iAAuobSAnfCd9hjZ_3QA@mail.gmail.com>
-Subject: Re: [PATCH v3 00/11] hw/sd/sdcard: Fix CVE-2020-13253 & cleanups
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Date: Mon, 6 Jul 2020 09:47:55 -0700
+Message-ID: <CAKmqyKNeuFosuMbvQ80EQ2uCEXpxfii=8WZE_njt8=3UyzUMqw@mail.gmail.com>
+Subject: Re: [PATCH 08/26] hw/usb/hcd-dwc2: Restrict 'dwc2-regs.h' scope
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d32;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd32.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd44.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -100,8 +99,8 @@ X-Spam_bar: -
 X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,53 +113,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <alistair.francis@wdc.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Qemu-block <qemu-block@nongnu.org>
+ BALATON Zoltan <balaton@eik.bme.hu>, Gerd Hoffmann <kraxel@redhat.com>,
+ Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Paul Durrant <paul@xen.org>,
+ Magnus Damm <magnus.damm@gmail.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ "open list:X86" <xen-devel@lists.xenproject.org>,
+ Leif Lindholm <leif@nuviainc.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Richard Henderson <rth@twiddle.net>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Paul Zimmerman <pauldzim@gmail.com>,
+ "open list:New World" <qemu-ppc@nongnu.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XF7I6UF0Wb6q
+X-TUID: jYBvc/l+i9Od
 
-On Mon, Jun 8, 2020 at 10:48 AM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
+On Sat, Jul 4, 2020 at 7:53 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+> wrote:
 >
-> Hi Alistair,
+> We only use these register definitions in files under the
+> hw/usb/ directory. Keep that header local by moving it there.
 >
-> On 6/5/20 12:22 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > Patches 2 & 3 fix CVE-2020-13253.
-> > The rest are (accumulated) cleanups.
-> >
-> > Supersedes: <20200604182502.24228-1-f4bug@amsat.org>
-> >
-> > Philippe Mathieu-Daud=C3=A9 (11):
-> >   MAINTAINERS: Cc qemu-block mailing list
-> >   hw/sd/sdcard: Update coding style to make checkpatch.pl happy
-> >   hw/sd/sdcard: Do not switch to ReceivingData if address is invalid
-> >   hw/sd/sdcard: Restrict Class 6 commands to SCSD cards
-> >   hw/sd/sdcard: Update the SDState documentation
-> >   hw/sd/sdcard: Simplify cmd_valid_while_locked()
-> >   hw/sd/sdcard: Constify sd_crc*()'s message argument
-> >   hw/sd/sdcard: Make iolen unsigned
-> >   hw/sd/sdcard: Correctly display the command name in trace events
-> >   hw/sd/sdcard: Display offset in read/write_data() trace events
-> >   hw/sd/sdcard: Simplify realize() a bit
->
-> I forgot to Cc you.
->
-> Since you already reviewed a bunch of SD patches in the
-> past, do you mind having a look a this series? It should
-> be quite trivial.
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Hey,
-
-Sorry I took so long but I have reviewed a few. Let me know if there
-are anymore you want reviewed.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
+> ---
+>  {include/hw =3D> hw}/usb/dwc2-regs.h | 0
+>  hw/usb/hcd-dwc2.c                  | 2 +-
+>  2 files changed, 1 insertion(+), 1 deletion(-)
+>  rename {include/hw =3D> hw}/usb/dwc2-regs.h (100%)
 >
-> Thanks!
+> diff --git a/include/hw/usb/dwc2-regs.h b/hw/usb/dwc2-regs.h
+> similarity index 100%
+> rename from include/hw/usb/dwc2-regs.h
+> rename to hw/usb/dwc2-regs.h
+> diff --git a/hw/usb/hcd-dwc2.c b/hw/usb/hcd-dwc2.c
+> index ccf05d0823..252b60ef65 100644
+> --- a/hw/usb/hcd-dwc2.c
+> +++ b/hw/usb/hcd-dwc2.c
+> @@ -34,7 +34,6 @@
+>  #include "qemu/osdep.h"
+>  #include "qemu/units.h"
+>  #include "qapi/error.h"
+> -#include "hw/usb/dwc2-regs.h"
+>  #include "hw/usb/hcd-dwc2.h"
+>  #include "hw/irq.h"
+>  #include "sysemu/dma.h"
+> @@ -43,6 +42,7 @@
+>  #include "qemu/timer.h"
+>  #include "qemu/log.h"
+>  #include "hw/qdev-properties.h"
+> +#include "dwc2-regs.h"
 >
-> Phil.
+>  #define USB_HZ_FS       12000000
+>  #define USB_HZ_HS       96000000
+> --
+> 2.21.3
 >
 >

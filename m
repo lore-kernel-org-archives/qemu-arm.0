@@ -1,96 +1,96 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp161783lfm;
-        Mon, 6 Jul 2020 10:04:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz0AgErgpnqHGTfjrxO0KB87C3OQLlnDzGVkC3Ipv/JxtMdzxelGm7Culjc1GiYtr+KkpBy
-X-Received: by 2002:a25:5806:: with SMTP id m6mr52796651ybb.152.1594055050340;
-        Mon, 06 Jul 2020 10:04:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594055050; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp164844lfm;
+        Mon, 6 Jul 2020 10:07:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZJRHeFQ2xNtwnq5jBH+3TuTarUU0Mid3n/ot4oqBH1g3HWBnKo3r151s4VQiHEzsyh8Ek
+X-Received: by 2002:a25:d652:: with SMTP id n79mr87700146ybg.406.1594055269081;
+        Mon, 06 Jul 2020 10:07:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594055269; cv=none;
         d=google.com; s=arc-20160816;
-        b=Glxr2BOKlGqirSmz0CJyL4ANu71MgmxONSTBu8ddCfdLf3eUmrQd0tKxdEdsX3kkMX
-         MJTj5nt19I57mRFTWHt3LdphAFuG6Kk6SHSvAuQ3eaYS96Zc1wHp2jjX/LofV8jSgns+
-         af4dlFLhHi6U1BJx0xe//i0RJKM+HQMaJEBZxDuTs8tFkyFmRF0LB+6IlisEU0+Xvg0p
-         iH1rJm6mc4YmwVXHEtmw3mcM5LOLitPjNTO7PN3N3r91YhworlUpLZGVGz2xz9YM/j9y
-         A3TrJhj9nvwi1w9r3jjuN5ob5wSUQYxE9U2UzZ7r8+40ridVfIU6ahkcFmbeHmhLUsky
-         aMnA==
+        b=VngNb/+5ppi02KpTimDql1SzT3GYtwrVhHdr2rBLz03eV3OnwB881J8UtxGjqJgu9m
+         pbg2Az8GzhH3WOWPXkzlIgkP9VcqewCJUZrKqXK5iIoz7yJ0YBnViw/pMf/yrY+NNWwc
+         gLa1DkNbetebLn50ty5HVmJnhkU3RtYd4P7wU6/ynF7knkpDt7b1qLxYy8JexgWKQDr6
+         QQlPpvysKuJlPFeDeP/9SBAziEszLfklm4ZRqug/q0pkBB5JLB5jF1lmepPfftDburvf
+         Rd+jwNYUhuxe9BVHhZjxcuaTRE3XG7iesPSEmCAhwopfCUz1rPbVRt20UEvTnVJMtVs1
+         uBnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=jbu76fBiXNYavUN7hJcbgVnTcX2cRFUs4aT7tEW/KCU=;
-        b=NYHZqF5CDTTi9xk3teUqwA9144msGEJRlUom71itYX3s8bU3WLEmebLuRkly56z1Et
-         Gno/O/cJ9pp7RchiN7LhCLZswZyIMpSiUBNNU12uydh4MZgVU5nvIS5ZKcOjZHa2DbJg
-         S4p/qNMTwXbL0IrwmYPhDYY6+ooyGkez96cEMpbdvEwrZHPQ7UlEKq6EhCrsnAYdiG/f
-         yIjzb/FcZQEQUNGgwZe41tiQfECXwwEeXos2MqD4Wv6JlP8PdAqYqSqPut05EoJbm2Lz
-         xMmKVwjOn2wp1eH3mtOMHC3rgzmC4rQdMux4IZspUZhbpJhklVYaErKCUDbEAczc4UnD
-         RY3w==
+        bh=9/leO9q/0J5ZJH/Ka9OiHxF4rkOPGYi23nLotDw5+po=;
+        b=k9+HgTJDukpLpqLd4cGSfqYL2c3LGGonPLd/c9iAp8mrQ/blNYBNUb1B1XDrKsyR6P
+         wLGzvcVeSfrO6BpQicu/aYPyWqYje72LId0mbYWolTiGQ0kL0W/yZbjl+G/ZTE0nY7Os
+         CTbJUmX/N+4uoyGkY5U9fADOU+F18WlD9jitTnMBkt1I5W93qkRl6Uyrv/OrXV5gZq+I
+         T/G1SY8VYri/6r2lJJB+u80O8nfmaJHpeaWdWlcg03C1JtoMODJCfg3ReoywUU+1rhl5
+         lIWLFJqWNJv5rw18rp2KteSTMvhMgSY6PDQG87lLIvBvFN147L+1MEcxHXvSIHlc+yCK
+         hq4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ubHpKe3N;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=t+L89Nig;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e30si22443259ybi.449.2020.07.06.10.04.10
+        by mx.google.com with ESMTPS id 193si21511937ybd.490.2020.07.06.10.07.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jul 2020 10:04:10 -0700 (PDT)
+        Mon, 06 Jul 2020 10:07:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ubHpKe3N;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=t+L89Nig;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:41054 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60976 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsUXJ-00064H-KV
-	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:04:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60478)
+	id 1jsUaq-0005tL-Ff
+	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:07:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60814)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsUR9-00038J-Gy; Mon, 06 Jul 2020 12:57:47 -0400
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:33209)
+ id 1jsUTH-0006xk-EZ; Mon, 06 Jul 2020 12:59:59 -0400
+Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:39326)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsUR7-0005hA-Kt; Mon, 06 Jul 2020 12:57:47 -0400
-Received: by mail-io1-xd44.google.com with SMTP id i25so40215363iog.0;
- Mon, 06 Jul 2020 09:57:44 -0700 (PDT)
+ id 1jsUTF-0005vQ-F9; Mon, 06 Jul 2020 12:59:59 -0400
+Received: by mail-il1-x141.google.com with SMTP id k6so33497267ili.6;
+ Mon, 06 Jul 2020 09:59:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=jbu76fBiXNYavUN7hJcbgVnTcX2cRFUs4aT7tEW/KCU=;
- b=ubHpKe3Nm/Sr5j6MorIaPojzmsRHj5+fmcltESNG2gAbWTvX1yCj86i/BloyiAH3SL
- xWhHSfxANC145Do+ytU9h3x6gUWXXpxoJbax6p8l+3hblfd3vf/ZAPYv7trfCqGSSgM7
- ULfQdyQJbfWa7bnl+6S/qg9ngCL58WTQ9YsqfvGxRjz48ApcTCue/jtHA4PiCxoPwZhs
- CTGRtaolavDk8YuMP5fi1gXkm8RHoEKlXhKjVg2jvZnxY6lwWUiXLwfdbEuPrlbjmpfN
- ZYZ+D4DfO4FNsz/Cko3Rugg6gv4hh5P11TwOjAfiM1LmFxrBE++T4JSXMs2EiDcjqq0I
- iI4A==
+ bh=9/leO9q/0J5ZJH/Ka9OiHxF4rkOPGYi23nLotDw5+po=;
+ b=t+L89NigImBrMi5A+L/vayp2Ek2Z1xRrRswlKbUWeD6I7FIa+voJRjlBIqb0sMzDec
+ lqkQijLEMiyv2fVJODfnOo9v77QgO6cdGwJYO8vhoClltQxpALdDRs8ENXpnUTqPC8qf
+ cTqrxHmxfkx4pm++FONued1iM/PgnDbs7eHuq38xcfAZlmcjn7mbBAeb9JBvYwXLMk1x
+ fkmZUkSQLJ52R1fsCbmaL3rpzt43x9FH+XrveDmr0sQHoPrYO1DZaIY+DO5ZZzWlqj8M
+ WZZMs8mMEJb1bdpZBZrqRgqogw2cqAXAXg5S3fLxb9M/1IpPh6xuhL4Lmki4tyc8gx5S
+ /BcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=jbu76fBiXNYavUN7hJcbgVnTcX2cRFUs4aT7tEW/KCU=;
- b=QaKAeFSsD93f34FOGlmeH65kaYNubpLpjaO55X2xgiROq6nTSrjmh2yCQ6NsphbW6F
- FvN9e4Lntqfb4mhZjVW+/l5uInc+NOgCeHrT4rbrA0e/JU94XBbXPU2xEqg3SgDlBZgA
- H8Qsh7oq27ZFwGorRYX3jBAvNPf+4p5+hKYFeWC87OoqXF9QSjIGnO81tyCYtkBn5jo4
- GgmpD7caHFFQT2N89XAsnNGbHJLH88EA8MT2G5pG8o1BZUCjrtwOlRwrxW+gtP7+Qi3G
- fAInqkkBcbgYsioPenN8s7026gUyNIUCLyXZ421q1myWsriwZEaS3XzlNrCiN4fg9AQD
- WIIg==
-X-Gm-Message-State: AOAM5321+3tdRa0+J02ShkdNUUIkArsQr2f3v3iB4yJkF2oxlz22O/Hk
- 4Bj/yQoIm2r0Ceg6H7qgNjFpGVHGGak38brcU/Q=
-X-Received: by 2002:a02:1a06:: with SMTP id 6mr55748921jai.8.1594054664021;
- Mon, 06 Jul 2020 09:57:44 -0700 (PDT)
+ bh=9/leO9q/0J5ZJH/Ka9OiHxF4rkOPGYi23nLotDw5+po=;
+ b=jktVYO3B9SHAm4OEA3P1v5xV2UFlxyfd8ZjvSyPvv2pN9IxK8eqJYfm/PAUsVefeVD
+ B82S0VIP0Xokqtm/v1w3cqh0yaFyuz9r1A+2bSChgxo/NQSF9p/17iUXm2Xkyq2gcO1w
+ yuL3liAHRutEkQgoNGEcsDdHdEZMiBH964Wh4Dp1YcIXjz3Orh2cs81K70odzse6DutJ
+ vEFC5E5uFD53jNPrHRNNCrblWP6/R2Pp5p8e07bLTr1/3nasXMxrxTCqPmuw5OCN7lN9
+ r7ozSbOCSG+R2hp8qbegYi1j0DuyubAOys3FeoQnCXwZQszJXrYkBZHoUGKN1hb5UF8q
+ S/DQ==
+X-Gm-Message-State: AOAM533Rd8rSdsOWlwHpfgoJIqOQ/MuCzpO2ayQsKEQ1pewlhRgOdyiL
+ KB8MO6Iq0fJRCYJo1zt9Wtj8afjzQFM+z9vX3Tg=
+X-Received: by 2002:a92:c213:: with SMTP id j19mr31588925ilo.40.1594054795800; 
+ Mon, 06 Jul 2020 09:59:55 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200704144943.18292-1-f4bug@amsat.org>
- <20200704144943.18292-9-f4bug@amsat.org>
-In-Reply-To: <20200704144943.18292-9-f4bug@amsat.org>
+ <20200704144943.18292-3-f4bug@amsat.org>
+In-Reply-To: <20200704144943.18292-3-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 6 Jul 2020 09:47:55 -0700
-Message-ID: <CAKmqyKNeuFosuMbvQ80EQ2uCEXpxfii=8WZE_njt8=3UyzUMqw@mail.gmail.com>
-Subject: Re: [PATCH 08/26] hw/usb/hcd-dwc2: Restrict 'dwc2-regs.h' scope
+Date: Mon, 6 Jul 2020 09:50:09 -0700
+Message-ID: <CAKmqyKNB3fQCBNZ29cRuj5LW14duowkP6+k+6V0fhHhZU+GtsQ@mail.gmail.com>
+Subject: Re: [PATCH 02/26] hw/ppc/sam460ex: Add missing 'hw/pci/pci.h' header
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd44.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x141.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -142,13 +142,30 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jYBvc/l+i9Od
+X-TUID: hJEbqP8+1wDm
 
-On Sat, Jul 4, 2020 at 7:53 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+On Sat, Jul 4, 2020 at 7:50 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
 > wrote:
 >
-> We only use these register definitions in files under the
-> hw/usb/ directory. Keep that header local by moving it there.
+> This file uses pci_create_simple() and PCI_DEVFN() which are both
+> declared in "hw/pci/pci.h". This include is indirectly included
+> by an USB header. As we want to reduce the USB header inclusions
+> later, include the PCI header now, to avoid later:
+>
+>   hw/ppc/sam460ex.c:397:5: error: implicit declaration of function =E2=80=
+=98pci_create_simple=E2=80=99; did you mean =E2=80=98sysbus_create_simple=
+=E2=80=99? [-Werror=3Dimplicit-function-declaration]
+>     397 |     pci_create_simple(pci_bus, PCI_DEVFN(6, 0), "sm501");
+>         |     ^~~~~~~~~~~~~~~~~
+>         |     sysbus_create_simple
+>   hw/ppc/sam460ex.c:397:5: error: nested extern declaration of =E2=80=98p=
+ci_create_simple=E2=80=99 [-Werror=3Dnested-externs]
+>   hw/ppc/sam460ex.c:397:32: error: implicit declaration of function =E2=
+=80=98PCI_DEVFN=E2=80=99 [-Werror=3Dimplicit-function-declaration]
+>     397 |     pci_create_simple(pci_bus, PCI_DEVFN(6, 0), "sm501");
+>         |                                ^~~~~~~~~
+>   hw/ppc/sam460ex.c:397:32: error: nested extern declaration of =E2=80=98=
+PCI_DEVFN=E2=80=99 [-Werror=3Dnested-externs]
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
@@ -157,35 +174,21 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  {include/hw =3D> hw}/usb/dwc2-regs.h | 0
->  hw/usb/hcd-dwc2.c                  | 2 +-
->  2 files changed, 1 insertion(+), 1 deletion(-)
->  rename {include/hw =3D> hw}/usb/dwc2-regs.h (100%)
+>  hw/ppc/sam460ex.c | 1 +
+>  1 file changed, 1 insertion(+)
 >
-> diff --git a/include/hw/usb/dwc2-regs.h b/hw/usb/dwc2-regs.h
-> similarity index 100%
-> rename from include/hw/usb/dwc2-regs.h
-> rename to hw/usb/dwc2-regs.h
-> diff --git a/hw/usb/hcd-dwc2.c b/hw/usb/hcd-dwc2.c
-> index ccf05d0823..252b60ef65 100644
-> --- a/hw/usb/hcd-dwc2.c
-> +++ b/hw/usb/hcd-dwc2.c
-> @@ -34,7 +34,6 @@
->  #include "qemu/osdep.h"
->  #include "qemu/units.h"
->  #include "qapi/error.h"
-> -#include "hw/usb/dwc2-regs.h"
->  #include "hw/usb/hcd-dwc2.h"
->  #include "hw/irq.h"
->  #include "sysemu/dma.h"
-> @@ -43,6 +42,7 @@
->  #include "qemu/timer.h"
->  #include "qemu/log.h"
+> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
+> index 1a106a68de..fae970b142 100644
+> --- a/hw/ppc/sam460ex.c
+> +++ b/hw/ppc/sam460ex.c
+> @@ -38,6 +38,7 @@
+>  #include "hw/usb/hcd-ehci.h"
+>  #include "hw/ppc/fdt.h"
 >  #include "hw/qdev-properties.h"
-> +#include "dwc2-regs.h"
+> +#include "hw/pci/pci.h"
 >
->  #define USB_HZ_FS       12000000
->  #define USB_HZ_HS       96000000
+>  #include <libfdt.h>
+>
 > --
 > 2.21.3
 >

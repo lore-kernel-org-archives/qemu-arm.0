@@ -1,177 +1,202 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp179918lfm;
-        Mon, 6 Jul 2020 10:27:46 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzOvwTpxNsl5Jlasjg+y5gh5amnybqBiXAwiHKc9ALfK+wkUf4CDvaN+f/641iDLR95ZDSV
-X-Received: by 2002:a25:ba4f:: with SMTP id z15mr81500150ybj.113.1594056465897;
-        Mon, 06 Jul 2020 10:27:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594056465; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp180401lfm;
+        Mon, 6 Jul 2020 10:28:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz47tpnvtpNsLyQpVhfC5wnXAXcZCecUMx1mQxrCbi/s3oSjcaVICIh/zAsqmI/AliU3olF
+X-Received: by 2002:a25:56c4:: with SMTP id k187mr32624991ybb.53.1594056510897;
+        Mon, 06 Jul 2020 10:28:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594056510; cv=none;
         d=google.com; s=arc-20160816;
-        b=E+gNYleXHyVDcxGe9ycPkT48RSmOKCwlAV10mQ7nertV7Qvi0IzhEN51DdQ1UCNTNr
-         gNFidQXTfJTYUtZ3Orhu7OHmgOyarRfI3SElPeg3/xTGmWd2cWxKDCLVKAUKdfQbhxPO
-         X2lE3n65woIqmhbjf+YaCBCzBjwZp9pjf9OnS/51ihgJng5m5vVtNt5TusDvJZkWhz8/
-         qMo6AlFQDfaLnRcNc9FJwbj5abj3vbVlTvT3JjdfQBRrEa1ykvTcITNiqHSin3FYE0BE
-         3RUF4OGYBjJW74+zouPxHY9JfKKP9PfORsVjsW5rsofULNTFBaxHrUouZ952Dnp9SWTU
-         oUYg==
+        b=0J6iMLrIp/aygkx0FbMaWmvPnlSdMv7xEjB2qUXB4h+P5isIFsKULzGrlxIZFqVO8r
+         VoMPx+NbBsnpqS6LTG5VgqrVevyZfy5pH2BKmcgx1jdNN+gxuljpJBwWEz9rs4s72axL
+         WVHJNENq29TbCeSYBPcoBSs322XQOIkzYn3BNIBKqYZp8SYukH5VWaw+T+NR+gN9cjPb
+         1+GwXfOt14zFjegA+x//mjeru41CyUOzpnFdyolLZOVXwJa+zPFGV9EnsT9VeLF25Ur/
+         xTvTMrtvHipdWKIcrpfDo7tEblJBqylymVQ5jXpVI5yXE+rGPFj0XNQKkChDnhDKEaSh
+         boUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:from:references:to:subject:dkim-signature;
-        bh=I5JjQbgCMKS5xyrH3z1UciVv7RD/RqVMcfSKLyhaHRk=;
-        b=yj/sPXyWUutPHw4gw6ersNwfE7LTn1pDNM8IZcDVEp+QwGIvx6f56dzzdNZGt2uNLz
-         X+qND6eCmittYEQ6YGBI/bBDaRKVhaY00u4964CpIyhFKfcD9CBSXEyKy6as8PM6bOen
-         plc3SQrWguFL0X5V7T26j4bz6B+9bdsbw1tMTbBnNfabaMFM5ZlJ3C8UnHuLwGiQ15fu
-         n9K3jMTGRXJh11SPngcbgqO+mETRFUkp2rHIA5lo7pdmpVN6Pw0S6IHii2MqvOyUGsrB
-         RLFcx5JO3K9JaiLpmSSOWDvgo9osTKeo6z/rjgA6Sjv+qqIQ/3gSQgYCvB7aGAVx7WTG
-         kMiQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=cTCiYJ1utsgT/OEA1JPToQ9e7sbkDVzau0vl+orbX5M=;
+        b=Oa3kOv2ZH4IIbfnNYxU2wIYLhOpt4M3swe/0NHtyGAnLbSIbMy0cEh/1IPYvfzFMe9
+         EbUqUyOBSHNaWHMvKGpbCSzqMt7kD8PVHKX7K2/jaa5Y5hZ36iGf4r6iQVaR1I8I7XwC
+         28D0q0jUKSJJVb5VuLC6TRzyPBP8GThpkBsFfUyiGoJNaSdgTm2a04zqaHtpUdEc7Nvo
+         wxV4Bd+jfQCg//rKtWfCQ8ziwIMf64hUxfnHzUhmK0cnMTLHmrjS8F5xpZ51ayYkbMQQ
+         SiesGcmiju3dt00UfkH5lQw38BOYSZw+mcfC+cyMz6pDHfNDBaPeKFTWTFcS7ElATtew
+         LI9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GBL1Hwur;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y5emWhnv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n6si20446180ybn.213.2020.07.06.10.27.45
+        by mx.google.com with ESMTPS id p135si19504039yba.192.2020.07.06.10.28.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jul 2020 10:27:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 06 Jul 2020 10:28:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GBL1Hwur;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54562 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y5emWhnv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:56436 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsUu9-0002Ko-B5
-	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:27:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40424)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jsUus-000385-7r
+	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:28:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33858)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jsUtp-0002J9-LZ
- for qemu-arm@nongnu.org; Mon, 06 Jul 2020 13:27:27 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:36202
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1jsUtm-00037Z-TE
- for qemu-arm@nongnu.org; Mon, 06 Jul 2020 13:27:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594056441;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=I5JjQbgCMKS5xyrH3z1UciVv7RD/RqVMcfSKLyhaHRk=;
- b=GBL1HwurKiGqqsdpXNYS1rM4kl7AR9xWRRVP98umySCM0ySSlCE5rjmh1MAOBLWcjbuXW4
- 8iFCA2BcQF1N1SRfyFQDQ2Zzrx6eDJzLjMMHOi4Pf2VzQurmYXI3S13fwpwVgd8zvEmSux
- dFc5BvLz6zHYtVVWA4fjQ7Wg97Hx15Q=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-260-ZNrF2AfdPgqBWySsdRNgGA-1; Mon, 06 Jul 2020 13:27:10 -0400
-X-MC-Unique: ZNrF2AfdPgqBWySsdRNgGA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3BD8B107ACCA;
- Mon,  6 Jul 2020 17:27:09 +0000 (UTC)
-Received: from [10.3.113.97] (ovpn-113-97.phx2.redhat.com [10.3.113.97])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9EA9C60BF3;
- Mon,  6 Jul 2020 17:27:05 +0000 (UTC)
-Subject: Re: [RFC PATCH 1/2] hw/sd/ssi-sd: Deprecate the SPI to SD card
- 'adapter'
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200705220731.28101-1-f4bug@amsat.org>
- <20200705220731.28101-2-f4bug@amsat.org>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <40cf7701-93cb-cd99-9b07-c2847e8d411e@redhat.com>
-Date: Mon, 6 Jul 2020 12:27:05 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jsUXt-0007qX-US; Mon, 06 Jul 2020 13:04:45 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:38263)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1jsUXs-0006wa-8f; Mon, 06 Jul 2020 13:04:45 -0400
+Received: by mail-io1-xd42.google.com with SMTP id f6so24558830ioj.5;
+ Mon, 06 Jul 2020 10:04:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=cTCiYJ1utsgT/OEA1JPToQ9e7sbkDVzau0vl+orbX5M=;
+ b=Y5emWhnvg2wA6Hsc2mNKM91+PUECbIjNCVx4XijBRlwxhG9yPaVY4nCPuN66Pn/g4N
+ jALw2uCbPtXPOhmyJkKBc45MnuJg6mxtGi3kWihcL0PytiWW/5DejqGp9pu1JW3N0B0L
+ YJbqT9Ic/jycTAYWFiu+Rsh/qMuTBhTldv4DWUXGneSj8xYSSWACCuJie0v5fihIfGzM
+ +FHYD1FVz9yVKlUzWPPpjP3O3le2SpOqqOzlb4GBTfB83H90A+bGP6q+3xoLfe4Nv+cq
+ E6XH5NYuSvgxKJUs0XSM4FaA8Wd5kSisFNa8A9sD0zbO1Mx64e82B7/5rFnqrKTujNAu
+ cLYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=cTCiYJ1utsgT/OEA1JPToQ9e7sbkDVzau0vl+orbX5M=;
+ b=nhrWnsYnbiVKzXw4zdFkvyjPTtZ5TjlyAjP8r1PpPVVMQvVP+60DkmITruvWJA1H44
+ 9rrK5o7GVA0UXpjO0Kf//OlgyqwPm/mWE910pVy/ddgNBW3gs95ixMC+4Qv2vKGMCi0/
+ sYJGSzfpIu6RArb9VlbXJFN7vOUV23xK6JMC/D5U0rIRdX1YbilaCBZJeOlJud2TPxNp
+ 4vSLVPZXAquiGLXWOxqx8/XFDkDk0bqfT2HKGnFDmO3Q5FzXOJreKPmBPD0YF2ropRbR
+ c79LGoag5zVQtDf9Onf9RffUN0MHC4HrEm9F6UaX61PA3i7fbJR71/NypTNuj+VUKBRi
+ J6fA==
+X-Gm-Message-State: AOAM5315Jg7J6TnKzaAmXRniArtAV5bmDaqt6UQ47DniGAQZMFOaAFfV
+ p3JxP35xn+7LYitGD38QqSf4j07pRU29kspmGqI=
+X-Received: by 2002:a5d:97d9:: with SMTP id k25mr26494073ios.42.1594055082487; 
+ Mon, 06 Jul 2020 10:04:42 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200705220731.28101-2-f4bug@amsat.org>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/06 01:59:39
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+References: <20200704144943.18292-1-f4bug@amsat.org>
+ <20200704144943.18292-8-f4bug@amsat.org>
+In-Reply-To: <20200704144943.18292-8-f4bug@amsat.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 6 Jul 2020 09:54:53 -0700
+Message-ID: <CAKmqyKMk272oxLgGJHQMmZk_7+Q7N=5uPxSUdEMq2-N8DbHrLg@mail.gmail.com>
+Subject: Re: [PATCH 07/26] hw/usb/hcd-dwc2: Restrict some headers to source
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <huth@tuxfamily.org>, Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- libvir-list@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KgiECqoeQBTJ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Paul Durrant <paul@xen.org>,
+ Magnus Damm <magnus.damm@gmail.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ "open list:X86" <xen-devel@lists.xenproject.org>,
+ Leif Lindholm <leif@nuviainc.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Richard Henderson <rth@twiddle.net>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, Paul Zimmerman <pauldzim@gmail.com>,
+ "open list:New World" <qemu-ppc@nongnu.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zNUH0gU3fCAZ
 
-On 7/5/20 5:07 PM, Philippe Mathieu-Daudé wrote:
-> This device duplicate the SPI mode of the sd-card device. The
+On Sat, Jul 4, 2020 at 7:52 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+> wrote:
+>
+> The header "usb/hcd-dwc2.h" doesn't need to include "qemu/timer.h",
+> "sysemu/dma.h", "hw/irq.h" (the types required are forward declared).
+> Include them in the source file which is the only one requiring the
+> function declarations.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-duplicates
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-> SPI protocol is better handler in the sd-card, however as the
-> TYPE_SSI_SLAVE is not an interface, the sd-card can not implement
-> it easily to be pluggable on a SPI bus. Meanwhile the ssi-sd
-> device acts as a bridge, but is bitroting. Deprecate it.
+Alistair
 
-bitrotting
-
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->   docs/system/deprecated.rst | 5 +++++
->   1 file changed, 5 insertions(+)
-> 
-> diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
-> index 47f84be8e0..5e67d7f3e0 100644
-> --- a/docs/system/deprecated.rst
-> +++ b/docs/system/deprecated.rst
-> @@ -343,6 +343,11 @@ The 'ide-drive' device is deprecated. Users should use 'ide-hd' or
->   The 'scsi-disk' device is deprecated. Users should use 'scsi-hd' or
->   'scsi-cd' as appropriate to get a SCSI hard disk or CD-ROM as needed.
->   
-> +``ssi-sd`` (since 5.1)
-> +'''''''''''''''''''''''''
-
-Inconsistent line lengths
-
-> +
-> +The 'ssi-sd' (SSI to SD card adapter) device is deprecated.
-
-What is the recommended replacement?  Or at least document if it is 
-disappearing with no replacement.
-
-> +
->   System emulator machines
->   ------------------------
->   
-> 
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
+>  hw/usb/hcd-dwc2.h | 3 ---
+>  hw/usb/hcd-dwc2.c | 3 +++
+>  2 files changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/usb/hcd-dwc2.h b/hw/usb/hcd-dwc2.h
+> index 4ba809a07b..2adf0f53c7 100644
+> --- a/hw/usb/hcd-dwc2.h
+> +++ b/hw/usb/hcd-dwc2.h
+> @@ -19,11 +19,8 @@
+>  #ifndef HW_USB_DWC2_H
+>  #define HW_USB_DWC2_H
+>
+> -#include "qemu/timer.h"
+> -#include "hw/irq.h"
+>  #include "hw/sysbus.h"
+>  #include "hw/usb.h"
+> -#include "sysemu/dma.h"
+>
+>  #define DWC2_MMIO_SIZE      0x11000
+>
+> diff --git a/hw/usb/hcd-dwc2.c b/hw/usb/hcd-dwc2.c
+> index 590e75b455..ccf05d0823 100644
+> --- a/hw/usb/hcd-dwc2.c
+> +++ b/hw/usb/hcd-dwc2.c
+> @@ -36,8 +36,11 @@
+>  #include "qapi/error.h"
+>  #include "hw/usb/dwc2-regs.h"
+>  #include "hw/usb/hcd-dwc2.h"
+> +#include "hw/irq.h"
+> +#include "sysemu/dma.h"
+>  #include "migration/vmstate.h"
+>  #include "trace.h"
+> +#include "qemu/timer.h"
+>  #include "qemu/log.h"
+>  #include "hw/qdev-properties.h"
+>
+> --
+> 2.21.3
+>
+>

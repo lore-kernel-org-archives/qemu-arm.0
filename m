@@ -1,96 +1,96 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp180401lfm;
-        Mon, 6 Jul 2020 10:28:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz47tpnvtpNsLyQpVhfC5wnXAXcZCecUMx1mQxrCbi/s3oSjcaVICIh/zAsqmI/AliU3olF
-X-Received: by 2002:a25:56c4:: with SMTP id k187mr32624991ybb.53.1594056510897;
-        Mon, 06 Jul 2020 10:28:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594056510; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp181913lfm;
+        Mon, 6 Jul 2020 10:30:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxvoaRf3+x0ee8O5bQEXKT2M3LKC3OmzruzkBjzV2QARdQmsMNoKnA5EkIHFRv0HWNa06LH
+X-Received: by 2002:a5b:809:: with SMTP id x9mr72984133ybp.503.1594056642310;
+        Mon, 06 Jul 2020 10:30:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594056642; cv=none;
         d=google.com; s=arc-20160816;
-        b=0J6iMLrIp/aygkx0FbMaWmvPnlSdMv7xEjB2qUXB4h+P5isIFsKULzGrlxIZFqVO8r
-         VoMPx+NbBsnpqS6LTG5VgqrVevyZfy5pH2BKmcgx1jdNN+gxuljpJBwWEz9rs4s72axL
-         WVHJNENq29TbCeSYBPcoBSs322XQOIkzYn3BNIBKqYZp8SYukH5VWaw+T+NR+gN9cjPb
-         1+GwXfOt14zFjegA+x//mjeru41CyUOzpnFdyolLZOVXwJa+zPFGV9EnsT9VeLF25Ur/
-         xTvTMrtvHipdWKIcrpfDo7tEblJBqylymVQ5jXpVI5yXE+rGPFj0XNQKkChDnhDKEaSh
-         boUA==
+        b=llPbgDr8ZIfjUmT0tWavN3pZN4MraAdaMwJxy9/PdhDTvgeAD3lLwlhhG7HcUGwWS2
+         HYXzB61KzpeWFgAoWMBs9CldUzG+PhnNibOWASe0eRtDfHJbzxhp0vF2jZ3GcXoQSvZJ
+         frPzGscHkrKcDsQqoRxahzLQOtULTmkSFa7XvdGXSY59xNFbHhjHoIpyTsFnvrrLae6a
+         hJ0dyayBA0BVfikLuwj0h4PNabJWkVQKuEXTlcQsyeYQ92lLwgy7b6Nx/P2PXL7IJIG0
+         Y8EmgTAHsiodTcfWos1Bw9Qi3ocAXSwtGeNpYKZ6pc4zVt7up2+B0Q6TfYwmWrSJJTSZ
+         0pBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=cTCiYJ1utsgT/OEA1JPToQ9e7sbkDVzau0vl+orbX5M=;
-        b=Oa3kOv2ZH4IIbfnNYxU2wIYLhOpt4M3swe/0NHtyGAnLbSIbMy0cEh/1IPYvfzFMe9
-         EbUqUyOBSHNaWHMvKGpbCSzqMt7kD8PVHKX7K2/jaa5Y5hZ36iGf4r6iQVaR1I8I7XwC
-         28D0q0jUKSJJVb5VuLC6TRzyPBP8GThpkBsFfUyiGoJNaSdgTm2a04zqaHtpUdEc7Nvo
-         wxV4Bd+jfQCg//rKtWfCQ8ziwIMf64hUxfnHzUhmK0cnMTLHmrjS8F5xpZ51ayYkbMQQ
-         SiesGcmiju3dt00UfkH5lQw38BOYSZw+mcfC+cyMz6pDHfNDBaPeKFTWTFcS7ElATtew
-         LI9A==
+        bh=wZPcNnfJm5MPTasltoq/pBa3iV0LcdhND5nIpKUJi/8=;
+        b=j6EvqqKbV9GqpUzsovSi2mDRDjNU7wk1Wk9jOychaYsUjFSBklEl2p9pYFpx/lecP4
+         F3cktnttTLiFAW10YkwytiUT2Ss5+oTnOekkzT9XCGPFFq5XpNaJVaHDTiAbyihWf/NM
+         69MBHSNwauxy7s+Qddg9jeFxsR08oewCoRcGwh6vIJkxKh4QONhzvgQ8yF9Izuh/mprt
+         AhADK2Z1i8fkqCHM7UUIoxI8N8KouZqvNtgvtC1Ero4ab2ZimIUoM40BFm3K/iB8EVgw
+         SA/HqDzi86gJFQvuCU9sFYXCk3zhqneYDeHzJsgCZvuzSSvRx6DOFMtu0kwkrgu9wnUo
+         uS9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y5emWhnv;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="k/1aoElj";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p135si19504039yba.192.2020.07.06.10.28.30
+        by mx.google.com with ESMTPS id j190si19226341ybg.208.2020.07.06.10.30.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jul 2020 10:28:30 -0700 (PDT)
+        Mon, 06 Jul 2020 10:30:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Y5emWhnv;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="k/1aoElj";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56436 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34836 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsUus-000385-7r
-	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:28:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33858)
+	id 1jsUwz-0006Fr-Ka
+	for alex.bennee@linaro.org; Mon, 06 Jul 2020 13:30:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34996)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsUXt-0007qX-US; Mon, 06 Jul 2020 13:04:45 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:38263)
+ id 1jsUdj-0004D5-Sz; Mon, 06 Jul 2020 13:10:47 -0400
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:34930)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jsUXs-0006wa-8f; Mon, 06 Jul 2020 13:04:45 -0400
-Received: by mail-io1-xd42.google.com with SMTP id f6so24558830ioj.5;
- Mon, 06 Jul 2020 10:04:43 -0700 (PDT)
+ id 1jsUdh-0007rx-Em; Mon, 06 Jul 2020 13:10:47 -0400
+Received: by mail-io1-xd41.google.com with SMTP id v8so40052002iox.2;
+ Mon, 06 Jul 2020 10:10:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=cTCiYJ1utsgT/OEA1JPToQ9e7sbkDVzau0vl+orbX5M=;
- b=Y5emWhnvg2wA6Hsc2mNKM91+PUECbIjNCVx4XijBRlwxhG9yPaVY4nCPuN66Pn/g4N
- jALw2uCbPtXPOhmyJkKBc45MnuJg6mxtGi3kWihcL0PytiWW/5DejqGp9pu1JW3N0B0L
- YJbqT9Ic/jycTAYWFiu+Rsh/qMuTBhTldv4DWUXGneSj8xYSSWACCuJie0v5fihIfGzM
- +FHYD1FVz9yVKlUzWPPpjP3O3le2SpOqqOzlb4GBTfB83H90A+bGP6q+3xoLfe4Nv+cq
- E6XH5NYuSvgxKJUs0XSM4FaA8Wd5kSisFNa8A9sD0zbO1Mx64e82B7/5rFnqrKTujNAu
- cLYg==
+ bh=wZPcNnfJm5MPTasltoq/pBa3iV0LcdhND5nIpKUJi/8=;
+ b=k/1aoEljxB0uBEqfqH0Zn4KhFaSEHuRC7puZspsg00ZQnuYbG361wHg3SacgFJDj5D
+ tsj3n5BFbxJduCK35tjRhuF2/a9NzvStraAOtyCnDhA1x3ZIDzvxsj0SeVn96GcH66cQ
+ +fOPAx/5lIiJ6CUyYV8ORDaUEU0GMk/TmxFz2lsMqQ1ZPLYRTUaOZTHWIAoFD6WwT2w9
+ dE0VZxLY1HVMcUMAVCCqzToMHhxxVykCFBb3WPUEtZ8T5PdUIBDhJKXxk1Spjm8NLNHs
+ uMj6b4Ox5j2PchTgKufiol5/oFIvZYBrDFwPFhjtdYp+E3sHNnFizOD1mX/9Z5ZYBI8v
+ cucQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=cTCiYJ1utsgT/OEA1JPToQ9e7sbkDVzau0vl+orbX5M=;
- b=nhrWnsYnbiVKzXw4zdFkvyjPTtZ5TjlyAjP8r1PpPVVMQvVP+60DkmITruvWJA1H44
- 9rrK5o7GVA0UXpjO0Kf//OlgyqwPm/mWE910pVy/ddgNBW3gs95ixMC+4Qv2vKGMCi0/
- sYJGSzfpIu6RArb9VlbXJFN7vOUV23xK6JMC/D5U0rIRdX1YbilaCBZJeOlJud2TPxNp
- 4vSLVPZXAquiGLXWOxqx8/XFDkDk0bqfT2HKGnFDmO3Q5FzXOJreKPmBPD0YF2ropRbR
- c79LGoag5zVQtDf9Onf9RffUN0MHC4HrEm9F6UaX61PA3i7fbJR71/NypTNuj+VUKBRi
- J6fA==
-X-Gm-Message-State: AOAM5315Jg7J6TnKzaAmXRniArtAV5bmDaqt6UQ47DniGAQZMFOaAFfV
- p3JxP35xn+7LYitGD38QqSf4j07pRU29kspmGqI=
-X-Received: by 2002:a5d:97d9:: with SMTP id k25mr26494073ios.42.1594055082487; 
- Mon, 06 Jul 2020 10:04:42 -0700 (PDT)
+ bh=wZPcNnfJm5MPTasltoq/pBa3iV0LcdhND5nIpKUJi/8=;
+ b=MskhW81joZ+3jmobz2zIHp+l3yRAanBxR6fKnIPM9VHB9dxf2+8kExoS0L4YSlFL81
+ AxN9y0BV9zP7WUkbDu6PAckQdMo8/HP4KEG3ZRbEtZ0a41foBEogpSSfHeVLJv4xgpex
+ Ha0pcia8Vrd7nTQVL5jktNSKUxwfJldI1Fnapyho8Rh3DG7vEWNeVcCro1aUClFiaSso
+ yqIzyHXV+meM+aT0KsMA9uFLXfISZZRihbkDKx/8DpsGJOhxrahSG4baM4yuXhYYJf0N
+ CH8ingrMv2Xx7pRWGqFbKme8oHe8fRKx5ZSEreMu/AtCfoj8mVz4vdkhGBKo+K5wvwjK
+ Sksg==
+X-Gm-Message-State: AOAM530dQANcaIXBqppbdGqW46KLTXHkenWB4GUrE4uU9hKJfR91b7qR
+ wrB78K5UwntIslSZ5gnZDb+K46qNOfiMIe+VpQE=
+X-Received: by 2002:a02:6c4c:: with SMTP id w73mr55529406jab.26.1594055443540; 
+ Mon, 06 Jul 2020 10:10:43 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200704144943.18292-1-f4bug@amsat.org>
- <20200704144943.18292-8-f4bug@amsat.org>
-In-Reply-To: <20200704144943.18292-8-f4bug@amsat.org>
+ <20200704144943.18292-14-f4bug@amsat.org>
+In-Reply-To: <20200704144943.18292-14-f4bug@amsat.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 6 Jul 2020 09:54:53 -0700
-Message-ID: <CAKmqyKMk272oxLgGJHQMmZk_7+Q7N=5uPxSUdEMq2-N8DbHrLg@mail.gmail.com>
-Subject: Re: [PATCH 07/26] hw/usb/hcd-dwc2: Restrict some headers to source
+Date: Mon, 6 Jul 2020 10:00:56 -0700
+Message-ID: <CAKmqyKOcdG_Wv8yectwwHaxmryB9uBKK+GX1ZGtrq7ZCRcRsAw@mail.gmail.com>
+Subject: Re: [PATCH 13/26] hw/usb/desc: Reduce some declarations scope
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d41;
+ envelope-from=alistair23@gmail.com; helo=mail-io1-xd41.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -143,15 +143,15 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zNUH0gU3fCAZ
+X-TUID: VdI6fuM0k72J
 
-On Sat, Jul 4, 2020 at 7:52 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+On Sat, Jul 4, 2020 at 7:59 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
 > wrote:
 >
-> The header "usb/hcd-dwc2.h" doesn't need to include "qemu/timer.h",
-> "sysemu/dma.h", "hw/irq.h" (the types required are forward declared).
-> Include them in the source file which is the only one requiring the
-> function declarations.
+> USBDescString is forward-declared. Only bus.c uses the
+> usb_device_get_product_desc() and usb_device_get_usb_desc()
+> function. Move all that to the "desc.h" header to reduce
+> the big "hw/usb.h" header a bit.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
@@ -160,41 +160,74 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/usb/hcd-dwc2.h | 3 ---
->  hw/usb/hcd-dwc2.c | 3 +++
->  2 files changed, 3 insertions(+), 3 deletions(-)
+>  hw/usb/desc.h    | 10 ++++++++++
+>  include/hw/usb.h | 10 ----------
+>  hw/usb/bus.c     |  1 +
+>  3 files changed, 11 insertions(+), 10 deletions(-)
 >
-> diff --git a/hw/usb/hcd-dwc2.h b/hw/usb/hcd-dwc2.h
-> index 4ba809a07b..2adf0f53c7 100644
-> --- a/hw/usb/hcd-dwc2.h
-> +++ b/hw/usb/hcd-dwc2.h
-> @@ -19,11 +19,8 @@
->  #ifndef HW_USB_DWC2_H
->  #define HW_USB_DWC2_H
+> diff --git a/hw/usb/desc.h b/hw/usb/desc.h
+> index 92594fbe29..4bf6966c4b 100644
+> --- a/hw/usb/desc.h
+> +++ b/hw/usb/desc.h
+> @@ -242,4 +242,14 @@ int usb_desc_get_descriptor(USBDevice *dev, USBPacke=
+t *p,
+>  int usb_desc_handle_control(USBDevice *dev, USBPacket *p,
+>          int request, int value, int index, int length, uint8_t *data);
 >
-> -#include "qemu/timer.h"
-> -#include "hw/irq.h"
->  #include "hw/sysbus.h"
->  #include "hw/usb.h"
-> -#include "sysemu/dma.h"
+> +const char *usb_device_get_product_desc(USBDevice *dev);
+> +
+> +const USBDesc *usb_device_get_usb_desc(USBDevice *dev);
+> +
+> +struct USBDescString {
+> +    uint8_t index;
+> +    char *str;
+> +    QLIST_ENTRY(USBDescString) next;
+> +};
+> +
+>  #endif /* QEMU_HW_USB_DESC_H */
+> diff --git a/include/hw/usb.h b/include/hw/usb.h
+> index 15b2ef300a..18f1349bdc 100644
+> --- a/include/hw/usb.h
+> +++ b/include/hw/usb.h
+> @@ -192,12 +192,6 @@ typedef struct USBDescOther USBDescOther;
+>  typedef struct USBDescString USBDescString;
+>  typedef struct USBDescMSOS USBDescMSOS;
 >
->  #define DWC2_MMIO_SIZE      0x11000
+> -struct USBDescString {
+> -    uint8_t index;
+> -    char *str;
+> -    QLIST_ENTRY(USBDescString) next;
+> -};
+> -
+>  #define USB_MAX_ENDPOINTS  15
+>  #define USB_MAX_INTERFACES 16
 >
-> diff --git a/hw/usb/hcd-dwc2.c b/hw/usb/hcd-dwc2.c
-> index 590e75b455..ccf05d0823 100644
-> --- a/hw/usb/hcd-dwc2.c
-> +++ b/hw/usb/hcd-dwc2.c
-> @@ -36,8 +36,11 @@
->  #include "qapi/error.h"
->  #include "hw/usb/dwc2-regs.h"
->  #include "hw/usb/hcd-dwc2.h"
-> +#include "hw/irq.h"
-> +#include "sysemu/dma.h"
->  #include "migration/vmstate.h"
+> @@ -555,10 +549,6 @@ int usb_device_alloc_streams(USBDevice *dev, USBEndp=
+oint **eps, int nr_eps,
+>                               int streams);
+>  void usb_device_free_streams(USBDevice *dev, USBEndpoint **eps, int nr_e=
+ps);
+>
+> -const char *usb_device_get_product_desc(USBDevice *dev);
+> -
+> -const USBDesc *usb_device_get_usb_desc(USBDevice *dev);
+> -
+>  /* quirks.c */
+>
+>  /* In bulk endpoints are streaming data sources (iow behave like isoc ep=
+s) */
+> diff --git a/hw/usb/bus.c b/hw/usb/bus.c
+> index 957559b18d..111c3af7c1 100644
+> --- a/hw/usb/bus.c
+> +++ b/hw/usb/bus.c
+> @@ -9,6 +9,7 @@
+>  #include "monitor/monitor.h"
 >  #include "trace.h"
-> +#include "qemu/timer.h"
->  #include "qemu/log.h"
->  #include "hw/qdev-properties.h"
+>  #include "qemu/cutils.h"
+> +#include "desc.h"
+>
+>  static void usb_bus_dev_print(Monitor *mon, DeviceState *qdev, int inden=
+t);
 >
 > --
 > 2.21.3

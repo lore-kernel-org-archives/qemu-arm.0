@@ -1,170 +1,208 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp912421lfm;
-        Tue, 7 Jul 2020 05:58:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz7DSXhDotwuRTnkVBDKYib2zhaQLooXpJHG2qRvpw+9W5V+o5OsNup8ArAzvjg3Mh1pQdp
-X-Received: by 2002:a25:aaf1:: with SMTP id t104mr90352193ybi.163.1594126700952;
-        Tue, 07 Jul 2020 05:58:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594126700; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp912869lfm;
+        Tue, 7 Jul 2020 05:58:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzpjWfEFBunj1JbvmKnE3HlmYrq6jFQexLMXpruf6DFoDMY+DJ+rcDTjC6hkWRLyWsgw/Qh
+X-Received: by 2002:a25:aa4b:: with SMTP id s69mr19562502ybi.502.1594126736955;
+        Tue, 07 Jul 2020 05:58:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594126736; cv=none;
         d=google.com; s=arc-20160816;
-        b=rUij1l8igARU2CEIRUwqNYnkpnBBowKBWsqpSR69akh4hIm7hsx0KF7K6TFNCoNK6A
-         cPM0nKjoOv0M7jXung6jLKDqrZCe54GUSSJNM/an77Yo2aeeiUB2/bSu36CqsegyQRFJ
-         IRe61wAqeay43+vlcWQ2Ha07R1ICkxrbamznlBcLIjfYjlRpzVYoOm0MoFYO/lL/gjP1
-         Z5nKX+dW8Mq2sczLXYQm+ozJKG54px+6XaoL5ddU5Nm1vehIkby8GUiPawb2XTSLxNEQ
-         g5il8Vuj5aapBrmpkjFty0G6ymnxvmNt4h2sJQGlW7QNuzjkHwq43EOIAoKrVcODx+Z2
-         k+tg==
+        b=bYv13GZs03r3wC0oavSDr7pZ0w/OwbxMXgKz4905GS0a5e5C7iAmsQf/EmoGgv7DVd
+         M0LSI1RzRR4H8X6VMBM1kAE21DJ2vGjy7z5W7ErCLDjp3btEfN1Evnr0a5iUZkr2AHio
+         H7jCwmENLTjqnkcxyJUvAJ/ceoH7CEVDIHak21n7BST0vCaWnl9RSbS1fYxJKYaUiA75
+         fX/HtXe3pKTVLa4WCvm8vxqJ9YVhiNnpsmt5KwvIJ4R5s5no/hq0CIgQRr44td++mhVo
+         iSNnYVMc0IyQTbtLm4qL6q/2lllOzBMUL9cBkCQHpcTprXVvJkDRm6wf+jU1XjJdRUD/
+         Bp7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=Wc9PJg0y+gZhnz3nm4G7K97xAl+wSVatR2UZc498+YQ=;
-        b=atHKx50JFUyLIp4i/wlklVBTMTj9KXdTHL9nswqLD+tHNTpUj5GG6f/a1Yi2K1rOsF
-         eLcbdJfBbxbt0MKWZE0CEOzEOri4vrWKyylNSiqMZxay60Sz0cbSw2XSuEXwxTrYiL83
-         Ywea0/6q6CqngsfM5QTUuA3k4htNOEv3BZXso/zod3tLiE7Q46HRFww5JE8lMwMW/tn5
-         0MG3FwXp/04T44Yl+HSM9Ht0iXQkHwh/r8gWDMK5kW/39RTx+FeEy74P3ZIux6C/cDa0
-         VeOiJYpv6WUSprvNQOuZxb2sK4yOQK+jW6Lm8HdSo2soQqgMVC2lK4odQYeHtabcVFZW
-         vgLg==
+        bh=3qmo/QC1Uo41VjKsHy5G+USrNARFiKstgjsHC8RmoEs=;
+        b=uKFaOSsHFar3QAgyTFPNzj1AYWBlOH0SsF322BtYf+1dfAMpCzyyVtQ4gNT4C+ns2d
+         kCzCCI5fAyDa1vSjJAU6ZwKtXhSyql+KOAnEppO0qKAuNaTlzcp0sePKi/lA17g39d5p
+         uUKJNJqZeQeysKD1/EuL2c8V+FQiuR6UDX7LGAmJf9rHxdOmWbJFlwmyiPXTzWwHpXAz
+         NM3ZamMd7MQZTrpaecBA2Xi+YAtZ2dBszj+dud2KGaP53XwZvyqh2WES0NA+/Rf0WiPL
+         hub/P5RoelidyYmSAbNkZ3ZIFGa7nFZsTu2ZEbUeu4IHm0z5BX/recZf1K7EAuM+Krqk
+         T2Zg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TZzMNINw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Zp6QHboo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 73si10173890ybl.4.2020.07.07.05.58.20
+        by mx.google.com with ESMTPS id a12si5870746ybj.312.2020.07.07.05.58.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jul 2020 05:58:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Jul 2020 05:58:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TZzMNINw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Zp6QHboo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37514 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41896 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jsnAy-0004wg-73
-	for alex.bennee@linaro.org; Tue, 07 Jul 2020 08:58:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38288)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jsnBY-0006hA-Bk
+	for alex.bennee@linaro.org; Tue, 07 Jul 2020 08:58:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38196)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jsn7e-0008A0-L4
- for qemu-devel@nongnu.org; Tue, 07 Jul 2020 08:54:55 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:35627
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jsn7V-0007uY-Kf
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2020 08:54:45 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:29191
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jsn7c-0004r8-HL
- for qemu-devel@nongnu.org; Tue, 07 Jul 2020 08:54:53 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1jsn7T-0004pI-Ah
+ for qemu-arm@nongnu.org; Tue, 07 Jul 2020 08:54:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594126490;
+ s=mimecast20190719; t=1594126482;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:content-type:content-type:in-reply-to:in-reply-to:
- references:references; bh=Wc9PJg0y+gZhnz3nm4G7K97xAl+wSVatR2UZc498+YQ=;
- b=TZzMNINwR4Q1X2hmNe5sW9phCl5Le7xEXeitPhJCpkKtzx/Bt53eot5/cd0UgpgxOFmahJ
- xdITqGM5f12VknptKRWz2lYpwhjISIbowoxuJrx9BDMntA7Gi9YfmSJlRpLJBijyZkyh3Y
- qEBHHKvN6J+/alygHCdcdLWAVR3snq4=
+ references:references; bh=3qmo/QC1Uo41VjKsHy5G+USrNARFiKstgjsHC8RmoEs=;
+ b=Zp6QHbook+GDE+QYisOZhrj2AR4RtPF+jlB4MDPlWYZmJy5vfMWGzvcdpbu+B0Qx5he7s+
+ ap72qMw/7stbThJzubHPvLJcn90b/fpmDB2vqYLWew28jprqSVlFkITwrbEitz5KEnCrFS
+ wiTBVhDEkq9rinqlJyz9M3bSpiSoo8A=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-274-rGa8oTprOhuGOAAV5d4ISw-1; Tue, 07 Jul 2020 08:54:47 -0400
-X-MC-Unique: rGa8oTprOhuGOAAV5d4ISw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-154-YymIm8aEMmOaUC2V4APPfg-1; Tue, 07 Jul 2020 08:54:41 -0400
+X-MC-Unique: YymIm8aEMmOaUC2V4APPfg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3885469899;
- Tue,  7 Jul 2020 12:54:29 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4C3B78DFFF1;
+ Tue,  7 Jul 2020 12:54:27 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-200.ams2.redhat.com
  [10.36.112.200])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D9B017610C;
- Tue,  7 Jul 2020 12:54:16 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8B80361100;
+ Tue,  7 Jul 2020 12:54:11 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 777FD31F73; Tue,  7 Jul 2020 14:53:57 +0200 (CEST)
+ id 376A631F52; Tue,  7 Jul 2020 14:53:57 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 13/20] x86: constify x86_machine_is_*_enabled
-Date: Tue,  7 Jul 2020 14:53:49 +0200
-Message-Id: <20200707125356.32450-14-kraxel@redhat.com>
+Subject: [PATCH v5 07/20] microvm: make virtio irq base runtime configurable
+Date: Tue,  7 Jul 2020 14:53:43 +0200
+Message-Id: <20200707125356.32450-8-kraxel@redhat.com>
 In-Reply-To: <20200707125356.32450-1-kraxel@redhat.com>
 References: <20200707125356.32450-1-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/07 00:31:00
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/07 06:04:49
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=_AUTOLEARN
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
  qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5L3bSo/vn3XX
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: beNjv66vrytb
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Sergio Lopez <slp@redhat.com>
 ---
- include/hw/i386/x86.h | 4 ++--
- hw/i386/x86.c         | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ include/hw/i386/microvm.h |  2 +-
+ hw/i386/microvm.c         | 11 +++++++----
+ 2 files changed, 8 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/i386/x86.h b/include/hw/i386/x86.h
-index b79f24e28545..a350ea3609f5 100644
---- a/include/hw/i386/x86.h
-+++ b/include/hw/i386/x86.h
-@@ -110,8 +110,8 @@ void x86_load_linux(X86MachineState *x86ms,
-                     bool pvh_enabled,
-                     bool linuxboot_dma_enabled);
+diff --git a/include/hw/i386/microvm.h b/include/hw/i386/microvm.h
+index fd34b78e0d2a..03e735723726 100644
+--- a/include/hw/i386/microvm.h
++++ b/include/hw/i386/microvm.h
+@@ -27,7 +27,6 @@
  
--bool x86_machine_is_smm_enabled(X86MachineState *x86ms);
--bool x86_machine_is_acpi_enabled(X86MachineState *x86ms);
-+bool x86_machine_is_smm_enabled(const X86MachineState *x86ms);
-+bool x86_machine_is_acpi_enabled(const X86MachineState *x86ms);
+ /* Platform virtio definitions */
+ #define VIRTIO_MMIO_BASE      0xfeb00000
+-#define VIRTIO_IRQ_BASE       5
+ #define VIRTIO_NUM_TRANSPORTS 8
+ #define VIRTIO_CMDLINE_MAXLEN 64
  
- /* Global System Interrupts */
+@@ -57,6 +56,7 @@ typedef struct {
+     bool auto_kernel_cmdline;
  
-diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-index 93f7371a5693..2d2beff3d4f6 100644
---- a/hw/i386/x86.c
-+++ b/hw/i386/x86.c
-@@ -848,7 +848,7 @@ void x86_bios_rom_init(MemoryRegion *rom_memory, bool isapc_ram_fw)
-                                 bios);
+     /* Machine state */
++    uint32_t virtio_irq_base;
+     bool kernel_cmdline_fixed;
+ } MicrovmMachineState;
+ 
+diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
+index 1300c396947b..ab6ee6c67b1a 100644
+--- a/hw/i386/microvm.c
++++ b/hw/i386/microvm.c
+@@ -121,10 +121,11 @@ static void microvm_devices_init(MicrovmMachineState *mms)
+ 
+     kvmclock_create();
+ 
++    mms->virtio_irq_base = 5;
+     for (i = 0; i < VIRTIO_NUM_TRANSPORTS; i++) {
+         sysbus_create_simple("virtio-mmio",
+                              VIRTIO_MMIO_BASE + i * 512,
+-                             x86ms->gsi[VIRTIO_IRQ_BASE + i]);
++                             x86ms->gsi[mms->virtio_irq_base + i]);
+     }
+ 
+     /* Optional and legacy devices */
+@@ -227,7 +228,7 @@ static void microvm_memory_init(MicrovmMachineState *mms)
+     x86ms->ioapic_as = &address_space_memory;
  }
  
--bool x86_machine_is_smm_enabled(X86MachineState *x86ms)
-+bool x86_machine_is_smm_enabled(const X86MachineState *x86ms)
+-static gchar *microvm_get_mmio_cmdline(gchar *name)
++static gchar *microvm_get_mmio_cmdline(gchar *name, uint32_t virtio_irq_base)
  {
-     bool smm_available = false;
- 
-@@ -890,7 +890,7 @@ static void x86_machine_set_smm(Object *obj, Visitor *v, const char *name,
-     visit_type_OnOffAuto(v, name, &x86ms->smm, errp);
- }
- 
--bool x86_machine_is_acpi_enabled(X86MachineState *x86ms)
-+bool x86_machine_is_acpi_enabled(const X86MachineState *x86ms)
+     gchar *cmdline;
+     gchar *separator;
+@@ -247,7 +248,7 @@ static gchar *microvm_get_mmio_cmdline(gchar *name)
+     ret = g_snprintf(cmdline, VIRTIO_CMDLINE_MAXLEN,
+                      " virtio_mmio.device=512@0x%lx:%ld",
+                      VIRTIO_MMIO_BASE + index * 512,
+-                     VIRTIO_IRQ_BASE + index);
++                     virtio_irq_base + index);
+     if (ret < 0 || ret >= VIRTIO_CMDLINE_MAXLEN) {
+         g_free(cmdline);
+         return NULL;
+@@ -259,6 +260,7 @@ static gchar *microvm_get_mmio_cmdline(gchar *name)
+ static void microvm_fix_kernel_cmdline(MachineState *machine)
  {
-     if (x86ms->acpi == ON_OFF_AUTO_OFF) {
-         return false;
+     X86MachineState *x86ms = X86_MACHINE(machine);
++    MicrovmMachineState *mms = MICROVM_MACHINE(machine);
+     BusState *bus;
+     BusChild *kid;
+     char *cmdline;
+@@ -282,7 +284,8 @@ static void microvm_fix_kernel_cmdline(MachineState *machine)
+             BusState *mmio_bus = &mmio_virtio_bus->parent_obj;
+ 
+             if (!QTAILQ_EMPTY(&mmio_bus->children)) {
+-                gchar *mmio_cmdline = microvm_get_mmio_cmdline(mmio_bus->name);
++                gchar *mmio_cmdline = microvm_get_mmio_cmdline
++                    (mmio_bus->name, mms->virtio_irq_base);
+                 if (mmio_cmdline) {
+                     char *newcmd = g_strjoin(NULL, cmdline, mmio_cmdline, NULL);
+                     g_free(mmio_cmdline);
 -- 
 2.18.4
 

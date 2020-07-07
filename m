@@ -1,248 +1,254 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp507483lfm;
-        Fri, 10 Jul 2020 02:32:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyX5MAOsRJcOH6t3n+YQ3LTt9wFXvwblkdcycbu5oznGZqwj6z0WyN65ELPG0zuFQYJIstH
-X-Received: by 2002:a25:d104:: with SMTP id i4mr4980801ybg.176.1594373525929;
-        Fri, 10 Jul 2020 02:32:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594373525; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1363151lfm;
+        Tue, 7 Jul 2020 15:38:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxcpwMO7MYr9kxaqNi4FFrCQ3r4rdqLVkko7UARI5hG1GR3RF9+tEgyJiwUNBQjVPJw9IKO
+X-Received: by 2002:a25:cac2:: with SMTP id a185mr3565733ybg.318.1594161492010;
+        Tue, 07 Jul 2020 15:38:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594161492; cv=none;
         d=google.com; s=arc-20160816;
-        b=cUsVUej5Xufnz+Vc5NmKp4e3Foj6L0V6tCLCvBCvcxT/fTodJMCH1oRpaQ9Nm9bVGt
-         rb9YOoByfCHW3WM0gTUV094uUZofMSpR5vgIQhBMDlgXCN4CcQ1LM446hnrmbHpd+JjF
-         XrJpDv1BsW3n2VlYHiEhcJcCUGo1Kx2j6K9t07K1opIf4FQe7hi120KsJSlEnEoxDlJ+
-         wjpmvKce+V7mZnMmaUTlZljWD/hpBlKwjA7T3PLsDR+Ju+B3oQdBaflzoidMdmNrTFyC
-         QkrQvThOMWDYcBBtClWM8W83EfsC6fEUXSUpa62qhS+7OPsh+wlcJAG1g5WUedGfCOgh
-         jq9Q==
+        b=BawUOy2yEWE7oL6WKsjfSFQf2rJlaiTosCj6Dz/jfCaNyO6ukBjxrJV7tKFIlXEkM8
+         MW5BlwNoXob13FuGhoW9jqKowPyeE8v8Kt7WqGTLMnAqpVlXIJoDqp30oNd56zYjGyU9
+         awHE0+pWoPYtCN97PR444x5xUC5/pxQaF6dd176+u2iUseKUV4yHyp8+SfGk6JA6Xi6O
+         HlWnKCp7BkRzl2FjJqqDFuzwUi5cN79pCauF+CXnaUzRS+KlAOQLojZzUrZMYzv9ZVPR
+         cIOazS4weXNGR+90et6YlJ4KhX3UGDhEhRBGW2fWmP7nbwyuoV5TsAzgVNsnoQRqrty3
+         1Mag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=jbwK77+qQUrpJFsJfpQv7PNojt2bhaOZlYuEm6uiWHU=;
-        b=r+qpuZ5PMDGDwe/uom/I+Ana8yUnplJKFaDQPyFGZCwGZsrCNlcG7fOx2MlKIuoQI/
-         0BsQprEkbiAXKufdtH2qMqS5gBOvxApUDGxwcA6wpUtlb4jCDeskhzDYI4qLGe6SVWF2
-         tOneD/PyIvMYN/dd3S97QJ83Pw1hPQeIrDPmXnwcaqgWZ+5gLnG9CyUbC9gL8ihBzdkv
-         O4ipPDqHzfpypoODuq4LK9CFOn3pVWyMidqqEqG6Ki5yrm4klEF5164lPFaeZYpaj23S
-         gTtxK/J5AHMRz30O+RhO8CsjXG4AmByF0NN3cN5W+pcMomSeEufsluQi+r5oesmHTKzH
-         ZeTw==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=v7IrMikX7RIxM1uA8GbKKE22do9ec3iqS+dPAZ6bDdo=;
+        b=j9N6IIS2PFPTL8ITCy3edRDLLYjiI4kU9GBA8Drftz5BxUOplkop5aqPKPrzq6Qh8u
+         pFSa1xl4Yx/C8Tr/g2X6qOtZSc0YFdN1vf0AUee9wLRhSegev9SIwKDeFG6euqyKSKzQ
+         y/oobKyzOHUDxpPJBR4bqWOzBB1ISbSW+VhjsFSxHPBjByV6trcsI4UxohFlWkPCZ1BF
+         rCCq/WXa4gECYfEvuHSTOtYGaWxg36LFjfx9VKDugMccximjDFzymh7cMjUDi9S+27Xq
+         nOHUne7lU9KLYmbIBhfTbXbX8jW1s+791lRIkO57LPNU753PVtp72zyIajrIk8P7YnGE
+         Q7ww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=klfEIH8x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 81si5826117ybn.446.2020.07.10.02.32.05
+        by mx.google.com with ESMTPS id o191si23763502ybc.374.2020.07.07.15.38.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jul 2020 02:32:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Jul 2020 15:38:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=klfEIH8x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:42352 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39570 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtpO1-0000yy-8Q
-	for alex.bennee@linaro.org; Fri, 10 Jul 2020 05:32:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46662)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jswE7-0003PE-EA
+	for alex.bennee@linaro.org; Tue, 07 Jul 2020 18:38:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54708)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jtpNk-0000iw-Nw; Fri, 10 Jul 2020 05:31:48 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:41607)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jtpNi-0004fJ-Id; Fri, 10 Jul 2020 05:31:48 -0400
-Received: by mail-wr1-x444.google.com with SMTP id z15so5215194wrl.8;
- Fri, 10 Jul 2020 02:31:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=jbwK77+qQUrpJFsJfpQv7PNojt2bhaOZlYuEm6uiWHU=;
- b=klfEIH8xeoUccOeFTaCGJJQneb+E1lhw8TA4MZS6LmSZ0hHG44tTo5yN5/c6a90j51
- PtYz24ERUs2/9JiUd+PDQ9YsM2I5qzjBEvQ11lQi5sajg4TCa89OJAF30FZ5UuLgrt20
- RiDsZjKL53n81N2pEH1/rpuRnPcNTiDxPYK8olN85W+soiDqcZDoWP5iTSxNqRkM4dqM
- Xl/VhiHCLlTpsgMkyzTWuTExG4eSnwOv0HwOU/7t8vCeop376ZZpHo28VzZhfke5iomW
- 5P5BtX94BK4f6uJ3sapb8jGAjy8NDq8oOwl5wEJyBrpg7u01MtjWSHJPuMOqJbzdoJ8p
- q7xA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=jbwK77+qQUrpJFsJfpQv7PNojt2bhaOZlYuEm6uiWHU=;
- b=WqFLIaAvrE2YavVZyespiVprXxhPKtNd6rFFt6gLtMGqWTll7Pm3DWMyxaukiu3B9g
- skzlkvQynyu8PeBpLGrVhRtHglGz3zhH+KZl5RYpOW0b8Cn95nlUfyoJyGSdM3UU0Txs
- jBt/dJTpN4cpAsu1otyGy1DmZSfxpEViHJl+urAEdl/j7gwG/lv3B0JFFIxfg1oKx8iO
- JzZNzWoFnZEXy/VYQWhVarwump0eFwrIu2j/rx57rQEv4O3ksepAKZTeMzzqpVN2Y8AX
- Pyu/sdG7G+V6JiawMg5l9ngj7oYXf+z75UtN7YKqag3/jvGA4fTLojoMTCtTcXXRU6I0
- GmZA==
-X-Gm-Message-State: AOAM530r83PakQAGPfHPKXRdISvsM+k3CXXKCvdBB74Yz034eIe2D6u+
- fziy3v3GyRk4hswLVHkBLBs=
-X-Received: by 2002:a05:6000:1190:: with SMTP id
- g16mr64209932wrx.286.1594373504322; 
- Fri, 10 Jul 2020 02:31:44 -0700 (PDT)
-Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id n5sm8391612wmi.34.2020.07.10.02.31.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Jul 2020 02:31:43 -0700 (PDT)
-Subject: Re: [PATCH v5 01/11] hw/misc: Add NPCM7xx System Global Control
- Registers device model
-To: Havard Skinnemoen <hskinnemoen@google.com>
-References: <20200709003608.3834629-1-hskinnemoen@google.com>
- <20200709003608.3834629-2-hskinnemoen@google.com>
- <2fe8ea5e-56de-f57f-6146-8355125daa7f@amsat.org>
- <CAFQmdRYx99PpWz6bftCvBR7=YRftD_WNex_A9aoDaeRg=4tsCw@mail.gmail.com>
- <bd2972b0-0684-e379-6d66-16ceb62deade@amsat.org>
- <CAFQmdRbHXhd9-HUQP5ET=JQEnQ3FMCQBHajwZrP5d7=iCc0tzA@mail.gmail.com>
- <ee8bc620-6d58-98ef-1c53-a8687282af50@amsat.org>
- <CAFQmdRa3u_Sst0i6e2whoJcYau15gVQubhZHmm+z26SD8G8uCQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <c19401c1-f629-a95f-c8a5-60df78e41061@amsat.org>
-Date: Fri, 10 Jul 2020 11:31:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <zhiwei_liu@c-sky.com>)
+ id 1jswDS-0002yH-Md; Tue, 07 Jul 2020 18:37:30 -0400
+Received: from mail142-1.mail.alibaba.com ([198.11.142.1]:23391)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhiwei_liu@c-sky.com>)
+ id 1jswDP-000593-BC; Tue, 07 Jul 2020 18:37:30 -0400
+X-Alimail-AntiSpam: AC=CONTINUE; BC=0.9109071|0.8101484; CH=green;
+ DM=|SPAM|false|; DS=CONTINUE|ham_regular_dialog|0.0483645-0.000218332-0.951417;
+ FP=0|0|0|0|0|-1|-1|-1; HT=e01a16367; MF=zhiwei_liu@c-sky.com; NM=1; PH=DS;
+ RN=4; RT=4; SR=0; TI=SMTPD_---.HzsBShv_1594157819; 
+Received: from 192.168.3.18(mailfrom:zhiwei_liu@c-sky.com
+ fp:SMTPD_---.HzsBShv_1594157819)
+ by smtp.aliyun-inc.com(10.147.42.135);
+ Wed, 08 Jul 2020 05:37:00 +0800
+Subject: Re: [PATCH v2 000/100] target/arm: Implement SVE2
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+References: <20200618042644.1685561-1-richard.henderson@linaro.org>
+From: LIU Zhiwei <zhiwei_liu@c-sky.com>
+Message-ID: <fe439285-e68a-2fbb-1ad2-153a00ddce3a@c-sky.com>
+Date: Wed, 8 Jul 2020 05:36:59 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <CAFQmdRa3u_Sst0i6e2whoJcYau15gVQubhZHmm+z26SD8G8uCQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20200618042644.1685561-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 10
-X-Spam_score: 1.0
-X-Spam_bar: +
-X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, PDS_OTHER_BAD_TLD=1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
+Received-SPF: none client-ip=198.11.142.1; envelope-from=zhiwei_liu@c-sky.com;
+ helo=mail142-1.mail.alibaba.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/07 18:15:39
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TEEIA/e1AUTm
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, steplong@quicinc.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EbhyApbBEfPk
 
-On 7/9/20 7:42 PM, Havard Skinnemoen wrote:
-> On Thu, Jul 9, 2020 at 10:24 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->> On 7/9/20 7:09 PM, Havard Skinnemoen wrote:
->>> On Thu, Jul 9, 2020 at 9:23 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>>> On 7/9/20 8:43 AM, Havard Skinnemoen wrote:
->>>>> On Wed, Jul 8, 2020 at 11:04 PM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>>>>> On 7/9/20 2:35 AM, Havard Skinnemoen wrote:
->>>>>>> Implement a device model for the System Global Control Registers in the
->>>>>>> NPCM730 and NPCM750 BMC SoCs.
->>>>>>>
->>>>>>> This is primarily used to enable SMP boot (the boot ROM spins reading
->>>>>>> the SCRPAD register) and DDR memory initialization; other registers are
->>>>>>> best effort for now.
->>>>>>>
->>>>>>> The reset values of the MDLR and PWRON registers are determined by the
->>>>>>> SoC variant (730 vs 750) and board straps respectively.
->>>>>>>
->>>>>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
->>>>>>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
->>>>>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
->>>>>>> ---
-[...]
->>>>>> Maybe use HWADDR_PRIx instead of casting to int?
->>>>>
->>>>> Will do, thanks!
->>>>
->>>> Glad you are not annoyed by my review comments.
->>>>
->>>> FYI your series quality is in my top-4 "adding new machine to QEMU".
->>>> I'd like to use it as example to follow.
->>>>
->>>> I am slowly reviewing because this is not part of my work duties,
->>>> so I do that in my free time before/after work, which is why I can
->>>> barely do more that 2 per day, as I have to learn the SoC and
->>>> cross check documentation (or in this case, existing firmware code
->>>> since there is no public doc).
->>>
->>> Your feedback is super valuable, thanks a lot. I really appreciate it.
->>
->> OK I'll continue, but might not have time until next week.
->> After I plan to test too.
-> 
-> OK, I'll try to post a v6 before the weekend, unless you prefer that I
-> hold off until you've reviewed the whole series.
 
-I don't mind, if it is not too much overhead on your side.
+On 2020/6/18 12:25, Richard Henderson wrote:
+> I know this patch set is too big, and that there are parts that
+> can be split out that are prepatory rather that specifically sve2.
+>
+> It's also not 100% tested.  I have done some amount of testing
+> vs ArmIE, but because of bugs and missing features therein, that
+> testing has been somewhat limited.  I understand a new version
+> of FVP has just been release containing SVE2 support, but I have
+> not yet tried that.
+>
+> However, I believe this finally contains all of the instructions
+> in sve2 and its optional extensions.  Excluding BFloat16, since
+> that extension is supposed to implement AdvSIMD at the same time.
+Hi Richard,
 
-What I noticed on the QEMU community is:
+I try to merge this patch set to master branch. As some MTE instructions 
+have been merged after this patch set,
+it can't be merged now.
 
-- If a series reviewed the same day and is almost done except
-  a single bugfix, it is OK to repost the same day, so the
-  maintainer is likely to queue it directly.
+Would you mind to rebase it to master branch and send the patch set again?
 
-- If there are various reviews, and you do gradual improvements,
-  it is OK to repost every 3 days. Else reviewers tend to skip/
-  postpone your series for later.
+Best Regards,
+Zhiwei
+>
+> r~
+>
+>
+> Richard Henderson (81):
+>    tcg: Save/restore vecop_list around minmax fallback
+>    qemu/int128: Add int128_lshift
+>    target/arm: Split out gen_gvec_fn_zz
+>    target/arm: Split out gen_gvec_fn_zzz, do_zzz_fn
+>    target/arm: Rearrange {sve,fp}_check_access assert
+>    target/arm: Merge do_vector2_p into do_mov_p
+>    target/arm: Clean up 4-operand predicate expansion
+>    target/arm: Use tcg_gen_gvec_bitsel for trans_SEL_pppp
+>    target/arm: Split out gen_gvec_ool_zzzp
+>    target/arm: Merge helper_sve_clr_* and helper_sve_movz_*
+>    target/arm: Split out gen_gvec_ool_zzp
+>    target/arm: Split out gen_gvec_ool_zzz
+>    target/arm: Split out gen_gvec_ool_zz
+>    target/arm: Add ID_AA64ZFR0 fields and isar_feature_aa64_sve2
+>    target/arm: Enable SVE2 and some extensions
+>    target/arm: Implement SVE2 Integer Multiply - Unpredicated
+>    target/arm: Implement SVE2 integer pairwise add and accumulate long
+>    target/arm: Implement SVE2 integer unary operations (predicated)
+>    target/arm: Split out saturating/rounding shifts from neon
+>    target/arm: Implement SVE2 saturating/rounding bitwise shift left
+>      (predicated)
+>    target/arm: Implement SVE2 integer halving add/subtract (predicated)
+>    target/arm: Implement SVE2 integer pairwise arithmetic
+>    target/arm: Implement SVE2 saturating add/subtract (predicated)
+>    target/arm: Implement SVE2 integer add/subtract long
+>    target/arm: Implement SVE2 integer add/subtract interleaved long
+>    target/arm: Implement SVE2 integer add/subtract wide
+>    target/arm: Implement SVE2 integer multiply long
+>    target/arm: Implement PMULLB and PMULLT
+>    target/arm: Tidy SVE tszimm shift formats
+>    target/arm: Implement SVE2 bitwise shift left long
+>    target/arm: Implement SVE2 bitwise exclusive-or interleaved
+>    target/arm: Implement SVE2 bitwise permute
+>    target/arm: Implement SVE2 complex integer add
+>    target/arm: Implement SVE2 integer absolute difference and accumulate
+>      long
+>    target/arm: Implement SVE2 integer add/subtract long with carry
+>    target/arm: Implement SVE2 bitwise shift right and accumulate
+>    target/arm: Implement SVE2 bitwise shift and insert
+>    target/arm: Implement SVE2 integer absolute difference and accumulate
+>    target/arm: Implement SVE2 saturating extract narrow
+>    target/arm: Implement SVE2 SHRN, RSHRN
+>    target/arm: Implement SVE2 SQSHRUN, SQRSHRUN
+>    target/arm: Implement SVE2 UQSHRN, UQRSHRN
+>    target/arm: Implement SVE2 SQSHRN, SQRSHRN
+>    target/arm: Implement SVE2 WHILEGT, WHILEGE, WHILEHI, WHILEHS
+>    target/arm: Implement SVE2 WHILERW, WHILEWR
+>    target/arm: Implement SVE2 bitwise ternary operations
+>    target/arm: Implement SVE2 saturating multiply-add long
+>    target/arm: Generalize inl_qrdmlah_* helper functions
+>    target/arm: Implement SVE2 saturating multiply-add high
+>    target/arm: Implement SVE2 integer multiply-add long
+>    target/arm: Implement SVE2 complex integer multiply-add
+>    target/arm: Implement SVE2 XAR
+>    target/arm: Fix sve_uzp_p vs odd vector lengths
+>    target/arm: Fix sve_zip_p vs odd vector lengths
+>    target/arm: Fix sve_punpk_p vs odd vector lengths
+>    target/arm: Pass separate addend to {U,S}DOT helpers
+>    target/arm: Pass separate addend to FCMLA helpers
+>    target/arm: Split out formats for 2 vectors + 1 index
+>    target/arm: Split out formats for 3 vectors + 1 index
+>    target/arm: Implement SVE2 integer multiply (indexed)
+>    target/arm: Use helper_gvec_mul_idx_* for aa64 advsimd
+>    target/arm: Implement SVE2 integer multiply-add (indexed)
+>    target/arm: Use helper_gvec_ml{a,s}_idx_* for aa64 advsimd
+>    target/arm: Implement SVE2 saturating multiply-add high (indexed)
+>    target/arm: Implement SVE2 saturating multiply-add (indexed)
+>    target/arm: Implement SVE2 integer multiply long (indexed)
+>    target/arm: Implement SVE2 saturating multiply (indexed)
+>    target/arm: Implement SVE2 signed saturating doubling multiply high
+>    target/arm: Use helper_neon_sq{,r}dmul_* for aa64 advsimd
+>    target/arm: Implement SVE2 saturating multiply high (indexed)
+>    target/arm: Implement SVE2 multiply-add long (indexed)
+>    target/arm: Implement SVE2 complex integer multiply-add (indexed)
+>    target/arm: Implement SVE mixed sign dot product (indexed)
+>    target/arm: Implement SVE mixed sign dot product
+>    target/arm: Implement SVE2 crypto unary operations
+>    target/arm: Implement SVE2 crypto destructive binary operations
+>    target/arm: Implement SVE2 crypto constructive binary operations
+>    tcg: Implement 256-bit dup for tcg_gen_gvec_dup_mem
+>    target/arm: Share table of sve load functions
+>    target/arm: Implement SVE2 LD1RO
+>    target/arm: Implement 128-bit ZIP, UZP, TRN
+>
+> Stephen Long (19):
+>    target/arm: Implement SVE2 floating-point pairwise
+>    target/arm: Implement SVE2 MATCH, NMATCH
+>    target/arm: Implement SVE2 ADDHNB, ADDHNT
+>    target/arm: Implement SVE2 RADDHNB, RADDHNT
+>    target/arm: Implement SVE2 SUBHNB, SUBHNT
+>    target/arm: Implement SVE2 RSUBHNB, RSUBHNT
+>    target/arm: Implement SVE2 HISTCNT, HISTSEG
+>    target/arm: Implement SVE2 scatter store insns
+>    target/arm: Implement SVE2 gather load insns
+>    target/arm: Implement SVE2 FMMLA
+>    target/arm: Implement SVE2 SPLICE, EXT
+>    target/arm: Implement SVE2 TBL, TBX
+>    target/arm: Implement SVE2 FCVTNT
+>    target/arm: Implement SVE2 FCVTLT
+>    target/arm: Implement SVE2 FCVTXNT, FCVTX
+>    softfloat: Add float16_is_normal
+>    target/arm: Implement SVE2 FLOGB
+>    target/arm: Implement SVE2 bitwise shift immediate
+>    target/arm: Implement SVE2 fp multiply-add long
+>
+>   include/fpu/softfloat.h         |    5 +
+>   include/qemu/int128.h           |   16 +
+>   target/arm/cpu.h                |   56 +
+>   target/arm/helper-sve.h         |  717 ++++++-
+>   target/arm/helper.h             |  132 +-
+>   target/arm/translate-a64.h      |    3 +
+>   target/arm/translate.h          |    1 +
+>   target/arm/vec_internal.h       |  143 ++
+>   target/arm/sve.decode           |  594 +++++-
+>   target/arm/cpu64.c              |   11 +
+>   target/arm/helper.c             |    3 +-
+>   target/arm/kvm64.c              |   11 +
+>   target/arm/neon_helper.c        |  507 +----
+>   target/arm/sve_helper.c         | 2123 +++++++++++++++++--
+>   target/arm/translate-a64.c      |  177 +-
+>   target/arm/translate-neon.inc.c |   20 +-
+>   target/arm/translate-sve.c      | 3364 ++++++++++++++++++++++++++++---
+>   target/arm/vec_helper.c         |  942 +++++++--
+>   tcg/tcg-op-gvec.c               |   52 +-
+>   tcg/tcg-op-vec.c                |    2 +
+>   20 files changed, 7698 insertions(+), 1181 deletions(-)
+>
 
-- Pinging for review before 1 week passed is stressing reviewers,
-  except in case of critical security bug (CVE) or during freeze.
-
-- Series with integrated test provided are usually reviewed first.
-
->> What would be useful is an acceptance test (see examples in
->> tests/acceptance/), using the artefacts from the link you shared
->> elsewhere:
->> https://openpower.xyz/job/run-meta-ci/distro=ubuntu,label=builder,target=gsj/lastSuccessfulBuild/artifact/openbmc/build/tmp/deploy/images/gsj/
-> 
-> Yes, tests are definitely on my radar. I'm working on SPI flash
-> qtests. I haven't had much success with avocado yet, but I'll keep
-> trying (perhaps using docker to control the environment more tightly).
-
-This might help:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg704907.html
-
-> Since the 5.1 release is frozen now, I might post some followup
-> patches before this series is merged, e.g. tests, bootrom
-> submodule+blob, more peripherals, etc. Is it preferable to keep this
-> series frozen (modulo API updates) since you spent a lot of time
-> reviewing it, and post the new stuff separately, or is it better to
-> add new patches to the end of the series and resend the whole thing?
-
-If you rework a peripheral, you need to reset the Reviewed-by/Tested-by
-tags. If you add new peripherals, you only need to reset these tags on
-the SoC patch. I'm fine either way, I use git-backport-diff to see the
-SoC changes easily:
-
-https://github.com/codyprime/git-scripts/blob/master/git-backport-diff
-
-> 
->> But these are apparently not stable links (expire after 30 days?).
-> 
-> Sorry, I'm too ignorant about Jenkins to know. I'll see if I can
-> figure something out.
-
-What I do in that case is take the binary used for the test,
-write a comment and push it in a stable branch to my own repo:
-https://github.com/philmd/qemu-testing-blob/ and use the stable
-url in the test.
-
-We know QEMU emulation worked with this particular binary at some
-point. We want to avoid regressions in QEMU, so let's keep testing
-what we know worked. We don't want to track 2 bugs at a time (one
-in the updated guest and one in QEMU).
-
-Regards,
-
-Phil.

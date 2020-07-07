@@ -1,112 +1,101 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp669086lfm;
-        Mon, 6 Jul 2020 23:50:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwnsIIpd2PjvrjrxX3uFyTmanTaX7d/DgXA6F44O+wuhhq8t11s0qgOmb/GxqDBuU+zk/ij
-X-Received: by 2002:a25:2609:: with SMTP id m9mr39272286ybm.387.1594104637108;
-        Mon, 06 Jul 2020 23:50:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594104637; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp700655lfm;
+        Tue, 7 Jul 2020 00:42:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOKaGsJB0RfyfJFn7jjltk6jqayOxlwFH8WLUCKvWtuxUB7IODKwut4IXZlcX7obTz/Rz/
+X-Received: by 2002:a25:bf8c:: with SMTP id l12mr91357164ybk.447.1594107761158;
+        Tue, 07 Jul 2020 00:42:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594107761; cv=none;
         d=google.com; s=arc-20160816;
-        b=VXWKHxeZdlMbkJgFqiSwbXtrBdQ/E41855oAEjpOiwA9wtu/Jh9Lg+0ay8CvNV/co0
-         2J7T1ujBFtPc3oXMxGw4dyR159oS0bfFHNMZpKznmVTxPn/3h8NhWA7GUkBUi5iVIJKz
-         LcO/Ihmp6+FkgJdtcCqX6/ppcGNcRymqq0EcDyAUY9qKFQJ/q8nQOokabN7p2Jdft/Ff
-         C2w/q1Ff0cF3Dq7o2jpHMtD67Yujv08sU3Y9FbEH5Z24vcu4MN6QcX2IlQcPnkC0QEmX
-         h3iuZAgEFTgYpnLevIlBDIm/ojXryrL8d208G1E1KutbNoPvTWCAFsuw6WcQzru16K3m
-         yUVw==
+        b=mmSSHJKvqI6cg0Lr+k+3WYbznYjLoj5/RzXxMBU29MVaD6RfPfDPN1T3cH+Y+WYSHQ
+         TpzaYL7lrh4NIUJRJZMpuvdHxcgWI3qFmUKyhg6/j9NdxPrVUj44bImllrFsHAC70Dtv
+         yLyXH/qaRU4Cgh+Yqr33ZHMWn6q5stjbo91OPCF6iEhTsowCOuRm97P3VKyOEpW46Mo4
+         ILq+57Jp9OYym+qVGcetLpG0EulWETT7s9xn6QEp3L3kRT4Y5scbhdWAF5FmYAWZ9Yiz
+         OqWRw50pYOnabI/0X2z5K/x5LB0K6w3IPoPOVREEhHjDaXUrKuCYv9dtvMacKVtEgLzg
+         eeUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=0GD/aR7YdYjGqFqj3DhJDszcPCzdEA0c14PN15EmwW8=;
-        b=EeQniMw8h/u2u2h0Lawe+2eaTihPshYkmGASf1TMWwXOXXmFC5dPGjFFAmReEVidpC
-         HKpF2N78IBWYgorsupLnoD4hyw4FeFCxFddmjUKSrihsmLhdup+I4OaBfs0DEFcbVSlj
-         EPBxycC62pN7zswxTsCKbR7cZ3/+9tgiDMtnDrWjL+c2Z8nXQ3+/kbpiSPFYw4YMGSO9
-         sXGw9I74ikhWtWvCgpcP2WDdnOh8PsQh3U1kY3troevomIqjT8w7IZDnF3CNkUFXYi0B
-         TttO3++4DZbc7735iniSRr3u7aiDvvmcqL0YToBRepYPhafA4n/zWUsPMceHc92RlPHW
-         kx6Q==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=zgfF/l/rk7YSQrdjF2U4TIyp5uPO4bxgVF3D6F9XBR4=;
+        b=s8qslIlC5kE0b0NyWLkm8pEEVs+r9QbG2b/WdVK9wOgWl9z2LXd/+ePb2BQbL64RV+
+         4XTfEdnzPuzDOy+pwHkyXpchhF/SleWAbfFNNPnYEiJOoy2RpVofaHwwmH6mi8a7dp5q
+         9Cck4SY+y6f8xXfIjlL2oJkeamVHcRi5k33kqJXYihL8R8uVzV0OCzJ59y7+aQ5NGMU0
+         V0nJbAGvWx66BmwPmZM6efJeDaBRoSPzuHiWnfKEWE7puA2fGaVeZ7NNVYn/jbRdg/HH
+         tBG8ti+z4md5AC7GqDxI4WfXIxR5eFXlQHwpyofkihTOCLzroScgqbiZ7pW+qFiCKipI
+         zDKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ORLc7QjJ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ZIi/WQi/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w6si22085404ybc.441.2020.07.06.23.50.36
+        by mx.google.com with ESMTPS id d189si13227673ybc.197.2020.07.07.00.42.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jul 2020 23:50:37 -0700 (PDT)
+        Tue, 07 Jul 2020 00:42:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ORLc7QjJ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ZIi/WQi/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46682 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:55934 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jshR6-000266-HU
-	for alex.bennee@linaro.org; Tue, 07 Jul 2020 02:50:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39310)
+	id 1jsiFU-0001Hc-FC
+	for alex.bennee@linaro.org; Tue, 07 Jul 2020 03:42:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49062)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pkrempa@redhat.com>)
- id 1jshQc-00024P-LE
- for qemu-arm@nongnu.org; Tue, 07 Jul 2020 02:50:06 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:54136
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pkrempa@redhat.com>)
- id 1jshQa-00014a-OD
- for qemu-arm@nongnu.org; Tue, 07 Jul 2020 02:50:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594104603;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0GD/aR7YdYjGqFqj3DhJDszcPCzdEA0c14PN15EmwW8=;
- b=ORLc7QjJvynCzmByhgEknhE7s/TWXd2KpjkpwOODYAYtse0l4785RpzAHWC1IrifEEsczn
- SMnVD/m905rfGyu9ZlqPmwZ2SwH2kPC2ZR52ALcsbB5aWBoTDtyUce2W/dUGJtGUEgglTa
- wKUly+A6N2sOjmBu25pWudffI0xFWb0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-310-rdi-f3QIOkykAbFaGVa3yg-1; Tue, 07 Jul 2020 02:50:02 -0400
-X-MC-Unique: rdi-f3QIOkykAbFaGVa3yg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BADD9107ACCA;
- Tue,  7 Jul 2020 06:50:00 +0000 (UTC)
-Received: from angien.pipo.sk (unknown [10.40.208.29])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D8F40B3A65;
- Tue,  7 Jul 2020 06:49:54 +0000 (UTC)
-Date: Tue, 7 Jul 2020 08:49:51 +0200
-From: Peter Krempa <pkrempa@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [RFC PATCH 2/2] hw/sd/sdcard: Deprecate the SPI mode
-Message-ID: <20200707064951.GC9048@angien.pipo.sk>
-References: <20200705220731.28101-1-f4bug@amsat.org>
- <20200705220731.28101-3-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <erik.lucas.smit@gmail.com>)
+ id 1jsiFM-0001HQ-RH; Tue, 07 Jul 2020 03:42:32 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:44659)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <erik.lucas.smit@gmail.com>)
+ id 1jsiFL-00013n-Ak; Tue, 07 Jul 2020 03:42:32 -0400
+Received: by mail-ot1-x342.google.com with SMTP id 5so31626021oty.11;
+ Tue, 07 Jul 2020 00:42:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=zgfF/l/rk7YSQrdjF2U4TIyp5uPO4bxgVF3D6F9XBR4=;
+ b=ZIi/WQi/kJgOTXwWCqw/uXrnv5NumG6M8oBE1ogTVeQjXHAsrO6/9hCEieP+byHPfi
+ X2zkzqd9HX3xwhapVHKZzAzLqCx366na34Nf/F9zdnetGpGAdKCVCC9pjbPDCslnSo4f
+ xQsfvQqvDoPKtMa8yvVPiBtEAETz6HmPxNszwz6H4yi8Ta1iiPhHWkoRG1lnSs07WACH
+ Y9tbUE7f5RHkl38W+kSMziCRLIXWi7zDta8jAr430yLBOQ2EAnB1/r+NBcaUlc+NasKK
+ qE4piQYO69bibqSD+tF8MeQEORZuVKhw2eTGBuvEDTbRN1trNn3GNjtyI+ykGx1P2L0e
+ rnpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=zgfF/l/rk7YSQrdjF2U4TIyp5uPO4bxgVF3D6F9XBR4=;
+ b=Rr4YuoJA/r4pvwVBxclZ/mcsxMEb0Y9qWnJbV1ojTDGj5M7ncgUelSXl8Y+y/YsQxi
+ tGj0g2oZ1i1tHUWKDG6OmCDOoPfQh3dPupQG+A0rTaNqYMv5o8EneTpzcISngpK7GXvN
+ yc+/sfxt0Re24L6JJcSrWatO/Y48rcJS5OzkJ5iqXzTCudzpB6GqOeg4FfJx/WPuJfln
+ Q8iHTqYfR5T4ZZNfAPW0AzIAZgjwFRfpWyqoV93a3IcbTRkTFKBstX830ITZ+LzU8kcp
+ vNyHjg0Ds0olEEFhCaYPqwlZxttw8ZsvQm4JuGA5GRKQGm4iiM9eT/sAgzz+lrRtyL3U
+ bn3Q==
+X-Gm-Message-State: AOAM530qvpfoauCgnI40eJgw8qKJGApWiB7GJDgefI68OggTJS4uRpmE
+ xZcjyn+7NxqpZUjyQN3eJWCtgETAPfqEyUsVCCo=
+X-Received: by 2002:a9d:2067:: with SMTP id n94mr47106651ota.78.1594107748832; 
+ Tue, 07 Jul 2020 00:42:28 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200705220731.28101-3-f4bug@amsat.org>
-X-PGP-Key-ID: 0xD018682B
-X-PGP-Key-Fingerprint: D294 FF38 A6A2 BF40 6C75  5DEF 36EC 16AC D018 682B
-User-Agent: Mutt/1.14.3 (2020-06-14)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pkrempa@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=pkrempa@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/06 23:10:26
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+References: <20200628142658.29264-1-erik.lucas.smit@gmail.com>
+ <df64d8de-9d7f-474b-8b72-5d2e6c7df1f4@www.fastmail.com>
+In-Reply-To: <df64d8de-9d7f-474b-8b72-5d2e6c7df1f4@www.fastmail.com>
+From: Erik Smit <erik.lucas.smit@gmail.com>
+Date: Tue, 7 Jul 2020 09:42:19 +0200
+Message-ID: <CA+MHfovCuasf4RrfZrJwfHx4VOeRNfQ=MTMaFG4=Df8cELZ=EA@mail.gmail.com>
+Subject: Re: [PATCH v2] ftgmac100: fix dblac write test
+To: Andrew Jeffery <andrew@aj.id.au>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
+ envelope-from=erik.lucas.smit@gmail.com; helo=mail-ot1-x342.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=_AUTOLEARN
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -120,41 +109,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <huth@tuxfamily.org>,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- libvir-list@redhat.com, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ Cameron Esfahani via <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JFH8+XYFztaC
+X-TUID: h1nVTOEd1eG/
 
-On Mon, Jul 06, 2020 at 00:07:31 +0200, Philippe Mathieu-Daudé wrote:
-> SD cards be used with SPI, SD or MMC protocol.
-> 
-> Unfortunately, maintaining the SPI protocol make improving the
-> MMC mode very difficult. As of 2020 users are more interested
-> in using cards with the MMC protocol.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  docs/system/deprecated.rst | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
-> index 5e67d7f3e0..01dca3d038 100644
-> --- a/docs/system/deprecated.rst
-> +++ b/docs/system/deprecated.rst
-> @@ -384,6 +384,11 @@ full SCSI support.  Use virtio-scsi instead when SCSI passthrough is required.
->  Note this also applies to ``-device virtio-blk-pci,scsi=on|off``, which is an
->  alias.
->  
-> +``-device sd-card,spi=on`` (since 5.1)
-> +^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> +
-> +The SPI mode of the 'sd-card' device is deprecated.
+Hi Andrew,
 
-libvirt didn't implement this knob so it's okay to remove it without
-replacement.
+On Mon, 6 Jul 2020 at 03:59, Andrew Jeffery <andrew@aj.id.au> wrote:
+> On Sun, 28 Jun 2020, at 23:56, erik-smit wrote:
+> > The test of the write of the dblac register was testing the old value
+> > instead of the new value. This would accept the write of an invalid value
+> > but subsequently refuse any following valid writes.
+> >
+> > Signed-off-by: erik-smit <erik.lucas.smit@gmail.com>
+> > ---
+> > Changes since v1:
+> >
+> > Changed %ld to HWADDR_PRIx to fix building on mingw
+>
+> Bit of a nitpick, but the type of the value argument is uint64_t, so shouldn't
+> the result of the expression captured by FTGMAC100_DBLAC_TXDES_SIZE() and
+> FTGMAC100_DBLAC_RXDES_SIZE() be printed with a straight PRIx64 rather than
+> HWADDR_PRIx?
 
-ACKed-by: Peter Krempa <pkrempa@redhat.com>
+You are correct. I didn't understand the meaning of the PRI macros and
+just grabbed the other PRI macro I saw getting used in the file.
 
+-- 
+Best regards,
 
+Erik Smit

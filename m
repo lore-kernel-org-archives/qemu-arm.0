@@ -1,222 +1,152 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp848698lfm;
-        Wed, 8 Jul 2020 16:02:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJys/GqOiv6JnlS31+CGo96hTIIzDYSdVEnalA1j2oRQq0rEFKmQSDJMV1Z8f1pTlKSkuKgP
-X-Received: by 2002:a25:cc4e:: with SMTP id l75mr7846601ybf.377.1594249357811;
-        Wed, 08 Jul 2020 16:02:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594249357; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp870484lfm;
+        Wed, 8 Jul 2020 16:37:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJylbOaqCuG2lfqx35jpXo0YTGzgO9EUesokw4WWgh1Hv8UpC3uoMRpe1FPgyUGENrQWrzbv
+X-Received: by 2002:a25:c712:: with SMTP id w18mr7257930ybe.127.1594251438311;
+        Wed, 08 Jul 2020 16:37:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594251438; cv=none;
         d=google.com; s=arc-20160816;
-        b=XSaxev8ChkKXLbySQlSZ3HS1fdPBbuaXN1XmDU31GF0D+GegkhVAKf8/8lk1OoMRZr
-         /NaefVuMffdg6EuDiy392nVNcEzZlKbWxNGQa/yVsNUoP225BUFWQvH/Wu06qc0DFq7e
-         56oJpNlCWEDVR1KkxagLEglL5VWlnLvRfE8NGaBz9Utq5FBmokM4ybK4SM9NzW3ftNe5
-         Zd2ghwkqtYs3J5F+5dHAHkjn8csKK2tj5Df53LuP6wKHOJjbt701xOZAhbvSVaeunlHs
-         9iCUSGI4UzS7MW3D+WUtavvIJ6JX3gK07CVKvqmJyo/34OdvPb78pQxsC+HEHRSiKtME
-         YfSg==
+        b=rQ56n8EAy0bQjiiB2GNf9rqKBqUvoJ7AjLSSL6O1DSqgLGlIYu7hkS0qr1tj0f/ss8
+         E0FWnhTnLKUvhzKS4avTDEkxSt+cFZFNE8TJpLotctCzT0x+M4CUyW64JQO5PfTSc49Y
+         rv64TXFAbAZvI7enOA5TT8hq7T9W2C05t+E72GyW0muPXkFDwR4bFHl0Z2aIqhiW9dEo
+         Lkd3ZGR+VAcoKiof2uGnswzjxzilq5W2phsBgsmX4SGxadhJHlc0HJmHkV66KIxkAIK6
+         exhX2e1PdRJokOPuaT+1CDchMLbu7l+Zhz8jhSHACciZAiddx9xgPU1Qf66GfB6uKNz5
+         brfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=HN2Tg6cktWjfVh/Lr05cfnKD1TEiS0BORvWfwZryVgo=;
-        b=O2vxEKyPj8nT6Hmw7rSiVMy8KlMx2VdwakPu5k/Ta/rA3sohYTyJ+e6DjmKVRDTJwf
-         UtZV2Ltg1iHg8ZUKTRHD4JxmhfFbHRnqU/YUPZGpbQXImvDT+EF/hzC90hfI+JXleRHZ
-         oveFT4gRfiIVaKRR8JO1VvgryUut360Ti4h4/63eqN/FpcNC+As9BOlHX7S6S+bkSjxL
-         Qo9BOzYKTKFWCj0HxD7BWtYTwIKwDz4zirOhH1K546fMKb8XV5YKfHt3GZbABKI62roZ
-         iGnWNAwwpXdLAtJ/dIUyACoyGYkJODjHb4HdmOdtN5PGvs24LSJq0qep2deggfs0uVhB
-         bEaw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=WceBtQWSpGLTKnkZN5L7rcXzyOV0jJpQGsWGP7upb1c=;
+        b=KYW29Qt+mN+YKFSrplBXLK/n2szvkOZECycKoZ92ezCMj9S5C8K94Dzw/1L3OiHvKA
+         G0HhVPfQctUOpEOMwjLU0jK9SVA2Gjf72wDRDATmj0DjlWlKK8MvxPA2t/uxNiVnk/tb
+         3lelQgA+UVOH6qC4IH75ZHhtko6J3HdTeQiBmHAbAhkEPdurrem8GuwQY1+jIYIlVKhi
+         xAjBzWpaU8hAIQ6E66FcFCAgVoI1Gw+/ZrGLqow+i0jQCK98Vg02IF0dx0BSYeDqEFpC
+         mqx6ORHKmGYPlulB9U8mNj8G6vkfgNPayEC5/NgxubJPBtX6i+77+5CluDYHOBNdEQCv
+         yWyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NTorpSTb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Rgh45eAc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t7si927835ybl.92.2020.07.08.16.02.37
+        by mx.google.com with ESMTPS id n184si1067869ybc.403.2020.07.08.16.37.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jul 2020 16:02:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 08 Jul 2020 16:37:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NTorpSTb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49916 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Rgh45eAc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56298 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtJ5J-0007wP-6o
-	for alex.bennee@linaro.org; Wed, 08 Jul 2020 19:02:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49016)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jtJcr-0007sI-Iz
+	for alex.bennee@linaro.org; Wed, 08 Jul 2020 19:37:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37190)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jtISD-00033o-FE
- for qemu-devel@nongnu.org; Wed, 08 Jul 2020 18:22:13 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:30966
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1jtISB-00019V-5v
- for qemu-devel@nongnu.org; Wed, 08 Jul 2020 18:22:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594246930;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HN2Tg6cktWjfVh/Lr05cfnKD1TEiS0BORvWfwZryVgo=;
- b=NTorpSTblKHM8Oc+jIpcreSYc4XZApD+3jK6F54jbANWCj1ezq40nbgSkvIuTbU9Lil7jz
- WNL6+IeuW4v+ZCdZ4Uk1D0sMm/WguWmW13qr15hmkpA2ryF8LaEP2WHK4vruI/QICV1ykc
- zFZdxUB7Bi7qxQ+AgQGa9vgmQY3iSgk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-73-PztY1n_iPCmW6xQNX9ax7g-1; Wed, 08 Jul 2020 10:19:50 -0400
-X-MC-Unique: PztY1n_iPCmW6xQNX9ax7g-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2E2211005504;
- Wed,  8 Jul 2020 14:19:49 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-113-241.ams2.redhat.com [10.36.113.241])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0D8185BAC3;
- Wed,  8 Jul 2020 14:19:37 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, peterx@redhat.com
-Subject: [PATCH v3 06/11] hw/arm/smmuv3: Introduce smmuv3_s1_range_inval()
- helper
-Date: Wed,  8 Jul 2020 16:18:51 +0200
-Message-Id: <20200708141856.15776-7-eric.auger@redhat.com>
-In-Reply-To: <20200708141856.15776-1-eric.auger@redhat.com>
-References: <20200708141856.15776-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jtJcj-0007s3-Gv
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2020 19:37:09 -0400
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:47067)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1jtJch-0002Lv-O0
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2020 19:37:09 -0400
+Received: by mail-pf1-x444.google.com with SMTP id i14so151990pfu.13
+ for <qemu-arm@nongnu.org>; Wed, 08 Jul 2020 16:37:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=WceBtQWSpGLTKnkZN5L7rcXzyOV0jJpQGsWGP7upb1c=;
+ b=Rgh45eAczmk8THU3qInwYBRNdnG0PqDKJkOiTlJSesM0w4usRXwVVeTOS9Yfdv12JE
+ EJi2h/uXPskS9AFHT4IS8MYdVf2NF38IXC2brDe7WwccbODCVgFHV8KFuwBazSYqq+r6
+ lFDtkgeuYjsiDGTeFHvFyXYquK901mddzpIrxak0Six0Ic0QNaXTe42tpMxQlTYq80vk
+ 12cA+4rSgBK/AJCSVE7eiUhWaF+ja/pNWX3xncqRP34pibgOIfQmxL0/kU2N00oxY+l1
+ lQjW1P0sj1pAOSsrHLvuDtSOrTkKIguY2nChXrXO+NPgMDWlcPWHohH8P6tClUJW+lnc
+ TEUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=WceBtQWSpGLTKnkZN5L7rcXzyOV0jJpQGsWGP7upb1c=;
+ b=YH4rtJr6/yXv0kBM74twmjfAl2RFkUyiHth4DnyyO1HDuxeIW+4+VZ+R7TKmQapvfA
+ /UX/zGKfMvcMCnlBRLXtSHr5PR1ipWf9FDnrIA5hUiVWTCBWMgMdCGX+Jk+WCBtHFSN3
+ QxOH6xcETNh8o+jXgMCH9KMJ7GNjrqKyREZ5rbwr6enkEoLuzSJZvLDIQyDw4QLiu24z
+ 69qu3QCwy58WjTRoabvHP/KcV0CraJIvr+WWeGq8iiQHzYB5xagkJMhnuVD7laUHIt4v
+ DTPUHo6Y2DyNlQxz5K7CzfEduVfR03dgTZOCr/ePNSk68UX+0sVL5cr78c2RhnuDAJza
+ NdUg==
+X-Gm-Message-State: AOAM530wh/RciFe96nBC6la3tqT1ciAL1191O36qX6Hlp97jpWpxRy9h
+ hRCdSzQJDAFD8MB+061UVKiBYw==
+X-Received: by 2002:a63:371c:: with SMTP id e28mr50934365pga.114.1594251426167; 
+ Wed, 08 Jul 2020 16:37:06 -0700 (PDT)
+Received: from [192.168.7.121] (24-113-145-216.wavecable.com. [24.113.145.216])
+ by smtp.gmail.com with ESMTPSA id gx23sm532481pjb.39.2020.07.08.16.37.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 Jul 2020 16:37:05 -0700 (PDT)
+Subject: Re: [PATCH 0/7] misc: Reduce QEMUTimer pressure by using lower
+ precision when possible
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200616075121.12837-1-f4bug@amsat.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <fd72928d-04ce-6562-39cd-6f3902b49ee6@linaro.org>
+Date: Wed, 8 Jul 2020 16:37:02 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <20200616075121.12837-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/07 17:25:10
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x444.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: jean-philippe@linaro.org, robh@kernel.org, robin.murphy@arm.com,
- mst@redhat.com, zhangfei.gao@foxmail.com, shameerali.kolothum.thodi@huawei.com,
- will@kernel.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9gwiqzNvVqvj
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, Corey Minyard <minyard@acm.org>,
+ David Hildenbrand <david@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VdJn7IAQnj41
 
-Let's introduce an helper for S1 IOVA range invalidation.
-This will be used for NH_VA and NH_VAA commands. It decodes
-the same fields, trace, calls the UNMAP notifiers and
-invalidate the corresponding IOTLB entries.
+On 6/16/20 12:51 AM, Philippe Mathieu-Daudé wrote:
+> This series contains few patches resulting from the notes I
+> took while reviewing Mark ADB series last Sunday, in particular:
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg712078.html
+> 
+> I have another patch for hw/input/hid.c but I prefer to hold it
+> to test it more.
 
-At the moment, we do not support 3.2 range invalidation yet.
-So it reduces to a single IOVA invalidation.
+How does this reduce pressure?  The resolution of the timer doesn't seem to be
+affected by these patches, only the precision of the inputs.
 
-Note the leaf bit now is also decoded for the CMD_TLBI_NH_VAA
-command. At the moment it is only used for tracing.
+It seems like standardizing on nanoseconds makes some things easier, and allows
+the resolution of the implementation to vary to a much larger degree.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
----
-
-v1 -> v2:
-- added comment about leaf bit and added Peter's R-b
----
- hw/arm/smmuv3.c     | 36 +++++++++++++++++-------------------
- hw/arm/trace-events |  3 +--
- 2 files changed, 18 insertions(+), 21 deletions(-)
-
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index b717bde832..e4a2cea7ad 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -836,6 +836,22 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, dma_addr_t iova)
-     }
- }
- 
-+static void smmuv3_s1_range_inval(SMMUState *s, Cmd *cmd)
-+{
-+    dma_addr_t addr = CMD_ADDR(cmd);
-+    uint8_t type = CMD_TYPE(cmd);
-+    uint16_t vmid = CMD_VMID(cmd);
-+    bool leaf = CMD_LEAF(cmd);
-+    int asid = -1;
-+
-+    if (type == SMMU_CMD_TLBI_NH_VA) {
-+        asid = CMD_ASID(cmd);
-+    }
-+    trace_smmuv3_s1_range_inval(vmid, asid, addr, leaf);
-+    smmuv3_inv_notifiers_iova(s, asid, addr);
-+    smmu_iotlb_inv_iova(s, asid, addr);
-+}
-+
- static int smmuv3_cmdq_consume(SMMUv3State *s)
- {
-     SMMUState *bs = ARM_SMMU(s);
-@@ -966,27 +982,9 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-             smmu_iotlb_inv_all(bs);
-             break;
-         case SMMU_CMD_TLBI_NH_VAA:
--        {
--            dma_addr_t addr = CMD_ADDR(&cmd);
--            uint16_t vmid = CMD_VMID(&cmd);
--
--            trace_smmuv3_cmdq_tlbi_nh_vaa(vmid, addr);
--            smmuv3_inv_notifiers_iova(bs, -1, addr);
--            smmu_iotlb_inv_iova(bs, -1, addr);
--            break;
--        }
-         case SMMU_CMD_TLBI_NH_VA:
--        {
--            uint16_t asid = CMD_ASID(&cmd);
--            uint16_t vmid = CMD_VMID(&cmd);
--            dma_addr_t addr = CMD_ADDR(&cmd);
--            bool leaf = CMD_LEAF(&cmd);
--
--            trace_smmuv3_cmdq_tlbi_nh_va(vmid, asid, addr, leaf);
--            smmuv3_inv_notifiers_iova(bs, asid, addr);
--            smmu_iotlb_inv_iova(bs, asid, addr);
-+            smmuv3_s1_range_inval(bs, &cmd);
-             break;
--        }
-         case SMMU_CMD_TLBI_EL3_ALL:
-         case SMMU_CMD_TLBI_EL3_VA:
-         case SMMU_CMD_TLBI_EL2_ALL:
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index f74d3e920f..c219fe9e82 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -45,8 +45,7 @@ smmuv3_cmdq_cfgi_ste_range(int start, int end) "start=0x%d - end=0x%d"
- smmuv3_cmdq_cfgi_cd(uint32_t sid) "streamid = %d"
- smmuv3_config_cache_hit(uint32_t sid, uint32_t hits, uint32_t misses, uint32_t perc) "Config cache HIT for sid %d (hits=%d, misses=%d, hit rate=%d)"
- smmuv3_config_cache_miss(uint32_t sid, uint32_t hits, uint32_t misses, uint32_t perc) "Config cache MISS for sid %d (hits=%d, misses=%d, hit rate=%d)"
--smmuv3_cmdq_tlbi_nh_va(int vmid, int asid, uint64_t addr, bool leaf) "vmid =%d asid =%d addr=0x%"PRIx64" leaf=%d"
--smmuv3_cmdq_tlbi_nh_vaa(int vmid, uint64_t addr) "vmid =%d addr=0x%"PRIx64
-+smmuv3_s1_range_inval(int vmid, int asid, uint64_t addr, bool leaf) "vmid =%d asid =%d addr=0x%"PRIx64" leaf=%d"
- smmuv3_cmdq_tlbi_nh(void) ""
- smmuv3_cmdq_tlbi_nh_asid(uint16_t asid) "asid=%d"
- smmuv3_config_cache_inv(uint32_t sid) "Config cache INV for sid %d"
--- 
-2.21.3
-
+r~

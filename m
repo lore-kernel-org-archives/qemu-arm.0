@@ -1,254 +1,247 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1363151lfm;
-        Tue, 7 Jul 2020 15:38:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxcpwMO7MYr9kxaqNi4FFrCQ3r4rdqLVkko7UARI5hG1GR3RF9+tEgyJiwUNBQjVPJw9IKO
-X-Received: by 2002:a25:cac2:: with SMTP id a185mr3565733ybg.318.1594161492010;
-        Tue, 07 Jul 2020 15:38:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594161492; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp642208lfm;
+        Wed, 8 Jul 2020 10:56:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxIJvI/IsgNgY4anMhXNockF/4PqtSHnLmLwdHhW0aw1qbnLh/GTHOOvU6vrZmJqismZdr9
+X-Received: by 2002:a25:24b:: with SMTP id 72mr39304015ybc.12.1594231010638;
+        Wed, 08 Jul 2020 10:56:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594231010; cv=none;
         d=google.com; s=arc-20160816;
-        b=BawUOy2yEWE7oL6WKsjfSFQf2rJlaiTosCj6Dz/jfCaNyO6ukBjxrJV7tKFIlXEkM8
-         MW5BlwNoXob13FuGhoW9jqKowPyeE8v8Kt7WqGTLMnAqpVlXIJoDqp30oNd56zYjGyU9
-         awHE0+pWoPYtCN97PR444x5xUC5/pxQaF6dd176+u2iUseKUV4yHyp8+SfGk6JA6Xi6O
-         HlWnKCp7BkRzl2FjJqqDFuzwUi5cN79pCauF+CXnaUzRS+KlAOQLojZzUrZMYzv9ZVPR
-         cIOazS4weXNGR+90et6YlJ4KhX3UGDhEhRBGW2fWmP7nbwyuoV5TsAzgVNsnoQRqrty3
-         1Mag==
+        b=nOhI5gmB9i6Oqh0DjzCOyIVjjo96dSDVLlBMEmYXQ9mDmL7I8IXn+AyA0jae5lL1WW
+         Oz/bTd4qSzYyEJT0Vne6bf2GVffO38ASPq6YaT1WHgW2Gciwx4mNFVrq74RiHStJ5b6P
+         Tp0k0JWMxqGA8porSd2PDxx42EmPGcABbuV2ZlfkqyRP6wN5XAcnbYDe+uqg6oE6EZY3
+         KMajtdScH8A0hb+EXJYC1B6Nw/QGZk0aCjxOtHDgWIGL/lFgle7Js7bqgvEyhiJ/DnKb
+         YADXIoXKsXwPVOnrjo3019DAjrjuwPyXI72ZT05XpRb/hpX1KNC6t5wAKojHpYNbKnpj
+         os9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=v7IrMikX7RIxM1uA8GbKKE22do9ec3iqS+dPAZ6bDdo=;
-        b=j9N6IIS2PFPTL8ITCy3edRDLLYjiI4kU9GBA8Drftz5BxUOplkop5aqPKPrzq6Qh8u
-         pFSa1xl4Yx/C8Tr/g2X6qOtZSc0YFdN1vf0AUee9wLRhSegev9SIwKDeFG6euqyKSKzQ
-         y/oobKyzOHUDxpPJBR4bqWOzBB1ISbSW+VhjsFSxHPBjByV6trcsI4UxohFlWkPCZ1BF
-         rCCq/WXa4gECYfEvuHSTOtYGaWxg36LFjfx9VKDugMccximjDFzymh7cMjUDi9S+27Xq
-         nOHUne7lU9KLYmbIBhfTbXbX8jW1s+791lRIkO57LPNU753PVtp72zyIajrIk8P7YnGE
-         Q7ww==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:references:to:from:subject:dkim-signature;
+        bh=U22wiPzF5RU+s2ekAx6AOl4uGlWcRAb453GfD82ZKhI=;
+        b=GDbMQhmm9yqGhqlH7Fqvb6oE/qSSlewBE0Buv2Kf9FgO7WTOJ1JOTaPQgNUuhuCQR9
+         44JwcB8iU+t/yozoIw1sPtQFWzQ4gbcG22+RwQsl2xITNrvsmSWq/zPVcSTyS/uAJqo4
+         6ICFJM8z3YIgiVXPvGQNf2mbOM4iQasqkMQ/vmcbjzdVafLLPUe95dvrCkz69rZ2w0Jh
+         rlcnW986f5YxrP4MWSmq2MIQuE8sIvBPzWI0nuvAiMXO4nPctqR4+BSpJd6z6f9ZjbiP
+         VE2YcX0N05tVTbKj2jyuDHRyli1c4V0NixWgfkOG83Llpa14pioWgpbjnWeFJILR+0Ae
+         lQ+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r2Z4Wr7X;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o191si23763502ybc.374.2020.07.07.15.38.11
+        by mx.google.com with ESMTPS id l18si337645ybk.457.2020.07.08.10.56.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jul 2020 15:38:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 08 Jul 2020 10:56:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39570 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r2Z4Wr7X;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:35924 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jswE7-0003PE-EA
-	for alex.bennee@linaro.org; Tue, 07 Jul 2020 18:38:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54708)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jtEJO-0005FC-1P
+	for alex.bennee@linaro.org; Wed, 08 Jul 2020 13:56:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39224)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhiwei_liu@c-sky.com>)
- id 1jswDS-0002yH-Md; Tue, 07 Jul 2020 18:37:30 -0400
-Received: from mail142-1.mail.alibaba.com ([198.11.142.1]:23391)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhiwei_liu@c-sky.com>)
- id 1jswDP-000593-BC; Tue, 07 Jul 2020 18:37:30 -0400
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.9109071|0.8101484; CH=green;
- DM=|SPAM|false|; DS=CONTINUE|ham_regular_dialog|0.0483645-0.000218332-0.951417;
- FP=0|0|0|0|0|-1|-1|-1; HT=e01a16367; MF=zhiwei_liu@c-sky.com; NM=1; PH=DS;
- RN=4; RT=4; SR=0; TI=SMTPD_---.HzsBShv_1594157819; 
-Received: from 192.168.3.18(mailfrom:zhiwei_liu@c-sky.com
- fp:SMTPD_---.HzsBShv_1594157819)
- by smtp.aliyun-inc.com(10.147.42.135);
- Wed, 08 Jul 2020 05:37:00 +0800
-Subject: Re: [PATCH v2 000/100] target/arm: Implement SVE2
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-References: <20200618042644.1685561-1-richard.henderson@linaro.org>
-From: LIU Zhiwei <zhiwei_liu@c-sky.com>
-Message-ID: <fe439285-e68a-2fbb-1ad2-153a00ddce3a@c-sky.com>
-Date: Wed, 8 Jul 2020 05:36:59 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jtEJA-0005EH-Jt; Wed, 08 Jul 2020 13:56:36 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:37666)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jtEJ7-0000ES-84; Wed, 08 Jul 2020 13:56:36 -0400
+Received: by mail-wr1-x443.google.com with SMTP id a6so49932164wrm.4;
+ Wed, 08 Jul 2020 10:56:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:from:to:cc:references:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=U22wiPzF5RU+s2ekAx6AOl4uGlWcRAb453GfD82ZKhI=;
+ b=r2Z4Wr7X8gfFC1/cRRJAelXMyipOkpKqLZiiPdq4DJxeBAZxVywTm/rk8P7mmV+QYd
+ SQL8Tuqmao2lS40+2ET+boBL2Uy7okY3h+HX5g3HlL23X+/ZXbLD7mONnXsuabOdqkGt
+ R+AA8/kP7sXzue5BxIie3Tf/tOCWtWsF6QWrP/y152QxtZIkkpZ3XwFtU6Z8RXEM+noy
+ 496zBLMD4eI+AuaFIlba0EM6KcROZsFYeIsRD4eJVlqCuCPo9O4Npf4V1kUjAld8NRlu
+ GrMHQiG5U8yiEX2DLQglR4eFW+oQpQKMtR+wCBF9/CSem5IffF+xvVnYWsjkUkFbFVMl
+ ounw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:from:to:cc:references:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=U22wiPzF5RU+s2ekAx6AOl4uGlWcRAb453GfD82ZKhI=;
+ b=AdmiFTPeJ242DLFA1/g8Sf76Bh6xPDcCY3iNm8MSpG1s0Dw1P9HVwicOAMQx8bzH5F
+ MBnjKmtKKji797k6H9Nf1ZssAkzDhhszTxsEKlpKlshp/5FjN2Ij9dXnW1cZ2iM/VA6Q
+ DdpqNc3Py0qADx7Kjk6eXvDlJkwG67m8WPN/Ka9eM5HI5IE5yj3Qt982VnIcwsPKsL3J
+ LFCJ5Q6Eac4s5UfHbaAvXKJgJtEiSYRS0xoGPy7jcJMqdTByI6p9rU/aqLydLmnatpak
+ pEljlxnGZwXX5giUsJ4udbz8omAUs6syCsfGTSJMJghsbyZA1XXDAV9IX222KUjhY+Nr
+ Nsog==
+X-Gm-Message-State: AOAM533I/2mYsQSoXBYYJ1o/QPvfo0CTUDmMk++clktOmzlL1pM/5+zQ
+ OHV2ntxbN7oUV8OvdN9GKWM=
+X-Received: by 2002:a5d:4903:: with SMTP id x3mr63261187wrq.351.1594230991418; 
+ Wed, 08 Jul 2020 10:56:31 -0700 (PDT)
+Received: from [192.168.1.36] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id w16sm1303673wrg.95.2020.07.08.10.56.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 Jul 2020 10:56:30 -0700 (PDT)
+Subject: Re: [PATCH v4 05/12] hw/arm: Add NPCM730 and NPCM750 SoC models
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: Havard Skinnemoen <hskinnemoen@google.com>, peter.maydell@linaro.org
+References: <20200707184730.3047754-1-hskinnemoen@google.com>
+ <20200707184730.3047754-6-hskinnemoen@google.com>
+ <4b7130f2-032c-3067-b2b6-876a2b17b707@amsat.org>
+Autocrypt: addr=f4bug@amsat.org; keydata=
+ mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
+ u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
+ HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
+ YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
+ ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
+ dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
+ ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
+ Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
+ HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
+ Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
+ klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
+ jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
+ 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
+ loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
+ sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
+ JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
+ 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
+ K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
+ n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
+ CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
+Message-ID: <2d1e272b-6575-30df-22ff-5d720973951d@amsat.org>
+Date: Wed, 8 Jul 2020 19:56:30 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200618042644.1685561-1-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <4b7130f2-032c-3067-b2b6-876a2b17b707@amsat.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Received-SPF: none client-ip=198.11.142.1; envelope-from=zhiwei_liu@c-sky.com;
- helo=mail142-1.mail.alibaba.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/07 18:15:39
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, steplong@quicinc.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EbhyApbBEfPk
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: kfting@nuvoton.com, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Avi.Fishman@nuvoton.com, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +6FsNtrwK72u
 
+On 7/8/20 7:31 PM, Philippe Mathieu-Daudé wrote:
+> Hi Havard,
+> 
+> On 7/7/20 8:47 PM, Havard Skinnemoen wrote:
+>> The Nuvoton NPCM7xx SoC family are used to implement Baseboard
+>> Management Controllers in servers. While the family includes four SoCs,
+>> this patch implements limited support for two of them: NPCM730 (targeted
+>> for Data Center applications) and NPCM750 (targeted for Enterprise
+>> applications).
+>>
+>> This patch includes little more than the bare minimum needed to boot a
+>> Linux kernel built with NPCM7xx support in direct-kernel mode:
+>>
+>>   - Two Cortex-A9 CPU cores with built-in periperhals.
+>>   - Global Configuration Registers.
+>>   - Clock Management.
+>>   - 3 Timer Modules with 5 timers each.
+>>   - 4 serial ports.
+>>
+>> The chips themselves have a lot more features, some of which will be
+>> added to the model at a later stage.
+[...]
 
-On 2020/6/18 12:25, Richard Henderson wrote:
-> I know this patch set is too big, and that there are parts that
-> can be split out that are prepatory rather that specifically sve2.
->
-> It's also not 100% tested.  I have done some amount of testing
-> vs ArmIE, but because of bugs and missing features therein, that
-> testing has been somewhat limited.  I understand a new version
-> of FVP has just been release containing SVE2 support, but I have
-> not yet tried that.
->
-> However, I believe this finally contains all of the instructions
-> in sve2 and its optional extensions.  Excluding BFloat16, since
-> that extension is supposed to implement AdvSIMD at the same time.
-Hi Richard,
+>> +static void npcm7xx_realize(DeviceState *dev, Error **errp)
+>> +{
+>> +    NPCM7xxState *s = NPCM7XX(dev);
+>> +    NPCM7xxClass *nc = NPCM7XX_GET_CLASS(s);
+>> +    Error *err = NULL;
+>> +    int i;
+>> +
+>> +    /* I/O space -- unimplemented unless overridden below. */
+>> +    create_unimplemented_device("npcm7xx.io", NPCM7XX_MMIO_BA, NPCM7XX_MMIO_SZ);
+> 
+> I still insist this is not the best, but as "The data sheet for these
+> SoCs is not generally available" there is not much I can suggest to
+> improve.
 
-I try to merge this patch set to master branch. As some MTE instructions 
-have been merged after this patch set,
-it can't be merged now.
+From your other comment I found:
 
-Would you mind to rebase it to master branch and send the patch set again?
+https://github.com/Nuvoton-Israel/bootblock/blob/master/SWC_HAL/Chips/npcm750/npcm750.h
 
-Best Regards,
-Zhiwei
->
-> r~
->
->
-> Richard Henderson (81):
->    tcg: Save/restore vecop_list around minmax fallback
->    qemu/int128: Add int128_lshift
->    target/arm: Split out gen_gvec_fn_zz
->    target/arm: Split out gen_gvec_fn_zzz, do_zzz_fn
->    target/arm: Rearrange {sve,fp}_check_access assert
->    target/arm: Merge do_vector2_p into do_mov_p
->    target/arm: Clean up 4-operand predicate expansion
->    target/arm: Use tcg_gen_gvec_bitsel for trans_SEL_pppp
->    target/arm: Split out gen_gvec_ool_zzzp
->    target/arm: Merge helper_sve_clr_* and helper_sve_movz_*
->    target/arm: Split out gen_gvec_ool_zzp
->    target/arm: Split out gen_gvec_ool_zzz
->    target/arm: Split out gen_gvec_ool_zz
->    target/arm: Add ID_AA64ZFR0 fields and isar_feature_aa64_sve2
->    target/arm: Enable SVE2 and some extensions
->    target/arm: Implement SVE2 Integer Multiply - Unpredicated
->    target/arm: Implement SVE2 integer pairwise add and accumulate long
->    target/arm: Implement SVE2 integer unary operations (predicated)
->    target/arm: Split out saturating/rounding shifts from neon
->    target/arm: Implement SVE2 saturating/rounding bitwise shift left
->      (predicated)
->    target/arm: Implement SVE2 integer halving add/subtract (predicated)
->    target/arm: Implement SVE2 integer pairwise arithmetic
->    target/arm: Implement SVE2 saturating add/subtract (predicated)
->    target/arm: Implement SVE2 integer add/subtract long
->    target/arm: Implement SVE2 integer add/subtract interleaved long
->    target/arm: Implement SVE2 integer add/subtract wide
->    target/arm: Implement SVE2 integer multiply long
->    target/arm: Implement PMULLB and PMULLT
->    target/arm: Tidy SVE tszimm shift formats
->    target/arm: Implement SVE2 bitwise shift left long
->    target/arm: Implement SVE2 bitwise exclusive-or interleaved
->    target/arm: Implement SVE2 bitwise permute
->    target/arm: Implement SVE2 complex integer add
->    target/arm: Implement SVE2 integer absolute difference and accumulate
->      long
->    target/arm: Implement SVE2 integer add/subtract long with carry
->    target/arm: Implement SVE2 bitwise shift right and accumulate
->    target/arm: Implement SVE2 bitwise shift and insert
->    target/arm: Implement SVE2 integer absolute difference and accumulate
->    target/arm: Implement SVE2 saturating extract narrow
->    target/arm: Implement SVE2 SHRN, RSHRN
->    target/arm: Implement SVE2 SQSHRUN, SQRSHRUN
->    target/arm: Implement SVE2 UQSHRN, UQRSHRN
->    target/arm: Implement SVE2 SQSHRN, SQRSHRN
->    target/arm: Implement SVE2 WHILEGT, WHILEGE, WHILEHI, WHILEHS
->    target/arm: Implement SVE2 WHILERW, WHILEWR
->    target/arm: Implement SVE2 bitwise ternary operations
->    target/arm: Implement SVE2 saturating multiply-add long
->    target/arm: Generalize inl_qrdmlah_* helper functions
->    target/arm: Implement SVE2 saturating multiply-add high
->    target/arm: Implement SVE2 integer multiply-add long
->    target/arm: Implement SVE2 complex integer multiply-add
->    target/arm: Implement SVE2 XAR
->    target/arm: Fix sve_uzp_p vs odd vector lengths
->    target/arm: Fix sve_zip_p vs odd vector lengths
->    target/arm: Fix sve_punpk_p vs odd vector lengths
->    target/arm: Pass separate addend to {U,S}DOT helpers
->    target/arm: Pass separate addend to FCMLA helpers
->    target/arm: Split out formats for 2 vectors + 1 index
->    target/arm: Split out formats for 3 vectors + 1 index
->    target/arm: Implement SVE2 integer multiply (indexed)
->    target/arm: Use helper_gvec_mul_idx_* for aa64 advsimd
->    target/arm: Implement SVE2 integer multiply-add (indexed)
->    target/arm: Use helper_gvec_ml{a,s}_idx_* for aa64 advsimd
->    target/arm: Implement SVE2 saturating multiply-add high (indexed)
->    target/arm: Implement SVE2 saturating multiply-add (indexed)
->    target/arm: Implement SVE2 integer multiply long (indexed)
->    target/arm: Implement SVE2 saturating multiply (indexed)
->    target/arm: Implement SVE2 signed saturating doubling multiply high
->    target/arm: Use helper_neon_sq{,r}dmul_* for aa64 advsimd
->    target/arm: Implement SVE2 saturating multiply high (indexed)
->    target/arm: Implement SVE2 multiply-add long (indexed)
->    target/arm: Implement SVE2 complex integer multiply-add (indexed)
->    target/arm: Implement SVE mixed sign dot product (indexed)
->    target/arm: Implement SVE mixed sign dot product
->    target/arm: Implement SVE2 crypto unary operations
->    target/arm: Implement SVE2 crypto destructive binary operations
->    target/arm: Implement SVE2 crypto constructive binary operations
->    tcg: Implement 256-bit dup for tcg_gen_gvec_dup_mem
->    target/arm: Share table of sve load functions
->    target/arm: Implement SVE2 LD1RO
->    target/arm: Implement 128-bit ZIP, UZP, TRN
->
-> Stephen Long (19):
->    target/arm: Implement SVE2 floating-point pairwise
->    target/arm: Implement SVE2 MATCH, NMATCH
->    target/arm: Implement SVE2 ADDHNB, ADDHNT
->    target/arm: Implement SVE2 RADDHNB, RADDHNT
->    target/arm: Implement SVE2 SUBHNB, SUBHNT
->    target/arm: Implement SVE2 RSUBHNB, RSUBHNT
->    target/arm: Implement SVE2 HISTCNT, HISTSEG
->    target/arm: Implement SVE2 scatter store insns
->    target/arm: Implement SVE2 gather load insns
->    target/arm: Implement SVE2 FMMLA
->    target/arm: Implement SVE2 SPLICE, EXT
->    target/arm: Implement SVE2 TBL, TBX
->    target/arm: Implement SVE2 FCVTNT
->    target/arm: Implement SVE2 FCVTLT
->    target/arm: Implement SVE2 FCVTXNT, FCVTX
->    softfloat: Add float16_is_normal
->    target/arm: Implement SVE2 FLOGB
->    target/arm: Implement SVE2 bitwise shift immediate
->    target/arm: Implement SVE2 fp multiply-add long
->
->   include/fpu/softfloat.h         |    5 +
->   include/qemu/int128.h           |   16 +
->   target/arm/cpu.h                |   56 +
->   target/arm/helper-sve.h         |  717 ++++++-
->   target/arm/helper.h             |  132 +-
->   target/arm/translate-a64.h      |    3 +
->   target/arm/translate.h          |    1 +
->   target/arm/vec_internal.h       |  143 ++
->   target/arm/sve.decode           |  594 +++++-
->   target/arm/cpu64.c              |   11 +
->   target/arm/helper.c             |    3 +-
->   target/arm/kvm64.c              |   11 +
->   target/arm/neon_helper.c        |  507 +----
->   target/arm/sve_helper.c         | 2123 +++++++++++++++++--
->   target/arm/translate-a64.c      |  177 +-
->   target/arm/translate-neon.inc.c |   20 +-
->   target/arm/translate-sve.c      | 3364 ++++++++++++++++++++++++++++---
->   target/arm/vec_helper.c         |  942 +++++++--
->   tcg/tcg-op-gvec.c               |   52 +-
->   tcg/tcg-op-vec.c                |    2 +
->   20 files changed, 7698 insertions(+), 1181 deletions(-)
->
+In particular:
 
+#define AHB1_BASE_ADDR                  0xF0000000      /* AHB1
+allocation (Including APB allocations)  */
+#define AHB18_BASE_ADDR                 0x80000000      /* AHB18
+allocation  */
+#define AHB3_BASE_ADDR                  0xA0000000      /* AHB3
+allocation  */
+#define XBUSR_BASE_ADDR                 0xC0002000      /* XBUS
+registers  */
+#define AHB14_BASE_ADDR                 0xE0000000      /* AHB14
+Allocation  */
+#define APB14_BASE_ADDR                 0xE0000000      /* APB14
+Allocation  */
+#define VDMX_BASE_ADDR                  0xE0800000      /* VDMX  */
+
+XBUS doesn't seem important.
+
+If SPI flashes aren't connected, returning bus transaction sounds
+correct:
+
+#define SPI0CS0_BASE_ADDR               0x80000000      /* SPI0 direct
+access CS0  */
+#define SPI0CS1_BASE_ADDR               0x88000000      /* SPI0 direct
+access CS1  */
+#define SPI0CS2_BASE_ADDR               0x90000000      /* SPI0 direct
+access CS2  */
+#define SPI0CS3_BASE_ADDR               0x98000000      /* SPI0 direct
+access CS3  */
+
+#define SPI3CS0_BASE_ADDR               0xA0000000      /* SPI3 direct
+access CS0  */
+#define SPI3CS1_BASE_ADDR               0xA8000000      /* SPI3 direct
+access CS1  */
+#define SPI3CS2_BASE_ADDR               0xB0000000      /* SPI3 direct
+access CS2  */
+#define SPI3CS3_BASE_ADDR               0xB8000000      /* SPI3 direct
+access CS3  */
+
+So I'd prefer you use:
+
+  create_unimplemented_device("npcm7xx.AHB1",  0xf0000000, 256 * MiB);
+
+Maybe for the PCI root complex:
+
+  create_unimplemented_device("npcm7xx.AHB14", 0xe0000000, 256 * MiB);
+
+What do you think?
+
+Regards,
+
+Phil.

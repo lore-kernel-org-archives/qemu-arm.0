@@ -1,129 +1,106 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp221928lfm;
-        Wed, 8 Jul 2020 01:54:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwez2ZpL5mMhxA2kUq5ofyI3MWQ9XiELwkEPlcqihZ7IEDW/BzDYau/G696naY4NPHz24F7
-X-Received: by 2002:a05:6902:709:: with SMTP id k9mr69959526ybt.245.1594198490792;
-        Wed, 08 Jul 2020 01:54:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594198490; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp596519lfm;
+        Wed, 8 Jul 2020 09:56:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxSg7Yq9a4s99UqPlCYIkIjBr6Z0Jh61D73sbMO4XCGfN0lGEjN+sLeRJPb0OWoIqT0gE3m
+X-Received: by 2002:a25:ba81:: with SMTP id s1mr99169093ybg.386.1594227396403;
+        Wed, 08 Jul 2020 09:56:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594227396; cv=none;
         d=google.com; s=arc-20160816;
-        b=rMTi54+N8/2SUFjqnOsvduB7bwszrDmmBndH7es2hD6+tGPk32sYShoXw/EcoxUpPB
-         XvxN1Y0wD7M2VTlh81QpWZBO1Zbg0KQAa0MoJm2RdC7icEfrg6MUmOzVVmHdi6oqIKZg
-         IqLbGGJy2yNUnSA8OSCWQqwWWwyBRIgmoMhuswpGx58xR7pgYzMEcKcAA9D7TE9fko12
-         hCYkXbuJXqPQub9WlFp+i0D/J01QGz4dnSle35WJXeWHTdX/5v1oDCvpNsx9yQQP/9I9
-         cxgyz/rB+DEJw6fTJZ8QbzawIrNfld7lGMvsJcOvh5oVeECazmedZ2b8ClwOw0zNCctA
-         HRJQ==
+        b=XWphzBTvxflaFRo/aM22xRZUzlokomCc6pWGNSSLdN+0Zx6ou0HQ9QlTd/awpYcpNG
+         AMafklNIQ0vbmDzbX6fNcgeXvdyc0eOOblEVoDnCN+bfT4KHbLfrtqo1uSEADw87Umkb
+         vlVIuesvyx9DpG2qB08HbjXBulfjLXvhB+81S0duCg92GyPZr/FNm/KkLBNk5ULADo4h
+         qF/ihC2nx9pZUOHGlVxBP/AQ1UWWfwpF3G00qXQWTwDduaWkKhNiusxCHQUpGse/bIwc
+         NVXIHvm4Q0+nRB5qzOs6+nWJlEeyzkpDlgWzxmNEt1vu+89c42GEUs5xVXQvWEDETI76
+         fgoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=S1rP8Ms+mBDrZ41IF5ukoxx4o/JG7cf/l3a9EZXKYLc=;
-        b=hS3S8BYHUpHC80di5SH6mkTho9j5rcNr6uvDvslpSaC8Axphwvx2UEo7Qej6120jky
-         bCaLoteHcOhKyX/zO3Crvrz72F7I00ccTUx3vM5faIUaZ9vsvi9GqSYEIHE+coM9W/Gw
-         TZ/KTRTvXAU5GMAKdiaFTmsKqXJMuEeuUF/fazp7svk3/YVzW63dph4IiwX5eEsV/AtT
-         VWYnAst1YDG3ercMMt3o79iKsikzYWZ8wUGyygrhaW6ymv9qU3xwzDvyPOb0QOnrswGV
-         5nHV0S0GcGi3HemGjoyxWTEz6plJXK7HCnCCDinpQt3ncjPlkine+Z+cKiNNLNRYIC9s
-         FaBw==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=EAXU/TTClvGdi/zI+hMr8WfP/Y7qjetMMediXvP5wR8=;
+        b=zmx7oflH5Wc7/yA9+vJ+OK6cT1SzKuq8bZZFVn0PW6Ils/CzSv1FJHu5tIA783hXDb
+         AnJSjJAfHecmIOudSCBDtWZx6Jmw9ReDU7tnor0qoPL2oNNnHFWQXfCm6f8aZRm7G5Ls
+         zw67fRwFfMz+0Gbmx8DyFytOv2VG2q6TQ1dx4kc3YEdxB/bsge5brbhUEtVVcgzk66lR
+         1nSpxDDAil1d3Ikp7GdnurizWnEE9GNAWqz6GjAzERWgPGYaGR7ia8bZIewbLSasoLUU
+         0juvsJ+JqEw9n9Cusf96losmoaX1mA4LiKE5nSLJ28u5EDN5ZTKkQnqhNaFfh4BVLSpu
+         Gycw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jy0+DhEs;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O3IvFx7a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n7si29111856ybn.229.2020.07.08.01.54.50
+        by mx.google.com with ESMTPS id p203si246085ybb.263.2020.07.08.09.56.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jul 2020 01:54:50 -0700 (PDT)
+        Wed, 08 Jul 2020 09:56:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jy0+DhEs;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=O3IvFx7a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:56452 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35092 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jt5qs-0000jq-2u
-	for alex.bennee@linaro.org; Wed, 08 Jul 2020 04:54:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49584)
+	id 1jtDN5-0000Jy-Pn
+	for alex.bennee@linaro.org; Wed, 08 Jul 2020 12:56:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53900)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jt5qk-0000iL-5I; Wed, 08 Jul 2020 04:54:42 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:36705)
+ id 1jtDMx-0000Ir-HT; Wed, 08 Jul 2020 12:56:27 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:35257)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jt5qi-00028Y-Fw; Wed, 08 Jul 2020 04:54:41 -0400
-Received: by mail-wm1-x341.google.com with SMTP id 17so2087148wmo.1;
- Wed, 08 Jul 2020 01:54:39 -0700 (PDT)
+ id 1jtDMv-0001bf-UU; Wed, 08 Jul 2020 12:56:27 -0400
+Received: by mail-wm1-x342.google.com with SMTP id l2so3979022wmf.0;
+ Wed, 08 Jul 2020 09:56:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=S1rP8Ms+mBDrZ41IF5ukoxx4o/JG7cf/l3a9EZXKYLc=;
- b=jy0+DhEsGh0xIkYABoe+Yns5+MLNAa9k7wRJ39U3Eth7+d0BAJ7P8Q7aHV0y+8xOqS
- D839IW5qrdLEclqQC7zqIWFFFdnkBUUTUvIHePz5rYhV9ZThcFeOjx3NPtfbso1fyDgU
- PUqFtzsw06BGfga0LWF46TReevRVmgSNDOJNDoHEg7tvQlH0JEsvVymWKvax88qEIUQc
- 19L4ioggnU4X7Vne4QKS+gAr9BWRwuhenXNBi+QFhSx6p//XNn7ziXUx9Y5Z4ZzycEES
- 7upBlSMovRYVxpY0dJwt6SmMljyNgd9T979ZD4DTWj9Wc1Fn8F+oJJAAEYMZHg2u6cWh
- +d1w==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=EAXU/TTClvGdi/zI+hMr8WfP/Y7qjetMMediXvP5wR8=;
+ b=O3IvFx7amBt/cXfoHJiG5BetCs3YWCQoGaoF71UeSdRiHHVIDHgCkH7fUvoA5F7t9d
+ i+fSJvQbLFl+UK+UWOtxwuNF2JOF+bY9ICdvYT1pL6UvuECtAIcfnkA9D5MabRRmQS8P
+ 88tUO0e3czI32EUuARfan2FLtU5grpDJzLgC2BA10dPCqPNrFT+DOgBT6WUTejCjkKv2
+ D1Aty418lVCCtKYnbDN5bxzCEmviD9qJgdikop8CPrtUkQwAWCZ2VmH4+x0/fJB9Fz94
+ 3br2bITpgj8aAoXoKVXDfMh0LwfY1nN1wNOs9S6S/bONQJjXmv4uUzIQmQtZazyyRpO1
+ xWqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=S1rP8Ms+mBDrZ41IF5ukoxx4o/JG7cf/l3a9EZXKYLc=;
- b=UP3Dje4sj2wvvs/csSOToVPBswELF7tRX+2TsaYXicZsFgjKFxWzmFmk8k2+QBrrsZ
- ZNMKmChoOvXMqcNLybomUb3bAuD+s0TpwdPUGlCHDIr/p7jYYdBx6dwfcEhVGid1UGNc
- Z2+H2IK1E+RZ1p8Uc/uFl8y/pINh4RDHNeIiG5IMG7wXTngU0cUcAlOifH8x2lHLI2wQ
- o8DNmjBbjDgFr9/jte4dHBIagvKGylvETU8Ijr7sLWZvUs8UVUG9FKP6mWi7iiJDt475
- gsDvma2aeY0dhCUika2ztPXKEYiUckVG32ZcDd6ULURihULt3WmmekJRmpssrXMT6FWY
- QWCw==
-X-Gm-Message-State: AOAM530zScRlrgfZ9ogGn/7loiingfVP+Vm6FTLxykOC5t284yJyBvdB
- 9TMN3ckbJoMhsauV4o0bgY0=
-X-Received: by 2002:a1c:5f41:: with SMTP id t62mr8076444wmb.53.1594198478606; 
- Wed, 08 Jul 2020 01:54:38 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=EAXU/TTClvGdi/zI+hMr8WfP/Y7qjetMMediXvP5wR8=;
+ b=B6LqLN5W2zAQNnwe4RSXa9FW8xmKb7X2GxStAi3U/7kCwhxP6Lv73XfUXjZmaV+ihq
+ 0Ilh0ahiTZtNKmgFHWHp73Ds01eHxg18ro2HalntfmwO2xFcF5xn5nG9MwCkO1icF9uP
+ RVlrW62d7RiK0xihSV4dGAFylVsa2t8mjpu5XF+ofpuvFb+tp3+lUtmKlcqNgPN6eYsD
+ jUJORqbzTpDq2b70RnWqdRSKgvJU7ZeVOMKG/BkIPWNAF7ZNlTx+01YMs124mqb45moO
+ 0O93Yzur40gm5VkHXpD8fcPY5jMlb1C2d+k5w6SGZdmoluMVc4m9aUZc+4/1wKuhuFYA
+ sFBQ==
+X-Gm-Message-State: AOAM531FB63WVOo+8zF6e26Vg99HvV2mE61TCe9Ce/etZwGjP8hpMLjE
+ XsSnlqqaufXwSLn1fRHpN3du5LNB
+X-Received: by 2002:a05:600c:2182:: with SMTP id
+ e2mr10040563wme.186.1594227383825; 
+ Wed, 08 Jul 2020 09:56:23 -0700 (PDT)
 Received: from [192.168.1.36] (138.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id a15sm5437328wrh.54.2020.07.08.01.54.37
+ by smtp.gmail.com with ESMTPSA id y16sm774472wro.71.2020.07.08.09.56.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jul 2020 01:54:37 -0700 (PDT)
-Subject: Re: [PATCH v4 08/12] hw/nvram: NPCM7xx OTP device model
+ Wed, 08 Jul 2020 09:56:23 -0700 (PDT)
+Subject: Re: [PATCH v4 01/12] npcm7xx: Add config symbol
 To: Havard Skinnemoen <hskinnemoen@google.com>, peter.maydell@linaro.org
 References: <20200707184730.3047754-1-hskinnemoen@google.com>
- <20200707184730.3047754-9-hskinnemoen@google.com>
+ <20200707184730.3047754-2-hskinnemoen@google.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <f303f648-91a3-b59b-390f-8f25ec7b4ff1@amsat.org>
-Date: Wed, 8 Jul 2020 10:54:36 +0200
+Message-ID: <9b824a33-13d4-445d-4986-0c5a135c4bb8@amsat.org>
+Date: Wed, 8 Jul 2020 18:56:22 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200707184730.3047754-9-hskinnemoen@google.com>
+In-Reply-To: <20200707184730.3047754-2-hskinnemoen@google.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -145,242 +122,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kfting@nuvoton.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Avi.Fishman@nuvoton.com
+Cc: kfting@nuvoton.com, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0uBiQbDJePYe
+X-TUID: Rp1uIFa9SIs3
 
 On 7/7/20 8:47 PM, Havard Skinnemoen wrote:
-> This supports reading and writing OTP fuses and keys. Only fuse reading
-> has been tested. Protection is not implemented.
+> Add a config symbol for the NPCM7xx BMC SoC family that subsequent
+> patches can use in Makefiles.
 > 
-> Reviewed-by: Avi Fishman <avi.fishman@nuvoton.com>
+> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> Acked-by: Joel Stanley <joel@jms.id.au>
 > Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 > ---
->  hw/arm/npcm7xx.c               |  32 +++
->  hw/nvram/Makefile.objs         |   1 +
->  hw/nvram/npcm7xx_otp.c         | 405 +++++++++++++++++++++++++++++++++
->  include/hw/arm/npcm7xx.h       |   3 +
->  include/hw/nvram/npcm7xx_otp.h |  94 ++++++++
->  5 files changed, 535 insertions(+)
->  create mode 100644 hw/nvram/npcm7xx_otp.c
->  create mode 100644 include/hw/nvram/npcm7xx_otp.h
+>  default-configs/arm-softmmu.mak | 1 +
+>  hw/arm/Kconfig                  | 8 ++++++++
+>  2 files changed, 9 insertions(+)
 > 
-...
-> +static void npcm7xx_init_fuses(NPCM7xxState *s)
-> +{
-> +    NPCM7xxClass *nc = NPCM7XX_GET_CLASS(s);
-> +    uint32_t value;
-> +
-> +    value = tswap32(nc->disabled_modules);
-> +    npcm7xx_otp_array_write(&s->fuse_array, &value, 64, sizeof(value));
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 8fc09a4a51..9a94ebd0be 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -27,6 +27,7 @@ CONFIG_GUMSTIX=y
+>  CONFIG_SPITZ=y
+>  CONFIG_TOSA=y
+>  CONFIG_Z2=y
+> +CONFIG_NPCM7XX=y
 
-What is magic offset 64 for?
+I'd squash this in patch 6: "Add two NPCM7xx-based machines"
 
-...
-> diff --git a/hw/nvram/npcm7xx_otp.c b/hw/nvram/npcm7xx_otp.c
-> new file mode 100644
-> index 0000000000..18908bc839
-> --- /dev/null
-> +++ b/hw/nvram/npcm7xx_otp.c
-...
-> +/* Common register write handler for both OTP classes. */
-> +static void npcm7xx_otp_write(NPCM7xxOTPState *s, NPCM7xxOTPRegister reg,
-> +                              uint32_t value)
-> +{
-> +    switch (reg) {
-> +    case NPCM7XX_OTP_FST:
-> +        /* RDST is cleared by writing 1 to it. */
-> +        if (value & FST_RDST) {
-> +            s->regs[NPCM7XX_OTP_FST] &= ~FST_RDST;
-> +        }
-> +        /* Preserve read-only and write-one-to-clear bits */
-> +        value =
-> +            (value & ~FST_RO_MASK) | (s->regs[NPCM7XX_OTP_FST] & FST_RO_MASK);
+>  CONFIG_COLLIE=y
+>  CONFIG_ASPEED_SOC=y
+>  CONFIG_NETDUINO2=y
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 4a224a6351..a31d0d282f 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -354,6 +354,14 @@ config XLNX_VERSAL
+>      select VIRTIO_MMIO
+>      select UNIMP
+>  
+> +config NPCM7XX
+> +    bool
+> +    select A9MPCORE
+> +    select ARM_GIC
+> +    select PL310  # cache controller
+> +    select SERIAL
+> +    select UNIMP
 
-Trivial to review as:
-
-           value &= ~FST_RO_MASK;
-           value |= s->regs[NPCM7XX_OTP_FST] & FST_RO_MASK;
-
-> +        break;
-> +
-> +    case NPCM7XX_OTP_FADDR:
-> +        break;
-> +
-> +    case NPCM7XX_OTP_FDATA:
-> +        /*
-> +         * This register is cleared by writing a magic value to it; no other
-> +         * values can be written.
-> +         */
-> +        if (value == FDATA_CLEAR) {
-> +            value = 0;
-> +        } else {
-> +            value = s->regs[NPCM7XX_OTP_FDATA];
-> +        }
-> +        break;
-> +
-> +    case NPCM7XX_OTP_FCFG:
-> +        value = npcm7xx_otp_compute_fcfg(s->regs[NPCM7XX_OTP_FCFG], value);
-> +        break;
-> +
-> +    case NPCM7XX_OTP_FCTL:
-> +        switch (value) {
-> +        case FCTL_READ_CMD:
-> +            npcm7xx_otp_read_array(s);
-> +            break;
-> +
-> +        case FCTL_PROG_CMD1:
-> +            /*
-> +             * Programming requires writing two separate magic values to this
-> +             * register; this is the first one. Just store it so it can be
-> +             * verified later when the second magic value is received.
-> +             */
-> +            break;
-> +
-> +        case FCTL_PROG_CMD2:
-> +            /*
-> +             * Only initiate programming if we received the first half of the
-> +             * command immediately before this one.
-> +             */
-> +            if (s->regs[NPCM7XX_OTP_FCTL] == FCTL_PROG_CMD1) {
-> +                npcm7xx_otp_program_array(s);
-> +            }
-> +            break;
-> +
-> +        default:
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "%s: unrecognized FCNTL value 0x%" PRIx32 "\n",
-> +                          DEVICE(s)->canonical_path, value);
-> +            break;
-> +        }
-> +        if (value != FCTL_PROG_CMD1) {
-> +            value = 0;
-> +        }
-> +        break;
-> +
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: write to invalid offset 0x%zx\n",
-> +                      DEVICE(s)->canonical_path, reg * sizeof(uint32_t));
-> +        return;
-> +    }
-> +
-> +    s->regs[reg] = value;
-> +}
-...
-> diff --git a/include/hw/nvram/npcm7xx_otp.h b/include/hw/nvram/npcm7xx_otp.h
-> new file mode 100644
-> index 0000000000..b52330dadc
-> --- /dev/null
-> +++ b/include/hw/nvram/npcm7xx_otp.h
-> @@ -0,0 +1,94 @@
-> +/*
-> + * Nuvoton NPCM7xx OTP (Fuse Array) Interface
-> + *
-> + * Copyright 2020 Google LLC
-> + *
-> + * This program is free software; you can redistribute it and/or modify it
-> + * under the terms of the GNU General Public License as published by the
-> + * Free Software Foundation; either version 2 of the License, or
-> + * (at your option) any later version.
-> + *
-> + * This program is distributed in the hope that it will be useful, but WITHOUT
-> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-> + * for more details.
-> + */
-> +#ifndef NPCM7XX_OTP_H
-> +#define NPCM7XX_OTP_H
-> +
-> +#include "exec/memory.h"
-> +#include "hw/sysbus.h"
-> +
-> +/* Each OTP module holds 8192 bits of one-time programmable storage */
-> +#define NPCM7XX_OTP_ARRAY_BITS (8192)
-> +#define NPCM7XX_OTP_ARRAY_BYTES (NPCM7XX_OTP_ARRAY_BITS / 8)
-
-You could replace 8 by BITS_PER_BYTE.
+And this in patch 5: "Add NPCM730 and NPCM750 SoC models"
 
 > +
-> +/**
-> + * enum NPCM7xxOTPRegister - 32-bit register indices.
-> + */
-> +typedef enum NPCM7xxOTPRegister {
-> +    NPCM7XX_OTP_FST,
-> +    NPCM7XX_OTP_FADDR,
-> +    NPCM7XX_OTP_FDATA,
-> +    NPCM7XX_OTP_FCFG,
-> +    /* Offset 0x10 is FKEYIND in OTP1, FUSTRAP in OTP2 */
-> +    NPCM7XX_OTP_FKEYIND = 0x0010 / sizeof(uint32_t),
-> +    NPCM7XX_OTP_FUSTRAP = 0x0010 / sizeof(uint32_t),
-> +    NPCM7XX_OTP_FCTL,
-> +    NPCM7XX_OTP_NR_REGS,
-> +} NPCM7xxOTPRegister;
-> +
-> +/**
-> + * struct NPCM7xxOTPState - Device state for one OTP module.
-> + * @parent: System bus device.
-> + * @mmio: Memory region through which registers are accessed.
-> + * @regs: Register contents.
-> + * @array: OTP storage array.
-> + */
-> +typedef struct NPCM7xxOTPState {
-> +    SysBusDevice parent;
-> +
-> +    MemoryRegion mmio;
-> +    uint32_t regs[NPCM7XX_OTP_NR_REGS];
-> +    uint8_t array[NPCM7XX_OTP_ARRAY_BYTES];
-> +} NPCM7xxOTPState;
-> +
-> +#define TYPE_NPCM7XX_OTP "npcm7xx-otp"
-> +#define NPCM7XX_OTP(obj) OBJECT_CHECK(NPCM7xxOTPState, (obj), TYPE_NPCM7XX_OTP)
-> +
-> +#define TYPE_NPCM7XX_KEY_STORAGE "npcm7xx-key-storage"
-> +#define TYPE_NPCM7XX_FUSE_ARRAY "npcm7xx-fuse-array"
-> +
-> +/**
-> + * struct NPCM7xxOTPClass - OTP module class.
-> + * @parent: System bus device class.
-> + * @mmio_ops: MMIO register operations for this type of module.
-> + *
-> + * The two OTP modules (key-storage and fuse-array) have slightly different
-> + * behavior, so we give them different MMIO register operations.
-> + */
-> +typedef struct NPCM7xxOTPClass {
-> +    SysBusDeviceClass parent;
-> +
-> +    const MemoryRegionOps *mmio_ops;
-> +} NPCM7xxOTPClass;
-> +
-> +#define NPCM7XX_OTP_CLASS(klass) \
-> +    OBJECT_CLASS_CHECK(NPCM7xxOTPClass, (klass), TYPE_NPCM7XX_OTP)
-> +#define NPCM7XX_OTP_GET_CLASS(obj) \
-> +    OBJECT_GET_CLASS(NPCM7xxOTPClass, (obj), TYPE_NPCM7XX_OTP)
-
-If nothing outside of the model implementation requires accessing
-the class fields (which is certainly the case here, no code out of
-npcm7xx_otp.c should access mmio_ops directly), then I recommend
-to keep the class definitions local to the single source file where
-it is used. This also makes this header simpler to look at.
-
-Very high code quality, so I just made nitpicking comments.
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-> +
-> +/**
-> + * npcm7xx_otp_array_write - ECC encode and write data to OTP array.
-> + * @s: OTP module.
-> + * @data: Data to be encoded and written.
-> + * @offset: Offset of first byte to be written in the OTP array.
-> + * @len: Number of bytes before ECC encoding.
-> + *
-> + * Each nibble of data is encoded into a byte, so the number of bytes written
-> + * to the array will be @len * 2.
-> + */
-> +extern void npcm7xx_otp_array_write(NPCM7xxOTPState *s, const void *data,
-> +                                    unsigned int offset, unsigned int len);
-> +
-> +#endif /* NPCM7XX_OTP_H */
+>  config FSL_IMX25
+>      bool
+>      select IMX
 > 
 

@@ -1,143 +1,118 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp82369lfm;
-        Tue, 7 Jul 2020 21:57:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJznIRkUlzFP1yjyS1hbHNebYL9KTNzNh8pUyGsQ/Ac7sDY+gFCaX2xN89mPkAYd4a3IEBLC
-X-Received: by 2002:a17:906:1b45:: with SMTP id p5mr49618780ejg.51.1594184278375;
-        Tue, 07 Jul 2020 21:57:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594184278; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp318168lfm;
+        Wed, 8 Jul 2020 04:16:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzysSGunYnrZ+raRdNmMmazyUVBntll52NFxZ/ZJ1SmWJe0Z96vLxZmrGvMF7nqtuvmuPlO
+X-Received: by 2002:a05:6512:752:: with SMTP id c18mr13323489lfs.141.1594206990596;
+        Wed, 08 Jul 2020 04:16:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594206990; cv=none;
         d=google.com; s=arc-20160816;
-        b=t4jX736RhEmNnT5xg6J7C3cBxURbCtZuLkmpp+ydYpXmphvjns/ifAV8zqVLLUJypB
-         I2IkZ7jByJae0cNT7mpvJP/g837qXKCCDUkPqG9u1seQ7rZF7QUhiDzM6hXHnfGErAYk
-         zWaU/8Qn7XWhlw2LmAaSUgJPf+FlsiviEL2YiQUB9F6dkk9vLtjzNXCST0ZgZiFJnpQg
-         GYNN+wAp2LqKLVnJo2ccyDACxo19vstu03WEWjeAi8G0vx9s/gEYM+z5/GlZTo1tnuwp
-         uQmZ0Lyjszoq5Os96CbWZLM3E4OiF6EfXOAJREOE/nOIrF/GFm7yItDZNp5N9s24BHNR
-         /bMQ==
+        b=ThXZGnsZPJVo3PbU64NpVnkdtV40OnqxoN8xAp/Tds1v6u8ahCJEgFA7kmgf3jwuWC
+         kuvMj9/rlYMW97lU8HP58wO9XQ3SXDxjNmAbvjviVOeXPffsANF0RYgACzg3Bwdn5POw
+         QD+FYst7zSBaxy18JnKFZ7oWEJQGoBc+p63FilcmybIhIO5GEYhJWkeCsUX5q9DA66/s
+         H1oH6kkF+rZVcPA/93BOc/sQ0pEtqTkbLfT2ZckNCRKKqA2ccLKbeJF0OhIWb3eANadH
+         h+h0x/uWiVaYS4c4EfdQKrmcacG233gcEBOHYF0GUd7W/4QMIGJdLnDhFlaWRHy4dz1z
+         iuUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:message-id
-         :in-reply-to:date:references:subject:cc:to:from:dkim-signature;
-        bh=smbKjRsU5i3KhKg3QbXzYi2KAz29ytP0Ea1NEY02NP8=;
-        b=Z/zDH+LQwRB+WsU9WRgMXzV8ylDk01IRZ3jm1BVKTZpBioO4S9TvfjiAGJ+Ld6WJyk
-         ArM3Q8ug+G90JHLb+fRANgHwNGV6y+sFLxHm3RFZ+DYnDk6ON285yaCDec3wNVPhtCa+
-         WHA2ih+/V3ZNySSH7csZdHdF4wpTLL6JQVhbqA5AxyGp2HN4D+e1P11f1DMcv/w3BjCz
-         wWx9GnU4IpeNFcskYguha1A1AkBtwrpomYs375aO5aF/4NxK2b8k94GEeEFn+lsBnjD7
-         QPddc5x6g8JMzpTEAFg/IsgPi4jMMTiE8aMjtu63TAsQpti3VzfT4OQxKyav4cg49nTS
-         KVBQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=7UF6loFJb87wxieC/dzSDSi6hAd1CKXmXjM3EREi8SQ=;
+        b=AVZUfk/jDWbhRNg5AvEVS9Jotqpu6Og8vHsIEmNBf363U1J/XTVXbnsHWD9SkIl6Pv
+         lOK3ynfQWFpgd0TOanttlK/zpFvhsL7GltEp451Pua3Aj4FIngR5qoR+W9/j5hpFn6IQ
+         MxlzuJhGWMjnurKffzKpl6vfviE6DUSNdJtpMPlW3Lv+PxgYUCzVUnk8WsZ5TwI0cqJc
+         PAvM2a5J7VYEXT1I6nmxPQahoHNA00sEjTLoZFObRd6vEoZ5ow8tq+8RME8J+p2iGGHd
+         x+AJl4tOe5dQ+S7dJ48IWxDQowbtxsVOckhu0YU518tOswX2iyztUfAG3JH3Bs7ZCE7R
+         RlVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AdTQGRtY;
-       spf=pass (google.com: domain of armbru@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <armbru@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by mx.google.com with ESMTPS id x18si16647032ejd.495.2020.07.07.21.57.58
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=LwlLD4gq;
+       spf=pass (google.com: domain of r.bolshakov@yadro.com designates 89.207.88.252 as permitted sender) smtp.mailfrom=r.bolshakov@yadro.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+Return-Path: <r.bolshakov@yadro.com>
+Received: from mta-01.yadro.com (mta-02.yadro.com. [89.207.88.252])
+        by mx.google.com with ESMTPS id r24si15918686ljg.364.2020.07.08.04.16.30
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Jul 2020 21:57:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of armbru@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
+        Wed, 08 Jul 2020 04:16:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of r.bolshakov@yadro.com designates 89.207.88.252 as permitted sender) client-ip=89.207.88.252;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AdTQGRtY;
-       spf=pass (google.com: domain of armbru@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1594184277;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=smbKjRsU5i3KhKg3QbXzYi2KAz29ytP0Ea1NEY02NP8=;
-	b=AdTQGRtYkxMxdMi7N+OJpjLOw2gM/FeKNF10wvxXWiBc5mZ9N68lz+XBmlI+eKbpgGYh7O
-	UHSBh0HXv1pVpo1s3QzLojqxv7b0gFFkc9+GGVZXVmsUgDLrgKz8dLg/h5dOtlHeB6NaZT
-	ZslBHCoohIXVnVg1yustcAPY8p9BzV0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-407-Pw-148vnOlaI8JRnwwDe1w-1; Wed, 08 Jul 2020 00:57:53 -0400
-X-MC-Unique: Pw-148vnOlaI8JRnwwDe1w-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=LwlLD4gq;
+       spf=pass (google.com: domain of r.bolshakov@yadro.com designates 89.207.88.252 as permitted sender) smtp.mailfrom=r.bolshakov@yadro.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+Received: from localhost (unknown [127.0.0.1])
+	by mta-01.yadro.com (Postfix) with ESMTP id F07E74C895;
+	Wed,  8 Jul 2020 11:16:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+	in-reply-to:content-disposition:content-type:content-type
+	:mime-version:references:message-id:subject:subject:from:from
+	:date:date:received:received:received; s=mta-01; t=1594206989;
+	 x=1596021390; bh=IZP5UhMNqaSvqAnZInLSw7aMUyR9UHa4g7mz2kaJfkI=; b=
+	LwlLD4gqzKhmjDg+9WVU7o3CgUCt71MSdjCZREhDV0oSr58YKSEbnCG0ZNKD2k5K
+	K3tD35qHsix1ygABezMpCKHuFTf4V8AvRtKhcuyU/eAfNtdtkJ65uJTKxajbTCNI
+	E8KgP0bcTL3+zm7qxjuC99ogd006+TMn84nN/V+WM88=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+	by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PGMWieCgyhvF; Wed,  8 Jul 2020 14:16:29 +0300 (MSK)
+Received: from T-EXCH-02.corp.yadro.com (t-exch-02.corp.yadro.com [172.17.10.102])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C50A11005510;
-	Wed,  8 Jul 2020 04:57:48 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com [10.36.112.143])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 676E271678;
-	Wed,  8 Jul 2020 04:57:34 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id B747E1132FD2; Wed,  8 Jul 2020 06:57:32 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Christophe de Dinechin <dinechin@redhat.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  Dmitry Fleytman <dmitry.fleytman@gmail.com>,
-  "Michael S. Tsirkin" <mst@redhat.com>,  Jason Wang <jasowang@redhat.com>,
-  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  qemu-devel@nongnu.org,
-  Michael Roth <mdroth@linux.vnet.ibm.com>,  Max Filippov
- <jcmvbkbc@gmail.com>,  Gerd Hoffmann <kraxel@redhat.com>,  "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>,  Max Reitz <mreitz@redhat.com>,
-  Marek Vasut <marex@denx.de>,  Stefano Stabellini
- <sstabellini@kernel.org>,  qemu-block@nongnu.org,
-  qemu-trivial@nongnu.org,  Paul Durrant <paul@xen.org>,  Magnus Damm
- <magnus.damm@gmail.com>,  =?utf-8?Q?Herv=C3=A9?= Poussineau
- <hpoussin@reactos.org>,
-  Anthony Perard <anthony.perard@citrix.com>,  =?utf-8?Q?Marc-Andr=C3=A9?=
- Lureau
- <marcandre.lureau@redhat.com>,  Richard Henderson <rth@twiddle.net>,
-  Artyom Tarasenko <atar4qemu@gmail.com>,  Alistair Francis
- <alistair@alistair23.me>,  Eduardo Habkost <ehabkost@redhat.com>,  Michael
- Tokarev <mjt@tls.msk.ru>,  Riku Voipio <riku.voipio@iki.fi>,  Peter Lieven
- <pl@kamp.de>,  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,  Roman
- Bolshakov <r.bolshakov@yadro.com>,  qemu-arm@nongnu.org,  Peter Chubb
- <peter.chubb@nicta.com.au>,  Ronnie Sahlberg <ronniesahlberg@gmail.com>,
-  xen-devel@lists.xenproject.org,  Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
-  David Gibson <david@gibson.dropbear.id.au>,  Kevin Wolf
- <kwolf@redhat.com>,  Yoshinori Sato <ysato@users.sourceforge.jp>,
-  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,  Chris Wulff
- <crwulff@gmail.com>,  Laurent Vivier <laurent@vivier.eu>,  Jean-Christophe
- Dubois <jcd@tribudubois.net>,  qemu-ppc@nongnu.org,  Paolo Bonzini
- <pbonzini@redhat.com>
+	by mta-01.yadro.com (Postfix) with ESMTPS id A617C4C889;
+	Wed,  8 Jul 2020 14:16:25 +0300 (MSK)
+Received: from localhost (172.17.204.212) by T-EXCH-02.corp.yadro.com
+ (172.17.10.102) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Wed, 8 Jul
+ 2020 14:16:25 +0300
+Date: Wed, 8 Jul 2020 14:16:24 +0300
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+To: Christophe de Dinechin <dinechin@redhat.com>
+CC: <qemu-devel@nongnu.org>, Jason Wang <jasowang@redhat.com>, Laurent Vivier
+	<laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini
+	<pbonzini@redhat.com>, =?iso-8859-1?Q?Herv=E9?= Poussineau
+	<hpoussin@reactos.org>, Paul Durrant <paul@xen.org>, Richard Henderson
+	<rth@twiddle.net>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Peter
+ Lieven <pl@kamp.de>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Jean-Christophe Dubois <jcd@tribudubois.net>, Marcel Apfelbaum
+	<marcel.apfelbaum@gmail.com>, David Gibson <david@gibson.dropbear.id.au>,
+	Riku Voipio <riku.voipio@iki.fi>, Alex =?iso-8859-1?Q?Benn=E9e?=
+	<alex.bennee@linaro.org>, <qemu-arm@nongnu.org>, "Michael S. Tsirkin"
+	<mst@redhat.com>, Markus Armbruster <armbru@redhat.com>, Max Reitz
+	<mreitz@redhat.com>, =?iso-8859-1?Q?Marc-Andr=E9?= Lureau
+	<marcandre.lureau@redhat.com>, Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>, Ronnie
+ Sahlberg <ronniesahlberg@gmail.com>, <xen-devel@lists.xenproject.org>, Marek
+ Vasut <marex@denx.de>, Anthony Perard <anthony.perard@citrix.com>, Gerd
+ Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Peter
+ Chubb <peter.chubb@nicta.com.au>, Alistair Francis <alistair@alistair23.me>,
+	Andrzej Zaborowski <balrogg@gmail.com>, "Dr. David Alan Gilbert"
+	<dgilbert@redhat.com>, <qemu-trivial@nongnu.org>, Kevin Wolf
+	<kwolf@redhat.com>, <qemu-ppc@nongnu.org>, <qemu-block@nongnu.org>, Artyom
+ Tarasenko <atar4qemu@gmail.com>, Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?=
+	<philmd@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>, Chris Wulff
+	<crwulff@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>, Yoshinori Sato
+	<ysato@users.sourceforge.jp>, Stefano Stabellini <sstabellini@kernel.org>,
+	Michael Roth <mdroth@linux.vnet.ibm.com>, Magnus Damm <magnus.damm@gmail.com>
 Subject: Re: [PATCH] trivial: Remove trailing whitespaces
+Message-ID: <20200708111624.GA29018@SPB-NB-133.local>
 References: <20200706162300.1084753-1-dinechin@redhat.com>
-	<20200707102510.GF2649462@redhat.com>
-Date: Wed, 08 Jul 2020 06:57:32 +0200
-In-Reply-To: <20200707102510.GF2649462@redhat.com> ("Daniel P. =?utf-8?Q?B?=
- =?utf-8?Q?errang=C3=A9=22's?=
-	message of "Tue, 7 Jul 2020 11:25:10 +0100")
-Message-ID: <878sfu4n9f.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 2Z8wO39lsaVs
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20200706162300.1084753-1-dinechin@redhat.com>
+X-Originating-IP: [172.17.204.212]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+ T-EXCH-02.corp.yadro.com (172.17.10.102)
+X-TUID: dSbKltJylMr6
 
-Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
+On Mon, Jul 06, 2020 at 06:23:00PM +0200, Christophe de Dinechin wrote:
+> There are a number of unnecessary trailing whitespaces that have
+> accumulated over time in the source code. They cause stray changes
+> in patches if you use tools that automatically remove them.
+> 
+> Tested by doing a `git diff -w` after the change.
+> 
+> This could probably be turned into a pre-commit hook.
+> 
 
-> On Mon, Jul 06, 2020 at 06:23:00PM +0200, Christophe de Dinechin wrote:
->> There are a number of unnecessary trailing whitespaces that have
->> accumulated over time in the source code. They cause stray changes
->> in patches if you use tools that automatically remove them.
->>=20
->> Tested by doing a `git diff -w` after the change.
->>=20
->> This could probably be turned into a pre-commit hook.
+For HVF bits,
 
-See .git/hooks/pre-commit.sample.
+Reviewed-by: Roman Bolshakov <r.bolshakov@yadro.com>
 
-Expected test output is prone to flunk the whitespace test.  One
-solution is to strip trailing whitespace from test output.
-
-> scripts/checkpatch.pl ought to be made to check it.
->
->>=20
->> Signed-off-by: Christophe de Dinechin <dinechin@redhat.com>
->> ---
-[...]
->>  78 files changed, 440 insertions(+), 440 deletions(-)
->
-> The cleanup is a good idea, however, I think it is probably better to
-> split the patch approx into subsystems. That will make it much easier
-> to cherry-pick for people doing backports.
-
-I doubt that's worth the trouble.
-
-Acked-by: Markus Armbruster <armbru@redhat.com>
+Thanks,
+Roman

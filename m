@@ -1,121 +1,108 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1644368lfm;
-        Thu, 9 Jul 2020 10:42:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzPOtRbX0U3jqAMYPO+JIVZDxha96vGEZK8ss72BaBxiNwJBBUN5Yy3pUmwfRKccrkTB0oA
-X-Received: by 2002:a5b:64e:: with SMTP id o14mr14942066ybq.85.1594316549501;
-        Thu, 09 Jul 2020 10:42:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594316549; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1675076lfm;
+        Thu, 9 Jul 2020 11:20:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx0AvBtzyPdMfGI1ZJg4skxv7e7Bv1m4QFwR373TQbyRTtrUnHYj5ibYxYoK8dhcfkaOpKi
+X-Received: by 2002:a25:21c5:: with SMTP id h188mr52378177ybh.468.1594318825746;
+        Thu, 09 Jul 2020 11:20:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594318825; cv=none;
         d=google.com; s=arc-20160816;
-        b=b+NOQXeZCuH6ChSh8tu4tY2MP9SCsDA1wsoVPKTanRrkRRp+JOIRCxqWGtLFiSRaQG
-         k+o9SNmAZWrPI3jyk8Q5hkAI9rnLvHe8DsKIcWJCL3/CIiV2z5NxvGYIf3aX31mB+21U
-         gFsTEdQHt+trB/7W4++HTbf6toRUtB9TSgWXhphE3nomDieYQgilufe849NNtiRdGtoJ
-         FnMA2pvQJFAr9L3L5xvEkFBJtJXRxQYv5nK8k/D79RMK9E9VZ/Z5p9X7NAWy3fOR+ayx
-         iMxjl6Qy9ggZ1rZgDgzW9i7Gqyv8GKkLfzGXDugJLqKEVgvLVljzMjPnnkl7HLI5tUK3
-         tQww==
+        b=ejgXQsrdOh4e36nG/QhX/5MZJXTNX5f6u63z7N7SlypplhIZ3SF1SYWGE63pn5ibFA
+         WycCFZhVNUulfRvd7BCZR+KrvqKsLpMW127EORgyOCYSGiRSY6pWtgg9MgtePlI4ThIa
+         Gz2k7ISqHxpIpHbJWPCD+H0odjbsuus+iS2JW1OENtex5ZhkEFEd2cByWAXlctICc+VK
+         sRBiPlE/BNDk6IkU9mvpzKdZj0rjBWuv84oF2CD1fJMMKq4zE0lm8wAzsiCdJfVHuj5Y
+         3LCS6onr4VsNeFCirhqdsURnaj29Xa+RftviDsBKJpCSKluMP/+Fnd0cfSRMr5XLCCcU
+         7uGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=o2JbeKMXftGtJoL4s8sfFCDl/e8tVsp9dpvtKG1ma3A=;
-        b=B1a/5fAX9MWYm5/Yd2h9w3d+hJ/jPKsYrjv/C8Ic0Ey9lPyLel3pAycGj+yxdeurZM
-         NX475jD2x0JAF9NUD4uDNpD4Z1GkyPCNn1rVVhWaz/J0GHdm4JAF2qc5dVjeSqbXNSH+
-         483Vuk34iU/hOOtAHJP1+cgBigsLpw38LFz4m0hOAt/MQErLg85Rdp1k+N6M1tihi36Y
-         VpUuefZvF22JBfeRyPLj5ZSkrBFEbaO7ydWEEe5YoDcYkfsNQ4hutpG/2TcmIu4YVL5A
-         5hw7ZOvqXwZQQoQyKRjtIicC1QvXHxkJBB91wGC6qkMNoQTBJozA1SmO17qT8hcYN0jQ
-         BSPg==
+        bh=79iJKhuASA6U5zffmPecA5tdiCRnbtSTpnpwP3NfifY=;
+        b=Q2tbH32PZcaqfavqhFMyi3oL0XCDBpwPlfe9wKlaTVxc85EJuclgFb5Cz7h198MC3g
+         M5pg3amBqDX83poJ58uD80/WyUGZ0cFcKUw3QehmHgRrKzwVEHUYYROsUqY5ulpc3xsZ
+         Y/s2B2bLQsIht3sGDPhc5diYGtpNOTtNTEWhIZULW5UAYTLUZfR6TMZrDwGMzqEq6W1r
+         pcSW+LnbEFRni8qHScjhtCM7V4CiK1Xo22QoDwSFzrMtXhvYcrH+nPjU4ba7WBJ0iVzE
+         FAdYu55jF492wM5Sks9vJr9J8A5t86zPXxJQ/4hjqsrmmJJLSdUJVDOQ74TCNsnFBrtc
+         untg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=DcV4hJsh;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XIlpkZei;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u127si3138896ybb.412.2020.07.09.10.42.29
+        by mx.google.com with ESMTPS id d25si3522107ybe.407.2020.07.09.11.20.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jul 2020 10:42:29 -0700 (PDT)
+        Thu, 09 Jul 2020 11:20:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=DcV4hJsh;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XIlpkZei;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:41638 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50410 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtaZ2-0003Sr-QD
-	for alex.bennee@linaro.org; Thu, 09 Jul 2020 13:42:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56862)
+	id 1jtb9l-0004Tf-46
+	for alex.bennee@linaro.org; Thu, 09 Jul 2020 14:20:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jtaYv-0003Sf-Dz
- for qemu-arm@nongnu.org; Thu, 09 Jul 2020 13:42:21 -0400
-Received: from mail-vs1-xe42.google.com ([2607:f8b0:4864:20::e42]:34484)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jtb9c-0004T1-35
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2020 14:20:16 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:43736)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jtaYs-0007bZ-VG
- for qemu-arm@nongnu.org; Thu, 09 Jul 2020 13:42:21 -0400
-Received: by mail-vs1-xe42.google.com with SMTP id d198so1569835vsc.1
- for <qemu-arm@nongnu.org>; Thu, 09 Jul 2020 10:42:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jtb9a-00047D-3f
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2020 14:20:15 -0400
+Received: by mail-oi1-x243.google.com with SMTP id x83so2628510oif.10
+ for <qemu-arm@nongnu.org>; Thu, 09 Jul 2020 11:20:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=o2JbeKMXftGtJoL4s8sfFCDl/e8tVsp9dpvtKG1ma3A=;
- b=DcV4hJshXTJBj7dMYGyBE7xsv4bChnWOB8rp0tsqHW04UARtLHhMRL7LaaJ2j2B06H
- PsISGNWRkotms4cQYGJ4F/gs4s4e1QVbnUs7GjcyzTV2vQhoqMd0olLZF7Jq7RZZnOcN
- wKWCkz9uwyOsjLXSWfjFULT13gfmkBTtlIw+4hDzH3MWv3bSPlL5eMhYYo0lrnemTVot
- wLADi/3KtuqTImB8tUU3uWbYi6CLrd7fLRIXjjI0VxY8wFNYw2WBsVmyuTmjUS1tVmFk
- r2M5X4DmYvWLxLaPQq4OgWiQLWFnTtyMvAwAaBz2tlB5EzWZmCBHWk1Bcmvj5b2VdfhH
- lOng==
+ bh=79iJKhuASA6U5zffmPecA5tdiCRnbtSTpnpwP3NfifY=;
+ b=XIlpkZeiGm7R9oXs5/lsIchSxepNWIyWIf5Fa7spDj1sxne/ThrC0pkhYCUtnAqmmU
+ EPthyrvUQ895g+CcB8QCBL76i13bviumbdm3m+n/N8YUkC4h1kRmNIj01fcxYVCvMz9X
+ VdI1UphyaJnF4BW1xPjfRTDz9WpL0eQwvLiGy7i8kqr4O9Fl9NKq7OCoIgG8FqZ6FI1i
+ XoZx+yG2tXO6bkOOpvm6PHiGPaV/3Fxg5qFEXWPke+QZqsMWoPvlSGgHNDaXl4EKaGyi
+ 2OjNxEU1tMpeAch6G1woQHpQdhCEqJcGSQajAxIx1Y+GEsOuQieG084fcp2TIosFUVvy
+ Fg8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=o2JbeKMXftGtJoL4s8sfFCDl/e8tVsp9dpvtKG1ma3A=;
- b=AerHpeT4pRhX7zJ/B762uikwK3HqzOp3/eAB4xdJujBbCvWzE5q7ObWDMUlQe/nVlz
- NC2kaSZ9/5OyoN3oU87PfpCCXdR9/NFCWi3IVmS1vYstPaURYwYKQzReXXr1lfVumrwn
- smWIbhLTu2lPdaDZ3kETr52QSOncAD2UjCA7JLowaRS7k9KzYFqCyr3fBzNBLtxXDBA+
- UAN9aypvJqW6Cip2LANDboTGOYXphcmZ0NvHm8FxwOpIwc0grI8SJqEakn/2ML+GZFQM
- c8pXf3SLMIo4jONL0aLGxlWrC9CeHb7yTNLgLaNdrneUjtMbMGC9H11r3pkv6k9fvc6l
- GUHw==
-X-Gm-Message-State: AOAM531WaARF652LMKT6iFeoC5h1E/7/0FCNUgDv2T8JB2qo1hqM7zXP
- tE5ZdbePjam7C/cve40qKiwVXO9X4tHekwYiLvOcaw==
-X-Received: by 2002:a67:1b85:: with SMTP id
- b127mr44165443vsb.152.1594316537468; 
- Thu, 09 Jul 2020 10:42:17 -0700 (PDT)
+ bh=79iJKhuASA6U5zffmPecA5tdiCRnbtSTpnpwP3NfifY=;
+ b=q85Lz21nec+G38V5pMAg2UOjZOyndfuYxjnpo1XwpSzzrZfJedRUKfScJIb1NOMWHx
+ fPtbkkFYH7fLRL7UN09qCvg34g5oU3wkQeCECvmRAoX/0fPhTA50P84jQnuS2n6wnqpg
+ sZG2wu/rcqISzwhofdB/juflcMZKybiZG2C5xS8BOeYdXQphmHm4ZBtXWWfXRRFwu4sT
+ eiV995A2hcysMzheCh0/cmY95ynDoY19zdw4+sYaZR8MPG5+8WK7eY0CnjzspsZmR6ph
+ Mk9iMyeWIrzQDcZFq5M6UKp//r//hxDOxOxPkibUa4rMAmE7nrq1KnyMm9KcdpU69iHt
+ 13dA==
+X-Gm-Message-State: AOAM531I/gThHoo87YGCTSxGgnE7PShP4M8LcTE6A5c7wPVfDG9KO3/V
+ RwcYtCoTCDv0ryb/fQwLJK37J+dsmzeu9+6atMbK7A==
+X-Received: by 2002:aca:54c9:: with SMTP id i192mr1183515oib.163.1594318812632; 
+ Thu, 09 Jul 2020 11:20:12 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200709003608.3834629-1-hskinnemoen@google.com>
- <20200709003608.3834629-2-hskinnemoen@google.com>
- <2fe8ea5e-56de-f57f-6146-8355125daa7f@amsat.org>
- <CAFQmdRYx99PpWz6bftCvBR7=YRftD_WNex_A9aoDaeRg=4tsCw@mail.gmail.com>
- <bd2972b0-0684-e379-6d66-16ceb62deade@amsat.org>
- <CAFQmdRbHXhd9-HUQP5ET=JQEnQ3FMCQBHajwZrP5d7=iCc0tzA@mail.gmail.com>
- <ee8bc620-6d58-98ef-1c53-a8687282af50@amsat.org>
-In-Reply-To: <ee8bc620-6d58-98ef-1c53-a8687282af50@amsat.org>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Thu, 9 Jul 2020 10:42:06 -0700
-Message-ID: <CAFQmdRa3u_Sst0i6e2whoJcYau15gVQubhZHmm+z26SD8G8uCQ@mail.gmail.com>
-Subject: Re: [PATCH v5 01/11] hw/misc: Add NPCM7xx System Global Control
- Registers device model
+References: <20200705204630.4133-1-f4bug@amsat.org>
+ <20200705204630.4133-8-f4bug@amsat.org>
+In-Reply-To: <20200705204630.4133-8-f4bug@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 9 Jul 2020 19:20:01 +0100
+Message-ID: <CAFEAcA9_RBJ75RuutubdQUJhk9N1Rs+A1pR9ZnCfzV_Gs=Z7Ag@mail.gmail.com>
+Subject: Re: [PATCH v4 07/10] hw/sd/pl181: Do not create SD card within the
+ SDHCI controller
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
- CS20 KFTing <kfting@nuvoton.com>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e42;
- envelope-from=hskinnemoen@google.com; helo=mail-vs1-xe42.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x243.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, PDS_OTHER_BAD_TLD=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001,
- USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -128,255 +115,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Jw2LdlPh+FbO
+X-TUID: zlUx5uP8MTgW
 
-On Thu, Jul 9, 2020 at 10:24 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
+On Sun, 5 Jul 2020 at 21:46, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
+wrote:
 >
-> On 7/9/20 7:09 PM, Havard Skinnemoen wrote:
-> > On Thu, Jul 9, 2020 at 9:23 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat=
-.org> wrote:
-> >> On 7/9/20 8:43 AM, Havard Skinnemoen wrote:
-> >>> On Wed, Jul 8, 2020 at 11:04 PM Philippe Mathieu-Daud=C3=A9 <f4bug@am=
-sat.org> wrote:
-> >>>> On 7/9/20 2:35 AM, Havard Skinnemoen wrote:
-> >>>>> Implement a device model for the System Global Control Registers in=
- the
-> >>>>> NPCM730 and NPCM750 BMC SoCs.
-> >>>>>
-> >>>>> This is primarily used to enable SMP boot (the boot ROM spins readi=
-ng
-> >>>>> the SCRPAD register) and DDR memory initialization; other registers=
- are
-> >>>>> best effort for now.
-> >>>>>
-> >>>>> The reset values of the MDLR and PWRON registers are determined by =
-the
-> >>>>> SoC variant (730 vs 750) and board straps respectively.
-> >>>>>
-> >>>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
-> >>>>> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> >>>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
-> >>>>> ---
-> >> [...]
-> >>>>> diff --git a/hw/misc/npcm7xx_gcr.c b/hw/misc/npcm7xx_gcr.c
-> >>>>> new file mode 100644
-> >>>>> index 0000000000..9934cd238d
-> >>>>> --- /dev/null
-> >>>>> +++ b/hw/misc/npcm7xx_gcr.c
-> >>>>> @@ -0,0 +1,226 @@
-> >>>>> +/*
-> >>>>> + * Nuvoton NPCM7xx System Global Control Registers.
-> >>>>> + *
-> >>>>> + * Copyright 2020 Google LLC
-> >>>>> + *
-> >>>>> + * This program is free software; you can redistribute it and/or m=
-odify it
-> >>>>> + * under the terms of the GNU General Public License as published =
-by the
-> >>>>> + * Free Software Foundation; either version 2 of the License, or
-> >>>>> + * (at your option) any later version.
-> >>>>> + *
-> >>>>> + * This program is distributed in the hope that it will be useful,=
- but WITHOUT
-> >>>>> + * ANY WARRANTY; without even the implied warranty of MERCHANTABIL=
-ITY or
-> >>>>> + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public Li=
-cense
-> >>>>> + * for more details.
-> >>>>> + */
-> >>>>> +
-> >>>>> +#include "qemu/osdep.h"
-> >>>>> +
-> >>>>> +#include "hw/misc/npcm7xx_gcr.h"
-> >>>>> +#include "hw/qdev-properties.h"
-> >>>>> +#include "migration/vmstate.h"
-> >>>>> +#include "qapi/error.h"
-> >>>>> +#include "qemu/log.h"
-> >>>>> +#include "qemu/module.h"
-> >>>>> +#include "qemu/units.h"
-> >>>>> +
-> >>>>> +#include "trace.h"
-> >>>>> +
-> >>>>> +static const uint32_t cold_reset_values[NPCM7XX_GCR_NR_REGS] =3D {
-> >>>>> +    [NPCM7XX_GCR_PDID]          =3D 0x04a92750,   /* Poleg A1 */
-> >>>>> +    [NPCM7XX_GCR_MISCPE]        =3D 0x0000ffff,
-> >>>>> +    [NPCM7XX_GCR_SPSWC]         =3D 0x00000003,
-> >>>>> +    [NPCM7XX_GCR_INTCR]         =3D 0x0000035e,
-> >>>>> +    [NPCM7XX_GCR_HIFCR]         =3D 0x0000004e,
-> >>>>> +    [NPCM7XX_GCR_INTCR2]        =3D (1U << 19),   /* DDR initializ=
-ed */
-> >>>>> +    [NPCM7XX_GCR_RESSR]         =3D 0x80000000,
-> >>>>> +    [NPCM7XX_GCR_DSCNT]         =3D 0x000000c0,
-> >>>>> +    [NPCM7XX_GCR_DAVCLVLR]      =3D 0x5a00f3cf,
-> >>>>> +    [NPCM7XX_GCR_SCRPAD]        =3D 0x00000008,
-> >>>>> +    [NPCM7XX_GCR_USB1PHYCTL]    =3D 0x034730e4,
-> >>>>> +    [NPCM7XX_GCR_USB2PHYCTL]    =3D 0x034730e4,
-> >>>>> +};
-> >>>>> +
-> >>>>> +static uint64_t npcm7xx_gcr_read(void *opaque, hwaddr offset, unsi=
-gned size)
-> >>>>> +{
-> >>>>> +    uint32_t reg =3D offset / sizeof(uint32_t);
-> >>>>> +    NPCM7xxGCRState *s =3D opaque;
-> >>>>> +
-> >>>>> +    if (reg >=3D NPCM7XX_GCR_NR_REGS) {
-> >>>>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: offset 0x%04x out of r=
-ange\n",
-> >>>>> +                      __func__, (unsigned int)offset);
-> >>>>
-> >>>> Maybe use HWADDR_PRIx instead of casting to int?
-> >>>
-> >>> Will do, thanks!
-> >>
-> >> Glad you are not annoyed by my review comments.
-> >>
-> >> FYI your series quality is in my top-4 "adding new machine to QEMU".
-> >> I'd like to use it as example to follow.
-> >>
-> >> I am slowly reviewing because this is not part of my work duties,
-> >> so I do that in my free time before/after work, which is why I can
-> >> barely do more that 2 per day, as I have to learn the SoC and
-> >> cross check documentation (or in this case, existing firmware code
-> >> since there is no public doc).
-> >
-> > Your feedback is super valuable, thanks a lot. I really appreciate it.
->
-> OK I'll continue, but might not have time until next week.
-> After I plan to test too.
+> SDHCI controllers provide a SD Bus to plug SD cards, but don't
+> come with SD card plugged in :) Let the machine/board object
+> create and plug the SD cards when required.
 
-OK, I'll try to post a v6 before the weekend, unless you prefer that I
-hold off until you've reviewed the whole series.
+Nit on the commit message: the PL181 isn't an SDHCI controller
+(which is a theoretically standard controller as regards
+register interface etc, and which in QEMU we model in hw/sd/sdhci.c);
+it's just a plain old MMC/SD card controller.
 
-> What would be useful is an acceptance test (see examples in
-> tests/acceptance/), using the artefacts from the link you shared
-> elsewhere:
-> https://openpower.xyz/job/run-meta-ci/distro=3Dubuntu,label=3Dbuilder,tar=
-get=3Dgsj/lastSuccessfulBuild/artifact/openbmc/build/tmp/deploy/images/gsj/
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/arm/integratorcp.c | 13 +++++++++++++
+>  hw/arm/realview.c     | 12 ++++++++++++
+>  hw/arm/versatilepb.c  | 26 ++++++++++++++++++++++++--
+>  hw/arm/vexpress.c     | 11 +++++++++++
+>  hw/sd/pl181.c         | 19 +------------------
+>  5 files changed, 61 insertions(+), 20 deletions(-)
 
-Yes, tests are definitely on my radar. I'm working on SPI flash
-qtests. I haven't had much success with avocado yet, but I'll keep
-trying (perhaps using docker to control the environment more tightly).
+> @@ -649,6 +651,17 @@ static void integratorcp_init(MachineState *machine)
+>                            qdev_get_gpio_in_named(icp, ICP_GPIO_MMC_WPROT=
+, 0));
+>      qdev_connect_gpio_out_named(dev, "card-inserted", 0,
+>                            qdev_get_gpio_in_named(icp, ICP_GPIO_MMC_CARDI=
+N, 0));
+> +    dinfo =3D drive_get_next(IF_SD);
+> +    if (dinfo) {
+> +        DeviceState *card;
+> +
+> +        card =3D qdev_new(TYPE_SD_CARD);
+> +        qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo=
+),
+> +                                &error_fatal);
+> +        qdev_realize_and_unref(card, qdev_get_child_bus(dev, "sd-bus"),
+> +                               &error_fatal);
+> +    }
 
-Since the 5.1 release is frozen now, I might post some followup
-patches before this series is merged, e.g. tests, bootrom
-submodule+blob, more peripherals, etc. Is it preferable to keep this
-series frozen (modulo API updates) since you spent a lot of time
-reviewing it, and post the new stuff separately, or is it better to
-add new patches to the end of the series and resend the whole thing?
+So instead of the pl181 creating the card object, the board
+now does it, and only if there actually is an IF_SD drive to
+use with it. I guess that makes sense. (If it turns out that
+something depends on the existence of the card-without-backing
+we could do what xlnx-zcu102.c for instance does, and create
+the card in the board wtih a NULL backing drive, but let's not
+do that unless we're obliged to.)
 
-> But these are apparently not stable links (expire after 30 days?).
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Sorry, I'm too ignorant about Jenkins to know. I'll see if I can
-figure something out.
-
-> >> [...]
-> >>>>> +static void npcm7xx_gcr_realize(DeviceState *dev, Error **errp)
-> >>>>> +{
-> >>>>> +    NPCM7xxGCRState *s =3D NPCM7XX_GCR(dev);
-> >>>>> +    uint64_t dram_size;
-> >>>>> +    Error *err =3D NULL;
-> >>>>> +    Object *obj;
-> >>>>> +
-> >>>>> +    obj =3D object_property_get_link(OBJECT(dev), "dram-mr", &err)=
-;
-> >>>>> +    if (!obj) {
-> >>>>> +        error_setg(errp, "%s: required dram-mr link not found: %s"=
-,
-> >>>>> +                   __func__, error_get_pretty(err));
-> >>>>> +        return;
-> >>>>> +    }
-> >>>>> +    dram_size =3D memory_region_size(MEMORY_REGION(obj));
-> >>>>> +
-> >>>>> +    /* Power-on reset value */
-> >>>>> +    s->reset_intcr3 =3D 0x00001002;
-> >>>>> +
-> >>>>> +    /*
-> >>>>> +     * The GMMAP (Graphics Memory Map) field is used by u-boot to =
-detect the
-> >>>>> +     * DRAM size, and is normally initialized by the boot block as=
- part of DRAM
-> >>>>> +     * training. However, since we don't have a complete emulation=
- of the
-> >>>>> +     * memory controller and try to make it look like it has alrea=
-dy been
-> >>>>> +     * initialized, the boot block will skip this initialization, =
-and we need
-> >>>>> +     * to make sure this field is set correctly up front.
-> >>>>> +     *
-> >>>>> +     * WARNING: some versions of u-boot only looks at bits 8 and 9=
-, so 2 GiB or
-> >>>>> +     * more of DRAM will be interpreted as 128 MiB.
-> >>>>
-> >>>> I'd say u-boot is right in wrapping at 2GB, as more DRAM is
-> >>>> un-addressable.
-> >>>
-> >>> Ah, maybe I shouldn't have said "or more". The bug is that if you
-> >>> specify _exactly_ 2GiB, u-boot will see 128 MiB.
-> >>>
-> >>> But I agree more than 2GiB doesn't make sense, so I'll add a check fo=
-r that.
-> >>>
-> >>> Not sure if I agree that the check should be here. > 2 GiB is an
-> >>> addressing limitation, and the GCR module shouldn't really know what
-> >>> the SoC's address space looks like. The lower limit is because the GC=
-R
-> >>> module can't encode anything less than 128 MiB.
-> >>>
-> >>>>> +     *
-> >>>>> +     * https://github.com/Nuvoton-Israel/u-boot/blob/2aef993bd2aaf=
-eb5408dbaad0f3ce099ee40c4aa/board/nuvoton/poleg/poleg.c#L244
-> >>>>> +     */
-> >>>>> +    if (dram_size >=3D 2 * GiB) {
-> >>>>
-> >>>> See my comment in this series on the machine patch.
-> >>>>
-> >>>>> +        s->reset_intcr3 |=3D 4 << 8;
-> >>>>> +    } else if (dram_size >=3D 1 * GiB) {
-> >>>>> +        s->reset_intcr3 |=3D 3 << 8;
-> >>>>> +    } else if (dram_size >=3D 512 * MiB) {
-> >>>>> +        s->reset_intcr3 |=3D 2 << 8;
-> >>>>> +    } else if (dram_size >=3D 256 * MiB) {
-> >>>>> +        s->reset_intcr3 |=3D 1 << 8;
-> >>>>> +    } else if (dram_size >=3D 128 * MiB) {
-> >>>>> +        s->reset_intcr3 |=3D 0 << 8;
-> >>
-> >> I think this can be simplified as:
-> >>
-> >>          s->reset_intcr3 =3D (4 - clz32(dram_size)) << 8;
-> >>
-> >> Which implicitly truncate to power of 2 (which is what this
-> >> block does, as you can have only 1 bank managed per this SGC).
-> >
-> > Good idea. I find this a little easier to understand though:
-> >
-> > #define NPCM7XX_GCR_MIN_DRAM_SIZE   (128 * MiB)
-> >
-> >     s->reset_intcr3 |=3D ctz64(dram_size / NPCM7XX_GCR_MIN_DRAM_SIZE) <=
-< 8;
->
-> I like it, furthermore it will work with >4GB if this model is
-> ever reused on an ARMv8-A SoC.
->
-> >> But checking is_power_of_2(dram_size) and reporting an error
-> >> else, is probably even better.
-> >
-> > OK, I'll add a check for this, and also explicit checks for too large
-> > and too small. The former is currently redundant with the DRAM size
-> > check I'm adding to npcm7xx_realize(), but I kind of like the idea of
-> > checking for encoding limitations and addressing limitations
-> > separately, as they may not necessarily stay the same forever.
-> >
-> >>>>> +    } else {
-> >>>>> +        error_setg(errp,
-> >>>>> +                   "npcm7xx_gcr: DRAM size %" PRIu64
-> >>>>> +                   " is too small (need 128 MiB minimum)",
-> >>>>> +                   dram_size);
-> >>>>
-> >>>> Ah, so you could add the same error for >2GB. Easier.
-> >>>>
-> >>>> Preferably using HWADDR_PRIx, and similar error for >2GB:
-> >>>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> >
+thanks
+-- PMM

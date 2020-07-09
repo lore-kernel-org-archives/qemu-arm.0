@@ -1,117 +1,115 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp872732lfm;
-        Wed, 8 Jul 2020 16:41:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwLrUlD9zTWLBb4bx0qm4dE21WzYoTioV7bbk2bwu7tnrtuZxRajSjyo77tZZ+p5ZZBuPFy
-X-Received: by 2002:a05:6902:4ae:: with SMTP id r14mr53395588ybs.55.1594251680785;
-        Wed, 08 Jul 2020 16:41:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594251680; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp887328lfm;
+        Wed, 8 Jul 2020 17:06:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwmlssYxTVTRwU8sCgey24XafC0BXb7O2Fi9sq/x+ZKU+r0AcTHsqfrSv8jkYCGI14k3e22
+X-Received: by 2002:a25:24d1:: with SMTP id k200mr98057144ybk.247.1594253211079;
+        Wed, 08 Jul 2020 17:06:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594253211; cv=none;
         d=google.com; s=arc-20160816;
-        b=U5zN1eOv/l2JobBRfmNLEeIFzppbYDVf+bTFJ/WoKV3g6ReakHrbvfIlbz8oI/exZ0
-         8o5+6RUgyldOaOO4hA/lS1wolu9fuFH/Xskt+3oTqjGd7/SrL6n3LeN9X+ZuV02AFhrx
-         ZzJL96cTWaAuOtSU0Gwr+nGzz+5p2+FrF1uKNgjHL96WjwtQjIHaBmEAGbq96VsuM7ET
-         09x0+xa80jQ31pn1/X4DJzuCpAHry1+OuuaBr5mPpIGJZY8f7m1ItDrgLASAraKo816Z
-         iBxMUYGpAMCJUSX6w2H/CaOLKo5/p0Fq8gNwl+cx96FalBSbH0I5I54RObYzNS9xVUOT
-         Qeug==
+        b=rn4OYiTk/brKqqrNQYelK+C9o3EP+5vhx+EvjCtrfkb6P4t53t/1cRuh+kqUEFtyDQ
+         PmIsrTJPwFKKR4Z9MT5HblxpyMMQ7oprUY8Pww2voGFH9ts+RkXia42NWpYXo8EGHxx0
+         jSE4TZws/Swtg/idPvjsixp2VuoJ9lrL6g3bm8xJOdlsUmV3sWpoT6Ixc0k+PsqdOwK8
+         UaXdotpmZoWwUy9gzQeca8qbJ2kkM9yYQkN6lGJ5DK8uAIXfWC0TaSDAfKZ5QlksKVLW
+         3kWnaGwoP3uek8NNCWBd/yHuv4NPi1HizZWhz+a7w/HaynqhiE7fVcjjeUUlyBEG1uqb
+         24Jg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=1UkOWbeQctjkd0+Ogbpvj1L/TqjRumxU2EBvZJQeXG8=;
-        b=YJTrHDqKaI0ZjBbjJy/D+ucc2zioC3H23kf1jJdMFL5JRnrv/LsYJ6LiqPEVf03vK4
-         +ciH+HxUuZY3GgLh1zfxtJYMlszLxJvde8kKxUJC625WuLxKiE5dvGEfb93wk5UhY7Wn
-         mO6byPY2a/S0KGH/c2UQG6xQ3f9W1LjR3OxvJC1sM+D5wNikzhNyvfaoCM168/wOvvdC
-         ZY11aPz1YUep6pU0eeE16JVajdlmh/BAMj26qDUFr+KCBlOBHLv/bB2QOFqWhL8X4r05
-         syKx84gtXvvieMsA0+VYFikqNoEUD//62/qeejkeT9HE0ylXLoKh/GjYbSs994CsPDg7
-         i/UA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=0QjbGbfdZrC4ER9Op5TZkuMTIqOSXOzGsj5W0a7/Z28=;
+        b=hZd38mPIYbnGS2xfhQg5Ca6gPUukW/SQ/ITe9501LlqZ2pCTGqmv/+uzmBVrwxjJyd
+         sHQdZ1f6+OiYP1TD0oS9UtMOgzxu+wQ6z5e4RvZNQ/6nJ6xyk6o+5opEm6b2kPe+k6Bg
+         ATYFrnlsKjnQOt7D+3drG1CDyXpUmf7LVy50wQvm7snnwd9L8kwSNraNnwULXP+MrUe7
+         7wYvgOtLaCAkHDOe6gqh7bGXt2f57kHNPjMZUmnPD5y8t1J304OtjwhCk1K9EVK4qLlV
+         d+MAm92lrLrL6frVhCvD7SZeZi/nhmq0Cx1E9L6bElYBmWVg9ytSolENcvCZ0+9O4b12
+         AEVw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lb7+FHUo;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=gM5jz38Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w137si1032638ybe.494.2020.07.08.16.41.20
+        by mx.google.com with ESMTPS id l70si872760ybl.382.2020.07.08.17.06.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jul 2020 16:41:20 -0700 (PDT)
+        Wed, 08 Jul 2020 17:06:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lb7+FHUo;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=gM5jz38Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33352 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:50722 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtJgm-0001px-72
-	for alex.bennee@linaro.org; Wed, 08 Jul 2020 19:41:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38074)
+	id 1jtK5S-0002V6-D5
+	for alex.bennee@linaro.org; Wed, 08 Jul 2020 20:06:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41918)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jtJgY-0001p9-9m
- for qemu-arm@nongnu.org; Wed, 08 Jul 2020 19:41:06 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:46868)
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1jtK5K-0002UR-3n
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2020 20:06:42 -0400
+Received: from mail-vk1-xa42.google.com ([2607:f8b0:4864:20::a42]:40017)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1jtJgW-0002q6-3B
- for qemu-arm@nongnu.org; Wed, 08 Jul 2020 19:41:06 -0400
-Received: by mail-pg1-x542.google.com with SMTP id d194so90094pga.13
- for <qemu-arm@nongnu.org>; Wed, 08 Jul 2020 16:41:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=1UkOWbeQctjkd0+Ogbpvj1L/TqjRumxU2EBvZJQeXG8=;
- b=lb7+FHUobW5Qq1NHHtLjA7ApGrLtrv1NcfGvuz5vU5bYN8X0vVpr3c/e4fhBXSOIpt
- 2LxZPTqSIp0UXbRM3EisPeeiZriowVWNMaai+PDH1F044Z7eFKTco6hEmPUspARhgdT3
- LpHQvfPRLD6HDW+oQLDkYrqAOQNyMLxCly5Tm/MrOb2lop6W6g3In1HqTGjXNk8DAJvH
- 9zj3OOD1FqUVkBOrmgcK1kBinbADFkuRYbn/ISEDi6iJ7lfHcUy0XK6WMtzFKmWG3qml
- vX+39Vi7bpxQ9fGb261Tbt5W4NZ9nRYS5UO82lqTQ0vxYE6ukRVsTM/6Z9Ci2acOGaQ9
- NyqA==
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1jtK5I-0005q3-LB
+ for qemu-arm@nongnu.org; Wed, 08 Jul 2020 20:06:41 -0400
+Received: by mail-vk1-xa42.google.com with SMTP id n137so45950vkf.7
+ for <qemu-arm@nongnu.org>; Wed, 08 Jul 2020 17:06:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=0QjbGbfdZrC4ER9Op5TZkuMTIqOSXOzGsj5W0a7/Z28=;
+ b=gM5jz38ZhokgtSHk4gJ9CoFWqhE8Yryxdl/eXz6y+qXpmVJuVPgiaw6V0GMdPdyohj
+ 9rKup83NjrvQvlQEbk74BZHVMwHTbxVKgaH/s0cd+5ExSHws4fYgbwRoRHuiwVXIAwcb
+ 6se59hrOYyPbwe3sXL9iON1mg3jsEgA3YTmdNiMBy383N0MRTeYObfPgOHO4nDUAgEda
+ wXvOstpgcH0dxJwPoPzYBTY6AkvJozkEk5mWRd8uM4Nc3VxbF0oI1i/C5Sn1hrcDllun
+ lSxoTiY8HhxUSoDXIEumVBumS064WlBwx6gv/dmqvCdGu0JPg9eWZ1r8ifLAQr8kNlmU
+ pZww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=1UkOWbeQctjkd0+Ogbpvj1L/TqjRumxU2EBvZJQeXG8=;
- b=hGz/Id/hknZMsLb9vkoGumMWGE7UgP7PKJsMMGzAxZaK9tOlv0SRrYPHzPVo7SmkM9
- t1PyNQykM20BnbuLUI+ri7jZKpRNlKONOffX1PUCzWZEbt9LyrY3KkWAkpYL8XRjAdzc
- OFT6tlV9T7wtpTf8JCIcs9RUFpdIzNJWizaFL96Q+VEGnpT1Da/KzFci9Vu4g5+cllgx
- oqztkpJjqp9Ci10r/egHPbYPCPF7DzswTdaPu/x6yNYAve+D+nmniRPbJ557FtkMcZp+
- vdfmElsFKB5ijUSGYWeNyq+SBuYvLuh3ziuuu9SCGfy7wviyxq3n+YiXhKe5n1Ve9qga
- ziTw==
-X-Gm-Message-State: AOAM532ftslPMu/396FVlV8rupDaUAhK+M8N4HEW00mQjbkECV4/aJD1
- T5SAUECx5kKxJH5ckeyyGu5k+g==
-X-Received: by 2002:a63:7c4d:: with SMTP id l13mr51986513pgn.12.1594251662283; 
- Wed, 08 Jul 2020 16:41:02 -0700 (PDT)
-Received: from [192.168.7.121] (24-113-145-216.wavecable.com. [24.113.145.216])
- by smtp.gmail.com with ESMTPSA id k189sm762822pfd.175.2020.07.08.16.41.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jul 2020 16:41:01 -0700 (PDT)
-Subject: Re: [PATCH 7/7] hw/watchdog/wdt_aspeed: Reduce timer precision to
- micro-second
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200616075121.12837-1-f4bug@amsat.org>
- <20200616075121.12837-8-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <9a5a9f82-8646-6a11-6633-ca714b76a482@linaro.org>
-Date: Wed, 8 Jul 2020 16:40:58 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=0QjbGbfdZrC4ER9Op5TZkuMTIqOSXOzGsj5W0a7/Z28=;
+ b=oIEKrKYbFXNJQHiTOO7abFy1Nvcad6XvpI+rEtqqZ2F20meq1/Uu7be+pIIFpJ0Onq
+ htV1S/ma3ECIxF2aFhD9swPk75ZmZGI/QjaG+y7uENN4TVY3bQBBxwc9nFrogCQPgLxC
+ +7XXmh83VSfUWcaerBGqzO6xemEztUY7XqTr4m/yNOLjr6FNI214v2F3Sct9sLA+gpR4
+ 0Lsw3WfPmGEO0X8zv9cjE8rO237ai/cKMeQoiIV8SJyW4PqFq9UJxW4yWIC5R0RB+f4I
+ Yd0rqqoWjzJ52lJxJmJyVSGixsbyUdKx0LzqoEEXd/1H/o12S7o6Zj/iDMJ/zWG3zPpj
+ 9izQ==
+X-Gm-Message-State: AOAM530JfrEjmwHOkJs3LhbQtMfpVayDSF+ebDBNULEJSIdMIW0RxByK
+ WTQvaJld20Ya6jzdoEa8VUHbXPcRiF2QLZ861JJ5sw==
+X-Received: by 2002:a05:6122:130b:: with SMTP id
+ e11mr12160252vkp.20.1594253199000; 
+ Wed, 08 Jul 2020 17:06:39 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200616075121.12837-8-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x542.google.com
+References: <20200707184730.3047754-1-hskinnemoen@google.com>
+ <20200707184730.3047754-6-hskinnemoen@google.com>
+ <4b7130f2-032c-3067-b2b6-876a2b17b707@amsat.org>
+ <CAFQmdRYi5QFHbcWQH-bWqAsSCidzYMedC8n+mib1DPpJuEy-Rw@mail.gmail.com>
+In-Reply-To: <CAFQmdRYi5QFHbcWQH-bWqAsSCidzYMedC8n+mib1DPpJuEy-Rw@mail.gmail.com>
+From: Havard Skinnemoen <hskinnemoen@google.com>
+Date: Wed, 8 Jul 2020 17:06:27 -0700
+Message-ID: <CAFQmdRZdUKvmi_eKdtCnR8uP63sRP9X0Z7oxZES56mtSz_=7FA@mail.gmail.com>
+Subject: Re: [PATCH v4 05/12] hw/arm: Add NPCM730 and NPCM750 SoC models
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
+ CS20 KFTing <kfting@nuvoton.com>, Joel Stanley <joel@jms.id.au>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a42;
+ envelope-from=hskinnemoen@google.com; helo=mail-vk1-xa42.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -185
+X-Spam_score: -18.6
+X-Spam_bar: ------------------
+X-Spam_report: (-18.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -124,26 +122,23 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, Corey Minyard <minyard@acm.org>,
- David Hildenbrand <david@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J7tac5V164ap
+X-TUID: vBV2peaiUa5J
 
-On 6/16/20 12:51 AM, Philippe Mathieu-Daudé wrote:
-> -        reload = muldiv64(s->regs[WDT_RELOAD_VALUE], NANOSECONDS_PER_SECOND,
-> +        reload = muldiv64(s->regs[WDT_RELOAD_VALUE],
-> +                          NANOSECONDS_PER_SECOND / SCALE_US,
->                            s->pclk_freq);
+On Wed, Jul 8, 2020 at 11:13 AM Havard Skinnemoen
+<hskinnemoen@google.com> wrote:
+> On Wed, Jul 8, 2020 at 10:31 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
+org> wrote:
+> > On 7/7/20 8:47 PM, Havard Skinnemoen wrote:
+> > > +typedef struct NPCM7xxClass {
+> > > +    DeviceClass         parent;
+> >
+> > Similar comment that elsewhere on this series, if NPCM7xxClass not used
+> > outside of npcm7xx.c, keep it local.
+>
+> OK, will do.
 
-Similarly, I would prefer MICROSECONDS_PER_SECOND.  Though again, I don't see
-what we gain from changing units.
+Turns out it is used in npcm7xx_boards.c, so it has to stay where it is.
 
-
-r~
+Havard

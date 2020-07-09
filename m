@@ -1,107 +1,104 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp906393lfm;
-        Wed, 8 Jul 2020 17:37:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwWDAllBp4lcoH+sQgUlXdpe9im3D+ntnKaaJQlsoOjrj6U8opAnytnL9VzDeFKY+lsk1Pv
-X-Received: by 2002:a25:e088:: with SMTP id x130mr72492826ybg.147.1594255070925;
-        Wed, 08 Jul 2020 17:37:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594255070; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp906552lfm;
+        Wed, 8 Jul 2020 17:38:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJznlOiDPhcCzgzOEMFSpUI/c88YRduKFVwymxbZuGUZzwOce+qD/JHhryTZZVbbtOH5SCHD
+X-Received: by 2002:a25:afd1:: with SMTP id d17mr8226646ybj.91.1594255085182;
+        Wed, 08 Jul 2020 17:38:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594255085; cv=none;
         d=google.com; s=arc-20160816;
-        b=CrwHMNZAYdJcvgBaWMyKS+hwopXf8wf8yqySiJGpa/MN3fVHFgK/PS8cWvZxv0x5a0
-         enhX0Ucv0KX0M37zq3ZR4LwquKx76i0/KU1s2UfmcjmPgvR7qG3HnOmUHgPvJ5KiX1PA
-         71jRAtY3WK2L00PQLU9G8a8262l/cpGNM+/0LK4QRiBFreJ/qzMUt/9pFwWa/lDvAada
-         AMUIquR0MrfDPWcWKXwhZbSHjT1Fmi5a+zQ6+PQ080A2E1nQUmBCY6kTZ6lLYeWb9owO
-         xThYNuF9OO3bVBoqWrhps/fGRjo9eeMyZxpX4LU7MWA5vWrGf2UBf5K9B+dR9Boc54rt
-         mVTQ==
+        b=PbFe3JQ6zAyeIXQi/OMFPhYJRDE+JljpczrB4VL2RcfAgbG5OypXDp+Dk/WhTYyt+/
+         8Wk6ZbRpLloV/qzzHPcMT5oGceOmOeNFpme6cgdgmPKXhQNTVFgIkqa5kJ4meQLmlhfm
+         lM095Pe1IQmK6OLrG7IOR5zspxvzOZvJznqDTGd1s5s/0nTRTleSChpmuXNtdCaR3Lis
+         ElBKCe6ewcijb1SKxs9mZk5ls9wDZ/EHk+TCyGNHeJZWuBuHs9TzK04xCv/CBZIhFbMK
+         0ZKmp0/UU0i/Asf0vfcy+UeAl/3bZ5bluNr/P0OR8F2uB1IvO3OzfZXc7vDwUinJ0/TD
+         ng7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :from:subject:references:mime-version:message-id:in-reply-to:date
          :dkim-signature;
-        bh=lrKRk7BwvWnw1gIsSVH7zHuPuTHTBnigFtRalcwc1Vg=;
-        b=YUIxVQC9nljX+9k2ERY4ZS9SaU8O5fNRM2cQVdWVVeuflf8IFWTYsA0JTtMznvgNOH
-         LlEyiOWHKAE+f3O2Ajrt2MCYunYAfGGRRJ4sMoQ+TykcabYk4JaMnSaNIciWRQUPHg4G
-         vt3Jp63Uhwh7mSebWjCw5ghKINYsJP1/htQVyfNXFckWLBaFQmuQe06TTMJNmm3p+W5l
-         1Obmdrn4dBqj4IebeJvAXfznu++8DytgU0DvDmqrGNAnfWbSMVoZNImThNJZ336BnBOr
-         aNyPkDcJLnHoTZS1/qF1fwjwFuiJusoAC54zpGkrikWBJjB5I7wMN64DoMNajJAsJ/Q5
-         SMnw==
+        bh=R+4Pq4OB/mowy7Hq3NMzbh84zd3pPAsqXlKlEWoNw4Q=;
+        b=Jkh1X/ZMvwQ4wK4wRUXnfduGCNjo6WULcKFCj9WQ3V2KB76GbqRP8tDk7mL2DQ9gfo
+         bQsFEvj1Ja1mHv2xB2DHTZyuKWR0rtHY/tuQvwEgvte0RkY7PMv/Rv2nhRHkCZTW4X4M
+         7BysAWttUZvE7MRoUwOtAgYk4VYD7ctx23PMA4bzHnTMHXCrtiVe50S0yc6sdIWovbM7
+         bGyYvplY6z3bpi+nKJNQfrDM9w0EmqRrtMHM4JhcFUqANTADgOYKuOJO6VvrwZFD3GIU
+         IoMso+z68Ogtz58V0qnIEq1jLLDGr1YaDP3Mf5votn3Ac38z7NK6JpPuggz7WjINUamn
+         u1DQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=ZrzVp2f9;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=TvKV6Ytx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e1si1168425ybj.27.2020.07.08.17.37.50
+        by mx.google.com with ESMTPS id y1si1022191ybq.48.2020.07.08.17.38.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jul 2020 17:37:50 -0700 (PDT)
+        Wed, 08 Jul 2020 17:38:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=ZrzVp2f9;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=TvKV6Ytx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:52022 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53332 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtKZS-00080W-6K
-	for alex.bennee@linaro.org; Wed, 08 Jul 2020 20:37:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48026)
+	id 1jtKZg-0008WQ-FT
+	for alex.bennee@linaro.org; Wed, 08 Jul 2020 20:38:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48202)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3i2YGXwsKCnAVgYWbbSacSbUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--hskinnemoen.bounces.google.com>)
- id 1jtKYC-0006G0-IG
- for qemu-devel@nongnu.org; Wed, 08 Jul 2020 20:36:32 -0400
-Received: from mail-qt1-x849.google.com ([2607:f8b0:4864:20::849]:51887)
+ <3l2YGXwsKCnwmxpnssjrtjslttlqj.htrvjrz-ij0jqstslsz.twl@flex--hskinnemoen.bounces.google.com>)
+ id 1jtKYO-0006g1-MY
+ for qemu-devel@nongnu.org; Wed, 08 Jul 2020 20:36:44 -0400
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49]:36009)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3i2YGXwsKCnAVgYWbbSacSbUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--hskinnemoen.bounces.google.com>)
- id 1jtKY8-00010j-Go
- for qemu-devel@nongnu.org; Wed, 08 Jul 2020 20:36:32 -0400
-Received: by mail-qt1-x849.google.com with SMTP id h24so395356qtk.18
- for <qemu-devel@nongnu.org>; Wed, 08 Jul 2020 17:36:27 -0700 (PDT)
+ <3l2YGXwsKCnwmxpnssjrtjslttlqj.htrvjrz-ij0jqstslsz.twl@flex--hskinnemoen.bounces.google.com>)
+ id 1jtKYL-00012l-5I
+ for qemu-devel@nongnu.org; Wed, 08 Jul 2020 20:36:44 -0400
+Received: by mail-yb1-xb49.google.com with SMTP id x8so791480ybt.3
+ for <qemu-devel@nongnu.org>; Wed, 08 Jul 2020 17:36:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
  :cc:content-transfer-encoding;
- bh=lrKRk7BwvWnw1gIsSVH7zHuPuTHTBnigFtRalcwc1Vg=;
- b=ZrzVp2f9XUpC7LjTlwPbgVRgAC+8e1LZw9yZgelEUpcYwe9sIXcmilqhKCP6dAazni
- z+p23RWkCXByxP44vkb7bgt5ceafPF47lVRFcxRug4OYzywsEzukN0CyOds1dmI/3wkH
- nns0NfwVBYo1jEkaQm3rspCaKwuasJzadytmdsa9aXsfP7PyE6oHmKZHnnPONBn9zVh7
- 0K/gj19oFozVw5XY2uZgLPgb6tu6G10ZJ6dAHqxtniu8BBaFR9q8sDTKV0jsT6Vm+j2m
- JKtx/jLYB7FHOpSQoyo/bqiW1rXwBAyDgc/lGSVXqX10aFyfcOanG1YQSBhUBYQMZmxy
- zTJg==
+ bh=R+4Pq4OB/mowy7Hq3NMzbh84zd3pPAsqXlKlEWoNw4Q=;
+ b=TvKV6YtxgRmpiN8c7A+HzqgBBK4/MVrQJyYQGP1+NMPsx0R6zcpu2UjDF1UgVOcV0m
+ U7wgCtdirvotz1WBnW2EqkttjRfd9ulLJl5GBXIbiDdnv1TCqlz48s9H+xB3oTNEkc3e
+ zHxqX43ZSp/iNAwFYZVMBqxwh3M6Xx2y26YQXGPF5F1MfBDv+lVGq6bq9ebIzE88lDLn
+ BnFViviOivRSW7tiW3g+CE5SOath1EMi+uUksu0WOhA0bUwp39TXYA3lwamLjKIjjnZi
+ MW5RAvPQabTEqN69XAFc95EazxHqcPIKhmAzw0FjYNulVr60YXufkhD8xzJgVUWbDYqE
+ fKXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc:content-transfer-encoding;
- bh=lrKRk7BwvWnw1gIsSVH7zHuPuTHTBnigFtRalcwc1Vg=;
- b=d5SB4SMMaGp+uJ1fn+RiaP7AMPzYxuhXIKDADoHjiI2Tk5Xo/fcS6FZVsqoqC6EMn2
- 9avOz2A/H6FxI34xHAc6mGgZpT4ayIQFIzAVpsgwInlr/E5R9bVqSZs/UBgdTt4XkvE6
- AOp5JVoKBPc+nbVUr0RO//tbA1GEpaSK0GqmhmfChdX5Undd+nS5/+CD0hfqL3n/w1oj
- F3w+uNJsBThzB6fAiUj46xloCqQd1MYb844b6+4JpeP43nGSf3WSZ7JJD7C69nLAIZgM
- lnZKUWoza9SMcKSK/7TrYd817XPG9sb7QYaefqmEFeXyNPH0s4Ws5AoqxxuNbXzqTw2Y
- S84w==
-X-Gm-Message-State: AOAM530HXhufkSb/DZ3jykztIP+yxSd0ssPxvPzN0IfTs6dpF/xsBEdU
- I2PlfwtVWUJWMdt0cYL8wwaiDRpOjuL/OWD1ow==
-X-Received: by 2002:a05:6214:612:: with SMTP id
- z18mr59415479qvw.46.1594254987275; 
- Wed, 08 Jul 2020 17:36:27 -0700 (PDT)
-Date: Wed,  8 Jul 2020 17:35:58 -0700
+ bh=R+4Pq4OB/mowy7Hq3NMzbh84zd3pPAsqXlKlEWoNw4Q=;
+ b=pp+DpFRFXpaz/85vPKMUOZ5b3CaTJjDYe1KJi0w5bz5C93EXTyQXpwa+lNk5l8N4Q5
+ FKYv5/dIyl5lbz323JxaI5l4xbXvbzXgmquHVipuLJ2rkrw/2bpXLIniLAVDRY6ob7Uz
+ eram+DWYYMK89zSesd1o75ODT5ZKL5YTqjiuEIGw6C1DlAMx5CqShM5UJCH8pHoAbvp/
+ 5S3wExDGte1H9b2PTGWPZW5k/tO8cN44A9NgvcOYdv7KwRaJcyC50cQcbPVK0LuIweXz
+ ihEKucaYmD1mVWXTHEOp0SXw75HKO1EA51bZAJ6Np3YFUZcXvR3A7vd3lAgMpo5eeGTc
+ 8TnQ==
+X-Gm-Message-State: AOAM530caU55GpKTwdRH9uUz2hnDYnrXNDgYe/AL4knRX6aECluejtRs
+ fDg/PWMNqp0th34cioHRcHsnvU0TD3qyP72zhQ==
+X-Received: by 2002:a25:f20d:: with SMTP id i13mr92851972ybe.366.1594254999355; 
+ Wed, 08 Jul 2020 17:36:39 -0700 (PDT)
+Date: Wed,  8 Jul 2020 17:36:04 -0700
 In-Reply-To: <20200709003608.3834629-1-hskinnemoen@google.com>
-Message-Id: <20200709003608.3834629-2-hskinnemoen@google.com>
+Message-Id: <20200709003608.3834629-8-hskinnemoen@google.com>
 Mime-Version: 1.0
 References: <20200709003608.3834629-1-hskinnemoen@google.com>
 X-Mailer: git-send-email 2.27.0.383.g050319c2ae-goog
-Subject: [PATCH v5 01/11] hw/misc: Add NPCM7xx System Global Control Registers
- device model
+Subject: [PATCH v5 07/11] hw/nvram: NPCM7xx OTP device model
 From: Havard Skinnemoen <hskinnemoen@google.com>
 To: peter.maydell@linaro.org, f4bug@amsat.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
- kfting@nuvoton.com, Havard Skinnemoen <hskinnemoen@google.com>,
- Joel Stanley <joel@jms.id.au>, 
- "=?UTF-8?q?C=C3=A9dric=20Le=20Goater?=" <clg@kaod.org>
+ kfting@nuvoton.com, Havard Skinnemoen <hskinnemoen@google.com>, 
+ Avi Fishman <avi.fishman@nuvoton.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::849;
- envelope-from=3i2YGXwsKCnAVgYWbbSacSbUccUZS.QcaeSai-RSjSZbcbUbi.cfU@flex--hskinnemoen.bounces.google.com;
- helo=mail-qt1-x849.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=3l2YGXwsKCnwmxpnssjrtjslttlqj.htrvjrz-ij0jqstslsz.twl@flex--hskinnemoen.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -105
@@ -110,7 +107,7 @@ X-Spam_bar: ----------
 X-Spam_report: (-10.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,40 +122,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sFMYwnGNRq99
+X-TUID: Kz0W6fT1LG6n
 
-Implement a device model for the System Global Control Registers in the
-NPCM730 and NPCM750 BMC SoCs.
+This supports reading and writing OTP fuses and keys. Only fuse reading
+has been tested. Protection is not implemented.
 
-This is primarily used to enable SMP boot (the boot ROM spins reading
-the SCRPAD register) and DDR memory initialization; other registers are
-best effort for now.
-
-The reset values of the MDLR and PWRON registers are determined by the
-SoC variant (730 vs 750) and board straps respectively.
-
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Reviewed-by: Avi Fishman <avi.fishman@nuvoton.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 ---
- include/hw/misc/npcm7xx_gcr.h |  76 ++++++++++++
- hw/misc/npcm7xx_gcr.c         | 226 ++++++++++++++++++++++++++++++++++
- MAINTAINERS                   |   8 ++
- hw/arm/Kconfig                |   3 +
- hw/misc/Makefile.objs         |   1 +
- hw/misc/trace-events          |   4 +
- 6 files changed, 318 insertions(+)
- create mode 100644 include/hw/misc/npcm7xx_gcr.h
- create mode 100644 hw/misc/npcm7xx_gcr.c
+ include/hw/arm/npcm7xx.h       |   3 +
+ include/hw/nvram/npcm7xx_otp.h |  88 +++++++
+ hw/arm/npcm7xx.c               |  29 +++
+ hw/nvram/npcm7xx_otp.c         | 424 +++++++++++++++++++++++++++++++++
+ hw/nvram/Makefile.objs         |   1 +
+ 5 files changed, 545 insertions(+)
+ create mode 100644 include/hw/nvram/npcm7xx_otp.h
+ create mode 100644 hw/nvram/npcm7xx_otp.c
 
-diff --git a/include/hw/misc/npcm7xx_gcr.h b/include/hw/misc/npcm7xx_gcr.h
+diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
+index b8b76bc07b..0fd4ae4133 100644
+--- a/include/hw/arm/npcm7xx.h
++++ b/include/hw/arm/npcm7xx.h
+@@ -20,6 +20,7 @@
+ #include "hw/cpu/a9mpcore.h"
+ #include "hw/misc/npcm7xx_clk.h"
+ #include "hw/misc/npcm7xx_gcr.h"
++#include "hw/nvram/npcm7xx_otp.h"
+ #include "hw/timer/npcm7xx_timer.h"
+ #include "target/arm/cpu.h"
+=20
+@@ -68,6 +69,8 @@ typedef struct NPCM7xxState {
+     NPCM7xxGCRState     gcr;
+     NPCM7xxCLKState     clk;
+     NPCM7xxTimerCtrlState tim[3];
++    NPCM7xxOTPState     key_storage;
++    NPCM7xxOTPState     fuse_array;
+ } NPCM7xxState;
+=20
+ #define TYPE_NPCM7XX    "npcm7xx"
+diff --git a/include/hw/nvram/npcm7xx_otp.h b/include/hw/nvram/npcm7xx_otp.=
+h
 new file mode 100644
-index 0000000000..4884676be2
+index 0000000000..c4c1b751d4
 --- /dev/null
-+++ b/include/hw/misc/npcm7xx_gcr.h
-@@ -0,0 +1,76 @@
++++ b/include/hw/nvram/npcm7xx_otp.h
+@@ -0,0 +1,88 @@
 +/*
-+ * Nuvoton NPCM7xx System Global Control Registers.
++ * Nuvoton NPCM7xx OTP (Fuse Array) Interface
 + *
 + * Copyright 2020 Google LLC
 + *
@@ -173,76 +184,157 @@ HOUT
 + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
 + * for more details.
 + */
-+#ifndef NPCM7XX_GCR_H
-+#define NPCM7XX_GCR_H
++#ifndef NPCM7XX_OTP_H
++#define NPCM7XX_OTP_H
 +
 +#include "exec/memory.h"
 +#include "hw/sysbus.h"
 +
-+enum NPCM7xxGCRRegisters {
-+    NPCM7XX_GCR_PDID,
-+    NPCM7XX_GCR_PWRON,
-+    NPCM7XX_GCR_MFSEL1          =3D 0x0c / sizeof(uint32_t),
-+    NPCM7XX_GCR_MFSEL2,
-+    NPCM7XX_GCR_MISCPE,
-+    NPCM7XX_GCR_SPSWC           =3D 0x038 / sizeof(uint32_t),
-+    NPCM7XX_GCR_INTCR,
-+    NPCM7XX_GCR_INTSR,
-+    NPCM7XX_GCR_HIFCR           =3D 0x050 / sizeof(uint32_t),
-+    NPCM7XX_GCR_INTCR2          =3D 0x060 / sizeof(uint32_t),
-+    NPCM7XX_GCR_MFSEL3,
-+    NPCM7XX_GCR_SRCNT,
-+    NPCM7XX_GCR_RESSR,
-+    NPCM7XX_GCR_RLOCKR1,
-+    NPCM7XX_GCR_FLOCKR1,
-+    NPCM7XX_GCR_DSCNT,
-+    NPCM7XX_GCR_MDLR,
-+    NPCM7XX_GCR_SCRPAD3,
-+    NPCM7XX_GCR_SCRPAD2,
-+    NPCM7XX_GCR_DAVCLVLR        =3D 0x098 / sizeof(uint32_t),
-+    NPCM7XX_GCR_INTCR3,
-+    NPCM7XX_GCR_VSINTR          =3D 0x0ac / sizeof(uint32_t),
-+    NPCM7XX_GCR_MFSEL4,
-+    NPCM7XX_GCR_CPBPNTR         =3D 0x0c4 / sizeof(uint32_t),
-+    NPCM7XX_GCR_CPCTL           =3D 0x0d0 / sizeof(uint32_t),
-+    NPCM7XX_GCR_CP2BST,
-+    NPCM7XX_GCR_B2CPNT,
-+    NPCM7XX_GCR_CPPCTL,
-+    NPCM7XX_GCR_I2CSEGSEL,
-+    NPCM7XX_GCR_I2CSEGCTL,
-+    NPCM7XX_GCR_VSRCR,
-+    NPCM7XX_GCR_MLOCKR,
-+    NPCM7XX_GCR_SCRPAD          =3D 0x013c / sizeof(uint32_t),
-+    NPCM7XX_GCR_USB1PHYCTL,
-+    NPCM7XX_GCR_USB2PHYCTL,
-+    NPCM7XX_GCR_NR_REGS,
-+};
++/* Each OTP module holds 8192 bits of one-time programmable storage */
++#define NPCM7XX_OTP_ARRAY_BITS (8192)
++#define NPCM7XX_OTP_ARRAY_BYTES (NPCM7XX_OTP_ARRAY_BITS / BITS_PER_BYTE)
 +
-+typedef struct NPCM7xxGCRState {
++/* Fuse array offsets */
++#define NPCM7XX_FUSE_FUSTRAP (0)
++#define NPCM7XX_FUSE_CP_FUSTRAP (12)
++#define NPCM7XX_FUSE_DAC_CALIB (16)
++#define NPCM7XX_FUSE_ADC_CALIB (24)
++#define NPCM7XX_FUSE_DERIVATIVE (64)
++#define NPCM7XX_FUSE_TEST_SIG (72)
++#define NPCM7XX_FUSE_DIE_LOCATION (74)
++#define NPCM7XX_FUSE_GP1 (80)
++#define NPCM7XX_FUSE_GP2 (128)
++
++/**
++ * enum NPCM7xxOTPRegister - 32-bit register indices.
++ */
++typedef enum NPCM7xxOTPRegister {
++    NPCM7XX_OTP_FST,
++    NPCM7XX_OTP_FADDR,
++    NPCM7XX_OTP_FDATA,
++    NPCM7XX_OTP_FCFG,
++    /* Offset 0x10 is FKEYIND in OTP1, FUSTRAP in OTP2 */
++    NPCM7XX_OTP_FKEYIND =3D 0x0010 / sizeof(uint32_t),
++    NPCM7XX_OTP_FUSTRAP =3D 0x0010 / sizeof(uint32_t),
++    NPCM7XX_OTP_FCTL,
++    NPCM7XX_OTP_NR_REGS,
++} NPCM7xxOTPRegister;
++
++/**
++ * struct NPCM7xxOTPState - Device state for one OTP module.
++ * @parent: System bus device.
++ * @mmio: Memory region through which registers are accessed.
++ * @regs: Register contents.
++ * @array: OTP storage array.
++ */
++typedef struct NPCM7xxOTPState {
 +    SysBusDevice parent;
 +
-+    MemoryRegion iomem;
++    MemoryRegion mmio;
++    uint32_t regs[NPCM7XX_OTP_NR_REGS];
++    uint8_t array[NPCM7XX_OTP_ARRAY_BYTES];
++} NPCM7xxOTPState;
 +
-+    uint32_t regs[NPCM7XX_GCR_NR_REGS];
++#define TYPE_NPCM7XX_OTP "npcm7xx-otp"
++#define NPCM7XX_OTP(obj) OBJECT_CHECK(NPCM7xxOTPState, (obj), TYPE_NPCM7XX=
+_OTP)
 +
-+    uint32_t reset_pwron;
-+    uint32_t reset_mdlr;
-+    uint32_t reset_intcr3;
-+} NPCM7xxGCRState;
++#define TYPE_NPCM7XX_KEY_STORAGE "npcm7xx-key-storage"
++#define TYPE_NPCM7XX_FUSE_ARRAY "npcm7xx-fuse-array"
 +
-+#define TYPE_NPCM7XX_GCR "npcm7xx-gcr"
-+#define NPCM7XX_GCR(obj) OBJECT_CHECK(NPCM7xxGCRState, (obj), TYPE_NPCM7XX=
-_GCR)
++typedef struct NPCM7xxOTPClass NPCM7xxOTPClass;
 +
-+#endif /* NPCM7XX_GCR_H */
-diff --git a/hw/misc/npcm7xx_gcr.c b/hw/misc/npcm7xx_gcr.c
++/**
++ * npcm7xx_otp_array_write - ECC encode and write data to OTP array.
++ * @s: OTP module.
++ * @data: Data to be encoded and written.
++ * @offset: Offset of first byte to be written in the OTP array.
++ * @len: Number of bytes before ECC encoding.
++ *
++ * Each nibble of data is encoded into a byte, so the number of bytes writ=
+ten
++ * to the array will be @len * 2.
++ */
++extern void npcm7xx_otp_array_write(NPCM7xxOTPState *s, const void *data,
++                                    unsigned int offset, unsigned int len)=
+;
++
++#endif /* NPCM7XX_OTP_H */
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index af45f3c716..70eaa2347f 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -33,6 +33,10 @@
+ #define NPCM7XX_MMIO_BA         (0x80000000)
+ #define NPCM7XX_MMIO_SZ         (0x7ffd0000)
+=20
++/* OTP key storage and fuse strap array */
++#define NPCM7XX_OTP1_BA         (0xf0189000)
++#define NPCM7XX_OTP2_BA         (0xf018a000)
++
+ /* Core system modules. */
+ #define NPCM7XX_L2C_BA          (0xf03fc000)
+ #define NPCM7XX_CPUP_BA         (0xf03fe000)
+@@ -123,6 +127,20 @@ void npcm7xx_write_secondary_boot(ARMCPU *cpu, const s=
+truct arm_boot_info *info)
+                        NPCM7XX_SMP_LOADER_START);
+ }
+=20
++static void npcm7xx_init_fuses(NPCM7xxState *s)
++{
++    NPCM7xxClass *nc =3D NPCM7XX_GET_CLASS(s);
++    uint32_t value;
++
++    /*
++     * The initial mask of disabled modules indicates the chip derivative =
+(e.g.
++     * NPCM750 or NPCM730).
++     */
++    value =3D tswap32(nc->disabled_modules);
++    npcm7xx_otp_array_write(&s->fuse_array, &value, NPCM7XX_FUSE_DERIVATIV=
+E,
++                            sizeof(value));
++}
++
+ static qemu_irq npcm7xx_irq(NPCM7xxState *s, int n)
+ {
+     return qdev_get_gpio_in(DEVICE(&s->a9mpcore), n);
+@@ -143,6 +161,10 @@ static void npcm7xx_init(Object *obj)
+     object_property_add_alias(obj, "power-on-straps", OBJECT(&s->gcr),
+                               "power-on-straps");
+     object_initialize_child(obj, "clk", &s->clk, TYPE_NPCM7XX_CLK);
++    object_initialize_child(obj, "otp1", &s->key_storage,
++                            TYPE_NPCM7XX_KEY_STORAGE);
++    object_initialize_child(obj, "otp2", &s->fuse_array,
++                            TYPE_NPCM7XX_FUSE_ARRAY);
+=20
+     for (i =3D 0; i < ARRAY_SIZE(s->tim); i++) {
+         object_initialize_child(obj, "tim[*]", &s->tim[i], TYPE_NPCM7XX_TI=
+MER);
+@@ -201,6 +223,13 @@ static void npcm7xx_realize(DeviceState *dev, Error **=
+errp)
+     sysbus_realize(SYS_BUS_DEVICE(&s->clk), &error_abort);
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->clk), 0, NPCM7XX_CLK_BA);
+=20
++    /* OTP key storage and fuse strap array */
++    sysbus_realize(SYS_BUS_DEVICE(&s->key_storage), &error_abort);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->key_storage), 0, NPCM7XX_OTP1_BA);
++    sysbus_realize(SYS_BUS_DEVICE(&s->fuse_array), &error_abort);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->fuse_array), 0, NPCM7XX_OTP2_BA);
++    npcm7xx_init_fuses(s);
++
+     /* Timer Modules (TIM) */
+     QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_tim_addr) !=3D ARRAY_SIZE(s->tim)=
+);
+     for (i =3D 0; i < ARRAY_SIZE(s->tim); i++) {
+diff --git a/hw/nvram/npcm7xx_otp.c b/hw/nvram/npcm7xx_otp.c
 new file mode 100644
-index 0000000000..9934cd238d
+index 0000000000..b67d69fdf9
 --- /dev/null
-+++ b/hw/misc/npcm7xx_gcr.c
-@@ -0,0 +1,226 @@
++++ b/hw/nvram/npcm7xx_otp.c
+@@ -0,0 +1,424 @@
 +/*
-+ * Nuvoton NPCM7xx System Global Control Registers.
++ * Nuvoton NPCM7xx OTP (Fuse Array) Interface
 + *
 + * Copyright 2020 Google LLC
 + *
@@ -260,91 +352,288 @@ HOUT
 +
 +#include "qemu/osdep.h"
 +
-+#include "hw/misc/npcm7xx_gcr.h"
-+#include "hw/qdev-properties.h"
++#include "hw/nvram/npcm7xx_otp.h"
 +#include "migration/vmstate.h"
 +#include "qapi/error.h"
++#include "qemu/bitops.h"
 +#include "qemu/log.h"
 +#include "qemu/module.h"
 +#include "qemu/units.h"
 +
-+#include "trace.h"
++/* Each module has 4 KiB of register space. Only a fraction of it is used.=
+ */
++#define NPCM7XX_OTP_REGS_SIZE (4 * KiB)
 +
-+static const uint32_t cold_reset_values[NPCM7XX_GCR_NR_REGS] =3D {
-+    [NPCM7XX_GCR_PDID]          =3D 0x04a92750,   /* Poleg A1 */
-+    [NPCM7XX_GCR_MISCPE]        =3D 0x0000ffff,
-+    [NPCM7XX_GCR_SPSWC]         =3D 0x00000003,
-+    [NPCM7XX_GCR_INTCR]         =3D 0x0000035e,
-+    [NPCM7XX_GCR_HIFCR]         =3D 0x0000004e,
-+    [NPCM7XX_GCR_INTCR2]        =3D (1U << 19),   /* DDR initialized */
-+    [NPCM7XX_GCR_RESSR]         =3D 0x80000000,
-+    [NPCM7XX_GCR_DSCNT]         =3D 0x000000c0,
-+    [NPCM7XX_GCR_DAVCLVLR]      =3D 0x5a00f3cf,
-+    [NPCM7XX_GCR_SCRPAD]        =3D 0x00000008,
-+    [NPCM7XX_GCR_USB1PHYCTL]    =3D 0x034730e4,
-+    [NPCM7XX_GCR_USB2PHYCTL]    =3D 0x034730e4,
++/* Register field definitions. */
++#define FST_RIEN BIT(2)
++#define FST_RDST BIT(1)
++#define FST_RDY BIT(0)
++#define FST_RO_MASK (FST_RDST | FST_RDY)
++
++#define FADDR_BYTEADDR(rv) extract32((rv), 0, 10)
++#define FADDR_BITPOS(rv) extract32((rv), 10, 3)
++
++#define FDATA_CLEAR 0x00000001
++
++#define FCFG_FDIS BIT(31)
++#define FCFG_FCFGLK_MASK 0x00ff0000
++
++#define FCTL_PROG_CMD1 0x00000001
++#define FCTL_PROG_CMD2 0xbf79e5d0
++#define FCTL_READ_CMD 0x00000002
++
++/**
++ * struct NPCM7xxOTPClass - OTP module class.
++ * @parent: System bus device class.
++ * @mmio_ops: MMIO register operations for this type of module.
++ *
++ * The two OTP modules (key-storage and fuse-array) have slightly differen=
+t
++ * behavior, so we give them different MMIO register operations.
++ */
++struct NPCM7xxOTPClass {
++    SysBusDeviceClass parent;
++
++    const MemoryRegionOps *mmio_ops;
 +};
 +
-+static uint64_t npcm7xx_gcr_read(void *opaque, hwaddr offset, unsigned siz=
-e)
++#define NPCM7XX_OTP_CLASS(klass) \
++    OBJECT_CLASS_CHECK(NPCM7xxOTPClass, (klass), TYPE_NPCM7XX_OTP)
++#define NPCM7XX_OTP_GET_CLASS(obj) \
++    OBJECT_GET_CLASS(NPCM7xxOTPClass, (obj), TYPE_NPCM7XX_OTP)
++
++static uint8_t ecc_encode_nibble(uint8_t n)
 +{
-+    uint32_t reg =3D offset / sizeof(uint32_t);
-+    NPCM7xxGCRState *s =3D opaque;
++    uint8_t result =3D n;
 +
-+    if (reg >=3D NPCM7XX_GCR_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: offset 0x%04x out of range\n",
-+                      __func__, (unsigned int)offset);
-+        return 0;
-+    }
++    result |=3D (((n >> 0) & 1) ^ ((n >> 1) & 1)) << 4;
++    result |=3D (((n >> 2) & 1) ^ ((n >> 3) & 1)) << 5;
++    result |=3D (((n >> 0) & 1) ^ ((n >> 2) & 1)) << 6;
++    result |=3D (((n >> 1) & 1) ^ ((n >> 3) & 1)) << 7;
 +
-+    trace_npcm7xx_gcr_read(offset, s->regs[reg]);
-+
-+    return s->regs[reg];
++    return result;
 +}
 +
-+static void npcm7xx_gcr_write(void *opaque, hwaddr offset,
-+                              uint64_t v, unsigned size)
++void npcm7xx_otp_array_write(NPCM7xxOTPState *s, const void *data,
++                             unsigned int offset, unsigned int len)
 +{
-+    uint32_t reg =3D offset / sizeof(uint32_t);
-+    NPCM7xxGCRState *s =3D opaque;
-+    uint32_t value =3D v;
++    const uint8_t *src =3D data;
++    uint8_t *dst =3D &s->array[offset];
 +
-+    trace_npcm7xx_gcr_write(offset, value);
++    while (len-- > 0) {
++        uint8_t c =3D *src++;
 +
-+    if (reg >=3D NPCM7XX_GCR_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: offset 0x%04x out of range\n",
-+                      __func__, (unsigned int)offset);
-+        return;
++        *dst++ =3D ecc_encode_nibble(extract8(c, 0, 4));
++        *dst++ =3D ecc_encode_nibble(extract8(c, 4, 4));
 +    }
++}
++
++/* Common register read handler for both OTP classes. */
++static uint64_t npcm7xx_otp_read(NPCM7xxOTPState *s, NPCM7xxOTPRegister re=
+g)
++{
++    uint32_t value =3D 0;
 +
 +    switch (reg) {
-+    case NPCM7XX_GCR_PDID:
-+    case NPCM7XX_GCR_PWRON:
-+    case NPCM7XX_GCR_INTSR:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: register @ 0x%04x is read-only=
++    case NPCM7XX_OTP_FST:
++    case NPCM7XX_OTP_FADDR:
++    case NPCM7XX_OTP_FDATA:
++    case NPCM7XX_OTP_FCFG:
++        value =3D s->regs[reg];
++        break;
++
++    case NPCM7XX_OTP_FCTL:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: read from write-only FCTL register\n",
++                      DEVICE(s)->canonical_path);
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: read from invalid offset 0x%zx=
 \n",
-+                      __func__, (unsigned int)offset);
++                      DEVICE(s)->canonical_path, reg * sizeof(uint32_t));
++        break;
++    }
++
++    return value;
++}
++
++/* Read a byte from the OTP array into the data register. */
++static void npcm7xx_otp_read_array(NPCM7xxOTPState *s)
++{
++    uint32_t faddr =3D s->regs[NPCM7XX_OTP_FADDR];
++
++    s->regs[NPCM7XX_OTP_FDATA] =3D s->array[FADDR_BYTEADDR(faddr)];
++    s->regs[NPCM7XX_OTP_FST] |=3D FST_RDST | FST_RDY;
++}
++
++/* Program a byte from the data register into the OTP array. */
++static void npcm7xx_otp_program_array(NPCM7xxOTPState *s)
++{
++    uint32_t faddr =3D s->regs[NPCM7XX_OTP_FADDR];
++
++    /* Bits can only go 0->1, never 1->0. */
++    s->array[FADDR_BYTEADDR(faddr)] |=3D (1U << FADDR_BITPOS(faddr));
++    s->regs[NPCM7XX_OTP_FST] |=3D FST_RDST | FST_RDY;
++}
++
++/* Compute the next value of the FCFG register. */
++static uint32_t npcm7xx_otp_compute_fcfg(uint32_t cur_value, uint32_t new_=
+value)
++{
++    uint32_t lock_mask;
++    uint32_t value;
++
++    /*
++     * FCFGLK holds sticky bits 16..23, indicating which bits in FPRGLK (8=
+..15)
++     * and FRDLK (0..7) that are read-only.
++     */
++    lock_mask =3D (cur_value & FCFG_FCFGLK_MASK) >> 8;
++    lock_mask |=3D lock_mask >> 8;
++    /* FDIS and FCFGLK bits are sticky (write 1 to set; can't clear). */
++    value =3D cur_value & (FCFG_FDIS | FCFG_FCFGLK_MASK);
++    /* Preserve read-only bits in FPRGLK and FRDLK */
++    value |=3D cur_value & lock_mask;
++    /* Set all bits that aren't read-only. */
++    value |=3D new_value & ~lock_mask;
++
++    return value;
++}
++
++/* Common register write handler for both OTP classes. */
++static void npcm7xx_otp_write(NPCM7xxOTPState *s, NPCM7xxOTPRegister reg,
++                              uint32_t value)
++{
++    switch (reg) {
++    case NPCM7XX_OTP_FST:
++        /* RDST is cleared by writing 1 to it. */
++        if (value & FST_RDST) {
++            s->regs[NPCM7XX_OTP_FST] &=3D ~FST_RDST;
++        }
++        /* Preserve read-only and write-one-to-clear bits */
++        value &=3D ~FST_RO_MASK;
++        value |=3D s->regs[NPCM7XX_OTP_FST] & FST_RO_MASK;
++        break;
++
++    case NPCM7XX_OTP_FADDR:
++        break;
++
++    case NPCM7XX_OTP_FDATA:
++        /*
++         * This register is cleared by writing a magic value to it; no oth=
+er
++         * values can be written.
++         */
++        if (value =3D=3D FDATA_CLEAR) {
++            value =3D 0;
++        } else {
++            value =3D s->regs[NPCM7XX_OTP_FDATA];
++        }
++        break;
++
++    case NPCM7XX_OTP_FCFG:
++        value =3D npcm7xx_otp_compute_fcfg(s->regs[NPCM7XX_OTP_FCFG], valu=
+e);
++        break;
++
++    case NPCM7XX_OTP_FCTL:
++        switch (value) {
++        case FCTL_READ_CMD:
++            npcm7xx_otp_read_array(s);
++            break;
++
++        case FCTL_PROG_CMD1:
++            /*
++             * Programming requires writing two separate magic values to t=
+his
++             * register; this is the first one. Just store it so it can be
++             * verified later when the second magic value is received.
++             */
++            break;
++
++        case FCTL_PROG_CMD2:
++            /*
++             * Only initiate programming if we received the first half of =
+the
++             * command immediately before this one.
++             */
++            if (s->regs[NPCM7XX_OTP_FCTL] =3D=3D FCTL_PROG_CMD1) {
++                npcm7xx_otp_program_array(s);
++            }
++            break;
++
++        default:
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: unrecognized FCNTL value 0x%" PRIx32 "\n",
++                          DEVICE(s)->canonical_path, value);
++            break;
++        }
++        if (value !=3D FCTL_PROG_CMD1) {
++            value =3D 0;
++        }
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: write to invalid offset 0x%zx\=
+n",
++                      DEVICE(s)->canonical_path, reg * sizeof(uint32_t));
 +        return;
-+
-+    case NPCM7XX_GCR_RESSR:
-+    case NPCM7XX_GCR_CP2BST:
-+        /* Write 1 to clear */
-+        value =3D s->regs[reg] & ~value;
-+        break;
-+
-+    case NPCM7XX_GCR_RLOCKR1:
-+    case NPCM7XX_GCR_MDLR:
-+        /* Write 1 to set */
-+        value |=3D s->regs[reg];
-+        break;
-+    };
++    }
 +
 +    s->regs[reg] =3D value;
 +}
 +
-+static const struct MemoryRegionOps npcm7xx_gcr_ops =3D {
-+    .read       =3D npcm7xx_gcr_read,
-+    .write      =3D npcm7xx_gcr_write,
++/* Register read handler specific to the fuse array OTP module. */
++static uint64_t npcm7xx_fuse_array_read(void *opaque, hwaddr addr,
++                                        unsigned int size)
++{
++    NPCM7xxOTPRegister reg =3D addr / sizeof(uint32_t);
++    NPCM7xxOTPState *s =3D opaque;
++    uint32_t value;
++
++    /*
++     * Only the Fuse Strap register needs special handling; all other regi=
+sters
++     * work the same way for both kinds of OTP modules.
++     */
++    if (reg !=3D NPCM7XX_OTP_FUSTRAP) {
++        value =3D npcm7xx_otp_read(s, reg);
++    } else {
++        /* FUSTRAP is stored as three copies in the OTP array. */
++        uint32_t fustrap[3];
++
++        memcpy(fustrap, &s->array[0], sizeof(fustrap));
++
++        /* Determine value by a majority vote on each bit. */
++        value =3D (fustrap[0] & fustrap[1]) | (fustrap[0] & fustrap[2]) |
++                (fustrap[1] & fustrap[2]);
++    }
++
++    return value;
++}
++
++/* Register write handler specific to the fuse array OTP module. */
++static void npcm7xx_fuse_array_write(void *opaque, hwaddr addr, uint64_t v=
+,
++                                     unsigned int size)
++{
++    NPCM7xxOTPRegister reg =3D addr / sizeof(uint32_t);
++    NPCM7xxOTPState *s =3D opaque;
++
++    /*
++     * The Fuse Strap register is read-only. Other registers are handled b=
+y
++     * common code.
++     */
++    if (reg !=3D NPCM7XX_OTP_FUSTRAP) {
++        npcm7xx_otp_write(s, reg, v);
++    }
++}
++
++static const MemoryRegionOps npcm7xx_fuse_array_ops =3D {
++    .read       =3D npcm7xx_fuse_array_read,
++    .write      =3D npcm7xx_fuse_array_write,
 +    .endianness =3D DEVICE_LITTLE_ENDIAN,
 +    .valid      =3D {
 +        .min_access_size        =3D 4,
@@ -353,194 +642,151 @@ e)
 +    },
 +};
 +
-+static void npcm7xx_gcr_enter_reset(Object *obj, ResetType type)
++/* Register read handler specific to the key storage OTP module. */
++static uint64_t npcm7xx_key_storage_read(void *opaque, hwaddr addr,
++                                         unsigned int size)
 +{
-+    NPCM7xxGCRState *s =3D NPCM7XX_GCR(obj);
-+
-+    QEMU_BUILD_BUG_ON(sizeof(s->regs) !=3D sizeof(cold_reset_values));
-+
-+    switch (type) {
-+    case RESET_TYPE_COLD:
-+        memcpy(s->regs, cold_reset_values, sizeof(s->regs));
-+        s->regs[NPCM7XX_GCR_PWRON] =3D s->reset_pwron;
-+        s->regs[NPCM7XX_GCR_MDLR] =3D s->reset_mdlr;
-+        s->regs[NPCM7XX_GCR_INTCR3] =3D s->reset_intcr3;
-+        break;
-+    }
-+}
-+
-+static void npcm7xx_gcr_realize(DeviceState *dev, Error **errp)
-+{
-+    NPCM7xxGCRState *s =3D NPCM7XX_GCR(dev);
-+    uint64_t dram_size;
-+    Error *err =3D NULL;
-+    Object *obj;
-+
-+    obj =3D object_property_get_link(OBJECT(dev), "dram-mr", &err);
-+    if (!obj) {
-+        error_setg(errp, "%s: required dram-mr link not found: %s",
-+                   __func__, error_get_pretty(err));
-+        return;
-+    }
-+    dram_size =3D memory_region_size(MEMORY_REGION(obj));
-+
-+    /* Power-on reset value */
-+    s->reset_intcr3 =3D 0x00001002;
++    NPCM7xxOTPRegister reg =3D addr / sizeof(uint32_t);
++    NPCM7xxOTPState *s =3D opaque;
 +
 +    /*
-+     * The GMMAP (Graphics Memory Map) field is used by u-boot to detect t=
-he
-+     * DRAM size, and is normally initialized by the boot block as part of=
- DRAM
-+     * training. However, since we don't have a complete emulation of the
-+     * memory controller and try to make it look like it has already been
-+     * initialized, the boot block will skip this initialization, and we n=
-eed
-+     * to make sure this field is set correctly up front.
-+     *
-+     * WARNING: some versions of u-boot only looks at bits 8 and 9, so 2 G=
-iB or
-+     * more of DRAM will be interpreted as 128 MiB.
-+     *
-+     * https://github.com/Nuvoton-Israel/u-boot/blob/2aef993bd2aafeb5408db=
-aad0f3ce099ee40c4aa/board/nuvoton/poleg/poleg.c#L244
++     * Only the Fuse Key Index register needs special handling; all other
++     * registers work the same way for both kinds of OTP modules.
 +     */
-+    if (dram_size >=3D 2 * GiB) {
-+        s->reset_intcr3 |=3D 4 << 8;
-+    } else if (dram_size >=3D 1 * GiB) {
-+        s->reset_intcr3 |=3D 3 << 8;
-+    } else if (dram_size >=3D 512 * MiB) {
-+        s->reset_intcr3 |=3D 2 << 8;
-+    } else if (dram_size >=3D 256 * MiB) {
-+        s->reset_intcr3 |=3D 1 << 8;
-+    } else if (dram_size >=3D 128 * MiB) {
-+        s->reset_intcr3 |=3D 0 << 8;
-+    } else {
-+        error_setg(errp,
-+                   "npcm7xx_gcr: DRAM size %" PRIu64
-+                   " is too small (need 128 MiB minimum)",
-+                   dram_size);
++    if (reg !=3D NPCM7XX_OTP_FKEYIND) {
++        return npcm7xx_otp_read(s, reg);
++    }
++
++    qemu_log_mask(LOG_UNIMP, "%s: FKEYIND is not implemented\n", __func__)=
+;
++
++    return s->regs[NPCM7XX_OTP_FKEYIND];
++}
++
++/* Register write handler specific to the key storage OTP module. */
++static void npcm7xx_key_storage_write(void *opaque, hwaddr addr, uint64_t =
+v,
++                                      unsigned int size)
++{
++    NPCM7xxOTPRegister reg =3D addr / sizeof(uint32_t);
++    NPCM7xxOTPState *s =3D opaque;
++
++    /*
++     * Only the Fuse Key Index register needs special handling; all other
++     * registers work the same way for both kinds of OTP modules.
++     */
++    if (reg !=3D NPCM7XX_OTP_FKEYIND) {
++        npcm7xx_otp_write(s, reg, v);
 +        return;
 +    }
++
++    qemu_log_mask(LOG_UNIMP, "%s: FKEYIND is not implemented\n", __func__)=
+;
++
++    s->regs[NPCM7XX_OTP_FKEYIND] =3D v;
 +}
 +
-+static void npcm7xx_gcr_init(Object *obj)
++static const MemoryRegionOps npcm7xx_key_storage_ops =3D {
++    .read       =3D npcm7xx_key_storage_read,
++    .write      =3D npcm7xx_key_storage_write,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
++    .valid      =3D {
++        .min_access_size        =3D 4,
++        .max_access_size        =3D 4,
++        .unaligned              =3D false,
++    },
++};
++
++static void npcm7xx_otp_enter_reset(Object *obj, ResetType type)
 +{
-+    NPCM7xxGCRState *s =3D NPCM7XX_GCR(obj);
++    NPCM7xxOTPState *s =3D NPCM7XX_OTP(obj);
 +
-+    memory_region_init_io(&s->iomem, obj, &npcm7xx_gcr_ops, s,
-+                          TYPE_NPCM7XX_GCR, 4 * KiB);
-+    sysbus_init_mmio(&s->parent, &s->iomem);
++    memset(s->regs, 0, sizeof(s->regs));
++
++    s->regs[NPCM7XX_OTP_FST] =3D 0x00000001;
++    s->regs[NPCM7XX_OTP_FCFG] =3D 0x20000000;
 +}
 +
-+static const VMStateDescription vmstate_npcm7xx_gcr =3D {
-+    .name =3D "npcm7xx-gcr",
++static void npcm7xx_otp_realize(DeviceState *dev, Error **errp)
++{
++    NPCM7xxOTPClass *oc =3D NPCM7XX_OTP_GET_CLASS(dev);
++    NPCM7xxOTPState *s =3D NPCM7XX_OTP(dev);
++    SysBusDevice *sbd =3D &s->parent;
++
++    memset(s->array, 0, sizeof(s->array));
++
++    memory_region_init_io(&s->mmio, OBJECT(s), oc->mmio_ops, s, "regs",
++                          NPCM7XX_OTP_REGS_SIZE);
++    sysbus_init_mmio(sbd, &s->mmio);
++}
++
++static const VMStateDescription vmstate_npcm7xx_otp =3D {
++    .name =3D "npcm7xx-otp",
 +    .version_id =3D 0,
 +    .minimum_version_id =3D 0,
 +    .fields =3D (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, NPCM7xxGCRState, NPCM7XX_GCR_NR_REGS),
++        VMSTATE_UINT32_ARRAY(regs, NPCM7xxOTPState, NPCM7XX_OTP_NR_REGS),
++        VMSTATE_UINT8_ARRAY(array, NPCM7xxOTPState, NPCM7XX_OTP_ARRAY_BYTE=
+S),
 +        VMSTATE_END_OF_LIST(),
 +    },
 +};
 +
-+static Property npcm7xx_gcr_properties[] =3D {
-+    DEFINE_PROP_UINT32("disabled-modules", NPCM7xxGCRState, reset_mdlr, 0)=
-,
-+    DEFINE_PROP_UINT32("power-on-straps", NPCM7xxGCRState, reset_pwron, 0)=
-,
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void npcm7xx_gcr_class_init(ObjectClass *klass, void *data)
++static void npcm7xx_otp_class_init(ObjectClass *klass, void *data)
 +{
 +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
 +    DeviceClass *dc =3D DEVICE_CLASS(klass);
 +
-+    dc->desc =3D "NPCM7xx System Global Control Registers";
-+    dc->realize =3D npcm7xx_gcr_realize;
-+    dc->vmsd =3D &vmstate_npcm7xx_gcr;
-+    rc->phases.enter =3D npcm7xx_gcr_enter_reset;
-+
-+    device_class_set_props(dc, npcm7xx_gcr_properties);
++    dc->realize =3D npcm7xx_otp_realize;
++    dc->vmsd =3D &vmstate_npcm7xx_otp;
++    rc->phases.enter =3D npcm7xx_otp_enter_reset;
 +}
 +
-+static const TypeInfo npcm7xx_gcr_info =3D {
-+    .name               =3D TYPE_NPCM7XX_GCR,
-+    .parent             =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_size      =3D sizeof(NPCM7xxGCRState),
-+    .instance_init      =3D npcm7xx_gcr_init,
-+    .class_init         =3D npcm7xx_gcr_class_init,
-+};
-+
-+static void npcm7xx_gcr_register_type(void)
++static void npcm7xx_key_storage_class_init(ObjectClass *klass, void *data)
 +{
-+    type_register_static(&npcm7xx_gcr_info);
++    NPCM7xxOTPClass *oc =3D NPCM7XX_OTP_CLASS(klass);
++
++    oc->mmio_ops =3D &npcm7xx_key_storage_ops;
 +}
-+type_init(npcm7xx_gcr_register_type);
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 42388f1de2..43173a338a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -723,6 +723,14 @@ S: Odd Fixes
- F: hw/arm/musicpal.c
- F: docs/system/arm/musicpal.rst
-=20
-+Nuvoton NPCM7xx
-+M: Havard Skinnemoen <hskinnemoen@google.com>
-+M: Tyrone Ting <kfting@nuvoton.com>
-+L: qemu-arm@nongnu.org
-+S: Supported
-+F: hw/*/npcm7xx*
-+F: include/hw/*/npcm7xx*
 +
- nSeries
- M: Andrzej Zaborowski <balrogg@gmail.com>
- M: Peter Maydell <peter.maydell@linaro.org>
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 4a224a6351..192a8dec3b 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -354,6 +354,9 @@ config XLNX_VERSAL
-     select VIRTIO_MMIO
-     select UNIMP
-=20
-+config NPCM7XX
-+    bool
++static void npcm7xx_fuse_array_class_init(ObjectClass *klass, void *data)
++{
++    NPCM7xxOTPClass *oc =3D NPCM7XX_OTP_CLASS(klass);
 +
- config FSL_IMX25
-     bool
-     select IMX
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index 5aaca8a039..40a9d1c01e 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -51,6 +51,7 @@ common-obj-$(CONFIG_IMX) +=3D imx_rngc.o
- common-obj-$(CONFIG_MILKYMIST) +=3D milkymist-hpdmc.o
- common-obj-$(CONFIG_MILKYMIST) +=3D milkymist-pfpu.o
- common-obj-$(CONFIG_MAINSTONE) +=3D mst_fpga.o
-+common-obj-$(CONFIG_NPCM7XX) +=3D npcm7xx_gcr.o
- common-obj-$(CONFIG_OMAP) +=3D omap_clk.o
- common-obj-$(CONFIG_OMAP) +=3D omap_gpmc.o
- common-obj-$(CONFIG_OMAP) +=3D omap_l4.o
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index ebea53735c..48e2d54c49 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -107,6 +107,10 @@ mos6522_set_sr_int(void) "set sr_int"
- mos6522_write(uint64_t addr, uint64_t val) "reg=3D0x%"PRIx64 " val=3D0x%"P=
-RIx64
- mos6522_read(uint64_t addr, unsigned val) "reg=3D0x%"PRIx64 " val=3D0x%x"
-=20
-+# npcm7xx_gcr.c
-+npcm7xx_gcr_read(uint64_t offset, uint32_t value) " offset: 0x%04" PRIx64 =
-" value: 0x%08" PRIx32
-+npcm7xx_gcr_write(uint64_t offset, uint32_t value) "offset: 0x%04" PRIx64 =
-" value: 0x%08" PRIx32
++    oc->mmio_ops =3D &npcm7xx_fuse_array_ops;
++}
 +
- # stm32f4xx_syscfg
- stm32f4xx_syscfg_set_irq(int gpio, int line, int level) "Interupt: GPIO: %=
-d, Line: %d; Level: %d"
- stm32f4xx_pulse_exti(int irq) "Pulse EXTI: %d"
++static const TypeInfo npcm7xx_otp_types[] =3D {
++    {
++        .name =3D TYPE_NPCM7XX_OTP,
++        .parent =3D TYPE_SYS_BUS_DEVICE,
++        .instance_size =3D sizeof(NPCM7xxOTPState),
++        .class_init =3D npcm7xx_otp_class_init,
++        .abstract =3D true,
++    },
++    {
++        .name =3D TYPE_NPCM7XX_KEY_STORAGE,
++        .parent =3D TYPE_NPCM7XX_OTP,
++        .class_init =3D npcm7xx_key_storage_class_init,
++    },
++    {
++        .name =3D TYPE_NPCM7XX_FUSE_ARRAY,
++        .parent =3D TYPE_NPCM7XX_OTP,
++        .class_init =3D npcm7xx_fuse_array_class_init,
++    },
++};
++DEFINE_TYPES(npcm7xx_otp_types);
+diff --git a/hw/nvram/Makefile.objs b/hw/nvram/Makefile.objs
+index f3ad921382..0270f0bbf7 100644
+--- a/hw/nvram/Makefile.objs
++++ b/hw/nvram/Makefile.objs
+@@ -4,5 +4,6 @@ common-obj-$(CONFIG_AT24C) +=3D eeprom_at24c.o
+ common-obj-y +=3D fw_cfg.o
+ common-obj-$(CONFIG_CHRP_NVRAM) +=3D chrp_nvram.o
+ common-obj-$(CONFIG_MAC_NVRAM) +=3D mac_nvram.o
++common-obj-$(CONFIG_NPCM7XX) +=3D npcm7xx_otp.o
+ common-obj-$(CONFIG_NRF51_SOC) +=3D nrf51_nvm.o
+ obj-$(CONFIG_PSERIES) +=3D spapr_nvram.o
 --=20
 2.27.0.383.g050319c2ae-goog
 

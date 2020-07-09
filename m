@@ -1,108 +1,109 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1066259lfm;
-        Wed, 8 Jul 2020 22:17:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw2MGl+/F9arnbhXwn8A6sxZeSVZX8LJgASYBdUPi0wSt4w+8kgr2wQjnIG2m+rCWWYh5sE
-X-Received: by 2002:a25:7496:: with SMTP id p144mr39863855ybc.36.1594271863769;
-        Wed, 08 Jul 2020 22:17:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594271863; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1076691lfm;
+        Wed, 8 Jul 2020 22:34:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy1RaXzhFtgmYnPCdFD57VFZJK3uZKalKvjzW3BoFrFTMLQDwtgRSZKBv7mz7xKfXC9/TLl
+X-Received: by 2002:a25:4dc3:: with SMTP id a186mr49012819ybb.106.1594272870877;
+        Wed, 08 Jul 2020 22:34:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594272870; cv=none;
         d=google.com; s=arc-20160816;
-        b=JPuqC3p7Yn0j0VtsZJlvlozbVJ+TwIv8npTJ9gUub1EdIXsCuPSS4ccYGf3EDMxnbj
-         9cqfmaipe+gSTtORkgSF29d5B1mxxxEIYiTLEc2Nh7gT8k504QBRegy6JMSHTw+WvMUw
-         oOFlwnkLV8Q3n+veDsB9j2cMrBxW5JQWrIb9ISrW34WzcRYRi9eBauvW0/RYU+dvZYj2
-         R6SibAiygKWyXEHQHHmne0UaWAuFmf221SXXPrr95i7JJwSHAzl+lM48nXQoGE7vsQYc
-         S5Nh6XWUVCchL1ko83DYVl0MsuIee0p4OnP8dV8CQDE1nBS6q0M6kyjoJlWUhTHjcPX3
-         e3YQ==
+        b=f8mRxiTWcPygVWFN/w1C7gSDOqlpRXSpftZF2wPO19fFjWHBsW//pEETMNE5sAkaag
+         nG0r0jOhA8eTk2G8t2PEMxBQd9oe1ZB+rW+lphA6KkYXFFeS0BPfP/oRQCQLitKt8iUs
+         BroVo4rjCT+W357GP374hSQjXP3EBeCoHsCeYkSYbocFq6op5aLZaWiEH5mXTq0Iz2RE
+         CZzguDmyeu0AHTW3jc/DOS3+6XqzvveemdvZmbyIgNajFUvWh/scCqiY5tlP8VbFhEZs
+         fvJEq7m0Avnlc+jseXzmcpccWMl4N4CgGBnYmAahftVCc2GBFhqifX30DI32ft3yuNhI
+         2KFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=iD9uRyt3nAO8bZ8dmvoKHU/pnl4/8quiJRT4mg89xvc=;
-        b=yDZP3s9eT9vuK8gjjv931c1cLwwraPz0loHZYzFCvt4w7LtBjI2DHmNCKXlAoSRrBU
-         EBGhYJpTgHF4zw5SBOzycsdm2hAh6mfqBqm4/USve01xNfGufbvLlUVr8+GwLrxYMAo9
-         Ze7bHIfrOXXRsDuEncKQyBsBhMhUpMQtoUrrEYk3tU3qdOLBSk9sd4d368kgNUHRycsM
-         UoJxsq/ys2lfz9sA21asL4sCjlEIlZAHFd+5TXUAwAlo+fMg3sD/mdmS+FfYoHMd18kx
-         w/JtTILS3PqUsFkGyTUpo7DwrtBnVAjaUVXt6XY9qImoovM2Sesh6Xvi/q+s/WMMsRly
-         zelw==
+        bh=OrR3Z1znEUDds/mQrhxbFHfHFATqlj6dLaDL002fzMk=;
+        b=ZZWDHelDdbGxo85zXKpa/uncNH8zgI7QqQsdAn9H9hA9bNDVoh8V3rXSDNp0QZCK/p
+         leAZw8B1Rim73J9zGLIB2DxtrZPUpOK0LLuMC6ZLOU3lZBkE50BuWTIzG9oOdmJ+FFiK
+         Lcq9uXASulBLhGhYKHLCzYVXzMNDUACMSIirzMudU5Tr93wAmKJSu61b0ZrTID+GY19O
+         3pjaGbjjao/oetWps3TGrhlAVQBxfb/EPshiUG/EZ50HOAEbXRilTNUbpta2Z6QzCtlR
+         E+ZAPjg5zw1++PTM9aVX17kJzW7gdnyvTi2awATZAAHZc9prdQccoPMyOLxK529wZorv
+         5F/w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J01POJav;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="C6zeb3//";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v131si1688088ybe.391.2020.07.08.22.17.43
+        by mx.google.com with ESMTPS id l126si1706247ybc.480.2020.07.08.22.34.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jul 2020 22:17:43 -0700 (PDT)
+        Wed, 08 Jul 2020 22:34:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J01POJav;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="C6zeb3//";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:52974 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36972 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtOwI-0004tI-Vf
-	for alex.bennee@linaro.org; Thu, 09 Jul 2020 01:17:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41234)
+	id 1jtPCY-0002QP-Ab
+	for alex.bennee@linaro.org; Thu, 09 Jul 2020 01:34:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44352)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jtOwB-0004sK-8I; Thu, 09 Jul 2020 01:17:35 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:37185)
+ id 1jtPCR-0002QE-JN; Thu, 09 Jul 2020 01:34:23 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:44307)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jtOw9-0000oN-Hp; Thu, 09 Jul 2020 01:17:34 -0400
-Received: by mail-wr1-x441.google.com with SMTP id a6so905089wrm.4;
- Wed, 08 Jul 2020 22:17:32 -0700 (PDT)
+ id 1jtPCQ-0002bk-44; Thu, 09 Jul 2020 01:34:23 -0400
+Received: by mail-wr1-x444.google.com with SMTP id b6so903566wrs.11;
+ Wed, 08 Jul 2020 22:34:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=iD9uRyt3nAO8bZ8dmvoKHU/pnl4/8quiJRT4mg89xvc=;
- b=J01POJavNkAMdcuu0l8iS/wGpOhMAa+74SLqbgMWuh62aH8qez8DTDEsNfjUK87Xik
- tIkXTQBFKqwv57UDXNSiebz2MWM+6XNmc4HWOQucODK7FQlqPCEDOw5RYhRq12+acAT4
- dRUNoILFOUONxjPwSnRgSYSqYm4u9BODFxLKPkG01sKM3ROMcZ83DHDJIjXB0Oje05M4
- sgC151Wvq/QWz/q8Xg6n/MPt+Pz4JfBr0wZHDM8lzBks7vlNE9uiv67D36tDmam3YmTS
- hsO0DUjtS8ZIwQLU4wntRs/ILt1gbKJi0UN0mtHRkCDXAq4M4IeVAfeZau8ifaJO/23w
- rdow==
+ bh=OrR3Z1znEUDds/mQrhxbFHfHFATqlj6dLaDL002fzMk=;
+ b=C6zeb3//BogHt4RIxTgB7dSXflWf8oWig0CjwMeCxiRfUNGmvB76tMrf8WqItGRCuX
+ pQzlz47clX5FOqwd8f5AnrCtNPBoT94GdXZxQzVwgWXGRQfhj6h2D72CfPcXafFFFCaz
+ /SbpMmo50jI77tMJCsE5/LhOv2M7tysayD2AtQir6hDpR+kKCkkDcAz1IgUarDi4PE4A
+ tojugrrod4HAAH2BXQKZ+YG1OhUyMJ6xKAPWyhHY+cKgGj+x0vgAjMnaDxfYO3S2b2wV
+ MYb9Fj4l8QswGl660C0OAdhAyIKsb67TuyvIr3xuTm9yEmvATvVK7d50ayCfP8XQxOau
+ ExBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=iD9uRyt3nAO8bZ8dmvoKHU/pnl4/8quiJRT4mg89xvc=;
- b=YxLzZAtHrTsl2fgJQIH81EuMdOuS7/hCYIJicoYqU9vEk382ltSZjBBn8xydAwD9OJ
- x5tEjEoOoPgwVIZSyFXDXBMNFkQCtC67CrQ5tGvyTWnIAY2rMmT1oi8eYagOAbzWc6Tj
- 6Ssr3Jp1nhiiWRfvnY5u6huGbgodeCmZ/ZIRMZCjCr/x3XpkmV6lRHCMHOeVx4bemnEd
- VO7CO9rTaQZ7bVpmGmSLMZ4XFl8yHZpoa7ORsrJ5bqDvbGst6xstYOhO0PM3VmsdUrog
- xHfArnfa3POUXWrM2XaLV1l64boL+fBJgOloHL8vgIVhAxKwZ62df9z//t0sDbr2o8zz
- v7gQ==
-X-Gm-Message-State: AOAM533aIvv0A3iExaIdhdOtomzfWY4II0ZznDjYf3g7M4Os9tjaY6hy
- m0nwswxzifINGk857uqqQCo=
-X-Received: by 2002:adf:f6cb:: with SMTP id y11mr60596107wrp.100.1594271851355; 
- Wed, 08 Jul 2020 22:17:31 -0700 (PDT)
+ bh=OrR3Z1znEUDds/mQrhxbFHfHFATqlj6dLaDL002fzMk=;
+ b=jBk9jp7dnayyROuF/zOatc2bjq6mjoIh2wuGbYwBEDpFpWzG8ngcpQggP+O1ZGs34g
+ JK6L6SOorGB21A2GbR8dUrxn6jMScPWOBZKGm38zuu53e4Cy4a7duEC/zcCRsY8puKiI
+ +A2fZTgCTg7UDtO4Mjcx0/B7L1RrdpCic9uBnJ8MdnLn8h2+JVFOKGVbllxCovQf+2FV
+ Lw2tyuz38grrc3ynqGCdGKWU88p1wiUSSGmK+oklsgvc+Cyq47xh4YH132mLa698CelO
+ eiQL4+f0xvYNW4yyzO3l9jv+z9wopDDDBl5LjqhiCPckQGXGzGNB+jqRnSYAvopS2rih
+ +1wQ==
+X-Gm-Message-State: AOAM533hZwCtNSaBMvPLBErUG4Pl6KE0jNwikC1porszzmXQlT2BCsd9
+ /wnTNrTlWCBJ7TRUAMc22Jw=
+X-Received: by 2002:adf:f889:: with SMTP id u9mr67408394wrp.149.1594272860250; 
+ Wed, 08 Jul 2020 22:34:20 -0700 (PDT)
 Received: from [192.168.1.36] (138.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id u16sm2943756wmn.11.2020.07.08.22.17.30
+ by smtp.gmail.com with ESMTPSA id d81sm16653152wmc.0.2020.07.08.22.34.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jul 2020 22:17:30 -0700 (PDT)
+ Wed, 08 Jul 2020 22:34:19 -0700 (PDT)
 Subject: Re: [PATCH v4 05/12] hw/arm: Add NPCM730 and NPCM750 SoC models
-To: Havard Skinnemoen <hskinnemoen@google.com>
+To: Havard Skinnemoen <hskinnemoen@google.com>,
+ Peter Maydell <peter.maydell@linaro.org>
 References: <20200707184730.3047754-1-hskinnemoen@google.com>
  <20200707184730.3047754-6-hskinnemoen@google.com>
  <4b7130f2-032c-3067-b2b6-876a2b17b707@amsat.org>
- <2d1e272b-6575-30df-22ff-5d720973951d@amsat.org>
- <CAFQmdRZ-fZGD-Zzr6YvRyB7oEaqdek-e6UeCjekW-DnZLOfbrQ@mail.gmail.com>
+ <CAFQmdRYi5QFHbcWQH-bWqAsSCidzYMedC8n+mib1DPpJuEy-Rw@mail.gmail.com>
+ <CAFQmdRZdUKvmi_eKdtCnR8uP63sRP9X0Z7oxZES56mtSz_=7FA@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <d3254729-e1b2-64aa-3df5-7edfe27e29a7@amsat.org>
-Date: Thu, 9 Jul 2020 07:17:29 +0200
+Message-ID: <af879fd1-dea8-a3f2-d3fb-13be24c0b740@amsat.org>
+Date: Thu, 9 Jul 2020 07:34:18 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <CAFQmdRZ-fZGD-Zzr6YvRyB7oEaqdek-e6UeCjekW-DnZLOfbrQ@mail.gmail.com>
+In-Reply-To: <CAFQmdRZdUKvmi_eKdtCnR8uP63sRP9X0Z7oxZES56mtSz_=7FA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -111,8 +112,7 @@ X-Spam_bar: /
 X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
  HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,118 +125,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+Cc: CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
  IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oXYwKTqhuBN1
+X-TUID: C9RnvFOZlH87
 
-On 7/9/20 2:23 AM, Havard Skinnemoen wrote:
-> On Wed, Jul 8, 2020 at 10:56 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>
->> On 7/8/20 7:31 PM, Philippe Mathieu-Daudé wrote:
->>> Hi Havard,
->>>
+On 7/9/20 2:06 AM, Havard Skinnemoen wrote:
+> On Wed, Jul 8, 2020 at 11:13 AM Havard Skinnemoen
+> <hskinnemoen@google.com> wrote:
+>> On Wed, Jul 8, 2020 at 10:31 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
 >>> On 7/7/20 8:47 PM, Havard Skinnemoen wrote:
->>>> The Nuvoton NPCM7xx SoC family are used to implement Baseboard
->>>> Management Controllers in servers. While the family includes four SoCs,
->>>> this patch implements limited support for two of them: NPCM730 (targeted
->>>> for Data Center applications) and NPCM750 (targeted for Enterprise
->>>> applications).
->>>>
->>>> This patch includes little more than the bare minimum needed to boot a
->>>> Linux kernel built with NPCM7xx support in direct-kernel mode:
->>>>
->>>>   - Two Cortex-A9 CPU cores with built-in periperhals.
->>>>   - Global Configuration Registers.
->>>>   - Clock Management.
->>>>   - 3 Timer Modules with 5 timers each.
->>>>   - 4 serial ports.
->>>>
->>>> The chips themselves have a lot more features, some of which will be
->>>> added to the model at a later stage.
->> [...]
->>
->>>> +static void npcm7xx_realize(DeviceState *dev, Error **errp)
->>>> +{
->>>> +    NPCM7xxState *s = NPCM7XX(dev);
->>>> +    NPCM7xxClass *nc = NPCM7XX_GET_CLASS(s);
->>>> +    Error *err = NULL;
->>>> +    int i;
->>>> +
->>>> +    /* I/O space -- unimplemented unless overridden below. */
->>>> +    create_unimplemented_device("npcm7xx.io", NPCM7XX_MMIO_BA, NPCM7XX_MMIO_SZ);
+>>>> +typedef struct NPCM7xxClass {
+>>>> +    DeviceClass         parent;
 >>>
->>> I still insist this is not the best, but as "The data sheet for these
->>> SoCs is not generally available" there is not much I can suggest to
->>> improve.
+>>> Similar comment that elsewhere on this series, if NPCM7xxClass not used
+>>> outside of npcm7xx.c, keep it local.
 >>
->> From your other comment I found:
->>
->> https://github.com/Nuvoton-Israel/bootblock/blob/master/SWC_HAL/Chips/npcm750/npcm750.h
->>
->> In particular:
->>
->> #define AHB1_BASE_ADDR                  0xF0000000      /* AHB1
->> allocation (Including APB allocations)  */
->> #define AHB18_BASE_ADDR                 0x80000000      /* AHB18
->> allocation  */
->> #define AHB3_BASE_ADDR                  0xA0000000      /* AHB3
->> allocation  */
->> #define XBUSR_BASE_ADDR                 0xC0002000      /* XBUS
->> registers  */
->> #define AHB14_BASE_ADDR                 0xE0000000      /* AHB14
->> Allocation  */
->> #define APB14_BASE_ADDR                 0xE0000000      /* APB14
->> Allocation  */
->> #define VDMX_BASE_ADDR                  0xE0800000      /* VDMX  */
->>
->> XBUS doesn't seem important.
->>
->> If SPI flashes aren't connected, returning bus transaction sounds
->> correct:
->>
->> #define SPI0CS0_BASE_ADDR               0x80000000      /* SPI0 direct
->> access CS0  */
->> #define SPI0CS1_BASE_ADDR               0x88000000      /* SPI0 direct
->> access CS1  */
->> #define SPI0CS2_BASE_ADDR               0x90000000      /* SPI0 direct
->> access CS2  */
->> #define SPI0CS3_BASE_ADDR               0x98000000      /* SPI0 direct
->> access CS3  */
->>
->> #define SPI3CS0_BASE_ADDR               0xA0000000      /* SPI3 direct
->> access CS0  */
->> #define SPI3CS1_BASE_ADDR               0xA8000000      /* SPI3 direct
->> access CS1  */
->> #define SPI3CS2_BASE_ADDR               0xB0000000      /* SPI3 direct
->> access CS2  */
->> #define SPI3CS3_BASE_ADDR               0xB8000000      /* SPI3 direct
->> access CS3  */
->>
->> So I'd prefer you use:
->>
->>   create_unimplemented_device("npcm7xx.AHB1",  0xf0000000, 256 * MiB);
->>
->> Maybe for the PCI root complex:
->>
->>   create_unimplemented_device("npcm7xx.AHB14", 0xe0000000, 256 * MiB);
->>
->> What do you think?
+>> OK, will do.
 > 
-> I went ahead and added them all since they are all defined in that
-> public file. It does make the -d unimp output a lot more helpful.
+> Turns out it is used in npcm7xx_boards.c, so it has to stay where it is.
 
-Great news!
+Indeed:
 
-> I'll send v5 tonight. Not sure if I got the DRAM stuff 100% right.
-> Please let me know what you think.
+static void npcm7xx_load_kernel(MachineState *machine,
+                                NPCM7xxState *soc)
+{
+    NPCM7xxClass *sc = NPCM7XX_GET_CLASS(soc);
 
-I am seeing this now and v5 is already posted, so I'll review it
-directly instead.
+    npcm7xx_binfo.ram_size = machine->ram_size;
+    npcm7xx_binfo.nb_cpus = sc->num_cpus;
 
-> 
-> Havard
-> 
+    arm_load_kernel(&soc->cpu[0], machine, &npcm7xx_binfo);
+}
+
+This is fine.
+
+Just thinking loudly, we traditionally add the load_kernel() code
+in the machine, because it is often specific to Linux guest, and
+the SoC doesn't need to know about the guest OS.
+
+hw/arm/boot.c contains helpers also useful for firmwares.
+
+The SoC has a link to the DRAM so can get its size.
+All the arm_boot_info fields are specific to this SoC.
+So we could move a lot of code to npcm7xx.c, only declaring:
+
+  void npcm7xx_load_kernel(MachineState *machine,
+                           NPCM7xxState *soc);

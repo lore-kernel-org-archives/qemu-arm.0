@@ -1,99 +1,98 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1715052lfm;
-        Thu, 9 Jul 2020 12:14:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyYA/Uyd/AC+Av483teO2TDVSzU43068TjLrEKSewQeirZ4B/k4w5dpq9gND98t1T9BQI8C
-X-Received: by 2002:a25:800a:: with SMTP id m10mr38999975ybk.41.1594322070903;
-        Thu, 09 Jul 2020 12:14:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594322070; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1718901lfm;
+        Thu, 9 Jul 2020 12:19:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwICUnTpZStdBweNFKgtlDxV9o6mi84DcYn6JiI8McP+aQieQwGdWNB4t4+Fa67+wsixeZy
+X-Received: by 2002:a25:9c44:: with SMTP id x4mr78900273ybo.510.1594322394373;
+        Thu, 09 Jul 2020 12:19:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594322394; cv=none;
         d=google.com; s=arc-20160816;
-        b=0K+9bV2nLX24SQ4jQhMaaso0jDAlTwtvflZamTEQ+8oQCrcD1fNFiwPF9IKFepfqu4
-         jsluJjW8gWMMXU5h8XQeodValQV22UyF7+UL/xrMZfCfIIm2S1Y7AiIYuW1hu4AWUjRH
-         CsdD+WAHmY6MpuXOP6zriMdX+icdu1arWvFvptoBofdkBzncgL71vZXjatsDBR1znIIB
-         V1MeeOqXNYLPbAMedbBUrTogzo26mZcGEo/5x01+5Jo0tZmyE+l4ZPVHcnWq8Zh/PtLn
-         EhLW+7hQb9h3OZhZx7XhPz1m1acfLHC3VhdD4PSD0hZNGaK6a8K2aqj7FEJz5OivtuLn
-         BIUg==
+        b=ugXd7tyUmwEpqsS5l2MUW/glYUDIgH2sPBp98NYKOoXFSk4nrAZUQX8dtB47mbxkkV
+         LHrG0oFRHEj8sXcctk4urB0W/b9yfD6Q+PHEifpMCuSWBmbUPm4f7RNNEWYX3G2FMGJ6
+         V/F76pZwgWp3je/gKwQQvsrJQC+2pnMBErW6Fkb9E3amHGgM/QjNtwu4NtXKICOGfzmI
+         7lACRSqShKTumvMVw7LKtL+7BkBC2pVWzVQIny6zdFC7hzLoCvOiHSy5QpxDZNaLaSMI
+         mQ0Kwwhcl7ZfdYBYwJyYst7o/x2mCoo2mjSfjXez4gBHBEylnmPb1VWHLChBUdqNcJ72
+         11Yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=3tmiRfBlz6AR5ERL/X2E9qzH0gGmzWuAAimpyQmTUSg=;
-        b=ZZ1LfXszqJ0UmRsdF8EEtl8FG+xTNBVMdv0JZoTVv3Ft9gOCPH/DmaWWoRZ47KmYnP
-         h6J/0wX/W2Jqj3AE61DNywIKCWtITDCDCTiCAT01yXLgk6fUn7uIibnSJw5561DApg+5
-         nkKto71lKh7xgkPBCVqwaaitx6SGpNaTachCWx0hRGJUz0CM2lEk0S8f+9wvkzepG43F
-         7fz/FOE9mdRa9jTNsHBBBbys0jIslY6l6ouLdfXeMqqt3ASwSbZK+VkCnnCwoGJNMQfd
-         JLGdO1WgWTJjUhwPtYF5Agi3iKaciHDZtR1Str0zX2m4oaoLfIkBV/en5KaBzEXeFpC1
-         VLZg==
+        bh=P2qYvp66cuwqIuOxXjaqzUeXwAbQY2fv8/ZXtTQnDqM=;
+        b=Jt4d1OtU8by7gA6NDoWUAAaXEDTBkIfFwNgzirnbSqs3g/qNyFRZfIWnDAVMyyDFTH
+         cJPqOb81n7+e0a64Xtls88z33HavHRYArAuwGIy5k9VQ9Ej6ZHC1pqR4zNBwlCCDdxrz
+         oD85a+14OK8X9JapuMTh34qpVdoG9qI+8nhLICseNpPKmR23V+LSOktzSZGTW2uIEoaP
+         40gPjMSM2IMrFQem8qk+mKe+ISFqkhWlSo5l/uzPakxHOmOIJAUlGwG3ifdJUxHME5Kd
+         +WPnWKaGALarYqkHpzTVjL6/saAUq4SsJzRRLgtgfP/fT50YTKsTCAeG1aNW8CszH95y
+         /m1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZiiSf2hy;
+       dkim=fail header.i=@linaro.org header.s=google header.b=axsHK+OZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f88si3568275ybi.79.2020.07.09.12.14.30
+        by mx.google.com with ESMTPS id p16si3261382yba.199.2020.07.09.12.19.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jul 2020 12:14:30 -0700 (PDT)
+        Thu, 09 Jul 2020 12:19:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZiiSf2hy;
+       dkim=fail header.i=@linaro.org header.s=google header.b=axsHK+OZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34888 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38328 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtc06-0007kA-7L
-	for alex.bennee@linaro.org; Thu, 09 Jul 2020 15:14:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50942)
+	id 1jtc5J-0001E1-9i
+	for alex.bennee@linaro.org; Thu, 09 Jul 2020 15:19:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52210)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jtbzy-0007is-J9
- for qemu-arm@nongnu.org; Thu, 09 Jul 2020 15:14:22 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:34909)
+ id 1jtc5C-0001CY-Ft
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2020 15:19:46 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:35926)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jtbzv-00053R-Ir
- for qemu-arm@nongnu.org; Thu, 09 Jul 2020 15:14:22 -0400
-Received: by mail-oi1-x243.google.com with SMTP id k4so2793140oik.2
- for <qemu-arm@nongnu.org>; Thu, 09 Jul 2020 12:14:19 -0700 (PDT)
+ id 1jtc59-0005gQ-N6
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2020 15:19:46 -0400
+Received: by mail-ot1-x342.google.com with SMTP id 72so2492102otc.3
+ for <qemu-arm@nongnu.org>; Thu, 09 Jul 2020 12:19:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=3tmiRfBlz6AR5ERL/X2E9qzH0gGmzWuAAimpyQmTUSg=;
- b=ZiiSf2hyZ9pxd/Vb0cO7sutu44m9AB/YFoqXZr9b2ihtLoV0uIZcjnIlK/8nN4EHi7
- fUOq85oxzu9AWnUKAPUg3e3zhY8SuPjNOmceFZVhl2uO+HLGXlHFxK/NWETJ4jrpjA0o
- 2pQXLFMknpqs2urmXAauynbh04v80ZE+1lscFPzUE+q7KVzT7k2RoVXeWWL6bHr5yg2+
- o4uAOEgqHirczvQLUGQBb4hI2iy3H2M4rv66zZKBzHDG22HUpz4gWd3ssmAtMUMCqk/J
- jZk3dSfvy0XelxaWz6AdKe+zutme3RD0vRWBO/5yNtMwWzQM+YvVKj9HrOn9tclSJ9Qx
- nAOw==
+ bh=P2qYvp66cuwqIuOxXjaqzUeXwAbQY2fv8/ZXtTQnDqM=;
+ b=axsHK+OZoKBvTOTWyMmTiLsz6mEUMP57JgAYTItukgVKlo/j0qVkhSECe8HZgHVXyX
+ InUG1bmqckmmqqk4sOJutFIJ4T6B+emqWgAos8oSyXOJadwIRMWUK/+oWeBckxbExfXI
+ YgXZgcBrHNF7gXQ8M1DUX+gM241cVyRK8ew1phoO+U0J89bkK6gZolJbNxSx0jRlu5OI
+ wQr0J4UFDSukJ126Muo/A9jyHydDDz7iRcB1n6x5QQ1kunFgLnvwOgaZlTvI77eiEiGy
+ SmfCXtyvAhEqq1lx92P/nBacP7Po3bxSYyef1RWdZCS+lsXIBg4VNhFUvMRcOriIWFyt
+ 9VVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=3tmiRfBlz6AR5ERL/X2E9qzH0gGmzWuAAimpyQmTUSg=;
- b=LvejI7mDl7gvZhPmZiTe6Z2tPfCMZyJqXKOObA7KBbmb5VS5TYAHo2WNw07MsBeBxF
- 0gUDkqWpUlsrfvCy3J0ySwh5WRBszi1tpmGuz6Ul/XLe0wwTNA8kJfTDVnYPwoc7RCy8
- OvUB2b58XOWwiIlgt9fCQ6W3+30ViK2wWlFntzDY4xxM1T7nUtjUoi8hMElvO6cB0xer
- 1bmt7m9gAILwWNguOTIAaOvtIYaYEyP4hOPsBYz9sAxWlKLghM2h5IxJXNKrveAgXWDH
- 8NOwXkS4aAi/p9bP4qV7EhhnTJBRjS+ZxsXVzN0q5/o/VoyIcn6N9TqK813OcFo2fbme
- u0+g==
-X-Gm-Message-State: AOAM530cirjKrBEBADNi5fyKbEXT7QwdZ0KKHe8IyHKa7eTqQRXsCLFT
- 5Rn5hFSeTAta6Xw5JuP1coHD5PoHtKPNLqotjyo6dw==
-X-Received: by 2002:aca:54c9:: with SMTP id i192mr1375678oib.163.1594322058138; 
- Thu, 09 Jul 2020 12:14:18 -0700 (PDT)
+ bh=P2qYvp66cuwqIuOxXjaqzUeXwAbQY2fv8/ZXtTQnDqM=;
+ b=UAeemGyzNQcdvi2Qdlrqfh0rha3o6FwDRzykAfXdKLy3dVCsyQaRK54le58NqAu3Es
+ 7yV4Ue1KPLKDvhdATJMPEEiAj6nEPXjtmzqRpJPa3js4iSej3lNpdtvuockSOfcPRaaY
+ 4j0gnxZbAmIyQ1ovZYZOmu7BeZrdSSwnhnD+usRmuu5VxUAYb+2QuyW3WZj1DFGBFJmW
+ 2xrEnSj+EO5/CGVcp0z1ghb8Hz8zOuYQ3YmgW1rMx2KXK6dkXmHnRJv9XmigaPCMC89J
+ rXaTbRZNAg0aW6bunuMdMXTnRQ6FynIHE+f6Z6apV7eWpetJ7KKZZ4NbfzyX3Qxy0uiP
+ PwEg==
+X-Gm-Message-State: AOAM530HDnQL3DFhzDmRAC0BvzJPdNvU7lFJ+t9nu251SG2mhVWUU7yn
+ 5ac+nn7KlMclahdgj1IoE8QvmUSkXPAKKgZnBT9KEg==
+X-Received: by 2002:a05:6830:10ce:: with SMTP id
+ z14mr48306860oto.135.1594322382470; 
+ Thu, 09 Jul 2020 12:19:42 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200703201911.26573-1-f4bug@amsat.org>
- <20200703201911.26573-19-f4bug@amsat.org>
-In-Reply-To: <20200703201911.26573-19-f4bug@amsat.org>
+In-Reply-To: <20200703201911.26573-1-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Jul 2020 20:14:07 +0100
-Message-ID: <CAFEAcA98Wz2URx3Pt0YfaoQSPnnMT4wg6HBfzdDO4Zq+4fgT5g@mail.gmail.com>
-Subject: Re: [RFC PATCH 18/18] hw/core/qdev: Display warning for devices
- missing migration state
+Date: Thu, 9 Jul 2020 20:19:31 +0100
+Message-ID: <CAFEAcA8Cu2N5qX55rUk_yd4R6PdJX+X5KPQmMiQPFakP3ShZ-A@mail.gmail.com>
+Subject: Re: [PATCH 00/18] hw: Mark the device with no migratable fields
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x243.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -131,46 +130,38 @@ Cc: Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xhedWDHenskB
+X-TUID: nll73xQBxgw5
 
 On Fri, 3 Jul 2020 at 21:19, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
 wrote:
 >
-> When built with --enable-qdev-debug, QEMU displays warnings
-> listing devices missing migration state:
+> This is a proof-of-concept after chatting with Peter Maydell
+> on IRC earlier.
 >
->   $ qemu-system-arm -S -M spitz
->   qemu-system-arm: warning: missing migration state for type: 'pxa270-c0-=
-arm-cpu'
->   qemu-system-arm: warning: missing migration state for type: 'serial'
->   qemu-system-arm: warning: missing migration state for type: 'pxa2xx-pcm=
-cia'
->   qemu-system-arm: warning: missing migration state for type: 'pxa2xx-pcm=
-cia'
->   qemu-system-arm: warning: missing migration state for type: 'pxa2xx-i2c=
--slave'
->   qemu-system-arm: warning: missing migration state for type: 'pxa2xx-i2c=
--slave'
->   qemu-system-arm: warning: missing migration state for type: 'ads7846'
->   qemu-system-arm: warning: missing migration state for type: 'max1111'
+> Introduce the vmstate_no_state_to_migrate structure, and
+> a reference to it: vmstate_qdev_no_state_to_migrate.
+> Use this reference in devices with no fields to migrate.
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> RFC because there might be something simpler than --enable-qdev-debug.
+> This is useful to catch devices missing vmstate, such:
+> - ads7846
+> - mcf-uart
+> - mcf-fec
+> - versatile_i2c
+> - ...
+>
+> I am not sure about:
+> - gpex-pcihost
 
-I think where we'd like to get to is installing a migration
-blocker if the machine has any devices which don't have a vmsd.
-But for that we'd need to be pretty sure we'd got all the devices
-on machines where we care about migration, and we're clearly a
-fair way from that (eg we need to do something about the
-devices like the CPU which don't have a vmsd but handle their
-migration some other way so they don't trigger the condition
-for warning/migration-blocker).
+I think it's correct that this has no internal state:
+the only interesting state is in the GPEXRootState, which
+is a TYPE_GPEX_ROOT_DEVICE which migrates itself.
 
-I don't have a strong objection to this --enable-qdev-debug, I guess.
-Another option halfway between this and a full migration-blocker
-would be do a warn_report() for the relevant devices when savevm
-tries to migrate them.
+I made some comments on the "meaty" bits of the patchset,
+and reviewed one or two of the "mark this device as
+having no migration state" patches, but it doesn't seem
+worth reviewing all of them until the migration submaintainers
+have a chance to weigh in on whether they like the concept
+(I expect they're busy right now with freeze-related stuff :-))
 
 thanks
 -- PMM

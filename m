@@ -1,99 +1,98 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1675076lfm;
-        Thu, 9 Jul 2020 11:20:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0AvBtzyPdMfGI1ZJg4skxv7e7Bv1m4QFwR373TQbyRTtrUnHYj5ibYxYoK8dhcfkaOpKi
-X-Received: by 2002:a25:21c5:: with SMTP id h188mr52378177ybh.468.1594318825746;
-        Thu, 09 Jul 2020 11:20:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594318825; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1678830lfm;
+        Thu, 9 Jul 2020 11:25:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzaU2aYRC9veoHiTmWO2gAMsqHK9Q/0P4vhQ+aymXE5+B+OA8xpsXaXthrqCzQn6c+qjBZv
+X-Received: by 2002:a25:1f82:: with SMTP id f124mr104162321ybf.439.1594319121551;
+        Thu, 09 Jul 2020 11:25:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594319121; cv=none;
         d=google.com; s=arc-20160816;
-        b=ejgXQsrdOh4e36nG/QhX/5MZJXTNX5f6u63z7N7SlypplhIZ3SF1SYWGE63pn5ibFA
-         WycCFZhVNUulfRvd7BCZR+KrvqKsLpMW127EORgyOCYSGiRSY6pWtgg9MgtePlI4ThIa
-         Gz2k7ISqHxpIpHbJWPCD+H0odjbsuus+iS2JW1OENtex5ZhkEFEd2cByWAXlctICc+VK
-         sRBiPlE/BNDk6IkU9mvpzKdZj0rjBWuv84oF2CD1fJMMKq4zE0lm8wAzsiCdJfVHuj5Y
-         3LCS6onr4VsNeFCirhqdsURnaj29Xa+RftviDsBKJpCSKluMP/+Fnd0cfSRMr5XLCCcU
-         7uGA==
+        b=esceiFGTW/tNYnadxZ2UDSB01u+wqf0IS0Tq7pMlz68Pj1xC/M4M4EN2ttsNHxRSKS
+         kIwNeaQsKHwMB1I78vzHf1fA2zN9w95JOmNYl6mKrZ1v/mhv12mf3UUHBC6AyCYJ67D3
+         4a2hOyq9BZ8px8SXh/h8VQ+f1+Ava8FiRXtnz7b8APSGfdUvTcZDPA/VQsfwNNl4ghky
+         DtEtmfpzo4q4N51ux1yCOo+9n5a0yKT56c5Gx/rt0+saGP/8delgEvpuqAGCTsn1mpvv
+         swWlq0x0XqiWCuHpF7Vs/PZWArZ4MbRn9FelrINhsYm99GoEoc8pRFqgWBTSQSlYt5su
+         7iDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=79iJKhuASA6U5zffmPecA5tdiCRnbtSTpnpwP3NfifY=;
-        b=Q2tbH32PZcaqfavqhFMyi3oL0XCDBpwPlfe9wKlaTVxc85EJuclgFb5Cz7h198MC3g
-         M5pg3amBqDX83poJ58uD80/WyUGZ0cFcKUw3QehmHgRrKzwVEHUYYROsUqY5ulpc3xsZ
-         Y/s2B2bLQsIht3sGDPhc5diYGtpNOTtNTEWhIZULW5UAYTLUZfR6TMZrDwGMzqEq6W1r
-         pcSW+LnbEFRni8qHScjhtCM7V4CiK1Xo22QoDwSFzrMtXhvYcrH+nPjU4ba7WBJ0iVzE
-         FAdYu55jF492wM5Sks9vJr9J8A5t86zPXxJQ/4hjqsrmmJJLSdUJVDOQ74TCNsnFBrtc
-         untg==
+        bh=TwE4/5g6BhhiF9NwVqNiFgWkPQe6TS0JnKm85vwKVak=;
+        b=fabc01ca8safHWC8FjQiua6DwRcVzJ/uU+jLDVG+mH0MaBqeHO+R27Xhz+XtfTco6V
+         4JApyI/US9tTm7L+t8PdX7heYVXWu26GtCQgVCTHFVRbQ+i1UrH1BxGoNoHZhcTAywm/
+         /WAF126CJfgauR9cpn7qW9HYDCyLOk/1VjjQ3X2olX6ZTz2i+MeXzM+eAUF3bI1O4jzV
+         S5GoW6UBp4C5gMSpt5u5XWILemAPl2DxmYG/e7S5RQqGDIaTwUCBOpwZU0CjqSqHTTMX
+         WHcMwfBA1Lgx0UgA4XNhMOXyrFZFRgGWwyR6P6G8QR6j2jQQQ6Vp8QU8jBDl9nMC8/DF
+         jxdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XIlpkZei;
+       dkim=fail header.i=@linaro.org header.s=google header.b=D4l4qXaA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d25si3522107ybe.407.2020.07.09.11.20.25
+        by mx.google.com with ESMTPS id b125si3034936yba.89.2020.07.09.11.25.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jul 2020 11:20:25 -0700 (PDT)
+        Thu, 09 Jul 2020 11:25:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XIlpkZei;
+       dkim=fail header.i=@linaro.org header.s=google header.b=D4l4qXaA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50410 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53530 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtb9l-0004Tf-46
-	for alex.bennee@linaro.org; Thu, 09 Jul 2020 14:20:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37946)
+	id 1jtbEW-0006CD-TZ
+	for alex.bennee@linaro.org; Thu, 09 Jul 2020 14:25:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39030)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jtb9c-0004T1-35
- for qemu-arm@nongnu.org; Thu, 09 Jul 2020 14:20:16 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:43736)
+ id 1jtbEN-0006AO-PO
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2020 14:25:11 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:44126)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jtb9a-00047D-3f
- for qemu-arm@nongnu.org; Thu, 09 Jul 2020 14:20:15 -0400
-Received: by mail-oi1-x243.google.com with SMTP id x83so2628510oif.10
- for <qemu-arm@nongnu.org>; Thu, 09 Jul 2020 11:20:13 -0700 (PDT)
+ id 1jtbEM-0004gR-1t
+ for qemu-arm@nongnu.org; Thu, 09 Jul 2020 14:25:11 -0400
+Received: by mail-ot1-x342.google.com with SMTP id 5so2344585oty.11
+ for <qemu-arm@nongnu.org>; Thu, 09 Jul 2020 11:25:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=79iJKhuASA6U5zffmPecA5tdiCRnbtSTpnpwP3NfifY=;
- b=XIlpkZeiGm7R9oXs5/lsIchSxepNWIyWIf5Fa7spDj1sxne/ThrC0pkhYCUtnAqmmU
- EPthyrvUQ895g+CcB8QCBL76i13bviumbdm3m+n/N8YUkC4h1kRmNIj01fcxYVCvMz9X
- VdI1UphyaJnF4BW1xPjfRTDz9WpL0eQwvLiGy7i8kqr4O9Fl9NKq7OCoIgG8FqZ6FI1i
- XoZx+yG2tXO6bkOOpvm6PHiGPaV/3Fxg5qFEXWPke+QZqsMWoPvlSGgHNDaXl4EKaGyi
- 2OjNxEU1tMpeAch6G1woQHpQdhCEqJcGSQajAxIx1Y+GEsOuQieG084fcp2TIosFUVvy
- Fg8Q==
+ bh=TwE4/5g6BhhiF9NwVqNiFgWkPQe6TS0JnKm85vwKVak=;
+ b=D4l4qXaAJN40wcqAAHhh5cXKLsfvdu3nikJQK8qVTGoi7/C1bnZaK9LXx+8CJ+H7K4
+ VSEaDty94eOw1Cp0YBt3RhxwiGt9ZkV9a9nwYw+9bQmcbylitT9zcL2tZCbJxqpiZ2yF
+ SchdkyiZXTUfm+pkStViHgd7Bs2BWhdzPwL5RNmIiMyHyGfHkmtVAb4L5SIOgrPogHcx
+ 8PbzrId68eFBALXEhOgv3rGVBYmaZbdArY3SxrNFAXxz33/znJFHtijaUxh3Q7j70/oZ
+ xCdETCvFcysuli3pjmsIWK6LiAsesOI5VphJCWWoFzhcoTmO8Vz+tv8Rzqd64tcc1ItH
+ IDog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=79iJKhuASA6U5zffmPecA5tdiCRnbtSTpnpwP3NfifY=;
- b=q85Lz21nec+G38V5pMAg2UOjZOyndfuYxjnpo1XwpSzzrZfJedRUKfScJIb1NOMWHx
- fPtbkkFYH7fLRL7UN09qCvg34g5oU3wkQeCECvmRAoX/0fPhTA50P84jQnuS2n6wnqpg
- sZG2wu/rcqISzwhofdB/juflcMZKybiZG2C5xS8BOeYdXQphmHm4ZBtXWWfXRRFwu4sT
- eiV995A2hcysMzheCh0/cmY95ynDoY19zdw4+sYaZR8MPG5+8WK7eY0CnjzspsZmR6ph
- Mk9iMyeWIrzQDcZFq5M6UKp//r//hxDOxOxPkibUa4rMAmE7nrq1KnyMm9KcdpU69iHt
- 13dA==
-X-Gm-Message-State: AOAM531I/gThHoo87YGCTSxGgnE7PShP4M8LcTE6A5c7wPVfDG9KO3/V
- RwcYtCoTCDv0ryb/fQwLJK37J+dsmzeu9+6atMbK7A==
-X-Received: by 2002:aca:54c9:: with SMTP id i192mr1183515oib.163.1594318812632; 
- Thu, 09 Jul 2020 11:20:12 -0700 (PDT)
+ bh=TwE4/5g6BhhiF9NwVqNiFgWkPQe6TS0JnKm85vwKVak=;
+ b=rDjaMnv9dNOUGoEEWd2n6M/fJe+BlpoQZAEvl6M01l18/+B4veM+ANmgsRxCDD7ird
+ jTYj1zypn/XwnCaBsMWIEOzDOhAGFWEwCmNQTuQbMiB1OUrZkvcaAGLoPwVhomki9Vhs
+ 0Dhhk9EJ6lHAn1hGYOy6oH0+rhyHoz/CcFjtA89jTgKBzHBkLez97Wx4FM71kU/26R5g
+ X/EpDFf/Cw9njrwPnFVig7rlTxmyaf2KRKSp07AvPow3zevfJUAV9rTFk71KLwkYIVqf
+ 2aNv4WEawZhuBD8KJ95lq9HzU2hwinjCZUDdZX4hfjYQ9bUhy7Kcep7J69iFJM+t91Ym
+ Rf6w==
+X-Gm-Message-State: AOAM530Gwz85JsoUJyINsTcQ+bOidRIgaakSU8ATKzfGkW7EjpMAjsx7
+ H3/g/F00oJrXMnT16aGJm00pZoTRl1BXDfvagz+E5g==
+X-Received: by 2002:a9d:7303:: with SMTP id e3mr47423557otk.221.1594319108787; 
+ Thu, 09 Jul 2020 11:25:08 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200705204630.4133-1-f4bug@amsat.org>
- <20200705204630.4133-8-f4bug@amsat.org>
-In-Reply-To: <20200705204630.4133-8-f4bug@amsat.org>
+In-Reply-To: <20200705204630.4133-1-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Jul 2020 19:20:01 +0100
-Message-ID: <CAFEAcA9_RBJ75RuutubdQUJhk9N1Rs+A1pR9ZnCfzV_Gs=Z7Ag@mail.gmail.com>
-Subject: Re: [PATCH v4 07/10] hw/sd/pl181: Do not create SD card within the
- SDHCI controller
+Date: Thu, 9 Jul 2020 19:24:57 +0100
+Message-ID: <CAFEAcA8nxstjcY+fGnLXdBFSeDRBjL2mDv66bBDUrudc9hJLSQ@mail.gmail.com>
+Subject: Re: [PATCH v4 00/10] hw/sd: convert legacy SDHCI devices to the SDBus
+ API
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x243.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -101,8 +100,8 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,56 +118,43 @@ Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
  Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zlUx5uP8MTgW
+X-TUID: h61CJdcUyDDQ
 
 On Sun, 5 Jul 2020 at 21:46, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
 wrote:
 >
-> SDHCI controllers provide a SD Bus to plug SD cards, but don't
-> come with SD card plugged in :) Let the machine/board object
-> create and plug the SD cards when required.
+> Hi,
+>
+> Since v3:
+> - rebased (was from Feb 2018)
+> - use named GPIOs
+> - addressed Peter review comment (adding TYPE_PL181_BUS object)
+> - convert DPRINF to trace events
+>
+> Since v2:
+> - pl181: remove legacy sd_set_cb() (Peter)
+>
+> Since v1:
+> - rebased on /master (Peter sdcard reset() patches)
+> - fix milkymist-mmc from previous seris using instance_init (Michael Wall=
+e)
+>
+> This series convert 3 devices using the legacy SDCard API to the SDBus AP=
+I:
+> - milkymist-mmc
+> - pl181
+> - ssi-sd
+>
+> Then move the legacy API to a separate header "sdcard_legacy.h".
 
-Nit on the commit message: the PL181 isn't an SDHCI controller
-(which is a theoretically standard controller as regards
-register interface etc, and which in QEMU we model in hw/sd/sdhci.c);
-it's just a plain old MMC/SD card controller.
+Hi; I had a couple of minor comments on a few patches. Alistair
+has reviewed the rest. This is all for-5.2 material now, but did
+you want to take it via your sd queue or should I take it via
+target-arm.next ? I don't mind either way.
 
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/arm/integratorcp.c | 13 +++++++++++++
->  hw/arm/realview.c     | 12 ++++++++++++
->  hw/arm/versatilepb.c  | 26 ++++++++++++++++++++++++--
->  hw/arm/vexpress.c     | 11 +++++++++++
->  hw/sd/pl181.c         | 19 +------------------
->  5 files changed, 61 insertions(+), 20 deletions(-)
-
-> @@ -649,6 +651,17 @@ static void integratorcp_init(MachineState *machine)
->                            qdev_get_gpio_in_named(icp, ICP_GPIO_MMC_WPROT=
-, 0));
->      qdev_connect_gpio_out_named(dev, "card-inserted", 0,
->                            qdev_get_gpio_in_named(icp, ICP_GPIO_MMC_CARDI=
-N, 0));
-> +    dinfo =3D drive_get_next(IF_SD);
-> +    if (dinfo) {
-> +        DeviceState *card;
-> +
-> +        card =3D qdev_new(TYPE_SD_CARD);
-> +        qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo=
-),
-> +                                &error_fatal);
-> +        qdev_realize_and_unref(card, qdev_get_child_bus(dev, "sd-bus"),
-> +                               &error_fatal);
-> +    }
-
-So instead of the pl181 creating the card object, the board
-now does it, and only if there actually is an IF_SD drive to
-use with it. I guess that makes sense. (If it turns out that
-something depends on the existence of the card-without-backing
-we could do what xlnx-zcu102.c for instance does, and create
-the card in the board wtih a NULL backing drive, but let's not
-do that unless we're obliged to.)
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+If you prefer the former you can have an
+Acked-by: Peter Maydell <peter.maydell@linaro.org>
+for the series.
 
 thanks
 -- PMM

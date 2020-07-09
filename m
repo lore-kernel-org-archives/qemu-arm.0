@@ -1,105 +1,117 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1545309lfm;
-        Thu, 9 Jul 2020 08:48:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyXOmOF+wN4Qid9KwlmoXtrvDAAGOD4aXeAdGBL5tp6wfrSlBeNFfFtBB/VxL7yl8T6KH1t
-X-Received: by 2002:a25:7b47:: with SMTP id w68mr100051391ybc.143.1594309721602;
-        Thu, 09 Jul 2020 08:48:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594309721; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1575304lfm;
+        Thu, 9 Jul 2020 09:23:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxe1v3HDUJtQ3F+7xXe7enUud2O4lTOvXXNOpFKdE0QhrrzGLpLpFSNcm8sInImy524T+LY
+X-Received: by 2002:a25:c6d5:: with SMTP id k204mr22956851ybf.74.1594311802405;
+        Thu, 09 Jul 2020 09:23:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594311802; cv=none;
         d=google.com; s=arc-20160816;
-        b=DD51XTrR5QSt3BmETn0Rtg6AjD5K5EvYcS2fQN4tTLnWpfPv4EvYH4goL8XSxO9rTm
-         BaqUlGsBqn6Qz6rr1lRMPg2A5JNOXuwMTulWp9tQk9vRrEvwIQ98Da8+74rapDWCbsRu
-         9Ba8sg80Fyl2jYV6zVKhAzoLntRvfBN2TOSGbTTRlVwwF27e1VfwOWxSN1MTBlA9XNw4
-         DoW3hg9bqqfp33rHmbPoZIhVjdhshILJpdUMyIXEEGgPZgnUS31WOImJea+Gk7trSNVa
-         XPhDYGUJiMcFLHFD2OqBJA2kYp7ShU6dSmwc8BmtujN0fYinHY1QXHBrZczG5n11ezwp
-         Q2yA==
+        b=X60pH+ZpCFBiNyq7zaI/QgDAiVKnVoHCPLaHGwftjRZyir83EcNiAUhUwdPNcgEiAv
+         gfCQ3NwGd7NuWE334NC0jQzmLX/y/c6RFrJpw5k7dizYlgOZSlCT4IhBqlzH8yyx1up2
+         gsLVJLth8oMO9wd3IkwJGFT3yvJt7GC16r0Tjr3Quy3fI16gVOWmpgoRmB/mVDkWh2LL
+         ZI9zAa0TiHYlxvTPgtPCMhwufMQKiMrUXnsGqu3LnlJG8EnMNKC6+lHZRAKGzMy8ZT7V
+         yHAkgGxzsV3bqB2o45etRMkxhj9KPvTNVEseVOgXZO4/EckPvrhbLrZK2Rjq48SYrvJP
+         ncUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Fpa8HUPV37FoOLZoHXCskLa20ZEOASDoIll7jYCiy28=;
-        b=nryNd8M3heLseihaMFLaKiXHGxPlBeHygM++WLaG9N2taoqVosxuG/OdC9UH0Az7/K
-         QAiglonSbHggpjSmFiMwZeMXMYWia2IX/juyaH+laBYBrMPC4iSReIHTxrpFD1oZ42Ry
-         zReQNOGtmiuVcvPmI2+FKqmvEdSOytyTE/02OiyhcUMwOi2bn9prupI2LW3DMDOcsNG5
-         i2DUQuwnwbbmOXRZ2q+PCGFBUscvpYMfprsQLFL5YJaN0VcOfFyd00ZUPb5in9bODrPv
-         nYL70+1ymukvtqrT/kbMjrHPCe4nEOGpt40vI5btqZFSwzPpqzazNTTvkkLbSvzLvyL+
-         QwIQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=JBNfwnstZejoe/GMZ8w1uNxxtCqPWZLaNZg7PmTT63A=;
+        b=mxn5uzbyP7KbQsR8840WaX0gXAx6K2Q7efMOv71whUFm1BYmB5FvUXAT8Ej7NaePqB
+         hrDV6BGksFCR1tANqWhYFrAGkHR99aAAVzMUKETSidfXt5X9SxGc/sRt4sQD3gA5jNdg
+         qKlaxPh/JomSR++hiibbR8cLperG17mAb30JbQE6dwfSq6wJQZTr43H48eZi52+BCnKA
+         uWswIRiaVgzy8yqB2KP3TbkGMDkRO4t/yNj6nTbXfC5O96VNtY7BKQCHcraHRkiaZ8Nr
+         x5yc+rxBkGHCnAVGeaB6jVbN8dixjIxVmZryBzHeR/J7UzaJaQaM5hS4AEu7COchtBMj
+         frtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kLmoLImE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ZHv/W2kB";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s9si2873932ybk.329.2020.07.09.08.48.41
+        by mx.google.com with ESMTPS id c5si2939766ybn.72.2020.07.09.09.23.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jul 2020 08:48:41 -0700 (PDT)
+        Thu, 09 Jul 2020 09:23:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=kLmoLImE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ZHv/W2kB";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42794 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:59530 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtYmu-0004gz-VG
-	for alex.bennee@linaro.org; Thu, 09 Jul 2020 11:48:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51682)
+	id 1jtZKT-0003hP-NK
+	for alex.bennee@linaro.org; Thu, 09 Jul 2020 12:23:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34130)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jtYme-0004dv-Hi; Thu, 09 Jul 2020 11:48:25 -0400
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:37829)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jtZKL-0003fp-Be; Thu, 09 Jul 2020 12:23:13 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38075)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jtYmc-0005zz-4J; Thu, 09 Jul 2020 11:48:24 -0400
-Received: by mail-il1-x141.google.com with SMTP id r12so2437231ilh.4;
- Thu, 09 Jul 2020 08:48:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jtZKJ-0003wR-Gi; Thu, 09 Jul 2020 12:23:13 -0400
+Received: by mail-wm1-x341.google.com with SMTP id f18so2477382wml.3;
+ Thu, 09 Jul 2020 09:23:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Fpa8HUPV37FoOLZoHXCskLa20ZEOASDoIll7jYCiy28=;
- b=kLmoLImEQcINmXRT9MWPkIQua1OmQxr5WN+gkxkD6zxbnsQFqsVCe4bYB2cciSLVF+
- 1obXhuydOV6lts/NAl7XkgLBG9OHMp0GVaIlSJ2hTwlDVuRFEyyN290Sp491qdueDbI+
- Udc03xeRSwQb69CyhxkBM3ee54IQU/uhjOcLxpJ5uOsogSWgIgE3tjNQzk61aQqqpZdf
- GV8DuFA42Cm3H7brgjK4ZaujAuLCwIPXs++fUgaC1gz4AITKiSPBOoen/ZfgAZsdPfD2
- Qcy7+bhJFuSi5ScLatM5VouMIdJxSvtNeVJklZLd7L4WJyPfkuW1m7P6i39hRboo3ILM
- 11Dg==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=JBNfwnstZejoe/GMZ8w1uNxxtCqPWZLaNZg7PmTT63A=;
+ b=ZHv/W2kB1hygRWs2AeiATZOfn93v77MrsfVnvgP1RfSJY7FmS7E0JePACV0FF5LQlr
+ k3LTUDZVlaqKksnFwAX68cklQkUf2oqkodgwmQ4kUXtmtUzHpKvoWHxEE0aMLjHs+j/Y
+ J/78pjXuR6mUvgp6NTY/beV9tR1bgudSvynSpbnMESXcWL9xpiUjwdsQzRfzgzgVoPuL
+ 7R0Y4MjRYM4km9E9zhNEkn0nqx0n6eCudshdide5poB+NCmrtwl4kwhTe6Y8mjwVDIcx
+ VaBADRbOUut9R5Hbx6N5X1yXf+kF7Ar/6OfCqXksKabnMBN8A6VPN45IvlD+sGLel5Cn
+ 53jQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Fpa8HUPV37FoOLZoHXCskLa20ZEOASDoIll7jYCiy28=;
- b=pQgAGqi089Vv6g3EWT7JhWPllq21A1x8vO+jlJBUa2+jIn9d+zNnAM1yQp7q6ciUY7
- 2CwZz3FOAN11ayaswvk7zTnUE0mSnFPrbN+qgVghHbDBfQhnpIHsbSkmKwoh9Rz/4zfA
- XR3cgAzN1u00MhLyOGKih5iUGVX9qXq5mNpXyNnNr2IgORUfOYdEE0g6REekg2f/s1pP
- uKpIBma6HFLki/EgH5/a/oFgmFVbbvi6eWbcyU7XKXKTOWQ/DmlJqzdOlm5e/YQ7mEAo
- 9kPSZ9CAY/JP6WCK1ZOEfU9oXB/zBQ+npcrL8b8tzcO1I75zFDqIxshDzWIesmWqkfoN
- /yEQ==
-X-Gm-Message-State: AOAM5312+F1sunujMXVla/o27oG+yPPNbjcry+2NSO3U/4OeHb1eWBbq
- HETB06EwiaNXm5jR/J1Xjhp5w6UjIJwE7f7NFdQ=
-X-Received: by 2002:a92:c213:: with SMTP id j19mr48011468ilo.40.1594309700335; 
- Thu, 09 Jul 2020 08:48:20 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=JBNfwnstZejoe/GMZ8w1uNxxtCqPWZLaNZg7PmTT63A=;
+ b=NuBXIkYFtnXZmIIf7mU2a3Sw5yOuIY5w0jsChn2JPcvHziMwPJNhY+qrSzp9jg4Rgi
+ CmdCQzo3Q+ibOz1m9ar+nuTSf63/AADK+E50kL7CjS4jO8r2KaQPkyOZ+YVxN1tCBRrq
+ buGBhDRuudDi35Ul0X6JEJphW/SCdfb3hFM5GKU2VcTqytYjrh1cxC6wahSnB6mnjl7l
+ VEyFu8XcX03iiv+yIQK60DcR+2UUIPH8GXh9l5t12AcZFbArD+hRwoZW33a1H/fpdLvK
+ 7GCn8CE1s1/Q3zUSkyAtwjAuqEkScVipFbzzpcB2kNt4hYO+E0b7QLSrnGdP2B/PssWr
+ ERrw==
+X-Gm-Message-State: AOAM530MChLGwof2cdzKBSfuIdQ0/23KmWX2HEiuEJoxcd0O4yheYMvT
+ a6x6Wsfzz+sy6WLEwF6f+sM=
+X-Received: by 2002:a1c:2041:: with SMTP id g62mr793120wmg.172.1594311789348; 
+ Thu, 09 Jul 2020 09:23:09 -0700 (PDT)
+Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id n16sm5618319wra.19.2020.07.09.09.23.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 09 Jul 2020 09:23:08 -0700 (PDT)
+Subject: Re: [PATCH v5 01/11] hw/misc: Add NPCM7xx System Global Control
+ Registers device model
+To: Havard Skinnemoen <hskinnemoen@google.com>
+References: <20200709003608.3834629-1-hskinnemoen@google.com>
+ <20200709003608.3834629-2-hskinnemoen@google.com>
+ <2fe8ea5e-56de-f57f-6146-8355125daa7f@amsat.org>
+ <CAFQmdRYx99PpWz6bftCvBR7=YRftD_WNex_A9aoDaeRg=4tsCw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <bd2972b0-0684-e379-6d66-16ceb62deade@amsat.org>
+Date: Thu, 9 Jul 2020 18:23:07 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <20200709152337.15533-1-f4bug@amsat.org>
-In-Reply-To: <20200709152337.15533-1-f4bug@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Thu, 9 Jul 2020 08:38:28 -0700
-Message-ID: <CAKmqyKNhCRC_tGFiM29cBrn01AiKG39C9TKZaD3s8xTaiGaaFQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/cpu/a9mpcore: Verify the machine use Cortex-A9 cores
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x141.google.com
+In-Reply-To: <CAFQmdRYx99PpWz6bftCvBR7=YRftD_WNex_A9aoDaeRg=4tsCw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,78 +124,183 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Rob Herring <robh@kernel.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>,
- Randy Yates <yates@ieee.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iyTp3hE9qtPi
+X-TUID: po8g0QJW1Cs7
 
-On Thu, Jul 9, 2020 at 8:23 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
-> wrote:
->
-> The 'Cortex-A9MPCore internal peripheral' block can only be
-> used with Cortex A5 and A9 cores. As we don't model the A5
-> yet, simply check the machine cpu core is a Cortex A9. If
-> not return an error.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On 7/9/20 8:43 AM, Havard Skinnemoen wrote:
+> On Wed, Jul 8, 2020 at 11:04 PM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>> On 7/9/20 2:35 AM, Havard Skinnemoen wrote:
+>>> Implement a device model for the System Global Control Registers in the
+>>> NPCM730 and NPCM750 BMC SoCs.
+>>>
+>>> This is primarily used to enable SMP boot (the boot ROM spins reading
+>>> the SCRPAD register) and DDR memory initialization; other registers are
+>>> best effort for now.
+>>>
+>>> The reset values of the MDLR and PWRON registers are determined by the
+>>> SoC variant (730 vs 750) and board straps respectively.
+>>>
+>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+>>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+>>> ---
+[...]
+>>> diff --git a/hw/misc/npcm7xx_gcr.c b/hw/misc/npcm7xx_gcr.c
+>>> new file mode 100644
+>>> index 0000000000..9934cd238d
+>>> --- /dev/null
+>>> +++ b/hw/misc/npcm7xx_gcr.c
+>>> @@ -0,0 +1,226 @@
+>>> +/*
+>>> + * Nuvoton NPCM7xx System Global Control Registers.
+>>> + *
+>>> + * Copyright 2020 Google LLC
+>>> + *
+>>> + * This program is free software; you can redistribute it and/or modify it
+>>> + * under the terms of the GNU General Public License as published by the
+>>> + * Free Software Foundation; either version 2 of the License, or
+>>> + * (at your option) any later version.
+>>> + *
+>>> + * This program is distributed in the hope that it will be useful, but WITHOUT
+>>> + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+>>> + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+>>> + * for more details.
+>>> + */
+>>> +
+>>> +#include "qemu/osdep.h"
+>>> +
+>>> +#include "hw/misc/npcm7xx_gcr.h"
+>>> +#include "hw/qdev-properties.h"
+>>> +#include "migration/vmstate.h"
+>>> +#include "qapi/error.h"
+>>> +#include "qemu/log.h"
+>>> +#include "qemu/module.h"
+>>> +#include "qemu/units.h"
+>>> +
+>>> +#include "trace.h"
+>>> +
+>>> +static const uint32_t cold_reset_values[NPCM7XX_GCR_NR_REGS] = {
+>>> +    [NPCM7XX_GCR_PDID]          = 0x04a92750,   /* Poleg A1 */
+>>> +    [NPCM7XX_GCR_MISCPE]        = 0x0000ffff,
+>>> +    [NPCM7XX_GCR_SPSWC]         = 0x00000003,
+>>> +    [NPCM7XX_GCR_INTCR]         = 0x0000035e,
+>>> +    [NPCM7XX_GCR_HIFCR]         = 0x0000004e,
+>>> +    [NPCM7XX_GCR_INTCR2]        = (1U << 19),   /* DDR initialized */
+>>> +    [NPCM7XX_GCR_RESSR]         = 0x80000000,
+>>> +    [NPCM7XX_GCR_DSCNT]         = 0x000000c0,
+>>> +    [NPCM7XX_GCR_DAVCLVLR]      = 0x5a00f3cf,
+>>> +    [NPCM7XX_GCR_SCRPAD]        = 0x00000008,
+>>> +    [NPCM7XX_GCR_USB1PHYCTL]    = 0x034730e4,
+>>> +    [NPCM7XX_GCR_USB2PHYCTL]    = 0x034730e4,
+>>> +};
+>>> +
+>>> +static uint64_t npcm7xx_gcr_read(void *opaque, hwaddr offset, unsigned size)
+>>> +{
+>>> +    uint32_t reg = offset / sizeof(uint32_t);
+>>> +    NPCM7xxGCRState *s = opaque;
+>>> +
+>>> +    if (reg >= NPCM7XX_GCR_NR_REGS) {
+>>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: offset 0x%04x out of range\n",
+>>> +                      __func__, (unsigned int)offset);
+>>
+>> Maybe use HWADDR_PRIx instead of casting to int?
+> 
+> Will do, thanks!
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Glad you are not annoyed by my review comments.
 
-Alistair
+FYI your series quality is in my top-4 "adding new machine to QEMU".
+I'd like to use it as example to follow.
 
-> ---
->  hw/cpu/a9mpcore.c | 12 +++++++++++-
->  1 file changed, 11 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/cpu/a9mpcore.c b/hw/cpu/a9mpcore.c
-> index 642363d2f4..1724baf17c 100644
-> --- a/hw/cpu/a9mpcore.c
-> +++ b/hw/cpu/a9mpcore.c
-> @@ -15,6 +15,7 @@
->  #include "hw/irq.h"
->  #include "hw/qdev-properties.h"
->  #include "hw/core/cpu.h"
-> +#include "cpu.h"
->
->  #define A9_GIC_NUM_PRIORITY_BITS    5
->
-> @@ -53,8 +54,18 @@ static void a9mp_priv_realize(DeviceState *dev, Error =
-**errp)
->      Error *err =3D NULL;
->      int i;
->      bool has_el3;
-> +    CPUState *cpu0;
->      Object *cpuobj;
->
-> +    cpu0 =3D qemu_get_cpu(0);
-> +    cpuobj =3D OBJECT(cpu0);
-> +    if (strcmp(object_get_typename(cpuobj), ARM_CPU_TYPE_NAME("cortex-a9=
-"))) {
-> +        /* We might allow Cortex-A5 once we model it */
-> +        error_setg(errp,
-> +                   "Cortex-A9MPCore peripheral can only use Cortex-A9 CP=
-U");
-> +        return;
-> +    }
-> +
->      scudev =3D DEVICE(&s->scu);
->      qdev_prop_set_uint32(scudev, "num-cpu", s->num_cpu);
->      sysbus_realize(SYS_BUS_DEVICE(&s->scu), &err);
-> @@ -73,7 +84,6 @@ static void a9mp_priv_realize(DeviceState *dev, Error *=
-*errp)
->      /* Make the GIC's TZ support match the CPUs. We assume that
->       * either all the CPUs have TZ, or none do.
->       */
-> -    cpuobj =3D OBJECT(qemu_get_cpu(0));
->      has_el3 =3D object_property_find(cpuobj, "has_el3", NULL) &&
->          object_property_get_bool(cpuobj, "has_el3", &error_abort);
->      qdev_prop_set_bit(gicdev, "has-security-extensions", has_el3);
-> --
-> 2.21.3
->
->
+I am slowly reviewing because this is not part of my work duties,
+so I do that in my free time before/after work, which is why I can
+barely do more that 2 per day, as I have to learn the SoC and
+cross check documentation (or in this case, existing firmware code
+since there is no public doc).
+
+[...]
+>>> +static void npcm7xx_gcr_realize(DeviceState *dev, Error **errp)
+>>> +{
+>>> +    NPCM7xxGCRState *s = NPCM7XX_GCR(dev);
+>>> +    uint64_t dram_size;
+>>> +    Error *err = NULL;
+>>> +    Object *obj;
+>>> +
+>>> +    obj = object_property_get_link(OBJECT(dev), "dram-mr", &err);
+>>> +    if (!obj) {
+>>> +        error_setg(errp, "%s: required dram-mr link not found: %s",
+>>> +                   __func__, error_get_pretty(err));
+>>> +        return;
+>>> +    }
+>>> +    dram_size = memory_region_size(MEMORY_REGION(obj));
+>>> +
+>>> +    /* Power-on reset value */
+>>> +    s->reset_intcr3 = 0x00001002;
+>>> +
+>>> +    /*
+>>> +     * The GMMAP (Graphics Memory Map) field is used by u-boot to detect the
+>>> +     * DRAM size, and is normally initialized by the boot block as part of DRAM
+>>> +     * training. However, since we don't have a complete emulation of the
+>>> +     * memory controller and try to make it look like it has already been
+>>> +     * initialized, the boot block will skip this initialization, and we need
+>>> +     * to make sure this field is set correctly up front.
+>>> +     *
+>>> +     * WARNING: some versions of u-boot only looks at bits 8 and 9, so 2 GiB or
+>>> +     * more of DRAM will be interpreted as 128 MiB.
+>>
+>> I'd say u-boot is right in wrapping at 2GB, as more DRAM is
+>> un-addressable.
+> 
+> Ah, maybe I shouldn't have said "or more". The bug is that if you
+> specify _exactly_ 2GiB, u-boot will see 128 MiB.
+> 
+> But I agree more than 2GiB doesn't make sense, so I'll add a check for that.
+> 
+> Not sure if I agree that the check should be here. > 2 GiB is an
+> addressing limitation, and the GCR module shouldn't really know what
+> the SoC's address space looks like. The lower limit is because the GCR
+> module can't encode anything less than 128 MiB.
+> 
+>>> +     *
+>>> +     * https://github.com/Nuvoton-Israel/u-boot/blob/2aef993bd2aafeb5408dbaad0f3ce099ee40c4aa/board/nuvoton/poleg/poleg.c#L244
+>>> +     */
+>>> +    if (dram_size >= 2 * GiB) {
+>>
+>> See my comment in this series on the machine patch.
+>>
+>>> +        s->reset_intcr3 |= 4 << 8;
+>>> +    } else if (dram_size >= 1 * GiB) {
+>>> +        s->reset_intcr3 |= 3 << 8;
+>>> +    } else if (dram_size >= 512 * MiB) {
+>>> +        s->reset_intcr3 |= 2 << 8;
+>>> +    } else if (dram_size >= 256 * MiB) {
+>>> +        s->reset_intcr3 |= 1 << 8;
+>>> +    } else if (dram_size >= 128 * MiB) {
+>>> +        s->reset_intcr3 |= 0 << 8;
+
+I think this can be simplified as:
+
+         s->reset_intcr3 = (4 - clz32(dram_size)) << 8;
+
+Which implicitly truncate to power of 2 (which is what this
+block does, as you can have only 1 bank managed per this SGC).
+
+But checking is_power_of_2(dram_size) and reporting an error
+else, is probably even better.
+
+>>> +    } else {
+>>> +        error_setg(errp,
+>>> +                   "npcm7xx_gcr: DRAM size %" PRIu64
+>>> +                   " is too small (need 128 MiB minimum)",
+>>> +                   dram_size);
+>>
+>> Ah, so you could add the same error for >2GB. Easier.
+>>
+>> Preferably using HWADDR_PRIx, and similar error for >2GB:
+>> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

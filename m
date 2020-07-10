@@ -1,102 +1,105 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp516994lfm;
-        Fri, 10 Jul 2020 02:44:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyBExfS0nX6OSGs1/o+V0GpcAkoM6sR4+1mnF8LDnP+RnvMspHICWudXqPBnlaVkrTLAAYk
-X-Received: by 2002:a25:ba81:: with SMTP id s1mr113175482ybg.386.1594374250318;
-        Fri, 10 Jul 2020 02:44:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594374250; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp520849lfm;
+        Fri, 10 Jul 2020 02:48:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx9LE5g3HV4EphwS7gkcjiDr9DxqOma1559PgtEJdhKjYl6kOazdD7i9UoHeaRmiizVxEt8
+X-Received: by 2002:a25:cdc2:: with SMTP id d185mr103557673ybf.87.1594374522611;
+        Fri, 10 Jul 2020 02:48:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594374522; cv=none;
         d=google.com; s=arc-20160816;
-        b=G/rJn/s4LzKbOqdsqoeQssOOA4ujcF27B0NeJgrdkdNlcvSIM5qv1cnJeCg5zJ0wYf
-         qn7vkFt3Qafk8+EJQI6dL6J1Pp3CegYAZxwD6dmLcU4eHWNmaBIIWhLaQsjI2NeBFIyb
-         TKcIqqSlzn/qTfkOIwvlIScs/F3damYBBcdjbhmgrz+ckP9o9Kb9rIALm87wsdWnc1fn
-         R9DYC7DM676eV0JJ96yAK5oMwFNQKR9yG78U9poMpst0rQbDYZe1k6zQkLfCREEPbHHD
-         7+2ktE6igV+mgoWhkCQaMkIYcPNyvwqVdzJZRJNXRi39c7Gi3kFd+M9rMuBhMkz88Goi
-         Nh2w==
+        b=wqZYORKXMfCjmeIujrf0QDic+sJ5eyMjqbk1R6zkdXlnXhqczszWl4SZ8/TcSb8Kf/
+         IFFKMv2xolXhXBnBRQDbJVC93K5an6adUN7TdWFqHbzbPDgkVH5vaTQkYp/WJO+VD3X/
+         vGOr9a/afPe2sxQF8YHO8LAVHbEY+gAC5eWaYLljDO7xOkofB9zcLjrJ20rR0jXQiGkT
+         Ho5sh0MenJNHNbq4KtqLCfhOin8AjtORUZq3g8c2pJMB5KDDeooEEAxJd2ncrK0GqB8X
+         i98jFdQH24xwA7e5fW4hBApCy5VJFnlBwteDPl9F7vUsKYI0rnSu3biEi+KqXtXBy5/3
+         9KLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :ironport-sdr:dkim-signature;
-        bh=KmIaDsXak1iznfxBK4or6BcOqWhG35pVsIvNAHYyi7w=;
-        b=ZAp7+vmRIncc8EsWRtiMNQ6W3t3ka/ex+V8XkrkbQwYLFC5FbkotO1piLZITwRGAU2
-         iVeK5eMsrmjA/QfQzszY0VCgrbzgcphmew12FZUimhe06S0d0ybjwkbh9mjde+PVdkYC
-         oVsR9SzAOPoe6hHWuKyMxCItU2xw4mpxZPU5orh8RzVWCAqUFBKUFRfeJjgg3sd1fqiQ
-         ojcds9yR7oJHHBMLd8yT9tct/NFF6A+anHslfVy34YDEpi3XxzVkJnUEYJADhVQZtvQu
-         /Aze3Cxe+urIcVslI48J1noXdWvZ9s8wIzStrk1hA5VlymXKR7iQZcE5FCZFZxed55Qd
-         Q1zw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Fnp0j4YPUq6YO769WRhFkPNnreu2rDFJRpmnwAnas14=;
+        b=fWV/JEyV5j3xpkwjRKHGkjierIPzLPn55bBGOjfecKFbDlJ/lcLf60+LTd8YJGg9of
+         LUzFcen3oyvQ8kRAwG1d+vVxcnxzx8ZDw5j0uzmsZUc2plfNyobkRNzeTT5EdfgrfUAm
+         bwk4VBT0aAHawAAOxbE+1euLCCs0svvELYZSdFJHTN08hmGstRuu6utRpwnk37N2sqFT
+         aOEu4UEJeOCJegLf2j+Q9QAFmZBBHyZZPtZ2IsD6mfGUZoYUWaTlcjxgpONWK8zBhNxl
+         2wB83KTh65kcmoXSHyDxO4uTp1IajU6aGy53vA3xDo02gjK1RY2nhykfEpapc7meWa1R
+         kTdQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@citrix.com header.s=securemail header.b=hs7wP5tM;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HQDMQJYa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=citrix.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17si4875165ybr.419.2020.07.10.02.44.10
+        by mx.google.com with ESMTPS id y1si4972520ybq.48.2020.07.10.02.48.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jul 2020 02:44:10 -0700 (PDT)
+        Fri, 10 Jul 2020 02:48:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@citrix.com header.s=securemail header.b=hs7wP5tM;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HQDMQJYa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=citrix.com
-Received: from localhost ([::1]:57380 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34052 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtpZh-0007kj-No
-	for alex.bennee@linaro.org; Fri, 10 Jul 2020 05:44:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48796)
+	id 1jtpe6-0001i4-0D
+	for alex.bennee@linaro.org; Fri, 10 Jul 2020 05:48:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49884)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anthony.perard@citrix.com>)
- id 1jtpYj-00074h-Rm; Fri, 10 Jul 2020 05:43:09 -0400
-Received: from esa6.hc3370-68.iphmx.com ([216.71.155.175]:55874)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anthony.perard@citrix.com>)
- id 1jtpYh-00068D-QQ; Fri, 10 Jul 2020 05:43:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=citrix.com; s=securemail; t=1594374187;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=mcEnGQBnXTd1RLnLonZEx+mtjAJJblCyHAcPNAUo/T4=;
- b=hs7wP5tMyZsnwRJWJ0wadrOXe5Kx6MIxMoCWLQlvkTnNVZwenPOPXTfM
- LGCP6NtYa3lMgwqZ7mRvQoN0KF5UwEceyfJZZ1GIH1Fwzz4KYA2wgTyQ7
- ogQ5CEdEiekwTauznzRuYoslFMZAh6tHMUAAKvSBV7aWacNaGwL+x9Wx4 U=;
-Authentication-Results: esa6.hc3370-68.iphmx.com;
- dkim=none (message not signed) header.i=none
-IronPort-SDR: klkkQCPZF/2lpFEaKDnP1aeddPQj8eqM+iFMfRwi6qM+PM4yt6j3i+ZxlazgddodfHj75g+aXD
- q0PB44Snst7XKcwA2ohDJORIuePrQA56Diaik+7uZehvJH9+DokKynuvyw5tznPTMC6OkWcDAV
- z8Rc6bBCvcP9iJkwpIh2aIiOpthLafteUC8jDGV8yzBGwYEQw/xB+kPrpmzaxWePf5Xjux0Nwk
- UrVh2GfPJ/af2BFmbbkpbiiaqpKTyC6gk907Z+GMMmWqpiT62QlnR22ldtzOJ1uEjFrRH5h/4v
- +ck=
-X-SBRS: 2.7
-X-MesageID: 22385309
-X-Ironport-Server: esa6.hc3370-68.iphmx.com
-X-Remote-IP: 162.221.158.21
-X-Policy: $RELAYED
-X-IronPort-AV: E=Sophos;i="5.75,335,1589256000"; d="scan'208";a="22385309"
-Date: Fri, 10 Jul 2020 10:42:58 +0100
-From: Anthony PERARD <anthony.perard@citrix.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [PATCH] acpi: Fix access to PM1 control and status registers
-Message-ID: <20200710094258.GF2030@perard.uk.xensource.com>
-References: <20200701110549.148522-1-anthony.perard@citrix.com>
- <20200701075914-mutt-send-email-mst@kernel.org>
- <20200701124836.GD2030@perard.uk.xensource.com>
- <20200702063310-mutt-send-email-mst@kernel.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jtpdD-0001HN-CW
+ for qemu-devel@nongnu.org; Fri, 10 Jul 2020 05:47:47 -0400
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:43698)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jtpdB-0006fJ-MU
+ for qemu-devel@nongnu.org; Fri, 10 Jul 2020 05:47:47 -0400
+Received: by mail-il1-x142.google.com with SMTP id i18so4536882ilk.10
+ for <qemu-devel@nongnu.org>; Fri, 10 Jul 2020 02:47:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Fnp0j4YPUq6YO769WRhFkPNnreu2rDFJRpmnwAnas14=;
+ b=HQDMQJYarOLm934Ayy/ruKQ3M7HKrAxe/EtuJO1RxIjWbwlKJJpe+MskAiteKUkLm8
+ 2TGRUup4zqknWWHQLrfIehRBz/LvCnltyZ4HrW9yJ7FH48N3LYWu8B/xCWfPqd3c9PL0
+ NBOEfyJ5k8fJs23o3B+BbXSmYHqbzhp6rednZFvBO/VDL/bKH/wcdVcaQ898ypCYpEiG
+ Hw3fcojwP+2YiTCTFRNXv/FpZpZrByGmUiqGgewo/aqPL7cycb+kGxJcJeVAbP+o2uNu
+ ggRGCLk8rCHV9JEWSYyl8oBga8j3cdzFdAJEwAzdTc1sYmcLfWQZJ2DtVEhCGzh7KQUV
+ HtKA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Fnp0j4YPUq6YO769WRhFkPNnreu2rDFJRpmnwAnas14=;
+ b=ukxZti42/bMC1zNelP9gWx/sGa62AylKZh1JHUqAw61GVnEBVg35+8Q1UwnyT8voPu
+ Ef31ThjQEca9tRU5lcLbP6ipfzDVFaUgaQTDbnGms7FVrTLHAu68TnpuvmdhG7jpx8UC
+ 0quxbMtzLiT6NHmxif/XBAAiVBr3pL+EiVshUwzTSPQ2j0Iom5kxPMq893+R41PXH6Qj
+ EMk/AUMq3Rbu23EG3AegbnLx9aPRJ940v72lhav9nkHlCqviiZmERRNWgOJR8mBMTt2F
+ BaZTU5Dx/d281oH/NddtQe7VjmuAQ1oDZZwj2ZbwmlLCXjhHnjb9m/6MSlhCyy6LvGns
+ cTFQ==
+X-Gm-Message-State: AOAM533YLqFir457kbtjwtLTEDGJ7Xcd1Xpjy0Bgxci4uDW6UBb5U9DX
+ m/GIDwNci+VYOqjQuBk+HFu/E4iJvuRy9+ZK65NZGw==
+X-Received: by 2002:a92:404e:: with SMTP id n75mr10676835ila.203.1594374464407; 
+ Fri, 10 Jul 2020 02:47:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20200702063310-mutt-send-email-mst@kernel.org>
-Received-SPF: pass client-ip=216.71.155.175;
- envelope-from=anthony.perard@citrix.com; helo=esa6.hc3370-68.iphmx.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/10 05:43:03
-X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+References: <20200708141856.15776-1-eric.auger@redhat.com>
+ <20200708141856.15776-12-eric.auger@redhat.com>
+In-Reply-To: <20200708141856.15776-12-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 Jul 2020 10:47:33 +0100
+Message-ID: <CAFEAcA-zXyzq5ph3U0vFuqRz9=NEq-piw_9gsYbrwg=+g9nbXw@mail.gmail.com>
+Subject: Re: [PATCH v3 11/11] hw/arm/smmuv3: Advertise SMMUv3.2 range
+ invalidation
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
+ envelope-from=peter.maydell@linaro.org; helo=mail-il1-x142.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -109,53 +112,36 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, pbonzini@redhat.com,
- Igor Mammedov <imammedo@redhat.com>, "open list:PReP" <qemu-ppc@nongnu.org>,
- Joel Stanley <joel@jms.id.au>
+Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Robin Murphy <robin.murphy@arm.com>,
+ zhangfei.gao@foxmail.com, QEMU Developers <qemu-devel@nongnu.org>,
+ Peter Xu <peterx@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
+ Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7ECy8Xu8/5iG
+X-TUID: jplvuDXfYURX
 
-On Thu, Jul 02, 2020 at 07:12:08AM -0400, Michael S. Tsirkin wrote:
-> memory: align to min access size
-> 
-> If impl.min_access_size > valid.min_access_size access callbacks
-> can get a misaligned access as size is increased.
-> They don't expect that, let's fix it in the memory core.
-> 
-> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-> 
-> ---
-> 
-> 
-> diff --git a/memory.c b/memory.c
-> index 9200b20130..ea489ce405 100644
-> --- a/memory.c
-> +++ b/memory.c
-> @@ -532,6 +532,7 @@ static MemTxResult access_with_adjusted_size(hwaddr addr,
->      }
->  
->      /* FIXME: support unaligned access? */
-> +    addr &= ~(access_size_min - 1);
->      access_size = MAX(MIN(size, access_size_max), access_size_min);
->      access_mask = MAKE_64BIT_MASK(0, access_size * 8);
->      if (memory_region_big_endian(mr)) {
+On Wed, 8 Jul 2020 at 15:20, Eric Auger <eric.auger@redhat.com> wrote:
+>
+> Expose the RIL bit so that the guest driver uses range
+> invalidation. Range invalidation being an SMMU3.2 feature,
+> let AIDR advertise SMMUv3.2 support.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-I've tried this (and .impl.min_access_size=2) but that wasn't enough.
+I think that to advertise SMMUv3.2 we would also need to
+set the IDR3.BBML field to something non-zero. That means
+we need to analyze our implementation of the caching of page
+table structures to see if we need to do anything different
+(per the behaviours and guarantees described in section 3.21.1
+of the spec).
 
-In the guest, I did `inb(base_addr + 1)`, but I've got back the value as
-if `inb(base_addr)` was run.
+Alternatively, we could take advantage of the language
+in section 2.5 that says that a v3.x implementation is
+allowed to implement features from v3.(x+1), and just
+set the RIL bit while leaving AIDR advertising us as v3.1.
 
-The device emulation read callbacks did get addr=0 width=2, so that's
-fine, but the result returned to the guest wasn't shifted. Same thing
-for write access, the write value isn't shifted, so a write to the
-second byte would be written to the first.
-
-Thanks,
-
--- 
-Anthony PERARD
+thanks
+-- PMM

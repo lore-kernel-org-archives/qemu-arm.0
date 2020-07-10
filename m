@@ -1,105 +1,123 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp507288lfm;
-        Fri, 10 Jul 2020 02:31:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6GRyVoUGDV4hbXz3t1GTnVE9Lp6z4dFYOPAVMKUxlLPyj3YqkgRx3aU0cuu9TFSxeifO1
-X-Received: by 2002:a25:3f87:: with SMTP id m129mr116560639yba.371.1594373515128;
-        Fri, 10 Jul 2020 02:31:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594373515; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp507483lfm;
+        Fri, 10 Jul 2020 02:32:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyX5MAOsRJcOH6t3n+YQ3LTt9wFXvwblkdcycbu5oznGZqwj6z0WyN65ELPG0zuFQYJIstH
+X-Received: by 2002:a25:d104:: with SMTP id i4mr4980801ybg.176.1594373525929;
+        Fri, 10 Jul 2020 02:32:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594373525; cv=none;
         d=google.com; s=arc-20160816;
-        b=KH1Efl33TGTW6QoY7M2IZmtm+5d0ZbHT3LBUxRsiAbRW5r+Mu8v78Ip7dwGDCdiLMG
-         tCLn7iMnqzKMgMfQQTA0ZN74OU6q5lI103tIK1BfEvAtFVaf5BYo9IYDBlCm8XzSTgv1
-         YEFGURMUnVcB6FLPCblbIp2ewSIuPfnUXIF08CPYdxKI4Kt1EgubK6UTDj0wmsgSctfs
-         7yzCe3EZRHQYhP4lx+c2L9IYV9bc43DTok8/mgWUiCJ0m49XTaSh9Vj7axvo0YyndtjQ
-         c1A4PNIlW5aHy9c/fSdcC5vnglMeG8NrKsY5xEQu6+9gELcr407EQ24GdNKcbGR+nJx7
-         p1pw==
+        b=cUsVUej5Xufnz+Vc5NmKp4e3Foj6L0V6tCLCvBCvcxT/fTodJMCH1oRpaQ9Nm9bVGt
+         rb9YOoByfCHW3WM0gTUV094uUZofMSpR5vgIQhBMDlgXCN4CcQ1LM446hnrmbHpd+JjF
+         XrJpDv1BsW3n2VlYHiEhcJcCUGo1Kx2j6K9t07K1opIf4FQe7hi120KsJSlEnEoxDlJ+
+         wjpmvKce+V7mZnMmaUTlZljWD/hpBlKwjA7T3PLsDR+Ju+B3oQdBaflzoidMdmNrTFyC
+         QkrQvThOMWDYcBBtClWM8W83EfsC6fEUXSUpa62qhS+7OPsh+wlcJAG1g5WUedGfCOgh
+         jq9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=l52sAvcIm5tmQUlv8CvRIOI7WmSWL5PO4yCvHNh3kCA=;
-        b=0IZ9HdToM6DqsCkZlNHx71NCBP1E5Esg8Y95fnep6v1sg8RR1XbSjQLpaY74uzXL7N
-         h4OO+Cwy/9aDn4vJfhqYME4jSGNghjeU5nEaxNMdnEaHIbltyRbqU33CmIImRo9fZv2J
-         W3fXQgmmONO6+pas51XEqGuZNY47/wGVHZIqTuHWEDvD8Po5eiFbrcyLY3HVdqI1NIpJ
-         gBzF9XgIP939/JP7eYrt+cvakqTaDxh5hktByDanB4B9Xzu2gi7TVTFvswX3qsnT0ya9
-         6CHOLZ7txJugiJAj8Ph1ReL7rj/k9UenVFDn3r29Tx7cCh+6RaEAQFg+axtDjbKQrehV
-         t+hA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=jbwK77+qQUrpJFsJfpQv7PNojt2bhaOZlYuEm6uiWHU=;
+        b=r+qpuZ5PMDGDwe/uom/I+Ana8yUnplJKFaDQPyFGZCwGZsrCNlcG7fOx2MlKIuoQI/
+         0BsQprEkbiAXKufdtH2qMqS5gBOvxApUDGxwcA6wpUtlb4jCDeskhzDYI4qLGe6SVWF2
+         tOneD/PyIvMYN/dd3S97QJ83Pw1hPQeIrDPmXnwcaqgWZ+5gLnG9CyUbC9gL8ihBzdkv
+         O4ipPDqHzfpypoODuq4LK9CFOn3pVWyMidqqEqG6Ki5yrm4klEF5164lPFaeZYpaj23S
+         gTtxK/J5AHMRz30O+RhO8CsjXG4AmByF0NN3cN5W+pcMomSeEufsluQi+r5oesmHTKzH
+         ZeTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XcvakxNW;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=klfEIH8x;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u15si5380917ybd.22.2020.07.10.02.31.54
+        by mx.google.com with ESMTPS id 81si5826117ybn.446.2020.07.10.02.32.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jul 2020 02:31:55 -0700 (PDT)
+        Fri, 10 Jul 2020 02:32:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XcvakxNW;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=klfEIH8x;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41596 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:42352 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtpNq-0000fX-GL
-	for alex.bennee@linaro.org; Fri, 10 Jul 2020 05:31:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46638)
+	id 1jtpO1-0000yy-8Q
+	for alex.bennee@linaro.org; Fri, 10 Jul 2020 05:32:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46662)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jtpNg-0000fB-WA
- for qemu-arm@nongnu.org; Fri, 10 Jul 2020 05:31:45 -0400
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:33313)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jtpNk-0000iw-Nw; Fri, 10 Jul 2020 05:31:48 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:41607)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jtpNf-0004f0-1Z
- for qemu-arm@nongnu.org; Fri, 10 Jul 2020 05:31:44 -0400
-Received: by mail-il1-x144.google.com with SMTP id a11so4545651ilk.0
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2020 02:31:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=l52sAvcIm5tmQUlv8CvRIOI7WmSWL5PO4yCvHNh3kCA=;
- b=XcvakxNWDtWH0vZPrYNPYgFjLaQz8KP/UnFhbgRjDXVGrPnbgfUeL5SYuWdNpBx1nZ
- ME0xao82HEIRpTgH0moeup9k1LpWsiemiT4a20Jwhb4MYVBT+JCXoIWUjd1vtzoSq2Wp
- CENauk2bM/ZUM93DT2+UjUIRHYWCaTE1R8FwV+IlBmWNTnKz+FTdVJiYVejD0RnVptdQ
- QiGTsLetNtuOHEh0HFAZHElWZ92oMYY9cko/Ob+14V/ldc8bWacTxNKGupShayG2oCGJ
- Wn8DeB8my1GZlLyAcijnopghSdd+561XlL2ZBrLExKCc4YXcFd3je55DZxm9BqPO0aCX
- L+3g==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jtpNi-0004fJ-Id; Fri, 10 Jul 2020 05:31:48 -0400
+Received: by mail-wr1-x444.google.com with SMTP id z15so5215194wrl.8;
+ Fri, 10 Jul 2020 02:31:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=jbwK77+qQUrpJFsJfpQv7PNojt2bhaOZlYuEm6uiWHU=;
+ b=klfEIH8xeoUccOeFTaCGJJQneb+E1lhw8TA4MZS6LmSZ0hHG44tTo5yN5/c6a90j51
+ PtYz24ERUs2/9JiUd+PDQ9YsM2I5qzjBEvQ11lQi5sajg4TCa89OJAF30FZ5UuLgrt20
+ RiDsZjKL53n81N2pEH1/rpuRnPcNTiDxPYK8olN85W+soiDqcZDoWP5iTSxNqRkM4dqM
+ Xl/VhiHCLlTpsgMkyzTWuTExG4eSnwOv0HwOU/7t8vCeop376ZZpHo28VzZhfke5iomW
+ 5P5BtX94BK4f6uJ3sapb8jGAjy8NDq8oOwl5wEJyBrpg7u01MtjWSHJPuMOqJbzdoJ8p
+ q7xA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=l52sAvcIm5tmQUlv8CvRIOI7WmSWL5PO4yCvHNh3kCA=;
- b=j923kKxN/lxEwfX4KX53gGHVT6Lm5DW1IONaEYiokiPUvycbUIarPEMENSYtaizVRw
- EKcWspQJ67gP+qMIT0pq/Td6U0Uncy+IawLZQR3Z9CSWCahbSKgjuZPaBF578U2HHeKJ
- UVHNnMBtKzbnbjn2Ti4xBjQGFfJgRbqWtS7UgxpoJ1cklfoIPsy9ERiFqltp37zCg6iq
- hHjg2mgs934SV1xF5VH3tQtqLyp4pbKQ6Gs6Z2R3PCH1IAOtwYUgr5jUY/ERGYxM3HkY
- ESbtGp95YiquqDkdvzVtoDANeGNOS8xi4GQsxy56WebnroBLwm/rNGaBMx5aNmX7ycpW
- dcIg==
-X-Gm-Message-State: AOAM530rY+oA4n9ft8J+qHNOOM/EpEODmqmWXw6UyE3PJJxuYQgETqQL
- MazI+AQyqrvIHr1I2f0XQo0sfsNuzqYvMsuslIJnpw==
-X-Received: by 2002:a92:404e:: with SMTP id n75mr10624672ila.203.1594373501717; 
- Fri, 10 Jul 2020 02:31:41 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=jbwK77+qQUrpJFsJfpQv7PNojt2bhaOZlYuEm6uiWHU=;
+ b=WqFLIaAvrE2YavVZyespiVprXxhPKtNd6rFFt6gLtMGqWTll7Pm3DWMyxaukiu3B9g
+ skzlkvQynyu8PeBpLGrVhRtHglGz3zhH+KZl5RYpOW0b8Cn95nlUfyoJyGSdM3UU0Txs
+ jBt/dJTpN4cpAsu1otyGy1DmZSfxpEViHJl+urAEdl/j7gwG/lv3B0JFFIxfg1oKx8iO
+ JzZNzWoFnZEXy/VYQWhVarwump0eFwrIu2j/rx57rQEv4O3ksepAKZTeMzzqpVN2Y8AX
+ Pyu/sdG7G+V6JiawMg5l9ngj7oYXf+z75UtN7YKqag3/jvGA4fTLojoMTCtTcXXRU6I0
+ GmZA==
+X-Gm-Message-State: AOAM530r83PakQAGPfHPKXRdISvsM+k3CXXKCvdBB74Yz034eIe2D6u+
+ fziy3v3GyRk4hswLVHkBLBs=
+X-Received: by 2002:a05:6000:1190:: with SMTP id
+ g16mr64209932wrx.286.1594373504322; 
+ Fri, 10 Jul 2020 02:31:44 -0700 (PDT)
+Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id n5sm8391612wmi.34.2020.07.10.02.31.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 10 Jul 2020 02:31:43 -0700 (PDT)
+Subject: Re: [PATCH v5 01/11] hw/misc: Add NPCM7xx System Global Control
+ Registers device model
+To: Havard Skinnemoen <hskinnemoen@google.com>
+References: <20200709003608.3834629-1-hskinnemoen@google.com>
+ <20200709003608.3834629-2-hskinnemoen@google.com>
+ <2fe8ea5e-56de-f57f-6146-8355125daa7f@amsat.org>
+ <CAFQmdRYx99PpWz6bftCvBR7=YRftD_WNex_A9aoDaeRg=4tsCw@mail.gmail.com>
+ <bd2972b0-0684-e379-6d66-16ceb62deade@amsat.org>
+ <CAFQmdRbHXhd9-HUQP5ET=JQEnQ3FMCQBHajwZrP5d7=iCc0tzA@mail.gmail.com>
+ <ee8bc620-6d58-98ef-1c53-a8687282af50@amsat.org>
+ <CAFQmdRa3u_Sst0i6e2whoJcYau15gVQubhZHmm+z26SD8G8uCQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <c19401c1-f629-a95f-c8a5-60df78e41061@amsat.org>
+Date: Fri, 10 Jul 2020 11:31:42 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <20200708141856.15776-1-eric.auger@redhat.com>
- <20200708141856.15776-11-eric.auger@redhat.com>
-In-Reply-To: <20200708141856.15776-11-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Jul 2020 10:31:30 +0100
-Message-ID: <CAFEAcA-ZS4YQkSCLqryf+7CDD-KTCLREtu_NRi_UjEG3_KWpww@mail.gmail.com>
-Subject: Re: [PATCH v3 10/11] hw/arm/smmuv3: Support HAD and advertise
- SMMUv3.1 support
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
- envelope-from=peter.maydell@linaro.org; helo=mail-il1-x144.google.com
+In-Reply-To: <CAFQmdRa3u_Sst0i6e2whoJcYau15gVQubhZHmm+z26SD8G8uCQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: 10
+X-Spam_score: 1.0
+X-Spam_bar: +
+X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, PDS_OTHER_BAD_TLD=1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,32 +130,119 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Robin Murphy <robin.murphy@arm.com>,
- zhangfei.gao@foxmail.com, QEMU Developers <qemu-devel@nongnu.org>,
- Peter Xu <peterx@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
- Eric Auger <eric.auger.pro@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SaeE9bJd6hvP
+X-TUID: TEEIA/e1AUTm
 
-On Wed, 8 Jul 2020 at 15:20, Eric Auger <eric.auger@redhat.com> wrote:
->
-> HAD is a mandatory features with SMMUv3.1 if S1P is set, which is
-> our case. Other 3.1 mandatory features come with S2P which we don't
-> have.
->
-> So let's support HAD and advertise SMMUv3.1 support in AIDR.
->
-> HAD support allows the CD to disable hierarchical attributes, ie.
-> if the HAD0/1 bit is set, the APTable field of table descriptors
-> walked through TTB0/1 is ignored.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+On 7/9/20 7:42 PM, Havard Skinnemoen wrote:
+> On Thu, Jul 9, 2020 at 10:24 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>> On 7/9/20 7:09 PM, Havard Skinnemoen wrote:
+>>> On Thu, Jul 9, 2020 at 9:23 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>>> On 7/9/20 8:43 AM, Havard Skinnemoen wrote:
+>>>>> On Wed, Jul 8, 2020 at 11:04 PM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>>>>> On 7/9/20 2:35 AM, Havard Skinnemoen wrote:
+>>>>>>> Implement a device model for the System Global Control Registers in the
+>>>>>>> NPCM730 and NPCM750 BMC SoCs.
+>>>>>>>
+>>>>>>> This is primarily used to enable SMP boot (the boot ROM spins reading
+>>>>>>> the SCRPAD register) and DDR memory initialization; other registers are
+>>>>>>> best effort for now.
+>>>>>>>
+>>>>>>> The reset values of the MDLR and PWRON registers are determined by the
+>>>>>>> SoC variant (730 vs 750) and board straps respectively.
+>>>>>>>
+>>>>>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+>>>>>>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+>>>>>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+>>>>>>> ---
+[...]
+>>>>>> Maybe use HWADDR_PRIx instead of casting to int?
+>>>>>
+>>>>> Will do, thanks!
+>>>>
+>>>> Glad you are not annoyed by my review comments.
+>>>>
+>>>> FYI your series quality is in my top-4 "adding new machine to QEMU".
+>>>> I'd like to use it as example to follow.
+>>>>
+>>>> I am slowly reviewing because this is not part of my work duties,
+>>>> so I do that in my free time before/after work, which is why I can
+>>>> barely do more that 2 per day, as I have to learn the SoC and
+>>>> cross check documentation (or in this case, existing firmware code
+>>>> since there is no public doc).
+>>>
+>>> Your feedback is super valuable, thanks a lot. I really appreciate it.
+>>
+>> OK I'll continue, but might not have time until next week.
+>> After I plan to test too.
+> 
+> OK, I'll try to post a v6 before the weekend, unless you prefer that I
+> hold off until you've reviewed the whole series.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+I don't mind, if it is not too much overhead on your side.
 
-thanks
--- PMM
+What I noticed on the QEMU community is:
+
+- If a series reviewed the same day and is almost done except
+  a single bugfix, it is OK to repost the same day, so the
+  maintainer is likely to queue it directly.
+
+- If there are various reviews, and you do gradual improvements,
+  it is OK to repost every 3 days. Else reviewers tend to skip/
+  postpone your series for later.
+
+- Pinging for review before 1 week passed is stressing reviewers,
+  except in case of critical security bug (CVE) or during freeze.
+
+- Series with integrated test provided are usually reviewed first.
+
+>> What would be useful is an acceptance test (see examples in
+>> tests/acceptance/), using the artefacts from the link you shared
+>> elsewhere:
+>> https://openpower.xyz/job/run-meta-ci/distro=ubuntu,label=builder,target=gsj/lastSuccessfulBuild/artifact/openbmc/build/tmp/deploy/images/gsj/
+> 
+> Yes, tests are definitely on my radar. I'm working on SPI flash
+> qtests. I haven't had much success with avocado yet, but I'll keep
+> trying (perhaps using docker to control the environment more tightly).
+
+This might help:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg704907.html
+
+> Since the 5.1 release is frozen now, I might post some followup
+> patches before this series is merged, e.g. tests, bootrom
+> submodule+blob, more peripherals, etc. Is it preferable to keep this
+> series frozen (modulo API updates) since you spent a lot of time
+> reviewing it, and post the new stuff separately, or is it better to
+> add new patches to the end of the series and resend the whole thing?
+
+If you rework a peripheral, you need to reset the Reviewed-by/Tested-by
+tags. If you add new peripherals, you only need to reset these tags on
+the SoC patch. I'm fine either way, I use git-backport-diff to see the
+SoC changes easily:
+
+https://github.com/codyprime/git-scripts/blob/master/git-backport-diff
+
+> 
+>> But these are apparently not stable links (expire after 30 days?).
+> 
+> Sorry, I'm too ignorant about Jenkins to know. I'll see if I can
+> figure something out.
+
+What I do in that case is take the binary used for the test,
+write a comment and push it in a stable branch to my own repo:
+https://github.com/philmd/qemu-testing-blob/ and use the stable
+url in the test.
+
+We know QEMU emulation worked with this particular binary at some
+point. We want to avoid regressions in QEMU, so let's keep testing
+what we know worked. We don't want to track 2 bugs at a time (one
+in the updated guest and one in QEMU).
+
+Regards,
+
+Phil.
